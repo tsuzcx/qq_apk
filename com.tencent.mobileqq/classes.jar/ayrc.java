@@ -1,8 +1,6 @@
-import android.view.View;
-
-public abstract interface ayrc
+abstract interface ayrc
 {
-  public abstract void a(View paramView);
+  public abstract void a(boolean paramBoolean);
 }
 
 

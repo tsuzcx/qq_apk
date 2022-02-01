@@ -1,14 +1,14 @@
 package cooperation.vip.qqbanner;
 
 import android.os.Handler;
-import bkgi;
+import bmvb;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.TimerTask;
 
 public class QbossADBannerCountDownManager$2
   extends TimerTask
 {
-  public QbossADBannerCountDownManager$2(bkgi parambkgi) {}
+  public QbossADBannerCountDownManager$2(bmvb parambmvb) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class QbossADBannerCountDownManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.qqbanner.QbossADBannerCountDownManager.2
  * JD-Core Version:    0.7.0.1
  */

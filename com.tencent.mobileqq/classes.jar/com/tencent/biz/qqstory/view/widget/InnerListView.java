@@ -7,22 +7,22 @@ import android.view.View;
 import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
-import wtq;
-import wxe;
-import xvu;
-import xvv;
-import xvw;
-import xvx;
-import xvy;
+import ynb;
+import yqp;
+import zpf;
+import zpg;
+import zph;
+import zpi;
+import zpj;
 
 public class InnerListView
   extends LinearLayout
 {
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<wtq> jdField_a_of_type_JavaUtilList;
-  private xvw jdField_a_of_type_Xvw;
-  private xvx jdField_a_of_type_Xvx;
-  private xvy jdField_a_of_type_Xvy;
+  private List<ynb> jdField_a_of_type_JavaUtilList;
+  private zph jdField_a_of_type_Zph;
+  private zpi jdField_a_of_type_Zpi;
+  private zpj jdField_a_of_type_Zpj;
   private List<View> b;
   
   public InnerListView(Context paramContext)
@@ -57,11 +57,11 @@ public class InnerListView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Xvy != null)
+    if (this.jdField_a_of_type_Zpj != null)
     {
-      if ((this.jdField_a_of_type_Xvy.a() != null) && (!this.jdField_a_of_type_Xvy.a().isEmpty()))
+      if ((this.jdField_a_of_type_Zpj.a() != null) && (!this.jdField_a_of_type_Zpj.a().isEmpty()))
       {
-        int j = this.jdField_a_of_type_Xvy.a().size();
+        int j = this.jdField_a_of_type_Zpj.a().size();
         if (j < getChildCount() - a()) {
           removeViews(j, getChildCount() - j - a());
         }
@@ -70,20 +70,20 @@ public class InnerListView
         {
           Object localObject;
           if (this.jdField_a_of_type_JavaUtilList.size() - 1 >= i) {
-            localObject = (wtq)this.jdField_a_of_type_JavaUtilList.get(i);
+            localObject = (ynb)this.jdField_a_of_type_JavaUtilList.get(i);
           }
           for (;;)
           {
-            this.jdField_a_of_type_Xvy.a(i, (wtq)localObject);
-            localObject = ((wtq)localObject).a();
+            this.jdField_a_of_type_Zpj.a(i, (ynb)localObject);
+            localObject = ((ynb)localObject).a();
             if (((View)localObject).getParent() == null) {
               addView((View)localObject, getChildCount() - a());
             }
-            ((View)localObject).setOnClickListener(new xvu(this, i));
-            ((View)localObject).setOnLongClickListener(new xvv(this, i));
+            ((View)localObject).setOnClickListener(new zpf(this, i));
+            ((View)localObject).setOnLongClickListener(new zpg(this, i));
             i += 1;
             break;
-            localObject = new wtq(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_Xvy.a(), this, false));
+            localObject = new ynb(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_Zpj.a(), this, false));
             this.jdField_a_of_type_JavaUtilList.add(localObject);
           }
         }
@@ -103,11 +103,11 @@ public class InnerListView
     int i = 0;
     while (i < paramInt2)
     {
-      wtq localwtq = new wtq(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt1, this, false));
-      this.jdField_a_of_type_JavaUtilList.add(localwtq);
+      ynb localynb = new ynb(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt1, this, false));
+      this.jdField_a_of_type_JavaUtilList.add(localynb);
       i += 1;
     }
-    wxe.e("DEBUG_TIME", "InnerListView initVHCaches:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    yqp.e("DEBUG_TIME", "InnerListView initVHCaches:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
   }
   
   public void a(View paramView)
@@ -119,9 +119,9 @@ public class InnerListView
     addView(paramView);
   }
   
-  public void setAdapter(xvy paramxvy)
+  public void setAdapter(zpj paramzpj)
   {
-    this.jdField_a_of_type_Xvy = paramxvy;
+    this.jdField_a_of_type_Zpj = paramzpj;
     a();
   }
   
@@ -138,19 +138,19 @@ public class InnerListView
     addView(paramView, paramInt);
   }
   
-  public void setOnItemClickListener(xvw paramxvw)
+  public void setOnItemClickListener(zph paramzph)
   {
-    this.jdField_a_of_type_Xvw = paramxvw;
+    this.jdField_a_of_type_Zph = paramzph;
   }
   
-  public void setOnItemLongClickListener(xvx paramxvx)
+  public void setOnItemLongClickListener(zpi paramzpi)
   {
-    this.jdField_a_of_type_Xvx = paramxvx;
+    this.jdField_a_of_type_Zpi = paramzpi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.InnerListView
  * JD-Core Version:    0.7.0.1
  */

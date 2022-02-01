@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.magicface.drawable;
 
-import atxn;
+import awew;
 import java.util.HashMap;
 
 public class PngFrameManager$5
   implements Runnable
 {
-  public PngFrameManager$5(atxn paramatxn, long paramLong) {}
+  public PngFrameManager$5(awew paramawew, long paramLong) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class PngFrameManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameManager.5
  * JD-Core Version:    0.7.0.1
  */

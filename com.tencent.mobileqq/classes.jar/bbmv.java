@@ -1,17 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class bbmv
-  implements DialogInterface.OnDismissListener
+public abstract interface bbmv
+  extends bbmw
 {
-  bbmv(bbms parambbms) {}
+  public abstract String b();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
-  }
+  public abstract int c();
 }
 
 

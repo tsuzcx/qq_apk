@@ -1,70 +1,46 @@
-import android.content.Context;
-import android.graphics.Rect;
-import android.text.Layout;
-import android.widget.TextView;
-
 public class xrr
 {
-  public static int a(Rect[] paramArrayOfRect, int paramInt1, int paramInt2)
+  private double jdField_a_of_type_Double = 1.0D;
+  private long jdField_a_of_type_Long;
+  
+  public xrr()
   {
-    int i = 0;
-    if ((paramArrayOfRect == null) || (paramArrayOfRect.length == 0)) {
-      i = -1;
-    }
-    Rect localRect;
-    do
-    {
-      return i;
-      localRect = paramArrayOfRect[0];
-    } while ((paramInt2 >= 0) && (paramInt2 <= localRect.bottom) && (paramInt1 >= 0) && (paramInt1 <= localRect.right));
-    int j = 1;
-    for (;;)
-    {
-      if (j >= paramArrayOfRect.length) {
-        break label110;
-      }
-      localRect = paramArrayOfRect[j];
-      if ((paramInt2 >= localRect.top) && (paramInt2 <= localRect.bottom) && (paramInt1 >= localRect.left))
-      {
-        i = j;
-        if (paramInt1 <= localRect.right) {
-          break;
-        }
-      }
-      j += 1;
-    }
-    label110:
-    return -1;
+    a();
   }
   
-  public static String a(TextView paramTextView, int paramInt)
+  private long b()
   {
-    Layout localLayout = paramTextView.getLayout();
-    String str = paramTextView.getText().toString();
-    paramTextView = str;
-    if (localLayout != null)
-    {
-      paramTextView = str;
-      if (localLayout.getLineCount() > paramInt) {
-        paramTextView = str.substring(0, localLayout.getLineStart(paramInt));
-      }
-    }
-    return paramTextView;
+    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
   }
   
-  public static xrs a(Context paramContext, int paramInt1, int paramInt2, String paramString)
+  public double a()
   {
-    return new xsc(paramContext);
+    return this.jdField_a_of_type_Double;
   }
   
-  public static float[] a(float paramFloat1, float paramFloat2, float paramFloat3)
+  public long a()
   {
-    return new float[] { (float)(paramFloat1 * Math.cos(paramFloat3 * 3.141592653589793D / 180.0D)) - (float)(paramFloat2 * Math.sin(paramFloat3 * 3.141592653589793D / 180.0D)), (float)(paramFloat1 * Math.sin(paramFloat3 * 3.141592653589793D / 180.0D)) + (float)(paramFloat2 * Math.cos(paramFloat3 * 3.141592653589793D / 180.0D)) };
+    return b() - this.jdField_a_of_type_Long;
+  }
+  
+  public long a(long paramLong)
+  {
+    return paramLong - a();
+  }
+  
+  public void a()
+  {
+    a(0L);
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = (b() - paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xrr
  * JD-Core Version:    0.7.0.1
  */

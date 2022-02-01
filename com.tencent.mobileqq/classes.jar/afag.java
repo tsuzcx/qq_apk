@@ -1,51 +1,52 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import java.io.OutputStream;
-import msg.aio_doodle.DoodleMsgProto.DoodleData;
-import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class afag
-  implements aezx
+  extends Handler
 {
-  public afag(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
+  public afag(RegisterActivity paramRegisterActivity) {}
   
-  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramDoodleData == null) {
-      return false;
-    }
-    paramDoodleData = paramDoodleData.toByteArray();
-    byte[] arrayOfByte = aezw.a(paramDoodleData.length);
-    try
+    this.a.c();
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
-      label33:
-      return true;
+    case -1: 
+    case 0: 
+    case 2: 
+    default: 
+    case 1: 
+    case 3: 
+    case 4: 
+    case 5: 
+      do
+      {
+        return;
+        paramMessage = this.a;
+        paramMessage.jdField_a_of_type_Byte = ((byte)(paramMessage.jdField_a_of_type_Byte + 1));
+        this.a.a();
+        return;
+        this.a.d();
+        return;
+        this.a.b();
+        return;
+      } while (this.a.jdField_a_of_type_JavaLangString == null);
+      Toast.makeText(this.a.getApplicationContext(), this.a.jdField_a_of_type_JavaLangString, 1).show();
+      this.a.jdField_a_of_type_JavaLangString = null;
+      return;
+    case 6: 
+      paramMessage = paramMessage.getData().getString("url");
+      this.a.a(paramMessage);
+      return;
+    case 7: 
+      this.a.a(paramMessage.getData().getString("telNum"), paramMessage.getData().getString("msg"));
+      return;
     }
-    catch (Exception paramDoodleData)
-    {
-      break label33;
-    }
-  }
-  
-  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
-  {
-    if (paramDoodleHeader == null) {
-      return false;
-    }
-    paramDoodleHeader = paramDoodleHeader.toByteArray();
-    byte[] arrayOfByte = aezw.a(paramDoodleHeader.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleHeader)
-    {
-      break label33;
-    }
+    this.a.jdField_a_of_type_Byte = 3;
+    this.a.a();
   }
 }
 

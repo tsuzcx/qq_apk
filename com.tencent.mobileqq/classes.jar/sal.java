@@ -1,66 +1,21 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.widget.HorizontalLabelLayout;
+import android.view.animation.Interpolator;
 
 public class sal
-  implements sai
+  implements Interpolator
 {
-  public int a(BaseData paramBaseData)
+  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    switch (paramBaseData.s)
-    {
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-    default: 
-      throw new IllegalArgumentException();
-    case 7: 
-    case 13: 
-      return 7;
-    case 8: 
-    case 14: 
-      return 8;
-    case 15: 
-      return 13;
-    }
-    return 14;
+    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
   }
   
-  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  public float getInterpolation(float paramFloat)
   {
-    LayoutInflater localLayoutInflater = LayoutInflater.from(paramContext);
-    switch (a(paramBaseData))
-    {
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-    default: 
-      throw new IllegalArgumentException();
-    case 7: 
-      return new sap(this, localLayoutInflater.inflate(2131560020, paramViewGroup, false), paramBaseData);
-    case 8: 
-      return new san(this, localLayoutInflater.inflate(2131560017, paramViewGroup, false), paramBaseData);
-    case 13: 
-      paramViewGroup = new HorizontalLabelLayout(paramContext);
-      int i = aepi.a(15.0F, paramContext.getResources());
-      paramViewGroup.setPadding(i, 0, i, 0);
-      return new sam(this, paramViewGroup, paramBaseData);
-    }
-    return new sao(this, localLayoutInflater.inflate(2131559939, paramViewGroup, false), paramBaseData);
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return (paramBaseData.s == 7) || (paramBaseData.s == 8) || (paramBaseData.s == 13) || (paramBaseData.s == 14) || (paramBaseData.s == 15) || (paramBaseData.s == 16);
+    return a(paramFloat, 0.0F, 1.0F, 1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sal
  * JD-Core Version:    0.7.0.1
  */

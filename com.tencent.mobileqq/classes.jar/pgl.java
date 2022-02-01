@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
-
-public final class pgl
-  implements Parcelable.Creator<ReadInJoyDraftboxItem>
+public class pgl
 {
-  public ReadInJoyDraftboxItem a(Parcel paramParcel)
-  {
-    return new ReadInJoyDraftboxItem(paramParcel);
-  }
+  public String a;
+  public String b;
+  public String c;
   
-  public ReadInJoyDraftboxItem[] a(int paramInt)
+  public String toString()
   {
-    return new ReadInJoyDraftboxItem[paramInt];
+    return "appCode = " + this.a + "\nappVersion = " + this.b + "\nappUsedDate = " + this.c + "\n";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pgl
  * JD-Core Version:    0.7.0.1
  */

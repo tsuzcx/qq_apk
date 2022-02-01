@@ -1,48 +1,99 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.content.Intent;
+import android.media.AudioManager;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 import com.tencent.qphone.base.util.QLog;
 
-public class afvt
-  extends apsc
+class afvt
+  extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private apxv jdField_a_of_type_Apxv;
-  private bety jdField_a_of_type_Bety;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long = 0L;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  long b = 0L;
   
-  public void a(int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, apxv paramapxv, SessionInfo paramSessionInfo, bety parambety)
+  private afvt(afvr paramafvr, String paramString, int paramInt)
   {
+    this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Apxv = paramapxv;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Bety = parambety;
   }
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
+    long l = SystemClock.uptimeMillis();
+    int i = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_STATE", -1);
     if (QLog.isColorLevel()) {
-      QLog.d("MarketFaceItemBuilder", 2, "onJsonComplete:" + paramEmoticonPackage.epId);
+      QLog.d("AudioPlayer_SCOHelper", 2, "onReceive ACTION_SCO_AUDIO_STATE_UPDATED = " + i + " " + this.jdField_a_of_type_JavaLangString + ", time=" + l);
     }
-    if (paramInt == 0)
+    paramContext = afvr.a(this.jdField_a_of_type_Afvr);
+    if (1 == i) {
+      if (this.b == 0L)
+      {
+        this.b = l;
+        if (paramContext != null)
+        {
+          paramIntent = paramContext.a();
+          if (paramIntent != null)
+          {
+            paramIntent.setBluetoothScoOn(true);
+            AudioPlayerBase.c = true;
+          }
+          paramContext.h();
+          if (!paramContext.a())
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("AudioPlayer_SCOHelper", 2, "onReceive SCO_AUDIO_STATE_CONNECTED need replay time=" + l);
+            }
+            paramContext.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+          }
+        }
+      }
+    }
+    do
     {
-      if (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_Apxv.a.epId)) {
+      do
+      {
+        do
+        {
+          return;
+          if (2 == i)
+          {
+            this.jdField_a_of_type_Boolean = true;
+            return;
+          }
+        } while (i != 0);
+        if (this.jdField_a_of_type_Long == 0L)
+        {
+          this.jdField_a_of_type_Long = l;
+          return;
+        }
+        if ((this.jdField_a_of_type_Boolean) && (paramContext != null)) {
+          paramContext.j();
+        }
+        if (paramContext != null) {
+          paramContext.i();
+        }
+        if (((this.b == 0L) || (l - this.b > 2000L)) && (l - this.jdField_a_of_type_Long > 1000L)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AudioPlayer_SCOHelper", 2, "sco disconnected quickly.");
+        }
+        AudioPlayerBase.b = true;
+      } while (paramContext == null);
+      paramContext.b();
+      if (paramContext.a())
+      {
+        paramContext.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
-      afvg.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Apxv, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bety);
+      paramContext.c(0);
       return;
-    }
-    afvg.a(this.jdField_a_of_type_Int + 1000, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Apxv, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bety);
+    } while ((paramContext == null) || (!paramContext.a()));
+    paramContext.c(paramContext.a.a());
   }
 }
 

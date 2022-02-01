@@ -1,0 +1,30 @@
+package com.tencent.mobileqq.data;
+
+import java.util.HashMap;
+
+final class MessageForQQWalletMsg$1
+  extends HashMap<Integer, Integer>
+{
+  MessageForQQWalletMsg$1()
+  {
+    put(Integer.valueOf(6), Integer.valueOf(0));
+    put(Integer.valueOf(13), Integer.valueOf(1));
+    put(Integer.valueOf(15), Integer.valueOf(1));
+    put(Integer.valueOf(18), Integer.valueOf(2));
+    put(Integer.valueOf(19), Integer.valueOf(3));
+    put(Integer.valueOf(22), Integer.valueOf(5));
+    put(Integer.valueOf(26), Integer.valueOf(5));
+    put(Integer.valueOf(23), Integer.valueOf(6));
+    put(Integer.valueOf(21), Integer.valueOf(4));
+    put(Integer.valueOf(24), Integer.valueOf(4));
+    put(Integer.valueOf(25), Integer.valueOf(4));
+    put(Integer.valueOf(27), Integer.valueOf(4));
+    put(Integer.valueOf(28), Integer.valueOf(7));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletMsg.1
+ * JD-Core Version:    0.7.0.1
+ */

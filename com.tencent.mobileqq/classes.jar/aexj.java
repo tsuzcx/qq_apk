@@ -1,25 +1,14 @@
-import android.animation.TypeEvaluator;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
-class aexj
-  implements TypeEvaluator
+public class aexj
 {
-  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimController", 2, "AlphaEvaluator value: " + paramFloat);
-    }
-    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
-      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
-    }
-    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
-      return Double.valueOf(0.5D);
-    }
-    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
-      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
-    }
-    return Double.valueOf(0.0D);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  TextView b;
+  TextView c;
 }
 
 

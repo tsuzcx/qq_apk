@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import oxb;
-import pfn;
+import pmk;
+import pws;
 
 public class DailyDynamicHeaderModule$2
   implements Runnable
 {
-  public DailyDynamicHeaderModule$2(pfn parampfn) {}
+  public DailyDynamicHeaderModule$2(pws parampws) {}
   
   public void run()
   {
-    oxb.a().e(false);
+    pmk.a().d(false);
   }
 }
 

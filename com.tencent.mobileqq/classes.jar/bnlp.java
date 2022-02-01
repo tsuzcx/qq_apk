@@ -1,64 +1,16 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
-import mqq.app.AppRuntime;
+import android.support.annotation.NonNull;
 
 public class bnlp
-  implements SeekBar.OnSeekBarChangeListener
 {
-  public bnlp(BeautyBar paramBeautyBar) {}
+  public String a;
+  public boolean a;
+  public String b = "null";
+  public String c = "null";
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  @NonNull
+  public String toString()
   {
-    BeautyBar.a(this.a, paramInt);
-    if (paramBoolean) {
-      BeautyBar.a(this.a, BeautyBar.a(this.a), false);
-    }
-    if (BeautyBar.a(this.a) != BeautyBar.b(this.a))
-    {
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).b(BeautyBar.a(this.a));
-      }
-      BeautyBar.b(this.a, BeautyBar.a(this.a));
-    }
-    if (paramBoolean) {
-      BeautyBar.a(this.a).setContentDescription(alud.a(2131701464) + BeautyBar.a(this.a) + "%");
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    BeautyBar.a(this.a).removeMessages(1011);
-    if (BeautyBar.a(this.a) != null) {
-      BeautyBar.a(this.a).setVisibility(0);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (BeautyBar.b(this.a) >= 0)
-    {
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      localSharedPreferences.edit().putFloat("beauty_radius" + str, BeautyBar.b(this.a));
-      localSharedPreferences.edit().putFloat("beauty_whitenmag" + str, BeautyBar.b(this.a));
-      localSharedPreferences.edit().putInt("beauty_level" + str, paramSeekBar.getProgress());
-      localSharedPreferences.edit().commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("beauty", 2, "onStopTrackingTouch mBeautyValue" + BeautyBar.b(this.a) + " mBeautyProcess=" + paramSeekBar.getProgress());
-      }
-      BeautyBar.a(this.a).removeMessages(1011);
-      BeautyBar.a(this.a).sendEmptyMessageDelayed(1011, BeautyBar.a);
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).setVisibility(4);
-      }
-    }
+    return this.jdField_a_of_type_JavaLangString + ", ready=" + this.jdField_a_of_type_Boolean + ", extraInfo=" + this.c + ", error=" + this.b;
   }
 }
 

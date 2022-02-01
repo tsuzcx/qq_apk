@@ -1,33 +1,22 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
 
 class amtr
-  implements ServiceConnection
+  implements DialogInterface.OnClickListener
 {
   amtr(amtp paramamtp) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.w(amuc.a, 1, "onServiceConnected, name[" + paramComponentName + "]");
-    try
+    if (amtp.a(this.a) != null)
     {
-      this.a.a = amzh.a(paramIBinder);
-      this.a.a.a(amtp.a(this.a));
-      this.a.a.c();
-      return;
+      amtp.b(this.a).setVisibility(8);
+      amtp.c(this.a).setVisibility(8);
+      amtp.b(this.a, false);
+      amtp.a(this.a).a();
     }
-    catch (Exception paramComponentName)
-    {
-      QLog.w(amuc.a, 1, "onServiceConnected, Exception", paramComponentName);
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    QLog.w(amuc.a, 1, "onServiceDisconnected, name[" + paramComponentName + "]");
-    this.a.a();
+    this.a.a(6, 3, true);
   }
 }
 

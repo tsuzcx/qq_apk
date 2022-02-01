@@ -1,11 +1,17 @@
-import com.google.gson.reflect.TypeToken;
-import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
 
 class blnv
-  extends TypeToken<List<AEEditorDownloadResBean>>
+  implements atve
 {
-  blnv(blnt paramblnt) {}
+  blnv(blnu paramblnu, Activity paramActivity, Intent paramIntent) {}
+  
+  public void a()
+  {
+    aufz.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
+  }
+  
+  public void b() {}
 }
 
 

@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import alud;
 import android.content.Intent;
 import android.text.TextUtils;
-import awgf;
-import awgg;
+import anni;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -12,6 +10,8 @@ import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -21,6 +21,7 @@ public class GroupPlugin
   public static final String GROUP_GETMULTIMEMLIST = "getMultiMemList";
   public static final String TAG = "GroupPlugin";
   NativePlugin.JSContext mJsContext;
+  GroupPlugin.MyActivityResultListener myActivityResultListener;
   
   private static void gotoSelectMembers(int paramInt, String paramString1, BaseActivity paramBaseActivity, String paramString2)
   {
@@ -46,17 +47,25 @@ public class GroupPlugin
     if (localJSContext == null) {
       return;
     }
-    MiniAppController.getInstance().setActivityResultListener(new GroupPlugin.1(this));
+    if (this.myActivityResultListener == null) {
+      this.myActivityResultListener = new GroupPlugin.MyActivityResultListener(this, null);
+    }
+    MiniAppController.getInstance().setActivityResultListener(this.myActivityResultListener);
     BaseActivity localBaseActivity = (BaseActivity)localJSContext.getActivity();
-    if ((TroopInfo)localBaseActivity.getAppInterface().getEntityManagerFactory().createEntityManager().a(TroopInfo.class, paramString1) != null)
+    if ((TroopInfo)localBaseActivity.getAppInterface().getEntityManagerFactory().createEntityManager().find(TroopInfo.class, paramString1) != null)
     {
       gotoSelectMembers(paramInt, paramString2, localBaseActivity, paramString1);
       return;
     }
-    localJSContext.evaluateCallback(false, new JSONObject(), alud.a(2131705746));
+    localJSContext.evaluateCallback(false, new JSONObject(), anni.a(2131704147));
   }
   
-  public void onDestroy() {}
+  public void onDestroy()
+  {
+    if (this.myActivityResultListener != null) {
+      MiniAppController.getInstance().removeActivityResultListener(this.myActivityResultListener);
+    }
+  }
   
   public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
   {
@@ -93,7 +102,7 @@ public class GroupPlugin
       int i;
       if ((TextUtils.isEmpty((CharSequence)localObject)) || (j < 1) || (j > 3))
       {
-        paramJSContext.evaluateCallback(false, new JSONObject(), alud.a(2131705748));
+        paramJSContext.evaluateCallback(false, new JSONObject(), anni.a(2131704149));
         return;
         if (!QLog.isColorLevel()) {
           break;
@@ -118,7 +127,7 @@ public class GroupPlugin
           gotoSelectMembers((String)localObject, i, paramJSONObject);
           return;
         }
-        paramJSContext.evaluateCallback(false, new JSONObject(), alud.a(2131705747));
+        paramJSContext.evaluateCallback(false, new JSONObject(), anni.a(2131704148));
         return;
         if (localJSONObject != null) {
           break label146;
@@ -133,7 +142,7 @@ public class GroupPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.GroupPlugin
  * JD-Core Version:    0.7.0.1
  */

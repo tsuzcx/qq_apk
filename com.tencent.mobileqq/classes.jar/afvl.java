@@ -1,40 +1,16 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.data.MessageRecord;
 
 final class afvl
-  implements DialogInterface.OnClickListener
+  implements afvp
 {
-  afvl(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    boolean bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
-    {
-      bool = true;
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
-      if (afvg.a != null)
-      {
-        if (7 != this.jdField_a_of_type_Int) {
-          break label80;
-        }
-        afvg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, afvg.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
-      }
-    }
-    label80:
-    while (6 != this.jdField_a_of_type_Int)
-    {
-      return;
-      bool = false;
-      break;
-    }
-    afvg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, afvg.a.frienduin, "ep_mall", "Clk_collect_more", 0);
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 22);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    return paramQQAppInterface;
   }
 }
 

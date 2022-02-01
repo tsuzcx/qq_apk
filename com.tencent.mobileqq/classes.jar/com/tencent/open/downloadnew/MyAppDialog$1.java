@@ -4,19 +4,19 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bflp;
-import bfpl;
+import bisy;
+import biws;
 
 public class MyAppDialog$1
   implements Runnable
 {
-  public MyAppDialog$1(bfpl parambfpl, int paramInt1, int paramInt2) {}
+  public MyAppDialog$1(biws parambiws, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     int j = 100;
     int i = this.a;
-    bflp.c("MyAppApi", "updateView--progress--" + i + " state = " + this.b);
+    bisy.c("MyAppApi", "updateView--progress--" + i + " state = " + this.b);
     Object localObject = this.this$0.getContext().getResources();
     switch (this.b)
     {
@@ -44,16 +44,16 @@ public class MyAppDialog$1
       this.this$0.a.setProgress(j);
       this.this$0.e.setText((CharSequence)localObject);
       return;
-      localObject = ((Resources)localObject).getString(2131691706, new Object[] { Integer.valueOf(i) });
+      localObject = ((Resources)localObject).getString(2131691442, new Object[] { Integer.valueOf(i) });
       break;
-      localObject = ((Resources)localObject).getString(2131691730);
+      localObject = ((Resources)localObject).getString(2131691466);
       break;
-      localObject = ((Resources)localObject).getString(2131691714, new Object[] { Integer.valueOf(i) });
+      localObject = ((Resources)localObject).getString(2131691450, new Object[] { Integer.valueOf(i) });
       break;
-      localObject = ((Resources)localObject).getString(2131691703);
+      localObject = ((Resources)localObject).getString(2131691439);
       i = 100;
       break;
-      localObject = ((Resources)localObject).getString(2131691714);
+      localObject = ((Resources)localObject).getString(2131691450);
       break;
       if (i > 100) {
         break label124;
@@ -67,7 +67,7 @@ public class MyAppDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppDialog.1
  * JD-Core Version:    0.7.0.1
  */

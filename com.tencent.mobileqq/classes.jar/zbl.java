@@ -1,24 +1,58 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import android.content.Context;
+import android.widget.BaseAdapter;
 
-public class zbl
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class zbl<PACKAGE extends zbc>
+  extends BaseAdapter
 {
-  public zbl(SingleLyricView paramSingleLyricView) {}
+  public int a;
+  protected Context a;
+  protected PACKAGE a;
+  protected zbe a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public zbl(Context paramContext)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (SingleLyricView.a(this.a) != null) {
-      SingleLyricView.a(this.a).setAlpha(f);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(PACKAGE paramPACKAGE)
+  {
+    this.jdField_a_of_type_Zbc = paramPACKAGE;
+  }
+  
+  public void a(zbe paramzbe)
+  {
+    this.jdField_a_of_type_Zbe = paramzbe;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_Zbc == null) {
+      return 0;
     }
+    int i = this.jdField_a_of_type_Zbc.b();
+    int j = this.jdField_a_of_type_Zbc.a();
+    if (j < 1) {
+      throw new IllegalArgumentException("per item count < 1 :" + j);
+    }
+    if (i % j == 0) {
+      return i / j;
+    }
+    return i / j + 1;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zbl
  * JD-Core Version:    0.7.0.1
  */

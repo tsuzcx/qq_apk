@@ -1,28 +1,48 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.database.sqlite.SQLiteDatabase;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import java.util.HashMap;
+import java.util.Map;
 
-class apwg
-  implements URLDrawableDownListener
+public class apwg
+  extends EntityManagerFactory
 {
-  apwg(apwf paramapwf) {}
+  private static Map<String, Class<?>> a = new HashMap();
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  static
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof ProgressBar))) {
-      ((ProgressBar)paramView).setVisibility(4);
-    }
+    a.put(RockDownloadInfo.class.getSimpleName(), RockDownloadInfo.class);
   }
+  
+  public apwg()
+  {
+    super("RockDownload");
+  }
+  
+  public SQLiteOpenHelper build(String paramString)
+  {
+    if (this.dbHelper == null)
+    {
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 1);
+      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
+    }
+    return this.dbHelper;
+  }
+  
+  public void createDatabase(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new RockDownloadInfo()));
+  }
+  
+  public String getPackageName()
+  {
+    return getClass().getPackage().getName();
+  }
+  
+  public void upgradeDatabase(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 

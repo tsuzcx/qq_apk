@@ -22,10 +22,20 @@ class WsStickerEditView$1
   public void onStickerClick(TAVSticker paramTAVSticker, MotionEvent paramMotionEvent)
   {
     TLog.d(WsStickerEditView.access$100(this.this$0), "onStickerClick -> $tavSticker");
-    if ((this.this$0.isStickerSelected) && (WsStickerEditView.access$200(this.this$0) != null)) {
+    if (WsStickerEditView.access$200(this.this$0) != null)
+    {
+      if (!this.this$0.isStickerSelected) {
+        break label60;
+      }
       WsStickerEditView.access$200(this.this$0).onStickerClick(this.this$0.getSticker());
     }
-    this.this$0.isStickerSelected = true;
+    for (;;)
+    {
+      this.this$0.isStickerSelected = true;
+      return;
+      label60:
+      WsStickerEditView.access$200(this.this$0).onStickerSelected(this.this$0.getSticker());
+    }
   }
   
   public void onTouchBegin(TAVSticker paramTAVSticker, MotionEvent paramMotionEvent)
@@ -45,7 +55,7 @@ class WsStickerEditView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.view.WsStickerEditView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aicj
   implements View.OnClickListener
 {
-  aicj(aici paramaici) {}
+  aicj(aibv paramaibv, String paramString) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.g = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.a.jdField_d_of_type_Int != 22) {
-      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131368624));
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
-    if (this.a.a.jdField_a_of_type_Aidh != null) {
-      this.a.a.jdField_a_of_type_Aidh.a();
-    }
+    HotChatInfo localHotChatInfo = ((HotChatManager)this.jdField_a_of_type_Aibv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aibv.jdField_a_of_type_Anoc.a(localHotChatInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

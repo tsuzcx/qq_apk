@@ -14,8 +14,8 @@ import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.a;
+import com.tencent.mobileqq.msf.core.ab;
 import com.tencent.mobileqq.msf.core.auth.b;
-import com.tencent.mobileqq.msf.core.y;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.remote.IBaseService.Stub;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -33,15 +33,15 @@ public class MsfService
   private static String fromProcessName = "null";
   public static volatile boolean inited = false;
   static HashSet invalidUids;
-  static q msfServiceReqHandler = new q();
-  static s msfServiceRespHandler;
+  static r msfServiceReqHandler = new r();
+  static t msfServiceRespHandler;
   static HashSet passedUids = new HashSet();
   public static volatile boolean sIsCreatedByAutoBoot = false;
   public static long serviceInitStart = 0L;
   public static final String tag = "MSF.S.MsfService";
-  private IBaseService.Stub binder = new m(this);
+  private IBaseService.Stub binder = new n(this);
   private NetConnInfoCenter mReceiver;
-  public Handler mUIHandler = new l(this, Looper.getMainLooper());
+  public Handler mUIHandler = new m(this, Looper.getMainLooper());
   
   static
   {
@@ -152,13 +152,13 @@ public class MsfService
         l1 = SystemClock.elapsedRealtime();
         QLog.d("MsfInitCost", 1, "MSF_Alive_Log MsfCoreInitCost: " + (l1 - serviceInitStart));
         e.a(paramContext, core);
-        msfServiceRespHandler = new s(core);
+        msfServiceRespHandler = new t(core);
         msfServiceRespHandler.setName("MsfServiceRespHandler");
         msfServiceRespHandler.start();
         inited = true;
         long l2 = SystemClock.elapsedRealtime() - serviceInitStart;
         QLog.d("MsfInitCost", 1, "MSF_Alive_Log ServiceInitCost: " + l2);
-        new o(l1, l2).start();
+        new p(l1, l2).start();
         bool1 = bool3;
       }
       try
@@ -191,7 +191,7 @@ public class MsfService
         }
       }
       if (bool2) {
-        new p().start();
+        new q().start();
       }
       return;
     }
@@ -269,8 +269,8 @@ public class MsfService
           if (a.am()) {
             a.a(false);
           }
-          j.a(paramIntent, 1);
-          k.a(this.mUIHandler);
+          k.a(paramIntent, 1);
+          l.a(this.mUIHandler);
           return this.binder;
         }
         catch (Exception localException2)
@@ -293,7 +293,7 @@ public class MsfService
     }
     sIsCreatedByAutoBoot = false;
     startForegroundCompat();
-    this.mUIHandler.postDelayed(new n(this), 10000L);
+    this.mUIHandler.postDelayed(new o(this), 10000L);
   }
   
   public void onDestroy()
@@ -315,7 +315,7 @@ public class MsfService
         {
           for (;;)
           {
-            y.a(y.P);
+            ab.a(ab.P);
             stopForegroundCompat();
             super.onDestroy();
             return;
@@ -340,8 +340,8 @@ public class MsfService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serivce onStart");
-    j.a(paramIntent, 2);
-    k.a(this.mUIHandler);
+    k.a(paramIntent, 2);
+    l.a(this.mUIHandler);
     super.onStartCommand(paramIntent, paramInt1, paramInt2);
     return 1;
   }

@@ -1,293 +1,223 @@
-import android.text.TextUtils;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_BASE.sweet_rsp_comm;
+import SWEET_NEW_ICON.lighting_sweet_key_rsp;
+import SWEET_NEW_ICON.sweet_upgrade_key_notify_rsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.business.MiniAppConfBean.1;
-import com.tencent.mobileqq.minigame.splash.SplashMiniGameUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import common.config.service.QzoneConfig;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class aool
+  implements BusinessObserver
 {
-  private int jdField_a_of_type_Int = 60;
-  private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new MiniAppConfBean.1(this);
-  private boolean jdField_a_of_type_Boolean = true;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = true;
-  private String jdField_c_of_type_JavaLangString = "";
-  private boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString = "";
-  private boolean jdField_d_of_type_Boolean;
-  private String jdField_e_of_type_JavaLangString = "";
-  private boolean jdField_e_of_type_Boolean;
-  private String jdField_f_of_type_JavaLangString = "";
-  private boolean jdField_f_of_type_Boolean;
-  private String jdField_g_of_type_JavaLangString = "";
-  private boolean jdField_g_of_type_Boolean;
-  private boolean h;
+  private static volatile aool jdField_a_of_type_Aool;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  public static aool a(aoko[] paramArrayOfaoko)
+  public static aool a()
   {
-    aool localaool = new aool();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    for (;;)
+    if (jdField_a_of_type_Aool == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      int j;
-      try
-      {
-        if (i < paramArrayOfaoko.length)
-        {
-          String str1 = paramArrayOfaoko[i].jdField_a_of_type_JavaLangString;
-          if (str1 == null) {
-            break label671;
-          }
-          Object localObject = new JSONObject(str1);
-          if (((JSONObject)localObject).has("aio_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("aio_mini_app_on", 1) != 1) {
-              break label685;
-            }
-            bool = true;
-            localaool.jdField_a_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("mini_app_local_search"))
-          {
-            if (((JSONObject)localObject).optInt("mini_app_local_search", 1) != 1) {
-              break label691;
-            }
-            bool = true;
-            localaool.jdField_b_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("mini_app_refresh_time")) {
-            localaool.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("mini_app_refresh_time", 60);
-          }
-          if (((JSONObject)localObject).has("popBarShowMiniAppStore"))
-          {
-            if (((JSONObject)localObject).optInt("popBarShowMiniAppStore", 0) != 1) {
-              break label697;
-            }
-            bool = true;
-            localaool.jdField_c_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("minigame_splash")) {
-            SplashMiniGameUtil.saveConfigData(str1);
-          }
-          if (((JSONObject)localObject).has("mini_app_entry_auto_show"))
-          {
-            if (((JSONObject)localObject).optInt("mini_app_entry_auto_show", 0) != 1) {
-              break label703;
-            }
-            bool = true;
-            localaool.jdField_d_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("contact_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("contact_mini_app_on", 0) != 1) {
-              break label709;
-            }
-            bool = true;
-            localaool.jdField_f_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("more_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("more_mini_app_on", 0) != 1) {
-              break label715;
-            }
-            bool = true;
-            localaool.jdField_e_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("group_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("group_mini_app_on", 0) != 1) {
-              break label721;
-            }
-            bool = true;
-            localaool.jdField_g_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("avatar_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("avatar_mini_app_on", 0) != 1) {
-              break label727;
-            }
-            bool = true;
-            localaool.h = bool;
-            if (((JSONObject)localObject).has("avatar_mini_app_url")) {
-              localaool.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("avatar_mini_app_url");
-            }
-          }
-          if (((JSONObject)localObject).has("back_to_home_scene_list"))
-          {
-            if (localaool.jdField_a_of_type_JavaUtilArrayList == null) {
-              localaool.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-            }
-            localaool.jdField_a_of_type_JavaUtilArrayList.clear();
-            String[] arrayOfString = ((JSONObject)localObject).optString("back_to_home_scene_list", "1044|1007|1008|2003").split("\\|");
-            int k = arrayOfString.length;
-            j = 0;
-            if (j < k)
-            {
-              String str2 = arrayOfString[j];
-              if (TextUtils.isEmpty(str2)) {
-                break label678;
-              }
-              localaool.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(str2));
-              break label678;
-            }
-          }
-          if (1 == ((JSONObject)localObject).optInt("enable_c2c_plus_panel", 0))
-          {
-            localaool.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("url", "");
-            localaool.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("icon", "");
-            localaool.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("icon_night", "");
-            localaool.jdField_e_of_type_JavaLangString = ((JSONObject)localObject).optString("simple_icon", "");
-            localaool.jdField_f_of_type_JavaLangString = ((JSONObject)localObject).optString("simple_icon_night", "");
-            localaool.jdField_g_of_type_JavaLangString = ((JSONObject)localObject).optString("name", BaseApplicationImpl.sApplication.getString(2131698806));
-            localObject = BaseApplicationImpl.getApplication().getRuntime();
-            if ((localObject instanceof QQAppInterface))
-            {
-              localObject = (QQAppInterface)localObject;
-              aghf.a((QQAppInterface)localObject).a((QQAppInterface)localObject, localaool);
-            }
-          }
-          localStringBuilder.append("config: ").append(str1).append(",");
-        }
+      if (jdField_a_of_type_Aool == null) {
+        jdField_a_of_type_Aool = new aool();
       }
-      catch (Exception paramArrayOfaoko)
-      {
-        QLog.d("MiniAppConfProcessor", 2, "parse, failed!");
-        paramArrayOfaoko.printStackTrace();
-        return null;
-      }
-      QLog.e("MiniAppConfProcessor", 2, "parse, content:" + localStringBuilder.toString());
-      return localaool;
-      label671:
-      i += 1;
-      continue;
-      label678:
-      j += 1;
-      continue;
-      label685:
-      boolean bool = false;
-      continue;
-      label691:
-      bool = false;
-      continue;
-      label697:
-      bool = false;
-      continue;
-      label703:
-      bool = false;
-      continue;
-      label709:
-      bool = false;
-      continue;
-      label715:
-      bool = false;
-      continue;
-      label721:
-      bool = false;
-      continue;
-      label727:
-      bool = false;
+      return jdField_a_of_type_Aool;
     }
   }
   
-  public int a()
+  private void a(boolean paramBoolean, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_Int;
+    paramBundle = (sweet_upgrade_key_notify_rsp)paramBundle.getSerializable("rsp_data");
+    if ((paramBundle == null) || (!paramBoolean) || (paramBundle.req_comm == null))
+    {
+      QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(false)");
+      c();
+    }
+    Object localObject;
+    long l;
+    do
+    {
+      do
+      {
+        return;
+        if ((paramBundle.rsp_comm == null) || (paramBundle.rsp_comm.retcode != 0))
+        {
+          localObject = new StringBuilder().append("onGetLoverCheckData succed(false), ret code: ");
+          if (paramBundle.rsp_comm == null) {}
+          for (paramBundle = "null";; paramBundle = String.valueOf(paramBundle.rsp_comm.retcode))
+          {
+            QLog.i("QzoneLoverService", 1, paramBundle);
+            c();
+            return;
+          }
+        }
+        if (paramBundle.req_comm.uin != BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin())
+        {
+          QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(" + paramBoolean + "), uin: " + paramBundle.req_comm.uin + ", loginUin: " + BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+          return;
+        }
+        b();
+        l = paramBundle.req_comm.loveuin;
+      } while (l <= 10000L);
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localObject instanceof QQAppInterface));
+    ((FriendListHandler)((QQAppInterface)localObject).a(1)).a(String.valueOf(l));
+    QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(" + paramBoolean + "), uin:" + paramBundle.req_comm.uin);
   }
   
-  public String a()
+  private void b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0).edit().putBoolean("checkQzoneLoverSend2", true).apply();
   }
   
-  public ArrayList<Integer> a()
+  private void b(boolean paramBoolean, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    this.b = false;
+    paramBundle = (lighting_sweet_key_rsp)paramBundle.getSerializable("rsp_data");
+    if ((paramBundle == null) || (!paramBoolean))
+    {
+      QLog.i("QzoneLoverService", 1, "onGetLoverLightingData succed(false)");
+      e();
+      return;
+    }
+    if ((paramBundle.rsp_comm == null) || (paramBundle.rsp_comm.retcode != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("onGetLoverLightingData succed(false), ret code: ");
+      if (paramBundle.rsp_comm == null) {}
+      for (paramBundle = "null";; paramBundle = String.valueOf(paramBundle.rsp_comm.retcode))
+      {
+        QLog.i("QzoneLoverService", 1, paramBundle);
+        e();
+        return;
+      }
+    }
+    d();
+    QLog.i("QzoneLoverService", 1, "onGetLoverLightingData succed(" + paramBoolean + ")");
+  }
+  
+  private boolean b()
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+    if (System.currentTimeMillis() / 1000L / 3600L / 24L != localSharedPreferences.getLong("lightingQzoneLoverLastFailTime", 0L)) {}
+    while (localSharedPreferences.getInt("lightingQzoneLoverFailCount", 0) < QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneLoverMaxFailCount", 10)) {
+      return false;
+    }
+    return true;
+  }
+  
+  private void c()
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+    long l = System.currentTimeMillis() / 1000L / 3600L / 24L;
+    if (l != localSharedPreferences.getLong("checkQzoneLoverLastFailTime", 0L)) {
+      localSharedPreferences.edit().putInt("checkQzoneLoverFailCount", 1);
+    }
+    for (;;)
+    {
+      localSharedPreferences.edit().putLong("checkQzoneLoverLastFailTime", l);
+      localSharedPreferences.edit().apply();
+      return;
+      int i = localSharedPreferences.getInt("checkQzoneLoverFailCount", 0);
+      localSharedPreferences.edit().putInt("checkQzoneLoverFailCount", i + 1);
+    }
+  }
+  
+  private void d()
+  {
+    long l = System.currentTimeMillis() / 1000L / 3600L / 24L;
+    BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0).edit().putLong("lightingQzoneLoverTime", l).apply();
+  }
+  
+  private void e()
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+    long l = System.currentTimeMillis() / 1000L / 3600L / 24L;
+    if (l != localSharedPreferences.getLong("lightingQzoneLoverLastFailTime", 0L)) {
+      localSharedPreferences.edit().putInt("lightingQzoneLoverFailCount", 1);
+    }
+    for (;;)
+    {
+      localSharedPreferences.edit().putLong("lightingQzoneLoverLastFailTime", l);
+      localSharedPreferences.edit().apply();
+      return;
+      int i = localSharedPreferences.getInt("lightingQzoneLoverFailCount", 0);
+      localSharedPreferences.edit().putInt("lightingQzoneLoverFailCount", i + 1);
+    }
+  }
+  
+  public void a()
+  {
+    if (this.b) {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest sending...");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (a()) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest false");
+      return;
+      if (!b()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest fail count hit max count!!!");
+    return;
+    this.b = true;
+    QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest true");
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getContext(), aook.class);
+    aook.a(localNewIntent, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      BaseApplicationImpl.getApplication().getRuntime().registObserver(this);
+      this.jdField_a_of_type_Boolean = true;
+    }
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    boolean bool = false;
+    long l1 = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0).getLong("lightingQzoneLoverTime", 0L);
+    long l2 = System.currentTimeMillis() / 1000L / 3600L / 24L;
+    if (QLog.isColorLevel()) {
+      QLog.i("QzoneLoverService", 2, "startQzoneLoverLightingRequest curDay(" + l2 + "), lastDay(" + l1 + ")");
+    }
+    if (l2 != l1) {
+      bool = true;
+    }
+    return bool;
   }
   
-  public String b()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public String d()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public String e()
-  {
-    return this.jdField_e_of_type_JavaLangString;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_f_of_type_Boolean;
-  }
-  
-  public String f()
-  {
-    return this.jdField_f_of_type_JavaLangString;
-  }
-  
-  public boolean f()
-  {
-    return this.jdField_e_of_type_Boolean;
-  }
-  
-  public String g()
-  {
-    return this.jdField_g_of_type_JavaLangString;
-  }
-  
-  public boolean g()
-  {
-    return this.jdField_g_of_type_Boolean;
-  }
-  
-  public boolean h()
-  {
-    return this.h;
-  }
-  
-  public String toString()
-  {
-    new StringBuilder().append("miniAppEntryEnable:").append(this.jdField_a_of_type_Boolean).append(", miniAppRefreshTime:").append(this.jdField_a_of_type_Int).append(",miniAppLocalSearchEnable").append(this.jdField_b_of_type_Boolean);
-    return super.toString();
+    if (paramInt == 1) {
+      a(paramBoolean, paramBundle);
+    }
+    while (paramInt != 291) {
+      return;
+    }
+    b(paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aool
  * JD-Core Version:    0.7.0.1
  */

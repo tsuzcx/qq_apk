@@ -2,7 +2,7 @@ package com.idlefish.flutterboost.containers;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +13,7 @@ public class BoostFlutterActivity$NewEngineIntentBuilder
   private Map params = new HashMap();
   private String url = "";
   
-  protected BoostFlutterActivity$NewEngineIntentBuilder(@NonNull Class<? extends BoostFlutterActivity> paramClass)
+  public BoostFlutterActivity$NewEngineIntentBuilder(@NonNull Class<? extends BoostFlutterActivity> paramClass)
   {
     this.activityClass = paramClass;
   }
@@ -45,7 +45,7 @@ public class BoostFlutterActivity$NewEngineIntentBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.containers.BoostFlutterActivity.NewEngineIntentBuilder
  * JD-Core Version:    0.7.0.1
  */

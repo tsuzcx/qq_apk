@@ -1,13 +1,30 @@
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-public class bcwq
+class bcwq
+  extends QIPCModule
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<bcwr> a;
-  public int b;
-  public long b;
+  bcwq(bcwp parambcwp, String paramString)
+  {
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("receipt_set_read".equals(paramString)) {
+      bcwp.a(this.a, paramBundle);
+    }
+    for (;;)
+    {
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d(StructMsgForGeneralShare.access$000(), 2, "unknown action");
+      }
+    }
+  }
 }
 
 

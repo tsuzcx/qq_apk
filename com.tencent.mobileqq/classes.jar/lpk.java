@@ -1,94 +1,60 @@
-import android.content.Intent;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.opengl.Matrix;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
 public class lpk
-  extends MqqHandler
 {
-  WeakReference<AVNotifyCenter> a;
+  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private final float[] b;
   
-  public lpk(Looper paramLooper, AVNotifyCenter paramAVNotifyCenter)
+  public lpk()
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramAVNotifyCenter);
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+    this.b = new float[16];
+    Matrix.setIdentityM(this.b, 0);
+    Matrix.scaleM(this.b, 0, -1.0F, 1.0F, 1.0F);
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender == null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public lpi a(lpi paramlpi, int paramInt1, int paramInt2)
   {
-    AVNotifyCenter localAVNotifyCenter = (AVNotifyCenter)this.a.get();
-    if (localAVNotifyCenter == null) {}
-    while (!localAVNotifyCenter.i()) {
-      return;
+    if ((paramlpi == null) || (paramlpi.b == -1) || (paramInt1 == 0) || (paramInt2 == 0)) {
+      return null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.w("AVNotifyCenter", 1, "handleMessage, msg[" + paramMessage.what + "]");
-    }
-    if ((paramMessage.what >= 10003) && (paramMessage.what <= 10009))
+    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) || (paramInt1 != this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getWidth()) || (paramInt2 != this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getHeight()))
     {
-      localIntent = new Intent("tencent.video.q2v.MultiVideo");
-      localIntent.putExtra("type", 35);
-      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
-      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      }
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
     }
-    switch (paramMessage.what)
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramlpi.b, this.jdField_a_of_type_ArrayOfFloat, this.b);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+    return lpi.a(0, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null)
     {
-    case 10006: 
-    case 10007: 
-    case 10008: 
-    case 10009: 
-    default: 
-      return;
-    case 10002: 
-      localAVNotifyCenter.b();
-      return;
-    case 10003: 
-      localIntent = new Intent("tencent.video.q2v.MultiVideo");
-      localIntent.putExtra("type", 26);
-      localIntent.putExtra("discussId", ((Long)paramMessage.obj).longValue());
-      localIntent.putExtra("memberUin", localAVNotifyCenter.a.getCurrentAccountUin());
-      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
-      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
-      return;
-    case 10004: 
-      paramMessage = (Object[])paramMessage.obj;
-      localIntent = new Intent("tencent.video.q2v.MultiVideo");
-      localIntent.putExtra("type", 24);
-      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
-      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
-      localIntent.putExtra("uins", (String[])paramMessage[2]);
-      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
-      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
-      return;
-    case 10005: 
-      paramMessage = (Object[])paramMessage.obj;
-      localIntent = new Intent("tencent.video.q2v.MultiVideo");
-      localIntent.putExtra("type", 31);
-      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
-      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
-      localIntent.putExtra("uins", (String[])paramMessage[2]);
-      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
-      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
-      return;
-    case 10010: 
-      localAVNotifyCenter.c(((Boolean)paramMessage.obj).booleanValue());
-      return;
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
     }
-    Intent localIntent = new Intent("tencent.video.q2v.MultiVideo");
-    localIntent.putExtra("type", 34);
-    localIntent.putExtra("relationId", ((Long)paramMessage.obj).longValue());
-    localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
-    localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
+    {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lpk
  * JD-Core Version:    0.7.0.1
  */

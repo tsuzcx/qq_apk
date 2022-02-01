@@ -1,26 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonInfoWidget;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
-class vnf
-  extends Handler
+public class vnf
+  implements vxe
 {
-  vnf(vne paramvne, Looper paramLooper)
+  public vnf(QCirclePersonInfoWidget paramQCirclePersonInfoWidget) {}
+  
+  public void a()
   {
-    super(paramLooper);
+    vrf.a(QCirclePersonInfoWidget.a(this.a).id.get(), 11, 3, 3, String.valueOf(1), "2", "", "", "", QCirclePersonInfoWidget.d(this.a));
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    if (this.a.a) {
-      return;
-    }
-    vne.a(this.a, this.a.c);
+    vrf.a(QCirclePersonInfoWidget.a(this.a).id.get(), 11, 3, 1, String.valueOf(paramInt), "2", "", "", "", QCirclePersonInfoWidget.b(this.a));
+  }
+  
+  public void b(int paramInt)
+  {
+    vrf.a(QCirclePersonInfoWidget.a(this.a).id.get(), 11, 3, 2, String.valueOf(paramInt), "2", "", "", "", QCirclePersonInfoWidget.c(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vnf
  * JD-Core Version:    0.7.0.1
  */

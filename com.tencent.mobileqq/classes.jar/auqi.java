@@ -1,47 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 
-class auqi
-  implements awiq
+public abstract interface auqi
 {
-  auqi(auqc paramauqc, aupx paramaupx) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    auqc.a(this.jdField_a_of_type_Auqc, this.jdField_a_of_type_Aupx, paramInt);
-  }
-  
-  public void a(awir paramawir)
-  {
-    int j;
-    int i;
-    if (paramawir != null)
-    {
-      j = paramawir.jdField_a_of_type_Int;
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiRichMediaSaveManager", 2, "isFilePreDownload picReq result = " + j);
-      }
-      if (paramawir.jdField_a_of_type_Awjh != null)
-      {
-        i = paramawir.jdField_a_of_type_Awjh.jdField_a_of_type_Int;
-        paramawir = paramawir.jdField_a_of_type_Awjh.b;
-      }
-    }
-    for (;;)
-    {
-      auqc.a(this.jdField_a_of_type_Auqc, this.jdField_a_of_type_Aupx, j, i, paramawir);
-      return;
-      i = 0;
-      paramawir = "";
-      continue;
-      j = 0;
-      i = 0;
-      paramawir = "";
-    }
-  }
+  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auqi
  * JD-Core Version:    0.7.0.1
  */

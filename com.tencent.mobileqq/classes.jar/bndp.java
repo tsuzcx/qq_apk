@@ -1,27 +1,9 @@
-import android.util.Property;
+import java.io.File;
 
-class bndp
-  extends Property<bndn, Integer>
+public class bndp
 {
-  bndp(bndn parambndn, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
-  
-  public Integer a(bndn parambndn)
-  {
-    if (parambndn != null) {
-      return Integer.valueOf(bndn.a(parambndn));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bndn parambndn, Integer paramInteger)
-  {
-    if (parambndn != null) {
-      bndn.a(parambndn, paramInteger.intValue());
-    }
-  }
+  public static final String a = bndv.b + File.separator + "gif";
+  public static final String b = a + File.separator + "gifPreview";
 }
 
 

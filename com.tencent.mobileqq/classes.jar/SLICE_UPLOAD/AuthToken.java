@@ -14,6 +14,7 @@ public final class AuthToken
   public byte[] data = null;
   public byte[] ext_key = null;
   public int type = 0;
+  public long wt_appid = 0L;
   
   static
   {
@@ -25,12 +26,13 @@ public final class AuthToken
   
   public AuthToken() {}
   
-  public AuthToken(int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2)
+  public AuthToken(int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, long paramLong)
   {
     this.type = paramInt1;
     this.data = paramArrayOfByte1;
     this.ext_key = paramArrayOfByte2;
     this.appid = paramInt2;
+    this.wt_appid = paramLong;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -39,6 +41,7 @@ public final class AuthToken
     this.data = ((byte[])paramJceInputStream.read(cache_data, 1, true));
     this.ext_key = ((byte[])paramJceInputStream.read(cache_ext_key, 2, true));
     this.appid = paramJceInputStream.read(this.appid, 3, true);
+    this.wt_appid = paramJceInputStream.read(this.wt_appid, 4, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -47,6 +50,7 @@ public final class AuthToken
     paramJceOutputStream.write(this.data, 1);
     paramJceOutputStream.write(this.ext_key, 2);
     paramJceOutputStream.write(this.appid, 3);
+    paramJceOutputStream.write(this.wt_appid, 4);
   }
 }
 

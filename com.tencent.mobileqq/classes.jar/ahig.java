@@ -1,23 +1,26 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class ahig
-  implements MessageQueue.IdleHandler
+public class ahig
+  implements View.OnClickListener
 {
-  final SearchContactsActivity a;
+  public ahig(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, QQAppInterface paramQQAppInterface) {}
   
-  public ahig(SearchContactsActivity paramSearchContactsActivity)
+  public void onClick(View paramView)
   {
-    this.a = paramSearchContactsActivity;
-  }
-  
-  public boolean queueIdle()
-  {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c != 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c <= 500L)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c = System.currentTimeMillis();
+      bckg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a);
+      alio.b("", "0X8008CEB");
+    }
   }
 }
 

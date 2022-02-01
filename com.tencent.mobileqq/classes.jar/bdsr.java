@@ -1,173 +1,284 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.pb.onlinestatus.CustomOnlineStatusPb.CustomOnlineStatusMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.FrdCustomOnlineStatusChange;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class bdsr
+  extends bdsx
 {
-  public static int a(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
-  {
-    if ((paramCustomOnlineStatusMsg != null) && (paramCustomOnlineStatusMsg.uUpdateInterval.get() > 0)) {
-      return paramCustomOnlineStatusMsg.uUpdateInterval.get();
-    }
-    return 30000;
-  }
+  public static final boolean b;
+  private static int c;
+  private static boolean f;
+  int a;
+  protected long a;
+  protected QQAppInterface a;
+  protected String a;
+  protected ArrayList<bdyf> a;
+  protected boolean a;
+  int jdField_b_of_type_Int = 0;
+  protected long b;
+  protected String b;
+  ArrayList<ayxc> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  protected String c;
+  public boolean c;
+  protected String d;
+  public boolean d;
+  protected boolean e;
   
-  public static String a(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
+  static
   {
-    if (paramCustomOnlineStatusMsg != null) {
-      try
-      {
-        if (paramCustomOnlineStatusMsg.uHasCustomInfo.get() == 1)
-        {
-          String str = paramCustomOnlineStatusMsg.sCustomDesc.get();
-          paramCustomOnlineStatusMsg = paramCustomOnlineStatusMsg.sCustomModel.get();
-          if ((str != null) && (paramCustomOnlineStatusMsg != null))
-          {
-            paramCustomOnlineStatusMsg = str + paramCustomOnlineStatusMsg;
-            return paramCustomOnlineStatusMsg;
-          }
-        }
-      }
-      catch (Exception paramCustomOnlineStatusMsg)
-      {
-        QLog.d("CustomOnlineStatusManager", 1, paramCustomOnlineStatusMsg, new Object[0]);
-      }
-    }
-    return "";
-  }
-  
-  public static void a(Activity paramActivity, String paramString)
-  {
-    if (paramActivity == null)
-    {
-      QLog.e("CustomOnlineStatusManager", 1, "activity == null");
-      return;
-    }
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    localIntent.putExtra("uin", ((QQAppInterface)localObject).getCurrentAccountUin());
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    localObject = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1";
-    if ("panel".equals(paramString))
-    {
-      paramString = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1" + "&src=1";
-      localObject = "0X8009F76";
-    }
+    boolean bool = true;
+    jdField_c_of_type_Int = 80;
+    if (BaseApplicationImpl.sProcessId == 1) {}
     for (;;)
     {
-      VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, paramString, 256L, localIntent, false, -1);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
-      }
-      azqs.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+      jdField_b_of_type_Boolean = bool;
       return;
-      if ("settings".equals(paramString))
-      {
-        paramString = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1" + "&src=2";
-        localObject = "0X8009F77";
-      }
-      else if ("aio".equals(paramString))
-      {
-        paramString = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1" + "&src=3";
-        localObject = "0X8009F78";
-      }
-      else
-      {
-        String str = "";
-        paramString = (String)localObject;
-        localObject = str;
-      }
+      bool = false;
     }
   }
   
-  private static void a(String paramString)
+  public bdsr()
   {
-    FriendListHandler localFriendListHandler = (FriendListHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(1);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_d_of_type_JavaLangString = null;
+  }
+  
+  public bdsr(bdzi parambdzi, bdzn parambdzn)
+  {
+    super(parambdzi, parambdzn);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_d_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.a);
+    if ((parambdzn != null) && (parambdzn.a != null)) {}
     try
     {
-      localFriendListHandler.c(paramString, false);
+      this.jdField_b_of_type_JavaUtilArrayList.add(parambdzn.a);
+      this.jdField_a_of_type_Bdxv = bdta.jdField_a_of_type_Bdxv;
       return;
     }
-    catch (Exception paramString)
+    finally {}
+  }
+  
+  public static byte[] a(String paramString)
+  {
+    if (paramString.length() % 2 != 0) {}
+    do
     {
-      QLog.e("CustomOnlineStatusManager", 1, paramString, new Object[0]);
-    }
-  }
-  
-  public static void a(SubMsgType0x27.FrdCustomOnlineStatusChange paramFrdCustomOnlineStatusChange)
-  {
-    long l = paramFrdCustomOnlineStatusChange.uint64_uin.get();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("CustomOnlineStatusManager", 4, "onPush uni = " + paramFrdCustomOnlineStatusChange.uint64_uin.get());
-    }
-    if (l == BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("CustomOnlineStatusManager", 4, "sync owner");
-      }
-      b();
-    }
-    while (TextUtils.isEmpty(String.valueOf(l))) {
-      return;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("CustomOnlineStatusManager", 4, "sync friend");
-    }
-    a(String.valueOf(l));
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return paramInt == 1;
-  }
-  
-  public static int b(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
-  {
-    if (paramCustomOnlineStatusMsg != null) {
-      return paramCustomOnlineStatusMsg.uHasCustomInfo.get();
-    }
-    return 0;
-  }
-  
-  public static String b(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
-  {
-    if (paramCustomOnlineStatusMsg != null) {
+      return null;
       try
       {
-        if (paramCustomOnlineStatusMsg.uHasCustomInfo.get() == 1)
+        byte[] arrayOfByte = new byte[paramString.length() / 2];
+        paramString = paramString.toCharArray();
+        int i = 0;
+        while (i < paramString.length)
         {
-          paramCustomOnlineStatusMsg = paramCustomOnlineStatusMsg.sCustomModel.get();
-          if (paramCustomOnlineStatusMsg != null) {
-            return paramCustomOnlineStatusMsg;
-          }
+          StringBuilder localStringBuilder = new StringBuilder(2);
+          localStringBuilder.append(paramString[i]).append(paramString[(i + 1)]);
+          arrayOfByte[(i / 2)] = ((byte)Integer.parseInt(localStringBuilder.toString(), 16));
+          i += 2;
         }
+        return arrayOfByte;
       }
-      catch (Exception paramCustomOnlineStatusMsg)
-      {
-        QLog.d("CustomOnlineStatusManager", 1, paramCustomOnlineStatusMsg, new Object[0]);
-      }
-    }
-    return "";
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("PIC_TAG", 2, "bytesFromHexString Exception=" + paramString.getMessage());
+    return null;
   }
   
-  private static void b()
+  public static int d()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ((amfs)localQQAppInterface.a(27)).a(localQQAppInterface.getLongAccountUin());
+    if (!f) {}
+    try
+    {
+      Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_config.name(), "");
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseTransProcessor", 2, "getPicDownloadPort:" + (String)localObject);
+      }
+      localObject = ((String)localObject).split("\\|");
+      if (localObject.length > 9) {
+        jdField_c_of_type_Int = Integer.valueOf(localObject[9]).intValue();
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BaseTransProcessor", 2, "getPicDownloadPort e:" + localException.toString());
+        }
+      }
+    }
+    f = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseTransProcessor", 2, "getPicDownloadPort return " + jdField_c_of_type_Int);
+    }
+    return jdField_c_of_type_Int;
+  }
+  
+  protected ArrayList<bdyf> a(ArrayList<bdyf> paramArrayList1, ArrayList<bdyf> paramArrayList2)
+  {
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    if ((paramArrayList1 != null) && (paramArrayList1.size() > 0)) {
+      this.jdField_c_of_type_Boolean = true;
+    }
+    paramArrayList1 = bdvz.a(paramArrayList1, paramArrayList2);
+    if ((paramArrayList1 != null) && (paramArrayList1.size() > 0))
+    {
+      paramArrayList2 = (bdyf)paramArrayList1.get(0);
+      if ((paramArrayList2 != null) && (paramArrayList2.a)) {
+        this.jdField_d_of_type_Boolean = true;
+      }
+    }
+    return paramArrayList1;
+  }
+  
+  public void a(ayxc paramayxc)
+  {
+    try
+    {
+      if (this.jdField_b_of_type_JavaUtilArrayList != null) {
+        this.jdField_b_of_type_JavaUtilArrayList.remove(paramayxc);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  protected void a(bdwt parambdwt, boolean paramBoolean, String paramString1, String paramString2)
+  {
+    Object localObject;
+    if ((this.jdField_a_of_type_Bdws != null) && ((this.jdField_a_of_type_Bdws instanceof bdvs)) && (((bdvs)this.jdField_a_of_type_Bdws).jdField_a_of_type_JavaLangString != null))
+    {
+      localObject = ((bdvs)this.jdField_a_of_type_Bdws).jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Bedj.h = ((String)localObject);
+    }
+    try
+    {
+      localObject = new URL((String)localObject);
+      String str = ((URL)localObject).getHost();
+      int i = ((URL)localObject).getPort();
+      this.jdField_a_of_type_Bedj.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Bedj.b = String.valueOf(i);
+      this.jdField_a_of_type_Bedj.i = (parambdwt.jdField_c_of_type_Int + "");
+      this.jdField_a_of_type_Bedj.j = this.jdField_a_of_type_Bdzn.f;
+      this.jdField_a_of_type_Bedj.k = paramString2;
+      this.jdField_a_of_type_Bedj.jdField_c_of_type_JavaLangString = String.valueOf(parambdwt.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Bedj.e = parambdwt.jdField_a_of_type_JavaLangString;
+      if (parambdwt.jdField_b_of_type_Int == -9527) {}
+      for (parambdwt = (String)parambdwt.jdField_a_of_type_JavaUtilHashMap.get("netresp_param_reason");; parambdwt = null)
+      {
+        this.jdField_a_of_type_Bedj.jdField_d_of_type_JavaLangString = parambdwt;
+        a(paramString1, paramBoolean);
+        return;
+      }
+      return;
+    }
+    catch (Throwable parambdwt)
+    {
+      QLog.e("BaseTransProcessor", 1, "reportForServerMonitor err.", parambdwt);
+    }
+  }
+  
+  protected byte[] a(String paramString1, String paramString2)
+  {
+    String str = null;
+    Object localObject = str;
+    if (paramString1 != null)
+    {
+      localObject = str;
+      if (paramString1.length() == 32) {
+        localObject = a(paramString1);
+      }
+    }
+    paramString1 = (String)localObject;
+    if (localObject == null)
+    {
+      paramString1 = (String)localObject;
+      if (paramString2 != null)
+      {
+        int i = paramString2.indexOf(".");
+        str = paramString2;
+        if (i > 0) {
+          str = paramString2.substring(0, i);
+        }
+        if (str.length() != 32) {
+          break label86;
+        }
+        paramString1 = a(str);
+      }
+    }
+    label86:
+    do
+    {
+      do
+      {
+        do
+        {
+          return paramString1;
+          if (str.length() != 38) {
+            break;
+          }
+          paramString2 = str.substring(1, 37).replace("-", "");
+          paramString1 = (String)localObject;
+        } while (paramString2.length() != 32);
+        return a(paramString2);
+        paramString1 = (String)localObject;
+      } while (str.length() != 34);
+      paramString2 = str.substring(1, 33);
+      paramString1 = (String)localObject;
+    } while (paramString2.length() != 32);
+    return a(paramString2);
+  }
+  
+  public void aN_()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Bduk != null)
+      {
+        this.jdField_a_of_type_Bduk.d = 2001;
+        if (QLog.isColorLevel()) {
+          QLog.d("PIC_TAG", 2, "start ");
+        }
+      }
+      super.aN_();
+      return;
+    }
+    finally {}
+  }
+  
+  public void b()
+  {
+    b(9366, "transfileController destroy");
+    d();
+    if (QLog.isColorLevel()) {
+      QLog.d("PIC_TAG", 2, "accountChanged transfileController destroy");
+    }
+    super.b();
+  }
+  
+  public void b(ayxc paramayxc)
+  {
+    try
+    {
+      this.jdField_b_of_type_JavaUtilArrayList.add(paramayxc);
+      return;
+    }
+    finally {}
   }
 }
 

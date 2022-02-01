@@ -1,11 +1,11 @@
 package dov.com.qq.im.ptv;
 
-import bmgs;
+import boxy;
 
 public class LightWeightSoDownloadUnit$1
   implements Runnable
 {
-  public LightWeightSoDownloadUnit$1(bmgs parambmgs) {}
+  public LightWeightSoDownloadUnit$1(boxy paramboxy) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class LightWeightSoDownloadUnit$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ptv.LightWeightSoDownloadUnit.1
  * JD-Core Version:    0.7.0.1
  */

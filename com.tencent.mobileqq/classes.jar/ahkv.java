@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class ahkv
-  implements View.OnClickListener
+  extends Handler
 {
-  ahkv(ahkt paramahkt, ahkz paramahkz) {}
-  
-  public void onClick(View paramView)
+  ahkv(ahku paramahku, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_Ahkt.a != null)
-    {
-      int i = this.jdField_a_of_type_Ahkz.getAdapterPosition();
-      this.jdField_a_of_type_Ahkt.a.a(paramView, this.jdField_a_of_type_Ahkz, i);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == ahku.a) {
+      this.a.b();
     }
   }
 }

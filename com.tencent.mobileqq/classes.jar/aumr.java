@@ -1,65 +1,91 @@
-import android.support.annotation.NonNull;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aumr
-  implements aulx
+  implements AdapterView.OnItemClickListener
 {
-  public static float a = 0.85F;
-  private static float b = 1.0F;
-  private static float c = 0.75F;
-  private float d = 3.4028235E+38F;
-  private float e = 3.4028235E+38F;
+  public aumr(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void a(@NonNull View paramView, float paramFloat)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView.getWidth();
-    paramView.getHeight();
-    Object localObject1 = (MultiAIOBaseViewPager)paramView.getParent();
-    int i = ((MultiAIOBaseViewPager)localObject1).getMeasuredWidth() - ((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - ((MultiAIOBaseViewPager)localObject1).getPaddingRight();
-    float f1 = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft() / i;
-    float f2 = (((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - i - ((MultiAIOBaseViewPager)localObject1).b()) / i;
-    int j = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft();
-    float f3 = (((MultiAIOBaseViewPager)localObject1).b() + (j + i)) / i;
-    if (paramFloat < f2)
+    boolean bool = true;
+    axcm localaxcm = (axcm)this.a.jdField_a_of_type_Axcj.a(paramInt);
+    Object localObject;
+    if (localaxcm.jdField_a_of_type_Int == 1)
     {
-      paramFloat = this.d;
-      f1 = this.e;
+      this.a.a(this.a.jdField_a_of_type_Axcj.a());
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a();
+    }
+    switch (localaxcm.jdField_a_of_type_Int)
+    {
+    default: 
+      label100:
+      axei.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "click_op_button", localaxcm.jdField_a_of_type_Int);
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.NearbyHybridFragment", 2, "onItemClick:" + localaxcm.jdField_c_of_type_JavaLangString + ", " + localaxcm.jdField_a_of_type_JavaLangString);
+      }
+      if ((localaxcm.jdField_c_of_type_Int == 1) && (!TextUtils.isEmpty(localaxcm.e)) && (this.a.getActivity() != null) && (bgnw.a(this.a.getActivity(), localaxcm.e)) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
+        if (TextUtils.isEmpty(localaxcm.d)) {
+          break;
+        }
+      }
+      break;
     }
     for (;;)
     {
-      paramView.setScaleX(paramFloat);
-      paramView.setScaleY(paramFloat);
-      Object localObject2 = paramView.getTag(2131370868);
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      try
       {
-        localObject1 = paramView.findViewById(2131370868);
-        paramView.setTag(2131370868, localObject1);
+        localObject = new Intent("android.intent.action.VIEW", Uri.parse(localaxcm.d));
+        ((Intent)localObject).setFlags(268435456);
+        BaseApplicationImpl.getContext().startActivity((Intent)localObject);
+        if (bool) {
+          break;
+        }
+        this.a.a(localaxcm);
       }
-      paramView = (View)localObject1;
-      paramView.setAlpha(1.0F - f1);
-      paramView.setBackgroundColor(-16777216);
-      return;
-      if (paramFloat <= f3)
+      catch (Exception localException)
       {
-        f1 = Math.abs(paramFloat - f1);
-        paramFloat = (float)(a + Math.cos(f1 * 1.570796326794897D) * (b - a));
-        this.d = Math.min(paramFloat, this.d);
-        f1 = (float)(c + Math.cos(f1 * 1.570796326794897D) * (1.0F - c));
-        this.e = Math.min(f1, this.e);
+        QLog.d("nearby.NearbyHybridFragment", 2, "jump to app with scheme Excepyion e = " + localException.getMessage());
+        bool = false;
+        continue;
       }
-      else
-      {
-        paramFloat = this.d;
-        f1 = this.e;
+      bool = bgnw.a(this.a.getActivity(), localaxcm.e, this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin());
+      continue;
+      localException.a(39);
+      break label100;
+      localException.a(25);
+      break label100;
+      localException.a(23);
+      localException.a(26);
+      break label100;
+      localException.a(40);
+      break label100;
+      if (this.a.jdField_a_of_type_Axcj == null) {
+        break label100;
       }
+      this.a.jdField_a_of_type_Axcj.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
+      break label100;
+      localException.a(41);
+      break label100;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aumr
  * JD-Core Version:    0.7.0.1
  */

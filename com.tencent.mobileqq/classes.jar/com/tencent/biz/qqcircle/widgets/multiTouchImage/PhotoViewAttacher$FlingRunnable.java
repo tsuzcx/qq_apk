@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.widget.OverScroller;
-import uhn;
+import wax;
 
 public class PhotoViewAttacher$FlingRunnable
   implements Runnable
@@ -73,12 +73,12 @@ public class PhotoViewAttacher$FlingRunnable
     PhotoViewAttacher.a(this.this$0);
     this.jdField_a_of_type_Int = i;
     this.b = j;
-    uhn.a(PhotoViewAttacher.a(this.this$0), this);
+    wax.a(PhotoViewAttacher.a(this.this$0), this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.multiTouchImage.PhotoViewAttacher.FlingRunnable
  * JD-Core Version:    0.7.0.1
  */

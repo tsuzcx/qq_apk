@@ -1,21 +1,21 @@
 package com.tencent.biz.qqstory.base.preload;
 
-import unz;
-import uoa;
+import whl;
+import whm;
 
 public class StorySingleFileDownloader$6
   implements Runnable
 {
-  public StorySingleFileDownloader$6(unz paramunz, uoa paramuoa, String paramString, int paramInt) {}
+  public StorySingleFileDownloader$6(whl paramwhl, whm paramwhm, String paramString, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Uoa.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Whm.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.StorySingleFileDownloader.6
  * JD-Core Version:    0.7.0.1
  */

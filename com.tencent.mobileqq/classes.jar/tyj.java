@@ -1,483 +1,484 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewConfiguration;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewPropertyAnimator;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.events.QCircleFeedPicPositionEvent;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
-import com.tencent.biz.qqcircle.transition.QCircleTransitionLayout;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.RecyclerViewCompat;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StVideo;
-import java.util.ArrayList;
-import java.util.HashMap;
-import org.jetbrains.annotations.Nullable;
+import android.app.Activity;
+import android.app.Dialog;
+import android.os.Handler;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt.2;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt.3;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tyj
-  extends yhw
-  implements biex
+  implements bgrf
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final RecyclerView.RecycledViewPool jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$RecycledViewPool;
-  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private bies jdField_a_of_type_Bies;
-  private QCircleContentOperationView jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView;
-  private QCircleTransitionLayout jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionLayout;
-  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private RecyclerViewCompat jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat;
-  private final HashMap<Integer, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private txj jdField_a_of_type_Txj;
-  private final txq jdField_a_of_type_Txq;
-  private txz jdField_a_of_type_Txz;
-  protected ydl a;
-  private int b;
+  private static double jdField_a_of_type_Double;
+  private static int jdField_a_of_type_Int;
+  private static String c = "";
+  private static String d = "";
+  private static String e = "";
+  private static String f = "";
+  private static String g = "";
+  public Activity a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  bgua jdField_a_of_type_Bgua;
+  private bgub jdField_a_of_type_Bgub = new tyk(this);
+  bhod jdField_a_of_type_Bhod;
+  private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
+  private File jdField_a_of_type_JavaIoFile;
+  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
+  private String jdField_a_of_type_JavaLangString = "PublicAccountH5AbilityForPtt";
+  private int jdField_b_of_type_Int = 60000;
+  private String jdField_b_of_type_JavaLangString;
   
-  public tyj(txz paramtxz, bies parambies)
+  public tyj() {}
+  
+  public tyj(Activity paramActivity, String paramString, bhod parambhod)
   {
-    this.jdField_a_of_type_Txz = paramtxz;
-    this.jdField_a_of_type_Txq = ((txq)this.jdField_a_of_type_Txz.a(txq.class));
-    this.jdField_a_of_type_Bies = parambies;
-    this.jdField_a_of_type_Bies.a(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$RecycledViewPool = new RecyclerView.RecycledViewPool();
-    this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionLayout = paramtxz.a();
-    setHasStableIds(true);
+    this.jdField_a_of_type_Bhod = parambhod;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  @Nullable
-  private RecyclerView.ViewHolder a(RecyclerViewCompat paramRecyclerViewCompat)
+  public static String a()
   {
-    RecyclerView.ViewHolder localViewHolder = null;
-    if (paramRecyclerViewCompat != null)
-    {
-      if (!(paramRecyclerViewCompat.getLayoutManager() instanceof LinearLayoutManager)) {
-        break label46;
-      }
-      int j = ((LinearLayoutManager)paramRecyclerViewCompat.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
-      i = j;
-      if (j >= 0) {}
-    }
-    label46:
-    for (int i = 0;; i = 0)
-    {
-      localViewHolder = paramRecyclerViewCompat.findViewHolderForAdapterPosition(i);
-      return localViewHolder;
-    }
+    return c;
   }
   
-  private View a()
+  public static int b()
   {
-    if ((this.jdField_a_of_type_Txq != null) && (this.jdField_a_of_type_Txq.a() != null) && (this.jdField_a_of_type_Txq.a().itemView != null)) {
-      return this.jdField_a_of_type_Txq.a().itemView;
-    }
-    return null;
+    return jdField_a_of_type_Int;
   }
   
-  private RecyclerViewCompat a(Context paramContext)
+  public static String b()
   {
-    RecyclerViewCompat localRecyclerViewCompat = new RecyclerViewCompat(paramContext);
-    localRecyclerViewCompat.setLayoutParams(new RecyclerView.LayoutParams(-1, -1));
-    localRecyclerViewCompat.setLayoutManager(new LinearLayoutManager(paramContext, 0, false));
-    localRecyclerViewCompat.setRecycledViewPool(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$RecycledViewPool);
-    paramContext = new bies();
-    txj localtxj = new txj(this.jdField_a_of_type_Txz, paramContext);
-    localtxj.a(this);
-    localRecyclerViewCompat.setAdapter(localtxj);
-    paramContext.a(localRecyclerViewCompat);
-    return localRecyclerViewCompat;
+    return d;
   }
   
-  private void a(int paramInt, boolean paramBoolean)
+  public static int c()
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionLayout != null)
-    {
-      if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionLayout.a(true);
-      }
+    if (jdField_a_of_type_Double != 0.0D) {
+      return QQRecorder.a(jdField_a_of_type_Double);
     }
-    else {
-      return;
-    }
-    int j = yiv.b(this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat);
-    paramBoolean = bool;
-    if (paramInt >= 1)
-    {
-      paramBoolean = bool;
-      if (j == 0) {
-        paramBoolean = false;
-      }
-    }
-    if (this.jdField_a_of_type_Txj == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_Txj.getItemCount() - 1)
-    {
-      bool = paramBoolean;
-      if (paramInt <= -1)
-      {
-        bool = paramBoolean;
-        if (j == i) {
-          bool = false;
-        }
-      }
-      this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionLayout.a(bool);
-      return;
-    }
+    return 0;
   }
   
-  private boolean a(int paramInt1, int paramInt2)
+  public static String c()
   {
-    if ((a() instanceof QCircleContentImage))
-    {
-      QCircleContentImage localQCircleContentImage = (QCircleContentImage)this.jdField_a_of_type_Txq.a().itemView;
-      boolean bool = localQCircleContentImage.a(paramInt1, paramInt2);
-      QLog.d("QCircleContentVerticalAdapter", 4, " isVerticalDisAllowInterceptEvent isImageDisAllowIntercept" + bool);
-      return localQCircleContentImage.a(paramInt1, paramInt2);
-    }
-    return false;
+    return e;
   }
   
-  private boolean a(MotionEvent paramMotionEvent)
+  public static void c(String paramString)
   {
-    boolean bool3 = false;
-    boolean bool1 = false;
-    boolean bool2 = bool3;
-    if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView != null)
-    {
-      bool2 = bool3;
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
-      {
-        bool2 = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.a(paramMotionEvent);
-        if ((!this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.b()) || (bool2)) {
-          bool1 = true;
-        }
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.requestDisallowInterceptTouchEvent(bool1);
-        bool2 = bool1;
-        if (this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionLayout != null)
-        {
-          this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionLayout.a(bool1);
-          bool2 = bool1;
-        }
-      }
-    }
-    return bool2;
+    c = paramString;
   }
   
-  private void b(int paramInt1, int paramInt2)
+  public static void d(String paramString)
   {
-    boolean bool = b(paramInt1, paramInt2);
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat != null) {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat.requestDisallowInterceptTouchEvent(bool);
-    }
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.requestDisallowInterceptTouchEvent(true);
-    }
-    a(paramInt1, bool);
+    g = paramString;
   }
   
-  private void b(int paramInt, boolean paramBoolean)
+  private void j()
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionLayout != null)
-    {
-      if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionLayout.a(true);
-      }
-    }
-    else {
-      return;
-    }
-    int i = yiv.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    if ((paramInt > 1.0F) && (i == 0))
-    {
-      QLog.d("QCircleContentVerticalAdapter", 1, "pull down at first");
-      paramBoolean = bool;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionLayout.a(paramBoolean);
-      return;
-      if ((paramInt < -1.0F) && (i == getItemCount() - 1))
-      {
-        QLog.d("QCircleContentVerticalAdapter", 1, "pull up at bottom");
-        paramBoolean = bool;
-      }
-      else
-      {
-        paramBoolean = true;
-      }
-    }
+    SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_AndroidAppActivity.getString(2131697734));
+    bglp.a(this.jdField_a_of_type_AndroidAppActivity, anni.a(2131707570), localSpannableString, 0, 2131718702, null, null, new tyl(this)).show();
   }
   
-  private boolean b(int paramInt1, int paramInt2)
+  public int a()
   {
-    int i;
-    int j;
-    if ((a() instanceof QCircleContentImage))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      i = ((FeedCloudMeta.StFeed)((QCircleContentImage)this.jdField_a_of_type_Txq.a().itemView).a()).images.size();
-      j = yiv.b(this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat);
-      if ((paramInt1 < 1.0D) || (j != 0)) {
-        break label176;
+      localJSONObject.put("retCode", 0);
+      localJSONObject.put("msg", "startRecord");
+      if (this.jdField_a_of_type_Bhod.a() != null) {
+        this.jdField_a_of_type_Bhod.a().callJs(tym.c, new String[] { localJSONObject.toString() });
       }
+      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, 0, "1", "", "", "");
+      i();
+      return 0;
     }
-    label176:
-    for (boolean bool1 = true;; bool1 = false)
+    catch (JSONException localJSONException)
     {
-      if ((paramInt1 <= -1.0D) && (j == i - 1)) {
-        bool1 = true;
-      }
       for (;;)
       {
-        boolean bool2 = ((QCircleContentImage)this.jdField_a_of_type_Txq.a().itemView).a(paramInt1, paramInt2);
-        QLog.d("QCircleContentVerticalAdapter", 4, " isHorizontalDisAllowInterceptEvent totalPic" + i + " curPos" + j + " isbounds" + bool1 + " isImageDisAllowIntercept" + bool2);
-        return (bool1) && (bool2);
-        return false;
+        localJSONException.printStackTrace();
       }
     }
   }
   
-  private void c(int paramInt1, int paramInt2)
+  public int a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
-    boolean bool = a(paramInt1, paramInt2);
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.requestDisallowInterceptTouchEvent(bool);
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = g;
     }
-    b(paramInt2, bool);
-  }
-  
-  public FrameLayout a(Context paramContext)
-  {
-    FrameLayout localFrameLayout = new FrameLayout(paramContext);
-    localFrameLayout.requestDisallowInterceptTouchEvent(true);
-    localFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localFrameLayout.addView(a(paramContext));
-    localFrameLayout.addView(new QCircleContentOperationView(paramContext), new ViewGroup.LayoutParams(-1, -1));
-    return localFrameLayout;
-  }
-  
-  public ExtraTypeInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  }
-  
-  public ydl a()
-  {
-    return this.jdField_a_of_type_Ydl;
+    paramString = str.split("/");
+    str = paramString[(paramString.length - 1)];
+    paramString = "";
+    if (str.length() >= 21) {
+      paramString = str.substring(0, str.length() - 4);
+    }
+    return paramString;
   }
   
   public void a() {}
   
-  public void a(int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString)
   {
-    this.b = paramInt;
+    bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView != null) {
-      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.animate().alpha(paramInt1).setDuration(paramInt2);
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder)
-  {
-    if (paramViewHolder == null)
+    if (a(anhk.ba + "c2bPTT/"))
     {
-      paramViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(0));
-      QLog.d("TAG", 1, "onPagerChanged:call from horzontal view");
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder != null) && (paramViewHolder.getAdapterPosition() == this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.getAdapterPosition()))
+      this.jdField_a_of_type_JavaIoFile = new File(paramString);
+      if (this.jdField_a_of_type_JavaIoFile.exists()) {
+        this.jdField_a_of_type_JavaIoFile.delete();
+      }
+      try
       {
-        QLog.d("QCircleContentVerticalAdapter", 1, "QCircleContentVerticalAdapter onPagerChanged: same viewholder return");
+        this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_a_of_type_JavaIoFile);
+        this.jdField_a_of_type_JavaIoFileOutputStream.write("#!AMR\n".getBytes());
         return;
       }
-      this.jdField_a_of_type_Txj = ((tyl)paramViewHolder).jdField_a_of_type_Txj;
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat = ((tyl)paramViewHolder).a();
-      if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView != null) {
-        this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.c();
-      }
-      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)getDataList().get(paramViewHolder.getAdapterPosition());
-      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView = tyl.a((tyl)paramViewHolder);
-      RecyclerView.ViewHolder localViewHolder = a(((tyl)paramViewHolder).jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewCompat);
-      if (this.jdField_a_of_type_Txq != null) {
-        this.jdField_a_of_type_Txq.a(localViewHolder);
-      }
-      if ((this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramViewHolder.hashCode())) != null) && (((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramViewHolder.hashCode()))).booleanValue()))
+      catch (FileNotFoundException paramString)
       {
-        ((tyl)paramViewHolder).a().notifyDataSetChanged();
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramViewHolder.hashCode()), Boolean.valueOf(false));
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+        paramString.printStackTrace();
+        return;
       }
-      if ((localViewHolder instanceof txm)) {
-        if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView != null)
-        {
-          this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.setCurPicPos(0, localStFeed.images.size());
-          yiw.a().a(new QCircleFeedPicPositionEvent(localStFeed.id.get(), this.b));
-          if ((i != 0) && (this.b >= 0))
-          {
-            this.jdField_a_of_type_Txj.a(this.b);
-            this.b = 0;
-          }
-          if (localStFeed.images.size() == 1) {
-            this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.d.setVisibility(8);
-          }
-        }
+      catch (IOException paramString)
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+        return;
       }
+    }
+    paramString = new JSONObject();
+    try
+    {
+      paramString.put("retCode", -1);
+      paramString.put("msg", "no sdCard");
+      if (this.jdField_a_of_type_Bhod.a() != null) {
+        this.jdField_a_of_type_Bhod.a().callJs(tym.c, new String[] { paramString.toString() });
+      }
+      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      return;
+    }
+    catch (JSONException paramRecorderParam)
+    {
       for (;;)
       {
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder;
-        QLog.d("QCircleContentVerticalAdapter", 1, "QCircleContentVerticalAdapter onPagerChanged:" + paramViewHolder.hashCode());
-        return;
-        if ((localViewHolder instanceof txn))
-        {
-          ((txn)localViewHolder).a.setOperationView(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView);
-          if ((paramViewHolder.getAdapterPosition() == 0) && (this.jdField_a_of_type_Long != 0L))
-          {
-            ((txn)localViewHolder).a.setInitialPosition(this.jdField_a_of_type_Long);
-            this.jdField_a_of_type_Long = 0L;
-          }
-          ((txn)localViewHolder).a.setVideoPath(localStFeed.video.fileId.get(), null, localStFeed.video.playUrl.get(), localStFeed.video.fileSize.get(), localStFeed.video.duration.get(), 0);
-        }
+        paramRecorderParam.printStackTrace();
       }
     }
   }
   
-  public void a(ExtraTypeInfo paramExtraTypeInfo)
+  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
+    jdField_a_of_type_Double = paramDouble;
+    paramString = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        if (jdField_a_of_type_Double == this.jdField_b_of_type_Int)
+        {
+          paramString.put("retCode", 0);
+          paramString.put("msg", anni.a(2131707550));
+          paramString.put("localId", d());
+          if (this.jdField_a_of_type_Bhod.a() != null) {
+            this.jdField_a_of_type_Bhod.a().callJs(tym.g, new String[] { paramString.toString() });
+          }
+          bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2B", "0X8005D2B", 0, 0, "1", "", "", "");
+          return;
+        }
+        if (this.jdField_a_of_type_JavaIoFile.exists())
+        {
+          paramString.put("retCode", 0);
+          paramString.put("msg", anni.a(2131707516) + d());
+          paramString.put("localId", d());
+          bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, 0, "1", "", "", "");
+          if (this.jdField_a_of_type_Bhod.a() == null) {
+            break;
+          }
+          this.jdField_a_of_type_Bhod.a().callJs(tym.d, new String[] { paramString.toString() });
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      paramString.put("retCode", -1);
+      paramString.put("msg", anni.a(2131707576));
+      paramString.put("localId", d());
+      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, -1, "1", "", "", "");
+    }
   }
   
-  public void a(ydl paramydl)
+  public void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
   {
-    this.jdField_a_of_type_Ydl = paramydl;
+    paramString1 = new JSONObject();
+    try
+    {
+      paramString1.put("retCode", -1);
+      paramString1.put("msg", "onRecorderError");
+      if (this.jdField_a_of_type_Bhod.a() != null) {
+        this.jdField_a_of_type_Bhod.a().callJs(tym.c, new String[] { paramString1.toString() });
+      }
+      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      return;
+    }
+    catch (JSONException paramRecorderParam)
+    {
+      for (;;)
+      {
+        paramRecorderParam.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {
+        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, 0, paramInt1);
+      }
+      return;
+    }
+    catch (IOException paramString) {}
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView != null) {
-      return this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.a();
-    }
-    return false;
+    return (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) && (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b());
   }
   
-  public boolean a(String paramString)
+  boolean a(String paramString)
   {
-    boolean bool2 = false;
-    int i = 0;
-    for (;;)
+    paramString = new File(paramString);
+    return (paramString.exists()) || (paramString.mkdirs());
+  }
+  
+  public String b(String paramString)
+  {
+    return anhk.ba + "c2bPTT/" + paramString + ".amr";
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = new QQRecorder(this.jdField_a_of_type_AndroidAppActivity);
+    }
+    f = anhk.ba + "c2bPTT/" + bduk.a() + ".amr";
+    bgkl.a(this.jdField_a_of_type_AndroidAppActivity, true);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b(f);
+  }
+  
+  public void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      boolean bool1 = bool2;
-      if (i < getDataList().size())
+      return;
+      if ((this.jdField_a_of_type_Bgua == null) || (this.jdField_a_of_type_AndroidOsHandler == null) || ((this.jdField_a_of_type_Bgua != null) && (this.jdField_a_of_type_Bgua.a() != 3)))
       {
-        if (((FeedCloudMeta.StFeed)getDataList().get(i)).id.get().equals(paramString))
-        {
-          getDataList().remove(i);
-          notifyItemRemoved(i);
-          bool1 = true;
-        }
+        this.jdField_a_of_type_AndroidOsHandler = new Handler();
+        this.jdField_a_of_type_Bgua = new bgua(paramString, this.jdField_a_of_type_AndroidOsHandler);
       }
-      else {
-        return bool1;
+      this.jdField_a_of_type_Bgua.a(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_Bgua.b();
+      this.jdField_a_of_type_Bgua.a(this.jdField_a_of_type_Bgub);
+      if (this.jdField_a_of_type_Bgua.a() == 1)
+      {
+        this.jdField_a_of_type_Bgua.b();
+        return;
       }
-      i += 1;
+    } while (this.jdField_a_of_type_Bgua.a() != 3);
+    this.jdField_a_of_type_Bgua.c();
+  }
+  
+  public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    d(paramString, paramRecorderParam);
+    paramString = new JSONObject();
+    try
+    {
+      paramString.put("retCode", -1);
+      paramString.put("msg", "onRecorderAbnormal");
+      if (this.jdField_a_of_type_Bhod.a() != null) {
+        this.jdField_a_of_type_Bhod.a().callJs(tym.c, new String[] { paramString.toString() });
+      }
+      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      return;
+    }
+    catch (JSONException paramRecorderParam)
+    {
+      for (;;)
+      {
+        paramRecorderParam.printStackTrace();
+      }
     }
   }
   
-  public int getItemCount()
+  public boolean b()
   {
-    return getDataNumber();
+    return (this.jdField_a_of_type_Bgua != null) && (this.jdField_a_of_type_Bgua.a() == 2);
   }
   
-  public long getItemId(int paramInt)
+  public void c()
   {
-    return paramInt;
-  }
-  
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
-      ((LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager()).setRecycleChildrenOnDetach(true);
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = null;
     }
-    this.jdField_a_of_type_Int = ViewConfiguration.get(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext()).getScaledTouchSlop();
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnItemTouchListener(new tyk(this));
+    d();
+    bgkl.a(this.jdField_a_of_type_AndroidAppActivity, false);
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void c(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
-    FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)getDataList().get(paramInt);
-    ((tyl)paramViewHolder).a().a(localStFeed, paramInt);
-    ((tyl)paramViewHolder).a(paramInt);
-    tyl.a((tyl)paramViewHolder).setExtraTypeInfo(a());
-    tyl.a((tyl)paramViewHolder).setInteractor(a());
-    tyl.a((tyl)paramViewHolder).setData(localStFeed);
-    QLog.d("QCircleContentVerticalAdapter", 1, "QCircleContentVerticalAdapter onBindViewHolder:" + paramViewHolder.hashCode());
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new tyl(this, a(paramViewGroup.getContext()));
-  }
-  
-  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onDetachedFromRecyclerView(paramRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$RecycledViewPool.clear();
-    if (this.jdField_a_of_type_Bies != null) {
-      this.jdField_a_of_type_Bies.a(null);
+    d(paramString, paramRecorderParam);
+    paramString = new JSONObject();
+    try
+    {
+      paramString.put("retCode", -1);
+      paramString.put("msg", "onInitFailed");
+      if (this.jdField_a_of_type_Bhod.a() != null) {
+        this.jdField_a_of_type_Bhod.a().callJs(tym.c, new String[] { paramString.toString() });
+      }
+      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView != null) {
-      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.a();
+    catch (JSONException paramRecorderParam)
+    {
+      for (;;)
+      {
+        paramRecorderParam.printStackTrace();
+      }
     }
-    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView = null;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = null;
-    this.jdField_a_of_type_Txz = null;
   }
   
-  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
+  public String d()
   {
-    QLog.d("QCircleContentVerticalAdapter", 1, "QCircleContentVerticalAdapter onViewAttachedToWindow:" + paramViewHolder.hashCode());
+    Object localObject1 = f.split("/");
+    Object localObject2 = localObject1[(localObject1.length - 1)];
+    localObject1 = "";
+    if (localObject2.length() >= 21) {
+      localObject1 = localObject2.substring(0, localObject2.length() - 4);
+    }
+    return localObject1;
   }
   
-  public void onViewDetachedFromWindow(RecyclerView.ViewHolder paramViewHolder)
+  public void d()
   {
-    QLog.d("QCircleContentVerticalAdapter", 1, "QCircleContentVerticalAdapter onViewDetachedFromWindow:" + paramViewHolder.hashCode());
+    try
+    {
+      if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {
+        this.jdField_a_of_type_JavaIoFileOutputStream.close();
+      }
+      label14:
+      this.jdField_a_of_type_JavaIoFileOutputStream = null;
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      break label14;
+    }
   }
   
-  public void onViewRecycled(RecyclerView.ViewHolder paramViewHolder)
+  public void d(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramViewHolder.hashCode()), Boolean.valueOf(true));
-    QLog.d("QCircleContentVerticalAdapter", 1, "QCircleContentVerticalAdapter onViewRecycled:" + paramViewHolder.hashCode());
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new PublicAccountH5AbilityForPtt.3(this));
+  }
+  
+  public void e()
+  {
+    JSONObject localJSONObject;
+    if (this.jdField_a_of_type_Bgua != null)
+    {
+      this.jdField_a_of_type_Bgua.e();
+      this.jdField_a_of_type_Bgua = null;
+      this.jdField_a_of_type_AndroidOsHandler = null;
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("retCode", 0);
+      localJSONObject.put("msg", anni.a(2131707519) + d() + anni.a(2131707587));
+      localJSONObject.put("localId", d());
+      if (this.jdField_a_of_type_Bhod.a() != null) {
+        this.jdField_a_of_type_Bhod.a().callJs(tym.f, new String[] { localJSONObject.toString() });
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public void f()
+  {
+    if (b()) {
+      e();
+    }
+    c();
+  }
+  
+  public void g()
+  {
+    if ((this.jdField_a_of_type_Bgua != null) && (this.jdField_a_of_type_Bgua.a() == 2)) {
+      this.jdField_a_of_type_Bgua.d();
+    }
+  }
+  
+  public void h()
+  {
+    try
+    {
+      File localFile = new File(f);
+      if (localFile.exists())
+      {
+        d = bkcx.a(localFile);
+        jdField_a_of_type_Int = (int)localFile.length();
+        e = d;
+      }
+      return;
+    }
+    catch (IOException localIOException) {}
+  }
+  
+  public void i()
+  {
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new PublicAccountH5AbilityForPtt.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tyj
  * JD-Core Version:    0.7.0.1
  */

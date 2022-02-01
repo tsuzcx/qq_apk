@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="subuin,trunkuin")
 public class SubAccountInfo
-  extends awge
+  extends Entity
 {
   public static final int INIT = 0;
   public static final int LOSS_OF_LOCAL_IDENTITY = 2;
   public static final int NORMAL = 1;
   public static final int SERVER_ERROR = 3;
-  @awhp
+  @notColumn
   public String A2;
   public byte[] cookie;
   public boolean hintIsNew;
   public boolean isTop;
   public byte isbind;
   public long lastCleanQZoneMessageTime;
-  @awhp
+  @notColumn
   public CharSequence lastMsg;
-  @awhp
+  @notColumn
   public String lastUin;
-  @awhp
+  @notColumn
   public String lastUinNick;
   public long lasttime;
   public String serverErrorMsg;
@@ -34,13 +34,13 @@ public class SubAccountInfo
   public String subname;
   public String subuin;
   public String trunkuin;
-  @awhp
+  @notColumn
   public int unNotifySender;
-  @awhp
+  @notColumn
   public int unreadMsgNum;
-  @awhp
+  @notColumn
   public int unreadSenderNum;
-  @awhp
+  @notColumn
   public int unreadTroopMsgNum;
   
   public void cloneTo(SubAccountInfo paramSubAccountInfo)
@@ -77,7 +77,7 @@ public class SubAccountInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.SubAccountInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -39,7 +39,7 @@ final class fq$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wf7.fq.2
  * JD-Core Version:    0.7.0.1
  */

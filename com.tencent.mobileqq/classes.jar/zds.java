@@ -1,25 +1,35 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class zds
-  extends ampn
+public class zds
 {
-  zds(zdr paramzdr, String paramString)
+  public static zdw a(Context paramContext, String paramString)
   {
-    super(paramString);
+    paramContext = zdw.a(paramContext);
+    if (paramContext != null)
+    {
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        zdw localzdw = (zdw)paramContext.next();
+        if (TextUtils.equals(paramString, localzdw.a)) {
+          return localzdw;
+        }
+      }
+    }
+    return null;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static boolean a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("LocationPlugin", 2, "onLocationFinish errCode = " + paramInt);
-    }
-    zdq.a(this.a.jdField_a_of_type_Zdq, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
+    return !TextUtils.isEmpty(bgjb.a(paramContext, "qqstory_savedMusicList"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zds
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,11 @@ package com.tencent.mobileqq.search.fragment;
 
 import android.os.Bundle;
 import android.view.View;
-import ayhw;
-import ayjn;
-import aykp;
-import aykq;
-import ayug;
+import bbgu;
+import bbio;
+import bbjs;
+import bbjt;
+import bbtj;
 import com.tencent.widget.ListView;
 import cooperation.qqfav.globalsearch.FunctionSearchEngine;
 
@@ -23,19 +23,19 @@ public class FunctionSearchFragment
     return 120;
   }
   
-  protected ayjn a()
+  protected bbio a()
   {
-    return new aykq(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb);
+    return new bbjt(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aobu);
   }
   
-  protected ayug a()
+  protected bbtj a()
   {
     return new FunctionSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1);
   }
   
   protected String a()
   {
-    return ayhw.a();
+    return bbgu.a();
   }
   
   protected void a(String paramString, int paramInt)
@@ -46,12 +46,12 @@ public class FunctionSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new aykp(this));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new bbjs(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.FunctionSearchFragment
  * JD-Core Version:    0.7.0.1
  */

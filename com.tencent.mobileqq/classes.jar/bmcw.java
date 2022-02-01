@@ -1,30 +1,9 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
-class bmcw
-  implements EIPClientConnectListener
+public abstract interface bmcw
 {
-  bmcw(bmcv parambmcv) {}
-  
-  public void connectFailed()
-  {
-    bmcv.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "connectFailed!");
-    }
-  }
-  
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      bmcv.a(this.a, paramEIPCConnection.procName);
-    }
-    bmcv.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "connectSuccess:" + bmcv.a(this.a));
-    }
-  }
+  public abstract void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg);
 }
 
 

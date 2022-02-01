@@ -3,10 +3,10 @@ package cooperation.liveroom;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.commons.IReportDelegate;
 import mqq.app.AppRuntime;
-import oxk;
+import pmt;
 
 final class LiveRoomPluginHelper$1
-  implements oxk
+  implements pmt
 {
   LiveRoomPluginHelper$1(LiveRoomPluginHelper.InitViolaListener paramInitViolaListener, AppRuntime paramAppRuntime, String paramString, IReportDelegate paramIReportDelegate) {}
   
@@ -25,7 +25,7 @@ final class LiveRoomPluginHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomPluginHelper.1
  * JD-Core Version:    0.7.0.1
  */

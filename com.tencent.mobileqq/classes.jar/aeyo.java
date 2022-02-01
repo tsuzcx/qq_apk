@@ -1,49 +1,31 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class aeyo
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnTouchListener
 {
-  public aeyo(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  public aeyo(QQSettingMe paramQQSettingMe, ImageView paramImageView, TextView paramTextView, View paramView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean)
+    switch (paramMotionEvent.getAction())
     {
-      if ((VoiceTextEditPanel.a(this.a).get() > 0) && (bdnn.a(VoiceTextEditPanel.a(this.a))) && (!VoiceTextEditPanel.a(this.a).isEnabled())) {
-        this.a.setSendEnable(true);
-      }
-      if (VoiceTextEditPanel.a(this.a) != null) {
-        VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), true).commit();
-      }
-      VoiceTextEditPanel.a(this.a).setText(2131719782);
-      if (this.a.a())
-      {
-        azqs.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 2, 0, "", "", "", "");
-        return;
-      }
-      azqs.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 1, 0, "", "", "", "");
-      return;
     }
-    if (VoiceTextEditPanel.a(this.a) != null) {
-      VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), false).commit();
-    }
-    VoiceTextEditPanel.a(this.a).setText(2131719780);
-    if ((VoiceTextEditPanel.a(this.a).get() == 5) && (bdnn.a(VoiceTextEditPanel.a(this.a)))) {
-      this.a.setSendEnable(false);
-    }
-    if (this.a.a())
+    for (;;)
     {
-      azqs.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 2, 0, "", "", "", "");
-      return;
+      return false;
+      mue.a(this.jdField_a_of_type_AndroidWidgetImageView, 0.5F);
+      mue.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
+      mue.a(this.jdField_a_of_type_AndroidViewView, 0.5F);
+      continue;
+      mue.a(this.jdField_a_of_type_AndroidWidgetImageView, 1.0F);
+      mue.a(this.jdField_a_of_type_AndroidWidgetTextView, 1.0F);
+      mue.a(this.jdField_a_of_type_AndroidViewView, 1.0F);
     }
-    azqs.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 1, 0, "", "", "", "");
   }
 }
 

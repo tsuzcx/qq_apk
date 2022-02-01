@@ -1,77 +1,35 @@
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
+import feedcloud.FeedCloudMeta.StNotice;
 
 public class vnc
-  extends BaseAdapter
+  extends vmh
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  List<TroopInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public vnc(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView, Context paramContext)
+  public vnc(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramInt);
   }
   
-  public void a(List<TroopInfo> paramList)
+  protected String a()
   {
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
-    }
+    return "QCircleUnsupportedMessagePresenter";
   }
   
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
+  void a() {}
   
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
+  void b(Context paramContext, View paramView) {}
   
-  public long getItemId(int paramInt)
+  void b(FeedCloudMeta.StNotice paramStNotice, int paramInt)
   {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (paramView == null)
-    {
-      paramViewGroup = new vnd(this);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561645, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367565));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371161));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopInfo)localObject).getTroopName());
-      localObject = vls.a().a(((TroopInfo)localObject).troopuin);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      return paramView;
-      paramViewGroup = (vnd)paramView.getTag();
+    if ((this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView != null) && (this.jdField_a_of_type_AndroidContentContext != null)) {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131697194));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vnc
  * JD-Core Version:    0.7.0.1
  */

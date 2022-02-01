@@ -1,27 +1,19 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class ahja
-  extends ViewPager.SimpleOnPageChangeListener
+  extends AnimatorListenerAdapter
 {
-  public ahja(TroopView paramTroopView) {}
+  public ahja(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (babd.a()) {}
-    while (paramInt != 1) {
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.a) {
       return;
     }
-    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (babd.a()) {
-      return;
-    }
-    TroopView.a(this.a, paramInt);
+    this.a.b();
   }
 }
 

@@ -1,10 +1,14 @@
-public abstract interface albl
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
+
+public class albl
+  extends alcf
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void b();
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

@@ -1,22 +1,96 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.util.Printer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-class anpf
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class anpf
 {
-  anpf(anpd paramanpd, Context paramContext) {}
+  private static AbstractUnifiedMonitor.ThreadMonitorCallback a = new anpg();
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public static void a()
   {
-    if (paramBitmap != null) {
-      anpd.a(this.jdField_a_of_type_Anpd, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(4)) {
+      return;
     }
+    int i = UnifiedMonitor.a().getThreshold(4);
+    UnifiedMonitor.a().setMonitoredThread(4, ThreadManager.getSubThread(), a);
+    anvv localanvv = new anvv(4, "SubLooper");
+    localanvv.a(i, false);
+    ThreadManager.getSubThreadLooper().setMessageLogging(localanvv);
+  }
+  
+  public static void b()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(18)) {
+      return;
+    }
+    Object localObject1 = MsfCore.sCore;
+    if (localObject1 == null)
+    {
+      QLog.e("MagnifierSDK.QAPM", 1, "msf core hasnot init");
+      return;
+    }
+    Object localObject2 = ((MsfCore)localObject1).getNetworkHandlerThread();
+    if (localObject2 == null)
+    {
+      QLog.e("MagnifierSDK.QAPM", 1, "network thread hasnot init");
+      return;
+    }
+    localObject1 = ((HandlerThread)localObject2).getLooper();
+    if (localObject1 == null)
+    {
+      QLog.e("MagnifierSDK.QAPM", 1, "network thread has not start");
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(18);
+    UnifiedMonitor.a().setMonitoredThread(18, (Thread)localObject2, a);
+    localObject2 = new anvv(18, "msf-network");
+    ((anvv)localObject2).a(i, false);
+    ((Looper)localObject1).setMessageLogging((Printer)localObject2);
+  }
+  
+  public static void c()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(13)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(13);
+    UnifiedMonitor.a().setMonitoredThread(13, ThreadManager.getRecentThread(), a);
+    anvv localanvv = new anvv(13, "RecentLooper");
+    localanvv.a(i, false);
+    ThreadManager.getRecentThreadLooper().setMessageLogging(localanvv);
+  }
+  
+  public static void d()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(5)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(5);
+    UnifiedMonitor.a().setMonitoredThread(5, ThreadManager.getFileThread(), a);
+    anvv localanvv = new anvv(5, "FileLooper");
+    localanvv.a(i, false);
+    ThreadManager.getFileThreadLooper().setMessageLogging(localanvv);
+  }
+  
+  public static void e()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(6))
+    {
+      com.tencent.mobileqq.app.ThreadExcutor.sLooperMonitorSwitch = false;
+      return;
+    }
+    com.tencent.mobileqq.app.ThreadExcutor.sLooperMonitorSwitch = true;
+    com.tencent.mobileqq.app.ThreadExcutor.sThreshTime = UnifiedMonitor.a().getThreshold(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anpf
  * JD-Core Version:    0.7.0.1
  */

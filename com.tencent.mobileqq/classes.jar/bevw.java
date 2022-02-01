@@ -1,6 +1,8 @@
-public abstract interface bevw
+public class bevw
 {
-  public abstract void a();
+  public int a;
+  public String a;
+  public int b;
 }
 
 

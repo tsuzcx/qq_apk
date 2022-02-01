@@ -1,42 +1,29 @@
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import com.tencent.qphone.base.util.QLog;
 
 class ea
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  ea(dz paramdz) {}
+  ea(dy paramdy) {}
   
   public void onClick(View paramView)
   {
-    paramView = (ef)paramView.getTag();
-    if (paramView == null) {}
-    DataLineMsgSet localDataLineMsgSet;
-    do
-    {
-      return;
-      localDataLineMsgSet = paramView.a();
-    } while (localDataLineMsgSet == null);
-    long l = 0L;
-    if (localDataLineMsgSet.getFirstItem() != null) {
-      l = localDataLineMsgSet.getFirstItem().sessionid;
-    }
-    for (;;)
-    {
-      localDataLineMsgSet.setPaused(true);
-      ((alqo)this.a.a.a(8)).a(localDataLineMsgSet.getGroupId(), l, false);
-      dz.a(this.a, paramView, localDataLineMsgSet);
-      return;
-      QLog.e("DatalineSessionAdapterUseNewFileBubble", 1, "stop send but no sessionid");
-    }
+    atvo.a(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), anni.a(2131693904), anni.a(2131693904));
+    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800513D", "0X800513D", 0, 0, "", "", "", "");
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.parseColor("#00a5e0"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ea
  * JD-Core Version:    0.7.0.1
  */

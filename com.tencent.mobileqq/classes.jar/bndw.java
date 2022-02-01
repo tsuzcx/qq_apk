@@ -1,15 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import java.io.File;
 
-class bndw
-  implements ValueAnimator.AnimatorUpdateListener
+public class bndw
 {
-  bndw(bnds parambnds) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.invalidateSelf();
-  }
+  public static final String a = bndv.b + File.separator + "tmp";
 }
 
 

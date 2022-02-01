@@ -1,8 +1,8 @@
 package cooperation.photoplus.sticker;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import cooperation.photoplus.PhotoPlusManager;
 import java.io.File;
@@ -16,7 +16,7 @@ import org.json.JSONTokener;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class Sticker
-  extends awge
+  extends Entity
 {
   public static final String JSON_SUFFIX = ".json";
   public static final String PNG_SUFFIX = ".png";
@@ -24,7 +24,7 @@ public class Sticker
   public static final String THUMB_SUFFIX = "_thumb";
   public static final int TYPE_BASIC = 0;
   public static final int TYPE_NORMAL = 1;
-  @awhs
+  @unique
   public String id;
   public String md5;
   public int priority;
@@ -121,7 +121,7 @@ public class Sticker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.photoplus.sticker.Sticker
  * JD-Core Version:    0.7.0.1
  */

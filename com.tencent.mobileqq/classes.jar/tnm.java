@@ -1,22 +1,6 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class tnm
-  implements View.OnTouchListener
-{
-  tnm(tnk paramtnk) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    tnk.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tnm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,37 @@
-import java.util.Random;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bjst
-  extends bjtd
+  implements TextWatcher
 {
-  protected int a;
-  protected Random a;
+  public bjst(Login paramLogin) {}
   
-  public bjst(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
-    this.jdField_a_of_type_Int = 1;
-    a(paramInt);
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(int paramInt)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = paramInt;
-    if (paramInt < 1) {
-      i = 1;
+    if (paramCharSequence.length() == 0) {
+      this.a.a.setVisibility(4);
     }
-    this.jdField_a_of_type_Int = i;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int) < 1;
+    for (;;)
+    {
+      this.a.jdField_b_of_type_Boolean = false;
+      this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
+      return;
+      if (paramInt3 < 2) {
+        this.a.a.setVisibility(0);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjst
  * JD-Core Version:    0.7.0.1
  */

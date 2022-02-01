@@ -35,6 +35,11 @@ public class IPluginAdapterProxy
     return (Looper)localIPluginAdapter.invoke(2, null);
   }
   
+  public boolean isBuiltinPluginAndUpToDay(String paramString, PluginBaseInfo paramPluginBaseInfo)
+  {
+    return this.mPluginAdapter.isBuiltinPluginAndUpToDay(paramString, paramPluginBaseInfo);
+  }
+  
   public boolean isDefaultMode()
   {
     IPluginAdapter localIPluginAdapter = this.mPluginAdapter;

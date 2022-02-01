@@ -2,6 +2,7 @@ package com.tencent.ad.tangram.device;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.ad.tangram.util.d;
 
 public final class a
 {
@@ -35,7 +36,7 @@ public final class a
       do
       {
         return paramString;
-        paramString = com.tencent.ad.tangram.util.a.md5(paramString, "UTF-8");
+        paramString = d.md5(paramString, "UTF-8");
         if (TextUtils.isEmpty(paramString)) {
           break;
         }
@@ -47,7 +48,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.device.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.Iterator;
-import java.util.List;
-
 public class acwq
-  implements aufy<List<EmoticonPackage>>
 {
-  public acwq(EmosmActivity paramEmosmActivity) {}
+  public int a;
+  public Object a;
+  public String a;
+  public int b;
   
-  public void a(List<EmoticonPackage> paramList)
+  public acwq() {}
+  
+  public acwq(String paramString, int paramInt1, int paramInt2, Object paramObject)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      this.a.g.setVisibility(8);
-    }
-    do
-    {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramList.next();
-        if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
-          this.a.c = true;
-        }
-      }
-    } while (this.a.c);
-    this.a.g.setVisibility(8);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 

@@ -1,16 +1,22 @@
-import android.view.MotionEvent;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
-public abstract interface xxg
+class xxg
+  implements xxb<Bitmap>
 {
-  public abstract void a(xxg paramxxg);
+  xxg(xxe paramxxe, List paramList, String paramString) {}
   
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  @NonNull
+  public Stream<Bitmap> a(xwx paramxwx)
+  {
+    return xxe.a(this.jdField_a_of_type_Xxe, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xxg
  * JD-Core Version:    0.7.0.1
  */

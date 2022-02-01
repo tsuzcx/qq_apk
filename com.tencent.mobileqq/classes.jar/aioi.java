@@ -1,36 +1,14 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import java.lang.ref.WeakReference;
 
-public class aioi
-  extends alpq
+class aioi
 {
-  public aioi(PhotoCropActivity paramPhotoCropActivity) {}
-  
-  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
-  {
-    if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.a.b))
-    {
-      this.a.a.removeMessages(1003);
-      this.a.c();
-      if (!paramBoolean)
-      {
-        paramString = this.a.getIntent();
-        paramString.putExtra("key_from_sdk_set_avatar_result", false);
-        this.a.setResult(-1, paramString);
-        this.a.finish();
-      }
-    }
-    else
-    {
-      return;
-    }
-    azqs.b(this.a.app, "dc00898", "", "", "0X8009B6B", "0X8009B6B", 0, 0, "", "", "", "");
-    paramString = this.a.getIntent();
-    paramString.putExtra("key_from_sdk_set_avatar_result", true);
-    this.a.setResult(-1, paramString);
-    this.a.finish();
-  }
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  WeakReference<aioj> jdField_a_of_type_JavaLangRefWeakReference;
 }
 
 

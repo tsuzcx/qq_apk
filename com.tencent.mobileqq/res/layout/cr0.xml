@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/dqx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/n5n" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip" formItem:bgType="evy" formItem:switchChecked="false" />
+</LinearLayout>

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import alud;
 import android.graphics.Color;
 import android.text.TextUtils;
+import anni;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -38,7 +38,7 @@ public class MessageForTribeShortVideo
   
   public static String buildCompatibleText()
   {
-    return alud.a(2131706966) + "QQ" + alud.a(2131706994);
+    return anni.a(2131705357) + "QQ" + anni.a(2131705385);
   }
   
   public void doParse()
@@ -86,12 +86,12 @@ public class MessageForTribeShortVideo
   public String getSummaryMsg()
   {
     if (!TextUtils.isEmpty(this.themeName)) {
-      return alud.a(2131706985) + this.themeName;
+      return anni.a(2131705376) + this.themeName;
     }
     if (!TextUtils.isEmpty(this.brief)) {
-      return alud.a(2131706960) + this.brief;
+      return anni.a(2131705351) + this.brief;
     }
-    return alud.a(2131707002);
+    return anni.a(2131705393);
   }
   
   public boolean isSupportReply()
@@ -114,7 +114,7 @@ public class MessageForTribeShortVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTribeShortVideo
  * JD-Core Version:    0.7.0.1
  */

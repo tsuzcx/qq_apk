@@ -1,72 +1,40 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.cs.smartptt.Smartptt.PttUpReq;
+import tencent.im.cs.smartptt.Smartptt.ReqBody;
 
 public class bdyw
-  extends RemoteCommand
 {
-  public bdyw()
+  public static Smartptt.ReqBody a(bdyx parambdyx)
   {
-    super("running_plugin_cmd");
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    paramOnInvokeFinishLinstener = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramOnInvokeFinishLinstener != null) && ((paramOnInvokeFinishLinstener instanceof QQAppInterface))) {}
-    for (paramOnInvokeFinishLinstener = (QQAppInterface)paramOnInvokeFinishLinstener;; paramOnInvokeFinishLinstener = null)
+    int j = 0;
+    Smartptt.ReqBody localReqBody = new Smartptt.ReqBody();
+    localReqBody.uint32_sub_cmd.set(3);
+    Smartptt.PttUpReq localPttUpReq = new Smartptt.PttUpReq();
+    localPttUpReq.uint32_bits_per_sample.set(16);
+    localPttUpReq.uint32_voice_file_type.set(1);
+    localPttUpReq.uint32_voice_encode_type.set(parambdyx.jdField_a_of_type_Int);
+    localPttUpReq.uint32_samples_per_sec.set(16000);
+    localPttUpReq.str_voice_id.set(parambdyx.jdField_a_of_type_JavaLangString);
+    PBUInt32Field localPBUInt32Field = localPttUpReq.uint32_is_first;
+    if (parambdyx.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0)
     {
-      switch (paramBundle.getInt("CommondType"))
-      {
+      localPBUInt32Field.set(i);
+      localPBUInt32Field = localPttUpReq.uint32_is_end;
+      i = j;
+      if (parambdyx.jdField_b_of_type_Boolean) {
+        i = 1;
       }
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return null;
-              if (paramOnInvokeFinishLinstener == null) {
-                break;
-              }
-              paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
-            } while (paramOnInvokeFinishLinstener == null);
-            try
-            {
-              Message localMessage = paramOnInvokeFinishLinstener.obtainMessage(1134043);
-              long l = paramBundle.getLong("runningState");
-              paramBundle = paramBundle.getString("cookieUrl");
-              JSONObject localJSONObject = new JSONObject();
-              localJSONObject.put("runningState", l);
-              localJSONObject.put("cookieUrl", paramBundle);
-              localMessage.obj = localJSONObject;
-              paramOnInvokeFinishLinstener.sendMessage(localMessage);
-              return null;
-            }
-            catch (JSONException paramBundle)
-            {
-              return null;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.e("SportRemoteCommond", 2, "showRunningBar null");
-          return null;
-        } while (paramOnInvokeFinishLinstener == null);
-        paramBundle = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
-      } while (paramBundle == null);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134044), 1000L);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134040), 1000L);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134050), 1000L);
-      return null;
+      localPBUInt32Field.set(i);
+      localPttUpReq.uint32_offset.set(parambdyx.jdField_b_of_type_Int);
+      localPttUpReq.str_Filemd5.set(parambdyx.jdField_c_of_type_JavaLangString);
+      localPttUpReq.uint32_chat_type.set(parambdyx.e);
+      localPttUpReq.uint32_service_id.set(1);
+      localPttUpReq.uint32_voice_num.set(parambdyx.jdField_c_of_type_Int);
+      localPttUpReq.uint32_voice_offset.set(parambdyx.d);
+      localReqBody.msg_ptt_up_req.set(localPttUpReq);
+      return localReqBody;
     }
   }
 }

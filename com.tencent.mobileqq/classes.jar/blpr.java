@@ -1,19 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.aeeditor.module.toolbar.VideoEditToolBar;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class blpr
-  implements Animation.AnimationListener
+public final class blpr
 {
-  public blpr(VideoEditToolBar paramVideoEditToolBar) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  private static SharedPreferences b(Context paramContext)
   {
-    this.a.setVisibility(0);
+    return paramContext.getSharedPreferences("reader_user" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
   }
 }
 

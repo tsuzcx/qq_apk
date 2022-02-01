@@ -1,14 +1,19 @@
-public abstract interface vkk
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+
+public class vkk
+  implements vuw
 {
-  public abstract void a();
+  public vkk(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void a(String paramString)
+  {
+    uxo.a(paramString, this.a.a().clone().setElementIdStr("portrait"));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vkk
  * JD-Core Version:    0.7.0.1
  */

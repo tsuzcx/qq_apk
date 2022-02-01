@@ -5,13 +5,13 @@ import android.content.Context;
 import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.AudioRecord;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.core.proxy.VoIPProxy;
-import com.tencent.qqmini.sdk.core.proxy.VoIPProxy.MultiUserInfo;
-import com.tencent.qqmini.sdk.core.proxy.VoIPProxy.VoIPListener;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.MultiUserInfo;
+import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.VoIPListener;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -23,11 +23,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONArray;
 
+@MiniKeep
 public class VoIPManager
 {
   public static final String TAG = "VoIPManager";
   public static final int UNKNOWN = -1;
-  public static volatile VoIPManager sInstance;
+  public static volatile VoIPManager sInstance = null;
   private VoIPManager.EventListener mEventListener;
   private VoIPManager.JoinRoomListener mJoinRoomListener;
   private VoIPManager.MuteConfig mMuteConfig;
@@ -116,12 +117,12 @@ public class VoIPManager
   
   private boolean isBluetoothOn()
   {
-    return ((AudioManager)AppLoaderFactory.g().getMiniAppEnv().getContext().getSystemService("audio")).isBluetoothA2dpOn();
+    return ((AudioManager)MiniAppEnv.g().getContext().getSystemService("audio")).isBluetoothA2dpOn();
   }
   
   private boolean isHeadsetPlugged()
   {
-    return ((AudioManager)AppLoaderFactory.g().getMiniAppEnv().getContext().getSystemService("audio")).isWiredHeadsetOn();
+    return ((AudioManager)MiniAppEnv.g().getContext().getSystemService("audio")).isWiredHeadsetOn();
   }
   
   private boolean isMicAvailable()
@@ -287,7 +288,7 @@ public class VoIPManager
     {
       if (this.mQAvHasEnterRoom)
       {
-        AppLoaderFactory.g().getMiniAppEnv().getContext().unregisterReceiver(this.mReceiver);
+        MiniAppEnv.g().getContext().unregisterReceiver(this.mReceiver);
         doExitRoom();
         this.mQAvHasEnterRoom = false;
       }
@@ -309,7 +310,7 @@ public class VoIPManager
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 71	com/tencent/qqmini/sdk/core/manager/VoIPManager:mSelfMuteStat	I
+    //   5: getfield 83	com/tencent/qqmini/sdk/core/manager/VoIPManager:mSelfMuteStat	I
     //   8: istore_1
     //   9: iload_1
     //   10: iconst_1
@@ -358,7 +359,7 @@ public class VoIPManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 69	com/tencent/qqmini/sdk/core/manager/VoIPManager:mSelfMicStat	I
+    //   3: getfield 81	com/tencent/qqmini/sdk/core/manager/VoIPManager:mSelfMicStat	I
     //   6: istore_1
     //   7: iload_1
     //   8: iconst_2
@@ -418,7 +419,7 @@ public class VoIPManager
           this.mSelfUin = paramIdResult.tinyId;
           i = this.mVoIPProxy.joinRoom(paramIdResult.tinyId, paramIdResult.roomId, paramIdResult.openId, paramArrayOfByte);
           if (i != 0) {
-            break label199;
+            break label194;
           }
           this.mMuteConfig = paramMuteConfig;
           this.mQAvHasEnterRoom = true;
@@ -426,7 +427,7 @@ public class VoIPManager
           paramIdResult.addAction("android.intent.action.HEADSET_PLUG");
           paramIdResult.addAction("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED");
           paramIdResult.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
-          AppLoaderFactory.g().getMiniAppEnv().getContext().registerReceiver(this.mReceiver, paramIdResult);
+          MiniAppEnv.g().getContext().registerReceiver(this.mReceiver, paramIdResult);
           this.mRoomUserModelList.clear();
           continue;
         }
@@ -437,7 +438,7 @@ public class VoIPManager
       finally {}
       paramJoinRoomListener.onError(-2);
       continue;
-      label199:
+      label194:
       QMLog.e("VoIPManager", "joinRoom ret = " + i);
       if (this.mJoinRoomListener != null)
       {
@@ -459,18 +460,18 @@ public class VoIPManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: getfield 476	com/tencent/qqmini/sdk/core/manager/VoIPManager$MuteConfig:isMuteMicrophone	Z
+    //   3: getfield 472	com/tencent/qqmini/sdk/core/manager/VoIPManager$MuteConfig:isMuteMicrophone	Z
     //   6: ifne +46 -> 52
     //   9: iconst_1
     //   10: istore 5
     //   12: aload_0
     //   13: iload 5
-    //   15: invokespecial 478	com/tencent/qqmini/sdk/core/manager/VoIPManager:qavOpMic	(Z)I
+    //   15: invokespecial 474	com/tencent/qqmini/sdk/core/manager/VoIPManager:qavOpMic	(Z)I
     //   18: istore_3
     //   19: aload_0
     //   20: aload_1
-    //   21: getfield 481	com/tencent/qqmini/sdk/core/manager/VoIPManager$MuteConfig:isMuteEarphone	Z
-    //   24: invokespecial 483	com/tencent/qqmini/sdk/core/manager/VoIPManager:qavOpMute	(Z)I
+    //   21: getfield 477	com/tencent/qqmini/sdk/core/manager/VoIPManager$MuteConfig:isMuteEarphone	Z
+    //   24: invokespecial 479	com/tencent/qqmini/sdk/core/manager/VoIPManager:qavOpMute	(Z)I
     //   27: istore 4
     //   29: iload_3
     //   30: ifne +8 -> 38
@@ -480,7 +481,7 @@ public class VoIPManager
     //   39: ifnull +10 -> 49
     //   42: aload_2
     //   43: iconst_m1
-    //   44: invokeinterface 488 2 0
+    //   44: invokeinterface 484 2 0
     //   49: aload_0
     //   50: monitorexit
     //   51: return
@@ -490,7 +491,7 @@ public class VoIPManager
     //   58: aload_2
     //   59: ifnull -10 -> 49
     //   62: aload_2
-    //   63: invokeinterface 491 1 0
+    //   63: invokeinterface 487 1 0
     //   68: goto -19 -> 49
     //   71: astore_1
     //   72: aload_0
@@ -515,7 +516,7 @@ public class VoIPManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.VoIPManager
  * JD-Core Version:    0.7.0.1
  */

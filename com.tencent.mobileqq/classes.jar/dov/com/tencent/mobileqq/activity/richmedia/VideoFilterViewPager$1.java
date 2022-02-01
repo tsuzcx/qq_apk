@@ -2,7 +2,7 @@ package dov.com.tencent.mobileqq.activity.richmedia;
 
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-import bnhf;
+import bpyi;
 
 public class VideoFilterViewPager$1
   implements Runnable
@@ -15,12 +15,12 @@ public class VideoFilterViewPager$1
     localAlphaAnimation.setDuration(1000L);
     localAlphaAnimation.setFillAfter(true);
     this.a.startAnimation(localAlphaAnimation);
-    localAlphaAnimation.setAnimationListener(new bnhf(this));
+    localAlphaAnimation.setAnimationListener(new bpyi(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.1
  * JD-Core Version:    0.7.0.1
  */

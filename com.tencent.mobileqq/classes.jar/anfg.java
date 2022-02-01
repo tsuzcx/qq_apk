@@ -1,100 +1,90 @@
-import android.opengl.GLES20;
-import android.util.Log;
+import android.content.Context;
+import android.os.Message;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.os.MqqHandler;
 
 public class anfg
+  extends bgzm
 {
-  public static final String a;
-  public static final float[] a;
-  public static String b;
-  public static String c;
-  public static String d;
+  public anfg(ApolloLinearLayout paramApolloLinearLayout) {}
   
-  static
+  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131706343);
-    b = "    //抠像逻辑片段\n";
-    c = "    //用户定义，抠像后逻辑片段\n";
-    d = "}\n";
-    jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
-  }
-  
-  public static int a(int paramInt, String paramString)
-  {
-    int i = GLES20.glCreateShader(paramInt);
-    a("glCreateShader type=" + paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
-    paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
-    if (paramString[0] == 0)
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    label596:
+    for (;;)
     {
-      Log.e("KeyingUtil", "Could not compile shader " + paramInt + ":" + GLES20.glGetShaderInfoLog(i));
-      GLES20.glDeleteShader(i);
-      return 0;
-    }
-    return i;
-  }
-  
-  public static int a(String paramString1, String paramString2)
-  {
-    int i = a(35633, paramString1);
-    if (i == 0) {}
-    int j;
-    do
-    {
-      return 0;
-      j = a(35632, paramString2);
-    } while (j == 0);
-    int k = GLES20.glCreateProgram();
-    a("glCreateProgram");
-    if (k == 0) {
-      Log.e("KeyingUtil", "Could not create program");
-    }
-    GLES20.glAttachShader(k, i);
-    a("glAttachShader");
-    GLES20.glAttachShader(k, j);
-    a("glAttachShader");
-    GLES20.glLinkProgram(k);
-    paramString1 = new int[1];
-    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
-    if (paramString1[0] != 1)
-    {
-      Log.e("KeyingUtil", "Could not link program:" + GLES20.glGetProgramInfoLog(k));
-      GLES20.glDeleteProgram(k);
-      return 0;
-    }
-    return k;
-  }
-  
-  public static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      if (QLog.isDevelopLevel()) {
-        throw new IllegalArgumentException("invalid textureType!");
-      }
-      break;
-    case 1: 
-      return "#define TEXTURE_TYPE_OES\n";
-    case 2: 
-      return "#define TEXTURE_TYPE_SAMPLER2D\n";
-    case 3: 
-      return "#define TEXTURE_TYPE_Y_U_V\n";
-    case 4: 
-      return "#define TEXTURE_TYPE_Y_UV\n";
-    }
-    return "";
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      int i = GLES20.glGetError();
-      if (i != 0) {
-        Log.e("KeyingUtil", paramString + ": glError 0x" + Integer.toHexString(i));
+      return;
+      Object localObject = new ApolloActionData();
+      paramObject = (HashMap)paramObject;
+      String str = (String)paramObject.get("optFrom");
+      if ((!TextUtils.isEmpty(str)) && ("actionPanel".equals(str)))
+      {
+        int i = Integer.parseInt((String)paramObject.get("id"));
+        ((ApolloActionData)localObject).actionId = i;
+        localObject = this.a.a((ApolloActionData)localObject);
+        if (localObject != null)
+        {
+          ((ImageView)((View)localObject).findViewById(2131378772)).setVisibility(8);
+          ((View)localObject).setClickable(true);
+          if (this.a.b.incrementAndGet() == this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
+          {
+            this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+            this.a.b.set(0);
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Bgzm);
+          }
+          if (paramBoolean)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloLinearLayout", 2, "action auth success actionid=" + i);
+            }
+            paramObject.put("APOLLO_POP_TYPE", "toast");
+            paramObject.put("tips", this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131690006));
+            ((VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 128, "obtained action");
+          }
+          for (;;)
+          {
+            if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+              break label596;
+            }
+            localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+            if (localObject == null) {
+              break;
+            }
+            VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "activity_alert_show", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + i, "0" });
+            localObject = ((MqqHandler)localObject).obtainMessage(45);
+            ((Message)localObject).obj = paramObject;
+            ((Message)localObject).sendToTarget();
+            return;
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloLinearLayout", 2, "action auth fail actionid=" + i);
+            }
+            paramObject.put("APOLLO_POP_TYPE", "dialog");
+            paramObject.put("feeType", String.valueOf(6));
+            paramObject.put("title", anni.a(2131699268));
+            if (TextUtils.isEmpty((String)paramObject.get("content"))) {
+              paramObject.put("content", anni.a(2131699267));
+            }
+            paramObject.put("rightString", anni.a(2131699269));
+            paramObject.put("isActionBack", "true");
+            paramObject.put("actionId", "" + i);
+          }
+        }
       }
     }
   }

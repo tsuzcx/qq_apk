@@ -1,194 +1,145 @@
 package com.tencent.biz.qqcircle.fragments;
 
+import aaaf;
+import aavz;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.RelativeLayout.LayoutParams;
-import bdms;
-import com.tencent.biz.qqcircle.activity.QCircleFragmentActivity;
-import com.tencent.biz.qqcircle.component.ComponentBaseFragment;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import bgru;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.richframework.part.BasePartFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
 import java.io.File;
-import tqb;
-import tql;
-import tqt;
-import tra;
-import twe;
-import twn;
-import ybu;
-import yyw;
+import uwz;
+import uxb;
+import uxh;
+import uxp;
+import uxx;
+import vjg;
+import zwe;
+import zwj;
+import zxl;
 
 public abstract class QCircleBaseFragment
-  extends ComponentBaseFragment
+  extends BasePartFragment
+  implements zxl<QCircleReportBean>
 {
-  protected TopGestureLayout a;
+  protected QCircleReportBean a;
   
-  private void b()
+  private void a()
   {
-    if ((getActivity() != null) && (getActivity().getIntent() != null))
-    {
-      long l = getActivity().getIntent().getLongExtra("key_bundle_open_page_time", 0L);
-      if (l != 0L) {
-        QLog.i("QCircleBaseFragment", 1, "openPageTime = " + (System.currentTimeMillis() - l));
-      }
-    }
-  }
-  
-  private void c()
-  {
-    View localView = new View(getActivity());
-    localView.setBackgroundColor(1711276032);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    ((ViewGroup)getActivity().getWindow().getDecorView()).addView(localView, localLayoutParams);
-  }
-  
-  private void d()
-  {
-    File localFile = new File(tqb.i);
-    if ((localFile.exists()) || (bdms.a() == null))
+    File localFile = new File(uxb.i);
+    if ((localFile.exists()) || (bgru.a() == null))
     {
       QLog.i("QCircleBaseFragment", 1, "DownLoadZipFile Save file is exist");
       return;
     }
-    ybu.a(localFile, (String)yyw.a().a("KEY_QCIRCLE_BASE_VIEW_DOWNLOAD_URL", "https://down.qq.com/video_story/qcircle/base/qcircle_download_pics.zip"), tqb.f);
+    aaaf.a(localFile, (String)aavz.a().a("KEY_QCIRCLE_BASE_VIEW_DOWNLOAD_URL", "https://downv6.qq.com/video_story/qcircle/base/qcircle_download_pics.zip"), uxb.f);
   }
   
-  private void e()
+  private void b()
   {
-    twe localtwe = twe.a();
-    twn localtwn = new twn(this);
-    localtwe.a(new String[] { "https://down.qq.com/video_story/qcircle/animation/rockey1.zip", "https://down.qq.com/video_story/qcircle/animation/rockey2.zip", "https://down.qq.com/video_story/qcircle/animation/rockey3.zip", "https://down.qq.com/video_story/qcircle/animation/icon_start_recommend.zip", "https://down.qq.com/video_story/qcircle/animation/icon_end_recommend.zip", "https://down.qq.com/video_story/qcircle/animation/qcircle_follow_tab_push_icon_end.zip", "https://down.qq.com/video_story/qcircle/animation/rockey_single_click.zip" }, localtwn);
+    zwe localzwe = zwj.a(uwz.a());
+    vjg localvjg = new vjg(this);
+    localzwe.a(new String[] { "https://downv6.qq.com/video_story/qcircle/animation/rocket1.zip", "https://downv6.qq.com/video_story/qcircle/animation/rocket2.zip", "https://downv6.qq.com/video_story/qcircle/animation/rocket3.zip", "https://downv6.qq.com/video_story/qcircle/animation/rocket_start.zip", "https://downv6.qq.com/video_story/qcircle/animation/rocket_end.zip", "https://downv6.qq.com/video_story/qcircle/animation/single_rocket.zip", "https://downv6.qq.com/video_story/qcircle/animation/list_to_grid.zip", "https://downv6.qq.com/video_story/qcircle/animation/grid_to_list.zip", "https://downv6.qq.com/video_story/qcircle/ttf/qcircle_number_bold_italic.ttf", "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/6-preload/img_preload_fullscreen_disconnect.png", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/6-preload/img_preload_halfscreen_disconnect.png", "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/6-preload/img_preload_detailpage_disconnect.png" }, localvjg);
   }
   
-  protected TopGestureLayout a()
+  public QCircleInitBean a()
   {
-    if (this.a == null)
-    {
-      ViewGroup localViewGroup = (ViewGroup)getActivity().getWindow().getDecorView();
-      View localView = localViewGroup.getChildAt(0);
-      Object localObject = localViewGroup;
-      if (localView != null)
-      {
-        localObject = localViewGroup;
-        if ((localView instanceof DragFrameLayout)) {
-          localObject = (ViewGroup)localView;
-        }
-      }
-      localObject = ((ViewGroup)localObject).getChildAt(0);
-      if ((localObject instanceof TopGestureLayout)) {
-        this.a = ((TopGestureLayout)localObject);
-      }
+    if ((getActivity().getIntent() != null) && (getActivity().getIntent().hasExtra("key_bundle_common_init_bean"))) {
+      return (QCircleInitBean)getActivity().getIntent().getSerializableExtra("key_bundle_common_init_bean");
     }
-    return this.a;
+    return null;
   }
   
-  public abstract String a();
-  
-  public void a()
+  public QCircleReportBean a()
   {
-    QLog.d(a(), 1, a() + "->onBackPressed");
+    if (this.a == null) {
+      this.a = new QCircleReportBean();
+    }
+    j();
+    return this.a.setPageId(c()).setPageIdStr(d());
   }
   
   public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    QLog.d(a(), 1, a() + "->doOnCreateView");
+    QLog.d(c(), 1, c() + "->doOnCreateView");
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    d();
-    e();
-    paramLayoutInflater = getActivity().mSystemBarComp;
-    if (paramLayoutInflater != null)
+    a();
+    b();
+  }
+  
+  public void a(QCircleReportBean paramQCircleReportBean)
+  {
+    this.a = QCircleReportBean.setReportBean(c(), paramQCircleReportBean);
+  }
+  
+  public int b()
+  {
+    return uxx.a();
+  }
+  
+  public abstract int c();
+  
+  public abstract String c();
+  
+  public abstract String d();
+  
+  public void i()
+  {
+    QLog.d(c(), 1, c() + "->onBackPressed");
+  }
+  
+  protected void j()
+  {
+    if (getActivity() == null) {}
+    Object localObject;
+    do
     {
-      paramLayoutInflater.init();
-      paramLayoutInflater.setStatusBarVisible(2, 0);
-    }
-    if (a()) {
-      getActivity().getWindow().setFlags(1024, 1024);
-    }
-    for (;;)
-    {
-      b();
-      return;
-      if (((getActivity() instanceof QCircleFragmentActivity)) && (ImmersiveUtils.isSupporImmersive() == 1))
+      do
       {
-        tra.a(getActivity(), b());
-        ImmersiveUtils.a(true, getActivity().getWindow());
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    TopGestureLayout localTopGestureLayout = a();
-    if (localTopGestureLayout != null) {
-      localTopGestureLayout.setInterceptTouchFlag(paramBoolean);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QCircleBaseFragment", 2, "enableFlingRight->enable:" + paramBoolean);
-    }
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  protected int b()
-  {
-    return tra.a();
-  }
-  
-  protected boolean b()
-  {
-    return true;
-  }
-  
-  public void onActivityCreated(Bundle paramBundle)
-  {
-    super.onActivityCreated(paramBundle);
-    if ((ybu.a()) && (b())) {
-      c();
-    }
+        return;
+        localObject = getActivity().getIntent();
+      } while ((localObject == null) || (!((Intent)localObject).hasExtra("key_bundle_common_init_bean")));
+      localObject = (QCircleInitBean)((Intent)localObject).getSerializableExtra("key_bundle_common_init_bean");
+    } while ((localObject == null) || (((QCircleInitBean)localObject).mFromReportBean == null) || (this.a == null));
+    this.a.assembleFromReportData(((QCircleInitBean)localObject).mFromReportBean);
   }
   
   public void onAttach(Activity paramActivity)
   {
-    QLog.d(a(), 1, a() + "->onAttach");
+    QLog.d(c(), 1, c() + "->onAttach");
     super.onAttach(paramActivity);
   }
   
   public void onDestroy()
   {
-    QLog.d(a(), 1, a() + "->onDestroy");
+    QLog.d(c(), 1, c() + "->onDestroy");
     super.onDestroy();
-    tqt.a().a();
-    tql.a();
+    uxp.a().a();
+    uxh.a();
   }
   
   public void onDetach()
   {
-    QLog.d(a(), 1, a() + "->onDetach");
+    QLog.d(c(), 1, c() + "->onDetach");
     super.onDetach();
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
-    QLog.d(a(), 1, a() + "->setUserVisibleHint:" + paramBoolean);
+    QLog.d(c(), 1, c() + "->setUserVisibleHint:" + paramBoolean);
     super.setUserVisibleHint(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.fragments.QCircleBaseFragment
  * JD-Core Version:    0.7.0.1
  */

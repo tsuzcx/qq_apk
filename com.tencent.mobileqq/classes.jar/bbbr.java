@@ -1,38 +1,15 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class bbbr
-  extends bbbz
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<bawy> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public boolean c = false;
+  public bbbr(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public bbbr()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" fileID:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" isExist:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" blockSize:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" netChg:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    return localStringBuilder.toString();
+    bcst.b(null, "dc00898", "", "", "0X800A98D", "0X800A98D", 2, 0, "0", "0", "", "");
   }
 }
 

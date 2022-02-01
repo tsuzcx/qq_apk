@@ -6,11 +6,11 @@ public abstract interface ITPDownloadProxy
 {
   public abstract int deinit();
   
-  public abstract String getClipPlayUrl(int paramInt1, int paramInt2);
+  public abstract String getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract String getPlayErrorCodeStr(int paramInt);
   
-  public abstract String getPlayUrl(int paramInt);
+  public abstract String getPlayUrl(int paramInt1, int paramInt2);
   
   public abstract int init(Context paramContext, TPDLProxyInitParam paramTPDLProxyInitParam);
   
@@ -21,6 +21,8 @@ public abstract interface ITPDownloadProxy
   public abstract int removeStorageCache(String paramString);
   
   public abstract int resumeDownload(int paramInt);
+  
+  public abstract void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
   public abstract boolean setClipInfo(int paramInt1, int paramInt2, String paramString, TPDownloadParam paramTPDownloadParam);
   
@@ -54,7 +56,7 @@ public abstract interface ITPDownloadProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.ITPDownloadProxy
  * JD-Core Version:    0.7.0.1
  */

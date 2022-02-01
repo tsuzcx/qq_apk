@@ -1,16 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahvf
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public ahvf(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  public ahvf(PhotoListPanel paramPhotoListPanel) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
   }
 }
 

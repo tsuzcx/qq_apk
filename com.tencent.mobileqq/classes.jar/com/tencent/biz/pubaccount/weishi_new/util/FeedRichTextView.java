@@ -16,16 +16,20 @@ import android.view.View.OnClickListener;
 import android.widget.TextView.BufferType;
 import com.tencent.biz.subscribe.widget.textview.SafeTextView;
 import com.tencent.mobileqq.app.ThreadManager;
-import tkr;
-import tkv;
+import java.util.ArrayList;
+import uoh;
+import uol;
+import uom;
+import uon;
 
 public class FeedRichTextView
   extends SafeTextView
   implements Handler.Callback
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private tkr jdField_a_of_type_Tkr;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "[em]e212[/em]", "[em]e219[/em]", "[em]e226[/em]", "[em]e233[/em]", "[em]e234[/em]", "[em]e221[/em]", "[em]e228[/em]", "[em]e208[/em]", "[em]e222[/em]", "[em]e229[/em]", "[em]e223[/em]", "[em]e230[/em]", "[em]e240[/em]", "[em]e224[/em]", "[em]e231[/em]", "[em]e211[/em]", "[em]e218[/em]", "[em]e225[/em]", "[em]e232[/em]", "[em]e290[/em]", "[em]e291[/em]", "[em]e280[/em]", "[em]e256[/em]", "[em]e261[/em]", "[em]e259[/em]", "[em]e235[/em]", "[em]e236[/em]", "[em]e239[/em]" };
+  private ArrayList<uon> jdField_a_of_type_JavaUtilArrayList;
+  private uoh jdField_a_of_type_Uoh;
+  private ArrayList<uom> b;
   
   public FeedRichTextView(Context paramContext)
   {
@@ -45,22 +49,21 @@ public class FeedRichTextView
     a(paramAttributeSet);
   }
   
-  private CharSequence a(CharSequence paramCharSequence)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      paramCharSequence = paramCharSequence.toString().replace(this.jdField_a_of_type_ArrayOfJavaLangString[i], "");
-      i += 1;
-    }
-    return paramCharSequence;
-  }
-  
   private void a(AttributeSet paramAttributeSet) {}
   
-  protected void a(CharSequence paramCharSequence, tkr paramtkr, Drawable.Callback paramCallback)
+  public ArrayList<uon> a()
   {
-    ThreadManager.post(new FeedRichTextView.1(this, paramCharSequence, paramtkr, paramCallback), 8, null, true);
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  protected void a(CharSequence paramCharSequence, uoh paramuoh, Drawable.Callback paramCallback)
+  {
+    ThreadManager.post(new FeedRichTextView.1(this, paramCharSequence, paramuoh, paramCallback), 8, null, true);
+  }
+  
+  public ArrayList<uom> b()
+  {
+    return this.b;
   }
   
   protected MovementMethod getDefaultMovementMethod()
@@ -71,10 +74,13 @@ public class FeedRichTextView
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage == null) {}
-    while ((paramMessage.what != 1001) || (!(paramMessage.obj instanceof tkv))) {
+    while ((paramMessage.what != 1001) || (!(paramMessage.obj instanceof uol))) {
       return false;
     }
-    super.setText((tkv)paramMessage.obj, null);
+    paramMessage = (uol)paramMessage.obj;
+    this.jdField_a_of_type_JavaUtilArrayList = paramMessage.a();
+    this.b = paramMessage.b();
+    super.setText(paramMessage, null);
     return false;
   }
   
@@ -98,24 +104,24 @@ public class FeedRichTextView
     super.setOnClickListener(paramOnClickListener);
   }
   
-  public void setOnElementClickListener(tkr paramtkr)
+  public void setOnElementClickListener(uoh paramuoh)
   {
-    this.jdField_a_of_type_Tkr = paramtkr;
+    this.jdField_a_of_type_Uoh = paramuoh;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    if ((TextUtils.isEmpty(paramCharSequence)) || ((!TextUtils.isEmpty(paramCharSequence)) && ((paramCharSequence instanceof tkv))))
+    if ((TextUtils.isEmpty(paramCharSequence)) || ((!TextUtils.isEmpty(paramCharSequence)) && ((paramCharSequence instanceof uol))))
     {
       super.setText(paramCharSequence, paramBufferType);
       return;
     }
-    a(a(paramCharSequence), this.jdField_a_of_type_Tkr, null);
+    a(paramCharSequence, this.jdField_a_of_type_Uoh, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.FeedRichTextView
  * JD-Core Version:    0.7.0.1
  */

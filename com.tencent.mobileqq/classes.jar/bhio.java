@@ -1,74 +1,55 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Path.FillType;
+import android.graphics.Rect;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-@bglp(a="V8ServiceInitTask")
 public class bhio
-  extends bhil
+  implements DownloadParams.DecodeHandler
 {
-  public bhio(Context paramContext, bgun parambgun)
-  {
-    super(paramContext, parambgun);
-  }
+  private int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    bhbs.a(208, "", a().getMiniAppInfoForReport());
-    try
-    {
-      Object localObject = (bhih)a().getTask(bhih.class);
-      long l1;
-      label67:
-      bhhk localbhhk;
-      if (localObject != null)
-      {
-        localObject = ((bhih)localObject).a();
-        this.a = ((bhey)localObject);
-        l1 = System.currentTimeMillis();
-        if (this.a == null) {
-          break label167;
-        }
-        localObject = this.a.a();
-        bhck.a((MiniAppInfo)localObject, 100, "0");
-        localbhhk = new bhhk(this.a);
-        if (this.a == null) {
-          break label173;
-        }
-      }
-      label167:
-      label173:
-      for (localObject = this.a.a();; localObject = null)
-      {
-        bhck.a((MiniAppInfo)localObject, 101, "0");
-        long l2 = System.currentTimeMillis();
-        if (this.a != null) {
-          localbhhk.a(this.a.a());
-        }
-        localbhhk.addStateChangeListener(new bhip(this, localbhhk, l2 - l1));
-        localbhhk.b();
-        return;
-        localObject = null;
-        break;
-        localObject = null;
-        break label67;
-      }
-      return;
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    catch (Throwable localThrowable)
+    Bitmap localBitmap;
+    Path localPath;
+    Canvas localCanvas;
+    do
     {
-      QMLog.e("minisdk-start", "ServiceInitTask execute exception!", localThrowable);
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    bhbs.a(209, "", a().getMiniAppInfoForReport());
+      return paramDownloadParams;
+      paramBitmap.setDensity((int)bgtn.c());
+      localBitmap = bgjf.a(paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, Bitmap.Config.ARGB_8888);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int * 2);
+      localPath = new Path();
+      localCanvas = new Canvas(localBitmap);
+      localCanvas.save();
+      localPath.moveTo(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+      localPath.lineTo(localBitmap.getWidth() - this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+      localPath.lineTo(localBitmap.getWidth() - this.jdField_a_of_type_Int, localBitmap.getHeight() - this.jdField_a_of_type_Int);
+      localPath.lineTo(this.jdField_a_of_type_Int, localBitmap.getHeight() - this.jdField_a_of_type_Int);
+      localPath.close();
+      localPath.setFillType(Path.FillType.EVEN_ODD);
+      localCanvas.clipPath(localPath);
+      localCanvas.drawBitmap(paramBitmap, new Rect(0, (paramBitmap.getHeight() - paramBitmap.getWidth()) / 2, paramBitmap.getWidth(), (paramBitmap.getWidth() + paramBitmap.getHeight()) / 2), new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()), this.jdField_a_of_type_AndroidGraphicsPaint);
+      localCanvas.restore();
+      paramDownloadParams = localBitmap;
+    } while (this.jdField_a_of_type_Boolean);
+    localCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    return localBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhio
  * JD-Core Version:    0.7.0.1
  */

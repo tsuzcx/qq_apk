@@ -1,49 +1,247 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.util.QZLog;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import tencent.im.cs.cmd0x352.cmd0x352.ReqBody;
+import tencent.im.cs.cmd0x352.cmd0x352.RspBody;
+import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
+import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgRsp;
 
 public class bebh
-  extends bkfi
+  extends bebt
 {
-  private MQLruCache<String, Object> a;
+  int a;
   
-  public bebh(QQAppInterface paramQQAppInterface, Context paramContext)
+  public static boolean a(int paramInt)
   {
-    super(paramQQAppInterface, paramContext);
+    return (paramInt != 196) && (paramInt != 197) && (paramInt != 199) && (paramInt != 201) && (paramInt != 202) && (paramInt != 206) && (paramInt != 207) && (paramInt != 208);
   }
   
-  public MQLruCache<String, Object> a()
+  void a(int paramInt, becg parambecg, cmd0x352.ReqBody paramReqBody)
   {
-    return this.a;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = new bebi(this, paramInt);
-    this.a.setLargeSize(1);
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.a != null)
+    bece localbece = (bece)parambecg;
+    cmd0x352.TryUpImgReq localTryUpImgReq = new cmd0x352.TryUpImgReq();
+    localTryUpImgReq.uint64_file_id.set(paramInt);
+    localTryUpImgReq.setHasFlag(true);
+    localTryUpImgReq.uint64_src_uin.set(Long.valueOf(localbece.jdField_c_of_type_JavaLangString).longValue());
+    try
     {
-      Iterator localIterator = this.a.getLargeCache().iterator();
+      String str = localbece.jdField_d_of_type_JavaLangString;
+      parambecg = str;
+      if (str.startsWith("+")) {
+        parambecg = str.substring(1);
+      }
+      long l = Long.valueOf(parambecg).longValue();
+      localTryUpImgReq.uint64_dst_uin.set(l);
+    }
+    catch (Exception parambecg)
+    {
+      for (;;)
+      {
+        parambecg.printStackTrace();
+      }
+    }
+    localTryUpImgReq.uint64_file_size.set(localbece.jdField_a_of_type_Long);
+    localTryUpImgReq.bytes_file_md5.set(ByteStringMicro.copyFrom(localbece.jdField_a_of_type_ArrayOfByte));
+    localTryUpImgReq.bytes_file_name.set(ByteStringMicro.copyFromUtf8(localbece.jdField_a_of_type_JavaLangString));
+    localTryUpImgReq.uint32_src_term.set(5);
+    localTryUpImgReq.bool_address_book.set(localbece.jdField_c_of_type_Boolean);
+    localTryUpImgReq.uint32_platform_type.set(9);
+    a(localTryUpImgReq);
+    localTryUpImgReq.bool_pic_original.set(localbece.jdField_b_of_type_Boolean);
+    localTryUpImgReq.uint32_pic_width.set(localbece.jdField_c_of_type_Int);
+    localTryUpImgReq.uint32_pic_height.set(localbece.jdField_d_of_type_Int);
+    localTryUpImgReq.uint32_pic_type.set(localbece.jdField_a_of_type_Int);
+    localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(bdxz.a()));
+    localTryUpImgReq.bool_reject_tryfast.set(false);
+    localTryUpImgReq.uint32_srv_upload.set(localbece.e);
+    if (!TextUtils.isEmpty(localbece.jdField_b_of_type_JavaLangString)) {
+      localTryUpImgReq.bytes_transfer_url.set(ByteStringMicro.copyFromUtf8(localbece.jdField_b_of_type_JavaLangString));
+    }
+    paramReqBody.rpt_msg_tryup_img_req.add(localTryUpImgReq);
+  }
+  
+  protected void a(bdxe parambdxe)
+  {
+    parambdxe.jdField_a_of_type_JavaLangString = "LongConn.OffPicUp";
+  }
+  
+  public void a(bebv parambebv)
+  {
+    if ((parambebv != null) && (parambebv.jdField_a_of_type_JavaUtilList != null) && (parambebv.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
+    {
+      bdxe localbdxe = new bdxe();
+      a(localbdxe);
+      localbdxe.jdField_a_of_type_ArrayOfByte = a(parambebv.jdField_a_of_type_JavaUtilList);
+      localbdxe.jdField_a_of_type_JavaLangObject = parambebv;
+      localbdxe.jdField_a_of_type_Bdxd = this;
+      a(parambebv, localbdxe);
+    }
+  }
+  
+  protected void a(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, bebv parambebv, beck parambeck, anqe paramanqe, bdxf parambdxf, bdxe parambdxe)
+  {
+    try
+    {
+      parambdxf = ((cmd0x352.RspBody)new cmd0x352.RspBody().mergeFrom(paramArrayOfByte)).rpt_msg_tryup_img_rsp.get();
+      if ((parambdxf == null) || (parambdxf.size() == 0)) {
+        throw new Exception("resps null");
+      }
+    }
+    catch (Exception paramFromServiceMsg)
+    {
+      a(-1, -9527, bdsx.a("P", -9529L), paramFromServiceMsg.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanqe, parambeck.jdField_a_of_type_JavaUtilList);
+    }
+    for (;;)
+    {
+      return;
+      Iterator localIterator = parambdxf.iterator();
       while (localIterator.hasNext())
       {
-        String str = (String)localIterator.next();
-        Object localObject = this.a.get(str);
-        if ((localObject != null) && ((localObject instanceof Bitmap)))
+        parambdxf = (cmd0x352.TryUpImgRsp)localIterator.next();
+        try
         {
-          ((Bitmap)localObject).recycle();
-          QZLog.i("DIYProfileTemplate.DIYLottieLoader", 4, "recycle bitmap key = " + str);
+          localbecm = (becm)parambeck.jdField_a_of_type_JavaUtilList.get((int)parambdxf.uint64_file_id.get());
+          if (localbecm == null) {
+            continue;
+          }
+          try
+          {
+            if (paramFromServiceMsg.getAttributes().containsKey("_attr_send_by_quickHttp")) {
+              localbecm.jdField_d_of_type_Boolean = ((Boolean)paramFromServiceMsg.getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
+            }
+            i = parambdxf.uint32_result.get();
+            if (i != 0) {
+              break label295;
+            }
+            a(parambdxf, localbecm);
+            a(0, 0, "", "", paramanqe, localbecm);
+          }
+          catch (Exception parambdxf) {}
+        }
+        catch (Exception parambdxf)
+        {
+          for (;;)
+          {
+            int i;
+            becm localbecm = null;
+          }
+        }
+        a(-1, -9527, bdsx.a("P", -9529L), parambdxf.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanqe, localbecm);
+        continue;
+        label295:
+        if (a(i))
+        {
+          this.b += 1;
+          if (this.b < 2)
+          {
+            parambebv.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(parambdxe);
+            return;
+          }
+        }
+        a(-1, -9527, bdsx.a(i), "", paramanqe, localbecm);
+      }
+    }
+  }
+  
+  protected void a(cmd0x352.TryUpImgReq paramTryUpImgReq)
+  {
+    paramTryUpImgReq.uint32_bu_type.set(1);
+  }
+  
+  void a(cmd0x352.TryUpImgRsp paramTryUpImgRsp, becm parambecm)
+  {
+    boolean bool = true;
+    if (paramTryUpImgRsp.bytes_up_resid.has()) {
+      parambecm.jdField_a_of_type_JavaLangString = paramTryUpImgRsp.bytes_up_resid.get().toStringUtf8();
+    }
+    if (paramTryUpImgRsp.bytes_up_uuid.has()) {
+      parambecm.jdField_b_of_type_JavaLangString = paramTryUpImgRsp.bytes_up_uuid.get().toStringUtf8();
+    }
+    parambecm.jdField_a_of_type_Long = paramTryUpImgRsp.uint64_up_offset.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("BDH_LOG", 2, " TryUpLoad : Offset:" + parambecm.jdField_a_of_type_Long + " Value:" + paramTryUpImgRsp.uint64_up_offset.get());
+    }
+    if ((paramTryUpImgRsp.bool_file_exit.has()) && (paramTryUpImgRsp.bool_file_exit.get()))
+    {
+      parambecm.jdField_a_of_type_Boolean = true;
+      if (paramTryUpImgRsp.bytes_original_down_para.has()) {
+        parambecm.jdField_d_of_type_JavaLangString = paramTryUpImgRsp.bytes_original_down_para.get().toStringUtf8();
+      }
+      return;
+    }
+    parambecm.jdField_c_of_type_JavaLangString = HexUtil.bytes2HexStr(paramTryUpImgRsp.bytes_up_ukey.get().toByteArray());
+    parambecm.jdField_a_of_type_Int = ((int)paramTryUpImgRsp.uint64_block_size.get());
+    if (bdwu.a().a() != this.jdField_a_of_type_Int) {}
+    for (;;)
+    {
+      parambecm.jdField_b_of_type_Boolean = bool;
+      break;
+      bool = false;
+    }
+  }
+  
+  byte[] a(List<becg> paramList)
+  {
+    cmd0x352.ReqBody localReqBody = new cmd0x352.ReqBody();
+    localReqBody.setHasFlag(true);
+    localReqBody.uint32_subcmd.set(1);
+    int i = 0;
+    while (i < paramList.size())
+    {
+      a(i, (becg)paramList.get(i), localReqBody);
+      i += 1;
+    }
+    i = bdwu.a().a();
+    this.jdField_a_of_type_Int = i;
+    switch (i)
+    {
+    default: 
+      i = 6;
+    }
+    for (;;)
+    {
+      paramList = bdwu.a().a();
+      int j = i;
+      if (paramList != null)
+      {
+        j = i;
+        if (paramList.contains("wap")) {
+          j = 5;
         }
       }
-      this.a.releaseLargeCache();
+      localReqBody.uint32_net_type.set(j);
+      return localReqBody.toByteArray();
+      i = 3;
+      continue;
+      i = 6;
+      continue;
+      i = 7;
+      continue;
+      i = 8;
+    }
+  }
+  
+  void b(bebv parambebv)
+  {
+    beck localbeck = parambebv.jdField_a_of_type_Beck;
+    localbeck.jdField_a_of_type_JavaUtilList.clear();
+    int i = 0;
+    while (i < parambebv.jdField_a_of_type_JavaUtilList.size())
+    {
+      becm localbecm = new becm();
+      localbeck.jdField_a_of_type_JavaUtilList.add(i, localbecm);
+      i += 1;
     }
   }
 }

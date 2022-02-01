@@ -1,20 +1,11 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import android.view.View;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-class bkmy
-  implements MediaScanner.OnMediaInfoScannerListener
+public abstract interface bkmy
 {
-  bkmy(bkms parambkms) {}
+  public abstract void a();
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      this.a.a(101);
-      return;
-    }
-    this.a.a(this.a.a, paramLocalMediaInfo);
-  }
+  public abstract void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt);
 }
 
 

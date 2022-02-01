@@ -1,31 +1,23 @@
-import android.os.Handler;
-import android.view.View;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter.1;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoListLogicBase;
+import mqq.app.AppRuntime;
 
-public abstract class akhq
-  extends BaseAdapter
-  implements AbsListView.OnScrollListener
+public class akhq
+  extends ayev
 {
-  protected Handler a;
-  public String a;
+  public akhq(NewPhotoListActivity paramNewPhotoListActivity) {}
   
-  private final void a(View paramView, Object paramObject, int paramInt, akhr paramakhr)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject = a(paramInt);
-    if (localObject == null) {
-      return;
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
+      ((akib)this.a.mPhotoListLogic.mOtherCommonData).a = ((get_albumlist_num_rsp)paramBundle).album_num;
     }
-    paramView = new BaseWhatASmoothAdapter.1(this, paramView, localObject, paramObject, paramInt, paramakhr);
-    akhr.a(paramakhr, true);
-    akhr.a(paramakhr, paramView);
-    this.a.post(paramView);
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a);
   }
-  
-  protected abstract Object a(int paramInt);
-  
-  public abstract void a(View paramView, Object paramObject);
 }
 
 

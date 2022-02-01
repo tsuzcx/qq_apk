@@ -1,16 +1,16 @@
-public abstract interface bncc
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class bncc
+  implements View.OnTouchListener
 {
-  public abstract void cancelAnimator();
+  bncc(bnbz parambnbz) {}
   
-  public abstract void displayPanel();
-  
-  public abstract void displayPanelFinish();
-  
-  public abstract void fadeBackground(float paramFloat);
-  
-  public abstract void hidePanel();
-  
-  public abstract void hidePanelFinish();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

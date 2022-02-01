@@ -1,43 +1,80 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.QVipBigClubSVIP9Config;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqxf
-  implements aqxh
+public class aqxf
+  extends aqwr<QVipBigClubSVIP9Config>
 {
-  private bigh jdField_a_of_type_Bigh = new bigh();
-  
-  public aqxf(aqxe paramaqxe)
+  public static QVipBigClubSVIP9Config c()
   {
-    this.jdField_a_of_type_Bigh.a();
+    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config2 = (QVipBigClubSVIP9Config)aqlk.a().a(427);
+    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config1 = localQVipBigClubSVIP9Config2;
+    if (localQVipBigClubSVIP9Config2 == null) {
+      localQVipBigClubSVIP9Config1 = new QVipBigClubSVIP9Config();
+    }
+    return localQVipBigClubSVIP9Config1;
   }
   
-  public int a(long paramLong1, long paramLong2)
+  @NonNull
+  public QVipBigClubSVIP9Config a()
   {
-    int j = this.jdField_a_of_type_Bigh.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
-    int k = bigk.a(BaseApplication.getContext());
-    int i;
-    if (k != 1)
+    return new QVipBigClubSVIP9Config();
+  }
+  
+  @NonNull
+  public QVipBigClubSVIP9Config a(aqlg[] paramArrayOfaqlg)
+  {
+    boolean bool = true;
+    localQVipBigClubSVIP9Config = new QVipBigClubSVIP9Config();
+    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
+    try
     {
-      i = j;
-      if (k != 2) {}
-    }
-    else
-    {
-      i = j;
-      if (j > 16384) {
-        i = 16384;
+      if (!TextUtils.isEmpty(paramArrayOfaqlg))
+      {
+        paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg);
+        if (paramArrayOfaqlg.optInt("enable", 1) != 1) {
+          break label93;
+        }
       }
+      for (;;)
+      {
+        localQVipBigClubSVIP9Config.mIsEnable = bool;
+        localQVipBigClubSVIP9Config.mAPngIconUrl = paramArrayOfaqlg.optString("apng_icon_url_pattern", localQVipBigClubSVIP9Config.mAPngIconUrl);
+        localQVipBigClubSVIP9Config.mAPngIconUrlNewGray = paramArrayOfaqlg.optString("apng_gray_icon_url_pattern", localQVipBigClubSVIP9Config.mAPngIconUrlNewGray);
+        localQVipBigClubSVIP9Config.mVipIconSettingsUrl = paramArrayOfaqlg.optString("vipicon_setting_url_pattern", localQVipBigClubSVIP9Config.mVipIconSettingsUrl);
+        return localQVipBigClubSVIP9Config;
+        label93:
+        bool = false;
+      }
+      return localQVipBigClubSVIP9Config;
     }
-    return i;
+    catch (JSONException paramArrayOfaqlg)
+    {
+      yqp.e("QVipBigTroopExpiredProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfaqlg.getMessage());
+    }
   }
   
-  public void a()
+  @NonNull
+  public QVipBigClubSVIP9Config b()
   {
-    this.jdField_a_of_type_Bigh.b();
+    return new QVipBigClubSVIP9Config();
+  }
+  
+  public Class<QVipBigClubSVIP9Config> clazz()
+  {
+    return QVipBigClubSVIP9Config.class;
+  }
+  
+  public int type()
+  {
+    return 427;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.map;
 
-import aepi;
+import afur;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -30,7 +30,7 @@ public class RoundCorneredFrameLayout
   public RoundCorneredFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.a = aepi.a(a(paramContext, paramAttributeSet), paramContext.getResources());
+    this.a = afur.a(a(paramContext, paramAttributeSet), paramContext.getResources());
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(1, null);
     }
@@ -65,7 +65,7 @@ public class RoundCorneredFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout
  * JD-Core Version:    0.7.0.1
  */

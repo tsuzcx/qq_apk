@@ -1,77 +1,79 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import java.util.List;
-import mqq.manager.TicketManager;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator.MultiForwardShortVideoTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class bcdo
+  implements ayyt
 {
-  public bcky a(QQAppInterface paramQQAppInterface, bckx parambckx, String paramString, int paramInt)
+  final int jdField_a_of_type_Int;
+  bcfj jdField_a_of_type_Bcfj;
+  
+  public bcdo(BaseShortVideoOprerator.MultiForwardShortVideoTask paramMultiForwardShortVideoTask, int paramInt)
   {
-    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    if (localObject != null) {}
-    for (localObject = ((TicketManager)localObject).getSkey(str);; localObject = null)
-    {
-      HashMap localHashMap = new HashMap();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("bkn", "5381");
-      localBundle.putString("gid", paramString);
-      localBundle.putString("Cookie", String.format("uin=%s;skey=%s", new Object[] { str, localObject }));
-      localBundle.putString("Referer", "http://qun.qq.com");
-      localHashMap.put("BUNDLE", localBundle);
-      localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
-      paramQQAppInterface = new bcky("http://qun.qq.com/cgi-bin/qun/web/kewen/get_search_keywords", "POST", parambckx, paramInt, localBundle);
-      paramQQAppInterface.a(localHashMap);
-      return paramQQAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bcfj = ((bcfj)paramMultiForwardShortVideoTask.b.get(this.jdField_a_of_type_Int));
+  }
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return (MessageForShortVideo)((bceh)this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
+  }
+  
+  public void a(ayyu paramayyu)
+  {
+    MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)((bceh)this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
+    localMessageForShortVideo.videoFileStatus = 1003;
+    localMessageForShortVideo.md5 = paramayyu.jdField_d_of_type_JavaLangString;
+    localMessageForShortVideo.uuid = paramayyu.jdField_c_of_type_JavaLangString;
+    localMessageForShortVideo.thumbFileSize = ((int)paramayyu.jdField_c_of_type_Long);
+    localMessageForShortVideo.videoAttr = paramayyu.jdField_c_of_type_Int;
+    localMessageForShortVideo.videoKandianType = paramayyu.jdField_d_of_type_Int;
+    localMessageForShortVideo.serial();
+    paramayyu = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.this$0.a.a();
+    if (paramayyu != null) {
+      paramayyu.a(localMessageForShortVideo, null);
     }
   }
   
-  public bcky a(QQAppInterface paramQQAppInterface, bckx parambckx, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public void b(ayyu paramayyu)
   {
-    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    if (localObject != null) {}
-    for (localObject = ((TicketManager)localObject).getSkey(str);; localObject = null)
+    for (;;)
     {
-      HashMap localHashMap = new HashMap();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("bkn", "5381");
-      localBundle.putString("key", paramString);
-      localBundle.putString("start", String.valueOf(paramInt1));
-      localBundle.putString("num", String.valueOf(paramInt2));
-      localBundle.putString("Cookie", String.format("uin=%s;skey=%s", new Object[] { str, localObject }));
-      localBundle.putString("Referer", "http://qun.qq.com");
-      localHashMap.put("BUNDLE", localBundle);
-      localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
-      paramQQAppInterface = new bcky("http://qun.qq.com/cgi-bin/qun/web/kewen/search", "POST", parambckx, paramInt3, localBundle);
-      paramQQAppInterface.a(localHashMap);
-      return paramQQAppInterface;
-    }
-  }
-  
-  public bcky a(QQAppInterface paramQQAppInterface, bckx parambckx, String paramString, List<Integer> paramList, int paramInt)
-  {
-    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    if (localObject != null) {}
-    for (localObject = ((TicketManager)localObject).getSkey(str);; localObject = null)
-    {
-      HashMap localHashMap = new HashMap();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("bkn", "5381");
-      localBundle.putString("kid", paramString);
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        localBundle.putString("pid_list", paramList.toString());
+      int i;
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.b)
+      {
+        if (paramayyu.jdField_a_of_type_Int == 0)
+        {
+          a(paramayyu);
+          this.jdField_a_of_type_Bcfj.jdField_a_of_type_Int = 0;
+          if (QLog.isColorLevel()) {
+            QLog.d("BaseShortVideoOprerator", 2, "onsend success!");
+          }
+          i = BaseShortVideoOprerator.MultiForwardShortVideoTask.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask);
+          if (i == 0) {
+            this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.this$0.a(3, 0, this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.b);
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_Bcfj.jdField_a_of_type_Int = -1;
+          this.jdField_a_of_type_Bcfj.jdField_a_of_type_Ayxt = new ayxt();
+          this.jdField_a_of_type_Bcfj.jdField_a_of_type_Ayxt.b = paramayyu.jdField_a_of_type_JavaLangString;
+          this.jdField_a_of_type_Bcfj.jdField_a_of_type_Ayxt.jdField_a_of_type_Int = paramayyu.b;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("BaseShortVideoOprerator", 2, "onsend fail! err:" + paramayyu.jdField_a_of_type_JavaLangString);
+        }
       }
-      localBundle.putString("Cookie", String.format("uin=%s;skey=%s", new Object[] { str, localObject }));
-      localBundle.putString("Referer", "http://qun.qq.com");
-      localHashMap.put("BUNDLE", localBundle);
-      localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
-      paramQQAppInterface = new bcky("http://qun.qq.com/cgi-bin/qun/web/kewen/get_kewen_info", "POST", parambckx, paramInt, localBundle);
-      paramQQAppInterface.a(localHashMap);
-      return paramQQAppInterface;
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.size() - i) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.a();
+      }
     }
   }
 }

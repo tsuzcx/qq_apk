@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import org.json.JSONObject;
 
-public final class arch
-  implements Parcelable.Creator<WeiYunFileInfo>
+public class arch
 {
-  public WeiYunFileInfo a(Parcel paramParcel)
-  {
-    return new WeiYunFileInfo(paramParcel);
-  }
+  public boolean a;
   
-  public WeiYunFileInfo[] a(int paramInt)
+  public static arch a(String paramString)
   {
-    return new WeiYunFileInfo[paramInt];
+    arch localarch = new arch();
+    try
+    {
+      localarch.a = new JSONObject(paramString).optBoolean("test_crash_enabled", false);
+      return localarch;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arch
  * JD-Core Version:    0.7.0.1
  */

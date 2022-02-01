@@ -1,0 +1,25 @@
+package io.flutter.embedding.engine.loader;
+
+import androidx.annotation.Nullable;
+
+public class FlutterLoader$Settings
+{
+  private String logTag;
+  
+  @Nullable
+  public String getLogTag()
+  {
+    return this.logTag;
+  }
+  
+  public void setLogTag(String paramString)
+  {
+    this.logTag = paramString;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     io.flutter.embedding.engine.loader.FlutterLoader.Settings
+ * JD-Core Version:    0.7.0.1
+ */

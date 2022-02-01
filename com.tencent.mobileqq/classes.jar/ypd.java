@@ -1,38 +1,18 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import java.util.List;
+import android.widget.TextView;
 
-public class ypd
-  extends FragmentPagerAdapter
+class ypd
+  implements wim
 {
-  public ypd(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
-  {
-    super(paramFragmentManager);
-  }
+  ypd(ypb paramypb, TextView paramTextView) {}
   
-  public int getCount()
+  public void a(String paramString, int paramInt)
   {
-    return RelativePersonalBottomView.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
-      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131706305) + paramInt + "%");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ypd
  * JD-Core Version:    0.7.0.1
  */

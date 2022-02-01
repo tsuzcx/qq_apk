@@ -1,16 +1,13 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
-
-public class asfy
-  implements Handler.Callback
+class asfy
+  extends asgf
 {
-  public asfy(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  asfy(asfu paramasfu) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected void c(boolean paramBoolean)
   {
-    this.a.a(paramMessage);
-    return false;
+    if (paramBoolean) {
+      asfu.a(this.a);
+    }
   }
 }
 

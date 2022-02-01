@@ -4,32 +4,32 @@ import com.tencent.tav.coremedia.CMTimeRange;
 
 public class TAVStickerLayerInfo$TAVStickerUserData
 {
-  private String mData = "";
-  private CMTimeRange mTimeRange = CMTimeRange.CMTimeRangeInvalid;
+  private String data = "";
+  private CMTimeRange timeRange = CMTimeRange.CMTimeRangeInvalid;
   
   public TAVStickerLayerInfo$TAVStickerUserData(CMTimeRange paramCMTimeRange, String paramString)
   {
     if (paramCMTimeRange != null) {
-      this.mTimeRange = paramCMTimeRange;
+      this.timeRange = paramCMTimeRange;
     }
     if (paramString != null) {
-      this.mData = paramString;
+      this.data = paramString;
     }
   }
   
   public String getData()
   {
-    return this.mData;
+    return this.data;
   }
   
   public CMTimeRange getTimeRange()
   {
-    return this.mTimeRange;
+    return this.timeRange;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerLayerInfo.TAVStickerUserData
  * JD-Core Version:    0.7.0.1
  */

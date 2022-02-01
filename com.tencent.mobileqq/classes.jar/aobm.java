@@ -1,21 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class aobm
-  implements bdts
+  implements EIPCResultCallback
 {
-  aobm(aobk paramaobk, int paramInt) {}
+  aobm(aobl paramaobl, String paramString) {}
   
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  private void a(EIPCResult paramEIPCResult)
   {
-    paramQQAppInterface = bdwp.a(this.jdField_a_of_type_Aobk.a.getApp(), this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "playRingId.onCompleted: invoked. ", " wavPath: ", paramQQAppInterface });
+    switch (paramEIPCResult.code)
+    {
+    default: 
+      aobl.a(this.jdField_a_of_type_Aobl).a();
+      return;
     }
-    aobk.a(this.jdField_a_of_type_Aobk, paramQQAppInterface);
+    aobl.a(this.jdField_a_of_type_Aobl).a(this.jdField_a_of_type_JavaLangString);
   }
   
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
+  private boolean a(EIPCResult paramEIPCResult)
+  {
+    return (paramEIPCResult == null) || (paramEIPCResult.data == null) || (aobl.a(this.jdField_a_of_type_Aobl) == null);
+  }
+  
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if (a(paramEIPCResult))
+    {
+      QLog.e("ThirdPartyLoginUtilImpl", 1, "toWtLoginOnOpenSdk callback params error");
+      return;
+    }
+    QLog.d("ThirdPartyLoginUtilImpl", 1, "code=" + paramEIPCResult.code + " ssoResult=" + paramEIPCResult.data.getInt("key_sso_ret"));
+    a(paramEIPCResult);
+  }
 }
 
 

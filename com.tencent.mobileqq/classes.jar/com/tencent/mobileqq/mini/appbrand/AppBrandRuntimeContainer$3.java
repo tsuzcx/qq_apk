@@ -1,0 +1,22 @@
+package com.tencent.mobileqq.mini.appbrand;
+
+import com.tencent.mobileqq.mini.appbrand.ui.DebugLayout;
+
+class AppBrandRuntimeContainer$3
+  implements Runnable
+{
+  AppBrandRuntimeContainer$3(AppBrandRuntimeContainer paramAppBrandRuntimeContainer) {}
+  
+  public void run()
+  {
+    if (AppBrandRuntimeContainer.access$000(this.this$0) != null) {
+      AppBrandRuntimeContainer.access$000(this.this$0).setVisibility(4);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.mini.appbrand.AppBrandRuntimeContainer.3
+ * JD-Core Version:    0.7.0.1
+ */

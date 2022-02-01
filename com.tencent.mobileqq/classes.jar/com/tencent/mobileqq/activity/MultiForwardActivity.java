@@ -1,13 +1,25 @@
 package com.tencent.mobileqq.activity;
 
-import afcw;
+import Override;
+import agjh;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.view.MotionEvent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class MultiForwardActivity
   extends ChatActivity
 {
-  public afcw a = new afcw();
+  public agjh a = new agjh();
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
@@ -38,10 +50,17 @@ public class MultiForwardActivity
   }
   
   public void doOnWindowFocusChanged(boolean paramBoolean) {}
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MultiForwardActivity
  * JD-Core Version:    0.7.0.1
  */

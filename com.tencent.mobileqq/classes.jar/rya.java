@@ -1,39 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
 
 public class rya
+  implements Animation.AnimationListener
 {
-  private static rya a;
+  public rya(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
   
-  public static rya a()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    try
-    {
-      if (a == null) {
-        a = new rya();
-      }
-      rya localrya = a;
-      return localrya;
-    }
-    finally {}
+    VideoFeedsAioGuideView.b(this.a).setStartOffset(360L);
   }
   
-  public void a(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rya
  * JD-Core Version:    0.7.0.1
  */

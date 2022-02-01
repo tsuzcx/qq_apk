@@ -1,53 +1,28 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class tnq
-  extends tnn
+  implements rqa
 {
-  private String a;
+  public tnq(BridgeModule paramBridgeModule, long paramLong, String paramString) {}
   
-  public tnq(tmj paramtmj)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    super(paramtmj);
-  }
-  
-  public List<tmv> a(ArrayList paramArrayList)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0) && ((paramArrayList.get(0) instanceof stSimpleMetaFeed))) {
-      this.a = ((stSimpleMetaFeed)paramArrayList.get(0)).id;
+    if (!paramList.isEmpty()) {
+      BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_Long, paramList, this.jdField_a_of_type_JavaLangString, 0, "");
     }
-    return tms.a().a(paramArrayList);
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.a(paramViewHolder, paramInt);
-    tlo.d("WSVerticalForMiniAppPresenter", "WSVerticalForMiniAppPresenter onPageSelected: " + paramInt);
-    if ((paramViewHolder instanceof tnj))
-    {
-      paramViewHolder = new ygc(4, new Object[] { Integer.valueOf(paramInt), ((tnj)paramViewHolder).a });
-      umc.a().dispatch(paramViewHolder);
+    while (!QLog.isColorLevel()) {
+      return;
     }
-  }
-  
-  public void a(String paramString, tmr paramtmr)
-  {
-    paramString = new the(new tkg(paramString), null, new tnr(this, paramtmr), 4002);
-    tgx.a().a(paramString);
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a(this.a, this);
-    return true;
+    QLog.i(BridgeModule.TAG, 2, "getUploadingVideoList,ugcVideoList.isEmpty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tnq
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,10 @@ package com.app.hubert.guide.lifecycle;
 
 import android.app.Fragment;
 import com.app.hubert.guide.util.LogUtil;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportFragment;
 
 public class ListenerFragment
-  extends Fragment
+  extends ReportFragment
 {
   FragmentLifecycle mFragmentLifecycle;
   
@@ -49,7 +50,7 @@ public class ListenerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.app.hubert.guide.lifecycle.ListenerFragment
  * JD-Core Version:    0.7.0.1
  */

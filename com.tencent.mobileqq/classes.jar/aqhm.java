@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.IBaseActionListener.Stub;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
 
-final class aqhm
-  implements DialogInterface.OnClickListener
+@Deprecated
+public abstract class aqhm
+  extends IBaseActionListener.Stub
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg);
+  
+  public void onActionResult(FromServiceMsg paramFromServiceMsg) {}
+  
+  public void onRecvFromMsg(FromServiceMsg paramFromServiceMsg)
   {
-    paramDialogInterface.dismiss();
+    a((ToServiceMsg)paramFromServiceMsg.attributes.get(FromServiceMsg.class.getSimpleName()), paramFromServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqhm
  * JD-Core Version:    0.7.0.1
  */

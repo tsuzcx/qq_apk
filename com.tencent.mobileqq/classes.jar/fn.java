@@ -1,134 +1,41 @@
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import com.etrump.mixlayout.ETDecoration;
-import com.etrump.mixlayout.ETEngine;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.etrump.mixlayout.AnimatedImageDrawable;
 
 public class fn
+  extends fk
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<fh> jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  
-  public int a()
+  public fn(Drawable paramDrawable)
   {
-    return this.d;
+    super(paramDrawable);
   }
   
-  public fh a(int paramInt)
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    int j = this.jdField_a_of_type_Int;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = j;
-    while (localIterator.hasNext())
-    {
-      fh localfh = (fh)localIterator.next();
-      i += localfh.c();
-      if ((j <= paramInt) && (paramInt < i)) {
-        return localfh;
-      }
-      j = i;
+    paramPaint = getDrawable();
+    paramCharSequence = paramPaint;
+    if ((paramPaint instanceof AnimatedImageDrawable)) {
+      paramCharSequence = ((AnimatedImageDrawable)paramPaint).a();
     }
-    return null;
-  }
-  
-  public ArrayList<fh> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      fh localfh = (fh)localIterator.next();
-      localfh.a(paramCanvas, paramInt1, paramInt2, this.d);
-      paramInt1 += localfh.c();
+    if (paramCharSequence == null) {
+      return;
     }
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, paramInt5 - getDrawable().getBounds().height());
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
   
-  public void a(ETEngine paramETEngine, int paramInt1, int paramInt2, int paramInt3)
+  public Drawable getDrawable()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = 0;
-    this.d = paramInt3;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      fh localfh = (fh)localIterator.next();
-      if (localfh.d() > this.d) {
-        this.d = localfh.d();
-      }
-      paramInt1 = this.c;
-      this.c = (localfh.c() + paramInt1);
-    }
-    this.e = 0;
-    localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      paramInt1 = ((fh)localIterator.next()).a(paramETEngine);
-      if (paramInt1 > this.e) {
-        this.e = paramInt1;
-      }
-    }
-  }
-  
-  public void a(ETEngine paramETEngine, Bitmap paramBitmap, ETDecoration paramETDecoration, int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      fh localfh = (fh)localIterator.next();
-      localfh.a(paramETEngine, paramBitmap, paramETDecoration, paramInt1, this.d - localfh.d() + paramInt2 - (this.e - localfh.a(paramETEngine)));
-      paramInt1 += localfh.c();
-    }
-  }
-  
-  public void a(fh paramfh)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramfh);
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public void b(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      fh localfh = (fh)localIterator.next();
-      localfh.b(paramCanvas, paramInt1, paramInt2, this.d);
-      paramInt1 += localfh.c();
-    }
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int d()
-  {
-    return this.b;
-  }
-  
-  public int e()
-  {
-    return this.e;
+    return super.getDrawable();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     fn
  * JD-Core Version:    0.7.0.1
  */

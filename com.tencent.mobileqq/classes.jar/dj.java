@@ -1,41 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.dataline.mpfile.MpfileTaskInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.List;
 
-public final class dj
-  implements Parcelable.Creator<MpfileTaskInfo>
+public class dj
 {
-  public MpfileTaskInfo a(Parcel paramParcel)
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public boolean b = true;
+  public boolean c = false;
+  
+  public dj()
   {
-    MpfileTaskInfo localMpfileTaskInfo = new MpfileTaskInfo();
-    localMpfileTaskInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localMpfileTaskInfo.jdField_g_of_type_Int = paramParcel.readInt();
-    localMpfileTaskInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.h = paramParcel.readString();
-    localMpfileTaskInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_d_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_e_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_f_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_g_of_type_Long = paramParcel.readLong();
-    return localMpfileTaskInfo;
+    this.jdField_a_of_type_JavaLangString = "Printer";
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public MpfileTaskInfo[] a(int paramInt)
+  public boolean a(List<FileInfo> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    return new MpfileTaskInfo[paramInt];
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dj
  * JD-Core Version:    0.7.0.1
  */

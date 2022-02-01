@@ -1,29 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aelq
-  implements DialogInterface.OnClickListener
+  extends aelh
 {
-  public aelq(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aelq(JumpActivity paramJumpActivity)
   {
-    this.a.l();
-    this.a.b(this.a.n);
-    if (VipUtils.b(this.a.app)) {}
-    for (paramDialogInterface = "4";; paramDialogInterface = "3")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, ndd.a(), paramDialogInterface, "1");
-      return;
-    }
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aelq
  * JD-Core Version:    0.7.0.1
  */

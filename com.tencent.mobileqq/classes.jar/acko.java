@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.gdtad.api.GdtAd;
 
-public final class acko
-  implements DialogInterface.OnClickListener
+public abstract interface acko
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    mtq.b();
-  }
+  public abstract void onAdClicked(GdtAd paramGdtAd);
+  
+  public abstract void onAdClosed(GdtAd paramGdtAd);
+  
+  public abstract void onAdFailedToLoad(GdtAd paramGdtAd, ackn paramackn);
+  
+  public abstract void onAdImpression(GdtAd paramGdtAd);
+  
+  public abstract void onAdLoaded(GdtAd paramGdtAd);
 }
 
 

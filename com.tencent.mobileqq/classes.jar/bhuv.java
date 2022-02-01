@@ -1,54 +1,41 @@
-import android.database.DataSetObserver;
-import android.os.Parcelable;
-import android.widget.Adapter;
-import com.tencent.widget.AdapterView;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class bhuv
-  extends DataSetObserver
+  implements View.OnTouchListener
 {
-  private Parcelable jdField_a_of_type_AndroidOsParcelable;
+  public bhuv(ClearableEditText paramClearableEditText) {}
   
-  public bhuv(AdapterView paramAdapterView) {}
-  
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidOsParcelable = null;
-  }
-  
-  public void onChanged()
-  {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mDataChanged = true;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().getCount();
-    if ((this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().hasStableIds()) && (this.jdField_a_of_type_AndroidOsParcelable != null) && (this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount == 0) && (this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount > 0))
-    {
-      AdapterView.access$000(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidOsParcelable);
-      this.jdField_a_of_type_AndroidOsParcelable = null;
-    }
+    int i = 1;
+    if (this.a.getCompoundDrawables()[2] == null) {}
+    label107:
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.checkFocus();
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.requestLayout();
-      return;
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.rememberSyncState();
+      return false;
+      if (paramMotionEvent.getAction() == 1)
+      {
+        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
+        for (;;)
+        {
+          if (i == 0) {
+            break label107;
+          }
+          this.a.setText("");
+          this.a.setClearButtonVisible(false);
+          if (this.a.jdField_a_of_type_Bhuy == null) {
+            break;
+          }
+          this.a.jdField_a_of_type_Bhuy.m();
+          return false;
+          i = 0;
+        }
+      }
     }
-  }
-  
-  public void onInvalidated()
-  {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mDataChanged = true;
-    if (this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().hasStableIds()) {
-      this.jdField_a_of_type_AndroidOsParcelable = AdapterView.access$100(this.jdField_a_of_type_ComTencentWidgetAdapterView);
-    }
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount = 0;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mSelectedPosition = -1;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mSelectedRowId = -9223372036854775808L;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNextSelectedPosition = -1;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNextSelectedRowId = -9223372036854775808L;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNeedSync = false;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.checkFocus();
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.requestLayout();
   }
 }
 

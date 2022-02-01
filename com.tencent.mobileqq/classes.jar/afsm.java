@@ -1,17 +1,44 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
-class afsm
-  extends afuf
+public class afsm
+  extends anmu
 {
-  afsm(afpy paramafpy)
+  public afsm(ActivateFriendGrid paramActivateFriendGrid) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    super(paramafpy, null);
+    int i = 0;
+    for (;;)
+    {
+      if (i < ActivateFriendGrid.a(this.a).size())
+      {
+        String str = String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin);
+        if (paramString.equals(str))
+        {
+          paramString = bglf.b(ActivateFriendGrid.a(this.a), str, false);
+          ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(paramString);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
+    }
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new agey(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    int i = 0;
+    while (i < ActivateFriendGrid.a(this.a).size())
+    {
+      String str = bglf.j(ActivateFriendGrid.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin));
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(str);
+      i += 1;
+    }
   }
 }
 

@@ -1,11 +1,25 @@
 package com.tencent.theme;
 
-class j
+import android.content.Context;
+import java.lang.reflect.Method;
+
+public class j
 {
-  int a;
-  String b;
-  int c;
-  String d;
+  public static String a(Context paramContext, String paramString)
+  {
+    try
+    {
+      paramContext = paramContext.getClassLoader().loadClass("android.os.SystemProperties");
+      paramContext = (String)paramContext.getMethod("get", new Class[] { String.class }).invoke(paramContext, new Object[] { new String(paramString) });
+      return paramContext;
+    }
+    catch (IllegalArgumentException paramContext)
+    {
+      throw paramContext;
+    }
+    catch (Exception paramContext) {}
+    return "";
+  }
 }
 
 

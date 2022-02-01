@@ -1,110 +1,77 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import android.os.Handler;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback.1;
+import com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback.2;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
 public class asex
-  extends aryv
+  implements ayxc, ayyq
 {
-  public asex(Intent paramIntent)
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+  private WeakReference<asey> jdField_a_of_type_MqqUtilWeakReference;
+  
+  public asex(MessageForPic paramMessageForPic, Handler paramHandler, asey paramasey)
   {
-    super(paramIntent);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramasey);
   }
   
-  protected boolean a(bdjz parambdjz)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, ayxy paramayxy)
   {
-    int i = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 164.0F);
-    int j = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 265.0F);
-    int k = Color.parseColor("#e1e1e5");
-    Object localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
-    ((LinearLayout)localObject1).setOrientation(1);
-    Object localObject2 = new LinearLayout.LayoutParams(-2, -2);
-    ((LinearLayout.LayoutParams)localObject2).gravity = 1;
-    Object localObject3 = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
-    Object localObject4 = new LinearLayout.LayoutParams(i, j);
-    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidAppActivity);
-    localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    ((RelativeLayout)localObject3).addView(localURLImageView, new RelativeLayout.LayoutParams(-1, -1));
-    Object localObject5 = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    ((ImageView)localObject5).setScaleType(ImageView.ScaleType.FIT_XY);
-    ((ImageView)localObject5).setImageResource(2130839404);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    int m = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 8.0F);
-    localLayoutParams.setMargins(0, m, m, 0);
-    localLayoutParams.addRule(10);
-    localLayoutParams.addRule(11);
-    ((RelativeLayout)localObject3).addView((View)localObject5, localLayoutParams);
-    ((LinearLayout)localObject1).addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
-    localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("key_source_name");
-    if (!TextUtils.isEmpty((CharSequence)localObject3))
-    {
-      localObject4 = new TextView(this.jdField_a_of_type_AndroidAppActivity);
-      ((TextView)localObject4).setTextColor(-7829368);
-      ((TextView)localObject4).setTextSize(1, 12.0F);
-      localObject5 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject5).topMargin = bdaq.a(this.jdField_a_of_type_AndroidAppActivity, 5.0F);
-      ((LinearLayout.LayoutParams)localObject5).gravity = 3;
-      ((TextView)localObject4).setText((CharSequence)localObject3);
-      ((LinearLayout)localObject1).addView((View)localObject4, (ViewGroup.LayoutParams)localObject5);
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
+      QLog.d("EmotionDownGIFCallback", 1, "onDownload fail, callback is null");
     }
-    parambdjz.addView((View)localObject1, (LinearLayout.LayoutParams)localObject2);
-    parambdjz = this.jdField_a_of_type_AndroidOsBundle.getString("key_thumb_url");
-    try
+    do
     {
-      localObject1 = new ColorDrawable(k);
-      localURLImageView.setImageDrawable((Drawable)localObject1);
-      localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = i;
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = j;
-      parambdjz = URLDrawable.getDrawable(parambdjz, (URLDrawable.URLDrawableOptions)localObject2);
-      if (parambdjz.getStatus() == 2) {
-        parambdjz.restartDownload();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onDownload ", Integer.valueOf(paramayxy.jdField_a_of_type_Int) });
       }
-      localURLImageView.setImageDrawable(parambdjz);
-    }
-    catch (Exception parambdjz)
-    {
-      for (;;)
+      if (paramayxy.jdField_a_of_type_Int == 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqstory.troopstory.share", 2, "addStructView:", parambdjz);
-        }
+        ((asey)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+        return;
       }
+    } while (-1 != paramayxy.jdField_a_of_type_Int);
+    if (paramayxy.jdField_a_of_type_Ayxt != null) {
+      QLog.d("EmotionDownGIFCallback", 1, new Object[] { "onDownloadFail errDec:", paramayxy.jdField_a_of_type_Ayxt.b });
     }
-    return true;
+    ((asey)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
   }
   
-  protected boolean c()
+  public void a(int paramInt, ArrayList<ayxy> paramArrayList) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    localIntent = aepi.a(localIntent, null);
-    localIntent.putExtra("isBack2Root", true);
-    ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    return true;
+    this.jdField_a_of_type_AndroidOsHandler.post(new EmotionDownGIFCallback.2(this, paramInt));
   }
+  
+  public void a(ayxd paramayxd)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new EmotionDownGIFCallback.1(this, paramayxd));
+  }
+  
+  public void a_(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onUpdateProgress:", paramInt + " needRefresh:" + paramBoolean, " picMr:", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq) });
+    }
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
+      ((asey)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramInt, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    }
+  }
+  
+  public void b(int paramInt, ayxy paramayxy) {}
+  
+  public void c(int paramInt, ayxy paramayxy) {}
+  
+  public void d(int paramInt, ayxy paramayxy) {}
 }
 
 

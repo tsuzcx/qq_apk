@@ -1,37 +1,23 @@
-public class upj
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+
+final class upj
+  implements bihh
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  
-  public upj(int paramInt, String paramString)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      biti.a().a(2131718007);
+    }
+    WXShareHelper.a().b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     upj
  * JD-Core Version:    0.7.0.1
  */

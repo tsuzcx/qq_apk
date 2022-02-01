@@ -1,28 +1,54 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.1;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.1.1;
-import com.tencent.widget.AbsListView;
+import android.app.Dialog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class apzc
-  implements bhtv
+  implements View.OnClickListener
 {
-  public apzc(SystemAndEmojiUniversalPanel.1.1 param1) {}
+  public apzc(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0, paramAbsListView);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) || (paramInt == 2))
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
     {
-      URLDrawable.resume();
-      SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0, this.a.jdField_a_of_type_JavaUtilList, SystemAndEmojiUniversalPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiUniversalPanel$1.this$0));
-      return;
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidAppDialog = null;
     }
-    URLDrawable.pause();
+    if (this.a.jdField_a_of_type_Int == 0)
+    {
+      bcst.b(this.a.app, "CliOper", "", "", "0X80064E3", "0X80064E3", 0, 0, "", "", "", "");
+      if ((!this.a.jdField_a_of_type_Boolean) || (!this.a.b) || (this.a.isFinishing())) {
+        break label176;
+      }
+      this.a.finish();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.getIntent().getIntExtra("source_activity", 0) != 1) {
+        break;
+      }
+      bcst.b(this.a.app, "CliOper", "", "", "0X80064EE", "0X80064EE", 0, 0, "", "", "", "");
+      break;
+      label176:
+      if (this.a.c)
+      {
+        aqaj.a(this.a.app.getCurrentAccountUin(), -1);
+        this.a.c = false;
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId))) {
+        this.a.finish();
+      } else {
+        BusinessCardEditActivity.a(this.a, false, true, true);
+      }
+    }
   }
 }
 

@@ -1,19 +1,22 @@
 package cooperation.groupvideo;
 
-import alud;
+import Override;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import bety;
-import bips;
-import bipt;
-import biqn;
-import biqw;
+import android.view.MotionEvent;
+import anni;
+import biau;
+import bldh;
+import bldi;
+import blfh;
+import blfq;
 import com.tencent.mobileqq.activity.fling.FlingHandler;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.plugin.PluginInfo;
 
 public class GVideoProxyActivity
@@ -23,32 +26,40 @@ public class GVideoProxyActivity
   
   public static Dialog a(Activity paramActivity)
   {
-    paramActivity = new bety(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131298914));
-    paramActivity.a(alud.a(2131705821));
-    paramActivity.setOnDismissListener(new bips());
+    paramActivity = new biau(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131298998));
+    paramActivity.a(anni.a(2131704222));
+    paramActivity.setOnDismissListener(new bldh());
     return paramActivity;
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, String paramString2, int paramInt)
   {
-    biqw localbiqw = new biqw(1);
-    localbiqw.jdField_b_of_type_JavaLangString = "group_video_plugin.apk";
-    localbiqw.d = PluginInfo.k;
-    localbiqw.jdField_a_of_type_JavaLangString = paramString2;
-    localbiqw.e = paramString1;
-    localbiqw.jdField_a_of_type_JavaLangClass = GVideoProxyActivity.class;
+    blfq localblfq = new blfq(1);
+    localblfq.jdField_b_of_type_JavaLangString = "group_video_plugin.apk";
+    localblfq.d = PluginInfo.k;
+    localblfq.jdField_a_of_type_JavaLangString = paramString2;
+    localblfq.e = paramString1;
+    localblfq.jdField_a_of_type_JavaLangClass = GVideoProxyActivity.class;
     paramString1 = paramIntent;
     if (paramIntent == null) {
       paramString1 = new Intent();
     }
-    localbiqw.jdField_a_of_type_AndroidContentIntent = paramString1;
-    localbiqw.jdField_a_of_type_AndroidAppDialog = paramDialog;
-    localbiqw.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
-    localbiqw.jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
-    localbiqw.jdField_b_of_type_Int = paramInt;
-    localbiqw.c = 20000;
-    localbiqw.f = null;
-    biqn.a(paramActivity, localbiqw);
+    localblfq.jdField_a_of_type_AndroidContentIntent = paramString1;
+    localblfq.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    localblfq.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
+    localblfq.jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
+    localblfq.jdField_b_of_type_Int = paramInt;
+    localblfq.c = 20000;
+    localblfq.f = null;
+    blfh.a(paramActivity, localblfq);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public String getPluginID()
@@ -67,12 +78,13 @@ public class GVideoProxyActivity
     if ((isWrapContent()) && (this.a != null)) {
       this.a.onConfigurationChanged(paramConfiguration);
     }
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     if (getIntent().getExtras() != null) {
-      this.a = new bipt(this);
+      this.a = new bldi(this);
     }
     super.onCreate(paramBundle);
   }
@@ -85,7 +97,7 @@ public class GVideoProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.groupvideo.GVideoProxyActivity
  * JD-Core Version:    0.7.0.1
  */

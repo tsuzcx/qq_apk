@@ -1,61 +1,34 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-class ahxk
-  implements abwu
+public class ahxk
+  extends ahxe
 {
-  ahxk(ahww paramahww, String paramString) {}
+  public afxn a;
+  public Bitmap a;
+  public boolean a;
+  public Drawable[] a;
   
-  public void onComplete()
+  public ahxk(String paramString)
   {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onComplete");
+    super(paramString);
   }
   
-  public void onFailure(int paramInt, String paramString)
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    if ((ahww.a(this.jdField_a_of_type_Ahww).isFinishing()) || (this.jdField_a_of_type_Ahww.b))
+    if (paramRedPacketInfo != null)
     {
-      QLog.d("SDKEmotionSettingManager", 1, "check api, acitivty finish or timeout");
-      return;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      this.jdField_a_of_type_Afxn = paramRedPacketInfo.jdField_a_of_type_Afxn;
+      this.jdField_a_of_type_Boolean = paramRedPacketInfo.b;
     }
-    this.jdField_a_of_type_Ahww.c();
-    if (ahww.a(this.jdField_a_of_type_Ahww) != null) {
-      ahww.a(this.jdField_a_of_type_Ahww).removeCallbacks(ahww.a(this.jdField_a_of_type_Ahww));
-    }
-    this.jdField_a_of_type_Ahww.a(alud.a(2131713994), this.jdField_a_of_type_JavaLangString);
   }
   
-  public void onPermission(int paramInt)
+  public boolean a()
   {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    if ((ahww.a(this.jdField_a_of_type_Ahww).isFinishing()) || (this.jdField_a_of_type_Ahww.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Ahww.c();
-    if (ahww.a(this.jdField_a_of_type_Ahww) != null) {
-      ahww.a(this.jdField_a_of_type_Ahww).removeCallbacks(ahww.a(this.jdField_a_of_type_Ahww));
-    }
-    this.jdField_a_of_type_Ahww.a(alud.a(2131713995), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onSuccess");
-    if ((ahww.a(this.jdField_a_of_type_Ahww).isFinishing()) || (this.jdField_a_of_type_Ahww.b)) {
-      return;
-    }
-    if (ahww.a(this.jdField_a_of_type_Ahww) != null) {
-      ahww.a(this.jdField_a_of_type_Ahww).removeCallbacks(ahww.a(this.jdField_a_of_type_Ahww));
-    }
-    ahww.b(this.jdField_a_of_type_Ahww);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onTrigger");
+    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) || (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null);
   }
 }
 

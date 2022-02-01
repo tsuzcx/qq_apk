@@ -3,7 +3,7 @@ package com.tencent.mobileqq.troop.activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhuf;
+import bkho;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -11,14 +11,14 @@ import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import java.io.File;
 import java.net.URL;
-import ndi;
-import ndq;
-import yak;
+import nmb;
+import nmj;
+import zuc;
 
 class TroopAvatarWallPreviewActivity$8
   implements Runnable
 {
-  TroopAvatarWallPreviewActivity$8(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, bhuf parambhuf) {}
+  TroopAvatarWallPreviewActivity$8(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, bkho parambkho) {}
   
   public void run()
   {
@@ -39,17 +39,17 @@ class TroopAvatarWallPreviewActivity$8
       {
         ((Bundle)localObject).putString("Cookie", str2);
         if (QLog.isColorLevel()) {
-          QLog.d("TroopAvatarWallPreviewActivity", 2, "Get cookie: " + ndq.c(str2, new String[0]) + " from " + ndq.b(str1, new String[0]));
+          QLog.d("TroopAvatarWallPreviewActivity", 2, "Get cookie: " + nmj.c(str2, new String[0]) + " from " + nmj.b(str1, new String[0]));
         }
       }
-      localObject = ndi.a(BaseApplication.getContext(), str1, (Bundle)localObject);
+      localObject = nmb.a(BaseApplication.getContext(), str1, (Bundle)localObject);
       if (QLog.isColorLevel()) {
         QLog.d("TroopAvatarWallPreviewActivity", 2, "saveTmpImage path = " + (String)localObject);
       }
       this.this$0.d = ((String)localObject);
-      bfwb.a = ndq.b(str1, new String[0]);
+      bjdc.a = nmj.b(str1, new String[0]);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        if (yak.a(Uri.parse("file://" + new File((String)localObject).getAbsolutePath()), this.this$0))
+        if (zuc.a(Uri.parse("file://" + new File((String)localObject).getAbsolutePath()), this.this$0))
         {
           if (QLog.isColorLevel()) {
             QLog.d("TroopAvatarWallPreviewActivity", 2, "has QRCode ");
@@ -59,7 +59,7 @@ class TroopAvatarWallPreviewActivity$8
       }
       for (;;)
       {
-        bfwb.a = null;
+        bjdc.a = null;
         return;
         if (QLog.isColorLevel()) {
           QLog.d("TroopAvatarWallPreviewActivity", 2, "no QRCode ");
@@ -85,7 +85,7 @@ class TroopAvatarWallPreviewActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.8
  * JD-Core Version:    0.7.0.1
  */

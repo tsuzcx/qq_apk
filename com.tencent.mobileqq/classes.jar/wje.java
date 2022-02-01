@@ -1,32 +1,31 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import java.util.ArrayList;
-import java.util.List;
-
 public class wje
-  extends vcb
 {
-  public FeedVideoInfo a;
-  public String a;
-  public List<StoryVideoItem> a;
+  public int a;
+  String jdField_a_of_type_JavaLangString;
+  wqv jdField_a_of_type_Wqv;
+  wqw jdField_a_of_type_Wqw;
+  boolean jdField_a_of_type_Boolean;
+  public int b;
   public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public wje(ErrorMessage paramErrorMessage, String paramString)
+  public wje(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "GetVideoListEvent{mVideoItems=" + this.jdField_a_of_type_JavaUtilList.size() + ", feedId=" + this.jdField_a_of_type_JavaLangString + ", mUnionId=" + this.b + '}' + super.toString();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = (wes.t + paramString1 + ".mp4");
+    this.e = xfe.a(paramString1, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wje
  * JD-Core Version:    0.7.0.1
  */

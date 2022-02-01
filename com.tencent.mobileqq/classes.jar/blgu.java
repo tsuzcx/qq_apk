@@ -1,21 +1,45 @@
-import android.graphics.Bitmap;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.pluginbridge.BridgeHelper;
+import cooperation.pluginbridge.BridgePluginInstallActivity;
 
 public class blgu
-  implements blic
+  extends BroadcastReceiver
 {
-  public blgu(AETemplateInfoFragment paramAETemplateInfoFragment, boolean[] paramArrayOfBoolean, String paramString) {}
-  
-  public void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-    BitmapUtils.saveBitmap(paramBitmap, this.jdField_a_of_type_JavaLangString);
+    paramIntent = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("BridgeHelper", 2, "action:" + paramIntent);
+    }
+    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent))) {}
+    try
+    {
+      paramContext.unregisterReceiver(BridgeHelper.a());
+      BridgeHelper.a(null);
+      if (BridgeHelper.a() != null)
+      {
+        BridgeHelper.a().dismiss();
+        BridgeHelper.a(null);
+      }
+      if ((paramContext instanceof BridgePluginInstallActivity))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("BridgeHelper", 2, "Activity finish!");
+        }
+        ((BridgePluginInstallActivity)paramContext).finish();
+      }
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
+      {
+        paramIntent.printStackTrace();
+      }
+    }
   }
 }
 

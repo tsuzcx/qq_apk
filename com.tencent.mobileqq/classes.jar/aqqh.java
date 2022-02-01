@@ -1,121 +1,152 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.1;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.2;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.3;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.4;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.5;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime.Status;
 
 public class aqqh
-  extends aqru
 {
-  public aqqh(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public aysa a = new aysa(new ArrayList(), new aypi(), new ArrayList(), "", new aypi());
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public static aqqh a(String paramString)
   {
-    super.a(paramInt, paramLong, paramString);
-    arrr.a(paramLong, paramInt, paramString);
-    bkmm.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramInt);
+    aqqh localaqqh = new aqqh();
+    try
+    {
+      localaqqh.a = ayrz.a(paramString);
+      QLog.d("OnlineAutoStatusConfProcessor", 1, "confBean = " + localaqqh.toString());
+      return localaqqh;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("OnlineAutoStatusConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    }
+    return localaqqh;
   }
   
-  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public aypi a(AppRuntime.Status paramStatus, long paramLong)
   {
-    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.G(this.a).a().a(paramLong1, paramString, paramInt, paramLong2);
-    if (localFileManagerEntity == null)
+    if (!aypu.a(this.a.jdField_a_of_type_Aypi))
     {
       if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "OnFileCome,but query FileEntity null,uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + "], strUin[" + arrr.e(paramString) + "], peerType[" + paramInt + "]");
+        QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "getAutoStatusItem is smartItem inValid : onlineStatusIDValue=", Long.valueOf(paramLong) });
       }
-      return;
+      paramStatus = null;
     }
-    this.a.b(localFileManagerEntity);
-    QfileBaseRecentFileTabView.H(this.a).a().c(localFileManagerEntity);
-    QfileBaseRecentFileTabView.d(this.a, new QfileBaseRecentFileTabView.10.3(this));
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    super.a(paramLong, paramString1, paramInt, paramString2);
-    arrr.a(paramLong);
-    this.a.i();
-  }
-  
-  protected void a(arcg paramarcg)
-  {
-    if (paramarcg == null) {}
-    FileManagerEntity localFileManagerEntity;
+    aysb localaysb;
     do
     {
+      return paramStatus;
+      if ((this.a.jdField_b_of_type_Aypi.jdField_a_of_type_MqqAppAppRuntime$Status == paramStatus) && (paramLong == this.a.jdField_b_of_type_Aypi.jdField_a_of_type_Long))
+      {
+        if (aypu.b(this.a.jdField_b_of_type_Aypi))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "getAutoStatusItem smartStatusOnEarth Valid: onlineStatusIDValue=", Long.valueOf(paramLong) });
+          }
+          return this.a.jdField_b_of_type_Aypi;
+        }
+        return null;
+      }
+      Iterator localIterator = this.a.a(true).iterator();
       do
       {
-        return;
-      } while (!(paramarcg.a instanceof FileManagerEntity));
-      localFileManagerEntity = (FileManagerEntity)paramarcg.a;
-    } while ((paramarcg.b == null) || (paramarcg.b.length() <= 0));
-    localFileManagerEntity.strThumbPath = paramarcg.b;
-    QfileBaseRecentFileTabView.C(this.a).a().c(localFileManagerEntity);
-    this.a.i();
-  }
-  
-  protected void a(Boolean paramBoolean, List<OfflineFileInfo> paramList)
-  {
-    QfileBaseRecentFileTabView.a(this.a, paramBoolean, paramList);
-  }
-  
-  protected void a(Integer paramInteger, long paramLong, String paramString)
-  {
-    QfileBaseRecentFileTabView.e(this.a, new QfileBaseRecentFileTabView.10.4(this));
-    arrr.a(paramLong, paramInteger.intValue(), paramString);
-    bkmm.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramInteger.intValue());
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QfileBaseRecentFileTabView.b(this.a, new QfileBaseRecentFileTabView.10.1(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.D(this.a).a().a(paramLong1, paramString1, paramInt1, paramLong2);
-    if (localFileManagerEntity == null)
-    {
-      QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 1, "OnFileCome,but query FileEntity null,uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + "], strUin[" + arrr.e(paramString1) + "], peerType[" + paramInt1 + "]");
-      return;
-    }
-    if (!paramBoolean)
-    {
-      localFileManagerEntity.bDelInFM = false;
-      arrr.a(paramLong2, paramInt2, paramString2);
-      bkmm.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramInt2);
-    }
-    for (;;)
-    {
-      if ((this.a.b == null) || (this.a.b.trim().length() == 0) || (localFileManagerEntity.getCloudType() != 2)) {
-        this.a.b(localFileManagerEntity);
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localaysb = (aysb)localIterator.next();
+      } while ((paramStatus != localaysb.jdField_a_of_type_MqqAppAppRuntime$Status) || (paramLong != localaysb.jdField_a_of_type_Long));
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "getAutoStatusItem item is hide:", Boolean.valueOf(localaysb.jdField_a_of_type_Boolean), " onlineStatusIDValue= ", Long.valueOf(paramLong) });
       }
-      QfileBaseRecentFileTabView.E(this.a).a().c(localFileManagerEntity);
-      QfileBaseRecentFileTabView.c(this.a, new QfileBaseRecentFileTabView.10.2(this, paramLong2));
-      return;
-      paramInt1 = localFileManagerEntity.nOpType;
-      if ((paramInt1 == 4) || (paramInt1 == 20) || (paramInt1 == 6)) {
-        arrr.a(paramLong2);
+      paramStatus = localaysb;
+    } while (!localaysb.jdField_a_of_type_Boolean);
+    return this.a.jdField_b_of_type_Aypi;
+    return null;
+  }
+  
+  public ayse a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    Iterator localIterator = this.a.jdField_b_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      ayse localayse = (ayse)localIterator.next();
+      if (paramString.equals(localayse.jdField_a_of_type_JavaLangString)) {
+        return localayse;
       }
     }
+    return null;
   }
   
-  protected void b()
+  public boolean a()
   {
-    super.b();
-    QfileBaseRecentFileTabView.f(this.a, new QfileBaseRecentFileTabView.10.5(this));
+    boolean bool2 = this.a.a(true).isEmpty();
+    boolean bool1;
+    if ((this.a.jdField_a_of_type_Aypi != null) && (this.a.jdField_a_of_type_Aypi.jdField_a_of_type_Long == 0L))
+    {
+      bool1 = true;
+      boolean bool3 = this.a.jdField_b_of_type_JavaUtilList.isEmpty();
+      boolean bool4 = TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineAutoStatusBean", 2, new Object[] { "configExists: invoked. ", " weatherJumpEmpty: ", Boolean.valueOf(bool4), " weatherEmpty: ", Boolean.valueOf(bool3), " smartEntranceEmpty: ", Boolean.valueOf(bool1), " statusEmpty: ", Boolean.valueOf(bool2) });
+      }
+      if ((!bool2) || (!bool1) || (!bool3) || (!bool4)) {
+        break label173;
+      }
+    }
+    label173:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        break label178;
+      }
+      return true;
+      bool1 = false;
+      break;
+    }
+    label178:
+    return false;
+  }
+  
+  public aypi b(AppRuntime.Status paramStatus, long paramLong)
+  {
+    if (!aypu.a(this.a.jdField_a_of_type_Aypi))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "getAutoStatusItemWithHide is smartItem inValid : onlineStatusIDValue=", Long.valueOf(paramLong) });
+      }
+      return null;
+    }
+    if ((this.a.jdField_b_of_type_Aypi.jdField_a_of_type_MqqAppAppRuntime$Status == paramStatus) && (paramLong == this.a.jdField_b_of_type_Aypi.jdField_a_of_type_Long))
+    {
+      if (aypu.b(this.a.jdField_b_of_type_Aypi))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("OnlineAutoStatusConfProcessor", 2, new Object[] { "getAutoStatusItemWithHide smartStatusOnEarth Valid: onlineStatusIDValue=", Long.valueOf(paramLong) });
+        }
+        return this.a.jdField_b_of_type_Aypi;
+      }
+      return null;
+    }
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      aysb localaysb = (aysb)localIterator.next();
+      if ((paramStatus == localaysb.jdField_a_of_type_MqqAppAppRuntime$Status) && (paramLong == localaysb.jdField_a_of_type_Long)) {
+        return localaysb;
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqqh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import aatd;
-import aate;
-import aatf;
-import aatg;
+import acrx;
+import acry;
+import acrz;
+import acsa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import nud;
+import odh;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location;
 import tencent.im.oidb.qqshop.qq_ad.QQAdGet;
@@ -30,7 +30,7 @@ import tencent.im.oidb.qqshop.qq_ad.QQAdGet.Phone;
 public class EcshopAdHandler$4
   implements Runnable
 {
-  public EcshopAdHandler$4(nud paramnud, List paramList1, List paramList2, boolean paramBoolean, String paramString) {}
+  public EcshopAdHandler$4(odh paramodh, int paramInt, List paramList1, List paramList2, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
@@ -40,25 +40,26 @@ public class EcshopAdHandler$4
       try
       {
         qq_ad.QQAdGet localQQAdGet = new qq_ad.QQAdGet();
+        localQQAdGet.trigger_type.set(this.jdField_a_of_type_Int);
         qq_ad.QQAdGet.Phone localPhone = new qq_ad.QQAdGet.Phone();
-        Object localObject1 = new aate();
-        ((aate)localObject1).jdField_a_of_type_JavaLangString = "cd22b9";
+        Object localObject1 = new acry();
+        ((acry)localObject1).jdField_a_of_type_JavaLangString = "cd22b9";
         long l = System.currentTimeMillis();
-        localObject1 = aatd.a(BaseApplicationImpl.getApplication().getApplicationContext(), (aate)localObject1);
+        localObject1 = acrx.a(BaseApplicationImpl.getApplication().getApplicationContext(), (acry)localObject1);
         if (localObject1 != null)
         {
-          localObject1 = ((aatf)localObject1).a;
+          localObject1 = ((acrz)localObject1).a;
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder().append("get deviceInfo cost：").append(System.currentTimeMillis() - l).append(", result = ");
             if (localObject1 != null) {
               bool = true;
             }
-            QLog.i("EcshopAdHandler", 2, bool);
+            QLog.i("Ecshop_EcshopAdHandler", 2, bool);
           }
           if (localObject1 != null)
           {
-            localPhone.carrier.set(aatg.a(this.this$0.app.getApplication()));
+            localPhone.carrier.set(acsa.a(this.this$0.app.getApplication()));
             localPhone.muid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid.get());
             localPhone.muid_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid_type.get());
             localPhone.conn.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).conn.get());
@@ -78,28 +79,28 @@ public class EcshopAdHandler$4
             if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.has())
             {
               if (QLog.isColorLevel()) {
-                QLog.d("EcshopAdHandler", 2, "---taid_ticket---: " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get());
+                QLog.d("Ecshop_EcshopAdHandler", 2, "---taid_ticket---: " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get());
               }
               localPhone.taid_ticket.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get());
             }
             if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.has())
             {
               if (QLog.isColorLevel()) {
-                QLog.d("EcshopAdHandler", 2, "---aid_ticket---: " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get());
+                QLog.d("Ecshop_EcshopAdHandler", 2, "---aid_ticket---: " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get());
               }
               localPhone.aid_ticket.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get());
             }
             if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_android_id.has())
             {
               if (QLog.isColorLevel()) {
-                QLog.d("EcshopAdHandler", 2, "---md5_android_id---: " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_android_id.get());
+                QLog.d("Ecshop_EcshopAdHandler", 2, "---md5_android_id---: " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_android_id.get());
               }
               localPhone.md5_android_id.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_android_id.get());
             }
             if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_mac.has())
             {
               if (QLog.isColorLevel()) {
-                QLog.d("EcshopAdHandler", 2, "---md5_mac---: " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_mac.get());
+                QLog.d("Ecshop_EcshopAdHandler", 2, "---md5_mac---: " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_mac.get());
               }
               localPhone.md5_mac.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_mac.get());
             }

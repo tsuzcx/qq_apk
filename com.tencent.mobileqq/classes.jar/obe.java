@@ -1,63 +1,82 @@
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.biz.pubaccount.PublicAccountUnfollowTask.1;
+import com.tencent.biz.pubaccount.PublicAccountUnfollowTask.2;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class obe
+  implements pyu
 {
-  public double a;
-  public int a;
-  public long a;
-  public String a;
-  public double b;
-  public int b;
-  public long b;
-  public String b;
-  public double c;
-  public long c;
-  public String c;
-  public double d;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private obf jdField_a_of_type_Obf;
   
-  public static obe a(JSONObject paramJSONObject)
+  public obe(QQAppInterface paramQQAppInterface, String paramString, Context paramContext)
   {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    try
+    this(paramQQAppInterface, paramString, paramContext, null);
+  }
+  
+  public obe(QQAppInterface paramQQAppInterface, String paramString, Context paramContext, obf paramobf)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Obf = paramobf;
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Int >= 3) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null))
     {
-      obe localobe = new obe();
-      try
-      {
-        localobe.jdField_a_of_type_Int = paramJSONObject.optInt("showGesturesAdType");
-        localobe.jdField_a_of_type_Long = paramJSONObject.optLong("showGesturesAd_beginTime");
-        localobe.jdField_b_of_type_Long = paramJSONObject.optLong("showGesturesAd_endTime");
-        localobe.jdField_a_of_type_JavaLangString = paramJSONObject.optString("DragGoods");
-        localobe.jdField_a_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateH");
-        localobe.jdField_b_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateW");
-        localobe.jdField_c_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateX");
-        localobe.d = paramJSONObject.optDouble("DragGoodsCoordinateY");
-        localobe.jdField_b_of_type_JavaLangString = paramJSONObject.optString("LongPressColor");
-        localobe.jdField_c_of_type_Long = paramJSONObject.optLong("LongPressTime");
-        localobe.jdField_c_of_type_JavaLangString = paramJSONObject.optString("slideColor");
-        localobe.jdField_b_of_type_Int = paramJSONObject.optInt("validSlideLength");
-        return localobe;
-      }
-      catch (Exception localException1)
-      {
-        paramJSONObject = localobe;
-      }
+      QLog.d("PublicAccountUnfollowTask", 2, "retry count reach max value or app = null ! retryCount : " + this.jdField_a_of_type_Int);
+      return;
     }
-    catch (Exception localException2)
+    this.jdField_a_of_type_MqqOsMqqHandler.post(new PublicAccountUnfollowTask.1(this));
+  }
+  
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    if (i < 3)
     {
-      for (;;)
-      {
-        paramJSONObject = null;
-      }
+      QLog.d("PublicAccountUnfollowTask", 2, "unfollow account fail ! uin : " + this.jdField_a_of_type_JavaLangString + " , errCode : " + paramInt + ", retry : " + this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new PublicAccountUnfollowTask.2(this));
     }
-    localException1.printStackTrace();
-    return paramJSONObject;
+    while (this.jdField_a_of_type_Obf == null) {
+      return;
+    }
+    this.jdField_a_of_type_Obf.a(false, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramBoolean)
+    {
+      QLog.d("PublicAccountUnfollowTask", 2, "unfollow account success ! uin : " + paramString + ",retry : " + this.jdField_a_of_type_Int);
+      paramInt = tzo.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      aldk.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_JavaLangString, 1008);
+      ((pmm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(163)).a().e();
+      if (this.jdField_a_of_type_Obf != null) {
+        this.jdField_a_of_type_Obf.a(true, paramString);
+      }
+      return;
+    }
+    a(-1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     obe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,168 +1,27 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.MiniScanDecodeSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.MiniScanDetectModeData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
+import oicq.wlogin_sdk.tools.util;
 
-public class aplj
-  extends apld
+class aplj
+  extends WtloginObserver
 {
-  private int a;
-  private boolean d;
+  aplj(aplh paramaplh, aplk paramaplk) {}
   
-  public aplj(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.minidetect.model_v8.2.0", paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 10085;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return MiniScanDetectModeData.class;
-  }
-  
-  public String a()
-  {
-    return "MiniScanDetectModeData";
-  }
-  
-  public void a()
+  public void OnGetOpenKeyWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, ErrMsg paramErrMsg)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "restoreState");
+      QLog.d("ArkApp.LoginHandler", 2, "OnGetOpenKeyWithoutPasswd userAccount=" + paramString + ", dwSrcAppid=" + paramLong1 + ", dwDstAppid=" + paramLong2 + ", dwMainSigMap=" + paramInt1 + ", ret=" + paramInt2);
     }
-    a().loadState = 0;
-    a().Version = 0;
-    apkr.a(a(), new String[0]);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    super.a(paramLong1, paramLong2);
-    this.a = ((int)(100L * paramLong1 / paramLong2));
-    aneo.a(2, this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "download progress: " + this.a);
-    }
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if (!paramBoolean)
+    aplh.a(this.jdField_a_of_type_Aplh, null);
+    if (paramInt2 == 0)
     {
-      a();
-      aneo.a(2, false);
-    }
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "download finish: " + paramBoolean);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "download success: " + paramString);
-    }
-    if (aner.a(paramString) != 0)
-    {
-      a();
-      aneo.a(2, false);
-    }
-    for (;;)
-    {
-      super.a(paramString);
+      paramArrayOfByte1 = util.buf_to_string(paramArrayOfByte1);
+      paramArrayOfByte2 = util.buf_to_string(paramArrayOfByte2);
+      this.jdField_a_of_type_Aplk.a(paramString, paramLong2, paramArrayOfByte1, paramArrayOfByte2);
       return;
-      aneo.a(2, true);
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Object localObject = a();
-    if ((paramBoolean) && ((localObject instanceof MiniScanDecodeSoData)))
-    {
-      localObject = (MiniScanDecodeSoData)localObject;
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, String.format("restartDownload block_user_download=%b", new Object[] { Boolean.valueOf(((MiniScanDecodeSoData)localObject).block_user_download) }));
-      }
-      if (!((MiniScanDecodeSoData)localObject).block_user_download) {}
-    }
-    do
-    {
-      return;
-      if (!this.d) {
-        this.d = paramBoolean;
-      }
-      super.a(paramBoolean);
-    } while (!QLog.isColorLevel());
-    QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "restartDownload userClick=" + paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public void b(XmlData paramXmlData)
-  {
-    super.b(paramXmlData);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "download begin");
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.d)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "isNetValid2Download by user ");
-      }
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "isNetValid2Download by startup ");
-    }
-    return super.b();
-  }
-  
-  public void c()
-  {
-    boolean bool = arso.a(new File(aner.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "deleteUnZipFile ret: " + bool);
-    }
-  }
-  
-  public boolean e()
-  {
-    if (!this.d)
-    {
-      if (BaseActivity.mAppForground) {}
-      for (boolean bool = false;; bool = true)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "downloadResource later " + bool);
-        }
-        if (!bool) {
-          break;
-        }
-        return false;
-      }
-    }
-    return super.e();
+    this.jdField_a_of_type_Aplk.a(null, 0L, null, null);
   }
 }
 

@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bnle;
+import bqcd;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.NavigationBarInfo;
 import com.tencent.mobileqq.mini.apkg.WindowInfo;
@@ -61,16 +61,17 @@ public class NavigatorBarForMiniGame
       this.mContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.mContainer.setClipChildren(false);
       this.mCapsuleButton = new CapsuleButton(getContext());
-      this.mCapsuleButton.setId(2131364767);
+      this.mCapsuleButton.setId(2131364995);
       localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
       ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
       j = DisplayUtil.dip2px(getContext(), 9.0F);
-      if (bnle.b()) {
+      if (bqcd.b()) {
         i = ImmersiveUtils.getStatusBarHeight(getContext());
       }
       ((RelativeLayout.LayoutParams)localObject).topMargin = (i + j);
       ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.dip2px(getContext(), 12.5F);
       this.mContainer.addView(this.mCapsuleButton, (ViewGroup.LayoutParams)localObject);
+      this.mCapsuleButton.setMoreStatus(1);
       addView(this.mContainer);
       this.mContainer.setBackgroundColor(this.mBackGroundColor);
       changeNavIcon();
@@ -106,7 +107,7 @@ public class NavigatorBarForMiniGame
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mCapsuleButton.getLayoutParams();
     int j = DisplayUtil.dip2px(getContext(), 9.0F);
-    if (bnle.b()) {}
+    if (bqcd.b()) {}
     for (int i = ImmersiveUtils.getStatusBarHeight(getContext());; i = 0)
     {
       localLayoutParams.topMargin = (i + j);
@@ -180,7 +181,7 @@ public class NavigatorBarForMiniGame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.NavigatorBarForMiniGame
  * JD-Core Version:    0.7.0.1
  */

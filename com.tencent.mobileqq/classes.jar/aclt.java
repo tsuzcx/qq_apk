@@ -1,20 +1,14 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.text.TextUtils;
 
-class aclt
-  implements DialogInterface.OnCancelListener
+public final class aclt
 {
-  aclt(acls paramacls) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public boolean a()
   {
-    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
   }
 }
 

@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-class xqh
-  implements View.OnClickListener
+public class xqh
+  implements xrx
 {
-  xqh(xqg paramxqg) {}
+  public xqh(TextureVideoView paramTextureVideoView) {}
   
-  public void onClick(View paramView) {}
+  public boolean a_(xrt paramxrt, int paramInt1, int paramInt2)
+  {
+    if (this.a.a != null) {
+      this.a.a.a_(paramxrt, paramInt1, paramInt2);
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xqh
  * JD-Core Version:    0.7.0.1
  */

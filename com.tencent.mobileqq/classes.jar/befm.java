@@ -1,6 +1,19 @@
-public abstract interface befm
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
+
+final class befm
+  implements QQPermissionCallback
 {
-  public abstract String[] getMultiNameSpace();
+  befm(AppActivity paramAppActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (!this.a.isFinishing()) {
+      bglp.b(this.a);
+    }
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

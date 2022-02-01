@@ -1,15 +1,18 @@
-import android.view.View;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
+import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
 
-public abstract interface bhzs
+public class bhzs
+  implements bhaw
 {
-  public abstract void a();
+  public bhzs(ProfileCardExtendFriendView paramProfileCardExtendFriendView) {}
   
-  public abstract void a(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView, View paramView, int paramInt);
+  public void load(bgyy parambgyy)
+  {
+    this.a.setETTextColorFromClothes(parambgyy);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhzs
  * JD-Core Version:    0.7.0.1
  */

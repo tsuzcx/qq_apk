@@ -1,34 +1,24 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
 
-class msh
-  implements View.OnTouchListener
+public class msh
+  implements DialogInterface.OnClickListener
 {
-  msh(mse parammse) {}
+  public msh(PopupDialog paramPopupDialog) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
-      this.a.a(false, 3);
-      return true;
+    if (PopupDialog.a.b != null) {
+      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
     }
-    catch (Exception paramMotionEvent)
-    {
-      for (;;)
-      {
-        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
-      }
-    }
+    paramDialogInterface.dismiss();
+    PopupDialog.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msh
  * JD-Core Version:    0.7.0.1
  */

@@ -60,7 +60,7 @@ public class ImageDecoder
     //   27: areturn
     //   28: aload_0
     //   29: getfield 94	com/tencent/tav/decoder/ImageDecoder:bitmap	Landroid/graphics/Bitmap;
-    //   32: ifnonnull +30 -> 62
+    //   32: ifnonnull +41 -> 73
     //   35: aload_0
     //   36: aload_0
     //   37: aload_0
@@ -71,72 +71,77 @@ public class ImageDecoder
     //   48: putfield 94	com/tencent/tav/decoder/ImageDecoder:bitmap	Landroid/graphics/Bitmap;
     //   51: aload_0
     //   52: aload_0
-    //   53: getfield 96	com/tencent/tav/decoder/ImageDecoder:sourceImagePath	Ljava/lang/String;
-    //   56: invokestatic 106	com/tencent/tav/decoder/ImageDecoder:readImagePreferRotation	(Ljava/lang/String;)I
-    //   59: putfield 44	com/tencent/tav/decoder/ImageDecoder:preferRotation	I
+    //   53: getfield 94	com/tencent/tav/decoder/ImageDecoder:bitmap	Landroid/graphics/Bitmap;
+    //   56: invokestatic 108	com/tencent/tav/decoder/TAVImageFactory:fixSupportImageConfig	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    //   59: putfield 94	com/tencent/tav/decoder/ImageDecoder:bitmap	Landroid/graphics/Bitmap;
     //   62: aload_0
-    //   63: getfield 94	com/tencent/tav/decoder/ImageDecoder:bitmap	Landroid/graphics/Bitmap;
-    //   66: ifnull +97 -> 163
-    //   69: aload_0
-    //   70: invokestatic 67	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   73: invokevirtual 71	java/lang/Thread:getId	()J
-    //   76: putfield 60	com/tencent/tav/decoder/ImageDecoder:threadId	J
-    //   79: aload_0
-    //   80: invokespecial 110	com/tencent/tav/decoder/ImageDecoder:getImageTextureMatrix	()Landroid/graphics/Matrix;
-    //   83: astore_1
-    //   84: aload_0
-    //   85: new 88	com/tencent/tav/coremedia/TextureInfo
-    //   88: dup
-    //   89: sipush 3553
-    //   92: invokestatic 115	com/tencent/tav/decoder/RenderContext:createTexture	(I)I
-    //   95: sipush 3553
-    //   98: aload_0
-    //   99: getfield 94	com/tencent/tav/decoder/ImageDecoder:bitmap	Landroid/graphics/Bitmap;
-    //   102: invokevirtual 121	android/graphics/Bitmap:getWidth	()I
-    //   105: aload_0
-    //   106: getfield 94	com/tencent/tav/decoder/ImageDecoder:bitmap	Landroid/graphics/Bitmap;
-    //   109: invokevirtual 124	android/graphics/Bitmap:getHeight	()I
-    //   112: aload_1
-    //   113: aload_0
-    //   114: getfield 44	com/tencent/tav/decoder/ImageDecoder:preferRotation	I
-    //   117: invokespecial 127	com/tencent/tav/coremedia/TextureInfo:<init>	(IIIILandroid/graphics/Matrix;I)V
-    //   120: putfield 86	com/tencent/tav/decoder/ImageDecoder:textureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
-    //   123: sipush 3553
-    //   126: aload_0
-    //   127: getfield 86	com/tencent/tav/decoder/ImageDecoder:textureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
-    //   130: getfield 130	com/tencent/tav/coremedia/TextureInfo:textureID	I
-    //   133: invokestatic 136	android/opengl/GLES20:glBindTexture	(II)V
-    //   136: sipush 3553
-    //   139: iconst_0
-    //   140: aload_0
-    //   141: getfield 94	com/tencent/tav/decoder/ImageDecoder:bitmap	Landroid/graphics/Bitmap;
-    //   144: iconst_0
-    //   145: invokestatic 142	android/opengl/GLUtils:texImage2D	(IILandroid/graphics/Bitmap;I)V
-    //   148: sipush 3553
-    //   151: iconst_0
-    //   152: invokestatic 136	android/opengl/GLES20:glBindTexture	(II)V
-    //   155: aload_0
-    //   156: getfield 86	com/tencent/tav/decoder/ImageDecoder:textureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
-    //   159: astore_1
-    //   160: goto -136 -> 24
-    //   163: aconst_null
-    //   164: astore_1
-    //   165: goto -141 -> 24
-    //   168: astore_1
-    //   169: aload_0
-    //   170: monitorexit
-    //   171: aload_1
-    //   172: athrow
+    //   63: aload_0
+    //   64: getfield 96	com/tencent/tav/decoder/ImageDecoder:sourceImagePath	Ljava/lang/String;
+    //   67: invokestatic 112	com/tencent/tav/decoder/ImageDecoder:readImagePreferRotation	(Ljava/lang/String;)I
+    //   70: putfield 44	com/tencent/tav/decoder/ImageDecoder:preferRotation	I
+    //   73: aload_0
+    //   74: getfield 94	com/tencent/tav/decoder/ImageDecoder:bitmap	Landroid/graphics/Bitmap;
+    //   77: ifnull +97 -> 174
+    //   80: aload_0
+    //   81: invokestatic 67	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   84: invokevirtual 71	java/lang/Thread:getId	()J
+    //   87: putfield 60	com/tencent/tav/decoder/ImageDecoder:threadId	J
+    //   90: aload_0
+    //   91: invokespecial 116	com/tencent/tav/decoder/ImageDecoder:getImageTextureMatrix	()Landroid/graphics/Matrix;
+    //   94: astore_1
+    //   95: aload_0
+    //   96: new 88	com/tencent/tav/coremedia/TextureInfo
+    //   99: dup
+    //   100: sipush 3553
+    //   103: invokestatic 121	com/tencent/tav/decoder/RenderContext:createTexture	(I)I
+    //   106: sipush 3553
+    //   109: aload_0
+    //   110: getfield 94	com/tencent/tav/decoder/ImageDecoder:bitmap	Landroid/graphics/Bitmap;
+    //   113: invokevirtual 127	android/graphics/Bitmap:getWidth	()I
+    //   116: aload_0
+    //   117: getfield 94	com/tencent/tav/decoder/ImageDecoder:bitmap	Landroid/graphics/Bitmap;
+    //   120: invokevirtual 130	android/graphics/Bitmap:getHeight	()I
+    //   123: aload_1
+    //   124: aload_0
+    //   125: getfield 44	com/tencent/tav/decoder/ImageDecoder:preferRotation	I
+    //   128: invokespecial 133	com/tencent/tav/coremedia/TextureInfo:<init>	(IIIILandroid/graphics/Matrix;I)V
+    //   131: putfield 86	com/tencent/tav/decoder/ImageDecoder:textureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
+    //   134: sipush 3553
+    //   137: aload_0
+    //   138: getfield 86	com/tencent/tav/decoder/ImageDecoder:textureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
+    //   141: getfield 136	com/tencent/tav/coremedia/TextureInfo:textureID	I
+    //   144: invokestatic 142	android/opengl/GLES20:glBindTexture	(II)V
+    //   147: sipush 3553
+    //   150: iconst_0
+    //   151: aload_0
+    //   152: getfield 94	com/tencent/tav/decoder/ImageDecoder:bitmap	Landroid/graphics/Bitmap;
+    //   155: iconst_0
+    //   156: invokestatic 148	android/opengl/GLUtils:texImage2D	(IILandroid/graphics/Bitmap;I)V
+    //   159: sipush 3553
+    //   162: iconst_0
+    //   163: invokestatic 142	android/opengl/GLES20:glBindTexture	(II)V
+    //   166: aload_0
+    //   167: getfield 86	com/tencent/tav/decoder/ImageDecoder:textureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
+    //   170: astore_1
+    //   171: goto -147 -> 24
+    //   174: aconst_null
+    //   175: astore_1
+    //   176: goto -152 -> 24
+    //   179: astore_1
+    //   180: aload_0
+    //   181: monitorexit
+    //   182: aload_1
+    //   183: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	173	0	this	ImageDecoder
-    //   23	142	1	localObject1	Object
-    //   168	4	1	localObject2	Object
+    //   0	184	0	this	ImageDecoder
+    //   23	153	1	localObject1	Object
+    //   179	4	1	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   2	24	168	finally
-    //   28	62	168	finally
-    //   62	160	168	finally
+    //   2	24	179	finally
+    //   28	73	179	finally
+    //   73	171	179	finally
   }
   
   private Bitmap decodeBitmap(String paramString, CGSize paramCGSize)
@@ -259,18 +264,18 @@ public class ImageDecoder
     //   1: monitorenter
     //   2: aload_1
     //   3: aload_0
-    //   4: getfield 218	com/tencent/tav/decoder/ImageDecoder:timeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
-    //   7: invokevirtual 223	com/tencent/tav/coremedia/CMTimeRange:getDuration	()Lcom/tencent/tav/coremedia/CMTime;
-    //   10: invokevirtual 227	com/tencent/tav/coremedia/CMTime:bigThan	(Lcom/tencent/tav/coremedia/CMTime;)Z
+    //   4: getfield 224	com/tencent/tav/decoder/ImageDecoder:timeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   7: invokevirtual 229	com/tencent/tav/coremedia/CMTimeRange:getDuration	()Lcom/tencent/tav/coremedia/CMTime;
+    //   10: invokevirtual 233	com/tencent/tav/coremedia/CMTime:bigThan	(Lcom/tencent/tav/coremedia/CMTime;)Z
     //   13: ifeq +11 -> 24
-    //   16: getstatic 232	com/tencent/tav/decoder/IDecoder:SAMPLE_TIME_FINISH	Lcom/tencent/tav/coremedia/CMTime;
+    //   16: getstatic 238	com/tencent/tav/decoder/IDecoder:SAMPLE_TIME_FINISH	Lcom/tencent/tav/coremedia/CMTime;
     //   19: astore_1
     //   20: aload_0
     //   21: monitorexit
     //   22: aload_1
     //   23: areturn
     //   24: aload_0
-    //   25: invokespecial 234	com/tencent/tav/decoder/ImageDecoder:createTexture	()Lcom/tencent/tav/coremedia/TextureInfo;
+    //   25: invokespecial 240	com/tencent/tav/decoder/ImageDecoder:createTexture	()Lcom/tencent/tav/coremedia/TextureInfo;
     //   28: pop
     //   29: goto -9 -> 20
     //   32: astore_1
@@ -333,7 +338,7 @@ public class ImageDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.ImageDecoder
  * JD-Core Version:    0.7.0.1
  */

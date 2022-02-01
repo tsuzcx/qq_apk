@@ -1,28 +1,55 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.AdReport;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class qne
+  extends MSFServlet
 {
-  public String a;
-  
-  public static qne a(oidb_cmd0xbc9.AdReport paramAdReport)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    qne localqne = new qne();
-    localqne.a = paramAdReport.bytes_report_url.get().toStringUtf8();
-    return localqne;
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+    for (;;)
+    {
+      txi.a(paramFromServiceMsg);
+      if (getAppRuntime() != null) {
+        qnd.a().a(paramFromServiceMsg.isSuccess(), paramIntent, paramFromServiceMsg, null);
+      }
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
   }
   
-  public oidb_cmd0xbc9.AdReport a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    oidb_cmd0xbc9.AdReport localAdReport = new oidb_cmd0xbc9.AdReport();
-    localAdReport.bytes_report_url.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localAdReport;
+    if (paramIntent != null)
+    {
+      ToServiceMsg localToServiceMsg = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      txi.a(localToServiceMsg);
+      if (localToServiceMsg != null)
+      {
+        paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
+        paramPacket.putSendData(localToServiceMsg.getWupBuffer());
+        paramPacket.setTimeout(localToServiceMsg.getTimeout());
+        paramPacket.setAttributes(localToServiceMsg.getAttributes());
+        paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
+        paramPacket.autoResend = localToServiceMsg.isFastResendEnabled();
+        if (!localToServiceMsg.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qne
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,25 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Point;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class qzf
-  implements TypeEvaluator<Point>
+class qzf
+  implements qzb
 {
-  private Point a = new Point();
+  qzf(qze paramqze, sey paramsey, sfb paramsfb) {}
   
-  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
+  public void a(boolean paramBoolean)
   {
-    int i = (int)(paramPoint1.x + (paramPoint2.x - paramPoint1.x) * paramFloat);
-    int j = (int)(paramPoint1.y + (paramPoint2.y - paramPoint1.y) * paramFloat);
-    this.a.set(i, j);
-    return this.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJVideoRedPacketManager", 2, "onShouldDoTaskTimingCallback: shouldDoTaskTiming=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      qze.a(this.jdField_a_of_type_Qze).a(this.jdField_a_of_type_Sey.a.innerUniqueID, (int)this.jdField_a_of_type_Sfb.b(), 2, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qzf
  * JD-Core Version:    0.7.0.1
  */

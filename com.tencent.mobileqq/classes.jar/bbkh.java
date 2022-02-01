@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import mqq.app.QQPermissionCallback;
+import android.graphics.Bitmap;
+import android.util.Log;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
 
 class bbkh
-  implements QQPermissionCallback
+  extends nwk
 {
-  bbkh(bbkg parambbkg) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  bbkh(bbkg parambbkg, WebViewPluginEngine paramWebViewPluginEngine)
   {
-    bdgm.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+    super(paramWebViewPluginEngine);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    TroopBarReplyActivity.a(this.a.a, 4);
+    this.a.onPageFinished(paramWebView, paramString);
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    this.a.onPageStarted(paramWebView, paramString, paramBitmap);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    Log.d("KDSearchResultBuilder", "shouldOverrideUrlLoading: setWebViewClient");
+    if (this.a.shouldOverrideUrlLoading(paramWebView, paramString)) {
+      return true;
+    }
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

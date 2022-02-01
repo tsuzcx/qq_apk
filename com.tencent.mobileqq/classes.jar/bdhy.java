@@ -1,50 +1,58 @@
-import QQWalletPay.RespCheckChangePwdAuth;
-import android.os.Handler;
-import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-class bdhy
-  extends Handler
+public class bdhy
+  extends bdid
 {
-  private bdhy(bdhk parambdhk) {}
+  private aszq jdField_a_of_type_Aszq = new bdhz(this);
+  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
   
-  public void handleMessage(Message paramMessage)
+  public bdhy(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
-    if (paramMessage.what != 1) {
-      return;
-    }
-    if (bdhk.a(this.a) != null)
+    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
     {
-      bdhk.a(this.a).a();
-      bdhk.a(this.a).removeObserver(bdhk.a(this.a));
-    }
-    if (paramMessage.arg1 != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "msf return error ");
+      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString))) {
+        break label197;
       }
-      bdhk.a(this.a, 1);
-      return;
+      MessageRecord localMessageRecord = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
+      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForFile))) {
+        break label176;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = atvo.a(paramQQAppInterface, (MessageForFile)localMessageRecord);
+      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid))) {
+        break label197;
+      }
+      paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, this.jdField_a_of_type_Aszq);
     }
-    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
+    label176:
+    label197:
+    for (int i = 1;; i = 0)
     {
-      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
-      if (paramMessage.retCode == 0)
+      if (i == 0)
       {
-        bdhk.b(this.a);
-        return;
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Bdia.i(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
-      }
+      this.jdField_a_of_type_Bdia.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
+      break;
     }
-    bdhk.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdhy
  * JD-Core Version:    0.7.0.1
  */

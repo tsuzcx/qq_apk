@@ -1,46 +1,18 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.AdapterView;
 
-public class agkr
+class agkr
+  implements bkij
 {
-  private static int a;
-  public ConcurrentHashMap<Long, agku> a;
+  agkr(agkq paramagkq) {}
   
-  static
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    jdField_a_of_type_Int = 900000;
-  }
-  
-  private agkr()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public static final agkr a()
-  {
-    return agkt.a();
-  }
-  
-  public agku a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-      return (agku)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(" LongVideoUrlCacheManager", 2, "LongVideoUrlCacheManager,clearCache");
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new agku(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
+    paramAdapterView = (ajyc)agkq.a(this.a).a.getItem(paramInt - 1);
+    agkq.a(this.a, paramAdapterView);
+    agkq.a(this.a).dismiss();
+    bcst.b(agkq.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 

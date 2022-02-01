@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class DeskTopAppEntity
-  extends awge
+  extends Entity
 {
   public static final String TAG = "DeskTopAppInfoEntity";
   public String appId;
   public byte[] appInfo;
   public String name;
-  @awhs
+  @unique
   public String uniqueId;
   public int verType;
   
@@ -238,7 +238,7 @@ public class DeskTopAppEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DeskTopAppEntity
  * JD-Core Version:    0.7.0.1
  */

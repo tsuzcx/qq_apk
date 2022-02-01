@@ -32,10 +32,7 @@
                             <TextView android:textSize="20.0sp" android:textColor="@color/uo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dqe" android:includeFontPadding="false" />
                             <TextView android:textSize="15.0sp" android:textColor="@color/ur" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:text="@string/dqf" android:includeFontPadding="false" />
                         </LinearLayout>
-                        <RelativeLayout android:id="@id/gg6" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="12.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="@string/q4v">
-                            <View android:id="@id/rz" android:background="@drawable/a42" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-                            <ImageView android:id="@id/d0y" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/dvf" android:layout_centerInParent="true" />
-                        </RelativeLayout>
+                        <include layout="@layout/cm_" />
                         <TextView android:textSize="14.0sp" android:textColor="@drawable/a3o" android:id="@id/d1f" android:paddingRight="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginBottom="14.0dip" android:text="@string/q3a" android:drawableRight="@drawable/dww" android:layout_alignParentBottom="true" />
                         <ImageView android:id="@id/d1a" android:visibility="gone" android:layout_width="320.0dip" android:layout_height="480.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="22.0dip" android:scaleType="fitXY" android:layout_above="@id/d1f" android:layout_below="@id/d1z" android:contentDescription="@string/vug" />
                     </RelativeLayout>

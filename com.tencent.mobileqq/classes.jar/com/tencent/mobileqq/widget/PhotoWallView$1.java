@@ -2,10 +2,10 @@ package com.tencent.mobileqq.widget;
 
 import android.os.Handler;
 import android.os.Message;
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.QZonePhotoWall;
+import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.ArrayList;
 
 class PhotoWallView$1
@@ -15,7 +15,7 @@ class PhotoWallView$1
   
   public void run()
   {
-    Object localObject = (QZonePhotoWall)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(QZonePhotoWall.class, this.this$0.jdField_a_of_type_JavaLangString);
+    Object localObject = (QZonePhotoWall)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager().find(QZonePhotoWall.class, this.this$0.jdField_a_of_type_JavaLangString);
     if (localObject == null)
     {
       this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
@@ -30,7 +30,7 @@ class PhotoWallView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PhotoWallView.1
  * JD-Core Version:    0.7.0.1
  */

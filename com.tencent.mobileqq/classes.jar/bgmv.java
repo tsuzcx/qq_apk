@@ -1,30 +1,25 @@
-import java.util.concurrent.Callable;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class bgmv
-  implements Callable<Void>
+  implements adsx
 {
-  bgmv(bgmu parambgmu) {}
+  bgmv(bgmp parambgmp) {}
   
-  public Void a()
+  public void a()
   {
-    synchronized (this.a)
-    {
-      if (bgmu.a(this.a) == null) {
-        return null;
-      }
-      bgmu.a(this.a);
-      if (bgmu.a(this.a))
-      {
-        bgmu.b(this.a);
-        bgmu.a(this.a, 0);
-      }
-      return null;
-    }
+    ((BaseActivity)this.a.a).finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    ((BaseActivity)this.a.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgmv
  * JD-Core Version:    0.7.0.1
  */

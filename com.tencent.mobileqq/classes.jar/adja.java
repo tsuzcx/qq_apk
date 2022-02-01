@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adja
-  extends altm
+  extends BroadcastReceiver
 {
-  public adja(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public adja(AddAccountActivity paramAddAccountActivity) {}
   
-  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    MoveToGroupActivity.a(this.a);
-    if (paramString == null) {
-      QQToast.a(this.a, this.a.getString(2131694483), 0).b(this.a.getTitleBarHeight());
-    }
-    for (;;)
-    {
-      MoveToGroupActivity.b(this.a);
-      this.a.removeObserver(MoveToGroupActivity.a(this.a));
-      return;
-      QQToast.a(this.a, 2, this.a.getString(2131694485), 0).b(this.a.getTitleBarHeight());
-    }
+    QLog.d("AddAccountActivity", 1, "AutoLoginReceiver onReceive");
+    AddAccountActivity.a(this.a, true);
   }
 }
 

@@ -1,99 +1,48 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
 import com.tencent.qphone.base.util.QLog;
 
-public class aymy
-  extends aynv
+class aymy
+  extends anvp
 {
-  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
-  public CharSequence a;
-  private String jdField_a_of_type_JavaLangString;
+  aymy(aymu paramaymu) {}
   
-  public aymy(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  protected void a(boolean paramBoolean, bdei parambdei)
   {
-    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public CharSequence a()
-  {
-    return ayvm.a(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get(), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    Context localContext = paramView.getContext();
-    if ((localContext != null) && ((localContext instanceof BaseActivity)))
-    {
-      PublicView.a((QQAppInterface)((BaseActivity)localContext).getAppRuntime(), localContext, this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.class_index.get(), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.account_flag.get(), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get(), 4);
-      ayvm.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
-      ayvm.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
+    if ((!paramBoolean) || (aymu.a(this.a) == null) || (aymu.a(this.a).isFinishing()) || (aymu.a(this.a) == null) || (parambdei == null)) {
+      QLog.d("AccountPanel", 1, String.format("onGetBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
-  }
-  
-  public boolean b()
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    do
     {
-      localStringBuilder = new StringBuilder().append("name = ").append(this.jdField_a_of_type_JavaLangCharSequence).append(", isCert = ");
-      if ((!this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.has()) || (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.get() != 1L)) {
-        break label102;
-      }
+      return;
+      aymu.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onGetBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+  }
+  
+  protected void b(boolean paramBoolean, bdei parambdei)
+  {
+    if ((!paramBoolean) || (aymu.a(this.a) == null) || (aymu.a(this.a).isFinishing()) || (aymu.a(this.a) == null) || (parambdei == null)) {
+      QLog.d("AccountPanel", 1, String.format("onBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    label102:
-    for (boolean bool = true;; bool = false)
+    do
     {
-      QLog.d("GroupNetSearchModelPublicAcntItem", 2, bool);
-      if ((!this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.has()) || (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.get() != 1L)) {
-        break;
-      }
-      return true;
+      return;
+      aymu.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+  }
+  
+  protected void c(boolean paramBoolean, bdei parambdei)
+  {
+    if ((!paramBoolean) || (aymu.a(this.a) == null) || (aymu.a(this.a).isFinishing()) || (aymu.a(this.a) == null) || (parambdei == null)) {
+      QLog.d("AccountPanel", 1, String.format("onUnBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    return false;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence c()
-  {
-    return alud.a(2131705741);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    do
+    {
+      return;
+      aymu.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onUnBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
 }
 

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity.qwallet.utils;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import azri;
-import bdao;
+import bctj;
+import bggo;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import mqq.app.AppRuntime;
@@ -30,7 +30,7 @@ public final class QWalletTools$4
     {
       localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getPackageManager().getPackageInfo(this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getPackageName(), 0).versionName);
       localStringBuilder.append("|");
-      localStringBuilder.append(bdao.a());
+      localStringBuilder.append(bggo.a());
       localStringBuilder.append("|");
       if ((!TextUtils.isEmpty(this.c)) || (!TextUtils.isEmpty(this.d)))
       {
@@ -48,7 +48,7 @@ public final class QWalletTools$4
       if (0L != this.jdField_a_of_type_Long) {
         VACDReportUtil.a(this.jdField_a_of_type_Long, null, this.jdField_b_of_type_JavaLangString, "op_type=" + this.jdField_a_of_type_Int, 0, "");
       }
-      azri.a(BaseApplication.getContext()).b(this.jdField_a_of_type_MqqAppAppRuntime, localStringBuilder.toString());
+      bctj.a(BaseApplication.getContext()).b(this.jdField_a_of_type_MqqAppAppRuntime, localStringBuilder.toString());
       return;
     }
     catch (Throwable localThrowable)
@@ -62,7 +62,7 @@ public final class QWalletTools$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.utils.QWalletTools.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,102 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.1;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.2;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.3;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.4;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.5;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aghm
-  extends agkm
 {
-  aghm(aghl paramaghl) {}
+  public int a;
+  private ArrayList<aghn> a;
+  private int b;
+  private int c = -1;
+  
+  public aghm()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public int a()
+  {
+    return this.c;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      return ((aghn)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1)).a();
+    }
+    return 0L;
+  }
+  
+  public aghn a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      return (aghn)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    }
+    return null;
+  }
+  
+  public ArrayList<aghn> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
   
   public void a()
   {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.4(this));
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
   
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
+    aghn localaghn = new aghn();
+    localaghn.a(paramFloat1);
+    localaghn.b(paramFloat2);
+    localaghn.c(paramFloat3);
+    localaghn.a(paramLong);
+    this.jdField_a_of_type_JavaUtilArrayList.add(localaghn);
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
+    this.c = paramInt;
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3)
+  public void a(aghm paramaghm)
   {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3));
+    this.b = paramaghm.b;
+    this.c = paramaghm.c;
+    this.jdField_a_of_type_Int = paramaghm.jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramaghm.a());
   }
   
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  public void a(List<aghn> paramList)
   {
-    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.3(this, paramArrayOfAIORichMediaData, paramInt));
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    }
   }
   
-  public void b() {}
+  public int b()
+  {
+    return this.b;
+  }
   
-  public void c() {}
+  public aghn b()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      return (aghn)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    }
+    return null;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
 }
 
 

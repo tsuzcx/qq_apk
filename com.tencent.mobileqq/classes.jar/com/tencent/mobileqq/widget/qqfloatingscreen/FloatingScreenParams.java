@@ -135,10 +135,10 @@ public class FloatingScreenParams
     Object localObject = BaseApplicationImpl.sApplication.getResources();
     if (localObject != null)
     {
-      this.mScreenLonger = ((Resources)localObject).getDimensionPixelSize(2131298325);
-      this.mSquareLength = ((Resources)localObject).getDimensionPixelSize(2131298327);
-      this.mRoundCorner = ((Resources)localObject).getDimensionPixelSize(2131298326);
-      this.mOuterPadding = ((Resources)localObject).getDimensionPixelSize(2131298328);
+      this.mScreenLonger = ((Resources)localObject).getDimensionPixelSize(2131298407);
+      this.mSquareLength = ((Resources)localObject).getDimensionPixelSize(2131298409);
+      this.mRoundCorner = ((Resources)localObject).getDimensionPixelSize(2131298408);
+      this.mOuterPadding = ((Resources)localObject).getDimensionPixelSize(2131298410);
     }
     this.mWidth = this.mScreenLonger;
     this.mHeight = ((int)(this.mWidth * this.mScreenRatio));
@@ -217,7 +217,7 @@ public class FloatingScreenParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams
  * JD-Core Version:    0.7.0.1
  */

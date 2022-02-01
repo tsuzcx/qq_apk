@@ -1,46 +1,55 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.1;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.2;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-class nuq
-  extends alwx
+public class nuq
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  nuq(nup paramnup) {}
+  public nuq(VideoCoverFragment paramVideoCoverFragment) {}
   
-  public void a(List<MessageRecord> paramList)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    super.a(paramList);
-    HashSet localHashSet = new HashSet();
-    if (ntw.b != null) {
-      localHashSet.addAll(ntw.b);
-    }
-    nup localnup = (nup)this.a.mApp.getBusinessHandler(88);
-    paramList = new ArrayList(paramList).iterator();
-    label164:
-    while (paramList.hasNext())
+    VideoCoverFragment.a(this.a);
+    int i = this.a.a();
+    if ((i > 1) && (VideoCoverFragment.a(this.a) != null))
     {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-      if (("2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) || ((localMessageRecord.istroop == 1008) && (ssp.e(this.a.app, localMessageRecord.senderuin)))) {}
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) && (!localHashSet.contains(localMessageRecord.senderuin))) {
-          break label164;
-        }
-        if (i != 0) {
-          localnup.a(localMessageRecord);
-        }
-        localnup.b(localMessageRecord);
+      if (VideoCoverFragment.a(this.a) != i - 1) {
+        break label209;
+      }
+      ThreadManager.getUIHandler().post(new VideoCoverFragment.3.1(this));
+    }
+    for (;;)
+    {
+      paramTVK_IMediaPlayer = ((num)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).b;
+      bcst.a(null, "dc00898", "", VideoCoverFragment.a(this.a).jdField_a_of_type_Nun.a, "0X8008F65", "0X8008F65", 0, 0, VideoCoverFragment.a(this.a).jdField_a_of_type_Nun.c, "", paramTVK_IMediaPlayer, VideoCoverFragment.a(this.a).jdField_a_of_type_Nun.b);
+      Integer localInteger = (Integer)PublicAccountAdvertisementActivity.a.get(paramTVK_IMediaPlayer);
+      i = (int)(((num)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).a.a / 1000L);
+      if (localInteger == null) {
         break;
       }
+      PublicAccountAdvertisementActivity.a.put(paramTVK_IMediaPlayer, Integer.valueOf(localInteger.intValue() + i));
+      return;
+      label209:
+      ThreadManager.getUIHandler().post(new VideoCoverFragment.3.2(this));
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverFragment", 2, "current time = null");
+    }
+    PublicAccountAdvertisementActivity.a.put(paramTVK_IMediaPlayer, Integer.valueOf(i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nuq
  * JD-Core Version:    0.7.0.1
  */

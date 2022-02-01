@@ -1,29 +1,30 @@
-import android.content.Intent;
-import com.dataline.activities.PrinterActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
 
-class alyy
-  implements arrh
+public class alyy
+  extends Handler
 {
-  alyy(alyw paramalyw, BaseActivity paramBaseActivity, String paramString) {}
-  
-  public void a()
+  public alyy(VipSpecialCareHandler.1 param1, Looper paramLooper)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, PrinterActivity.class);
-    localIntent.putExtra(bdez.h, 55);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_a_of_type_JavaLangString);
-    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
-    azqs.b(this.jdField_a_of_type_Alyw.a, "CliOper", "", "", "0X8004059", "0X8004059", 0, 0, "", "", "", "");
+    super(paramLooper);
   }
   
-  public void b() {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    alyx.a(this.a.this$0, "-->request timeout");
+    alyx.a(this.a.this$0, -2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alyy
  * JD-Core Version:    0.7.0.1
  */

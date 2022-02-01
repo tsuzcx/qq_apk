@@ -1,48 +1,16 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.PAHighLightImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
 
-public class berm
-  implements View.OnTouchListener
+class berm
+  implements Comparable<berm>
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  PAHighLightImageView jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView;
+  public String a;
+  public String b;
   
-  public berm(PAHighLightImageView paramPAHighLightImageView, Context paramContext)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView = paramPAHighLightImageView;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
+  berm(berf paramberf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(@NonNull berm paramberm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAHighLightImageView", 2, "onTouch is called,action is:" + paramMotionEvent.getAction());
-    }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.getTag(2131372447);
-    if (paramView == null) {}
-    label100:
-    do
-    {
-      return false;
-      if (paramView.equals(Integer.valueOf(1))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        if (paramMotionEvent.getAction() != 0) {
-          break label100;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a(this.jdField_a_of_type_AndroidContentContext, bool);
-        return false;
-        if (!paramView.equals(Integer.valueOf(2))) {
-          break;
-        }
-      }
-    } while ((paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a();
-    return false;
+    return this.b.compareTo(paramberm.b);
   }
 }
 

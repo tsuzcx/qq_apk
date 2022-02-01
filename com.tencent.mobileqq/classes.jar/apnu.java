@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
-import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.util.ArrayList;
 
 public class apnu
-  implements apnr
 {
-  public apnu(CameraEmoSingleSend paramCameraEmoSingleSend) {}
+  public long a;
+  public apnr a;
+  public ByteArrayOutputStream a;
+  public File a;
+  public String a;
+  public final ArrayList<Object> a;
+  public byte[] a;
+  public String b;
+  public final ArrayList<apnq> b = new ArrayList();
+  public String c;
   
-  public void a(int paramInt, CameraEmotionData paramCameraEmotionData)
+  private apnu()
   {
-    boolean bool = true;
-    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onAddEmoFinish, result:", Integer.valueOf(paramInt), " emoId:", Integer.valueOf(paramCameraEmotionData.emoId), " originalId:", Integer.valueOf(CameraEmoSingleSend.a(this.a).emoId) });
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      CameraEmoSingleSend.a(this.a, bool, paramInt);
-      aufn.c(String.valueOf(paramInt), 2);
-      return;
-      bool = false;
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Long = -1L;
   }
 }
 

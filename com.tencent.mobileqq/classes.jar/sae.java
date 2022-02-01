@@ -1,23 +1,64 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 
-class sae
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class sae
+  extends OrientationEventListener
 {
-  sae(sad paramsad, int paramInt, View paramView) {}
-  
-  public void onGlobalLayout()
+  public sae(VideoFeedsListView paramVideoFeedsListView, Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_Sad.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getHeight());
-    QLog.d("Q.readinjoy.fast_web", 2, " position : " + this.jdField_a_of_type_Int + "   height:" + this.jdField_a_of_type_AndroidViewView.getHeight());
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    super(paramContext, paramInt);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    if (VideoFeedsListView.a(this.a)) {}
+    label10:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                break label10;
+                break label10;
+                break label10;
+                break label10;
+                do
+                {
+                  return;
+                } while ((!VideoFeedsListView.b(this.a)) || (!VideoFeedsListView.c(this.a)) || (VideoFeedsListView.a(this.a) == 1) || (VideoFeedsListView.d(this.a)) || (!VideoFeedsListView.a(this.a, paramInt)) || ((!VideoFeedsListView.e(this.a)) && (VideoFeedsListView.f(this.a))));
+                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
+                  break;
+                }
+              } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 0));
+              VideoFeedsListView.a(this.a, -1);
+            } while (VideoFeedsListView.c(this.a) == 0);
+            this.a.a(true);
+            return;
+            if ((paramInt < 70) || (paramInt > 110)) {
+              break;
+            }
+          } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 2));
+          VideoFeedsListView.a(this.a, -1);
+        } while (VideoFeedsListView.c(this.a) == 2);
+        VideoFeedsListView.a(this.a, 2, true);
+        return;
+      } while ((paramInt < 250) || (paramInt > 290) || ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 1)));
+      VideoFeedsListView.a(this.a, -1);
+    } while (VideoFeedsListView.c(this.a) == 1);
+    VideoFeedsListView.a(this.a, 1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sae
  * JD-Core Version:    0.7.0.1
  */

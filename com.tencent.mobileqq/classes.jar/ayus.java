@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import java.util.Comparator;
-
 public final class ayus
-  implements Comparator<ayoy>
 {
-  public int a(ayoy paramayoy1, ayoy paramayoy2)
+  public int a;
+  public String a;
+  public int b;
+  
+  public ayus(int paramInt1, int paramInt2, String paramString)
   {
-    int j = Long.signum(paramayoy2.b() - paramayoy1.b());
-    int i = j;
-    if (j == 0) {
-      i = PublicAccountSearchEngine.a(paramayoy1, paramayoy2);
-    }
-    return i;
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public ayus(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = 100;
+    this.b = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

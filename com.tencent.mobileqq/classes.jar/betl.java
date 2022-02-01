@@ -1,30 +1,27 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.Map;
 
-public class betl
-  implements URLDrawable.URLDrawableListener
+class betl
+  implements DialogInterface.OnClickListener
 {
-  final WeakReference<View> a;
+  betl(besy parambesy, besl parambesl) {}
   
-  public betl(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramView);
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = (View)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.postInvalidate();
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
     }
+    TroopFileTransferManager.a(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Besy.jdField_a_of_type_Long).a(this.jdField_a_of_type_Besl.jdField_a_of_type_JavaUtilUUID);
+    paramDialogInterface = (besl)bfrm.a(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Besy.jdField_a_of_type_Long).c.get(this.jdField_a_of_type_Besl.f);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Besl.b);
+    }
+    bcst.b(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_download", 0, 0, "", this.jdField_a_of_type_Besy.jdField_a_of_type_Long + "", "", "");
   }
 }
 

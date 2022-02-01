@@ -1,17 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
 
-class bken
-  implements bkfd
+public class bken
+  implements ArtFilterResource
 {
-  bken(bkel parambkel) {}
-  
-  public void a(boolean paramBoolean)
+  public String getCommonPrefix()
   {
-    QLog.d("VipARCameraController", 2, "loadState " + paramBoolean);
-    bkel.b(this.a, paramBoolean);
-    if (paramBoolean) {
-      bkey.a().a(bkel.a(this.a));
+    return alll.c;
+  }
+  
+  public String getFilterResPath()
+  {
+    if (bkel.a) {
+      return bqbq.b;
     }
+    return bamn.b;
+  }
+  
+  public String getModelPath()
+  {
+    return "";
+  }
+  
+  public String getReshapePath()
+  {
+    return "";
+  }
+  
+  public String getSoPathDir()
+  {
+    return bcls.b();
   }
 }
 

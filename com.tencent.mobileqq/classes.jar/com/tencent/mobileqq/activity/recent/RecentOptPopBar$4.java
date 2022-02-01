@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajkg;
+import alcp;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 public class RecentOptPopBar$4
   implements Runnable
 {
-  public RecentOptPopBar$4(ajkg paramajkg) {}
+  public RecentOptPopBar$4(alcp paramalcp) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class RecentOptPopBar$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentOptPopBar.4
  * JD-Core Version:    0.7.0.1
  */

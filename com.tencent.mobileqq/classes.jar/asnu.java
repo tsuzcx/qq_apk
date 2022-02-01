@@ -1,12 +1,8 @@
-import android.app.Activity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-
 public abstract interface asnu
 {
-  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
+  public abstract void a(String paramString, int paramInt);
   
-  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt);
+  public abstract void b();
 }
 
 

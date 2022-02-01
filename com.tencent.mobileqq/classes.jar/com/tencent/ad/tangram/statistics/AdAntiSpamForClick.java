@@ -1,5 +1,6 @@
 package com.tencent.ad.tangram.statistics;
 
+import android.graphics.Rect;
 import android.support.annotation.Keep;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,6 +24,7 @@ public class AdAntiSpamForClick
     if (paramView == null) {
       return null;
     }
+    Rect localRect = new Rect();
     long l = System.currentTimeMillis();
     localJSONObject = new JSONObject();
     for (;;)
@@ -50,6 +52,9 @@ public class AdAntiSpamForClick
         continue;
         localJSONObject.put("x", "0");
         continue;
+        localJSONObject.put("px", "0");
+        localJSONObject.put("py", "0");
+        continue;
       }
       if (this.actionDownTime == -2147483648L) {
         continue;
@@ -72,6 +77,11 @@ public class AdAntiSpamForClick
       localJSONObject.put("sz", "-999");
       localJSONObject.put("da", String.valueOf(paramView.getWidth()));
       localJSONObject.put("db", String.valueOf(paramView.getHeight()));
+      if (!paramView.getGlobalVisibleRect(localRect)) {
+        continue;
+      }
+      localJSONObject.put("px", String.valueOf(localRect.left));
+      localJSONObject.put("py", String.valueOf(localRect.top));
       if (localJSONObject.length() == 0) {
         break;
       }
@@ -111,7 +121,7 @@ public class AdAntiSpamForClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.statistics.AdAntiSpamForClick
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahsu
-  extends alwx
+class ahsu
+  implements DialogInterface.OnClickListener
 {
-  private ahsu(AlphabetFriendFragment paramAlphabetFriendFragment) {}
+  ahsu(ahsd paramahsd) {}
   
-  protected void f()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (AlphabetFriendFragment.b(this.a)) {
-      AlphabetFriendFragment.a(this.a, 1400L, true);
-    }
+    this.a.e();
   }
 }
 

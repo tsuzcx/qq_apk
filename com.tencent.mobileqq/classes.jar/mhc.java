@@ -1,35 +1,27 @@
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class mhc
-  extends lhe
+class mhc
+  implements View.OnClickListener
 {
-  public mhc(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  mhc(mgv parammgv) {}
   
-  protected void a(long paramLong, ArrayList<lfu> paramArrayList, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onUserListALLUpdate");
+    if (!mgv.a(this.a))
+    {
+      this.a.c();
+      mgv.a(this.a).a.f(0L);
     }
-    MultiIncomingCallsActivity.a(this.a, paramLong, paramArrayList, paramInt1);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onMembersChange");
-    }
-    if ((paramLong != this.a.a) || (paramBoolean)) {}
-    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
-      return;
-    }
-    MultiIncomingCallsActivity.a(this.a, paramInt);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mhc
  * JD-Core Version:    0.7.0.1
  */

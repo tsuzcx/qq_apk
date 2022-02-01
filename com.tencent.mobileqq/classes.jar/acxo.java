@@ -1,34 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class acxo
-  implements akiz
+  implements acxl
 {
-  public acxo(ForwardRecentActivity paramForwardRecentActivity) {}
+  private acwu<acxk> a = new acwv();
   
-  public void a(View paramView)
+  public List<acxk> a()
   {
-    boolean bool = ForwardRecentActivity.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onItemViewClicked" + bool);
-    }
-    if (bool)
-    {
-      ForwardRecentActivity.a(this.a, paramView);
-      return;
-    }
-    this.a.a(paramView);
+    return this.a.a();
   }
   
-  public boolean a(String paramString, int paramInt)
+  public void a(Class<? extends acxk> paramClass)
   {
-    return ForwardRecentActivity.a(this.a, paramString, paramInt);
+    this.a.a(paramClass);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxo
  * JD-Core Version:    0.7.0.1
  */

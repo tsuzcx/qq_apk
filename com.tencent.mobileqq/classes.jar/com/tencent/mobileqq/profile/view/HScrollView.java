@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.HorizontalScrollView;
-import awuy;
+import azjp;
 
 public class HScrollView
   extends HorizontalScrollView
@@ -13,7 +13,7 @@ public class HScrollView
 {
   private int jdField_a_of_type_Int = -9999999;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private awuy jdField_a_of_type_Awuy;
+  private azjp jdField_a_of_type_Azjp;
   private int b = 1;
   
   public HScrollView(Context paramContext, AttributeSet paramAttributeSet)
@@ -30,7 +30,7 @@ public class HScrollView
     {
       return super.onTouchEvent(paramMotionEvent);
       this.b = 2;
-      this.jdField_a_of_type_Awuy.a(this.b);
+      this.jdField_a_of_type_Azjp.a(this.b);
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
       continue;
       this.jdField_a_of_type_AndroidOsHandler.post(this);
@@ -42,28 +42,28 @@ public class HScrollView
     if (getScrollX() == this.jdField_a_of_type_Int)
     {
       this.b = 1;
-      if (this.jdField_a_of_type_Awuy != null) {
-        this.jdField_a_of_type_Awuy.a(this.b);
+      if (this.jdField_a_of_type_Azjp != null) {
+        this.jdField_a_of_type_Azjp.a(this.b);
       }
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
       return;
     }
     this.b = 3;
-    if (this.jdField_a_of_type_Awuy != null) {
-      this.jdField_a_of_type_Awuy.a(this.b);
+    if (this.jdField_a_of_type_Azjp != null) {
+      this.jdField_a_of_type_Azjp.a(this.b);
     }
     this.jdField_a_of_type_Int = getScrollX();
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
   }
   
-  public void setOnScrollListener(awuy paramawuy)
+  public void setOnScrollListener(azjp paramazjp)
   {
-    this.jdField_a_of_type_Awuy = paramawuy;
+    this.jdField_a_of_type_Azjp = paramazjp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.HScrollView
  * JD-Core Version:    0.7.0.1
  */

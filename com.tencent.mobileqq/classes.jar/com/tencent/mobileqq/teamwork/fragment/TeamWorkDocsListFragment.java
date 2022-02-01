@@ -1,36 +1,36 @@
 package com.tencent.mobileqq.teamwork.fragment;
 
+import abcr;
 import android.app.Activity;
 import android.content.Intent;
-import bahz;
-import baic;
-import beho;
-import beir;
-import bejk;
+import bdjd;
+import bdjg;
+import bhos;
+import bhpv;
+import bhqo;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import zfy;
 
 public class TeamWorkDocsListFragment
   extends WebViewFragment
 {
-  public void c()
+  public void showActionSheet()
   {
-    beir localbeir = (beir)this.jdField_a_of_type_Beho.a(4);
-    if (localbeir != null)
+    bhpv localbhpv = (bhpv)this.mComponentsProvider.a(4);
+    if (localbhpv != null)
     {
-      zfy localzfy = b();
-      if ((localzfy != null) && (baic.a(localzfy.a())))
+      abcr localabcr = ensureShare();
+      if ((localabcr != null) && (bdjg.a(localabcr.a())))
       {
-        a().getIntent().putExtra("big_brother_source_key", "biz_src_xl_docs");
-        localbeir.a = new bahz(a());
+        getHostActivity().getIntent().putExtra("big_brother_source_key", "biz_src_xl_docs");
+        localbhpv.a = new bdjd(getHostActivity());
       }
-      localbeir.a(localzfy, this.jdField_a_of_type_Bejk.a);
+      localbhpv.a(localabcr, this.mUIStyle.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.fragment.TeamWorkDocsListFragment
  * JD-Core Version:    0.7.0.1
  */

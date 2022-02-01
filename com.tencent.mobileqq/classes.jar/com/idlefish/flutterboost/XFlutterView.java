@@ -8,10 +8,6 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.os.LocaleList;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.annotation.VisibleForTesting;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -25,17 +21,22 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.annotation.VisibleForTesting;
 import io.flutter.Log;
 import io.flutter.embedding.android.AndroidTouchProcessor;
 import io.flutter.embedding.android.FlutterSurfaceView;
+import io.flutter.embedding.android.FlutterTextureView;
 import io.flutter.embedding.android.FlutterView.FlutterEngineAttachmentListener;
 import io.flutter.embedding.android.FlutterView.RenderMode;
 import io.flutter.embedding.android.FlutterView.TransparencyMode;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.renderer.FlutterRenderer;
-import io.flutter.embedding.engine.renderer.FlutterRenderer.RenderSurface;
 import io.flutter.embedding.engine.renderer.FlutterRenderer.ViewportMetrics;
-import io.flutter.embedding.engine.renderer.OnFirstFrameRenderedListener;
+import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
+import io.flutter.embedding.engine.renderer.RenderSurface;
 import io.flutter.embedding.engine.systemchannels.LocalizationChannel;
 import io.flutter.embedding.engine.systemchannels.SettingsChannel;
 import io.flutter.embedding.engine.systemchannels.SettingsChannel.MessageBuilder;
@@ -63,14 +64,15 @@ public class XFlutterView
   private FlutterEngine flutterEngine;
   @NonNull
   private final Set<FlutterView.FlutterEngineAttachmentListener> flutterEngineAttachmentListeners = new HashSet();
+  private final FlutterUiDisplayListener flutterUiDisplayListener = new XFlutterView.2(this);
+  private final Set<FlutterUiDisplayListener> flutterUiDisplayListeners = new HashSet();
   private boolean hasAddFirstFrameRenderedListener = false;
+  private boolean isFlutterUiDisplayed;
   private final AccessibilityBridge.OnAccessibilityChangeListener onAccessibilityChangeListener = new XFlutterView.1(this);
-  private final OnFirstFrameRenderedListener onFirstFrameRenderedListener = new XFlutterView.2(this);
-  private final Set<OnFirstFrameRenderedListener> onFirstFrameRenderedListeners = new HashSet();
   @NonNull
   private FlutterView.RenderMode renderMode;
   @Nullable
-  private FlutterRenderer.RenderSurface renderSurface;
+  private RenderSurface renderSurface;
   @Nullable
   private XTextInputPlugin textInputPlugin;
   @Nullable
@@ -133,8 +135,8 @@ public class XFlutterView
         setFocusableInTouchMode(true);
         return;
         Log.v("FlutterView", "Internally using a FlutterTextureView.");
-        localObject = new XFlutterTextureView(getContext());
-        this.renderSurface = ((FlutterRenderer.RenderSurface)localObject);
+        localObject = new FlutterTextureView(getContext());
+        this.renderSurface = ((RenderSurface)localObject);
         addView((View)localObject);
       }
     }
@@ -144,7 +146,7 @@ public class XFlutterView
     for (boolean bool = true;; bool = false)
     {
       localObject = new FlutterSurfaceView((Context)localObject, bool);
-      this.renderSurface = ((FlutterRenderer.RenderSurface)localObject);
+      this.renderSurface = ((RenderSurface)localObject);
       addView((View)localObject);
       break;
     }
@@ -198,9 +200,10 @@ public class XFlutterView
   
   private void sendViewportMetricsToFlutter()
   {
-    if (!isAttachedToFlutterEngine())
-    {
+    if (!isAttachedToFlutterEngine()) {
       Log.w("FlutterView", "Tried to send viewport metrics from Android to Flutter but this FlutterView was not attached to a FlutterEngine.");
+    }
+    while ((this.viewportMetrics.width == 0) && (this.viewportMetrics.height == 0)) {
       return;
     }
     this.viewportMetrics.devicePixelRatio = getResources().getDisplayMetrics().density;
@@ -213,9 +216,9 @@ public class XFlutterView
     this.flutterEngineAttachmentListeners.add(paramFlutterEngineAttachmentListener);
   }
   
-  public void addOnFirstFrameRenderedListener(@NonNull OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
+  public void addOnFirstFrameRenderedListener(@NonNull FlutterUiDisplayListener paramFlutterUiDisplayListener)
   {
-    this.onFirstFrameRenderedListeners.add(paramOnFirstFrameRenderedListener);
+    this.flutterUiDisplayListeners.add(paramFlutterUiDisplayListener);
   }
   
   public void attachToFlutterEngine(@NonNull FlutterEngine paramFlutterEngine)
@@ -236,13 +239,10 @@ public class XFlutterView
       detachFromFlutterEngine();
       this.flutterEngine = paramFlutterEngine;
       localObject = this.flutterEngine.getRenderer();
-      this.didRenderFirstFrame = ((FlutterRenderer)localObject).hasRenderedFirstFrame();
-      if (!this.hasAddFirstFrameRenderedListener)
-      {
-        ((FlutterRenderer)localObject).addOnFirstFrameRenderedListener(this.onFirstFrameRenderedListener);
-        this.hasAddFirstFrameRenderedListener = true;
-      }
-      ((FlutterRenderer)localObject).attachToRenderSurface(this.renderSurface);
+      this.isFlutterUiDisplayed = ((FlutterRenderer)localObject).isDisplayingFlutterUi();
+      this.renderSurface.attachToRenderer((FlutterRenderer)localObject);
+      ((FlutterRenderer)localObject).addIsDisplayingFlutterUiListener(this.flutterUiDisplayListener);
+      this.flutterEngine.getPlatformViewsController().attachToView(this);
       if (this.textInputPlugin == null) {
         this.textInputPlugin = new XTextInputPlugin(this, paramFlutterEngine.getTextInputChannel(), this.flutterEngine.getPlatformViewsController());
       }
@@ -289,11 +289,15 @@ public class XFlutterView
       ((FlutterView.FlutterEngineAttachmentListener)((Iterator)localObject).next()).onFlutterEngineDetachedFromFlutterView();
     }
     this.flutterEngine.getPlatformViewsController().detachAccessibiltyBridge();
+    this.flutterEngine.getPlatformViewsController().detachFromView();
     this.accessibilityBridge.release();
     this.accessibilityBridge = null;
     localObject = this.flutterEngine.getRenderer();
-    ((FlutterRenderer)localObject).removeOnFirstFrameRenderedListener(this.onFirstFrameRenderedListener);
-    ((FlutterRenderer)localObject).detachFromRenderSurface();
+    this.isFlutterUiDisplayed = false;
+    ((FlutterRenderer)localObject).removeIsDisplayingFlutterUiListener(this.flutterUiDisplayListener);
+    ((FlutterRenderer)localObject).stopRenderingToSurface();
+    ((FlutterRenderer)localObject).setSemanticsEnabled(false);
+    this.renderSurface.detachFromRenderer();
     this.flutterEngine = null;
   }
   
@@ -499,14 +503,14 @@ public class XFlutterView
     this.flutterEngineAttachmentListeners.remove(paramFlutterEngineAttachmentListener);
   }
   
-  public void removeOnFirstFrameRenderedListener(@NonNull OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
+  public void removeOnFirstFrameRenderedListener(@NonNull FlutterUiDisplayListener paramFlutterUiDisplayListener)
   {
-    this.onFirstFrameRenderedListeners.remove(paramOnFirstFrameRenderedListener);
+    this.flutterUiDisplayListeners.remove(paramFlutterUiDisplayListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.XFlutterView
  * JD-Core Version:    0.7.0.1
  */

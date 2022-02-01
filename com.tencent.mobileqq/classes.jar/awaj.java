@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.olympic.TorchInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface awaj
+class awaj
+  implements View.OnClickListener
 {
-  public abstract void a();
+  awaj(awai paramawai) {}
   
-  public abstract void a(TorchInfo paramTorchInfo);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public void onClick(View paramView)
+  {
+    if (this.a.a.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bcst.b(null, "CliOper", "", "", "0X800A966", "0X800A966", 0, 0, "0", "0", "0", "");
+      avxq.a(avzs.a(this.a.a), this.a.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awaj
  * JD-Core Version:    0.7.0.1
  */

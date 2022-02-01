@@ -1,81 +1,70 @@
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class awos
-  extends avjj
+  extends awnh
 {
-  FriendProfilePicBrowserActivity a;
+  public awos(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
   
-  public awos(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, zir paramzir)
+  public void a(boolean paramBoolean)
   {
-    super(paramFriendProfilePicBrowserActivity, paramzir);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity = paramFriendProfilePicBrowserActivity;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Avjp != null) {
-      return this.jdField_a_of_type_Avjp.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmTokenResponse:  isSuccess: " + paramBoolean);
     }
-    return -1;
+    super.a(paramBoolean);
   }
   
-  protected RelativeLayout a()
+  public void a(boolean paramBoolean, awol paramawol)
   {
-    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561218, null);
-  }
-  
-  public PicInfo a()
-  {
-    PicInfo localPicInfo = null;
-    if (this.jdField_a_of_type_Avjp.a() != null) {
-      localPicInfo = this.jdField_a_of_type_Avjp.a().a;
+    if (paramBoolean) {
+      this.a.a(paramawol);
     }
-    return localPicInfo;
+    super.a(paramBoolean, paramawol);
   }
   
-  public void a(ViewGroup paramViewGroup)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    super.a(paramViewGroup);
-    if (this.jdField_a_of_type_Avji != null) {
-      this.jdField_a_of_type_Avji.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void d()
-  {
-    super.d();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.b();
+    Object localObject;
+    if ((paramBoolean) && ((paramObject instanceof awof)))
+    {
+      localObject = (awof)paramObject;
+      this.a.a((awof)localObject);
+    }
+    for (;;)
+    {
+      super.a(paramBoolean, paramObject);
+      return;
+      if ((paramObject instanceof Integer))
+      {
+        localObject = (Integer)paramObject;
+        this.a.a((Integer)localObject);
+      }
     }
   }
   
-  protected void d(int paramInt)
+  public void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onRejectQRResponse:  isSuccess: " + paramBoolean);
     }
+    super.b(paramBoolean);
   }
   
-  public void u()
+  public void b(boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_Avji != null) {
-      this.jdField_a_of_type_Avji.a(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity = null;
+    this.a.a(paramBoolean, paramObject);
+    super.b(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awos
  * JD-Core Version:    0.7.0.1
  */

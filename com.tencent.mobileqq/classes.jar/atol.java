@@ -1,34 +1,21 @@
-import com.tencent.mobileqq.listentogether.data.ISong;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface atol
+class atol
+  implements View.OnClickListener
 {
-  public abstract int a();
+  atol(atoe paramatoe) {}
   
-  public abstract void a();
-  
-  public abstract void a(atoi paramatoi);
-  
-  public abstract void a(atoj paramatoj);
-  
-  public abstract void a(atok paramatok);
-  
-  public abstract void a(atom paramatom);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(ISong paramISong);
-  
-  public abstract int b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
+  public void onClick(View paramView)
+  {
+    atvo.a(this.a.a, this.a.d());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atol
  * JD-Core Version:    0.7.0.1
  */

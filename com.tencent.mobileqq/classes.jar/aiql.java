@@ -1,21 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
 
-class aiql
-  implements aiqj
+public class aiql
+  implements bkiz
 {
-  aiql(aiqk paramaiqk) {}
+  public aiql(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment, View paramView) {}
   
-  public void a(long paramLong, float paramFloat, String paramString)
+  public void a()
   {
-    aiqk.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
-    aiqk.a(this.a).a(paramLong, paramFloat, paramString);
-  }
-  
-  public void b(long paramLong)
-  {
-    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
-    aiqk.a(this.a).b(paramLong);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

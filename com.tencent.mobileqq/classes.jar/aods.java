@@ -1,39 +1,34 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.DecelerateInterpolator;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class aods
-  implements Animator.AnimatorListener
+public abstract class aods
 {
-  aods(aodl paramaodl, boolean paramBoolean) {}
+  public FriendListHandler a;
+  protected QQAppInterface a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public aods(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    aodl.b(this.jdField_a_of_type_Aodl).scrollTo(0, 0);
-    aodl.b(this.jdField_a_of_type_Aodl).setAlpha(1.0F);
-    aodl.b(this.jdField_a_of_type_Aodl).setBackgroundColor(aodl.a(this.jdField_a_of_type_Aodl).getResources().getColor(aodl.a()));
-    paramAnimator = this.jdField_a_of_type_Aodl.a;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (float f = -this.jdField_a_of_type_Aodl.a.getMeasuredWidth();; f = this.jdField_a_of_type_Aodl.a.getMeasuredWidth())
-    {
-      paramAnimator.setX(f);
-      this.jdField_a_of_type_Aodl.a.setAlpha(0.0F);
-      this.jdField_a_of_type_Aodl.a.setVisibility(0);
-      this.jdField_a_of_type_Aodl.a.animate().setInterpolator(new DecelerateInterpolator()).alpha(1.0F).translationX(0.0F).setDuration(180L).start();
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = paramFriendListHandler;
+  }
+  
+  protected final void a(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(paramInt, paramBoolean, paramObject);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (a(paramFromServiceMsg.getServiceCmd())) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract boolean a(String paramString);
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  protected abstract void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
 }
 
 

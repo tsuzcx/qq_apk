@@ -1,27 +1,68 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-final class bmcr
-  implements EIPCResultCallback
+public abstract class bmcr
+  extends Binder
+  implements bmcq
 {
-  bmcr(bnck parambnck) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bmcr()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramEIPCResult != null)
+    attachInterface(this, "cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+  }
+  
+  public static bmcq a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+    if ((localIInterface != null) && ((localIInterface instanceof bmcq))) {
+      return (bmcq)localIInterface;
+    }
+    return new bmcs(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      bool1 = bool2;
-      if (paramEIPCResult.data != null) {
-        bool1 = paramEIPCResult.data.getBoolean("key_result");
-      }
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      a(paramParcel1.readFloat());
+      paramParcel2.writeNoException();
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      c();
+      paramParcel2.writeNoException();
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      b();
+      paramParcel2.writeNoException();
+      return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcController", 2, "cancelSendVideoOrPhoto result:" + bool1 + ", uinseq:" + this.a.a + ", status:" + this.a.b + ", progress:" + this.a.c);
-    }
+    paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+    a(paramParcel1.readInt());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

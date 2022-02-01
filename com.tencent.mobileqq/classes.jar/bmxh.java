@@ -1,93 +1,54 @@
-import android.animation.TimeInterpolator;
-import android.animation.TypeEvaluator;
-import java.util.ArrayList;
-
 public class bmxh
-  implements TypeEvaluator<ArrayList<Integer>>
 {
-  private long jdField_a_of_type_Long;
-  private ArrayList<bmxi> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList<Integer> b = new ArrayList();
-  private ArrayList<Integer> c = new ArrayList();
-  private ArrayList<Integer> d = new ArrayList();
-  private ArrayList<TimeInterpolator> e = new ArrayList();
+  private static bmxi a;
+  public static String a;
   
-  public int a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, TimeInterpolator paramTimeInterpolator)
+  static
   {
-    int i = this.c.size();
-    paramString = new bmxi(paramLong1, paramLong2, i);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-    this.c.add(Integer.valueOf(paramInt1));
-    this.d.add(Integer.valueOf(paramInt2));
-    this.e.add(paramTimeInterpolator);
-    if (paramLong1 + paramLong2 > this.jdField_a_of_type_Long) {
-      this.jdField_a_of_type_Long = (paramLong1 + paramLong2);
-    }
-    return i;
+    jdField_a_of_type_JavaLangString = "WadlProxyServiceUtil";
   }
   
-  public long a()
+  public static bmxi a()
   {
-    return this.jdField_a_of_type_Long;
+    if (jdField_a_of_type_Bmxi == null) {
+      a();
+    }
+    return jdField_a_of_type_Bmxi;
   }
   
-  public ArrayList<Integer> a()
+  public static void a()
   {
-    return this.d;
-  }
-  
-  public ArrayList<Integer> a(float paramFloat, ArrayList<Integer> paramArrayList1, ArrayList<Integer> paramArrayList2)
-  {
-    if ((paramArrayList1.isEmpty()) || (paramArrayList2.isEmpty())) {
-      return null;
-    }
-    if (paramArrayList1.size() != paramArrayList2.size()) {
-      return null;
-    }
-    int j = paramArrayList1.size();
-    if (this.b == null) {
-      this.b = new ArrayList();
-    }
-    this.b.clear();
-    int i = 0;
-    if (i < j)
+    synchronized (jdField_a_of_type_JavaLangString)
     {
-      int k = ((Integer)paramArrayList1.get(i)).intValue();
-      int m = ((Integer)paramArrayList2.get(i)).intValue();
-      long l1 = ((bmxi)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long;
-      long l2 = ((bmxi)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b;
-      int n = (int)((float)this.jdField_a_of_type_Long * paramFloat);
-      if (n < l1) {
-        this.b.add(Integer.valueOf(0));
+      if (jdField_a_of_type_Bmxi == null) {
+        jdField_a_of_type_Bmxi = new bmxi();
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (n > l1 + l2)
-        {
-          this.b.add(Integer.valueOf(m));
-        }
-        else
-        {
-          float f1 = ((TimeInterpolator)this.e.get(i)).getInterpolation((float)(n - l1) / (float)l2);
-          ArrayList localArrayList = this.b;
-          float f2 = k;
-          localArrayList.add(Integer.valueOf((int)(f1 * (m - k) + f2)));
-        }
-      }
+      jdField_a_of_type_Bmxi.a();
+      return;
     }
-    return this.b;
   }
   
-  public ArrayList<Integer> a(long paramLong)
+  public static void a(bmxe parambmxe)
   {
-    return a((float)paramLong / (float)this.jdField_a_of_type_Long, this.c, this.d);
+    if (jdField_a_of_type_Bmxi != null) {
+      jdField_a_of_type_Bmxi.a(parambmxe);
+    }
   }
   
-  public ArrayList<Integer> b()
+  public static void b()
   {
-    return this.c;
+    if (jdField_a_of_type_Bmxi != null)
+    {
+      jdField_a_of_type_Bmxi.e();
+      jdField_a_of_type_Bmxi = null;
+    }
+  }
+  
+  public static void b(bmxe parambmxe)
+  {
+    if (jdField_a_of_type_Bmxi != null) {
+      jdField_a_of_type_Bmxi.b(parambmxe);
+    }
   }
 }
 

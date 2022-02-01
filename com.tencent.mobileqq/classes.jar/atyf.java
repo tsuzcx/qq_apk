@@ -1,12 +1,20 @@
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+
 public class atyf
+  implements atve
 {
-  public int a;
-  public int b;
-  public int c;
+  public atyf(SendBottomBar paramSendBottomBar) {}
+  
+  public void a()
+  {
+    this.a.c();
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atyf
  * JD-Core Version:    0.7.0.1
  */

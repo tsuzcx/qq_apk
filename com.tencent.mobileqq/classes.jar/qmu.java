@@ -1,24 +1,56 @@
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+
 public class qmu
-  implements Cloneable
+  extends RecyclerView.ItemDecoration
 {
-  public int a = 0;
-  public long a;
-  public long b;
+  private int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean = true;
+  private int b;
+  private int c;
+  private int d;
   
-  public qmu a()
+  public qmu(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    try
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt1;
+    this.d = paramInt2;
+    this.jdField_a_of_type_Int = paramInt3;
+    this.c = paramInt4;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int i = paramRecyclerView.getChildAdapterPosition(paramView);
+    if (this.jdField_a_of_type_Boolean)
     {
-      qmu localqmu = (qmu)super.clone();
-      return localqmu;
+      paramRect.top = this.jdField_a_of_type_Int;
+      paramRect.bottom = this.c;
+      if (i == 0) {
+        paramRect.left = this.b;
+      }
+      if (i == paramState.getItemCount() - 1) {
+        paramRect.right = this.d;
+      }
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    do
+    {
+      return;
+      paramRect.left = this.b;
+      paramRect.right = this.d;
+      if (i == 0) {
+        paramRect.top = this.jdField_a_of_type_Int;
+      }
+    } while (i != paramState.getItemCount() - 1);
+    paramRect.bottom = this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qmu
  * JD-Core Version:    0.7.0.1
  */

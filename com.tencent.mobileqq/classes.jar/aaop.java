@@ -1,46 +1,74 @@
 import android.os.Bundle;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialAd.IPCHandlerForClose.1;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-public final class aaop
-  implements aaqv
+public class aaop
+  extends pmn
 {
-  public aaqx a(aaqw paramaaqw)
+  public aaop(TroopMemberApiService paramTroopMemberApiService) {}
+  
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    String str2 = null;
-    aaqx localaaqx = new aaqx();
-    if (paramaaqw == null) {
-      if (paramaaqw == null) {
-        break label179;
-      }
-    }
-    label179:
-    for (String str1 = paramaaqw.a();; str1 = null)
+    Bundle localBundle = new Bundle();
+    localBundle.putString("rowKey", paramString1);
+    localBundle.putString("action", paramString2);
+    localBundle.putInt("seq", paramInt);
+    localBundle.putString("processName", aanz.a());
+    this.a.a(137, localBundle);
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  {
+    if (paramBoolean)
     {
-      if (paramaaqw != null) {
-        str2 = paramaaqw.b();
-      }
-      aase.b("GdtInterstitialAd", String.format("IPCHandlerForClose.handle action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(localaaqx.a) }));
-      return localaaqx;
-      if ((!paramaaqw.a()) || (paramaaqw.a == null)) {
-        break;
-      }
-      str1 = paramaaqw.a.getString("TRACE_ID");
-      if (paramaaqw.a == null) {
-        break;
-      }
-      WeakReference localWeakReference = aaoq.a().a(str1);
-      if ((localWeakReference == null) || (localWeakReference.get() == null)) {
-        break;
-      }
-      aaor.c(BaseApplicationImpl.getContext(), ((GdtInterstitialFragment)localWeakReference.get()).a(), ((GdtInterstitialFragment)localWeakReference.get()).a());
-      localaaqx.a = true;
-      AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialAd.IPCHandlerForClose.1(this, str1), 0, 2000L);
-      break;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("rowKey", paramString1);
+      localBundle.putString("commentId", paramString2);
+      localBundle.putString("action", paramString3);
+      localBundle.putInt("seq", paramInt1);
+      localBundle.putInt("totalDeleteCount", paramInt2);
+      localBundle.putString("processName", aanz.a());
+      this.a.a(136, localBundle);
     }
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5)
+  {
+    if (paramBoolean)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("rowKey", paramString1);
+      localBundle.putString("commentId", paramString2);
+      localBundle.putString("commentContent", paramString3);
+      localBundle.putInt("commentLevel", paramInt1);
+      localBundle.putString("action", paramString4);
+      localBundle.putString("parentCommentId", paramString5);
+      localBundle.putInt("seq", paramInt2);
+      localBundle.putString("processName", aanz.a());
+      this.a.a(134, localBundle);
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    if (paramBoolean)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("rowKey", paramString1);
+      localBundle.putString("commentId", paramString2);
+      localBundle.putString("likeStatus", paramString3);
+      localBundle.putString("action", paramString4);
+      localBundle.putInt("seq", paramInt);
+      localBundle.putString("processName", aanz.a());
+      this.a.a(135, localBundle);
+    }
+  }
+  
+  public void g(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("seq", paramInt);
+    localBundle.putString("processName", aanz.a());
+    this.a.a(138, localBundle);
   }
 }
 

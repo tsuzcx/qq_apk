@@ -1,13 +1,6 @@
-import android.content.Context;
-
-public class ajlv
-  extends ajlx
+public abstract interface ajlv
 {
-  public ajlv(Context paramContext)
-  {
-    this.a = paramContext.getString(2131697682);
-    this.b = this.a;
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 

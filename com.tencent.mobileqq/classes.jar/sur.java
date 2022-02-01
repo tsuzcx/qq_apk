@@ -1,37 +1,15 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
-class sur
-  implements Animation.AnimationListener
+public class sur
+  implements bknm
 {
-  sur(suk paramsuk) {}
+  public sur(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.a.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if ((this.a.b > 0) && (this.a.c > 0)) {
-      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131372440)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
-    }
-  }
+  public void a(bknl parambknl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sur
  * JD-Core Version:    0.7.0.1
  */

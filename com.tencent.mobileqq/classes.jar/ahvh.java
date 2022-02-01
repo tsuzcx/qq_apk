@@ -1,6 +1,10 @@
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+
 public abstract interface ahvh
 {
-  public abstract void a(int paramInt);
+  public abstract boolean a(PhotoListPanel paramPhotoListPanel);
+  
+  public abstract boolean b(PhotoListPanel paramPhotoListPanel);
 }
 
 

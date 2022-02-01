@@ -1,92 +1,107 @@
 import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public abstract class sjk
-  extends sjj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/tvk/TVKPlayerSDKMgr;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKMgr;", "Lcom/tencent/qqlive/mediaplayer/api/TVK_SDKMgr$OnLogListener;", "Lcom/tencent/qqlive/mediaplayer/api/TVK_SDKMgr$InstallListener;", "()V", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKEventListener;", "d", "", "s", "", "s1", "e", "i", "initSDK", "", "installPlugin", "isInstalled", "", "onInstallProgress", "p0", "", "onInstalledFailed", "errorCode", "onInstalledSuccessed", "v", "w", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sjk
+  implements TVK_SDKMgr.InstallListener, TVK_SDKMgr.OnLogListener, siw
 {
-  protected int a;
-  protected Context a;
-  protected ArrayList<Object> a;
-  private sjl a;
+  private static siv a;
+  public static final sjk a;
   
-  protected sjk(Context paramContext, int paramInt)
+  static
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    b(this.jdField_a_of_type_JavaUtilArrayList);
+    jdField_a_of_type_Sjk = new sjk();
   }
   
-  private void b(List<?> paramList)
+  public void a()
   {
-    a(paramList);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<Object> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 < getCount())
-    {
-      if (this.jdField_a_of_type_Sjl != null) {
-        this.jdField_a_of_type_Sjl.a(paramInt1, paramInt2);
-      }
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_JavaUtilArrayList, paramInt1, paramInt2);
-      notifyDataSetChanged();
+    TVK_SDKMgr.setOnLogListener((TVK_SDKMgr.OnLogListener)this);
+    TVK_SDKMgr.setDebugEnable(true);
+    TVK_SDKMgr.initSdk((Context)BaseApplicationImpl.getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.readinjoy.video", 2, "initTVKVideoSDK() finish");
     }
   }
   
-  public void a(int paramInt, Object paramObject)
+  public void a(@NotNull siv paramsiv)
   {
-    a(paramObject);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramObject);
+    Intrinsics.checkParameterIsNotNull(paramsiv, "listener");
+    jdField_a_of_type_Siv = paramsiv;
+    TVK_SDKMgr.installPlugin((Context)BaseApplicationImpl.getContext(), (TVK_SDKMgr.InstallListener)this);
   }
   
-  public boolean a(int paramInt)
+  public boolean a()
   {
-    return true;
+    return TVK_SDKMgr.isInstalled((Context)BaseApplicationImpl.getContext());
   }
   
-  public void c(Object paramObject)
+  public int d(@Nullable String paramString1, @Nullable String paramString2)
   {
-    a(paramObject);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-    notifyDataSetChanged();
-  }
-  
-  public void d(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramObject);
-    b(paramObject);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return 0;
+  }
+  
+  public int e(@Nullable String paramString1, @Nullable String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+    return 0;
+  }
+  
+  public int i(@Nullable String paramString1, @Nullable String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    siv localsiv = jdField_a_of_type_Siv;
+    if (localsiv != null) {
+      localsiv.a(paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    siv localsiv = jdField_a_of_type_Siv;
+    if (localsiv != null) {
+      localsiv.a();
+    }
+  }
+  
+  public int v(@Nullable String paramString1, @Nullable String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(@Nullable String paramString1, @Nullable String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sjk
  * JD-Core Version:    0.7.0.1
  */

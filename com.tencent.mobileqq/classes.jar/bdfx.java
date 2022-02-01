@@ -1,10 +1,6 @@
-import java.util.List;
-
-public class bdfx
+public abstract interface bdfx
 {
-  public int a;
-  public String a;
-  public List<Integer> a;
+  public abstract int a();
 }
 
 

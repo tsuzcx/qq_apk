@@ -1,222 +1,96 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.shortvideo.videotransfer.TransferConfig;
-import com.tencent.mobileqq.shortvideo.videotransfer.TransferConfig.ConfigData;
-import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.DownloadResult.Status;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.IEventReceiver;
-import dov.com.qq.im.capture.data.TransitionCategoryItem;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import java.util.ArrayList;
-import java.util.Iterator;
 import org.json.JSONObject;
 
-public class bmoq
-  extends bmnh
-  implements bmkn, IEventReceiver
+class bmoq
+  implements Downloader.DownloadListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private TransferData jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData = new TransferData();
-  private int b;
+  bmoq(bmop parambmop, String paramString) {}
   
-  public bmoq(@NonNull bmnj parambmnj)
+  public void onDownloadCanceled(String paramString)
   {
-    super(parambmnj);
-  }
-  
-  public static int a(int paramInt)
-  {
-    int i = 1;
-    if (paramInt == 1) {
-      i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDownloadCanceled:" + paramString);
     }
-    while (paramInt == 2) {
-      return i;
-    }
-    return -1;
-  }
-  
-  public static long a()
-  {
-    return -200L;
-  }
-  
-  private void a(long paramLong)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.getPositions();
-    if ((localObject == null) || (((ArrayList)localObject).size() == 0))
+    try
     {
-      this.jdField_a_of_type_Int = 1;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", -1);
+      localJSONObject.put("message", paramString);
+      bmop.a(this.jdField_a_of_type_Bmop).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
       return;
     }
-    localObject = ((ArrayList)localObject).iterator();
-    Long localLong;
-    for (long l = 0L; ((Iterator)localObject).hasNext(); l = localLong.longValue())
+    catch (Exception paramString)
     {
-      localLong = (Long)((Iterator)localObject).next();
-      if (localLong.longValue() - l < 2000L)
-      {
-        this.jdField_a_of_type_Int = 2;
-        return;
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadCanceled : " + paramString.getMessage());
     }
-    if (paramLong - l < 2000L)
-    {
-      this.jdField_a_of_type_Int = 2;
-      return;
-    }
-    this.jdField_a_of_type_Int = 0;
   }
   
-  private boolean c()
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.mConfigData.mID != -1) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.getPositions().size() > 0);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    a(bmkn.class, this);
-    if ((this.jdField_a_of_type_Bmnj.a.a instanceof EditLocalPhotoSource)) {
-      this.jdField_a_of_type_Int = 3;
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDownloadFailed:" + paramString);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Int == 0)
+      try
       {
-        localObject = ((blrx)blqr.a(5)).a;
-        if (localObject != null)
-        {
-          localObject = ((bnhc)localObject).a();
-          a(Integer.parseInt(((TransitionCategoryItem)localObject).a));
-          bnhb.a().a((TransitionCategoryItem)localObject);
-          localObject = (bmjs)a(bmjs.class);
-          if ((localObject != null) && (!(this.jdField_a_of_type_Bmnj instanceof bnfs))) {
-            ((bmjs)localObject).b();
-          }
+        paramString = new JSONObject();
+        if (paramDownloadResult == null) {
+          continue;
         }
-        if (AudioHelper.f()) {
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.setReverseShift(a());
+        DownloadResult.Status localStatus = paramDownloadResult.getStatus();
+        if (localStatus == null) {
+          continue;
         }
+        paramString.put("code", localStatus.failReason);
+        paramString.put("message", paramDownloadResult.getDetailDownloadInfo());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.edit.EditVideoTransfer", 2, "onCreate, state:" + this.jdField_a_of_type_Int);
-      }
-      Object localObject = (bmio)a(bmio.class);
-      if (this.jdField_a_of_type_Int != 0) {
-        ((bmio)localObject).b();
-      }
-      wxj.a("video_edit_transition", "exp_transition", a(this.jdField_a_of_type_Bmnj.a.a("extra_transiton_src_from", -1)), 0, new String[0]);
-      return;
-      if ((this.jdField_a_of_type_Bmnj.a.a instanceof EditLocalVideoSource))
+      catch (Exception paramString)
       {
-        this.jdField_a_of_type_Int = 3;
-      }
-      else if ((this.jdField_a_of_type_Bmnj.a.a instanceof EditTakeVideoSource))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.setPositions(((EditTakeVideoSource)this.jdField_a_of_type_Bmnj.a.a).a.mTransferPosList);
-        if (this.jdField_a_of_type_Bmnj.a.a("extra_transiton_src_from", -1) == 1) {
-          this.jdField_a_of_type_Int = 0;
-        } else {
-          a(((EditTakeVideoSource)this.jdField_a_of_type_Bmnj.a.a).a.mDuration);
+        if (!QLog.isColorLevel()) {
+          return;
         }
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Object localObject = TransferConfig.getConfigData(paramInt);
-    if (paramInt == 1)
-    {
-      ((TransferConfig.ConfigData)localObject).mCommonFloat1 = null;
-      ((TransferConfig.ConfigData)localObject).mCommonFloat2 = null;
-      ((TransferConfig.ConfigData)localObject).mCommonFloat3 = null;
-      ((TransferConfig.ConfigData)localObject).mCommonFloat4 = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.setConfigData((TransferConfig.ConfigData)localObject);
-    if (c())
-    {
-      localObject = (bmnt)a(bmnt.class);
-      if (localObject != null) {
-        ((bmnt)localObject).a(this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    if (this.jdField_a_of_type_Int != 0) {}
-    do
-    {
-      return;
-      if (paramInt2 == 42)
-      {
-        this.b = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.mConfigData.mID;
-        a(-1);
+        QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadFailed : " + paramString.getMessage());
         return;
+        paramString.put("code", -1);
+        paramString.put("message", "DownloadFailed");
+        continue;
       }
-    } while (paramInt1 != 42);
-    a(this.b);
-  }
-  
-  public void a(int paramInt, @NonNull bnaz parambnaz)
-  {
-    super.a(paramInt, parambnaz);
-    if (!b()) {}
-    String str;
-    do
-    {
+      bmop.b(this.jdField_a_of_type_Bmop).callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
       return;
-      str = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.toJSONObject();
-    } while (TextUtils.isEmpty(str));
-    parambnaz.a.putExtra("transfer_effect_data", str);
+      paramString.put("code", -1);
+    }
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, new Object[] { "onDownloadProgress: ", paramString + " : " + paramLong + " : " + paramFloat });
+    }
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDownloadSucceed");
+    }
     try
     {
-      if (b()) {
-        paramJSONObject.put("EditVideoTransfer", this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.toJSONObject());
-      }
+      paramString = new JSONObject();
+      paramString.put("code", 0);
+      paramString.put("message", "success");
+      bmop.c(this.jdField_a_of_type_Bmop).callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
       return;
     }
-    catch (Exception paramJSONObject) {}
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Int == 1) {
-      QQToast.a(a(), 2131720939, 0).a();
-    }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    QQToast.a(a(), 2131720938, 0).a();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int == 0;
-  }
-  
-  public void g()
-  {
-    super.g();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.publish.edit.EditVideoTransfer", 2, "onDestroy");
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadSucceed : " + paramString.getMessage());
     }
   }
 }

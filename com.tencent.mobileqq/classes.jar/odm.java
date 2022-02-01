@@ -1,76 +1,86 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import java.net.URL;
-import java.util.ArrayList;
-import org.json.JSONException;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONObject;
 
-public class odm
+class odm
+  implements View.OnClickListener
 {
-  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
+  odm(odl paramodl, int paramInt, JSONObject paramJSONObject, Context paramContext, MessageRecord paramMessageRecord) {}
+  
+  public void onClick(View paramView)
   {
-    try
+    switch (this.jdField_a_of_type_Int)
     {
-      if (paramAdData.jdField_a_of_type_Obd == null) {
-        return paramJSONObject;
-      }
-      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_triple_pic_game_cell");
-      if (!TextUtils.isEmpty(paramAdData.J)) {
-        paramJSONObject.put("id_game_small_img", new JSONObject());
-      }
-      if (!TextUtils.isEmpty(paramAdData.q))
-      {
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("text", paramAdData.q);
-        paramJSONObject.put("id_tv_author", localObject1);
-      }
-      if (!TextUtils.isEmpty(paramAdData.k))
-      {
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("text", paramAdData.k);
-        paramJSONObject.put("id_tv_title", localObject1);
-      }
-      if ((paramAdData.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdData.jdField_a_of_type_JavaUtilArrayList.size() > 2))
-      {
-        Object localObject3 = swu.a((String)paramAdData.jdField_a_of_type_JavaUtilArrayList.get(0), 4);
-        Object localObject2 = swu.a((String)paramAdData.jdField_a_of_type_JavaUtilArrayList.get(1), 4);
-        localObject1 = swu.a((String)paramAdData.jdField_a_of_type_JavaUtilArrayList.get(2), 4);
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("multi_img_url1", ((URL)localObject3).toString());
-        paramJSONObject.put("id_multi_img_1", localJSONObject);
-        localObject3 = new JSONObject();
-        ((JSONObject)localObject3).put("multi_img_url2", ((URL)localObject2).toString());
-        paramJSONObject.put("id_multi_img_2", localObject3);
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("multi_img_url3", ((URL)localObject1).toString());
-        paramJSONObject.put("id_multi_img_3", localObject2);
-      }
-      paramJSONObject.put("id_ad_triple_imge_container", new JSONObject());
-      Object localObject1 = new JSONObject();
-      if (!TextUtils.isEmpty(paramAdData.L))
-      {
-        ((JSONObject)localObject1).put("text", paramAdData.L);
-        paramJSONObject.put("id_ad_dislike_button", localObject1);
-      }
-      paramJSONObject.put("id_game_operate_area", new JSONObject());
-      paramJSONObject.put("id_separator", new JSONObject());
-      paramJSONObject.put("id_ad_title", new JSONObject());
-      paramJSONObject.put("id_ad_title_rl", new JSONObject());
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("innerGameModel", paramAdData);
-      paramJSONObject.put("id_view_AdDownloadView", localObject1);
-      return paramJSONObject;
     }
-    catch (JSONException paramAdData)
+    for (;;)
     {
-      paramAdData.printStackTrace();
+      if ((odl.a(this.jdField_a_of_type_Odl) != null) && (odl.a(this.jdField_a_of_type_Odl).isShowing())) {
+        odl.a(this.jdField_a_of_type_Odl).dismiss();
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject = this.jdField_a_of_type_OrgJsonJSONObject.optString("action_url", "");
+      if (!bgsp.a((String)localObject))
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", (String)localObject);
+        localIntent.putExtra("big_brother_source_key", "biz_src_gzh_qqgw");
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivity(localIntent);
+        continue;
+        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForArkApp))
+        {
+          localObject = (MessageForArkApp)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          if (((MessageForArkApp)localObject).arkContainer != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("Ecshop_EcshopAdHelper", 2, "doOnEvent ARKAPP_TYPE_DESTROY");
+            }
+            ((MessageForArkApp)localObject).arkContainer.doOnEvent(2);
+          }
+        }
+        ((odh)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(8, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692043), 1).a();
+        continue;
+        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForArkApp))
+        {
+          localObject = (MessageForArkApp)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          if (((MessageForArkApp)localObject).arkContainer != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("Ecshop_EcshopAdHelper", 2, "doOnEvent ARKAPP_TYPE_DESTROY");
+            }
+            ((MessageForArkApp)localObject).arkContainer.doOnEvent(2);
+          }
+        }
+        ((odh)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(7, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692043), 1).a();
+      }
     }
-    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     odm
  * JD-Core Version:    0.7.0.1
  */

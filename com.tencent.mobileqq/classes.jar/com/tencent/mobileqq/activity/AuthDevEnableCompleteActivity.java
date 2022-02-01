@@ -1,11 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import acgn;
-import aknh;
+import Override;
+import adoa;
+import amgn;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,11 +16,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aqbd;
+import asfr;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 public class AuthDevEnableCompleteActivity
@@ -28,7 +32,7 @@ public class AuthDevEnableCompleteActivity
   private Button jdField_a_of_type_AndroidWidgetButton;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<aknh> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<amgn> jdField_a_of_type_JavaUtilArrayList;
   private boolean jdField_a_of_type_Boolean;
   
   private View a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -40,7 +44,7 @@ public class AuthDevEnableCompleteActivity
       }
       return null;
     }
-    View localView = getLayoutInflater().inflate(2131560928, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    View localView = getLayoutInflater().inflate(2131561133, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
     if ((localView == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null))
     {
       if (QLog.isColorLevel()) {
@@ -48,11 +52,11 @@ public class AuthDevEnableCompleteActivity
       }
       return null;
     }
-    localView.setOnClickListener(new acgn(this));
-    ImageView localImageView = (ImageView)localView.findViewById(2131364239);
-    TextView localTextView1 = (TextView)localView.findViewById(2131370977);
-    TextView localTextView2 = (TextView)localView.findViewById(2131377815);
-    TextView localTextView3 = (TextView)localView.findViewById(2131368235);
+    localView.setOnClickListener(new adoa(this));
+    ImageView localImageView = (ImageView)localView.findViewById(2131364446);
+    TextView localTextView1 = (TextView)localView.findViewById(2131371539);
+    TextView localTextView2 = (TextView)localView.findViewById(2131378656);
+    TextView localTextView3 = (TextView)localView.findViewById(2131368563);
     if ((localImageView == null) || (localTextView1 == null) || (localTextView2 == null) || (localTextView3 == null))
     {
       if (QLog.isColorLevel()) {
@@ -62,17 +66,17 @@ public class AuthDevEnableCompleteActivity
     }
     localImageView.setVisibility(0);
     localTextView1.setText(paramString1);
-    localTextView2.setText(getString(2131692189));
+    localTextView2.setText(getString(2131691813));
     localTextView3.setText(paramString2);
     return localView;
   }
   
   private void a()
   {
-    super.setContentView(2131560922);
-    setTitle(2131692213);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363578));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376487));
+    super.setContentView(2131561127);
+    setTitle(2131691831);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363776));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131377277));
     if ((this.jdField_a_of_type_AndroidWidgetButton == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null))
     {
       if (QLog.isColorLevel()) {
@@ -80,12 +84,12 @@ public class AuthDevEnableCompleteActivity
       }
       return;
     }
-    Object localObject1 = (TextView)findViewById(2131368624);
+    Object localObject1 = (TextView)findViewById(2131368947);
     if (localObject1 != null) {
       ((TextView)localObject1).setVisibility(8);
     }
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_JavaUtilArrayList = aqbd.a().a();
+    this.jdField_a_of_type_JavaUtilArrayList = asfr.a().a();
     int k = this.jdField_a_of_type_JavaUtilArrayList.size();
     int j = 0;
     int i = 0;
@@ -97,18 +101,18 @@ public class AuthDevEnableCompleteActivity
     {
       if (j < k)
       {
-        localObject2 = (aknh)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        localObject2 = (amgn)this.jdField_a_of_type_JavaUtilArrayList.get(j);
         if (localObject2 == null)
         {
           j += 1;
         }
-        else if ((((aknh)localObject2).c == 1) || (((aknh)localObject2).c == 2))
+        else if ((((amgn)localObject2).c == 1) || (((amgn)localObject2).c == 2))
         {
           bool1 = true;
-          if (((((aknh)localObject2).jdField_a_of_type_ArrayOfByte == null) || (!((aknh)localObject2).jdField_a_of_type_ArrayOfByte.equals(NetConnInfoCenter.GUID))) && (((aknh)localObject2).c != 1)) {
+          if (((((amgn)localObject2).jdField_a_of_type_ArrayOfByte == null) || (!((amgn)localObject2).jdField_a_of_type_ArrayOfByte.equals(NetConnInfoCenter.GUID))) && (((amgn)localObject2).c != 1)) {
             break label361;
           }
-          ((aknh)localObject2).jdField_a_of_type_Boolean = true;
+          ((amgn)localObject2).jdField_a_of_type_Boolean = true;
           bool2 = false;
           bool1 = true;
         }
@@ -116,14 +120,14 @@ public class AuthDevEnableCompleteActivity
     }
     for (;;)
     {
-      localObject1 = a(((aknh)localObject2).jdField_a_of_type_JavaLangString, ((aknh)localObject2).b, bool1, bool2, ((aknh)localObject2).jdField_a_of_type_Boolean);
+      localObject1 = a(((amgn)localObject2).jdField_a_of_type_JavaLangString, ((amgn)localObject2).b, bool1, bool2, ((amgn)localObject2).jdField_a_of_type_Boolean);
       if (localObject1 != null)
       {
-        ((aknh)localObject2).d = i;
+        ((amgn)localObject2).d = i;
         i += 1;
-        localObject2 = (RelativeLayout)((View)localObject1).findViewById(2131368527);
+        localObject2 = (RelativeLayout)((View)localObject1).findViewById(2131368835);
         if (k == 1) {
-          ((RelativeLayout)localObject2).setBackgroundResource(2130839254);
+          ((RelativeLayout)localObject2).setBackgroundResource(2130839432);
         }
         for (;;)
         {
@@ -132,16 +136,16 @@ public class AuthDevEnableCompleteActivity
           bool1 = false;
           break label171;
           if (i == 1) {
-            ((RelativeLayout)localObject2).setBackgroundResource(2130839270);
+            ((RelativeLayout)localObject2).setBackgroundResource(2130839448);
           } else if (j == k - 1) {
-            ((RelativeLayout)localObject2).setBackgroundResource(2130839261);
+            ((RelativeLayout)localObject2).setBackgroundResource(2130839439);
           } else {
-            ((RelativeLayout)localObject2).setBackgroundResource(2130839264);
+            ((RelativeLayout)localObject2).setBackgroundResource(2130839442);
           }
         }
         try
         {
-          aqbd.a().a(null, this.app.getCurrentAccountUin(), 10);
+          asfr.a().a(null, this.app.getCurrentAccountUin(), 10);
           return;
         }
         catch (Exception localException)
@@ -153,6 +157,14 @@ public class AuthDevEnableCompleteActivity
       label361:
       bool2 = true;
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -174,80 +186,87 @@ public class AuthDevEnableCompleteActivity
   {
     switch (paramView.getId())
     {
-    default: 
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 2131363578: 
       if (QLog.isColorLevel()) {
         QLog.d("devlock.AuthDevEnableCompleteActivity", 2, "click confirm mobile phone button! ");
       }
-      break;
-    }
-    try
-    {
-      aqbd.a().a(null, this.app.getCurrentAccountUin(), 11);
-      label63:
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout != null))
+      try
       {
-        int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-        int i = 0;
-        if (i < k)
+        asfr.a().a(null, this.app.getCurrentAccountUin(), 11);
+        label70:
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout != null))
         {
-          paramView = (aknh)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          int j = paramView.d;
-          View localView;
-          if (j >= 0)
+          int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+          int i = 0;
+          if (i < k)
           {
-            localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j);
-            if (localView != null) {
-              break label137;
-            }
-          }
-          for (;;)
-          {
-            i += 1;
-            break;
-            if (((ImageView)localView.findViewById(2131364239)).getVisibility() == 0) {}
-            for (j = 1;; j = 0)
+            localObject = (amgn)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+            int j = ((amgn)localObject).d;
+            View localView;
+            if (j >= 0)
             {
-              if (j == 0) {
-                break label179;
+              localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j);
+              if (localView != null) {
+                break label146;
               }
-              if (paramView.c != 0) {
+            }
+            for (;;)
+            {
+              i += 1;
+              break;
+              if (((ImageView)localView.findViewById(2131364446)).getVisibility() == 0) {}
+              for (j = 1;; j = 0)
+              {
+                if (j == 0) {
+                  break label190;
+                }
+                if (((amgn)localObject).c != 0) {
+                  break;
+                }
+                ((amgn)localObject).c = 3;
                 break;
               }
-              paramView.c = 3;
-              break;
+              ((amgn)localObject).c = 0;
             }
-            paramView.c = 0;
           }
         }
+        label146:
+        label190:
+        asfr.a().a(this.app, this.jdField_a_of_type_JavaUtilArrayList);
+        Object localObject = new Intent(this, AuthDevActivity.class);
+        ((Intent)localObject).putExtra("auth_dev_open", true);
+        if (this.jdField_a_of_type_JavaLangString != null)
+        {
+          ((Intent)localObject).putExtra("country_code", this.jdField_a_of_type_Int);
+          ((Intent)localObject).putExtra("phone_num", this.jdField_a_of_type_JavaLangString);
+        }
+        startActivity((Intent)localObject);
+        overridePendingTransition(0, 2130772001);
+        asfr.a().c();
+        finish();
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("devlock.AuthDevEnableCompleteActivity", 2, "onClick right cancel button! ");
+        }
+        finish();
+        overridePendingTransition(0, 2130772001);
       }
-      label137:
-      label179:
-      aqbd.a().a(this.app, this.jdField_a_of_type_JavaUtilArrayList);
-      paramView = new Intent(this, AuthDevActivity.class);
-      paramView.putExtra("auth_dev_open", true);
-      if (this.jdField_a_of_type_JavaLangString != null)
+      catch (Exception localException)
       {
-        paramView.putExtra("country_code", this.jdField_a_of_type_Int);
-        paramView.putExtra("phone_num", this.jdField_a_of_type_JavaLangString);
+        break label70;
       }
-      startActivity(paramView);
-      overridePendingTransition(0, 2130772001);
-      aqbd.a().c();
-      finish();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("devlock.AuthDevEnableCompleteActivity", 2, "onClick right cancel button! ");
-      }
-      finish();
-      overridePendingTransition(0, 2130772001);
-      return;
     }
-    catch (Exception paramView)
-    {
-      break label63;
-    }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)

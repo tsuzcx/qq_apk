@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-public final class bnbt
-  implements Parcelable.Creator<PublishParam>
+public class bnbt
+  implements CosFunHelper.CountDownListener
 {
-  public PublishParam a(Parcel paramParcel)
+  public bnbt(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  
+  public void onCountDownEnd()
   {
-    return new PublishParam(paramParcel);
+    QIMEffectCameraCaptureUnit.a(this.a);
   }
   
-  public PublishParam[] a(int paramInt)
+  public void onCountDownStart(VideoMaterial paramVideoMaterial)
   {
-    return new PublishParam[paramInt];
+    QIMEffectCameraCaptureUnit.a(this.a, paramVideoMaterial.getTipsDrawable());
   }
 }
 

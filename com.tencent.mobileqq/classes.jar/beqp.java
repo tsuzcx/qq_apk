@@ -1,8 +1,17 @@
-import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
 
-public abstract interface beqp
+class beqp
+  extends Handler
 {
-  public abstract void a(Bitmap paramBitmap);
+  beqp(beqo parambeqo) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((paramMessage.what == beqo.j) && (beqo.e == this.a.k)) {
+      beqo.a(this.a);
+    }
+  }
 }
 
 

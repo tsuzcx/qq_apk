@@ -1,33 +1,37 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.widgets.TabLayout;
-import java.io.PrintStream;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
 public class zhl
-  implements ValueAnimator.AnimatorUpdateListener
+  extends wle<wzq, xbd>
 {
-  public zhl(TabLayout paramTabLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView, int paramInt5) {}
+  zhl(zhj paramzhj) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(@NonNull wzq paramwzq, @Nullable xbd paramxbd, @NonNull ErrorMessage paramErrorMessage)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    System.out.println("value = " + f);
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int - this.b)
+    yqp.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramxbd != null))
     {
-      paramValueAnimator = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getChildAt(this.c + i);
-      if (paramValueAnimator != null) {
-        paramValueAnimator.setTranslationX(this.d * f);
-      }
-      i += 1;
+      yqp.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramxbd.toString());
+      zhj.a(this.a).addAll(paramxbd.jdField_a_of_type_JavaUtilList);
+      zhj.a(this.a, paramxbd.jdField_a_of_type_JavaLangString);
+      zhj.a(this.a, paramxbd.b);
+      ThreadManager.executeOnSubThread(new EditVideoTagPresenter.2.1(this));
     }
-    this.jdField_a_of_type_AndroidViewView.setTranslationX(f * -this.e);
+    for (;;)
+    {
+      zhj.a(this.a).b(paramErrorMessage.errorCode, zhj.a(this.a), this.a.a());
+      return;
+      yqp.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zhl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,67 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import java.util.ArrayList;
 
-class uhj
-  implements View.OnClickListener
+public class uhj
+  extends uhi<ArrayList<stSimpleMetaFeed>>
 {
-  uhj(uhf paramuhf, Context paramContext) {}
+  protected int a;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public uhj()
   {
-    trx localtrx;
-    boolean bool;
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      localtrx = uhf.a(this.jdField_a_of_type_Uhf);
-      StringBuilder localStringBuilder = new StringBuilder().append("startReply getFeedCommentInfo is");
-      if (localtrx == null) {
-        break label97;
-      }
-      bool = true;
-      QLog.d("QCircleReplyMessagePresenter", 1, bool);
-      if (localtrx != null)
-      {
-        if (paramView.getId() != 2131379038) {
-          break label102;
-        }
-        uhf.a(this.jdField_a_of_type_Uhf, localtrx, 2);
-      }
+    this.jdField_a_of_type_JavaLangObject = new ArrayList();
+    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  }
+  
+  private boolean b(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    return ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (a() == 0)) || (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramstSimpleMetaFeed.poster_id));
+  }
+  
+  public int a()
+  {
+    return ((ArrayList)this.jdField_a_of_type_JavaLangObject).size();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Boolean) {
+      uen.a().a(a());
     }
-    for (;;)
-    {
-      uax.a().a((Activity)this.jdField_a_of_type_AndroidContentContext, localtrx, uhf.a(this.jdField_a_of_type_Uhf));
-      return;
-      label97:
-      bool = false;
-      break;
-      label102:
-      if (this.jdField_a_of_type_Uhf.a == 1) {
-        uhf.a(this.jdField_a_of_type_Uhf, localtrx, 6);
-      } else if (this.jdField_a_of_type_Uhf.a == 2) {
-        uhf.a(this.jdField_a_of_type_Uhf, localtrx, 10);
-      }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    if ((paramstSimpleMetaFeed == null) || (!b(paramstSimpleMetaFeed))) {
+      return false;
     }
+    this.jdField_a_of_type_JavaLangString = paramstSimpleMetaFeed.poster_id;
+    this.jdField_a_of_type_JavaLangStringBuilder.append(paramstSimpleMetaFeed.id);
+    ((ArrayList)this.jdField_a_of_type_JavaLangObject).add(paramstSimpleMetaFeed);
+    return true;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uhj
  * JD-Core Version:    0.7.0.1
  */

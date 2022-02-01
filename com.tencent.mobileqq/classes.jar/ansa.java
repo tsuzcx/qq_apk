@@ -1,6 +1,12 @@
-public abstract interface ansa
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.List;
+
+public class ansa
 {
-  public abstract boolean a(int paramInt);
+  public int a;
+  public long a;
+  public List<PublicAccountInfo> a;
+  public boolean a;
 }
 
 

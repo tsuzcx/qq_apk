@@ -1,36 +1,22 @@
-import android.content.Context;
-import com.tencent.gdtad.api.adbox.GdtAdBoxData;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
 
 public class aani
+  implements ISuperPlayer.OnCompletionListener
 {
-  private aanq jdField_a_of_type_Aanq;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private GdtAdBoxData jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
+  public aani(TribeVideoPlugin paramTribeVideoPlugin, aanp paramaanp) {}
   
-  aani(Context paramContext)
+  public void onCompletion(ISuperPlayer paramISuperPlayer)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public aanh a()
-  {
-    aanh localaanh = new aanh();
-    localaanh.a(this.jdField_a_of_type_AndroidContentContext);
-    localaanh.a(this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData);
-    localaanh.a(this.jdField_a_of_type_Aanq);
-    return localaanh;
-  }
-  
-  public aani a(aanq paramaanq)
-  {
-    this.jdField_a_of_type_Aanq = paramaanq;
-    return this;
-  }
-  
-  public aani a(GdtAdBoxData paramGdtAdBoxData)
-  {
-    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = paramGdtAdBoxData;
-    return this;
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
+    {
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, aanp.a(this.jdField_a_of_type_Aanp));
+      paramISuperPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramISuperPlayer.obj = aanp.a(this.jdField_a_of_type_Aanp);
+      paramISuperPlayer.what = 6;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramISuperPlayer);
+    }
   }
 }
 

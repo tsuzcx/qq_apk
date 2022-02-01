@@ -1,19 +1,52 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.ad.tangram.Ad;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.canvas.AdCanvasAdapter;
+import com.tencent.ad.tangram.canvas.AdCanvasAdapter.Params;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForXJ;
+import com.tencent.ad.tangram.settings.AdSettingsUtil;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
+import com.tencent.gdtad.views.canvas.GdtCanvasBaseFragment;
+import java.lang.ref.WeakReference;
 
-public class aciz
-  implements QQPermissionCallback
+public final class aciz
+  implements AdCanvasAdapter
 {
-  public aciz(BaseChatPie paramBaseChatPie) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int getQueueLength(WeakReference<Context> paramWeakReference)
   {
-    bdgm.a(this.a.a(), paramArrayOfString, paramArrayOfInt);
+    if (paramWeakReference == null) {}
+    do
+    {
+      return -2147483648;
+      paramWeakReference = AdSettingsUtil.INSTANCE.getSettingsCache((Context)paramWeakReference.get());
+    } while (paramWeakReference == null);
+    if ((paramWeakReference.settingsForXJ.canvas) || (paramWeakReference.settingsForXJ.offline)) {
+      return paramWeakReference.settingsForXJ.queueLength;
+    }
+    return -2147483648;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public AdError show(AdCanvasAdapter.Params paramParams)
   {
-    this.a.bm();
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    {
+      acqy.d("GdtCanvasAdapter", "show error");
+      return new AdError(4);
+    }
+    Object localObject = (GdtAd)GdtAd.class.cast(paramParams.ad);
+    localObject = AdCanvasDataBuilderV2.build(((Activity)paramParams.activity.get()).getApplicationContext(), (Ad)localObject, paramParams.autoDownload);
+    if ((localObject == null) || (!((AdCanvasData)localObject).isValid()))
+    {
+      acqy.d("GdtCanvasAdapter", "show error");
+      return new AdError(4);
+    }
+    GdtCanvasBaseFragment.start((Activity)paramParams.activity.get(), GdtCanvasFragmentForJS.class, (AdCanvasData)localObject, paramParams.extrasForIntent);
+    return new AdError(0);
   }
 }
 

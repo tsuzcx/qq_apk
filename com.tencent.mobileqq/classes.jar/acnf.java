@@ -1,12 +1,16 @@
-public abstract interface acnf
+import kotlin.Metadata;
+import rx.functions.Action1;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "call", "(Ljava/lang/Long;)V"}, k=3, mv={1, 1, 16})
+final class acnf<T>
+  implements Action1<Long>
 {
-  public abstract void a();
+  acnf(acnd paramacnd) {}
   
-  public abstract void a(aqam paramaqam);
-  
-  public abstract boolean a();
-  
-  public abstract void b(aqam paramaqam);
+  public final void a(Long paramLong)
+  {
+    acnd.a(this.a);
+  }
 }
 
 

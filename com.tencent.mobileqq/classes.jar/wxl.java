@@ -1,34 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqForbidVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class wxl
-  implements DialogInterface.OnKeyListener
+  extends wlf<wxm>
 {
-  public wxl(CommonPicUploadFragment paramCommonPicUploadFragment) {}
+  public final String a;
+  public String b = "";
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public wxl(wxk paramwxk, String paramString)
   {
-    if (paramInt == 84) {
-      return true;
-    }
-    if (paramInt == 4)
+    this.jdField_a_of_type_JavaLangString = wjz.a("StorySvc.forbid_video");
+    this.b = paramString;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public wxm a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspForbidVideo localRspForbidVideo = new qqstory_service.RspForbidVideo();
+    try
     {
-      this.a.a();
-      paramDialogInterface = this.a.a;
-      paramKeyEvent = this.a.a;
-      paramDialogInterface.setResult(0);
-      this.a.a.finish();
-      return true;
+      localRspForbidVideo.mergeFrom(paramArrayOfByte);
+      return new wxm(this.jdField_a_of_type_Wxk, localRspForbidVideo);
     }
-    return false;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqForbidVideo localReqForbidVideo = new qqstory_service.ReqForbidVideo();
+    localReqForbidVideo.vid.set(this.b);
+    return localReqForbidVideo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "ReportIgnoreVideoRequest{, vid='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wxl
  * JD-Core Version:    0.7.0.1
  */

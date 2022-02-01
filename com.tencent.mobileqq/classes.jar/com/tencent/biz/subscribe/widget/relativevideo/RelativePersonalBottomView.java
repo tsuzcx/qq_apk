@@ -1,5 +1,11 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
+import aagr;
+import aaje;
+import aaly;
+import aalz;
+import aama;
+import aaxb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
@@ -8,10 +14,10 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.biz.richframework.part.block.BlockContainer;
+import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.component.base.ComponentPageView;
-import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
 import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
 import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
 import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment;
@@ -24,22 +30,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import yhy;
-import yib;
-import yif;
-import yiw;
-import yiy;
-import yiz;
-import ymb;
-import ypb;
-import ypc;
-import ypd;
-import zaj;
+import zwp;
+import zwr;
+import zxo;
+import zxs;
+import zxu;
 
 public class RelativePersonalBottomView
-  extends BaseWidgetView<yif>
-  implements yiy
+  extends BaseWidgetView<zxs>
+  implements zwr
 {
+  private aama jdField_a_of_type_Aama;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
   private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
@@ -47,9 +48,8 @@ public class RelativePersonalBottomView
   private SubscribePersonalBottomOpusFragment jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment;
   private String jdField_a_of_type_JavaLangString;
   private List<SubscribeBaseBottomPersonalFragment> jdField_a_of_type_JavaUtilList;
-  private yhy jdField_a_of_type_Yhy;
-  private yif jdField_a_of_type_Yif;
-  private ypd jdField_a_of_type_Ypd;
+  private zxs jdField_a_of_type_Zxs;
+  private zxu jdField_a_of_type_Zxu;
   private RadioButton b;
   
   public RelativePersonalBottomView(@NonNull Context paramContext)
@@ -57,15 +57,15 @@ public class RelativePersonalBottomView
     super(paramContext);
   }
   
-  public RelativePersonalBottomView(Context paramContext, yhy paramyhy)
+  public RelativePersonalBottomView(Context paramContext, zxu paramzxu)
   {
     this(paramContext);
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_Yhy = paramyhy;
-    yiw.a().a(this);
+    this.jdField_a_of_type_Zxu = paramzxu;
+    zwp.a().a(this);
   }
   
-  private void b()
+  private void a()
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment = new SubscribePersonalBottomOpusFragment();
@@ -77,31 +77,31 @@ public class RelativePersonalBottomView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new ypb(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new ypc(this));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new aaly(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new aalz(this));
   }
   
   private void d()
   {
-    if (ymb.a().a(this.jdField_a_of_type_JavaLangString))
+    if (aaje.a().a(this.jdField_a_of_type_JavaLangString))
     {
       if (this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment == null)
       {
         this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment = new SubscribePersonalBottomDraftsFragment();
-        if ((this.jdField_a_of_type_Yif != null) && ((this.jdField_a_of_type_Yif.a instanceof yiz)))
+        if ((this.jdField_a_of_type_Zxs != null) && ((this.jdField_a_of_type_Zxs.a instanceof aagr)))
         {
-          yiz localyiz = (yiz)this.jdField_a_of_type_Yif.a;
-          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localyiz.jdField_a_of_type_JavaLangString, localyiz);
+          aagr localaagr = (aagr)this.jdField_a_of_type_Zxs.a;
+          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localaagr.jdField_a_of_type_JavaLangString, localaagr);
         }
       }
       if (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment))
       {
-        zaj.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
+        aaxb.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
         this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(0);
-        this.jdField_a_of_type_Ypd.notifyDataSetChanged();
+        this.jdField_a_of_type_Aama.notifyDataSetChanged();
       }
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130838706));
+      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130838957));
     }
     for (;;)
     {
@@ -112,7 +112,7 @@ public class RelativePersonalBottomView
       {
         this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(8);
-        this.jdField_a_of_type_Ypd.notifyDataSetChanged();
+        this.jdField_a_of_type_Aama.notifyDataSetChanged();
         this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(null);
       }
     }
@@ -120,12 +120,12 @@ public class RelativePersonalBottomView
   
   private void e()
   {
-    if ((this.jdField_a_of_type_Yif != null) && ((this.jdField_a_of_type_Yif.a instanceof yiz)))
+    if ((this.jdField_a_of_type_Zxs != null) && ((this.jdField_a_of_type_Zxs.a instanceof aagr)))
     {
-      Object localObject = (yiz)this.jdField_a_of_type_Yif.a;
-      if (((((yiz)localObject).jdField_a_of_type_JavaUtilList == null) || (((yiz)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Yhy != null))
+      Object localObject = (aagr)this.jdField_a_of_type_Zxs.a;
+      if (((((aagr)localObject).jdField_a_of_type_JavaUtilList == null) || (((aagr)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Zxu != null))
       {
-        localObject = this.jdField_a_of_type_Yhy.getParentAdapter().a().a().getChildAt(0);
+        localObject = this.jdField_a_of_type_Zxu.getBlockMerger().a().a().getChildAt(0);
         ThreadManager.getUIHandler().post(new RelativePersonalBottomView.4(this, (View)localObject));
       }
     }
@@ -137,35 +137,35 @@ public class RelativePersonalBottomView
   
   public int a()
   {
-    return 2131558715;
+    return 2131558781;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131375763));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131371464));
-    this.b = ((RadioButton)paramView.findViewById(2131365466));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131376491));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131372035));
+    this.b = ((RadioButton)paramView.findViewById(2131365702));
     this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131371730));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131372302));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(1);
-    this.jdField_a_of_type_Ypd = new ypd(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
-    b();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Ypd);
+    this.jdField_a_of_type_Aama = new aama(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
+    a();
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Aama);
     c();
   }
   
-  public void a(yif paramyif)
+  public void a(zxs paramzxs)
   {
-    if ((paramyif != null) && ((paramyif.a instanceof yiz)))
+    if ((paramzxs != null) && ((paramzxs.a instanceof aagr)))
     {
-      this.jdField_a_of_type_Yif = paramyif;
-      paramyif = (yiz)paramyif.a;
+      this.jdField_a_of_type_Zxs = paramzxs;
+      paramzxs = (aagr)paramzxs.a;
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramyif.jdField_a_of_type_JavaLangString, paramyif);
+        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramzxs.jdField_a_of_type_JavaLangString, paramzxs);
       }
       e();
-      if (paramyif.b) {
+      if (paramzxs.b) {
         d();
       }
     }
@@ -190,13 +190,13 @@ public class RelativePersonalBottomView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    yiw.a().a(this);
+    zwp.a().a(this);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    yiw.a().b(this);
+    zwp.a().b(this);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
@@ -206,7 +206,7 @@ public class RelativePersonalBottomView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,35 @@
-public abstract interface qgx
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+
+class qgx
+  implements View.OnAttachStateChangeListener
 {
-  public abstract void setFinishRound(int paramInt);
+  qgx(qgw paramqgw) {}
   
-  public abstract void setProgress(float paramFloat);
+  public void onViewAttachedToWindow(View paramView) {}
   
-  public abstract void setRound(int paramInt1, int paramInt2);
-  
-  public abstract void setState(int paramInt);
+  public void onViewDetachedFromWindow(View paramView)
+  {
+    if (qgw.a(this.a) != null)
+    {
+      qgw.a(this.a).b();
+      qgw.a(this.a, null);
+    }
+    if (qgw.a(this.a) != null)
+    {
+      qgw.a(this.a).a();
+      qgw.a(this.a, null);
+    }
+    if (qgw.a(this.a) != null)
+    {
+      qgw.a(this.a).a();
+      qgw.a(this.a, null);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qgx
  * JD-Core Version:    0.7.0.1
  */

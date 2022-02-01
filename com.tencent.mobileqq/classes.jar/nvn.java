@@ -1,72 +1,22 @@
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nvn
+  implements View.OnClickListener
 {
-  public static void a(Drawable paramDrawable)
-  {
-    if (!a()) {
-      QLog.i("DailyDynamicHeaderBackgroundController", 1, "blurBackground, isNeedToBlurBackground : NO");
-    }
-    while (!(paramDrawable instanceof URLDrawable)) {
-      return;
-    }
-    ((URLDrawable)paramDrawable).setDecodeHandler(new nvo());
-  }
+  public nvn(VideoCoverView paramVideoCoverView) {}
   
-  public static void a(ImageView paramImageView)
+  public void onClick(View paramView)
   {
-    if (paramImageView == null) {
-      return;
-    }
-    if (b())
-    {
-      paramImageView.setColorFilter(855638016, PorterDuff.Mode.DARKEN);
-      return;
-    }
-    paramImageView.clearColorFilter();
-  }
-  
-  private static boolean a()
-  {
-    Object localObject = (oxd)((QQAppInterface)ors.a()).getManager(163);
-    if (localObject != null)
-    {
-      localObject = ((oxd)localObject).a().a();
-      if (localObject != null)
-      {
-        localObject = ((JSONObject)localObject).optString("is_blur_background", "0");
-        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedToBlurBackground, isBlurBackground = " + (String)localObject);
-        return "1".equals(localObject);
-      }
-    }
-    return false;
-  }
-  
-  private static boolean b()
-  {
-    Object localObject = (oxd)((QQAppInterface)ors.a()).getManager(163);
-    if (localObject != null)
-    {
-      localObject = ((oxd)localObject).a().a();
-      if (localObject != null)
-      {
-        localObject = ((JSONObject)localObject).optString("is_cover_background", "0");
-        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedGrayLayer, isCoverBackground = " + (String)localObject);
-        return "1".equals(localObject);
-      }
-    }
-    return false;
+    VideoCoverView.a(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvn
  * JD-Core Version:    0.7.0.1
  */

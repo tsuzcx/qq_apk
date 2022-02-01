@@ -2,12 +2,12 @@ package com.tencent.widget.itemtouchhelper;
 
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
-import bidr;
+import bkrd;
 
 public class ItemTouchHelper$1
   implements Runnable
 {
-  public ItemTouchHelper$1(bidr parambidr) {}
+  public ItemTouchHelper$1(bkrd parambkrd) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class ItemTouchHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.itemtouchhelper.ItemTouchHelper.1
  * JD-Core Version:    0.7.0.1
  */

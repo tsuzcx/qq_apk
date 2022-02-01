@@ -2,38 +2,52 @@ package com.tencent.mobileqq.mini.entry;
 
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
 
 final class MiniAppUtils$11
-  implements MiniAppCmdInterface
+  implements Runnable
 {
   MiniAppUtils$11(MiniAppConfig paramMiniAppConfig) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void run()
   {
-    if (paramBoolean)
+    boolean bool;
+    int i;
+    String str1;
+    if ((this.val$appConfig != null) && (this.val$appConfig.config != null))
     {
-      long l = paramJSONObject.optLong("retCode");
-      String str = paramJSONObject.optString("errMsg");
-      QLog.d("MiniAppUtils", 1, "updateMiniAppMemoryCache, getAppInfoById retCode = " + l + ",errMsg = " + str);
-      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
-      if (paramJSONObject != null)
-      {
-        paramJSONObject.mergeData(this.val$appConfig.config);
-        MiniAppUtils.access$200(paramJSONObject);
+      bool = MiniAppUtils.isFromPullDownEntry(this.val$appConfig);
+      if (!bool) {
+        break label124;
       }
-      return;
+      i = 1;
+      if (this.val$appConfig.launchParam == null) {
+        break label129;
+      }
+      str1 = String.valueOf(this.val$appConfig.launchParam.scene);
+      label55:
+      if (this.val$appConfig.config.via == null) {
+        break label135;
+      }
     }
-    MiniAppUtils.access$200(this.val$appConfig.config);
-    MiniAppUtils.updateMiniAppList(11);
-    QLog.e("MiniAppUtils", 1, "updateMiniAppMemoryCache, request fail. appInfo: " + this.val$appConfig.config);
+    label129:
+    label135:
+    for (String str2 = this.val$appConfig.config.via;; str2 = "")
+    {
+      MiniAppCmdUtil.getInstance().useUserApp(this.val$appConfig.config.appId, this.val$appConfig.config.verType, i, str1, str2, null, new MiniAppUtils.11.1(this, str1, str2, bool));
+      return;
+      label124:
+      i = 0;
+      break;
+      str1 = "";
+      break label55;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.11
  * JD-Core Version:    0.7.0.1
  */

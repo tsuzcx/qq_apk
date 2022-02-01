@@ -1,23 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 
-class awdx
-  implements Animation.AnimationListener
+public class awdx
 {
-  awdx(awdp paramawdp, int paramInt) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    awdp.a(this.jdField_a_of_type_Awdp, this.jdField_a_of_type_Int);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a = 1;
+  public Bitmap a;
+  public int b = Color.parseColor("#FFFF0000");
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awdx
  * JD-Core Version:    0.7.0.1
  */

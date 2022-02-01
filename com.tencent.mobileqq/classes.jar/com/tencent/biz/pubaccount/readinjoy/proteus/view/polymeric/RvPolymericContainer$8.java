@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric;
 
-import ptw;
+import qly;
 
 public class RvPolymericContainer$8
   implements Runnable
 {
-  public RvPolymericContainer$8(ptw paramptw, Runnable paramRunnable) {}
+  public RvPolymericContainer$8(qly paramqly, Runnable paramRunnable) {}
   
   public void run()
   {
-    ptw.a(this.this$0, this.a);
+    qly.a(this.this$0, this.a);
   }
 }
 

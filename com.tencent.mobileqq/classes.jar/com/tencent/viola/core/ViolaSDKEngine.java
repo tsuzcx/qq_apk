@@ -218,10 +218,37 @@ public class ViolaSDKEngine
   {
     return (paramClass != null) && (registerModule(paramString, new ModuleSimpleHolder(paramClass), paramBoolean));
   }
+  
+  public static boolean registerNativeComponent(Class<? extends VComponent> paramClass, String... paramVarArgs)
+  {
+    if (paramClass == null) {
+      return false;
+    }
+    paramClass = new ComponentSimpleHolder(paramClass);
+    int j = paramVarArgs.length;
+    int i = 0;
+    boolean bool = true;
+    if (i < j)
+    {
+      String str = paramVarArgs[i];
+      if ((bool) && (ComponentRegistry.registerOnlyNativeComponent(str, paramClass))) {}
+      for (bool = true;; bool = false)
+      {
+        i += 1;
+        break;
+      }
+    }
+    return bool;
+  }
+  
+  public static boolean registerNativeModule(String paramString, Class paramClass)
+  {
+    return (paramClass != null) && (ViolaModuleManager.registerOnlyNativeModule(paramString, new ModuleSimpleHolder(paramClass)));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaSDKEngine
  * JD-Core Version:    0.7.0.1
  */

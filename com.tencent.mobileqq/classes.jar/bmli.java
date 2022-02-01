@@ -1,36 +1,17 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton.9.1;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton.9.2;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-public class bmli
-  implements ModuleDownloadListener
+class bmli
+  implements bltv
 {
-  bmli(bmla parambmla) {}
+  bmli(bmlh parambmlh, String paramString) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void a()
   {
-    QLog.i("Q.qqstory.record.EditVideoButton", 2, "onDownloadCanceled " + paramString);
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    QLog.i("Q.qqstory.record.EditVideoButton", 2, "onDownloadFailed " + paramString);
-    if ((this.a.a != null) && (this.a.a.getActivity() != null)) {
-      this.a.a.getActivity().runOnUiThread(new EditVideoButton.9.2(this));
+    if (this.jdField_a_of_type_Bmlh.a != null)
+    {
+      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playAnimationFinish:1})";
+      this.jdField_a_of_type_Bmlh.a.callJs(str);
     }
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("cyber_clink_version_2.jar")) {}
-    while ((this.a.a == null) || (this.a.a.getActivity() == null)) {
-      return;
-    }
-    this.a.a.getActivity().runOnUiThread(new EditVideoButton.9.1(this));
   }
 }
 

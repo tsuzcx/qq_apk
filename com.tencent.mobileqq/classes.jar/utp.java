@@ -1,77 +1,68 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalVideoRelativeLayout;
 
-public class utp
+class utp
+  implements urd
 {
-  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
-  private static utp jdField_a_of_type_Utp;
+  utp(uto paramuto, Runnable paramRunnable) {}
   
-  public static utp a()
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    if (jdField_a_of_type_Utp == null)
+    float f1 = 0.0F;
+    Object localObject;
+    float f3;
+    float f4;
+    float f2;
+    if (uto.a(this.jdField_a_of_type_Uto) != null)
     {
-      jdField_a_of_type_Utp = new utp();
-      jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      Iterator localIterator = ((uux)uwa.a(17)).a().iterator();
-      while (localIterator.hasNext())
+      localObject = new Rect();
+      uto.a(this.jdField_a_of_type_Uto).a((Rect)localObject);
+      if ((uto.a(this.jdField_a_of_type_Uto)) || ((paramMotionEvent.getAction() == 0) && (paramMotionEvent.getX() > ((Rect)localObject).left) && (paramMotionEvent.getX() < ((Rect)localObject).right) && (paramMotionEvent.getY() >= ((Rect)localObject).top - bclx.a(10.0F)) && (paramMotionEvent.getY() <= ((Rect)localObject).bottom + bclx.a(10.0F))))
       {
-        CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-        if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+        if (!uto.a(this.jdField_a_of_type_Uto))
         {
-          jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
-          jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+          uto.a(this.jdField_a_of_type_Uto, true);
+          uto.a(this.jdField_a_of_type_Uto).a(this.jdField_a_of_type_JavaLangRunnable);
+          uto.a(this.jdField_a_of_type_Uto).setSeekBarActivated(true);
+          uto.a(this.jdField_a_of_type_Uto).setThumb(uto.b(this.jdField_a_of_type_Uto).getDrawable(2130841781));
+          uto.a(this.jdField_a_of_type_Uto).requestDisallowInterceptTouchEvent(true);
         }
+        f3 = ((Rect)localObject).top;
+        f4 = ((Rect)localObject).height() / 2.0F;
+        f2 = paramMotionEvent.getX() - ((Rect)localObject).left;
+        if (f2 >= 0.0F) {}
       }
     }
-    return jdField_a_of_type_Utp;
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString == null) {
-      return -1;
-    }
-    return paramString.intValue();
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    Iterator localIterator = ((uux)uwa.a(17)).a().iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-      if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+      localObject = MotionEvent.obtain(paramMotionEvent.getDownTime(), paramMotionEvent.getEventTime(), paramMotionEvent.getAction(), f1, f3 + f4, paramMotionEvent.getMetaState());
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
       {
-        jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
-        jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+        uto.a(this.jdField_a_of_type_Uto).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 400L);
+        uto.a(this.jdField_a_of_type_Uto, false);
+        uto.a(this.jdField_a_of_type_Uto).requestDisallowInterceptTouchEvent(false);
+      }
+      uto.a(this.jdField_a_of_type_Uto).a((MotionEvent)localObject);
+      return true;
+      if (f2 > ((Rect)localObject).width())
+      {
+        f1 = ((Rect)localObject).width();
+        continue;
+        return false;
+      }
+      else
+      {
+        f1 = f2;
       }
     }
-    wxe.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
-  }
-  
-  public boolean a(String paramString)
-  {
-    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
-  }
-  
-  public void b()
-  {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    jdField_a_of_type_Utp = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     utp
  * JD-Core Version:    0.7.0.1
  */

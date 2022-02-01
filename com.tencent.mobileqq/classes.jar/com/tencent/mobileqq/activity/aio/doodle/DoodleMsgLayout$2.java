@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.util.MQLruCache;
-import bdal;
+import bggl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -15,7 +15,7 @@ class DoodleMsgLayout$2
   
   public void run()
   {
-    Bitmap localBitmap = bdal.a(BaseApplicationImpl.getContext().getResources(), 2130839230);
+    Bitmap localBitmap = bggl.a(BaseApplicationImpl.getContext().getResources(), 2130839407);
     if ((localBitmap != null) && (BaseApplicationImpl.sImageCache != null)) {
       BaseApplicationImpl.sImageCache.put("aio_doodle_progress", localBitmap, (byte)0);
     }
@@ -24,7 +24,7 @@ class DoodleMsgLayout$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout.2
  * JD-Core Version:    0.7.0.1
  */

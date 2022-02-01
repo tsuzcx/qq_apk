@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahzf;
-import alxa;
+import ajpt;
+import anqg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -15,13 +15,13 @@ import mqq.os.MqqHandler;
 public class ChatHistoryC2CDateFragment$3$1
   implements Runnable
 {
-  public ChatHistoryC2CDateFragment$3$1(ahzf paramahzf) {}
+  public ChatHistoryC2CDateFragment$3$1(ajpt paramajpt) {}
   
   public void run()
   {
     if ((ChatHistoryC2CDateFragment.a(this.a.a) != null) && (this.a.a.b != null))
     {
-      this.a.a.b.a().d();
+      this.a.a.b.a().transSaveToDatabase();
       Object localObject = Calendar.getInstance();
       ((Calendar)localObject).setTimeInMillis(ChatHistoryC2CDateFragment.a(this.a.a).getTimeInMillis());
       ((Calendar)localObject).add(5, 1);
@@ -48,7 +48,7 @@ public class ChatHistoryC2CDateFragment$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

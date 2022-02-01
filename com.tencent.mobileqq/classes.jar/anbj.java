@@ -1,11 +1,10 @@
-public class anbj
+public abstract interface anbj
 {
-  public int a = 3000;
+  public abstract String a(int paramInt);
   
-  public String toString()
-  {
-    return "ARCloudRecogReqObjectClassifyInfo{timeout = " + this.a + '}';
-  }
+  public abstract void a();
+  
+  public abstract boolean a(int paramInt);
 }
 
 

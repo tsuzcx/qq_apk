@@ -1,36 +1,26 @@
-class axps
-  implements ajsj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.9.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class axps
+  implements View.OnClickListener
 {
-  axps(axpr paramaxpr, int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
+  axps(axop paramaxop) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "1";; str = "0")
-    {
-      azqs.b(null, "dc00898", "", "", "0X80085A1", "0X80085A1", i, 0, str, "", "", "");
-      this.jdField_a_of_type_Axpr.a.dismiss();
-      this.jdField_a_of_type_Axpr.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    int i = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "1";; str = "0")
-    {
-      azqs.b(null, "dc00898", "", "", "0X80085A2", "0X80085A2", i, 0, str, "", "", "");
-      this.jdField_a_of_type_Axpr.a.dismiss();
-      return;
-    }
+    this.a.c(paramView);
+    new axlq().h("video").i("playpage_like_click").b().a(this.a.a);
+    ThreadManagerV2.excute(new PlayOperationViewModel.9.1(this, (axby)this.a.a.getManager(106)), 16, null, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axps
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aesm
-  implements DialogInterface.OnClickListener
+public class aesm
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aesm(aesk paramaesk) {}
+  public aesm(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    try
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
+    if (paramBoolean) {}
+    for (String str1 = "1";; str1 = "0")
     {
-      if ((aesk.a(this.a) != null) && (aesk.a(this.a).isShowing())) {
-        aesk.a(this.a).dismiss();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "disband cancel");
-      }
+      VasWebviewUtil.reportCommercialDrainage(str2, "bubble_new", "change", "0", 0, 0, 0, "", "", str1, "", "", "", "", 0, 0, 0, 0);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
     }
   }
 }

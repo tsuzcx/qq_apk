@@ -1,39 +1,39 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class adxr
-  implements CompoundButton.OnCheckedChangeListener
+  extends nmf
 {
-  public adxr(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
+  public adxr(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    boolean bool = true;
-    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!bdin.d(this.a.getActivity())))
-    {
-      this.a.a(2131694832, 0);
-      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
-      if (!paramBoolean)
-      {
-        paramBoolean = bool;
-        SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, paramCompoundButton, paramBoolean);
-      }
-    }
+    if ((this.a.isFinishing()) || (this.a.m)) {}
     do
     {
-      return;
-      paramBoolean = false;
-      break;
-      if (paramCompoundButton == this.a.a.a())
+      do
       {
-        this.a.app.f(paramBoolean, true);
         return;
+        this.a.p();
+        if (this.a.b != null) {
+          this.a.b.removeCallbacksAndMessages(null);
+        }
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.chatopttroop", 2, "openIdObserver success");
+        }
+      } while (paramOpenID.openID.equals(this.a.e));
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.chatopttroop", 2, "-->onGetOpenId--openid doesn't equal current openid");
       }
-    } while (paramCompoundButton != this.a.b.a());
-    this.a.app.g(paramBoolean, true);
+      this.a.s();
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.chatopttroop", 2, "openIdObserver fail");
   }
 }
 

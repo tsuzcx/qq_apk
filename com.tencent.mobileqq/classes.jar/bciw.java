@@ -1,27 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import android.graphics.Rect;
+import android.hardware.Camera.AutoFocusCallback;
 
 public class bciw
-  implements bhuk
 {
-  public bciw(VisitorTroopCardFragment paramVisitorTroopCardFragment, bhuf parambhuf) {}
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  Camera.AutoFocusCallback jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback;
+  public bcgs a;
+  public bcgv a;
+  public boolean a;
+  Rect b;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (this.jdField_a_of_type_Bhuf.a(paramInt).c)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      VisitorTroopCardFragment.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
-      continue;
-      bcpx.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      continue;
-      bcpx.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-  }
+  public bciw(bcio parambcio) {}
 }
 
 

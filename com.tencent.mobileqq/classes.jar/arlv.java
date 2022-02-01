@@ -1,71 +1,82 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.res.ColorStateList;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import mqq.util.WeakReference;
 
-public abstract class arlv
+public class arlv
+  extends ClickableSpan
+  implements auon
 {
-  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-  ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage = null;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = true;
+  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private WeakReference<View.OnClickListener> jdField_a_of_type_MqqUtilWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private ColorStateList b;
   
-  public abstract Intent a();
-  
-  public SessionInfo a()
+  public arlv(View.OnClickListener paramOnClickListener, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this(paramOnClickListener, ColorStateList.valueOf(paramInt), null);
   }
   
-  public ChatMessage a()
+  public arlv(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList)
   {
-    return null;
+    this(paramOnClickListener, paramColorStateList, null);
   }
   
-  public void a(SessionInfo paramSessionInfo) {}
-  
-  public void a(ChatMessage paramChatMessage) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
+  public arlv(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList1, ColorStateList paramColorStateList2)
   {
-    return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramOnClickListener);
+    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList1;
+    this.b = paramColorStateList2;
   }
   
-  public void b(Bundle paramBundle) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public boolean b()
+  public void a(boolean paramBoolean)
   {
-    return true;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void c(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.c = paramBoolean;
+    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
+    {
+      View.OnClickListener localOnClickListener = (View.OnClickListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (localOnClickListener != null) {
+        localOnClickListener.onClick(paramView);
+      }
+    }
   }
   
-  boolean c()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return false;
-  }
-  
-  boolean d()
-  {
-    return false;
-  }
-  
-  public boolean e()
-  {
-    return this.b;
-  }
-  
-  public boolean f()
-  {
-    return this.c;
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
+    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);
+        paramTextPaint.setColor(i);
+        label46:
+        if (this.b == null) {
+          break label122;
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          break label107;
+        }
+      }
+    }
+    label107:
+    for (int i = this.b.getColorForState(new int[] { 16842919 }, 0);; i = this.b.getColorForState(new int[0], 0))
+    {
+      paramTextPaint.bgColor = i;
+      return;
+      i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0);
+      break;
+      paramTextPaint.setColor(-16777216);
+      break label46;
+    }
+    label122:
+    paramTextPaint.bgColor = 0;
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.open.downloadnew;
 
-import bflp;
-import bfmy;
-import bfok;
+import bisy;
+import biuh;
+import bivr;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
 public class DownloadManager$14
   implements Runnable
 {
-  public DownloadManager$14(bfok parambfok, DownloadInfo paramDownloadInfo) {}
+  public DownloadManager$14(bivr parambivr, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -21,19 +21,19 @@ public class DownloadManager$14
         this.this$0.e(this.a);
         this.this$0.a(4, this.a);
       }
-      bfmy.a("300", this.a.h, this.a.c, this.a.o);
+      biuh.a("300", this.a.h, this.a.c, this.a.o);
       this.this$0.c(this.a);
       return;
     }
     catch (Exception localException)
     {
-      bflp.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      bisy.c("DownloadManager_", "downloadSDKClient>>>", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.14
  * JD-Core Version:    0.7.0.1
  */

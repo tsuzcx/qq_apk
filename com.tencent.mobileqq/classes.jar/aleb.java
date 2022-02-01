@@ -1,31 +1,9 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import java.util.List;
 
-final class aleb
-  extends bead
+public abstract interface aleb
 {
-  aleb(int paramInt, alef paramalef) {}
-  
-  public void onDone(beae parambeae)
-  {
-    super.onDone(parambeae);
-    if (3 == parambeae.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio ok id" + this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_a_of_type_Alef != null) {
-        this.jdField_a_of_type_Alef.a(true, this.jdField_a_of_type_Int);
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio error id->" + this.jdField_a_of_type_Int + " task.getStatus()->" + parambeae.a());
-      }
-    } while (this.jdField_a_of_type_Alef == null);
-    this.jdField_a_of_type_Alef.a(false, this.jdField_a_of_type_Int);
-  }
+  public abstract List<View> onGetVisiableDragView();
 }
 
 

@@ -1,82 +1,51 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.SurfaceView;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
+import java.util.concurrent.ConcurrentHashMap;
+import javax.annotation.Nullable;
+import okhttp3.Headers;
+import okhttp3.Response;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
+import okio.ByteString;
 
-public class bjzx
+class bjzx
+  extends WebSocketListener
 {
-  private static SurfaceView a;
-  public static String a;
-  private static String b = "";
+  bjzx(bjzw parambjzw, bjzv parambjzv) {}
   
-  static
+  public void onClosed(WebSocket paramWebSocket, int paramInt, String paramString)
   {
-    jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Bjzw.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bjzw.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onClose(this.jdField_a_of_type_Bjzw.jdField_a_of_type_Int, paramInt, paramString);
+    this.jdField_a_of_type_Bjzw.jdField_a_of_type_Bjzv.a.remove(Integer.valueOf(this.jdField_a_of_type_Bjzw.jdField_a_of_type_Int));
   }
   
-  public static void a(begz parambegz, String... paramVarArgs)
+  public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, @Nullable Response paramResponse)
   {
-    if ((parambegz == null) || (parambegz.a() == null) || (parambegz.a() == null)) {}
-    FrameLayout localFrameLayout;
-    do
-    {
-      do
-      {
-        return;
-        localFrameLayout = (FrameLayout)parambegz.a().findViewById(2131380175);
-        if ((jdField_a_of_type_AndroidViewSurfaceView != null) && (jdField_a_of_type_AndroidViewSurfaceView.getParent() == localFrameLayout))
-        {
-          bjdt.b(parambegz.a(), jdField_a_of_type_AndroidViewSurfaceView);
-          return;
-        }
-        jdField_a_of_type_JavaLangString = parambegz.a().getUrl();
-        if (paramVarArgs != null) {
-          b = paramVarArgs[0];
-        }
-      } while (TextUtils.isEmpty(b));
-      jdField_a_of_type_AndroidViewSurfaceView = bjdt.a(parambegz.a(), b);
-    } while (jdField_a_of_type_AndroidViewSurfaceView == null);
-    localFrameLayout.addView(jdField_a_of_type_AndroidViewSurfaceView, new FrameLayout.LayoutParams(-1, -1));
+    QLog.e("WebSocketProxyImpl", 1, "onFailure : ", paramThrowable);
+    this.jdField_a_of_type_Bjzw.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onError(this.jdField_a_of_type_Bjzw.jdField_a_of_type_Int, bjwi.a(paramThrowable, -1), paramThrowable.getMessage());
+    this.jdField_a_of_type_Bjzw.jdField_a_of_type_Bjzv.a.remove(Integer.valueOf(this.jdField_a_of_type_Bjzw.jdField_a_of_type_Int));
   }
   
-  public static void b(begz parambegz, String... paramVarArgs)
+  public void onMessage(WebSocket paramWebSocket, String paramString)
   {
-    if (parambegz == null) {}
-    do
-    {
-      do
-      {
-        return;
-        parambegz = parambegz.a();
-      } while (parambegz == null);
-      paramVarArgs = (FrameLayout)parambegz.findViewById(2131380175);
-      if ((paramVarArgs != null) && (jdField_a_of_type_AndroidViewSurfaceView != null)) {
-        paramVarArgs.removeView(jdField_a_of_type_AndroidViewSurfaceView);
-      }
-      bjdt.a(parambegz, jdField_a_of_type_AndroidViewSurfaceView);
-      jdField_a_of_type_AndroidViewSurfaceView = null;
-      paramVarArgs = new Intent("action_js2qzone");
-      Bundle localBundle = new Bundle();
-      localBundle.putString("cmd", "setFloat");
-      paramVarArgs.putExtras(localBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneFloatJsHandleLogic", 2, "actionString: " + paramVarArgs.getAction());
-      }
-      bjdt.a(parambegz, bjea.a(), paramVarArgs);
-      bjxh.a(parambegz);
-      parambegz.finish();
-    } while (!bjdt.f());
-    bflz.a().a(bjdt.b, 1);
+    this.jdField_a_of_type_Bjzw.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onMessage(this.jdField_a_of_type_Bjzw.jdField_a_of_type_Int, paramString);
+  }
+  
+  public void onMessage(WebSocket paramWebSocket, ByteString paramByteString)
+  {
+    this.jdField_a_of_type_Bjzw.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onMessage(this.jdField_a_of_type_Bjzw.jdField_a_of_type_Int, paramByteString.toByteArray());
+  }
+  
+  public void onOpen(WebSocket paramWebSocket, Response paramResponse)
+  {
+    this.jdField_a_of_type_Bjzw.jdField_a_of_type_Okhttp3WebSocket = paramWebSocket;
+    this.jdField_a_of_type_Bjzw.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onOpen(this.jdField_a_of_type_Bjzw.jdField_a_of_type_Int, paramResponse.code(), paramResponse.headers().toMultimap());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjzx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,27 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import mqq.os.MqqHandler;
 
-final class arrk
-  implements Comparator<FileInfo>
+class arrk
+  implements auah
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  public MqqHandler a;
+  
+  public arrk(MqqHandler paramMqqHandler)
   {
-    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
+    this.a = paramMqqHandler;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (this.a != null) {
+      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessageDelayed(100, 1500L);
+    }
   }
 }
 

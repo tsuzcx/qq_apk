@@ -1,43 +1,86 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.MsgBody;
 
 public class bcad
-  implements bckx
+  implements bbzr
 {
-  public bcad(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  private long a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.a.o();
-    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopSystemMessageDecoder", 2, "<---decodeC2CMsgPkg_GroupSys");
+    }
+    long l2;
+    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()))
     {
-      paramInt = paramJSONObject.optInt("retcode");
-      if (paramInt == 0)
-      {
-        QQToast.a(this.a.getActivity(), 2131697874, 0).a();
-        paramJSONObject = aepi.a(new Intent(this.a.getActivity(), SplashActivity.class), new int[] { 2 });
-        paramJSONObject.addFlags(268435456);
-        paramJSONObject.putExtra("uin", this.a.b);
-        paramJSONObject.putExtra("uintype", 1);
-        this.a.getActivity().startActivity(paramJSONObject);
-        this.a.getActivity().overridePendingTransition(2130771990, 2130772295);
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopSystemMessageDecoder", 2, "<---decodeC2CMsgPkg_GroupSys return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has() + ",isReaded:" + paramBoolean1 + "syncOther:" + paramBoolean2);
       }
+      l2 = 0L;
+      return l2;
     }
-    else
+    Long.valueOf(paramMessageHandler.app.getCurrentAccountUin()).longValue();
+    long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+    int i = (short)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_type.get();
+    byte[] arrayOfByte = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
+    if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {}
+    for (long l1 = bgva.a(arrayOfByte, 0);; l1 = 0L)
     {
+      Object localObject = (msg_comm.MsgHead)paramMsg.msg_head.get();
+      if (localObject != null)
+      {
+        localObject = ((msg_comm.MsgHead)localObject).group_name.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopSystemMessageDecoder.sysnick", 2, "TroopCode:" + l1 + "TroopName:" + (String)localObject);
+        }
+        paramMessageHandler.c("" + l1, (String)localObject);
+      }
+      l2 = l1;
+      if (paramBoolean1) {
+        break;
+      }
+      l2 = l1;
+      if (paramBoolean2) {
+        break;
+      }
+      l2 = l1;
+      if (paramBoolean3) {
+        break;
+      }
+      paramMessageHandler.a().a(i, arrayOfByte, l3, ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get(), (msg_comm.MsgHead)paramMsg.msg_head.get());
+      return l1;
+    }
+  }
+  
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn)
+  {
+    paramList = (msg_comm.MsgHead)paramMsg.msg_head.get();
+    long l1 = paramList.from_uin.get();
+    long l2 = paramList.msg_time.get();
+    int i = paramList.msg_type.get();
+    if ((i == 85) || (i == 36)) {}
+    for (i = 1;; i = 0)
+    {
+      if ((!parambbyn.c) && (i == 0)) {
+        paramMessageHandler.a().a(3, 1, false);
+      }
+      parambbyn.e = 9998L;
+      a(paramMessageHandler, paramMsg, parambbyn.a, parambbyn.f, parambbyn.d);
+      if (i == 0) {
+        bdgn.a().a(l1, l2, paramMessageHandler.app);
+      }
       return;
     }
-    if (paramInt == 111000)
-    {
-      QQToast.a(this.a.getActivity(), 2131697873, 0).a();
-      return;
-    }
-    QQToast.a(this.a.getActivity(), 2131697933, 0).a();
   }
 }
 

@@ -1,18 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import kotlin.Metadata;
 
-public class rvz
-  extends ThreadLocal<Boolean>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$IVideoColumnBannerAction;", "", "onJumpToColumnPlay", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface rvz
 {
-  public rvz(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
-  
-  protected Boolean a()
-  {
-    return Boolean.valueOf(false);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rvz
  * JD-Core Version:    0.7.0.1
  */

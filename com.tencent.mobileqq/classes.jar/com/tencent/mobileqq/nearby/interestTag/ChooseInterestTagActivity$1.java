@@ -3,12 +3,12 @@ package com.tencent.mobileqq.nearby.interestTag;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
-import auxh;
-import awgf;
-import awgg;
-import bdin;
+import axeq;
+import bgnt;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.List;
 
 class ChooseInterestTagActivity$1
@@ -25,7 +25,7 @@ class ChooseInterestTagActivity$1
     int i;
     if ((l - ((SharedPreferences)localObject2).getLong("list_last_update_time_" + ChooseInterestTagActivity.a(this.this$0), -1L) >= 3600000L) || (ChooseInterestTagActivity.a(this.this$0)))
     {
-      if (bdin.d(this.this$0))
+      if (bgnt.d(this.this$0))
       {
         localObject1 = ChooseInterestTagActivity.a(this.this$0);
         j = ChooseInterestTagActivity.a(this.this$0);
@@ -33,19 +33,19 @@ class ChooseInterestTagActivity$1
         if (ChooseInterestTagActivity.a(this.this$0)) {}
         for (i = 1;; i = 0)
         {
-          ((auxh)localObject1).a("", j, k, 30, 0, i);
+          ((axeq)localObject1).a("", j, k, 30, 0, i);
           return;
         }
       }
       ChooseInterestTagActivity.a(this.this$0).sendEmptyMessage(4099);
       return;
     }
-    awgf localawgf = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    Object localObject1 = localawgf.a(InterestTagInfo.class, true, "tagType = ?", new String[] { String.valueOf(ChooseInterestTagActivity.a(this.this$0)) }, null, null, null, String.valueOf(30));
-    localawgf.a();
+    EntityManager localEntityManager = this.this$0.app.a().createEntityManager();
+    Object localObject1 = localEntityManager.query(InterestTagInfo.class, true, "tagType = ?", new String[] { String.valueOf(ChooseInterestTagActivity.a(this.this$0)) }, null, null, null, String.valueOf(30));
+    localEntityManager.close();
     if ((localObject1 == null) || (((List)localObject1).isEmpty()))
     {
-      if (bdin.d(this.this$0))
+      if (bgnt.d(this.this$0))
       {
         localObject1 = ChooseInterestTagActivity.a(this.this$0);
         j = ChooseInterestTagActivity.a(this.this$0);
@@ -53,7 +53,7 @@ class ChooseInterestTagActivity$1
         if (ChooseInterestTagActivity.a(this.this$0)) {}
         for (i = 1;; i = 0)
         {
-          ((auxh)localObject1).a("", j, k, 30, 0, i);
+          ((axeq)localObject1).a("", j, k, 30, 0, i);
           return;
         }
       }
@@ -69,7 +69,7 @@ class ChooseInterestTagActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.1
  * JD-Core Version:    0.7.0.1
  */

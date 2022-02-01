@@ -1,78 +1,39 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import java.util.List;
 
 public class arxy
-  extends QIPCModule
+  implements awnc<Integer>
 {
-  private static volatile arxy a;
-  public static volatile boolean a;
+  public arxy(EmoticonPanelController paramEmoticonPanelController, long paramLong) {}
   
-  private arxy(String paramString)
+  public void a(Integer paramInteger)
   {
-    super(paramString);
-  }
-  
-  public static arxy a()
-  {
-    if (jdField_a_of_type_Arxy == null) {}
-    try
-    {
-      if (jdField_a_of_type_Arxy == null) {
-        jdField_a_of_type_Arxy = new arxy("FlutterSubQIPCModule");
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.f(paramInteger.intValue());
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.d(paramInteger.intValue());
+    if ((!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_Arxz.e) && (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_Arxz.f)) {
+      EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController).a();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_Arxz.f = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelController", 2, "selectIndex = " + paramInteger + "[Performance] initEmoticonView duration:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_Arxz.g) {
+      EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController).a();
+    }
+    paramInteger = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.b;
+    if (paramInteger.size() > EmoticonPanelController.d) {
+      if (((asaf)paramInteger.get(EmoticonPanelController.d)).a != 8) {
+        EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.g);
       }
-      return jdField_a_of_type_Arxy;
     }
-    finally {}
-  }
-  
-  public static void a()
-  {
-    if (!jdField_a_of_type_Boolean) {}
-    try
+    for (;;)
     {
-      QIPCClientHelper.getInstance().register(a());
-      jdField_a_of_type_Boolean = true;
+      EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController).a();
       return;
+      EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.g);
     }
-    catch (Exception localException)
-    {
-      QLog.d("FlutterSubQIPCModule", 1, "register", localException);
-    }
-  }
-  
-  public static void b()
-  {
-    try
-    {
-      if (QIPCClientHelper.getInstance().getClient() != null)
-      {
-        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-        jdField_a_of_type_Boolean = false;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("FlutterSubQIPCModule", 1, "unregister", localException);
-    }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if ("ACTION_INSTALL_RESULT".equals(paramString))
-    {
-      boolean bool1 = paramBundle.getBoolean("KEY_INSTALL_RESULT");
-      paramString = paramBundle.getString("KEY_INSTALL_DIR");
-      boolean bool2 = paramBundle.getBoolean("KEY_IS_ENGINE_EXIST");
-      boolean bool3 = paramBundle.getBoolean("KEY_IS_APP_EXIST");
-      QLog.d("FlutterSubQIPCModule", 1, String.format("install finish isSuccess: %s, installDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(bool1), paramString, Boolean.valueOf(bool2), Boolean.valueOf(bool3) }));
-      aryd.a().a(bool1, paramString, bool2, bool3);
-    }
-    return null;
   }
 }
 

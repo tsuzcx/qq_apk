@@ -1,25 +1,29 @@
 package com.tencent.mobileqq.activity;
 
+import Override;
 import QQService.DiscussMemberInfo;
-import adfa;
-import adfb;
-import adfc;
-import adfd;
-import alri;
-import altm;
-import alud;
+import aekx;
+import aeky;
+import aekz;
+import aela;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdin;
+import anks;
+import anmu;
+import anni;
+import bgnt;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,14 +33,14 @@ public class JoinDiscussionActivity
 {
   int jdField_a_of_type_Int = 0;
   public long a;
-  private adfc jdField_a_of_type_Adfc;
-  private adfd jdField_a_of_type_Adfd;
-  public alri a;
-  private altm jdField_a_of_type_Altm = new adfb(this);
+  private aekz jdField_a_of_type_Aekz;
+  private aela jdField_a_of_type_Aela;
   private Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
+  public anks a;
+  private anmu jdField_a_of_type_Anmu = new aeky(this);
   public String a;
   public ArrayList<String> a;
   public List<DiscussMemberInfo> a;
@@ -58,34 +62,34 @@ public class JoinDiscussionActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365314));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365327));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365333));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364923));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368991));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365873));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365554));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365564));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365570));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365158));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369374));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131366125));
   }
   
   private void c()
   {
-    setTitle(alud.a(2131706270));
-    setRightButton(2131690648, this);
+    setTitle(anni.a(2131704671));
+    setRightButton(2131690582, this);
     this.leftView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new adfa(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aekx(this));
   }
   
   private void d()
   {
-    if (bdin.d(this))
+    if (bgnt.d(this))
     {
       startTitleProgress();
       if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0)) {
-        this.jdField_a_of_type_Alri.c(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Anks.c(this.jdField_a_of_type_JavaLangString);
       }
       while ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString.length() <= 0)) {
         return;
       }
-      this.jdField_a_of_type_Alri.b(this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_Anks.b(this.jdField_b_of_type_JavaLangString);
       return;
     }
     a(0, -160);
@@ -98,10 +102,10 @@ public class JoinDiscussionActivity
   
   public void a()
   {
-    if (bdin.d(this))
+    if (bgnt.d(this))
     {
       startTitleProgress();
-      this.jdField_a_of_type_Alri.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Anks.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       return;
     }
     a(1, -160);
@@ -115,7 +119,7 @@ public class JoinDiscussionActivity
     {
     default: 
       if (paramInt1 == 1) {
-        str = alud.a(2131706268);
+        str = anni.a(2131704669);
       }
       break;
     }
@@ -123,33 +127,41 @@ public class JoinDiscussionActivity
     {
       QQToast.a(this, str, 0).b(getTitleBarHeight());
       return;
-      str = alud.a(2131706262);
+      str = anni.a(2131704663);
       continue;
-      str = alud.a(2131706266);
+      str = anni.a(2131704667);
       continue;
-      str = alud.a(2131706264);
+      str = anni.a(2131704665);
       continue;
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       return;
-      str = alud.a(2131706265);
+      str = anni.a(2131704666);
       continue;
       if (paramInt1 == 0) {
-        str = alud.a(2131706263);
+        str = anni.a(2131704664);
       }
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559203);
+    super.setContentView(2131559283);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_Adfd = new adfd(this, null);
-    this.jdField_a_of_type_Adfc = new adfc(this, null);
-    addObserver(this.jdField_a_of_type_Adfd);
-    addObserver(this.jdField_a_of_type_Adfc);
-    addObserver(this.jdField_a_of_type_Altm);
+    this.jdField_a_of_type_Aela = new aela(this, null);
+    this.jdField_a_of_type_Aekz = new aekz(this, null);
+    addObserver(this.jdField_a_of_type_Aela);
+    addObserver(this.jdField_a_of_type_Aekz);
+    addObserver(this.jdField_a_of_type_Anmu);
     this.jdField_a_of_type_Int = paramBundle.getInt("addDisSource");
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("sig");
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("innerSig");
@@ -168,16 +180,16 @@ public class JoinDiscussionActivity
     }
     b();
     c();
-    this.jdField_a_of_type_Alri = ((alri)this.app.a(6));
+    this.jdField_a_of_type_Anks = ((anks)this.app.a(6));
     d();
     return true;
   }
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Adfd);
-    removeObserver(this.jdField_a_of_type_Adfc);
-    removeObserver(this.jdField_a_of_type_Altm);
+    removeObserver(this.jdField_a_of_type_Aela);
+    removeObserver(this.jdField_a_of_type_Aekz);
+    removeObserver(this.jdField_a_of_type_Anmu);
     super.doOnDestroy();
   }
   
@@ -190,11 +202,19 @@ public class JoinDiscussionActivity
   public void onClick(View paramView)
   {
     finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity
  * JD-Core Version:    0.7.0.1
  */

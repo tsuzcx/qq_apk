@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public final class aipv
-  implements Parcelable.Creator<TroopClipPic>
+  implements DialogInterface.OnClickListener
 {
-  public TroopClipPic a(Parcel paramParcel)
-  {
-    return new TroopClipPic(paramParcel);
-  }
-  
-  public TroopClipPic[] a(int paramInt)
-  {
-    return new TroopClipPic[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

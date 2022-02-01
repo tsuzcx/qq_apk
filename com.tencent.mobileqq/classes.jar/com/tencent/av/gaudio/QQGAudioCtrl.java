@@ -1,44 +1,38 @@
 package com.tencent.av.gaudio;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.pm.ApplicationInfo;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Looper;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import com.tencent.av.config.Common;
+import com.tencent.av.core.SDKConfigInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
+import com.tencent.mobileqq.startup.step.AVSoUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.ArrayList<Llqw;>;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
-import lek;
-import lid;
-import lnz;
-import lps;
-import lql;
-import lqm;
-import lqn;
-import lqo;
-import lqq;
-import lqu;
-import lqw;
-import lyh;
-import mvh;
+import lbc;
+import ley;
+import lkr;
+import lkw;
+import lmp;
+import lni;
+import lnj;
+import lnk;
+import lnl;
+import lnn;
+import lvj;
+import msn;
 import tencent.im.groupvideo.memposinfo.memposinfo.AccountExtInfo;
 import tencent.im.groupvideo.memposinfo.memposinfo.AccountExtInfoList;
 import tencent.im.groupvideo.memposinfo.memposinfo.CommonInfo;
@@ -102,6 +96,7 @@ public class QQGAudioCtrl
   static final int EM_SDK_EVENT_ID_ONLINE_NOTICE = 13;
   static final int EM_SDK_EVENT_ID_ONLY_MANAGER_CAN_GO_ON_STAGE = 102;
   static final int EM_SDK_EVENT_ID_ONLY_MANAGER_STAGER_CAN_SPEAK = 104;
+  static final int EM_SDK_EVENT_ID_OPENSDK_RECV_AUDIO = 170;
   static final int EM_SDK_EVENT_ID_OTHER_TERM_ENTER = 12;
   static final int EM_SDK_EVENT_ID_PBInvite_Rsp = 20;
   static final int EM_SDK_EVENT_ID_PBInvite_Rsp_CALL_BACK = 24;
@@ -147,16 +142,16 @@ public class QQGAudioCtrl
   private static String SPNAME;
   static final String TAG = "QQGAudioCtrl";
   private static String mCameraParameters;
-  public static lql mEventCountLog_EM_SDK_EVENT_ID_VIDEO_DEC_FRAME_DATA = new lql(String.valueOf(61), 10000L);
+  public static lni mEventCountLog_EM_SDK_EVENT_ID_VIDEO_DEC_FRAME_DATA = new lni(String.valueOf(61), 10000L);
   static QQGAudioCtrl sQQGAudioCtrl;
   private int appid;
-  lqm mEventHandler = null;
+  lnj mEventHandler = null;
   long mGroupId = 0L;
   public Vector<Long> mInviteGAudioUinList = new Vector();
   public boolean mIsSwitchGroup;
-  private final lyh mShareRecordParam = new lyh();
-  private lnz mSysInfo;
-  public lqo mVideoController = null;
+  private final lvj mShareRecordParam = new lvj();
+  private lkw mSysInfo;
+  public lnl mVideoController = null;
   
   static
   {
@@ -167,24 +162,24 @@ public class QQGAudioCtrl
   protected QQGAudioCtrl()
   {
     regCallbacks();
-    Object localObject = lqu.a("QQGAudioCtrl", BaseApplicationImpl.getContext());
-    init_deviceinfos(BaseApplicationImpl.getContext(), (ArrayList)localObject);
+    setandroidapppath(SDKConfigInfo.getDeviceInfo(BaseApplicationImpl.getContext()));
+    Looper localLooper;
     if (this.mEventHandler == null)
     {
-      localObject = Looper.getMainLooper();
-      if (localObject == null) {
-        break label101;
+      localLooper = Looper.getMainLooper();
+      if (localLooper == null) {
+        break label93;
       }
-      this.mEventHandler = new lqm(this, (Looper)localObject);
+      this.mEventHandler = new lnj(this, localLooper);
     }
     for (;;)
     {
-      this.mSysInfo = new lnz();
+      this.mSysInfo = new lkw();
       return;
-      label101:
-      localObject = Looper.myLooper();
-      if (localObject != null) {
-        this.mEventHandler = new lqm(this, (Looper)localObject);
+      label93:
+      localLooper = Looper.myLooper();
+      if (localLooper != null) {
+        this.mEventHandler = new lnj(this, localLooper);
       } else {
         this.mEventHandler = null;
       }
@@ -193,9 +188,7 @@ public class QQGAudioCtrl
   
   private native int accept(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
-  private native int commonRequest(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString, int paramInt7, byte[] paramArrayOfByte);
-  
-  private ArrayList<lps> getAVInfoListFromByte(byte[] paramArrayOfByte, int paramInt)
+  private ArrayList<lmp> getAVInfoListFromByte(byte[] paramArrayOfByte, int paramInt)
   {
     if (paramArrayOfByte == null) {
       if (QLog.isColorLevel()) {
@@ -240,7 +233,7 @@ public class QQGAudioCtrl
     } while (!QLog.isColorLevel());
     QLog.e("QQGAudioCtrl", 2, "Can not get AVUserInfo...Error");
     return null;
-    if ((((lps)localObject).jdField_a_of_type_Int == 1) && (((lps)localObject).jdField_b_of_type_Int != 3)) {}
+    if ((((lmp)localObject).jdField_a_of_type_Int == 1) && (((lmp)localObject).jdField_b_of_type_Int != 3)) {}
     for (;;)
     {
       i += 1;
@@ -254,7 +247,7 @@ public class QQGAudioCtrl
     return localArrayList;
   }
   
-  private ArrayList<lps> getAVInfoListFromByte2(byte[] paramArrayOfByte, int paramInt)
+  private ArrayList<lmp> getAVInfoListFromByte2(byte[] paramArrayOfByte, int paramInt)
   {
     Iterator localIterator = null;
     Object localObject4 = null;
@@ -306,11 +299,11 @@ public class QQGAudioCtrl
         localObject1 = paramArrayOfByte;
         localCommonInfo = (memposinfo.CommonInfo)((memposinfo.AccountExtInfo)localObject2).msg_common_info.get();
         localObject1 = paramArrayOfByte;
-        localObject2 = new lps();
+        localObject2 = new lmp();
         localObject1 = paramArrayOfByte;
-        ((lps)localObject2).jdField_a_of_type_Long = localCommonInfo.uint64_account.get();
+        ((lmp)localObject2).jdField_a_of_type_Long = localCommonInfo.uint64_account.get();
         localObject1 = paramArrayOfByte;
-        ((lps)localObject2).jdField_a_of_type_JavaLangString = localCommonInfo.bytes_account.get().toStringUtf8();
+        ((lmp)localObject2).jdField_a_of_type_JavaLangString = localCommonInfo.bytes_account.get().toStringUtf8();
         if (paramArrayOfByte != null) {
           break label224;
         }
@@ -386,24 +379,24 @@ public class QQGAudioCtrl
     return j;
   }
   
-  private Object[] getRoomParams(lid paramlid)
+  private Object[] getRoomParams(ley paramley)
   {
     int i = 8;
-    if (paramlid == null) {
+    if (paramley == null) {
       return null;
     }
     long l1;
     int j;
-    if (paramlid.J)
+    if (paramley.J)
     {
-      l1 = Long.parseLong(paramlid.d);
+      l1 = Long.parseLong(paramley.d);
       j = 3;
     }
     for (;;)
     {
       return new Object[] { Integer.valueOf(j), Long.valueOf(l1), Integer.valueOf(i) };
-      int k = paramlid.E;
-      long l2 = paramlid.g;
+      int k = paramley.F;
+      long l2 = paramley.g;
       if (k == 2)
       {
         i = 1;
@@ -412,7 +405,7 @@ public class QQGAudioCtrl
       }
       else if (k == 1)
       {
-        i = paramlid.C;
+        i = paramley.D;
         j = k;
         l1 = l2;
       }
@@ -479,7 +472,7 @@ public class QQGAudioCtrl
   {
     try
     {
-      UpdateAvSo.a(-1047L, BaseApplicationImpl.getContext(), "qav_gaudio_engine", true);
+      AVSoUtils.a(-1047L, BaseApplicationImpl.getContext(), "qav_gaudio_engine", true);
       return true;
     }
     catch (Throwable localThrowable)
@@ -516,15 +509,15 @@ public class QQGAudioCtrl
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: getstatic 550	com/tencent/av/gaudio/QQGAudioCtrl:mCameraParameters	Ljava/lang/String;
+    //   2: getstatic 551	com/tencent/av/gaudio/QQGAudioCtrl:mCameraParameters	Ljava/lang/String;
     //   5: ifnull +11 -> 16
-    //   8: getstatic 550	com/tencent/av/gaudio/QQGAudioCtrl:mCameraParameters	Ljava/lang/String;
+    //   8: getstatic 551	com/tencent/av/gaudio/QQGAudioCtrl:mCameraParameters	Ljava/lang/String;
     //   11: astore_1
     //   12: aload_0
     //   13: monitorexit
     //   14: aload_1
     //   15: areturn
-    //   16: getstatic 257	com/tencent/av/gaudio/QQGAudioCtrl:SPDEFVALUE	Ljava/lang/String;
+    //   16: getstatic 259	com/tencent/av/gaudio/QQGAudioCtrl:SPDEFVALUE	Ljava/lang/String;
     //   19: astore_1
     //   20: goto -8 -> 12
     //   23: astore_1
@@ -564,7 +557,7 @@ public class QQGAudioCtrl
   
   private native int setShareEncParam(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8);
   
-  protected static native void setandroidapppath(String paramString);
+  public static native void setandroidapppath(String paramString);
   
   private native int startShareSend(int paramInt);
   
@@ -675,58 +668,21 @@ public class QQGAudioCtrl
   
   public native int ReadDataFromTRAE(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
-  public int SendShareFrame2Native(Bitmap paramBitmap, int paramInt1, int paramInt2)
-  {
-    return sendShareFrame2NativeBmp(paramBitmap, paramInt1, paramInt2);
-  }
-  
-  public int SendShareFrame2Native(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    return sendShareFrame2Native(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
   public native void SetAudioDataSendByDefault(boolean paramBoolean);
   
   public native void SetAudioDataSink(boolean paramBoolean);
   
   public native int SetOutputFormat(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public void SetShareEncParam(lyh paramlyh, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVShare", 2, "SetShareEncParam, param[" + paramlyh + "], maxW[" + paramInt1 + "], maxH[" + paramInt2 + "], activeNow[" + paramInt3 + "]");
-    }
-    setShareEncParam(1, paramlyh.jdField_a_of_type_Int, paramlyh.jdField_b_of_type_Int, paramlyh.c, 4, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void SetVideoController(lqo paramlqo)
-  {
-    this.mVideoController = paramlqo;
-  }
-  
   public native void SetVideoDataSendByDefault(boolean paramBoolean);
   
   public native void SetVideoDataSink(boolean paramBoolean);
-  
-  public boolean StartOrStopShareSend(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {}
-    for (int i = stopShareSend(paramInt);; i = startShareSend(paramInt))
-    {
-      QLog.i("QQGAudioCtrl", 1, "StartOrStopShareSend, stop[" + paramBoolean + "], emShareType[" + paramInt + "], ret[" + i + "]");
-      if (i != 1) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
   
   public native int WriteDataToTRAE(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
   public int accept(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i = mvh.a();
+    int i = msn.a();
     if (i > 0) {}
     for (;;)
     {
@@ -757,7 +713,7 @@ public class QQGAudioCtrl
         paramInt4 += 1;
       }
     }
-    paramInt4 = mvh.a();
+    paramInt4 = msn.a();
     if (paramInt4 > 0) {}
     for (;;)
     {
@@ -768,13 +724,15 @@ public class QQGAudioCtrl
     }
   }
   
+  public native int commonRequest(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString, int paramInt7, byte[] paramArrayOfByte, int paramInt8);
+  
   public native int debugSwitch(boolean paramBoolean);
   
   public native boolean enableLoopback(boolean paramBoolean);
   
   public native String getAVGQuality();
   
-  public lps getAVInfoFromByte(byte[] paramArrayOfByte, int paramInt)
+  public lmp getAVInfoFromByte(byte[] paramArrayOfByte, int paramInt)
   {
     if (paramArrayOfByte == null) {
       return null;
@@ -800,7 +758,7 @@ public class QQGAudioCtrl
     }
     for (;;)
     {
-      paramArrayOfByte = new lps();
+      paramArrayOfByte = new lmp();
       paramArrayOfByte.jdField_a_of_type_Long = l;
       paramArrayOfByte.jdField_a_of_type_Int = i;
       paramArrayOfByte.jdField_b_of_type_Int = j;
@@ -826,7 +784,7 @@ public class QQGAudioCtrl
   
   public String getDeviceName()
   {
-    return lnz.b();
+    return lkw.b();
   }
   
   public native long getEncodeFrameFunctionPtrFunPtr();
@@ -893,6 +851,11 @@ public class QQGAudioCtrl
     return 0;
   }
   
+  public int getProductId()
+  {
+    return 0;
+  }
+  
   public String getRELEASEVERSION()
   {
     return Build.VERSION.RELEASE;
@@ -900,13 +863,13 @@ public class QQGAudioCtrl
   
   public native long getRoomId();
   
-  public int getRoomUserSdkVersion(lid paramlid, String paramString)
+  public int getRoomUserSdkVersion(ley paramley, String paramString)
   {
     try
     {
       l1 = Long.parseLong(paramString);
-      paramlid = getRoomParams(paramlid);
-      if ((paramlid == null) || (l1 == 0L))
+      paramley = getRoomParams(paramley);
+      if ((paramley == null) || (l1 == 0L))
       {
         i = -1;
         return i;
@@ -925,9 +888,9 @@ public class QQGAudioCtrl
         {
           l1 = 0L;
         }
-        k = ((Integer)paramlid[0]).intValue();
-        l2 = ((Long)paramlid[1]).longValue();
-        m = ((Integer)paramlid[2]).intValue();
+        k = ((Integer)paramley[0]).intValue();
+        l2 = ((Long)paramley[1]).longValue();
+        m = ((Integer)paramley[2]).intValue();
         j = getRoomUserClientVersion(k, l2, m, l1);
         int i = j;
       } while (!QLog.isColorLevel());
@@ -936,13 +899,13 @@ public class QQGAudioCtrl
     }
   }
   
-  public int getRoomUserTerminalType(lid paramlid, String paramString)
+  public int getRoomUserTerminalType(ley paramley, String paramString)
   {
     try
     {
       l1 = Long.parseLong(paramString);
-      paramlid = getRoomParams(paramlid);
-      if ((paramlid == null) || (l1 == 0L))
+      paramley = getRoomParams(paramley);
+      if ((paramley == null) || (l1 == 0L))
       {
         i = -1;
         return i;
@@ -961,9 +924,9 @@ public class QQGAudioCtrl
         {
           l1 = 0L;
         }
-        k = ((Integer)paramlid[0]).intValue();
-        l2 = ((Long)paramlid[1]).longValue();
-        m = ((Integer)paramlid[2]).intValue();
+        k = ((Integer)paramley[0]).intValue();
+        l2 = ((Long)paramley[1]).longValue();
+        m = ((Integer)paramley[2]).intValue();
         j = getRoomUserTerminalType(k, l2, m, l1);
         int i = j;
       } while (!QLog.isColorLevel());
@@ -980,99 +943,10 @@ public class QQGAudioCtrl
   
   public void init(Context paramContext, long paramLong, int paramInt)
   {
-    init(paramContext, paramLong, paramInt, "8.3.5");
+    init(paramContext, paramLong, paramInt, "8.4.1", new lkr().a());
   }
   
-  public native void init(Context paramContext, long paramLong, int paramInt, String paramString);
-  
-  @SuppressLint({"NewApi"})
-  public void init_deviceinfos(Context paramContext, ArrayList<lqw> paramArrayList)
-  {
-    Object localObject1 = "PRODUCT=" + Build.PRODUCT + ";";
-    localObject1 = (String)localObject1 + "CPU_ABI=" + Build.CPU_ABI + ";";
-    localObject1 = (String)localObject1 + "TAGS=" + Build.TAGS + ";";
-    localObject1 = (String)localObject1 + "VERSION_CODES_BASE=1;";
-    localObject1 = (String)localObject1 + "MODEL=" + Build.MODEL + ";";
-    localObject1 = (String)localObject1 + "SDK=" + Build.VERSION.SDK_INT + ";";
-    localObject1 = (String)localObject1 + "VERSION_RELEASE=" + Build.VERSION.RELEASE + ";";
-    localObject1 = (String)localObject1 + "DEVICE=" + Build.DEVICE + ";";
-    localObject1 = (String)localObject1 + "DISPLAY=" + Build.DISPLAY + ";";
-    localObject1 = (String)localObject1 + "BRAND=" + Build.BRAND + ";";
-    localObject1 = (String)localObject1 + "BOARD=" + Build.BOARD + ";";
-    localObject1 = (String)localObject1 + "FINGERPRINT=" + Build.FINGERPRINT + ";";
-    localObject1 = (String)localObject1 + "ID=" + Build.ID + ";";
-    localObject1 = (String)localObject1 + "MANUFACTURER=" + Build.MANUFACTURER + ";";
-    Object localObject2 = (String)localObject1 + "USER=" + Build.USER + ";";
-    localObject1 = paramContext.getApplicationInfo();
-    localObject2 = (String)localObject2 + "DATADIR=" + ((ApplicationInfo)localObject1).dataDir + ";";
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      localObject1 = (String)localObject2 + "LIBDIR=" + ((ApplicationInfo)localObject1).nativeLibraryDir + ";";
-      if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-        break label1126;
-      }
-      localObject2 = paramArrayList.iterator();
-      paramArrayList = (ArrayList<lqw>)localObject1;
-      label616:
-      localObject1 = paramArrayList;
-      if (!((Iterator)localObject2).hasNext()) {
-        break label1212;
-      }
-      localObject1 = (lqw)((Iterator)localObject2).next();
-      if ((((lqw)localObject1).jdField_a_of_type_Int != 1) || (!((lqw)localObject1).jdField_a_of_type_Boolean)) {
-        break label792;
-      }
-      paramArrayList = paramArrayList + "HWAVCDEC=1;";
-      paramArrayList = paramArrayList + "HWAVCDEC_MAXW=" + ((lqw)localObject1).jdField_b_of_type_Int + ";";
-      paramArrayList = paramArrayList + "HWAVCDEC_MAXH=" + ((lqw)localObject1).c + ";";
-    }
-    for (;;)
-    {
-      break label616;
-      localObject1 = (String)localObject2 + "LIBDIR=" + ((ApplicationInfo)localObject1).dataDir + "/lib;";
-      break;
-      label792:
-      if ((((lqw)localObject1).jdField_a_of_type_Int == 2) && (((lqw)localObject1).jdField_a_of_type_Boolean))
-      {
-        paramArrayList = paramArrayList + "HWAVCENC=1;";
-        paramArrayList = paramArrayList + "HWAVCENC_MAXW=" + ((lqw)localObject1).jdField_b_of_type_Int + ";";
-        paramArrayList = paramArrayList + "HWAVCENC_MAXH=" + ((lqw)localObject1).c + ";";
-      }
-      else if ((((lqw)localObject1).jdField_a_of_type_Int == 4) && (((lqw)localObject1).jdField_a_of_type_Boolean))
-      {
-        paramArrayList = paramArrayList + "HWHEVCDEC=1;";
-        paramArrayList = paramArrayList + "HWHEVCDEC_MAXW=" + ((lqw)localObject1).jdField_b_of_type_Int + ";";
-        paramArrayList = paramArrayList + "HWHEVCDEC_MAXH=" + ((lqw)localObject1).c + ";";
-      }
-      else if ((((lqw)localObject1).jdField_a_of_type_Int == 8) && (((lqw)localObject1).jdField_a_of_type_Boolean))
-      {
-        paramArrayList = paramArrayList + "HWHEVCENC=1;";
-        paramArrayList = paramArrayList + "HWHEVCENC_MAXW=" + ((lqw)localObject1).jdField_b_of_type_Int + ";";
-        paramArrayList = paramArrayList + "HWHEVCENC_MAXH=" + ((lqw)localObject1).c + ";";
-        continue;
-        label1126:
-        paramArrayList = (String)localObject1 + "HWAVCENC=0;";
-        paramArrayList = paramArrayList + "HWAVCDEC=0;";
-        paramArrayList = paramArrayList + "HWHEVCENC=0;";
-        localObject1 = paramArrayList + "HWHEVCDEC=0;";
-        label1212:
-        if (lnz.f() > 2) {}
-        for (paramArrayList = (String)localObject1 + "SHARP_VIDEO=1;";; paramArrayList = (String)localObject1 + "SHARP_VIDEO=2;")
-        {
-          paramContext = paramContext.getResources().getDisplayMetrics();
-          int i = Math.max(paramContext.widthPixels, paramContext.heightPixels);
-          int j = Math.min(paramContext.widthPixels, paramContext.heightPixels);
-          paramContext = paramArrayList + "SCREEN_WIDTH=" + i + ";";
-          paramContext = paramContext + "SCREEN_HEIGHT=" + j + ";";
-          if (QLog.isColorLevel()) {
-            QLog.d("QQGAudioCtrl", 2, "init_deviceinfos --> PhoneInfo = " + paramContext);
-          }
-          setandroidapppath(paramContext);
-          return;
-        }
-      }
-    }
-  }
+  public native void init(Context paramContext, long paramLong, int paramInt, String paramString, SDKConfigInfo paramSDKConfigInfo);
   
   public native int invite(long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3);
   
@@ -1189,7 +1063,7 @@ public class QQGAudioCtrl
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      lek.e("QQGAudioCtrl", localUnsatisfiedLinkError.getMessage());
+      lbc.e("QQGAudioCtrl", localUnsatisfiedLinkError.getMessage());
     }
     return -1;
   }
@@ -1203,7 +1077,7 @@ public class QQGAudioCtrl
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      lek.e("QQGAudioCtrl", localUnsatisfiedLinkError.getMessage());
+      lbc.e("QQGAudioCtrl", localUnsatisfiedLinkError.getMessage());
     }
     return -1;
   }
@@ -1217,42 +1091,48 @@ public class QQGAudioCtrl
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      lek.e("QQGAudioCtrl", localUnsatisfiedLinkError.getMessage());
+      lbc.e("QQGAudioCtrl", localUnsatisfiedLinkError.getMessage());
     }
     return -1;
   }
   
   public void onGAudioNativeEvent(int paramInt1, int paramInt2, long paramLong1, int paramInt3, int paramInt4, byte[] paramArrayOfByte, int paramInt5, long paramLong2, int paramInt6)
   {
-    if (this.mEventHandler != null)
-    {
-      locallqn = new lqn(this);
-      locallqn.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      locallqn.jdField_a_of_type_Long = paramLong2;
-      locallqn.jdField_b_of_type_Long = paramLong1;
-      locallqn.c = paramInt2;
-      locallqn.jdField_a_of_type_Int = paramInt3;
-      locallqn.jdField_b_of_type_Int = paramInt4;
-      if (paramArrayOfByte == null)
+    if (this.mEventHandler != null) {
+      if (paramInt1 == 170)
       {
-        paramInt2 = 0;
-        locallqn.d = paramInt2;
-        locallqn.e = paramInt6;
-        paramArrayOfByte = this.mEventHandler.obtainMessage();
-        if (paramArrayOfByte != null)
-        {
-          paramArrayOfByte.what = paramInt1;
-          paramArrayOfByte.obj = locallqn;
-          this.mEventHandler.sendMessage(paramArrayOfByte);
+        paramInt1 = (int)((0xFF000000 & paramLong2) >> 24);
+        paramInt2 = (int)((0xFF0000 & paramLong2) >> 16);
+        paramInt3 = (int)((0xFF00 & paramLong2) >> 8);
+        paramInt4 = (int)(0xFF & paramLong2);
+        if (this.mVideoController != null) {
+          this.mVideoController.a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4);
         }
       }
     }
-    while (!QLog.isColorLevel()) {
-      for (;;)
+    while (!QLog.isColorLevel())
+    {
+      return;
+      lnk locallnk = new lnk(this);
+      locallnk.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      locallnk.jdField_a_of_type_Long = paramLong2;
+      locallnk.jdField_b_of_type_Long = paramLong1;
+      locallnk.c = paramInt2;
+      locallnk.jdField_a_of_type_Int = paramInt3;
+      locallnk.jdField_b_of_type_Int = paramInt4;
+      if (paramArrayOfByte == null) {}
+      for (paramInt2 = 0;; paramInt2 = paramArrayOfByte.length)
       {
-        lqn locallqn;
+        locallnk.d = paramInt2;
+        locallnk.e = paramInt6;
+        paramArrayOfByte = this.mEventHandler.obtainMessage();
+        if (paramArrayOfByte == null) {
+          break;
+        }
+        paramArrayOfByte.what = paramInt1;
+        paramArrayOfByte.obj = locallnk;
+        this.mEventHandler.sendMessage(paramArrayOfByte);
         return;
-        paramInt2 = paramArrayOfByte.length;
       }
     }
     QLog.d("QQGAudioCtrl", 2, "mEventHandler == null");
@@ -1267,7 +1147,7 @@ public class QQGAudioCtrl
     }
     catch (UnsatisfiedLinkError paramArrayOfByte)
     {
-      lek.e("QQGAudioCtrl", paramArrayOfByte.getMessage());
+      lbc.e("QQGAudioCtrl", paramArrayOfByte.getMessage());
     }
     return -1;
   }
@@ -1287,14 +1167,14 @@ public class QQGAudioCtrl
       }
       if (paramInt1 == 6)
       {
-        this.mVideoController.a(paramLong, paramInt3, paramInt4);
+        this.mVideoController.b(paramLong, paramInt3, paramInt4);
         return;
       }
     } while ((paramInt1 == 44) || (paramInt1 != 5));
-    this.mVideoController.a(paramLong, paramInt3, paramInt4);
+    this.mVideoController.b(paramLong, paramInt3, paramInt4);
   }
   
-  public void onRecvUserList(int paramInt1, int paramInt2, long paramLong1, ArrayList<lps> paramArrayList, long paramLong2, int paramInt3, int paramInt4, int paramInt5)
+  public void onRecvUserList(int paramInt1, int paramInt2, long paramLong1, ArrayList<lmp> paramArrayList, long paramLong2, int paramInt3, int paramInt4, int paramInt5)
   {
     if (this.mVideoController == null) {
       if (QLog.isColorLevel()) {
@@ -1394,11 +1274,13 @@ public class QQGAudioCtrl
   
   public native int quit(int paramInt);
   
+  public native int registerAudioDataCallback(int paramInt, boolean paramBoolean);
+  
   public native int registerTRAE(int paramInt);
   
   public int request(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    int i = mvh.a();
+    int i = msn.a();
     if (i > 0) {}
     for (;;)
     {
@@ -1419,7 +1301,19 @@ public class QQGAudioCtrl
     this.mVideoController.a(paramLong1, paramLong2, paramArrayOfByte);
   }
   
+  public int sendShareFrame(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    return sendShareFrame2NativeBmp(paramBitmap, paramInt1, paramInt2);
+  }
+  
+  public int sendShareFrame(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    return sendShareFrame2Native(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
   public native void sendTransferMsg(long[] paramArrayOfLong, byte[] paramArrayOfByte);
+  
+  public native int setAECMode(int paramInt);
   
   public native int setApType(int paramInt);
   
@@ -1428,9 +1322,16 @@ public class QQGAudioCtrl
     this.appid = paramInt;
   }
   
+  public native int setAudioDataFormat(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
   public native boolean setAudioNoiseCtrlParam(int paramInt1, int paramInt2, int paramInt3);
   
   public native int setAudioOutputMode(int paramInt);
+  
+  public void setCallback(lnl paramlnl)
+  {
+    this.mVideoController = paramlnl;
+  }
   
   public native int setHowlingDetectEnable(boolean paramBoolean);
   
@@ -1461,9 +1362,49 @@ public class QQGAudioCtrl
   
   public native void setProcessDecoderFrameFunctionptr(long paramLong);
   
+  public void setShareEncParam(lvj paramlvj, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AVShare", 2, "setShareEncParam, param[" + paramlvj + "], maxW[" + paramInt1 + "], maxH[" + paramInt2 + "], activeNow[" + paramInt3 + "]");
+    }
+    setShareEncParam(1, paramlvj.jdField_a_of_type_Int, paramlvj.jdField_b_of_type_Int, paramlvj.c, 4, paramInt1, paramInt2, paramInt3);
+  }
+  
   public native void setVideoJitterLength(int paramInt);
   
   public native int setVoiceType(int paramInt);
+  
+  public int startAVGameVideoRecv(ArrayList<lnn> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return 0;
+    }
+    int j = paramArrayList.size() * 3;
+    long[] arrayOfLong = new long[j];
+    String str = new String();
+    int i = 0;
+    if (i < paramArrayList.size())
+    {
+      arrayOfLong[(i * 3)] = ((lnn)paramArrayList.get(i)).jdField_a_of_type_Long;
+      str = str + "uin=" + arrayOfLong[(i * 3)] + " ,";
+      arrayOfLong[(i * 3 + 1)] = ((lnn)paramArrayList.get(i)).jdField_a_of_type_Int;
+      str = str + "videoSrcType=" + arrayOfLong[(i * 3 + 1)] + " ,";
+      if (((lnn)paramArrayList.get(i)).jdField_a_of_type_Boolean) {
+        arrayOfLong[(i * 3 + 2)] = 1L;
+      }
+      for (;;)
+      {
+        str = str + "isBig=" + arrayOfLong[(i * 3 + 2)] + " ,";
+        i += 1;
+        break;
+        arrayOfLong[(i * 3 + 2)] = 0L;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGAudioCtrl", 2, "startAVGameVideoRecv-->info=" + str);
+    }
+    return startVideoRecv(arrayOfLong, j);
+  }
   
   public native int startAudioRecv();
   
@@ -1474,7 +1415,7 @@ public class QQGAudioCtrl
   
   public native int startAudioSend(boolean paramBoolean);
   
-  public int startCommonGAudio(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString, int paramInt4, byte[] paramArrayOfByte)
+  public int startCommonGAudio(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString, int paramInt4, byte[] paramArrayOfByte, int paramInt5)
   {
     if ((paramInt1 != 11) || (paramInt2 != 14) || (paramInt3 != 1))
     {
@@ -1484,7 +1425,7 @@ public class QQGAudioCtrl
       paramInt2 = -1;
       return paramInt2;
     }
-    int i = mvh.a();
+    int i = msn.a();
     label46:
     StringBuilder localStringBuilder;
     if (i > 0) {
@@ -1492,7 +1433,7 @@ public class QQGAudioCtrl
       {
         localStringBuilder = new StringBuilder().append("startCommonGAudio emAVRelationType:").append(paramInt1).append(" emMultiAVType:").append(paramInt2).append(" emMultiAVSubType:").append(paramInt3).append(" roomId:").append(paramLong1).append(" selfUin:").append(paramLong2).append(" llAppid:").append(paramInt4).append(" nConfig:").append(0).append(" maxShowVideo:").append(i).append(" openId:").append(paramString).append(" sourceId:").append(paramInt4).append(" commonSig.length:");
         if (paramArrayOfByte == null) {
-          break label277;
+          break label290;
         }
       }
     }
@@ -1500,12 +1441,12 @@ public class QQGAudioCtrl
     {
       for (;;)
       {
-        QLog.d("QQGAudioCtrl", 2, j);
+        QLog.d("QQGAudioCtrl", 2, j + " svrRecogFlag:" + paramInt5);
         try
         {
           for (;;)
           {
-            paramInt1 = commonRequest(paramInt1, paramLong1, paramInt2, paramInt3, paramInt4, 0, i, paramString, paramInt4, paramArrayOfByte);
+            paramInt1 = commonRequest(paramInt1, paramLong1, paramInt2, paramInt3, paramInt4, 0, i, paramString, paramInt4, paramArrayOfByte, paramInt5);
             paramInt2 = paramInt1;
             try
             {
@@ -1522,7 +1463,7 @@ public class QQGAudioCtrl
         {
           for (;;)
           {
-            label277:
+            label290:
             paramInt1 = -1;
           }
         }
@@ -1551,7 +1492,7 @@ public class QQGAudioCtrl
         i += 1;
       }
     }
-    int i = mvh.a();
+    int i = msn.a();
     if (i > 0) {}
     for (;;)
     {
@@ -1578,16 +1519,30 @@ public class QQGAudioCtrl
       }
       i = 5;
     }
-    lek.e("QQGAudioCtrl", paramArrayOfLong.getMessage());
+    lbc.e("QQGAudioCtrl", paramArrayOfLong.getMessage());
     return paramInt1;
   }
   
-  public int startVideoRecv(ArrayList<lqq> paramArrayList)
+  public boolean startOrStopShareSend(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean) {}
+    for (int i = stopShareSend(paramInt);; i = startShareSend(paramInt))
+    {
+      QLog.i("QQGAudioCtrl", 1, "startOrStopShareSend, stop[" + paramBoolean + "], emShareType[" + paramInt + "], ret[" + i + "]");
+      if (i != 1) {
+        break;
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public int startVideoRecv(ArrayList<lnn> paramArrayList)
   {
     return startVideoRecv(paramArrayList, false);
   }
   
-  public int startVideoRecv(ArrayList<lqq> paramArrayList, boolean paramBoolean)
+  public int startVideoRecv(ArrayList<lnn> paramArrayList, boolean paramBoolean)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return 0;
@@ -1598,20 +1553,20 @@ public class QQGAudioCtrl
     int i = 0;
     if (i < paramArrayList.size())
     {
-      arrayOfLong[(i * 3)] = ((lqq)paramArrayList.get(i)).jdField_a_of_type_Long;
+      arrayOfLong[(i * 3)] = ((lnn)paramArrayList.get(i)).jdField_a_of_type_Long;
       str = str + "uin=" + arrayOfLong[(i * 3)] + " ,";
-      arrayOfLong[(i * 3 + 1)] = ((lqq)paramArrayList.get(i)).jdField_a_of_type_Int;
+      arrayOfLong[(i * 3 + 1)] = ((lnn)paramArrayList.get(i)).jdField_a_of_type_Int;
       str = str + "videoSrcType=" + arrayOfLong[(i * 3 + 1)] + " ,";
       if (paramBoolean)
       {
         if (this.mVideoController == null) {
           return 0;
         }
-        lid locallid = this.mVideoController.a();
-        if (locallid == null) {
+        ley localley = this.mVideoController.a();
+        if (localley == null) {
           return 0;
         }
-        if (locallid.a(((lqq)paramArrayList.get(i)).jdField_a_of_type_Long, i)) {
+        if (localley.a(((lnn)paramArrayList.get(i)).jdField_a_of_type_Long, i)) {
           arrayOfLong[(i * 3 + 2)] = 1L;
         }
       }
@@ -1622,7 +1577,7 @@ public class QQGAudioCtrl
         break;
         arrayOfLong[(i * 3 + 2)] = 0L;
         continue;
-        if (((lqq)paramArrayList.get(i)).jdField_a_of_type_Boolean) {
+        if (((lnn)paramArrayList.get(i)).jdField_a_of_type_Boolean) {
           arrayOfLong[(i * 3 + 2)] = 1L;
         } else {
           arrayOfLong[(i * 3 + 2)] = 0L;
@@ -1649,15 +1604,17 @@ public class QQGAudioCtrl
   
   public native void uninit();
   
+  public native int unregisterAudioDataCallback(int paramInt);
+  
   public native int unregisterTRAE(int paramInt);
   
-  public void updateRoomUserTerminalInfo(lid paramlid, String paramString, int paramInt1, int paramInt2)
+  public void updateRoomUserTerminalInfo(ley paramley, String paramString, int paramInt1, int paramInt2)
   {
     try
     {
       l1 = Long.parseLong(paramString);
-      paramlid = getRoomParams(paramlid);
-      if ((paramlid == null) || (l1 == 0L)) {
+      paramley = getRoomParams(paramley);
+      if ((paramley == null) || (l1 == 0L)) {
         return;
       }
     }
@@ -1673,9 +1630,9 @@ public class QQGAudioCtrl
         {
           l1 = 0L;
         }
-        i = ((Integer)paramlid[0]).intValue();
-        l2 = ((Long)paramlid[1]).longValue();
-        j = ((Integer)paramlid[2]).intValue();
+        i = ((Integer)paramley[0]).intValue();
+        l2 = ((Long)paramley[1]).longValue();
+        j = ((Integer)paramley[2]).intValue();
         updateRoomUserTerminalInfo(i, l2, j, l1, paramInt1, paramInt2);
       } while (!QLog.isColorLevel());
       QLog.i("QQGAudioCtrl", 2, String.format("updateRoomUserTerminalInfo [%s, %s, %s, %s, %s, %s]", new Object[] { Integer.valueOf(i), Long.valueOf(l2), Integer.valueOf(j), Long.valueOf(l1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
@@ -1684,7 +1641,7 @@ public class QQGAudioCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.gaudio.QQGAudioCtrl
  * JD-Core Version:    0.7.0.1
  */

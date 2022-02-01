@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import azir;
+import bcjr;
 
 class CameraFilterGLView$6
   implements Runnable
@@ -15,7 +15,7 @@ class CameraFilterGLView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView.6
  * JD-Core Version:    0.7.0.1
  */

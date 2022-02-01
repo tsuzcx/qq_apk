@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.auth.b;
 import com.tencent.mobileqq.msf.core.c.k;
-import com.tencent.mobileqq.msf.core.t;
+import com.tencent.mobileqq.msf.core.w;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.BaseConstants;
 import java.util.Iterator;
@@ -222,7 +222,7 @@ public class f
       localConcurrentHashMap.put("ip", d);
       localConcurrentHashMap.put("port", "" + e);
       localConcurrentHashMap.put("nettype", "" + f);
-      localConcurrentHashMap.put("imsi", t.e());
+      localConcurrentHashMap.put("imsi", w.e());
       localConcurrentHashMap.put("reqtotalcount", "" + n);
       localConcurrentHashMap.put("reqnoresp", "" + o);
       localConcurrentHashMap.put("reqcount", "" + m);

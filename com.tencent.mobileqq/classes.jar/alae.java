@@ -1,27 +1,79 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class alae
-  implements Animation.AnimationListener
+  implements alaf
 {
-  alae(alad paramalad, View paramView) {}
+  private alah jdField_a_of_type_Alah;
+  private String jdField_a_of_type_JavaLangString;
+  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public alae(String paramString, QQAppInterface paramQQAppInterface)
   {
-    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimation.leftMargin = this.jdField_a_of_type_Alad.e;
-    paramAnimation.topMargin = this.jdField_a_of_type_Alad.f;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Alad.a = false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(@Nullable alah paramalah)
+  {
+    this.jdField_a_of_type_Alah = paramalah;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean isNeedAutoCloseWhenAccountChange()
+  {
+    return true;
+  }
+  
+  public void onClose()
+  {
+    if (this.jdField_a_of_type_Alah == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    akyh.a(localQQAppInterface, this.jdField_a_of_type_Alah);
+  }
+  
+  public void onEnter()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    Intent localIntent;
+    if (BaseActivity.sTopActivity != null)
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("public_fragment_window_feature", 1);
+      localIntent.addFlags(268435456);
+    }
+    for (;;)
+    {
+      try
+      {
+        PublicTransFragmentActivity.b(localQQAppInterface.getApp(), localIntent, Class.forName(this.jdField_a_of_type_JavaLangString));
+        akyh.a(localQQAppInterface, this.jdField_a_of_type_Alah);
+        return;
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        localClassNotFoundException.printStackTrace();
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+      }
+    }
+  }
+  
+  public void onOverride() {}
 }
 
 

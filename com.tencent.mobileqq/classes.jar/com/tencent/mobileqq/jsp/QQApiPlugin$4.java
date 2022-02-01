@@ -4,28 +4,28 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import atid;
-import begz;
-import bfhz;
-import bfif;
+import avow;
+import bhod;
+import bipi;
+import bipo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import java.io.IOException;
 import java.util.Map;
-import ndd;
+import nlw;
 
 public class QQApiPlugin$4
   implements Runnable
 {
-  public QQApiPlugin$4(atid paramatid, String paramString1, Map paramMap, Runnable paramRunnable, String paramString2, String paramString3) {}
+  public QQApiPlugin$4(avow paramavow, String paramString1, Map paramMap, Runnable paramRunnable, String paramString2, String paramString3) {}
   
   public void run()
   {
     int i = 1;
     try
     {
-      localObject1 = ndd.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      localObject1 = nlw.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
       if (localObject1 == null) {
         break label126;
       }
@@ -76,9 +76,9 @@ public class QQApiPlugin$4
     label355:
     for (i = 3;; i = 4)
     {
-      ((Bundle)localObject1).putString("intext_3", bfif.b(i));
+      ((Bundle)localObject1).putString("intext_3", bipo.b(i));
       ((Bundle)localObject1).putString("stringext_1", this.c);
-      bfhz.a().a((Bundle)localObject1, "", this.this$0.mRuntime.a().getAccount(), false);
+      bipi.a().a((Bundle)localObject1, "", this.this$0.mRuntime.a().getAccount(), false);
       return;
       this.this$0.mRuntime.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
       break;
@@ -89,7 +89,7 @@ public class QQApiPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.QQApiPlugin.4
  * JD-Core Version:    0.7.0.1
  */

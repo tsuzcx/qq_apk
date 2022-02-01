@@ -1,22 +1,20 @@
-import com.tencent.widget.AbsListView;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 
-class blwg
-  implements bhtv
+final class blwg
+  implements blwo
 {
-  int jdField_a_of_type_Int = 0;
-  
-  blwg(blwf paramblwf) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public Collection<blwh> a()
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (blwf.a(this.jdField_a_of_type_Blwf).a() != null) && (this.jdField_a_of_type_Int == blwf.a(this.jdField_a_of_type_Blwf).a().size() - 1)) {
-      blwf.a(this.jdField_a_of_type_Blwf).a();
+    synchronized ()
+    {
+      if (blwf.a().size() <= 0)
+      {
+        localObject1 = null;
+        return localObject1;
+      }
+      Object localObject1 = new ArrayList(blwf.a().values());
     }
   }
 }

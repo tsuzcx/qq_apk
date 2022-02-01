@@ -1,23 +1,17 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-
-class avnq
-  implements TextWatcher
+public class avnq
 {
-  avnq(avnl paramavnl) {}
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    auwz.a(this.a.e, 90);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public double a;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avnq
  * JD-Core Version:    0.7.0.1
  */

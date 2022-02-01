@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import NS_KING_SOCIALIZE_META.stMetaComment;
-import NS_KING_SOCIALIZE_META.stMetaReply;
-import alud;
+import UserGrowth.stSimpleMetaComment;
+import UserGrowth.stSimpleMetaReply;
+import aaga;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -12,19 +12,20 @@ import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import anni;
 import com.tencent.biz.subscribe.comment.ReplyActionView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
-import yhn;
 
 public class WsReplyContainer
   extends LinearLayout
   implements View.OnClickListener, View.OnLongClickListener
 {
   private int jdField_a_of_type_Int;
-  private stMetaComment jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment;
+  private stSimpleMetaComment jdField_a_of_type_UserGrowthStSimpleMetaComment;
+  private aaga jdField_a_of_type_Aaga;
   private ReplyActionView jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView;
-  private yhn jdField_a_of_type_Yhn;
   private int b;
   private int c;
   
@@ -49,15 +50,15 @@ public class WsReplyContainer
   
   private void b() {}
   
-  protected void a(stMetaComment paramstMetaComment, int paramInt, String paramString)
+  protected void a(stSimpleMetaComment paramstSimpleMetaComment, int paramInt, String paramString)
   {
-    if ((paramstMetaComment == null) || (paramstMetaComment.replyList.size() == 0))
+    if ((paramstSimpleMetaComment == null) || (paramstSimpleMetaComment.replyList.size() == 0))
     {
       setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment = paramstMetaComment;
-    ArrayList localArrayList = paramstMetaComment.replyList;
+    this.jdField_a_of_type_UserGrowthStSimpleMetaComment = paramstSimpleMetaComment;
+    ArrayList localArrayList = paramstSimpleMetaComment.replyList;
     int j = localArrayList.size();
     if (paramInt > 0) {}
     for (paramInt = Math.min(j, paramInt);; paramInt = j)
@@ -68,14 +69,14 @@ public class WsReplyContainer
       int i = 0;
       while (i < paramInt)
       {
-        stMetaReply localstMetaReply = (stMetaReply)localArrayList.get(i);
+        stSimpleMetaReply localstSimpleMetaReply = (stSimpleMetaReply)localArrayList.get(i);
         WsReplyView localWsReplyView = new WsReplyView(getContext());
         localWsReplyView.setPosition(i);
-        localWsReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Yhn);
+        localWsReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Aaga);
         localWsReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
         localWsReplyView.setClickable(true);
         localWsReplyView.setFocusable(true);
-        localWsReplyView.setData(paramstMetaComment, localstMetaReply, paramString);
+        localWsReplyView.setData(paramstSimpleMetaComment, localstSimpleMetaReply, paramString);
         addView(localWsReplyView);
         i += 1;
       }
@@ -103,7 +104,7 @@ public class WsReplyContainer
         setVisibility(0);
         return;
         label278:
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alud.a(2131713790));
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(anni.a(2131712169));
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(0);
         continue;
@@ -113,7 +114,7 @@ public class WsReplyContainer
           paramInt = j - paramInt;
           if (paramInt > 0)
           {
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alud.a(2131713788) + paramInt + alud.a(2131713789));
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(anni.a(2131712167) + paramInt + anni.a(2131712168));
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
           }
@@ -132,18 +133,22 @@ public class WsReplyContainer
     switch (paramView.getId())
     {
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Yhn == null);
-      this.jdField_a_of_type_Yhn.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    } while (this.jdField_a_of_type_Yhn == null);
-    stMetaComment localstMetaComment = this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment;
-    int i = getHeight() / this.c;
-    this.jdField_a_of_type_Yhn.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localstMetaComment, Integer.valueOf(i) });
+      if (this.jdField_a_of_type_Aaga != null)
+      {
+        this.jdField_a_of_type_Aaga.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaComment);
+        continue;
+        if (this.jdField_a_of_type_Aaga != null)
+        {
+          stSimpleMetaComment localstSimpleMetaComment = this.jdField_a_of_type_UserGrowthStSimpleMetaComment;
+          int i = getHeight() / this.c;
+          this.jdField_a_of_type_Aaga.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localstSimpleMetaComment, Integer.valueOf(i) });
+        }
+      }
+    }
   }
   
   public boolean onLongClick(View paramView)
@@ -156,9 +161,9 @@ public class WsReplyContainer
     this.b = paramInt;
   }
   
-  public void setOnCommentElementClickListener(yhn paramyhn)
+  public void setOnCommentElementClickListener(aaga paramaaga)
   {
-    this.jdField_a_of_type_Yhn = paramyhn;
+    this.jdField_a_of_type_Aaga = paramaaga;
   }
   
   public void setPosition(int paramInt)
@@ -168,7 +173,7 @@ public class WsReplyContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsReplyContainer
  * JD-Core Version:    0.7.0.1
  */

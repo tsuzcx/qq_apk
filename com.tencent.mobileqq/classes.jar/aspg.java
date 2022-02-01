@@ -1,31 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class aspg
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  aspg(aspf paramaspf, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aspg(aspe paramaspe) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)aspf.a(this.a).get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = "https://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
-    this.a.a(paramMessage, null);
-    this.a.b();
+    this.a.a.a = false;
+    this.a.a.doOnBackPressed();
   }
 }
 

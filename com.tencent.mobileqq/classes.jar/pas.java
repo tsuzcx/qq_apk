@@ -1,21 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class pas
-  extends AnimatorListenerAdapter
+class pas
+  implements DialogInterface.OnClickListener
 {
-  public pas(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  pas(paq parampaq) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pas
  * JD-Core Version:    0.7.0.1
  */

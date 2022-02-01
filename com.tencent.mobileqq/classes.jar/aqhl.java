@@ -1,23 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.RoundImageView;
 
-final class aqhl
-  implements DialogInterface.OnClickListener
+class aqhl
 {
-  aqhl(boolean paramBoolean, BaseActivity paramBaseActivity, int paramInt, String paramString1, String paramString2) {}
+  public arev a;
+  public RoundImageView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aqhl(aqhh paramaqhh, RoundImageView paramRoundImageView, arev paramarev)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      aqgz.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      aqgz.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = paramRoundImageView;
+    this.jdField_a_of_type_Arev = paramarev;
   }
 }
 

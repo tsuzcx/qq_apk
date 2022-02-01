@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.comment;
 
+import aaeq;
 import com.tencent.qphone.base.util.QLog;
-import ygd;
 
 public class CommentInputPopupWindow$8
   implements Runnable
 {
-  public CommentInputPopupWindow$8(ygd paramygd, WorkSpaceView paramWorkSpaceView) {}
+  public CommentInputPopupWindow$8(aaeq paramaaeq, WorkSpaceView paramWorkSpaceView) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class CommentInputPopupWindow$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentInputPopupWindow.8
  * JD-Core Version:    0.7.0.1
  */

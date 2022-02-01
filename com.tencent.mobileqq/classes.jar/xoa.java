@@ -1,37 +1,32 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class xoa
-  extends urs<vge, vhr>
+  extends xoe<StoryVideoItem>
 {
-  xoa(xny paramxny) {}
-  
-  public void a(@NonNull vge paramvge, @Nullable vhr paramvhr, @NonNull ErrorMessage paramErrorMessage)
+  public xoa(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    wxe.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramvhr != null))
-    {
-      wxe.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramvhr.toString());
-      xny.a(this.a).addAll(paramvhr.jdField_a_of_type_JavaUtilList);
-      xny.a(this.a, paramvhr.jdField_a_of_type_JavaLangString);
-      xny.a(this.a, paramvhr.b);
-      ThreadManager.executeOnSubThread(new EditVideoTagPresenter.2.1(this));
-    }
-    for (;;)
-    {
-      xny.a(this.a).b(paramErrorMessage.errorCode, xny.a(this.a), this.a.a());
-      return;
-      wxe.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
-    }
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    yqp.d(this.a.a, "VideoStartSegment, error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xoa
  * JD-Core Version:    0.7.0.1
  */

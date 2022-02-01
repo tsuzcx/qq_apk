@@ -1,6 +1,5 @@
 package dov.com.tencent.mobileqq.richmedia.capture.view;
 
-import alud;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
@@ -9,11 +8,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
-import bnme;
-import bnmf;
-import bnmg;
-import bnmh;
-import bnsm;
+import anni;
+import bqdd;
+import bqde;
+import bqdf;
+import bqdg;
+import bqja;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
@@ -22,8 +22,8 @@ public class DragAnimationMgr
   private int jdField_a_of_type_Int = 0;
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private bnmg jdField_a_of_type_Bnmg;
-  private bnmh jdField_a_of_type_Bnmh = new bnmh();
+  private bqdf jdField_a_of_type_Bqdf;
+  private bqdg jdField_a_of_type_Bqdg = new bqdg();
   private DragAnimationMgr.DragViewIcon jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon;
   private boolean jdField_a_of_type_Boolean;
   private View jdField_b_of_type_AndroidViewView;
@@ -43,7 +43,7 @@ public class DragAnimationMgr
         break;
       }
     } while (!this.jdField_a_of_type_Boolean);
-    return bnsm.a(40.0F);
+    return bqja.a(40.0F);
     if (this.jdField_a_of_type_Int == 1) {
       return this.jdField_b_of_type_AndroidViewView.getHeight();
     }
@@ -83,9 +83,9 @@ public class DragAnimationMgr
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bnmh.jdField_a_of_type_Float = (Math.max(i, paramFloat) / 4.0F);
-      if (this.jdField_a_of_type_Bnmh.jdField_a_of_type_Float <= 0.0F) {
-        this.jdField_a_of_type_Bnmh.jdField_a_of_type_Float = bnsm.a(1.0F);
+      this.jdField_a_of_type_Bqdg.jdField_a_of_type_Float = (Math.max(i, paramFloat) / 4.0F);
+      if (this.jdField_a_of_type_Bqdg.jdField_a_of_type_Float <= 0.0F) {
+        this.jdField_a_of_type_Bqdg.jdField_a_of_type_Float = bqja.a(1.0F);
       }
       return;
       i = this.c.getWidth() / 2;
@@ -107,7 +107,7 @@ public class DragAnimationMgr
     localObjectAnimator.setStartDelay(125L);
     localObjectAnimator.setDuration(330L);
     paramDragViewIcon.jdField_b_of_type_Boolean = true;
-    localObjectAnimator.addListener(new bnmf(this, paramDragViewIcon));
+    localObjectAnimator.addListener(new bqde(this, paramDragViewIcon));
     localObjectAnimator.start();
   }
   
@@ -141,23 +141,23 @@ public class DragAnimationMgr
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (this.jdField_a_of_type_Bnmg != null) {
+    if (this.jdField_a_of_type_Bqdf != null) {
       if (paramBoolean1) {
-        this.jdField_a_of_type_Bnmg.a(paramBoolean2);
+        this.jdField_a_of_type_Bqdf.a(paramBoolean2);
       }
     }
     while (!this.jdField_a_of_type_Boolean)
     {
       return;
-      this.jdField_a_of_type_Bnmg.b(paramBoolean2);
+      this.jdField_a_of_type_Bqdf.b(paramBoolean2);
       return;
     }
     if (paramBoolean1)
     {
-      QQToast.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.getContext(), alud.a(2131703910) + paramBoolean2, 0).a();
+      QQToast.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.getContext(), anni.a(2131702307) + paramBoolean2, 0).a();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.getContext(), alud.a(2131703909) + paramBoolean2 + " max:" + paramBoolean3, 0).a();
+    QQToast.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.getContext(), anni.a(2131702306) + paramBoolean2 + " max:" + paramBoolean3, 0).a();
   }
   
   private boolean a()
@@ -195,7 +195,7 @@ public class DragAnimationMgr
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, i);
       localLayoutParams.addRule(15, -1);
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.setTranslationY(bnsm.a(17.0F));
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.setTranslationY(bqja.a(17.0F));
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon);
       if (this.jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.a(-65536);
@@ -219,8 +219,8 @@ public class DragAnimationMgr
       if (QLog.isColorLevel()) {
         QLog.i("DragAnimationMgr", 2, "upScreenAnimation: currentOffset=" + i + " mAnimationDirection=" + a(this.jdField_a_of_type_Int));
       }
-      if (this.jdField_a_of_type_Bnmg != null) {
-        this.jdField_a_of_type_Bnmg.a(false, false);
+      if (this.jdField_a_of_type_Bqdf != null) {
+        this.jdField_a_of_type_Bqdf.a(false, false);
       }
     }
     boolean bool1;
@@ -240,25 +240,25 @@ public class DragAnimationMgr
         if (this.jdField_a_of_type_Int != 2) {
           break label211;
         }
-        if (this.jdField_a_of_type_Bnmg == null) {
+        if (this.jdField_a_of_type_Bqdf == null) {
           break;
         }
-        this.jdField_a_of_type_Bnmg.a(true, false);
+        this.jdField_a_of_type_Bqdf.a(true, false);
         return;
       }
       if (this.jdField_a_of_type_Int != 1) {
         break;
       }
-    } while (this.jdField_a_of_type_Bnmg == null);
-    this.jdField_a_of_type_Bnmg.a(false, false);
+    } while (this.jdField_a_of_type_Bqdf == null);
+    this.jdField_a_of_type_Bqdf.a(false, false);
     return;
     label211:
     int j = DragAnimationMgr.DragViewIcon.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon);
     float f1 = paramMotionEvent.getRawY();
-    float f2 = Math.abs(f1 - this.jdField_a_of_type_Bnmh.jdField_c_of_type_Float);
+    float f2 = Math.abs(f1 - this.jdField_a_of_type_Bqdg.jdField_c_of_type_Float);
     int k = this.jdField_a_of_type_AndroidViewViewGroup.getHeight() / 2;
     if (QLog.isColorLevel()) {
-      QLog.i("DragAnimationMgr", 2, "upScreenAnimation: currentY=" + f1 + " startY=" + this.jdField_a_of_type_Bnmh.jdField_c_of_type_Float + " moveYOffset=" + f2 + " parentHeightHalf=" + k);
+      QLog.i("DragAnimationMgr", 2, "upScreenAnimation: currentY=" + f1 + " startY=" + this.jdField_a_of_type_Bqdg.jdField_c_of_type_Float + " moveYOffset=" + f2 + " parentHeightHalf=" + k);
     }
     boolean bool2 = bool3;
     if (j < this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.jdField_e_of_type_Int)
@@ -271,8 +271,8 @@ public class DragAnimationMgr
     if (QLog.isColorLevel()) {
       QLog.i("DragAnimationMgr", 2, "upScreenAnimation: leftDirection=" + bool1 + " inRegion=" + bool2);
     }
-    if (this.jdField_a_of_type_Bnmg != null) {
-      this.jdField_a_of_type_Bnmg.a(bool1, bool2);
+    if (this.jdField_a_of_type_Bqdf != null) {
+      this.jdField_a_of_type_Bqdf.a(bool1, bool2);
     }
     if (j <= 5)
     {
@@ -280,7 +280,7 @@ public class DragAnimationMgr
       return;
     }
     j = DragAnimationMgr.DragViewIcon.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon, i);
-    a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon, i, j, new bnme(this));
+    a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon, i, j, new bqdd(this));
   }
   
   public static void c(View paramView, AnimatorListenerAdapter paramAnimatorListenerAdapter)
@@ -298,7 +298,7 @@ public class DragAnimationMgr
     default: 
       if (this.jdField_a_of_type_Boolean)
       {
-        j = (int)(bnsm.a(40.0F) * 3.5F);
+        j = (int)(bqja.a(40.0F) * 3.5F);
         i = j;
       }
       break;
@@ -307,7 +307,7 @@ public class DragAnimationMgr
     {
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.jdField_c_of_type_Int = j;
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.jdField_d_of_type_Int = i;
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.jdField_e_of_type_Int = ((int)this.jdField_a_of_type_Bnmh.jdField_a_of_type_Float);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.jdField_e_of_type_Int = ((int)this.jdField_a_of_type_Bqdg.jdField_a_of_type_Float);
       return;
       i = Math.abs(k - (this.c.getLeft() + this.c.getWidth() / 2));
       continue;
@@ -338,14 +338,14 @@ public class DragAnimationMgr
   
   protected void a()
   {
-    if (!this.jdField_a_of_type_Bnmh.jdField_a_of_type_Boolean)
+    if (!this.jdField_a_of_type_Bqdg.jdField_a_of_type_Boolean)
     {
-      float f = Math.abs(this.jdField_a_of_type_Bnmh.f);
+      float f = Math.abs(this.jdField_a_of_type_Bqdg.f);
       if (QLog.isColorLevel()) {
-        QLog.i("DragAnimationMgr", 2, "longTouchMoveUser: absMoveInter=" + f + " limit=" + bnmh.jdField_c_of_type_Int);
+        QLog.i("DragAnimationMgr", 2, "longTouchMoveUser: absMoveInter=" + f + " limit=" + bqdg.jdField_c_of_type_Int);
       }
-      if (f > bnmh.jdField_c_of_type_Int) {
-        this.jdField_a_of_type_Bnmh.jdField_a_of_type_Boolean = false;
+      if (f > bqdg.jdField_c_of_type_Int) {
+        this.jdField_a_of_type_Bqdg.jdField_a_of_type_Boolean = false;
       }
     }
     int j;
@@ -354,17 +354,17 @@ public class DragAnimationMgr
     {
     default: 
       if (QLog.isColorLevel()) {
-        QLog.i("DragAnimationMgr", 2, "longTouchMoveUser: [big] mAnimationDirection=" + this.jdField_a_of_type_Int + " xDiff=" + this.jdField_a_of_type_Bnmh.f);
+        QLog.i("DragAnimationMgr", 2, "longTouchMoveUser: [big] mAnimationDirection=" + this.jdField_a_of_type_Int + " xDiff=" + this.jdField_a_of_type_Bqdg.f);
       }
-      if ((this.jdField_a_of_type_Bnmh.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bnmg != null)) {
-        this.jdField_a_of_type_Bnmg.c();
+      if ((this.jdField_a_of_type_Bqdg.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bqdf != null)) {
+        this.jdField_a_of_type_Bqdf.c();
       }
       if (QLog.isColorLevel()) {
-        QLog.i("DragAnimationMgr", 2, "longTouchMoveUser: hasMoved=" + this.jdField_a_of_type_Bnmh.jdField_a_of_type_Boolean + " mAnimationDirection=" + this.jdField_a_of_type_Int);
+        QLog.i("DragAnimationMgr", 2, "longTouchMoveUser: hasMoved=" + this.jdField_a_of_type_Bqdg.jdField_a_of_type_Boolean + " mAnimationDirection=" + this.jdField_a_of_type_Int);
       }
-      if (this.jdField_a_of_type_Bnmh.jdField_a_of_type_Boolean)
+      if (this.jdField_a_of_type_Bqdg.jdField_a_of_type_Boolean)
       {
-        j = (int)(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.a() + this.jdField_a_of_type_Bnmh.f);
+        j = (int)(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.a() + this.jdField_a_of_type_Bqdg.f);
         switch (this.jdField_a_of_type_Int)
         {
         default: 
@@ -375,22 +375,22 @@ public class DragAnimationMgr
     }
     for (;;)
     {
-      if (Math.abs(i) >= bnmh.jdField_b_of_type_Int) {
+      if (Math.abs(i) >= bqdg.jdField_b_of_type_Int) {
         break label396;
       }
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b(0);
       return;
-      if (this.jdField_a_of_type_Bnmh.f <= 0.0F) {
+      if (this.jdField_a_of_type_Bqdg.f <= 0.0F) {
         break;
       }
-      this.jdField_a_of_type_Bnmh.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Bqdg.jdField_a_of_type_Boolean = true;
       break;
-      if (this.jdField_a_of_type_Bnmh.f >= 0.0F) {
+      if (this.jdField_a_of_type_Bqdg.f >= 0.0F) {
         break;
       }
-      this.jdField_a_of_type_Bnmh.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Bqdg.jdField_a_of_type_Boolean = true;
       break;
-      this.jdField_a_of_type_Bnmh.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Bqdg.jdField_a_of_type_Boolean = true;
       break;
       i = j;
       if (j < 0)
@@ -427,24 +427,24 @@ public class DragAnimationMgr
     do
     {
       return;
-      this.jdField_a_of_type_Bnmh.jdField_b_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_Bnmh.jdField_c_of_type_Float = paramMotionEvent.getRawY();
-      this.jdField_a_of_type_Bnmh.jdField_d_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_Bnmh.jdField_e_of_type_Float = paramMotionEvent.getRawY();
-      this.jdField_a_of_type_Bnmh.h = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_Bnmh.i = paramMotionEvent.getRawY();
-      this.jdField_a_of_type_Bnmh.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Bnmh.jdField_d_of_type_Boolean = false;
-      this.jdField_a_of_type_Bnmh.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Bnmh.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_Bnmh.jdField_e_of_type_Int = 0;
-      a(bnmh.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bqdg.jdField_b_of_type_Float = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_Bqdg.jdField_c_of_type_Float = paramMotionEvent.getRawY();
+      this.jdField_a_of_type_Bqdg.jdField_d_of_type_Float = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_Bqdg.jdField_e_of_type_Float = paramMotionEvent.getRawY();
+      this.jdField_a_of_type_Bqdg.h = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_Bqdg.i = paramMotionEvent.getRawY();
+      this.jdField_a_of_type_Bqdg.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Bqdg.jdField_d_of_type_Boolean = false;
+      this.jdField_a_of_type_Bqdg.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Bqdg.jdField_c_of_type_Boolean = false;
+      this.jdField_a_of_type_Bqdg.jdField_e_of_type_Int = 0;
+      a(bqdg.jdField_a_of_type_Int);
       c();
-      if (this.jdField_a_of_type_Bnmg != null) {
-        this.jdField_a_of_type_Bnmg.a();
+      if (this.jdField_a_of_type_Bqdf != null) {
+        this.jdField_a_of_type_Bqdf.a();
       }
     } while (!QLog.isColorLevel());
-    QLog.i("DragAnimationMgr", 2, "longTouchDown: hasMoved=" + this.jdField_a_of_type_Bnmh.jdField_a_of_type_Boolean + " startX=" + this.jdField_a_of_type_Bnmh.jdField_b_of_type_Float);
+    QLog.i("DragAnimationMgr", 2, "longTouchDown: hasMoved=" + this.jdField_a_of_type_Bqdg.jdField_a_of_type_Boolean + " startX=" + this.jdField_a_of_type_Bqdg.jdField_b_of_type_Float);
   }
   
   public void a(ViewGroup paramViewGroup, View paramView1, View paramView2, View paramView3)
@@ -472,9 +472,9 @@ public class DragAnimationMgr
     this.jdField_a_of_type_Int = 0;
   }
   
-  public void a(bnmg parambnmg)
+  public void a(bqdf parambqdf)
   {
-    this.jdField_a_of_type_Bnmg = parambnmg;
+    this.jdField_a_of_type_Bqdf = parambqdf;
   }
   
   public void a(boolean paramBoolean)
@@ -517,49 +517,49 @@ public class DragAnimationMgr
     do
     {
       return;
-      this.jdField_a_of_type_Bnmh.h = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_Bnmh.i = paramMotionEvent.getRawY();
-      this.jdField_a_of_type_Bnmh.f = (this.jdField_a_of_type_Bnmh.h - this.jdField_a_of_type_Bnmh.jdField_d_of_type_Float);
-      this.jdField_a_of_type_Bnmh.g = (this.jdField_a_of_type_Bnmh.i - this.jdField_a_of_type_Bnmh.jdField_e_of_type_Float);
+      this.jdField_a_of_type_Bqdg.h = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_Bqdg.i = paramMotionEvent.getRawY();
+      this.jdField_a_of_type_Bqdg.f = (this.jdField_a_of_type_Bqdg.h - this.jdField_a_of_type_Bqdg.jdField_d_of_type_Float);
+      this.jdField_a_of_type_Bqdg.g = (this.jdField_a_of_type_Bqdg.i - this.jdField_a_of_type_Bqdg.jdField_e_of_type_Float);
       if (QLog.isColorLevel()) {
-        QLog.i("DragAnimationMgr", 2, "longTouchDown: hasMoved=" + this.jdField_a_of_type_Bnmh.jdField_a_of_type_Boolean + " startX=" + this.jdField_a_of_type_Bnmh.jdField_b_of_type_Float + "  xDiff=" + this.jdField_a_of_type_Bnmh.f + "  lastX=" + this.jdField_a_of_type_Bnmh.jdField_d_of_type_Float);
+        QLog.i("DragAnimationMgr", 2, "longTouchDown: hasMoved=" + this.jdField_a_of_type_Bqdg.jdField_a_of_type_Boolean + " startX=" + this.jdField_a_of_type_Bqdg.jdField_b_of_type_Float + "  xDiff=" + this.jdField_a_of_type_Bqdg.f + "  lastX=" + this.jdField_a_of_type_Bqdg.jdField_d_of_type_Float);
       }
       if (this.jdField_b_of_type_Boolean)
       {
         if (QLog.isColorLevel()) {
-          QLog.i("DragAnimationMgr", 2, "handleTouch hasCheckLong" + this.jdField_a_of_type_Bnmh.jdField_c_of_type_Boolean);
+          QLog.i("DragAnimationMgr", 2, "handleTouch hasCheckLong" + this.jdField_a_of_type_Bqdg.jdField_c_of_type_Boolean);
         }
-        if (!this.jdField_a_of_type_Bnmh.jdField_c_of_type_Boolean)
+        if (!this.jdField_a_of_type_Bqdg.jdField_c_of_type_Boolean)
         {
-          this.jdField_a_of_type_Bnmh.jdField_c_of_type_Boolean = true;
-          if (Math.abs(this.jdField_a_of_type_Bnmh.f) <= bnmh.jdField_d_of_type_Int) {
+          this.jdField_a_of_type_Bqdg.jdField_c_of_type_Boolean = true;
+          if (Math.abs(this.jdField_a_of_type_Bqdg.f) <= bqdg.jdField_d_of_type_Int) {
             break label540;
           }
         }
-        for (this.jdField_a_of_type_Bnmh.jdField_b_of_type_Boolean = false;; this.jdField_a_of_type_Bnmh.jdField_b_of_type_Boolean = true)
+        for (this.jdField_a_of_type_Bqdg.jdField_b_of_type_Boolean = false;; this.jdField_a_of_type_Bqdg.jdField_b_of_type_Boolean = true)
         {
-          if (this.jdField_a_of_type_Bnmg != null) {
-            this.jdField_a_of_type_Bnmg.c(this.jdField_a_of_type_Bnmh.jdField_b_of_type_Boolean);
+          if (this.jdField_a_of_type_Bqdf != null) {
+            this.jdField_a_of_type_Bqdf.c(this.jdField_a_of_type_Bqdg.jdField_b_of_type_Boolean);
           }
           if (QLog.isColorLevel()) {
-            QLog.i("DragAnimationMgr", 2, "handleTouch enableMoved" + this.jdField_a_of_type_Bnmh.jdField_b_of_type_Boolean);
+            QLog.i("DragAnimationMgr", 2, "handleTouch enableMoved" + this.jdField_a_of_type_Bqdg.jdField_b_of_type_Boolean);
           }
           if (QLog.isColorLevel()) {
-            QLog.i("DragAnimationMgr", 2, "handleTouch enableMoved" + this.jdField_a_of_type_Bnmh.jdField_b_of_type_Boolean);
+            QLog.i("DragAnimationMgr", 2, "handleTouch enableMoved" + this.jdField_a_of_type_Bqdg.jdField_b_of_type_Boolean);
           }
-          if (this.jdField_a_of_type_Bnmh.jdField_b_of_type_Boolean)
+          if (this.jdField_a_of_type_Bqdg.jdField_b_of_type_Boolean)
           {
             a();
-            if (this.jdField_a_of_type_Bnmh.jdField_a_of_type_Boolean)
+            if (this.jdField_a_of_type_Bqdg.jdField_a_of_type_Boolean)
             {
-              this.jdField_a_of_type_Bnmh.jdField_d_of_type_Float = this.jdField_a_of_type_Bnmh.h;
-              this.jdField_a_of_type_Bnmh.jdField_e_of_type_Float = this.jdField_a_of_type_Bnmh.i;
+              this.jdField_a_of_type_Bqdg.jdField_d_of_type_Float = this.jdField_a_of_type_Bqdg.h;
+              this.jdField_a_of_type_Bqdg.jdField_e_of_type_Float = this.jdField_a_of_type_Bqdg.i;
             }
           }
           if (!QLog.isColorLevel()) {
             break;
           }
-          QLog.i("DragAnimationMgr", 2, "handleTouch[Adsorption] xDiff=" + this.jdField_a_of_type_Bnmh.f + " currentX=" + this.jdField_a_of_type_Bnmh.h + " yDiff=" + this.jdField_a_of_type_Bnmh.g + " currentY=" + this.jdField_a_of_type_Bnmh.i);
+          QLog.i("DragAnimationMgr", 2, "handleTouch[Adsorption] xDiff=" + this.jdField_a_of_type_Bqdg.f + " currentX=" + this.jdField_a_of_type_Bqdg.h + " yDiff=" + this.jdField_a_of_type_Bqdg.g + " currentY=" + this.jdField_a_of_type_Bqdg.i);
           return;
         }
       }
@@ -569,7 +569,7 @@ public class DragAnimationMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public final class qav_gvideo_sdk_transfer$Req_Event
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.qav_gvideo_sdk_transfer.Req_Event
  * JD-Core Version:    0.7.0.1
  */

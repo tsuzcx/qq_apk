@@ -1,19 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.3;
+import com.tencent.qphone.base.util.QLog;
 
-final class qol
-  implements DialogInterface.OnClickListener
+public class qol
+  extends qon
 {
-  qol(qoo paramqoo) {}
+  public qol(PTSJSCLoader.3 param3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    this.a.a(false);
+    super.loaded(paramString, paramInt);
+    QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], asyncBack code = " + paramInt + ", param = " + paramString);
+    if ((paramInt == 0) && (paramString == null))
+    {
+      QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], handleDownloadPTSJSC, download succeed.");
+      qok.b(this.a.this$0);
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    super.progress(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qol
  * JD-Core Version:    0.7.0.1
  */

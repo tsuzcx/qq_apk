@@ -20,7 +20,7 @@ public final class qvideo_recom$QunInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.qapp.qvideoproj.qvideo_recom.qvideo_recom.QunInfo
  * JD-Core Version:    0.7.0.1
  */

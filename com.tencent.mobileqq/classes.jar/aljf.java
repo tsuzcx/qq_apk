@@ -1,43 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-final class aljf
-  implements aljj
+public class aljf
+  extends OrientationEventListener
 {
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public aljf(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt1 + ",from:" + paramInt2 + ",cmd:" + paramString3);
-    }
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return;
-    }
-    try
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    NewFlowCameraActivity.a(this.a).a(paramInt);
+    if (this.a.i) {}
+    do
     {
-      paramArrayOfInt = alje.a(paramInt1, paramArrayOfInt);
-      if (paramArrayOfInt == null)
+      return;
+      if (paramInt == -1)
       {
-        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
+        if (QLog.isColorLevel()) {
+          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
+        }
+        this.a.o = 90;
         return;
       }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
-      return;
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramArrayOfInt.put("openId", paramString2);
-    }
-    for (;;)
-    {
-      ApolloCmdChannel.getChannel(paramQQAppInterface).callbackFromRequest(paramLong, 0, paramString3, paramArrayOfInt.toString());
-      return;
-      paramArrayOfInt.put("uin", paramString1);
-    }
+      if ((paramInt > 315) || (paramInt < 45))
+      {
+        this.a.o = 90;
+        return;
+      }
+      if ((paramInt > 45) && (paramInt < 135))
+      {
+        this.a.o = 180;
+        return;
+      }
+      if ((paramInt > 135) && (paramInt < 225))
+      {
+        this.a.o = 270;
+        return;
+      }
+    } while ((paramInt <= 225) || (paramInt >= 315));
+    this.a.o = 0;
   }
 }
 

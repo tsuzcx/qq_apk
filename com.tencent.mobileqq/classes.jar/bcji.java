@@ -1,38 +1,47 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.hardware.Camera;
+import android.view.TextureView.SurfaceTextureListener;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
+@TargetApi(14)
 public class bcji
-  extends ViewPager.SimpleOnPageChangeListener
+  extends PreviewContext
+  implements TextureView.SurfaceTextureListener, bciv
 {
-  public bcji(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
-  
-  public void onPageSelected(int paramInt)
+  public bcji(bcio parambcio, int paramInt1, int paramInt2)
   {
-    super.onPageSelected(paramInt);
-    String str1;
-    String str3;
-    if (this.a.a != null)
-    {
-      if (!VisitorTroopCardFragment.a(this.a)) {
-        break label85;
-      }
-      str1 = "grpData_admin";
-      str3 = this.a.a.troopUin;
-      if (!VisitorTroopCardFragment.a(this.a)) {
-        break label91;
-      }
-    }
-    label85:
-    label91:
-    for (String str2 = bdes.a(this.a.a);; str2 = "1")
-    {
-      bdes.a("Grp_set_new", str1, "slide_head", 0, 0, new String[] { str3, str2 });
-      return;
-      str1 = "grpData_visitor";
-      break;
-    }
+    super(parambcio, paramInt1, paramInt2);
   }
+  
+  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  {
+    getPreviewFrame(paramArrayOfByte, paramCamera);
+  }
+  
+  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    this.mCamera.a();
+    this.mCamera.a(0, paramInt1, paramInt2);
+    this.mCamera.a(paramSurfaceTexture, null, this, true);
+  }
+  
+  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  {
+    if (this.mCamera != null)
+    {
+      this.mCamera.b();
+      this.mCamera.b(true);
+      if (this.mActivtiyDestory) {
+        this.mCamera = null;
+      }
+    }
+    return true;
+  }
+  
+  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2) {}
+  
+  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 

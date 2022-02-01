@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.appbrand.page;
 
-import bety;
+import biau;
 import com.tencent.mobileqq.widget.QQToast;
 import java.lang.ref.WeakReference;
 
@@ -47,7 +47,7 @@ class AppBrandPageContainer$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer.1.1
  * JD-Core Version:    0.7.0.1
  */

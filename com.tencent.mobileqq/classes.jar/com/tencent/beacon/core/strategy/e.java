@@ -1,14 +1,23 @@
 package com.tencent.beacon.core.strategy;
 
-public final class e
+import android.content.Context;
+
+class e
+  implements Runnable
 {
-  protected long a = -1L;
-  protected int b = -1;
-  protected byte[] c = null;
+  e(g paramg, Context paramContext) {}
+  
+  public void run()
+  {
+    Context localContext = this.a;
+    if (localContext != null) {
+      this.b.a(localContext);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.strategy.e
  * JD-Core Version:    0.7.0.1
  */

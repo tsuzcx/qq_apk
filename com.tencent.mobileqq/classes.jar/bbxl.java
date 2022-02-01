@@ -1,65 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import java.util.HashMap;
 
 public class bbxl
 {
-  public TroopFileTransferManager.Item a;
-  public String a;
-  yud jdField_a_of_type_Yud = new bbxn(this);
-  yuj jdField_a_of_type_Yuj = new bbxm(this);
-  public long d;
+  private Long jdField_a_of_type_JavaLangLong;
+  private HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private Long b;
   
-  protected bbxl(long paramLong, TroopFileTransferManager.Item paramItem)
+  public bbxl(Long paramLong1, Long paramLong2)
   {
-    this.d = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
-    {
-      this.jdField_a_of_type_JavaLangString = paramItem;
-      return;
-    }
+    this.jdField_a_of_type_JavaLangLong = paramLong1;
+    this.b = paramLong2;
   }
   
-  public static bbxl a(long paramLong, TroopFileTransferManager.Item paramItem)
+  public String a()
   {
-    if (paramLong == 0L)
+    String str = new String();
+    if (!a()) {
+      return str;
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilHashMap.size())
     {
-      bbvl.a("TroopFileUploadFeedsSender", bbvl.a, "getSender. troopuin=0");
-      return null;
+      str = str + (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+      i += 1;
     }
-    if (paramItem == null)
-    {
-      bbvl.a("TroopFileUploadFeedsSender", bbvl.a, "getSender. item=null");
-      return null;
-    }
-    if (paramItem.Id == null) {
-      bbvl.a("TroopFileUploadFeedsSender", bbvl.a, "getSender. item.id=null");
-    }
-    return new bbxl(paramLong, paramItem);
+    return str;
   }
   
-  public long a()
+  public void a(int paramInt, String paramString)
   {
-    return this.d;
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramString);
   }
   
-  public UUID a()
+  public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
-  }
-  
-  public void j()
-  {
-    QQAppInterface localQQAppInterface = bbvj.a();
-    if (localQQAppInterface == null)
-    {
-      bbvl.a("TroopFileUploadFeedsSender", bbvl.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2 app=null");
-      return;
-    }
-    bbvl.c("TroopFileUploadFeedsSender", bbvl.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqFeedMsgV2");
-    ytu.a(localQQAppInterface, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Yuj);
+    return this.jdField_a_of_type_JavaUtilHashMap.size() == this.jdField_a_of_type_JavaLangLong.longValue();
   }
 }
 

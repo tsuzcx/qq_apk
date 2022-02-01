@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bety;
+import biau;
 
 class AuthDevVerifyCodeActivity$7
   implements Runnable

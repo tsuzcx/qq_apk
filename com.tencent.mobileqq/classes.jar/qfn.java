@@ -1,65 +1,64 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.cmd0xe40.cmd0xe40.RspBody;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 
-public class qfn
-  extends nac
+class qfn
+  implements smu
 {
-  public qfn(RIJRedPacketManager paramRIJRedPacketManager, qfo paramqfo) {}
+  qfn(qfa paramqfa, View paramView, qfr paramqfr, VideoView paramVideoView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a()
   {
-    QLog.i("RIJRedPacketManager", 1, "yyy_0xe40 error code: " + paramInt);
-    if (paramInt == 0) {
-      paramBundle = new cmd0xe40.RspBody();
-    }
-    for (;;)
+    int[] arrayOfInt = new int[2];
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.getLocationInWindow(arrayOfInt);
+    if ((arrayOfInt[0] != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.lastLocation[0]) || (arrayOfInt[1] != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.lastLocation[1]))
     {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!paramBundle.status.has()) {
-          break label208;
-        }
-        paramInt = paramBundle.status.get();
-        if (!paramBundle.tips.has()) {
-          break label202;
-        }
-        paramArrayOfByte = paramBundle.tips.get();
-        QLog.i("RIJRedPacketManager", 1, "yyy_0xe40 status: " + paramInt + " | tips wording: " + paramArrayOfByte);
-        paramBundle = this.jdField_a_of_type_Qfo;
-        if (!TextUtils.isEmpty(paramArrayOfByte))
-        {
-          bool = true;
-          paramBundle.a(bool, paramArrayOfByte, paramInt);
-          return;
-        }
-        boolean bool = false;
-        continue;
-        this.jdField_a_of_type_Qfo.a(false, "", 0);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.lastLocation = arrayOfInt;
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.getPlayMode() == VideoView.PLAYMODE_AUTO) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.getAction() != 3)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.startPlay();
       }
-      catch (Exception paramArrayOfByte)
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    View localView1 = (View)this.jdField_a_of_type_AndroidViewView.getParent();
+    View localView2 = (View)((View)localView1.getParent()).getParent();
+    boolean bool1 = bool2;
+    if (localView2 != null)
+    {
+      View localView3 = (View)localView2.getParent();
+      bool1 = bool2;
+      if (localView3 != null)
       {
-        this.jdField_a_of_type_Qfo.a(false, "", 0);
-        QLog.i("RIJRedPacketManager", 1, "yyy_0xe40 error: " + paramArrayOfByte.toString());
-        return;
+        int i = localView1.getTop();
+        int j = localView2.getTop();
+        int k = localView3.getPaddingTop();
+        int m = localView3.getBottom();
+        int n = localView2.getTop();
+        int i1 = localView1.getBottom();
+        if ((!this.jdField_a_of_type_Qfr.a()) || (i + j - k < -localView1.getHeight() * 0.3D) || (m - n - i1 < -localView1.getHeight() * 0.3D)) {
+          break label159;
+        }
       }
-      return;
-      label202:
-      paramArrayOfByte = "";
-      continue;
-      label208:
-      paramInt = 0;
+    }
+    label159:
+    for (bool1 = true;; bool1 = false) {
+      return bool1;
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.onScrollFromList(false);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.getPlayMode() == VideoView.PLAYMODE_AUTO) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.getAction() != 5)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qfn
  * JD-Core Version:    0.7.0.1
  */

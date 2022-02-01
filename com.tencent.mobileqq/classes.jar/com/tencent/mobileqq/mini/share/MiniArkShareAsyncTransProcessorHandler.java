@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
 import android.os.RemoteException;
-import bass;
-import bayf;
-import bayj;
+import bduk;
+import bdzi;
+import bdzm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
@@ -17,7 +17,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniArkShareAsyncTransProcessorHandler
-  extends bayj
+  extends bdzm
 {
   private static final String TAG = "MiniArkShareImageTransP";
   private final CmdCallback cmdCallback;
@@ -31,8 +31,8 @@ public class MiniArkShareAsyncTransProcessorHandler
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    Object localObject1 = (bass)paramMessage.obj;
-    if ((localObject1 == null) || (((bass)localObject1).c != 62) || (((bass)localObject1).b != 24)) {}
+    Object localObject1 = (bduk)paramMessage.obj;
+    if ((localObject1 == null) || (((bduk)localObject1).c != 62) || (((bduk)localObject1).b != 24)) {}
     for (;;)
     {
       return;
@@ -41,7 +41,7 @@ public class MiniArkShareAsyncTransProcessorHandler
         Object localObject2 = new Bdh_extinfo.UploadPicExtInfo();
         try
         {
-          ((Bdh_extinfo.UploadPicExtInfo)localObject2).mergeFrom(((bass)localObject1).a);
+          ((Bdh_extinfo.UploadPicExtInfo)localObject2).mergeFrom(((bduk)localObject1).a);
           paramMessage = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_file_resid.get().toStringUtf8();
           localObject1 = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_download_url.get().toStringUtf8();
           localObject2 = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_thumb_download_url.get().toStringUtf8();
@@ -116,7 +116,7 @@ public class MiniArkShareAsyncTransProcessorHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniArkShareAsyncTransProcessorHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
-class akby
-  extends ameq
+public class akby
+  implements DialogInterface.OnClickListener
 {
-  akby(akbx paramakbx) {}
+  public akby(BaseActivityView paramBaseActivityView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      akbx.a(this.a, paramString, localBitmap);
-    }
+    this.a.f();
   }
 }
 

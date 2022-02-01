@@ -1,14 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditVideoActivity;
+import com.tencent.tavcut.TAVCut.Callback;
+import java.util.List;
 
-public class bngi
-  implements xnc
+class bngi
+  implements TAVCut.Callback
 {
-  public bngi(QzoneEditVideoActivity paramQzoneEditVideoActivity) {}
+  bngi(bngh parambngh) {}
   
-  public void a()
+  public void onDone(int paramInt)
   {
-    QLog.d(QzoneEditVideoActivity.a(), 2, "QzoneEditVideoActivity doOnActivityResult reCreateDone");
+    if (paramInt != 0) {
+      bngh.a(this.a).add(new bngo(this.a, -8));
+    }
   }
 }
 

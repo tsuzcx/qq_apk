@@ -1,48 +1,70 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.content.Context;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Calendar;
 
 public class yll
+  implements ymk
 {
-  public static void a(Context paramContext, int paramInt, yls paramyls)
+  protected yln a;
+  protected yml a;
+  protected ymm a;
+  
+  public Object a()
   {
-    bhuf localbhuf = bhuf.a(paramContext);
-    localbhuf.a(String.format(paramContext.getString(2131720504), new Object[] { Integer.valueOf(paramInt) }));
-    localbhuf.b(2131720503);
-    localbhuf.c(2131690648);
-    localbhuf.a(new ylp(paramyls, localbhuf));
-    localbhuf.a(new ylq(paramyls, localbhuf));
-    if (!localbhuf.isShowing()) {
-      localbhuf.show();
-    }
+    return this.jdField_a_of_type_Yln;
   }
   
-  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, yls paramyls, ylr paramylr)
+  public String a()
   {
-    a(paramContext, null, paramStFeed, paramyls, paramylr);
+    return getClass().getSimpleName();
   }
   
-  private static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, yls paramyls, ylr paramylr)
+  public void a()
   {
-    bhuf localbhuf = bhuf.a(paramContext);
-    localbhuf.a(paramContext.getString(2131720505));
-    localbhuf.a(2131720506, 3);
-    localbhuf.c(2131690648);
-    localbhuf.a(new ylm(localbhuf, paramylr));
-    localbhuf.a(new yln(paramStUser, paramStFeed, paramyls, paramylr, localbhuf));
-    if (!localbhuf.isShowing()) {
-      localbhuf.show();
-    }
+    yqp.c("GetMyStoryVideoListStep", "GetMyStoryVideoListStep");
+    d();
   }
   
-  public static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, yls paramyls, ylr paramylr)
+  public void a(Object paramObject) {}
+  
+  public void a(yml paramyml)
   {
-    a(paramContext, paramStUser, null, paramyls, paramylr);
+    this.jdField_a_of_type_Yml = paramyml;
+  }
+  
+  public void a(ymm paramymm)
+  {
+    this.jdField_a_of_type_Ymm = paramymm;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  protected void d()
+  {
+    String str = wjz.a("StorySvc.homepage_my_day_710");
+    qqstory_service.ReqTodayStoryVidList localReqTodayStoryVidList = new qqstory_service.ReqTodayStoryVidList();
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(l);
+    int i = localCalendar.get(1);
+    int j = localCalendar.get(2);
+    int k = localCalendar.get(5);
+    localReqTodayStoryVidList.date.set(i * 10000 + (j + 1) * 100 + k);
+    this.jdField_a_of_type_Yln = new yln();
+    wlb.a().a(new wyl(str, localReqTodayStoryVidList, null), new ylm(this, localReqTodayStoryVidList, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yll
  * JD-Core Version:    0.7.0.1
  */

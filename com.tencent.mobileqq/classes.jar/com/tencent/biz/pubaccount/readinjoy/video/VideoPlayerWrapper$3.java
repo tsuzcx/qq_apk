@@ -1,19 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.concurrent.atomic.AtomicInteger;
-import rjn;
+import sfb;
+import sip;
 
 public class VideoPlayerWrapper$3
   implements Runnable
 {
-  public VideoPlayerWrapper$3(rjn paramrjn, boolean paramBoolean) {}
+  public VideoPlayerWrapper$3(sfb paramsfb, sip paramsip) {}
   
   public void run()
   {
-    if ((rjn.a(this.this$0) != null) && (rjn.a(this.this$0).get() != 6) && (rjn.a(this.this$0).get() != 8)) {
-      rjn.a(this.this$0).setLoopback(this.a);
-    }
+    this.a.c();
+    this.a.d();
   }
 }
 

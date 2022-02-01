@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import bekq;
+import bhru;
 import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppUtils$4$1
   implements Runnable
 {
-  MiniAppUtils$4$1(MiniAppUtils.4 param4, bekq parambekq) {}
+  MiniAppUtils$4$1(MiniAppUtils.4 param4, bhru parambhru) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ class MiniAppUtils$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.4.1
  * JD-Core Version:    0.7.0.1
  */

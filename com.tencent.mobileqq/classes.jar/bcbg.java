@@ -1,6 +1,16 @@
-public abstract interface bcbg
+import com.tencent.mobileqq.data.MessageForTofuBaseProfile;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class bcbg
+  implements acwy
 {
-  public abstract void b(boolean paramBoolean, int paramInt);
+  public MessageRecord a(int paramInt)
+  {
+    if (paramInt == -7010) {
+      return new MessageForTofuBaseProfile();
+    }
+    return null;
+  }
 }
 
 

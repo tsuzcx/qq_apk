@@ -18,12 +18,10 @@ class MiniAppProfileCardItemView$1$1
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    long l;
-    String str;
+    long l = paramJSONObject.optLong("retCode");
+    String str = paramJSONObject.optString("errMsg");
     if (paramBoolean)
     {
-      l = paramJSONObject.optLong("retCode");
-      str = paramJSONObject.optString("errMsg");
       paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
       if (paramJSONObject != null)
       {
@@ -33,18 +31,15 @@ class MiniAppProfileCardItemView$1$1
         paramJSONObject.launchParam.scene = 2062;
         MiniAppController.startApp((Activity)MiniAppProfileCardItemView.access$100(this.this$1.this$0), paramJSONObject, null);
         MiniAppUtils.reportProfileCardItemClick(paramJSONObject);
+        return;
       }
-    }
-    else
-    {
-      return;
     }
     ThreadManager.getUIHandler().post(new MiniAppProfileCardItemView.1.1.1(this, str, l));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppProfileCardItemView.1.1
  * JD-Core Version:    0.7.0.1
  */

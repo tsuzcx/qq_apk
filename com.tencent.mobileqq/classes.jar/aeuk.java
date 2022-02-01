@@ -1,29 +1,20 @@
-import android.support.v4.util.ArraySet;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
 public class aeuk
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  private static ArraySet<Long> a = new ArraySet();
-  
-  public static void a()
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    a.clear();
+    return false;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (!a.contains(Long.valueOf(paramMessageRecord.uniseq)))
-    {
-      a.add(Long.valueOf(paramMessageRecord.uniseq));
-      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A52B", "0X800A52B", 0, 0, "", "", "", "");
-    }
+    return true;
   }
   
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    a.add(Long.valueOf(paramMessageRecord.uniseq));
-  }
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

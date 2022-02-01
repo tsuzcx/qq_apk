@@ -7,127 +7,312 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import bloz;
-import blpa;
+import android.widget.TextView;
+import bnzb;
+import bogd;
+import bohq;
+import boht;
+import bohu;
+import boja;
+import com.microrapid.opencv.ImageMainColorData;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.tavsticker.utils.CollectionUtil;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class AEEditorColorSelectorView
   extends FrameLayout
+  implements bohu
 {
-  private final int jdField_a_of_type_Int = Color.parseColor("#ffffffff");
-  private blpa jdField_a_of_type_Blpa;
-  private final LinkedHashMap<Integer, ImageView> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private final int b = Color.parseColor("#ff2b2b2b");
-  private final int c = Color.parseColor("#fffb5151");
-  private final int d = Color.parseColor("#ffffc300");
-  private final int e = Color.parseColor("#ff07c160");
-  private final int f = Color.parseColor("#ff0faeff");
-  private final int g = Color.parseColor("#ff5d5ad7");
+  public static final int a;
+  public static final int b;
+  private static final int jdField_c_of_type_Int = Color.parseColor("#ff292929");
+  private static final int d = Color.parseColor("#ffffffff");
+  private static final int e = Color.parseColor("#ff7ebcdc");
+  private static final int f = Color.parseColor("#ffecb48a");
+  private static final int g = Color.parseColor("#fff5999e");
+  private static final int h = Color.parseColor("#ffa684b8");
+  private static final int i = Color.parseColor("#ff8db879");
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bohq jdField_a_of_type_Bohq;
+  private bohu jdField_a_of_type_Bohu;
+  private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean = true;
+  private RecyclerView jdField_b_of_type_AndroidSupportV7WidgetRecyclerView;
+  private bohq jdField_b_of_type_Bohq;
+  private List<Float> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private List<Integer> jdField_c_of_type_JavaUtilList = new ArrayList();
+  
+  static
+  {
+    jdField_a_of_type_Int = Color.parseColor("#ffb8b9c7");
+    jdField_b_of_type_Int = Color.parseColor("#ff262626");
+  }
   
   public AEEditorColorSelectorView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    super(paramContext, paramAttributeSet);
+    this(paramContext, paramAttributeSet, 0);
   }
   
-  private Drawable a(boolean paramBoolean, int paramInt)
+  public AEEditorColorSelectorView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560793, this, true);
+    e();
+    a(paramContext);
+  }
+  
+  public static Drawable a(View paramView, boolean paramBoolean, int paramInt)
   {
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    int i;
-    int k;
+    int j;
+    int m;
     if (paramBoolean)
     {
-      i = 2131298877;
-      k = getResources().getDimensionPixelSize(2131298874);
+      j = 2131298960;
+      m = paramView.getResources().getDimensionPixelSize(2131298957);
       if (!paramBoolean) {
         break label85;
       }
     }
     label85:
-    for (int j = 0;; j = getResources().getDimensionPixelSize(2131298878))
+    for (int k = 0;; k = paramView.getResources().getDimensionPixelSize(2131298961))
     {
-      j = k - j;
+      k = m - k;
       localGradientDrawable.setColor(paramInt);
-      localGradientDrawable.setStroke(getResources().getDimensionPixelSize(i), -1);
-      localGradientDrawable.setSize(j, j);
+      localGradientDrawable.setStroke(paramView.getResources().getDimensionPixelSize(j), -1);
+      localGradientDrawable.setSize(k, k);
       localGradientDrawable.setShape(1);
       return localGradientDrawable;
-      i = 2131298878;
+      j = 2131298961;
       break;
     }
   }
   
-  private void a()
+  private void a(View paramView)
   {
-    Object localObject1 = (ImageView)findViewById(2131366667);
-    Object localObject2 = (ImageView)findViewById(2131366663);
-    ImageView localImageView1 = (ImageView)findViewById(2131366664);
-    ImageView localImageView2 = (ImageView)findViewById(2131366668);
-    ImageView localImageView3 = (ImageView)findViewById(2131366666);
-    ImageView localImageView4 = (ImageView)findViewById(2131366665);
-    ImageView localImageView5 = (ImageView)findViewById(2131366662);
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject1);
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(this.b), localObject2);
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(this.c), localImageView1);
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(this.d), localImageView2);
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(this.e), localImageView3);
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(this.f), localImageView4);
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(this.g), localImageView5);
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    while (((Iterator)localObject1).hasNext())
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131368685));
+    this.jdField_a_of_type_Bohq = new bohq("adapter_extract", this.jdField_a_of_type_JavaUtilList, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bohq);
+    boht localboht = new boht(this, getContext(), 0, false);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localboht);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364690);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379473));
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131364927));
+    this.jdField_b_of_type_Bohq = new bohq("adapter_fix", this.jdField_c_of_type_JavaUtilList, this);
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_b_of_type_Bohq);
+    paramView = new LinearLayoutManager(getContext(), 0, false);
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.add(null);
+    this.jdField_a_of_type_JavaUtilList.add(null);
+    this.jdField_a_of_type_JavaUtilList.add(null);
+    this.jdField_a_of_type_JavaUtilList.add(null);
+    this.jdField_b_of_type_JavaUtilList.add(Float.valueOf(0.5F));
+    this.jdField_b_of_type_JavaUtilList.add(Float.valueOf(0.5F));
+    this.jdField_b_of_type_JavaUtilList.add(Float.valueOf(0.5F));
+    this.jdField_b_of_type_JavaUtilList.add(Float.valueOf(0.5F));
+    this.jdField_c_of_type_JavaUtilList.clear();
+    this.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(jdField_c_of_type_Int));
+    this.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(d));
+    this.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(e));
+    this.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(f));
+    this.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(g));
+    this.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(h));
+    this.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(i));
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public List<Integer> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    bnzb.a("AEEditorColorSelectorView", "[hideIntelligentRv]");
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void a(Integer paramInteger)
+  {
+    int k = 0;
+    if (paramInteger != null)
     {
-      localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      int i = ((Integer)((Map.Entry)localObject2).getKey()).intValue();
-      localObject2 = (ImageView)((Map.Entry)localObject2).getValue();
-      ((ImageView)localObject2).setImageDrawable(a(false, i));
-      ((ImageView)localObject2).setOnClickListener(new bloz(this, i));
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        j = 0;
+        while (localIterator.hasNext())
+        {
+          Integer localInteger = (Integer)localIterator.next();
+          if ((localInteger != null) && (localInteger.intValue() == paramInteger.intValue()))
+          {
+            this.jdField_b_of_type_Bohq.a(-1);
+            this.jdField_b_of_type_Bohq.notifyDataSetChanged();
+            this.jdField_a_of_type_Bohq.a(j);
+            this.jdField_a_of_type_Bohq.notifyDataSetChanged();
+            return;
+          }
+          j += 1;
+        }
+      }
+      Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+      int j = k;
+      while (localIterator.hasNext())
+      {
+        if (((Integer)localIterator.next()).intValue() == paramInteger.intValue())
+        {
+          ThreadManager.getUIHandler().post(new AEEditorColorSelectorView.2(this, j));
+          this.jdField_b_of_type_Bohq.a(j);
+          this.jdField_b_of_type_Bohq.notifyDataSetChanged();
+          this.jdField_a_of_type_Bohq.a(-1);
+          this.jdField_a_of_type_Bohq.notifyDataSetChanged();
+          return;
+        }
+        j += 1;
+      }
+    }
+    this.jdField_a_of_type_Bohq.a(-1);
+    this.jdField_a_of_type_Bohq.notifyDataSetChanged();
+    this.jdField_b_of_type_Bohq.a(-1);
+    this.jdField_b_of_type_Bohq.notifyDataSetChanged();
+  }
+  
+  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if ("adapter_extract".equals(paramString1)) {
+      this.jdField_b_of_type_Bohq.a(-1);
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_Bohq.notifyDataSetChanged();
+      this.jdField_a_of_type_Bohq.notifyDataSetChanged();
+      if (this.jdField_a_of_type_Bohu != null) {
+        this.jdField_a_of_type_Bohu.a(paramString1, paramInt1, paramInt2, paramString2);
+      }
+      return;
+      if ("adapter_fix".equals(paramString1))
+      {
+        bogd.a(this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView, paramInt2, true);
+        this.jdField_a_of_type_Bohq.a(-1);
+      }
     }
   }
   
-  private void a(int paramInt)
+  public void a(List<ImageMainColorData> paramList, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Blpa != null) {
-      this.jdField_a_of_type_Blpa.a(paramInt);
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      ImageView localImageView = (ImageView)localEntry.getValue();
-      if (paramInt == ((Integer)localEntry.getKey()).intValue()) {
-        localImageView.setImageDrawable(a(true, ((Integer)localEntry.getKey()).intValue()));
-      } else {
-        localImageView.setImageDrawable(a(false, ((Integer)localEntry.getKey()).intValue()));
+      int j;
+      try
+      {
+        if ((this.jdField_a_of_type_Boolean) || (paramBoolean))
+        {
+          paramBoolean = CollectionUtil.isEmptyList(paramList);
+          if (!paramBoolean) {}
+        }
+        else
+        {
+          return;
+        }
+        j = 0;
+        if ((j >= this.jdField_a_of_type_JavaUtilList.size()) || (paramList.size() <= j))
+        {
+          if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0) {
+            continue;
+          }
+          this.jdField_a_of_type_Bohq.notifyDataSetChanged();
+          continue;
+        }
+        localImageMainColorData = (ImageMainColorData)paramList.get(j);
       }
+      finally {}
+      ImageMainColorData localImageMainColorData;
+      this.jdField_a_of_type_JavaUtilList.set(j, Integer.valueOf(boja.a(localImageMainColorData)));
+      this.jdField_b_of_type_JavaUtilList.set(j, Float.valueOf(localImageMainColorData.l));
+      j += 1;
     }
+  }
+  
+  public List<Integer> b()
+  {
+    return this.jdField_c_of_type_JavaUtilList;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public List<Float> c()
+  {
+    return this.jdField_b_of_type_JavaUtilList;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Bohq != null)
+    {
+      this.jdField_a_of_type_Bohq.a(false);
+      this.jdField_a_of_type_Bohq.notifyDataSetChanged();
+    }
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.add(null);
+    this.jdField_a_of_type_JavaUtilList.add(null);
+    this.jdField_a_of_type_JavaUtilList.add(null);
+    this.jdField_a_of_type_JavaUtilList.add(null);
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    View.inflate(getContext(), 2131560599, this);
-    a();
   }
   
-  public void setColorSelectedListener(blpa paramblpa)
+  public void setColorSelectedListener(bohu parambohu)
   {
-    this.jdField_a_of_type_Blpa = paramblpa;
+    this.jdField_a_of_type_Bohu = parambohu;
   }
   
-  public void setSelectedColor(int paramInt)
+  public void setStickerId(String paramString)
   {
-    a(paramInt);
+    if (this.jdField_a_of_type_Bohq != null) {
+      this.jdField_a_of_type_Bohq.a(paramString);
+    }
+    if (this.jdField_b_of_type_Bohq != null) {
+      this.jdField_b_of_type_Bohq.a(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView
  * JD-Core Version:    0.7.0.1
  */

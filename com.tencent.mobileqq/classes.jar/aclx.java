@@ -1,15 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-
-public class aclx
-  implements View.OnClickListener
+public final class aclx
 {
-  public aclx(ChatHistory paramChatHistory) {}
+  private static volatile boolean a;
   
-  public void onClick(View paramView)
+  public static int a(int paramInt)
   {
-    this.a.a(12, true);
+    switch (paramInt)
+    {
+    case -5: 
+    case -4: 
+    case -3: 
+    case -1: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+    default: 
+      return 1;
+    case 0: 
+      return 0;
+    case -2: 
+      return 3;
+    case -6: 
+      return 6;
+    case -7: 
+      return 13;
+    }
+    return 207;
+  }
+  
+  public static void a()
+  {
+    acqy.b("GdtArkUtil", String.format("init %b", new Object[] { Boolean.valueOf(a) }));
+    if (a) {
+      return;
+    }
+    try
+    {
+      if (a) {
+        return;
+      }
+    }
+    finally {}
+    a = true;
+    aprd.a(true);
+    aprd.a();
   }
 }
 

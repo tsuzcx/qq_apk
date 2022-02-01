@@ -1,34 +1,71 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
-import java.io.IOException;
-import java.io.InputStream;
+import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.YybHandleUtil.1;
+import java.io.File;
+import java.text.DecimalFormat;
+import mqq.os.MqqHandler;
 
 public class bixb
-  implements DialogInterface.OnClickListener
 {
-  public bixb(QfavJumpActivity paramQfavJumpActivity, InputStream paramInputStream) {}
+  public static String a = "YybHandleUtil";
+  public static String b = "APK/MobileAssistant_main.apk";
+  public static String c = "yyb.apk";
+  public static final String d = anni.a(2131715696);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-      this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.finish();
-      return;
+    if (paramInt < 0) {
+      return null;
     }
-    catch (IOException paramDialogInterface)
+    float f2 = paramInt;
+    paramInt = 0;
+    float f1;
+    String str2;
+    String str1;
+    if (f2 / 1048576.0F > 1.0F)
     {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
+      f1 = f2 / 1048576.0F;
+      paramInt = 2;
+      str2 = new DecimalFormat("#.#").format(f1);
+      if (paramInt != 2) {
+        break label92;
+      }
+      str1 = "MB";
+    }
+    for (;;)
+    {
+      return str2 + str1;
+      f1 = f2;
+      if (f2 / 1024.0F <= 1.0F) {
+        break;
+      }
+      f1 = f2 / 1024.0F;
+      paramInt = 1;
+      break;
+      label92:
+      if (paramInt == 1) {
+        str1 = "KB";
+      } else {
+        str1 = "B";
       }
     }
+  }
+  
+  public static void a()
+  {
+    bisy.c(a, "---deleteYYBApkPackage--");
+    ThreadManager.getSubThreadHandler().post(new YybHandleUtil.1());
+  }
+  
+  public static boolean a()
+  {
+    String str = biip.a().a().getFilesDir().getAbsolutePath() + File.separator + c;
+    return biub.a(biip.a().a(), str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bixb
  * JD-Core Version:    0.7.0.1
  */

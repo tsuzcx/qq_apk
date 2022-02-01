@@ -1,16 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModelProvider;
 
-public class bnec
-  implements ValueAnimator.AnimatorUpdateListener
+class bnec
+  implements bnql
 {
-  public bnec(PickerContainer paramPickerContainer) {}
+  bnec(bndy parambndy) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(bnrb parambnrb)
   {
-    this.a.setAlpha(PickerContainer.b(this.a).floatValue());
-    this.a.invalidate();
+    ((bntr)bner.a(this.a, bowe.a()).get(bntr.class)).a().postValue(parambnrb);
   }
 }
 

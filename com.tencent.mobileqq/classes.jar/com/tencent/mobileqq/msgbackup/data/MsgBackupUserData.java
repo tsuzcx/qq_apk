@@ -3,13 +3,13 @@ package com.tencent.mobileqq.msgbackup.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import auhm;
+import awop;
 import java.util.List;
 
 public class MsgBackupUserData
   implements Parcelable
 {
-  public static final Parcelable.Creator<MsgBackupUserData> CREATOR = new auhm();
+  public static final Parcelable.Creator<MsgBackupUserData> CREATOR = new awop();
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
   private List<Integer> jdField_a_of_type_JavaUtilList;
@@ -82,7 +82,7 @@ public class MsgBackupUserData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupUserData
  * JD-Core Version:    0.7.0.1
  */

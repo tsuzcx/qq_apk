@@ -1,18 +1,20 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import mqq.observer.BusinessObserver;
+
 public class aktt
+  implements BusinessObserver
 {
-  public static int a;
-  public static final String a;
-  public static int b;
-  public static int c;
-  public static int d;
+  public aktt(RedPacketManager paramRedPacketManager) {}
   
-  static
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    jdField_a_of_type_Int = 6;
-    b = 1;
-    c = 1;
-    d = 1;
-    jdField_a_of_type_JavaLangString = aliu.jdField_a_of_type_JavaLangString + "/game";
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.a.a(paramBoolean, paramBundle);
   }
 }
 

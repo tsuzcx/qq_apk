@@ -1,39 +1,50 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqvq
-  implements bhuk
+public class aqvq
+  implements aqlb<String>
 {
-  aqvq(aqvp paramaqvp, bhuf parambhuf) {}
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "{}";
   
-  public void OnClick(View paramView, int paramInt)
+  public aqvq()
   {
-    if (this.jdField_a_of_type_Aqvp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(aqvp.a(this.jdField_a_of_type_Aqvp).uniseq, this.jdField_a_of_type_Aqvp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqvp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L) != -1) {
-      ChatActivityUtils.a(this.jdField_a_of_type_Aqvp.jdField_a_of_type_AndroidContentContext, 2131719756, 1);
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("QFileAppStorePromoteConfigBean<QFile>", 1, "onParse: but configContent is null!");
     }
-    for (;;)
+    this.c = paramString;
+    try
     {
-      this.jdField_a_of_type_Bhuf.cancel();
-      return;
-      paramView = arrr.a(this.jdField_a_of_type_Aqvp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aqvp.a(this.jdField_a_of_type_Aqvp));
-      if (paramView.status == 16)
-      {
-        arri.a(2131692941);
-        this.jdField_a_of_type_Bhuf.cancel();
-        return;
+      paramString = new JSONObject(paramString);
+      if (paramString.has("actionSwitch")) {
+        this.jdField_a_of_type_Boolean = paramString.getBoolean("actionSwitch");
       }
-      aqvp.a(this.jdField_a_of_type_Aqvp).status = 1002;
-      arrr.a(this.jdField_a_of_type_Aqvp.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Aqvp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+      if (paramString.has("actionHint")) {
+        this.jdField_a_of_type_JavaLangString = paramString.getString("actionHint");
+      }
+      if (paramString.has("actionYYBDownloadUrl")) {
+        this.b = paramString.getString("actionYYBDownloadUrl");
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileAppStorePromoteConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqvq
  * JD-Core Version:    0.7.0.1
  */

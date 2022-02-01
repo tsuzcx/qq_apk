@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aiah
-  implements acnt
+class aiah
+  implements View.OnClickListener
 {
-  public aiah(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment) {}
+  aiah(ahzy paramahzy) {}
   
-  public boolean a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      bkjn.a(this.a.getActivity());
+    if (!this.a.M) {
+      adrm.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
     }
-    return false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

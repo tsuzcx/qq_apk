@@ -1,8 +1,9 @@
-public abstract interface bcyb
+import android.view.View;
+
+public class bcyb
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public View a;
+  public View b;
 }
 
 

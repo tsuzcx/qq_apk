@@ -1,20 +1,26 @@
-import android.graphics.RectF;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.UCropView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import org.jetbrains.annotations.Nullable;
 
-public class sho
-  implements shr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$showGuideRootView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sho
+  extends AnimatorListenerAdapter
 {
-  public sho(UCropView paramUCropView) {}
+  sho(shi paramshi, Function0 paramFunction0) {}
   
-  public void a(RectF paramRectF)
+  public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    UCropView.a(this.a).setCropRect(paramRectF);
+    if (shi.a(this.jdField_a_of_type_Shi)) {
+      return;
+    }
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction0.invoke();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sho
  * JD-Core Version:    0.7.0.1
  */

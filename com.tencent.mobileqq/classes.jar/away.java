@@ -1,25 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class away
-  implements View.OnClickListener
+public class away
 {
-  away(awaw paramawaw, awbl paramawbl) {}
-  
-  public void onClick(View paramView)
-  {
-    awaw.a(this.jdField_a_of_type_Awaw).removeMessages(101);
-    awaw.a(this.jdField_a_of_type_Awaw).obtainMessage(101).sendToTarget();
-    if (this.jdField_a_of_type_Awbl.a != null) {
-      this.jdField_a_of_type_Awbl.a.a();
-    }
-  }
+  float a;
+  public Integer a;
+  float b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     away
  * JD-Core Version:    0.7.0.1
  */

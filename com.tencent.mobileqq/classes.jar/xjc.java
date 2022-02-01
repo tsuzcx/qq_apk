@@ -1,33 +1,14 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
-
-public class xjc
-  extends xis
+public abstract class xjc
+  implements xjb
 {
-  public final int c;
-  
-  public xjc(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public boolean a(xiy paramxiy)
   {
-    super(paramInt3, paramString, paramInt1);
-    this.c = paramInt2;
-  }
-  
-  @NonNull
-  public Class<? extends xit> a()
-  {
-    return xjd.class;
-  }
-  
-  @NonNull
-  public xit a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new xjd(this, paramContext, paramViewGroup);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xjc
  * JD-Core Version:    0.7.0.1
  */

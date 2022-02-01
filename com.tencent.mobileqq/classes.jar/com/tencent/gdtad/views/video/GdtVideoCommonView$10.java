@@ -1,7 +1,7 @@
 package com.tencent.gdtad.views.video;
 
 import android.media.AudioManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.superplayer.api.ISuperPlayer;
 
 class GdtVideoCommonView$10
   implements Runnable
@@ -10,27 +10,33 @@ class GdtVideoCommonView$10
   
   public void run()
   {
+    boolean bool2 = false;
     int i = GdtVideoCommonView.a(this.this$0).getStreamVolume(3);
-    TVK_IMediaPlayer localTVK_IMediaPlayer;
-    if (GdtVideoCommonView.a(this.this$0) != null)
-    {
-      localTVK_IMediaPlayer = GdtVideoCommonView.a(this.this$0);
-      if (i > 0) {
-        break label61;
+    boolean bool1;
+    if (GdtVideoCommonView.a(this.this$0) != null) {
+      if (i <= 0)
+      {
+        bool1 = true;
+        ISuperPlayer localISuperPlayer = GdtVideoCommonView.a(this.this$0);
+        if (i <= 0) {
+          bool2 = true;
+        }
+        localISuperPlayer.setOutputMute(bool2);
       }
     }
-    label61:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      localTVK_IMediaPlayer.setOutputMute(bool);
-      GdtVideoCommonView.a(this.this$0, i, this.this$0.a, true);
+      GdtVideoCommonView.a(this.this$0, i, this.this$0.a, true, bool1);
       return;
+      bool1 = false;
+      break;
+      bool1 = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.10
  * JD-Core Version:    0.7.0.1
  */

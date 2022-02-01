@@ -1,147 +1,69 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.ActionSheetHelper.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.core.ViolaInstance;
-import java.lang.ref.WeakReference;
-import org.json.JSONArray;
+import cooperation.plugin.PluginBaseActivity;
+import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class snu
-  implements bhun
+class snu
+  implements sow
 {
-  public static String a;
-  private int jdField_a_of_type_Int;
-  private bhuf jdField_a_of_type_Bhuf;
-  private WeakReference<BridgeModule> jdField_a_of_type_JavaLangRefWeakReference;
-  public boolean a;
+  snu(snh paramsnh) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = "BridgeModule.ActionSheetHelper";
-  }
-  
-  public snu(BridgeModule paramBridgeModule)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBridgeModule);
-  }
-  
-  private void b(JSONObject paramJSONObject, String paramString)
-  {
-    int k = 0;
-    if ((paramJSONObject == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {}
-    Object localObject1;
-    do
-    {
-      return;
-      localObject1 = ((BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getViolaInstance().getActivity();
-    } while (localObject1 == null);
+    this.a.a();
+    this.a.a();
+    puq localpuq = (puq)paramView.getTag();
+    if (localpuq == null) {}
     for (;;)
     {
-      int n;
+      return;
+      BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)this.a.jdField_b_of_type_JavaUtilList.get(localpuq.a);
       try
       {
-        localObject1 = bhuf.a((Context)localObject1);
-        Object localObject2 = paramJSONObject.optString("title");
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          ((bhuf)localObject1).a((CharSequence)localObject2);
-        }
-        localObject2 = paramJSONObject.optJSONArray("items");
-        int m = paramJSONObject.optInt("selected", -1);
-        this.jdField_a_of_type_Boolean = false;
-        String str = paramJSONObject.optString("close");
-        if (TextUtils.isEmpty(str)) {
-          break label367;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        ((bhuf)localObject1).a(str, 3);
-        i = 1;
-        j = i;
-        if (localObject2 != null)
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("time", System.currentTimeMillis() / 1000L);
+        localJSONObject.put("channel_id", this.a.c);
+        if ((this.a.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
         {
-          j = i;
-          if (((JSONArray)localObject2).length() > 0)
+          localJSONObject.put("folder_status", pha.d);
+          localJSONObject.put("kandian_mode", pha.e());
+          localJSONObject.put("feeds_type", "" + pha.a(localBaseArticleInfo));
+          localJSONObject.put("rowkey", ube.a(localBaseArticleInfo));
+          oat.a(null, "", "0X8007058", "0X8007058", 0, 0, "", "", "", localJSONObject.toString(), false);
+        }
+        while (localBaseArticleInfo != null)
+        {
+          snh.a(this.a, paramView, localpuq, localBaseArticleInfo);
+          if ((this.a.jdField_a_of_type_Seu != null) && (this.a.jdField_a_of_type_Seu.b()))
           {
-            n = ((JSONArray)localObject2).length();
-            j = k;
-            if (m >= 0)
-            {
-              j = k;
-              if (m < n)
-              {
-                j = 0;
-                if (j >= n) {
-                  break label378;
-                }
-                str = ((JSONArray)localObject2).getString(j);
-                if (j != m) {
-                  break label372;
-                }
-                bool = true;
-                ((bhuf)localObject1).a(str, bool);
-                j += 1;
-                continue;
-              }
-            }
-            if (j >= n) {
-              break label378;
-            }
-            ((bhuf)localObject1).c(((JSONArray)localObject2).getString(j));
-            j += 1;
-            continue;
+            this.a.jdField_a_of_type_Seu.a();
+            this.a.jdField_b_of_type_Boolean = true;
+          }
+          puf.a(paramView);
+          return;
+          if ((this.a.jdField_a_of_type_AndroidAppActivity instanceof PluginBaseActivity))
+          {
+            localJSONObject.put("folder_status", 1);
+            bcst.b(null, "CliOper", "", "", "0X800705F", "0X800705F", 0, 0, "", "", "", localJSONObject.toString());
           }
         }
-        paramJSONObject = paramJSONObject.optString("cancel");
-        if (!TextUtils.isEmpty(paramJSONObject)) {
-          ((bhuf)localObject1).d(paramJSONObject);
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
         }
-        ((bhuf)localObject1).a(new snv(this, paramString));
-        ((bhuf)localObject1).a(new snw(this, paramString));
-        ((bhuf)localObject1).setOnCancelListener(new snx(this, paramString));
-        ((bhuf)localObject1).a(this);
-        this.jdField_a_of_type_Bhuf = ((bhuf)localObject1);
-        this.jdField_a_of_type_Int = j;
-        this.jdField_a_of_type_Bhuf.show();
-        return;
       }
-      catch (JSONException paramJSONObject) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "showActionSheet error:" + paramJSONObject.getMessage());
-      return;
-      label367:
-      int i = 0;
-      continue;
-      label372:
-      boolean bool = false;
-      continue;
-      label378:
-      int j = i + n;
     }
   }
-  
-  public void a(JSONObject paramJSONObject, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return;
-    }
-    if (Looper.myLooper() == null) {
-      Looper.prepare();
-    }
-    new Handler(BaseActivity.sTopActivity.getMainLooper()).post(new ActionSheetHelper.1(this, paramJSONObject, paramString));
-  }
-  
-  public void ap_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     snu
  * JD-Core Version:    0.7.0.1
  */

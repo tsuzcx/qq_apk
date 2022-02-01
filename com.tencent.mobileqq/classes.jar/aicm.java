@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class aicm
-  implements DialogInterface.OnDismissListener
+class aicm
+  implements Comparator<MessageRecord>
 {
-  public aicm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aicm(aicl paramaicl) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.a.b.postDelayed(new ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable(this.a), 150L);
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

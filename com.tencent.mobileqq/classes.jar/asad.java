@@ -1,160 +1,148 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.ResultReceiver;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.1;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 public class asad
-  extends aryv
 {
-  protected ResultReceiver a;
+  private static asad a;
   
-  public asad(Intent paramIntent)
+  public static asad a()
   {
-    super(paramIntent);
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public List<RecentUser> a(List<RecentUser> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    alto localalto = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("choose_friend_h5_type", 0);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (a == null) {}
+    try
     {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(aryl.h))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
-        if ((localRecentUser.getType() == 0) && (!bdeu.a(localRecentUser.uin)) && (!bdeu.c(localRecentUser.uin)) && (!ndv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
-        {
-          if ((localalto != null) && (localalto.b(localRecentUser.uin)) && ((i == 1) || (i == 13))) {
-            localArrayList.add(localRecentUser);
-          }
-        }
-        else if (localRecentUser.getType() == 1)
-        {
-          if ((i == 4) || (i == 13) || (i == 12)) {
-            localArrayList.add(localRecentUser);
-          }
-        }
-        else if ((localRecentUser.getType() == 3000) && ((i == 8) || (i == 13) || (i == 12))) {
-          localArrayList.add(localRecentUser);
-        }
+      if (a == null) {
+        a = new asad();
       }
+      return a;
     }
-    return localArrayList;
+    finally {}
   }
   
-  protected void a()
+  public List<asac> a(QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_qqfriends", true);
-    this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_contacts", false);
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("choose_friend_h5_type", 0);
+    if (paramQQAppInterface == null) {
+      return null;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("h5ptv", 2, "bType=" + i);
+      QLog.d("EmotionPanelDataBuilder", 2, "getEmotionPanelData panelType = " + paramInt1);
     }
-    if ((i == 1) && (m())) {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
-    }
-    if (i == 4) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (i == 8) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (i == 13)
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = (awmr)paramQQAppInterface.getManager(14);
+    switch (paramInt1)
     {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-      this.jdField_a_of_type_JavaUtilSet.add(d);
     }
-    if (i == 12)
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
-      return;
-    }
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList3 = new ArrayList();
-    ArrayList localArrayList4 = new ArrayList();
-    paramInt = paramBundle.getInt("uintype", -1);
-    if ((paramInt == 0) || (paramInt == 1004))
-    {
-      localArrayList1.add(paramBundle.getString("uin"));
-      localArrayList2.add("");
-      localArrayList3.add(paramBundle.getString("uinname"));
-      localArrayList4.add("1");
-    }
+    Emoticon localEmoticon;
+    label603:
     for (;;)
     {
-      if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+      return localArrayList;
+      return ascv.a(paramQQAppInterface, paramInt3);
+      localArrayList.add(new asac());
+      return localArrayList;
+      paramQQAppInterface = ((arro)paramQQAppInterface.getManager(149)).b();
+      paramEmoticonPackage = new arxg();
+      paramEmoticonPackage.i = "favEdit";
+      localArrayList.add(paramEmoticonPackage);
+      if (paramInt2 != 1024)
       {
-        paramBundle = new Bundle();
-        paramBundle.putStringArrayList("choose_friend_uins", localArrayList1);
-        paramBundle.putStringArrayList("choose_friend_phones", localArrayList2);
-        paramBundle.putStringArrayList("choose_friend_names", localArrayList3);
-        paramBundle.putStringArrayList("choose_friend_types", localArrayList4);
-        this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramBundle);
+        paramEmoticonPackage = new arxg();
+        paramEmoticonPackage.i = "funny_pic";
+        localArrayList.add(paramEmoticonPackage);
       }
-      if (this.jdField_a_of_type_AndroidAppActivity == null) {
-        break;
+      if (paramQQAppInterface != null)
+      {
+        if (paramQQAppInterface.size() > arrm.jdField_a_of_type_Int)
+        {
+          localArrayList.addAll(new ArrayList(paramQQAppInterface.subList(0, arrm.jdField_a_of_type_Int)));
+          return localArrayList;
+        }
+        localArrayList.addAll(paramQQAppInterface);
+        return localArrayList;
+        paramQQAppInterface = ((arqr)paramQQAppInterface.getManager(333)).b();
+        paramEmoticonPackage = new arws();
+        paramEmoticonPackage.i = "cameraEdit";
+        localArrayList.add(paramEmoticonPackage);
+        paramEmoticonPackage = new arws();
+        paramEmoticonPackage.i = "cameraJump";
+        localArrayList.add(paramEmoticonPackage);
+        if (paramQQAppInterface != null)
+        {
+          if (paramQQAppInterface.size() > arqh.jdField_a_of_type_Int)
+          {
+            localArrayList.addAll(new ArrayList(paramQQAppInterface.subList(0, arqh.jdField_a_of_type_Int)));
+            return localArrayList;
+          }
+          localArrayList.addAll(paramQQAppInterface);
+          return localArrayList;
+          paramQQAppInterface = new asbq(paramQQAppInterface.getCurrentAccountUin());
+          paramQQAppInterface.i = "push";
+          paramEmoticonPackage = ((awmr)localObject1).b(0);
+          localArrayList.add(paramQQAppInterface);
+          localArrayList.addAll(paramEmoticonPackage);
+          return localArrayList;
+          paramQQAppInterface = ((awmr)localObject1).a(true, paramInt3, paramBoolean);
+          if (paramQQAppInterface != null)
+          {
+            localArrayList.addAll(paramQQAppInterface);
+            return localArrayList;
+            if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {
+              return null;
+            }
+            localObject1 = ((awmr)localObject1).a(paramEmoticonPackage.epId, true);
+            if (paramEmoticonPackage.jobType == 4) {}
+            for (paramInt1 = 1;; paramInt1 = 0)
+            {
+              if (localObject1 == null) {
+                break label603;
+              }
+              paramInt3 = ((List)localObject1).size();
+              paramInt2 = 0;
+              while (paramInt2 < paramInt3)
+              {
+                localEmoticon = (Emoticon)((List)localObject1).get(paramInt2);
+                if (paramInt1 == 0) {
+                  break label605;
+                }
+                localObject2 = new asch(paramQQAppInterface.getCurrentAccountUin());
+                ((asch)localObject2).jdField_c_of_type_Int = 10;
+                ((asch)localObject2).jdField_a_of_type_Int = paramEmoticonPackage.type;
+                ((asch)localObject2).jdField_a_of_type_ComTencentMobileqqDataEmoticon = localEmoticon;
+                localArrayList.add(localObject2);
+                paramInt2 += 1;
+              }
+              break;
+            }
+          }
+        }
       }
-      this.jdField_a_of_type_AndroidAppActivity.setResult(1);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+    }
+    label605:
+    Object localObject2 = new asbq(paramQQAppInterface.getCurrentAccountUin());
+    ((asbq)localObject2).jdField_c_of_type_Int = 6;
+    ((asbq)localObject2).j = paramEmoticonPackage.type;
+    ((asbq)localObject2).jdField_a_of_type_ComTencentMobileqqDataEmoticon = localEmoticon;
+    if (paramEmoticonPackage.isAPNG == 2) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ((asbq)localObject2).jdField_c_of_type_Boolean = paramBoolean;
+      localArrayList.add(localObject2);
+      break;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, asae paramasae)
+  {
+    if (paramasae == null) {
       return;
-      if (paramInt == 1006)
-      {
-        localArrayList1.add("");
-        localArrayList2.add(paramBundle.getString("uin"));
-        localArrayList3.add(paramBundle.getString("uinname"));
-        localArrayList4.add("2");
-      }
-      else if (paramInt == 1)
-      {
-        localArrayList1.add(paramBundle.getString("uin"));
-        localArrayList2.add("");
-        localArrayList3.add(paramBundle.getString("uinname"));
-        localArrayList4.add("4");
-      }
-      else if (paramInt == 3000)
-      {
-        localArrayList1.add(paramBundle.getString("uin"));
-        localArrayList2.add("");
-        localArrayList3.add(paramBundle.getString("uinname"));
-        localArrayList4.add("8");
-      }
     }
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("choose_friend_callback"));
-    return true;
-  }
-  
-  public String b()
-  {
-    String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("choose_friend_title");
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = alud.a(2131705154);
-    }
-    return str1;
+    ThreadManager.post(new EmotionPanelDataBuilder.1(this, paramQQAppInterface, paramInt1, paramEmoticonPackage, paramInt2, paramInt3, paramBoolean, paramasae), 5, null, true);
   }
 }
 

@@ -1,11 +1,6 @@
-public class anbl
+public abstract interface anbl
 {
-  public int a = 3000;
-  
-  public String toString()
-  {
-    return "ARCloudRecogReqSceneRecogInfo{timeout = " + this.a + '}';
-  }
+  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
 }
 
 

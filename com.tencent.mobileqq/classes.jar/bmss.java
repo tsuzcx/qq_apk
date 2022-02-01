@@ -1,22 +1,34 @@
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
 import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
 
 class bmss
-  implements View.OnSystemUiVisibilityChangeListener
+  extends View
 {
-  bmss(bmsi parambmsi) {}
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public bmss(bmsr parambmsr, Context paramContext, View paramView, Drawable paramDrawable)
   {
-    if ((paramInt & 0x4) == 0)
-    {
-      wxe.b("EditTextDialog", "onStatusBarShow");
-      this.a.getWindow().getDecorView().removeCallbacks(bmsi.a(this.a));
-      this.a.getWindow().getDecorView().postDelayed(bmsi.a(this.a), 1500L);
-      return;
-    }
-    wxe.b("EditTextDialog", "onStatusBarHide");
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    setBackgroundDrawable(paramDrawable);
+  }
+  
+  public void invalidateDrawable(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+  }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    long l = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_AndroidViewView.postDelayed(paramRunnable, paramLong - l);
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramRunnable);
   }
 }
 

@@ -1,24 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.content.Context;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bmts
-  implements Animation.AnimationListener
+  extends ApolloLottieAnim
 {
-  public bmts(DoodleLayout paramDoodleLayout) {}
+  private Downloader a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bmts(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.jdField_a_of_type_Bmua != null) {
-      this.a.jdField_a_of_type_Bmua.a(null);
-    }
+    super(paramQQAppInterface, paramContext);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(paramContext).getCommonDownloader();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_Int = 1;
+    paramString3 = new bmtt(this, paramString2, paramString3);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(paramString1, paramString2, false, paramString3);
+  }
 }
 
 

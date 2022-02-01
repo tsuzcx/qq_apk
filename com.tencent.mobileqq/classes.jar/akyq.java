@@ -1,19 +1,27 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.Conversation;
+import mqq.os.MqqHandler;
 
 class akyq
-  implements Comparator<akys>
+  implements DialogInterface.OnClickListener
 {
   akyq(akyp paramakyp) {}
   
-  public int a(akys paramakys1, akys paramakys2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramakys1.a == paramakys2.a) {
-      return 0;
+    if (amrr.a() != null) {
+      ampj.a();
     }
-    if (paramakys1.a > paramakys2.a) {
-      return 1;
+    paramDialogInterface = ampj.a();
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
+      }
     }
-    return -1;
   }
 }
 

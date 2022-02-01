@@ -1,8 +1,28 @@
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-public abstract interface ajah
+public class ajah
+  implements DialogInterface.OnClickListener
 {
-  public abstract void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo);
+  public ajah(SystemMsgListView paramSystemMsgListView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent(this.a.getContext(), BindNumberActivity.class);
+      paramDialogInterface.putExtra("kSrouce", 17);
+      this.a.a(paramDialogInterface, 230);
+      bcst.b(this.a.a, "dc00898", "", "", "0X80077C9", "0X80077C9", 0, 0, "", "", "", "");
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    bcst.b(this.a.a, "dc00898", "", "", "0X80077CA", "0X80077CA", 0, 0, "", "", "", "");
+  }
 }
 
 

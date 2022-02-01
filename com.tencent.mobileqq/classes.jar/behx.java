@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
 
-public final class behx
-  implements ThreadExcutor.IThreadListener
+public class behx
+  implements bkik
 {
-  long a = 0L;
+  public behx(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "Web_qqbrowser_pre_get_key, cost=" + (System.currentTimeMillis() - this.a));
-    }
-    this.a = 0L;
-  }
-  
-  public void onPreRun()
-  {
-    this.a = System.currentTimeMillis();
+    TroopAvatarWallEditActivity.a(this.a);
+    return true;
   }
 }
 

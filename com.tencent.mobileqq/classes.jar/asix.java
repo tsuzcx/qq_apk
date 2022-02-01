@@ -1,22 +1,21 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+
 public class asix
+  implements asob
 {
-  public String a;
-  public boolean a;
-  public String b;
-  @Deprecated
-  public boolean b;
+  public asix(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public asix(String paramString1, String paramString2, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "MatchKey{column='" + this.jdField_a_of_type_JavaLangString + '\'' + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", or=" + this.jdField_a_of_type_Boolean + '}';
+    anip localanip = (anip)ExtendFriendFragment.a(this.a).a(2);
+    if (localanip != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("birthday", paramInt);
+      localanip.a(localBundle);
+    }
   }
 }
 

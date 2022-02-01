@@ -1,28 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class agke
-  implements Parcelable.Creator<AIORichMediaData>
+public class agke
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public AIORichMediaData a(Parcel paramParcel)
-  {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = AIORichMediaData.a((String)localObject);
-      ((AIORichMediaData)localObject).a(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
-    }
-  }
+  public agke(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public AIORichMediaData[] a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return new AIORichMediaData[paramInt];
+    AIOLongShotHelper.a(this.a, paramCompoundButton, paramBoolean);
+    AIOLongShotHelper.a("0X8009DE8");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

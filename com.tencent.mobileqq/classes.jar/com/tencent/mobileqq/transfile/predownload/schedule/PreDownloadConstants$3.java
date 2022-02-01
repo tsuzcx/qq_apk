@@ -99,11 +99,12 @@ public final class PreDownloadConstants$3
     put(Integer.valueOf(10092), Integer.valueOf(0));
     put(Integer.valueOf(10093), Integer.valueOf(0));
     put(Integer.valueOf(10094), Integer.valueOf(2));
+    put(Integer.valueOf(10095), Integer.valueOf(4));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants.3
  * JD-Core Version:    0.7.0.1
  */

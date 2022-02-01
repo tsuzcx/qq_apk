@@ -1,14 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.MessageForFile;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class aflx
-  implements bezx
+public class aflx
+  implements View.OnTouchListener
 {
-  aflx(aflw paramaflw, MessageForFile paramMessageForFile, Context paramContext) {}
+  public aflx(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    arrr.a(this.jdField_a_of_type_Aflw.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

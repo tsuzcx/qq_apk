@@ -7,9 +7,9 @@ class VideoView$2$1
   
   public void run()
   {
-    VideoView.b(this.a.this$0);
-    VideoView.a(this.a.this$0, 4);
-    VideoView.c(this.a.this$0);
+    VideoView.access$200(this.a.this$0);
+    VideoView.access$000(this.a.this$0, 4);
+    VideoView.access$300(this.a.this$0);
   }
 }
 

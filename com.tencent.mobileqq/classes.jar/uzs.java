@@ -1,56 +1,22 @@
-import android.support.annotation.NonNull;
+import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqcircle.bizparts.QCircleAggregationFragmentsPart;
 import java.util.List;
-import java.util.Set;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
-class uzs
-  extends SimpleJob<Void>
+public class uzs
+  implements Observer<vup<List<QQCircleFeedBase.StTabInfo>>>
 {
-  uzs(uzq paramuzq, String paramString, List paramList)
-  {
-    super(paramString);
-  }
+  public uzs(QCircleAggregationFragmentsPart paramQCircleAggregationFragmentsPart) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@Nullable vup<List<QQCircleFeedBase.StTabInfo>> paramvup)
   {
-    paramJobContext = new ArrayList();
-    paramVarArgs = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramVarArgs.hasNext())
-    {
-      Object localObject = (StoryVideoItem)paramVarArgs.next();
-      unj localunj = unj.a(((StoryVideoItem)localObject).mVid, 2);
-      if (!TextUtils.isEmpty(localunj.c))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MsgTabStoryVideoPreloader", 2, "download thumb url=" + localunj.c);
-        }
-        this.jdField_a_of_type_Uzq.b.add(localunj.c);
-        paramJobContext.add(localunj);
-      }
-      localObject = unj.a(((StoryVideoItem)localObject).mVid, 1);
-      if (!TextUtils.isEmpty(((unj)localObject).c))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MsgTabStoryVideoPreloader", 2, "download mask url=" + ((unj)localObject).c);
-        }
-        this.jdField_a_of_type_Uzq.b.add(((unj)localObject).c);
-        paramJobContext.add(localObject);
-      }
-      this.jdField_a_of_type_Uzq.a.a(paramJobContext, false);
-    }
-    return null;
+    QCircleAggregationFragmentsPart.a(this.a, paramvup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uzs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,27 @@
-import android.view.ViewTreeObserver;
-import com.tencent.widget.DynamicGridView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.widget.ListView;
 
 public class bhwf
-  implements bhwo
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  public bhwf(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  public bhwf(DraggableGridView paramDraggableGridView, Looper paramLooper)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    super(paramLooper);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new bhwg(this, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView), paramInt1, paramInt2));
+    DraggableGridView.c(this.a, paramMessage.arg1);
+    DraggableGridView.a(this.a).smoothScrollBy(DraggableGridView.d(this.a), 0);
+    DraggableGridView.a(this.a, (int)DraggableGridView.a(this.a), (int)DraggableGridView.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhwf
  * JD-Core Version:    0.7.0.1
  */

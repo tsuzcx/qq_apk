@@ -1,19 +1,11 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
-
 public class bboa
-  extends AnimatorListenerAdapter
 {
-  public bboa(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  public int a;
+  public CharSequence a;
+  public String a;
+  public boolean a;
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
-    }
-  }
+  public bboa(bbnx parambbnx) {}
 }
 
 

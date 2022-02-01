@@ -1,25 +1,25 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class wky
-  extends vii
+public class wky
 {
-  wky(wkw paramwkw, FeedItem paramFeedItem) {}
-  
-  public void a()
+  public static boolean a(StoryVideoItem paramStoryVideoItem)
   {
-    super.a();
-    wkw.a(this.jdField_a_of_type_Wkw, null);
+    return false;
   }
   
-  public void a(int paramInt)
+  public static boolean a(String paramString)
   {
-    super.a(paramInt);
-    wxj.a("home_page", "suc_share", 2, paramInt, new String[] { wxj.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", wxj.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
+    return false;
+  }
+  
+  public static boolean a(String paramString, boolean paramBoolean)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wky
  * JD-Core Version:    0.7.0.1
  */

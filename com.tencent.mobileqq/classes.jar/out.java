@@ -1,138 +1,99 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.Nullable;
-import android.support.v4.util.LruCache;
-import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3;
-import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.util.WeakReference;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class out
-  extends LottieDrawable
+  extends pmn
 {
-  private static LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(5242880);
-  private static final String jdField_a_of_type_JavaLangString = bdzf.a(alof.aX + ".readInjoy/resource/lottie_background_res");
-  private static LruCache<String, LottieComposition> b = new LruCache(1048576);
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  public out(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  private static long a(String paramString)
+  public void a(int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2, String paramString3)
   {
-    long l = 0L;
-    int i = 0;
-    while (i < paramString.length())
+    super.a(paramInt1, paramLong, paramString1, paramInt2, paramString2, paramString3);
+    ReadInJoyDeliverBiuActivity.b(this.a, true);
+    ReadInJoyDeliverBiuActivity.b(this.a);
+    QLog.d("ReadInJoyDeliverBiuActivity", 2, "onDeliverUGCResult retCode=" + paramInt1 + ", feedsId=" + paramLong + ", rowkey=" + paramString1 + ", status=" + paramInt2 + ", comment=" + paramString2);
+    if (paramInt1 == 0)
     {
-      l = (l + paramString.charAt(i)) * 131L % 53497342331L;
-      i += 1;
-    }
-    return l;
-  }
-  
-  @Nullable
-  private File a(File[] paramArrayOfFile, String paramString)
-  {
-    int j = paramArrayOfFile.length;
-    int i = 0;
-    while (i < j)
-    {
-      File localFile = paramArrayOfFile[i];
-      if (localFile.getName().equals(paramString)) {
-        return localFile;
+      QQToast.a(this.a, 2, this.a.getString(2131716976), 0).b(this.a.getTitleBarHeight());
+      ReadInJoyDeliverBiuActivity.e(this.a, -1);
+      ReadInJoyDeliverBiuActivity.c(this.a);
+      this.a.getIntent().putExtra("KEY_VIDEO_BIU_SUCCESS", true);
+      this.a.finish();
+      if (ReadInJoyDeliverBiuActivity.o(this.a) != 14) {
+        pmh.a().b(true);
       }
-      i += 1;
-    }
-    return null;
-  }
-  
-  public static out a(String paramString)
-  {
-    out localout = new out();
-    long l = a(paramString);
-    String str = jdField_a_of_type_JavaLangString + File.separator + l;
-    File localFile1 = new File(str);
-    if (a(localFile1)) {
-      localout.a(localFile1);
     }
     for (;;)
     {
-      return localout;
-      beaj localbeaj = ((beag)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
-      File localFile2 = new File(jdField_a_of_type_JavaLangString);
-      if (!localFile2.exists()) {}
-      for (boolean bool = localFile2.mkdirs(); bool; bool = true)
-      {
-        str = str + ".zip";
-        localFile2 = new File(str);
-        paramString = new beae(paramString, localFile2);
-        paramString.b = 3;
-        paramString.d = 60L;
-        Bundle localBundle = new Bundle();
-        localBundle.putLong("bgLottieResId", l);
-        localBundle.putString("bgLottieResPath", str);
-        localbeaj.a(paramString, new ouy(l, str, localFile2, localFile1, new WeakReference(localout)), localBundle);
-        return localout;
+      if ((paramInt1 != 0) && (ReadInJoyDeliverBiuActivity.b(this.a))) {
+        this.a.finish();
+      }
+      return;
+      QQToast.a(this.a, 1, paramString3, 0).b(this.a.getTitleBarHeight());
+    }
+  }
+  
+  public void a(long paramLong, int paramInt, String paramString)
+  {
+    boolean bool = true;
+    QLog.i("ReadInJoyDeliverBiuActivity", 1, "onBiuResult: retCode = " + paramInt + " errorMsg = " + paramString);
+    ReadInJoyDeliverBiuActivity.c(this.a, true);
+    ReadInJoyDeliverBiuActivity.d(this.a);
+    paramLong = NetConnInfoCenter.getServerTimeMillis() - ReadInJoyDeliverBiuActivity.a(this.a);
+    if (paramInt == 0)
+    {
+      paramString = this.a.getString(2131716976);
+      if (ReadInJoyDeliverBiuActivity.g(this.a)) {
+        paramString = this.a.getString(2131716970);
+      }
+      ReadInJoyDeliverBiuActivity.d(this.a, false);
+      if (!this.a.getIntent().getBooleanExtra("hideSuccessToast", false)) {
+        QQToast.a(this.a, 2, paramString, 0).b(this.a.getTitleBarHeight());
+      }
+      ReadInJoyDeliverBiuActivity.f(this.a, -1);
+      ReadInJoyDeliverBiuActivity.c(this.a);
+      this.a.getIntent().putExtra("KEY_VIDEO_BIU_SUCCESS", true);
+      this.a.finish();
+      if (ReadInJoyDeliverBiuActivity.o(this.a) != 14) {
+        pmh.a().b(true);
+      }
+      if (paramInt != 0) {
+        break label417;
       }
     }
-  }
-  
-  private void a(File paramFile)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation " + paramFile.getName());
-    }
-    File[] arrayOfFile = paramFile.listFiles(new ouu(this));
-    Object localObject = paramFile.listFiles(new ouv(this));
-    if ((arrayOfFile == null) || (localObject == null) || (localObject.length == 0)) {}
-    do
+    for (;;)
     {
-      return;
-      localObject = new ReadInJoyLottieDrawable.3(this, paramFile, (File[])localObject);
-    } while (arrayOfFile.length <= 0);
-    if ((LottieComposition)b.get(paramFile.getAbsolutePath()) == null)
-    {
-      ThreadManager.excute(new ReadInJoyLottieDrawable.4(this, arrayOfFile, paramFile, (Runnable)localObject), 64, null, true);
-      return;
-    }
-    ((Runnable)localObject).run();
-  }
-  
-  private static boolean a(File paramFile)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramFile.exists())
-    {
-      paramFile = paramFile.listFiles(new ouz());
-      bool1 = bool2;
-      if (paramFile != null)
-      {
-        bool1 = bool2;
-        if (paramFile.length > 0) {
-          bool1 = true;
-        }
+      paramString = new HashMap();
+      paramString.put("param_FailCode", paramInt + "");
+      paramString.put("param_FromType", ReadInJoyDeliverBiuActivity.o(this.a) + "");
+      bctj.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actMultiBiuResult", bool, paramLong, 0L, paramString, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "doStatisticReport-->success:" + bool + ", costTime:" + paramLong + ", retcode:" + paramInt);
       }
+      if (bool) {
+        ReadInJoyDeliverBiuActivity.a(this.a, bool);
+      }
+      if ((paramInt != 0) && (ReadInJoyDeliverBiuActivity.b(this.a))) {
+        this.a.finish();
+      }
+      return;
+      QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
+      break;
+      label417:
+      bool = false;
     }
-    return bool1;
-  }
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1) {
-      cancelAnimation();
-    }
-    return super.setVisible(paramBoolean1, paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     out
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,14 @@ import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import ors;
-import pfo;
-import pfs;
+import pha;
+import pwt;
+import pwy;
 
 public class FastWebModule$3
   implements Runnable
 {
-  public FastWebModule$3(pfo parampfo, List paramList) {}
+  public FastWebModule$3(pwt parampwt, List paramList) {}
   
   public void run()
   {
@@ -20,15 +20,15 @@ public class FastWebModule$3
     if (i < this.a.size())
     {
       ArticleInfo localArticleInfo = (ArticleInfo)this.a.get(i);
-      if ((ors.a(localArticleInfo)) || ((localArticleInfo instanceof AdvertisementInfo))) {}
+      if ((pha.a(localArticleInfo)) || ((localArticleInfo instanceof AdvertisementInfo))) {}
       for (;;)
       {
         i += 1;
         break;
-        if ((localArticleInfo != null) && (!TextUtils.isEmpty(localArticleInfo.mArticleContentUrl)) && (localArticleInfo.mArticleContentUrl.startsWith("http")) && (ors.a(localArticleInfo.mArticleContentUrl, localArticleInfo.mChannelID, localArticleInfo)))
+        if ((localArticleInfo != null) && (!TextUtils.isEmpty(localArticleInfo.mArticleContentUrl)) && (localArticleInfo.mArticleContentUrl.startsWith("http")) && (pha.a(localArticleInfo.mArticleContentUrl, localArticleInfo.mChannelID, localArticleInfo)))
         {
-          pfs localpfs = (pfs)pfo.a(this.this$0).get(localArticleInfo.mChannelID + "_" + localArticleInfo.mArticleID);
-          if ((localpfs == null) || (localpfs.a())) {
+          pwy localpwy = (pwy)pwt.a(this.this$0).get(localArticleInfo.mChannelID + "_" + localArticleInfo.mArticleID);
+          if ((localpwy == null) || (localpwy.a())) {
             this.this$0.a(localArticleInfo.mArticleContentUrl, localArticleInfo.innerUniqueID, localArticleInfo.mSubscribeID, 3, null);
           }
         }

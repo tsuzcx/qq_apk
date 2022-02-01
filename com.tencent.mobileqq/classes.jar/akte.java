@@ -1,19 +1,24 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class akte
-  extends RecyclerView.ViewHolder
+class akte
+  implements akse
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  akte(aktd paramaktd, File paramFile, AtomicBoolean paramAtomicBoolean) {}
   
-  public akte(aktd paramaktd, View paramView)
+  public void onResult(int paramInt, PreloadManager.PathResult arg2)
   {
-    super(paramView);
-    if (paramView == aktd.a(paramaktd)) {
+    if ((paramInt == 0) && (!TextUtils.isEmpty(???.filePath))) {}
+    synchronized (this.jdField_a_of_type_JavaIoFile)
+    {
+      this.jdField_a_of_type_JavaIoFile.notify();
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
       return;
+      QLog.e("QWalletPicDownloader", 2, "downloadImage file not succeed, pathRes=" + ???);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364383));
   }
 }
 

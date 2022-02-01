@@ -1,251 +1,98 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare.1.1;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.qcall.QCallCardInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BinderWarpper;
-import java.io.File;
-import mqq.app.AccountNotMatchException;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
-public final class azvu
-  implements View.OnClickListener
+public class azvu
+  implements Manager
 {
-  public void onClick(View paramView)
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ProxyManager jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ConcurrentHashMap<String, QCallCardInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  public azvu(QQAppInterface paramQQAppInterface)
   {
-    Object localObject1 = paramView.findViewById(2131377139);
-    if (localObject1 == null) {}
-    do
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramQQAppInterface.a();
+  }
+  
+  private EntityManager a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {}
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
+      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    }
+  }
+  
+  private void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    }
+  }
+  
+  public QCallCardInfo a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+      return (QCallCardInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    }
+    paramString = a().query(QCallCardInfo.class, false, "uin = ?", new String[] { paramString }, null, null, null, null);
+    if (paramString != null) {
+      return (QCallCardInfo)paramString.get(0);
+    }
+    return null;
+  }
+  
+  public void a(QCallCardInfo paramQCallCardInfo)
+  {
+    if (paramQCallCardInfo == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QCallCardManager", 2, "saveQcallCard null ");
+      }
       return;
-      paramView = ((View)localObject1).getTag(2131377139);
-    } while (!(paramView instanceof StructMsgForImageShare));
-    StructMsgForImageShare localStructMsgForImageShare = (StructMsgForImageShare)paramView;
-    Context localContext = ((View)localObject1).getContext();
-    label392:
-    Intent localIntent;
-    try
-    {
-      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(localStructMsgForImageShare.currentAccountUin);
-      AbsShareMsg.doReport(paramView, localStructMsgForImageShare);
-      if (localStructMsgForImageShare.msgId > 0L)
-      {
-        azqs.b(paramView, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "mp_msg_msgpic_click", "aio_morpic_click", 0, 0, "", "", Long.toString(localStructMsgForImageShare.msgId), "");
-        ThreadManager.getSubThreadHandler().postDelayed(new StructMsgForImageShare.1.1(this, localStructMsgForImageShare, paramView), 0L);
-      }
-      if ((localStructMsgForImageShare.getFirstImageElement() != null) && (localStructMsgForImageShare.getFirstImageElement().a()))
-      {
-        azqs.b(null, "dc00898", "", "", "0X800A28", "0X800A28", 0, 0, "", "4", Long.toString(localStructMsgForImageShare.mSourceAppid), ForwardUtils.b(localStructMsgForImageShare.uinType));
-        if (QLog.isColorLevel()) {
-          QLog.d("StructMsg", 2, "大图点击=0X800A28, appid=" + localStructMsgForImageShare.mSourceAppid + ", fileType=4");
-        }
-      }
     }
-    catch (AccountNotMatchException paramView)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructMsg", 2, paramView.getStackTrace().toString());
-        }
-      }
-      if ((paramView.getStatus() != 0) || (paramView.isDownloadStarted())) {
-        break label392;
-      }
-      paramView.startDownload();
-      return;
-      localIntent = new Intent(localContext, AIOGalleryActivity.class);
-      localIntent.putExtra("curType", localStructMsgForImageShare.uinType);
-      localIntent.putExtra("_id", localStructMsgForImageShare.uniseq);
-      localIntent.putExtra("appid", localStructMsgForImageShare.mSourceAppid);
-      localIntent.putExtra("image_share_by_server", ((azwy)localObject2).a());
-      localIntent.putExtra("urlAtServer", ((azwy)localObject2).T);
-      localIntent.putExtra("KEY_FILE_ID", ((azwy)localObject2).c);
-      localIntent.putExtra("picMD5", ((azwy)localObject2).U);
-      localIntent.putExtra("url", ((azwy)localObject2).S);
-      localIntent.putExtra("friendUin", localStructMsgForImageShare.uin);
-      localIntent.putExtra("KEY_MSG_VERSION_CODE", localStructMsgForImageShare.messageVersion);
-      localIntent.putExtra("isSend", localStructMsgForImageShare.mIsSend);
-      localIntent.putExtra("KEY_BUSI_TYPE", 1030);
-      localIntent.putExtra("IS_FROMOTHER_TERMINAL_KEY", bdil.c(localStructMsgForImageShare.mIsSend));
-      localIntent.putExtra("uin", localStructMsgForImageShare.uin);
-      if (localStructMsgForImageShare.mIsSend != 1) {
-        break label1351;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QCallCardManager", 2, "CardManager saveQcallCard");
     }
-    azqs.b(null, "CliOper", "", "", "0X800567A", "0X800567A", 0, 0, localStructMsgForImageShare.mMsgServiceID + "", "", "", "");
-    azqs.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
-    int i = 0;
-    Object localObject2 = localStructMsgForImageShare.getFirstImageElement();
-    if (localObject2 != null)
-    {
-      if ((!bdil.b(localStructMsgForImageShare.mIsSend)) && (((azwy)localObject2).a != null))
-      {
-        paramView = afwu.a(localContext, ((azwy)localObject2).a);
-        if (paramView != null) {
-          if (paramView.getStatus() == 2)
-          {
-            paramView.restartDownload();
-            return;
-          }
-        }
-      }
-      paramView = localStructMsgForImageShare.currentAccountUin;
-      localIntent.putExtra("KEY_TROOP_CODE", paramView);
-      localIntent.putExtra("fileSize", ((azwy)localObject2).d);
-      localIntent.putExtra("KEY_TIME", ((azwy)localObject2).e);
-      localIntent.putExtra("KEY_SUB_VERSION", 5);
-      localIntent.putExtra("KEY_FILE_SIZE_FLAG", 0);
-      localIntent.putExtra("uniSeq", localStructMsgForImageShare.uniseq);
-      localIntent.putExtra("KEY_THUMBNAL_BOUND", zjc.a((View)localObject1));
-      localObject2 = ((azwy)localObject2).a;
-      if (localObject2 != null)
-      {
-        localIntent.addFlags(603979776);
-        paramView = ((MessageForPic)localObject2).selfuin;
-        if (!((MessageForPic)localObject2).isMultiMsg) {
-          break label1603;
-        }
-      }
-    }
-    label1603:
+    b(paramQCallCardInfo);
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueueAndNotify(paramQCallCardInfo.uin, 0, paramQCallCardInfo.getTableName(), paramQCallCardInfo, 3, null);
+  }
+  
+  public void b(QCallCardInfo paramQCallCardInfo)
+  {
+    if (paramQCallCardInfo == null) {}
     for (;;)
     {
+      return;
       try
       {
-        localObject3 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-        localObject1 = paramView;
-        if ((localObject3 instanceof QQAppInterface)) {
-          localObject1 = ((AppRuntime)localObject3).getAccount();
-        }
-        paramView = (View)localObject1;
-      }
-      catch (Exception localException)
-      {
-        Object localObject3;
-        AIOImageData localAIOImageData;
-        int j;
-        label1351:
-        continue;
-        if ((!localObject2[7].equals("scrawl_link")) || (localObject2.length < 9)) {
-          continue;
-        }
-        String str = localObject2[8];
-        continue;
-        if ((localStructMsgForImageShare.mMsgActionData == null) || (!localStructMsgForImageShare.mMsgActionData.startsWith("ScreenShotShare"))) {
-          continue;
-        }
-        localAIOImageData.jdField_b_of_type_Int = 2;
-        localAIOImageData.a = localStructMsgForImageShare.getBytes();
-        if ((!bdil.b(((MessageForPic)localObject2).issend)) || (TextUtils.isEmpty(((MessageForPic)localObject2).path)) || (!new File(((MessageForPic)localObject2).path).exists())) {
-          continue;
-        }
-        localAIOImageData.jdField_b_of_type_JavaLangString = ((MessageForPic)localObject2).path;
-        continue;
-        if (localStructMsgForImageShare.mImageBizType != 2) {
-          continue;
-        }
-        if ((!bdil.b(((MessageForPic)localObject2).issend)) || (TextUtils.isEmpty(((MessageForPic)localObject2).path)) || (!TextUtils.isEmpty(((MessageForPic)localObject2).md5)) || (!new File(((MessageForPic)localObject2).path).exists())) {
-          continue;
-        }
-        localAIOImageData.jdField_b_of_type_JavaLangString = ((MessageForPic)localObject2).path;
-        localAIOImageData.jdField_b_of_type_Int = 4;
-        continue;
-        paramView.putBoolean("extra.FROM_AIO", true);
-        paramView.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ((Activity)localContext).getClass().getName());
-        continue;
-        str = "";
-        continue;
-      }
-      localObject3 = new AIOImageProviderService(paramView, ((MessageForPic)localObject2).frienduin, ((MessageForPic)localObject2).istroop, (ChatMessage)localObject2);
-      localAIOImageData = agjb.a((MessageForPic)localObject2);
-      if (localStructMsgForImageShare.message != null)
-      {
-        localAIOImageData.g = localStructMsgForImageShare.message.time;
-        localAIOImageData.i = localStructMsgForImageShare.message.shmsgseq;
-      }
-      if ((localStructMsgForImageShare.mMsgActionData != null) && (localStructMsgForImageShare.mMsgActionData.startsWith("comic_plugin.apk")))
-      {
-        localAIOImageData.jdField_b_of_type_Int = 1;
-        localAIOImageData.a = localStructMsgForImageShare.getBytes();
-        localObject2 = agiy.a(localStructMsgForImageShare);
-        localAIOImageData.d = agiy.a((String[])localObject2);
-        if ((localObject2 != null) && (localObject2.length >= 8))
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramQCallCardInfo.uin))
         {
-          if (localObject2[7].equals("link"))
-          {
-            localObject1 = localObject2[4];
-            binc.a(null, paramView, localContext, "3009", "2", "40054", localObject2[0], new String[] { localObject2[2], localObject2[4], localObject1 });
-          }
-        }
-        else
-        {
-          paramView = new Bundle();
-          paramView.putParcelable("extra.IMAGE_PROVIDER", new BinderWarpper(((AIOImageProviderService)localObject3).asBinder()));
-          paramView.putParcelable("extra.EXTRA_CURRENT_IMAGE", localAIOImageData);
-          paramView.putInt("forward_source_uin_type", localStructMsgForImageShare.uinType);
-          if (((localContext instanceof SplashActivity)) || ((localContext instanceof ChatActivity)) || ((localContext instanceof ChatHistoryActivity)) || ((localContext instanceof PublicFragmentActivity)) || ((localContext instanceof ChatHistory)))
-          {
-            if (!(localContext instanceof MultiForwardActivity)) {
-              continue;
-            }
-            localObject1 = ((BaseActivity)localContext).getAppInterface();
-            if ((localObject1 instanceof QQAppInterface))
-            {
-              paramView.putBoolean("extra.FROM_AIO", true);
-              paramView.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
-              paramView.putString("uin", ((MultiForwardActivity)localContext).getChatFragment().a().a().a);
-              localObject2 = paramView.getString("extra.GROUP_UIN");
-              if ((localObject2 != null) && (((QQAppInterface)localObject1).b((String)localObject2) == 2)) {
-                paramView.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ChatActivity.class.getName());
-              }
-            }
-          }
-          localIntent.putExtras(paramView);
-          localContext.startActivity(localIntent);
-          i = 1;
-          j = 0;
-          if (i != 0) {
-            j = 1;
-          }
-          azqs.b(null, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "0X80055C7", "0X80055C7", 0, j, "" + localStructMsgForImageShare.msgId, "" + localStructMsgForImageShare.templateIDForPortal, "", localStructMsgForImageShare.mMsgUrl);
-          paramView = new StringBuilder().append("MSGID=").append(Long.toString(localStructMsgForImageShare.msgId)).append(";TEPLATEID=").append(localStructMsgForImageShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(azus.a(localStructMsgForImageShare.mMsgUrl));
-          azqs.b(null, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "0X8005D49", "0X8005D49", 0, j, paramView.toString(), "", "", "");
-          return;
-          paramView = localStructMsgForImageShare.uin;
-          break;
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.replace(paramQCallCardInfo.uin, paramQCallCardInfo);
+          continue;
         }
       }
+      finally {}
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramQCallCardInfo.uin, paramQCallCardInfo);
     }
+  }
+  
+  public void onDestroy()
+  {
+    a();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 

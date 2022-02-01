@@ -1,26 +1,27 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class anyz
-  extends ContentObserver
+class anyz
+  implements Comparator<Map.Entry<String, Entity>>
 {
-  public anyz(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  anyz(anyy paramanyy) {}
   
-  public void onChange(boolean paramBoolean)
+  public int a(Map.Entry<String, Entity> paramEntry1, Map.Entry<String, Entity> paramEntry2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
+    paramEntry1 = ((String)paramEntry1.getKey()).split("&")[1];
+    int i = Integer.parseInt(paramEntry1.split("-")[0]);
+    int j = Integer.parseInt(paramEntry1.split("-")[1]);
+    paramEntry1 = ((String)paramEntry2.getKey()).split("&")[1];
+    int k = Integer.parseInt(paramEntry1.split("-")[0]);
+    int m = Integer.parseInt(paramEntry1.split("-")[1]);
+    if (i > k) {
+      return 1;
     }
-    if (BusinessCardEditActivity.a(this.a))
-    {
-      this.a.a(2131698953, 2);
-      BusinessCardEditActivity.a(this.a, false);
+    if (i == k) {
+      return j - m;
     }
+    return -1;
   }
 }
 

@@ -1,26 +1,17 @@
-import android.app.Activity;
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import org.json.JSONObject;
 
-class aiju
-  implements apul
+public abstract class aiju
 {
-  aiju(aijq paramaijq) {}
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
   
-  public boolean a(KeyEvent paramKeyEvent)
-  {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean))
-    {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-      this.a.jdField_a_of_type_Boolean = false;
-      paramKeyEvent = ((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(paramKeyEvent);
-      return true;
-    }
-    return false;
-  }
+  public abstract JSONObject a();
 }
 
 

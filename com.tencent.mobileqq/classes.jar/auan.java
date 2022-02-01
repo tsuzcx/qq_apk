@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.data.TroopAssistantData;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 
-class auan
-  implements Comparator<TroopAssistantData>
+public final class auan
+  implements Parcelable.Creator<WeiYunFileInfo>
 {
-  auan(auam paramauam) {}
-  
-  public int a(TroopAssistantData paramTroopAssistantData1, TroopAssistantData paramTroopAssistantData2)
+  public WeiYunFileInfo a(Parcel paramParcel)
   {
-    long l1 = Math.max(paramTroopAssistantData1.lastmsgtime, paramTroopAssistantData1.lastdrafttime);
-    long l2 = Math.max(paramTroopAssistantData2.lastmsgtime, paramTroopAssistantData2.lastdrafttime);
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    return new WeiYunFileInfo(paramParcel);
+  }
+  
+  public WeiYunFileInfo[] a(int paramInt)
+  {
+    return new WeiYunFileInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auan
  * JD-Core Version:    0.7.0.1
  */

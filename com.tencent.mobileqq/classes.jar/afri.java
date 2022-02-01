@@ -1,17 +1,14 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-class afri
-  extends afuf
+public class afri
+  extends ayes
 {
-  afri(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afri(VisitorsActivity paramVisitorsActivity) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new afwk(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.a.e();
   }
 }
 

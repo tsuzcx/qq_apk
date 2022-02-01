@@ -1,88 +1,79 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-public abstract class avbn
-  extends Binder
-  implements avbm
+public class avbn
+  extends avbc
 {
-  public avbn()
+  public static URL b(String paramString)
   {
-    attachInterface(this, "com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-  }
-  
-  public static avbm a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof avbm))) {
-      return (avbm)localIInterface;
-    }
-    return new avbo(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    switch (paramInt1)
+    try
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(paramParcel1);
+      paramString = new URL("hot_pic_origin", "", paramString);
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected String a(HotPicData paramHotPicData)
+  {
+    return paramHotPicData.originalUrl;
+  }
+  
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
+    String str = a(paramDownloadParams);
+    File localFile = a(str);
+    if (localFile.exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "loadImageFile file exist:" + localFile.getAbsolutePath());
       }
-      paramParcel1 = a((BasicTypeDataParcel)localObject1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
+      return localFile;
+    }
+    localFile.getParentFile().mkdirs();
+    if ((bgjw.a()) && (bgjw.b() < 20971520L)) {
+      throw new IOException("SD card free space is " + bgjw.b());
+    }
+    Object localObject = new File(a);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdir();
+    }
+    int i = a(str, localFile);
+    if (i == 0)
+    {
+      localObject = azby.a(localFile.getAbsolutePath());
+      if (!paramDownloadParams.originalMD5.equalsIgnoreCase((String)localObject))
       {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
+        localFile.delete();
+        paramURLDrawableHandler.onFileDownloadFailed(0);
+        return null;
       }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
+      paramURLDrawableHandler.onFileDownloadSucceed(localFile.length());
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->0");
       }
+      return localFile;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-    localObject1 = localObject2;
-    if (paramParcel1.readInt() != 0) {
-      localObject1 = (Message)Message.CREATOR.createFromParcel(paramParcel1);
+    if (QLog.isColorLevel()) {
+      QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->" + i);
     }
-    paramParcel1 = a((Message)localObject1);
-    paramParcel2.writeNoException();
-    if (paramParcel1 != null)
-    {
-      paramParcel2.writeInt(1);
-      paramParcel1.writeToParcel(paramParcel2, 1);
-    }
-    for (;;)
-    {
-      return true;
-      paramParcel2.writeInt(0);
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avbn
  * JD-Core Version:    0.7.0.1
  */

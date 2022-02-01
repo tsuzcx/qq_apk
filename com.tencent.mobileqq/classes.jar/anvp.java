@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-
 public class anvp
-  implements DialogInterface.OnClickListener
+  implements anil
 {
-  public anvp(JumpConfirmFragment paramJumpConfirmFragment) {}
+  protected void a(boolean paramBoolean, bdei parambdei) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b(boolean paramBoolean, bdei parambdei) {}
+  
+  protected void c(boolean paramBoolean, bdei parambdei) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    JefsClass.getInstance().a(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      b(paramBoolean, (bdei)paramObject);
+      return;
+    case 1: 
+      c(paramBoolean, (bdei)paramObject);
+      return;
+    }
+    a(paramBoolean, (bdei)paramObject);
   }
 }
 

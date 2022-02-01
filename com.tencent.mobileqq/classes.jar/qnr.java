@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 
-public final class qnr
-  implements Parcelable.Creator<UrlJumpInfo>
+public class qnr
+  extends RecyclerView.OnScrollListener
 {
-  public UrlJumpInfo a(Parcel paramParcel)
-  {
-    return new UrlJumpInfo(paramParcel);
-  }
+  public qnr(PTSFragment paramPTSFragment) {}
   
-  public UrlJumpInfo[] a(int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return new UrlJumpInfo[paramInt];
+    if (paramInt == 0)
+    {
+      adcd.a().a("list_kandian_daily_new", false);
+      return;
+    }
+    adcd.a().a("list_kandian_daily_new");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qnr
  * JD-Core Version:    0.7.0.1
  */

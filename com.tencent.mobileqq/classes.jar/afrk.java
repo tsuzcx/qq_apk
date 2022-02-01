@@ -1,17 +1,20 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-class afrk
-  extends afuf
+public class afrk
+  extends bkfi
 {
-  afrk(afpy paramafpy)
+  public afrk(VisitorsActivity paramVisitorsActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramafpy, null);
+    this.a.f = false;
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return new afwn(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.a.c.setVisibility(0);
   }
 }
 

@@ -1,49 +1,49 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.widget.ImageView;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
+import android.graphics.drawable.Drawable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class aqej
-  extends nab
+public class aqej
 {
-  aqej(aqei paramaqei, boolean paramBoolean) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static Drawable a(String paramString)
   {
-    boolean bool = true;
-    if (paramInt != 0)
+    String[] arrayOfString1 = paramString.split("&");
+    paramString = "";
+    int m = arrayOfString1.length;
+    int i = 0;
+    int j = 1;
+    if (i < m)
     {
-      QLog.e("ExtendFriendHandler", 1, "setShowVipIconSwitch error: " + paramInt);
-      ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(null);
-      paramArrayOfByte = ExtendFriendProfileEditFragment.a(this.a.a);
-      if (!this.b) {}
-      for (bool = true;; bool = false)
+      String[] arrayOfString2 = arrayOfString1[i].split("=");
+      if ((arrayOfString2.length == 2) || (arrayOfString2[0].equals("type"))) {}
+      for (;;)
       {
-        paramArrayOfByte.setChecked(bool);
-        ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(ExtendFriendProfileEditFragment.a(this.a.a));
-        return;
+        try
+        {
+          k = Integer.parseInt(arrayOfString2[1]);
+          i += 1;
+          j = k;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          QLog.e("UinToDrawableUtil", 1, "type wrong", localNumberFormatException);
+          k = j;
+          continue;
+        }
+        int k = j;
+        if (localNumberFormatException[0].equals("uin"))
+        {
+          paramString = localNumberFormatException[1];
+          k = j;
+        }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendHandler", 2, "setShowVipIconSwitch(" + this.b + ") success");
-    }
-    paramArrayOfByte = (aqcx)ExtendFriendProfileEditFragment.a(this.a.a).getTag();
-    if (!this.b) {}
-    for (;;)
-    {
-      paramArrayOfByte.mVipHide = bool;
-      VipUtils.a(paramArrayOfByte, ExtendFriendProfileEditFragment.a(this.a.a));
-      paramArrayOfByte = this.a.a.getActivity();
-      if (paramArrayOfByte == null) {
-        break;
-      }
-      paramArrayOfByte.setResult(8193);
-      return;
-      bool = false;
-    }
+    return a(paramString, j);
+  }
+  
+  public static Drawable a(String paramString, int paramInt)
+  {
+    return aoch.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramInt, 4, paramString);
   }
 }
 

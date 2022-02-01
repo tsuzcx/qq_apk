@@ -1,9 +1,9 @@
 package com.tencent.gdtad.views.canvas.components.video;
 
-import aase;
-import aatt;
-import aaut;
-import aauv;
+import acqy;
+import acsn;
+import actr;
+import actt;
 import com.tencent.ad.tangram.canvas.views.AdViewStatus;
 import com.tencent.ad.tangram.canvas.views.canvas.components.AdCanvasComponentView;
 import com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasPageView;
@@ -12,10 +12,10 @@ import java.lang.ref.WeakReference;
 
 public class GdtCanvasVideoComponentView
   extends AdCanvasComponentView
-  implements aaut, aauv
+  implements actr, actt
 {
   public static int a;
-  private aatt jdField_a_of_type_Aatt;
+  private acsn jdField_a_of_type_Acsn;
   private AdCanvasPageView jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasPageView;
   private GdtCanvasVideoComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasVideoComponentData;
   private GdtVideoCommonView jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
@@ -101,8 +101,8 @@ public class GdtCanvasVideoComponentView
     if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null)
     {
       this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b();
-      this.jdField_a_of_type_Aatt.a(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView));
-      aase.c("GdtCanvasVideoComponentView", "onViewPause " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
+      this.jdField_a_of_type_Acsn.a(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView));
+      acqy.c("GdtCanvasVideoComponentView", "onViewPause " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
     }
   }
   
@@ -112,13 +112,13 @@ public class GdtCanvasVideoComponentView
     if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null)
     {
       this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a();
-      aase.c("GdtCanvasVideoComponentView", "onViewResume " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
+      acqy.c("GdtCanvasVideoComponentView", "onViewResume " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.video.GdtCanvasVideoComponentView
  * JD-Core Version:    0.7.0.1
  */

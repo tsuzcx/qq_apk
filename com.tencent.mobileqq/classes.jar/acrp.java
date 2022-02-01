@@ -1,31 +1,25 @@
-import android.opengl.GLSurfaceView.Renderer;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.18.1;
-import com.tencent.mobileqq.activity.Conversation.18.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import mqq.observer.BusinessObserver;
 
 public class acrp
-  implements GLSurfaceView.Renderer
+  implements BusinessObserver
 {
-  public acrp(Conversation paramConversation) {}
+  protected void a(int paramInt, String paramString1, String paramString2) {}
   
-  public void onDrawFrame(GL10 paramGL10) {}
-  
-  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2) {}
-  
-  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a = paramGL10.glGetString(7937);
-    if (this.a.a != null) {
-      ThreadManager.post(new Conversation.18.1(this), 5, null, true);
+    if (100 == paramInt)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QBossC2SCheckerServlet", 2, "Observer .onReceive Success: " + paramBoolean);
+      }
+      a(paramBundle.getInt("code"), paramBundle.getString("msg"), paramBundle.getString("adid"));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_GPU", 2, "onSurfaceCreated|GL_RENDERER= " + this.a.a);
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    this.a.a(new Conversation.18.2(this));
+    QLog.e("QBossC2SCheckerServlet", 2, "ID__C2S_CHECKER NOT MATCH isSuc" + paramBoolean);
   }
 }
 

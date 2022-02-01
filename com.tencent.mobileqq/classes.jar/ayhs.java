@@ -1,12 +1,18 @@
-public abstract interface ayhs
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment;
+
+public class ayhs
+  implements View.OnTouchListener
 {
-  public abstract void a(long paramLong);
+  public ayhs(BaseOCRTextSearchFragment paramBaseOCRTextSearchFragment) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract long b();
-  
-  public abstract long c();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.a.a.a(paramView);
+    return false;
+  }
 }
 
 

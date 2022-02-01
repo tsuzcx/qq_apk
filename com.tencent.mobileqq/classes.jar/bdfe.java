@@ -1,6 +1,19 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class bdfe
+  implements View.OnClickListener
 {
-  static bdfc a = new bdfc(null);
+  bdfe(bdfc parambdfc, bdeo parambdeo, bdek parambdek, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    if (bdfc.a(this.jdField_a_of_type_Bdfc) != null) {
+      bdfc.a(this.jdField_a_of_type_Bdfc).a(this.jdField_a_of_type_Bdeo, (bdep)this.jdField_a_of_type_Bdek, this.jdField_a_of_type_JavaLangString);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

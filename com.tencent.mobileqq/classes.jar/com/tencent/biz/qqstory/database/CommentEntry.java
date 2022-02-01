@@ -2,23 +2,23 @@ package com.tencent.biz.qqstory.database;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import awge;
-import awhp;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import nbp;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import nki;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ulj;
-import wxe;
+import wev;
+import yqp;
 
 public class CommentEntry
-  extends awge
-  implements ulj
+  extends Entity
+  implements wev
 {
   public static final int COMMENT_TYPE_CAPTURE_TOGETHER = 5;
   public static final int COMMENT_TYPE_COMMON = 0;
@@ -45,7 +45,7 @@ public class CommentEntry
   public int commentId = (int)(this.fakeId / 1000L - 1400000000.0D);
   public int commentType = 0;
   public String content;
-  @awhp
+  @notColumn
   private JSONObject extraJson;
   public String extras;
   public long fakeId = System.currentTimeMillis();
@@ -149,7 +149,7 @@ public class CommentEntry
     {
       for (;;)
       {
-        wxe.c("CommentEntry", "getExtraJson error", localException);
+        yqp.c("CommentEntry", "getExtraJson error", localException);
         this.extraJson = new JSONObject();
       }
     }
@@ -163,7 +163,7 @@ public class CommentEntry
   
   public boolean isReply()
   {
-    return ((!TextUtils.isEmpty(this.replierUnionId)) && (!this.replierUnionId.equals("0"))) || (nbp.a(this.replyUin));
+    return ((!TextUtils.isEmpty(this.replierUnionId)) && (!this.replierUnionId.equals("0"))) || (nki.a(this.replyUin));
   }
   
   public boolean putExtra(String paramString, Object paramObject)
@@ -177,7 +177,7 @@ public class CommentEntry
     }
     catch (JSONException paramString)
     {
-      wxe.c("PublishVideoEntry", "putStringExtra error", paramString);
+      yqp.c("PublishVideoEntry", "putStringExtra error", paramString);
     }
     return false;
   }
@@ -212,7 +212,7 @@ public class CommentEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.CommentEntry
  * JD-Core Version:    0.7.0.1
  */

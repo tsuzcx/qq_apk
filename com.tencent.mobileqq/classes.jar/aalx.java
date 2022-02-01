@@ -1,53 +1,87 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.util.AdUriUtil;
-import com.tencent.ad.tangram.web.AdBrowserAdapter;
-import com.tencent.ad.tangram.web.AdBrowserAdapter.Params;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeMultiPicHeadItemView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public final class aalx
-  implements AdBrowserAdapter
+public class aalx
+  extends SubscribeBannerView.BannerAdapter
 {
-  public AdError show(AdBrowserAdapter.Params paramParams)
+  public aalx(RelativeMultiPicHeadItemView paramRelativeMultiPicHeadItemView) {}
+  
+  private String a(Object paramObject)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
-    {
-      aase.d("GdtBrowserAdapter", "show error");
-      return new AdError(4);
+    if ((paramObject instanceof CertifiedAccountMeta.StImage)) {
+      return ((CertifiedAccountMeta.StImage)paramObject).url.get();
     }
-    aase.b("GdtBrowserAdapter", String.format("show %s", new Object[] { paramParams.url }));
-    Object localObject = (GdtAd)GdtAd.class.cast(paramParams.ad);
-    Intent localIntent = new Intent((Context)paramParams.activity.get(), QQBrowserActivity.class);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    localIntent.putExtra("url", paramParams.url);
-    if ((paramParams.extrasForIntent != null) && (!paramParams.extrasForIntent.isEmpty())) {
-      localIntent.putExtras(paramParams.extrasForIntent);
-    }
-    if ((paramParams.ad != null) && (paramParams.ad.isValid()))
+    return "";
+  }
+  
+  public View a(View paramView, Object paramObject)
+  {
+    String str = a(paramObject);
+    if (((paramObject instanceof CertifiedAccountMeta.StImage)) && (RelativeMultiPicHeadItemView.a(this.a) != 0))
     {
-      if (((GdtAd)localObject).getNocoId() != 0L) {
-        localIntent.putExtra("GdtNocoId", ((GdtAd)localObject).getNocoId());
-      }
-      localIntent.putExtra("GdtWebReportQQ_TRACE_ID", paramParams.ad.getTraceId());
-      localIntent.putExtra("GdtNocoId", ((GdtAd)localObject).getNocoId());
-      localIntent.putExtra("GdtWebReportQQ_ACTION_URL", ((GdtAd)localObject).getUrlForAction());
-    }
-    if ((paramParams.ad != null) && (paramParams.ad.getProductType() == 25))
-    {
-      localObject = paramParams.ad.getUrlForClick();
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && ("1".equals(AdUriUtil.getQueryParameter(AdUriUtil.parse((String)localObject), "autoclose")))) {
-        localIntent.putExtra("keyForForceCloseAfterJump", true);
+      paramObject = (CertifiedAccountMeta.StImage)paramObject;
+      if ((paramObject.width.get() != 0) && (paramObject.height.get() != 0))
+      {
+        float f = paramObject.height.get() / paramObject.width.get();
+        paramObject = paramView.getLayoutParams();
+        int j = (int)(RelativeMultiPicHeadItemView.a(this.a) / f);
+        int i = j;
+        if (j > RelativeMultiPicHeadItemView.b(this.a)) {
+          i = RelativeMultiPicHeadItemView.b(this.a);
+        }
+        paramObject.width = i;
+        paramObject.height = RelativeMultiPicHeadItemView.a(this.a);
       }
     }
-    ((Activity)paramParams.activity.get()).startActivity(localIntent);
-    return new AdError(0);
+    if (str != null) {
+      try
+      {
+        paramObject = aaid.a(str);
+        if (!TextUtils.isEmpty(paramObject))
+        {
+          paramObject = new File(paramObject);
+          if (paramObject.exists())
+          {
+            ((URLImageView)paramView).setImageURI(Uri.fromFile(paramObject));
+            return paramView;
+          }
+        }
+        zzx.a(str, (URLImageView)paramView);
+        return paramView;
+      }
+      catch (Exception paramObject)
+      {
+        QLog.d("RelativeMultiPicHeadItemView", 1, "bindItemView set local image path error!exception:" + paramObject);
+        return paramView;
+      }
+      catch (Error paramObject)
+      {
+        QLog.d("RelativeMultiPicHeadItemView", 1, "bindItemView set local image path error!error:" + paramObject.getMessage());
+      }
+    }
+    return paramView;
+  }
+  
+  protected URLImageView a(ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new URLImageView(paramViewGroup.getContext());
+    if (RelativeMultiPicHeadItemView.a(this.a) == 0) {}
+    for (int i = -1;; i = RelativeMultiPicHeadItemView.a(this.a))
+    {
+      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, i));
+      return paramViewGroup;
+    }
   }
 }
 

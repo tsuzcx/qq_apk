@@ -1,17 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.weiyun.transmission.WeiyunTransmissionStatus;
 
-class bmxu
-  implements ValueAnimator.AnimatorUpdateListener
+final class bmxu
+  implements INetEventHandler
 {
-  bmxu(bmxt parambmxt) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
-    this.a.a = paramValueAnimator;
-    this.a.invalidateSelf();
+    WeiyunTransmissionStatus.getInstance().onReceiveNetChanged(paramBoolean);
   }
 }
 

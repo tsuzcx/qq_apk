@@ -1,10 +1,6 @@
 public abstract interface blwi
 {
-  public abstract void aX_();
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void a(blwh paramblwh, boolean paramBoolean);
 }
 
 

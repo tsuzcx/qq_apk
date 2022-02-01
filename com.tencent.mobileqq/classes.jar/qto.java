@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.CreateColumnFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qto
-  implements DialogInterface.OnClickListener
+class qto
+  implements View.OnClickListener
 {
-  public qto(CreateColumnFragment paramCreateColumnFragment) {}
+  qto(qtn paramqtn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a(false);
-    this.a.a.c();
-    this.a.i();
+    spb localspb = this.a.jdField_a_of_type_Snh.a();
+    if (localspb != null) {
+      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qto
  * JD-Core Version:    0.7.0.1
  */

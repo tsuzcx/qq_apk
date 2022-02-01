@@ -1,111 +1,99 @@
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavEmoSingleSend;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 class asbb
-  implements apuc
+  implements aryn
 {
-  asbb(asau paramasau) {}
+  asbb(asba paramasba) {}
   
-  public void a(apuf paramapuf)
+  public boolean a(View paramView, arxg paramarxg)
   {
-    int i;
-    int j;
-    if ((paramapuf instanceof apzf))
-    {
-      i = asau.a(this.a).getSelectionStart();
-      j = asau.a(this.a).getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
+    if ((paramarxg == null) || (paramView == null)) {
+      return false;
     }
-    apza localapza;
-    int k;
-    int m;
-    do
+    if (TextUtils.isEmpty(paramarxg.i))
     {
-      asau.a(this.a).getEditableText().replace(i, j, banh.c(((apzf)paramapuf).a));
-      do
-      {
-        return;
-      } while (!(paramapuf instanceof apza));
-      localapza = (apza)paramapuf;
-      i = asau.a(this.a).getSelectionStart();
-      j = asau.a(this.a).getSelectionEnd();
-      k = localapza.a;
-      m = localapza.b;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
+      Object localObject1 = asba.a(this.a, paramarxg);
+      int i = asba.a(this.a, paramarxg);
+      if ((((String)localObject1).equals("needUpload")) || (((String)localObject1).equals("needDel"))) {
+        return true;
       }
-    } while ((k == 2) && (m == -1));
-    String str = "";
-    if (k == 1) {}
-    try
-    {
-      for (paramapuf = banh.c(m);; paramapuf = banh.a(m))
+      Object localObject2;
+      if (((String)localObject1).equals("failed"))
       {
-        asau.a(this.a).getEditableText().replace(i, j, paramapuf);
-        asau.a(this.a).requestFocus();
-        localapza.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-        apsj.a().a(k).a(m, 4);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        paramapuf = str;
-        if (QLog.isColorLevel())
+        paramView = ((arro)this.a.a.getManager(149)).a().iterator();
+        while (paramView.hasNext())
         {
-          QLog.d("Forward.NewVersion.Dialog", 2, QLog.getStackTraceString(localException));
-          paramapuf = str;
+          localObject1 = (CustomEmotionData)paramView.next();
+          if (((CustomEmotionData)localObject1).emoId == i)
+          {
+            QLog.d("FavoriteEmotionAdapter", 1, new Object[] { "resend, emoId:", Integer.valueOf(((CustomEmotionData)localObject1).emoId) });
+            localObject2 = (anlh)this.a.a.a(72);
+            if ((((CustomEmotionData)localObject1).emoOriginalPath != null) && (!arrn.a(((CustomEmotionData)localObject1).emoOriginalPath)))
+            {
+              ((anlh)localObject2).notifyUI(2, true, Integer.valueOf(1));
+            }
+            else
+            {
+              ((CustomEmotionData)localObject1).RomaingType = "needUpload";
+              asba.a(this.a, paramarxg, "needUpload");
+              ((anlh)localObject2).notifyUI(2, true, null);
+              com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend.b = false;
+              ThreadManager.excute(new FavEmoSingleSend((CustomEmotionData)localObject1, true), 64, null, false);
+            }
+          }
+        }
+        return true;
+      }
+      localObject1 = (URLImageView)paramView.findViewById(2131365902);
+      paramView = (URLImageView)paramView.findViewById(2131365903);
+      if ((((URLImageView)localObject1).getDrawable() instanceof URLDrawable))
+      {
+        localObject2 = (URLDrawable)((URLImageView)localObject1).getDrawable();
+        if ((((URLDrawable)localObject2).getStatus() == 3) || (((URLDrawable)localObject2).getStatus() == 2))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FavoriteEmotionAdapter", 2, "now  favorite EmoticonInfo loading failed, restart download " + paramarxg.toString());
+          }
+          ((URLImageView)localObject1).setVisibility(8);
+          paramView.setVisibility(0);
+          ((URLDrawable)localObject2).restartDownload();
+          if (!(paramView.getDrawable() instanceof Animatable))
+          {
+            paramarxg = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130839402);
+            paramView.setImageDrawable((Drawable)paramarxg);
+            paramarxg.start();
+          }
+          for (;;)
+          {
+            return true;
+            ((Animatable)paramView.getDrawable()).start();
+          }
+        }
+        if (((URLDrawable)localObject2).getStatus() == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FavoriteEmotionAdapter", 2, "now  favorite EmoticonInfo loading " + paramarxg.toString());
+          }
+          return true;
         }
       }
     }
+    return false;
   }
-  
-  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
-  
-  public boolean a(apuf paramapuf)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (asau.a(this.a).getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = asau.a(this.a).getText();
-        int i = asau.a(this.a).getSelectionStart();
-        int j = TextUtils.getOffsetBefore(asau.a(this.a).getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void b(apuf paramapuf) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

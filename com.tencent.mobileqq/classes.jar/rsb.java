@@ -1,29 +1,23 @@
-import android.content.Context;
-import android.content.res.Resources;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class rsb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class rsb
+  implements View.OnClickListener
 {
-  public static sks a(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = new sks(paramContext, 2131755801);
-    paramContext.setContentView(2131562535);
-    paramContext.setTitle(null);
-    paramContext.setMessage(paramString1);
-    paramContext.a(paramString2);
-    paramContext.setCanceledOnTouchOutside(true);
-    return paramContext;
-  }
+  rsb(rsa paramrsa) {}
   
-  public static void a(@NotNull Context paramContext)
+  public final void onClick(View paramView)
   {
-    rsc localrsc = new rsc(paramContext);
-    bgow.a(paramContext, 230, null, paramContext.getResources().getString(2131718755), localrsc, localrsc).show();
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rsb
  * JD-Core Version:    0.7.0.1
  */

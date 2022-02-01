@@ -1,45 +1,44 @@
 package com.tencent.qqmini.sdk.monitor.service;
 
-import bhbh;
-import bhbm;
+import com.tencent.qqmini.sdk.monitor.common.ProcessStats;
 
-public class TaskMonitorManager$1
+class TaskMonitorManager$1
   implements Runnable
 {
-  public TaskMonitorManager$1(bhbm parambhbm) {}
+  TaskMonitorManager$1(TaskMonitorManager paramTaskMonitorManager) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Long = this.this$0.c;
-    this.this$0.c = bhbh.a("-1");
-    long l2 = this.this$0.c;
-    long l3 = this.this$0.jdField_a_of_type_Long;
-    if (this.this$0.jdField_b_of_type_Boolean)
+    this.this$0.mAppLastUsage = this.this$0.mAppCurUsage;
+    this.this$0.mAppCurUsage = ProcessStats.collectCpuUsage("-1");
+    long l2 = this.this$0.mAppCurUsage;
+    long l3 = this.this$0.mAppLastUsage;
+    if (this.this$0.isCalcDeviceUsageOk)
     {
-      this.this$0.jdField_b_of_type_Long = this.this$0.d;
-      this.this$0.d = bhbh.a("-2");
+      this.this$0.mDeviceLastUsage = this.this$0.mDeviceCurUsage;
+      this.this$0.mDeviceCurUsage = ProcessStats.collectCpuUsage("-2");
     }
-    for (long l1 = this.this$0.d - this.this$0.jdField_b_of_type_Long;; l1 = 0L)
+    for (long l1 = this.this$0.mDeviceCurUsage - this.this$0.mDeviceLastUsage;; l1 = 0L)
     {
-      bhbm localbhbm = this.this$0;
-      if ((this.this$0.d > 0L) && (l1 > 0L)) {}
+      TaskMonitorManager localTaskMonitorManager = this.this$0;
+      if ((this.this$0.mDeviceCurUsage > 0L) && (l1 > 0L)) {}
       for (boolean bool = true;; bool = false)
       {
-        localbhbm.jdField_b_of_type_Boolean = bool;
-        if (!this.this$0.jdField_b_of_type_Boolean) {
+        localTaskMonitorManager.isCalcDeviceUsageOk = bool;
+        if (!this.this$0.isCalcDeviceUsageOk) {
           break;
         }
-        this.this$0.jdField_a_of_type_Int = ((int)(100L * (l2 - l3) / l1));
+        this.this$0.sTotalCpuUsage = ((int)(100L * (l2 - l3) / l1));
         return;
       }
-      this.this$0.jdField_a_of_type_Int = 0;
+      this.this$0.sTotalCpuUsage = 0;
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.service.TaskMonitorManager.1
  * JD-Core Version:    0.7.0.1
  */

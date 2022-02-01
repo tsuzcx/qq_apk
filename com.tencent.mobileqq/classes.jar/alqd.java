@@ -1,10 +1,7 @@
-public abstract interface alqd
-{
-  public abstract void a();
-}
+class alqd {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alqd
  * JD-Core Version:    0.7.0.1
  */

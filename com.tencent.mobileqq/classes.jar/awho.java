@@ -1,31 +1,32 @@
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class awho
+class awho
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String[] a;
-  public int b = -1;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
+  awho(awhm paramawhm, BaseChatPie paramBaseChatPie, short paramShort) {}
   
-  public awho(String paramString, Class<? extends FTSEntity> paramClass, String[] paramArrayOfString, boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramClass.getName().replace('.', '/');
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      if (paramInt == 1)
+      {
+        this.jdField_a_of_type_Awhm.a(this.jdField_a_of_type_Short, true, true);
+        bcst.b(awhm.a(this.jdField_a_of_type_Awhm), "dc00898", "", "", "0X8009978", "0X8009978", this.jdField_a_of_type_Awhm.a(this.jdField_a_of_type_Short), this.jdField_a_of_type_Awhm.a(this.jdField_a_of_type_Short), "", "", "", "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awho
  * JD-Core Version:    0.7.0.1
  */

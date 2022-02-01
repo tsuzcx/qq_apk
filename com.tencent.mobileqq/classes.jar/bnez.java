@@ -1,10 +1,17 @@
-import android.content.Context;
+import android.graphics.Matrix;
 import android.support.annotation.NonNull;
-import java.util.ArrayList;
+import dov.com.qq.im.aeeditor.module.clip.image.EditorPicInfo;
 
-public abstract interface bnez
+public class bnez
 {
-  public abstract void a(@NonNull ArrayList<bnfa> paramArrayList, @NonNull Context paramContext);
+  public Matrix a;
+  public EditorPicInfo a;
+  
+  @NonNull
+  public String toString()
+  {
+    return "AEPhotoCropInfoWrapper{editorPicInfo=" + this.jdField_a_of_type_DovComQqImAeeditorModuleClipImageEditorPicInfo + ", matrix=" + this.jdField_a_of_type_AndroidGraphicsMatrix + "}";
+  }
 }
 
 

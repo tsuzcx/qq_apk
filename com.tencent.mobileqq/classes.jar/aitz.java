@@ -1,41 +1,31 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.widget.ImageView;
 
-public class aitz
-  extends airj
+class aitz
+  implements aobv
 {
-  aitz(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
-  {
-    super(paramNewPhotoPreviewActivity);
-  }
+  aitz(aity paramaity) {}
   
-  protected void c()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    Object localObject = ((NewPhotoPreviewActivity)this.mActivity).getSubmitPhotoList();
-    Intent localIntent = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
-    if (localObject != null)
+    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
     {
-      aips.a(((ArrayList)localObject).size(), this.a.totalPicCount);
-      aips.a(localIntent, ((ArrayList)localObject).size(), this.mPhotoCommonData.currentQualityType);
-    }
-    localObject = (NewPhotoPreviewActivity)this.mActivity;
-    if ((localObject == null) || (((NewPhotoPreviewActivity)localObject).isFinishing())) {
-      return;
-    }
-    ((NewPhotoPreviewActivity)localObject).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)localObject).finish();
-  }
-  
-  public void onGalleryItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    super.onGalleryItemSelected(paramAdapterView, paramView, paramInt, paramLong);
-    paramAdapterView = (NewPhotoPreviewActivity)this.mActivity;
-    if ((paramAdapterView != null) && (!paramAdapterView.isFinishing())) {
-      paramAdapterView.titleView.setText(alud.a(2131708535));
+      paramInt2 = aity.a(this.a).getChildCount();
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
+      {
+        Object localObject = aity.a(this.a).getChildViewHolder(aity.a(this.a).getChildAt(paramInt1));
+        if ((localObject instanceof aiua))
+        {
+          localObject = (aiua)localObject;
+          if (((aiua)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
+            ((aiua)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+          }
+        }
+        paramInt1 += 1;
+      }
     }
   }
 }

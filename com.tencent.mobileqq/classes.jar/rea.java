@@ -1,22 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
-final class rea
-  extends AnimatorListenerAdapter
+public class rea
 {
-  rea(View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static rdz a(int paramInt)
   {
-    this.a.setAlpha(1.0F);
-    this.a.setLayerType(0, null);
-    this.a.setVisibility(8);
+    if (paramInt == rdy.a) {
+      return new rec();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rea
  * JD-Core Version:    0.7.0.1
  */

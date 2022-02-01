@@ -1,6 +1,17 @@
-public abstract interface aghe
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import java.util.Comparator;
+
+public class aghe
+  implements Comparator
 {
-  public abstract boolean a(Object paramObject);
+  public aghe(LoadDataJob paramLoadDataJob) {}
+  
+  public int compare(Object paramObject1, Object paramObject2)
+  {
+    paramObject1 = (aghq)paramObject1;
+    paramObject2 = (aghq)paramObject2;
+    return paramObject1.a - paramObject2.a;
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import alud;
-import bcko;
+import anni;
+import bfpg;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -12,7 +12,7 @@ import tencent.im.msg.hummer.resv3.CustomFaceExtPb.ResvAttr;
 
 public class MessageForTroopEffectPic
   extends MessageForPic
-  implements bcko
+  implements bfpg
 {
   public int effectId;
   
@@ -73,7 +73,7 @@ public class MessageForTroopEffectPic
   
   public String getSummaryMsg()
   {
-    return alud.a(2131706967);
+    return anni.a(2131705358);
   }
   
   public boolean isReaded()
@@ -83,7 +83,7 @@ public class MessageForTroopEffectPic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopEffectPic
  * JD-Core Version:    0.7.0.1
  */

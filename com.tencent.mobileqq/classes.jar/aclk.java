@@ -1,22 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
 
-public final class aclk
-  implements DialogInterface.OnClickListener
+final class aclk
+  implements View.OnTouchListener
 {
-  public aclk(aclo paramaclo, acln paramacln) {}
+  aclk(acli paramacli) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Aclo.a) {
-      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
-    }
-    if (this.jdField_a_of_type_Acln != null) {
-      this.jdField_a_of_type_Acln.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    acli localacli = this.a;
+    acli.a.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

@@ -1,28 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
 
-class adps
-  implements DialogInterface.OnClickListener
+public class adps
+  extends aniz
 {
-  adps(adpr paramadpr) {}
+  public adps(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    BaseChatPie.d(this.a, paramBoolean, paramObject);
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      this.a.aR();
     }
-    do
+  }
+  
+  protected void onImpeach(boolean paramBoolean, String paramString)
+  {
+    ((agjr)this.a.a(70)).a();
+    if (paramBoolean)
     {
+      this.a.a.showDialog(232);
       return;
-      this.a.jdField_a_of_type_Adpq.a.app.a().b(this.a.jdField_a_of_type_Adpq.a.a(), 0, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_Adpq.a.b();
-      return;
-    } while (this.a.jdField_a_of_type_Adpq.a.jdField_a_of_type_Adpq.getCount() <= 0);
-    this.a.jdField_a_of_type_Adpq.a.app.a().a(this.a.jdField_a_of_type_Adpq.a.a(), 0);
-    this.a.jdField_a_of_type_Adpq.a.jdField_a_of_type_Adpq.changeCursor(this.a.jdField_a_of_type_Adpq.getCursor());
+    }
+    this.a.a.showDialog(233);
+  }
+  
+  protected void onSetCalReactiveDays(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
+      }
+      this.a.aR();
+    }
   }
 }
 

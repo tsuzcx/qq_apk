@@ -1,27 +1,43 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext.StoryBroadcastReceiver;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import UserGrowth.stSimpleGetFeedListRsp;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import java.util.ArrayList;
 
-public class ulh
-  extends SimpleJob<Void>
+class ulh
+  implements uej
 {
-  public ulh(QQStoryContext.StoryBroadcastReceiver paramStoryBroadcastReceiver, String paramString)
-  {
-    super(paramString);
-  }
+  ulh(ulf paramulf, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(JceStruct paramJceStruct)
   {
-    int i = uom.a();
-    wxe.d(QQStoryContext.StoryBroadcastReceiver.a(), "onReceive : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
-    return null;
+    upe.d("WSRecommendFragmentPresenter", "onReadCacheCompleted");
+    if (!(paramJceStruct instanceof stSimpleGetFeedListRsp)) {}
+    WSRecommendFragment localWSRecommendFragment;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramJceStruct = (stSimpleGetFeedListRsp)paramJceStruct;
+          } while ((paramJceStruct.feeds == null) || (paramJceStruct.feeds.size() <= 0));
+          ulf.a(this.jdField_a_of_type_Ulf, true);
+        } while (ulf.a(this.jdField_a_of_type_Ulf));
+        paramJceStruct = paramJceStruct.feeds;
+        localWSRecommendFragment = (WSRecommendFragment)this.jdField_a_of_type_Ulf.a();
+      } while (localWSRecommendFragment == null);
+      localWSRecommendFragment.a(paramJceStruct, this.jdField_a_of_type_Boolean, this.b);
+    } while ((this.jdField_a_of_type_Boolean) || (ulf.a(this.jdField_a_of_type_Ulf)));
+    upe.d("WSRecommendFragmentPresenter", "showTopLoading");
+    localWSRecommendFragment.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ulh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,8 @@
-import android.os.IInterface;
+import java.io.ByteArrayOutputStream;
 
 public abstract interface amzp
-  extends IInterface
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public abstract void a(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream);
 }
 
 

@@ -1,28 +1,22 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
-public final class bjwb
-  implements bjqx
+final class bjwb
+  implements MiniAppCmdInterface
 {
-  public bjwb(Handler paramHandler) {}
+  bjwb(AsyncResult paramAsyncResult) {}
   
-  public void onWebEvent(String paramString, Bundle paramBundle)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if ("cmd.uploadCommentVideo".equals(paramString))
-    {
-      paramString = new Message();
-      paramString.obj = paramBundle;
-      this.a.sendMessage(paramString);
-      if ((paramBundle.getBundle("data") != null) && (paramBundle.getBundle("data").getInt("status") != 2)) {
-        bjqu.a().b(this);
-      }
+    if (this.a != null) {
+      this.a.onReceiveResult(paramBoolean, paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjwb
  * JD-Core Version:    0.7.0.1
  */

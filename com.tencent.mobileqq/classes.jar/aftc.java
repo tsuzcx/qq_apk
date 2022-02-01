@@ -1,17 +1,43 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import Wallet.AcsGetMsgRsp;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.1;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class aftc
-  extends afuf
+public class aftc
+  implements BusinessObserver
 {
-  aftc(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public aftc(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new aflk(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if ((QQNotifySettingBaseFragment.a(this.a).isShowing()) && (QQNotifySettingBaseFragment.a(this.a) != null)) {
+      QQNotifySettingBaseFragment.a(this.a).dismiss();
+    }
+    if (paramInt == 2005)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(QQNotifySettingBaseFragment.a(), 2, "acs msg succ");
+      }
+      if (!paramBoolean) {
+        break label114;
+      }
+      paramBundle = (AcsGetMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null) {
+        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
+      }
+    }
+    else
+    {
+      return;
+    }
+    QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
+    return;
+    label114:
+    this.a.a();
   }
 }
 

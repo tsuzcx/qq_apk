@@ -1,16 +1,63 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.widget.AdapterView;
+import android.app.Dialog;
+import android.os.Message;
+import java.lang.reflect.Field;
 
 public class adbo
-  implements bhux
 {
-  public adbo(FriendProfileImageActivity paramFriendProfileImageActivity) {}
-  
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static void a(Dialog paramDialog)
   {
-    FriendProfileImageActivity.a(this.a);
-    return true;
+    if (paramDialog == null) {}
+    for (;;)
+    {
+      return;
+      String[] arrayOfString = new String[3];
+      arrayOfString[0] = "mDismissMessage";
+      arrayOfString[1] = "mCancelMessage";
+      arrayOfString[2] = "mShowMessage";
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = arrayOfString[i];
+        try
+        {
+          localObject = Dialog.class.getDeclaredField((String)localObject);
+          if (localObject != null)
+          {
+            if (!((Field)localObject).isAccessible()) {
+              ((Field)localObject).setAccessible(true);
+            }
+            localObject = ((Field)localObject).get(paramDialog);
+            if ((localObject instanceof Message))
+            {
+              localObject = (Message)localObject;
+              if (((Message)localObject).obj != null)
+              {
+                ((Message)localObject).obj = null;
+                ((Message)localObject).what = 0;
+              }
+            }
+          }
+        }
+        catch (NoSuchFieldException localNoSuchFieldException)
+        {
+          localNoSuchFieldException.printStackTrace();
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          localIllegalArgumentException.printStackTrace();
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          localIllegalAccessException.printStackTrace();
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+        }
+        i += 1;
+      }
+    }
   }
 }
 

@@ -1,15 +1,10 @@
-public class bceb
-  extends bcdy
+import com.tencent.mobileqq.data.MessageRecord;
+
+public abstract interface bceb
 {
-  public int a()
-  {
-    return 0;
-  }
+  public abstract MessageRecord a(bceh parambceh);
   
-  public int b()
-  {
-    return -1;
-  }
+  public abstract MessageRecord a(bcfn parambcfn);
 }
 
 

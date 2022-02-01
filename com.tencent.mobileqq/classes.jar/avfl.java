@@ -1,27 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class avfl
-  implements View.OnTouchListener
+class avfl
+  implements EIPCResultCallback
 {
-  public avfl(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  avfl(avfk paramavfk) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramMotionEvent.getAction() == 0)
+    avfk.a(paramEIPCResult, "action");
+    switch (paramEIPCResult.code)
     {
-      if (!ShortVideoCommentsView.a(this.a)) {}
-      this.a.l();
-      ShortVideoCommentsView.b(this.a);
+    default: 
+      return;
+    case -102: 
+      avfk.a(this.a).a(2, paramEIPCResult.data);
+      return;
     }
-    return false;
+    avfk.a(this.a).a(1, paramEIPCResult.data);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avfl
  * JD-Core Version:    0.7.0.1
  */

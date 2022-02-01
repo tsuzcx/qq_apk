@@ -1,20 +1,20 @@
 package com.tencent.biz.subscribe.animation;
 
+import aabn;
+import aabo;
+import aabp;
+import aabq;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
-import yde;
-import ydf;
-import ydg;
-import ydh;
 
 public class PopViewAnimationDrawableHelper
 {
   private int jdField_a_of_type_Int;
+  private aabp jdField_a_of_type_Aabp;
+  private aabq jdField_a_of_type_Aabq;
   private AnimationDrawable jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private Runnable jdField_a_of_type_JavaLangRunnable;
-  private ydg jdField_a_of_type_Ydg;
-  private ydh jdField_a_of_type_Ydh;
   private int b;
   private int c;
   
@@ -22,8 +22,8 @@ public class PopViewAnimationDrawableHelper
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = paramAnimationDrawable;
     this.c = paramAnimationDrawable.getNumberOfFrames();
-    this.jdField_a_of_type_AndroidOsHandler = new ydf();
-    this.jdField_a_of_type_Ydh = new yde(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aabo();
+    this.jdField_a_of_type_Aabq = new aabn(this);
     this.jdField_a_of_type_JavaLangRunnable = new PopViewAnimationDrawableHelper.LoopingRunnable(this);
   }
   
@@ -72,13 +72,13 @@ public class PopViewAnimationDrawableHelper
       return;
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
       c();
-    } while (this.jdField_a_of_type_Ydg == null);
-    this.jdField_a_of_type_Ydg.a();
+    } while (this.jdField_a_of_type_Aabp == null);
+    this.jdField_a_of_type_Aabp.a();
   }
   
-  public void a(ydg paramydg)
+  public void a(aabp paramaabp)
   {
-    this.jdField_a_of_type_Ydg = paramydg;
+    this.jdField_a_of_type_Aabp = paramaabp;
   }
   
   public void b()
@@ -92,7 +92,7 @@ public class PopViewAnimationDrawableHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper
  * JD-Core Version:    0.7.0.1
  */

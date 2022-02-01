@@ -1,64 +1,56 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public abstract class ljg
+public class ljg
+  extends Handler
 {
-  protected static final String[] a;
-  public VideoAppInterface a;
-  public final String a;
+  WeakReference<CameraUtils> a;
   
-  static
+  public ljg(CameraUtils paramCameraUtils, Looper paramLooper)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MANAGER_ZIMU", "MANAGER_FILTER", "MANAGER_PENDANT", "MANAGER_FACE", "MANAGER_NODE_REPORTER", "MANAGER_SUPPORT", "MANAGER_REDPACKET", "MANAGER_REDPACKET_Entry", "MANAGER_EFFECT_OPERATE", "MANAGER_ZIMU_LIVE", "MANAGER_Voice_Recog", "MANAGER_Tips", "MANAGER_mutex", "MANAGER_INTERACTIVEVideo" };
+    super(paramLooper);
+    this.a = new WeakReference(paramCameraUtils);
   }
   
-  protected ljg(VideoAppInterface paramVideoAppInterface)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.b());
+    removeMessages(1);
   }
   
-  public static void a(String paramString, Context paramContext, int paramInt, boolean paramBoolean)
+  public void a(String paramString, long paramLong, int paramInt1, int paramInt2)
   {
-    if ((paramInt >= 0) && (paramInt < 14) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
+    QLog.w("CameraUtils", 1, "sendReopenCameraMsg[" + paramString + "], size[" + paramInt1 + ", " + paramInt2 + "], subthread[" + getLooper().getThread().getId() + "], seq[" + paramLong + "]");
+    a(paramLong);
+    paramString = obtainMessage(1);
+    paramString.arg1 = paramInt1;
+    paramString.arg2 = paramInt2;
+    paramString.obj = Long.valueOf(paramLong);
+    sendMessageDelayed(paramString, 1000L);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((this.a != null) && (this.a.get() != null) && (paramMessage != null) && (paramMessage.what == 1)) {
+      if (!(paramMessage.obj instanceof Long)) {
+        break label75;
+      }
+    }
+    label75:
+    for (long l = Long.valueOf(0L).longValue();; l = 0L)
     {
-      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      paramContext = bdne.b(paramContext).edit();
-      paramContext.putBoolean(str, paramBoolean);
-      paramContext.commit();
-      lek.e(paramString, "setPreload zzzzz  bid=" + paramInt);
+      CameraUtils.a((CameraUtils)this.a.get(), l, paramMessage.arg1, paramMessage.arg2);
+      super.handleMessage(paramMessage);
       return;
     }
-    lek.e(paramString, "setPreload ERROR : bid=" + paramInt);
   }
-  
-  static boolean a(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < 14) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
-    {
-      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      boolean bool = bdne.b(paramVideoAppInterface.getApplication()).getBoolean(str, false);
-      lek.c(paramString, "isPreloaded:" + str + "|" + bool);
-      return bool;
-    }
-    lek.e(paramString, "isPreloaded ERROR : bid=" + paramInt);
-    return false;
-  }
-  
-  protected abstract void a();
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2) {}
-  
-  protected void a(String paramString, boolean paramBoolean) {}
-  
-  protected abstract boolean a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ljg
  * JD-Core Version:    0.7.0.1
  */

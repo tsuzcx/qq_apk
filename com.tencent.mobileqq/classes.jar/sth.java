@@ -1,18 +1,10 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-
-public class sth
-  extends alwx
+public abstract interface sth
 {
-  public sth(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    this.a.b();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sth
  * JD-Core Version:    0.7.0.1
  */

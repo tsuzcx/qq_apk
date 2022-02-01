@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afxh;
-import bdhb;
+import ahed;
+import bgmg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ public class PokeItemAnimationManager$1
       if (QLog.isColorLevel()) {
         QLog.d("LzmaUtils", 2, "inFileDir:" + this.jdField_a_of_type_JavaLangString + " | outFileDir:" + this.b);
       }
-      bdhb.a(this.jdField_a_of_type_JavaLangString, this.b, false);
+      bgmg.a(this.jdField_a_of_type_JavaLangString, this.b, false);
     }
     catch (IOException localIOException)
     {
@@ -26,12 +26,12 @@ public class PokeItemAnimationManager$1
         }
       }
     }
-    afxh.a(this.this$0, this.b, this.jdField_a_of_type_AndroidContentContext);
+    ahed.a(this.this$0, this.b, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PokeItemAnimationManager.1
  * JD-Core Version:    0.7.0.1
  */

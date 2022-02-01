@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/nt4" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView android:id="@id/nt6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
+    <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTopicViewGroup android:orientation="horizontal" android:id="@id/ksn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="26.0dip" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/mez" android:visibility="gone" android:layout="@layout/c_n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/krb" android:visibility="gone" android:layout="@layout/aat" android:layout_width="wrap_content" android:layout_height="23.0dip" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/krd" android:visibility="gone" android:layout="@layout/clv" android:layout_width="wrap_content" android:layout_height="27.0dip" android:layout_marginBottom="8.0dip" />
+    <ViewStub android:id="@id/krc" android:visibility="gone" android:layout="@layout/ab4" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginBottom="8.0dip" />
+</LinearLayout>

@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import rx.functions.Action1;
 
 class balc
-  implements DialogInterface.OnDismissListener
+  implements Action1<baky>
 {
-  balc(bala parambala) {}
+  balc(balb parambalb, HashSet paramHashSet) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(baky parambaky)
   {
-    if (bala.a(this.a) != null) {
-      bala.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ResourceGrabViewModel", 2, "ResourceNameOnClickListener subscribe call :" + parambaky);
     }
+    if (TextUtils.equals(parambaky.a, "text_color"))
+    {
+      balb.a(this.jdField_a_of_type_Balb, parambaky, this.jdField_a_of_type_JavaUtilHashSet);
+      return;
+    }
+    balb.b(this.jdField_a_of_type_Balb, parambaky, this.jdField_a_of_type_JavaUtilHashSet);
   }
 }
 

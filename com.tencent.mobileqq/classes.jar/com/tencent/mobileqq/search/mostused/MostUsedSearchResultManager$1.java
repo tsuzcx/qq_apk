@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.search.mostused;
 
-import aypg;
-import aypl;
+import bbok;
+import bbop;
 import com.tencent.qphone.base.util.QLog;
 
 public class MostUsedSearchResultManager$1
   implements Runnable
 {
-  public MostUsedSearchResultManager$1(aypl paramaypl, MostUsedSearchItem paramMostUsedSearchItem) {}
+  public MostUsedSearchResultManager$1(bbop parambbop, MostUsedSearchItem paramMostUsedSearchItem) {}
   
   public void run()
   {
-    if (aypl.a(this.this$0) != null)
+    if (bbop.a(this.this$0) != null)
     {
-      aypl.a(this.this$0).a(aypl.a(this.this$0), this.a);
-      aypl.a(this.this$0).a(aypl.a(this.this$0));
+      bbop.a(this.this$0).a(bbop.a(this.this$0), this.a);
+      bbop.a(this.this$0).a(bbop.a(this.this$0));
       return;
     }
     QLog.e("MostUsedSearchResultManager", 2, "UpdateItemUsed NULL cache");
@@ -22,7 +22,7 @@ public class MostUsedSearchResultManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,43 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class auhn
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private List<Integer> jdField_a_of_type_JavaUtilList;
-  private String b;
-  private String c;
+  private static auhn jdField_a_of_type_Auhn;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public auhn a(int paramInt)
+  public static auhn a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    if (jdField_a_of_type_Auhn == null) {
+      jdField_a_of_type_Auhn = new auhn();
+    }
+    return jdField_a_of_type_Auhn;
   }
   
-  public auhn a(String paramString)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    if (jdField_a_of_type_Auhn == null) {
+      paramString = null;
+    }
+    String str;
+    do
+    {
+      return paramString;
+      str = (String)jdField_a_of_type_Auhn.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      paramString = str;
+    } while (!jdField_a_of_type_Auhn.jdField_a_of_type_JavaUtilMap.isEmpty());
+    jdField_a_of_type_Auhn = null;
+    return str;
   }
   
-  public auhn a(List<Integer> paramList)
+  public void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
-  }
-  
-  public MsgBackupUserData a()
-  {
-    return new MsgBackupUserData(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b, this.c, this.jdField_a_of_type_Int, null);
-  }
-  
-  public auhn b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public auhn c(String paramString)
-  {
-    this.c = paramString;
-    return this;
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auhn
  * JD-Core Version:    0.7.0.1
  */

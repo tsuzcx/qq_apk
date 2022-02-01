@@ -1,23 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class awba
-  implements View.OnClickListener
+public class awba
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  awba(awaw paramawaw, awbl paramawbl) {}
+  public awba(PoiSlideBottomPanel paramPoiSlideBottomPanel, View paramView, float paramFloat1, float paramFloat2) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    awaw.a(this.jdField_a_of_type_Awaw).removeMessages(101);
-    awaw.a(this.jdField_a_of_type_Awaw).obtainMessage(101).sendToTarget();
-    this.jdField_a_of_type_Awbl.a.a();
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if ((paramValueAnimator instanceof Float))
+    {
+      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
+      if (QLog.isColorLevel()) {
+        QLog.d("PoiSlideBottomPanel", 2, "[panel] onAnimationUpdate: show invoked. mPanel:" + this.jdField_a_of_type_AndroidViewView.getId() + " org: " + this.jdField_a_of_type_Float + " dest: " + this.b + " value: " + this.jdField_a_of_type_AndroidViewView.getY());
+      }
+      if (PoiSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel) != null) {
+        PoiSlideBottomPanel.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel).fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / (PoiSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel) - PoiSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel)));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awba
  * JD-Core Version:    0.7.0.1
  */

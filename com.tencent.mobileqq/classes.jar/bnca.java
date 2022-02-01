@@ -1,8 +1,19 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bnca
+class bnca
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2, Bitmap paramBitmap);
+  bnca(bnbz parambnbz) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.performClick();
+    bcst.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.back", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

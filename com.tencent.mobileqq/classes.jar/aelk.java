@@ -1,34 +1,22 @@
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aelk
-  extends awuk
+  extends aelh
 {
-  public aelk(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, boolean paramBoolean)
+  public aelk(JumpActivity paramJumpActivity)
   {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
+    super(paramJumpActivity);
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 1001: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
+    this.b.a(paramInt1, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aelk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,40 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.AbsListView.LayoutParams;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver.1;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Set;
 
 public class bewt
-  extends RecyclerView.ViewHolder
+  implements Observer
 {
-  final SimpleMonthView a;
-  
-  public bewt(View paramView, bewu parambewu)
+  private final void a(Object paramObject)
   {
-    super(paramView);
-    this.a = ((SimpleMonthView)paramView);
-    this.a.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-    this.a.setClickable(true);
-    this.a.setOnDayClickListener(parambewu);
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    paramObject = (Object[])paramObject[1];
+    switch (i)
+    {
+    default: 
+      return;
+    }
+    a((Set)paramObject[0]);
+  }
+  
+  protected void a(Set<Long> paramSet) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
+    {
+      new Handler(paramObservable).post(new TroopFileDownloadMgr.FileDownloadMgrObserver.1(this, paramObject));
+      return;
+    }
+    a(paramObject);
   }
 }
 

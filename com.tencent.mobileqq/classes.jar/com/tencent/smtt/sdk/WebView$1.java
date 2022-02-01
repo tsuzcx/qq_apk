@@ -16,12 +16,12 @@ class WebView$1
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    WebView.access$000(this.this$0, paramInt3, paramInt4, paramInt1, paramInt2);
+    WebView.a(this.a, paramInt3, paramInt4, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,11 +20,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import axsf;
-import axsg;
-import axsh;
-import axsi;
-import azkz;
+import baqg;
+import baqh;
+import baqi;
+import baqj;
+import bclx;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.widget.RedDotTextView;
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class QQSlidingTabView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private axsh jdField_a_of_type_Axsh;
+  private baqi jdField_a_of_type_Baqi;
   private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   private boolean jdField_a_of_type_Boolean;
   private int b = -16777216;
@@ -75,7 +75,7 @@ public class QQSlidingTabView
     if (paramInt < 0) {
       return -1;
     }
-    paramView.setOnClickListener(new axsf(this, paramInt));
+    paramView.setOnClickListener(new baqg(this, paramInt));
     this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramView);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, paramInt);
     return 0;
@@ -139,7 +139,7 @@ public class QQSlidingTabView
     setFillViewport(true);
     setWillNotDraw(false);
     setHorizontalScrollBarEnabled(false);
-    this.q = azkz.a(this.p);
+    this.q = bclx.a(this.p);
   }
   
   @TargetApi(11)
@@ -166,7 +166,7 @@ public class QQSlidingTabView
       this.jdField_a_of_type_Boolean = false;
       localObject = ValueAnimator.ofInt(new int[] { i1, i2 });
       ((ValueAnimator)localObject).setDuration(100L);
-      ((ValueAnimator)localObject).addUpdateListener(new axsg(this));
+      ((ValueAnimator)localObject).addUpdateListener(new baqh(this));
       ((ValueAnimator)localObject).start();
       return;
     }
@@ -193,7 +193,7 @@ public class QQSlidingTabView
         }
         localObject = (Bundle)localView.getTag();
         if (localObject != null) {
-          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130846206));
+          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130846645));
         }
       }
       for (;;)
@@ -222,7 +222,7 @@ public class QQSlidingTabView
           {
             localObject = (Bundle)localView.getTag();
             if (localObject != null) {
-              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130846205));
+              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130846644));
             }
           }
           else if ((localView instanceof RedDotTextView))
@@ -275,13 +275,13 @@ public class QQSlidingTabView
     b(paramInt);
     c(paramInt);
     b();
-    if (this.jdField_a_of_type_Axsh != null) {
-      this.jdField_a_of_type_Axsh.a(paramInt);
+    if (this.jdField_a_of_type_Baqi != null) {
+      this.jdField_a_of_type_Baqi.a(paramInt);
     }
     this.o = this.n;
   }
   
-  public void a(ArrayList<axsi> paramArrayList)
+  public void a(ArrayList<baqj> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -295,14 +295,14 @@ public class QQSlidingTabView
     while (i1 < paramArrayList.size())
     {
       RedDotTextView localRedDotTextView = new RedDotTextView(getContext());
-      localRedDotTextView.setText(((axsi)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
-      localRedDotTextView.setContentDescription(((axsi)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
+      localRedDotTextView.setText(((baqj)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
+      localRedDotTextView.setContentDescription(((baqj)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
       localRedDotTextView.setGravity(17);
       localRedDotTextView.setSingleLine();
       localRedDotTextView.setTextSize(0, this.d);
       localRedDotTextView.setPadding(this.f, 0, this.f, 0);
-      localRedDotTextView.a(((axsi)paramArrayList.get(i1)).jdField_a_of_type_Boolean);
-      if (((axsi)paramArrayList.get(i1)).b) {
+      localRedDotTextView.a(((baqj)paramArrayList.get(i1)).jdField_a_of_type_Boolean);
+      if (((baqj)paramArrayList.get(i1)).b) {
         i2 = i1;
       }
       a(i1, localRedDotTextView);
@@ -352,14 +352,14 @@ public class QQSlidingTabView
     invalidate();
   }
   
-  public void setTabCheckListener(axsh paramaxsh)
+  public void setTabCheckListener(baqi parambaqi)
   {
-    this.jdField_a_of_type_Axsh = paramaxsh;
+    this.jdField_a_of_type_Baqi = parambaqi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView
  * JD-Core Version:    0.7.0.1
  */

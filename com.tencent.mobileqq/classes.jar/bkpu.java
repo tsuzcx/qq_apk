@@ -1,11 +1,33 @@
+import android.database.DataSetObservable;
+import android.database.DataSetObserver;
+import java.util.ArrayList;
+
 class bkpu
-  implements axpb
+  extends DataSetObservable
 {
-  bkpu(bkpl parambkpl) {}
+  bkpu(bkps parambkps) {}
   
-  public void a()
+  public void a(int paramInt1, int paramInt2)
   {
-    bksp.a().e();
+    for (;;)
+    {
+      int i;
+      synchronized (this.mObservers)
+      {
+        i = this.mObservers.size() - 1;
+        if (i >= 0)
+        {
+          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+          if ((localDataSetObserver instanceof bkpt)) {
+            ((bkpt)localDataSetObserver).a(paramInt1, paramInt2);
+          } else {
+            localDataSetObserver.onChanged();
+          }
+        }
+      }
+      return;
+      i -= 1;
+    }
   }
 }
 

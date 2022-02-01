@@ -1322,11 +1322,6 @@ public final class p
     }
   }
   
-  public final boolean a(int paramInt, String paramString, o paramo, boolean paramBoolean)
-  {
-    return a(paramInt, paramString, null);
-  }
-  
   public final boolean a(int paramInt, String paramString, byte[] paramArrayOfByte, o paramo, boolean paramBoolean)
   {
     if (!paramBoolean)

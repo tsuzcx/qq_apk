@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.widget.media;
 
+import com.tencent.mobileqq.microapp.appbrand.b.a;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
-import com.tencent.mobileqq.microapp.appbrand.utils.a;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 import org.json.JSONObject;
@@ -32,7 +32,7 @@ final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.m
  * JD-Core Version:    0.7.0.1
  */

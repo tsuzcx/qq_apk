@@ -1,5 +1,6 @@
 package com.tencent.biz.subscribe.widget;
 
+import aakp;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -10,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import ynt;
 
 public class AlphaLoadingView
   extends View
@@ -42,7 +42,7 @@ public class AlphaLoadingView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidOsHandler = new ynt(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aakp(this);
   }
   
   private int a(int paramInt, boolean paramBoolean)
@@ -167,7 +167,7 @@ public class AlphaLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.AlphaLoadingView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.paster;
 
 import android.text.TextUtils;
-import bdin;
-import blvo;
-import blvp;
-import blvs;
-import bmvz;
+import bgnt;
+import boos;
+import boot;
+import boow;
+import bpnf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -14,15 +14,15 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class QIMInformationPasterManager$2
   implements Runnable
 {
-  public QIMInformationPasterManager$2(blvo paramblvo, List paramList) {}
+  public QIMInformationPasterManager$2(boos paramboos, List paramList) {}
   
   public void run()
   {
-    blvo.a(this.this$0).clear();
+    boos.a(this.this$0).clear();
     if (QLog.isColorLevel()) {
       QLog.d("QIMInformationPasterManager", 2, "patch pull res");
     }
-    if (!bdin.g(blvo.a(this.this$0))) {
+    if (!bgnt.g(boos.a(this.this$0))) {
       if (QLog.isColorLevel()) {
         QLog.d("QIMInformationPasterManager", 2, "network is unavailable");
       }
@@ -31,29 +31,29 @@ public class QIMInformationPasterManager$2
     {
       return;
       Iterator localIterator = this.a.iterator();
-      bmvz localbmvz;
+      bpnf localbpnf;
       while (localIterator.hasNext())
       {
-        localbmvz = (bmvz)localIterator.next();
-        if ((!TextUtils.isEmpty(localbmvz.e)) && (!this.this$0.a(localbmvz)) && (localbmvz.b != 2)) {
-          blvo.a(this.this$0).add(localbmvz);
+        localbpnf = (bpnf)localIterator.next();
+        if ((!TextUtils.isEmpty(localbpnf.e)) && (!this.this$0.a(localbpnf)) && (localbpnf.b != 2)) {
+          boos.a(this.this$0).add(localbpnf);
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "need download size:" + blvo.a(this.this$0).size());
+        QLog.d("QIMInformationPasterManager", 2, "need download size:" + boos.a(this.this$0).size());
       }
-      localIterator = blvo.a(this.this$0).iterator();
+      localIterator = boos.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        localbmvz = (bmvz)localIterator.next();
-        this.this$0.a.a(localbmvz, new blvp(this));
+        localbpnf = (bpnf)localIterator.next();
+        this.this$0.a.a(localbpnf, new boot(this));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.paster.QIMInformationPasterManager.2
  * JD-Core Version:    0.7.0.1
  */

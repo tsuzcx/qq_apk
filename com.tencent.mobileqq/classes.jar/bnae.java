@@ -1,12 +1,24 @@
-import java.util.List;
-
-public abstract interface bnae
+public class bnae
 {
-  public abstract void a(long paramLong);
-  
-  public abstract void a(List<Long> paramList);
-  
-  public abstract void b(long paramLong);
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
 }
 
 

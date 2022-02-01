@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agnj;
+import ahxp;
 import com.tencent.widget.PatchedButton;
 import com.tencent.widget.XEditTextEx;
 
 public class BaseTroopChatPie$4
   implements Runnable
 {
-  public BaseTroopChatPie$4(agnj paramagnj) {}
+  public BaseTroopChatPie$4(ahxp paramahxp) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class BaseTroopChatPie$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie.4
  * JD-Core Version:    0.7.0.1
  */

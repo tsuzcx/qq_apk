@@ -1,26 +1,26 @@
-public class nrx
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
+
+class nrx
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
+  nrx(nre paramnre, String paramString) {}
   
-  public nrx(nru paramnru, String paramString1, String paramString2, long paramLong, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "PublicAccountSearchHistoryItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean + ", time:" + this.jdField_a_of_type_Long;
+    Intent localIntent = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    ((BaseActivity)this.jdField_a_of_type_Nre.a.get()).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nrx
  * JD-Core Version:    0.7.0.1
  */

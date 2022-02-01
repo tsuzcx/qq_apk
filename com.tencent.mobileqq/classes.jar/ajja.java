@@ -1,8 +1,19 @@
-public abstract interface ajja
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ajja
+  implements View.OnClickListener
 {
-  public abstract void l();
+  ajja(ajiy paramajiy) {}
   
-  public abstract void n();
+  public void onClick(View paramView)
+  {
+    GroupManagerActivity.a(this.a.a);
+    bcst.b(ajiy.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

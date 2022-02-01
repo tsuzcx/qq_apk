@@ -1,26 +1,28 @@
-import android.content.Intent;
-import android.os.Bundle;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StReply;
 
-public class vtg
-  implements vrx
+class vtg
+  implements vhq
 {
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  vtg(vtd paramvtd, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
   
-  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
+  public void a()
+  {
+    if (vtd.a(this.jdField_a_of_type_Vtd) != null)
+    {
+      vtd.a(this.jdField_a_of_type_Vtd).b("");
+      vtd.a().a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, vtd.a(this.jdField_a_of_type_Vtd).a());
+      vtd.a(this.jdField_a_of_type_Vtd).a("");
+      vtd.a(this.jdField_a_of_type_Vtd).b(this.jdField_a_of_type_Vtd.a(null, null));
+    }
+    vtd.a(this.jdField_a_of_type_Vtd, null);
+    vtd.a(this.jdField_a_of_type_Vtd, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vtg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,13 @@
-import android.widget.TextView;
+import android.graphics.PointF;
+import java.util.List;
 
-public class akmd
+public abstract interface akmd
 {
-  public TextView a;
-  
-  protected akmd(akmb paramakmb) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akmd
  * JD-Core Version:    0.7.0.1
  */

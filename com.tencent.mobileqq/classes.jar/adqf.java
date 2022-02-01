@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.widget.XPanelContainer;
 import mqq.app.QQPermissionCallback;
 
 public class adqf
   implements QQPermissionCallback
 {
-  public adqf(QQIdentiferLegacy paramQQIdentiferLegacy) {}
+  public adqf(BaseChatPie paramBaseChatPie) {}
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bdgm.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
+    bglp.b(this.a.a());
+    ((agni)this.a.a(29)).b(2);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QQIdentiferLegacy.a(this.a);
+    agec.a().a(this.a.jdField_a_of_type_AndroidContentContext);
+    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(2);
+    ahqr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8005CAC", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

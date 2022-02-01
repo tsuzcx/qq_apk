@@ -1,24 +1,16 @@
-import com.tencent.av.random.RandomWebProtocol;
-import org.json.JSONObject;
+import android.os.IInterface;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public class lvs
-  extends lvn
+public abstract interface lvs
+  extends IInterface
 {
-  String b;
+  public abstract void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig);
   
-  public lvs(RandomWebProtocol paramRandomWebProtocol) {}
-  
-  void a(String paramString)
-  {
-    super.a(paramString);
-    if ((this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) {
-      this.b = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
-    }
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lvs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,168 +1,209 @@
-import java.util.Arrays;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.BeancurdMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.tofumsg.TofuItem;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfo;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
 
-class bdqo
+public abstract class bdqo
+  implements bdqm
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
+  QQAppInterface a;
   
-  bdqo(bdqm parambdqm, int paramInt1, int paramInt2)
+  public bdqo(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    a();
+    this.a = paramQQAppInterface;
   }
   
-  final int a()
-  {
-    return (this.e - this.d + 1) * (this.g - this.f + 1) * (this.i - this.h + 1);
-  }
+  public abstract int a();
   
-  final bdqo a()
+  public TofuItem a(@NotNull TofuItem paramTofuItem, long paramLong, int paramInt)
   {
-    if (!a()) {
-      throw new IllegalStateException("Can not split a box with only 1 color");
-    }
-    int j = d();
-    bdqo localbdqo = new bdqo(this.jdField_a_of_type_Bdqm, j + 1, this.b);
-    this.b = j;
-    a();
-    return localbdqo;
-  }
-  
-  final bdqv a()
-  {
-    int i1 = 0;
-    int[] arrayOfInt1 = this.jdField_a_of_type_Bdqm.a;
-    int[] arrayOfInt2 = this.jdField_a_of_type_Bdqm.b;
-    int n = this.jdField_a_of_type_Int;
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    while (n <= this.b)
+    boolean bool2 = a(paramInt);
+    if (paramLong - paramTofuItem.lastPullTsLocal >= paramTofuItem.pullInterval) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      int i2 = arrayOfInt1[n];
-      int i3 = arrayOfInt2[i2];
-      i1 += i3;
-      m += bdqm.a(i2) * i3;
-      k += bdqm.b(i2) * i3;
-      j += bdqm.c(i2) * i3;
-      n += 1;
+      if (QLog.isColorLevel()) {
+        QLog.i("Tofu_TofuDataBaseHandler", 2, String.format("makeReqItemIfPull [%s] [canPull,tsCheck]=[%b,%b] [curTs,lastTs,interval]=[%d,%d,%d]", new Object[] { bdqn.a(paramTofuItem.busId), Boolean.valueOf(bool2), Boolean.valueOf(bool1), Long.valueOf(paramLong), Long.valueOf(paramTofuItem.lastPullTsLocal), Long.valueOf(paramTofuItem.pullInterval) }));
+      }
+      if ((!bool2) || (!bool1)) {
+        break;
+      }
+      TofuItem localTofuItem = new TofuItem(Long.toString(paramTofuItem.frdUin), paramTofuItem.busId);
+      localTofuItem.cloneFrom(paramTofuItem);
+      return localTofuItem;
     }
-    return new bdqv(bdqm.a(Math.round(m / i1), Math.round(k / i1), Math.round(j / i1)), i1);
+    return null;
   }
   
-  final void a()
+  public abstract String a(TofuItem paramTofuItem);
+  
+  public final oidb_0xe61.BeancurdCubeInfo a(TofuItem paramTofuItem)
   {
-    int[] arrayOfInt1 = this.jdField_a_of_type_Bdqm.a;
-    int[] arrayOfInt2 = this.jdField_a_of_type_Bdqm.b;
-    int n = -2147483648;
-    int i5 = 0;
-    int m = this.jdField_a_of_type_Int;
-    int i6 = -2147483648;
-    int j = 2147483647;
-    int k = 2147483647;
-    int i3 = 2147483647;
-    int i2 = -2147483648;
-    while (m <= this.b)
+    oidb_0xe61.BeancurdCubeInfo localBeancurdCubeInfo = paramTofuItem.packToPbReq();
+    paramTofuItem = a(paramTofuItem);
+    if (paramTofuItem != null) {
+      localBeancurdCubeInfo.bytes_busi_data_req.set(ByteStringMicro.copyFrom(paramTofuItem));
+    }
+    return localBeancurdCubeInfo;
+  }
+  
+  public void a() {}
+  
+  public final void a(@NotNull TofuItem paramTofuItem, oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult, long paramLong)
+  {
+    boolean bool;
+    if ((paramBeancurdCubeInfoResult.uint32_result.has()) && (paramBeancurdCubeInfoResult.uint32_result.get() == 0)) {
+      bool = true;
+    }
+    for (;;)
     {
-      int i1 = arrayOfInt1[m];
-      int i9 = i5 + arrayOfInt2[i1];
-      int i8 = bdqm.a(i1);
-      int i7 = bdqm.b(i1);
-      i5 = bdqm.c(i1);
-      i1 = i6;
-      if (i8 > i6) {
-        i1 = i8;
+      if (paramBeancurdCubeInfoResult.beancurdCubeInfo.has())
+      {
+        paramBeancurdCubeInfoResult = (oidb_0xe61.BeancurdCubeInfo)paramBeancurdCubeInfoResult.beancurdCubeInfo.get();
+        bool = a(paramTofuItem, bool, paramLong, paramBeancurdCubeInfoResult);
+        if (!bool) {}
       }
-      int i4 = i3;
-      if (i8 < i3) {
-        i4 = i8;
+      try
+      {
+        paramBeancurdCubeInfoResult = a(paramTofuItem);
+        if (!TextUtils.isEmpty(paramBeancurdCubeInfoResult))
+        {
+          BeancurdMsg localBeancurdMsg = new BeancurdMsg();
+          localBeancurdMsg.frienduin = Long.toString(paramTofuItem.frdUin);
+          localBeancurdMsg.busiid = a();
+          localBeancurdMsg.isNeedDelHistory = paramTofuItem.bNeedDelHistory();
+          localBeancurdMsg.ispush = paramTofuItem.bInsertImmediate();
+          localBeancurdMsg.originTime = paramTofuItem.eventTs;
+          localBeancurdMsg.startTime = bbyp.a();
+          localBeancurdMsg.validTime = paramTofuItem.validTime;
+          localBeancurdMsg.buffer = paramBeancurdCubeInfoResult;
+          bdqr.a(this.a, localBeancurdMsg, a(), b());
+        }
+        QLog.d("Tofu_TofuDataBaseHandler", 1, String.format("onGetRsp [%s] bNew=%b ts=%d item=%s", new Object[] { bdqn.a(paramTofuItem.busId), Boolean.valueOf(bool), Long.valueOf(paramLong), paramTofuItem }));
+        return;
+        bool = false;
+        continue;
+        paramBeancurdCubeInfoResult = null;
       }
-      i3 = i2;
-      if (i7 > i2) {
-        i3 = i7;
+      catch (Exception paramBeancurdCubeInfoResult)
+      {
+        for (;;)
+        {
+          QLog.d("Tofu_TofuDataBaseHandler", 1, "onGetRsp exception=" + paramBeancurdCubeInfoResult.getMessage(), paramBeancurdCubeInfoResult);
+        }
       }
-      i8 = k;
-      if (i7 < k) {
-        i8 = i7;
-      }
-      i2 = n;
-      if (i5 > n) {
-        i2 = i5;
-      }
-      k = j;
-      if (i5 < j) {
-        k = i5;
-      }
-      m += 1;
-      i5 = i9;
-      n = i2;
-      i2 = i3;
-      i6 = i1;
-      j = k;
-      k = i8;
-      i3 = i4;
     }
-    this.d = i3;
-    this.e = i6;
-    this.f = k;
-    this.g = i2;
-    this.h = j;
-    this.i = n;
-    this.c = i5;
   }
   
-  final boolean a()
+  public boolean a()
   {
-    return b() > 1;
+    return false;
   }
   
-  final int b()
+  public boolean a(int paramInt)
   {
-    return this.b + 1 - this.jdField_a_of_type_Int;
+    return paramInt == 0;
   }
   
-  final int c()
+  public boolean a(TofuItem paramTofuItem, boolean paramBoolean, long paramLong, oidb_0xe61.BeancurdCubeInfo paramBeancurdCubeInfo)
   {
-    int j = this.e - this.d;
-    int k = this.g - this.f;
-    int m = this.i - this.h;
-    if ((j >= k) && (j >= m)) {
-      return -3;
-    }
-    if ((k >= j) && (k >= m)) {
-      return -2;
-    }
-    return -1;
-  }
-  
-  final int d()
-  {
-    int j = c();
-    int[] arrayOfInt1 = this.jdField_a_of_type_Bdqm.a;
-    int[] arrayOfInt2 = this.jdField_a_of_type_Bdqm.b;
-    bdqm.a(arrayOfInt1, j, this.jdField_a_of_type_Int, this.b);
-    Arrays.sort(arrayOfInt1, this.jdField_a_of_type_Int, this.b + 1);
-    bdqm.a(arrayOfInt1, j, this.jdField_a_of_type_Int, this.b);
-    int m = this.c / 2;
-    j = this.jdField_a_of_type_Int;
-    int k = 0;
-    while (j <= this.b)
+    if ((paramBoolean) && (paramBeancurdCubeInfo != null))
     {
-      k += arrayOfInt2[arrayOfInt1[j]];
-      if (k >= m) {
-        return Math.min(this.b - 1, j);
+      long l1 = paramTofuItem.eventTs;
+      long l2 = paramTofuItem.lastPullTsSvr;
+      paramTofuItem.lastPullTsLocal = paramLong;
+      label71:
+      label112:
+      byte[] arrayOfByte;
+      if (paramBeancurdCubeInfo.uint64_event_time.has())
+      {
+        paramLong = paramBeancurdCubeInfo.uint64_event_time.get();
+        paramTofuItem.eventTs = paramLong;
+        if (!paramBeancurdCubeInfo.uint64_pull_interval_time.has()) {
+          break label257;
+        }
+        paramLong = paramBeancurdCubeInfo.uint64_pull_interval_time.get();
+        paramTofuItem.pullInterval = paramLong;
+        if (paramTofuItem.pullInterval <= 0L) {
+          paramTofuItem.pullInterval = 86400L;
+        }
+        if (!paramBeancurdCubeInfo.uint64_last_pull_time.has()) {
+          break label264;
+        }
+        paramLong = paramBeancurdCubeInfo.uint64_last_pull_time.get();
+        paramTofuItem.lastPullTsSvr = paramLong;
+        if (!paramBeancurdCubeInfo.uint64_valid_time.has()) {
+          break label272;
+        }
+        paramLong = paramBeancurdCubeInfo.uint64_valid_time.get();
+        label137:
+        paramTofuItem.validTime = paramLong;
+        if (!paramBeancurdCubeInfo.uint64_flag.has()) {
+          break label280;
+        }
+        paramLong = paramBeancurdCubeInfo.uint64_flag.get();
+        label162:
+        paramTofuItem.flags = paramLong;
+        if (!paramBeancurdCubeInfo.bytes_busi_data_rsp.has()) {
+          break label288;
+        }
+        arrayOfByte = paramBeancurdCubeInfo.bytes_busi_data_rsp.get().toByteArray();
+        label191:
+        paramTofuItem.bytesFromServer = arrayOfByte;
+        if (!paramBeancurdCubeInfo.bytes_busi_data_req.has()) {
+          break label294;
+        }
       }
-      j += 1;
+      label257:
+      label264:
+      label272:
+      label280:
+      label288:
+      label294:
+      for (paramBeancurdCubeInfo = paramBeancurdCubeInfo.bytes_busi_data_req.get().toByteArray();; paramBeancurdCubeInfo = null)
+      {
+        paramTofuItem.bytesFromClient = paramBeancurdCubeInfo;
+        if ((paramTofuItem.eventTs <= l1) || (paramTofuItem.lastPullTsSvr <= l2)) {
+          break label300;
+        }
+        return true;
+        paramLong = paramTofuItem.eventTs;
+        break;
+        paramLong = 86400L;
+        break label71;
+        paramLong = paramTofuItem.lastPullTsSvr;
+        break label112;
+        paramLong = paramTofuItem.validTime;
+        break label137;
+        paramLong = paramTofuItem.flags;
+        break label162;
+        arrayOfByte = null;
+        break label191;
+      }
+      label300:
+      return false;
     }
-    return this.jdField_a_of_type_Int;
+    paramTofuItem.lastPullTsLocal = paramLong;
+    return false;
+  }
+  
+  public abstract byte[] a(TofuItem paramTofuItem);
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

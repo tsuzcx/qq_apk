@@ -1,143 +1,297 @@
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import mqq.app.MobileQQ;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.wadl.ipc.WadlParams;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class auuc
 {
-  public static HashSet a = new HashSet();
+  public static int a;
+  public static String a;
+  public static List<String> a;
+  public static int b;
+  public static int c;
+  public static int d = 7;
   
-  public static auub a(AppInterface paramAppInterface)
+  static
   {
-    auub localauub = new auub();
-    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4);
-    localauub.jdField_a_of_type_Boolean = paramAppInterface.getBoolean("isShowCard", false);
-    localauub.jdField_b_of_type_Boolean = paramAppInterface.getBoolean("isShowList", false);
-    localauub.jdField_a_of_type_Long = paramAppInterface.getLong("expireTime", 0L);
-    localauub.jdField_a_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrl", "");
-    localauub.jdField_b_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrlForHost", "");
-    localauub.c = paramAppInterface.getString("entranceJumpUrlForGuest", "");
+    jdField_a_of_type_Int = 3;
+    b = 30000;
+    c = 7000;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaUtilList = new ArrayList(3);
+  }
+  
+  public static int a()
+  {
+    return aqsl.a().b;
+  }
+  
+  public static String a()
+  {
+    String str2 = aqsj.a().jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "";
+    }
+    return str1;
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
     if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.getConfig config.expireTime=" + localauub.jdField_a_of_type_Boolean + "  config.isShowList=" + localauub.jdField_b_of_type_Boolean + "  config.expireTime=" + localauub.jdField_a_of_type_Long + "  config.entranceJumpUrl=" + localauub.jdField_a_of_type_JavaLangString + "  config.entranceJumpUrlForHost=" + localauub.jdField_b_of_type_JavaLangString + "  config.entranceJumpUrlForGuest=" + localauub.c);
+      QLog.d("QQGameConfigUtil", 2, "pauseDownload from=" + paramInt + ",appId=" + paramString);
     }
-    return localauub;
+    bmxh.a();
+    bmxh.a().a(paramInt, paramString);
   }
   
-  public static String a(int paramInt, String... paramVarArgs)
+  public static void a(Context paramContext, FeedsItemData.GameInfo paramGameInfo)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= paramInt)) {
-      return "";
+    if (paramGameInfo == null) {}
+    while (bgnw.a(paramContext, paramGameInfo.gamePkgName)) {
+      return;
     }
-    return paramVarArgs[paramInt];
+    bmxh.a();
+    paramContext = new WadlParams();
+    paramContext.d = 0;
+    paramContext.b(7);
+    paramContext.c = "10000144";
+    paramContext.jdField_e_of_type_JavaLangString = paramGameInfo.gameApkUrl;
+    paramContext.jdField_a_of_type_JavaLangString = paramGameInfo.gameAppId;
+    paramContext.jdField_e_of_type_Int = Integer.parseInt(paramGameInfo.gameVersionCode);
+    paramContext.jdField_f_of_type_JavaLangString = paramGameInfo.gamePkgName;
+    paramContext.p = "biz_src_zf_games";
+    paramContext.l = "publicAccount";
+    paramContext.j = paramGameInfo.gameName;
+    paramContext.k = paramGameInfo.gameIcon;
+    paramContext.b = 2;
+    paramContext.m = "publicAccount";
+    bmxh.a().a(paramContext);
   }
   
-  public static void a(AppInterface paramAppInterface, auub paramauub)
+  public static void a(Bundle paramBundle, String paramString, boolean paramBoolean, int paramInt)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfigUtil", 2, "downloadGame appId=" + paramString + ",isRes=" + paramBoolean + ",resType=" + paramInt + ",req=" + paramBundle);
+    }
+    String str = paramBundle.getString("packageName");
+    if ((paramBundle == null) || (TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(str))) {
+      return;
+    }
+    Object localObject2 = paramBundle.getString("apkChannel");
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "10000144";
+    }
+    bmxh.a();
+    localObject2 = new WadlParams();
+    ((WadlParams)localObject2).d = paramBundle.getInt("from");
+    ((WadlParams)localObject2).b(paramBundle.getInt("flags"));
+    ((WadlParams)localObject2).c = ((String)localObject1);
+    ((WadlParams)localObject2).jdField_e_of_type_JavaLangString = paramBundle.getString("apkUrl");
+    ((WadlParams)localObject2).jdField_a_of_type_JavaLangString = paramString;
+    ((WadlParams)localObject2).jdField_e_of_type_Int = paramBundle.getInt("versionCode");
+    ((WadlParams)localObject2).jdField_f_of_type_JavaLangString = str;
+    localObject1 = paramBundle.getString("appName");
+    paramString = (String)localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      paramString = ((WadlParams)localObject2).jdField_f_of_type_JavaLangString;
+    }
+    ((WadlParams)localObject2).j = paramString;
+    ((WadlParams)localObject2).p = "biz_src_zf_games";
+    ((WadlParams)localObject2).l = paramBundle.getString("via");
+    ((WadlParams)localObject2).b = 2;
+    ((WadlParams)localObject2).o = paramBundle.getString("ext");
+    ((WadlParams)localObject2).m = paramBundle.getString("fromWebUrl", "");
+    ((WadlParams)localObject2).jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean)
     {
-      String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-      paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4).edit().putBoolean("isShowCard", paramauub.jdField_a_of_type_Boolean).putBoolean("isShowList", paramauub.jdField_b_of_type_Boolean).putLong("expireTime", paramauub.jdField_a_of_type_Long).putString("entranceJumpUrl", paramauub.jdField_a_of_type_JavaLangString).putString("entranceJumpUrlForHost", paramauub.jdField_b_of_type_JavaLangString).putString("entranceJumpUrlForGuest", paramauub.c).commit();
-      if (QLog.isColorLevel()) {
-        QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.saveConfig config.expireTime=" + paramauub.jdField_a_of_type_Boolean + "  config.isShowList=" + paramauub.jdField_b_of_type_Boolean + "  config.expireTime=" + paramauub.jdField_a_of_type_Long + "  config.entranceJumpUrl=" + paramauub.jdField_a_of_type_JavaLangString + "  config.entranceJumpUrlForHost=" + paramauub.jdField_b_of_type_JavaLangString + "  config.entranceJumpUrlForGuest=" + paramauub.c);
+      ((WadlParams)localObject2).jdField_g_of_type_Int = paramInt;
+      ((WadlParams)localObject2).jdField_f_of_type_Int = paramBundle.getInt("resIndex");
+      ((WadlParams)localObject2).h = paramBundle.getString("resName");
+      ((WadlParams)localObject2).jdField_g_of_type_JavaLangString = paramBundle.getString("resVersionName");
+      ((WadlParams)localObject2).i = paramBundle.getString("resMD5");
+    }
+    bmxh.a().a((WadlParams)localObject2);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    int i = 0;
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("game_center_sp", 0);
+    String str = "sp_key_game_center_feeds_show_float_window_date" + paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface = "sp_key_game_center_feeds_float_window_showed_games" + paramQQAppInterface.getCurrentAccountUin();
+    jdField_a_of_type_JavaLangString = localSharedPreferences.getString(str, "");
+    if (c().equals(jdField_a_of_type_JavaLangString))
+    {
+      paramQQAppInterface = localSharedPreferences.getString(paramQQAppInterface, "");
+      if ((TextUtils.isEmpty(paramQQAppInterface)) || (paramQQAppInterface.split(";").length == 0)) {
+        jdField_a_of_type_JavaUtilList = new ArrayList(3);
       }
-      return;
-    }
-    finally
-    {
-      paramAppInterface = finally;
-      throw paramAppInterface;
-    }
-  }
-  
-  public static void a(AppInterface paramAppInterface, String paramString)
-  {
-    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4);
-    str = "has_insert_face_score_msg_" + paramString;
-    paramAppInterface.edit().putBoolean(str, true).commit();
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.setHasInsertMsgFlag uin=" + paramString);
-    }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q..troop.faceScore", 2, "setFaceScoreFlag, msg = " + paramMessageRecord + "  key=" + paramString + " flag=" + paramBoolean);
-    }
-    if (paramMessageRecord == null) {
-      return;
-    }
-    for (;;)
-    {
-      try
+      for (;;)
       {
-        if (TextUtils.isEmpty(paramMessageRecord.extStr))
+        return;
+        paramQQAppInterface = paramQQAppInterface.split(";");
+        jdField_a_of_type_JavaUtilList = new ArrayList(3);
+        while (i < paramQQAppInterface.length)
         {
-          localJSONObject = new JSONObject();
-          localJSONObject.put(paramString, paramBoolean);
-          paramMessageRecord.extStr = localJSONObject.toString();
-          paramMessageRecord.extLong |= 0x1;
-          return;
+          jdField_a_of_type_JavaUtilList.add(paramQQAppInterface[i]);
+          i += 1;
         }
       }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-        return;
-      }
-      JSONObject localJSONObject = new JSONObject(paramMessageRecord.extStr);
-      localJSONObject.put(paramString, paramBoolean);
-      paramMessageRecord.extStr = localJSONObject.toString();
     }
+    jdField_a_of_type_JavaLangString = c();
+    jdField_a_of_type_JavaUtilList = new ArrayList(3);
   }
   
-  public static void a(String paramString1, String paramString2, String... paramVarArgs)
+  public static void a(WadlParams paramWadlParams)
   {
-    azqs.b(null, "dc00899", "grp_lbs", paramString2, "face_score", paramString1, 0, 0, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, String paramString)
-  {
-    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-    boolean bool = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4).getBoolean("has_insert_face_score_msg_" + paramString, false);
     if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.getHasInsertMsgFlag uin=" + paramString + "  flag=" + bool);
+      QLog.d("QQGameConfigUtil", 2, "installGame params=" + paramWadlParams);
     }
-    return bool;
+    bmxh.a();
+    bmxh.a().b(paramWadlParams);
   }
   
-  public static boolean a(MessageRecord paramMessageRecord, String paramString)
+  public static boolean a()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q..troop.faceScore", 2, "getFaceScoreFlag, msg = " + paramMessageRecord + "  key=" + paramString);
-    }
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    if ((paramMessageRecord.extStr != null) && ((paramMessageRecord.extLong & 0x1) == 1) && (paramMessageRecord.extStr.contains(paramString)) && (paramMessageRecord.getExtInfoFromExtStr(paramString).equals("true"))) {}
-    for (;;)
+    aqsi localaqsi = aqsj.a();
+    if ((localaqsi != null) && (localaqsi.jdField_a_of_type_Int > 0))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q..troop.faceScore.FaceScoreUtils", 2, "isFaceScoreGrayTips, ret=" + bool + ", mr=" + paramMessageRecord);
+        QLog.d("QQGameConfigUtil", 2, "isPubAccountSwitch = true");
       }
-      return bool;
-      bool = false;
+      return true;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfigUtil", 2, "isPubAccountSwitch = false");
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (jdField_a_of_type_JavaUtilList == null) {
+      jdField_a_of_type_JavaUtilList = new ArrayList(3);
+    }
+    return (jdField_a_of_type_JavaUtilList.size() < 3) && (!jdField_a_of_type_JavaUtilList.contains(paramString));
+  }
+  
+  public static String b()
+  {
+    String str2 = aqsj.a().b;
+    String str1;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393";
+    }
+    do
+    {
+      do
+      {
+        return str1;
+        if (TextUtils.isEmpty(str2)) {
+          break;
+        }
+        str1 = str2;
+      } while (str2.startsWith("http://"));
+      str1 = str2;
+    } while (str2.startsWith("https://"));
+    return "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393";
+  }
+  
+  public static void b(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfigUtil", 2, "deleteDownload from=" + paramInt + ",appId=" + paramString);
+    }
+    bmxh.a();
+    bmxh.a().c(paramInt, paramString);
+  }
+  
+  public static boolean b()
+  {
+    aqox localaqox = aqoy.a();
+    if ((localaqox != null) && (localaqox.jdField_a_of_type_Int > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQGameConfigUtil", 2, "isGcEntryOptimizeSwitch = true");
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfigUtil", 2, "isGcEntryOptimizeSwitch = false");
+    }
+    return false;
+  }
+  
+  public static String c()
+  {
+    Date localDate = new Date();
+    return new SimpleDateFormat("yyyy-MM-dd").format(localDate);
+  }
+  
+  public static boolean c()
+  {
+    boolean bool2 = false;
+    Object localObject = aqsj.a();
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      bool1 = bool2;
+      if (((aqsi)localObject).c > 0)
+      {
+        localObject = ((aqsi)localObject).jdField_a_of_type_JavaLangString;
+        bool1 = bool2;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          bool1 = bool2;
+          if (bkgj.a((String)localObject)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static String d()
+  {
+    String str2 = aqsl.a().jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "https://imgcache.qq.com/ogame/sgame-official-account/precache.html";
+    }
+    return str1;
+  }
+  
+  public static boolean d()
+  {
+    aqsk localaqsk = aqsl.a();
+    if ((localaqsk != null) && (localaqsk.jdField_a_of_type_Int > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQGameConfigUtil", 2, "isPreloadSwitch = true");
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfigUtil", 2, "isPreloadSwitch = false");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auuc
  * JD-Core Version:    0.7.0.1
  */

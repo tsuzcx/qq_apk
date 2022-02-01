@@ -1,17 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import java.util.Comparator;
 
-class pfl
-  implements Comparator<ChannelInfo>
+final class pfl
+  implements Comparator<ArticleInfo>
 {
-  pfl(pfi parampfi) {}
-  
-  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
       return 0;
     }
-    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
       return -1;
     }
     return 1;
@@ -19,7 +17,7 @@ class pfl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pfl
  * JD-Core Version:    0.7.0.1
  */

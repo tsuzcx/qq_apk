@@ -316,6 +316,8 @@ public class NonFit2DFilter
     addParam(new UniformParam.IntParam("texNeedTransform", -1));
     addParam(new UniformParam.IntParam("blendMode", this.item.blendMode));
     addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
+    addParam(new UniformParam.Float2fParam("displacement", 0.0F, 0.0F));
+    addParam(new UniformParam.IntParam("displacementEnableLut", 0));
     addParam(new UniformParam.TextureParam("inputImageTexture3", 0, 33987));
     addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
     addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
@@ -470,7 +472,7 @@ public class NonFit2DFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.gesture.NonFit2DFilter
  * JD-Core Version:    0.7.0.1
  */

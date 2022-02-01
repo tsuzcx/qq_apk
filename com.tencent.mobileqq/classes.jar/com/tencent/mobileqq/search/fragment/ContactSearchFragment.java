@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.search.fragment;
 
-import alud;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import ayjn;
-import aykn;
-import ayko;
-import aymn;
-import aynq;
-import aynu;
-import ayqi;
-import aytb;
-import aytg;
-import ayug;
-import ayuo;
-import ayuq;
-import ayuv;
-import ayuw;
-import ayuy;
-import ayve;
-import ayvm;
-import bclg;
+import anni;
+import bbio;
+import bbjq;
+import bbjr;
+import bblr;
+import bbmu;
+import bbmy;
+import bbpl;
+import bbse;
+import bbsj;
+import bbtj;
+import bbtr;
+import bbtt;
+import bbty;
+import bbtz;
+import bbub;
+import bbuh;
+import bbup;
+import bfpx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.qphone.base.util.QLog;
@@ -37,7 +37,7 @@ public class ContactSearchFragment
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = -1L;
-  private ayqi jdField_a_of_type_Ayqi;
+  private bbpl jdField_a_of_type_Bbpl;
   private String jdField_a_of_type_JavaLangString;
   private List<PhoneContact> jdField_a_of_type_JavaUtilList = new ArrayList();
   private Set<String> jdField_a_of_type_JavaUtilSet;
@@ -49,12 +49,12 @@ public class ContactSearchFragment
   private boolean f;
   private boolean g;
   
-  public static ContactSearchFragment a(int paramInt1, int paramInt2, String paramString, List<String> paramList, ayqi paramayqi)
+  public static ContactSearchFragment a(int paramInt1, int paramInt2, String paramString, List<String> paramList, bbpl parambbpl)
   {
-    return a(paramInt1, paramInt2, paramString, paramList, paramayqi, false, 0, -1L);
+    return a(paramInt1, paramInt2, paramString, paramList, parambbpl, false, 0, -1L);
   }
   
-  public static ContactSearchFragment a(int paramInt1, int paramInt2, String paramString, List<String> paramList, ayqi paramayqi, boolean paramBoolean, int paramInt3, long paramLong)
+  public static ContactSearchFragment a(int paramInt1, int paramInt2, String paramString, List<String> paramList, bbpl parambbpl, boolean paramBoolean, int paramInt3, long paramLong)
   {
     ContactSearchFragment localContactSearchFragment = new ContactSearchFragment();
     Bundle localBundle = new Bundle();
@@ -66,8 +66,8 @@ public class ContactSearchFragment
     if (paramList != null) {
       localBundle.putStringArray("hiddenUinSet", (String[])paramList.toArray(new String[paramList.size()]));
     }
-    if (paramayqi != null) {
-      localBundle.putLong("contactSearchOnActionListener", ayve.a().a(paramayqi));
+    if (parambbpl != null) {
+      localBundle.putLong("contactSearchOnActionListener", bbuh.a().a(parambbpl));
     }
     if (paramLong > 0L) {
       localBundle.putLong("contactSearchResultFilterType", paramLong);
@@ -86,63 +86,63 @@ public class ContactSearchFragment
     return 20;
   }
   
-  protected ayjn a()
+  protected bbio a()
   {
-    return new ayko(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb);
+    return new bbjr(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aobu);
   }
   
-  protected ayug a()
+  protected bbtj a()
   {
     if (this.jdField_a_of_type_Int == 524288)
     {
       if (this.jdField_b_of_type_Int == 19) {
-        return new ayuq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilSet);
+        return new bbtt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilSet);
       }
-      return new ayuo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilSet);
+      return new bbtr(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilSet);
     }
     if (this.jdField_a_of_type_Boolean) {
-      return new aytb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilSet);
+      return new bbse(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilSet);
     }
     if (this.jdField_a_of_type_Int == 1048576)
     {
       if (this.jdField_b_of_type_Int == 23) {
-        return new ayuy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilSet);
+        return new bbub(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilSet);
       }
-      return new ayuw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilSet);
+      return new bbtz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilSet);
     }
-    return new aytg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilSet);
+    return new bbsj(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilSet);
   }
   
   protected String a()
   {
     if (this.jdField_c_of_type_Int == 2) {
-      return alud.a(2131702924);
+      return anni.a(2131701331);
     }
-    return alud.a(2131702927);
+    return anni.a(2131701334);
   }
   
   protected void a(String paramString, int paramInt)
   {
     super.a(paramString, paramInt);
-    if (((!ayvm.a(this.jdField_b_of_type_Int)) || (this.jdField_b_of_type_Int == -1)) && (this.jdField_a_of_type_AndroidViewView != null))
+    if (((!bbup.a(this.jdField_b_of_type_Int)) || (this.jdField_b_of_type_Int == -1)) && (this.jdField_a_of_type_AndroidViewView != null))
     {
       if (!TextUtils.isEmpty(paramString)) {
         break label71;
       }
       this.f = false;
       if (this.jdField_b_of_type_Int == -1) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131167140);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131167224);
       }
     }
     else
     {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131165409);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131165445);
     return;
     label71:
     this.f = true;
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838592);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838758);
   }
   
   public void a(List paramList, int paramInt)
@@ -159,31 +159,31 @@ public class ContactSearchFragment
       {
         Object localObject2 = localIterator.next();
         Object localObject3;
-        if ((QLog.isColorLevel()) && ((localObject2 instanceof aynq)))
+        if ((QLog.isColorLevel()) && ((localObject2 instanceof bbmu)))
         {
-          localObject3 = (aynq)localObject2;
-          localStringBuilder.append("model name:").append(((aynq)localObject3).c()).append(" clss:").append(localObject3.getClass().getSimpleName()).append(" degree:").append(((aynq)localObject3).b()).append(" second:").append(((aynq)localObject3).a()).append("\n");
+          localObject3 = (bbmu)localObject2;
+          localStringBuilder.append("model name:").append(((bbmu)localObject3).c()).append(" clss:").append(localObject3.getClass().getSimpleName()).append(" degree:").append(((bbmu)localObject3).b()).append(" second:").append(((bbmu)localObject3).a()).append("\n");
         }
-        if ((localObject2 instanceof aynu))
+        if ((localObject2 instanceof bbmy))
         {
-          localObject2 = (aynu)localObject2;
-          if ((!this.g) || (!(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface instanceof QQAppInterface)) || (!bclg.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((aynu)localObject2).b())))
+          localObject2 = (bbmy)localObject2;
+          if ((!this.g) || (!(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface instanceof QQAppInterface)) || (!bfpx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((bbmy)localObject2).b())))
           {
-            if ((this.jdField_a_of_type_Long > 0L) && ((this.jdField_a_of_type_Long & 1L) != 0L) && ((localObject2 instanceof aymn)))
+            if ((this.jdField_a_of_type_Long > 0L) && ((this.jdField_a_of_type_Long & 1L) != 0L) && ((localObject2 instanceof bblr)))
             {
-              localObject3 = (aymn)localObject2;
-              if ((((aymn)localObject3).d() == 1000) || (((aymn)localObject3).d() == 1004) || (((aymn)localObject3).d() == 1003) || (((aymn)localObject3).d() == 1006) || (((aymn)localObject3).d() == 2016))
+              localObject3 = (bblr)localObject2;
+              if ((((bblr)localObject3).d() == 1000) || (((bblr)localObject3).d() == 1004) || (((bblr)localObject3).d() == 1003) || (((bblr)localObject3).d() == 1006) || (((bblr)localObject3).d() == 2016))
               {
                 if (!QLog.isColorLevel()) {
                   continue;
                 }
-                QLog.d("ContactSearchFragment", 2, "onFinish filter a result ,uintype = " + ((aymn)localObject3).d());
+                QLog.d("ContactSearchFragment", 2, "onFinish filter a result ,uintype = " + ((bblr)localObject3).d());
                 continue;
               }
             }
-            if ((this.jdField_c_of_type_Int == 2) && (ayvm.a((aynu)localObject2))) {
+            if ((this.jdField_c_of_type_Int == 2) && (bbup.a((bbmy)localObject2))) {
               ((List)localObject1).add(localObject2);
-            } else if ((this.jdField_c_of_type_Int == 1) && (!ayvm.a((aynu)localObject2))) {
+            } else if ((this.jdField_c_of_type_Int == 1) && (!bbup.a((bbmy)localObject2))) {
               ((List)localObject1).add(localObject2);
             } else if (this.jdField_c_of_type_Int == 0) {
               ((List)localObject1).add(localObject2);
@@ -196,7 +196,7 @@ public class ContactSearchFragment
       QLog.d("ContactSearchFragment", 2, localStringBuilder.toString());
     }
     super.a((List)localObject1, paramInt);
-    if ((ayvm.a(this.jdField_b_of_type_Int)) && (!this.jdField_b_of_type_Boolean))
+    if ((bbup.a(this.jdField_b_of_type_Int)) && (!this.jdField_b_of_type_Boolean))
     {
       this.jdField_b_of_type_Boolean = true;
       localObject1 = "" + this.jdField_c_of_type_JavaLangString;
@@ -208,31 +208,31 @@ public class ContactSearchFragment
     label588:
     for (paramInt = 0;; paramInt = paramList.size())
     {
-      ayvm.a("contact", "exp_page", new String[] { localObject1, paramInt });
+      bbup.a("contact", "exp_page", new String[] { localObject1, paramInt });
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = false;
         this.d = false;
-        this.jdField_a_of_type_Ayug = a();
-        this.jdField_a_of_type_Ayug.a();
+        this.jdField_a_of_type_Bbtj = a();
+        this.jdField_a_of_type_Bbtj.a();
         this.d = true;
       }
       return;
     }
   }
   
-  public void a(List paramList, ayuv paramayuv)
+  public void a(List paramList, bbty parambbty)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ContactSearchFragment", 2, new Object[] { "onFinish with respData:", paramayuv.toString() });
+      QLog.d("ContactSearchFragment", 2, new Object[] { "onFinish with respData:", parambbty.toString() });
     }
-    if (paramayuv.a(this.jdField_c_of_type_JavaLangString)) {
-      a(paramList, paramayuv.jdField_a_of_type_Int);
+    if (parambbty.a(this.jdField_c_of_type_JavaLangString)) {
+      a(paramList, parambbty.jdField_a_of_type_Int);
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("ContactSearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramayuv.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_c_of_type_JavaLangString });
+    QLog.d("ContactSearchFragment", 2, new Object[] { "onFinish not match keyword1:", parambbty.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_c_of_type_JavaLangString });
   }
   
   public void a(List<String> paramList1, List<String> paramList2)
@@ -261,16 +261,16 @@ public class ContactSearchFragment
   
   protected boolean a()
   {
-    return ayvm.a(this.jdField_b_of_type_Int);
+    return bbup.a(this.jdField_b_of_type_Int);
   }
   
   protected void c(List paramList)
   {
     super.c(paramList);
-    if ((ayvm.a(this.jdField_b_of_type_Int)) && (paramList != null) && (!this.jdField_b_of_type_Boolean))
+    if ((bbup.a(this.jdField_b_of_type_Int)) && (paramList != null) && (!this.jdField_b_of_type_Boolean))
     {
       this.jdField_b_of_type_Boolean = true;
-      ayvm.a("contact", "exp_page", new String[] { "" + this.jdField_c_of_type_JavaLangString, "" + paramList.size() });
+      bbup.a("contact", "exp_page", new String[] { "" + this.jdField_c_of_type_JavaLangString, "" + paramList.size() });
     }
   }
   
@@ -316,7 +316,7 @@ public class ContactSearchFragment
       }
       long l = localBundle.getLong("contactSearchOnActionListener", -1L);
       if (l != -1L) {
-        this.jdField_a_of_type_Ayqi = ((ayqi)ayve.a().a(l));
+        this.jdField_a_of_type_Bbpl = ((bbpl)bbuh.a().a(l));
       }
     }
     super.onCreate(paramBundle);
@@ -325,20 +325,20 @@ public class ContactSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    if (!ayvm.a(this.jdField_b_of_type_Int))
+    if (!bbup.a(this.jdField_b_of_type_Int))
     {
       if (this.jdField_b_of_type_Int != -1) {
         break label54;
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131167140);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131167224);
     }
     for (;;)
     {
       this.f = false;
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new aykn(this));
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new bbjq(this));
       return;
       label54:
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131165409);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131165445);
     }
   }
 }

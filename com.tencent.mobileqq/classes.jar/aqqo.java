@@ -1,32 +1,87 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqqo
-  implements bhuk
+public class aqqo
+  extends aqkz<aqqn>
 {
-  aqqo(aqqn paramaqqn, FileManagerEntity paramFileManagerEntity, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static boolean a()
   {
-    if (QfileBaseRecentFileTabView.o(this.jdField_a_of_type_Aqqn.a.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId)) {}
-    this.jdField_a_of_type_Aqqn.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid)) && (3000 != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType)) {
-      QfileBaseRecentFileTabView.p(this.jdField_a_of_type_Aqqn.a.a).a().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend);
+    aqqn localaqqn = (aqqn)aqlk.a().a(613);
+    if (localaqqn != null) {}
+    for (boolean bool = localaqqn.a();; bool = false)
+    {
+      QLog.d("OpenSdkD55Processor", 1, new Object[] { "isSwitchOpen = ", Boolean.valueOf(bool) });
+      return bool;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM = true;
-    QfileBaseRecentFileTabView.q(this.jdField_a_of_type_Aqqn.a.a).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_Aqqn.a.a.g();
-    if (this.jdField_a_of_type_Bhuf.isShowing()) {
-      this.jdField_a_of_type_Bhuf.dismiss();
+  }
+  
+  @NonNull
+  public aqqn a(int paramInt)
+  {
+    return new aqqn();
+  }
+  
+  @Nullable
+  public aqqn a(aqlg[] paramArrayOfaqlg)
+  {
+    int i = 0;
+    if (paramArrayOfaqlg == null) {}
+    for (;;)
+    {
+      QLog.d("OpenSdkD55Processor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
+      if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
+        break;
+      }
+      new aqqn();
+      return aqqn.a(paramArrayOfaqlg);
+      i = paramArrayOfaqlg.length;
     }
+    return null;
+  }
+  
+  public void a(aqqn paramaqqn)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenSdkD55Processor", 2, "onUpdate " + paramaqqn.toString());
+    }
+  }
+  
+  public Class<aqqn> clazz()
+  {
+    return aqqn.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 613;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqqo
  * JD-Core Version:    0.7.0.1
  */

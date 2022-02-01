@@ -1,17 +1,32 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.util.WeakReference;
 
-class afsz
-  extends afuf
+public class afsz
+  implements View.OnClickListener
 {
-  afsz(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afsz(PositionActivatePage paramPositionActivatePage) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new ageu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, afpy.a(this.a));
+    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
+    {
+      Intent localIntent = new Intent((Context)PositionActivatePage.a(this.a).get(), SendBirthdayWishesActivity.class);
+      localIntent.putExtra("key_msg_type", 1);
+      localIntent.putExtra("key_friend_list", this.a.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.a());
+      localIntent.putExtra("key_roam_city", this.a.jdField_a_of_type_JavaLangString);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivityForResult(localIntent, 1000);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).overridePendingTransition(2130771979, 2130771990);
+      bcst.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E06", "0X8004E06", 0, 0, "", "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

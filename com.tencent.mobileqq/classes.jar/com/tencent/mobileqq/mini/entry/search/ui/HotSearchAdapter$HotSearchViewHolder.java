@@ -15,33 +15,33 @@ class HotSearchAdapter$HotSearchViewHolder
   TextView name;
   ImageView ranking;
   
-  public void update(View paramView, SearchInfo paramSearchInfo, Activity paramActivity, int paramInt)
+  public void update(View paramView, SearchInfo paramSearchInfo, Activity paramActivity, int paramInt1, int paramInt2)
   {
     MiniAppInfo localMiniAppInfo = paramSearchInfo.getMiniAppInfo();
     this.icon.setImageDrawable(MiniAppUtils.getIcon(paramView.getContext(), localMiniAppInfo.iconUrl, false, 0, 32));
     this.name.setText(localMiniAppInfo.name);
     this.category.setText(paramSearchInfo.getCategoryDesc());
-    if (paramInt > 2) {
+    if (paramInt1 > 2) {
       this.ranking.setVisibility(8);
     }
     for (;;)
     {
-      paramView.setOnClickListener(new HotSearchAdapter.HotSearchViewHolder.1(this, paramActivity, localMiniAppInfo));
+      paramView.setOnClickListener(new HotSearchAdapter.HotSearchViewHolder.1(this, paramActivity, localMiniAppInfo, paramInt2));
       return;
       this.ranking.setVisibility(0);
-      if (paramInt == 0) {
-        this.ranking.setImageResource(2130840766);
-      } else if (paramInt == 1) {
-        this.ranking.setImageResource(2130840767);
-      } else if (paramInt == 2) {
-        this.ranking.setImageResource(2130840768);
+      if (paramInt1 == 0) {
+        this.ranking.setImageResource(2130840974);
+      } else if (paramInt1 == 1) {
+        this.ranking.setImageResource(2130840975);
+      } else if (paramInt1 == 2) {
+        this.ranking.setImageResource(2130840976);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.HotSearchAdapter.HotSearchViewHolder
  * JD-Core Version:    0.7.0.1
  */

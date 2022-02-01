@@ -1,41 +1,17 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class agmf
-  extends aglx
+class agmf
+  extends awcd
 {
-  public agmf(QQAppInterface paramQQAppInterface, agmp paramagmp, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aere paramaere)
-  {
-    super(paramQQAppInterface, paramagmp, paramQQWalletTransferMsgElem, paramInt, paramaere);
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend()) {
-      this.i = 0;
-    }
-    this.j = 2130846771;
-  }
+  agmf(agmd paramagmd) {}
   
-  public boolean b()
-  {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_Agmp.b.setVisibility(0);
-    this.jdField_a_of_type_Agmp.b.setTextColor(-8947849);
-    this.jdField_a_of_type_Agmp.b.setText("QQ视频通话红包");
-    return false;
-  }
+  public void a() {}
   
-  public void i()
+  public void a(avwp paramavwp)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend())
-    {
-      this.jdField_a_of_type_Agmp.d.setVisibility(0);
-      return;
+    if ((agmd.a(this.a) != null) && (agmd.a(this.a).equals(paramavwp)) && (agmd.a(this.a) == agmd.a(this.a).a().a())) {
+      agmd.a(this.a).a().a();
     }
-    super.i();
   }
 }
 

@@ -5,14 +5,14 @@ import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Properties;
-import vxe;
-import vxj;
-import wxe;
+import xqp;
+import xqu;
+import yqp;
 
 public class VideoViewTVKImpl$5$1
   implements Runnable
 {
-  public VideoViewTVKImpl$5$1(vxj paramvxj, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public VideoViewTVKImpl$5$1(xqu paramxqu, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {
@@ -26,14 +26,14 @@ public class VideoViewTVKImpl$5$1
       localProperties.load(new StringReader(str));
       if (localProperties != null)
       {
-        vxe.a(this.jdField_a_of_type_Vxj.a).jdField_b_of_type_JavaLangString = localProperties.getProperty("VideoCodec");
-        vxe.a(this.jdField_a_of_type_Vxj.a).jdField_b_of_type_Long = Long.valueOf(localProperties.getProperty("VideoBitRate")).longValue();
-        vxe.a(this.jdField_a_of_type_Vxj.a).a = Integer.valueOf(localProperties.getProperty("Width")).intValue();
-        vxe.a(this.jdField_a_of_type_Vxj.a).jdField_b_of_type_Int = Integer.valueOf(localProperties.getProperty("Height")).intValue();
-        vxe.a(this.jdField_a_of_type_Vxj.a).jdField_c_of_type_JavaLangString = localProperties.getProperty("AudioCodec");
-        vxe.a(this.jdField_a_of_type_Vxj.a).jdField_c_of_type_Long = Long.valueOf(localProperties.getProperty("AudioBitRate")).longValue();
+        xqp.a(this.jdField_a_of_type_Xqu.a).jdField_b_of_type_JavaLangString = localProperties.getProperty("VideoCodec");
+        xqp.a(this.jdField_a_of_type_Xqu.a).jdField_b_of_type_Long = Long.valueOf(localProperties.getProperty("VideoBitRate")).longValue();
+        xqp.a(this.jdField_a_of_type_Xqu.a).a = Integer.valueOf(localProperties.getProperty("Width")).intValue();
+        xqp.a(this.jdField_a_of_type_Xqu.a).jdField_b_of_type_Int = Integer.valueOf(localProperties.getProperty("Height")).intValue();
+        xqp.a(this.jdField_a_of_type_Xqu.a).jdField_c_of_type_JavaLangString = localProperties.getProperty("AudioCodec");
+        xqp.a(this.jdField_a_of_type_Xqu.a).jdField_c_of_type_Long = Long.valueOf(localProperties.getProperty("AudioBitRate")).longValue();
       }
-      wxe.a(this.jdField_a_of_type_Vxj.a.a, "Video Info : %s", vxe.a(this.jdField_a_of_type_Vxj.a));
+      yqp.a(this.jdField_a_of_type_Xqu.a.a, "Video Info : %s", xqp.a(this.jdField_a_of_type_Xqu.a));
       return;
     }
     catch (IOException localIOException)
@@ -48,7 +48,7 @@ public class VideoViewTVKImpl$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1
  * JD-Core Version:    0.7.0.1
  */

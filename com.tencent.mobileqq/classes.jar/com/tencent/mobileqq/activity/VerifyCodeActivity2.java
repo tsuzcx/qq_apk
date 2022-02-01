@@ -1,11 +1,23 @@
 package com.tencent.mobileqq.activity;
 
+import Override;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class VerifyCodeActivity2
   extends VerifyCodeActivity
 {
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     try
@@ -31,6 +43,13 @@ public class VerifyCodeActivity2
         finish();
       }
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 

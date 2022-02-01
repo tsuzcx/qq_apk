@@ -1,28 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.graphics.Bitmap;
 
 public class ywd
-  implements View.OnClickListener
 {
-  public ywd(TroopGiftPanel paramTroopGiftPanel, yvp paramyvp) {}
+  public final int c;
+  public final Bitmap c;
   
-  public void onClick(View paramView)
+  public ywd(int paramInt, Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_Yvp.jdField_a_of_type_Int == 1) {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(this.jdField_a_of_type_Yvp.c);
-    }
-    for (;;)
-    {
-      azqs.b(null, "dc00899", "grp_lbs", "", "qq_gift", "aio_top_click", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", "", this.jdField_a_of_type_Yvp.jdField_a_of_type_JavaLangString);
-      return;
-      TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, this.jdField_a_of_type_Yvp.c);
-    }
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public String toString()
+  {
+    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ywd
  * JD-Core Version:    0.7.0.1
  */

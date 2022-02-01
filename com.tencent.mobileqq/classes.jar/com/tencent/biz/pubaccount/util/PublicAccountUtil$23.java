@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.util;
 
-import azqs;
+import bcst;
 import com.tencent.mobileqq.app.QQAppInterface;
-import ssp;
+import tue;
 
 public final class PublicAccountUtil$23
   implements Runnable
@@ -12,17 +12,17 @@ public final class PublicAccountUtil$23
   public void run()
   {
     String str = "0X80067EA";
-    ssp localssp = ssp.a();
-    int i = localssp.b();
-    int j = localssp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    tue localtue = tue.a();
+    int i = localtue.b();
+    int j = localtue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (j == 1) {
       str = "0X80067E8";
     }
     for (;;)
     {
-      long l = localssp.a();
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "Pb_account_lifeservice", "", str, str, 0, 0, "" + l, "" + j, "" + i, String.valueOf(this.jdField_a_of_type_Int + 1));
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "auth_entry", "clk_msg", 0, 0, "", "", "", "");
+      long l = localtue.a();
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "Pb_account_lifeservice", "", str, str, 0, 0, "" + l, "" + j, "" + i, String.valueOf(this.jdField_a_of_type_Int + 1));
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "auth_entry", "clk_msg", 0, 0, "", "", "", "");
       return;
       if (j == 2) {
         str = "0X80067E9";
@@ -32,7 +32,7 @@ public final class PublicAccountUtil$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountUtil.23
  * JD-Core Version:    0.7.0.1
  */

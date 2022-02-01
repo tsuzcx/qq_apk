@@ -4,8 +4,11 @@ import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.thumbplayer.adapter.ITPPlayerAdapter;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
+import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPSubtitleData;
+import com.tencent.thumbplayer.api.TPSubtitleFrameBuffer;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 import com.tencent.thumbplayer.datatransport.ITPPlayManager;
 import com.tencent.thumbplayer.utils.TPLogUtil;
@@ -77,6 +80,8 @@ class TPPlayer$EventHandler
     return;
     localTPPlayerListeners.onSubtitleData(this.mPlayer, (TPSubtitleData)paramMessage.obj);
     return;
+    localTPPlayerListeners.onSubtitleFrameOut(this.mPlayer, (TPSubtitleFrameBuffer)paramMessage.obj);
+    return;
     localTPPlayerListeners.onVideoFrameOut(this.mPlayer, (TPVideoFrameBuffer)paramMessage.obj);
     return;
     localTPPlayerListeners.onAudioFrameOut(this.mPlayer, (TPAudioFrameBuffer)paramMessage.obj);
@@ -99,6 +104,9 @@ class TPPlayer$EventHandler
     return;
     localTPPlayerListeners.onInfo(this.mPlayer, 1008, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
     return;
+    if (TPPlayer.access$100(this.this$0) != null) {
+      TPPlayer.access$100(this.this$0).setPlayerOptionalParam(new TPOptionalParam().buildLong(8000, paramMessage.arg1));
+    }
     localTPPlayerListeners.onInfo(this.mPlayer, 1010, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
     return;
     localTPPlayerListeners.onStateChange(paramMessage.arg1, paramMessage.arg2);
@@ -106,7 +114,7 @@ class TPPlayer$EventHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayer.EventHandler
  * JD-Core Version:    0.7.0.1
  */

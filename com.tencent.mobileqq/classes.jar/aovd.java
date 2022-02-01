@@ -1,18 +1,12 @@
-public class aovd
+public abstract interface aovd
 {
-  public String a;
-  public boolean a;
-  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
   
-  public aovd()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = alud.a(2131711657);
-  }
+  public abstract void a(float[] paramArrayOfFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aovd
  * JD-Core Version:    0.7.0.1
  */

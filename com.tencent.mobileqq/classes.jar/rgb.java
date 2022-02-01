@@ -1,44 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-
 public class rgb
-  extends taq
 {
-  private rgb(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
-  
-  protected void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    VideoFeedsPlayActivity.a("onGetDianZanState isSuccess: " + paramBoolean);
-    if ((!paramBoolean) || (paramBundle == null)) {}
-    int i;
-    do
-    {
-      String str;
-      do
-      {
-        return;
-        str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
-        i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
-      } while (str == null);
-      paramBundle = VideoFeedsRecommendFragment.a(this.a).a(str);
-    } while (paramBundle == null);
-    if (i == 1) {
-      paramBundle.p = true;
-    }
-    for (;;)
-    {
-      VideoFeedsRecommendFragment.a(this.a).b(paramBundle);
-      return;
-      if (i == 0) {
-        paramBundle.p = false;
-      }
-    }
-  }
+  public static int a = 1;
+  public static int b = 2;
+  public static int c = 3;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public int g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rgb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import java.util.List;
 
-public abstract class rok
+public abstract interface rok
 {
-  public int a;
-  public BaseArticleInfo a;
-  public HashMap<String, String> a;
-  public int b;
-  
-  public rok(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map<String, String> paramMap)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilHashMap.putAll(paramMap);
-  }
-  
-  public abstract void a(JSONObject paramJSONObject);
+  public abstract void a(List<String> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rok
  * JD-Core Version:    0.7.0.1
  */

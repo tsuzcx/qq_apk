@@ -1,20 +1,13 @@
-import android.app.Activity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
-public class bdnx
+class bdnx
+  implements bkhy
 {
-  public static void a(Activity paramActivity, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("troopbar_share", 2, "notifySDKCanceled:" + paramLong);
-    }
-    asdb.a(paramActivity, false, "shareToTroopBar", paramLong);
-  }
+  bdnx(bdnt parambdnt, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public void onDismiss()
   {
-    azqs.b(paramQQAppInterface, "P_CliOper", "Grp_share", "", "to_tribe", paramString1, 0, 0, paramString2, "1", null, null);
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
 }
 

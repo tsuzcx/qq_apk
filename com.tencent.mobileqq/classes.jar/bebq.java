@@ -1,43 +1,109 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.cs.cmd0x6ff.subcmd0x501.ReqBody;
+import tencent.im.cs.cmd0x6ff.subcmd0x501.RspBody;
+import tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501ReqBody;
+import tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501Rspbody;
 
 public class bebq
-  implements DownloadParams.DecodeHandler
+  extends bebf
 {
-  private int a;
-  private int b;
-  
-  public bebq(int paramInt1, int paramInt2)
+  private byte[] a(List<becg> paramList)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      return null;
+    subcmd0x501.ReqBody localReqBody = new subcmd0x501.ReqBody();
+    subcmd0x501.SubCmd0x501ReqBody localSubCmd0x501ReqBody = new subcmd0x501.SubCmd0x501ReqBody();
+    if ((paramList != null) && (paramList.size() == 1))
+    {
+      paramList = (becd)paramList.get(0);
+      localSubCmd0x501ReqBody.uint64_uin.set(Long.parseLong(paramList.jdField_a_of_type_JavaLangString));
+      localSubCmd0x501ReqBody.uint32_idc_id.set(0);
+      localSubCmd0x501ReqBody.uint32_appid.set(16);
+      localSubCmd0x501ReqBody.uint32_login_sig_type.set(1);
+      localSubCmd0x501ReqBody.uint32_request_flag.set(3);
+      paramList = new ArrayList();
+      paramList.add(Integer.valueOf(5));
+      localSubCmd0x501ReqBody.rpt_uint32_service_types.set(paramList);
+      localReqBody.msg_subcmd_0x501_req_body.set(localSubCmd0x501ReqBody);
+      return localReqBody.toByteArray();
     }
-    paramDownloadParams = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.ARGB_8888);
-    Paint localPaint = new Paint();
-    localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setAntiAlias(true);
-    Canvas localCanvas = new Canvas(paramDownloadParams);
-    localCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(0, 0, paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
-    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth() - paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
-    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() - paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth(), paramDownloadParams.getHeight()), localPaint);
-    return paramDownloadParams;
+    throw new RuntimeException("only support one request");
   }
   
-  public String toString()
+  public void a(bdxf parambdxf, bdxe parambdxe)
   {
-    return "TitleDrawableDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
+    Object localObject = parambdxf.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+    byte[] arrayOfByte = parambdxf.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
+    parambdxe = (bebv)parambdxe.jdField_a_of_type_JavaLangObject;
+    beck localbeck = parambdxe.jdField_a_of_type_Beck;
+    anqe localanqe = parambdxf.jdField_a_of_type_Anqe;
+    if (((FromServiceMsg)localObject).getResultCode() != 1000)
+    {
+      int i = ((FromServiceMsg)localObject).getResultCode();
+      if ((i == 1002) || (i == 1013)) {
+        a(-1, 9311, MessageHandler.a((FromServiceMsg)localObject), "", localanqe, localbeck.jdField_a_of_type_JavaUtilList);
+      }
+      for (;;)
+      {
+        bedb.a(parambdxe, localbeck);
+        return;
+        a(-1, 9044, MessageHandler.a((FromServiceMsg)localObject), "", localanqe, localbeck.jdField_a_of_type_JavaUtilList);
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        parambdxf = ((subcmd0x501.SubCmd0x501Rspbody)((subcmd0x501.RspBody)new subcmd0x501.RspBody().mergeFrom(arrayOfByte)).msg_subcmd_0x501_rsp_body.get()).bytes_httpconn_sig_session.get();
+        if ((parambdxf == null) || (parambdxf.toByteArray().length <= 0)) {
+          break label264;
+        }
+        parambdxf = parambdxf.toByteArray();
+        localObject = (becv)localbeck.jdField_a_of_type_JavaUtilList.get(0);
+        ((becv)localObject).jdField_a_of_type_ArrayOfByte = parambdxf;
+        a(0, 0, "", "", localanqe, (becx)localObject);
+      }
+      catch (Exception parambdxf)
+      {
+        a(-1, -9527, bdsx.a("P", -9529L), parambdxf.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanqe, localbeck.jdField_a_of_type_JavaUtilList);
+      }
+      break;
+      label264:
+      parambdxf = null;
+    }
+  }
+  
+  public void a(bebv parambebv)
+  {
+    if ((parambebv != null) && (parambebv.jdField_a_of_type_JavaUtilList != null) && (parambebv.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
+    {
+      bdxe localbdxe = new bdxe();
+      localbdxe.jdField_a_of_type_JavaLangString = "HttpConn.0x6ff_501";
+      localbdxe.jdField_a_of_type_ArrayOfByte = a(parambebv.jdField_a_of_type_JavaUtilList);
+      localbdxe.jdField_a_of_type_JavaLangObject = parambebv;
+      localbdxe.jdField_a_of_type_Bdxd = this;
+      a(parambebv, localbdxe);
+    }
+  }
+  
+  void b(bebv parambebv)
+  {
+    beck localbeck = parambebv.jdField_a_of_type_Beck;
+    localbeck.jdField_a_of_type_JavaUtilList.clear();
+    int i = 0;
+    while (i < parambebv.jdField_a_of_type_JavaUtilList.size())
+    {
+      becv localbecv = new becv();
+      localbeck.jdField_a_of_type_JavaUtilList.add(i, localbecv);
+      i += 1;
+    }
   }
 }
 

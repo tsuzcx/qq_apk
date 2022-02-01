@@ -1,29 +1,22 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import kotlin.Metadata;
+import mqq.observer.BusinessObserver;
+import org.jetbrains.annotations.Nullable;
 
-final class aysj
-  implements ArkAppMgr.IGetAppPathByNameCallback
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/constellation/StatusExtInfoObserver;", "Lmqq/observer/BusinessObserver;", "()V", "onGetConstellationTrend", "", "success", "", "bundle", "Landroid/os/Bundle;", "onReceive", "type", "", "isSuccess", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public class aysj
+  implements BusinessObserver
 {
-  protected WeakReference<aysi> a;
+  public void a(boolean paramBoolean, @Nullable Bundle paramBundle) {}
   
-  public aysj(aysi paramaysi)
+  public void onReceive(int paramInt, boolean paramBoolean, @Nullable Bundle paramBundle)
   {
-    this.a = new WeakReference(paramaysi);
-  }
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    aysi localaysi = (aysi)this.a.get();
-    if (localaysi == null)
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkNodeContainer", 1, "onGetAppPathByName.wrapper == null");
-      }
+    default: 
       return;
     }
-    localaysi.onGetAppPathByName(paramInt, paramString, paramAppPathInfo, paramObject);
+    a(paramBoolean, paramBundle);
   }
 }
 

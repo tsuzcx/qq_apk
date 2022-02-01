@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.script;
 
-import albh;
-import albk;
+import amun;
+import amuq;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,11 +11,11 @@ import java.util.ArrayList;
 public class SpriteTaskParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<SpriteTaskParam> CREATOR = new albh();
+  public static final Parcelable.Creator<SpriteTaskParam> CREATOR = new amun();
   public float a;
   public int a;
   public long a;
-  public albk a;
+  public amuq a;
   public Bundle a;
   public String a;
   public ArrayList<Integer> a;
@@ -38,6 +38,7 @@ public class SpriteTaskParam
   public int k = 1;
   public int l;
   public int m;
+  public int n;
   
   public SpriteTaskParam()
   {
@@ -77,8 +78,8 @@ public class SpriteTaskParam
       this.jdField_d_of_type_JavaLangString = paramParcel.readString();
       this.k = paramParcel.readInt();
       this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-      this.l = paramParcel.readInt();
       this.m = paramParcel.readInt();
+      this.n = paramParcel.readInt();
       return;
       bool1 = false;
       break;
@@ -113,7 +114,7 @@ public class SpriteTaskParam
     localStringBuffer.append(", mActionList=").append(this.jdField_a_of_type_JavaUtilArrayList);
     localStringBuffer.append(", mBackgroundActionList=").append(this.jdField_b_of_type_JavaUtilArrayList);
     localStringBuffer.append(", mExtendJson='").append(this.jdField_d_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mBridgeImp=").append(this.jdField_a_of_type_Albk);
+    localStringBuffer.append(", mBridgeImp=").append(this.jdField_a_of_type_Amuq);
     localStringBuffer.append(", mRscType=").append(this.k);
     localStringBuffer.append(", mActionJs='").append(this.jdField_e_of_type_JavaLangString).append('\'');
     localStringBuffer.append('}');
@@ -122,7 +123,7 @@ public class SpriteTaskParam
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int n = 1;
+    int i1 = 1;
     paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeInt(this.jdField_b_of_type_Int);
     paramParcel.writeInt(this.jdField_c_of_type_Int);
@@ -147,14 +148,14 @@ public class SpriteTaskParam
       }
     }
     label198:
-    for (paramInt = n;; paramInt = 0)
+    for (paramInt = i1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
       paramParcel.writeInt(this.k);
       paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-      paramParcel.writeInt(this.l);
       paramParcel.writeInt(this.m);
+      paramParcel.writeInt(this.n);
       return;
       paramInt = 0;
       break;
@@ -163,7 +164,7 @@ public class SpriteTaskParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteTaskParam
  * JD-Core Version:    0.7.0.1
  */

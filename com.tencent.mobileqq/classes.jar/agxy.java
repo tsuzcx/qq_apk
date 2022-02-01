@@ -1,10 +1,17 @@
-public abstract interface agxy
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+
+final class agxy
+  implements ahbm
 {
-  public abstract int a();
-  
-  public abstract int b();
-  
-  public abstract int c();
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    if (ApolloGameUtil.a(paramChatMessage, paramQQAppInterface) == ApolloGameUtil.c) {
+      return 88;
+    }
+    return 56;
+  }
 }
 
 

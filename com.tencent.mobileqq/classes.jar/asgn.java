@@ -1,33 +1,67 @@
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class asgn
-  implements yxr
 {
-  public asgn(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<ashr> a;
+  public int b;
+  public String b;
+  public ArrayList<ashs> b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j = "";
+  public String k = "";
   
-  public void a()
+  public asgn()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.NearbyHybridFragment", 2, "onRefresh");
-    }
-    this.a.g();
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo;
-    if (localSosoLbsInfo == null) {
-      localSosoLbsInfo = SosoInterface.b();
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{friendUin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{age: ").append(this.jdField_b_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{constellation: ").append(this.jdField_c_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{city: ").append(this.jdField_d_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{school: ").append(this.e).append("}");
+    localStringBuilder.append("{constel:").append(this.jdField_c_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{company:").append(this.f).append("}");
+    localStringBuilder.append("{mGender: ").append(this.jdField_a_of_type_Int).append("}");
+    localStringBuilder.append("{mDeclaration: ").append(this.g).append("}");
+    localStringBuilder.append("{mVoiceUrl: ").append(this.h).append("}");
+    localStringBuilder.append("{mVoiceDuration: ").append(this.jdField_b_of_type_Int).append("}");
+    localStringBuilder.append("{signWords: ").append(this.i).append("}");
+    if (this.jdField_a_of_type_JavaUtilArrayList == null)
+    {
+      localStringBuilder.append("{personalTags: is empty ").append("}");
+      localStringBuilder.append("{popular: ").append(this.jdField_a_of_type_Long).append("}");
+      if (this.jdField_b_of_type_JavaUtilArrayList != null) {
+        break label399;
+      }
+      localStringBuilder.append("{schoolInfo: is empty ").append("}");
     }
     for (;;)
     {
-      if (localSosoLbsInfo != null) {
-        ((alxp)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3)).a((float)localSosoLbsInfo.a.b, (float)localSosoLbsInfo.a.a, 5);
-      }
-      this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
-      return;
+      localStringBuilder.append("{distance: ").append(this.jdField_c_of_type_Int).append("}");
+      localStringBuilder.append("{signalBombMatchPool: ").append(this.jdField_d_of_type_Int).append("}");
+      localStringBuilder.append("{strFromCity: ").append(this.j).append("}");
+      localStringBuilder.append("{strToCity: ").append(this.k).append("}");
+      return localStringBuilder.toString();
+      localStringBuilder.append("{personalTags:size  ").append(this.jdField_a_of_type_JavaUtilArrayList.size()).append("}");
+      break;
+      label399:
+      localStringBuilder.append("{schoolInfo:size  ").append(this.jdField_b_of_type_JavaUtilArrayList.size()).append("}");
     }
   }
 }

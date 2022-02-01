@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import ajds;
+import akvn;
 import android.graphics.Bitmap;
 import java.lang.ref.WeakReference;
 
@@ -13,16 +13,16 @@ class LineLayer$LoadTempFileJob$1
   {
     if (LineLayer.LoadTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$LoadTempFileJob) != null)
     {
-      ajds localajds = (ajds)LineLayer.LoadTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$LoadTempFileJob).get();
-      if (localajds != null) {
-        localajds.a(LineLayer.LoadTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$LoadTempFileJob), this.jdField_a_of_type_Int, LineLayer.LoadTempFileJob.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$LoadTempFileJob), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      akvn localakvn = (akvn)LineLayer.LoadTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$LoadTempFileJob).get();
+      if (localakvn != null) {
+        localakvn.a(LineLayer.LoadTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$LoadTempFileJob), this.jdField_a_of_type_Int, LineLayer.LoadTempFileJob.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$LoadTempFileJob), this.jdField_a_of_type_AndroidGraphicsBitmap);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.LineLayer.LoadTempFileJob.1
  * JD-Core Version:    0.7.0.1
  */

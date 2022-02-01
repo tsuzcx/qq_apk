@@ -6,9 +6,9 @@ import android.util.Log;
 import com.tencent.ttpic.model.SizeI;
 import com.tencent.ttpic.openapi.initializer.Feature;
 import com.tencent.ttpic.openapi.initializer.ModelInfo;
-import com.tencent.ttpic.openapi.initializer.RapidNetSegCpuInitializer;
-import com.tencent.ttpic.openapi.initializer.RapidNetSegGpuInitializer;
 import com.tencent.ttpic.openapi.initializer.SharedLibraryInfo;
+import com.tencent.ttpic.openapi.initializer.TNNSegCpuInitializer;
+import com.tencent.ttpic.openapi.initializer.TNNSegGpuInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
 import com.tencent.ttpic.openapi.ttpicmodule.SkySegmentImpl;
@@ -24,8 +24,8 @@ public class SkySegmentInitializer
   public static final SizeI NET_SIZE_BIG = new SizeI(320, 320);
   public static final SizeI NET_SIZE_SMALL = new SizeI(192, 256);
   private static final String TAG = SkySegmentInitializer.class.getSimpleName();
-  private static final ModelInfo[] rapidBigModels = { new ModelInfo(true, "skysegment", "sky_58k_320x320_1106.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "skysegment", "sky_58k_320x320_1106.onnx.opt.onnx.rapidproto") };
-  private static final ModelInfo[] rapidSmallModels = { new ModelInfo(true, "skysegment", "sky_small_192x256_20191128.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "skysegment", "sky_small_192x256_20191128.onnx.opt.onnx.rapidproto") };
+  private static final ModelInfo[] rapidBigModels = { new ModelInfo(true, "skysegment", "sky_58k_320x320_1106.onnx.opt.onnx.rapidmodel.wmc"), new ModelInfo(true, "skysegment", "sky_58k_320x320_1106.onnx.opt.onnx.rapidproto.wmc") };
+  private static final ModelInfo[] rapidSmallModels = { new ModelInfo(true, "skysegment", "sky_small_192x256_20191128.onnx.opt.onnx.rapidmodel.wmc"), new ModelInfo(true, "skysegment", "sky_small_192x256_20191128.onnx.opt.onnx.rapidproto.wmc") };
   private SkySegmentImpl mSkySegmentImpl;
   private boolean useCPULib = false;
   private boolean useSmallModel = false;
@@ -195,7 +195,7 @@ public class SkySegmentInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.ttpicmodule.module_sky_segment.SkySegmentInitializer
  * JD-Core Version:    0.7.0.1
  */

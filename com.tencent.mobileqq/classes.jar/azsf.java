@@ -1,101 +1,74 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
+import java.util.List;
 
 public class azsf
-  extends QIPCModule
+  extends anuw
 {
-  private static azsf jdField_a_of_type_Azsf;
-  private ConcurrentHashMap<Integer, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public azsf(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public azsf(String paramString)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    super(paramString);
-  }
-  
-  public static azsf a()
-  {
-    if (jdField_a_of_type_Azsf == null) {}
-    try
-    {
-      if (jdField_a_of_type_Azsf == null) {
-        jdField_a_of_type_Azsf = new azsf("BatteryModule");
-      }
-      return jdField_a_of_type_Azsf;
+    if (this.a.a == null) {
+      return;
     }
-    finally {}
-  }
-  
-  void a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_process_id", BaseApplicationImpl.sProcessId);
-    QIPCClientHelper.getInstance().callServer("BatteryModule", "action_monitor", localBundle, new azsg(this));
-  }
-  
-  void a(Bundle paramBundle)
-  {
-    paramBundle.putString("key_process_name", BaseApplicationImpl.getApplication().getQQProcessName());
-    QIPCClientHelper.getInstance().getClient().callServer("BatteryModule", "action_report", paramBundle, null);
-  }
-  
-  void a(String... paramVarArgs)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArray("key_message", paramVarArgs);
-    QIPCClientHelper.getInstance().getClient().callServer("BatteryModule", "action_record", localBundle);
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("BatteryStats.Module", 2, "action = " + paramString);
-    }
-    int i;
-    if ("action_monitor".equals(paramString))
-    {
-      i = azsk.a().a();
-      if ((i == 0) || (i == 1))
-      {
-        paramString = new Bundle();
-        if (i == 1) {}
-        for (;;)
-        {
-          paramString.putBoolean("key_monitor", bool);
-          callbackResult(paramInt, EIPCResult.createSuccessResult(paramString));
-          return null;
-          bool = false;
-        }
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramBundle.getInt("key_process_id")), Integer.valueOf(paramInt));
-      return null;
-    }
-    if ("action_record".equals(paramString))
-    {
-      azsk.a().a(paramBundle.getInt("key_process_id"), paramBundle.getStringArray("key_message"));
-      return EIPCResult.createSuccessResult(null);
-    }
-    if ("action_alarm".equals(paramString))
-    {
-      paramInt = paramBundle.getInt("monitor_type", -1);
-      i = paramBundle.getInt("except_type", -1);
-      int j = paramBundle.getInt("key_level", -1);
-      paramString = paramBundle.getString("key_message");
-      paramBundle = paramBundle.getString("key_description");
-      azsk.a().a(paramInt, i, j, paramString, paramBundle);
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.i(this.a.a)) {
+      str = this.a.a();
     }
     for (;;)
     {
-      return null;
-      if ("action_report".equals(paramString)) {
-        azsk.a().a(paramBundle);
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
       }
+      if (k == 0) {
+        break;
+      }
+      this.a.a(paramBoolean, false);
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList)
+  {
+    int k = 0;
+    if (this.a.a == null) {
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.i(this.a.a)) {
+      str = this.a.a();
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      this.a.a(paramBoolean, true);
+      return;
     }
   }
 }

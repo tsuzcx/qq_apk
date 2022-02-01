@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="5.0dip" />
-    <solid android:color="#0d454545" />
-    <stroke android:width="0.5dip" android:color="#33979797" />
-</shape>
+    <item android:state_checked="true" android:drawable="@drawable/a4u" />
+    <item android:drawable="@drawable/a25" android:state_activated="true" />
+    <item android:drawable="@drawable/a53" />
+</selector>

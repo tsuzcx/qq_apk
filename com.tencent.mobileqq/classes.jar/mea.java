@@ -1,45 +1,55 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiIncomingCallUICtr.1.1;
 
 public class mea
-  extends mef
+  extends BroadcastReceiver
 {
-  public mea(AVActivity paramAVActivity, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  mea(mdz parammdz) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    long l = AudioHelper.b();
-    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.h != paramInt)
-    {
-      QLog.d(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, mRotationAngle[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.h + "->" + paramInt + "], seq[" + l + "], isFinishing[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing() + "]");
-      if (AudioHelper.d())
-      {
-        Display localDisplay = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay();
-        QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, Display.getRotation[" + localDisplay.getRotation() + "], seq[" + l + "]");
+    paramContext = paramIntent.getAction();
+    long l = mtl.a(paramIntent);
+    if (paramContext.equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION")) {
+      if (this.a.b == 1) {
+        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new MultiIncomingCallUICtr.1.1(this), 500L);
       }
     }
-    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing()) {
-      return;
-    }
-    switch (paramInt)
+    do
     {
-    default: 
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, 270, paramBoolean);
+      do
+      {
+        do
+        {
+          return;
+          paramContext = lbu.a().a();
+          this.a.a(l, paramContext);
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
+        } while (this.a.jdField_a_of_type_Mkf == null);
+        this.a.jdField_a_of_type_Mkf.a();
+        return;
+        if (paramContext.equals("tencent.video.invite.multiaccept"))
+        {
+          paramContext = lbu.a().a();
+          this.a.a(l, paramContext);
+          return;
+        }
+        if (!paramContext.equals("tencent.video.invite.multirefuse")) {
+          break;
+        }
+      } while (this.a.b(0));
+      this.a.a(l, true, null);
       return;
-    }
-    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, paramInt, paramBoolean);
+    } while (!paramContext.equals("tencent.video.destroyService"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mea
  * JD-Core Version:    0.7.0.1
  */

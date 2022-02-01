@@ -1,16 +1,39 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.MessageForMarketFace;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-public class ahcj
-  implements View.OnClickListener
+class ahcj
+  implements bkhw
 {
-  public ahcj(BlessActivity paramBlessActivity) {}
+  ahcj(ahch paramahch, asbq paramasbq, bkho parambkho, MessageForMarketFace paramMessageForMarketFace) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    azqs.b(this.a.app, "CliOper", "", "", "0X800632F", "0X800632F", 0, 0, "", "", "", "");
-    BlessActivity.a(this.a, true);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      if (this.jdField_a_of_type_Asbq.a.jobType != 1) {
+        break;
+      }
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (this.jdField_a_of_type_Asbq.a.jobType == 3) {}
+      for (boolean bool2 = true;; bool2 = false)
+      {
+        EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Ahch.b, this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_Asbq.a.epId, bool1, bool2);
+        this.jdField_a_of_type_Bkho.cancel();
+        return;
+      }
+      adrm.a(this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahch.b, this.jdField_a_of_type_Ahch.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Asbq.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.uniseq);
+      this.jdField_a_of_type_Bkho.cancel();
+      return;
+    }
   }
 }
 

@@ -1,28 +1,69 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.viola.core.ViolaInstance;
+import com.tencent.viola.core.ViolaInstance.ViolaPageListener;
 
-class tse
-  implements uco
+public class tse
+  implements ViolaInstance.ViolaPageListener
 {
-  tse(tsc paramtsc) {}
+  public tse(ViolaBaseView paramViolaBaseView) {}
   
-  public void a()
+  public void onComponentTopIndex(View paramView, float paramFloat)
   {
-    if (tsc.a(this.a) != null) {
-      tsc.a(this.a, tqr.a(tsc.a(this.a).a.urlInfo.get(), "authCampanyUrl"));
+    if (((ViolaBaseView.a(this.a) instanceof ViolaFragment)) && (((ViolaFragment)ViolaBaseView.a(this.a)).a() != null)) {
+      ((ViolaFragment)ViolaBaseView.a(this.a)).a().a(paramView, paramFloat);
     }
   }
   
-  public void b()
+  public void onDispatchTouchEvent(String paramString, int paramInt1, MotionEvent paramMotionEvent, int paramInt2)
   {
-    if (tsc.a(this.a) != null) {
-      tsc.a(this.a, tqr.a(tsc.a(this.a).a.urlInfo.get(), "authSchoolUrl"));
+    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef())) {
+      ViolaBaseView.b(this.a, paramInt2);
+    }
+  }
+  
+  public void onScroll(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  {
+    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef()))
+    {
+      ViolaBaseView.b(this.a, paramInt5);
+      ViolaBaseView.b(this.a, true);
+      if (ViolaBaseView.a(this.a) != null) {
+        ViolaBaseView.a(this.a).a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramBoolean);
+      }
+    }
+  }
+  
+  public void onScrollStateChanged(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (ViolaBaseView.a(this.a) != null) {
+      ViolaBaseView.a(this.a).a(paramString, paramInt1);
+    }
+    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef()))
+    {
+      ViolaBaseView.b(this.a, paramInt2);
+      ViolaBaseView.b(this.a, true);
+    }
+  }
+  
+  public void pageOpenSuccess()
+  {
+    ViolaBaseView.a(this.a, 3);
+    ThreadManager.post(new ViolaBaseView.10.1(this), 8, null, true);
+    if ((!TextUtils.isEmpty(this.a.a)) && (this.a.a.contains("VideoFeeds.js"))) {
+      oat.a(null, null, "0X800AF0E", "0X800AF0E", 0, 0, null, null, null, "" + System.currentTimeMillis(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tse
  * JD-Core Version:    0.7.0.1
  */

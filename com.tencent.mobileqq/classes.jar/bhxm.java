@@ -1,299 +1,176 @@
-import android.database.DataSetObserver;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.ListAdapter;
-import android.widget.WrapperListAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.widget.GridListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class bhxm
-  implements Filterable, WrapperListAdapter
+  extends BaseAdapter
 {
-  static final ArrayList<bhyr> c = new ArrayList();
-  private final ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
-  ArrayList<bhyr> jdField_a_of_type_JavaUtilArrayList;
-  boolean jdField_a_of_type_Boolean;
-  ArrayList<bhyr> jdField_b_of_type_JavaUtilArrayList;
-  private final boolean jdField_b_of_type_Boolean;
+  public bhxm(GridListView paramGridListView) {}
   
-  public bhxm(ArrayList<bhyr> paramArrayList1, ArrayList<bhyr> paramArrayList2, ListAdapter paramListAdapter)
+  private LinearLayout a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
-    this.jdField_b_of_type_Boolean = (paramListAdapter instanceof Filterable);
-    if (paramArrayList1 == null)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList = c;
-      if (paramArrayList2 != null) {
-        break label79;
-      }
-      this.jdField_b_of_type_JavaUtilArrayList = c;
-      label39:
-      if ((!a(this.jdField_a_of_type_JavaUtilArrayList)) || (!a(this.jdField_b_of_type_JavaUtilArrayList))) {
-        break label87;
-      }
-    }
-    label79:
-    label87:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-      this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
-      break;
-      this.jdField_b_of_type_JavaUtilArrayList = paramArrayList2;
-      break label39;
-    }
-  }
-  
-  private boolean a(ArrayList<bhyr> paramArrayList)
-  {
-    if (paramArrayList != null)
-    {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext()) {
-        if (!((bhyr)paramArrayList.next()).jdField_a_of_type_Boolean) {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public boolean a(View paramView)
-  {
-    boolean bool2 = false;
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((bhyr)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_AndroidViewView == paramView)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        boolean bool1 = bool2;
-        if (a(this.jdField_a_of_type_JavaUtilArrayList))
-        {
-          bool1 = bool2;
-          if (a(this.jdField_b_of_type_JavaUtilArrayList)) {
-            bool1 = true;
-          }
-        }
-        this.jdField_a_of_type_Boolean = bool1;
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
-  public boolean areAllItemsEnabled()
-  {
-    return (this.jdField_a_of_type_AndroidWidgetListAdapter == null) || ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetListAdapter.areAllItemsEnabled()));
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_JavaUtilArrayList.size();
-  }
-  
-  public boolean b(View paramView)
-  {
-    boolean bool2 = false;
-    int i = 0;
-    while (i < this.jdField_b_of_type_JavaUtilArrayList.size())
-    {
-      if (((bhyr)this.jdField_b_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_AndroidViewView == paramView)
-      {
-        this.jdField_b_of_type_JavaUtilArrayList.remove(i);
-        boolean bool1 = bool2;
-        if (a(this.jdField_a_of_type_JavaUtilArrayList))
-        {
-          bool1 = bool2;
-          if (a(this.jdField_b_of_type_JavaUtilArrayList)) {
-            bool1 = true;
-          }
-        }
-        this.jdField_a_of_type_Boolean = bool1;
-        return true;
-      }
-      i += 1;
-    }
-    return false;
+    paramViewGroup = new LinearLayout(this.a.getContext());
+    paramViewGroup.setOrientation(0);
+    paramViewGroup.setClickable(false);
+    paramViewGroup.setLongClickable(false);
+    paramViewGroup.setTag(new bhxk(null));
+    return paramViewGroup;
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null) {
-      return b() + a() + this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
+    if (this.a.c == 0)
+    {
+      if (this.a.jdField_a_of_type_AndroidViewView != null) {
+        return 1;
+      }
+      return 0;
     }
-    return b() + a();
-  }
-  
-  public Filter getFilter()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return ((Filterable)this.jdField_a_of_type_AndroidWidgetListAdapter).getFilter();
-    }
-    return null;
+    return this.a.c;
   }
   
   public Object getItem(int paramInt)
   {
-    int i = a();
-    if (paramInt < i) {
-      return ((bhyr)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangObject;
-    }
-    int j = paramInt - i;
-    paramInt = 0;
-    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null)
-    {
-      i = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
-      paramInt = i;
-      if (j < i) {
-        return this.jdField_a_of_type_AndroidWidgetListAdapter.getItem(j);
-      }
-    }
-    return ((bhyr)this.jdField_b_of_type_JavaUtilArrayList.get(j - paramInt)).jdField_a_of_type_JavaLangObject;
+    return null;
   }
   
   public long getItemId(int paramInt)
   {
-    int i = a();
-    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (paramInt >= i))
-    {
-      paramInt -= i;
-      if (paramInt < this.jdField_a_of_type_AndroidWidgetListAdapter.getCount()) {
-        return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemId(paramInt);
-      }
-    }
-    return -1L;
+    return 0L;
   }
   
   public int getItemViewType(int paramInt)
   {
-    int i = a();
-    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (paramInt >= i))
-    {
-      paramInt -= i;
-      if (paramInt < this.jdField_a_of_type_AndroidWidgetListAdapter.getCount()) {
-        return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
-      }
+    if (this.a.c == 0) {
+      return 0;
     }
-    return -2;
+    if (this.a.jdField_a_of_type_Int == 0) {
+      return this.a.jdField_a_of_type_Bhxl.getItemViewType(paramInt) + 2;
+    }
+    return 1;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int j = a();
-    if (paramInt < j) {
-      return ((bhyr)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_AndroidViewView;
-    }
-    int k = paramInt - j;
-    paramInt = 0;
-    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null)
+    Object localObject2;
+    Object localObject1;
+    if (this.a.c == 0)
     {
-      int i = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
-      paramInt = i;
-      if (k < i) {
-        return this.jdField_a_of_type_AndroidWidgetListAdapter.getView(k, paramView, paramViewGroup);
+      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(new AbsListView.LayoutParams(this.a.getWidth(), this.a.getHeight()));
+      localObject2 = this.a.jdField_a_of_type_AndroidViewView;
+      localObject1 = paramView;
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return localObject2;
+    }
+    int i;
+    if (this.a.jdField_a_of_type_Int == 1)
+    {
+      paramView = (LinearLayout)paramView;
+      localObject1 = paramView;
+      if (paramView == null) {
+        localObject1 = a(paramViewGroup);
       }
+      ((LinearLayout)localObject1).removeAllViews();
+      i = this.a.d - this.a.b * paramInt;
+      if (i < this.a.b) {
+        break label577;
+      }
+      i = this.a.b;
     }
-    try
+    label574:
+    label577:
+    for (;;)
     {
-      paramView = ((bhyr)this.jdField_b_of_type_JavaUtilArrayList.get(k - paramInt)).jdField_a_of_type_AndroidViewView;
-      return paramView;
-    }
-    catch (Exception paramView)
-    {
-      throw new RuntimeException("adapter index out of bound. adapter count: " + paramInt + ", footCount: " + this.jdField_b_of_type_JavaUtilArrayList.size() + ", numHeaders:" + j + " , position: " + k + ", Adapter: " + this.jdField_a_of_type_AndroidWidgetListAdapter);
+      bhxk localbhxk = (bhxk)((LinearLayout)localObject1).getTag();
+      int k = paramInt * this.a.b;
+      int j = 0;
+      paramView = (View)localObject1;
+      int m;
+      if (j < i)
+      {
+        paramView = localbhxk.a[j];
+        m = this.a.jdField_a_of_type_Bhxl.b(k + j);
+        if ((paramView == null) || (((Integer)paramView.getTag(2131361856)).intValue() == m)) {
+          break label574;
+        }
+        paramView = null;
+      }
+      for (;;)
+      {
+        View localView = this.a.jdField_a_of_type_Bhxl.getView(k + j, paramView, (ViewGroup)localObject1);
+        localView.setTag(2131361856, Integer.valueOf(m));
+        localbhxk.a[j] = localView;
+        localObject2 = (LinearLayout.LayoutParams)localView.getLayoutParams();
+        paramView = (View)localObject2;
+        if (localObject2 == null)
+        {
+          paramView = new LinearLayout.LayoutParams(this.a.g, this.a.h);
+          localView.setLayoutParams(paramView);
+        }
+        paramView.width = this.a.g;
+        paramView.height = this.a.h;
+        paramView.leftMargin = this.a.e;
+        paramView.topMargin = this.a.f;
+        ((LinearLayout)localObject1).addView(localView);
+        if ((this.a.jdField_a_of_type_Bkij != null) && (this.a.jdField_a_of_type_Bhxl.isEnabled(k + j)))
+        {
+          localView.setTag(2131361809, Integer.valueOf(k + j));
+          localView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+        }
+        for (;;)
+        {
+          j += 1;
+          break;
+          localView.setOnClickListener(null);
+        }
+        i = this.a.jdField_a_of_type_Bhxl.a(paramInt) + 2;
+        localObject1 = paramView;
+        if (paramView != null)
+        {
+          localObject1 = paramView;
+          if (((Integer)paramView.getTag(2131361856)).intValue() != i) {
+            localObject1 = null;
+          }
+        }
+        paramView = this.a.jdField_a_of_type_Bhxl.getView(paramInt, (View)localObject1, paramViewGroup);
+        paramView.setTag(2131361856, Integer.valueOf(i));
+        if ((this.a.jdField_a_of_type_Bkij != null) && (this.a.jdField_a_of_type_Bhxl.isEnabled(paramInt)))
+        {
+          paramView.setTag(2131361809, Integer.valueOf(paramInt));
+          paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+        }
+        for (;;)
+        {
+          localObject1 = paramView;
+          localObject2 = paramView;
+          break;
+          paramView.setOnClickListener(null);
+        }
+      }
     }
   }
   
   public int getViewTypeCount()
   {
-    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null) {
-      return this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount();
-    }
-    return 1;
-  }
-  
-  public ListAdapter getWrappedAdapter()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter;
-  }
-  
-  public boolean hasStableIds()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null) {
-      return this.jdField_a_of_type_AndroidWidgetListAdapter.hasStableIds();
-    }
-    return false;
-  }
-  
-  public boolean isEmpty()
-  {
-    return (this.jdField_a_of_type_AndroidWidgetListAdapter == null) || (this.jdField_a_of_type_AndroidWidgetListAdapter.isEmpty());
+    return this.a.i + 2;
   }
   
   public boolean isEnabled(int paramInt)
   {
-    int k = a();
-    if (paramInt < k) {
-      return ((bhyr)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
+    if ((this.a.c == 0) || (this.a.jdField_a_of_type_Int == 1)) {
+      return false;
     }
-    int m = paramInt - k;
-    int i;
-    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null)
-    {
-      int j = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
-      i = j;
-      if (m < j) {
-        return this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(m);
-      }
-    }
-    else
-    {
-      i = 0;
-    }
-    try
-    {
-      if (this.jdField_b_of_type_JavaUtilArrayList.size() <= m - i)
-      {
-        QLog.e("HeaderViewListAdapter", 1, "adapter index out of bound. adapter count: " + i + ", footCount: " + this.jdField_b_of_type_JavaUtilArrayList.size() + " , adjPosition: " + m + ", Adapter: " + this.jdField_a_of_type_AndroidWidgetListAdapter + "position=" + paramInt + "numHeaders=" + k);
-        return false;
-      }
-    }
-    catch (Exception localException)
-    {
-      throw new RuntimeException("adapter index out of bound. adapter count: " + i + ", footCount: " + this.jdField_b_of_type_JavaUtilArrayList.size() + " , position: " + m + ", Adapter: " + this.jdField_a_of_type_AndroidWidgetListAdapter);
-    }
-    boolean bool = ((bhyr)this.jdField_b_of_type_JavaUtilArrayList.get(m - i)).jdField_a_of_type_Boolean;
-    return bool;
-  }
-  
-  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (paramDataSetObserver != null)) {
-      this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(paramDataSetObserver);
-    }
-  }
-  
-  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (paramDataSetObserver != null)) {
-      this.jdField_a_of_type_AndroidWidgetListAdapter.unregisterDataSetObserver(paramDataSetObserver);
-    }
+    return super.isEnabled(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhxm
  * JD-Core Version:    0.7.0.1
  */

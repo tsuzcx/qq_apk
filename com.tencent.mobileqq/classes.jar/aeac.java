@@ -1,23 +1,31 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 public class aeac
-  extends MqqHandler
+  extends AccountObserver
 {
-  public aeac(SubLoginActivity paramSubLoginActivity) {}
+  public aeac(Conversation paramConversation) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    switch (paramMessage.what)
+    if (this.a.a != null)
     {
-    default: 
-      return;
-    case 1982: 
-      this.a.finish();
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, String.format("onOnlineStatusChanged, currentStatus = %s", new Object[] { paramStatus }));
+      }
+      this.a.a.a("AccountObserver.onOnlineStatusChanged");
     }
-    this.a.e();
+  }
+  
+  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, String.format("onOnlineStatusPush, currentStatus = %s , extOnlineStatus = %d", new Object[] { paramStatus, Long.valueOf(paramLong) }));
+    }
+    this.a.a.a("AccountObserver.onOnlineStatusPush");
   }
 }
 

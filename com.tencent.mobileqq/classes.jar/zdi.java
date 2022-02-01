@@ -1,93 +1,47 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import java.io.File;
 
 class zdi
-  extends BroadcastReceiver
+  implements bhkl
 {
-  public int a;
-  public String a;
-  public String b;
+  private String jdField_a_of_type_JavaLangString;
+  private zdw jdField_a_of_type_Zdw;
   
-  private zdi(zdg paramzdg) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  zdi(zdw paramzdw, String paramString)
   {
-    int i = paramIntent.getIntExtra("bc_seq", -1);
-    if (i < 0) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence = " + i + "| wrong seq");
-      }
-    }
-    byte[] arrayOfByte;
-    do
+    this.jdField_a_of_type_Zdw = paramzdw;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void ai_()
+  {
+    Object localObject = new File(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_JavaLangString.lastIndexOf(".af")).concat("_").concat(String.valueOf(this.jdField_a_of_type_Zdw.c)).concat(".pcm"));
+    if (((File)localObject).exists())
     {
-      do
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      bgmg.a((File)localObject, new File(this.jdField_a_of_type_JavaLangString));
+      if (zdg.a() != null)
       {
-        return;
-        if (i == this.jdField_a_of_type_Int) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence != seq | miss hit");
-      return;
-      paramContext = paramIntent.getExtras();
-      arrayOfByte = paramContext.getByteArray("bc_data");
-      i = paramIntent.getIntExtra("portal_type_key", -1);
-      if (arrayOfByte != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive data = null");
-    return;
-    if (QLog.isColorLevel())
-    {
-      if (i != 1009) {
-        break label286;
-      }
-      paramContext = "REQ_TYPE_GET_HEAD returned";
-    }
-    for (;;)
-    {
-      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceiver.onReceive | " + i + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + paramContext);
-      switch (i)
-      {
-      default: 
-        return;
-      }
-      this.jdField_a_of_type_Zdg.a(this.jdField_a_of_type_Int);
-      paramIntent = awni.b(arrayOfByte);
-      paramContext = paramIntent;
-      if (paramIntent == null) {
-        paramContext = new JSONObject();
-      }
-      try
-      {
-        paramContext.put("errorCode", -1);
-        paramContext = paramContext.toString();
-        this.jdField_a_of_type_Zdg.a(this.jdField_a_of_type_JavaLangString, new String[] { paramContext });
-        return;
-        label286:
-        paramContext = paramContext.toString();
-      }
-      catch (JSONException paramContext)
-      {
-        for (;;)
-        {
-          paramContext.printStackTrace();
-          paramContext = paramIntent;
-        }
+        localObject = zdg.a().obtainMessage(10);
+        ((Message)localObject).obj = this.jdField_a_of_type_Zdw;
+        zdg.a().sendMessage((Message)localObject);
       }
     }
   }
+  
+  public void aj_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zdi
  * JD-Core Version:    0.7.0.1
  */

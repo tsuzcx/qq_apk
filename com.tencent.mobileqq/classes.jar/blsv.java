@@ -1,18 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.TemplateData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public final class blsv
-  implements Parcelable.Creator<TemplateData>
+  implements DialogInterface.OnClickListener
 {
-  public TemplateData a(Parcel paramParcel)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new TemplateData(paramParcel);
-  }
-  
-  public TemplateData[] a(int paramInt)
-  {
-    return new TemplateData[paramInt];
+    paramDialogInterface.dismiss();
   }
 }
 

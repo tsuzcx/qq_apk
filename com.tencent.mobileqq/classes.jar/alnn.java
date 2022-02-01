@@ -1,153 +1,78 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.data.ApolloActionPackage;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.List;
+import java.util.LinkedList;
+import java.util.Random;
 
-public class alnn
-  extends BaseAdapter
+class alnn
 {
-  int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<ApolloActionPackage> jdField_a_of_type_JavaUtilList;
-  private int b = -1;
+  private int jdField_a_of_type_Int;
+  private LinkedList<Integer> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private int b;
   
-  public alnn(Context paramContext)
+  public alnn(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131165585);
-  }
-  
-  public Drawable a(ApolloActionPackage paramApolloActionPackage)
-  {
-    ApolloActionPackage localApolloActionPackage = null;
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    URLDrawable localURLDrawable2;
-    if (!TextUtils.isEmpty(paramApolloActionPackage.mIconSelectedUrl))
+    this.b = paramInt1;
+    if (paramInt2 > 0)
     {
-      localURLDrawable2 = aldt.a("" + paramApolloActionPackage.mIconSelectedUrl.hashCode(), null, paramApolloActionPackage.mIconSelectedUrl, true);
-      localURLDrawable1 = localURLDrawable2;
-      if (localURLDrawable2 != null) {
-        localURLDrawable2.startDownload();
+      this.jdField_a_of_type_ArrayOfInt = new int[paramInt2];
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
+      {
+        this.jdField_a_of_type_ArrayOfInt[paramInt1] = -1;
+        paramInt1 += 1;
       }
     }
-    for (URLDrawable localURLDrawable1 = localURLDrawable2;; localURLDrawable1 = null)
+    this.jdField_a_of_type_ArrayOfInt = null;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_JavaUtilLinkedList.size() == 0)
     {
-      if (!TextUtils.isEmpty(paramApolloActionPackage.mIconUnselectedUrl))
+      i = 0;
+      if (i < this.b)
       {
-        paramApolloActionPackage = aldt.a("" + paramApolloActionPackage.mIconUnselectedUrl.hashCode(), null, paramApolloActionPackage.mIconUnselectedUrl, true);
-        localApolloActionPackage = paramApolloActionPackage;
-        if (paramApolloActionPackage != null)
+        if (a(i)) {}
+        for (;;)
         {
-          paramApolloActionPackage.startDownload();
-          localApolloActionPackage = paramApolloActionPackage;
+          i += 1;
+          break;
+          this.jdField_a_of_type_JavaUtilLinkedList.add(Integer.valueOf(i));
         }
       }
-      if (localURLDrawable1 != null) {
-        localStateListDrawable.addState(new int[] { 16842913 }, localURLDrawable1);
-      }
-      if (localApolloActionPackage != null) {
-        localStateListDrawable.addState(new int[] { -16842913 }, localApolloActionPackage);
-      }
-      return localStateListDrawable;
     }
-  }
-  
-  public ApolloActionPackage a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return null;
-    }
-    return (ApolloActionPackage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public List<ApolloActionPackage> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    int i = this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_JavaUtilLinkedList.size()) % this.b;
+    int j = ((Integer)this.jdField_a_of_type_JavaUtilLinkedList.get(i)).intValue();
+    this.jdField_a_of_type_JavaUtilLinkedList.remove(i);
+    a(j);
+    return j;
   }
   
   public void a(int paramInt)
   {
-    this.b = paramInt;
-  }
-  
-  public void a(List<ApolloActionPackage> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  @TargetApi(14)
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
+    if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > this.jdField_a_of_type_Int))
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558656, paramViewGroup, false);
-      paramViewGroup = new alno(this);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377356));
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setActivated(true);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setFocusable(true);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setEnabled(true);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131377353);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_Int);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377354));
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      localObject = paramViewGroup.jdField_a_of_type_AndroidViewView;
-      if (paramInt == getCount() - 1) {
-        break label227;
-      }
+      this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = paramInt;
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_Int %= this.jdField_a_of_type_ArrayOfInt.length;
     }
-    label227:
-    for (int i = 0;; i = 4)
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length == 0)) {}
+    for (;;)
     {
-      ((View)localObject).setVisibility(i);
-      localObject = a(paramInt);
-      if (localObject != null)
+      return false;
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfInt.length)
       {
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(a((ApolloActionPackage)localObject));
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(((ApolloActionPackage)localObject).name);
-        if ((((ApolloActionPackage)localObject).isUpdate) && (NetConnInfoCenter.getServerTimeMillis() >= ((ApolloActionPackage)localObject).redStartTime)) {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        if (this.jdField_a_of_type_ArrayOfInt[i] == paramInt) {
+          return true;
         }
+        i += 1;
       }
-      if (paramInt != this.b) {
-        break label233;
-      }
-      paramView.setSelected(true);
-      return paramView;
-      paramViewGroup = (alno)paramView.getTag();
-      break;
     }
-    label233:
-    paramView.setSelected(false);
-    return paramView;
   }
 }
 

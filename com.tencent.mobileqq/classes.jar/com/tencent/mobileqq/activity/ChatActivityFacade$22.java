@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aupa;
-import azaf;
-import bayf;
+import awwg;
+import bbzh;
+import bdzi;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -23,12 +23,12 @@ public final class ChatActivityFacade$22
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord.frienduin, localMessageRecord.uniseq));
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      localMessageRecord = azaf.a(localMessageRecord);
+      localMessageRecord = bbzh.a(localMessageRecord);
       if ((localMessageRecord != null) && (localMessageRecord.msgtype == -1051))
       {
-        aupa localaupa = (aupa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166);
+        awwg localawwg = (awwg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166);
         localMessageRecord.extStr = null;
-        localaupa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, true);
+        localawwg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, true);
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, null, true);
@@ -42,7 +42,7 @@ public final class ChatActivityFacade$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.22
  * JD-Core Version:    0.7.0.1
  */

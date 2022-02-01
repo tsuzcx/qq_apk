@@ -1,15 +1,40 @@
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public abstract interface ldp
+public class ldp
 {
-  public abstract void a(long paramLong, String paramString1, Language paramLanguage, String paramString2, agdn paramagdn);
+  HashMap<String, String> a = new HashMap();
+  HashMap<String, Long> b = new HashMap();
   
-  public abstract void a(long paramLong, String paramString, TranslateError paramTranslateError, agdn paramagdn);
+  void a(String paramString, boolean paramBoolean)
+  {
+    QLog.w("DeviceCapabilityExamination", 1, "setDownloadFinish, md5[" + paramString + "], suc[" + paramBoolean + "], time[" + this.b.get(paramString) + "]");
+    AudioHelper.c(anni.a(2131701957) + paramBoolean);
+    this.a.remove(paramString);
+    this.b.remove(paramString);
+  }
+  
+  boolean a()
+  {
+    return this.a.isEmpty();
+  }
+  
+  public boolean a(String paramString1, String paramString2)
+  {
+    if (this.a.get(paramString1) != null)
+    {
+      QLog.w("DeviceCapabilityExamination", 1, "isDownloading, md5[" + paramString1 + "], time[" + this.b.get(paramString1) + "]");
+      return true;
+    }
+    this.a.put(paramString1, paramString2);
+    this.b.put(paramString1, Long.valueOf(System.currentTimeMillis()));
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ldp
  * JD-Core Version:    0.7.0.1
  */

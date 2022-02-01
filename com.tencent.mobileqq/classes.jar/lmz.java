@@ -1,37 +1,30 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import mqq.app.BaseActivity;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel;
 
 public class lmz
+  implements mhj
 {
-  private Runnable a;
+  public lmz(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void a(VideoAppInterface paramVideoAppInterface, VideoController paramVideoController)
+  public void a()
   {
-    if ((paramVideoAppInterface == null) || (paramVideoController == null)) {}
-    do
+    if (this.a.a != null)
     {
-      return;
-      paramVideoController = paramVideoController.a();
-    } while ((this.a == null) || (paramVideoController == null));
-    paramVideoController.a(this.a, paramVideoAppInterface);
-    this.a = null;
+      this.a.a.setViewEnable(2131373372, false);
+      this.a.a.setViewEnable(2131373371, false);
+      this.a.a.setViewEnable(2131363071, false);
+    }
   }
   
-  public void a(BaseActivity paramBaseActivity, VideoAppInterface paramVideoAppInterface, VideoController paramVideoController)
+  public void b()
   {
-    if ((paramBaseActivity == null) || (paramVideoAppInterface == null) || (paramVideoController == null)) {}
-    do
-    {
-      return;
-      paramVideoController = paramVideoController.a();
-    } while (paramVideoController == null);
-    this.a = paramVideoController.a(paramBaseActivity, paramVideoAppInterface);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772169);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lmz
  * JD-Core Version:    0.7.0.1
  */

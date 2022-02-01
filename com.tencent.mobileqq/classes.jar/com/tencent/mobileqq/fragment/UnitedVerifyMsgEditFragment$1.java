@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.fragment;
 
-import alud;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdgc;
+import anni;
+import bglf;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -28,7 +28,7 @@ class UnitedVerifyMsgEditFragment$1
       if (localObject1 != null) {
         break label153;
       }
-      localObject1 = bdgc.a(this.this$0.a.app, this.this$0.a.app.getAccount());
+      localObject1 = bglf.a(this.this$0.a.app, this.this$0.a.app.getAccount());
       label97:
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         break label255;
@@ -36,7 +36,7 @@ class UnitedVerifyMsgEditFragment$1
     }
     label153:
     label255:
-    for (localObject2 = String.format(Locale.getDefault(), alud.a(2131716291), new Object[] { localObject1 });; localObject2 = String.format(Locale.getDefault(), alud.a(2131716292), new Object[] { localObject2, localObject1 }))
+    for (localObject2 = String.format(Locale.getDefault(), anni.a(2131714568), new Object[] { localObject1 });; localObject2 = String.format(Locale.getDefault(), anni.a(2131714569), new Object[] { localObject2, localObject1 }))
     {
       this.this$0.a.runOnUiThread(new UnitedVerifyMsgEditFragment.1.1(this, (String)localObject2, (String)localObject1));
       return;
@@ -62,14 +62,14 @@ class UnitedVerifyMsgEditFragment$1
         localObject1 = ((TroopMemberInfo)localObject1).friendnick;
         break label97;
       }
-      localObject1 = bdgc.a(this.this$0.a.app, this.this$0.a.app.getAccount());
+      localObject1 = bglf.a(this.this$0.a.app, this.this$0.a.app.getAccount());
       break label97;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.UnitedVerifyMsgEditFragment.1
  * JD-Core Version:    0.7.0.1
  */

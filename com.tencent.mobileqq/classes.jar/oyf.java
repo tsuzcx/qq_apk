@@ -1,98 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class oyf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initHeadMedalClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oyf
+  implements owp
 {
-  @NotNull
-  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  @NotNull
-  private oyg jdField_a_of_type_Oyg;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public oyf(@NotNull oyg paramoyg, @NotNull String paramString)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Oyg = paramoyg;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onCreate");
-    }
-  }
-  
-  @UiThread
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Oyg.a(this, paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onDestroy");
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onResume");
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onPause");
-    }
-  }
-  
-  public void e()
-  {
-    this.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onShowSelf");
-    }
-  }
-  
-  public void f()
-  {
-    this.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onHideSelf");
-    }
-  }
-  
-  protected abstract void g();
-  
-  protected abstract void h();
-  
-  @NonNull
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oyg(parampay, parampan, paramContainer));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oyf
  * JD-Core Version:    0.7.0.1
  */

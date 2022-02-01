@@ -1,47 +1,53 @@
 package com.tencent.mobileqq.activity;
 
-import adnv;
-import adnw;
-import alof;
-import alto;
+import Override;
+import aeum;
+import aeun;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.widget.ImageView;
-import aqge;
-import awqt;
-import bclg;
-import bdeu;
-import bdgm;
-import bdzf;
-import bfyh;
-import bhso;
+import anhk;
+import anmw;
+import asfu;
+import asli;
+import azfe;
+import bfpx;
+import bgjw;
+import bglp;
+import bhgg;
+import bjft;
+import bkfx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtendFriendUserInfo;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qidian.QidianProfileCardActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.File;
 import java.util.Locale;
-import lmm;
-import nbp;
-import ndv;
+import ljj;
+import nki;
+import nmp;
 
 public abstract class ProfileActivity
   extends BaseActivity
-  implements alof
+  implements anhk
 {
-  public static final int[][] a = { { 2130849918, 2131167088 }, { 2130849921, 2131167089 }, { 2130849924, 2131167090 } };
+  public static final int[][] a = { { 2130850510, 2131167172 }, { 2130850513, 2131167173 }, { 2130850516, 2131167174 } };
   
   public static int a(int paramInt)
   {
@@ -89,14 +95,14 @@ public abstract class ProfileActivity
   public static Intent a(Context paramContext, ProfileActivity.AllInOne paramAllInOne)
   {
     boolean bool2 = true;
-    if ((paramAllInOne != null) && (nbp.b(paramAllInOne.jdField_a_of_type_JavaLangString))) {
+    if ((paramAllInOne != null) && (nki.b(paramAllInOne.jdField_a_of_type_JavaLangString))) {
       return new Intent(paramContext, QidianProfileCardActivity.class);
     }
     Object localObject;
     if ((paramAllInOne != null) && ((paramContext instanceof BaseActivity)) && (((BaseActivity)paramContext).app != null))
     {
       localObject = ((BaseActivity)paramContext).app;
-      if ((ndv.c((QQAppInterface)localObject, paramAllInOne.jdField_a_of_type_JavaLangString)) || (bfyh.b((QQAppInterface)localObject, paramAllInOne.jdField_a_of_type_JavaLangString)) || (bfyh.a((QQAppInterface)localObject, paramAllInOne.jdField_a_of_type_JavaLangString)))
+      if ((nmp.c((QQAppInterface)localObject, paramAllInOne.jdField_a_of_type_JavaLangString)) || (bjft.b((QQAppInterface)localObject, paramAllInOne.jdField_a_of_type_JavaLangString)) || (bjft.a((QQAppInterface)localObject, paramAllInOne.jdField_a_of_type_JavaLangString)))
       {
         boolean bool1 = bool2;
         if (!(paramContext instanceof SplashActivity)) {
@@ -106,14 +112,14 @@ public abstract class ProfileActivity
         }
         label125:
         for (bool1 = bool2;; bool1 = false) {
-          return ndv.a(paramContext, null, paramAllInOne.jdField_a_of_type_JavaLangString, bool1, -1, false, -1);
+          return nmp.a(paramContext, null, paramAllInOne.jdField_a_of_type_JavaLangString, bool1, -1, false, -1);
         }
       }
     }
-    if ((paramAllInOne != null) && (bdeu.b(paramAllInOne.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(bdeu.jdField_a_of_type_JavaLangString)))
+    if ((paramAllInOne != null) && (bgjw.b(paramAllInOne.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(bgjw.jdField_a_of_type_JavaLangString)))
     {
       paramContext = new Intent(paramContext, QQBrowserActivity.class);
-      paramContext.putExtra("url", bdeu.jdField_a_of_type_JavaLangString);
+      paramContext.putExtra("url", bgjw.jdField_a_of_type_JavaLangString);
       return paramContext;
     }
     paramContext = new Intent(paramContext, FriendProfileCardActivity.class);
@@ -134,30 +140,30 @@ public abstract class ProfileActivity
         paramContext.putExtra("flc_extra_param", paramAllInOne);
       }
     }
-    bhso.b();
+    bkfx.b();
     return paramContext;
   }
   
   public static Uri a(Activity paramActivity, int paramInt)
   {
-    if (lmm.b(BaseApplicationImpl.getContext())) {
+    if (ljj.b(BaseApplicationImpl.getContext())) {
       return null;
     }
     if (AudioHelper.b(0))
     {
-      bdgm.a(paramActivity, 230, paramActivity.getString(2131698770), paramActivity.getString(2131698771), new adnv(), null).show();
+      bglp.a(paramActivity, 230, paramActivity.getString(2131697656), paramActivity.getString(2131697657), new aeum(), null).show();
       return null;
     }
     if (AudioHelper.a(0))
     {
-      bdgm.a(paramActivity, 230, paramActivity.getString(2131698770), paramActivity.getString(2131698772), new adnw(), null).show();
+      bglp.a(paramActivity, 230, paramActivity.getString(2131697656), paramActivity.getString(2131697658), new aeun(), null).show();
       return null;
     }
-    Object localObject1 = new File(bdzf.a(alof.aX + "photo/"));
+    Object localObject1 = new File(bhgg.a(anhk.ba + "photo/"));
     if (!((File)localObject1).exists()) {
       ((File)localObject1).mkdirs();
     }
-    Object localObject2 = bdzf.a(alof.aX + "photo/" + System.currentTimeMillis() + ".jpg");
+    Object localObject2 = bhgg.a(anhk.ba + "photo/" + System.currentTimeMillis() + ".jpg");
     localObject1 = new Intent();
     localObject2 = FileProvider7Helper.setSystemCapture(paramActivity, new File((String)localObject2), (Intent)localObject1);
     ((Intent)localObject1).putExtra("android.intent.extra.videoQuality", 100);
@@ -165,9 +171,9 @@ public abstract class ProfileActivity
     return localObject2;
   }
   
-  public static void a(Activity paramActivity, Intent paramIntent, awqt paramawqt)
+  public static void a(Activity paramActivity, Intent paramIntent, azfe paramazfe)
   {
-    if ((paramActivity == null) || (paramIntent == null) || (paramawqt == null) || (paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null)) {}
+    if ((paramActivity == null) || (paramIntent == null) || (paramazfe == null) || (paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null)) {}
     do
     {
       do
@@ -175,20 +181,20 @@ public abstract class ProfileActivity
         return;
         paramActivity = paramActivity.getIntent();
       } while (paramActivity == null);
-      paramIntent.putExtra("param_return_profilecard_pa", paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int);
-      paramIntent.putExtra("param_return_profilecard_subsourceid", paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.l);
-      if (e(paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int)) {
-        paramIntent.putExtra("param_return_profilecard_discuss_uin", paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.e);
+      paramIntent.putExtra("param_return_profilecard_pa", paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int);
+      paramIntent.putExtra("param_return_profilecard_subsourceid", paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.l);
+      if (e(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int)) {
+        paramIntent.putExtra("param_return_profilecard_discuss_uin", paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.e);
       }
-      if (f(paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int)) {
-        paramIntent.putExtra("param_return_profilecard_group_uin", paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d);
+      if (f(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int)) {
+        paramIntent.putExtra("param_return_profilecard_group_uin", paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d);
       }
-      if (paramawqt.b) {
-        paramIntent.putExtra("param_return_profilecard_troop_uin", paramawqt.jdField_a_of_type_JavaLangString);
+      if (paramazfe.b) {
+        paramIntent.putExtra("param_return_profilecard_troop_uin", paramazfe.jdField_a_of_type_JavaLangString);
       }
       paramIntent.putExtra("flc_extra_param", paramActivity.getBundleExtra("flc_extra_param"));
     } while (!QLog.isColorLevel());
-    QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "updateIntent  [pa: %s, uin:%s, troopUin:%s, discussUin:%s, troop:%s,  subSourceId:%s, extra:%s]", new Object[] { Integer.valueOf(paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int), bdeu.b(paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString), paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d, paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.e, paramawqt.jdField_a_of_type_JavaLangString, Integer.valueOf(paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.l), paramActivity.getBundleExtra("flc_extra_param") }));
+    QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "updateIntent  [pa: %s, uin:%s, troopUin:%s, discussUin:%s, troop:%s,  subSourceId:%s, extra:%s]", new Object[] { Integer.valueOf(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int), bgjw.b(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString), paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d, paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.e, paramazfe.jdField_a_of_type_JavaLangString, Integer.valueOf(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.l), paramActivity.getBundleExtra("flc_extra_param") }));
   }
   
   public static void a(Activity paramActivity, ProfileActivity.AllInOne paramAllInOne, int paramInt)
@@ -258,12 +264,12 @@ public abstract class ProfileActivity
       paramIntent.putExtra("flc_extra_param", paramActivity.getBundleExtra("flc_extra_param"));
       paramIntent.putExtra("AllInOne", localAllInOne);
     } while (!QLog.isColorLevel());
-    QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "initProfileIntent  [pa: %s, uin:%s, troopUin:%s, discussUin:%s, troop:%s, subSourceId:%s, extra:%s]", new Object[] { Integer.valueOf(i), bdeu.b(paramString), localAllInOne.d, localAllInOne.e, paramActivity.getStringExtra("param_return_profilecard_troop_uin"), Integer.valueOf(localAllInOne.l), paramActivity.getBundleExtra("flc_extra_param") }));
+    QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "initProfileIntent  [pa: %s, uin:%s, troopUin:%s, discussUin:%s, troop:%s, subSourceId:%s, extra:%s]", new Object[] { Integer.valueOf(i), bgjw.b(paramString), localAllInOne.d, localAllInOne.e, paramActivity.getStringExtra("param_return_profilecard_troop_uin"), Integer.valueOf(localAllInOne.l), paramActivity.getBundleExtra("flc_extra_param") }));
   }
   
   public static void a(Context paramContext, AppInterface paramAppInterface, String paramString)
   {
-    if (((alto)paramAppInterface.getManager(51)).b(paramString)) {}
+    if (((anmw)paramAppInterface.getManager(51)).b(paramString)) {}
     for (int i = 1;; i = 114)
     {
       a(paramContext, new ProfileActivity.AllInOne(paramString, i), false);
@@ -295,37 +301,37 @@ public abstract class ProfileActivity
   {
     if (paramContext != null)
     {
-      if ((paramAllInOne == null) || (paramInt1 == 1)) {}
-      for (;;)
+      if (paramAllInOne != null) {}
+      try
       {
-        Intent localIntent;
-        try
-        {
-          paramAllInOne.l = 9;
-          localIntent = a(paramContext, paramAllInOne);
-          localIntent.putExtra("AllInOne", paramAllInOne);
-          if (paramInt1 != 1) {
-            break label136;
-          }
-          localIntent.putExtra("key_from_limit_chat_plus", true);
-          localIntent.putExtra("entrance", paramInt2);
-          localIntent.putExtra("key_from_extends_friend", true);
-          localIntent.putExtra("ExtendFriendLimitChatFromeType", paramInt1);
-          localIntent.putExtra("key_from_extends_friend_limit_chat", true);
-          localIntent.addFlags(536870912);
-          paramContext.startActivity(localIntent);
-          aqge.a(paramAllInOne.jdField_a_of_type_JavaLangString);
-          return;
+        Object localObject = ((asfu)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(264)).a(paramAllInOne.jdField_a_of_type_JavaLangString, false);
+        int i = 8;
+        if (localObject != null) {
+          i = ExtendFriendUserInfo.fromTypeToSubID(((ExtendFriendUserInfo)localObject).fromType);
         }
-        catch (Exception paramContext)
-        {
-          QLog.e("Q.profilecard.FrdProfileCard", 1, "openProfileCardFromLimitChat fail.", paramContext);
-          return;
+        paramAllInOne.l = i;
+        localObject = a(paramContext, paramAllInOne);
+        ((Intent)localObject).putExtra("AllInOne", paramAllInOne);
+        if (paramInt1 == 1) {
+          ((Intent)localObject).putExtra("key_from_limit_chat_plus", true);
         }
-        paramAllInOne.l = 8;
-        continue;
-        label136:
-        localIntent.putExtra("key_from_limit_chat_plus", false);
+        for (;;)
+        {
+          ((Intent)localObject).putExtra("entrance", paramInt2);
+          ((Intent)localObject).putExtra("key_from_extends_friend", true);
+          ((Intent)localObject).putExtra("ExtendFriendLimitChatFromeType", paramInt1);
+          ((Intent)localObject).putExtra("key_from_extends_friend_limit_chat", true);
+          ((Intent)localObject).addFlags(536870912);
+          paramContext.startActivity((Intent)localObject);
+          asli.a(paramAllInOne.jdField_a_of_type_JavaLangString);
+          return;
+          ((Intent)localObject).putExtra("key_from_limit_chat_plus", false);
+        }
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        QLog.e("Q.profilecard.FrdProfileCard", 1, "openProfileCardFromLimitChat fail.", paramContext);
       }
     }
   }
@@ -372,9 +378,9 @@ public abstract class ProfileActivity
       try
       {
         Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-        if ((paramAllInOne != null) && ((localObject instanceof QQAppInterface)) && (bclg.b((QQAppInterface)localObject, paramAllInOne.jdField_a_of_type_JavaLangString)))
+        if ((paramAllInOne != null) && ((localObject instanceof QQAppInterface)) && (bfpx.b((QQAppInterface)localObject, paramAllInOne.jdField_a_of_type_JavaLangString)))
         {
-          bclg.a(paramContext, null, paramAllInOne.jdField_a_of_type_JavaLangString);
+          bfpx.a(paramContext, null, paramAllInOne.jdField_a_of_type_JavaLangString);
           return;
         }
         localObject = a(paramContext, paramAllInOne);
@@ -520,10 +526,25 @@ public abstract class ProfileActivity
   {
     return (paramInt == 20) || (paramInt == 21) || (paramInt == 22);
   }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileActivity
  * JD-Core Version:    0.7.0.1
  */

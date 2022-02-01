@@ -1,25 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
 
 class oht
-  implements pgi
+  extends arpd
 {
   oht(ohs paramohs) {}
   
-  public void a(int paramInt)
+  public void onBindedToClient()
   {
-    if ((ohs.a(this.a) != null) && (ohs.a(this.a).a != null))
-    {
-      if (ohs.a(this.a).a.mSocialFeedInfo == null) {
-        ohs.a(this.a).a.mSocialFeedInfo = new SocializeFeedsInfo();
-      }
-      ohs.a(this.a).a.mSocialFeedInfo.a.a = paramInt;
-    }
+    ReadInJoyArticleDetailActivity.a(this.a.a);
   }
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oht
  * JD-Core Version:    0.7.0.1
  */

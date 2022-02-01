@@ -1,60 +1,54 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
-import java.io.IOException;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xtg
-  extends xtb
+public class xtg
+  extends QQUIEventReceiver<xsw, xfu>
 {
-  xtg(xtc paramxtc, xtk paramxtk, String[] paramArrayOfString, ArrayList paramArrayList) {}
-  
-  public void onFailure(String paramString)
+  public xtg(@NonNull xsw paramxsw)
   {
-    wxe.e("Q.qqstory.ffmpeg.FFmpegCmd", paramString);
-    this.jdField_a_of_type_Xtk.onFailure(paramString);
+    super(paramxsw);
   }
   
-  public void onFinish(boolean paramBoolean)
+  public void a(@NonNull xsw paramxsw, @NonNull xfu paramxfu)
   {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      this.jdField_a_of_type_Xtk.onFinish(paramBoolean);
-    }
-    if (paramBoolean) {}
-    try
-    {
-      this.jdField_a_of_type_Xtc.a(this.jdField_a_of_type_JavaUtilArrayList);
+    if (!TextUtils.equals(paramxfu.b, String.valueOf(paramxsw.hashCode()))) {
       return;
     }
-    catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramxsw.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
+    }
+    paramxsw.l();
+    if (paramxfu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      this.jdField_a_of_type_Xtk.onFailure(localFFmpegCommandAlreadyRunningException.getMessage());
-      wxe.e("Q.qqstory.ffmpeg.FFmpegCmd", localFFmpegCommandAlreadyRunningException.getMessage());
+      yqp.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramxfu.jdField_a_of_type_JavaLangString);
+      if (paramxfu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
+      {
+        xfs.a().a(paramxsw.b(), paramxfu.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      xfs.a().a(paramxsw.b(), paramxfu.jdField_a_of_type_JavaLangString, paramxfu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramxsw.hashCode());
       return;
     }
-    catch (IOException localIOException)
-    {
-      this.jdField_a_of_type_Xtk.onFailure(localIOException.getMessage());
-      wxe.e("Q.qqstory.ffmpeg.FFmpegCmd", localIOException.getMessage());
-    }
+    yqp.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131699979), 0).a();
   }
   
-  public void onProgress(String paramString)
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_Xtk.onProgress(paramString);
-  }
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Xtk.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    this.jdField_a_of_type_Xtk.onSuccess(paramString);
+    return xfu.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xtg
  * JD-Core Version:    0.7.0.1
  */

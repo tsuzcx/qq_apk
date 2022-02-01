@@ -3,7 +3,7 @@ package com.tencent.mobileqq.redtouch;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import axlx;
+import baif;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -35,7 +35,7 @@ public class RedPointBroadcastReceiver
       }
       return null;
     }
-    paramString = ((axlx)this.a.getManager(36)).a(paramString);
+    paramString = ((baif)this.a.getManager(36)).a(paramString);
     if (paramString == null)
     {
       if (QLog.isColorLevel()) {
@@ -76,7 +76,7 @@ public class RedPointBroadcastReceiver
     if (QLog.isColorLevel()) {
       QLog.d("RedPointBroadcastReceiver clearRed", 2, "path = " + paramString);
     }
-    ((axlx)paramQQAppInterface.getManager(36)).b(paramString);
+    ((baif)paramQQAppInterface.getManager(36)).b(paramString);
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -92,13 +92,13 @@ public class RedPointBroadcastReceiver
         JSONObject localJSONObject = new JSONObject();
         try
         {
-          paramString = ((axlx)paramQQAppInterface.getManager(36)).a(paramString);
+          paramString = ((baif)paramQQAppInterface.getManager(36)).a(paramString);
           localJSONObject.put("service_type", 0);
           localJSONObject.put("act_id", paramInt);
           localJSONObject.put("obj_id", "");
           localJSONObject.put("pay_amt", 0);
           localJSONObject.put("service_id", i);
-          ((axlx)paramQQAppInterface.getManager(36)).c(paramString, localJSONObject.toString());
+          ((baif)paramQQAppInterface.getManager(36)).c(paramString, localJSONObject.toString());
           return;
         }
         catch (JSONException paramQQAppInterface)
@@ -146,7 +146,7 @@ public class RedPointBroadcastReceiver
         }
       } while (this.a == null);
       paramContext = paramIntent.getStringExtra("path");
-      int i = paramIntent.getIntExtra("act_id", 1001);
+      int i = paramIntent.getIntExtra("actId", 1001);
       a(this.a, paramContext, i);
       return;
     } while ((!"com.tencent.redpoint.clear".equals(str)) || (this.a == null));
@@ -156,7 +156,7 @@ public class RedPointBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedPointBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

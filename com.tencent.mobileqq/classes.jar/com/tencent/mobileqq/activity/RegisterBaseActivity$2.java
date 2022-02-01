@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aduf;
-import bdgm;
-import bdjz;
+import afap;
+import bglp;
+import bgpa;
 
 public class RegisterBaseActivity$2
   implements Runnable
@@ -11,16 +11,16 @@ public class RegisterBaseActivity$2
   
   public void run()
   {
-    bdjz localbdjz = bdgm.a(this.this$0, 230);
-    localbdjz.setTitle(this.a);
-    localbdjz.setMessage(this.b);
-    localbdjz.setPositiveButton(2131720421, new aduf(this));
-    localbdjz.show();
+    bgpa localbgpa = bglp.a(this.this$0, 230);
+    localbgpa.setTitle(this.a);
+    localbgpa.setMessage(this.b);
+    localbgpa.setPositiveButton(2131718286, new afap(this));
+    localbgpa.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterBaseActivity.2
  * JD-Core Version:    0.7.0.1
  */

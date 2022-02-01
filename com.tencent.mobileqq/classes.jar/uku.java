@@ -1,34 +1,45 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.support.annotation.UiThread;
+import java.lang.ref.WeakReference;
 
-class uku
-  implements CompoundButton.OnCheckedChangeListener
+public class uku<V extends uch>
+  implements uck<V>
 {
-  uku(ukt paramukt) {}
+  private WeakReference<V> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  @UiThread
+  public V a()
   {
-    if (paramBoolean)
-    {
-      ukt.a(this.a);
-      if (ukt.a(this.a)) {
-        wxj.a("video_shoot_slides", "clk_setting_on", 0, 0, new String[0]);
-      }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
     }
-    for (;;)
+    return (uch)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      ukt.a(this.a, paramBoolean);
-      return;
-      ukt.b(this.a);
-      if (ukt.a(this.a)) {
-        wxj.a("video_shoot_slides", "clk_setting_close", 0, 0, new String[0]);
-      }
+      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
     }
+  }
+  
+  @UiThread
+  public void a(V paramV)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramV);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uku
  * JD-Core Version:    0.7.0.1
  */

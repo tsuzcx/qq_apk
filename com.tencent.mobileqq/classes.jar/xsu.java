@@ -1,19 +1,39 @@
-class xsu
+import android.content.Intent;
+
+public class xsu
+  extends xmr
 {
-  public final int a;
-  public final String a;
-  public final String b;
+  private xst a;
   
-  public xsu(int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    if (this.a != null) {
+      this.a.a(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  public void a(xst paramxst)
+  {
+    this.a = paramxst;
+  }
+  
+  public void f()
+  {
+    if (this.a != null) {
+      this.a.c();
+    }
+  }
+  
+  public void g()
+  {
+    if (this.a != null) {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xsu
  * JD-Core Version:    0.7.0.1
  */

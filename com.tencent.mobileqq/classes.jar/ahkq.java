@@ -1,21 +1,16 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+
 class ahkq
-  implements ahkr<T>
+  implements bhud
 {
-  ahkq(ahkp paramahkp, int paramInt) {}
+  ahkq(ahkp paramahkp) {}
   
-  public int a()
+  public void a(View paramView)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(ahkz paramahkz, T paramT, int paramInt)
-  {
-    this.jdField_a_of_type_Ahkp.a(paramahkz, paramT, paramInt);
-  }
-  
-  public boolean a(T paramT, int paramInt)
-  {
-    return true;
+    afur.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

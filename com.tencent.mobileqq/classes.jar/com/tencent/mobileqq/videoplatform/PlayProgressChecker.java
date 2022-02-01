@@ -45,6 +45,11 @@ public class PlayProgressChecker
     ThreadUtil.postOnSubThreadDelayed(this, 200L);
   }
   
+  public void setId(long paramLong)
+  {
+    this.mId = paramLong;
+  }
+  
   public void start()
   {
     if (LogUtil.isColorLevel()) {
@@ -66,7 +71,7 @@ public class PlayProgressChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.PlayProgressChecker
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,28 @@
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
-class weu
-  extends vii
+public class weu
+  implements Dispatcher.Event
 {
-  weu(wet paramwet) {}
+  public ErrorMessage a = new ErrorMessage();
   
-  public void a()
+  public String a()
   {
-    super.a();
-    wet.a(this.a).jdField_a_of_type_Vic = null;
+    return this.a.getErrorMessage();
   }
   
-  public void a(int paramInt)
+  public String toString()
   {
-    super.a(paramInt);
-    wxj.a("share_story", "day_suc", 0, paramInt, new String[] { wet.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
+    if (this.a == null) {}
+    for (String str = "null";; str = "\"" + this.a + "\"") {
+      return str + "}";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     weu
  * JD-Core Version:    0.7.0.1
  */

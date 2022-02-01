@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class aqeq
-  extends aqbl
+final class aqeq
+  extends aqce
 {
-  public aqeq(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  aqeq(aqcc paramaqcc, ColorNote paramColorNote) {}
   
-  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<aqcx> paramList, aqck paramaqck)
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
   {
-    if (this.a.b != paramLong) {
-      return;
-    }
-    try
-    {
-      ExtendFriendSearchFragment.a(this.a, 1);
-      ExtendFriendSearchFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramaqck);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("ExtendFriendSearchFragment", 1, "onGetSquareStrangerList exception", paramString);
-    }
+    this.jdField_a_of_type_Aqcc.a(this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.parseBundle());
   }
 }
 

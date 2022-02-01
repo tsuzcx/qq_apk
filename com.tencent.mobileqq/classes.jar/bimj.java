@@ -1,42 +1,47 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.model.GetVirtualListResult;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
-final class bimj
-  implements OnPluginInstallListener
+public class bimj
+  implements biyy
 {
-  bimj(AppRuntime paramAppRuntime, bime parambime, bimk parambimk, int paramInt) {}
+  public bimj(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public IBinder asBinder()
+  public void a()
   {
-    return null;
+    boolean bool = true;
+    GetVirtualListResult localGetVirtualListResult = OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a));
+    if (localGetVirtualListResult != null)
+    {
+      QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "getVirtualList onSuccess null != virtualResult");
+      bior localbior = this.a.a;
+      if (localGetVirtualListResult.a == 0) {}
+      for (;;)
+      {
+        localbior.a(bool, localGetVirtualListResult);
+        return;
+        bool = false;
+      }
+    }
+    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "getVirtualList onSuccess null == virtualResult");
+    this.a.a.a(false, null);
   }
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginPreloader", 2, "pluginType:" + this.jdField_a_of_type_Bime.b + " preload:fail:installerror");
+    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "getVirtualList onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
+    if (OpenAuthorityFragment.a(this.a, paramInt, true))
+    {
+      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "getVirtualList handle110537");
+      return;
     }
-    bimc.a(this.jdField_a_of_type_MqqAppAppRuntime, 1, this.jdField_a_of_type_Bime.b, this.jdField_a_of_type_Bime.c, 3, "preload:fail:installerror", this.jdField_a_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_Bime.d) });
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginPreloader", 2, "plugin install success, do preload.");
-    }
-    bimc.a(this.jdField_a_of_type_MqqAppAppRuntime, 0, this.jdField_a_of_type_Bime.b, this.jdField_a_of_type_Bime.c, this.jdField_a_of_type_Bimk.jdField_a_of_type_Int, this.jdField_a_of_type_Bimk.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_Bime.d) });
-    this.jdField_a_of_type_Bime.a();
+    this.a.a.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bimj
  * JD-Core Version:    0.7.0.1
  */

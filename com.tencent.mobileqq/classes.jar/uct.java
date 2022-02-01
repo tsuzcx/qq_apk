@@ -1,49 +1,30 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class uct
   implements View.OnClickListener
 {
-  public uct(QCircleExpandableTextView paramQCircleExpandableTextView) {}
+  public uct(WSFollowFragment paramWSFollowFragment) {}
   
   public void onClick(View paramView)
   {
-    paramView = this.a;
-    boolean bool;
-    if (!this.a.jdField_b_of_type_Boolean)
-    {
-      bool = true;
-      paramView.jdField_b_of_type_Boolean = bool;
-      if (!this.a.jdField_b_of_type_Boolean) {
-        break label137;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_b_of_type_JavaLangString);
-      if (this.a.jdField_a_of_type_Ucw != null) {
-        this.a.jdField_a_of_type_Ucw.a(false);
-      }
+    if (WSFollowFragment.a(this.a) != null) {
+      WSFollowFragment.a(this.a).b();
     }
-    for (paramView = new ucv(this.a, this.a.getHeight(), this.a.d, null);; paramView = new ucv(this.a, this.a.getHeight(), this.a.c + this.a.e, null))
-    {
-      paramView.setFillAfter(true);
-      paramView.setAnimationListener(new ucu(this));
-      this.a.clearAnimation();
-      this.a.startAnimation(paramView);
-      return;
-      bool = false;
-      break;
-      label137:
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_JavaLangString);
-      if (this.a.jdField_a_of_type_Ucw != null) {
-        this.a.jdField_a_of_type_Ucw.a(true);
-      }
-    }
+    ((ukx)this.a.b()).a(true, true);
+    WSFollowFragment.a(this.a).setVisibility(8);
+    this.a.c();
+    umq.a(136, 1, null);
+    umw.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uct
  * JD-Core Version:    0.7.0.1
  */

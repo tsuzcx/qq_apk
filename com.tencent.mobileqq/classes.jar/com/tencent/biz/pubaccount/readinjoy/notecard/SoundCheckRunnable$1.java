@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.notecard;
 
-import pie;
+import pzp;
 
 class SoundCheckRunnable$1
   implements Runnable
 {
-  SoundCheckRunnable$1(SoundCheckRunnable paramSoundCheckRunnable, pie parampie) {}
+  SoundCheckRunnable$1(SoundCheckRunnable paramSoundCheckRunnable, pzp parampzp) {}
   
   public void run()
   {
-    this.a.F_();
+    this.a.A_();
   }
 }
 

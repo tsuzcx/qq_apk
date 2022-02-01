@@ -1,6 +1,14 @@
-public abstract interface ayet
+public abstract class ayet
+  implements anil
 {
-  public abstract void a(String paramString);
+  protected void a(Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if ((105 == paramInt) && (paramBoolean)) {
+      a(paramObject);
+    }
+  }
 }
 
 

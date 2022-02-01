@@ -1,75 +1,33 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atlk
+final class atlk
+  implements View.OnClickListener
 {
-  public static int a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return 1;
-    }
-    return 2;
-  }
+  atlk(FileManagerEntity paramFileManagerEntity, atmk paramatmk) {}
   
-  public static int a(RedTouch paramRedTouch)
+  public void onClick(View paramView)
   {
-    if ((paramRedTouch == null) || (!paramRedTouch.a())) {}
-    do
+    try
     {
-      return 0;
-      paramRedTouch = paramRedTouch.a();
-    } while ((paramRedTouch == null) || (paramRedTouch.isEmpty()));
-    paramRedTouch = paramRedTouch.iterator();
-    while (paramRedTouch.hasNext())
+      if (blni.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity)) {
+        blni.a().a(this.jdField_a_of_type_Atmk.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), false);
+      }
+      for (;;)
+      {
+        label36:
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        QLog.e("FileOperaterUtils-PUPU", 2, "Should not open the file with pupu: " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+      }
+    }
+    catch (Exception localException)
     {
-      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramRedTouch.next();
-      if (localRedTypeInfo.red_type.get() == 0) {
-        return 1;
-      }
-      if (localRedTypeInfo.red_type.get() == 5) {
-        return 2;
-      }
-      if (localRedTypeInfo.red_type.get() == 11) {
-        return 3;
-      }
+      break label36;
     }
-    return 3;
-  }
-  
-  public static int a(boolean paramBoolean, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
-  {
-    if ((!paramBoolean) || (paramRedTypeInfo == null)) {
-      return 0;
-    }
-    if (paramRedTypeInfo.red_type.get() == 0) {
-      return 1;
-    }
-    if (paramRedTypeInfo.red_type.get() == 5) {
-      return 2;
-    }
-    return 3;
-  }
-  
-  public static azte a(String paramString)
-  {
-    azte localazte = new azte();
-    localazte.i = "trends_tab";
-    localazte.j = "trends_plugin";
-    localazte.k = paramString;
-    return localazte;
-  }
-  
-  public static int b(RedTouch paramRedTouch)
-  {
-    if (paramRedTouch == null) {}
-    while ((paramRedTouch.a == null) || (paramRedTouch.a.getVisibility() != 0)) {
-      return 0;
-    }
-    return 1;
   }
 }
 

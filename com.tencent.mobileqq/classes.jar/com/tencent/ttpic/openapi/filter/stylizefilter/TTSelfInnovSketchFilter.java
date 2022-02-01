@@ -1,0 +1,19 @@
+package com.tencent.ttpic.openapi.filter.stylizefilter;
+
+public class TTSelfInnovSketchFilter
+  extends TTStylizeFilter
+{
+  private static final String FRAGMENT_SHADER = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform float texelWidthOffset;\nuniform float texelHeightOffset;\nuniform sampler2D inputImageTexture;\n\nfloat nextLevelGrayMin = 0.0;\nfloat nextLevelGrayMax = 105.0 / 255.0;\n\nvoid main()\n{\n  vec4 originColor = texture2D(inputImageTexture, textureCoordinate);\n  //revert\n  vec4 revertColor = vec4(1.0 - originColor.r, 1.0 - originColor.g, 1.0 - originColor.b, 1.0);\n  \n  //minimumFilterOpenCV\n  for (int i = -2; i <= 2; i++) {\n    for (int j = -2; j <= 2; j++) {\n      vec2 fIdx = textureCoordinate + vec2(texelWidthOffset * float(i), texelHeightOffset * float(j));\n      vec4 near = texture2D(inputImageTexture, fIdx);\n      near = vec4(1.0 - near.r, 1.0 - near.g, 1.0 - near.b, 1.0);\n      revertColor = min(revertColor, near);\n    }\n  }\n  \n  //blendColorDodge\n  vec4 dodge = originColor / (1.0 - revertColor);\n  \n  //levelGrayMix\n  float originGray = 0.114 * originColor.b + 0.587 * originColor.g + 0.299 * originColor.r;\n  vec4 levelGrayMix = dodge;\n  if (originGray < nextLevelGrayMax) {\n    float alpha = (originGray - nextLevelGrayMin) / (nextLevelGrayMax - nextLevelGrayMin);\n    levelGrayMix = mix(originColor, dodge, alpha);\n  }\n  \n  //Gray\n  float grayRes = 0.114 * levelGrayMix.b + 0.587 * levelGrayMix.g + 0.299 * levelGrayMix.r;\n  \n  gl_FragColor = vec4(grayRes, grayRes, grayRes, 1.0);\n}";
+  private static final String VERTEX_SHADER = "precision highp float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\n\nvoid main()\n{\n  gl_Position = position;\n  textureCoordinate = inputTextureCoordinate;\n}";
+  
+  public TTSelfInnovSketchFilter()
+  {
+    super("precision highp float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\n\nvoid main()\n{\n  gl_Position = position;\n  textureCoordinate = inputTextureCoordinate;\n}", "precision highp float;\nvarying vec2 textureCoordinate;\nuniform float texelWidthOffset;\nuniform float texelHeightOffset;\nuniform sampler2D inputImageTexture;\n\nfloat nextLevelGrayMin = 0.0;\nfloat nextLevelGrayMax = 105.0 / 255.0;\n\nvoid main()\n{\n  vec4 originColor = texture2D(inputImageTexture, textureCoordinate);\n  //revert\n  vec4 revertColor = vec4(1.0 - originColor.r, 1.0 - originColor.g, 1.0 - originColor.b, 1.0);\n  \n  //minimumFilterOpenCV\n  for (int i = -2; i <= 2; i++) {\n    for (int j = -2; j <= 2; j++) {\n      vec2 fIdx = textureCoordinate + vec2(texelWidthOffset * float(i), texelHeightOffset * float(j));\n      vec4 near = texture2D(inputImageTexture, fIdx);\n      near = vec4(1.0 - near.r, 1.0 - near.g, 1.0 - near.b, 1.0);\n      revertColor = min(revertColor, near);\n    }\n  }\n  \n  //blendColorDodge\n  vec4 dodge = originColor / (1.0 - revertColor);\n  \n  //levelGrayMix\n  float originGray = 0.114 * originColor.b + 0.587 * originColor.g + 0.299 * originColor.r;\n  vec4 levelGrayMix = dodge;\n  if (originGray < nextLevelGrayMax) {\n    float alpha = (originGray - nextLevelGrayMin) / (nextLevelGrayMax - nextLevelGrayMin);\n    levelGrayMix = mix(originColor, dodge, alpha);\n  }\n  \n  //Gray\n  float grayRes = 0.114 * levelGrayMix.b + 0.587 * levelGrayMix.g + 0.299 * levelGrayMix.r;\n  \n  gl_FragColor = vec4(grayRes, grayRes, grayRes, 1.0);\n}");
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     com.tencent.ttpic.openapi.filter.stylizefilter.TTSelfInnovSketchFilter
+ * JD-Core Version:    0.7.0.1
+ */

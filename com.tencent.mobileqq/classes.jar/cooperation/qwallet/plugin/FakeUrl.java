@@ -10,7 +10,7 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import bdjz;
+import bgpa;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
@@ -32,7 +32,7 @@ public class FakeUrl
   public FakeUrl.FakeInfo fakeInfo = new FakeUrl.FakeInfo();
   protected FakeUrl.FakeListener fl;
   private DialogInterface.OnClickListener lListener = new FakeUrl.1(this);
-  private bdjz mDialog;
+  private bgpa mDialog;
   private boolean mIsCloseAfterClickUrl = true;
   private DialogInterface.OnClickListener rListener = new FakeUrl.2(this);
   
@@ -93,7 +93,7 @@ public class FakeUrl
     return paramString;
   }
   
-  public bdjz getDialog()
+  public bgpa getDialog()
   {
     return this.mDialog;
   }
@@ -125,7 +125,7 @@ public class FakeUrl
           }
           SpannableString localSpannableString = new SpannableString(str1);
           localSpannableString.setSpan(new FakeUrl.3(this, str2), 0, str1.length(), 33);
-          localSpannableString.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131165735)), 0, str1.length(), 33);
+          localSpannableString.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131165783)), 0, str1.length(), 33);
           localSpannableStringBuilder.append(localSpannableString);
           m = 1;
           i = j;
@@ -179,8 +179,8 @@ public class FakeUrl
     if (TextUtils.isEmpty(paramFakeListener)) {}
     for (paramString = null;; paramString = this.lListener)
     {
-      this.mDialog = new bdjz(this.context, 2131755801);
-      this.mDialog.setContentView(2131558942);
+      this.mDialog = new bgpa(this.context, 2131755823);
+      this.mDialog.setContentView(2131559009);
       this.mDialog.setTitle(paramJSONObject.optString("title", null));
       this.mDialog.setMessageWithoutAutoLink(getSpanStr(this.fakeInfo.retmsg));
       this.mDialog.setNegativeButton(paramFakeListener, paramString);
@@ -234,7 +234,7 @@ public class FakeUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qwallet.plugin.FakeUrl
  * JD-Core Version:    0.7.0.1
  */

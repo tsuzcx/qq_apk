@@ -1,124 +1,22 @@
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.1;
-import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.2;
-import com.tencent.mobileqq.earlydownload.xmldata.ChirpSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
-import mqq.os.MqqHandler;
+import eipc.EIPCResult;
 
 public class aplb
-  extends apld
+  implements aplg
 {
-  private LinkedList<aplc> a = new LinkedList();
-  private QQAppInterface b;
-  private boolean d;
-  
-  public aplb(QQAppInterface paramQQAppInterface)
+  public EIPCResult a(Bundle paramBundle)
   {
-    super("qq.android.system.chirp", paramQQAppInterface);
-    this.b = paramQQAppInterface;
-  }
-  
-  public int a()
-  {
-    return 10040;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return ChirpSoData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyChirpSo";
-  }
-  
-  public void a(aplc paramaplc)
-  {
-    synchronized (this.a)
+    paramBundle = apkf.a();
+    if (paramBundle == null)
     {
-      if (!this.a.contains(paramaplc)) {
-        this.a.add(paramaplc);
-      }
-      return;
+      QLog.e("ArkApp.GetUinHandler", 1, "Handler_GetNickName.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChirpSoHandler", 2, "onDownload success " + paramString);
-    }
-    paramString = new ChirpSoHandler.1(this, paramString);
-    if (Looper.getMainLooper() == Looper.myLooper()) {
-      ThreadManager.getSubThreadHandler().post(paramString);
-    }
-    for (;;)
-    {
-      BaseApplicationImpl.sUiHandler.post(new ChirpSoHandler.2(this));
-      return;
-      paramString.run();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChirpSoHandler", 2, "restartDownload " + paramBoolean);
-    }
-    if (!this.d) {
-      this.d = paramBoolean;
-    }
-    if ((a() != null) && (a().loadState == 2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChirpSoHandler", 2, "is in downloading");
-      }
-      return;
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public void b(aplc paramaplc)
-  {
-    synchronized (this.a)
-    {
-      this.a.remove(paramaplc);
-      return;
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.d)
-    {
-      this.b.E();
-      if (QLog.isColorLevel()) {
-        QLog.d("ChirpSoHandler", 2, "isNetValid2Download by user " + AppSetting.c);
-      }
-      return AppSetting.c;
-    }
-    this.b.E();
-    if (QLog.isColorLevel()) {
-      QLog.d("ChirpSoHandler", 2, "isNetValid2Download by startup " + AppSetting.c);
-    }
-    return (AppSetting.c) && (super.b());
+    Bundle localBundle = new Bundle();
+    localBundle.putString("Uin", paramBundle.getCurrentAccountUin());
+    return EIPCResult.createResult(0, localBundle);
   }
 }
 

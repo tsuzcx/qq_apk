@@ -13,7 +13,7 @@ import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.mini.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import ndr;
+import nmk;
 
 class BaseLibManager$3
   implements Downloader.DownloadListener
@@ -86,7 +86,7 @@ class BaseLibManager$3
       {
         QLog.e("miniapp-process_BaseLibManager[MiniEng]", 1, "ApkgManager--unZipFolder exception.", paramString);
         if (this.val$listener == null) {
-          break label667;
+          break label663;
         }
         this.val$listener.onUpdateResult(1103);
         return;
@@ -94,11 +94,11 @@ class BaseLibManager$3
           FileUtils.delete(paramString, false);
         }
         paramDownloadResult.mkdir();
-        i = ndr.a(this.val$downloadZipPath, paramString);
+        i = nmk.a(this.val$downloadZipPath, paramString);
         if (i != 0) {
-          break label680;
+          break label676;
         }
-        bool = BaseLibManager.access$400(this.this$0, paramDownloadResult);
+        bool = BaseLibManager.verifyBaselib(paramDownloadResult);
         MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 7, null, null, null, 0);
         if ((i == 0) && (bool))
         {
@@ -138,17 +138,17 @@ class BaseLibManager$3
         break;
         BaseLibManager.access$200(this.this$0, 1102);
       }
-      label667:
+      label663:
       BaseLibManager.access$200(this.this$0, 1103);
       continue;
-      label680:
+      label676:
       boolean bool = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.BaseLibManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -98,9 +98,9 @@ public class u
       break;
       localObject = new tlv_t100().get_tlv_100(localasync_context._appid, localasync_context._sub_appid, 0, localasync_context._main_sigmap);
       break label168;
-      localObject = new tlv_t142().get_tlv_142(t.E);
+      localObject = new tlv_t142().get_tlv_142(t.F);
       break label168;
-      localObject = new tlv_t145().get_tlv_145(t.A);
+      localObject = new tlv_t145().get_tlv_145(t.B);
       break label168;
       localObject = new tlv_t183().get_tlv_183(localasync_context._msalt);
       break label168;
@@ -110,7 +110,7 @@ public class u
       break label168;
       localObject = new tlv_t(1313);
       byte[] arrayOfByte = new byte[6];
-      util.int32_to_buf(arrayOfByte, 0, t.az);
+      util.int32_to_buf(arrayOfByte, 0, t.aA);
       util.int16_to_buf(arrayOfByte, 4, 0);
       ((tlv_t)localObject).set_data(arrayOfByte, 6);
       localObject = ((tlv_t)localObject).get_buf();

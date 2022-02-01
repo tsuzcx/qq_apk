@@ -1,12 +1,32 @@
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+
 class bnrt
+  implements Observer<bnrl>
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  boolean jdField_a_of_type_Boolean = false;
-  float b = 0.0F;
+  bnrt(bnrr parambnrr, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
   
-  private bnrt(bnrq parambnrq) {}
+  public void a(@Nullable bnrl parambnrl)
+  {
+    if (parambnrl != null)
+    {
+      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextColor(parambnrl.a);
+      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineColor(parambnrl.b);
+      if (parambnrl.a.equals("#ccffffff"))
+      {
+        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadowParam(3.0F, 0.0F, 1.0F, "#73000000");
+        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(true);
+        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(false);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(false);
+    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(true);
+  }
 }
 
 

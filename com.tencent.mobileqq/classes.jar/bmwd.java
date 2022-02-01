@@ -1,75 +1,40 @@
-import android.graphics.drawable.Drawable;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public class bmwd
 {
   public int a;
-  public Drawable a;
-  public bmwe a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public bmwd()
+  public bmwd(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.jdField_a_of_type_Bmwe = new bmwe();
+    this.f = paramInt1;
+    this.e = paramInt2;
+    this.b = paramInt3;
+    this.a = paramInt4;
+    this.c = paramInt5;
+    this.d = paramInt6;
   }
   
-  public bmwd(JSONObject paramJSONObject)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("thumb_url");
-    this.b = paramJSONObject.getString("poster_name");
-    this.d = paramJSONObject.getString("poster_url");
-    this.c = paramJSONObject.getString("desc");
-    this.e = paramJSONObject.getString("poster_json_layout_desc");
-    this.f = paramJSONObject.getString("poi_poster_id");
+    return this.f;
   }
   
-  public boolean a()
+  public int b()
   {
-    if (this.jdField_a_of_type_Bmwe == null) {
-      this.jdField_a_of_type_Bmwe = new bmwe();
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(this.e);
-      int i = localJSONObject.getInt("align");
-      Object localObject = localJSONObject.getJSONArray("picture_margin");
-      int j = ((JSONArray)localObject).getInt(0);
-      int k = ((JSONArray)localObject).getInt(1);
-      int m = ((JSONArray)localObject).getInt(2);
-      int n = ((JSONArray)localObject).getInt(3);
-      localObject = localJSONObject.getString("text_color");
-      int i1 = localJSONObject.getInt("text_size");
-      int i2 = localJSONObject.getInt("picture_width");
-      int i3 = localJSONObject.getInt("picture_height");
-      int i4 = localJSONObject.getInt("standard_width");
-      int i5 = localJSONObject.getInt("standard_height");
-      this.jdField_a_of_type_Bmwe.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Bmwe.jdField_a_of_type_ArrayOfInt = new int[] { j, k, m, n };
-      this.jdField_a_of_type_Bmwe.jdField_a_of_type_JavaLangString = ((String)localObject);
-      this.jdField_a_of_type_Bmwe.b = i1;
-      this.jdField_a_of_type_Bmwe.c = i2;
-      this.jdField_a_of_type_Bmwe.d = i3;
-      this.jdField_a_of_type_Bmwe.e = i4;
-      this.jdField_a_of_type_Bmwe.f = i5;
-      return true;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return false;
+    return this.e;
   }
   
-  public String toString()
+  public int c()
   {
-    return "Item{thumbUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", desc='" + this.c + '\'' + ", imageUrl='" + this.d + '\'' + ", imageDrawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", layoutJson='" + this.e + '\'' + ", params=" + this.jdField_a_of_type_Bmwe + '}';
+    return this.c - this.b;
+  }
+  
+  public int d()
+  {
+    return this.d - this.a;
   }
 }
 

@@ -1,41 +1,40 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
 
-public class axns
+public abstract interface axns
 {
-  public ConcurrentHashMap<String, axnh> a = new ConcurrentHashMap(10);
+  public abstract int a();
   
-  public axnh a(SVHwEncoder paramSVHwEncoder, SessionInfo paramSessionInfo, int paramInt)
-  {
-    paramSVHwEncoder = new axnh(paramSVHwEncoder, paramSessionInfo, paramInt);
-    this.a.put(paramSVHwEncoder.a, paramSVHwEncoder);
-    axnm.a("VideoCompoundController", "newProcessor, key = " + paramSVHwEncoder.a);
-    return paramSVHwEncoder;
-  }
+  public abstract long a();
   
-  public axnh a(String paramString)
-  {
-    axnm.a("VideoCompoundController", "findProcessor, key = " + paramString);
-    if ((!this.a.isEmpty()) && (paramString != null) && (this.a.containsKey(paramString))) {
-      return (axnh)this.a.get(paramString);
-    }
-    return null;
-  }
+  public abstract View a();
   
-  public boolean a(String paramString)
-  {
-    axnm.a("VideoCompoundController", "removeProcessor, key = " + paramString);
-    if (paramString == null) {}
-    while (this.a.remove(paramString) == null) {
-      return false;
-    }
-    return true;
-  }
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(axnt paramaxnt);
+  
+  public abstract void a(axnu paramaxnu);
+  
+  public abstract void a(axnv paramaxnv);
+  
+  public abstract void a(axnw paramaxnw);
+  
+  public abstract void a(axnx paramaxnx);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axns
  * JD-Core Version:    0.7.0.1
  */

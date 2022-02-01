@@ -1,81 +1,73 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
-import java.util.List;
+import android.os.IBinder;
 
-public class bmxc
-  extends RecyclerView.Adapter<bmxd>
+class bmxc
+  implements bmxa
 {
-  public arwp a;
-  public DynamicTextConfigManager a;
-  public List<DynamicTextConfigManager.DynamicTextConfigBean> a;
+  private IBinder a;
   
-  public bmxc(EditTextEffectView paramEditTextEffectView, arwp paramarwp)
+  bmxc(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Arwp = paramarwp;
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager = ((DynamicTextConfigManager)blqr.a(7));
+    this.a = paramIBinder;
   }
   
-  public bmxd a(ViewGroup paramViewGroup, int paramInt)
+  /* Error */
+  public void a(java.lang.String paramString, android.os.Bundle paramBundle)
   {
-    return new bmxd(LayoutInflater.from(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView.getContext()).inflate(2131561438, paramViewGroup, false), this.jdField_a_of_type_Arwp);
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_3
+    //   4: aload_3
+    //   5: ldc 25
+    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_3
+    //   11: aload_1
+    //   12: invokevirtual 32	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   15: aload_2
+    //   16: ifnull +33 -> 49
+    //   19: aload_3
+    //   20: iconst_1
+    //   21: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   24: aload_2
+    //   25: aload_3
+    //   26: iconst_0
+    //   27: invokevirtual 42	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
+    //   30: aload_0
+    //   31: getfield 15	bmxc:a	Landroid/os/IBinder;
+    //   34: iconst_1
+    //   35: aload_3
+    //   36: aconst_null
+    //   37: iconst_1
+    //   38: invokeinterface 48 5 0
+    //   43: pop
+    //   44: aload_3
+    //   45: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   48: return
+    //   49: aload_3
+    //   50: iconst_0
+    //   51: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   54: goto -24 -> 30
+    //   57: astore_1
+    //   58: aload_3
+    //   59: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   62: aload_1
+    //   63: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	64	0	this	bmxc
+    //   0	64	1	paramString	java.lang.String
+    //   0	64	2	paramBundle	android.os.Bundle
+    //   3	56	3	localParcel	android.os.Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	15	57	finally
+    //   19	30	57	finally
+    //   30	44	57	finally
+    //   49	54	57	finally
   }
   
-  public void a(bmxd parambmxd, int paramInt)
+  public IBinder asBinder()
   {
-    Object localObject = (DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    parambmxd.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = ((DynamicTextConfigManager.DynamicTextConfigBean)localObject);
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)parambmxd.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localMarginLayoutParams.leftMargin = EditTextEffectView.b;
-    localMarginLayoutParams.bottomMargin = EditTextEffectView.jdField_a_of_type_Int;
-    localMarginLayoutParams.topMargin = EditTextEffectView.c;
-    parambmxd.b.setVisibility(8);
-    if (((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id == this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView.d)
-    {
-      parambmxd.c.setVisibility(0);
-      parambmxd.jdField_a_of_type_AndroidWidgetImageView.setImageResource(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).iconDrawableId);
-      if (!this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a((DynamicTextConfigManager.DynamicTextConfigBean)localObject)) {
-        break label193;
-      }
-      parambmxd.d.setVisibility(8);
-    }
-    for (;;)
-    {
-      parambmxd.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setVisibility(8);
-      parambmxd.jdField_a_of_type_Int = paramInt;
-      localObject = blxf.a(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id);
-      if (localObject == null) {
-        break label204;
-      }
-      parambmxd.jdField_a_of_type_AndroidViewView.setContentDescription(alud.a(2131704093) + (String)localObject + alud.a(2131704094));
-      return;
-      parambmxd.c.setVisibility(8);
-      break;
-      label193:
-      parambmxd.d.setVisibility(0);
-    }
-    label204:
-    parambmxd.jdField_a_of_type_AndroidViewView.setContentDescription(null);
-  }
-  
-  public void a(List<DynamicTextConfigManager.DynamicTextConfigBean> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a;
   }
 }
 

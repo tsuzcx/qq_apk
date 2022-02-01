@@ -1,24 +1,13 @@
-import android.content.Context;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class aeyc
-  extends AccessibilityDelegateCompat
+  implements DialogInterface.OnClickListener
 {
-  public aeyc(ListenPanel paramListenPanel) {}
+  public aeyc(QQMapActivity paramQQMapActivity) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (ListenPanel.a(this.a) < 1000.0D) {}
-    for (int i = 0;; i = (int)(ListenPanel.a(this.a) / 1000.0D + 0.5D))
-    {
-      paramAccessibilityNodeInfoCompat.setContentDescription(i + this.a.getContext().getString(2131691158));
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

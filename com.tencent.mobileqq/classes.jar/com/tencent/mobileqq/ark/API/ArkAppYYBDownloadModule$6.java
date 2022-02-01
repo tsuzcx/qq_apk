@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ark.API;
 
-import anlk;
+import apjw;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppYYBDownloadModule$6
   implements Runnable
 {
-  public ArkAppYYBDownloadModule$6(anlk paramanlk, long paramLong, String paramString) {}
+  public ArkAppYYBDownloadModule$6(apjw paramapjw, long paramLong, String paramString) {}
   
   public void run()
   {
@@ -41,7 +41,7 @@ public class ArkAppYYBDownloadModule$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,25 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
 
 public class akcp
-  implements xtk
+  implements akdi
 {
-  long jdField_a_of_type_Long;
-  akcl jdField_a_of_type_Akcl;
-  PublishVideoEntry jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public akcp(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public akcp(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, akcl paramakcl)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = paramPublishVideoEntry;
-    this.jdField_a_of_type_Akcl = paramakcl;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void onFailure(String paramString)
-  {
-    this.jdField_a_of_type_Akcl.a(-12);
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|third step fail:" + paramString);
+    if (paramBoolean) {}
+    for (paramContext = "permission_denied_by_user";; paramContext = "permission_denied")
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("bind_mobile", this.a.a());
+      localIntent.putExtra("check_permission_result", paramContext);
+      localIntent.putExtra("kSrouce", BindVerifyActivity.a(this.a));
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+      return;
     }
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|third step cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D + ", isSuccess:" + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.jdField_a_of_type_Akcl.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.b);
-    }
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart() {}
-  
-  public void onSuccess(String paramString)
-  {
-    xrg.b(BaseApplication.getContext(), new File(this.b));
-    bdhb.d(this.jdField_a_of_type_JavaLangString);
-    akci.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, 3);
   }
 }
 

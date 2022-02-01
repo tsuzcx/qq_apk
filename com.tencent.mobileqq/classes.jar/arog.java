@@ -1,211 +1,182 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.DragGallery;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.MiniScanDecodeSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.MiniScanDetectSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.DragView;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.List;
+import java.io.File;
 
 public class arog
-  extends arod
+  extends arnz
 {
-  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private aria jdField_a_of_type_Aria;
-  private bhvx jdField_a_of_type_Bhvx = new aroh(this);
-  private DragGallery jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery;
-  private DragView jdField_a_of_type_ComTencentWidgetDragView;
-  private boolean jdField_a_of_type_Boolean;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private int a;
+  private boolean d;
   
-  public arog(Activity paramActivity)
+  public arog(QQAppInterface paramQQAppInterface)
   {
-    super(paramActivity);
+    super("qq.android.minidetect.so_v8.2.0", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10083;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return MiniScanDetectSoData.class;
+  }
+  
+  public String a()
+  {
+    return "MiniScanDetectSoData";
   }
   
   public void a()
   {
-    QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: PictureFileViewer initFileView");
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    BaseApplicationImpl.sApplication.getSharedPreferences("mini_scan_sp", 4).edit().putInt("minidetect_so_version", b()).apply();
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    super.a(paramLong1, paramLong2);
+    this.a = ((int)(100L * paramLong1 / paramLong2));
+    apdf.a(1, this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "download progress: " + this.a);
+    }
+  }
+  
+  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
+  {
+    if (!paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560697, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366322));
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery = ((DragGallery)this.jdField_a_of_type_AndroidViewView.findViewById(2131367020));
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365555));
-      this.jdField_a_of_type_Aria = new aria(BaseApplicationImpl.getContext());
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.setAdapter(this.jdField_a_of_type_Aria);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.setOnNoBlankListener(this.jdField_a_of_type_Aria);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.setSpacing(this.jdField_a_of_type_AndroidViewView.getResources().getDimensionPixelSize(2131297026));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371396));
-      this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365489));
-      Rect localRect = a();
-      if (localRect != null)
-      {
-        localRect.top -= ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-        localRect.bottom -= ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-      }
-      this.jdField_a_of_type_ComTencentWidgetDragView.setOriginRect(localRect);
-      this.jdField_a_of_type_ComTencentWidgetDragView.setRatioModify(true);
-      this.jdField_a_of_type_ComTencentWidgetDragView.setGestureChangeListener(this.jdField_a_of_type_Bhvx);
+      g();
+      a();
+      apdf.a(1, false);
+    }
+    super.a(paramXmlData, paramBoolean, paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "download finish: " + paramBoolean);
     }
   }
   
-  public void a(bhuw parambhuw)
+  public void a(String paramString)
   {
-    if (parambhuw != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.setOnItemClickListener(parambhuw);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "download success: " + paramString);
     }
-  }
-  
-  public void a(bhux parambhux)
-  {
-    if (parambhux != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.setOnItemLongClickListener(parambhux);
+    int i = apdj.a(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "download success: " + paramString + ",ret = " + i);
     }
-  }
-  
-  public void a(bhuy parambhuy)
-  {
-    if (parambhuy != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.setOnItemSelectedListener(parambhuy);
+    if (i != 0)
+    {
+      g();
+      a();
+      apdf.a(1, false);
     }
-  }
-  
-  public void a(List<arkl> paramList)
-  {
-    this.jdField_a_of_type_Aria.a(paramList);
-    this.jdField_a_of_type_Aria.notifyDataSetChanged();
+    for (;;)
+    {
+      super.a(paramString);
+      return;
+      apdf.a(1, true);
+    }
   }
   
   public void a(boolean paramBoolean)
   {
-    int j = 0;
-    LinearLayout localLinearLayout;
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    Object localObject = a();
+    if ((paramBoolean) && ((localObject instanceof MiniScanDecodeSoData)))
     {
-      if ((!paramBoolean) || (this.c)) {
-        break label46;
+      localObject = (MiniScanDecodeSoData)localObject;
+      if (QLog.isColorLevel()) {
+        QLog.i("MiniRecog.MiniScanDetectSoDownloadHandler", 2, String.format("restartDownload block_user_download=%b", new Object[] { Boolean.valueOf(((MiniScanDecodeSoData)localObject).block_user_download) }));
       }
-      i = 1;
-      localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-      if (i == 0) {
-        break label51;
-      }
+      if (!((MiniScanDecodeSoData)localObject).block_user_download) {}
     }
-    label46:
-    label51:
-    for (int i = j;; i = 8)
+    do
     {
-      localLinearLayout.setVisibility(i);
-      this.jdField_a_of_type_Boolean = paramBoolean;
       return;
-      i = 0;
-      break;
+      if (!this.d) {
+        this.d = paramBoolean;
+      }
+      super.a(paramBoolean);
+    } while (!QLog.isColorLevel());
+    QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "restartDownload userClick=" + paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return "prd";
+  }
+  
+  public void b(XmlData paramXmlData)
+  {
+    super.b(paramXmlData);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "download begin");
     }
   }
   
-  public void b(View.OnClickListener paramOnClickListener)
+  public boolean b()
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(paramOnClickListener);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (!this.c)) {}
-    for (boolean bool = true;; bool = false)
+    if (this.d)
     {
-      super.b(bool);
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "isNetValid2Download by user ");
+      }
+      return true;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "isNetValid2Download by startup ");
+    }
+    return super.b();
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Aria != null) {
-      this.jdField_a_of_type_Aria.notifyDataSetChanged();
+    boolean bool = atwl.a(new File(apdj.a()));
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "deleteUnZipFile ret: " + bool);
     }
   }
   
-  public void c(int paramInt)
+  public boolean e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.setSelection(paramInt);
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    ImageButton localImageButton = this.jdField_a_of_type_AndroidWidgetImageButton;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    if (!this.d)
     {
-      localImageButton.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoDragGallery.e();
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (this.jdField_a_of_type_ComTencentWidgetDragView != null) {
-        this.jdField_a_of_type_ComTencentWidgetDragView.setOriginRect(a());
+      if (BaseActivity.mAppForground) {}
+      for (boolean bool = false;; bool = true)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "downloadResource later " + bool);
+        }
+        if (!bool) {
+          break;
+        }
+        return false;
       }
     }
-    while (this.jdField_a_of_type_ComTencentWidgetDragView == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentWidgetDragView.setOriginRect(null);
+    return super.e();
   }
   
-  public void e(boolean paramBoolean)
+  public void g()
   {
-    Rect localRect;
-    int i;
-    if (this.jdField_a_of_type_ComTencentWidgetDragView != null)
-    {
-      localRect = a();
-      if (localRect != null)
-      {
-        if (paramBoolean) {
-          break label101;
-        }
-        localRect.top -= ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-        localRect.bottom -= ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-        if ((bnle.c) && (bnle.jdField_a_of_type_Boolean))
-        {
-          i = bnle.b(this.jdField_a_of_type_AndroidAppActivity);
-          localRect.top += i;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "restoreState");
     }
-    for (localRect.bottom = (i + localRect.bottom);; localRect.bottom -= i)
-    {
-      label101:
-      do
-      {
-        this.jdField_a_of_type_ComTencentWidgetDragView.setOriginRect(localRect);
-        return;
-        localRect.top += ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-        localRect.bottom += ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-      } while ((!bnle.c) || (!bnle.jdField_a_of_type_Boolean));
-      i = bnle.b(this.jdField_a_of_type_AndroidAppActivity);
-      localRect.top -= i;
-    }
+    a().loadState = 0;
+    a().Version = 0;
+    arnn.a(a(), new String[0]);
   }
 }
 

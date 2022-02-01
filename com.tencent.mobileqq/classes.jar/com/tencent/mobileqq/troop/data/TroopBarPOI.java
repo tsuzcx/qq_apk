@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.data;
 
-import alud;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bbql;
+import anni;
+import beqw;
 import org.json.JSONObject;
-import wxe;
+import yqp;
 
 public class TroopBarPOI
   implements Parcelable
 {
-  public static final Parcelable.Creator<TroopBarPOI> CREATOR = new bbql();
+  public static final Parcelable.Creator<TroopBarPOI> CREATOR = new beqw();
   public final int a;
   public final String a;
   public final int b;
@@ -59,7 +59,7 @@ public class TroopBarPOI
     Object localObject = null;
     if (TextUtils.isEmpty(paramString))
     {
-      wxe.e("TroopBarPOI", "location is null while spliting location!");
+      yqp.e("TroopBarPOI", "location is null while spliting location!");
       return null;
     }
     String[] arrayOfString = paramString.split("·");
@@ -68,7 +68,7 @@ public class TroopBarPOI
     }
     for (;;)
     {
-      wxe.b("TroopBarPOI", "location name is %s.", paramString);
+      yqp.b("TroopBarPOI", "location name is %s.", paramString);
       return paramString;
       paramString = localObject;
       if (arrayOfString.length > 1) {
@@ -82,7 +82,7 @@ public class TroopBarPOI
     Object localObject1 = null;
     if (TextUtils.isEmpty(paramString))
     {
-      wxe.e("TroopBarPOI", "location is null while spliting location!");
+      yqp.e("TroopBarPOI", "location is null while spliting location!");
       return null;
     }
     Object localObject2 = paramString.split("·");
@@ -90,13 +90,13 @@ public class TroopBarPOI
     {
       localObject2 = localObject2[0];
       localObject1 = localObject2;
-      if (((String)localObject2).endsWith(alud.a(2131715616))) {
+      if (((String)localObject2).endsWith(anni.a(2131713897))) {
         localObject1 = paramString.substring(0, paramString.length() - 1);
       }
     }
     for (;;)
     {
-      wxe.b("TroopBarPOI", "location name is %s.", localObject1);
+      yqp.b("TroopBarPOI", "location name is %s.", localObject1);
       return localObject1;
       if (localObject2.length > 1) {
         localObject1 = localObject2[0];
@@ -108,17 +108,17 @@ public class TroopBarPOI
   {
     if (TextUtils.isEmpty(this.c))
     {
-      wxe.e("TroopBarPOI", "name is empty while get location string!");
+      yqp.e("TroopBarPOI", "name is empty while get location string!");
       return null;
     }
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      wxe.d("TroopBarPOI", "catelog is empty while get location string!");
+      yqp.d("TroopBarPOI", "catelog is empty while get location string!");
       return this.c;
     }
     String str2 = this.jdField_b_of_type_JavaLangString;
     String str1 = str2;
-    if (str2.endsWith(alud.a(2131715642))) {
+    if (str2.endsWith(anni.a(2131713923))) {
       str1 = str2.substring(0, str2.length() - 1);
     }
     return str1 + "·" + this.c;
@@ -161,7 +161,7 @@ public class TroopBarPOI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopBarPOI
  * JD-Core Version:    0.7.0.1
  */

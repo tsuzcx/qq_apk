@@ -1,49 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.OperationCardInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class wlm
+  extends SimpleJob<Void>
 {
-  private qqstory_struct.OperationCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo;
-  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
-  
-  public wlm(qqstory_struct.OperationCardInfo paramOperationCardInfo)
+  public wlm(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, wlf paramwlf)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo = paramOperationCardInfo;
+    super(paramString);
   }
   
-  public wlm(byte[] paramArrayOfByte)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo = new qqstory_struct.OperationCardInfo();
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.mergeFrom(paramArrayOfByte);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wxe.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
-    }
-  }
-  
-  public CardItem.CardVideoInfo a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.card_info.story_video_info.size() == 0) {
-        return null;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.card_info.story_video_info.get(0));
-    }
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Wlf);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wlm
  * JD-Core Version:    0.7.0.1
  */

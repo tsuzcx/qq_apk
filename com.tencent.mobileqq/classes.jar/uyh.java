@@ -1,107 +1,43 @@
-import java.util.Comparator;
+import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
+import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
+import java.util.ArrayList;
 
 public class uyh
-  implements Comparator<uyg>
+  implements zxa<FeedCloudRead.StGetFeedDetailRsp>
 {
-  public int a(uyg paramuyg1, uyg paramuyg2)
+  public uyh(QCircleFakeAdapter paramQCircleFakeAdapter, QCircleFeedEvent paramQCircleFeedEvent, boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    int k = 0;
-    int m = 0;
-    int n = 0;
-    int i1 = 0;
-    int i = 0;
-    int j = 1;
-    if (paramuyg1.a == 1) {
-      if (paramuyg2.a != 1) {}
-    }
-    do
+    if ((paramBoolean) && (paramLong == 0L) && (paramStGetFeedDetailRsp.feed != null))
     {
-      do
+      int i = QCircleFakeAdapter.a(this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter, this.jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent.mTargetId);
+      if (i != -1)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  for (;;)
-                  {
-                    return i;
-                    i = -1;
-                  }
-                  i = j;
-                } while (paramuyg2.a == 1);
-                if (((paramuyg2.a == 13) && (paramuyg2.b == 0)) || ((paramuyg1.a == 13) && (paramuyg1.b > 0))) {
-                  return -1;
-                }
-                if (paramuyg2.a != 13) {
-                  break;
-                }
-                i = j;
-              } while (paramuyg2.b > 0);
-              if (paramuyg1.a != 13) {
-                break;
-              }
-              i = j;
-            } while (paramuyg1.b == 0);
-            if (paramuyg1.a == 2)
-            {
-              if (paramuyg2.a == 2) {}
-              for (i = k;; i = -1) {
-                return i;
-              }
-            }
-            i = j;
-          } while (paramuyg2.a == 2);
-          if (paramuyg1.a == 3)
-          {
-            if (paramuyg2.a == 3) {}
-            for (i = m;; i = -1) {
-              return i;
-            }
-          }
-          i = j;
-        } while (paramuyg2.a == 3);
-        if ((paramuyg1.a == 5) && (paramuyg1.a() > 0))
-        {
-          if ((paramuyg2.a == 5) && (paramuyg2.a() > 0)) {}
-          for (i = n;; i = -1) {
-            return i;
-          }
-        }
-        if (paramuyg2.a != 5) {
-          break;
-        }
-        i = j;
-      } while (paramuyg2.a() > 0);
-      if (paramuyg1.a == 4)
-      {
-        if (paramuyg2.a == 4) {}
-        for (i = i1;; i = 1) {
-          return i;
-        }
+        uxc.a(paramStGetFeedDetailRsp.feed.id.get(), (FeedCloudMeta.StFeed)this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList().get(i));
+        QCircleFakeAdapter.a(this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter, this.jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent.mTargetId);
+        this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList().remove(i);
+        this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.getDataList().add(i, paramStGetFeedDetailRsp.feed);
+        this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.notifyDataSetChanged();
+        QLog.d("QCircleFakeAdapter", 1, "success replace feed");
       }
-      if (paramuyg2.a == 4) {
-        return -1;
-      }
-      if ((paramuyg1.b > 0) && (paramuyg2.b == 0)) {
-        return -1;
-      }
-      if (paramuyg1.b != 0) {
-        break;
-      }
-      i = j;
-    } while (paramuyg2.b > 0);
-    return -vae.a(paramuyg1.d, paramuyg2.d);
+    }
+    for (;;)
+    {
+      QLog.d("QCircleFakeAdapter", 1, "fetch real feed success:" + paramBoolean + "  retCode code:" + paramLong + "fromRetry" + this.jdField_a_of_type_Boolean);
+      return;
+      this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a(this.jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent);
+      QLog.d("QCircleFakeAdapter", 1, "start retry");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uyh
  * JD-Core Version:    0.7.0.1
  */

@@ -73,7 +73,7 @@ public class SignUtils
       }
       return bool;
     }
-    catch (Exception localException) {}
+    catch (Throwable localThrowable) {}
     return false;
   }
   
@@ -94,30 +94,30 @@ public class SignUtils
     //   15: aload 6
     //   17: astore_2
     //   18: aload_0
-    //   19: invokevirtual 192	java/io/File:exists	()Z
+    //   19: invokevirtual 194	java/io/File:exists	()Z
     //   22: ifeq -9 -> 13
     //   25: aload 6
     //   27: astore_2
     //   28: aload_0
-    //   29: invokevirtual 195	java/io/File:isFile	()Z
+    //   29: invokevirtual 197	java/io/File:isFile	()Z
     //   32: ifeq -19 -> 13
-    //   35: new 197	java/io/FileInputStream
+    //   35: new 199	java/io/FileInputStream
     //   38: dup
     //   39: aload_0
-    //   40: invokespecial 200	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   40: invokespecial 202	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   43: astore_2
-    //   44: new 202	java/io/InputStreamReader
+    //   44: new 204	java/io/InputStreamReader
     //   47: dup
     //   48: aload_2
-    //   49: ldc 204
-    //   51: invokespecial 207	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   49: ldc 206
+    //   51: invokespecial 209	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   54: astore 5
     //   56: aload 5
     //   58: astore 4
     //   60: aload_2
     //   61: astore_3
     //   62: aload_0
-    //   63: invokevirtual 211	java/io/File:length	()J
+    //   63: invokevirtual 213	java/io/File:length	()J
     //   66: l2i
     //   67: istore_1
     //   68: iload_1
@@ -137,7 +137,7 @@ public class SignUtils
     //   93: new 60	java/lang/StringBuilder
     //   96: dup
     //   97: sipush 12288
-    //   100: invokespecial 214	java/lang/StringBuilder:<init>	(I)V
+    //   100: invokespecial 216	java/lang/StringBuilder:<init>	(I)V
     //   103: astore 8
     //   105: aload 5
     //   107: astore 4
@@ -145,7 +145,7 @@ public class SignUtils
     //   110: astore_3
     //   111: aload 5
     //   113: aload_0
-    //   114: invokevirtual 218	java/io/InputStreamReader:read	([C)I
+    //   114: invokevirtual 220	java/io/InputStreamReader:read	([C)I
     //   117: istore_1
     //   118: iconst_m1
     //   119: iload_1
@@ -158,7 +158,7 @@ public class SignUtils
     //   131: aload_0
     //   132: iconst_0
     //   133: iload_1
-    //   134: invokevirtual 221	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   134: invokevirtual 223	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
     //   137: pop
     //   138: goto -33 -> 105
     //   141: astore_3
@@ -172,13 +172,13 @@ public class SignUtils
     //   152: astore_3
     //   153: ldc 14
     //   155: iconst_1
-    //   156: ldc 223
+    //   156: ldc 225
     //   158: aload 5
-    //   160: invokestatic 229	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   160: invokestatic 231	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   163: aload_2
     //   164: ifnull +7 -> 171
     //   167: aload_2
-    //   168: invokevirtual 234	java/io/InputStream:close	()V
+    //   168: invokevirtual 236	java/io/InputStream:close	()V
     //   171: aload 6
     //   173: astore_2
     //   174: aload_0
@@ -186,7 +186,7 @@ public class SignUtils
     //   178: aload 7
     //   180: astore_2
     //   181: aload_0
-    //   182: invokevirtual 235	java/io/InputStreamReader:close	()V
+    //   182: invokevirtual 237	java/io/InputStreamReader:close	()V
     //   185: aconst_null
     //   186: areturn
     //   187: astore_0
@@ -202,7 +202,7 @@ public class SignUtils
     //   202: aload_2
     //   203: ifnull +7 -> 210
     //   206: aload_2
-    //   207: invokevirtual 234	java/io/InputStream:close	()V
+    //   207: invokevirtual 236	java/io/InputStream:close	()V
     //   210: aload_0
     //   211: astore_2
     //   212: aload 5
@@ -210,7 +210,7 @@ public class SignUtils
     //   217: aload_0
     //   218: astore_2
     //   219: aload 5
-    //   221: invokevirtual 235	java/io/InputStreamReader:close	()V
+    //   221: invokevirtual 237	java/io/InputStreamReader:close	()V
     //   224: aload_0
     //   225: areturn
     //   226: aload 5
@@ -230,8 +230,8 @@ public class SignUtils
     //   247: iconst_0
     //   248: aload 5
     //   250: aload_0
-    //   251: invokevirtual 218	java/io/InputStreamReader:read	([C)I
-    //   254: invokespecial 238	java/lang/String:<init>	([CII)V
+    //   251: invokevirtual 220	java/io/InputStreamReader:read	([C)I
+    //   254: invokespecial 240	java/lang/String:<init>	([CII)V
     //   257: astore_0
     //   258: goto -56 -> 202
     //   261: astore_0
@@ -242,11 +242,11 @@ public class SignUtils
     //   267: aload_2
     //   268: ifnull +7 -> 275
     //   271: aload_2
-    //   272: invokevirtual 234	java/io/InputStream:close	()V
+    //   272: invokevirtual 236	java/io/InputStream:close	()V
     //   275: aload 4
     //   277: ifnull +8 -> 285
     //   280: aload 4
-    //   282: invokevirtual 235	java/io/InputStreamReader:close	()V
+    //   282: invokevirtual 237	java/io/InputStreamReader:close	()V
     //   285: aload_0
     //   286: athrow
     //   287: astore_2
@@ -280,18 +280,18 @@ public class SignUtils
     //   0	332	0	paramFile	java.io.File
     //   67	166	1	i	int
     //   12	260	2	localObject1	Object
-    //   287	1	2	localException1	Exception
-    //   291	1	2	localException2	Exception
-    //   295	1	2	localException3	Exception
-    //   299	1	2	localException4	Exception
+    //   287	1	2	localException1	java.lang.Exception
+    //   291	1	2	localException2	java.lang.Exception
+    //   295	1	2	localException3	java.lang.Exception
+    //   299	1	2	localException4	java.lang.Exception
     //   312	10	2	localObject2	Object
     //   61	68	3	localObject3	Object
-    //   141	5	3	localException5	Exception
+    //   141	5	3	localException5	java.lang.Exception
     //   152	160	3	localObject4	Object
     //   58	248	4	localObject5	Object
     //   54	195	5	localObject6	Object
-    //   316	1	5	localException6	Exception
-    //   325	1	5	localException7	Exception
+    //   316	1	5	localException6	java.lang.Exception
+    //   325	1	5	localException7	java.lang.Exception
     //   4	168	6	localObject7	Object
     //   1	178	7	localObject8	Object
     //   103	94	8	localStringBuilder	java.lang.StringBuilder
@@ -398,10 +398,10 @@ public class SignUtils
   public static void writeFile(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: new 189	java/io/File
+    //   0: new 191	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 311	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 313	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore 4
     //   10: aconst_null
     //   11: astore_2
@@ -410,31 +410,31 @@ public class SignUtils
     //   14: aload_2
     //   15: astore_0
     //   16: aload 4
-    //   18: invokevirtual 192	java/io/File:exists	()Z
+    //   18: invokevirtual 194	java/io/File:exists	()Z
     //   21: ifne +11 -> 32
     //   24: aload_2
     //   25: astore_0
     //   26: aload 4
-    //   28: invokevirtual 314	java/io/File:createNewFile	()Z
+    //   28: invokevirtual 316	java/io/File:createNewFile	()Z
     //   31: pop
     //   32: aload_2
     //   33: astore_0
-    //   34: new 316	java/io/FileOutputStream
+    //   34: new 318	java/io/FileOutputStream
     //   37: dup
     //   38: aload 4
     //   40: iconst_0
-    //   41: invokespecial 319	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   41: invokespecial 321	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   44: astore_2
     //   45: aload_2
     //   46: aload_1
-    //   47: invokevirtual 244	java/lang/String:getBytes	()[B
-    //   50: invokevirtual 322	java/io/FileOutputStream:write	([B)V
+    //   47: invokevirtual 246	java/lang/String:getBytes	()[B
+    //   50: invokevirtual 324	java/io/FileOutputStream:write	([B)V
     //   53: aload_2
-    //   54: invokevirtual 325	java/io/FileOutputStream:flush	()V
+    //   54: invokevirtual 327	java/io/FileOutputStream:flush	()V
     //   57: aload_2
     //   58: ifnull +7 -> 65
     //   61: aload_2
-    //   62: invokevirtual 326	java/io/FileOutputStream:close	()V
+    //   62: invokevirtual 328	java/io/FileOutputStream:close	()V
     //   65: return
     //   66: astore_2
     //   67: aload_3
@@ -443,13 +443,13 @@ public class SignUtils
     //   70: astore_0
     //   71: ldc 14
     //   73: iconst_1
-    //   74: ldc_w 328
+    //   74: ldc_w 330
     //   77: aload_2
-    //   78: invokestatic 229	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   78: invokestatic 231	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   81: aload_1
     //   82: ifnull -17 -> 65
     //   85: aload_1
-    //   86: invokevirtual 326	java/io/FileOutputStream:close	()V
+    //   86: invokevirtual 328	java/io/FileOutputStream:close	()V
     //   89: return
     //   90: astore_0
     //   91: return
@@ -461,7 +461,7 @@ public class SignUtils
     //   97: aload_1
     //   98: ifnull +7 -> 105
     //   101: aload_1
-    //   102: invokevirtual 326	java/io/FileOutputStream:close	()V
+    //   102: invokevirtual 328	java/io/FileOutputStream:close	()V
     //   105: aload_0
     //   106: athrow
     //   107: astore_1
@@ -481,7 +481,7 @@ public class SignUtils
     //   0	125	0	paramString1	String
     //   0	125	1	paramString2	String
     //   11	51	2	localFileOutputStream	java.io.FileOutputStream
-    //   66	12	2	localException	Exception
+    //   66	12	2	localException	java.lang.Exception
     //   92	27	2	localObject1	Object
     //   121	1	2	str	String
     //   13	55	3	localObject2	Object

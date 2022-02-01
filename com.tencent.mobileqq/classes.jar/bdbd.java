@@ -1,127 +1,52 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Hashtable;
-import java.util.LinkedList;
 
-public abstract class bdbd
+class bdbd
+  extends URLDrawableDownListener.Adapter
 {
-  int jdField_a_of_type_Int = 10;
-  bdbe jdField_a_of_type_Bdbe = null;
-  Hashtable<String, FaceInfo> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  LinkedList<FaceInfo> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  boolean jdField_a_of_type_Boolean = false;
-  protected int b;
-  Hashtable<String, FaceInfo> jdField_b_of_type_JavaUtilHashtable = new Hashtable();
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
+  bdbd(bdaz parambdaz) {}
   
-  public abstract Bitmap a(int paramInt1, String paramString, int paramInt2, byte paramByte);
-  
-  public void a()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
+    super.onLoadCancelled(paramView, paramURLDrawable);
     if (QLog.isColorLevel()) {
-      auwz.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
-    }
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public abstract void a(int paramInt1, String paramString, int paramInt2, long paramLong);
-  
-  public void a(bdbe parambdbe)
-  {
-    this.jdField_a_of_type_Bdbe = parambdbe;
-  }
-  
-  public abstract void a(AppInterface paramAppInterface);
-  
-  protected void a(FaceInfo paramFaceInfo)
-  {
-    if (paramFaceInfo == null) {}
-    for (;;)
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("FaceDecoderBase", 2, "enqueueDecode, iRunningRequests=" + this.jdField_b_of_type_Int + ", pause=" + this.jdField_a_of_type_Boolean + ",faceinfo=" + paramFaceInfo.toString());
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(paramFaceInfo);
-        if (paramFaceInfo.jdField_b_of_type_Boolean)
-        {
-          this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramFaceInfo);
-          paramFaceInfo.a(FaceInfo.k);
-          if ((this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Boolean)) {
-            continue;
-          }
-          e();
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.e("FaceDecoderBase", 2, "enqueueDecode", localException);
-            continue;
-            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramFaceInfo);
-          }
-        }
-      }
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadCancelled");
     }
   }
   
-  public boolean a()
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public final boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3)
-  {
-    return a(paramString, paramInt1, paramBoolean1, paramInt2, paramBoolean2, paramByte, paramInt3, 100, false);
-  }
-  
-  public abstract boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3, int paramInt4, boolean paramBoolean3);
-  
-  public void b()
-  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
     if (QLog.isColorLevel()) {
-      QLog.i("FaceDecoderBase", 2, "resume");
-    }
-    this.jdField_a_of_type_Boolean = false;
-    while ((this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())) {
-      e();
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadFailed ,cause = " + paramThrowable);
     }
   }
   
-  public void c()
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
     if (QLog.isColorLevel()) {
-      auwz.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadInterrupted");
     }
-    this.jdField_a_of_type_JavaUtilHashtable.clear();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
   }
   
-  public void d()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
+    int i = paramView.getLayoutParams().height * paramURLDrawable.getIntrinsicWidth() / paramURLDrawable.getIntrinsicHeight();
+    paramView.getLayoutParams().width = i;
+    paramView.setBackgroundDrawable(paramURLDrawable);
+    paramView.requestLayout();
     if (QLog.isColorLevel()) {
-      auwz.a(2, "FaceDecoderBase", "destory", new Object[0]);
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadSuccessed");
     }
-    c();
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Bdbe = null;
-    this.jdField_a_of_type_Boolean = false;
   }
-  
-  protected abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdbd
  * JD-Core Version:    0.7.0.1
  */

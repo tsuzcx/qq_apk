@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import alxa;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
+import anqg;
 import mqq.app.MobileQQ;
 
 public class MessageRoamManager$6
   implements Runnable
 {
-  public MessageRoamManager$6(alxa paramalxa) {}
+  public MessageRoamManager$6(anqg paramanqg) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class MessageRoamManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.6
  * JD-Core Version:    0.7.0.1
  */

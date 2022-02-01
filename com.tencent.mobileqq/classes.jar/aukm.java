@@ -1,25 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 
-public class aukm
-  implements View.OnClickListener
+final class aukm
+  implements DialogInterface.OnClickListener
 {
-  public aukm(MultiAIOFragment paramMultiAIOFragment) {}
+  aukm(long paramLong, int paramInt, Activity paramActivity, BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "onClick() called with: v = [" + paramView + "]");
+      QLog.i("SDK_SHARE.ForwardShareByServerHelper", 2, "qbShowShareResultDialog back");
     }
-    this.a.getActivity().finish();
+    aukj.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aukm
  * JD-Core Version:    0.7.0.1
  */

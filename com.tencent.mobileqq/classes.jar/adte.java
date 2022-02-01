@@ -1,70 +1,36 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity.7.1;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adte
-  extends nac
+  implements View.OnClickListener
 {
-  public adte(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public adte(ChatHistory paramChatHistory) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    for (paramInt = 0;; paramInt = 1)
+    if (this.a.d < this.a.c)
     {
-      if (paramInt != 0) {}
-      try
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839095);
+      ChatHistory localChatHistory = this.a;
+      localChatHistory.d += 1;
+      if (this.a.d >= this.a.c)
       {
-        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
-        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
-        paramInt = i;
-        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
-          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
-        }
-        if (paramInt == 1)
-        {
-          long l = 3600L;
-          paramArrayOfByte = "";
-          if (localQQProtectRisksResponse.uint32_cache_time.has()) {
-            l = localQQProtectRisksResponse.uint32_cache_time.get();
-          }
-          if (localQQProtectRisksResponse.str_risk_exist.has()) {
-            paramArrayOfByte = localQQProtectRisksResponse.str_risk_exist.get();
-          }
-          paramBundle = paramArrayOfByte;
-          if (TextUtils.isEmpty(paramArrayOfByte))
-          {
-            paramBundle = paramArrayOfByte;
-            if (localQQProtectRisksResponse.risk_info_list.has())
-            {
-              paramBundle = paramArrayOfByte;
-              if (!localQQProtectRisksResponse.risk_info_list.isEmpty()) {
-                paramBundle = this.a.getString(2131699758);
-              }
-            }
-          }
-          QQSettingSettingActivity.a(this.a, l, paramBundle);
-          this.a.runOnUiThread(new QQSettingSettingActivity.7.1(this, paramBundle));
-        }
-        return;
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849587);
       }
-      catch (Throwable paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        return;
-      }
+      this.a.e = ((this.a.d - 1) * 8);
+      this.a.jdField_a_of_type_Aduc.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.t();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

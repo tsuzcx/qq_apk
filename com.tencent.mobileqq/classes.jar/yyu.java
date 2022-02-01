@@ -1,34 +1,41 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class yyu
-  extends Handler
+class yyu
+  implements View.OnTouchListener
 {
-  private WeakReference<SquareRoundImageView> a;
+  private final int jdField_a_of_type_Int = 10;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  private yyu(Looper paramLooper, SquareRoundImageView paramSquareRoundImageView)
-  {
-    super(paramLooper);
-    this.a = new WeakReference(paramSquareRoundImageView);
-  }
+  yyu(yys paramyys) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMessage.what == 1)
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
     {
-      paramMessage = (SquareRoundImageView)this.a.get();
-      if (paramMessage != null) {
-        SquareRoundImageView.a(paramMessage);
-      }
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return false;
+        this.b = ((int)f);
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      } while (Math.abs(f - this.b) <= 10.0F);
+      this.jdField_a_of_type_Boolean = true;
+      return false;
     }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yyu
  * JD-Core Version:    0.7.0.1
  */

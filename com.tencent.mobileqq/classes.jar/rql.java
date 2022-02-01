@@ -1,19 +1,21 @@
-import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
 
-class rql
-  implements View.OnClickListener
+public class rql
+  implements bkkl
 {
-  rql(rqj paramrqj, String paramString) {}
+  public rql(FriendListFragment paramFriendListFragment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    ors.d(this.jdField_a_of_type_Rqj.a, this.jdField_a_of_type_JavaLangString);
+    if (FriendListFragment.a(this.a) != null) {
+      FriendListFragment.a(this.a).onClick(null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rql
  * JD-Core Version:    0.7.0.1
  */

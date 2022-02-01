@@ -1,26 +1,11 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-class bnkv
-  implements baug
+public abstract interface bnkv<T extends RecyclerView.ViewHolder>
 {
-  bnkv(bnkr parambnkr) {}
+  public abstract void a(@Nullable T paramT, int paramInt);
   
-  public void onResp(bavf parambavf)
-  {
-    FilterDesc localFilterDesc = (FilterDesc)parambavf.jdField_a_of_type_Bave.a();
-    if (parambavf.jdField_a_of_type_Int != 0)
-    {
-      lek.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + parambavf.b + ", errorMsg: " + parambavf.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
-      return;
-    }
-    if ((bnkr.a(this.a).decrementAndGet() == 0) && (bnkr.a(this.a) != null)) {
-      bnkr.a(this.a).a(true);
-    }
-    lek.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.iconurl);
-  }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
+  public abstract void a(@Nullable T paramT, boolean paramBoolean);
 }
 
 

@@ -1,21 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import mqq.os.MqqHandler;
 
 public class oyz
-  implements View.OnTouchListener
+  implements avdq
 {
-  public oyz(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment) {}
+  public oyz(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(HotPicData paramHotPicData)
   {
-    return true;
+    this.a.a = paramHotPicData;
+    ReadInJoyCommentComponentFragment.a(this.a, null);
+    ThreadManager.getUIHandler().post(new ReadInJoyCommentComponentFragment.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oyz
  * JD-Core Version:    0.7.0.1
  */

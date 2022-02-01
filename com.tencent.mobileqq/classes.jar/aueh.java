@@ -1,115 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.miniapp.MiniAppInfoManager.1;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.feedback.eup.CrashReport;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.oidb_0xb61.GetAppinfoRsp;
-import tencent.im.oidb.oidb_0xb61.GetPkgUrlRsp;
-import tencent.im.oidb.oidb_0xb61.RspBody;
-import tencent.im.oidb.qqconnect.Appinfo;
+import io.flutter.plugin.common.MethodChannel.Result;
+import java.util.HashMap;
 
-public class aueh
-  extends mzz
+class aueh
+  extends auei
 {
-  public aueh(MiniAppInfoManager.1 param1) {}
+  aueh(aueg paramaueg) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(String paramString, MethodChannel.Result paramResult)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("MiniAppInfoManager", 2, "onResult type=" + this.a.jdField_a_of_type_Auef.jdField_a_of_type_Int + ", appid=" + this.a.jdField_a_of_type_Auef.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
+      QLog.d("flutter.APMChannel", 2, String.format("recordPageView: %s", new Object[] { paramString }));
     }
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
-        break label798;
-      }
+    aufs.b(paramString);
+    paramResult.success(null);
+  }
+  
+  protected void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("flutter.APMChannel", 2, String.format("reportPageLoadTime: pathPath: %s, loadTime: %s", new Object[] { paramString, paramInteger }));
     }
-    label798:
-    for (;;)
-    {
-      try
-      {
-        paramBundle = ((oidb_0xb61.RspBody)new oidb_0xb61.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
-        StringBuilder localStringBuilder = new StringBuilder().append("req error code=").append(paramInt);
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = ", data=null";
-          QLog.i("MiniAppInfoManager", 2, paramArrayOfByte);
-          if ((this.a.jdField_a_of_type_Auei != null) && (this.a.jdField_a_of_type_Auei.a != null)) {
-            this.a.jdField_a_of_type_Auei.a(this.a.jdField_a_of_type_Auei.a.get(), false, this.a.jdField_a_of_type_Auef);
-          }
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
-      paramBundle = new oidb_0xb61.RspBody();
-      for (;;)
-      {
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if (paramBundle.wording.has()) {
-            this.a.jdField_a_of_type_Auef.g = paramBundle.wording.get();
-          }
-          if ((this.a.jdField_a_of_type_Int != 1) || (!paramBundle.get_appinfo_rsp.appinfo.has())) {
-            break label637;
-          }
-          this.a.jdField_a_of_type_Auef.jdField_b_of_type_Int = paramBundle.get_appinfo_rsp.appinfo.platform.get();
-          this.a.jdField_a_of_type_Auef.jdField_b_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.app_name.get();
-          this.a.jdField_a_of_type_Auef.jdField_c_of_type_Int = paramBundle.get_appinfo_rsp.appinfo.app_state.get();
-          this.a.jdField_a_of_type_Auef.jdField_c_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.icon_url.get();
-          this.a.jdField_a_of_type_Auef.e = paramBundle.get_appinfo_rsp.appinfo.icon_small_url.get();
-          this.a.jdField_a_of_type_Auef.jdField_d_of_type_JavaLangString = paramBundle.get_appinfo_rsp.appinfo.icon_middle_url.get();
-          if (paramBundle.next_req_duration.has()) {
-            this.a.jdField_a_of_type_Auef.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.next_req_duration.get() * 1000L, 300000L));
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MiniAppInfoManager", 2, "receive appInfo: " + this.a.jdField_a_of_type_Auef);
-          }
-          auek.a().a(this.a.jdField_a_of_type_Auef);
-          if ((this.a.jdField_a_of_type_Auei == null) || (this.a.jdField_a_of_type_Auei.a == null)) {
-            break;
-          }
-          this.a.jdField_a_of_type_Auei.a(this.a.jdField_a_of_type_Auei.a.get(), true, this.a.jdField_a_of_type_Auef);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-        if ((this.a.jdField_a_of_type_Auei == null) || (this.a.jdField_a_of_type_Auei.a == null)) {
-          break;
-        }
-        this.a.jdField_a_of_type_Auei.a(this.a.jdField_a_of_type_Auei.a.get(), false, this.a.jdField_a_of_type_Auef);
-        return;
-        label637:
-        if ((this.a.jdField_a_of_type_Int != 2) || (!paramBundle.get_mqqapp_url_rsp.has())) {
-          break label743;
-        }
-        this.a.jdField_a_of_type_Auef.jdField_d_of_type_Int = paramBundle.get_mqqapp_url_rsp.app_version.get();
-        this.a.jdField_a_of_type_Auef.f = paramBundle.get_mqqapp_url_rsp.pkg_url.get();
-        if (paramBundle.next_req_duration.has()) {
-          this.a.jdField_a_of_type_Auef.jdField_b_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.next_req_duration.get() * 1000L, 300000L));
-        }
-      }
-      label743:
-      if ((this.a.jdField_a_of_type_Auei != null) && (this.a.jdField_a_of_type_Auei.a != null))
-      {
-        this.a.jdField_a_of_type_Auei.a(this.a.jdField_a_of_type_Auei.a.get(), false, this.a.jdField_a_of_type_Auef);
-        return;
-        paramBundle = "";
-      }
+    aufs.a(paramString, paramInteger.intValue());
+    paramResult.success(null);
+  }
+  
+  protected void a(String paramString, Integer paramInteger, Double paramDouble, MethodChannel.Result paramResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("flutter.APMChannel", 2, String.format("recordFPS: pathPath: %s, fps: %s, dropRate: %s", new Object[] { paramString, paramInteger, paramDouble }));
     }
+    aufs.a(paramString, paramInteger.intValue(), paramDouble.doubleValue());
+    paramResult.success(null);
+  }
+  
+  protected void a(String paramString1, Integer paramInteger, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, MethodChannel.Result paramResult)
+  {
+    QLog.e("flutter.APMChannel", 1, String.format("reportException, msg: %s, stack: %s", new Object[] { paramString3, paramString4 }));
+    CrashReport.postException(paramInteger.intValue(), paramString2, paramString3, paramString4, paramHashMap);
+    aufs.a(paramString1);
+    paramResult.success(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aueh
  * JD-Core Version:    0.7.0.1
  */

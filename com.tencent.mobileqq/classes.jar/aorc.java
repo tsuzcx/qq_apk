@@ -1,80 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ARGlobalConfigService;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
 public class aorc
-  extends aokh<aord>
+  extends aoye
 {
-  public int a()
-  {
-    return 368;
-  }
+  public aorc(ARGlobalConfigService paramARGlobalConfigService) {}
   
-  @NonNull
-  public aord a(int paramInt)
+  public ARScanStarFaceConfigInfo a()
   {
-    return new aord();
-  }
-  
-  @Nullable
-  public aord a(aoko[] paramArrayOfaoko)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
-    {
-      aord localaord = new aord();
-      localaord.a(paramArrayOfaoko);
-      return localaord;
-    }
-    return new aord();
-  }
-  
-  public Class<aord> a()
-  {
-    return aord.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(aord paramaord)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onUpdate]");
-    }
-  }
-  
-  public int b()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ors.a();
-    if (localQQAppInterface != null)
-    {
-      String str = localQQAppInterface.c();
-      return bdne.N(localQQAppInterface.getApp(), str);
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    return this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aorc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,6 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-
-class apog
-  implements DialogInterface.OnClickListener
+public abstract interface apog
 {
-  apog(apod paramapod, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1) {
-      bdun.a(apod.a(this.jdField_a_of_type_Apod), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", apod.a(this.jdField_a_of_type_Apod).getString(2131720522), "");
-    }
-  }
+  public abstract void a(int paramInt, String paramString, Object paramObject);
 }
 
 

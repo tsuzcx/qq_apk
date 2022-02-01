@@ -1,24 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
-import ors;
-import pgd;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import pha;
 import pxk;
-import pxt;
-import qbs;
+import qqs;
+import qrb;
+import qva;
 
 public class ComponentNotIntrest
   extends FrameLayout
-  implements View.OnClickListener, pxk
+  implements View.OnClickListener, qqs
 {
   public View a;
-  qbs a;
+  qva a;
   
   public ComponentNotIntrest(Context paramContext)
   {
@@ -40,7 +41,7 @@ public class ComponentNotIntrest
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qbs = new qbs();
+    this.jdField_a_of_type_Qva = new qva();
     a(paramContext);
     a();
   }
@@ -52,43 +53,44 @@ public class ComponentNotIntrest
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559975, this, true).findViewById(2131379300);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560122, this, true).findViewById(2131380227);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pgd))
+    if ((paramObject instanceof pxk))
     {
-      this.jdField_a_of_type_Qbs.a((pgd)paramObject);
+      this.jdField_a_of_type_Qva.a((pxk)paramObject);
       b();
     }
   }
   
-  public void a(pxt parampxt)
+  public void a(qrb paramqrb)
   {
-    this.jdField_a_of_type_Qbs.a(parampxt);
+    this.jdField_a_of_type_Qva.a(paramqrb);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Qbs.a())
+    if (this.jdField_a_of_type_Qva.a())
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(aepi.a(5.0F, getResources()), aepi.a(5.0F, getResources()), aepi.a(5.0F, getResources()), aepi.a(5.0F, getResources()));
+      this.jdField_a_of_type_AndroidViewView.setPadding(afur.a(5.0F, getResources()), afur.a(5.0F, getResources()), afur.a(5.0F, getResources()), afur.a(5.0F, getResources()));
       return;
     }
-    if (ors.l(this.jdField_a_of_type_Qbs.jdField_a_of_type_Pgd.a()))
+    if (pha.l(this.jdField_a_of_type_Qva.jdField_a_of_type_Pxk.a()))
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(aepi.a(5.0F, getResources()), aepi.a(5.0F, getResources()), aepi.a(9.0F, getResources()), aepi.a(5.0F, getResources()));
+      this.jdField_a_of_type_AndroidViewView.setPadding(afur.a(5.0F, getResources()), afur.a(5.0F, getResources()), afur.a(9.0F, getResources()), afur.a(5.0F, getResources()));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setPadding(aepi.a(12.0F, getResources()), aepi.a(9.0F, getResources()), aepi.a(12.0F, getResources()), aepi.a(9.0F, getResources()));
+    this.jdField_a_of_type_AndroidViewView.setPadding(afur.a(12.0F, getResources()), afur.a(9.0F, getResources()), afur.a(12.0F, getResources()), afur.a(9.0F, getResources()));
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Qbs.jdField_a_of_type_Pxt != null) {
-      this.jdField_a_of_type_Qbs.jdField_a_of_type_Pxt.a(paramView, null);
+    if (this.jdField_a_of_type_Qva.jdField_a_of_type_Qrb != null) {
+      this.jdField_a_of_type_Qva.jdField_a_of_type_Qrb.a(paramView, null);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

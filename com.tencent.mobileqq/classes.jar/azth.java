@@ -1,64 +1,240 @@
-import java.util.HashMap;
+import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class azth
-  implements Comparable<azth>
+public class azth
+  implements INetInfoHandler
 {
-  public int a;
   public String a;
-  public HashMap<String, azth> a;
+  private boolean a;
+  public String b;
+  public String c;
+  private String d;
   
   public azth()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
+    this.jdField_a_of_type_Boolean = true;
+    AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getApplication(), this);
+    a();
   }
   
-  public azth(String paramString)
+  public static String a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return "XGIdentifier";
   }
   
-  public int a(azth paramazth)
+  public static String a(Context paramContext)
   {
-    return paramazth.jdField_a_of_type_Int - this.jdField_a_of_type_Int;
+    try
+    {
+      long l = System.nanoTime();
+      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getBSSID();
+        if (QLog.isColorLevel()) {
+          QLog.e("PttIpSaver", 2, "getWifiMac " + paramContext + " time=" + (System.nanoTime() - l) / 1000000L);
+        }
+        return paramContext;
+      }
+    }
+    catch (Throwable paramContext) {}
+    return null;
   }
   
-  public azth a(String paramString)
+  public void a()
   {
-    return (azth)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    try
+    {
+      this.d = a(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_Boolean = true;
+      if (this.d == null)
+      {
+        this.d = a();
+        this.jdField_a_of_type_Boolean = false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetMobile2Wifi  " + this.d);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("PttIpSaver", 2, "clear ip:" + paramInt);
+    }
+    if (paramInt == -1)
+    {
+      this.jdField_a_of_type_JavaLangString = null;
+      this.b = null;
+      this.c = null;
+    }
+    do
+    {
+      return;
+      if (paramInt == 0)
+      {
+        this.jdField_a_of_type_JavaLangString = null;
+        return;
+      }
+      if (paramInt == 1)
+      {
+        this.b = null;
+        return;
+      }
+    } while (paramInt != 2);
+    this.c = null;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_JavaUtilHashMap.isEmpty();
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public boolean equals(Object paramObject)
+  public String b()
   {
-    if (this == paramObject) {
-      return true;
+    try
+    {
+      String str = this.d;
+      return str;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
-    return ((azth)paramObject).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
   }
   
-  public int hashCode()
+  public void b()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return 0;
+    try
+    {
+      AppNetConnInfo.unregisterNetInfoHandler(this);
+      return;
     }
-    return this.jdField_a_of_type_JavaLangString.hashCode();
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
   
-  public String toString()
+  public void onNetMobile2None()
   {
-    StringBuilder localStringBuilder = new StringBuilder("FdNode{");
-    localStringBuilder.append("text='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", appearTimes=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    try
+    {
+      a(-1);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    try
+    {
+      this.d = a(BaseApplicationImpl.getContext());
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetMobile2Wifi  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    try
+    {
+      this.d = a();
+      this.jdField_a_of_type_Boolean = false;
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetNone2Mobile  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    try
+    {
+      this.d = a(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_Boolean = true;
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetNone2Wifi  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    try
+    {
+      this.d = a();
+      this.jdField_a_of_type_Boolean = false;
+      a(-1);
+      if (QLog.isColorLevel()) {
+        QLog.e("PttIpSaver", 2, "onNetWifi2Mobile  " + this.d);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    try
+    {
+      a(-1);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

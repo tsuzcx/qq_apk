@@ -1,7 +1,15 @@
-final class bklq
-  implements bdpy
+import android.view.View;
+
+class bklq
+  implements bklo
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  bklq(bklp parambklp) {}
+  
+  public void a(View paramView)
+  {
+    this.a.c(paramView);
+    this.a.c();
+  }
 }
 
 

@@ -12,6 +12,7 @@ public final class e_video_source_type
   public static final int _enum_topic_video_source = 2;
   public static final int _enum_ugc_video_source = 1;
   public static final int _enum_unknown_video_source = 9;
+  public static final int _enum_vapf_live_recomd = 10;
 }
 
 

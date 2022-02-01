@@ -1,44 +1,25 @@
-import com.tencent.mobileqq.data.Stranger;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.List;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class amdd
-  implements alpg
+class amdd
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public void a(List<String> paramList) {}
+  amdd(amdc paramamdc, RedTouch paramRedTouch, arcs paramarcs) {}
   
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField) {}
-  
-  public void a(boolean paramBoolean, List<Stranger> paramList) {}
-  
-  public void b(boolean paramBoolean, List<Stranger> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramInt == 4) {
-      a(paramBoolean, (PBRepeatMessageField)paramObject);
+    if (!AppSetting.c) {
+      amdc.a(this.jdField_a_of_type_Amdc, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Arcs, paramBoolean);
     }
-    do
-    {
-      return;
-      if (paramInt == 2)
-      {
-        a(paramBoolean, (List)paramObject);
-        return;
-      }
-      if (paramInt == 3)
-      {
-        b(paramBoolean, (List)paramObject);
-        return;
-      }
-    } while (paramInt != 5);
-    a((List)paramObject);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amdd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,33 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView.1.1;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
-public class yon
-  implements ImageLoader.ImageLoadListener
+class yon
+  extends SimpleJob<Object>
 {
-  public yon(CommodityItemView paramCommodityItemView) {}
-  
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
+  yon(yom paramyom, String paramString, StoryVideoItem paramStoryVideoItem, List paramList)
   {
-    if (CommodityItemView.a(this.a) != null) {
-      this.a.post(new CommodityItemView.1.1(this, paramDrawable));
-    }
+    super(paramString);
   }
   
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  {
+    synchronized (yom.a(this.jdField_a_of_type_Yom))
+    {
+      this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+      this.jdField_a_of_type_Yom.jdField_a_of_type_Yoo = new yoo(this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      this.jdField_a_of_type_Yom.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_Yom.b();
+      return null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yon
  * JD-Core Version:    0.7.0.1
  */

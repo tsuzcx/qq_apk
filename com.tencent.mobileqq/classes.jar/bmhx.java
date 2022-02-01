@@ -1,20 +1,10 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-class bmhx
-  implements Animation.AnimationListener
+public final class bmhx
+  extends ThreadLocal<Integer>
 {
-  bmhx(bmhu parambmhu) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  protected Integer a()
   {
-    bmhu.b(this.a).setVisibility(8);
+    return Integer.valueOf(-100);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

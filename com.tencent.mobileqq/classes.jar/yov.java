@@ -1,26 +1,22 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.List;
 
-class yov
-  implements View.OnClickListener
+public class yov
 {
-  yov(you paramyou, CertifiedAccountMeta.StFeed paramStFeed) {}
+  public final int a;
+  public final List<LocalMediaInfo> a;
+  public final wcl a;
   
-  public void onClick(View paramView)
+  public yov(List<LocalMediaInfo> paramList, int paramInt, wcl paramwcl)
   {
-    ybt.a(this.jdField_a_of_type_You.a.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 0, ykt.a(you.a(this.jdField_a_of_type_You), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.width.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.height.get()));
-    zaj.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "blank_content_clk", 0, 0, new String[] { "", you.a(this.jdField_a_of_type_You) + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Wcl = paramwcl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yov
  * JD-Core Version:    0.7.0.1
  */

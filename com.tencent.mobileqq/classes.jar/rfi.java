@@ -1,41 +1,41 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.FrameLayoutCompat;
-
 public class rfi
-  implements qft
 {
-  public rfi(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private Long jdField_a_of_type_JavaLangLong;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void a(boolean paramBoolean)
+  public rfi(Long paramLong, Integer paramInteger, String paramString1, String paramString2)
   {
-    VideoFeedsPlayActivity.a(this.a, paramBoolean);
-    if (VideoFeedsPlayActivity.a(this.a) != null)
-    {
-      if (VideoFeedsPlayActivity.a(this.a))
-      {
-        VideoFeedsPlayActivity.a(this.a);
-        if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).a() != null) && (VideoFeedsPlayActivity.a(this.a).a().d()))
-        {
-          VideoInfo localVideoInfo = VideoFeedsPlayActivity.a(this.a).c();
-          this.a.a(localVideoInfo.g, VideoFeedsPlayActivity.a(this.a).a().b());
-        }
-        VideoFeedsPlayActivity.b(this.a);
-      }
-    }
-    else {
-      return;
-    }
-    VideoFeedsPlayActivity.a(this.a).setVisibility(8);
-    VideoFeedsPlayActivity.a(this.a).setVisibility(8);
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangInteger = paramInteger;
+  }
+  
+  public Long a()
+  {
+    return this.jdField_a_of_type_JavaLangLong;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return "FollowingMember{uin='" + this.jdField_a_of_type_JavaLangLong + '\'' + ", nickname='" + this.jdField_a_of_type_JavaLangString + '\'' + ", headUrl='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rfi
  * JD-Core Version:    0.7.0.1
  */

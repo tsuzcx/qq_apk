@@ -1,10 +1,13 @@
-public abstract interface sic
+public class sic
 {
-  public abstract void a(String paramString1, String paramString2);
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 3) || (paramInt == 7);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sic
  * JD-Core Version:    0.7.0.1
  */

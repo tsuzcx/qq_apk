@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift;
 
 import android.app.Activity;
-import bfox;
+import biwe;
 
 class WebViewFragment$4
   implements Runnable
@@ -10,14 +10,14 @@ class WebViewFragment$4
   
   public void run()
   {
-    if (bfox.d()) {
-      bfox.a().a(this.a);
+    if (biwe.d()) {
+      biwe.a().a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragment.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,21 @@
-import android.os.FileObserver;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class szx
-  extends FileObserver
+  implements ViewBase.OnClickListener
 {
-  szx(szw paramszw, String paramString1, int paramInt, String paramString2)
-  {
-    super(paramString1, paramInt);
-  }
+  szx(szw paramszw) {}
   
-  public void onEvent(int paramInt, String paramString)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScreenshotContentObserver", 2, "onEvent->time:" + System.currentTimeMillis() + ", path:" + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || (paramInt != 256)) {}
-    while ((paramString.equalsIgnoreCase(szw.a(this.jdField_a_of_type_Szw))) || (paramString.contains("temp")) || (szw.a(this.jdField_a_of_type_Szw) == null)) {
-      return;
-    }
-    szw.a(this.jdField_a_of_type_Szw).a(null, this.jdField_a_of_type_JavaLangString + paramString, 1);
-    szw.a(this.jdField_a_of_type_Szw, paramString);
+    int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+    szv.a(this.a.jdField_a_of_type_Szv, i).a(paramViewBase, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     szx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,16 @@
-import android.os.Handler;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-public class bmcl
-  implements xtk
+final class bmcl
+  implements bmco
 {
-  public bmcl(CropVideoActivity paramCropVideoActivity) {}
-  
-  public void onFailure(String paramString)
+  public void a(boolean paramBoolean, Context paramContext, bmcp parambmcp)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
     }
-    this.a.a.sendEmptyMessage(4);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
-    }
-    this.a.a.sendEmptyMessage(3);
-  }
-  
-  public void onProgress(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
-    }
-  }
-  
-  public void onStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
-    }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
+    if (paramBoolean) {
+      bmcj.d(paramContext, parambmcp);
     }
   }
 }

@@ -1,20 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.av.service.AVRedPacketConfig;
 
-class mox
-  implements TextWatcher
+public class mox
 {
-  mox(mov parammov) {}
+  public AVRedPacketConfig a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = true;
+  public boolean c;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public String toString()
+  {
+    return "AVRedBagConfig, mMainSwitch[" + this.a + "], mResReady[" + this.c + "]";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mox
  * JD-Core Version:    0.7.0.1
  */

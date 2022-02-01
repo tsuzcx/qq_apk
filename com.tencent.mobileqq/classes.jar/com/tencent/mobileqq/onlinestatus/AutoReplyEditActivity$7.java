@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import bhsj;
+import bkft;
 
 class AutoReplyEditActivity$7
   implements Runnable
@@ -9,12 +9,12 @@ class AutoReplyEditActivity$7
   
   public void run()
   {
-    bhsj.a(AutoReplyEditActivity.a(this.this$0));
+    bkft.a(AutoReplyEditActivity.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.7
  * JD-Core Version:    0.7.0.1
  */

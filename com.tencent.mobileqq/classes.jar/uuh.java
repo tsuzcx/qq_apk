@@ -1,50 +1,55 @@
-import android.content.Context;
-import android.support.annotation.IdRes;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import UserGrowth.stCollection;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
 
-public class uuh<M>
-  extends RecyclerView.ViewHolder
+public class uuh
+  extends uuf
 {
-  private SparseArray<View> a = new SparseArray();
+  private stSimpleMetaFeed a;
   
-  public uuh(View paramView)
+  public uuh(uqu paramuqu)
   {
-    super(paramView);
+    super(paramuqu);
   }
   
-  public uuh(ViewGroup paramViewGroup, int paramInt)
+  public List<uru> a(ArrayList paramArrayList)
   {
-    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
-  }
-  
-  protected Context a()
-  {
-    return this.itemView.getContext();
-  }
-  
-  protected <T extends View> T a(@IdRes int paramInt)
-  {
-    View localView2 = (View)this.a.get(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = this.itemView.findViewById(paramInt);
-      this.a.put(paramInt, localView1);
+    if ((paramArrayList != null) && (paramArrayList.size() > 0) && ((paramArrayList.get(0) instanceof stSimpleMetaFeed))) {
+      this.a = ((stSimpleMetaFeed)paramArrayList.get(0));
     }
-    return localView1;
+    return null;
   }
   
-  public void a() {}
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if ((this.a != null) && (this.a.collection != null) && (!TextUtils.isEmpty(this.a.collection.cid)))
+    {
+      uri.a().a(this.a.collection.cid, 2, this);
+      return true;
+    }
+    return false;
+  }
   
-  public void a(M paramM) {}
+  public void b()
+  {
+    super.b();
+    uri.a().a();
+  }
+  
+  public void c()
+  {
+    super.c();
+    uqu localuqu = a();
+    if ((localuqu != null) && (this.a != null)) {
+      localuqu.b(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uuh
  * JD-Core Version:    0.7.0.1
  */

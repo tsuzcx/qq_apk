@@ -1,35 +1,83 @@
-import android.view.View;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.2;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.2.1.1;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class ates
-  implements EnterCallback
+class ates
+  extends asyw
 {
-  public ates(ODLoadingActivity.2 param2) {}
+  ates(ater paramater) {}
   
-  public void onCloseLoadingView()
+  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, Bundle paramBundle)
   {
-    ODLoadingActivity.a(this.a.this$0);
-    this.a.this$0.finish();
-    ODLoadingActivity.a(this.a.this$0).opType("onCloseLoadingView").report();
-    atbh.b("33669909");
-  }
-  
-  public void onEnterComplete()
-  {
-    ODLoadingActivity.a(this.a.this$0).opType("onEnterComplete").report();
-    atbh.b("33669911");
-  }
-  
-  public void onShowLoadingView(View paramView)
-  {
-    ODLoadingActivity.a(this.a.this$0, paramView);
-    this.a.this$0.runOnUiThread(new ODLoadingActivity.2.1.1(this));
-    ODLoadingActivity.a(this.a.this$0).opType("onShowLoadingView").report();
-    atbh.b("33669908");
+    label280:
+    for (;;)
+    {
+      try
+      {
+        String str1;
+        if (atgz.a)
+        {
+          paramString6 = "183.61.37.13";
+          str1 = "443";
+          paramString5 = null;
+          paramString4 = paramString5;
+          if (atgz.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+          {
+            paramString4 = paramString5;
+            if (paramBundle != null)
+            {
+              String str2 = paramBundle.getString("strHttpsDomain");
+              short s2 = paramBundle.getShort("httpsPort", (short)0);
+              paramString4 = paramString5;
+              if (!TextUtils.isEmpty(str2))
+              {
+                short s1 = s2;
+                if (s2 == 0) {
+                  s1 = 443;
+                }
+                paramString4 = new Bundle();
+                paramString4.putBoolean("ishttps", true);
+                paramString4.putString("httpsdomain", str2);
+                paramString4.putShort("httpsport", s1);
+              }
+            }
+          }
+          paramString5 = paramString4;
+          if (atwt.a())
+          {
+            paramString5 = paramString4;
+            if (paramBundle != null)
+            {
+              paramBundle = paramBundle.getString("IPv6Dns");
+              paramString5 = paramString4;
+              if (paramString4 == null) {
+                paramString5 = new Bundle();
+              }
+              paramString5.putString("ipv6domain", paramBundle);
+            }
+          }
+          if (this.a.jdField_a_of_type_Asrx != null) {
+            this.a.jdField_a_of_type_Asrx.a(paramBoolean, paramString6, str1, paramInt1, paramString1, paramString3, paramString2, this.a.jdField_a_of_type_JavaLangString, paramString5);
+          }
+        }
+        else
+        {
+          if ((paramString4 == null) || (paramString4.length() <= 0)) {
+            break label280;
+          }
+          str1 = String.valueOf(paramInt2);
+          paramString6 = paramString4;
+          continue;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.e(this.a.c, 2, " callback is null");
+          continue;
+          paramString4 = paramString5;
+        }
+      }
+      finally {}
+    }
   }
 }
 

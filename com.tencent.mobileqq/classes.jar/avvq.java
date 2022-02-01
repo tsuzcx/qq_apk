@@ -1,541 +1,182 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
-import com.enrique.stackblur.StackBlurManager;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.ocr.data.OcrConfig;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
 
 public class avvq
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public static asjw a;
-  public static avvs a;
-  public static CharSequence a;
-  public static final HashMap<String, Integer> a;
-  public static CharSequence b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangCharSequence = "";
-    b = "";
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("zh", Integer.valueOf(1));
-    jdField_a_of_type_JavaUtilHashMap.put("en", Integer.valueOf(2));
-    jdField_a_of_type_JavaUtilHashMap.put("ja", Integer.valueOf(3));
-    jdField_a_of_type_JavaUtilHashMap.put("jp", Integer.valueOf(3));
-    jdField_a_of_type_JavaUtilHashMap.put("ko", Integer.valueOf(4));
-    jdField_a_of_type_JavaUtilHashMap.put("kr", Integer.valueOf(4));
-    jdField_a_of_type_JavaUtilHashMap.put("fr", Integer.valueOf(5));
-    jdField_a_of_type_JavaUtilHashMap.put("es", Integer.valueOf(6));
-    jdField_a_of_type_JavaUtilHashMap.put("it", Integer.valueOf(7));
-    jdField_a_of_type_JavaUtilHashMap.put("de", Integer.valueOf(8));
-    jdField_a_of_type_JavaUtilHashMap.put("tr", Integer.valueOf(9));
-    jdField_a_of_type_JavaUtilHashMap.put("ru", Integer.valueOf(10));
-    jdField_a_of_type_JavaUtilHashMap.put("pt", Integer.valueOf(11));
-    jdField_a_of_type_JavaUtilHashMap.put("vi", Integer.valueOf(12));
-    jdField_a_of_type_JavaUtilHashMap.put("id", Integer.valueOf(13));
-    jdField_a_of_type_JavaUtilHashMap.put("ms", Integer.valueOf(14));
-    jdField_a_of_type_JavaUtilHashMap.put("th", Integer.valueOf(15));
-  }
-  
-  public static int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
-  {
-    int j = paramOptions.outHeight;
-    paramInt2 = paramOptions.outWidth;
-    int i = 1;
-    if (paramInt2 > paramInt1 * 1.2F)
-    {
-      i = j / 2;
-      j = paramInt2 / 2;
-      paramInt2 = 2;
-      for (;;)
-      {
-        i = paramInt2;
-        if (j / paramInt2 <= paramInt1) {
-          break;
-        }
-        paramInt2 *= 2;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("OCRPerformUtil", 2, "calculateInSampleSize:" + i);
-    }
-    return i;
-  }
-  
-  public static int a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return ((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString.trim().toLowerCase())).intValue();
-    }
-    return 0;
-  }
+  public avvq(QQMusicPlayService paramQQMusicPlayService) {}
   
   /* Error */
-  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2)
+  public void onAudioFocusChange(int paramInt)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: ifnonnull +5 -> 6
-    //   4: aconst_null
-    //   5: areturn
-    //   6: new 138	android/graphics/Matrix
-    //   9: dup
-    //   10: invokespecial 139	android/graphics/Matrix:<init>	()V
-    //   13: astore 10
-    //   15: aload 10
-    //   17: fload 6
-    //   19: fload 7
-    //   21: invokevirtual 143	android/graphics/Matrix:postScale	(FF)Z
-    //   24: pop
-    //   25: iload_1
-    //   26: ifge +204 -> 230
-    //   29: iconst_0
-    //   30: istore 8
-    //   32: iload_2
-    //   33: ifge +191 -> 224
-    //   36: iconst_0
-    //   37: istore 9
-    //   39: iload 8
-    //   41: iload_3
-    //   42: iadd
-    //   43: aload_0
-    //   44: invokevirtual 148	android/graphics/Bitmap:getWidth	()I
-    //   47: if_icmple +172 -> 219
-    //   50: aload_0
-    //   51: invokevirtual 148	android/graphics/Bitmap:getWidth	()I
-    //   54: istore_1
-    //   55: iload_1
-    //   56: iload 8
-    //   58: isub
-    //   59: istore_1
-    //   60: iload 9
-    //   62: iload 4
-    //   64: iadd
-    //   65: aload_0
-    //   66: invokevirtual 151	android/graphics/Bitmap:getHeight	()I
-    //   69: if_icmple +144 -> 213
-    //   72: aload_0
-    //   73: invokevirtual 151	android/graphics/Bitmap:getHeight	()I
-    //   76: istore_2
-    //   77: iload_2
-    //   78: iload 9
-    //   80: isub
-    //   81: istore_2
-    //   82: aload_0
-    //   83: iload 8
-    //   85: iload 9
-    //   87: iload_1
-    //   88: iload_2
-    //   89: aload 10
-    //   91: iconst_0
-    //   92: invokestatic 155	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
-    //   95: astore_0
-    //   96: aload_0
-    //   97: areturn
-    //   98: astore_0
-    //   99: iload_3
-    //   100: istore_1
-    //   101: ldc 90
-    //   103: iconst_2
-    //   104: new 92	java/lang/StringBuilder
-    //   107: dup
-    //   108: invokespecial 93	java/lang/StringBuilder:<init>	()V
-    //   111: ldc 157
-    //   113: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: aload_0
-    //   117: invokevirtual 160	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   120: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   126: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   129: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   132: ifeq +68 -> 200
-    //   135: ldc 90
-    //   137: iconst_2
-    //   138: new 92	java/lang/StringBuilder
-    //   141: dup
-    //   142: invokespecial 93	java/lang/StringBuilder:<init>	()V
-    //   145: ldc 165
-    //   147: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: iload 8
-    //   152: invokevirtual 102	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   155: ldc 167
-    //   157: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: iload 9
-    //   162: invokevirtual 102	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   165: ldc 169
-    //   167: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: iload_1
-    //   171: invokevirtual 102	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   174: ldc 171
-    //   176: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   179: iload 4
-    //   181: invokevirtual 102	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   184: ldc 173
-    //   186: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: iload 5
-    //   191: invokevirtual 102	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   194: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   197: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   200: aconst_null
-    //   201: areturn
-    //   202: astore_0
-    //   203: goto -102 -> 101
-    //   206: astore_0
-    //   207: iload_2
-    //   208: istore 4
-    //   210: goto -109 -> 101
-    //   213: iload 4
-    //   215: istore_2
-    //   216: goto -134 -> 82
-    //   219: iload_3
-    //   220: istore_1
-    //   221: goto -161 -> 60
-    //   224: iload_2
-    //   225: istore 9
-    //   227: goto -188 -> 39
-    //   230: iload_1
-    //   231: istore 8
-    //   233: goto -201 -> 32
+    //   0: ldc 22
+    //   2: iconst_1
+    //   3: new 24	java/lang/StringBuilder
+    //   6: dup
+    //   7: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   10: ldc 27
+    //   12: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: iload_1
+    //   16: invokevirtual 34	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   19: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   22: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   25: aload_0
+    //   26: getfield 12	avvq:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   29: astore_2
+    //   30: aload_2
+    //   31: monitorenter
+    //   32: iload_1
+    //   33: tableswitch	default:+35 -> 68, -3:+210->243, -2:+158->191, -1:+38->71, 0:+35->68, 1:+256->289
+    //   69: monitorexit
+    //   70: return
+    //   71: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   74: ifnull +38 -> 112
+    //   77: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   80: invokevirtual 55	android/media/MediaPlayer:isPlaying	()Z
+    //   83: ifeq +29 -> 112
+    //   86: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   89: invokevirtual 58	android/media/MediaPlayer:stop	()V
+    //   92: aload_0
+    //   93: getfield 12	avvq:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   96: invokestatic 61	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:b	()Ljava/lang/String;
+    //   99: iconst_4
+    //   100: invokestatic 64	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;Ljava/lang/String;I)V
+    //   103: invokestatic 66	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:b	()Z
+    //   106: invokestatic 70	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:e	()I
+    //   109: invokestatic 75	avvp:b	(ZI)V
+    //   112: ldc 22
+    //   114: iconst_1
+    //   115: ldc 77
+    //   117: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   120: aload_0
+    //   121: getfield 12	avvq:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   124: iconst_0
+    //   125: iconst_0
+    //   126: invokestatic 80	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;ZZ)V
+    //   129: aload_0
+    //   130: getfield 12	avvq:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   133: invokestatic 83	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;)Lavvr;
+    //   136: ifnull -68 -> 68
+    //   139: aload_0
+    //   140: getfield 12	avvq:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   143: invokestatic 83	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;)Lavvr;
+    //   146: bipush 11
+    //   148: invokevirtual 89	avvr:sendEmptyMessage	(I)Z
+    //   151: pop
+    //   152: goto -84 -> 68
+    //   155: astore_3
+    //   156: aload_2
+    //   157: monitorexit
+    //   158: aload_3
+    //   159: athrow
+    //   160: astore_2
+    //   161: ldc 22
+    //   163: iconst_1
+    //   164: new 24	java/lang/StringBuilder
+    //   167: dup
+    //   168: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   171: ldc 91
+    //   173: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: aload_2
+    //   177: invokevirtual 94	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   180: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   186: aload_2
+    //   187: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   190: return
+    //   191: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   194: ifnull +29 -> 223
+    //   197: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   200: invokevirtual 55	android/media/MediaPlayer:isPlaying	()Z
+    //   203: ifeq +20 -> 223
+    //   206: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   209: invokevirtual 100	android/media/MediaPlayer:pause	()V
+    //   212: aload_0
+    //   213: getfield 12	avvq:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   216: invokestatic 61	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:b	()Ljava/lang/String;
+    //   219: iconst_3
+    //   220: invokestatic 64	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;Ljava/lang/String;I)V
+    //   223: ldc 22
+    //   225: iconst_1
+    //   226: ldc 102
+    //   228: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   231: aload_0
+    //   232: getfield 12	avvq:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   235: iconst_0
+    //   236: iconst_1
+    //   237: invokestatic 80	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;ZZ)V
+    //   240: goto -172 -> 68
+    //   243: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   246: ifnull +32 -> 278
+    //   249: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   252: invokevirtual 55	android/media/MediaPlayer:isPlaying	()Z
+    //   255: ifeq +23 -> 278
+    //   258: aload_0
+    //   259: getfield 12	avvq:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   262: invokestatic 105	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;)Z
+    //   265: ifne +13 -> 278
+    //   268: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   271: ldc 106
+    //   273: ldc 106
+    //   275: invokevirtual 110	android/media/MediaPlayer:setVolume	(FF)V
+    //   278: ldc 22
+    //   280: iconst_1
+    //   281: ldc 112
+    //   283: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   286: goto -218 -> 68
+    //   289: invokestatic 115	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:f	()I
+    //   292: iconst_3
+    //   293: if_icmpne +36 -> 329
+    //   296: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   299: ifnull +30 -> 329
+    //   302: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   305: invokevirtual 55	android/media/MediaPlayer:isPlaying	()Z
+    //   308: ifne +21 -> 329
+    //   311: aload_0
+    //   312: getfield 12	avvq:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   315: invokestatic 105	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;)Z
+    //   318: ifne +11 -> 329
+    //   321: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   324: fconst_1
+    //   325: fconst_1
+    //   326: invokevirtual 110	android/media/MediaPlayer:setVolume	(FF)V
+    //   329: ldc 22
+    //   331: iconst_1
+    //   332: ldc 117
+    //   334: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   337: aload_0
+    //   338: getfield 12	avvq:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   341: iconst_1
+    //   342: iconst_0
+    //   343: invokestatic 80	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;ZZ)V
+    //   346: goto -278 -> 68
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	236	0	paramBitmap	Bitmap
-    //   0	236	1	paramInt1	int
-    //   0	236	2	paramInt2	int
-    //   0	236	3	paramInt3	int
-    //   0	236	4	paramInt4	int
-    //   0	236	5	paramInt5	int
-    //   0	236	6	paramFloat1	float
-    //   0	236	7	paramFloat2	float
-    //   30	202	8	i	int
-    //   37	189	9	j	int
-    //   13	77	10	localMatrix	Matrix
+    //   0	349	0	this	avvq
+    //   0	349	1	paramInt	int
+    //   29	128	2	localQQMusicPlayService	QQMusicPlayService
+    //   160	27	2	localException	java.lang.Exception
+    //   155	4	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   39	55	98	java/lang/Exception
-    //   60	77	202	java/lang/Exception
-    //   82	96	206	java/lang/Exception
-  }
-  
-  public static Bitmap a(String paramString, DisplayMetrics paramDisplayMetrics)
-  {
-    int i = paramDisplayMetrics.widthPixels;
-    int j = paramDisplayMetrics.heightPixels;
-    paramDisplayMetrics = new BitmapFactory.Options();
-    paramDisplayMetrics.inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramString, paramDisplayMetrics);
-    i = a(paramDisplayMetrics, i, j);
-    paramDisplayMetrics.inJustDecodeBounds = false;
-    paramDisplayMetrics.inSampleSize = i;
-    Bitmap localBitmap = askb.a(paramString, paramDisplayMetrics, 1, 4);
-    paramDisplayMetrics = localBitmap;
-    if (localBitmap != null)
-    {
-      i = bdhj.b(paramString);
-      paramDisplayMetrics = localBitmap;
-      if (i != 0)
-      {
-        paramDisplayMetrics = localBitmap;
-        if (i % 90 == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("OCRPerformUtil", 2, "decodeBitmapForOcr rotate:" + i);
-          }
-          j = localBitmap.getWidth();
-          int k = localBitmap.getHeight();
-          paramString = new Matrix();
-          paramString.postRotate(i, j / 2.0F, k / 2.0F);
-          paramDisplayMetrics = Bitmap.createBitmap(localBitmap, 0, 0, j, k, paramString, true);
-        }
-      }
-    }
-    return paramDisplayMetrics;
-  }
-  
-  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView, Drawable paramDrawable)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable;
-    if (paramURLImageView.getLayoutParams() != null)
-    {
-      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
-    }
-    return localURLDrawableOptions;
-  }
-  
-  public static CharSequence a()
-  {
-    return jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public static CharSequence a(ArrayList<asjy> paramArrayList)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramArrayList = paramArrayList.iterator();
-    int i = 1;
-    if (paramArrayList.hasNext())
-    {
-      asjy localasjy = (asjy)paramArrayList.next();
-      if (localasjy.b == i) {
-        localStringBuilder.append(localasjy.jdField_a_of_type_JavaLangString.trim());
-      }
-      for (;;)
-      {
-        break;
-        localStringBuilder.append("\n\n").append(localasjy.jdField_a_of_type_JavaLangString.trim());
-        i = localasjy.b;
-      }
-    }
-    return new bamp(localStringBuilder.toString(), 8, 16);
-  }
-  
-  public static String a(TextView paramTextView)
-  {
-    String str1 = null;
-    if (paramTextView == null) {
-      paramTextView = str1;
-    }
-    do
-    {
-      int i;
-      int j;
-      String str2;
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return paramTextView;
-              i = paramTextView.getSelectionStart();
-              j = paramTextView.getSelectionEnd();
-              str2 = paramTextView.getText().toString();
-              paramTextView = str1;
-            } while (TextUtils.isEmpty(str2));
-            paramTextView = str1;
-          } while (i >= j);
-          paramTextView = str1;
-        } while (i < 0);
-        paramTextView = str1;
-      } while (j > str2.length());
-      str1 = str2.substring(i, j);
-      paramTextView = str1;
-    } while (!QLog.isColorLevel());
-    QLog.d("OCRPerformUtil", 2, "collectSelectedText " + str1);
-    return str1;
-  }
-  
-  public static String a(String paramString)
-  {
-    return OcrConfig.getDefaultLanguageName(paramString);
-  }
-  
-  public static List<String> a(String paramString)
-  {
-    return OcrConfig.getDefaultSupportLanguages(paramString);
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_Asjw != null) {
-      jdField_a_of_type_Asjw = null;
-    }
-    if (jdField_a_of_type_Avvs != null) {
-      jdField_a_of_type_Avvs = null;
-    }
-    if (jdField_a_of_type_JavaLangCharSequence != null) {
-      jdField_a_of_type_JavaLangCharSequence = null;
-    }
-    if (b != null) {
-      b = null;
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("OCRPerformUtil", 2, "forwardContent error, content is empty");
-      }
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", -1);
-    localBundle.putString("forward_text", paramString);
-    paramString = new Intent();
-    paramString.putExtra("isFromShare", true);
-    paramString.putExtras(localBundle);
-    aryv.a(paramActivity, paramString, 21);
-  }
-  
-  public static void a(avyz paramavyz, int paramInt, Bitmap paramBitmap)
-  {
-    paramBitmap = new StackBlurManager(paramBitmap);
-    paramBitmap.setDbg(false);
-    paramavyz.a = paramBitmap.process(paramInt);
-  }
-  
-  public static void a(CharSequence paramCharSequence)
-  {
-    jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    a(paramString, paramString, paramInt);
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt)
-  {
-    azqs.b(null, "dc00898", "", "", paramString1, paramString2, paramInt, 0, "", "0", "0", "");
-  }
-  
-  public static void a(String paramString, List<String> paramList, HashMap<String, String> paramHashMap)
-  {
-    if (jdField_a_of_type_Avvs == null) {
-      jdField_a_of_type_Avvs = new avvs();
-    }
-    Object localObject = jdField_a_of_type_Avvs;
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramString = "";
-      ((avvs)localObject).jdField_a_of_type_JavaLangString = paramString;
-      if ((paramList == null) || (paramList.isEmpty())) {
-        break label160;
-      }
-      if (jdField_a_of_type_Avvs.jdField_a_of_type_JavaUtilList != null) {
-        break label146;
-      }
-      jdField_a_of_type_Avvs.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    for (;;)
-    {
-      paramString = paramList.iterator();
-      while (paramString.hasNext())
-      {
-        paramList = (String)paramString.next();
-        localObject = a(paramList);
-        if ((!TextUtils.isEmpty(paramList)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-          jdField_a_of_type_Avvs.jdField_a_of_type_JavaUtilList.add(paramList.toLowerCase());
-        }
-      }
-      paramString = paramString.toLowerCase();
-      break;
-      label146:
-      jdField_a_of_type_Avvs.jdField_a_of_type_JavaUtilList.clear();
-    }
-    label160:
-    jdField_a_of_type_Avvs.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    jdField_a_of_type_Avvs.jdField_b_of_type_JavaLangString = jdField_a_of_type_Avvs.jdField_a_of_type_JavaLangString;
-    jdField_a_of_type_Avvs.jdField_c_of_type_JavaUtilList = a(jdField_a_of_type_Avvs.jdField_b_of_type_JavaLangString);
-    jdField_a_of_type_Avvs.jdField_c_of_type_JavaLangString = ((String)jdField_a_of_type_Avvs.jdField_c_of_type_JavaUtilList.get(0));
-    jdField_a_of_type_Avvs.jdField_b_of_type_JavaUtilList = a(jdField_a_of_type_Avvs.jdField_c_of_type_JavaLangString);
-    paramString = "en/ja/ko/fr/es/it/de/tr/ru/pt/vi/id/ms/th".trim().split("/");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramList = paramString[i];
-      if (!jdField_a_of_type_Avvs.a(jdField_a_of_type_Avvs.jdField_b_of_type_JavaUtilList, paramList)) {
-        jdField_a_of_type_Avvs.jdField_b_of_type_JavaUtilList.add(paramList);
-      }
-      i += 1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OCRPerformUtil", 2, "recordOcrLanInfo:ocrLanHolder:" + jdField_a_of_type_Avvs.a());
-    }
-  }
-  
-  public static boolean a(Bitmap paramBitmap)
-  {
-    long l3 = 0L;
-    long l2 = 0L;
-    long l1 = 0L;
-    long l4 = 0L;
-    int j = paramBitmap.getHeight() / 20;
-    int i = j;
-    if (j <= 0) {
-      i = 5;
-    }
-    int k = paramBitmap.getWidth() / 20;
-    j = k;
-    if (k <= 0) {
-      j = 5;
-    }
-    k = 0;
-    while (k < paramBitmap.getHeight())
-    {
-      int m = 0;
-      while (m < paramBitmap.getWidth())
-      {
-        int n = paramBitmap.getPixel(m, k);
-        l4 += 1L;
-        l3 += Color.red(n);
-        l2 += Color.green(n);
-        l1 += Color.blue(n);
-        m += j;
-      }
-      k += i;
-    }
-    float f1 = (float)(l3 / l4);
-    float f2 = (float)(l2 / l4);
-    float f3 = (float)(l1 / l4);
-    double d = f1;
-    return f2 * 0.578D + d * 0.299D + f3 * 0.114D < 90.0D;
-  }
-  
-  public static CharSequence b()
-  {
-    return b;
-  }
-  
-  public static void b(Activity paramActivity, String paramString)
-  {
-    if ((paramActivity == null) || (TextUtils.isEmpty(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("OCRPerformUtil", 2, "enterCropActivity error, picture path is empty");
-      }
-      return;
-    }
-    Intent localIntent = EditPicActivity.a(paramActivity, paramString, false, false, false, true, false, 2, 99, 9);
-    localIntent.putExtra("babyq_ability", 2L);
-    localIntent.putExtra("sub_business_id", 103);
-    paramActivity.startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("OCRPerformUtil", 2, String.format("enterCropActivity, path: %s", new Object[] { paramString }));
-    }
-    azqs.b(null, "dc00898", "", "", "0X80082DB", "0X80082DB", 0, 0, "", "", "", "");
-  }
-  
-  public static void b(CharSequence paramCharSequence)
-  {
-    b = paramCharSequence;
+    //   68	70	155	finally
+    //   71	112	155	finally
+    //   112	152	155	finally
+    //   156	158	155	finally
+    //   191	223	155	finally
+    //   223	240	155	finally
+    //   243	278	155	finally
+    //   278	286	155	finally
+    //   289	329	155	finally
+    //   329	346	155	finally
+    //   25	32	160	java/lang/Exception
+    //   158	160	160	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avvq
  * JD-Core Version:    0.7.0.1
  */

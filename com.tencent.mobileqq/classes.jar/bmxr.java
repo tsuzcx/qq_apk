@@ -1,128 +1,293 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Typeface;
-import android.text.TextPaint;
-import android.view.animation.LinearInterpolator;
-import com.tencent.mobileqq.utils.ChnToSpell;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.weiyun.ResponseHandler.1;
 
 public class bmxr
-  extends bmxt
 {
-  int jdField_a_of_type_Int = 0;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = "15:29";
-  int c = 0;
-  int d = 0;
-  int e;
+  private static volatile int jdField_a_of_type_Int;
+  private static bmxs jdField_a_of_type_Bmxs = new bmxs(Looper.getMainLooper());
+  private static volatile String jdField_a_of_type_JavaLangString;
+  private static volatile int jdField_b_of_type_Int;
+  private static volatile String jdField_b_of_type_JavaLangString;
+  private static volatile int c;
   
-  public bmxr(Context paramContext, String paramString)
+  /* Error */
+  public static String a(android.content.Context paramContext)
   {
-    super(paramContext, paramString);
-    a(paramString);
-    b();
-    c();
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 39	bmxr:jdField_b_of_type_Int	I
+    //   6: sipush 1127
+    //   9: if_icmpne +15 -> 24
+    //   12: aload_0
+    //   13: ldc 40
+    //   15: invokevirtual 46	android/content/Context:getString	(I)Ljava/lang/String;
+    //   18: astore_0
+    //   19: ldc 2
+    //   21: monitorexit
+    //   22: aload_0
+    //   23: areturn
+    //   24: getstatic 39	bmxr:jdField_b_of_type_Int	I
+    //   27: sipush 22000
+    //   30: if_icmpne +13 -> 43
+    //   33: aload_0
+    //   34: ldc 40
+    //   36: invokevirtual 46	android/content/Context:getString	(I)Ljava/lang/String;
+    //   39: astore_0
+    //   40: goto -21 -> 19
+    //   43: getstatic 39	bmxr:jdField_b_of_type_Int	I
+    //   46: sipush 1053
+    //   49: if_icmpeq +12 -> 61
+    //   52: getstatic 39	bmxr:jdField_b_of_type_Int	I
+    //   55: sipush -20001
+    //   58: if_icmpne +13 -> 71
+    //   61: aload_0
+    //   62: ldc 47
+    //   64: invokevirtual 46	android/content/Context:getString	(I)Ljava/lang/String;
+    //   67: astore_0
+    //   68: goto -49 -> 19
+    //   71: getstatic 39	bmxr:jdField_b_of_type_Int	I
+    //   74: sipush 22081
+    //   77: if_icmpne +13 -> 90
+    //   80: aload_0
+    //   81: ldc 48
+    //   83: invokevirtual 46	android/content/Context:getString	(I)Ljava/lang/String;
+    //   86: astore_0
+    //   87: goto -68 -> 19
+    //   90: getstatic 39	bmxr:jdField_b_of_type_Int	I
+    //   93: sipush 22121
+    //   96: if_icmpne +13 -> 109
+    //   99: aload_0
+    //   100: ldc 49
+    //   102: invokevirtual 46	android/content/Context:getString	(I)Ljava/lang/String;
+    //   105: astore_0
+    //   106: goto -87 -> 19
+    //   109: aconst_null
+    //   110: astore_0
+    //   111: goto -92 -> 19
+    //   114: astore_0
+    //   115: ldc 2
+    //   117: monitorexit
+    //   118: aload_0
+    //   119: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	120	0	paramContext	android.content.Context
+    // Exception table:
+    //   from	to	target	type
+    //   3	19	114	finally
+    //   24	40	114	finally
+    //   43	61	114	finally
+    //   61	68	114	finally
+    //   71	87	114	finally
+    //   90	106	114	finally
   }
   
-  public static String a(int paramInt, String paramString)
+  public static void a()
   {
-    JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("type", paramInt);
-      localJSONObject.put("first_line", paramString);
-      paramString = localJSONObject.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("FilmDigitInfoStickerDrawable", 2, paramString);
-      }
-      return paramString;
+      jdField_a_of_type_Int += 1;
+      QLog.d("ResponseHandler", 2, "start count=" + jdField_a_of_type_Int);
+      jdField_a_of_type_Bmxs.removeMessages(0);
+      jdField_a_of_type_Bmxs.sendEmptyMessageDelayed(0, 60000L);
+      return;
     }
-    catch (JSONException paramString)
+    finally
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FilmDigitInfoStickerDrawable", 2, paramString, new Object[0]);
-        }
-        paramString = null;
-      }
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  protected void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList)
-  {
-    int i = paramCanvas.saveLayer(0.0F, 0.0F, getIntrinsicWidth(), getIntrinsicWidth(), this.jdField_a_of_type_AndroidTextTextPaint, 31);
-    int j = a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    float f1 = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().ascent);
-    float f2 = ((Integer)paramArrayList.get(this.e)).intValue() % 100 * 1.0F / 99.0F;
-    this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(f2 * 20.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165606));
-    paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), j + f1, this.jdField_a_of_type_AndroidTextTextPaint);
-    paramCanvas.restoreToCount(i);
-  }
-  
-  public String[] a(String paramString)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
     try
     {
-      paramString = new JSONObject(paramString);
-      if (paramString != null)
-      {
-        this.f = paramString.optInt("type", 0);
-        String str = paramString.optString("first_line", "");
-        paramString = str;
-        if (str.contains("·")) {
-          paramString = str.substring(0, str.indexOf("·"));
-        }
-        this.jdField_b_of_type_JavaLangString = ChnToSpell.a(paramString, 1);
+      QLog.d("ResponseHandler", 2, "sFriendUin =" + jdField_a_of_type_JavaLangString + ";  sSenderUin=" + jdField_b_of_type_JavaLangString);
+      if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString))) {
+        b(paramQQAppInterface);
       }
-      return new String[] { this.jdField_b_of_type_JavaLangString };
+      return;
     }
-    catch (JSONException paramString)
+    finally
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
+      paramQQAppInterface = finally;
+      throw paramQQAppInterface;
     }
   }
   
-  protected void b()
+  static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165605));
-    Object localObject = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getResources().getAssets(), "info_sticker_typeface/dov_digital.ttf");
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface((Typeface)localObject);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-    this.d = ((int)(((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top));
-    this.c = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_b_of_type_JavaLangString, 0, this.jdField_b_of_type_JavaLangString.length()));
-    this.jdField_a_of_type_Int = (this.c + a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_b_of_type_Int = (a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.e = this.jdField_a_of_type_Bmxh.a("anim", 0L, 1000L, 0, 999, new LinearInterpolator());
+    String str2;
+    String str1;
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      str2 = "";
+      str1 = "";
+      if (paramInt2 != 1127) {
+        break label55;
+      }
+      str2 = paramQQAppInterface.getApp().getString(2131693166);
+      str1 = bmyh.b(paramQQAppInterface.getCurrentAccountUin(), "mvip.n.a.zcwy_xht");
+      if (!TextUtils.isEmpty(str2)) {
+        break label181;
+      }
+    }
+    label55:
+    do
+    {
+      return;
+      if (paramInt2 == 22000)
+      {
+        str2 = paramQQAppInterface.getApp().getString(2131693166);
+        str1 = bmyh.b(paramQQAppInterface.getCurrentAccountUin(), "mvip.n.a.zcwy_xht");
+        break;
+      }
+      if (paramInt2 == 1053)
+      {
+        str2 = paramQQAppInterface.getApp().getString(2131693169);
+        str1 = bmyh.a(paramQQAppInterface.getCurrentAccountUin(), "qq_aio_capacity_open_vip");
+        break;
+      }
+      if (paramInt2 == 22081)
+      {
+        str2 = paramQQAppInterface.getApp().getString(2131693168);
+        str1 = bmyh.a(paramQQAppInterface.getCurrentAccountUin(), "qq_aio_capacity_open_vip");
+        break;
+      }
+      if (paramInt2 != 22121) {
+        break;
+      }
+      str2 = paramQQAppInterface.getApp().getString(2131693167);
+      str1 = bmyh.c();
+      break;
+      paramInt2 = paramString3.indexOf(str2);
+    } while (paramInt2 == -1);
+    label181:
+    new Thread(new ResponseHandler.1(paramString1, paramString2, paramString3, paramInt1, str1, paramInt2, str2, paramQQAppInterface)).start();
   }
   
-  public int getIntrinsicHeight()
+  public static void a(String paramString1, String paramString2, int paramInt)
   {
-    return this.jdField_b_of_type_Int;
+    try
+    {
+      jdField_a_of_type_JavaLangString = paramString1;
+      jdField_b_of_type_JavaLangString = paramString2;
+      c = paramInt;
+      return;
+    }
+    finally
+    {
+      paramString1 = finally;
+      throw paramString1;
+    }
   }
   
-  public int getIntrinsicWidth()
+  /* Error */
+  public static boolean a()
   {
-    return this.jdField_a_of_type_Int;
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 33	bmxr:jdField_a_of_type_Int	I
+    //   6: istore_0
+    //   7: iload_0
+    //   8: ifne +10 -> 18
+    //   11: iconst_1
+    //   12: istore_1
+    //   13: ldc 2
+    //   15: monitorexit
+    //   16: iload_1
+    //   17: ireturn
+    //   18: iconst_0
+    //   19: istore_1
+    //   20: goto -7 -> 13
+    //   23: astore_2
+    //   24: ldc 2
+    //   26: monitorexit
+    //   27: aload_2
+    //   28: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   6	2	0	i	int
+    //   12	8	1	bool	boolean
+    //   23	5	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	7	23	finally
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    boolean bool = true;
+    for (;;)
+    {
+      try
+      {
+        if ((d(paramInt)) && (!b(jdField_b_of_type_Int))) {
+          jdField_b_of_type_Int = paramInt;
+        }
+        if (jdField_a_of_type_Int == 0)
+        {
+          jdField_a_of_type_Bmxs.removeMessages(0);
+          return bool;
+        }
+        jdField_a_of_type_Int -= 1;
+        QLog.d("ResponseHandler", 2, "end count=" + jdField_a_of_type_Int);
+        if (jdField_a_of_type_Int <= 0)
+        {
+          jdField_a_of_type_Bmxs.removeMessages(0);
+          jdField_a_of_type_Int = 0;
+        }
+        else
+        {
+          bool = false;
+        }
+      }
+      finally {}
+    }
+  }
+  
+  static void b()
+  {
+    jdField_a_of_type_JavaLangString = null;
+    jdField_b_of_type_JavaLangString = null;
+    c = 0;
+    jdField_b_of_type_Int = 0;
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface)
+  {
+    Message localMessage = jdField_a_of_type_Bmxs.obtainMessage();
+    localMessage.what = 1;
+    localMessage.obj = paramQQAppInterface;
+    jdField_a_of_type_Bmxs.sendMessageDelayed(localMessage, 1000L);
+  }
+  
+  public static boolean b()
+  {
+    return d(jdField_b_of_type_Int);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 1053) || (paramInt == 22081) || (paramInt == 22121) || (jdField_b_of_type_Int == -20001);
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt == 1127) || (paramInt == 22000);
+  }
+  
+  public static boolean d(int paramInt)
+  {
+    return (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) && ((c(paramInt)) || (b(paramInt)));
   }
 }
 

@@ -1,18 +1,15 @@
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
 
 public class akec
-  extends MqqHandler
+  implements bkhw
 {
-  public akec(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public akec(SettingActivity2 paramSettingActivity2, bkho parambkho) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    this.jdField_a_of_type_Bkho.cancel();
+    bglp.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, anni.a(2131712623), anni.a(2131712620), anni.a(2131712621), anni.a(2131712619), new aked(this), new akee(this)).show();
   }
 }
 

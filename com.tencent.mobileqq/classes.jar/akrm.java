@@ -1,14 +1,60 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import java.util.Comparator;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class akrm
-  implements Comparator<akrq>
+  implements akrh
 {
-  public akrm(ApolloCmdChannel paramApolloCmdChannel) {}
+  private List<String> a;
   
-  public int a(akrq paramakrq1, akrq paramakrq2)
+  public String a(List<String> paramList, boolean paramBoolean)
   {
-    return paramakrq1.a() - paramakrq2.a();
+    int i = paramList.size() - 1;
+    while (i >= 0)
+    {
+      String str = (String)paramList.remove(i);
+      if (!TextUtils.isEmpty(str)) {
+        return str;
+      }
+      i -= 1;
+    }
+    if (paramBoolean)
+    {
+      if (this.a == null)
+      {
+        this.a = new ArrayList(4);
+        this.a.add("apple");
+        this.a.add("good");
+        this.a.add("study");
+        this.a.add("play");
+      }
+      i = new Random().nextInt(this.a.size());
+      if (QLog.isColorLevel()) {
+        QLog.i("WordChainBizImpl", 2, "getRandomIdiom get backIdiom:" + i + " backWordListSize:" + this.a.size());
+      }
+      return (String)this.a.get(i);
+    }
+    return "";
+  }
+  
+  public void a(String paramString) {}
+  
+  public boolean a(String paramString)
+  {
+    return !TextUtils.isEmpty(paramString);
+  }
+  
+  public InputFilter[] a(int paramInt)
+  {
+    if ((bgjq.d()) || (bgjq.e())) {}
+    for (int i = 1; (i == 0) && (paramInt > 0); i = 0) {
+      return new InputFilter[] { new InputFilter.LengthFilter(paramInt) };
+    }
+    return new InputFilter[0];
   }
 }
 

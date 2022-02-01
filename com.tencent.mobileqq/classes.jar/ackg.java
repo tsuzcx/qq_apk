@@ -1,19 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class ackg
-  implements DialogInterface.OnClickListener
+public class ackg
 {
-  public ackg(acln paramacln) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(long paramLong1, long paramLong2, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
-    mtq.e(true, false);
-    paramDialogInterface.dismiss();
-    mtq.b();
+    return bita.d(String.format("%s_%d_%d_%d", new Object[] { "!@#$%qboi!@#^&*m13=4aa22", Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) })).toLowerCase();
   }
 }
 

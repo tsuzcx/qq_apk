@@ -2,12 +2,15 @@ package com.tencent.qapmsdk.common.util;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Point;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.view.Display;
+import android.view.WindowManager;
 import java.util.Collection;
 import java.util.Iterator;
 import kotlin.Metadata;
@@ -17,7 +20,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/PhoneUtil$Companion;", "", "()V", "ETH_MAC_ADDRESS", "", "WLAN_MAC_ADDRESS", "deviceId", "generateDeviceId", "app", "Landroid/app/Application;", "getMacAddress", "context", "Landroid/content/Context;", "getMacAddressFromNetworkInterface", "common_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/PhoneUtil$Companion;", "", "()V", "ETH_MAC_ADDRESS", "", "WLAN_MAC_ADDRESS", "deviceId", "height", "", "width", "generateDeviceId", "app", "Landroid/app/Application;", "getDisplayHeight", "context", "Landroid/content/Context;", "getDisplaySize", "getDisplayWidth", "getMacAddress", "getMacAddressFromNetworkInterface", "common_release"}, k=1, mv={1, 1, 15})
 public final class PhoneUtil$Companion
 {
   private final String getMacAddress(Context paramContext)
@@ -108,22 +111,22 @@ public final class PhoneUtil$Companion
   private final String getMacAddressFromNetworkInterface()
   {
     // Byte code:
-    //   0: invokestatic 127	java/net/NetworkInterface:getNetworkInterfaces	()Ljava/util/Enumeration;
+    //   0: invokestatic 132	java/net/NetworkInterface:getNetworkInterfaces	()Ljava/util/Enumeration;
     //   3: astore 4
     //   5: aload 4
     //   7: ifnull +145 -> 152
     //   10: aload 4
-    //   12: invokeinterface 132 1 0
+    //   12: invokeinterface 137 1 0
     //   17: ifeq +202 -> 219
     //   20: aload 4
-    //   22: invokeinterface 135 1 0
-    //   27: checkcast 123	java/net/NetworkInterface
+    //   22: invokeinterface 140 1 0
+    //   27: checkcast 128	java/net/NetworkInterface
     //   30: astore 5
     //   32: aload 5
-    //   34: ldc 137
-    //   36: invokestatic 141	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   34: ldc 142
+    //   36: invokestatic 146	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
     //   39: aload 5
-    //   41: invokevirtual 145	java/net/NetworkInterface:getHardwareAddress	()[B
+    //   41: invokevirtual 150	java/net/NetworkInterface:getHardwareAddress	()[B
     //   44: astore 6
     //   46: aload 6
     //   48: ifnull -38 -> 10
@@ -134,9 +137,9 @@ public final class PhoneUtil$Companion
     //   58: istore_2
     //   59: iload_2
     //   60: ifne -50 -> 10
-    //   63: new 147	java/lang/StringBuilder
+    //   63: new 152	java/lang/StringBuilder
     //   66: dup
-    //   67: invokespecial 148	java/lang/StringBuilder:<init>	()V
+    //   67: invokespecial 153	java/lang/StringBuilder:<init>	()V
     //   70: astore 7
     //   72: aload 6
     //   74: arraylength
@@ -150,7 +153,7 @@ public final class PhoneUtil$Companion
     //   85: iload_2
     //   86: baload
     //   87: istore_1
-    //   88: getstatic 154	kotlin/jvm/internal/StringCompanionObject:INSTANCE	Lkotlin/jvm/internal/StringCompanionObject;
+    //   88: getstatic 159	kotlin/jvm/internal/StringCompanionObject:INSTANCE	Lkotlin/jvm/internal/StringCompanionObject;
     //   91: astore 8
     //   93: iconst_1
     //   94: anewarray 4	java/lang/Object
@@ -158,21 +161,21 @@ public final class PhoneUtil$Companion
     //   99: aload 8
     //   101: iconst_0
     //   102: iload_1
-    //   103: invokestatic 160	java/lang/Byte:valueOf	(B)Ljava/lang/Byte;
+    //   103: invokestatic 165	java/lang/Byte:valueOf	(B)Ljava/lang/Byte;
     //   106: aastore
-    //   107: ldc 162
+    //   107: ldc 167
     //   109: aload 8
     //   111: aload 8
     //   113: arraylength
-    //   114: invokestatic 168	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
-    //   117: invokestatic 172	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   114: invokestatic 173	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
+    //   117: invokestatic 177	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   120: astore 8
     //   122: aload 8
-    //   124: ldc 174
-    //   126: invokestatic 141	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   124: ldc 179
+    //   126: invokestatic 146	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
     //   129: aload 7
     //   131: aload 8
-    //   133: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   136: pop
     //   137: iload_2
     //   138: iconst_1
@@ -192,8 +195,8 @@ public final class PhoneUtil$Companion
     //   159: istore_2
     //   160: goto -101 -> 59
     //   163: aload 7
-    //   165: checkcast 92	java/lang/CharSequence
-    //   168: invokeinterface 96 1 0
+    //   165: checkcast 97	java/lang/CharSequence
+    //   168: invokeinterface 101 1 0
     //   173: ifle +41 -> 214
     //   176: iconst_1
     //   177: istore_2
@@ -201,18 +204,18 @@ public final class PhoneUtil$Companion
     //   179: ifeq +16 -> 195
     //   182: aload 7
     //   184: aload 7
-    //   186: invokevirtual 179	java/lang/StringBuilder:length	()I
+    //   186: invokevirtual 184	java/lang/StringBuilder:length	()I
     //   189: iconst_1
     //   190: isub
-    //   191: invokevirtual 183	java/lang/StringBuilder:deleteCharAt	(I)Ljava/lang/StringBuilder;
+    //   191: invokevirtual 188	java/lang/StringBuilder:deleteCharAt	(I)Ljava/lang/StringBuilder;
     //   194: pop
     //   195: aload 5
-    //   197: invokevirtual 186	java/net/NetworkInterface:getName	()Ljava/lang/String;
-    //   200: ldc 188
-    //   202: invokestatic 119	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   197: invokevirtual 191	java/net/NetworkInterface:getName	()Ljava/lang/String;
+    //   200: ldc 193
+    //   202: invokestatic 124	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
     //   205: ifeq -195 -> 10
     //   208: aload 7
-    //   210: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   210: invokevirtual 196	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   213: areturn
     //   214: iconst_0
     //   215: istore_2
@@ -304,10 +307,70 @@ public final class PhoneUtil$Companion
       }
     }
   }
+  
+  @JvmStatic
+  public final int getDisplayHeight(@Nullable Context paramContext)
+  {
+    if (paramContext == null) {
+      return -1;
+    }
+    if ((PhoneUtil.access$getHeight$cp() == -1) && (AndroidVersion.Companion.isJellyBeanMr1()))
+    {
+      Object localObject = paramContext.getSystemService("window");
+      paramContext = (Context)localObject;
+      if (!(localObject instanceof WindowManager)) {
+        paramContext = null;
+      }
+      paramContext = (WindowManager)paramContext;
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getDefaultDisplay();
+        localObject = new Point();
+        paramContext.getRealSize((Point)localObject);
+        PhoneUtil.access$setHeight$cp(((Point)localObject).y);
+      }
+    }
+    return PhoneUtil.access$getHeight$cp();
+  }
+  
+  @JvmStatic
+  @NotNull
+  public final String getDisplaySize(@Nullable Context paramContext)
+  {
+    if (paramContext == null) {
+      return "unKnow";
+    }
+    return String.valueOf(((Companion)this).getDisplayWidth(paramContext)) + "," + String.valueOf(((Companion)this).getDisplayHeight(paramContext));
+  }
+  
+  @JvmStatic
+  public final int getDisplayWidth(@Nullable Context paramContext)
+  {
+    if (paramContext == null) {
+      return -1;
+    }
+    if ((PhoneUtil.access$getWidth$cp() == -1) && (AndroidVersion.Companion.isJellyBeanMr1()))
+    {
+      Object localObject = paramContext.getSystemService("window");
+      paramContext = (Context)localObject;
+      if (!(localObject instanceof WindowManager)) {
+        paramContext = null;
+      }
+      paramContext = (WindowManager)paramContext;
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getDefaultDisplay();
+        localObject = new Point();
+        paramContext.getRealSize((Point)localObject);
+        PhoneUtil.access$setWidth$cp(((Point)localObject).x);
+      }
+    }
+    return PhoneUtil.access$getWidth$cp();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.PhoneUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

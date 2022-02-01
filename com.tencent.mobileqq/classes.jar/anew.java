@@ -1,33 +1,21 @@
-import android.opengl.GLES20;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class anew
-  extends anfc
+class anew
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b;
+  anew(anet paramanet, ApolloGameData paramApolloGameData) {}
   
-  public anew(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramInt);
-    this.e = "uniform float uA;\nuniform float uD;\n";
-    this.j = "    if(abs(gl_FragColor[0]-u_screenColor[0]) < uD && abs(gl_FragColor[1]-u_screenColor[1]) < uD  && abs(gl_FragColor[2]-u_screenColor[2]) < uD ){\n        gl_FragColor[3] = uA;\n        if(uA < 0.01){\n            gl_FragColor[0] = 0.0;\n            gl_FragColor[1] = 0.0;\n            gl_FragColor[2] = 0.0;\n        }\n    }\n";
-  }
-  
-  protected void a()
-  {
-    this.a = GLES20.glGetUniformLocation(this.d, "uA");
-    anfg.a("glGetAttribLocation uA");
-    this.b = GLES20.glGetUniformLocation(this.d, "uD");
-    anfg.a("glGetAttribLocation uD");
-  }
-  
-  protected void a(anff paramanff)
-  {
-    if (paramanff == null) {
-      return;
-    }
-    GLES20.glUniform1f(this.a, paramanff.d);
-    GLES20.glUniform1f(this.b, paramanff.e);
+    paramDialogInterface = String.format("https://m.gamecenter.qq.com/directout/detail/%s?_wv=2147484679&_wwv=4&ADTAG=limixiuteam&autodownload=1&pf=invite&appid=%s&notShowPub=1&asyncMode=3&appType=1&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=0", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid });
+    Intent localIntent = new Intent(this.jdField_a_of_type_Anet.a, QQBrowserActivity.class);
+    localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+    VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Anet.a, paramDialogInterface, -1L, localIntent, false, -1);
   }
 }
 

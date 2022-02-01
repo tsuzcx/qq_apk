@@ -1,43 +1,48 @@
-import android.content.Context;
-import android.text.TextUtils;
-import cooperation.qqpim.QQPimTipsInfo;
+import com.tencent.open.virtual.OpenSdkVirtualManager.2;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class biyr
+  extends bizb
 {
-  public static void a(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
-  {
-    if (paramQQPimTipsInfo == null)
-    {
-      biyp.a(paramContext, "QQPIM_TIPS_CLICK", System.currentTimeMillis());
-      return;
-    }
-    biyp.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int, paramQQPimTipsInfo.jdField_a_of_type_JavaLangString + ";" + paramQQPimTipsInfo.b + ";" + System.currentTimeMillis());
-  }
+  public biyr(OpenSdkVirtualManager.2 param2) {}
   
-  public static void b(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    if (paramQQPimTipsInfo == null) {}
-    while (TextUtils.isEmpty(biyp.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int))) {
-      return;
-    }
-    switch (paramQQPimTipsInfo.jdField_a_of_type_Int)
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
+    aukw.a("KEY_DELETE_VIRTUAL_D18", this.a.jdField_a_of_type_Biyc, paramBoolean);
+    int i = paramInt;
+    if (paramBoolean) {}
+    for (;;)
     {
-    case 3: 
-    default: 
-      return;
-    case 1: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-      return;
-    case 2: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-      return;
+      try
+      {
+        i = new JSONObject(paramString1).optInt("ErrorCode");
+        paramInt = i;
+        i = paramInt;
+        if (paramInt == 0)
+        {
+          paramBoolean = true;
+          QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
+          if (this.a.jdField_a_of_type_Bior != null) {
+            this.a.jdField_a_of_type_Bior.a(paramBoolean, paramInt);
+          }
+          return;
+        }
+      }
+      catch (Exception paramString2)
+      {
+        QLog.e("SDK_LOGIN.OpenSdkVirtualManager", 1, "Exception.e", paramString2);
+        i = paramInt;
+      }
+      paramBoolean = false;
+      paramInt = i;
     }
-    paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     biyr
  * JD-Core Version:    0.7.0.1
  */

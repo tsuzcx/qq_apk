@@ -1,12 +1,27 @@
-class asav
-  implements bdnk
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
+
+public class asav
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  asav(asau paramasau) {}
+  public asav(EmotionSearchPanel paramEmotionSearchPanel) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    asau.a(this.a, bdni.a(paramInt));
-    asau.a(this.a).height = asau.a(this.a);
+    if (EmotionSearchPanel.a(this.a))
+    {
+      EmotionSearchPanel localEmotionSearchPanel = this.a;
+      int i = EmotionSearchPanel.jdField_a_of_type_Int;
+      EmotionSearchPanel.c(localEmotionSearchPanel, ((Integer)paramValueAnimator.getAnimatedValue()).intValue() + i);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha((1.0F - paramValueAnimator.getAnimatedFraction()) * 0.71F);
+      return;
+      EmotionSearchPanel.c(this.a, EmotionSearchPanel.jdField_a_of_type_Int - ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    }
   }
 }
 

@@ -1,89 +1,92 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.mobileqq.ar.ArConfigService;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aovj
+  implements aowi
 {
-  private String a;
-  public boolean a;
-  private String b;
-  public boolean b;
-  private String c = "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3";
-  private String d = "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3";
+  public aovj(ArConfigService paramArConfigService) {}
   
-  public aovj()
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}";
-    this.jdField_b_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}";
-  }
-  
-  @NonNull
-  public static aovj a(String paramString)
-  {
-    boolean bool2 = false;
-    aovj localaovj = new aovj();
-    if (TextUtils.isEmpty(paramString)) {
-      return localaovj;
-    }
-    for (;;)
-    {
+    if (ArConfigService.b(this.a) != null) {
       try
       {
-        paramString = new JSONObject(paramString);
-        if (paramString.optInt("showCreateIcon") == 1)
+        int j = ArConfigService.b(this.a).beginBroadcast();
+        int i = 0;
+        for (;;)
         {
-          bool1 = true;
-          localaovj.jdField_b_of_type_Boolean = bool1;
-          localaovj.jdField_a_of_type_JavaLangString = paramString.optString("pretty_home", "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}");
-          localaovj.jdField_b_of_type_JavaLangString = paramString.optString("pretty_mine", "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}");
-          localaovj.c = paramString.optString("2k", "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3");
-          localaovj.d = paramString.optString("3k", "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3");
-          bool1 = bool2;
-          if (paramString.optInt("limit_off", 0) == 1) {
-            bool1 = true;
+          if (i >= j) {
+            break label106;
           }
-          localaovj.jdField_a_of_type_Boolean = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
+          try
+          {
+            ((aoya)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
+            i += 1;
           }
-          QLog.d("vip_pretty.ConfigProcessor", 1, localaovj.toString());
-          return localaovj;
+          catch (RemoteException localRemoteException)
+          {
+            for (;;)
+            {
+              localRemoteException.printStackTrace();
+            }
+          }
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
         }
       }
-      catch (JSONException paramString)
-      {
-        QLog.e("vip_pretty.ConfigProcessor", 1, "json parse error:" + paramString);
-        return localaovj;
-      }
-      boolean bool1 = false;
     }
+    label106:
+    ArConfigService.b(this.a).finishBroadcast();
   }
   
-  public String a()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    return this.c;
-  }
-  
-  public String a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaLangString.replace("{from}", paramString);
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    return this.jdField_b_of_type_JavaLangString.replace("{from}", paramString1).replace("{groupnum}", paramString2);
-  }
-  
-  public String b()
-  {
-    return this.d;
+    if (ArConfigService.b(this.a) != null) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        int j = ArConfigService.b(this.a).beginBroadcast();
+        i = 0;
+        if (i >= j) {
+          break label129;
+        }
+        if (paramBoolean) {}
+        try
+        {
+          ((aoya)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt);
+        }
+        catch (RemoteException localRemoteException)
+        {
+          localRemoteException.printStackTrace();
+        }
+        ((aoya)ArConfigService.b(this.a).getBroadcastItem(i)).b(paramInt, 0);
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
+        }
+      }
+      return;
+      label129:
+      ArConfigService.b(this.a).finishBroadcast();
+      return;
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aovj
  * JD-Core Version:    0.7.0.1
  */

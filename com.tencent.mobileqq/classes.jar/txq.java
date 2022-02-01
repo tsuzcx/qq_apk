@@ -1,121 +1,138 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedDetailRequest;
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
-import feedcloud.FeedCloudRead.StGetFeedDetailReq;
-import feedcloud.FeedCloudRead.StGetFeedListReq;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.pubaccount.util.PAReportInfo;
+import com.tencent.biz.pubaccount.util.PAReportManager.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.manager.Manager;
 
 public class txq
-  extends ubk
+  implements Handler.Callback, Manager
 {
-  private final MutableLiveData<tsb> jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
-  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-  private yii jdField_a_of_type_Yii = new yii();
+  private volatile int jdField_a_of_type_Int = -1;
+  private bkfv jdField_a_of_type_Bkfv;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private List<PAReportInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public txq()
+  public txq(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Uae = uae.a(57);
-  }
-  
-  private void a(QCircleInitBean paramQCircleInitBean)
-  {
-    paramQCircleInitBean = new QCircleGetFeedDetailRequest(paramQCircleInitBean.getFeed().id.get(), paramQCircleInitBean.getFeed().poster.id.get(), paramQCircleInitBean.getFeed().createTime.get(), false);
-    paramQCircleInitBean.mRequest.extInfo.set(a(true));
-    a(paramQCircleInitBean, new txr(this, paramQCircleInitBean));
-  }
-  
-  private void b(QCircleInitBean paramQCircleInitBean, boolean paramBoolean)
-  {
-    paramQCircleInitBean = new QCircleGetFeedListRequest(paramQCircleInitBean, this.jdField_a_of_type_Yii.a(), this.jdField_a_of_type_Yii.b());
-    FeedCloudCommon.StCommonExt localStCommonExt = paramQCircleInitBean.mRequest.extInfo;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStCommonExt.set(a(bool));
-      a(paramQCircleInitBean, new txs(this, paramQCircleInitBean, paramBoolean));
-      return;
-    }
-  }
-  
-  public MutableLiveData<tsb> a()
-  {
-    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
-  }
-  
-  public RecyclerView.ViewHolder a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-  }
-  
-  public FeedCloudCommon.StCommonExt a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Uae != null) {
-      return this.jdField_a_of_type_Uae.a(paramBoolean);
-    }
-    return new FeedCloudCommon.StCommonExt();
-  }
-  
-  public String a()
-  {
-    return "QCircleContentModel";
-  }
-  
-  public yii a()
-  {
-    return this.jdField_a_of_type_Yii;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    this.jdField_a_of_type_Bkfv = new bkfv(ThreadManager.getSubThreadLooper(), this);
   }
   
   public void a()
   {
-    RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-    if ((localViewHolder instanceof txm)) {
-      ((txm)localViewHolder).a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("PAReport", 2, "scheduleReport ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
     }
+    if ((this.jdField_a_of_type_JavaUtilList.size() == 0) && (this.jdField_a_of_type_Int == 0)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("PAReport", 2, "scheduleReport ... No need query DB");
+      }
+    }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
+        break;
+      }
+    } while (this.jdField_a_of_type_Bkfv.hasMessages(100001));
+    this.jdField_a_of_type_Bkfv.sendEmptyMessageDelayed(100001, 3000L);
+    return;
+    this.jdField_a_of_type_Bkfv.sendEmptyMessage(100002);
+  }
+  
+  public void a(PAReportInfo paramPAReportInfo)
+  {
+    this.jdField_a_of_type_Bkfv.post(new PAReportManager.1(this, paramPAReportInfo));
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PAReport", 2, "queryDatabases ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_Int == -1) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getCount(PAReportInfo.class.getSimpleName());
+    }
+    List localList2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(PAReportInfo.class, true, null, (String[])null, null, null, null, String.valueOf(20));
+    if (localList2 != null) {}
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.addAll(localList2);
+      this.jdField_a_of_type_Bkfv.sendEmptyMessage(100002);
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PAReport", 2, "reporting ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {}
     for (;;)
     {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = null;
-      a().postValue(null);
       return;
-      if ((localViewHolder instanceof txn)) {
-        ((txn)localViewHolder).a.a();
+      Object localObject1 = (PAReportInfo)this.jdField_a_of_type_JavaUtilList.get(0);
+      if (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove((Entity)localObject1)) {
+        continue;
+      }
+      this.jdField_a_of_type_Int -= 1;
+      synchronized (this.jdField_a_of_type_JavaUtilList)
+      {
+        this.jdField_a_of_type_JavaUtilList.remove(0);
+        ??? = new ArrayList();
+        localObject1 = ((PAReportInfo)localObject1).msgIds.split("\\|");
+        int j = localObject1.length;
+        int i = 0;
+        if (i >= j) {
+          continue;
+        }
+        ((List)???).add(localObject1[i]);
+        i += 1;
       }
     }
   }
   
-  public void a(RecyclerView.ViewHolder paramViewHolder)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder;
-  }
-  
-  public void a(QCircleInitBean paramQCircleInitBean, boolean paramBoolean)
-  {
-    a().a(3);
-    if (paramQCircleInitBean.isSingleFeed)
+    if (paramMessage.what == 100001)
     {
-      a(paramQCircleInitBean);
-      return;
+      b();
+      return true;
     }
-    b(paramQCircleInitBean, paramBoolean);
+    if (paramMessage.what == 100002)
+    {
+      c();
+      return true;
+    }
+    return false;
   }
   
-  public void a(FeedCloudCommon.StCommonExt paramStCommonExt)
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_Uae != null) {
-      this.jdField_a_of_type_Uae.a(paramStCommonExt);
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_Int = -1;
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     txq
  * JD-Core Version:    0.7.0.1
  */

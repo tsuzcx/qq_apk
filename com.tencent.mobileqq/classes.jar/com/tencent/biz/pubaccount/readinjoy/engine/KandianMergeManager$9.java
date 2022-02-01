@@ -1,16 +1,30 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ors;
+import android.os.Parcel;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinListener;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
 
 class KandianMergeManager$9
-  implements Runnable
+  implements AladdinListener
 {
   KandianMergeManager$9(KandianMergeManager paramKandianMergeManager) {}
   
-  public void run()
+  public void a()
   {
-    ors.f(KandianMergeManager.a(this.this$0));
+    if (TaskManager.getConfigOn())
+    {
+      TaskManager.getInstance().startAllTasks();
+      return;
+    }
+    TaskManager.getInstance().stopAllTasks();
   }
+  
+  public int describeContents()
+  {
+    return 0;
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt) {}
 }
 
 

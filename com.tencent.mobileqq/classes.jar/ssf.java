@@ -1,48 +1,37 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.text.TextUtils;
-import android.webkit.URLUtil;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class ssf
-  implements zac<CertifiedAccountRead.StGetMainPageRsp>
+class ssf
+  extends pue
 {
-  public ssf(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
-  
-  private void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  ssf(ssd paramssd, String paramString, int paramInt1, BaseArticleInfo paramBaseArticleInfo, int paramInt2, ViewGroup paramViewGroup)
   {
-    CertifiedAccountMeta.StUser localStUser = (CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get();
-    ServiceAccountFolderActivityNew.a(this.a, localStUser.id.get());
-    String str = localStUser.icon.get();
-    if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl(str)))
-    {
-      ServiceAccountFolderActivityNew.a(this.a).setImageURL(str);
-      ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new ssg(this, localStUser));
-    }
+    super(paramString);
   }
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void a(ptx paramptx)
   {
-    if (paramBoolean)
-    {
-      if (paramStGetMainPageRsp != null)
+    bkpj.a("ReadInJoyBaseAdapter.Viewtype " + this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Ssd.a(this.jdField_a_of_type_Int)) {
+      if ((pfr.a(this.jdField_a_of_type_Ssd.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) && (this.jdField_a_of_type_Ssd.c != 56))
       {
-        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
-        wxe.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
-        a(paramStGetMainPageRsp);
-        ServiceAccountFolderActivityNew.a(this.a);
-        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
+        if ((paramptx instanceof ptz)) {}
       }
-      return;
+      else {
+        while ((paramptx instanceof ptz)) {
+          return;
+        }
+      }
     }
-    wxe.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
+    if (paramptx.a(this.jdField_a_of_type_Int)) {
+      this.jdField_a_of_type_JavaLangObject = paramptx.a(this.b, null, this.jdField_a_of_type_AndroidViewViewGroup);
+    }
+    bkpj.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ssf
  * JD-Core Version:    0.7.0.1
  */

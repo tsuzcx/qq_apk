@@ -1,25 +1,38 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import com.tencent.superplayer.seamless.SPSeamlessHelper.SeamlessCallback;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class rwa
-  extends RecyclerViewWithHeaderFooterFix
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$jumpToColumnPlay$1$1", "Lcom/tencent/superplayer/seamless/SPSeamlessHelper$SeamlessCallback;", "onSeamlessExit", "", "enterToken", "", "exitToken", "map", "", "", "onSeamlessJump", "s", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rwa
+  implements SPSeamlessHelper.SeamlessCallback
 {
-  public rwa(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Context paramContext)
+  public rwa(sfb paramsfb) {}
+  
+  public void onSeamlessExit(@NotNull String paramString1, @NotNull String paramString2, @NotNull Map<String, ? extends Object> paramMap)
   {
-    super(paramContext);
+    Intrinsics.checkParameterIsNotNull(paramString1, "enterToken");
+    Intrinsics.checkParameterIsNotNull(paramString2, "exitToken");
+    Intrinsics.checkParameterIsNotNull(paramMap, "map");
+    paramString2 = this.a;
+    if (paramString2 != null) {
+      paramString2.a(paramString1);
+    }
   }
   
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void onSeamlessJump(@NotNull String paramString)
   {
-    super.a(paramViewHolder, paramInt);
-    this.a.a(paramViewHolder, paramInt);
+    Intrinsics.checkParameterIsNotNull(paramString, "s");
+    paramString = this.a;
+    if (paramString != null) {
+      paramString.o();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rwa
  * JD-Core Version:    0.7.0.1
  */

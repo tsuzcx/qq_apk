@@ -1,55 +1,48 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqForbidVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.View;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
 
-public class vdz
-  extends urt<vea>
+class vdz
+  extends uzb
 {
-  public final String a;
-  public String b = "";
+  vdz(vdt paramvdt) {}
   
-  public vdz(vdy paramvdy, String paramString)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = uqn.a("StorySvc.forbid_video");
-    this.b = paramString;
+    return 0;
   }
   
-  public String a()
+  public QCircleInitBean a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return vdt.a(this.a);
   }
   
-  public vea a(byte[] paramArrayOfByte)
+  public QCirclePolyLikeAniView a()
   {
-    qqstory_service.RspForbidVideo localRspForbidVideo = new qqstory_service.RspForbidVideo();
-    try
-    {
-      localRspForbidVideo.mergeFrom(paramArrayOfByte);
-      return new vea(this.jdField_a_of_type_Vdy, localRspForbidVideo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+    if (vdt.a(this.a) != null) {
+      return (QCirclePolyLikeAniView)vdt.a(this.a).findViewById(2131373871);
     }
     return null;
   }
   
-  protected byte[] a()
+  public void a(Object paramObject)
   {
-    qqstory_service.ReqForbidVideo localReqForbidVideo = new qqstory_service.ReqForbidVideo();
-    localReqForbidVideo.vid.set(this.b);
-    return localReqForbidVideo.toByteArray();
+    this.a.b("share_action_show_share_sheet", paramObject);
   }
   
-  public String toString()
+  public void a(String paramString, uzc paramuzc)
   {
-    return "ReportIgnoreVideoRequest{, vid='" + this.b + '\'' + '}';
+    this.a.a().a(paramString, paramuzc);
+  }
+  
+  public void a(vca paramvca)
+  {
+    this.a.a().a("light_interact_list_show", paramvca);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vdz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,16 @@
 package com.tencent.av.core;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.pm.ApplicationInfo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Looper;
 import android.text.TextUtils;
-import bdjb;
-import bhsp;
+import bgoc;
+import bkfy;
 import com.tencent.av.VideoConstants;
 import com.tencent.av.app.QuaReportInfo;
 import com.tencent.av.business.handler.NetAddr;
@@ -21,32 +19,28 @@ import com.tencent.av.service.AVPbInfo;
 import com.tencent.av.video.call.ClientLogReport;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
+import com.tencent.mobileqq.startup.step.AVSoUtils;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.ArrayList<Llqw;>;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import lek;
-import leo;
-import lnp;
-import lns;
-import lnv;
-import lnw;
-import lnx;
+import lbc;
+import lbg;
+import lkm;
+import lkp;
+import lks;
+import lkt;
+import lku;
+import lkv;
+import lkw;
 import lny;
-import lnz;
-import lqu;
-import lqw;
-import lrb;
-import mqg;
-import mto;
+import mnl;
+import mqu;
 
 public class VcControllerImpl
 {
@@ -159,15 +153,15 @@ public class VcControllerImpl
   private final Object lock2 = new Object();
   private int mCloseReason = -1;
   private int mCloseResult = -1;
-  private lnv mCloseVideoTimeoutCallback;
+  private lks mCloseVideoTimeoutCallback;
   private Runnable mCloseVideoTimeoutRunnable = new VcControllerImpl.1(this);
-  lnx mEventHandler = null;
-  public lns mEventListener;
-  lrb mGlStringParser = null;
-  private String mMcc = bdjb.a();
+  lku mEventHandler = null;
+  public lkp mEventListener;
+  lny mGlStringParser = null;
+  private String mMcc = bgoc.a();
   private String mMnc = "";
-  public lnp mNetChannel;
-  lnz mSysInfo;
+  public lkm mNetChannel;
+  lkw mSysInfo;
   public boolean mfAudio2VideoFlag = true;
   private int setAudioInputMuteResult = -1;
   
@@ -187,28 +181,46 @@ public class VcControllerImpl
     }
   }
   
-  public VcControllerImpl(Context paramContext, String paramString1, lnp paramlnp, lns paramlns, int paramInt1, int paramInt2, int paramInt3, String paramString2)
+  public VcControllerImpl(Context paramContext, String paramString1, lkm paramlkm, lkp paramlkp, int paramInt1, int paramInt2, int paramInt3, String paramString2)
   {
     loadLibrary(paramContext);
     ConfigInfo.instance();
-    init_deviceinfos(paramContext, paramInt1, paramInt2, lqu.a("VcControllerImpl", paramContext));
-    setScreenSize(paramInt1, paramInt2);
-    ClientLogReport.instance().init(paramContext, Integer.parseInt(paramString1));
-    this.mNetChannel = paramlnp;
-    this.mNetChannel.a(this);
-    this.mEventListener = paramlns;
-    if (getSdkVersion() < 18)
+    setupDeviceInfos(SDKConfigInfo.getDeviceInfo(paramContext));
+    if (this.mEventHandler == null)
     {
+      paramString2 = Looper.getMainLooper();
+      if (paramString2 == null) {
+        break label220;
+      }
+      this.mEventHandler = new lku(this, paramString2);
+    }
+    for (;;)
+    {
+      setScreenSize(paramInt1, paramInt2);
+      ClientLogReport.instance().init(paramContext, Integer.parseInt(paramString1));
+      this.mNetChannel = paramlkm;
+      this.mNetChannel.a(this);
+      this.mEventListener = paramlkp;
+      if (getSdkVersion() >= 18) {
+        break;
+      }
       if (QLog.isColorLevel()) {
         QLog.e("VcControllerImpl", 2, "sdk version: " + getSdkVersion());
       }
       throw new UnsatisfiedLinkError();
+      label220:
+      paramString2 = Looper.myLooper();
+      if (paramString2 != null) {
+        this.mEventHandler = new lku(this, paramString2);
+      } else {
+        this.mEventHandler = null;
+      }
     }
     cacheMethodIds();
-    this.mSysInfo = new lnz();
-    lnz.a();
+    this.mSysInfo = new lkw();
+    lkw.a();
     mCameraParameters = BaseApplicationImpl.getContext().getSharedPreferences(SPNAME, 0).getString(SPKEY, SPDEFVALUE);
-    paramContext = bhsp.b("62ad83");
+    paramContext = bkfy.b("62ad83");
     if ((!TextUtils.isEmpty(paramContext)) && (paramContext.length() >= 5)) {
       this.mMnc = paramContext.substring(3, 5);
     }
@@ -246,7 +258,7 @@ public class VcControllerImpl
           continue;
         }
         localObject2 = str;
-        int i = mqg.a().o;
+        int i = mnl.a().o;
         localObject1 = String.valueOf(i);
       }
       catch (Throwable localThrowable1)
@@ -270,7 +282,7 @@ public class VcControllerImpl
       if ("reconnect_timeout".equals(paramString))
       {
         localObject2 = str;
-        localObject1 = String.valueOf(mqg.a().p);
+        localObject1 = String.valueOf(mnl.a().p);
       }
       else
       {
@@ -335,7 +347,7 @@ public class VcControllerImpl
   private void callbackOnEvent(int paramInt1, byte[] paramArrayOfByte1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, String paramString, int paramInt2, int paramInt3, long paramLong5, byte[] paramArrayOfByte2)
   {
     if (this.mEventListener == null) {
-      lek.e("VcControllerImpl", "mEventListener is null");
+      lbc.e("VcControllerImpl", "mEventListener is null");
     }
     while (this.mEventHandler == null) {
       return;
@@ -345,25 +357,25 @@ public class VcControllerImpl
       this.mEventListener.a(paramArrayOfByte1, paramInt2, paramInt3);
       return;
     }
-    lny locallny = new lny(this);
-    locallny.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-    locallny.jdField_a_of_type_Long = paramLong1;
-    locallny.jdField_b_of_type_Long = paramLong2;
-    locallny.c = paramLong3;
-    locallny.d = paramLong4;
-    locallny.jdField_a_of_type_JavaLangString = paramString;
-    locallny.jdField_a_of_type_Int = paramInt2;
-    locallny.jdField_b_of_type_Int = paramInt3;
-    locallny.e = paramLong5;
-    locallny.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-    paramArrayOfByte1 = this.mEventHandler.obtainMessage(paramInt1, 0, 0, locallny);
+    lkv locallkv = new lkv(this);
+    locallkv.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+    locallkv.jdField_a_of_type_Long = paramLong1;
+    locallkv.jdField_b_of_type_Long = paramLong2;
+    locallkv.c = paramLong3;
+    locallkv.d = paramLong4;
+    locallkv.jdField_a_of_type_JavaLangString = paramString;
+    locallkv.jdField_a_of_type_Int = paramInt2;
+    locallkv.jdField_b_of_type_Int = paramInt3;
+    locallkv.e = paramLong5;
+    locallkv.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
+    paramArrayOfByte1 = this.mEventHandler.obtainMessage(paramInt1, 0, 0, locallkv);
     this.mEventHandler.sendMessage(paramArrayOfByte1);
   }
   
   private void callbackSendConfigReq(byte[] paramArrayOfByte)
   {
     if (this.mNetChannel != null) {
-      this.mNetChannel.b(paramArrayOfByte);
+      this.mNetChannel.a(paramArrayOfByte);
     }
   }
   
@@ -374,7 +386,7 @@ public class VcControllerImpl
       this.mNetChannel.a(paramArrayOfByte, paramLong);
       return;
     }
-    lek.e("VcControllerImpl", "mNetChannel == null");
+    lbc.e("VcControllerImpl", "mNetChannel == null");
   }
   
   private int changeBusyType(int paramInt)
@@ -398,73 +410,73 @@ public class VcControllerImpl
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 310	com/tencent/av/core/VcControllerImpl:mGlStringParser	Llrb;
+    //   3: getfield 310	com/tencent/av/core/VcControllerImpl:mGlStringParser	Llny;
     //   6: ifnonnull +18 -> 24
     //   9: aload_0
-    //   10: new 624	lrb
+    //   10: new 636	lny
     //   13: dup
     //   14: bipush 61
     //   16: bipush 59
-    //   18: invokespecial 627	lrb:<init>	(CC)V
-    //   21: putfield 310	com/tencent/av/core/VcControllerImpl:mGlStringParser	Llrb;
+    //   18: invokespecial 639	lny:<init>	(CC)V
+    //   21: putfield 310	com/tencent/av/core/VcControllerImpl:mGlStringParser	Llny;
     //   24: aload_0
-    //   25: invokespecial 630	com/tencent/av/core/VcControllerImpl:queryCameraParameters	()Ljava/lang/String;
+    //   25: invokespecial 642	com/tencent/av/core/VcControllerImpl:queryCameraParameters	()Ljava/lang/String;
     //   28: astore_3
     //   29: aload_0
-    //   30: getfield 310	com/tencent/av/core/VcControllerImpl:mGlStringParser	Llrb;
+    //   30: getfield 310	com/tencent/av/core/VcControllerImpl:mGlStringParser	Llny;
     //   33: aload_3
-    //   34: invokevirtual 633	lrb:a	(Ljava/lang/String;)V
+    //   34: invokevirtual 645	lny:a	(Ljava/lang/String;)V
     //   37: aload_0
-    //   38: getfield 310	com/tencent/av/core/VcControllerImpl:mGlStringParser	Llrb;
-    //   41: ldc_w 635
-    //   44: invokevirtual 637	lrb:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   38: getfield 310	com/tencent/av/core/VcControllerImpl:mGlStringParser	Llny;
+    //   41: ldc_w 647
+    //   44: invokevirtual 649	lny:a	(Ljava/lang/String;)Ljava/lang/String;
     //   47: astore_3
     //   48: aload_3
     //   49: ifnull +34 -> 83
     //   52: aload_3
-    //   53: new 370	java/lang/StringBuilder
+    //   53: new 381	java/lang/StringBuilder
     //   56: dup
-    //   57: invokespecial 371	java/lang/StringBuilder:<init>	()V
+    //   57: invokespecial 382	java/lang/StringBuilder:<init>	()V
     //   60: iload_1
-    //   61: invokevirtual 380	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   64: ldc_w 639
-    //   67: invokevirtual 377	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: invokevirtual 391	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   64: ldc_w 651
+    //   67: invokevirtual 388	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   70: iload_2
-    //   71: invokevirtual 380	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   74: invokevirtual 383	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   77: invokevirtual 642	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   71: invokevirtual 391	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   74: invokevirtual 394	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   77: invokevirtual 654	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   80: ifne +54 -> 134
-    //   83: invokestatic 644	com/tencent/mobileqq/utils/AudioHelper:e	()Z
+    //   83: invokestatic 657	com/tencent/mobileqq/utils/AudioHelper:f	()Z
     //   86: ifeq +45 -> 131
     //   89: ldc 165
     //   91: iconst_1
-    //   92: new 370	java/lang/StringBuilder
+    //   92: new 381	java/lang/StringBuilder
     //   95: dup
-    //   96: invokespecial 371	java/lang/StringBuilder:<init>	()V
-    //   99: ldc_w 646
-    //   102: invokevirtual 377	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: invokespecial 382	java/lang/StringBuilder:<init>	()V
+    //   99: ldc_w 659
+    //   102: invokevirtual 388	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   105: iload_1
-    //   106: invokevirtual 380	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   109: ldc_w 648
-    //   112: invokevirtual 377	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: invokevirtual 391	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   109: ldc_w 661
+    //   112: invokevirtual 388	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: iload_2
-    //   116: invokevirtual 380	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   119: ldc_w 449
-    //   122: invokevirtual 377	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 383	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: invokestatic 452	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   116: invokevirtual 391	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   119: ldc_w 463
+    //   122: invokevirtual 388	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: invokevirtual 394	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   128: invokestatic 466	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   131: aload_0
     //   132: monitorexit
     //   133: return
     //   134: aload_0
-    //   135: getfield 308	com/tencent/av/core/VcControllerImpl:mEventHandler	Llnx;
-    //   138: new 650	com/tencent/av/core/VcControllerImpl$2
+    //   135: getfield 308	com/tencent/av/core/VcControllerImpl:mEventHandler	Llku;
+    //   138: new 663	com/tencent/av/core/VcControllerImpl$2
     //   141: dup
     //   142: aload_0
     //   143: iload_1
     //   144: iload_2
-    //   145: invokespecial 653	com/tencent/av/core/VcControllerImpl$2:<init>	(Lcom/tencent/av/core/VcControllerImpl;II)V
-    //   148: invokevirtual 657	lnx:post	(Ljava/lang/Runnable;)Z
+    //   145: invokespecial 666	com/tencent/av/core/VcControllerImpl$2:<init>	(Lcom/tencent/av/core/VcControllerImpl;II)V
+    //   148: invokevirtual 670	lku:post	(Ljava/lang/Runnable;)Z
     //   151: pop
     //   152: goto -21 -> 131
     //   155: astore_3
@@ -502,28 +514,28 @@ public class VcControllerImpl
       QLog.w("VcControllerImpl", 1, "loadLibrary, seq[" + l + "]", new Throwable("打印调用栈"));
       SoLoadUtil.a(paramContext, "c++_shared", 0, false);
       SoLoadUtil.a(paramContext, "xplatform", 0, false);
-      UpdateAvSo.a(l, paramContext, "SDKCommon", true);
-      UpdateAvSo.a(l, paramContext, "VideoCtrl", true);
+      AVSoUtils.a(l, paramContext, "SDKCommon", true);
+      AVSoUtils.a(l, paramContext, "VideoCtrl", true);
       return;
     }
     catch (UnsatisfiedLinkError paramContext)
     {
       QLog.w("VcControllerImpl", 1, "loadLibrary, UnsatisfiedLinkError, seq[" + l + "]", paramContext);
-      UpdateAvSo.b();
+      AVSoUtils.b();
     }
   }
   
-  private void onRecvRequest(int paramInt, lny paramlny)
+  private void onRecvRequest(int paramInt, lkv paramlkv)
   {
-    byte[] arrayOfByte1 = paramlny.jdField_a_of_type_ArrayOfByte;
-    int i = (int)paramlny.c;
-    String str1 = paramlny.jdField_a_of_type_JavaLangString;
-    int j = paramlny.jdField_a_of_type_Int;
-    int k = paramlny.jdField_b_of_type_Int;
+    byte[] arrayOfByte1 = paramlkv.jdField_a_of_type_ArrayOfByte;
+    int i = (int)paramlkv.c;
+    String str1 = paramlkv.jdField_a_of_type_JavaLangString;
+    int j = paramlkv.jdField_a_of_type_Int;
+    int k = paramlkv.jdField_b_of_type_Int;
     if (k == 3124) {
       i = 26;
     }
-    String str2 = mto.a(paramlny.jdField_b_of_type_Long);
+    String str2 = mqu.a(paramlkv.jdField_b_of_type_Long);
     Object localObject2 = null;
     Object localObject1 = localObject2;
     switch (i)
@@ -560,10 +572,10 @@ public class VcControllerImpl
     case 26: 
       while ((paramInt == 2) || (paramInt == 60))
       {
-        this.mEventListener.a(i, str2, (String)localObject1, paramlny.jdField_b_of_type_ArrayOfByte, true, str1, j, k);
+        this.mEventListener.a(i, str2, (String)localObject1, paramlkv.jdField_b_of_type_ArrayOfByte, true, str1, j, k);
         label232:
         if (QLog.isColorLevel()) {
-          QLog.d("onRecvRequest", 2, "uinType = " + i + ", extraUin = " + (String)localObject1 + ", longFronUin = " + paramlny.jdField_b_of_type_Long);
+          QLog.d("onRecvRequest", 2, "uinType = " + i + ", extraUin = " + (String)localObject1 + ", longFronUin = " + paramlkv.jdField_b_of_type_Long);
         }
         return;
         localObject1 = null;
@@ -608,12 +620,12 @@ public class VcControllerImpl
         QLog.d("onRecvRequest", 2, "uinType = " + i + ", extraUin = " + (String)localObject1);
       }
       break;
-      localObject1 = String.valueOf(paramlny.d);
+      localObject1 = String.valueOf(paramlkv.d);
       break;
       if ((paramInt != 1) && (paramInt != 61)) {
         break label232;
       }
-      this.mEventListener.a(i, str2, (String)localObject1, paramlny.jdField_b_of_type_ArrayOfByte, false, str1, j, k);
+      this.mEventListener.a(i, str2, (String)localObject1, paramlkv.jdField_b_of_type_ArrayOfByte, false, str1, j, k);
       break label232;
       label556:
       continue;
@@ -672,24 +684,24 @@ public class VcControllerImpl
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 822	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   2: invokestatic 835	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   5: ifeq +37 -> 42
     //   8: ldc 165
     //   10: iconst_1
-    //   11: new 370	java/lang/StringBuilder
+    //   11: new 381	java/lang/StringBuilder
     //   14: dup
-    //   15: invokespecial 371	java/lang/StringBuilder:<init>	()V
-    //   18: ldc_w 824
-    //   21: invokevirtual 377	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: getstatic 420	com/tencent/av/core/VcControllerImpl:mCameraParameters	Ljava/lang/String;
-    //   27: invokevirtual 377	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: ldc_w 449
-    //   33: invokevirtual 377	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: invokevirtual 383	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   39: invokestatic 452	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   42: getstatic 420	com/tencent/av/core/VcControllerImpl:mCameraParameters	Ljava/lang/String;
+    //   15: invokespecial 382	java/lang/StringBuilder:<init>	()V
+    //   18: ldc_w 837
+    //   21: invokevirtual 388	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: getstatic 434	com/tencent/av/core/VcControllerImpl:mCameraParameters	Ljava/lang/String;
+    //   27: invokevirtual 388	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: ldc_w 463
+    //   33: invokevirtual 388	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 394	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   39: invokestatic 466	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   42: getstatic 434	com/tencent/av/core/VcControllerImpl:mCameraParameters	Ljava/lang/String;
     //   45: ifnull +11 -> 56
-    //   48: getstatic 420	com/tencent/av/core/VcControllerImpl:mCameraParameters	Ljava/lang/String;
+    //   48: getstatic 434	com/tencent/av/core/VcControllerImpl:mCameraParameters	Ljava/lang/String;
     //   51: astore_1
     //   52: aload_0
     //   53: monitorexit
@@ -737,8 +749,6 @@ public class VcControllerImpl
   }
   
   private native int setGatewayTestResult(int paramInt1, int paramInt2, int paramInt3);
-  
-  private native int setupDeviceInfos(String paramString);
   
   public String GetManufacture()
   {
@@ -813,13 +823,13 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       return setSelfUin(l);
     }
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1;
   }
@@ -838,7 +848,7 @@ public class VcControllerImpl
     }
     try
     {
-      paramLong = mto.a(paramString);
+      paramLong = mqu.a(paramString);
       if (QLog.isColorLevel()) {
         QLog.d("VcControllerImpl", 2, "acceptVideo friendUin = " + paramLong);
       }
@@ -850,7 +860,7 @@ public class VcControllerImpl
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1;
   }
@@ -869,13 +879,13 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       return acceptVideoMode(l);
     }
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1;
   }
@@ -894,13 +904,13 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       return cancelVideoMode(l);
     }
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1;
   }
@@ -908,44 +918,44 @@ public class VcControllerImpl
   native int close(long paramLong, int paramInt);
   
   /* Error */
-  public int closeVideo(String arg1, int paramInt, lnv paramlnv)
+  public int closeVideo(String arg1, int paramInt, lks paramlks)
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore 4
     //   3: ldc 165
     //   5: iconst_1
-    //   6: new 370	java/lang/StringBuilder
+    //   6: new 381	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 371	java/lang/StringBuilder:<init>	()V
-    //   13: ldc_w 950
-    //   16: invokevirtual 377	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10: invokespecial 382	java/lang/StringBuilder:<init>	()V
+    //   13: ldc_w 962
+    //   16: invokevirtual 388	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   19: iload_2
-    //   20: invokevirtual 380	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   23: invokevirtual 383	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   26: new 490	java/lang/Throwable
+    //   20: invokevirtual 391	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 394	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   26: new 504	java/lang/Throwable
     //   29: dup
-    //   30: invokespecial 951	java/lang/Throwable:<init>	()V
-    //   33: invokestatic 953	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   30: invokespecial 963	java/lang/Throwable:<init>	()V
+    //   33: invokestatic 965	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   36: aload_1
     //   37: astore 7
     //   39: aload_1
-    //   40: invokestatic 434	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   40: invokestatic 448	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   43: ifeq +8 -> 51
-    //   46: ldc_w 545
+    //   46: ldc_w 559
     //   49: astore 7
     //   51: aload 7
     //   53: astore_1
     //   54: aload 7
-    //   56: ldc_w 910
-    //   59: invokevirtual 913	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   56: ldc_w 922
+    //   59: invokevirtual 925	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   62: ifeq +10 -> 72
     //   65: aload 7
     //   67: iconst_1
-    //   68: invokevirtual 915	java/lang/String:substring	(I)Ljava/lang/String;
+    //   68: invokevirtual 927	java/lang/String:substring	(I)Ljava/lang/String;
     //   71: astore_1
     //   72: aload_1
-    //   73: invokestatic 918	mto:a	(Ljava/lang/String;)J
+    //   73: invokestatic 930	mqu:a	(Ljava/lang/String;)J
     //   76: lstore 5
     //   78: aload_3
     //   79: ifnull +126 -> 205
@@ -959,23 +969,23 @@ public class VcControllerImpl
     //   95: putfield 283	com/tencent/av/core/VcControllerImpl:mCloseReason	I
     //   98: aload_0
     //   99: aload_3
-    //   100: putfield 460	com/tencent/av/core/VcControllerImpl:mCloseVideoTimeoutCallback	Llnv;
-    //   103: new 955	com/tencent/av/core/VcControllerImpl$3
+    //   100: putfield 474	com/tencent/av/core/VcControllerImpl:mCloseVideoTimeoutCallback	Llks;
+    //   103: new 967	com/tencent/av/core/VcControllerImpl$3
     //   106: dup
     //   107: aload_0
     //   108: lload 5
     //   110: iload_2
-    //   111: invokespecial 958	com/tencent/av/core/VcControllerImpl$3:<init>	(Lcom/tencent/av/core/VcControllerImpl;JI)V
+    //   111: invokespecial 970	com/tencent/av/core/VcControllerImpl$3:<init>	(Lcom/tencent/av/core/VcControllerImpl;JI)V
     //   114: bipush 16
     //   116: aconst_null
     //   117: iconst_0
-    //   118: invokestatic 885	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   121: invokestatic 962	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
+    //   118: invokestatic 897	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   121: invokestatic 974	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
     //   124: aload_0
     //   125: getfield 290	com/tencent/av/core/VcControllerImpl:mCloseVideoTimeoutRunnable	Ljava/lang/Runnable;
     //   128: sipush 2000
     //   131: i2l
-    //   132: invokevirtual 968	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   132: invokevirtual 980	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   135: pop
     //   136: aload_0
     //   137: getfield 304	com/tencent/av/core/VcControllerImpl:lock1	Ljava/lang/Object;
@@ -986,32 +996,32 @@ public class VcControllerImpl
     //   144: getfield 304	com/tencent/av/core/VcControllerImpl:lock1	Ljava/lang/Object;
     //   147: sipush 2000
     //   150: i2l
-    //   151: invokevirtual 888	java/lang/Object:wait	(J)V
+    //   151: invokevirtual 900	java/lang/Object:wait	(J)V
     //   154: aload_1
     //   155: monitorexit
     //   156: ldc 165
     //   158: iconst_1
-    //   159: ldc_w 970
-    //   162: invokestatic 519	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   159: ldc_w 982
+    //   162: invokestatic 533	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   165: iload 4
     //   167: istore_2
     //   168: aload_0
     //   169: lload 5
-    //   171: invokespecial 938	com/tencent/av/core/VcControllerImpl:setCarrierType	(J)V
+    //   171: invokespecial 950	com/tencent/av/core/VcControllerImpl:setCarrierType	(J)V
     //   174: iload_2
     //   175: ireturn
     //   176: astore_1
     //   177: aload_1
-    //   178: invokevirtual 922	java/lang/NumberFormatException:printStackTrace	()V
+    //   178: invokevirtual 934	java/lang/NumberFormatException:printStackTrace	()V
     //   181: ldc 165
     //   183: aload_1
-    //   184: invokevirtual 925	java/lang/NumberFormatException:getMessage	()Ljava/lang/String;
-    //   187: invokestatic 569	lek:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   184: invokevirtual 937	java/lang/NumberFormatException:getMessage	()Ljava/lang/String;
+    //   187: invokestatic 583	lbc:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   190: iconst_m1
     //   191: ireturn
     //   192: astore_3
     //   193: aload_3
-    //   194: invokevirtual 891	java/lang/InterruptedException:printStackTrace	()V
+    //   194: invokevirtual 903	java/lang/InterruptedException:printStackTrace	()V
     //   197: goto -43 -> 154
     //   200: astore_3
     //   201: aload_1
@@ -1021,14 +1031,14 @@ public class VcControllerImpl
     //   205: aload_0
     //   206: lload 5
     //   208: iload_2
-    //   209: invokevirtual 972	com/tencent/av/core/VcControllerImpl:close	(JI)I
+    //   209: invokevirtual 984	com/tencent/av/core/VcControllerImpl:close	(JI)I
     //   212: istore_2
     //   213: goto -45 -> 168
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	216	0	this	VcControllerImpl
     //   0	216	2	paramInt	int
-    //   0	216	3	paramlnv	lnv
+    //   0	216	3	paramlks	lks
     //   1	165	4	i	int
     //   76	131	5	l	long
     //   37	29	7	str	String
@@ -1145,13 +1155,13 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       return getChatRoomID(l);
     }
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1L;
   }
@@ -1162,20 +1172,20 @@ public class VcControllerImpl
   {
     if (this.mSysInfo != null)
     {
-      lnz locallnz = this.mSysInfo;
-      return lnz.f();
+      lkw locallkw = this.mSysInfo;
+      return lkw.f();
     }
     return 0;
   }
   
   public int getCpuMaxFrequency()
   {
-    return (int)lnz.jdField_a_of_type_Long;
+    return (int)lkw.jdField_a_of_type_Long;
   }
   
   public String getDeviceName()
   {
-    return lnz.b();
+    return lkw.b();
   }
   
   public int getDispHeight()
@@ -1210,20 +1220,20 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       return getInterestingString(l);
     }
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return null;
   }
   
   public int getNumCores()
   {
-    return lnz.jdField_b_of_type_Int;
+    return lkw.jdField_b_of_type_Int;
   }
   
   public native long getOnPeerFrameRenderEndFunctionPtr();
@@ -1248,13 +1258,13 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       return getPeerSdkVersion(l);
     }
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1;
   }
@@ -1271,13 +1281,13 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       return getPeerTerminalType(l);
     }
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1;
   }
@@ -1314,13 +1324,13 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       return getTrafficSize(l);
     }
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1L;
   }
@@ -1343,7 +1353,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       setApType(paramInt);
       paramInt = ignore(l);
       setCarrierType(l);
@@ -1352,7 +1362,7 @@ public class VcControllerImpl
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1;
   }
@@ -1363,99 +1373,6 @@ public class VcControllerImpl
   }
   
   public native int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2);
-  
-  @TargetApi(9)
-  public void init_deviceinfos(Context paramContext, int paramInt1, int paramInt2, ArrayList<lqw> paramArrayList)
-  {
-    Object localObject = "PRODUCT=" + Build.PRODUCT + ";";
-    localObject = (String)localObject + "CPU_ABI=" + Build.CPU_ABI + ";";
-    localObject = (String)localObject + "TAGS=" + Build.TAGS + ";";
-    localObject = (String)localObject + "VERSION_CODES_BASE=1;";
-    localObject = (String)localObject + "MODEL=" + Build.MODEL + ";";
-    localObject = (String)localObject + "SDK=" + Build.VERSION.SDK_INT + ";";
-    localObject = (String)localObject + "VERSION_RELEASE=" + Build.VERSION.RELEASE + ";";
-    localObject = (String)localObject + "DEVICE=" + Build.DEVICE + ";";
-    localObject = (String)localObject + "DISPLAY=" + Build.DISPLAY + ";";
-    localObject = (String)localObject + "BRAND=" + Build.BRAND + ";";
-    localObject = (String)localObject + "BOARD=" + Build.BOARD + ";";
-    localObject = (String)localObject + "FINGERPRINT=" + Build.FINGERPRINT + ";";
-    localObject = (String)localObject + "ID=" + Build.ID + ";";
-    localObject = (String)localObject + "MANUFACTURER=" + Build.MANUFACTURER + ";";
-    localObject = (String)localObject + "USER=" + Build.USER + ";";
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      Iterator localIterator = paramArrayList.iterator();
-      paramArrayList = (ArrayList<lqw>)localObject;
-      localObject = paramArrayList;
-      if (!localIterator.hasNext()) {
-        break label1119;
-      }
-      localObject = (lqw)localIterator.next();
-      if ((((lqw)localObject).jdField_a_of_type_Int == 1) && (((lqw)localObject).jdField_a_of_type_Boolean))
-      {
-        paramArrayList = paramArrayList + "HWAVCDEC=1;";
-        paramArrayList = paramArrayList + "HWAVCDEC_MAXW=" + ((lqw)localObject).jdField_b_of_type_Int + ";";
-        paramArrayList = paramArrayList + "HWAVCDEC_MAXH=" + ((lqw)localObject).c + ";";
-      }
-    }
-    for (;;)
-    {
-      break;
-      if ((((lqw)localObject).jdField_a_of_type_Int == 2) && (((lqw)localObject).jdField_a_of_type_Boolean))
-      {
-        paramArrayList = paramArrayList + "HWAVCENC=1;";
-        paramArrayList = paramArrayList + "HWAVCENC_MAXW=" + ((lqw)localObject).jdField_b_of_type_Int + ";";
-        paramArrayList = paramArrayList + "HWAVCENC_MAXH=" + ((lqw)localObject).c + ";";
-      }
-      else if ((((lqw)localObject).jdField_a_of_type_Int == 4) && (((lqw)localObject).jdField_a_of_type_Boolean))
-      {
-        paramArrayList = paramArrayList + "HWHEVCDEC=1;";
-        paramArrayList = paramArrayList + "HWHEVCDEC_MAXW=" + ((lqw)localObject).jdField_b_of_type_Int + ";";
-        paramArrayList = paramArrayList + "HWHEVCDEC_MAXH=" + ((lqw)localObject).c + ";";
-      }
-      else if ((((lqw)localObject).jdField_a_of_type_Int == 8) && (((lqw)localObject).jdField_a_of_type_Boolean))
-      {
-        paramArrayList = paramArrayList + "HWHEVCENC=1;";
-        paramArrayList = paramArrayList + "HWHEVCENC_MAXW=" + ((lqw)localObject).jdField_b_of_type_Int + ";";
-        paramArrayList = paramArrayList + "HWHEVCENC_MAXH=" + ((lqw)localObject).c + ";";
-        continue;
-        paramArrayList = (String)localObject + "HWAVCENC=0;";
-        paramArrayList = paramArrayList + "HWAVCDEC=0;";
-        paramArrayList = paramArrayList + "HWHEVCENC=0;";
-        localObject = paramArrayList + "HWHEVCDEC=0;";
-        label1119:
-        paramContext = paramContext.getApplicationInfo();
-        paramArrayList = (String)localObject + "DATADIR=" + paramContext.dataDir + ";";
-        if (Build.VERSION.SDK_INT >= 9) {}
-        for (paramContext = paramArrayList + "LIBDIR=" + paramContext.nativeLibraryDir + ";";; paramContext = paramArrayList + "LIBDIR=" + paramContext.dataDir + "/lib;")
-        {
-          paramContext = paramContext + "W=" + paramInt1 + ";";
-          paramContext = paramContext + "H=" + paramInt2 + ";";
-          if (QLog.isColorLevel()) {
-            QLog.i("VcControllerImpl", 2, "init_deviceinfos, info[" + paramContext + "]");
-          }
-          setupDeviceInfos(paramContext);
-          if (this.mEventHandler == null)
-          {
-            paramContext = Looper.getMainLooper();
-            if (paramContext == null) {
-              break;
-            }
-            this.mEventHandler = new lnx(this, paramContext);
-          }
-          return;
-        }
-        paramContext = Looper.myLooper();
-        if (paramContext != null)
-        {
-          this.mEventHandler = new lnx(this, paramContext);
-          return;
-        }
-        this.mEventHandler = null;
-        return;
-      }
-    }
-  }
   
   public native boolean isEnableLoopback();
   
@@ -1475,13 +1392,13 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       return notifyAnotherSelfIsRing(l, paramBoolean);
     }
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1;
   }
@@ -1525,7 +1442,7 @@ public class VcControllerImpl
     }
     catch (UnsatisfiedLinkError paramString)
     {
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1;
   }
@@ -1534,7 +1451,7 @@ public class VcControllerImpl
   
   public native AVPbInfo processQCallPush(byte[] paramArrayOfByte, AVPbInfo paramAVPbInfo);
   
-  public lnw receiveTransferMsg(String paramString, byte[] paramArrayOfByte)
+  public lkt receiveTransferMsg(String paramString, byte[] paramArrayOfByte)
   {
     if (QLog.isColorLevel()) {
       QLog.d("VcControllerImpl", 2, " receiveTransferMsg : uin = " + paramString);
@@ -1565,7 +1482,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       setApType(paramInt1);
       paramInt1 = reject(l, paramInt2);
       setCarrierType(l);
@@ -1574,7 +1491,7 @@ public class VcControllerImpl
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1;
   }
@@ -1593,13 +1510,13 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       return rejectVideoMode(l);
     }
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1;
   }
@@ -1640,7 +1557,7 @@ public class VcControllerImpl
     {
       try
       {
-        long l = mto.a(paramString1);
+        long l = mqu.a(paramString1);
         setApType(paramInt1);
         if (paramInt3 == 1)
         {
@@ -1688,7 +1605,7 @@ public class VcControllerImpl
     long l2;
     try
     {
-      paramLong1 = mto.a(paramString10);
+      paramLong1 = mqu.a(paramString10);
       l1 = Long.parseLong(paramString1);
       l2 = Long.parseLong(paramString5);
       setApType(paramInt1);
@@ -1702,7 +1619,7 @@ public class VcControllerImpl
     catch (NumberFormatException paramString1)
     {
       paramString1.printStackTrace();
-      lek.e("VcControllerImpl", paramString1.getMessage());
+      lbc.e("VcControllerImpl", paramString1.getMessage());
       return -1;
     }
     if ((paramString4 != null) && (paramString4.length() != 0))
@@ -1739,7 +1656,7 @@ public class VcControllerImpl
       catch (UnsupportedEncodingException paramString1)
       {
         paramString1.printStackTrace();
-        lek.e("VcControllerImpl", paramString1.getMessage());
+        lbc.e("VcControllerImpl", paramString1.getMessage());
         return -1;
         paramInt5 = changeBusyType(paramInt2);
         paramInt1 = paramInt5;
@@ -1762,7 +1679,7 @@ public class VcControllerImpl
       catch (Exception paramString1)
       {
         paramString1.printStackTrace();
-        lek.e("VcControllerImpl", paramString1.getMessage());
+        lbc.e("VcControllerImpl", paramString1.getMessage());
         return -1;
       }
     }
@@ -1776,18 +1693,18 @@ public class VcControllerImpl
     catch (UnsupportedEncodingException paramString1)
     {
       paramString1.printStackTrace();
-      lek.e("VcControllerImpl", paramString1.getMessage());
+      lbc.e("VcControllerImpl", paramString1.getMessage());
       return -1;
     }
     catch (Exception paramString1)
     {
       paramString1.printStackTrace();
-      lek.e("VcControllerImpl", paramString1.getMessage());
+      lbc.e("VcControllerImpl", paramString1.getMessage());
     }
     return -1;
   }
   
-  public int requestVideo(String paramString1, long paramLong1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, int paramInt4, String paramString5, String paramString6, long paramLong2, byte[] paramArrayOfByte, String paramString7, String paramString8, String paramString9, int paramInt5, int paramInt6, String paramString10, leo paramleo)
+  public int requestVideo(String paramString1, long paramLong1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, int paramInt4, String paramString5, String paramString6, long paramLong2, byte[] paramArrayOfByte, String paramString7, String paramString8, String paramString9, int paramInt5, int paramInt6, String paramString10, lbg paramlbg)
   {
     paramString10 = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
@@ -1816,7 +1733,7 @@ public class VcControllerImpl
     long l2;
     try
     {
-      paramLong1 = mto.a(paramString10);
+      paramLong1 = mqu.a(paramString10);
       l1 = Long.parseLong(paramString1);
       l2 = Long.parseLong(paramString5);
       setApType(paramInt1);
@@ -1830,7 +1747,7 @@ public class VcControllerImpl
     catch (NumberFormatException paramString1)
     {
       paramString1.printStackTrace();
-      lek.e("VcControllerImpl", paramString1.getMessage());
+      lbc.e("VcControllerImpl", paramString1.getMessage());
       return -1;
     }
     if ((paramString4 != null) && (paramString4.length() != 0))
@@ -1865,13 +1782,13 @@ public class VcControllerImpl
       catch (UnsupportedEncodingException paramString1)
       {
         paramString1.printStackTrace();
-        lek.e("VcControllerImpl", paramString1.getMessage());
+        lbc.e("VcControllerImpl", paramString1.getMessage());
         return -1;
       }
       catch (Exception paramString1)
       {
         paramString1.printStackTrace();
-        lek.e("VcControllerImpl", paramString1.getMessage());
+        lbc.e("VcControllerImpl", paramString1.getMessage());
         return -1;
       }
     }
@@ -1885,13 +1802,13 @@ public class VcControllerImpl
     catch (UnsupportedEncodingException paramString1)
     {
       paramString1.printStackTrace();
-      lek.e("VcControllerImpl", paramString1.getMessage());
+      lbc.e("VcControllerImpl", paramString1.getMessage());
       return -1;
     }
     catch (Exception paramString1)
     {
       paramString1.printStackTrace();
-      lek.e("VcControllerImpl", paramString1.getMessage());
+      lbc.e("VcControllerImpl", paramString1.getMessage());
     }
     return -1;
   }
@@ -1910,13 +1827,13 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       return requestVideoMode(l);
     }
     catch (NumberFormatException paramString)
     {
       paramString.printStackTrace();
-      lek.e("VcControllerImpl", paramString.getMessage());
+      lbc.e("VcControllerImpl", paramString.getMessage());
     }
     return -1;
   }
@@ -1942,13 +1859,13 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(str);
+      long l = mqu.a(str);
       return sendAVFunChatMsg(l, paramInt, paramString2.getBytes());
     }
     catch (NumberFormatException paramString1)
     {
       paramString1.printStackTrace();
-      lek.e("VcControllerImpl", paramString1.getMessage());
+      lbc.e("VcControllerImpl", paramString1.getMessage());
     }
     return -1;
   }
@@ -1960,7 +1877,7 @@ public class VcControllerImpl
     }
     if (TextUtils.isEmpty(paramString))
     {
-      lek.e("VcControllerImpl", "uin is " + paramString);
+      lbc.e("VcControllerImpl", "uin is " + paramString);
       return -1;
     }
     String str = paramString;
@@ -2052,7 +1969,7 @@ public class VcControllerImpl
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      lek.e("VcControllerImpl", localUnsatisfiedLinkError.getMessage());
+      lbc.e("VcControllerImpl", localUnsatisfiedLinkError.getMessage());
     }
     return -1;
   }
@@ -2077,6 +1994,8 @@ public class VcControllerImpl
   public native void setVideoReceiver(boolean paramBoolean);
   
   public native int setVoiceType(int paramInt);
+  
+  public native int setupDeviceInfos(String paramString);
   
   native int startAudioRecv();
   
@@ -2104,7 +2023,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       int i = switchAudio(l);
       if (i == -1) {
         this.mfAudio2VideoFlag = false;
@@ -2134,7 +2053,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = mto.a(paramString);
+      long l = mqu.a(paramString);
       int i = switchVideo(l);
       if (i == -1) {
         this.mfAudio2VideoFlag = false;
@@ -2152,7 +2071,7 @@ public class VcControllerImpl
   
   public native int uninit();
   
-  public lnw unpackTLV(byte[] paramArrayOfByte)
+  public lkt unpackTLV(byte[] paramArrayOfByte)
   {
     Object localObject = "";
     byte[] arrayOfByte = new byte[8];
@@ -2184,7 +2103,7 @@ public class VcControllerImpl
       int k = arrayOfByte[2];
       int m = arrayOfByte[1];
       int n = arrayOfByte[0];
-      paramArrayOfByte = new lnw(this);
+      paramArrayOfByte = new lkt(this);
       paramArrayOfByte.jdField_a_of_type_Long = ((l1 & 0xFF) << 56 | (l2 & 0xFF) << 48 | (l3 & 0xFF) << 40 | (l4 & 0xFF) << 32 | (l5 & 0xFF) << 24 | (l6 & 0xFF) << 16 | (l7 & 0xFF) << 8 | (l8 & 0xFF) << 0);
       paramArrayOfByte.jdField_a_of_type_JavaLangString = ((String)localObject);
       paramArrayOfByte.jdField_a_of_type_Int = i;
@@ -2223,7 +2142,7 @@ public class VcControllerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.core.VcControllerImpl
  * JD-Core Version:    0.7.0.1
  */

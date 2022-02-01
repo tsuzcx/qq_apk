@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bmkf
-  implements DialogInterface.OnClickListener
+public abstract interface bmkf
 {
-  bmkf(bmkb parambmkb) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

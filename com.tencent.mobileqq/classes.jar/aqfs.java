@@ -1,24 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 
 public class aqfs
-  extends AnimatorListenerAdapter
+  implements View.OnTouchListener
 {
-  public aqfs(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment, MatchingView paramMatchingView, View paramView) {}
+  public aqfs(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    ExtendFriendLimitChatMatchFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendLimitchatExtendFriendLimitChatMatchFragment, this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.a();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.setVisibility(0);
+    return false;
   }
 }
 

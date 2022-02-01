@@ -1,41 +1,45 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import alud;
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import awge;
-import awgf;
-import awgg;
+import anni;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
 import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.shortvideo.mediadevice.EncodeThread;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ulg;
-import upd;
-import vow;
-import whr;
-import wxe;
-import xpk;
+import wes;
+import wip;
+import xih;
+import ybc;
+import yqp;
+import ziv;
 
 public class VideoEncodeActivity
   extends QQStoryBaseActivity
@@ -45,7 +49,7 @@ public class VideoEncodeActivity
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private String jdField_a_of_type_JavaLangString;
-  vow jdField_a_of_type_Vow = new vow();
+  xih jdField_a_of_type_Xih = new xih();
   private EditText jdField_b_of_type_AndroidWidgetEditText;
   private String jdField_b_of_type_JavaLangString;
   private EditText c;
@@ -69,7 +73,7 @@ public class VideoEncodeActivity
   {
     Object localObject = QQStoryContext.a().a().createEntityManager();
     new PublishVideoEntry();
-    localObject = upd.a((awgf)localObject, PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), null, null);
+    localObject = wip.a((EntityManager)localObject, PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), null, null);
     if (localObject == null) {
       return new ArrayList();
     }
@@ -80,7 +84,7 @@ public class VideoEncodeActivity
       if (TextUtils.isEmpty(localPublishVideoEntry.name)) {
         localIterator.remove();
       } else {
-        wxe.c("Q.qqstory:VideoEncodeActivity", "user scene " + localPublishVideoEntry);
+        yqp.c("Q.qqstory:VideoEncodeActivity", "user scene " + localPublishVideoEntry);
       }
     }
     return localObject;
@@ -88,7 +92,7 @@ public class VideoEncodeActivity
   
   private void a()
   {
-    Button localButton = (Button)findViewById(2131365093);
+    Button localButton = (Button)findViewById(2131365331);
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
       localButton.setEnabled(false);
@@ -104,35 +108,35 @@ public class VideoEncodeActivity
     //   0: aload_1
     //   1: getfield 176	com/tencent/biz/qqstory/database/PublishVideoEntry:recordTime	D
     //   4: d2i
-    //   5: putstatic 181	azib:y	I
+    //   5: putstatic 181	bcjb:y	I
     //   8: aload_1
     //   9: getfield 184	com/tencent/biz/qqstory/database/PublishVideoEntry:recordFrames	I
-    //   12: putstatic 187	azib:z	I
+    //   12: putstatic 187	bcjb:z	I
     //   15: aload_1
     //   16: getfield 190	com/tencent/biz/qqstory/database/PublishVideoEntry:saveMode	I
-    //   19: putstatic 193	azib:J	I
+    //   19: putstatic 193	bcjb:J	I
     //   22: iconst_0
-    //   23: putstatic 196	azib:x	I
+    //   23: putstatic 196	bcjb:x	I
     //   26: iconst_0
-    //   27: putstatic 199	azib:E	I
+    //   27: putstatic 199	bcjb:E	I
     //   30: aload_1
     //   31: getfield 202	com/tencent/biz/qqstory/database/PublishVideoEntry:videoMaxrate	I
-    //   34: putstatic 205	azib:r	I
+    //   34: putstatic 205	bcjb:r	I
     //   37: aload_1
     //   38: getfield 208	com/tencent/biz/qqstory/database/PublishVideoEntry:videoMinrate	I
-    //   41: putstatic 211	azib:s	I
+    //   41: putstatic 211	bcjb:s	I
     //   44: bipush 10
-    //   46: invokestatic 216	uwa:a	(I)Luvi;
-    //   49: checkcast 218	uvt
+    //   46: invokestatic 216	wpm:a	(I)Lwou;
+    //   49: checkcast 218	wpf
     //   52: ldc 220
     //   54: bipush 23
     //   56: invokestatic 226	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   59: invokevirtual 229	uvt:b	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   59: invokevirtual 229	wpf:b	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   62: checkcast 222	java/lang/Integer
     //   65: invokevirtual 233	java/lang/Integer:intValue	()I
-    //   68: putstatic 236	azib:C	I
+    //   68: putstatic 236	bcjb:C	I
     //   71: iconst_0
-    //   72: putstatic 239	azib:K	I
+    //   72: putstatic 239	bcjb:K	I
     //   75: getstatic 27	com/tencent/biz/qqstory/storyHome/VideoEncodeActivity:jdField_a_of_type_JavaTextDateFormat	Ljava/text/DateFormat;
     //   78: new 241	java/util/Date
     //   81: dup
@@ -157,7 +161,7 @@ public class VideoEncodeActivity
     //   128: new 139	java/lang/StringBuilder
     //   131: dup
     //   132: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   135: getstatic 274	alof:aX	Ljava/lang/String;
+    //   135: getstatic 274	anhk:ba	Ljava/lang/String;
     //   138: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: ldc_w 276
     //   144: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -178,7 +182,7 @@ public class VideoEncodeActivity
     //   181: aload 7
     //   183: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   186: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   189: invokestatic 284	wxe:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   189: invokestatic 284	yqp:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   192: aload_0
     //   193: getfield 286	com/tencent/biz/qqstory/storyHome/VideoEncodeActivity:c	Landroid/widget/EditText;
     //   196: invokevirtual 256	android/widget/EditText:getText	()Landroid/text/Editable;
@@ -199,23 +203,23 @@ public class VideoEncodeActivity
     //   231: invokestatic 297	java/lang/System:currentTimeMillis	()J
     //   234: lstore 5
     //   236: iconst_0
-    //   237: putstatic 239	azib:K	I
+    //   237: putstatic 239	bcjb:K	I
     //   240: bipush 23
-    //   242: putstatic 236	azib:C	I
+    //   242: putstatic 236	bcjb:C	I
     //   245: iload_2
     //   246: bipush 30
     //   248: iadd
-    //   249: putstatic 300	azib:t	I
+    //   249: putstatic 300	bcjb:t	I
     //   252: new 139	java/lang/StringBuilder
     //   255: dup
     //   256: invokespecial 140	java/lang/StringBuilder:<init>	()V
     //   259: ldc_w 302
     //   262: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   265: getstatic 236	azib:C	I
+    //   265: getstatic 236	bcjb:C	I
     //   268: invokevirtual 305	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   271: ldc_w 307
     //   274: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   277: getstatic 300	azib:t	I
+    //   277: getstatic 300	bcjb:t	I
     //   280: invokevirtual 305	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   283: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   286: astore 8
@@ -249,9 +253,9 @@ public class VideoEncodeActivity
     //   352: invokestatic 226	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   355: aload 8
     //   357: aload 9
-    //   359: invokestatic 335	bdhb:a	(Ljava/lang/String;)J
+    //   359: invokestatic 335	bgmg:a	(Ljava/lang/String;)J
     //   362: invokestatic 340	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   365: invokestatic 343	wxe:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+    //   365: invokestatic 343	yqp:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
     //   368: iload 4
     //   370: ifeq +19 -> 389
     //   373: aload_0
@@ -269,7 +273,7 @@ public class VideoEncodeActivity
     //   399: lload 5
     //   401: lsub
     //   402: invokestatic 340	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   405: invokestatic 359	wxe:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+    //   405: invokestatic 359	yqp:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
     //   408: iload_2
     //   409: iconst_1
     //   410: iadd
@@ -282,9 +286,9 @@ public class VideoEncodeActivity
     //   420: istore_3
     //   421: goto -195 -> 226
     //   424: bipush 31
-    //   426: putstatic 300	azib:t	I
+    //   426: putstatic 300	bcjb:t	I
     //   429: bipush 23
-    //   431: putstatic 236	azib:C	I
+    //   431: putstatic 236	bcjb:C	I
     //   434: return
     //   435: astore 8
     //   437: goto -18 -> 419
@@ -316,7 +320,7 @@ public class VideoEncodeActivity
     }
     RadioGroup localRadioGroup = new RadioGroup(this);
     localRadioGroup.setOrientation(1);
-    localRadioGroup.setOnCheckedChangeListener(new whr(this));
+    localRadioGroup.setOnCheckedChangeListener(new ybc(this));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localRadioGroup);
     RadioButton localRadioButton = null;
     localObject = ((List)localObject).iterator();
@@ -327,7 +331,7 @@ public class VideoEncodeActivity
       localRadioGroup.addView(localRadioButton);
       localRadioButton.setText(localPublishVideoEntry.name);
       localRadioButton.setTag(localPublishVideoEntry.fakeVid);
-      localRadioButton.setTextColor(getResources().getColor(2131165307));
+      localRadioButton.setTextColor(getResources().getColor(2131165343));
     }
     if (localRadioButton != null) {
       localRadioButton.setChecked(true);
@@ -335,29 +339,37 @@ public class VideoEncodeActivity
     a();
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     OpenPlayerBuilder.Data localData = (OpenPlayerBuilder.Data)getIntent().getExtras().getSerializable("story_data");
     super.doOnCreate(paramBundle);
-    setContentView(2131561610);
-    super.setTitle(alud.a(2131716530));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363698));
+    setContentView(2131561845);
+    super.setTitle(anni.a(2131714807));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363901));
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131376158));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376157));
-    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131371579));
-    this.c = ((EditText)findViewById(2131371580));
-    this.d = ((EditText)findViewById(2131371581));
-    this.e = ((EditText)findViewById(2131365772));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131376918));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376917));
+    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131372153));
+    this.c = ((EditText)findViewById(2131372154));
+    this.d = ((EditText)findViewById(2131372155));
+    this.e = ((EditText)findViewById(2131366014));
     d();
     if ((localData != null) && ((localData.mInfo instanceof HomeFeedPlayInfo))) {
-      this.jdField_a_of_type_Vow.a((HomeFeedPlayInfo)localData.mInfo);
+      this.jdField_a_of_type_Xih.a((HomeFeedPlayInfo)localData.mInfo);
     }
     for (;;)
     {
       return true;
       if ((localData != null) && ((localData.mInfo instanceof MsgTabPlayInfo))) {
-        this.jdField_a_of_type_Vow.a((MsgTabPlayInfo)localData.mInfo);
+        this.jdField_a_of_type_Xih.a((MsgTabPlayInfo)localData.mInfo);
       }
     }
   }
@@ -368,11 +380,11 @@ public class VideoEncodeActivity
     if (paramInt1 == 20000)
     {
       paramIntent = QQStoryContext.a().a().createEntityManager();
-      localObject = paramIntent.a(PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), false, "publishState=1 and businessId=?", new String[] { "1" }, null, null, null, null, null);
+      localObject = paramIntent.query(PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), false, "publishState=1 and businessId=?", new String[] { "1" }, null, null, null, null, null);
       if ((localObject != null) && (((List)localObject).size() > 0)) {
         break label73;
       }
-      wxe.d("Q.qqstory:VideoEncodeActivity", "createStoryVideo: 0");
+      yqp.d("Q.qqstory:VideoEncodeActivity", "createStoryVideo: 0");
     }
     for (;;)
     {
@@ -382,10 +394,10 @@ public class VideoEncodeActivity
       while (((Iterator)localObject).hasNext())
       {
         PublishVideoEntry localPublishVideoEntry = (PublishVideoEntry)((Iterator)localObject).next();
-        wxe.d("Q.qqstory:VideoEncodeActivity", "createStoryVideo: fakeVid=%s, state=%s, label=%s, description=%s, duration=%d, locationDesc=%s", new Object[] { localPublishVideoEntry.fakeVid, Integer.valueOf(localPublishVideoEntry.publishState), localPublishVideoEntry.videoLabel, localPublishVideoEntry.videoDoodleDescription, Long.valueOf(localPublishVideoEntry.videoDuration), localPublishVideoEntry.videoLocationDescription });
+        yqp.d("Q.qqstory:VideoEncodeActivity", "createStoryVideo: fakeVid=%s, state=%s, label=%s, description=%s, duration=%d, locationDesc=%s", new Object[] { localPublishVideoEntry.fakeVid, Integer.valueOf(localPublishVideoEntry.publishState), localPublishVideoEntry.videoLabel, localPublishVideoEntry.videoDoodleDescription, Long.valueOf(localPublishVideoEntry.videoDuration), localPublishVideoEntry.videoLocationDescription });
         localPublishVideoEntry.publishState = 0;
         localPublishVideoEntry.setStatus(1000);
-        paramIntent.b(localPublishVideoEntry);
+        paramIntent.persistOrReplace(localPublishVideoEntry);
         this.jdField_a_of_type_JavaLangString = localPublishVideoEntry.fakeVid;
         this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       }
@@ -396,12 +408,12 @@ public class VideoEncodeActivity
   {
     paramView = QQStoryContext.a().a().createEntityManager();
     new PublishVideoEntry();
-    Object localObject = upd.a(paramView, PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), PublishVideoEntry.getVidSelectionNoArgs(), new String[] { this.jdField_b_of_type_JavaLangString });
+    Object localObject = wip.a(paramView, PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), PublishVideoEntry.getVidSelectionNoArgs(), new String[] { this.jdField_b_of_type_JavaLangString });
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       localObject = (PublishVideoEntry)((List)localObject).get(0);
       ((PublishVideoEntry)localObject).setStatus(1001);
-      paramView.b((awge)localObject);
+      paramView.remove((Entity)localObject);
       d();
     }
   }
@@ -409,17 +421,17 @@ public class VideoEncodeActivity
   public void onClickSaveScene(View paramView)
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString())) {
-      QQToast.a(this, alud.a(2131716532), 0).a();
+      QQToast.a(this, anni.a(2131714809), 0).a();
     }
     paramView = QQStoryContext.a().a().createEntityManager();
     new PublishVideoEntry();
-    Object localObject = upd.a(paramView, PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), PublishVideoEntry.getVidSelectionNoArgs(), new String[] { this.jdField_a_of_type_JavaLangString });
+    Object localObject = wip.a(paramView, PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), PublishVideoEntry.getVidSelectionNoArgs(), new String[] { this.jdField_a_of_type_JavaLangString });
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       localObject = (PublishVideoEntry)((List)localObject).get(0);
       ((PublishVideoEntry)localObject).name = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
       ((PublishVideoEntry)localObject).setStatus(1000);
-      paramView.b((awge)localObject);
+      paramView.persistOrReplace((Entity)localObject);
       d();
     }
     this.jdField_a_of_type_JavaLangString = "";
@@ -429,34 +441,41 @@ public class VideoEncodeActivity
   
   public void onClickStartCompress(View paramView)
   {
-    a(alud.a(2131716531));
-    new File(ulg.e).mkdirs();
-    new StringBuilder().append(ulg.e).append(System.currentTimeMillis()).append(".mp4").toString();
-    paramView = upd.a(this.jdField_b_of_type_JavaLangString);
-    new upd();
+    a(anni.a(2131714808));
+    new File(wes.e).mkdirs();
+    new StringBuilder().append(wes.e).append(System.currentTimeMillis()).append(".mp4").toString();
+    paramView = wip.a(this.jdField_b_of_type_JavaLangString);
+    new wip();
     ThreadManager.newFreeThread(new VideoEncodeActivity.1(this, paramView), "VideoComposite", 5).start();
   }
   
   public void onClickTakePic(View paramView)
   {
-    xpk.a().a(this, null, 20000);
+    ziv.a().a(this, null, 20000);
   }
   
   public void onClickTestDown(View paramView)
   {
-    this.jdField_a_of_type_Vow.onClickTestDown(paramView);
+    this.jdField_a_of_type_Xih.onClickTestDown(paramView);
   }
   
   public void onClickTestInit(View paramView) {}
   
   public void onClickTestUp(View paramView)
   {
-    this.jdField_a_of_type_Vow.onClickTestUp(paramView);
+    this.jdField_a_of_type_Xih.onClickTestUp(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.VideoEncodeActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,59 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
-import java.lang.ref.WeakReference;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
-class aanv
-  extends LinearLayout
+public class aanv
+  implements TextWatcher
 {
-  private aauk jdField_a_of_type_Aauk;
-  private aaum jdField_a_of_type_Aaum = new aanw(this);
+  public aanv(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public aanv(Context paramContext, String paramString)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramContext);
-    setGravity(17);
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setStroke(1, Color.parseColor("#EFEFEF"));
-    if (Build.VERSION.SDK_INT >= 16) {
-      setBackground(localGradientDrawable);
-    }
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
+    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    int i;
+    if (str.equals(""))
     {
-      aase.d("GdtBannerImageView", "constructor");
-      return;
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      i = str.length();
+      ThemeUtil.getCurrentThemeInfo().getString("themeId");
+      if (i <= 6) {
+        break label215;
+      }
+      EditUniqueTitleActivity.a(this.a, false);
+      if (!this.a.jdField_a_of_type_Boolean) {
+        this.a.rightViewText.setAlpha(0.5F);
+      }
     }
-    paramContext = new URLImageView(paramContext);
-    addView(paramContext);
-    this.jdField_a_of_type_Aauk = new aauk(paramString, new WeakReference(this.jdField_a_of_type_Aaum));
-    this.jdField_a_of_type_Aauk.a();
-    paramContext.setImageDrawable(this.jdField_a_of_type_Aauk.a());
+    for (paramEditable = this.a.getResources().getColorStateList(2131167121);; paramEditable = this.a.getResources().getColorStateList(2131167066))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramEditable);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str.length() + "/" + 6);
+      int j = 6 - str.length();
+      i = j;
+      if (j < 0) {
+        i = 0;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.a.getString(2131695444), new Object[] { Integer.valueOf(i) }));
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      break;
+      label215:
+      EditUniqueTitleActivity.b(this.a, true);
+      if (!this.a.jdField_a_of_type_Boolean) {
+        this.a.rightViewText.setAlpha(1.0F);
+      }
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

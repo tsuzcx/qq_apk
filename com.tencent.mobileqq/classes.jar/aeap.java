@@ -1,32 +1,60 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class aeap
-  implements View.OnClickListener
+class aeap
+  implements DialogInterface.OnClickListener
 {
-  public aeap(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  aeap(aeao paramaeao) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).getIntExtra("key_team_work_edit_type", -1);
-    if ((i != 1) && (i != 2)) {
-      i = this.a.a;
+    switch (paramInt)
+    {
     }
-    paramView = this.a.f();
-    String str = this.a.a().b();
-    Intent localIntent = new Intent(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a), TeamWorkAuthorizeSettingFragment.class);
-    if (!TextUtils.isEmpty(str)) {
-      localIntent.putExtra("team_work_name", str);
+    for (;;)
+    {
+      try
+      {
+        paramDialogInterface.dismiss();
+        this.a.a.jdField_a_of_type_AndroidAppDialog = null;
+        return;
+      }
+      catch (Exception paramDialogInterface) {}
+      if (SettingCloneUtil.readValue(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, "pcactive_config", false)) {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startPCActivePolling(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "logout");
+      }
+      this.a.a.a(this.a.a.a(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      if (aeao.a(this.a).startsWith("http")) {}
+      for (;;)
+      {
+        try
+        {
+          Intent localIntent = new Intent(this.a.a.a(), QQBrowserActivity.class);
+          localIntent.putExtra("url", aeao.a(this.a));
+          this.a.a.a().startActivity(localIntent);
+          bcst.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008273", "0X8008273", 0, 0, "", "", "", "");
+        }
+        catch (Exception localException)
+        {
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          localException.printStackTrace();
+          continue;
+        }
+        if (aeao.a(this.a).startsWith("mqqapi:")) {
+          bgng.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.a(), aeao.a(this.a)).a();
+        }
+      }
     }
-    localIntent.putExtra("team_work_pad_url", paramView);
-    localIntent.putExtra("team_work_pad_list_type", this.a.d);
-    PublicFragmentActivity.a(this.a.getActivity(), localIntent, TeamWorkAuthorizeSettingFragment.class);
-    this.a.a(14);
   }
 }
 

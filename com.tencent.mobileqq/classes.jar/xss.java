@@ -1,34 +1,55 @@
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class xss
 {
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean)
+  public int a;
+  public Drawable a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  
+  public xss(View paramView)
   {
-    boolean bool1 = false;
-    paramQQAppInterface = bdib.a(paramQQAppInterface, paramContext, paramString);
-    if (paramQQAppInterface != null) {
-      bool1 = paramQQAppInterface.c();
-    }
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      if ((!bool2) && (paramBoolean))
-      {
-        Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-        localIntent.putExtra("url", paramString);
-        localIntent.putExtra("selfSet_leftViewText", alud.a(2131716325));
-        paramContext.startActivity(localIntent);
-      }
-      wxe.b("UrlJumpUtils", "jump %s, actionResult = %b, handled = %b", paramQQAppInterface, Boolean.valueOf(bool1), Boolean.valueOf(bool2));
-      return bool2;
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369909);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369908));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369900));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369897));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369907));
+    this.c = ((TextView)paramView.findViewById(2131361946));
+    this.jdField_a_of_type_Int = paramView.getContext().getResources().getDimensionPixelOffset(2131298892);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramView.getContext().getResources().getDrawable(2130839610);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839605);
+    this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), this.jdField_a_of_type_AndroidViewView.getPaddingTop(), this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839610);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
+    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(null, 1);
+    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("");
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("");
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.c.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xss
  * JD-Core Version:    0.7.0.1
  */

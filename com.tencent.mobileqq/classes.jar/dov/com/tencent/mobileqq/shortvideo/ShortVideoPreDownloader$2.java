@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bnpz;
+import bqgp;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -12,13 +12,13 @@ public class ShortVideoPreDownloader$2
     if (!this.this$0.a.get())
     {
       this.this$0.a.set(true);
-      bnpz.a("off", "Timer count off, mIsPreDownloaderOpen=" + this.this$0.a.get());
+      bqgp.a("off", "Timer count off, mIsPreDownloaderOpen=" + this.this$0.a.get());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader.2
  * JD-Core Version:    0.7.0.1
  */

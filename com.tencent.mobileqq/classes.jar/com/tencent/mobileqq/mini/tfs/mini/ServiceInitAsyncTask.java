@@ -39,43 +39,67 @@ public class ServiceInitAsyncTask
   
   public void executeAsync()
   {
+    Object localObject5 = null;
     Object localObject1 = "";
-    Object localObject3 = getDependTasks();
-    Object localObject2 = localObject1;
-    if (localObject3 != null)
+    Object localObject2 = getDependTasks();
+    Object localObject4;
+    Object localObject3;
+    if (localObject2 != null)
     {
-      localObject3 = ((List)localObject3).iterator();
+      Iterator localIterator = ((List)localObject2).iterator();
+      localObject2 = null;
+      localObject4 = localObject2;
+      localObject3 = localObject1;
+      if (!localIterator.hasNext()) {
+        break label106;
+      }
+      localObject3 = (BaseTask)localIterator.next();
+      if ((localObject3 instanceof BaselibLoadAsyncTask))
+      {
+        localObject3 = ((BaselibLoadAsyncTask)localObject3).getWaServiceJs();
+        localObject1 = localObject2;
+        localObject2 = localObject3;
+      }
+    }
+    for (;;)
+    {
+      localObject3 = localObject2;
       localObject2 = localObject1;
-      if (((Iterator)localObject3).hasNext())
+      localObject1 = localObject3;
+      break;
+      if ((localObject3 instanceof ServiceCreateAsyncTask))
       {
-        localObject2 = (BaseTask)((Iterator)localObject3).next();
-        if ((localObject2 instanceof BaselibLoadAsyncTask)) {
-          localObject1 = ((BaselibLoadAsyncTask)localObject2).getWaServiceJs();
-        }
-        for (;;)
+        localObject3 = ((ServiceCreateAsyncTask)localObject3).appBrandRuntime;
+        localObject2 = localObject1;
+        localObject1 = localObject3;
+        continue;
+        localObject4 = null;
+        localObject3 = localObject1;
+        label106:
+        this.appBrandRuntime = ((AppBrandRuntime)localObject4);
+        if ((localObject4 != null) && (((AppBrandRuntime)localObject4).webviewPool != null))
         {
-          break;
-          if ((localObject2 instanceof ServiceCreateAsyncTask)) {
-            this.appBrandRuntime = ((ServiceCreateAsyncTask)localObject2).appBrandRuntime;
+          localObject2 = ((AppBrandRuntime)localObject4).webviewPool;
+          localObject4 = this.mContext;
+          localObject1 = localObject5;
+          if (this.mSync) {
+            localObject1 = this;
           }
+          ((WebviewPool)localObject2).initServiceWebView((Context)localObject4, (String)localObject3, (ValueCallback)localObject1);
+          if (!this.mSync) {
+            onTaskSucceed();
+          }
+          return;
         }
+        onTaskFailed();
       }
-    }
-    localObject3 = this.appBrandRuntime.webviewPool;
-    if (localObject3 != null)
-    {
-      Context localContext = this.mContext;
-      if (this.mSync) {}
-      for (localObject1 = this;; localObject1 = null)
+      else
       {
-        ((WebviewPool)localObject3).initServiceWebView(localContext, (String)localObject2, (ValueCallback)localObject1);
-        if (!this.mSync) {
-          onTaskSucceed();
-        }
-        return;
+        localObject3 = localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject3;
       }
     }
-    onTaskFailed();
   }
   
   public void onReceiveValue(Object paramObject)
@@ -97,7 +121,7 @@ public class ServiceInitAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.tfs.mini.ServiceInitAsyncTask
  * JD-Core Version:    0.7.0.1
  */

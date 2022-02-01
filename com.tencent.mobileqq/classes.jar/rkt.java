@@ -1,36 +1,22 @@
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyPatchAdView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class rkt
-  implements oej
+public class rkt
+  implements View.OnClickListener
 {
-  rkt(rkp paramrkp) {}
+  public rkt(ReadInJoyPrivacyListView paramReadInJoyPrivacyListView) {}
   
-  public void a(rjk paramrjk, AdvertisementInfo paramAdvertisementInfo)
+  public void onClick(View paramView)
   {
-    rkp.a(this.a).b(2);
-    rkp.a(this.a).a = paramAdvertisementInfo;
-    oeh.a(this.a);
-    rkp.a(this.a).setVisibility(0);
-    rkp.a(this.a).setVisibility(0);
-    rkp.a(this.a).setVisibility(0);
-    rkp.a(this.a).a(paramrjk, paramAdvertisementInfo, 1);
-  }
-  
-  public void b(rjk paramrjk, AdvertisementInfo paramAdvertisementInfo)
-  {
-    rkp.a(this.a).a = paramAdvertisementInfo;
-    oeh.a(this.a);
-    rkp.a(this.a).setVisibility(0);
-    rkp.a(this.a).setVisibility(0);
-    rkp.a(this.a).a(paramrjk, paramAdvertisementInfo, 2);
+    ReadInJoyPrivacyListView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rkt
  * JD-Core Version:    0.7.0.1
  */

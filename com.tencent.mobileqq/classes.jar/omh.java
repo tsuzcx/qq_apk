@@ -1,24 +1,36 @@
-import com.tencent.widget.AbsListView;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-class omh
-  implements bhtv
+public class omh
 {
-  omh(omg paramomg) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(JSONObject paramJSONObject)
   {
-    if (this.a.a != null)
+    if (paramJSONObject != null)
     {
-      paramInt1 = omg.a(this.a, paramInt1);
-      this.a.a.onScroll(paramInt1);
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("adDownloadApiUrl");
+      this.b = paramJSONObject.optString("pkg_name");
+      this.c = paramJSONObject.optString("appid");
+      this.d = paramJSONObject.optString("appname");
+      this.e = paramJSONObject.optString("pkgurl");
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("business_type", 0);
+      paramJSONObject = paramJSONObject.optString("apk_url");
+      if (!TextUtils.isEmpty(paramJSONObject)) {
+        this.e = paramJSONObject;
+      }
     }
   }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     omh
  * JD-Core Version:    0.7.0.1
  */

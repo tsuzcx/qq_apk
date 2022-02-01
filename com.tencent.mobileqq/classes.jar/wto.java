@@ -1,16 +1,21 @@
-class wto
-  implements wsx
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
+
+public class wto
+  extends wla
 {
-  wto(wtd paramwtd) {}
-  
-  public void a()
+  public wto(qqstory_service.RspQQStoryGuide paramRspQQStoryGuide)
   {
-    wxe.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
+    super(paramRspQQStoryGuide.result);
+  }
+  
+  public String toString()
+  {
+    return "QQStoryGuideResponse{}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wto
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.qphone.base.util.QLog;
-import nrt;
-import nze;
+import oat;
+import oiz;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ReadInJoyFollowActivity$1$1
   implements Runnable
 {
-  public ReadInJoyFollowActivity$1$1(nze paramnze) {}
+  public ReadInJoyFollowActivity$1$1(oiz paramoiz) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ReadInJoyFollowActivity$1$1
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("channel_id", 70);
       localJSONObject.put("click_source", "b2t_title_text");
-      nrt.a(null, "", "0X8009329", "0X8009329", 0, 0, "", "", "", localJSONObject.toString(), false);
+      oat.a(null, "", "0X8009329", "0X8009329", 0, 0, "", "", "", localJSONObject.toString(), false);
       QLog.d("IphoneTitleBarActivity", 2, "back_to_top: { channelID : 70 , click_source : b2t_title_text }");
       return;
     }

@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bjdm;
+import blru;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +32,7 @@ public class LpReport_Smart_dc02363
     for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
     {
       localHashMap.put("uin", str);
-      LpReportUtils.safePut(localHashMap, "qua", bjdm.a());
+      LpReportUtils.safePut(localHashMap, "qua", blru.a());
       localHashMap.put("batch_id", String.valueOf(this.batch_id));
       LpReportUtils.safePut(localHashMap, "msg", this.msg);
       return localHashMap;
@@ -41,7 +41,7 @@ public class LpReport_Smart_dc02363
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_Smart_dc02363
  * JD-Core Version:    0.7.0.1
  */

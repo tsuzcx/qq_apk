@@ -1,18 +1,27 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
 
-class behk
-  implements ValueCallback<Bundle>
+public class behk
+  extends aopa
 {
-  behk(behj parambehj) {}
-  
-  public void a(Bundle paramBundle)
+  public behk(QLifeCommentActivity paramQLifeCommentActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    int i = paramBundle.getInt("input-box-num", 0);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "onFakeLoginRecognised detect ", Integer.valueOf(i), " input box" });
+      QLog.d("QLifeCommentActivity", 2, "onLocationFinish() errCode=" + paramInt);
     }
+    if (paramSosoLbsInfo != null)
+    {
+      this.a.a = paramSosoLbsInfo.a.a;
+      this.a.b = paramSosoLbsInfo.a.b;
+    }
+    QLifeCommentActivity.a(this.a, this.a.a, this.a.b);
   }
 }
 

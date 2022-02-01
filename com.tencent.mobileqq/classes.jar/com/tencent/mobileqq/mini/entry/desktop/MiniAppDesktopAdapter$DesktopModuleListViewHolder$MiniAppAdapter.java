@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import bdoo;
+import bgtn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppInfo;
@@ -15,6 +16,7 @@ import com.tencent.mobileqq.mini.entry.desktop.item.DesktopItemInfo;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DragAdapter;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
@@ -76,17 +78,18 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
   
   public boolean isMoveToDeleteArea(int paramInt1, int paramInt2)
   {
-    return this.this$1.mRecycleView.getTop() + paramInt2 >= MiniAppDesktopAdapter.access$3600(this.this$1.this$0).getBottom() - bdoo.a(60.0F);
+    return this.this$1.mRecycleView.getTop() + paramInt2 >= MiniAppDesktopAdapter.access$3600(this.this$1.this$0).getBottom() - bgtn.a(60.0F);
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     updateHolder((MiniAppDesktopAdapter.MicroAppViewHolder)paramViewHolder, (DesktopAppInfo)this.mData.get(paramInt), paramInt);
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public MiniAppDesktopAdapter.MicroAppViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(MiniAppDesktopAdapter.access$3400(this.this$1.this$0)).inflate(2131562184, paramViewGroup, false));
+    return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(MiniAppDesktopAdapter.access$3400(this.this$1.this$0)).inflate(2131562419, paramViewGroup, false));
   }
   
   public void onDragFinish(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -146,7 +149,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
           }
           else
           {
-            i = bdoo.a(30.0F) + paramInt1;
+            i = bgtn.a(30.0F) + paramInt1;
             continue;
           }
           Object localObject1 = (DesktopAppInfo)this.mData.get(this.mDragIndex);
@@ -205,7 +208,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.DesktopModuleListViewHolder.MiniAppAdapter
  * JD-Core Version:    0.7.0.1
  */

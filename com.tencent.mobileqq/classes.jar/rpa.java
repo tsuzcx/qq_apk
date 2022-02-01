@@ -1,24 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.BezierSideBarView;
+import org.jetbrains.annotations.NotNull;
 
-public class rpa
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface rpa
+  extends pyy<rpb>
 {
-  public rpa(BezierSideBarView paramBezierSideBarView, ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener) {}
+  public abstract int a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    BezierSideBarView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView.invalidate();
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener != null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener.onAnimationUpdate(paramValueAnimator);
-    }
-  }
+  public abstract void a(int paramInt, @NotNull rop paramrop);
+  
+  public abstract void a(@NotNull rop paramrop);
+  
+  public abstract void a(@NotNull rtc paramrtc, @NotNull String paramString);
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void b(@NotNull rop paramrop);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rpa
  * JD-Core Version:    0.7.0.1
  */

@@ -42,7 +42,7 @@ class PreCacheManager$4
         this.val$cacheInfo.timeStamp = System.currentTimeMillis();
         this.val$cacheInfo.filePath = this.val$tmpFilePath;
         MiniAppFileManager.getInstance();
-        paramString = MiniAppFileManager.getPreCacheFilePath(this.val$miniAppConfig.config.appId, this.val$cacheType, this.val$cacheInfo.getCacheKey() + "_index");
+        paramString = MiniAppFileManager.getPreCacheFilePath(this.val$miniAppConfig.config.appId, this.val$cacheType, this.val$cacheInfo.getCacheKey(this.val$cacheType) + "_index");
         ParcelableUtil.writeParcelableToFile(this.val$cacheInfo, paramString);
         QLog.i("miniapp-start_PreCacheManager", 1, this.val$logPrefix + " save PreCache info. index=" + paramString + " content=" + this.val$tmpFilePath);
         if (this.val$listener != null) {
@@ -63,7 +63,7 @@ class PreCacheManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.PreCacheManager.4
  * JD-Core Version:    0.7.0.1
  */

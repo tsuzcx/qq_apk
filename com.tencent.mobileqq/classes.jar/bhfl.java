@@ -1,74 +1,46 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.1.1;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.1.2;
-import com.tencent.qqmini.sdk.utils.DisplayUtil;
-import java.util.Iterator;
-import java.util.List;
+import android.net.Uri;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class bhfl
-  implements bgpu
+  extends bhhe
 {
-  public bhfl(AppBrandPageContainer paramAppBrandPageContainer) {}
+  public bhfl(PathTraceManager paramPathTraceManager, String paramString1, String paramString2) {}
   
-  public void onSoftKeyboardClosed()
+  public void onDone(bhhf parambhhf)
   {
-    QMLog.e("minisdk-start-AppBrandPageContainer", "onSoftKeyboardClosed ");
-    if ((AppBrandPageContainer.a(this.a) != null) && (AppBrandPageContainer.a(this.a).size() > 0))
+    super.onDone(parambhhf);
+    if (QLog.isColorLevel()) {
+      QLog.d("PathTraceManager", 1, "voice down");
+    }
+    parambhhf = new File(this.jdField_a_of_type_JavaLangString);
+    try
     {
-      Iterator localIterator = AppBrandPageContainer.a(this.a).iterator();
-      while (localIterator.hasNext())
+      nmk.a(parambhhf, PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
+      i = 1;
+    }
+    catch (IOException parambhhf)
+    {
+      for (;;)
       {
-        bgpu localbgpu = (bgpu)localIterator.next();
-        if (localbgpu != null) {
-          localbgpu.onSoftKeyboardClosed();
-        }
+        QLog.i("PathTraceManager", 1, "unzip fail");
+        int i = 0;
       }
     }
-    ThreadManager.a().postDelayed(new AppBrandPageContainer.1.2(this), 50L);
-  }
-  
-  public void onSoftKeyboardOpened(int paramInt)
-  {
-    QMLog.e("minisdk-start-AppBrandPageContainer", "onSoftKeyboardOpened " + paramInt);
-    if (AppBrandPageContainer.a(this.a) != null) {}
-    int i;
-    for (Object localObject = AppBrandPageContainer.a(this.a).a();; localObject = null)
+    if (i != 0)
     {
-      i = paramInt;
-      if (localObject != null)
-      {
-        i = paramInt;
-        if (DisplayUtil.hasNavBar((Context)localObject))
-        {
-          i = paramInt;
-          if (DisplayUtil.isNavigationBarExist((Activity)localObject)) {
-            i = paramInt - DisplayUtil.getNavigationBarHeight((Context)localObject);
-          }
-        }
-      }
-      if ((AppBrandPageContainer.a(this.a) == null) || (AppBrandPageContainer.a(this.a).size() <= 0)) {
-        break;
-      }
-      localObject = AppBrandPageContainer.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        bgpu localbgpu = (bgpu)((Iterator)localObject).next();
-        if (localbgpu != null) {
-          localbgpu.onSoftKeyboardOpened(i);
-        }
+      QLog.d("PathTraceManager", 1, "unzip success");
+      if (this.b != null) {
+        bgkl.a(Uri.fromFile(new File(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager), this.b + ".mp3")), false, true);
       }
     }
-    ThreadManager.a().postDelayed(new AppBrandPageContainer.1.1(this, i), 50L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhfl
  * JD-Core Version:    0.7.0.1
  */

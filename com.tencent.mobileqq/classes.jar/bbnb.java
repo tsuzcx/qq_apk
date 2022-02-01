@@ -1,131 +1,98 @@
-import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import java.text.SimpleDateFormat;
 
 public class bbnb
-  implements View.OnClickListener
+  extends bbmz
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bbnc(this);
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  bbmy jdField_a_of_type_Bbmy;
-  bbor jdField_a_of_type_Bbor = new bbnd(this);
-  bbot jdField_a_of_type_Bbot;
-  ArrayList<bbon> jdField_a_of_type_JavaUtilArrayList;
-  View jdField_b_of_type_AndroidViewView;
-  ArrayList<bbmz> jdField_b_of_type_JavaUtilArrayList;
+  private static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy/MM/dd");
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  private RecentUser jdField_a_of_type_ComTencentMobileqqDataRecentUser;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String jdField_a_of_type_JavaLangString;
+  private CharSequence b;
+  private CharSequence c;
   
-  public bbnb(bbmy parambbmy, View paramView)
+  public bbnb(QQAppInterface paramQQAppInterface, String paramString, RecentUser paramRecentUser, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_Bbmy = parambbmy;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369537));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364926);
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    bbmz localbbmz = new bbmz(paramView.findViewById(2131369538), 0);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localbbmz);
-    localbbmz = new bbmz(paramView.findViewById(2131369539), 1);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localbbmz);
-    localbbmz = new bbmz(paramView.findViewById(2131369540), 2);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localbbmz);
-    paramView = new bbmz(paramView.findViewById(2131369541), 3);
-    this.jdField_b_of_type_JavaUtilArrayList.add(paramView);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
-    paramView = new bbon((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131369542), parambbmy.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_Bbor);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
-    parambbmy = new bbon((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131369543), parambbmy.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_Bbor);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambbmy);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqDataRecentUser = paramRecentUser;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
   }
   
-  public void a(bbot parambbot)
+  public CharSequence a()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((bbon)((Iterator)localObject).next()).a();
-    }
-    this.jdField_a_of_type_Bbot = parambbot;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambbot.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(parambbot.jdField_b_of_type_JavaLangString);
-    if (parambbot.jdField_b_of_type_JavaLangString.equals(bbmy.jdField_a_of_type_JavaLangString))
-    {
-      localObject = (TroopManager)this.jdField_a_of_type_Bbmy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-      boolean bool = ((TroopManager)localObject).c();
-      if (((TroopManager)localObject).a.jdField_a_of_type_Boolean)
-      {
-        localObject = this.jdField_b_of_type_AndroidViewView;
-        if (!bool) {
-          break label181;
-        }
+    if (this.b == null) {
+      if (!njo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
+        break label60;
       }
     }
-    label181:
-    for (int i = 8;; i = 0)
+    label60:
+    SessionInfo localSessionInfo;
+    for (this.b = (BaseApplicationImpl.sApplication.getString(2131696514) + njo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).b);; this.b = bglf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin))
     {
-      ((View)localObject).setVisibility(i);
-      i = 0;
-      while (i < parambbot.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        ((bbmz)this.jdField_b_of_type_JavaUtilArrayList.get(i)).a(this.jdField_a_of_type_Bbmy.jdField_a_of_type_AndroidContentContext, (bbot)parambbot.jdField_a_of_type_JavaUtilArrayList.get(i), this);
-        i += 1;
-      }
+      return this.b;
+      localSessionInfo = new SessionInfo();
+      localSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType();
+      localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
     }
   }
   
-  public void onClick(View paramView)
+  public String a()
   {
-    bbmz localbbmz = (bbmz)paramView.getTag();
-    if ((localbbmz == null) || (localbbmz.jdField_a_of_type_Bbot == null)) {
-      return;
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    aldk.jdField_a_of_type_Boolean = true;
+    aldk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    aldk.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType(), bglf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType()), false);
+    anuq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    bbup.a(this.jdField_a_of_type_JavaLangString, 40, paramView, true);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence b()
+  {
+    if (this.c == null) {
+      this.c = bbup.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg, this.jdField_a_of_type_JavaLangString);
     }
-    bbot localbbot = localbbmz.jdField_a_of_type_Bbot;
-    if (localbbot.jdField_a_of_type_JavaLangString == null) {}
-    for (paramView = "";; paramView = localbbot.jdField_a_of_type_JavaLangString)
-    {
-      azqs.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, paramView, "", "", "");
-      if (!localbbot.jdField_a_of_type_Boolean) {
-        break;
-      }
-      int i = localbbmz.jdField_a_of_type_Int / 2;
-      ((bbon)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(localbbmz, localbbot);
-      return;
+    return this.c;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public CharSequence c()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
+      this.jdField_a_of_type_JavaLangCharSequence = bgsu.a(BaseApplicationImpl.sApplication, 3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time * 1000L);
     }
-    if (localbbot.jdField_b_of_type_Int == 1)
-    {
-      if ((localbbot.jdField_a_of_type_JavaLangString.equals("20001")) || (localbbot.jdField_a_of_type_JavaLangString.equals("20002")))
-      {
-        paramView = (TroopManager)this.jdField_a_of_type_Bbmy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-        if (paramView.a.jdField_a_of_type_Boolean)
-        {
-          paramView.g();
-          this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        }
-        this.jdField_a_of_type_Bbmy.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCateView.a(localbbot.jdField_a_of_type_JavaLangString);
-        if (localbbot.jdField_a_of_type_JavaLangString.equals("20001")) {}
-        for (paramView = "Clk_type_2";; paramView = "Clk_type_3")
-        {
-          azqs.b(this.jdField_a_of_type_Bbmy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_mobile", "", "chose_type", paramView, 0, 0, "", "", "", "");
-          return;
-        }
-      }
-      if (localbbot.jdField_a_of_type_JavaLangString.equals("20003"))
-      {
-        QLog.e("vip_pretty.createNewTroop.CateListAdapter", 1, "click the create pretty troop icon");
-        bdmj.a(aouq.c().a("category"), this.jdField_a_of_type_Bbmy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), (Activity)this.jdField_a_of_type_Bbmy.jdField_a_of_type_AndroidContentContext);
-        azqs.b(this.jdField_a_of_type_Bbmy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A582", 0, 0, "", "", "", "");
-        return;
-      }
-      this.jdField_a_of_type_Bbmy.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCateView.a(localbbot.jdField_a_of_type_JavaLangString, null);
-      return;
-    }
-    this.jdField_a_of_type_Bbmy.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCateView.a(localbbot.d, localbbot.jdField_a_of_type_JavaLangString);
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  public CharSequence d()
+  {
+    return null;
   }
 }
 

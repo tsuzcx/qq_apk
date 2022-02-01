@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/head_layout" android:layout_width="fill_parent" android:layout_height="453.0dip" android:layout_alignParentTop="true">
+        <LinearLayout android:orientation="vertical" android:id="@id/nck" android:paddingTop="88.0dip" android:layout_width="fill_parent" android:layout_height="438.0dip">
+            <com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager android:layout_gravity="center" android:id="@id/c9m" android:layout_width="fill_parent" android:layout_height="350.0dip" android:layout_centerHorizontal="true" />
+        </LinearLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.gamecenter.view.QQGameIndicator android:id="@id/fhp" android:paddingTop="12.0dip" android:layout_width="wrap_content" android:layout_height="15.0dip" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:id="@id/nl9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="74.0dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:background="@drawable/skin_qqvip_pubaccount_button_back" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_centerHorizontal="true">
+            <Button android:textSize="@dimen/mu" android:id="@id/mh3" android:background="@color/ajr" android:paddingLeft="19.0dip" android:paddingRight="15.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="42.0dip" android:text="查看历史消息" android:drawableRight="@drawable/sidebar_rightarrow" android:drawablePadding="5.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

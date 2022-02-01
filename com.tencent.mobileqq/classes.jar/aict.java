@@ -1,60 +1,46 @@
-import android.content.res.Resources;
-import android.widget.LinearLayout;
+import android.text.TextUtils;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.PinnedDividerSwipListView;
+import com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class aict
-  implements biab
+  extends asgf
 {
-  public aict(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aict(aicl paramaicl) {}
   
-  public void a(biaa parambiaa)
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, ashh paramashh, String paramString)
   {
-    if (parambiaa.a == this.a.m) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, String.format("onGetUnLimitFriendInfo() success=%s uinType=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) }));
     }
-    this.a.m = parambiaa.a;
-    ChatHistoryTroopMemberFragment.a(this.a, parambiaa.a);
-    if ((this.a.m >= 0) && (this.a.m < ChatHistoryTroopMemberFragment.a(this.a).length)) {
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(ChatHistoryTroopMemberFragment.a(this.a)[this.a.m]);
+    if ((paramBoolean) && (paramashh != null)) {
+      ThreadManager.getSubThreadHandler().post(new LimitChatPie.7.1(this, paramInt2, paramashh));
     }
-    if (this.a.m == 0)
+  }
+  
+  protected void a(boolean paramBoolean, asht paramasht, int paramInt)
+  {
+    if ((paramBoolean) && (paramasht != null))
     {
-      this.a.a("Clk_def", this.a.o, "");
-      this.a.v();
-      if (!this.a.p) {
-        this.a.p = true;
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramasht, this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO, this.a.g, this.a.K);
+      aicl.a(this.a, paramasht.mNickName);
+      this.a.e.setText(paramasht.mNickName);
+      if ((!TextUtils.isEmpty(paramasht.mNickName)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramasht.mNickName;
       }
-      if (this.a.jdField_a_of_type_Aidh != null) {
-        this.a.jdField_a_of_type_Aidh.a();
-      }
-      if (this.a.m != 0) {
-        break label433;
-      }
-      this.a.jdField_a_of_type_ComTencentWidgetPinnedDividerSwipListView.setSelectionFromTop(0, 0);
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setContentDescription(this.a.jdField_b_of_type_AndroidWidgetTextView.getText().toString() + this.a.jdField_c_of_type_AndroidWidgetTextView.getText().toString());
-      return;
-      if (this.a.m == 1)
-      {
-        ((amdu)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).v(this.a.jdField_c_of_type_JavaLangString);
-        new azqx(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_online").c("mber_list").d("exp_onlineList").a(0).a(new String[] { this.a.jdField_c_of_type_JavaLangString }).a();
-        new azqx(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_online").c("mber_list").d("clk_onlinefirst").a(new String[] { this.a.jdField_c_of_type_JavaLangString }).a();
-        break;
-      }
-      if (this.a.m == 2) {}
-      for (parambiaa = "Clk_lastactivetime";; parambiaa = "Clk_jointime")
-      {
-        this.a.a(parambiaa, "1", this.a.o);
-        break;
-      }
-      label433:
-      this.a.jdField_a_of_type_ComTencentWidgetPinnedDividerSwipListView.setSelectionFromTop(0, -this.a.getResources().getDimensionPixelSize(2131298634));
+  }
+  
+  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, String.format("onGetExtendFriendOnlineState success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
+    aicl.a(this.a, paramArrayList);
   }
 }
 

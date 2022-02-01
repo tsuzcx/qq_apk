@@ -1,20 +1,38 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aeso
-  extends altm
+public class aeso
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aeso(aesk paramaesk) {}
+  public aeso(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
+    if (NotifyPushSettingActivity.a())
     {
-      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
-      if ((paramString != null) && (aesk.a(this.a) != null)) {
-        aesk.a(this.a).setImageBitmap(paramString);
+      NotifyPushSettingActivity.b(this.a).setChecked(false);
+      NotifyPushSettingActivity.b(this.a).setVisibility(8);
+      if (!paramBoolean) {
+        break label121;
       }
+    }
+    label121:
+    for (int i = 1;; i = 0)
+    {
+      bcst.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      if (paramBoolean)
+      {
+        NotifyPushSettingActivity.b(this.a).setVisibility(0);
+        NotifyPushSettingActivity.b(this.a).setVisibility(8);
+        break;
+      }
+      NotifyPushSettingActivity.b(this.a).setVisibility(8);
+      break;
     }
   }
 }

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alud;
 import android.app.Activity;
 import android.content.pm.PackageManager;
-import bdgm;
-import bdjz;
+import anni;
+import bglp;
+import bgpa;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 
 class InternalJSPlugin$4
@@ -14,12 +14,12 @@ class InternalJSPlugin$4
   
   public void run()
   {
-    bdgm.a(this.val$activity, 230, null, String.format(alud.a(2131706193), new Object[] { this.val$appName }), alud.a(2131706200), alud.a(2131706201), new InternalJSPlugin.4.1(this), new InternalJSPlugin.4.2(this)).show();
+    bglp.a(this.val$activity, 230, null, String.format(anni.a(2131704594), new Object[] { this.val$appName }), anni.a(2131704601), anni.a(2131704602), new InternalJSPlugin.4.1(this), new InternalJSPlugin.4.2(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.InternalJSPlugin.4
  * JD-Core Version:    0.7.0.1
  */

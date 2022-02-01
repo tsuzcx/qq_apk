@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ptt.player;
 
 import android.media.MediaPlayer;
-import awyd;
-import bhtd;
+import azts;
+import bkgm;
 import com.tencent.qphone.base.util.QLog;
 
 class AmrPlayer$AmrPlayerThread
@@ -20,7 +20,7 @@ class AmrPlayer$AmrPlayerThread
       if (QLog.isColorLevel()) {
         QLog.d("AmrPlayer", 2, "playAmr AmrPlayerThread onPlayThreadStart");
       }
-      AmrPlayer.a(this.this$0).b();
+      AmrPlayer.a(this.this$0).f();
       if (QLog.isColorLevel()) {
         QLog.d("AmrPlayer", 2, "playAmr AmrPlayerThread start");
       }
@@ -39,7 +39,7 @@ class AmrPlayer$AmrPlayerThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.player.AmrPlayer.AmrPlayerThread
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-public class bbfj
-  implements Animation.AnimationListener
+class bbfj
+  implements Comparator<bblw>
 {
-  public bbfj(AbsPublishActivity paramAbsPublishActivity) {}
+  bbfj(bbfi parambbfi) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(bblw parambblw1, bblw parambblw2)
   {
-    this.a.a.clearAnimation();
+    int i = parambblw2.a[2] - parambblw1.a[2];
+    if (i != 0) {}
+    int j;
+    do
+    {
+      return i;
+      j = parambblw1.a[0] - parambblw2.a[0];
+      i = j;
+    } while (j != 0);
+    parambblw1 = parambblw1.c.substring(parambblw1.a[0] + parambblw1.a[1]);
+    parambblw2 = parambblw2.c.substring(parambblw2.a[0] + parambblw2.a[1]);
+    return ChnToSpell.a(parambblw1, 2).compareTo(ChnToSpell.a(parambblw2, 2));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

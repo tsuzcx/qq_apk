@@ -1,9 +1,13 @@
 package cooperation.plugin;
 
+import Override;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.Window;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 
@@ -19,6 +23,21 @@ public class PluginBaseActivity2
     this.jdField_a_of_type_Boolean = true;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
@@ -26,7 +45,7 @@ public class PluginBaseActivity2
     {
       getWindow().addFlags(67108864);
       if (this.b) {
-        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131166959));
+        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131167042));
       }
     }
   }
@@ -41,7 +60,7 @@ public class PluginBaseActivity2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.plugin.PluginBaseActivity2
  * JD-Core Version:    0.7.0.1
  */

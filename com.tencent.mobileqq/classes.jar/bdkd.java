@@ -1,34 +1,22 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
 class bdkd
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  bdkd(bdjz parambdjz, DialogInterface.OnClickListener paramOnClickListener) {}
+  bdkd(bdkb parambdkb) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdjz localbdjz;
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
-    {
-      paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-      localbdjz = this.jdField_a_of_type_Bdjz;
-      if (!paramBoolean) {
-        break label34;
-      }
-    }
-    label34:
-    for (int i = 1;; i = 0)
-    {
-      paramCompoundButton.onClick(localbdjz, i);
-      return;
+    if (this.a.a.b == 1) {
+      bcst.b(TeamWorkAuthorizeSettingFragment.a(this.a.a), "dc00898", "", "", "0x8007CFE", "0x8007CFE", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkd
  * JD-Core Version:    0.7.0.1
  */

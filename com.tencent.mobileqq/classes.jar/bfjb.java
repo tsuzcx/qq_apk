@@ -1,20 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.open.appcommon.js.AppInterface.2;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bfjb
-  implements DialogInterface.OnDismissListener
+class bfjb
+  implements View.OnClickListener
 {
-  public bfjb(AppInterface.2 param2) {}
+  bfjb(bfja parambfja) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.this$0.tipDialog = null;
+    Intent localIntent = new Intent(bfja.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    bfja.a(this.a).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfjb
  * JD-Core Version:    0.7.0.1
  */

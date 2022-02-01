@@ -1,18 +1,22 @@
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-public abstract interface bieo
+public final class bieo
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  public bieo(Context paramContext) {}
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean b(int paramInt);
-  
-  public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bier.c();
+    FloatingScreenPermission.requestPermission(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bieo
  * JD-Core Version:    0.7.0.1
  */

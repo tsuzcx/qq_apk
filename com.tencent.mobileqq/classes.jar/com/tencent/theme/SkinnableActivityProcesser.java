@@ -114,7 +114,7 @@ public class SkinnableActivityProcesser
     for (;;)
     {
       return;
-      i.a("SkinEngine", 1, "SkinnableActivityProcesser on pre theme changed");
+      h.a("SkinEngine", 1, "SkinnableActivityProcesser on pre theme changed");
       if (this.b != null) {
         this.b.onPreThemeChanged();
       }
@@ -167,7 +167,7 @@ public class SkinnableActivityProcesser
           break label185;
         }
         this.b.onPostThemeChanged();
-        i.a("SkinEngine", 1, "SkinnableActivityProcesser on post theme changed");
+        h.a("SkinEngine", 1, "SkinnableActivityProcesser on post theme changed");
         return;
         localIllegalArgumentException = localIllegalArgumentException;
         i = j;

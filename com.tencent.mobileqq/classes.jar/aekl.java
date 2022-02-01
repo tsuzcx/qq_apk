@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aekl
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aekl(UpgradeActivity paramUpgradeActivity, bdio parambdio, int paramInt) {}
+  public aekl(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bdio.d();
-    bdmr.c(true);
-    bdmr.c(this.jdField_a_of_type_Int);
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity, amqe.a().a(), false, true, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity.finish();
+    if (System.currentTimeMillis() - this.a.a < 2000L)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (HongbaoShowerActivity.a(this.a) == 0) {}
+    for (String str = "1";; str = "2")
+    {
+      bcst.b(localQQAppInterface, "dc01440", "", "", "0X80077EA", "0X80077EA", 0, 0, str, "", "", "");
+      break;
+    }
   }
 }
 

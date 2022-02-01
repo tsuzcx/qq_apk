@@ -1,46 +1,63 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 class avkf
-  implements URLDrawable.URLDrawableListener
+  implements adea
 {
-  avkf(avke paramavke, ImageView paramImageView) {}
+  avkf(avju paramavju, WeakReference paramWeakReference, Bundle paramBundle) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadCanceled");
+    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onFailure code = " + paramInt);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131702365), 0).a();
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onPermission code = " + paramInt);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131702366), 0).a();
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+    }
+    try
+    {
+      QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onSuccess");
+      this.jdField_a_of_type_Avju.b = paramJSONObject.optString("access_token");
+      this.jdField_a_of_type_Avju.jdField_a_of_type_JavaLangString = paramJSONObject.optString("openid");
+      this.jdField_a_of_type_AndroidOsBundle.putString("access_token", this.jdField_a_of_type_Avju.b);
+      this.jdField_a_of_type_AndroidOsBundle.putString("openid", this.jdField_a_of_type_Avju.jdField_a_of_type_JavaLangString);
+      avju.a(this.jdField_a_of_type_Avju);
+      this.jdField_a_of_type_Avju.jdField_a_of_type_Avko.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      QLog.e("XProxy|NowProxy", 1, paramJSONObject, new Object[0]);
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadFialed");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadProgressed");
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote headImage success");
-    }
-    this.jdField_a_of_type_Avke.a.a(this.jdField_a_of_type_AndroidWidgetImageView, paramURLDrawable);
-  }
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avkf
  * JD-Core Version:    0.7.0.1
  */

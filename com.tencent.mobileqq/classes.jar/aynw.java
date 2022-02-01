@@ -1,14 +1,18 @@
-public class aynw
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aynw
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
+  aynw(aynq paramaynq, AutoReplyText paramAutoReplyText) {}
   
-  public aynw() {}
-  
-  public aynw(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
+    this.jdField_a_of_type_Aynq.a(i);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

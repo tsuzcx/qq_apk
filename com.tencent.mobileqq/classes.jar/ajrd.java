@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
 public class ajrd
-  implements DialogInterface.OnClickListener
+  implements advd
 {
-  public ajrd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public ajrd(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(boolean paramBoolean)
   {
-    wxj.a("video_shoot", "cancel_now", 0, 0, new String[0]);
-    paramDialogInterface.dismiss();
+    if (paramBoolean) {
+      bmyc.a(this.a.getActivity());
+    }
+    return false;
   }
 }
 

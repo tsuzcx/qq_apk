@@ -1,26 +1,30 @@
 package com.tencent.mobileqq.activity;
 
-import actp;
-import actq;
-import actr;
-import acts;
-import actt;
-import actu;
-import actv;
-import actw;
-import ammy;
+import Override;
+import aebe;
+import aebf;
+import aebg;
+import aebh;
+import aebi;
+import aebj;
+import aebk;
+import aebl;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.BadTokenException;
-import azqs;
-import bahu;
-import bdgm;
-import bdjz;
+import aoht;
+import bcst;
+import bdiy;
+import bglp;
+import bgpa;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class DialogActivity
   extends BaseActivity
@@ -35,9 +39,9 @@ public class DialogActivity
   
   private void a()
   {
-    bdjz localbdjz = bdgm.a(this, 230).setMessage(getString(this.e)).setPositiveButton(getString(2131720098), new actq(this)).setNegativeButton(getString(2131720099), new actp(this));
-    localbdjz.setOnCancelListener(new actr(this));
-    a(localbdjz);
+    bgpa localbgpa = bglp.a(this, 230).setMessage(getString(this.e)).setPositiveButton(getString(2131718065), new aebf(this)).setNegativeButton(getString(2131718066), new aebe(this));
+    localbgpa.setOnCancelListener(new aebg(this));
+    a(localbgpa);
   }
   
   private void a(Dialog paramDialog)
@@ -50,7 +54,7 @@ public class DialogActivity
       }
       paramDialog.show();
       if (this.f == c) {
-        azqs.b(null, "dc00898", "", "", "0X8009AC7", "0X8009AC7", 0, 0, "", "", "", "");
+        bcst.b(null, "dc00898", "", "", "0X8009AC7", "0X8009AC7", 0, 0, "", "", "", "");
       }
       return;
     }
@@ -65,14 +69,14 @@ public class DialogActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230, null, getString(2131698910), getString(2131690648), getString(2131698911), new acts(this), new actt(this));
+    this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230, null, getString(2131697778), getString(2131690582), getString(2131697779), new aebh(this), new aebi(this));
     a(this.jdField_a_of_type_AndroidAppDialog);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidAppDialog = new ammy(this);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new actu(this));
+    this.jdField_a_of_type_AndroidAppDialog = new aoht(this);
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new aebj(this));
     a(this.jdField_a_of_type_AndroidAppDialog);
   }
   
@@ -81,7 +85,15 @@ public class DialogActivity
     if (getIntent() == null) {
       return;
     }
-    new bahu(this, getIntent().getStringExtra("key_dialog_title"), getIntent().getStringExtra("key_dialog_content"), new actv(this), new actw(this)).show();
+    new bdiy(this, getIntent().getStringExtra("key_dialog_title"), getIntent().getStringExtra("key_dialog_content"), new aebk(this), new aebl(this)).show();
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -90,7 +102,7 @@ public class DialogActivity
     if (localIntent != null)
     {
       this.f = localIntent.getIntExtra("key_dialog_type", jdField_a_of_type_Int);
-      this.e = localIntent.getIntExtra("key_dialog_msg_id", 2131691297);
+      this.e = localIntent.getIntExtra("key_dialog_msg_id", 2131691098);
     }
     return super.doOnCreate(paramBundle);
   }
@@ -140,7 +152,14 @@ public class DialogActivity
     if (this.jdField_a_of_type_AndroidAppDialog != null) {
       this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(null);
     }
-    overridePendingTransition(0, 2130772028);
+    overridePendingTransition(0, 2130772029);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void requestWindowFeature(Intent paramIntent)
@@ -150,7 +169,7 @@ public class DialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DialogActivity
  * JD-Core Version:    0.7.0.1
  */

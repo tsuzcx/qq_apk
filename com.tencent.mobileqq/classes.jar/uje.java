@@ -1,37 +1,25 @@
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.POI;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public class uje
-  extends uro
+class uje
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  List<AddressItem> a = new ArrayList();
+  uje(ujd paramujd) {}
   
-  public uje(qqstory_service.RspBatchGetPOIList paramRspBatchGetPOIList)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramRspBatchGetPOIList.result);
-    paramRspBatchGetPOIList = paramRspBatchGetPOIList.poi_list.get();
-    if (paramRspBatchGetPOIList != null)
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
     {
-      paramRspBatchGetPOIList = paramRspBatchGetPOIList.iterator();
-      while (paramRspBatchGetPOIList.hasNext())
-      {
-        qqstory_service.POI localPOI = (qqstory_service.POI)paramRspBatchGetPOIList.next();
-        AddressItem localAddressItem = AddressItem.getAddressFromProtoObject(localPOI.address);
-        localAddressItem.poiType = localPOI.poi_type.get();
-        this.a.add(localAddressItem);
-      }
+      upe.d("WSMiniAppHelper", str + ", bundle: " + paramBundle.toString());
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uje
  * JD-Core Version:    0.7.0.1
  */

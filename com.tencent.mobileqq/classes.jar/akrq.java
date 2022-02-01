@@ -1,14 +1,17 @@
-import android.app.Activity;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public abstract interface akrq
+public class akrq
 {
-  public abstract int a();
+  public int a;
+  public MessageRecord a;
+  public String a;
   
-  public abstract akrw a(long paramLong, String paramString1, String paramString2);
-  
-  public abstract void a();
-  
-  public abstract boolean a(Activity paramActivity);
+  public akrq(int paramInt, String paramString, MessageRecord paramMessageRecord)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+  }
 }
 
 

@@ -1,56 +1,53 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.debug.PstnCardTestActivity;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-class ajkh
-  implements biab
+public class ajkh
+  implements Comparator<ajkk>
 {
-  ajkh(ajkg paramajkg) {}
+  public ajkh(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void a(biaa parambiaa)
+  public int a(ajkk paramajkk1, ajkk paramajkk2)
   {
-    switch (parambiaa.a)
+    paramajkk1 = paramajkk1.a.name;
+    paramajkk2 = paramajkk2.a.name;
+    if ((paramajkk1 == null) && (paramajkk2 == null)) {}
+    int j;
+    int k;
+    do
     {
-    default: 
-      if (AudioHelper.d()) {
-        PstnCardTestActivity.onDebugMenuEvent(parambiaa, this.a.a);
+      return 0;
+      if ((paramajkk1 == null) && (paramajkk2 != null)) {
+        return -1;
       }
-      return;
-    case 2131699018: 
-      this.a.e();
-      return;
-    case 2131691317: 
-      this.a.d();
-      return;
-    case 2131691331: 
-      this.a.c();
-      return;
-    case 2131691324: 
-      this.a.f();
-      return;
-    case 2131691334: 
-      this.a.i();
-      return;
-    case 2131691336: 
-      ajkg.a(this.a);
-      return;
-    case 2131691321: 
-      this.a.a(8);
-      azqs.b(this.a.a.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.fukuan.click", 0, 0, "", "", "", "");
-      return;
-    case 2131691330: 
-      this.a.h();
-      return;
-    case 2131691323: 
-      this.a.g();
-      return;
-    case 2131691326: 
-      MiniAppUtils.handleMiniAppMoreClick(this.a.a);
-      azqs.b(this.a.a.app, "dc00898", "", "", "0X8009CB9", "0X8009CB9", 0, 0, "", "", "", "");
-      return;
-    }
-    this.a.m();
+      if ((paramajkk1 != null) && (paramajkk2 == null)) {
+        return 1;
+      }
+      j = paramajkk1.length();
+      k = paramajkk2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
+      {
+        char c1 = paramajkk1.charAt(i);
+        char c2 = paramajkk2.charAt(i);
+        if (c1 != c2)
+        {
+          paramajkk1 = ChnToSpell.a(c1, i);
+          paramajkk2 = ChnToSpell.a(c2, i);
+          if (paramajkk1.jdField_a_of_type_Int == paramajkk2.jdField_a_of_type_Int) {
+            return paramajkk1.jdField_a_of_type_JavaLangString.compareTo(paramajkk2.jdField_a_of_type_JavaLangString);
+          }
+          return paramajkk1.jdField_a_of_type_Int - paramajkk2.jdField_a_of_type_Int;
+        }
+        i += 1;
+      }
+      if (j < k) {
+        return -1;
+      }
+    } while (j <= k);
+    return 1;
   }
 }
 

@@ -1,44 +1,52 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class awof
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public awof(CoverDetailFragment paramCoverDetailFragment) {}
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public void onGlobalLayout()
+  public awof(String paramString1, String paramString2, String paramString3, MsgBackupUserData paramMsgBackupUserData, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      CoverDetailFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
-    {
-      Object localObject = this.a.getActivity().getResources().getDrawable(2130850137);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = CoverDetailFragment.a(this.a).getWidth();
-      localURLDrawableOptions.mRequestHeight = CoverDetailFragment.a(this.a).getHeight();
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localObject = URLDrawable.getDrawable(CoverDetailFragment.a(this.a).d, localURLDrawableOptions);
-      ((URLDrawable)localObject).setURLDrawableListener(CoverDetailFragment.a(this.a));
-      CoverDetailFragment.a(this.a).setImageDrawable((Drawable)localObject);
-      CoverDetailFragment.b(this.a).setImageDrawable(this.a.a((Drawable)localObject));
-      return;
-      CoverDetailFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupGetQrRsp--");
+    localStringBuilder.append(",qr_sig:").append(this.jdField_a_of_type_JavaLangString).append(",token:").append(this.b).append(",encryptKey:").append(this.c).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awof
  * JD-Core Version:    0.7.0.1
  */

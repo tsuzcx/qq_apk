@@ -1,6 +1,18 @@
-public abstract interface ahld
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ahld
+  implements View.OnClickListener
 {
-  public abstract void a(ahok paramahok, int paramInt);
+  ahld(ahlc paramahlc) {}
+  
+  public void onClick(View paramView)
+  {
+    ahlc.a(this.a);
+    bcst.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", ahlc.a(this.a), "空间");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

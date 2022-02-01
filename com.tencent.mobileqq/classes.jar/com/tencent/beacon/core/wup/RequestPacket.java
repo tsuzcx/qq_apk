@@ -6,8 +6,8 @@ import java.util.Map;
 public final class RequestPacket
   extends JceStruct
 {
-  static Map<String, String> cache_context = null;
-  static byte[] cache_sBuffer = null;
+  static Map<String, String> cache_context;
+  static byte[] cache_sBuffer;
   public byte cPacketType = 0;
   public Map<String, String> context;
   public int iMessageType = 0;
@@ -19,7 +19,7 @@ public final class RequestPacket
   public String sServantName = null;
   public Map<String, String> status;
   
-  public final void readFrom(a parama)
+  public void readFrom(a parama)
   {
     try
     {
@@ -27,26 +27,26 @@ public final class RequestPacket
       this.cPacketType = parama.a(this.cPacketType, 2, true);
       this.iMessageType = parama.a(this.iMessageType, 3, true);
       this.iRequestId = parama.a(this.iRequestId, 4, true);
-      this.sServantName = parama.b(5, true);
-      this.sFuncName = parama.b(6, true);
-      if (cache_sBuffer == null) {
+      this.sServantName = parama.a(5, true);
+      this.sFuncName = parama.a(6, true);
+      Object localObject = cache_sBuffer;
+      if (localObject == null) {
         cache_sBuffer = new byte[] { 0 };
       }
-      this.sBuffer = ((byte[])parama.c(7, true));
+      this.sBuffer = parama.a(cache_sBuffer, 7, true);
       this.iTimeout = parama.a(this.iTimeout, 8, true);
-      HashMap localHashMap;
       if (cache_context == null)
       {
-        localHashMap = new HashMap();
-        cache_context = localHashMap;
-        localHashMap.put("", "");
+        cache_context = new HashMap();
+        localObject = cache_context;
+        ((Map)localObject).put("", "");
       }
       this.context = ((Map)parama.a(cache_context, 9, true));
       if (cache_context == null)
       {
-        localHashMap = new HashMap();
-        cache_context = localHashMap;
-        localHashMap.put("", "");
+        cache_context = new HashMap();
+        localObject = cache_context;
+        ((Map)localObject).put("", "");
       }
       this.status = ((Map)parama.a(cache_context, 10, true));
       return;
@@ -58,7 +58,7 @@ public final class RequestPacket
     }
   }
   
-  public final void writeTo(b paramb)
+  public void writeTo(b paramb)
   {
     paramb.a(this.iVersion, 1);
     paramb.a(this.cPacketType, 2);
@@ -74,7 +74,7 @@ public final class RequestPacket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.wup.RequestPacket
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,7 @@
-import java.util.Calendar;
+import kotlin.Metadata;
 
-public class azao
-{
-  public static int a(int paramInt)
-  {
-    int i = 0;
-    if (paramInt > 0) {
-      i = Calendar.getInstance().get(1) - ((0xFFFF0000 & paramInt) >> 16);
-    }
-    return i;
-  }
-  
-  public static int b(int paramInt)
-  {
-    if (paramInt == 0) {
-      return 0;
-    }
-    return (0xFF00 & paramInt) >> 8;
-  }
-  
-  public static int c(int paramInt)
-  {
-    if (paramInt == 0) {
-      return 0;
-    }
-    return paramInt & 0xFF;
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelStudyModeAppInfoOrderConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azao {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

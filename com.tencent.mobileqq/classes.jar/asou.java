@@ -1,31 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
 
-public class asou
-  implements View.OnClickListener
+class asou
+  implements Animator.AnimatorListener
 {
-  public asou(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  asou(asot paramasot) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QQGameFeedWebFragment.a(this.a).setVisibility(8);
-    if (QQGameFeedWebFragment.a(this.a) != null) {
-      QQGameFeedWebFragment.a(this.a).setCurrentItem(0);
-    }
-    paramView = (String)QQGameFeedWebFragment.a(this.a).getTag();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf(1), paramView);
-    localHashMap.put(Integer.valueOf(2), "");
-    localHashMap.put(Integer.valueOf(3), "20");
-    localHashMap.put(Integer.valueOf(24), "1");
-    aahi.a(akwd.a(), "769", "205031", "", "76901", "1", "160", localHashMap);
+    SignalBombAnimationView.b(this.a.a.a).setTranslationY(0.0F);
+    SignalBombAnimationView.a(this.a.a.a, false);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,82 +1,65 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.media.AudioManager;
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class aeps
-  extends BroadcastReceiver
+  extends BaseAdapter
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  long b = 0L;
+  private aeps(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public aeps(AudioPlayer paramAudioPlayer, String paramString, int paramInt)
+  public int getCount()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.a.jdField_a_of_type_JavaUtilList != null) {
+      return this.a.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
   }
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public Object getItem(int paramInt)
   {
-    long l = SystemClock.uptimeMillis();
-    int i = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_STATE", -1);
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioPlayer", 2, "onReceive ACTION_SCO_AUDIO_STATE_UPDATED = " + i + " " + this.jdField_a_of_type_JavaLangString + ", time=" + l);
-    }
-    if (1 == i) {
-      if (this.b == 0L)
-      {
-        this.b = l;
-        AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer));
-        AudioPlayer.b = true;
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a()) {
-          AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        }
-      }
-    }
-    do
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
     {
-      do
-      {
-        return;
-        if (2 == i)
-        {
-          this.jdField_a_of_type_Boolean = true;
-          return;
-        }
-      } while (i != 0);
-      if (this.jdField_a_of_type_Long == 0L)
-      {
-        this.jdField_a_of_type_Long = l;
-        return;
+      localView = this.a.getLayoutInflater().inflate(2131559482, null);
+      int i = (byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_id;
+      localObject = (ImageView)localView.findViewById(2131364474);
+      if (i != this.a.jdField_a_of_type_Byte) {
+        break label163;
       }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.d();
-      }
-      if (((this.b != 0L) && (l - this.b <= 2000L)) || (l - this.jdField_a_of_type_Long <= 1000L))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AudioPlayer", 2, "sco disconnected quickly.");
-        }
-        AudioPlayer.b(true);
-        if ((AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer)) && (!AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer).isBluetoothA2dpOn())) {
-          AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, false);
-        }
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a())
-        {
-          AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-          return;
-        }
-        AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, 0);
-        return;
-      }
-    } while (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a());
-    AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer).a());
+      ((ImageView)localObject).setVisibility(0);
+    }
+    for (;;)
+    {
+      localObject = (TextView)localView.findViewById(2131367679);
+      ((TextView)localObject).setText(((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_name);
+      localView.setContentDescription(((TextView)localObject).getText().toString());
+      localView.setTag(Integer.valueOf(paramInt));
+      localView.setOnClickListener(this.a);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localView = paramView;
+      break;
+      label163:
+      ((ImageView)localObject).setVisibility(8);
+    }
   }
 }
 

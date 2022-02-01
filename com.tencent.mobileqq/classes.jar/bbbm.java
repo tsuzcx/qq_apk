@@ -1,9 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bbbm
+  implements View.OnClickListener
 {
-  public List<bbbz> a = new ArrayList();
+  public bbbm(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    bcst.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 2, 0, "0", "0", "", "");
+    SignatureHistoryFragment.a(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

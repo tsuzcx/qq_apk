@@ -1,102 +1,86 @@
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.utils.NumberWheelView;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.VerticalGallery.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aopz
+  extends BaseAdapter
 {
-  private long jdField_a_of_type_Long = 2000L;
-  private boolean jdField_a_of_type_Boolean = true;
-  private long jdField_b_of_type_Long = 60000L;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = true;
-  private boolean d = false;
+  private int jdField_a_of_type_Int = 36;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public List<Integer> a;
   
-  public static aopz a(String paramString)
+  public aopz(NumberWheelView paramNumberWheelView, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool2 = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+    a(paramInt2, paramInt3);
+  }
+  
+  public View a(int paramInt)
+  {
+    return getView(paramInt, null, null);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    while (paramInt1 <= paramInt2)
     {
-      aopz localaopz = new aopz();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("useNewLog", 1) == 1)
-      {
-        bool1 = true;
-        localaopz.jdField_a_of_type_Boolean = bool1;
-        if (paramString.optInt("compressAndEncrypt", 0) != 1) {
-          break label130;
-        }
-        bool1 = true;
-        label56:
-        localaopz.jdField_b_of_type_Boolean = bool1;
-        if (paramString.optInt("enableConsole", 1) != 1) {
-          break label135;
-        }
-        bool1 = true;
-        label74:
-        localaopz.c = bool1;
-        if (paramString.optInt("enableCheckPermission", 1) != 1) {
-          break label140;
-        }
-      }
-      label130:
-      label135:
-      label140:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        localaopz.d = bool1;
-        localaopz.jdField_a_of_type_Long = paramString.optLong("locationSdkCallbackIntervalMillis", 2000L);
-        localaopz.jdField_b_of_type_Long = paramString.optLong("locationBgTimeoutMillis", 60000L);
-        return localaopz;
-        bool1 = false;
-        break;
-        bool1 = false;
-        break label56;
-        bool1 = false;
-        break label74;
-      }
-      return null;
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt1));
+      paramInt1 += 1;
     }
-    catch (Exception paramString)
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramView == null)
     {
-      paramString.printStackTrace();
+      localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
+      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
     }
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_Long < 0L) {
-      return 2000L;
+    for (paramView = (WheelTextView)localObject1;; paramView = (View)localObject2)
+    {
+      localObject2 = paramView;
+      if (paramView == null) {
+        localObject2 = (WheelTextView)localObject1;
+      }
+      paramView = String.format("%d", new Object[] { this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+      ((WheelTextView)localObject2).setTextSize(18.0F);
+      ((WheelTextView)localObject2).setTextColor(-7829368);
+      ((WheelTextView)localObject2).setGravity(5);
+      ((WheelTextView)localObject2).setVisibility(0);
+      ((WheelTextView)localObject2).setText(paramView);
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return localObject1;
+      localObject1 = paramView;
     }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public long b()
-  {
-    if (this.jdField_b_of_type_Long < 0L) {
-      return 60000L;
-    }
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public boolean b()
-  {
-    return this.d;
-  }
-  
-  public String toString()
-  {
-    return "QConfLogBean{useNewLog=" + this.jdField_a_of_type_Boolean + ", compressAndEncrypt=" + this.jdField_b_of_type_Boolean + ", enableConsole=" + this.c + ",enableCheckPermission=" + this.d + ",locationSdkCallbackIntervalMillis=" + this.jdField_a_of_type_Long + ",locationBgTimeoutMillis=" + this.jdField_b_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aopz
  * JD-Core Version:    0.7.0.1
  */

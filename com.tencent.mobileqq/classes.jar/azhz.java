@@ -1,16 +1,6 @@
-import android.graphics.Rect;
-import java.io.File;
-
-class azhz
+public abstract interface azhz
 {
-  int jdField_a_of_type_Int;
-  ajwh jdField_a_of_type_Ajwh;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  File jdField_a_of_type_JavaIoFile;
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  
-  private azhz(azho paramazho) {}
+  public abstract void a(azia paramazia);
 }
 
 

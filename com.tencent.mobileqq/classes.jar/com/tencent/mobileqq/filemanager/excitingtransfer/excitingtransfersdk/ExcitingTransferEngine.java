@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import mqq.os.MqqHandler;
@@ -184,10 +185,6 @@ public class ExcitingTransferEngine
   
   public ExcitingTransferHostInfo getNextBigDataHost(long paramLong)
   {
-    ExcitingTransferEngine.ExcitingSendJobContent localExcitingSendJobContent = getSendJobContent(paramLong);
-    if (localExcitingSendJobContent != null) {
-      return localExcitingSendJobContent.getNextBigDataHost();
-    }
     return null;
   }
   
@@ -214,6 +211,15 @@ public class ExcitingTransferEngine
   
   public void onSendComplete(long paramLong, int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
   {
+    ExcitingTransferEngine.ExcitingSendJobContent localExcitingSendJobContent = getSendJobContent(paramLong);
+    if (localExcitingSendJobContent == null) {
+      return;
+    }
+    if ((localExcitingSendJobContent.mExcSendInfo.mBusInfo.bUseMediaPlatform) && (paramInt == 0))
+    {
+      paramExcitingTransferUploadResultRp.m_strFileIdCrc = ExcitingTransferNative.getMediaFileIdCrc(paramLong);
+      QLog.i(TAG, 1, "excitingID[" + paramLong + "] onSendComplete success, bUseMediaPlatform:true, m_strFileIdCrc:" + paramExcitingTransferUploadResultRp.m_strFileIdCrc);
+    }
     ThreadManager.getUIHandler().post(new ExcitingTransferEngine.2(this, paramLong, paramInt, paramExcitingTransferUploadResultRp));
   }
   
@@ -273,13 +279,7 @@ public class ExcitingTransferEngine
     ExcitingTransferNative.setDownloadConfig(paramExcitingTransferConfigInfo);
   }
   
-  public void setFailBigDataHost(long paramLong, String paramString, int paramInt)
-  {
-    ExcitingTransferEngine.ExcitingSendJobContent localExcitingSendJobContent = getSendJobContent(paramLong);
-    if (localExcitingSendJobContent != null) {
-      localExcitingSendJobContent.setFailBigDataHost(paramString, paramInt);
-    }
-  }
+  public void setFailBigDataHost(long paramLong, String paramString, int paramInt) {}
   
   public void setGlobalProxyInfo(int paramInt, String paramString1, short paramShort, String paramString2, String paramString3)
   {
@@ -301,7 +301,7 @@ public class ExcitingTransferEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine
  * JD-Core Version:    0.7.0.1
  */

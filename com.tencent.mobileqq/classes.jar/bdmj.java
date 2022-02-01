@@ -1,223 +1,232 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bdmj
+  extends bdkw
 {
-  public static float a(int paramInt1, int paramInt2)
+  private Context b;
+  
+  public bdmj(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      return 0.0F;
-    }
-    return Math.round(paramInt1 * 1.0F / paramInt2 * 100.0F) / 100.0F;
+    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
+    this.jdField_b_of_type_AndroidContentContext = paramContext;
   }
   
-  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  private String a(String paramString1, String paramString2)
   {
-    Bitmap localBitmap2 = null;
-    Bitmap localBitmap1;
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      localBitmap1 = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString1)) {
+      paramString1 = anni.a(2131713462);
     }
+    String str;
     do
     {
-      return localBitmap1;
-      localBitmap1 = paramBitmap;
-    } while (a(paramBitmap.getWidth(), paramBitmap.getHeight()) == a(paramInt1, paramInt2));
-    Paint localPaint = new Paint();
-    localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setAntiAlias(true);
+      return paramString1;
+      str = bglf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, true);
+      if ((str != null) && (!str.equals(paramString1))) {
+        break;
+      }
+      paramString1 = paramString2;
+    } while (!TextUtils.isEmpty(paramString2));
+    return str;
+  }
+  
+  public List<bdmd> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(c);
+    localArrayList.add(jdField_b_of_type_Bdmd);
+    return localArrayList;
+  }
+  
+  public List<bdmd> a(bdmc parambdmc)
+  {
+    ArrayList localArrayList = new ArrayList();
+    boolean bool;
     int i;
-    int j;
-    if (paramInt1 >= paramBitmap.getWidth())
+    if ((parambdmc instanceof GPadInfo))
     {
-      localBitmap1 = paramBitmap;
-      if (paramInt2 >= paramBitmap.getHeight()) {}
-    }
-    else
-    {
-      if (a(paramBitmap.getWidth(), paramInt1) < a(paramBitmap.getHeight(), paramInt2)) {
-        break label964;
+      parambdmc = (GPadInfo)parambdmc;
+      if ((this.jdField_b_of_type_AndroidContentContext == null) || (!(this.jdField_b_of_type_AndroidContentContext instanceof GroupTeamWorkListActivity))) {
+        break label142;
       }
-      i = (int)(paramBitmap.getHeight() * 1.0F / paramBitmap.getWidth() * paramInt1);
-      j = paramInt1;
+      bool = bfup.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((GroupTeamWorkListActivity)this.jdField_b_of_type_AndroidContentContext).a, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      if (parambdmc.creatorUin != this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()) {
+        break label137;
+      }
+      i = 1;
     }
     for (;;)
     {
-      localBitmap2 = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
-      new Canvas(localBitmap2).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, localBitmap2.getWidth(), localBitmap2.getHeight()), localPaint);
-      localBitmap1 = localBitmap2;
-      paramBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(paramBitmap);
-      localCanvas.drawBitmap(localBitmap1, new Rect(0, 0, localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3), new Rect(0, 0, localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3), localPaint);
-      localCanvas.drawBitmap(localBitmap1, new Rect(localBitmap1.getWidth() - localBitmap1.getWidth() / 3, 0, localBitmap1.getWidth(), localBitmap1.getHeight() / 3), new Rect(paramBitmap.getWidth() - localBitmap1.getWidth() / 3, 0, paramBitmap.getWidth(), localBitmap1.getHeight() / 3), localPaint);
-      localCanvas.drawBitmap(localBitmap1, new Rect(0, localBitmap1.getHeight() - localBitmap1.getHeight() / 3, localBitmap1.getWidth() / 3, localBitmap1.getHeight()), new Rect(0, paramBitmap.getHeight() - localBitmap1.getHeight() / 3, localBitmap1.getWidth() / 3, paramBitmap.getHeight()), localPaint);
-      localCanvas.drawBitmap(localBitmap1, new Rect(localBitmap1.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight() - localBitmap1.getHeight() / 3, localBitmap1.getWidth(), localBitmap1.getHeight()), new Rect(paramBitmap.getWidth() - localBitmap1.getWidth() / 3, paramBitmap.getHeight() - localBitmap1.getHeight() / 3, paramBitmap.getWidth(), paramBitmap.getHeight()), localPaint);
-      localCanvas.drawBitmap(localBitmap1, new Rect(localBitmap1.getWidth() / 3, 0, localBitmap1.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3), new Rect(localBitmap1.getWidth() / 3, 0, paramBitmap.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3), localPaint);
-      localCanvas.drawBitmap(localBitmap1, new Rect(0, localBitmap1.getHeight() / 3, localBitmap1.getWidth() / 3, localBitmap1.getHeight() - localBitmap1.getHeight() / 3), new Rect(0, localBitmap1.getHeight() / 3, localBitmap1.getWidth() / 3, paramBitmap.getHeight() - localBitmap1.getHeight() / 3), localPaint);
-      localCanvas.drawBitmap(localBitmap1, new Rect(localBitmap1.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3, localBitmap1.getWidth(), localBitmap1.getHeight() - localBitmap1.getHeight() / 3), new Rect(paramBitmap.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3, paramBitmap.getWidth(), paramBitmap.getHeight() - localBitmap1.getHeight() / 3), localPaint);
-      localCanvas.drawBitmap(localBitmap1, new Rect(localBitmap1.getWidth() / 3, localBitmap1.getHeight() - localBitmap1.getHeight() / 3, localBitmap1.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight()), new Rect(localBitmap1.getWidth() / 3, paramBitmap.getHeight() - localBitmap1.getHeight() / 3, paramBitmap.getWidth() - localBitmap1.getWidth() / 3, paramBitmap.getHeight()), localPaint);
-      localCanvas.drawBitmap(localBitmap1, new Rect(localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3, localBitmap1.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight() - localBitmap1.getHeight() / 3), new Rect(localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3, paramBitmap.getWidth() - localBitmap1.getWidth() / 3, paramBitmap.getHeight() - localBitmap1.getHeight() / 3), localPaint);
-      if (localBitmap2 != null) {
-        localBitmap2.recycle();
+      if ((i != 0) && (BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getBoolean("TIMDocLimitSettingFlag", false))) {}
+      localArrayList.add(c);
+      if ((i != 0) || (bool)) {
+        localArrayList.add(jdField_b_of_type_Bdmd);
       }
-      return paramBitmap;
-      label964:
-      j = (int)(paramBitmap.getWidth() * 1.0F / paramBitmap.getHeight() * paramInt2);
-      i = paramInt2;
+      return localArrayList;
+      label137:
+      i = 0;
+      continue;
+      label142:
+      i = 0;
+      bool = false;
     }
   }
   
-  public static TextView a(Activity paramActivity, ViewGroup paramViewGroup)
+  public View b(int paramInt1, bdmc parambdmc, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
   {
-    TextView localTextView = new TextView(paramActivity);
-    localTextView.setBackgroundResource(2130844680);
-    localTextView.setIncludeFontPadding(false);
-    localTextView.setClickable(false);
-    localTextView.setText("设置酷炫DIY名片！");
-    localTextView.setTextColor(-1);
-    localTextView.setTextSize(18.0F);
-    int i = aepi.a(7.0F, paramActivity.getResources());
-    int j = aepi.a(7.0F, paramActivity.getResources());
-    localTextView.setPadding(i, aepi.a(7.0F, paramActivity.getResources()), j, aepi.a(13.0F, paramActivity.getResources()));
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(9);
-    localLayoutParams.addRule(2, 2131372306);
-    localLayoutParams.rightMargin = aepi.a(15.0F, paramActivity.getResources());
-    localLayoutParams.leftMargin = aepi.a(15.0F, paramActivity.getResources());
-    localLayoutParams.bottomMargin = aepi.a(-1.0F, paramActivity.getResources());
-    paramViewGroup.addView(localTextView, localLayoutParams);
-    return localTextView;
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      wxe.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json is null");
+    View localView;
+    PadInfo localPadInfo;
+    label151:
+    long l;
+    label271:
+    label295:
+    Object localObject;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562956, paramViewGroup, false);
+      paramViewGroup = new bdml(this, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364567));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView = ((SingleLineHotwordTextView)localView.findViewById(2131364569));
+      paramViewGroup.c = ((TextView)localView.findViewById(2131364570));
+      paramViewGroup.b = ((TextView)localView.findViewById(2131364586));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364587));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = localView.findViewById(2131364571);
+      localView.setTag(paramViewGroup);
+      localPadInfo = (PadInfo)parambdmc;
+      if (localPadInfo.type != 1) {
+        break label494;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850528);
+      if (((localPadInfo instanceof GPadInfo)) && (((GPadInfo)localPadInfo).searchKeyWordList.size() > 0))
+      {
+        paramView = (ArrayList)((GPadInfo)localPadInfo).searchKeyWordList;
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView.setHotwords(paramView);
+      }
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView.setText(localPadInfo.title);
+      paramInt2 = localPadInfo.type_list;
+      if ((paramInt2 != 1) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals("" + localPadInfo.creatorUin))) {
+        break label531;
+      }
+      paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718456);
+      paramViewGroup.c.setText(paramView);
+      if (!(localPadInfo instanceof GPadInfo)) {
+        break label659;
+      }
+      l = localPadInfo.lastEditTime;
+      localObject = null;
+      paramView = localObject;
+      if (l > 0L)
+      {
+        if (l != localPadInfo.lastEditTime) {
+          break label677;
+        }
+        paramView = a("" + localPadInfo.lastEditorUin, localPadInfo.lastEditorNick);
+        paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718497), new Object[] { paramView });
+      }
+      label376:
+      if (paramView == null) {
+        break label768;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramViewGroup.b.setText(paramView);
+      paramView = bdjg.a(l);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+      label413:
+      if (this.jdField_b_of_type_Int != 1) {
+        break label842;
+      }
+      if (localPadInfo.type_list != 4) {
+        break label812;
+      }
+      if (!localPadInfo.pinInAllList) {
+        break label801;
+      }
+      localView.setBackgroundResource(2130839502);
     }
     for (;;)
     {
-      return null;
-      try
+      localView.setOnClickListener(paramOnClickListener);
+      localView.setOnLongClickListener(paramOnLongClickListener);
+      paramViewGroup.jdField_a_of_type_Bdmc = parambdmc;
+      localView.setTag(-1, Integer.valueOf(paramInt1));
+      return localView;
+      paramViewGroup = (bdml)paramView.getTag();
+      localView = paramView;
+      break;
+      label494:
+      if (localPadInfo.type == 3)
       {
-        paramString = new JSONObject(paramString).optJSONArray("bg");
-        if (paramString == null)
-        {
-          wxe.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json bg array is null");
-          return null;
-        }
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850529);
+        break label151;
       }
-      catch (JSONException paramString)
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850536);
+      break label151;
+      label531:
+      if (paramInt2 == 3)
       {
-        wxe.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json is illegal:" + paramString);
-        return null;
+        paramView = a("" + localPadInfo.creatorUin, localPadInfo.shardNick);
+        paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718498), new Object[] { paramView });
+        break label271;
       }
-      int i = 0;
-      while (i < paramString.length())
+      paramView = a("" + localPadInfo.creatorUin, localPadInfo.creatorNick);
+      paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718496), new Object[] { paramView });
+      break label271;
+      label659:
+      l = Math.max(localPadInfo.lastEditTime, localPadInfo.currentUserBrowseTime);
+      break label295;
+      label677:
+      if (l == 0L)
       {
-        JSONObject localJSONObject = paramString.getJSONObject(i);
-        if (localJSONObject != null)
-        {
-          if ("image_view".equals(localJSONObject.optString("type"))) {
-            return localJSONObject.optString("content");
-          }
-          wxe.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json bg array don't have image view");
-        }
-        i += 1;
+        paramView = anni.a(2131713467);
+        paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718495), new Object[] { paramView });
+        break label376;
+      }
+      paramView = localObject;
+      if (l != localPadInfo.currentUserBrowseTime) {
+        break label376;
+      }
+      paramView = anni.a(2131713446);
+      paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718499), new Object[] { paramView });
+      break label376;
+      label768:
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramViewGroup.b.setText("");
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      break label413;
+      label801:
+      localView.setBackgroundResource(2130839501);
+      continue;
+      label812:
+      if (localPadInfo.pinedFlag)
+      {
+        localView.setBackgroundResource(2130839502);
+      }
+      else
+      {
+        localView.setBackgroundResource(2130839501);
+        continue;
+        label842:
+        localView.setBackgroundResource(2130839501);
       }
     }
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    Intent localIntent = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(Card paramCard, QQAppInterface paramQQAppInterface, Activity paramActivity)
-  {
-    if (!aouy.c().a)
-    {
-      QQToast.a(paramActivity, 0, alud.a(2131711787), 0).a();
-      return;
-    }
-    if (!TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), paramCard.uin)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramCard = bddf.a(bool, paramCard.cardId);
-      Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-      localIntent.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
-      localIntent.putExtra("isShowAd", false);
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("has_red_dot", false);
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      localIntent.putExtra("individuation_url_type", 40203);
-      localIntent.putExtra("url", paramCard);
-      VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, paramCard, -1L, localIntent, true, 1036);
-      return;
-    }
-  }
-  
-  public static void a(TroopInfo paramTroopInfo, String paramString, Activity paramActivity)
-  {
-    if (paramTroopInfo == null)
-    {
-      QLog.e("vip_pretty.", 1, "goToPrettyTroopManagePage error,because troop info is null");
-      return;
-    }
-    if (paramTroopInfo.checkFlagExt4(3))
-    {
-      QLog.e("vip_pretty.", 1, "goToPrettyTroopManagePage open mine page");
-      a(aouq.c().a("troop", paramTroopInfo.troopuin), paramString, paramActivity);
-      return;
-    }
-    QLog.e("vip_pretty.", 1, "goToPrettyTroopManagePage open home page");
-    a(aouq.c().a("troop"), paramString, paramActivity);
-  }
-  
-  public static void a(String paramString1, String paramString2, Activity paramActivity)
-  {
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("uin", paramString2);
-    localIntent.putExtra("isShowAd", false);
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("has_red_dot", false);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    localIntent.putExtra("individuation_url_type", 40402);
-    localIntent.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-    localIntent.putExtra("url", paramString1);
-    VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, paramString1, -1L, localIntent, false, 0);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool = false;
-    if (!beat.a(paramQQAppInterface, "hide_diy_template_guide", false)) {
-      bool = aouy.c().a;
-    }
-    return bool;
   }
 }
 

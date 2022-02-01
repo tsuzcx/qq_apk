@@ -1,186 +1,80 @@
-import android.graphics.Matrix;
-import android.graphics.RectF;
-import com.tencent.aekit.openrender.internal.Frame;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.C2CGameInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
-import com.tencent.ttpic.model.SizeI;
-import com.tencent.util.Pair;
-import java.io.File;
-import java.util.List;
 
-public class lte
+class lte
+  implements lfk
 {
-  private final int jdField_a_of_type_Int;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  private final String jdField_a_of_type_JavaLangString = "MultipleTextureProcessor-" + Integer.toHexString(hashCode());
-  private ltb jdField_a_of_type_Ltb;
-  private ltg jdField_a_of_type_Ltg;
-  private ltj jdField_a_of_type_Ltj;
-  private final int jdField_b_of_type_Int;
-  private ltj jdField_b_of_type_Ltj;
+  lte(ltd paramltd) {}
   
-  public lte(int paramInt1, int paramInt2)
+  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "MultipleTextureProcessor: " + paramInt1 + ", " + paramInt2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Ltg = new ltg();
-    this.jdField_a_of_type_Ltg.a(new ltf(this));
-    this.jdField_a_of_type_Ltg.d();
-    this.jdField_a_of_type_Ltb = new ltb(paramInt1, paramInt2);
-    this.jdField_a_of_type_Ltg.a(this.jdField_a_of_type_Ltb);
-  }
-  
-  private ltj a(String paramString)
-  {
-    if (!FileUtils.exists(paramString))
+    bool2 = false;
+    String str = mpu.a();
+    if ((paramArrayOfByte == null) || (TextUtils.isEmpty(str)) || (paramInt1 != 9))
     {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "createCompositeFilter: " + paramString + " not exists");
-      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome error return, msgType=" + paramInt1);
+      }
+      return false;
     }
-    lti locallti = new lti(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "createCompositeFilter: create filter#" + Integer.toHexString(locallti.hashCode()));
-    locallti.a(paramString);
-    return locallti;
-  }
-  
-  private void a(List<lth> paramList)
-  {
-    if ((this.jdField_a_of_type_Ltj == null) || (!(this.jdField_a_of_type_Ltj instanceof lti))) {}
-    Object localObject;
-    float f1;
-    do
+    localAVRedPacketManager = (AVRedPacketManager)this.a.a.a(6);
+    localC2CGameInfo = new AVRedPacketGameSyncInfo.C2CGameInfo();
+    try
     {
-      return;
-      localObject = ((lti)this.jdField_a_of_type_Ltj).a();
-      f1 = this.jdField_a_of_type_Int / ((SizeI)localObject).width;
-      localObject = ((lti)this.jdField_a_of_type_Ltj).a();
-    } while (((List)localObject).size() != paramList.size());
-    int i = 0;
-    label74:
-    Pair localPair;
-    lth locallth;
-    if (i < paramList.size())
-    {
-      localPair = (Pair)((List)localObject).get(i);
-      locallth = (lth)paramList.get(i);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MultipleTextureProcessor", 1, "convertFaceDataModel #" + i + " (" + locallth.jdField_b_of_type_Int + ", " + locallth.c + "), (" + locallth.d + ", " + locallth.e + ")");
-      }
-      if ((locallth.jdField_a_of_type_JavaUtilList != null) && (locallth.e != 0) && (locallth.d != 0)) {
-        break label234;
-      }
+      localC2CGameInfo.mergeFrom(paramArrayOfByte);
+      bool1 = true;
     }
-    for (;;)
+    catch (Exception paramArrayOfByte)
     {
-      i += 1;
-      break label74;
-      break;
-      label234:
-      int j = 0;
-      while (j < locallth.jdField_a_of_type_JavaUtilList.size())
+      for (;;)
       {
-        float f2 = Math.max(((RectF)localPair.first).width() / locallth.d, ((RectF)localPair.first).height() / locallth.e);
-        locallth.jdField_a_of_type_JavaUtilList.set(j, ltd.a((TTFaceOriginDataModel)locallth.jdField_a_of_type_JavaUtilList.get(j), new RectF(0.0F, 0.0F, locallth.d, locallth.e), (RectF)localPair.first, (Matrix)localPair.second, f1, locallth.jdField_a_of_type_Boolean));
-        locallth.d = ((int)(locallth.d * f2));
-        locallth.e = ((int)(locallth.e * f2));
-        j += 1;
-      }
-      if (locallth.jdField_a_of_type_Boolean)
-      {
-        j = 0;
-        while (j < locallth.jdField_a_of_type_JavaUtilList.size())
+        boolean bool1 = bool2;
+        if (QLog.isColorLevel())
         {
-          ltd.a((TTFaceOriginDataModel)locallth.jdField_a_of_type_JavaUtilList.get(j));
-          j += 1;
+          QLog.e("AVRedPacketHandler", 2, "onC2CDataCome,", paramArrayOfByte);
+          bool1 = bool2;
+          continue;
+          if ((paramInt2 == 2) || (paramInt2 == 3)) {
+            localAVRedPacketManager.b(paramInt2);
+          } else if (paramInt2 == 4) {
+            localAVRedPacketManager.c(localC2CGameInfo.exceptionType.get());
+          }
         }
       }
     }
-  }
-  
-  private ltj b(String paramString)
-  {
-    if (!FileUtils.exists(paramString))
+    if (paramInt2 == 1)
     {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "createDecorateFilter: " + paramString + " not exists");
-      return null;
+      paramArrayOfByte = new Bundle();
+      paramArrayOfByte.putString("key", localC2CGameInfo.key.get());
+      paramArrayOfByte.putInt("gameState", localC2CGameInfo.state.get());
+      paramArrayOfByte.putString("peerUin", str);
+      paramArrayOfByte.putInt("fromWho", localC2CGameInfo.fromWho.get());
+      paramArrayOfByte.putString("money", localC2CGameInfo.money.get());
+      paramArrayOfByte.putInt("resultCode", localC2CGameInfo.resultCode.get());
+      paramArrayOfByte.putString("resultState", localC2CGameInfo.resultState.get());
+      paramArrayOfByte.putInt("musicId", localC2CGameInfo.musicId.get());
+      paramArrayOfByte.putInt("hitScore", localC2CGameInfo.scores.get());
+      paramArrayOfByte.putInt("enterType", localC2CGameInfo.enterType.get());
+      paramArrayOfByte.putInt("maxScore", localC2CGameInfo.maxScore.get());
+      paramArrayOfByte.putInt("totalEmojiNum", localC2CGameInfo.totalEmojiNum.get());
+      localAVRedPacketManager.a(bool1, paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome, isSucc: " + bool1 + ", subType=" + paramInt2);
+      }
+      return true;
     }
-    lta locallta = new lta();
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "createDecorateFilter: create filter#" + Integer.toHexString(locallta.hashCode()));
-    locallta.a(paramString);
-    return locallta;
-  }
-  
-  public Frame a(List<lth> paramList, long paramLong)
-  {
-    a(paramList);
-    this.jdField_a_of_type_Ltg.a(paramList, paramLong);
-    paramList = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = null;
-    return paramList;
-  }
-  
-  public void a()
-  {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: ");
-    if (this.jdField_a_of_type_Ltg != null)
-    {
-      this.jdField_a_of_type_Ltg.e();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: source#" + Integer.toHexString(this.jdField_a_of_type_Ltg.hashCode()));
-      this.jdField_a_of_type_Ltg = null;
-    }
-    if (this.jdField_a_of_type_Ltb != null)
-    {
-      this.jdField_a_of_type_Ltb.c();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: filter#" + Integer.toHexString(this.jdField_a_of_type_Ltb.hashCode()));
-      this.jdField_a_of_type_Ltb = null;
-    }
-    if (this.jdField_a_of_type_Ltj != null)
-    {
-      this.jdField_a_of_type_Ltj.c();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: filter#" + Integer.toHexString(this.jdField_a_of_type_Ltj.hashCode()));
-      this.jdField_a_of_type_Ltj = null;
-    }
-    if (this.jdField_b_of_type_Ltj != null)
-    {
-      this.jdField_b_of_type_Ltj.c();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: filter#" + Integer.toHexString(this.jdField_b_of_type_Ltj.hashCode()));
-      this.jdField_b_of_type_Ltj = null;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: " + paramString);
-    ltj localltj = a(paramString + File.separator + "pag" + File.separator + "pag");
-    Object localObject = localltj;
-    if (localltj == null) {
-      localObject = this.jdField_a_of_type_Ltb;
-    }
-    paramString = b(paramString + File.separator + "ae");
-    this.jdField_a_of_type_Ltg.c();
-    if ((this.jdField_a_of_type_Ltj != null) && (this.jdField_a_of_type_Ltj != this.jdField_a_of_type_Ltb))
-    {
-      this.jdField_a_of_type_Ltj.a().c();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: destroy filter#" + Integer.toHexString(this.jdField_a_of_type_Ltj.hashCode()));
-    }
-    this.jdField_a_of_type_Ltg.a((ltj)localObject);
-    this.jdField_a_of_type_Ltj = ((ltj)localObject);
-    if (this.jdField_b_of_type_Ltj != null)
-    {
-      this.jdField_b_of_type_Ltj.a().c();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: destroy filter#" + Integer.toHexString(this.jdField_b_of_type_Ltj.hashCode()));
-    }
-    if (paramString != null) {
-      ((ltj)localObject).a(paramString, 0);
-    }
-    this.jdField_b_of_type_Ltj = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lte
  * JD-Core Version:    0.7.0.1
  */

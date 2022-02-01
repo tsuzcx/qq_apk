@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import alof;
-import alqf;
+import anhk;
+import anjo;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -11,11 +11,11 @@ import protocol.KQQConfig.GetResourceRespInfo;
 public class ConfigHandler$5
   implements Runnable
 {
-  public ConfigHandler$5(alqf paramalqf, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public ConfigHandler$5(anjo paramanjo, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
-    File localFile = new File(alof.ce);
+    File localFile = new File(anhk.ch);
     try
     {
       if (HttpDownloadUtil.a(this.this$0.app, new URL(this.jdField_a_of_type_JavaLangString), localFile))
@@ -34,7 +34,7 @@ public class ConfigHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.5
  * JD-Core Version:    0.7.0.1
  */

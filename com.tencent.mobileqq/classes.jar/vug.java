@@ -1,23 +1,23 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
-public class vug
-  implements vme
+class vug
+  implements zxa<FeedCloudRead.StGetMainPageRsp>
 {
-  public vug(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  vug(vuf paramvuf, QCircleGetMainPageRequest paramQCircleGetMainPageRequest, boolean paramBoolean) {}
   
-  public void a()
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    wxe.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoaded");
-  }
-  
-  public void b()
-  {
-    wxe.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoadedFailed");
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d("QCirclePersonalDetailViewModel", 1, "requestData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
+    this.jdField_a_of_type_Vuf.a(paramBoolean, paramLong, paramString, paramStGetMainPageRsp, Boolean.valueOf(this.jdField_a_of_type_Boolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vug
  * JD-Core Version:    0.7.0.1
  */

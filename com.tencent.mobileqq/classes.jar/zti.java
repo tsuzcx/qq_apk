@@ -1,36 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.datadef.ProductInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 
-public final class zti
-  implements Parcelable.Creator<ProductInfo>
+public class zti
+  implements DialogInterface.OnCancelListener
 {
-  public ProductInfo a(Parcel paramParcel)
-  {
-    ProductInfo localProductInfo = new ProductInfo();
-    localProductInfo.productId = paramParcel.readInt();
-    localProductInfo.deviceType = paramParcel.readInt();
-    localProductInfo.bindType = paramParcel.readInt();
-    localProductInfo.supportMainMsgType = paramParcel.readInt();
-    localProductInfo.supportFuncMsgType = paramParcel.readInt();
-    localProductInfo.deviceName = paramParcel.readString();
-    localProductInfo.uConnectType = paramParcel.readInt();
-    localProductInfo.deviceOSType = paramParcel.readInt();
-    localProductInfo.regType = paramParcel.readInt();
-    localProductInfo.linkStateDesc = paramParcel.readString();
-    localProductInfo.linkStepDesc = paramParcel.readString();
-    localProductInfo.linkDescImg = paramParcel.readString();
-    return localProductInfo;
-  }
+  public zti(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
-  public ProductInfo[] a(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return new ProductInfo[paramInt];
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zti
  * JD-Core Version:    0.7.0.1
  */

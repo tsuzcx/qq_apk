@@ -1,18 +1,12 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-class afry
-  extends afuf
+public class afry
 {
-  afry(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
-  
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new afwa(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

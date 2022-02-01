@@ -1,17 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
+import android.content.Context;
+import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.MsgUtils.Proxy;
 
-public class bcqn
+public final class bcqn
+  implements RecentRoute.MsgUtils.Proxy
 {
-  ainn jdField_a_of_type_Ainn;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  BorderURLImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView;
-  
-  protected bcqn(bcqm parambcqm) {}
+  public void buildMsgSummaryForMsg(Context paramContext, IMCoreAppRuntime paramIMCoreAppRuntime, IMCoreMessageStub paramIMCoreMessageStub, int paramInt, MsgSummary paramMsgSummary, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    bgnr.a(paramContext, paramIMCoreAppRuntime, paramIMCoreMessageStub, paramInt, paramMsgSummary, paramBoolean1, paramBoolean2);
+  }
 }
 
 

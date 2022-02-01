@@ -1,23 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ProfileNameView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class beti
-  implements View.OnClickListener
+class beti
+  implements DialogInterface.OnClickListener
 {
-  public beti(ProfileNameView paramProfileNameView, awqt paramawqt) {}
+  beti(besy parambesy, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = bcos.a().a(this.jdField_a_of_type_Awqt.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Awqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("url", str);
-    paramView.getContext().startActivity(localIntent);
-    azqs.b(null, "dc00898", "", "", "0X800A708", "0X800A708", 0, 0, "", "", "", "");
+    if (paramInt == 1) {
+      besy.a(this.jdField_a_of_type_Besy, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    }
   }
 }
 

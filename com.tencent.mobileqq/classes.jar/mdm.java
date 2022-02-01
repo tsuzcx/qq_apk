@@ -1,23 +1,22 @@
-import com.tencent.av.ui.AVActivity;
-import java.util.Comparator;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.ui.GAudioMembersCtrlActivity.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class mdm
-  implements Comparator<lqq>
+  extends lem
 {
-  public mdm(AVActivity paramAVActivity) {}
+  public mdm(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public int a(lqq paramlqq1, lqq paramlqq2)
+  protected void a(long paramLong1, long paramLong2, ArrayList<lco> paramArrayList)
   {
-    if (paramlqq1.a) {}
-    while (paramlqq2.a) {
-      return 1;
-    }
-    return 0;
+    ThreadManager.getUIHandler().post(new GAudioMembersCtrlActivity.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mdm
  * JD-Core Version:    0.7.0.1
  */

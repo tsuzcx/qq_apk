@@ -1,28 +1,25 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import aooj;
-import aook;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
 import java.util.List;
+import org.json.JSONObject;
 
 class BaseJsPluginEngine$4
-  implements Runnable
+  implements MiniAppCmdInterface
 {
-  BaseJsPluginEngine$4(BaseJsPluginEngine paramBaseJsPluginEngine, String paramString) {}
+  BaseJsPluginEngine$4(BaseJsPluginEngine paramBaseJsPluginEngine, JsRuntime paramJsRuntime, List paramList, int paramInt) {}
   
-  public void run()
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    aooj localaooj = aook.a();
-    if ((localaooj != null) && (localaooj.a() != null) && (localaooj.a().contains(this.val$eventName))) {
-      MiniProgramLpReportDC04239.reportApiInvoke(this.this$0.appBrandRuntime.getApkgInfo().appConfig, this.val$eventName);
+    if (paramBoolean) {
+      this.this$0.onceSubMsgCallbackSuc(this.val$webview, this.val$allSubMsg, this.val$callbackId);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine.4
  * JD-Core Version:    0.7.0.1
  */

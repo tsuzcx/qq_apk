@@ -1,39 +1,150 @@
-import com.tencent.gdtad.views.image.GdtGifImageView;
-import com.tencent.image.URLDrawable;
-import java.lang.ref.WeakReference;
-import java.net.URL;
+import android.content.Context;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aaun
-  implements aaum
+  extends aaup
 {
-  public aaun(GdtGifImageView paramGdtGifImageView) {}
+  private int jdField_a_of_type_Int;
+  protected aauj a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private List<aaum> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int b;
   
-  public void a(URLDrawable paramURLDrawable)
+  public aaun(Context paramContext)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (String str = paramURLDrawable.getURL().toString();; str = null)
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    a(2131559150);
+    this.b = 4;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredWidth();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    if (paramInt3 > paramInt1)
     {
-      aase.b("GdtImageView", String.format("onLoadSuccessful %s", new Object[] { str }));
-      GdtGifImageView.a(this.a, paramURLDrawable, str);
-      if ((GdtGifImageView.a(this.a) != null) && (GdtGifImageView.a(this.a).get() != null) && (GdtGifImageView.a(this.a))) {
-        ((aauo)GdtGifImageView.a(this.a).get()).a(true);
+      if (paramInt3 > paramInt2 * 2)
+      {
+        localLayoutParams.leftMargin = (paramInt2 - i / 2);
+        return;
       }
+      if (paramInt3 > (paramInt4 - paramInt2) * 2)
+      {
+        localLayoutParams.leftMargin = (paramInt2 + paramInt3 - paramInt4 - i / 2);
+        return;
+      }
+      localLayoutParams.addRule(14);
       return;
+    }
+    localLayoutParams.addRule(14);
+  }
+  
+  private void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    switch (this.b)
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755041);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131370638));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362942));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+    super.b(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void a(aauj paramaauj)
+  {
+    this.jdField_a_of_type_Aauj = paramaauj;
+  }
+  
+  public void a(aaum paramaaum)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramaaum);
+    String str = paramaaum.b();
+    Drawable localDrawable = paramaaum.a();
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      ((ImageView)localObject1).setBackgroundResource(2130839647);
+      localObject2 = new LinearLayout.LayoutParams(-1, -2, 1.0F);
+      ((LinearLayout.LayoutParams)localObject2).setMargins(afur.a(15.0F, ((ImageView)localObject1).getResources()), 0, afur.a(15.0F, ((ImageView)localObject1).getResources()), 0);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+    }
+    Object localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559149, null);
+    Object localObject2 = (ImageView)((View)localObject1).findViewById(2131370644);
+    TextView localTextView = (TextView)((View)localObject1).findViewById(2131370656);
+    if (localDrawable != null)
+    {
+      ((ImageView)localObject2).setImageDrawable(localDrawable);
+      if (str == null) {
+        break label267;
+      }
+      if (nmi.a(str) <= 18) {
+        break label258;
+      }
+      localTextView.setText(nmi.a(str, 18, "..."));
+    }
+    for (;;)
+    {
+      ((View)localObject1).setOnClickListener(new aauo(this, paramaaum.c(), paramaaum.a()));
+      ((View)localObject1).setFocusable(true);
+      ((View)localObject1).setClickable(true);
+      paramaaum = new LinearLayout.LayoutParams(-1, -2, 1.0F);
+      paramaaum.gravity = 17;
+      ((View)localObject1).setLayoutParams(paramaaum);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1);
+      this.jdField_a_of_type_Int += 1;
+      return;
+      ((ImageView)localObject2).setVisibility(8);
+      break;
+      label258:
+      localTextView.setText(str);
+      continue;
+      label267:
+      localTextView.setVisibility(8);
     }
   }
   
-  public void b(URLDrawable paramURLDrawable)
+  public void a(View paramView)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (String str = paramURLDrawable.getURL().toString();; str = null)
-    {
-      aase.b("GdtImageView", String.format("onLoadFailed %s", new Object[] { str }));
-      GdtGifImageView.a(this.a, paramURLDrawable, str);
-      if ((GdtGifImageView.a(this.a) != null) && (GdtGifImageView.a(this.a).get() != null)) {
-        ((aauo)GdtGifImageView.a(this.a).get()).a(false);
-      }
-      return;
-    }
+    a();
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    Rect localRect = new Rect(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
+    this.jdField_a_of_type_AndroidViewView.measure(-2, -2);
+    int i = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
+    int j = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
+    int k = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getWidth();
+    int m = arrayOfInt[0];
+    int n = (paramView.getWidth() - i) / 2;
+    int i1 = localRect.top;
+    a(paramView.getWidth(), localRect.centerX(), i, k);
+    a(k, localRect.centerX(), true);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, m + n, i1 - j - 10);
   }
 }
 

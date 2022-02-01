@@ -2,16 +2,16 @@ package com.tencent.mobileqq.data;
 
 import QQService.UserProfile;
 import QQService.VipBaseInfo;
-import awge;
-import awhp;
-import bdns;
+import bgsu;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.mobileqq.richstatus.RichStatus;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="lEctID,type")
 public class CardProfile
-  extends awge
+  extends Entity
 {
   public static final int TYPE_FAVORITE = 3;
   public static final int TYPE_VISITOR = 1;
@@ -39,7 +39,7 @@ public class CardProfile
   public short shIntroType;
   public VipBaseInfo stVipInfo;
   public String strNick;
-  @awhp
+  @notColumn
   public String strTime = "";
   public int type = 1;
   public long uSource;
@@ -86,7 +86,7 @@ public class CardProfile
     localCardProfile.bIsLastVoteCharged = this.bIsLastVoteCharged;
     localCardProfile.vRichSign = this.vRichSign;
     if (this.lTime > 0) {
-      localCardProfile.strTime = bdns.a(this.lTime * 1000L, true, "yyyy-MM-dd");
+      localCardProfile.strTime = bgsu.a(this.lTime * 1000L, true, "yyyy-MM-dd");
     }
     return localCardProfile;
   }
@@ -145,7 +145,7 @@ public class CardProfile
     this.bAvailableCnt = paramUserProfile.bAvailableCnt;
     this.bTodayVotedCnt = paramUserProfile.bTodayVotedCnt;
     if (this.lTime > 0) {
-      this.strTime = bdns.a(this.lTime * 1000L, true, "yyyy-MM-dd");
+      this.strTime = bgsu.a(this.lTime * 1000L, true, "yyyy-MM-dd");
     }
     this.uSource = paramUserProfile.uSource;
     this.bCloseNeighborVote = ((byte)paramUserProfile.bCloseNeighborVote);
@@ -173,7 +173,7 @@ public class CardProfile
   public void updateTime(long paramLong)
   {
     this.lTime = ((int)paramLong);
-    this.strTime = bdns.a(1000L * paramLong, true, "yyyy-MM-dd");
+    this.strTime = bgsu.a(1000L * paramLong, true, "yyyy-MM-dd");
   }
 }
 

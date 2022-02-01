@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ocr;
 
-import avvi;
+import ayfa;
 
 public class OCRManager$1
   implements Runnable
 {
-  public OCRManager$1(avvi paramavvi) {}
+  public OCRManager$1(ayfa paramayfa) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class OCRManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRManager.1
  * JD-Core Version:    0.7.0.1
  */

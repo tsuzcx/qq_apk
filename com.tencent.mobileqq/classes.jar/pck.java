@@ -1,31 +1,21 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import java.util.List;
 
-public class pck
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+class pck
+  extends pcm
 {
-  public pck(VideoView paramVideoView) {}
-  
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  pck(pbe parampbe, List paramList)
   {
-    try
-    {
-      if (VideoView.a(this.a) != null) {
-        VideoView.a(this.a).start();
-      }
-      if (VideoView.a(this.a) != null) {
-        this.a.a.postDelayed(this.a, 500L);
-      }
-      return;
-    }
-    finally {}
+    super(parampbe, null);
+  }
+  
+  void a(pcp parampcp)
+  {
+    parampcp.onCommentListLoad(1, true, this.jdField_a_of_type_JavaUtilList, pbe.b(this.jdField_a_of_type_Pbe), 3, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pck
  * JD-Core Version:    0.7.0.1
  */

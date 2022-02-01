@@ -1,19 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aeag
-  extends BroadcastReceiver
+  implements DialogInterface.OnDismissListener
 {
-  public aeag(SubLoginActivity paramSubLoginActivity) {}
+  public aeag(Conversation paramConversation) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    QLog.d("Q.subaccount.SubLoginActivity", 1, "AutoLoginReceiver onReceive");
-    SubLoginActivity.a(this.a, true);
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

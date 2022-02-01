@@ -3,12 +3,12 @@ package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import nbs;
+import nkl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class IVOfflinePluginImpl$1
-  implements nbs
+  implements nkl
 {
   IVOfflinePluginImpl$1(IVOfflinePluginImpl paramIVOfflinePluginImpl) {}
   
@@ -53,7 +53,7 @@ class IVOfflinePluginImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVOfflinePluginImpl.1
  * JD-Core Version:    0.7.0.1
  */

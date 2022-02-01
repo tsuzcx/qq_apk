@@ -1,34 +1,40 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class rsg
-  implements Animation.AnimationListener
+public class rsg<K, V>
 {
-  public rsg(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
+  private Map a = new LinkedHashMap();
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void a(V paramV, rsh paramrsh)
   {
-    ImageView localImageView = ReadInJoyFastWebBottomSocialView.a(this.a);
-    if (ReadInJoyFastWebBottomSocialView.a(this.a).a) {}
-    for (int i = 2130842488;; i = 2130842490)
-    {
-      localImageView.setImageResource(i);
-      paramAnimation.setInterpolator(new AnticipateInterpolator());
-      return;
-    }
+    this.a.put(paramrsh, paramV);
   }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean a(K paramK, rsi paramrsi)
+  {
+    Iterator localIterator = this.a.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      rsh localrsh = (rsh)localIterator.next();
+      if ((localrsh != null) && (!localrsh.a(paramK)))
+      {
+        if ((paramrsi != null) && (this.a.get(localrsh) != null)) {
+          paramrsi.a(this.a.get(localrsh));
+        }
+        return false;
+      }
+    }
+    if (paramrsi != null) {
+      paramrsi.a();
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rsg
  * JD-Core Version:    0.7.0.1
  */

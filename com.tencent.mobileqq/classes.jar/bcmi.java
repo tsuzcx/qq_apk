@@ -1,39 +1,181 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.opengl.GLES20;
+import com.tencent.maxvideo.common.AVIOStruct;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bcmi
 {
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, nac paramnac)
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
+  private bcmf[] jdField_a_of_type_ArrayOfBcmf = new bcmf[3];
+  
+  private boolean c()
   {
-    if (paramLong <= 0L) {
-      return;
-    }
-    mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.5,3,4555");
-    localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.seqno.set(0);
-    localGetPublicAccountDetailInfoRequest.luin.set(paramLong);
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("uin", paramLong);
-    mzy.a(paramQQAppInterface, paramnac, localGetPublicAccountDetailInfoRequest.toByteArray(), "PubAccountSvc.get_detail_info", localBundle);
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, nac paramnac, Bundle paramBundle)
+  public bcmf a()
   {
-    mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
-    localFollowRequest.luin.set(paramLong);
-    localFollowRequest.ext.set("0");
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    if (!c()) {
+      return null;
     }
-    mzy.a(paramQQAppInterface, paramnac, localFollowRequest.toByteArray(), "PubAccountSvc.follow", localBundle);
-    nrt.a(paramQQAppInterface, "" + paramLong, 0);
+    int i = 0;
+    bcmf localbcmf;
+    if (i < this.jdField_a_of_type_ArrayOfBcmf.length) {
+      if (this.jdField_a_of_type_ArrayOfBcmf[i].b() == 0)
+      {
+        localbcmf = this.jdField_a_of_type_ArrayOfBcmf[i];
+        localbcmf.d();
+      }
+    }
+    for (;;)
+    {
+      return localbcmf;
+      i += 1;
+      break;
+      localbcmf = null;
+    }
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    while (i < this.jdField_a_of_type_ArrayOfBcmf.length)
+    {
+      this.jdField_a_of_type_ArrayOfBcmf[i] = new bcmf(this.jdField_a_of_type_ArrayOfInt[i]);
+      i += 1;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(1);
+  }
+  
+  public void a(bcmh parambcmh)
+  {
+    if (c())
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfBcmf.length)
+      {
+        this.jdField_a_of_type_ArrayOfBcmf[i].a(parambcmh);
+        i += 1;
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    if (!c()) {}
+    for (;;)
+    {
+      return false;
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfBcmf.length)
+      {
+        if (this.jdField_a_of_type_ArrayOfBcmf[i].a() == 3) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public bcmf b()
+  {
+    if (!c()) {
+      return null;
+    }
+    int i = 0;
+    bcmf localbcmf;
+    if (i < this.jdField_a_of_type_ArrayOfBcmf.length)
+    {
+      if (this.jdField_a_of_type_ArrayOfBcmf[i].c() == 0) {}
+      while (this.jdField_a_of_type_ArrayOfBcmf[i].a() != 0)
+      {
+        i += 1;
+        break;
+      }
+      localbcmf = this.jdField_a_of_type_ArrayOfBcmf[i];
+      localbcmf.d();
+    }
+    for (;;)
+    {
+      return localbcmf;
+      localbcmf = null;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0) == 1)
+    {
+      GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfBcmf.length)
+      {
+        if (this.jdField_a_of_type_ArrayOfBcmf[i] != null)
+        {
+          this.jdField_a_of_type_ArrayOfBcmf[i].b();
+          this.jdField_a_of_type_ArrayOfBcmf[i] = null;
+        }
+        this.jdField_a_of_type_ArrayOfInt[i] = 0;
+        i += 1;
+      }
+    }
+  }
+  
+  public boolean b()
+  {
+    int i = 0;
+    if (!c()) {
+      return false;
+    }
+    while (i < this.jdField_a_of_type_ArrayOfBcmf.length)
+    {
+      this.jdField_a_of_type_ArrayOfBcmf[i].c();
+      i += 1;
+    }
+    return true;
+  }
+  
+  public bcmf c()
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    if (!c()) {}
+    int i;
+    label18:
+    do
+    {
+      return localObject2;
+      i = 0;
+      localObject2 = localObject1;
+    } while (i >= this.jdField_a_of_type_ArrayOfBcmf.length);
+    bcmf localbcmf;
+    if (this.jdField_a_of_type_ArrayOfBcmf[i].a() == 2)
+    {
+      localbcmf = this.jdField_a_of_type_ArrayOfBcmf[i];
+      if (localObject1 == null) {
+        localObject1 = localbcmf;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label18;
+      AVIOStruct localAVIOStruct = (AVIOStruct)localObject1.a.a;
+      localObject2 = (AVIOStruct)localbcmf.a.a;
+      long l = localAVIOStruct.vFrameTime;
+      if (((AVIOStruct)localObject2).vFrameTime > l)
+      {
+        localObject2 = localObject1;
+        if (localAVIOStruct.pFrameIndex == 0) {
+          break;
+        }
+        localObject1.c();
+        localObject1 = localbcmf;
+        continue;
+      }
+      localbcmf.c();
+    }
   }
 }
 

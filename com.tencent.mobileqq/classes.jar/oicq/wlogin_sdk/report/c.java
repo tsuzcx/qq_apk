@@ -81,8 +81,8 @@ public class c
           a.a().a(((StringBuilder)localObject1).toString());
         }
       }
-      if (t.t != null) {
-        a.a().a(t.t);
+      if (t.u != null) {
+        a.a().a(t.u);
       }
     }
   }

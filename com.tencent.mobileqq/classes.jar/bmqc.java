@@ -1,8 +1,8 @@
-public abstract interface bmqc
+public class bmqc
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(bmqb parambmqb);
+  public int a;
+  public String a;
+  public int b;
 }
 
 

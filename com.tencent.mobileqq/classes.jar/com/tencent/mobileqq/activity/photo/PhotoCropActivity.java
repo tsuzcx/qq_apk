@@ -1,31 +1,35 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aioe;
-import aiog;
-import aioh;
-import aioi;
-import aioj;
-import aiok;
-import aioo;
-import alpq;
+import Override;
+import akey;
+import akfa;
+import akfb;
+import akfc;
+import akfd;
+import akfe;
+import akfi;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import azqs;
-import bdfa;
-import bety;
+import aniz;
+import bcst;
+import bgkc;
+import biau;
 import com.tencent.mobileqq.activity.PortraitImageview;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 
@@ -35,15 +39,15 @@ public class PhotoCropActivity
 {
   public int a;
   final long jdField_a_of_type_Long = 10000L;
-  aioe jdField_a_of_type_Aioe;
-  alpq jdField_a_of_type_Alpq = new aioi(this);
+  akey jdField_a_of_type_Akey;
   Intent jdField_a_of_type_AndroidContentIntent;
   public Handler a;
   View jdField_a_of_type_AndroidViewView;
   public ViewGroup a;
   public Button a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bety a;
+  aniz jdField_a_of_type_Aniz = new akfc(this);
+  public biau a;
   public PortraitImageview a;
   public RegionView a;
   public String a;
@@ -68,7 +72,7 @@ public class PhotoCropActivity
   public PhotoCropActivity()
   {
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new aiog(this);
+    this.jdField_a_of_type_AndroidOsHandler = new akfa(this);
   }
   
   private void a(int paramInt)
@@ -84,20 +88,20 @@ public class PhotoCropActivity
       return;
     }
     this.jdField_c_of_type_Boolean = true;
-    new aiok(this, null).execute(new Void[0]);
+    new akfe(this, null).execute(new Void[0]);
   }
   
   @SuppressLint({"NewApi"})
   void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376034);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376788);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(true);
     }
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131371925));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364968));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363031));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377938));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131372497));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365204));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363216));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378776));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
@@ -109,7 +113,7 @@ public class PhotoCropActivity
       this.jdField_a_of_type_AndroidWidgetTextView.setText("调整QQ头像");
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview = new PortraitImageview(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.addOnLayoutChangeListener(new aioh(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.addOnLayoutChangeListener(new akfb(this));
   }
   
   protected boolean a()
@@ -131,7 +135,7 @@ public class PhotoCropActivity
     this.jdField_a_of_type_Int = localIntent.getIntExtra("BUSINESS_ORIGIN_NEW", 0);
     if (this.jdField_a_of_type_JavaLangString == null)
     {
-      QQToast.a(this, 2131695249, 0).a();
+      QQToast.a(this, 2131694264, 0).a();
       return false;
     }
     if (QLog.isColorLevel()) {
@@ -144,7 +148,7 @@ public class PhotoCropActivity
       QLog.d("PhotoCropActivity", 2, "initData from=" + this.jdField_b_of_type_JavaLangString + " targetSampleSize=" + this.g + " keepClipInfo=" + this.jdField_b_of_type_Boolean);
     }
     if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.jdField_b_of_type_JavaLangString)) {
-      azqs.b(this.app, "dc00898", "", "", "0X8009B68", "0X8009B68", 0, 0, "", "", "", "");
+      bcst.b(this.app, "dc00898", "", "", "0X8009B68", "0X8009B68", 0, 0, "", "", "", "");
     }
     return true;
   }
@@ -155,10 +159,10 @@ public class PhotoCropActivity
     {
       if (!isFinishing())
       {
-        this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
-        this.jdField_a_of_type_Bety.setCancelable(false);
-        this.jdField_a_of_type_Bety.c(2131690826);
-        this.jdField_a_of_type_Bety.show();
+        this.jdField_a_of_type_Biau = new biau(this, getTitleBarHeight());
+        this.jdField_a_of_type_Biau.setCancelable(false);
+        this.jdField_a_of_type_Biau.c(2131690689);
+        this.jdField_a_of_type_Biau.show();
       }
       return;
     }
@@ -170,18 +174,26 @@ public class PhotoCropActivity
   
   public void c()
   {
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {}
+    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bety.dismiss();
+      this.jdField_a_of_type_Biau.dismiss();
       label24:
-      this.jdField_a_of_type_Bety = null;
+      this.jdField_a_of_type_Biau = null;
       return;
     }
     catch (Exception localException)
     {
       break label24;
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -197,22 +209,22 @@ public class PhotoCropActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559430);
+    super.setContentView(2131559560);
     if (!a())
     {
       finish();
       return false;
     }
     a(this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.e, this.f, this.h);
-    addObserver(this.jdField_a_of_type_Alpq);
-    new aioj(this, null).execute(new Void[0]);
+    addObserver(this.jdField_a_of_type_Aniz);
+    new akfd(this, null).execute(new Void[0]);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Alpq);
+    removeObserver(this.jdField_a_of_type_Aniz);
   }
   
   public void doOnNewIntent(Intent paramIntent)
@@ -228,7 +240,7 @@ public class PhotoCropActivity
       return;
     }
     a(this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.e, this.f, this.h);
-    new aioj(this, null).execute(new Void[0]);
+    new akfd(this, null).execute(new Void[0]);
   }
   
   public String getModuleId()
@@ -254,7 +266,7 @@ public class PhotoCropActivity
     for (;;)
     {
       finish();
-      bdfa.anim(this, true, false);
+      bgkc.anim(this, true, false);
       return true;
       if ("FROM_NEARBY_PROFILE".equals(this.jdField_b_of_type_JavaLangString))
       {
@@ -262,7 +274,7 @@ public class PhotoCropActivity
       }
       else if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.jdField_b_of_type_JavaLangString))
       {
-        azqs.b(this.app, "dc00898", "", "", "0X8009B69", "0X8009B69", 0, 0, "", "", "", "");
+        bcst.b(this.app, "dc00898", "", "", "0X8009B69", "0X8009B69", 0, 0, "", "", "", "");
         if (QLog.isColorLevel()) {
           QLog.d("PhotoCropActivity", 2, "onBackEvent");
         }
@@ -277,40 +289,49 @@ public class PhotoCropActivity
   {
     switch (paramView.getId())
     {
-    default: 
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 2131364968: 
       if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
       {
-        if (this.jdField_a_of_type_Aioe == null)
+        if (this.jdField_a_of_type_Akey == null)
         {
-          this.jdField_a_of_type_Aioe = new aioo(this);
-          this.jdField_a_of_type_Aioe.a(this.jdField_a_of_type_ArrayOfJavaLangString);
+          this.jdField_a_of_type_Akey = new akfi(this);
+          this.jdField_a_of_type_Akey.a(this.jdField_a_of_type_ArrayOfJavaLangString);
         }
         if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView != null) {
-          this.jdField_a_of_type_Aioe.a();
+          this.jdField_a_of_type_Akey.a();
         }
       }
       for (;;)
       {
-        bdfa.clearSelectItemInfo();
-        bdfa.a(this.jdField_a_of_type_AndroidContentIntent);
+        bgkc.clearSelectItemInfo();
+        bgkc.a(this.jdField_a_of_type_AndroidContentIntent);
         if (!"FROM_SDK_AVATAR_SET_IMAGE".equals(this.jdField_b_of_type_JavaLangString)) {
           break;
         }
-        azqs.b(this.app, "dc00898", "", "", "0X8009B6A", "0X8009B6A", 0, 0, "", "", "", "");
-        return;
+        bcst.b(this.app, "dc00898", "", "", "0X8009B6A", "0X8009B6A", 0, 0, "", "", "", "");
+        break;
         if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView != null) {
           a();
         }
       }
+      onBackEvent();
     }
-    onBackEvent();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoCropActivity
  * JD-Core Version:    0.7.0.1
  */

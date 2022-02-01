@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.activity;
 
-import alud;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -21,9 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import auep;
-import aueq;
-import bety;
+import anni;
+import awlz;
+import awma;
+import biau;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar;
@@ -51,11 +51,14 @@ import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.minigame.manager.EngineChannel;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportFragment;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import common.config.service.QzoneConfig;
 
 public class LoadingFragment
-  extends Fragment
+  extends ReportFragment
   implements DialogInterface.OnDismissListener, Handler.Callback, View.OnClickListener
 {
   private static final long LOAD_TIMEOUT = 30000L;
@@ -76,7 +79,7 @@ public class LoadingFragment
   private EngineChannel mEngineChannel;
   boolean mIsBaseLibVersionMatch = false;
   private ImageView mLogoView;
-  private aueq mMiniLibLoadListener = new LoadingFragment.2(this);
+  private awma mMiniLibLoadListener = new LoadingFragment.2(this);
   private ImageView mMoreView;
   private TextView mNameView;
   private View mRootView = BrandPagePool.g().getLoadingRootView();
@@ -85,7 +88,7 @@ public class LoadingFragment
   private RelativeLayout rightContainer;
   private RelativeLayout root;
   Handler uiHandler;
-  private bety x5LoadingDialog;
+  private biau x5LoadingDialog;
   
   public LoadingFragment()
   {
@@ -123,7 +126,7 @@ public class LoadingFragment
     {
       if (bool)
       {
-        String str3 = StorageUtil.getPreference().getString("version", "1.14.0.00225");
+        String str3 = StorageUtil.getPreference().getString("version", "1.17.0.00206");
         if (QLog.isColorLevel()) {
           QLog.i("miniapp-start", 1, "checkBaseLibVersionMatch 需要升级 sp MaxVersion:" + str3);
         }
@@ -169,19 +172,19 @@ public class LoadingFragment
   
   private void initUI(View paramView)
   {
-    this.root = ((RelativeLayout)paramView.findViewById(2131369788));
-    this.rightContainer = ((RelativeLayout)paramView.findViewById(2131364767));
+    this.root = ((RelativeLayout)paramView.findViewById(2131370224));
+    this.rightContainer = ((RelativeLayout)paramView.findViewById(2131364995));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(paramView.getContext(), 80.0F), DisplayUtil.dip2px(paramView.getContext(), 30.0F));
     localLayoutParams.addRule(11, -1);
     localLayoutParams.topMargin = (DisplayUtil.dip2px(paramView.getContext(), 9.0F) + ImmersiveUtils.getStatusBarHeight(paramView.getContext()));
     localLayoutParams.rightMargin = DisplayUtil.dip2px(paramView.getContext(), 12.5F);
     this.rightContainer.setLayoutParams(localLayoutParams);
-    this.mMoreView = ((ImageView)paramView.findViewById(2131363632));
-    this.mCloseView = ((ImageView)paramView.findViewById(2131363543));
-    this.mNameView = ((TextView)paramView.findViewById(2131367051));
-    this.mLogoView = ((ImageView)paramView.findViewById(2131369864));
-    this.mDeveloperInfoContainer = paramView.findViewById(2131365174);
-    this.mDeveloperInfoDesc = ((TextView)paramView.findViewById(2131365175));
+    this.mMoreView = ((ImageView)paramView.findViewById(2131363832));
+    this.mCloseView = ((ImageView)paramView.findViewById(2131363741));
+    this.mNameView = ((TextView)paramView.findViewById(2131367323));
+    this.mLogoView = ((ImageView)paramView.findViewById(2131370305));
+    this.mDeveloperInfoContainer = paramView.findViewById(2131365415);
+    this.mDeveloperInfoDesc = ((TextView)paramView.findViewById(2131365416));
     this.mMoreView.setOnClickListener(this);
     this.mCloseView.setOnClickListener(this);
   }
@@ -293,14 +296,14 @@ public class LoadingFragment
         } while (this.apkgInited);
         initApkgByConfig();
         return false;
-        Toast.makeText(getActivity().getApplicationContext(), alud.a(2131706631), 0).show();
+        Toast.makeText(getActivity().getApplicationContext(), anni.a(2131705042), 0).show();
         this.uiHandler.postDelayed(new LoadingFragment.8(this), 1500L);
         return false;
-        Toast.makeText(getActivity().getApplicationContext(), alud.a(2131706633), 0).show();
+        Toast.makeText(getActivity().getApplicationContext(), anni.a(2131705044), 0).show();
         this.uiHandler.postDelayed(new LoadingFragment.9(this), 1500L);
         return false;
       } while (this.x5LoadingDialog == null);
-      this.x5LoadingDialog.a(alud.a(2131706634) + paramMessage.arg1 + "%");
+      this.x5LoadingDialog.a(anni.a(2131705045) + paramMessage.arg1 + "%");
       return false;
     case 311: 
       initApkgByConfig();
@@ -319,15 +322,18 @@ public class LoadingFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363543)
+    if (paramView.getId() == 2131363741)
     {
       MiniReportManager.reportEventType(this.appConfig, 1026, "1");
       MiniProgramLpReportDC04239.reportPageView(this.appConfig, "0", null, "close", "loading_page");
       MiniAppReportManager2.reportPageView("2close", "loading_page", null, this.appConfig);
       callActivityBackPressed();
     }
-    while (paramView.getId() != 2131363632) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (paramView.getId() != 2131363832) {}
     }
   }
   
@@ -342,17 +348,19 @@ public class LoadingFragment
     QLog.i("miniapp-start", 1, "LoadingFragment onCreateView");
     if (this.mRootView == null)
     {
-      this.mRootView = LayoutInflater.from(getActivity()).inflate(2131559290, null);
+      this.mRootView = LayoutInflater.from(getActivity()).inflate(2131559375, null);
       initUI(this.mRootView);
     }
-    return this.mRootView;
+    paramLayoutInflater = this.mRootView;
+    FragmentCollector.onFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     QLog.d("miniapp-start", 1, "LoadingFragment onDestroy...");
-    auep.a().a(this.mMiniLibLoadListener);
+    awlz.a().a(this.mMiniLibLoadListener);
     AppLoaderFactory.getAppLoaderManager().removeListner(this.uiHandler);
   }
   
@@ -382,7 +390,7 @@ public class LoadingFragment
   {
     super.onViewCreated(paramView, paramBundle);
     QLog.i("miniapp-start", 1, "LoadingFragment onViewCreated");
-    this.mStatusBar = paramView.findViewById(2131377007);
+    this.mStatusBar = paramView.findViewById(2131377811);
     new ImmersionBar(getActivity(), 0, this.mStatusBar);
     this.uiHandler = new Handler(this);
     paramView = getArgumentBundle();
@@ -404,7 +412,7 @@ public class LoadingFragment
       }
       QLog.e("miniapp-start", 1, "LoadingFragment 小程序参数错误！");
       if (getActivity() != null) {
-        Toast.makeText(getActivity(), alud.a(2131706635), 1).show();
+        Toast.makeText(getActivity(), anni.a(2131705046), 1).show();
       }
       callActivityBackPressed();
       return;
@@ -421,7 +429,7 @@ public class LoadingFragment
       if ((this.mDeveloperInfoDesc != null) && (!TextUtils.isEmpty(this.appConfig.config.developerDesc)))
       {
         this.mDeveloperInfoContainer.setVisibility(0);
-        this.mDeveloperInfoDesc.setText(alud.a(2131706629) + this.appConfig.config.developerDesc + alud.a(2131706632));
+        this.mDeveloperInfoDesc.setText(anni.a(2131705040) + this.appConfig.config.developerDesc + anni.a(2131705043));
       }
     }
     else
@@ -454,7 +462,7 @@ public class LoadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.LoadingFragment
  * JD-Core Version:    0.7.0.1
  */

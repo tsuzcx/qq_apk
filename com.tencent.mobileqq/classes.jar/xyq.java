@@ -1,41 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class xyq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public xyq(QRCardActivity paramQRCardActivity, String paramString) {}
+  public xyq(MyMemoriesListView paramMyMemoriesListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
-    if (paramDialogInterface.startsWith("www.")) {
-      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 4) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 1))
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", paramDialogInterface);
-      localIntent.putExtra("key_isReadModeEnabled", true);
-      localIntent.putExtra("injectrecommend", false);
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity(localIntent);
-      return;
-      if (paramDialogInterface.startsWith("https:")) {
-        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
-      } else if (paramDialogInterface.startsWith("http:")) {
-        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
-      } else {
-        paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
+      if (this.a.jdField_a_of_type_Xyr != null) {
+        this.a.jdField_a_of_type_Xyr.c();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xyq
  * JD-Core Version:    0.7.0.1
  */

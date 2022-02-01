@@ -1,49 +1,23 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 
-public abstract interface rin
+public final class rin
+  implements Parcelable.Creator<UrlJumpInfo>
 {
-  public abstract int a();
+  public UrlJumpInfo a(Parcel paramParcel)
+  {
+    return new UrlJumpInfo(paramParcel);
+  }
   
-  public abstract CharSequence a();
-  
-  public abstract String a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(VideoInfo paramVideoInfo);
-  
-  public abstract void a(VideoInfo paramVideoInfo, rbt paramrbt);
-  
-  public abstract void a(rbt paramrbt);
-  
-  public abstract void a(rim paramrim);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(VideoInfo paramVideoInfo);
-  
-  public abstract boolean a(VideoInfo paramVideoInfo, rbt paramrbt, double paramDouble, long paramLong);
-  
-  public abstract String b();
-  
-  public abstract void b(rbt paramrbt);
-  
-  public abstract boolean b();
-  
-  public abstract String c();
-  
-  public abstract void c(rbt paramrbt);
-  
-  public abstract boolean c();
-  
-  public abstract String d();
-  
-  public abstract void onClick(View paramView);
+  public UrlJumpInfo[] a(int paramInt)
+  {
+    return new UrlJumpInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import java.util.List;
 
-public class bffq
-  extends Handler
+final class bffq
+  implements DialogInterface.OnClickListener
 {
-  public bffq(OpenCardContainer paramOpenCardContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bffq(XMediaEditor paramXMediaEditor, List paramList) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenCardContainer", 2, "-->handleMessage MSG_UPDATE");
-      }
-      OpenCardContainer.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(this.jdField_a_of_type_JavaUtilList);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bffq
  * JD-Core Version:    0.7.0.1
  */

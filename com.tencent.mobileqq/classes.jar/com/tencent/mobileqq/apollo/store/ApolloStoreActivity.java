@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.apollo.store;
 
-import akpl;
-import akpr;
-import akrd;
-import aleh;
-import alel;
-import aleo;
-import aleq;
-import alew;
-import algb;
-import algg;
-import aliu;
-import alsf;
-import alud;
+import Override;
+import amir;
+import amix;
+import amkj;
+import amxo;
+import amxs;
+import amxv;
+import amxx;
+import amyd;
+import amzi;
+import amzn;
+import ancb;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -26,13 +25,16 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import apml;
-import aprh;
-import bdgk;
-import beft;
+import anll;
+import anni;
+import arph;
+import arui;
+import bgln;
+import bhmv;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -49,6 +51,7 @@ import com.tencent.mobileqq.vaswebviewplugin.ApolloJsPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
@@ -60,11 +63,11 @@ import org.json.JSONObject;
 @TargetApi(14)
 public class ApolloStoreActivity
   extends QQBrowserActivity
-  implements akrd, aleo, aleq, alew, Handler.Callback
+  implements amkj, amxv, amxx, amyd, Handler.Callback
 {
   private float jdField_a_of_type_Float = 2.0F;
   int jdField_a_of_type_Int;
-  private aleh jdField_a_of_type_Aleh;
+  private amxo jdField_a_of_type_Amxo;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private ApolloCardWindow jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow;
   private String jdField_a_of_type_JavaLangString;
@@ -103,9 +106,9 @@ public class ApolloStoreActivity
     if (QLog.isColorLevel()) {
       QLog.d("ApolloStoreActivity_apollo_store_stability_", 2, "reportStorePageLoadSuccess. url:" + this.jdField_b_of_type_JavaLangString);
     }
-    akpr localakpr = akpr.a();
-    if (localakpr.b(this.jdField_b_of_type_JavaLangString)) {
-      localakpr.a(null, this.jdField_b_of_type_JavaLangString, 1001, paramInt);
+    amix localamix = amix.a();
+    if (localamix.b(this.jdField_b_of_type_JavaLangString)) {
+      localamix.a(null, this.jdField_b_of_type_JavaLangString, 1001, paramInt);
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -115,7 +118,7 @@ public class ApolloStoreActivity
   
   private void i()
   {
-    Object localObject = this.jdField_a_of_type_Aleh.a();
+    Object localObject = this.jdField_a_of_type_Amxo.a();
     if (localObject != null)
     {
       ((ApolloTextureView)localObject).getRenderImpl().a(1, this.i, "Bubble");
@@ -133,9 +136,9 @@ public class ApolloStoreActivity
     if (QLog.isColorLevel()) {
       QLog.d("ApolloStoreActivity_apollo_store_stability_", 2, "reportStorePageLoadTimeout. url:" + this.jdField_b_of_type_JavaLangString);
     }
-    akpr localakpr = akpr.a();
-    if (localakpr.b(this.jdField_b_of_type_JavaLangString)) {
-      localakpr.a(null, this.jdField_b_of_type_JavaLangString, -1000, 0);
+    amix localamix = amix.a();
+    if (localamix.b(this.jdField_b_of_type_JavaLangString)) {
+      localamix.a(null, this.jdField_b_of_type_JavaLangString, -1000, 0);
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -143,12 +146,12 @@ public class ApolloStoreActivity
     QLog.d("ApolloStoreActivity_apollo_store_stability_", 2, "reportStorePageLoadTimeout. url is not in white list");
   }
   
-  public algg a(boolean paramBoolean)
+  public amzn a(boolean paramBoolean)
   {
-    Object localObject = b();
-    if ((localObject != null) && (((WebViewFragment)localObject).jdField_a_of_type_ComTencentBizUiTouchWebView != null))
+    Object localObject = a();
+    if ((localObject != null) && (((WebViewFragment)localObject).webView != null))
     {
-      localObject = ((WebViewFragment)localObject).jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
+      localObject = ((WebViewFragment)localObject).webView.getPluginEngine();
       if (localObject != null)
       {
         localObject = ((WebViewPluginEngine)localObject).a("apollo");
@@ -158,12 +161,12 @@ public class ApolloStoreActivity
           if (localObject != null) {
             if (paramBoolean)
             {
-              if (((algb)localObject).a()) {
-                return ((algb)localObject).a();
+              if (((amzi)localObject).a()) {
+                return ((amzi)localObject).a();
               }
             }
             else {
-              return ((algb)localObject).a();
+              return ((amzi)localObject).a();
             }
           }
         }
@@ -175,8 +178,8 @@ public class ApolloStoreActivity
   public String a()
   {
     getCurrentAccountUin();
-    if (this.jdField_a_of_type_Aleh != null) {
-      return this.jdField_a_of_type_Aleh.a();
+    if (this.jdField_a_of_type_Amxo != null) {
+      return this.jdField_a_of_type_Amxo.a();
     }
     return "{\"result\":1,\"msg\":\"ApolloViewController not init\"}";
   }
@@ -184,7 +187,7 @@ public class ApolloStoreActivity
   public String a(int paramInt, ApolloWebAvatarParam paramApolloWebAvatarParam)
   {
     StringBuilder localStringBuilder = new StringBuilder().append("initAvatar hasApolloView: ");
-    if (this.jdField_a_of_type_Aleh != null) {}
+    if (this.jdField_a_of_type_Amxo != null) {}
     for (boolean bool = true;; bool = false)
     {
       QLog.i("ApolloStoreActivity", 1, bool);
@@ -201,19 +204,19 @@ public class ApolloStoreActivity
     this.h = paramApolloWebAvatarParam.nickName;
     this.jdField_a_of_type_Int = paramApolloWebAvatarParam.roleId;
     this.jdField_a_of_type_ArrayOfInt = paramApolloWebAvatarParam.dressIds;
-    if (this.jdField_a_of_type_Aleh != null) {
-      return this.jdField_a_of_type_Aleh.a(paramInt, false, paramApolloWebAvatarParam);
+    if (this.jdField_a_of_type_Amxo != null) {
+      return this.jdField_a_of_type_Amxo.a(paramInt, false, paramApolloWebAvatarParam);
     }
     this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(258);
     return "{\"result\":0, \"msg\": \"\" }";
   }
   
-  public String a(alel paramalel)
+  public String a(amxs paramamxs)
   {
-    if (this.jdField_a_of_type_Aleh != null) {
-      return this.jdField_a_of_type_Aleh.a(paramalel);
+    if (this.jdField_a_of_type_Amxo != null) {
+      return this.jdField_a_of_type_Amxo.a(paramamxs);
     }
-    return aleh.a(alud.a(2131700901));
+    return amxo.a(anni.a(2131699326));
   }
   
   public String a(String paramString)
@@ -241,26 +244,26 @@ public class ApolloStoreActivity
     if (QLog.isColorLevel()) {
       QLog.d("ApolloStoreActivity", 2, new Object[] { "[updateAvatar] avatarParams=", paramArrayList });
     }
-    if (this.jdField_a_of_type_Aleh != null) {
-      return this.jdField_a_of_type_Aleh.a(paramArrayList);
+    if (this.jdField_a_of_type_Amxo != null) {
+      return this.jdField_a_of_type_Amxo.a(paramArrayList);
     }
     return "{\"result\":1, \"msg\": \"终端发生错误\" }";
   }
   
   public String a(int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_Aleh != null) {
-      return this.jdField_a_of_type_Aleh.a(paramArrayOfInt);
+    if (this.jdField_a_of_type_Amxo != null) {
+      return this.jdField_a_of_type_Amxo.a(paramArrayOfInt);
     }
-    return aleh.a("ApolloViewController not init!");
+    return amxo.a("ApolloViewController not init!");
   }
   
   public void a()
   {
-    WebViewFragment localWebViewFragment = b();
-    if ((localWebViewFragment != null) && (localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (this.jdField_a_of_type_Aleh != null) && (this.jdField_a_of_type_Aleh.a()))
+    WebViewFragment localWebViewFragment = a();
+    if ((localWebViewFragment != null) && (localWebViewFragment.webView != null) && (this.jdField_a_of_type_Amxo != null) && (this.jdField_a_of_type_Amxo.a()))
     {
-      localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs("window.onReturn &&　window.onReturn()");
+      localWebViewFragment.webView.callJs("window.onReturn &&　window.onReturn()");
       if (QLog.isColorLevel()) {
         QLog.d("ApolloStoreActivity", 2, "onBackEvent");
       }
@@ -280,8 +283,8 @@ public class ApolloStoreActivity
   
   public void a(int paramInt, int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_Aleh != null) {
-      this.jdField_a_of_type_Aleh.a(paramInt, paramArrayOfInt);
+    if (this.jdField_a_of_type_Amxo != null) {
+      this.jdField_a_of_type_Amxo.a(paramInt, paramArrayOfInt);
     }
   }
   
@@ -290,8 +293,8 @@ public class ApolloStoreActivity
     if (TextUtils.isEmpty(paramString2))
     {
       paramActivity = this.f;
-      if (this.jdField_a_of_type_Aleh != null) {
-        this.jdField_a_of_type_Aleh.a(this, super.getAppInterface(), paramString1, paramActivity);
+      if (this.jdField_a_of_type_Amxo != null) {
+        this.jdField_a_of_type_Amxo.a(this, super.getAppInterface(), paramString1, paramActivity);
       }
     }
   }
@@ -302,12 +305,12 @@ public class ApolloStoreActivity
     do
     {
       return;
-      this.jdField_b_of_type_Float = (alsf.a() / 16.0F);
+      this.jdField_b_of_type_Float = (anll.a() / 16.0F);
       if (this.jdField_b_of_type_Float != 0.0F) {
-        this.jdField_a_of_type_Float = (bdgk.a() / this.jdField_b_of_type_Float);
+        this.jdField_a_of_type_Float = (bgln.a() / this.jdField_b_of_type_Float);
       }
     } while (this.jdField_a_of_type_Float != 0.0F);
-    this.jdField_a_of_type_Float = bdgk.a();
+    this.jdField_a_of_type_Float = bgln.a();
   }
   
   public void a(RelativeLayout paramRelativeLayout)
@@ -315,13 +318,13 @@ public class ApolloStoreActivity
     if ((paramRelativeLayout != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null))
     {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-      if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_Aleh == null))
+      if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_Amxo == null))
       {
         if (!ApolloEngine.a()) {
           break label65;
         }
-        this.jdField_a_of_type_Aleh = new aleh(this.jdField_a_of_type_AndroidWidgetRelativeLayout, this);
-        this.jdField_a_of_type_Aleh.a(this);
+        this.jdField_a_of_type_Amxo = new amxo(this.jdField_a_of_type_AndroidWidgetRelativeLayout, this);
+        this.jdField_a_of_type_Amxo.a(this);
       }
     }
     for (;;)
@@ -346,21 +349,21 @@ public class ApolloStoreActivity
   
   public void a(String paramString)
   {
-    WebViewFragment localWebViewFragment = b();
-    if ((localWebViewFragment == null) || (localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView == null) || (TextUtils.isEmpty(paramString))) {}
+    WebViewFragment localWebViewFragment = a();
+    if ((localWebViewFragment == null) || (localWebViewFragment.webView == null) || (TextUtils.isEmpty(paramString))) {}
     do
     {
       return;
       paramString = "window && window.apollo && window.apollo.controller && window.apollo.controller.closeBox && window.apollo.controller.closeBox('" + paramString + "')";
-      localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(paramString);
+      localWebViewFragment.webView.callJs(paramString);
     } while (!QLog.isColorLevel());
     QLog.d("ApolloStoreActivity", 2, "onCardWindowClose,callBackStr:" + paramString);
   }
   
   public void a(String paramString, Bundle paramBundle)
   {
-    Object localObject = b();
-    if ((localObject == null) || (((WebViewFragment)localObject).jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
+    Object localObject = a();
+    if ((localObject == null) || (((WebViewFragment)localObject).webView == null)) {}
     do
     {
       do
@@ -368,7 +371,7 @@ public class ApolloStoreActivity
         do
         {
           return;
-          localObject = ((WebViewFragment)localObject).jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
+          localObject = ((WebViewFragment)localObject).webView.getPluginEngine();
         } while (localObject == null);
         localObject = (ApolloJsPlugin)((WebViewPluginEngine)localObject).a("apollo");
       } while (localObject == null);
@@ -376,7 +379,7 @@ public class ApolloStoreActivity
       if (paramBundle != null) {
         ((ApolloJsPlugin)localObject).mReqBundle = paramBundle;
       }
-      ((ApolloJsPlugin)localObject).sendRemoteReq(apml.a(paramString, "", ((ApolloJsPlugin)localObject).getRemoteKey(), ((ApolloJsPlugin)localObject).mReqBundle), false, true);
+      ((ApolloJsPlugin)localObject).sendRemoteReq(arph.a(paramString, "", ((ApolloJsPlugin)localObject).getRemoteKey(), ((ApolloJsPlugin)localObject).mReqBundle), false, true);
     } while (!QLog.isColorLevel());
     QLog.d("ApolloStoreActivity", 2, "[doIPCRequest], cmd" + paramString);
   }
@@ -386,22 +389,22 @@ public class ApolloStoreActivity
     if (QLog.isColorLevel()) {
       QLog.d("ApolloStoreActivity", 2, "[destoryAvatar]");
     }
-    if (this.jdField_a_of_type_Aleh != null) {
-      this.jdField_a_of_type_Aleh.a(paramArrayList);
+    if (this.jdField_a_of_type_Amxo != null) {
+      this.jdField_a_of_type_Amxo.a(paramArrayList);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Aleh != null) {
-      this.jdField_a_of_type_Aleh.a(paramBoolean);
+    if (this.jdField_a_of_type_Amxo != null) {
+      this.jdField_a_of_type_Amxo.a(paramBoolean);
     }
   }
   
   public void a(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_Aleh != null) {
-      this.jdField_a_of_type_Aleh.a(paramBoolean, paramFloat1, paramFloat2);
+    if (this.jdField_a_of_type_Amxo != null) {
+      this.jdField_a_of_type_Amxo.a(paramBoolean, paramFloat1, paramFloat2);
     }
   }
   
@@ -409,8 +412,8 @@ public class ApolloStoreActivity
   {
     try
     {
-      if (this.jdField_a_of_type_Aleh != null) {
-        this.jdField_a_of_type_Aleh.c(true);
+      if (this.jdField_a_of_type_Amxo != null) {
+        this.jdField_a_of_type_Amxo.c(true);
       }
       Intent localIntent = new Intent(this, ApolloDiyTextFragment.class);
       localIntent.putExtra("extra_key_last_text", paramString);
@@ -427,12 +430,12 @@ public class ApolloStoreActivity
   
   public String b(String paramString)
   {
-    if (this.jdField_a_of_type_Aleh == null) {}
+    if (this.jdField_a_of_type_Amxo == null) {}
     ApolloTextureView localApolloTextureView;
     do
     {
       return "";
-      localApolloTextureView = this.jdField_a_of_type_Aleh.a();
+      localApolloTextureView = this.jdField_a_of_type_Amxo.a();
       if (localApolloTextureView != null) {
         break;
       }
@@ -452,7 +455,7 @@ public class ApolloStoreActivity
       QLog.d("ApolloStoreActivity", 2, "[openAIActivity], from:" + paramInt);
     }
     if (!ApolloEngine.a()) {}
-    while ((this.jdField_a_of_type_Aleh == null) || (!"interactive".equals(this.e))) {
+    while ((this.jdField_a_of_type_Amxo == null) || (!"interactive".equals(this.e))) {
       return;
     }
     String str = getCurrentAccountUin();
@@ -485,10 +488,10 @@ public class ApolloStoreActivity
   
   public void c(int paramInt)
   {
-    Object localObject = b();
-    if ((localObject != null) && (((WebViewFragment)localObject).jdField_a_of_type_Beft != null) && (((WebViewFragment)localObject).jdField_a_of_type_Beft.a != null))
+    Object localObject = a();
+    if ((localObject != null) && (((WebViewFragment)localObject).mSwiftTitleUI != null) && (((WebViewFragment)localObject).mSwiftTitleUI.a != null))
     {
-      localObject = ((WebViewFragment)localObject).jdField_a_of_type_Beft.a;
+      localObject = ((WebViewFragment)localObject).mSwiftTitleUI.a;
       if (paramInt <= 0) {
         break label78;
       }
@@ -506,9 +509,17 @@ public class ApolloStoreActivity
   
   public void d(int paramInt)
   {
-    if (this.jdField_a_of_type_Aleh != null) {
-      this.jdField_a_of_type_Aleh.b(paramInt);
+    if (this.jdField_a_of_type_Amxo != null) {
+      this.jdField_a_of_type_Amxo.b(paramInt);
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -533,14 +544,14 @@ public class ApolloStoreActivity
       }
       for (;;)
       {
-        localObject2 = b();
-        if ((localObject2 == null) || (((WebViewFragment)localObject2).jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
+        localObject2 = a();
+        if ((localObject2 == null) || (((WebViewFragment)localObject2).webView == null)) {
           break;
         }
         if (paramInt2 != -1) {
           break label222;
         }
-        ((WebViewFragment)localObject2).jdField_a_of_type_ComTencentBizUiTouchWebView.callJs("window.apollo && window.apollo.controller && window.apollo.controller.closeEditor && window.apollo.controller.closeEditor(1,'" + ApolloUtil.b((String)localObject1) + "')");
+        ((WebViewFragment)localObject2).webView.callJs("window.apollo && window.apollo.controller && window.apollo.controller.closeEditor && window.apollo.controller.closeEditor(1,'" + ApolloUtil.b((String)localObject1) + "')");
         break;
         localObject1 = localObject2;
         if (((String)localObject2).length() > 12) {
@@ -548,15 +559,15 @@ public class ApolloStoreActivity
         }
       }
       label222:
-      ((WebViewFragment)localObject2).jdField_a_of_type_ComTencentBizUiTouchWebView.callJs("window.apollo && window.apollo.controller && window.apollo.controller.closeEditor && window.apollo.controller.closeEditor(0,'" + ApolloUtil.b((String)localObject1) + "')");
+      ((WebViewFragment)localObject2).webView.callJs("window.apollo && window.apollo.controller && window.apollo.controller.closeEditor && window.apollo.controller.closeEditor(0,'" + ApolloUtil.b((String)localObject1) + "')");
       continue;
       if (paramInt2 == -1)
       {
         VipUtils.a(null, "cmshow", "Apollo", "QzoneSuccess", 0, 0, new String[0]);
         continue;
-        if (this.jdField_a_of_type_Aleh != null)
+        if (this.jdField_a_of_type_Amxo != null)
         {
-          localObject1 = this.jdField_a_of_type_Aleh.a();
+          localObject1 = this.jdField_a_of_type_Amxo.a();
           if (localObject1 != null) {
             ((ApolloTextureView)localObject1).queueEvent(new ApolloStoreActivity.2(this, paramInt1, paramInt2, paramIntent));
           }
@@ -576,7 +587,7 @@ public class ApolloStoreActivity
     Object localObject2 = super.getIntent().getStringExtra("url");
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = aliu.W;
+      localObject1 = ancb.W;
     }
     localObject2 = new StringBuilder((String)localObject1);
     String str1 = super.getIntent().getStringExtra("extra_key_url_append");
@@ -585,8 +596,8 @@ public class ApolloStoreActivity
     this.jdField_c_of_type_JavaLangString = super.getIntent().getStringExtra("extra_key_box_from");
     this.f = super.getIntent().getStringExtra("extra_key_nickname");
     String str2 = super.getIntent().getStringExtra("extra_key_adtag");
-    long l2 = bdgk.j();
-    long l3 = bdgk.i();
+    long l2 = bgln.j();
+    long l3 = bgln.i();
     int j = (int)(ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()) / this.jdField_a_of_type_Float);
     if (((String)localObject1).indexOf("?") == -1)
     {
@@ -622,8 +633,8 @@ public class ApolloStoreActivity
       this.jdField_a_of_type_JavaLangClass = ApolloStoreActivity.ApolloWebViewFragment.class;
       super.doOnCreate(paramBundle);
       ApolloCardWindow.b();
-      if (!aprh.a().a()) {
-        aprh.a().a().doBindService(super.getApplicationContext());
+      if (!arui.a().a()) {
+        arui.a().a().doBindService(super.getApplicationContext());
       }
       this.jdField_b_of_type_Boolean = true;
       if (QLog.isColorLevel()) {
@@ -647,8 +658,8 @@ public class ApolloStoreActivity
     Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 4).edit();
     ((SharedPreferences.Editor)localObject).remove("apollo_store_watch_current_url");
     ((SharedPreferences.Editor)localObject).apply();
-    if (this.jdField_a_of_type_Aleh != null) {
-      this.jdField_a_of_type_Aleh.d();
+    if (this.jdField_a_of_type_Amxo != null) {
+      this.jdField_a_of_type_Amxo.d();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow != null) {
       this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow.a(true);
@@ -662,8 +673,8 @@ public class ApolloStoreActivity
   
   public void doOnNewIntent(Intent paramIntent)
   {
-    long l1 = bdgk.j();
-    long l2 = bdgk.i();
+    long l1 = bgln.j();
+    long l2 = bgln.i();
     Object localObject2 = paramIntent.getStringExtra("url");
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -673,8 +684,8 @@ public class ApolloStoreActivity
     localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      if (TextUtils.isEmpty(aliu.ah)) {
-        localObject2 = aliu.W;
+      if (TextUtils.isEmpty(ancb.ah)) {
+        localObject2 = ancb.W;
       }
     }
     else
@@ -702,7 +713,7 @@ public class ApolloStoreActivity
       paramIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
       super.doOnNewIntent(paramIntent);
       return;
-      localObject2 = aliu.ah;
+      localObject2 = ancb.ah;
       break;
     }
   }
@@ -741,14 +752,14 @@ public class ApolloStoreActivity
           return false;
           this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow.bringToFront();
         }
-        localWebViewFragment = b();
-      } while ((localWebViewFragment == null) || (localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView == null) || (!(paramMessage.obj instanceof String)));
+        localWebViewFragment = a();
+      } while ((localWebViewFragment == null) || (localWebViewFragment.webView == null) || (!(paramMessage.obj instanceof String)));
       String str = (String)paramMessage.obj;
       JSONObject localJSONObject = new JSONObject();
       try
       {
         localJSONObject.put("result", paramMessage.arg1);
-        localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(str + "(" + localJSONObject.toString() + ");");
+        localWebViewFragment.webView.callJs(str + "(" + localJSONObject.toString() + ");");
         return false;
       }
       catch (Throwable paramMessage)
@@ -764,7 +775,7 @@ public class ApolloStoreActivity
     if (QLog.isColorLevel())
     {
       paramMessage = new StringBuilder().append("recv refresh apollo view msf, apolloView is null: ");
-      if (this.jdField_a_of_type_Aleh != null) {
+      if (this.jdField_a_of_type_Amxo != null) {
         break label368;
       }
     }
@@ -772,11 +783,11 @@ public class ApolloStoreActivity
     for (boolean bool = true;; bool = false)
     {
       QLog.d("ApolloStoreActivity", 2, bool);
-      if ((!ApolloEngine.a()) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_Aleh != null)) {
+      if ((!ApolloEngine.a()) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_Amxo != null)) {
         break;
       }
-      this.jdField_a_of_type_Aleh = new aleh(this.jdField_a_of_type_AndroidWidgetRelativeLayout, this);
-      this.jdField_a_of_type_Aleh.a(this);
+      this.jdField_a_of_type_Amxo = new amxo(this.jdField_a_of_type_AndroidWidgetRelativeLayout, this);
+      this.jdField_a_of_type_Amxo.a(this);
       return false;
     }
   }
@@ -799,6 +810,7 @@ public class ApolloStoreActivity
     if (QLog.isColorLevel()) {
       QLog.d("ApolloStoreActivity", 2, "onConfigurationChanged orientation:" + paramConfiguration.orientation);
     }
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onNotifyLongTouch(String paramString)
@@ -822,20 +834,20 @@ public class ApolloStoreActivity
     for (;;)
     {
       return;
-      WebViewFragment localWebViewFragment = b();
-      if ((localWebViewFragment != null) && (localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView != null))
+      WebViewFragment localWebViewFragment = a();
+      if ((localWebViewFragment != null) && (localWebViewFragment.webView != null))
       {
         if (!TextUtils.isEmpty(paramString)) {
           break label100;
         }
-        localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs("window.apollo && window.apollo.controller && window.apollo.controller.hitAvatar && window.apollo.controller.hitAvatar();");
+        localWebViewFragment.webView.callJs("window.apollo && window.apollo.controller && window.apollo.controller.hitAvatar && window.apollo.controller.hitAvatar();");
       }
       while (QLog.isColorLevel())
       {
         QLog.d("ApolloStoreActivity", 2, "apollo.controller.hitAvatar()");
         return;
         label100:
-        localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(String.format("window.apollo && window.apollo.controller && window.apollo.controller.hitAvatar && window.apollo.controller.hitAvatar('%s');", new Object[] { paramString }));
+        localWebViewFragment.webView.callJs(String.format("window.apollo && window.apollo.controller && window.apollo.controller.hitAvatar && window.apollo.controller.hitAvatar('%s');", new Object[] { paramString }));
       }
     }
   }
@@ -864,7 +876,7 @@ public class ApolloStoreActivity
     if (this.mSystemBarComp != null)
     {
       this.mSystemBarComp.init();
-      int j = super.getResources().getColor(2131166959);
+      int j = super.getResources().getColor(2131167042);
       this.mSystemBarComp.setStatusColor(j);
       this.mSystemBarComp.setStatusBarColor(j);
     }
@@ -873,7 +885,7 @@ public class ApolloStoreActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreActivity
  * JD-Core Version:    0.7.0.1
  */

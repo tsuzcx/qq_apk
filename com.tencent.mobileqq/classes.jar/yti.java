@@ -1,38 +1,29 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.widget.RelativeLayout.LayoutParams;
 
 class yti
-  implements URLDrawableDownListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  yti(ytb paramytb) {}
+  yti(ytg paramytg, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a(false, "onLoadCancelled");
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.a.a(false, "onLoadFailed");
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    this.a.a(false, "onLoadInterrupted");
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.a(true, "onLoadSuccessed");
-    this.a.b = true;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
+    int j = this.b;
+    int k = (int)(f * (this.c - this.d));
+    int m = this.d;
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.leftMargin = (i + j);
+    paramValueAnimator.bottomMargin = (m + k);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yti
  * JD-Core Version:    0.7.0.1
  */

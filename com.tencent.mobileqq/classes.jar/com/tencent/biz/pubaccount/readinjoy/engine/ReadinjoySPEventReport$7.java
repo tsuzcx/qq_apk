@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import oxp;
-import syb;
+import pmy;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import tzo;
 
 public class ReadinjoySPEventReport$7
   implements Runnable
 {
-  public ReadinjoySPEventReport$7(oxp paramoxp) {}
+  public ReadinjoySPEventReport$7(pmy parampmy) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ReadinjoySPEventReport$7
     localAttributeList.att_name.set("OneClickRead");
     localAttributeList.att_value.set(String.valueOf(System.currentTimeMillis() / 1000L));
     localArrayList.add(localAttributeList);
-    syb.a(13, localArrayList);
+    tzo.a(13, localArrayList);
   }
 }
 

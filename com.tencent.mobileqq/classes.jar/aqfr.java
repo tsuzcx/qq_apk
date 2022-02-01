@@ -1,15 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aqfr
-  implements DialogInterface.OnClickListener
+  implements Application.ActivityLifecycleCallbacks
 {
-  public aqfr(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  public aqfr(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
+    }
+  }
+  
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityResumed: " + paramActivity.getClass().getName());
+    }
+    if (this.a.f)
+    {
+      this.a.f = false;
+      this.a.d = true;
+      this.a.a().removeCallbacks(this.a.b);
+      this.a.a().postDelayed(this.a.b, 200L);
+    }
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStarted: " + paramActivity.getClass().getName());
+    }
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStopped: " + paramActivity.getClass().getName());
+    }
   }
 }
 

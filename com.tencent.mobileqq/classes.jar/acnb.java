@@ -1,75 +1,43 @@
-import android.graphics.PointF;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.widget.BubblePopupWindow;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.TextUtils;
+import android.text.style.ReplacementSpan;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class acnb
-  implements aetk, View.OnClickListener, bhvm
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingTitle$GdtMotiveBrowsingCenterFixWidthSpan;", "Landroid/text/style/ReplacementSpan;", "fixWidth", "", "(I)V", "draw", "", "canvas", "Landroid/graphics/Canvas;", "text", "", "start", "end", "x", "", "top", "y", "bottom", "paint", "Landroid/graphics/Paint;", "getSize", "fm", "Landroid/graphics/Paint$FontMetricsInt;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acnb
+  extends ReplacementSpan
 {
-  protected PointF a;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  private final int a;
   
-  public acnb(ChatHistory paramChatHistory)
+  public acnb(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+    this.a = paramInt;
   }
   
-  public void a()
+  public void draw(@NotNull Canvas paramCanvas, @Nullable CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NotNull Paint paramPaint)
   {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-  }
-  
-  void a(View paramView)
-  {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131365071) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
+    Intrinsics.checkParameterIsNotNull(paramPaint, "paint");
+    if (!TextUtils.isEmpty(paramCharSequence))
     {
-      a(paramView);
-      return false;
+      float f = paramPaint.measureText(paramCharSequence, paramInt1, paramInt2);
+      f = Math.max(0.0F, (this.a - f) / 2);
+      if (paramCharSequence == null) {
+        Intrinsics.throwNpe();
+      }
+      paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat + f, paramInt4, paramPaint);
     }
-    bdpi localbdpi = new bdpi();
-    localbdpi.a(2131365071, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690760), 2130838673);
-    if (localbdpi.a() > 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((acnc)ChatHistory.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      int i = (int)this.jdField_a_of_type_AndroidGraphicsPointF.y;
-      int j = aepi.a(10.0F, paramView.getResources());
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bdft.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, i - j, localbdpi, this);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this);
-      a(paramView);
-      return true;
-    }
-    a(paramView);
-    return false;
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int getSize(@NotNull Paint paramPaint, @Nullable CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
-    }
-    return false;
+    Intrinsics.checkParameterIsNotNull(paramPaint, "paint");
+    return this.a;
   }
 }
 

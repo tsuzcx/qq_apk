@@ -1,20 +1,34 @@
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import android.support.v4.view.ViewPager;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ttw
-  implements ykh<Object>
+public class ttw
+  implements RadioGroup.OnCheckedChangeListener
 {
-  ttw(ttr paramttr) {}
+  public ttw(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void a(Object... paramVarArgs)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
-      ttr.a(this.a).a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetFeedListRsp)paramVarArgs[3], false);
+    ServiceAccountFolderActivityNew.a(this.a, true);
+    if (ServiceAccountFolderActivityNew.a(this.a).getId() == paramInt) {
+      ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(0);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      if (ServiceAccountFolderActivityNew.b(this.a).getId() == paramInt) {
+        ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(1);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ttw
  * JD-Core Version:    0.7.0.1
  */

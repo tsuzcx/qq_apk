@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import amxa;
-import amze;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
+import aovr;
+import aoxv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.model.ArAwardInfo;
 import com.tencent.mobileqq.ar.model.ArFeatureInfo;
@@ -24,7 +24,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ArConfigInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ArConfigInfo> CREATOR = new amze();
+  public static final Parcelable.Creator<ArConfigInfo> CREATOR = new aoxv();
   public static final String TAG = "ArConfigInfo";
   public static final int VERSION_700 = 10;
   public static final int VERSION_710 = 11;
@@ -480,7 +480,7 @@ public class ArConfigInfo
           str1 = ((XmlPullParser)localObject1).getName();
           if (str1.equalsIgnoreCase("Begin"))
           {
-            localArConfigInfo.aRBegin = amxa.a(((XmlPullParser)localObject1).nextText());
+            localArConfigInfo.aRBegin = aovr.a(((XmlPullParser)localObject1).nextText());
             i = ((XmlPullParser)localObject1).next();
           }
         }
@@ -490,7 +490,7 @@ public class ArConfigInfo
         }
         if (str1.equalsIgnoreCase("End"))
         {
-          localArConfigInfo.aREnd = amxa.a(((XmlPullParser)localObject1).nextText());
+          localArConfigInfo.aREnd = aovr.a(((XmlPullParser)localObject1).nextText());
           continue;
           return localObject1;
         }
@@ -995,7 +995,7 @@ public class ArConfigInfo
         if (!((String)localObject2).equalsIgnoreCase("Begin")) {
           break label2237;
         }
-        localArConfigInfo.aRCloudBegin = amxa.a(((XmlPullParser)localObject1).nextText());
+        localArConfigInfo.aRCloudBegin = aovr.a(((XmlPullParser)localObject1).nextText());
       }
       label2237:
       while ((i != 3) || (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("Cloud"))) {
@@ -1006,7 +1006,7 @@ public class ArConfigInfo
           break;
           if (((String)localObject2).equalsIgnoreCase("End"))
           {
-            localArConfigInfo.aRCloudEnd = amxa.a(((XmlPullParser)localObject1).nextText());
+            localArConfigInfo.aRCloudEnd = aovr.a(((XmlPullParser)localObject1).nextText());
           }
           else
           {
@@ -1176,7 +1176,7 @@ public class ArConfigInfo
     //   216: invokevirtual 563	java/io/BufferedOutputStream:flush	()V
     //   219: aload 8
     //   221: aload 7
-    //   223: invokestatic 568	bdhb:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   223: invokestatic 568	bgmg:b	(Ljava/io/File;Ljava/io/File;)Z
     //   226: istore_3
     //   227: iload_3
     //   228: istore 4
@@ -1390,7 +1390,7 @@ public class ArConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ArConfigInfo
  * JD-Core Version:    0.7.0.1
  */

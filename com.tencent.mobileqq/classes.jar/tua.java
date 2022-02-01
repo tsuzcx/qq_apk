@@ -1,113 +1,35 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
 import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
-import com.tencent.biz.qqcircle.events.QCircleTaskCenterEvent;
-import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
 
-public class tua
-  extends tvw
-  implements yiy
+class tua
+  implements bkhw
 {
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private trt jdField_a_of_type_Trt;
+  tua(ttz paramttz, tty paramtty, int paramInt, bkho parambkho) {}
   
-  public String a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return "QCircleTaskCenterPart";
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (!this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
+    switch (paramInt)
     {
-      tzv.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 8, 1L);
-      if (this.jdField_a_of_type_Trt != null) {
-        this.jdField_a_of_type_Trt.onRefreshData();
-      }
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(a().getRootView(), 81, 0, 0);
-    }
-  }
-  
-  protected void a(View paramView)
-  {
-    this.jdField_a_of_type_Trt = new trt(null);
-    a().add(this.jdField_a_of_type_Trt);
-    super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(a(), -1, -1);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755523);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new ColorDrawable(0));
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(a());
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-    a().a().setBackgroundResource(2130843738);
-    a().setBackgroundResource(2131165319);
-    a().setOnClickListener(new tub(this));
-    a().setPadding(0, (int)(xin.b(a()) * 0.6D), 0, 0);
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
-    {
-      b();
-      return true;
-    }
-    return super.a();
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing())) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    }
-  }
-  
-  public ArrayList<Class> getEventClass()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QCircleTaskCenterEvent.class);
-    return localArrayList;
-  }
-  
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    b();
-    super.onActivityDestroyed(paramActivity);
-  }
-  
-  public void onActivityStarted(Activity paramActivity)
-  {
-    super.onActivityStarted(paramActivity);
-    yiw.a().a(this);
-  }
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
-    super.onActivityStopped(paramActivity);
-    yiw.a().b(this);
-  }
-  
-  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    if ((!(paramSimpleBaseEvent instanceof QCircleTaskCenterEvent)) || (((QCircleTaskCenterEvent)paramSimpleBaseEvent).mPopContextHashCode != a().hashCode())) {
+    default: 
+      this.jdField_a_of_type_Bkho.dismiss();
       return;
     }
-    if (((QCircleTaskCenterEvent)paramSimpleBaseEvent).mIsShowTaskPanel)
-    {
-      a();
-      return;
+    ttz.a(this.jdField_a_of_type_Ttz, this.jdField_a_of_type_Tty);
+    paramInt = this.jdField_a_of_type_Tty.b;
+    int i = this.jdField_a_of_type_Tty.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Tty.jdField_a_of_type_Int != 1) {
+      paramInt = 0;
     }
-    b();
+    for (;;)
+    {
+      long l = tue.a().a(this.jdField_a_of_type_Tty);
+      bcst.b(ttz.a(this.jdField_a_of_type_Ttz), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_Tty.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tua
  * JD-Core Version:    0.7.0.1
  */

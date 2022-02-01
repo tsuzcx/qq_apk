@@ -1,16 +1,30 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aefs
-  implements View.OnClickListener
 {
-  public aefs(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
+  public static void a()
   {
-    this.a.b.dismiss();
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), JumpActivity.class);
+    localIntent.addFlags(268435456);
+    localIntent.addFlags(536870912);
+    localIntent.addFlags(67108864);
+    localIntent.addFlags(131072);
+    localIntent.setData(Uri.parse("mqqapi://qzone/to_friend_feeds"));
+    BaseApplicationImpl.getContext().startActivity(localIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Intent paramIntent, String paramString, boolean paramBoolean)
+  {
+    if ((!"msg_tab_camera".equals(paramString)) || (paramIntent == null)) {
+      return;
+    }
+    blsb.a(paramFragmentActivity, paramQQAppInterface, paramIntent, 20005, paramBoolean);
   }
 }
 

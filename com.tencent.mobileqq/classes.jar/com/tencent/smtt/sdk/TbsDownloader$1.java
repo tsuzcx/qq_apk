@@ -43,32 +43,32 @@ final class TbsDownloader$1
           break label250;
         }
         bool1 = true;
-        bool1 = TbsDownloader.access$000(true, false, false, bool1);
+        bool1 = TbsDownloader.a(true, false, false, bool1);
         if ((paramMessage.obj != null) && ((paramMessage.obj instanceof TbsDownloader.TbsDownloaderCallback)))
         {
           TbsLog.i("TbsDownload", "needDownload-onNeedDownloadFinish needStartDownload=" + bool1);
           localObject2 = "";
           localObject1 = localObject2;
-          if (TbsDownloader.access$100() != null)
+          if (TbsDownloader.a() != null)
           {
             localObject1 = localObject2;
-            if (TbsDownloader.access$100().getApplicationContext() != null)
+            if (TbsDownloader.a().getApplicationContext() != null)
             {
               localObject1 = localObject2;
-              if (TbsDownloader.access$100().getApplicationContext().getApplicationInfo() != null) {
-                localObject1 = TbsDownloader.access$100().getApplicationContext().getApplicationInfo().packageName;
+              if (TbsDownloader.a().getApplicationContext().getApplicationInfo() != null) {
+                localObject1 = TbsDownloader.a().getApplicationContext().getApplicationInfo().packageName;
               }
             }
           }
           if ((bool1) && (i == 0)) {
             break label255;
           }
-          ((TbsDownloader.TbsDownloaderCallback)paramMessage.obj).onNeedDownloadFinish(bool1, TbsDownloadConfig.getInstance(TbsDownloader.access$100()).mPreferences.getInt("tbs_download_version", 0));
+          ((TbsDownloader.TbsDownloaderCallback)paramMessage.obj).onNeedDownloadFinish(bool1, TbsDownloadConfig.getInstance(TbsDownloader.a()).mPreferences.getInt("tbs_download_version", 0));
         }
       }
-      while ((TbsShareManager.isThirdPartyApp(TbsDownloader.access$100())) && (bool1))
+      while ((TbsShareManager.isThirdPartyApp(TbsDownloader.a())) && (bool1))
       {
-        TbsDownloader.startDownload(TbsDownloader.access$100());
+        TbsDownloader.startDownload(TbsDownloader.a());
         return;
         i = 0;
         break label71;
@@ -77,31 +77,31 @@ final class TbsDownloader$1
         if (("com.tencent.mm".equals(localObject1)) || ("com.tencent.mobileqq".equals(localObject1)))
         {
           TbsLog.i("TbsDownload", "needDownload-onNeedDownloadFinish in mm or QQ callback needStartDownload = " + bool1);
-          ((TbsDownloader.TbsDownloaderCallback)paramMessage.obj).onNeedDownloadFinish(bool1, TbsDownloadConfig.getInstance(TbsDownloader.access$100()).mPreferences.getInt("tbs_download_version", 0));
+          ((TbsDownloader.TbsDownloaderCallback)paramMessage.obj).onNeedDownloadFinish(bool1, TbsDownloadConfig.getInstance(TbsDownloader.a()).mPreferences.getInt("tbs_download_version", 0));
         }
       }
     case 101: 
     case 108: 
       Object localObject3;
-      if (!TbsShareManager.isThirdPartyApp(TbsDownloader.access$100()))
+      if (!TbsShareManager.isThirdPartyApp(TbsDownloader.a()))
       {
-        localObject2 = "tbs_download_lock_file" + TbsDownloadConfig.getInstance(TbsDownloader.access$100()).mPreferences.getInt("tbs_download_version", 0) + ".txt";
-        localObject2 = FileUtil.getLockFos(TbsDownloader.access$100(), false, (String)localObject2);
+        localObject2 = "tbs_download_lock_file" + TbsDownloadConfig.getInstance(TbsDownloader.a()).mPreferences.getInt("tbs_download_version", 0) + ".txt";
+        localObject2 = FileUtil.b(TbsDownloader.a(), false, (String)localObject2);
         if (localObject2 != null)
         {
-          localObject3 = FileUtil.tryFileLock(TbsDownloader.access$100(), (FileOutputStream)localObject2);
+          localObject3 = FileUtil.a(TbsDownloader.a(), (FileOutputStream)localObject2);
           localObject1 = localObject3;
           if (localObject3 == null)
           {
-            QbSdk.mTbsListenerWrapper.onDownloadFinish(177);
+            QbSdk.m.onDownloadFinish(177);
             TbsLog.i("TbsDownload", "file lock locked,wx or qq is downloading");
-            TbsDownloadConfig.getInstance(TbsDownloader.access$100()).setDownloadInterruptCode(-203);
+            TbsDownloadConfig.getInstance(TbsDownloader.a()).setDownloadInterruptCode(-203);
             TbsLog.i("TbsDownload", "MSG_START_DOWNLOAD_DECOUPLECORE return #1");
           }
         }
-        else if (FileUtil.isSdcardDirWritable(TbsDownloader.access$100()))
+        else if (FileUtil.a(TbsDownloader.a()))
         {
-          TbsDownloadConfig.getInstance(TbsDownloader.access$100()).setDownloadInterruptCode(-204);
+          TbsDownloadConfig.getInstance(TbsDownloader.a()).setDownloadInterruptCode(-204);
           TbsLog.i("TbsDownload", "MSG_START_DOWNLOAD_DECOUPLECORE return #2");
         }
       }
@@ -113,24 +113,24 @@ final class TbsDownloader$1
       if (paramMessage.arg1 == 1)
       {
         bool1 = true;
-        localObject3 = TbsDownloadConfig.getInstance(TbsDownloader.access$100());
+        localObject3 = TbsDownloadConfig.getInstance(TbsDownloader.a());
         if (108 != paramMessage.what) {
           break label600;
         }
         bool2 = true;
-        if (!TbsDownloader.access$000(false, bool1, bool2, true)) {
+        if (!TbsDownloader.a(false, bool1, bool2, true)) {
           break label682;
         }
-        if ((!bool1) || (!TbsInstaller.getInstance().installLocalTbsCore(TbsDownloader.access$100(), TbsDownloadConfig.getInstance(TbsDownloader.access$100()).mPreferences.getInt("tbs_download_version", 0)))) {
+        if ((!bool1) || (!n.a().b(TbsDownloader.a(), TbsDownloadConfig.getInstance(TbsDownloader.a()).mPreferences.getInt("tbs_download_version", 0)))) {
           break label606;
         }
-        QbSdk.mTbsListenerWrapper.onDownloadFinish(122);
+        QbSdk.m.onDownloadFinish(122);
         ((TbsDownloadConfig)localObject3).setDownloadInterruptCode(-213);
       }
       for (;;)
       {
         TbsLog.i("TbsDownload", "------freeFileLock called :");
-        FileUtil.freeFileLock((FileLock)localObject1, (FileOutputStream)localObject2);
+        FileUtil.a((FileLock)localObject1, (FileOutputStream)localObject2);
         return;
         bool1 = false;
         break;
@@ -138,27 +138,27 @@ final class TbsDownloader$1
         break label518;
         if (((TbsDownloadConfig)localObject3).mPreferences.getBoolean("tbs_needdownload", false))
         {
-          TbsDownloadConfig.getInstance(TbsDownloader.access$100()).setDownloadInterruptCode(-215);
-          localObject3 = TbsDownloader.access$200();
+          TbsDownloadConfig.getInstance(TbsDownloader.a()).setDownloadInterruptCode(-215);
+          localObject3 = TbsDownloader.b();
           if (108 == paramMessage.what) {}
           for (bool2 = bool3;; bool2 = false)
           {
-            ((TbsApkDownloader)localObject3).startDownload(bool1, bool2);
+            ((j)localObject3).b(bool1, bool2);
             break;
           }
         }
-        QbSdk.mTbsListenerWrapper.onDownloadFinish(110);
+        QbSdk.m.onDownloadFinish(110);
         continue;
-        QbSdk.mTbsListenerWrapper.onDownloadFinish(110);
+        QbSdk.m.onDownloadFinish(110);
       }
     case 102: 
       TbsLog.i("TbsDownload", "[TbsDownloader.handleMessage] MSG_REPORT_DOWNLOAD_STAT");
-      if (TbsShareManager.isThirdPartyApp(TbsDownloader.access$100())) {}
-      for (i = TbsShareManager.getAvailableTbsCoreVersion(TbsDownloader.access$100(), false);; i = TbsInstaller.getInstance().getTbsCoreInstalledVerWithLock(TbsDownloader.access$100()))
+      if (TbsShareManager.isThirdPartyApp(TbsDownloader.a())) {}
+      for (i = TbsShareManager.a(TbsDownloader.a(), false);; i = n.a().m(TbsDownloader.a()))
       {
         TbsLog.i("TbsDownload", "[TbsDownloader.handleMessage] localTbsVersion=" + i);
-        TbsDownloader.access$200().removeTbsApkIfNeeded(i);
-        TbsLogReport.getInstance(TbsDownloader.access$100()).dailyReport();
+        TbsDownloader.b().a(i);
+        TbsLogReport.getInstance(TbsDownloader.a()).dailyReport();
         return;
       }
     case 104: 
@@ -168,22 +168,22 @@ final class TbsDownloader$1
       label518:
       label600:
       label606:
-      TbsLogReport.getInstance(TbsDownloader.access$100()).reportTbsLog();
+      TbsLogReport.getInstance(TbsDownloader.a()).reportTbsLog();
       label682:
       return;
     }
     TbsLog.i("TbsDownload", "[TbsDownloader.handleMessage] MSG_CONTINUEINSTALL_TBSCORE");
     if (paramMessage.arg1 == 0)
     {
-      TbsInstaller.getInstance().continueInstallTbsCore((Context)paramMessage.obj, true);
+      n.a().a((Context)paramMessage.obj, true);
       return;
     }
-    TbsInstaller.getInstance().continueInstallTbsCore((Context)paramMessage.obj, false);
+    n.a().a((Context)paramMessage.obj, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloader.1
  * JD-Core Version:    0.7.0.1
  */

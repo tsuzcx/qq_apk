@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class awde
-  implements View.OnClickListener
+public class awde
 {
-  awde(awcx paramawcx) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  public awde()
   {
-    bdsr.a(awcx.a(this.a), "panel");
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CommonGuideInfo|").append("webUrl=").append(this.jdField_a_of_type_JavaLangString).append(",type=").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awde
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahop
-  implements View.OnClickListener
+  implements ahor
 {
-  public ahop(NotificationView paramNotificationView, structmsg.SystemMsg paramSystemMsg) {}
-  
-  public void onClick(View paramView)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    awrt.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_Ahoe.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
+    paramagup.g(paramagwc, paramString);
   }
 }
 

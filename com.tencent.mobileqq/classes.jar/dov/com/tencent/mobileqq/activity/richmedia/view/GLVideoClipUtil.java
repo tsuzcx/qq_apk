@@ -1,17 +1,17 @@
 package dov.com.tencent.mobileqq.activity.richmedia.view;
 
-import ajpx;
+import alin;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.os.SystemClock;
-import azhf;
-import azhg;
-import azhj;
-import bnit;
-import bniv;
-import bnix;
+import bcif;
+import bcig;
+import bcij;
+import bpzw;
+import bpzy;
+import bqaa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
@@ -32,7 +32,7 @@ public class GLVideoClipUtil
   private static final int jdField_c_of_type_Int;
   private static int q = -1;
   public int a;
-  private bnix jdField_a_of_type_Bnix = new bnix(this, null);
+  private bqaa jdField_a_of_type_Bqaa = new bqaa(this, null);
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private int[] jdField_a_of_type_ArrayOfInt = new int[1];
   private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer = new ByteBuffer[2];
@@ -60,7 +60,7 @@ public class GLVideoClipUtil
   
   static
   {
-    jdField_a_of_type_JavaLangString = "precision mediump float;varying vec2 texturecoordinateOut;\nuniform sampler2D SamplerY;\nuniform sampler2D SamplerUV;\nuniform float blackField;\nuniform float whiteField;\nuniform float nightMode;\nvoid main()\n{\nvec3 yuv;\nvec3 rgb;\nvec4 rgba;\nfloat fieldWidth;\nyuv.x = texture2D(SamplerY, texturecoordinateOut).r;\nyuv.zy= texture2D(SamplerUV,texturecoordinateOut).ra-vec2(0.5, 0.5);\nrgb = mat3(      1,       1,      1,\n0, \t\t-.34414, 1.772,\n1.402, \t-.71414, 0) * yuv;\nfieldWidth = whiteField - blackField;\nif (nightMode > 0.0) {\nrgb.r *= 255.0;\nrgb.r -= blackField;\nrgb.r /= fieldWidth;\nrgb.g *= 255.0;\nrgb.g -= blackField;\nrgb.g /= fieldWidth;\nrgb.b *= 255.0;\nrgb.b -= blackField;\nrgb.b /= fieldWidth;\nrgb.r = min(1.0, max(0.0, rgb.r));\nrgb.g = min(1.0, max(0.0, rgb.g));\nrgb.b = min(1.0, max(0.0, rgb.b));\n}\nrgba = vec4(rgb, 1);\ngl_FragColor = rgba;\n}\n";
+    jdField_a_of_type_JavaLangString = "precision mediump float;varying vec2 texturecoordinateOut;\nuniform sampler2D SamplerY;\nuniform sampler2D SamplerUV;\nuniform float blackField;\nuniform float whiteField;\nuniform float nightMode;\nvoid main()\n{\nvec3 yuv;\nvec3 rgb;\nvec4 rgba;\nfloat fieldWidth;\nyuv.x = texture2D(SamplerY, texturecoordinateOut).r;\nyuv.zy= texture2D(SamplerUV,texturecoordinateOut).ra-vec2(0.5, 0.5);\nrgb = mat3(      1,       1,      1,\n0,         -.34414, 1.772,\n1.402,     -.71414, 0) * yuv;\nfieldWidth = whiteField - blackField;\nif (nightMode > 0.0) {\nrgb.r *= 255.0;\nrgb.r -= blackField;\nrgb.r /= fieldWidth;\nrgb.g *= 255.0;\nrgb.g -= blackField;\nrgb.g /= fieldWidth;\nrgb.b *= 255.0;\nrgb.b -= blackField;\nrgb.b /= fieldWidth;\nrgb.r = min(1.0, max(0.0, rgb.r));\nrgb.g = min(1.0, max(0.0, rgb.g));\nrgb.b = min(1.0, max(0.0, rgb.b));\n}\nrgba = vec4(rgb, 1);\ngl_FragColor = rgba;\n}\n";
     jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, 1.0F, 1.0F, -1.0F, 1.0F };
     jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F };
     jdField_c_of_type_Int = jdField_a_of_type_ArrayOfFloat.length * 4 + jdField_b_of_type_ArrayOfFloat.length * 4;
@@ -121,9 +121,9 @@ public class GLVideoClipUtil
     float[] tmp77_72 = tmp72_67;
     tmp77_72[15] = 1.0F;
     tmp77_72;
-    boolean bool1 = azhf.d(azhf.e);
-    boolean bool2 = azhf.b(azhf.f);
-    if ((paramBoolean) && ((bool1) || (bool2)) && (ajpx.jdField_a_of_type_Int == 1)) {
+    boolean bool1 = bcif.d(bcif.e);
+    boolean bool2 = bcif.b(bcif.f);
+    if ((paramBoolean) && ((bool1) || (bool2)) && (alin.jdField_a_of_type_Int == 1)) {
       System.arraycopy(arrayOfFloat, 0, this.jdField_c_of_type_ArrayOfFloat, 0, arrayOfFloat.length);
     }
     for (;;)
@@ -136,11 +136,11 @@ public class GLVideoClipUtil
       paramInt1 = jdField_b_of_type_ArrayOfFloat.length;
       System.arraycopy(new float[] { f1, f4, f2, f4, f2, f3, f1, f3 }, 0, arrayOfFloat, 0, paramInt1);
       return;
-      bool1 = azhf.d(azhf.g);
+      bool1 = bcif.d(bcif.g);
       if (bool1) {
         paramBoolean = false;
       }
-      if ((bool1) && (ajpx.jdField_a_of_type_Int == 2)) {
+      if ((bool1) && (alin.jdField_a_of_type_Int == 2)) {
         Matrix.multiplyMM(this.jdField_c_of_type_ArrayOfFloat, 0, new float[] { -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F }, 0, arrayOfFloat, 0);
       } else if (paramBoolean) {
         Matrix.multiplyMM(this.jdField_c_of_type_ArrayOfFloat, 0, new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F }, 0, arrayOfFloat, 0);
@@ -164,16 +164,16 @@ public class GLVideoClipUtil
       long l1 = this.r * this.s * 3 / 2;
       if (l1 != paramInt)
       {
-        bnix localbnix = this.jdField_a_of_type_Bnix;
-        localbnix.jdField_a_of_type_Int += 1;
+        bqaa localbqaa = this.jdField_a_of_type_Bqaa;
+        localbqaa.jdField_a_of_type_Int += 1;
         bool = true;
-        if (this.jdField_a_of_type_Bnix.jdField_a_of_type_Int >= 3) {
+        if (this.jdField_a_of_type_Bqaa.jdField_a_of_type_Int >= 3) {
           throw new GLVideoClipUtil.GLClipOldLibException("checkDataLength: dataSize=" + l1 + " length=" + paramInt + "prev*preh=" + this.r + " * " + this.s);
         }
       }
       else
       {
-        this.jdField_a_of_type_Bnix.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_Bqaa.jdField_a_of_type_Int = 0;
       }
     }
     return bool;
@@ -278,48 +278,48 @@ public class GLVideoClipUtil
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    azhj localazhj = azhg.a().a();
+    bcij localbcij = bcig.a().a();
     int i4 = paramInt1;
     int i3 = paramInt2;
     int i2 = paramInt3;
     int i1 = paramInt4;
-    if (localazhj != null)
+    if (localbcij != null)
     {
-      QLog.d("GLVideoClipUtil", 2, "allocateNativeBuffer[CameraControl-]: Width=" + localazhj.jdField_a_of_type_Int + " Height=" + localazhj.jdField_b_of_type_Int + " width1" + paramInt1 + " height1" + paramInt2);
+      QLog.d("GLVideoClipUtil", 2, "allocateNativeBuffer[CameraControl-]: Width=" + localbcij.jdField_a_of_type_Int + " Height=" + localbcij.jdField_b_of_type_Int + " width1" + paramInt1 + " height1" + paramInt2);
       i4 = paramInt1;
       i3 = paramInt2;
       i2 = paramInt3;
       i1 = paramInt4;
-      if (localazhj.jdField_a_of_type_Int > 0)
+      if (localbcij.jdField_a_of_type_Int > 0)
       {
         i4 = paramInt1;
         i3 = paramInt2;
         i2 = paramInt3;
         i1 = paramInt4;
-        if (localazhj.jdField_b_of_type_Int > 0) {
-          if (localazhj.jdField_a_of_type_Int == paramInt1)
+        if (localbcij.jdField_b_of_type_Int > 0) {
+          if (localbcij.jdField_a_of_type_Int == paramInt1)
           {
             i4 = paramInt1;
             i3 = paramInt2;
             i2 = paramInt3;
             i1 = paramInt4;
-            if (localazhj.jdField_b_of_type_Int == paramInt2) {}
+            if (localbcij.jdField_b_of_type_Int == paramInt2) {}
           }
           else
           {
             if ((paramInt1 != paramInt4) || (paramInt2 != paramInt3)) {
               break label285;
             }
-            paramInt2 = localazhj.jdField_b_of_type_Int;
-            paramInt1 = localazhj.jdField_a_of_type_Int;
+            paramInt2 = localbcij.jdField_b_of_type_Int;
+            paramInt1 = localbcij.jdField_a_of_type_Int;
           }
         }
       }
     }
     for (;;)
     {
-      i4 = localazhj.jdField_a_of_type_Int;
-      i3 = localazhj.jdField_b_of_type_Int;
+      i4 = localbcij.jdField_a_of_type_Int;
+      i3 = localbcij.jdField_b_of_type_Int;
       QLog.d("GLVideoClipUtil", 2, "allocateNativeBuffer[Adjust]: clipwidth=" + paramInt2 + " clipheight=" + paramInt1);
       i1 = paramInt1;
       i2 = paramInt2;
@@ -330,15 +330,15 @@ public class GLVideoClipUtil
         {
           throw new GLVideoClipUtil.GLClipOldLibException("initClipSpec:err=" + paramInt1);
           label285:
-          if (paramInt4 * 1.0F / paramInt3 > localazhj.jdField_a_of_type_Int * 1.0F / localazhj.jdField_b_of_type_Int)
+          if (paramInt4 * 1.0F / paramInt3 > localbcij.jdField_a_of_type_Int * 1.0F / localbcij.jdField_b_of_type_Int)
           {
-            paramInt1 = (int)(localazhj.jdField_a_of_type_Int * paramInt3 * 1.0F / paramInt4);
+            paramInt1 = (int)(localbcij.jdField_a_of_type_Int * paramInt3 * 1.0F / paramInt4);
             paramInt2 = paramInt1 - paramInt1 % 16;
-            paramInt1 = localazhj.jdField_a_of_type_Int;
+            paramInt1 = localbcij.jdField_a_of_type_Int;
             continue;
           }
-          paramInt2 = localazhj.jdField_b_of_type_Int;
-          paramInt1 = (int)(localazhj.jdField_b_of_type_Int * paramInt4 * 1.0F / paramInt3);
+          paramInt2 = localbcij.jdField_b_of_type_Int;
+          paramInt1 = (int)(localbcij.jdField_b_of_type_Int * paramInt4 * 1.0F / paramInt3);
           paramInt1 -= paramInt1 % 16;
         }
       }
@@ -523,7 +523,7 @@ public class GLVideoClipUtil
     GLES20.glFrontFace(2305);
     GLES20.glCullFace(1029);
     d();
-    this.jdField_a_of_type_Int = bniv.a("precision highp float;\nattribute vec4 position;\nattribute vec4 textureCoordinateIn;\nuniform   mat4 uSTMatrix;\nvarying   vec2 texturecoordinateOut;\nvoid main()\n{\ntexturecoordinateOut = (uSTMatrix * textureCoordinateIn).xy;\ngl_Position = position;\n}\n", jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Int = bpzy.a("precision highp float;\nattribute vec4 position;\nattribute vec4 textureCoordinateIn;\nuniform   mat4 uSTMatrix;\nvarying   vec2 texturecoordinateOut;\nvoid main()\n{\ntexturecoordinateOut = (uSTMatrix * textureCoordinateIn).xy;\ngl_Position = position;\n}\n", jdField_a_of_type_JavaLangString);
     if (this.jdField_a_of_type_Int == 0)
     {
       CameraGLSurfaceView.a("GLVideoHelper.createShaderProgram: mGLProgram=" + this.jdField_a_of_type_Int);
@@ -576,7 +576,7 @@ public class GLVideoClipUtil
       i1 = GLES20.glGetError();
       paramBoolean = bool;
     } while (i1 == 0);
-    bnit.a("glError:err=" + i1 + " errname=" + bnit.a(i1));
+    bpzw.a("glError:err=" + i1 + " errname=" + bpzw.a(i1));
     return bool;
   }
   
@@ -584,7 +584,7 @@ public class GLVideoClipUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil
  * JD-Core Version:    0.7.0.1
  */

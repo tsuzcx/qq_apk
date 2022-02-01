@@ -4,6 +4,9 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.tmassistant.appinfo.aidl.IGetAppInfoCallback.Stub;
+import com.tencent.tmassistant.appinfo.data.AppDetailReqParam;
 
 public abstract class b
   extends Binder
@@ -89,11 +92,11 @@ public abstract class b
       return true;
     case 10: 
       paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
-      String str = paramParcel1.readString();
+      localObject = paramParcel1.readString();
       if (paramParcel1.readInt() != 0) {
         bool = true;
       }
-      a(str, bool);
+      a((String)localObject, bool);
       paramParcel2.writeNoException();
       return true;
     case 11: 
@@ -120,21 +123,31 @@ public abstract class b
       paramParcel2.writeNoException();
       paramParcel2.writeString(paramParcel1);
       return true;
+    case 15: 
+      paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
+      bool = e(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramInt1 = i;
+      if (bool) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
     }
     paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
-    bool = e(paramParcel1.readString());
-    paramParcel2.writeNoException();
-    paramInt1 = i;
-    if (bool) {
-      paramInt1 = 1;
+    if (paramParcel1.readInt() != 0) {}
+    for (Object localObject = (AppDetailReqParam)AppDetailReqParam.CREATOR.createFromParcel(paramParcel1);; localObject = null)
+    {
+      paramInt1 = a((AppDetailReqParam)localObject, IGetAppInfoCallback.Stub.asInterface(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
     }
-    paramParcel2.writeInt(paramInt1);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.remote.b
  * JD-Core Version:    0.7.0.1
  */

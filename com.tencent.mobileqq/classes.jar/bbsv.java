@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
-class bbsv
-  implements bezx
+public class bbsv
+  extends bbti
 {
-  bbsv(bbsn parambbsn, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
-  
-  public void a(int paramInt)
+  public bbsv(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
-    }
+    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
+  }
+  
+  public bbmx a(List<bbmy> paramList, String paramString)
+  {
+    return new bbkq(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 

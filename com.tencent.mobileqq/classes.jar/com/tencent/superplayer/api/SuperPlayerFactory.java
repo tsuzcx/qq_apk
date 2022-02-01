@@ -2,7 +2,7 @@ package com.tencent.superplayer.api;
 
 import android.content.Context;
 import com.tencent.superplayer.datatransport.SPlayerDownloaderImpl;
-import com.tencent.superplayer.datatransport.SPlayerPreLoaderImpl;
+import com.tencent.superplayer.datatransport.SPlayerPreDownloaderImpl;
 import com.tencent.superplayer.player.SuperPlayerMgr;
 import com.tencent.superplayer.view.ISPlayerVideoView;
 import com.tencent.superplayer.view.SPlayerVideoView;
@@ -29,9 +29,9 @@ public class SuperPlayerFactory
     return new SPlayerVideoView(paramContext, paramBoolean);
   }
   
-  public static ISPlayerPreLoader createPreLoader(Context paramContext, int paramInt)
+  public static ISPlayerPreDownloader createPreDownloader(Context paramContext, int paramInt)
   {
-    return new SPlayerPreLoaderImpl(paramContext, paramInt);
+    return new SPlayerPreDownloaderImpl(paramContext, paramInt);
   }
   
   public static SuperPlayerVideoInfo createVideoInfoForTVideo(int paramInt, String paramString)
@@ -73,6 +73,16 @@ public class SuperPlayerFactory
     return localSuperPlayerVideoInfo;
   }
   
+  public static SuperPlayerVideoInfo createVideoInfoForUrl(String[] paramArrayOfString, int paramInt, long paramLong, String paramString)
+  {
+    SuperPlayerVideoInfo localSuperPlayerVideoInfo = new SuperPlayerVideoInfo(3);
+    localSuperPlayerVideoInfo.setPlayUrl(paramArrayOfString);
+    localSuperPlayerVideoInfo.setFormat(paramInt);
+    localSuperPlayerVideoInfo.setVideoDurationMs(paramLong);
+    localSuperPlayerVideoInfo.setFileId(paramString);
+    return localSuperPlayerVideoInfo;
+  }
+  
   public static SuperPlayerVideoInfo createVideoInfoForUrl(String[] paramArrayOfString, int paramInt, String paramString)
   {
     SuperPlayerVideoInfo localSuperPlayerVideoInfo = new SuperPlayerVideoInfo(3);
@@ -91,10 +101,15 @@ public class SuperPlayerFactory
     localSuperPlayerVideoInfo.setLocalSavePath(paramString2);
     return localSuperPlayerVideoInfo;
   }
+  
+  public static ISuperPlayer obtainMediaPlayer(String paramString)
+  {
+    return SuperPlayerSDKMgr.getPlayerPool().get(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerFactory
  * JD-Core Version:    0.7.0.1
  */

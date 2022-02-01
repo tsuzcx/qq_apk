@@ -1,70 +1,78 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import protocol.KQQConfig.GetResourceReqInfo;
 
 public class agba
+  extends anjo
+  implements bcbk
 {
-  public static int a;
-  public static boolean a;
-  public static int b;
-  public static boolean b;
+  private ToServiceMsg a;
   
-  static
+  public agba(QQAppInterface paramQQAppInterface)
   {
-    jdField_b_of_type_Boolean = true;
-    jdField_a_of_type_Int = 15;
-    jdField_b_of_type_Int = 20;
+    super(paramQQAppInterface);
   }
   
-  public static void a()
+  public int a()
   {
-    Object localObject;
-    if (!jdField_a_of_type_Boolean)
-    {
-      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.PtvConfig.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), ptvConfig=" + (String)localObject);
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label211;
-      }
-      localObject = ((String)localObject).split("\\|");
-      if ((localObject != null) && (localObject.length >= 3) && (TextUtils.isEmpty(localObject[0]))) {}
+    return 7;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    Object localObject2 = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("AioAnimationConfigCheckUpdateItem", 2, "getCheckUpdateItemData:");
     }
-    try
+    a(null, new GetResourceReqInfo[] { a() });
+    Object localObject1 = localObject2;
+    if (this.a != null)
     {
-      jdField_b_of_type_Int = Integer.parseInt(localObject[0]);
-      label93:
-      if (!TextUtils.isEmpty(localObject[1])) {
-        jdField_b_of_type_Boolean = localObject[1].equals("1");
-      }
-      if (!TextUtils.isEmpty(localObject[2])) {}
-      for (;;)
+      aber localaber = this.app.a.a(this.a.getServiceCmd());
+      localObject1 = localObject2;
+      if (localaber != null)
       {
-        try
+        UniPacket localUniPacket = new UniPacket(true);
+        localUniPacket.setEncodeName("utf-8");
+        localObject1 = localObject2;
+        if (localaber.a(this.a, localUniPacket))
         {
-          jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
-          jdField_a_of_type_Boolean = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + jdField_b_of_type_Boolean + ", sRequestedFPS:" + jdField_a_of_type_Int + ",sPtvMaxTime:" + jdField_b_of_type_Int);
-          }
-          return;
+          localObject1 = new ReqItem();
+          ((ReqItem)localObject1).eServiceID = 120;
+          ((ReqItem)localObject1).vecParam = localUniPacket.encode();
         }
-        catch (Exception localException1)
-        {
-          jdField_a_of_type_Int = 15;
-          continue;
-        }
-        label211:
-        jdField_b_of_type_Boolean = true;
-        jdField_a_of_type_Int = 15;
       }
     }
-    catch (Exception localException2)
+    return localObject1;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if (paramRespItem != null)
     {
-      break label93;
+      int i = paramRespItem.cResult;
+      Object localObject = paramRespItem.vecUpdate;
+      if (QLog.isColorLevel()) {
+        QLog.d("AioAnimationConfigCheckUpdateItem", 2, "handleCheckUpdateItemData: item.cResult = " + i + ", dataLen = " + localObject.length);
+      }
+      if ((paramRespItem.eServiceID == 120) && (paramRespItem.cResult == 2))
+      {
+        localObject = new FromServiceMsg(this.app.getAccount(), "ResourceConfig.GetResourceReq");
+        ((FromServiceMsg)localObject).setMsgSuccess();
+        ((FromServiceMsg)localObject).putWupBuffer(paramRespItem.vecUpdate);
+        this.app.a(this.a, (FromServiceMsg)localObject);
+      }
     }
+  }
+  
+  public void send(ToServiceMsg paramToServiceMsg)
+  {
+    this.a = paramToServiceMsg;
   }
 }
 

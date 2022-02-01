@@ -1,9 +1,24 @@
-class afog
-  implements bhum
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
+import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class afog
+  implements View.OnClickListener
 {
-  afog(afof paramafof) {}
+  public afog(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public void onDismiss() {}
+  public void onClick(View paramView)
+  {
+    Intent localIntent = new Intent(this.a, CountrySelectActivity.class);
+    localIntent.putExtra("key_country_code", this.a.a.mLocationCountyCode);
+    localIntent.putExtra("key_no_limit_allow", true);
+    this.a.startActivityForResult(localIntent, 111);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

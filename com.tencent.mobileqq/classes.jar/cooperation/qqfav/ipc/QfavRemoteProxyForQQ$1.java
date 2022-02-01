@@ -1,21 +1,21 @@
 package cooperation.qqfav.ipc;
 
-import biwi;
-import biwk;
+import blku;
+import blkw;
 
 public class QfavRemoteProxyForQQ$1
   implements Runnable
 {
-  public QfavRemoteProxyForQQ$1(biwi parambiwi, biwk parambiwk) {}
+  public QfavRemoteProxyForQQ$1(blku paramblku, blkw paramblkw) {}
   
   public void run()
   {
-    biwi.a(this.this$0, this.a);
+    blku.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqfav.ipc.QfavRemoteProxyForQQ.1
  * JD-Core Version:    0.7.0.1
  */

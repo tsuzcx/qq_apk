@@ -1,26 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import com.tencent.mobileqq.data.OpenID;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bmfx
-  extends AnimatorListenerAdapter
+  implements anil
 {
-  public bmfx(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  public bmfx(QZoneShareActivity paramQZoneShareActivity, String paramString, QZoneShareData paramQZoneShareData) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView 100ms back end");
-    }
-    this.a.j();
-    atlr.b();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView begin");
+    if ((paramInt == 1) && ((paramObject instanceof OpenID)))
+    {
+      paramObject = (OpenID)paramObject;
+      if ((paramObject.openID != null) && (!paramObject.openID.equals(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData);
+      }
     }
   }
 }

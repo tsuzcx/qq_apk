@@ -1,23 +1,82 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bdrn
-  extends GridLayoutManager.SpanSizeLookup
+public abstract class bdrn
+  implements Cloneable
 {
-  bdrn(bdrm parambdrm) {}
+  public long c;
+  public int d;
+  public long d;
+  public int e;
+  public long e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  @Nullable
+  public String g;
+  public int h;
+  public String h = "";
+  public int i;
+  public int j;
+  public int k = 0;
   
-  public int getSpanSize(int paramInt)
+  public bdrn()
   {
-    int i = 3;
-    switch (this.a.getItemViewType(paramInt))
-    {
-    default: 
-      i = 1;
-    case 1: 
-    case 2: 
-    case 4: 
-      return i;
-    }
-    return 1;
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_f_of_type_Int = -1;
+    this.jdField_f_of_type_JavaLangString = "";
+  }
+  
+  public int a()
+  {
+    return bkpg.b;
+  }
+  
+  public String a()
+  {
+    return "";
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return "";
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return bglf.p(paramQQAppInterface, paramString);
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    return bglf.h(paramQQAppInterface, paramString1, paramString2);
+  }
+  
+  public String a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
+  {
+    return "";
+  }
+  
+  public boolean a()
+  {
+    return ((this.jdField_e_of_type_Int == 2) || (this.jdField_e_of_type_Int == 1)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString));
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public String b(QQAppInterface paramQQAppInterface)
+  {
+    return "";
+  }
+  
+  public int d()
+  {
+    return 2131698404;
   }
 }
 

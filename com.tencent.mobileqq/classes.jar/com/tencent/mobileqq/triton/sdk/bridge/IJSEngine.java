@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.triton.sdk.bridge;
 
 import android.content.Context;
+import com.tencent.mobileqq.triton.sdk.ITTEngine;
 
 public abstract interface IJSEngine
 {
@@ -8,7 +9,7 @@ public abstract interface IJSEngine
   
   public abstract ITTJSRuntime getJsRuntime(int paramInt);
   
-  public abstract void onCreate(Context paramContext);
+  public abstract void onCreate(Context paramContext, ITTEngine paramITTEngine);
   
   public abstract void onDestroy();
   
@@ -16,7 +17,7 @@ public abstract interface IJSEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.sdk.bridge.IJSEngine
  * JD-Core Version:    0.7.0.1
  */

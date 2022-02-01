@@ -1,21 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
-
-public class bity
-  implements DialogInterface.OnClickListener
+public abstract interface bity
 {
-  public bity(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  public abstract void a(String paramString1, String paramString2, String paramString3);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bisq.a(this.a, 5, null);
-    this.a.finish();
-  }
+  public abstract void b(String paramString1, String paramString2, String paramString3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bity
  * JD-Core Version:    0.7.0.1
  */

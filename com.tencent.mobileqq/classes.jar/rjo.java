@@ -1,42 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
-public abstract class rjo
+public class rjo
+  implements bdzl
 {
-  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo) {}
+  public rjo(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, rjn paramrjn)
-  {
-    a(paramTVK_NetVideoInfo);
-  }
-  
-  public void a(rjn paramrjn) {}
-  
-  public abstract void a(rjn paramrjn, Object paramObject);
-  
-  public void a(rjn paramrjn, String paramString) {}
-  
-  public void a(rjn paramrjn, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
-  
-  public boolean a(rjn paramrjn, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
-  {
-    return false;
-  }
-  
-  public boolean a(rjn paramrjn, int paramInt, Object paramObject)
-  {
-    return false;
-  }
-  
-  public void b(rjn paramrjn) {}
-  
-  public void b(rjn paramrjn, String paramString) {}
-  
-  public void d(rjn paramrjn) {}
+  public void a(ArrayList<MessageRecord> paramArrayList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rjo
  * JD-Core Version:    0.7.0.1
  */

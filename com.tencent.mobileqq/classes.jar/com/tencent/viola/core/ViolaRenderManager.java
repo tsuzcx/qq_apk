@@ -68,6 +68,9 @@ public class ViolaRenderManager
   
   public void registerInstance(ViolaInstance paramViolaInstance)
   {
+    if ((paramViolaInstance == null) || (this.mRenderActionImplMap.containsKey(paramViolaInstance.getInstanceId()))) {
+      return;
+    }
     this.mRenderActionImplMap.put(paramViolaInstance.getInstanceId(), new RenderActionContextImpl(paramViolaInstance));
   }
   
@@ -118,7 +121,7 @@ public class ViolaRenderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaRenderManager
  * JD-Core Version:    0.7.0.1
  */

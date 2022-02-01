@@ -1,43 +1,26 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class arrd
+class arrd
+  implements Handler.Callback
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  public String b;
-  public String c;
+  arrd(arrc paramarrc) {}
   
-  private arrd(arqx paramarqx) {}
-  
-  public void a() {}
-  
-  public void a(Context paramContext)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramContext.getSharedPreferences("FMSETTING_59", 3).edit().putString("DefaultRootPath", this.b).commit();
-    paramContext = arqx.a(this.jdField_a_of_type_Arqx, this.b + this.c);
-    Object localObject = arqx.b(this.jdField_a_of_type_Arqx, this.b + this.c);
-    String str = arqx.c(this.jdField_a_of_type_Arqx, this.b + this.c);
-    arqx.a(this.jdField_a_of_type_Arqx, paramContext);
-    arqx.a(this.jdField_a_of_type_Arqx, str);
-    arqx.a(this.jdField_a_of_type_Arqx, (String)localObject);
-    paramContext = this.jdField_a_of_type_Arqx.a.keySet().iterator();
-    while (paramContext.hasNext())
+    switch (paramMessage.what)
     {
-      localObject = (String)paramContext.next();
-      localObject = (arrd)this.jdField_a_of_type_Arqx.a.get(localObject);
-      if ((((arrd)localObject).jdField_a_of_type_Boolean) && (localObject != this))
-      {
-        arqx.a(2, "getDefaultStorage[" + ((arrd)localObject).b + "]");
-        ((arrd)localObject).jdField_a_of_type_Boolean = false;
-      }
     }
-    this.jdField_a_of_type_Boolean = true;
+    do
+    {
+      return true;
+      this.a.b = true;
+      QLog.i("EmoticonFromGroup_DBManager", 1, "set db tag, mCanWriteDataToDB = true.");
+    } while (this.a.b() < 300);
+    arrc.a(this.a).clear();
+    return true;
   }
 }
 

@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.applets;
 
-import afwq;
-import akgt;
+import alzs;
 import com.tencent.mobileqq.app.QQAppInterface;
-import ssp;
 
 public final class PublicAccountEventReport$1
   implements Runnable
@@ -12,14 +10,12 @@ public final class PublicAccountEventReport$1
   
   public void run()
   {
-    if (afwq.a(ssp.a().a())) {
-      akgt.a().a(this.a, 1);
-    }
+    alzs.a().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport.1
  * JD-Core Version:    0.7.0.1
  */

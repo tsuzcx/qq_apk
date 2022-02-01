@@ -1,89 +1,38 @@
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class aegw
-  implements Comparator<aegt>
+  implements bkhw
 {
-  int jdField_a_of_type_Int = -1;
-  boolean jdField_a_of_type_Boolean = false;
+  public aegw(FriendProfileCardActivity paramFriendProfileCardActivity, bkho parambkho) {}
   
-  public aegw(int paramInt, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int a(aegt paramaegt1, aegt paramaegt2)
-  {
-    int i = -1;
-    int k = 1;
-    int j = 1;
-    if (this.jdField_a_of_type_Int == 0) {
-      i = paramaegt1.c.compareToIgnoreCase(paramaegt2.c);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt.length)) {
+      return;
     }
-    label89:
-    do
+    switch (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[paramInt])
     {
-      do
+    }
+    for (;;)
+    {
+      try
       {
-        do
-        {
-          do
-          {
-            return i;
-            if (this.jdField_a_of_type_Int != 2) {
-              break label89;
-            }
-            if (paramaegt1.jdField_b_of_type_Long == paramaegt2.jdField_b_of_type_Long) {
-              return 0;
-            }
-            if (paramaegt1.jdField_b_of_type_Long <= paramaegt2.jdField_b_of_type_Long) {
-              break;
-            }
-          } while (this.jdField_a_of_type_Boolean);
-          return 1;
-          if (this.jdField_a_of_type_Boolean) {}
-          for (i = j;; i = -1) {
-            return i;
-          }
-          if (this.jdField_a_of_type_Int != 3) {
-            break label149;
-          }
-          if (paramaegt1.a == paramaegt2.a) {
-            return 0;
-          }
-          if (paramaegt1.a <= paramaegt2.a) {
-            break;
-          }
-        } while (this.jdField_a_of_type_Boolean);
-        return 1;
-        if (this.jdField_a_of_type_Boolean) {}
-        for (i = k;; i = -1) {
-          return i;
-        }
-        if (this.jdField_a_of_type_Int != 1) {
-          break label208;
-        }
-        if (paramaegt1.d != paramaegt2.d) {
-          break;
-        }
-        j = paramaegt1.jdField_b_of_type_JavaLangString.compareToIgnoreCase(paramaegt2.jdField_b_of_type_JavaLangString);
-        if (j == 0) {
-          return 0;
-        }
-      } while (j <= 0);
-      return 1;
-    } while (paramaegt1.d >= paramaegt2.d);
-    label149:
-    return 1;
-    label208:
-    if (this.jdField_a_of_type_Int == 8)
-    {
-      if (paramaegt1.l == paramaegt2.l) {
-        return paramaegt1.c.compareToIgnoreCase(paramaegt2.c);
+        this.jdField_a_of_type_Bkho.dismiss();
+        this.jdField_a_of_type_Bkho.a(null);
+        return;
       }
-      return paramaegt2.l - paramaegt1.l;
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
     }
-    return 0;
   }
 }
 

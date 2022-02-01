@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class mjg
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public mjg(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  public mjg(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a != null) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mjg
  * JD-Core Version:    0.7.0.1
  */

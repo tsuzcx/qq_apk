@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import azri;
+import bctj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -21,7 +21,7 @@ public class ReportDevice
     {
       try
       {
-        azri.a(BaseApplication.getContext()).d("");
+        bctj.a(BaseApplication.getContext()).d("");
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putInt("needDoReportAppDeviceStat", 0);
         ((SharedPreferences.Editor)localObject).commit();

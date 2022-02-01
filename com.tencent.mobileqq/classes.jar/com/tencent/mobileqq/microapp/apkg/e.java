@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import ajal;
+import akse;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.microapp.c.c;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
 import java.io.File;
 
 final class e
-  implements ajal
+  implements akse
 {
   e(d paramd, String paramString) {}
   
@@ -26,7 +26,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.e
  * JD-Core Version:    0.7.0.1
  */

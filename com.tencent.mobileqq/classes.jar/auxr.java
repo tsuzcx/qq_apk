@@ -1,39 +1,22 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class auxr
-  implements ServiceConnection
 {
-  private WeakReference<auxq> jdField_a_of_type_JavaLangRefWeakReference;
+  public List<auxq> a;
+  public Set<String> a;
   
-  public auxr(auxp paramauxp, auxq paramauxq)
+  public auxr()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramauxq);
-  }
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    auxp.a(this.jdField_a_of_type_Auxp, lzb.a(paramIBinder));
-    paramComponentName = (auxq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramComponentName != null) {
-      paramComponentName.bw();
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    auxp.a(this.jdField_a_of_type_Auxp, null);
-    paramComponentName = (auxq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramComponentName != null) {
-      paramComponentName.bx();
-    }
+    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxr
  * JD-Core Version:    0.7.0.1
  */

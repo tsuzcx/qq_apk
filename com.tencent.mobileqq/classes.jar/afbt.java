@@ -1,11 +1,16 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class afbt
-  extends afcd
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public ColorView a;
+  public afbt(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a(this.a.b);
+  }
 }
 
 

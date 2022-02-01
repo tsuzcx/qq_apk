@@ -1,32 +1,27 @@
 package com.tencent.tavcut.session;
 
-import com.tencent.tavcut.aekit.AEKitModel;
+import com.tencent.tavcut.bean.CropConfig;
 import com.tencent.weseevideo.composition.VideoRenderChainManager;
 import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.effect.CropModel;
 import com.tencent.weseevideo.model.effect.MediaEffectModel;
 
 class TAVCutSession$3
   implements Runnable
 {
-  TAVCutSession$3(TAVCutSession paramTAVCutSession, MediaModel paramMediaModel, String paramString, long paramLong1, long paramLong2, VideoRenderChainManager paramVideoRenderChainManager) {}
+  TAVCutSession$3(TAVCutSession paramTAVCutSession, CropConfig paramCropConfig, MediaModel paramMediaModel, VideoRenderChainManager paramVideoRenderChainManager) {}
   
   public void run()
   {
-    AEKitModel localAEKitModel2 = this.val$mediaModel.getMediaEffectModel().getAeKitModel();
-    AEKitModel localAEKitModel1 = localAEKitModel2;
-    if (localAEKitModel2 == null) {
-      localAEKitModel1 = new AEKitModel();
-    }
-    localAEKitModel1.setLutPath(this.val$lutPath);
-    localAEKitModel1.setStartTime(this.val$lutStartTime);
-    localAEKitModel1.setDuration(this.val$lutDuration);
-    this.val$mediaModel.getMediaEffectModel().setAeKitModel(localAEKitModel1);
+    CropModel localCropModel = new CropModel();
+    localCropModel.setCropConfig(this.val$cropConfig);
+    this.val$mediaModel.getMediaEffectModel().setCropModel(localCropModel);
     this.this$0.updateRenderChain(this.val$renderChainManager, this.val$mediaModel.getMediaEffectModel());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutSession.3
  * JD-Core Version:    0.7.0.1
  */

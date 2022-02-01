@@ -1,21 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import java.util.List;
 
-class afhs
-  implements bhuk
+public class afhs
+  implements PopupWindow.OnDismissListener
 {
-  afhs(afhq paramafhq, afiv paramafiv, bhuf parambhuf) {}
+  public afhs(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss()
   {
-    switch (paramInt)
+    this.a.a = null;
+    Object localObject;
+    if ((TextPreviewTranslateActivity.b(this.a) != null) && (TextPreviewTranslateActivity.b(this.a).size() > 1))
     {
+      localObject = this.a.getResources();
+      if (!TextPreviewTranslateActivity.a(this.a)) {
+        break label76;
+      }
     }
-    for (;;)
+    label76:
+    for (int i = 2130845625;; i = 2130846156)
     {
-      this.jdField_a_of_type_Bhuf.cancel();
+      localObject = ((Resources)localObject).getDrawable(i);
+      TextPreviewTranslateActivity.b(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
       return;
-      acjm.c(this.jdField_a_of_type_Afhq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afhq.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afhq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Afiv.a.uniseq);
     }
   }
 }

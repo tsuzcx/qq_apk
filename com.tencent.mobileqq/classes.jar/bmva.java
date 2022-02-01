@@ -1,29 +1,55 @@
-import android.util.Log;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import BOSSStrategyCenter.tAdvDesc;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bmva
-  implements bmvd
+  extends alaw
 {
-  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  
+  public bmva(tAdvDesc paramtAdvDesc)
   {
-    try
-    {
-      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
-      return paramEGL10;
-    }
-    catch (IllegalArgumentException paramEGL10)
-    {
-      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
-    }
-    return null;
+    super(paramtAdvDesc);
   }
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+  protected void a()
   {
-    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
+    super.a();
+    if ((this.a == null) || (TextUtils.isEmpty(this.a.res_data)))
+    {
+      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
+      return;
+    }
+    String str = this.a.res_data;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(str);
+      this.jdField_d_of_type_Int = localJSONObject.optInt("enableCountdown");
+      this.jdField_e_of_type_Int = localJSONObject.optInt("countdownMinute");
+      this.jdField_f_of_type_Int = localJSONObject.optInt("countdownSecond");
+      this.c = localJSONObject.optString("topText");
+      this.jdField_d_of_type_JavaLangString = localJSONObject.optString("bottomText");
+      this.jdField_e_of_type_JavaLangString = localJSONObject.optString("textColor");
+      this.jdField_f_of_type_JavaLangString = localJSONObject.optString("coutdownBgColor");
+      this.g = localJSONObject.optString("coutdownTextColor");
+      this.h = localJSONObject.optString("buttonTitle");
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
+      bmev.a().a(2741, this.a.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
+    }
   }
 }
 

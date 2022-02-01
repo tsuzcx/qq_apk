@@ -1,25 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import mqq.os.MqqHandler;
-
-class rhy
-  implements DialogInterface.OnClickListener
+public class rhy
 {
-  rhy(rhx paramrhx, String paramString) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
+  public long c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rhx, rhf.a(this.jdField_a_of_type_Rhx.a).getIntent().getExtras().getString("thumbfile_md5") + ".mp4", true));
+    return "RedPoint{isShow=" + this.jdField_a_of_type_Boolean + ", startTimestamp=" + this.jdField_a_of_type_Long + ", animationTimestamp=" + this.jdField_c_of_type_Long + ", endTimestamp=" + this.jdField_b_of_type_Long + ", type=" + this.jdField_a_of_type_Int + ", titleText=" + this.jdField_a_of_type_JavaLangString + ", titleColor=" + this.jdField_b_of_type_Int + ", titleBgColor=" + this.jdField_c_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rhy
  * JD-Core Version:    0.7.0.1
  */

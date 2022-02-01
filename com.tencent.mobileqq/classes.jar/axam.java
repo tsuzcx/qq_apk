@@ -1,32 +1,40 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import android.content.res.Resources;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class axam
-  implements bhuk
+final class axam
+  implements URLDrawable.URLDrawableListener
 {
-  public axam(QCallDetailActivity paramQCallDetailActivity, String paramString, bhuf parambhuf) {}
+  axam(Resources paramResources, ImageView paramImageView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == null) || (paramInt >= QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).length)) {
-      return;
-    }
-    switch (QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity)[paramInt])
+    if (paramURLDrawable != null)
     {
-    default: 
-      return;
+      int i = afur.a(21.0F, this.jdField_a_of_type_AndroidContentResResources);
+      int j = paramURLDrawable.getIntrinsicWidth() * i / paramURLDrawable.getIntrinsicHeight();
+      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams.height = i;
+      localLayoutParams.width = j;
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     }
-    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.startActivity(paramView);
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8005AF9", "0X8005AF9", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axam
  * JD-Core Version:    0.7.0.1
  */

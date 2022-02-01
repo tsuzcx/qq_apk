@@ -1,171 +1,125 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class anii
-  implements anih
+public abstract class anii
+  extends anid
 {
-  private anii(anif paramanif) {}
+  public static final int MM_APPID = 1000277;
+  public final QQAppInterface app;
+  public final AppInterface mApp;
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  protected anii(AppInterface paramAppInterface)
   {
-    long l;
-    String str;
-    if ("AttachEvent".equals(paramString))
+    if ((paramAppInterface instanceof QQAppInterface)) {}
+    for (this.app = ((QQAppInterface)paramAppInterface);; this.app = null)
     {
-      if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2) || (!paramArrayOfVariantWrapper[0].IsString()) || (!paramArrayOfVariantWrapper[1].IsFunction())) {
-        return false;
-      }
-      paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
-      l = this.a.a(paramArrayOfVariantWrapper[1].Copy());
-      paramString = null;
-      if ("Motion".equals(paramVariantWrapper))
-      {
-        if (!anjy.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.SENSORS")) {
-          return false;
-        }
-        paramString = new anij(this, l);
-      }
-      while ((paramString != null) && (!"Position".equals(paramVariantWrapper)))
-      {
-        this.a.jdField_a_of_type_Anjo.a(paramString, l);
-        return true;
-        if ("Orientation".equals(paramVariantWrapper))
-        {
-          if (!anjy.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.SENSORS")) {
-            return false;
-          }
-          paramString = new anik(this, l);
-        }
-        else
-        {
-          if ("Position".equals(paramVariantWrapper))
-          {
-            if (!anjy.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.POSITION")) {
-              return false;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("ArkAppDeviceModule", 2, String.format("Position.app.%s", new Object[] { this.a.jdField_a_of_type_JavaLangString }));
-            }
-            paramString = null;
-            paramArrayOfVariantWrapper = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-            if (paramArrayOfVariantWrapper != null) {
-              paramString = paramArrayOfVariantWrapper.getCurrentAccountUin();
-            }
-            if ((paramArrayOfVariantWrapper == null) || (TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-              return false;
-            }
-            paramVariantWrapper = ArkAppCacheMgr.getApplicationDesc(this.a.jdField_a_of_type_JavaLangString);
-            paramArrayOfVariantWrapper = paramVariantWrapper;
-            if (TextUtils.isEmpty(paramVariantWrapper)) {
-              paramArrayOfVariantWrapper = this.a.jdField_a_of_type_JavaLangString;
-            }
-            paramVariantWrapper = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0);
-            str = "key_ark_authority_show_dialog" + "_" + paramArrayOfVariantWrapper + "_" + "ark_authority_api_location" + "_" + paramString;
-            if ((!paramVariantWrapper.getBoolean(str, false)) && (ankc.a))
-            {
-              ArkAppCenter.a().postToMainThread(new ArkAppDeviceModule.ObserverMethod.3(this, paramArrayOfVariantWrapper, l, paramString));
-              paramVariantWrapper.edit().putBoolean(str, true).commit();
-              anke.a(paramArrayOfVariantWrapper, paramString);
-            }
-            for (;;)
-            {
-              return true;
-              if (1 == anke.a(paramArrayOfVariantWrapper, "ark_authority_api_location", paramString))
-              {
-                paramString = new anip(this, l);
-                this.a.jdField_a_of_type_Anjo.a(paramString, l);
-              }
-              else
-              {
-                anif.a(this.a, l, false, 0.0D, 0.0D);
-                paramString = this.a.a(l);
-                if (paramString != null) {
-                  paramString.Reset();
-                }
-              }
-            }
-          }
-          if ("ConnectionTypeChange".equals(paramVariantWrapper))
-          {
-            if (!anjy.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
-              return false;
-            }
-            paramString = new aniq(this, l);
-          }
-        }
-      }
-      return false;
+      this.mApp = paramAppInterface;
+      return;
     }
-    if ("DetachEvent".equals(paramString))
+  }
+  
+  protected anii(QQAppInterface paramQQAppInterface)
+  {
+    this.app = paramQQAppInterface;
+    this.mApp = paramQQAppInterface;
+  }
+  
+  public static <T extends MessageMicro<T>> T decodeOidb(String paramString, byte[] paramArrayOfByte, Class<T> paramClass)
+  {
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    try
     {
-      if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsString()) || (TextUtils.isEmpty(paramArrayOfVariantWrapper[0].GetString()))) {
-        return false;
+      paramArrayOfByte = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom(paramArrayOfByte);
+      if ((!paramArrayOfByte.uint32_result.has()) || (paramArrayOfByte.uint32_result.get() != 0) || (!paramArrayOfByte.bytes_bodybuffer.has()) || (paramArrayOfByte.bytes_bodybuffer.get() == null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(paramString, 2, "sso check fail " + paramArrayOfByte.uint32_result.get());
+        }
+        return null;
       }
-      this.a.jdField_a_of_type_Anjo.a(paramArrayOfVariantWrapper[0].GetString());
-      return true;
     }
-    if ("GetCurrentPosition".equals(paramString))
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      if (!anjy.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.POSITION")) {
-        return false;
-      }
-      if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {
-        return false;
-      }
       if (QLog.isColorLevel()) {
-        QLog.i("ArkAppDeviceModule", 2, String.format("GetCurrentPosition.app.%s", new Object[] { this.a.jdField_a_of_type_JavaLangString }));
+        QLog.e(paramString, 2, "merge fail " + paramArrayOfByte.toString());
       }
-      l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
-      paramString = null;
-      paramArrayOfVariantWrapper = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (paramArrayOfVariantWrapper != null) {
-        paramString = paramArrayOfVariantWrapper.getCurrentAccountUin();
-      }
-      if ((paramArrayOfVariantWrapper == null) || (TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-        return false;
-      }
-      paramVariantWrapper = ArkAppCacheMgr.getApplicationDesc(this.a.jdField_a_of_type_JavaLangString);
-      paramArrayOfVariantWrapper = paramVariantWrapper;
-      if (TextUtils.isEmpty(paramVariantWrapper)) {
-        paramArrayOfVariantWrapper = this.a.jdField_a_of_type_JavaLangString;
-      }
-      paramVariantWrapper = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0);
-      str = "key_ark_authority_show_dialog" + "_" + paramArrayOfVariantWrapper + "_" + "ark_authority_api_location" + "_" + paramString;
-      if ((!paramVariantWrapper.getBoolean(str, false)) && (ankc.a))
-      {
-        ArkAppCenter.a().postToMainThread(new ArkAppDeviceModule.ObserverMethod.6(this, paramArrayOfVariantWrapper, l, paramString));
-        paramVariantWrapper.edit().putBoolean(str, true).commit();
-        anke.a(paramArrayOfVariantWrapper, paramString);
-      }
-      for (;;)
-      {
-        return true;
-        if (1 == anke.a(paramArrayOfVariantWrapper, "ark_authority_api_location", paramString))
-        {
-          paramString = new aniv(this, l);
-          this.a.jdField_a_of_type_Anjo.a(paramString, l);
-        }
-        else
-        {
-          anif.a(this.a, l, false, 0.0D, 0.0D);
-          paramString = this.a.a(l);
-          if (paramString != null) {
-            paramString.Reset();
-          }
-        }
-      }
+      return null;
     }
-    return false;
+    try
+    {
+      paramClass = (MessageMicro)paramClass.newInstance();
+      paramClass.mergeFrom(paramArrayOfByte.bytes_bodybuffer.get().toByteArray());
+      return paramClass;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(paramString, 2, "rspBody merge fail " + paramArrayOfByte.toString());
+      }
+      return null;
+    }
+    catch (Exception paramString) {}
+    return null;
+  }
+  
+  protected void checkReportErrorToMM(FromServiceMsg paramFromServiceMsg)
+  {
+    if (reportErrorToMM(paramFromServiceMsg))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("msgCmdFilter", 2, "-->report MM:cmd=" + paramFromServiceMsg.getServiceCmd() + ",error code=" + paramFromServiceMsg.getBusinessFailCode() + ",uin=" + getCurrentAccountUin());
+      }
+      bipi.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), getCurrentAccountUin(), 1000277, anni.a(2131700070) + paramFromServiceMsg.getServiceCmd(), true);
+    }
+  }
+  
+  public String getCurrentAccountUin()
+  {
+    return this.mApp.getCurrentAccountUin();
+  }
+  
+  public List<anil> getObservers(int paramInt)
+  {
+    return this.mApp.getBusinessObserver(paramInt);
+  }
+  
+  protected final boolean isPbReq(ToServiceMsg paramToServiceMsg)
+  {
+    boolean bool = false;
+    if (paramToServiceMsg != null) {
+      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
+    }
+    return bool;
+  }
+  
+  protected boolean reportErrorToMM(FromServiceMsg paramFromServiceMsg)
+  {
+    return (!paramFromServiceMsg.isSuccess()) && ((paramFromServiceMsg.getServiceCmd().equals("EncounterSvc.ReqGetEncounter")) || (paramFromServiceMsg.getServiceCmd().equals("RoamClientSvr.GetQualify")) || (paramFromServiceMsg.getServiceCmd().equals("NeighborSvc.ReqGetPoint")));
+  }
+  
+  public void send(ToServiceMsg paramToServiceMsg)
+  {
+    this.mApp.sendToService(paramToServiceMsg);
+  }
+  
+  public void sendPbReq(ToServiceMsg paramToServiceMsg)
+  {
+    if (paramToServiceMsg != null)
+    {
+      paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
+      this.mApp.sendToService(paramToServiceMsg);
+    }
   }
 }
 

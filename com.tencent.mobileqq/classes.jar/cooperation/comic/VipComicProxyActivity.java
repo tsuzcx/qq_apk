@@ -1,8 +1,12 @@
 package cooperation.comic;
 
+import Override;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.Window;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class VipComicProxyActivity
@@ -22,6 +26,14 @@ public class VipComicProxyActivity
     return VipComicProxyActivity.class;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public String getPluginID()
   {
     return "comic_plugin.apk";
@@ -37,6 +49,13 @@ public class VipComicProxyActivity
     return false;
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     if (ImmersiveUtils.isSupporImmersive() == 1) {
@@ -47,7 +66,7 @@ public class VipComicProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.comic.VipComicProxyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,19 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface akjd
+class akjd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView);
+  akjd(akjb paramakjb, Runnable paramRunnable) {}
   
-  public abstract boolean a(String paramString, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjd
  * JD-Core Version:    0.7.0.1
  */

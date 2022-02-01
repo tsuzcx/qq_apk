@@ -1,17 +1,45 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import PayMQQ.UniPayRequest;
+import PayMQQ.UniPayResponse;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class bcbq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class bcbq
+  extends aber
 {
-  bcbq(bcbo parambcbo, boolean paramBoolean) {}
-  
-  public void onGlobalLayout()
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    bcbo.a(this.jdField_a_of_type_Bcbo).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    bcbo.b(this.jdField_a_of_type_Bcbo).setVisibility(4);
-    bcbo.a(this.jdField_a_of_type_Bcbo, this.jdField_a_of_type_Boolean, bcbo.a(this.jdField_a_of_type_Bcbo), bcbo.c(this.jdField_a_of_type_Bcbo));
+    if (paramFromServiceMsg == null) {
+      return null;
+    }
+    paramToServiceMsg = new UniPacket(true);
+    try
+    {
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = (UniPayResponse)paramToServiceMsg.getByClass("stResponse", new UniPayResponse());
+      return paramToServiceMsg;
+    }
+    catch (RuntimeException paramToServiceMsg)
+    {
+      return null;
+    }
+    catch (Exception paramToServiceMsg) {}
+    return null;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("MQQ.VipSTCheckServer.VipSTCheckObj");
+    paramUniPacket.setFuncName("mobileUniPayCheck");
+    paramUniPacket.put("stRequest", (UniPayRequest)paramToServiceMsg.extraData.getSerializable("UniPayRequest"));
+    return true;
+  }
+  
+  public String[] a()
+  {
+    return new String[] { "VipSTCheckServer" };
   }
 }
 

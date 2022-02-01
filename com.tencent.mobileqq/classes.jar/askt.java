@@ -1,22 +1,15 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 
-class askt
-  implements ViewSwitcher.ViewFactory
+public class askt
+  implements DialogInterface.OnDismissListener
 {
-  askt(askr paramaskr) {}
+  public askt(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  public View makeView()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    CornerImageView localCornerImageView = new CornerImageView(askr.a(this.a));
-    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    localCornerImageView.setRadius(aepi.a(30.0F, askr.a(this.a).getResources()) / 2);
-    return localCornerImageView;
+    ExtendFriendLimitChatMatchFragment.a(this.a, false);
   }
 }
 

@@ -1,25 +1,52 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.widget.ImageView;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.Vector;
 
-class awmm
-  extends bhry
+public class awmm
+  implements awmo
 {
-  awmm(awmf paramawmf) {}
+  public awmm(ChatBackgroundManager paramChatBackgroundManager, Context paramContext) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, Vector<Integer> paramVector)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManager", 2, "RESUME_GESTURE_ANI, " + this.a.d);
+    if ((paramBoolean) && (this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
+    {
+      paramVector = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
+      if ((paramVector != null) && (paramVector.a() != null) && (paramVector.a().a != null))
+      {
+        ChatXListView localChatXListView = paramVector.a().a;
+        int i = localChatXListView.getFirstVisiblePosition();
+        int j = localChatXListView.getLastVisiblePosition();
+        while (i <= j)
+        {
+          Object localObject = afur.a(localChatXListView, i);
+          if ((localObject != null) && (((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof afwr)))
+          {
+            localObject = (afwr)((View)localObject).getTag();
+            if ((((afwr)localObject).jdField_a_of_type_Apwt != null) && (!((afwr)localObject).jdField_a_of_type_Apwt.a) && (((afwr)localObject).jdField_a_of_type_Apwt.b))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("ChatBackgroundManager", 2, "BgThemeColorExtractListener.onBgThemeColorExtracted: success=true, refresh AIO.");
+              }
+              paramVector.a().a(((afwr)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage, 1);
+            }
+          }
+          i += 1;
+        }
+      }
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awmm
  * JD-Core Version:    0.7.0.1
  */

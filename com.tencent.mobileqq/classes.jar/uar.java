@@ -1,31 +1,46 @@
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
+import android.annotation.TargetApi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class uar
-  implements Interpolator
+final class uar
+  implements DialogInterface.OnClickListener
 {
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
+  uar(int paramInt1, int paramInt2, Runnable paramRunnable) {}
   
-  private uar(QCircleTransitionImageView paramQCircleTransitionImageView) {}
-  
-  public void a(Interpolator paramInterpolator)
+  @TargetApi(11)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
-  }
-  
-  public float getInterpolation(float paramFloat)
-  {
-    float f = paramFloat;
-    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {
-      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
+    paramInt = 1;
+    bmqa.a("readinjoy_user_data_switch", Integer.valueOf(0));
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      if (this.jdField_a_of_type_Int == 1) {
+        paramInt = 0;
+      }
+      paramDialogInterface.put("click_src", paramInt);
+      paramDialogInterface.put("user_data_alert_interval", this.b);
+      paramDialogInterface.put("click_opt", 1);
     }
-    return f;
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    oat.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uar
  * JD-Core Version:    0.7.0.1
  */

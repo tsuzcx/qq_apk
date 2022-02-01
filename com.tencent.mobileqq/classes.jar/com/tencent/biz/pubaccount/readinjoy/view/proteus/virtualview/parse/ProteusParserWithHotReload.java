@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -147,11 +148,13 @@ public class ProteusParserWithHotReload
   private void parseAndCreateViewTemplate(BaseTemplateFactory paramBaseTemplateFactory, JSONObject paramJSONObject, ComplementFileStringLoader paramComplementFileStringLoader, String paramString1, String paramString2, String paramString3)
   {
     int i = paramBaseTemplateFactory.getTemplateId();
-    ArrayMap localArrayMap = new ArrayMap();
     String str = getStyleId(paramJSONObject);
     try
     {
-      paramBaseTemplateFactory.createTemplate(i, str, parseItemView(paramJSONObject.getJSONObject(str), paramComplementFileStringLoader, paramString1, paramString2, paramString3, localArrayMap), localArrayMap);
+      paramJSONObject = paramJSONObject.getJSONObject(str);
+      ArrayList localArrayList1 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      paramBaseTemplateFactory.createTemplate(i, str, parseItemView(paramJSONObject, paramComplementFileStringLoader, paramString1, paramString2, paramString3, localArrayList2, localArrayList1), getTemplateGloabalVar(localArrayList2, localArrayList1));
       return;
     }
     catch (IllegalArgumentException paramBaseTemplateFactory)
@@ -160,7 +163,7 @@ public class ProteusParserWithHotReload
     }
   }
   
-  private void parseAttr(JSONObject paramJSONObject, ViewBean paramViewBean, String paramString, Map<String, Object> paramMap)
+  private void parseAttr(JSONObject paramJSONObject, ViewBean paramViewBean, String paramString, ArrayList<String> paramArrayList)
   {
     Iterator localIterator = paramJSONObject.keys();
     Object localObject = new ArrayMap();
@@ -180,7 +183,7 @@ public class ProteusParserWithHotReload
     {
       paramString = (String)localIterator.next();
       localObject = paramJSONObject.get(paramString);
-      dealMethod(paramViewBean.valueBean, paramString, localObject, new ProteusParserWithHotReload.1(this, paramViewBean, paramString, localObject, paramMap));
+      dealMethod(paramViewBean.valueBean, paramString, localObject, new ProteusParserWithHotReload.1(this, paramViewBean, paramString, localObject, paramArrayList));
     }
   }
   
@@ -200,7 +203,7 @@ public class ProteusParserWithHotReload
     }
   }
   
-  private ViewBean parseItemView(JSONObject paramJSONObject, ComplementFileStringLoader paramComplementFileStringLoader, String paramString1, String paramString2, String paramString3, Map<String, Object> paramMap)
+  private ViewBean parseItemView(JSONObject paramJSONObject, ComplementFileStringLoader paramComplementFileStringLoader, String paramString1, String paramString2, String paramString3, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
   {
     ViewBean localViewBean = new ViewBean();
     Iterator localIterator = paramJSONObject.keys();
@@ -211,37 +214,43 @@ public class ProteusParserWithHotReload
       if (paramJSONObject.has("view_id")) {
         localViewBean.viewId = paramJSONObject.getString("view_id");
       }
-      if (((String)localObject1).equals("view_type"))
+      for (;;)
       {
-        localObject1 = paramJSONObject.getString("view_type");
-        if ((TextUtils.equals((CharSequence)localObject1, "cell")) || (TextUtils.equals((CharSequence)localObject1, "container")))
+        if (((String)localObject1).equals("view_type"))
         {
-          if (TextUtils.equals("layout_relative", paramJSONObject.optString("layout_type"))) {
-            localViewBean.viewType = "RelativeLayout";
-          } else {
-            localViewBean.viewType = "LinearLayout";
-          }
-        }
-        else if (TextUtils.equals((CharSequence)localObject1, "UIView"))
-        {
-          if (paramJSONObject.optJSONArray("subviews") != null)
+          localObject1 = paramJSONObject.getString("view_type");
+          if ((TextUtils.equals((CharSequence)localObject1, "cell")) || (TextUtils.equals((CharSequence)localObject1, "container")))
           {
-            if (TextUtils.equals("layout_relative", paramJSONObject.optString("layout_type"))) {
-              localViewBean.viewType = "NativeRelativeLayout";
-            } else {
-              localViewBean.viewType = "NativeLinearLayout";
+            if (TextUtils.equals("layout_relative", paramJSONObject.optString("layout_type")))
+            {
+              localViewBean.viewType = "RelativeLayout";
+              break;
+              localViewBean.viewId = ("$default_view_id" + defaultId.getAndIncrement());
+              continue;
             }
+            localViewBean.viewType = "LinearLayout";
+            break;
           }
-          else {
+          if (TextUtils.equals((CharSequence)localObject1, "UIView"))
+          {
+            if (paramJSONObject.optJSONArray("subviews") != null)
+            {
+              if (TextUtils.equals("layout_relative", paramJSONObject.optString("layout_type")))
+              {
+                localViewBean.viewType = "NativeRelativeLayout";
+                break;
+              }
+              localViewBean.viewType = "NativeLinearLayout";
+              break;
+            }
             localViewBean.viewType = "NativeLinearLayout";
+            break;
           }
-        }
-        else {
           localViewBean.viewType = ((String)localObject1);
+          break;
         }
       }
-      else if (!((String)localObject1).equals("view_id"))
-      {
+      if (!((String)localObject1).equals("view_id")) {
         if (((String)localObject1).equals("subviews"))
         {
           localObject1 = paramJSONObject.getJSONArray((String)localObject1);
@@ -251,7 +260,7 @@ public class ProteusParserWithHotReload
           {
             JSONObject localJSONObject = maybeIncludeComponent(((JSONArray)localObject1).getJSONObject(i), paramComplementFileStringLoader, paramString1, paramString2);
             if (localJSONObject != null) {
-              ((List)localObject2).add(parseItemView(localJSONObject, paramComplementFileStringLoader, paramString1, paramString2, paramString3, paramMap));
+              ((List)localObject2).add(parseItemView(localJSONObject, paramComplementFileStringLoader, paramString1, paramString2, paramString3, paramArrayList1, paramArrayList2));
             }
             i += 1;
           }
@@ -260,11 +269,15 @@ public class ProteusParserWithHotReload
         }
         else if (((String)localObject1).equals("attributes"))
         {
-          parseAttr(paramJSONObject.getJSONObject((String)localObject1), localViewBean, paramString3, paramMap);
+          parseAttr(paramJSONObject.getJSONObject((String)localObject1), localViewBean, paramString3, paramArrayList2);
         }
         else if (((String)localObject1).equals("data_attributes"))
         {
-          parseDataAttr(paramJSONObject.getJSONObject((String)localObject1), localViewBean, paramMap);
+          parseDataAttr(paramJSONObject.getJSONObject((String)localObject1), localViewBean, paramArrayList2);
+        }
+        else if (((String)localObject1).equals("$includeGlobalVariable"))
+        {
+          parseIncludeGlobalFile(localObject2, paramComplementFileStringLoader, paramArrayList1);
         }
         else
         {
@@ -272,7 +285,6 @@ public class ProteusParserWithHotReload
         }
       }
     }
-    dataCheck(localViewBean);
     return localViewBean;
   }
   
@@ -474,7 +486,7 @@ public class ProteusParserWithHotReload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload
  * JD-Core Version:    0.7.0.1
  */

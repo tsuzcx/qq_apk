@@ -22,13 +22,13 @@ class MiniLog$WriteHandler
     do
     {
       return;
-    } while (MiniLog.access$000().isEmpty());
-    ThreadManager.a(new MiniLog.WriteHandler.1(this), 64, null, false);
+    } while (MiniLog.access$100().isEmpty());
+    ThreadManager.executeOnDiskIOThreadPool(new MiniLog.WriteHandler.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniLog.WriteHandler
  * JD-Core Version:    0.7.0.1
  */

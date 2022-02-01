@@ -14,9 +14,10 @@ import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAIOEntranceProxy;
 
 public class MiniAIOEntryView
-  extends RelativeLayout
+  extends MiniAIOEntranceProxy
   implements IMiniMsgUnreadCallback, MiniMsgUser.IMiniMsgActionCallback
 {
   private static final String TAG = "MiniAIOEntryView";
@@ -59,11 +60,11 @@ public class MiniAIOEntryView
   
   public void initAppBrandRuntime()
   {
-    this.miniAIOEntryView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559321, null));
-    this.miniAIOIcon = ((ImageView)this.miniAIOEntryView.findViewById(2131370574));
-    this.miniAIOUnReadView = ((TextView)this.miniAIOEntryView.findViewById(2131370575));
+    this.miniAIOEntryView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559417, null));
+    this.miniAIOIcon = ((ImageView)this.miniAIOEntryView.findViewById(2131371077));
+    this.miniAIOUnReadView = ((TextView)this.miniAIOEntryView.findViewById(2131371078));
     if ("black".equals(this.style)) {
-      this.miniAIOIcon.setBackgroundResource(2130840800);
+      this.miniAIOIcon.setBackgroundResource(2130841017);
     }
     for (;;)
     {
@@ -73,7 +74,7 @@ public class MiniAIOEntryView
       localLayoutParams.rightMargin = DisplayUtil.dip2px(getContext(), 12.5F);
       addView(this.miniAIOEntryView, localLayoutParams);
       return;
-      this.miniAIOIcon.setBackgroundResource(2130840801);
+      this.miniAIOIcon.setBackgroundResource(2130841018);
     }
   }
   
@@ -100,7 +101,11 @@ public class MiniAIOEntryView
     }
   }
   
-  public void onDestroy() {}
+  public void onDestroy()
+  {
+    this.miniAIOUnReadView = null;
+    this.miniAIOEntryView = null;
+  }
   
   public void onFromMiniAIOToAIO() {}
   
@@ -126,17 +131,17 @@ public class MiniAIOEntryView
     }
   }
   
-  public void setStyle(String paramString)
+  public void setMiniAIOStyle(String paramString)
   {
     if (this.miniAIOIcon == null) {
       return;
     }
     if ("black".equals(paramString))
     {
-      this.miniAIOIcon.setBackgroundResource(2130840800);
+      this.miniAIOIcon.setBackgroundResource(2130841017);
       return;
     }
-    this.miniAIOIcon.setBackgroundResource(2130840801);
+    this.miniAIOIcon.setBackgroundResource(2130841018);
   }
   
   public boolean show(int paramInt)
@@ -174,7 +179,7 @@ public class MiniAIOEntryView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.ui.MiniAIOEntryView
  * JD-Core Version:    0.7.0.1
  */

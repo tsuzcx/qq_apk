@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emosm.web;
 
-import aliw;
-import allz;
-import almf;
+import ancd;
 import android.os.Bundle;
 import android.os.Message;
-import apqh;
+import anff;
+import anfl;
+import arti;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloFavActionData;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$27
   implements Runnable
 {
-  public MessengerService$IncomingHandler$27(apqh paramapqh, QQAppInterface paramQQAppInterface, long paramLong, int paramInt, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$27(arti paramarti, QQAppInterface paramQQAppInterface, long paramLong, int paramInt, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -25,8 +25,8 @@ public class MessengerService$IncomingHandler$27
     ApolloFavActionData localApolloFavActionData;
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      localObject2 = (aliw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
-      localApolloFavActionData = ((aliw)localObject2).a(this.jdField_a_of_type_Long);
+      localObject2 = (ancd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+      localApolloFavActionData = ((ancd)localObject2).a(this.jdField_a_of_type_Long);
       JSONObject localJSONObject = new JSONObject();
       for (;;)
       {
@@ -48,16 +48,16 @@ public class MessengerService$IncomingHandler$27
           }
           QLog.e("Q.emoji.web.MessengerService", 2, "delFavAction json error + " + localJSONException.toString());
           return;
-          ((aliw)localObject2).b(localApolloFavActionData);
+          ((ancd)localObject2).b(localApolloFavActionData);
           localJSONException.put("ret", 0);
           MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
           if (localMqqHandler == null) {
             continue;
           }
-          Object localObject1 = new almf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-          ((allz)localObject1).a = ((aliw)localObject2).a(this.jdField_a_of_type_Int);
-          ((allz)localObject1).b = localApolloFavActionData.text;
-          ((allz)localObject1).d = localApolloFavActionData.textType;
+          Object localObject1 = new anfl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+          ((anff)localObject1).a = ((ancd)localObject2).a(this.jdField_a_of_type_Int);
+          ((anff)localObject1).b = localApolloFavActionData.text;
+          ((anff)localObject1).d = localApolloFavActionData.textType;
           localObject2 = localMqqHandler.obtainMessage(66);
           ((Message)localObject2).obj = localObject1;
           ((Message)localObject2).arg1 = 1;
@@ -86,7 +86,7 @@ public class MessengerService$IncomingHandler$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.27
  * JD-Core Version:    0.7.0.1
  */

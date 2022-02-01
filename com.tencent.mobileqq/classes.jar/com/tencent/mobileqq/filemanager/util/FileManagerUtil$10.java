@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.util;
 
 import android.graphics.Bitmap;
-import arso;
+import atwl;
 import com.tencent.qphone.base.util.QLog;
-import fa;
+import ff;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -14,19 +14,19 @@ public final class FileManagerUtil$10
   
   public void run()
   {
-    if (arso.b(this.jdField_a_of_type_JavaLangString)) {}
+    if (atwl.b(this.jdField_a_of_type_JavaLangString)) {}
     Bitmap localBitmap;
     do
     {
       return;
-      localBitmap = fa.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      localBitmap = ff.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
     } while (localBitmap == null);
     try
     {
-      arso.a(localBitmap, this.jdField_a_of_type_JavaLangString);
+      atwl.a(localBitmap, this.jdField_a_of_type_JavaLangString);
       localBitmap.recycle();
-      int i = fa.a(this.jdField_b_of_type_JavaLangString);
-      fa.a(this.jdField_a_of_type_JavaLangString, i);
+      int i = ff.a(this.jdField_b_of_type_JavaLangString);
+      ff.a(this.jdField_a_of_type_JavaLangString, i);
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)
@@ -50,7 +50,7 @@ public final class FileManagerUtil$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerUtil.10
  * JD-Core Version:    0.7.0.1
  */

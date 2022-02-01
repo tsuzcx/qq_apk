@@ -1,46 +1,77 @@
-import android.graphics.Bitmap;
+import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.InflateException;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 
 public class blgv
-  implements blhz
+  extends ReportDialog
 {
-  public blgv(AETemplateInfoFragment paramAETemplateInfoFragment, String paramString, Bitmap paramBitmap, long paramLong) {}
-  
-  public void a(List<blia> paramList)
+  public blgv(Context paramContext, String paramString)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
+    super(paramContext, 2131755826);
+    a(paramContext, paramString);
+  }
+  
+  @TargetApi(14)
+  private void a(Context paramContext, String paramString)
+  {
+    super.requestWindowFeature(1);
+    Object localObject1 = LayoutInflater.from(paramContext);
+    View localView = ((LayoutInflater)localObject1).inflate(2131558979, null);
+    try
     {
-      AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, new ArrayList());
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        blia localblia = (blia)paramList.next();
-        if (localblia.jdField_a_of_type_Boolean)
-        {
-          String str = AETemplateInfoFragment.jdField_a_of_type_JavaLangString + System.currentTimeMillis();
-          BitmapUtils.saveBitmap(localblia.jdField_a_of_type_AndroidGraphicsBitmap, str);
-          AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment).add(str);
-          BitmapUtils.recycle(localblia.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-        else
-        {
-          AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment).add(this.jdField_a_of_type_JavaLangString);
-        }
+      Object localObject2 = ((LayoutInflater)localObject1).inflate(2131561898, (ViewGroup)localView, false);
+      localObject1 = (RelativeLayout)localView.findViewById(2131378887);
+      Object localObject3 = new RelativeLayout.LayoutParams(-1, -1);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131376599);
+      ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
+      localObject2 = (TextView)localView.findViewById(2131368947);
+      IphoneTitleBarActivity.setLayerType((View)localObject2);
+      if (localObject2 != null) {
+        ((TextView)localObject2).setText(anni.a(2131707051));
       }
-      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, true);
-    }
-    for (;;)
-    {
-      AETemplateInfoFragment.b(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, false);
+      localObject3 = (TextView)localView.findViewById(2131368994);
+      IphoneTitleBarActivity.setLayerType((View)localObject2);
+      if (localObject3 != null) {
+        ((TextView)localObject3).setText(paramString);
+      }
+      super.setContentView((View)localObject1);
+      paramString = getWindow();
+      localObject1 = paramString.getAttributes();
+      ((WindowManager.LayoutParams)localObject1).width = -1;
+      ((WindowManager.LayoutParams)localObject1).height = -1;
+      paramString.setAttributes((WindowManager.LayoutParams)localObject1);
+      if (ImmersiveUtils.isSupporImmersive() == 1)
+      {
+        paramString.addFlags(67108864);
+        new SystemBarCompact(this, true, paramContext.getResources().getColor(2131167042)).init();
+        localView.setFitsSystemWindows(true);
+        localView.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramContext), 0, 0);
+      }
       return;
-      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      QLog.e("AETemplateInfoFragment", 1, "changeFace---failed to get face changed bitmaps");
+    }
+    catch (InflateException paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQWIFIPluginLoadDialog", 2, "layout with merge ,use framelayout to immersive");
+      }
+      super.setContentView(2131561898);
+      getWindow().setFeatureInt(7, 2131558977);
     }
   }
 }

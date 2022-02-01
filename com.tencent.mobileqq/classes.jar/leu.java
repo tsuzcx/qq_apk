@@ -1,29 +1,78 @@
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public class leu
+class leu
+  extends lwc
 {
-  @atgw(a="codec")
-  public int a;
-  @atgw(a="min_version")
-  public String a;
-  @atgw(a="disable_sdks")
-  public List<Integer> a;
-  @atgw(a="upload")
-  public boolean a;
-  @atgw(a="min_sdk")
-  public int b;
-  @atgw(a="expdate")
-  public String b;
-  @atgw(a="samples")
-  public List<lev> b;
-  @atgw(a="async_min_sdk")
-  public int c;
-  @atgw(a="test_ver")
-  public int d;
+  leu(let paramlet) {}
+  
+  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceProxy", 2, "getDataFromVideoProcess cmd = " + paramInt1 + ",subCmd = " + paramInt2 + ",request = " + paramBundle + ",callbackCookie = " + paramString);
+    }
+    switch (paramInt1)
+    {
+    default: 
+      return null;
+    }
+    paramString = new Bundle();
+    paramString.putString("camera_used_desc", ljj.a);
+    return paramString;
+  }
+  
+  public void a(RecvMsg paramRecvMsg)
+  {
+    if (paramRecvMsg != null) {
+      this.a.a.a(new Object[] { Integer.valueOf(12), paramRecvMsg });
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
+  
+  public void a(String paramString, int paramInt, byte[] paramArrayOfByte)
+  {
+    if (TextUtils.equals(paramString, "avChatRoom"))
+    {
+      ljo localljo = this.a.a.a();
+      if (localljo != null) {
+        localljo.a(paramInt, paramArrayOfByte);
+      }
+    }
+    if (QLog.isDevelopLevel())
+    {
+      paramString = new StringBuilder().append("onReceivePushMsg , key[").append(paramString).append("], msgType[").append(paramInt).append("], bytes[");
+      if (paramArrayOfByte != null) {
+        break label96;
+      }
+    }
+    label96:
+    for (paramInt = 0;; paramInt = paramArrayOfByte.length)
+    {
+      QLog.i("ChatRoomMng", 4, paramInt + "]");
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  {
+    this.a.a.a(new Object[] { Integer.valueOf(47), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3 });
+  }
+  
+  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
+  {
+    if ((paramArrayOfRecvGVideoLevelInfo != null) && (paramArrayOfRecvGVideoLevelInfo.length > 0)) {
+      this.a.a.a(new Object[] { Integer.valueOf(501), paramArrayOfRecvGVideoLevelInfo });
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     leu
  * JD-Core Version:    0.7.0.1
  */

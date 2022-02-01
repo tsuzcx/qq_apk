@@ -1,27 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
-
-public class skq
-  implements skj
+class skq
+  implements bkia
 {
-  private final ViewPagerCompat a;
+  skq(skp paramskp) {}
   
-  public skq(ViewPagerCompat paramViewPagerCompat)
+  public void ak_()
   {
-    this.a = paramViewPagerCompat;
+    if (ske.c(this.a.a))
+    {
+      ske.c(this.a.a, false);
+      ske.a(this.a.a).a(ske.a(this.a.a), ske.b(this.a.a), true, false);
+      return;
+    }
+    ske.a(this.a.a).a(ske.a(this.a.a), ske.b(this.a.a), true, true);
   }
-  
-  public void a(sko paramsko)
-  {
-    this.a.setCurrentItem(paramsko.a());
-  }
-  
-  public void b(sko paramsko) {}
-  
-  public void c(sko paramsko) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     skq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,47 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+import android.content.Context;
+import android.view.View.OnClickListener;
 
-class blql
-  implements bmtn
+public class blql
 {
-  blql(blqk paramblqk) {}
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = true;
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = true;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean = true;
+  private String d;
   
-  public void a()
+  public blql(Context paramContext)
   {
-    if (this.a.jdField_a_of_type_Int != 14)
-    {
-      this.a.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setVisibility(0);
-      blqk.a(this.a).setVisibility(0);
-      blqk.a(this.a).setVisibility(0);
-      blqk.a(this.a).a();
-      if ((!this.a.f()) && (!blqk.a(this.a)))
-      {
-        blqk.a(this.a).setVisibility(0);
-        if (this.a.c()) {
-          blqk.a(this.a).setVisibility(0);
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(bmyj parambmyj)
+  public blqi a()
   {
-    this.a.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setVisibility(8);
-    blqk.a(this.a).setVisibility(8);
-    blqk.a(this.a).setVisibility(8);
-    if (this.a.c()) {
-      blqk.a(this.a).setVisibility(8);
-    }
-    blqk.a(this.a).a(103, new Object[] { parambmyj });
+    return new blqi(this, null);
+  }
+  
+  public blql a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public blql a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.d = paramString;
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public blql b(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
   }
 }
 

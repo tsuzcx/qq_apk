@@ -1,15 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import android.text.TextUtils;
+import cooperation.qzone.remote.IActionListener.Stub;
+import cooperation.qzone.remote.RecvMsg;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-final class bmfe
-  implements View.OnClickListener
+class bmfe
+  extends IActionListener.Stub
 {
-  bmfe(AIOLongCaptureCtrl paramAIOLongCaptureCtrl) {}
+  bmfe(bmfd parambmfd) {}
   
-  public void onClick(View paramView)
+  public void onRecvFromMsg(RecvMsg paramRecvMsg)
   {
-    this.a.a();
+    if (paramRecvMsg == null) {}
+    for (;;)
+    {
+      return;
+      if ((!TextUtils.isEmpty(paramRecvMsg.getServiceCmd())) && (bmfd.a(this.a) != null))
+      {
+        Iterator localIterator = bmfd.a(this.a).iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (WeakReference)localIterator.next();
+          if (localObject != null)
+          {
+            localObject = (bmfh)((WeakReference)localObject).get();
+            if (localObject != null) {
+              ((bmfh)localObject).onWebEvent(paramRecvMsg.getServiceCmd(), paramRecvMsg.extraData);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

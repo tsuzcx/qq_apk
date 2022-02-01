@@ -1,21 +1,31 @@
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 
 class onc
-  extends oob
+  implements DialogInterface.OnClickListener
 {
-  onc(omz paramomz, boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt)
-  {
-    super(paramomz, null);
-  }
+  onc(omz paramomz, boolean paramBoolean) {}
   
-  void a(ooe paramooe)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramooe.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!omz.a(this.jdField_a_of_type_Omz)) {}
+    }
+    while (!(omz.a(this.jdField_a_of_type_Omz) instanceof Activity))
+    {
+      return;
+      this.jdField_a_of_type_Omz.b();
+      return;
+    }
+    oqj.b(omz.a(this.jdField_a_of_type_Omz));
+    opz.a(omz.a(this.jdField_a_of_type_Omz), omz.a(this.jdField_a_of_type_Omz).p, omz.a(this.jdField_a_of_type_Omz).q, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     onc
  * JD-Core Version:    0.7.0.1
  */

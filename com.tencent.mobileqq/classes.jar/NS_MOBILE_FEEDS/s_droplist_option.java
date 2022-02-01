@@ -16,6 +16,7 @@ public final class s_droplist_option
   public String iconurl = "";
   public String jumpurl = "";
   public String optext = "";
+  public String pattonID = "";
   public String reportattach = "";
   public int reporttype;
   public int reporttypeV2;
@@ -27,7 +28,7 @@ public final class s_droplist_option
   
   public s_droplist_option() {}
   
-  public s_droplist_option(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, String paramString4, int paramInt3, Map<String, String> paramMap, int paramInt4)
+  public s_droplist_option(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, String paramString4, int paramInt3, Map<String, String> paramMap, int paramInt4, String paramString5)
   {
     this.iconurl = paramString1;
     this.optext = paramString2;
@@ -38,6 +39,7 @@ public final class s_droplist_option
     this.reporttypeV2 = paramInt3;
     this.extend_info = paramMap;
     this.action_detail = paramInt4;
+    this.pattonID = paramString5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -51,6 +53,7 @@ public final class s_droplist_option
     this.reporttypeV2 = paramJceInputStream.read(this.reporttypeV2, 6, false);
     this.extend_info = ((Map)paramJceInputStream.read(cache_extend_info, 7, false));
     this.action_detail = paramJceInputStream.read(this.action_detail, 8, false);
+    this.pattonID = paramJceInputStream.readString(9, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -74,6 +77,9 @@ public final class s_droplist_option
       paramJceOutputStream.write(this.extend_info, 7);
     }
     paramJceOutputStream.write(this.action_detail, 8);
+    if (this.pattonID != null) {
+      paramJceOutputStream.write(this.pattonID, 9);
+    }
   }
 }
 

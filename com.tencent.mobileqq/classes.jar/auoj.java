@@ -1,143 +1,70 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.BaseFragment;
 
 public class auoj
-  extends aumy
 {
-  private afhd a;
+  public int a;
+  public View.OnClickListener a;
+  public BaseFragment a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = true;
+  public String c;
+  public boolean c = false;
+  public String d;
+  public String e;
   
-  public auoj(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, ViewGroup paramViewGroup)
+  public auoj(BaseFragment paramBaseFragment)
   {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramViewGroup);
+    this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment = paramBaseFragment;
+  }
+  
+  public auoj a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public auoj a(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public auoj a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+    return this;
   }
   
   public void a()
   {
-    super.a();
-    if (this.jdField_a_of_type_Afhd != null)
-    {
-      this.jdField_a_of_type_Afhd.a(null);
-      this.jdField_a_of_type_Afhd = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment.c();
     }
   }
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    super.a(paramInt);
-    if (this.jdField_a_of_type_Afhd == null) {
-      return;
-    }
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_Afhd.c(true);
-      this.jdField_a_of_type_Afhd.b(true);
-      this.jdField_a_of_type_Afhd.d();
-      return;
-    }
-    this.jdField_a_of_type_Afhd.b(false);
-    this.jdField_a_of_type_Afhd.c(false);
+    this.b = paramBoolean;
   }
   
-  public void a(aums paramaums)
+  public auoj b(String paramString)
   {
-    super.a(paramaums);
-    if (this.jdField_a_of_type_Afhd != null)
-    {
-      if (a() != 0) {
-        this.jdField_a_of_type_Afhd.b(false);
-      }
-      this.jdField_a_of_type_Afhd.a(a(), a());
-      this.jdField_a_of_type_Afhd.b();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public boolean a(Bundle paramBundle)
+  public auoj b(boolean paramBoolean)
   {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_Afhd == null)
-    {
-      paramBundle = null;
-      Bundle localBundle = a();
-      if (localBundle != null) {
-        paramBundle = localBundle.getString("uin");
-      }
-      this.jdField_a_of_type_Afhd = new afhd(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, paramBundle);
-      this.jdField_a_of_type_Afhd.a(this);
-      b(1);
-      a(this.jdField_a_of_type_Afhd.a());
-    }
-    b(this.jdField_a_of_type_Afhd.a());
-    if (a() != null) {
-      this.jdField_a_of_type_Afhd.a(a(), a());
-    }
-    return true;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
   }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StrangerIntimateViewDelegete", 2, "doOnResume() called");
-    }
-    if (this.jdField_a_of_type_Afhd == null) {
-      return;
-    }
-    if (a() == 0)
-    {
-      this.jdField_a_of_type_Afhd.b(true);
-      this.jdField_a_of_type_Afhd.d();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Afhd.p();
-      return;
-      this.jdField_a_of_type_Afhd.b(false);
-      this.jdField_a_of_type_Afhd.e();
-    }
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StrangerIntimateViewDelegete", 2, "doOnPause() called");
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Afhd == null) {
-      return;
-    }
-    this.jdField_a_of_type_Afhd.a(true);
-    this.jdField_a_of_type_Afhd.b();
-  }
-  
-  public void f() {}
-  
-  public void g()
-  {
-    super.g();
-    if (this.jdField_a_of_type_Afhd == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_Afhd.a());
-      this.jdField_a_of_type_AndroidViewViewGroup = null;
-    }
-    this.jdField_a_of_type_Afhd.j();
-  }
-  
-  public void h() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auoj
  * JD-Core Version:    0.7.0.1
  */

@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.item;
 
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import pnk;
+import qfd;
 
 public class PgcShortContentProteusItem$11$3
   implements Runnable
 {
-  public PgcShortContentProteusItem$11$3(pnk parampnk) {}
+  public PgcShortContentProteusItem$11$3(qfd paramqfd) {}
   
   public void run()
   {
     this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.setVisibility(8);
     this.a.b.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b();
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.stop();
   }
 }
 

@@ -19,8 +19,8 @@ public class VideoRenderChainConfigure
   private boolean isOpenWXShareVideoEndEffect;
   private boolean isOpenWaterMarkEffect;
   public int mApplyType = -1;
-  public CGSize mRenderSize;
-  public int mSceneType = 0;
+  private CGSize mRenderSize;
+  private int mSceneType = 0;
   
   public VideoRenderChainConfigure()
   {
@@ -217,7 +217,7 @@ public class VideoRenderChainConfigure
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.VideoRenderChainConfigure
  * JD-Core Version:    0.7.0.1
  */

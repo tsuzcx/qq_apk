@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import alud;
+import anni;
 import com.tencent.mobileqq.widget.QQToast;
 
 class TribeVideoPreviewFragment$3
@@ -12,15 +12,15 @@ class TribeVideoPreviewFragment$3
   {
     if (this.a)
     {
-      QQToast.a(this.this$0.getActivity(), 2, alud.a(2131715491), 0).a();
+      QQToast.a(this.this$0.getActivity(), 2, anni.a(2131713772), 0).a();
       return;
     }
-    QQToast.a(this.this$0.getActivity(), 1, alud.a(2131715512), 0).a();
+    QQToast.a(this.this$0.getActivity(), 1, anni.a(2131713793), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,255 +1,158 @@
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.ClipData;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class zet
-  extends WebViewPlugin
+  extends zez<zem, zem>
 {
-  private android.content.ClipboardManager jdField_a_of_type_AndroidContentClipboardManager;
-  private android.text.ClipboardManager jdField_a_of_type_AndroidTextClipboardManager;
-  private bdjy jdField_a_of_type_Bdjy;
-  bhuf jdField_a_of_type_Bhuf = null;
-  String jdField_a_of_type_JavaLangString = null;
+  private final int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final WeakReference<yuk> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
   public zet()
   {
-    this.mPluginNameSpace = "mail";
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_Int = -1;
   }
   
-  private void a(String paramString1, String paramString2)
+  public zet(String paramString, yuk paramyuk, int paramInt)
   {
-    paramString1 = new Intent(paramString1);
-    paramString1.setType(paramString2);
-    paramString1.putExtra("phone", this.jdField_a_of_type_JavaLangString);
-    this.mRuntime.a().startActivity(paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramyuk);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private void b()
+  private void a(zem paramzem, boolean paramBoolean, String paramString)
   {
-    if (Build.VERSION.SDK_INT >= 23)
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
+    for (File localFile = new File(paramString);; localFile = null)
     {
-      Activity localActivity = this.mRuntime.a();
-      if ((localActivity instanceof AppActivity))
+      Object localObject2;
+      int i;
+      if ((paramBoolean) && (localFile != null) && (localFile.exists()) && (localFile.isFile()) && (localFile.length() > 0L))
       {
-        if (((AppActivity)localActivity).checkSelfPermission("android.permission.CALL_PHONE") != 0) {
-          ((AppActivity)localActivity).requestPermissions(new zev(this), 1, new String[] { "android.permission.CALL_PHONE" });
+        localObject2 = this.jdField_a_of_type_JavaLangString;
+        Object localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = zfc.a(paramzem.jdField_a_of_type_Int, paramzem.jdField_b_of_type_JavaLangString, ".jpg");
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          localObject2 = new File((String)localObject1);
+          if (localFile.renameTo((File)localObject2))
+          {
+            yqp.d("Q.qqstory.publish.edit.GenerateThumbSegment", "copy thumb file to upload dir success : %s", new Object[] { ((File)localObject2).getPath() });
+            paramzem.jdField_a_of_type_JavaLangString = ((String)localObject1);
+            paramzem.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = ((String)localObject1);
+            i = 1;
+          }
         }
       }
-      else {
+      while (i != 0)
+      {
+        yqp.b("Q.qqstory.publish.edit.GenerateThumbSegment", "generate thumb success ...");
+        super.notifyResult(paramzem);
+        return;
+        if (this.jdField_a_of_type_JavaLangString == null)
+        {
+          yqp.d("Q.qqstory.publish.edit.GenerateThumbSegment", "copy failed : use the origin instead : origin %s, target %s", new Object[] { localFile.getPath(), ((File)localObject2).getPath() });
+          paramzem.jdField_a_of_type_JavaLangString = paramString;
+          paramzem.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = paramString;
+          i = 1;
+        }
+        else
+        {
+          yqp.d("Q.qqstory.publish.edit.GenerateThumbSegment", "copy thumb file to upload dir failed : origin %s, target %s", new Object[] { localFile.getPath(), ((File)localObject2).getPath() });
+          i = 0;
+          continue;
+          paramzem.jdField_a_of_type_JavaLangString = paramString;
+          paramzem.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = paramString;
+          i = 1;
+          continue;
+          i = 0;
+        }
+      }
+      yqp.b("Q.qqstory.publish.edit.GenerateThumbSegment", "generate thumb failed ...");
+      super.notifyError(new ErrorMessage(-1, "GenerateThumbTask error"));
+      return;
+    }
+  }
+  
+  protected void a(JobContext paramJobContext, zem paramzem)
+  {
+    yqp.a("Q.qqstory.publish.edit.GenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
+    zes localzes = paramzem.jdField_a_of_type_Zes;
+    int i = localzes.c;
+    if (paramzem.jdField_a_of_type_Int == 1) {
+      i = 0;
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      paramJobContext = new zeu(localzes.jdField_a_of_type_Int, localzes.jdField_b_of_type_Int, localzes.jdField_a_of_type_JavaLangString, localzes.jdField_a_of_type_Float, localzes.jdField_a_of_type_Boolean, i, localzes.jdField_a_of_type_Double, localzes.jdField_b_of_type_Double, localzes.jdField_b_of_type_JavaLangString, paramzem.jdField_a_of_type_Int, localzes.jdField_b_of_type_Boolean);
+      if (paramJobContext.a(new Void[0]).intValue() == 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        a(paramzem, bool, paramJobContext.jdField_a_of_type_JavaLangString);
         return;
       }
-      c();
-      return;
     }
-    c();
-  }
-  
-  private void c()
-  {
-    azqs.b(null, "CliOper", "", "", "0X8004B43", "0X8004B43", 0, 0, "", "", "", "");
-    this.mRuntime.a().startActivity(new Intent("android.intent.action.DIAL", Uri.parse(String.format("tel:%s", new Object[] { this.jdField_a_of_type_JavaLangString }))));
-    if (QLog.isColorLevel()) {
-      QLog.d("PubAccountMailJsPlugin", 2, String.format("Dial %s success", new Object[] { this.jdField_a_of_type_JavaLangString }));
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      paramJobContext = (yuk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-  }
-  
-  private void d()
-  {
-    if (Build.VERSION.SDK_INT >= 23)
+    while (paramJobContext != null)
     {
-      Activity localActivity = this.mRuntime.a();
-      if ((localActivity instanceof AppActivity))
+      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
+      if (localBitmap != null)
       {
-        if (((AppActivity)localActivity).checkSelfPermission("android.permission.SEND_SMS") != 0) {
-          ((AppActivity)localActivity).requestPermissions(new zew(this), 1, new String[] { "android.permission.SEND_SMS" });
+        try
+        {
+          String str2 = this.jdField_a_of_type_JavaLangString;
+          String str1 = str2;
+          if (str2 == null) {
+            str1 = zfc.a(paramzem.jdField_a_of_type_Int, paramzem.jdField_b_of_type_JavaLangString, ".jpg");
+          }
+          i = new zeu(localBitmap, str1, localzes.jdField_a_of_type_Int, localzes.jdField_b_of_type_Int, i, localzes.jdField_a_of_type_Float, localzes.jdField_a_of_type_Double, localzes.jdField_b_of_type_Double, paramzem.jdField_a_of_type_Int).a(new Void[0]).intValue();
+          paramJobContext.a(localBitmap);
+          if (i != 0) {
+            break label327;
+          }
+          paramzem.jdField_a_of_type_JavaLangString = str1;
+          paramzem.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
+          yqp.d("Q.qqstory.publish.edit.GenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+          super.notifyResult(paramzem);
+          return;
         }
-      }
-      else {
-        return;
-      }
-      e();
-      return;
-    }
-    e();
-  }
-  
-  private void e()
-  {
-    azqs.b(null, "CliOper", "", "", "0X8004B44", "0X8004B44", 0, 0, "", "", "", "");
-    Intent localIntent = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
-    this.mRuntime.a().startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("PubAccountMailJsPlugin", 2, String.format("Send SMS to %s success", new Object[] { this.jdField_a_of_type_JavaLangString }));
-    }
-  }
-  
-  private void f()
-  {
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      Activity localActivity = this.mRuntime.a();
-      if ((localActivity instanceof AppActivity))
-      {
-        if (((AppActivity)localActivity).checkSelfPermission("android.permission.WRITE_CONTACTS") != 0) {
-          ((AppActivity)localActivity).requestPermissions(new zex(this), 1, new String[] { "android.permission.WRITE_CONTACTS" });
+        finally
+        {
+          paramJobContext.a(localBitmap);
         }
-      }
-      else {
-        return;
-      }
-      g();
-      return;
-    }
-    g();
-  }
-  
-  private void g()
-  {
-    Activity localActivity = this.mRuntime.a();
-    if (this.jdField_a_of_type_Bdjy == null)
-    {
-      bdpi localbdpi = new bdpi();
-      localbdpi.a(1, localActivity.getString(2131700018));
-      localbdpi.a(2, localActivity.getString(2131700019));
-      localbdpi.a(String.format(localActivity.getString(2131700017), new Object[] { this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_Bdjy = bdgm.a(localActivity, localbdpi, new zey(this));
-      if (this.jdField_a_of_type_Bdjy != null) {}
-    }
-    else
-    {
-      this.jdField_a_of_type_Bdjy.setTitle(String.format(localActivity.getString(2131700017), new Object[] { this.jdField_a_of_type_JavaLangString }));
-    }
-    this.jdField_a_of_type_Bdjy.show();
-  }
-  
-  @TargetApi(11)
-  private void h()
-  {
-    if (Build.VERSION.SDK_INT < 11)
-    {
-      if (this.jdField_a_of_type_AndroidTextClipboardManager == null) {
-        this.jdField_a_of_type_AndroidTextClipboardManager = ((android.text.ClipboardManager)this.mRuntime.a().getSystemService("clipboard"));
-      }
-      this.jdField_a_of_type_AndroidTextClipboardManager.setText(this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMailJsPlugin", 2, String.format("Copy %s success", new Object[] { this.jdField_a_of_type_JavaLangString }));
-      }
-      return;
-      if (this.jdField_a_of_type_AndroidContentClipboardManager == null) {
-        this.jdField_a_of_type_AndroidContentClipboardManager = ((android.content.ClipboardManager)this.mRuntime.a().getSystemService("clipboard"));
-      }
-      ClipData localClipData = ClipData.newPlainText("qqMailTel", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidContentClipboardManager.setPrimaryClip(localClipData);
-    }
-  }
-  
-  private void i()
-  {
-    azqs.b(null, "CliOper", "", "", "0X8004B45", "0X8004B45", 0, 0, "", "", "", "");
-    a("android.intent.action.INSERT", "vnd.android.cursor.dir/contact");
-  }
-  
-  private void j()
-  {
-    azqs.b(null, "CliOper", "", "", "0X8004B46", "0X8004B46", 0, 0, "", "", "", "");
-    a("android.intent.action.INSERT_OR_EDIT", "vnd.android.cursor.item/person");
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bhuf == null)
-    {
-      this.jdField_a_of_type_Bhuf = bhuf.a(this.mRuntime.a());
-      this.jdField_a_of_type_Bhuf.c(String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131691700), this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_Bhuf.b(2131700020);
-      this.jdField_a_of_type_Bhuf.b(2131700017);
-      this.jdField_a_of_type_Bhuf.b(2131691361);
-      this.jdField_a_of_type_Bhuf.c(2131690648);
-      this.jdField_a_of_type_Bhuf.a(new zeu(this));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.show();
-      return;
-      this.jdField_a_of_type_Bhuf.a(0, String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131691700), this.jdField_a_of_type_JavaLangString }));
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.e("PubAccountMailJsPlugin", 2, "handleJsRequest url: " + paramString1 + "pkgName:" + paramString2 + "method:" + paramString3);
-    }
-    if ((TextUtils.isEmpty(paramString2)) || (!paramString2.startsWith("mail"))) {
-      if (QLog.isColorLevel()) {
-        QLog.e("PubAccountMailJsPlugin", 2, "pkgName is null");
-      }
-    }
-    do
-    {
-      do
-      {
-        return false;
-        if (!TextUtils.isEmpty(paramString3)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("PubAccountMailJsPlugin", 2, "method is null");
-      return false;
-      if ((paramVarArgs != null) && (paramVarArgs.length >= 1)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("PubAccountMailJsPlugin", 2, "args is empty");
-    return false;
-    paramJsBridgeListener = paramVarArgs[0];
-    if (QLog.isColorLevel()) {
-      QLog.d("PubAccountMailJsPlugin", 2, String.format("Params phone is %s", new Object[] { paramJsBridgeListener }));
-    }
-    if (!TextUtils.isEmpty(paramJsBridgeListener))
-    {
-      if (!paramString3.equals("showMenu")) {
-        break label274;
-      }
-      if (((this.jdField_a_of_type_Bhuf == null) || (!this.jdField_a_of_type_Bhuf.isShowing())) && ((this.jdField_a_of_type_Bdjy == null) || (!this.jdField_a_of_type_Bdjy.isShowing())))
-      {
-        this.jdField_a_of_type_JavaLangString = paramJsBridgeListener;
-        a();
-      }
-    }
-    for (;;)
-    {
-      return bool;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("PubAccountMailJsPlugin", 2, "mSheet or mDialog is showing, so ignore request");
-        bool = false;
+        paramJobContext = null;
         continue;
-        if (QLog.isColorLevel()) {
-          QLog.e("PubAccountMailJsPlugin", 2, "Phone is empty");
-        }
+        label327:
+        yqp.d("Q.qqstory.publish.edit.GenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, anni.a(2131704037) + this.jdField_a_of_type_Int));
       }
-      label274:
-      bool = false;
+      else
+      {
+        yqp.d("Q.qqstory.publish.edit.GenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, anni.a(2131704036) + this.jdField_a_of_type_Int));
+        return;
+      }
     }
+    yqp.d("Q.qqstory.publish.edit.GenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    super.notifyError(new ErrorMessage(-1, anni.a(2131704040) + this.jdField_a_of_type_Int));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zet
  * JD-Core Version:    0.7.0.1
  */

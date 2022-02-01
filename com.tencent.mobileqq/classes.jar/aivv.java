@@ -1,27 +1,81 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1.1.1;
-import com.tencent.mobileqq.widget.AnimationView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader;
+import java.lang.ref.WeakReference;
 
 public class aivv
-  extends bewx
+  extends Handler
 {
-  public aivv(RedPacketKSongFragment.10.1 param1) {}
+  public WeakReference<TroopView> a;
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public aivv(TroopView paramTroopView)
   {
-    if (!this.a.a.a.c())
+    this.a = new WeakReference(paramTroopView);
+  }
+  
+  public void a()
+  {
+    TroopView localTroopView = (TroopView)this.a.get();
+    if (localTroopView == null) {}
+    do
     {
-      if (paramBoolean) {
-        this.a.a.a.a.post(new RedPacketKSongFragment.10.1.1.1(this));
+      return;
+      if (TroopView.a(localTroopView) != null) {
+        TroopView.a(localTroopView).setRefreshing(false);
       }
-    }
-    else {
+    } while (TroopView.a(localTroopView) == null);
+    TroopView.a(localTroopView).setRefresh(false);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    TroopView localTroopView = (TroopView)this.a.get();
+    if (localTroopView == null) {
       return;
     }
-    this.a.a.a.g();
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      TroopView.c(localTroopView);
+      TroopView.a(localTroopView, 1, 2131693948);
+      return;
+    case 4: 
+      TroopView.a(localTroopView, true);
+      return;
+    case 5: 
+      TroopView.a(localTroopView, false);
+      return;
+    case 13: 
+      TroopView.a(localTroopView, 1, 2131693948);
+      a();
+      return;
+    case 14: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label178;
+        }
+        TroopView.d(localTroopView);
+        if (TroopView.a(localTroopView) == null) {
+          break;
+        }
+        TroopView.a(localTroopView).a(0);
+        TroopView.a(localTroopView).sendEmptyMessageDelayed(15, 800L);
+        return;
+      }
+      label178:
+      a();
+      TroopView.a(localTroopView, 1, 2131718227);
+      return;
+    }
+    a();
   }
 }
 

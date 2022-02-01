@@ -9,6 +9,7 @@ import java.util.concurrent.CountDownLatch;
 public class Preconditor
 {
   private static final String TAG = "Preconditor";
+  private PreconditionAdapter adapter;
   private CountDownLatch countDownLatch;
   private List<Precondition> failPreconditions;
   private Preconditor.PreconditionListener preconditionListener;
@@ -23,6 +24,7 @@ public class Preconditor
     this.preconditions.add(new ServiceJsPrecondition(paramPreconditionAdapter, this));
     this.preconditions.add(new SdkInitPrecondition(paramPreconditionAdapter, this));
     this.countDownLatch = new CountDownLatch(this.preconditions.size());
+    this.adapter = paramPreconditionAdapter;
   }
   
   private void addFailPrecondition(Precondition paramPrecondition)
@@ -70,6 +72,11 @@ public class Preconditor
   void countDown()
   {
     this.countDownLatch.countDown();
+  }
+  
+  public PreconditionAdapter getAdapter()
+  {
+    return this.adapter;
   }
   
   public String getServiceJsCode()
@@ -135,7 +142,7 @@ public class Preconditor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.vinstance.Preconditor
  * JD-Core Version:    0.7.0.1
  */

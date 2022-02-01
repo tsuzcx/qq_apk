@@ -1,109 +1,174 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.core.VcControllerImpl;
+import com.tencent.av.common.ErrorInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.ParameterizedType;
+import java.util.HashMap;
 
 public class lfw
-  implements muw
+  extends anii
 {
-  public lfw(VideoController paramVideoController)
+  static volatile long jdField_a_of_type_Long = 1L;
+  static Object jdField_a_of_type_JavaLangObject = new Object();
+  static volatile HashMap<Long, lfz> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  
+  public lfw(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "new QQPhoneStatusListener");
+    super(paramQQAppInterface);
+  }
+  
+  public static int a(common.ErrorInfo paramErrorInfo)
+  {
+    if ((paramErrorInfo.has()) && (paramErrorInfo.uint32_errcode.has())) {
+      return paramErrorInfo.uint32_errcode.get();
+    }
+    return -99;
+  }
+  
+  static long a()
+  {
+    try
+    {
+      jdField_a_of_type_Long += 1L;
+      long l = jdField_a_of_type_Long;
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public static String a(common.ErrorInfo paramErrorInfo)
   {
-    lid locallid = this.a.a();
-    boolean bool2 = locallid.S;
-    long l = AudioHelper.b();
-    boolean bool1;
-    if (QLog.isColorLevel())
-    {
-      String str = VideoController.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder().append("onCallStateChanged, isCalling[").append(locallid.b).append("->").append(paramBoolean).append("], mVcCtrl[");
-      if (this.a.jdField_a_of_type_ComTencentAvCoreVcControllerImpl != null)
-      {
-        bool1 = true;
-        QLog.w(str, 1, bool1 + "], sessionInfo[" + locallid + "], isPeerOnPhone[" + bool2 + "], seq[" + l + "]");
-      }
+    if ((paramErrorInfo.has()) && (paramErrorInfo.bytes_errmsg.has())) {
+      return paramErrorInfo.bytes_errmsg.get().toStringUtf8();
     }
-    else
+    return "";
+  }
+  
+  static lfz a(long paramLong)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (this.a.jdField_a_of_type_ComTencentAvCoreVcControllerImpl != null) {
-        break label144;
-      }
+      lfz locallfz = (lfz)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+      return locallfz;
     }
-    for (;;)
+  }
+  
+  public static void a(long paramLong, AppInterface paramAppInterface, String paramString, MessageMicro paramMessageMicro, lfz paramlfz)
+  {
+    lfw locallfw = (lfw)paramAppInterface.getBusinessHandler(52);
+    paramAppInterface = new ToServiceMsg("", paramAppInterface.getCurrentAccountUin(), paramString);
+    mtl.a(paramAppInterface.getAttributes(), paramLong);
+    long l = a();
+    paramAppInterface.getAttributes().put("msgSeq_for_callback", Long.valueOf(l));
+    a(l, paramlfz);
+    paramAppInterface.putWupBuffer(paramMessageMicro.toByteArray());
+    locallfw.sendPbReq(paramAppInterface);
+    if (QLog.isDevelopLevel()) {
+      QLog.w("QAVMessageHandler", 1, "sendMsg, msgListener[" + paramlfz + "], msgSeq_for_callback[" + l + "], seq[" + paramLong + "]");
+    }
+  }
+  
+  static void a(long paramLong, lfz paramlfz)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
+      jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramlfz);
       return;
-      bool1 = false;
-      break;
-      label144:
-      if (paramBoolean) {
-        switch (locallid.jdField_g_of_type_Int)
-        {
-        }
-      }
-      while (!bool2)
+    }
+  }
+  
+  private static lfy b(lfz paramlfz)
+  {
+    paramlfz = paramlfz.getClass().getGenericSuperclass();
+    Object localObject;
+    String str;
+    if (paramlfz != null) {
+      if ((paramlfz instanceof ParameterizedType))
       {
-        this.a.a(true, paramBoolean);
-        return;
-        this.a.a(locallid.d, 218);
-        this.a.b(218);
-        this.a.b(locallid.d, 0);
-        continue;
-        this.a.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.rejectVideo(locallid.d, this.a.c(), 65535);
-        this.a.a(locallid.d, 219);
-        this.a.b(219);
-        this.a.b(locallid.d, 1);
-        continue;
-        this.a.a(l, 3, Long.valueOf(locallid.d).longValue());
-        if (QLog.isColorLevel())
-        {
-          QLog.e(VideoController.jdField_a_of_type_JavaLangString, 2, "Reject Video Request when chating");
-          continue;
-          this.a.b(true);
-          continue;
-          this.a.a(l, this.a.n, this.a.d);
-          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.d), Integer.valueOf(3) });
-          continue;
-          this.a.a(mww.b(locallid.i), locallid.jdField_g_of_type_Long, 86);
-          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(66), Long.valueOf(locallid.jdField_g_of_type_Long) });
-          continue;
-          switch (locallid.jdField_g_of_type_Int)
+        localObject = ((ParameterizedType)paramlfz).getActualTypeArguments();
+        if (localObject != null) {
+          if (localObject.length == 2)
           {
-          case 2: 
-          case 5: 
-          case 6: 
-          case 7: 
-          case 8: 
-          default: 
-            break;
-          case 3: 
-          case 4: 
-          case 9: 
-          case 10: 
-            this.a.b(false);
+            paramlfz = (Class)localObject[0];
+            localObject = (Class)localObject[1];
+            str = "reqType[" + paramlfz + "]rspType[" + localObject + "]";
           }
         }
       }
     }
+    while (((paramlfz == null) || (localObject == null)) && (AudioHelper.e()))
+    {
+      throw new IllegalArgumentException("QAVMessageHandler get getClassInfo失败, " + str);
+      str = "ActualTypeArguments长度为" + localObject.length;
+      localObject = null;
+      paramlfz = null;
+      continue;
+      localObject = null;
+      str = "getActualTypeArguments为空";
+      paramlfz = null;
+      continue;
+      str = "type[" + paramlfz.getClass().getName() + "]";
+      localObject = null;
+      paramlfz = null;
+      continue;
+      str = "genericInterfaces为空";
+      localObject = null;
+      paramlfz = null;
+    }
+    lfy locallfy = new lfy(null);
+    locallfy.jdField_a_of_type_JavaLangString = str;
+    locallfy.jdField_a_of_type_JavaLangClass = paramlfz;
+    locallfy.b = ((Class)localObject);
+    return locallfy;
   }
   
-  protected void finalize()
+  protected Class<? extends anil> observerClass()
   {
-    super.finalize();
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "finalize QQPhoneStatusListener");
+    return anqd.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    long l2 = mtl.a(paramToServiceMsg.getAttributes());
+    long l1 = 0L;
+    Object localObject = paramToServiceMsg.getAttribute("msgSeq_for_callback");
+    if ((localObject instanceof Integer)) {
+      l1 = ((Integer)localObject).intValue();
     }
+    for (;;)
+    {
+      localObject = a(l1);
+      if (QLog.isColorLevel()) {
+        QLog.w("QAVMessageHandler", 1, "onReceive, cmd[" + str + "], req_cmd[" + paramToServiceMsg.getServiceCmd() + "], isSuccess[" + paramFromServiceMsg.isSuccess() + "], RequestSsoSeq[" + paramToServiceMsg.getRequestSsoSeq() + "], ResultCode[" + paramFromServiceMsg.getResultCode() + "], RequestSsoSeq[" + paramFromServiceMsg.getRequestSsoSeq() + "], msgSeq_for_callback[" + l1 + "], msgListener[" + localObject + "], seq[" + l2 + "]");
+      }
+      if (localObject == null) {
+        break;
+      }
+      ((lfz)localObject).a(l2, paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+      if ((localObject instanceof Long)) {
+        l1 = ((Long)localObject).longValue();
+      }
+    }
+    QLog.w("QAVMessageHandler", 1, "onReceive, 没有MsgListener， cmd[" + str + "], seq[" + l2 + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lfw
  * JD-Core Version:    0.7.0.1
  */

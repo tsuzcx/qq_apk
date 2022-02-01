@@ -1,42 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import mqq.util.WeakReference;
+import com.tencent.qapmsdk.base.listener.IMemoryDumpListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-public class addi
-  implements DialogInterface.OnDismissListener
+class addi
+  implements IMemoryDumpListener
 {
-  WeakReference<GeneralSettingActivity> a;
-  WeakReference<CompoundButton> b;
+  addi(addh paramaddh, adcb paramadcb) {}
   
-  public addi(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
+  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2)
   {
-    this.a = new WeakReference(paramGeneralSettingActivity);
-    this.b = new WeakReference(paramCompoundButton);
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "onFinishDump " + paramBoolean + " " + paramString1 + " " + paramString2);
   }
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onHprofDumped(@NotNull String paramString)
   {
-    CompoundButton localCompoundButton = null;
-    if (this.a == null)
-    {
-      paramDialogInterface = null;
-      if (this.b != null) {
-        break label47;
-      }
+    if (this.jdField_a_of_type_Adcb != null) {
+      this.jdField_a_of_type_Adcb.a();
     }
-    for (;;)
-    {
-      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
-        paramDialogInterface.a(localCompoundButton, false);
-      }
-      return;
-      paramDialogInterface = (GeneralSettingActivity)this.a.get();
-      break;
-      label47:
-      localCompoundButton = (CompoundButton)this.b.get();
-    }
+  }
+  
+  @NotNull
+  public List<String> onPrepareDump(@NotNull String paramString)
+  {
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "onPrepareDump " + paramString);
+    paramString = new ArrayList(4);
+    paramString.addAll(adct.a());
+    paramString.addAll(adct.b());
+    paramString.add(adct.b());
+    paramString.add(adct.a());
+    return paramString;
   }
 }
 

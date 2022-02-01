@@ -1,76 +1,30 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class rvo
-  extends Dialog
-  implements View.OnClickListener
+class rvo
+  implements URLDrawable.URLDrawableListener
 {
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  rvo(rvn paramrvn) {}
   
-  public rvo(@NonNull Context paramContext)
-  {
-    this(paramContext, 0);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public rvo(@NonNull Context paramContext, int paramInt)
-  {
-    super(paramContext, 2131755169);
-    a(paramContext);
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  private void a(Context paramContext)
-  {
-    requestWindowFeature(1);
-    setContentView(2131559921);
-    getWindow().setLayout(-1, -1);
-    setCancelable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378722));
-    this.b = ((TextView)findViewById(2131378721));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369909));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369913));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.b.setOnClickListener(this);
-    syo.a(this.b, aepi.a(3.0F, paramContext.getResources()), Color.parseColor("#00CAFC"));
-    syo.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, aepi.a(3.0F, paramContext.getResources()), Color.parseColor("#ffffff"));
-    getWindow().setWindowAnimations(2131755318);
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.b.setText(paramString2);
-    }
-    show();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    if ((rvn.a(this.a) != null) && (rvn.a(this.a).getStatus() == 1) && ((rvn.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
     {
-    default: 
-      return;
+      paramURLDrawable = (RegionDrawable)rvn.a(this.a).getCurrDrawable();
+      rvn.a(this.a, paramURLDrawable.getBitmap());
     }
-    dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rvo
  * JD-Core Version:    0.7.0.1
  */

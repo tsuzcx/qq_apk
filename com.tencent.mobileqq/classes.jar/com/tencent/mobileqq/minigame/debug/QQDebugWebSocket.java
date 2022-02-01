@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.minigame.debug;
 
-import alud;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import bdoo;
-import bgzf;
+import anni;
+import bgtn;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.bridge.IInspectorAgent;
-import com.tencent.mobileqq.triton.sdk.bridge.IInspectorAgent.IDebuggerMessageListener;
 import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
 import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
+import com.tencent.mobileqq.triton.sdk.bridge.InspectorAgent;
+import com.tencent.mobileqq.triton.sdk.bridge.InspectorAgent.DebuggerMessageListener;
 import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -28,33 +27,32 @@ import org.json.JSONObject;
 
 public class QQDebugWebSocket
   extends DebugWebSocket
-  implements IInspectorAgent
+  implements InspectorAgent
 {
-  private static final String DISCONNECT_TIPS = alud.a(2131710600);
-  private static final String DISCONNECT_TIPS_NOT_RECOVERY = alud.a(2131710599);
+  private static final String DISCONNECT_TIPS = anni.a(2131708976);
+  private static final String DISCONNECT_TIPS_NOT_RECOVERY = anni.a(2131708975);
   public static final int NETWORKTYPE_2G = 2;
   public static final int NETWORKTYPE_3G = 3;
   public static final int NETWORKTYPE_4G = 4;
   public static final int NETWORKTYPE_OFFLINE = 0;
   public static final int NETWORKTYPE_OTHER = 1;
   public static final int NETWORKTYPE_WIFI = 6;
-  private static final String RECONNECT_TIPS = alud.a(2131710601);
+  private static final String RECONNECT_TIPS = anni.a(2131708977);
   private AtomicInteger count = new AtomicInteger();
   private MiniGameInfo gameInfo;
   Runnable heartbeatRunnable = new QQDebugWebSocket.4(this);
   private boolean isQQDebugReady;
   public QQDebugWebSocket.ProfileJsPlugin jsPlugin;
   private DebugWebSocket.DebuggerStateListener mDebugListener;
-  private IInspectorAgent.IDebuggerMessageListener mDebuggerMessageListener;
+  private InspectorAgent.DebuggerMessageListener mDebuggerMessageListener;
   private DebugWebSocket.DebugSocketListener qqSocketListener = new QQDebugWebSocket.1(this);
   private String sessionId;
   
-  public QQDebugWebSocket(MiniGameInfo paramMiniGameInfo, bgzf parambgzf)
+  public QQDebugWebSocket(MiniGameInfo paramMiniGameInfo)
   {
     this.gameInfo = paramMiniGameInfo;
     this.TAG = "[debugger].QQDebugWebSocket";
     this.jsPlugin = new QQDebugWebSocket.ProfileJsPlugin(this);
-    parambgzf.a(this);
   }
   
   private String covertProfileToIdeData(String paramString)
@@ -125,7 +123,7 @@ public class QQDebugWebSocket
                     else
                     {
                       if (!TextUtils.equals(paramString1, "DebugMessageMaster")) {
-                        break label641;
+                        break label639;
                       }
                       try
                       {
@@ -191,7 +189,7 @@ public class QQDebugWebSocket
       } while (!TextUtils.equals(str, "profile.end"));
       paramString2.evaluateJs("global.q9zq.FrameProfileEnd(" + i + ")");
       return;
-      label641:
+      label639:
       QLog.i(this.TAG, 1, "qq onSocketMessage cmd:" + paramString1 + ",data:" + paramString2);
     }
   }
@@ -204,9 +202,9 @@ public class QQDebugWebSocket
       localJSONObject.put("device_name", Build.DEVICE);
       localJSONObject.put("device_model", Build.MODEL);
       localJSONObject.put("os", Build.VERSION.SDK_INT);
-      localJSONObject.put("qq_version", "8.3.5");
+      localJSONObject.put("qq_version", "8.4.1");
       localJSONObject.put("pixel_ratio", "3");
-      localJSONObject.put("screen_width", bdoo.a());
+      localJSONObject.put("screen_width", bgtn.a());
       localJSONObject.put("user_agent", "MiniGame");
       return localJSONObject;
     }
@@ -388,9 +386,9 @@ public class QQDebugWebSocket
     sendQQDebugMethodMsg("QuitRoom", "{}");
   }
   
-  public void setOnDebuggerMessageListener(@Nullable IInspectorAgent.IDebuggerMessageListener paramIDebuggerMessageListener)
+  public void setOnDebuggerMessageListener(@Nullable InspectorAgent.DebuggerMessageListener paramDebuggerMessageListener)
   {
-    this.mDebuggerMessageListener = paramIDebuggerMessageListener;
+    this.mDebuggerMessageListener = paramDebuggerMessageListener;
   }
   
   public void startConnectIDE(DebugWebSocket.DebuggerStateListener paramDebuggerStateListener)
@@ -400,7 +398,7 @@ public class QQDebugWebSocket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.debug.QQDebugWebSocket
  * JD-Core Version:    0.7.0.1
  */

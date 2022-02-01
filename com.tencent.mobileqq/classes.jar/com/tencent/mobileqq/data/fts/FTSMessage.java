@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data.fts;
 
 import android.text.TextUtils;
-import bdeu;
+import bgjw;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
 import com.tencent.mobileqq.utils.fts.FTSMessageCodec;
 import com.tencent.mobileqq.utils.fts.FTSMessageCodec.MsgExts;
@@ -94,7 +94,7 @@ public class FTSMessage
   
   public String createInsertSQL()
   {
-    return String.format("FTSMessage Info [oId = %d, selfUin&istroop = %s, msgType = %s, senderUin = %s, msg|size = %s]", new Object[] { Long.valueOf(this.mOId), this.mExt1, this.mExt3, this.mExt2, bdeu.a(this.mContent) });
+    return String.format("FTSMessage Info [oId = %d, selfUin&istroop = %s, msgType = %s, senderUin = %s, msg|size = %s]", new Object[] { Long.valueOf(this.mOId), this.mExt1, this.mExt3, this.mExt2, bgjw.a(this.mContent) });
   }
   
   public String createUpdateSQL()
@@ -186,7 +186,7 @@ public class FTSMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.fts.FTSMessage
  * JD-Core Version:    0.7.0.1
  */

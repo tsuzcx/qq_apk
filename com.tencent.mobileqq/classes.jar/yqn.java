@@ -1,32 +1,28 @@
-import android.view.SurfaceHolder;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
-
-public class yqn
-  implements IVideoViewBase.IVideoViewCallBack
+public abstract interface yqn
 {
-  public yqn(TribeVideoPlugin paramTribeVideoPlugin) {}
+  public abstract void a(String paramString1, String paramString2);
   
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
   
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
-    }
-  }
+  public abstract boolean a(int paramInt);
   
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
-    }
-  }
+  public abstract void b(String paramString1, String paramString2);
+  
+  public abstract void b(String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public abstract void c(String paramString1, String paramString2);
+  
+  public abstract void c(String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public abstract void d(String paramString1, String paramString2);
+  
+  public abstract void d(String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public abstract void e(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yqn
  * JD-Core Version:    0.7.0.1
  */

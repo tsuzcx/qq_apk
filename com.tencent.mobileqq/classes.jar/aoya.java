@@ -1,65 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.IInterface;
 
-public class aoya
+public abstract interface aoya
+  extends IInterface
 {
-  public String a;
-  public boolean a;
-  public String[] a;
-  public String b;
-  public String c;
+  public abstract void a(int paramInt);
   
-  public aoya(JSONObject paramJSONObject)
-  {
-    try
-    {
-      String str = paramJSONObject.getString("extension");
-      if (str != null) {
-        this.jdField_a_of_type_ArrayOfJavaLangString = str.split("\\|");
-      }
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("text");
-      this.b = paramJSONObject.getString("tShow");
-      this.c = paramJSONObject.getString("tPress");
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      QLog.e("TencentDocLocalCooperationBean", 1, paramJSONObject.getLocalizedMessage(), paramJSONObject);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
-    {
-      bool1 = bool2;
-      if (paramString != null) {
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        if (paramString.equals(this.jdField_a_of_type_ArrayOfJavaLangString[i])) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoya
  * JD-Core Version:    0.7.0.1
  */

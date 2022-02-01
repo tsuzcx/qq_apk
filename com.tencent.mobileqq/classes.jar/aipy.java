@@ -1,19 +1,13 @@
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessTypeActivity;
 
-class aipy
-  implements QQPermissionCallback
+public class aipy
+  implements DialogInterface.OnClickListener
 {
-  aipy(aipx paramaipx) {}
+  public aipy(BlessTypeActivity paramBlessTypeActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bdgm.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    aipw.a(this.a.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

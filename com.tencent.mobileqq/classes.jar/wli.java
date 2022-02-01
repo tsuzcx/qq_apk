@@ -1,32 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GatherCardInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
 public class wli
+  extends Job<Object, Object, Object>
 {
-  private qqstory_struct.GatherCardInfo a;
-  
-  public wli(qqstory_struct.GatherCardInfo paramGatherCardInfo)
+  public wli(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, wlf paramwlf)
   {
-    this.a = paramGatherCardInfo;
+    super(paramString);
   }
   
-  public wli(byte[] paramArrayOfByte)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    this.a = new qqstory_struct.GatherCardInfo();
-    try
-    {
-      this.a.mergeFrom(paramArrayOfByte);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wxe.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
-    }
+    this.jdField_a_of_type_Wlf.a().a(880001, "no network", null);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wli
  * JD-Core Version:    0.7.0.1
  */

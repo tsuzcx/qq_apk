@@ -1,23 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import java.util.Comparator;
 
-class afpt
-  implements assw
+public class afpt
+  implements Comparator<afpv>
 {
-  afpt(afps paramafps) {}
+  private afpt(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void a(View paramView)
+  public int a(afpv paramafpv1, afpv paramafpv2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
-    }
-    aepi.n = true;
-    if (this.a.a()) {
-      return;
-    }
-    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
+    return paramafpv1.f.compareToIgnoreCase(paramafpv2.f);
   }
 }
 

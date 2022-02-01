@@ -1,25 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import UserGrowth.stSimpleGetFeedDetailReq;
+import UserGrowth.stSimpleGetFeedDetailRsp;
 
-class unp
-  extends SimpleJob
+public class unp
+  extends ujr<stSimpleGetFeedDetailRsp>
 {
-  unp(uno paramuno, String paramString, boolean paramBoolean)
+  public unp(String paramString)
   {
-    super(paramString);
-  }
-  
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
-  {
-    this.jdField_a_of_type_Uno.b(this.jdField_a_of_type_Boolean);
-    return null;
+    super("SimpleGetFeedDetail", 10002);
+    stSimpleGetFeedDetailReq localstSimpleGetFeedDetailReq = new stSimpleGetFeedDetailReq();
+    localstSimpleGetFeedDetailReq.feedid = paramString;
+    this.a = localstSimpleGetFeedDetailReq;
+    upe.b("SimpleGetFeedDetailRequest", "stSimpleGetFeedDetailReq = " + localstSimpleGetFeedDetailReq.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     unp
  * JD-Core Version:    0.7.0.1
  */

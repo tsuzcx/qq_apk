@@ -14,18 +14,18 @@ public class EmbeddedWidgetClientFactory
   implements IEmbeddedWidgetClientFactory
 {
   private static final String TAG = "miniapp-embedded";
+  private ConcurrentHashMap<Long, EmbeddedWidgetClientHolder> embeddedWidgetClientHolderMap = new ConcurrentHashMap();
   private ConcurrentHashMap<Integer, Long> mappingTableMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<Long, VideoEmbeddedWidgetClient> videoEmbeddedWidgetClientMap = new ConcurrentHashMap();
   
   public IEmbeddedWidgetClient createWidgetClient(String paramString, Map<String, String> paramMap, IEmbeddedWidget paramIEmbeddedWidget)
   {
     try
     {
       QLog.i("miniapp-embedded", 1, "createWidgetClient, tagName:" + paramString + ", attributes:" + paramMap.toString());
-      if (paramString.equalsIgnoreCase("video"))
+      if (paramString.equalsIgnoreCase("VIDEO"))
       {
-        paramString = new VideoEmbeddedWidgetClient(paramString, paramMap, paramIEmbeddedWidget);
-        this.videoEmbeddedWidgetClientMap.put(Long.valueOf(paramIEmbeddedWidget.getWidgetId()), paramString);
+        paramString = new EmbeddedWidgetClientHolder(paramString, paramMap, paramIEmbeddedWidget);
+        this.embeddedWidgetClientHolderMap.put(Long.valueOf(paramIEmbeddedWidget.getWidgetId()), paramString);
         return paramString;
       }
     }
@@ -36,95 +36,68 @@ public class EmbeddedWidgetClientFactory
     return null;
   }
   
-  public Map<Long, VideoEmbeddedWidgetClient> getVideoEmbeddedWidgetClientMap()
+  public Map<Long, EmbeddedWidgetClientHolder> getEmbeddedWidgetClientHolderMap()
   {
-    return this.videoEmbeddedWidgetClientMap;
+    return this.embeddedWidgetClientHolderMap;
   }
   
-  public boolean handleInsertXWebVideo(String paramString, JsRuntime paramJsRuntime, BaseAppBrandRuntime paramBaseAppBrandRuntime)
+  public boolean handleEmbeddedWidgetEvent(JsRuntime paramJsRuntime, String paramString1, String paramString2, int paramInt)
   {
     try
     {
-      paramString = new JSONObject(paramString);
-      long l = paramString.optLong("x5WidgetId", 0L);
-      if ((this.videoEmbeddedWidgetClientMap != null) && (this.videoEmbeddedWidgetClientMap.containsKey(Long.valueOf(l))))
+      paramString2 = new JSONObject(paramString2);
+      int i = paramString2.optInt("viewId", -1);
+      if ((this.mappingTableMap != null) && (this.mappingTableMap.containsKey(Integer.valueOf(i))))
       {
-        int i = paramString.optInt("viewId", -1);
+        Object localObject = (Long)this.mappingTableMap.get(Integer.valueOf(i));
+        if ((this.embeddedWidgetClientHolderMap != null) && (this.embeddedWidgetClientHolderMap.containsKey(localObject)))
+        {
+          localObject = (EmbeddedWidgetClientHolder)this.embeddedWidgetClientHolderMap.get(localObject);
+          if (localObject != null)
+          {
+            ((EmbeddedWidgetClientHolder)localObject).handleEmbeddedWidgetEvent(paramJsRuntime, paramString1, paramString2, paramInt);
+            return true;
+          }
+        }
+      }
+    }
+    catch (Throwable paramJsRuntime)
+    {
+      QLog.e("miniapp-embedded", 1, "handleInsertXWebVideo error.", paramJsRuntime);
+    }
+    return false;
+  }
+  
+  public boolean handleInsertEmbeddedWidgetEvent(String paramString1, String paramString2, JsRuntime paramJsRuntime, BaseAppBrandRuntime paramBaseAppBrandRuntime)
+  {
+    try
+    {
+      paramString2 = new JSONObject(paramString2);
+      long l = paramString2.optLong("x5WidgetId", 0L);
+      if ((this.embeddedWidgetClientHolderMap != null) && (this.embeddedWidgetClientHolderMap.containsKey(Long.valueOf(l))))
+      {
+        int i = paramString2.optInt("viewId", -1);
         if ((i != -1) && (this.mappingTableMap != null)) {
           this.mappingTableMap.put(Integer.valueOf(i), Long.valueOf(l));
         }
-        VideoEmbeddedWidgetClient localVideoEmbeddedWidgetClient = (VideoEmbeddedWidgetClient)this.videoEmbeddedWidgetClientMap.get(Long.valueOf(l));
-        if (localVideoEmbeddedWidgetClient != null)
+        EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)this.embeddedWidgetClientHolderMap.get(Long.valueOf(l));
+        if (localEmbeddedWidgetClientHolder != null)
         {
-          localVideoEmbeddedWidgetClient.handleInsertXWebVideo(paramString, paramJsRuntime, paramBaseAppBrandRuntime);
+          localEmbeddedWidgetClientHolder.handleInsertEmbeddedWidgetEvent(paramString1, paramString2, paramJsRuntime, paramBaseAppBrandRuntime);
           return true;
         }
       }
     }
-    catch (Throwable paramString)
+    catch (Throwable paramString1)
     {
-      QLog.e("miniapp-embedded", 1, "handleInsertXWebVideo error.", paramString);
-    }
-    return false;
-  }
-  
-  public boolean handleOperateXWebVideo(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      int i = paramString.optInt("viewId", -1);
-      if ((this.mappingTableMap != null) && (this.mappingTableMap.containsKey(Integer.valueOf(i))))
-      {
-        long l = ((Long)this.mappingTableMap.get(Integer.valueOf(i))).longValue();
-        if ((this.videoEmbeddedWidgetClientMap != null) && (this.videoEmbeddedWidgetClientMap.containsKey(Long.valueOf(l))))
-        {
-          VideoEmbeddedWidgetClient localVideoEmbeddedWidgetClient = (VideoEmbeddedWidgetClient)this.videoEmbeddedWidgetClientMap.get(Long.valueOf(l));
-          if (localVideoEmbeddedWidgetClient != null)
-          {
-            localVideoEmbeddedWidgetClient.handleOperateXWebVideo(paramString);
-            return true;
-          }
-        }
-      }
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("miniapp-embedded", 1, "handleInsertXWebVideo error.", paramString);
-    }
-    return false;
-  }
-  
-  public boolean handleUpdateXWebVideo(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      int i = paramString.optInt("viewId", -1);
-      if ((this.mappingTableMap != null) && (this.mappingTableMap.containsKey(Integer.valueOf(i))))
-      {
-        long l = ((Long)this.mappingTableMap.get(Integer.valueOf(i))).longValue();
-        if ((this.videoEmbeddedWidgetClientMap != null) && (this.videoEmbeddedWidgetClientMap.containsKey(Long.valueOf(l))))
-        {
-          VideoEmbeddedWidgetClient localVideoEmbeddedWidgetClient = (VideoEmbeddedWidgetClient)this.videoEmbeddedWidgetClientMap.get(Long.valueOf(l));
-          if (localVideoEmbeddedWidgetClient != null)
-          {
-            localVideoEmbeddedWidgetClient.handleUpdateXWebVideo(paramString);
-            return true;
-          }
-        }
-      }
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("miniapp-embedded", 1, "handleInsertXWebVideo error.", paramString);
+      QLog.e("miniapp-embedded", 1, "handleInsertXWebVideo error.", paramString1);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.embedded.EmbeddedWidgetClientFactory
  * JD-Core Version:    0.7.0.1
  */

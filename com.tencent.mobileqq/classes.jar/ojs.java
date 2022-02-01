@@ -1,19 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
-class ojs
-  implements ViewBase.OnClickListener
+public class ojs
+  implements bkhw
 {
-  ojs(ojn paramojn) {}
+  public ojs(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void OnClick(View paramView, int paramInt)
   {
-    ojm.a(this.a.jdField_a_of_type_Omg, this.a.jdField_a_of_type_Omt);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return;
+      ReadInJoySettingActivity.a(this.a, false);
+      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ojs
  * JD-Core Version:    0.7.0.1
  */

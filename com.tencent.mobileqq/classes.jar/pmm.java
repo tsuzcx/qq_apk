@@ -1,27 +1,43 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
-class pmm
-  implements ViewBase.OnClickListener
+public class pmm
+  implements Manager
 {
-  pmm(pmj parampmj, ArticleInfo paramArticleInfo, Container paramContainer) {}
+  private AppInterface a;
   
-  public void onClick(ViewBase paramViewBase)
+  public pmm(AppInterface paramAppInterface)
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
-    if (paramViewBase != null)
-    {
-      rdm.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-      pmj.a(this.jdField_a_of_type_Pmj, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, paramViewBase.e, "");
-    }
+    QLog.i("ReadInJoyLogicManager", 1, "[ReadInJoyLogicManager] constructed.");
+    this.a = paramAppInterface;
+    a();
+  }
+  
+  public pmh a()
+  {
+    return pmh.a();
+  }
+  
+  public void a()
+  {
+    pia.a();
+    pmh.a().a(this.a);
+  }
+  
+  public void b()
+  {
+    pmh.a().a(false);
+  }
+  
+  public void onDestroy()
+  {
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pmm
  * JD-Core Version:    0.7.0.1
  */

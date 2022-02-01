@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import aezq;
-import afaj;
-import afba;
-import ajcr;
-import ajcs;
+import aggc;
+import aggv;
+import aghm;
+import akum;
+import akun;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -15,7 +15,7 @@ import java.util.List;
 public class DoodleView
   extends View
 {
-  private ajcs jdField_a_of_type_Ajcs;
+  private akun jdField_a_of_type_Akun;
   private LineLayer jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer;
   
   public DoodleView(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,7 +27,7 @@ public class DoodleView
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer = new LineLayer(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer.a(new ajcr(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer.a(new akum(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer.a(LineLayer.a);
     super.requestLayout();
   }
@@ -46,18 +46,18 @@ public class DoodleView
     return 0;
   }
   
-  public aezq a(boolean paramBoolean)
+  public aggc a(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer == null) {
       return null;
     }
-    aezq localaezq = new aezq();
-    localaezq.a(a(), paramBoolean, true);
-    localaezq.a().a(a());
-    return localaezq;
+    aggc localaggc = new aggc();
+    localaggc.a(a(), paramBoolean, true);
+    localaggc.a().a(a());
+    return localaggc;
   }
   
-  public afaj a()
+  public aggv a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer == null) {
       return null;
@@ -65,7 +65,7 @@ public class DoodleView
     return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer.a();
   }
   
-  public List<afba> a()
+  public List<aghm> a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer != null) {
       return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer.a();
@@ -80,9 +80,9 @@ public class DoodleView
     }
   }
   
-  public void a(ajcs paramajcs)
+  public void a(akun paramakun)
   {
-    this.jdField_a_of_type_Ajcs = paramajcs;
+    this.jdField_a_of_type_Akun = paramakun;
     b();
   }
   
@@ -151,7 +151,7 @@ public class DoodleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,17 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adfr
+class adfr
   implements View.OnClickListener
 {
-  public adfr(LbsBaseActivity paramLbsBaseActivity) {}
+  adfr(adfo paramadfo) {}
   
   public void onClick(View paramView)
   {
-    auwq.a(this.a.getAppInterface().getAccount(), true);
-    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
-      this.a.a(LbsBaseActivity.a(this.a));
-    }
+    this.a.jdField_a_of_type_Aded.d();
+    adhh.a(this.a.jdField_a_of_type_Adea, 4);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

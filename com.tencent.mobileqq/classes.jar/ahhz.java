@@ -1,32 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class ahhz
-  extends Handler
+class ahhz
+  implements bkhw
 {
-  public ahhz(SearchBaseFragment paramSearchBaseFragment) {}
+  ahhz(ahhy paramahhy, MessageForShortVideo paramMessageForShortVideo, ahie paramahie, bkho parambkho) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (SearchBaseFragment.a(this.a) != null) {
-      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
-    }
-    switch (paramMessage.what)
+    switch (paramInt)
     {
-    default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      this.a.a((String)paramMessage.obj);
-      return;
-    case 2: 
-      this.a.g();
-      return;
     }
-    this.a.c();
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
+        this.jdField_a_of_type_Ahhy.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahie);
+      } else {
+        this.jdField_a_of_type_Ahhy.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahie);
+      }
+    }
   }
 }
 

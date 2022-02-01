@@ -1,15 +1,19 @@
-import Wallet.AcsMsg;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class aeok
+  extends ClickableSpan
 {
-  public long a;
-  public AcsMsg a;
-  public MessageRecord a;
+  private aeok(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public String toString()
+  public void onClick(View paramView) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return "QQReminderOrderModel{messageRecord=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord + ", acsMsg=" + this.jdField_a_of_type_WalletAcsMsg + ", orderTime=" + this.jdField_a_of_type_Long + '}';
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

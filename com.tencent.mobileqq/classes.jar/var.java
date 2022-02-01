@@ -1,27 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class var
-  extends QQUIEventReceiver<vai, uow>
+class var
+  implements DialogInterface.OnClickListener
 {
-  public var(@NonNull vai paramvai)
-  {
-    super(paramvai);
-  }
+  var(val paramval) {}
   
-  public void a(@NonNull vai paramvai, @NonNull uow paramuow)
-  {
-    paramvai.a.b(paramuow);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uow.class;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     var
  * JD-Core Version:    0.7.0.1
  */

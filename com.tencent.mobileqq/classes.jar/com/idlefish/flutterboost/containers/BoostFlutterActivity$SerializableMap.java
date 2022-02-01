@@ -20,7 +20,7 @@ public class BoostFlutterActivity$SerializableMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap
  * JD-Core Version:    0.7.0.1
  */

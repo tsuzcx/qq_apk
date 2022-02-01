@@ -1,32 +1,42 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.CommTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adaj
-  extends VasQuickUpdateManager.CallBacker
+  implements acxp
 {
-  public adaj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public int a()
   {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (this.a.a != null))
-    {
-      paramString1 = this.a.a.obtainMessage();
-      paramString1.what = 7;
-      if (paramInt1 != 0) {
-        break label82;
-      }
-      paramString1.arg1 = 1;
+    return 1044;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
+    localCommTmp.c2c_type.set(1);
+    localCommTmp.svr_type.set(163);
+    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramMessageRecord = paramQQAppInterface.a().c(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
+    if (paramMessageRecord != null) {
+      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
-    for (paramString1.arg2 = 1;; paramString1.arg2 = 0)
-    {
-      if (this.a.a != null) {
-        this.a.a.sendMessage(paramString1);
-      }
-      return;
-      label82:
-      paramString1.arg1 = 0;
-    }
+    paramRoutingHead.comm_tmp.set(localCommTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
 }
 

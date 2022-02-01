@@ -1,19 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 
 public class adrt
-  implements DialogInterface.OnDismissListener
 {
-  public adrt(QQMapActivity paramQQMapActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
-      this.a.finish();
-    }
-    this.a.m = false;
-  }
+  public int a;
+  public long a;
+  public MessageForReplyText.SourceMsgInfo a;
+  public EmojiStickerManager.StickerInfo a;
+  public String a;
+  public boolean a = true;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g = -1;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
 }
 
 

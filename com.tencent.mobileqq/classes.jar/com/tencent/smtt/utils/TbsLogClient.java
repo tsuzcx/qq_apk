@@ -8,52 +8,49 @@ import android.widget.TextView;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-import java.util.Vector;
 
 public class TbsLogClient
 {
-  static final String TBS_LOG_FILE = "tbslog.txt";
-  static TbsLogClient intance = null;
-  static String mKey = null;
-  static byte[] mKeyHeadText = null;
-  static File mLogFile = null;
-  private static boolean write_log_just_in_time = true;
-  Vector<String> logMessage;
-  private Context mContext = null;
-  TextView mView;
-  private StringBuffer msLogContent = new StringBuffer();
-  private SimpleDateFormat time_formatter = null;
+  static TbsLogClient a = null;
+  static File c = null;
+  static String d = null;
+  static byte[] e = null;
+  private static boolean i = true;
+  TextView b;
+  private SimpleDateFormat f = null;
+  private Context g = null;
+  private StringBuffer h = new StringBuffer();
   
   public TbsLogClient(Context paramContext)
   {
     try
     {
-      this.mContext = paramContext.getApplicationContext();
-      this.time_formatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss.SSS", Locale.US);
+      this.g = paramContext.getApplicationContext();
+      this.f = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss.SSS", Locale.US);
       return;
     }
     catch (Exception paramContext)
     {
-      this.time_formatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss.SSS");
+      this.f = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss.SSS");
     }
   }
   
-  private void initIfNeeded()
+  private void a()
   {
     try
     {
-      if (mLogFile == null) {
+      if (c == null) {
         if (Environment.getExternalStorageState().equals("mounted"))
         {
-          String str = FileUtil.getTBSSdcardFilePath(this.mContext, 6);
+          String str = FileUtil.a(this.g, 6);
           if (str == null)
           {
-            mLogFile = null;
+            c = null;
             return;
           }
-          mLogFile = new File(str, "tbslog.txt");
-          mKey = LogFileUtils.createKey();
-          mKeyHeadText = LogFileUtils.createHeaderText(mLogFile.getName(), mKey);
+          c = new File(str, "tbslog.txt");
+          d = LogFileUtils.createKey();
+          e = LogFileUtils.createHeaderText(c.getName(), d);
           return;
         }
       }
@@ -62,7 +59,7 @@ public class TbsLogClient
     {
       localSecurityException.printStackTrace();
       return;
-      mLogFile = null;
+      c = null;
       return;
     }
     catch (NullPointerException localNullPointerException)
@@ -73,7 +70,7 @@ public class TbsLogClient
   
   public static void setWriteLogJIT(boolean paramBoolean)
   {
-    write_log_just_in_time = paramBoolean;
+    i = paramBoolean;
   }
   
   public void d(String paramString1, String paramString2) {}
@@ -84,13 +81,13 @@ public class TbsLogClient
   
   public void setLogView(TextView paramTextView)
   {
-    this.mView = paramTextView;
+    this.b = paramTextView;
   }
   
   public void showLog(String paramString)
   {
-    if (this.mView != null) {
-      this.mView.post(new TbsLogClient.LogRunnable(this, paramString));
+    if (this.b != null) {
+      this.b.post(new TbsLogClient.a(this, paramString));
     }
   }
   
@@ -102,13 +99,13 @@ public class TbsLogClient
   {
     try
     {
-      String str = this.time_formatter.format(Long.valueOf(System.currentTimeMillis()));
-      this.msLogContent.append(str).append(" pid=").append(Process.myPid()).append(" tid=").append(Process.myTid()).append(paramString).append("\n");
-      if ((Thread.currentThread() != Looper.getMainLooper().getThread()) || (write_log_just_in_time)) {
+      String str = this.f.format(Long.valueOf(System.currentTimeMillis()));
+      this.h.append(str).append(" pid=").append(Process.myPid()).append(" tid=").append(Process.myTid()).append(paramString).append("\n");
+      if ((Thread.currentThread() != Looper.getMainLooper().getThread()) || (i)) {
         writeLogToDisk();
       }
-      if (this.msLogContent.length() > 524288) {
-        this.msLogContent.delete(0, this.msLogContent.length());
+      if (this.h.length() > 524288) {
+        this.h.delete(0, this.h.length());
       }
       return;
     }
@@ -122,11 +119,11 @@ public class TbsLogClient
   {
     try
     {
-      initIfNeeded();
-      if (mLogFile != null)
+      a();
+      if (c != null)
       {
-        LogFileUtils.writeDataToStorage(mLogFile, mKey, mKeyHeadText, this.msLogContent.toString(), true);
-        this.msLogContent.delete(0, this.msLogContent.length());
+        LogFileUtils.writeDataToStorage(c, d, e, this.h.toString(), true);
+        this.h.delete(0, this.h.length());
       }
       return;
     }
@@ -138,7 +135,7 @@ public class TbsLogClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.utils.TbsLogClient
  * JD-Core Version:    0.7.0.1
  */

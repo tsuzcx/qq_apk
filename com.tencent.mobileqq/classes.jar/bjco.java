@@ -1,446 +1,551 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.media.AudioManager;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.Cryptor;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.pluginshare.TenCookie.1;
-import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
+import com.tencent.av.VideoConstants.ThirdCallType;
+import com.tencent.av.gaudio.QQGAudioCtrl;
+import com.tencent.qav.QavDef.MultiUserInfo;
+import com.tencent.qav.controller.multi.MultiOperatorImpl.1;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONArray;
 
 public class bjco
+  extends bjcn
+  implements bjcm, bjcw
 {
-  private int jdField_a_of_type_Int = 1;
-  private String jdField_a_of_type_JavaLangString = String.format("%s(\\w+)?=[%%\\w\\$\\(\\)\\[\\]\\*\\+\\.\\^\\|@#&-]*;", new Object[] { "qpay" });
-  private Map<String, List<String>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private String jdField_b_of_type_JavaLangString = String.format("%s(\\w+)?=", new Object[] { "qpay" });
-  private Map<String, String> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private String c = "(?i)domain=[\\w\\.]+;";
-  private String d = "(?i)expires=[\\w\\s:,]+;";
-  private String e = "";
+  private int jdField_a_of_type_Int;
+  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
+  protected bjcd a;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  protected Map<Long, QavDef.MultiUserInfo> a;
+  protected boolean a;
+  protected boolean b;
+  private boolean c;
+  private boolean d;
+  private boolean e;
   
-  public static bjco a()
+  public bjco(Context paramContext, long paramLong, bjci parambjci)
   {
-    return bjcp.a;
+    super(paramContext, paramLong, parambjci);
+    bjcq.c("MultiOperatorImpl", String.format("MultiOperatorImpl context=%s selfUin=%s videoChannel=%s", new Object[] { paramContext, Long.valueOf(paramLong), parambjci }));
+    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("audio"));
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    bjct.a().a(this);
   }
   
-  private String a()
+  private void a()
   {
-    return "qb_tenpay_cookies_" + this.e;
+    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
+      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.requestMemPosInfoList();
+    }
   }
   
-  private String a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  private void e(boolean paramBoolean)
   {
-    int j = 0;
-    paramString2 = Pattern.compile(paramString2).matcher(paramString1);
-    if (paramString2.find())
+    bjcq.c("MultiOperatorImpl", String.format("setLocalAudioEnable enable=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null)
     {
-      if (paramBoolean) {}
-      for (int i = 0;; i = 1)
-      {
-        int k = paramString2.start();
-        if (paramString3 != null) {
-          j = paramString3.length();
-        }
-        return paramString1.substring(j + k, paramString2.end() - i);
+      if (paramBoolean) {
+        this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.startAudioSend(true);
       }
     }
-    return null;
-  }
-  
-  private String a(String paramString, List<String> paramList)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    StringBuffer localStringBuffer = new StringBuffer("");
-    int i = paramList.size() - 1;
-    if (i >= 0)
-    {
-      String str1 = (String)paramList.get(i);
-      String str3 = a(str1, this.d, "expires=", false);
-      if (TextUtils.isEmpty(str3)) {}
-      for (;;)
-      {
-        i -= 1;
-        break;
-        long l = new Date(str3).getTime();
-        if (NetConnInfoCenter.getServerTimeMillis() > l)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("TenCookie", 2, "cookie time out curTime = " + NetConnInfoCenter.getServerTimeMillis() + " expire = " + l + " cookie = " + str1);
-          }
-          try
-          {
-            paramList.remove(i);
-          }
-          catch (IndexOutOfBoundsException localIndexOutOfBoundsException) {}
-        }
-        else
-        {
-          String str2 = a(localIndexOutOfBoundsException, this.jdField_a_of_type_JavaLangString, null, false);
-          if (str2 != null) {
-            localStringBuffer.append(str2 + ";");
-          }
-        }
-      }
-    }
-    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(localStringBuffer))) {
-      QLog.i("TenCookie", 2, paramString + " -> " + localStringBuffer.toString());
-    }
-    return localStringBuffer.toString();
-  }
-  
-  private List<String> a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramJSONArray.length())
-    {
-      localArrayList.add(paramJSONArray.getString(i));
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  private JSONArray a(List<String> paramList)
-  {
-    return new JSONArray(paramList);
-  }
-  
-  private void a(Context paramContext)
-  {
-    ThreadManager.post(new TenCookie.1(this, paramContext), 2, null, true);
-  }
-  
-  private void a(List<String> paramList, String paramString1, String paramString2)
-  {
-    int i = paramList.size() - 1;
-    while (i >= 0)
-    {
-      if (((String)paramList.get(i)).contains(paramString2))
-      {
-        QLog.i("TenCookie", 2, "replace cookie " + paramString2);
-        paramList.remove(i);
-      }
-      i -= 1;
-    }
-    paramList.add(paramString1);
-  }
-  
-  public static String c(String paramString)
-  {
-    return MD5.toMD5(MD5.toMD5(new StringBuilder().append(paramString).append("_").append(bdgk.a()).toString()) + "q$WaQ3#k").substring(8, 24);
-  }
-  
-  public String a(Context paramContext, String paramString1, String paramString2)
-  {
-    QLog.i("TenCookie", 2, "readTagCookie this = " + this);
-    if ((TextUtils.isEmpty(paramString2)) || (paramContext == null)) {
-      return null;
-    }
-    a(paramString1);
-    if (this.jdField_a_of_type_JavaUtilMap.size() <= 0) {}
-    String str1;
-    try
-    {
-      paramContext = paramContext.getSharedPreferences(a(), 4);
-      paramString1 = paramContext.getString("KEY_HOSTS", null);
-      if (QLog.isColorLevel()) {
-        QLog.i("TenCookie", 2, "initialize cookie from share " + paramString1);
-      }
-      boolean bool = TextUtils.isEmpty(paramString1);
-      if (!bool) {
-        try
-        {
-          paramString1 = new JSONArray(paramString1);
-          int i = 0;
-          while (i < paramString1.length())
-          {
-            str1 = (String)paramString1.get(i);
-            String str2 = paramContext.getString(str1, null);
-            if (!TextUtils.isEmpty(str2))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("TenCookie", 2, "initialize sdomain = " + str1 + " : " + str2);
-              }
-              this.jdField_a_of_type_JavaUtilMap.put(str1, a(new JSONArray(str2)));
-            }
-            i += 1;
-          }
-        }
-        catch (Exception paramContext)
-        {
-          paramContext.printStackTrace();
-        }
-      }
-      QLog.i("TenCookie", 2, "readTagCookie insCookie size = " + this.jdField_a_of_type_JavaUtilMap.size());
-      if (this.jdField_a_of_type_JavaUtilMap.size() <= 0) {
-        return "";
-      }
-    }
-    finally {}
-    paramContext = new StringBuffer("");
-    paramString1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (paramString1.hasNext())
-    {
-      str1 = (String)paramString1.next();
-      if ((paramString2.equals(str1)) || (paramString2.contains(str1)))
-      {
-        QLog.i("TenCookie", 2, "domain matched, append : " + str1);
-        str1 = a(paramString2, (List)this.jdField_a_of_type_JavaUtilMap.get(str1));
-        if (!TextUtils.isEmpty(str1)) {
-          paramContext.append(str1);
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TenCookie", 2, paramString2 + " => " + paramContext.toString());
-    }
-    return paramContext.toString();
-  }
-  
-  public String a(String paramString)
-  {
-    String str = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(str);
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    paramString = String.valueOf(i);
-    int j = localStringBuilder.length();
-    int k = paramString.length();
-    i = 0;
-    while (i < 28 - j - k)
-    {
-      localStringBuilder.append("0");
-      i += 1;
-    }
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    String str = null;
-    if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString1)) {
-      str = (String)this.jdField_b_of_type_JavaUtilMap.get(paramString1);
-    }
-    this.jdField_b_of_type_JavaUtilMap.put(paramString1, paramString2);
-    return str;
-  }
-  
-  public String a(String paramString1, String paramString2, SharedPreferences paramSharedPreferences)
-  {
-    String str2 = c(paramString1);
-    String str1 = paramSharedPreferences.getString(paramString2 + "_" + str2, "");
-    if (QLog.isColorLevel()) {
-      QLog.i("TenCookie", 2, "getEncryptUserValue,encryptValue:" + str1 + ",userKey:" + str2);
-    }
-    paramSharedPreferences = new Cryptor();
-    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-      try
-      {
-        paramString1 = str2.getBytes("ISO8859_1");
-      }
-      catch (UnsupportedEncodingException paramString1)
-      {
-        try
-        {
-          for (;;)
-          {
-            paramString2 = str1.getBytes("ISO8859_1");
-            paramString1 = paramSharedPreferences.decrypt(paramString2, paramString1);
-            if (paramString1 == null) {
-              break;
-            }
-            try
-            {
-              paramString2 = new String(paramString1, "ISO8859_1");
-              return paramString2;
-            }
-            catch (UnsupportedEncodingException paramString2)
-            {
-              return new String(paramString1);
-            }
-            paramString1 = paramString1;
-            paramString1 = str2.getBytes();
-          }
-        }
-        catch (UnsupportedEncodingException paramString2)
-        {
-          for (;;)
-          {
-            paramString2 = str1.getBytes();
-          }
-        }
-      }
-    }
-    return null;
-  }
-  
-  public String a(String paramString1, String paramString2, SharedPreferences paramSharedPreferences, String paramString3)
-  {
-    String str = c(paramString1);
-    if ((!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(str))) {
-      try
-      {
-        paramString1 = str.getBytes("ISO8859_1");
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        try
-        {
-          byte[] arrayOfByte = paramString3.getBytes("ISO8859_1");
-          paramString3 = arrayOfByte;
-          paramString3 = new Cryptor().encrypt(paramString3, paramString1);
-          if (paramString3 == null) {}
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
-          {
-            try
-            {
-              paramString1 = new String(paramString3, "ISO8859_1");
-              paramString3 = paramString1;
-              if (!TextUtils.isEmpty(paramString1))
-              {
-                paramSharedPreferences.edit().putString(paramString2 + "_" + str, paramString1).apply();
-                paramString3 = paramString1;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.i("TenCookie", 2, "putEncryptUserValue,encryptValue:" + paramString3);
-              }
-              return paramString3;
-              paramString1 = paramString1;
-              paramString1 = str.getBytes();
-              continue;
-              localUnsupportedEncodingException = localUnsupportedEncodingException;
-              paramString3 = paramString3.getBytes();
-            }
-            catch (UnsupportedEncodingException paramString1)
-            {
-              paramString1 = new String(paramString3);
-              continue;
-            }
-            paramString3 = null;
-          }
-        }
-      }
-    }
-    return null;
-  }
-  
-  public void a(Context paramContext, String paramString, List<String> paramList)
-  {
-    if ((paramContext == null) || (paramList.size() <= 0)) {
+    else {
       return;
     }
-    a(paramString);
-    int i = paramList.size() - 1;
+    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.stopAudioSend(true);
+  }
+  
+  private void f(boolean paramBoolean)
+  {
+    bjcq.c("MultiOperatorImpl", String.format("setRemoteAudioEnable enable=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null)
+    {
+      if (paramBoolean) {
+        this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.startAudioRecv();
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.stopAudioRecv();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int a(bjcd parambjcd)
+  {
     for (;;)
     {
-      if (i >= 0)
+      try
       {
-        String str2 = (String)paramList.get(i);
-        QLog.i("TenCookie", 2, "writeTagCookie cookie = " + str2 + " uin = " + this.e);
-        String str3 = a(str2, this.jdField_b_of_type_JavaLangString, null, true);
-        String str1;
-        if (str3 != null)
+        bjcq.c("MultiOperatorImpl", String.format("enterRoom param=%s", new Object[] { parambjcd }));
+        boolean bool1 = bjct.a().a();
+        boolean bool2 = bjct.a().b();
+        bjcq.c("MultiOperatorImpl", String.format("enterRoom isVideoChatting=%s isPhoneCalling=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+        if ((bool1) || (bool2))
         {
-          str1 = a(str2, this.c, "domain=", false);
-          if (TextUtils.isEmpty(str1))
-          {
-            QLog.i("TenCookie", 2, str1 + "writeTagCookie domain error, abort...");
-            return;
-          }
-          QLog.i("TenCookie", 2, str1 + " <= " + str2);
-          if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str1)) {
-            break label251;
-          }
-          paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(str1);
+          bjcq.a("MultiOperatorImpl", "enterRoom device take up.");
+          i = -2;
+          return i;
         }
-        try
+        if (this.jdField_a_of_type_Boolean)
         {
-          for (;;)
+          bjcq.a("MultiOperatorImpl", "enterRoom duplicate call.");
+          i = -3;
+          continue;
+        }
+        bjcl.a(this.jdField_a_of_type_Bjci);
+        bjcl.a(this.jdField_a_of_type_Bjci, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long);
+        i = -1;
+        int j = i;
+        if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null)
+        {
+          this.jdField_a_of_type_Bjcd = parambjcd;
+          if (parambjcd.e == 1)
           {
-            a(paramString, str2, str3);
-            this.jdField_a_of_type_JavaUtilMap.put(str1, paramString);
-            i -= 1;
-            break;
-            label251:
-            paramString = new ArrayList();
+            i = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.startCommonGAudio(parambjcd.jdField_a_of_type_Int, parambjcd.b, parambjcd.c, parambjcd.d, this.jdField_a_of_type_Long, parambjcd.jdField_a_of_type_JavaLangString, parambjcd.e, parambjcd.jdField_a_of_type_ArrayOfByte, 0);
+            bjcq.c("MultiOperatorImpl", String.format("enterRoom result=%s", new Object[] { Integer.valueOf(i) }));
+            if (i == 0) {
+              h();
+            }
+            this.jdField_a_of_type_Boolean = true;
+            this.b = false;
+            j = i;
+          }
+          else
+          {
+            if (parambjcd.e != 2) {
+              continue;
+            }
+            i = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.commonRequest(parambjcd.jdField_a_of_type_Int, parambjcd.d, parambjcd.b, parambjcd.c, parambjcd.e, 0, 8, "", parambjcd.e, parambjcd.jdField_a_of_type_ArrayOfByte, parambjcd.f);
+            continue;
+            i = -1;
+            continue;
           }
         }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-          }
+        if (j != 0) {
+          continue;
+        }
+      }
+      finally {}
+      int i = 0;
+    }
+  }
+  
+  protected QavDef.MultiUserInfo a(long paramLong)
+  {
+    QavDef.MultiUserInfo localMultiUserInfo = null;
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      localMultiUserInfo = (QavDef.MultiUserInfo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+    }
+    return localMultiUserInfo;
+  }
+  
+  protected List<QavDef.MultiUserInfo> a()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_JavaUtilMap != null)
+    {
+      Collection localCollection = this.jdField_a_of_type_JavaUtilMap.values();
+      localObject1 = localObject2;
+      if (!localCollection.isEmpty()) {
+        localObject1 = new ArrayList(localCollection);
+      }
+    }
+    return localObject1;
+  }
+  
+  public void a(int paramInt1, long paramLong, int paramInt2, int paramInt3)
+  {
+    bjcq.a("MultiOperatorImpl", String.format("onGAudioSDKError relationType=%s groupId=%s reason=%s detail=%s", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
+    e();
+    i();
+    if (paramInt2 == 15)
+    {
+      c(3);
+      return;
+    }
+    c(2);
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    QavDef.MultiUserInfo localMultiUserInfo;
+    if (!paramBoolean)
+    {
+      bool1 = true;
+      bjcq.c("MultiOperatorImpl", String.format("onMemberMicChanged uin=%s available=%s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(bool1) }));
+      localMultiUserInfo = a(paramLong);
+      if (localMultiUserInfo != null) {
+        if (paramBoolean) {
+          break label106;
         }
       }
     }
-    a(paramContext);
+    label106:
+    for (paramBoolean = bool2;; paramBoolean = false)
+    {
+      localMultiUserInfo.mMicOn = paramBoolean;
+      if ((!TextUtils.isEmpty(localMultiUserInfo.mOpenId)) || (this.jdField_a_of_type_Bjcd.jdField_a_of_type_Int != 11)) {
+        a(localMultiUserInfo, bool1);
+      }
+      return;
+      bool1 = false;
+      break;
+    }
   }
   
-  public boolean a(String paramString)
+  public void a(long paramLong1, long[] paramArrayOfLong, int paramInt1, int paramInt2, long paramLong2, int paramInt3, int paramInt4)
+  {
+    if ((paramInt1 == 42) || (paramInt1 == 43))
+    {
+      if (paramInt1 == 42) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramInt2 = paramArrayOfLong.length;
+        paramInt1 = 0;
+        while (paramInt1 < paramInt2)
+        {
+          QavDef.MultiUserInfo localMultiUserInfo = a(paramArrayOfLong[paramInt1]);
+          if ((localMultiUserInfo != null) && ((!TextUtils.isEmpty(localMultiUserInfo.mOpenId)) || (this.jdField_a_of_type_Bjcd.jdField_a_of_type_Int != 11))) {
+            bjcz.a().a(bjcp.class, 6, new Object[] { localMultiUserInfo, Boolean.valueOf(bool), Integer.valueOf(paramInt4) });
+          }
+          paramInt1 += 1;
+        }
+      }
+    }
+  }
+  
+  protected void a(VideoConstants.ThirdCallType paramThirdCallType, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      bjcq.c("MultiOperatorImpl", String.format("checkInterruptCurrentCall callType[%s], enterRoom[%s]", new Object[] { paramThirdCallType, Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
+      if (this.jdField_a_of_type_Boolean)
+      {
+        e();
+        c(4);
+      }
+    }
+  }
+  
+  protected void a(QavDef.MultiUserInfo paramMultiUserInfo)
+  {
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramMultiUserInfo.mUin), paramMultiUserInfo);
+    }
+  }
+  
+  protected void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
+  {
+    bjcz.a().a(bjcp.class, 5, new Object[] { paramMultiUserInfo, Boolean.valueOf(paramBoolean) });
+  }
+  
+  public void a(lmp paramlmp, long paramLong1, int paramInt1, int paramInt2, long paramLong2, int... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_Bjcd == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt1 == 70)
+        {
+          bjcq.c("MultiOperatorImpl", String.format("onMemberIn uin=%s groupId=%s", new Object[] { Long.valueOf(paramlmp.jdField_a_of_type_Long), Long.valueOf(paramLong1) }));
+          if (paramlmp.jdField_a_of_type_Long == this.jdField_a_of_type_Long) {}
+          for (paramInt1 = 1;; paramInt1 = 0)
+          {
+            if (paramInt1 != 0)
+            {
+              i();
+              bjcz.a().a(bjcp.class, 1, new Object[0]);
+            }
+            paramVarArgs = a(paramlmp.jdField_a_of_type_Long);
+            if ((paramVarArgs == null) && (paramInt1 == 0)) {
+              break;
+            }
+            paramlmp = paramVarArgs;
+            if (paramInt1 != 0)
+            {
+              paramlmp = new QavDef.MultiUserInfo();
+              paramlmp.mUin = this.jdField_a_of_type_Bjcd.jdField_a_of_type_Long;
+              paramlmp.mOpenId = this.jdField_a_of_type_Bjcd.jdField_a_of_type_JavaLangString;
+              paramlmp.mMicOn = true;
+              a(paramlmp);
+            }
+            b(paramlmp);
+            return;
+          }
+          paramVarArgs = new QavDef.MultiUserInfo();
+          paramVarArgs.mUin = paramlmp.jdField_a_of_type_Long;
+          paramVarArgs.mMicOn = true;
+          a(paramVarArgs);
+          if (this.jdField_a_of_type_Bjcd.jdField_a_of_type_Int == 11)
+          {
+            a();
+            return;
+          }
+          b(paramVarArgs);
+          return;
+        }
+      } while (paramInt1 != 71);
+      bjcq.c("MultiOperatorImpl", String.format("onMemberOut uin=%s groupId=%s", new Object[] { Long.valueOf(paramlmp.jdField_a_of_type_Long), Long.valueOf(paramLong1) }));
+      paramlmp = b(paramlmp.jdField_a_of_type_Long);
+    } while (paramlmp == null);
+    c(paramlmp);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    e(paramBoolean);
+    this.c = paramBoolean;
+  }
+  
+  protected QavDef.MultiUserInfo b(long paramLong)
+  {
+    QavDef.MultiUserInfo localMultiUserInfo = null;
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      localMultiUserInfo = (QavDef.MultiUserInfo)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
+    }
+    return localMultiUserInfo;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaAudioManager.stopBluetoothSco();
+        this.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(false);
+        this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(false);
+        if (Build.VERSION.SDK_INT >= 21) {
+          this.jdField_a_of_type_AndroidMediaAudioManager.setMode(3);
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Int = paramInt;
+          return;
+          this.jdField_a_of_type_AndroidMediaAudioManager.setMode(2);
+        }
+        if (paramInt != 1) {
+          break label113;
+        }
+      }
+      catch (Exception localException)
+      {
+        bjcq.a("MultiOperatorImpl", "setAudioRoute fail.", localException);
+        return;
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_AndroidMediaAudioManager.stopBluetoothSco();
+      this.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(false);
+      this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(true);
+      this.jdField_a_of_type_AndroidMediaAudioManager.setMode(0);
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+    }
+    label113:
+    if (paramInt == 2)
+    {
+      this.jdField_a_of_type_AndroidMediaAudioManager.startBluetoothSco();
+      this.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(true);
+      this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(false);
+      this.jdField_a_of_type_AndroidMediaAudioManager.setMode(3);
+      this.jdField_a_of_type_Int = paramInt;
+    }
+  }
+  
+  public void b(int paramInt1, long paramLong, int paramInt2, int paramInt3)
+  {
+    bjcq.c("MultiOperatorImpl", String.format("onGroupVideoClosed relationType=%s groupId=%s reason=%s avtype=%s", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
+    e();
+    i();
+    c(2);
+  }
+  
+  public void b(long paramLong, ArrayList<lmp> paramArrayList)
+  {
+    if (this.jdField_a_of_type_Bjcd == null) {
+      return;
+    }
+    Iterator localIterator;
+    if (this.jdField_a_of_type_Bjcd.jdField_a_of_type_Int == 11) {
+      localIterator = paramArrayList.iterator();
+    }
+    label26:
+    label204:
+    label208:
+    for (;;)
+    {
+      if (localIterator.hasNext())
+      {
+        lmp locallmp = (lmp)localIterator.next();
+        QavDef.MultiUserInfo localMultiUserInfo = a(locallmp.jdField_a_of_type_Long);
+        paramArrayList = localMultiUserInfo;
+        if (localMultiUserInfo == null)
+        {
+          paramArrayList = new QavDef.MultiUserInfo();
+          paramArrayList.mUin = locallmp.jdField_a_of_type_Long;
+          paramArrayList.mMicOn = true;
+          a(paramArrayList);
+        }
+        if (!TextUtils.isEmpty(paramArrayList.mOpenId)) {
+          break label204;
+        }
+        paramArrayList.mOpenId = locallmp.jdField_a_of_type_JavaLangString;
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label208;
+        }
+        b(paramArrayList);
+        if (paramArrayList.mMicOn) {
+          break label26;
+        }
+        a(paramArrayList, false);
+        break label26;
+        if (!this.e) {
+          break;
+        }
+        paramArrayList = a();
+        bjcq.c("MultiOperatorImpl", String.format("onMemberPosChanged groupId=%s userInfos=%s", new Object[] { Long.valueOf(paramLong), paramArrayList }));
+        bjcz.a().a(bjcp.class, 7, new Object[] { paramArrayList });
+        this.e = false;
+        return;
+      }
+    }
+  }
+  
+  protected void b(QavDef.MultiUserInfo paramMultiUserInfo)
+  {
+    bjcz.a().a(bjcp.class, 3, new Object[] { paramMultiUserInfo });
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    f(paramBoolean);
+    this.d = paramBoolean;
+  }
+  
+  public void c() {}
+  
+  public void c(int paramInt)
+  {
+    bjcq.a("MultiOperatorImpl", String.format("notifyError errorType=%s", new Object[] { Integer.valueOf(paramInt) }));
+    bjcz.a().a(bjcp.class, 2, new Object[] { Integer.valueOf(paramInt) });
+  }
+  
+  protected void c(QavDef.MultiUserInfo paramMultiUserInfo)
+  {
+    bjcz.a().a(bjcp.class, 4, new Object[] { paramMultiUserInfo });
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    a(VideoConstants.ThirdCallType.AV_CHAT, paramBoolean);
+  }
+  
+  public void d() {}
+  
+  public void d(boolean paramBoolean)
+  {
+    a(VideoConstants.ThirdCallType.SYSTEM_CALL, paramBoolean);
+  }
+  
+  public void e()
   {
     try
     {
-      if ((TextUtils.isEmpty(paramString)) || (this.e.equals(paramString))) {
-        return false;
+      bjcq.c("MultiOperatorImpl", "exitRoom");
+      this.jdField_a_of_type_Bjcd = null;
+      if (this.jdField_a_of_type_JavaUtilMap != null) {
+        this.jdField_a_of_type_JavaUtilMap.clear();
       }
-      this.e = paramString;
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      QLog.i("TenCookie", 2, "change user...");
-      return true;
+      if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null)
+      {
+        this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.quit(0);
+        i();
+        this.jdField_a_of_type_Boolean = false;
+      }
+      return;
     }
     finally {}
   }
   
-  public String b(String paramString)
+  public void e(int paramInt1, long paramLong, int paramInt2)
   {
-    if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString)) {
-      return (String)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-    }
-    return null;
+    bjcq.c("MultiOperatorImpl", String.format("onCreateRoomSuc relationType=%s groupId=%s multiAvType=%s", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2) }));
   }
   
-  public boolean b(String paramString)
+  public void f()
   {
-    if (paramString == null)
+    try
     {
-      this.jdField_b_of_type_JavaUtilMap.clear();
-      return true;
+      bjcq.c("MultiOperatorImpl", "updateRoomInfo");
+      a();
+      this.e = true;
+      return;
     }
-    if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString))
+    finally
     {
-      this.jdField_b_of_type_JavaUtilMap.remove(paramString);
-      return true;
+      localObject = finally;
+      throw localObject;
     }
-    return false;
+  }
+  
+  public void f(long paramLong) {}
+  
+  public void g()
+  {
+    try
+    {
+      bjct.a().a(null);
+      if (this.jdField_a_of_type_JavaUtilMap != null)
+      {
+        this.jdField_a_of_type_JavaUtilMap.clear();
+        this.jdField_a_of_type_JavaUtilMap = null;
+      }
+      super.g();
+      return;
+    }
+    finally {}
+  }
+  
+  protected void h()
+  {
+    if (this.jdField_a_of_type_JavaLangRunnable == null)
+    {
+      this.jdField_a_of_type_JavaLangRunnable = new MultiOperatorImpl.1(this);
+      bjda.a(this.jdField_a_of_type_JavaLangRunnable, 30000L);
+    }
+  }
+  
+  protected void i()
+  {
+    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    {
+      bjda.b(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_JavaLangRunnable = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjco
  * JD-Core Version:    0.7.0.1
  */

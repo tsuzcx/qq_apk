@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.widget.Filter;
+import android.widget.Filter.FilterResults;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import java.util.List;
 
-public class algu
-  extends alhn
+class algu
+  extends Filter
 {
   algu(algt paramalgt) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
+  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
   {
-    if (paramInt == 0) {
-      ThreadManager.getUIHandler().post(new AVEngineWalper.1.1(this));
+    paramCharSequence = new Filter.FilterResults();
+    paramCharSequence.values = this.a.a.a;
+    paramCharSequence.count = this.a.a.a.size();
+    return paramCharSequence;
+  }
+  
+  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
+  {
+    if (paramFilterResults.count > 0)
+    {
+      this.a.notifyDataSetChanged();
+      return;
     }
+    this.a.notifyDataSetInvalidated();
   }
 }
 

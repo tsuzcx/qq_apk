@@ -1,24 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Iterator;
+import java.util.List;
 
-public class rzm
-  implements aofp
+class rzm
+  extends QIPCModule
 {
-  public rzm(FastWebActivity paramFastWebActivity) {}
-  
-  public void onColorNoteAnimFinish()
+  rzm(rzl paramrzl, String paramString)
   {
-    FastWebActivity.a(this.a, true);
-    FastWebActivity.c(this.a);
-    if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).c())) {
-      this.a.overridePendingTransition(0, 0);
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    synchronized (rzl.a(this.a))
+    {
+      Iterator localIterator = rzl.a(this.a).iterator();
+      if (localIterator.hasNext()) {
+        ((rzn)localIterator.next()).a(paramString, paramBundle);
+      }
     }
-    QLog.d(FastWebActivity.a(this.a), 2, "mColorNoteController ：onColorNoteAnimFinish");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rzm
  * JD-Core Version:    0.7.0.1
  */

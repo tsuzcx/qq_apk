@@ -1,22 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.memory.QLogReporter.1;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-class aoet
-  implements DialogInterface.OnClickListener
+public class aoet
 {
-  aoet(aoes paramaoes) {}
+  private static volatile aoet a;
+  public static final SimpleDateFormat a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    if (aoes.a(this.a).isShowing()) {
-      aoes.a(this.a).dismiss();
+    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy.MM.dd");
+  }
+  
+  public static aoet a()
+  {
+    if (jdField_a_of_type_Aoet == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aoet == null) {
+        jdField_a_of_type_Aoet = new aoet();
+      }
+      return jdField_a_of_type_Aoet;
     }
-    aofm.a(aoes.a(this.a), true);
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (new GregorianCalendar().get(11) < 2) {}
+    SharedPreferences localSharedPreferences;
+    long l1;
+    Calendar localCalendar;
+    String str;
+    do
+    {
+      return;
+      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qlog_reporter", 0);
+      l1 = System.currentTimeMillis();
+      long l2 = localSharedPreferences.getLong("LastLogSizeReportTime", 0L);
+      localCalendar = Calendar.getInstance();
+      localCalendar.setTimeInMillis(l2);
+      str = jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime());
+      localCalendar.setTimeInMillis(l1);
+    } while (str.equals(jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime())));
+    ThreadManager.executeOnSubThread(new QLogReporter.1(this, localSharedPreferences, l1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoet
  * JD-Core Version:    0.7.0.1
  */

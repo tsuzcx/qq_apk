@@ -1,27 +1,47 @@
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.now.NowQQLiveFragment;
 
 public class aycl
-  implements QQPermissionCallback
+  implements biea
 {
-  public aycl(SignTextEditFragment paramSignTextEditFragment, AppActivity paramAppActivity) {}
+  public aycl(NowQQLiveFragment paramNowQQLiveFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignTextEditFragment", 2, "requestPermission user denied");
+    if (4 == paramInt)
+    {
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", ayck.a);
+      this.a.getActivity().startActivity(paramView);
     }
-    bdgm.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignTextEditFragment", 2, "requestPermission user grant");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignTextEditFragment.c();
+    do
+    {
+      return;
+      if (5 == paramInt)
+      {
+        paramView = new Intent();
+        Bundle localBundle = new Bundle();
+        paramView.setComponent(new ComponentName(this.a.getActivity(), ChatActivity.class));
+        localBundle.putString("uin", ayck.a);
+        localBundle.putInt("uintype", 1008);
+        localBundle.putString("uinname", anni.a(2131694044));
+        paramView.putExtras(localBundle);
+        paramView.setFlags(67108864);
+        paramView.putExtra("isforceRequestDetail", false);
+        paramView.putExtra("jump_from", 2);
+        this.a.getActivity().startActivity(paramView);
+        ayej.a();
+        ayej.b();
+        return;
+      }
+    } while (1 != paramInt);
+    NowQQLiveFragment.a(this.a);
   }
 }
 

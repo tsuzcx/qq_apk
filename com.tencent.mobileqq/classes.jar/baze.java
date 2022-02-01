@@ -1,8 +1,16 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
-public abstract interface baze
+class baze
+  implements DialogInterface.OnClickListener
 {
-  public abstract Bitmap a(Bitmap paramBitmap);
+  baze(bayw parambayw) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.play();
+  }
 }
 
 

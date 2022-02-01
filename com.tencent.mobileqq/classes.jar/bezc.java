@@ -1,15 +1,7 @@
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
-
 public class bezc
-  implements bhum
 {
-  public bezc(ShareActionSheetV2 paramShareActionSheetV2) {}
-  
-  public void onDismiss()
-  {
-    ShareActionSheetV2.b(this.a).onDismiss(this.a.a);
-  }
+  public String a;
+  public String b;
 }
 
 

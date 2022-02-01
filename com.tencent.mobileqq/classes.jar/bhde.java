@@ -1,62 +1,29 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetCodeReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetCodeRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import QC.UniLoginCheckRsp;
+import java.lang.ref.WeakReference;
 
-public class bhde
-  extends bhdw
+class bhde
+  implements anil
 {
-  private INTERFACE.StGetCodeReq a = new INTERFACE.StGetCodeReq();
+  private WeakReference<bhdd> a;
   
-  public bhde(String paramString)
+  public bhde(bhdd parambhdd)
   {
-    this.a.appid.set(paramString);
+    this.a = new WeakReference(parambhdd);
   }
   
-  protected String a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return "mini_program_auth";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    bhdd localbhdd = (bhdd)this.a.get();
+    if (localbhdd == null) {}
+    while (!(paramObject instanceof UniLoginCheckRsp)) {
+      return;
     }
-    INTERFACE.StGetCodeRsp localStGetCodeRsp = new INTERFACE.StGetCodeRsp();
-    try
-    {
-      localStGetCodeRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetCodeRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("code", localStGetCodeRsp.code.get());
-        return paramArrayOfByte;
-      }
-      QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetCode";
+    localbhdd.a(((UniLoginCheckRsp)paramObject).stKeyWord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhde
  * JD-Core Version:    0.7.0.1
  */

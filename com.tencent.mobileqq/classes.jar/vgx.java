@@ -1,16 +1,39 @@
+import android.app.ActivityManager;
+import android.graphics.Bitmap;
+import com.tencent.component.media.utils.LruCache;
+import com.tencent.qphone.base.util.BaseApplication;
+
 public class vgx
-  extends uro
 {
-  public final byte[] a;
+  private static LruCache<Integer, Bitmap> jdField_a_of_type_ComTencentComponentMediaUtilsLruCache;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public vgx(byte[] paramArrayOfByte)
+  public static vgx a()
   {
-    this.a = paramArrayOfByte;
+    return vgz.a();
+  }
+  
+  public LruCache<Integer, Bitmap> a()
+  {
+    if (jdField_a_of_type_ComTencentComponentMediaUtilsLruCache == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_ComTencentComponentMediaUtilsLruCache == null)
+      {
+        int j = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getMemoryClass() * 131072;
+        int i = j;
+        if (j > 52428800) {
+          i = 52428800;
+        }
+        jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new vgy(this, i);
+      }
+      return jdField_a_of_type_ComTencentComponentMediaUtilsLruCache;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vgx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,13 @@
-import java.io.File;
-import java.io.FileFilter;
-
-class xeu
-  implements FileFilter
+public class xeu
 {
-  xeu(xet paramxet) {}
-  
-  public boolean accept(File paramFile)
+  public static boolean a(int paramInt)
   {
-    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
+    return paramInt > 1000;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xeu
  * JD-Core Version:    0.7.0.1
  */

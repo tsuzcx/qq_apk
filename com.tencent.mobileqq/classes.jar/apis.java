@@ -1,93 +1,126 @@
-import android.content.res.Resources;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.dating.NearbyTransitActivity;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.ArkClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.1;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.2;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.4;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.5;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class apis
-  extends aluu
+  implements apiu
 {
-  public apis(NearbyTransitActivity paramNearbyTransitActivity) {}
+  public acke a;
   
-  protected void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, Boolean paramBoolean1)
+  public boolean notify(String paramString1, String paramString2, String paramString3)
   {
-    apib.a("NearbyTransitActivity", new Object[] { "onJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), paramString1 });
-    NearbyTransitActivity.a("onJoinHotChat", 1);
-    if (NearbyTransitActivity.a(this.a)) {
-      return;
-    }
-    NearbyTransitActivity.a(this.a).removeMessages(2);
-    NearbyTransitActivity.a(this.a).removeMessages(5);
-    if (this.a.jdField_a_of_type_Beub != null) {
-      this.a.jdField_a_of_type_Beub.b();
-    }
-    paramBoolean1 = Message.obtain();
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString1))) {
-      paramBoolean1.what = 3;
-    }
-    for (paramBoolean1.obj = new Object[] { paramString1, paramString2, paramString4 };; paramBoolean1.obj = paramString1)
+    if (paramString2.equals("ad_query_mute"))
     {
-      NearbyTransitActivity.a(this.a).sendMessage(paramBoolean1);
-      return;
-      paramString1 = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        paramString1 = NearbyTransitActivity.jdField_a_of_type_JavaLangString;
-      }
-      paramBoolean1.what = 1;
-      paramBoolean1.arg1 = 11;
+      ArkAppNotifyCenter.access$100(paramString1);
+      return true;
     }
-  }
-  
-  public void a(boolean paramBoolean, HotChatInfo paramHotChatInfo, Common.WifiPOIInfo paramWifiPOIInfo, int paramInt, String paramString)
-  {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString))
-    {
-      str = paramString;
-      if (paramHotChatInfo != null) {
-        str = paramHotChatInfo.name;
-      }
+    if (paramString3 == null) {
+      return false;
     }
-    if ((NearbyTransitActivity.a(this.a) == 1) && (!bdeu.a(str, NearbyTransitActivity.a(this.a)))) {}
-    do
-    {
-      return;
-      NearbyTransitActivity.a("onQuickJoinHotChat", 1);
-      apib.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), Integer.valueOf(NearbyTransitActivity.a(this.a)), Integer.valueOf(paramInt), str, paramHotChatInfo, paramWifiPOIInfo });
-    } while (NearbyTransitActivity.a(this.a));
-    NearbyTransitActivity.a(this.a).removeMessages(2);
-    NearbyTransitActivity.a(this.a).removeMessages(5);
-    if (this.a.jdField_a_of_type_Beub != null) {
-      this.a.jdField_a_of_type_Beub.b();
+    QLog.d("ark.ArkAppNotifyCenter", 1, "appname : " + paramString1 + "eventName : " + paramString2 + " params : " + paramString3, null);
+    if (ArkAppNotifyCenter.arkClickListener != null) {
+      ArkAppNotifyCenter.arkClickListener.onArkClick(paramString1, paramString2, paramString3);
     }
-    paramWifiPOIInfo = Message.obtain();
-    if (paramBoolean) {
-      if ((paramHotChatInfo != null) && ((paramInt == 1) || (paramInt == 2)))
+    if (paramString2.equals("ad_c2s_report")) {
+      try
       {
-        paramWifiPOIInfo.what = 3;
-        paramWifiPOIInfo.obj = new Object[] { paramHotChatInfo.troopUin, paramHotChatInfo.troopCode, paramHotChatInfo.name };
+        paramString1 = new JSONObject(paramString3);
+        acre.a(paramString1.getInt("op"), 0, (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString1.getJSONObject("adInfo"))));
+        QLog.d("ark.ArkAppNotifyCenter", 1, "report c2s end", null);
+        return true;
+      }
+      catch (JSONException paramString1)
+      {
+        QLog.d("ark.ArkAppNotifyCenter", 1, paramString1, new Object[0]);
+        return false;
       }
     }
-    while ((NearbyTransitActivity.b(this.a) == 1) && (paramWifiPOIInfo.what == 3) && (paramHotChatInfo.mFissionRoomNum > 0))
+    if (BaseActivity.sTopActivity == null)
     {
-      auwz.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat allocate room success,is to showing entering tip " });
-      paramString = Message.obtain();
-      paramString.what = 5;
-      paramString.obj = String.format(this.a.getResources().getString(2131693406), new Object[] { Integer.valueOf(paramHotChatInfo.mFissionRoomNum) });
-      NearbyTransitActivity.a(this.a).sendMessage(paramString);
-      NearbyTransitActivity.a(this.a).sendMessageDelayed(paramWifiPOIInfo, 600L);
-      return;
-      paramWifiPOIInfo.what = 1;
-      paramWifiPOIInfo.arg1 = 5;
-      paramWifiPOIInfo.obj = NearbyTransitActivity.jdField_a_of_type_JavaLangString;
-      continue;
-      paramWifiPOIInfo.what = 1;
-      paramWifiPOIInfo.arg1 = (paramInt + 100);
-      paramWifiPOIInfo.obj = auud.a(paramInt);
+      QLog.d("ark.ArkAppNotifyCenter", 1, "top activity is null");
+      return false;
     }
-    NearbyTransitActivity.a(this.a).sendMessage(paramWifiPOIInfo);
+    Object localObject = new JSONObject();
+    if (paramString2.equals("ad_query_cell_rect"))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new ArkAppNotifyCenter.GdtNotify.1(this, (JSONObject)localObject, paramString3, paramString1));
+      return true;
+    }
+    WeakReference localWeakReference1 = new WeakReference(BaseActivity.sTopActivity);
+    WeakReference localWeakReference2 = new WeakReference(BaseActivity.sTopActivity);
+    if (paramString2.equals("ad_click")) {
+      if (localWeakReference1 != null)
+      {
+        localObject = (Activity)localWeakReference1.get();
+        AdReporterForAnalysis.reportForARKReceiveNotification((Context)localObject, false, paramString2, paramString1, null);
+        ArkAppCenter.a().postToMainThread(new ArkAppNotifyCenter.GdtNotify.2(this, paramString3, localWeakReference1, paramString1));
+        ark.arkNotify(paramString1, "ad_click_callback", paramString3, "json");
+        if (localWeakReference1 == null) {
+          break label330;
+        }
+        paramString2 = (Activity)localWeakReference1.get();
+        label313:
+        AdReporterForAnalysis.reportForARKSendNotification(paramString2, false, "ad_click_callback", paramString1, null);
+      }
+    }
+    for (;;)
+    {
+      return true;
+      localObject = null;
+      break;
+      label330:
+      paramString2 = null;
+      break label313;
+      if (paramString2.equals("ad_request"))
+      {
+        boolean bool;
+        if (!"com.tencent.yundong".equals(paramString1))
+        {
+          bool = true;
+          label356:
+          if (localWeakReference1 == null) {
+            break label412;
+          }
+        }
+        label412:
+        for (localObject = (Activity)localWeakReference1.get();; localObject = null)
+        {
+          AdReporterForAnalysis.reportForARKReceiveNotification((Context)localObject, bool, paramString2, paramString1, null);
+          ArkAppCenter.a().postToMainThread(new ArkAppNotifyCenter.GdtNotify.3(this, paramString1, localWeakReference1, bool, paramString3, localWeakReference2));
+          break;
+          bool = false;
+          break label356;
+        }
+      }
+      if (paramString2.equals("get_device_info"))
+      {
+        QLog.d("ark.ArkAppNotifyCenter", 1, "ark get_device_info", null);
+        ArkAppCenter.a().post(paramString1, new ArkAppNotifyCenter.GdtNotify.4(this, localWeakReference2, paramString3, paramString1));
+      }
+      else if (paramString2.equals("ad_preload_after_ad_loaded"))
+      {
+        QLog.d("ark.ArkAppNotifyCenter", 1, "ark ad_preload_after_ad_loaded", null);
+        ArkAppCenter.a().postToMainThread(new ArkAppNotifyCenter.GdtNotify.5(this, paramString3));
+      }
+    }
   }
 }
 

@@ -16,7 +16,7 @@ public abstract interface Parceler<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlinx.android.parcel.Parceler
  * JD-Core Version:    0.7.0.1
  */

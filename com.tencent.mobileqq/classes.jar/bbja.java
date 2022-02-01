@@ -1,27 +1,18 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.14;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbja
-  implements upk
+class bbja
+  implements View.OnClickListener
 {
-  public bbja(TroopBarPublishActivity.14 param14) {}
+  bbja(bbiy parambbiy) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (paramInt != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("tribe_publish_TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
-      }
-      this.a.this$0.a(null, this.a.a);
-      return;
-    }
-    this.a.this$0.jdField_a_of_type_Bbct.b = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
-    this.a.this$0.jdField_a_of_type_Bbct.c = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
-    this.a.this$0.jdField_a_of_type_Bbct.a = ((int)this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
-    this.a.this$0.a(paramString2, this.a.a);
+    this.a.a.b(this.a.a.b);
+    this.a.a.e.setVisibility(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

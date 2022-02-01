@@ -1,47 +1,54 @@
-import android.app.Activity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.LogProxy;
 
+@ProxyService(proxy=LogProxy.class)
 public class bjwm
-  extends bjxz
+  extends LogProxy
 {
-  private boolean a(String paramString)
+  public void log(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
   {
-    try
+    switch (paramInt)
     {
-      paramString = new JSONObject(paramString);
-      int i = paramString.optInt("categoryType");
-      paramString = paramString.optString("categoryId");
-      Activity localActivity = this.a.mRuntime.a();
-      if (localActivity != null)
+    case 3: 
+    default: 
+      if (paramThrowable == null)
       {
-        bjdt.a(localActivity, this.a.mRuntime.a().getCurrentAccountUin(), i, paramString, -1);
-        return true;
+        QLog.i(paramString1, 1, paramString2);
+        return;
       }
+      break;
+    case 2: 
+      if (paramThrowable == null)
+      {
+        QLog.d(paramString1, 1, paramString2);
+        return;
+      }
+      QLog.d(paramString1, 1, paramString2, paramThrowable);
+      return;
+    case 4: 
+      if (paramThrowable == null)
+      {
+        QLog.w(paramString1, 1, paramString2);
+        return;
+      }
+      QLog.w(paramString1, 1, paramString2, paramThrowable);
+      return;
+    case 5: 
+      if (paramThrowable == null)
+      {
+        QLog.e(paramString1, 1, paramString2);
+        return;
+      }
+      QLog.e(paramString1, 1, paramString2, paramThrowable);
+      return;
     }
-    catch (Exception paramString)
-    {
-      QLog.e("QZoneCategoryAlbumPlugin", 1, paramString.getMessage());
-      return false;
-    }
-    return false;
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
-    while ((!paramString3.equalsIgnoreCase("jumpCategoryAlbum")) || (paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      return false;
-    }
-    return a(paramVarArgs[0]);
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjwm
  * JD-Core Version:    0.7.0.1
  */

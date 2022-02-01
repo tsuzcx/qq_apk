@@ -1,36 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.ViewGroup;
 
 class acny
-  implements arrh
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  acny(acnx paramacnx, FileManagerEntity paramFileManagerEntity) {}
+  acny(acnw paramacnw, ViewGroup paramViewGroup) {}
   
-  public void a()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Acnx.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    if ((paramInt & 0x4) == 0) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(7942);
     }
-    alqo localalqo;
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
-      }
-      localalqo = (alqo)this.jdField_a_of_type_Acnx.a.a.a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localalqo.a(localArrayList));
-    arri.a(2131692746);
-    return;
-    this.jdField_a_of_type_Acnx.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
-  
-  public void b() {}
 }
 
 

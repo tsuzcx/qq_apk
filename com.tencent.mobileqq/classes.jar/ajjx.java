@@ -1,613 +1,131 @@
-import com.tencent.mobileqq.activity.recent.HotChatCenterItemBuilder;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemAppletsFolderData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemConfessMsg;
-import com.tencent.mobileqq.activity.recent.data.RecentItemContactsGuideData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemImaxADData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendVerticalListData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountADFolderData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemRecommendTroopData;
-import com.tencent.mobileqq.activity.recent.data.RecentMsgBoxItem;
-import com.tencent.mobileqq.activity.recent.data.RecentSayHelloBoxItem;
-import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.apollo.activity.RecentHotchatItem;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.PaintDrawable;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.matchchat.RecentMatchChatListItem;
+import com.tencent.mobileqq.data.ContactMatch;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.FixSizeImageView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajjx
+  extends RecyclerView.Adapter<ajjz>
 {
-  protected static final int[] a;
-  protected static final int[] b = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-  protected static final int[] c = { 0, 1, 2, 3 };
-  protected static final int[] d = { 0, 1 };
-  protected static final int[] e = { 0, 1, 2, 3 };
-  protected static final int[] f = { 0, 1, 2 };
-  protected static final int[] g = { 0, 1, 2 };
-  protected static final int[] h = { 0, 1, 2 };
-  protected static final int[] i = { 0, 1, 2, 3, 4 };
-  protected static final int[] j = { 0, 1, 2, 3 };
-  protected static final int[] k = { 0, 1, 2, 3 };
-  protected int a;
-  protected ajit a;
-  protected ajju[] a;
-  protected int[] l;
+  private int jdField_a_of_type_Int;
+  PaintDrawable jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  static
+  public ajjx(QQAppInterface paramQQAppInterface, List<Object> paramList, PaintDrawable paramPaintDrawable, int paramInt)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0 };
-  }
-  
-  public ajjx(int paramInt)
-  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList = paramList;
+    }
+    this.jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable = paramPaintDrawable;
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int == 0) {
-      this.l = b;
+  }
+  
+  public ajjz a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new ajjz(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131559851, null));
+  }
+  
+  public void a(ajjz paramajjz, int paramInt)
+  {
+    Object localObject;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      localObject = this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (!(localObject instanceof ajas)) {
+        break label113;
+      }
+      localObject = (ajas)localObject;
+      localObject = aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, ((ajas)localObject).a());
+      paramajjz.a.setImageDrawable((Drawable)localObject);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable != null)
+      {
+        if (paramInt != this.jdField_a_of_type_Int - 1) {
+          break label190;
+        }
+        paramajjz.b.setVisibility(0);
+        paramajjz.b.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable);
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ArrayOfAjju = new ajju[this.l.length];
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramajjz, paramInt, getItemId(paramInt));
       return;
-      if (this.jdField_a_of_type_Int == 1) {
-        this.l = e;
-      } else if (this.jdField_a_of_type_Int == 5) {
-        this.l = g;
-      } else if (this.jdField_a_of_type_Int == 6) {
-        this.l = c;
-      } else if (this.jdField_a_of_type_Int == 7) {
-        this.l = d;
-      } else if (this.jdField_a_of_type_Int == 9) {
-        this.l = h;
-      } else if (this.jdField_a_of_type_Int == 10) {
-        this.l = i;
-      } else if (this.jdField_a_of_type_Int == 11) {
-        this.l = j;
-      } else if (this.jdField_a_of_type_Int == 12) {
-        this.l = f;
-      } else if (this.jdField_a_of_type_Int == 13) {
-        this.l = k;
-      } else {
-        this.l = jdField_a_of_type_ArrayOfInt;
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int a(Object paramObject)
-  {
-    int m = this.l[0];
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      return m;
-    case 0: 
-      if ((paramObject instanceof Integer))
+      label113:
+      if ((localObject instanceof PhoneContact))
       {
-        if (((Integer)paramObject).intValue() != 0) {
-          break label802;
-        }
-        m = this.l[1];
+        localObject = (PhoneContact)localObject;
+        localObject = aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 11, ((PhoneContact)localObject).unifiedCode);
+        paramajjz.a.setImageDrawable((Drawable)localObject);
+        break;
       }
+      if (!(localObject instanceof ajar)) {
+        break;
+      }
+      localObject = (ajar)localObject;
+      localObject = aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 11, ((ajar)localObject).a.unifiedCode);
+      paramajjz.a.setImageDrawable((Drawable)localObject);
       break;
+      label190:
+      paramajjz.b.setVisibility(8);
     }
-    label802:
-    for (;;)
-    {
-      return m;
-      if ((paramObject instanceof RecentUserBaseData))
-      {
-        if ((paramObject instanceof RecentItemPublicAccountADFolderData)) {
-          return this.l[3];
-        }
-        if ((paramObject instanceof RecentItemImaxADData)) {
-          return this.l[4];
-        }
-        if ((paramObject instanceof RecentItemChatMsgData)) {
-          return this.l[5];
-        }
-        if ((paramObject instanceof RecentItemMayKnowFriendData)) {
-          return this.l[6];
-        }
-        if ((paramObject instanceof RecentItemMayKnowFriendVerticalListData)) {
-          return this.l[7];
-        }
-        if ((paramObject instanceof RecentItemAppletsFolderData)) {
-          return this.l[8];
-        }
-        if ((paramObject instanceof RecentItemContactsGuideData)) {
-          return this.l[9];
-        }
-        if ((paramObject instanceof RecentItemRecommendTroopData)) {
-          return this.l[10];
-        }
-        return this.l[2];
-      }
-      if (!(paramObject instanceof String)) {
-        break;
-      }
-      return this.l[0];
-      if ((paramObject instanceof Integer))
-      {
-        paramObject = (Integer)paramObject;
-        if (paramObject.intValue() == 3) {
-          return this.l[3];
-        }
-        if (paramObject.intValue() == 4) {
-          return this.l[1];
-        }
-        if (paramObject.intValue() != 5) {
-          break;
-        }
-        return this.l[1];
-      }
-      if (!(paramObject instanceof RecentBaseData)) {
-        break;
-      }
-      return this.l[2];
-      if ((paramObject instanceof Integer))
-      {
-        paramObject = (Integer)paramObject;
-        if (paramObject.intValue() == 18) {
-          return this.l[1];
-        }
-        if (paramObject.intValue() != 19) {
-          break;
-        }
-        return this.l[1];
-      }
-      if (!(paramObject instanceof RecentBaseData)) {
-        break;
-      }
-      return this.l[2];
-      if ((paramObject instanceof Integer))
-      {
-        paramObject = (Integer)paramObject;
-        if (paramObject.intValue() == 11) {
-          return this.l[1];
-        }
-        if (paramObject.intValue() != 12) {
-          break;
-        }
-        return this.l[1];
-      }
-      if (!(paramObject instanceof RecentBaseData)) {
-        break;
-      }
-      return this.l[2];
-      if ((paramObject instanceof Integer)) {
-        return this.l[1];
-      }
-      if (!(paramObject instanceof RecentBaseData)) {
-        break;
-      }
-      return this.l[2];
-      if ((paramObject instanceof String)) {
-        return this.l[0];
-      }
-      if ((paramObject instanceof RecentSayHelloBoxItem)) {
-        return this.l[2];
-      }
-      if ((paramObject instanceof RecentItemNearbyLiveTipData)) {
-        return this.l[3];
-      }
-      if (!(paramObject instanceof RecentMsgBoxItem)) {
-        break;
-      }
-      return this.l[1];
-      if ((paramObject instanceof String)) {
-        return this.l[0];
-      }
-      if (!(paramObject instanceof RecentSayHelloListItem)) {
-        break;
-      }
-      return this.l[1];
-      if ((paramObject instanceof Integer))
-      {
-        paramObject = (Integer)paramObject;
-        if (paramObject.intValue() == 13) {
-          return this.l[2];
-        }
-        if (paramObject.intValue() != 4) {
-          break;
-        }
-        return this.l[1];
-      }
-      if (!(paramObject instanceof RecentHotchatItem)) {
-        break;
-      }
-      switch (((RecentHotchatItem)paramObject).mType)
-      {
-      default: 
-        return m;
-      case 1: 
-        return this.l[3];
-      case 4: 
-        return this.l[4];
-      case 2: 
-        return this.l[2];
-      }
-      return this.l[1];
-      if ((paramObject instanceof RecentItemConfessMsg)) {
-        return this.l[1];
-      }
-      if (((paramObject instanceof Integer)) && (((Integer)paramObject).intValue() == 16)) {
-        return this.l[2];
-      }
-      if ((!(paramObject instanceof Integer)) || (((Integer)paramObject).intValue() != 17)) {
-        break;
-      }
-      return this.l[3];
-      if ((paramObject instanceof RecentMatchChatListItem)) {
-        return this.l[1];
-      }
-      if (((paramObject instanceof Integer)) && (((Integer)paramObject).intValue() == 20)) {
-        return this.l[2];
-      }
-      if ((!(paramObject instanceof Integer)) || (((Integer)paramObject).intValue() != 21)) {
-        break;
-      }
-      return this.l[3];
-    }
-  }
-  
-  public ajju a(Object paramObject)
-  {
-    Object localObject = null;
-    int m = a(paramObject);
-    if (this.jdField_a_of_type_Int == 0) {
-      if (m == 1)
-      {
-        if (this.jdField_a_of_type_ArrayOfAjju[1] == null) {
-          this.jdField_a_of_type_ArrayOfAjju[1] = new ajjo();
-        }
-        paramObject = this.jdField_a_of_type_ArrayOfAjju[1];
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        for (;;)
-                        {
-                          localObject = paramObject;
-                          if (paramObject == null)
-                          {
-                            if (this.jdField_a_of_type_ArrayOfAjju[0] == null) {
-                              this.jdField_a_of_type_ArrayOfAjju[0] = new ajjd();
-                            }
-                            localObject = this.jdField_a_of_type_ArrayOfAjju[0];
-                          }
-                          ((ajju)localObject).a(this.jdField_a_of_type_Ajit);
-                          return localObject;
-                          if (m == 2)
-                          {
-                            if (this.jdField_a_of_type_ArrayOfAjju[2] == null) {
-                              this.jdField_a_of_type_ArrayOfAjju[2] = new ajjm();
-                            }
-                            paramObject = this.jdField_a_of_type_ArrayOfAjju[2];
-                          }
-                          else if (m == 3)
-                          {
-                            if (this.jdField_a_of_type_ArrayOfAjju[3] == null) {
-                              this.jdField_a_of_type_ArrayOfAjju[3] = new ajkt();
-                            }
-                            paramObject = this.jdField_a_of_type_ArrayOfAjju[3];
-                          }
-                          else if (m == 4)
-                          {
-                            if (this.jdField_a_of_type_ArrayOfAjju[4] == null) {
-                              this.jdField_a_of_type_ArrayOfAjju[4] = new ajjq();
-                            }
-                            paramObject = this.jdField_a_of_type_ArrayOfAjju[4];
-                          }
-                          else if (m == 5)
-                          {
-                            if (this.jdField_a_of_type_ArrayOfAjju[5] == null) {
-                              this.jdField_a_of_type_ArrayOfAjju[5] = new ajje();
-                            }
-                            paramObject = this.jdField_a_of_type_ArrayOfAjju[5];
-                          }
-                          else if (m == 6)
-                          {
-                            if (this.jdField_a_of_type_ArrayOfAjju[6] == null) {
-                              this.jdField_a_of_type_ArrayOfAjju[6] = new ajka();
-                            }
-                            paramObject = this.jdField_a_of_type_ArrayOfAjju[6];
-                          }
-                          else if (m == 7)
-                          {
-                            if (this.jdField_a_of_type_ArrayOfAjju[7] == null) {
-                              this.jdField_a_of_type_ArrayOfAjju[7] = new ajkd();
-                            }
-                            paramObject = this.jdField_a_of_type_ArrayOfAjju[7];
-                          }
-                          else if (m == 8)
-                          {
-                            if (this.jdField_a_of_type_ArrayOfAjju[8] == null) {
-                              this.jdField_a_of_type_ArrayOfAjju[8] = new ajjb();
-                            }
-                            paramObject = this.jdField_a_of_type_ArrayOfAjju[8];
-                          }
-                          else if (m == 9)
-                          {
-                            if (this.jdField_a_of_type_ArrayOfAjju[9] == null) {
-                              this.jdField_a_of_type_ArrayOfAjju[9] = new ajjg();
-                            }
-                            paramObject = this.jdField_a_of_type_ArrayOfAjju[9];
-                          }
-                          else
-                          {
-                            paramObject = localObject;
-                            if (m == 10)
-                            {
-                              if (this.jdField_a_of_type_ArrayOfAjju[10] == null) {
-                                this.jdField_a_of_type_ArrayOfAjju[10] = new ajkx();
-                              }
-                              paramObject = this.jdField_a_of_type_ArrayOfAjju[10];
-                              continue;
-                              if (this.jdField_a_of_type_Int == 1)
-                              {
-                                if (m == 1)
-                                {
-                                  if (this.jdField_a_of_type_ArrayOfAjju[1] == null) {
-                                    this.jdField_a_of_type_ArrayOfAjju[1] = new ajlj();
-                                  }
-                                  paramObject = this.jdField_a_of_type_ArrayOfAjju[1];
-                                }
-                                else if (m == 2)
-                                {
-                                  if (this.jdField_a_of_type_ArrayOfAjju[2] == null) {
-                                    this.jdField_a_of_type_ArrayOfAjju[2] = new ajjk();
-                                  }
-                                  paramObject = this.jdField_a_of_type_ArrayOfAjju[2];
-                                }
-                                else
-                                {
-                                  paramObject = localObject;
-                                  if (m == 3)
-                                  {
-                                    if (this.jdField_a_of_type_ArrayOfAjju[3] == null) {
-                                      this.jdField_a_of_type_ArrayOfAjju[3] = new ajli();
-                                    }
-                                    paramObject = this.jdField_a_of_type_ArrayOfAjju[3];
-                                  }
-                                }
-                              }
-                              else if (this.jdField_a_of_type_Int == 12)
-                              {
-                                if (m == 1)
-                                {
-                                  if (this.jdField_a_of_type_ArrayOfAjju[1] == null) {
-                                    this.jdField_a_of_type_ArrayOfAjju[1] = new ajlj();
-                                  }
-                                  paramObject = this.jdField_a_of_type_ArrayOfAjju[1];
-                                }
-                                else
-                                {
-                                  paramObject = localObject;
-                                  if (m == 2)
-                                  {
-                                    if (this.jdField_a_of_type_ArrayOfAjju[2] == null) {
-                                      this.jdField_a_of_type_ArrayOfAjju[2] = new ajjk();
-                                    }
-                                    paramObject = this.jdField_a_of_type_ArrayOfAjju[2];
-                                  }
-                                }
-                              }
-                              else if (this.jdField_a_of_type_Int == 9)
-                              {
-                                if (m == 1)
-                                {
-                                  if (this.jdField_a_of_type_ArrayOfAjju[1] == null) {
-                                    this.jdField_a_of_type_ArrayOfAjju[1] = new ajlj();
-                                  }
-                                  paramObject = this.jdField_a_of_type_ArrayOfAjju[1];
-                                }
-                                else
-                                {
-                                  paramObject = localObject;
-                                  if (m == 2)
-                                  {
-                                    if (this.jdField_a_of_type_ArrayOfAjju[2] == null) {
-                                      this.jdField_a_of_type_ArrayOfAjju[2] = new ajjk();
-                                    }
-                                    paramObject = this.jdField_a_of_type_ArrayOfAjju[2];
-                                  }
-                                }
-                              }
-                              else if (this.jdField_a_of_type_Int == 5)
-                              {
-                                if (m == 1)
-                                {
-                                  if (this.jdField_a_of_type_ArrayOfAjju[1] == null) {
-                                    this.jdField_a_of_type_ArrayOfAjju[1] = new ajjd();
-                                  }
-                                  paramObject = this.jdField_a_of_type_ArrayOfAjju[1];
-                                }
-                                else
-                                {
-                                  paramObject = localObject;
-                                  if (m == 2)
-                                  {
-                                    if (this.jdField_a_of_type_ArrayOfAjju[2] == null) {
-                                      this.jdField_a_of_type_ArrayOfAjju[2] = new ajjk();
-                                    }
-                                    paramObject = this.jdField_a_of_type_ArrayOfAjju[2];
-                                  }
-                                }
-                              }
-                              else if (this.jdField_a_of_type_Int == 6)
-                              {
-                                if (m == 2)
-                                {
-                                  if (this.jdField_a_of_type_ArrayOfAjju[2] == null) {
-                                    this.jdField_a_of_type_ArrayOfAjju[2] = new ajlc();
-                                  }
-                                  paramObject = this.jdField_a_of_type_ArrayOfAjju[2];
-                                }
-                                else if (m == 1)
-                                {
-                                  if (this.jdField_a_of_type_ArrayOfAjju[1] == null) {
-                                    this.jdField_a_of_type_ArrayOfAjju[1] = new ajjk();
-                                  }
-                                  paramObject = this.jdField_a_of_type_ArrayOfAjju[1];
-                                }
-                                else
-                                {
-                                  paramObject = localObject;
-                                  if (m == 3)
-                                  {
-                                    if (this.jdField_a_of_type_ArrayOfAjju[3] == null) {
-                                      this.jdField_a_of_type_ArrayOfAjju[3] = new ajjy();
-                                    }
-                                    paramObject = this.jdField_a_of_type_ArrayOfAjju[3];
-                                  }
-                                }
-                              }
-                              else
-                              {
-                                if (this.jdField_a_of_type_Int != 7) {
-                                  break;
-                                }
-                                paramObject = localObject;
-                                if (m == 1)
-                                {
-                                  if (this.jdField_a_of_type_ArrayOfAjju[1] == null) {
-                                    this.jdField_a_of_type_ArrayOfAjju[1] = new ajlf();
-                                  }
-                                  paramObject = this.jdField_a_of_type_ArrayOfAjju[1];
-                                }
-                              }
-                            }
-                          }
-                        }
-                        if (this.jdField_a_of_type_Int != 10) {
-                          break;
-                        }
-                        paramObject = localObject;
-                      } while (m <= 0);
-                      paramObject = localObject;
-                    } while (m >= this.jdField_a_of_type_ArrayOfAjju.length);
-                    localObject = this.jdField_a_of_type_ArrayOfAjju[m];
-                    paramObject = localObject;
-                  } while (localObject != null);
-                  switch (m)
-                  {
-                  default: 
-                    paramObject = localObject;
-                  }
-                  for (;;)
-                  {
-                    this.jdField_a_of_type_ArrayOfAjju[m] = paramObject;
-                    break;
-                    paramObject = new ajjk();
-                    continue;
-                    paramObject = new ajlj();
-                    continue;
-                    paramObject = new HotChatCenterItemBuilder();
-                    continue;
-                    paramObject = new ajil();
-                  }
-                  if (this.jdField_a_of_type_Int != 11) {
-                    break;
-                  }
-                  paramObject = localObject;
-                } while (m <= 0);
-                paramObject = localObject;
-              } while (m >= this.jdField_a_of_type_ArrayOfAjju.length);
-              localObject = this.jdField_a_of_type_ArrayOfAjju[m];
-              paramObject = localObject;
-            } while (localObject != null);
-            switch (m)
-            {
-            default: 
-              paramObject = localObject;
-            }
-            for (;;)
-            {
-              this.jdField_a_of_type_ArrayOfAjju[m] = paramObject;
-              break;
-              paramObject = new ajjf();
-              continue;
-              paramObject = new aois();
-            }
-            paramObject = localObject;
-          } while (this.jdField_a_of_type_Int != 13);
-          paramObject = localObject;
-        } while (m <= 0);
-        paramObject = localObject;
-      } while (m >= this.jdField_a_of_type_ArrayOfAjju.length);
-      localObject = this.jdField_a_of_type_ArrayOfAjju[m];
-      paramObject = localObject;
-    } while (localObject != null);
-    switch (m)
-    {
-    default: 
-      paramObject = localObject;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ArrayOfAjju[m] = paramObject;
-      break;
-      paramObject = new ajjm();
-      continue;
-      paramObject = new auaw();
-    }
-  }
-  
-  public void a(ajit paramajit)
-  {
-    this.jdField_a_of_type_Ajit = paramajit;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ArrayOfAjju != null) && (this.jdField_a_of_type_ArrayOfAjju.length > 6) && ((this.jdField_a_of_type_ArrayOfAjju[6] instanceof ajka)))
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (paramObject != null)
     {
-      ((ajka)this.jdField_a_of_type_ArrayOfAjju[6]).a();
-      this.jdField_a_of_type_ArrayOfAjju[6] = null;
+      if (this.jdField_a_of_type_JavaUtilList.size() == this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Int - 1);
+        notifyItemRemoved(this.jdField_a_of_type_Int - 1);
+      }
+      this.jdField_a_of_type_JavaUtilList.add(0, paramObject);
+      notifyItemInserted(0);
+      if (this.jdField_a_of_type_JavaUtilList.size() == this.jdField_a_of_type_Int) {
+        notifyItemChanged(this.jdField_a_of_type_Int - 1);
+      }
     }
   }
   
-  public int b()
+  public void a(List<Object> paramList)
   {
-    return this.l.length;
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      if (paramList.size() <= this.jdField_a_of_type_Int) {
+        break label52;
+      }
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList.subList(0, this.jdField_a_of_type_Int));
+    }
+    for (;;)
+    {
+      notifyDataSetChanged();
+      return;
+      label52:
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
   }
   
-  public void b(QQAppInterface paramQQAppInterface)
+  public int getItemCount()
   {
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ArrayOfAjju != null) && (this.jdField_a_of_type_ArrayOfAjju.length > 6) && ((this.jdField_a_of_type_ArrayOfAjju[6] instanceof ajka)))
-    {
-      ((ajka)this.jdField_a_of_type_ArrayOfAjju[6]).a();
-      this.jdField_a_of_type_ArrayOfAjju[6] = null;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
+    return 0;
   }
 }
 

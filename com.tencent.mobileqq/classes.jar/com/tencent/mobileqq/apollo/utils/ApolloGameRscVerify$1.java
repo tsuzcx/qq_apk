@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aljn;
+import ancv;
 
 public class ApolloGameRscVerify$1
   implements Runnable
 {
-  public ApolloGameRscVerify$1(aljn paramaljn) {}
+  public ApolloGameRscVerify$1(ancv paramancv) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ApolloGameRscVerify$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameRscVerify.1
  * JD-Core Version:    0.7.0.1
  */

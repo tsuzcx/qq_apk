@@ -4,9 +4,9 @@ import android.os.Build.VERSION;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
-import bejh;
+import bhql;
 import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
-import nya;
+import ohv;
 
 public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
   implements Runnable
@@ -15,21 +15,21 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
   
   public void run()
   {
-    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.this$0.jdField_a_of_type_Bejh.c != null)) {
-      this.this$0.jdField_a_of_type_Bejh.c.setBackgroundColor(-1);
+    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.this$0.mUIStyleHandler.c != null)) {
+      this.this$0.mUIStyleHandler.c.setBackgroundColor(-1);
     }
-    if (this.this$0.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (this.this$0.a != null)
     {
       if (Build.VERSION.SDK_INT >= 14)
       {
-        this.this$0.jdField_a_of_type_AndroidWidgetImageView.animate().alpha(0.0F).setDuration(200L).setListener(new nya(this));
-        this.this$0.jdField_a_of_type_AndroidWidgetImageView.animate().start();
+        this.this$0.a.animate().alpha(0.0F).setDuration(200L).setListener(new ohv(this));
+        this.this$0.a.animate().start();
       }
     }
     else {
       return;
     }
-    this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.this$0.a.setVisibility(8);
   }
 }
 

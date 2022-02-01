@@ -1,197 +1,144 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.data.ApolloActionRecentData;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class alnj
-  extends alnp
 {
-  public int a;
-  public int b;
+  protected double a;
+  protected int a;
+  protected short a;
+  private boolean a;
+  protected double b;
+  protected int b;
+  private boolean b;
+  protected int c;
+  protected int d;
+  protected int e;
+  protected int f;
+  protected int g;
   
-  public int a()
+  public alnj()
   {
-    return 1;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_b_of_type_Int = -1;
   }
   
-  public View a()
+  public void a(int paramInt)
   {
-    switch (this.c)
+    this.jdField_a_of_type_Int = (paramInt / 50);
+    if (this.jdField_b_of_type_Boolean)
     {
-    case 1: 
-    default: 
-      return new ApolloLinearLayout(this.jdField_b_of_type_AndroidContentContext, null, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    case 0: 
-      return new ApolloLinearLayout(this.jdField_b_of_type_AndroidContentContext, null, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      this.jdField_b_of_type_Double = 2.25D;
+      this.jdField_a_of_type_Double = 2.0D;
+      this.jdField_b_of_type_Int = 20;
+      return;
     }
-    return LayoutInflater.from(this.jdField_b_of_type_AndroidContentContext).inflate(2131558642, null);
+    this.jdField_b_of_type_Double = (62500 * this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Double = (0.0500000007450581D * this.jdField_a_of_type_Int);
+    this.jdField_b_of_type_Int = -1;
   }
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(View paramView, int paramInt)
+  public boolean a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
   {
-    for (;;)
+    if (!this.jdField_a_of_type_Boolean) {
+      return true;
+    }
+    int i = 0;
+    while (i < paramInt2)
     {
-      int j;
-      int i;
-      int k;
-      try
+      this.c += 1;
+      if (((paramArrayOfShort[(i + paramInt1)] >= 0) && (this.jdField_a_of_type_Short < 0)) || ((paramArrayOfShort[(i + paramInt1)] < 0) && (this.jdField_a_of_type_Short >= 0))) {
+        this.d += 1;
+      }
+      this.jdField_a_of_type_Short = paramArrayOfShort[(i + paramInt1)];
+      this.f += paramArrayOfShort[i] * paramArrayOfShort[i];
+      if (this.c >= this.jdField_a_of_type_Int)
       {
-        Object localObject;
-        almb localalmb;
-        int i1;
-        if (this.c == 0)
+        this.c = 0;
+        if (this.jdField_b_of_type_Int >= 0)
         {
-          int m = this.jdField_a_of_type_Int;
-          int n = this.jdField_b_of_type_Int;
-          j = 0;
-          i = 0;
-          if (j < this.jdField_b_of_type_Int)
+          if (this.jdField_b_of_type_Int == 0)
           {
-            LinearLayout localLinearLayout = (LinearLayout)((ApolloLinearLayout)paramView).getChildAt(j);
-            k = 0;
-            if (k >= this.jdField_a_of_type_Int) {
-              break label266;
+            this.jdField_a_of_type_Double = (this.d * this.jdField_a_of_type_Double / 20.0D);
+            this.jdField_b_of_type_Double = (this.f * this.jdField_b_of_type_Double / 20.0D);
+            if (this.jdField_a_of_type_Double > 100.0D)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("NoiseDetector", 2, "large zero threshold, reset:" + this.jdField_a_of_type_Double);
+              }
+              this.jdField_a_of_type_Double = 100.0D;
             }
-            localObject = localLinearLayout.getChildAt(k);
-            localalmb = (almb)((View)localObject).getTag();
-            i1 = m * n * paramInt + i;
-            List localList = this.jdField_a_of_type_JavaUtilList;
-            if (localList != null) {
-              continue;
+            if (this.jdField_b_of_type_Double > 85000000.0D)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("NoiseDetector", 2, "large power threshold, reset:" + this.jdField_b_of_type_Double);
+              }
+              this.jdField_b_of_type_Double = 85000000.0D;
             }
+            if (QLog.isColorLevel()) {
+              QLog.d("NoiseDetector", 2, "calc new threshold:" + this.jdField_a_of_type_Double + " - " + this.jdField_b_of_type_Double);
+            }
+            this.d = 0;
+            this.f = 0;
+            this.e = 0;
+            this.g = 0;
           }
-        }
-        return;
-        if (i1 < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          localObject = ((allz)this.jdField_a_of_type_JavaUtilList.get(i1)).a;
-          localalmb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          localalmb.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((allz)this.jdField_a_of_type_JavaUtilList.get(i1)).a(this.jdField_b_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidContentContext.getResources().getDisplayMetrics().density));
-          if ((localObject != null) && (((ApolloActionData)localObject).actionName != null)) {
-            localalmb.jdField_a_of_type_AndroidWidgetTextView.setText(((ApolloActionData)localObject).actionName);
-          }
-          localalmb.jdField_a_of_type_Allz = ((allz)this.jdField_a_of_type_JavaUtilList.get(i1));
-          localalmb.jdField_a_of_type_Allz.c = 1;
-        }
-        else
-        {
-          ((View)localObject).setContentDescription(null);
-          ((View)localObject).setOnClickListener(null);
+          this.jdField_b_of_type_Int -= 1;
         }
       }
-      finally {}
-      label266:
-      j += 1;
-      continue;
-      k += 1;
-      i += 1;
-    }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    boolean bool;
-    if (paramQQAppInterface == null) {
-      bool = false;
-    }
-    Object localObject1;
-    label50:
-    int i;
-    for (;;)
-    {
-      return bool;
-      try
+      else
       {
-        localObject1 = (alkn)paramQQAppInterface.getManager(154);
-        if (localObject1 == null)
+        i += 1;
+        continue;
+      }
+      int j = 0;
+      int k = 0;
+      if (this.d >= this.jdField_a_of_type_Double)
+      {
+        this.e += 1;
+        label382:
+        if (this.e >= 1)
         {
-          bool = false;
+          this.e = 0;
+          if (QLog.isColorLevel()) {
+            QLog.d("NoiseDetector", 2, "reach Zero cross :" + this.d + "-" + this.jdField_a_of_type_Double);
+          }
+          j = 1;
         }
-        else
-        {
-          if (paramSessionInfo.jdField_a_of_type_Int == 0) {}
-          for (paramSessionInfo = ((alkn)localObject1).jdField_a_of_type_JavaUtilList;; paramSessionInfo = ((alkn)localObject1).b)
-          {
-            if (paramSessionInfo == null) {
-              break label250;
-            }
-            if (paramSessionInfo.size() != 0) {
-              break;
-            }
-            break label250;
-            if ((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000)) {
-              break label245;
-            }
-          }
-          if (this.jdField_a_of_type_JavaUtilList != null) {
-            this.jdField_a_of_type_JavaUtilList.clear();
-          }
-          for (;;)
-          {
-            i = paramSessionInfo.size() - 1;
-            break;
-            this.jdField_a_of_type_JavaUtilList = new ArrayList();
-          }
-          localObject1 = new ApolloActionData();
+        this.d = 0;
+        if (this.f < this.jdField_b_of_type_Double) {
+          break label573;
         }
       }
-      finally {}
-    }
-    label140:
-    Object localObject2 = (aliw)paramQQAppInterface.getManager(155);
-    if (localObject2 != null)
-    {
-      localObject2 = ((aliw)localObject2).a(((ApolloActionRecentData)paramSessionInfo.get(i)).actionId);
-      localObject1 = localObject2;
-      if (localObject2 == null) {}
-    }
-    for (;;)
-    {
-      localObject2 = new almf(paramQQAppInterface.c());
-      ((almf)localObject2).a = ((ApolloActionData)localObject1);
-      ((almf)localObject2).c = 1;
-      this.jdField_a_of_type_JavaUtilList.add(localObject2);
-      label275:
-      for (;;)
+      label573:
+      for (this.g += 1;; this.g = 0)
       {
-        bool = true;
-        break;
-        label245:
-        paramSessionInfo = null;
-        break label50;
-        label250:
-        bool = false;
-        break;
-        for (;;)
+        if (this.g >= 1)
         {
-          if (i < 0) {
-            break label275;
+          this.g = 0;
+          if (QLog.isColorLevel()) {
+            QLog.d("NoiseDetector", 2, "reach Power:" + this.f + "-" + this.jdField_b_of_type_Double);
           }
-          if (paramQQAppInterface != null) {
-            break label140;
-          }
-          bool = false;
+          k = 1;
+        }
+        this.f = 0;
+        if ((j == 0) || (k == 0)) {
           break;
-          i -= 1;
         }
+        if (QLog.isColorLevel()) {
+          QLog.d("NoiseDetector", 2, "DETECT VOICE..:");
+        }
+        return true;
+        this.e = 0;
+        break label382;
       }
     }
+    return false;
   }
 }
 

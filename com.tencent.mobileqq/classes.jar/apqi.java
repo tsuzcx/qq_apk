@@ -1,32 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class apqi
-  extends VasQuickUpdateManager.CallBacker
+public class apqi
+  implements View.OnClickListener
 {
-  apqi(apqh paramapqh) {}
+  public apqi(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onClick(View paramView)
   {
-    paramString2 = (MessengerService)this.a.a.get();
-    if (paramString2 == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramLong != 15L) || (!paramString1.startsWith("card.")));
-      paramString1 = new Bundle();
-    } while ((this == null) || (this.a.a.get() == null) || (paramString2.d == null));
-    paramString2.d.putString("cmd", "card_download");
-    paramString1.putInt("result", paramInt1);
-    paramString1.putString("message", paramString3);
-    paramString2.d.putBundle("response", paramString1);
-    paramString2.a(paramString2.d);
-    paramString2.d = null;
+    bkho localbkho = (bkho)bkif.a(BaseActivity.sTopActivity, null);
+    localbkho.a(BaseActivity.sTopActivity.getString(2131690105));
+    localbkho.a(2131690104, 3);
+    localbkho.c(2131690103);
+    localbkho.setOnDismissListener(new apqj(this, localbkho));
+    localbkho.a(new apqk(this, localbkho));
+    if (!localbkho.isShowing()) {
+      localbkho.show();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

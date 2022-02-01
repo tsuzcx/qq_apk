@@ -1,23 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-public final class nsv
-  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
+public class nsv
+  implements bkhw
 {
-  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.DownloadBarInfo(paramParcel);
-  }
+  public nsv(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public VideoInfo.DownloadBarInfo[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new VideoInfo.DownloadBarInfo[paramInt];
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.F();
+      continue;
+      AccountDetailActivity.d(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nsv
  * JD-Core Version:    0.7.0.1
  */

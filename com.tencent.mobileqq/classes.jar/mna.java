@@ -1,22 +1,14 @@
-import android.content.Context;
-import android.view.Window;
-import com.tencent.av.ui.VideoInviteActivity;
-
-public class mna
-  extends bhuf
+public abstract interface mna
 {
-  public mna(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
-  {
-    super(paramContext);
-    super.getWindow().addFlags(524288);
-    super.getWindow().addFlags(128);
-    super.getWindow().addFlags(1024);
-    super.getWindow().addFlags(2097152);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mna
  * JD-Core Version:    0.7.0.1
  */

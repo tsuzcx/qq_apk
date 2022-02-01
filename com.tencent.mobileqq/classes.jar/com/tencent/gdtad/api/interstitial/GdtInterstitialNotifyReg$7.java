@@ -1,22 +1,22 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aaor;
-import aase;
+import acmc;
+import acqy;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 
 public class GdtInterstitialNotifyReg$7
   implements Runnable
 {
-  public GdtInterstitialNotifyReg$7(aaor paramaaor, String paramString) {}
+  public GdtInterstitialNotifyReg$7(acmc paramacmc, String paramString) {}
   
   public void run()
   {
-    String str = aaor.a(this.a);
-    WeakReference localWeakReference = aaor.a(this.a);
+    String str = acmc.a(this.a);
+    WeakReference localWeakReference = acmc.a(this.a);
     if ((TextUtils.isEmpty(str)) || (localWeakReference == null) || (localWeakReference.get() == null))
     {
-      aase.d("GdtInterstitialNotifyReg", "receiveReport");
+      acqy.d("GdtInterstitialNotifyReg", "receiveReport");
       return;
     }
     int i;
@@ -51,7 +51,7 @@ public class GdtInterstitialNotifyReg$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialNotifyReg.7
  * JD-Core Version:    0.7.0.1
  */

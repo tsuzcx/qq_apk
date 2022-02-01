@@ -1,65 +1,22 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.util.SparseArray;
-import mqq.observer.BusinessObserver;
+import org.xmlpull.v1.XmlSerializer;
 
-public class anwg
-  implements BusinessObserver
+final class anwg
+  extends bcxv
 {
-  private static anwg jdField_a_of_type_Anwg;
-  private int jdField_a_of_type_Int;
-  private final SparseArray<anwf> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  
-  public static anwg a()
+  anwg(String paramString)
   {
-    if (jdField_a_of_type_Anwg == null) {}
-    try
-    {
-      if (jdField_a_of_type_Anwg == null) {
-        jdField_a_of_type_Anwg = new anwg();
-      }
-      return jdField_a_of_type_Anwg;
-    }
-    finally {}
+    super(paramString);
   }
   
-  public int a(Context paramContext, anvn paramanvn)
+  public void a(XmlSerializer paramXmlSerializer)
   {
-    return a(new anwf(paramContext, paramanvn));
-  }
-  
-  public int a(Context paramContext, anvs paramanvs)
-  {
-    return a(new anwf(paramContext, paramanvs));
-  }
-  
-  public int a(anwf paramanwf)
-  {
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    paramXmlSerializer.startTag(null, "picture");
+    if (this.aa == null) {}
+    for (String str = "";; str = this.aa)
     {
-      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
-      int i = this.jdField_a_of_type_Int + 1;
-      this.jdField_a_of_type_Int = i;
-      localSparseArray2.append(i, paramanwf);
-      i = this.jdField_a_of_type_Int;
-      return i;
-    }
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("req_id");
-    anwf localanwf = (anwf)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
+      paramXmlSerializer.attribute(null, "cover", str);
+      paramXmlSerializer.endTag(null, "picture");
       return;
-      localanwf.b(paramBoolean, paramBundle.getBoolean("allow_download", true), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"), paramBundle.getString("jump_url"));
-      continue;
-      localanwf.b(paramBoolean, paramBundle.getInt("jump", 0), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"));
     }
   }
 }

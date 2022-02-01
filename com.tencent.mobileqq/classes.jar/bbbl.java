@@ -1,46 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class bbbl
-  extends bbbi
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public byte[] b;
-  public int c;
-  public int d;
-  public int e;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
+  public bbbl(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" chatType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
-    localStringBuilder.append(" format:");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" str_file_name:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" uint64_file_size:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" fileTime:");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(" busiType:");
-    localStringBuilder.append(this.j);
-    localStringBuilder.append(" subBusiType:");
-    localStringBuilder.append(this.k);
-    localStringBuilder.append(" userCnt:");
-    localStringBuilder.append(this.l);
-    return localStringBuilder.toString();
+    bcst.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 1, 0, "0", "0", "", "");
+    SignatureHistoryFragment.d(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

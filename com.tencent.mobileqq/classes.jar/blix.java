@@ -1,66 +1,23 @@
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-
 public class blix
 {
-  public static String a()
-  {
-    Date localDate = new Date();
-    return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(localDate);
-  }
-  
-  public static String a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return "1";
-    }
-    return "2";
-  }
-  
-  public static String a(Long paramLong)
-  {
-    float f = (float)paramLong.longValue() / 1000.0F;
-    return new DecimalFormat("0.00").format(f);
-  }
-  
-  public static HashMap<String, String> a(HashMap<String, String> paramHashMap1, HashMap<String, String> paramHashMap2)
-  {
-    paramHashMap1 = new HashMap(paramHashMap1);
-    Iterator localIterator = paramHashMap2.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      paramHashMap1.put(str, paramHashMap2.get(str));
-    }
-    return paramHashMap1;
-  }
-  
-  public static void a()
-  {
-    bljc.a().a("AEKIT_CAMERA_FIRST_LAUNCH", 1, 0);
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = false;
-    if (bljc.a().a("AEKIT_CAMERA_FIRST_LAUNCH", 0, 0) == 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static boolean b()
-  {
-    if (bljc.a().a("sp_key_ae_camera_launch_mark", 0)) {
-      return false;
-    }
-    bljc.a().a("sp_key_ae_camera_launch_mark", true, 0);
-    return true;
-  }
+  public static String a = "?action=folderList&offset=%d&limit=%d";
+  public static String b = "?action=fileList&folderId=%s&offset=%d&limit=%d";
+  public static String c = "?action=fileDetail&fileId=%s&offset=%d&limit=%d";
+  public static String d = "MPFILE_ACTION_HOST_INFO_UPDATE";
+  public static String e = "MPFILE_ACTION_CONNECT_PC_RET";
+  public static String f = "MPFILE_ACTION_CONNECT_PC_SESSINID";
+  public static String g = "MPFILE_ACTION_CHANNEL_DISCONNECT";
+  public static String h = "0X8005E1F";
+  public static String i = "0X8005F29";
+  public static String j = "0X8005E22";
+  public static String k = "0X8005E20";
+  public static String l = "0X8005E21";
+  public static String m = "0X80060DF";
+  public static String n = "0X80061A2";
+  public static String o = "0X8006443";
+  public static String p = "0X8006444";
+  public static String q = "0X8006445";
+  public static String r = "0X8006446";
 }
 
 

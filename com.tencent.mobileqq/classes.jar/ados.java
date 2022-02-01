@@ -1,16 +1,31 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class ados
-  implements View.OnClickListener
+class ados
+  implements bhjn
 {
-  public ados(PublicAccountListActivity paramPublicAccountListActivity) {}
+  private final WeakReference<adoo> a;
   
-  public void onClick(View paramView)
+  ados(adoo paramadoo)
   {
-    this.a.a.dismiss();
+    this.a = new WeakReference(paramadoo);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("AutoLoginHelper", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
+      }
+    }
+    adoo localadoo;
+    do
+    {
+      return;
+      localadoo = (adoo)this.a.get();
+    } while (localadoo == null);
+    localadoo.a(paramString, paramBoolean);
   }
 }
 

@@ -15,7 +15,7 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
-import bdnn;
+import bgsp;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
@@ -94,7 +94,7 @@ public class MiniAppTextArea
   
   private String getActualColor(String paramString)
   {
-    if (bdnn.a(paramString)) {
+    if (bgsp.a(paramString)) {
       return "";
     }
     String str = paramString.substring(paramString.length() - 2);
@@ -357,7 +357,7 @@ public class MiniAppTextArea
       }
       String str = paramJSONObject.optString("placeholder");
       localObject = paramJSONObject.optJSONObject("placeholderStyle");
-      if (!bdnn.a(str)) {
+      if (!bgsp.a(str)) {
         setHint(str);
       }
       if (localObject != null)
@@ -411,7 +411,7 @@ public class MiniAppTextArea
     }
     localObject = paramJSONObject.optString("placeholder");
     JSONObject localJSONObject = paramJSONObject.optJSONObject("placeholderStyle");
-    if (!bdnn.a((String)localObject)) {
+    if (!bgsp.a((String)localObject)) {
       setHint((CharSequence)localObject);
     }
     if (localJSONObject != null)
@@ -434,7 +434,7 @@ public class MiniAppTextArea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppTextArea
  * JD-Core Version:    0.7.0.1
  */

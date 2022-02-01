@@ -1,21 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class ont
-  extends oob
+  implements ViewFactory.FoundClickableViewListener
 {
-  ont(omz paramomz, BaseCommentData paramBaseCommentData)
-  {
-    super(paramomz, null);
-  }
+  ont(ons paramons, Context paramContext) {}
   
-  void a(ooe paramooe)
+  public void onFound(ViewBase paramViewBase)
   {
-    paramooe.onCommentReply(true, new omt(0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, omz.a(this.jdField_a_of_type_Omz)));
+    paramViewBase.setOnClickListener(new onu(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ont
  * JD-Core Version:    0.7.0.1
  */

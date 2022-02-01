@@ -2,11 +2,9 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import qlp;
-import qyz;
-import rfs;
-import rfu;
-import rjn;
+import ruv;
+import sar;
+import sat;
 
 class VideoFeedsPlayManager$5
   implements Runnable
@@ -15,21 +13,17 @@ class VideoFeedsPlayManager$5
   
   public void run()
   {
-    if ((VideoFeedsPlayManager.a(this.this$0) != null) && ((VideoFeedsPlayManager.a(this.this$0).e() == 5) || (VideoFeedsPlayManager.a(this.this$0).e() == 2)))
+    if ((VideoFeedsPlayManager.a(this.this$0) != null) && (VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_AndroidViewView != null))
     {
-      VideoFeedsPlayManager.a(this.this$0).g();
-      if (VideoFeedsPlayManager.b(this.this$0).jdField_a_of_type_Qyz != null) {
-        VideoFeedsPlayManager.b(this.this$0).jdField_a_of_type_Qyz.b(VideoFeedsPlayManager.b(this.this$0));
+      if (VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_Ruv != null) {
+        VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_Ruv.c(VideoFeedsPlayManager.a(this.this$0));
       }
       if (VideoFeedsPlayManager.a(this.this$0) != null)
       {
         Iterator localIterator = VideoFeedsPlayManager.a(this.this$0).iterator();
         while (localIterator.hasNext()) {
-          ((rfu)localIterator.next()).e(VideoFeedsPlayManager.b(this.this$0));
+          ((sat)localIterator.next()).b(VideoFeedsPlayManager.a(this.this$0));
         }
-      }
-      if (VideoFeedsPlayManager.d(this.this$0)) {
-        VideoFeedsPlayManager.b(this.this$0).jdField_a_of_type_Qlp.f = qlp.b;
       }
     }
   }

@@ -1,41 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class atrl
-  implements atsk
+  implements auaw
 {
-  atrl(atrk paramatrk, String paramString) {}
+  atrl(atri paramatri) {}
   
-  public void a(List<LocationRoom.Venue> paramList)
+  public void a(boolean paramBoolean)
   {
-    if ((atrk.a(this.jdField_a_of_type_Atrk) != null) && (atrk.a(this.jdField_a_of_type_Atrk).size() > 0)) {}
-    for (int i = 1;; i = 0)
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Atml != null)) {
+      this.a.jdField_a_of_type_Atml.a();
+    }
+    if (paramBoolean)
     {
-      atrk.a(this.jdField_a_of_type_Atrk, paramList);
-      this.jdField_a_of_type_Atrk.notifyDataSetChanged();
-      atrk.a(this.jdField_a_of_type_Atrk, TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-      if ((atrk.a(this.jdField_a_of_type_Atrk).size() > 0) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        if (i == 0) {
-          this.jdField_a_of_type_Atrk.a(0);
-        }
+      if (this.a.jdField_a_of_type_Atoo.e() == 10) {
+        atmr.a(this.a.jdField_a_of_type_Atoo.c());
       }
-      while (atrk.a(this.jdField_a_of_type_Atrk) == null) {
-        return;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Atoo.d(), this);
+      atri.c(this.a, true);
+      this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(4);
+      atri.a(this.a);
+      return;
+    }
+    if (atri.b(this.a))
+    {
+      atri.c(this.a, false);
+      if (this.a.d) {
+        this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
       }
-      paramList = atrk.a(this.jdField_a_of_type_Atrk);
-      if (atrk.a(this.jdField_a_of_type_Atrk).size() > 0) {}
-      for (i = 3;; i = 2)
-      {
-        paramList.a(i);
-        return;
+      atri.d(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d();
+      if (this.a.jdField_a_of_type_Atmk != null) {
+        this.a.jdField_a_of_type_Atmk.a();
       }
     }
+    atlp.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Atoo.d(), atri.a(this.a), true);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    atri.b(this.a, paramBoolean2);
+    atri.a(this.a, paramBoolean1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atrl
  * JD-Core Version:    0.7.0.1
  */

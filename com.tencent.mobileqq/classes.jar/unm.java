@@ -1,18 +1,20 @@
-import java.util.List;
+import UserGrowth.stFriendFeedReq;
+import UserGrowth.stFriendFeedRsp;
 
-public abstract interface unm
+public class unm
+  extends ujr<stFriendFeedRsp>
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(List<unj> paramList, boolean paramBoolean);
-  
-  public abstract void a(unn paramunn);
+  public unm(String paramString)
+  {
+    super("FriendFeed", 10006);
+    stFriendFeedReq localstFriendFeedReq = new stFriendFeedReq();
+    localstFriendFeedReq.attachInfo = paramString;
+    this.a = localstFriendFeedReq;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     unm
  * JD-Core Version:    0.7.0.1
  */

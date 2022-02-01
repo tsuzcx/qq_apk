@@ -1,18 +1,20 @@
-class tsz
-  implements yia
+import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.NativeVueLoaderManager.2;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.qphone.base.util.QLog;
+
+public class tsz
+  implements bcob
 {
-  tsz(tsw paramtsw) {}
+  public tsz(NativeVueLoaderManager.2 param2) {}
   
-  public void a(yii paramyii, Object paramObject)
+  public void a(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    if (paramyii.e()) {
-      tsw.a(this.a).a(tsw.a(this.a), true, false);
-    }
+    QLog.e("NativeVueLoaderManager", 1, "preload NativeVue: " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tsz
  * JD-Core Version:    0.7.0.1
  */

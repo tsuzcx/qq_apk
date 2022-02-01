@@ -1,14 +1,35 @@
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
 class arvw
-  implements bezx
+  implements awnc<EmoticonPackage>
 {
-  arvw(arvt paramarvt) {}
+  arvw(arvt paramarvt, asbq paramasbq) {}
   
-  public void a(int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if (paramInt == 2) {
-      this.a.a.c();
+    boolean bool;
+    if (paramEmoticonPackage != null)
+    {
+      this.jdField_a_of_type_Asbq.j = paramEmoticonPackage.type;
+      asbq localasbq = this.jdField_a_of_type_Asbq;
+      if (paramEmoticonPackage.isAPNG == 2)
+      {
+        bool = true;
+        localasbq.c = bool;
+      }
+    }
+    for (;;)
+    {
+      arvt.a(this.jdField_a_of_type_Arvt).a(this.jdField_a_of_type_Asbq);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func sendEmoji ends, type:" + this.jdField_a_of_type_Asbq.j);
+      }
+      return;
+      bool = false;
+      break;
+      this.jdField_a_of_type_Asbq.j = 3;
     }
   }
 }

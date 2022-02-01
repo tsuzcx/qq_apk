@@ -1,47 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
-import java.util.HashMap;
-import java.util.Map.Entry;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class bmeb<K, V>
-  extends bmec<K, V>
+final class bmeb
+  implements ServiceConnection
 {
-  private HashMap<K, bmef<K, V>> a = new HashMap();
-  
-  protected bmef<K, V> a(K paramK)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    return (bmef)this.a.get(paramK);
-  }
-  
-  public V a(@NonNull K paramK)
-  {
-    Object localObject = super.a(paramK);
-    this.a.remove(paramK);
-    return localObject;
-  }
-  
-  public V a(@NonNull K paramK, @NonNull V paramV)
-  {
-    bmef localbmef = a(paramK);
-    if (localbmef != null) {
-      return localbmef.jdField_b_of_type_JavaLangObject;
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "onServiceConnected");
     }
-    this.a.put(paramK, a(paramK, paramV));
-    return null;
-  }
-  
-  public Map.Entry<K, V> a(K paramK)
-  {
-    if (a(paramK)) {
-      return ((bmef)this.a.get(paramK)).jdField_b_of_type_Bmef;
+    if (bmea.a() == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "return WeakReference<OnPluginInterfaceReadyListener> is null");
+      }
+      bmea.a();
+      return;
     }
-    return null;
+    paramComponentName = (bmec)bmea.a().get();
+    if (paramComponentName == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "return OnPluginManagerLoadedListener is null");
+      }
+      bmea.a();
+      return;
+    }
+    if ((paramIBinder != null) && (paramIBinder.isBinderAlive()) && (paramIBinder.pingBinder()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "binder alive");
+      }
+      bmea.a = new bmde(bmem.a(paramIBinder));
+      paramComponentName.a(bmea.a);
+    }
+    for (;;)
+    {
+      bmea.a();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "binder not alive");
+      }
+      paramComponentName.a(null);
+    }
   }
   
-  public boolean a(K paramK)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    return this.a.containsKey(paramK);
+    if (QLog.isColorLevel()) {
+      QLog.i("plugin_tag", 2, "onServiceDisconnected");
+    }
+    if (bmea.a != null)
+    {
+      bmea.a.b();
+      bmea.a = null;
+    }
   }
 }
 

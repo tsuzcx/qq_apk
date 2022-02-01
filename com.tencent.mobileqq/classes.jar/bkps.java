@@ -1,11 +1,35 @@
-class bkps
-  implements blbd
+import android.database.DataSetObserver;
+import android.widget.BaseAdapter;
+
+public abstract class bkps
+  extends BaseAdapter
+  implements bkqb
 {
-  bkps(bkpl parambkpl) {}
+  private final bkpu a = new bkpu(this);
   
-  public void a(blbt paramblbt)
+  public void c(int paramInt1, int paramInt2)
   {
-    ((blej)bkpx.a(this.a, bmda.a()).a(blej.class)).a().a(paramblbt);
+    this.a.a(paramInt1, paramInt2);
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    this.a.notifyChanged();
+  }
+  
+  public void notifyDataSetInvalidated()
+  {
+    this.a.notifyInvalidated();
+  }
+  
+  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.a.registerObserver(paramDataSetObserver);
+  }
+  
+  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.a.unregisterObserver(paramDataSetObserver);
   }
 }
 

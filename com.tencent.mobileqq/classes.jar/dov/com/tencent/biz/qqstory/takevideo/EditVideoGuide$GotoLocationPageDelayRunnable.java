@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmiq;
+import bozw;
 
 class EditVideoGuide$GotoLocationPageDelayRunnable
   implements Runnable
@@ -9,15 +9,15 @@ class EditVideoGuide$GotoLocationPageDelayRunnable
   
   public void run()
   {
-    bmiq localbmiq = (bmiq)this.this$0.a(bmiq.class);
-    if (localbmiq != null) {
-      localbmiq.c();
+    bozw localbozw = (bozw)this.this$0.a(bozw.class);
+    if (localbozw != null) {
+      localbozw.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide.GotoLocationPageDelayRunnable
  * JD-Core Version:    0.7.0.1
  */

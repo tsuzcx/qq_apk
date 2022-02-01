@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import ajlu;
+import alej;
+import alem;
+import alen;
 import android.database.Cursor;
-import awhl;
-import awhm;
-import awhn;
-import awhp;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.defaultzero;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import com.tencent.qphone.base.util.QLog;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type")
 public class RecentUser
@@ -18,31 +18,11 @@ public class RecentUser
   public static final long FLAG_PA_AD = 16L;
   public static final String TABLE_NAME = "recent";
   private static final String TAG = "RecentUser";
-  public String displayName;
-  @awhp
+  @notColumn
   public Object extraInfo;
-  @awhl(a=0)
-  public int isHiddenChat;
-  @awhp
-  public int jumpTabMode;
-  @awhm
+  @defaultzero
   public long lFlag;
-  @awhm
-  public long lastmsgdrafttime;
-  public long lastmsgtime;
-  @awhp
-  public Object msg;
-  public byte[] msgData;
-  public int msgType;
-  @awhm
-  public long opTime;
   public byte[] parceledRecentBaseData;
-  @awhm
-  public long showUpTime;
-  public String troopUin;
-  @awhn
-  private int type;
-  public String uin;
   
   @Deprecated
   public RecentUser() {}
@@ -53,22 +33,9 @@ public class RecentUser
     this.type = paramInt;
   }
   
-  public void cleanMsgAndMsgData(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentUser", 2, "cleanMsgAndMsgData " + this.uin + " " + this.uin + " this.msgType " + this.msgType + " msgType " + paramInt);
-    }
-    if (this.msgType == paramInt)
-    {
-      this.msg = null;
-      this.msgData = null;
-      this.msgType = 0;
-    }
-  }
-  
   public void doParse()
   {
-    this.msg = ajlu.a(this.msgType, this.msgData);
+    this.msg = alen.a(this.msgType, this.msgData);
   }
   
   public boolean entityByCursor(Cursor paramCursor)
@@ -117,43 +84,30 @@ public class RecentUser
     return "recent";
   }
   
-  public int getType()
-  {
-    return this.type;
-  }
-  
   public void prewrite()
   {
-    this.msgData = ajlu.a(this.msgType, this.msg);
+    this.msgData = alen.a(this.msgType, this.msg);
     super.prewrite();
   }
   
-  public void setMsgAndType(Object paramObject, int paramInt)
+  public boolean shouldShowInRecentList(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentUser", 2, "setMsgAndType " + this.uin + " " + this.uin + " this.msgType " + this.msgType + " msgType " + paramInt);
+    if (this.msgType == 1) {
+      return true;
     }
-    if (paramInt >= this.msgType)
+    if (paramQQAppInterface != null)
     {
-      this.msg = paramObject;
-      this.msgType = paramInt;
-      reParse();
+      paramQQAppInterface = ((alem)paramQQAppInterface.getManager(366)).a(this.msgType);
+      if (paramQQAppInterface != null) {
+        return paramQQAppInterface.a();
+      }
     }
-  }
-  
-  public void setType(int paramInt)
-  {
-    this.type = paramInt;
-  }
-  
-  public boolean shouldShowInRecentList()
-  {
-    return (this.msgType == 24) || (this.msgType == 17) || (this.msgType == 16) || (this.msgType == 10) || (this.msgType == 5) || (this.msgType == 13) || (this.msgType == 27) || (this.msgType == 7) || (this.msgType == 8) || (this.msgType == 18) || (this.msgType == 22) || (this.msgType == 21) || (this.msgType == 2) || (this.msgType == 3) || (this.msgType == 11) || (this.msgType == 29) || (this.msgType == 4) || (this.msgType == 19) || (this.msgType == 14) || (this.msgType == 1) || (this.msgType == 9) || (this.msgType == 12) || (this.msgType == 6) || (this.msgType == 20) || (this.msgType == 23);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecentUser
  * JD-Core Version:    0.7.0.1
  */

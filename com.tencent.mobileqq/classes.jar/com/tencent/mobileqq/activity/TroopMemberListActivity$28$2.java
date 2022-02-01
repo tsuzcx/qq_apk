@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aefu;
+import afmb;
 
 public class TroopMemberListActivity$28$2
   implements Runnable
 {
-  public TroopMemberListActivity$28$2(aefu paramaefu) {}
+  public TroopMemberListActivity$28$2(afmb paramafmb) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class TroopMemberListActivity$28$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.28.2
  * JD-Core Version:    0.7.0.1
  */

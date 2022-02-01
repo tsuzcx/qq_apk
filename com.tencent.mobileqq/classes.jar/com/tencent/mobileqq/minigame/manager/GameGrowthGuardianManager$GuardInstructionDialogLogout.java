@@ -15,7 +15,7 @@ class GameGrowthGuardianManager$GuardInstructionDialogLogout
   
   protected GameGrowthGuardianManager.DialogAction getPositiveDialogAction()
   {
-    return new GameGrowthGuardianManager.DialogAction(2131694595, new GameGrowthGuardianManager.GuardInstructionDialogLogout.1(this));
+    return new GameGrowthGuardianManager.DialogAction(2131693857, new GameGrowthGuardianManager.GuardInstructionDialogLogout.1(this));
   }
   
   protected String getReportSubActionType()
@@ -30,7 +30,7 @@ class GameGrowthGuardianManager$GuardInstructionDialogLogout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameGrowthGuardianManager.GuardInstructionDialogLogout
  * JD-Core Version:    0.7.0.1
  */

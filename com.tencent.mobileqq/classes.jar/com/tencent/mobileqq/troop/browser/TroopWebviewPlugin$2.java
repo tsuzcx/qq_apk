@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.browser;
 
-import bbms;
-import begz;
+import beng;
+import bhod;
 import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class TroopWebviewPlugin$2
   implements Runnable
 {
-  public TroopWebviewPlugin$2(bbms parambbms, String paramString) {}
+  public TroopWebviewPlugin$2(beng parambeng, String paramString) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class TroopWebviewPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.browser.TroopWebviewPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.config;
 
-import ajeu;
+import akww;
 
 class QWalletConfig$1
   implements Runnable
@@ -11,14 +11,14 @@ class QWalletConfig$1
   {
     synchronized ()
     {
-      ajeu.a(this.this$0, QWalletConfig.access$100(this.this$0));
+      akww.a(this.this$0, QWalletConfig.access$100(this.this$0));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.config.QWalletConfig.1
  * JD-Core Version:    0.7.0.1
  */

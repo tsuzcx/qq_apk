@@ -5,8 +5,8 @@ import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
-import shk;
-import shl;
+import tgb;
+import tgc;
 
 public class GestureCropImageView
   extends CropImageView
@@ -37,8 +37,8 @@ public class GestureCropImageView
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new shk(this, null), null, true);
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(getContext(), new shl(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new tgb(this, null), null, true);
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(getContext(), new tgc(this, null));
   }
   
   public float c()
@@ -97,7 +97,7 @@ public class GestureCropImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView
  * JD-Core Version:    0.7.0.1
  */

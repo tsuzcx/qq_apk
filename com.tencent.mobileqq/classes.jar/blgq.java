@@ -1,19 +1,10 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
-import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment.2.1;
-import mqq.os.MqqHandler;
+import cooperation.plugin.PluginInfo;
 
-public class blgq
-  extends bkzv
+public abstract interface blgq
 {
-  public blgq(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void b(boolean paramBoolean, int paramInt)
-  {
-    AETakeFacePhotoPreviewFragment.a(this.a).removeObserver(this);
-    ThreadManager.getUIHandler().post(new AETakeFacePhotoPreviewFragment.2.1(this, paramBoolean, paramInt));
-  }
+  public abstract boolean a(PluginInfo paramPluginInfo);
 }
 
 

@@ -1,58 +1,39 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wqc
-  extends umf<wpr, uwf>
+class wqc
+  implements wld<wzv, xbg>
 {
-  public wqc(wpr paramwpr)
-  {
-    super(paramwpr);
-  }
+  wqc(wqa paramwqa) {}
   
-  public void a(@NonNull wpr paramwpr, @NonNull uwf paramuwf)
+  public void a(@NonNull wzv paramwzv, @Nullable xbg paramxbg, @NonNull ErrorMessage paramErrorMessage)
   {
-    Object localObject = wpr.a(paramwpr);
-    paramuwf = paramuwf.a;
-    uwd localuwd = (uwd)uwa.a(27);
-    localObject = ((ArrayList)localObject).iterator();
-    int i = 0;
-    while (((Iterator)localObject).hasNext())
+    yqp.b("WeatherDataProvider", "requestWeather Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramxbg != null))
     {
-      wqn localwqn = (wqn)((Iterator)localObject).next();
-      if ((localwqn instanceof wqp))
-      {
-        vfl localvfl = (vfl)paramuwf.get(localwqn.a().feedId);
-        if (localvfl == null) {
-          break label129;
-        }
-        ((wqp)localwqn).d = localuwd.a(((wqp)localwqn).a(), localvfl.a);
-        i = 1;
-      }
+      yqp.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramxbg.b));
+      this.a.jdField_a_of_type_JavaLangObject = new wqd(paramxbg.b, paramxbg.a);
+      yqp.c("WeatherDataProvider", "update local weather data.");
+      paramwzv = (wpf)wpm.a(10);
+      paramwzv.b("edit_video_weather_filter_data", Integer.valueOf(paramxbg.b));
+      paramwzv.b("edit_video_weather_desc", paramxbg.a);
+      wqa.a(this.a, System.currentTimeMillis() + 14400000L);
+      paramwzv.b("edit_video_weather_expiry_time", Long.valueOf(wqa.a(this.a)));
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
     }
-    label129:
     for (;;)
     {
-      break;
-      if (i != 0) {
-        wpr.a(paramwpr).f();
-      }
+      this.a.jdField_a_of_type_Boolean = false;
       return;
+      yqp.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramwzv });
+      this.a.a(false, null);
     }
   }
-  
-  public Class acceptEventClass()
-  {
-    return uwf.class;
-  }
-  
-  public void b(@NonNull wpr paramwpr, @NonNull uwf paramuwf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wqc
  * JD-Core Version:    0.7.0.1
  */

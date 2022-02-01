@@ -3,6 +3,10 @@ package com.tencent.mobileqq;
 public final class R$animator
 {
   public static final int property_animator = 2130903040;
+  public static final int qb_public_account_readinjoy_diandian_column_bubble_close = 2130903041;
+  public static final int qb_public_account_readinjoy_diandian_column_bubble_up = 2130903042;
+  public static final int qb_public_account_readinjoy_diandian_column_cover = 2130903043;
+  public static final int qb_public_account_readinjoy_diandian_column_reddot = 2130903044;
 }
 
 

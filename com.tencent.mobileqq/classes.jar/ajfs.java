@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajfs
+  implements View.OnClickListener
 {
-  public long a;
-  public MessageRecord a;
-  public String a;
-  public byte[] a;
+  public ajfs(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public ajfs(MessageRecord paramMessageRecord, long paramLong, byte[] paramArrayOfByte, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    TroopSuspiciousFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

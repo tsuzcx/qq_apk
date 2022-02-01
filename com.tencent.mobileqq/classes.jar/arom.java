@@ -1,67 +1,79 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.GestureRelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavGAudioSoundData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
 
 public class arom
-  implements GestureDetector.OnGestureListener
+  extends arnz
 {
-  private arom(SimpleFileViewer.GestureRelativeLayout paramGestureRelativeLayout) {}
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public arom(QQAppInterface paramQQAppInterface)
   {
-    return false;
+    super("qq.android.qav.muteaudio", paramQQAppInterface);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public int a()
   {
-    return false;
+    return 10046;
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public Class<? extends XmlData> a()
   {
-    if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
+    return QavGAudioSoundData.class;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadGAudioSoundDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavGAudioSoundHandler", 2, "download success: " + paramString);
+    }
+    try
     {
-      paramMotionEvent1 = this.a.a.b();
-      if (paramFloat2 <= 0.0F) {
-        break label97;
-      }
-      if (paramMotionEvent1 != null) {
-        paramMotionEvent1.setVisibility(8);
-      }
-      if (this.a.a.jdField_a_of_type_Arun != null) {
-        this.a.a.jdField_a_of_type_Arun.b(true);
-      }
-      if (this.a.a.jdField_a_of_type_Arul != null) {
-        this.a.a.jdField_a_of_type_Arul.b(true);
+      bgmg.a(paramString, mre.a(), false);
+      super.a(paramString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
       }
     }
-    label97:
-    do
-    {
-      do
-      {
-        return false;
-      } while (paramFloat2 >= 0.0F);
-      if (paramMotionEvent1 != null) {
-        paramMotionEvent1.setVisibility(0);
-      }
-      if (this.a.a.jdField_a_of_type_Arun != null) {
-        this.a.a.jdField_a_of_type_Arun.a(true);
-      }
-    } while (this.a.a.jdField_a_of_type_Arul == null);
-    this.a.a.jdField_a_of_type_Arul.a(true);
-    return false;
   }
   
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean)
   {
-    return false;
+    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
+    if ((localQavGAudioSoundData != null) && (!localQavGAudioSoundData.autoDownload))
+    {
+      localQavGAudioSoundData.autoDownload = true;
+      arnn.a(localQavGAudioSoundData, new String[] { "autoDownload" });
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
+    if (localQavGAudioSoundData == null) {
+      return super.h();
+    }
+    return localQavGAudioSoundData.autoDownload;
   }
 }
 

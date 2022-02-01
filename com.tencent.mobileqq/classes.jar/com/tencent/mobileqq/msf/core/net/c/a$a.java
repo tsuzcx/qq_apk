@@ -21,12 +21,12 @@ class a$a
   private void a(long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("DeepSleepDetector", 2, "onAppBackground setStartTime " + paramLong);
+      QLog.d("MSF.C.DeepSleepDetector", 2, "onAppBackground setStartTime " + paramLong);
     }
     this.a = paramLong;
   }
   
-  private boolean b()
+  private boolean a(boolean paramBoolean)
   {
     boolean bool = true;
     if (this.a > 0L) {
@@ -34,7 +34,7 @@ class a$a
     }
     for (;;)
     {
-      if (bool) {
+      if ((bool) && (paramBoolean)) {
         a();
       }
       return bool;

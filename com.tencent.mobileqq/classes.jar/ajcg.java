@@ -1,15 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajcg
+class ajcg
   implements View.OnClickListener
 {
-  public ajcg(ChooseItemView paramChooseItemView) {}
+  ajcg(ajcf paramajcf) {}
   
   public void onClick(View paramView)
   {
-    this.a.a();
+    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
+    bfup.a(ajcf.a(this.a), localRecommendTroopItem, this.a.a());
+    this.a.b(localRecommendTroopItem);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

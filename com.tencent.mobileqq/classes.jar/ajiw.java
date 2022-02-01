@@ -1,13 +1,17 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
 
-class ajiw
-  implements bhvm
+public class ajiw
+  extends anmu
 {
-  ajiw(ajit paramajit, View paramView) {}
+  public ajiw(DeviceFragment paramDeviceFragment) {}
   
-  public void a()
+  protected void onPullIpad()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.e();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

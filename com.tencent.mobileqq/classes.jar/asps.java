@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class asps
+  implements Animation.AnimationListener
 {
-  public void a(MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  public asps(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(aspz.a, 2, "onPreAddedMsg");
-    }
+    this.a.l = false;
+    this.a.a.setVisibility(8);
+    this.a.e();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

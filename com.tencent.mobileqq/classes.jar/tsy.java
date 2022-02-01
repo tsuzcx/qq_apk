@@ -1,24 +1,29 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
-import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.qphone.base.util.QLog;
 
 class tsy
-  implements ubh
+  implements bcob
 {
-  tsy(tsw paramtsw) {}
+  tsy(tsx paramtsx, tta paramtta) {}
   
-  public void a()
+  public void a(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    tsw.a(this.a).a().scrollToPosition(0);
-    tsw.a(this.a).a().e();
-    tsw.a(this.a).clearData();
-    tzs.a(75, 2, tsw.a(this.a));
-    QLog.d("QCirclePolyListPart", 3, "dismiss");
+    QLog.e("NativeVueLoaderManager", 1, "[NativeVueLoaderManager], resCode: " + paramInt);
+    tsx.a(this.jdField_a_of_type_Tsx, false);
+    if (paramInt == 0)
+    {
+      tsx.b(this.jdField_a_of_type_Tsx, true);
+      tsx.a(this.jdField_a_of_type_Tsx, this.jdField_a_of_type_Tta);
+      return;
+    }
+    tsx.b(this.jdField_a_of_type_Tsx, false);
+    tsx.b(this.jdField_a_of_type_Tsx, this.jdField_a_of_type_Tta);
+    QLog.e("NativeVueLoaderManager", 2, "load NativeVue Error: " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tsy
  * JD-Core Version:    0.7.0.1
  */

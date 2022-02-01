@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.core.net;
 
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 
 public class w

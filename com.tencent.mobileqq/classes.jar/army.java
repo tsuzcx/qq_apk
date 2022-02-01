@@ -1,13 +1,12 @@
-import android.view.View;
-
 class army
-  implements arsg
 {
-  army(armw paramarmw) {}
+  long jdField_a_of_type_Long;
+  long b;
   
-  public void onClick(View paramView)
+  public army(armt paramarmt, long paramLong1, long paramLong2)
   {
-    arrr.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Arki.d());
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

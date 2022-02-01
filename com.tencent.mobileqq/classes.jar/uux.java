@@ -1,340 +1,425 @@
-import android.support.annotation.NonNull;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.Dispatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class uux
-  implements uvi
+  extends PopupWindow
+  implements View.OnClickListener, Animation.AnimationListener
 {
-  private awgf a;
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131719191, 2130850814 };
+  private static final int[] jdField_b_of_type_ArrayOfInt = { 2131719190, 2130850813 };
+  private int jdField_a_of_type_Int;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private uva jdField_a_of_type_Uva;
+  private uvb jdField_a_of_type_Uvb;
+  private uvc jdField_a_of_type_Uvc;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
   
-  private QQStoryContext a()
+  private uux(Activity paramActivity, View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    return QQStoryContext.a();
+    super(paramView, paramInt1, paramInt2, paramBoolean);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    a();
   }
   
-  public static List<? extends awge> a(awgf paramawgf, Class<? extends awge> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  public static int a(Context paramContext, int paramInt)
   {
-    return paramawgf.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+    return paramContext.getResources().getDimensionPixelSize(paramInt);
   }
   
-  public List<CommentEntry> a()
+  private static int a(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    Object localObject = QQStoryContext.a().b();
-    List localList = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "status<>? and authorUnionId=?", new String[] { String.valueOf(0), localObject });
-    localObject = localList;
-    if (localList == null) {
-      localObject = new ArrayList();
+    int j = a(paramContext, 2131298730) * paramInt + a(paramContext, 2131298728);
+    int i = j;
+    if (paramBoolean) {
+      i = j + (paramInt - 1) * 1;
     }
-    wxe.a("Q.qqstory:CommentManager", "query fail comment's size = %d", Integer.valueOf(((List)localObject).size()));
-    return localObject;
+    return i;
   }
   
-  public List<CommentEntry> a(String paramString, boolean paramBoolean)
+  private static View a(Activity paramActivity, List<uva> paramList)
   {
-    if (paramBoolean) {}
-    for (int i = 4;; i = 3)
-    {
-      List localList = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "feedId=? and type=?", new String[] { paramString, String.valueOf(i) });
-      Object localObject = localList;
-      if (localList == null) {
-        localObject = new ArrayList();
-      }
-      wxe.a("Q.qqstory:CommentManager", "query comment feeds id %s, %d", paramString, Integer.valueOf(((List)localObject).size()));
-      return localObject;
-    }
+    View localView = LayoutInflater.from(paramActivity).inflate(2131560004, null);
+    a(paramActivity, localView, paramList);
+    return localView;
   }
   
-  public void a()
+  private static List<uva> a(Context paramContext, boolean paramBoolean)
   {
-    this.a = a().a().createEntityManager();
-  }
-  
-  public void a(int paramInt)
-  {
-    Object localObject = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "commentId=?", new String[] { String.valueOf(paramInt) });
-    if (localObject == null) {}
-    for (;;)
-    {
-      return;
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CommentEntry localCommentEntry = (CommentEntry)((Iterator)localObject).next();
-        localCommentEntry.setStatus(1001);
-        this.a.b(localCommentEntry);
-      }
-    }
-  }
-  
-  public void a(@NonNull CommentEntry paramCommentEntry)
-  {
-    paramCommentEntry.setStatus(1000);
-    this.a.b(paramCommentEntry);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramInt <= 0))
-    {
-      wxe.d("Q.qqstory:CommentManager", "push info invalidate feedId:%s, commentId:%d", new Object[] { paramString, Integer.valueOf(paramInt) });
-      return;
-    }
-    Object localObject1 = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "feedId=? and commentId=?", new String[] { paramString, String.valueOf(paramInt) });
-    int j;
-    int i;
-    Object localObject2;
-    label123:
-    int k;
-    if (localObject1 != null)
-    {
-      localObject1 = ((List)localObject1).iterator();
-      j = 0;
-      i = 0;
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (CommentEntry)((Iterator)localObject1).next();
-        if (((CommentEntry)localObject2).type == 3)
-        {
-          i = j;
-          j = 1;
-        }
-        for (;;)
-        {
-          k = j;
-          j = i;
-          i = k;
-          break;
-          if (((CommentEntry)localObject2).type != 4) {
-            break label366;
-          }
-          k = 1;
-          j = i;
-          i = k;
-        }
-      }
-      k = j;
-      j = i;
-      i = k;
-    }
-    for (;;)
-    {
-      k = this.a.a(CommentEntry.class.getSimpleName(), "commentId=? and feedId=? and type in (?,?)", new String[] { String.valueOf(paramInt), paramString, String.valueOf(4), String.valueOf(3) });
-      localObject1 = (woy)uwa.a(11);
-      localObject2 = (CommentLikeFeedItem)((woy)localObject1).a(paramString);
-      if (localObject2 == null) {
-        break;
-      }
-      if (k > 0)
-      {
-        if (j != 0)
-        {
-          ((CommentLikeFeedItem)localObject2).mFriendCommentCount -= 1;
-          if (((CommentLikeFeedItem)localObject2).mFriendCommentCount < 0) {
-            ((CommentLikeFeedItem)localObject2).mFriendCommentCount = 0;
-          }
-        }
-        if (i != 0)
-        {
-          ((CommentLikeFeedItem)localObject2).mFanCommentCount -= 1;
-          if (((CommentLikeFeedItem)localObject2).mFanCommentCount < 0) {
-            ((CommentLikeFeedItem)localObject2).mFanCommentCount = 0;
-          }
-        }
-      }
-      ((CommentLikeFeedItem)localObject2).mCommentCount -= 1;
-      if (((CommentLikeFeedItem)localObject2).mCommentCount < 0) {
-        ((CommentLikeFeedItem)localObject2).mCommentCount = 0;
-      }
-      ((woy)localObject1).a((FeedItem)localObject2);
-      paramString = new utf(4, paramString, 2, (CommentLikeFeedItem)localObject2);
-      paramString.c = paramInt;
-      umc.a().dispatch(paramString);
-      return;
-      label366:
-      k = i;
-      i = j;
-      j = k;
-      break label123;
-      i = 0;
-      j = 0;
-    }
-  }
-  
-  public void a(@NonNull List<CommentEntry> paramList, String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i;
-    if (paramBoolean1) {
-      i = 4;
-    }
-    awgf localawgf;
-    Object localObject2;
-    for (;;)
-    {
-      localawgf = a().a().createEntityManager();
-      localawgf.a().a();
-      if (!paramBoolean2) {
-        break;
-      }
-      try
-      {
-        localObject1 = a(paramString, paramBoolean1);
-        wxe.a("Q.qqstory:CommentManager", "delete comment feeds id %s, %d", paramString, Integer.valueOf(((List)localObject1).size()));
-        if (localObject1 == null) {
-          break;
-        }
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (CommentEntry)((Iterator)localObject1).next();
-          ((CommentEntry)localObject2).setStatus(1001);
-          if (((CommentEntry)localObject2).status == 0) {
-            localawgf.b((awge)localObject2);
-          }
-        }
-        i = 3;
-      }
-      finally
-      {
-        localawgf.a().b();
-      }
-    }
-    Object localObject1 = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "feedId=? and type=? and status<>? ", new String[] { paramString, String.valueOf(i), String.valueOf(0) });
-    if (localObject1 != null) {}
-    for (int j = ((List)localObject1).size();; j = 0)
-    {
-      wxe.a("Q.qqstory:CommentManager", "fail comment size:%d for feedId:%s", Integer.valueOf(j), paramString);
-      localObject2 = new ArrayList(j);
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-        localCommentEntry.feedId = paramString;
-        localCommentEntry.type = i;
-        localCommentEntry.setStatus(1000);
-        localawgf.b(localCommentEntry);
-        if (localObject1 != null)
-        {
-          j = ((List)localObject1).indexOf(localCommentEntry);
-          if (j != -1) {
-            ((List)localObject2).add(((List)localObject1).get(j));
-          }
-        }
-      }
-      localObject1 = ((List)localObject2).iterator();
-      while (((Iterator)localObject1).hasNext()) {
-        localawgf.b((CommentEntry)((Iterator)localObject1).next());
-      }
-      wxe.a("Q.qqstory:CommentManager", "insert comment feeds id %s, %d", paramString, Integer.valueOf(paramList.size()));
-      localawgf.a().c();
-      localawgf.a().b();
-      return;
-    }
-  }
-  
-  public List<CommentEntry> b(String paramString, boolean paramBoolean)
-  {
-    paramString = a(paramString, paramBoolean);
     ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramString.size())
-    {
-      CommentEntry localCommentEntry = (CommentEntry)paramString.get(i);
-      if (localCommentEntry.status != 0)
-      {
-        localCommentEntry.status = 2;
-        localArrayList.add(localCommentEntry);
-      }
-      i += 1;
-    }
+    localArrayList.add(a(paramContext, jdField_a_of_type_ArrayOfInt, paramBoolean));
+    localArrayList.add(a(paramContext, jdField_b_of_type_ArrayOfInt, false));
     return localArrayList;
   }
   
-  public void b()
+  public static uux a(Activity paramActivity, boolean paramBoolean, uvb paramuvb, uvc paramuvc)
   {
-    this.a.a();
+    List localList = a(paramActivity, paramBoolean);
+    if ((localList == null) || (localList.size() == 0)) {
+      throw new IllegalArgumentException("parameter items can not be null or zero-length array.");
+    }
+    int i = b(paramActivity, localList.size());
+    int j = bgtn.a(145.0F);
+    paramActivity = new uux(paramActivity, a(paramActivity, localList), j, i, true);
+    paramActivity.setAnimationStyle(2131755030);
+    paramActivity.setBackgroundDrawable(new ColorDrawable(0));
+    paramActivity.setOutsideTouchable(false);
+    a(paramActivity, 1002);
+    if (AppSetting.c) {
+      a(paramActivity);
+    }
+    paramActivity.a(paramActivity.getContentView());
+    paramActivity.jdField_b_of_type_Int = i;
+    paramActivity.jdField_a_of_type_Uvb = paramuvb;
+    paramActivity.jdField_a_of_type_Uvc = paramuvc;
+    paramActivity.jdField_a_of_type_Boolean = false;
+    return paramActivity;
   }
   
-  public void b(@NonNull CommentEntry paramCommentEntry)
+  private static uva a(Context paramContext, int[] paramArrayOfInt, boolean paramBoolean)
   {
-    awgf localawgf = a().a().createEntityManager();
-    localawgf.a().a();
-    try
-    {
-      paramCommentEntry.type = 3;
-      paramCommentEntry.setStatus(1000);
-      localawgf.b(paramCommentEntry);
-      CommentEntry localCommentEntry = new CommentEntry();
-      localCommentEntry.copy(paramCommentEntry);
-      localCommentEntry.type = 4;
-      localCommentEntry.setStatus(1000);
-      localawgf.b(localCommentEntry);
-      localawgf.a().c();
-      return;
-    }
-    finally
-    {
-      localawgf.a().b();
-    }
+    uva localuva = new uva();
+    localuva.jdField_a_of_type_Int = paramArrayOfInt[0];
+    localuva.jdField_a_of_type_JavaLangString = paramContext.getResources().getString(paramArrayOfInt[0]);
+    localuva.jdField_b_of_type_Int = paramArrayOfInt[1];
+    localuva.jdField_a_of_type_Boolean = paramBoolean;
+    return localuva;
   }
   
-  public void c(@NonNull CommentEntry paramCommentEntry)
+  private void a()
   {
-    awgf localawgf = a().a().createEntityManager();
-    localawgf.a().a();
+    int j = -1;
+    int i;
+    if (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null)
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 1000;
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = -3;
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 40;
+      if (ImmersiveUtils.isSupporImmersive() == 1)
+      {
+        WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+        localLayoutParams.flags |= 0x4000000;
+      }
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -1;
+      i = j;
+      if (this.jdField_a_of_type_AndroidAppActivity.getWindow() != null)
+      {
+        i = j;
+        if (this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView() != null)
+        {
+          i = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getHeight();
+          if (i > 0) {
+            break label241;
+          }
+          i = j;
+        }
+      }
+    }
+    label241:
     for (;;)
     {
-      int i;
-      try
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = i;
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755329;
+      if (this.jdField_a_of_type_AndroidViewView == null)
       {
-        List localList = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "commentId=? and feedId=?", new String[] { String.valueOf(paramCommentEntry.commentId), paramCommentEntry.feedId });
-        if (localList == null) {
+        this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidAppActivity);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131165488));
+        this.jdField_a_of_type_AndroidViewView.setContentDescription(anni.a(2131707106));
+        this.jdField_a_of_type_AndroidViewView.setOnClickListener(new uuy(this));
+      }
+      if ((AppSetting.c) && (Build.VERSION.SDK_INT >= 14)) {
+        getContentView().setAccessibilityDelegate(new uuz(this));
+      }
+      return;
+    }
+  }
+  
+  private static void a(Context paramContext, View paramView, List<uva> paramList)
+  {
+    paramView = (LinearLayout)paramView.findViewById(2131370120);
+    paramView.removeAllViews();
+    paramList = paramList.iterator();
+    if (paramList.hasNext())
+    {
+      uva localuva = (uva)paramList.next();
+      View localView = LayoutInflater.from(paramContext).inflate(2131560003, null);
+      ImageView localImageView1 = (ImageView)localView.findViewById(2131381295);
+      ImageView localImageView2 = (ImageView)localView.findViewById(2131369163);
+      TextView localTextView = (TextView)localView.findViewById(2131379731);
+      localImageView2.setBackgroundResource(localuva.jdField_b_of_type_Int);
+      localTextView.setText(localuva.jdField_a_of_type_JavaLangString);
+      if (localuva.jdField_a_of_type_Boolean) {
+        localImageView1.setVisibility(0);
+      }
+      for (;;)
+      {
+        localView.setTag(localuva);
+        paramView.addView(localView);
+        break;
+        localImageView1.setVisibility(8);
+      }
+    }
+  }
+  
+  private void a(View paramView)
+  {
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof uva))) {
+      paramView.setOnClickListener(this);
+    }
+    if ((paramView instanceof ViewGroup))
+    {
+      paramView = (ViewGroup)paramView;
+      int i = 0;
+      while (i < paramView.getChildCount())
+      {
+        a(paramView.getChildAt(i));
+        i += 1;
+      }
+    }
+  }
+  
+  public static void a(PopupWindow paramPopupWindow)
+  {
+    int i = 0;
+    if (!AppSetting.c) {}
+    for (;;)
+    {
+      return;
+      Method[] arrayOfMethod = PopupWindow.class.getMethods();
+      int j = arrayOfMethod.length;
+      while (i < j)
+      {
+        Method localMethod = arrayOfMethod[i];
+        if (TextUtils.equals(localMethod.getName(), "setTouchModal")) {
+          try
+          {
+            localMethod.invoke(paramPopupWindow, new Object[] { Boolean.valueOf(false) });
+            return;
+          }
+          catch (Exception paramPopupWindow)
+          {
+            paramPopupWindow.printStackTrace();
+            return;
+          }
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public static void a(PopupWindow paramPopupWindow, int paramInt)
+  {
+    int i = 0;
+    Method[] arrayOfMethod = PopupWindow.class.getMethods();
+    int j = arrayOfMethod.length;
+    for (;;)
+    {
+      Method localMethod;
+      if (i < j)
+      {
+        localMethod = arrayOfMethod[i];
+        if (!TextUtils.equals(localMethod.getName(), "setWindowLayoutType")) {}
+      }
+      else
+      {
+        try
+        {
+          localMethod.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
           return;
         }
-        i = 0;
-        if (i < localList.size())
+        catch (Exception paramPopupWindow)
         {
-          CommentEntry localCommentEntry = (CommentEntry)localList.get(i);
-          if (localCommentEntry.type == 3)
-          {
-            localCommentEntry.copy(paramCommentEntry);
-            localCommentEntry.type = 3;
-            localawgf.a(localCommentEntry);
-          }
-          else if (localCommentEntry.type == 4)
-          {
-            localCommentEntry.copy(paramCommentEntry);
-            localCommentEntry.type = 4;
-            localawgf.a(localCommentEntry);
-          }
+          paramPopupWindow.printStackTrace();
+          return;
         }
       }
-      finally
-      {
-        localawgf.a().b();
-      }
-      localawgf.a().c();
-      localawgf.a().b();
-      return;
       i += 1;
     }
   }
   
-  public void d(@NonNull CommentEntry paramCommentEntry)
+  public static int b(Context paramContext, int paramInt)
   {
-    paramCommentEntry.setStatus(1001);
-    this.a.a(paramCommentEntry, "commentId=? and feedId=? and type in (?,?)", new String[] { String.valueOf(paramCommentEntry.commentId), paramCommentEntry.feedId, String.valueOf(4), String.valueOf(3) });
+    int i = paramInt - 2;
+    if (i > 0) {}
+    for (paramInt = i * afur.a(52.0F, paramContext.getResources()) + afur.a(62.0F, paramContext.getResources()) * 2;; paramInt = afur.a(62.0F, paramContext.getResources()) * paramInt) {
+      return paramInt + a(paramContext, 2131298728);
+    }
+  }
+  
+  public void dismiss()
+  {
+    try
+    {
+      if (ImmersiveUtils.a(this.jdField_a_of_type_AndroidAppActivity)) {
+        ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).removeView(this.jdField_a_of_type_AndroidViewView);
+      }
+      while (Build.VERSION.SDK_INT >= 11)
+      {
+        super.dismiss();
+        if ((this.jdField_a_of_type_Uvb != null) && (this.jdField_a_of_type_Uva != null)) {
+          this.jdField_a_of_type_Uvb.a(this.jdField_a_of_type_Uva);
+        }
+        this.jdField_a_of_type_Uva = null;
+        if (this.jdField_a_of_type_Uvc != null) {
+          this.jdField_a_of_type_Uvc.a();
+        }
+        return;
+        this.jdField_a_of_type_AndroidAppActivity.getWindowManager().removeView(this.jdField_a_of_type_AndroidViewView);
+      }
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("WSPopupMenuDialog", 2, localException.toString());
+          }
+        }
+      } while ((!isShowing()) || ((this.jdField_a_of_type_AndroidViewAnimationAnimation != null) && (!this.jdField_a_of_type_AndroidViewAnimationAnimation.hasEnded())));
+      if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
+      {
+        this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772330);
+        this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
+      }
+      getContentView().startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    }
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WSPopupMenuDialog", 2, "onAnimationEnd");
+    }
+    if ((this.jdField_a_of_type_Uvb != null) && (this.jdField_a_of_type_Uva != null)) {
+      this.jdField_a_of_type_Uvb.a(this.jdField_a_of_type_Uva);
+    }
+    this.jdField_a_of_type_Uva = null;
+    if (this.jdField_a_of_type_Uvc != null) {
+      this.jdField_a_of_type_Uvc.a();
+    }
+    super.dismiss();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WSPopupMenuDialog", 2, "onAnimationStart");
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Uva = ((uva)paramView.getTag());
+    dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
+  {
+    int j = getMaxAvailableHeight(paramView, paramInt2);
+    if (j != this.jdField_a_of_type_Int)
+    {
+      int i = 0;
+      if (j < this.jdField_b_of_type_Int) {
+        i = (1 - a(this.jdField_a_of_type_AndroidAppActivity, 2131298728) + j) / (a(this.jdField_a_of_type_AndroidAppActivity, 2131298730) + 1);
+      }
+      if (i <= 0) {
+        break label130;
+      }
+      setHeight(a(this.jdField_a_of_type_AndroidAppActivity, i, this.jdField_a_of_type_Boolean));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = j;
+      try
+      {
+        if (ImmersiveUtils.a(this.jdField_a_of_type_AndroidAppActivity)) {
+          ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+        }
+        for (;;)
+        {
+          super.showAsDropDown(paramView, paramInt1, paramInt2);
+          return;
+          label130:
+          setHeight(this.jdField_b_of_type_Int);
+          break;
+          this.jdField_a_of_type_AndroidAppActivity.getWindowManager().addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("WSPopupMenuDialog", 2, localException.toString());
+          }
+        }
+      }
+    }
+  }
+  
+  public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    try
+    {
+      if (ImmersiveUtils.a(this.jdField_a_of_type_AndroidAppActivity)) {
+        ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      }
+      for (;;)
+      {
+        super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
+        return;
+        this.jdField_a_of_type_AndroidAppActivity.getWindowManager().addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("WSPopupMenuDialog", 2, localException.toString());
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uux
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.7.1;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import mqq.os.MqqHandler;
 
-public final class bnlz
-  extends BroadcastReceiver
+public class bnlz
+  implements Observer<bnlq>
 {
-  private bnlz(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  bnlz(bnls parambnls) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(@Nullable bnlq parambnlq)
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    Object localObject = bnlm.a(parambnlq);
+    parambnlq = new LinkedList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      bnkr.a().b();
-      bnkr.a().a(new bnma());
-      this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
-      }
+      bnlq localbnlq = (bnlq)((Iterator)localObject).next();
+      bnmc localbnmc = new bnmc(null);
+      localbnmc.a = bnme.a(localbnlq);
+      parambnlq.add(localbnmc);
     }
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.7.1(this, parambnlq));
   }
 }
 

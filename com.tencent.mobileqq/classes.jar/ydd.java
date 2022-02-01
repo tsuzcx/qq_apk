@@ -1,29 +1,42 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
+import android.graphics.drawable.Drawable;
 
-public class ydd
-  implements ValueAnimator.AnimatorUpdateListener
+class ydd
+  implements arxd
 {
-  private View jdField_a_of_type_AndroidViewView;
+  ydd(ydb paramydb) {}
   
-  private ydd(TopPanelViewNew paramTopPanelViewNew, View paramView)
+  public void a(arxg paramarxg)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    if (((paramarxg instanceof ascv)) && (ydb.a(this.a) != null)) {
+      ((ascv)paramarxg).a(ydb.a(), ydb.a(this.a), ydb.a(this.a), null);
+    }
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
+  
+  public boolean a(arxg paramarxg)
   {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    return false;
   }
+  
+  public void b()
+  {
+    if (ydb.a(this.a) != null) {
+      bdol.a(ydb.a(this.a));
+    }
+  }
+  
+  public void b(arxg paramarxg) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ydd
  * JD-Core Version:    0.7.0.1
  */

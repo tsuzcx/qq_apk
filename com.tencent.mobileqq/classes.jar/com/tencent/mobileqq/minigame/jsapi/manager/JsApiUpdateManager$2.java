@@ -3,6 +3,7 @@ package com.tencent.mobileqq.minigame.jsapi.manager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
+import com.tencent.mobileqq.minigame.gpkg.GpkgManager.Info;
 import com.tencent.mobileqq.minigame.gpkg.GpkgManager.OnInitGpkgListener;
 import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
 import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
@@ -14,7 +15,7 @@ final class JsApiUpdateManager$2
   
   public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong) {}
   
-  public void onInitGpkgInfo(int paramInt, MiniGamePkg paramMiniGamePkg, String paramString)
+  public void onInitGpkgInfo(int paramInt, MiniGamePkg paramMiniGamePkg, String paramString, GpkgManager.Info paramInfo)
   {
     if ((paramInt == 0) && (paramMiniGamePkg != null))
     {
@@ -28,7 +29,7 @@ final class JsApiUpdateManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.manager.JsApiUpdateManager.2
  * JD-Core Version:    0.7.0.1
  */

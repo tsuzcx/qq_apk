@@ -1,117 +1,30 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.IBinder;
-import com.tencent.richmediabrowser.presenter.IProvider;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
 
 public class axyg
-  implements IProvider
+  implements URLDrawable.URLDrawableListener
 {
-  public agki a;
+  public axyg(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  public void a(agki paramagki)
-  {
-    this.a = paramagki;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void cancelDownloadMedia(long paramLong, int paramInt1, int paramInt2)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.a != null) {
-      this.a.b(paramLong, paramInt1, paramInt2);
+    if (NearbyMomentFragment.a(this.a) == 0) {
+      NearbyMomentFragment.a(this.a).setVisibility(8);
     }
   }
   
-  public void downloadMedia(long paramLong, int paramInt1, int paramInt2)
-  {
-    if (this.a != null) {
-      this.a.a(paramLong, paramInt1, paramInt2);
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void favorite(long paramLong)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.a != null) {
-      this.a.e(paramLong);
-    }
-  }
-  
-  public Intent getFavorateParams(long paramLong, int paramInt)
-  {
-    if (this.a != null) {
-      return this.a.a(paramLong, paramInt);
-    }
-    return null;
-  }
-  
-  public Intent getForwardData(long paramLong, int paramInt1, int paramInt2)
-  {
-    if (this.a != null) {
-      return this.a.a(paramLong, paramInt1, paramInt2);
-    }
-    return null;
-  }
-  
-  public int getSaveFileProgress(long paramLong, int paramInt)
-  {
-    if (this.a != null) {
-      return this.a.a(paramLong, paramInt);
-    }
-    return 0;
-  }
-  
-  public boolean isPingBinder()
-  {
-    if (this.a != null) {
-      return this.a.asBinder().pingBinder();
-    }
-    return false;
-  }
-  
-  public void loadMedias(int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a(paramInt);
-    }
-  }
-  
-  public void onFileVideoStatusChange(long paramLong, int paramInt, Bundle paramBundle)
-  {
-    if (this.a != null) {
-      this.a.a(paramLong, paramInt, paramBundle);
-    }
-  }
-  
-  public void payFlow(long paramLong, int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a(paramLong, paramInt);
-    }
-  }
-  
-  public void reportData(String paramString, int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a(paramString, paramInt);
-    }
-  }
-  
-  public void safetyReport(int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if (this.a != null) {
-      this.a.a(paramInt, paramBoolean, paramString1, paramString2, paramString3, paramString4);
-    }
-  }
-  
-  public void saveToWeiyun(long paramLong)
-  {
-    if (this.a != null) {
-      this.a.c(paramLong);
-    }
-  }
-  
-  public void sendFileToPC(long paramLong)
-  {
-    if (this.a != null) {
-      this.a.d(paramLong);
+    if (NearbyMomentFragment.a(this.a) == 0)
+    {
+      NearbyMomentFragment.a(this.a).setVisibility(0);
+      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
     }
   }
 }

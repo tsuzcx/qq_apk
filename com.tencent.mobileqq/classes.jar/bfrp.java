@@ -1,43 +1,44 @@
+import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import mqq.manager.WtloginManager;
-import mqq.observer.SSOAccountObserver;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class bfrp
-  extends SSOAccountObserver
+  extends aara
 {
-  bfrp(bfrj parambfrj, OpenSDKAppInterface paramOpenSDKAppInterface, bfrr parambfrr) {}
+  bfrp(bfrm parambfrm) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2)
   {
-    if (paramBundle == null) {}
-    for (paramString = "null";; paramString = Integer.valueOf(paramBundle.getInt("code")))
-    {
-      QLog.d("SSOAccountObserver", 1, new Object[] { "-->getTicketNoPasswd onFailed", ", action", Integer.valueOf(paramInt1), ", code=", paramString });
-      this.jdField_a_of_type_Bfrr.a();
+    if (paramBundle == null) {
       return;
     }
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    QLog.d("SSOAccountObserver", 1, "-->getTicketNoPasswd onGetTicketNoPasswd");
-    if ((!paramBundle.getBoolean("fake_callback")) && (paramInt == 4096)) {
-      bfnz.a(paramString, System.currentTimeMillis());
+    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298998);
+    paramBundle = paramBundle.getString("fileId");
+    bevx.c("TroopFileManager", bevx.a, "delete onActionResult: fileId:" + paramBundle + " isSuccess:" + paramBoolean + " errorCode:" + paramInt);
+    if (paramBoolean)
+    {
+      this.a.b(paramBundle);
+      return;
     }
-    WtloginManager localWtloginManager = (WtloginManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(1);
-    bfqv localbfqv = new bfqv();
-    localbfqv.jdField_b_of_type_JavaLangString = new String(paramArrayOfByte);
-    localbfqv.jdField_a_of_type_JavaLangString = Long.toString(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(localWtloginManager, paramString));
-    localbfqv.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp");
-    localbfqv.jdField_b_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp_key");
-    this.jdField_a_of_type_Bfrr.a(localbfqv);
+    switch (paramInt)
+    {
+    default: 
+      QQToast.a(BaseApplicationImpl.getApplication(), anni.a(2131714040), 0).b(i);
+      return;
+    case -302: 
+    case -301: 
+    case -103: 
+      QQToast.a(BaseApplicationImpl.getApplication(), anni.a(2131714037), 0).b(i);
+      this.a.a(paramBundle);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), anni.a(2131714021), 0).b(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfrp
  * JD-Core Version:    0.7.0.1
  */

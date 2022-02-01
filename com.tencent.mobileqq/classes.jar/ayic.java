@@ -1,19 +1,20 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class ayic
-  implements Comparator<ayhs>
+class ayic
+  implements View.OnClickListener
 {
-  public int a(ayhs paramayhs1, ayhs paramayhs2)
+  ayic(ayib paramayib) {}
+  
+  public void onClick(View paramView)
   {
-    long l1 = paramayhs1.c();
-    long l2 = paramayhs2.c();
-    if (l1 < l2) {
-      return 1;
+    if ((this.a.a != null) && ((paramView.getTag() instanceof ayid)))
+    {
+      ayid localayid = (ayid)paramView.getTag();
+      this.a.a.a(localayid);
     }
-    if (l1 > l2) {
-      return -1;
-    }
-    return 0;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

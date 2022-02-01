@@ -1,132 +1,77 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 public class ntk
-  implements aokj<String>
+  extends aoqo
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int b;
+  public ntk(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public static ntk a(int paramInt, String paramString, boolean paramBoolean)
+  public int a()
   {
-    ntk localntk = new ntk();
-    localntk.jdField_a_of_type_Int = paramInt;
-    if (paramBoolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      localntk.b = paramInt;
-      localntk.jdField_a_of_type_JavaLangString = paramString;
-      return localntk;
-    }
+    return 5;
   }
   
-  public static ntk a(String paramString)
+  public void a(Object paramObject)
   {
+    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
+    {
+      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
+      }
+      paramObject = new JSONObject();
+      if (this.a.e == null) {}
+    }
     try
     {
-      ntk localntk = (ntk)aolc.a(paramString, ntk.class);
-      return localntk;
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
-    }
-    return null;
-  }
-  
-  public static ntk a(aoko[] paramArrayOfaoko)
-  {
-    ntk localntk = null;
-    int i = 0;
-    while (i < paramArrayOfaoko.length)
-    {
-      localntk = a(paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
-      i += 1;
-    }
-    return localntk;
-  }
-  
-  public void a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      int i = suk.a((QQAppInterface)localObject);
-      if (this.jdField_a_of_type_Int != i) {
-        break label47;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PaSubscribeRedDotProcessor", 2, "IGNORE THIS ACTION because of SAME VERSION");
-      }
-    }
-    label47:
-    do
-    {
+      paramObject.put("uin", this.a.e);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add("find.mp.qq.com");
+      localArrayList.add("post.mp.qq.com");
+      localArrayList.add("article.mp.qq.com");
+      avob.a("unFollow", paramObject, localArrayList, null);
+      this.a.h();
+      oat.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.e, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
+      StructLongMessageDownloadProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e);
+      ((bfrd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
       return;
-      suk.a((QQAppInterface)localObject, this.jdField_a_of_type_Int);
-      suk.a((QQAppInterface)localObject, this.b, this.jdField_a_of_type_JavaLangString);
-      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
-    } while (localObject == null);
-    ((WebProcessManager)localObject).e();
+    }
+    catch (JSONException paramObject)
+    {
+      for (;;)
+      {
+        paramObject.printStackTrace();
+      }
+    }
   }
   
-  public void a(String paramString)
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml: " + paramString);
-    }
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = paramString.trim();
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-        NodeList localNodeList = paramString.getElementsByTagName("version");
-        Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localObject instanceof QQAppInterface))
-        {
-          localObject = (QQAppInterface)localObject;
-          this.jdField_a_of_type_Int = Integer.parseInt(localNodeList.item(0).getFirstChild().getNodeValue());
-          paramString = paramString.getElementsByTagName("public-account-folder");
-          if (paramString.getLength() > 0)
-          {
-            paramString = (Element)paramString.item(0);
-            this.b = Integer.parseInt(paramString.getElementsByTagName("show").item(0).getFirstChild().getNodeValue());
-            this.jdField_a_of_type_JavaLangString = paramString.getElementsByTagName("msg").item(0).getFirstChild().getNodeValue();
-          }
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml is empty");
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig error", paramString);
-      }
-      paramString.printStackTrace();
+    this.a.d(2131694617);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = this.a;
+    paramObject.c -= 1;
+    if (this.a.c == 0) {
+      this.a.M();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ntk
  * JD-Core Version:    0.7.0.1
  */

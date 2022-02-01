@@ -1,39 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aooe
+class aooe
+  implements View.OnClickListener
 {
-  public String a = "";
+  aooe(aood paramaood, ArkViewModel paramArkViewModel) {}
   
-  public aooe() {}
-  
-  public aooe(String paramString)
+  public void onClick(View paramView)
   {
-    this.a = paramString;
-  }
-  
-  public static aooe a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString).optString("ShowLocaleEntrance");
-      if (QLog.isColorLevel()) {
-        QLog.e("LocaleConfProcessor", 2, "manager parse, showEntrance: " + paramString);
-      }
-      paramString = new aooe(paramString.trim());
-      return paramString;
+    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
+      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aooe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import android.widget.Toast;
 
-public class rxf
-  implements View.OnClickListener
+class rxf
+  implements qzc
 {
-  public rxf(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  rxf(rwy paramrwy) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
+    tti.a(rwy.a(this.a), paramString, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rxf
  * JD-Core Version:    0.7.0.1
  */

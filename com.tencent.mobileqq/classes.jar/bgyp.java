@@ -1,28 +1,27 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.graphics.Bitmap;
+import com.tencent.commonsdk.cache.Sizeable;
+import com.tencent.image.Utils;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
-final class bgyp
-  implements bgyt
+public class bgyp
+  implements Sizeable
 {
-  bgyp(bgyt parambgyt) {}
+  public int a;
+  public HashMap<Integer, Bitmap> a = new HashMap();
+  public int b;
   
-  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong) {}
-  
-  public void onInitGpkgInfo(int paramInt, bgyu parambgyu, String paramString)
+  public int getByteSize()
   {
-    if (paramInt == 0) {
-      if (this.a != null) {
-        this.a.onInitGpkgInfo(0, parambgyu, null);
-      }
-    }
-    while (this.a == null) {
-      return;
-    }
-    this.a.onInitGpkgInfo(paramInt, null, paramString);
+    Iterator localIterator = this.a.values().iterator();
+    for (int i = 0; localIterator.hasNext(); i = Utils.getBitmapSize((Bitmap)localIterator.next()) + i) {}
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgyp
  * JD-Core Version:    0.7.0.1
  */

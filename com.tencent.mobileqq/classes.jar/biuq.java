@@ -1,38 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.text.TextUtils;
 
-class biuq
-  extends RemoteCommand
+public class biuq
 {
-  biuq(biup parambiup, String paramString)
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  
+  public String a()
   {
-    super(paramString);
+    if (TextUtils.isEmpty(this.f)) {
+      return bist.a(biip.a().a());
+    }
+    return this.f;
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public boolean a()
   {
-    if (paramBundle == null) {
-      paramBundle = null;
-    }
-    Bundle localBundle;
-    do
-    {
-      return paramBundle;
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      localBundle = biup.a(this.a, paramBundle);
-      if (localBundle != null) {
-        localBundle.setClassLoader(getClass().getClassLoader());
-      }
-      paramBundle = localBundle;
-    } while (paramOnInvokeFinishLinstener == null);
-    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
-    return localBundle;
+    return (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    return this.d + "_" + this.a + "_" + this.b + "_" + this.c + "_" + this.f + "_" + this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biuq
  * JD-Core Version:    0.7.0.1
  */

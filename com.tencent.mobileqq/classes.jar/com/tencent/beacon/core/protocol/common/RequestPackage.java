@@ -39,29 +39,28 @@ public final class RequestPackage
     this.reserved = paramString7;
   }
   
-  public final void readFrom(a parama)
+  public void readFrom(a parama)
   {
     this.platformId = parama.a(this.platformId, 0, true);
-    this.appkey = parama.b(1, true);
-    this.appVersion = parama.b(2, true);
-    this.sdkId = parama.b(3, true);
-    this.sdkVersion = parama.b(4, true);
+    this.appkey = parama.a(1, true);
+    this.appVersion = parama.a(2, true);
+    this.sdkId = parama.a(3, true);
+    this.sdkVersion = parama.a(4, true);
     this.cmd = parama.a(this.cmd, 5, true);
     if (cache_sBuffer == null)
     {
-      byte[] arrayOfByte = (byte[])new byte[1];
-      cache_sBuffer = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
+      cache_sBuffer = new byte[1];
+      cache_sBuffer[0] = 0;
     }
-    this.sBuffer = ((byte[])parama.c(6, true));
+    this.sBuffer = parama.a(cache_sBuffer, 6, true);
     this.encryType = parama.a(this.encryType, 7, true);
     this.zipType = parama.a(this.zipType, 8, true);
-    this.model = parama.b(9, false);
-    this.osVersion = parama.b(10, false);
-    this.reserved = parama.b(11, false);
+    this.model = parama.a(9, false);
+    this.osVersion = parama.a(10, false);
+    this.reserved = parama.a(11, false);
   }
   
-  public final void writeTo(b paramb)
+  public void writeTo(b paramb)
   {
     paramb.a(this.platformId, 0);
     paramb.a(this.appkey, 1);
@@ -72,20 +71,23 @@ public final class RequestPackage
     paramb.a(this.sBuffer, 6);
     paramb.a(this.encryType, 7);
     paramb.a(this.zipType, 8);
-    if (this.model != null) {
-      paramb.a(this.model, 9);
+    String str = this.model;
+    if (str != null) {
+      paramb.a(str, 9);
     }
-    if (this.osVersion != null) {
-      paramb.a(this.osVersion, 10);
+    str = this.osVersion;
+    if (str != null) {
+      paramb.a(str, 10);
     }
-    if (this.reserved != null) {
-      paramb.a(this.reserved, 11);
+    str = this.reserved;
+    if (str != null) {
+      paramb.a(str, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.protocol.common.RequestPackage
  * JD-Core Version:    0.7.0.1
  */

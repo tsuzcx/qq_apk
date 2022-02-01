@@ -64,7 +64,7 @@ public class SubPkgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.SubPkgInfo
  * JD-Core Version:    0.7.0.1
  */

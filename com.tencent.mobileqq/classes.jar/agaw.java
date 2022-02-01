@@ -1,72 +1,37 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.CircleBubbleImageView;
-import java.net.URL;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.PAMessage;
 
-class agaw
-  extends CircleBubbleImageView
+public class agaw
 {
-  URLDrawable a;
-  URLDrawable b;
+  public static LruCache<String, PAMessage> a = new LruCache(50);
   
-  public agaw(Context paramContext)
+  public static PAMessage a(MessageRecord paramMessageRecord)
   {
-    super(paramContext);
-    a(true);
+    return a(paramMessageRecord.frienduin, paramMessageRecord.shmsgseq, paramMessageRecord.msgUid, paramMessageRecord.msgData);
   }
   
-  public void a(URLDrawable paramURLDrawable)
+  public static PAMessage a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
   {
-    if (this.a != null) {
-      this.a.setURLDrawableListener(null);
-    }
-    paramURLDrawable.setURLDrawableListener(this);
-    this.a = paramURLDrawable;
-    paramURLDrawable.startDownload();
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (this.b == null) || (!this.b.getURL().getPath().equals(paramString));
-  }
-  
-  public void b(URLDrawable paramURLDrawable)
-  {
-    setImageDrawable(paramURLDrawable);
-    if (this.b != paramURLDrawable) {
-      this.b = paramURLDrawable;
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable == this.a)
+    String str = a(paramString, paramLong1, paramLong2);
+    PAMessage localPAMessage = (PAMessage)a.get(str);
+    paramString = localPAMessage;
+    if (localPAMessage == null)
     {
-      b(paramURLDrawable);
-      return;
+      paramArrayOfByte = txp.a(paramArrayOfByte);
+      paramString = paramArrayOfByte;
+      if (paramArrayOfByte != null)
+      {
+        a.put(str, paramArrayOfByte);
+        paramString = paramArrayOfByte;
+      }
     }
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
+    return paramString;
   }
   
-  @TargetApi(11)
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  private static String a(String paramString, long paramLong1, long paramLong2)
   {
-    if (paramURLDrawable == this.a) {
-      b(paramURLDrawable);
-    }
-    super.onLoadSuccessed(paramURLDrawable);
-  }
-  
-  public void setImageDrawable(Drawable paramDrawable)
-  {
-    super.setImageDrawable(paramDrawable);
-    if (this.a != null)
-    {
-      this.a.setURLDrawableListener(null);
-      this.a = null;
-    }
+    return paramString + "&" + paramLong1 + "&" + paramLong2;
   }
 }
 

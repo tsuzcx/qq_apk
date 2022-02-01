@@ -1,28 +1,33 @@
-import com.tencent.mobileqq.data.TroopInfo;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
 class bbfw
-  extends ameq
+  implements ViewPager.OnPageChangeListener
 {
-  bbfw(bbfv parambbfv) {}
+  bbfw(bbfs parambbfs) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    bbfv.a(this.a, false, paramInt1, paramInt2, null);
+    QLog.d("HotWordRecommendPagerModel", 1, "onPageScrollStateChanged");
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    bbfv.a(this.a, true, paramInt1, paramInt2, paramString);
+    QLog.d("HotWordRecommendPagerModel", 1, "onPageScrolled");
   }
   
-  protected void a(String paramString)
+  public void onPageSelected(int paramInt)
   {
-    bbfv.a(this.a, paramString);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    bbfv.a(this.a, paramBoolean, paramLong, paramTroopInfo);
+    QLog.d("HotWordRecommendPagerModel", 1, "onPageSelected");
+    if (paramInt == 0) {
+      this.a.d();
+    }
+    for (;;)
+    {
+      this.a.a(paramInt);
+      return;
+      this.a.c();
+    }
   }
 }
 

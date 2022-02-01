@@ -1,21 +1,7 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.widget.TextView;
-
-public class yhv
-{
-  public static TextView a(Context paramContext, float paramFloat, String paramString1, String paramString2)
-  {
-    paramContext = new TextView(paramContext);
-    paramContext.setTextSize(1, paramFloat);
-    paramContext.setTextColor(Color.parseColor(paramString1));
-    paramContext.setText(paramString2);
-    return paramContext;
-  }
-}
+class yhv {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yhv
  * JD-Core Version:    0.7.0.1
  */

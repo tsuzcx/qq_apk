@@ -14,12 +14,13 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import azqs;
+import bcst;
 import com.tencent.av.VideoController;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
 import com.tencent.qphone.base.util.QLog;
-import lid;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import ley;
 
 public class ChildLockSign
   extends View
@@ -64,13 +65,13 @@ public class ChildLockSign
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    setId(2131372612);
+    setId(2131373226);
     paramAttributeSet = getResources();
     this.jdField_a_of_type_Boolean = true;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841736);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841737);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842042);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842043);
       if (this.jdField_a_of_type_Boolean) {}
       for (this.c = this.jdField_a_of_type_AndroidGraphicsBitmap;; this.c = this.jdField_b_of_type_AndroidGraphicsBitmap)
       {
@@ -113,7 +114,7 @@ public class ChildLockSign
       {
         paramMessage.a().y = true;
         ((DoubleVideoCtrlUI)localObject).d(true);
-        azqs.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
+        bcst.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
       }
       for (;;)
       {
@@ -121,7 +122,7 @@ public class ChildLockSign
         return false;
         paramMessage.a().y = false;
         ((DoubleVideoCtrlUI)localObject).s();
-        azqs.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
+        bcst.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
       }
     }
     catch (Exception paramMessage)
@@ -140,6 +141,7 @@ public class ChildLockSign
       setEnabled(false);
       a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -175,7 +177,7 @@ public class ChildLockSign
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.widget.ChildLockSign
  * JD-Core Version:    0.7.0.1
  */

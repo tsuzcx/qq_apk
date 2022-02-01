@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import alud;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -9,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import anni;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Random;
@@ -108,7 +108,7 @@ public class RollNumberView
       init(0);
     }
     localTextView.setText(".");
-    localTextView.setContentDescription(alud.a(2131713887));
+    localTextView.setContentDescription(anni.a(2131712266));
     addView(localTextView, 0);
     i = init(i);
     if (i > this.max) {}
@@ -193,7 +193,7 @@ public class RollNumberView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.RollNumberView
  * JD-Core Version:    0.7.0.1
  */

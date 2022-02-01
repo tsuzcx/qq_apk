@@ -1,42 +1,35 @@
-import android.database.Cursor;
-import android.os.Parcel;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.URLThemeImageView;
+import java.util.List;
 
-final class bfht
-  implements bfnq<bfhs>
+public abstract interface bfht
 {
-  public int a()
-  {
-    return 0;
-  }
+  public abstract bfhq a(int paramInt);
   
-  public bfhs a(Cursor paramCursor)
-  {
-    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
-    if (localObject == null) {
-      return null;
-    }
-    paramCursor = Parcel.obtain();
-    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-    paramCursor.setDataPosition(0);
-    localObject = new bfhs();
-    ((bfhs)localObject).a(paramCursor);
-    paramCursor.recycle();
-    return localObject;
-  }
+  @Nullable
+  public abstract bfhr a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2);
   
-  public String a()
-  {
-    return null;
-  }
+  public abstract void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString);
   
-  public bfnr[] a()
-  {
-    return new bfnr[] { new bfnr("groupId", "INTEGER UNIQUE"), new bfnr("data", "BLOB") };
-  }
+  public abstract void a(int paramInt1, bepx parambepx, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong);
+  
+  public abstract void a(int paramInt, Object paramObject, String paramString);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(int paramInt, URLThemeImageView paramURLThemeImageView, String paramString);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt, Object paramObject, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfht
  * JD-Core Version:    0.7.0.1
  */

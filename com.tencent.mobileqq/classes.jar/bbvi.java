@@ -1,24 +1,50 @@
-class bbvi
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
+
+public class bbvi
+  implements bbvf
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  int c = 0;
+  protected View a;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private List<bbvg> jdField_a_of_type_JavaUtilList;
   
-  public bbvi(bbvg parambbvg)
+  public bbvi(ViewGroup paramViewGroup, int paramInt)
   {
-    a();
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371277));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370012));
   }
   
-  public void a()
+  public View a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.c = 0;
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public String toString()
+  public LinearLayout a()
   {
-    return " retryInfo[AutoR-" + this.jdField_a_of_type_Int + " EofR-" + this.b + " SvrErrR-" + this.c + "]";
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public TextView a()
+  {
+    return a();
+  }
+  
+  public List<bbvg> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

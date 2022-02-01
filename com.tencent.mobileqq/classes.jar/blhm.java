@@ -1,55 +1,32 @@
-import com.tencent.ttpic.videoshelf.model.VideoShelfEngine.Callback;
-import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import cooperation.qlink.QlAndQQInterface.WorkState;
+import java.util.ArrayList;
 
-public class blhm
-  implements VideoShelfEngine.Callback
+class blhm
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<AEVideoShelfPreviewFragment> a;
+  blhm(blhj paramblhj, ArrayList paramArrayList, Activity paramActivity, int paramInt, boolean paramBoolean) {}
   
-  public blhm(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramAEVideoShelfPreviewFragment);
-  }
-  
-  public void onCancelCompleted()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      AEVideoShelfPreviewFragment.e((AEVideoShelfPreviewFragment)this.a.get());
-    }
-  }
-  
-  public void onCompleted()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AEVideoShelfPreviewFragment)this.a.get()).onCompletion();
-    }
-  }
-  
-  public void onError(int paramInt1, int paramInt2, String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      AEVideoShelfPreviewFragment.a((AEVideoShelfPreviewFragment)this.a.get(), paramInt1, paramInt2, paramString);
-    }
-  }
-  
-  public void onProgress(int paramInt)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      AEVideoShelfPreviewFragment.b((AEVideoShelfPreviewFragment)this.a.get(), paramInt);
-    }
-  }
-  
-  public void onStartGenerate()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      AEVideoShelfPreviewFragment.d((AEVideoShelfPreviewFragment)this.a.get());
+    this.jdField_a_of_type_Blhj.a("0X8004855", 1);
+    this.jdField_a_of_type_Blhj.a(blhj.a(this.jdField_a_of_type_Blhj).mPeerUin, this.jdField_a_of_type_JavaUtilArrayList);
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArrayList("string_filepaths", this.jdField_a_of_type_JavaUtilArrayList);
+    localBundle.putBoolean("STRING_CONTINUE_SEND_TO_", true);
+    blhj.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, localBundle);
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blhm
  * JD-Core Version:    0.7.0.1
  */

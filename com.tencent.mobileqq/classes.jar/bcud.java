@@ -1,25 +1,10 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.troopAddFrd.TroopRecommendFriendFragment;
-
 public class bcud
-  implements ahkx
 {
-  public bcud(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
-  
-  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if (!(paramViewHolder instanceof bctx)) {
-      return;
-    }
-    paramView = ((bctx)paramViewHolder).a;
-    bcpx.a(TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a), paramView.a, TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a));
-  }
-  
-  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    return false;
-  }
+  public int a;
+  public long a;
+  public Class a;
+  public String a;
+  public long b;
 }
 
 

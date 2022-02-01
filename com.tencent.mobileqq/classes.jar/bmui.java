@@ -1,24 +1,41 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_check_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 class bmui
-  implements Animation.AnimationListener
+  extends QzoneExternalRequest
 {
-  bmui(bmug parambmug) {}
+  bmui(bmuh parambmuh, Intent paramIntent) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public String getCmdString()
   {
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Bmua != null) {
-      this.a.a.jdField_a_of_type_Bmua.a(null);
-    }
+    return "SweetQzoneService.getPairState";
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public JceStruct getReq()
+  {
+    sweet_pair_check_req localsweet_pair_check_req = new sweet_pair_check_req();
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    {
+      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
+      localsweet_req_comm.opuin = l;
+      localsweet_req_comm.uin = l;
+      localsweet_req_comm.loveuin = 0L;
+      localsweet_req_comm.qua = blru.a();
+      localsweet_req_comm.pf = 1;
+      localsweet_req_comm.src = 3;
+      localsweet_pair_check_req.req_comm = localsweet_req_comm;
+    }
+    return localsweet_pair_check_req;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String uniKey()
+  {
+    return "getPairState";
+  }
 }
 
 

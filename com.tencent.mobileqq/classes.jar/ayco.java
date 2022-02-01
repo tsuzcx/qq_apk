@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
 public class ayco
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  public ayco(SignatureEditFragment paramSignatureEditFragment) {}
+  private final Context a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ayco(View paramView)
   {
-    paramDialogInterface.dismiss();
+    super(paramView);
+    this.a = paramView.getContext();
   }
 }
 

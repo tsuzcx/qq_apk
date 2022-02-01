@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auoc
-  extends ameq
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public auoc(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  public auoc(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onUpdateTroopGetMemberList（） troopUin =  " + paramString);
-    }
-    if ((paramInt1 == 9) && (paramString.equals(MultiCardRecommendFragment.a(this.a))) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(4);
-    }
+    ((awhm)this.a.a.getManager(303)).a((short)-23312, paramBoolean, true);
+    bcst.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 2, 2, "", "", "", "");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auoc
  * JD-Core Version:    0.7.0.1
  */

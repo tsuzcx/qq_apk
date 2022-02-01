@@ -132,7 +132,7 @@ public final class cs
             System.arraycopy(arrayOfByte, 0, localdc.b, 0, k);
             co.a("bf init.");
             a(103, 300000L);
-            co.a(new File(this.g, this.h), this.e.a(), false);
+            co.a(new File(this.g, this.h), this.e.a());
             a(104, 300000L);
             return;
           }
@@ -158,7 +158,7 @@ public final class cs
     a(this.d);
     return;
     a(this.d);
-    co.a(new File(this.g, this.h), this.e.a(), false);
+    co.a(new File(this.g, this.h), this.e.a());
     if (this.f != null)
     {
       this.f.a();
@@ -178,7 +178,7 @@ public final class cs
         break;
       }
       if ((l2 != 0L) && (l1 - l2 >= 86400000L)) {
-        break label642;
+        break label640;
       }
       if (l2 != 0L) {
         break;
@@ -186,7 +186,7 @@ public final class cs
       dy.a("LocationSDK", "log_fc_wf_up_t_ms", Long.valueOf(l1));
       return;
     }
-    label642:
+    label640:
     ds.a("th_loc_task_t_consume", this);
     dy.a("LocationSDK", "log_fc_wf_up_t_ms", Long.valueOf(l1));
   }

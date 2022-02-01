@@ -7,14 +7,14 @@ class SystemWebViewClient$1
   
   public void run()
   {
-    if ((!TbsShareManager.forceLoadX5FromTBSDemo(SystemWebViewClient.access$000(this.this$0).getContext())) && (TbsDownloader.needDownload(SystemWebViewClient.access$000(this.this$0).getContext(), false))) {
-      TbsDownloader.startDownload(SystemWebViewClient.access$000(this.this$0).getContext());
+    if ((!TbsShareManager.forceLoadX5FromTBSDemo(SystemWebViewClient.a(this.a).getContext())) && (TbsDownloader.needDownload(SystemWebViewClient.a(this.a).getContext(), false))) {
+      TbsDownloader.startDownload(SystemWebViewClient.a(this.a).getContext());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebViewClient.1
  * JD-Core Version:    0.7.0.1
  */

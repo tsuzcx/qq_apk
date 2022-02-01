@@ -1,34 +1,27 @@
-import android.os.Parcel;
-
 public class ayyu
 {
   public int a;
+  public long a;
+  public Object a;
   public String a;
   public int b;
+  public long b;
   public String b;
   public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
   
-  public void a(Parcel paramParcel)
+  public String toString()
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.c);
-  }
-  
-  public void b(Parcel paramParcel)
-  {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.c = paramParcel.readInt();
+    return "SendResult{result=" + this.jdField_a_of_type_Int + ", errCode=" + this.jdField_b_of_type_Int + ", errStr='" + this.jdField_a_of_type_JavaLangString + '\'' + ", path='" + this.jdField_b_of_type_JavaLangString + '\'' + ", size=" + this.jdField_a_of_type_Long + ", uuid='" + this.jdField_c_of_type_JavaLangString + '\'' + ", md5='" + this.jdField_d_of_type_JavaLangString + '\'' + ", groupFileID=" + this.jdField_b_of_type_Long + ", thumbFileSize=" + this.jdField_c_of_type_Long + ", videoAttr=" + this.jdField_c_of_type_Int + ", videoKandianType=" + this.jdField_d_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayyu
  * JD-Core Version:    0.7.0.1
  */

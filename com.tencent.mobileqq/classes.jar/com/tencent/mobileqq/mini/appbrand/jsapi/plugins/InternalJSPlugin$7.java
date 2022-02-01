@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alud;
 import android.app.Activity;
 import android.util.Log;
-import bdgm;
-import bdjz;
+import anni;
+import bglp;
+import bgpa;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,10 +15,10 @@ class InternalJSPlugin$7
   
   public void run()
   {
-    bdjz localbdjz = bdgm.a(this.val$activity, 230, alud.a(2131706199), String.format(alud.a(2131706197), new Object[] { this.val$appName }), alud.a(2131706194), alud.a(2131706192), new InternalJSPlugin.7.1(this), new InternalJSPlugin.7.2(this));
+    bgpa localbgpa = bglp.a(this.val$activity, 230, anni.a(2131704600), String.format(anni.a(2131704598), new Object[] { this.val$appName }), anni.a(2131704595), anni.a(2131704593), new InternalJSPlugin.7.1(this), new InternalJSPlugin.7.2(this));
     try
     {
-      localbdjz.show();
+      localbgpa.show();
       return;
     }
     catch (Exception localException)
@@ -29,7 +29,7 @@ class InternalJSPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.InternalJSPlugin.7
  * JD-Core Version:    0.7.0.1
  */

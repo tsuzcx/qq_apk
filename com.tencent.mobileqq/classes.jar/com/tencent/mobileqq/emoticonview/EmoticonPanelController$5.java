@@ -3,7 +3,7 @@ package com.tencent.mobileqq.emoticonview;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import azri;
+import bctj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.HashMap;
 
@@ -48,7 +48,7 @@ class EmoticonPanelController$5
       }
       for (;;)
       {
-        azri.a(this.this$0.jdField_a_of_type_AndroidContentContext).a(str, (String)localObject, true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
+        bctj.a(this.this$0.jdField_a_of_type_AndroidContentContext).a(str, (String)localObject, true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
         localObject = localSharedPreferences.edit();
         ((SharedPreferences.Editor)localObject).putInt("sp_key_emoticon_panel_report_count", i + 1);
         ((SharedPreferences.Editor)localObject).apply();
@@ -64,7 +64,7 @@ class EmoticonPanelController$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelController.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,26 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qcq
+class qcq
   implements View.OnClickListener
 {
-  public qcq(ComponentContentRecommend paramComponentContentRecommend) {}
+  qcq(qco paramqco, Container paramContainer, pxk parampxk, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    this.a.a(ComponentContentRecommend.a(this.a));
-    owy.a().a(ComponentContentRecommend.a(this.a).mArticleID, ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a);
-    ComponentContentRecommend.a(this.a);
+    qco.a(this.jdField_a_of_type_Qco, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pxk, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("BiuPgcProteusItem", 2, "click bottom bar for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pxk.a() + " position = " + this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qcq
  * JD-Core Version:    0.7.0.1
  */

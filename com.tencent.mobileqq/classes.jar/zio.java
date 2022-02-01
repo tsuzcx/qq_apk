@@ -1,80 +1,32 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
-class zio
-  implements zja
+public class zio
+  implements bkle
 {
-  zio(zin paramzin) {}
+  public zio(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
   
-  public void b()
+  public void onScrollStateChanged(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "gallery onEnterAnimationEnd");
-    }
-    if (this.a.jdField_a_of_type_ComTencentWidgetGallery.getVisibility() != 0) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    }
-    this.a.b();
-    if ((this.a.jdField_a_of_type_Ziz != null) && (!this.a.jdField_a_of_type_Ziz.a())) {
-      this.a.jdField_a_of_type_Ziz.a();
-    }
-  }
-  
-  public void c()
-  {
-    if (this.a.jdField_a_of_type_Zje.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    this.a.c();
-    if ((this.a.jdField_a_of_type_Ziz != null) && (this.a.jdField_a_of_type_Ziz.a())) {
-      this.a.jdField_a_of_type_Ziz.b();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.a.jdField_a_of_type_Zje.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    if (this.a.jdField_a_of_type_Zim != null) {
-      this.a.jdField_a_of_type_Zim.a(4);
-    }
-    if ((this.a.jdField_a_of_type_Ziz != null) && (this.a.jdField_a_of_type_Ziz.a())) {
-      this.a.jdField_a_of_type_Ziz.b();
-    }
-    this.a.d();
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.e();
-  }
-  
-  public void e()
-  {
-    this.a.e();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    yqp.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
+    switch (paramInt)
     {
-      localStringBuilder = new StringBuilder().append("gallery onExitAnimationEnd ");
-      if (this.a.jdField_a_of_type_Zje.a() != this.a) {
-        break label87;
-      }
-    }
-    label87:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("GalleryComponent", 2, bool);
-      if (this.a.jdField_a_of_type_Zje.a() != this.a) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidAppActivity.finish();
+    default: 
+    case 4098: 
+    case 4099: 
+      do
+      {
+        return;
+      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
+      ScrollFrameSelectBar.a(this.a).c();
       return;
     }
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    this.a.l();
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zio
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.37.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class sok
-  implements View.OnClickListener
+  implements spi
 {
-  public sok(BridgeModule paramBridgeModule, String paramString) {}
+  sok(snh paramsnh) {}
   
-  public void onClick(View paramView)
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
   {
-    paramView = new JSONObject();
-    try
-    {
-      paramView.put("timestamp", System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramView);
+    snh.d(this.a, false);
+    if (!snh.c(this.a)) {
       return;
     }
-    catch (JSONException paramView) {}
+    snh.a(this.a, false);
+    if ((this.a.a()) && (snh.a(this.a) != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video", 2, "onDrawFinish checkplayable!");
+      }
+      if (!snh.a(this.a).b()) {
+        break label122;
+      }
+      snh.a(this.a).postDelayed(new ReadInJoyBaseAdapter.37.1(this, paramReadInJoyBaseListView), 1200L);
+    }
+    for (;;)
+    {
+      snh.a(this.a, this.a.a.getLastVisiblePosition() + 1, snh.c());
+      return;
+      label122:
+      this.a.a(paramReadInJoyBaseListView, snh.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sok
  * JD-Core Version:    0.7.0.1
  */

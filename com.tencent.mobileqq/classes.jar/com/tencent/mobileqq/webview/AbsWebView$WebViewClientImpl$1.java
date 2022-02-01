@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview;
 
-import beep;
+import bhlr;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
 public class AbsWebView$WebViewClientImpl$1
   implements Runnable
 {
-  public AbsWebView$WebViewClientImpl$1(beep parambeep, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public AbsWebView$WebViewClientImpl$1(bhlr parambhlr, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class AbsWebView$WebViewClientImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.AbsWebView.WebViewClientImpl.1
  * JD-Core Version:    0.7.0.1
  */

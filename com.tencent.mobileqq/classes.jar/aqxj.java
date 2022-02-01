@@ -1,22 +1,16 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-
-class aqxj
-  implements TVK_SDKMgr.InstallListener
+public class aqxj
 {
-  aqxj(aqxi paramaqxi, aqxn paramaqxn) {}
+  public boolean a;
+  public boolean b;
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt) {}
-  
-  public void onInstalledSuccessed()
+  public String toString()
   {
-    this.jdField_a_of_type_Aqxn.b();
+    return "QVipDiyTemplateConfig{enable=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxj
  * JD-Core Version:    0.7.0.1
  */

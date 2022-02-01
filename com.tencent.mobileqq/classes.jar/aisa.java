@@ -1,24 +1,26 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
-class aisa
-  implements zao
+public class aisa
+  extends Handler
 {
-  aisa(airz paramairz, LocalMediaInfo paramLocalMediaInfo) {}
+  public aisa(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Airz.a.mActivity).cancleProgressDailog();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
-    localBundle.putBoolean("VIDEO_STORY_PHOTO_LIST_TO_EDIT", true);
-    localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
-    ((NewPhotoListActivity)this.jdField_a_of_type_Airz.a.mActivity).getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 100);
-    airx.a(this.jdField_a_of_type_Airz.a, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, localBundle);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      paramMessage = (List)paramMessage.obj;
+      this.a.a(paramMessage, true);
+      return;
+    }
+    paramMessage = (List)paramMessage.obj;
+    this.a.a(paramMessage, false);
   }
 }
 

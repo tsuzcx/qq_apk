@@ -1,19 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class apuv
-  implements aufz<String, Integer>
+  implements bcin
 {
-  public apuv(EmoticonPanelController paramEmoticonPanelController, int paramInt) {}
+  public apuv(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public Integer a(String paramString)
+  public void a(Exception paramException)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.d(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.k);
-    int i = this.jdField_a_of_type_Int;
-    if (!TextUtils.isEmpty(paramString)) {
-      i = EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("DynamicAvatarRecordActivity", 2, "[onCameraException]", paramException);
     }
-    return Integer.valueOf(i);
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DynamicAvatarRecordActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    }
   }
 }
 

@@ -8,10 +8,10 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bcgg;
-import bcgk;
-import bcgn;
-import bdoo;
+import bfgt;
+import bfgy;
+import bfhb;
+import bgtn;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import java.util.Collections;
@@ -20,11 +20,11 @@ import java.util.List;
 public class TroopHonorView
   extends LinearLayout
 {
-  private static final int jdField_a_of_type_Int = bdoo.a(16.0F);
-  private static final int b = bdoo.a(16.0F);
-  private static final int c = bdoo.a(1.0F);
+  private static final int jdField_a_of_type_Int = bgtn.a(16.0F);
+  private static final int b = bgtn.a(16.0F);
+  private static final int c = bgtn.a(1.0F);
   private String jdField_a_of_type_JavaLangString = "";
-  private List<bcgk> jdField_a_of_type_JavaUtilList;
+  private List<bfgy> jdField_a_of_type_JavaUtilList;
   
   public TroopHonorView(Context paramContext)
   {
@@ -52,12 +52,12 @@ public class TroopHonorView
   
   public String a()
   {
-    return bcgg.c(this.jdField_a_of_type_JavaUtilList);
+    return bfgt.c(this.jdField_a_of_type_JavaUtilList);
   }
   
-  public void setHonorList(List<bcgk> paramList)
+  public void setHonorList(List<bfgy> paramList)
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(bcgg.b(paramList))) {}
+    if (this.jdField_a_of_type_JavaLangString.equals(bfgt.b(paramList))) {}
     for (;;)
     {
       return;
@@ -65,7 +65,7 @@ public class TroopHonorView
         Collections.sort(paramList);
       }
       this.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_JavaLangString = bcgg.b(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_JavaLangString = bfgt.b(this.jdField_a_of_type_JavaUtilList);
       removeAllViews();
       if ((paramList != null) && (paramList.size() > 0))
       {
@@ -73,17 +73,17 @@ public class TroopHonorView
         int k;
         for (int j = 0; i < paramList.size(); j = k)
         {
-          bcgk localbcgk = (bcgk)paramList.get(i);
+          bfgy localbfgy = (bfgy)paramList.get(i);
           k = j;
-          if (!TextUtils.isEmpty(localbcgk.b))
+          if (!TextUtils.isEmpty(localbfgy.b))
           {
             Object localObject = URLDrawable.URLDrawableOptions.obtain();
-            localObject = URLDrawable.getDrawable(localbcgk.b, (URLDrawable.URLDrawableOptions)localObject);
+            localObject = URLDrawable.getDrawable(localbfgy.b, (URLDrawable.URLDrawableOptions)localObject);
             LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(jdField_a_of_type_Int, b);
             ImageView localImageView = new ImageView(getContext());
-            ((URLDrawable)localObject).setURLDrawableListener(new bcgn(this, localImageView));
+            ((URLDrawable)localObject).setURLDrawableListener(new bfhb(this, localImageView));
             localImageView.setImageDrawable((Drawable)localObject);
-            localImageView.setContentDescription(localbcgk.jdField_a_of_type_JavaLangString);
+            localImageView.setContentDescription(localbfgy.jdField_a_of_type_JavaLangString);
             if (j != 0) {
               localLayoutParams.leftMargin = c;
             }
@@ -98,7 +98,7 @@ public class TroopHonorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.widget.TroopHonorView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.log;
 
-import alof;
 import android.content.Context;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import anhk;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
-import ndq;
+import nmj;
 import org.json.JSONObject;
 
 public class VipWebViewReportLog
@@ -47,7 +47,7 @@ public class VipWebViewReportLog
     jdField_a_of_type_JavaUtilSet = new HashSet();
     jdField_b_of_type_Int = 1;
     jdField_c_of_type_Int = 2;
-    jdField_b_of_type_JavaLangString = alof.aX + "WebViewCheck" + File.separator;
+    jdField_b_of_type_JavaLangString = anhk.ba + "WebViewCheck" + File.separator;
     jdField_c_of_type_JavaLangString = "WebViewCheck" + File.separator;
     e = "null";
     f = "null";
@@ -543,7 +543,7 @@ public class VipWebViewReportLog
           if (!str.equalsIgnoreCase("cookie")) {
             break;
           }
-          localStringBuilder.append(str + ":" + ndq.c((String)paramJSONObject.get(str), new String[0]) + "\n");
+          localStringBuilder.append(str + ":" + nmj.c((String)paramJSONObject.get(str), new String[0]) + "\n");
         }
       }
     }
@@ -619,12 +619,12 @@ public class VipWebViewReportLog
         String str = (String)localIterator.next();
         if ((!TextUtils.isEmpty(str)) && (paramString.contains(str)))
         {
-          QLog.d("WebCoreDump", 1, "-->url:" + ndq.b(paramString, new String[0]) + " is in white list");
+          QLog.d("WebCoreDump", 1, "-->url:" + nmj.b(paramString, new String[0]) + " is in white list");
           return true;
         }
       }
     }
-    QLog.d("WebCoreDump", 1, "-->url:" + ndq.b(paramString, new String[0]) + " is not in white list");
+    QLog.d("WebCoreDump", 1, "-->url:" + nmj.b(paramString, new String[0]) + " is not in white list");
     return false;
   }
   
@@ -641,7 +641,7 @@ public class VipWebViewReportLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.log.VipWebViewReportLog
  * JD-Core Version:    0.7.0.1
  */

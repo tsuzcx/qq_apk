@@ -1,23 +1,12 @@
-import com.tencent.mobileqq.activity.qwallet.emoj.HandRecognizer.OnPreviewFrameHandlerListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Interpolator;
 
-class bknr
-  implements HandRecognizer.OnPreviewFrameHandlerListener
+public final class bknr
+  implements Interpolator
 {
-  bknr(bknm parambknm) {}
-  
-  public void getHandRecognizeResult(int paramInt)
+  public float getInterpolation(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onPreviewFrame: getHandRecognizeResult=" + paramInt);
-    }
-    if (paramInt >= this.a.g)
-    {
-      bknm.a(this.a);
-      if (bknm.a(this.a)) {
-        this.a.ad();
-      }
-    }
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

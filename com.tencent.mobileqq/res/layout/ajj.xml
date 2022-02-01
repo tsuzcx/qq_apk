@@ -2,11 +2,11 @@
 <LinearLayout android:orientation="vertical" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/jti" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/icon" android:background="@drawable/cgd" android:layout_width="12.0dip" android:layout_height="9.0dip" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip" android:layout_centerVertical="true" />
-        <CheckBox android:id="@id/axa" android:background="@drawable/nj" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="15.0dip" android:checked="false" android:button="@null" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/icon" android:background="@drawable/cgd" android:layout_width="12.0dip" android:layout_height="9.0dip" android:layout_marginRight="14.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <CheckBox android:id="@id/axa" android:background="@drawable/nj" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="15.0dip" android:checked="false" android:button="@null" android:layout_centerVertical="true" />
         <RelativeLayout android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b10" android:layout_toRightOf="@id/axa" android:layout_centerVertical="true">
             <TextView android:id="@id/title" android:layout_marginLeft="0.0dip" style="@style/k6" />
-            <ImageView android:id="@id/yw" android:layout_alignParentRight="true" style="@style/jp" />
+            <ImageView android:id="@id/yw" android:visibility="gone" android:layout_alignParentRight="true" style="@style/jp" />
         </RelativeLayout>
     </RelativeLayout>
     <ViewStub android:id="@id/h2b" android:layout="@layout/aji" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="93.0dip" />

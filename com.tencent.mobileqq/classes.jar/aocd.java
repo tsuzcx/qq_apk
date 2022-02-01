@@ -1,77 +1,54 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import mqq.app.AppRuntime;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.face.FaceDownloader;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import mqq.os.MqqHandler;
 
 public class aocd
+  extends MqqHandler
 {
-  private aobx a;
-  
-  private static SharedPreferences a()
+  public aocd(FaceDownloader paramFaceDownloader, Looper paramLooper)
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "color_note_recent_view_switch" + str;
-    return BaseApplicationImpl.getApplication().getSharedPreferences(str, 4);
+    super(paramLooper);
   }
   
-  public static void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null)
+    if (paramMessage == null) {}
+    while (paramMessage.what != 100) {
+      return;
+    }
+    int i = 0;
+    label16:
+    if (i < this.a.b.size())
     {
-      localSharedPreferences.edit().putBoolean("color_note_recently_viewed_switch", paramBoolean).apply();
-      if (!paramBoolean) {
-        aofm.a(BaseApplicationImpl.getContext(), 5, false);
+      paramMessage = (aocg)this.a.b.get(i);
+      if (paramMessage != null) {
+        break label56;
       }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label16;
+      break;
+      label56:
       if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteRecentView", 0, "setRecentColorNoteSwitch: " + paramBoolean);
+        QLog.i("Q.qqhead.FaceDownloader", 2, "handle download finish task.faceInfo=" + paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo + ",bitmap=" + paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
       }
-    }
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = true;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("color_note_recently_viewed_switch", true);
-    }
-    return bool;
-  }
-  
-  public static boolean b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if ((localSharedPreferences != null) && (!localSharedPreferences.getBoolean("color_note_recent_first_visit", false)))
-    {
-      localSharedPreferences.edit().putBoolean("color_note_recent_first_visit", true).apply();
-      return true;
-    }
-    return false;
-  }
-  
-  public void a(aobx paramaobx)
-  {
-    this.a = paramaobx;
-  }
-  
-  public void a(ColorNote paramColorNote)
-  {
-    Object localObject = aocq.a();
-    if ((localObject != null) && (((aocp)localObject).a())) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i != 0) && (paramColorNote != null) && (this.a != null) && (aoct.a().a()))
+      if ((paramMessage != null) && (paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo != null) && (paramMessage.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.a.a.size() > 0))
       {
-        localObject = aocr.a(paramColorNote);
-        this.a.c((ColorNote)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("ColorNoteRecentView", 0, "updateRecentNote: " + paramColorNote.toString());
+        int j = 0;
+        while (j < this.a.a.size())
+        {
+          ((aoce)this.a.a.get(j)).a(true, paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
+          j += 1;
         }
       }
-      return;
+      this.a.b.remove(i);
+      i -= 1;
     }
   }
 }

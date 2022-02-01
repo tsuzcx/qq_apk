@@ -1,30 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bnkk
-  implements DialogInterface.OnClickListener
+class bnkk
+  implements Observer<bnuq>
 {
-  public bnkk(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bnkk(bnkd parambnkd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@Nullable bnuq parambnuq)
   {
-    Object localObject = ShortVideoPreviewActivity.a(this.a);
-    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
-    Intent localIntent = new Intent();
-    localIntent.setClassName((String)localObject, paramDialogInterface);
-    localIntent.addFlags(603979776);
-    localIntent.putExtra("file_send_path", this.a.d);
-    localIntent.putExtra("file_send_size", this.a.a);
-    localIntent.putExtra("file_send_duration", this.a.b);
-    localIntent.putExtra("file_source", this.a.c);
-    this.a.startActivity(localIntent);
-    ShortVideoPreviewActivity.a(this.a);
-    localObject = new Intent("key_video_select_confirm_ok_click");
-    ((Intent)localObject).putExtra("className", paramDialogInterface);
-    this.a.sendBroadcast((Intent)localObject);
+    if (parambnuq == null) {}
+    do
+    {
+      return;
+      bnkd.a(this.a).o();
+      bnkd.a(this.a, parambnuq.b);
+      if (bnkd.a(this.a) == AECaptureMode.NORMAL)
+      {
+        bnkd.a(this.a);
+        return;
+      }
+      if (bnkd.a(this.a) == AECaptureMode.GIF)
+      {
+        bnkd.a(this.a).setVisibility(8);
+        return;
+      }
+    } while (bnkd.a(this.a) != AECaptureMode.PLAY);
+    bnkd.a(this.a).setVisibility(8);
   }
 }
 

@@ -1,28 +1,78 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.text.style.ReplacementSpan;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-class oct
-  extends ReplacementSpan
+public class oct
+  extends aqkz<ocs>
 {
-  private int a;
-  
-  public oct(int paramInt)
+  @NonNull
+  public ocs a(int paramInt)
   {
-    this.a = paramInt;
+    if (paramInt == 0)
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        return ocs.a(bgsg.e(((QQAppInterface)localAppRuntime).getApplication()));
+      }
+    }
+    return new ocs();
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  @Nullable
+  public ocs a(aqlg[] paramArrayOfaqlg)
   {
-    return this.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountConfProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return ocs.a(paramArrayOfaqlg);
+    }
+    return null;
+  }
+  
+  public void a(ocs paramocs)
+  {
+    paramocs.b();
+    paramocs.a();
+  }
+  
+  public Class<ocs> clazz()
+  {
+    return ocs.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return bgsg.m(((QQAppInterface)localAppRuntime).getApp());
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 32;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oct
  * JD-Core Version:    0.7.0.1
  */

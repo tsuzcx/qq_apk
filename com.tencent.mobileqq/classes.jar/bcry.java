@@ -1,14 +1,38 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bcry
-  implements bcpo
 {
-  public bcry(TroopAIORobotLayout paramTroopAIORobotLayout) {}
+  int jdField_a_of_type_Int = 0;
+  bcrz jdField_a_of_type_Bcrz = new bcrz(this.jdField_a_of_type_Int, '&');
+  List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public bcry()
   {
-    if (paramInt == 0) {}
+    this.jdField_a_of_type_Int += 1;
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject = this.jdField_a_of_type_Bcrz;
+    int i = 0;
+    if (i < paramString.length())
+    {
+      char c = paramString.charAt(i);
+      bcrz localbcrz = ((bcrz)localObject).a(c);
+      if (localbcrz == null)
+      {
+        localbcrz = new bcrz(this.jdField_a_of_type_Int, c);
+        this.jdField_a_of_type_Int += 1;
+        ((bcrz)localObject).a(localbcrz);
+      }
+      for (localObject = localbcrz;; localObject = localbcrz)
+      {
+        i += 1;
+        break;
+        localbcrz.a();
+      }
+    }
   }
 }
 

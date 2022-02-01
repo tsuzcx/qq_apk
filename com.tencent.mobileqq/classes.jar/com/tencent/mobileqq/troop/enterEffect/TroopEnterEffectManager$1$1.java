@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import bbuq;
+import bevb;
 
 class TroopEnterEffectManager$1$1
   implements Runnable
@@ -14,7 +14,7 @@ class TroopEnterEffectManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager.1.1
  * JD-Core Version:    0.7.0.1
  */

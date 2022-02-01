@@ -10,7 +10,7 @@ public class VideoPagModel
   protected int effectType = VideoEffectType.TYPE_DEFAULT.value;
   protected String filePath;
   protected float startTime;
-  protected String stickerId = "";
+  protected String uniqueId = "";
   
   public String getAssetFilePath()
   {
@@ -37,9 +37,9 @@ public class VideoPagModel
     return this.startTime;
   }
   
-  public String getStickerId()
+  public String getUniqueId()
   {
-    return this.stickerId;
+    return this.uniqueId;
   }
   
   public void setAssetFilePath(String paramString)
@@ -67,14 +67,14 @@ public class VideoPagModel
     this.startTime = paramFloat;
   }
   
-  public void setStickerId(String paramString)
+  public void setUniqueId(String paramString)
   {
-    this.stickerId = paramString;
+    this.uniqueId = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.effect.VideoPagModel
  * JD-Core Version:    0.7.0.1
  */

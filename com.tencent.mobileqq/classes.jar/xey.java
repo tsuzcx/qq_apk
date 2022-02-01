@@ -1,22 +1,17 @@
 class xey
-  implements uxw
+  implements wvp
 {
-  xey(xet paramxet, xfg paramxfg) {}
+  xey(xev paramxev, wvo paramwvo) {}
   
-  public void a(boolean paramBoolean, uxs paramuxs)
+  public void a(boolean paramBoolean)
   {
-    wxe.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramuxs != null))
-    {
-      this.jdField_a_of_type_Xet.a(paramuxs.b, paramuxs.a, this.jdField_a_of_type_Xfg);
-      return;
-    }
-    wxe.e("DoodleEmojiManager", "onLbsUpdate failed.");
+    this.jdField_a_of_type_Wvo.a();
+    this.jdField_a_of_type_Xev.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xey
  * JD-Core Version:    0.7.0.1
  */

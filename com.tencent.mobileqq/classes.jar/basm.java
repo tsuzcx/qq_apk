@@ -1,109 +1,140 @@
-import ConfigPush.FileStorageServerListInfo;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
+import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase.FlowDecodeException;
+import java.lang.ref.WeakReference;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
 public class basm
 {
-  public String a;
-  public ArrayList<FileStorageServerListInfo> a;
-  public int[] a;
-  public String b;
-  public ArrayList<FileStorageServerListInfo> b;
-  public int[] b;
+  private WeakReference<basn> jdField_a_of_type_JavaLangRefWeakReference;
+  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+  EGLConfig jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig;
+  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
+  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
   
-  public basm()
+  public basm(WeakReference<basn> paramWeakReference)
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[6];
-    this.jdField_b_of_type_ArrayOfInt = new int[6];
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
-  public ArrayList<FileStorageServerListInfo> a(String paramString)
+  public static String a(String paramString, int paramInt)
   {
-    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-      return this.jdField_a_of_type_JavaUtilArrayList;
-    }
-    if ((paramString != null) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
-      return this.jdField_b_of_type_JavaUtilArrayList;
-    }
-    return null;
+    return paramString + " failed: " + paramInt;
+  }
+  
+  private void a(String paramString)
+  {
+    a(paramString, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    paramString = a(paramString, paramInt);
+    yqp.e("EglHelper", "throwEglException tid=" + Thread.currentThread().getId() + " " + paramString);
+    throw new RuntimeException(paramString);
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt)
+  {
+    yqp.d(paramString1, a(paramString2, paramInt));
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilArrayList.size()];
+    yqp.d("EglHelper", "start() tid=" + Thread.currentThread().getId());
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)EGLContext.getEGL());
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay == EGL10.EGL_NO_DISPLAY) {
+      throw new RuntimeException("eglGetDisplay failed");
     }
-    if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)) {
-      this.jdField_b_of_type_ArrayOfInt = new int[this.jdField_b_of_type_JavaUtilArrayList.size()];
+    Object localObject = new int[2];
+    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject)) {
+      throw new RuntimeException("eglInitialize failed");
     }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (paramString1 != null) {}
+    localObject = (basn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null)
+    {
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = null;
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+    }
     for (;;)
     {
-      try
-      {
-        int i;
-        if (paramString1.equals(this.jdField_a_of_type_JavaLangString))
-        {
-          localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-          paramString1 = this.jdField_a_of_type_ArrayOfInt;
-          if ((localArrayList == null) || (localArrayList.size() <= 0) || (paramString1 == null) || (paramString1.length <= 0)) {
-            break;
-          }
-          paramString2 = new URL(paramString2).getHost();
-          if ((paramString2 == null) || (paramString2.length() <= 0)) {
-            break;
-          }
-          i = 0;
-          if (i >= localArrayList.size()) {
-            break;
-          }
-          String str = ((FileStorageServerListInfo)localArrayList.get(i)).sIP;
-          if ((str != null) && (str.equalsIgnoreCase(paramString2)))
-          {
-            if (paramString1.length <= i) {
-              break;
-            }
-            paramString1[i] += 1;
-          }
-        }
-        else
-        {
-          if ((paramString1 == null) || (!paramString1.equals(this.jdField_b_of_type_JavaLangString))) {
-            break label163;
-          }
-          localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
-          paramString1 = this.jdField_b_of_type_ArrayOfInt;
-          continue;
-        }
-        i += 1;
-        continue;
-        paramString1 = null;
+      if ((this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != EGL10.EGL_NO_CONTEXT)) {
+        break label289;
       }
-      catch (MalformedURLException paramString1)
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError() == 12294)
       {
-        return;
+        throw new FlowDecodeScreenSurfaceBase.FlowDecodeException(a("createContext", 12294));
+        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = ((basn)localObject).a().chooseConfig(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
+        yqp.a("FlowEdit_FlowDecodeScreenSurfaceBase", "chooseConfig %s", this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig);
+        try
+        {
+          this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = ((basn)localObject).a().createContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig);
+          yqp.a("FlowEdit_FlowDecodeScreenSurfaceBase", "createContext %s", this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          yqp.d("FlowEdit_FlowDecodeScreenSurfaceBase", localIllegalArgumentException, "createContext", new Object[0]);
+          throw new FlowDecodeScreenSurfaceBase.FlowDecodeException("createContext failed", localIllegalArgumentException);
+        }
       }
-      label163:
-      ArrayList localArrayList = null;
+    }
+    a("createContext");
+    label289:
+    yqp.d("EglHelper", "createContext " + this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext + " tid=" + Thread.currentThread().getId());
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreatePbufferSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig, new int[] { 12375, paramInt1, 12374, paramInt2, 12344 });
+    if ((this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface == null) || (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface == EGL10.EGL_NO_SURFACE))
+    {
+      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError() == 12299) {
+        yqp.e("EglHelper", "createWindowSurface returned EGL_BAD_NATIVE_WINDOW.");
+      }
+      return false;
+    }
+    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext))
+    {
+      a("EGLHelper", "eglMakeCurrent", this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
+      return false;
+    }
+    return true;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != EGL10.EGL_NO_SURFACE))
+    {
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
     }
   }
   
-  public int[] a(String paramString)
+  public void c()
   {
-    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-      return this.jdField_a_of_type_ArrayOfInt;
+    yqp.d("EglHelper", "finish() tid=" + Thread.currentThread().getId());
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != null)
+    {
+      basn localbasn = (basn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbasn != null) {
+        localbasn.a().destroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+      }
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
     }
-    if ((paramString != null) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
-      return this.jdField_b_of_type_ArrayOfInt;
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != null)
+    {
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
     }
-    return null;
   }
 }
 

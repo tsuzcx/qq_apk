@@ -1,46 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-final class bczb
-  implements DownloadParams.DecodeHandler
+class bczb
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    do
-    {
-      do
-      {
-        Object localObject;
-        do
-        {
-          do
-          {
-            return paramDownloadParams;
-            localObject = paramDownloadParams.tag;
-            paramDownloadParams = paramBitmap;
-          } while (!(localObject instanceof int[]));
-          paramDownloadParams = paramBitmap;
-        } while (((int[])localObject).length != 4);
-        paramDownloadParams = (int[])localObject;
-        if (paramDownloadParams[0] == 0) {
-          paramDownloadParams[0] = paramBitmap.getWidth();
-        }
-        if (paramDownloadParams[1] == 0) {
-          paramDownloadParams[1] = paramBitmap.getHeight();
-        }
-        paramBitmap = bdhj.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2], paramDownloadParams[3]);
-        paramDownloadParams = paramBitmap;
-      } while (paramBitmap != null);
-      paramDownloadParams = paramBitmap;
-    } while (!QLog.isDevelopLevel());
-    QLog.w(bcyz.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
-    return paramBitmap;
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  String jdField_b_of_type_JavaLangString;
+  String c;
+  
+  bczb(bcyz parambcyz) {}
 }
 
 

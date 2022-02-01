@@ -1,242 +1,253 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emoticonview.EmotionPanelListView;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
 import java.util.List;
-import java.util.Set;
-import org.json.JSONArray;
 
 public class aryt
-  extends aryv
+  implements View.OnTouchListener, avdu, bkhe
 {
-  public aryt(Intent paramIntent)
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private asag jdField_a_of_type_Asag;
+  private avdt jdField_a_of_type_Avdt = new avdt(120, this);
+  private bkhe jdField_a_of_type_Bkhe;
+  private EmotionPanelListView jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView;
+  boolean jdField_a_of_type_Boolean = false;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  private int jdField_b_of_type_Int = 0;
+  private boolean jdField_b_of_type_Boolean;
+  private int c;
+  private int d;
+  private int e;
+  
+  public aryt(EmotionPanelListView paramEmotionPanelListView, asag paramasag, bkhe parambkhe)
   {
-    super(paramIntent);
+    this.jdField_a_of_type_Bkhe = parambkhe;
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView = paramEmotionPanelListView;
+    this.jdField_a_of_type_Asag = paramasag;
+    this.c = bgtn.a(5.0F);
+    this.jdField_a_of_type_Avdt.b(30);
   }
   
-  public String a()
+  private void a(int paramInt)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (paramInt != this.jdField_b_of_type_Int)
     {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_prompt");
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_desc");
-      }
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<RecentUser> a(List<RecentUser> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bdeu.a(localRecentUser.uin)) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && ((localRecentUser.getType() != 1006) || (a(aryl.h))) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!ndv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))) {
-        localArrayList.add(localRecentUser);
-      }
-    }
-    return localArrayList;
-  }
-  
-  protected void a()
-  {
-    if (k()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
-  {
-    super.a(paramQQAppInterface, paramActivity);
-    anob.a(paramQQAppInterface, this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_name"), this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_view"));
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    e();
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct"))
-    {
-      d();
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-    return true;
-  }
-  
-  protected boolean a(String paramString1, int paramInt1, String paramString2, int paramInt2)
-  {
-    SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = paramInt1;
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString1;
-    localSessionInfo.b = paramString2;
-    if ((localSessionInfo.jdField_a_of_type_Int < 0) || (TextUtils.isEmpty(localSessionInfo.jdField_a_of_type_JavaLangString)))
-    {
-      if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-        bfhz.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
-      }
-      return false;
-    }
-    this.jdField_a_of_type_AndroidOsBundle.keySet();
-    paramString2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_name");
-    paramString1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_view");
-    Object localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_desc");
-    String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_ver");
-    String str4 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_prompt");
-    String str5 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_meta");
-    String str6 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_config");
-    String str7 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_compat");
-    Object localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_list");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_text");
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1)))
-    {
-      if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-        bfhz.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
-      }
-      return false;
-    }
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-      bfhz.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "0", false);
-    }
-    paramString1 = new ArkAppMessage(str4, paramString2, (String)localObject2, paramString1, str3, str5, str6, str7);
-    if (!TextUtils.isEmpty(str2)) {
-      paramString1.mText = str2;
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    for (;;)
-    {
-      int i;
-      try
+      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.getChildAt(0) != null) && (paramInt == 0) && (this.jdField_b_of_type_Int != 1) && (a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView)) && (this.jdField_a_of_type_Asag != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.getListViewScrollY() < this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Boolean))
       {
-        localObject1 = new JSONArray((String)localObject1);
-        i = ((JSONArray)localObject1).length();
-        paramString1.mAppList = new ArrayList();
-        paramInt1 = 0;
-        if (paramInt1 < i)
-        {
-          str2 = ((JSONArray)localObject1).optString(paramInt1);
-          if (TextUtils.isEmpty(str2)) {
-            break label622;
-          }
-          localObject2 = new ArkAppMessage();
-          ((ArkAppMessage)localObject2).fromAppXml(str2);
-          paramString1.mAppList.add(localObject2);
+        this.jdField_a_of_type_Asag.n();
+        if (QLog.isColorLevel()) {
+          QLog.d("EmotionPanelListView", 2, "onScrollStateChanged onPullDown");
         }
       }
-      catch (Exception localException)
-      {
-        com.tencent.TMG.utils.QLog.e("ForwardOption.ForwardBaseOption", 1, "appList error");
+      this.jdField_b_of_type_Int = paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("EmotionPanelListView", 2, "onScrollStateChanged mLastState :" + this.jdField_b_of_type_Int);
       }
-      paramString2 = (ArkAppMessage)anny.a(2, paramString2, this.jdField_a_of_type_AndroidOsBundle, paramString1);
-      if (paramString2 == null) {}
-      for (;;)
+    }
+  }
+  
+  private void a(View paramView)
+  {
+    if ((paramView instanceof URLImageView))
+    {
+      int i = this.jdField_a_of_type_ArrayOfInt[1] + paramView.getWidth() - this.c - this.d;
+      float f = paramView.getWidth() / 2.0F;
+      if (i < f)
       {
-        paramString2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_appId_ark_from_sdk");
-        String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_name");
-        str2 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_action_data");
-        localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_a_action_data");
-        str3 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_url");
-        if (!TextUtils.isEmpty(paramString2))
+        paramView.setAlpha((f - i) * 1.0F / f);
+        return;
+      }
+      paramView.setAlpha(0.0F);
+      return;
+    }
+    paramView.setAlpha(1.0F);
+  }
+  
+  private void a(AbsListView paramAbsListView, boolean paramBoolean)
+  {
+    if (paramAbsListView != null)
+    {
+      int k = paramAbsListView.getChildCount();
+      int i = 0;
+      while (i < k)
+      {
+        View localView1 = paramAbsListView.getChildAt(i);
+        if ((localView1 instanceof ViewGroup))
         {
-          paramString1.appId = paramString2;
-          paramString1.mSourceName = str1;
-          paramString1.mSourceActionData = str2;
-          paramString1.mSource_A_ActionData = ((String)localObject2);
-          paramString1.mSourceUrl = str3;
-        }
-        i = this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_MSG_FORWARD_ID");
-        paramInt1 = i;
-        if (i == 0)
-        {
-          paramString2 = this.jdField_a_of_type_AndroidOsBundle.getIntArray("KEY_MSG_FORWARD_ID_ARRAY");
-          paramInt1 = i;
-          if (paramString2 != null) {
-            if (paramString2.length <= paramInt2) {
-              break label602;
+          int m = ((ViewGroup)localView1).getChildCount();
+          int j = m - 1;
+          if (j >= 0)
+          {
+            View localView2 = ((ViewGroup)localView1).getChildAt(m - 1);
+            localView2.getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
+            this.jdField_a_of_type_ArrayOfInt[0] = localView2.getLeft();
+            if ((paramBoolean) && (this.e > 0) && (this.jdField_a_of_type_ArrayOfInt[0] + localView2.getWidth() * 2.0F / 3.0F > this.e) && (this.d > 0) && (this.jdField_a_of_type_ArrayOfInt[1] + localView2.getWidth() - this.c > this.d)) {
+              a(localView2);
+            }
+            for (;;)
+            {
+              j -= 1;
+              break;
+              localView2.setAlpha(1.0F);
             }
           }
         }
-        for (paramInt1 = paramString2[paramInt2];; paramInt1 = i)
-        {
-          acjm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString1, paramInt1);
-          return true;
-          label602:
-          ArkAppCenter.c("ArkApp", "ForwardArkMsgOption.sendArkMessage, forward array has not enough length");
-        }
-        paramString1 = paramString2;
-      }
-      label622:
-      paramInt1 += 1;
-    }
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  protected boolean c()
-  {
-    if (f())
-    {
-      List localList = b();
-      int i = 0;
-      while (i < localList.size())
-      {
-        ResultRecord localResultRecord = (ResultRecord)localList.get(i);
-        a(localResultRecord.jdField_a_of_type_JavaLangString, localResultRecord.a(), localResultRecord.c, i);
         i += 1;
       }
-      return super.c();
     }
-    d();
-    return super.c();
   }
   
-  protected void d()
+  private boolean a(ListView paramListView)
   {
-    super.d();
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_type");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_title");
-    if ((TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2))) {}
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramListView.getChildCount() > 0)
     {
+      bool1 = bool2;
+      if (paramListView.getFirstVisiblePosition() == 0)
+      {
+        bool1 = bool2;
+        if (paramListView.getChildAt(0) != null)
+        {
+          bool1 = bool2;
+          if (paramListView.getChildAt(0).getTop() >= paramListView.getPaddingTop()) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public avdt a()
+  {
+    return this.jdField_a_of_type_Avdt;
+  }
+  
+  public void a(AbsListView paramAbsListView)
+  {
+    if (this.jdField_b_of_type_Boolean) {}
+    while ((!(paramAbsListView.getAdapter() instanceof asct)) && (!(paramAbsListView.getAdapter() instanceof ascj))) {
       return;
-      azqs.b(null, "dc00898", "", "", "0X800A631", "0X800A631", 0, 0, str1, ForwardUtils.b(i), str2, "");
-    } while (!com.tencent.qphone.base.util.QLog.isColorLevel());
-    com.tencent.qphone.base.util.QLog.d("ForwardOption.ForwardBaseOption", 2, new Object[] { "ARK转发=0X800A631, type=", str1, ", uinType=", ForwardUtils.b(i), ", title=", str2 });
+    }
+    if (((this.jdField_a_of_type_Asag instanceof EmoticonMainPanel)) && (((EmoticonMainPanel)this.jdField_a_of_type_Asag).a().a != null))
+    {
+      int i = EmoticonPanelController.jdField_b_of_type_Int;
+      List localList = ((EmoticonMainPanel)this.jdField_a_of_type_Asag).a().jdField_b_of_type_JavaUtilList;
+      EmotionPanelViewPagerAdapter localEmotionPanelViewPagerAdapter = ((EmoticonMainPanel)this.jdField_a_of_type_Asag).a().a;
+      if ((i >= 0) && (localList != null) && (i < localList.size()))
+      {
+        Object localObject2 = localEmotionPanelViewPagerAdapter.a(i);
+        Object localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = localObject2;
+          if (i - 1 >= 0) {
+            localObject1 = localEmotionPanelViewPagerAdapter.a(i - 1);
+          }
+        }
+        localObject2 = localObject1;
+        if (localObject1 == null)
+        {
+          localObject2 = localObject1;
+          if (i + 1 < localList.size()) {
+            localObject2 = localEmotionPanelViewPagerAdapter.a(i + 1);
+          }
+        }
+        if ((localObject2 != null) && (((ImageButton)localObject2).getVisibility() == 0))
+        {
+          localObject1 = new int[2];
+          ((ImageButton)localObject2).getLocationOnScreen((int[])localObject1);
+          this.e = ((ImageButton)localObject2).getLeft();
+          this.d = localObject1[1];
+        }
+      }
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      a(paramAbsListView, bool);
+      return;
+    }
   }
   
-  protected boolean d()
+  public void a(boolean paramBoolean)
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-    return a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), i, this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin"), 0);
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void e()
+  public void b(boolean paramBoolean)
   {
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_name");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_h5_from_js");
-    String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_view");
-    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-      anjy.a(str1, str3, str2, new aryu(this));
+    if ((paramBoolean) && (this.jdField_a_of_type_Asag != null))
+    {
+      this.jdField_a_of_type_Asag.m();
+      this.jdField_a_of_type_Avdt.a(false);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionPanelListView", 2, "onCheckSpeed overSpeed :" + paramBoolean);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.jdField_a_of_type_Bkhe != null) {
+      this.jdField_a_of_type_Bkhe.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+    if ((a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView)) && (this.jdField_b_of_type_Int == 2) && (this.jdField_a_of_type_Asag != null)) {
+      a(0);
+    }
+    a(paramAbsListView);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.getListViewScrollY();
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.jdField_a_of_type_Bkhe != null) {
+      this.jdField_a_of_type_Bkhe.onScrollStateChanged(paramAbsListView, paramInt);
+    }
+    a(paramInt);
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      this.jdField_a_of_type_Float = paramMotionEvent.getY();
+      this.jdField_a_of_type_Avdt.a(true);
+      if (this.jdField_a_of_type_Asag != null) {
+        this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Asag.c();
+      }
+    }
+    for (;;)
+    {
+      return false;
+      if ((i == 1) && (this.jdField_a_of_type_Boolean)) {
+        if ((a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView)) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView.getListViewScrollY() < this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Asag != null))
+        {
+          this.jdField_a_of_type_Asag.n();
+          if (QLog.isColorLevel()) {
+            QLog.d("EmotionPanelListView", 2, "onTouch scroll top pull down");
+          }
+        }
+        else if ((a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView)) && (paramMotionEvent.getY() > this.jdField_a_of_type_Float) && (this.jdField_a_of_type_Asag != null))
+        {
+          this.jdField_a_of_type_Asag.n();
+          if (QLog.isColorLevel()) {
+            QLog.d("EmotionPanelListView", 2, "onTouch no scroll top pull down");
+          }
+        }
+      }
     }
   }
 }

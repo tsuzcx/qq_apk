@@ -1,19 +1,16 @@
-class alom
+import android.content.Context;
+
+public abstract interface alom
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract Context getContext();
   
-  public alom(alok paramalok, int paramInt, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
+  public abstract void invalidate();
+  
+  public abstract void postInvalidate();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alom
  * JD-Core Version:    0.7.0.1
  */

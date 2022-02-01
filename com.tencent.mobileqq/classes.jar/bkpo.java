@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ae.AEPituCameraUnit.16;
+import com.tencent.widget.VerticalGallery;
 
-public class bkpo
-  implements View.OnClickListener
+public abstract interface bkpo
 {
-  public bkpo(AEPituCameraUnit.16 param16) {}
-  
-  public void onClick(View paramView)
-  {
-    if (bkpl.a(this.a.this$0) != null) {
-      bkpl.a(this.a.this$0).f();
-    }
-  }
+  public abstract void b(VerticalGallery paramVerticalGallery);
 }
 
 

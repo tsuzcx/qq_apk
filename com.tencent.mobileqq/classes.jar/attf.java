@@ -1,23 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 class attf
-  implements View.OnClickListener
+  implements atve
 {
-  attf(atte paramatte) {}
+  attf(atte paramatte, List paramList, aszd paramaszd, attj paramattj) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.a.a()) {
-      return;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Aszd.b(localFileManagerEntity);
+      }
     }
-    azqs.b(null, "CliOper", "", "", "0X800A966", "0X800A966", 0, 0, "0", "0", "0", "");
-    atqr.a(atso.a(this.a.a), this.a.a);
+    if (this.jdField_a_of_type_Attj != null) {
+      this.jdField_a_of_type_Attj.a(1, 0);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Attj != null) {
+      this.jdField_a_of_type_Attj.a(1, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attf
  * JD-Core Version:    0.7.0.1
  */

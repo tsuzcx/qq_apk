@@ -1,17 +1,28 @@
-class azrn
+import android.content.Context;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+
+public class azrn
+  extends LinearLayoutManager
 {
-  public String a;
-  public String b;
-  
-  azrn(String paramString1, String paramString2)
+  public azrn(InterestSwitchEditActivity paramInterestSwitchEditActivity, Context paramContext)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    super(paramContext);
+  }
+  
+  public boolean canScrollHorizontally()
+  {
+    return false;
+  }
+  
+  public boolean canScrollVertically()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azrn
  * JD-Core Version:    0.7.0.1
  */

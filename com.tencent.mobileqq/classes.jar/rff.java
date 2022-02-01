@@ -1,19 +1,64 @@
-import android.widget.Toast;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.articlesummary.articlesummary.FamilyCommentInfo;
 
 public class rff
-  implements qfu
+  implements Cloneable
 {
-  public rff(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void a(String paramString)
+  public static rff a(articlesummary.FamilyCommentInfo paramFamilyCommentInfo)
   {
-    srt.a(this.a, paramString, 0).show();
+    rff localrff = new rff();
+    localrff.jdField_a_of_type_JavaLangString = paramFamilyCommentInfo.icon_url.get().toStringUtf8();
+    localrff.jdField_b_of_type_JavaLangString = paramFamilyCommentInfo.jump_url.get().toStringUtf8();
+    localrff.jdField_a_of_type_Int = paramFamilyCommentInfo.medal_urls_width.get();
+    localrff.jdField_b_of_type_Int = paramFamilyCommentInfo.medal_urls_height.get();
+    return localrff;
+  }
+  
+  public rff a()
+  {
+    try
+    {
+      super.clone();
+      rff localrff = new rff();
+      localrff.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localrff.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localrff.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localrff.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      return localrff;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FamilyCommentInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public String toString()
+  {
+    return "FamilyCommentInfo\n familyIconUrl " + this.jdField_a_of_type_JavaLangString + "\n familyJumpUrl " + this.jdField_b_of_type_JavaLangString + "\n width " + this.jdField_a_of_type_Int + "\n height " + this.jdField_b_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rff
  * JD-Core Version:    0.7.0.1
  */

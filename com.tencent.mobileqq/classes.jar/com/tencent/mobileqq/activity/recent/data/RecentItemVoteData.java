@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
-import bdns;
+import bgsu;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 
 public class RecentItemVoteData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public long time;
   
@@ -50,12 +50,12 @@ public class RecentItemVoteData
   {
     this.mTitleName = paramString;
     this.time = paramLong;
-    this.mShowTime = bdns.a(paramLong, true, "yyyy-MM-dd");
+    this.mShowTime = bgsu.a(paramLong, true, "yyyy-MM-dd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemVoteData
  * JD-Core Version:    0.7.0.1
  */

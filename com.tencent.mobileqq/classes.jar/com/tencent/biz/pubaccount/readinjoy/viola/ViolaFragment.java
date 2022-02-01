@@ -2,6 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.viola;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -12,31 +13,35 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity.SerializableMap;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
+import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
-import smk;
-import smt;
-import smu;
-import smv;
-import smw;
-import smx;
-import smy;
-import snl;
-import sno;
-import snq;
-import yak;
+import tlg;
+import tlq;
+import tlr;
+import tls;
+import tlt;
+import tlu;
+import tlv;
+import tlw;
+import tlx;
+import tmk;
+import tmn;
+import tmp;
+import zuc;
 
 public class ViolaFragment
   extends ViolaLazyFragment
 {
   public static String a;
-  private smy jdField_a_of_type_Smy;
-  public snl a;
-  public sno a;
+  public HippyQQEngine a;
+  private tlx jdField_a_of_type_Tlx;
+  public tmk a;
+  public tmn a;
   private boolean jdField_a_of_type_Boolean;
   
   static
@@ -46,8 +51,8 @@ public class ViolaFragment
   
   public ViolaFragment()
   {
-    this.jdField_a_of_type_Snl = new snl(this);
-    this.jdField_a_of_type_Sno = new sno(this);
+    this.jdField_a_of_type_Tmk = new tmk(this);
+    this.jdField_a_of_type_Tmn = new tmn(this);
   }
   
   private static ViolaFragment a(Bundle paramBundle)
@@ -61,23 +66,48 @@ public class ViolaFragment
     return paramBundle;
   }
   
-  public static ViolaFragment a(String paramString1, String paramString2, ReadInJoyChannelActivity.SerializableMap paramSerializableMap, boolean paramBoolean)
+  public static ViolaFragment a(String paramString, ReadInJoyChannelActivity.SerializableMap paramSerializableMap, boolean paramBoolean)
   {
-    paramString2 = new Bundle();
-    paramString2.putString("url", paramString1);
-    paramString2.putSerializable(jdField_a_of_type_JavaLangString, paramSerializableMap);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", paramString);
+    localBundle.putSerializable(jdField_a_of_type_JavaLangString, paramSerializableMap);
     if (paramBoolean) {
-      paramString2.putInt(sno.b, 1);
+      localBundle.putInt(tmn.b, 1);
     }
-    return a(paramString2);
+    return a(localBundle);
   }
   
   private void b(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Snl.a(paramBundle);
+    this.jdField_a_of_type_Tmk.a(paramBundle);
   }
   
   private void b(Bundle paramBundle, ViewGroup paramViewGroup)
+  {
+    Object localObject = new JSONObject();
+    if ((paramBundle != null) && (paramBundle.containsKey("param"))) {}
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramBundle.getString("param"));
+        localObject = localJSONObject;
+      }
+      catch (JSONException localJSONException)
+      {
+        continue;
+      }
+      this.jdField_a_of_type_Tmn.b(paramViewGroup);
+      if (!this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.isReady()) {
+        this.jdField_a_of_type_Tmn.a();
+      }
+      this.jdField_a_of_type_Tmn.a(paramViewGroup, new tlq(this, paramBundle, paramViewGroup));
+      this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.initHippy(a(), (JSONObject)localObject, this.jdField_a_of_type_Tmn.b(), new tlr(this, paramBundle, paramViewGroup));
+      return;
+    }
+  }
+  
+  private void c(Bundle paramBundle, ViewGroup paramViewGroup)
   {
     JSONObject localJSONObject = new JSONObject();
     if ((paramBundle != null) && (paramBundle.containsKey("param"))) {}
@@ -86,16 +116,19 @@ public class ViolaFragment
       try
       {
         paramBundle = new JSONObject(paramBundle.getString("param"));
-        this.jdField_a_of_type_Sno.c(paramViewGroup);
-        this.jdField_a_of_type_Sno.b(paramViewGroup);
-        this.jdField_a_of_type_Sno.a(paramViewGroup, new smt(this));
-        this.jdField_a_of_type_Snl.a(a(), paramBundle, this.jdField_a_of_type_Sno.b(), new smu(this));
-        return;
+        this.jdField_a_of_type_Tmn.c(paramViewGroup);
+        this.jdField_a_of_type_Tmn.b(paramViewGroup);
+        this.jdField_a_of_type_Tmn.a(paramViewGroup, new tls(this));
+        if (a() == null) {
+          return;
+        }
       }
       catch (JSONException paramBundle)
       {
         paramBundle = localJSONObject;
         continue;
+        this.jdField_a_of_type_Tmk.a(a(), paramBundle, this.jdField_a_of_type_Tmn.b(), new tlt(this));
+        return;
       }
       paramBundle = localJSONObject;
     }
@@ -103,125 +136,39 @@ public class ViolaFragment
   
   private void d(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Sno.a(paramViewGroup);
+    this.jdField_a_of_type_Tmn.a(paramViewGroup);
   }
-  
-  private void v() {}
   
   public int a()
   {
-    return 2131558457;
+    return 2131558463;
   }
   
   public CommonSuspensionGestureLayout a()
   {
-    return this.jdField_a_of_type_Snl.a();
+    return this.jdField_a_of_type_Tmk.a();
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_Snl.a();
+    return this.jdField_a_of_type_Tmk.a();
   }
   
   public HashMap a()
   {
-    return this.jdField_a_of_type_Sno.a();
+    return this.jdField_a_of_type_Tmn.a();
   }
   
-  public snq a()
+  public tmp a()
   {
-    return this.jdField_a_of_type_Sno.a();
+    return this.jdField_a_of_type_Tmn.a();
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaFragment", 2, "reload viola Page");
-    }
-    this.jdField_a_of_type_Sno.a();
-    this.jdField_a_of_type_Snl.a(new smx(this));
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Sno.a(paramBundle);
-  }
-  
-  public void a(Bundle paramBundle, ViewGroup paramViewGroup)
-  {
-    b(paramBundle);
-    d(paramViewGroup);
-    b(paramBundle, paramViewGroup);
-    a(paramViewGroup);
-    v();
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_Sno.b())
-    {
-      this.jdField_a_of_type_Snl.a(paramViewGroup);
-      this.jdField_a_of_type_Snl.a(new smv(this));
-      this.jdField_a_of_type_Sno.a(new smw(this, paramViewGroup));
-    }
-  }
-  
-  public void a(HashMap<String, Object> paramHashMap, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Sno.a(paramHashMap, paramViewGroup);
-  }
-  
-  public void a(smy paramsmy)
-  {
-    this.jdField_a_of_type_Smy = paramsmy;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Sno.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Sno.b();
-  }
-  
-  public void b()
-  {
-    FrameLayout localFrameLayout;
-    if ((b() != null) && (!TextUtils.isEmpty(a())) && ("1".equals(smk.a(a(), "support_night"))))
-    {
-      boolean bool = ThemeUtil.isInNightMode(getActivity().app);
-      localFrameLayout = new FrameLayout(a().getContext());
-      ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-      localFrameLayout.setBackgroundColor(Color.parseColor("#77000000"));
-      b().addView(localFrameLayout, localLayoutParams);
-      if (!bool) {
-        break label110;
-      }
-      if (localFrameLayout != null)
-      {
-        localFrameLayout.setVisibility(0);
-        a("#ff888888", true);
-      }
-    }
-    label110:
-    while (localFrameLayout == null) {
-      return;
-    }
-    localFrameLayout.setVisibility(8);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Snl.c(paramBoolean);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Snl.d();
-    if (this.jdField_a_of_type_Sno.b()) {
-      this.jdField_a_of_type_Snl.a(a(), true);
+    this.jdField_a_of_type_Tmk.d();
+    if (this.jdField_a_of_type_Tmn.b()) {
+      this.jdField_a_of_type_Tmk.a(a(), true);
     }
     while (getActivity() == null) {
       return;
@@ -229,14 +176,130 @@ public class ViolaFragment
     getActivity().doOnBackPressed();
   }
   
+  public void a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Tmn.a(paramBundle);
+  }
+  
+  public void a(Bundle paramBundle, ViewGroup paramViewGroup)
+  {
+    b(paramBundle);
+    d(paramViewGroup);
+    int j = 0;
+    String str = a();
+    int i = j;
+    if (!TextUtils.isEmpty(str))
+    {
+      i = j;
+      if (str.contains("v_bundleName"))
+      {
+        str = Uri.parse(str).getQueryParameter("v_bundleName");
+        i = j;
+        if (!TextUtils.isEmpty(str))
+        {
+          j = HippyQQEngine.getModuleOnlineConfig(str);
+          if (QLog.isColorLevel()) {
+            QLog.d("Hippy", 2, "Hippy: moduleName=" + str + ", hippyOnlineConfig=" + j);
+          }
+          i = j;
+          if (j == 1)
+          {
+            if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine == null) {
+              this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = new HippyQQEngine(this, str);
+            }
+            b(paramBundle, paramViewGroup);
+            i = j;
+          }
+        }
+      }
+    }
+    if (i != 1) {
+      c(paramBundle, paramViewGroup);
+    }
+    a(paramViewGroup);
+    b();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_Tmn.b())
+    {
+      this.jdField_a_of_type_Tmk.a(paramViewGroup);
+      this.jdField_a_of_type_Tmk.a(new tlu(this));
+      this.jdField_a_of_type_Tmn.a(new tlv(this, paramViewGroup));
+    }
+  }
+  
+  public void a(HashMap<String, Object> paramHashMap, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Tmn.a(paramHashMap, paramViewGroup);
+  }
+  
+  public void a(tlx paramtlx)
+  {
+    this.jdField_a_of_type_Tlx = paramtlx;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Tmn.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Tmn.b();
+  }
+  
+  protected void b() {}
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Tmk.c(paramBoolean);
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reload viola Page");
+    }
+    this.jdField_a_of_type_Tmn.a();
+    this.jdField_a_of_type_Tmk.a(new tlw(this));
+  }
+  
+  public void d()
+  {
+    FrameLayout localFrameLayout;
+    if ((b() != null) && (!TextUtils.isEmpty(a())) && ("1".equals(tlg.a(a(), "support_night"))))
+    {
+      boolean bool = ThemeUtil.isInNightMode(getActivity().app);
+      localFrameLayout = new FrameLayout(a().getContext());
+      ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+      localFrameLayout.setBackgroundColor(Color.parseColor("#77000000"));
+      b().addView(localFrameLayout, localLayoutParams);
+      if (!bool) {
+        break label113;
+      }
+      if (localFrameLayout != null)
+      {
+        localFrameLayout.setVisibility(0);
+        a("#ff888888", true);
+      }
+    }
+    label113:
+    while (localFrameLayout == null) {
+      return;
+    }
+    localFrameLayout.setVisibility(8);
+  }
+  
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     if (paramInt == 4)
     {
-      boolean bool = this.jdField_a_of_type_Snl.a();
-      if (this.jdField_a_of_type_Sno.b())
+      boolean bool = this.jdField_a_of_type_Tmk.a();
+      if (this.jdField_a_of_type_Tmn.b())
       {
-        this.jdField_a_of_type_Snl.a(a(), true);
+        this.jdField_a_of_type_Tmk.a(a(), true);
         return true;
       }
       return bool;
@@ -246,7 +309,7 @@ public class ViolaFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Snl.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Tmk.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onDestroy()
@@ -255,7 +318,7 @@ public class ViolaFragment
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (getActivity() == null) {
-        break label41;
+        break label60;
       }
       getActivity().finishAndRemoveTask();
     }
@@ -263,49 +326,54 @@ public class ViolaFragment
     {
       for (;;)
       {
-        this.jdField_a_of_type_Snl.c();
-        label33:
-        yak.a(getActivity());
+        this.jdField_a_of_type_Tmk.c();
+        if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine != null)
+        {
+          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.onDestroy();
+          this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = null;
+        }
+        label52:
+        zuc.a(getActivity());
         return;
-        label41:
+        label60:
         BaseActivity.sTopActivity.finishAndRemoveTask();
       }
     }
     catch (Exception localException)
     {
-      break label33;
+      break label52;
     }
   }
   
   public void onFinish()
   {
     super.onFinish();
-    if ((!this.jdField_a_of_type_Sno.b()) && (getActivity() != null)) {
-      getActivity().overridePendingTransition(0, 2130772011);
+    if ((!this.jdField_a_of_type_Tmn.b()) && (getActivity() != null)) {
+      getActivity().overridePendingTransition(0, 2130772012);
     }
   }
   
   public void onPause()
   {
-    this.jdField_a_of_type_Snl.b();
+    this.jdField_a_of_type_Tmk.b();
     super.onPause();
   }
   
   public void onResume()
   {
-    this.jdField_a_of_type_Snl.a();
+    this.jdField_a_of_type_Tmk.a();
     super.onResume();
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
-    this.jdField_a_of_type_Snl.a(paramBoolean);
+    this.jdField_a_of_type_Tmk.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,26 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.ISecurityFileHelper;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class amrc
-  extends amra
-  implements ISecurityFileHelper
+final class amrc
+  implements EIPCResultCallback
 {
-  public amrc()
-  {
-    super(null);
-  }
+  amrc(long paramLong, String paramString) {}
   
-  protected String a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return "QQFavoriteMigration";
-  }
-  
-  public String declareBusinessFileName()
-  {
-    return "QQ_Favorite";
-  }
-  
-  public boolean doMigrate(File paramFile)
-  {
-    QLog.d("ISecurityFileHelper", 1, "Move QQFavorite file start");
-    File localFile = new File(alof.bi);
-    if ((localFile.exists()) && (paramFile.isDirectory()))
-    {
-      paramFile = amqy.a(localFile);
-      int j = paramFile.length;
-      int i = 0;
-      while (i < j)
-      {
-        localFile = paramFile[i];
-        String str = localFile.getName();
-        if ((str.length() > 4) && (str.matches("[0-9]{5}.*"))) {
-          bdhb.a(localFile.getAbsolutePath(), alof.bi + amqy.a(str));
-        }
-        i += 1;
-      }
+    paramEIPCResult = paramEIPCResult.data.getString("resData");
+    ampj.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, paramEIPCResult);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_DRESS_PATH onCallback resJson:" + paramEIPCResult);
     }
-    a();
-    return true;
-  }
-  
-  public boolean needMigration()
-  {
-    if (a())
-    {
-      File localFile = new File(alof.bi);
-      if ((localFile.exists()) && (localFile.isDirectory())) {
-        return true;
-      }
-      a();
-    }
-    return false;
-  }
-  
-  public File oldBusinessDir(String paramString)
-  {
-    return null;
-  }
-  
-  public boolean oldBusinessDirExist(String paramString)
-  {
-    return false;
-  }
-  
-  public String[] reportHistoryFileInfo()
-  {
-    return new String[] { "0", "0" };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amrc
  * JD-Core Version:    0.7.0.1
  */

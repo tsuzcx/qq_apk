@@ -1,48 +1,31 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.TroopGiftMsgHolder.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopGift;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import java.util.Observable;
-import java.util.Observer;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aget
-  extends aeqi
-  implements Observer
+public class aget
+  implements Animation.AnimationListener
 {
-  public ViewGroup a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  private QQAppInterface a;
-  public MessageForTroopGift a;
-  public BubbleImageView a;
-  public ViewGroup b;
-  public Button b;
-  public TextView b;
-  public View c;
-  public ViewGroup c;
-  public Button c;
-  public View d;
-  public Button d;
-  public Button e;
+  public aget(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  public aget(QQAppInterface paramQQAppInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
+    }
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    paramObservable = (bckm)paramObject;
-    if ((paramObservable.a.equals(bcoq.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift))) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.isLoading)) {
-      this.d.post(new TroopGiftMsgItemBuilder.TroopGiftMsgHolder.1(this, paramObservable));
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationStart is called,time is:" + System.currentTimeMillis());
     }
   }
 }

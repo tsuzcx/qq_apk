@@ -1,32 +1,48 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.util.VADHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class bbss
-  implements bhuk
+public class bbss
+  extends bbti
 {
-  bbss(bbsn parambbsn, boolean paramBoolean, bbsa parambbsa, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public bbss(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
   {
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
+    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
+  }
+  
+  public bbmx a(List<bbmy> paramList, String paramString)
+  {
+    return new bbmj(paramList, paramString, GroupSearchEngine.a(this.a));
+  }
+  
+  public List<bbmx> a(bbtx parambbtx)
+  {
+    if (!GroupSearchEngine.a(this.a)) {
+      return null;
     }
-    switch (i)
+    VADHelper.a("voice_search_approximate_cost");
+    List localList = super.a(parambbtx);
+    VADHelper.b("voice_search_approximate_cost");
+    if ((localList != null) && (!localList.isEmpty()))
     {
+      if (parambbtx.a == null) {
+        parambbtx.a = new Bundle();
+      }
+      parambbtx.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
+      if (localList.size() >= 2)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((bbmx)localList.get(1)).a().size());
+        }
+        parambbtx.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((bbmx)localList.get(1)).a().size());
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      TroopFileTransferManager.a(this.jdField_a_of_type_Bbsn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bbsn.jdField_a_of_type_Long).a(this.jdField_a_of_type_Bbsa.a);
-      azqs.b(this.jdField_a_of_type_Bbsn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_local", 0, 0, "", this.jdField_a_of_type_Bbsn.jdField_a_of_type_Long + "", "", "");
-      continue;
-      if (bbsn.a(this.jdField_a_of_type_Bbsn) != 0)
-      {
-        bcmu.a(this.jdField_a_of_type_Bbsn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bbsn.jdField_a_of_type_Long).b(this.jdField_a_of_type_Bbsa);
-        azqs.b(this.jdField_a_of_type_Bbsn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_share", 0, 0, "", this.jdField_a_of_type_Bbsn.jdField_a_of_type_Long + "", "", "");
-      }
+      return localList;
+      parambbtx.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
     }
   }
 }

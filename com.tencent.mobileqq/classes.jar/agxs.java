@@ -1,8 +1,18 @@
-import android.view.View;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface agxs
+class agxs
+  extends ahbl
 {
-  public abstract void a(View paramView);
+  agxs(agwz paramagwz)
+  {
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahew(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 

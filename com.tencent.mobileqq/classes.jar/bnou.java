@@ -1,9 +1,9 @@
-public abstract interface bnou
-{
-  public abstract void d();
-  
-  public abstract void j();
-}
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
+import com.google.gson.reflect.TypeToken;
+
+final class bnou
+  extends TypeToken<GetPlayShowCatMatTreeRsp>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

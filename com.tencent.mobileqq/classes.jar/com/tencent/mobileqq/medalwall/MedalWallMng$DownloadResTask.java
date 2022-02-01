@@ -3,8 +3,8 @@ package com.tencent.mobileqq.medalwall;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import aubj;
-import bhtd;
+import awit;
+import bkgm;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -12,11 +12,11 @@ import java.io.File;
 public class MedalWallMng$DownloadResTask
   implements Runnable
 {
-  final aubj a;
+  final awit a;
   
-  public MedalWallMng$DownloadResTask(MedalWallMng paramMedalWallMng, aubj paramaubj)
+  public MedalWallMng$DownloadResTask(MedalWallMng paramMedalWallMng, awit paramawit)
   {
-    this.a = paramaubj;
+    this.a = paramawit;
   }
   
   public void run()
@@ -34,7 +34,7 @@ public class MedalWallMng$DownloadResTask
       ((Message)localObject).what = 2;
       ((Message)localObject).arg1 = ((int)l2);
       ((Message)localObject).obj = this.a;
-      this.this$0.jdField_a_of_type_Bhtd.sendMessage((Message)localObject);
+      this.this$0.jdField_a_of_type_Bkgm.sendMessage((Message)localObject);
       return;
       long l1 = l2;
       try
@@ -72,7 +72,7 @@ public class MedalWallMng$DownloadResTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalWallMng.DownloadResTask
  * JD-Core Version:    0.7.0.1
  */

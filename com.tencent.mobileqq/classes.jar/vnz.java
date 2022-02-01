@@ -1,22 +1,79 @@
-import android.content.Context;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import android.net.Uri;
+import android.util.LruCache;
+import com.tencent.biz.qqcircle.requests.QCircleVideoUrlAdapterRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import feedcloud.FeedCloudMeta.StVideo;
 
-class vnz
-  implements MessageQueue.IdleHandler
+public class vnz
 {
-  vnz(vnu paramvnu) {}
+  private static final long jdField_a_of_type_Long = QzoneConfig.getInstance().getConfig("qqcircle", "secondary_qcircle_video_url_valid_time", 21600000);
+  private static final vnz jdField_a_of_type_Vnz = new vnz();
+  private final LruCache<String, FeedCloudMeta.StVideo> jdField_a_of_type_AndroidUtilLruCache = new LruCache(100);
+  private long b = 300000L;
   
-  public boolean queueIdle()
+  public static vnz a()
   {
-    wxe.b("Q.qqstory.playernew.StoryPlayerImpl", "initSdk");
-    TVK_SDKMgr.initSdk(vnu.a(this.a).a().getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+    return jdField_a_of_type_Vnz;
+  }
+  
+  public void a(int paramInt, FeedCloudMeta.StVideo paramStVideo, vob paramvob)
+  {
+    if ((paramStVideo == null) || (paramvob == null)) {
+      return;
+    }
+    if (!a(paramStVideo))
+    {
+      QLog.i("QCircleVideoUrlExchangeHelper", 1, String.format("exchangeVideoUrl: valid callBack fileId:%s ,videoExchange url:%s", new Object[] { paramStVideo.fileId.get(), paramStVideo.playUrl.get() }));
+      paramvob.a(paramStVideo, true);
+      return;
+    }
+    Object localObject = (FeedCloudMeta.StVideo)this.jdField_a_of_type_AndroidUtilLruCache.get(paramStVideo.fileId.get());
+    if (localObject != null)
+    {
+      QLog.i("QCircleVideoUrlExchangeHelper", 1, String.format("exchangeVideoUrl: success hit Video Cache fileId:%s ,videoExchange url %s:", new Object[] { ((FeedCloudMeta.StVideo)localObject).fileId.get(), ((FeedCloudMeta.StVideo)localObject).playUrl.get() }));
+      paramvob.a((FeedCloudMeta.StVideo)localObject, false);
+      return;
+    }
+    localObject = new QCircleVideoUrlAdapterRequest(paramStVideo);
+    VSNetworkHelper.a().a(paramInt, (VSBaseRequest)localObject, new voa(this, paramStVideo, paramvob));
+  }
+  
+  public boolean a(FeedCloudMeta.StVideo paramStVideo)
+  {
+    if (paramStVideo == null) {}
+    for (;;)
+    {
+      return false;
+      try
+      {
+        paramStVideo = Uri.parse(paramStVideo.playUrl.get());
+        if (paramStVideo.getQueryParameter("dis_t") != null)
+        {
+          long l2 = Long.valueOf(paramStVideo.getQueryParameter("dis_t")).longValue() * 1000L;
+          long l1 = System.currentTimeMillis() - l2;
+          QLog.d("QCircleVideoUrlExchangeHelper", 2, String.format("intervalTime:%d, disTime: %d, valid time:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(jdField_a_of_type_Long) }));
+          l2 = jdField_a_of_type_Long;
+          long l3 = this.b;
+          if (l1 > l2 - l3) {
+            return true;
+          }
+        }
+      }
+      catch (Exception paramStVideo)
+      {
+        paramStVideo.printStackTrace();
+      }
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vnz
  * JD-Core Version:    0.7.0.1
  */

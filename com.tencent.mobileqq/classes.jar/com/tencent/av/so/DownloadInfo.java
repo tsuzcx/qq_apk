@@ -4,8 +4,8 @@ import android.content.SharedPreferences;
 import com.tencent.av.business.manager.EffectConfigBase;
 import com.tencent.mobileqq.utils.confighandler.ConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import lew;
-import lex;
+import lbp;
+import lbq;
 import org.json.JSONObject;
 
 public class DownloadInfo
@@ -28,7 +28,7 @@ public class DownloadInfo
   
   public static DownloadInfo get()
   {
-    String str = lex.b(367).a;
+    String str = lbq.b(367).a;
     DownloadInfo localDownloadInfo = new DownloadInfo();
     localDownloadInfo.tryParse("QavSo", str);
     return localDownloadInfo;
@@ -92,7 +92,7 @@ public class DownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.so.DownloadInfo
  * JD-Core Version:    0.7.0.1
  */

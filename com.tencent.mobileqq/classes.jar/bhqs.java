@@ -1,58 +1,67 @@
-import com.tencent.sharp.jni.TraeAudioManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 
 public class bhqs
+  implements Handler.Callback
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = "DEVICE_NONE";
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final bhqt jdField_a_of_type_Bhqt;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public bhqs(bhqr parambhqr) {}
-  
-  public int a()
+  public bhqs(bhqt parambhqt)
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Bhqt = parambhqt;
+    this.jdField_a_of_type_AndroidOsHandler = new bkgm(Looper.getMainLooper(), this);
   }
   
-  public String a()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(boolean paramBoolean)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = false;
+    do
+    {
+      while (!this.b) {
+        switch (this.jdField_a_of_type_Bhqt.a(paramBundle))
+        {
+        }
+      }
+      return;
+    } while (!this.jdField_a_of_type_Boolean);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    localMessage.setData(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  public boolean a()
+  public void b()
   {
-    return this.jdField_a_of_type_Boolean;
+    this.b = true;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
   }
   
-  public boolean a(String paramString, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    while (TraeAudioManager.a(paramString) != true) {
+    switch (paramMessage.what)
+    {
+    default: 
       return false;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    if (!this.b) {
+      a(paramMessage.getData());
+    }
     return true;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
 
-class ysf
-  extends ysw
+public final class ysf
+  implements Parcelable.Creator<EditTakeVideoSource>
 {
-  ysf(ysb paramysb, ysj paramysj, String paramString)
+  public EditTakeVideoSource a(Parcel paramParcel)
   {
-    super(paramysb);
+    return new EditTakeVideoSource(paramParcel);
   }
   
-  public void a(boolean paramBoolean)
+  public EditTakeVideoSource[] a(int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Ysb.a));
-      this.jdField_a_of_type_Ysb.a = System.currentTimeMillis();
-    }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Ysj.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
-    }
+    return new EditTakeVideoSource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ysf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aeus;
+import agbc;
 import com.tencent.mobileqq.data.ChatMessage;
 
 public class AioAnimationDetector$10
   implements Runnable
 {
-  public AioAnimationDetector$10(aeus paramaeus, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage) {}
+  public AioAnimationDetector$10(agbc paramagbc, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class AioAnimationDetector$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector.10
  * JD-Core Version:    0.7.0.1
  */

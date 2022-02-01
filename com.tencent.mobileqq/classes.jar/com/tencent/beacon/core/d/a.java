@@ -1,144 +1,87 @@
 package com.tencent.beacon.core.d;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Context;
+import com.tencent.beacon.core.e.d;
+import com.tencent.beacon.core.protocol.common.RequestPackage;
+import com.tencent.beacon.core.strategy.g;
 
-public final class a
+public abstract class a
 {
-  public static String a(String paramString)
+  protected final int a;
+  protected final int b;
+  protected Context c;
+  protected String d;
+  protected int e;
+  protected String f;
+  protected a.a g;
+  
+  public a(Context paramContext, int paramInt1, int paramInt2, String paramString)
   {
-    String str2 = "unknown";
-    String str1 = str2;
-    if (paramString != null)
-    {
-      if (paramString.trim().length() != 0) {
-        break label23;
-      }
-      str1 = str2;
-    }
-    label23:
-    do
-    {
-      return str1;
-      if (!b(paramString.trim())) {
-        break;
-      }
-      paramString = paramString.trim();
-      str1 = paramString;
-    } while (paramString.length() <= 16);
-    return paramString.substring(0, 16);
-    b.c("[core] channelID should be Numeric! channelID:" + paramString, new Object[0]);
-    return "unknown";
+    this.c = paramContext;
+    this.a = paramInt2;
+    this.b = paramInt1;
+    this.f = paramString;
   }
   
-  public static String a(Map<String, String> paramMap)
+  public a(Context paramContext, int paramInt1, int paramInt2, String paramString, a.a parama)
   {
-    if (paramMap == null) {
-      return "";
-    }
-    Object localObject = paramMap.keySet();
-    if (localObject == null) {
-      return "";
-    }
-    if (((Set)localObject).size() > 50) {
-      b.c("[core] map size should <= 50!", new Object[0]);
-    }
-    StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = ((Set)localObject).iterator();
-    while (localIterator.hasNext())
-    {
-      String str2 = (String)localIterator.next();
-      int i = str2.trim().length();
-      String str1;
-      if ((i > 0) && (b(str2)))
-      {
-        str1 = str2.trim();
-        localObject = str1;
-        if (i > 64) {
-          localObject = str1.substring(0, 64);
-        }
-        localStringBuffer.append("&");
-        localStringBuffer.append(((String)localObject).replace("|", "%7C").replace("&", "%26").replace("=", "%3D"));
-        localStringBuffer.append("=");
-        localObject = (String)paramMap.get(str2);
-        if (localObject == null) {
-          continue;
-        }
-        str1 = ((String)localObject).trim();
-        if (!str1.contains(";")) {
-          break label292;
-        }
-        localObject = str1;
-        if (str1.length() > 10240)
-        {
-          localObject = str1.substring(0, 10240);
-          localObject = ((String)localObject).substring(0, ((String)localObject).lastIndexOf(";"));
-        }
-      }
-      for (;;)
-      {
-        localStringBuffer.append(((String)localObject).replace('\n', ' ').replace('\r', ' ').replace("|", "%7C").replace("&", "%26").replace("=", "%3D"));
-        break;
-        b.c("[core] '%s' should be ASCII code in 32-126!", new Object[] { str2 });
-        break;
-        label292:
-        localObject = str1;
-        if (str1.length() > 1024) {
-          localObject = str1.substring(0, 1024);
-        }
-      }
-    }
-    paramMap = "";
-    if (localStringBuffer.length() > 0) {
-      paramMap = localStringBuffer.substring(1);
-    }
-    localStringBuffer.setLength(0);
-    return paramMap;
+    this.c = paramContext;
+    this.a = paramInt2;
+    this.b = paramInt1;
+    this.f = paramString;
+    this.g = parama;
   }
   
-  public static boolean b(String paramString)
+  public void a()
   {
-    int i = paramString.length();
-    boolean bool = true;
-    for (;;)
-    {
-      int j = i - 1;
-      if (j < 0) {
-        break;
-      }
-      int k = paramString.charAt(j);
-      if (k >= 32)
-      {
-        i = j;
-        if (k < 127) {}
-      }
-      else
-      {
-        bool = false;
-        i = j;
-      }
-    }
-    return bool;
+    d.i("[db] encode failed, clear db data", new Object[0]);
   }
   
-  public static String c(String paramString)
+  public abstract void a(boolean paramBoolean);
+  
+  public int b()
   {
-    String str;
-    if ((paramString == null) || (paramString.length() == 0)) {
-      str = "DefaultPageID";
-    }
-    do
+    try
     {
+      int i = this.e;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public int c()
+  {
+    return this.a;
+  }
+  
+  public String d()
+  {
+    try
+    {
+      String str = this.d;
       return str;
-      str = paramString;
-    } while (paramString.length() <= 50);
-    return paramString.substring(0, 50);
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
+  
+  public String e()
+  {
+    return g.b(this.c).a(this.b);
+  }
+  
+  public abstract RequestPackage f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.d.a
  * JD-Core Version:    0.7.0.1
  */

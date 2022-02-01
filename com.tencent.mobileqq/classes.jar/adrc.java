@@ -1,10 +1,20 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adrc
+final class adrc
+  implements DialogInterface.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  adrc(adsx paramadsx) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

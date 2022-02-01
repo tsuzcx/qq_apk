@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bbjq
-  implements bbey
+  implements View.OnTouchListener
 {
-  private bbjq(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public bbjq(ContactSearchFragment paramContactSearchFragment) {}
   
-  public void a(bbfa parambbfa)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.jdField_a_of_type_Bbfa = parambbfa;
-    this.a.jdField_a_of_type_Bbco.b();
-    this.a.e(true);
-    azqs.b(null, "dc00899", "Grp_tribe", "", "pub_page", "choose_prefix", 0, 0, this.a.q, "", "", "");
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbjq
  * JD-Core Version:    0.7.0.1
  */

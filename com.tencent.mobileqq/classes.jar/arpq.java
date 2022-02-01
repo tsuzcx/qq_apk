@@ -1,16 +1,20 @@
-import java.util.List;
+import mqq.app.QQPermissionCallback;
 
 class arpq
-  implements arrh
+  implements QQPermissionCallback
 {
-  arpq(arpn paramarpn, List paramList) {}
+  arpq(arpp paramarpp) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    arsx.a(arpn.a(this.jdField_a_of_type_Arpn), this.jdField_a_of_type_JavaUtilList, arpn.a(this.jdField_a_of_type_Arpn), arpn.a(this.jdField_a_of_type_Arpn));
+    bglp.b(this.a.a);
   }
   
-  public void b() {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.c();
+    arpp.a(this.a).f();
+  }
 }
 
 

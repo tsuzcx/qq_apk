@@ -1,41 +1,29 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract class upy
-  extends JobSegment<ErrorMessage, ErrorMessage>
+final class upy
+  implements Animation.AnimationListener
 {
-  protected AtomicInteger a;
-  public upz a;
+  upy(View paramView) {}
   
-  public upy()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  }
-  
-  protected abstract void a();
-  
-  protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
-  {
-    a();
-  }
-  
-  public void a(upz paramupz)
-  {
-    this.jdField_a_of_type_Upz = paramupz;
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Upz != null) {
-      this.jdField_a_of_type_Upz.a(this);
+    if ((this.a.getTag(-1) != null) && (((Integer)this.a.getTag(-1)).intValue() == 8))
+    {
+      this.a.clearAnimation();
+      this.a.setVisibility(8);
+      this.a.setTag(-1, null);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     upy
  * JD-Core Version:    0.7.0.1
  */

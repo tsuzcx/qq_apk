@@ -1,8 +1,17 @@
-import android.graphics.drawable.Drawable;
-
-public abstract interface bkbm
+public class bkbm
 {
-  public abstract void a(Drawable paramDrawable);
+  public int a;
+  public long a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
+  
+  public String toString()
+  {
+    return "[type:" + this.jdField_a_of_type_Int + ",cate:" + this.b + ",subcate:" + this.c + ",expire:" + this.jdField_a_of_type_Long + ",act:" + this.d + ",iscache:" + this.jdField_a_of_type_Boolean + "]";
+  }
 }
 
 

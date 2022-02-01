@@ -1,16 +1,79 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.gdtad.views.form.framework.GdtFormTableView;
-import com.tencent.gdtad.views.form.framework.GdtFormTableView.1.1;
+import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashSet;
 
 public class aaub
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends bkps
 {
-  public aaub(GdtFormTableView paramGdtFormTableView) {}
+  private HashSet<Integer> a = new HashSet();
   
-  public void onGlobalLayout()
+  private void a(View paramView)
   {
-    this.a.a(-1);
-    this.a.post(new GdtFormTableView.1.1(this));
+    if ((paramView instanceof ProteusItemView))
+    {
+      paramView = ((ProteusItemView)paramView).a();
+      localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
+      localValueAnimator.setDuration(300L);
+      localValueAnimator.addUpdateListener(new aaud(this, paramView));
+      localValueAnimator.start();
+    }
+    do
+    {
+      return;
+      paramView = paramView.findViewById(2131376788);
+    } while (paramView == null);
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
+    localValueAnimator.setDuration(500L);
+    localValueAnimator.addUpdateListener(new aaue(this, paramView));
+    localValueAnimator.start();
+  }
+  
+  protected View a(View paramView, int paramInt)
+  {
+    View localView;
+    if (paramView == null) {
+      localView = null;
+    }
+    do
+    {
+      return localView;
+      localView = paramView;
+    } while (!this.a.contains(Integer.valueOf(paramInt)));
+    this.a.remove(Integer.valueOf(paramInt));
+    paramView.getViewTreeObserver().addOnPreDrawListener(new aauc(this, paramView));
+    return paramView;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.a.add(Integer.valueOf(paramInt));
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return null;
   }
 }
 

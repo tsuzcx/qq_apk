@@ -1,6 +1,6 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.plugin.common.BasicMessageChannel;
 import io.flutter.plugin.common.JSONMessageCodec;
@@ -31,6 +31,8 @@ public class KeyEventChannel
     paramMap.put("source", Integer.valueOf(paramFlutterKeyEvent.source));
     paramMap.put("vendorId", Integer.valueOf(paramFlutterKeyEvent.vendorId));
     paramMap.put("productId", Integer.valueOf(paramFlutterKeyEvent.productId));
+    paramMap.put("deviceId", Integer.valueOf(paramFlutterKeyEvent.deviceId));
+    paramMap.put("repeatCount", Integer.valueOf(paramFlutterKeyEvent.repeatCount));
   }
   
   public void keyDown(@NonNull KeyEventChannel.FlutterKeyEvent paramFlutterKeyEvent)
@@ -53,7 +55,7 @@ public class KeyEventChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.KeyEventChannel
  * JD-Core Version:    0.7.0.1
  */

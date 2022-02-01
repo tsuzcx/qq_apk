@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import aqpw;
+import aswx;
 
 public class QfileBaseLocalFileTabView$7$3
   implements Runnable
 {
-  public QfileBaseLocalFileTabView$7$3(aqpw paramaqpw) {}
+  public QfileBaseLocalFileTabView$7$3(aswx paramaswx) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QfileBaseLocalFileTabView$7$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.3
  * JD-Core Version:    0.7.0.1
  */

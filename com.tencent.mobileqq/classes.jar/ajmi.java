@@ -1,64 +1,40 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajmi
-  extends ajlr
+  extends anif
 {
-  public ajmi(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = String.format(paramContext.getString(2131697855), new Object[] { alud.a(2131716112) });
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  public ajmi(TroopFragment paramTroopFragment) {}
   
-  public void a(byte[] paramArrayOfByte)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    if (paramInt2 == 0)
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Bbpe == null) {
-        this.jdField_a_of_type_Bbpe = new bbpe();
+      this.a.h();
+      if (this.a.isResumed()) {
+        if (paramInt1 != 0) {
+          break label47;
+        }
       }
-      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
+    }
+    label47:
+    while (!this.a.isResumed())
+    {
+      QQToast.a(this.a.getActivity(), 2, anni.a(2131714058), 0).a();
+      do
+      {
+        return;
+      } while (paramInt1 != 1);
+      QQToast.a(this.a.getActivity(), 2, anni.a(2131714057), 0).a();
       return;
     }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131694156);
     }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Bbpe != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 

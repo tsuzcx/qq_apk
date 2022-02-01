@@ -1,144 +1,49 @@
-import android.content.Context;
-import java.util.Calendar;
-import java.util.Date;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgcomm.msg_comm.MsgType0x210;
+import tencent.im.s2c.msgtype0x210.submsgtype0x7c.submsgtype0x7c.MsgBody;
 
 public class bcaw
-  implements aoim
+  implements bcba
 {
-  private final int jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilCalendar.getMaximum(1);
-  private long jdField_a_of_type_Long;
-  private Calendar jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
-  private final int b = this.jdField_a_of_type_JavaUtilCalendar.getMinimum(1);
-  private final int c;
-  
-  public bcaw()
+  public static void a(int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaUtilCalendar.add(5, 1);
-    this.jdField_a_of_type_JavaUtilCalendar.set(11, 8);
-    this.jdField_a_of_type_JavaUtilCalendar.set(12, 0);
-    this.jdField_a_of_type_JavaUtilCalendar.set(13, 0);
-    this.jdField_a_of_type_JavaUtilCalendar.set(14, 0);
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.b);
-    localCalendar.set(5, 0);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    this.jdField_a_of_type_Long = localCalendar.getTimeInMillis();
-    this.c = ((int)((this.jdField_a_of_type_JavaUtilCalendar.getTimeInMillis() - this.jdField_a_of_type_Long) / 86400000L));
-  }
-  
-  public static int a(bcax parambcax, int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public static long a()
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.add(5, 1);
-    localCalendar.set(11, 8);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    return localCalendar.getTimeInMillis() / 1000L;
-  }
-  
-  public static long a(bcax parambcax, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((parambcax != null) && ((parambcax.a() instanceof bcaw)))
-    {
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.setTime(a(parambcax, paramInt1));
-      localCalendar.set(11, a(parambcax, paramInt2));
-      localCalendar.set(12, b(parambcax, paramInt3));
-      return localCalendar.getTimeInMillis();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SecSpyFileDecoder", 4, "OnLinePushMessageProcessor receive 0x7c push message, seq = " + paramInt1 + "submsgtype:" + paramInt2);
     }
-    return 0L;
-  }
-  
-  public static bcax a(Context paramContext)
-  {
-    bcaw localbcaw = new bcaw();
-    paramContext = new bcax(paramContext, localbcaw);
-    a(paramContext, localbcaw);
-    return paramContext;
-  }
-  
-  public static Date a(bcax parambcax, int paramInt)
-  {
-    if ((parambcax != null) && ((parambcax.a() instanceof bcaw)))
+    submsgtype0x7c.MsgBody localMsgBody = new submsgtype0x7c.MsgBody();
+    try
     {
-      parambcax = (bcaw)parambcax.a();
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.setTimeInMillis(parambcax.jdField_a_of_type_Long + 86400000L * paramInt);
-      return localCalendar.getTime();
+      localMsgBody.mergeFrom(paramArrayOfByte);
+      long l = localMsgBody.uint64_uin.get();
+      if (paramQQAppInterface.getCurrentAccountUin().equals(String.valueOf(l))) {
+        ((bbxa)paramQQAppInterface.getManager(94)).a(localMsgBody, 3);
+      }
+      return;
     }
-    return null;
-  }
-  
-  public static void a(bcax parambcax, bcaw parambcaw)
-  {
-    if ((parambcax != null) && (parambcaw != null))
+    catch (InvalidProtocolBufferMicroException paramQQAppInterface)
     {
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.add(5, 1);
-      localCalendar.set(11, 8);
-      localCalendar.set(12, 0);
-      localCalendar.set(13, 0);
-      localCalendar.set(14, 0);
-      parambcax.a(0, parambcaw.c);
-      parambcax.a(1, localCalendar.get(11));
-      parambcax.a(2, localCalendar.get(12));
+      while (!QLog.isColorLevel()) {}
+      QLog.e("SecSpyFileDecoder", 2, "parse 0x7c push msg error", paramQQAppInterface);
     }
   }
   
-  public static int b(bcax parambcax, int paramInt)
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn, MessageHandler paramMessageHandler)
   {
-    return paramInt;
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.jdField_a_of_type_Int - this.b + 1;
-    case 1: 
-      return 24;
-    }
-    return 60;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(this.jdField_a_of_type_Long + 86400000L * paramInt2);
-      paramInt1 = this.jdField_a_of_type_JavaUtilCalendar.get(1);
-      paramInt2 = this.jdField_a_of_type_JavaUtilCalendar.get(2);
-      int i = this.jdField_a_of_type_JavaUtilCalendar.get(5);
-      localStringBuilder.append(paramInt1).append("年").append(String.valueOf(paramInt2 + 1)).append("月").append(i).append("日");
-      continue;
-      localStringBuilder.append(paramInt2);
-      this.jdField_a_of_type_JavaUtilCalendar.set(11, paramInt2);
-      continue;
-      localStringBuilder.append(paramInt2);
-      this.jdField_a_of_type_JavaUtilCalendar.set(12, paramInt2);
-    }
+    int i = paramMsg.msg_head.msg_seq.get();
+    int j = paramMsg.msg_head.msg_type.get();
+    paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
+    a(i, j, paramMessageHandler.app, paramMsgType0x210);
   }
 }
 

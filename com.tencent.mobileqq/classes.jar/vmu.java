@@ -1,22 +1,24 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.app.Activity;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
-public class vmu
-  implements View.OnTouchListener
+class vmu
+  implements vmg
 {
-  public vmu(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  vmu(vms paramvms, Context paramContext) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView, uzk paramuzk)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    if ((paramuzk != null) && (vms.a(this.jdField_a_of_type_Vms) != null))
+    {
+      vtd.a().a((Activity)this.jdField_a_of_type_AndroidContentContext, paramuzk, vms.a(this.jdField_a_of_type_Vms), vms.a(this.jdField_a_of_type_Vms));
+      vms.a(this.jdField_a_of_type_Vms, paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vmu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,33 @@
-class ooa
-  extends oob
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
+
+public class ooa
+  extends onq
 {
-  ooa(omz paramomz, int paramInt1, omt paramomt, int paramInt2)
+  public ooa(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
   {
-    super(paramomz, null);
+    super(paramBaseData, paramWeakReference, localWeakReference);
   }
   
-  void a(ooe paramooe)
+  protected void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
   {
-    paramooe.onCommentDelete(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Omt, this.b);
+    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new oob(this, paramBaseData, paramContext));
+  }
+  
+  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
+  {
+    return (paramBaseData1 == paramBaseData2) && ((paramBaseData2 instanceof ProteusBannerTriplePicItemData));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ooa
  * JD-Core Version:    0.7.0.1
  */

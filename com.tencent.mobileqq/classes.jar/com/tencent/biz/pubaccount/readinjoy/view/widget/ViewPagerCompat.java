@@ -9,16 +9,16 @@ import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import sku;
-import skv;
+import tjl;
+import tjm;
 
 public class ViewPagerCompat
   extends ViewPager
 {
   private List<ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private skv jdField_a_of_type_Skv;
+  private tjm jdField_a_of_type_Tjm;
   private boolean jdField_a_of_type_Boolean = true;
-  private List<sku> b;
+  private List<tjl> b;
   
   public ViewPagerCompat(Context paramContext)
   {
@@ -34,11 +34,19 @@ public class ViewPagerCompat
   
   private void a()
   {
-    this.jdField_a_of_type_Skv = new skv(this, null);
-    super.setOnPageChangeListener(this.jdField_a_of_type_Skv);
+    this.jdField_a_of_type_Tjm = new tjm(this, null);
+    super.setOnPageChangeListener(this.jdField_a_of_type_Tjm);
   }
   
-  public void a(ViewPager.OnPageChangeListener paramOnPageChangeListener)
+  public void a(tjl paramtjl)
+  {
+    if (this.b == null) {
+      this.b = new ArrayList();
+    }
+    this.b.add(paramtjl);
+  }
+  
+  public void addOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -46,25 +54,17 @@ public class ViewPagerCompat
     this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
   }
   
-  public void a(sku paramsku)
-  {
-    if (this.b == null) {
-      this.b = new ArrayList();
-    }
-    this.b.add(paramsku);
-  }
-  
-  public void b(ViewPager.OnPageChangeListener paramOnPageChangeListener)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramOnPageChangeListener);
-    }
-  }
-  
-  public void b(sku paramsku)
+  public void b(tjl paramtjl)
   {
     if (this.b != null) {
-      this.b.remove(paramsku);
+      this.b.remove(paramtjl);
+    }
+  }
+  
+  public void clearOnPageChangeListeners()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
   }
   
@@ -100,6 +100,13 @@ public class ViewPagerCompat
     return false;
   }
   
+  public void removeOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramOnPageChangeListener);
+    }
+  }
+  
   public void setAdapter(PagerAdapter paramPagerAdapter)
   {
     PagerAdapter localPagerAdapter = getAdapter();
@@ -110,7 +117,7 @@ public class ViewPagerCompat
       int i = 0;
       while (i < j)
       {
-        ((sku)this.b.get(i)).a(this, localPagerAdapter, paramPagerAdapter);
+        ((tjl)this.b.get(i)).a(this, localPagerAdapter, paramPagerAdapter);
         i += 1;
       }
     }
@@ -129,7 +136,7 @@ public class ViewPagerCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat
  * JD-Core Version:    0.7.0.1
  */

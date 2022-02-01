@@ -1,74 +1,98 @@
-import android.content.Context;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
-import com.tencent.ttpic.openapi.initializer.Voice2TextInitializer;
-import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
-import com.tencent.ttpic.voicechanger.common.audio.VoiceTextRecognizer;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import android.graphics.Typeface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.ttpic.openapi.manager.FeatureManager;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager;
+import java.io.File;
+import java.util.HashMap;
 
 public class bnqg
 {
-  private static String jdField_a_of_type_JavaLangString = "wx7d02f7e92ea2884d";
-  private AudioCapture jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture;
-  private boolean jdField_a_of_type_Boolean;
+  private static boolean jdField_a_of_type_Boolean;
+  private final int jdField_a_of_type_Int = 0;
+  private final String jdField_a_of_type_JavaLangString = "AEFontManager";
+  private HashMap<String, Typeface> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final int[] jdField_a_of_type_ArrayOfInt = { 0, 1 };
+  private final int b = 1;
+  
+  public static bnqg a()
+  {
+    if (!jdField_a_of_type_Boolean)
+    {
+      bnqi.a().a();
+      jdField_a_of_type_Boolean = true;
+    }
+    return bnqi.a();
+  }
+  
+  private void b(@NonNull String paramString, @NonNull Typeface paramTypeface)
+  {
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int j = arrayOfInt.length;
+    int i = 0;
+    if (i < j)
+    {
+      switch (arrayOfInt[i])
+      {
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        LogicDataManager.getInstance().putTypeface(paramString, paramTypeface);
+      }
+    }
+  }
+  
+  @NonNull
+  public Typeface a(@Nullable String paramString)
+  {
+    if (paramString != null)
+    {
+      if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) == null) {
+        return Typeface.DEFAULT;
+      }
+      return (Typeface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    }
+    return Typeface.DEFAULT;
+  }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.c(false);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.b();
-      VoiceTextRecognizer.getInstance().destroy();
-    }
+    a("jianqiaohei.ttf", FeatureManager.getResourceDir());
   }
   
-  public void a(Context paramContext, AudioCapture paramAudioCapture)
+  public void a(@Nullable String paramString, @Nullable Typeface paramTypeface)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = true;
-    FeatureManager.Features.VOICE_TO_TEXT.init();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture = paramAudioCapture;
-    VoiceTextRecognizer.setWxVoiceRecognizerAppid(jdField_a_of_type_JavaLangString);
-    VoiceTextRecognizer.getInstance().init(paramContext, false);
-    VoiceTextRecognizer.getInstance().setVRErrorListener(new bnqh(this));
-    VoiceTextRecognizer.getInstance().start();
-    paramAudioCapture.c(true);
-    paramAudioCapture.c();
+    if ((paramString == null) || (paramTypeface == null)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramTypeface);
+    b(paramString, paramTypeface);
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public void a(@Nullable String paramString1, @Nullable String paramString2)
   {
-    ByteArrayOutputStream localByteArrayOutputStream;
-    if ((this.jdField_a_of_type_Boolean) && (paramInt2 > 0))
-    {
-      paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte, 0, paramInt2);
-      localByteArrayOutputStream = new ByteArrayOutputStream(Math.max((int)Math.ceil(paramInt2 * 16000 / this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a()), 1));
+    Object localObject = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      localObject = FeatureManager.getResourceDir();
     }
-    try
-    {
-      new xud(paramArrayOfByte, localByteArrayOutputStream, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a(), 16000, 2, 2, 1, paramInt2, 0.0D, 0, true);
-      byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
-      VoiceTextRecognizer.getInstance().recognizeFromPCMBuffer(arrayOfByte, arrayOfByte.length);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    paramString2 = new File((String)localObject, paramString1);
+    localObject = Typeface.DEFAULT;
+    if (paramString2.exists()) {
+      try
       {
-        try
-        {
-          paramArrayOfByte.close();
-          localByteArrayOutputStream.close();
-          return;
-        }
-        catch (Exception paramArrayOfByte)
-        {
-          paramArrayOfByte.printStackTrace();
-        }
-        localException = localException;
-        localException.printStackTrace();
+        a(paramString1, Typeface.createFromFile(paramString2));
+        return;
+      }
+      catch (RuntimeException paramString1)
+      {
+        bnzb.d("AEFontManager", "【ERROR】Typeface.createFromFile");
+        return;
       }
     }
+    bnzb.a("AEFontManager", "文件不存在" + paramString2.getAbsolutePath());
   }
 }
 

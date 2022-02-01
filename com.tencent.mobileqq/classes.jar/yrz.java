@@ -1,46 +1,51 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
 
-class yrz
-  implements azef
+public class yrz
+  extends SimpleObserver<zem>
 {
-  yrz(yry paramyry) {}
+  yrz(yrx paramyrx) {}
   
-  public void G_()
+  public void a(zem paramzem)
   {
-    this.a.jdField_a_of_type_Yrr.a.b = false;
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    super.onNext(paramzem);
+    this.a.a(40);
+    paramzem = paramzem.a.b;
+    yqp.b("EditPicSave", "picPath = " + paramzem);
+    if (this.a.jdField_a_of_type_Yvj.getActivity() != null)
     {
-      if (paramInt == 0) {
-        break label152;
-      }
-      VideoEnvironment.a("TroopMemberApiService", alud.a(2131715948) + paramInt + "]", null);
-      ShortVideoResourceManager.a(alud.a(2131716002));
-      azdh.a(2, paramInt);
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
-    }
-    for (;;)
-    {
-      VideoEnvironment.a("TroopMemberApiService", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      this.a.jdField_a_of_type_Yrr.a.a(93, this.a.jdField_a_of_type_AndroidOsBundle);
-      this.a.jdField_a_of_type_Yrr.a.b = false;
-      return;
-      label152:
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
+      ThreadManager.post(new EditPicSave.2.1(this, paramzem), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
+      this.a.jdField_a_of_type_Int = 40;
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.b = 10;
+      this.a.f();
     }
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2) {}
+  public void onCancel()
+  {
+    super.onCancel();
+    yqp.d("EditPicSave", "saveVideo cancel !");
+    this.a.jdField_a_of_type_Yty.a(0);
+    this.a.g();
+    QQToast.a(this.a.jdField_a_of_type_Yvj.a(), anni.a(2131702480), 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    yqp.e("EditPicSave", "saveVideo error ：" + paramError);
+    this.a.jdField_a_of_type_Yty.a(0);
+    QQToast.a(this.a.jdField_a_of_type_Yvj.a(), 1, anni.a(2131702481) + paramError, 0).a();
+    this.a.g();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yrz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,50 @@
-import android.hardware.camera2.CameraCharacteristics;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
-public class azfo
+class azfo
+  extends BroadcastReceiver
 {
-  public CameraCharacteristics a;
-  public String a;
+  azfo(azfn paramazfn) {}
   
-  public azfo(String paramString, CameraCharacteristics paramCameraCharacteristics)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics = paramCameraCharacteristics;
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics != null);
+    if (paramIntent == null) {}
+    do
+    {
+      return;
+      paramContext = this.a.mRuntime.a();
+    } while ((paramContext == null) || (paramContext.isFinishing()));
+    paramIntent = this.a.mRuntime.a(this.a.mRuntime.a());
+    if ((paramIntent != null) && ((paramIntent instanceof bhsx)))
+    {
+      paramIntent = ((bhsx)paramIntent).getCurrentUrl();
+      if ((TextUtils.isEmpty(paramIntent)) || (!paramIntent.contains("entryId"))) {
+        break label232;
+      }
+    }
+    label232:
+    for (this.a.a = bkgj.a(bkgj.a(paramIntent), "entryId", 2);; this.a.a = 2)
+    {
+      paramContext.finish();
+      paramContext = new Intent(this.a.mRuntime.a(), FriendProfileCardActivity.class);
+      paramIntent = new ProfileActivity.AllInOne(this.a.mRuntime.a().getCurrentAccountUin(), 0);
+      if (this.a.a == 0) {
+        paramContext.setFlags(67108864);
+      }
+      paramContext.putExtra("AllInOne", paramIntent);
+      this.a.mRuntime.a().startActivity(paramContext);
+      paramContext = new Intent();
+      paramContext.putExtra("closeSpecialLogic", true);
+      this.a.mRuntime.a().setResult(-1, paramContext);
+      this.a.mRuntime.a().finish();
+      return;
+    }
   }
 }
 

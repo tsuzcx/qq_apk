@@ -1,33 +1,10 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.album.AEAlbumLinearLayout;
-
-public class bkqa
-  implements Animator.AnimatorListener
+public abstract interface bkqa
 {
-  public bkqa(AEAlbumLinearLayout paramAEAlbumLinearLayout) {}
+  public abstract boolean a();
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    AEAlbumLinearLayout.a(this.a, 0);
-  }
+  public abstract boolean b();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (AEAlbumLinearLayout.a(this.a) != null) {
-      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.a(this.a), AEAlbumLinearLayout.a(this.a, AEAlbumLinearLayout.a(this.a)));
-    }
-    AEAlbumLinearLayout.a(this.a, 0);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (AEAlbumLinearLayout.a(this.a) != null) {
-      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.a(this.a));
-    }
-  }
+  public abstract boolean c();
 }
 
 

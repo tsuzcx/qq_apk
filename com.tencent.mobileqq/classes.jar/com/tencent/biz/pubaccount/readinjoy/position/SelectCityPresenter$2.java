@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.readinjoy.position;
 
 import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
 import mqq.util.WeakReference;
-import piq;
-import pir;
+import qac;
+import qad;
 
 public class SelectCityPresenter$2
   implements Runnable
 {
-  public SelectCityPresenter$2(piq parampiq, SelectPositionModule.PositionData paramPositionData) {}
+  public SelectCityPresenter$2(qac paramqac, SelectPositionModule.PositionData paramPositionData) {}
   
   public void run()
   {
-    pir localpir = (pir)piq.a(this.this$0).get();
-    if (localpir != null) {
-      localpir.b(this.a);
+    qad localqad = (qad)qac.a(this.this$0).get();
+    if (localqad != null) {
+      localqad.b(this.a);
     }
   }
 }

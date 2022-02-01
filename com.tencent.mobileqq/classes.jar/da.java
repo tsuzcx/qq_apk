@@ -1,37 +1,101 @@
-import android.os.AsyncTask;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.dataline.activities.PrinterSubOptionActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class da
+  extends BaseAdapter
 {
-  public boolean a;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new db(this);
   
-  protected void a()
+  public da(PrinterSubOptionActivity paramPrinterSubOptionActivity) {}
+  
+  public int getCount()
   {
-    cx.a(2131694020, 1);
+    if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size() > 0)) {
+      return this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size();
+    }
+    return 1;
   }
   
-  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  public Object getItem(int paramInt)
   {
-    this.a = true;
+    if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (paramInt < this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size())) {
+      return this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.get(paramInt);
+    }
+    return new cz(this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity, 1, 0L, this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_JavaLangString);
   }
   
-  protected void b()
+  public long getItemId(int paramInt)
   {
-    cx.a(alud.a(2131703721), 1);
+    return paramInt;
   }
   
-  protected void c()
+  public int getItemViewType(int paramInt)
   {
-    cx.a(alud.a(2131703719), 1);
+    if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size() > 0)) {
+      return 0;
+    }
+    return 1;
   }
   
-  protected void d()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    cx.a(alud.a(2131703718), 1);
+    String str = ((cz)getItem(paramInt)).jdField_a_of_type_JavaLangString;
+    Object localObject;
+    if (getItemViewType(paramInt) == 0)
+    {
+      localObject = (cz)getItem(paramInt);
+      if (((cz)localObject).jdField_a_of_type_Int == 1)
+      {
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559582, null);
+        localObject = (TextView)paramView.findViewById(2131378459);
+      }
+    }
+    for (;;)
+    {
+      if (localObject != null)
+      {
+        ((TextView)localObject).setText(str);
+        ((TextView)localObject).setTag(Integer.valueOf(paramInt));
+      }
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      if (((cz)localObject).jdField_a_of_type_Int == 2)
+      {
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559583, null);
+        View localView = paramView.findViewById(2131364223);
+        localObject = (TextView)paramView.findViewById(2131364224);
+        localView.setClickable(true);
+        localView.setEnabled(true);
+        localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        continue;
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559066, null);
+        paramView.findViewById(2131369979).setVisibility(8);
+        localObject = (TextView)paramView.findViewById(2131369980);
+        ((TextView)localObject).setTextSize(19.0F);
+        ((TextView)localObject).setTextColor(-16777216);
+      }
+      else
+      {
+        localObject = null;
+      }
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     da
  * JD-Core Version:    0.7.0.1
  */

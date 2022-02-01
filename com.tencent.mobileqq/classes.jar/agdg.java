@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.7.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 public class agdg
-  extends fu
+  implements bdet
 {
-  agdg(agda paramagda) {}
+  public agdg(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public void a(ChatMessage paramChatMessage, int paramInt) {}
-  
-  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt)
+  public void a()
   {
-    if ((!paramBoolean) && (paramChatMessage != null))
-    {
-      paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
-      ThreadManager.excute(new TextItemBuilder.7.1(this, paramChatMessage), 128, null, true);
-    }
-    String str = this.a.a.c();
-    if (paramBoolean) {}
-    for (paramChatMessage = "1";; paramChatMessage = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, paramChatMessage, "" + paramInt);
-      return;
-    }
+    int i = (int)(this.a.b - bggq.a(this.a.jdField_a_of_type_AndroidContentContext, 165.0F) - this.a.jdField_a_of_type_Bdfw.b / 2.0F);
+    int j = (int)(this.a.b - bggq.a(this.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.jdField_a_of_type_Bdfw.b / 2.0F);
+    int k = (int)(this.a.b - bggq.a(this.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.jdField_a_of_type_Bdfw.b / 2.0F);
+    bdfb localbdfb = new bdfb(new bdes[] { new bdew(450, this.a.jdField_a_of_type_Int / 2, (int)(-this.a.jdField_a_of_type_Bdfw.b / 2.0F), this.a.jdField_a_of_type_Int / 2, i), new bdew(450, this.a.jdField_a_of_type_Int / 2, i, this.a.jdField_a_of_type_Int / 2, j), new bdew(450, this.a.jdField_a_of_type_Int / 2, j, this.a.jdField_a_of_type_Int / 2, k) });
+    localbdfb.a(new agdh(this));
+    this.a.jdField_a_of_type_Bdfw.a(new bdes[] { localbdfb });
   }
 }
 

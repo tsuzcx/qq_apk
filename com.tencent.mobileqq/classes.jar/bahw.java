@@ -1,26 +1,24 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import android.util.SparseArray;
 
-class bahw
-  implements View.OnClickListener
+public abstract class bahw
 {
-  bahw(bahu parambahu, DialogInterface.OnClickListener paramOnClickListener) {}
+  protected static SparseArray<Class<?>> a = new SparseArray();
+  protected static SparseArray<Class<?>> b = new SparseArray();
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bahu, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Bahu.isShowing()) {
-        this.jdField_a_of_type_Bahu.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    a.put(1, bahy.class);
   }
+  
+  public abstract int a();
+  
+  public void a(Bundle paramBundle)
+  {
+    paramBundle.putInt("redpoint.fromReceiverIPCCode", a());
+  }
+  
+  public void b(Bundle paramBundle) {}
 }
 
 

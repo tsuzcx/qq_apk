@@ -1,20 +1,20 @@
 package com.tencent.biz.videostory.video;
 
-import zaq;
+import aaxi;
 
 public class MediaCodecGLFrameFetcher$1
   implements Runnable
 {
-  public MediaCodecGLFrameFetcher$1(zaq paramzaq) {}
+  public MediaCodecGLFrameFetcher$1(aaxi paramaaxi) {}
   
   public void run()
   {
-    zaq.a(this.this$0);
+    aaxi.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.videostory.video.MediaCodecGLFrameFetcher.1
  * JD-Core Version:    0.7.0.1
  */

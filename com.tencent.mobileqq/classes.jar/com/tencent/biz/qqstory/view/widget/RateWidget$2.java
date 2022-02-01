@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import xwj;
+import zpu;
 
 public class RateWidget$2
   implements Runnable
 {
-  public RateWidget$2(xwj paramxwj) {}
+  public RateWidget$2(zpu paramzpu) {}
   
   public void run()
   {
-    if (xwj.a(this.this$0))
+    if (zpu.a(this.this$0))
     {
-      xwj.a(this.this$0, false);
+      zpu.a(this.this$0, false);
       this.this$0.c(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.RateWidget.2
  * JD-Core Version:    0.7.0.1
  */

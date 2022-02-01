@@ -1,52 +1,51 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.1;
-import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.2;
-import java.util.List;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class piq
-  implements pgx
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  private SelectPositionModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule = owy.a().a();
-  private WeakReference<pir> jdField_a_of_type_MqqUtilWeakReference;
+  public static String a = "HomePageConfigHandler";
   
-  public piq(pir parampir)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule.a(this);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parampir);
-  }
-  
-  private void b(List<pio> paramList)
-  {
-    pir localpir = (pir)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localpir != null) && (paramList != null)) {
-      localpir.a(paramList);
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = phv.a(paramString);
+    Object localObject = paramString.keySet();
+    try
+    {
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)paramString.get(str1);
+        if (TextUtils.equals(str1, "rij_person_info_page_use_viola")) {
+          bmqa.l(Integer.parseInt(str2));
+        }
+      }
+      return true;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public void a()
+  public void onWipeConfig(int paramInt)
   {
-    SelectPositionModule localSelectPositionModule = owy.a().a();
-    if (localSelectPositionModule != null) {
-      b(localSelectPositionModule.a());
-    }
-  }
-  
-  public void a(SelectPositionModule.PositionData paramPositionData)
-  {
-    bfvz.a().post(new SelectCityPresenter.2(this, paramPositionData));
-  }
-  
-  public void a(List<pio> paramList)
-  {
-    bfvz.a().post(new SelectCityPresenter.1(this, paramList));
+    super.onWipeConfig(paramInt);
+    bmqa.l(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     piq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,57 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bbkv
-  implements bbkz
+class bbkv
+  extends anne
 {
-  public bbkv(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
+  bbkv(bbkr parambbkr) {}
   
-  public void a(Bitmap paramBitmap)
+  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1)
   {
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bfah);
-    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
+    super.a(paramBoolean, paramArrayList, paramArrayList1);
+    paramArrayList1 = (String)paramArrayList1.get(0);
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() >= 1))
+    {
+      paramArrayList = ((ArrayList)paramArrayList.get(0)).iterator();
+      while (paramArrayList.hasNext())
+      {
+        Object localObject = (String)paramArrayList.next();
+        if (((String)localObject).charAt(0) < '')
+        {
+          localObject = bguq.b((String)localObject);
+          if ((localObject != null) && (localObject.length > 0))
+          {
+            int j = localObject.length;
+            int i = 0;
+            while (i < j)
+            {
+              localStringBuilder.append(localObject[i]).append(" ");
+              i += 1;
+            }
+          }
+        }
+        else
+        {
+          localStringBuilder.append((String)localObject).append(" ");
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FTSMessageSearchEngine", 2, "svcSeg result = [" + localStringBuilder.toString().trim() + "]");
+      }
+    }
+    bbkr.a(this.a).put(paramArrayList1, localStringBuilder);
+    paramArrayList = bbkr.b(this.a).get(paramArrayList1);
+    if (paramArrayList != null) {
+      try
+      {
+        paramArrayList.notify();
+        return;
+      }
+      finally {}
+    }
   }
 }
 

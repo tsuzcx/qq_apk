@@ -1,83 +1,14 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-
-public class alnp
+class alnp
+  implements alns
 {
-  public SessionInfo a;
-  public List<allz> a;
-  public Context b;
-  public int c = 0;
-  public int d;
-  public int e;
-  protected int f = -1;
+  alnp(alno paramalno) {}
   
-  public int a()
+  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    return 0;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 0;
-  }
-  
-  public allz a(String paramString)
-  {
-    return null;
-  }
-  
-  public View a()
-  {
-    return null;
-  }
-  
-  public View a(int paramInt)
-  {
-    View localView = a();
-    a(localView, paramInt);
-    return localView;
-  }
-  
-  public ArrayList<allz> a(int paramInt)
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(View paramView, int paramInt) {}
-  
-  public void b(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public void c(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] highlightItemIndex=", Integer.valueOf(paramInt) });
+    if ((paramInt1 != this.a.a) && (this.a.a != 0)) {
+      return false;
     }
-    if ((this.a == null) || (this.a.size() == 0)) {
-      QLog.e("ApolloViewBinder", 1, "[setHighlightItemIndex] no panel data, set failed");
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramInt < 0) || (paramInt >= this.a.size()));
-      this.f = paramInt;
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] set success, highlightItemIndex=", Integer.valueOf(paramInt) });
-  }
-  
-  public void c_(List<allz> paramList)
-  {
-    this.a = paramList;
+    return alno.a(this.a, paramInt1, paramInt2, paramString, paramInt3, paramInt4);
   }
 }
 

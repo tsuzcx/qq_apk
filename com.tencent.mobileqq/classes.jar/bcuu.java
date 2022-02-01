@@ -1,52 +1,77 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.sdk.utils.MonitorHttpInfo;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-class bcuu
-  implements baen
+public class bcuu
+  extends QIPCModule
 {
-  bcuu(bcur parambcur) {}
+  private static bcuu a;
   
-  public void a(baes parambaes)
+  private bcuu(String paramString)
   {
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (this.a.jdField_a_of_type_Int >= 4)
+    super(paramString);
+  }
+  
+  public static bcuu a()
+  {
+    if (a == null) {}
+    try
     {
-      alxn.a("cartoon", "clk_inter", bcur.a(this.a).frienduin, bcoq.b(bcur.a(this.a)) + "", "", "");
-      parambaes = bcur.a(this.a);
-      if ((parambaes != null) && (bdin.a(parambaes) == 0))
+      if (a == null) {
+        a = new bcuu("NetworkMonitorIPCModule");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "NetworkMonitorIPCModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
+    }
+    if ("ACTION_REPORT_DOWNLOAD_URL".equalsIgnoreCase(paramString))
+    {
+      paramString = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_URL", "");
+      bcur.a().a(paramString);
+    }
+    for (;;)
+    {
+      return new EIPCResult();
+      if ("ACTION_REPORT_HTTPINFO".equalsIgnoreCase(paramString))
       {
-        ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a();
-        parambaes = parambaes.getString(2131698042);
-        ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a(parambaes, bcur.a(this.a).n, bdaq.a(bcur.a(this.a), 16.0F));
+        try
+        {
+          paramString = (MonitorHttpInfo)paramBundle.getSerializable("BUNDLE_KEY_REPORT_HTTP_INFO_INFO");
+          String str = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_PROCESS_NAME", "");
+          paramBundle = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_TOP_ACTIVITY", "");
+          if (paramString != null)
+          {
+            try
+            {
+              bcur.a().a(paramString, str, paramBundle);
+            }
+            catch (Throwable paramString) {}
+            continue;
+          }
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("NetworkMonitorIPCModule", 2, "MonitorHttpInfo == null");
+        }
+        catch (Exception paramString) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "ClassCastException", paramString.toString() });
+        }
       }
     }
-    else
-    {
-      if (bcur.a(this.a) != null) {}
-      for (parambaes = "0";; parambaes = "1")
-      {
-        azqs.b(null, "dc00899", "Grp_flower", "", "forall", "Clk_grab", 0, 0, "" + bcur.a(this.a).frienduin, "" + bcoq.b(bcur.a(this.a)), parambaes, "" + mwu.a(localAppInterface, localAppInterface.getCurrentAccountUin(), bcur.a(this.a).frienduin));
-        break;
-      }
-    }
-    ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a();
-    parambaes = (bcod)localAppInterface.getManager(113);
-    bcur.a(this.a).a = NetConnInfoCenter.getServerTimeMillis();
-    if (this.a.jdField_a_of_type_Int > 3)
-    {
-      parambaes.a("OidbSvc.0x7f7", 2039, this.a.jdField_a_of_type_Int, bcur.a(this.a).frienduin, bcur.a(this.a).bagId, 3000L, bcur.a(this.a));
-      return;
-    }
-    parambaes.a("OidbSvc.0x6b5", 1717, this.a.jdField_a_of_type_Int, bcur.a(this.a).frienduin, bcur.a(this.a).bagId, 3000L, bcur.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcuu
  * JD-Core Version:    0.7.0.1
  */

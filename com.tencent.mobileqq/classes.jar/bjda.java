@@ -1,40 +1,51 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GeoInfo;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 
-public final class bjda
-  implements Parcelable.Creator<LbsDataV2.GeoInfo>
+public class bjda
 {
-  public LbsDataV2.GeoInfo a(Parcel paramParcel)
+  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("qav_sdk_thread_sub");
+  private static Handler b = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  
+  static
   {
-    LbsDataV2.GeoInfo localGeoInfo = new LbsDataV2.GeoInfo();
-    if (paramParcel != null)
-    {
-      localGeoInfo.address = paramParcel.readString();
-      localGeoInfo.iDistrictCode = paramParcel.readInt();
-      localGeoInfo.iRange = paramParcel.readInt();
-      localGeoInfo.strCountry = paramParcel.readString();
-      localGeoInfo.strProvince = paramParcel.readString();
-      localGeoInfo.strCity = paramParcel.readString();
-      localGeoInfo.strDistrict = paramParcel.readString();
-      localGeoInfo.strTown = paramParcel.readString();
-      localGeoInfo.strVillage = paramParcel.readString();
-      localGeoInfo.strRoad = paramParcel.readString();
-      localGeoInfo.strDefaultName = paramParcel.readString();
-      localGeoInfo.gpsInfo = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
-    }
-    return localGeoInfo;
+    jdField_a_of_type_AndroidOsHandlerThread.start();
   }
   
-  public LbsDataV2.GeoInfo[] a(int paramInt)
+  public static Handler a()
   {
-    return null;
+    return jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public static void a(Runnable paramRunnable)
+  {
+    b.post(paramRunnable);
+  }
+  
+  public static void a(Runnable paramRunnable, long paramLong)
+  {
+    b.postDelayed(paramRunnable, paramLong);
+  }
+  
+  public static Handler b()
+  {
+    return b;
+  }
+  
+  public static void b(Runnable paramRunnable)
+  {
+    b.removeCallbacks(paramRunnable);
+  }
+  
+  public static void c(Runnable paramRunnable)
+  {
+    jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjda
  * JD-Core Version:    0.7.0.1
  */

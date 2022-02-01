@@ -1,60 +1,43 @@
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.TroopFeedItem;
-import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
+import com.tencent.widget.XEditTextEx;
 
-class bcsg
-  extends bcsl
+public class bcsg
+  implements DialogInterface.OnClickListener
 {
-  public TroopAioTopADInfo a;
+  public bcsg(LocalCrashCollector.3 param3, SessionInfo paramSessionInfo) {}
   
-  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramTroopFeedItem = paramView;
-    if (paramView == null) {
-      paramTroopFeedItem = LayoutInflater.from(this.jdField_a_of_type_Bcsf.jdField_a_of_type_AndroidContentContext).inflate(2131560401, null);
-    }
-    Object localObject = (bcsh)paramTroopFeedItem.getTag();
-    paramView = (View)localObject;
-    if (localObject == null)
+    try
     {
-      paramView = new bcsh(this);
-      paramView.a = ((URLImageView)paramTroopFeedItem.findViewById(2131362015));
-      paramTroopFeedItem.setOnClickListener(this.jdField_a_of_type_Bcsf);
-      paramTroopFeedItem.setTag(paramView);
-    }
-    if (!bdin.d(this.jdField_a_of_type_Bcsf.jdField_a_of_type_AndroidContentContext)) {
-      if (this.jdField_a_of_type_Bcsf.jdField_a_of_type_Bbru != null) {
-        this.jdField_a_of_type_Bcsf.jdField_a_of_type_Bbru.c();
-      }
-    }
-    do
-    {
-      return paramTroopFeedItem;
-      try
+      if (LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0) > 0)
       {
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        apkp localapkp = new apkp(1, 1);
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localapkp;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localapkp;
-        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTopADInfo.uiUrl, (URLDrawable.URLDrawableOptions)localObject);
-        paramView.a.setBackgroundDrawable((Drawable)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopAioADManager", 2, "URLDrawable: " + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTopADInfo.uiUrl);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
+          break label106;
         }
-        azqs.b(this.jdField_a_of_type_Bcsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Exp_Promote", 0, 0, this.jdField_a_of_type_Bcsf.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTopADInfo.adId + "", "", "");
-        return paramTroopFeedItem;
+        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       }
-      catch (IllegalArgumentException paramView) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("TroopAioADManager", 2, "IllegalArgumentException");
-    return paramTroopFeedItem;
+      for (;;)
+      {
+        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).delete(0, LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).length());
+        paramDialogInterface.dismiss();
+        return;
+        label106:
+        LocalCrashCollector.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsLocalCrashCollector$3.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
+      }
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
   }
 }
 

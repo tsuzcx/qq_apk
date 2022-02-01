@@ -74,6 +74,7 @@ public class StickerFilters
     }
     if (isBeforeFaceTransform())
     {
+      this.mSticker.updateTriggerManager();
       Frame localFrame = paramFrame;
       if (this.mSticker != null) {
         localFrame = this.mSticker.updateInputFrame(paramFrame);
@@ -125,7 +126,7 @@ public class StickerFilters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.StickerFilters
  * JD-Core Version:    0.7.0.1
  */

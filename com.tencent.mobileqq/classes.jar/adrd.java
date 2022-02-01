@@ -1,8 +1,20 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adrd
+final class adrd
+  implements DialogInterface.OnClickListener
 {
-  TextView a;
+  adrd(adsx paramadsx) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

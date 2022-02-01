@@ -1,35 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import MQQ.VipUserInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class anyk
-  implements bhuk
+public class anyk
+  implements anil
 {
-  anyk(anyj paramanyj, Context paramContext, bhuf parambhuf) {}
+  protected void a(boolean paramBoolean, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipInfoObserver", 2, "onUpdate-isSuccess:" + paramBoolean);
     }
-    for (;;)
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      do
+      int i = -1;
+      paramInt = i;
+      if (paramBoolean)
       {
-        return;
-        paramView = this.jdField_a_of_type_Anyj.b + this.jdField_a_of_type_Anyj.jdField_a_of_type_JavaLangString;
-      } while ((TextUtils.isEmpty(paramView)) || ((!paramView.startsWith("http://")) && (!paramView.startsWith("https://"))));
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      if ((this.jdField_a_of_type_Anyj.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Anyj.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-        azqs.b((QQAppInterface)this.jdField_a_of_type_Anyj.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.jdField_a_of_type_Anyj.jdField_a_of_type_JavaLangString, "");
+        paramObject = (VipUserInfo)paramObject;
+        paramInt = i;
+        if (paramObject != null)
+        {
+          paramInt = i;
+          if (paramObject.bUpdate == 1) {
+            paramInt = paramObject.iGrowthValue;
+          }
+        }
       }
+      a(paramBoolean, paramInt);
     }
   }
 }

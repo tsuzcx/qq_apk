@@ -1,18 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.widget.AbsListView;
+import java.util.Iterator;
+import java.util.List;
 
 public class aegp
-  implements View.OnClickListener
+  implements bkhe
 {
-  public aegp(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aegp(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
-    if (this.a.d == 11) {
-      azqs.b(this.a.app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
+    if (FriendProfileCardActivity.a(this.a) != null)
+    {
+      Iterator localIterator = FriendProfileCardActivity.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((bkhe)localIterator.next()).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      }
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 0) {
+      adcd.a().a("vas_profilecard_list", false);
+    }
+    while (FriendProfileCardActivity.a(this.a) != null)
+    {
+      Iterator localIterator = FriendProfileCardActivity.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((bkhe)localIterator.next()).onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      adcd.a().a("vas_profilecard_list");
     }
   }
 }

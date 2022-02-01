@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -17,17 +17,18 @@ import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicInteger;
-import oee;
-import oeh;
-import ogn;
-import ogo;
-import orc;
+import oqj;
+import oqm;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qkh;
-import rjk;
+import otj;
+import otk;
+import pgk;
+import res;
+import sey;
 
 public class ReadInJoyPatchAdView
   extends FrameLayout
@@ -35,18 +36,15 @@ public class ReadInJoyPatchAdView
 {
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public AdvertisementInfo a;
   private KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
   private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  public ogo a;
-  private rjk jdField_a_of_type_Rjk;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  public otk a;
+  private sey jdField_a_of_type_Sey;
+  private TextView b;
   private TextView c;
   private TextView d;
-  private TextView e;
   
   public ReadInJoyPatchAdView(@NonNull Context paramContext)
   {
@@ -68,18 +66,18 @@ public class ReadInJoyPatchAdView
   
   private int a()
   {
-    if (this.jdField_a_of_type_Rjk == null) {
+    if (this.jdField_a_of_type_Sey == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Rjk.a.patchStatus.a.get();
+    return this.jdField_a_of_type_Sey.a.patchStatus.a.get();
   }
   
   private int b()
   {
-    if (this.jdField_a_of_type_Rjk == null) {
+    if (this.jdField_a_of_type_Sey == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Rjk.a.patchStatus.b.get();
+    return this.jdField_a_of_type_Sey.a.patchStatus.b.get();
   }
   
   private void b(int paramInt)
@@ -88,18 +86,16 @@ public class ReadInJoyPatchAdView
     for (;;)
     {
       return;
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_Ogo != null)) {}
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_Otk != null)) {}
       try
       {
-        if (oeh.a(new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdExtInfo)) == paramInt)
+        if (oqm.a(new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdExtInfo)) == paramInt)
         {
-          this.jdField_a_of_type_Ogo.a(this.jdField_a_of_type_Rjk, this.jdField_b_of_type_Int);
+          this.jdField_a_of_type_Otk.a(this.jdField_a_of_type_Sey, this.jdField_a_of_type_Int);
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1203, 1000L);
         }
-        if (this.jdField_b_of_type_AndroidWidgetTextView != null)
-        {
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(paramInt + "秒");
-          this.jdField_a_of_type_Int = paramInt;
+        if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + "秒");
         }
         if (paramInt >= 1)
         {
@@ -126,43 +122,42 @@ public class ReadInJoyPatchAdView
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131559888, this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367959));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371627));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376670));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362010));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362154));
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362050));
-    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371629));
+    View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131560035, this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)localView.findViewById(2131368284));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377476));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)localView.findViewById(2131362067));
+    this.b = ((TextView)localView.findViewById(2131362224));
+    this.c = ((TextView)localView.findViewById(2131362109));
+    this.d = ((TextView)localView.findViewById(2131372202));
   }
   
   private void f()
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setOnClickListener(this);
+    this.c.setOnClickListener(this);
     this.d.setOnClickListener(this);
-    this.e.setOnClickListener(this);
   }
   
   private void g()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new ogn(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new otj(this, Looper.getMainLooper());
   }
   
   private void h()
   {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("0秒");
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("0秒");
     }
-    if (this.jdField_a_of_type_Ogo != null)
+    if (this.jdField_a_of_type_Otk != null)
     {
       a();
-      this.jdField_a_of_type_Ogo.b(this.jdField_a_of_type_Rjk, this.jdField_b_of_type_Int, 0);
+      this.jdField_a_of_type_Otk.b(this.jdField_a_of_type_Sey, this.jdField_a_of_type_Int, 0);
     }
   }
   
-  public rjk a()
+  public sey a()
   {
-    return this.jdField_a_of_type_Rjk;
+    return this.jdField_a_of_type_Sey;
   }
   
   public void a()
@@ -176,59 +171,59 @@ public class ReadInJoyPatchAdView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Ogo != null)
+    if (this.jdField_a_of_type_Otk != null)
     {
-      this.jdField_a_of_type_Ogo.a(this.jdField_a_of_type_Rjk, this.jdField_b_of_type_Int, paramInt);
-      this.jdField_a_of_type_Ogo.b(this.jdField_a_of_type_Rjk, this.jdField_b_of_type_Int, 1);
+      this.jdField_a_of_type_Otk.a(this.jdField_a_of_type_Sey, this.jdField_a_of_type_Int, paramInt);
+      this.jdField_a_of_type_Otk.b(this.jdField_a_of_type_Sey, this.jdField_a_of_type_Int, 1);
     }
   }
   
-  public void a(rjk paramrjk, AdvertisementInfo paramAdvertisementInfo, int paramInt)
+  public void a(sey paramsey, AdvertisementInfo paramAdvertisementInfo, int paramInt)
   {
     if (paramAdvertisementInfo == null) {}
     do
     {
       return;
-      this.jdField_b_of_type_Int = paramInt;
+      this.jdField_a_of_type_Int = paramInt;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
-      this.jdField_a_of_type_Rjk = paramrjk;
-      this.d.setText(paramAdvertisementInfo.mTitle);
-      this.c.setText(paramAdvertisementInfo.mAdTxt);
-      this.e.setText(oee.a(getContext(), paramAdvertisementInfo));
+      this.jdField_a_of_type_Sey = paramsey;
+      this.c.setText(paramAdvertisementInfo.mTitle);
+      this.b.setText(paramAdvertisementInfo.mAdTxt);
+      this.d.setText(oqj.a(getContext(), paramAdvertisementInfo));
       try
       {
-        paramrjk = new URL(paramAdvertisementInfo.mAdImg);
+        paramsey = new URL(paramAdvertisementInfo.mAdImg);
         URL localURL = new URL(paramAdvertisementInfo.mAdCorporateLogo);
-        orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramrjk, getContext(), false);
-        orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, localURL, getContext(), false);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(aepi.a(2.0F, getContext().getResources()));
+        pgk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramsey, getContext(), false);
+        pgk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, localURL, getContext(), false);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(afur.a(2.0F, getContext().getResources()));
         try
         {
-          paramInt = oeh.a(new JSONObject(paramAdvertisementInfo.mAdExtInfo));
+          paramInt = oqm.a(new JSONObject(paramAdvertisementInfo.mAdExtInfo));
           if (paramInt < 0)
           {
             a();
             return;
           }
         }
-        catch (JSONException paramrjk)
+        catch (JSONException paramsey)
         {
-          paramrjk.printStackTrace();
+          paramsey.printStackTrace();
           return;
         }
       }
-      catch (Exception paramrjk)
+      catch (Exception paramsey)
       {
         for (;;)
         {
-          paramrjk.printStackTrace();
+          paramsey.printStackTrace();
         }
       }
     } while (this.jdField_a_of_type_AndroidOsHandler == null);
-    paramrjk = new Message();
-    paramrjk.what = 1201;
-    paramrjk.obj = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramrjk);
+    paramsey = new Message();
+    paramsey.what = 1201;
+    paramsey.obj = Integer.valueOf(paramInt);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramsey);
   }
   
   public boolean a()
@@ -238,22 +233,22 @@ public class ReadInJoyPatchAdView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Ogo != null) {
-      this.jdField_a_of_type_Ogo.c(this.jdField_a_of_type_Rjk, this.jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_Otk != null) {
+      this.jdField_a_of_type_Otk.c(this.jdField_a_of_type_Sey, this.jdField_a_of_type_Int);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Ogo != null) {
-      this.jdField_a_of_type_Ogo.d(this.jdField_a_of_type_Rjk, this.jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_Otk != null) {
+      this.jdField_a_of_type_Otk.d(this.jdField_a_of_type_Sey, this.jdField_a_of_type_Int);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Ogo != null) {
-      this.jdField_a_of_type_Ogo.b(this.jdField_a_of_type_Rjk, this.jdField_b_of_type_Int, 0);
+    if (this.jdField_a_of_type_Otk != null) {
+      this.jdField_a_of_type_Otk.b(this.jdField_a_of_type_Sey, this.jdField_a_of_type_Int, 0);
     }
   }
   
@@ -268,12 +263,13 @@ public class ReadInJoyPatchAdView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Ogo != null)
+      if (this.jdField_a_of_type_Otk != null)
       {
         a();
-        this.jdField_a_of_type_Ogo.a(this.jdField_a_of_type_Rjk, this.jdField_b_of_type_Int, i);
-        this.jdField_a_of_type_Ogo.b(this.jdField_a_of_type_Rjk, this.jdField_b_of_type_Int, 1);
+        this.jdField_a_of_type_Otk.a(this.jdField_a_of_type_Sey, this.jdField_a_of_type_Int, i);
+        this.jdField_a_of_type_Otk.b(this.jdField_a_of_type_Sey, this.jdField_a_of_type_Int, 1);
       }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
       i = 2;
       continue;
@@ -283,9 +279,9 @@ public class ReadInJoyPatchAdView
     }
   }
   
-  public void setOnPatchAdListener(ogo paramogo)
+  public void setOnPatchAdListener(otk paramotk)
   {
-    this.jdField_a_of_type_Ogo = paramogo;
+    this.jdField_a_of_type_Otk = paramotk;
   }
 }
 

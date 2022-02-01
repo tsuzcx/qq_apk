@@ -1,12 +1,23 @@
-public abstract interface atyw
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class atyw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a(atya paramatya);
+  public atyw(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public abstract void b(atya paramatya);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    QFileDebugSettingFragment.a(this.a).a().a = paramBoolean;
+    QFileDebugSettingFragment.a(this.a).a(QFileDebugSettingFragment.a(this.a).a());
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atyw
  * JD-Core Version:    0.7.0.1
  */

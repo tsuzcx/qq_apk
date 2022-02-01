@@ -1,57 +1,79 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 
 class ytk
-  implements bckx
 {
-  ytk(ytb paramytb) {}
+  int jdField_a_of_type_Int;
+  ykh jdField_a_of_type_Ykh;
+  yrd jdField_a_of_type_Yrd;
+  yre jdField_a_of_type_Yre;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public ytk(ytg paramytg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("requstTroopNotifyAd", 2, "result = " + paramJSONObject + ", requestCode = " + paramInt);
-    }
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = paramJSONObject.optJSONObject("data");
-      if (paramJSONObject != null)
+    this.jdField_a_of_type_Int = afur.a(15.0F, paramytg.a());
+    this.b = afur.a(12.0F, paramytg.a());
+    this.c = afur.a(2.0F, paramytg.a());
+    this.d = ((bclx.jdField_a_of_type_Int - this.jdField_a_of_type_Int * 2 - this.b * 5) / 6);
+    this.e = (this.d - this.c * 2);
+    this.f = (this.e * 8 / 5);
+    this.jdField_a_of_type_Ykh = new ykh(afur.a(3.0F, paramytg.a()), 0, this.f * 1.0F / this.e, null, null);
+    this.jdField_a_of_type_Yrd = ((yrd)paramytg.a(yrd.class));
+    this.jdField_a_of_type_Yre = ((yre)paramytg.a(yre.class));
+  }
+  
+  public Bitmap a(int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_Yrd != null) {
+      if (this.jdField_a_of_type_Yrd.a(paramInt))
       {
-        paramJSONObject = paramJSONObject.optJSONObject("8020205751015455");
-        if (paramJSONObject != null)
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_Yre != null)
         {
-          paramJSONObject = paramJSONObject.optJSONArray("list");
-          if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
-          {
-            paramJSONObject = bbrz.a(paramJSONObject.optJSONObject(0));
-            if (paramJSONObject != null)
-            {
-              this.a.jdField_a_of_type_Bbrz = paramJSONObject;
-              this.a.d = true;
-              if (QLog.isColorLevel()) {
-                QLog.d("requstTroopNotifyAd", 2, "apurl = " + this.a.jdField_a_of_type_Bbrz.a + ", img = " + this.a.jdField_a_of_type_Bbrz.c + ", rl = " + this.a.jdField_a_of_type_Bbrz.b);
-              }
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result ready -----------");
-            }
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
-            return;
+          localObject1 = localObject2;
+          if (!this.jdField_a_of_type_Yre.a(paramInt)) {}
+        }
+      }
+      else
+      {
+        Bitmap localBitmap1 = this.jdField_a_of_type_Yrd.a(paramInt);
+        localObject1 = localObject2;
+        if (localBitmap1 != null)
+        {
+          if (this.jdField_a_of_type_Yre != null) {
+            this.jdField_a_of_type_Yre.a(paramInt, new Canvas(localBitmap1), localBitmap1.getWidth(), localBitmap1.getHeight());
+          }
+          Bitmap localBitmap2 = zkh.a(localBitmap1, this.e, this.f, false);
+          this.jdField_a_of_type_Yrd.a(localBitmap1);
+          localObject1 = localObject2;
+          if (localBitmap2 != null) {
+            localObject1 = this.jdField_a_of_type_Ykh.a(localBitmap2);
           }
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result null -----------");
+    return localObject1;
+  }
+  
+  public void a(ywd paramywd, ytl paramytl)
+  {
+    Bitmap localBitmap = zkh.a(paramywd.c, this.e, this.f, false);
+    paramywd = null;
+    if (localBitmap != null) {
+      paramywd = this.jdField_a_of_type_Ykh.a(localBitmap);
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+    paramytl.b = paramywd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ytk
  * JD-Core Version:    0.7.0.1
  */

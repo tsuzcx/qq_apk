@@ -1,66 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajno
-  implements TextWatcher
+class ajno
+  implements DialogInterface.OnClickListener
 {
-  public ajno(LoginView paramLoginView) {}
+  ajno(ajnk paramajnk) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LoginView.c(this.a);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Object localObject;
-    if (paramCharSequence.length() > 0) {
-      if (this.a.b != null)
-      {
-        localObject = (ajod)this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getAdapter();
-        if ((localObject != null) && (((ajod)localObject).getCount() != 0)) {
-          break label139;
-        }
-        localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-        paramInt1 = (int)(15.0F * LoginView.a(this.a) + 0.5F);
-        if (((RelativeLayout.LayoutParams)localObject).rightMargin != paramInt1)
-        {
-          ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-          this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-        this.a.b.setVisibility(0);
-      }
-    }
-    for (;;)
+    try
     {
-      if (paramCharSequence.length() <= 4) {
-        break label237;
-      }
-      this.a.b(paramCharSequence.toString());
+      paramDialogInterface.dismiss();
+      ajnk.a(this.a, ajnk.a(this.a), Long.valueOf(ajnk.a(this.a)).longValue());
+      ajnk.a(this.a);
       return;
-      label139:
-      localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-      paramInt1 = (int)(40.0F * LoginView.a(this.a) + 0.5F);
-      if (((RelativeLayout.LayoutParams)localObject).rightMargin == paramInt1) {
-        break;
-      }
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-      this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      break;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
-      }
     }
-    label237:
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a(false, null);
+    catch (Exception paramDialogInterface)
+    {
+      QLog.e("SDKEmotionSettingManager", 1, "setNegativeButton cancel error");
+    }
   }
 }
 

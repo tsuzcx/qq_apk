@@ -1,34 +1,49 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ansl
-  implements Animator.AnimatorListener
+public class ansl
+  extends BroadcastReceiver
 {
-  ansl(ansg paramansg, View paramView) {}
+  public ansl(QQAppInterface paramQQAppInterface) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Ansg.l();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Ansg.l();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Ansg.e) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
+          {
+            avai.a();
+            aybz.a();
+            ayqb.c();
+            return;
+          }
+        } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));
+        paramContext = paramIntent.getStringExtra("kickedUin");
+      } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals(this.a.getAccount())));
+      paramContext = this.a.getKickIntent();
+    } while (paramContext == null);
+    paramContext.putExtra("isSameDevice", false);
+    paramIntent = paramIntent.getStringExtra("msg");
+    if (!TextUtils.isEmpty(paramIntent)) {
+      paramContext.putExtra("msg", paramIntent);
     }
+    this.a.setKickIntent(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ansl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,17 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aedk
-  extends altm
+  implements View.OnClickListener
 {
-  public aedk(TroopInfoActivity paramTroopInfoActivity) {}
+  public aedk(EditInfoActivity paramEditInfoActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!bdeu.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin))) {}
-    String str;
-    do
-    {
-      return;
-      this.a.b = false;
-      str = bdgc.j(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-      if (!TextUtils.isEmpty(str))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = str;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.troopinfo", 2, "onUpdateFriendInfo|uin = " + paramString + ", tmpNickName = " + str);
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (bdeu.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    }
+    this.a.o();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

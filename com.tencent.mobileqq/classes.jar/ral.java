@@ -1,49 +1,37 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
-
-final class ral
-  implements rat
+class ral
+  implements rab
 {
-  ral(ram paramram) {}
+  ral(raj paramraj, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(int paramInt, String paramString, HashMap<Integer, rau> paramHashMap, long paramLong)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoExtractFrame", 2, "执行结果，onResult code = " + paramInt);
-    }
-    try
+    if (raj.a(this.jdField_a_of_type_Raj) != null)
     {
-      int i = raj.a().optInt("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
-      raj.a().put("KEY_LOCAL_RESULT_SUCC_COUNT", i + 1);
-      bkbq.a("kandian_video_extract_frame_local_result", raj.a().toString());
-      label66:
-      raj.a(System.currentTimeMillis() - raj.a());
-      raj.b(paramLong);
-      raj.a(BaseApplication.getContext(), this.a, paramInt, paramString, paramHashMap);
-      if (!raj.a().compareAndSet(false, true)) {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoExtractFrame", 2, "任务已销毁，直接返回");
-        }
+      raj.a(this.jdField_a_of_type_Raj).i();
+      raj.a(this.jdField_a_of_type_Raj).a(this.jdField_a_of_type_Int, this.b, this.c);
+    }
+  }
+  
+  public void a(int paramInt, long paramLong, String paramString1, qzh paramqzh, String paramString2, String paramString3, String paramString4)
+  {
+    if (raj.a(this.jdField_a_of_type_Raj) != null)
+    {
+      if (paramInt == 0)
+      {
+        raj.a(this.jdField_a_of_type_Raj).i();
+        raj.a(this.jdField_a_of_type_Raj).a(paramLong, paramString1, paramqzh, paramString2, this.jdField_a_of_type_Int, this.b, this.c);
       }
-      while (raj.a() == null) {
-        return;
-      }
-      raj.a().b();
-      raj.a(null);
+    }
+    else {
       return;
     }
-    catch (Exception localException)
-    {
-      break label66;
-    }
+    raj.a(this.jdField_a_of_type_Raj).i();
+    raj.a(this.jdField_a_of_type_Raj).a(paramString3, paramString2, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ral
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.Friends;
 
-class aodq
-  implements View.OnClickListener
+public abstract interface aodq
 {
-  aodq(aodp paramaodp) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a(Friends[] paramArrayOfFriends, long paramLong, boolean paramBoolean);
 }
 
 

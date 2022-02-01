@@ -1,118 +1,89 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherClientIPCModule.1;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
 
-public class atfx
-  extends QIPCModule
+class atfx
+  extends atfi
 {
-  private static volatile atfx jdField_a_of_type_Atfx;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  
-  public atfx(String paramString)
+  public atfx(atfe paramatfe)
   {
-    super(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchTogetherClientIPCModule", 2, "WatchTogetherClientIPCModule register");
-    }
+    super(paramatfe);
   }
   
-  public static atfx a()
+  protected String a()
   {
-    if (jdField_a_of_type_Atfx == null) {}
-    try
+    return "StateLocalFailedWhenRecv";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      if (jdField_a_of_type_Atfx == null) {
-        jdField_a_of_type_Atfx = new atfx("WatchTogetherClientIPCModule");
-      }
-      return jdField_a_of_type_Atfx;
-    }
-    finally {}
-  }
-  
-  private boolean a()
-  {
-    return Thread.currentThread() == Looper.getMainLooper().getThread();
-  }
-  
-  public void a(String paramString, WatchTogetherFloatingData paramWatchTogetherFloatingData)
-  {
-    if (a())
-    {
-      if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString)) {
-        atfs.a().a(BaseApplicationImpl.getContext(), paramWatchTogetherFloatingData);
-      }
-      do
-      {
-        return;
-        if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
-        {
-          atfs.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
-          return;
-        }
-      } while (!"ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString));
-      atfs.a().b();
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherClientIPCModule.1(this, paramString, paramWatchTogetherFloatingData));
+    atfe.c(this.jdField_a_of_type_Atfe, 9, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateUploadingWhenRecv)");
+    this.jdField_a_of_type_Atfi = new atgk(this.jdField_a_of_type_Atfe);
+    this.jdField_a_of_type_Atfe.a(true, 0L);
+    this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchTogetherClientIPCModule", 2, "call TogetherBusinessIPCModule action=" + paramString);
-    }
-    EIPCResult localEIPCResult = new EIPCResult();
-    if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString)) {
-      if (paramBundle != null)
-      {
-        paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
-        if (paramBundle != null)
-        {
-          a(paramString, paramBundle);
-          localEIPCResult.code = 0;
-        }
-      }
-    }
-    for (;;)
+    b(paramInt1, paramInt2);
+  }
+  
+  protected void a(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      callbackResult(paramInt, localEIPCResult);
-      return localEIPCResult;
-      localEIPCResult.code = -102;
-      continue;
-      localEIPCResult.code = -102;
-      continue;
-      if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
-      {
-        if (paramBundle != null)
-        {
-          paramBundle = (WatchTogetherFloatingData)paramBundle.getSerializable("BUNDLE_KEY_UI_DATA");
-          if (paramBundle != null)
-          {
-            a(paramString, paramBundle);
-            localEIPCResult.code = 0;
-          }
-          else
-          {
-            localEIPCResult.code = -102;
-          }
-        }
-        else
-        {
-          localEIPCResult.code = -102;
-        }
-      }
-      else if ("ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString))
-      {
-        a(paramString, new WatchTogetherFloatingData());
-        localEIPCResult.code = 0;
-      }
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
+    atfe.a(this.jdField_a_of_type_Atfe, 9, 12, true);
+    a("StateExcepInvalidWhenRecv");
+    this.jdField_a_of_type_Atfi = new atft(this.jdField_a_of_type_Atfe);
+  }
+  
+  protected void a(long paramLong)
+  {
+    b(paramLong);
+  }
+  
+  protected boolean a(int paramInt, String paramString, long paramLong)
+  {
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
+    }
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((atvo.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
+    }
+    this.jdField_a_of_type_Atfe.a(paramLong, localFileManagerEntity.peerUin);
+    localFileManagerEntity.setCloudType(1);
+    atfe.b(this.jdField_a_of_type_Atfe, 1, 0);
+    atfe.c(this.jdField_a_of_type_Atfe, 1, 0);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateGotoOffFileProcess)");
+    this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Atfi = new atfu(this.jdField_a_of_type_Atfe);
+    return true;
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atfe.a(this.jdField_a_of_type_Atfe, 11, 9, true);
+    a("StateCancelUploadWhenRecv");
+    this.jdField_a_of_type_Atfi = new atfl(this.jdField_a_of_type_Atfe);
   }
 }
 

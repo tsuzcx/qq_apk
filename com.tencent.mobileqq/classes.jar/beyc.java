@@ -1,60 +1,34 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import java.util.UUID;
 
-class beyc
-  implements bexx
+public abstract interface beyc
 {
-  beyc(beyb parambeyb) {}
+  public abstract int a();
   
-  public void a()
-  {
-    if (beyb.a(this.a) != null)
-    {
-      beyb.a(this.a).notifyVideoStop();
-      beyb.a(this.a, 1);
-    }
-    this.a.a(true, new View[] { beyb.a(this.a) });
-  }
+  public abstract long a();
   
-  public void a(boolean paramBoolean)
-  {
-    if ((this.a.a != null) && (this.a.a.getVisibility() != 0))
-    {
-      this.a.a(true, new View[] { this.a.a });
-      if ((paramBoolean) && (beyb.a(this.a) != null) && (beyb.a(this.a) == 0))
-      {
-        beyb.a(this.a).notifyVideoStart();
-        this.a.a(false, new View[] { beyb.a(this.a) });
-      }
-    }
-    else
-    {
-      return;
-    }
-    if ((beyb.a(this.a) != null) && (beyb.a(this.a).getVisibility() == 0))
-    {
-      this.a.a(false, new View[] { beyb.a(this.a) });
-      return;
-    }
-    this.a.a(true, new View[] { beyb.a(this.a) });
-    beyb.a(this.a, 1);
-  }
+  public abstract String a();
   
-  public void b()
-  {
-    if (beyb.a(this.a) != null) {
-      beyb.a(this.a).notifyVideoStop();
-    }
-    this.a.a(true, new View[] { beyb.a(this.a) });
-    this.a.a(false, new View[] { this.a.a });
-  }
+  public abstract UUID a();
   
-  public void c()
-  {
-    this.a.b(5);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract String b();
+  
+  public abstract int c();
+  
+  public abstract String c();
+  
+  public abstract int d();
+  
+  public abstract String d();
+  
+  public abstract boolean d();
 }
 
 

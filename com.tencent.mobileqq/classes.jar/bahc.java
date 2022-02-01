@@ -1,21 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bahc
-  extends bagz
+  extends bahu<ReceiptMessageDetailFragment>
 {
-  public bahc(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public bahc(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
+    super(paramReceiptMessageDetailFragment);
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
-    {
-      this.jdField_a_of_type_Bagw.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_Bagw.g(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReceiptMessageDetailFragment", 4, "mTroopSendReadReportCallback onRes: " + paramInt);
     }
+    if (paramInt == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopSendReadReportCallback succ");
+      }
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
+      return;
+    }
+    if (paramInt != 1281)
+    {
+      QLog.d("ReceiptMessageDetailFragment", 1, "mTroopSendReadReportCallback fatal error: " + paramInt);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
+      return;
+    }
+    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
   }
 }
 

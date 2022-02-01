@@ -1,6 +1,9 @@
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+
 public abstract interface bkcu
 {
-  public abstract void a(int paramInt);
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
 }
 
 

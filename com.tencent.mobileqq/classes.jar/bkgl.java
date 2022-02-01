@@ -1,48 +1,11 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
-import java.io.File;
+import android.view.animation.Interpolator;
 
-class bkgl
-  extends ajio
+public class bkgl
+  implements Interpolator
 {
-  private bkgl(bkgj parambkgj) {}
-  
-  public void a(boolean paramBoolean)
+  public float getInterpolation(float paramFloat)
   {
-    super.a(paramBoolean);
-    if ((paramBoolean) && (arso.a(this.c)))
-    {
-      String str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.f.hashCode()));
-      File localFile = new File(this.c);
-      QzoneZipCacheHelper.unzipFile(localFile.getAbsolutePath(), str);
-      if (localFile.exists()) {
-        arso.a(localFile);
-      }
-      this.c = str;
-      if (QZLog.isColorLevel()) {
-        QZLog.i("QbossADBannerConfigInfo", 2, "zip success = pathDir = " + str);
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    if ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.a.f))) {}
-    String str;
-    Object localObject;
-    do
-    {
-      do
-      {
-        return false;
-        str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.f.hashCode()));
-        localObject = new File(str);
-      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
-      localObject = ((File)localObject).listFiles();
-    } while ((localObject == null) || (localObject.length <= 0));
-    this.c = str;
-    return true;
+    return bkfh.a(paramFloat);
   }
 }
 

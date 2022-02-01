@@ -1,17 +1,21 @@
-class vjs
-  extends vio
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+
+public class vjs
+  extends RecyclerView.ViewHolder
 {
-  vjs(vji paramvji, vkq paramvkq) {}
+  public QCircleContentImage a;
   
-  public boolean b()
+  public vjs(vjn paramvjn, View paramView)
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Vkq.d);
-    return true;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage = ((QCircleContentImage)paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vjs
  * JD-Core Version:    0.7.0.1
  */

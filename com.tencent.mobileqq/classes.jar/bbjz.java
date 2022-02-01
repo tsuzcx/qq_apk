@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
+import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
+import com.tencent.widget.ListView;
 
-public final class bbjz
-  implements QQPermissionCallback
+public class bbjz
+  extends bbiq<bbnb, bbww>
 {
-  public bbjz(BaseActivity paramBaseActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bbjz(MessageSearchDetailFragment paramMessageSearchDetailFragment, ListView paramListView, aobu paramaobu, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (!this.a.isFinishing()) {
-      bdgm.b(this.a);
-    }
+    super(paramListView, paramaobu, paramSearchResultItem, paramString, paramQQAppInterface);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  protected bbps a(int paramInt)
+  {
+    return new bbqp(MessageSearchDetailFragment.a(this.a));
+  }
+  
+  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new bbww(paramViewGroup, 2131562848);
+  }
 }
 
 

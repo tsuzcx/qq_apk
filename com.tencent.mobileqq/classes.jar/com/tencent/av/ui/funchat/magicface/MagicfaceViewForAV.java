@@ -7,12 +7,12 @@ import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import lek;
-import lke;
+import lbc;
+import lgz;
 
 public class MagicfaceViewForAV
   extends SurfaceView
-  implements SurfaceHolder.Callback, lke
+  implements SurfaceHolder.Callback, lgz
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
@@ -32,7 +32,7 @@ public class MagicfaceViewForAV
     DisplayMetrics localDisplayMetrics = getContext().getResources().getDisplayMetrics();
     this.jdField_a_of_type_Float = localDisplayMetrics.density;
     this.jdField_a_of_type_Int = localDisplayMetrics.widthPixels;
-    lek.c("MagicfaceViewForAV", "init() density: " + this.jdField_a_of_type_Int + "|" + this.jdField_a_of_type_Float);
+    lbc.c("MagicfaceViewForAV", "init() density: " + this.jdField_a_of_type_Int + "|" + this.jdField_a_of_type_Float);
   }
   
   /* Error */
@@ -163,7 +163,7 @@ public class MagicfaceViewForAV
     //   253: astore 13
     //   255: aload 14
     //   257: astore 12
-    //   259: invokestatic 160	com/tencent/mobileqq/utils/AudioHelper:e	()Z
+    //   259: invokestatic 160	com/tencent/mobileqq/utils/AudioHelper:f	()Z
     //   262: ifeq +97 -> 359
     //   265: aload 14
     //   267: astore 13
@@ -315,7 +315,7 @@ public class MagicfaceViewForAV
     //   581: ldc 63
     //   583: aload_1
     //   584: invokevirtual 213	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   587: invokestatic 215	lek:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   587: invokestatic 216	lbc:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   590: return
     //   591: iload 4
     //   593: ifeq +132 -> 725
@@ -338,7 +338,7 @@ public class MagicfaceViewForAV
     //   629: aload 14
     //   631: astore 12
     //   633: aload 16
-    //   635: invokevirtual 218	android/graphics/Rect:height	()I
+    //   635: invokevirtual 219	android/graphics/Rect:height	()I
     //   638: aload_1
     //   639: invokevirtual 201	android/graphics/Bitmap:getWidth	()I
     //   642: imul
@@ -396,7 +396,7 @@ public class MagicfaceViewForAV
     //   751: astore 12
     //   753: aload 16
     //   755: aload 7
-    //   757: invokevirtual 222	android/graphics/Rect:set	(Landroid/graphics/Rect;)V
+    //   757: invokevirtual 223	android/graphics/Rect:set	(Landroid/graphics/Rect;)V
     //   760: fconst_1
     //   761: fstore 8
     //   763: aload 14
@@ -404,7 +404,7 @@ public class MagicfaceViewForAV
     //   767: aload 14
     //   769: astore 12
     //   771: aload 14
-    //   773: invokevirtual 223	android/graphics/Canvas:getWidth	()I
+    //   773: invokevirtual 224	android/graphics/Canvas:getWidth	()I
     //   776: istore 11
     //   778: aload 14
     //   780: astore 13
@@ -440,7 +440,7 @@ public class MagicfaceViewForAV
     //   835: astore 13
     //   837: aload 14
     //   839: astore 12
-    //   841: invokestatic 160	com/tencent/mobileqq/utils/AudioHelper:e	()Z
+    //   841: invokestatic 160	com/tencent/mobileqq/utils/AudioHelper:f	()Z
     //   844: ifeq +67 -> 911
     //   847: aload 14
     //   849: astore 13
@@ -451,11 +451,11 @@ public class MagicfaceViewForAV
     //   858: new 65	java/lang/StringBuilder
     //   861: dup
     //   862: invokespecial 67	java/lang/StringBuilder:<init>	()V
-    //   865: ldc 225
+    //   865: ldc 226
     //   867: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   870: fload 8
     //   872: invokevirtual 81	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   875: ldc 227
+    //   875: ldc 228
     //   877: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   880: aload_0
     //   881: getfield 56	com/tencent/av/ui/funchat/magicface/MagicfaceViewForAV:jdField_a_of_type_Float	F
@@ -522,13 +522,13 @@ public class MagicfaceViewForAV
     //   1007: ldc 63
     //   1009: aload_1
     //   1010: invokevirtual 213	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1013: invokestatic 215	lek:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1013: invokestatic 216	lbc:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1016: return
     //   1017: astore_2
     //   1018: ldc 63
     //   1020: aload_2
     //   1021: invokevirtual 213	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1024: invokestatic 215	lek:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1024: invokestatic 216	lbc:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1027: goto -304 -> 723
     // Local variable table:
     //   start	length	slot	name	signature
@@ -650,7 +650,7 @@ public class MagicfaceViewForAV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.funchat.magicface.MagicfaceViewForAV
  * JD-Core Version:    0.7.0.1
  */

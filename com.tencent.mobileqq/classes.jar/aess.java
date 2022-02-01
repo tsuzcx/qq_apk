@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
-class aess
-  implements View.OnClickListener
+public class aess
+  implements DialogInterface.OnClickListener
 {
-  aess(aesk paramaesk) {}
+  public aess(OverloadTipsActivity paramOverloadTipsActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      return;
-    }
-    TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_JavaLangString);
-    TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
-    azqs.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
+    this.a.finish();
   }
 }
 

@@ -1,15 +1,15 @@
-import com.tencent.gdtad.aditem.GdtPreLoader.1;
-import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
-import org.json.JSONObject;
+import android.text.SpannableStringBuilder;
 
 public class aanb
-  implements MiniAppPrePullManager.IPrePullListener
+  extends SpannableStringBuilder
 {
-  public aanb(GdtPreLoader.1 param1) {}
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
+  public aanb(CharSequence paramCharSequence)
   {
-    aase.b("GdtPreLoader", String.format("MiniAppPrePullManager.getInstance().prePullAppinfoByLink end:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    super(paramCharSequence);
   }
 }
 

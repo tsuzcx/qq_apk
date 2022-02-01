@@ -4,11 +4,9 @@ import android.graphics.PointF;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
-import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.factory.ShakaFilterFactory;
 import com.tencent.ttpic.model.GridModel;
 import com.tencent.ttpic.model.GridSettingModel;
-import com.tencent.ttpic.model.ShakaEffectItem;
 import com.tencent.ttpic.openapi.filter.FabbyMvPart;
 import com.tencent.ttpic.openapi.filter.FrameAlphaFilter;
 import com.tencent.ttpic.openapi.filter.MaskStickerFilter.MaskMergeFilter;
@@ -174,29 +172,25 @@ public class FabbyMvFilter
       paramFrame.bindFrame(-1, paramFrame.width, paramFrame.height, 0.0D);
       GlUtil.setBlendMode(true);
       if (VideoFilterUtil.canUseBlendMode(paramStaticStickerFilter)) {
-        break label215;
+        break label156;
       }
       if (!VideoFilterUtil.needCopy(paramStaticStickerFilter)) {
-        break label252;
+        break label180;
       }
     }
-    label215:
-    label252:
+    label156:
+    label180:
     for (Frame localFrame2 = FrameUtil.renderProcessBySwitchFbo(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, this.mCopyFilter, paramFrame, localFrame1);; localFrame2 = paramFrame)
     {
-      BenchUtil.benchStart("[showPreview]renderProcessBySwitchFbo " + paramStaticStickerFilter.getClass().getName());
       paramFrame = VideoFrameUtil.renderProcessBySwitchFbo(localFrame2.getTextureId(), localFrame2.width, localFrame2.height, paramStaticStickerFilter, paramFrame, localFrame1);
-      BenchUtil.benchEnd("[showPreview]renderProcessBySwitchFbo " + paramStaticStickerFilter.getClass().getName());
       for (;;)
       {
         GlUtil.setBlendMode(false);
         return paramFrame;
         localFrame1 = this.mCopyFrame[0];
         break;
-        BenchUtil.benchStart("[showPreview]OnDrawFrameGLSL");
         paramStaticStickerFilter.OnDrawFrameGLSL();
         paramStaticStickerFilter.renderTexture(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
-        BenchUtil.benchEnd("[showPreview]OnDrawFrameGLSL");
       }
     }
   }
@@ -218,29 +212,25 @@ public class FabbyMvFilter
       paramFrame.bindFrame(-1, paramFrame.width, paramFrame.height, 0.0D);
       GlUtil.setBlendMode(true);
       if (VideoFilterUtil.canUseBlendMode(localStaticStickerFilter)) {
-        break label232;
+        break label171;
       }
       if (!VideoFilterUtil.needCopy(localStaticStickerFilter)) {
-        break label271;
+        break label197;
       }
     }
-    label271:
+    label171:
+    label197:
     for (Frame localFrame = FrameUtil.renderProcessBySwitchFbo(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, this.mCopyFilter, paramFrame, paramRenderItem);; localFrame = paramFrame)
     {
-      BenchUtil.benchStart("[showPreview]renderProcessBySwitchFbo " + localStaticStickerFilter.getClass().getName());
       paramFrame = VideoFrameUtil.renderProcessBySwitchFbo(localFrame.getTextureId(), localFrame.width, localFrame.height, localStaticStickerFilter, paramFrame, paramRenderItem);
-      BenchUtil.benchEnd("[showPreview]renderProcessBySwitchFbo " + localStaticStickerFilter.getClass().getName());
       for (;;)
       {
         GlUtil.setBlendMode(false);
         return paramFrame;
         paramRenderItem = this.mCopyFrame[0];
         break;
-        label232:
-        BenchUtil.benchStart("[showPreview]OnDrawFrameGLSL");
         localStaticStickerFilter.OnDrawFrameGLSL();
         localStaticStickerFilter.renderTexture(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
-        BenchUtil.benchEnd("[showPreview]OnDrawFrameGLSL");
       }
     }
   }
@@ -343,6 +333,7 @@ public class FabbyMvFilter
       return paramFrame;
     }
     Map localMap = this.mvPart.getShakaValueMap(paramFloat);
+    localMap.put("progress", Float.valueOf(paramFloat));
     this.mShakaFilter.setParameters(localMap);
     FrameUtil.clearFrame(this.mShakaFrame, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame.width, paramFrame.height);
     this.mShakaFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mShakaFrame);
@@ -380,7 +371,7 @@ public class FabbyMvFilter
     }
     if (this.mvPart.getShakaEffectItem() != null)
     {
-      this.mShakaFilter = ShakaFilterFactory.create(this.mvPart.getShakaEffectItem().getFilterType());
+      this.mShakaFilter = ShakaFilterFactory.create(this.mvPart.getShakaEffectItem());
       if (this.mShakaFilter != null) {
         this.mShakaFilter.ApplyGLSLFilter();
       }
@@ -615,13 +606,10 @@ public class FabbyMvFilter
     if (this.mvPart.getGridType(this.progress) == 6)
     {
       i = this.mvPart.getGridOrder(this.progress);
-      BenchUtil.benchStart("[showPreview][FABBY] bg");
       localObject1 = renderBgFilter(paramFrame);
-      BenchUtil.benchEnd("[showPreview][FABBY] bg");
       this.mCopyFilter.RenderProcess(((Frame)localObject1).getTextureId(), ((Frame)localObject1).width, ((Frame)localObject1).height, -1, 0.0D, this.mGridFrame);
       if (i == 0)
       {
-        BenchUtil.benchStart("[showPreview][FABBY] grid");
         localObject1 = new ArrayList();
         localObject2 = this.mvPart.getGridSetting(this.progress);
         if (localObject2 != null)
@@ -640,20 +628,20 @@ public class FabbyMvFilter
                 }
                 paramFrame = updateAndRenderCameraFrame(paramFrame, this.progress);
                 if ((this.mDoodlerMaskRenderId != ((GridModel)localObject4).renderId) || (this.mDoodlerMaskFrame == null)) {
-                  break label1089;
+                  break label940;
                 }
                 this.mGridDoodlerMaskFrame.bindFrame(-1, paramFrame.width, paramFrame.height, 0.0D);
                 if (this.mDoodlerMaskMergeType == 1)
                 {
                   FrameUtil.clearFrame(this.mGridDoodlerMaskFrame, 0.0F, 0.0F, 0.0F, 0.0F, this.mGridDoodlerMaskFrame.width, this.mGridDoodlerMaskFrame.height);
-                  label292:
+                  label273:
                   this.mMaskTransformFilter.RenderProcess(this.mDoodlerMaskFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mGridDoodlerMaskFrame);
                   Frame localFrame = this.mGridDoodlerMaskFrame;
                   if (this.mDoodlerMaskMergeType != 1) {
-                    break label454;
+                    break label435;
                   }
                   i = 2;
-                  label337:
+                  label318:
                   paramFrame = mergeDoodlerMaskFrame(paramFrame, localFrame, i);
                 }
               }
@@ -662,8 +650,8 @@ public class FabbyMvFilter
         }
       }
     }
-    label1086:
-    label1089:
+    label937:
+    label940:
     for (;;)
     {
       paramFrame = this.mCanvasFilters.drawOnFrame((GridModel)localObject4, paramFrame, ((GridSettingModel)localObject2).canvasRect.width, ((GridSettingModel)localObject2).canvasRect.height);
@@ -675,34 +663,24 @@ public class FabbyMvFilter
       if (this.mDoodlerMaskMergeType == 2)
       {
         FrameUtil.clearFrame(this.mGridDoodlerMaskFrame, 1.0F, 1.0F, 1.0F, 1.0F, this.mGridDoodlerMaskFrame.width, this.mGridDoodlerMaskFrame.height);
-        break label292;
+        break label273;
       }
       FrameUtil.clearFrame(this.mGridDoodlerMaskFrame, 0.0F, 0.0F, 0.0F, 0.0F, this.mGridDoodlerMaskFrame.width, this.mGridDoodlerMaskFrame.height);
-      break label292;
-      label454:
+      break label273;
+      label435:
       i = 1;
-      break label337;
+      break label318;
       GlUtil.setBlendMode(true);
       this.fastRenderFilter.render((List)localObject1, this.mGridFrame);
       GlUtil.setBlendMode(false);
       paramFrame = this.mGridFrame;
-      BenchUtil.benchEnd("[showPreview][FABBY] grid");
       for (;;)
       {
-        BenchUtil.benchStart("[showPreview][FABBY] cover");
-        paramFrame = renderCoverFilter(paramFrame);
-        BenchUtil.benchEnd("[showPreview][FABBY] cover");
-        BenchUtil.benchStart("[showPreview][FABBY] fg");
-        paramFrame = renderFgFilter(paramFrame);
-        BenchUtil.benchEnd("[showPreview][FABBY] fg");
-        BenchUtil.benchStart("[showPreview][FABBY] effect");
-        paramFrame = updateAndRenderFilterEffect(paramFrame, this.progress);
-        BenchUtil.benchEnd("[showPreview][FABBY] effect");
+        paramFrame = updateAndRenderFilterEffect(renderFgFilter(renderCoverFilter(paramFrame)), this.progress);
         this.mLastRenderFrame = paramFrame;
         return paramFrame;
         if (i == 1)
         {
-          BenchUtil.benchStart("[showPreview][FABBY] grid");
           paramFrame = new ArrayList();
           localObject1 = this.mvPart.getGridSetting(this.progress);
           if (localObject1 != null)
@@ -725,40 +703,25 @@ public class FabbyMvFilter
           this.fastRenderFilter.render(paramFrame, this.mGridFrame);
           GlUtil.setBlendMode(false);
           paramFrame = updateAndRenderCameraFrame(this.mGridFrame, this.progress);
-          BenchUtil.benchEnd("[showPreview][FABBY] grid");
         }
       }
       paramMap = (Frame)paramMap.values().iterator().next();
-      BenchUtil.benchStart("[showPreview][FABBY] bg");
       paramFrame = renderBgFilter(paramFrame);
-      BenchUtil.benchEnd("[showPreview][FABBY] bg");
       i = this.mvPart.getGridMode(this.progress);
       int j = this.mvPart.getGridOrder(this.progress);
-      if (i == 0)
-      {
-        BenchUtil.benchStart("[showPreview][FABBY] merge");
-        if (j == 0)
-        {
+      if (i == 0) {
+        if (j == 0) {
           mergeFrame(paramFrame, updateAndRenderCameraFrame(paramMap, this.progress));
-          label853:
-          BenchUtil.benchEnd("[showPreview][FABBY] merge");
         }
       }
       for (;;)
       {
-        label860:
-        BenchUtil.benchStart("[showPreview][FABBY] cover");
-        paramFrame = renderCoverFilter(paramFrame);
-        BenchUtil.benchEnd("[showPreview][FABBY] cover");
-        BenchUtil.benchStart("[showPreview][FABBY] fg");
-        paramFrame = renderFgFilter(paramFrame);
-        BenchUtil.benchEnd("[showPreview][FABBY] fg");
+        label752:
+        paramFrame = renderFgFilter(renderCoverFilter(paramFrame));
         if (i == 0)
         {
-          BenchUtil.benchStart("[showPreview][FABBY] grid");
           FrameUtil.clearFrame(this.mGridFrame, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame.width, paramFrame.height);
           paramMap = updateAndRenderGrid(this.mGridFrame, paramFrame, this.progress);
-          BenchUtil.benchEnd("[showPreview][FABBY] grid");
           paramFrame = paramMap;
           if (j == 1) {
             paramFrame = updateAndRenderCameraFrame(paramMap, this.progress);
@@ -769,22 +732,22 @@ public class FabbyMvFilter
           paramFrame = updateAndRenderFilterEffect(paramFrame, this.progress);
           break;
           if (j != 1) {
-            break label853;
+            break label937;
           }
           mergeFrame(paramFrame, paramMap);
-          break label853;
+          break label752;
           this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mGridFrame);
           if (j == 0)
           {
             paramFrame = updateAndRenderCameraFrame(paramMap, this.progress);
             paramFrame = updateAndRenderGrid(this.mGridFrame, paramFrame, this.progress);
-            break label860;
+            break label752;
           }
           if (j != 1) {
-            break label1086;
+            break label937;
           }
           paramFrame = updateAndRenderCameraFrame(updateAndRenderGrid(this.mGridFrame, paramMap, this.progress), this.progress);
-          break label860;
+          break label752;
         }
       }
     }
@@ -828,7 +791,7 @@ public class FabbyMvFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.FabbyMvFilter
  * JD-Core Version:    0.7.0.1
  */

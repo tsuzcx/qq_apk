@@ -1,64 +1,152 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.articlesummary.articlesummary.FamilyCommentInfo;
 
 public class qku
-  implements Cloneable
+  extends TextBase
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  private NativeSummaryView a;
   
-  public static qku a(articlesummary.FamilyCommentInfo paramFamilyCommentInfo)
+  public qku(VafContext paramVafContext)
   {
-    qku localqku = new qku();
-    localqku.jdField_a_of_type_JavaLangString = paramFamilyCommentInfo.icon_url.get().toStringUtf8();
-    localqku.jdField_b_of_type_JavaLangString = paramFamilyCommentInfo.jump_url.get().toStringUtf8();
-    localqku.jdField_a_of_type_Int = paramFamilyCommentInfo.medal_urls_width.get();
-    localqku.jdField_b_of_type_Int = paramFamilyCommentInfo.medal_urls_height.get();
-    return localqku;
+    super(paramVafContext);
+    this.mTextSize = Utils.dp2px(16.0D);
+    this.mLineSpaceExtra = Utils.rp2px(5.0D);
+    this.a = new NativeSummaryView(paramVafContext.getContext());
+    this.a.setTextColor(-11644322);
   }
   
-  public qku a()
+  public void a(pxk parampxk)
   {
-    try
+    if (this.a.getLayoutParams() == null)
     {
-      super.clone();
-      qku localqku = new qku();
-      localqku.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localqku.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localqku.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localqku.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      return localqku;
+      Object localObject = getComLayoutParams();
+      localObject = new ViewGroup.LayoutParams(((Layout.Params)localObject).mLayoutWidth, ((Layout.Params)localObject).mLayoutHeight);
+      this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
+    this.a.setModel(parampxk);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setBackgroundColor(this.mBackground);
+    this.a.setTextSize(0, this.mTextSize);
+    this.a.setLineSpacing(this.mLineSpaceExtra, 1.0F);
+    this.a.setIncludeFontPadding(false);
+    this.a.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      for (;;)
+    default: 
+      return false;
+    }
+    if ((paramObject instanceof pxk)) {
+      a((pxk)paramObject);
+    }
+    return true;
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.setAttribute(paramInt, paramString);
+    case 1189: 
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("FamilyCommentInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
-        }
+        paramInt = Color.parseColor(String.valueOf(paramString));
+        this.a.setTextColor(paramInt);
+        QLog.d("SummaryView", 1, "setEmotionFontColor: " + paramInt);
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("SummaryView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1188: 
+      try
+      {
+        this.mTextSize = Utils.dp2px(Integer.valueOf(String.valueOf(paramString)).intValue());
+        QLog.d("SummaryView", 1, "setEmotionFontSize: " + this.mTextSize);
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("SummaryView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1190: 
+      try
+      {
+        this.mLineSpaceExtra = Utils.rp2px(Float.valueOf(String.valueOf(paramString)).floatValue());
+        QLog.d("SummaryView", 1, "setEmotionlineSpace: " + this.mLineSpaceExtra);
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("SummaryView", 1, paramString, new Object[0]);
+        return false;
       }
     }
+    try
+    {
+      paramInt = Color.parseColor(paramString);
+      this.a.setLinkedTextColor(paramInt);
+      QLog.d("SummaryView", 1, "SummaryView | setLinkTextColor: " + paramInt);
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("SummaryView", 1, paramString, new Object[0]);
+    }
+    return false;
   }
   
-  public boolean a()
+  public void setTextColor(int paramInt)
   {
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public String toString()
-  {
-    return "FamilyCommentInfo\n familyIconUrl " + this.jdField_a_of_type_JavaLangString + "\n familyJumpUrl " + this.jdField_b_of_type_JavaLangString + "\n width " + this.jdField_a_of_type_Int + "\n height " + this.jdField_b_of_type_Int;
+    this.a.setTextColor(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qku
  * JD-Core Version:    0.7.0.1
  */

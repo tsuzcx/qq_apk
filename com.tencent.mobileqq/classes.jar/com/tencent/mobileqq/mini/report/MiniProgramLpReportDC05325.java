@@ -8,7 +8,7 @@ import com.tencent.component.network.module.report.ImageDownloadReporter;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import java.util.HashMap;
 import java.util.Map;
-import ndd;
+import nlw;
 import okhttp3.Headers;
 import okhttp3.Response;
 import org.apache.http.Header;
@@ -67,7 +67,7 @@ public class MiniProgramLpReportDC05325
   
   public static String getNetworkType()
   {
-    String str = ndd.a();
+    String str = nlw.a();
     if (str == null) {
       return "unknown";
     }
@@ -123,7 +123,7 @@ public class MiniProgramLpReportDC05325
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05325
  * JD-Core Version:    0.7.0.1
  */

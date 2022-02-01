@@ -1,29 +1,121 @@
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.biz.qqcircle.bizparts.QCircleLightInteractListPart.LightInteractListAdapter.1;
+import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPolyLikeWidget;
+import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPushWidget;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StLightInteractInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vby
-  extends vbw
+  extends uzv<FeedCloudMeta.StLightInteractInfo>
 {
-  protected TextView c = (TextView)a(2131379324);
+  private int jdField_a_of_type_Int;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
   
-  public vby(ViewGroup paramViewGroup, int paramInt)
+  public vby(vbt paramvbt, Bundle paramBundle)
   {
-    super(paramViewGroup, paramInt);
+    super(paramBundle);
   }
   
-  public void a(uyg paramuyg)
+  private void a()
   {
-    if (paramuyg.b > 99)
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
     {
-      this.c.setText("99+");
+      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
+        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new QCircleLightInteractListPart.LightInteractListAdapter.1(this));
+      }
+    }
+    else {
       return;
     }
-    this.c.setText(String.valueOf(paramuyg.b));
+    notifyDataSetChanged();
   }
+  
+  protected String a()
+  {
+    return "LightInteractListAdapter";
+  }
+  
+  public void a(RecyclerView paramRecyclerView)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+  }
+  
+  public void a(List<FeedCloudMeta.StLightInteractInfo> paramList)
+  {
+    this.mDataList.addAll(this.mDataList.size(), paramList);
+    a();
+  }
+  
+  public void a(List<FeedCloudMeta.StLightInteractInfo> paramList, FeedCloudMeta.StFeed paramStFeed, int paramInt)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramList != null)
+    {
+      this.mDataList.clear();
+      a();
+      this.mDataList.addAll(paramList);
+      a();
+    }
+  }
+  
+  public void clearData()
+  {
+    this.mDataList.clear();
+    a();
+  }
+  
+  public int getItemCount()
+  {
+    return this.mDataList.size();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return vbt.a(this.jdField_a_of_type_Vbt);
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
+  }
+  
+  public void loadData(zxz paramzxz) {}
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((this.mDataList.size() > paramInt) && ((paramViewHolder instanceof vbz))) {
+      ((vbz)paramViewHolder).a(this.jdField_a_of_type_Vbt.a, this.mDataList.get(paramInt), paramInt, this.jdField_a_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, vbt.a(this.jdField_a_of_type_Vbt));
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if ((paramInt == 2) || (paramInt == 4))
+    {
+      paramViewGroup = new QCircleLightInteractPolyLikeWidget(getContext(), paramInt);
+      paramViewGroup.setReportBeanAgent(this.jdField_a_of_type_Vbt);
+      return new vbz(this.jdField_a_of_type_Vbt, paramViewGroup);
+    }
+    paramViewGroup = new QCircleLightInteractPushWidget(getContext(), paramInt);
+    paramViewGroup.setReportBeanAgent(this.jdField_a_of_type_Vbt);
+    return new vbz(this.jdField_a_of_type_Vbt, paramViewGroup);
+  }
+  
+  public void onInitBlock(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vby
  * JD-Core Version:    0.7.0.1
  */

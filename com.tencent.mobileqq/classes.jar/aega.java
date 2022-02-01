@@ -1,19 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aega
-  implements View.OnClickListener
+  extends anhl
 {
-  public aega(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aega(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
-    if (this.a.d == 11) {
-      azqs.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    switch (paramInt)
+    {
     }
-    this.a.b.cancel();
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.c();
   }
 }
 

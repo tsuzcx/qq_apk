@@ -1,30 +1,22 @@
-import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class aidw
-  extends altm
+  implements Animation.AnimationListener
 {
-  aidw(aidv paramaidv) {}
+  aidw(aidp paramaidp) {}
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a(1, paramString);
-    }
+    this.a.V = false;
+    this.a.ae = false;
+    this.a.d(this.a.n);
+    this.a.s = 1;
   }
   
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (paramBoolean) {
-      this.a.a(1, paramString);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a(2, null);
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

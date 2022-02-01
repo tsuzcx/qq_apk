@@ -1,23 +1,34 @@
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class aylo
-  implements Comparator<ayls>
+  implements ImageAssetDelegate
 {
   aylo(ayln paramayln) {}
   
-  public int a(ayls paramayls1, ayls paramayls2)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    int j = Long.signum(paramayls1.b - paramayls2.b);
-    int i = j;
-    if (j == 0)
+    Object localObject = null;
+    paramLottieImageAsset = paramLottieImageAsset.getFileName();
+    String str = this.a.jdField_a_of_type_JavaLangString + "guide_images" + File.separator + paramLottieImageAsset;
+    try
     {
-      j = Long.signum(paramayls1.c - paramayls2.c);
-      i = j;
-      if (j == 0) {
-        i = Long.signum(-paramayls1.a + paramayls2.a);
-      }
+      paramLottieImageAsset = mpu.a(str, this.a.jdField_a_of_type_Int, this.a.b);
+      return paramLottieImageAsset;
     }
-    return i;
+    catch (Exception localException)
+    {
+      do
+      {
+        paramLottieImageAsset = localObject;
+      } while (!AudioHelper.f());
+      QLog.w(aylm.jdField_a_of_type_JavaLangString, 1, "PromotionGuide Exception, imagePath[" + str + "]", localException);
+    }
+    return null;
   }
 }
 

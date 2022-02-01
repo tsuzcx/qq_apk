@@ -1,36 +1,23 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.widgets.QCirclePushRankIndicator;
-import com.tencent.biz.qqcircle.widgets.QCirclePushRankTopView;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.List;
-import qqcircle.QQCircleDitto.StItemContainer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uey
-  implements ViewPager.OnPageChangeListener
+class uey
+  implements View.OnClickListener
 {
-  public uey(QCirclePushRankTopView paramQCirclePushRankTopView) {}
+  uey(uex paramuex, int paramInt) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QCirclePushRankTopView.a(this.a) != null) {
-      QCirclePushRankTopView.a(this.a).a(paramInt);
+    if (uex.a(this.jdField_a_of_type_Uex) != null) {
+      uex.a(this.jdField_a_of_type_Uex).a(paramView, 12, this.jdField_a_of_type_Int, uex.a(this.jdField_a_of_type_Uex));
     }
-    QCirclePushRankTopView.a(this.a, paramInt);
-    QQCircleDitto.StItemContainer localStItemContainer = (QQCircleDitto.StItemContainer)QCirclePushRankTopView.a(this.a).get(paramInt);
-    QCirclePushRankTopView.a(this.a, localStItemContainer);
-    if (this.a.a != null) {
-      this.a.a.setText(localStItemContainer.subTitle.get());
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uey
  * JD-Core Version:    0.7.0.1
  */

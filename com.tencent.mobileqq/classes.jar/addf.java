@@ -1,18 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupWelcomeFragment;
-
 public class addf
-  implements View.OnClickListener
+  extends adcg
 {
-  public addf(GeneralSettingActivity paramGeneralSettingActivity) {}
+  protected void b() {}
   
-  public void onClick(View paramView)
+  public String c()
   {
-    aujo.a("0X800A22D");
-    PublicFragmentActivity.a(this.a.getActivity(), MsgBackupWelcomeFragment.class);
+    return "ceilingvalue";
   }
 }
 

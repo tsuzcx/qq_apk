@@ -1,20 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import android.graphics.Rect;
+import java.io.File;
 
-public class bciz
-  implements View.OnClickListener
+class bciz
 {
-  public bciz(VisitorTroopCardFragment paramVisitorTroopCardFragment, Dialog paramDialog) {}
+  int jdField_a_of_type_Int;
+  alox jdField_a_of_type_Alox;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  File jdField_a_of_type_JavaIoFile;
+  boolean jdField_a_of_type_Boolean;
+  int b;
   
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    VisitorTroopCardFragment.c(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
-  }
+  private bciz(bcio parambcio) {}
 }
 
 

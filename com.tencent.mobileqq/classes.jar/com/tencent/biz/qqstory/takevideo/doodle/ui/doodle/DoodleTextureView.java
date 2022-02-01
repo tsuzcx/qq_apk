@@ -8,17 +8,17 @@ import com.tencent.mobileqq.apollo.GLTextureView;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import xgh;
-import xhd;
-import xhm;
+import yzs;
+import zao;
+import zax;
 
 @TargetApi(14)
 public class DoodleTextureView
   extends GLTextureView
-  implements GLSurfaceView.Renderer, xgh
+  implements GLSurfaceView.Renderer, yzs
 {
   int jdField_a_of_type_Int = 320;
-  xhd jdField_a_of_type_Xhd;
+  zao jdField_a_of_type_Zao;
   int b = 480;
   
   public DoodleTextureView(Context paramContext)
@@ -38,8 +38,8 @@ public class DoodleTextureView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Xhd != null) {
-      this.jdField_a_of_type_Xhd.c(paramInt);
+    if (this.jdField_a_of_type_Zao != null) {
+      this.jdField_a_of_type_Zao.c(paramInt);
     }
   }
   
@@ -63,8 +63,8 @@ public class DoodleTextureView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if (this.jdField_a_of_type_Xhd != null) {
-      this.jdField_a_of_type_Xhd.e();
+    if (this.jdField_a_of_type_Zao != null) {
+      this.jdField_a_of_type_Zao.e();
     }
   }
   
@@ -73,9 +73,9 @@ public class DoodleTextureView
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    if (this.jdField_a_of_type_Xhd != null)
+    if (this.jdField_a_of_type_Zao != null)
     {
-      paramGL10 = (xhm)this.jdField_a_of_type_Xhd.a(102);
+      paramGL10 = (zax)this.jdField_a_of_type_Zao.a(102);
       if (paramGL10 != null) {
         paramGL10.a(paramInt1, paramInt2);
       }
@@ -84,8 +84,8 @@ public class DoodleTextureView
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.jdField_a_of_type_Xhd != null) {
-      this.jdField_a_of_type_Xhd.d();
+    if (this.jdField_a_of_type_Zao != null) {
+      this.jdField_a_of_type_Zao.d();
     }
   }
   
@@ -95,16 +95,16 @@ public class DoodleTextureView
     return true;
   }
   
-  public void setOpController(xhd paramxhd)
+  public void setOpController(zao paramzao)
   {
-    this.jdField_a_of_type_Xhd = paramxhd;
-    this.jdField_a_of_type_Xhd.a(this);
+    this.jdField_a_of_type_Zao = paramzao;
+    this.jdField_a_of_type_Zao.a(this);
     super.queueEvent(new DoodleTextureView.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView
  * JD-Core Version:    0.7.0.1
  */

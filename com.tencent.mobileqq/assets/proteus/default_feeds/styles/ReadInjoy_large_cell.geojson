@@ -1,7 +1,9 @@
 {
+    
     "ReadInjoy_large_cell":
     {
         "view_type":"container",
+
         "direction":"vertical",
         "height":{
             "type":"wrap_content"

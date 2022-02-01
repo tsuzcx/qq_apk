@@ -1,21 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-
-public class sfp
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class sfp
 {
-  public sfp(ZImageView paramZImageView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.setAlpha(i);
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sfp
  * JD-Core Version:    0.7.0.1
  */

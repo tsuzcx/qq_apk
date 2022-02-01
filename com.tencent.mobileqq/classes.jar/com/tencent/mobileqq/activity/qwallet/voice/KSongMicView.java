@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.voice;
 
-import ajeu;
-import ajfb;
-import ajfc;
-import ajfd;
-import alud;
+import akww;
+import akxf;
+import akxg;
+import akxh;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -22,7 +21,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import bdaq;
+import anni;
+import bggq;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -33,15 +33,15 @@ public class KSongMicView
 {
   float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 0;
-  private ajfd jdField_a_of_type_Ajfd;
+  private akxh jdField_a_of_type_Akxh;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(5);
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private List<ajfc> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<akxg> jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
-  private float jdField_b_of_type_Float = bdaq.a(getContext(), 2.0F);
+  private float jdField_b_of_type_Float = bggq.a(getContext(), 2.0F);
   private int jdField_b_of_type_Int;
   private int c;
   private int d;
@@ -53,22 +53,22 @@ public class KSongMicView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
-    int i = bdaq.a(getContext(), 90.0F);
+    int i = bggq.a(getContext(), 90.0F);
     this.c = i;
     this.jdField_b_of_type_Int = i;
-    this.d = bdaq.a(getContext(), 28.0F);
-    this.e = bdaq.a(getContext(), 36.5F);
-    this.f = bdaq.a(getContext(), 12.0F);
-    this.g = bdaq.a(getContext(), 100.0F);
+    this.d = bggq.a(getContext(), 28.0F);
+    this.e = bggq.a(getContext(), 36.5F);
+    this.f = bggq.a(getContext(), 12.0F);
+    this.g = bggq.a(getContext(), 100.0F);
     ViewCompat.setImportantForAccessibility(this, 1);
-    setContentDescription(alud.a(2131706354));
+    setContentDescription(anni.a(2131704755));
     setClickable(true);
   }
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
   {
-    ajfc localajfc = new ajfc(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
-    this.jdField_a_of_type_JavaUtilList.add(localajfc);
+    akxg localakxg = new akxg(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
+    this.jdField_a_of_type_JavaUtilList.add(localakxg);
   }
   
   private void c()
@@ -80,7 +80,7 @@ public class KSongMicView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ajfb(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new akxf(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -143,29 +143,29 @@ public class KSongMicView
     int i;
     if (this.jdField_a_of_type_Int == 3)
     {
-      this.jdField_b_of_type_Float = bdaq.a(getContext(), 1.0F);
+      this.jdField_b_of_type_Float = bggq.a(getContext(), 1.0F);
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        ajfc localajfc = (ajfc)((Iterator)localObject).next();
+        akxg localakxg = (akxg)((Iterator)localObject).next();
         paramCanvas.save();
-        f2 = localajfc.jdField_a_of_type_Float;
-        f1 = localajfc.jdField_b_of_type_Float;
+        f2 = localakxg.jdField_a_of_type_Float;
+        f1 = localakxg.jdField_b_of_type_Float;
         f2 = (getWidth() - f2) / 2.0F;
         f1 = (getHeight() - f1) / 2.0F;
-        i = (int)(255.0F * localajfc.c);
+        i = (int)(255.0F * localakxg.c);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-3405);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
         this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_Float * 0.5F + f2, this.jdField_b_of_type_Float * 0.5F + f1, getWidth() - this.jdField_b_of_type_Float * 0.5F - f2, getHeight() - this.jdField_b_of_type_Float * 0.5F - f1);
-        paramCanvas.scale(localajfc.d, localajfc.e, getWidth() / 2, getHeight() / 2);
-        paramCanvas.rotate(localajfc.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
+        paramCanvas.scale(localakxg.d, localakxg.e, getWidth() / 2, getHeight() / 2);
+        paramCanvas.rotate(localakxg.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
         paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
         paramCanvas.restore();
       }
     }
-    this.jdField_b_of_type_Float = bdaq.a(getContext(), 1.0F);
+    this.jdField_b_of_type_Float = bggq.a(getContext(), 1.0F);
     paramCanvas.save();
     paramCanvas.translate((getWidth() - a()) / 2, (getHeight() - b()) / 2);
     if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 2))
@@ -196,7 +196,7 @@ public class KSongMicView
       paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
       if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1))
       {
-        localObject = getResources().getDrawable(2130846846);
+        localObject = getResources().getDrawable(2130847296);
         int j = (a() - this.d) / 2;
         ((Drawable)localObject).setBounds(j, j, this.d + j, this.e + j);
         ((Drawable)localObject).setAlpha(i);
@@ -230,8 +230,8 @@ public class KSongMicView
       } while (this.jdField_a_of_type_Int != 0);
       this.jdField_a_of_type_Int = 1;
       invalidate();
-      if (this.jdField_a_of_type_Ajfd != null) {
-        this.jdField_a_of_type_Ajfd.l();
+      if (this.jdField_a_of_type_Akxh != null) {
+        this.jdField_a_of_type_Akxh.l();
       }
       this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
       return true;
@@ -239,7 +239,7 @@ public class KSongMicView
     float f1 = this.jdField_a_of_type_Float;
     paramMotionEvent.getRawY();
     int i = j;
-    if (ajeu.a(this, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) {
+    if (akww.a(this, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) {
       if (paramMotionEvent.getAction() != 3) {
         break label218;
       }
@@ -249,8 +249,8 @@ public class KSongMicView
     {
       if (i != 0)
       {
-        if (this.jdField_a_of_type_Ajfd != null) {
-          this.jdField_a_of_type_Ajfd.n();
+        if (this.jdField_a_of_type_Akxh != null) {
+          this.jdField_a_of_type_Akxh.n();
         }
         b();
         break;
@@ -258,22 +258,22 @@ public class KSongMicView
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_Int = 2;
       invalidate();
-      if (this.jdField_a_of_type_Ajfd == null) {
+      if (this.jdField_a_of_type_Akxh == null) {
         break;
       }
-      this.jdField_a_of_type_Ajfd.m();
+      this.jdField_a_of_type_Akxh.m();
       break;
     }
   }
   
-  public void setStatusListener(ajfd paramajfd)
+  public void setStatusListener(akxh paramakxh)
   {
-    this.jdField_a_of_type_Ajfd = paramajfd;
+    this.jdField_a_of_type_Akxh = paramakxh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.voice.KSongMicView
  * JD-Core Version:    0.7.0.1
  */

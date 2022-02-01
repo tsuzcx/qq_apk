@@ -1,50 +1,63 @@
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AppGuideTipsConfig;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTimDouFuGuide;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahkz
-  extends RecyclerView.ViewHolder
+  extends afuu
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
-  private View jdField_a_of_type_AndroidViewView;
-  
-  public ahkz(Context paramContext, View paramView)
+  public ahkz(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
   }
   
-  public static ahkz a(Context paramContext, View paramView)
+  protected afuv a()
   {
-    return new ahkz(paramContext, paramView);
+    return new ahlb(this);
   }
   
-  public static ahkz a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  protected View a(MessageRecord paramMessageRecord, afuv paramafuv, View paramView, LinearLayout paramLinearLayout, afzq paramafzq)
   {
-    return new ahkz(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public <T extends View> T a(int paramInt)
-  {
-    View localView2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
+    paramLinearLayout = (ahlb)paramafuv;
+    paramafuv = paramView;
+    if (paramView == null)
     {
-      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView1);
+      paramafuv = LayoutInflater.from(this.a).inflate(2131558891, null);
+      paramLinearLayout.b = ((TextView)paramafuv.findViewById(2131378776));
+      paramLinearLayout.c = ((TextView)paramafuv.findViewById(2131364999));
     }
-    return localView1;
+    if ((paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForTimDouFuGuide)))
+    {
+      paramMessageRecord = ((MessageForTimDouFuGuide)paramMessageRecord).config;
+      if (paramMessageRecord != null)
+      {
+        paramLinearLayout.b.setText(paramMessageRecord.tipsHighLight);
+        paramView = new SpannableString(paramMessageRecord.tipsMsg + anni.a(2131713627));
+        int i = paramView.length();
+        paramView.setSpan(new ForegroundColorSpan(paramafuv.getResources().getColor(2131166998)), i - 4, i, 33);
+        paramLinearLayout.c.setText(paramView);
+        paramafuv.setOnClickListener(new ahla(this, paramMessageRecord));
+      }
+    }
+    return paramafuv;
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bguj[] a(View paramView)
+  {
+    return new bguh().a();
   }
 }
 

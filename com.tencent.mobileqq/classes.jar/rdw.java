@@ -1,23 +1,40 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Point;
-import android.view.View;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
 
-final class rdw
-  implements ValueAnimator.AnimatorUpdateListener
+public class rdw
+  extends bdsh
 {
-  rdw(View paramView1, View paramView2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
-    rdm.a(this.a, paramValueAnimator);
-    rdm.a(this.b, paramValueAnimator);
+    paramDownloadParams = paramDownloadParams.urlStr;
+    if (paramDownloadParams.startsWith("readinjoy_skin_gif://")) {
+      paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif://", "");
+    }
+    for (;;)
+    {
+      paramOutputStream = new File(paramOutputStream);
+      if (!paramOutputStream.exists()) {
+        break;
+      }
+      return paramOutputStream;
+      paramOutputStream = paramDownloadParams;
+      if (paramDownloadParams.startsWith("readinjoy_skin_gif:")) {
+        paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif:", "");
+      }
+    }
+    return null;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return new rdx(this, paramFile, false, false, 0, 0, 0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rdw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,108 @@
 import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.nearby.smooth.ItemLoader;
-import com.tencent.widget.AbsListView;
+import android.os.SystemClock;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager.RunnableShowForKey;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class avtc
+public class avtc
+  implements avvl
 {
-  int jdField_a_of_type_Int;
-  final Handler jdField_a_of_type_AndroidOsHandler;
-  avtb jdField_a_of_type_Avtb;
-  final ItemLoader<?, ?> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  public avtc(ListenTogetherManager paramListenTogetherManager) {}
   
-  void a()
+  public void a(String paramString, int paramInt)
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    QLog.d("ListenTogether.Manager", 1, new Object[] { "onPlayStateChanged: " + avvg.a(paramInt), " songId:", paramString, " curSongID:", QQMusicPlayService.a().a() });
+    HashMap localHashMap = new HashMap();
+    if (paramInt == 8)
+    {
+      ListenTogetherManager.a(this.a);
+      if (paramInt != 2) {
+        break label302;
+      }
+      if (ListenTogetherManager.a(this.a).c())
+      {
+        ListenTogetherManager.a(this.a).k();
+        ListenTogetherManager.a(this.a).m();
+      }
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      localHashMap.put("status", String.valueOf(paramInt));
+      label190:
+      if (paramInt != 2) {
+        break label381;
+      }
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, avsv.a().a);
+    }
+    for (;;)
+    {
+      ListenTogetherManager.a(this.a, paramString, paramInt);
+      if (!localHashMap.isEmpty()) {
+        bctj.a(BaseApplication.getContext()).a("", "listen_together_player_status", true, 0L, 0L, localHashMap, "");
+      }
+      if (QQMusicPlayService.a() != null) {
+        aysz.a().a(paramInt);
+      }
+      return;
+      if ((paramInt != 5) && (paramInt != 7)) {
+        break;
+      }
+      localHashMap.put("status", String.valueOf(paramInt));
+      break;
+      label302:
+      if ((paramInt != 4) && (paramInt != 5) && (paramInt != 7)) {
+        break label190;
+      }
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      break label190;
+      label381:
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+    }
   }
   
-  void a(View paramView1, View paramView2, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Avtb.a();
-    ListAdapter localListAdapter = this.jdField_a_of_type_Avtb.a();
-    if ((this.jdField_a_of_type_Int != 2) && (!this.jdField_a_of_type_Boolean)) {}
-    for (boolean bool = true;; bool = false)
+    QLog.i("ListenTogether.Manager", 1, "onNetChanged: " + paramBoolean);
+    if (paramBoolean) {
+      ListenTogetherManager.b(this.a);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    QLog.i("ListenTogether.Manager", 1, "onFocusChanged: " + paramBoolean1 + " isTransient:" + paramBoolean2);
+    ListenTogetherManager.a(this.a, paramBoolean1);
+    if (paramBoolean1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.a(this.a, 0L);
       return;
     }
-  }
-  
-  void a(avtb paramavtb)
-  {
-    this.jdField_a_of_type_Avtb = paramavtb;
-    if (this.jdField_a_of_type_Avtb != null)
+    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
+    ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
+    ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+    if (paramBoolean2)
     {
-      paramavtb = this.jdField_a_of_type_Avtb.a();
-      paramavtb.setOnScrollListener(new avtf(this, null));
-      paramavtb.setOnTouchListener(new avte(this, null));
-      paramavtb.setOnItemSelectedListener(new avtg(this, null));
+      ListenTogetherManager.a(this.a, 0L);
+      return;
     }
-  }
-  
-  void b()
-  {
-    if (this.jdField_a_of_type_Avtb == null) {
-      throw new IllegalStateException("Cannot cancel requests with no managed view");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Avtb.a());
+    ListenTogetherManager.a(this.a, SystemClock.elapsedRealtime());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avtc
  * JD-Core Version:    0.7.0.1
  */

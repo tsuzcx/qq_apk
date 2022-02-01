@@ -1,72 +1,147 @@
-public class azte
-  extends aztf
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+public final class azte
 {
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
+  private static int jdField_a_of_type_Int = 4000;
+  private static final Map<String, aztf> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
   
-  public azte()
+  private static void a(aztf paramaztf, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
-  
-  public String a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append(this.jdField_b_of_type_Long).append("|");
-    localStringBuilder.append(this.i).append("|");
-    localStringBuilder.append(this.j).append("|");
-    localStringBuilder.append(this.k).append("|");
-    localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append(this.jdField_b_of_type_Int).append("|");
-    if (paramInt == 0) {
-      localStringBuilder.append("${count_unknown}").append("|");
-    }
-    for (;;)
+    if ((paramaztf != null) && (paramaztf.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
     {
-      localStringBuilder.append(this.jdField_a_of_type_Long).append("|");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append("|");
-      localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append("|");
-      localStringBuilder.append(this.d).append("|");
-      localStringBuilder.append(this.e).append("|");
-      localStringBuilder.append(this.f).append("|");
-      localStringBuilder.append(this.g).append("|");
-      localStringBuilder.append(this.h).append("|");
-      return localStringBuilder.toString();
-      localStringBuilder.append(this.jdField_c_of_type_Int).append("|");
+      File localFile;
+      if (paramaztf.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
+      {
+        if (paramaztf.jdField_a_of_type_JavaIoFile == null)
+        {
+          localFile = new File(paramaztf.jdField_a_of_type_JavaLangString + "~tmp");
+          if (!localFile.exists()) {
+            localFile.createNewFile();
+          }
+          paramaztf.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
+          paramaztf.jdField_a_of_type_JavaIoFile = localFile;
+        }
+        paramaztf.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(paramaztf.jdField_a_of_type_JavaIoFileOutputStream);
+      }
+      if (paramBoolean)
+      {
+        if (paramaztf.jdField_a_of_type_JavaIoFileOutputStream != null)
+        {
+          paramaztf.jdField_a_of_type_JavaIoFileOutputStream.flush();
+          paramaztf.jdField_a_of_type_JavaIoFileOutputStream.close();
+          paramaztf.jdField_a_of_type_JavaIoFileOutputStream = null;
+        }
+        if (paramaztf.jdField_a_of_type_JavaIoFile != null)
+        {
+          localFile = new File(paramaztf.jdField_a_of_type_JavaLangString);
+          if (localFile.exists()) {
+            localFile.delete();
+          }
+          if (!paramaztf.jdField_a_of_type_JavaIoFile.renameTo(localFile))
+          {
+            bgmg.a(paramaztf.jdField_a_of_type_JavaIoFile, localFile);
+            paramaztf.jdField_a_of_type_JavaIoFile.delete();
+          }
+          paramaztf.jdField_a_of_type_JavaIoFile = null;
+        }
+      }
     }
   }
   
-  public String toString()
+  public static void a(String paramString)
   {
-    StringBuffer localStringBuffer = new StringBuffer(64);
-    localStringBuffer.append(this.jdField_b_of_type_Long).append("|");
-    localStringBuffer.append(this.i).append("|");
-    localStringBuffer.append(this.j).append("|");
-    localStringBuffer.append(this.k).append("|");
-    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
-    localStringBuffer.append(this.jdField_b_of_type_Int).append("|");
-    localStringBuffer.append(this.jdField_c_of_type_Int).append("|");
-    localStringBuffer.append(this.jdField_a_of_type_Long).append("|");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuffer.append(this.jdField_b_of_type_JavaLangString).append("|");
-    localStringBuffer.append(this.jdField_c_of_type_JavaLangString).append("|");
-    localStringBuffer.append(this.d).append("|");
-    localStringBuffer.append(this.e).append("|");
-    localStringBuffer.append(this.f).append("|");
-    localStringBuffer.append(this.g).append("|");
-    localStringBuffer.append(this.h).append("|");
-    return localStringBuffer.toString();
+    a(paramString, true);
+  }
+  
+  private static void a(String paramString, boolean paramBoolean)
+  {
+    aztf localaztf = (aztf)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localaztf == null) || (localaztf.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      localaztf.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+      label31:
+      if (localaztf.jdField_a_of_type_JavaIoFileOutputStream != null) {}
+      try
+      {
+        localaztf.jdField_a_of_type_JavaIoFileOutputStream.close();
+        label45:
+        localaztf.jdField_a_of_type_JavaIoFileOutputStream = null;
+        if ((paramBoolean) && (localaztf.jdField_a_of_type_JavaIoFile != null))
+        {
+          localaztf.jdField_a_of_type_JavaIoFile.delete();
+          localaztf.jdField_a_of_type_JavaIoFile = null;
+        }
+        jdField_a_of_type_JavaUtilMap.remove(paramString);
+        return;
+      }
+      catch (Exception localException1)
+      {
+        break label45;
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label31;
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((aztf)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
+    {
+      aztf localaztf = new aztf();
+      localaztf.jdField_a_of_type_JavaLangString = paramString;
+      jdField_a_of_type_JavaUtilMap.put(paramString, localaztf);
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    paramString = (aztf)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null)
+    {
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
+        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
+      }
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
+    }
+    try
+    {
+      a(paramString, false);
+      label66:
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      return true;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      break label66;
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    aztf localaztf = (aztf)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localaztf != null) && (localaztf.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      a(localaztf, true);
+      label29:
+      localaztf.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      a(paramString, true);
+      return true;
+    }
+    catch (IOException localIOException)
+    {
+      break label29;
+    }
   }
 }
 

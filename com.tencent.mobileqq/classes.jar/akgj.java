@@ -1,18 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoTask;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class akgj
-  implements ansr
+  implements MessageQueue.IdleHandler
 {
-  public akgj(SessionClearFragment paramSessionClearFragment) {}
+  public akgj(SendPhotoActivity paramSendPhotoActivity) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public boolean queueIdle()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForDiscuss onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
-    }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
+    ayxi.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "queueIdle", "start");
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask = new SendPhotoTask(this.a, null, this.a.jdField_a_of_type_AndroidOsHandler);
+    ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask, 8, null, false);
+    return false;
   }
 }
 

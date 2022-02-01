@@ -1,22 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import friendlist.GetOnlineInfoResp;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class aijv
-  extends altm
+public class aijv
+  extends MSFServlet
 {
-  aijv(aijq paramaijq) {}
-  
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (TextUtils.equals(paramString, this.a.a.a)) {
-      this.a.f();
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
+      aijp.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
     }
   }
   
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.a.f();
+    if (paramIntent == null)
+    {
+      QLog.e("StickerRecServlet", 1, "onSend : req is null");
+      return;
+    }
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
+    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
+    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
   }
 }
 

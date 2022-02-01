@@ -1,18 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import android.text.InputFilter;
+import java.util.List;
 
-public class akrh
-  extends bayj
+public abstract interface akrh
 {
-  public akrh(HotChatCenterFragment paramHotChatCenterFragment) {}
+  public abstract String a(List<String> paramList, boolean paramBoolean);
   
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.b();
-    }
-  }
+  public abstract void a(String paramString);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract InputFilter[] a(int paramInt);
 }
 
 

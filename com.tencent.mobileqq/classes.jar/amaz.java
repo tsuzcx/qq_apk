@@ -1,41 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class amaz
-  implements alpg
+class amaz
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private Handler a;
+  amaz(amay paramamay) {}
   
-  public amaz(Handler paramHandler)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a = paramHandler;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    int i = 1;
-    if (this.a == null) {}
-    while ((paramInt != 1) && (paramInt != 4) && (paramInt != 5)) {
-      return;
-    }
-    Handler localHandler = this.a;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
-      return;
-      i = 0;
-    }
+    int i = ((Integer)paramCompoundButton.getTag()).intValue();
+    AppletItem localAppletItem = (AppletItem)this.a.a.get(i);
+    amay.a(this.a).a(paramCompoundButton, paramBoolean, localAppletItem);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amaz
  * JD-Core Version:    0.7.0.1
  */

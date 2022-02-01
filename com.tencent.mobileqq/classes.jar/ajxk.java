@@ -1,6 +1,18 @@
-public abstract interface ajxk
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ajxk
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  ajxk(ajxi paramajxi) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

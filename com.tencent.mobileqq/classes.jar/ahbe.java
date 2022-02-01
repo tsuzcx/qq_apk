@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public final class ahbe
-  implements Parcelable.Creator<ZhituImgResponse>
+class ahbe
+  extends ahbl
 {
-  public ZhituImgResponse a(Parcel paramParcel)
+  ahbe(agwz paramagwz)
   {
-    return new ZhituImgResponse(paramParcel);
+    super(paramagwz, null);
   }
   
-  public ZhituImgResponse[] a(int paramInt)
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    return new ZhituImgResponse[paramInt];
+    return new ahfk(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

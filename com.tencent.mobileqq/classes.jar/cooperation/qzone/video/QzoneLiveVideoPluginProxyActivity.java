@@ -1,23 +1,27 @@
 package cooperation.qzone.video;
 
+import Override;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.KeyEvent;
-import aofm;
-import bexu;
-import biqn;
-import biqw;
-import bjoa;
-import bjog;
-import bjpz;
-import bjwd;
+import android.view.MotionEvent;
+import aqfv;
+import bies;
+import blfh;
+import blfq;
+import bmcj;
+import bmcp;
+import bmei;
+import bmkn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.File;
 
 public class QzoneLiveVideoPluginProxyActivity
@@ -28,11 +32,11 @@ public class QzoneLiveVideoPluginProxyActivity
   
   public static void a(Activity paramActivity, String paramString1, Intent paramIntent, int paramInt, String paramString2)
   {
-    Class localClass = bjwd.a(paramString2);
+    Class localClass = bmkn.a(paramString2);
     paramIntent.putExtra("userQqResources", -1);
     paramIntent.putExtra("useSkinEngine", false);
     paramIntent.putExtra("param_plugin_gesturelock", false);
-    Object localObject = bjpz.a();
+    Object localObject = bmei.a();
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + (String)localObject);
     }
@@ -40,23 +44,23 @@ public class QzoneLiveVideoPluginProxyActivity
     {
       return;
       if (((String)localObject).equals("qzone_live_video_plugin_hack.apk")) {
-        if (new File(bjpz.a(paramActivity), (String)localObject).exists())
+        if (new File(bmei.a(paramActivity), (String)localObject).exists())
         {
           if (QLog.isColorLevel()) {
             QLog.d("PluginDebug", 2, "launchPluginActivityForResult 加载动态包:hackPluginID:" + (String)localObject);
           }
-          localObject = new bjog(0);
-          ((bjog)localObject).jdField_a_of_type_JavaLangString = paramString1;
-          ((bjog)localObject).e = paramString2;
-          ((bjog)localObject).jdField_a_of_type_JavaLangClass = localClass;
-          ((bjog)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
-          ((bjog)localObject).jdField_b_of_type_Int = paramInt;
-          ((bjog)localObject).c = 15000;
-          ((bjog)localObject).f = null;
-          ((bjog)localObject).jdField_a_of_type_Boolean = false;
-          ((bjog)localObject).jdField_b_of_type_JavaLangString = "qzone_live_video_plugin_hack.apk";
-          ((bjog)localObject).d = "QZoneLiveVideo";
-          bjoa.a(paramActivity, (bjog)localObject);
+          localObject = new bmcp(0);
+          ((bmcp)localObject).jdField_a_of_type_JavaLangString = paramString1;
+          ((bmcp)localObject).e = paramString2;
+          ((bmcp)localObject).jdField_a_of_type_JavaLangClass = localClass;
+          ((bmcp)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
+          ((bmcp)localObject).jdField_b_of_type_Int = paramInt;
+          ((bmcp)localObject).c = 15000;
+          ((bmcp)localObject).f = null;
+          ((bmcp)localObject).jdField_a_of_type_Boolean = false;
+          ((bmcp)localObject).jdField_b_of_type_JavaLangString = "qzone_live_video_plugin_hack.apk";
+          ((bmcp)localObject).d = "QZoneLiveVideo";
+          bmcj.a(paramActivity, (bmcp)localObject);
         }
       }
       while (QLog.isColorLevel())
@@ -70,21 +74,21 @@ public class QzoneLiveVideoPluginProxyActivity
           if (!"qzone_live_video_plugin.apk".equals(localObject)) {
             break label355;
           }
-          localObject = new biqw(0);
-          ((biqw)localObject).jdField_a_of_type_JavaLangString = paramString1;
-          ((biqw)localObject).e = paramString2;
-          ((biqw)localObject).jdField_a_of_type_JavaLangClass = localClass;
-          ((biqw)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
-          ((biqw)localObject).jdField_b_of_type_Int = paramInt;
-          ((biqw)localObject).c = 15000;
-          ((biqw)localObject).f = null;
-          ((biqw)localObject).jdField_b_of_type_Boolean = false;
-          ((biqw)localObject).jdField_b_of_type_JavaLangString = "qzone_live_video_plugin.apk";
-          ((biqw)localObject).d = "QZoneLiveVideo";
+          localObject = new blfq(0);
+          ((blfq)localObject).jdField_a_of_type_JavaLangString = paramString1;
+          ((blfq)localObject).e = paramString2;
+          ((blfq)localObject).jdField_a_of_type_JavaLangClass = localClass;
+          ((blfq)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
+          ((blfq)localObject).jdField_b_of_type_Int = paramInt;
+          ((blfq)localObject).c = 15000;
+          ((blfq)localObject).f = null;
+          ((blfq)localObject).jdField_b_of_type_Boolean = false;
+          ((blfq)localObject).jdField_b_of_type_JavaLangString = "qzone_live_video_plugin.apk";
+          ((blfq)localObject).d = "QZoneLiveVideo";
           if (QLog.isColorLevel()) {
             QLog.d("PluginDebug", 2, "加载原始插件");
           }
-          biqn.a(paramActivity, (biqw)localObject);
+          blfh.a(paramActivity, (blfq)localObject);
         }
       }
     }
@@ -110,16 +114,31 @@ public class QzoneLiveVideoPluginProxyActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
-    return bjwd.a(paramString);
+    return bmkn.a(paramString);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bexu.a(BaseApplicationImpl.getContext(), false, 5);
-    aofm.a(BaseApplicationImpl.getContext(), 2, false);
+    bies.a(BaseApplicationImpl.getContext(), false, 5);
+    aqfv.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void onDestroy()
@@ -148,7 +167,7 @@ public class QzoneLiveVideoPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

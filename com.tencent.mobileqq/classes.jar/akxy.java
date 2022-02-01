@@ -1,20 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
 
-final class akxy
-  implements EIPCResultCallback
+public class akxy
+  implements Animation.AnimationListener
 {
-  akxy(long paramLong, String paramString) {}
+  public akxy(AnonymousEntranceView paramAnonymousEntranceView) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("resData");
-    akwd.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, paramEIPCResult);
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_DRESS_PATH onCallback resJson:" + paramEIPCResult);
+    if (AnonymousEntranceView.b(this.a) != null) {
+      AnonymousEntranceView.b(this.a).setVisibility(4);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (AnonymousEntranceView.b(this.a) != null) {
+      AnonymousEntranceView.b(this.a).setVisibility(0);
     }
   }
 }

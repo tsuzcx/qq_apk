@@ -1,42 +1,116 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.graphics.Point;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.colornote.anim.MusicDanceImageView;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aoff
-  implements Animator.AnimatorListener
 {
-  public aoff(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static int a(MessageRecord paramMessageRecord, int paramInt)
   {
-    paramAnimator = (LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams();
-    if (!this.a.a())
+    paramMessageRecord = a(paramMessageRecord);
+    int j;
+    if (paramMessageRecord != null)
     {
-      paramAnimator.leftMargin = bdaq.a(this.a.getContext(), 14.5F);
-      paramAnimator.rightMargin = 0;
+      paramMessageRecord = paramMessageRecord.iterator();
+      int i = 0;
+      j = i;
+      if (!paramMessageRecord.hasNext()) {
+        break label62;
+      }
+      aofg localaofg = (aofg)paramMessageRecord.next();
+      if (localaofg.a != paramInt) {
+        break label64;
+      }
+      i = localaofg.b + i;
     }
-    ColorNoteSmallScreenRelativeLayout.a(this.a).setLayoutParams(paramAnimator);
-    ColorNoteSmallScreenRelativeLayout.a(this.a).setVisibility(0);
-    ((LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams()).leftMargin = bdaq.a(this.a.getContext(), 13.5F);
-    ColorNoteSmallScreenRelativeLayout.a(this.a).x = this.a.g();
-    paramAnimator = this.a;
-    if (ColorNoteSmallScreenRelativeLayout.a(this.a).x < 0) {}
-    for (int i = 0;; i = 1)
+    label62:
+    label64:
+    for (;;)
     {
-      ColorNoteSmallScreenRelativeLayout.b(paramAnimator, i);
-      return;
+      break;
+      j = 0;
+      return j;
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public static List<aofg> a(MessageRecord paramMessageRecord)
+  {
+    ArrayList localArrayList;
+    String str;
+    int j;
+    int i;
+    if (((paramMessageRecord instanceof MessageForStructing)) && ((((MessageForStructing)paramMessageRecord).structingMsg instanceof AbsShareMsg)) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 52))
+    {
+      paramMessageRecord = (AbsShareMsg)((MessageForStructing)paramMessageRecord).structingMsg;
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramMessageRecord.iterator();
+      for (;;)
+      {
+        if (localIterator.hasNext())
+        {
+          paramMessageRecord = (bcvs)localIterator.next();
+          if (paramMessageRecord != null)
+          {
+            str = anni.a(2131704055);
+            j = 1;
+            if ((paramMessageRecord instanceof bcye))
+            {
+              i = ((bcye)paramMessageRecord).a.getInt("count");
+              j = 1;
+              paramMessageRecord = str;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      localArrayList.add(new aofg(paramMessageRecord, j, i));
+      break;
+      Object localObject = paramMessageRecord.h;
+      if (localObject != null)
+      {
+        i = j;
+        paramMessageRecord = str;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          i = j;
+          paramMessageRecord = str;
+          str = ((JSONObject)localObject).getString("giftName");
+          i = j;
+          paramMessageRecord = str;
+          j = ((JSONObject)localObject).getInt("giftType");
+          i = j;
+          paramMessageRecord = str;
+          int k = ((JSONObject)localObject).getInt("giftCount");
+          i = k;
+          paramMessageRecord = str;
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          j = i;
+          i = 0;
+        }
+        continue;
+        return localArrayList;
+        return null;
+      }
+      else
+      {
+        i = 0;
+        j = 1;
+        paramMessageRecord = localJSONException;
+      }
+    }
+  }
 }
 
 

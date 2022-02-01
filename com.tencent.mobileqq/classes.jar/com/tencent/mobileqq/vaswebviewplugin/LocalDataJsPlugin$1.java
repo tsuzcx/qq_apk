@@ -2,28 +2,28 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdtt;
-import bead;
-import beae;
-import beag;
+import bgyw;
+import bhhe;
+import bhhf;
+import bhhh;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import org.json.JSONObject;
 
 class LocalDataJsPlugin$1
-  extends bead
+  extends bhhe
 {
   LocalDataJsPlugin$1(LocalDataJsPlugin paramLocalDataJsPlugin) {}
   
-  public void onDone(beae parambeae)
+  public void onDone(bhhf parambhhf)
   {
-    super.onDone(parambeae);
+    super.onDone(parambhhf);
     if (QLog.isColorLevel()) {
-      QLog.d("LocalDataJsPlugin", 2, "sigTplResDownloadListener.onDone| task:" + parambeae);
+      QLog.d("LocalDataJsPlugin", 2, "sigTplResDownloadListener.onDone| task:" + parambhhf);
     }
-    Object localObject1 = parambeae.a();
+    Object localObject1 = parambhhf.a();
     if (localObject1 == null) {
-      QLog.e("LocalDataJsPlugin", 1, "sigTplResDownloadListener.onDone error no params: " + parambeae);
+      QLog.e("LocalDataJsPlugin", 1, "sigTplResDownloadListener.onDone error no params: " + parambhhf);
     }
     String str1;
     String str2;
@@ -39,17 +39,17 @@ class LocalDataJsPlugin$1
         QLog.e("LocalDataJsPlugin", 1, "sigTplResDownloadListener.onDone error : callbackId = " + str1 + " itemId = " + str2);
         return;
       }
-      if ((3 != parambeae.a()) && (parambeae.a() != 0)) {
+      if ((3 != parambhhf.a()) && (parambhhf.a() != 0)) {
         break;
       }
-      localFile = new File(bdtt.a(str2, "dynamic_aio"));
-    } while (!beag.a(new File(bdtt.a(str2, "temp.zip")), localFile, true));
+      localFile = new File(bgyw.a(str2, "dynamic_aio"));
+    } while (!bhhh.a(new File(bgyw.a(str2, "temp.zip")), localFile, true));
     try
     {
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject1 = new JSONObject((String)localObject1);
-        LocalDataJsPlugin.access$000(this.this$0, str1, Integer.parseInt(str2), parambeae.c, (JSONObject)localObject1);
+        LocalDataJsPlugin.access$000(this.this$0, str1, Integer.parseInt(str2), parambhhf.c, (JSONObject)localObject1);
         return;
       }
     }
@@ -61,12 +61,12 @@ class LocalDataJsPlugin$1
         Object localObject2 = null;
       }
     }
-    QLog.e("LocalDataJsPlugin", 1, "sigTpl download fail status = " + parambeae.a() + " itemId = " + str2);
+    QLog.e("LocalDataJsPlugin", 1, "sigTpl download fail status = " + parambhhf.a() + " itemId = " + str2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.LocalDataJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

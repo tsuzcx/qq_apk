@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.ViewGroup;
+import org.json.JSONObject;
 
 public abstract interface rvi
 {
-  public abstract int a();
-  
-  public abstract View a(ViewGroup paramViewGroup);
-  
-  public abstract void a();
-  
-  public abstract void a(boolean paramBoolean, String paramString);
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rvi
  * JD-Core Version:    0.7.0.1
  */

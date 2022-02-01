@@ -1,67 +1,80 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
 
 public class psx
-  extends ClickableSpan
-  implements rvl, sha
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  boolean jdField_a_of_type_Boolean;
-  private int b = -1;
-  private int c = -1;
-  
-  public psx(int paramInt1, int paramInt2, int paramInt3)
+  public static void a(String paramString)
   {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
+    Object localObject = TVK_SDKMgr.getProxyFactory();
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-      return;
+      localObject = ((TVK_IProxyFactory)localObject).getCacheMgr(BaseApplicationImpl.getContext());
+      if (localObject != null)
+      {
+        TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, nxw.a(paramString), "");
+        localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "2");
+        localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", sfa.a);
+        ((TVK_ICacheMgr)localObject).preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, localTVK_PlayerVideoInfo);
+      }
     }
-    paramView.callOnClick();
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public static boolean a(String paramString)
   {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.c);
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.b;; i = this.jdField_a_of_type_Int)
-    {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
+    Object localObject1 = TVK_SDKMgr.getProxyFactory();
+    if (localObject1 == null) {
+      return false;
     }
+    localObject1 = ((TVK_IProxyFactory)localObject1).getCacheMgr(BaseApplicationImpl.getContext());
+    if (localObject1 == null) {
+      return false;
+    }
+    Object localObject2 = nxw.a(paramString);
+    TVK_UserInfo localTVK_UserInfo = new TVK_UserInfo("", "");
+    localObject2 = new TVK_PlayerVideoInfo(2, (String)localObject2, "");
+    ((TVK_PlayerVideoInfo)localObject2).setConfigMap("cache_duration", "2");
+    ((TVK_PlayerVideoInfo)localObject2).setConfigMap("cache_servers_type", sfa.a);
+    ((TVK_PlayerVideoInfo)localObject2).addExtraParamsMap("shouq_bus_type", "bus_type_kandian_feeds");
+    String[] arrayOfString = new String[6];
+    arrayOfString[0] = "msd";
+    arrayOfString[1] = "hd";
+    arrayOfString[2] = "fhd";
+    arrayOfString[3] = "mp4";
+    arrayOfString[4] = "shd";
+    arrayOfString[5] = "sd";
+    int m = arrayOfString.length;
+    int j = 0;
+    int i = 0;
+    while (j < m)
+    {
+      String str = arrayOfString[j];
+      try
+      {
+        int k = ((TVK_ICacheMgr)localObject1).isVideoCached(BaseApplicationImpl.getContext(), paramString, localTVK_UserInfo, (TVK_PlayerVideoInfo)localObject2, str);
+        i = k;
+      }
+      catch (Exception localException)
+      {
+        label176:
+        break label176;
+        j += 1;
+      }
+      if ((i == 2) || (i == 1)) {
+        return true;
+      }
+    }
+    if (QLog.isColorLevel()) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     psx
  * JD-Core Version:    0.7.0.1
  */

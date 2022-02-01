@@ -1,50 +1,43 @@
-import android.media.MediaMetadataRetriever;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.maxvideo.trim.TrimNative;
-import com.tencent.qphone.base.util.QLog;
-
-public class ajvp
+class ajvp
 {
-  public static int a(String paramString)
+  private final int jdField_a_of_type_Int;
+  private final boolean jdField_a_of_type_Boolean;
+  
+  private ajvp(int paramInt1, int paramInt2)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever;
-    if (Build.VERSION.SDK_INT >= 14)
+    this.jdField_a_of_type_Int = paramInt1;
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      localMediaMetadataRetriever = new MediaMetadataRetriever();
-      try
-      {
-        localMediaMetadataRetriever.setDataSource(paramString);
-        paramString = localMediaMetadataRetriever.extractMetadata(12);
-        QLog.i("FormatDetector", 1, "detectFormatSupport: mimeType=" + paramString);
-        if ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("video/")))
-        {
-          QLog.e("FormatDetector", 1, "detectFormatSupport: wrong mimeType=" + paramString);
-          return -1;
-        }
-        paramString = localMediaMetadataRetriever.extractMetadata(17);
-        QLog.i("FormatDetector", 1, "detectFormatSupport: hasVideo=" + paramString);
-        if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase("yes")))
-        {
-          QLog.e("FormatDetector", 1, "detectFormatSupport: no video content!");
-          return -1;
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          QLog.e("FormatDetector", 1, "detectFormatSupport:", paramString);
-          localMediaMetadataRetriever.release();
-        }
-      }
-      finally
-      {
-        localMediaMetadataRetriever.release();
-      }
-      return 0;
+      this.jdField_a_of_type_Boolean = bool;
+      return;
     }
-    return TrimNative.detect(paramString);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (ajvp)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
+      }
+    } while (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int j = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0) {
+      return i + j * 31;
+    }
   }
 }
 

@@ -1,7 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo.speedpicker;
 
-import aepi;
-import alud;
+import afur;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -16,34 +15,35 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bncx;
-import bndn;
-import bnea;
-import bneb;
-import bnec;
-import bned;
-import bnee;
+import anni;
+import bpud;
+import bput;
+import bpvg;
+import bpvh;
+import bpvi;
+import bpvj;
+import bpvk;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import java.lang.ref.WeakReference;
 
 public class PickerContainer
   extends RelativeLayout
-  implements bnea
+  implements bpvg
 {
   public static final String a;
   public float a;
   private int jdField_a_of_type_Int = 58;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  Property<PickerContainer, Float> jdField_a_of_type_AndroidUtilProperty = new bneb(this, Float.class, "containerAlpha");
+  Property<PickerContainer, Float> jdField_a_of_type_AndroidUtilProperty = new bpvh(this, Float.class, "containerAlpha");
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bncx jdField_a_of_type_Bncx;
-  private bndn jdField_a_of_type_Bndn;
+  private bpud jdField_a_of_type_Bpud;
+  private bput jdField_a_of_type_Bput;
   private PickerBarLayout jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout;
   private Float jdField_a_of_type_JavaLangFloat = Float.valueOf(1.0F);
-  private WeakReference<bnee> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bpvk> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   public float b;
   private boolean b;
@@ -52,7 +52,7 @@ public class PickerContainer
   
   static
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131708545);
+    jdField_a_of_type_JavaLangString = anni.a(2131706922);
   }
   
   public PickerContainer(Context paramContext)
@@ -99,7 +99,7 @@ public class PickerContainer
     this.jdField_a_of_type_Float = a(paramContext, this.jdField_a_of_type_Float);
     this.jdField_b_of_type_Float = a(paramContext, this.jdField_b_of_type_Float);
     this.d = a(paramContext, this.d);
-    this.jdField_a_of_type_Int = aepi.a(this.jdField_a_of_type_Int, paramContext.getResources());
+    this.jdField_a_of_type_Int = afur.a(this.jdField_a_of_type_Int, paramContext.getResources());
   }
   
   private void a(Float paramFloat)
@@ -140,8 +140,8 @@ public class PickerContainer
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bnec(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bned(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bpvi(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bpvj(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
   }
@@ -149,15 +149,15 @@ public class PickerContainer
   public void a()
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    if (this.jdField_a_of_type_Bndn != null)
+    if (this.jdField_a_of_type_Bput != null)
     {
-      this.jdField_a_of_type_Bndn.a();
-      this.jdField_a_of_type_Bndn = null;
+      this.jdField_a_of_type_Bput.a();
+      this.jdField_a_of_type_Bput = null;
     }
-    if (this.jdField_a_of_type_Bncx != null)
+    if (this.jdField_a_of_type_Bpud != null)
     {
-      this.jdField_a_of_type_Bncx.a();
-      this.jdField_a_of_type_Bncx = null;
+      this.jdField_a_of_type_Bpud.a();
+      this.jdField_a_of_type_Bpud = null;
     }
     this.jdField_a_of_type_AndroidViewView = null;
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout != null) {
@@ -179,21 +179,21 @@ public class PickerContainer
   public void a(int paramInt)
   {
     if (paramInt == 1) {
-      if (this.jdField_a_of_type_Bncx != null)
+      if (this.jdField_a_of_type_Bpud != null)
       {
-        this.jdField_a_of_type_Bncx.stop();
-        this.jdField_a_of_type_Bncx.a(false);
-        this.jdField_a_of_type_Bncx.a(1);
-        this.jdField_a_of_type_Bncx.start();
+        this.jdField_a_of_type_Bpud.stop();
+        this.jdField_a_of_type_Bpud.a(false);
+        this.jdField_a_of_type_Bpud.a(1);
+        this.jdField_a_of_type_Bpud.start();
       }
     }
-    while ((paramInt == 4) || (this.jdField_a_of_type_Bncx == null)) {
+    while ((paramInt == 4) || (this.jdField_a_of_type_Bpud == null)) {
       return;
     }
-    this.jdField_a_of_type_Bncx.stop();
-    this.jdField_a_of_type_Bncx.a(false);
-    this.jdField_a_of_type_Bncx.a(2);
-    this.jdField_a_of_type_Bncx.start();
+    this.jdField_a_of_type_Bpud.stop();
+    this.jdField_a_of_type_Bpud.a(false);
+    this.jdField_a_of_type_Bpud.a(2);
+    this.jdField_a_of_type_Bpud.start();
   }
   
   public void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -201,14 +201,14 @@ public class PickerContainer
     if (QLog.isColorLevel()) {
       QLog.d("PickerContainer", 2, "onSelected: index:" + paramInt + " text:" + paramString + " bstart:" + paramBoolean1 + " bend:" + paramBoolean2);
     }
-    bnee localbnee = (bnee)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localbnee != null)
+    bpvk localbpvk = (bpvk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localbpvk != null)
     {
       if (!paramBoolean1) {
         break label125;
       }
       this.jdField_b_of_type_Boolean = true;
-      localbnee.b(paramInt, paramString);
+      localbpvk.b(paramInt, paramString);
     }
     for (;;)
     {
@@ -219,11 +219,11 @@ public class PickerContainer
       if (paramBoolean2)
       {
         this.jdField_b_of_type_Boolean = false;
-        localbnee.d(paramInt, paramString);
+        localbpvk.d(paramInt, paramString);
       }
       else
       {
-        localbnee.c(paramInt, paramString);
+        localbpvk.c(paramInt, paramString);
       }
     }
   }
@@ -255,20 +255,20 @@ public class PickerContainer
     setVisibility(8);
   }
   
-  public boolean a(EditVideoParams paramEditVideoParams, bnee parambnee)
+  public boolean a(EditVideoParams paramEditVideoParams, bpvk parambpvk)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnee);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambpvk);
     a(getContext());
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    parambnee = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_Bncx = new bncx();
-    this.jdField_a_of_type_Bncx.a(getContext());
-    this.jdField_a_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_Bncx);
-    addView(this.jdField_a_of_type_AndroidViewView, parambnee);
-    parambnee = new RelativeLayout(getContext());
+    parambpvk = new RelativeLayout.LayoutParams(-1, -1);
+    this.jdField_a_of_type_Bpud = new bpud();
+    this.jdField_a_of_type_Bpud.a(getContext());
+    this.jdField_a_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_Bpud);
+    addView(this.jdField_a_of_type_AndroidViewView, parambpvk);
+    parambpvk = new RelativeLayout(getContext());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     localLayoutParams.bottomMargin = this.jdField_a_of_type_Int;
-    addView(parambnee, localLayoutParams);
+    addView(parambpvk, localLayoutParams);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout = new PickerBarLayout(getContext());
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.a(paramEditVideoParams, getContext(), this);
     this.d = (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.a() * 60 + 80 + this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.a() * 5 + 22 + 70);
@@ -276,14 +276,14 @@ public class PickerContainer
     paramEditVideoParams = new RelativeLayout.LayoutParams((int)this.c, (int)this.d);
     paramEditVideoParams.addRule(11);
     paramEditVideoParams.addRule(15);
-    parambnee.addView(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout, paramEditVideoParams);
+    parambpvk.addView(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout, paramEditVideoParams);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     paramEditVideoParams = new RelativeLayout.LayoutParams((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
     paramEditVideoParams.addRule(13);
-    this.jdField_a_of_type_Bndn = new bndn();
-    this.jdField_a_of_type_Bndn.a(getContext(), this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, 1.2F);
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackground(this.jdField_a_of_type_Bndn);
-    parambnee.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramEditVideoParams);
+    this.jdField_a_of_type_Bput = new bput();
+    this.jdField_a_of_type_Bput.a(getContext(), this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, 1.2F);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackground(this.jdField_a_of_type_Bput);
+    parambpvk.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramEditVideoParams);
     return true;
   }
   
@@ -294,13 +294,13 @@ public class PickerContainer
     if (paramInt == 4)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      if (this.jdField_a_of_type_Bndn != null)
+      if (this.jdField_a_of_type_Bput != null)
       {
-        this.jdField_a_of_type_Bndn.stop();
-        if ((this.jdField_a_of_type_Bndn.a() == 1) || (this.jdField_a_of_type_Bndn.a() == 3))
+        this.jdField_a_of_type_Bput.stop();
+        if ((this.jdField_a_of_type_Bput.a() == 1) || (this.jdField_a_of_type_Bput.a() == 3))
         {
-          this.jdField_a_of_type_Bndn.a(2);
-          this.jdField_a_of_type_Bndn.start();
+          this.jdField_a_of_type_Bput.a(2);
+          this.jdField_a_of_type_Bput.start();
         }
       }
     }
@@ -310,7 +310,7 @@ public class PickerContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer
  * JD-Core Version:    0.7.0.1
  */

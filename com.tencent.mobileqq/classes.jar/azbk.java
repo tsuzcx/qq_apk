@@ -1,30 +1,20 @@
-public class azbk
+import android.view.animation.Transformation;
+
+class azbk
+  implements bgtg<Float>
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public boolean c;
+  azbk(azbj paramazbj) {}
   
-  public azbk(azbi paramazbi)
+  public void a(bgta<Float> parambgta, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("mUnread=" + this.jdField_a_of_type_Long);
-    localStringBuilder.append(",mNewMsg=" + this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("mText=" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mIconPath=" + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("mRedPoint=" + this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(",mTab=" + this.c);
-    localStringBuilder.append(",mType=" + this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    this.a.b = paramFloat1.floatValue();
+    this.a.jdField_a_of_type_Float = (1.1F - (paramFloat1.floatValue() - 1.0F));
+    if (this.a.jdField_a_of_type_Azbp != null)
+    {
+      this.a.jdField_a_of_type_Azbp.b = paramFloat1.floatValue();
+      this.a.jdField_a_of_type_Azbp.jdField_a_of_type_Float = this.a.jdField_a_of_type_Float;
+    }
+    this.a.a((int)(this.a.jdField_a_of_type_Int * paramFloat1.floatValue()));
   }
 }
 

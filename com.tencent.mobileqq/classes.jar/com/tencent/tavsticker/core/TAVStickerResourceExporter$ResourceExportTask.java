@@ -2,7 +2,7 @@ package com.tencent.tavsticker.core;
 
 import com.tencent.tavsticker.log.TLog;
 import com.tencent.tavsticker.model.TAVStickerResource;
-import com.tencent.tavsticker.utils.FileIOUtils;
+import com.tencent.tavsticker.utils.FileIoUtils;
 import java.nio.ByteBuffer;
 import java.util.List;
 
@@ -36,7 +36,7 @@ class TAVStickerResourceExporter$ResourceExportTask
           {
             localByteBuffer.get(arrayOfByte);
             i = localByteBuffer.position();
-            FileIOUtils.writeFileFromBytesByStream(this.exportResource.getFilePath(), arrayOfByte, true);
+            FileIoUtils.writeFileFromBytesByStream(this.exportResource.getFilePath(), arrayOfByte, true);
             if (this.exportListener != null)
             {
               float f = 1.0F * i / j;
@@ -62,7 +62,7 @@ class TAVStickerResourceExporter$ResourceExportTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerResourceExporter.ResourceExportTask
  * JD-Core Version:    0.7.0.1
  */

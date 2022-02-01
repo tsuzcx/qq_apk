@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 import java.io.Serializable;
 
 public class ApolloGameRoamData
-  extends awge
+  extends Entity
   implements Serializable
 {
   public static final int TYPE_RECOMMEND = 1;
@@ -18,7 +18,7 @@ public class ApolloGameRoamData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloGameRoamData
  * JD-Core Version:    0.7.0.1
  */

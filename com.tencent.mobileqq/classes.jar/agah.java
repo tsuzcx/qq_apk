@@ -1,13 +1,10 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agah
-  extends aeqi
+final class agah
+  implements DialogInterface.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  public agah(agad paramagad) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

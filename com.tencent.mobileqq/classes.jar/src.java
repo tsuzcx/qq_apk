@@ -1,23 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.viola.core.ViolaEnvironment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.35.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
+import pb.unite.search.RequestSearchWord.Rcmd;
 
 public class src
-  implements srg
+  implements anxv
 {
-  public src(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
+  public src(ReadInJoyListViewGroup paramReadInJoyListViewGroup, ArticleInfo paramArticleInfo, int paramInt1, int paramInt2) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void a(PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_MAIN_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if ((paramPBRepeatMessageField == null) || (paramPBRepeatMessageField.size() <= 0)) {
+      return;
+    }
+    if (ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).containsKey(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime)) {
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).put(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime, Integer.valueOf(this.jdField_a_of_type_Int + 1));
+    }
+    for (;;)
+    {
+      bgsg.a("search_word_prefix_show_times", bgsg.b("search_word_prefix_show_times") + 1L);
+      ThreadManager.getUIHandler().post(new ReadInJoyListViewGroup.35.1(this, paramPBRepeatMessageField, paramPBStringField));
+      return;
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).put(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime, Integer.valueOf(1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     src
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,29 @@
-import com.tencent.mobileqq.confess.ConfessInfo;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aoiz
-  implements alpg
+  extends aojt
 {
-  public void a(aoiq paramaoiq) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void a(boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2) {}
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, ConfessInfo paramConfessInfo) {}
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    switch (paramInt)
+    paramQQAppInterface = new aoiy(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "ftssearch";
+    paramQQAppInterface.c = "openmixweb";
+    paramContext = paramString.replace("mqqapi://ftssearch/openmixweb?", "").replace("^?", "").split("&");
+    if (paramContext != null)
     {
-    }
-    do
-    {
-      do
+      int i = 0;
+      while (i < paramContext.length)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  a(paramBoolean, paramObject);
-                  return;
-                  b(paramBoolean, paramObject);
-                  return;
-                } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-                paramObject = (Object[])paramObject;
-              } while ((paramObject == null) || (paramObject.length != 6));
-              a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (ConfessInfo)paramObject[5]);
-              return;
-            } while ((paramObject == null) || (!(paramObject instanceof aoiq)));
-            a((aoiq)paramObject);
-            return;
-          } while (!(paramObject instanceof Object[]));
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length < 7);
-        a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Boolean)paramObject[6]).booleanValue());
-        return;
-      } while (!(paramObject instanceof Object[]));
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 3);
-    a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

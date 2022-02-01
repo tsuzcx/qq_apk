@@ -1,21 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.6.1;
-
 public class wwc
-  implements wsx
 {
-  wwc(wvq paramwvq) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private String b;
+  
+  public wwc(String paramString)
+  {
+    this.b = paramString;
+  }
   
   public void a()
   {
-    wxe.d("NewMyStorySegment", "finish get all data from server steps");
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.6.1(this));
+    wwd localwwd = new wwd(this, false);
+    wwe localwwe = new wwe(this, false);
+    wnl.a().a(localwwd, localwwe);
+  }
+  
+  public void b()
+  {
+    wwd localwwd = new wwd(this, true);
+    wwe localwwe = new wwe(this, true);
+    wnl.a().a(localwwd, localwwe);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wwc
  * JD-Core Version:    0.7.0.1
  */

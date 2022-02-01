@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.persistence.manager;
 
-import ambz;
 import android.database.Cursor;
-import awgf;
-import awgs;
-import awhf;
 import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.OGEntityManager;
+import com.tencent.mobileqq.persistence.TableBuilder;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class PublicAccountEntityManagerFactory
-  extends QQEntityManagerFactory
+  extends EntityManagerFactory
 {
   public PublicAccountEntityManagerFactory(String paramString)
   {
@@ -31,7 +31,7 @@ public class PublicAccountEntityManagerFactory
     {
       while (localCursor1.moveToNext())
       {
-        String str = SecurityUtile.b(localCursor1.getString(0));
+        String str = SecurityUtile.decode(localCursor1.getString(0));
         Cursor localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str });
         if (localCursor2 != null) {
           for (;;)
@@ -42,7 +42,7 @@ public class PublicAccountEntityManagerFactory
                 continue;
               }
               localObject = PAAdPreloadTask.class;
-              awgs.a(localArrayList, str, localCursor2, (Class)localObject);
+              OGEntityManager.extractedStatementByReflect(localArrayList, str, localCursor2, (Class)localObject);
             }
             catch (ClassNotFoundException localClassNotFoundException)
             {
@@ -76,19 +76,19 @@ public class PublicAccountEntityManagerFactory
     com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
   }
   
-  public ambz build(String paramString)
+  public SQLiteOpenHelper build(String paramString)
   {
     if (this.dbHelper == null)
     {
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "public_account_database_" + paramString + ".db", null, 1);
-      this.dbHelper = new ambz(this.mInnerDbHelper);
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "public_account_database_" + paramString + ".db", null, 1);
+      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
   }
   
   public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
-    paramSQLiteDatabase.execSQL(awhf.a(new PAAdPreloadTask()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new PAAdPreloadTask()));
   }
   
   public String getPackageName()
@@ -106,13 +106,13 @@ public class PublicAccountEntityManagerFactory
   {
     if (this.name.matches("^[0-9]*$"))
     {
-      awgf localawgf = createEntityManager();
-      PublicAccountEntityManagerFactory.VerifyEntity localVerifyEntity = (PublicAccountEntityManagerFactory.VerifyEntity)localawgf.a(PublicAccountEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "public_account_database_verify_entity" });
+      EntityManager localEntityManager = createEntityManager();
+      PublicAccountEntityManagerFactory.VerifyEntity localVerifyEntity = (PublicAccountEntityManagerFactory.VerifyEntity)localEntityManager.find(PublicAccountEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "public_account_database_verify_entity" });
       if (localVerifyEntity == null)
       {
         localVerifyEntity = new PublicAccountEntityManagerFactory.VerifyEntity();
         localVerifyEntity.name = this.name;
-        localawgf.b(localVerifyEntity);
+        localEntityManager.persistOrReplace(localVerifyEntity);
         return true;
       }
       if ((!localVerifyEntity.flags.equals("public_account_database_verify_entity")) || (!localVerifyEntity.name.equals(this.name)))
@@ -120,7 +120,7 @@ public class PublicAccountEntityManagerFactory
         this.mInnerDbHelper.dropAllTable();
         localVerifyEntity = new PublicAccountEntityManagerFactory.VerifyEntity();
         localVerifyEntity.name = this.name;
-        localawgf.b(localVerifyEntity);
+        localEntityManager.persistOrReplace(localVerifyEntity);
         return false;
       }
     }

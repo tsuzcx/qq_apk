@@ -1,53 +1,19 @@
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.8.1;
 
-class xtd
-  extends xtb
+public class xtd
+  implements xtl
 {
-  xtd(xtc paramxtc, xtk paramxtk) {}
+  public xtd(BottomVideoInfoWidget.8.1 param1, Activity paramActivity) {}
   
-  public void onFailure(String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_Xtk.onFailure(paramString);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    xtc localxtc;
-    if (this.jdField_a_of_type_Xtc.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-    {
-      localxtc = this.jdField_a_of_type_Xtc;
-      if (!paramBoolean) {
-        break label44;
-      }
-    }
-    label44:
-    for (int i = 1;; i = 0)
-    {
-      localxtc.jdField_a_of_type_Int = i;
-      xtc.jdField_a_of_type_Xtc = null;
-      this.jdField_a_of_type_Xtk.onFinish(paramBoolean);
-      return;
-    }
-  }
-  
-  public void onProgress(String paramString)
-  {
-    this.jdField_a_of_type_Xtk.onProgress(paramString);
-  }
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Xtk.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    this.jdField_a_of_type_Xtk.onSuccess(paramString);
+    xsw.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_Xsw, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.b, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.c, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.d, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.e, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.f, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xtd
  * JD-Core Version:    0.7.0.1
  */

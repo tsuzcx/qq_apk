@@ -1,88 +1,37 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import java.util.ArrayList;
-import java.util.List;
 
 public class cd
-  extends AsyncTask<Bundle, Integer, Void>
+  implements InputFilter
 {
   public cd(LiteActivity paramLiteActivity) {}
   
-  DataLineMsgRecord a(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-    localDataLineMsgRecord.path = paramString;
-    localDataLineMsgRecord.msgtype = -2000;
-    localDataLineMsgRecord.groupId = paramInt1;
-    localDataLineMsgRecord.groupSize = paramInt2;
-    localDataLineMsgRecord.groupIndex = paramInt3;
-    return localDataLineMsgRecord;
-  }
-  
-  protected Void a(Bundle... paramVarArgs)
-  {
-    paramVarArgs = paramVarArgs[0].getStringArrayList("PhotoConst.PHOTO_PATHS");
-    if (paramVarArgs == null) {
+    paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
+    if (paramInt3 <= 0)
+    {
+      LiteActivity.a(this.a);
+      return "";
+    }
+    if (paramInt3 >= paramInt2 - paramInt1) {
       return null;
     }
-    a(paramVarArgs);
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.a.a(false);
-  }
-  
-  void a(List<String> paramList)
-  {
-    alqo localalqo = (alqo)this.a.app.a(8);
-    for (;;)
+    paramInt3 += paramInt1;
+    paramInt2 = paramInt3;
+    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
     {
-      int j = paramList.size();
-      if (j <= 3)
+      paramInt3 -= 1;
+      paramInt2 = paramInt3;
+      if (paramInt3 == paramInt1)
       {
-        i = 0;
-        while (i < j)
-        {
-          localalqo.a(a((String)paramList.get(i), 0, 0, 0), false);
-          i += 1;
-        }
-      }
-      if ((j > 3) && (j < 50))
-      {
-        localArrayList = new ArrayList();
-        int k = localalqo.a();
-        i = 0;
-        while (i < j)
-        {
-          localArrayList.add(a((String)paramList.get(i), k, j, i));
-          i += 1;
-        }
-        dl.n(this.a.app);
-        localalqo.a(localArrayList, false);
-        return;
-      }
-      ArrayList localArrayList = new ArrayList();
-      j = localalqo.a();
-      int i = 0;
-      while (i < 50)
-      {
-        localArrayList.add(a((String)paramList.get(i), j, 50, i));
-        i += 1;
-      }
-      dl.n(this.a.app);
-      localalqo.a(localArrayList, false);
-      i = 0;
-      while (i < 50)
-      {
-        paramList.remove(0);
-        i += 1;
+        LiteActivity.a(this.a);
+        return "";
       }
     }
+    LiteActivity.a(this.a);
+    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 

@@ -1,86 +1,72 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.hlyyb.downloader.DownloaderTaskListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.studyroom.download.DownloadTaskListenerBridge.1;
+import mqq.os.MqqHandler;
 
 public class bdcx
-  extends bdbk
+  implements DownloaderTaskListener
 {
-  alsa jdField_a_of_type_Alsa = null;
-  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  private bdcz a;
   
-  public bdcx(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, bdbl parambdbl, boolean paramBoolean2)
+  public bdcx(bdcz parambdcz)
   {
-    super(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, 100, paramBoolean1, paramDrawable1, paramDrawable2, parambdbl, paramBoolean2);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
+    this.a = parambdcz;
   }
   
-  protected Bitmap a(boolean paramBoolean)
+  public void onTaskCompletedMainloop(DownloaderTask paramDownloaderTask)
   {
-    return b();
+    if (this.a != null) {
+      this.a.a(paramDownloaderTask);
+    }
   }
   
-  public void a()
+  public void onTaskCompletedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskDetectedMainloop(DownloaderTask paramDownloaderTask)
   {
-    if ((this.jdField_a_of_type_Alsa != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.jdField_a_of_type_Alsa);
-      this.jdField_a_of_type_Alsa = null;
+    if (this.a != null) {
+      this.a.b(paramDownloaderTask);
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = null;
-    super.a();
   }
   
-  protected void a(AppInterface paramAppInterface)
+  public void onTaskDetectedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskFailedMainloop(DownloaderTask paramDownloaderTask)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
+    ThreadManager.getSubThreadHandler().post(new DownloadTaskListenerBridge.1(this, paramDownloaderTask));
   }
   
-  protected boolean a()
+  public void onTaskFailedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPausedMainloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPausedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskPendingMainloop(DownloaderTask paramDownloaderTask)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "requestDecode.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+    if (this.a != null) {
+      this.a.d(paramDownloaderTask);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) {
-      return false;
-    }
-    FaceDecodeTask.a(FaceDecodeTask.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, this));
-    return true;
   }
   
-  protected Bitmap b()
+  public void onTaskReceivedMainloop(DownloaderTask paramDownloaderTask)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) {
-      return null;
+    if (this.a != null) {
+      this.a.f(paramDownloaderTask);
     }
-    String str = FaceInfo.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.c);
-    return ((bdbu)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216)).a(str);
   }
   
-  protected void b()
+  public void onTaskReceivedSubloop(DownloaderTask paramDownloaderTask) {}
+  
+  public void onTaskStartedMainloop(DownloaderTask paramDownloaderTask)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+    if (this.a != null) {
+      this.a.e(paramDownloaderTask);
     }
-    Bitmap localBitmap = b();
-    if (localBitmap != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo + ",bitmap is already in cache...");
-      }
-      a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, localBitmap);
-      return;
-    }
-    if (this.jdField_a_of_type_Alsa == null)
-    {
-      this.jdField_a_of_type_Alsa = new bdcy(this);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.addObserver(this.jdField_a_of_type_Alsa);
-    }
-    ((alrz)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(4)).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
   }
+  
+  public void onTaskStartedSubloop(DownloaderTask paramDownloaderTask) {}
 }
 
 

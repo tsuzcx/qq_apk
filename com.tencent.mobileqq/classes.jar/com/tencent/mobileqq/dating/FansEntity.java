@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.dating;
 
 import appoint.define.appoint_define.CommonLabel;
-import awge;
-import awhs;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import tencent.im.oidb.cmd0x9e4.cmd0x9e4.UdcUinData;
 
 public class FansEntity
-  extends awge
+  extends Entity
 {
   public int age;
   public int career;
@@ -21,7 +21,7 @@ public class FansEntity
   public int constellation;
   public int gender;
   public int single;
-  @awhs
+  @unique
   public long uin;
   public int vip;
   
@@ -110,7 +110,7 @@ public class FansEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.FansEntity
  * JD-Core Version:    0.7.0.1
  */

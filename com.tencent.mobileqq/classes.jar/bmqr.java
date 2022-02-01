@@ -1,14 +1,12 @@
-import android.graphics.Bitmap;
-import android.graphics.PointF;
-import android.support.annotation.NonNull;
+import android.os.Bundle;
+import android.os.IInterface;
 
-public class bmqr
-  extends bmrg
+public abstract interface bmqr
+  extends IInterface
 {
-  public bmqr(bmqq parambmqq, String[] paramArrayOfString, @NonNull Bitmap paramBitmap, @NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
-  {
-    super(parambmqq, paramArrayOfString, paramBitmap, paramPointF, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramBoolean);
-  }
+  public abstract Bundle a(String paramString, Bundle paramBundle);
+  
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 

@@ -1,20 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-class agdp
-  extends Handler
+public class agdp
+  implements bdet
 {
-  agdp(agdo paramagdo, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public agdp(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    if (paramMessage.what == agdo.a) {
-      this.a.b();
-    }
+    this.a.jdField_a_of_type_Bdfq.a = 255;
+    this.a.jdField_a_of_type_Bdfq.a(this.a.jdField_a_of_type_Bdfr);
   }
 }
 

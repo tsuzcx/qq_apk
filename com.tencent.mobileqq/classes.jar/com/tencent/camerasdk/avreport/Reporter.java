@@ -31,7 +31,7 @@ public class Reporter
   
   private void report(String paramString)
   {
-    LogUtils.d(TAG, "report : " + paramString);
+    AVRLogUtils.d(TAG, "report : " + paramString);
     try
     {
       HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL("https://h.trace.qq.com/kv").openConnection();
@@ -43,8 +43,8 @@ public class Reporter
       localBufferedWriter.write(paramString);
       localBufferedWriter.flush();
       localBufferedWriter.close();
-      LogUtils.d(TAG, "report: reponse code = " + localHttpURLConnection.getResponseCode());
-      LogUtils.d(TAG, "report: reponse msg = " + localHttpURLConnection.getResponseMessage());
+      AVRLogUtils.d(TAG, "report: reponse code = " + localHttpURLConnection.getResponseCode());
+      AVRLogUtils.d(TAG, "report: reponse msg = " + localHttpURLConnection.getResponseMessage());
       localHttpURLConnection.disconnect();
       return;
     }
@@ -72,7 +72,7 @@ public class Reporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.Reporter
  * JD-Core Version:    0.7.0.1
  */

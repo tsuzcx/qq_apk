@@ -1,6 +1,7 @@
 package cooperation.qqreader.ui;
 
-import abwu;
+import abcr;
+import adea;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -14,23 +15,23 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import beft;
-import beho;
-import beir;
-import bejk;
-import bhtd;
-import bjae;
-import bjbq;
+import bhmv;
+import bhos;
+import bhpv;
+import bhqo;
+import bkgm;
+import blop;
+import blpz;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import zfy;
 
 public class ReaderContentPageFragment
   extends ReaderBaseFragment
   implements Handler.Callback
 {
-  private bhtd jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
+  private bkgm jdField_a_of_type_Bkgm = new bkgm(Looper.getMainLooper(), this);
   private String jdField_a_of_type_JavaLangString;
   
   public static WebViewFragment a(Intent paramIntent)
@@ -64,25 +65,44 @@ public class ReaderContentPageFragment
     paramList.add("menuItem:exposeArticle");
   }
   
-  private void j()
+  private void b()
   {
-    if (this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    if (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    if (this.jdField_a_of_type_Beft.c != null) {
-      this.jdField_a_of_type_Beft.c.setVisibility(8);
+    if (this.mSwiftTitleUI.c != null) {
+      this.mSwiftTitleUI.c.setVisibility(8);
     }
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+    if (this.webView != null)
     {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.goBack();
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.invalidate();
+      this.webView.goBack();
+      this.webView.invalidate();
     }
   }
   
-  private void k()
+  private void c()
   {
-    zfy localzfy = b();
-    localzfy.a(bjbq.a(localzfy.a()));
+    abcr localabcr = ensureShare();
+    localabcr.a(blpz.a(localabcr.a()));
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      if (this.webView != null) {
+        this.webView.stopLoading();
+      }
+    }
+    do
+    {
+      return;
+      if ((this.webView != null) && (this.webView.canGoBack()))
+      {
+        b();
+        return;
+      }
+    } while (a());
+    super.getActivity().finish();
   }
   
   public void a(ImageView paramImageView, TextView paramTextView, String paramString1, String paramString2, String paramString3)
@@ -159,125 +179,80 @@ public class ReaderContentPageFragment
         }
         this.jdField_a_of_type_JavaLangString = paramString1.trim();
         break;
-        paramImageView.setImageResource(2130843452);
+        paramImageView.setImageResource(2130843813);
         continue;
-        paramImageView.setImageResource(2130843451);
+        paramImageView.setImageResource(2130843812);
         continue;
-        paramImageView.setImageResource(2130840102);
+        paramImageView.setImageResource(2130840281);
         continue;
-        paramImageView.setImageResource(2130846497);
+        paramImageView.setImageResource(2130846938);
         continue;
-        paramImageView.setImageResource(2130846507);
+        paramImageView.setImageResource(2130846948);
         continue;
-        paramImageView.setImageResource(2130838648);
+        paramImageView.setImageResource(2130838899);
       }
       label193:
       this.jdField_a_of_type_JavaLangString = null;
     }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, abwu paramabwu)
+  public int doCreateLoopStep_InitTitleBar(Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Beft != null) && (this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Beft.c != null)) {
-      a(this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Beft.c, paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramOnClickListener);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return false;
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle)
-  {
-    return false;
-  }
-  
-  public int b(Bundle paramBundle)
-  {
-    int i = super.b(paramBundle);
+    int i = super.doCreateLoopStep_InitTitleBar(paramBundle);
     paramBundle = getActivity();
     if ((paramBundle instanceof ReaderBaseWebActivity))
     {
-      paramBundle = ((ReaderBaseWebActivity)paramBundle).a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-      if ((paramBundle != null) && (this.jdField_a_of_type_Beft.c != null)) {
-        paramBundle.a(this.jdField_a_of_type_Beft.c);
+      paramBundle = ((ReaderBaseWebActivity)paramBundle).a(this.webView);
+      if ((paramBundle != null) && (this.mSwiftTitleUI.c != null)) {
+        paramBundle.a(this.mSwiftTitleUI.c);
       }
     }
     return i;
   }
   
-  public void c()
-  {
-    beir localbeir = (beir)this.jdField_a_of_type_Beho.a(4);
-    if (localbeir != null)
-    {
-      k();
-      a(localbeir.a);
-      localbeir.a(b(), this.jdField_a_of_type_Bejk.a);
-    }
-  }
-  
-  public void e()
-  {
-    a(this.jdField_a_of_type_Bhtd);
-    super.e();
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
-    {
-      Bundle localBundle = this.jdField_a_of_type_AndroidContentIntent.getBundleExtra("theme");
-      if (localBundle != null) {
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundColor(localBundle.getInt("readerBgColor", -1));
-      }
-    }
-  }
-  
-  public void f() {}
+  public void doOnBackEvent() {}
   
   public boolean handleMessage(Message paramMessage)
   {
     return a(paramMessage);
   }
   
-  public void i()
+  public void initWebView()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.stopLoading();
+    a(this.jdField_a_of_type_Bkgm);
+    super.initWebView();
+    if (this.intent != null)
+    {
+      Bundle localBundle = this.intent.getBundleExtra("theme");
+      if (localBundle != null) {
+        this.webView.setBackgroundColor(localBundle.getInt("readerBgColor", -1));
       }
     }
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (this.jdField_a_of_type_ComTencentBizUiTouchWebView.canGoBack()))
-      {
-        j();
-        return;
-      }
-    } while (g());
-    super.getActivity().finish();
   }
   
   public void onClick(View paramView)
   {
-    if ((paramView == this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.jdField_a_of_type_Beft.c))
-    {
-      if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (this.jdField_a_of_type_JavaLangString != null)) {
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+    if ((paramView == this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.mSwiftTitleUI.c)) {
+      if ((this.webView != null) && (this.jdField_a_of_type_JavaLangString != null)) {
+        this.webView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
       }
-      return;
     }
-    if (paramView == this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetTextView)
+    for (;;)
     {
-      i();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (paramView == this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView) {
+        a();
+      } else {
+        super.onClick(paramView);
+      }
     }
-    super.onClick(paramView);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("defaultResultData");
+    paramBundle = this.intent.getParcelableExtra("defaultResultData");
     if ((paramBundle instanceof Intent)) {
       getActivity().setResult(0, (Intent)paramBundle);
     }
@@ -286,12 +261,40 @@ public class ReaderContentPageFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Bhtd.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Bkgm.removeCallbacksAndMessages(null);
+  }
+  
+  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, adea paramadea)
+  {
+    if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView != null) && (this.mSwiftTitleUI.c != null)) {
+      a(this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView, this.mSwiftTitleUI.c, paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramOnClickListener);
+    }
+  }
+  
+  public boolean setShareUrl(String paramString)
+  {
+    return false;
+  }
+  
+  public boolean setSummary(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle)
+  {
+    return false;
+  }
+  
+  public void showActionSheet()
+  {
+    bhpv localbhpv = (bhpv)this.mComponentsProvider.a(4);
+    if (localbhpv != null)
+    {
+      c();
+      a(localbhpv.a);
+      localbhpv.a(ensureShare(), this.mUIStyle.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderContentPageFragment
  * JD-Core Version:    0.7.0.1
  */

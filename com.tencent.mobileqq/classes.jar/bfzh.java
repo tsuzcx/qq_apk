@@ -1,54 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.1.1;
 
-public final class bfzh
-  implements Parcelable.Creator<QidianProfileCardActivity.QidianSimpleProfileItem>
+public class bfzh
+  implements aoci
 {
-  public QidianProfileCardActivity.QidianSimpleProfileItem a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    QidianProfileCardActivity.QidianSimpleProfileItem localQidianSimpleProfileItem = new QidianProfileCardActivity.QidianSimpleProfileItem();
-    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localQidianSimpleProfileItem.jdField_a_of_type_Boolean = bool1;
-      localQidianSimpleProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
-      localQidianSimpleProfileItem.jdField_b_of_type_Int = paramParcel.readInt();
-      localQidianSimpleProfileItem.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label109;
-      }
-      bool1 = true;
-      label80:
-      localQidianSimpleProfileItem.jdField_b_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label114;
-      }
-    }
-    label109:
-    label114:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localQidianSimpleProfileItem.jdField_c_of_type_Boolean = bool1;
-      return localQidianSimpleProfileItem;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label80;
-    }
-  }
+  public bfzh(TroopGiftAnimationController.5 param5) {}
   
-  public QidianProfileCardActivity.QidianSimpleProfileItem[] a(int paramInt)
+  public void onLoadingStateChanged(int paramInt1, int paramInt2)
   {
-    return new QidianProfileCardActivity.QidianSimpleProfileItem[paramInt];
+    Bitmap localBitmap = bfup.a(this.a.this$0.a(String.valueOf(this.a.a.senderUin), null));
+    if ((paramInt1 == 0) && (paramInt2 == 1) && (this.a.this$0.a != null)) {
+      this.a.this$0.a.b(new TroopGiftAnimationController.5.1.1(this, localBitmap));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfzh
  * JD-Core Version:    0.7.0.1
  */

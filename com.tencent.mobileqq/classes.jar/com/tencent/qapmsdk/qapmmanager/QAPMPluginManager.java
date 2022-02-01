@@ -37,10 +37,16 @@ public final class QAPMPluginManager
 {
   @JvmField
   @NotNull
-  public static final List<DefaultPluginConfig> ALL_PLUGIN = CollectionsKt.listOf(new DefaultPluginConfig[] { IO_PLUGIN, DB_PLUGIN, BREAD_CRUMB_PLUGIN, CRASH_PLUGIN, ANR_PLUGIN, DEVICE_PLUGIN, DROP_FRAME_PLUGIN, JS_ERROR_PLUGIN, LOOP_STACK_PLUGIN, CELLING_PLUGIN, LEAK_PLUGIN, RESOURCE_PLUGIN, WEB_VIEW_PLUGIN, HTTP_PLUGIN });
+  public static final List<DefaultPluginConfig> ALL_PLUGIN = CollectionsKt.listOf(new DefaultPluginConfig[] { IO_PLUGIN, DB_PLUGIN, BREAD_CRUMB_PLUGIN, CRASH_PLUGIN, ANR_PLUGIN, DEVICE_PLUGIN, DROP_FRAME_PLUGIN, JS_ERROR_PLUGIN, LOOP_STACK_PLUGIN, CELLING_PLUGIN, LEAK_PLUGIN, RESOURCE_PLUGIN, WEB_VIEW_PLUGIN, HTTP_PLUGIN, BATTERY_PLUGIN, BIGBITMAP_PLUGIN });
   @JvmField
   @NotNull
   public static final DefaultPluginConfig ANR_PLUGIN;
+  @JvmField
+  @NotNull
+  public static final DefaultPluginConfig BATTERY_PLUGIN;
+  @JvmField
+  @NotNull
+  public static final DefaultPluginConfig BIGBITMAP_PLUGIN;
   @JvmField
   @NotNull
   public static final DefaultPluginConfig BREAD_CRUMB_PLUGIN;
@@ -100,6 +106,8 @@ public final class QAPMPluginManager
     RESOURCE_PLUGIN = PluginCombination.resourcePlugin;
     WEB_VIEW_PLUGIN = PluginCombination.webViewPlugin;
     HTTP_PLUGIN = PluginCombination.httpPlugin;
+    BATTERY_PLUGIN = PluginCombination.batteryPlugin;
+    BIGBITMAP_PLUGIN = PluginCombination.bigBitmapPlugin;
   }
   
   private final List<QAPMMonitorPlugin> allPlugins()
@@ -177,13 +185,13 @@ public final class QAPMPluginManager
             break;
           }
           ((QAPMMonitorPlugin)localObject1).setPluginConfig(paramDefaultPluginConfig);
-          Logger.INSTANCE.d(new String[] { "QAPM_manager_QAPMPluginManager", "register module " + paramDefaultPluginConfig.pluginName + " success." });
+          Logger.INSTANCE.i(new String[] { "QAPM_manager_QAPMPluginManager", "register module " + paramDefaultPluginConfig.pluginName + " success." });
           return;
         }
         catch (ClassNotFoundException localClassNotFoundException)
         {
           Class localClass;
-          Logger.INSTANCE.d(new String[] { "QAPM_manager_QAPMPluginManager", localClassNotFoundException + ": can not find class " + paramDefaultPluginConfig.entrance + '.' });
+          Logger.INSTANCE.e(new String[] { "QAPM_manager_QAPMPluginManager", localClassNotFoundException + ": can not find class " + paramDefaultPluginConfig.entrance + '.' });
           return;
         }
         label382:
@@ -292,7 +300,7 @@ public final class QAPMPluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.qapmmanager.QAPMPluginManager
  * JD-Core Version:    0.7.0.1
  */

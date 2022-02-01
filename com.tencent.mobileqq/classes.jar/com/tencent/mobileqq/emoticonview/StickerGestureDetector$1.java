@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apyt;
+import asco;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class StickerGestureDetector$1
   implements Runnable
 {
-  public StickerGestureDetector$1(apyt paramapyt) {}
+  public StickerGestureDetector$1(asco paramasco) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class StickerGestureDetector$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.StickerGestureDetector.1
  * JD-Core Version:    0.7.0.1
  */

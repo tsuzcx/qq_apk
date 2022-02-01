@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar;
 
-import amxu;
-import amyw;
-import awaw;
+import aowl;
+import aoxn;
+import ayko;
 import com.tencent.qphone.base.util.QLog;
 
 public class ScanningSurfaceView$8
@@ -32,14 +32,14 @@ public class ScanningSurfaceView$8
         QLog.d("ScanningSurfaceView", 2, "5=" + this.b.a);
       }
       this.b.c = true;
-      this.this$0.a.a.a(3, this.b.g, this.b.h, new amyw(this));
+      this.this$0.a.a.a(3, this.b.g, this.b.h, new aoxn(this));
       ScanningSurfaceView.a(this.this$0, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanningSurfaceView.8
  * JD-Core Version:    0.7.0.1
  */

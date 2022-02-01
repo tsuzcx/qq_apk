@@ -1,19 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class pet
-  implements Comparator<AdvertisementInfo>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/ui/RIJCommentBubbleView$clickReportOrDelete$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentUtils$ReportCommentDialogClickListener;", "onClick", "", "msg", "", "reportType", "", "which", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pet
+  extends pag
 {
-  pet(pes parampes) {}
-  
-  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
+  public void a(@NotNull String paramString, int paramInt1, int paramInt2)
   {
-    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
+    Intrinsics.checkParameterIsNotNull(paramString, "msg");
+    peq.a(this.a).a().a(peq.a(this.a).a.commentId, paramString, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,101 +1,189 @@
-import android.os.SystemClock;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.support.v4.util.ArraySet;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.RandomAccessFile;
-import java.util.HashMap;
-import tencent.im.qim.trans.QIMVideoUpload.QIMVideoUpload.ReqBody;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
 public class bawc
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  private bawe jdField_a_of_type_Bawe;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction;
-  private RandomAccessFile jdField_a_of_type_JavaIoRandomAccessFile;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  public boolean a;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private String c;
-  private String d;
-  private String e;
-  
-  public bawc(AppInterface paramAppInterface, bawe parambawe, String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2)
+  public static List<aren> a(long paramLong1, long paramLong2, aqhb paramaqhb, ConcurrentHashMap<Long, Set<DanmuItemBean>> paramConcurrentHashMap)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Bawe = parambawe;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_Int = paramInt;
-    this.e = paramString2;
+    paramConcurrentHashMap = (Set)paramConcurrentHashMap.get(Long.valueOf(paramLong1));
+    if (paramConcurrentHashMap != null) {
+      return a(a(paramConcurrentHashMap, paramLong2), paramaqhb);
+    }
+    return null;
   }
   
-  public boolean a()
+  public static List<aren> a(long paramLong, List<DanmuItemBean> paramList, aqhb paramaqhb, ConcurrentHashMap<Long, Set<DanmuItemBean>> paramConcurrentHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMWebVideoUploaderFirstFrame", 2, "<BDH_LOG> doUpload " + this.jdField_a_of_type_Boolean);
+    if ((paramList == null) || (paramList.isEmpty()) || (paramaqhb == null)) {
+      BrowserLogHelper.getInstance().getGalleryLog().d("BrowserDanmakuUtils", 4, "buildPictureDanmakuList list is null");
     }
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    if (this.jdField_a_of_type_JavaIoRandomAccessFile == null) {
-      try
-      {
-        this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(this.jdField_a_of_type_JavaLangString, "r");
-        if (this.jdField_a_of_type_JavaIoRandomAccessFile == null)
-        {
-          this.jdField_b_of_type_Int = 9303;
-          this.d = "read video file error";
-          this.jdField_a_of_type_Bawe.b(this.jdField_b_of_type_Int, this.d);
-          return false;
-        }
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        for (;;)
-        {
-          localFileNotFoundException.printStackTrace();
-          this.jdField_a_of_type_JavaIoRandomAccessFile = null;
-        }
-      }
-    }
-    Object localObject = new QIMVideoUpload.ReqBody();
-    ((QIMVideoUpload.ReqBody)localObject).uint64_uin.set(Long.parseLong(this.jdField_b_of_type_JavaLangString));
-    ((QIMVideoUpload.ReqBody)localObject).uint64_service_type.set(this.jdField_a_of_type_Int);
-    ((QIMVideoUpload.ReqBody)localObject).uint64_data_type.set(1L);
-    ((QIMVideoUpload.ReqBody)localObject).bytes_md5.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ArrayOfByte));
-    ((QIMVideoUpload.ReqBody)localObject).uint64_pic_type.set(1L);
-    ((QIMVideoUpload.ReqBody)localObject).str_video_uuid.set(this.e);
-    localObject = ((QIMVideoUpload.ReqBody)localObject).toByteArray();
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMWebVideoUploaderFirstFrame", 2, "doUpload|mVideoFileMd5= " + HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    }
-    bawd localbawd = new bawd(this);
-    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_b_of_type_JavaLangString, 53, this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ArrayOfByte, localbawd, (byte[])localObject, false);
-    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMWebVideoUploaderFirstFrame", 2, "<BDH_LOG>sendFileByBDH Transaction submit RetCode:" + i + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " MD5:" + HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte) + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + 53);
-    }
-    if (i != 0)
+    do
     {
-      this.jdField_b_of_type_Int = i;
-      this.d = "SubmitError";
-      this.jdField_a_of_type_Bawe.b(this.jdField_b_of_type_Int, this.d);
+      return null;
+      paramConcurrentHashMap = a(paramLong, paramList, paramConcurrentHashMap);
+    } while ((paramConcurrentHashMap == null) || (paramConcurrentHashMap.isEmpty()));
+    paramList = new ArrayList();
+    paramConcurrentHashMap = paramConcurrentHashMap.iterator();
+    while (paramConcurrentHashMap.hasNext())
+    {
+      aren localaren = paramaqhb.a(new aqhg((DanmuItemBean)paramConcurrentHashMap.next()));
+      if (localaren != null)
+      {
+        localaren.a(5000);
+        localaren.e(true);
+        paramList.add(localaren);
+      }
+    }
+    return paramList;
+  }
+  
+  public static List<aren> a(long paramLong1, List<DanmuItemBean> paramList, aqhb paramaqhb, ConcurrentHashMap<Long, Set<DanmuItemBean>> paramConcurrentHashMap, long paramLong2)
+  {
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("BrowserDanmakuUtils", 4, "buildVideoDanmakuList list is null");
+      return null;
+    }
+    return a(a(paramLong1, paramList, paramConcurrentHashMap, paramLong2), paramaqhb);
+  }
+  
+  private static List<DanmuItemBean> a(long paramLong, List<DanmuItemBean> paramList, ConcurrentHashMap<Long, Set<DanmuItemBean>> paramConcurrentHashMap)
+  {
+    Object localObject = (Set)paramConcurrentHashMap.get(Long.valueOf(paramLong));
+    if (localObject == null)
+    {
+      localObject = new ArraySet();
+      ((Set)localObject).addAll(paramList);
+      paramConcurrentHashMap.put(Long.valueOf(paramLong), localObject);
+      return paramList;
+    }
+    paramConcurrentHashMap.clear();
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      DanmuItemBean localDanmuItemBean = (DanmuItemBean)paramList.next();
+      if (!((Set)localObject).contains(localDanmuItemBean)) {
+        localArrayList.add(localDanmuItemBean);
+      }
+    }
+    ((Set)localObject).addAll(localArrayList);
+    paramConcurrentHashMap.put(Long.valueOf(paramLong), localObject);
+    return localArrayList;
+  }
+  
+  private static List<DanmuItemBean> a(long paramLong1, List<DanmuItemBean> paramList, ConcurrentHashMap<Long, Set<DanmuItemBean>> paramConcurrentHashMap, long paramLong2)
+  {
+    Set localSet = (Set)paramConcurrentHashMap.get(Long.valueOf(paramLong1));
+    Object localObject = new ArraySet();
+    ((Set)localObject).addAll(paramList);
+    if (localSet == null)
+    {
+      paramConcurrentHashMap.put(Long.valueOf(paramLong1), localObject);
+      return a((Set)localObject, paramLong2);
+    }
+    paramConcurrentHashMap.clear();
+    paramList = new ArraySet();
+    localObject = ((Set)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      DanmuItemBean localDanmuItemBean = (DanmuItemBean)((Iterator)localObject).next();
+      if (!localSet.contains(localDanmuItemBean)) {
+        paramList.add(localDanmuItemBean);
+      }
+    }
+    localSet.addAll(paramList);
+    paramConcurrentHashMap.put(Long.valueOf(paramLong1), localSet);
+    return a(paramList, paramLong2);
+  }
+  
+  private static List<aren> a(List<DanmuItemBean> paramList, aqhb paramaqhb)
+  {
+    if ((paramList != null) && (!paramList.isEmpty()) && (paramaqhb != null))
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = (DanmuItemBean)paramList.next();
+        aqhg localaqhg = new aqhg((DanmuItemBean)localObject);
+        aren localaren = paramaqhb.a(localaqhg);
+        if (localaren != null)
+        {
+          localaren.b(((DanmuItemBean)localObject).c);
+          if (!TextUtils.isEmpty(localaqhg.a))
+          {
+            localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+            if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(localaqhg.a))) {
+              localaren.e(true);
+            }
+          }
+          localArrayList.add(localaren);
+        }
+      }
+      return localArrayList;
+    }
+    return null;
+  }
+  
+  private static List<DanmuItemBean> a(Set<DanmuItemBean> paramSet, long paramLong)
+  {
+    if ((paramSet != null) && (!paramSet.isEmpty()))
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramSet = paramSet.iterator();
+      while (paramSet.hasNext())
+      {
+        DanmuItemBean localDanmuItemBean = (DanmuItemBean)paramSet.next();
+        if (localDanmuItemBean.c + 1000L >= paramLong) {
+          localArrayList.add(localDanmuItemBean);
+        }
+      }
+      return localArrayList;
+    }
+    return null;
+  }
+  
+  public static boolean a()
+  {
+    return (aqgx.a()) && (bawe.a().a() == 1);
+  }
+  
+  public static boolean a(RichMediaBrowserInfo paramRichMediaBrowserInfo)
+  {
+    if (!aqgx.a()) {
       return false;
     }
-    return true;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("shouldShowDanmakuBtn, paramsManager.isFromMultiMsg() = ").append(bawe.a().c());
+      localStringBuilder.append(" , paramsManager.getmCurType() = ").append(bawe.a().a());
+      localStringBuilder.append(" , paramsManager.getSourceEntrance() = ").append(bawe.a().c());
+      localStringBuilder.append(" , paramsManager.isReplyMsgFromSameSession() = ").append(bawe.a().h());
+      localStringBuilder.append(" , paramsManager.isMixedMsg = ").append(bawe.a().b);
+      localStringBuilder.append(" , paramsManager.isReplySrcMsgExist = ").append(bawe.a().c);
+      if ((paramRichMediaBrowserInfo != null) && ((paramRichMediaBrowserInfo.baseData instanceof AIOBrowserBaseData)))
+      {
+        AIOBrowserBaseData localAIOBrowserBaseData = (AIOBrowserBaseData)paramRichMediaBrowserInfo.baseData;
+        localStringBuilder.append(", galleryInfo.mData.isInMixedMsg = ").append(localAIOBrowserBaseData.b).append(" isMsgSeqReady = ").append(localAIOBrowserBaseData.c);
+      }
+      QLog.d("BrowserDanmakuUtils", 2, localStringBuilder.toString());
+    }
+    return (!bawe.a().c()) && (bawe.a().a() == 1) && (bawe.a().c() != 4) && (bawe.a().h()) && (bawe.a().c) && ((paramRichMediaBrowserInfo == null) || (!(paramRichMediaBrowserInfo.baseData instanceof AIOBrowserBaseData)) || (!((AIOBrowserBaseData)paramRichMediaBrowserInfo.baseData).b)) && ((paramRichMediaBrowserInfo == null) || (!(paramRichMediaBrowserInfo.baseData instanceof AIOBrowserBaseData)) || (((AIOBrowserBaseData)paramRichMediaBrowserInfo.baseData).c));
   }
 }
 

@@ -1,50 +1,22 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
 
-class asas
-  extends nac
+public class asas
+  implements Animator.AnimatorListener
 {
-  asas(asap paramasap) {}
+  public asas(EmotionSearchPanel paramEmotionSearchPanel) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      aseh.a("KEY_STAGE_2_IMAGE_DC2", bool);
-      if (paramBundle == null) {
-        break;
-      }
-      long l = paramBundle.getLong("0xdc2_9_sendTime", -1L);
-      if (QLog.isColorLevel()) {
-        QLog.d(asap.a(), 2, new Object[] { "notifyImageSendMessage onResult currentRequestTime =", Long.valueOf(asap.a(this.a)), ", sendStamp = ", Long.valueOf(l) });
-      }
-      if ((l != -1L) && (l == asap.a(this.a))) {
-        break;
-      }
-      asap.a(this.a);
-      return;
-    }
-    paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      QLog.e(asap.a(), 1, new Object[] { "notifyImageSendMessage onResult error errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
-      asap.a(this.a);
-      return;
-    }
-    asap.a(this.a, paramArrayOfByte);
-    ForwardUtils.a(asap.a(this.a), paramArrayOfByte, asap.a(this.a), asap.a(this.a).getString("share_comment_message_for_server"));
+    EmotionSearchPanel.b(this.a);
   }
   
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.e(asap.a(), 1, "notifyImageSendMessage onError msg =" + paramString);
-    }
-    return super.a(paramInt, paramString, paramBundle);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

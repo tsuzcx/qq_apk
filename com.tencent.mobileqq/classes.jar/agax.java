@@ -1,44 +1,39 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.widget.ListView;
 
-public class agax
-  extends Handler
+public abstract class agax
 {
-  public agax(Looper paramLooper)
+  public int a;
+  public AIOAnimationConatiner a;
+  public ListView a;
+  
+  public agax(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
+    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public boolean a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        i = paramMessage.arg1;
-        paramMessage = paramMessage.getData();
-      } while (!QLog.isColorLevel());
-      QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
-      QLog.i("ShortVideoPTVItemBuilder", 2, "data is " + paramMessage);
-      return;
-      i = paramMessage.arg1;
-      switch (paramMessage.arg1)
-      {
-      default: 
-        return;
-      }
-      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    } while (!QLog.isColorLevel());
-    QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
-    QLog.i("ShortVideoPTVItemBuilder", 2, "targetFile is " + paramMessage);
+    return false;
+  }
+  
+  public abstract boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean a(Object... paramVarArgs);
+  
+  public void b() {}
+  
+  public abstract void c();
+  
+  public void d()
+  {
+    AIOAnimationConatiner.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

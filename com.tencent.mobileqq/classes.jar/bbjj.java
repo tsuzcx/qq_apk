@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
 
 public class bbjj
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public bbjj(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public bbjj(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.finish();
+    paramView = this.a.getActivity();
+    if ((paramView instanceof ActiveEntitySearchActivity)) {
+      ((ActiveEntitySearchActivity)paramView).c();
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramView instanceof UniteSearchActivity)) {
+        ((UniteSearchActivity)paramView).b();
+      }
+    }
   }
 }
 

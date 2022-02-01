@@ -1,26 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
-public class atth
-  implements View.OnClickListener
+class atth
+  implements bigw
 {
-  public atth(LocationShareFragment paramLocationShareFragment, int paramInt, String paramString) {}
+  atth(atte paramatte, List paramList, aszd paramaszd, attj paramattj) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a()) {
+    if (paramInt == 2)
+    {
+      atvf.d(atte.a(this.jdField_a_of_type_Atte).getString(2131692439));
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          if (bgmg.b(localFileManagerEntity.getFilePath())) {
+            this.jdField_a_of_type_Aszd.a(localFileManagerEntity.getFilePath(), "", atte.a(this.jdField_a_of_type_Atte).getCurrentAccountUin(), 0, false);
+          } else {
+            this.jdField_a_of_type_Aszd.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+          }
+        }
+      }
+      if (this.jdField_a_of_type_Attj != null) {
+        this.jdField_a_of_type_Attj.a(4, 0);
+      }
+    }
+    while (this.jdField_a_of_type_Attj == null)
+    {
+      Iterator localIterator;
+      FileManagerEntity localFileManagerEntity;
       return;
     }
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a());
-    azqs.b(null, "CliOper", "", "", "0X800A95C", "0X800A95C", 0, 0, "", "0", "0", "");
+    this.jdField_a_of_type_Attj.a(4, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atth
  * JD-Core Version:    0.7.0.1
  */

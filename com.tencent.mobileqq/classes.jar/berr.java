@@ -1,13 +1,10 @@
-import com.tencent.mobileqq.widget.ParticipleBottomMenuView;
-
 public class berr
-  implements berw
 {
-  public berr(ParticipleBottomMenuView paramParticipleBottomMenuView) {}
-  
-  public void a()
+  public static String a(int paramInt)
   {
-    this.a.a();
+    long l1 = 0x7FFFFFFF & paramInt;
+    long l2 = paramInt >> 31 & 0x1;
+    return (l2 << 31 | l1) + "";
   }
 }
 

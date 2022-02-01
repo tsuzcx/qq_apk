@@ -1,10 +1,10 @@
 package cooperation.liveroom;
 
 import android.support.annotation.Nullable;
-import bdgk;
-import bdin;
-import bfiu;
-import biqn;
+import bgln;
+import bgnt;
+import biqd;
+import blfh;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -23,8 +23,8 @@ import org.json.JSONObject;
 public class LiveRoomHelper
 {
   private static final String CLS_LIVEROOMAPPINTERFACE = "cooperation.liveroom.LiveRoomInterface";
-  private static final String REPORT_HOST = "http://lme.gamefeeds.qq.com/LmeProxyCgi?data=";
-  private static final String REPORT_HOST_TEST = "http://gcd.sparta.html5.qq.com/LmeProxyCgi?data=";
+  private static final String REPORT_HOST = "https://lme.gamefeeds.qq.com/LmeProxyCgi?data=";
+  private static final String REPORT_HOST_TEST = "https://gcd.sparta.html5.qq.com/LmeProxyCgi?data=";
   private static final String REPORT_JSON_END = "}}}";
   private static final String REPORT_JSON_START = "{\"module\":\"LME.ReportChannelSvr.ReportChannelObj\",\"method\":\"SdkPluginReport\",\"param\":{\"req\":{\"report\":";
   private static final String TAG = "LiveRoomHelper";
@@ -149,11 +149,11 @@ public class LiveRoomHelper
   @Nullable
   public static PluginInfo getPluginInfoInQQ()
   {
-    biqn localbiqn = getPluginManagerInQQ();
-    if (localbiqn == null) {
+    blfh localblfh = getPluginManagerInQQ();
+    if (localblfh == null) {
       return null;
     }
-    return localbiqn.a("LiveRoomPlugin.apk");
+    return localblfh.a("LiveRoomPlugin.apk");
   }
   
   public static boolean getPluginInstalledInTool()
@@ -162,7 +162,7 @@ public class LiveRoomHelper
   }
   
   @Nullable
-  public static biqn getPluginManagerInQQ()
+  public static blfh getPluginManagerInQQ()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject != null) && ((localObject instanceof QQAppInterface))) {}
@@ -173,7 +173,7 @@ public class LiveRoomHelper
         QLog.e("LiveRoomHelper", 1, "get AppRuntime fail");
         return null;
       }
-      return (biqn)((QQAppInterface)localObject).getManager(27);
+      return (blfh)((QQAppInterface)localObject).getManager(27);
     }
   }
   
@@ -211,7 +211,7 @@ public class LiveRoomHelper
       localJSONObject.put("platform", "androidqq");
       localJSONObject.put("platVersion", AppSetting.f());
       String str = "";
-      if ("com.tencent.mobileqq:tool".equals(bfiu.r())) {
+      if ("com.tencent.mobileqq:tool".equals(biqd.r())) {
         str = getPluginVersionInTool();
       }
       for (;;)
@@ -220,11 +220,11 @@ public class LiveRoomHelper
         localJSONObject.put("from", paramString1);
         localJSONObject.put("action", paramString2);
         localJSONObject.put("result", paramString3);
-        localJSONObject.put("imei", bdgk.a());
-        localJSONObject.put("device", bdgk.i());
+        localJSONObject.put("imei", bgln.a());
+        localJSONObject.put("device", bgln.i());
         localJSONObject.put("uin", BaseApplicationImpl.sApplication.getRuntime().getAccount());
-        localJSONObject.put("network", bdin.b(BaseApplicationImpl.getContext()));
-        localJSONObject.put("os", bdgk.e());
+        localJSONObject.put("network", bgnt.b(BaseApplicationImpl.getContext()));
+        localJSONObject.put("os", bgln.e());
         reportJson.put(localJSONObject);
         return;
         PluginInfo localPluginInfo = getPluginInfoInQQ();
@@ -253,7 +253,7 @@ public class LiveRoomHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomHelper
  * JD-Core Version:    0.7.0.1
  */

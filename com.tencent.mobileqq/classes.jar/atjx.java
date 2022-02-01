@@ -1,51 +1,22 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.List;
 
-public class atjx
-  implements BusinessObserver
+class atjx
+  extends aszq
 {
-  public atjx(UiApiPlugin paramUiApiPlugin) {}
+  atjx(atjw paramatjw, ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
   {
-    byte[] arrayOfByte;
-    if (paramBoolean)
-    {
-      arrayOfByte = paramBundle.getByteArray("data");
-      paramBundle.getString("openId");
-      if (arrayOfByte != null) {
-        paramBundle = new oidb_sso.OIDBSSOPkg();
-      }
+    if (paramBoolean2) {
+      paramString4 = paramString4 + "&isthumb=0";
     }
-    try
+    for (;;)
     {
-      paramBundle = (oidb_sso.OIDBSSOPkg)paramBundle.mergeFrom((byte[])arrayOfByte);
-      paramInt = paramBundle.uint32_result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "handleOidb0x716_48Rsp, resultCode:" + paramInt);
-      }
-      paramBundle = paramBundle.bytes_bodybuffer.get().toByteArray();
-      if (paramInt == 0)
-      {
-        arrayOfByte = new byte[4];
-        System.arraycopy(paramBundle, 0, arrayOfByte, 0, 4);
-        paramBundle = TroopInfoActivity.a(String.valueOf(ByteBuffer.wrap(arrayOfByte).getInt() + ""), 32);
-        bcpx.a(this.a.a(), paramBundle, -1);
-      }
+      this.jdField_a_of_type_Atjw.a(paramBoolean1, paramLong1, paramString1, paramString2, paramByteStringMicro, paramBoolean2, paramString3, paramShort, paramString4, paramList, paramString5, paramBundle, this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo);
       return;
-    }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "pkg.mergeFrom:" + paramBundle.toString());
     }
   }
 }

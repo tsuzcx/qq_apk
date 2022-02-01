@@ -25,6 +25,7 @@ public class UseUserAppRequest
     paramString1.refer.set(paramString2);
     paramString1.via.set(paramString3);
     this.req.channelInfo.set(paramString1);
+    this.req.needRecommend.set(1);
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt);
     }
@@ -54,7 +55,7 @@ public class UseUserAppRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.UseUserAppRequest
  * JD-Core Version:    0.7.0.1
  */

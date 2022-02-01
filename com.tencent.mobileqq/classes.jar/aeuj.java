@@ -1,18 +1,47 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-public final class aeuj
-  implements Parcelable.Creator<SessionInfo>
+public class aeuj
+  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener
 {
-  public SessionInfo a(Parcel paramParcel)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    return new SessionInfo(paramParcel);
+    return false;
   }
   
-  public SessionInfo[] a(int paramInt)
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    return new SessionInfo[paramInt];
+    return false;
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

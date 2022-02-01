@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import bddn;
+import bgig;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QQSettingUtil$1
@@ -10,12 +10,12 @@ public final class QQSettingUtil$1
   
   public void run()
   {
-    bddn.b(this.a);
+    bgig.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQSettingUtil.1
  * JD-Core Version:    0.7.0.1
  */

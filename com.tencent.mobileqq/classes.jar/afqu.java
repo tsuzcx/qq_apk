@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
 
-final class afqu
-  implements afug
+public class afqu
+  implements afrc
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public afqu(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    paramQQAppInterface = (MessageForPoke)paramChatMessage;
-    if ((paramQQAppInterface.interactType == 126) && (!afxl.a(paramQQAppInterface.minVersion))) {
-      return 0;
-    }
-    return 62;
+    this.a.a.setActualViewSize(paramInt1, paramInt2);
+    this.a.a.invalidate();
   }
 }
 

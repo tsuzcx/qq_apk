@@ -1,9 +1,24 @@
-import android.graphics.Path;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
-public abstract interface afbp
+public class afbp
+  implements Handler.Callback
 {
-  public abstract void a(int paramInt, boolean paramBoolean, Path paramPath, List<afbg> paramList);
+  public afbp(RewardNoticeActivity paramRewardNoticeActivity) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      paramMessage = new afbq(this);
+      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
+    }
+  }
 }
 
 

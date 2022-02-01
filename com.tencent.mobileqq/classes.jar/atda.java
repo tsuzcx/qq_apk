@@ -1,66 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class atda
-  implements Manager
+class atda
+  extends asyw
 {
-  private QQAppInterface a;
+  atda(atcz paramatcz) {}
   
-  public atda(QQAppInterface paramQQAppInterface)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a(String paramString)
-  {
-    int j = 0;
-    if (bdnn.a(paramString))
+    if (QLog.isColorLevel()) {
+      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
+    }
+    bnaz.a(null, paramInt2);
+    paramString1 = this.a.a.a().a(paramLong2);
+    Bundle localBundle;
+    if ((paramString1 != null) && (paramString1.nOpType == 50))
     {
-      paramString = BaseApplicationImpl.getContext().getSharedPreferences("now_download_config", 4);
-      paramString.edit().putInt("key_now_download_engine", 0).commit();
-      paramString.edit().putInt("key_now_channel", 0).commit();
-      QLog.e("NowGeneralConfigManager", 4, "NowGeneralConfigManager----parseJson---downloadEngine = 0");
+      localBundle = new Bundle();
+      localBundle.putString("taskId", paramString1.miniAppDownloadId);
+      if (!paramBoolean) {
+        break label163;
+      }
+    }
+    label163:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      localBundle.putInt("retCode", paramInt1);
+      paramString1 = paramString2;
+      if (paramString2 == null) {
+        paramString1 = "";
+      }
+      localBundle.putString("retMsg", paramString1);
+      QIPCServerHelper.getInstance().callClient(auak.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", localBundle, null);
+      this.a.a(paramLong2);
       return;
     }
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("now_download_engine"))
-        {
-          i = paramString.getInt("now_download_engine");
-          if (paramString.has("now_channel")) {
-            j = paramString.getInt("now_channel");
-          }
-          QLog.e("NowGeneralConfigManager", 4, "NowGeneralConfigManager----parseJson---downloadEngine = " + i + ", nowChannel = " + j);
-          paramString = BaseApplicationImpl.getContext().getSharedPreferences("now_download_config", 4);
-          paramString.edit().putInt("key_now_download_engine", i).commit();
-          paramString.edit().putInt("key_now_channel", j).commit();
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      int i = 0;
-    }
   }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atda
  * JD-Core Version:    0.7.0.1
  */

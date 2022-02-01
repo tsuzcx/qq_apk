@@ -1,32 +1,25 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.3.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.biz.PoiMapActivity;
 
 public class nif
-  implements TVK_IMediaPlayer.OnErrorListener
 {
-  nif(nic paramnic) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
-  {
-    if (QLog.isColorLevel())
-    {
-      paramTVK_IMediaPlayer = new StringBuilder();
-      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
-      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
-      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
-      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
-      QLog.e("AccountDetailVideoManager", 2, paramTVK_IMediaPlayer.toString());
-    }
-    this.a.a.runOnUiThread(new AccountDetailVideoManager.3.1(this));
-    return false;
-  }
+  public nif(PoiMapActivity paramPoiMapActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nif
  * JD-Core Version:    0.7.0.1
  */

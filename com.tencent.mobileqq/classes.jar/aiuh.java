@@ -1,26 +1,116 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class aiuh
-  extends AsyncTask<String, Void, AnimationView.AnimationInfo>
+public class aiuh
+  implements anil
 {
-  private aiuh(aiuf paramaiuf) {}
-  
-  protected AnimationView.AnimationInfo a(String... paramVarArgs)
+  private void a(boolean paramBoolean, Object paramObject)
   {
-    if ("1".equals(paramVarArgs[1])) {
-      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
+    {
+      paramObject = (Object[])paramObject;
+      if (paramObject.length >= 8) {
+        a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Integer)paramObject[3]).intValue(), (String)paramObject[4], ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Boolean)paramObject[7]).booleanValue());
+      }
+      return;
     }
-    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
+    if ((paramObject != null) && ((paramObject instanceof Object[])))
+    {
+      Object[] arrayOfObject = (Object[])paramObject;
+      if (arrayOfObject.length >= 2)
+      {
+        paramObject = (String)arrayOfObject[0];
+        paramBoolean = ((Boolean)arrayOfObject[1]).booleanValue();
+      }
+    }
+    for (;;)
+    {
+      a(false, paramObject, 0, null, 0, null, 60, 1200, paramBoolean);
+      return;
+      paramBoolean = false;
+      paramObject = null;
+    }
   }
   
-  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
+  private void b(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
+    {
+      paramObject = (Object[])paramObject;
+      if (paramObject.length >= 3) {
+        a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+      }
+      return;
     }
-    this.a.a(paramAnimationInfo);
+    if ((paramObject != null) && ((paramObject instanceof Object[])))
+    {
+      paramObject = (Object[])paramObject;
+      if (paramObject.length <= 0) {}
+    }
+    for (paramObject = (String)paramObject[0];; paramObject = null)
+    {
+      a(false, paramObject, 0, null);
+      return;
+    }
+  }
+  
+  private void c(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
+    {
+      paramObject = (Object[])paramObject;
+      if (paramObject.length >= 4) {
+        a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (List)paramObject[3]);
+      }
+      return;
+    }
+    if ((paramObject != null) && ((paramObject instanceof Object[])))
+    {
+      paramObject = (Object[])paramObject;
+      if (paramObject.length <= 0) {}
+    }
+    for (paramObject = (String)paramObject[0];; paramObject = null)
+    {
+      a(false, paramObject, 0, null, null);
+      return;
+    }
+  }
+  
+  private void d(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (paramObject != null))
+    {
+      paramObject = (Object[])paramObject;
+      if (paramObject.length >= 3) {
+        a((String)paramObject[0], (String)paramObject[1], (List)paramObject[2]);
+      }
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, List<aiuo> paramList) {}
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
+  
+  public void a(boolean paramBoolean1, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, int paramInt4, boolean paramBoolean2) {}
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, List<String> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b(paramBoolean, paramObject);
+      return;
+    case 3: 
+      c(paramBoolean, paramObject);
+      return;
+    }
+    d(paramBoolean, paramObject);
   }
 }
 

@@ -1,33 +1,18 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
 
-public class bagd
-  extends bamp
+class bagd
+  extends AnimatorListenerAdapter
 {
-  public bagd(CharSequence paramCharSequence, int paramInt)
-  {
-    super(paramCharSequence, paramInt);
-  }
+  bagd(baga parambaga) {}
   
-  protected void a(View paramView, String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramString = Uri.parse(paramString);
-    paramView = paramView.getContext();
-    paramString = new Intent("android.intent.action.VIEW", paramString);
-    paramString.putExtra("com.android.browser.application_id", paramView.getPackageName());
-    try
-    {
-      paramView.startActivity(paramString);
-      return;
+    if (baga.a(this.a) != null) {
+      baga.a(this.a).c();
     }
-    catch (ActivityNotFoundException paramView)
-    {
-      QLog.w("OpenDefaultBrowserQQText", 1, "Activity was not found for intent, " + paramString.toString());
-    }
+    baga.a(this.a, 8);
   }
 }
 

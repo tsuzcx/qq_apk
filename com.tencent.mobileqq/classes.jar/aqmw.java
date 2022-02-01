@@ -1,104 +1,61 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.1;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.2;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.3;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10.4;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class aqmw
-  implements bfoj
+  extends aqmv
 {
-  public aqmw(UniformDownloadActivity paramUniformDownloadActivity) {}
-  
-  public void installSucceed(String paramString1, String paramString2)
+  public aqmp a(String paramString)
   {
-    if ("1101070898".equals(paramString1))
+    QLog.d("ArkAIDictConfigProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
+    try
     {
-      paramString1 = UniformDownloadActivity.a(this.a);
-      UniformDownloadActivity.a(this.a, paramString1);
-      paramString1 = UniformDownloadActivity.a(this.a, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d(UniformDownloadActivity.a, 2, "tmastUrl=" + paramString1);
-      }
-      UniformDownloadActivity.a(this.a, paramString1);
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      aqnh localaqnh = (aqnh)aqlu.a(paramString, aqnh.class);
+      return new aqmq(paramString, localaqnh);
     }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadCancel " + paramDownloadInfo.e);
-    }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    catch (QStorageInstantiateException localQStorageInstantiateException)
     {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadError " + paramDownloadInfo.e);
-    }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadFinish " + paramDownloadInfo.e);
-    }
-    azqs.b(null, "dc00898", "", "", "0X8008F88", "0X8008F88", 1, 0, "", "", "", "");
-    this.a.runOnUiThread(new UniformDownloadActivity.10.4(this));
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadPause " + paramDownloadInfo.e);
-    }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898"))) {
-      this.a.runOnUiThread(new UniformDownloadActivity.10.3(this));
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d(UniformDownloadActivity.a, 2, "onDownloadUpdate " + localDownloadInfo.e);
-      }
-      if ((localDownloadInfo != null) && (localDownloadInfo.c.equals("1101070898"))) {
-        this.a.runOnUiThread(new UniformDownloadActivity.10.2(this, localDownloadInfo));
+      for (;;)
+      {
+        QLog.i("ArkAIDictConfigProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        Object localObject = null;
       }
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public void a(aqmp paramaqmp)
   {
-    this.a.runOnUiThread(new UniformDownloadActivity.10.1(this));
+    super.a(paramaqmp);
+    if (paramaqmp == null) {
+      QLog.i("ArkAIDictConfigProcessor", 1, "newConf is null");
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          QLog.d("ArkAIDictConfigProcessor", 1, "[onUpdate] type=" + type() + ", content = " + paramaqmp.a());
+          paramaqmp = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        } while (paramaqmp == null);
+        paramaqmp = (ArkAppCenter)paramaqmp.getManager(121);
+      } while (paramaqmp == null);
+      paramaqmp = paramaqmp.a();
+    } while (paramaqmp == null);
+    paramaqmp.a();
   }
   
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
+  public int type()
+  {
+    return 170;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmw
  * JD-Core Version:    0.7.0.1
  */

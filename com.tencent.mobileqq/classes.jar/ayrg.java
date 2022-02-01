@@ -1,15 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class ayrg
-  implements View.OnClickListener
+public abstract interface ayrg
 {
-  ayrg(ayrf paramayrf, aynt paramaynt) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Aynt.a(paramView);
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract boolean a();
 }
 
 

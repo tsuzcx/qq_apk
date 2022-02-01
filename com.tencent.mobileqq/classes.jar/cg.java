@@ -1,29 +1,8 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.dataline.activities.LiteAdvanceActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.Switch;
+import android.graphics.Bitmap;
 
-public class cg
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface cg
 {
-  public cg(LiteAdvanceActivity paramLiteAdvanceActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (!LiteAdvanceActivity.a(this.a, paramBoolean))
-    {
-      paramCompoundButton = LiteAdvanceActivity.a(this.a);
-      if (!paramBoolean) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramCompoundButton.setChecked(paramBoolean);
-        QQToast.a(this.a, 1, alud.a(2131706578), 0).b(this.a.getTitleBarHeight());
-        return;
-      }
-    }
-    LiteAdvanceActivity.b(this.a, paramBoolean);
-  }
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
 }
 
 

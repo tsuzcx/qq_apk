@@ -1,19 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CustomFace;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acym
-  implements acyh
+  extends aczg
 {
-  public acym(ForwardTroopListFragment paramForwardTroopListFragment) {}
-  
-  public void a(View paramView)
+  public int a()
   {
-    ForwardTroopListFragment.a(this.a, paramView);
+    return 1000;
   }
   
-  public boolean a(String paramString, int paramInt)
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
   {
-    return ForwardTroopListFragment.a(this.a, paramString, paramInt);
+    new bbzc().a(paramList, paramList1, paramStringBuilder, paramMsg, paramBoolean2);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.hc_flash_pic.has();
   }
 }
 

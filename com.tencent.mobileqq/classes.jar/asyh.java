@@ -1,21 +1,17 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class asyh
-  implements TVK_SDKMgr.InstallListener
+public class asyh
+  implements View.OnClickListener
 {
-  asyh(asyf paramasyf) {}
+  public asyh(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onClick(View paramView)
   {
-    asye.b("installSDK onInstalledFailed arg0=" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    asye.b("installSDK onInstalledSuccessed");
-    asyf.a(this.a);
+    QfileRecentPicFileTabView.a(this.a, paramView, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

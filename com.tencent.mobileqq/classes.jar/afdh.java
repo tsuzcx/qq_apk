@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afdh
-  implements View.OnClickListener
+class afdh
+  implements DialogInterface.OnClickListener
 {
-  public afdh(AIOLongShotHelper paramAIOLongShotHelper) {}
+  afdh(afdc paramafdc) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AIOLongShotHelper.c(this.a, paramView);
-    AIOLongShotHelper.a("0X8009DEC");
+    this.a.a.show();
+    this.a.b = false;
+    afdc.c(this.a);
   }
 }
 

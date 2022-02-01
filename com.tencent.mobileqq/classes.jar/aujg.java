@@ -1,61 +1,38 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadPoolParams;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class aujg
+class aujg
+  implements ayyt
 {
-  private static aujg jdField_a_of_type_Aujg;
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  aujg(aujf paramaujf, Bundle paramBundle, long paramLong) {}
   
-  private aujg()
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null)
-    {
-      int i = Runtime.getRuntime().availableProcessors();
-      ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
-      localThreadPoolParams.corePoolsize = i;
-      localThreadPoolParams.maxPooolSize = i;
-      localThreadPoolParams.priority = 5;
-      localThreadPoolParams.poolThreadName = "msgbackup_Tranport_Executor";
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
-    }
+    return null;
   }
   
-  public static aujg a()
+  public void a(ayyu paramayyu)
   {
-    try
+    StringBuilder localStringBuilder = new StringBuilder().append("upCallBack updateMsg info =");
+    if (paramayyu == null) {}
+    for (paramayyu = "null";; paramayyu = paramayyu.toString())
     {
-      if (jdField_a_of_type_Aujg == null) {
-        jdField_a_of_type_Aujg = new aujg();
-      }
-      aujg localaujg = jdField_a_of_type_Aujg;
-      return localaujg;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    aujq.a("MsgBackupMsgBackupTransportExecutor", "msgbackup destroy-------------> destroyed = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get(), new Object[0]);
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, paramayyu);
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
-  public void a(Runnable paramRunnable)
+  public void b(ayyu paramayyu)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
-      aujq.a("MsgBackupMsgBackupTransportExecutor", "thread pool is destroyed!", new Object[0]);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(paramRunnable);
+    QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "upCallBack onSend result=", paramayyu });
+    aujf.a(this.jdField_a_of_type_Aujf, paramayyu, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aujg
  * JD-Core Version:    0.7.0.1
  */

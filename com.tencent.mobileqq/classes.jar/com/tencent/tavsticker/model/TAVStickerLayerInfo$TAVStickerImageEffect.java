@@ -4,41 +4,41 @@ import com.tencent.tav.coremedia.CMTimeRange;
 
 public class TAVStickerLayerInfo$TAVStickerImageEffect
 {
-  private String mEffectId = "";
-  private String mName = "";
-  private CMTimeRange mTimeRange = CMTimeRange.CMTimeRangeInvalid;
+  private String effectId = "";
+  private String name = "";
+  private CMTimeRange timeRange = CMTimeRange.CMTimeRangeInvalid;
   
   public TAVStickerLayerInfo$TAVStickerImageEffect(CMTimeRange paramCMTimeRange, String paramString1, String paramString2)
   {
     if (paramCMTimeRange != null) {
-      this.mTimeRange = paramCMTimeRange;
+      this.timeRange = paramCMTimeRange;
     }
     if (paramString1 != null) {
-      this.mEffectId = paramString1;
+      this.effectId = paramString1;
     }
     if (paramString2 != null) {
-      this.mName = paramString2;
+      this.name = paramString2;
     }
   }
   
   public String getEffectId()
   {
-    return this.mEffectId;
+    return this.effectId;
   }
   
   public String getName()
   {
-    return this.mName;
+    return this.name;
   }
   
   public CMTimeRange getTimeRange()
   {
-    return this.mTimeRange;
+    return this.timeRange;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerLayerInfo.TAVStickerImageEffect
  * JD-Core Version:    0.7.0.1
  */

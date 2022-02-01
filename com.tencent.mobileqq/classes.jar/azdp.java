@@ -1,17 +1,49 @@
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import java.util.Iterator;
+import java.util.List;
 
-class azdp
-  implements azeq
+public class azdp
+  implements Animator.AnimatorListener
 {
-  azdp(azdo paramazdo) {}
+  public azdp(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, long paramLong) {}
   
-  public void a(int paramInt) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a(int paramInt, azej paramazej) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    paramAnimator = PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity).personalityLabelInfos.iterator();
+    while (paramAnimator.hasNext())
+    {
+      PersonalityLabelInfo localPersonalityLabelInfo = (PersonalityLabelInfo)paramAnimator.next();
+      if (this.jdField_a_of_type_Long == localPersonalityLabelInfo.id)
+      {
+        PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity).personalityLabelInfos.remove(localPersonalityLabelInfo);
+        paramAnimator = PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity);
+        paramAnimator.remainCount += 1;
+        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a(PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity), false);
+        PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity, true);
+        if ((!this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a()) && (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b)) {
+          PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity, false);
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.hasMessages(0)) {
+          this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.removeMessages(0);
+        }
+        paramAnimator = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.obtainMessage(0, PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
+        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.sendMessageDelayed(paramAnimator, 500L);
+      }
+    }
+    ((azej)this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.app.a(112)).a(this.jdField_a_of_type_Long);
+  }
   
-  public void a(int paramInt, ArrayList<azej> paramArrayList) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void b(int paramInt, azej paramazej) {}
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

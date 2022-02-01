@@ -1,16 +1,22 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aejj
   implements View.OnClickListener
 {
-  public aejj(TroopTransferActivity paramTroopTransferActivity) {}
+  public aejj(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    Intent localIntent = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(localIntent, 999);
+    this.a.overridePendingTransition(2130771997, 2130771990);
+    bcst.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

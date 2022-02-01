@@ -1,89 +1,147 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class avai
-  implements View.OnClickListener
 {
-  public avai(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public static ConcurrentHashMap<String, ArrayList<aval>> a = new ConcurrentHashMap();
+  public static ConcurrentHashMap<String, avak> b = new ConcurrentHashMap();
   
-  public void onClick(View paramView)
+  public static void a()
   {
-    if (paramView == ChooseInterestTagActivity.b(this.a)) {
-      if (TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
+    synchronized (a)
+    {
+      HashSet localHashSet = new HashSet();
+      Iterator localIterator2 = a.values().iterator();
+      while (localIterator2.hasNext())
       {
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.b(this.a), 30, 0, 0);
-        ChooseInterestTagActivity.a(this.a, true, true);
+        Iterator localIterator3 = ((ArrayList)localIterator2.next()).iterator();
+        if (localIterator3.hasNext())
+        {
+          aval localaval = (aval)localIterator3.next();
+          localaval.d();
+          localHashSet.add(localaval.d);
+        }
       }
     }
-    label371:
-    do
+    Iterator localIterator1 = localObject.iterator();
+    while (localIterator1.hasNext()) {
+      c((String)localIterator1.next());
+    }
+  }
+  
+  public static void a(aval paramaval)
+  {
+    synchronized (a)
     {
-      do
+      String str = paramaval.a();
+      ArrayList localArrayList = (ArrayList)a.get(str);
+      if (localArrayList == null)
       {
-        return;
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
-        break;
-        if (paramView == this.a.leftView)
-        {
-          bhsj.b(ChooseInterestTagActivity.a(this.a));
-          if (ChooseInterestTagActivity.a(this.a))
-          {
-            this.a.finish();
-            return;
-          }
-          localObject = this.a.getIntent();
-          paramView = (View)localObject;
-          if (localObject == null) {
-            paramView = new Intent();
-          }
-          Collections.reverse(ChooseInterestTagActivity.a(this.a));
-          paramView.putParcelableArrayListExtra("choosed_interest_tags", ChooseInterestTagActivity.a(this.a));
-          paramView.putExtra("interest_tag_type", ChooseInterestTagActivity.a(this.a));
-          this.a.setResult(-1, paramView);
-          this.a.finish();
-          return;
-        }
-        if (paramView != this.a.rightViewText) {
-          break label371;
-        }
-        bhsj.b(ChooseInterestTagActivity.a(this.a));
-      } while (!ChooseInterestTagActivity.a(this.a));
-      if (ChooseInterestTagActivity.a(this.a).isEmpty())
-      {
-        ChooseInterestTagActivity.a(this.a, alud.a(2131702189));
+        localArrayList = new ArrayList();
+        localArrayList.add(paramaval);
+        a.put(str, localArrayList);
+      }
+      while (localArrayList.contains(paramaval)) {
         return;
       }
-      ChooseInterestTagActivity.a(this.a, 0, alud.a(2131702183), 0);
-      Collections.reverse(ChooseInterestTagActivity.a(this.a));
-      paramView = new avau(ChooseInterestTagActivity.a(this.a));
-      paramView.a.addAll(ChooseInterestTagActivity.a(this.a));
-      Object localObject = new ArrayList(1);
-      ((List)localObject).add(paramView);
-      ChooseInterestTagActivity.a(this.a).a((List)localObject, 0, 1);
-      return;
-    } while (paramView != ChooseInterestTagActivity.a(this.a));
-    ChooseInterestTagActivity.a(this.a).setText(alud.a(2131702206));
-    paramView = ChooseInterestTagActivity.a(this.a);
-    int j = ChooseInterestTagActivity.a(this.a);
-    int k = ChooseInterestTagActivity.b(this.a);
-    if (ChooseInterestTagActivity.a(this.a)) {}
-    for (int i = 1;; i = 0)
+      localArrayList.add(paramaval);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    synchronized (a)
     {
-      paramView.a("", j, k, 30, 0, i);
+      aval localaval;
+      do
+      {
+        Iterator localIterator = a.keySet().iterator();
+        Object localObject;
+        while (!((Iterator)localObject).hasNext())
+        {
+          do
+          {
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            localObject = (String)localIterator.next();
+          } while (!((String)localObject).endsWith("plugin"));
+          localObject = ((ArrayList)a.get(localObject)).iterator();
+        }
+        localaval = (aval)((Iterator)localObject).next();
+      } while (!((avaj)localaval).a.equals(paramString));
+      localaval.b();
+      localaval.d();
+    }
+  }
+  
+  public static void b(String paramString)
+  {
+    synchronized (a)
+    {
+      Iterator localIterator = a.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (String)localIterator.next();
+        if (((String)localObject).startsWith(paramString))
+        {
+          localObject = ((ArrayList)a.get(localObject)).iterator();
+          if (((Iterator)localObject).hasNext()) {
+            ((aval)((Iterator)localObject).next()).d();
+          }
+        }
+      }
+    }
+    c(paramString);
+  }
+  
+  public static void c(String paramString)
+  {
+    synchronized (a)
+    {
+      avak localavak = (avak)b.get(paramString);
+      if (localavak != null)
+      {
+        localavak.d();
+        b.remove(paramString);
+      }
+      return;
+    }
+  }
+  
+  public static void d(String paramString)
+  {
+    synchronized (a)
+    {
+      paramString = (avak)b.get(paramString);
+      if (paramString != null) {
+        paramString.b();
+      }
+      return;
+    }
+  }
+  
+  public static void e(String paramString)
+  {
+    synchronized (a)
+    {
+      if ((avak)b.get(paramString) == null)
+      {
+        avak localavak = new avak(paramString);
+        b.put(paramString, localavak);
+        localavak.a();
+      }
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     avai
  * JD-Core Version:    0.7.0.1
  */

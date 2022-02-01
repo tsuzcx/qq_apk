@@ -1,76 +1,25 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
-import com.tencent.mobileqq.widget.ColorSelectView;
 
-public class bdrs
-  extends BaseAdapter
+class bdrs
+  implements Animation.AnimationListener
 {
-  public static final int[] a;
-  public int a;
+  bdrs(bdrr parambdrr) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, -16777216, -51904, -41579, -2992688, -15808515, -16268201, -12464 };
+    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(500);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setAnimationListener(new bdrt(this));
+    this.a.d.startAnimation(paramAnimation);
   }
   
-  public bdrs()
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return jdField_a_of_type_ArrayOfInt.length;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(jdField_a_of_type_ArrayOfInt[paramInt]);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561691, paramViewGroup, false);
-    }
-    paramView = (ColorSelectView)localView.findViewById(2131364459);
-    paramViewGroup = (ImageView)localView.findViewById(2131364457);
-    if (paramInt == 0)
-    {
-      paramView.setVisibility(8);
-      paramViewGroup.setVisibility(0);
-      if (this.jdField_a_of_type_Int == paramInt) {}
-      for (paramInt = 2130846617;; paramInt = 2130846616)
-      {
-        paramViewGroup.setImageResource(paramInt);
-        return localView;
-      }
-    }
-    paramView.setVisibility(0);
-    paramViewGroup.setVisibility(8);
-    paramView.setColor(jdField_a_of_type_ArrayOfInt[paramInt]);
-    if (this.jdField_a_of_type_Int == paramInt) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.setSelect(bool);
-      return localView;
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

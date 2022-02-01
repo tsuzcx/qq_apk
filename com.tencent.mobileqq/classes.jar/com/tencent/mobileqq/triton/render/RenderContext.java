@@ -8,72 +8,63 @@ import android.view.Surface;
 import com.tencent.mobileqq.triton.annotation.JNIModule;
 import com.tencent.mobileqq.triton.engine.TTEngine;
 import com.tencent.mobileqq.triton.engine.TTLog;
-import com.tencent.mobileqq.triton.jni.JNICaller.RenderContext;
 import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.jni.TTNativeModule;
-import com.tencent.mobileqq.triton.render.monitor.BlackScreenMonitor;
-import com.tencent.mobileqq.triton.render.monitor.FPSMonitor;
-import com.tencent.mobileqq.triton.render.monitor.FirstScreenMonitor;
-import com.tencent.mobileqq.triton.render.monitor.ScreenShootMonitor;
+import com.tencent.mobileqq.triton.render.c.b;
+import com.tencent.mobileqq.triton.render.c.c;
+import com.tencent.mobileqq.triton.render.c.d;
 import com.tencent.mobileqq.triton.sdk.IQQEnv;
-import com.tencent.mobileqq.triton.sdk.ITTEngine.IListener;
 import com.tencent.mobileqq.triton.touch.TouchEventManager;
-import com.tencent.mobileqq.triton.views.GameUserInfoBtnManager;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 @JNIModule
-@TTNativeModule(name="RenderContext")
 public class RenderContext
 {
-  private static final String TAG = "RenderContext";
-  private boolean bSupportES3;
-  private int mCanvasHeight;
-  private int mCanvasWidth;
-  private Context mContext;
-  private WeakReference<RenderContext.IFixedSizeListener> mFixedSizeListener;
-  private GameGlobalView mGameGlobalView;
-  private float mScale;
-  private int mScreenHeight;
-  private int mScreenWidth;
-  private ArrayList<RenderContext.ISwapListener> mSwapListeners;
-  private volatile TouchEventManager mTouchEventManager;
-  private TTEngine mTritonEngine;
+  private ArrayList<RenderContext.a> a;
+  private TTEngine b;
+  private Context c;
+  private boolean d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
+  private float i;
+  private a j;
+  private volatile TouchEventManager k;
   
   public RenderContext(TTEngine paramTTEngine, Context paramContext)
   {
-    this.mTritonEngine = paramTTEngine;
-    this.mContext = paramContext.getApplicationContext();
-    this.bSupportES3 = checkOpenGLES30(this.mContext);
-    this.mSwapListeners = new ArrayList();
-    TTLog.e("RenderContext", "initialize:" + this);
+    this.b = paramTTEngine;
+    this.c = paramContext.getApplicationContext();
+    this.d = a(this.c);
+    this.a = new ArrayList();
+    TTLog.b("RenderContext", "initialize:" + this);
   }
   
-  private boolean checkOpenGLES30(Context paramContext)
+  private boolean a(Context paramContext)
   {
     for (;;)
     {
       try
       {
-        i = ((ActivityManager)paramContext.getSystemService("activity")).getDeviceConfigurationInfo().reqGlEsVersion;
-        if (i < 196608) {
+        m = ((ActivityManager)paramContext.getSystemService("activity")).getDeviceConfigurationInfo().reqGlEsVersion;
+        if (m < 196608) {
           continue;
         }
-        i = 1;
+        m = 1;
       }
       catch (Exception paramContext)
       {
-        TTLog.e("RenderContext", "get support ES3 error! " + paramContext.getMessage());
-        int i = 0;
+        TTLog.b("RenderContext", "get support ES3 error! " + paramContext.getMessage());
+        int m = 0;
         continue;
       }
-      if ((!this.mTritonEngine.getQQEnv().enableOpengles3()) || (i == 0)) {
+      if ((!this.b.l().enableOpengles3()) || (m == 0)) {
         break label84;
       }
       return true;
-      i = 0;
+      m = 0;
     }
     label84:
     return false;
@@ -82,120 +73,113 @@ public class RenderContext
   @TTNativeCall
   private void onRenderContextInit()
   {
-    ITTEngine.IListener localIListener = this.mTritonEngine.getEngineListener();
-    if (localIListener != null) {
-      localIListener.onInitFinish();
-    }
+    this.b.a(0);
   }
   
   @TTNativeCall
   private void onSwapBuffer()
   {
-    if (this.mTritonEngine.getRenderContext() == null) {}
+    if (this.b.m() == null) {}
     for (;;)
     {
       return;
-      Iterator localIterator = this.mTritonEngine.getRenderContext().getSwapListeners().iterator();
+      Iterator localIterator = this.b.m().d().iterator();
       while (localIterator.hasNext()) {
-        ((RenderContext.ISwapListener)localIterator.next()).onSwap();
+        ((RenderContext.a)localIterator.next()).a();
       }
     }
   }
   
-  private void setFixedInternal(int paramInt1, int paramInt2)
-  {
-    this.mCanvasWidth = paramInt1;
-    this.mCanvasHeight = paramInt2;
-    if ((this.mFixedSizeListener != null) && (this.mFixedSizeListener.get() != null)) {
-      ((RenderContext.IFixedSizeListener)this.mFixedSizeListener.get()).onFixedSize(paramInt1, paramInt2);
-    }
-    TTLog.i("RenderContext", "setFixedSize mCanvasWidth=" + paramInt1 + ", mCanvasHeight=" + paramInt2);
-  }
-  
-  public void addSwapListener(RenderContext.ISwapListener paramISwapListener)
-  {
-    this.mSwapListeners.add(paramISwapListener);
-  }
-  
-  public GameGlobalView createGameView(Activity paramActivity, int paramInt1, int paramInt2, float paramFloat)
-  {
-    initScreenInfo(paramInt1, paramInt2, paramFloat);
-    this.mTouchEventManager = new TouchEventManager(this.mTritonEngine, paramFloat);
-    this.mGameGlobalView = new GameGlobalView(paramActivity, this);
-    this.mTritonEngine.getUserInfoBtnManager().init(paramActivity, this.mGameGlobalView, paramFloat);
-    addSwapListener(new FPSMonitor(this.mTritonEngine, this.mGameGlobalView, this.mContext));
-    addSwapListener(new BlackScreenMonitor(this.mTritonEngine));
-    addSwapListener(new FirstScreenMonitor(this.mTritonEngine));
-    addSwapListener(new ScreenShootMonitor(this.mTritonEngine));
-    return this.mGameGlobalView;
-  }
-  
-  public void destroyRenderContext()
-  {
-    JNICaller.RenderContext.nSurfaceDestroyed(this, this.mTritonEngine.getNativeTTAppHandle());
-  }
-  
-  public int getCanvasHeight()
-  {
-    return this.mCanvasHeight;
-  }
-  
-  public int getCanvasWidth()
-  {
-    return this.mCanvasWidth;
-  }
-  
-  public int getScreenHeight()
-  {
-    return this.mScreenHeight;
-  }
-  
-  public float getScreenScale()
-  {
-    return this.mScale;
-  }
-  
-  public int getScreenWidth()
-  {
-    return this.mScreenWidth;
-  }
-  
-  public <T extends RenderContext.ISwapListener> T getSwapListener(Class<T> paramClass)
+  public <T extends RenderContext.a> T a(Class<T> paramClass)
   {
     if (paramClass != null)
     {
-      Iterator localIterator = new ArrayList(this.mSwapListeners).iterator();
+      Iterator localIterator = new ArrayList(this.a).iterator();
       while (localIterator.hasNext())
       {
-        RenderContext.ISwapListener localISwapListener = (RenderContext.ISwapListener)localIterator.next();
-        if (paramClass.isInstance(localISwapListener)) {
-          return localISwapListener;
+        RenderContext.a locala = (RenderContext.a)localIterator.next();
+        if (paramClass.isInstance(locala)) {
+          return locala;
         }
       }
     }
     return null;
   }
   
-  public List<RenderContext.ISwapListener> getSwapListeners()
+  public a a(Activity paramActivity, int paramInt1, int paramInt2, float paramFloat)
   {
-    return this.mSwapListeners;
+    a(paramInt1, paramInt2, paramFloat);
+    this.k = new TouchEventManager(this.b, paramFloat);
+    this.j = new a(paramActivity, this);
+    a(new b(this.b, this.j, this.c));
+    a(new com.tencent.mobileqq.triton.render.c.a(this.b));
+    a(new c(this.b));
+    a(new d(this.b));
+    return this.j;
   }
   
-  public TouchEventManager getTouchEventManager()
+  public void a()
   {
-    return this.mTouchEventManager;
+    com.tencent.mobileqq.triton.jni.a.d(this, this.b.k());
   }
   
-  public void initRenderContext(Surface paramSurface)
+  public void a(int paramInt1, int paramInt2, float paramFloat)
   {
-    JNICaller.RenderContext.nInitRenderContext(this, this.mTritonEngine.getNativeTTAppHandle(), paramSurface, this.bSupportES3, (int)(this.mScreenWidth / this.mScale), (int)(this.mScreenHeight / this.mScale), this.mScale);
+    this.g = paramInt1;
+    this.h = paramInt2;
+    this.i = paramFloat;
   }
   
-  public void initScreenInfo(int paramInt1, int paramInt2, float paramFloat)
+  public void a(Surface paramSurface)
   {
-    this.mScreenWidth = paramInt1;
-    this.mScreenHeight = paramInt2;
-    this.mScale = paramFloat;
+    long l = this.b.k();
+    boolean bool = this.d;
+    float f1 = this.g;
+    float f2 = this.i;
+    com.tencent.mobileqq.triton.jni.a.a(this, l, paramSurface, bool, (int)(f1 / f2), (int)(this.h / f2), f2);
+  }
+  
+  public void a(RenderContext.a parama)
+  {
+    this.a.add(parama);
+  }
+  
+  public int b()
+  {
+    return this.f;
+  }
+  
+  public void b(Surface paramSurface)
+  {
+    com.tencent.mobileqq.triton.jni.a.a(this, this.b.k(), paramSurface);
+  }
+  
+  public int c()
+  {
+    return this.e;
+  }
+  
+  public List<RenderContext.a> d()
+  {
+    return this.a;
+  }
+  
+  public TouchEventManager e()
+  {
+    return this.k;
+  }
+  
+  public void f()
+  {
+    com.tencent.mobileqq.triton.jni.a.a(this, this.b.k());
+    this.a.clear();
+    this.j = null;
+    if (this.k != null)
+    {
+      this.k.c();
+      this.k = null;
+    }
+    this.c = null;
   }
   
   public native void nExit(long paramLong);
@@ -212,43 +196,17 @@ public class RenderContext
   
   public native void nUpdateRenderContext(long paramLong);
   
-  public void onDestroy()
-  {
-    JNICaller.RenderContext.nExit(this, this.mTritonEngine.getNativeTTAppHandle());
-    this.mSwapListeners.clear();
-    this.mGameGlobalView = null;
-    if (this.mTouchEventManager != null)
-    {
-      this.mTouchEventManager.onDestroy();
-      this.mTouchEventManager = null;
-    }
-    this.mContext = null;
-  }
-  
-  public void rmSwapListener(RenderContext.ISwapListener paramISwapListener)
-  {
-    this.mSwapListeners.remove(paramISwapListener);
-  }
-  
   @TTNativeCall
   public void setFixedSize(int paramInt1, int paramInt2)
   {
-    setFixedInternal(paramInt1, paramInt2);
-  }
-  
-  public void setFixedSizeListener(RenderContext.IFixedSizeListener paramIFixedSizeListener)
-  {
-    this.mFixedSizeListener = new WeakReference(paramIFixedSizeListener);
-  }
-  
-  public void surfaceChanged(Surface paramSurface)
-  {
-    JNICaller.RenderContext.nSurfaceChanged(this, this.mTritonEngine.getNativeTTAppHandle(), paramSurface);
+    this.e = paramInt1;
+    this.f = paramInt2;
+    TTLog.c("RenderContext", "setFixedSize mCanvasWidth=" + paramInt1 + ", mCanvasHeight=" + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.render.RenderContext
  * JD-Core Version:    0.7.0.1
  */

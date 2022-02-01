@@ -98,6 +98,16 @@ public class FaceOffNoseOcclusionFilter
     addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
   }
   
+  public void loadFaceTex(String paramString)
+  {
+    paramString = BitmapUtils.decodeSampledBitmapFromFile(paramString, 1);
+    if (BitmapUtils.isLegal(paramString))
+    {
+      GlUtil.loadTexture(this.texture[0], paramString);
+      this.isTexLoaded = true;
+    }
+  }
+  
   public void updatePreview(Object paramObject)
   {
     if ((paramObject instanceof PTDetectInfo))
@@ -105,13 +115,13 @@ public class FaceOffNoseOcclusionFilter
       paramObject = (PTDetectInfo)paramObject;
       loadNoseTex();
       super.updatePreview(paramObject);
-      updateParam(paramObject.facePoints, paramObject.faceAngles[1]);
+      updateParam(paramObject.facePoints, 0.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.FaceOffNoseOcclusionFilter
  * JD-Core Version:    0.7.0.1
  */

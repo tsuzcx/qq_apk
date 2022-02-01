@@ -1,13 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+import android.os.Bundle;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
 
-public class blmi
-  implements DialogInterface.OnClickListener
+class blmi
+  extends anjq
 {
-  public blmi(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
+  blmi(blmg paramblmg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(boolean paramBoolean, int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putInt("result", paramInt);
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 3, localBundle);
+  }
 }
 
 

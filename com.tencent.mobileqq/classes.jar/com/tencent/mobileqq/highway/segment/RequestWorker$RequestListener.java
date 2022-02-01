@@ -153,7 +153,7 @@ class RequestWorker$RequestListener
               AppRuntime localAppRuntime = this.this$0.engine.app;
               String str = this.this$0.engine.currentUin;
               if (paramIConnection != null) {
-                break label772;
+                break label781;
               }
               bool3 = false;
               ((ConfigManager)localObject2).onSrvAddrUnavailable((Context)localObject3, localAppRuntime, str, (String)localObject1, 9, bool3);
@@ -165,12 +165,12 @@ class RequestWorker$RequestListener
           }
           label520:
           if (this.req.timeComsume < 600000L) {
-            break label808;
+            break label817;
           }
           paramInt = 1;
           label536:
           if (this.req.continueErrCount < 10) {
-            break label813;
+            break label822;
           }
           j = 1;
           label551:
@@ -182,17 +182,17 @@ class RequestWorker$RequestListener
             {
               localObject3 = ((Transaction)localObject2).mTransReport;
               if (this.req.protoType != 1) {
-                break label819;
+                break label828;
               }
             }
           }
         }
       }
     }
-    label772:
-    label808:
-    label813:
-    label819:
+    label781:
+    label817:
+    label822:
+    label828:
     for (localObject1 = "TCP";; localObject1 = "HTTP")
     {
       ((TransReport)localObject3).protoType = ((String)localObject1);
@@ -202,12 +202,12 @@ class RequestWorker$RequestListener
         if (paramIConnection != null) {
           ((Transaction)localObject2).mTransReport.isIpv6 = paramIConnection.isIpv6();
         }
-        paramIConnection = ConfigManager.getInstance(this.this$0.engine.getAppContext(), this.this$0.engine);
-        ((Transaction)localObject2).mTransReport.netIpType = paramIConnection.mCurnetIptype;
+        ((Transaction)localObject2).mTransReport.mHasIpv6List = this.this$0.engine.mConnManager.mHasIpv6List;
+        ((Transaction)localObject2).mTransReport.mIPv6Fast = this.this$0.engine.mConnManager.isIpv6Fast();
       }
       localObject1 = localObject2;
       if ((!bool1) || (paramInt != 0) || (j != 0)) {
-        break label827;
+        break label836;
       }
       l1 = 0L;
       if (!bool2) {
@@ -235,7 +235,7 @@ class RequestWorker$RequestListener
       j = 0;
       break label551;
     }
-    label827:
+    label836:
     BdhLogUtil.LogEvent("R", "HandleError : Seq:" + this.req.getHwSeq() + " NotifyError :" + i + "req.timeComsume:" + this.req.timeComsume + " allowRetry:" + bool1 + " req.continueErrCount:" + this.req.continueErrCount);
     this.req.onError(i);
     if (localObject1 != null)
@@ -364,7 +364,6 @@ class RequestWorker$RequestListener
         }
         finally {}
       }
-      this.this$0.engine.mConnManager.onHeartBreakTimeout(this.req.sendConnId);
     }
     this.this$0.engine.mConnManager.onRequestTimeOut(i);
     if ((RequestWorker.access$500(this.this$0).get(Integer.valueOf(i)) != null) && (!((HwRequest)RequestWorker.access$500(this.this$0).get(Integer.valueOf(i))).isCancel.get()) && (((HwRequest)RequestWorker.access$500(this.this$0).get(Integer.valueOf(i))).status.get() != 4)) {

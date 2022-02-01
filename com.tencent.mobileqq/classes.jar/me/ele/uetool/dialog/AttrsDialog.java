@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.util.ArrayList;
 import java.util.List;
 import me.ele.uetool.base.DimenUtil;
@@ -18,7 +19,7 @@ import me.ele.uetool.base.item.TextItem;
 import me.ele.uetool.util.JarResource;
 
 public class AttrsDialog
-  extends Dialog
+  extends ReportDialog
 {
   private static Context context;
   private static AttrsDialog.Refresh refresh;
@@ -133,7 +134,7 @@ public class AttrsDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.dialog.AttrsDialog
  * JD-Core Version:    0.7.0.1
  */

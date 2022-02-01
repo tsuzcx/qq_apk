@@ -1,24 +1,15 @@
-public class betf
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class betf
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  betf(besy parambesy, besl parambesl) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append("DataItem:position=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", type=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", coverUrl=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", feedId=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", vid=").append(this.c);
-    localStringBuilder.append(", jumpUrl=").append(this.d);
-    localStringBuilder.append(", spiritImageUrl=").append(this.e);
-    return localStringBuilder.toString();
+    bfrm.a(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Besy.jdField_a_of_type_Long).c(this.jdField_a_of_type_Besl);
+    paramDialogInterface.dismiss();
   }
 }
 

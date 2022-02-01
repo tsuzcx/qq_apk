@@ -1,43 +1,26 @@
-public final class amqd
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
+class amqd
+  extends anmu
 {
-  public static String a()
-  {
-    switch ()
-    {
-    default: 
-      return "X";
-    case 2: 
-      return "2g";
-    case 3: 
-      return "3g";
-    case 4: 
-      return "4g";
-    }
-    return "wifi";
-  }
+  amqd(amqc paramamqc) {}
   
-  public static String b()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    int i = 4;
-    switch (ndd.a())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("qwe", 2, "onUpdateFriendInfo:" + paramString);
     }
-    for (;;)
+    if ((amqc.a(this.a) != null) && (amqc.a(this.a).get(paramString + "nick") != null))
     {
-      return String.valueOf(i);
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 0;
+      int i = ((Integer)amqc.a(this.a).remove(paramString + "nick")).intValue();
+      this.a.a(i, paramString, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqd
  * JD-Core Version:    0.7.0.1
  */

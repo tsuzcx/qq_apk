@@ -1,50 +1,42 @@
-import com.tencent.mobileqq.data.EmoticonResp;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class aprs
-  extends aprv
 {
-  aprs(apro paramapro, alrp paramalrp, apsq paramapsq, Object paramObject)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d = aprr.a();
+  
+  public aprs()
   {
-    super(paramapro, paramalrp);
+    this.jdField_a_of_type_JavaLangString = "android";
   }
   
-  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp)
+  public String toString()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
-    }
-    ??? = (alrp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    int i = paramEmoticonResp.epId;
-    int j = paramEmoticonResp.timestamp;
-    Object localObject1 = (ArrayList)paramEmoticonResp.data;
-    if ((this.jdField_a_of_type_Apsq.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Apsq.jdField_a_of_type_JavaLangString.equals(paramEmoticonResp.keySeq)))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      ((alrp)???).b(this);
-      this.jdField_a_of_type_Apsq.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_Apsq.jdField_a_of_type_Int = paramEmoticonResp.resultcode;
-      this.jdField_a_of_type_Apsq.b = paramEmoticonResp.timeoutReason;
+      localJSONObject.put("os", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("app", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("result", this.jdField_a_of_type_Int);
+      localJSONObject.put("scene", this.jdField_b_of_type_Int);
+      localJSONObject.put("type", this.jdField_c_of_type_Int);
+      localJSONObject.put("ver", this.d);
+      return localJSONObject.toString();
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      for (;;)
       {
-        this.jdField_a_of_type_JavaLangObject.notify();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        ??? = this.jdField_a_of_type_Apro.jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
-        if (localObject1 == null)
-        {
-          localObject1 = "null";
-          QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmoticonResp.resultcode);
-          return;
-        }
+        QLog.e("ArkApp.ArkSecurityReporter", 1, "ArkSafe.report exception=", localJSONException);
       }
-      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
     }
   }
 }

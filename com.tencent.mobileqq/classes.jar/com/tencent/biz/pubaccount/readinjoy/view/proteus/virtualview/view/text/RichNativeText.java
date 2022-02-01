@@ -5,11 +5,15 @@ import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableStringBuilder;
+import android.text.method.LinkMovementMethod;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.RichTextParser;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.htmlcss.CssStyle;
@@ -27,6 +31,7 @@ import org.json.JSONArray;
 public class RichNativeText
   extends NativeText
 {
+  private static final int LINK_TEXT_COLOR = -15504151;
   private static final String TAG = "RichNativeText";
   protected final Drawable GRAY_PLACEHOLDER = new ColorDrawable(Color.parseColor("#E9E9E9"));
   private int maxFontSize = -1;
@@ -77,93 +82,100 @@ public class RichNativeText
     {
       localObject2 = DrawableUtil.getDrawable(this.mContext.getContext(), paramImgNode.src, this.GRAY_PLACEHOLDER, this.GRAY_PLACEHOLDER);
       localObject1 = localObject2;
-      if (localObject2 == null) {
-        throw new IllegalArgumentException("请处理未知图片: " + paramImgNode.src);
+      if (localObject2 == null)
+      {
+        LogUtils.d("RichNativeText", "请处理未知图片: " + paramImgNode.src);
+        return;
       }
     }
     ((Drawable)localObject1).setBounds(localRect);
-    paramImgNode = new RichNativeText.MyImageSpan(this, (Drawable)localObject1, 1);
+    paramImgNode = new RichNativeText.CustomImageSpan(this, (Drawable)localObject1, 101);
     this.spannableStringBuilder.setSpan(paramImgNode, paramInt1, paramInt2, 33);
   }
   
   private void dealNodeItem(Node paramNode)
   {
-    int i = this.spannableStringBuilder.length();
-    if (i >= 0) {
-      switch (paramNode.nodeType)
-      {
-      }
-    }
-    for (;;)
+    int i = Math.max(this.spannableStringBuilder.length(), 0);
+    switch (paramNode.nodeType)
     {
-      if (paramNode.children == null) {
-        return;
-      }
+    }
+    while (paramNode.children != null)
+    {
       paramNode = paramNode.children.iterator();
       while (paramNode.hasNext()) {
         dealNodeItem((Node)paramNode.next());
       }
-      i = 0;
-      break;
-      this.spannableStringBuilder.append(((TextNode)paramNode).text);
-      dealTextStyle(paramNode.cssStyleSet, i, this.spannableStringBuilder.length());
+      this.spannableStringBuilder.append(decodeEmotion(((TextNode)paramNode).text));
+      dealTextStyle(paramNode, i, this.spannableStringBuilder.length());
       continue;
       this.spannableStringBuilder.append(',');
       dealImgNode((ImgNode)paramNode, i, this.spannableStringBuilder.length());
     }
   }
   
-  private void dealTextStyle(CssStyleSet paramCssStyleSet, int paramInt1, int paramInt2)
+  private void dealTextStyle(Node paramNode, int paramInt1, int paramInt2)
   {
-    paramCssStyleSet = paramCssStyleSet.getCssStyleMap();
-    if (paramCssStyleSet != null)
+    Object localObject1 = paramNode.cssStyleSet.getCssStyleMap();
+    if (localObject1 != null)
     {
-      paramCssStyleSet = paramCssStyleSet.entrySet().iterator();
-      while (paramCssStyleSet.hasNext())
+      localObject1 = ((Map)localObject1).entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        Object localObject2 = (Map.Entry)paramCssStyleSet.next();
-        Object localObject1 = ((CssStyle)((Map.Entry)localObject2).getValue()).styleName;
-        localObject2 = ((CssStyle)((Map.Entry)localObject2).getValue()).styleValue;
+        Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
+        Object localObject2 = ((CssStyle)((Map.Entry)localObject3).getValue()).styleName;
+        localObject3 = ((CssStyle)((Map.Entry)localObject3).getValue()).styleValue;
         int i;
-        if ("line-height".equalsIgnoreCase((String)localObject1))
+        if ("line-height".equalsIgnoreCase((String)localObject2))
         {
-          i = ((Integer)localObject2).intValue();
+          i = (int)(((Integer)localObject3).intValue() * paramNode.nodeRatio);
           if (i > this.maxLineHeight) {
             this.maxLineHeight = i;
           }
         }
-        else
+        else if ("font-size".equalsIgnoreCase((String)localObject2))
         {
-          if ("font-size".equalsIgnoreCase((String)localObject1))
-          {
-            if (this.maxFontSize > ((Integer)localObject2).intValue()) {}
-            for (i = this.maxFontSize;; i = ((Integer)localObject2).intValue())
-            {
-              this.maxFontSize = i;
-              localObject1 = new AbsoluteSizeSpan(((Integer)localObject2).intValue());
-              this.spannableStringBuilder.setSpan(localObject1, paramInt1, paramInt2, 33);
-              break;
-            }
+          i = (int)(((Integer)localObject3).intValue() * paramNode.nodeRatio);
+          this.maxFontSize = Math.max(this.maxFontSize, i);
+          localObject2 = new AbsoluteSizeSpan(i);
+          this.spannableStringBuilder.setSpan(localObject2, paramInt1, paramInt2, 33);
+        }
+        else if ("color".equalsIgnoreCase((String)localObject2))
+        {
+          localObject2 = new ForegroundColorSpan(Color.parseColor((String)localObject3));
+          this.spannableStringBuilder.setSpan(localObject2, paramInt1, paramInt2, 33);
+        }
+        else if ("font-weight".equalsIgnoreCase((String)localObject2))
+        {
+          if ("bold".equals(localObject3)) {
+            this.spannableStringBuilder.setSpan(new StyleSpan(1), paramInt1, paramInt2, 33);
           }
-          if ("color".equalsIgnoreCase((String)localObject1))
-          {
-            localObject1 = new ForegroundColorSpan(Color.parseColor((String)localObject2));
-            this.spannableStringBuilder.setSpan(localObject1, paramInt1, paramInt2, 33);
-          }
-          else if ("font-weight".equalsIgnoreCase((String)localObject1))
-          {
-            if ("bold".equals(localObject2)) {
-              this.spannableStringBuilder.setSpan(new StyleSpan(1), paramInt1, paramInt2, 33);
-            }
-          }
-          else if ("-webkit-line-clamp".equalsIgnoreCase((String)localObject1))
-          {
-            this.mNative.setMaxLines(((Integer)localObject2).intValue());
-          }
-          else if (!"display".equalsIgnoreCase((String)localObject1)) {}
+        }
+        else if ("-webkit-line-clamp".equalsIgnoreCase((String)localObject2))
+        {
+          this.mNative.setMaxLines(((Integer)localObject3).intValue());
+        }
+        else if ((!"display".equalsIgnoreCase((String)localObject2)) && ("href".equalsIgnoreCase((String)localObject2)))
+        {
+          localObject2 = String.valueOf(localObject3);
+          this.spannableStringBuilder.setSpan(new RichNativeText.ClickSpan((String)localObject2, -15504151), paramInt1, paramInt2, 33);
+          this.mNative.setMovementMethod(LinkMovementMethod.getInstance());
         }
       }
     }
+  }
+  
+  private CharSequence decodeEmotion(CharSequence paramCharSequence)
+  {
+    CharSequence localCharSequence = paramCharSequence;
+    if (CustomMethodsRegister.customMethodInterface != null)
+    {
+      Object localObject = CustomMethodsRegister.customMethodInterface.invoke("decodeEmotion", new Object[] { paramCharSequence });
+      localCharSequence = paramCharSequence;
+      if ((localObject instanceof CharSequence)) {
+        localCharSequence = (CharSequence)localObject;
+      }
+    }
+    return localCharSequence;
   }
   
   private void setRichText()
@@ -172,6 +184,7 @@ public class RichNativeText
     {
       this.maxLineHeight = -1;
       this.spaceHeight = 0;
+      this.mText = "";
       this.spannableStringBuilder = new SpannableStringBuilder();
       dealNodeItem(this.nodes);
       if ((this.maxLineHeight > 0) && (this.maxLineHeight > this.maxFontSize))
@@ -181,6 +194,14 @@ public class RichNativeText
       }
       setText(this.spannableStringBuilder);
     }
+  }
+  
+  public boolean onClick()
+  {
+    if ((this.mNative.getSelectionStart() == -1) && (this.mNative.getSelectionEnd() == -1)) {
+      return super.onClick();
+    }
+    return true;
   }
   
   public void onParseValueFinished()
@@ -206,7 +227,7 @@ public class RichNativeText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.RichNativeText
  * JD-Core Version:    0.7.0.1
  */

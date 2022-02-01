@@ -1,14 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.webbundle.sdk.IWebBundleRuntime;
+import com.tencent.webbundle.sdk.IWebBundleWebView;
+import cooperation.comic.webbundle.WebBundleWebView;
+import org.jetbrains.annotations.NotNull;
 
-class blch
-  implements View.OnClickListener
+public class blch
+  extends IWebBundleRuntime
 {
-  blch(blcf paramblcf) {}
-  
-  public void onClick(View paramView)
+  public blch(@NotNull Context paramContext)
   {
-    this.a.d();
+    super(paramContext);
+  }
+  
+  @NotNull
+  public IWebBundleWebView createWebView(@NotNull Context paramContext)
+  {
+    paramContext = new WebBundleWebView(paramContext);
+    WebSettings localWebSettings = paramContext.getSettings();
+    String str = localWebSettings.getUserAgentString();
+    if (paramContext.getX5WebViewExtension() != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localWebSettings.setUserAgentString(bhre.a(str, "VipComic", bool));
+      return paramContext;
+    }
   }
 }
 

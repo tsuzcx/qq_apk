@@ -1,35 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aome
-  extends aomf
+public class aome
+  extends aojt
 {
-  private int a;
-  
-  public aome(int paramInt)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    this.a = paramInt;
-  }
-  
-  public Object a(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
+    paramQQAppInterface = new aomd(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "schedule";
+    paramQQAppInterface.c = "showDetail";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
     {
-      return null;
-      paramObject = (ArrayList)paramObject;
-      if (!(paramObject instanceof ArrayList))
+      int i = 0;
+      while (i < paramContext.length)
       {
-        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
-        return null;
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
       }
-    } while ((this.a < 0) || (this.a >= paramObject.size()));
-    return paramObject.get(this.a);
+    }
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aome
  * JD-Core Version:    0.7.0.1
  */

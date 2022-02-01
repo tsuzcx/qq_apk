@@ -1,27 +1,20 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import mqq.app.QQPermissionCallback;
 
-public class agmp
-  extends aeqi
+class agmp
+  implements QQPermissionCallback
 {
-  public long a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public AnimationView a;
-  public RelativeLayout b;
-  public TextView b;
-  public AnimationView b;
-  public String b = "";
-  public RelativeLayout c;
-  public RelativeLayout d;
-  public RelativeLayout e;
-  public RelativeLayout f;
-  public RelativeLayout g;
+  agmp(agmo paramagmo) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bglp.b(agmo.a(this.a).a);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.b();
+  }
 }
 
 

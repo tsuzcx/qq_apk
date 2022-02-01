@@ -1,25 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
 
-public abstract class aruk
-  implements View.OnClickListener
+public class aruk
 {
-  private long a;
+  int jdField_a_of_type_Int;
+  public Bundle a;
+  Runnable jdField_a_of_type_JavaLangRunnable;
   
-  public abstract void a(View paramView);
-  
-  public void b(View paramView) {}
-  
-  public void onClick(View paramView)
+  public aruk(int paramInt, Bundle paramBundle)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a >= 500L)
-    {
-      a(paramView);
-      this.a = l;
-      return;
-    }
-    b(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    paramBundle.putInt("seq", paramInt);
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
 }
 

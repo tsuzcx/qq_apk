@@ -1,21 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
 
-class aitu
-  implements View.OnClickListener
+public final class aitu
+  implements Parcelable.Creator<SearchResultItem>
 {
-  aitu(aitt paramaitt) {}
-  
-  public void onClick(View paramView)
+  public SearchResultItem a(Parcel paramParcel)
   {
-    if (aitt.a(this.a) == null)
-    {
-      aitt.a(this.a, bdgm.a(this.a.mActivity, 0, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131718849), null, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131718847), ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131718848), new aitv(this), new aitw(this)));
-      aitt.a(this.a).setCanceledOnTouchOutside(false);
-    }
-    aitt.a(this.a).show();
+    return new SearchResultItem(paramParcel);
+  }
+  
+  public SearchResultItem[] a(int paramInt)
+  {
+    return new SearchResultItem[paramInt];
   }
 }
 

@@ -1,19 +1,12 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class aikb
-  extends aijq
 {
-  public aikb(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-  }
-  
-  protected void y()
-  {
-    this.a = "MiniPieForNearby";
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

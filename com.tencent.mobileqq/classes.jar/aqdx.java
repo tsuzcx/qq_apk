@@ -1,26 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class aqdx
-  implements DialogInterface.OnClickListener
+class aqdx
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aqdx(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  aqdx(aqdv paramaqdv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    String str = "";
-    paramDialogInterface = str;
-    if (ExtendFriendEditFragment.a(this.a) != null)
-    {
-      paramDialogInterface = str;
-      if (ExtendFriendEditFragment.a(this.a).app != null) {
-        paramDialogInterface = ((aqbg)ExtendFriendEditFragment.a(this.a).app.getManager(264)).f();
-      }
-    }
-    aqgz.b(this.a.getActivity(), paramDialogInterface);
+    aqdv.a(this.a);
+    return true;
   }
 }
 

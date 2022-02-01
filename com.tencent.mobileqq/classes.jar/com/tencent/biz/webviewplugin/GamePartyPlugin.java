@@ -1,14 +1,15 @@
 package com.tencent.biz.webviewplugin;
 
+import aazy;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import apmh;
-import apml;
-import aprh;
-import aspf;
-import begz;
+import arpd;
+import arph;
+import arui;
+import auwj;
+import bhod;
 import com.tencent.mobileqq.activity.DirectForwardActivity;
 import com.tencent.mobileqq.gameparty.PromptDialogActivity;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -17,12 +18,11 @@ import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zdf;
 
 public class GamePartyPlugin
   extends WebViewPlugin
 {
-  private apmh jdField_a_of_type_Apmh = new zdf(this);
+  private arpd jdField_a_of_type_Arpd = new aazy(this);
   private GamePartyPlugin.GamePartyBroadcastReceiver jdField_a_of_type_ComTencentBizWebviewpluginGamePartyPlugin$GamePartyBroadcastReceiver;
   
   public GamePartyPlugin()
@@ -59,7 +59,7 @@ public class GamePartyPlugin
           {
             Intent localIntent = new Intent(localActivity, DirectForwardActivity.class);
             localIntent.putExtra("forward_type", 27);
-            localIntent.putExtra("uinType", aspf.b(i));
+            localIntent.putExtra("uinType", auwj.b(i));
             localIntent.putExtra("toUin", paramJsBridgeListener);
             localIntent.putExtra("troopUin", paramString1);
             localIntent.putExtra("forward_ark_app_direct", true);
@@ -126,14 +126,14 @@ public class GamePartyPlugin
           while (i < paramJsBridgeListener.length())
           {
             paramString2 = paramJsBridgeListener.getJSONObject(i);
-            paramString2.put("sessionType", aspf.b(paramString2.getInt("sessionType")));
+            paramString2.put("sessionType", auwj.b(paramString2.getInt("sessionType")));
             i += 1;
           }
           paramString1 = paramString1.getString("callback");
           paramString2 = new Bundle();
           paramString2.putString("member_list", paramJsBridgeListener.toString());
-          paramJsBridgeListener = apml.a("batchGetUserInfo", paramString1, this.jdField_a_of_type_Apmh.key, paramString2);
-          aprh.a().a(paramJsBridgeListener);
+          paramJsBridgeListener = arph.a("batchGetUserInfo", paramString1, this.jdField_a_of_type_Arpd.key, paramString2);
+          arui.a().a(paramJsBridgeListener);
         }
         catch (JSONException paramJsBridgeListener)
         {
@@ -166,13 +166,13 @@ public class GamePartyPlugin
   public void onCreate()
   {
     super.onCreate();
-    aprh.a().a(this.jdField_a_of_type_Apmh);
+    arui.a().a(this.jdField_a_of_type_Arpd);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    aprh.a().b(this.jdField_a_of_type_Apmh);
+    arui.a().b(this.jdField_a_of_type_Arpd);
     if (this.jdField_a_of_type_ComTencentBizWebviewpluginGamePartyPlugin$GamePartyBroadcastReceiver != null)
     {
       Activity localActivity = this.mRuntime.a();
@@ -185,7 +185,7 @@ public class GamePartyPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.GamePartyPlugin
  * JD-Core Version:    0.7.0.1
  */

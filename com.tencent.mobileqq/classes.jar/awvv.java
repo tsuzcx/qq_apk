@@ -1,52 +1,84 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.animation.Transformation;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.widget.RatioLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class awvv
-  implements bdoh<Integer>
 {
-  public awvv(ProfileTagView paramProfileTagView) {}
-  
-  public void a(bdob<Integer> parambdob, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, RecommendPerson paramRecommendPerson)
   {
-    paramTransformation = this.a.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getLayoutParams();
-    if (paramTransformation != null)
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramRecommendPerson);
+    a("grp_card_add", paramInt2, paramQQAppInterface, paramRecommendPerson.cardTypeID, paramRecommendPerson.uin, paramInt1, localArrayList);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, List<RecommendPerson> paramList)
+  {
+    a("grp_card_exp", 0, paramQQAppInterface, paramInt1, "", paramInt2, paramList);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, RecommendPerson paramRecommendPerson)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramRecommendPerson);
+    a("grp_card_clk", 0, paramQQAppInterface, paramRecommendPerson.cardTypeID, paramRecommendPerson.uin, paramInt, localArrayList);
+  }
+  
+  private static void a(String paramString1, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString2, int paramInt3, List<RecommendPerson> paramList)
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    StringBuilder localStringBuilder3 = new StringBuilder();
+    StringBuilder localStringBuilder4 = new StringBuilder();
+    JSONObject localJSONObject = new JSONObject();
+    int i = 0;
+    if (i < paramList.size())
     {
-      paramTransformation.height = paramInteger.intValue();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.setLayoutParams(paramTransformation);
-      if (Build.VERSION.SDK_INT >= 11)
+      if (paramList.get(i) == null) {}
+      for (;;)
       {
-        paramInteger = (FrameLayout)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(16908290);
-        if ((paramInteger != null) && (paramInteger.getChildCount() > 0))
+        i += 1;
+        break;
+        if (i > 0)
         {
-          paramInteger = paramInteger.getChildAt(0);
-          if (paramInteger != null)
-          {
-            paramInteger = paramInteger.getBackground();
-            if ((paramInteger instanceof BitmapDrawable))
-            {
-              int j = (int)(255.0F * paramFloat);
-              int i = j;
-              if (parambdob == this.a.jdField_a_of_type_Bdob) {
-                i = 255 - j;
-              }
-              paramInteger.setAlpha(i);
-            }
-          }
+          localStringBuilder1.append(",");
+          localStringBuilder2.append(",");
+          localStringBuilder3.append(",");
+          localStringBuilder4.append(",");
+        }
+        localStringBuilder1.append(((RecommendPerson)paramList.get(i)).uin);
+        localStringBuilder2.append(((RecommendPerson)paramList.get(i)).recommendReason);
+        localStringBuilder3.append(((RecommendPerson)paramList.get(i)).recommendALghrithm);
+        localStringBuilder4.append(((RecommendPerson)paramList.get(i)).recommendRecall);
+      }
+    }
+    try
+    {
+      if ("grp_card_exp".equals(paramString1)) {
+        localJSONObject.put("exp_uin", localStringBuilder1.toString());
+      }
+      localJSONObject.put("exp_reason", localStringBuilder2.toString());
+      localJSONObject.put("algh_id", localStringBuilder3.toString());
+      localJSONObject.put("recall_id", localStringBuilder4.toString());
+    }
+    catch (JSONException paramList)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopMemberRecommend.Report", 2, "reportRecommend error: " + paramList.getMessage());
         }
       }
     }
+    bcst.b(paramQQAppInterface, "dc00898", "", paramString2, "frd_recom", paramString1, paramInt2, paramInt1, String.valueOf(paramInt3), "", localJSONObject.toString(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvv
  * JD-Core Version:    0.7.0.1
  */

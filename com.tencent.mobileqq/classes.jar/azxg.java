@@ -1,50 +1,116 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.animation.DecelerateInterpolator;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import java.util.HashSet;
+import java.util.Set;
+import org.jetbrains.annotations.NotNull;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-class azxg
-  implements View.OnTouchListener
+public class azxg
+  extends anii
 {
-  azxg(azxe paramazxe, View paramView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public azxg(QQAppInterface paramQQAppInterface)
   {
-    switch (paramMotionEvent.getAction())
+    super(paramQQAppInterface);
+  }
+  
+  @NotNull
+  private ToServiceMsg a(byte paramByte, long paramLong)
+  {
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(1156);
+    localOIDBSSOPkg.uint32_service_type.set(15);
+    Object localObject = ByteBuffer.allocate(20);
+    ((ByteBuffer)localObject).put(paramByte);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject).array()));
+    localObject = createToServiceMsg("OidbSvc.0x484_15");
+    ((ToServiceMsg)localObject).putWupBuffer(localOIDBSSOPkg.toByteArray());
+    ((ToServiceMsg)localObject).extraData.putLong("mark_extra_tag", paramLong);
+    ((ToServiceMsg)localObject).setTimeout(30000L);
+    return localObject;
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    QLog.d("QuickLoginHandler", 1, "handleSetPCVerify");
+    boolean bool2;
+    long l;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
+      bool2 = true;
+      l = paramToServiceMsg.extraData.getLong("mark_extra_tag");
+      bool1 = bool2;
+      if (!bool2) {}
     }
     for (;;)
     {
-      return false;
-      if (!this.jdField_a_of_type_Azxe.b)
+      try
       {
-        this.jdField_a_of_type_Azxe.b = true;
-        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131373559);
-        paramMotionEvent = localObjectAnimator;
-        if (localObjectAnimator == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("StructMsgItemLayout12", 2, "animator is null");
-          }
-          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
-          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
-          paramMotionEvent.setDuration(100L);
-          paramView.setTag(2131373559, paramMotionEvent);
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        int i = paramToServiceMsg.uint32_result.get();
+        if (i != 0) {
+          continue;
         }
-        paramMotionEvent.start();
+        bool1 = true;
       }
-      return true;
-      this.jdField_a_of_type_Azxe.a.onClick(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Azxe.b = false;
-      paramView = (ObjectAnimator)paramView.getTag(2131373559);
-      if (paramView != null) {
-        paramView.reverse();
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.e("QuickLoginHandler", 1, "handleSetPCVerify exception: " + paramToServiceMsg.getMessage());
+        bool1 = false;
+        continue;
       }
+      notifyUI(1, bool1, new Object[] { Long.valueOf(l) });
+      return;
+      bool2 = false;
+      break;
+      bool1 = false;
     }
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    try
+    {
+      QLog.d("QuickLoginHandler", 1, "setPCVerify switchOn: " + paramInt + " pbMark: " + paramLong);
+      sendPbReq(a((byte)paramInt, paramLong));
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QuickLoginHandler", 1, "setPCVerify exception: " + localException.getMessage());
+    }
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.0x484_15");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return azxh.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    QLog.d("QuickLoginHandler", 1, "onReceive");
+    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {}
+    while (!"OidbSvc.0x484_15".equals(paramFromServiceMsg.getServiceCmd())) {
+      return;
+    }
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

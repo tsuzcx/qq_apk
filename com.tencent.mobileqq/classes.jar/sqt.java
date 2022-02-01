@@ -1,25 +1,21 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
-import com.tencent.viola.core.ViolaInstance;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class sqt
-  extends sqj
-  implements sqc
+  extends pue
 {
-  public sqt(Activity paramActivity, spx paramspx, VVideoView paramVVideoView, ViolaInstance paramViolaInstance)
+  public sqt(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    super(paramActivity, paramspx, paramVVideoView, paramViolaInstance);
+    super(paramString);
   }
   
-  public void M_() {}
-  
-  public void N_() {}
-  
-  public void O_() {}
+  public void a(ptx paramptx)
+  {
+    paramptx.b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sqt
  * JD-Core Version:    0.7.0.1
  */

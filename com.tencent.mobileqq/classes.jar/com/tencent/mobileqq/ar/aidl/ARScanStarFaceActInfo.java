@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import amza;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aoxr;
 
 public class ARScanStarFaceActInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanStarFaceActInfo> CREATOR = new amza();
+  public static final Parcelable.Creator<ARScanStarFaceActInfo> CREATOR = new aoxr();
   public long a;
   public String a;
   public long b;
@@ -59,7 +59,7 @@ public class ARScanStarFaceActInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo
  * JD-Core Version:    0.7.0.1
  */

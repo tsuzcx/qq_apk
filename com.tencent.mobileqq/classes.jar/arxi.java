@@ -1,14 +1,8 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-
 public abstract interface arxi
 {
-  public abstract Activity a();
+  public abstract void a();
   
-  public abstract Bundle a();
-  
-  public abstract FragmentManager a();
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

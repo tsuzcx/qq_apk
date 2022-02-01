@@ -1,46 +1,962 @@
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.Keyframe;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.bubble.BubbleNewAIOAnim.1;
+import com.tencent.mobileqq.bubble.BubbleNewAIOAnim.3;
+import com.tencent.mobileqq.bubble.BubbleNewAIOAnim.7;
+import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
+import com.tencent.widget.ListView;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-class apxi
-  implements URLDrawableDownListener
+@TargetApi(11)
+public class apxi
+  extends agax
 {
-  apxi(apxg paramapxg, apuf paramapuf, URLImageView paramURLImageView1, URLImageView paramURLImageView2) {}
+  public long a;
+  public afwr a;
+  public AnimatorSet a;
+  private final Resources jdField_a_of_type_AndroidContentResResources;
+  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  public View a;
+  public apwn a;
+  public apwq a;
+  private apxn jdField_a_of_type_Apxn;
+  public QQAppInterface a;
+  public BubbleManager a;
+  public String a;
+  public ArrayList<apxp> a;
+  public ConcurrentHashMap<String, Bitmap> a;
+  public boolean a;
+  public int b;
+  public View b;
+  public String b;
+  private boolean b;
+  public int c;
+  public View c;
+  public int d;
+  public View d;
+  public int e;
+  public View e;
+  public int f;
+  public int g;
+  public int h;
+  private int i;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
+  private int n = -1;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public apxi(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
-    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Apuf.toString());
-    apxg.a(this.jdField_a_of_type_Apxg, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+    super(paramInt, paramAIOAnimationConatiner, paramListView);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_AndroidContentResResources = paramListView.getResources();
+    this.jdField_h_of_type_Int = afur.a(12.0F, paramListView.getContext().getResources());
+    this.k = afur.a(50.0F, paramListView.getContext().getResources());
+    this.l = afur.a(45.0F, paramListView.getContext().getResources());
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  private int a(float paramFloat)
   {
-    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Apuf.toString());
-    apxg.a(this.jdField_a_of_type_Apxg, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+    int i1 = Math.abs(this.jdField_e_of_type_Int - this.jdField_d_of_type_Int);
+    if (paramFloat == 0.1F)
+    {
+      if (this.jdField_a_of_type_Boolean) {}
+      for (i1 = this.jdField_e_of_type_Int - this.jdField_h_of_type_Int;; i1 = this.jdField_d_of_type_Int + this.jdField_h_of_type_Int) {
+        return i1 - this.i / 2;
+      }
+    }
+    if (paramFloat == 0.9F)
+    {
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramFloat = this.jdField_d_of_type_Int + this.jdField_h_of_type_Int;; paramFloat = this.jdField_e_of_type_Int - this.jdField_h_of_type_Int)
+      {
+        i1 = (int)paramFloat;
+        break;
+      }
+    }
+    paramFloat = i1 * paramFloat;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (paramFloat = this.jdField_e_of_type_Int - paramFloat;; paramFloat += this.jdField_d_of_type_Int)
+    {
+      i1 = (int)paramFloat;
+      break;
+    }
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  private int a(Animator paramAnimator, String paramString)
   {
-    QLog.e("FavoriteEmotionAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Apuf.toString());
-    apxg.a(this.jdField_a_of_type_Apxg, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      int i1 = 0;
+      if (i1 < this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (!((apxp)this.jdField_a_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_JavaLangString.equals(paramString)) {}
+      }
+      for (;;)
+      {
+        if (i1 != -1)
+        {
+          paramString = (apxp)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if (!(paramString instanceof apxr)) {
+            break label113;
+          }
+        }
+        label113:
+        for (paramString = f((apxr)paramString);; paramString = null)
+        {
+          if ((paramAnimator != null) && (paramString != null))
+          {
+            paramString.setDuration(paramAnimator.getDuration());
+            paramAnimator.addListener(new apxk(this, paramString));
+          }
+          return i1;
+          i1 += 1;
+          break;
+        }
+        i1 = -1;
+      }
+    }
+    return -1;
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  private ObjectAnimator a(apxr paramapxr)
+  {
+    if (paramapxr == null) {
+      return null;
+    }
+    File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_b_of_type_Int, false), this.jdField_a_of_type_Apwn.jdField_a_of_type_JavaLangString);
+    ArrayList localArrayList = new ArrayList();
+    int i1 = 0;
+    if (i1 < paramapxr.jdField_b_of_type_Int)
+    {
+      String str = localFile.getAbsolutePath() + File.separatorChar + paramapxr.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i1 + 1) });
+      apxn localapxn = new apxn();
+      localapxn.jdField_b_of_type_JavaLangString = str;
+      localapxn.jdField_a_of_type_JavaLangString = (paramapxr.jdField_a_of_type_JavaLangString + str);
+      boolean bool;
+      if (this.jdField_a_of_type_Boolean) {
+        bool = paramapxr.jdField_b_of_type_Boolean;
+      }
+      for (;;)
+      {
+        localapxn.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
+        localArrayList.add(localapxn);
+        i1 += 1;
+        break;
+        if (!paramapxr.jdField_b_of_type_Boolean) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+      }
+    }
+    return a(localArrayList);
+  }
+  
+  private ObjectAnimator a(apxs paramapxs)
+  {
+    File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_b_of_type_Int, false), this.jdField_a_of_type_Apwn.jdField_a_of_type_JavaLangString);
+    ArrayList localArrayList = new ArrayList();
+    int i1 = 0;
+    if (i1 < paramapxs.jdField_b_of_type_Int)
+    {
+      String str = localFile.getAbsolutePath() + File.separatorChar + paramapxs.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i1 + 1) });
+      apxn localapxn = new apxn();
+      localapxn.jdField_b_of_type_JavaLangString = str;
+      localapxn.jdField_a_of_type_JavaLangString = (paramapxs.jdField_a_of_type_JavaLangString + str);
+      if (this.jdField_a_of_type_Boolean) {}
+      for (boolean bool = false;; bool = true)
+      {
+        localapxn.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
+        localArrayList.add(localapxn);
+        i1 += 1;
+        break;
+      }
+    }
+    return b(localArrayList);
+  }
+  
+  private ObjectAnimator a(List<apxn> paramList)
+  {
+    if (paramList.size() <= 0) {
+      return null;
+    }
+    Object localObject = new Keyframe[paramList.size() + 1];
+    float f1 = 1.0F / paramList.size();
+    localObject[0] = Keyframe.ofObject(0.0F, this.jdField_a_of_type_Apxn);
+    int i1 = 0;
+    if (i1 < paramList.size())
+    {
+      if (i1 != paramList.size() - 1) {
+        localObject[(i1 + 1)] = Keyframe.ofObject((i1 + 1) * f1, paramList.get(i1));
+      }
+      for (;;)
+      {
+        i1 += 1;
+        break;
+        localObject[(i1 + 1)] = Keyframe.ofObject(1.0F, paramList.get(i1));
+      }
+    }
+    localObject = PropertyValuesHolder.ofKeyframe("bitmapData", (Keyframe[])localObject);
+    ((PropertyValuesHolder)localObject).setEvaluator(new apxo(this));
+    return ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { localObject }).setDuration(paramList.size() * 125);
+  }
+  
+  private Interpolator a(apxr paramapxr)
+  {
+    switch (paramapxr.jdField_e_of_type_Int)
+    {
+    case 0: 
+    default: 
+      return null;
+    case 1: 
+      return new AccelerateInterpolator();
+    }
+    return new DecelerateInterpolator();
+  }
+  
+  private int b(float paramFloat)
+  {
+    int i1 = Math.abs(this.jdField_f_of_type_Int - this.jdField_g_of_type_Int);
+    if (paramFloat == 0.1F) {
+      i1 = this.jdField_f_of_type_Int + this.jdField_h_of_type_Int;
+    }
+    for (;;)
+    {
+      return i1 - this.j / 2;
+      if (paramFloat == 0.9F)
+      {
+        i1 = this.jdField_g_of_type_Int - this.jdField_h_of_type_Int;
+      }
+      else
+      {
+        float f1 = this.jdField_f_of_type_Int;
+        i1 = (int)(i1 * paramFloat + f1);
+      }
+    }
+  }
+  
+  private ObjectAnimator b(apxr paramapxr)
+  {
+    int i2 = a(paramapxr.jdField_a_of_type_Float);
+    int i3 = b(paramapxr.jdField_b_of_type_Float);
+    int i4 = a(paramapxr.jdField_c_of_type_Float);
+    int i5 = b(paramapxr.d);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i1 = 1;; i1 = -1)
+    {
+      Object localObject = new ArrayList();
+      apyf localapyf = apyf.b(i2, i3);
+      localapyf.jdField_c_of_type_Float = (paramapxr.jdField_h_of_type_Int * i1);
+      localapyf.d = (paramapxr.jdField_f_of_type_Int / 100.0F);
+      ((ArrayList)localObject).add(localapyf);
+      localapyf = apyf.a(i4, i5);
+      localapyf.jdField_c_of_type_Float = (i1 * paramapxr.i);
+      localapyf.d = (paramapxr.jdField_g_of_type_Int / 100.0F);
+      ((ArrayList)localObject).add(localapyf);
+      localObject = ObjectAnimator.ofObject(this, "pathLocation", new apyg(), ((ArrayList)localObject).toArray());
+      ((ObjectAnimator)localObject).setInterpolator(a(paramapxr));
+      ((ObjectAnimator)localObject).setDuration(((Math.abs(i2 - i4) + Math.abs(i3 - i5)) * 1.0F / this.k * (float)paramapxr.jdField_a_of_type_Long));
+      return localObject;
+    }
+  }
+  
+  private ObjectAnimator b(apxs paramapxs)
+  {
+    ObjectAnimator localObjectAnimator = a(paramapxs);
+    if (localObjectAnimator != null) {
+      localObjectAnimator.addListener(new apxm(this, paramapxs));
+    }
+    return localObjectAnimator;
+  }
+  
+  private ObjectAnimator b(List<apxn> paramList)
+  {
+    if (paramList.size() <= 0) {
+      return null;
+    }
+    Object localObject = new Keyframe[paramList.size() + 1];
+    float f1 = 1.0F / paramList.size();
+    localObject[0] = Keyframe.ofObject(0.0F, this.jdField_a_of_type_Apxn);
+    int i1 = 0;
+    if (i1 < paramList.size())
+    {
+      if (i1 != paramList.size() - 1) {
+        localObject[(i1 + 1)] = Keyframe.ofObject((i1 + 1) * f1, paramList.get(i1));
+      }
+      for (;;)
+      {
+        i1 += 1;
+        break;
+        localObject[(i1 + 1)] = Keyframe.ofObject(1.0F, paramList.get(i1));
+      }
+    }
+    localObject = PropertyValuesHolder.ofKeyframe("pendantBitmap", (Keyframe[])localObject);
+    ((PropertyValuesHolder)localObject).setEvaluator(new apxo(this));
+    return ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { localObject }).setDuration(paramList.size() * 125);
+  }
+  
+  private ObjectAnimator c(apxr paramapxr)
+  {
+    int i2 = a(paramapxr.jdField_a_of_type_Float);
+    int i3 = b(paramapxr.jdField_b_of_type_Float);
+    int i4 = a(paramapxr.jdField_c_of_type_Float);
+    int i5 = b(paramapxr.d);
+    int i6 = a(paramapxr.jdField_e_of_type_Float);
+    int i7 = b(paramapxr.jdField_f_of_type_Float);
+    int i8 = a(paramapxr.jdField_g_of_type_Float);
+    int i9 = b(paramapxr.jdField_h_of_type_Float);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i1 = 1;; i1 = -1)
+    {
+      Object localObject = new ArrayList();
+      apyf localapyf = apyf.b(i2, i3);
+      localapyf.d = paramapxr.jdField_f_of_type_Int;
+      localapyf.jdField_c_of_type_Float = (paramapxr.jdField_h_of_type_Int * i1);
+      ((ArrayList)localObject).add(localapyf);
+      localapyf = apyf.a(i6, i7, i8, i9, i4, i5);
+      a("play circle points: " + apyf.a(i6, i7, i8, i9, i4, i5).toString());
+      localapyf.jdField_c_of_type_Float = (paramapxr.i * i1);
+      localapyf.d = (paramapxr.jdField_g_of_type_Int / 100.0F);
+      ((ArrayList)localObject).add(localapyf);
+      localObject = ObjectAnimator.ofObject(this, "pathLocation", new apyg(), ((ArrayList)localObject).toArray());
+      ((ObjectAnimator)localObject).setInterpolator(a(paramapxr));
+      ((ObjectAnimator)localObject).setDuration(((Math.abs(i2 - i4) + Math.abs(i3 - i5)) * 1.0F / this.k * (float)paramapxr.jdField_a_of_type_Long * 3.141592653589793D * 0.4000000059604645D));
+      return localObject;
+    }
+  }
+  
+  private ObjectAnimator d(apxr paramapxr)
+  {
+    int i3 = a(paramapxr.jdField_a_of_type_Float);
+    int i4 = b(paramapxr.jdField_b_of_type_Float);
+    int i2 = a(paramapxr.jdField_c_of_type_Float);
+    if (i4 != b(paramapxr.d)) {
+      return null;
+    }
+    int i1;
+    int i5;
+    int i6;
+    if (i2 > i3)
+    {
+      i1 = 1;
+      i5 = this.k;
+      i5 = paramapxr.j * i5;
+      i6 = Math.abs(i3 - i2);
+      i2 = (int)(Math.abs(i3 - i2) * 1.0F / i5 + 0.5F);
+      if (i2 != 0) {
+        break label558;
+      }
+      i2 = 1;
+    }
+    label558:
+    for (;;)
+    {
+      a("playPeriodicalCircleAnim, periodLen: " + i5 + ", period: " + i2 + ", resize periodLen: " + i6 / i2);
+      i5 = i6 / i2;
+      i6 = (int)(i3 + i5 * paramapxr.jdField_e_of_type_Float * i1);
+      int i7 = (int)(i4 + i5 * paramapxr.jdField_f_of_type_Float);
+      int i8 = (int)(i3 + i5 * paramapxr.jdField_g_of_type_Float * i1);
+      int i9 = (int)(i4 + i5 * paramapxr.jdField_h_of_type_Float);
+      int i10 = i3 + i5 * i1;
+      Object localObject = new ArrayList();
+      ((ArrayList)localObject).add(apyf.b(i3, i4));
+      ((ArrayList)localObject).add(apyf.a(i6, i7, i8, i9, i10, i4));
+      a("next points: " + apyf.a(i6, i7, i8, i9, i10, i4).toString());
+      i3 = 1;
+      for (;;)
+      {
+        if (i3 < i2)
+        {
+          int i11 = i1 * i3 * i5 + i6;
+          int i12 = i1 * i3 * i5 + i8;
+          int i13 = i1 * i3 * i5 + i10;
+          ((ArrayList)localObject).add(apyf.a(i11, i7, i12, i9, i13, i4));
+          a("next points: " + apyf.a(i11, i7, i12, i9, i13, i4).toString());
+          i3 += 1;
+          continue;
+          i1 = -1;
+          break;
+        }
+      }
+      localObject = ObjectAnimator.ofObject(this, "pathLocation", new apyg(), ((ArrayList)localObject).toArray());
+      ((ObjectAnimator)localObject).setInterpolator(a(paramapxr));
+      a("duration: " + paramapxr.jdField_a_of_type_Long * i2 * 3.141592653589793D * 0.4000000059604645D);
+      ((ObjectAnimator)localObject).setDuration((paramapxr.jdField_a_of_type_Long * i2 * 3.141592653589793D * 0.4000000059604645D));
+      return localObject;
+    }
+  }
+  
+  private ObjectAnimator e(apxr paramapxr)
+  {
+    int i1 = a(paramapxr.jdField_a_of_type_Float);
+    int i2 = b(paramapxr.jdField_b_of_type_Float);
+    int i3 = a(paramapxr.jdField_c_of_type_Float);
+    int i4 = b(paramapxr.d);
+    if ((i1 == i3) || (i2 == i4)) {
+      if (i2 == i4) {
+        i1 = 1;
+      }
+    }
+    while (i1 != 0)
+    {
+      return d(paramapxr);
+      i1 = 0;
+      continue;
+      return null;
+    }
+    return null;
+  }
+  
+  private void e()
+  {
+    ViewGroup localViewGroup;
+    int i1;
+    if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView instanceof ViewGroup)))
+    {
+      localViewGroup = (ViewGroup)this.jdField_b_of_type_AndroidViewView;
+      i1 = 0;
+    }
+    for (;;)
+    {
+      if (i1 < localViewGroup.getChildCount())
+      {
+        View localView = localViewGroup.getChildAt(i1);
+        if ((localView.getId() == 2131364399) && (localView.getVisibility() == 0))
+        {
+          this.jdField_e_of_type_AndroidViewView = localView;
+          this.jdField_d_of_type_AndroidViewView = new View(this.jdField_a_of_type_ComTencentWidgetListView.getContext());
+          this.jdField_d_of_type_AndroidViewView.layout(0, 0, afur.a(50.0F, this.jdField_a_of_type_AndroidContentResResources), afur.a(59.0F, this.jdField_a_of_type_AndroidContentResResources));
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addView(this.jdField_d_of_type_AndroidViewView);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i1 += 1;
+    }
+  }
+  
+  private ObjectAnimator f(apxr paramapxr)
+  {
+    ObjectAnimator localObjectAnimator1;
+    if ((paramapxr.jdField_e_of_type_Float == 0.0F) && (paramapxr.jdField_f_of_type_Float == 0.0F) && (paramapxr.jdField_g_of_type_Float == 0.0F) && (paramapxr.jdField_h_of_type_Float == 0.0F)) {
+      localObjectAnimator1 = b(paramapxr);
+    }
+    ObjectAnimator localObjectAnimator2;
+    for (;;)
+    {
+      localObjectAnimator2 = a(paramapxr);
+      if ((localObjectAnimator1 != null) && (localObjectAnimator2 != null)) {
+        break;
+      }
+      return null;
+      if (paramapxr.jdField_c_of_type_Boolean) {
+        localObjectAnimator1 = e(paramapxr);
+      } else {
+        localObjectAnimator1 = c(paramapxr);
+      }
+    }
+    int i1;
+    if ((paramapxr.jdField_a_of_type_Float == paramapxr.jdField_c_of_type_Float) && (paramapxr.jdField_b_of_type_Float == paramapxr.d))
+    {
+      localObjectAnimator1.setDuration(localObjectAnimator2.getDuration());
+      if (paramapxr.jdField_a_of_type_Int - 1 >= 0)
+      {
+        i1 = paramapxr.jdField_a_of_type_Int - 1;
+        localObjectAnimator1.setRepeatCount(i1);
+      }
+    }
+    for (;;)
+    {
+      localObjectAnimator1.addListener(new apxl(this, localObjectAnimator2));
+      return localObjectAnimator1;
+      i1 = 0;
+      break;
+      localObjectAnimator2.setRepeatCount(-1);
+    }
+  }
+  
+  private void f()
+  {
+    this.jdField_d_of_type_Int = (this.jdField_a_of_type_AndroidViewView.getLeft() + BaseChatItemLayout.j);
+    this.jdField_e_of_type_Int = (this.jdField_a_of_type_AndroidViewView.getRight() - BaseChatItemLayout.j);
+    this.jdField_f_of_type_Int = (this.jdField_a_of_type_AndroidViewView.getTop() + BaseChatItemLayout.jdField_h_of_type_Int);
+    this.jdField_g_of_type_Int = (this.jdField_a_of_type_AndroidViewView.getBottom() - BaseChatItemLayout.i);
+    this.jdField_f_of_type_Int += this.jdField_a_of_type_Apwn.jdField_h_of_type_Int / 2;
+    this.jdField_g_of_type_Int -= this.jdField_a_of_type_Apwn.i / 2;
+    this.jdField_d_of_type_Int += this.jdField_a_of_type_Apwn.jdField_f_of_type_Int / 2;
+    this.jdField_e_of_type_Int -= this.jdField_a_of_type_Apwn.jdField_g_of_type_Int / 2;
+    if (this.jdField_g_of_type_Int <= this.jdField_f_of_type_Int)
+    {
+      this.jdField_f_of_type_Int = (this.jdField_a_of_type_AndroidViewView.getTop() + BaseChatItemLayout.jdField_h_of_type_Int);
+      this.jdField_g_of_type_Int = (this.jdField_a_of_type_AndroidViewView.getBottom() - BaseChatItemLayout.i);
+    }
+    if (this.jdField_e_of_type_Int <= this.jdField_d_of_type_Int)
+    {
+      this.jdField_d_of_type_Int = (this.jdField_a_of_type_AndroidViewView.getLeft() + BaseChatItemLayout.j);
+      this.jdField_e_of_type_Int = (this.jdField_a_of_type_AndroidViewView.getRight() - BaseChatItemLayout.j);
+    }
+    if (this.jdField_b_of_type_Int == 160)
+    {
+      this.jdField_d_of_type_Int = (this.jdField_a_of_type_AndroidViewView.getLeft() + BaseChatItemLayout.j - this.i / 3);
+      this.jdField_e_of_type_Int = (this.jdField_a_of_type_AndroidViewView.getRight() - BaseChatItemLayout.j + this.i / 3);
+      this.jdField_f_of_type_Int = (this.jdField_a_of_type_AndroidViewView.getTop() + BaseChatItemLayout.jdField_h_of_type_Int - this.j / 3);
+      this.jdField_g_of_type_Int = (this.jdField_a_of_type_AndroidViewView.getBottom() - BaseChatItemLayout.i + this.j / 3);
+    }
+  }
+  
+  private void g()
+  {
+    boolean bool = false;
+    int i1 = 0;
+    if (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      localObject1 = (apxp)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+      if (!(localObject1 instanceof apxr)) {}
+    }
+    for (Object localObject1 = (apxr)localObject1;; localObject1 = null)
+    {
+      if (localObject1 == null)
+      {
+        return;
+        i1 += 1;
+        break;
+      }
+      Object localObject2 = new File(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_b_of_type_Int, false), this.jdField_a_of_type_Apwn.jdField_a_of_type_JavaLangString);
+      localObject2 = ((File)localObject2).getAbsolutePath() + File.separatorChar + ((apxr)localObject1).jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(1) });
+      Object localObject3 = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject3).inJustDecodeBounds = true;
+      BubbleManager.a((String)localObject2, (BitmapFactory.Options)localObject3);
+      this.i = bgjw.a(((BitmapFactory.Options)localObject3).outWidth, 320, this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi);
+      this.j = bgjw.a(((BitmapFactory.Options)localObject3).outHeight, 320, this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi);
+      if (this.i > BaseChatItemLayout.j * 2)
+      {
+        i1 = BaseChatItemLayout.j * 2;
+        this.j = ((int)(this.j * i1 * 1.0F / this.i));
+        this.i = i1;
+      }
+      localObject3 = new View(this.jdField_a_of_type_ComTencentWidgetListView.getContext());
+      ((View)localObject3).layout(0, 0, this.i, this.j);
+      ((View)localObject3).setVisibility(4);
+      this.jdField_a_of_type_Apxn = new apxn();
+      this.jdField_a_of_type_Apxn.jdField_b_of_type_JavaLangString = ((String)localObject2);
+      this.jdField_a_of_type_Apxn.jdField_a_of_type_JavaLangString = (((apxr)localObject1).jdField_a_of_type_JavaLangString + (String)localObject2);
+      localObject2 = this.jdField_a_of_type_Apxn;
+      if (this.jdField_a_of_type_Boolean) {
+        bool = ((apxr)localObject1).jdField_b_of_type_Boolean;
+      }
+      for (;;)
+      {
+        ((apxn)localObject2).jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addView((View)localObject3);
+        this.jdField_c_of_type_AndroidViewView = ((View)localObject3);
+        return;
+        if (!((apxr)localObject1).jdField_b_of_type_Boolean) {
+          bool = true;
+        }
+      }
+    }
+  }
+  
+  private void h()
+  {
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+    ArrayList localArrayList = new ArrayList();
+    int i1;
+    if (this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition() == 0)
+    {
+      i1 = 0;
+      if (i1 >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        break label328;
+      }
+      localObject = (apxp)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+      if (!(localObject instanceof apxr)) {
+        break label134;
+      }
+    }
+    label134:
+    label273:
+    label319:
+    label328:
+    for (Object localObject = (apxr)localObject;; localObject = null)
+    {
+      localObject = a((apxr)localObject);
+      if (localObject != null)
+      {
+        ((ObjectAnimator)localObject).setDuration(200L);
+        localArrayList.add(localObject);
+      }
+      int i2 = 0;
+      i1 = -1;
+      int i3;
+      for (;;)
+      {
+        if (i2 < this.jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          if (i2 == i1)
+          {
+            i3 = i1;
+            i2 += 1;
+            i1 = i3;
+            continue;
+            i1 += 1;
+            break;
+          }
+          localObject = (apxp)this.jdField_a_of_type_JavaUtilArrayList.get(i2);
+          if ((localObject instanceof apxr)) {
+            localObject = f((apxr)localObject);
+          }
+        }
+      }
+      for (;;)
+      {
+        i3 = i1;
+        if (localObject == null) {
+          break;
+        }
+        localArrayList.add(localObject);
+        i3 = i1;
+        break;
+        if ((localObject instanceof apxs))
+        {
+          apxs localapxs = (apxs)localObject;
+          localObject = b(localapxs);
+          if (localObject != null) {
+            if (localapxs.jdField_a_of_type_Int - 1 < 0) {
+              break label273;
+            }
+          }
+          for (i3 = localapxs.jdField_a_of_type_Int - 1;; i3 = 0)
+          {
+            ((ObjectAnimator)localObject).setRepeatCount(i3);
+            if (TextUtils.isEmpty(localapxs.e)) {
+              break label319;
+            }
+            i1 = a((Animator)localObject, localapxs.e);
+            break;
+          }
+          this.jdField_a_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
+          this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new apxj(this));
+          this.jdField_a_of_type_AndroidOsHandler.post(new BubbleNewAIOAnim.3(this));
+          return;
+        }
+        else
+        {
+          localObject = null;
+        }
+      }
+    }
+  }
+  
+  private void i()
+  {
+    ThreadManager.post(new BubbleNewAIOAnim.7(this), 5, null, true);
+  }
+  
+  protected void a(int paramInt)
+  {
+    if (this.jdField_c_of_type_AndroidViewView != null) {
+      this.jdField_c_of_type_AndroidViewView.setTranslationY(this.jdField_c_of_type_AndroidViewView.getTranslationY() + paramInt);
+    }
+    if ((this.jdField_d_of_type_AndroidViewView != null) && (this.jdField_e_of_type_AndroidViewView != null))
+    {
+      paramInt = (int)(this.jdField_d_of_type_AndroidViewView.getTranslationY() + paramInt);
+      this.jdField_d_of_type_AndroidViewView.setTranslationY(paramInt);
+    }
+  }
+  
+  public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("FavoriteEmotionAdapter", 2, "onLoadProgressed: " + this.jdField_a_of_type_Apuf.toString());
+      QLog.d("BubbleNewAIOAnim", 4, paramString);
     }
-    apxg.a(this.jdField_a_of_type_Apxg, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FavoriteEmotionAdapter", 2, "onLoadSuccess: " + this.jdField_a_of_type_Apuf.toString());
+    if (this.jdField_b_of_type_Boolean == paramBoolean) {}
+    Object localObject;
+    label90:
+    for (;;)
+    {
+      return;
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      if (this.jdField_a_of_type_Afwr != null)
+      {
+        if (this.jdField_a_of_type_Afwr.jdField_a_of_type_Apwt != null) {}
+        for (localObject = this.jdField_a_of_type_Afwr.jdField_a_of_type_Apwt.a;; localObject = null)
+        {
+          if ((localObject == null) || (!this.jdField_a_of_type_Apwn.jdField_b_of_type_Boolean)) {
+            break label90;
+          }
+          localObject = this.jdField_a_of_type_Afwr.jdField_a_of_type_AndroidViewView.getBackground();
+          if (!(localObject instanceof apym)) {
+            break;
+          }
+          if (!paramBoolean) {
+            break label92;
+          }
+          ((apym)localObject).c(true);
+          return;
+        }
+      }
     }
-    apxg.a(this.jdField_a_of_type_Apxg, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+    label92:
+    ((apym)localObject).c(false);
+  }
+  
+  protected boolean a(int paramInt)
+  {
+    return true;
+  }
+  
+  protected boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_c_of_type_Int = afur.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentWidgetListView.getAdapter());
+    Object localObject1 = afur.a(afur.a(this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_c_of_type_Int));
+    Object localObject2;
+    if ((localObject1 != null) && ((localObject1 instanceof afwr)))
+    {
+      this.jdField_a_of_type_Afwr = ((afwr)localObject1);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Afwr.jdField_a_of_type_AndroidViewView;
+      this.jdField_b_of_type_AndroidViewView = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
+      if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView instanceof ViewGroup)))
+      {
+        localObject2 = (ViewGroup)this.jdField_b_of_type_AndroidViewView;
+        paramInt1 = 0;
+        if (paramInt1 < ((ViewGroup)localObject2).getChildCount())
+        {
+          View localView = ((ViewGroup)localObject2).getChildAt(paramInt1);
+          if (localView.getId() != 2131364399) {
+            break label193;
+          }
+          this.jdField_e_of_type_AndroidViewView = localView;
+        }
+      }
+      label143:
+      localObject2 = new StringBuilder().append("relayout children,  p : ").append(this.jdField_c_of_type_Int).append(", get object: ");
+      if (localObject1 == null) {
+        break label207;
+      }
+    }
+    label193:
+    label207:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      a(paramBoolean);
+      return false;
+      paramInt1 += 1;
+      break;
+      c();
+      break label143;
+    }
+  }
+  
+  protected boolean a(Object... paramVarArgs)
+  {
+    if ((this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning())) {
+      return false;
+    }
+    if (!VersionUtils.isHoneycomb()) {
+      return false;
+    }
+    this.n = ((Integer)paramVarArgs[0]).intValue();
+    this.jdField_a_of_type_Long = ((Long)paramVarArgs[1]).longValue();
+    this.jdField_b_of_type_Int = ((Integer)paramVarArgs[2]).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramVarArgs[3]);
+    a("start msg id " + this.jdField_a_of_type_Long);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager = ((BubbleManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(44));
+    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager == null) || (this.jdField_a_of_type_Long == 0L)) {
+      return false;
+    }
+    this.jdField_a_of_type_Apwq = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_b_of_type_Int, false);
+    if (this.jdField_a_of_type_Apwq == null) {
+      return false;
+    }
+    this.jdField_a_of_type_Apwn = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_b_of_type_Int, this.n);
+    if (this.jdField_a_of_type_Apwn == null) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_Apwn.jdField_a_of_type_JavaUtilArrayList;
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
+      return false;
+    }
+    this.jdField_c_of_type_Int = afur.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentWidgetListView.getAdapter());
+    paramVarArgs = afur.a(afur.a(this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_c_of_type_Int));
+    if ((paramVarArgs != null) && ((paramVarArgs instanceof afwr)))
+    {
+      this.jdField_a_of_type_Afwr = ((afwr)paramVarArgs);
+      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Afwr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend();
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Afwr.jdField_a_of_type_AndroidViewView;
+      this.jdField_b_of_type_AndroidViewView = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
+      this.m = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getWidth();
+      i();
+      g();
+      f();
+      e();
+      h();
+      return true;
+    }
+    return false;
+  }
+  
+  protected void c()
+  {
+    a("now stop new bubble animation conf!");
+    this.jdField_a_of_type_AndroidOsHandler.post(new BubbleNewAIOAnim.1(this));
+  }
+  
+  public void setBitmapData(apxn paramapxn)
+  {
+    if (paramapxn == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_c_of_type_AndroidViewView == null))
+          {
+            c();
+            return;
+          }
+        } while (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramapxn.jdField_a_of_type_JavaLangString));
+        if (paramapxn.jdField_a_of_type_AndroidGraphicsBitmap != null)
+        {
+          localObject = new apwp(paramapxn.jdField_a_of_type_AndroidGraphicsBitmap);
+          ((apwp)localObject).jdField_a_of_type_Boolean = paramapxn.jdField_a_of_type_JavaLangBoolean.booleanValue();
+          this.jdField_c_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
+          this.jdField_a_of_type_JavaLangString = paramapxn.jdField_a_of_type_JavaLangString;
+          a("set bitmap path:" + paramapxn.jdField_a_of_type_JavaLangString);
+          this.jdField_c_of_type_AndroidViewView.invalidate();
+          return;
+        }
+      } while (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramapxn.jdField_a_of_type_JavaLangString));
+      a("get cache bitmap path:" + paramapxn.jdField_a_of_type_JavaLangString);
+      localObject = (Bitmap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramapxn.jdField_a_of_type_JavaLangString);
+    } while (localObject == null);
+    Object localObject = new apwp((Bitmap)localObject);
+    ((apwp)localObject).jdField_a_of_type_Boolean = paramapxn.jdField_a_of_type_JavaLangBoolean.booleanValue();
+    this.jdField_c_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
+    this.jdField_a_of_type_JavaLangString = paramapxn.jdField_a_of_type_JavaLangString;
+    this.jdField_c_of_type_AndroidViewView.invalidate();
+  }
+  
+  public void setPathLocation(apyf paramapyf)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_c_of_type_AndroidViewView == null))
+    {
+      c();
+      return;
+    }
+    this.jdField_b_of_type_AndroidViewView = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
+    int i1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getWidth();
+    if (this.jdField_a_of_type_Boolean) {
+      f1 = paramapyf.jdField_a_of_type_Float;
+    }
+    float f2;
+    for (float f1 = i1 - this.m + f1;; f1 = paramapyf.jdField_a_of_type_Float)
+    {
+      f2 = paramapyf.jdField_b_of_type_Float + this.jdField_b_of_type_AndroidViewView.getTop() - this.jdField_a_of_type_ComTencentWidgetListView.getScrollY();
+      if (f2 >= this.jdField_a_of_type_ComTencentWidgetListView.getTop() - this.jdField_c_of_type_AndroidViewView.getHeight()) {
+        break;
+      }
+      a("setPathLocation: now scroll over sreen, stop bubble animatorset!");
+      a("now listview firstVisible postion: " + this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition() + ", last postion: " + this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition() + ", now msg pos: " + this.jdField_c_of_type_Int);
+      c();
+      return;
+    }
+    this.jdField_c_of_type_AndroidViewView.setTranslationX(f1);
+    this.jdField_c_of_type_AndroidViewView.setTranslationY(f2);
+    this.jdField_c_of_type_AndroidViewView.setAlpha(paramapyf.d);
+    this.jdField_c_of_type_AndroidViewView.setRotation(paramapyf.jdField_c_of_type_Float);
+  }
+  
+  public void setPendantBitmap(apxn paramapxn)
+  {
+    if (paramapxn == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if ((this.jdField_d_of_type_AndroidViewView == null) || (this.jdField_e_of_type_AndroidViewView == null))
+          {
+            c();
+            return;
+          }
+          int i1 = this.jdField_e_of_type_AndroidViewView.getLeft();
+          this.jdField_d_of_type_AndroidViewView.setTranslationX(i1);
+          i1 = this.jdField_e_of_type_AndroidViewView.getTop();
+          int i2 = this.jdField_b_of_type_AndroidViewView.getTop();
+          int i3 = this.jdField_a_of_type_ComTencentWidgetListView.getScrollY();
+          this.jdField_d_of_type_AndroidViewView.setTranslationY(i1 + i2 - i3);
+          if ((this.jdField_c_of_type_Int > this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition()) || (this.jdField_c_of_type_Int < this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition()))
+          {
+            a("setPendantBitmap: now scroll over sreen, stop pendant animatorset!");
+            c();
+            return;
+          }
+        } while (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramapxn.jdField_a_of_type_JavaLangString));
+        if (paramapxn.jdField_a_of_type_AndroidGraphicsBitmap != null)
+        {
+          localObject = new apwp(paramapxn.jdField_a_of_type_AndroidGraphicsBitmap);
+          this.jdField_b_of_type_JavaLangString = paramapxn.jdField_a_of_type_JavaLangString;
+          ((apwp)localObject).jdField_a_of_type_Boolean = paramapxn.jdField_a_of_type_JavaLangBoolean.booleanValue();
+          this.jdField_d_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
+          this.jdField_d_of_type_AndroidViewView.invalidate();
+          return;
+        }
+      } while (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramapxn.jdField_a_of_type_JavaLangString));
+      localObject = (Bitmap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramapxn.jdField_a_of_type_JavaLangString);
+    } while (localObject == null);
+    Object localObject = new apwp((Bitmap)localObject);
+    this.jdField_b_of_type_JavaLangString = paramapxn.jdField_a_of_type_JavaLangString;
+    ((apwp)localObject).jdField_a_of_type_Boolean = paramapxn.jdField_a_of_type_JavaLangBoolean.booleanValue();
+    this.jdField_d_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
+    this.jdField_d_of_type_AndroidViewView.invalidate();
   }
 }
 

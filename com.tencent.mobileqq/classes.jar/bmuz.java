@@ -1,39 +1,95 @@
-import android.util.Log;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bmuz
-  implements bmvc
 {
-  private int jdField_a_of_type_Int = 12440;
+  private static bmuz jdField_a_of_type_Bmuz;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).getBoolean("HAS_PULL", false);
+  private boolean b;
   
-  private bmuz(GLTextureView paramGLTextureView) {}
-  
-  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  private int a()
   {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView);
-    arrayOfInt[2] = 12344;
-    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
-    if (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 0) {}
-    for (;;)
-    {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
+    if (this.b) {
+      return this.jdField_a_of_type_Int;
+    }
+    this.b = true;
+    long l = a(BaseApplicationImpl.getApplication());
+    if (b(BaseApplicationImpl.getApplication()) > l) {}
+    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0) {
+      return this.jdField_a_of_type_Int;
     }
   }
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public static long a(Context paramContext)
   {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    String str = paramContext.getPackageName();
+    try
     {
-      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      bmve.a("eglDestroyContex", paramEGL10.eglGetError());
+      long l = paramContext.getPackageManager().getPackageInfo(str, 0).firstInstallTime;
+      return l;
     }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0L;
+  }
+  
+  public static bmuz a()
+  {
+    if (jdField_a_of_type_Bmuz == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bmuz == null) {
+        jdField_a_of_type_Bmuz = new bmuz();
+      }
+      return jdField_a_of_type_Bmuz;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).edit();
+    localEditor.putBoolean("HAS_PULL", this.jdField_a_of_type_Boolean);
+    localEditor.apply();
+  }
+  
+  public static long b(Context paramContext)
+  {
+    String str = paramContext.getPackageName();
+    try
+    {
+      long l = paramContext.getPackageManager().getPackageInfo(str, 0).lastUpdateTime;
+      return l;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0L;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      QLog.d("PackageUpdateManager", 1, "checkUpgrade has pulll");
+    }
+    while (a() != 1) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    QLog.d("PackageUpdateManager", 1, "checkUpgrade need pull friendlist ");
+    ((FriendListHandler)paramQQAppInterface.a(1)).a(true);
+    a();
   }
 }
 

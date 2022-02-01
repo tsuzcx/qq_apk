@@ -1,27 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.XListView;
 
 public class aiwm
-  implements DialogInterface.OnClickListener
+  extends anry
 {
-  public aiwm(SendHbActivity paramSendHbActivity) {}
+  public aiwm(PublicView paramPublicView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onUpdateRecommendList(boolean paramBoolean)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("hb_id", SendHbActivity.a(this.a));
-    paramDialogInterface.putExtra("send_uin", SendHbActivity.b(this.a));
-    paramDialogInterface.putExtra("hb_type", "1");
-    paramDialogInterface.putExtra("forward_text", this.a.getString(2131697494));
-    if (SendHbActivity.a(this.a)) {
-      paramDialogInterface.putExtra("item", 1);
+    if (true == paramBoolean)
+    {
+      PublicView.a(this.a).a(0);
+      PublicView.a(this.a).sendEmptyMessage(1);
+      PublicView.a(this.a).sendEmptyMessage(3);
+      return;
     }
-    paramDialogInterface.putExtra("forward_type", 17);
-    paramDialogInterface.putExtra("invoke_from", "qwallet");
-    aryv.a(this.a, paramDialogInterface);
-    this.a.a(SendHbActivity.b(this.a), this.a.a(), "hongbao.wrapped.send", "", "");
+    PublicView.a(this.a).springBackOverScrollHeaderView();
+    PublicView.a(this.a, 1, 2131718227);
+    PublicView.a(this.a);
   }
 }
 

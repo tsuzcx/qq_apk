@@ -1,7 +1,7 @@
 package com.tencent.litetransfersdk;
 
 import android.content.res.Resources;
-import arri;
+import atvf;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class ProtocolHelper$2
@@ -11,12 +11,12 @@ class ProtocolHelper$2
   
   public void run()
   {
-    arri.a("'" + this.a + "'" + BaseApplication.getContext().getResources().getString(2131694024));
+    atvf.a("'" + this.a + "'" + BaseApplication.getContext().getResources().getString(2131693320));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProtocolHelper.2
  * JD-Core Version:    0.7.0.1
  */

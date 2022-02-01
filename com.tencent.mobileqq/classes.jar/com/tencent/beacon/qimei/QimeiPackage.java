@@ -20,59 +20,74 @@ public final class QimeiPackage
   public String qimei = "";
   public String qq = "";
   
-  public final void readFrom(a parama)
+  protected Object clone()
   {
-    this.qimei = parama.b(0, false);
-    this.imei = parama.b(1, false);
-    this.mac = parama.b(2, false);
-    this.imsi = parama.b(3, false);
-    this.androidId = parama.b(4, false);
-    this.model = parama.b(5, false);
-    this.brand = parama.b(6, false);
-    this.osVersion = parama.b(7, false);
-    this.broot = parama.a(8, false);
-    this.qq = parama.b(9, false);
-    this.cid = parama.b(10, false);
+    return super.clone();
   }
   
-  public final void writeTo(b paramb)
+  public void readFrom(a parama)
   {
-    if (this.qimei != null) {
-      paramb.a(this.qimei, 0);
+    this.qimei = parama.a(0, false);
+    this.imei = parama.a(1, false);
+    this.mac = parama.a(2, false);
+    this.imsi = parama.a(3, false);
+    this.androidId = parama.a(4, false);
+    this.model = parama.a(5, false);
+    this.brand = parama.a(6, false);
+    this.osVersion = parama.a(7, false);
+    this.broot = parama.a(this.broot, 8, false);
+    this.qq = parama.a(9, false);
+    this.cid = parama.a(10, false);
+  }
+  
+  public void writeTo(b paramb)
+  {
+    String str = this.qimei;
+    if (str != null) {
+      paramb.a(str, 0);
     }
-    if (this.imei != null) {
-      paramb.a(this.imei, 1);
+    str = this.imei;
+    if (str != null) {
+      paramb.a(str, 1);
     }
-    if (this.mac != null) {
-      paramb.a(this.mac, 2);
+    str = this.mac;
+    if (str != null) {
+      paramb.a(str, 2);
     }
-    if (this.imsi != null) {
-      paramb.a(this.imsi, 3);
+    str = this.imsi;
+    if (str != null) {
+      paramb.a(str, 3);
     }
-    if (this.androidId != null) {
-      paramb.a(this.androidId, 4);
+    str = this.androidId;
+    if (str != null) {
+      paramb.a(str, 4);
     }
-    if (this.model != null) {
-      paramb.a(this.model, 5);
+    str = this.model;
+    if (str != null) {
+      paramb.a(str, 5);
     }
-    if (this.brand != null) {
-      paramb.a(this.brand, 6);
+    str = this.brand;
+    if (str != null) {
+      paramb.a(str, 6);
     }
-    if (this.osVersion != null) {
-      paramb.a(this.osVersion, 7);
+    str = this.osVersion;
+    if (str != null) {
+      paramb.a(str, 7);
     }
     paramb.a(this.broot, 8);
-    if (this.qq != null) {
-      paramb.a(this.qq, 9);
+    str = this.qq;
+    if (str != null) {
+      paramb.a(str, 9);
     }
-    if (this.cid != null) {
-      paramb.a(this.cid, 10);
+    str = this.cid;
+    if (str != null) {
+      paramb.a(str, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.qimei.QimeiPackage
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,35 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class agch
-  implements View.OnClickListener
+  extends AsyncTask<String, Void, Bitmap>
 {
-  public agch(StructingMsgItemBuilder paramStructingMsgItemBuilder, ImageView paramImageView, ChatMessage paramChatMessage, String paramString, long paramLong) {}
+  public agch(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
   
-  public void onClick(View paramView)
+  protected Bitmap a(String... paramVarArgs)
   {
-    if (StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
-      return;
+    paramVarArgs = paramVarArgs[0];
+    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
+    {
+      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
+      }
+      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
     }
-    StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
-    StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X800631E", "0X800631E", 0, 0, "" + this.jdField_a_of_type_Long, "", "", "");
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    VoicePrintUtils.VoicePrintView.a(this.a);
+    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
+    this.a.invalidate();
   }
 }
 

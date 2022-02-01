@@ -1,123 +1,65 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.os.Bundle;
+import android.os.Build;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashMap<Ljava.lang.String;Ljava.lang.Object;>;
-import java.util.concurrent.Executor;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bckw
-  extends bfmd<HashMap<String, Object>, Void, JSONObject>
 {
-  protected int a;
-  protected Bundle a;
-  protected bckx a;
-  protected boolean a;
+  public static String[] a = { "Le X620", "Nexus 5X", "ZTE A2017", "PRA-AL00X", "SM-W2015", "Redmi Note 3", "R7Plus", "vivo X6Plus A" };
   
-  public bckw(String paramString1, String paramString2, bckx parambckx, int paramInt, Bundle paramBundle)
+  public static boolean a()
   {
-    super(paramString1, paramString2);
-    this.jdField_a_of_type_Bckx = parambckx;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public bckw(String paramString1, String paramString2, bckx parambckx, int paramInt, Bundle paramBundle, boolean paramBoolean)
-  {
-    super(paramString1, paramString2);
-    this.jdField_a_of_type_Bckx = parambckx;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
-  {
-    if (isCancelled()) {
-      return null;
-    }
-    Object localObject = paramVarArgs[0];
-    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
-    {
-      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
-      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
-    }
+    boolean bool2 = false;
+    String str = Build.MODEL;
+    String[] arrayOfString = a;
+    int j = arrayOfString.length;
+    int i = 0;
     for (;;)
     {
-      try
+      boolean bool1 = bool2;
+      if (i < j)
       {
-        Bundle localBundle = new Bundle();
-        String str1 = ((Bundle)localObject).getString("Cookie");
-        String str2 = ((Bundle)localObject).getString("Referer");
-        String str3 = ((Bundle)localObject).getString("Host");
-        if (str1 != null)
-        {
-          localBundle.putString("Cookie", str1);
-          ((Bundle)localObject).remove("Cookie");
-        }
-        if (str2 != null)
-        {
-          localBundle.putString("Referer", str2);
-          ((Bundle)localObject).remove("Referer");
-        }
-        if (str3 != null)
-        {
-          localBundle.putString("Host", str3);
-          ((Bundle)localObject).remove(str3);
-        }
-        localObject = new JSONObject(ndd.a(paramVarArgs, this.jdField_a_of_type_JavaLangString, this.b, (Bundle)localObject, localBundle));
-        paramVarArgs = (HashMap<String, Object>[])localObject;
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          paramVarArgs = (HashMap<String, Object>[])localObject;
-          if (((JSONObject)localObject).getInt("retcode") == 0) {
-            paramVarArgs = ((JSONObject)localObject).getJSONObject("result");
-          }
+        if (arrayOfString[i].contains(str)) {
+          bool1 = true;
         }
       }
-      catch (IOException paramVarArgs)
+      else
       {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("FaceDanceEntryUtil", 2, "isPhoneInBlackList ： phone = " + str + ", result=" + bool1);
+        }
+        return bool1;
       }
-      catch (JSONException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (OutOfMemoryError paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-      }
-      return paramVarArgs;
-      paramVarArgs = null;
+      i += 1;
     }
   }
   
-  @SuppressLint({"InlinedApi", "NewApi"})
-  public void a(HashMap<String, Object> paramHashMap)
+  public static boolean b()
   {
-    Executor localExecutor = a();
-    if (localExecutor != null)
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (bclh.g())
     {
-      executeOnExecutor(localExecutor, new HashMap[] { paramHashMap });
-      return;
+      bool1 = bool3;
+      if (!a())
+      {
+        if (!loz.a(8, 1400000L))
+        {
+          bool1 = bool2;
+          if (!loz.a(4, 2150000L)) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+        QLog.d("FaceDanceEntryUtil", 2, "FaceDanceEntryUtil check condition 2 +cpuNumber is" + bool1);
+      }
     }
-    execute(new HashMap[] { paramHashMap });
+    return bool1;
   }
   
-  protected void a(JSONObject paramJSONObject)
+  public static boolean c()
   {
-    if (isCancelled()) {}
-    while (this.jdField_a_of_type_Bckx == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bckx.a(paramJSONObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+    return (b()) && (bchg.a().e());
   }
 }
 

@@ -1,39 +1,93 @@
 import android.os.Bundle;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.coremedia.CMTimeRange;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import protocol.KQQConfig.GetResourceReqInfo;
 
 public class blmg
-  implements blpv
+  implements blmf
 {
-  public blmg(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
-  
-  public void aS_()
+  public boolean a(int paramInt, Bundle paramBundle)
   {
-    this.a.a().a(this.a.getActivity(), true);
-  }
-  
-  public void aT_()
-  {
-    bliu.a().a(1);
-    Bundle localBundle = new Bundle(this.a.getArguments());
-    localBundle.putString("select_path", AEEditorVideoClipFragment.a(this.a));
-    if (AEEditorVideoClipFragment.a(this.a) != null)
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    switch (paramInt)
     {
-      localBundle.putLong("starttime", AEEditorVideoClipFragment.a(this.a).getStartUs());
-      localBundle.putLong("endtime", AEEditorVideoClipFragment.a(this.a).getEndUs());
     }
-    for (;;)
+    do
     {
-      this.a.a().c(this.a.a(), localBundle);
-      return;
-      if ((AEEditorVideoClipFragment.a(this.a) != null) && (AEEditorVideoClipFragment.a(this.a).getDuration().getTimeUs() > 60000000L))
+      do
       {
-        localBundle.putLong("starttime", 0L);
-        localBundle.putLong("endtime", 60000000L);
-      }
-    }
+        String str1;
+        String str2;
+        do
+        {
+          return true;
+          anjd.a((QQAppInterface)localObject);
+          return true;
+          paramBundle = (anxq)((QQAppInterface)localObject).a(44);
+          paramBundle.a(new blmh(this));
+          paramBundle.a("");
+          return true;
+          paramBundle = (anjo)((QQAppInterface)localObject).a(4);
+          paramBundle.a(null, new GetResourceReqInfo[] { paramBundle.d() });
+          return true;
+          ((QQAppInterface)localObject).addObserver(new blmi(this));
+          return true;
+          boolean bool = paramBundle.getBoolean("visible");
+          ((anos)((QQAppInterface)localObject).a(3)).a(bool);
+          return true;
+          paramInt = paramBundle.getInt("iFaceType");
+          str1 = paramBundle.getString("uinOrMobileNum");
+          byte b = paramBundle.getByte("faceFileType");
+          int i = paramBundle.getInt("idType");
+          paramBundle = (FriendListHandler)((QQAppInterface)localObject).a(1);
+          switch (paramInt)
+          {
+          default: 
+            return true;
+          case 1: 
+            paramBundle.a(str1, (byte)0, b);
+            return true;
+          case 11: 
+            paramBundle.b(str1, b);
+            return true;
+          case 4: 
+            paramBundle.a(str1, b);
+            return true;
+          case 32: 
+            paramBundle.a(str1, i, (byte)1, b);
+            return true;
+          }
+          paramBundle.b(str1, i, (byte)1, b);
+          return true;
+          str1 = paramBundle.getString("mUin");
+          str2 = paramBundle.getString("feedsId");
+          paramInt = paramBundle.getInt("action");
+          paramBundle = (SignatureHandler)((QQAppInterface)localObject).a(41);
+        } while (paramBundle == null);
+        paramBundle.a(str1, str2, 255, paramInt);
+        return true;
+        ((QQAppInterface)localObject).addObserver(new blmj(this));
+        return true;
+        ((QQAppInterface)localObject).registObserver(new blmk(this, null));
+        return true;
+        paramBundle = (SignatureHandler)((QQAppInterface)localObject).a(41);
+      } while (paramBundle == null);
+      paramBundle.a();
+      return true;
+      ((SignatureHandler)((QQAppInterface)localObject).a(41)).a(paramBundle.getString("uin"), paramBundle.getString("feedsId"), 255, true);
+      return true;
+      paramBundle = bglf.j((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin());
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("name", paramBundle);
+      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 6, (Bundle)localObject);
+      return true;
+    } while (paramBundle == null);
+    ((QQAppInterface)localObject).sendToService((ToServiceMsg)paramBundle.getParcelable("msg"));
+    return true;
   }
 }
 

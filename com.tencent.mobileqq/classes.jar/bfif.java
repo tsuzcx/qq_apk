@@ -1,66 +1,58 @@
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+
 public class bfif
+  extends bfhq
 {
-  public static int a(int paramInt)
+  public bfif(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    int i = 1;
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 4)) {
-      i = 2;
-    }
-    while (paramInt == 5) {
-      return i;
-    }
-    return 3;
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 26;
   }
   
-  public static int a(int paramInt, String paramString)
+  @Nullable
+  public bfhr a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    int i = 1;
-    if (paramInt == 0) {
-      i = 0;
-    }
-    while (paramInt == 1) {
-      return i;
-    }
-    if (paramInt == 3000) {
-      return 2;
-    }
-    if (alof.aH.equals(paramString)) {
-      return 3;
-    }
-    if (alof.L.equals(paramString)) {
-      return 4;
-    }
-    if (alof.A.equals(paramString)) {
-      return 5;
-    }
-    return -1;
-  }
-  
-  public static int b(int paramInt)
-  {
-    switch (paramInt)
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
+    if ((paramList != null) && (a(paramList, paramLong2, paramLong3)))
     {
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return -1;
-    case 1: 
-      return 0;
-    case 2: 
-      return 1;
-    case 3: 
-      return 2;
-    case 4: 
-      return 3;
+      paramObject = this.jdField_a_of_type_AndroidContentContext.getString(2131696960);
+      bepx localbepx = bepx.a(paramInt1, paramLong1, paramInt2);
+      String str = paramList.senderuin;
+      if (njo.a(paramList)) {}
+      for (paramInt1 = 2;; paramInt1 = 1)
+      {
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_flower", "", "grp_aio", "exp_topmsgcue", paramInt1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+        return new bfhr(true, paramObject, localbepx, str);
+      }
     }
-    return 4;
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject, String paramString)
+  {
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_gift", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+  }
+  
+  public void b(int paramInt, Object paramObject, String paramString)
+  {
+    if (njo.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_flower", "", "grp_aio", "Clk_topmsgcue", paramInt, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_gift", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfif
  * JD-Core Version:    0.7.0.1
  */

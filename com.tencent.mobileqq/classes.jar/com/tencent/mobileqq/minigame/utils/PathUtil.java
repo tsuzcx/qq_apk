@@ -51,12 +51,12 @@ public class PathUtil
   
   public static boolean isNetworkUrl(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("https://"));
+    return (!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("https://")) || (paramString.startsWith("http://")));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.PathUtil
  * JD-Core Version:    0.7.0.1
  */

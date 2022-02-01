@@ -1,10 +1,17 @@
-public abstract interface azef
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class azef
+  implements DialogInterface.OnClickListener
 {
-  public abstract void G_();
+  azef(azeb paramazeb) {}
   
-  public abstract void a(String paramString1, int paramInt, String paramString2);
-  
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

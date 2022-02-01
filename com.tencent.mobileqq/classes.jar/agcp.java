@@ -1,11 +1,12 @@
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-
-public class agcp
-  implements biac
+class agcp
+  implements bdfr
 {
-  public agcp(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  agcp(agco paramagco) {}
   
-  public void a() {}
+  public void a(bdfw parambdfw)
+  {
+    this.a.b();
+  }
 }
 
 

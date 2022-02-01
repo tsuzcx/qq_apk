@@ -1,37 +1,25 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import java.util.List;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
 
 public class ahwe
-  implements AdapterView.OnItemClickListener
+  extends ahwb
 {
-  public ahwe(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public ahwe(QQAppInterface paramQQAppInterface, ahwv paramahwv, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, afxp paramafxp)
   {
-    paramAdapterView = (ahwk)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
-    boolean bool = paramAdapterView.jdField_a_of_type_Boolean;
-    if (bool)
-    {
-      if (EmoticonGroupStoreFragment.b(this.a).contains(paramAdapterView.jdField_a_of_type_JavaLangString)) {
-        EmoticonGroupStoreFragment.b(this.a).remove(paramAdapterView.jdField_a_of_type_JavaLangString);
-      }
-      paramAdapterView = (ahwk)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
-      if (bool) {
-        break label126;
-      }
+    super(paramQQAppInterface, paramahwv, paramQQWalletBaseMsgElem, paramInt, paramafxp);
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
     }
-    label126:
-    for (bool = true;; bool = false)
-    {
-      paramAdapterView.jdField_a_of_type_Boolean = bool;
-      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
-      return;
-      EmoticonGroupStoreFragment.b(this.a).add(paramAdapterView.jdField_a_of_type_JavaLangString);
-      break;
-    }
+    this.a.b.setVisibility(0);
+    this.a.b.setTextColor(-8947849);
+    this.a.b.setText(ahwg.c);
+    return false;
   }
 }
 

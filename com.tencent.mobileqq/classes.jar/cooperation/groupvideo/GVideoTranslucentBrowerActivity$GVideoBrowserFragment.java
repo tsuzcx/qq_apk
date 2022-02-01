@@ -2,10 +2,10 @@ package cooperation.groupvideo;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import atbh;
-import azqs;
-import beft;
-import bejh;
+import avjb;
+import bcst;
+import bhmv;
+import bhql;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
@@ -17,56 +17,56 @@ public class GVideoTranslucentBrowerActivity$GVideoBrowserFragment
 {
   private boolean a;
   
-  public int a(Bundle paramBundle)
+  public int doCreateLoopStep_Final(Bundle paramBundle)
   {
-    int i = super.a(paramBundle);
-    this.jdField_a_of_type_Beft.b(false);
-    this.jdField_a_of_type_Bejh.a.setVisibility(8);
+    int i = super.doCreateLoopStep_Final(paramBundle);
+    this.mSwiftTitleUI.b(false);
+    this.mUIStyleHandler.a.setVisibility(8);
     return i;
   }
   
-  public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
-    super.a(paramWebView, paramInt, paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "GVideoBrowserFragment onReceivedError = ");
-    }
-    this.jdField_a_of_type_Boolean = true;
-    if (getActivity() != null) {
-      getActivity().finish();
-    }
+    this.mUIStyle.c = 0L;
+    return super.doCreateLoopStep_InitUIContent(paramBundle);
   }
   
-  public boolean a(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "GVideoBrowserFragment doOnCreate = ");
     }
-    boolean bool = super.a(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(new String[] { "groupVideo" });
+    boolean bool = super.doOnCreate(paramBundle);
+    this.mPluginEngine.a(new String[] { "groupVideo" });
     return bool;
-  }
-  
-  public int d(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Bejk.c = 0L;
-    return super.d(paramBundle);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    atbh.a("2729128");
-    if (!this.jdField_a_of_type_Boolean)
+    avjb.a("2729128");
+    if (!this.a)
     {
-      atbh.a("2489207");
-      azqs.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "8.3.5", "", "");
+      avjb.a("2489207");
+      bcst.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "8.4.1", "", "");
+    }
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "GVideoBrowserFragment onReceivedError = ");
+    }
+    this.a = true;
+    if (getActivity() != null) {
+      getActivity().finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.groupvideo.GVideoTranslucentBrowerActivity.GVideoBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

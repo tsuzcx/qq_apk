@@ -1,41 +1,36 @@
-import android.graphics.Bitmap;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
-class bhli
-  implements InvocationHandler
+public class bhli
+  extends BroadcastReceiver
 {
-  private bhlh a;
+  public bhli(WebProcessManager paramWebProcessManager) {}
   
-  public bhli(bhlh parambhlh)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = parambhlh;
-  }
-  
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
-  {
-    QMLog.e("TXLivePushListenerRefle", "ITXSnapshotListenerInvocationHandler invoke:" + paramMethod.getName());
-    if (Object.class.equals(paramMethod.getDeclaringClass())) {
-      try
-      {
-        paramObject = paramMethod.invoke(this, paramArrayOfObject);
-        return paramObject;
+    int i = paramIntent.getIntExtra("user_type", 0);
+    int j = paramIntent.getIntExtra("from_type", 0);
+    paramContext = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramContext instanceof QQAppInterface))
+    {
+      paramContext = (anhp)((QQAppInterface)paramContext).a(53);
+      if (paramContext != null) {
+        paramContext.a(i, j);
       }
-      catch (Throwable paramObject)
-      {
-        QMLog.e("TXLivePushListenerRefle", "invoke", paramObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("WebProcessManager", 2, "babyq receiver recv user_type=" + i + ", from_type=" + j);
       }
     }
-    if (("onSnapshot".equals(paramMethod.getName())) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1) && ((paramArrayOfObject[0] instanceof Bitmap)) && (this.a != null)) {
-      this.a.a((Bitmap)paramArrayOfObject[0]);
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhli
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,19 @@
-import android.view.View;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-class afzs
+public class afzs
 {
-  private Map<Integer, LinkedList<View>> a = new HashMap();
-  
-  View a(int paramInt)
-  {
-    LinkedList localLinkedList = (LinkedList)this.a.get(Integer.valueOf(paramInt));
-    if (localLinkedList == null) {
-      return null;
-    }
-    return (View)localLinkedList.poll();
-  }
-  
-  void a()
-  {
-    this.a.clear();
-  }
-  
-  void a(int paramInt, View paramView)
-  {
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(Integer.valueOf(paramInt));
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
-    {
-      localLinkedList1 = new LinkedList();
-      this.a.put(Integer.valueOf(paramInt), localLinkedList1);
-    }
-    localLinkedList1.add(paramView);
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public RedTouch a;
+  public String a;
+  public boolean a;
+  public int b;
+  public ImageView b;
+  public String b;
+  public String c;
 }
 
 

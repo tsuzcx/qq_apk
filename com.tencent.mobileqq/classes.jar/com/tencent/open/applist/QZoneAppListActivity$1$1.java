@@ -1,22 +1,22 @@
 package com.tencent.open.applist;
 
-import alud;
 import android.widget.TextView;
-import bfkh;
+import anni;
+import birq;
 
 public class QZoneAppListActivity$1$1
   implements Runnable
 {
-  public QZoneAppListActivity$1$1(bfkh parambfkh) {}
+  public QZoneAppListActivity$1$1(birq parambirq) {}
   
   public void run()
   {
-    QZoneAppListActivity.a(this.a.a).setText(alud.a(2131711993));
+    QZoneAppListActivity.a(this.a.a).setText(anni.a(2131710372));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.applist.QZoneAppListActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

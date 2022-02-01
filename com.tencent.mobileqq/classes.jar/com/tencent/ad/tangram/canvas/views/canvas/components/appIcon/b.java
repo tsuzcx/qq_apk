@@ -20,6 +20,7 @@ import com.tencent.ad.tangram.image.AdImageViewAdapter.Callback;
 import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
 import com.tencent.ad.tangram.image.AdImageViewBuilder;
 import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.ad.tangram.util.AdUIUtils;
 import java.lang.ref.WeakReference;
 
 public class b
@@ -70,50 +71,46 @@ public class b
     ((ViewGroup.LayoutParams)localObject1).width = this.value.logoWidth;
     ((ViewGroup.LayoutParams)localObject1).height = this.value.logoHeight;
     this.imageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    Object localObject2 = new TextView(paramContext);
-    ((TextView)localObject2).setId(8738);
-    ((TextView)localObject2).setText(parama.name);
-    ((TextView)localObject2).setTextSize(20.0F);
+    localObject1 = new TextView(paramContext);
+    ((TextView)localObject1).setId(8738);
+    ((TextView)localObject1).setText(parama.name);
+    ((TextView)localObject1).setTextSize(20.0F);
+    ((TextView)localObject1).setMaxLines(1);
+    ((TextView)localObject1).setTextColor(Color.parseColor("#000000"));
+    ((TextView)localObject1).setMaxWidth(AdUIUtils.dp2px(170.0F, paramContext.getResources()));
+    ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
+    ((TextView)localObject1).getPaint().setFakeBoldText(true);
+    localRelativeLayout.addView((View)localObject1);
+    Object localObject2 = (RelativeLayout.LayoutParams)((TextView)localObject1).getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject2).addRule(1, this.imageView.getId());
+    ((RelativeLayout.LayoutParams)localObject2).leftMargin = AdUIUtils.dp2px(15.0F, paramContext.getResources());
+    ((RelativeLayout.LayoutParams)localObject2).topMargin = AdUIUtils.dp2px(10.0F, paramContext.getResources());
+    localObject2 = new TextView(paramContext);
+    String str = AdUIUtils.formatNumberToChineseUnit(parama.downloadCount);
+    ((TextView)localObject2).setId(13107);
+    ((TextView)localObject2).setTextColor(Color.parseColor("#8C8C8C"));
     ((TextView)localObject2).setMaxLines(1);
-    ((TextView)localObject2).setTextColor(Color.parseColor("#000000"));
-    ((TextView)localObject2).setMaxWidth(com.tencent.ad.tangram.canvas.views.a.dp2px(170.0F, paramContext.getResources()));
+    ((TextView)localObject2).setMaxWidth(AdUIUtils.dp2px(170.0F, paramContext.getResources()));
     ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-    ((TextView)localObject2).getPaint().setFakeBoldText(true);
+    ((TextView)localObject2).setText(parama.starCount + "分 " + str + " " + AdUIUtils.getFileSizeDesc(parama.fileSize));
+    ((TextView)localObject2).setTextSize(12.0F);
     localRelativeLayout.addView((View)localObject2);
-    localObject1 = (RelativeLayout.LayoutParams)((TextView)localObject2).getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject1).addRule(1, this.imageView.getId());
-    ((RelativeLayout.LayoutParams)localObject1).leftMargin = com.tencent.ad.tangram.canvas.views.a.dp2px(15.0F, paramContext.getResources());
-    ((RelativeLayout.LayoutParams)localObject1).topMargin = com.tencent.ad.tangram.canvas.views.a.dp2px(10.0F, paramContext.getResources());
-    TextView localTextView = new TextView(paramContext);
-    if (parama.downloadCount > 10000L) {}
-    for (localObject1 = parama.downloadCount / 10000L + "万次下载 ";; localObject1 = parama.downloadCount + "次下载 ")
-    {
-      localTextView.setId(13107);
-      localTextView.setTextColor(Color.parseColor("#8C8C8C"));
-      localTextView.setMaxLines(1);
-      localTextView.setMaxWidth(com.tencent.ad.tangram.canvas.views.a.dp2px(170.0F, paramContext.getResources()));
-      localTextView.setEllipsize(TextUtils.TruncateAt.END);
-      localTextView.setText(parama.starCount + "分 " + (String)localObject1 + com.tencent.ad.tangram.canvas.views.a.getFileSizeDesc(parama.fileSize));
-      localTextView.setTextSize(12.0F);
-      localRelativeLayout.addView(localTextView);
-      localObject1 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject1).addRule(1, this.imageView.getId());
-      ((RelativeLayout.LayoutParams)localObject1).addRule(3, ((TextView)localObject2).getId());
-      ((RelativeLayout.LayoutParams)localObject1).leftMargin = com.tencent.ad.tangram.canvas.views.a.dp2px(15.0F, paramContext.getResources());
-      ((RelativeLayout.LayoutParams)localObject1).topMargin = com.tencent.ad.tangram.canvas.views.a.dp2px(5.0F, paramContext.getResources());
-      localObject1 = new RelativeLayout(paramContext);
-      ((RelativeLayout)localObject1).setId(17476);
-      localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject2).topMargin = com.tencent.ad.tangram.canvas.views.a.dp2px(14.0F, paramContext.getResources());
-      ((RelativeLayout.LayoutParams)localObject2).addRule(11, -1);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(15, -1);
-      parama.adCanvasAppBtnComponentData.canShowProgress = true;
-      this.adCanvasAppBtnComponentView = new d(paramContext, this.canvasViewListener, parama.adCanvasAppBtnComponentData, true);
-      paramContext = new RelativeLayout.LayoutParams(this.value.adCanvasAppBtnComponentData.width, this.value.adCanvasAppBtnComponentData.height);
-      ((RelativeLayout)localObject1).addView(this.adCanvasAppBtnComponentView, paramContext);
-      localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-      return;
-    }
+    localObject2 = (RelativeLayout.LayoutParams)((TextView)localObject2).getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject2).addRule(1, this.imageView.getId());
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, ((TextView)localObject1).getId());
+    ((RelativeLayout.LayoutParams)localObject2).leftMargin = AdUIUtils.dp2px(15.0F, paramContext.getResources());
+    ((RelativeLayout.LayoutParams)localObject2).topMargin = AdUIUtils.dp2px(5.0F, paramContext.getResources());
+    localObject1 = new RelativeLayout(paramContext);
+    ((RelativeLayout)localObject1).setId(17476);
+    localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject2).topMargin = AdUIUtils.dp2px(14.0F, paramContext.getResources());
+    ((RelativeLayout.LayoutParams)localObject2).addRule(11, -1);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(15, -1);
+    parama.adCanvasAppBtnComponentData.canShowProgress = true;
+    this.adCanvasAppBtnComponentView = new d(paramContext, this.canvasViewListener, parama.adCanvasAppBtnComponentData, true);
+    paramContext = new RelativeLayout.LayoutParams(this.value.adCanvasAppBtnComponentData.width, this.value.adCanvasAppBtnComponentData.height);
+    ((RelativeLayout)localObject1).addView(this.adCanvasAppBtnComponentView, paramContext);
+    localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
   }
   
   public AdCanvasComponentData getData()
@@ -130,7 +127,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.components.appIcon.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.utils.dialogutils;
 
-import aepi;
-import alud;
+import afur;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -13,10 +12,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdpi;
-import bdpj;
-import bdpk;
+import anni;
+import bguh;
+import bgui;
+import bguj;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.BubblePopupWindow;
 
 public class QQCustomMenuImageLayout
@@ -31,7 +32,7 @@ public class QQCustomMenuImageLayout
   public static int f = 90;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bdpi jdField_a_of_type_Bdpi;
+  private bguh jdField_a_of_type_Bguh;
   private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
   public int b;
   private ImageView b;
@@ -92,8 +93,8 @@ public class QQCustomMenuImageLayout
   private ImageView a()
   {
     ImageView localImageView = new ImageView(getContext());
-    localImageView.setImageResource(2130838685);
-    localImageView.setContentDescription(alud.a(2131710596));
+    localImageView.setImageResource(2130838936);
+    localImageView.setContentDescription(anni.a(2131708972));
     localImageView.setBackgroundDrawable(null);
     localImageView.setOnClickListener(this);
     localImageView.setPadding((int)(this.h * jdField_a_of_type_Float), (int)(jdField_a_of_type_Float * 10.0F), (int)(this.h * jdField_a_of_type_Float), (int)(jdField_a_of_type_Float * 10.0F));
@@ -114,35 +115,35 @@ public class QQCustomMenuImageLayout
     return localTextView;
   }
   
-  private TextView a(bdpk parambdpk)
+  private TextView a(bguj parambguj)
   {
-    bdpj localbdpj = new bdpj(this, getContext());
-    localbdpj.setText(parambdpk.a());
-    localbdpj.setTextSize(10.0F);
+    bgui localbgui = new bgui(this, getContext());
+    localbgui.setText(parambguj.a());
+    localbgui.setTextSize(10.0F);
     Resources localResources = getContext().getResources();
-    localbdpj.setMinimumWidth(90);
-    localbdpj.setMaxLines(1);
+    localbgui.setMinimumWidth(90);
+    localbgui.setMaxLines(1);
     try
     {
-      Drawable localDrawable = getContext().getResources().getDrawable(parambdpk.b());
-      localbdpj.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
-      localbdpj.setCompoundDrawablePadding(0);
-      int i = aepi.a(9.0F, localResources);
-      localbdpj.setPadding(0, i, 0, i);
-      localbdpj.setContentDescription(parambdpk.a());
-      localbdpj.setId(parambdpk.a());
-      localbdpj.setTextColor(-855638017);
-      localbdpj.setBackgroundDrawable(null);
-      localbdpj.setIncludeFontPadding(true);
-      localbdpj.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localbdpj.setGravity(17);
-      return localbdpj;
+      Drawable localDrawable = getContext().getResources().getDrawable(parambguj.b());
+      localbgui.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
+      localbgui.setCompoundDrawablePadding(0);
+      int i = afur.a(9.0F, localResources);
+      localbgui.setPadding(0, i, 0, i);
+      localbgui.setContentDescription(parambguj.a());
+      localbgui.setId(parambguj.a());
+      localbgui.setTextColor(-855638017);
+      localbgui.setBackgroundDrawable(null);
+      localbgui.setIncludeFontPadding(true);
+      localbgui.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localbgui.setGravity(17);
+      return localbgui;
     }
     catch (RuntimeException localRuntimeException)
     {
       for (;;)
       {
-        aepi.a("QQCustomMenuImageLayout", "creatTextViewWithTopIcon ERR", localRuntimeException);
+        afur.a("QQCustomMenuImageLayout", "creatTextViewWithTopIcon ERR", localRuntimeException);
         Object localObject = null;
       }
     }
@@ -151,14 +152,14 @@ public class QQCustomMenuImageLayout
   public void a()
   {
     removeAllViews();
-    int m = this.jdField_a_of_type_Bdpi.a();
+    int m = this.jdField_a_of_type_Bguh.a();
     int i = 0;
     Object localObject;
     int k;
     int j;
     if (i < m)
     {
-      localObject = a(this.jdField_a_of_type_Bdpi.a(i));
+      localObject = a(this.jdField_a_of_type_Bguh.a(i));
       k = f;
       if (k < d)
       {
@@ -232,8 +233,8 @@ public class QQCustomMenuImageLayout
     {
       removeAllViews();
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838680);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131710589));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838931);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131708965));
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(this.h * jdField_a_of_type_Float), (int)(jdField_a_of_type_Float * 10.0F), (int)(this.h * jdField_a_of_type_Float), (int)(jdField_a_of_type_Float * 10.0F));
@@ -243,9 +244,9 @@ public class QQCustomMenuImageLayout
       addView(this.jdField_a_of_type_AndroidWidgetImageView);
       int k = 0 + i;
       int j = this.g;
-      if (j < this.jdField_a_of_type_Bdpi.a())
+      if (j < this.jdField_a_of_type_Bguh.a())
       {
-        localObject = a(this.jdField_a_of_type_Bdpi.a(j));
+        localObject = a(this.jdField_a_of_type_Bguh.a(j));
         int m = f;
         if (m < d) {
           i = d;
@@ -280,17 +281,21 @@ public class QQCustomMenuImageLayout
     if (paramView == this.jdField_a_of_type_AndroidWidgetImageView) {
       a();
     }
-    while (paramView != this.jdField_b_of_type_AndroidWidgetImageView) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (paramView == this.jdField_b_of_type_AndroidWidgetImageView) {
+        b();
+      }
     }
-    b();
   }
   
-  public void setMenu(bdpi parambdpi)
+  public void setMenu(bguh parambguh)
   {
-    this.jdField_a_of_type_Bdpi = parambdpi;
+    this.jdField_a_of_type_Bguh = parambguh;
     if (QLog.isColorLevel()) {
-      QLog.d("QQCustomMenuImageLayout", 4, "MENU:" + this.jdField_a_of_type_Bdpi.toString());
+      QLog.d("QQCustomMenuImageLayout", 4, "MENU:" + this.jdField_a_of_type_Bguh.toString());
     }
   }
   
@@ -306,7 +311,7 @@ public class QQCustomMenuImageLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout
  * JD-Core Version:    0.7.0.1
  */

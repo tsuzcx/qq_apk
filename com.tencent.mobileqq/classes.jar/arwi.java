@@ -1,28 +1,69 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class arwi
-  implements aetk
+class arwi
+  implements View.OnClickListener
 {
-  public arwi(FlashChatPanel paramFlashChatPanel) {}
+  arwi(arwh paramarwh, arza paramarza) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    return true;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramView instanceof ArkAppView)) {
-      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
+    Object localObject = new Intent();
+    label84:
+    String str1;
+    label110:
+    int i;
+    if (this.jdField_a_of_type_Arza.jdField_a_of_type_Boolean)
+    {
+      ((Intent)localObject).putExtra("emoji_to_dressup", true);
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Arwh.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, (Intent)localObject, false);
+      if (this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+        break label257;
+      }
+      localObject = "";
+      String str2 = this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
+      if (!this.jdField_a_of_type_Arza.jdField_a_of_type_Boolean) {
+        break label272;
+      }
+      str1 = "1";
+      VasWebviewUtil.reportCommercialDrainage((String)localObject, "ep_mall", "0X8007192", null, 1, 0, 0, null, str2, str1);
+      if ((this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) <= 0) {
+        break label279;
+      }
+      i = 3;
     }
-    return true;
+    for (;;)
+    {
+      bcst.b(this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, i + "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) != 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        ((Intent)localObject).putExtra("emoji_is_original", bool);
+        ((Intent)localObject).putExtra("emoji_author_id", this.jdField_a_of_type_Arza.jdField_a_of_type_Int);
+        break;
+      }
+      label257:
+      localObject = this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      break label84;
+      label272:
+      str1 = "2";
+      break label110;
+      label279:
+      if (this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.subType == 4) {
+        i = 4;
+      } else {
+        i = 1;
+      }
+    }
   }
 }
 

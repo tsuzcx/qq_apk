@@ -1,29 +1,23 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class shk
-  extends GestureDetector.SimpleOnGestureListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$dismissGuideRootView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "isReverse", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class shk
+  extends AnimatorListenerAdapter
 {
-  private shk(GestureCropImageView paramGestureCropImageView) {}
+  shk(View paramView) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onAnimationEnd(@Nullable Animator paramAnimator, boolean paramBoolean)
   {
-    if (GestureCropImageView.a(this.a)) {
-      this.a.a(this.a.c(), paramMotionEvent.getX(), paramMotionEvent.getY(), 200L);
-    }
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    this.a.a(-paramFloat1, -paramFloat2);
-    return true;
+    this.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     shk
  * JD-Core Version:    0.7.0.1
  */

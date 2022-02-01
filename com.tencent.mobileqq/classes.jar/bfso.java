@@ -1,43 +1,17 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class bfso
-  extends bfsa
 {
-  private List<String> a;
+  public long a;
+  public boolean a;
   
-  public bfso()
+  public bfso(boolean paramBoolean, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public void a(String paramString)
-  {
-    super.a(paramString);
-    try
-    {
-      paramString = new JSONObject(paramString).getJSONArray(this.jdField_a_of_type_JavaLangString);
-      int j = paramString.length();
-      int i = 0;
-      while (i < j)
-      {
-        this.jdField_a_of_type_JavaUtilList.add(paramString.getString(i));
-        i += 1;
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfso
  * JD-Core Version:    0.7.0.1
  */

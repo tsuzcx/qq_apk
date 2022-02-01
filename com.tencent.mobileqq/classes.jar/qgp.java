@@ -1,21 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class qgp
-  implements View.OnClickListener
+public class qgp
+  implements ViewBase.OnClickListener
 {
-  qgp(qgo paramqgo, int paramInt1, int paramInt2, int paramInt3) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public void onClick(View paramView)
+  public qgp(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    String str = String.format("https://viola.qq.com/js/redpackIndex.js?_rij_violaUrl=1&hideNav=1&statusColor=1&statusBarStyle=1&v_nav_immer=1&v_tid=6&v_bundleName=redpackIndex&v_bid=3740&redpack_type=%d&plat_source=%d&jump_source=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
-    ors.a(paramView.getContext(), str);
-    this.jdField_a_of_type_Qgo.b();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
+      return;
+    }
+    if (pha.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+      pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    }
+    pfe.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A73", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qgp
  * JD-Core Version:    0.7.0.1
  */

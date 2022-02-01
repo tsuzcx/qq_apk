@@ -1,9 +1,8 @@
-import android.view.View;
+import java.util.ArrayList;
 
-public class befk
+public abstract interface befk
 {
-  public View a;
-  public View b;
+  public abstract void a(int paramInt, String paramString, ArrayList<befh> paramArrayList);
 }
 
 

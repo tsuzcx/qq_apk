@@ -1,20 +1,30 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class adzw
-  extends MqqHandler
+  extends annz
 {
-  public adzw(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public adzw(Conversation paramConversation) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, Long paramLong)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onGetUserCreateHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", troopOwner=" + paramLong);
     }
-    this.a.finish();
+    if ((paramBoolean) && (paramInt == 0)) {
+      this.a.a(0L);
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2, String paramString3, List<Long> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onGetHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", jumpurl=" + paramString3);
+    }
+    if ((paramBoolean) && (paramInt == 0)) {
+      this.a.a(0L);
+    }
   }
 }
 

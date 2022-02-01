@@ -1,19 +1,6 @@
-import com.tencent.mobileqq.gamecenter.util.QQGameHelper.2;
-import com.tencent.qphone.base.util.QLog;
-
-public class asno
-  implements nbs
+public abstract interface asno
 {
-  public asno(QQGameHelper.2 param2) {}
-  
-  public void loaded(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameHelper", 2, "load 4235 html web resource finish code:" + paramInt);
-    }
-  }
-  
-  public void progress(int paramInt) {}
+  public abstract void a(String paramString, int paramInt);
 }
 
 

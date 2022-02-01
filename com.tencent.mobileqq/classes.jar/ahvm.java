@@ -1,41 +1,18 @@
-import android.os.Build.VERSION;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.util.WeakReference;
 
-public class ahvm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class ahvm
+  implements View.OnClickListener
 {
-  public ahvm(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  ahvm(ahvl paramahvl, int paramInt) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      this.a.b(this.a.e);
-      this.a.c(this.a.e);
-      View localView = this.a.a.getChildAt(this.a.e);
-      if (localView != null)
-      {
-        this.a.h = localView.getLeft();
-        if (localView.getMeasuredWidth() == 0)
-        {
-          this.a.h = (SimpleSlidingIndicator.a(this.a) + (SimpleSlidingIndicator.b(this.a) + SimpleSlidingIndicator.c(this.a)) * this.a.e);
-          if (QLog.isColorLevel()) {
-            QLog.i("SimpleSlidingIndicator", 2, "onGlobalLayout, x[" + this.a.h + "], size[" + this.a.a.getChildCount() + "], left[" + localView.getLeft() + "], width[" + localView.getMeasuredWidth() + "], pos[" + this.a.e + "], CPlr" + SimpleSlidingIndicator.a(this.a) + "]");
-          }
-        }
-        this.a.invalidate();
-      }
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    ((PhotoListPanel)this.jdField_a_of_type_Ahvl.a.get()).a(paramView, this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

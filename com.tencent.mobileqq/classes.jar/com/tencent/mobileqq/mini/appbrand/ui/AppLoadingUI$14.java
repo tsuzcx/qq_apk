@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import alud;
 import android.os.Handler;
 import android.os.Message;
+import anni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -29,7 +29,7 @@ class AppLoadingUI$14
             this.this$0.uiHandler.postDelayed(new AppLoadingUI.14.1(this), 1000L);
             return;
           }
-          str = alud.a(2131701006);
+          str = anni.a(2131699431);
           continue;
         }
         Object localObject = null;
@@ -44,7 +44,7 @@ class AppLoadingUI$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppLoadingUI.14
  * JD-Core Version:    0.7.0.1
  */

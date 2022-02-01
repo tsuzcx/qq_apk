@@ -1,18 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adua
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public adua(RegisterActivity paramRegisterActivity, String paramString1, String paramString2) {}
+  public adua(ChatHistory paramChatHistory) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, alud.a(2131713737) + alud.a(2131713758) + this.jdField_a_of_type_JavaLangString + alud.a(2131713736) + this.b + alud.a(2131713729));
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, 60000L);
+    long l = System.currentTimeMillis();
+    if (l - this.a.b > 1000L)
+    {
+      this.a.b = l;
+      this.a.b();
+      bcst.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

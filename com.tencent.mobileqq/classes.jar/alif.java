@@ -1,13 +1,28 @@
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2.23;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
-public abstract interface alif
+public class alif
+  implements DialogInterface.OnClickListener
 {
-  public abstract List<TraceData> a();
+  public alif(FlowCameraActivity2.23 param23) {}
   
-  public abstract boolean a(List<TraceData> paramList);
-  
-  public abstract boolean b(List<TraceData> paramList);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = this.a.this$0.getIntent();
+    paramDialogInterface.putExtra("flow_back", 0);
+    this.a.this$0.setResult(1001, paramDialogInterface);
+    paramDialogInterface = null;
+    if (this.a.this$0.f) {
+      paramDialogInterface = this.a.this$0.a.jdField_a_of_type_Almb;
+    }
+    this.a.this$0.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a(this.a.this$0.d, this.a.this$0.e, this.a.this$0.m, this.a.this$0.f, paramDialogInterface);
+    this.a.this$0.finish();
+  }
 }
 
 

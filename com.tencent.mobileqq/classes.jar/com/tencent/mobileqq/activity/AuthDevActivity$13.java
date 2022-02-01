@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import biau;
 
 class AuthDevActivity$13
   implements Runnable
@@ -9,7 +9,23 @@ class AuthDevActivity$13
   
   public void run()
   {
-    AuthDevActivity.a(this.this$0).setClickable(true);
+    try
+    {
+      if ((AuthDevActivity.a(this.this$0) == null) && (!this.this$0.isFinishing())) {
+        AuthDevActivity.a(this.this$0, new biau(this.this$0, this.this$0.getTitleBarHeight()));
+      }
+      if ((AuthDevActivity.a(this.this$0) != null) && (!AuthDevActivity.a(this.this$0).isShowing())) {
+        AuthDevActivity.a(this.this$0).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

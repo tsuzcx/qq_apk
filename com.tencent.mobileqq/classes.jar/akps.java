@@ -1,32 +1,24 @@
-import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
 import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akps
-  implements GLSurfaceView.EGLConfigChooser
+  implements View.OnClickListener
 {
-  private int a;
+  public akps(LingHbFragment paramLingHbFragment) {}
   
-  public akps(int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.i("ApolloSurfaceView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
-    this.a = paramInt;
-  }
-  
-  public EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
-  {
-    int i = this.a;
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
-    if (arrayOfInt[0] == 0)
+    QLog.i("LingHbFragment", 2, "change others...");
+    if (this.a.channel == 65536) {}
+    for (String str = "yyhongbao.word.change";; str = "klhongbao.word.change")
     {
-      QLog.e("ApolloSurfaceView", 1, "[ApolloConfigChooser], fail to set config");
-      return null;
+      this.a.addUploadData(str, "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    return arrayOfEGLConfig[0];
   }
 }
 

@@ -1,20 +1,38 @@
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
-class ojy
-  implements bhvm
+public class ojy
+  implements DialogInterface.OnKeyListener
 {
-  ojy(ojx paramojx) {}
+  public ojy(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void a()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a.getNativeView().setBackgroundColor(Color.parseColor("#FFFFFF"));
+    boolean bool = true;
+    if (paramInt == 4)
+    {
+      ReadInJoySettingActivity.a(this.a, true);
+      paramDialogInterface = ReadInJoySettingActivity.a(this.a);
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      paramDialogInterface.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return false;
+      label53:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ojy
  * JD-Core Version:    0.7.0.1
  */

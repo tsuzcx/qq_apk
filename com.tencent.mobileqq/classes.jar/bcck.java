@@ -1,40 +1,33 @@
-import android.os.CountDownTimer;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcck
-  extends CountDownTimer
+  extends MSFServlet
 {
-  public bcck(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramLong1, paramLong2);
-  }
-  
-  public void onFinish()
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.b())
+    paramIntent = (QQAppInterface)getAppRuntime();
+    if ("ConfigPushSvc.GetIpDirect".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      this.a.b();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
-      {
-        bdjz localbdjz = bdgm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131697879).setNegativeButton(2131697915, new bccm(this)).setPositiveButton(2131697907, new bccl(this));
-        localbdjz.setCancelable(false);
-        localbdjz.show();
+      InnerDns.getInstance().onReceivePush(paramFromServiceMsg);
+      if (QLog.isColorLevel()) {
+        QLog.i("IPDomainGet", 2, "onReceive response resultCode:" + paramFromServiceMsg.getResultCode() + " log:" + paramFromServiceMsg.getStringForLog());
       }
     }
   }
   
-  public void onTick(long paramLong)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    int i = (int)(paramLong / 1000L);
     if (QLog.isColorLevel()) {
-      QLog.d("ReciteRecordLayout", 2, "onTick remainSecond = " + i);
+      QLog.i("IPDomainGet", 2, "IPDomainGet onSend() ");
     }
-    if (i == 5) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131697871);
-    }
+    paramPacket.setSSOCommand("ConfigPushSvc.GetIpDirect");
+    paramPacket.setTimeout(15000L);
   }
 }
 

@@ -1,12 +1,16 @@
 package com.tencent.mobileqq.soload;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import azmo;
-import bdin;
+import bcnm;
+import bcnw;
+import bgnt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -18,15 +22,17 @@ public class LoadExtResult
 {
   private int downloadSoNum;
   private int failIndex;
-  public azmo failInfo;
+  public bcnm failInfo;
   private boolean isFirstlyLoad = true;
+  private boolean isNeedRetry;
+  private Map<String, bcnw> mPathsMap = new HashMap();
   private String reportStr = "";
-  private int resCode;
+  int resCode;
   private int soNum;
-  private Map<String, String> soPaths = new HashMap();
   
   private LoadExtResult a(LoadExtResult paramLoadExtResult)
   {
+    boolean bool2 = true;
     if (paramLoadExtResult == null) {
       return this;
     }
@@ -34,9 +40,9 @@ public class LoadExtResult
     this.resCode = paramLoadExtResult.resCode;
     this.downloadSoNum += paramLoadExtResult.downloadSoNum;
     if ((this.isFirstlyLoad) || (paramLoadExtResult.isFirstlyLoad)) {}
-    for (boolean bool = true;; bool = false)
+    for (boolean bool1 = true;; bool1 = false)
     {
-      this.isFirstlyLoad = bool;
+      this.isFirstlyLoad = bool1;
       if (!TextUtils.isEmpty(paramLoadExtResult.reportStr))
       {
         if (!TextUtils.isEmpty(this.reportStr)) {
@@ -44,54 +50,91 @@ public class LoadExtResult
         }
         this.reportStr += paramLoadExtResult.reportStr;
       }
-      if (paramLoadExtResult.soPaths.size() <= 0) {
+      if (paramLoadExtResult.mPathsMap.size() <= 0) {
         break;
       }
-      Iterator localIterator = paramLoadExtResult.soPaths.entrySet().iterator();
+      Iterator localIterator = paramLoadExtResult.mPathsMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        this.soPaths.put(localEntry.getKey(), localEntry.getValue());
+        this.mPathsMap.put(localEntry.getKey(), localEntry.getValue());
       }
     }
     this.failInfo = paramLoadExtResult.failInfo;
-    return this;
+    if ((this.isNeedRetry) && (paramLoadExtResult.isNeedRetry)) {}
+    for (bool1 = bool2;; bool1 = false)
+    {
+      this.isNeedRetry = bool1;
+      return this;
+    }
   }
   
-  public static LoadExtResult create(int paramInt1, int paramInt2, String paramString)
+  private boolean a(int paramInt1, int paramInt2)
   {
-    return create(paramInt1, paramInt2, false, true, paramString, null);
+    return (paramInt1 == 3) && ((paramInt2 == -104) || (paramInt2 == -111) || (paramInt2 == -114));
   }
   
-  public static LoadExtResult create(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  private boolean b(int paramInt1, int paramInt2)
   {
-    int i = 0;
+    return (paramInt1 == 2) && (paramInt2 == -2);
+  }
+  
+  public static LoadExtResult create(int paramInt1, int paramInt2)
+  {
+    return create(paramInt1, paramInt2, null, SoLoadInfo.sDefault, LoadOptions.sDefault);
+  }
+  
+  public static LoadExtResult create(int paramInt1, int paramInt2, String paramString, @NonNull SoLoadInfo paramSoLoadInfo, LoadOptions paramLoadOptions)
+  {
+    boolean bool = true;
     LoadExtResult localLoadExtResult = new LoadExtResult();
     localLoadExtResult.soNum = paramInt2;
     localLoadExtResult.resCode = paramInt1;
-    if (paramBoolean1)
+    if (paramSoLoadInfo.isFinishDownload)
     {
       paramInt2 = 1;
       localLoadExtResult.downloadSoNum = paramInt2;
-      localLoadExtResult.isFirstlyLoad = paramBoolean2;
+      localLoadExtResult.isFirstlyLoad = paramSoLoadInfo.isFirstlyLoad;
       if (localLoadExtResult.resCode != 0) {
-        break label127;
+        break label220;
+      }
+      paramInt2 = 0;
+      label58:
+      localLoadExtResult.failIndex = paramInt2;
+      if (((paramLoadOptions.flag & 0x4) == 0) || (paramSoLoadInfo.soDetailInfo.relatedFileInfo == null) || (!TextUtils.isEmpty(paramSoLoadInfo.rFileFolder))) {
+        break label225;
       }
     }
-    label127:
-    for (paramInt2 = i;; paramInt2 = 1)
+    for (;;)
     {
-      localLoadExtResult.failIndex = paramInt2;
-      if (!TextUtils.isEmpty(paramString1))
+      localLoadExtResult.isNeedRetry = bool;
+      if (!TextUtils.isEmpty(paramString))
       {
-        localLoadExtResult.reportStr = (paramString1 + "=" + paramInt1);
-        if (!TextUtils.isEmpty(paramString2)) {
-          localLoadExtResult.soPaths.put(paramString1, paramString2);
+        localLoadExtResult.reportStr = (paramString + "=" + paramInt1);
+        Object localObject2 = null;
+        Object localObject1 = localObject2;
+        if (paramInt1 == 0)
+        {
+          LoadOptions localLoadOptions = paramLoadOptions;
+          if (paramLoadOptions == null) {
+            localLoadOptions = LoadOptions.sDefault;
+          }
+          localObject1 = localObject2;
+          if ((localLoadOptions.flag & 0x2) != 0) {
+            localObject1 = paramSoLoadInfo.soPathToLoad;
+          }
         }
+        paramSoLoadInfo = new bcnw((String)localObject1, paramSoLoadInfo.rFileFolder, paramSoLoadInfo.getVer());
+        localLoadExtResult.mPathsMap.put(paramString, paramSoLoadInfo);
       }
       return localLoadExtResult;
       paramInt2 = 0;
       break;
+      label220:
+      paramInt2 = 1;
+      break label58;
+      label225:
+      bool = false;
     }
   }
   
@@ -110,10 +153,10 @@ public class LoadExtResult
       if (QLog.isColorLevel()) {
         QLog.i("LoadExtResult", 2, "[getDelayAyncTime]FailInfo:" + this.failInfo);
       }
-      if ((!isDownloadNetworkErr(this.failInfo.jdField_a_of_type_Int, this.failInfo.b)) && (!isGetConfigNetworkErr(this.failInfo.jdField_a_of_type_Int, this.failInfo.b))) {
+      if ((!a(this.failInfo.jdField_a_of_type_Int, this.failInfo.b)) && (!b(this.failInfo.jdField_a_of_type_Int, this.failInfo.b))) {
         break label164;
       }
-      int i = bdin.b(BaseApplicationImpl.getApplication());
+      int i = bgnt.b(BaseApplicationImpl.getApplication());
       if (QLog.isColorLevel()) {
         QLog.i("LoadExtResult", 2, "[getDelayAyncTime]curNetType:" + i);
       }
@@ -127,6 +170,24 @@ public class LoadExtResult
     for (long l = 300000L;; l = 600000L) {
       return l + this.failInfo.jdField_a_of_type_Long - NetConnInfoCenter.getServerTimeMillis();
     }
+  }
+  
+  public String getRelatedFilesFolder()
+  {
+    Iterator localIterator = this.mPathsMap.values().iterator();
+    if (localIterator.hasNext()) {
+      return ((bcnw)localIterator.next()).b;
+    }
+    return "";
+  }
+  
+  public String getRelatedFilesFolder(String paramString)
+  {
+    paramString = (bcnw)this.mPathsMap.get(paramString);
+    if (paramString == null) {
+      return "";
+    }
+    return paramString.b;
   }
   
   public int getReportCode()
@@ -151,19 +212,45 @@ public class LoadExtResult
     return this.resCode;
   }
   
+  public String getSoLoadPath()
+  {
+    Iterator localIterator = this.mPathsMap.values().iterator();
+    if (localIterator.hasNext()) {
+      return ((bcnw)localIterator.next()).a;
+    }
+    return "";
+  }
+  
   public String getSoLoadPath(String paramString)
   {
-    return (String)this.soPaths.get(paramString);
+    paramString = (bcnw)this.mPathsMap.get(paramString);
+    if (paramString == null) {
+      return "";
+    }
+    return paramString.a;
   }
   
-  boolean isDownloadNetworkErr(int paramInt1, int paramInt2)
+  public String getVer()
   {
-    return (paramInt1 == 3) && ((paramInt2 == -104) || (paramInt2 == -111) || (paramInt2 == -114));
+    Iterator localIterator = this.mPathsMap.values().iterator();
+    if (localIterator.hasNext()) {
+      return ((bcnw)localIterator.next()).c;
+    }
+    return "";
   }
   
-  boolean isGetConfigNetworkErr(int paramInt1, int paramInt2)
+  public String getVer(String paramString)
   {
-    return (paramInt1 == 2) && (paramInt2 == -2);
+    paramString = (bcnw)this.mPathsMap.get(paramString);
+    if (paramString == null) {
+      return "";
+    }
+    return paramString.c;
+  }
+  
+  public boolean isNeedRetry()
+  {
+    return (!isSucc()) || (this.isNeedRetry);
   }
   
   public boolean isSucc()
@@ -183,7 +270,7 @@ public class LoadExtResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.soload.LoadExtResult
  * JD-Core Version:    0.7.0.1
  */

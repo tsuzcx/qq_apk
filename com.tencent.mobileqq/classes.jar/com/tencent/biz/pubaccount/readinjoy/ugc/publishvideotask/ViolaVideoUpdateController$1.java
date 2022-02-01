@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask;
 
 import android.os.Handler;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import qvc;
+import rqh;
 
 public class ViolaVideoUpdateController$1
   implements Runnable
 {
-  public ViolaVideoUpdateController$1(qvc paramqvc) {}
+  public ViolaVideoUpdateController$1(rqh paramrqh) {}
   
   public void run()
   {
-    qvc.a(this.this$0).run();
-    ThreadManagerV2.getUIHandlerV2().postDelayed(this, qvc.a(this.this$0));
+    rqh.a(this.this$0).run();
+    ThreadManagerV2.getUIHandlerV2().postDelayed(this, rqh.a(this.this$0));
   }
 }
 

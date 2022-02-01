@@ -1,30 +1,24 @@
 package com.tencent.biz.qrcode.activity;
 
 import android.view.View;
-import xze;
+import bgfz;
+import zrp;
 
-public class QRDisplayActivity$22
+class QRDisplayActivity$22
   implements Runnable
 {
-  QRDisplayActivity$22(QRDisplayActivity paramQRDisplayActivity, boolean paramBoolean) {}
+  QRDisplayActivity$22(QRDisplayActivity paramQRDisplayActivity) {}
   
   public void run()
   {
-    if (this.a)
-    {
-      this.this$0.d.setOnClickListener(null);
-      this.this$0.d.setClickable(false);
-      this.this$0.d.setOnTouchListener(new xze(this));
-      return;
-    }
-    this.this$0.d.setClickable(true);
-    this.this$0.d.setOnClickListener(this.this$0);
-    this.this$0.d.setTouchDelegate(null);
+    zrp localzrp = new zrp(this.this$0.d, this.this$0);
+    this.this$0.d.setAccessibilityDelegate(localzrp);
+    bgfz.a(this.this$0.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.22
  * JD-Core Version:    0.7.0.1
  */

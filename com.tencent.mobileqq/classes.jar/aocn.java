@@ -1,49 +1,46 @@
-import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.face.FaceInfo;
+import java.lang.ref.WeakReference;
 
 public class aocn
-  implements alpg
+  implements aocl
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public String a;
+  public WeakReference<aoch> a;
+  
+  aocn(aocj paramaocj, aoch paramaoch)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      if ((paramObject != null) && (paramObject.length == 1))
-      {
-        aocp localaocp = aocq.a();
-        if ((localaocp == null) || (!localaocp.a())) {
-          break label135;
-        }
-      }
-      break;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaoch);
+    if ((paramaoch != null) && (paramaoch.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo != null)) {
+      this.jdField_a_of_type_JavaLangString = paramaoch.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString;
     }
-    label135:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if ((paramInt != 0) && (!((Boolean)paramObject[0]).booleanValue())) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        aobw.c(paramBoolean);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_GET_COLOR_NOTE_RECENT_SWITCH");
-        return;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ColorNoteObserver", 0, "onUpdate: params == null || params.length != 1");
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_SET_COLOR_NOTE_RECENT_SWITCH");
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_Aocj.a(paramBoolean, 11, paramString, this.jdField_a_of_type_Aocj.jdField_a_of_type_Aocn);
+  }
+  
+  public void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Aocj.a(paramBoolean1, 32, paramString, this.jdField_a_of_type_Aocj.jdField_a_of_type_Aocn);
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_Aocj.a(paramBoolean, 1, paramString, this.jdField_a_of_type_Aocj.jdField_a_of_type_Aocn);
+  }
+  
+  public void b(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    if ((this.jdField_a_of_type_Aocj.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) || (paramInt != this.jdField_a_of_type_Aocj.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b)) {
       return;
     }
+    this.jdField_a_of_type_Aocj.a(paramBoolean1, 16, paramString, this.jdField_a_of_type_Aocj.jdField_a_of_type_Aocn);
+  }
+  
+  public void c(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_Aocj.a(paramBoolean, 4, paramString, this.jdField_a_of_type_Aocj.jdField_a_of_type_Aocn);
   }
 }
 

@@ -1,84 +1,44 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.QavPanel;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.VideoInviteActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class mke
-  implements Animation.AnimationListener
+public class mke
+  extends BroadcastReceiver
 {
-  mke(mkb parammkb) {}
+  public mke(VideoInviteActivity paramVideoInviteActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
+    String str = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "OutAnimation onAnimationEnd");
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onReceive action = " + str);
     }
-    try
+    if ("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO".equals(str)) {
+      this.a.h();
+    }
+    do
     {
-      if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
+      return;
+      if ("tencent.video.q2v.sdk.onRequestVideo".equals(str))
       {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().ar = false;
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().as = false;
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "onReceive action = " + str);
+        this.a.e();
+        return;
       }
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null) {
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setVisibility(4);
+      if ("android.intent.action.USER_PRESENT".equals(str))
+      {
+        this.a.a("ACTION_USER_PRESENT");
+        return;
       }
-      if (this.a.jdField_a_of_type_AndroidViewView != null) {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      }
-      if (this.a.b != null) {
-        this.a.b.setVisibility(4);
-      }
-      if (this.a.c != null) {
-        this.a.c.setVisibility(4);
-      }
-      if (this.a.d != null) {
-        this.a.d.setVisibility(4);
-      }
-      if (this.a.e != null) {
-        this.a.e.setVisibility(4);
-      }
-      if (this.a.g != null) {
-        this.a.g.setVisibility(4);
-      }
-      if (this.a.jdField_a_of_type_Mkg != null) {
-        this.a.jdField_a_of_type_Mkg.b();
-      }
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationEnd Exception :" + paramAnimation);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "OutAnimation onAnimationStart");
-    }
-    try
-    {
-      if (this.a.jdField_a_of_type_Mkg != null) {
-        this.a.jdField_a_of_type_Mkg.a();
-      }
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationStart Exception :" + paramAnimation);
-    }
+    } while (this.a.jdField_a_of_type_Mkk == null);
+    this.a.jdField_a_of_type_Mkk.a(paramContext, str, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mke
  * JD-Core Version:    0.7.0.1
  */

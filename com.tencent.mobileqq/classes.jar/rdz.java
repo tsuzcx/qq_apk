@@ -1,20 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-final class rdz
-  extends AnimatorListenerAdapter
+public abstract interface rdz
 {
-  rdz(View paramView) {}
+  public abstract String a(BaseArticleInfo paramBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setLayerType(0, null);
-  }
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rdz
  * JD-Core Version:    0.7.0.1
  */

@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import pgd;
 import pxk;
-import pxt;
-import qbs;
-import qfg;
+import qqs;
+import qrb;
+import qva;
+import qyo;
 
 public class ComponentDivider
   extends View
-  implements pxk
+  implements qqs
 {
-  qbs a;
+  qva a;
   
   public ComponentDivider(Context paramContext)
   {
@@ -46,16 +46,16 @@ public class ComponentDivider
   private void a(Context paramContext, Object paramObject)
   {
     b(paramContext);
-    if ((paramObject instanceof pgd))
+    if ((paramObject instanceof pxk))
     {
-      this.a.a((pgd)paramObject);
+      this.a.a((pxk)paramObject);
       b();
     }
   }
   
   private void b(Context paramContext)
   {
-    this.a = new qbs();
+    this.a = new qva();
     a(paramContext);
     a();
   }
@@ -64,20 +64,20 @@ public class ComponentDivider
   
   public void a(Context paramContext)
   {
-    setBackgroundColor(getContext().getResources().getColor(2131166786));
+    setBackgroundColor(getContext().getResources().getColor(2131166866));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pgd))
+    if ((paramObject instanceof pxk))
     {
-      this.a.a((pgd)paramObject);
-      if ((((pgd)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
+      this.a.a((pxk)paramObject);
+      if ((((pxk)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
       {
         paramObject = (LinearLayout.LayoutParams)getLayoutParams();
         paramObject.leftMargin = Utils.dp2px(6.0D);
         paramObject.rightMargin = Utils.dp2px(6.0D);
-        setBackgroundColor(getContext().getResources().getColor(2131165613));
+        setBackgroundColor(getContext().getResources().getColor(2131165651));
       }
       if (this.a.a.e()) {
         setVisibility(0);
@@ -90,16 +90,16 @@ public class ComponentDivider
     setVisibility(8);
   }
   
-  public void a(pxt parampxt)
+  public void a(qrb paramqrb)
   {
-    this.a.a(parampxt);
+    this.a.a(paramqrb);
   }
   
   public void b()
   {
-    pgd localpgd = this.a.a;
+    pxk localpxk = this.a.a;
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
-    qfg.a(getContext(), localpgd, localLayoutParams);
+    qyo.a(getContext(), localpxk, localLayoutParams);
     setLayoutParams(localLayoutParams);
   }
 }

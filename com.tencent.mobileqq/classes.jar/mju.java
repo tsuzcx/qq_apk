@@ -1,95 +1,111 @@
-import android.view.MotionEvent;
+import android.content.Context;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.ImageButton;
 import com.tencent.av.VideoController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.ui.VideoInviteActivity.3.1;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
-class mju
-  implements View.OnTouchListener
+public class mju
+  implements bkhw
 {
-  mju(mjs parammjs) {}
+  public mju(VideoInviteActivity paramVideoInviteActivity, bkho parambkho, boolean paramBoolean, long paramLong) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = mjs.a(this.a).a();
-    switch (paramMotionEvent.getAction())
+    this.jdField_a_of_type_Bkho.dismiss();
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_AndroidWidgetImageButton != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
     {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(true);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
     }
-    for (;;)
+    VideoInviteActivity.3.1 local1;
+    switch (paramInt)
     {
-      return false;
-      int i = Calendar.getInstance().get(11) * 60 + Calendar.getInstance().get(12);
-      if (paramView.getId() == 2131372860)
+    default: 
+      paramView = null;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.jdField_a_of_type_Long, true);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_e_of_type_Int, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_e_of_type_JavaLangString, paramView, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.j);
+      if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.j) && (bgrj.a(VideoInviteActivity.d(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity))))
       {
-        mjs.a(this.a, 0);
-        if (((mjs.a(this.a).a().v != 2) && (mjs.a(this.a).a().v != 3)) || (mjs.b(this.a) == 2) || (mjs.b(this.a) == 3) || (bool) || (!mww.b())) {
-          break label616;
-        }
-        mjs.a(this.a, true);
-        paramView = new mjw(this);
-        if ((mjs.a(this.a).a().w <= i) && (i < mjs.a(this.a).a().x)) {
-          break label590;
-        }
-        paramView = bdgm.a(mjs.a(this.a), 0, null, alud.a(2131709303), alud.a(2131709301), alud.a(2131709300), paramView, paramView);
-        if (paramView != null)
-        {
-          paramView.show();
-          mww.a();
+        paramView = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+        local1 = new VideoInviteActivity.3.1(this);
+        if (!GesturePWDUtils.getJumpLock(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin())) {
+          break label630;
         }
       }
-      for (;;)
+      break;
+    }
+    label630:
+    for (long l = 500L;; l = 0L)
+    {
+      paramView.postDelayed(local1, l);
+      return;
+      if (this.jdField_a_of_type_Boolean)
       {
-        azqs.b(null, "CliOper", "", "", "0X800A564", "0X800A564", 0, 0, "", "", "", "");
-        return false;
-        if (paramView.getId() == 2131372863)
+        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+        for (paramView = "0X80043A0";; paramView = "0X80043B2")
         {
-          mjs.a(this.a, 1);
+          bcst.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i), "");
+          paramView = VideoInviteActivity.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity).getString(2131695009);
           break;
         }
-        QLog.i("QavDoubleVideoSharpnessMangaer", 1, "hdModeFreeUse. curMinute = " + i + ", startTime = " + mjs.a(this.a).a().w + ", endTime = " + mjs.a(this.a).a().x + ", tips = " + mjs.a(this.a).a().n);
-        if ((bool) || ((mjs.a(this.a).a().w <= i) && (i < mjs.a(this.a).a().x)))
-        {
-          if (paramView.getId() == 2131372870)
-          {
-            mjs.a(this.a, 2);
-            break;
-          }
-          mjs.a(this.a, 3);
-          break;
-        }
-        mjs.a(this.a, true);
-        if (paramView.getId() == 2131372870) {
-          mjs.b(this.a, 2);
-        }
-        for (;;)
-        {
-          paramView = new mjv(this);
-          if ((mjs.a(this.a).a().w > i) || (i >= mjs.a(this.a).a().x))
-          {
-            paramView = bdgm.a(mjs.a(this.a), 0, alud.a(2131709297), null, alud.a(2131709298), alud.a(2131709299), paramView, paramView);
-            if (paramView != null) {
-              paramView.show();
-            }
-          }
-          azqs.b(null, "CliOper", "", "", "0X800A562", "0X800A562", 0, 0, "", "", "", "");
-          return false;
-          mjs.b(this.a, 3);
-        }
-        label590:
-        this.a.c();
-        mjs.a(this.a, false);
-        mjs.a(this.a);
       }
-      label616:
-      mjs.a(this.a);
-      azqs.b(null, "CliOper", "", "", "0X800A344", "0X800A344", mjs.b(this.a) + 1, 0, "", "", "", "");
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+      for (paramView = "0X80043A6";; paramView = "0X80043AC") {
+        break;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+        for (paramView = "0X80043A1";; paramView = "0X80043B3")
+        {
+          bcst.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
+          paramView = VideoInviteActivity.b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity).getString(2131695011);
+          break;
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+      for (paramView = "0X80043A7";; paramView = "0X80043AD") {
+        break;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+        for (paramView = "0X80043A2";; paramView = "0X80043B4")
+        {
+          bcst.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
+          paramView = VideoInviteActivity.c(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity).getString(2131695010);
+          break;
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+      for (paramView = "0X80043A8";; paramView = "0X80043AE") {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.j = true;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+        for (paramView = "0X80043A3";; paramView = "0X80043B5")
+        {
+          bcst.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
+          paramView = null;
+          break;
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+      for (paramView = "0X80043A9";; paramView = "0X80043AF") {
+        break;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mju
  * JD-Core Version:    0.7.0.1
  */

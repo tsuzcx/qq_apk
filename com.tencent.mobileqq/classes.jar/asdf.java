@@ -1,18 +1,28 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.NativeGifFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-class asdf
-  implements DialogInterface.OnDismissListener
+public class asdf
 {
-  asdf(asdb paramasdb) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static AbstractGifImage a(File paramFile, int paramInt, boolean paramBoolean)
   {
-    if ((this.a.a instanceof DirectForwardActivity)) {
-      this.a.a.finish();
+    try
+    {
+      if (NativeGifFactory.isUseNewGif()) {
+        return new asdh(paramFile, paramInt, paramBoolean);
+      }
+      paramFile = new asdg(paramFile, paramInt, paramBoolean);
+      return paramFile;
     }
+    catch (IOException paramFile)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("VoiceGifFactory", 2, "getVoiceGifObject exception. msg:" + paramFile.getMessage());
+      }
+    }
+    return null;
   }
 }
 

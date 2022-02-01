@@ -1,42 +1,51 @@
 package com.tencent.mobileqq.filemanager.multisave;
 
-import arpy;
-import arpz;
-import arsx;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import attv;
+import attw;
+import atwe;
 
 public class QFileMultiSaveReq$1
   implements Runnable
 {
-  public QFileMultiSaveReq$1(arpy paramarpy, String paramString, arpz paramarpz) {}
+  public QFileMultiSaveReq$1(attv paramattv, String paramString, attw paramattw) {}
   
   public void run()
   {
-    try
+    for (;;)
     {
-      boolean bool = arsx.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Arpz != null)
+      try
       {
-        if (bool)
+        if (TextUtils.isEmpty(atwe.b(this.jdField_a_of_type_JavaLangString))) {
+          break label97;
+        }
+        i = 1;
+        if (this.jdField_a_of_type_Attw != null)
         {
-          this.jdField_a_of_type_Arpz.a();
+          if (i != 0)
+          {
+            this.jdField_a_of_type_Attw.a();
+            return;
+          }
+          this.jdField_a_of_type_Attw.a(-1, "save file fail. filePath[" + this.jdField_a_of_type_JavaLangString + "]");
           return;
         }
-        this.jdField_a_of_type_Arpz.a(-1, "save file fail. filePath[" + this.jdField_a_of_type_JavaLangString + "]");
-        return;
       }
-    }
-    catch (Exception localException)
-    {
-      if (this.jdField_a_of_type_Arpz != null) {
-        this.jdField_a_of_type_Arpz.a(-1, localException.getMessage());
+      catch (Exception localException)
+      {
+        if (this.jdField_a_of_type_Attw != null) {
+          this.jdField_a_of_type_Attw.a(-1, localException.getMessage());
+        }
       }
+      return;
+      label97:
+      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.QFileMultiSaveReq.1
  * JD-Core Version:    0.7.0.1
  */

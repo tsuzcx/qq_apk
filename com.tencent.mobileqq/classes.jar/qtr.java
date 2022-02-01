@@ -1,21 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class qtr
-  implements DialogInterface.OnClickListener
+class qtr
+  implements View.OnTouchListener
 {
-  public qtr(EditColumnFragment paramEditColumnFragment) {}
+  qtr(qtn paramqtn, LinearLayout paramLinearLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a(false);
-    this.a.i();
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qtr
  * JD-Core Version:    0.7.0.1
  */

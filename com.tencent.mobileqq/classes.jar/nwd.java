@@ -1,18 +1,25 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+
 class nwd
-  implements rtx
+  implements DialogInterface.OnCancelListener
 {
-  nwd(nwc paramnwc) {}
+  nwd(nvu paramnvu, JsResult paramJsResult, Context paramContext) {}
   
-  public void a(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.jdField_a_of_type_Rxg != null) {
-      this.a.jdField_a_of_type_Rxg.a(paramInt, this.a.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (this.jdField_a_of_type_Nvu.a > 2) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nwd
  * JD-Core Version:    0.7.0.1
  */

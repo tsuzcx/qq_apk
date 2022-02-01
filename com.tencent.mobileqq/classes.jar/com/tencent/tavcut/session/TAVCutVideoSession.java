@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.SparseArray;
+import android.view.TextureView;
 import android.view.ViewGroup;
 import com.tencent.tav.core.AssetImageGenerator;
 import com.tencent.tav.core.AssetImageGenerator.ApertureMode;
@@ -18,6 +20,7 @@ import com.tencent.tavcut.cover.VideoImageExtractor;
 import com.tencent.tavcut.exporter.VideoExportConfig;
 import com.tencent.tavcut.exporter.VideoExporter;
 import com.tencent.tavcut.player.MoviePlayer;
+import com.tencent.tavcut.player.MoviePlayer.onVideoProgressListener;
 import com.tencent.tavcut.session.callback.FrameExtractCallback;
 import com.tencent.tavcut.session.config.SessionConfig;
 import com.tencent.tavcut.util.DurationUtil;
@@ -33,54 +36,81 @@ import com.tencent.tavkit.composition.model.TAVAudioConfiguration;
 import com.tencent.tavkit.composition.model.TAVTransitionableAudio;
 import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
 import com.tencent.tavsticker.model.TAVSticker;
+import com.tencent.ttpic.baseutils.collection.CollectionUtils;
+import com.tencent.weseevideo.composition.VideoRenderChainConfigure;
 import com.tencent.weseevideo.composition.VideoRenderChainManager;
 import com.tencent.weseevideo.composition.builder.MediaBuilderFactory;
 import com.tencent.weseevideo.editor.sticker.StickerController;
+import com.tencent.weseevideo.editor.sticker.utils.StickerConverter;
 import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.WSTemplateManager;
 import com.tencent.weseevideo.model.data.MusicData;
 import com.tencent.weseevideo.model.data.MusicMaterialMetaDataBean;
 import com.tencent.weseevideo.model.effect.CropModel;
 import com.tencent.weseevideo.model.effect.MediaEffectModel;
 import com.tencent.weseevideo.model.effect.MusicModel;
 import com.tencent.weseevideo.model.effect.StickerModel;
+import com.tencent.weseevideo.model.effect.SubtitleModel;
 import com.tencent.weseevideo.model.resource.MediaClipModel;
 import com.tencent.weseevideo.model.resource.MediaResourceModel;
 import com.tencent.weseevideo.model.resource.VideoConfigurationModel;
 import com.tencent.weseevideo.model.resource.VideoResourceModel;
+import com.tencent.weseevideo.model.template.MediaTemplateModel;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class TAVCutVideoSession
   extends TAVCutSession
+  implements MoviePlayer.onVideoProgressListener
 {
   private List<MoviePlayer> players = new ArrayList();
   private boolean preIsPlaying = false;
-  private TAVCutVideoView tavCutVideoView;
+  protected TAVCutVideoView tavCutVideoView;
   private VideoImageExtractor videoImageExtractor = null;
   private String videoPath;
   
-  private MoviePlayer getPlayer()
+  private void addBaseMediaModel()
   {
-    if ((this.players != null) && (!this.players.isEmpty())) {
-      return (MoviePlayer)this.players.get(0);
+    MediaModel localMediaModel = new MediaModel();
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = new MediaClipModel();
+    Object localObject2 = new VideoResourceModel();
+    ((VideoResourceModel)localObject2).setPath(this.videoPath);
+    ((VideoResourceModel)localObject2).setType(1);
+    ((VideoResourceModel)localObject2).setSourceTimeDuration(DecoderUtils.getDuration(this.videoPath) / 1000L);
+    if ((this.sessionConfig != null) && (this.sessionConfig.getVideoInitCropConfig() != null))
+    {
+      localObject3 = this.sessionConfig.getVideoInitCropConfig();
+      CropModel localCropModel = new CropModel();
+      localCropModel.setCropConfig((CropConfig)localObject3);
+      localMediaModel.getMediaEffectModel().setCropModel(localCropModel);
     }
-    return null;
+    Object localObject3 = VideoUtil.getVideoSize(this.videoPath);
+    ((VideoResourceModel)localObject2).setWidth(((Size)localObject3).getWidth());
+    ((VideoResourceModel)localObject2).setHeight(((Size)localObject3).getHeight());
+    ((VideoResourceModel)localObject2).setRotate(0);
+    ((MediaClipModel)localObject1).setResource((VideoResourceModel)localObject2);
+    localObject2 = new VideoConfigurationModel();
+    ((VideoConfigurationModel)localObject2).setRotate(0);
+    if ((this.sessionConfig != null) && (this.sessionConfig.getContentMode() != null)) {
+      ((VideoConfigurationModel)localObject2).setContentMode(this.sessionConfig.getContentMode().ordinal());
+    }
+    ((MediaClipModel)localObject1).setVideoConfigurationModel((VideoConfigurationModel)localObject2);
+    localArrayList.add(localObject1);
+    localObject1 = localMediaModel.getMediaResourceModel();
+    ((MediaResourceModel)localObject1).setVideos(localArrayList);
+    localMediaModel.setMediaResourceModel((MediaResourceModel)localObject1);
+    this.mediaModels.add(localMediaModel);
   }
   
   private VideoRenderChainManager getRenderChainManager()
   {
     if ((this.renderChainManagers != null) && (this.renderChainManagers.size() > 0)) {
       return (VideoRenderChainManager)this.renderChainManagers.get(0);
-    }
-    return null;
-  }
-  
-  private StickerController getStickerController()
-  {
-    if ((this.stickerControllers != null) && (this.stickerControllers.size() > 0)) {
-      return (StickerController)this.stickerControllers.get(0);
     }
     return null;
   }
@@ -93,89 +123,19 @@ public class TAVCutVideoSession
     return null;
   }
   
-  private void initMediaModel()
+  private void mediaBuild(StickerController paramStickerController, VideoRenderChainConfigure paramVideoRenderChainConfigure)
   {
-    if (this.mediaModels == null)
-    {
-      this.mediaModels = new ArrayList();
-      MediaModel localMediaModel = new MediaModel();
-      ArrayList localArrayList = new ArrayList();
-      Object localObject1 = new MediaClipModel();
-      Object localObject2 = new VideoResourceModel();
-      ((VideoResourceModel)localObject2).setPath(this.videoPath);
-      ((VideoResourceModel)localObject2).setType(1);
-      ((VideoResourceModel)localObject2).setSourceTimeDuration(DecoderUtils.getDuration(this.videoPath) / 1000L);
-      if ((this.sessionConfig != null) && (this.sessionConfig.getVideoInitCropConfig() != null))
-      {
-        localObject3 = this.sessionConfig.getVideoInitCropConfig();
-        CropModel localCropModel = new CropModel();
-        localCropModel.setCropConfig((CropConfig)localObject3);
-        localMediaModel.getMediaEffectModel().setCropModel(localCropModel);
-      }
-      Object localObject3 = VideoUtil.getVideoSize(this.videoPath);
-      ((VideoResourceModel)localObject2).setWidth(((Size)localObject3).getWidth());
-      ((VideoResourceModel)localObject2).setHeight(((Size)localObject3).getHeight());
-      ((VideoResourceModel)localObject2).setRotate(0);
-      ((MediaClipModel)localObject1).setResource((VideoResourceModel)localObject2);
-      localObject2 = new VideoConfigurationModel();
-      ((VideoConfigurationModel)localObject2).setRotate(0);
-      if ((this.sessionConfig != null) && (this.sessionConfig.getContentMode() != null)) {
-        ((VideoConfigurationModel)localObject2).setContentMode(this.sessionConfig.getContentMode().ordinal());
-      }
-      ((MediaClipModel)localObject1).setVideoConfigurationModel((VideoConfigurationModel)localObject2);
-      localArrayList.add(localObject1);
-      localObject1 = localMediaModel.getMediaResourceModel();
-      ((MediaResourceModel)localObject1).setVideos(localArrayList);
-      localMediaModel.setMediaResourceModel((MediaResourceModel)localObject1);
-      this.mediaModels.add(localMediaModel);
-    }
-    recordInitMediaModelsMD5();
+    MediaBuilderFactory.mediaBuilderAsync(getMediaModel(), paramStickerController, paramVideoRenderChainConfigure, new TAVCutVideoSession.8(this));
   }
   
-  private void initPlayer()
+  private void refreshRenderTemplate()
   {
-    if (getPlayer() != null) {
-      if ((this.sessionConfig != null) && (!this.sessionConfig.isAutoPlayVideo())) {
-        break label77;
-      }
-    }
-    label77:
-    for (boolean bool = true;; bool = false)
-    {
-      this.preIsPlaying = bool;
-      CMTimeRange localCMTimeRange = new CMTimeRange(CMTime.CMTimeZero, getTAVComposition().getDuration());
-      getPlayer().updateComposition(getTAVComposition(), localCMTimeRange.getStart(), this.preIsPlaying);
-      getPlayer().setPlayRange(localCMTimeRange);
-      return;
-    }
-  }
-  
-  private void initRenderEnvironment()
-  {
-    StickerController localStickerController = createStickerController();
-    this.stickerControllers.put(0, localStickerController);
-    MediaBuilderFactory.mediaBuilderAsync(getMediaModel(), localStickerController, new TAVCutVideoSession.1(this));
-    if (this.tavCutVideoView != null)
-    {
-      if (getPlayer() != null) {
-        getPlayer().bindView(this.tavCutVideoView);
-      }
-      if (getStickerController() != null) {
-        getStickerController().setStickerContainer(this.tavCutVideoView.getStickerContainer());
-      }
-    }
-  }
-  
-  private void refresh()
-  {
-    if ((getPlayer() != null) && (!getPlayer().isPlaying())) {
-      getPlayer().refresh();
-    }
+    initPlayer();
   }
   
   private void updateComposition(MediaModel paramMediaModel)
   {
-    MediaBuilderFactory.mediaBuilderAsync(paramMediaModel, null, new TAVCutVideoSession.5(this));
+    MediaBuilderFactory.mediaBuilderAsync(paramMediaModel, null, new TAVCutVideoSession.11(this));
   }
   
   private void updatePlayer(MediaModel paramMediaModel, boolean paramBoolean)
@@ -185,14 +145,43 @@ public class TAVCutVideoSession
     }
     StickerController localStickerController = createStickerController();
     this.stickerControllers.put(0, localStickerController);
-    MediaBuilderFactory.mediaBuilderAsync(paramMediaModel, localStickerController, new TAVCutVideoSession.4(this, paramBoolean));
+    new VideoRenderChainConfigure(true).setSceneType(0);
+    MediaBuilderFactory.mediaBuilderAsync(paramMediaModel, localStickerController, new TAVCutVideoSession.10(this, paramBoolean));
     if (this.tavCutVideoView != null)
     {
       this.tavCutVideoView.getStickerContainer().removeAllViews();
       getStickerController().setStickerContainer(this.tavCutVideoView.getStickerContainer());
     }
     localStickerController.restoreSticker(new ArrayList(paramMediaModel.getMediaEffectModel().getStickerModelList()));
+    if (paramMediaModel.getMediaEffectModel().getSubtitleModel() != null) {
+      localStickerController.addSticker(StickerConverter.subtitleModel2TavSticker(paramMediaModel.getMediaEffectModel().getSubtitleModel()));
+    }
     getRenderChainManager().updateRenderChain(paramMediaModel.getMediaEffectModel());
+  }
+  
+  private void updateTemplateRenderChain(int paramInt, boolean paramBoolean)
+  {
+    if ((this.renderChainManagers != null) && (this.renderChainManagers.size() > 0)) {
+      ((VideoRenderChainManager)this.renderChainManagers.get(0)).release();
+    }
+    StickerController localStickerController;
+    VideoRenderChainConfigure localVideoRenderChainConfigure;
+    if ((this.stickerControllers != null) && (this.stickerControllers.size() > 0))
+    {
+      localStickerController = (StickerController)this.stickerControllers.get(0);
+      localVideoRenderChainConfigure = new VideoRenderChainConfigure(true);
+      if (!paramBoolean) {
+        break label88;
+      }
+      localVideoRenderChainConfigure.setSceneType(paramInt);
+    }
+    for (;;)
+    {
+      mediaBuild(localStickerController, localVideoRenderChainConfigure);
+      return;
+      label88:
+      localVideoRenderChainConfigure.setSceneType(0);
+    }
   }
   
   public void addPlayer(MoviePlayer paramMoviePlayer)
@@ -202,7 +191,7 @@ public class TAVCutVideoSession
   
   public void addSticker(StickerModel paramStickerModel)
   {
-    addSticker(getStickerController(), paramStickerModel);
+    runTask(new TAVCutVideoSession.7(this, paramStickerModel));
   }
   
   public void applyCurrentSticker()
@@ -210,10 +199,32 @@ public class TAVCutVideoSession
     applyCurrentSticker(getStickerController());
   }
   
-  public void cancelAIFilter()
+  public void clearAEKitModel()
   {
-    removeAIFilter(getMediaModel(), getRenderChainManager());
+    clearAEKitModel(getMediaModel(), getRenderChainManager());
     refresh();
+  }
+  
+  public void deleteLyricSticker()
+  {
+    Object localObject = this.mediaModels.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      MediaModel localMediaModel = (MediaModel)((Iterator)localObject).next();
+      if (localMediaModel.getMediaEffectModel().getSubtitleModel() != null)
+      {
+        localObject = localMediaModel.getMediaEffectModel().getSubtitleModel().getUniqueId();
+        localMediaModel.getMediaEffectModel().setSubtitleModel(null);
+      }
+    }
+    for (;;)
+    {
+      getStickerController().deleteLyricSticker();
+      super.onDeleteButtonClick((String)localObject);
+      refresh();
+      return;
+      localObject = "";
+    }
   }
   
   public CMTime getDuration()
@@ -229,20 +240,60 @@ public class TAVCutVideoSession
   {
     TAVSourceImageGenerator localTAVSourceImageGenerator = new TAVSourceImageGenerator(new TAVCompositionBuilder(getTAVComposition()).buildSource(), getRenderChainManager().getComposition().getRenderSize());
     localTAVSourceImageGenerator.getAssetImageGenerator().setApertureMode(AssetImageGenerator.ApertureMode.aspectFill);
-    localTAVSourceImageGenerator.generateThumbnailAtTime(new CMTime((float)paramLong / 1000.0F), new TAVCutVideoSession.6(this, paramInt, localTAVSourceImageGenerator, paramFrameExtractCallback));
+    localTAVSourceImageGenerator.generateThumbnailAtTime(new CMTime((float)paramLong / 1000.0F), new TAVCutVideoSession.12(this, paramInt, localTAVSourceImageGenerator, paramFrameExtractCallback));
   }
   
   public VideoExporter getExporter(VideoExportConfig paramVideoExportConfig)
   {
     VideoExporter localVideoExporter = new VideoExporter();
-    MediaBuilderFactory.mediaBuilderAsync(getMediaModel(), null, new TAVCutVideoSession.3(this, localVideoExporter, paramVideoExportConfig));
-    return localVideoExporter;
+    VideoRenderChainConfigure localVideoRenderChainConfigure = new VideoRenderChainConfigure(true);
+    Object localObject = getMediaModel();
+    if (localObject != null)
+    {
+      localObject = ((MediaModel)localObject).getMediaTemplateModel();
+      if (((MediaTemplateModel)localObject).isAutoTemplateEmpty()) {
+        break label69;
+      }
+      localVideoRenderChainConfigure.setSceneType(2);
+    }
+    for (;;)
+    {
+      MediaBuilderFactory.mediaBuilderAsync(getMediaModel(), null, localVideoRenderChainConfigure, new TAVCutVideoSession.9(this, localVideoExporter, paramVideoExportConfig));
+      return localVideoExporter;
+      label69:
+      if (!((MediaTemplateModel)localObject).isMovieTemplateEmpty()) {
+        localVideoRenderChainConfigure.setSceneType(1);
+      } else {
+        localVideoRenderChainConfigure.setSceneType(0);
+      }
+    }
   }
   
   public MediaModel getMediaModel()
   {
     if ((this.mediaModels != null) && (!this.mediaModels.isEmpty())) {
       return (MediaModel)this.mediaModels.get(0);
+    }
+    return null;
+  }
+  
+  protected MoviePlayer getPlayer()
+  {
+    if ((this.players != null) && (!this.players.isEmpty())) {
+      return (MoviePlayer)this.players.get(0);
+    }
+    return null;
+  }
+  
+  public CGSize getRenderSize()
+  {
+    return getRenderChainManager().getComposition().getRenderSize();
+  }
+  
+  protected StickerController getStickerController()
+  {
+    if ((this.stickerControllers != null) && (this.stickerControllers.size() > 0)) {
+      return (StickerController)this.stickerControllers.get(0);
     }
     return null;
   }
@@ -256,6 +307,14 @@ public class TAVCutVideoSession
       return null;
     }
     return new TAVCompositionBuilder(localTAVComposition).buildSource();
+  }
+  
+  public TextureView getTexureView()
+  {
+    if ((this.players != null) && (this.players.size() > 0)) {
+      return ((MoviePlayer)this.players.get(0)).getTextureView();
+    }
+    return null;
   }
   
   public List<Bitmap> getVideoFrame(List<Long> paramList)
@@ -278,13 +337,68 @@ public class TAVCutVideoSession
     return this.videoImageExtractor.extractImages();
   }
   
-  public void init(Context paramContext)
+  public int init(Context paramContext)
   {
-    this.runAsync = false;
-    super.init(paramContext);
-    initMediaModel();
-    initRenderEnvironment();
-    initPlayer();
+    try
+    {
+      this.runAsync = false;
+      super.init(paramContext);
+      initMediaModel();
+      initRenderEnvironment();
+      initPlayer();
+      return 0;
+    }
+    catch (Exception paramContext)
+    {
+      Logger.e(paramContext);
+    }
+    return -1;
+  }
+  
+  protected void initMediaModel()
+  {
+    if (this.mediaModels == null)
+    {
+      this.mediaModels = new ArrayList();
+      addBaseMediaModel();
+    }
+    recordInitMediaModelsMD5();
+  }
+  
+  protected void initPlayer()
+  {
+    if (getPlayer() != null) {
+      if ((this.sessionConfig != null) && (!this.sessionConfig.isAutoPlayVideo())) {
+        break label77;
+      }
+    }
+    label77:
+    for (boolean bool = true;; bool = false)
+    {
+      this.preIsPlaying = bool;
+      CMTimeRange localCMTimeRange = new CMTimeRange(CMTime.CMTimeZero, getTAVComposition().getDuration());
+      getPlayer().updateComposition(getTAVComposition(), localCMTimeRange.getStart(), this.preIsPlaying);
+      getPlayer().setPlayRange(localCMTimeRange);
+      return;
+    }
+  }
+  
+  protected void initRenderEnvironment()
+  {
+    StickerController localStickerController = createStickerController();
+    this.stickerControllers.put(0, localStickerController);
+    VideoRenderChainConfigure localVideoRenderChainConfigure = new VideoRenderChainConfigure(true);
+    localVideoRenderChainConfigure.setSceneType(0);
+    MediaBuilderFactory.mediaBuilderAsync(getMediaModel(), localStickerController, localVideoRenderChainConfigure, new TAVCutVideoSession.1(this));
+    if (this.tavCutVideoView != null)
+    {
+      if (getPlayer() != null) {
+        getPlayer().bindView(this.tavCutVideoView);
+      }
+      if (getStickerController() != null) {
+        getStickerController().setStickerContainer(this.tavCutVideoView.getStickerContainer());
+      }
+    }
   }
   
   public void onDeleteButtonClick(String paramString)
@@ -344,6 +458,13 @@ public class TAVCutVideoSession
     refresh();
   }
   
+  protected void refresh()
+  {
+    if ((getPlayer() != null) && (!getPlayer().isPlaying())) {
+      getPlayer().refresh();
+    }
+  }
+  
   public void release()
   {
     DurationUtil.start("TAVCutVideoSession release");
@@ -358,27 +479,31 @@ public class TAVCutVideoSession
     DurationUtil.end("TAVCutVideoSession release");
   }
   
+  public void resetAEKitModel(float paramFloat1, String paramString1, float paramFloat2, Map<String, String> paramMap, String paramString2)
+  {
+    runTask(new TAVCutVideoSession.3(this, paramFloat1, paramString1, paramFloat2, paramMap, paramString2));
+  }
+  
+  public void resetAEKitModel(String paramString, float paramFloat)
+  {
+    resetAEKitModel(getMediaModel(), getRenderChainManager(), paramString, paramFloat);
+    refresh();
+  }
+  
+  public void resetAEKitModelForAI(String paramString, float paramFloat1, HashMap<String, String> paramHashMap, int paramInt, float paramFloat2)
+  {
+    runTask(new TAVCutVideoSession.4(this, paramString, paramFloat1, paramHashMap, paramInt, paramFloat2));
+  }
+  
   public void restoreStickers(List<StickerModel> paramList)
   {
     getStickerController().restoreSticker(paramList);
     getMediaModel().getMediaEffectModel().setStickerModelList(paramList);
   }
   
-  public void setAEKitAIFilter(String paramString, float paramFloat1, HashMap<String, String> paramHashMap, int paramInt, float paramFloat2)
+  public SubtitleModel saveLyricSticker()
   {
-    runTask(new TAVCutVideoSession.2(this, paramString, paramFloat1, paramHashMap, paramInt, paramFloat2));
-  }
-  
-  public void setAIFilterAlpha(float paramFloat)
-  {
-    setAIFilterAlpha(getMediaModel(), getRenderChainManager(), paramFloat, 0L, ((MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().getSelectTimeDuration());
-    refresh();
-  }
-  
-  public void setAdjustParam(HashMap<String, String> paramHashMap)
-  {
-    setAIFilter(getMediaModel(), getRenderChainManager(), paramHashMap, 0L, ((MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().getSelectTimeDuration());
-    refresh();
+    return getStickerController().saveLyricSticker();
   }
   
   public void setBgmMusic(MusicData paramMusicData, float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -419,48 +544,57 @@ public class TAVCutVideoSession
   public void setBgmVolume(float paramFloat)
   {
     getMediaModel().getMediaEffectModel().getMusicModel().setBgmVolume(paramFloat);
-    List localList = getTAVComposition().getAudios();
-    int i = 0;
-    while (i < localList.size())
+    Object localObject = getTAVComposition();
+    if (localObject != null) {}
+    for (localObject = ((TAVComposition)localObject).getAudios();; localObject = null)
     {
-      ((TAVAudio)localList.get(i)).getAudioConfiguration().setVolume(paramFloat);
-      i += 1;
+      if (!CollectionUtils.isEmpty((Collection)localObject))
+      {
+        int i = 0;
+        while (i < ((List)localObject).size())
+        {
+          ((TAVAudio)((List)localObject).get(i)).getAudioConfiguration().setVolume(paramFloat);
+          i += 1;
+        }
+      }
+      return;
     }
   }
   
   public void setClip(Long paramLong1, Long paramLong2)
+  {
+    setClip(paramLong1, paramLong2, false);
+  }
+  
+  public void setClip(Long paramLong1, Long paramLong2, boolean paramBoolean)
   {
     if ((paramLong1 != null) && (paramLong2 != null))
     {
       MediaClipModel localMediaClipModel = (MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0);
       localMediaClipModel.getResource().setSelectTimeStart(paramLong1.longValue());
       localMediaClipModel.getResource().setSelectTimeDuration(paramLong2.longValue());
-      updatePlayer(getMediaModel(), true);
-      return;
     }
-    paramLong1 = (MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0);
-    long l = paramLong1.getResource().getSourceTimeDuration();
-    paramLong1.getResource().setSelectTimeStart(0L);
-    paramLong1.getResource().setSelectTimeDuration(l);
-    updatePlayer(getMediaModel(), true);
+    for (;;)
+    {
+      if (paramBoolean) {
+        updatePlayer(getMediaModel(), true);
+      }
+      return;
+      paramLong1 = (MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0);
+      long l = paramLong1.getResource().getSourceTimeDuration();
+      paramLong1.getResource().setSelectTimeStart(0L);
+      paramLong1.getResource().setSelectTimeDuration(l);
+    }
   }
   
-  public void setLutAlpha(float paramFloat)
+  public void setEffectStrength(float paramFloat)
   {
-    setLutAlpha(getMediaModel(), getRenderChainManager(), paramFloat);
-    refresh();
+    runTask(new TAVCutVideoSession.5(this, paramFloat));
   }
   
-  public void setLutImage(float paramFloat)
+  public void setLyricStartTime(int paramInt)
   {
-    setGlowAlpha(getMediaModel(), getRenderChainManager(), paramFloat, 0L, ((MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().getSelectTimeDuration());
-    refresh();
-  }
-  
-  public void setLutImage(String paramString)
-  {
-    setLutImage(getMediaModel(), getRenderChainManager(), paramString, 0L, ((MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().getSelectTimeDuration());
-    refresh();
+    getStickerController().setLyricStartTime(paramInt);
   }
   
   public void setMainVolume(float paramFloat)
@@ -470,6 +604,12 @@ public class TAVCutVideoSession
     if ((!localList.isEmpty()) && (!((List)localList.get(0)).isEmpty())) {
       ((TAVTransitionableAudio)((List)localList.get(0)).get(0)).getAudioConfiguration().setVolume(paramFloat);
     }
+  }
+  
+  @Deprecated
+  public void setMaterial(@Nullable String paramString)
+  {
+    runTask(new TAVCutVideoSession.6(this, paramString));
   }
   
   public void setMediaModel(MediaModel paramMediaModel)
@@ -486,13 +626,17 @@ public class TAVCutVideoSession
   
   public void setSpeed(float paramFloat)
   {
-    if (paramFloat <= 0.0F) {
+    setSpeed(paramFloat, false);
+  }
+  
+  public void setSpeed(float paramFloat, boolean paramBoolean)
+  {
+    if (paramFloat <= 0.0F) {}
+    do
+    {
       return;
-    }
-    MediaClipModel localMediaClipModel = (MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0);
-    float f = (float)localMediaClipModel.getResource().getSourceTimeDuration();
-    paramFloat = 1.0F / paramFloat;
-    localMediaClipModel.getResource().setScaleDuration((f * paramFloat));
+      ((MediaClipModel)getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().setSpeed(paramFloat);
+    } while (!paramBoolean);
     updatePlayer(getMediaModel(), true);
   }
   
@@ -511,14 +655,36 @@ public class TAVCutVideoSession
     this.tavCutVideoView = paramTAVCutVideoView;
   }
   
+  public void setTemplate(int paramInt, String paramString, boolean paramBoolean, String... paramVarArgs)
+  {
+    WSTemplateManager.updateTemplate(getMediaModel(), paramInt, paramString, paramBoolean, paramVarArgs);
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      updateTemplateRenderChain(paramInt, paramBoolean);
+      refreshRenderTemplate();
+      return;
+    }
+  }
+  
   public void setVideoPath(String paramString)
   {
     this.videoPath = paramString;
   }
+  
+  public void toggleAEKit(boolean paramBoolean)
+  {
+    runTask(new TAVCutVideoSession.2(this, paramBoolean));
+  }
+  
+  public void updateVideoProgress(long paramLong)
+  {
+    getStickerController().setLyricProcess(paramLong);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutVideoSession
  * JD-Core Version:    0.7.0.1
  */

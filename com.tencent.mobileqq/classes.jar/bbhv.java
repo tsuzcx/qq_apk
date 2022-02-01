@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.BaseSearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bbhv
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bbhv(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public bbhv(BaseSearchActivity paramBaseSearchActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    BaseSearchActivity.b = 1;
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

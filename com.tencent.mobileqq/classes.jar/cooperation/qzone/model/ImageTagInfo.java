@@ -4,14 +4,14 @@ import NS_MOBILE_FEEDS.stPhotoTag;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjkw;
+import blzf;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ImageTagInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ImageTagInfo> CREATOR = new bjkw();
+  public static final Parcelable.Creator<ImageTagInfo> CREATOR = new blzf();
   public int a;
   public String a;
   public int b;
@@ -140,7 +140,7 @@ public class ImageTagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.ImageTagInfo
  * JD-Core Version:    0.7.0.1
  */

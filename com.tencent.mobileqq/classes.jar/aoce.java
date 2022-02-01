@@ -1,32 +1,9 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.face.FaceInfo;
 
-public class aoce
+public abstract interface aoce
 {
-  public static void a(ArrayList<ColorNote> paramArrayList)
-  {
-    HashMap localHashMap = new HashMap();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      ColorNote localColorNote = (ColorNote)paramArrayList.next();
-      Integer localInteger = Integer.valueOf(localColorNote.getServiceType());
-      if (localHashMap.containsKey(localInteger))
-      {
-        ((ArrayList)localHashMap.get(localInteger)).add(localColorNote);
-      }
-      else
-      {
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(localColorNote);
-        localHashMap.put(localInteger, localArrayList);
-      }
-    }
-    sdn.a((List)localHashMap.get(Integer.valueOf(16908290)));
-  }
+  public abstract void a(boolean paramBoolean, FaceInfo paramFaceInfo, Bitmap paramBitmap);
 }
 
 

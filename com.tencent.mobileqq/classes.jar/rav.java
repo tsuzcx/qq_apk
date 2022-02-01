@@ -1,30 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class rav
-  extends Handler
+public class rav
 {
-  public rav(ran paramran, Looper paramLooper)
+  public double a;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public int c = -2019;
+  public int d = -2019;
+  public int e = -2019;
+  
+  public rav(rat paramrat)
   {
-    super(paramLooper);
+    this.jdField_b_of_type_Int = -2019;
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (ran.a(this.a) == null);
-    ran.a(this.a).a(4, null, null, 0L);
+    return "\nFeedScrollStateInfo{feedID='" + this.jdField_a_of_type_JavaLangString + '\'' + ", viewHeight=" + this.jdField_a_of_type_Int + ", starTopOffset=" + this.jdField_b_of_type_Int + ", endTopOffset=" + this.c + ", startBottomOffset=" + this.d + ", endBottomOffset=" + this.e + ", enterAZSpeed=" + this.jdField_a_of_type_Double + ", enterAZTime=" + this.jdField_a_of_type_Long + ", exitAZTime=" + this.jdField_b_of_type_Long + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rav
  * JD-Core Version:    0.7.0.1
  */

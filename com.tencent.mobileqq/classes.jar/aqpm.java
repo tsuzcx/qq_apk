@@ -1,21 +1,44 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-final class aqpm
-  implements arrh
+public class aqpm
 {
-  aqpm(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
+  private String a = "";
+  private String b = "";
   
-  public void a()
+  public static aqpm a(String paramString)
   {
-    arrr.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        aqpm localaqpm = new aqpm();
+        paramString = new JSONObject(paramString);
+        localaqpm.a = paramString.optString("dest_icon", "");
+        localaqpm.b = paramString.optString("avatar_pendant", "");
+        return localaqpm;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public void b() {}
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqpm
  * JD-Core Version:    0.7.0.1
  */

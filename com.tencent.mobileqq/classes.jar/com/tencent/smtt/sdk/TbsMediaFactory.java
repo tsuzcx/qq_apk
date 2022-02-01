@@ -6,47 +6,47 @@ import com.tencent.smtt.export.external.DexLoader;
 
 public class TbsMediaFactory
 {
-  private Context mAppContext = null;
-  private TbsWizard mAppWizard = null;
-  private DexLoader mDexLoader = null;
+  private Context a = null;
+  private t b = null;
+  private DexLoader c = null;
   
   public TbsMediaFactory(Context paramContext)
   {
-    this.mAppContext = paramContext.getApplicationContext();
-    initPlayerFactory();
+    this.a = paramContext.getApplicationContext();
+    a();
   }
   
-  private void initPlayerFactory()
+  private void a()
   {
-    if (this.mAppContext == null) {
+    if (this.a == null) {
       Log.e("TbsVideo", "TbsVideo needs context !!");
     }
     do
     {
       return;
-      if (this.mAppWizard == null)
+      if (this.b == null)
       {
-        SDKEngine.getInstance(true).init(this.mAppContext, false, false, null);
-        this.mAppWizard = SDKEngine.getInstance(true).wizard();
-        if (this.mAppWizard != null) {
-          this.mDexLoader = this.mAppWizard.dexLoader();
+        d.a(true).a(this.a, false, false, null);
+        this.b = d.a(true).a();
+        if (this.b != null) {
+          this.c = this.b.b();
         }
       }
-    } while ((this.mAppWizard != null) && (this.mDexLoader != null));
+    } while ((this.b != null) && (this.c != null));
     throw new RuntimeException("tbs core dex(s) load failure !!!");
   }
   
   public TbsMediaPlayer createPlayer()
   {
-    if ((this.mAppWizard == null) || (this.mDexLoader == null)) {
+    if ((this.b == null) || (this.c == null)) {
       throw new RuntimeException("tbs core dex(s) did not loaded !!!");
     }
-    return new TbsMediaPlayer(new TbsMediaPlayerWizard(this.mDexLoader, this.mAppContext));
+    return new TbsMediaPlayer(new o(this.c, this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsMediaFactory
  * JD-Core Version:    0.7.0.1
  */

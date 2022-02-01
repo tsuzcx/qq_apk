@@ -1,31 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.oskplayer.OskPlayerCore;
+import com.tencent.oskplayer.proxy.VideoManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayerUtil;
 
-public abstract class bjvq<T>
-  extends Handler
+class bjvq
+  implements IMediaPlayerUtil
 {
-  private WeakReference<T> a;
+  bjvq(bjvo parambjvo) {}
   
-  public bjvq(T paramT)
+  public int getContentFlag(String paramString)
   {
-    this.a = new WeakReference(paramT);
+    return VideoManager.getInstance().probeContentFlag(paramString);
   }
   
-  public abstract void a(T paramT, Message paramMessage);
-  
-  public void handleMessage(Message paramMessage)
+  public String getUrl(String paramString)
   {
-    super.handleMessage(paramMessage);
-    Object localObject = this.a.get();
-    if (localObject != null) {
-      a(localObject, paramMessage);
-    }
+    return OskPlayerCore.getInstance().getUrl(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjvq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,29 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.lbssearch.TencentSearch;
+import com.tencent.lbssearch.object.param.Geo2AddressParam;
+import com.tencent.lbssearch.object.param.Geo2AddressParam.PoiOptions;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 class ayrs
-  implements View.OnClickListener
+  extends ayrp
 {
-  ayrs(ayro paramayro, ayon paramayon, Context paramContext) {}
+  private TencentSearch a;
   
-  public void onClick(View paramView)
+  ayrs(String paramString)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Ayon.m))
-    {
-      paramView = ayvj.a(this.jdField_a_of_type_Ayon.a(), 0, aysc.a(this.jdField_a_of_type_Ayon.c));
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      aysc.a(null, new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_Ayon.g).ver2(aysc.a(UniteSearchActivity.d)).ver5("1").ver6("1").ver7("{experiment_id:" + aysc.b + "}"));
+    super(paramString);
+    jdField_a_of_type_JavaLangString = "NetworkLoader";
+    this.jdField_a_of_type_ComTencentLbssearchTencentSearch = new TencentSearch(BaseApplicationImpl.getContext());
+  }
+  
+  public boolean a(LatLng paramLatLng, int paramInt, ayry paramayry)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] netGet. latLng: " + paramLatLng);
     }
+    this.jdField_a_of_type_ComTencentLbssearchTencentSearch.geo2address(new Geo2AddressParam(paramLatLng).getPoi(true).setPoiOptions(new Geo2AddressParam.PoiOptions().setPolicy(1).setPageSize(ayqi.d).setPageIndex(0)), new ayrt(this, paramLatLng, paramayry));
+    return true;
   }
 }
 

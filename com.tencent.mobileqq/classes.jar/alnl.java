@@ -1,23 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloSlaveViewBinder.1;
-import com.tencent.mobileqq.apollo.view.ApolloSlaveViewBinder.1.1.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.PacmanParcelItem;
 
-public class alnl
-  implements Animation.AnimationListener
+public final class alnl
+  implements Parcelable.Creator<PacmanParcelItem>
 {
-  public alnl(ApolloSlaveViewBinder.1 param1) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public PacmanParcelItem a(Parcel paramParcel)
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new ApolloSlaveViewBinder.1.1.1(this), 300L);
+    return new PacmanParcelItem(paramParcel);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public PacmanParcelItem[] a(int paramInt)
+  {
+    return new PacmanParcelItem[paramInt];
+  }
 }
 
 

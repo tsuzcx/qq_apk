@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
 
 public class adgw
-  extends VasQuickUpdateManager.CallBacker
+  implements DialogInterface.OnClickListener
 {
-  public adgw(LikeRankingListActivity paramLikeRankingListActivity) {}
+  public adgw(TestAppFragment paramTestAppFragment) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (paramInt1 == 0) && (this.a.a != null)) {
-      this.a.b(this.a.a);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.notifymsg;
 
-import ajeu;
+import akww;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -12,7 +12,7 @@ public final class NotifyMsgManager$3
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = ajeu.a();
+    QQAppInterface localQQAppInterface = akww.a();
     if ((localQQAppInterface != null) && (this.a != null)) {
       localQQAppInterface.a().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
     }
@@ -20,7 +20,7 @@ public final class NotifyMsgManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.3
  * JD-Core Version:    0.7.0.1
  */

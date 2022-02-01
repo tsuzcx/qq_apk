@@ -1,54 +1,57 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
-public class aura
-  implements INetInfoHandler
+class aura
+  implements View.OnClickListener
 {
-  long a = 0L;
+  aura(auqu paramauqu, String paramString1, JSONObject paramJSONObject, String paramString2) {}
   
-  private void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (System.currentTimeMillis() - this.a < 500L) {
-      return;
-    }
-    this.a = System.currentTimeMillis();
-    QQPlayerService.d(BaseApplicationImpl.getContext());
-  }
-  
-  public void onNetMobile2None()
-  {
-    a(4);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    a(3);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    a(1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    a(2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    a(6);
-  }
-  
-  public void onNetWifi2None()
-  {
-    a(5);
+    Object localObject = new HashMap();
+    aceh.a((Map)localObject, this.jdField_a_of_type_JavaLangString);
+    ((Map)localObject).put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
+    ((Map)localObject).put(Integer.valueOf(10), "2");
+    aceh.a(ampj.a(), "769", "205711", this.jdField_a_of_type_Auqu.a().gameAppId, "76905", "1", "160", (Map)localObject);
+    localObject = new Intent();
+    ((Intent)localObject).setClass(auqu.a(this.jdField_a_of_type_Auqu), ForwardRecentActivity.class);
+    ((Intent)localObject).putExtra("forward_type", 27);
+    String str1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("desc", "");
+    String str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("ver", "");
+    String str3 = this.jdField_a_of_type_OrgJsonJSONObject.optString("view");
+    String str4 = this.jdField_a_of_type_OrgJsonJSONObject.optString("config");
+    String str5 = this.jdField_a_of_type_OrgJsonJSONObject.optString("meta");
+    String str6 = this.jdField_a_of_type_OrgJsonJSONObject.optString("prompt");
+    ((Intent)localObject).putExtra("forward_ark_app_name", this.b);
+    ((Intent)localObject).putExtra("forward_ark_app_view", str3);
+    ((Intent)localObject).putExtra("forward_ark_app_desc", str1);
+    ((Intent)localObject).putExtra("forward_ark_app_ver", str2);
+    ((Intent)localObject).putExtra("forward_ark_app_prompt", str6);
+    ((Intent)localObject).putExtra("forward_ark_app_meta", str5);
+    ((Intent)localObject).putExtra("forward_ark_app_config", str4);
+    ((Intent)localObject).putExtra("is_ark_display_share", true);
+    ((Intent)localObject).putExtra("appName", this.b);
+    ((Intent)localObject).putExtra("appView", str3);
+    ((Intent)localObject).putExtra("appMinVersion", str2);
+    ((Intent)localObject).putExtra("metaData", str5);
+    ((Intent)localObject).putExtra("scale", auqu.a(this.jdField_a_of_type_Auqu).getResources().getDisplayMetrics().scaledDensity);
+    auqu.a(this.jdField_a_of_type_Auqu).startActivity((Intent)localObject);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aura
  * JD-Core Version:    0.7.0.1
  */

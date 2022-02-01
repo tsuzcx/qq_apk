@@ -1,47 +1,63 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class aejx
-  extends altm
+  implements View.OnClickListener
 {
-  public aejx(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public aejx(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    int j = 1;
+    int k = VipUtils.a(this.a.app, null);
+    int i;
+    label31:
+    QQToast localQQToast;
+    if ((k & 0x2) != 0)
     {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
+      i = 1;
+      if ((k & 0x4) == 0) {
+        break label103;
+      }
+      if ((i == 0) && (j == 0)) {
+        break label108;
+      }
+      if (30 != this.a.a.size()) {
+        break label162;
+      }
+      localQQToast = new QQToast(this.a);
+      localQQToast.d(2000);
+      localQQToast.c(2131718623);
+      localQQToast.a();
+    }
+    label162:
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    this.a.a(2131719822, 1);
-  }
-  
-  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
-  {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      this.a.a(2131691544, 2);
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if ((paramBoolean1) && (paramBoolean3))
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
+      i = 0;
+      break;
+      label103:
+      j = 0;
+      break label31;
+      label108:
+      if (16 == this.a.a.size())
+      {
+        localQQToast = new QQToast(this.a);
+        localQQToast.d(2000);
+        localQQToast.c(2131718622);
+        localQQToast.a();
+      }
+      else
+      {
+        GroupManagerActivity.a(this.a, bglp.a(this.a, 2131692817, 2131692823, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+        GroupManagerActivity.a(this.a, 0);
+      }
     }
   }
 }

@@ -1,14 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class vkp
-  extends vkn
+  implements View.OnClickListener
 {
-  public String a;
-  public String c;
-  public String d;
-  public String e;
+  public vkp(QCircleContentOperationView paramQCircleContentOperationView) {}
+  
+  public void onClick(View paramView)
+  {
+    QCircleContentOperationView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vkp
  * JD-Core Version:    0.7.0.1
  */

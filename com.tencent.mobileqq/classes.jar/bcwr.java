@@ -1,11 +1,17 @@
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+
 public class bcwr
+  extends URLDrawableDownListener.Adapter
 {
-  public int a = 1;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public bcwr(StructMsgForHypertext paramStructMsgForHypertext) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView.setBackgroundDrawable(null);
+  }
 }
 
 

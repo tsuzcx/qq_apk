@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 
-public final class acky
-  implements View.OnClickListener
+class acky
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public acky(Toast paramToast) {}
+  acky(ackt paramackt, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    this.a.cancel();
+    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    acrh.a().a(this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 

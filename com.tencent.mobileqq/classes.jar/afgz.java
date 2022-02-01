@@ -1,125 +1,124 @@
-import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.URLThemeImageView;
+import mqq.os.MqqHandler;
 
 public class afgz
+  extends arpd
 {
-  private afhb jdField_a_of_type_Afhb;
-  private View jdField_a_of_type_AndroidViewView;
-  private IntimateInfo.MemoryDayInfo jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$MemoryDayInfo;
+  public afgz(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public afgz(afgx paramafgx, Context paramContext)
+  public void onBindedToClient()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559195, null);
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a(afhb paramafhb)
-  {
-    this.jdField_a_of_type_Afhb = paramafhb;
-  }
-  
-  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
-  {
-    if (paramMemoryDayInfo != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$MemoryDayInfo = paramMemoryDayInfo;
-      if (this.jdField_a_of_type_AndroidViewView != null) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "-->onBindedToClient");
     }
-    else
-    {
-      return;
+    ThreadManager.getUIHandler().postDelayed(new TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.4.1(this), 30L);
+  }
+  
+  public void onDisconnectWithService()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "-->onDisconnectWithService");
     }
-    this.jdField_a_of_type_AndroidViewView.setTag(paramMemoryDayInfo);
-    URLThemeImageView localURLThemeImageView = (URLThemeImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367819);
-    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380276);
-    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369500);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370160);
-    Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363028);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = 686;
-    localURLDrawableOptions.mRequestHeight = 124;
-    localURLDrawableOptions.mRetryCount = 3;
-    localURLDrawableOptions.mPlayGifImage = true;
-    Object localObject1 = this.jdField_a_of_type_Afgx.jdField_a_of_type_JavaLangString;
-    if (localURLThemeImageView != null)
+  }
+  
+  public void onPushMsg(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "-->onPushMsg");
+    }
+  }
+  
+  public void onResponse(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "-->onResponse");
+    }
+    if (paramBundle == null) {}
+    long l;
+    do
     {
-      if (localURLThemeImageView.a != null) {
-        localURLThemeImageView.a.a(bibv.c);
+      do
+      {
+        return;
+      } while (paramBundle.getInt("respkey", 0) != TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).key);
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, false);
+      str = paramBundle.getString("cmd");
+      paramBundle.getString("callbackid");
+      localObject = paramBundle.getBundle("response");
+      paramBundle = paramBundle.getBundle("request");
+      l = bdkv.a("get_url_time");
+    } while ((!"ipc_cmd_get_team_work_url".equals(str)) || (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a) == null));
+    String str = ((Bundle)localObject).getString("url");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", str);
+    QIPCClientHelper.getInstance().callServer("Module_TDFileChangeNameQIPCModule", "Action_url_2_fmdb", localBundle);
+    if ((!TextUtils.isEmpty(str)) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a) != null) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a()))
+    {
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a, ((Bundle)localObject).getBoolean("needRefresh"));
+      if (this.a.getIntent().getStringExtra("tdsourcetag") != null)
+      {
+        localObject = this.a.getIntent().getStringExtra("tdsourcetag");
+        str = bdjg.b(str, (String)localObject);
+        if (TeamWorkDocEditBrowserActivity.a(this.a.webView.getContext(), str, (String)localObject, true))
+        {
+          bdjg.a(paramBundle, "0X8009ED7");
+          this.a.getActivity().finish();
+        }
+        for (;;)
+        {
+          bdkv.a("WebLog_WebViewFragment", "get_url_time", String.valueOf(l) + " - url:" + str);
+          return;
+          bdjg.a(paramBundle, "0X8009ED6");
+          this.a.webView.loadUrl(str);
+        }
       }
-      if (paramMemoryDayInfo.iconUrl != null) {
-        localURLThemeImageView.setBackgroundURL(paramMemoryDayInfo.iconUrl);
-      }
-    }
-    if ((localRelativeLayout != null) && (ThemeUtil.isNowThemeIsNight(null, false, null))) {
-      localObject1 = this.jdField_a_of_type_Afgx.b;
-    }
-    for (;;)
-    {
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null)) {
-        ((ImageView)localObject2).setImageDrawable(URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions));
+      if (TeamWorkDocEditBrowserActivity.a(this.a.webView.getContext(), str, "s_qq_file_edit", true))
+      {
+        bdjg.a(paramBundle, "0X8009ED7");
+        this.a.getActivity().finish();
       }
       for (;;)
       {
-        if ((localTextView2 != null) && (paramMemoryDayInfo.wording != null))
-        {
-          localTextView2.setText(paramMemoryDayInfo.wording);
-          localObject2 = "";
-          localObject1 = localObject2;
-          if (localTextView1 != null)
-          {
-            localObject1 = localObject2;
-            if (paramMemoryDayInfo.linkWording != null) {
-              localObject1 = paramMemoryDayInfo.linkWording;
-            }
-          }
-          int i = aepi.a(95.0F, this.jdField_a_of_type_Afgx.jdField_a_of_type_AndroidContentContext.getResources());
-          i = afgx.a(this.jdField_a_of_type_Afgx, (String)localObject1, 14.0F, i + 80);
-          if (i > 200) {
-            localTextView2.setMaxWidth(i);
-          }
-        }
-        else
-        {
-          if ((localTextView1 == null) || (paramMemoryDayInfo.linkWording == null)) {
-            break;
-          }
-          localTextView1.setText(paramMemoryDayInfo.linkWording);
-          if (TextUtils.isEmpty(paramMemoryDayInfo.linkColor)) {}
-        }
-        try
-        {
-          localTextView1.setTextColor(Color.parseColor(paramMemoryDayInfo.linkColor));
-          localTextView1.setOnClickListener(new afha(this));
-          return;
-          QLog.e("intimate_relationship", 2, " url is empty");
-          continue;
-          localTextView2.setMaxWidth(200);
-        }
-        catch (IllegalArgumentException paramMemoryDayInfo)
-        {
-          for (;;)
-          {
-            QLog.e("intimate_relationship", 2, " color parse err");
-          }
-        }
+        bdkv.a("WebLog_WebViewFragment", "get_url_time", String.valueOf(l) + " - url:" + str);
+        return;
+        bdjg.a(paramBundle, "0X8009ED6");
+        this.a.webView.loadUrl(str);
       }
     }
+    int i = ((Bundle)localObject).getInt("retCode");
+    str = ((Bundle)localObject).getString("errorStr");
+    Object localObject = ((Bundle)localObject).getString("redirectUrl");
+    if ((Math.abs(i) == 115) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    {
+      str = this.a.getIntent().getStringExtra("tdsourcetag");
+      if (TeamWorkDocEditBrowserActivity.a(this.a.webView.getContext(), (String)localObject, str, true))
+      {
+        bdjg.a(paramBundle, "0X8009ED7");
+        this.a.getActivity().finish();
+      }
+      for (;;)
+      {
+        bdkv.a("WebLog_WebViewFragment", "get_url_time", String.valueOf(l) + " - redirectUrl:" + (String)localObject);
+        return;
+        bdjg.a(paramBundle, "0X8009ED6");
+        this.a.webView.loadUrl((String)localObject);
+      }
+    }
+    TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a(i, str);
+    if (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, null)) {
+      bdkv.a(null, "0X800A755");
+    }
+    bdkv.a("WebLog_WebViewFragment", "get_url_time", "retCode = " + i + " errorStr = " + str);
   }
 }
 

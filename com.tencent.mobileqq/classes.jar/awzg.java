@@ -1,392 +1,283 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Message;
+import android.os.RemoteException;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class awzg
+  implements anil
 {
-  private static int a(String paramString)
+  private final WeakReference<MusicPlayerActivity> a;
+  
+  public awzg(MusicPlayerActivity paramMusicPlayerActivity)
   {
-    if (bdnn.a(paramString)) {}
-    do
-    {
-      return 0;
-      if (paramString.equalsIgnoreCase("scan")) {
-        return 8;
-      }
-      if (paramString.equalsIgnoreCase("openreadinjoy")) {
-        return 11;
-      }
-      if (paramString.equalsIgnoreCase("qassistantnearby")) {
-        return 14;
-      }
-      if (paramString.equalsIgnoreCase("qsettings")) {
-        return 6;
-      }
-      if (paramString.equalsIgnoreCase("searchpage")) {
-        return 7;
-      }
-      if (paramString.equalsIgnoreCase("qinterest")) {
-        return 12;
-      }
-      if (paramString.equalsIgnoreCase("ecchat")) {
-        return 16;
-      }
-      if (paramString.equalsIgnoreCase("confessmsg")) {
-        return 17;
-      }
-      if (paramString.equalsIgnoreCase("weishi")) {
-        return 18;
-      }
-    } while (!paramString.equalsIgnoreCase("qqgame"));
-    return 19;
+    this.a = new WeakReference(paramMusicPlayerActivity);
   }
   
-  public static awze a(Intent paramIntent)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    String[] arrayOfString1 = null;
-    int j = 0;
-    if ((paramIntent == null) || (!paramIntent.hasExtra("q_qssistant_str_name"))) {
-      return null;
-    }
-    awze localawze = awzf.a(paramIntent.getStringExtra("q_qssistant_openaction"));
-    localawze.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("q_qssistant_str_name");
-    localawze.b = paramIntent.getStringExtra("q_qssistant_str_scheme");
-    localawze.e = paramIntent.getStringExtra("q_qssistant_str_package");
-    localawze.c = paramIntent.getStringExtra("q_qssistant_str_server");
-    localawze.d = paramIntent.getStringExtra("q_qssistant_str_action");
-    localawze.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("q_qssistant_openenable", false);
-    localawze.g = paramIntent.getStringExtra("q_qssistant_jump_host");
-    if (paramIntent.hasExtra("q_qssistant_extra_field_key"))
+    MusicPlayerActivity localMusicPlayerActivity = (MusicPlayerActivity)this.a.get();
+    String str2;
+    if (((paramObject instanceof String)) && (localMusicPlayerActivity != null))
     {
-      String[] arrayOfString2 = paramIntent.getStringArrayExtra("q_qssistant_extra_field_key");
-      int i = j;
-      if (paramIntent.hasExtra("q_qssistant_extra_field_value"))
-      {
-        arrayOfString1 = paramIntent.getStringArrayExtra("q_qssistant_extra_field_value");
-        i = j;
-      }
-      if (i < arrayOfString2.length)
-      {
-        HashMap localHashMap = localawze.jdField_a_of_type_JavaUtilHashMap;
-        String str = arrayOfString2[i];
-        if ((arrayOfString1 == null) || (arrayOfString1.length <= i)) {}
-        for (paramIntent = "";; paramIntent = arrayOfString1[i])
-        {
-          localHashMap.put(str, paramIntent);
-          i += 1;
-          break;
-        }
-      }
+      str2 = (String)paramObject;
+      QLog.d("MusicPlayerActivity", 4, new Object[] { "musicPlayerActivity onUpdate ", String.valueOf(str2) });
     }
-    return localawze;
-  }
-  
-  public static awze a(JSONObject paramJSONObject)
-  {
-    int i = 0;
-    if ((paramJSONObject == null) || (!paramJSONObject.has("str_name"))) {
-      return null;
-    }
-    Object localObject = paramJSONObject.optString("str_name", "");
-    String str1 = paramJSONObject.optString("str_scheme", "");
-    String str2 = paramJSONObject.optString("str_server", "");
-    String str3 = paramJSONObject.optString("str_action", "");
-    String str4 = paramJSONObject.optString("str_package", "");
-    boolean bool = paramJSONObject.optBoolean("openenable", false);
-    String str5 = paramJSONObject.optString("openaction", "");
-    awze localawze = awzf.a(str5);
-    localawze.jdField_a_of_type_JavaLangString = ((String)localObject);
-    if (!bdnn.a(str1)) {
-      localawze.b = str1;
-    }
-    if (!bdnn.a(str2)) {
-      localawze.c = str2;
-    }
-    if (!bdnn.a(str3)) {
-      localawze.d = str3;
-    }
-    if (!bdnn.a(str4)) {
-      localawze.e = str4;
-    }
-    localawze.jdField_a_of_type_Boolean = bool;
-    if (!bdnn.a(str5)) {
-      localawze.f = str5;
-    }
-    if (paramJSONObject.has("extra_field_key"))
-    {
-      localObject = paramJSONObject.optJSONArray("extra_field_key");
-      if (paramJSONObject.has("extra_field_value")) {
-        paramJSONObject = paramJSONObject.optJSONArray("extra_field_value");
-      }
-    }
-    for (;;)
-    {
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {
-        if (i < ((JSONArray)localObject).length())
-        {
-          str2 = ((JSONArray)localObject).optString(i, null);
-          if (!bdnn.a(str2)) {
-            if ((paramJSONObject == null) || (paramJSONObject.length() <= i)) {
-              break label288;
-            }
-          }
-        }
-      }
-      label288:
-      for (str1 = paramJSONObject.optString(i, null);; str1 = null)
-      {
-        localawze.jdField_a_of_type_JavaUtilHashMap.put(str2, str1);
-        i += 1;
-        break;
-        return localawze;
-      }
-      paramJSONObject = null;
-      continue;
-      paramJSONObject = null;
-      localObject = null;
-    }
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences("MOBILEQQ_QASSISTANT_CONFIG", 4).getString("QASSISTANT_CONTEXT" + paramQQAppInterface.getCurrentAccountUin(), "");
-  }
-  
-  public static List<awze> a(String paramString, List<String> paramList)
-  {
-    int j = 0;
+    String str1;
+    Object localObject8;
+    String str4;
+    String str3;
+    Object localObject9;
+    Object localObject6;
+    long l3;
+    boolean bool2;
+    long l1;
+    Object localObject4;
+    Object localObject3;
+    boolean bool1;
+    Object localObject5;
     Object localObject1;
-    if (bdnn.a(paramString))
+    switch (paramInt)
     {
-      localObject1 = null;
-      return localObject1;
+    default: 
+      return;
+    case 81: 
+      str1 = "";
+      localObject8 = "";
+      str4 = "";
+      str3 = "";
+      localObject9 = "";
+      localObject6 = "";
+      paramBoolean = false;
+      l3 = 0L;
+      bool2 = false;
+      l1 = l3;
+      localObject4 = str3;
+      localObject3 = str4;
+      bool1 = paramBoolean;
+      localObject5 = localObject6;
+      localObject1 = localObject8;
+      paramObject = str1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigUtils", 2, "parseJson  strJson = " + paramString);
-    }
-    ArrayList localArrayList = new ArrayList();
-    label230:
     for (;;)
     {
       try
       {
-        Object localObject2 = new JSONObject(paramString);
-        if (((JSONObject)localObject2).has("qassistantconfigs"))
+        localJSONObject = new JSONObject(str2).getJSONObject("data");
+        l1 = l3;
+        localObject4 = str3;
+        localObject3 = str4;
+        bool1 = paramBoolean;
+        localObject5 = localObject6;
+        localObject1 = localObject8;
+        paramObject = str1;
+        str1 = localJSONObject.optString("picurl");
+        l1 = l3;
+        localObject4 = str3;
+        localObject3 = str4;
+        bool1 = paramBoolean;
+        localObject5 = localObject6;
+        localObject1 = localObject8;
+        paramObject = str1;
+        str2 = localJSONObject.optString("lyric");
+        l1 = l3;
+        localObject4 = str3;
+        localObject3 = str4;
+        bool1 = paramBoolean;
+        localObject5 = localObject6;
+        localObject1 = str2;
+        paramObject = str1;
+        str5 = localJSONObject.optString("shareurl");
+        l1 = l3;
+        localObject4 = str3;
+        localObject3 = str4;
+        bool1 = paramBoolean;
+        localObject5 = str5;
+        localObject1 = str2;
+        paramObject = str1;
+        if (!localJSONObject.has("isfavorite")) {
+          continue;
+        }
+        l1 = l3;
+        localObject4 = str3;
+        localObject3 = str4;
+        bool1 = paramBoolean;
+        localObject5 = str5;
+        localObject1 = str2;
+        paramObject = str1;
+        paramInt = localJSONObject.getInt("isfavorite");
+      }
+      catch (Exception localException)
+      {
+        try
         {
-          localObject1 = ((JSONObject)localObject2).getJSONArray("qassistantconfigs");
-          i = 0;
-          if (i < ((JSONArray)localObject1).length())
-          {
-            awze localawze = a(((JSONArray)localObject1).getJSONObject(i));
-            if (localawze == null) {
-              break label230;
-            }
-            localArrayList.add(localawze);
-            break label230;
+          JSONObject localJSONObject;
+          String str5;
+          localObject1 = ((awxz)localObject1).a();
+          if (!bool2) {
+            continue;
           }
+          bcst.b(localMusicPlayerActivity.app, "CliOper", "", "", "0X8006827", "0X8006827", 0, 0, "", "", "", "");
+          if (localObject1 == null) {
+            continue;
+          }
+          str1 = MusicPlayerActivity.a(localMusicPlayerActivity, (SongInfo)localObject1);
+          localObject9 = paramObject;
+          if (TextUtils.isEmpty(paramObject)) {
+            continue;
+          }
+          localObject9 = paramObject.replace("&apos;", "'").replace("&quot;", "\"").replace("&nbsp;", " ").replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&");
+          MusicPlayerActivity.a().put(str1, Long.valueOf(l2));
+          MusicPlayerActivity.c().put(str1, localObject9);
+          if (localObject1 == null) {
+            continue;
+          }
+          paramObject = new awzi(l2, (String)localObject4, (String)localObject3, (String)localObject8, (String)localObject6, (String)localObject5, paramBoolean);
+          localObject9 = MusicPlayerActivity.a(localMusicPlayerActivity, (SongInfo)localObject1);
+          MusicPlayerActivity.b().put(localObject9, paramObject);
+          paramObject = new awzh((String)localObject4, (String)localObject3, (String)localObject5, (String)localObject6, (String)localObject8, "https://qzonestyle.gtimg.cn/ac/qzone/applogo/16/308/100497308_16.gif");
+          localObject6 = Message.obtain(MusicPlayerActivity.a(localMusicPlayerActivity), 51);
+          if (!bool2) {
+            continue;
+          }
+          paramInt = 1;
+          ((Message)localObject6).arg1 = paramInt;
+          ((Message)localObject6).obj = paramObject;
+          ((Message)localObject6).sendToTarget();
+          Message.obtain(MusicPlayerActivity.a(localMusicPlayerActivity), 53).sendToTarget();
+          MusicPlayerActivity.a(localMusicPlayerActivity, (String)localObject4, (String)localObject3, (String)localObject5, MusicPlayerActivity.a(localMusicPlayerActivity, MusicPlayerActivity.a(localMusicPlayerActivity), (SongInfo)localObject1, l2), paramBoolean, bool2);
+          return;
+          paramInt = 0;
+          break label1074;
+          paramBoolean = false;
+          continue;
+          localException = localException;
+          bool2 = false;
+          paramBoolean = bool1;
+          Object localObject7 = localObject5;
+          localObject8 = "";
+          localObject5 = localObject3;
+          localObject9 = paramObject;
+          long l2 = l1;
+          localObject3 = localObject4;
+          localObject4 = localObject5;
+          paramObject = localObject1;
+          localObject5 = localObject9;
         }
-        localObject1 = localArrayList;
-        if (!((JSONObject)localObject2).has("qassistantsupporthost")) {
-          break;
+        catch (RemoteException localRemoteException)
+        {
+          localObject2 = null;
+          continue;
+          paramInt = 0;
+          continue;
         }
-        localObject1 = localArrayList;
-        if (paramList == null) {
-          break;
-        }
-        paramList.clear();
-        localObject2 = ((JSONObject)localObject2).getJSONArray("qassistantsupporthost");
-        int i = j;
-        localObject1 = localArrayList;
-        if (i >= ((JSONArray)localObject2).length()) {
-          break;
-        }
-        paramList.add(((JSONArray)localObject2).getString(i));
-        i += 1;
-        continue;
-        i += 1;
       }
-      catch (JSONException paramList)
+      l2 = l3;
+      localObject8 = str3;
+      localObject6 = str4;
+      l1 = l3;
+      localObject4 = str3;
+      localObject3 = str4;
+      bool1 = paramBoolean;
+      localObject5 = str5;
+      localObject1 = str2;
+      paramObject = str1;
+      if (!localJSONObject.isNull("songinfo"))
       {
-        paramList.printStackTrace();
-        QLog.e("QAssistantConfigUtils", 2, "parseJson has exception strJson = " + paramString, paramList);
-        return localArrayList;
+        l1 = l3;
+        localObject4 = str3;
+        localObject3 = str4;
+        bool1 = paramBoolean;
+        localObject5 = str5;
+        localObject1 = str2;
+        paramObject = str1;
+        localObject9 = localJSONObject.getJSONObject("songinfo");
+        l1 = l3;
+        localObject4 = str3;
+        localObject3 = str4;
+        bool1 = paramBoolean;
+        localObject5 = str5;
+        localObject1 = str2;
+        paramObject = str1;
+        localObject6 = ((JSONObject)localObject9).optString("strSongName");
+        l1 = l3;
+        localObject4 = str3;
+        localObject3 = localObject6;
+        bool1 = paramBoolean;
+        localObject5 = str5;
+        localObject1 = str2;
+        paramObject = str1;
+        localObject8 = ((JSONObject)localObject9).optString("strSingerName");
+        l1 = l3;
+        localObject4 = localObject8;
+        localObject3 = localObject6;
+        bool1 = paramBoolean;
+        localObject5 = str5;
+        localObject1 = str2;
+        paramObject = str1;
+        l2 = ((JSONObject)localObject9).getInt("iSongId");
+        l1 = l2;
+        localObject4 = localObject8;
+        localObject3 = localObject6;
+        bool1 = paramBoolean;
+        localObject5 = str5;
+        localObject1 = str2;
+        paramObject = str1;
+        localObject9 = ((JSONObject)localObject9).optString("strUrl");
+        bool2 = true;
       }
-    }
-  }
-  
-  public static void a(awze paramawze, boolean paramBoolean, Intent paramIntent)
-  {
-    if ((paramawze == null) || (paramIntent == null)) {
-      return;
-    }
-    paramIntent.putExtra("q_qssistant_debug_mode", paramBoolean);
-    if (paramawze.jdField_a_of_type_JavaLangString == null)
-    {
-      localObject = "";
-      label29:
-      paramIntent.putExtra("q_qssistant_str_name", (String)localObject);
-      if (paramawze.b != null) {
-        break label291;
-      }
-      localObject = "";
-      label49:
-      paramIntent.putExtra("q_qssistant_str_scheme", (String)localObject);
-      if (paramawze.e != null) {
-        break label300;
-      }
-      localObject = "";
-      label69:
-      paramIntent.putExtra("q_qssistant_str_package", (String)localObject);
-      if (paramawze.c != null) {
-        break label309;
-      }
-      localObject = "";
-      label89:
-      paramIntent.putExtra("q_qssistant_str_server", (String)localObject);
-      if (paramawze.d != null) {
-        break label318;
-      }
-      localObject = "";
-      label109:
-      paramIntent.putExtra("q_qssistant_str_action", (String)localObject);
-      paramIntent.putExtra("q_qssistant_openenable", paramawze.jdField_a_of_type_Boolean);
-      if (paramawze.f != null) {
-        break label327;
-      }
-      localObject = "";
-      label140:
-      paramIntent.putExtra("q_qssistant_openaction", (String)localObject);
-      if (paramawze.g != null) {
-        break label336;
-      }
-    }
-    String[] arrayOfString1;
-    String[] arrayOfString2;
-    label291:
-    label300:
-    label309:
-    label318:
-    label327:
-    label336:
-    for (Object localObject = "";; localObject = paramawze.g)
-    {
-      paramIntent.putExtra("q_qssistant_jump_host", (String)localObject);
-      int i = paramawze.jdField_a_of_type_JavaUtilHashMap.size();
-      if (i <= 0) {
-        break;
-      }
-      arrayOfString1 = new String[i];
-      arrayOfString2 = new String[i];
-      Iterator localIterator = paramawze.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-      i = 0;
-      while (localIterator.hasNext())
+      localObject3 = localObject8;
+      localObject4 = localObject6;
+      paramObject = str2;
+      localObject5 = str1;
+      localObject8 = localObject9;
+      localObject6 = str5;
+      localObject1 = MusicPlayerActivity.a(localMusicPlayerActivity);
+      if (localObject1 != null)
       {
-        localObject = (Map.Entry)localIterator.next();
-        paramawze = (String)((Map.Entry)localObject).getKey();
-        localObject = (String)((Map.Entry)localObject).getValue();
-        arrayOfString1[i] = paramawze;
-        paramawze = (awze)localObject;
-        if (localObject == null) {
-          paramawze = "";
+        QLog.d("MusicPlayerActivity", 4, new Object[] { "MusicPlayerActivity add favourite success ", String.valueOf(str2) });
+        for (;;)
+        {
+          try
+          {
+            if (new JSONObject(str2).getInt("code") != 0) {
+              break;
+            }
+            paramObject = MusicPlayerActivity.a(localMusicPlayerActivity).getTag();
+            if ((paramObject instanceof Integer))
+            {
+              paramInt = ((Integer)paramObject).intValue();
+              Message.obtain(MusicPlayerActivity.a(localMusicPlayerActivity), 54, 2131693887, paramInt, MusicPlayerActivity.a(localMusicPlayerActivity)).sendToTarget();
+              return;
+            }
+          }
+          catch (Exception paramObject)
+          {
+            QLog.d("MusicPlayerActivity", 1, "add favourite parse json ", paramObject);
+            return;
+          }
+          paramInt = -1;
         }
-        arrayOfString2[i] = paramawze;
-        i += 1;
-      }
-      localObject = paramawze.jdField_a_of_type_JavaLangString;
-      break label29;
-      localObject = paramawze.b;
-      break label49;
-      localObject = paramawze.e;
-      break label69;
-      localObject = paramawze.c;
-      break label89;
-      localObject = paramawze.d;
-      break label109;
-      localObject = paramawze.f;
-      break label140;
-    }
-    paramIntent.putExtra("q_qssistant_extra_field_key", arrayOfString1);
-    paramIntent.putExtra("q_qssistant_extra_field_value", arrayOfString2);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("MOBILEQQ_QASSISTANT_CONFIG", 4).edit();
-    localEditor.putString("QASSISTANT_CONTEXT" + paramQQAppInterface.getCurrentAccountUin(), paramString);
-    localEditor.apply();
-  }
-  
-  public static void a(String paramString)
-  {
-    String str2 = Build.BRAND;
-    String str1 = str2;
-    if (bdnn.a(str2)) {
-      str1 = Build.MANUFACTURER;
-    }
-    if (bdnn.a(str1)) {
-      str1 = Build.PRODUCT;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QAssistantConfigUtils", 2, "reportQAssistantJump openAction: " + paramString + " strBrand: " + str1);
-      }
-      str2 = "" + a(paramString);
-      if (str1 == null) {}
-      for (paramString = "";; paramString = str1)
-      {
-        azqs.b(null, "dc00898", "", "", "0X800A99A", "0X800A99A", 0, 0, str2, "", paramString, Build.MODEL);
+        QLog.d("MusicPlayerActivity", 4, new Object[] { "MusicPlayerActivity del favourite success ", String.valueOf(str2) });
         return;
       }
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigUtils", 2, "reportQAssistantJumpMonitor host: " + paramString1 + " openAction: " + paramString2 + " result: " + paramInt);
-    }
-    HashMap localHashMap = new HashMap();
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
-    }
-    localHashMap.put("host", str);
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    localHashMap.put("openJumpAction", paramString1);
-    localHashMap.put("result", paramInt + "");
-    paramString1 = azri.a(BaseApplication.getContext());
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramString1.a(null, "qAudioAssistantJumpMonitor", bool, 0L, 0L, localHashMap, null);
-      return;
+      Object localObject2 = null;
+      continue;
+      label1074:
+      if (paramInt == 1) {
+        paramBoolean = true;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awzg
  * JD-Core Version:    0.7.0.1
  */

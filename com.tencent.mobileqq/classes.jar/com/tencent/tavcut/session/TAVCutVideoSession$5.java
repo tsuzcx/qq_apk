@@ -1,29 +1,19 @@
 package com.tencent.tavcut.session;
 
-import android.util.SparseArray;
-import com.tencent.tav.core.composition.VideoComposition.RenderLayoutMode;
-import com.tencent.tav.coremedia.CGSize;
-import com.tencent.tavkit.composition.TAVComposition;
-import com.tencent.weseevideo.composition.VideoRenderChainManager;
-import com.tencent.weseevideo.composition.builder.MediaBuilderListener;
-import com.tencent.weseevideo.composition.builder.MediaBuilderOutput;
-
 class TAVCutVideoSession$5
-  implements MediaBuilderListener
+  implements Runnable
 {
-  TAVCutVideoSession$5(TAVCutVideoSession paramTAVCutVideoSession) {}
+  TAVCutVideoSession$5(TAVCutVideoSession paramTAVCutVideoSession, float paramFloat) {}
   
-  public void buildCompleted(int paramInt, VideoRenderChainManager paramVideoRenderChainManager, MediaBuilderOutput paramMediaBuilderOutput)
+  public void run()
   {
-    this.this$0.renderChainManagers.put(0, paramVideoRenderChainManager);
-    this.this$0.tavCompositions.put(0, paramVideoRenderChainManager.getComposition());
-    TAVCutVideoSession.access$300(this.this$0).setRenderSize(new CGSize(1280.0F, 1280.0F));
-    TAVCutVideoSession.access$300(this.this$0).setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFit);
+    this.this$0.setEffectStrength(this.this$0.getMediaModel(), TAVCutVideoSession.access$000(this.this$0), this.val$effectStrength);
+    this.this$0.refresh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutVideoSession.5
  * JD-Core Version:    0.7.0.1
  */

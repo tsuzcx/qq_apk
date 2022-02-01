@@ -1,63 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.download.ReadInJoyDownloader.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import com.tencent.tmdownloader.TMAssistantDownloadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class our
+  implements View.OnClickListener
 {
-  private static volatile our jdField_a_of_type_Our;
-  private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(BaseApplication.getContext()).getDownloadSDKClient("ReadInJoyDownloader");
-  private final ouq jdField_a_of_type_Ouq = new ouq();
+  public our(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  private our()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_Ouq);
-  }
-  
-  public static our a()
-  {
-    if (jdField_a_of_type_Our != null) {
-      return jdField_a_of_type_Our;
+    if ((ReadInJoyDeliverBiuActivity.c(this.a)) && ((!ReadInJoyDeliverBiuActivity.d(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1))) {
+      this.a.d(ReadInJoyDeliverBiuActivity.l(this.a));
     }
-    try
+    for (;;)
     {
-      if (jdField_a_of_type_Our == null) {
-        jdField_a_of_type_Our = new our();
-      }
-      return jdField_a_of_type_Our;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      oat.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+      this.a.finish();
+      ReadInJoyDeliverBiuActivity.a(this.a, false);
     }
-    finally {}
-  }
-  
-  private void a(ous paramous)
-  {
-    ThreadManager.getSubThreadHandler().postDelayed(new ReadInJoyDownloader.1(this, paramous), 15000L);
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo)
-  {
-    QLog.d("ReadInJoyDownloader", 2, "[startDownload] ");
-    bfpz.a().a(paramDownloadInfo);
-    a(new ous(paramDownloadInfo, null));
-  }
-  
-  public void a(oup paramoup)
-  {
-    this.jdField_a_of_type_Ouq.a(paramoup);
-  }
-  
-  public void b(oup paramoup)
-  {
-    this.jdField_a_of_type_Ouq.b(paramoup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     our
  * JD-Core Version:    0.7.0.1
  */

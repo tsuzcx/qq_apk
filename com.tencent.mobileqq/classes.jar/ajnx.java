@@ -1,26 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.4;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajnx
-  implements Animation.AnimationListener
+class ajnx
+  implements DialogInterface.OnClickListener
 {
-  public ajnx(LoginView.4 param4) {}
+  ajnx(ajnk paramajnk, boolean paramBoolean, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.this$0.c.setVisibility(0);
-    this.a.this$0.c.clearAnimation();
-    this.a.this$0.c.setAnimation(null);
-    this.a.this$0.a.invalidate();
+    bcst.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, ajnk.a(this.jdField_a_of_type_Ajnk), "", "", "");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      ajnk.a(this.jdField_a_of_type_Ajnk, ajnk.a(this.jdField_a_of_type_Ajnk), Long.valueOf(ajnk.a(this.jdField_a_of_type_Ajnk)).longValue(), false);
+      return;
+    }
+    ajnk.a(this.jdField_a_of_type_Ajnk, ajnk.a(this.jdField_a_of_type_Ajnk), Long.valueOf(ajnk.a(this.jdField_a_of_type_Ajnk)).longValue(), false, this.jdField_a_of_type_JavaLangString);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

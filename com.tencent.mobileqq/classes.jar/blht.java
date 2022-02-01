@@ -1,13 +1,16 @@
-import dov.com.qq.im.ae.play.EditTextViewer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkBridgeActivity;
 
 public class blht
-  implements blhs
+  implements DialogInterface.OnClickListener
 {
-  public blht(EditTextViewer paramEditTextViewer) {}
+  public blht(QlinkBridgeActivity paramQlinkBridgeActivity) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramString);
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

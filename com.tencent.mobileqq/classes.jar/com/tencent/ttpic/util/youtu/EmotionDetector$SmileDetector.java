@@ -1,6 +1,9 @@
 package com.tencent.ttpic.util.youtu;
 
 import com.tencent.ttpic.baseutils.log.LogUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 class EmotionDetector$SmileDetector
 {
@@ -12,6 +15,7 @@ class EmotionDetector$SmileDetector
   private byte[] detectData;
   int faceCount = 0;
   int heightData = 0;
+  List<Boolean> isSmiles = new ArrayList();
   long lastDetectTime = 0L;
   int[] leftEyeX;
   int[] leftEyeY;
@@ -20,6 +24,7 @@ class EmotionDetector$SmileDetector
   int[] rightEyeY;
   float[] rolls;
   int[] smileValueQueen = { 0, 0, 0, 0, 0 };
+  List<Integer> smileValues = new ArrayList();
   int sumSmile = 0;
   int widthData = 0;
   float[] yaws;
@@ -199,10 +204,15 @@ class EmotionDetector$SmileDetector
     this.detectData = null;
   }
   
-  public int detectSmile()
+  public int detectSmile(boolean paramBoolean)
   {
     if (!EmotionDetector.access$300()) {
       return 0;
+    }
+    if (paramBoolean)
+    {
+      this.smileValues.clear();
+      this.isSmiles.clear();
     }
     updateTime();
     int m = 0;
@@ -214,7 +224,7 @@ class EmotionDetector$SmileDetector
       if (this.pitchs[m] < -0.2D)
       {
         j = calculatePitchGap(this.pitchs[m]);
-        label97:
+        label120:
         j = k + j;
         k = j;
         if (j > 100) {
@@ -224,8 +234,8 @@ class EmotionDetector$SmileDetector
         if (k < 0) {
           j = 0;
         }
-        if (j <= 40) {
-          break label149;
+        if ((j <= 40) || (paramBoolean)) {
+          break label181;
         }
       }
     }
@@ -237,18 +247,37 @@ class EmotionDetector$SmileDetector
       }
       return j;
       j = 0;
-      break label97;
-      label149:
-      if (j > i) {}
+      break label120;
+      label181:
+      this.smileValues.add(Integer.valueOf(j));
+      List localList = this.isSmiles;
+      boolean bool;
+      if (j > 40)
+      {
+        bool = true;
+        label210:
+        localList.add(Boolean.valueOf(bool));
+        if (j <= i) {
+          break label245;
+        }
+      }
       for (;;)
       {
         m += 1;
         i = j;
         break;
+        bool = false;
+        break label210;
+        label245:
         j = i;
       }
       j = i;
     }
+  }
+  
+  public List<Boolean> getIsSmiles()
+  {
+    return this.isSmiles;
   }
   
   public int getSmileValue()
@@ -257,6 +286,25 @@ class EmotionDetector$SmileDetector
       resetArray();
     }
     return calculateSmileValue();
+  }
+  
+  public List<Integer> getSmileValues()
+  {
+    return this.smileValues;
+  }
+  
+  public boolean isCurrentFrameSmile()
+  {
+    if (this.isSmiles != null)
+    {
+      Iterator localIterator = this.isSmiles.iterator();
+      while (localIterator.hasNext()) {
+        if (((Boolean)localIterator.next()).booleanValue()) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
   
   public boolean isSmile()
@@ -294,7 +342,7 @@ class EmotionDetector$SmileDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.youtu.EmotionDetector.SmileDetector
  * JD-Core Version:    0.7.0.1
  */

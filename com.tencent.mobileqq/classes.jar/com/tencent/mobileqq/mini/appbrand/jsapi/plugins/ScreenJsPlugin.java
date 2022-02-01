@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.app.Activity;
-import android.provider.Settings.System;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
@@ -21,43 +20,88 @@ public class ScreenJsPlugin
   private static final Set<String> S_EVENT_MAP = new ScreenJsPlugin.1();
   private static final String TAG = "[mini] ScreenJsPlugin";
   
+  /* Error */
   public static float getScreenBrightness(Activity paramActivity)
   {
-    Window localWindow = paramActivity.getWindow();
-    float f1;
-    if (localWindow == null) {
-      f1 = -1.0F;
-    }
-    for (;;)
-    {
-      return f1;
-      try
-      {
-        f2 = localWindow.getAttributes().screenBrightness;
-        f1 = f2;
-        if (f2 < 0.0F)
-        {
-          int i;
-          QLog.e("[mini] ScreenJsPlugin", 1, paramActivity, new Object[0]);
-        }
-      }
-      catch (Exception paramActivity)
-      {
-        try
-        {
-          i = Settings.System.getInt(paramActivity.getContentResolver(), "screen_brightness");
-          return i / 255.0F;
-        }
-        catch (Exception paramActivity)
-        {
-          float f2;
-          break;
-        }
-        paramActivity = paramActivity;
-        f2 = 0.0F;
-      }
-    }
-    return f2;
+    // Byte code:
+    //   0: fconst_0
+    //   1: fstore_1
+    //   2: fconst_0
+    //   3: fstore_3
+    //   4: aload_0
+    //   5: invokevirtual 43	android/app/Activity:getWindow	()Landroid/view/Window;
+    //   8: astore 5
+    //   10: aload 5
+    //   12: ifnonnull +8 -> 20
+    //   15: ldc 44
+    //   17: fstore_1
+    //   18: fload_1
+    //   19: freturn
+    //   20: aload 5
+    //   22: invokevirtual 50	android/view/Window:getAttributes	()Landroid/view/WindowManager$LayoutParams;
+    //   25: getfield 56	android/view/WindowManager$LayoutParams:screenBrightness	F
+    //   28: fstore_2
+    //   29: fload_2
+    //   30: fconst_0
+    //   31: fcmpg
+    //   32: iflt +11 -> 43
+    //   35: fload_2
+    //   36: fstore_1
+    //   37: fload_2
+    //   38: fconst_1
+    //   39: fcmpl
+    //   40: ifle +21 -> 61
+    //   43: aload_0
+    //   44: invokevirtual 60	android/app/Activity:getContentResolver	()Landroid/content/ContentResolver;
+    //   47: ldc 62
+    //   49: invokestatic 68	android/provider/Settings$System:getInt	(Landroid/content/ContentResolver;Ljava/lang/String;)I
+    //   52: istore 4
+    //   54: iload 4
+    //   56: i2f
+    //   57: ldc 69
+    //   59: fdiv
+    //   60: fstore_1
+    //   61: fload_1
+    //   62: fstore_2
+    //   63: fload_1
+    //   64: fconst_1
+    //   65: fcmpl
+    //   66: ifle +5 -> 71
+    //   69: fconst_1
+    //   70: fstore_2
+    //   71: fload_3
+    //   72: fstore_1
+    //   73: fload_2
+    //   74: fconst_0
+    //   75: fcmpg
+    //   76: iflt -58 -> 18
+    //   79: fload_2
+    //   80: freturn
+    //   81: astore_0
+    //   82: ldc 23
+    //   84: iconst_1
+    //   85: aload_0
+    //   86: iconst_0
+    //   87: anewarray 71	java/lang/Object
+    //   90: invokestatic 77	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   93: fload_1
+    //   94: freturn
+    //   95: astore_0
+    //   96: fload_2
+    //   97: fstore_1
+    //   98: goto -16 -> 82
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	101	0	paramActivity	Activity
+    //   1	97	1	f1	float
+    //   28	69	2	f2	float
+    //   3	69	3	f3	float
+    //   52	3	4	i	int
+    //   8	13	5	localWindow	Window
+    // Exception table:
+    //   from	to	target	type
+    //   20	29	81	java/lang/Exception
+    //   43	54	95	java/lang/Exception
   }
   
   public static boolean keepScreenOn(Activity paramActivity, boolean paramBoolean)
@@ -131,7 +175,7 @@ public class ScreenJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.ScreenJsPlugin
  * JD-Core Version:    0.7.0.1
  */

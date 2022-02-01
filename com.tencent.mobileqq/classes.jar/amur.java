@@ -1,6 +1,10 @@
-class amur
+public abstract interface amur
 {
-  private static final amup a = new amup(null);
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void b();
 }
 
 

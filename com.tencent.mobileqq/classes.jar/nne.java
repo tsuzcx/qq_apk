@@ -1,23 +1,33 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-class nne
-  implements DialogInterface.OnClickListener
+public class nne
 {
-  nne(nmx paramnmx, JsResult paramJsResult, Context paramContext) {}
+  public nne(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user denied = ");
+    }
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "false", "{result: -10, msg: 'no permission to record'}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user grant = ");
+    }
+    SensorAPIJavaScript.a(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nne
  * JD-Core Version:    0.7.0.1
  */

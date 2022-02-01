@@ -1,19 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.FilterCategory;
+import android.os.Handler;
+import android.os.Message;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.1;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.2;
 
-public final class blsp
-  implements Parcelable.Creator<FilterCategory>
+public class blsp
+  extends bmcr
 {
-  public FilterCategory a(Parcel paramParcel)
+  public blsp(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
+  
+  public void a()
   {
-    return new FilterCategory(paramParcel);
+    Message localMessage = Message.obtain();
+    localMessage.what = 1000;
+    localMessage.arg1 = 1;
+    this.a.a.sendMessage(localMessage);
+    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
+    this.a.a.sendEmptyMessageDelayed(1009, i);
   }
   
-  public FilterCategory[] a(int paramInt)
+  public void a(float paramFloat)
   {
-    return new FilterCategory[paramInt];
+    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.1(this, paramFloat));
   }
+  
+  public void a(int paramInt)
+  {
+    this.a.a.obtainMessage(1008).sendToTarget();
+  }
+  
+  public void b()
+  {
+    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.2(this));
+  }
+  
+  public void c() {}
 }
 
 

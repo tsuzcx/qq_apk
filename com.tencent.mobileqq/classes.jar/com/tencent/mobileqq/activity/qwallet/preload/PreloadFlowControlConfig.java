@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ajeu;
+import akww;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.io.Serializable;
 import mqq.app.AppRuntime;
@@ -34,7 +34,7 @@ public class PreloadFlowControlConfig
     String str = getConfigPath(paramString, paramAppRuntime);
     try
     {
-      paramString = (PreloadFlowControlConfig)ajeu.a(str);
+      paramString = (PreloadFlowControlConfig)akww.a(str);
       paramAppRuntime = paramString;
       if (paramString == null) {
         paramAppRuntime = new PreloadFlowControlConfig(str);
@@ -57,7 +57,7 @@ public class PreloadFlowControlConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadFlowControlConfig
  * JD-Core Version:    0.7.0.1
  */

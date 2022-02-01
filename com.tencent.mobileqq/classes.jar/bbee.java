@@ -1,25 +1,37 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import mqq.app.AppActivity;
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.screendetect.ScreenShotDetector;
+import com.tencent.mobileqq.screendetect.ScreenShotDetector.MediaContentObserver.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class bbee
-  implements View.OnClickListener
+  extends ContentObserver
 {
-  public bbee(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
+  private Uri a;
   
-  public void onClick(View paramView)
+  public bbee(ScreenShotDetector paramScreenShotDetector, Uri paramUri, Handler paramHandler)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity();
-    if (paramView.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().app, "dc00899", "Grp_tribe", "", "post", "save_video", 0, 0, "", "", "", "");
+    super(paramHandler);
+    this.jdField_a_of_type_AndroidNetUri = paramUri;
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    if (this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotDetector.a()) {
       return;
-      paramView.requestPermissions(new bbef(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+    }
+    try
+    {
+      ThreadManager.getSubThreadHandler().post(new ScreenShotDetector.MediaContentObserver.1(this));
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ScreenShotDetector", 2, "ScreenShot: onChange error!", localException);
     }
   }
 }

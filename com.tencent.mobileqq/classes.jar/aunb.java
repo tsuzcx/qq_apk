@@ -1,33 +1,54 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aunb
-  implements ValueAnimator.AnimatorUpdateListener
+  implements aybr
 {
-  public aunb(MultiCardFragment paramMultiCardFragment, aunn paramaunn, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  public aunb(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean a()
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    if (this.jdField_a_of_type_Aunn == null) {
-      return;
+    return this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("nearby.NearbyHybridFragment", 2, "status =" + paramInt1 + ",direction =" + paramInt2 + ",height =" + paramInt3);
     }
-    float f2 = 1.0F - (1.0F - this.jdField_a_of_type_Float) * f1;
-    this.jdField_a_of_type_Aunn.a.setScaleX(f2);
-    this.jdField_a_of_type_Aunn.a.setScaleY(f2);
-    this.jdField_a_of_type_Aunn.a.setTranslationX(0.0F);
-    this.jdField_a_of_type_Aunn.a.setTranslationY(this.b * f1);
-    paramValueAnimator = this.jdField_a_of_type_Aunn.a.getLayoutParams();
-    float f3 = this.c;
-    paramValueAnimator.height = ((int)((1.0F - f1 * (1.0F - this.d)) / f2 * f3));
-    this.jdField_a_of_type_Aunn.a.requestLayout();
+    String str = BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4).getString("nearby_view_change_callback", "");
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(str)) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("status", paramInt1);
+      localJSONObject.put("direction", paramInt2);
+      localJSONObject.put("height", paramInt3);
+      if (this.a.jdField_a_of_type_Aunc != null) {
+        this.a.jdField_a_of_type_Aunc.mWebview.callJs(str, new String[] { localJSONObject.toString() });
+      }
+      return false;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("nearby.NearbyHybridFragment", 2, localJSONException, new Object[0]);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aunb
  * JD-Core Version:    0.7.0.1
  */

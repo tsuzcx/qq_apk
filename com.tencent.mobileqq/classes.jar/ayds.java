@@ -1,17 +1,8 @@
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-
-class ayds
-  implements ayew
+public abstract interface ayds
 {
-  ayds(aydn paramaydn) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void a(String paramString)
-  {
-    if (SignatureHistoryFragment.b(this.a.a)) {
-      return;
-    }
-    SignatureHistoryFragment.a(this.a.a, paramString);
-  }
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

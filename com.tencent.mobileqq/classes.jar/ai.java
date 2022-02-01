@@ -1,17 +1,22 @@
-import android.os.AsyncTask;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageButton;
 import com.dataline.activities.LiteActivity;
+import com.tencent.widget.XEditTextEx;
 
 public class ai
-  implements arrh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ai(LiteActivity paramLiteActivity, AsyncTask paramAsyncTask, int paramInt) {}
+  public ai(LiteActivity paramLiteActivity) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount() > 3) && (!LiteActivity.a(this.a)) && (!bcnj.b()))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
   }
-  
-  public void b() {}
 }
 
 

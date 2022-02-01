@@ -1,22 +1,10 @@
-import android.text.Editable;
-import android.util.SparseArray;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment.IdiomHbBundleInfo;
-import java.util.List;
-
-public class aiyx
-  implements aiyz
+public abstract interface aiyx
 {
-  public aiyx(WordChainHbFragment paramWordChainHbFragment) {}
+  public abstract void an_();
   
-  public void a(boolean paramBoolean, List<String> paramList)
-  {
-    paramList = WordChainHbFragment.a(this.a, true);
-    this.a.c.setText(paramList);
-    WordChainHbFragment.a(this.a).put(WordChainHbFragment.a(this.a).currSelectedSubChannel, paramList);
-    this.a.c.setSelection(this.a.c.getText().length());
-  }
+  public abstract void b();
+  
+  public abstract void j_(int paramInt);
 }
 
 

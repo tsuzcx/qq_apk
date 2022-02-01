@@ -1,41 +1,23 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import mqq.os.MqqHandler;
 
-public final class xqs
+public class xqs
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  private final xqt a;
+  xqs(xqp paramxqp) {}
   
-  public xqs(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    this(paramContext, paramOnGestureListener, null);
-  }
-  
-  public xqs(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
-  {
-    this.a = new xqu(paramContext, paramOnGestureListener, paramHandler);
-  }
-  
-  public void a(int paramInt)
-  {
-    xqu.a(paramInt);
-  }
-  
-  public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
-  {
-    this.a.a(paramOnDoubleTapListener);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return this.a.a(paramMotionEvent);
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xqs
  * JD-Core Version:    0.7.0.1
  */

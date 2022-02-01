@@ -1,7 +1,17 @@
-public abstract interface anjw
-  extends anjv
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionBase;
+
+public abstract class anjw<T extends CustomEmotionBase>
+  extends anii
 {
-  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3);
+  protected anjw(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
+  
+  public abstract void a();
+  
+  protected abstract void a(Object paramObject, boolean paramBoolean);
 }
 
 

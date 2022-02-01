@@ -1,19 +1,17 @@
-class bmjm
-  implements afdp
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
+
+final class bmjm
+  implements QQPermissionCallback
 {
-  bmjm(bmjl parambmjl) {}
+  bmjm(Activity paramActivity) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.a.a(-1, bmjk.a(this.a.a), 2130772028, 0, false);
-    bmjk.a(this.a.a, null);
+    bglp.b(bmjl.a(this.a));
   }
   
-  public void b()
-  {
-    this.a.a.a.a(-1, bmjk.a(this.a.a), 2130772028, 0, false);
-    bmjk.a(this.a.a, null);
-  }
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

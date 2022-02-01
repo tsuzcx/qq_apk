@@ -1,82 +1,21 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.AbstractPhotoPreviewActivity.ImageAdapter;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
 
 public class aito
-  extends airj
+  implements aiwj
 {
-  protected aito(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
-  {
-    super(paramNewPhotoPreviewActivity);
-  }
+  public aito(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(String paramString)
   {
-    paramView = super.getView(paramInt, paramView, paramViewGroup);
-    paramViewGroup = ((NewPhotoPreviewActivity)this.mActivity).adapter.getItem(paramInt);
-    if (((NewPhotoPreviewActivity)this.mActivity).getMediaType(paramViewGroup) == 1)
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = 80000001;
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramInt = 1;
-      if (paramInt == 0) {
-        break label96;
-      }
-      ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(8);
-      ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(8);
-      ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(8);
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_label", 0, 0, "", "", paramString, "");
+      this.a.d = false;
+      this.a.a(paramString, false);
     }
-    label259:
-    for (;;)
-    {
-      return paramView;
-      paramInt = 0;
-      break;
-      label96:
-      if (this.a.c)
-      {
-        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(0);
-        if (!this.a.b) {
-          break label228;
-        }
-        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(0);
-        ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(0);
-      }
-      for (;;)
-      {
-        if ((!this.a.g) && (!this.a.isSingleMode)) {
-          break label259;
-        }
-        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(8);
-        ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(8);
-        return paramView;
-        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(8);
-        break;
-        label228:
-        ((NewPhotoPreviewActivity)this.mActivity).qualityCheckBox.setVisibility(8);
-        ((NewPhotoPreviewActivity)this.mActivity).qualityTv.setVisibility(8);
-      }
-    }
-  }
-  
-  public boolean needShowMultiPhoto()
-  {
-    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
-  }
-  
-  public void onMagicStickClick(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
-  {
-    if (paramBundle != null)
-    {
-      paramBundle.putBoolean("key_multi_edit_pic", true);
-      paramBundle.putBoolean("key_enable_edit_title_bar", true);
-    }
-    super.onMagicStickClick(paramView, 10000, paramBundle, paramInt2, paramIntent);
   }
 }
 

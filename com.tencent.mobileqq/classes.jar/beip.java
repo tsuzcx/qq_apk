@@ -1,23 +1,17 @@
-import android.graphics.Bitmap;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-class beip
+public class beip
   implements Animation.AnimationListener
 {
-  beip(beim parambeim) {}
+  public beip(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "showScreenshotPad->on hideAnimationEnd!");
-    }
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
+    this.a.m = false;
+    paramAnimation.setAnimationListener(null);
+    this.a.finish();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

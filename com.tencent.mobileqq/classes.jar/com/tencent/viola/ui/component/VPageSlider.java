@@ -324,6 +324,13 @@ public class VPageSlider
   }
   
   @VComponentProp(name="index")
+  public void setStartIndex(int paramInt)
+  {
+    if (getHostView() != null) {
+      ((VPageSliderView)getHostView()).setStartItemIndex(Boolean.valueOf(false), paramInt);
+    }
+  }
+  
   public void setStartIndex(Boolean paramBoolean, int paramInt)
   {
     if (getHostView() != null) {
@@ -347,7 +354,7 @@ public class VPageSlider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VPageSlider
  * JD-Core Version:    0.7.0.1
  */

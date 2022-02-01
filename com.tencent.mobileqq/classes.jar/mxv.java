@@ -1,140 +1,136 @@
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.LinearGradient;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Shader.TileMode;
-import android.util.AttributeSet;
-import android.view.View;
-import com.tencent.mobileqq.R.styleable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class mxv
+  extends mzj
+  implements mzf
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private LinearGradient jdField_a_of_type_AndroidGraphicsLinearGradient;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private View jdField_a_of_type_AndroidViewView;
-  private mxw jdField_a_of_type_Mxw;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  public static int a;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new mxw(this);
+  private AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private mzg<myc> jdField_a_of_type_Mzg;
+  private mzh jdField_a_of_type_Mzh;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private long b;
+  private long c;
   
-  public mxv(View paramView, Paint paramPaint, AttributeSet paramAttributeSet)
+  static
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint;
-    a(paramAttributeSet);
+    jdField_a_of_type_Int = 2000;
   }
   
-  private void a(AttributeSet paramAttributeSet)
+  public mxv(AVGameAppInterface paramAVGameAppInterface, mzh parammzh, mzd parammzd, mzg<myc> parammzg)
   {
-    this.jdField_b_of_type_Int = -1;
-    if (paramAttributeSet != null)
+    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
+    this.jdField_a_of_type_Mzh = parammzh;
+    this.jdField_a_of_type_Mzg = parammzg;
+    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.addObserver(this, false);
+  }
+  
+  private boolean a()
+  {
+    return this.jdField_a_of_type_Long == ((myc)this.jdField_a_of_type_Mzg.a()).a();
+  }
+  
+  private void b()
+  {
+    if (bgnt.a()) {}
+    for (int i = 2131690264;; i = 2131690307)
     {
-      paramAttributeSet = this.jdField_a_of_type_AndroidViewView.getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.ShimmerView, 0, 0);
-      if (paramAttributeSet == null) {}
+      QLog.d("HeartBeatController", 1, "stopHeartBeatByLocalTimeOut() then do exitRoom() isNetworkAvailable =" + bgnt.a());
+      mxl.a().a(5, BaseApplicationImpl.getApplication().getString(i), mxl.a().a());
+      return;
     }
-    try
-    {
-      this.jdField_b_of_type_Int = paramAttributeSet.getColor(0, -1);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ShimmerTextView", 2, "Error while creating the view:", localException);
-        }
-        paramAttributeSet.recycle();
-      }
-    }
-    finally
-    {
-      paramAttributeSet.recycle();
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  }
+  
+  private void b(long paramLong, String paramString)
+  {
+    ((mza)this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.a(1)).a(paramLong, paramString);
+    mxt.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
   private void c()
   {
-    float f = -this.jdField_a_of_type_AndroidViewView.getWidth();
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_b_of_type_Int;
-    int k = this.jdField_a_of_type_Int;
-    Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-    this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(f, 0.0F, 0.0F, 0.0F, new int[] { i, j, k }, new float[] { 0.0F, 0.5F, 1.0F }, localTileMode);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsLinearGradient);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 35000L);
+  }
+  
+  private void d()
+  {
+    QLog.d("HeartBeatController", 1, String.format("maintainHeartBeat() [isStop]=[%b]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, jdField_a_of_type_Int);
+    }
+  }
+  
+  public long a()
+  {
+    return this.b;
   }
   
   public void a()
   {
-    c();
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Mxw != null) {
-        this.jdField_a_of_type_Mxw.a(this.jdField_a_of_type_AndroidViewView);
-      }
+    if (this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface != null) {
+      this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.removeObserver(this);
     }
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_AndroidViewView.invalidate();
+    a(1);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_b_of_type_Boolean) {
-      c();
-    }
+    mxt.jdField_a_of_type_Long = 0L;
+    QLog.d("HeartBeatController", 1, String.format("stopHeartBeat() [roomId,fromType]=[%d,%d]", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(paramInt) }));
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
-  public void a(mxw parammxw)
+  public void a(long paramLong1, int paramInt1, long paramLong2, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_Mxw = parammxw;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    if ((this.jdField_a_of_type_Boolean) || (!a()))
     {
-      if (this.jdField_a_of_type_AndroidGraphicsPaint.getShader() == null) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsLinearGradient);
-      }
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(2.0F * this.jdField_a_of_type_Float, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsLinearGradient.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+      QLog.d("HeartBeatController", 1, String.format("onRespHeartBeatSuccess() isStop or validRoomId just return  [roomId,data.getRoomId()]=[%d,%d]", new Object[] { Long.valueOf(paramLong2), Long.valueOf(((myc)this.jdField_a_of_type_Mzg.a()).a()) }));
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setShader(null);
+    if (paramInt2 == 303)
+    {
+      QLog.d("HeartBeatController", 1, String.format("onRespHeartBeatSuccess() EC_HEARTBEAT_USER_NOT_IN_ROOM exitRoom() [roomId]=[%d]", new Object[] { Long.valueOf(paramLong2) }));
+      mwu.a().a(mzj.class, 7, true, new Object[] { Long.valueOf(paramLong2), Integer.valueOf(4) });
+      return;
+    }
+    this.b = paramLong1;
+    this.c = SystemClock.elapsedRealtime();
+    this.jdField_a_of_type_Mzh.a(paramLong1, paramLong2, jdField_a_of_type_Int, paramInt2);
+    jdField_a_of_type_Int = Math.max(paramInt1, jdField_a_of_type_Int);
+    c();
   }
   
-  public void b(int paramInt)
+  public void a(long paramLong, String paramString)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    if (this.jdField_b_of_type_Boolean) {
-      c();
-    }
+    QLog.d("HeartBeatController", 1, String.format("startHeartBeat() [roomId,userUin]=[%d,%s]", new Object[] { Long.valueOf(paramLong), paramString }));
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = false;
+    b(paramLong, paramString);
+    d();
+    c();
+  }
+  
+  public long b()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mxv
  * JD-Core Version:    0.7.0.1
  */

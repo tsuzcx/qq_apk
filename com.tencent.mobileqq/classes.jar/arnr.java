@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 
-class arnr
-  implements View.OnClickListener
+public abstract interface arnr
 {
-  arnr(arnq paramarnq) {}
+  public abstract void a(XmlData paramXmlData);
   
-  public void onClick(View paramView)
-  {
-    arrr.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Arki.d());
-  }
+  public abstract void a(XmlData paramXmlData, long paramLong1, long paramLong2);
+  
+  public abstract void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString);
+  
+  public abstract void b(XmlData paramXmlData);
 }
 
 

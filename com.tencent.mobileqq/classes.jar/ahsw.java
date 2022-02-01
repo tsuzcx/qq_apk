@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahsw
-  extends View.AccessibilityDelegate
+class ahsw
+  implements DialogInterface.OnClickListener
 {
-  public ahsw(ContactsBaseFragment paramContactsBaseFragment) {}
+  ahsw(ahsd paramahsd) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramInt;
-    if (paramInt == 8) {
-      i = 32768;
+    if (this.a.a != null) {
+      this.a.a.n();
     }
-    super.sendAccessibilityEvent(paramView, i);
   }
 }
 

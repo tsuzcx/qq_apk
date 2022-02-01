@@ -1,22 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qat
   implements View.OnClickListener
 {
-  qat(qas paramqas) {}
+  qat(qam paramqam, String paramString1, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    paramView = this.a.jdField_a_of_type_Rqj.a();
-    if (paramView != null) {
-      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
+    qam.a(2, this.jdField_a_of_type_JavaLangString);
+    pha.a(qam.a(this.jdField_a_of_type_Qam), this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qat
  * JD-Core Version:    0.7.0.1
  */

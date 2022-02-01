@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
-class aisi
-  implements DialogInterface.OnClickListener
+public class aisi
+  extends pmn
 {
-  aisi(aisf paramaisf) {}
+  public aisi(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
   {
-    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
-      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    if (paramBoolean)
+    {
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        this.a.c.clear();
+        this.a.c.addAll(paramList);
+      }
+      ClassificationSearchActivity.b(this.a, true);
     }
   }
 }

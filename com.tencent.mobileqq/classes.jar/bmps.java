@@ -1,6 +1,16 @@
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+
 class bmps
+  implements QzoneZipCacheHelperCallBack
 {
-  static final bmpp a = new bmpp(null);
+  bmps(bmpr parambmpr) {}
+  
+  public void onResult(boolean paramBoolean)
+  {
+    bmpr.a(this.a, paramBoolean);
+  }
+  
+  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 

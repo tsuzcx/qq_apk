@@ -1,23 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
 
 public class nzk
-  implements nbs
+  implements DialogInterface.OnClickListener
 {
-  public nzk(ReadInJoyNewFeedsActivity.2 param2) {}
+  public nzk(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, String paramString) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
-    }
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, false, this.jdField_a_of_type_JavaLangString);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzk
  * JD-Core Version:    0.7.0.1
  */

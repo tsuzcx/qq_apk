@@ -1,6 +1,15 @@
-public abstract interface ajvo
+public class ajvo
+  implements alaq
 {
-  public abstract void a(int paramInt, String paramString);
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, float paramFloat) {}
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt1, int paramInt2) {}
 }
 
 

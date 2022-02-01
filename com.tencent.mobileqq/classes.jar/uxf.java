@@ -1,23 +1,74 @@
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StGPSV2;
+
 public class uxf
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
+  private static volatile uxf jdField_a_of_type_Uxf;
+  private FeedCloudMeta.StGPSV2 jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2 = new FeedCloudMeta.StGPSV2();
+  private boolean jdField_a_of_type_Boolean;
   
-  public uxf(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static uxf a()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    if (jdField_a_of_type_Uxf == null) {}
+    try
+    {
+      if (jdField_a_of_type_Uxf == null) {
+        jdField_a_of_type_Uxf = new uxf();
+      }
+      return jdField_a_of_type_Uxf;
+    }
+    finally {}
+  }
+  
+  private void a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2.lat.set(Double.valueOf(paramSosoLbsInfo.a.a * 1000000.0D).intValue());
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2.lon.set(Double.valueOf(paramSosoLbsInfo.a.b * 1000000.0D).intValue());
+  }
+  
+  public FeedCloudMeta.StGPSV2 a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if (a())
+    {
+      SosoInterface.SosoLbsInfo localSosoLbsInfo = aoor.a("qqcircle");
+      if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null))
+      {
+        a(localSosoLbsInfo);
+        QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from cache");
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request");
+    aoor.a(new uxg(this, "qqcircle", true));
+  }
+  
+  public boolean a()
+  {
+    return (Build.VERSION.SDK_INT < 23) || (BaseApplicationImpl.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uxf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,34 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aikg
-  implements View.OnClickListener
+  extends aiki
 {
-  public aikg(AvatarPendantActivity paramAvatarPendantActivity, int paramInt, String paramString1, String paramString2) {}
+  int a = 100;
   
-  public void onClick(View paramView)
+  public aikg(aikj paramaikj)
   {
-    bdun.a(null, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, "mvip.gxh.android.faceaddon_nati_dft", this.jdField_a_of_type_Int, "1450000515", this.jdField_a_of_type_JavaLangString, this.b, "");
-    paramView = "0";
-    if (!TextUtils.isEmpty(this.b)) {
-      if (!"QQ会员".equals(this.b)) {
-        break label84;
-      }
-    }
-    label84:
-    for (paramView = "0";; paramView = "1")
+    super(paramaikj);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject != null) && (paramJSONObject.has("moneylimit"))) {}
+    try
     {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD2", "0X8005FD2", 0, 0, paramView, "", "", "");
+      this.a = paramJSONObject.getInt("moneylimit");
+      BaseApplicationImpl.getApplication().getSharedPreferences("MOBILEQQ HONGBAO_SCENESRECOMMEND_INFO", 4).edit().putInt("HONGBAO_SCENES_MONEY_LIMIT", this.a).apply();
       return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
+      {
+        paramJSONObject.printStackTrace();
+      }
     }
   }
 }

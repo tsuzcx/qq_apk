@@ -1,14 +1,14 @@
 package com.tencent.device.datadef;
 
+import abqh;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ztj;
 
 public class ProductNetLinkInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ProductNetLinkInfo> CREATOR = new ztj();
+  public static final Parcelable.Creator<ProductNetLinkInfo> CREATOR = new abqh();
   public String linkResetVoiceDesc;
   public int productId;
   public String stopSoundWaveDesc1;
@@ -56,7 +56,7 @@ public class ProductNetLinkInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.device.datadef.ProductNetLinkInfo
  * JD-Core Version:    0.7.0.1
  */

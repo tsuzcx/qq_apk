@@ -1,18 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class addb
-  implements View.OnClickListener
+class addb
+  implements DialogInterface.OnDismissListener
 {
-  public addb(GeneralSettingActivity paramGeneralSettingActivity) {}
+  addb(adcw paramadcw) {}
   
-  public void onClick(View paramView)
-  {
-    PublicFragmentActivity.a(this.a, LangSettingFragment.class);
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

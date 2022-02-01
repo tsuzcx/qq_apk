@@ -10,25 +10,25 @@ import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdaq;
-import bhtv;
+import bggq;
+import bkhe;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.XListView;
-import njx;
-import njy;
+import nso;
+import nsp;
 
 public class AccountDetailXListView
   extends XListView
-  implements bhtv, Runnable
+  implements bkhe, Runnable
 {
   protected float a;
   protected int a;
   protected ProgressBar a;
   protected RelativeLayout a;
   protected TextView a;
-  private njx a;
-  public njy a;
+  private nso a;
+  public nsp a;
   public boolean a;
   protected float b;
   protected int b;
@@ -87,32 +87,32 @@ public class AccountDetailXListView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559841, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372497));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372498));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559977, this, false));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373098));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373099));
     addFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, null, false);
     setFooterDividersEnabled(false);
   }
   
   private void d()
   {
-    if ((a()) && (this.jdField_a_of_type_Njy != null))
+    if ((a()) && (this.jdField_a_of_type_Nsp != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AccountDetailXListView", 2, "loadingMore");
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689557);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689503);
       a(0);
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Njy.a(this);
+      this.jdField_a_of_type_Nsp.a(this);
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Njy = null;
+    this.jdField_a_of_type_Nsp = null;
   }
   
   public void a(boolean paramBoolean)
@@ -140,7 +140,7 @@ public class AccountDetailXListView
         QLog.d("AccountDetailXListView", 2, "loadMoreFail");
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689556);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689502);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       a(0);
       this.jdField_a_of_type_Int = 0;
@@ -157,7 +157,7 @@ public class AccountDetailXListView
       this.jdField_a_of_type_Int = 0;
       if (!paramBoolean)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689558);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689504);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         this.jdField_a_of_type_Boolean = false;
@@ -211,7 +211,7 @@ public class AccountDetailXListView
       if (i == 2)
       {
         this.jdField_d_of_type_Int = ((int)(paramMotionEvent.getY() - this.jdField_d_of_type_Int));
-        if (Math.abs(this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) < bdaq.a(super.getContext(), 10.0F))
+        if (Math.abs(this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) < bggq.a(super.getContext(), 10.0F))
         {
           this.jdField_d_of_type_Int = ((int)paramMotionEvent.getY());
           this.jdField_d_of_type_Float = (this.jdField_b_of_type_Float - this.jdField_c_of_type_Float);
@@ -238,8 +238,8 @@ public class AccountDetailXListView
     int i = getScrollY();
     if (this.jdField_e_of_type_Int - i == 0)
     {
-      if (this.jdField_a_of_type_Njx != null) {
-        this.jdField_a_of_type_Njx.a((int)this.jdField_e_of_type_Float);
+      if (this.jdField_a_of_type_Nso != null) {
+        this.jdField_a_of_type_Nso.a((int)this.jdField_e_of_type_Float);
       }
       return;
     }
@@ -247,19 +247,19 @@ public class AccountDetailXListView
     postDelayed(this, this.f);
   }
   
-  public void setOnEndScrollListener(njx paramnjx)
+  public void setOnEndScrollListener(nso paramnso)
   {
-    this.jdField_a_of_type_Njx = paramnjx;
+    this.jdField_a_of_type_Nso = paramnso;
   }
   
-  public void setRefreshCallback(njy paramnjy)
+  public void setRefreshCallback(nsp paramnsp)
   {
-    this.jdField_a_of_type_Njy = paramnjy;
+    this.jdField_a_of_type_Nsp = paramnsp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView
  * JD-Core Version:    0.7.0.1
  */

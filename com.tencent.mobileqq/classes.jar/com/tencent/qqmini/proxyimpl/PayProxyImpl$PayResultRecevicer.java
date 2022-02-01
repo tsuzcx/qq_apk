@@ -6,25 +6,25 @@ import android.os.ResultReceiver;
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.proxy.PayProxy.IPayResultCallBack;
-import com.tencent.qqmini.sdk.core.proxy.PayProxy.PayResponse;
+import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy.IPayResultCallBack;
+import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy.PayResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PayProxyImpl$PayResultRecevicer
   extends ResultReceiver
 {
-  PayProxy.IPayResultCallBack mCallBack;
+  PayProxy.IPayResultCallBack a;
   
   public PayProxyImpl$PayResultRecevicer(PayProxyImpl paramPayProxyImpl, Handler paramHandler, PayProxy.IPayResultCallBack paramIPayResultCallBack)
   {
     super(paramHandler);
-    this.mCallBack = paramIPayResultCallBack;
+    this.a = paramIPayResultCallBack;
   }
   
-  private void handlePayResult(int paramInt, Bundle paramBundle, String paramString)
+  private void a(int paramInt, Bundle paramBundle, String paramString)
   {
-    localPayResponse = new PayProxy.PayResponse(this.this$0);
+    localPayResponse = new PayProxy.PayResponse(this.b);
     paramString = paramBundle.getString("result");
     String str = paramBundle.getString("callbackSn");
     j = -1;
@@ -35,7 +35,7 @@ class PayProxyImpl$PayResultRecevicer
       try
       {
         i = new JSONObject(str).optInt("seq", -1);
-        QLog.d(PayProxyImpl.access$000(this.this$0), 2, "onReceiveResult seq = " + i + " callbackSn=" + str + " result = " + paramString);
+        QLog.d(PayProxyImpl.a(this.b), 2, "onReceiveResult seq = " + i + " callbackSn=" + str + " result = " + paramString);
         JSONObject localJSONObject1 = new JSONObject();
         try
         {
@@ -49,7 +49,7 @@ class PayProxyImpl$PayResultRecevicer
             paramString = localJSONObject2.optString("resultMsg", "");
             paramBundle = localJSONObject2.optJSONObject("data");
           }
-          QLog.d(PayProxyImpl.access$000(this.this$0), 1, "onReceiveResult seq = " + i + " callbackSn=" + str + " ret = " + j);
+          QLog.d(PayProxyImpl.a(this.b), 1, "onReceiveResult seq = " + i + " callbackSn=" + str + " ret = " + j);
           localJSONObject1.put("resultCode", j);
           localPayResponse.setResultMsg(paramString);
           if (j != 0) {
@@ -67,7 +67,7 @@ class PayProxyImpl$PayResultRecevicer
         {
           for (;;)
           {
-            QLog.e(PayProxyImpl.access$000(this.this$0), 1, paramBundle, new Object[0]);
+            QLog.e(PayProxyImpl.a(this.b), 1, paramBundle, new Object[0]);
             localPayResponse.setResultCode(-1);
             localPayResponse.setPayState(2);
             continue;
@@ -75,14 +75,14 @@ class PayProxyImpl$PayResultRecevicer
             localPayResponse.setPayState(2);
           }
         }
-        if (this.mCallBack != null) {
-          this.mCallBack.onPayCallBack(localPayResponse);
+        if (this.a != null) {
+          this.a.onPayCallBack(localPayResponse);
         }
         return;
       }
       catch (JSONException paramBundle)
       {
-        QLog.e(PayProxyImpl.access$000(this.this$0), 1, paramBundle, new Object[0]);
+        QLog.e(PayProxyImpl.a(this.b), 1, paramBundle, new Object[0]);
         i = j;
         continue;
       }
@@ -92,7 +92,7 @@ class PayProxyImpl$PayResultRecevicer
       }
       catch (NumberFormatException paramBundle)
       {
-        QLog.e(PayProxyImpl.access$000(this.this$0), 1, paramBundle, new Object[0]);
+        QLog.e(PayProxyImpl.a(this.b), 1, paramBundle, new Object[0]);
         i = j;
       }
       continue;
@@ -108,7 +108,7 @@ class PayProxyImpl$PayResultRecevicer
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    QLog.d(PayProxyImpl.access$000(this.this$0), 2, "onReceiveResult resultCode = " + paramInt + " resultData = " + paramBundle);
+    QLog.d(PayProxyImpl.a(this.b), 2, "onReceiveResult resultCode = " + paramInt + " resultData = " + paramBundle);
     switch (paramInt)
     {
     case 8: 
@@ -119,21 +119,21 @@ class PayProxyImpl$PayResultRecevicer
     default: 
       return;
     case 6: 
-      handlePayResult(paramInt, paramBundle, "requestMidasPayment");
+      a(paramInt, paramBundle, "requestMidasPayment");
       return;
     case 9: 
-      handlePayResult(paramInt, paramBundle, "requestPayment");
+      a(paramInt, paramBundle, "requestPayment");
       return;
     case 7: 
-      handlePayResult(paramInt, paramBundle, "requestMidasGoodsPay");
+      a(paramInt, paramBundle, "requestMidasGoodsPay");
       return;
     }
-    handlePayResult(paramInt, paramBundle, "requestMidasMonthCardPay");
+    a(paramInt, paramBundle, "requestMidasMonthCardPay");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.PayProxyImpl.PayResultRecevicer
  * JD-Core Version:    0.7.0.1
  */

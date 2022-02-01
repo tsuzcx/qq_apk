@@ -1,53 +1,32 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.guide.GuideHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-class mcz
-  extends mcx
+public class mcz
+  implements View.OnClickListener
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public mcz(EffectSettingUi paramEffectSettingUi) {}
   
-  mcz(LinearLayout paramLinearLayout)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131372884));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLinearLayout.findViewById(2131372602));
-  }
-  
-  Resources a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
-  }
-  
-  void a()
-  {
-    if (!a()) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView != null;
-  }
-  
-  boolean a(mda parammda)
-  {
-    a();
-    if ((parammda.a != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
+    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1007L);
+    this.a.b(-1007L, true);
+    mbd.b();
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      mcv.a(this.jdField_a_of_type_AndroidWidgetTextView, parammda);
-      return true;
+      AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localAVActivity.a.a(-1007L, localAVActivity, 99, 0);
     }
-    return false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mcz
  * JD-Core Version:    0.7.0.1
  */

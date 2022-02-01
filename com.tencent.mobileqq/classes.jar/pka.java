@@ -1,116 +1,166 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.Nullable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.util.WeakReference;
 
 public class pka
+  extends LottieDrawable
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private static LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(5242880);
+  private static final String jdField_a_of_type_JavaLangString = bhgg.a(anhk.ba + ".readInjoy/resource/lottie_background_res");
+  private static LruCache<String, LottieComposition> jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(1048576);
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean jdField_b_of_type_Boolean = true;
+  
+  private static long a(String paramString)
   {
-    JSONObject localJSONObject = new JSONObject();
-    Object localObject1 = new JSONObject();
-    ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + alud.a(2131713525));
-    localJSONObject.put("id_gallery_cnt", localObject1);
-    localObject1 = new JSONObject();
-    ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");
-    localJSONObject.put("id_gallery_img", localObject1);
-    localJSONObject.put("id_gallery_bg", new JSONObject());
-    Object localObject3;
-    Object localObject2;
-    label169:
-    label184:
-    Object localObject4;
-    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
+    long l = 0L;
+    int i = 0;
+    while (i < paramString.length())
     {
-      localObject3 = rqj.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
-      if ((localObject3 == null) || (((JSONArray)localObject3).length() < 3)) {
-        return localJSONObject;
+      l = (l + paramString.charAt(i)) * 131L % 53497342331L;
+      i += 1;
+    }
+    return l;
+  }
+  
+  @Nullable
+  private File a(File[] paramArrayOfFile, String paramString)
+  {
+    int j = paramArrayOfFile.length;
+    int i = 0;
+    while (i < j)
+    {
+      File localFile = paramArrayOfFile[i];
+      if (localFile.getName().equals(paramString)) {
+        return localFile;
       }
-      localObject1 = ((JSONArray)localObject3).optJSONObject(0);
-      if (localObject1 == null)
-      {
-        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject2 = ((JSONArray)localObject3).optJSONObject(1);
-        if (localObject2 != null) {
-          break label343;
-        }
-        localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject3 = ((JSONArray)localObject3).optJSONObject(2);
-        if (localObject3 != null) {
-          break label353;
-        }
-        localObject3 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject4 = new JSONObject();
-        ((JSONObject)localObject4).put("multi_img_url1", localObject1);
-        localJSONObject.put("id_multi_img_1", localObject4);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url2", localObject2);
-        localJSONObject.put("id_multi_img_2", localObject1);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url3", localObject3);
-        localJSONObject.put("id_multi_img_3", localObject1);
-        pkm.a(paramBaseArticleInfo, localJSONObject, true);
-        pkm.a(paramBaseArticleInfo, localJSONObject);
-        pkm.b(paramBaseArticleInfo, localJSONObject);
-        pkm.l(paramBaseArticleInfo, localJSONObject);
-        pkm.e(paramBaseArticleInfo, localJSONObject);
-        pkm.f(paramBaseArticleInfo, localJSONObject);
-        pkm.X(paramBaseArticleInfo, localJSONObject);
-        if (paramBaseArticleInfo.articleStyle != 6) {
-          break label488;
-        }
-        localJSONObject.put("style_ID", "ReadInjoy_triple_img_big_cell");
-      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public static pka a(String paramString)
+  {
+    pka localpka = new pka();
+    long l = a(paramString);
+    String str = jdField_a_of_type_JavaLangString + File.separator + l;
+    File localFile1 = new File(str);
+    if (a(localFile1)) {
+      localpka.a(localFile1);
     }
     for (;;)
     {
-      pkm.a(localJSONObject, paramBaseArticleInfo);
-      return localJSONObject;
-      localObject1 = ((JSONObject)localObject1).optString("picture");
-      break;
-      label343:
-      localObject2 = ((JSONObject)localObject2).optString("picture");
-      break label169;
-      label353:
-      localObject3 = ((JSONObject)localObject3).optString("picture");
-      break label184;
-      if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
+      return localpka;
+      bhhk localbhhk = ((bhhh)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
+      File localFile2 = new File(jdField_a_of_type_JavaLangString);
+      if (!localFile2.exists()) {}
+      for (boolean bool = localFile2.mkdirs(); bool; bool = true)
       {
-        localObject1 = paramBaseArticleInfo.mSinglePicture;
-        label386:
-        localObject2 = ((URL)localObject1).getFile();
-        if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
-          break label468;
-        }
-        localObject1 = paramBaseArticleInfo.mSinglePicture;
-        label414:
-        localObject3 = ((URL)localObject1).getFile();
-        if ((paramBaseArticleInfo.mPictures.length >= 3) && (paramBaseArticleInfo.mPictures[2] != null)) {
-          break label478;
+        str = str + ".zip";
+        localFile2 = new File(str);
+        paramString = new bhhf(paramString, localFile2);
+        paramString.b = 3;
+        paramString.d = 60L;
+        Bundle localBundle = new Bundle();
+        localBundle.putLong("bgLottieResId", l);
+        localBundle.putString("bgLottieResPath", str);
+        localbhhk.a(paramString, new pkf(l, str, localFile2, localFile1, new WeakReference(localpka)), localBundle);
+        return localpka;
+      }
+    }
+  }
+  
+  private void a(File paramFile)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation " + paramFile.getName());
+    }
+    File[] arrayOfFile = paramFile.listFiles(new pkb(this));
+    Object localObject = paramFile.listFiles(new pkc(this));
+    if ((arrayOfFile == null) || (localObject == null) || (localObject.length == 0)) {}
+    do
+    {
+      return;
+      localObject = new ReadInJoyLottieDrawable.3(this, paramFile, (File[])localObject);
+    } while (arrayOfFile.length <= 0);
+    if ((LottieComposition)jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramFile.getAbsolutePath()) == null)
+    {
+      ThreadManager.excute(new ReadInJoyLottieDrawable.4(this, arrayOfFile, paramFile, (Runnable)localObject), 64, null, true);
+      return;
+    }
+    ((Runnable)localObject).run();
+  }
+  
+  private static boolean a(File paramFile)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramFile.exists())
+    {
+      paramFile = paramFile.listFiles(new pkg());
+      bool1 = bool2;
+      if (paramFile != null)
+      {
+        bool1 = bool2;
+        if (paramFile.length > 0) {
+          bool1 = true;
         }
       }
-      label468:
-      label478:
-      for (localObject1 = paramBaseArticleInfo.mSinglePicture;; localObject1 = paramBaseArticleInfo.mPictures[2])
-      {
-        localObject4 = ((URL)localObject1).getFile();
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-        break;
-        localObject1 = paramBaseArticleInfo.mPictures[0];
-        break label386;
-        localObject1 = paramBaseArticleInfo.mPictures[1];
-        break label414;
-      }
-      label488:
-      localJSONObject.put("style_ID", "ReadInjoy_triple_img_cell");
+    }
+    return bool1;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void playAnimation()
+  {
+    super.playAnimation();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyLottieDrawable", 2, "playAnimation: ");
+    }
+  }
+  
+  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((!paramBoolean1) && (this.jdField_a_of_type_Boolean)) {
+      cancelAnimation();
+    }
+    return super.setVisible(paramBoolean1, paramBoolean2);
+  }
+  
+  public void start()
+  {
+    super.start();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyLottieDrawable", 2, "start: ");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pka
  * JD-Core Version:    0.7.0.1
  */

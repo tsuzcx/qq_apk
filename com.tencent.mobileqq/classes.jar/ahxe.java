@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-class ahxe
-  implements DialogInterface.OnDismissListener
+public class ahxe
 {
-  ahxe(ahww paramahww) {}
+  public String a;
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public ahxe(String paramString)
+  {
+    this.a = paramString;
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
 }
 
 

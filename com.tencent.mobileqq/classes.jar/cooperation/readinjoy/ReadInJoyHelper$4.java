@@ -1,6 +1,6 @@
 package cooperation.readinjoy;
 
-import bkbq;
+import bmqa;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -13,18 +13,18 @@ public final class ReadInJoyHelper$4
   {
     int m = 0;
     int n = -1;
-    Object localObject2 = bkbq.a("remote_kd_tab_switch");
-    Object localObject1 = bkbq.a("local_kd_tab_switch");
+    Object localObject2 = bmqa.a("remote_kd_tab_switch");
+    Object localObject1 = bmqa.a("local_kd_tab_switch");
     int j;
     int i1;
     int i2;
     label69:
     int k;
-    if (bkbq.i())
+    if (bmqa.h())
     {
       j = 1;
-      i1 = bkbq.a("local_kd_tab_switch").intValue();
-      i2 = bkbq.a("local_kd_tab_switch_prefix").intValue();
+      i1 = bmqa.a("local_kd_tab_switch").intValue();
+      i2 = bmqa.a("local_kd_tab_switch_prefix").intValue();
       if (!(localObject2 instanceof Boolean)) {
         break label233;
       }
@@ -34,7 +34,7 @@ public final class ReadInJoyHelper$4
       i = 1;
       k = i;
       label71:
-      localObject2 = bkbq.a("local_kd_tab_has_set");
+      localObject2 = bmqa.a("local_kd_tab_has_set");
       if (!(localObject1 instanceof Boolean)) {
         break label244;
       }
@@ -69,7 +69,7 @@ public final class ReadInJoyHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.readinjoy.ReadInJoyHelper.4
  * JD-Core Version:    0.7.0.1
  */

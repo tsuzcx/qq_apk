@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahdr;
-import alud;
+import aiqe;
 import android.view.View;
 import android.widget.TextView;
+import anni;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -25,7 +25,7 @@ class ChatHistoryTroopAllFragment$4$1
       }
       return;
     }
-    ahdr localahdr = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr;
+    aiqe localaiqe = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Aiqe;
     List localList = this.jdField_a_of_type_JavaUtilList;
     boolean bool;
     label115:
@@ -35,11 +35,11 @@ class ChatHistoryTroopAllFragment$4$1
     if (this.jdField_a_of_type_JavaUtilList.size() < 20)
     {
       bool = true;
-      m = localahdr.b(localList, bool);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.getCount() > 0)
+      m = localaiqe.b(localList, bool);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Aiqe.getCount() > 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.getItem(0)).shmsgseq;
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.b = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.getItem(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.getCount() - 1)).shmsgseq;
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Aiqe.getItem(0)).shmsgseq;
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.b = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Aiqe.getItem(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Aiqe.getCount() - 1)).shmsgseq;
       }
       if ((m == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() <= 0)) {
         break label458;
@@ -52,12 +52,12 @@ class ChatHistoryTroopAllFragment$4$1
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131701992));
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.b, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.c);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.getCount() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131700412));
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Aiqe.b, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Aiqe.c);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Aiqe.getCount() == 0) {
         this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setEmptyView(ChatHistoryTroopAllFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0));
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Ahdr.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment$4.this$0.jdField_a_of_type_Aiqe.notifyDataSetChanged();
       if (i == 0) {
         break;
       }
@@ -79,7 +79,7 @@ class ChatHistoryTroopAllFragment$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

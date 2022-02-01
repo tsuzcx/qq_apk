@@ -1,27 +1,31 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahie;
-import ahif;
-import ahig;
-import alud;
+import Override;
+import aiti;
+import aitj;
+import aitk;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Looper;
 import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
 import android.text.Editable;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import anni;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebView;
-import swy;
+import tyg;
 
 public class SearchContactsActivity
   extends SearchBaseActivity
@@ -30,7 +34,7 @@ public class SearchContactsActivity
   
   public SearchContactsActivity()
   {
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new ahig(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new aitk(this);
   }
   
   private void a(String paramString)
@@ -72,7 +76,7 @@ public class SearchContactsActivity
     {
       if (this.i == 12)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alud.a(2131714004) + swy.a(this.app, getApplicationContext()) + alud.a(2131714003));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anni.a(2131712383) + tyg.a(this.app, getApplicationContext()) + anni.a(2131712382));
         this.jdField_a_of_type_AndroidWidgetEditText.setText(str1);
         this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
         this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
@@ -81,19 +85,19 @@ public class SearchContactsActivity
     else
     {
       if (this.h == 1) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alud.a(2131714011));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(anni.a(2131712390));
       }
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ahie(this, bool));
-      String str2 = getResources().getString(2131690648);
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aiti(this, bool));
+      String str2 = getResources().getString(2131690582);
       this.jdField_a_of_type_AndroidWidgetButton.setText(str2);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahif(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aitj(this));
       if (AppSetting.c)
       {
         this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(str2);
         if (this.i != 12) {
           break label263;
         }
-        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(alud.a(2131714013));
+        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(anni.a(2131712392));
       }
     }
     for (;;)
@@ -102,13 +106,21 @@ public class SearchContactsActivity
         break label278;
       }
       return;
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(alud.a(2131714010));
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(anni.a(2131712389));
       break;
       label263:
-      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(alud.a(2131714009));
+      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(anni.a(2131712388));
     }
     label278:
     Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnDestroy()
@@ -125,10 +137,17 @@ public class SearchContactsActivity
     }
     overridePendingTransition(0, 0);
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity
  * JD-Core Version:    0.7.0.1
  */

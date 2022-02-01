@@ -1,45 +1,58 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
+import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
 public class lhq
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString;
+  private static String b = "actAVFunChatDecorate";
   
-  public lhq(VideoAppInterface paramVideoAppInterface)
+  public static void a(String paramString, VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lhr(this);
-  }
-  
-  public void a()
-  {
-    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
-    localIntentFilter.addAction("tencent.video.q2v.AnnimateDownloadFinish");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("GVipFunCallMonitor", 2, "regist vipFunCall " + this.jdField_a_of_type_Boolean);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    if (paramVideoAppInterface.a(2))
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      paramVideoAppInterface = (PendantItem)((lhp)paramVideoAppInterface.a(2)).a();
+      if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId()))) {
+        a(paramString, null);
+      }
+    }
+  }
+  
+  static void a(String paramString1, String paramString2)
+  {
+    long l1 = System.currentTimeMillis();
+    if (!lrz.a(paramString2, jdField_a_of_type_JavaLangString))
+    {
+      if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_Long != 0L))
+      {
+        long l2 = jdField_a_of_type_Long;
+        a(paramString1, jdField_a_of_type_JavaLangString, (l1 - l2) / 1000L);
+      }
+      jdField_a_of_type_JavaLangString = paramString2;
+      jdField_a_of_type_Long = l1;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, long paramLong)
+  {
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      long l = (System.currentTimeMillis() - paramLong) / 1000L;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("tempID", paramString2);
+      localHashMap.put("duration", l + "");
+      UserAction.onUserAction(b, true, -1L, -1L, localHashMap, true);
+      lbc.c(paramString1, "onStateReport, ID: " + paramString2 + "  pendant time: " + paramLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lhq
  * JD-Core Version:    0.7.0.1
  */

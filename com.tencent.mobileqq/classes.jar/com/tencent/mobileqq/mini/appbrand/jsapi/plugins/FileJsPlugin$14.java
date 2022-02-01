@@ -1,52 +1,53 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
+import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
-import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import java.io.IOException;
 
 class FileJsPlugin$14
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$14(FileJsPlugin paramFileJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, String paramString3, String paramString4, byte[] paramArrayOfByte) {}
+  FileJsPlugin$14(FileJsPlugin paramFileJsPlugin, String paramString1, String paramString2, long paramLong, JsRuntime paramJsRuntime, int paramInt, String paramString3) {}
   
   public String run()
   {
-    if (!FileJsPlugin.access$300(this.this$0, this.val$encoding)) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "invalid encoding " + this.val$encoding, this.val$callbackId);
-    }
-    if (MiniAppFileManager.getInstance().getWxFileType(this.val$filePath) != 2) {
-      return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$filePath, this.val$callbackId);
-    }
-    String str = MiniAppFileManager.getInstance().getUsrPath(this.val$filePath);
-    if (!TextUtils.isEmpty(str))
+    long l1 = System.currentTimeMillis();
+    if ((MiniAppFileManager.getInstance().getWxFileType(this.val$srcPath) == 9999) && (!MiniAppFileManager.getInstance().isPackageRelativePath(this.val$srcPath)))
     {
-      if (str.contains("miniprogramLog"))
-      {
-        MiniLog.writeMiniLog(this.this$0.jsPluginEngine.appBrandRuntime.appId, this.val$data);
-        return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
-      }
-      try
-      {
-        if (FileJsPlugin.access$400(this.this$0, this.val$nativeBufferBytes, this.val$data, this.val$encoding, str, true))
-        {
-          str = FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
-          return str;
-        }
-      }
-      catch (IOException localIOException)
-      {
-        return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, localIOException.getMessage(), this.val$callbackId);
-      }
+      FileJsPlugin.access$100(this.this$0, this.val$event, false, this.val$startMS, l1, this.val$srcPath);
+      return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$srcPath, this.val$callbackId);
     }
-    return FileJsPlugin.access$100(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open ", this.val$callbackId);
+    if (MiniAppFileManager.getInstance().getWxFileType(this.val$destPath) != 2)
+    {
+      FileJsPlugin.access$100(this.this$0, this.val$event, false, this.val$startMS, l1, this.val$destPath);
+      return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, "permission denied, open " + this.val$destPath, this.val$callbackId);
+    }
+    String str1 = MiniAppFileManager.getInstance().getAbsolutePath(this.val$srcPath);
+    String str2 = MiniAppFileManager.getInstance().getUsrPath(this.val$destPath);
+    long l2 = FileUtils.getFileSizes(str1);
+    if (!MiniAppFileManager.getInstance().isFolderCanWrite(2, l2))
+    {
+      FileJsPlugin.access$100(this.this$0, this.val$event, false, this.val$startMS, l1, str1);
+      return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, "the maximum size of the file storage is exceeded", this.val$callbackId);
+    }
+    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+    {
+      boolean bool = FileUtils.copyFile(str1, str2);
+      FileJsPlugin.access$100(this.this$0, this.val$event, bool, this.val$startMS, l1, str1);
+      if (bool)
+      {
+        MiniAppFileManager.getInstance().updateFolderSize(2, l2);
+        return FileJsPlugin.access$300(this.this$0, this.val$webview, this.val$event, null, this.val$callbackId);
+      }
+      return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, "permission denied, open ", this.val$callbackId);
+    }
+    return FileJsPlugin.access$200(this.this$0, this.val$webview, this.val$event, null, "no such file or directory, open ", this.val$callbackId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.FileJsPlugin.14
  * JD-Core Version:    0.7.0.1
  */

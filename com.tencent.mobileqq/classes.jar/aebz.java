@@ -1,28 +1,36 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
 public class aebz
-  implements ThreadExcutor.IThreadListener
+  implements bkhw
 {
-  public aebz(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public aebz(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bkho parambkho) {}
   
-  public void onAdded()
+  public void OnClick(View paramView, int paramInt)
   {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onAdded:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, true);
-  }
-  
-  public void onPostRun()
-  {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPostRun:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, false);
-  }
-  
-  public void onPreRun()
-  {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPreRun:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, true);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Bkho != null) && (this.jdField_a_of_type_Bkho.isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.isFinishing()))
+      {
+        this.jdField_a_of_type_Bkho.dismiss();
+        this.jdField_a_of_type_Bkho.cancel();
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.b();
+      continue;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.uin;
+      Bundle localBundle = abao.a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
+      abao.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), "", "", paramView, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getCurrentAccountUin(), 22001, null, localBundle);
+      bgjt.a("Grp_Dis_set", "Dis_info", "clk_report", 0, 0, new String[] { DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), bgjt.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a) });
+      continue;
+      DiscussionInfoCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
+    }
   }
 }
 

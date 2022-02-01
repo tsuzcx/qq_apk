@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
 
-public final class anzx
-  implements Parcelable.Creator<BusinessCard>
+public class anzx
+  extends anhl
 {
-  public BusinessCard a(Parcel paramParcel)
-  {
-    return new BusinessCard(paramParcel);
-  }
+  private anzx(GetCheckUpdate paramGetCheckUpdate) {}
   
-  public BusinessCard[] a(int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    return new BusinessCard[paramInt];
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anzx
  * JD-Core Version:    0.7.0.1
  */

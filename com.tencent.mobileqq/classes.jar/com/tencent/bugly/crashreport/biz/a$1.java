@@ -1,6 +1,6 @@
 package com.tencent.bugly.crashreport.biz;
 
-import com.tencent.bugly.proguard.aq;
+import com.tencent.bugly.proguard.an;
 import com.tencent.bugly.proguard.t;
 import com.tencent.bugly.proguard.x;
 import java.util.Iterator;
@@ -13,16 +13,16 @@ final class a$1
   
   public final void a(int paramInt) {}
   
-  public final void a(int paramInt, aq paramaq, long paramLong1, long paramLong2, boolean paramBoolean, String paramString)
+  public final void a(int paramInt, an paraman, long paramLong1, long paramLong2, boolean paramBoolean, String paramString)
   {
     if (paramBoolean)
     {
       x.c("[UserInfo] Successfully uploaded user info.", new Object[0]);
       paramLong1 = System.currentTimeMillis();
-      paramaq = this.a.iterator();
-      while (paramaq.hasNext())
+      paraman = this.a.iterator();
+      while (paraman.hasNext())
       {
-        paramString = (UserInfoBean)paramaq.next();
+        paramString = (UserInfoBean)paraman.next();
         paramString.f = paramLong1;
         a.a(this.b, paramString, true);
       }

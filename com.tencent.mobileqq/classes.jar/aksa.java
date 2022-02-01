@@ -1,42 +1,8 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
 
-public class aksa
-  extends akry
+public abstract interface aksa
 {
-  public void a(aksc paramaksc, Bitmap paramBitmap)
-  {
-    if ((paramBitmap == null) || (paramaksc == null) || (TextUtils.isEmpty(paramaksc.jdField_a_of_type_JavaLangCharSequence))) {
-      return;
-    }
-    String str2 = paramaksc.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    paramaksc = str1 + paramaksc.jdField_a_of_type_JavaLangCharSequence;
-    this.a.put(paramaksc, new WeakReference(paramBitmap));
-  }
-  
-  public Bitmap b(aksc paramaksc)
-  {
-    if ((paramaksc == null) || (TextUtils.isEmpty(paramaksc.jdField_a_of_type_JavaLangCharSequence))) {
-      return null;
-    }
-    String str2 = paramaksc.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    paramaksc = str1 + paramaksc.jdField_a_of_type_JavaLangCharSequence;
-    paramaksc = (WeakReference)this.a.get(paramaksc);
-    if (paramaksc != null) {
-      return (Bitmap)paramaksc.get();
-    }
-    return null;
-  }
+  public abstract void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo);
 }
 
 

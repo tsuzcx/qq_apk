@@ -1,31 +1,27 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
-class prk
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class prk
+  implements Animation.AnimationListener
 {
-  prk(prj paramprj) {}
+  public prk(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onGlobalLayout()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((prj.a(this.a).isShown()) && (!prj.a(this.a)))
-    {
-      QLog.d("ReadInJoyLottieView", 2, "resumeAnimation");
-      this.a.a();
-      prj.a(this.a, true);
-    }
-    if ((!prj.a(this.a).isShown()) && (prj.a(this.a)))
-    {
-      QLog.d("ReadInJoyLottieView", 2, "pauseAnimation");
-      this.a.b();
-      prj.a(this.a, false);
-    }
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    ReadInJoySelfFragment.b(this.a).setAnimation(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     prk
  * JD-Core Version:    0.7.0.1
  */

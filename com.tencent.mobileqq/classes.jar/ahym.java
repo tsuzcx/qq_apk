@@ -1,14 +1,27 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahym
-  implements ahyj
+class ahym
+  implements View.OnClickListener
 {
-  public ahym(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
+  ahym(ahyk paramahyk) {}
   
-  public boolean a(TencentDocItem paramTencentDocItem)
+  public void onClick(View paramView)
   {
-    return (this.a.a != null) && (this.a.a.a(paramTencentDocItem));
+    if (!ampj.e()) {
+      ((amhd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.a.a(), 319);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "[onClick] click audio button too fast.");
+      }
+    }
   }
 }
 

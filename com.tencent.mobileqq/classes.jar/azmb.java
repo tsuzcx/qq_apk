@@ -1,6 +1,14 @@
-public abstract interface azmb
+import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+
+public class azmb
+  implements azmj
 {
-  public abstract void f(boolean paramBoolean);
+  public azmb(ComponentCenter paramComponentCenter) {}
+  
+  public void a(azlv paramazlv)
+  {
+    paramazlv.b();
+  }
 }
 
 

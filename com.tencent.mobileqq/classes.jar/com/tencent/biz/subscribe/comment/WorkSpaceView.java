@@ -1,5 +1,6 @@
 package com.tencent.biz.subscribe.comment;
 
+import aagq;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Handler;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import yhu;
 
 public class WorkSpaceView
   extends FrameLayout
@@ -19,10 +19,10 @@ public class WorkSpaceView
   private static final double jdField_a_of_type_Double = Math.tan(Math.toRadians(30.0D));
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 0;
+  private aagq jdField_a_of_type_Aagq;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-  private yhu jdField_a_of_type_Yhu;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = -1;
@@ -76,8 +76,8 @@ public class WorkSpaceView
       }
       paramInt = getWidth() * i - getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(paramInt) * 2);
-      if (this.jdField_a_of_type_Yhu != null) {
-        this.jdField_a_of_type_Yhu.a(i);
+      if (this.jdField_a_of_type_Aagq != null) {
+        this.jdField_a_of_type_Aagq.a(i);
       }
       invalidate();
       return;
@@ -299,14 +299,14 @@ public class WorkSpaceView
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
   }
   
-  public void setOnScreenChangeListener(yhu paramyhu)
+  public void setOnScreenChangeListener(aagq paramaagq)
   {
-    this.jdField_a_of_type_Yhu = paramyhu;
+    this.jdField_a_of_type_Aagq = paramaagq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.WorkSpaceView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package me.ele.uetool.colorpicker;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class PresetColorAdapter$ColorHolder$1
   implements View.OnClickListener
@@ -10,35 +11,38 @@ class PresetColorAdapter$ColorHolder$1
   
   public void onClick(View paramView)
   {
-    paramView = this.this$1;
+    PresetColorAdapter.ColorHolder localColorHolder = this.this$1;
     boolean bool;
     if (!this.this$1.isChosen)
     {
       bool = true;
-      paramView.isChosen = bool;
+      localColorHolder.isChosen = bool;
       this.this$1.roundView.setChosen(this.this$1.isChosen);
       PresetColorAdapter.access$000(this.this$1.this$0).setColor(this.this$1.color);
       if (!this.this$1.isChosen) {
-        break label117;
+        break label124;
       }
       if (PresetColorAdapter.access$100(this.this$1.this$0) != null) {
         PresetColorAdapter.access$100(this.this$1.this$0).setChosen(false);
       }
       PresetColorAdapter.access$102(this.this$1.this$0, this.this$1);
     }
-    label117:
-    while (PresetColorAdapter.access$100(this.this$1.this$0) != this.this$1)
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
       bool = false;
       break;
+      label124:
+      if (PresetColorAdapter.access$100(this.this$1.this$0) == this.this$1) {
+        PresetColorAdapter.access$102(this.this$1.this$0, null);
+      }
     }
-    PresetColorAdapter.access$102(this.this$1.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.colorpicker.PresetColorAdapter.ColorHolder.1
  * JD-Core Version:    0.7.0.1
  */

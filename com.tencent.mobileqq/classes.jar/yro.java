@@ -1,69 +1,41 @@
-import android.content.res.Resources;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
-import tencent.im.oidb.cmd0x5ea.UpdatePhotoList.HeadInfo;
-
-public class yro
-  extends auxl
+class yro
+  implements zcw<Boolean, zdb>
 {
-  public yro(TroopMemberApiService paramTroopMemberApiService) {}
+  yro(yrm paramyrm, long paramLong, int paramInt) {}
   
-  protected void a(boolean paramBoolean)
+  public Void a(Boolean paramBoolean, zdb paramzdb)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberApiService", 2, "onDeleteNearbyPeopleAuthVideo isSuccess:" + paramBoolean);
-    }
-    ((auul)TroopMemberApiService.f(this.a).getManager(106)).d.put(((QQAppInterface)TroopMemberApiService.g(this.a)).getCurrentAccountUin(), Integer.valueOf(1));
-    if (paramBoolean)
+    if ((!paramBoolean.booleanValue()) || (paramzdb == null) || (paramzdb.jdField_a_of_type_AndroidGraphicsBitmap == null))
     {
-      bdne.a(BaseApplication.getContext(), false);
-      QQToast.a(BaseApplication.getContext(), 2, alud.a(2131715949), 0).b(this.a.getResources().getDimensionPixelSize(2131298914));
-      if (!paramBoolean) {
-        break label163;
+      yqp.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
+      return null;
+    }
+    yqp.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(paramzdb.jdField_a_of_type_Int));
+    if (paramzdb.jdField_a_of_type_Int >= this.jdField_a_of_type_Yrm.a.length)
+    {
+      yqp.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(paramzdb.jdField_a_of_type_Int) });
+      return null;
+    }
+    yqp.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(paramzdb.jdField_a_of_type_Int));
+    this.jdField_a_of_type_Yrm.a[paramzdb.jdField_a_of_type_Int] = yrp.a(this.jdField_a_of_type_Yrm.a[paramzdb.jdField_a_of_type_Int], paramzdb.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Yrm.a[paramzdb.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = paramzdb.jdField_a_of_type_JavaLangString;
+    if (paramzdb.jdField_a_of_type_Long > 0L)
+    {
+      this.jdField_a_of_type_Yrm.a[paramzdb.jdField_a_of_type_Int].jdField_a_of_type_Int = ((int)paramzdb.jdField_a_of_type_Long / 1000);
+      yqp.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix start time : %d ", Integer.valueOf(this.jdField_a_of_type_Yrm.a[paramzdb.jdField_a_of_type_Int].jdField_a_of_type_Int));
+      if ((this.jdField_a_of_type_Yrm.a[paramzdb.jdField_a_of_type_Int].b <= 0) && (this.jdField_a_of_type_Yrm.a.length == 1))
+      {
+        this.jdField_a_of_type_Yrm.a[paramzdb.jdField_a_of_type_Int].b = ((int)this.jdField_a_of_type_Long);
+        yqp.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix end time : %d ", Integer.valueOf(this.jdField_a_of_type_Int));
       }
     }
-    label163:
-    for (String str = "1";; str = "2")
-    {
-      auxb.a("clk_del_video", new String[] { str });
-      return;
-      QQToast.a(BaseApplication.getContext(), 1, alud.a(2131716026), 0).b(this.a.getResources().getDimensionPixelSize(2131298914));
-      break;
-    }
-  }
-  
-  protected void a(boolean paramBoolean, UpdatePhotoList.HeadInfo paramHeadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberApiService", 2, "onUpdateNearbyPeopleAuthVideo + HeadInfo = " + paramHeadInfo.toString());
-    }
-    ((auul)TroopMemberApiService.h(this.a).getManager(106)).d.put(((QQAppInterface)TroopMemberApiService.i(this.a)).getCurrentAccountUin(), Integer.valueOf(1));
-    if (paramBoolean)
-    {
-      bdne.a(BaseApplication.getContext(), true);
-      QQToast.a(BaseApplication.getContext(), 2, alud.a(2131716027), 0).b(this.a.getResources().getDimensionPixelSize(2131298914));
-      if (!paramBoolean) {
-        break label166;
-      }
-    }
-    label166:
-    for (paramHeadInfo = "1";; paramHeadInfo = "2")
-    {
-      auxb.a("clk_upload_video", new String[] { paramHeadInfo });
-      return;
-      QQToast.a(BaseApplication.getContext(), 1, alud.a(2131715955), 0).b(this.a.getResources().getDimensionPixelSize(2131298914));
-      break;
-    }
+    this.jdField_a_of_type_Yrm.i();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yro
  * JD-Core Version:    0.7.0.1
  */

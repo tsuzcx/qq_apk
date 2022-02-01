@@ -122,6 +122,7 @@ public class Foreground
   
   public static void onStop(AppRuntime paramAppRuntime)
   {
+    QLog.d("ApplicationLife", 1, new Object[] { "[process] onStop: invoked. ", " sCountActivity: ", Integer.valueOf(sCountActivity) });
     int i = sCountActivity - 1;
     sCountActivity = i;
     if (i == 0)
@@ -129,6 +130,7 @@ public class Foreground
       long l = SystemClock.uptimeMillis();
       paramAppRuntime = sHandler.obtainMessage(0, (int)(l >>> 32), (int)(l & 0xFFFFFFFF), paramAppRuntime);
       sHandler.sendMessageDelayed(paramAppRuntime, 100L);
+      QLog.d("ApplicationLife", 1, new Object[] { "[process] onStop: invoked. send MSG_BACK", " sCountActivity: ", Integer.valueOf(sCountActivity) });
     }
   }
   
@@ -206,7 +208,7 @@ public class Foreground
     switch (???.what)
     {
     }
-    for (;;)
+    do
     {
       return true;
       if (sCountActivity > 0)
@@ -230,34 +232,36 @@ public class Foreground
         ???.putExtra("runningProcessName", sProcessName);
         ???.putExtra("runningtime", l);
         sContext.sendBroadcast(???);
+        QLog.d("ApplicationLife", 1, new Object[] { "[process] handleMessage: invoked. send starting", " sProcessName: ", sProcessName });
       }
-      if (sCountActivity == 0)
-      {
-        if (localObject1 != null)
-        {
-          localObject1.onRunningBackground();
-          ??? = localObject1.subRuntimeMap.values().iterator();
-          while (???.hasNext()) {
-            ((AppRuntime)???.next()).onRunningBackground();
-          }
-        }
-        synchronized (callbacks)
-        {
-          Iterator localIterator1 = callbacks.iterator();
-          if (localIterator1.hasNext()) {
-            ((Foreground.AppLifeCycleCallback)localIterator1.next()).onRunningBackground();
-          }
-        }
-        try
-        {
-          ??? = new Intent("com.tencent.process.stopping");
-          ???.putExtra("runningProcessName", sProcessName);
-          ???.putExtra("runningtime", l);
-          sContext.sendBroadcast(???);
-        }
-        catch (Exception ???) {}
+      QLog.d("ApplicationLife", 1, new Object[] { "[process] handleMessage: invoked. ", " sCountActivity: ", Integer.valueOf(sCountActivity) });
+    } while (sCountActivity != 0);
+    if (localObject1 != null)
+    {
+      localObject1.onRunningBackground();
+      ??? = localObject1.subRuntimeMap.values().iterator();
+      while (???.hasNext()) {
+        ((AppRuntime)???.next()).onRunningBackground();
       }
     }
+    synchronized (callbacks)
+    {
+      Iterator localIterator1 = callbacks.iterator();
+      if (localIterator1.hasNext()) {
+        ((Foreground.AppLifeCycleCallback)localIterator1.next()).onRunningBackground();
+      }
+    }
+    try
+    {
+      ??? = new Intent("com.tencent.process.stopping");
+      ???.putExtra("runningProcessName", sProcessName);
+      ???.putExtra("runningtime", l);
+      sContext.sendBroadcast(???);
+      QLog.d("ApplicationLife", 1, new Object[] { "[process] handleMessage: invoked. send stopping", " sProcessName: ", sProcessName });
+      return true;
+    }
+    catch (Exception ???) {}
+    return true;
   }
 }
 

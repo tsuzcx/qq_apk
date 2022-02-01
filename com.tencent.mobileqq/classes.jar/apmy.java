@@ -1,22 +1,11 @@
-import android.os.Handler;
-import android.os.Message;
-import java.util.ArrayList;
-import java.util.List;
-
 class apmy
-  implements apmj
+  implements apne
 {
-  apmy(apmt paramapmt) {}
+  apmy(apms paramapms, apne paramapne) {}
   
-  public void a(List<apuf> paramList)
+  public void a(boolean paramBoolean)
   {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    if (apmt.a(this.a) != null) {
-      apmt.a(this.a).obtainMessage(206, localObject).sendToTarget();
-    }
+    this.jdField_a_of_type_Apne.a(paramBoolean);
   }
 }
 

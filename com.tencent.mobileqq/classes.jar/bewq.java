@@ -1,19 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.Workspace.SavedState;
+import android.os.Bundle;
 
-public final class bewq
-  implements Parcelable.Creator<Workspace.SavedState>
+public abstract interface bewq
 {
-  public Workspace.SavedState a(Parcel paramParcel)
-  {
-    return new Workspace.SavedState(paramParcel, null);
-  }
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public Workspace.SavedState[] a(int paramInt)
-  {
-    return new Workspace.SavedState[paramInt];
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, Bundle paramBundle);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void d();
 }
 
 

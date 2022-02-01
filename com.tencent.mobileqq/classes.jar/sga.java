@@ -1,72 +1,64 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryVideo;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.HashMap;
 
-public class sga
-  implements sfz
+class sga
+  extends bdzm
 {
-  private File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
-  private sfy jdField_a_of_type_Sfy;
+  sga(sfz paramsfz) {}
   
-  public sga(Context paramContext, String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      throw new IllegalArgumentException("" + paramString1 + " : " + paramString2);
+    Object localObject = (bduk)paramMessage.obj;
+    if ((localObject == null) || ((((bduk)localObject).jdField_b_of_type_Int != 24) && (((bduk)localObject).jdField_b_of_type_Int != 32))) {}
+    while ((((bduk)localObject).jdField_b_of_type_Int == 24) && (((bduk)localObject).c != 54)) {
+      return;
     }
-    this.jdField_a_of_type_Sfy = new sfy(paramContext, paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaIoFile = new File(paramString1);
-  }
-  
-  public InputStream a(String paramString)
-  {
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString + "/" + paramString);
-    if (((File)localObject).exists()) {
-      try
-      {
-        localObject = new FileInputStream((File)localObject);
-        return localObject;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        QLog.e("ReadMergeFile", 2, "getFile:" + paramString, localFileNotFoundException);
-      }
-    }
-    InputStream localInputStream = this.jdField_a_of_type_Sfy.a(paramString);
-    QLog.d("TemplateFactory", 1, "使用兜底 file: " + paramString);
-    return localInputStream;
-  }
-  
-  public List<String> a()
-  {
-    Object localObject2 = this.jdField_a_of_type_Sfy.a();
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new ArrayList();
-    }
-    localObject2 = this.jdField_a_of_type_JavaIoFile.list();
-    if (localObject2 != null)
+    switch (paramMessage.what)
     {
-      int j = localObject2.length;
-      int i = 0;
-      while (i < j)
-      {
-        ((List)localObject1).add(localObject2[i]);
-        i += 1;
-      }
+    case 1001: 
+    case 1002: 
+    case 1004: 
+    case 1005: 
+    case 2001: 
+    case 2003: 
+    default: 
+      return;
     }
-    return localObject1;
+    paramMessage = (Bundle)this.a.b.remove(Long.valueOf(((bduk)localObject).jdField_b_of_type_Long));
+    paramMessage.putLong("uniseq", ((bduk)localObject).jdField_b_of_type_Long);
+    paramMessage.putString("pic_server_id", ((bduk)localObject).i);
+    qqstory_bhd_upload_pic.RspStoryVideo localRspStoryVideo = new qqstory_bhd_upload_pic.RspStoryVideo();
+    try
+    {
+      localRspStoryVideo.mergeFrom(((bduk)localObject).a);
+      if (localRspStoryVideo.retcode.get() == 0)
+      {
+        localObject = localRspStoryVideo.cdn_url.get().toStringUtf8();
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          paramMessage.putString("cdn_url", (String)localObject);
+        }
+      }
+      label214:
+      this.a.a.a(83, paramMessage);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      break label214;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sga
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Observable;
 
 public class addr
-  extends BroadcastReceiver
+  extends Observable
 {
-  public addr(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  private static addr a;
+  public HashMap<String, String> a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static addr a()
   {
-    if (paramIntent != null)
+    if (jdField_a_of_type_Addr == null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
+      if (jdField_a_of_type_Addr == null) {
+        jdField_a_of_type_Addr = new addr();
       }
-      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
-        this.a.finish();
-      }
+      return jdField_a_of_type_Addr;
     }
+    finally {}
+  }
+  
+  public void a(HashMap<String, String> paramHashMap)
+  {
+    paramHashMap.put("key_type", "t_held_thread");
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    setChanged();
+    notifyObservers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     addr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,39 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.widget.EditText;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class bflo
-  implements InputFilter
+class bflo
+  extends ajcv<bfkl>
 {
-  protected int a;
-  protected EditText a;
-  
-  public bflo(EditText paramEditText, int paramInt)
+  bflo(bfll parambfll, Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramContext, paramInt);
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  protected ajdf a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    paramSpanned = new StringBuilder(this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString());
-    paramInt4 = this.jdField_a_of_type_Int - bflv.a(paramSpanned.toString());
-    paramInt3 = bflv.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
-    if (paramInt4 <= 0) {
-      return "";
-    }
-    if (paramInt4 >= paramInt3) {
-      return null;
-    }
-    paramInt3 = paramInt1;
-    if (paramInt3 < paramInt2)
-    {
-      int j;
-      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
-        j = bflv.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
-      }
-      for (int i = 2;; i = 1)
-      {
-        paramInt4 -= j;
-        if (paramInt4 < 0) {
-          break label161;
-        }
-        paramInt3 = i + paramInt3;
-        break;
-        j = bflv.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
-      }
-    }
-    label161:
-    if (paramInt3 == paramInt1) {
-      return "";
-    }
-    return paramCharSequence.subSequence(paramInt1, paramInt3);
+    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
+    paramContext = new bflu(paramContext, paramViewGroup);
+    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131377438));
+    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131377439));
+    paramContext.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131377442));
+    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377443));
+    return paramContext;
+  }
+  
+  protected void a(ajdf paramajdf, bfkl parambfkl, int paramInt)
+  {
+    bfll.a(this.a, paramajdf, parambfkl, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bflo
  * JD-Core Version:    0.7.0.1
  */

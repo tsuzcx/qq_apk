@@ -1,40 +1,41 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
-import java.util.Queue;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import com.tencent.biz.qqcircle.bizparts.QCircleAggregationFragmentsPart;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseAggregationFragment;
+import java.util.ArrayList;
 
-class uzr
-  extends SimpleJob<Void>
+public class uzr
+  implements ViewPager.OnPageChangeListener
 {
-  uzr(uzq paramuzq, String paramString, Context paramContext, List paramList)
-  {
-    super(paramString);
-  }
+  public uzr(QCircleAggregationFragmentsPart paramQCircleAggregationFragmentsPart) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (!uzq.a(this.jdField_a_of_type_Uzq, this.jdField_a_of_type_AndroidContentContext)) {
-      QLog.i("MsgTabStoryVideoPreloader", 2, "当前网络状态, 不启动预下载");
+    QCircleAggregationFragmentsPart.a(this.a, paramInt, 2);
+    uxh.a();
+    if ((QCircleAggregationFragmentsPart.a(this.a) != null) && (QCircleAggregationFragmentsPart.a(this.a).getChildCount() > paramInt)) {
+      QCircleAggregationFragmentsPart.a(this.a).getChildAt(paramInt).performClick();
     }
-    do
+    if ((QCircleAggregationFragmentsPart.a(this.a) != null) && (QCircleAggregationFragmentsPart.a(this.a).size() > paramInt))
     {
-      return null;
-      QLog.i("MsgTabStoryVideoPreloader", 2, "启动消息TAB节点预加载器");
-      paramJobContext = uzq.a(this.jdField_a_of_type_Uzq, this.jdField_a_of_type_JavaUtilList);
-    } while ((paramJobContext.isEmpty()) || (!this.jdField_a_of_type_Uzq.a()));
-    uzq.a(this.jdField_a_of_type_Uzq);
-    uzq.a(this.jdField_a_of_type_Uzq, paramJobContext);
-    this.jdField_a_of_type_Uzq.b();
-    return null;
+      ((QCircleBaseAggregationFragment)QCircleAggregationFragmentsPart.a(this.a).get(paramInt)).a(paramInt);
+      uzo localuzo = ((QCircleBaseAggregationFragment)QCircleAggregationFragmentsPart.a(this.a).get(paramInt)).a();
+      if (localuzo != null) {
+        QCircleAggregationFragmentsPart.a(this.a, localuzo.a());
+      }
+    }
+    this.a.b("tab_changed", Integer.valueOf(QCircleAggregationFragmentsPart.a(this.a)));
+    QCircleAggregationFragmentsPart.a(this.a, QCircleAggregationFragmentsPart.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uzr
  * JD-Core Version:    0.7.0.1
  */

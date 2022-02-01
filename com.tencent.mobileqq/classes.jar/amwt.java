@@ -1,86 +1,21 @@
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.ArConfigService;
 import com.tencent.qphone.base.util.QLog;
 
-public class amwt
-  implements anep
+class amwt
+  implements amxk
 {
-  public amwt(ArConfigService paramArConfigService) {}
+  amwt(amwr paramamwr) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (ArConfigService.c(this.a) != null) {
-      try
-      {
-        int j = ArConfigService.c(this.a).beginBroadcast();
-        int i = 0;
-        for (;;)
-        {
-          if (i >= j) {
-            break label106;
-          }
-          try
-          {
-            ((amzp)ArConfigService.c(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
-            i += 1;
-          }
-          catch (RemoteException localRemoteException)
-          {
-            for (;;)
-            {
-              localRemoteException.printStackTrace();
-            }
-          }
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
-        }
-      }
-    }
-    label106:
-    ArConfigService.c(this.a).finishBroadcast();
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (ArConfigService.c(this.a) != null) {}
-    for (;;)
+    if (paramBoolean)
     {
-      int i;
-      try
-      {
-        int j = ArConfigService.c(this.a).beginBroadcast();
-        i = 0;
-        if (i >= j) {
-          break label129;
-        }
-        if (paramBoolean) {}
-        try
-        {
-          ((amzp)ArConfigService.c(this.a).getBroadcastItem(i)).a(paramInt);
-        }
-        catch (RemoteException localRemoteException)
-        {
-          localRemoteException.printStackTrace();
-        }
-        ((amzp)ArConfigService.c(this.a).getBroadcastItem(i)).b(paramInt, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
-        }
+      if (amwr.a(this.a) != null) {
+        amwr.a(this.a).e();
       }
-      return;
-      label129:
-      ArConfigService.c(this.a).finishBroadcast();
-      return;
-      i += 1;
+      this.a.c();
     }
   }
 }

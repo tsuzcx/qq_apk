@@ -46,6 +46,24 @@ public final class DownloadResult$Status
     return 0;
   }
   
+  public String getErrorMessage()
+  {
+    switch (this.failReason)
+    {
+    default: 
+      return "";
+    case 2: 
+      return "storage limit";
+    case 3: 
+      return "response error";
+    case 4: 
+      return "download exception";
+    case 5: 
+      return "content type error";
+    }
+    return "network unavailable";
+  }
+  
   public Throwable getFailException()
   {
     if (isFailed()) {
@@ -123,7 +141,7 @@ public final class DownloadResult$Status
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.component.network.downloader.DownloadResult.Status
  * JD-Core Version:    0.7.0.1
  */

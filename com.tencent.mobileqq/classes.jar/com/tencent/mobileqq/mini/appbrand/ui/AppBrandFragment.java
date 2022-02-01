@@ -55,10 +55,12 @@ import com.tencent.mobileqq.mini.widget.input.WebInputHandler.KeyboardHiddenObse
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportFragment;
 import java.util.LinkedList;
 
 public class AppBrandFragment
-  extends Fragment
+  extends ReportFragment
   implements INetEventHandler
 {
   public static final String TAG = "AppBrandFragment";
@@ -259,7 +261,7 @@ public class AppBrandFragment
         bool = false;
       }
     }
-    if (paramInt1 == 1001)
+    if ((paramInt1 == 1001) || (paramInt1 == 1002))
     {
       AppBrandRuntime localAppBrandRuntime = this.appBrandRuntimeContainer.peek();
       try
@@ -297,7 +299,9 @@ public class AppBrandFragment
       this.rootFrameLayout.setContentDescription("AppBrandFragment-rootFrameLayout");
       this.rootFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     }
-    return this.rootFrameLayout;
+    paramLayoutInflater = this.rootFrameLayout;
+    FragmentCollector.onFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onNetChangeEvent(boolean paramBoolean)
@@ -549,7 +553,7 @@ public class AppBrandFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandFragment
  * JD-Core Version:    0.7.0.1
  */

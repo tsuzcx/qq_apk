@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.readinjoy;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bkbq;
+import bmqa;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 class ReadInJoyManager$3
@@ -17,13 +17,13 @@ class ReadInJoyManager$3
     localEditor.putString("config_notify_guide_wording", this.a);
     localEditor.putInt("config_notify_guide_flag", 1);
     localEditor.putLong("config_notify_guide_updated_time", NetConnInfoCenter.getServerTime());
-    bkbq.a(localEditor, true);
+    bmqa.a(localEditor, true);
     ReadInJoyManager.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.readinjoy.ReadInJoyManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,21 @@
-import android.support.v4.view.ViewPager;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.widget.AbsListView;
 
-public class ssh
-  implements RadioGroup.OnCheckedChangeListener
+class ssh
+  extends pue
 {
-  public ssh(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  ssh(ssg paramssg, String paramString, AbsListView paramAbsListView, int paramInt)
   {
-    ServiceAccountFolderActivityNew.a(this.a, true);
-    if (ServiceAccountFolderActivityNew.a(this.a).getId() == paramInt) {
-      ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(0);
-    }
-    while (ServiceAccountFolderActivityNew.b(this.a).getId() != paramInt) {
-      return;
-    }
-    ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(1);
+    super(paramString);
+  }
+  
+  public void a(ptx paramptx)
+  {
+    paramptx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ssh
  * JD-Core Version:    0.7.0.1
  */

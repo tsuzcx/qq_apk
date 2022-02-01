@@ -1,23 +1,54 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class asck
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  asck(ascj paramascj, int paramInt, String paramString) {}
+  asck(ascj paramascj, arza paramarza) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
+    Intent localIntent = new Intent();
+    String str1;
+    label41:
+    String str3;
+    if (this.jdField_a_of_type_Arza.jdField_a_of_type_Boolean)
     {
-      asdt.a(ascj.a(this.jdField_a_of_type_Ascj), "shareToQQ", ascj.a(this.jdField_a_of_type_Ascj), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      ndq.a(ascj.a(this.jdField_a_of_type_Ascj), 0, "", "");
-      if (ascj.a(this.jdField_a_of_type_Ascj) != null) {
-        ascj.a(this.jdField_a_of_type_Ascj).b(1);
+      localIntent.putExtra("emoji_to_dressup", true);
+      if (this.jdField_a_of_type_Ascj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+        break label221;
       }
-      ascj.a(this.jdField_a_of_type_Ascj).moveTaskToBack(true);
+      str1 = "";
+      str3 = this.jdField_a_of_type_Ascj.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
+      if (!this.jdField_a_of_type_Arza.jdField_a_of_type_Boolean) {
+        break label235;
+      }
+    }
+    label221:
+    label235:
+    for (String str2 = "1";; str2 = "2")
+    {
+      VasWebviewUtil.reportCommercialDrainage(str1, "ep_mall", "0X8007192", null, 1, 0, 0, null, str3, str2);
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Ascj.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ascj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Ascj.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, localIntent, true);
+      bcst.b(this.jdField_a_of_type_Ascj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.jdField_a_of_type_Ascj.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, "2", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((this.jdField_a_of_type_Ascj.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) != 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localIntent.putExtra("emoji_is_original", bool);
+        localIntent.putExtra("emoji_author_id", this.jdField_a_of_type_Arza.jdField_a_of_type_Int);
+        break;
+      }
+      str1 = this.jdField_a_of_type_Ascj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      break label41;
     }
   }
 }

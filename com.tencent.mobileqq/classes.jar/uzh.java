@@ -1,27 +1,68 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
 
 public class uzh
-  extends uro
 {
-  public long a;
-  public int b;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public uzh(qqstory_service.RspCheckActivity paramRspCheckActivity)
+  public String a()
   {
-    super(paramRspCheckActivity.result);
-    this.b = paramRspCheckActivity.is_activity.get();
-    this.a = paramRspCheckActivity.next_check_time.get();
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (!TextUtils.isEmpty(this.a)) {
+      localStringBuilder.append("feed_id=").append(this.a).append("|");
+    }
+    if (!TextUtils.isEmpty(this.d)) {
+      localStringBuilder.append("ctim=").append(this.d).append("|");
+    }
+    if (!TextUtils.isEmpty(this.e)) {
+      localStringBuilder.append("poster_id=").append(this.e).append("|");
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localStringBuilder.append("comment_id=").append(this.b).append("|");
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localStringBuilder.append("reply_id=").append(this.c).append("|");
+    }
+    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+    return localStringBuilder.toString();
   }
   
-  public String toString()
+  public uzh a(String paramString)
   {
-    return "MsgTabCheckActiveResponse{active=" + this.b + ", nextCheckTime=" + this.a + '}';
+    this.e = paramString;
+    return this;
+  }
+  
+  public uzh b(String paramString)
+  {
+    this.a = paramString;
+    return this;
+  }
+  
+  public uzh c(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public uzh d(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public uzh e(String paramString)
+  {
+    this.d = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uzh
  * JD-Core Version:    0.7.0.1
  */

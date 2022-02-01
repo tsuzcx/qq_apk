@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-
 public class acxr
-  implements View.OnClickListener
+  implements acxq
 {
-  public acxr(ForwardRecentActivity paramForwardRecentActivity) {}
+  private acww<Integer, acxp> a = new acwx();
   
-  public void onClick(View paramView)
+  public acxp a(Integer paramInteger)
   {
-    azqs.b(this.a.app, "CliOper", "", "", "friendchoose", "0X8009D97", ForwardRecentActivity.a(this.a), 0, "", "", "", "");
+    return (acxp)this.a.a(paramInteger);
+  }
+  
+  public void a(Integer paramInteger, Class<? extends acxp> paramClass)
+  {
+    this.a.a(paramInteger, paramClass);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxr
  * JD-Core Version:    0.7.0.1
  */

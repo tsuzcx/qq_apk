@@ -5,6 +5,7 @@ import com.tencent.ttpic.filter.aifilter.NetworkRequest;
 
 public class AEModuleConfig$Builder
 {
+  private int authMode;
   private boolean debugMode;
   private boolean enableDataReport = true;
   private boolean enableDefaultBasic3 = true;
@@ -26,6 +27,12 @@ public class AEModuleConfig$Builder
   public AEModuleConfig build()
   {
     return new AEModuleConfig(this, null);
+  }
+  
+  public Builder setAuthMode(int paramInt)
+  {
+    this.authMode = paramInt;
+    return this;
   }
   
   public Builder setEnableDataReport(boolean paramBoolean)
@@ -132,7 +139,7 @@ public class AEModuleConfig$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.api.standard.AEModuleConfig.Builder
  * JD-Core Version:    0.7.0.1
  */

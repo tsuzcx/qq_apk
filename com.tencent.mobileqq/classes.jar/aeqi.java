@@ -1,22 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-public abstract class aeqi
-  extends aeqz
+public class aeqi
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public View a;
-  public anwo a;
-  public BaseChatItemLayout a;
-  public String a;
-  public int b;
-  public View b;
-  public int c;
-  public int d;
+  public aeqi(NotificationActivity paramNotificationActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeqi
  * JD-Core Version:    0.7.0.1
  */

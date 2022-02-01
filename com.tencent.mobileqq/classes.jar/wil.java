@@ -1,63 +1,70 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.1;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.ProgressStatus.1;
 
 public class wil
 {
-  private Stream<wiq> jdField_a_of_type_ComTribeAsyncReactiveStream;
-  private String jdField_a_of_type_JavaLangString;
-  private wio jdField_a_of_type_Wio;
-  private wiq jdField_a_of_type_Wiq = new wiq();
+  public int a;
+  private Runnable a;
+  public String a;
   public boolean a;
-  private boolean b = true;
+  public int b;
+  public String b;
+  private boolean b;
   
-  public wil(@NonNull String paramString, @NonNull wio paramwio, boolean paramBoolean)
+  private wil(wik paramwik)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Wio = paramwio;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangRunnable = new StoryVideoUploadProgressManager.ProgressStatus.1(this);
   }
   
-  private void a(wiq paramwiq, boolean paramBoolean, ErrorMessage paramErrorMessage)
+  private void c()
   {
-    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPuller.2(this, paramwiq, paramBoolean, paramErrorMessage));
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+    case 0: 
+    case 1: 
+    case 2: 
+    case 3: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.jdField_b_of_type_Int = 0;
+            return;
+            this.jdField_b_of_type_Int += 1;
+          } while (this.jdField_b_of_type_Int < 60);
+          this.jdField_b_of_type_Int = 59;
+          return;
+          this.jdField_b_of_type_Int += 1;
+        } while (this.jdField_b_of_type_Int < 95);
+        this.jdField_b_of_type_Int = 94;
+        return;
+        this.jdField_b_of_type_Int += 1;
+      } while (this.jdField_b_of_type_Int < 100);
+      this.jdField_b_of_type_Int = 99;
+      return;
+    }
+    this.jdField_b_of_type_Int = 100;
   }
   
   public void a()
   {
-    Bosses.get().postLightWeightJob(new DetailFeedAllInfoPuller.1(this), 0);
+    this.jdField_b_of_type_Boolean = false;
+    wik.a(this.jdField_a_of_type_Wik).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
-      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
-    }
-    this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_JavaLangString).map(new ThreadOffFunction("Q.qqstory.detail.DetailFeedAllInfoPuller", 2)).map(new wim(this, this.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTribeAsyncReactiveStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new wib());
-    }
-    this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new wip(this));
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
-      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
-    }
+    this.jdField_b_of_type_Boolean = true;
+    wik.a(this.jdField_a_of_type_Wik).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wil
  * JD-Core Version:    0.7.0.1
  */

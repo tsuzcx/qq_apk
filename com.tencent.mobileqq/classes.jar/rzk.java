@@ -1,62 +1,29 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class rzk
-  implements smj
+final class rzk
+  implements Animation.AnimationListener
 {
-  public rzk(FastWebActivity paramFastWebActivity) {}
+  rzk(View paramView) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onPageExposure");
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onStateChange");
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onCustomAnimStart");
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    FastWebActivity.a(this.a, true);
-    FastWebActivity.a(this.a, false);
-    FastWebActivity.b(this.a);
-    if ((paramInt2 != 3) && (paramInt2 != 5)) {
-      this.a.overridePendingTransition(0, 0);
-    }
-    if (paramInt2 == 5)
+    if ((this.a.getTag(-1) != null) && (((Integer)this.a.getTag(-1)).intValue() == 8))
     {
-      Intent localIntent = new Intent();
-      localIntent.setAction("float_layer_finsh_action");
-      this.a.sendBroadcast(localIntent);
+      this.a.clearAnimation();
+      this.a.setVisibility(8);
+      this.a.setTag(-1, null);
     }
-    QLog.d(FastWebActivity.a(this.a), 2, "mFloating mCommonSuspensionGestureLayout onPageClose type = " + paramInt2);
   }
   
-  public void b()
-  {
-    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onPopAnimStart");
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b(int paramInt)
-  {
-    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onPositionStateChange");
-  }
-  
-  public void c()
-  {
-    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onPopAnimEnd");
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rzk
  * JD-Core Version:    0.7.0.1
  */

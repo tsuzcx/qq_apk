@@ -1,32 +1,28 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class ahnc
-  extends Handler
+final class ahnc
+  implements nkl
 {
-  public ahnc(SystemMsgListView paramSystemMsgListView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void loaded(String paramString, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (SystemMsgListView.a(this.a) == null);
-      this.a.i();
-      SystemMsgListView.a(this.a).notifyDataSetChanged();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
     }
-    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131720539);
-    QQToast.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
+    if ((paramInt == 0) && (paramString == null))
+    {
+      paramString = ahmy.a.entrySet().iterator();
+      while (paramString.hasNext()) {
+        ((ahnd)((Map.Entry)paramString.next()).getValue()).a(paramInt);
+      }
+      ahmy.a.clear();
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

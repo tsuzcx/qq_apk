@@ -1,26 +1,19 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bkrx
-  extends GestureDetector.SimpleOnGestureListener
+class bkrx
+  implements View.OnClickListener
 {
-  private bkrx(AECropperImageView paramAECropperImageView) {}
+  bkrx(bkrw parambkrw, bkrv parambkrv) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onClick(View paramView)
   {
-    if (!AECropperImageView.a(this.a)) {}
-    do
-    {
-      return false;
-      if (AECropperImageView.b(this.a))
-      {
-        bljn.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
-        return false;
-      }
-    } while ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (paramMotionEvent1.getPointerCount() > 1) || (paramMotionEvent2.getPointerCount() > 1));
-    this.a.a(paramFloat1, paramFloat2);
-    return false;
+    int i = this.jdField_a_of_type_Bkrv.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Bkrw.a.a(this.jdField_a_of_type_Bkrv.itemView, i);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,34 +1,94 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqmn
-  implements ActionMode.Callback
+  extends aqkz<aqmo>
 {
-  public aqmn(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  @NonNull
+  public aqmo a(int paramInt)
+  {
+    return new aqmo();
+  }
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  @Nullable
+  public aqmo a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
+    {
+      aqmo localaqmo = aqmo.a(paramArrayOfaqlg[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletNotificationConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
+      }
+      return localaqmo;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "onParsed is null");
+    }
+    akxz.a(true);
+    return null;
+  }
+  
+  public void a(aqmo paramaqmo)
+  {
+    if (paramaqmo == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletNotificationConfProcessor", 2, "onUpdate but newConf==null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "onUpdate " + paramaqmo.toString());
+    }
+    akxz.a(true);
+  }
+  
+  public Class<aqmo> clazz()
+  {
+    return aqmo.class;
+  }
+  
+  public boolean isAccountRelated()
   {
     return false;
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
   {
     return false;
   }
   
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public int migrateOldVersion()
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "migrateOldVersion");
+    }
+    akxz.a(true);
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+    akxz.a(true);
+  }
+  
+  public int type()
+  {
+    return 597;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmn
  * JD-Core Version:    0.7.0.1
  */

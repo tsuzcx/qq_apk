@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo;
 
-import aknx;
+import amhd;
 import com.tencent.mobileqq.data.ApolloPandora;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloManager$18
   implements Runnable
 {
-  public ApolloManager$18(aknx paramaknx, String paramString) {}
+  public ApolloManager$18(amhd paramamhd, String paramString) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public class ApolloManager$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloManager.18
  * JD-Core Version:    0.7.0.1
  */

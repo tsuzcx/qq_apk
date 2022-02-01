@@ -1,10 +1,24 @@
-public abstract interface bnlw
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bnlw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a();
+  bnlw(bnls parambnls) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    RecyclerView localRecyclerView = bnls.c(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localRecyclerView.setVisibility(i);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
+  }
 }
 
 

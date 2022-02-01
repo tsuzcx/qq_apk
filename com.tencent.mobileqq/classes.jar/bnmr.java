@@ -1,20 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
 public class bnmr
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public bnmr(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout, Looper paramLooper)
+  public bnmr(AEMaterialPanel paramAEMaterialPanel, Runnable paramRunnable) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramLooper);
+    AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, false);
+    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null) {
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).b();
+    }
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, true);
+    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null)
+    {
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).setAlpha(1.0F);
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).setVisibility(0);
+      return;
+    }
+    bnzb.d("AEMaterialPanel", "[openWithAnimation] alpha - onAnimationStart, mContentView == null");
   }
 }
 

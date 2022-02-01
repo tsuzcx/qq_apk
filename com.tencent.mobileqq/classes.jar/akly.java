@@ -1,35 +1,33 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
-public class akly
+class akly
+  implements ThreadExcutor.IThreadListener
 {
-  public int a;
-  public DiscussionInfo a;
-  public TroopInfo a;
-  public int b;
+  akly(aklv paramaklv, List paramList, Map paramMap, Bundle paramBundle) {}
   
-  public akly(int paramInt, awge paramawge)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopInfo)paramawge);
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      bhhf localbhhf = new bhhf(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
+      localbhhf.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (this.jdField_a_of_type_Aklv.a != null) {
+        this.jdField_a_of_type_Aklv.a.a(localbhhf, aklv.a(this.jdField_a_of_type_Aklv), null);
+      }
+    }
   }
   
-  public akly(int paramInt, DiscussionInfo paramDiscussionInfo)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-  }
-  
-  public akly(int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-    this.b = paramInt2;
-  }
+  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akly
  * JD-Core Version:    0.7.0.1
  */

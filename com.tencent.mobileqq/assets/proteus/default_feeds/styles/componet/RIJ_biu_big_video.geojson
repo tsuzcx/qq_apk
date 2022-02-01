@@ -9,6 +9,7 @@
     "width": {
         "type": "match_parent"
     },
+    "margin_top":"-6",
     "visible_depend_on_children": "YES",
     "subviews":[
         {
@@ -58,8 +59,8 @@
         {
             "view_type":"UILabel",
             "view_id":"id_large_video_duration",
-            "margin_right":"8",
-            "margin_bottom":"8",
+            "margin_right":"6",
+            "margin_bottom":"6",
             "align_parent_right":"YES",
             "align_parent_bottom":"YES",
             "height":{

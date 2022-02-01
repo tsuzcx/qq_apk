@@ -1,19 +1,108 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class blol
-  implements zac<CLIENT.StSmartMatchMusicRsp>
+public class blol
 {
-  public blol(zac paramzac, long paramLong) {}
+  public static Map<String, String> a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bloy jdField_a_of_type_Bloy = new blom(this);
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
+  static
   {
-    bljn.b("AEEditorMusicHelper", "[requestRecommendedMusicList], onReceive(), isSuccess=" + paramBoolean + ", retCode=" + paramLong + ", errMsg=" + paramString);
-    if (this.jdField_a_of_type_Zac != null) {
-      this.jdField_a_of_type_Zac.a(paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public blol(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private boolean a(JSONObject paramJSONObject)
+  {
+    for (;;)
+    {
+      try
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("readerUrls");
+        int i;
+        if (paramJSONObject == null)
+        {
+          i = 0;
+          if (i == 0)
+          {
+            blpu.a("ReaderUrlConfigDataHelper", "jsonDataToTabItemData ,size=0");
+            return false;
+          }
+        }
+        else
+        {
+          i = paramJSONObject.length();
+          continue;
+        }
+        jdField_a_of_type_JavaUtilMap.clear();
+        int j = 0;
+        if (j >= i) {
+          break;
+        }
+        JSONObject localJSONObject = paramJSONObject.getJSONObject(j);
+        Iterator localIterator = localJSONObject.keys();
+        if (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if (!TextUtils.isEmpty(str)) {
+            jdField_a_of_type_JavaUtilMap.put(str, localJSONObject.getString(str));
+          }
+        }
+        else
+        {
+          j += 1;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        blpu.a("ReaderUrlConfigDataHelper", paramJSONObject.getMessage());
+        return false;
+      }
     }
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    bliu.a().a((int)paramLong, l1 - l2 + "", "AEEditorMusicList", 0);
+    return true;
+  }
+  
+  private void b()
+  {
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    str = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("CGI_RESPONSE", 0).getString("SP_URL_CONFIG_DATA" + str, "");
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
+    try
+    {
+      a(new JSONObject(str));
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      blpu.a("ReaderUrlConfigDataHelper", "getQQReaderUrlConfigDataFromDB," + localJSONException.getMessage());
+    }
+  }
+  
+  private void c()
+  {
+    blqm.a(blqm.c, this.jdField_a_of_type_Bloy);
+  }
+  
+  public void a()
+  {
+    b();
+    c();
   }
 }
 

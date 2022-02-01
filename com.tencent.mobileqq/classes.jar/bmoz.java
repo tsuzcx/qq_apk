@@ -1,36 +1,42 @@
-import com.qq.taf.jce.HexUtil;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity.1.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.webviewwrapper.QzoneWebViewRuntime;
 
 public class bmoz
-  implements akcn
 {
-  public bmoz(EditWebVideoActivity paramEditWebVideoActivity) {}
+  private static bmoz jdField_a_of_type_Bmoz;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private QzoneWebViewRuntime jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime;
   
-  public void a(int paramInt)
+  public static bmoz a()
   {
-    this.a.runOnUiThread(new EditWebVideoActivity.1.1(this));
+    if (jdField_a_of_type_Bmoz == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Bmoz == null) {
+        jdField_a_of_type_Bmoz = new bmoz();
+      }
+      return jdField_a_of_type_Bmoz;
+    }
   }
   
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  public QzoneWebViewRuntime a()
   {
-    int i = ((bmpa)this.a.a).c;
-    EditWebVideoActivity.a(this.a, paramString1);
-    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
-    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
-    paramString1 = this.a;
-    if (i <= 0) {}
-    for (;;)
+    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      EditWebVideoActivity.a(paramString1, paramInt3);
-      EditWebVideoActivity.c(this.a, paramString2);
-      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
-      EditWebVideoActivity.b(this.a, paramInt1);
-      EditWebVideoActivity.c(this.a, paramInt2);
-      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
-      return;
-      paramInt3 = i;
+      if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime == null)
+      {
+        QzoneWebViewRuntime localQzoneWebViewRuntime = new QzoneWebViewRuntime(BaseApplicationImpl.getApplication(), "qzonelive");
+        localQzoneWebViewRuntime.onCreate(null);
+        this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime = localQzoneWebViewRuntime;
+      }
+      return this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime;
     }
+  }
+  
+  public void a(QzoneWebViewRuntime paramQzoneWebViewRuntime)
+  {
+    this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime = paramQzoneWebViewRuntime;
   }
 }
 

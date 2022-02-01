@@ -1,39 +1,23 @@
-import android.os.Build;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
 
-public class mly
-  extends mvo
+class mly
+  extends AccessibilityDelegateCompat
 {
-  public mly(VideoControlUI paramVideoControlUI) {}
+  mly(mlx parammlx, mmh parammmh) {}
   
-  public void a()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    this.a.m();
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    if (!this.a.i) {
-      this.a.e(0);
-    }
-    if ("GT-I9100G".equals(Build.MODEL))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.d, 2, "Model is 9100G, don't do animation");
-      }
-      return;
-    }
-    this.a.F();
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramView = bdol.e(this.jdField_a_of_type_Mmh.a().toString());
+    paramAccessibilityNodeInfoCompat.setText(paramView);
+    paramAccessibilityNodeInfoCompat.setContentDescription(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mly
  * JD-Core Version:    0.7.0.1
  */

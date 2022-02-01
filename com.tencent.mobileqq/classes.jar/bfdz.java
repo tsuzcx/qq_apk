@@ -1,32 +1,62 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.open.agent.DeviceFriendListOpenFrame;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class bfdz
-  extends Handler
+class bfdz
+  implements nkl
 {
-  public bfdz(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame) {}
+  bfdz(bfdy parambfdy) {}
   
-  public void handleMessage(Message paramMessage)
+  public void loaded(String paramString, int paramInt)
   {
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLibraryLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
+    }
+    if (paramInt == 0) {}
+    while (bfdy.a(bfdy.a(this.a), bfdy.b(this.a)))
     {
-    default: 
-      return;
-    case 1: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-    case 2: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
+      do
+      {
+        String str;
+        try
+        {
+          paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
+          str = paramString.optString("url");
+          paramInt = paramString.optInt("filesize");
+          if ((str != null) && (str.endsWith("patch")))
+          {
+            bgmg.a(nku.a(bfdy.a(this.a)) + bfdy.a(this.a));
+            bfdy.a(this.a);
+            return;
+          }
+        }
+        catch (Exception paramString)
+        {
+          do
+          {
+            paramString.printStackTrace();
+          } while (bfdy.a(bfdy.a(this.a), bfdy.b(this.a)));
+          bfdy.b(this.a);
+          return;
+        }
+        if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
+        {
+          bfdy.a(this.a, paramString);
+          return;
+        }
+      } while (bfdy.a(bfdy.a(this.a), bfdy.b(this.a)));
+      bfdy.b(this.a);
       return;
     }
-    this.a.jdField_a_of_type_Bfea.notifyDataSetChanged();
+    bfdy.b(this.a);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfdz
  * JD-Core Version:    0.7.0.1
  */

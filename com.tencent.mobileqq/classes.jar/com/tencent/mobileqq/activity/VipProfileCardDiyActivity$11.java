@@ -177,9 +177,9 @@ class VipProfileCardDiyActivity$11
     //   352: astore 6
     //   354: aload_0
     //   355: getfield 14	com/tencent/mobileqq/activity/VipProfileCardDiyActivity$11:this$0	Lcom/tencent/mobileqq/activity/VipProfileCardDiyActivity;
-    //   358: getfield 172	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:jdField_a_of_type_Bhtd	Lbhtd;
+    //   358: getfield 172	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:jdField_a_of_type_Bkgm	Lbkgm;
     //   361: iconst_3
-    //   362: invokevirtual 178	bhtd:obtainMessage	(I)Landroid/os/Message;
+    //   362: invokevirtual 178	bkgm:obtainMessage	(I)Landroid/os/Message;
     //   365: invokevirtual 183	android/os/Message:sendToTarget	()V
     //   368: aload 7
     //   370: ifnull -232 -> 138
@@ -411,7 +411,7 @@ class VipProfileCardDiyActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.11
  * JD-Core Version:    0.7.0.1
  */

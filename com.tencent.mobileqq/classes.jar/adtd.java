@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class adtd
-  extends alqh
+class adtd
+  implements DialogInterface.OnCancelListener
 {
-  public adtd(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  adtd(adtc paramadtc) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
-    QQSettingSettingActivity.c(this.a);
+    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
   }
 }
 

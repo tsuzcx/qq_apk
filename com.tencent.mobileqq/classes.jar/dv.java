@@ -1,29 +1,51 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.dataline.util.file.DLFileInfo;
+import com.dataline.util.widget.AsyncImageView;
+import com.dataline.util.widget.WaitTextView;
+import com.tencent.qphone.base.util.QLog;
 
-class dv
-  extends ClickableSpan
+public class dv
+  implements Cloneable
 {
-  dv(dt paramdt) {}
+  int jdField_a_of_type_Int;
+  public Button a;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public DLFileInfo a;
+  public AsyncImageView a;
+  public WaitTextView a;
+  public TextView b;
+  public TextView c;
   
-  public void onClick(View paramView)
-  {
-    arrr.a(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), alud.a(2131694654), alud.a(2131694654));
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800513D", "0X800513D", 0, 0, "", "", "", "");
-  }
+  public dv(dr paramdr) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public Object clone()
   {
-    paramTextPaint.setColor(Color.parseColor("#00a5e0"));
-    paramTextPaint.setUnderlineText(false);
+    try
+    {
+      localObject = super.clone();
+      return localObject;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      do
+      {
+        Object localObject = this;
+      } while (!QLog.isColorLevel());
+      QLog.d("DatalineFilesAdapter", 2, "ItemHolder clone failed." + localCloneNotSupportedException.toString());
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dv
  * JD-Core Version:    0.7.0.1
  */

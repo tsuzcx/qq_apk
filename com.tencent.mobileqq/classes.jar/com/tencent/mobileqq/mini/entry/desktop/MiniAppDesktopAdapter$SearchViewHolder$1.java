@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import anni;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -20,6 +20,7 @@ import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import common.config.service.QzoneConfig;
 import java.lang.ref.WeakReference;
 
@@ -31,55 +32,57 @@ class MiniAppDesktopAdapter$SearchViewHolder$1
   public void onClick(View paramView)
   {
     int i;
+    Object localObject;
     if (QzoneConfig.getInstance().getConfig("qqminiapp", "SearchUseNative", 1) == 1)
     {
       i = 1;
       if (i == 0) {
-        break label242;
+        break label252;
       }
-      paramView = new Intent();
+      localObject = new Intent();
       if ((MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0) != null) && (MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0).mAppInfo != null) && (MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0).mAppInfo.firstPage != null))
       {
         String str = Uri.decode(MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0).mAppInfo.firstPage.pagePath);
         if (!TextUtils.isEmpty(str)) {
-          paramView.putExtra("recommend_word", Uri.parse(str).getQueryParameter("w"));
+          ((Intent)localObject).putExtra("recommend_word", Uri.parse(str).getQueryParameter("w"));
         }
       }
-      PublicFragmentActivity.a((Context)this.val$activity.get(), paramView, MiniAppSearchFragment.class);
+      PublicFragmentActivity.a((Context)this.val$activity.get(), (Intent)localObject, MiniAppSearchFragment.class);
     }
     for (;;)
     {
-      paramView = alud.a(2131707188);
+      localObject = anni.a(2131705579);
       if (MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).getText() != null) {
-        paramView = MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).getText().toString();
+        localObject = MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).getText().toString();
       }
-      MiniProgramLpReportDC04239.reportAsync("desktop", "search", "click_search", paramView);
+      MiniProgramLpReportDC04239.reportAsync("desktop", "search", "click_search", (String)localObject);
       if ((MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0) != null) && (MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0).mAppInfo != null) && (MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0).mAppInfo.tianshuAdId > 0)) {
         MiniAppUtils.miniAppTianShuReport("tianshu.78", "tianshu.78", String.valueOf(MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0).mAppInfo.tianshuAdId), 102);
       }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
       i = 0;
       break;
-      label242:
+      label252:
       if ((MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0) == null) || (MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0).mAppInfo == null)) {
         QLog.e("MiniAppDesktopAdapter", 1, "click search bar searchInfo is null");
       }
-      paramView = new LaunchParam();
-      paramView.scene = 3006;
+      localObject = new LaunchParam();
+      ((LaunchParam)localObject).scene = 3006;
       try
       {
-        MiniAppController.launchMiniAppByAppInfo((Activity)this.val$activity.get(), MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0).mAppInfo, paramView);
+        MiniAppController.launchMiniAppByAppInfo((Activity)this.val$activity.get(), MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0).mAppInfo, (LaunchParam)localObject);
       }
-      catch (Exception paramView)
+      catch (Exception localException)
       {
-        QLog.e("MiniAppDesktopAdapter", 1, "click search bar exception: " + Log.getStackTraceString(paramView));
+        QLog.e("MiniAppDesktopAdapter", 1, "click search bar exception: " + Log.getStackTraceString(localException));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.SearchViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import azri;
+import bctj;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -15,12 +15,12 @@ public class ScanEntranceReport$3
     localHashMap.put("got_config_time", String.valueOf(this.b));
     localHashMap.put("resource_check_time", String.valueOf(this.c));
     localHashMap.put("dependence_wait_time", String.valueOf(this.d));
-    azri.a(BaseApplication.getContext()).a("", "scanner_ar_init_pre", true, this.e, 0L, localHashMap, "");
+    bctj.a(BaseApplication.getContext()).a("", "scanner_ar_init_pre", true, this.e, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanEntranceReport.3
  * JD-Core Version:    0.7.0.1
  */

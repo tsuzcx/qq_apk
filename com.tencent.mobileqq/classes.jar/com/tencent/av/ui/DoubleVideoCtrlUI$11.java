@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import mwk;
+import mts;
 
 class DoubleVideoCtrlUI$11
   implements Runnable
@@ -9,12 +9,12 @@ class DoubleVideoCtrlUI$11
   
   public void run()
   {
-    mwk.a().a(this.a, this.this$0.a, 2131230736, null, 0, null);
+    mts.a().a(this.a, this.this$0.a, 2131230736, null, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.11
  * JD-Core Version:    0.7.0.1
  */

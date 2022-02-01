@@ -1,20 +1,14 @@
-import java.util.HashMap;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
-public abstract class bllj
+public class bllj
+  implements aqga
 {
-  public boolean a;
+  public bllj(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public abstract float a();
-  
-  public abstract String a();
-  
-  public abstract HashMap<String, String> a();
-  
-  public abstract float b();
-  
-  public abstract String b();
-  
-  public abstract float c();
+  public void onColorNoteAnimFinish()
+  {
+    this.a.superFinish();
+  }
 }
 
 

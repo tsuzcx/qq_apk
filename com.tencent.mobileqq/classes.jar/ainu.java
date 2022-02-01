@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import mqq.os.MqqHandler;
 
-public class ainu
-  implements DialogInterface.OnDismissListener
+class ainu
+  implements armr
 {
-  public ainu(CameraPreviewActivity paramCameraPreviewActivity) {}
+  ainu(ains paramains, MqqHandler paramMqqHandler) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt)
   {
-    this.a.a = null;
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
+      return;
+    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(84, 10000L);
   }
 }
 

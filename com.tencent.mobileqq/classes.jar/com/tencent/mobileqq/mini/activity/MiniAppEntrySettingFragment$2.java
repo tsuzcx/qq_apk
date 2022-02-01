@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.activity;
 import NS_MINI_INTERFACE.INTERFACE.StGetSwitchListRsp;
 import NS_MINI_INTERFACE.INTERFACE.StSwitchInfo;
 import android.support.v4.app.FragmentActivity;
-import bflz;
+import biti;
 import com.tencent.mobileqq.mini.entry.MiniAppSettingSwitchInfoEntity;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -70,7 +70,7 @@ class MiniAppEntrySettingFragment$2
       catch (Exception paramJSONObject)
       {
         QLog.e("MiniAppEntrySettingFragment", 1, "onCmdListener failed e:", paramJSONObject);
-        bflz.a().a("exception check log");
+        biti.a().a("exception check log");
         return;
       }
     }
@@ -80,16 +80,16 @@ class MiniAppEntrySettingFragment$2
     return;
     label340:
     QLog.e("MiniAppEntrySettingFragment", 1, new Object[] { "getSwitchList receive retCode =", Integer.valueOf(i) });
-    bflz.a().a("retCode:" + i);
+    biti.a().a("retCode:" + i);
     return;
     label388:
     QLog.e("MiniAppEntrySettingFragment", 1, new Object[] { "getSwitchList receive isSuc =", Boolean.valueOf(paramBoolean) });
-    bflz.a().a("getSwitchList receive isSuc false");
+    biti.a().a("getSwitchList receive isSuc false");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.MiniAppEntrySettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

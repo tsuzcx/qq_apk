@@ -1,54 +1,42 @@
-import android.view.View;
+import android.view.SurfaceHolder;
 
-public abstract class bhgl
+public abstract interface bhgl
 {
-  public int a(int paramInt)
-  {
-    return paramInt;
-  }
+  public abstract int a();
   
-  public int a(View paramView)
-  {
-    return 0;
-  }
+  public abstract void a();
   
-  public int a(View paramView, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
+  public abstract void a(int paramInt);
   
-  public void a(int paramInt) {}
+  public abstract void a(SurfaceHolder paramSurfaceHolder);
   
-  public void a(int paramInt1, int paramInt2) {}
+  public abstract void a(bhgm parambhgm);
   
-  public void a(View paramView, float paramFloat1, float paramFloat2) {}
+  public abstract void a(bhgn parambhgn);
   
-  public void a(View paramView, int paramInt) {}
+  public abstract void a(bhgo parambhgo);
   
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public abstract boolean a();
   
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
+  public abstract boolean a(String paramString, int paramInt);
   
-  public abstract boolean a(View paramView, int paramInt);
+  public abstract int b();
   
-  public int b(View paramView)
-  {
-    return 0;
-  }
+  public abstract void b();
   
-  public int b(View paramView, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
+  public abstract boolean b();
   
-  public void b(int paramInt1, int paramInt2) {}
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract int e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhgl
  * JD-Core Version:    0.7.0.1
  */

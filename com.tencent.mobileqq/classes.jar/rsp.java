@@ -1,33 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
-
-public class rsp
-  extends bhuv
+class rsp
+  implements rsh<riw>
 {
-  public rsp(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
-  {
-    super(paramReadInJoyFlowLayout);
-  }
+  rsp(rsn paramrsn) {}
   
-  public void a()
+  public boolean a(riw paramriw)
   {
-    super.a();
-  }
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    ReadInJoyFlowLayout.a(this.a);
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-    ReadInJoyFlowLayout.a(this.a);
+    return paramriw.d >= 5000L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,45 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class ajfb
-  implements ValueAnimator.AnimatorUpdateListener
+  extends ajcv<MessageRecord>
 {
-  public ajfb(KSongMicView paramKSongMicView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ajfb(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView, Context paramContext, int paramInt)
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = KSongMicView.a(this.a).iterator();
-    while (paramValueAnimator.hasNext())
-    {
-      ajfc localajfc = (ajfc)paramValueAnimator.next();
-      localajfc.jdField_c_of_type_Float = (localajfc.f + (localajfc.g - localajfc.f) * f);
-      localajfc.d = (localajfc.h + (localajfc.i - localajfc.h) * f);
-      localajfc.e = (localajfc.j + (localajfc.k - localajfc.j) * f);
-      localajfc.a = (localajfc.b + (int)((localajfc.jdField_c_of_type_Int - localajfc.b) * f));
-    }
-    this.a.invalidate();
+    super(paramContext, paramInt);
+  }
+  
+  protected ajdf a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
+    paramContext = new ajeg(paramContext, paramViewGroup);
+    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373561));
+    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131373551));
+    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373558));
+    paramContext.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131373565));
+    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373556));
+    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373562));
+    paramContext.c = ((TextView)paramViewGroup.findViewById(2131373564));
+    paramContext.d = ((TextView)paramViewGroup.findViewById(2131373557));
+    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131373560));
+    paramContext.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramViewGroup.findViewById(2131379328));
+    paramViewGroup = (Button)paramViewGroup.findViewById(2131379327);
+    ajga.a(paramContext.a(), false);
+    return paramContext;
+  }
+  
+  protected void a(ajdf paramajdf, MessageRecord paramMessageRecord, int paramInt)
+  {
+    TroopNotifyAndRecommendView.a(this.a, paramajdf, paramMessageRecord, paramInt);
   }
 }
 

@@ -220,6 +220,13 @@ public class SPlayerVideoView
     this.mVideoViewCallBackList.remove(paramIVideoViewCallBack);
   }
   
+  public void setDegree(int paramInt)
+  {
+    if (this.mDisPlayView != null) {
+      this.mDisPlayView.setDegree(paramInt);
+    }
+  }
+  
   public void setFixedSize(int paramInt1, int paramInt2)
   {
     LogUtil.i(TAG, "setFixedSize, vW: " + paramInt1 + ", vH: " + paramInt2 + ", NO: " + this.mSerialNO);
@@ -232,7 +239,7 @@ public class SPlayerVideoView
       ((View)this.mDisPlayView).requestLayout();
       return;
     }
-    ThreadUtil.postRunnableOnMainThread(new SPlayerVideoView.3(this));
+    ThreadUtil.runOnUiThread(new SPlayerVideoView.3(this));
   }
   
   public void setScaleParam(float paramFloat)
@@ -246,7 +253,7 @@ public class SPlayerVideoView
     {
       this.mDisPlayView.setXYaxis(paramInt);
       this.mType = paramInt;
-      ThreadUtil.postRunnableOnMainThread(new SPlayerVideoView.4(this));
+      ThreadUtil.runOnUiThread(new SPlayerVideoView.4(this));
       return;
     }
     catch (Exception localException)
@@ -257,7 +264,7 @@ public class SPlayerVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.view.SPlayerVideoView
  * JD-Core Version:    0.7.0.1
  */

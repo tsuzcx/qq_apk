@@ -1,21 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
 public class anzp
-  implements bhux
+  implements Comparator<File>
 {
-  public anzp(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  public anzp(CleanCache paramCleanCache) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public int a(File paramFile1, File paramFile2)
   {
-    this.a.a();
-    return true;
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anzp
  * JD-Core Version:    0.7.0.1
  */

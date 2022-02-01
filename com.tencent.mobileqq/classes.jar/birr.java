@@ -1,17 +1,24 @@
-import android.app.ProgressDialog;
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.appstore.component.CommonTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class birr
+  implements View.OnClickListener
 {
-  public ProgressDialog a;
-  public Context a;
-  public biqu a;
-  public biqw a;
-  public boolean a = true;
+  public birr(CommonTitleBar paramCommonTitleBar) {}
+  
+  public void onClick(View paramView)
+  {
+    if (CommonTitleBar.a(this.a) != null) {
+      CommonTitleBar.a(this.a).a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     birr
  * JD-Core Version:    0.7.0.1
  */

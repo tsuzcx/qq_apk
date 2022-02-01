@@ -1,55 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class axqf
-  extends AnimatorListenerAdapter
+class axqf
+  implements Animation.AnimationListener
 {
-  public axqf(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  axqf(axqd paramaxqd) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
-    }
+    this.a.dismiss();
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
-    }
-    if (!this.a.b.get())
-    {
-      this.a.a.set(true);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
-      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
-      return;
-      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
-      CameraCaptureButtonLayout.a(this.a);
-      CameraCaptureButtonLayout.a(this.a, 1.0F);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axqf
  * JD-Core Version:    0.7.0.1
  */

@@ -14,6 +14,7 @@ public final class ThreadManager
   private static volatile Looper MONITOR_LOOPER;
   private static volatile Looper REPORTER_LOOPER;
   private static volatile Looper STACK_LOOPER;
+  private static volatile Looper USER_BEHAVIOR_LOOPER;
   
   @JvmStatic
   @Nullable
@@ -49,10 +50,17 @@ public final class ThreadManager
   {
     return Companion.getStackThreadLooper();
   }
+  
+  @JvmStatic
+  @Nullable
+  public static final Looper getUserBehaviorLooper()
+  {
+    return Companion.getUserBehaviorLooper();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.thread.ThreadManager
  * JD-Core Version:    0.7.0.1
  */

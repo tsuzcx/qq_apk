@@ -1,20 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class bjgj
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public bjgj(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public bjgj(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.onHandleMessage(QzoneVerticalVideoDownloadActivity.access$000(this.a), paramMessage);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjgj
  * JD-Core Version:    0.7.0.1
  */

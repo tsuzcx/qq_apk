@@ -1,20 +1,12 @@
-import com.tencent.qapmsdk.base.reporter.proxy.QAPMUploadProxy;
-import com.tencent.qapmsdk.base.reporter.uploaddata.data.ResultObject;
-import com.tencent.qapmsdk.common.reporter.BaseJsonObject;
-import com.tencent.qapmsdk.common.reporter.IReporter.ReportResultCallback;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-class azts
-  extends QAPMUploadProxy
+public abstract interface azts
 {
-  azts(aztr paramaztr) {}
+  public abstract void a();
   
-  public boolean report(@NotNull BaseJsonObject paramBaseJsonObject, @Nullable IReporter.ReportResultCallback paramReportResultCallback)
-  {
-    if ((paramBaseJsonObject instanceof ResultObject)) {}
-    return super.report(paramBaseJsonObject, paramReportResultCallback);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(aztr paramaztr, int paramInt1, int paramInt2);
+  
+  public abstract void f();
 }
 
 

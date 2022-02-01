@@ -4,7 +4,7 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.os.Debug.MemoryInfo;
 import android.os.Process;
-import azri;
+import bctj;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -52,7 +52,7 @@ public class ARMapTracer$ReportRunnable
           ((HashMap)localObject).put("pss", String.valueOf(i));
           ((HashMap)localObject).put("level", String.valueOf(this.jdField_a_of_type_Int));
           ((HashMap)localObject).put("devType", String.valueOf(ARMapTracer.a()));
-          azri.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, "actARMapTrace", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, i, (HashMap)localObject, null);
+          bctj.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, "actARMapTrace", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, i, (HashMap)localObject, null);
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder(200);
@@ -76,7 +76,7 @@ public class ARMapTracer$ReportRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARMapTracer.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -53,6 +53,15 @@ public abstract class VComponentContainer<T extends ViewGroup>
     this.mChildren.add(i, paramVComponent);
   }
   
+  public void addComponentView(VComponent paramVComponent, int paramInt)
+  {
+    if (paramVComponent == null) {
+      return;
+    }
+    addChild(paramVComponent, paramInt);
+    addSubView(paramVComponent.mHost, paramInt);
+  }
+  
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
   public void addSubView(View paramView, int paramInt)
   {
@@ -67,6 +76,26 @@ public abstract class VComponentContainer<T extends ViewGroup>
       ((ViewGroup)paramView.getParent()).removeView(paramView);
     }
     getRealView().addView(paramView, i);
+  }
+  
+  public void afterBringToRootByAnim()
+  {
+    if (this.mChildren != null)
+    {
+      int j = this.mChildren.size();
+      int i = 0;
+      if (i < j)
+      {
+        VComponent localVComponent = (VComponent)this.mChildren.get(i);
+        if (localVComponent == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localVComponent.afterBringToRootByAnim();
+        }
+      }
+    }
   }
   
   public void applyEvents()
@@ -107,6 +136,26 @@ public abstract class VComponentContainer<T extends ViewGroup>
             localVComponent.applyLayout();
           }
           i += 1;
+        }
+      }
+    }
+  }
+  
+  public void beforeBringToRootByAnim()
+  {
+    if (this.mChildren != null)
+    {
+      int j = this.mChildren.size();
+      int i = 0;
+      if (i < j)
+      {
+        VComponent localVComponent = (VComponent)this.mChildren.get(i);
+        if (localVComponent == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localVComponent.beforeBringToRootByAnim();
         }
       }
     }
@@ -199,9 +248,9 @@ public abstract class VComponentContainer<T extends ViewGroup>
     notifyParentWhenChildAddEnd();
   }
   
-  protected void createViewImpl(Context paramContext)
+  protected void createViewImplWithContext(Context paramContext)
   {
-    super.createViewImpl(paramContext);
+    super.createViewImplWithContext(paramContext);
     int j = getChildCount();
     int i = 0;
     while (i < j)
@@ -222,6 +271,22 @@ public abstract class VComponentContainer<T extends ViewGroup>
       while (i < j)
       {
         ((VComponent)this.mChildren.get(i)).destroy();
+        i += 1;
+      }
+      this.mChildren.clear();
+    }
+  }
+  
+  public void destroyComp()
+  {
+    super.destroyComp();
+    if (this.mChildren != null)
+    {
+      int j = this.mChildren.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((VComponent)this.mChildren.get(i)).destroyComp();
         i += 1;
       }
       this.mChildren.clear();
@@ -295,6 +360,27 @@ public abstract class VComponentContainer<T extends ViewGroup>
     }
   }
   
+  public void onRecycler()
+  {
+    super.onRecycler();
+    if (this.mChildren != null)
+    {
+      int j = this.mChildren.size();
+      int i = 0;
+      if (i < j)
+      {
+        VComponent localVComponent = (VComponent)this.mChildren.get(i);
+        if (localVComponent == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localVComponent.onRecycler();
+        }
+      }
+    }
+  }
+  
   protected Pair<VComponent, Integer> rearrangeIndexAndGetChild(int paramInt)
   {
     int i = paramInt;
@@ -324,16 +410,43 @@ public abstract class VComponentContainer<T extends ViewGroup>
   
   public void remove(VComponent paramVComponent, boolean paramBoolean)
   {
+    remove(paramVComponent, paramBoolean, false);
+  }
+  
+  public void remove(VComponent paramVComponent, boolean paramBoolean1, boolean paramBoolean2)
+  {
     if ((paramVComponent == null) || (this.mChildren == null) || (this.mChildren.size() == 0)) {}
     do
     {
       return;
       this.mChildren.remove(paramVComponent);
-      if ((getRealView() != null) && (!paramVComponent.isVirtualComponent()) && (paramVComponent.getHostView() != null)) {
+      if ((getRealView() != null) && (!paramVComponent.isVirtualComponent()) && (paramVComponent.getHostView() != null))
+      {
+        if (paramBoolean2) {
+          paramVComponent.beforeBringToRootByAnim();
+        }
         getRealView().removeView(paramVComponent.getHostView());
+        if (paramBoolean2) {
+          paramVComponent.afterBringToRootByAnim();
+        }
       }
-    } while (!paramBoolean);
+    } while (!paramBoolean1);
     paramVComponent.destroy();
+  }
+  
+  public void removedByDiff()
+  {
+    super.removedByDiff();
+    if (this.mChildren != null)
+    {
+      int j = this.mChildren.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((VComponent)this.mChildren.get(i)).removedByDiff();
+        i += 1;
+      }
+    }
   }
   
   public void removedByJs()
@@ -388,7 +501,7 @@ public abstract class VComponentContainer<T extends ViewGroup>
       }
     }
     this.mOverFlowValue = ViolaUtils.getString(paramObject, null);
-    if (!TextUtils.isEmpty(this.mOverFlowValue)) {
+    if ((!TextUtils.isEmpty(this.mOverFlowValue)) && (this.mHost != null)) {
       setOverFlow(this.mOverFlowValue);
     }
     return true;
@@ -397,28 +510,28 @@ public abstract class VComponentContainer<T extends ViewGroup>
   public void unregisterFromContext(boolean paramBoolean)
   {
     super.unregisterFromContext(paramBoolean);
-    int j;
-    int i;
     if (this.mChildren != null)
     {
-      j = this.mChildren.size();
-      i = 0;
-    }
-    while (i < j)
-    {
-      VComponent localVComponent = (VComponent)this.mChildren.get(i);
-      if (localVComponent == null) {
-        return;
+      int j = this.mChildren.size();
+      int i = 0;
+      if (i < j)
+      {
+        VComponent localVComponent = (VComponent)this.mChildren.get(i);
+        if (localVComponent == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localVComponent.unregisterFromContext(paramBoolean);
+        }
       }
-      localVComponent.unregisterFromContext(paramBoolean);
-      i += 1;
+      this.mChildren.clear();
     }
-    this.mChildren.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.VComponentContainer
  * JD-Core Version:    0.7.0.1
  */

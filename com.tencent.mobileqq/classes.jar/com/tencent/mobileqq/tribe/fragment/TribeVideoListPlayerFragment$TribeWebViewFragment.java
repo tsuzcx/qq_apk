@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
-import azqs;
-import bbej;
+import bcst;
+import befh;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -29,44 +29,9 @@ public class TribeVideoListPlayerFragment$TribeWebViewFragment
     this.jdField_a_of_type_Int = -1;
   }
   
-  public void a(WebView paramWebView, int paramInt)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "onProgressChanged:" + paramInt);
-    }
-    if (paramInt == 100)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.b = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.b = false;
-  }
-  
-  public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    super.a(paramWebView, paramInt, paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "onReceivedError: errorCode=" + paramInt + "descrip=" + paramString1 + "failingUrl" + paramString2);
-    }
-    this.c = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0) instanceof bbej)) {
-      if (((bbej)this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0)).h == 0) {
-        break label161;
-      }
-    }
-    label161:
-    for (paramWebView = "" + ((bbej)this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0)).h;; paramWebView = "")
-    {
-      azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "webview_fail", 0, 0, "", "", paramWebView, "");
-      return;
-    }
-  }
-  
-  public void a(WebView paramWebView, String paramString)
-  {
-    super.a(paramWebView, paramString);
+    super.onPageFinished(paramWebView, paramString);
     if (QLog.isColorLevel()) {
       QLog.d("TribeVideoListPlayerFragment", 2, "onPageFinished: loadError = " + this.c);
     }
@@ -91,7 +56,7 @@ public class TribeVideoListPlayerFragment$TribeWebViewFragment
       if ((isAdded()) && (!isVisible()))
       {
         getActivity().getSupportFragmentManager().beginTransaction().show(this).commitAllowingStateLoss();
-        if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
+        if (this.webView != null) {
           break label172;
         }
       }
@@ -99,12 +64,47 @@ public class TribeVideoListPlayerFragment$TribeWebViewFragment
     return;
     label172:
     paramWebView = "javascript:mqq.dispatchEvent(\"startShowAnim\",{\"type\":\"" + TribeVideoListPlayerFragment.a()[this.jdField_a_of_type_Int] + "\"})";
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(paramWebView);
+    this.webView.callJs(paramWebView);
   }
   
-  public void b(WebView paramWebView, String paramString)
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    super.b(paramWebView, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "onProgressChanged:" + paramInt);
+    }
+    if (paramInt == 100)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.b = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.b = false;
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "onReceivedError: errorCode=" + paramInt + "descrip=" + paramString1 + "failingUrl" + paramString2);
+    }
+    this.c = true;
+    if ((this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0) instanceof befh)) {
+      if (((befh)this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0)).h == 0) {
+        break label161;
+      }
+    }
+    label161:
+    for (paramWebView = "" + ((befh)this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0)).h;; paramWebView = "")
+    {
+      bcst.b(null, "dc00899", "Grp_tribe", "", "video_player", "webview_fail", 0, 0, "", "", paramWebView, "");
+      return;
+    }
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
     if ((!TextUtils.isEmpty(paramString)) && (paramString.toLowerCase().contains("error")))
     {
       if (QLog.isColorLevel()) {
@@ -116,7 +116,7 @@ public class TribeVideoListPlayerFragment$TribeWebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.TribeWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,57 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.ark.image.ChooseImageIPCModule.1;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import java.util.List;
+import tencent.im.nearfield_group.nearfield_group.BusiRespHead;
 
 public class anqq
-  implements alpg
+  implements anil
 {
-  public anqq(ChooseImageIPCModule.1 param1, String paramString) {}
+  public void a(asqt paramasqt) {}
+  
+  public void a(asqx paramasqx) {}
+  
+  public void a(nearfield_group.BusiRespHead paramBusiRespHead) {}
+  
+  public void a(nearfield_group.BusiRespHead paramBusiRespHead, String paramString) {}
+  
+  public void a(nearfield_group.BusiRespHead paramBusiRespHead, List<asqt> paramList) {}
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", paramInt);
-    localBundle.putBoolean("sucess", paramBoolean);
-    localBundle.putString("data", (String)paramObject);
-    paramObject = EIPCResult.createResult(0, localBundle);
-    QLog.d("ArkApp.ChooseImageIPCModule", 1, new Object[] { "ArkMultiProc.callSendAppMsg success callback cmd=", this.jdField_a_of_type_JavaLangString });
-    this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$1.this$0.callbackResult(this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$1.a, paramObject);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        if ((paramBoolean) && (paramObject != null))
+        {
+          paramObject = (Object[])paramObject;
+          a((nearfield_group.BusiRespHead)paramObject[0], (List)paramObject[1]);
+          return;
+        }
+        a(null, null);
+        return;
+        if ((paramBoolean) && (paramObject != null))
+        {
+          a((nearfield_group.BusiRespHead)((Object[])(Object[])paramObject)[0]);
+          return;
+        }
+        a(null);
+        return;
+        if ((paramBoolean) && (paramObject != null))
+        {
+          paramObject = (Object[])paramObject;
+          a((nearfield_group.BusiRespHead)paramObject[0], (String)paramObject[1]);
+          return;
+        }
+        a(null, "");
+        return;
+      } while ((!paramBoolean) || (paramObject == null));
+      a((asqt)((Object[])(Object[])paramObject)[0]);
+      return;
+    } while ((!paramBoolean) || (paramObject == null));
+    a((asqx)((Object[])(Object[])paramObject)[0]);
   }
 }
 

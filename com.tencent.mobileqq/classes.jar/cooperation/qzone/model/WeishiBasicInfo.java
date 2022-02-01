@@ -3,14 +3,14 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjli;
+import blzr;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WeishiBasicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiBasicInfo> CREATOR = new bjli();
+  public static final Parcelable.Creator<WeishiBasicInfo> CREATOR = new blzr();
   public String cover_url;
   public Map<String, String> dc_report;
   public String nick_name;
@@ -84,7 +84,7 @@ public class WeishiBasicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.WeishiBasicInfo
  * JD-Core Version:    0.7.0.1
  */

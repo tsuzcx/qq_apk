@@ -1,24 +1,36 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class afnk
-  extends aeqi
+  extends Handler
 {
-  float jdField_a_of_type_Float;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  UnlimitedBladeWorks jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  ImageView b;
-  public View c;
-  ImageView c;
+  public afnk(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public afnk(afmy paramafmy) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.i();
+      QQToast.a(this.a, this.a.getString(2131717757), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      this.a.i();
+      QQToast.a(this.a, this.a.getString(2131717746), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    paramMessage = (String)paramMessage.obj;
+    this.a.o.setText(paramMessage + "");
+    this.a.o.setContentDescription(paramMessage + "");
+    this.a.o.setVisibility(0);
+  }
 }
 
 

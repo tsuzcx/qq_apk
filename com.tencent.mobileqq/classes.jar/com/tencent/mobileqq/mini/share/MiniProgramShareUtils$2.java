@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.mini.share;
 
 import android.app.Activity;
+import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
+import com.tencent.mobileqq.mini.appbrand.AppBrandRuntimeContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
@@ -17,19 +19,30 @@ final class MiniProgramShareUtils$2
   {
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      if ((this.val$finalShareType == 5) && ((this.val$activity instanceof GameActivity)))
+      if (this.val$finalShareType == 5)
       {
+        if (!(this.val$activity instanceof GameActivity)) {
+          break label164;
+        }
         localObject = ((GameActivity)this.val$activity).getGameBrandRuntime();
         if (localObject != null) {
           ((GameBrandRuntime)localObject).shareJson = paramJSONObject.toString();
         }
       }
-      if (MiniProgramShareUtils.access$100(this.val$activity, MiniProgramShareUtils.access$000(this.val$miniArkShareModel, paramJSONObject), this.val$miniArkShareModel.getDescription(), this.val$miniArkShareModel.getPicUrl(), this.val$miniArkShareModel.getJumpUrl(), this.val$miniArkShareModel.getEntryModel(), this.val$miniArkShareModel.getShareChatModel(), this.val$miniAppShareFrom, this.val$miniArkShareModel.getShareTarget(), paramJSONObject, this.val$finalShareType, this.val$miniArkShareModel.getAppId(), this.val$miniArkShareModel.getShareBusinessType())) {
-        QLog.d("MiniProgramShareUtils", 1, "onCmdListener: share successful " + paramJSONObject.toString());
+      for (;;)
+      {
+        if (MiniProgramShareUtils.performShareAsArkMessage(this.val$activity, MiniProgramShareUtils.getArkPrompt(this.val$miniArkShareModel, paramJSONObject), this.val$miniArkShareModel.getDescription(), this.val$miniArkShareModel.getPicUrl(), this.val$miniArkShareModel.getJumpUrl(), this.val$miniArkShareModel.getEntryModel(), this.val$miniArkShareModel.getShareChatModel(), this.val$miniAppShareFrom, this.val$miniArkShareModel.getShareTarget(), paramJSONObject, this.val$finalShareType, this.val$miniArkShareModel.getAppId(), this.val$miniArkShareModel.getShareBusinessType())) {
+          QLog.d("MiniProgramShareUtils [miniappArkShare]", 1, "onCmdListener: share successful " + paramJSONObject.toString());
+        }
+        return;
+        label164:
+        localObject = AppBrandRuntimeContainer.g().getAppBrandRunTime(this.val$miniArkShareModel.getAppId(), this.val$miniArkShareModel.getVersionType());
+        if (localObject != null) {
+          ((AppBrandRuntime)localObject).getPageWebView().shareJson = paramJSONObject.toString();
+        }
       }
-      return;
     }
-    QLog.d("MiniProgramShareUtils", 1, "onCmdListener: share failed " + paramBoolean + " " + paramJSONObject);
+    QLog.d("MiniProgramShareUtils [miniappArkShare]", 1, "onCmdListener: share failed " + paramBoolean + " " + paramJSONObject);
     long l = -1L;
     Object localObject = null;
     boolean bool = false;
@@ -44,7 +57,7 @@ final class MiniProgramShareUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramShareUtils.2
  * JD-Core Version:    0.7.0.1
  */

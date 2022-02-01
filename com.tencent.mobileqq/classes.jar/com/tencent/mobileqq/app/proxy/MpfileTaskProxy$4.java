@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.app.proxy;
 
-import amnv;
+import aonf;
 import com.dataline.mpfile.MpfileTaskRecord;
-import ew;
+import fb;
 
 public class MpfileTaskProxy$4
   implements Runnable
 {
-  public MpfileTaskProxy$4(amnv paramamnv, MpfileTaskRecord paramMpfileTaskRecord, ew paramew) {}
+  public MpfileTaskProxy$4(aonf paramaonf, MpfileTaskRecord paramMpfileTaskRecord, fb paramfb) {}
   
   public void run()
   {
     this.this$0.a(this.jdField_a_of_type_ComDatalineMpfileMpfileTaskRecord, null);
-    this.jdField_a_of_type_Ew.a();
+    this.jdField_a_of_type_Fb.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.MpfileTaskProxy.4
  * JD-Core Version:    0.7.0.1
  */

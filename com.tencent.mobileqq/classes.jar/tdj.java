@@ -1,27 +1,51 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.subscribe.comment.EmoView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 class tdj
-  implements View.OnFocusChangeListener
+  extends anxw
 {
-  tdj(tdf paramtdf) {}
+  tdj(tdi paramtdi) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    if (paramBoolean)
-    {
-      if (tdf.a(this.a) != null) {
-        tdf.a(this.a).setVisibility(8);
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
     }
-    this.a.b(paramView);
+  }
+  
+  public void a(List<bbof> paramList, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
+    }
+    if (paramInt != 10) {}
+    String str;
+    bbof localbbof;
+    do
+    {
+      return;
+      while (!paramList.hasNext())
+      {
+        do
+        {
+          str = bbgu.b;
+        } while ((paramList == null) || (paramList.size() <= 0));
+        paramList = paramList.iterator();
+      }
+      localbbof = (bbof)paramList.next();
+    } while (((localbbof.jdField_a_of_type_Int != 1) || (!TextUtils.equals(str, "Hot_word"))) && ((localbbof.jdField_a_of_type_Int != 7) || (!TextUtils.equals(str, "Recom_word"))));
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localbbof);
+    tdi.b = 0;
+    tdi.jdField_a_of_type_Int = 0;
+    this.a.a(true, -1, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tdj
  * JD-Core Version:    0.7.0.1
  */

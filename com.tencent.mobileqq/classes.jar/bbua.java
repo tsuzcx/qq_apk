@@ -1,13 +1,45 @@
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Comparator;
 
 class bbua
-  implements Comparator<bbud>
+  implements Comparator<bbmu>
 {
   bbua(bbtz parambbtz) {}
   
-  public int a(bbud parambbud1, bbud parambbud2)
+  public int a(bbmu parambbmu1, bbmu parambbmu2)
   {
-    return parambbud2.b - parambbud1.b;
+    int i = -1;
+    parambbmu1 = (bboi)parambbmu1;
+    parambbmu2 = (bboi)parambbmu2;
+    anmw localanmw = (anmw)this.a.a.getManager(51);
+    boolean bool1 = localanmw.b((String)parambbmu1.a());
+    boolean bool2 = localanmw.b((String)parambbmu2.a());
+    if ((!bool1) && (!bool2))
+    {
+      bool1 = localanmw.d((String)parambbmu1.a());
+      bool2 = localanmw.d((String)parambbmu2.a());
+      if ((!bool1) && (!bool2)) {
+        return parambbmu2.f() - parambbmu1.f();
+      }
+      if (bool1 != bool2)
+      {
+        if (bool2) {
+          return -1;
+        }
+        return 1;
+      }
+      return parambbmu2.f() - parambbmu1.f();
+    }
+    if (bool1 != bool2)
+    {
+      if (bool2) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
+    }
+    return parambbmu2.f() - parambbmu1.f();
   }
 }
 

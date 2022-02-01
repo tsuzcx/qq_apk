@@ -1,52 +1,81 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class asxo
-  implements BusinessObserver
+public class asxo
+  implements View.OnClickListener
 {
-  asxo(asxn paramasxn, FaceDetectForThirdPartyManager paramFaceDetectForThirdPartyManager, int paramInt, QQAppInterface paramQQAppInterface) {}
+  public asxo(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 17) && (paramBoolean) && (paramBundle != null))
+    asyb localasyb = (asyb)paramView.getTag();
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)localasyb.jdField_a_of_type_JavaLangObject;
+    if (5 != localFileManagerEntity.cloudType) {
+      atvo.b(localFileManagerEntity);
+    }
+    switch (localasyb.jdField_a_of_type_Int)
     {
-      paramInt = paramBundle.getInt("app_id", 0);
-      QLog.d("qqidentification_server", 1, "onReceive appid = " + paramInt);
-      if (paramInt == 0) {
+    }
+    for (;;)
+    {
+      this.a.i();
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
         return;
+        this.a.a.a().aa();
+        if (!bgnt.d(BaseApplication.getContext()))
+        {
+          atvf.a(2131692314);
+        }
+        else if (localFileManagerEntity.status == 16)
+        {
+          atvf.a(2131692466);
+        }
+        else
+        {
+          atul.a(localFileManagerEntity).a(false, this.a.getContext(), new asxp(this, localFileManagerEntity));
+          break;
+          this.a.a.a().Z();
+          this.a.a(localFileManagerEntity, localasyb.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
+          break;
+          this.a.a.a().ab();
+          if (localFileManagerEntity.getCloudType() == 0)
+          {
+            QfileBaseRecentFileTabView.w(this.a).a().a(localFileManagerEntity.nSessionId);
+            break;
+          }
+          if (localFileManagerEntity.getCloudType() == 6)
+          {
+            ((anjx)QfileBaseRecentFileTabView.x(this.a).a(8)).a(0, localFileManagerEntity.uniseq, false);
+            break;
+          }
+          QfileBaseRecentFileTabView.y(this.a).a().a(localFileManagerEntity.nSessionId);
+          break;
+          this.a.a.a().ac();
+          if (!bgnt.d(BaseApplication.getContext()))
+          {
+            atvf.a(2131692314);
+          }
+          else
+          {
+            if (localFileManagerEntity.status != 16) {
+              break label344;
+            }
+            atvf.a(2131692466);
+          }
+        }
       }
-      FaceDetectForThirdPartyManager.AppConf localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramBundle.getSerializable("FaceRecognition.AppConf");
-      if (this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager.a(paramInt, localAppConf);
-      }
-      this.jdField_a_of_type_Asxn.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
-      return;
+      label344:
+      boolean bool = localFileManagerEntity.isSend();
+      atul.a(localFileManagerEntity).a(bool, this.a.a, new asxq(this, localFileManagerEntity));
     }
-    if (paramInt != 15)
-    {
-      this.jdField_a_of_type_Asxn.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, null));
-      if (paramInt != 17) {
-        break label186;
-      }
-      if (paramBundle != null) {
-        break label180;
-      }
-    }
-    label180:
-    for (paramBundle = "1";; paramBundle = "2")
-    {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009D63", "0X8009D63", 0, 0, paramBundle, "", "", "");
-      return;
-      this.jdField_a_of_type_Asxn.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(15, null));
-      break;
-    }
-    label186:
-    QLog.e("qqidentification_server", 1, "requestThirdPartyInfo unexpected error");
   }
 }
 

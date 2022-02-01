@@ -1,31 +1,20 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
+import com.tencent.qphone.base.util.QLog;
 
-public class aibw
-  implements View.OnClickListener
+class aibw
+  extends anxg
 {
-  public aibw(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aibw(aibv paramaibv) {}
   
-  public void onClick(View paramView)
+  protected void d(boolean paramBoolean, String paramString)
   {
-    xqq.a(this.a.a);
-    xqq.a(this.a.a.a);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.a.a.size())
-    {
-      paramView.add(((aidf)this.a.a.a.get(i)).a);
-      i += 1;
+    if ((this.a.w != 2) && (paramBoolean) && (this.a.b != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.hasPostRedPoint())) {
+      this.a.b.a(true);
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.getActivity().setResult(-1, localIntent);
-    this.a.getActivity().finish();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
+    }
   }
 }
 

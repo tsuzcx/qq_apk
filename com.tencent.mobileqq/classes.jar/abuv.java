@@ -1,896 +1,866 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.Signature;
-import android.os.Build.VERSION;
-import android.os.Process;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.kingkong.Common;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.MessageDigest;
-import java.security.SecureRandom;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateEncodingException;
-import java.util.Enumeration;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.device.file.DeviceFileHandler;
+import com.tencent.device.msg.data.DeviceCommonMsgProcessor;
+import com.tencent.device.msg.data.DeviceComnFileMsgProcessor.1;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.litetransfersdk.ActionInfo;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
 public class abuv
+  extends absc
 {
-  public static String a(int paramInt)
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ArrayList<absd> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ConcurrentHashMap<Long, abse> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
+  
+  public abuv(QQAppInterface paramQQAppInterface)
   {
-    SecureRandom localSecureRandom = new SecureRandom();
-    byte[] arrayOfByte = new byte[paramInt];
-    localSecureRandom.nextBytes(arrayOfByte);
-    return Base64.encodeToString(arrayOfByte, 0);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public static String a(Context paramContext)
+  private void a(List<MessageRecord> paramList)
   {
-    if (paramContext == null) {
-      return "";
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    if (QLog.isDevelopLevel()) {
+      QLog.d("DeviceComnFileMsgProcessor", 4, "cost:" + (System.currentTimeMillis() - l));
     }
-    int i = Process.myPid();
-    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-    while (paramContext.hasNext())
+  }
+  
+  private void b(MessageForDeviceFile paramMessageForDeviceFile)
+  {
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      if (localRunningAppProcessInfo.pid == i) {
-        return localRunningAppProcessInfo.processName;
+      Object localObject = (absd)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      View localView = ((absd)localObject).a();
+      localObject = ((absd)localObject).a();
+      if ((localView != null) && (localObject != null)) {
+        ((arhk)localObject).a(localView, paramMessageForDeviceFile);
       }
-    }
-    abui.a("KingKongUtils", "Unable to get current process name!");
-    return "";
-  }
-  
-  public static String a(InputStream paramInputStream)
-  {
-    MessageDigest localMessageDigest;
-    try
-    {
-      BufferedInputStream localBufferedInputStream = new BufferedInputStream(paramInputStream);
-      localMessageDigest = MessageDigest.getInstance("SHA1");
-      localMessageDigest.reset();
-      byte[] arrayOfByte = new byte[8192];
       for (;;)
       {
-        int i = localBufferedInputStream.read(arrayOfByte);
-        if (i <= 0) {
-          break;
-        }
-        localMessageDigest.update(arrayOfByte, 0, i);
-      }
-      localBufferedInputStream.close();
-    }
-    catch (Throwable paramInputStream)
-    {
-      return "";
-    }
-    paramInputStream.close();
-    paramInputStream = Base64.encodeToString(localMessageDigest.digest(), 2).trim();
-    return paramInputStream;
-  }
-  
-  /* Error */
-  public static String a(String paramString)
-  {
-    // Byte code:
-    //   0: new 129	java/io/File
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 132	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: invokevirtual 135	java/io/File:exists	()Z
-    //   11: ifne +35 -> 46
-    //   14: ldc 74
-    //   16: new 137	java/lang/StringBuilder
-    //   19: dup
-    //   20: invokespecial 138	java/lang/StringBuilder:<init>	()V
-    //   23: ldc 140
-    //   25: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: aload_0
-    //   29: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: ldc 146
-    //   34: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: invokestatic 81	abui:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   43: ldc 26
-    //   45: areturn
-    //   46: new 137	java/lang/StringBuilder
-    //   49: dup
-    //   50: invokespecial 138	java/lang/StringBuilder:<init>	()V
-    //   53: astore_3
-    //   54: aconst_null
-    //   55: astore_2
-    //   56: new 151	java/io/BufferedReader
-    //   59: dup
-    //   60: new 153	java/io/InputStreamReader
-    //   63: dup
-    //   64: new 155	java/io/FileInputStream
-    //   67: dup
-    //   68: aload_0
-    //   69: invokespecial 156	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   72: invokespecial 157	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   75: invokespecial 160	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   78: astore_1
-    //   79: aload_1
-    //   80: astore_0
-    //   81: aload_1
-    //   82: invokevirtual 163	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   85: astore_2
-    //   86: aload_2
-    //   87: ifnull +34 -> 121
-    //   90: aload_1
-    //   91: astore_0
-    //   92: aload_3
-    //   93: aload_2
-    //   94: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: pop
-    //   98: goto -19 -> 79
-    //   101: astore_2
-    //   102: aload_1
-    //   103: astore_0
-    //   104: aload_2
-    //   105: invokevirtual 166	java/io/IOException:printStackTrace	()V
-    //   108: aload_1
-    //   109: ifnull +7 -> 116
-    //   112: aload_1
-    //   113: invokevirtual 167	java/io/BufferedReader:close	()V
-    //   116: aload_3
-    //   117: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   120: areturn
-    //   121: aload_1
-    //   122: ifnull -6 -> 116
-    //   125: aload_1
-    //   126: invokevirtual 167	java/io/BufferedReader:close	()V
-    //   129: goto -13 -> 116
-    //   132: astore_0
-    //   133: goto -17 -> 116
-    //   136: astore_0
-    //   137: aload_2
-    //   138: astore_1
-    //   139: aload_1
-    //   140: ifnull +7 -> 147
-    //   143: aload_1
-    //   144: invokevirtual 167	java/io/BufferedReader:close	()V
-    //   147: aload_0
-    //   148: athrow
-    //   149: astore_0
-    //   150: goto -34 -> 116
-    //   153: astore_1
-    //   154: goto -7 -> 147
-    //   157: astore_2
-    //   158: aload_0
-    //   159: astore_1
-    //   160: aload_2
-    //   161: astore_0
-    //   162: goto -23 -> 139
-    //   165: astore_2
-    //   166: aconst_null
-    //   167: astore_1
-    //   168: goto -66 -> 102
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	171	0	paramString	String
-    //   78	66	1	localObject1	Object
-    //   153	1	1	localIOException1	IOException
-    //   159	9	1	str1	String
-    //   55	39	2	str2	String
-    //   101	37	2	localIOException2	IOException
-    //   157	4	2	localObject2	Object
-    //   165	1	2	localIOException3	IOException
-    //   53	64	3	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   81	86	101	java/io/IOException
-    //   92	98	101	java/io/IOException
-    //   125	129	132	java/io/IOException
-    //   56	79	136	finally
-    //   112	116	149	java/io/IOException
-    //   143	147	153	java/io/IOException
-    //   81	86	157	finally
-    //   92	98	157	finally
-    //   104	108	157	finally
-    //   56	79	165	java/io/IOException
-  }
-  
-  public static String a(byte[] paramArrayOfByte)
-  {
-    try
-    {
-      MessageDigest localMessageDigest = MessageDigest.getInstance("SHA1");
-      localMessageDigest.reset();
-      localMessageDigest.update(paramArrayOfByte, 0, paramArrayOfByte.length);
-      paramArrayOfByte = Base64.encodeToString(localMessageDigest.digest(), 2);
-      return paramArrayOfByte;
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      abui.a("Lynn", "Unable to calculate SHA1");
-    }
-    return "";
-  }
-  
-  public static StringBuilder a()
-  {
-    return new StringBuilder();
-  }
-  
-  public static void a(Context paramContext)
-  {
-    SharedPreferences.Editor localEditor = paramContext.getSharedPreferences("SHARED_PREFERENCE_KINGKONG_PATCH", 0).edit();
-    localEditor.clear();
-    localEditor.commit();
-    a(new File(paramContext.getFilesDir().getAbsolutePath() + Common.d + "kingkong" + Common.d + "download"));
-    a(new File(paramContext.getFilesDir().getAbsolutePath() + Common.d + "kingkong" + Common.d + "patches"));
-  }
-  
-  /* Error */
-  public static boolean a(Context paramContext, String paramString1, String paramString2)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: aconst_null
-    //   4: astore 9
-    //   6: aconst_null
-    //   7: astore 8
-    //   9: iconst_0
-    //   10: istore 5
-    //   12: new 218	java/io/FileOutputStream
-    //   15: dup
-    //   16: aload_2
-    //   17: invokespecial 219	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   20: astore_2
-    //   21: aload_2
-    //   22: astore 6
-    //   24: aload 9
-    //   26: astore 7
-    //   28: new 86	java/io/BufferedInputStream
-    //   31: dup
-    //   32: aload_0
-    //   33: invokevirtual 223	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   36: aload_1
-    //   37: invokevirtual 229	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   40: invokespecial 89	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   43: astore_0
-    //   44: sipush 8192
-    //   47: newarray byte
-    //   49: astore_1
-    //   50: aload_0
-    //   51: aload_1
-    //   52: invokevirtual 104	java/io/BufferedInputStream:read	([B)I
-    //   55: istore_3
-    //   56: iload_3
-    //   57: iconst_m1
-    //   58: if_icmpeq +62 -> 120
-    //   61: aload_2
-    //   62: aload_1
-    //   63: iconst_0
-    //   64: iload_3
-    //   65: invokevirtual 234	java/io/OutputStream:write	([BII)V
-    //   68: goto -18 -> 50
-    //   71: astore 6
-    //   73: aload_0
-    //   74: astore_1
-    //   75: aload 6
-    //   77: astore_0
-    //   78: aload_2
-    //   79: astore 6
-    //   81: aload_1
-    //   82: astore 7
-    //   84: ldc 74
-    //   86: aload_0
-    //   87: invokevirtual 237	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   90: invokestatic 81	abui:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   93: aload_1
-    //   94: ifnull +7 -> 101
-    //   97: aload_1
-    //   98: invokevirtual 111	java/io/BufferedInputStream:close	()V
-    //   101: iload 5
-    //   103: istore 4
-    //   105: aload_2
-    //   106: ifnull +11 -> 117
-    //   109: aload_2
-    //   110: invokevirtual 238	java/io/OutputStream:close	()V
-    //   113: iload 5
-    //   115: istore 4
-    //   117: iload 4
-    //   119: ireturn
-    //   120: iconst_1
-    //   121: istore 4
-    //   123: aload_0
-    //   124: ifnull +7 -> 131
-    //   127: aload_0
-    //   128: invokevirtual 111	java/io/BufferedInputStream:close	()V
-    //   131: aload_2
-    //   132: ifnull -15 -> 117
-    //   135: aload_2
-    //   136: invokevirtual 238	java/io/OutputStream:close	()V
-    //   139: iconst_1
-    //   140: ireturn
-    //   141: astore_0
-    //   142: iconst_1
-    //   143: ireturn
-    //   144: astore_0
-    //   145: aconst_null
-    //   146: astore_2
-    //   147: aload 7
-    //   149: ifnull +8 -> 157
-    //   152: aload 7
-    //   154: invokevirtual 111	java/io/BufferedInputStream:close	()V
-    //   157: aload_2
-    //   158: ifnull +7 -> 165
-    //   161: aload_2
-    //   162: invokevirtual 238	java/io/OutputStream:close	()V
-    //   165: aload_0
-    //   166: athrow
-    //   167: astore_0
-    //   168: goto -37 -> 131
-    //   171: astore_0
-    //   172: goto -71 -> 101
-    //   175: astore_0
-    //   176: iconst_0
-    //   177: ireturn
-    //   178: astore_1
-    //   179: goto -22 -> 157
-    //   182: astore_1
-    //   183: goto -18 -> 165
-    //   186: astore_0
-    //   187: aload 6
-    //   189: astore_2
-    //   190: goto -43 -> 147
-    //   193: astore_1
-    //   194: aload_0
-    //   195: astore 7
-    //   197: aload_1
-    //   198: astore_0
-    //   199: goto -52 -> 147
-    //   202: astore_0
-    //   203: aconst_null
-    //   204: astore_2
-    //   205: aload 8
-    //   207: astore_1
-    //   208: goto -130 -> 78
-    //   211: astore_0
-    //   212: aload 8
-    //   214: astore_1
-    //   215: goto -137 -> 78
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	218	0	paramContext	Context
-    //   0	218	1	paramString1	String
-    //   0	218	2	paramString2	String
-    //   55	10	3	i	int
-    //   103	19	4	bool1	boolean
-    //   10	104	5	bool2	boolean
-    //   22	1	6	str1	String
-    //   71	5	6	localIOException	IOException
-    //   79	109	6	str2	String
-    //   1	195	7	localObject1	Object
-    //   7	206	8	localObject2	Object
-    //   4	21	9	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   44	50	71	java/io/IOException
-    //   50	56	71	java/io/IOException
-    //   61	68	71	java/io/IOException
-    //   135	139	141	java/io/IOException
-    //   12	21	144	finally
-    //   127	131	167	java/io/IOException
-    //   97	101	171	java/io/IOException
-    //   109	113	175	java/io/IOException
-    //   152	157	178	java/io/IOException
-    //   161	165	182	java/io/IOException
-    //   28	44	186	finally
-    //   84	93	186	finally
-    //   44	50	193	finally
-    //   50	56	193	finally
-    //   61	68	193	finally
-    //   12	21	202	java/io/IOException
-    //   28	44	211	java/io/IOException
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    if (!paramFile.exists()) {}
-    while (!paramFile.isDirectory()) {
-      return false;
-    }
-    paramFile = paramFile.listFiles();
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramFile.length) {
-        break label61;
-      }
-      File localFile = paramFile[i];
-      if (((localFile.isDirectory()) && (!a(localFile))) || (!localFile.delete())) {
+        i += 1;
         break;
+        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        i -= 1;
       }
-      i += 1;
-    }
-    label61:
-    return true;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    paramString = paramString.split(",");
-    int j = Build.VERSION.SDK_INT;
-    int k = paramString.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < k)
-      {
-        if (String.valueOf(j).equals(paramString[i].trim())) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
   }
   
-  public static boolean a(String paramString1, String paramString2)
+  public MessageForDeviceFile a(Long paramLong)
   {
-    try
-    {
-      JarFile localJarFile = new JarFile(paramString1);
-      Enumeration localEnumeration = localJarFile.entries();
-      while (localEnumeration.hasMoreElements())
-      {
-        Object localObject = (JarEntry)localEnumeration.nextElement();
-        if ((!((JarEntry)localObject).isDirectory()) && (!((JarEntry)localObject).getName().startsWith("META-INF/")))
-        {
-          localObject = a(localJarFile, (JarEntry)localObject);
-          if (localObject == null) {
-            return false;
-          }
-          if (localObject.length != 1) {
-            return false;
-          }
-          if (!new Signature(localObject[0].getEncoded()).equals(new Signature(paramString2)))
-          {
-            abui.a("KingKongUtils", "Signature mismatch in : " + paramString1);
-            return false;
-          }
-        }
-      }
-    }
-    catch (IOException paramString1)
-    {
-      abui.a("KingKongUtils", "Check file signature failed : " + paramString1);
-      return false;
-    }
-    catch (CertificateEncodingException paramString1)
-    {
-      abui.a("KingKongUtils", "Check file signature failed : " + paramString1);
-      return false;
-    }
-    abui.a("KingKongUtils", "Check file signatures OK : " + paramString1);
-    return true;
-  }
-  
-  public static boolean a(String paramString1, String paramString2, String paramString3)
-  {
-    return a(paramString1, paramString2, paramString3, false, "");
-  }
-  
-  public static boolean a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    if (paramString3.startsWith("META-INF/"))
-    {
-      abui.a("KingKongUtils", "Reload file with unexpected name : " + paramString3);
-      return false;
-    }
-    if (!paramBoolean) {
-      try
-      {
-        if (a(paramString2, paramString3, paramString1))
-        {
-          abui.a("KingKongUtils", "Current file changed, reload OK : " + paramString1 + ", " + paramString2);
-          return true;
-        }
-        abui.a("KingKongUtils", "Current file changed and unable to be reloaded : " + paramString1 + ", " + paramString2);
-        return false;
-      }
-      catch (Exception paramString2)
-      {
-        abui.a("KingKongUtils", "Error occurred while reload file " + paramString1 + " : " + paramString2);
-        return false;
-      }
-    }
-    if (b(paramString1, paramString2))
-    {
-      abui.a("KingKongUtils", "Current file changed, copy OK : " + paramString1);
-      return true;
-    }
-    abui.a("KingKongUtils", "Current file changed and unable to be repaired : " + paramString1);
-    return false;
-  }
-  
-  public static boolean a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
-  {
-    try
-    {
-      JarFile localJarFile = new JarFile(paramString1);
-      Enumeration localEnumeration = localJarFile.entries();
-      while (localEnumeration.hasMoreElements())
-      {
-        JarEntry localJarEntry = (JarEntry)localEnumeration.nextElement();
-        if ((!localJarEntry.isDirectory()) && (localJarEntry.getName().equals(paramString2)))
-        {
-          if (paramBoolean)
-          {
-            Certificate[] arrayOfCertificate = a(localJarFile, localJarEntry);
-            if ((arrayOfCertificate == null) || (arrayOfCertificate.length != 1)) {
-              continue;
-            }
-            if (!new Signature(arrayOfCertificate[0].getEncoded()).equals(new Signature(paramString4)))
-            {
-              abui.a("KingKongUtils", "Extract " + paramString2 + " from " + paramString1 + " failed : Signature mismatch!");
-              return false;
-            }
-          }
-          if (a(localJarFile, localJarEntry, paramString3))
-          {
-            abui.a("KingKongUtils", "Extract " + paramString2 + " from " + paramString1 + " OK");
-            return true;
-          }
-          abui.a("KingKongUtils", "Extract " + paramString2 + " from " + paramString1 + " failed : Read error");
-          return false;
-        }
-      }
-      abui.a("KingKongUtils", "Extract " + paramString2 + " from " + paramString1 + " failed : No such file in Apk");
-      return false;
-    }
-    catch (Exception paramString3)
-    {
-      abui.a("KingKongUtils", "Extract " + paramString2 + " from " + paramString1 + " failed : Exception " + paramString3);
-    }
-    return false;
-  }
-  
-  private static boolean a(JarFile paramJarFile, JarEntry paramJarEntry, String paramString)
-  {
-    try
-    {
-      byte[] arrayOfByte = new byte[8192];
-      paramJarFile = new BufferedInputStream(paramJarFile.getInputStream(paramJarEntry));
-      paramJarEntry = new FileOutputStream(paramString, false);
-      for (;;)
-      {
-        int i = paramJarFile.read(arrayOfByte, 0, arrayOfByte.length);
-        if (i == -1) {
-          break;
-        }
-        paramJarEntry.write(arrayOfByte, 0, i);
-      }
-      paramJarFile.close();
-      paramJarEntry.close();
-      return true;
-    }
-    catch (RuntimeException paramJarFile)
-    {
-      return false;
-    }
-    catch (IOException paramJarFile) {}
-    return false;
-  }
-  
-  private static Certificate[] a(JarFile paramJarFile, JarEntry paramJarEntry)
-  {
-    Object localObject = null;
-    try
-    {
-      byte[] arrayOfByte = new byte[8192];
-      paramJarFile = new BufferedInputStream(paramJarFile.getInputStream(paramJarEntry));
-      while (paramJarFile.read(arrayOfByte, 0, arrayOfByte.length) != -1) {}
-      paramJarFile.close();
-      paramJarFile = localObject;
-      if (paramJarEntry != null) {
-        paramJarFile = paramJarEntry.getCertificates();
-      }
-      return paramJarFile;
-    }
-    catch (RuntimeException paramJarFile)
-    {
+    paramLong = (abse)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramLong);
+    if (paramLong == null) {
       return null;
     }
-    catch (IOException paramJarFile) {}
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface))
+    {
+      paramLong = ((QQAppInterface)localAppRuntime).a().a(paramLong.jdField_a_of_type_JavaLangString, paramLong.jdField_a_of_type_Int, paramLong.jdField_a_of_type_Long);
+      if (paramLong == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DeviceComnFileMsgProcessor", 2, "device file msg null");
+        }
+        return null;
+      }
+      if ((paramLong instanceof MessageForDeviceFile)) {
+        return (MessageForDeviceFile)paramLong;
+      }
+    }
     return null;
   }
   
-  public static String b(Context paramContext)
+  public MessageForDeviceFile a(String paramString, MessageForDeviceFile paramMessageForDeviceFile)
   {
-    if (paramContext == null) {
-      paramContext = "";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramMessageForDeviceFile.frienduin, paramMessageForDeviceFile.istroop, paramMessageForDeviceFile.uniseq);
+    ArrayList localArrayList = new ArrayList();
+    MessageForDeviceFile localMessageForDeviceFile = (MessageForDeviceFile)bbzh.a(paramMessageForDeviceFile);
+    if ("device_groupchat".equals(paramMessageForDeviceFile.extStr))
+    {
+      localMessageForDeviceFile.strServiceName = paramString;
+      localMessageForDeviceFile.filePath = localMessageForDeviceFile.filePath;
+      localMessageForDeviceFile.srcFileName = atvo.a(localMessageForDeviceFile.filePath);
+      localMessageForDeviceFile.fileSize = atvo.a(localMessageForDeviceFile.filePath);
+      localMessageForDeviceFile.msgStatus = 2;
+      localMessageForDeviceFile.nFileStatus = 1;
+      localMessageForDeviceFile.progress = 0.0F;
+      ((anuk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(localMessageForDeviceFile);
+      if (!bgnt.d(BaseApplication.getContext()))
+      {
+        localMessageForDeviceFile.nFileStatus = 6;
+        localMessageForDeviceFile.msgStatus = 1;
+      }
+      localMessageForDeviceFile.serial();
+      paramString = bgmo.a(BaseApplication.getContext(), Uri.parse(localMessageForDeviceFile.filePath));
+      bgmo.a(BaseApplication.getContext(), localMessageForDeviceFile.filePath, paramString, 160, 160);
+      ahzf.a(((abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(localMessageForDeviceFile.frienduin), localMessageForDeviceFile.filePath, paramString), localMessageForDeviceFile);
+      localArrayList.add(localMessageForDeviceFile);
+      a(localArrayList);
+      label236:
+      return localMessageForDeviceFile;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramMessageForDeviceFile.uSessionID));
+    String str1 = paramMessageForDeviceFile.filePath;
+    String str2 = paramMessageForDeviceFile.frienduin;
+    localMessageForDeviceFile.strServiceName = paramString;
+    localMessageForDeviceFile.filePath = str1;
+    localMessageForDeviceFile.srcFileName = paramMessageForDeviceFile.srcFileName;
+    localMessageForDeviceFile.msgStatus = 2;
+    localMessageForDeviceFile.nFileStatus = 1;
+    localMessageForDeviceFile.progress = 0.0F;
+    localMessageForDeviceFile.nFileMsgType = paramMessageForDeviceFile.nFileMsgType;
+    localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691399);
+    if (paramString.compareTo(abux.d) == 0)
+    {
+      localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691400);
+      label361:
+      ((anuk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(localMessageForDeviceFile);
+      paramMessageForDeviceFile = (abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+      if ((paramMessageForDeviceFile == null) || (!paramMessageForDeviceFile.a(str2))) {
+        break label617;
+      }
+      if (paramString.compareTo(abux.d) != 0) {
+        break label545;
+      }
+      localMessageForDeviceFile.uSessionID = paramMessageForDeviceFile.a(Long.parseLong(str2), str1, null);
     }
     for (;;)
     {
-      return paramContext;
-      try
+      localMessageForDeviceFile.fileSize = atvo.a(str1);
+      if (!bgnt.d(BaseApplication.getContext()))
       {
-        paramContext = paramContext.getPackageName();
-        boolean bool = TextUtils.isEmpty(paramContext);
-        if (bool) {
-          return "";
-        }
+        localMessageForDeviceFile.nFileStatus = 6;
+        localMessageForDeviceFile.msgStatus = 1;
       }
-      catch (Exception paramContext) {}
+      localMessageForDeviceFile.serial();
+      a(localMessageForDeviceFile.uSessionID, localMessageForDeviceFile.frienduin, localMessageForDeviceFile.istroop, localMessageForDeviceFile.uniseq);
+      break;
+      if (paramString.compareTo(abux.c) != 0) {
+        break label361;
+      }
+      localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691398);
+      localMessageForDeviceFile.copies = paramMessageForDeviceFile.copies;
+      localMessageForDeviceFile.duplexMode = paramMessageForDeviceFile.duplexMode;
+      break label361;
+      label545:
+      if (paramString.compareTo(abux.f) == 0)
+      {
+        localMessageForDeviceFile.uSessionID = paramMessageForDeviceFile.a(Long.parseLong(str2), str1, 0);
+      }
+      else
+      {
+        paramString = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50)).a(str1, paramString, null, Long.parseLong(str2));
+        if (paramString == null) {
+          break label236;
+        }
+        localMessageForDeviceFile.uSessionID = paramString.uSessionID;
+        continue;
+        label617:
+        paramString = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50)).a(str1, paramString, null, Long.parseLong(str2));
+        if (paramString == null) {
+          break label236;
+        }
+        localMessageForDeviceFile.uSessionID = paramString.uSessionID;
+      }
     }
-    return "";
   }
   
-  public static String b(String paramString)
+  public void a(long paramLong1, String paramString, int paramInt, long paramLong2)
   {
-    try
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong1)))
     {
-      paramString = a(new FileInputStream(paramString));
-      return paramString;
+      paramString = new abse(this, paramString, paramInt, paramLong2);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), paramString);
     }
-    catch (FileNotFoundException paramString) {}
-    return "";
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("DeviceComnFileMsgProcessor", 2, "found resume");
   }
   
-  public static boolean b(String paramString1, String paramString2)
+  public void a(Bundle paramBundle)
   {
-    Object localObject = new File(paramString1);
-    if (((File)localObject).exists()) {
-      ((File)localObject).delete();
-    }
-    try
+    if (paramBundle == null) {}
+    float f;
+    do
     {
-      localObject = new FileOutputStream(paramString1, false);
-      FileInputStream localFileInputStream = new FileInputStream(paramString2);
-      byte[] arrayOfByte = new byte[8192];
+      return;
+      int i = paramBundle.getInt("cookie", 0);
+      f = paramBundle.getFloat("percent", 0.0F);
+      paramBundle = a(Long.valueOf(i));
+    } while (paramBundle == null);
+    paramBundle.nFileStatus = 3;
+    paramBundle.progress = f;
+    b(paramBundle);
+  }
+  
+  public void a(View paramView, arhk paramarhk)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      absd localabsd = (absd)localIterator.next();
+      if (localabsd.a() == paramView)
+      {
+        localabsd.b = new WeakReference(paramarhk);
+        return;
+      }
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(new absd(this, paramView, paramarhk));
+  }
+  
+  public void a(Session paramSession, float paramFloat)
+  {
+    paramSession = a(Long.valueOf(paramSession.uSessionID));
+    if (paramSession == null) {
+      return;
+    }
+    paramSession.nFileStatus = 3;
+    paramSession.progress = paramFloat;
+    b(paramSession);
+  }
+  
+  public void a(Session paramSession, boolean paramBoolean)
+  {
+    if (paramSession == null) {}
+    Object localObject1;
+    MessageForDeviceFile localMessageForDeviceFile;
+    do
+    {
+      return;
+      if (!paramSession.bSend) {
+        DeviceCommonMsgProcessor.a(paramSession, paramBoolean);
+      }
+      localObject1 = (abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+      localMessageForDeviceFile = a(Long.valueOf(paramSession.uSessionID));
+    } while (localMessageForDeviceFile == null);
+    Object localObject2 = ((abqn)localObject1).a(Long.parseLong(localMessageForDeviceFile.frienduin));
+    int i = 0;
+    long l = 0L;
+    if (localObject2 != null)
+    {
+      i = ((DeviceInfo)localObject2).productId;
+      l = ((DeviceInfo)localObject2).din;
+    }
+    if (paramSession.actionInfo.strServiceName.compareTo(abux.d) == 0)
+    {
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (!paramBoolean) {
+        break label661;
+      }
+    }
+    label661:
+    for (int j = 0;; j = 1)
+    {
+      accz.a((AppRuntime)localObject2, l, "Net_SendMsg_Pic", 0, j, i);
+      if ((paramSession.actionInfo.strServiceName.compareTo(abux.c) == 0) && (paramSession.bSend) && (paramBoolean))
+      {
+        String str = new String(paramSession.vFileMD5Src);
+        localObject2 = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50)).a(paramSession);
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("copies", localMessageForDeviceFile.copies);
+        localBundle.putInt("duplexMode", localMessageForDeviceFile.duplexMode);
+        localBundle.putInt("mediaSize", localMessageForDeviceFile.mediaSize);
+        localBundle.putInt("mediaType", localMessageForDeviceFile.mediaType);
+        localBundle.putInt("scaling", localMessageForDeviceFile.scaling);
+        localBundle.putInt("orientation", localMessageForDeviceFile.orientation);
+        localBundle.putInt("color", localMessageForDeviceFile.color);
+        localBundle.putInt("quality", localMessageForDeviceFile.quality);
+        ((abqn)localObject1).a(Long.parseLong(localMessageForDeviceFile.frienduin), str, String.valueOf(((Session)localObject2).uSessionID), paramSession.strFileNameSrc, paramSession.emFileType, localBundle);
+        localObject1 = (MessageForDeviceFile)bbzh.a(-4500);
+        ((MessageForDeviceFile)localObject1).strServiceName = abux.c;
+        ((MessageForDeviceFile)localObject1).msgtype = -4500;
+        ((MessageForDeviceFile)localObject1).istroop = 9501;
+        ((MessageForDeviceFile)localObject1).filePath = paramSession.strFilePathSrc;
+        ((MessageForDeviceFile)localObject1).srcFileName = paramSession.strFileNameSrc;
+        ((MessageForDeviceFile)localObject1).fileSize = paramSession.uFileSizeSrc;
+        ((MessageForDeviceFile)localObject1).issend = 0;
+        ((MessageForDeviceFile)localObject1).isread = true;
+        ((MessageForDeviceFile)localObject1).selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        ((MessageForDeviceFile)localObject1).senderuin = localMessageForDeviceFile.frienduin;
+        ((MessageForDeviceFile)localObject1).frienduin = localMessageForDeviceFile.frienduin;
+        ((MessageForDeviceFile)localObject1).msgStatus = 2;
+        ((MessageForDeviceFile)localObject1).nFileStatus = 1;
+        ((MessageForDeviceFile)localObject1).time = bbyp.a();
+        ((MessageForDeviceFile)localObject1).progress = 0.0F;
+        ((MessageForDeviceFile)localObject1).uSessionID = ((Session)localObject2).uSessionID;
+        ((MessageForDeviceFile)localObject1).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691398);
+        ((MessageForDeviceFile)localObject1).nFileMsgType = 1;
+        ((MessageForDeviceFile)localObject1).copies = localMessageForDeviceFile.copies;
+        ((MessageForDeviceFile)localObject1).duplexMode = localMessageForDeviceFile.duplexMode;
+        ((MessageForDeviceFile)localObject1).mediaSize = localMessageForDeviceFile.mediaSize;
+        ((MessageForDeviceFile)localObject1).scaling = localMessageForDeviceFile.scaling;
+        ((MessageForDeviceFile)localObject1).color = localMessageForDeviceFile.color;
+        ((MessageForDeviceFile)localObject1).quality = localMessageForDeviceFile.quality;
+        ((MessageForDeviceFile)localObject1).uint32_src_uin_type = 1;
+        ((MessageForDeviceFile)localObject1).serial();
+        a(((MessageForDeviceFile)localObject1).uSessionID, ((MessageForDeviceFile)localObject1).frienduin, ((MessageForDeviceFile)localObject1).istroop, ((MessageForDeviceFile)localObject1).uniseq);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((MessageRecord)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, false, true);
+        ThreadManager.getUIHandler().postDelayed(new DeviceComnFileMsgProcessor.1(this, (MessageForDeviceFile)localObject1), 900000L);
+      }
+      a(paramSession.actionInfo.strServiceName, paramSession.uSessionID, paramBoolean);
+      return;
+    }
+  }
+  
+  public void a(MessageForDeviceFile paramMessageForDeviceFile)
+  {
+    if (paramMessageForDeviceFile == null) {}
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      localArrayList = new ArrayList();
+      localArrayList.add(paramMessageForDeviceFile);
+    } while (((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50)).a(localArrayList));
+    atvf.a(2131693360);
+  }
+  
+  public void a(MessageRecord paramMessageRecord, float paramFloat)
+  {
+    if (paramMessageRecord == null) {}
+    while (!(paramMessageRecord instanceof MessageForDeviceFile)) {
+      return;
+    }
+    paramMessageRecord = (MessageForDeviceFile)paramMessageRecord;
+    paramMessageRecord.nFileStatus = 3;
+    paramMessageRecord.progress = paramFloat;
+    b(paramMessageRecord);
+  }
+  
+  public void a(MessageRecord paramMessageRecord, Boolean paramBoolean)
+  {
+    if (paramMessageRecord == null) {
+      break label4;
+    }
+    label4:
+    while (!(paramMessageRecord instanceof MessageForDeviceFile)) {
+      return;
+    }
+    paramMessageRecord = (MessageForDeviceFile)paramMessageRecord;
+    paramMessageRecord.progress = 1.0F;
+    if (paramBoolean.booleanValue()) {
+      paramMessageRecord.nFileStatus = 5;
+    }
+    for (paramMessageRecord.msgStatus = 0;; paramMessageRecord.msgStatus = 1)
+    {
+      paramMessageRecord.serial();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageRecord.frienduin, 9501, paramMessageRecord.uniseq, paramMessageRecord.msgData);
+      b(paramMessageRecord);
+      paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+      if (paramMessageRecord == null) {
+        break;
+      }
+      paramMessageRecord.sendEmptyMessage(1009);
+      return;
+      paramMessageRecord.nFileStatus = 6;
+    }
+  }
+  
+  public void a(String paramString, long paramLong, boolean paramBoolean)
+  {
+    MessageForDeviceFile localMessageForDeviceFile = a(Long.valueOf(paramLong));
+    if (localMessageForDeviceFile == null) {
+      return;
+    }
+    DeviceInfo localDeviceInfo = ((abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(localMessageForDeviceFile.frienduin));
+    if (localDeviceInfo != null) {}
+    for (int i = localDeviceInfo.productId;; i = 0)
+    {
+      localMessageForDeviceFile.progress = 1.0F;
+      if (paramBoolean)
+      {
+        localMessageForDeviceFile.nFileStatus = 5;
+        localMessageForDeviceFile.msgStatus = 0;
+        label76:
+        localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691129);
+        if (paramString.compareTo(abux.d) != 0) {
+          break label251;
+        }
+        localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691133);
+      }
       for (;;)
       {
-        int i = localFileInputStream.read(arrayOfByte);
-        if (i <= 0)
-        {
-          ((FileOutputStream)localObject).close();
-          localFileInputStream.close();
-          abui.a("KingKongUtils", "Copy file " + paramString2 + " to " + paramString1 + " OK");
-          return true;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("DeviceComnFileMsgProcessor", 4, "onServiceSessionComplete:" + paramLong);
         }
-        ((FileOutputStream)localObject).write(arrayOfByte, 0, i);
+        localMessageForDeviceFile.serial();
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForDeviceFile.frienduin, 9501, localMessageForDeviceFile.uniseq, localMessageForDeviceFile.msgData);
+        b(localMessageForDeviceFile);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
+        paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        if (paramString == null) {
+          break;
+        }
+        paramString.sendEmptyMessage(1009);
+        return;
+        localMessageForDeviceFile.nFileStatus = 6;
+        localMessageForDeviceFile.msgStatus = 1;
+        localMessageForDeviceFile.progress = 0.0F;
+        break label76;
+        label251:
+        if (paramString.compareTo(abux.c) == 0)
+        {
+          localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691398);
+          if (!paramBoolean)
+          {
+            paramString = (DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50);
+            if (localMessageForDeviceFile.isSend())
+            {
+              if (paramString.a(paramLong) == -5103058) {
+                localMessageForDeviceFile.nFileStatus = 7;
+              }
+              if (atvo.a(localMessageForDeviceFile.filePath) == 0) {
+                accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendFile", 1, 2, i);
+              } else {
+                accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendFile", 2, 2, i);
+              }
+            }
+            else
+            {
+              int j = paramString.a(paramLong);
+              switch (j)
+              {
+              default: 
+                localMessageForDeviceFile.nFileStatus = 6;
+              }
+              for (;;)
+              {
+                accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendPrint", 2, j, i);
+                break;
+                localMessageForDeviceFile.nFileStatus = 10;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 18;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 8;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 9;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 19;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 12;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 13;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 14;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 15;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 16;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 17;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 20;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 21;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 22;
+                localMessageForDeviceFile.nFileStatus = 24;
+                continue;
+                localMessageForDeviceFile.nFileStatus = 25;
+              }
+            }
+          }
+          else if (localMessageForDeviceFile.isSend())
+          {
+            if (atvo.a(localMessageForDeviceFile.filePath) == 0) {
+              accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendFile", 1, 1, i);
+            } else {
+              accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendFile", 2, 1, i);
+            }
+          }
+          else
+          {
+            accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendPrint", 1, 0, i);
+          }
+        }
       }
-      return false;
-    }
-    catch (IOException localIOException)
-    {
-      abui.a("KingKongUtils", "Copy file " + paramString2 + " to " + paramString1 + " failed:" + localIOException);
-      localIOException.printStackTrace();
     }
   }
   
-  /* Error */
-  public static boolean c(String paramString1, String paramString2)
+  public void a(String paramString, AbsStructMsg paramAbsStructMsg)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: aconst_null
-    //   4: astore 6
-    //   6: new 406	java/net/URL
-    //   9: dup
-    //   10: aload_0
-    //   11: invokespecial 407	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   14: invokevirtual 411	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   17: checkcast 413	java/net/HttpURLConnection
-    //   20: astore_3
-    //   21: aload_3
-    //   22: invokevirtual 416	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   25: astore 4
-    //   27: new 218	java/io/FileOutputStream
-    //   30: dup
-    //   31: aload_1
-    //   32: iconst_0
-    //   33: invokespecial 373	java/io/FileOutputStream:<init>	(Ljava/lang/String;Z)V
-    //   36: astore 5
-    //   38: aload_3
-    //   39: sipush 300
-    //   42: invokevirtual 420	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   45: aload_3
-    //   46: sipush 300
-    //   49: invokevirtual 423	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   52: aload_3
-    //   53: invokevirtual 426	java/net/HttpURLConnection:connect	()V
-    //   56: sipush 1024
-    //   59: newarray byte
-    //   61: astore 6
-    //   63: aload 4
-    //   65: aload 6
-    //   67: invokevirtual 427	java/io/InputStream:read	([B)I
-    //   70: istore_2
-    //   71: iload_2
-    //   72: ifgt +68 -> 140
-    //   75: ldc 74
-    //   77: new 137	java/lang/StringBuilder
-    //   80: dup
-    //   81: invokespecial 138	java/lang/StringBuilder:<init>	()V
-    //   84: ldc_w 429
-    //   87: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: aload_0
-    //   91: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: ldc_w 334
-    //   97: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   100: aload_1
-    //   101: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: invokestatic 81	abui:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   110: aload 4
-    //   112: ifnull +8 -> 120
-    //   115: aload 4
-    //   117: invokevirtual 114	java/io/InputStream:close	()V
-    //   120: aload 5
-    //   122: ifnull +8 -> 130
-    //   125: aload 5
-    //   127: invokevirtual 378	java/io/FileOutputStream:close	()V
-    //   130: aload_3
-    //   131: ifnull +7 -> 138
-    //   134: aload_3
-    //   135: invokevirtual 432	java/net/HttpURLConnection:disconnect	()V
-    //   138: iconst_1
-    //   139: ireturn
-    //   140: aload 5
-    //   142: aload 6
-    //   144: iconst_0
-    //   145: iload_2
-    //   146: invokevirtual 377	java/io/FileOutputStream:write	([BII)V
-    //   149: goto -86 -> 63
-    //   152: astore 7
-    //   154: aload 5
-    //   156: astore 6
-    //   158: aload 7
-    //   160: astore 5
-    //   162: ldc 74
-    //   164: new 137	java/lang/StringBuilder
-    //   167: dup
-    //   168: invokespecial 138	java/lang/StringBuilder:<init>	()V
-    //   171: ldc_w 434
-    //   174: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   177: aload_0
-    //   178: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   181: ldc_w 334
-    //   184: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: aload_1
-    //   188: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: ldc_w 340
-    //   194: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: aload 5
-    //   199: invokevirtual 317	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   202: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokestatic 81	abui:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   208: aload 4
-    //   210: ifnull +8 -> 218
-    //   213: aload 4
-    //   215: invokevirtual 114	java/io/InputStream:close	()V
-    //   218: aload 6
-    //   220: ifnull +8 -> 228
-    //   223: aload 6
-    //   225: invokevirtual 378	java/io/FileOutputStream:close	()V
-    //   228: aload_3
-    //   229: ifnull +7 -> 236
-    //   232: aload_3
-    //   233: invokevirtual 432	java/net/HttpURLConnection:disconnect	()V
-    //   236: iconst_0
-    //   237: ireturn
-    //   238: astore_0
-    //   239: aconst_null
-    //   240: astore_3
-    //   241: aconst_null
-    //   242: astore 4
-    //   244: aload 7
-    //   246: astore 6
-    //   248: aload 4
-    //   250: ifnull +8 -> 258
-    //   253: aload 4
-    //   255: invokevirtual 114	java/io/InputStream:close	()V
-    //   258: aload 6
-    //   260: ifnull +8 -> 268
-    //   263: aload 6
-    //   265: invokevirtual 378	java/io/FileOutputStream:close	()V
-    //   268: aload_3
-    //   269: ifnull +7 -> 276
-    //   272: aload_3
-    //   273: invokevirtual 432	java/net/HttpURLConnection:disconnect	()V
-    //   276: aload_0
-    //   277: athrow
-    //   278: astore_0
-    //   279: goto -159 -> 120
-    //   282: astore_0
-    //   283: goto -153 -> 130
-    //   286: astore_0
-    //   287: goto -69 -> 218
-    //   290: astore_0
-    //   291: goto -63 -> 228
-    //   294: astore_1
-    //   295: goto -37 -> 258
-    //   298: astore_1
-    //   299: goto -31 -> 268
-    //   302: astore_0
-    //   303: aconst_null
-    //   304: astore 4
-    //   306: aload 7
-    //   308: astore 6
-    //   310: goto -62 -> 248
-    //   313: astore_0
-    //   314: aload 7
-    //   316: astore 6
-    //   318: goto -70 -> 248
-    //   321: astore_0
-    //   322: aload 5
-    //   324: astore 6
-    //   326: goto -78 -> 248
-    //   329: astore_0
-    //   330: goto -82 -> 248
-    //   333: astore 5
-    //   335: aconst_null
-    //   336: astore_3
-    //   337: aconst_null
-    //   338: astore 4
-    //   340: goto -178 -> 162
-    //   343: astore 5
-    //   345: aconst_null
-    //   346: astore 4
-    //   348: goto -186 -> 162
-    //   351: astore 5
-    //   353: goto -191 -> 162
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	356	0	paramString1	String
-    //   0	356	1	paramString2	String
-    //   70	76	2	i	int
-    //   20	317	3	localHttpURLConnection	java.net.HttpURLConnection
-    //   25	322	4	localInputStream	InputStream
-    //   36	287	5	localObject1	Object
-    //   333	1	5	localThrowable1	Throwable
-    //   343	1	5	localThrowable2	Throwable
-    //   351	1	5	localThrowable3	Throwable
-    //   4	321	6	localObject2	Object
-    //   1	1	7	localObject3	Object
-    //   152	163	7	localThrowable4	Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   38	63	152	java/lang/Throwable
-    //   63	71	152	java/lang/Throwable
-    //   75	110	152	java/lang/Throwable
-    //   140	149	152	java/lang/Throwable
-    //   6	21	238	finally
-    //   115	120	278	java/io/IOException
-    //   125	130	282	java/io/IOException
-    //   213	218	286	java/io/IOException
-    //   223	228	290	java/io/IOException
-    //   253	258	294	java/io/IOException
-    //   263	268	298	java/io/IOException
-    //   21	27	302	finally
-    //   27	38	313	finally
-    //   38	63	321	finally
-    //   63	71	321	finally
-    //   75	110	321	finally
-    //   140	149	321	finally
-    //   162	208	329	finally
-    //   6	21	333	java/lang/Throwable
-    //   21	27	343	java/lang/Throwable
-    //   27	38	351	java/lang/Throwable
+    MessageForStructing localMessageForStructing = bbzh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 9501, 100L, paramAbsStructMsg);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForStructing, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(paramString), paramAbsStructMsg);
+  }
+  
+  public void a(String paramString1, String paramString2, List<String> paramList, Bundle paramBundle)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    if (paramList.hasNext())
+    {
+      Object localObject1 = (String)paramList.next();
+      MessageForDeviceFile localMessageForDeviceFile = (MessageForDeviceFile)bbzh.a(-4500);
+      localMessageForDeviceFile.strServiceName = paramString1;
+      localMessageForDeviceFile.msgtype = -4500;
+      localMessageForDeviceFile.istroop = 9501;
+      localMessageForDeviceFile.filePath = ((String)localObject1);
+      localMessageForDeviceFile.srcFileName = atvo.a((String)localObject1);
+      localMessageForDeviceFile.fileSize = atvo.a((String)localObject1);
+      localMessageForDeviceFile.issend = 1;
+      localMessageForDeviceFile.isread = true;
+      localMessageForDeviceFile.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      localMessageForDeviceFile.senderuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      localMessageForDeviceFile.frienduin = paramString2;
+      localMessageForDeviceFile.msgStatus = 2;
+      localMessageForDeviceFile.nFileStatus = 1;
+      localMessageForDeviceFile.time = bbyp.a();
+      localMessageForDeviceFile.progress = 0.0F;
+      localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691399);
+      localMessageForDeviceFile.nFileMsgType = 1;
+      if (paramString1.compareTo(abux.d) == 0)
+      {
+        localMessageForDeviceFile.nFileMsgType = 2;
+        localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691400);
+      }
+      int i;
+      if (paramString1.compareTo(abux.c) == 0)
+      {
+        int i3 = 1;
+        int i2 = 1;
+        int i1 = 1;
+        int n = 1;
+        int m = 1;
+        int k = 1;
+        int j = 1;
+        i = 1;
+        if (paramBundle != null)
+        {
+          i3 = paramBundle.getInt("copies", 1);
+          i2 = paramBundle.getInt("duplexMode", 1);
+          i1 = paramBundle.getInt("mediaSize", 1);
+          n = paramBundle.getInt("mediaType", 1);
+          m = paramBundle.getInt("scaling", 1);
+          k = paramBundle.getInt("orientation", 1);
+          j = paramBundle.getInt("color", 1);
+          i = paramBundle.getInt("quality", 1);
+        }
+        localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691398);
+        localMessageForDeviceFile.copies = i3;
+        localMessageForDeviceFile.duplexMode = i2;
+        localMessageForDeviceFile.mediaSize = i1;
+        localMessageForDeviceFile.mediaType = n;
+        localMessageForDeviceFile.scaling = m;
+        localMessageForDeviceFile.orientation = k;
+        localMessageForDeviceFile.color = j;
+        localMessageForDeviceFile.quality = i;
+      }
+      ((anuk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(localMessageForDeviceFile);
+      Object localObject2 = (abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+      if ((localObject2 != null) && (((abqn)localObject2).a(paramString2))) {
+        if (paramString1.compareTo(abux.d) == 0)
+        {
+          String str = bgmo.a(BaseApplication.getContext(), Uri.parse((String)localObject1));
+          bgmo.a(BaseApplication.getContext(), (String)localObject1, str, 160, 160);
+          localMessageForDeviceFile.uSessionID = ((abqn)localObject2).a(Long.parseLong(paramString2), (String)localObject1, str);
+        }
+      }
+      for (;;)
+      {
+        label526:
+        if (!bgnt.d(BaseApplication.getContext()))
+        {
+          localMessageForDeviceFile.nFileStatus = 6;
+          localMessageForDeviceFile.msgStatus = 1;
+        }
+        localMessageForDeviceFile.serial();
+        a(localMessageForDeviceFile.uSessionID, localMessageForDeviceFile.frienduin, localMessageForDeviceFile.istroop, localMessageForDeviceFile.uniseq);
+        localArrayList.add(localMessageForDeviceFile);
+        break;
+        if (paramString1.compareTo(abux.f) == 0)
+        {
+          localMessageForDeviceFile.uSessionID = ((abqn)localObject2).a(Long.parseLong(paramString2), (String)localObject1, 0);
+        }
+        else
+        {
+          if (paramString1.compareTo(abux.c) == 0)
+          {
+            localObject2 = ((abqn)localObject2).a(Long.parseLong(paramString2));
+            i = 0;
+            if (localObject2 != null) {
+              i = ((DeviceInfo)localObject2).productId;
+            }
+            if (atvo.a((String)localObject1) != 0) {
+              break label722;
+            }
+            accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendFile", 1, 0, i);
+          }
+          for (;;)
+          {
+            localObject1 = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50)).a((String)localObject1, paramString1, null, Long.parseLong(paramString2));
+            if (localObject1 == null) {
+              break;
+            }
+            localMessageForDeviceFile.uSessionID = ((Session)localObject1).uSessionID;
+            break label526;
+            label722:
+            accz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Usr_CloudPrint_SendFile", 2, 0, i);
+          }
+          localObject1 = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50)).a((String)localObject1, paramString1, null, Long.parseLong(paramString2));
+          if (localObject1 == null) {
+            break;
+          }
+          localMessageForDeviceFile.uSessionID = ((Session)localObject1).uSessionID;
+        }
+      }
+    }
+    a(localArrayList);
+  }
+  
+  public void a(String paramString, List<String> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      String str = (String)paramList.next();
+      MessageForDeviceFile localMessageForDeviceFile = (MessageForDeviceFile)bbzh.a(-4500);
+      localMessageForDeviceFile.strServiceName = abux.d;
+      localMessageForDeviceFile.msgtype = -4500;
+      localMessageForDeviceFile.istroop = 9501;
+      localMessageForDeviceFile.filePath = str;
+      localMessageForDeviceFile.srcFileName = atvo.a(str);
+      localMessageForDeviceFile.fileSize = atvo.a(str);
+      localMessageForDeviceFile.issend = 1;
+      localMessageForDeviceFile.isread = true;
+      localMessageForDeviceFile.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      localMessageForDeviceFile.senderuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      localMessageForDeviceFile.frienduin = paramString;
+      localMessageForDeviceFile.msgStatus = 2;
+      localMessageForDeviceFile.nFileStatus = 1;
+      localMessageForDeviceFile.time = bbyp.a();
+      localMessageForDeviceFile.progress = 0.0F;
+      localMessageForDeviceFile.msg = (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693908) + ": " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691400));
+      localMessageForDeviceFile.nFileMsgType = 2;
+      localMessageForDeviceFile.extStr = "device_groupchat";
+      ((anuk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(localMessageForDeviceFile);
+      if (!bgnt.d(BaseApplication.getContext()))
+      {
+        localMessageForDeviceFile.nFileStatus = 6;
+        localMessageForDeviceFile.msgStatus = 1;
+      }
+      localMessageForDeviceFile.serial();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForDeviceFile, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      str = bgmo.a(BaseApplication.getContext(), Uri.parse(localMessageForDeviceFile.filePath));
+      bgmo.a(BaseApplication.getContext(), localMessageForDeviceFile.filePath, str, 160, 160);
+      int i = ((abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(localMessageForDeviceFile.frienduin), localMessageForDeviceFile.filePath, str);
+      localMessageForDeviceFile.uSessionID = i;
+      a(localMessageForDeviceFile.uSessionID, localMessageForDeviceFile.frienduin, localMessageForDeviceFile.istroop, localMessageForDeviceFile.uniseq);
+      ahzf.a(i, localMessageForDeviceFile);
+    }
+  }
+  
+  public boolean a(String paramString1, String paramString2, List<String> paramList)
+  {
+    a(paramString1, paramString2, paramList, null);
+    return true;
+  }
+  
+  public boolean a(String paramString, List<FileInfo> paramList)
+  {
+    abqn localabqn = (abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(paramString);
+      l1 = l2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject;
+        MessageForDeviceFile localMessageForDeviceFile;
+        int j;
+        localException.printStackTrace();
+        continue;
+        if (i != 0)
+        {
+          if (j == 2) {
+            localMessageForDeviceFile.strServiceName = "8001-NASDevVideoFile";
+          } else if (j == 1) {
+            localMessageForDeviceFile.strServiceName = "8000-NASDevMusicFile";
+          } else if (j == 3) {
+            localMessageForDeviceFile.strServiceName = "8002-NASDevDocumentFile";
+          } else {
+            localMessageForDeviceFile.strServiceName = "8003-NASDevCommonFile";
+          }
+        }
+        else
+        {
+          localMessageForDeviceFile.strServiceName = abux.b;
+          continue;
+          label512:
+          if (localMessageForDeviceFile.strServiceName.compareTo(abux.f) == 0)
+          {
+            localMessageForDeviceFile.uSessionID = localabqn.a(Long.parseLong(paramString), ((FileInfo)localObject).c(), 0);
+          }
+          else
+          {
+            localObject = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50)).a(((FileInfo)localObject).c(), localMessageForDeviceFile.strServiceName, null, Long.parseLong(paramString));
+            if (localObject != null)
+            {
+              localMessageForDeviceFile.uSessionID = ((Session)localObject).uSessionID;
+              continue;
+              label600:
+              localObject = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50)).a(((FileInfo)localObject).c(), localMessageForDeviceFile.strServiceName, null, Long.parseLong(paramString));
+              if (localObject != null) {
+                localMessageForDeviceFile.uSessionID = ((Session)localObject).uSessionID;
+              }
+            }
+          }
+        }
+      }
+      label650:
+      a(localException);
+      return true;
+    }
+    if ((localabqn != null) && (localabqn.a(l1, 9))) {}
+    for (int i = 1;; i = 0)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      for (;;)
+      {
+        if (!paramList.hasNext()) {
+          break label650;
+        }
+        localObject = (FileInfo)paramList.next();
+        localMessageForDeviceFile = (MessageForDeviceFile)bbzh.a(-4500);
+        j = ((FileInfo)localObject).a();
+        if (j != 0) {
+          break;
+        }
+        localMessageForDeviceFile.strServiceName = abux.d;
+        localMessageForDeviceFile.msgtype = -4500;
+        localMessageForDeviceFile.istroop = 9501;
+        localMessageForDeviceFile.filePath = ((FileInfo)localObject).c();
+        localMessageForDeviceFile.srcFileName = atvo.a(((FileInfo)localObject).c());
+        localMessageForDeviceFile.fileSize = atvo.a(((FileInfo)localObject).c());
+        localMessageForDeviceFile.issend = 1;
+        localMessageForDeviceFile.isread = true;
+        localMessageForDeviceFile.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        localMessageForDeviceFile.senderuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        localMessageForDeviceFile.frienduin = paramString;
+        localMessageForDeviceFile.msgStatus = 2;
+        localMessageForDeviceFile.nFileStatus = 1;
+        localMessageForDeviceFile.time = bbyp.a();
+        localMessageForDeviceFile.progress = 0.0F;
+        localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691399);
+        localMessageForDeviceFile.nFileMsgType = 1;
+        if (localMessageForDeviceFile.strServiceName.compareTo(abux.d) == 0)
+        {
+          localMessageForDeviceFile.nFileMsgType = 2;
+          localMessageForDeviceFile.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691400);
+        }
+        ((anuk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(localMessageForDeviceFile);
+        if ((localabqn == null) || (!localabqn.a(paramString))) {
+          break label600;
+        }
+        if (localMessageForDeviceFile.strServiceName.compareTo(abux.d) != 0) {
+          break label512;
+        }
+        localMessageForDeviceFile.uSessionID = localabqn.a(Long.parseLong(paramString), ((FileInfo)localObject).c(), null);
+        if (!bgnt.d(BaseApplication.getContext()))
+        {
+          localMessageForDeviceFile.nFileStatus = 6;
+          localMessageForDeviceFile.msgStatus = 1;
+        }
+        localMessageForDeviceFile.serial();
+        a(localMessageForDeviceFile.uSessionID, localMessageForDeviceFile.frienduin, localMessageForDeviceFile.istroop, localMessageForDeviceFile.uniseq);
+        localArrayList.add(localMessageForDeviceFile);
+      }
+    }
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    boolean bool = true;
+    if (paramBundle == null) {}
+    int k;
+    int m;
+    do
+    {
+      return;
+      k = paramBundle.getInt("cookie", 0);
+      m = paramBundle.getInt("err_code", 1);
+      localObject = (abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+      paramBundle = a(Long.valueOf(k));
+    } while (paramBundle == null);
+    Object localObject = ((abqn)localObject).a(Long.parseLong(paramBundle.frienduin));
+    long l = 0L;
+    int i;
+    if (localObject != null)
+    {
+      i = ((DeviceInfo)localObject).productId;
+      l = ((DeviceInfo)localObject).din;
+    }
+    for (;;)
+    {
+      int j;
+      if (paramBundle.strServiceName.compareTo(abux.d) == 0)
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        if (m == 0)
+        {
+          j = 0;
+          accz.a((AppRuntime)localObject, l, "Net_SendMsg_Pic", 0, j, i);
+        }
+      }
+      else
+      {
+        paramBundle = paramBundle.strServiceName;
+        l = k;
+        if (m != 0) {
+          break label161;
+        }
+      }
+      for (;;)
+      {
+        a(paramBundle, l, bool);
+        return;
+        j = 1;
+        break;
+        label161:
+        bool = false;
+      }
+      i = 0;
+    }
+  }
+  
+  public void b(Session paramSession)
+  {
+    paramSession = a(Long.valueOf(paramSession.uSessionID));
+    if (paramSession == null) {
+      return;
+    }
+    paramSession.nFileStatus = 2;
+    b(paramSession);
   }
 }
 

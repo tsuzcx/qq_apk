@@ -1,24 +1,23 @@
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
 public class yvr
-  implements ywo
+  implements xry
 {
-  public yvr(TroopGiftPanel paramTroopGiftPanel, long paramLong1, long paramLong2) {}
+  public yvr(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(List<bcon> paramList)
+  public void a_(xrt paramxrt)
   {
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.a(paramList);
-    long l = System.currentTimeMillis();
-    QLog.d("TroopGiftPanel.time", 1, "setGiftData, reqTime=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.b));
+    yqp.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
+    LocalVideoSelectActivity.a(this.a).c();
+    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yvr
  * JD-Core Version:    0.7.0.1
  */

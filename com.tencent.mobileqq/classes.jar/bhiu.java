@@ -1,146 +1,93 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.util.Locale;
+import mqq.observer.AccountObserver;
 
-public class bhiu
+class bhiu
+  extends AccountObserver
 {
-  public static int a(Date paramDate)
+  final Intent jdField_a_of_type_AndroidContentIntent;
+  final bhiw jdField_a_of_type_Bhiw;
+  final String jdField_a_of_type_JavaLangString;
+  
+  bhiu(Intent paramIntent, String paramString, bhiw parambhiw)
   {
-    if (paramDate == null) {
-      return -1;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(paramDate);
-    return localCalendar.get(11);
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bhiw = parambhiw;
   }
   
-  public static long a(String paramString)
+  public void onRegisterCommitPassRespWithLhSig(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    try
-    {
-      long l = localSimpleDateFormat.parse(paramString).getTime();
-      return l;
-    }
-    catch (ParseException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return 0L;
-  }
-  
-  public static Date a(String paramString)
-  {
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("HH:mm");
-    try
-    {
-      paramString = localSimpleDateFormat.parse(paramString);
-      return paramString;
-    }
-    catch (ParseException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static int b(Date paramDate)
-  {
-    if (paramDate == null) {
-      return -1;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(paramDate);
-    return localCalendar.get(12);
-  }
-  
-  public static Date b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    SimpleDateFormat localSimpleDateFormat;
-    if (paramString.length() >= 10) {
-      if (Pattern.compile(AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getString(2131694324)).matcher(paramString).matches()) {
-        localSimpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
-      }
-    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
+    if (paramArrayOfByte2 != null) {}
     for (;;)
     {
-      if (localSimpleDateFormat == null)
+      try
       {
-        return null;
-        localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        continue;
-        if (paramString.length() >= 7)
-        {
-          localSimpleDateFormat = new SimpleDateFormat("yyyy-MM");
-          continue;
+        paramArrayOfByte2 = new String(paramArrayOfByte2, "utf-8");
+        if (QLog.isDevelopLevel()) {
+          QLog.i("LHLoginMng", 4, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig isSuccess: %s, code: %s, uin: %s, error: %s, contactSig: %s, lhsig: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString, paramArrayOfByte2, MD5.toMD5(paramArrayOfByte1), MD5.toMD5(paramArrayOfByte3) }));
         }
-        if (paramString.length() >= 4) {
-          localSimpleDateFormat = new SimpleDateFormat("yyyy");
+        if (paramInt != 0) {
+          break label311;
         }
+        paramBoolean = true;
+        if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
+          break label283;
+        }
+        paramBoolean = false;
+        if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0)) {
+          break label298;
+        }
+        paramBoolean = false;
+        if (!TextUtils.isEmpty(paramArrayOfByte2)) {
+          break label316;
+        }
+        paramString = BaseApplicationImpl.getContext().getString(2131715770);
+        localIntent.putExtra("key_register_prompt_info", paramString);
+        if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length > 0)) {
+          localIntent.putExtra("key_register_lhsig", paramArrayOfByte3);
+        }
+        if (QLog.isDevelopLevel()) {
+          bhix.a("LHLoginMng -- onRegisterCommitPassRespWithLhSig", localIntent);
+        }
+        if (this.jdField_a_of_type_Bhiw != null) {
+          this.jdField_a_of_type_Bhiw.a(localIntent, paramBoolean, this.jdField_a_of_type_JavaLangString, paramArrayOfByte3, paramString);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig, lhUin: %s, isSuc: %s, error: %s, code: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
+        }
+        return;
       }
-      else
+      catch (UnsupportedEncodingException paramArrayOfByte2)
       {
-        try
-        {
-          paramString = localSimpleDateFormat.parse(paramString);
-          return paramString;
-        }
-        catch (ParseException paramString)
-        {
-          paramString.printStackTrace();
-          QMLog.e("DateUtils", "getDateByStrTime exception." + paramString);
-          return null;
-        }
+        paramArrayOfByte2.printStackTrace();
       }
-      localSimpleDateFormat = null;
+      paramArrayOfByte2 = null;
+      continue;
+      label283:
+      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+      continue;
+      label298:
+      localIntent.putExtra("key_register_sign", paramArrayOfByte1);
+      continue;
+      label311:
+      paramBoolean = false;
+      continue;
+      label316:
+      paramString = paramArrayOfByte2;
     }
-  }
-  
-  public static int c(Date paramDate)
-  {
-    if (paramDate == null) {
-      return -1;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(paramDate);
-    return localCalendar.get(1);
-  }
-  
-  public static int d(Date paramDate)
-  {
-    if (paramDate == null) {
-      return -1;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(paramDate);
-    return localCalendar.get(2);
-  }
-  
-  public static int e(Date paramDate)
-  {
-    if (paramDate == null) {
-      return -1;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(paramDate);
-    return localCalendar.get(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhiu
  * JD-Core Version:    0.7.0.1
  */

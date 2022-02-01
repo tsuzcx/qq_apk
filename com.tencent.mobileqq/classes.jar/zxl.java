@@ -1,16 +1,10 @@
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
-
-public class zxl
+public abstract interface zxl<T>
 {
-  public int a;
-  public String a;
-  public int b;
-  
-  private zxl(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  public abstract T getReportBean();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zxl
  * JD-Core Version:    0.7.0.1
  */

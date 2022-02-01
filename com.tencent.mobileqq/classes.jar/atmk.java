@@ -1,27 +1,43 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.app.Activity;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-public class atmk
-  implements atoi
+public abstract interface atmk
 {
-  public Object a;
+  public abstract int a();
   
-  private atmk(ListenTogetherManager paramListenTogetherManager)
-  {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-  }
+  public abstract RelativeLayout a();
   
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaLangObject == null) {}
-    while (paramInt == 0) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
-    }
-  }
+  public abstract QQAppInterface a();
+  
+  public abstract ForwardFileInfo a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
+  
+  public abstract boolean e();
+  
+  public abstract void f();
+  
+  public abstract boolean f();
+  
+  public abstract void g();
+  
+  public abstract Activity getActivity();
 }
 
 

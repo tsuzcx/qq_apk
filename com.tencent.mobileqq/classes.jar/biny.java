@@ -1,39 +1,77 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedTouchUI;
-import cooperation.comic.VipComicJumpActivity;
-import cooperation.comic.ui.QQComicTabBarView;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
+import oicq.wlogin_sdk.tools.util;
+import org.json.JSONObject;
 
 public class biny
-  implements binl
+  extends WtloginObserver
 {
-  public biny(QQComicTabBarView paramQQComicTabBarView) {}
+  public biny(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void OnException(String paramString, int paramInt)
   {
-    paramInt1 = this.a.a();
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (paramInt1 < 0) || (paramInt1 >= this.a.jdField_a_of_type_JavaUtilList.size())) {}
-    RedTouchUI localRedTouchUI;
-    RedAppInfo localRedAppInfo;
-    do
+    super.OnException(paramString, paramInt);
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnException() e:" + paramString);
+  }
+  
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): ret=" + paramInt);
+    if (paramInt == 0)
     {
-      return;
-      paramInt2 = VipComicJumpActivity.a("fav", this.a.jdField_a_of_type_JavaUtilList);
-      if ((paramBoolean) && (paramInt1 != paramInt2))
-      {
-        this.a.a(paramInt2);
-        return;
+      if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
+        paramInt = 0;
       }
-      localRedTouchUI = (RedTouchUI)this.a.jdField_a_of_type_Bion.get("1113.100801");
-      localRedAppInfo = (RedAppInfo)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    } while ((localRedTouchUI == null) || (!localRedTouchUI.b()) || (localRedAppInfo == null) || (localRedTouchUI.a != localRedAppInfo));
-    this.a.a(paramInt2, true);
+      while (paramInt < paramArrayList.size())
+      {
+        try
+        {
+          paramString = HexUtil.hexStr2Bytes((String)paramArrayList.get(paramInt));
+          int i = util.buf_to_int16(paramString, 0);
+          int j = util.buf_to_int16(paramString, 2);
+          if (i == 54)
+          {
+            paramArrayOfByte1 = new byte[j];
+            System.arraycopy(paramString, 4, paramArrayOfByte1, 0, j);
+            paramString = new String(paramArrayOfByte1);
+            QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid sucess Json:" + paramString);
+            paramString = new JSONObject(paramString);
+            paramLong = paramString.optLong("open_appid");
+            paramString = paramString.optString("comefrom");
+            this.a.a(paramLong, paramString);
+            if (!TextUtils.isEmpty(paramString))
+            {
+              paramArrayOfByte1 = Message.obtain();
+              paramArrayOfByte1.what = 1004;
+              paramArrayOfByte1.obj = paramString;
+              this.a.b.sendMessage(paramArrayOfByte1);
+            }
+          }
+        }
+        catch (Throwable paramString)
+        {
+          for (;;)
+          {
+            QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): Exeption:", paramString);
+          }
+        }
+        paramInt += 1;
+        continue;
+        QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid failed for data is null");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biny
  * JD-Core Version:    0.7.0.1
  */

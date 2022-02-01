@@ -1,21 +1,110 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import java.util.ArrayList;
 
 public class rup
-  extends pdi
 {
-  public rup(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup, String paramString)
+  public static VideoInfo a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramString);
+    VideoInfo localVideoInfo = new VideoInfo();
+    localVideoInfo.g = paramBaseArticleInfo.getInnerUniqueID();
+    localVideoInfo.jdField_b_of_type_Boolean = snh.g(paramBaseArticleInfo);
+    localVideoInfo.jdField_d_of_type_Long = paramBaseArticleInfo.mFeedId;
+    localVideoInfo.jdField_h_of_type_Int = paramBaseArticleInfo.mFeedType;
+    return localVideoInfo;
   }
   
-  public void a(pdc parampdc)
+  public static BaseArticleInfo a(VideoInfo paramVideoInfo)
   {
-    parampdc.a(ReadInJoyProteusFamilyListViewGroup.a(this.a), this.a.a);
+    if ((paramVideoInfo != null) && (paramVideoInfo.jdField_a_of_type_Int != 0))
+    {
+      ArticleInfo localArticleInfo = new ArticleInfo();
+      try
+      {
+        localArticleInfo.mArticleID = paramVideoInfo.jdField_c_of_type_Long;
+        localArticleInfo.innerUniqueID = paramVideoInfo.g;
+        localArticleInfo.mTitle = paramVideoInfo.jdField_c_of_type_JavaLangString;
+        localArticleInfo.mSubscribeName = paramVideoInfo.k;
+        localArticleInfo.mSubscribeID = paramVideoInfo.j;
+        localArticleInfo.mFirstPagePicUrl = paramVideoInfo.jdField_b_of_type_JavaLangString;
+        localArticleInfo.mVideoDuration = paramVideoInfo.jdField_d_of_type_Int;
+        localArticleInfo.mVideoCoverUrl = tyc.a(paramVideoInfo.jdField_b_of_type_JavaLangString, paramVideoInfo.jdField_a_of_type_Int);
+        localArticleInfo.mVideoVid = paramVideoInfo.jdField_a_of_type_JavaLangString;
+        localArticleInfo.mFeedType = paramVideoInfo.jdField_h_of_type_Int;
+        localArticleInfo.mFeedId = paramVideoInfo.jdField_d_of_type_Long;
+        localArticleInfo.mXGFileSize = paramVideoInfo.jdField_b_of_type_Long;
+        localArticleInfo.busiType = paramVideoInfo.jdField_a_of_type_Int;
+        localArticleInfo.mJsonVideoList = paramVideoInfo.l;
+        localArticleInfo.mVideoCommentCount = paramVideoInfo.jdField_e_of_type_Int;
+        localArticleInfo.mVideoJsonWidth = paramVideoInfo.jdField_b_of_type_Int;
+        localArticleInfo.mVideoJsonHeight = paramVideoInfo.jdField_c_of_type_Int;
+        localArticleInfo.mArticleContentUrl = paramVideoInfo.jdField_f_of_type_JavaLangString;
+        localArticleInfo.thirdIcon = paramVideoInfo.p;
+        localArticleInfo.thirdName = paramVideoInfo.k;
+        localArticleInfo.thirdAction = paramVideoInfo.o;
+        localArticleInfo.thirdUin = paramVideoInfo.j;
+        localArticleInfo.thirdUinName = paramVideoInfo.jdField_q_of_type_JavaLangString;
+        localArticleInfo.mVideoPlayCount = paramVideoInfo.jdField_q_of_type_Int;
+        localArticleInfo.mRecommentdReason = paramVideoInfo.jdField_h_of_type_JavaLangString;
+        localArticleInfo.videoReportInfo = paramVideoInfo.B;
+        localArticleInfo.mSummary = paramVideoInfo.jdField_d_of_type_JavaLangString;
+        localArticleInfo.mTime = paramVideoInfo.jdField_a_of_type_Long;
+        localArticleInfo.mAlgorithmID = paramVideoInfo.jdField_f_of_type_Long;
+        localArticleInfo.mDiskLikeInfoString = DislikeInfo.a(paramVideoInfo.jdField_b_of_type_JavaUtilArrayList);
+        localArticleInfo.mArticleSubscriptText = paramVideoInfo.z;
+        localArticleInfo.mArticleSubscriptColor = paramVideoInfo.A;
+        localArticleInfo.mRecommendSeq = paramVideoInfo.jdField_e_of_type_Long;
+        localArticleInfo.mVideoLogoUrl = paramVideoInfo.u;
+        if (paramVideoInfo.jdField_b_of_type_Boolean)
+        {
+          paramVideoInfo.jdField_a_of_type_Int = 6;
+          localArticleInfo.mSocialFeedInfo = new SocializeFeedsInfo();
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs = new rhs();
+          if (!TextUtils.isEmpty(paramVideoInfo.j)) {
+            localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_a_of_type_Long = Long.valueOf(paramVideoInfo.j).longValue();
+          }
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_a_of_type_Int = paramVideoInfo.jdField_h_of_type_Int;
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_b_of_type_JavaLangString = paramVideoInfo.k;
+          localArticleInfo.mSocialFeedInfo.jdField_d_of_type_Int = paramVideoInfo.jdField_e_of_type_Int;
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+          rhu localrhu = new rhu();
+          localrhu.jdField_d_of_type_JavaLangString = paramVideoInfo.jdField_b_of_type_JavaLangString;
+          localrhu.jdField_e_of_type_JavaLangString = paramVideoInfo.jdField_c_of_type_JavaLangString;
+          localrhu.jdField_a_of_type_Long = (paramVideoInfo.jdField_d_of_type_Int * 1000);
+          localrhu.jdField_a_of_type_Int = paramVideoInfo.jdField_b_of_type_Int;
+          localrhu.jdField_b_of_type_Int = paramVideoInfo.jdField_c_of_type_Int;
+          localrhu.g = paramVideoInfo.g;
+          if (paramVideoInfo.jdField_e_of_type_JavaLangString != null) {
+            localrhu.jdField_e_of_type_Int = Integer.parseInt(paramVideoInfo.jdField_e_of_type_JavaLangString);
+          }
+          localrhu.jdField_h_of_type_JavaLangString = paramVideoInfo.jdField_f_of_type_JavaLangString;
+          localrhu.f = paramVideoInfo.jdField_a_of_type_Int;
+          localrhu.i = paramVideoInfo.jdField_a_of_type_JavaLangString;
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rhs.jdField_b_of_type_JavaUtilArrayList.add(localrhu);
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rha.jdField_a_of_type_Long = Long.parseLong(paramVideoInfo.j);
+          paramVideoInfo = new rgy();
+          paramVideoInfo.a = Long.valueOf(localArticleInfo.mFeedId);
+          paramVideoInfo.b = Long.valueOf(localArticleInfo.mFeedType);
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rgy = paramVideoInfo;
+        }
+        return localArticleInfo;
+      }
+      catch (Throwable paramVideoInfo)
+      {
+        paramVideoInfo.printStackTrace();
+        return localArticleInfo;
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rup
  * JD-Core Version:    0.7.0.1
  */

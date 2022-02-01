@@ -1,37 +1,45 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class bdgf
-  extends MqqHandler
+  implements MediaPlayer.OnPreparedListener
 {
-  private final WeakReference<Handler.Callback> a;
+  private WeakReference<VideoSprite> a;
   
-  public bdgf(Handler.Callback paramCallback)
+  private bdgf(VideoSprite paramVideoSprite)
   {
-    this.a = new WeakReference(paramCallback);
+    this.a = new WeakReference(paramVideoSprite);
   }
   
-  public bdgf(Looper paramLooper, Handler.Callback paramCallback)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
-    }
-  }
-  
-  public String toString()
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    return super.toString() + " " + localCallback;
+    paramMediaPlayer = (VideoSprite)this.a.get();
+    if (paramMediaPlayer == null) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramMediaPlayer.n = paramMediaPlayer.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth();
+          paramMediaPlayer.o = paramMediaPlayer.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight();
+          paramMediaPlayer.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+          paramMediaPlayer.g = true;
+          if (paramMediaPlayer.jdField_a_of_type_Bdge != null)
+          {
+            paramMediaPlayer.jdField_a_of_type_AndroidOsHandler.postDelayed(paramMediaPlayer, 33L);
+            return;
+          }
+        }
+        catch (Exception paramMediaPlayer) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("VideoSprite", 2, "playVideo Exception: " + QLog.getStackTraceString(paramMediaPlayer));
   }
 }
 

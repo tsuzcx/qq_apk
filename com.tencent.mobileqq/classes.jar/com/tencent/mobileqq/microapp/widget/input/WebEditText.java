@@ -14,12 +14,11 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.FrameLayout.LayoutParams;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.microapp.appbrand.a.a.y;
+import com.tencent.mobileqq.microapp.a.c;
+import com.tencent.mobileqq.microapp.appbrand.a.a.f;
 import com.tencent.mobileqq.microapp.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.microapp.appbrand.page.PageWebview;
-import com.tencent.mobileqq.microapp.ui.NavigationBar;
 import com.tencent.mobileqq.microapp.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -66,104 +65,95 @@ public class WebEditText
     this.h = new WeakReference(paramPageWebview);
   }
   
-  public boolean a(y paramy, AbsAppBrandPage paramAbsAppBrandPage, String paramString)
+  public boolean a(f paramf, AbsAppBrandPage paramAbsAppBrandPage, String paramString)
   {
     int j = 2;
     if ((TextUtils.isEmpty(paramString)) || (paramAbsAppBrandPage == null)) {
       return false;
     }
-    Object localObject1 = super.getContext();
-    paramString = new JSONObject(paramString);
-    Object localObject2 = paramString.optString("type");
-    boolean bool = paramString.optBoolean("isPassword");
+    Object localObject = super.getContext();
+    paramAbsAppBrandPage = new JSONObject(paramString);
+    paramString = paramAbsAppBrandPage.optString("type");
+    boolean bool = paramAbsAppBrandPage.optBoolean("isPassword");
     int i;
-    if (("number".equals(localObject2)) || ("digit".equals(localObject2)) || ("idcard".equals(localObject2))) {
+    if (("number".equals(paramString)) || ("digit".equals(paramString)) || ("idcard".equals(paramString))) {
       i = 2;
     }
     for (;;)
     {
       super.setInputType(i);
-      localObject2 = paramString.optString("confirmType");
-      if ("send".equals(localObject2))
+      paramString = paramAbsAppBrandPage.optString("confirmType");
+      if ("send".equals(paramString))
       {
         i = 4;
-        label107:
+        label101:
         setImeOptions(i);
-        i = paramString.optInt("maxLength", -1);
+        i = paramAbsAppBrandPage.optInt("maxLength", -1);
         if (i != -1) {
           super.setFilters(new InputFilter[] { new InputFilter.LengthFilter(i) });
         }
-        localObject2 = paramString.optJSONObject("style");
-        if (localObject2 != null)
+        paramString = paramAbsAppBrandPage.optJSONObject("style");
+        if (paramString != null)
         {
-          float f1 = DisplayUtil.getDensity((Context)localObject1);
-          this.c = ((int)(((JSONObject)localObject2).optInt("width") * f1));
-          this.d = ((int)(((JSONObject)localObject2).optInt("height") * f1));
-          this.f = ((int)(((JSONObject)localObject2).optInt("left") * f1));
-          this.e = ((int)(f1 * ((JSONObject)localObject2).optInt("top")) + paramAbsAppBrandPage.getNavBar().getHeight());
-          super.setTextSize(((JSONObject)localObject2).optInt("fontSize", 16));
-          ((JSONObject)localObject2).optString("fontWeight", "normal");
-          this.a = ((JSONObject)localObject2).optString("color", "#FFFFFFFF");
-          this.b = ((JSONObject)localObject2).optString("backgroundColor", "#FFFFFFFF");
-          ((JSONObject)localObject2).optInt("marginBottom");
-          ((JSONObject)localObject2).optString("textAlign", "left");
+          float f1 = DisplayUtil.getDensity((Context)localObject);
+          this.c = ((int)(paramString.optInt("width") * f1));
+          this.d = ((int)(paramString.optInt("height") * f1));
+          this.f = ((int)(f1 * paramString.optInt("left")));
+          super.setTextSize(paramString.optInt("fontSize", 16));
+          paramString.optString("fontWeight", "normal");
+          this.a = paramString.optString("color", "#FFFFFFFF");
+          this.b = paramString.optString("backgroundColor", "#FFFFFFFF");
+          paramString.optInt("marginBottom");
+          paramString.optString("textAlign", "left");
         }
-        paramAbsAppBrandPage = paramString.optString("placeholder");
-        localObject1 = paramString.optJSONObject("placeholderStyle");
-        if (localObject1 != null) {
-          super.setHintTextColor(Color.parseColor(((JSONObject)localObject1).optString("color", "#FFFFFFFF")));
+        paramString = paramAbsAppBrandPage.optString("placeholder");
+        localObject = paramAbsAppBrandPage.optJSONObject("placeholderStyle");
+        if (localObject != null) {
+          super.setHintTextColor(Color.parseColor(((JSONObject)localObject).optString("color", "#FFFFFFFF")));
         }
-        if (paramString.optBoolean("adjustPosition")) {
-          paramy.b().getWindow().setSoftInputMode(32);
+        if (paramAbsAppBrandPage.optBoolean("adjustPosition")) {
+          paramf.b().getWindow().setSoftInputMode(32);
         }
-        paramy = paramString.optString("defaultValue");
-        if (TextUtils.isEmpty(paramy)) {
-          break label485;
+        paramf = paramAbsAppBrandPage.optString("defaultValue");
+        if (TextUtils.isEmpty(paramf)) {
+          break label441;
         }
-        super.setText(paramy);
+        super.setText(paramf);
       }
       for (;;)
       {
-        super.setTextColor(com.tencent.mobileqq.microapp.b.a.h(this.a));
-        super.setBackgroundColor(com.tencent.mobileqq.microapp.b.a.h(this.b));
+        super.setTextColor(c.p(this.a));
+        super.setBackgroundColor(c.p(this.b));
         super.setGravity(19);
-        super.setHint(paramAbsAppBrandPage);
+        super.setHint(paramString);
         return true;
         if (!bool) {
-          break label495;
+          break label450;
         }
         i = 129;
         break;
-        if ("search".equals(localObject2))
+        if ("search".equals(paramString))
         {
           i = 3;
-          break label107;
+          break label101;
         }
-        if ("next".equals(localObject2))
+        if ("next".equals(paramString))
         {
           i = 5;
-          break label107;
+          break label101;
         }
         i = j;
-        if ("go".equals(localObject2)) {
-          break label107;
+        if ("go".equals(paramString)) {
+          break label101;
         }
         i = 6;
-        break label107;
-        label485:
+        break label101;
+        label441:
         super.setText("");
       }
-      label495:
+      label450:
       i = 1;
     }
-  }
-  
-  public FrameLayout.LayoutParams b(int paramInt)
-  {
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.c, this.d);
-    localLayoutParams.leftMargin = this.f;
-    localLayoutParams.topMargin = (this.e - paramInt);
-    return localLayoutParams;
   }
   
   public PageWebview b()
@@ -238,7 +228,7 @@ public class WebEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.input.WebEditText
  * JD-Core Version:    0.7.0.1
  */

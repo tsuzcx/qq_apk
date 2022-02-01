@@ -1,9 +1,15 @@
 class atgc
-  implements atfe
+  extends atfq
 {
-  atgc(atfz paramatfz) {}
+  public atgc(atfe paramatfe)
+  {
+    super(paramatfe);
+  }
   
-  public void a(int paramInt, String paramString) {}
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPC";
+  }
 }
 
 

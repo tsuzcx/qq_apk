@@ -1,13 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-
 public class bbzw
-  implements DialogInterface.OnClickListener
 {
-  public bbzw(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public bbzw(bbzv parambbzv)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
 }
 
 

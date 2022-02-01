@@ -1,7 +1,7 @@
 package com.tencent.av.app;
 
 import com.tencent.qphone.base.util.QLog;
-import lmm;
+import ljj;
 
 class VideoAppInterface$CameraUsageRunnable
   implements Runnable
@@ -11,12 +11,12 @@ class VideoAppInterface$CameraUsageRunnable
   public void run()
   {
     QLog.w(VideoAppInterface.c(), 1, "CameraUsageRunnable");
-    lmm.b(this.this$0.getApplication(), "CameraUsageRunnable");
+    ljj.b(this.this$0.getApplication(), "CameraUsageRunnable");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.app.VideoAppInterface.CameraUsageRunnable
  * JD-Core Version:    0.7.0.1
  */

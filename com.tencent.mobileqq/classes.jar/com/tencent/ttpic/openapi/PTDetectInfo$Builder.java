@@ -17,6 +17,11 @@ public class PTDetectInfo$Builder
   private AIAttr aiAttr;
   private double audioScaleFactor;
   private List<PointF> bodyPoints;
+  private float[] catFaceAngles;
+  private List<PointF> catFacePoints;
+  private Frame displacementMaskFrame;
+  private float[] face3DRotationArray;
+  private float[] face3DVerticesArray;
   private Map<Integer, FaceActionCounter> faceActionCounter;
   private float[] faceAngles;
   private FaceActionCounterListener faceDetector;
@@ -39,6 +44,7 @@ public class PTDetectInfo$Builder
   private ArrayList<RedPacketPosition> redPacketPositions;
   private List<PointF> starPoints;
   private long timestamp;
+  public List<PointF> transformPoints;
   private Set<Integer> triggeredExpression;
   
   public Builder aiAttr(AIAttr paramAIAttr)
@@ -62,6 +68,36 @@ public class PTDetectInfo$Builder
   public PTDetectInfo build()
   {
     return new PTDetectInfo(this);
+  }
+  
+  public Builder catFaceAngles(float[] paramArrayOfFloat)
+  {
+    this.catFaceAngles = paramArrayOfFloat;
+    return this;
+  }
+  
+  public Builder catFacePoints(List<PointF> paramList)
+  {
+    this.catFacePoints = paramList;
+    return this;
+  }
+  
+  public Builder displacementMaskFrame(Frame paramFrame)
+  {
+    this.displacementMaskFrame = paramFrame;
+    return this;
+  }
+  
+  public Builder face3DRotationArray(float[] paramArrayOfFloat)
+  {
+    this.face3DRotationArray = paramArrayOfFloat;
+    return this;
+  }
+  
+  public Builder face3DVerticesArray(float[] paramArrayOfFloat)
+  {
+    this.face3DVerticesArray = paramArrayOfFloat;
+    return this;
   }
   
   public Builder faceActionCounter(Map<Integer, FaceActionCounter> paramMap)
@@ -169,7 +205,7 @@ public class PTDetectInfo$Builder
     int i = 0;
     while (i < paramArrayOfFloat.length)
     {
-      arrayOfFloat[i] = Float.parseFloat(paramArrayOfFloat[i].toString());
+      arrayOfFloat[i] = paramArrayOfFloat[i].floatValue();
       i += 1;
     }
     this.pointsVis = arrayOfFloat;
@@ -206,6 +242,12 @@ public class PTDetectInfo$Builder
     return this;
   }
   
+  public Builder transformPoints(List<PointF> paramList)
+  {
+    this.transformPoints = paramList;
+    return this;
+  }
+  
   public Builder triggeredExpression(Set<Integer> paramSet)
   {
     this.triggeredExpression = paramSet;
@@ -214,7 +256,7 @@ public class PTDetectInfo$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTDetectInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

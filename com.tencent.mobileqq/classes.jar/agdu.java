@@ -1,21 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.AppGuideTipsConfig;
+import android.widget.ImageView;
 
 class agdu
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  agdu(agdt paramagdt, AppGuideTipsConfig paramAppGuideTipsConfig) {}
+  agdu(agdt paramagdt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramView = new Intent(this.jdField_a_of_type_Agdt.a, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.tipsUrl);
-    this.jdField_a_of_type_Agdt.a.startActivity(paramView);
-    azqs.b(null, "dc00898", "", "", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, 0, 0, "", "", "", "");
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (agdt.a(this.a) != null) {
+      agdt.a(this.a).setAlpha((float)d);
+    }
+    if (agdt.a(this.a) != null) {
+      agdt.a(this.a).setAlpha((float)d * 2.0F);
+    }
   }
 }
 

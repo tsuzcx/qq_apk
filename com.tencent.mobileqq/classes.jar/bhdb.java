@@ -1,62 +1,30 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetFormIdReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetFormIdRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import QC.GetItemWatchWordRsp;
+import android.os.Bundle;
+import eipc.EIPCModule;
+import eipc.EIPCResult;
 
-public class bhdb
-  extends bhdw
+class bhdb
+  implements anil
 {
-  private INTERFACE.StGetFormIdReq a = new INTERFACE.StGetFormIdReq();
+  bhdb(bhda parambhda, EIPCModule paramEIPCModule, int paramInt) {}
   
-  public bhdb(String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_userapp";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetFormIdRsp localStGetFormIdRsp = new INTERFACE.StGetFormIdRsp();
-    try
+    if ((paramBoolean) && ((paramObject instanceof GetItemWatchWordRsp)))
     {
-      localStGetFormIdRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetFormIdRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("formId", localStGetFormIdRsp.formId.get());
-        return paramArrayOfByte;
-      }
-      QMLog.d("GetFormIdRequest", "onResponse fail.rsp = null");
-      return null;
+      paramObject = (GetItemWatchWordRsp)paramObject;
+      EIPCResult localEIPCResult = new EIPCResult();
+      localEIPCResult.data = new Bundle();
+      localEIPCResult.data.putInt("ret", paramObject.ret);
+      localEIPCResult.data.putString("sharemsg", paramObject.sharemsg);
+      localEIPCResult.data.putString("errmsg", paramObject.errmsg);
+      this.jdField_a_of_type_EipcEIPCModule.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
     }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("GetFormIdRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetFormId";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhdb
  * JD-Core Version:    0.7.0.1
  */

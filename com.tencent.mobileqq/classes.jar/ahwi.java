@@ -1,76 +1,71 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.graphics.Color;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 
 public class ahwi
-  extends BaseAdapter
+  extends ahwb
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<ahwk> jdField_a_of_type_JavaUtilList;
+  aklj a;
   
-  public ahwi(Context paramContext)
+  public ahwi(QQAppInterface paramQQAppInterface, ahwv paramahwv, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, afxp paramafxp)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
-  
-  public void a(List<ahwk> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    super(paramQQAppInterface, paramahwv, paramQQWalletBaseMsgElem, paramInt, paramafxp);
+    this.jdField_a_of_type_Aklj = ((aklj)paramQQAppInterface.getManager(125));
+    if (a(this.jdField_a_of_type_Aklj.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
+    for (this.i = 0;; this.i = paramQQWalletBaseMsgElem.effectsId)
     {
-      paramViewGroup = new ahwl(this, null);
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561710, null, false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368105));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368104));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379142));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379143));
-      paramView.setTag(paramViewGroup);
+      this.j = 2130847226;
+      return;
     }
-    for (;;)
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.jdField_a_of_type_Ahwv.b.setVisibility(0);
+    this.jdField_a_of_type_Ahwv.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Ahwv.b.setText(ahwg.n);
+    return true;
+  }
+  
+  public void f()
+  {
+    super.f();
+    try
     {
-      ahwk localahwk = (ahwk)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localahwk.jdField_a_of_type_AndroidGraphicsBitmap);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localahwk.b);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localahwk.jdField_a_of_type_Int + alud.a(2131704992));
-      if (!localahwk.jdField_a_of_type_Boolean) {
-        break;
-      }
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839027));
-      return paramView;
-      paramViewGroup = (ahwl)paramView.getTag();
+      this.jdField_a_of_type_Ahwv.a.setTextColor(Color.parseColor("#FFDDB2"));
+      this.jdField_a_of_type_Ahwv.a.setText(akww.a(this.jdField_a_of_type_Ahwv.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, 330, this.jdField_a_of_type_Ahwv.a.getPaint()));
+      return;
     }
-    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839029));
-    return paramView;
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void i()
+  {
+    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+    akli localakli2 = this.jdField_a_of_type_Aklj.a(localQQWalletRedPacketMsg.redPacketId);
+    akli localakli1 = localakli2;
+    if (localakli2 == null)
+    {
+      localakli1 = new akli(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, false, false, false, 7);
+      this.jdField_a_of_type_Aklj.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_Aklj.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 7);
+    }
+    if (!a(localakli1))
+    {
+      this.jdField_a_of_type_Ahwv.d.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_Ahwv.d.setVisibility(0);
   }
 }
 

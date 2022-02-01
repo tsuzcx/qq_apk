@@ -1,34 +1,26 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment.18;
+
 public class bfmr
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
+  public bfmr(VisitorTroopCardFragment.18 param18) {}
   
-  public bfmr()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Long = 259200L;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    paramObject = (bfmr)paramObject;
-    if (paramObject != null) {
-      return paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+    if (paramInt == 1)
+    {
+      this.a.this$0.a.cancel();
+      this.a.this$0.getActivity().finish();
     }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_JavaLangString.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfmr
  * JD-Core Version:    0.7.0.1
  */

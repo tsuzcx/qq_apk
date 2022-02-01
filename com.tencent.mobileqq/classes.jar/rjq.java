@@ -1,42 +1,31 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
-class rjq
-  implements Handler.Callback
+public class rjq
+  implements DialogInterface.OnDismissListener
 {
-  rjq(rjp paramrjp) {}
+  public rjq(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
+    if (ReadInJoyDeliverUGCActivity.c(this.a))
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          rjp.a(this.a, false);
-          rjp.a(this.a).removeMessages(0);
-        } while (rjp.a(this.a) == null);
-        rjp.a(this.a).c(true);
-        return true;
-        rjp.a(this.a, false);
-        rjp.a(this.a).removeMessages(1);
-      } while (rjp.a(this.a) == null);
-      rjp.a(this.a).c(false);
-      return true;
+      ReadInJoyDeliverUGCActivity.c(this.a, false);
+      ReadInJoyDeliverUGCActivity.e(this.a);
+      if (!ReadInJoyDeliverUGCActivity.g(this.a)) {
+        ReadInJoyDeliverUGCActivity.g(this.a, 1, this.a.getString(2131716989));
+      }
+      if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
+        ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);
+      }
     }
-    rjp.a(this.a, true);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rjq
  * JD-Core Version:    0.7.0.1
  */

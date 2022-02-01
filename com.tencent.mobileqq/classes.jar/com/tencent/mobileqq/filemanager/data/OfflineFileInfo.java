@@ -3,12 +3,12 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import arce;
+import athp;
 
 public class OfflineFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<OfflineFileInfo> CREATOR = new arce();
+  public static final Parcelable.Creator<OfflineFileInfo> CREATOR = new athp();
   public int a;
   public long a;
   public String a;
@@ -19,6 +19,7 @@ public class OfflineFileInfo
   public long c;
   public String c;
   public long d;
+  public String d;
   
   public OfflineFileInfo()
   {
@@ -32,11 +33,11 @@ public class OfflineFileInfo
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_Long = paramParcel.readLong();
     this.jdField_c_of_type_Long = paramParcel.readLong();
-    this.d = paramParcel.readLong();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_d_of_type_Long = paramParcel.readLong();
+    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
     if (this.jdField_b_of_type_Int == 2)
     {
       this.jdField_a_of_type_Boolean = true;
@@ -57,10 +58,10 @@ public class OfflineFileInfo
     localStringBuilder.append("strUuid[").append(this.jdField_a_of_type_JavaLangString).append("]");
     localStringBuilder.append("uFriendUin[").append(this.jdField_a_of_type_Long).append("]");
     localStringBuilder.append("nDangerLv[").append(this.jdField_a_of_type_Int).append("]");
-    localStringBuilder.append("strFileName[").append(this.jdField_b_of_type_JavaLangString).append("]");
+    localStringBuilder.append("strFileName[").append(this.jdField_c_of_type_JavaLangString).append("]");
     localStringBuilder.append("nFileSize[").append(this.jdField_b_of_type_Long).append("]");
     localStringBuilder.append("nLiftTime[").append(this.jdField_c_of_type_Long).append("]");
-    localStringBuilder.append("nUploadTime[").append(this.d).append("]");
+    localStringBuilder.append("nUploadTime[").append(this.jdField_d_of_type_Long).append("]");
     return localStringBuilder.toString();
   }
   
@@ -73,18 +74,18 @@ public class OfflineFileInfo
       paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
       paramParcel.writeLong(this.jdField_a_of_type_Long);
       paramParcel.writeInt(this.jdField_a_of_type_Int);
-      paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+      paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
       paramParcel.writeLong(this.jdField_b_of_type_Long);
       paramParcel.writeLong(this.jdField_c_of_type_Long);
-      paramParcel.writeLong(this.d);
-      paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
+      paramParcel.writeLong(this.jdField_d_of_type_Long);
+      paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.OfflineFileInfo
  * JD-Core Version:    0.7.0.1
  */

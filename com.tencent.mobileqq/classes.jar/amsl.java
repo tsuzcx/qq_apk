@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.ar.ARGlobalConfigService;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
 
 public class amsl
-  extends amzn
+  implements DialogInterface.OnClickListener
 {
-  public amsl(ARGlobalConfigService paramARGlobalConfigService) {}
+  public amsl(CmGameSubRscHandler.2 param2) {}
   
-  public ARScanStarFaceConfigInfo a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.a.a();
+    if (this.a.a != null) {
+      this.a.a.a(null);
+    }
   }
 }
 

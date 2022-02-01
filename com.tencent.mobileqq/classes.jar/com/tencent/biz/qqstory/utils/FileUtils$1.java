@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.utils;
 
-import alud;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
-import bdgm;
-import bdjz;
-import xrh;
-import xri;
+import anni;
+import bglp;
+import bgpa;
+import zks;
+import zkt;
 
 public final class FileUtils$1
   implements Runnable
@@ -16,18 +16,18 @@ public final class FileUtils$1
   
   public void run()
   {
-    bdjz localbdjz = bdgm.a(this.a, 230);
-    localbdjz.setMessage(alud.a(2131704969));
-    localbdjz.setNegativeButton(alud.a(2131704971), new xrh(this));
-    localbdjz.setPositiveButton(alud.a(2131704970), new xri(this));
-    localbdjz.setCancelable(false);
-    localbdjz.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    localbdjz.show();
+    bgpa localbgpa = bglp.a(this.a, 230);
+    localbgpa.setMessage(anni.a(2131703365));
+    localbgpa.setNegativeButton(anni.a(2131703367), new zks(this));
+    localbgpa.setPositiveButton(anni.a(2131703366), new zkt(this));
+    localbgpa.setCancelable(false);
+    localbgpa.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    localbgpa.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.FileUtils.1
  * JD-Core Version:    0.7.0.1
  */

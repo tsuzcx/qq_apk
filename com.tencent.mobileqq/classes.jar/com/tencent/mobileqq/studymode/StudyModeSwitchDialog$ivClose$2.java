@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.studymode;
 
 import android.widget.ImageView;
-import babh;
+import bdcl;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
@@ -11,19 +11,19 @@ public final class StudyModeSwitchDialog$ivClose$2
   extends Lambda
   implements Function0<ImageView>
 {
-  public StudyModeSwitchDialog$ivClose$2(babh parambabh)
+  public StudyModeSwitchDialog$ivClose$2(bdcl parambdcl)
   {
     super(0);
   }
   
   public final ImageView invoke()
   {
-    return (ImageView)this.this$0.findViewById(2131368742);
+    return (ImageView)this.this$0.findViewById(2131369081);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialog.ivClose.2
  * JD-Core Version:    0.7.0.1
  */

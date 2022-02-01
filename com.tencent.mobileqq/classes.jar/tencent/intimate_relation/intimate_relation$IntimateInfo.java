@@ -23,7 +23,7 @@ public final class intimate_relation$IntimateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.intimate_relation.intimate_relation.IntimateInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,27 @@
-import android.widget.RelativeLayout;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.QavOperationMenuView;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class mks
-  implements mkx
+  implements lcb
 {
-  public mks(QavPanel paramQavPanel) {}
+  public mks(VideoLayerUI paramVideoLayerUI, int paramInt, boolean paramBoolean) {}
   
-  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
+  public void a()
   {
-    if ((paramBoolean) && ((paramRelativeLayout instanceof QavOperationMenuView)))
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdt != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdt.length > this.jdField_a_of_type_Int))
     {
-      paramRelativeLayout = (QavOperationMenuView)paramRelativeLayout;
-      paramRelativeLayout.a(this.a.a.b("BEAUTY_SKIN"));
-      paramRelativeLayout.a();
+      mqn.a("switch_camera", "onSwitchCameraFirstFrame", 3, new Object[0]);
+      VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdt[this.jdField_a_of_type_Int], this.jdField_a_of_type_Boolean);
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onSwitchCameraFirstFrame Error : Index = " + this.jdField_a_of_type_Int);
   }
-  
-  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mks
  * JD-Core Version:    0.7.0.1
  */

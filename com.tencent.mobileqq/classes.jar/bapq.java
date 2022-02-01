@@ -1,28 +1,20 @@
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView.1.1;
+
 public class bapq
-  implements alpg
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  protected void a() {}
+  public bapq(FollowCaptureView paramFollowCaptureView) {}
   
-  protected void a(bapt parambapt, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, bapt parambapt, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    switch (paramInt)
-    {
+    FollowCaptureView.a(this.a, paramSurfaceTexture);
+    this.a.queueEvent(new FollowCaptureView.1.1(this, paramSurfaceTexture));
+    if (!FollowCaptureView.a(this.a)) {
+      FollowCaptureView.a(this.a, true);
     }
-    do
-    {
-      return;
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (bapt)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-      return;
-      paramObject = (Object[])paramObject;
-      a((bapt)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue(), paramObject[5]);
-      return;
-    } while (!paramBoolean);
-    a();
   }
 }
 

@@ -1,12 +1,19 @@
-public abstract interface rpx
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import org.jetbrains.annotations.NotNull;
+
+class rpx
+  implements oue
 {
-  public abstract void a();
+  rpx(rps paramrps) {}
   
-  public abstract void b();
+  public void a(@NotNull Runnable paramRunnable)
+  {
+    ThreadManagerV2.excute(paramRunnable, 16, null, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rpx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.widget;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -19,10 +18,12 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import com.tencent.mobileqq.mini.util.ColorUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.lang.reflect.Field;
 
 public class TimePickerView
-  extends Dialog
+  extends ReportDialog
   implements DialogInterface.OnCancelListener, View.OnClickListener
 {
   private int hour;
@@ -38,13 +39,13 @@ public class TimePickerView
   
   public TimePickerView(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755367);
+    super(paramContext, 2131755379);
     initView(paramContext);
   }
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559017, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559085, null);
     setContentView(paramContext);
     Object localObject = getWindow();
     if (localObject != null)
@@ -56,12 +57,12 @@ public class TimePickerView
       ((Window)localObject).setAttributes(localLayoutParams);
       ((Window)localObject).setGravity(80);
     }
-    localObject = (FrameLayout)paramContext.findViewById(2131371992);
+    localObject = (FrameLayout)paramContext.findViewById(2131372563);
     this.mTimePicker = new TimePicker(new ContextThemeWrapper(getContext(), 16973934));
     ((FrameLayout)localObject).addView(this.mTimePicker);
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131378686));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131379547));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131378721));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131379586));
     this.mConfirmTextView.setOnClickListener(this);
     int i = Resources.getSystem().getIdentifier("hour", "id", "android");
     int j = Resources.getSystem().getIdentifier("minute", "id", "android");
@@ -146,31 +147,36 @@ public class TimePickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131378686)
+    if (paramView.getId() == 2131379547)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onTimeCancel();
       }
       dismissDlg();
     }
-    while (paramView.getId() != 2131378721) {
-      return;
-    }
-    if (this.mOnConfirmListener != null)
+    for (;;)
     {
-      Object localObject = String.valueOf(this.hour);
-      paramView = (View)localObject;
-      if (this.hour < 10) {
-        paramView = "0" + (String)localObject;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView.getId() == 2131379586)
+      {
+        if (this.mOnConfirmListener != null)
+        {
+          Object localObject2 = String.valueOf(this.hour);
+          Object localObject1 = localObject2;
+          if (this.hour < 10) {
+            localObject1 = "0" + (String)localObject2;
+          }
+          String str = String.valueOf(this.minute);
+          localObject2 = str;
+          if (this.minute < 10) {
+            localObject2 = "0" + str;
+          }
+          this.mOnConfirmListener.onTimeConfirm((String)localObject1, (String)localObject2);
+        }
+        dismissDlg();
       }
-      String str = String.valueOf(this.minute);
-      localObject = str;
-      if (this.minute < 10) {
-        localObject = "0" + str;
-      }
-      this.mOnConfirmListener.onTimeConfirm(paramView, (String)localObject);
     }
-    dismissDlg();
   }
   
   public void setHourMaxValue(int paramInt)
@@ -200,7 +206,7 @@ public class TimePickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.TimePickerView
  * JD-Core Version:    0.7.0.1
  */

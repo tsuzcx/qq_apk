@@ -1,21 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.widget.SwipListView;
-
-class oax
-  implements View.OnClickListener
+public class oax
 {
-  oax(oaw paramoaw, View paramView) {}
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onClick(View paramView)
+  public oax(oau paramoau, String paramString1, String paramString2, long paramLong, boolean paramBoolean)
   {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Oaw.a).a(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    return "PublicAccountSearchHistoryItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean + ", time:" + this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oax
  * JD-Core Version:    0.7.0.1
  */

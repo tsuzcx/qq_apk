@@ -1,39 +1,33 @@
-import android.graphics.Point;
+import android.opengl.GLES20;
 
-public final class apdn
+public class apdn
+  extends apdt
 {
-  public float a;
-  public final int a;
-  public final long a;
-  public final Point a;
-  public float b;
+  public int a;
+  public int b;
   
-  public apdn(long paramLong, Point paramPoint, int paramInt)
+  public apdn(int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramInt);
+    this.e = "uniform float uA;\nuniform float uD;\n";
+    this.j = "    if(abs(gl_FragColor[0]-u_screenColor[0]) < uD && abs(gl_FragColor[1]-u_screenColor[1]) < uD  && abs(gl_FragColor[2]-u_screenColor[2]) < uD ){\n        gl_FragColor[3] = uA;\n        if(uA < 0.01){\n            gl_FragColor[0] = 0.0;\n            gl_FragColor[1] = 0.0;\n            gl_FragColor[2] = 0.0;\n        }\n    }\n";
   }
   
-  public float a()
+  protected void a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsPoint.x - this.jdField_a_of_type_Float;
+    this.a = GLES20.glGetUniformLocation(this.d, "uA");
+    apdx.a("glGetAttribLocation uA");
+    this.b = GLES20.glGetUniformLocation(this.d, "uD");
+    apdx.a("glGetAttribLocation uD");
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  protected void a(apdw paramapdw)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-  }
-  
-  public float b()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPoint.y - this.b;
-  }
-  
-  public String toString()
-  {
-    return "TouchPoint{mTime=" + this.jdField_a_of_type_Long + ", mPoint=" + this.jdField_a_of_type_AndroidGraphicsPoint + ", mDistanceOfError=" + this.jdField_a_of_type_Int + '}';
+    if (paramapdw == null) {
+      return;
+    }
+    GLES20.glUniform1f(this.a, paramapdw.d);
+    GLES20.glUniform1f(this.b, paramapdw.e);
   }
 }
 

@@ -1,20 +1,8 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-
-public class agbv
-  extends AnimatorListenerAdapter
+public abstract interface agbv
 {
-  public agbv(SixCombolEffectView paramSixCombolEffectView) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.a) {
-      return;
-    }
-    this.a.b();
-  }
+  public abstract void b();
 }
 
 

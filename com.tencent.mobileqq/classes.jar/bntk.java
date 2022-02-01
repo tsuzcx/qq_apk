@@ -1,22 +1,17 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bntk
-  extends bntn
+class bntk
+  implements View.OnClickListener
 {
-  public bntk(TCProgressBar paramTCProgressBar)
-  {
-    super(paramTCProgressBar);
-  }
+  bntk(bnta parambnta) {}
   
-  public void a(Canvas paramCanvas)
+  public void onClick(View paramView)
   {
-    this.a.b.left = this.f;
-    this.a.b.right = (this.f + this.g);
-    this.a.a.setColor(this.a.m);
-    paramCanvas.drawRect(this.a.b, this.a.a);
-    super.a(paramCanvas);
+    bnta.a(this.a).setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

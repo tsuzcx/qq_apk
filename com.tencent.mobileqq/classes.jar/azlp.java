@@ -1,31 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
 class azlp
-  extends BroadcastReceiver
+  implements bkhw
 {
-  azlp(azlo paramazlo) {}
+  azlp(azlk paramazlk, bkho parambkho) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramIntent.getAction() == null) {}
-    do
+    switch (paramInt)
     {
-      do
+    }
+    for (;;)
+    {
+      try
       {
-        return;
-        paramContext = this.a.jdField_a_of_type_JavaLangString;
-        this.a.c();
-      } while ((this.a.jdField_a_of_type_Azlq == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
-      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
-      {
-        this.a.b();
-        this.a.jdField_a_of_type_Azlq.a(0, this.a.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Bkho.dismiss();
+        this.jdField_a_of_type_Bkho.a(null);
         return;
       }
-    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
-    this.a.jdField_a_of_type_Azlq.a(1, this.a.jdField_a_of_type_JavaLangString);
+      catch (Exception paramView)
+      {
+        QLog.e("ProfileTitleContainer", 1, "showMoreActionSheet actionSheet dismiss fail.", paramView);
+      }
+      azlk.b(this.jdField_a_of_type_Azlk);
+      bcst.b(azlk.a(this.jdField_a_of_type_Azlk), "dc00898", "", "", "0X800A97D", "0X800A97D", 1, 0, "0", "0", "", "");
+      continue;
+      bghy.a(azlk.d(this.jdField_a_of_type_Azlk));
+      bcst.b(azlk.b(this.jdField_a_of_type_Azlk), "dc00898", "", "", "0X800A97D", "0X800A97D", 2, 0, "0", "0", "", "");
+      continue;
+      bcst.b(azlk.c(this.jdField_a_of_type_Azlk), "dc00898", "", "", "0X800A97D", "0X800A97D", 3, 0, "0", "0", "", "");
+    }
   }
 }
 

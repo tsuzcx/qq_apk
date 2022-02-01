@@ -1,166 +1,213 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.pts.lite.PTSLiteItemViewBuilder.2;
+import com.tencent.biz.pubaccount.readinjoy.logic.ReadinjoyFixPosArticleManager.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.pts.core.itemview.PTSItemData;
-import com.tencent.pts.core.itemview.PTSItemView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class pvq
 {
-  private static int jdField_a_of_type_Int = 140;
-  private static int jdField_b_of_type_Int = jdField_a_of_type_Int;
-  private static HashMap<String, Integer> c = new HashMap();
-  private Context jdField_a_of_type_AndroidContentContext;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private pvs jdField_a_of_type_Pvs;
-  private pvt jdField_a_of_type_Pvt;
-  private rqj jdField_a_of_type_Rqj;
-  private HashMap<String, ArticleInfo> jdField_b_of_type_JavaUtilHashMap;
+  private static volatile pvq jdField_a_of_type_Pvq;
+  private HashMap<Integer, WeakReference<snh>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private pvr jdField_a_of_type_Pvr = new pvr(this, 1);
   
-  public pvq(Context paramContext, rqj paramrqj)
+  private int a(int paramInt1, List<BaseArticleInfo> paramList, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Rqj = paramrqj;
-    this.jdField_a_of_type_Pvs = new pvs(paramContext);
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    b();
-    c();
-  }
-  
-  public static int a()
-  {
-    if (jdField_b_of_type_Int > jdField_a_of_type_Int) {
-      return jdField_b_of_type_Int - jdField_a_of_type_Int + 1;
+    paramInt1 = 0;
+    while (paramInt1 < paramList.size())
+    {
+      if (paramInt2 == 0)
+      {
+        paramList = (BaseArticleInfo)paramList.get(paramInt1);
+        paramInt2 = paramInt1;
+        if (paramList != null)
+        {
+          paramInt2 = paramInt1;
+          if (paramList.mGroupId != -1L)
+          {
+            paramInt2 = paramInt1;
+            if (paramList.mGroupCount != 1L)
+            {
+              QLog.d("ReadinjoyFixPosArticleManager", 2, "position " + paramInt1 + " is group article , groupCount : " + paramList.mGroupCount + ", nowGroupIndex : " + paramList.mFeedIndexInGroup + ", groupID : " + paramList.mGroupId);
+              paramInt2 = paramInt1 + (int)(paramList.mGroupCount - paramList.mFeedIndexInGroup);
+            }
+          }
+        }
+        return paramInt2;
+      }
+      paramInt2 -= 1;
+      paramInt1 += 1;
     }
-    return 0;
+    return -1;
   }
   
-  public static int a(ArticleInfo paramArticleInfo)
+  private static int a(long paramLong)
   {
-    if ((paramArticleInfo == null) || (paramArticleInfo.ptsItemData == null) || (TextUtils.isEmpty(paramArticleInfo.ptsLiteAppName))) {
-      return jdField_a_of_type_Int;
+    return (int)(-paramLong & 0xFFFFFFFF);
+  }
+  
+  public static pvq a()
+  {
+    if (jdField_a_of_type_Pvq == null) {}
+    try
+    {
+      if (jdField_a_of_type_Pvq == null) {
+        jdField_a_of_type_Pvq = new pvq();
+      }
+      return jdField_a_of_type_Pvq;
     }
-    paramArticleInfo = (Integer)c.get(paramArticleInfo.ptsLiteAppName);
-    if (paramArticleInfo != null) {
-      return paramArticleInfo.intValue();
-    }
-    return jdField_a_of_type_Int;
+    finally {}
   }
   
-  private void a(PTSItemData paramPTSItemData)
+  public static boolean a(long paramLong)
   {
-    ThreadManager.executeOnSubThread(new PTSLiteItemViewBuilder.2(this, paramPTSItemData));
+    return paramLong <= 0L;
   }
   
-  public static boolean a(int paramInt)
+  private static long b(int paramInt1, int paramInt2)
   {
-    return (paramInt >= jdField_a_of_type_Int) && (paramInt <= jdField_b_of_type_Int);
+    return -(paramInt1 << 32 | paramInt2);
   }
   
-  public static boolean a(ArticleInfo paramArticleInfo)
+  private void c(int paramInt)
   {
-    if (paramArticleInfo == null) {}
+    oqh.a("AdDataLink", "on async data refresh , channelID  : " + paramInt);
+    Object localObject = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localObject == null) {}
     do
     {
-      return true;
-      if (!b(paramArticleInfo)) {
-        break;
-      }
-    } while (a(paramArticleInfo) == jdField_a_of_type_Int);
-    return false;
-    return false;
+      return;
+      localObject = (snh)((WeakReference)localObject).get();
+    } while ((localObject == null) || (((snh)localObject).isEmpty()));
+    ThreadManager.getUIHandler().post(new ReadinjoyFixPosArticleManager.1(this, (snh)localObject, paramInt));
   }
   
-  private void b()
+  public ArticleInfo a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Pvt = new pvv().a(this.jdField_a_of_type_Rqj).a(this.jdField_a_of_type_JavaUtilHashMap).b(this.jdField_b_of_type_JavaUtilHashMap).a();
-    this.jdField_a_of_type_Pvs.a(new pvr(this));
+    return (ArticleInfo)this.jdField_a_of_type_Pvr.a(paramInt, a(paramLong));
   }
   
-  public static boolean b(ArticleInfo paramArticleInfo)
+  public List<BaseArticleInfo> a(int paramInt1, List<BaseArticleInfo> paramList1, List<BaseArticleInfo> paramList2, int paramInt2)
   {
-    return (paramArticleInfo != null) && (paramArticleInfo.mFeedType == 29) && (!TextUtils.isEmpty(paramArticleInfo.ptsLiteAppName));
-  }
-  
-  private void c()
-  {
-    c.clear();
-    Object localObject = pxa.a().a("default_feeds");
-    if (localObject == null)
+    if (paramList1 == null) {
+      return null;
+    }
+    this.jdField_a_of_type_Pvr.a(paramInt1);
+    if (!this.jdField_a_of_type_Pvr.a(paramInt1))
     {
-      QLog.i("PTSLiteItemViewBuilder", 1, "[initViewTypeCount], appNameList is null.");
+      QLog.d("ReadinjoyFixPosArticleManager", 1, "has no fix article , give up insert !");
+      return paramList1;
+    }
+    QLog.d("ReadinjoyFixPosArticleManager", 1, "insertFixPosArticles type : " + paramInt2 + ", channelID : " + paramInt1);
+    long l;
+    int j;
+    if (paramInt2 == 2)
+    {
+      paramInt2 = 0;
+      if (paramInt2 < paramList2.size())
+      {
+        l = ((BaseArticleInfo)paramList2.get(paramInt2)).mRecommendSeq;
+        if (!a(l)) {}
+        for (;;)
+        {
+          paramInt2 += 1;
+          break;
+          i = a(l);
+          j = paramInt2 - i;
+          localArrayList1 = (ArrayList)this.jdField_a_of_type_Pvr.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+          localArrayList2 = (ArrayList)this.jdField_a_of_type_Pvr.b.get(Integer.valueOf(paramInt1));
+          if ((localArrayList1 != null) && (localArrayList2 != null))
+          {
+            int k = localArrayList1.indexOf(Integer.valueOf(i));
+            if (k >= 0)
+            {
+              localArrayList2.set(k, Integer.valueOf(j));
+              QLog.d("ReadinjoyFixPosArticleManager", 1, "fix offset when loadMore, expect : " + i + ", now : " + paramInt2 + ", offset : " + j);
+            }
+          }
+        }
+      }
+    }
+    paramList2 = (ArrayList)this.jdField_a_of_type_Pvr.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    ArrayList localArrayList1 = (ArrayList)this.jdField_a_of_type_Pvr.b.get(Integer.valueOf(paramInt1));
+    Object localObject = (ArrayList)this.jdField_a_of_type_Pvr.c.get(Integer.valueOf(paramInt1));
+    if ((paramList2 == null) || (localArrayList1 == null) || (localObject == null))
+    {
+      QLog.d("ReadinjoyFixPosArticleManager", 1, "ad article or positions is empty ! return ori data ");
+      return paramList1;
+    }
+    ArrayList localArrayList2 = new ArrayList(paramList1);
+    int i = Math.min(paramList2.size(), ((ArrayList)localObject).size());
+    paramInt2 = 0;
+    if (paramInt2 < i)
+    {
+      j = ((Integer)paramList2.get(paramInt2)).intValue();
+      j = ((Integer)localArrayList1.get(paramInt2)).intValue() + j;
+      if (paramList1.size() + paramList2.size() < j + 1) {
+        oqh.a("ReadinjoyFixPosArticleManager", "expect insert into " + j + ", but article size is not enougharticle size:" + paramList1.size() + " sp size: " + paramList2.size());
+      }
+      for (;;)
+      {
+        paramInt2 += 1;
+        break;
+        j = a(paramInt1, localArrayList2, j);
+        if (j == -1)
+        {
+          QLog.d("ReadinjoyFixPosArticleManager", 1, "find real position is error ! ");
+        }
+        else
+        {
+          l = b(1, ((Integer)paramList2.get(paramInt2)).intValue());
+          QLog.d("ReadinjoyFixPosArticleManager", 1, "insert article , position : " + j + ", expectIndex : " + paramList2.get(paramInt2) + ", fakeSeq : " + l);
+          localObject = pmh.a().a(paramInt1, l);
+          if (localObject != null) {
+            localArrayList2.add(j, localObject);
+          }
+        }
+      }
+    }
+    return localArrayList2;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyFixPosArticleManager", 2, " registerReommendADListener " + paramInt);
+    }
+    this.jdField_a_of_type_Pvr.c(paramInt);
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    if (!a(paramLong)) {
       return;
     }
-    jdField_a_of_type_Int = this.jdField_a_of_type_Rqj.a().a() + 140;
-    int i = jdField_a_of_type_Int;
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      String str = (String)((Iterator)localObject).next();
-      int j = i + 1;
-      i = j;
-      if (!c.containsKey(str))
-      {
-        c.put(str, Integer.valueOf(j));
-        QLog.i("PTSLiteItemViewBuilder", 1, "[initViewTypeCount], appName = " + str + ", viewType = " + j);
-        i = j;
-      }
-    }
-    jdField_b_of_type_Int = i;
-    QLog.i("PTSLiteItemViewBuilder", 1, "[initViewType], type_pts_lite_gone = " + jdField_a_of_type_Int + ", type_pts_lite_end = " + jdField_b_of_type_Int);
+    int i = a(paramLong);
+    this.jdField_a_of_type_Pvr.a(paramInt, i);
   }
   
-  public View a(View paramView, ArticleInfo paramArticleInfo, int paramInt)
+  public void a(int paramInt, snh paramsnh)
   {
-    if (paramArticleInfo == null)
-    {
-      QLog.e("PTSLiteItemViewBuilder", 1, "[getView], articleInfo is null.");
-      return paramView;
+    if (paramsnh == null) {
+      return;
     }
-    View localView = null;
-    PTSItemData localPTSItemData = paramArticleInfo.ptsItemData;
-    if (localPTSItemData != null)
-    {
-      localView = this.jdField_a_of_type_Pvs.a(paramView, localPTSItemData);
-      this.jdField_a_of_type_JavaUtilHashMap.put(localPTSItemData.getItemID(), Integer.valueOf(paramInt));
-      this.jdField_b_of_type_JavaUtilHashMap.put(localPTSItemData.getItemID(), paramArticleInfo);
-      a(localPTSItemData);
-    }
-    paramView = localView;
-    if (localView == null)
-    {
-      paramView = new PTSItemView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setVisibility(8);
-      QLog.i("PTSLiteItemViewBuilder", 1, "[getView] hide the itemView, title = " + paramArticleInfo.mTitle);
-    }
-    paramArticleInfo = paramView.getLayoutParams();
-    if (paramArticleInfo != null) {
-      paramView.setLayoutParams(new AbsListView.LayoutParams(paramArticleInfo));
-    }
-    paramView.setTag(2131369027, this.jdField_a_of_type_Rqj.a());
-    return paramView;
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(paramsnh));
+    this.jdField_a_of_type_Pvr.c(paramInt);
   }
   
-  public void a()
+  public void b(int paramInt)
   {
-    this.jdField_a_of_type_Pvs.a();
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_Pvr.d(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pvq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,163 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_operate_area_origin",
+    "layout_type": "layout_relative",
+    "below_of_view": "id_ad_bottom_top_container",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "match_parent"
+    },
+    "attributes": {
+        "setBackgroundColorString:": "#f8f8f8",
+        "setBorderColorString:": "#f8f8f8",
+        "setBorderWidthString:": "0",
+        "setAttatchInfo:": "$visible_origin"
+    },
+    "event_type": "ad_nothing_click_in_detail",
+    "subviews": [
+        {
+            "view_type": "container",
+            "layout_type": "layout_relative",
+            "view_id": "id_download_container_origin",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "align_parent_center_vertical": "YES",
+            "align_parent_right": "YES",
+            "margin_right": "12",
+            "visible_depend_on_children": "YES",
+            "subviews": [
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_tv_download_origin",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "event_type": "cmd_native_detail_ad_download_click",
+                    "attributes": {
+                        "setText:lineSpace:": [
+                            "$ios_download",
+                            "0"
+                        ],
+                        "setTextColorString:": "#40A0FF",
+                        "setFontSizeString:": "12",
+                        "setNumberOfLinesString:": "1"
+                    }
+                },
+                {
+                    "view_type": "ReadInJoyAdDownloadView",
+                    "view_id": "id_view_AdDownloadView_origin",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "event_type": "ad_button_click_in_detail",
+                    "attributes": {
+                        "setFeedsModel:": "$article_model",
+                        "setDownloadBtnStyle:": {
+                            "buttonTextColor": "#40A0FF",
+                            "buttonTextSize": "14",
+                            "buttonCornerSize": "",
+                            "buttonBackgroundColor": "",
+                            "showBunttonLeftIconOrNot": "",
+                            "buttonBorderSize": "",
+                            "buttonBorderColor": "",
+                            "buttonHorizontalPadding": "",
+                            "buttonVerticalPadding": "",
+                            "showAdIconOrNot": "",
+                            "buttonAlignment": "3"
+                        },
+                        "progressStyle:": {
+                            "style": "1",
+                            "showProgress": "1",
+                            "width": "82",
+                            "height": "20",
+                            "textColor": "#ffffff",
+                            "textSize": "12",
+                            "corner": "2.5",
+                            "background": "",
+                            "progressBg": "#CCCCCC",
+                            "secondaryProgressBg": "#CCCCCC",
+                            "progressColor": "#40A0FF"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "view_type": "container",
+            "layout_type": "layout_linear",
+            "direction": "vertical",
+            "left_of_view": "id_download_container_origin",
+            "align_parent_left": "YES",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "padding_left": "12",
+            "padding_right": "15",
+            "padding_bottom": "11",
+            "padding_top": "10",
+            "visible_depend_on_children": "YES",
+            "subviews": [
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_tv_author_origin",
+                    "margin_top": "0",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "270"
+                    },
+                    "event_type": "ad_name_click_in_detail",
+                    "attributes": {
+                        "setText:lineSpace:": [
+                            "$author_text",
+                            "0"
+                        ],
+                        "setTextColorString:": "#000000",
+                        "setFontSizeString:": "14",
+                        "setNumberOfLinesString:": "1"
+                    }
+                },
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_tv_title_origin",
+                    "margin_bottom": "0",
+                    "margin_top": "5",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "270"
+                    },
+                    "event_type": "ad_title_click_in_detail",
+                    "attributes": {
+                        "setText:lineSpace:": [
+                            "$title",
+                            "0"
+                        ],
+                        "setTextColorString:": "#bbbbbb",
+                        "setFontSizeString:": "12",
+                        "setNumberOfLinesString:": "2"
+                    }
+                }
+            ]
+        }
+    ]
+}

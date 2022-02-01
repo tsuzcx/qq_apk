@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
 import android.graphics.Bitmap;
-import bflz;
-import bjdt;
+import biti;
+import blsb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,20 +15,20 @@ public final class QZoneHelper$3
   {
     try
     {
-      bjdt.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
+      blsb.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
       QLog.e("QZoneHelper", 2, "createAlbumShortCut error! exception e = " + localException.getMessage());
-      bflz.a().a(2131690149);
+      biti.a().a(2131690025);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.3
  * JD-Core Version:    0.7.0.1
  */

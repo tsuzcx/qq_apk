@@ -9,7 +9,7 @@ import com.tencent.richmediabrowser.model.video.VideoModel;
 import com.tencent.richmediabrowser.presenter.BasePresenter;
 import com.tencent.richmediabrowser.presenter.pic.PicturePresenter;
 import com.tencent.richmediabrowser.presenter.video.VideoPresenter;
-import com.tencent.richmediabrowser.view.BaseView;
+import com.tencent.richmediabrowser.view.BrowserBaseView;
 import com.tencent.richmediabrowser.view.pic.PictureView;
 import com.tencent.richmediabrowser.view.video.VideoView;
 
@@ -55,7 +55,7 @@ public class MVPFactory
     return localIMvpFactory.createPresenter(paramInt);
   }
   
-  public BaseView createView(Activity paramActivity, int paramInt, BasePresenter paramBasePresenter)
+  public BrowserBaseView createView(Activity paramActivity, int paramInt, BasePresenter paramBasePresenter)
   {
     IMvpFactory localIMvpFactory;
     switch (paramInt)
@@ -84,7 +84,7 @@ public class MVPFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.core.MVPFactory
  * JD-Core Version:    0.7.0.1
  */

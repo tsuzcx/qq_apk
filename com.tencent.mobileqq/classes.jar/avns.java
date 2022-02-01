@@ -1,38 +1,58 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class avns
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class avns
+  extends WebViewPlugin
 {
-  avns(avnl paramavnl) {}
+  aanz a;
   
-  public void onGlobalLayout()
+  public avns()
   {
-    Object localObject = new Rect();
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getRootView().getHeight() - ((Rect)localObject).bottom;
-    if (i <= 0) {}
-    int j;
-    do
+    this.mPluginNameSpace = "connect";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    if (("connect".equals(paramString2)) && ("exchangeID".equals(paramString3)) && (paramVarArgs.length > 0)) {}
+    try
     {
-      return;
-      j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getScrollY();
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getCurrentFocus();
-    } while ((localObject == null) || (!(localObject instanceof EditText)) || (((View)localObject).getParent() == null));
-    int k = ((ViewGroup)((View)localObject).getParent()).getBottom();
-    int m = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getMeasuredHeight();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollBy(0, k + i - m - j);
+      paramString3 = new JSONObject(paramVarArgs[0]);
+      paramJsBridgeListener = paramString3.optString("appid");
+      paramString1 = paramString3.optString("openid");
+      paramString2 = paramString3.optString("troopuin");
+      paramString3 = paramString3.optString("callback");
+      if (this.a == null)
+      {
+        this.a = aanz.a();
+        this.a.a();
+      }
+      this.a.b(paramJsBridgeListener, paramString1, paramString2, new avnt(this, paramString3));
+      bool = true;
+    }
+    catch (JSONException paramJsBridgeListener)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ConnectApiPlugin", 2, "handleJsRequest JSONException:" + paramJsBridgeListener);
+    }
+    return bool;
+    return false;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.a != null) {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avns
  * JD-Core Version:    0.7.0.1
  */

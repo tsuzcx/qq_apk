@@ -1,29 +1,61 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import org.json.JSONObject;
 
-class trl
-  extends RecyclerView.ViewHolder
+public class trl
 {
-  public trl(BaseWidgetView paramBaseWidgetView)
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  
+  public trl() {}
+  
+  public trl(JSONObject paramJSONObject)
   {
-    super(paramBaseWidgetView);
+    if (paramJSONObject == null) {}
+    do
+    {
+      return;
+      if (paramJSONObject.has("busiType")) {
+        this.jdField_a_of_type_Int = paramJSONObject.getInt("busiType");
+      }
+      if (paramJSONObject.has("vid")) {
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("vid");
+      }
+      if (paramJSONObject.has("width")) {
+        this.jdField_b_of_type_Int = paramJSONObject.getInt("width");
+      }
+      if (paramJSONObject.has("height")) {
+        this.jdField_c_of_type_Int = paramJSONObject.getInt("height");
+      }
+      if (paramJSONObject.has("duration")) {
+        this.jdField_d_of_type_Int = paramJSONObject.getInt("duration");
+      }
+      if (paramJSONObject.has("poster")) {
+        this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("poster");
+      }
+      if (paramJSONObject.has("title")) {
+        this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("title");
+      }
+      if (paramJSONObject.has("xgFileSize")) {
+        this.jdField_a_of_type_Long = paramJSONObject.getLong("xgFileSize");
+      }
+    } while (!paramJSONObject.has("videoUrl"));
+    this.jdField_d_of_type_JavaLangString = paramJSONObject.getString("videoUrl");
   }
   
-  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo)
+  public String toString()
   {
-    if ((this.itemView instanceof BaseWidgetView))
-    {
-      this.itemView.setTag(this);
-      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
-    }
+    return "VideoInfo{busiType=" + this.jdField_a_of_type_Int + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", duration=" + this.jdField_d_of_type_Int + ", coverUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", title='" + this.jdField_c_of_type_JavaLangString + '\'' + ", xgFileSize=" + this.jdField_a_of_type_Long + ", videoUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     trl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,17 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.data.MessageForPic;
 
-class agpm
-  extends alpa
+public class agpm
+  extends afwr
 {
-  agpm(agpi paramagpi) {}
+  public TextView a;
+  public URLDrawable a;
+  public ChatThumbView a;
+  public MessageForPic a;
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
-  {
-    if (paramBoolean)
-    {
-      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())) {
-        agpi.a(this.a);
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while (paramBoolean1.booleanValue());
-        paramString1 = BaseActivity.sTopActivity;
-      } while (paramString1 == null);
-      bdgm.a(paramString1, 230, paramString1.getString(2131690004), null, null, paramString1.getString(2131720095), new agpn(this, paramString1), null).show();
-      return;
-    }
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramInt, 0).b(this.a.a());
-  }
+  public agpm(agpl paramagpl) {}
 }
 
 

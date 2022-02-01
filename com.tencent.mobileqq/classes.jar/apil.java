@@ -1,25 +1,29 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
 
 public class apil
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  private String a;
+  public apil(ArkAppModuleBase.APIAuthority.1 param1, bgpa parambgpa) {}
   
-  public apil(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramString;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
+    if (this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Apim != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Apim.a();
     }
-    auwc.a(this.a, 1);
-    return true;
+    if (this.jdField_a_of_type_Bgpa.isShowing()) {}
+    try
+    {
+      this.jdField_a_of_type_Bgpa.dismiss();
+      label39:
+      apii.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.d, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.e, 1);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label39;
+    }
   }
 }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.SparseArray;
 import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,13 +40,17 @@ public class EmojiFragment$TemplateListAdapter
   {
     EmojiFragment.TemplateInfo localTemplateInfo = (EmojiFragment.TemplateInfo)this.mTemplateBundleInfoList.get(paramInt);
     if (localTemplateInfo == null) {}
-    do
+    for (;;)
     {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramTemplateItemVH, paramInt, getItemId(paramInt));
       return;
-      paramTemplateItemVH = paramTemplateItemVH.tempListItem;
-    } while (paramTemplateItemVH == null);
-    EmojiFragment.access$500(this.this$0).put(localTemplateInfo.rId, EmojiFragment.TempListItem.access$200(paramTemplateItemVH));
-    paramTemplateItemVH.setData(localTemplateInfo);
+      EmojiFragment.TempListItem localTempListItem = paramTemplateItemVH.tempListItem;
+      if (localTempListItem != null)
+      {
+        EmojiFragment.access$500(this.this$0).put(localTemplateInfo.rId, EmojiFragment.TempListItem.access$200(localTempListItem));
+        localTempListItem.setData(localTemplateInfo);
+      }
+    }
   }
   
   public EmojiFragment.TemplateListAdapter.TemplateItemVH onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -55,7 +60,7 @@ public class EmojiFragment$TemplateListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.EmojiFragment.TemplateListAdapter
  * JD-Core Version:    0.7.0.1
  */

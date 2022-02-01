@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bczz;
-import bdoo;
+import bgfz;
+import bgtn;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 
@@ -29,7 +29,7 @@ public class FormMultiLineSwitchItem
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.FormItem).getString(22);
+    this.jdField_a_of_type_JavaLangString = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.FormItem).getString(21);
     a();
   }
   
@@ -38,7 +38,7 @@ public class FormMultiLineSwitchItem
     this.jdField_a_of_type_AndroidWidgetTextView = a();
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
     localLayoutParams.addRule(15, 0);
-    localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131296647);
+    localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131296690);
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     this.b = new TextView(getContext());
@@ -47,20 +47,20 @@ public class FormMultiLineSwitchItem
     }
     if ((AppSetting.c) && (Build.VERSION.SDK_INT >= 16))
     {
-      bczz.a(this.b, false);
+      bgfz.a(this.b, false);
       setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText() + " " + this.jdField_a_of_type_JavaLangString);
     }
     this.b.setSingleLine(false);
     this.b.setDuplicateParentStateEnabled(true);
-    int i = bdoo.a();
-    int j = bdoo.a(96.0F);
+    int i = bgtn.a();
+    int j = bgtn.a(96.0F);
     this.b.setMaxWidth(i - j);
-    localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131296637);
-    localLayoutParams.bottomMargin = getResources().getDimensionPixelOffset(2131296643);
-    localLayoutParams.leftMargin = getResources().getDimensionPixelSize(2131298038);
-    localLayoutParams.addRule(3, 2131366757);
-    i = getResources().getDimensionPixelSize(2131296662);
-    this.b.setTextColor(getResources().getColorStateList(2131166977));
+    localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131296680);
+    localLayoutParams.bottomMargin = getResources().getDimensionPixelOffset(2131296686);
+    localLayoutParams.leftMargin = getResources().getDimensionPixelSize(2131298120);
+    localLayoutParams.addRule(3, 2131367023);
+    i = getResources().getDimensionPixelSize(2131296705);
+    this.b.setTextColor(getResources().getColorStateList(2131167060));
     this.b.setTextSize(0, i);
     this.b.setGravity(19);
     addView(this.b, localLayoutParams);
@@ -83,7 +83,7 @@ public class FormMultiLineSwitchItem
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
       if (paramInt == 8)
       {
-        setMinimumHeight(getResources().getDimensionPixelSize(2131296655));
+        setMinimumHeight(getResources().getDimensionPixelSize(2131296698));
         localLayoutParams.addRule(15, -1);
       }
     }
@@ -96,7 +96,7 @@ public class FormMultiLineSwitchItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormMultiLineSwitchItem
  * JD-Core Version:    0.7.0.1
  */

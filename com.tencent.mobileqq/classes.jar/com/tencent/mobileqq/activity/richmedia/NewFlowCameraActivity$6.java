@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import aepi;
-import ajpx;
-import ajry;
+import afur;
+import alin;
+import alko;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import azln;
-import bcyz;
-import bhtb;
+import bcml;
+import bgey;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.util.VersionUtils;
 import java.util.HashMap;
 
 class NewFlowCameraActivity$6
@@ -31,14 +31,14 @@ class NewFlowCameraActivity$6
     {
       this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       this.this$0.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      azln.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
-      if (bhtb.e()) {
+      bcml.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
+      if (VersionUtils.isHoneycomb()) {
         this.this$0.I();
       }
-      NewFlowCameraActivity.a(this.this$0).put("cameraType", String.valueOf(ajpx.a));
+      NewFlowCameraActivity.a(this.this$0).put("cameraType", String.valueOf(alin.a));
       NewFlowCameraActivity.a(this.this$0).put("isTemplateMode", String.valueOf(this.this$0.f));
-      if (this.this$0.jdField_a_of_type_Ajry != null) {
-        str = this.this$0.jdField_a_of_type_Ajry.a();
+      if (this.this$0.jdField_a_of_type_Alko != null) {
+        str = this.this$0.jdField_a_of_type_Alko.a();
       }
       NewFlowCameraActivity.a(this.this$0).put("templateId", str);
       if ((this.this$0.o != 90) && (this.this$0.o != 270)) {
@@ -60,16 +60,16 @@ class NewFlowCameraActivity$6
         return;
         this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         Object localObject;
-        if (this.this$0.jdField_a_of_type_Ajry != null)
+        if (this.this$0.jdField_a_of_type_Alko != null)
         {
-          localObject = this.this$0.jdField_a_of_type_Ajry.a();
+          localObject = this.this$0.jdField_a_of_type_Alko.a();
           if ((localObject == null) || (TextUtils.isEmpty(((PtvTemplateManager.PtvTemplateInfo)localObject).iconurl))) {
             break label499;
           }
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          i = aepi.a(50.0F, this.this$0.getResources());
+          i = afur.a(50.0F, this.this$0.getResources());
           GradientDrawable localGradientDrawable = new GradientDrawable();
-          localGradientDrawable.setColor(this.this$0.getResources().getColor(2131165804));
+          localGradientDrawable.setColor(this.this$0.getResources().getColor(2131165853));
           localGradientDrawable.setShape(1);
           localGradientDrawable.setSize(i, i);
           localURLDrawableOptions.mRequestWidth = i;
@@ -77,13 +77,13 @@ class NewFlowCameraActivity$6
           localURLDrawableOptions.mFailedDrawable = localGradientDrawable;
           localURLDrawableOptions.mLoadingDrawable = localGradientDrawable;
           localObject = URLDrawable.getDrawable(((PtvTemplateManager.PtvTemplateInfo)localObject).iconurl, localURLDrawableOptions);
-          ((URLDrawable)localObject).setTag(bcyz.a(i, i));
-          ((URLDrawable)localObject).setDecodeHandler(bcyz.a);
+          ((URLDrawable)localObject).setTag(bgey.a(i, i));
+          ((URLDrawable)localObject).setDecodeHandler(bgey.a);
           this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         }
         for (;;)
         {
-          if (!bhtb.e()) {
+          if (!VersionUtils.isHoneycomb()) {
             break label562;
           }
           this.this$0.I();
@@ -93,7 +93,7 @@ class NewFlowCameraActivity$6
           {
             this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
             this.this$0.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            azln.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
+            bcml.a(this.this$0.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.2F, 0.1F, 1.2F, 400, null);
           }
         }
         break;
@@ -103,7 +103,7 @@ class NewFlowCameraActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.6
  * JD-Core Version:    0.7.0.1
  */

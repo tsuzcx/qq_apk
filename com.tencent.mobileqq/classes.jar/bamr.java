@@ -1,51 +1,40 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.ClipboardManager;
-import android.view.View;
-import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 
-final class bamr
-  implements bhuk
+class bamr
+  implements bdvw
 {
-  bamr(int paramInt, String paramString1, Context paramContext, String paramString2, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void onResp(bdwt parambdwt)
   {
-    switch (paramInt)
+    Object localObject = (bamu)parambdwt.jdField_a_of_type_Bdws.a();
+    lbc.c("CaptureVideoFilterManager", "download file call back. file = " + ((bamu)localObject).a);
+    if (parambdwt.jdField_a_of_type_Int != 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
+      lbc.c("CaptureVideoFilterManager", "download file faild. errcode = " + parambdwt.b);
       return;
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        paramView = Intent.createChooser(new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.jdField_a_of_type_JavaLangString)), this.jdField_a_of_type_AndroidContentContext.getString(2131694185));
-        paramView.putExtra("big_brother_source_key", this.b);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      }
-      else
-      {
-        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-        paramView.putExtra("big_brother_source_key", this.b);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-        bamp.a("1", "2");
-        continue;
-        ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-        bamp.a("2", "1");
-        continue;
-        bamp.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-        bamp.b("0X800A00A", "0X800A00A");
-        continue;
-        AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, false, this.jdField_a_of_type_JavaLangString, true);
-        bamp.a("3", "1");
-        continue;
-        AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, true, this.jdField_a_of_type_JavaLangString, true);
-        bamp.a("4", "1");
-      }
+    }
+    if (!((bamu)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambdwt.jdField_a_of_type_Bdws.c)))
+    {
+      lbc.c("CaptureVideoFilterManager", "download file faild : md5 is not match.");
+      bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
+      return;
+    }
+    lbc.c("CaptureVideoFilterManager", "download file successed.");
+    try
+    {
+      localObject = bamn.a();
+      bgmg.a(parambdwt.jdField_a_of_type_Bdws.c, (String)localObject, false);
+      bgmg.d(parambdwt.jdField_a_of_type_Bdws.c);
+      return;
+    }
+    catch (IOException parambdwt)
+    {
+      parambdwt.printStackTrace();
+      lbc.c("CaptureVideoFilterManager", "BEAUTY_ZIP unzip file faild.");
     }
   }
+  
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

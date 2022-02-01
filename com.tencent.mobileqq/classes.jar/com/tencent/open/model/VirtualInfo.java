@@ -3,12 +3,12 @@ package com.tencent.open.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfra;
+import biyg;
 
 public class VirtualInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VirtualInfo> CREATOR = new bfra();
+  public static final Parcelable.Creator<VirtualInfo> CREATOR = new biyg();
   public long a;
   public String a;
   public String b;
@@ -45,7 +45,7 @@ public class VirtualInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.model.VirtualInfo
  * JD-Core Version:    0.7.0.1
  */

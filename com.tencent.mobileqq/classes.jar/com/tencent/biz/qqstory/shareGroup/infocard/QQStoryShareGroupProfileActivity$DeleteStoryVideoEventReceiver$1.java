@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.shareGroup.infocard;
 
-import wej;
+import xxu;
 
 public class QQStoryShareGroupProfileActivity$DeleteStoryVideoEventReceiver$1
   implements Runnable
 {
-  public QQStoryShareGroupProfileActivity$DeleteStoryVideoEventReceiver$1(wej paramwej, QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
+  public QQStoryShareGroupProfileActivity$DeleteStoryVideoEventReceiver$1(xxu paramxxu, QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QQStoryShareGroupProfileActivity$DeleteStoryVideoEventReceiver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.DeleteStoryVideoEventReceiver.1
  * JD-Core Version:    0.7.0.1
  */

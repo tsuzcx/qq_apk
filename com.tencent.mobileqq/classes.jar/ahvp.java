@@ -1,8 +1,6 @@
 public abstract interface ahvp
 {
-  public abstract void a();
-  
-  public abstract void a(float paramFloat);
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 

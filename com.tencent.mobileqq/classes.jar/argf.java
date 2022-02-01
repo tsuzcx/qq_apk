@@ -1,40 +1,27 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.PrinterDefaultActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-
-final class argf
-  implements View.OnClickListener
+public class argf
 {
-  argf(String paramString, arhw paramarhw) {}
+  private long a;
+  private long b;
   
-  public void onClick(View paramView)
+  public argf(long paramLong)
   {
-    paramView = (alqo)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a(8);
-    if (!arso.b(this.jdField_a_of_type_JavaLangString)) {}
-    for (;;)
-    {
-      return;
-      if (paramView.jdField_a_of_type_Df.a(arrr.a(this.jdField_a_of_type_JavaLangString)))
-      {
-        Activity localActivity = this.jdField_a_of_type_Arhw.getActivity();
-        if (!paramView.jdField_a_of_type_Df.a()) {
-          localActivity.startActivity(new Intent(localActivity, PrinterDefaultActivity.class));
-        }
-        while (this.jdField_a_of_type_Arhw.b())
-        {
-          long l = this.jdField_a_of_type_Arhw.a().b();
-          arrr.a(this.jdField_a_of_type_Arhw.a(), l);
-          return;
-          paramView.jdField_a_of_type_Alyw.a((BaseActivity)localActivity, this.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
+    this.b = paramLong;
+    this.a = this.b;
+  }
+  
+  public long a()
+  {
+    return this.b;
+  }
+  
+  public argf a()
+  {
+    return new argf(this.b);
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.b = (((float)this.b * paramFloat));
   }
 }
 

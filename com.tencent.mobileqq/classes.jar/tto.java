@@ -1,30 +1,32 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
 
-class tto
-  implements bfah
+public class tto
+  implements TextWatcher
 {
-  tto(ttl paramttl) {}
+  public tto(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((ttl.a(this.a) == null) || (!ttl.a(this.a).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    if (TextUtils.isEmpty(ReadInJoyNewSearchActivity.a(this.a).getText().toString()))
     {
-    case -2: 
-    case -1: 
-    default: 
-      QQToast.a(this.a.a(), 1, alud.a(2131715039), 0).a();
+      ReadInJoyNewSearchActivity.a(this.a).setVisibility(8);
       return;
     }
-    QQToast.a(this.a.a(), 2, alud.a(2131715041), 0).a();
+    ReadInJoyNewSearchActivity.a(this.a).setVisibility(0);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tto
  * JD-Core Version:    0.7.0.1
  */

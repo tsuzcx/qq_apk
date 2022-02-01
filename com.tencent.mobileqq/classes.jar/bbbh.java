@@ -1,33 +1,39 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+
 public class bbbh
-  extends bbbi
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public bbbh(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public bbbh()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" name:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" size:");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" voiceLength:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" autoToText:");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(" type:").append(this.c).append(" audioPanel:").append(this.d);
-    return localStringBuilder.toString();
+    String str = (String)paramView.getTag();
+    if (SignatureHistoryFragment.a(this.a).contains(str))
+    {
+      SignatureHistoryFragment.a(this.a).remove(str);
+      ((CheckBox)paramView).setChecked(false);
+    }
+    for (;;)
+    {
+      SignatureHistoryFragment.b(this.a, false);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (SignatureHistoryFragment.a(this.a).size() >= 200)
+      {
+        this.a.a(1, 2131718142);
+        ((CheckBox)paramView).setChecked(false);
+      }
+      else
+      {
+        SignatureHistoryFragment.a(this.a).add(str);
+        ((CheckBox)paramView).setChecked(true);
+      }
+    }
   }
 }
 

@@ -1,27 +1,25 @@
-public class mdi
-  extends mdf
+import android.graphics.Bitmap;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
+
+final class mdi
 {
-  boolean a = false;
+  public int a;
+  public long a;
+  public Bitmap a;
+  public AVPhoneUserInfo a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e = true;
   
-  public mdi(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, boolean paramBoolean)
-  {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
-    this.a = paramBoolean;
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public boolean b()
-  {
-    return this.a;
-  }
+  private mdi(mdf parammdf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mdi
  * JD-Core Version:    0.7.0.1
  */

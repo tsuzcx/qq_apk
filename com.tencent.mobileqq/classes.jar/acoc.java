@@ -1,23 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
-import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 
 public class acoc
-  implements DialogInterface.OnClickListener
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public acoc(ChatHistoryImageView paramChatHistoryImageView) {}
+  public acoc(GdtMotiveVideoFragment paramGdtMotiveVideoFragment, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    paramDialogInterface = this.a;
-    ChatHistoryImageView.DownloadAndSaveTask localDownloadAndSaveTask = new ChatHistoryImageView.DownloadAndSaveTask(this.a, this.a.jdField_a_of_type_JavaUtilArrayList, true, false);
-    paramDialogInterface.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask = localDownloadAndSaveTask;
-    ThreadManager.post(localDownloadAndSaveTask, 5, null, true);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+    if ((paramInt & 0x4) == 0) {
+      this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(7942);
     }
   }
 }

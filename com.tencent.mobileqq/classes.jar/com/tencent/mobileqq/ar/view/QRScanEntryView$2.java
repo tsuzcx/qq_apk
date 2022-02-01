@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import anft;
+import apek;
 
 class QRScanEntryView$2
   implements Runnable
@@ -9,12 +9,12 @@ class QRScanEntryView$2
   
   public void run()
   {
-    anft.a().b();
+    apek.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.2
  * JD-Core Version:    0.7.0.1
  */

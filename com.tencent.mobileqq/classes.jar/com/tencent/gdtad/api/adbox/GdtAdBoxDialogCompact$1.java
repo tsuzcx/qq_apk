@@ -1,11 +1,11 @@
 package com.tencent.gdtad.api.adbox;
 
-import aanp;
+import ackz;
 
 public class GdtAdBoxDialogCompact$1
   implements Runnable
 {
-  public GdtAdBoxDialogCompact$1(aanp paramaanp) {}
+  public GdtAdBoxDialogCompact$1(ackz paramackz) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class GdtAdBoxDialogCompact$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.adbox.GdtAdBoxDialogCompact.1
  * JD-Core Version:    0.7.0.1
  */

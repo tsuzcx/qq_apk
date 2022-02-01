@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
-
-public class atnd
-  implements DialogInterface.OnClickListener
+public abstract interface atnd
 {
-  public atnd(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ListenTogetherOverlayFragment.a(this.a).finish();
-  }
+  public abstract void b();
 }
 
 

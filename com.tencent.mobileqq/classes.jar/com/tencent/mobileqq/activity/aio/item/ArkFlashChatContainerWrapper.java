@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afii;
-import afjv;
+import agpq;
+import agrd;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
-import arwe;
+import audo;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewModelBase.AppInfo;
@@ -25,11 +25,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class ArkFlashChatContainerWrapper
-  extends afii
+  extends agpq
 {
   private static final List<WeakReference<ArkFlashChatContainerWrapper>> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private static final List<WeakReference<ArkFlashChatContainerWrapper>> jdField_b_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private arwe jdField_a_of_type_Arwe = new afjv(this);
+  private audo jdField_a_of_type_Audo = new agrd(this);
   public WeakReference<QQAppInterface> a;
   public boolean a;
   private WeakReference<MessageForArkFlashChat> jdField_b_of_type_JavaLangRefWeakReference;
@@ -219,7 +219,7 @@ public class ArkFlashChatContainerWrapper
     if (QLog.isColorLevel()) {
       QLog.i("ArkApp", 2, String.format("request from url", new Object[] { this }));
     }
-    paramAppInfo.registObserver(this.jdField_a_of_type_Arwe);
+    paramAppInfo.registObserver(this.jdField_a_of_type_Audo);
     localFlashChatManager.a(this.c);
     return false;
   }
@@ -237,7 +237,7 @@ public class ArkFlashChatContainerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper
  * JD-Core Version:    0.7.0.1
  */

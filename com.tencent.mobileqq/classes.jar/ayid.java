@@ -1,27 +1,15 @@
-import java.util.Comparator;
-
-final class ayid
-  implements Comparator<ayhs>
+public class ayid
 {
-  public int a(ayhs paramayhs1, ayhs paramayhs2)
-  {
-    long l1 = paramayhs1.c();
-    long l2 = paramayhs2.c();
-    if (l1 < l2) {}
-    do
-    {
-      return 1;
-      if (l1 > l2) {
-        return -1;
-      }
-      l1 = paramayhs1.b();
-      l2 = paramayhs2.b();
-    } while (l1 < l2);
-    if (l1 > l2) {
-      return -1;
-    }
-    return 0;
-  }
+  public int a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  
+  public ayid(ayib paramayib) {}
 }
 
 

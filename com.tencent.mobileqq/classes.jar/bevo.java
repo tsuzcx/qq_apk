@@ -1,40 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.SlideTabWidget;
+import java.util.Set;
 
-public class bevo
-  extends Handler
+class bevo
+  extends beyb
 {
-  public bevo(SlideTabWidget paramSlideTabWidget) {}
+  bevo(bevn parambevn) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(Set<Long> paramSet)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      SlideTabWidget.a(this.a, 0.0F);
-      SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      if (SlideTabWidget.a(this.a) < 1.0F)
-      {
-        SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
-        if (SlideTabWidget.a(this.a) >= 1.0F) {
-          SlideTabWidget.a(this.a, false);
-        }
-        this.a.invalidate();
-        sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(2), 10L);
-      return;
+    this.a.a = 1;
+    if ((paramSet != null) && (paramSet.contains(Long.valueOf(bevn.a(this.a))))) {
+      this.a.a = 2;
     }
-    SlideTabWidget.a(this.a, 1.0F);
-    SlideTabWidget.a(this.a, SlideTabWidget.a(this.a));
+    bevx.c("TroopFileTransferMgr", bevx.a, "onW2MPausedUpload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
+    if (this.a.b > 0)
+    {
+      if ((this.a.b == 2) || (this.a.a == 2)) {
+        bfrh.a(bevn.a(this.a), bevn.b(this.a), 107);
+      }
+      this.a.a = 0;
+      this.a.b = 0;
+    }
   }
 }
 

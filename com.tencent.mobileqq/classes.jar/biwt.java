@@ -1,31 +1,27 @@
-public class biwt
-  implements biws
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class biwt
+  implements View.OnClickListener
 {
-  public void a() {}
+  biwt(biws parambiws, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
   
-  public void a(String paramString) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
-  
-  public void j() {}
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Biws, this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Biws.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biwt
  * JD-Core Version:    0.7.0.1
  */

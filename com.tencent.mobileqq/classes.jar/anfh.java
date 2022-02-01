@@ -1,14 +1,27 @@
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.redtouch.RedTouch;
+
 public class anfh
-  extends anfc
 {
-  public anfh(int paramInt)
-  {
-    super(paramInt);
-  }
-  
-  protected void a() {}
-  
-  protected void a(anff paramanff) {}
+  public View a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public anff a;
+  public URLImageView a;
+  public RedTouch a;
+  public ImageView b;
+  public RelativeLayout b;
+  public TextView b;
+  public ImageView c;
+  public RelativeLayout c;
+  public TextView c;
+  public ImageView d;
+  public ImageView e;
 }
 
 

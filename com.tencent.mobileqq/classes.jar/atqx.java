@@ -1,24 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-
-final class atqx
-  implements DialogInterface.OnClickListener
+class atqx
+  implements atmf
 {
-  atqx(BaseActivity paramBaseActivity, int paramInt, String paramString) {}
+  atqx(atqu paramatqu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-    atpw.a(paramDialogInterface).a.a(3, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    atpq localatpq = new atpq(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    atpw.a(paramDialogInterface).a(localatpq, false);
-    azqs.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
+    this.a.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqx
  * JD-Core Version:    0.7.0.1
  */

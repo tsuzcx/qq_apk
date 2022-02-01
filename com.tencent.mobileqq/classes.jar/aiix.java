@@ -1,59 +1,19 @@
-import com.tencent.mobileqq.activity.miniaio.MiniECommerceExposeDataReportHelper.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.ListView;
-import mqq.os.MqqHandler;
+import android.util.SparseIntArray;
+import java.util.Comparator;
 
-public class aiix
-  implements affa
+final class aiix
+  implements Comparator<aiis>
 {
-  private afcs jdField_a_of_type_Afcs;
-  private aijq jdField_a_of_type_Aijq;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new MiniECommerceExposeDataReportHelper.1(this);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  aiix(aijq paramaijq)
+  public int a(aiis paramaiis1, aiis paramaiis2)
   {
-    this.jdField_a_of_type_Aijq = paramaijq;
-  }
-  
-  private ListView a()
-  {
-    return this.jdField_a_of_type_Aijq.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-    case 2: 
-    case 4: 
-    case 17: 
-      do
-      {
-        do
-        {
-          return;
-          this.jdField_a_of_type_Afcs = new afcs();
-          return;
-        } while (this.b);
-        this.b = true;
-        ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 800L);
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Afcs.b(this.jdField_a_of_type_Aijq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
-      return;
+    if ((paramaiis1 == null) || (paramaiis2 == null)) {
+      return 0;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Afcs = null;
-    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 4, 11, 17, 10 };
+    float f1 = aiiv.a().get(paramaiis1.c());
+    float f2 = aiiv.a().get(paramaiis2.c());
+    float f3 = paramaiis1.b() * 100;
+    float f4 = 1.0F / (paramaiis1.a() + 1) / 10.0F;
+    return Float.compare(f2 + (paramaiis2.b() * 100 + 1.0F / (paramaiis2.a() + 1) / 10.0F), f1 + (f3 + f4));
   }
 }
 

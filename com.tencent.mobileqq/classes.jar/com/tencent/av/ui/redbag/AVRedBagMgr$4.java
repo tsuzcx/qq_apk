@@ -1,13 +1,13 @@
 package com.tencent.av.ui.redbag;
 
-import mrt;
-import mso;
-import msq;
+import moy;
+import mpt;
+import mpv;
 
 public class AVRedBagMgr$4
   implements Runnable
 {
-  public AVRedBagMgr$4(mrt parammrt, msq parammsq) {}
+  public AVRedBagMgr$4(moy parammoy, mpv parammpv) {}
   
   public void run()
   {
@@ -17,14 +17,14 @@ public class AVRedBagMgr$4
     do
     {
       return;
-      mrt.a(mrt.c(this.this$0), this.a);
+      moy.a(moy.c(this.this$0), this.a);
     } while (!this.a.a());
-    mso.a(this.a);
+    mpt.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.redbag.AVRedBagMgr.4
  * JD-Core Version:    0.7.0.1
  */

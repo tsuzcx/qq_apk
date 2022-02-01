@@ -1,13 +1,17 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class anpl
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements BusinessObserver
 {
-  anpl(anpk paramanpk) {}
+  anpl(anpk paramanpk, String paramString) {}
   
-  public void onGlobalLayout()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    anpk.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
+    }
   }
 }
 

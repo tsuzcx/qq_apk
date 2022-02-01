@@ -1,33 +1,29 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bffh
-  implements View.OnClickListener
+  extends bffl<bfel>
 {
-  public bffh(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public ImageView c;
   
-  public void onClick(View paramView)
+  public bffh(View paramView)
   {
-    if (System.currentTimeMillis() - OpenAuthorityFragment.a(this.a) > 1000L)
-    {
-      this.a.a.a.setClickable(false);
-      paramView = new Intent();
-      paramView.putExtra("appid", OpenAuthorityFragment.a(this.a));
-      paramView.putExtra("public_fragment_window_feature", 1);
-      adpn.a(this.a.getActivity(), paramView, PublicFragmentActivityForOpenSDK.class, CreateVirtualAccountFragment.class, 101);
-      this.a.a.a.setClickable(true);
-    }
-    OpenAuthorityFragment.a(this.a, System.currentTimeMillis());
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363000));
+    this.c = ((ImageView)paramView.findViewById(2131376467));
+    this.b = ((ImageView)paramView.findViewById(2131364554));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363007));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bffh
  * JD-Core Version:    0.7.0.1
  */

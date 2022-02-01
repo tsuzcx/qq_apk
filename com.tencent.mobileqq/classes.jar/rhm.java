@@ -1,27 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.articlesummary.articlesummary.OutsideLinkInfo;
 
-class rhm
-  implements DialogInterface.OnDismissListener
+public class rhm
 {
-  rhm(rhf paramrhf) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public rhm(articlesummary.OutsideLinkInfo paramOutsideLinkInfo)
   {
-    rhf.a(this.a, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    if ((rhf.a(this.a) != null) && (rhf.a(this.a).b()) && (rhf.b(this.a)) && (!rhf.c(this.a)) && (rhf.a(this.a)) && (!rhf.d(this.a))) {
-      rhf.a(this.a).c();
+    if (paramOutsideLinkInfo.title.has()) {
+      this.a = paramOutsideLinkInfo.title.get();
     }
-    if (rhf.a(this.a) != null) {
-      rhf.a(this.a).g();
+    if (paramOutsideLinkInfo.bring_goods_url.has()) {
+      this.b = paramOutsideLinkInfo.bring_goods_url.get();
     }
-    rhf.a(this.a, false);
+    if (paramOutsideLinkInfo.icon_url.has()) {
+      this.c = paramOutsideLinkInfo.icon_url.get();
+    }
+  }
+  
+  public articlesummary.OutsideLinkInfo a()
+  {
+    articlesummary.OutsideLinkInfo localOutsideLinkInfo = new articlesummary.OutsideLinkInfo();
+    if (!TextUtils.isEmpty(this.c)) {
+      localOutsideLinkInfo.icon_url.set(this.c);
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localOutsideLinkInfo.bring_goods_url.set(this.b);
+    }
+    if (!TextUtils.isEmpty(this.a)) {
+      localOutsideLinkInfo.title.set(this.a);
+    }
+    return localOutsideLinkInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rhm
  * JD-Core Version:    0.7.0.1
  */

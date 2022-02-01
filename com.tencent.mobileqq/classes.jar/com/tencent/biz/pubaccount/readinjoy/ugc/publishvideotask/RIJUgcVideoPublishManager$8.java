@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask;
 
 import android.os.Handler;
-import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import qun;
+import rps;
 
 public class RIJUgcVideoPublishManager$8
   implements Runnable
 {
-  public RIJUgcVideoPublishManager$8(qun paramqun) {}
+  public RIJUgcVideoPublishManager$8(rps paramrps) {}
   
   public void run()
   {
     try
     {
-      Object localObject1 = qun.a(this.this$0).a(UgcVideo.class, UgcVideo.class.getSimpleName(), true, "", null, null, null, "insertTime desc", null);
+      Object localObject1 = rps.a(this.this$0).query(UgcVideo.class, UgcVideo.class.getSimpleName(), true, "", null, null, null, "insertTime desc", null);
       localArrayList = new ArrayList();
       if (localObject1 != null)
       {

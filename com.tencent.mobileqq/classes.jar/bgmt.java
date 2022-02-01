@@ -1,48 +1,22 @@
-import com.tencent.qqmini.sdk.log.QMLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginActivity;
 
-public class bgmt
-  implements bgmc<Boolean>
+class bgmt
+  implements DialogInterface.OnDismissListener
 {
-  private int a;
+  bgmt(bgmp parambgmp) {}
   
-  private static bgmt a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bgmt localbgmt = new bgmt();
-    localbgmt.a = paramInt;
-    return localbgmt;
-  }
-  
-  public static Boolean a(bglv parambglv)
-  {
-    return (Boolean)parambglv.a(a(2));
-  }
-  
-  public static Boolean b(bglv parambglv)
-  {
-    return (Boolean)parambglv.a(a(1));
-  }
-  
-  public Boolean a(bgls parambgls)
-  {
-    parambgls = parambgls.a();
-    if (parambgls == null)
-    {
-      QMLog.e("UpdateUIEvent", "Failed to perform " + this + ". page is null");
-      return Boolean.valueOf(false);
+    if ((this.a.a instanceof LoginActivity)) {
+      ((LoginActivity)this.a.a).finish();
     }
-    switch (this.a)
-    {
-    default: 
-      return Boolean.valueOf(false);
-    case 2: 
-      return Boolean.valueOf(parambgls.a());
-    }
-    return Boolean.valueOf(parambgls.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgmt
  * JD-Core Version:    0.7.0.1
  */

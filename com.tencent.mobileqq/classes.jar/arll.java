@@ -1,38 +1,73 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
+import tencent.nearby.now.nearby_now_anchor.RspBatchGetAnchorStatus;
 
-class arll
-  implements aris
+public abstract class arll
+  extends niv
 {
-  arll(arkz paramarkz) {}
-  
-  public void a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Arhz.a();
-    bbtn localbbtn = bcnt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity);
-    if ((TextUtils.isEmpty(arkz.a(this.a))) && (localbbtn.a != null)) {
-      arkz.a(this.a, localbbtn.a.toString());
-    }
-    bbsn localbbsn = new bbsn(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
-    if (((localbbtn.b == 3) || (localbbtn.b == 2)) && (localbbtn.a != null)) {
-      localbbsn.a(localbbtn.a);
-    }
-    localFileManagerEntity.status = 2;
-  }
-  
-  public void b()
-  {
-    Object localObject = this.a.jdField_a_of_type_Arhz.a();
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
-    localObject = bcnt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
-    if (!TextUtils.isEmpty(arkz.a(this.a)))
+    boolean bool4 = false;
+    boolean bool3 = false;
+    Object localObject = null;
+    nearby_now_anchor.RspBatchGetAnchorStatus localRspBatchGetAnchorStatus;
+    boolean bool1;
+    if (paramInt == 0)
     {
-      localTroopFileTransferManager.a(UUID.fromString(arkz.a(this.a)));
-      arkz.a(this.a, (bbtn)localObject);
+      localRspBatchGetAnchorStatus = new nearby_now_anchor.RspBatchGetAnchorStatus();
+      bool1 = bool4;
+    }
+    for (;;)
+    {
+      try
+      {
+        localRspBatchGetAnchorStatus.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = localObject;
+        bool2 = bool3;
+        bool1 = bool4;
+        if (localRspBatchGetAnchorStatus.uint32_result.has())
+        {
+          paramArrayOfByte = localObject;
+          bool2 = bool3;
+          bool1 = bool4;
+          if (localRspBatchGetAnchorStatus.uint32_result.get() == 0)
+          {
+            bool1 = true;
+            bool2 = true;
+            paramArrayOfByte = localRspBatchGetAnchorStatus.msg_anchor_stats.get();
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        paramArrayOfByte = localObject;
+        bool2 = bool1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("Q.msg_box.protocol", 2, localException.toString());
+        paramArrayOfByte = localObject;
+        bool2 = bool1;
+        continue;
+      }
+      a(bool2, paramArrayOfByte, paramBundle);
+      return;
+      paramArrayOfByte = localObject;
+      boolean bool2 = bool3;
+      if (QLog.isColorLevel())
+      {
+        QLog.w("Q.msg_box.protocol", 2, "getNowState failed, errorCode=" + paramInt);
+        paramArrayOfByte = localObject;
+        bool2 = bool3;
+      }
     }
   }
+  
+  public abstract void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle);
 }
 
 

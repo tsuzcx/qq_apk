@@ -1,6 +1,8 @@
+import android.graphics.Canvas;
+
 public abstract interface arfs
 {
-  public abstract arki a();
+  public abstract void a(Canvas paramCanvas, aren paramaren, arew paramarew, float paramFloat1, float paramFloat2);
 }
 
 

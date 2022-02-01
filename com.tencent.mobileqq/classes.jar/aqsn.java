@@ -1,38 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.app.FileMultiMsgManager.BuddyUploadTaskExcuter.1;
-import java.util.concurrent.Executor;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aqsn
-  extends aqtd
 {
-  public long a;
-  private Bundle a;
-  public String a;
-  private long b;
-  public String b;
+  public String a = "";
+  public String b = "";
   
-  public aqsn(aqsf paramaqsf, MessageRecord paramMessageRecord)
+  public static aqsn a(JSONObject paramJSONObject)
   {
-    super(paramaqsf);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    paramaqsf = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaqsf);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
+    aqsn localaqsn = new aqsn();
+    if (paramJSONObject == null) {}
+    do
+    {
+      do
+      {
+        return localaqsn;
+        paramJSONObject = paramJSONObject.optJSONObject("anim_emoticon_count");
+      } while (paramJSONObject == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("QQSysAndEmojiConfProcessor", 2, "parse AnimCountConfBean: ");
+      }
+      if (paramJSONObject.has("model")) {
+        localaqsn.a = paramJSONObject.optString("model");
+      }
+    } while (!paramJSONObject.has("version"));
+    localaqsn.b = paramJSONObject.optString("version");
+    return localaqsn;
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqtc paramaqtc)
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "1");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    arsd.a().execute(new FileMultiMsgManager.BuddyUploadTaskExcuter.1(this, paramString, paramaqtc));
+    return "{mAnimEmoVersion=" + this.b + ", mAnimEmoModel=" + this.a + "}";
   }
 }
 

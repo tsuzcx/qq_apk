@@ -1,36 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 class ayrr
-  implements View.OnClickListener
+  implements ayry
 {
-  ayrr(ayro paramayro, ayoo paramayoo, Context paramContext) {}
+  ayrr(ayrq paramayrq, LatLng paramLatLng, int paramInt, PoiBean paramPoiBean) {}
   
-  public void onClick(View paramView)
+  public void a(PoiBean paramPoiBean)
   {
-    aysc.a(null, 0, this.jdField_a_of_type_Ayoo.c, "0X8009D5D", 0, 0, null, null);
-    aysc.a(null, new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_Ayoo.g).ver2(aysc.a(UniteSearchActivity.d)).ver5("1").ver6("1").ver7("{experiment_id:" + aysc.b + "}"));
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Ayoo.l))
-    {
-      paramView = ayvj.a(this.jdField_a_of_type_Ayoo.c);
-      paramView = ayvj.a(this.jdField_a_of_type_Ayoo.a(), 0, paramView);
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.SearchTemplatePresenter", 2, "open Browser append suffix url = " + paramView);
-      }
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e(ayrp.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Ayrq.b + "] memPut [fail already exist]. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " acceptAccuracy: " + this.jdField_a_of_type_Int + " put: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean + " cache: " + paramPoiBean);
     }
-    paramView = ayvj.a(ayvj.a(this.jdField_a_of_type_Ayoo.l, this.jdField_a_of_type_Ayoo.a(), 0, aysc.a(this.jdField_a_of_type_Ayoo.c)), this.jdField_a_of_type_Ayoo.c);
-    ayvm.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ayoo.a(), paramView);
   }
 }
 

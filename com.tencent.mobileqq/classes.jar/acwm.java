@@ -1,25 +1,20 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import java.lang.ref.WeakReference;
+import mqq.observer.SubAccountObserver;
 
-public class acwm
-  implements View.OnClickListener
+class acwm
+  extends SubAccountObserver
 {
-  public acwm(EmosmActivity paramEmosmActivity) {}
+  acwm(acwk paramacwk, bdeh parambdeh) {}
   
-  public void onClick(View paramView)
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    while (!apmq.a(this.a)) {
+    if ((paramString3 == null) || (this.jdField_a_of_type_Acwk.a == null) || (paramString1 == null)) {}
+    while (!paramString1.equalsIgnoreCase(this.jdField_a_of_type_Acwk.a.getAccount())) {
       return;
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 2);
-    azqs.b(this.a.app, "CliOper", "", "", "EmosSetting", "ForwardEmojiHome", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Bdeh.a(paramString2, paramString3, true);
+    bddy.a(this.jdField_a_of_type_Acwk.a, (byte)1, paramString2);
+    bddy.a(this.jdField_a_of_type_Acwk.a, paramString2, false);
   }
 }
 

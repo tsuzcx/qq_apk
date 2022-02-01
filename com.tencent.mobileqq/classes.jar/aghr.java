@@ -1,6 +1,10 @@
-public abstract interface aghr
+final class aghr
+  implements aghk<aghq>
 {
-  public abstract void a(int paramInt);
+  public aghq a(aghh paramaghh)
+  {
+    return new aghq(paramaghh);
+  }
 }
 
 

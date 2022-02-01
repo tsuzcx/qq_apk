@@ -1,79 +1,82 @@
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.File;
-import java.util.Map;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import java.util.Iterator;
+import java.util.List;
 
-class wve
-  extends uny
+public class wve
+  extends wuw
 {
-  public wve(wvb paramwvb)
+  public wve(ViewGroup paramViewGroup)
   {
-    super("Q.qqstory.download.preload.FeedVideoPreloader");
+    super(paramViewGroup);
   }
   
-  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, unj paramunj)
+  protected String a(QQUserUIItem paramQQUserUIItem)
   {
-    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramunj);
-    a(paramString, paramInt1, paramErrorMessage, paramunj);
+    String str = super.a(paramQQUserUIItem);
+    paramQQUserUIItem = str;
+    if (str == null) {
+      paramQQUserUIItem = anni.a(2131712027);
+    }
+    return paramQQUserUIItem;
   }
   
-  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, unj paramunj)
+  public void a()
   {
-    wvd localwvd = this.a.jdField_a_of_type_Wvd;
-    if (localwvd == null) {}
-    label14:
-    label168:
-    do
+    this.a.setTag(2131374552, null);
+  }
+  
+  protected void a(String paramString)
+  {
+    c(paramString);
+  }
+  
+  protected void a(String paramString, boolean paramBoolean, wrs paramwrs)
+  {
+    if ((!TextUtils.isEmpty(paramwrs.j)) && (!paramBoolean))
     {
-      break label14;
-      do
-      {
-        return;
-      } while (!TextUtils.equals(paramString, localwvd.jdField_a_of_type_JavaLangString));
-      if (paramErrorMessage.isFail()) {
-        if (!TextUtils.isEmpty(localwvd.b)) {
-          break label135;
-        }
-      }
-      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
-      {
-        localwvd.b = paramErrorMessage;
-        localwvd.jdField_a_of_type_Int = (paramInt + 1000);
-        if ((!paramunj.a.containsKey("handleCallback")) || (localwvd.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        localwvd.jdField_a_of_type_Boolean = true;
-        if (!this.a.a(paramString)) {
-          break label168;
-        }
-        if (this.a.jdField_a_of_type_Wvf == null) {
-          break;
-        }
-        this.a.jdField_a_of_type_Wvf.a(paramString, paramunj.d);
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Wvf == null);
-    label135:
-    this.a.jdField_a_of_type_Wvf.a(paramString, paramunj.d, localwvd.a());
+      this.a.setNodeName(paramString, paramwrs.j);
+      return;
+    }
+    super.a(paramString, paramBoolean, paramwrs);
   }
   
-  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, unj paramunj)
+  public void a(wrs paramwrs)
   {
-    super.b(paramString, paramInt1, paramFile, paramInt2, paramunj);
-    a(paramString, paramInt1, new ErrorMessage(), paramunj);
-  }
-  
-  public void b(String paramString, int paramInt, unj paramunj)
-  {
-    super.b(paramString, paramInt, paramunj);
-    if ((this.a.jdField_a_of_type_Wvf != null) && ((paramInt == 0) || (paramInt == 1))) {
-      this.a.jdField_a_of_type_Wvf.b(paramString, paramunj.d);
+    super.a(paramwrs);
+    this.a.setDisplayState(2);
+    String str;
+    if (!TextUtils.equals((String)this.a.getTag(2131374552), paramwrs.jdField_a_of_type_JavaLangString))
+    {
+      if ((paramwrs.jdField_a_of_type_JavaUtilList == null) || (paramwrs.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+        break label168;
+      }
+      str = ((wsk)paramwrs.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
+      Iterator localIterator = paramwrs.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        wsk localwsk = (wsk)localIterator.next();
+        if (!localwsk.jdField_a_of_type_Boolean) {
+          str = localwsk.jdField_a_of_type_JavaLangString;
+        }
+      }
+    }
+    for (;;)
+    {
+      yqu.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramwrs.jdField_a_of_type_JavaLangString, "1", "", str });
+      this.a.setTag(2131374552, paramwrs.jdField_a_of_type_JavaLangString);
+      return;
+      continue;
+      label168:
+      str = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wve
  * JD-Core Version:    0.7.0.1
  */

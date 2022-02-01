@@ -58,18 +58,28 @@ public class ThreadMgrImp
   
   public void postOnUIThread(Runnable paramRunnable)
   {
-    if (this.mMainHandler == null) {
-      this.mMainHandler = new Handler(Looper.getMainLooper());
+    try
+    {
+      if (this.mMainHandler == null) {
+        this.mMainHandler = new Handler(Looper.getMainLooper());
+      }
+      this.mMainHandler.post(paramRunnable);
+      return;
     }
-    this.mMainHandler.post(paramRunnable);
+    finally {}
   }
   
   public void postOnUIThreadDelayed(Runnable paramRunnable, long paramLong)
   {
-    if (this.mMainHandler == null) {
-      this.mMainHandler = new Handler(Looper.getMainLooper());
+    try
+    {
+      if (this.mMainHandler == null) {
+        this.mMainHandler = new Handler(Looper.getMainLooper());
+      }
+      this.mMainHandler.postDelayed(paramRunnable, paramLong);
+      return;
     }
-    this.mMainHandler.postDelayed(paramRunnable, paramLong);
+    finally {}
   }
   
   /* Error */
@@ -137,10 +147,22 @@ public class ThreadMgrImp
     }
     finally {}
   }
+  
+  public void removeCallbackOnUIHandler(Runnable paramRunnable)
+  {
+    try
+    {
+      if (this.mMainHandler != null) {
+        this.mMainHandler.removeCallbacks(paramRunnable);
+      }
+      return;
+    }
+    finally {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.imp.ThreadMgrImp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,142 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PkgInstallInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import kotlin.Metadata;
+import kotlin.jvm.JvmName;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class pvd
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"toBoolean", "", "Lcom/tencent/mobileqq/pb/PBBoolField;", "toByteArrayOrNull", "", "Lcom/tencent/mobileqq/pb/PBBytesField;", "toEnum", "", "Lcom/tencent/mobileqq/pb/PBEnumField;", "toInt", "Lcom/tencent/mobileqq/pb/PBUInt32Field;", "defaultValue", "toLong", "", "Lcom/tencent/mobileqq/pb/PBUInt64Field;", "toPBListValue", "", "P", "Lcom/tencent/mobileqq/pb/MessageMicro;", "Lcom/tencent/mobileqq/pb/PBRepeatMessageField;", "toPBParseValue", "R", "pbParser", "Lcom/tencent/biz/pubaccount/readinjoy/ktextension/IPbParser;", "(Lcom/tencent/mobileqq/pb/MessageMicro;Ljava/lang/Object;Lcom/tencent/biz/pubaccount/readinjoy/ktextension/IPbParser;)Ljava/lang/Object;", "toPBValue", "(Lcom/tencent/mobileqq/pb/MessageMicro;Lcom/tencent/mobileqq/pb/MessageMicro;)Lcom/tencent/mobileqq/pb/MessageMicro;", "toString", "", "Lcom/tencent/mobileqq/pb/PBStringField;", "toStringOrNull", "toStringUtf8", "toStringUtf8OrNull", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+@JvmName(name="PBFieldUtils")
+public final class pvd
 {
-  public int a;
-  public String a;
-  public boolean a;
-  
-  public pvd()
+  public static final int a(@NotNull PBEnumField paramPBEnumField)
   {
-    this.jdField_a_of_type_Int = 1;
+    Intrinsics.checkParameterIsNotNull(paramPBEnumField, "$this$toEnum");
+    if (paramPBEnumField.has()) {
+      return paramPBEnumField.get();
+    }
+    return 0;
   }
   
-  public oidb_cmd0x68b.PkgInstallInfo a()
+  public static final int a(@NotNull PBUInt32Field paramPBUInt32Field)
   {
-    int i = 1;
-    oidb_cmd0x68b.PkgInstallInfo localPkgInstallInfo = new oidb_cmd0x68b.PkgInstallInfo();
-    localPkgInstallInfo.uint32_platform_type.set(1);
-    PBUInt32Field localPBUInt32Field = localPkgInstallInfo.uint32_is_installed;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      localPBUInt32Field.set(i);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        localPkgInstallInfo.bytes_pkg_name.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-      }
-      return localPkgInstallInfo;
-      i = 0;
+    Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "$this$toInt");
+    if (paramPBUInt32Field.has()) {
+      return paramPBUInt32Field.get();
     }
+    return 0;
+  }
+  
+  public static final int a(@NotNull PBUInt32Field paramPBUInt32Field, int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "$this$toInt");
+    if (paramPBUInt32Field.has()) {
+      paramInt = paramPBUInt32Field.get();
+    }
+    return paramInt;
+  }
+  
+  public static final long a(@NotNull PBUInt64Field paramPBUInt64Field)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBUInt64Field, "$this$toLong");
+    if (paramPBUInt64Field.has()) {
+      return paramPBUInt64Field.get();
+    }
+    return 0L;
+  }
+  
+  public static final long a(@NotNull PBUInt64Field paramPBUInt64Field, long paramLong)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBUInt64Field, "$this$toLong");
+    if (paramPBUInt64Field.has()) {
+      paramLong = paramPBUInt64Field.get();
+    }
+    return paramLong;
+  }
+  
+  @Nullable
+  public static final <P extends MessageMicro<P>> P a(@NotNull MessageMicro<P> paramMessageMicro, @Nullable P paramP)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMessageMicro, "$this$toPBValue");
+    if (paramMessageMicro.has()) {
+      paramP = paramMessageMicro.get();
+    }
+    return paramP;
+  }
+  
+  @Nullable
+  public static final <P extends MessageMicro<P>, R> R a(@NotNull MessageMicro<P> paramMessageMicro, @Nullable R paramR, @NotNull pvb<P, R> parampvb)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMessageMicro, "$this$toPBParseValue");
+    Intrinsics.checkParameterIsNotNull(parampvb, "pbParser");
+    if (paramMessageMicro.has())
+    {
+      paramMessageMicro = paramMessageMicro.get();
+      Intrinsics.checkExpressionValueIsNotNull(paramMessageMicro, "get()");
+      paramR = parampvb.a(paramMessageMicro);
+    }
+    return paramR;
+  }
+  
+  @Nullable
+  public static final String a(@NotNull PBBytesField paramPBBytesField)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toStringUtf8OrNull");
+    if (paramPBBytesField.has()) {
+      return paramPBBytesField.get().toStringUtf8();
+    }
+    return null;
+  }
+  
+  @Nullable
+  public static final String a(@NotNull PBBytesField paramPBBytesField, @Nullable String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toStringUtf8");
+    if (paramPBBytesField.has()) {
+      paramString = paramPBBytesField.get().toStringUtf8();
+    }
+    return paramString;
+  }
+  
+  @Nullable
+  public static final String a(@NotNull PBStringField paramPBStringField)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBStringField, "$this$toStringOrNull");
+    if (paramPBStringField.has()) {
+      return paramPBStringField.get().toString();
+    }
+    return null;
+  }
+  
+  public static final boolean a(@NotNull PBBoolField paramPBBoolField)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBBoolField, "$this$toBoolean");
+    if (paramPBBoolField.has()) {
+      return paramPBBoolField.get();
+    }
+    return false;
+  }
+  
+  @Nullable
+  public static final byte[] a(@NotNull PBBytesField paramPBBytesField)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toByteArrayOrNull");
+    if (paramPBBytesField.has()) {
+      return paramPBBytesField.get().toByteArray();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pvd
  * JD-Core Version:    0.7.0.1
  */

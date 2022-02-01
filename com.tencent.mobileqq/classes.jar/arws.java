@@ -1,330 +1,312 @@
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.floatscr.ColorScreenManager.1;
-import com.tencent.mobileqq.pluginsdk.IOUtil;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.EditText;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class arws
-  extends bduo<arwr>
+  extends arxb
+  implements asbh
 {
-  public static boolean a;
-  protected Context a;
-  protected AppInterface a;
+  static long jdField_a_of_type_Long;
+  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable();
+  public String a;
+  public String b;
+  public String c;
   
-  static
+  public int a()
   {
-    jdField_a_of_type_Boolean = true;
-  }
-  
-  public arws(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramAppInterface.getApp().getApplicationContext();
-  }
-  
-  public int a(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      String[] arrayOfString = paramString.split("\\.");
-      localObject1 = localObject2;
-      if (arrayOfString.length >= 3) {
-        try
-        {
-          int i = Integer.parseInt(arrayOfString[2]);
-          return i;
-        }
-        catch (NumberFormatException localNumberFormatException) {}
-      }
-    }
-    QLog.e("ColorScreenManager", 1, "getColorScreenId failed from " + paramString, localNumberFormatException);
-    return 0;
-  }
-  
-  public arwr a(int paramInt)
-  {
-    for (;;)
-    {
-      File localFile3;
-      File localFile2;
-      try
-      {
-        File localFile1 = new File(a(paramInt), "unzip");
-        if (!localFile1.exists())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ColorScreenManager", 1, "getLocalConfig unzipDir not exist");
-          }
-          localFile1 = null;
-          return localFile1;
-        }
-        localFile3 = new File(localFile1, "config.json");
-        localFile2 = new File(localFile1, "fullscreen.json");
-        if (!localFile3.exists())
-        {
-          QLog.e("ColorScreenManager", 1, "configFile do not exists.");
-          bdut.a(BaseApplicationImpl.getApplication().getRuntime(), "individual_v2_colorscreen_parse_fail", "1", "", Integer.toString(paramInt), null, null, 0.0F, 0.0F);
-          bdus.a("individual_v2_colorscreen_parse_fail", "errCode:1, id:" + paramInt);
-          a("colorScreen.android." + paramInt);
-          localFile1 = null;
-          continue;
-        }
-        if (!localFile2.exists())
-        {
-          QLog.e("ColorScreenManager", 1, "animFile do not exists.");
-          continue;
-        }
-        localarwr = new arwr();
-      }
-      finally {}
-      arwr localarwr;
-      localarwr.jdField_a_of_type_JavaLangString = localFile2.getAbsolutePath();
-      localarwr.jdField_b_of_type_JavaLangString = (localObject1.getAbsolutePath() + File.separator + "images");
-      try
-      {
-        Object localObject2 = new JSONObject(bdhb.a(localFile3));
-        localarwr.jdField_a_of_type_Int = (((JSONObject)localObject2).optInt("repeatCount", localarwr.jdField_a_of_type_Int) - 1);
-        localarwr.jdField_a_of_type_Long = ((JSONObject)localObject2).optLong("eastInTime", localarwr.jdField_a_of_type_Long);
-        localarwr.jdField_b_of_type_Long = ((JSONObject)localObject2).optLong("eastOutTime", localarwr.jdField_b_of_type_Long);
-        localObject2 = localarwr;
-        if (QLog.isColorLevel())
-        {
-          long l = IOUtil.getCRC32Value(localFile2);
-          QLog.d("ColorScreenManager", 1, "getLocalConfig crc32: " + Long.toHexString(l));
-          localObject2 = localarwr;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("ColorScreenManager", 1, "failed read config of " + paramInt, localException);
-      }
-    }
-  }
-  
-  public File a()
-  {
-    File localFile = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "color_screen");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return localFile;
-  }
-  
-  public File a(int paramInt)
-  {
-    File localFile = new File(a(), Integer.toString(paramInt));
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return localFile;
-  }
-  
-  public void a(int paramInt)
-  {
-    String str = "colorScreen.android." + paramInt;
-    VasQuickUpdateManager localVasQuickUpdateManager = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(184);
-    if (localVasQuickUpdateManager != null) {
-      localVasQuickUpdateManager.downloadItem(22L, str, "ColorScreenManager");
-    }
-  }
-  
-  public void a(int paramInt, bdup<arwr> parambdup)
-  {
-    ThreadManager.post(new ColorScreenManager.1(this, paramInt, parambdup), 5, null, false);
-  }
-  
-  public void a(String paramString)
-  {
-    VasQuickUpdateEngine.safeDeleteFile(new File(a(), Integer.toString(a(paramString))));
+    return this.g;
   }
   
   /* Error */
-  public void a(String paramString, int paramInt)
+  public Drawable a(Context paramContext, float paramFloat)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_0
-    //   4: monitorenter
+    //   0: aload_0
+    //   1: getfield 37	arws:e	Ljava/lang/String;
+    //   4: astore_1
     //   5: aload_0
-    //   6: aload_1
-    //   7: invokevirtual 258	arws:a	(Ljava/lang/String;)I
-    //   10: istore_3
-    //   11: iload_3
-    //   12: ifle +65 -> 77
-    //   15: iload_2
-    //   16: ifeq +64 -> 80
-    //   19: ldc_w 271
-    //   22: astore 4
-    //   24: aload_0
-    //   25: iload_3
-    //   26: invokevirtual 273	arws:a	(I)Larwr;
-    //   29: astore 5
-    //   31: aload_0
+    //   6: getfield 40	arws:h	Ljava/lang/String;
+    //   9: ldc 42
+    //   11: invokevirtual 48	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   14: ifne +18 -> 32
+    //   17: aload_1
+    //   18: astore 4
+    //   20: aload_0
+    //   21: getfield 40	arws:h	Ljava/lang/String;
+    //   24: ldc 50
+    //   26: invokevirtual 48	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   29: ifeq +33 -> 62
     //   32: aload_1
-    //   33: aload 5
-    //   35: invokevirtual 276	arws:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   38: aload 5
-    //   40: ifnonnull +37 -> 77
-    //   43: aload_0
-    //   44: getfield 20	arws:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   47: ldc_w 278
-    //   50: iload_2
-    //   51: invokestatic 281	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   54: aload 4
-    //   56: iload_3
-    //   57: invokestatic 130	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   60: aconst_null
-    //   61: aconst_null
-    //   62: fconst_0
-    //   63: fconst_0
-    //   64: invokestatic 135	bdut:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;FF)V
-    //   67: ldc_w 278
-    //   70: iload_2
-    //   71: invokestatic 281	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   74: invokestatic 145	bdus:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   77: aload_0
-    //   78: monitorexit
-    //   79: return
-    //   80: aload_0
-    //   81: iload_3
-    //   82: invokevirtual 85	arws:a	(I)Ljava/io/File;
-    //   85: astore 6
-    //   87: new 82	java/io/File
-    //   90: dup
-    //   91: aload 6
-    //   93: ldc_w 283
-    //   96: invokespecial 90	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   99: astore 5
-    //   101: aload 5
-    //   103: invokevirtual 94	java/io/File:exists	()Z
-    //   106: ifne +32 -> 138
-    //   109: new 60	java/lang/StringBuilder
-    //   112: dup
-    //   113: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   116: ldc_w 285
-    //   119: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: aload 5
-    //   124: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   127: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   133: astore 4
-    //   135: goto -111 -> 24
-    //   138: new 60	java/lang/StringBuilder
-    //   141: dup
-    //   142: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   145: aload 6
-    //   147: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   150: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: getstatic 164	java/io/File:separator	Ljava/lang/String;
-    //   156: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: ldc 87
-    //   161: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   167: astore 6
-    //   169: aload 5
-    //   171: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   174: aload 6
-    //   176: iconst_0
-    //   177: invokestatic 288	bdhb:a	(Ljava/lang/String;Ljava/lang/String;Z)V
-    //   180: goto -156 -> 24
-    //   183: astore 6
-    //   185: new 60	java/lang/StringBuilder
-    //   188: dup
-    //   189: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   192: ldc_w 290
-    //   195: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: aload 5
-    //   200: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   203: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   209: astore 4
-    //   211: ldc 58
-    //   213: iconst_1
-    //   214: new 60	java/lang/StringBuilder
-    //   217: dup
-    //   218: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   221: ldc_w 292
-    //   224: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: aload 5
-    //   229: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   232: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   235: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   238: aload 6
-    //   240: invokestatic 77	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   243: goto -219 -> 24
-    //   246: astore_1
-    //   247: aload_0
-    //   248: monitorexit
-    //   249: aload_1
-    //   250: athrow
-    //   251: astore 6
-    //   253: new 60	java/lang/StringBuilder
-    //   256: dup
-    //   257: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   260: ldc_w 294
-    //   263: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   266: aload 5
-    //   268: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   271: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   274: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   277: astore 4
-    //   279: ldc 58
-    //   281: iconst_1
-    //   282: new 60	java/lang/StringBuilder
-    //   285: dup
-    //   286: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   289: ldc_w 292
-    //   292: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   295: aload 5
-    //   297: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   300: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   303: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   306: aload 6
-    //   308: invokestatic 77	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   311: goto -287 -> 24
+    //   33: invokestatic 56	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   36: ifne +20 -> 56
+    //   39: aload_1
+    //   40: astore 4
+    //   42: new 58	java/io/File
+    //   45: dup
+    //   46: aload_1
+    //   47: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
+    //   50: invokevirtual 65	java/io/File:exists	()Z
+    //   53: ifne +9 -> 62
+    //   56: aload_0
+    //   57: getfield 67	arws:b	Ljava/lang/String;
+    //   60: astore 4
+    //   62: invokestatic 73	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   65: invokevirtual 77	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   68: astore_3
+    //   69: aload_3
+    //   70: ldc 78
+    //   72: invokevirtual 84	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   75: astore_1
+    //   76: aload_3
+    //   77: ldc 85
+    //   79: invokevirtual 84	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   82: astore 5
+    //   84: aload_1
+    //   85: astore_3
+    //   86: aload 5
+    //   88: astore_1
+    //   89: new 87	java/net/URL
+    //   92: dup
+    //   93: ldc 89
+    //   95: ldc 91
+    //   97: aload 4
+    //   99: invokespecial 94	java/net/URL:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   102: astore 6
+    //   104: new 96	com/tencent/mobileqq/activity/photo/LocalMediaInfo
+    //   107: dup
+    //   108: invokespecial 97	com/tencent/mobileqq/activity/photo/LocalMediaInfo:<init>	()V
+    //   111: astore 5
+    //   113: aload 5
+    //   115: aload 4
+    //   117: putfield 100	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   120: aload 5
+    //   122: bipush 100
+    //   124: putfield 103	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
+    //   127: aload 5
+    //   129: bipush 100
+    //   131: putfield 106	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbHeight	I
+    //   134: invokestatic 112	com/tencent/image/URLDrawable$URLDrawableOptions:obtain	()Lcom/tencent/image/URLDrawable$URLDrawableOptions;
+    //   137: astore 7
+    //   139: aload 7
+    //   141: aload_3
+    //   142: putfield 116	com/tencent/image/URLDrawable$URLDrawableOptions:mLoadingDrawable	Landroid/graphics/drawable/Drawable;
+    //   145: aload 7
+    //   147: aload_1
+    //   148: putfield 119	com/tencent/image/URLDrawable$URLDrawableOptions:mFailedDrawable	Landroid/graphics/drawable/Drawable;
+    //   151: aload 7
+    //   153: aload_0
+    //   154: putfield 123	com/tencent/image/URLDrawable$URLDrawableOptions:mExtraInfo	Ljava/lang/Object;
+    //   157: aload 4
+    //   159: invokestatic 56	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   162: ifne +71 -> 233
+    //   165: aload 6
+    //   167: aload 7
+    //   169: invokestatic 128	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   172: astore_1
+    //   173: aload_1
+    //   174: aload 5
+    //   176: invokevirtual 132	com/tencent/image/URLDrawable:setTag	(Ljava/lang/Object;)V
+    //   179: aload_1
+    //   180: areturn
+    //   181: astore 5
+    //   183: aconst_null
+    //   184: astore_3
+    //   185: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   188: ifeq +14 -> 202
+    //   191: ldc 139
+    //   193: iconst_2
+    //   194: aload 5
+    //   196: invokevirtual 143	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   199: invokestatic 146	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   202: aconst_null
+    //   203: astore_1
+    //   204: goto -115 -> 89
+    //   207: astore 5
+    //   209: aconst_null
+    //   210: astore_3
+    //   211: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   214: ifeq +14 -> 228
+    //   217: ldc 139
+    //   219: iconst_2
+    //   220: aload 5
+    //   222: invokevirtual 147	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   225: invokestatic 146	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   228: aconst_null
+    //   229: astore_1
+    //   230: goto -141 -> 89
+    //   233: ldc 139
+    //   235: iconst_1
+    //   236: new 149	java/lang/StringBuilder
+    //   239: dup
+    //   240: invokespecial 150	java/lang/StringBuilder:<init>	()V
+    //   243: ldc 152
+    //   245: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: aload_0
+    //   249: invokevirtual 159	arws:toString	()Ljava/lang/String;
+    //   252: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   258: invokestatic 146	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   261: aconst_null
+    //   262: areturn
+    //   263: astore_1
+    //   264: aload_1
+    //   265: invokevirtual 163	java/net/MalformedURLException:printStackTrace	()V
+    //   268: ldc 139
+    //   270: iconst_1
+    //   271: ldc 165
+    //   273: aload_1
+    //   274: invokestatic 168	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   277: goto -16 -> 261
+    //   280: astore 5
+    //   282: aload_1
+    //   283: astore_3
+    //   284: goto -73 -> 211
+    //   287: astore 5
+    //   289: aload_1
+    //   290: astore_3
+    //   291: goto -106 -> 185
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	314	0	this	arws
-    //   0	314	1	paramString	String
-    //   0	314	2	paramInt	int
-    //   10	72	3	i	int
-    //   1	277	4	str	String
-    //   29	267	5	localObject1	Object
-    //   85	90	6	localObject2	Object
-    //   183	56	6	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   251	56	6	localThrowable	java.lang.Throwable
+    //   0	294	0	this	arws
+    //   0	294	1	paramContext	Context
+    //   0	294	2	paramFloat	float
+    //   68	223	3	localObject1	Object
+    //   18	140	4	localObject2	Object
+    //   82	93	5	localObject3	Object
+    //   181	14	5	localException1	java.lang.Exception
+    //   207	14	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   280	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   287	1	5	localException2	java.lang.Exception
+    //   102	64	6	localURL	URL
+    //   137	31	7	localURLDrawableOptions	URLDrawable.URLDrawableOptions
     // Exception table:
     //   from	to	target	type
-    //   169	180	183	java/lang/OutOfMemoryError
-    //   5	11	246	finally
-    //   24	38	246	finally
-    //   43	77	246	finally
-    //   80	135	246	finally
-    //   138	169	246	finally
-    //   169	180	246	finally
-    //   185	243	246	finally
-    //   253	311	246	finally
-    //   169	180	251	java/lang/Throwable
+    //   62	76	181	java/lang/Exception
+    //   62	76	207	java/lang/OutOfMemoryError
+    //   89	179	263	java/net/MalformedURLException
+    //   233	261	263	java/net/MalformedURLException
+    //   76	84	280	java/lang/OutOfMemoryError
+    //   76	84	287	java/lang/Exception
   }
   
-  public boolean a(String paramString)
+  public Drawable a(Context paramContext, float paramFloat, int paramInt1, int paramInt2)
   {
-    int i = a(paramString);
-    if (i > 0) {
-      return new File(a(i), "config.zip").exists();
+    return a(paramContext, paramFloat);
+  }
+  
+  public Drawable a(Context paramContext, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      URL localURL = new URL("protocol_vas_extension_image", "BUSINESS_CAMERA_EMO_PANEL_DYNAMIC", this.e);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestHeight = paramInt1;
+      localURLDrawableOptions.mRequestWidth = paramInt2;
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130843701);
+      localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+      localURLDrawableOptions.mPlayGifImage = true;
+      paramContext = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraEmoticonInfo", 2, "d: width = " + paramContext.getIntrinsicWidth() + ";height = " + paramContext.getIntrinsicHeight() + ";options:width = " + localURLDrawableOptions.mRequestWidth + ";options:height = " + localURLDrawableOptions.mRequestHeight);
+      }
+      return paramContext;
     }
-    return false;
+    catch (MalformedURLException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.h;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  {
+    long l = System.currentTimeMillis();
+    if (l - jdField_a_of_type_Long < 1000L) {
+      if (QLog.isColorLevel()) {
+        QLog.e("CameraEmoticonInfo", 2, "send to offen,please try it later");
+      }
+    }
+    do
+    {
+      return;
+      jdField_a_of_type_Long = l;
+      if (((paramContext instanceof BaseActivity)) && (axbp.a(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)))
+      {
+        paramContext = (BaseActivity)paramContext;
+        QQToast.a(paramQQAppInterface.getApp(), anni.a(2131700113), 0).b(paramContext.getTitleBarHeight());
+        return;
+      }
+      paramEditText = null;
+      if (!TextUtils.isEmpty(this.c))
+      {
+        paramEditText = new Bundle();
+        paramEditText.putString("widgetinfo", this.c);
+      }
+      adrm.a(paramQQAppInterface, paramContext, paramSessionInfo, this.e, true, this.jdField_a_of_type_JavaLangString, paramEditText);
+    } while (TextUtils.isEmpty(this.d));
+    bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A371", "0X800A371", 0, 0, "", "", this.d, "");
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public Drawable b(Context paramContext, float paramFloat)
+  {
+    try
+    {
+      URL localURL = new URL("protocol_vas_extension_image", "BUSINESS_CAMERA_EMO_PANEL_DYNAMIC", this.e);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestHeight = ((int)(100.0F * paramFloat));
+      localURLDrawableOptions.mRequestWidth = ((int)(100.0F * paramFloat));
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130843701);
+      localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+      localURLDrawableOptions.mPlayGifImage = true;
+      paramContext = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraEmoticonInfo", 2, "d: width = " + paramContext.getIntrinsicWidth() + ";height = " + paramContext.getIntrinsicHeight() + ";options:width = " + localURLDrawableOptions.mRequestWidth + ";options:height = " + localURLDrawableOptions.mRequestHeight);
+      }
+      return paramContext;
+    }
+    catch (MalformedURLException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String b()
+  {
+    return this.e;
+  }
+  
+  public String toString()
+  {
+    return String.format("CameraEmoticonInfo, path %s, url %s, contextKey %s", new Object[] { this.e, this.f, this.jdField_a_of_type_JavaLangString });
   }
 }
 

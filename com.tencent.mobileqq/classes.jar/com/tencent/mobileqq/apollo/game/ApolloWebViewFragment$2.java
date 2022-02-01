@@ -2,7 +2,7 @@ package com.tencent.mobileqq.apollo.game;
 
 import android.app.Activity;
 import android.view.View;
-import bejh;
+import bhql;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 class ApolloWebViewFragment$2
@@ -12,10 +12,10 @@ class ApolloWebViewFragment$2
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.a != null))
+    if ((this.this$0.mUIStyleHandler != null) && (this.this$0.mUIStyleHandler.a != null))
     {
-      this.this$0.a.a.D();
-      Object localObject = this.this$0.a();
+      this.this$0.mUIStyleHandler.a.hideVirtualNavBar();
+      Object localObject = this.this$0.getHostActivity();
       if (localObject != null)
       {
         localObject = ((Activity)localObject).findViewById(16908290);
@@ -28,7 +28,7 @@ class ApolloWebViewFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloWebViewFragment.2
  * JD-Core Version:    0.7.0.1
  */

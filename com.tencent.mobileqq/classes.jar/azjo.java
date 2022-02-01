@@ -1,11 +1,23 @@
-class azjo
-  implements afkw
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.view.CircularProgressBar;
+
+public class azjo
+  extends Handler
 {
-  azjo(azjh paramazjh) {}
+  public azjo(CircularProgressBar paramCircularProgressBar) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    azjh.e(this.a);
+    this.a.invalidate();
+    if (CircularProgressBar.a(this.a))
+    {
+      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
+      if (CircularProgressBar.a(this.a) > 360) {
+        CircularProgressBar.a(this.a, 0);
+      }
+      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
+    }
   }
 }
 

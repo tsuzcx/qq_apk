@@ -6,9 +6,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
-import ayly;
-import bdgz;
-import bdoo;
+import bblc;
+import bgme;
+import bgtn;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
 import java.util.Iterator;
 import java.util.List;
@@ -36,14 +36,14 @@ public class HotWordForSubTipsContainer
     Button localButton = new Button(getContext());
     if (paramInt1 == 0)
     {
-      localButton.setBackgroundResource(2130848974);
+      localButton.setBackgroundResource(2130849472);
       GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
       if (paramInt3 == 0) {
         break label172;
       }
       label68:
       localGradientDrawable.setStroke(1, paramInt3);
-      localButton.setPadding(bdoo.a(12.0F), bdoo.a(3.0F), bdoo.a(12.0F), bdoo.a(4.0F));
+      localButton.setPadding(bgtn.a(12.0F), bgtn.a(3.0F), bgtn.a(12.0F), bgtn.a(4.0F));
       localButton.setText(paramString1);
       localButton.setTextSize(14.0F);
       localButton.setSingleLine();
@@ -73,12 +73,12 @@ public class HotWordForSubTipsContainer
   
   public int a(int paramInt)
   {
-    int i6 = (int)bdgz.a(getContext(), 12.0F);
-    int i1 = (int)bdgz.a(getContext(), 10.0F);
-    int i7 = (int)bdgz.a(getContext(), 10.0F);
-    int i8 = (int)bdgz.a(getContext(), 10.0F);
-    int m = (int)bdgz.a(getContext(), 15.0F);
-    int i9 = (int)bdgz.a(getContext(), 15.0F);
+    int i6 = (int)bgme.a(getContext(), 12.0F);
+    int i1 = (int)bgme.a(getContext(), 10.0F);
+    int i7 = (int)bgme.a(getContext(), 10.0F);
+    int i8 = (int)bgme.a(getContext(), 10.0F);
+    int m = (int)bgme.a(getContext(), 15.0F);
+    int i9 = (int)bgme.a(getContext(), 15.0F);
     int i10 = getChildCount();
     int n = 0;
     int k = m;
@@ -124,22 +124,22 @@ public class HotWordForSubTipsContainer
     }
   }
   
-  public void a(List<ayly> paramList, int paramInt1, int paramInt2, int paramInt3)
+  public void a(List<bblc> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
     removeAllViews();
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      a(((ayly)paramList.next()).b, paramInt1, paramInt2, paramInt3, null);
+      a(((bblc)paramList.next()).b, paramInt1, paramInt2, paramInt3, null);
     }
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i2 = (int)bdgz.a(getContext(), 12.0F);
-    int k = (int)bdgz.a(getContext(), 10.0F);
-    int i3 = (int)bdgz.a(getContext(), 10.0F);
-    paramInt4 = (int)bdgz.a(getContext(), 15.0F);
-    int i4 = (int)bdgz.a(getContext(), 15.0F);
+    int i2 = (int)bgme.a(getContext(), 12.0F);
+    int k = (int)bgme.a(getContext(), 10.0F);
+    int i3 = (int)bgme.a(getContext(), 10.0F);
+    paramInt4 = (int)bgme.a(getContext(), 15.0F);
+    int i4 = (int)bgme.a(getContext(), 15.0F);
     int i5 = getChildCount();
     int i = 0;
     int j = 1;
@@ -182,7 +182,7 @@ public class HotWordForSubTipsContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.HotWordForSubTipsContainer
  * JD-Core Version:    0.7.0.1
  */

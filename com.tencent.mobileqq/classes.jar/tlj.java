@@ -1,36 +1,52 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.3;
+import com.tencent.qphone.base.util.QLog;
 
-final class tlj
-  implements tlc
+public class tlj
+  implements nkl
 {
-  tlj(Activity paramActivity, String paramString1, WSDownloadParams paramWSDownloadParams, String paramString2, int paramInt) {}
+  public tlj(ViolaAccessHelper.3 param3) {}
   
-  public void a()
+  public void loaded(String paramString, int paramInt)
   {
-    tlq.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "downOffline  code " + paramInt + "  param " + paramString);
+    }
+    if (paramInt == 0) {
+      if (paramString == null) {
+        if (this.a.jdField_a_of_type_Tln != null) {
+          this.a.jdField_a_of_type_Tln.a();
+        }
+      }
+    }
+    while (this.a.jdField_a_of_type_Tln == null)
+    {
+      return;
+      if (paramString.contains("url"))
+      {
+        QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. contains url. cost=", Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) });
+        return;
+      }
+      long l1 = System.currentTimeMillis();
+      long l2 = this.a.jdField_a_of_type_Long;
+      if (this.a.jdField_a_of_type_Tln != null) {
+        this.a.jdField_a_of_type_Tln.a();
+      }
+      QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. no update. cost=", Long.valueOf(l1 - l2) });
+      return;
+    }
+    this.a.jdField_a_of_type_Tln.b();
   }
   
-  public void b()
+  public void progress(int paramInt)
   {
-    WSPublicAccReport.getInstance().reportCallDialog("gzh_exposure", "dynamics_" + this.b + this.jdField_a_of_type_Int, 0);
-  }
-  
-  public void c()
-  {
-    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", "dynamics_" + this.b + this.jdField_a_of_type_Int, 1000001);
-    tlq.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
-  }
-  
-  public void d()
-  {
-    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", "dynamics_" + this.b + this.jdField_a_of_type_Int, 1000005);
+    if (this.a.jdField_a_of_type_Tln != null) {
+      this.a.jdField_a_of_type_Tln.a(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tlj
  * JD-Core Version:    0.7.0.1
  */

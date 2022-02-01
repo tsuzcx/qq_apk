@@ -8,7 +8,7 @@ public abstract interface TouchWebView$OnOverScrollHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.ui.TouchWebView.OnOverScrollHandler
  * JD-Core Version:    0.7.0.1
  */

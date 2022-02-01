@@ -1,12 +1,20 @@
-public abstract interface andz
+import java.io.File;
+import java.util.Comparator;
+
+public final class andz
+  implements Comparator<File>
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
+  public int a(File paramFile1, File paramFile2)
+  {
+    if ((paramFile1.exists()) && (paramFile2.exists()))
+    {
+      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
+        return 1;
+      }
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

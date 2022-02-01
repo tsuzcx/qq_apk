@@ -1,17 +1,15 @@
-class becb
-  implements becn
+public class becb
+  extends becg
 {
-  becb(bebz parambebz) {}
+  public int a;
+  public byte[] a;
   
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(bece parambece)
+  public String toString()
   {
-    if (parambece.a)
-    {
-      bebz.a(this.a, parambece);
-      bebz.a(this.a);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" msgResId:");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
   }
 }
 

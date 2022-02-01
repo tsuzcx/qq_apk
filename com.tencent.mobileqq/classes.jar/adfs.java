@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.config.ResourcePluginListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class adfs
-  extends ResourcePluginListener
+class adfs
+  implements DialogInterface.OnCancelListener
 {
-  public adfs(Leba paramLeba) {}
+  adfs(adfo paramadfo) {}
   
-  public void a(byte paramByte)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
-    }
-    if (paramByte != -1) {
-      this.a.a.sendEmptyMessage(11340002);
-    }
+    this.a.jdField_a_of_type_Aded.d();
+    adhh.a(this.a.jdField_a_of_type_Adea, 4);
   }
 }
 

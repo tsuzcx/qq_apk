@@ -1,15 +1,12 @@
 import android.view.View;
 
-final class bkoo
+public abstract interface bkoo
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private bkmz jdField_a_of_type_Bkmz;
+  public abstract void a_(View paramView);
   
-  public bkoo(bkmz parambkmz, View paramView)
-  {
-    this.jdField_a_of_type_Bkmz = parambkmz;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
+  public abstract void e(boolean paramBoolean);
+  
+  public abstract void f();
 }
 
 

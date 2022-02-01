@@ -1,26 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.SeekBar;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ymy
-  implements yxu
+  implements View.OnClickListener
 {
-  ymy(ymx paramymx, SeekBar paramSeekBar) {}
+  ymy(ymo paramymo, ypv paramypv) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    localMessage.arg1 = this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    localMessage.arg2 = ((int)this.jdField_a_of_type_Ymx.a.a().b());
-    localMessage.obj = Boolean.valueOf(false);
-    this.jdField_a_of_type_Ymx.a.a().sendMessage(localMessage);
+    yqu.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.jdField_a_of_type_Ypv.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ymy
  * JD-Core Version:    0.7.0.1
  */

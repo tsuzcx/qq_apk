@@ -1,36 +1,24 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adma
   implements CompoundButton.OnCheckedChangeListener
 {
-  public adma(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adma(AssistantSettingActivity paramAssistantSettingActivity) {}
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (NotifyPushSettingActivity.a())
-    {
-      NotifyPushSettingActivity.b(this.a).setChecked(false);
-      NotifyPushSettingActivity.b(this.a).setVisibility(8);
-      if (!paramBoolean) {
-        break label113;
-      }
+    auea.a(this.a.app).a(paramBoolean, this.a.app);
+    if (paramBoolean) {
+      bcst.b(this.a.app, "CliOper", "", "", "0X8008C75", "0X8008C75", 0, 0, "", "", "", "");
     }
-    label113:
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      azqs.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      if (paramBoolean)
-      {
-        NotifyPushSettingActivity.b(this.a).setVisibility(0);
-        NotifyPushSettingActivity.b(this.a).setVisibility(8);
-        break;
-      }
-      NotifyPushSettingActivity.b(this.a).setVisibility(8);
-      break;
+      bcst.b(this.a.app, "CliOper", "", "", "0X8008C74", "0X8008C74", 0, 0, "", "", "", "");
     }
   }
 }

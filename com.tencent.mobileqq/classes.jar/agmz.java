@@ -1,30 +1,54 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class agmz
-  extends agmy
+  implements agma
 {
-  public Bitmap a;
-  public AnimationView.AnimationInfo a;
+  private BaseChatPie a;
   
-  public agmz(String paramString)
+  public agmz(BaseChatPie paramBaseChatPie)
   {
-    super(paramString);
+    this.a = paramBaseChatPie;
   }
   
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public void a(int paramInt)
   {
-    if (paramRedPacketInfo != null)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
+    default: 
+      return;
     }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.a != null)
+    {
+      BaseActivity localBaseActivity = this.a.a();
+      localObject1 = localObject2;
+      if (localBaseActivity != null) {
+        localObject1 = localBaseActivity.getIntent();
+      }
+    }
+    a((Intent)localObject1);
   }
   
-  public boolean a()
+  public void a(Intent paramIntent)
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
+    if ((paramIntent == null) || (this.a == null)) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = this.a.a;
+    } while ((localQQAppInterface == null) || (!paramIntent.getBooleanExtra("key_reactive_push_tip", false)));
+    bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A1BF", "0X800A1BF", 0, 0, "", "", "", "");
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 13 };
   }
 }
 

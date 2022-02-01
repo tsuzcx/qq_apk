@@ -1,24 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import java.io.File;
+import java.io.FileFilter;
 
-public class zbj
-  implements ValueAnimator.AnimatorUpdateListener
+class zbj
+  implements FileFilter
 {
-  public zbj(SingleLyricView paramSingleLyricView) {}
+  zbj(zbi paramzbi) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean accept(File paramFile)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (SingleLyricView.a(this.a) != null) {
-      SingleLyricView.a(this.a).setAlpha(f);
-    }
+    paramFile = paramFile.getName();
+    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zbj
  * JD-Core Version:    0.7.0.1
  */

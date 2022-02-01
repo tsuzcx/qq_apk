@@ -1,72 +1,76 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import java.net.URL;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class opj
 {
-  public static long a(BaseArticleInfo paramBaseArticleInfo)
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    long l1;
-    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mSocialFeedInfo == null)) {
-      l1 = 0L;
-    }
-    long l2;
-    do
+    try
     {
-      return l1;
-      if (paramBaseArticleInfo.mSocialFeedInfo.a == null) {
-        break;
+      if (paramAdData.jdField_a_of_type_Omi == null) {
+        return paramJSONObject;
       }
-      l2 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
-      l1 = l2;
-    } while (l2 != 0L);
-    for (;;)
-    {
-      try
+      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_triple_pic_game_cell");
+      if (!TextUtils.isEmpty(paramAdData.J)) {
+        paramJSONObject.put("id_game_small_img", new JSONObject());
+      }
+      if (!TextUtils.isEmpty(paramAdData.q))
       {
-        l1 = Long.parseLong(paramBaseArticleInfo.mSubscribeID);
-        return l1;
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("text", paramAdData.q);
+        paramJSONObject.put("id_tv_author", localObject1);
       }
-      catch (NumberFormatException paramBaseArticleInfo)
+      if (!TextUtils.isEmpty(paramAdData.k))
       {
-        paramBaseArticleInfo.printStackTrace();
-        return l2;
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("text", paramAdData.k);
+        paramJSONObject.put("id_tv_title", localObject1);
       }
-      l2 = 0L;
+      if ((paramAdData.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdData.jdField_a_of_type_JavaUtilArrayList.size() > 2))
+      {
+        Object localObject3 = tyc.a((String)paramAdData.jdField_a_of_type_JavaUtilArrayList.get(0), 4);
+        Object localObject2 = tyc.a((String)paramAdData.jdField_a_of_type_JavaUtilArrayList.get(1), 4);
+        localObject1 = tyc.a((String)paramAdData.jdField_a_of_type_JavaUtilArrayList.get(2), 4);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("multi_img_url1", ((URL)localObject3).toString());
+        paramJSONObject.put("id_multi_img_1", localJSONObject);
+        localObject3 = new JSONObject();
+        ((JSONObject)localObject3).put("multi_img_url2", ((URL)localObject2).toString());
+        paramJSONObject.put("id_multi_img_2", localObject3);
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("multi_img_url3", ((URL)localObject1).toString());
+        paramJSONObject.put("id_multi_img_3", localObject2);
+      }
+      paramJSONObject.put("id_ad_triple_imge_container", new JSONObject());
+      Object localObject1 = new JSONObject();
+      if (!TextUtils.isEmpty(paramAdData.L))
+      {
+        ((JSONObject)localObject1).put("text", paramAdData.L);
+        paramJSONObject.put("id_ad_dislike_button", localObject1);
+      }
+      paramJSONObject.put("id_game_operate_area", new JSONObject());
+      paramJSONObject.put("id_separator", new JSONObject());
+      paramJSONObject.put("id_ad_title", new JSONObject());
+      paramJSONObject.put("id_ad_title_rl", new JSONObject());
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("innerGameModel", paramAdData);
+      paramJSONObject.put("id_view_AdDownloadView", localObject1);
+      return paramJSONObject;
     }
-  }
-  
-  public static boolean a(ArticleInfo paramArticleInfo)
-  {
-    if ((paramArticleInfo == null) || (paramArticleInfo.mSocialFeedInfo == null)) {}
-    while ((!paramArticleInfo.mSocialFeedInfo.a()) || (rqj.f(paramArticleInfo)) || (b(paramArticleInfo))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a()))
+    catch (JSONException paramAdData)
     {
-      if (rqj.f((ArticleInfo)paramBaseArticleInfo)) {
-        return true;
-      }
-      if (!b(paramBaseArticleInfo)) {
-        return true;
-      }
+      paramAdData.printStackTrace();
     }
-    return false;
-  }
-  
-  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return a(paramBaseArticleInfo) == ors.a();
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     opj
  * JD-Core Version:    0.7.0.1
  */

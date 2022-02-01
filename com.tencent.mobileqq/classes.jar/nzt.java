@@ -1,23 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+
 public class nzt
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
+  public nzt(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public nzt(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.b);
+    PublicAccountJavascriptInterface.setLocationPermissionGrant(this.c, this.d, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzt
  * JD-Core Version:    0.7.0.1
  */

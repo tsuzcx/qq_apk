@@ -1,24 +1,20 @@
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout.DispatchKeyEventListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
-class bdlp
-  implements MyLinearLayout.DispatchKeyEventListener
+public class bdlp
+  implements DialogInterface.OnClickListener
 {
-  bdlp(bdll parambdll) {}
+  public bdlp(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
-    {
-      this.a.a();
-      return true;
-    }
-    return false;
+    GroupTeamWorkListActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdlp
  * JD-Core Version:    0.7.0.1
  */

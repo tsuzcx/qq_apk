@@ -1,81 +1,52 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public class aosw
+class aosw
+  extends BroadcastReceiver
 {
-  private ArrayList<aosx> a = new ArrayList(3);
+  aosw(aosv paramaosv) {}
   
-  public static aosw a(aoko paramaoko)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aosw localaosw = new aosw();
-    if (paramaoko != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ExtendFriendBannerConfBean", 2, "parse taskid->" + paramaoko.jdField_a_of_type_Int + " content->" + paramaoko.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
     {
       int i;
-      try
+      int j;
+      do
       {
-        paramaoko = new JSONObject(paramaoko.jdField_a_of_type_JavaLangString).optJSONArray("appList");
-        if (paramaoko != null)
+        do
         {
-          ArrayList localArrayList = new ArrayList(2);
-          i = 0;
-          int j = paramaoko.length();
-          if (i < j)
-          {
-            JSONObject localJSONObject = paramaoko.optJSONObject(i);
-            if (localJSONObject == null) {
-              break label298;
-            }
-            aosx localaosx = new aosx();
-            localaosx.jdField_a_of_type_Long = localJSONObject.optLong("appID");
-            localaosx.f = localJSONObject.optString("type");
-            localaosx.jdField_a_of_type_JavaLangString = localJSONObject.optString("bgBeginColor");
-            localaosx.b = localJSONObject.optString("bgEndColor");
-            localaosx.c = localJSONObject.optString("title");
-            localaosx.d = localJSONObject.optString("subTitle");
-            localaosx.b = localJSONObject.optString("bgEndColor");
-            localaosx.e = localJSONObject.optString("icon");
-            localaosx.g = localJSONObject.optString("schemeOrUrl");
-            localaosx.jdField_a_of_type_OrgJsonJSONObject = localJSONObject.optJSONObject("extra");
-            localArrayList.add(localaosx);
-            break label298;
+          return;
+        } while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2));
+        switch (paramIntent.getIntExtra("event", 0))
+        {
+        default: 
+          return;
+        case 1: 
+          paramContext = paramIntent.getStringExtra("bussinessSubName");
+          i = paramIntent.getIntExtra("download_Index", 0);
+          j = paramIntent.getIntExtra("download_Progress", 0);
+          if (AudioHelper.f()) {
+            QLog.w(this.a.c, 1, "receive notify, index[" + i + "], progress[" + j + "]");
           }
-          localaosw.a(localArrayList);
+          break;
         }
-      }
-      catch (Exception paramaoko)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ExtendFriendBannerConfBean", 2, "parse error->" + paramaoko.toString());
-        return localaosw;
-      }
-      return localaosw;
-      label298:
-      i += 1;
-    }
-  }
-  
-  private void a(ArrayList<aosx> paramArrayList)
-  {
-    this.a = paramArrayList;
-  }
-  
-  public ArrayList<aosx> a()
-  {
-    return this.a;
+      } while (this.a.a == null);
+      this.a.a.b(paramContext, i, j);
+      return;
+      paramContext = paramIntent.getStringExtra("config_Content");
+      this.a.b(paramContext);
+    } while (this.a.a == null);
+    this.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aosw
  * JD-Core Version:    0.7.0.1
  */

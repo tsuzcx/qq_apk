@@ -1,21 +1,15 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
-import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class aehz
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aehz(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
+  public aehz(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = new Intent(this.a, CountrySelectActivity.class);
-    paramView.putExtra("key_country_code", this.a.a.mLocationCountyCode);
-    paramView.putExtra("key_no_limit_allow", true);
-    this.a.startActivityForResult(paramView, 111);
+    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
   }
 }
 

@@ -1,20 +1,15 @@
-import android.os.ResultReceiver;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
 
-class ajap
-  implements EIPCResultCallback
+public class ajap
+  implements DialogInterface.OnDismissListener
 {
-  ajap(ajao paramajao, ResultReceiver paramResultReceiver) {}
+  public ajap(SystemRequestInfoView paramSystemRequestInfoView) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
-    {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramEIPCResult.data);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, null);
+    this.a.a = null;
   }
 }
 

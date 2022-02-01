@@ -14,7 +14,7 @@ import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.appbrand.page.embedded.EmbeddedWidgetClientFactory;
-import com.tencent.mobileqq.mini.appbrand.page.embedded.VideoEmbeddedWidgetClient;
+import com.tencent.mobileqq.mini.appbrand.page.embedded.EmbeddedWidgetClientHolder;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.ui.NavigationBar;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -41,6 +41,7 @@ public class EmbeddedVideoJsPlugin
   private static final Set<String> S_EVENT_MAP = new EmbeddedVideoJsPlugin.1();
   public static final String TAG = "EmbeddedVideoJsPlugin";
   public static final String VIDEO_EVENT_END = "onXWebVideoEnded";
+  public static final String VIDEO_EVENT_ERR = "onXWebVideoError";
   public static final String VIDEO_EVENT_EXIT_FULLSCREEN = "onXWebVideoExitFullscreen";
   public static final String VIDEO_EVENT_LOADED_METADATA = "onXWebVideoLoadedMetaData";
   public static final String VIDEO_EVENT_PAUSE = "onXWebVideoPause";
@@ -199,19 +200,7 @@ public class EmbeddedVideoJsPlugin
         }
         else if ("insertXWebVideo".equals(paramString1))
         {
-          if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleInsertXWebVideo(paramString2, paramJsRuntime, this.jsPluginEngine.appBrandRuntime)))
-          {
-            if (this.jsPluginEngine != null) {
-              this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
-            }
-          }
-          else if (this.jsPluginEngine != null) {
-            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-          }
-        }
-        else if ("updateXWebVideo".equals(paramString1))
-        {
-          if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleUpdateXWebVideo(paramString2)))
+          if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleInsertEmbeddedWidgetEvent("insertXWebVideo", paramString2, paramJsRuntime, this.jsPluginEngine.appBrandRuntime)))
           {
             if (this.jsPluginEngine != null) {
               this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
@@ -223,10 +212,10 @@ public class EmbeddedVideoJsPlugin
         }
         else
         {
-          if (!"operateXWebVideo".equals(paramString1)) {
+          if ((!"updateXWebVideo".equals(paramString1)) && (!"operateXWebVideo".equals(paramString1))) {
             break;
           }
-          if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleOperateXWebVideo(paramString2)))
+          if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleEmbeddedWidgetEvent(paramJsRuntime, paramString1, paramString2, paramInt)))
           {
             if (this.jsPluginEngine != null) {
               this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
@@ -244,7 +233,7 @@ public class EmbeddedVideoJsPlugin
         {
           j = new JSONObject(paramString2).optInt("orientation", 0);
           if (j != 90) {
-            break label818;
+            break label766;
           }
           i = 0;
           if (i != this.jsPluginEngine.appBrandRuntime.activity.getRequestedOrientation())
@@ -256,7 +245,7 @@ public class EmbeddedVideoJsPlugin
         }
         catch (Throwable paramString1) {}
         break;
-        label818:
+        label766:
         if (j == -90)
         {
           i = 8;
@@ -286,14 +275,14 @@ public class EmbeddedVideoJsPlugin
   {
     super.onDestroy();
     Object localObject = getFactory();
-    if ((localObject != null) && (((EmbeddedWidgetClientFactory)localObject).getVideoEmbeddedWidgetClientMap() != null))
+    if ((localObject != null) && (((EmbeddedWidgetClientFactory)localObject).getEmbeddedWidgetClientHolderMap() != null))
     {
-      localObject = ((EmbeddedWidgetClientFactory)localObject).getVideoEmbeddedWidgetClientMap().entrySet().iterator();
+      localObject = ((EmbeddedWidgetClientFactory)localObject).getEmbeddedWidgetClientHolderMap().entrySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
-        VideoEmbeddedWidgetClient localVideoEmbeddedWidgetClient = (VideoEmbeddedWidgetClient)((Map.Entry)((Iterator)localObject).next()).getValue();
-        if (localVideoEmbeddedWidgetClient != null) {
-          localVideoEmbeddedWidgetClient.nativeDestroy();
+        EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)((Map.Entry)((Iterator)localObject).next()).getValue();
+        if (localEmbeddedWidgetClientHolder != null) {
+          localEmbeddedWidgetClientHolder.nativeDestroy();
         }
         ((Iterator)localObject).remove();
       }
@@ -304,14 +293,14 @@ public class EmbeddedVideoJsPlugin
   {
     super.onPause();
     Object localObject = getFactory();
-    if ((localObject != null) && (((EmbeddedWidgetClientFactory)localObject).getVideoEmbeddedWidgetClientMap() != null))
+    if ((localObject != null) && (((EmbeddedWidgetClientFactory)localObject).getEmbeddedWidgetClientHolderMap() != null))
     {
-      localObject = ((EmbeddedWidgetClientFactory)localObject).getVideoEmbeddedWidgetClientMap().entrySet().iterator();
+      localObject = ((EmbeddedWidgetClientFactory)localObject).getEmbeddedWidgetClientHolderMap().entrySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
-        VideoEmbeddedWidgetClient localVideoEmbeddedWidgetClient = (VideoEmbeddedWidgetClient)((Map.Entry)((Iterator)localObject).next()).getValue();
-        if (localVideoEmbeddedWidgetClient != null) {
-          localVideoEmbeddedWidgetClient.nativePause();
+        EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)((Map.Entry)((Iterator)localObject).next()).getValue();
+        if (localEmbeddedWidgetClientHolder != null) {
+          localEmbeddedWidgetClientHolder.nativePause();
         }
       }
     }
@@ -321,14 +310,14 @@ public class EmbeddedVideoJsPlugin
   {
     super.onResume();
     Object localObject = getFactory();
-    if ((localObject != null) && (((EmbeddedWidgetClientFactory)localObject).getVideoEmbeddedWidgetClientMap() != null))
+    if ((localObject != null) && (((EmbeddedWidgetClientFactory)localObject).getEmbeddedWidgetClientHolderMap() != null))
     {
-      localObject = ((EmbeddedWidgetClientFactory)localObject).getVideoEmbeddedWidgetClientMap().entrySet().iterator();
+      localObject = ((EmbeddedWidgetClientFactory)localObject).getEmbeddedWidgetClientHolderMap().entrySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
-        VideoEmbeddedWidgetClient localVideoEmbeddedWidgetClient = (VideoEmbeddedWidgetClient)((Map.Entry)((Iterator)localObject).next()).getValue();
-        if (localVideoEmbeddedWidgetClient != null) {
-          localVideoEmbeddedWidgetClient.nativeResume();
+        EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)((Map.Entry)((Iterator)localObject).next()).getValue();
+        if (localEmbeddedWidgetClientHolder != null) {
+          localEmbeddedWidgetClientHolder.nativeResume();
         }
       }
     }
@@ -342,7 +331,7 @@ public class EmbeddedVideoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.EmbeddedVideoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

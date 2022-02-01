@@ -2,8 +2,7 @@ package com.tencent.mobileqq.minigame.manager;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bdgk;
-import bgzf;
+import bgln;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
@@ -11,17 +10,17 @@ import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.tfs.BaseTask;
 import com.tencent.mobileqq.mini.tfs.TaskFlowEngine;
-import com.tencent.mobileqq.minigame.api.APIProxyImpl;
 import com.tencent.mobileqq.minigame.api.QQEnvImp;
 import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
 import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
 import com.tencent.mobileqq.minigame.task.GameJsPluginEngineTask;
 import com.tencent.mobileqq.minigame.task.GpkgLoadAsyncTask;
 import com.tencent.mobileqq.minigame.task.InitGameRuntimeTask;
-import com.tencent.mobileqq.minigame.task.InstalledEngineLoadTask;
 import com.tencent.mobileqq.minigame.task.TritonEngineInitTask;
 import com.tencent.mobileqq.minigame.utils.GameLog;
+import com.tencent.mobileqq.triton.sdk.EnvConfig;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
+import com.tencent.mobileqq.triton.sdk.Version;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -37,32 +36,24 @@ public class GameRuntimeLoader
   private GpkgLoadAsyncTask mGpkgLoadTask;
   private GameRuntimeLoader.GameRuntimeProgressListener mGpkgLoadTaskListener;
   private InitGameRuntimeTask mInitGameRuntimeTask;
-  private bgzf mInspectorAgentWrapper;
-  private InstalledEngineLoadTask mInstalledEngineLoadTask;
-  private GameRuntimeLoader.GameRuntimeProgressListener mInstalledEngineLoadTaskListener;
   private GameJsPluginEngine mJsPluginEngine;
   private GameJsPluginEngineTask mJsPluginEngineTask;
-  private GameLibVersionManager mLibVersionManager;
   private GameReportManager mReportManager;
   private ArrayList<GameRuntimeLoader.GameRuntimeListener> mRuntimeListeners;
   private TritonEngineInitTask mTritonEngineInitTask;
   
-  public GameRuntimeLoader(Context paramContext)
+  public GameRuntimeLoader(Context paramContext, GameRuntimeLoaderManager.PREPARE_FROM paramPREPARE_FROM)
   {
     if (paramContext == null) {
       throw new IllegalArgumentException("can't create GameRuntimeLoader with null context");
     }
-    GameLog.getInstance().i(this.TAG, "run on device pref level:" + bdgk.f());
     this.mContext = paramContext;
     this.mJsPluginEngine = new GameJsPluginEngine();
-    this.mLibVersionManager = new GameLibVersionManager();
     this.mGameInfoManager = new GameInfoManager();
     this.mReportManager = new GameReportManager();
-    this.mInspectorAgentWrapper = new bgzf();
     this.mRuntimeListeners = new ArrayList();
-    this.mInstalledEngineLoadTaskListener = new GameRuntimeLoader.1(this);
-    this.mGpkgLoadTaskListener = new GameRuntimeLoader.2(this);
-    initBaseTasks();
+    this.mGpkgLoadTaskListener = new GameRuntimeLoader.1(this);
+    initBaseTasks(paramPREPARE_FROM);
   }
   
   private void dumpTask(BaseTask paramBaseTask)
@@ -78,11 +69,9 @@ public class GameRuntimeLoader
     GameLog.getInstance().i(this.TAG, paramBaseTask.toString() + " current state:" + paramBaseTask.getStatus() + ", retCode:" + paramBaseTask.retCode + ", msg:" + paramBaseTask.msg);
   }
   
-  private void initBaseTasks()
+  private void initBaseTasks(GameRuntimeLoaderManager.PREPARE_FROM paramPREPARE_FROM)
   {
-    this.mInstalledEngineLoadTask = new InstalledEngineLoadTask(this.mContext, this.mInstalledEngineLoadTaskListener);
-    this.mTritonEngineInitTask = new TritonEngineInitTask(this.mContext, this.mInspectorAgentWrapper, new QQEnvImp(this), new APIProxyImpl(this));
-    this.mTritonEngineInitTask.addDependTask(this.mInstalledEngineLoadTask);
+    this.mTritonEngineInitTask = new TritonEngineInitTask(this.mContext, new QQEnvImp(this), this.mJsPluginEngine, paramPREPARE_FROM);
     this.mJsPluginEngineTask = new GameJsPluginEngineTask(this.mContext, this.mJsPluginEngine);
     initTasks(new BaseTask[] { this.mTritonEngineInitTask, this.mJsPluginEngineTask });
   }
@@ -99,7 +88,7 @@ public class GameRuntimeLoader
   
   private boolean isGameEngineReady()
   {
-    return (this.mInstalledEngineLoadTask.isDone()) && (this.mInstalledEngineLoadTask.isSucceed());
+    return (this.mTritonEngineInitTask.isDone()) && (this.mTritonEngineInitTask.isSucceed());
   }
   
   private boolean isGamePkgReady()
@@ -153,14 +142,11 @@ public class GameRuntimeLoader
     }
   }
   
-  private void onInstalledEngineTaskDone(BaseTask paramBaseTask) {}
-  
-  private void onTritonEngineInitTaskDone(BaseTask paramBaseTask)
+  private void onTritonEngineInitTaskDone(TritonEngineInitTask paramTritonEngineInitTask)
   {
-    Object localObject;
-    if (!paramBaseTask.isSucceed())
+    if (!paramTritonEngineInitTask.isSucceed())
     {
-      localObject = ((TritonEngineInitTask)paramBaseTask).getAppConfig();
+      localObject = paramTritonEngineInitTask.getAppConfig();
       if (localObject != null)
       {
         MiniProgramLpReportDC04239.reportPageView((MiniAppConfig)localObject, "1", null, "load_fail", "baselib_task_fail");
@@ -170,13 +156,10 @@ public class GameRuntimeLoader
         }
       }
     }
-    for (;;)
-    {
-      localObject = new ArrayList(this.mRuntimeListeners).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((GameRuntimeLoader.GameRuntimeListener)((Iterator)localObject).next()).onEngineLoad(paramBaseTask.isSucceed(), paramBaseTask.msg, paramBaseTask.retCode);
-      }
-      getGameEngine().setJsEngine(this.mJsPluginEngine);
+    GameLog.getInstance().i(this.TAG, "TritonEngine 初始化配置:" + paramTritonEngineInitTask.getEnvConfig() + ", 机器性能:" + bgln.f());
+    Object localObject = new ArrayList(this.mRuntimeListeners).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((GameRuntimeLoader.GameRuntimeListener)((Iterator)localObject).next()).onEngineLoad(paramTritonEngineInitTask.isSucceed(), paramTritonEngineInitTask.msg, paramTritonEngineInitTask.retCode);
     }
   }
   
@@ -195,11 +178,6 @@ public class GameRuntimeLoader
     }
   }
   
-  public String getBaseEnginePath()
-  {
-    return this.mInstalledEngineLoadTask.getInstalledEnginePath();
-  }
-  
   public ITTEngine getGameEngine()
   {
     return this.mTritonEngineInitTask.getGameEngine();
@@ -210,28 +188,24 @@ public class GameRuntimeLoader
     return this.mGameInfoManager;
   }
   
-  public bgzf getInspectorAgentWrapper()
-  {
-    return this.mInspectorAgentWrapper;
-  }
-  
-  public InstalledEngine getInstalledEngine()
-  {
-    InstalledEngine localInstalledEngine = this.mInstalledEngineLoadTask.getInstalledEngine();
-    if ((localInstalledEngine != null) && (localInstalledEngine.isVerify)) {
-      return localInstalledEngine;
-    }
-    return null;
-  }
-  
   public GameJsPluginEngine getJsPluginEngine()
   {
     return this.mJsPluginEngine;
   }
   
-  public GameLibVersionManager getLibVersionManager()
+  public String getJsVersion()
   {
-    return this.mLibVersionManager;
+    String str2 = "";
+    EnvConfig localEnvConfig = getTritonEnvConfig();
+    String str1 = str2;
+    if (localEnvConfig != null)
+    {
+      str1 = str2;
+      if (localEnvConfig.getJSVersion() != null) {
+        str1 = localEnvConfig.getJSVersion().getVersion();
+      }
+    }
+    return str1;
   }
   
   public MiniGamePkg getMiniGamePkg()
@@ -242,6 +216,26 @@ public class GameRuntimeLoader
   public GameReportManager getReportManager()
   {
     return this.mReportManager;
+  }
+  
+  public EnvConfig getTritonEnvConfig()
+  {
+    return this.mTritonEngineInitTask.getEnvConfig();
+  }
+  
+  public String getTritonVersion()
+  {
+    String str2 = "";
+    EnvConfig localEnvConfig = getTritonEnvConfig();
+    String str1 = str2;
+    if (localEnvConfig != null)
+    {
+      str1 = str2;
+      if (localEnvConfig.getTritonVersion() != null) {
+        str1 = localEnvConfig.getTritonVersion().getVersion();
+      }
+    }
+    return str1;
   }
   
   public boolean isGameReadyStart()
@@ -267,10 +261,8 @@ public class GameRuntimeLoader
         updateFlow(paramBaseTask);
       }
       return;
-      if ((paramBaseTask instanceof InstalledEngineLoadTask)) {
-        onInstalledEngineTaskDone(paramBaseTask);
-      } else if ((paramBaseTask instanceof TritonEngineInitTask)) {
-        onTritonEngineInitTaskDone(paramBaseTask);
+      if ((paramBaseTask instanceof TritonEngineInitTask)) {
+        onTritonEngineInitTaskDone((TritonEngineInitTask)paramBaseTask);
       } else if ((paramBaseTask instanceof GameJsPluginEngineTask)) {
         onGameJsPluginEngineTaskDone(paramBaseTask);
       } else if ((paramBaseTask instanceof InitGameRuntimeTask)) {
@@ -317,7 +309,7 @@ public class GameRuntimeLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameRuntimeLoader
  * JD-Core Version:    0.7.0.1
  */

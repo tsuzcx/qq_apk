@@ -20,12 +20,12 @@ import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Adapter;
-import bhtb;
-import bhuw;
-import bhux;
-import bhuy;
-import biby;
+import bkij;
+import bkik;
+import bkil;
+import bkpj;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
 
 public abstract class AdapterView<T extends Adapter>
@@ -59,9 +59,9 @@ public abstract class AdapterView<T extends Adapter>
   public int mOldItemCount;
   protected int mOldSelectedPosition = -1;
   long mOldSelectedRowId = -9223372036854775808L;
-  bhuw mOnItemClickListener;
-  bhux mOnItemLongClickListener;
-  bhuy mOnItemSelectedListener;
+  bkij mOnItemClickListener;
+  bkik mOnItemLongClickListener;
+  bkil mOnItemSelectedListener;
   @ViewDebug.ExportedProperty(category="list")
   public int mSelectedPosition = -1;
   public long mSelectedRowId = -9223372036854775808L;
@@ -152,7 +152,7 @@ public abstract class AdapterView<T extends Adapter>
   
   public static void traceBegin(String paramString)
   {
-    biby.a(paramString);
+    bkpj.a(paramString);
   }
   
   public static void traceEnd() {}
@@ -403,17 +403,17 @@ public abstract class AdapterView<T extends Adapter>
     return this.mFirstPosition + getChildCount() - 1;
   }
   
-  public final bhuw getOnItemClickListener()
+  public final bkij getOnItemClickListener()
   {
     return this.mOnItemClickListener;
   }
   
-  public final bhux getOnItemLongClickListener()
+  public final bkik getOnItemLongClickListener()
   {
     return this.mOnItemLongClickListener;
   }
   
-  public final bhuy getOnItemSelectedListener()
+  public final bkil getOnItemSelectedListener()
   {
     return this.mOnItemSelectedListener;
   }
@@ -574,7 +574,7 @@ public abstract class AdapterView<T extends Adapter>
   @TargetApi(11)
   protected void invalidateParentIfNeeded()
   {
-    if ((bhtb.e()) && (isHardwareAccelerated()) && ((getParent() instanceof View))) {
+    if ((VersionUtils.isHoneycomb()) && (isHardwareAccelerated()) && ((getParent() instanceof View))) {
       ((View)getParent()).invalidate();
     }
   }
@@ -587,7 +587,7 @@ public abstract class AdapterView<T extends Adapter>
   @TargetApi(14)
   public boolean isInScrollingContainer()
   {
-    if (bhtb.d()) {
+    if (VersionUtils.isIceScreamSandwich()) {
       for (ViewParent localViewParent = getParent(); (localViewParent != null) && ((localViewParent instanceof ViewGroup)); localViewParent = localViewParent.getParent()) {
         if (((ViewGroup)localViewParent).shouldDelayChildPressedState()) {
           return true;
@@ -853,22 +853,22 @@ public abstract class AdapterView<T extends Adapter>
     throw new RuntimeException("Don't call setOnClickListener for an AdapterView. You probably want setOnItemClickListener instead");
   }
   
-  public void setOnItemClickListener(bhuw parambhuw)
+  public void setOnItemClickListener(bkij parambkij)
   {
-    this.mOnItemClickListener = parambhuw;
+    this.mOnItemClickListener = parambkij;
   }
   
-  public void setOnItemLongClickListener(bhux parambhux)
+  public void setOnItemLongClickListener(bkik parambkik)
   {
     if (!isLongClickable()) {
       setLongClickable(true);
     }
-    this.mOnItemLongClickListener = parambhux;
+    this.mOnItemLongClickListener = parambkik;
   }
   
-  public void setOnItemSelectedListener(bhuy parambhuy)
+  public void setOnItemSelectedListener(bkil parambkil)
   {
-    this.mOnItemSelectedListener = parambhuy;
+    this.mOnItemSelectedListener = parambkil;
   }
   
   public void setSelectedPositionInt(int paramInt)

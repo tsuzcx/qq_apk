@@ -1,67 +1,67 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.ROMUtil;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import org.json.JSONObject;
 
 public class bdie
+  extends bdid
 {
-  public static Intent a(Context paramContext)
+  private aszq jdField_a_of_type_Aszq = new bdif(this);
+  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  
+  public bdie(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
-    if (("MIUI".equals(ROMUtil.getRomName())) && (Build.VERSION.SDK_INT > 19)) {
-      return d(paramContext);
-    }
-    if (("SMARTISAN".equals(ROMUtil.getRomName())) || ("360".equals(ROMUtil.getRomName()))) {
-      return c(paramContext);
-    }
-    return b(paramContext);
+    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
   }
   
-  public static Intent b(Context paramContext)
+  private boolean a(JSONObject paramJSONObject)
   {
-    Intent localIntent;
-    if (Build.VERSION.SDK_INT >= 26)
+    if (paramJSONObject == null) {}
+    while (TextUtils.isEmpty(paramJSONObject.optString("ownertype"))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
     {
-      localIntent = new Intent();
-      localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-      localIntent.putExtra("android.provider.extra.APP_PACKAGE", paramContext.getPackageName());
-      localIntent.putExtra("android.provider.extra.CHANNEL_ID", paramContext.getApplicationInfo().uid);
-      return localIntent;
+      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString))) {
+        break label247;
+      }
+      MessageRecord localMessageRecord = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
+      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForFile))) {
+        break label226;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.j = localMessageRecord.senderuin;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = atvo.a(paramQQAppInterface, (MessageForFile)localMessageRecord);
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid))) {
+        break label247;
+      }
+      paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, this.jdField_a_of_type_Aszq);
     }
-    if (Build.VERSION.SDK_INT >= 21)
+    label226:
+    label247:
+    for (int i = 1;; i = 0)
     {
-      localIntent = new Intent();
-      localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-      localIntent.putExtra("app_package", paramContext.getPackageName());
-      localIntent.putExtra("app_uid", paramContext.getApplicationInfo().uid);
-      return localIntent;
+      if (i == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Bdia.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      }
+      this.jdField_a_of_type_Bdia.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
+      break;
     }
-    if (Build.VERSION.SDK_INT >= 19) {
-      return c(paramContext);
-    }
-    return c(paramContext);
-  }
-  
-  public static Intent c(Context paramContext)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-    localIntent.setData(Uri.parse("package:" + paramContext.getPackageName()));
-    return localIntent;
-  }
-  
-  public static Intent d(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT < 21) {
-      return c(paramContext);
-    }
-    Intent localIntent = new Intent("android.intent.action.MAIN");
-    localIntent.setClassName("com.android.settings", "com.android.settings.Settings$NotificationFilterActivity");
-    localIntent.putExtra("appName", paramContext.getResources().getString(paramContext.getApplicationInfo().labelRes));
-    localIntent.putExtra("packageName", paramContext.getPackageName());
-    return localIntent;
   }
 }
 

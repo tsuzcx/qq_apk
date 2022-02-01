@@ -1,25 +1,57 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class awol
-  implements QQPermissionCallback
 {
-  public awol(CustomCoverFragment paramCustomCoverFragment, FragmentActivity paramFragmentActivity) {}
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public awol(int paramInt1, String paramString1, String paramString2, MsgBackupUserData paramMsgBackupUserData, int paramInt2)
   {
-    bdgm.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramArrayOfString, paramArrayOfInt);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int a()
   {
-    CustomCoverFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public MsgBackupUserData a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupQryStateRsp--");
+    localStringBuilder.append(",state:").append(this.jdField_a_of_type_Int).append(",token:").append(this.jdField_a_of_type_JavaLangString).append(",encryptKey:").append(this.jdField_b_of_type_JavaLangString).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_b_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awol
  * JD-Core Version:    0.7.0.1
  */

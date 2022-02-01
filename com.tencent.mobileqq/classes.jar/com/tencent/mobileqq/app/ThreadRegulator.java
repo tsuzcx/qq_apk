@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import amdr;
-import amds;
-import amdt;
 import android.os.SystemClock;
+import anwa;
+import anwb;
+import anwc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.pool.RecyclablePool;
 import com.tencent.qphone.base.util.QLog;
@@ -14,10 +14,10 @@ public class ThreadRegulator
   implements MqqRegulatorCallback
 {
   private static ThreadRegulator jdField_a_of_type_ComTencentMobileqqAppThreadRegulator;
-  private volatile amdt jdField_a_of_type_Amdt;
-  private final RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(amdt.class, 2);
+  private volatile anwc jdField_a_of_type_Anwc;
+  private final RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(anwc.class, 2);
   Runnable jdField_a_of_type_JavaLangRunnable = new ThreadRegulator.2(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new amds(this, ThreadManager.getSubThreadLooper());
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new anwb(this, ThreadManager.getSubThreadLooper());
   
   public static ThreadRegulator a()
   {
@@ -40,13 +40,13 @@ public class ThreadRegulator
   
   public void a(int paramInt)
   {
-    if (!amdr.a().a()) {}
-    while (this.jdField_a_of_type_Amdt != null) {
+    if (!anwa.a().a()) {}
+    while (this.jdField_a_of_type_Anwc != null) {
       return;
     }
-    this.jdField_a_of_type_Amdt = ((amdt)this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(amdt.class));
-    this.jdField_a_of_type_Amdt.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Amdt.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_Anwc = ((anwc)this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(anwc.class));
+    this.jdField_a_of_type_Anwc.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Anwc.jdField_a_of_type_Long = SystemClock.uptimeMillis();
     try
     {
       ThreadExcutor.getInstance().shrinkMaxPoolSize(true);
@@ -70,10 +70,10 @@ public class ThreadRegulator
   
   public void b()
   {
-    if (this.jdField_a_of_type_Amdt == null) {
+    if (this.jdField_a_of_type_Anwc == null) {
       return;
     }
-    while (this.jdField_a_of_type_Amdt != null) {
+    while (this.jdField_a_of_type_Anwc != null) {
       try
       {
         Thread.sleep(100L);
@@ -103,7 +103,7 @@ public class ThreadRegulator
         if (!"MSF-Receiver".equals(paramThread.getName())) {
           break;
         }
-      } while (!amdr.a().b());
+      } while (!anwa.a().b());
       paramThread.setPriority(1);
       return true;
     } while ("Rejected_Handler".equals(paramThread.getName()));

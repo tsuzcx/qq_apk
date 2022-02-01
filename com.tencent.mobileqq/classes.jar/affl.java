@@ -1,205 +1,48 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.SystemClock;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.MultiWindowAIOHelper.1;
-import com.tencent.mobileqq.activity.aio.helper.MultiWindowAIOHelper.3;
-import com.tencent.mobileqq.activity.aio.helper.MultiWindowAIOHelper.4;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import java.util.List;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class affl
-  implements affa
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new MultiWindowAIOHelper.1(this);
+  public affl(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public affl(BaseChatPie paramBaseChatPie)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  private int a()
-  {
-    aulg localaulg = a();
-    if (localaulg == null) {
-      return -1;
-    }
-    return localaulg.c();
-  }
-  
-  private aulg a()
-  {
-    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {}
-    int i;
-    do
+    int i = 1;
+    label61:
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
     {
-      return null;
-      i = localBaseActivity.getIntent().getIntExtra("KEY_MULTI_WINDOW_AIO_CONTEXT_ID", -1);
-    } while (i == -1);
-    return ((aulf)localBaseActivity.app.getManager(325)).b(i);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  }
-  
-  private void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiWindowAIOHelper", 2, "onShowFirst() called");
-    }
-  }
-  
-  private void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiWindowAIOHelper", 2, "onCreate() called");
-    }
-    Object localObject = a();
-    if ((localObject != null) && (((aulg)localObject).a()))
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-      if (localObject != null) {
-        ((ChatXListView)localObject).setOnLayoutListener(new affm(this));
-      }
-    }
-  }
-  
-  private void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiWindowAIOHelper", 2, "onStart() called");
-    }
-  }
-  
-  private void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiWindowAIOHelper", 2, "onResume() called");
-    }
-  }
-  
-  private void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiWindowAIOHelper", 2, "onShow() called");
-    }
-  }
-  
-  private void h()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  private void i() {}
-  
-  private void j()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiWindowAIOHelper", 2, "tryRestoreListViewState() called");
-    }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Aeqo;
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject1 = ((aeqo)localObject1).a();
-      i = a();
-      if ((localObject1 != null) && (((List)localObject1).size() == i))
+      SoundAndVibrateActivity.b(this.a, 0);
+      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839448);
+      if (this.a.app.b() == 0)
       {
-        localObject1 = a();
-        if ((localObject1 != null) && (((aulg)localObject1).a()))
-        {
-          localObject2 = ((aulg)localObject1).a();
-          if (localObject2 != null)
-          {
-            localObject2 = ((aulk)localObject2).a();
-            if (localObject2 != null) {
-              break label100;
-            }
-            QLog.e("MultiWindowAIOHelper", 1, "tryRestoreListViewState: listView == null");
-          }
+        this.a.b.setChecked(false);
+        this.a.app.f(1);
+        localQQAppInterface = this.a.app;
+        if (!paramBoolean) {
+          break label157;
         }
       }
     }
-    return;
-    label100:
-    int i = ((ListView)localObject2).getLastVisiblePosition();
-    View localView = ((ListView)localObject2).getChildAt(((ListView)localObject2).getChildCount() - 1);
-    int j = ((ListView)localObject2).getBottom() - localView.getBottom();
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiWindowAIOHelper", 2, "tryRestoreListViewState() anchorPosition = " + i + ", specifyBottom = " + j);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setOnLayoutListener(null);
-    this.jdField_a_of_type_AndroidOsHandler.post(new MultiWindowAIOHelper.3(this, i, j));
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new MultiWindowAIOHelper.4(this, (aulg)localObject1), 350L);
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Aeqo != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Aeqo.d();
-    }
-    long l = SystemClock.elapsedRealtime();
-    if (l - this.jdField_a_of_type_Long >= 1000L)
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 300L);
+      bcst.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_shake", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      this.a.b.setChecked(true);
+      break;
+      SoundAndVibrateActivity.b(this.a, 8);
+      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839432);
+      this.a.app.f(0);
+      break label61;
+      label157:
+      i = 0;
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("MultiWindowAIOHelper", 2, "AIO start multi window!  but list idle time lower 2s!  please wait... dif time = " + (l - this.jdField_a_of_type_Long));
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 5: 
-    case 9: 
-    case 10: 
-    case 12: 
-    case 13: 
-    default: 
-      return;
-    case 2: 
-      d();
-      return;
-    case 3: 
-      e();
-      return;
-    case 4: 
-      f();
-    case 6: 
-      c();
-      return;
-    case 7: 
-      g();
-      return;
-    case 8: 
-      h();
-      return;
-    case 11: 
-      i();
-      return;
-    }
-    b();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 4, 6, 7, 8, 11, 14 };
   }
 }
 

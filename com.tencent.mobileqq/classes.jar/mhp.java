@@ -1,45 +1,34 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavOperationMenuView;
 
 public class mhp
+  implements mlr
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup = null;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  boolean jdField_a_of_type_Boolean = false;
-  public int b;
-  public ImageView b;
-  public TextView b;
-  public boolean b;
-  public ImageView c;
-  public boolean c;
-  public ImageView d;
-  public boolean d;
-  public ImageView e = null;
-  public ImageView f;
+  public mhp(QavOperationMenuView paramQavOperationMenuView) {}
   
-  public mhp()
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_b_of_type_AndroidWidgetImageView = null;
-    this.jdField_c_of_type_AndroidWidgetImageView = null;
-    this.jdField_d_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_d_of_type_Boolean = true;
+    switch (paramInt1)
+    {
+    case 1: 
+    default: 
+    case 2: 
+      do
+      {
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(paramString, paramInt2, false);
+      return;
+    }
+    if (this.a.a != null) {
+      this.a.a.a(paramString, paramInt2, true);
+    }
+    mqw.c(2131373387);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mhp
  * JD-Core Version:    0.7.0.1
  */

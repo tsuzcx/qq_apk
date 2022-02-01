@@ -3,12 +3,12 @@ package com.tencent.av.chatroom;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import lmq;
+import ljn;
 
 public class ChatRoomInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ChatRoomInfo> CREATOR = new lmq();
+  public static final Parcelable.Creator<ChatRoomInfo> CREATOR = new ljn();
   public int a;
   public long a;
   public boolean a;
@@ -93,7 +93,7 @@ public class ChatRoomInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.chatroom.ChatRoomInfo
  * JD-Core Version:    0.7.0.1
  */

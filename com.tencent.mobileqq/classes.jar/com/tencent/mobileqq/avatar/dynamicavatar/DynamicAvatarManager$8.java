@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import anug;
-import bdar;
+import aobo;
+import apul;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class DynamicAvatarManager$8
   implements Runnable
 {
-  public DynamicAvatarManager$8(anug paramanug) {}
+  public DynamicAvatarManager$8(apul paramapul) {}
   
   public void run()
   {
-    synchronized (bdar.a)
+    synchronized (aobo.a)
     {
-      bdar.b = false;
+      aobo.b = false;
       ThreadManager.getUIHandler().post(new DynamicAvatarManager.8.1(this));
       this.this$0.c();
       return;
@@ -23,7 +23,7 @@ public class DynamicAvatarManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager.8
  * JD-Core Version:    0.7.0.1
  */

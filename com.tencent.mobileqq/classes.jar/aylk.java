@@ -1,49 +1,31 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.fts.FTSMessage;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.ArrayList;
+import android.animation.ObjectAnimator;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable;
+import java.lang.ref.WeakReference;
 
 public class aylk
+  implements OnCompositionLoadedListener
 {
-  public static aylg a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    return new ayln(paramQQAppInterface);
-  }
+  public aylk(PromotionEntry.UpdateOperateBtnStatusRunnable paramUpdateOperateBtnStatusRunnable, String paramString) {}
   
-  public static ayli a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    return new aylt(paramQQAppInterface, paramString, paramArrayList, paramFTSEntity);
-  }
-  
-  public static ayuu a(int paramInt, String paramString, FTSEntity paramFTSEntity)
-  {
-    paramString = new ayuu(paramString);
-    paramFTSEntity = (FTSMessage)paramFTSEntity;
-    paramString.a = new Bundle();
-    paramString.a.putLong("uin", paramFTSEntity.uin);
-    paramString.a.putInt("uinType", paramFTSEntity.istroop);
-    return paramString;
-  }
-  
-  public static String a(Context paramContext, int paramInt)
-  {
-    return paramContext.getString(2131719582);
-  }
-  
-  public static String a(Context paramContext, int paramInt1, String paramString, int paramInt2)
-  {
-    String str = paramString;
-    if (paramString.length() > 13) {
-      str = paramString.substring(0, 10) + "…";
-    }
-    return paramContext.getString(2131719581, new Object[] { Integer.valueOf(paramInt1), str });
-  }
-  
-  public static String b(Context paramContext, int paramInt)
-  {
-    return alud.a(2131705342);
+    if (paramLottieComposition == null) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = new LottieDrawable();
+      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setComposition(paramLottieComposition);
+      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setImageAssetDelegate(new ayll(this));
+      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.loop(true);
+      paramLottieComposition = (ImageView)PromotionEntry.UpdateOperateBtnStatusRunnable.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable).get();
+    } while ((paramLottieComposition == null) || (paramLottieComposition.getVisibility() != 0) || (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_AndroidAnimationObjectAnimator == null) || (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_AndroidAnimationObjectAnimator.isRunning()));
+    paramLottieComposition.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
   }
 }
 

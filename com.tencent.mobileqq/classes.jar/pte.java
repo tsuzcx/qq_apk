@@ -1,42 +1,29 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeBiuCommentView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class pte
-  extends psx
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  public pte(VideoView paramVideoView) {}
   
-  public pte(NativeBiuCommentView paramNativeBiuCommentView, ArticleInfo paramArticleInfo, int paramInt)
+  public void onCompletion(TVK_IMediaPlayer arg1)
   {
-    super(-12084769, 13421772, 860716207);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (rqj.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+    synchronized (this.a)
     {
-      ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 5, false);
-      rqj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-      return;
-    }
-    if (rqj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
-    {
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.getContext();
-      if ((paramView instanceof Activity)) {
-        ors.c((Activity)paramView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 6);
+      VideoView.access$000(this.a, 10);
+      this.a.displayCover();
+      if (VideoView.access$2200(this.a) != null) {
+        VideoView.access$2200(this.a).c();
       }
-      rqj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      VideoView.access$2300(this.a);
       return;
     }
-    ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeBiuCommentView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pte
  * JD-Core Version:    0.7.0.1
  */

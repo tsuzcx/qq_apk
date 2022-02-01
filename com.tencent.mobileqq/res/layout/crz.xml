@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cg_" android:background="@drawable/e5s" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:textSize="17.0dip" android:textColor="@color/fl" android:gravity="start" android:id="@id/nql" android:background="@drawable/e5p" android:paddingLeft="16.0dip" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="33.0dip" android:layout_width="275.0dip" android:layout_height="117.0dip" android:layout_marginTop="16.0dip" android:hint="@string/x1f" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/ah6" android:id="@id/nqm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:layout_alignRight="@id/nql" android:layout_alignBottom="@id/nql" />
+    <TextView android:textSize="20.0dip" android:textColor="@color/ah2" android:id="@id/nqn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="44.0dip" android:text="@string/x1j" android:singleLine="true" android:layout_below="@id/nql" android:layout_centerHorizontal="true" />
+    <FrameLayout android:id="@id/kw5" android:background="@drawable/hhj" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentBottom="true">
+        <View android:layout_gravity="top" android:background="@drawable/e5r" android:layout_width="fill_parent" android:layout_height="20.0dip" />
+    </FrameLayout>
+    <ImageView android:id="@id/dh7" android:layout_width="150.0dip" android:layout_height="150.0dip" android:layout_marginBottom="56.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <View android:id="@id/aic" android:background="@drawable/fqp" android:clickable="false" android:layout_width="110.0dip" android:layout_height="110.0dip" android:layout_marginBottom="20.0dip" android:layout_alignBottom="@id/dh7" android:layout_centerHorizontal="true" android:alpha="0.5" />
+    <View android:id="@id/dhb" android:background="@drawable/gul" android:layout_width="75.0dip" android:layout_height="75.0dip" android:layout_marginTop="17.5dip" android:layout_alignTop="@id/aic" android:layout_centerHorizontal="true" android:alpha="0.5" />
+    <Button android:id="@id/nf_" android:background="@drawable/gum" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="46.0dip" android:layout_toLeftOf="@id/aic" android:layout_alignTop="@id/aic" />
+    <Button android:id="@id/aga" android:background="@drawable/fqo" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="25.0dip" android:layout_marginTop="29.0dip" android:contentDescription="@string/qd0" />
+</RelativeLayout>

@@ -1,58 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileGameView;
 
 public class azqb
+  extends azpu
 {
-  private static int jdField_a_of_type_Int = -1;
-  public static String a;
-  static boolean jdField_a_of_type_Boolean;
-  
-  static
+  public azqb(azlw paramazlw, azfe paramazfe)
   {
-    jdField_a_of_type_JavaLangString = "GeneralConfigUtils";
+    super(paramazlw, paramazfe);
   }
   
-  public static void a(String paramString1, String paramString2)
+  public String a()
   {
-    if (!TextUtils.isEmpty(paramString2)) {
-      jdField_a_of_type_Int = -1;
-    }
-    try
-    {
-      paramString2 = Integer.valueOf(paramString2);
-      BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putInt(paramString1, paramString2.intValue()).commit();
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "parseConfig(): e = " + paramString1);
-    }
+    return "VasProfileHeaderGameComponent";
   }
   
-  public static boolean a()
+  protected void a()
   {
-    if (jdField_a_of_type_Int == -1) {
-      if (BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).getInt("pic_thumb_400Enable", 0) == 1)
-      {
-        jdField_a_of_type_Boolean = true;
-        jdField_a_of_type_Int = 1;
-      }
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
     {
-      return jdField_a_of_type_Boolean;
-      jdField_a_of_type_Boolean = false;
-      jdField_a_of_type_Int = 0;
-      continue;
-      if (jdField_a_of_type_Int == 1) {
-        jdField_a_of_type_Boolean = true;
-      } else {
-        jdField_a_of_type_Boolean = false;
-      }
+      VasProfileGameView localVasProfileGameView = new VasProfileGameView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azfe)this.b);
+      localVasProfileGameView.setClickListener(this);
+      localVasProfileGameView.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileGameView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
     }
   }
 }

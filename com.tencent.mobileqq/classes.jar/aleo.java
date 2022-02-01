@@ -1,38 +1,36 @@
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aleo
+public class aleo
+  extends aleq
 {
-  public abstract String a();
+  public aleo(Context paramContext)
+  {
+    this.jdField_a_of_type_JavaLangString = anni.a(2131696524);
+    this.b = this.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract String a(int paramInt, ApolloWebAvatarParam paramApolloWebAvatarParam);
-  
-  public abstract String a(alel paramalel);
-  
-  public abstract String a(String paramString);
-  
-  public abstract String a(ArrayList<ApolloWebAvatarParam> paramArrayList);
-  
-  public abstract String a(int[] paramArrayOfInt);
-  
-  public abstract void a(int paramInt, int[] paramArrayOfInt);
-  
-  public abstract void a(Activity paramActivity, String paramString1, String paramString2);
-  
-  public abstract void a(ArrayList<String> paramArrayList);
-  
-  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract String b(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
+  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramObject instanceof aleo))
+    {
+      paramObject = (aleo)paramObject;
+      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
+    }
+    for (parambepr = paramObject;; parambepr = paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(bepr.class.getSimpleName() + ".troop.special_msg.at_all_msg", 2, "updateMsgInfo");
+      }
+      return parambepr;
+      paramObject = new aleo(BaseApplication.getContext());
+      paramObject.a(paramMessageRecord.senderuin);
+      paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
+    }
+  }
 }
 
 

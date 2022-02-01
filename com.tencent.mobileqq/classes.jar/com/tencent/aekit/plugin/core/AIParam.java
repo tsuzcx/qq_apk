@@ -7,6 +7,9 @@ public class AIParam
 {
   public static final String BYTES_DATA_SIZE_HEIGHT = "bytesDataSizeHeight";
   public static final String BYTES_DATA_SIZE_WIDTH = "bytesDataSizeWidth";
+  public static final String CAMERAINDEX = "cameraIndex";
+  public static final String FACEINFOLIST = "faceInfoList";
+  public static final String NEEDRESETGENDER = "resetGender";
   public static final String NEED_DETECT_HAND_BONE = "needDetectHandBone";
   public static final String SCALE = "scale";
   private AIAttr aiAttr;
@@ -117,7 +120,7 @@ public class AIParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.plugin.core.AIParam
  * JD-Core Version:    0.7.0.1
  */

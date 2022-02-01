@@ -1,123 +1,103 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
-public class amlo
-  extends absi
+public abstract class amlo
+  implements amlq
 {
-  public amlo(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, abtf paramabtf)
+  private AppInterface mApp;
+  private final boolean mInMainProcess;
+  
+  public amlo(AppInterface paramAppInterface, boolean paramBoolean)
   {
-    super(paramQQAppInterface, paramQQMessageFacade, paramabtf);
+    this.mApp = paramAppInterface;
+    this.mInMainProcess = paramBoolean;
   }
   
-  public long a(MessageRecord paramMessageRecord)
+  public void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    return 0L;
-  }
-  
-  public void a(MessageRecord paramMessageRecord, awgf paramawgf, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, absj paramabsj)
-  {
-    if (paramMessageRecord == null) {
-      return;
+    if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null)) {
+      QLog.e("cmgame_process.CmGameStartChecker", 1, "onDownloadGameResDown startCheckParam == null");
     }
-    if (paramMessageRecord.time == 0L) {
-      paramMessageRecord.time = ayzl.a();
-    }
-    if (paramMessageRecord.msgseq == 0L) {
-      paramMessageRecord.msgseq = ((int)paramMessageRecord.time);
-    }
-    a(paramMessageRecord, true, 1);
-  }
-  
-  public void a(String paramString, int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2, Bundle paramBundle) {}
-  
-  public void a(String paramString, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded uin=" + paramString + ",type=" + paramInt1 + ",needDelMark=" + paramBoolean2);
-    }
-    if (paramString == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded return : uin=null");
-      }
-    }
-    for (;;)
+    do
     {
       return;
-      if (!alof.x.equals(paramString)) {
+      if (!this.mInMainProcess) {
         break;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded return : clean all");
-      }
-      paramString = (badd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
-      if (paramString != null)
-      {
-        paramString = paramString.a().iterator();
-        while (paramString.hasNext())
-        {
-          String str = (String)paramString.next();
-          if (!TextUtils.isEmpty(str)) {
-            c(str, paramInt1, paramBoolean1, paramBoolean1);
-          }
-        }
-      }
-    }
-    c(paramString, paramInt1, paramBoolean1, paramBoolean2);
+    } while (!(this.mApp instanceof QQAppInterface));
+    ApolloGameUtil.b((QQAppInterface)this.mApp, paramStartCheckParam);
+    return;
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("StartCheckParam", paramStartCheckParam);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "onDownloadGameResDown", localBundle, null);
   }
   
-  public void b(String paramString, int paramInt1, int paramInt2, abts paramabts) {}
+  public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
   
-  public void c(String paramString, int paramInt)
+  public void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt) {}
+  
+  public void onDownloadGameResStart(CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
+  
+  public void onGameCheckRetry(int paramInt) {}
+  
+  public void onGameCheckStart(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    super.c(paramString, paramInt);
-    aors localaors = (aors)aoks.a().a(607);
-    if ((localaors == null) || (localaors.a)) {
-      return;
+    if (paramStartCheckParam == null) {
+      QLog.e("cmgame_process.CmGameStartChecker", 1, "onGameCheckStart startCheckParam == null");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString, paramInt, 0);
-  }
-  
-  public void c(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramInt) > 0)
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded clean one uin = " + paramString);
+      return;
+      if (!this.mInMainProcess) {
+        break;
       }
-      localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramInt).a(paramString, paramInt);
-      localabta = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      if (localMessageRecord != null)
-      {
-        l = a(localMessageRecord);
-        localabta.a(paramString, paramInt, l, paramBoolean1, paramBoolean2);
-        c(paramString, paramInt);
-        this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(paramString, paramInt));
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString, paramInt) <= 0) {
-      for (;;)
-      {
-        MessageRecord localMessageRecord;
-        abta localabta;
-        return;
-        long l = 0L;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setTroopReaded clean one uin = " + paramString);
-    }
-    c(paramString, paramInt);
+    } while (!(this.mApp instanceof QQAppInterface));
+    ApolloGameUtil.a((QQAppInterface)this.mApp, paramStartCheckParam);
+    return;
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("StartCheckParam", paramStartCheckParam);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "onGameCheckStart", localBundle, null);
   }
+  
+  public void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong) {}
+  
+  public void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
+  
+  public void onSsoCmdRuleRsp(CmGameStartChecker.StartCheckParam paramStartCheckParam, String paramString)
+  {
+    if (paramStartCheckParam == null) {
+      QLog.e("cmgame_process.CmGameStartChecker", 1, "onSsoCmdRuleRsp startCheckParam == null");
+    }
+    Object localObject;
+    do
+    {
+      return;
+      if (this.mInMainProcess)
+      {
+        localObject = new Bundle();
+        ((Bundle)localObject).putSerializable("StartCheckParam", paramStartCheckParam);
+        ((Bundle)localObject).putString("rule", paramString);
+        paramStartCheckParam.mSSORule = paramString;
+        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_set_sso_rule", (Bundle)localObject, null);
+        return;
+      }
+      localObject = ampj.a();
+    } while (localObject == null);
+    ((amrt)localObject).a(paramStartCheckParam.gameId, paramString);
+  }
+  
+  public void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amlo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,124 +1,104 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.pluginsdk.IPluginActivity;
+import cooperation.qzone.QzonePluginProxyActivity;
+import mqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-class bmjl
-  extends SimpleObserver<bnaz>
+public class bmjl
 {
-  bmjl(bmjk parambmjk) {}
-  
-  public void a(bnaz parambnaz)
+  public static boolean a(Activity paramActivity)
   {
-    super.onNext(parambnaz);
-    this.a.jdField_a_of_type_Bmor.b();
-    Activity localActivity = this.a.jdField_a_of_type_Bmor.getActivity();
-    Intent localIntent;
-    boolean bool;
-    if ((localActivity != null) && (!localActivity.isFinishing()))
-    {
-      wxe.b("EditPicActivity.EditPicPartManager", "picDestPath = " + parambnaz.a.b);
-      localIntent = this.a.jdField_a_of_type_Bmor.a(parambnaz);
-      if (!parambnaz.a.c)
-      {
-        if (parambnaz.a.c) {
-          break label280;
-        }
-        bool = true;
-        localIntent.putExtra("extra_is_edited_pic", bool);
-      }
-      this.a.b();
-      wxe.b("EditPicActivity.EditPicPartManager", "subBussinessId = " + this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b());
-      if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a == 2) {
-        switch (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b())
-        {
-        default: 
-          if (parambnaz.a()) {
-            bhsb.b(true, parambnaz.a.b);
-          }
-          break;
-        }
-      }
-    }
-    Object localObject;
-    for (;;)
-    {
-      bmjk.a(this.a);
-      localObject = localIntent.getStringExtra("PhotoConst.PLUGIN_APK");
-      bool = localIntent.getBooleanExtra("DirectBackToQzone", false);
-      if ((!"qzone_plugin.apk".equals(localObject)) || (!bool)) {
-        break label320;
-      }
-      this.a.jdField_a_of_type_Bmor.a(-1, localIntent, 2130772028, 0);
-      return;
-      label280:
-      bool = false;
-      break;
-      bhsb.b(true, parambnaz.a.b);
-      continue;
-      if (parambnaz.a()) {
-        bhsb.a(parambnaz.a.b, true);
-      }
-    }
-    label320:
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a == 1)
-    {
-      this.a.jdField_a_of_type_Bmor.a().sendBroadcast(new Intent("action_fire_create_story"));
-      this.a.jdField_a_of_type_Bmor.a(-1, localIntent, 2130772028, 0, true);
-      return;
-    }
-    if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a == 2) && ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c() == 122) || (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c() == 133)))
-    {
-      parambnaz = localIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-      bmjk.a(this.a, localIntent);
-      AIOLongShotHelper.a(localActivity, parambnaz, new bmjm(this));
-      return;
-    }
-    if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a == 2) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c() == 125))
-    {
-      this.a.jdField_a_of_type_Bmor.a(-1, localIntent, 2130772028, 0, false);
-      azqs.b(null, "dc00898", "", "", "0X800A188", "0X800A188", 0, 0, "", "", "", "");
-      return;
-    }
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a == 2)
-    {
-      localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams;
-      if (EditVideoParams.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c()))
-      {
-        bmjk.a(this.a, localIntent);
-        azqs.b(null, "dc00898", "", "", "0X800A183", "0X800A183", 0, 0, "", "", "", "");
-        return;
-      }
-    }
-    if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a == 2) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.j()))
-    {
-      if (!parambnaz.a()) {}
-      for (bool = true;; bool = false)
-      {
-        localIntent.putExtra("PhotoConst.SEND_ORIGIN", bool);
-        this.a.jdField_a_of_type_Bmor.a(-1, localIntent, 2130772028, 0, false);
-        return;
-      }
-    }
-    this.a.a(localActivity, this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a(), localIntent);
+    return a(paramActivity, new bmjm(paramActivity), 0);
   }
   
-  public void onCancel()
+  public static boolean a(Activity paramActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
   {
-    super.onCancel();
-    wxe.d("EditPicActivity.EditPicPartManager", "PIC PUBLISH cancel !");
-    this.a.jdField_a_of_type_Bmor.b();
-    QQToast.a(this.a.jdField_a_of_type_Bmor.a(), alud.a(2131704071), 0).a();
+    if (paramActivity == null) {}
+    do
+    {
+      return false;
+      if ((paramActivity instanceof BasePluginActivity)) {
+        return a((BasePluginActivity)paramActivity, paramQQPermissionCallback, paramInt);
+      }
+      if ((paramActivity instanceof QzonePluginProxyActivity)) {
+        return a((QzonePluginProxyActivity)paramActivity, paramQQPermissionCallback, paramInt);
+      }
+      if ((paramActivity instanceof BaseActivity)) {
+        return a((BaseActivity)paramActivity, paramQQPermissionCallback, paramInt);
+      }
+    } while (!(paramActivity instanceof Activity));
+    return b(paramActivity);
   }
   
-  public void onError(@NonNull Error paramError)
+  public static boolean a(BasePluginActivity paramBasePluginActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
   {
-    super.onError(paramError);
-    this.a.a(paramError);
+    if (paramBasePluginActivity == null) {
+      return false;
+    }
+    if ((Build.VERSION.SDK_INT >= 23) && ((paramBasePluginActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramBasePluginActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
+    {
+      paramBasePluginActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+      return false;
+    }
+    return true;
+  }
+  
+  private static boolean a(QzonePluginProxyActivity paramQzonePluginProxyActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  {
+    if (paramQzonePluginProxyActivity == null) {}
+    do
+    {
+      return false;
+      if ((Build.VERSION.SDK_INT < 23) || ((paramQzonePluginProxyActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (paramQzonePluginProxyActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0))) {
+        break;
+      }
+      paramQzonePluginProxyActivity = paramQzonePluginProxyActivity.a();
+    } while (paramQzonePluginProxyActivity == null);
+    paramQzonePluginProxyActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+    return false;
+    return true;
+  }
+  
+  private static boolean a(BaseActivity paramBaseActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  {
+    if (paramBaseActivity == null) {
+      return false;
+    }
+    if ((Build.VERSION.SDK_INT >= 23) && ((paramBaseActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramBaseActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
+    {
+      paramBaseActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+      return false;
+    }
+    return true;
+  }
+  
+  private static Activity b(Activity paramActivity)
+  {
+    Activity localActivity;
+    if (paramActivity == null) {
+      localActivity = null;
+    }
+    do
+    {
+      return localActivity;
+      localActivity = paramActivity;
+    } while (!(paramActivity instanceof BasePluginActivity));
+    return ((BasePluginActivity)paramActivity).getOutActivity();
+  }
+  
+  private static boolean b(Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      return false;
+    }
+    if ((Build.VERSION.SDK_INT >= 23) && ((paramActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
+    {
+      bglp.b(b(paramActivity));
+      return false;
+    }
+    return true;
   }
 }
 

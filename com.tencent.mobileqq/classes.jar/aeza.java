@@ -1,64 +1,59 @@
-import android.os.Message;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
-class aeza
-  extends bayj
+public class aeza
+  implements bdpo
 {
-  aeza(aeyz paramaeyz) {}
+  public aeza(QQSettingMe paramQQSettingMe) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(Bundle paramBundle)
   {
-    bass localbass = (bass)paramMessage.obj;
-    if ((localbass == null) || (localbass.b != 327696) || (localbass.c != 68)) {}
+    this.a.n();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("start_status");
+    if (i == 1) {
+      this.a.n();
+    }
     do
     {
       do
       {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("VoiceTextEdtiController", 2, "mPicTransProcessorHandler STATUS_SEND_CANCEL unFinishSeg.get()=" + aeyz.a(this.a).get() + " pos=" + localbass.i);
         return;
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceTextEdtiController", 2, "mPicTransProcessorHandler recieve finished! unFinishSeg=" + aeyz.a(this.a).get() + "  isSttFinish=" + aeyz.a(this.a).get() + " pos=" + localbass.i);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceTextEdtiController", 2, "vadHelper startrecord sendrequest finish text =" + localbass.A + " pos=" + localbass.i);
-        }
-        if (localbass.A != null)
+        if (i == 2)
         {
-          this.a.a(new aeym(localbass.A, true), localbass.i);
-          aeyz.a(this.a).a();
+          this.a.n();
+          return;
         }
-        aeyz.a(this.a).set(aeyz.a(this.a).get() - 1);
-      } while (aeyz.a(this.a).get() != 0);
-      aeyz.a(this.a).clear();
-      aeyz.a(this.a).setSttNetFinish();
-      aeyz.a(this.a).b(aeyz.a(this.a));
-      aeyz.a(this.a, 1, 0);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VoiceTextEdtiController", 2, "mPicTransProcessorHandler recieve error:" + localbass.g);
+      } while (i != 3);
+      if (!(this.a.jdField_b_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+        break;
       }
-      aeyz.a(this.a).a(localbass.g);
-      aeyz.a(this.a, 0, localbass.g);
-      this.a.a();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VoiceTextEdtiController", 2, "vadHelper startrecord sendrequest process text =" + localbass.A + " pos=" + localbass.i);
+      i = paramBundle.getInt("percent");
+      paramBundle = String.valueOf(i) + "%";
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBundle);
+    } while (!QLog.isDevelopLevel());
+    QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
+    return;
+    if (QQSettingMe.f(this.a)) {}
+    for (Drawable localDrawable = this.a.a.getResources().getDrawable(2130846055);; localDrawable = this.a.a.getResources().getDrawable(2130846056))
+    {
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+      if (!(localDrawable instanceof Animatable)) {
+        break;
       }
-    } while ((bdnn.a(localbass.A)) || (aeyz.a(this.a).get() <= 0));
-    this.a.a(new aeym(localbass.A, false), localbass.i);
-    aeyz.a(this.a).a();
+      ((Animatable)localDrawable).start();
+      break;
+    }
   }
 }
 

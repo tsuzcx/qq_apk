@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vas.avatar;
 
-import bdwc;
+import bhbe;
 import java.util.ArrayList;
 
 public class IdleGetDynamic
   extends IdleUpdater
 {
-  private ArrayList<bdwc> a;
+  private ArrayList<bhbe> a;
   
   public IdleGetDynamic()
   {
@@ -28,19 +28,19 @@ public class IdleGetDynamic
     int i = 0;
     while (i < j)
     {
-      ((bdwc)localObject.get(i)).a(true);
+      ((bhbe)localObject.get(i)).a(true);
       i += 1;
     }
   }
   
-  public void a(bdwc parambdwc)
+  public void a(bhbe parambhbe)
   {
     try
     {
       if (this.a == null) {
         this.a = new ArrayList();
       }
-      this.a.add(parambdwc);
+      this.a.add(parambhbe);
       if (this.a.size() == 1) {
         b();
       }
@@ -51,7 +51,7 @@ public class IdleGetDynamic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.IdleGetDynamic
  * JD-Core Version:    0.7.0.1
  */

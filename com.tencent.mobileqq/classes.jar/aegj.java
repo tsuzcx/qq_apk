@@ -1,19 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aegj
-  implements View.OnClickListener
+public final class aegj
+  implements DialogInterface.OnClickListener
 {
-  public aegj(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aegj(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, azfe paramazfe) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    this.a.startActivity(paramView);
+    FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Azfe);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

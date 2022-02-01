@@ -1,14 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class aish
-  implements DialogInterface.OnClickListener
+public class aish
+  extends nok
 {
-  aish(aisf paramaisf, Runnable paramRunnable) {}
+  public aish(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, List<SearchProtocol.WordItem> paramList)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (paramInt == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ClassificationSearchActivity", 2, "hot words size: " + paramList.size());
+      }
+      this.a.b = paramList;
+      ClassificationSearchActivity.a(this.a, true);
+    }
   }
 }
 

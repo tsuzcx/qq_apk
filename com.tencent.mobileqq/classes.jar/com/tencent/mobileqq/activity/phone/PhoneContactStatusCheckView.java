@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.activity.phone;
 
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import aimn;
-import alud;
-import alxr;
+import aiyr;
+import ajca;
+import akdh;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
@@ -20,18 +21,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aoor;
-import aoos;
-import aozx;
-import azqs;
-import bdin;
+import anni;
+import aqqc;
+import aqqd;
+import bcst;
+import bgnt;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 
 public class PhoneContactStatusCheckView
@@ -71,11 +73,11 @@ public class PhoneContactStatusCheckView
   private void b()
   {
     setOrientation(1);
-    LayoutInflater.from(getContext()).inflate(2131559174, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364713));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369767));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364714));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364712));
+    LayoutInflater.from(getContext()).inflate(2131559253, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364939));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370198));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364940));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364938));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     c();
@@ -100,12 +102,12 @@ public class PhoneContactStatusCheckView
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(((PhoneContactManagerImp)paramQQAppInterface.getManager(11)).k());
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(((PhoneContactManagerImp)paramQQAppInterface.getManager(11)).m());
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    azqs.b(paramQQAppInterface, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", "", "");
+    bcst.b(paramQQAppInterface, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", "", "");
   }
   
   public void a(boolean paramBoolean) {}
@@ -126,7 +128,7 @@ public class PhoneContactStatusCheckView
         {
           return;
           if (this.jdField_a_of_type_JavaLangBoolean == null) {
-            this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(((PhoneContactManagerImp)localObject).i());
+            this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(((PhoneContactManagerImp)localObject).k());
           }
           RespondQueryQQBindingStat localRespondQueryQQBindingStat = ((PhoneContactManagerImp)localObject).a();
           int j = ((PhoneContactManagerImp)localObject).d();
@@ -137,7 +139,7 @@ public class PhoneContactStatusCheckView
             if (QLog.isColorLevel()) {
               QLog.d("PhoneContactStatusCheckView", 2, String.format("checkPhoneStatus [%s, %s, %s, %s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), this.jdField_a_of_type_JavaLangBoolean, localRespondQueryQQBindingStat }));
             }
-            localObject = ((alxr)paramQQAppInterface.getManager(34)).a();
+            localObject = ((aiyr)paramQQAppInterface.getManager(34)).a();
             switch (i)
             {
             default: 
@@ -211,35 +213,35 @@ public class PhoneContactStatusCheckView
               setVisibility(0);
               this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
               b(false);
-              this.jdField_a_of_type_AndroidWidgetTextView.setText(((aoor)localObject).d.a);
-              this.jdField_a_of_type_AndroidWidgetButton.setText(((aoor)localObject).d.c);
+              this.jdField_a_of_type_AndroidWidgetTextView.setText(((aqqc)localObject).d.a);
+              this.jdField_a_of_type_AndroidWidgetButton.setText(((aqqc)localObject).d.c);
               this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
               continue;
               setVisibility(0);
               this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
               b(false);
-              this.jdField_a_of_type_AndroidWidgetTextView.setText(((aoor)localObject).c.a);
-              this.jdField_a_of_type_AndroidWidgetButton.setText(((aoor)localObject).c.c);
+              this.jdField_a_of_type_AndroidWidgetTextView.setText(((aqqc)localObject).c.a);
+              this.jdField_a_of_type_AndroidWidgetButton.setText(((aqqc)localObject).c.c);
               this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
               continue;
               setVisibility(0);
               this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
               b(false);
-              this.jdField_a_of_type_AndroidWidgetTextView.setText(((aoor)localObject).e.a);
-              this.jdField_a_of_type_AndroidWidgetButton.setText(((aoor)localObject).e.c);
+              this.jdField_a_of_type_AndroidWidgetTextView.setText(((aqqc)localObject).e.a);
+              this.jdField_a_of_type_AndroidWidgetButton.setText(((aqqc)localObject).e.c);
               this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
               continue;
               setVisibility(0);
               this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
               b(false);
-              this.jdField_a_of_type_AndroidWidgetTextView.setText(((aoor)localObject).f.a);
-              this.jdField_a_of_type_AndroidWidgetButton.setText(((aoor)localObject).f.c);
+              this.jdField_a_of_type_AndroidWidgetTextView.setText(((aqqc)localObject).f.a);
+              this.jdField_a_of_type_AndroidWidgetButton.setText(((aqqc)localObject).f.c);
               this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
               continue;
               setVisibility(0);
               this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
               b(true);
-              this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131708389));
+              this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131706766));
               this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
               continue;
               setVisibility(8);
@@ -281,61 +283,67 @@ public class PhoneContactStatusCheckView
   
   public void onClick(View paramView)
   {
+    Object localObject;
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null)
     {
-      paramView = null;
-      if (paramView != null) {
-        break label28;
+      localObject = null;
+      if (localObject != null) {
+        break label35;
       }
-    }
-    label28:
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      do
-      {
-        return;
-        paramView = (PhoneContactFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        break;
-        paramView = paramView.getActivity();
-      } while (paramView == null);
-      localQQAppInterface = paramView.app;
-    } while (localQQAppInterface == null);
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)localQQAppInterface.getManager(11);
-    if (localPhoneContactManagerImp == null)
-    {
-      QLog.i("PhoneContactStatusCheckView", 1, "onClick CONTACT_MANAGER is null");
-      return;
-    }
-    if (!bdin.d(getContext()))
-    {
-      paramView = BaseApplicationImpl.getContext();
-      QQToast.a(paramView, 1, 2131694831, 0).b(paramView.getResources().getDimensionPixelSize(2131298914));
-      return;
-    }
-    switch (this.jdField_a_of_type_Int)
-    {
     }
     for (;;)
     {
-      int i = localPhoneContactManagerImp.d();
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneContactStatusCheckView", 2, "onClick phone contact state = " + i + ", has = " + this.jdField_a_of_type_JavaLangBoolean);
-      }
-      if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-        break;
-      }
-      aozx.a(paramView, localQQAppInterface, new PhoneContactStatusCheckView.2(this, localPhoneContactManagerImp), new DenyRunnable(paramView, new aimn(localQQAppInterface)));
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      a(localQQAppInterface, "dc00898", "0X8009F22", 0);
-      continue;
-      a(localQQAppInterface, "dc00898", "0X8009F22", 0);
-      continue;
-      a(localQQAppInterface, "dc00898", "0X8009F26", 0);
-      continue;
-      a(localQQAppInterface, "dc00898", "0X8009F24", 0);
+      localObject = (PhoneContactFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      break;
+      label35:
+      localObject = ((PhoneContactFragment)localObject).getActivity();
+      if (localObject != null)
+      {
+        QQAppInterface localQQAppInterface = ((FragmentActivity)localObject).app;
+        if (localQQAppInterface != null)
+        {
+          PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)localQQAppInterface.getManager(11);
+          if (localPhoneContactManagerImp == null)
+          {
+            QLog.i("PhoneContactStatusCheckView", 1, "onClick CONTACT_MANAGER is null");
+          }
+          else if (!bgnt.d(getContext()))
+          {
+            localObject = BaseApplicationImpl.getContext();
+            QQToast.a((Context)localObject, 1, 2131693991, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131298998));
+          }
+          else
+          {
+            switch (this.jdField_a_of_type_Int)
+            {
+            }
+            for (;;)
+            {
+              int i = localPhoneContactManagerImp.d();
+              if (QLog.isColorLevel()) {
+                QLog.d("PhoneContactStatusCheckView", 2, "onClick phone contact state = " + i + ", has = " + this.jdField_a_of_type_JavaLangBoolean);
+              }
+              if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
+                break label321;
+              }
+              ajca.a((Activity)localObject, localQQAppInterface, new PhoneContactStatusCheckView.2(this, localPhoneContactManagerImp), new DenyRunnable((Context)localObject, new akdh(localQQAppInterface)));
+              break;
+              a(localQQAppInterface, "dc00898", "0X8009F22", 0);
+              continue;
+              a(localQQAppInterface, "dc00898", "0X8009F22", 0);
+              continue;
+              a(localQQAppInterface, "dc00898", "0X8009F26", 0);
+              continue;
+              a(localQQAppInterface, "dc00898", "0X8009F24", 0);
+            }
+            label321:
+            a(localPhoneContactManagerImp);
+          }
+        }
+      }
     }
-    a(localPhoneContactManagerImp);
   }
   
   public void setPhoneContactFragment(PhoneContactFragment paramPhoneContactFragment)
@@ -345,7 +353,7 @@ public class PhoneContactStatusCheckView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneContactStatusCheckView
  * JD-Core Version:    0.7.0.1
  */

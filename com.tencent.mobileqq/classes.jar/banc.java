@@ -1,18 +1,6 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-
-final class banc
-  extends Editable.Factory
+public abstract interface banc
 {
-  banc(int paramInt) {}
-  
-  public Editable newEditable(CharSequence paramCharSequence)
-  {
-    if ((paramCharSequence instanceof bamz)) {
-      return (Editable)paramCharSequence;
-    }
-    return new bamz(paramCharSequence, 3, this.a);
-  }
+  public abstract void a();
 }
 
 

@@ -1,21 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-class aqis
-  implements Animation.AnimationListener
+public class aqis
+  implements bkpq
 {
-  aqis(aqir paramaqir) {}
+  public aqis(IphonePickerView paramIphonePickerView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(View paramView, int paramInt)
   {
-    this.a.a.c.setVisibility(8);
-    this.a.a.a = false;
+    IphonePickerView.a(this.a, paramView, 1);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

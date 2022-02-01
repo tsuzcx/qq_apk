@@ -1,48 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
 import java.io.File;
 
 class avgc
-  implements avgk
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  avgc(avfx paramavfx) {}
+  private avgc(avfx paramavfx) {}
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void onComplete(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoPlayerView", 2, "OnDownloadListener error ! vid = " + paramString1 + "  url = " + paramString2 + "  errorCode=" + paramInt);
+    synchronized (avfx.a(this.a))
+    {
+      String str = avfx.a(paramString1);
+      avfw.b("onComplete path:" + str);
+      avfw.b("onComplete vid:" + paramString1 + ", detail:" + paramString2);
+      avfx.a(this.a, paramString1);
+      paramString2 = new File(avfx.b(paramString1));
+      if (paramString2.exists()) {
+        paramString2.renameTo(new File(str));
+      }
+      avfx.b(this.a, paramString1);
+      avfx.b(this.a, avfx.a(this.a));
+      avfx.b(this.a);
+      return;
     }
-    if (this.a.jdField_a_of_type_Aveq != null) {
-      this.a.jdField_a_of_type_Aveq.a(paramString1, 199, paramInt, "use sdk download error");
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong)
-  {
-    this.a.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoPlayerView", 2, "OnDownloadListener onProgress   ! vid = " + paramString1 + "  url = " + paramString2 + "  offset=" + paramLong2);
-    }
-    this.a.jdField_a_of_type_Long = paramLong1;
-    if (paramLong2 > this.a.b) {
-      this.a.b = paramLong2;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, File paramFile)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "OnDownloadListener onSuccess ! vid = " + paramString1 + "  url = " + paramString2);
-    }
-    avfx.a(paramFile);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avgc
  * JD-Core Version:    0.7.0.1
  */

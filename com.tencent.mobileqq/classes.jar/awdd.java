@@ -1,39 +1,33 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.15.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
 
 public class awdd
-  implements Observer
+  implements URLDrawable.URLDrawableListener
 {
-  awdd(awcx paramawcx) {}
+  public awdd(LoginWelcomeManager paramLoginWelcomeManager) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((awcx.a(this.a) == null) || (awcx.a(this.a).isFinishing()) || (awcx.a(this.a) == null)) {
-      QLog.d("AccountPanel", 1, String.format("mObserver update return", new Object[0]));
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("AccountPanel", 2, "update");
-        }
-      } while (!(paramObject instanceof String[]));
-      paramObservable = (String[])paramObject;
-    } while ((paramObservable.length != 2) || (!alof.x.equals(paramObservable[0])));
     if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "update() -> before update");
+      QLog.d("LoginWelcomeManager", 2, "tryToShowCGLayer drawable onLoadSuccessed");
     }
-    awcx.a(this.a).runOnUiThread(new AccountPanel.15.1(this));
+    if (this.a.a != null) {
+      this.a.a.a(paramURLDrawable);
+    }
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awdd
  * JD-Core Version:    0.7.0.1
  */

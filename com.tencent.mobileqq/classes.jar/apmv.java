@@ -1,17 +1,15 @@
-import android.view.View;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 class apmv
-  implements bhuk
+  implements apne
 {
-  apmv(apmt paramapmt, bhuf parambhuf) {}
+  apmv(apms paramapms, apnc paramapnc, apne paramapne) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Apmt.f();
-    if (this.jdField_a_of_type_Bhuf.isShowing()) {
-      this.jdField_a_of_type_Bhuf.dismiss();
-    }
-    azqs.b(apmt.a(this.jdField_a_of_type_Apmt), "CliOper", "", "", "ep_mall", "0X80057D7", 0, 0, "", "", "", "");
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Apnc.a }));
+    if (paramBoolean) {}
+    this.jdField_a_of_type_Apne.a(paramBoolean);
   }
 }
 

@@ -1,10 +1,21 @@
-public abstract interface vwd
+import com.tencent.biz.qqcircle.events.QCircleFeedCommentEllipseEvent;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+
+public class vwd
+  implements aamu
 {
-  public abstract boolean a(vwa paramvwa, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
+  public vwd(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
+  
+  public void a()
+  {
+    if (QCircleFeedCommentWidget.a(this.a) != null) {
+      zwp.a().a(new QCircleFeedCommentEllipseEvent(QCircleFeedCommentWidget.a(this.a)));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vwd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import amrk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -11,7 +10,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import aoqb;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppActivity;
 import mqq.app.QQPermissionCallback;
 
@@ -45,27 +46,28 @@ public class AlbumPermissionView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131559835, this, true);
+    LayoutInflater.from(paramContext).inflate(2131559971, this, true);
     setOrientation(1);
     setGravity(17);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131378769);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379040));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379635);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379953));
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
   }
   
   public boolean a()
   {
     if (Build.VERSION.SDK_INT > 23) {
-      return amrk.a(BaseApplication.getContext());
+      return aoqb.a(BaseApplication.getContext());
     }
     return true;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131378769) {
-      amrk.a((AppActivity)this.jdField_a_of_type_AndroidContentContext, 10000, this.jdField_a_of_type_MqqAppQQPermissionCallback);
+    if (paramView.getId() == 2131379635) {
+      aoqb.a((AppActivity)this.jdField_a_of_type_AndroidContentContext, 10000, this.jdField_a_of_type_MqqAppQQPermissionCallback);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setCallback(QQPermissionCallback paramQQPermissionCallback)
@@ -77,10 +79,10 @@ public class AlbumPermissionView
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167201));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167287));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165318));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165354));
   }
 }
 

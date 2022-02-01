@@ -1,612 +1,1249 @@
-import android.graphics.Rect;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.content.BroadcastReceiver;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.magicface.DecoderUtil;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController.1;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController.2;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController.3;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController.5;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController.8;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.1;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.10;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.11;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.12;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.13;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.14;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.15;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.2;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.3;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.6;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.7;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.8;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.9;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadPkgInstallReceiver;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Random;
+import java.util.Set;
+import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
 
 public class atzj
-  implements View.OnClickListener
 {
-  public static boolean a;
-  protected Handler a;
-  protected View a;
-  protected WindowManager a;
-  protected Button a;
-  public ImageView a;
-  public TextView a;
-  protected atya a;
-  public atys a;
-  protected atzf a;
-  protected atzo a;
-  public BaseChatPie a;
-  public Emoticon a;
-  protected MagicfaceContainerView a;
-  Runnable a;
-  protected String a;
-  protected View b;
-  protected Button b;
-  public TextView b;
-  public atzf b;
-  protected MagicfaceContainerView b;
-  protected boolean b;
-  public Button c;
-  protected TextView c;
-  protected Button d;
-  public TextView d;
-  protected Button e;
-  protected Button f;
+  private static atzj jdField_a_of_type_Atzj;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  public QQAppInterface a;
+  private List<atzq> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<String, atzo> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean = false;
+  private Map<String, aucs> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_b_of_type_Boolean = true;
   
-  static
+  private atzj()
   {
-    String str1 = bdgk.g();
-    if (str1 != null)
+    try
     {
-      String str2 = str1.toLowerCase();
-      if ((!str2.contains("marvell")) && (!str2.contains("armv5")) && (!str2.contains("armv6"))) {
-        break label76;
+      UniformDownloadPkgInstallReceiver.a(BaseApplication.getContext());
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  private int a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      atzo localatzo = (atzo)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      if (localatzo != null)
+      {
+        aucs localaucs = a(paramString);
+        if ((localatzo.jdField_a_of_type_Aucp != null) && (localaucs != null)) {
+          localatzo.jdField_a_of_type_Aucp.a(localaucs);
+        }
+      }
+      int i = this.jdField_a_of_type_JavaUtilMap.size();
+      QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] delDownloadInst.. total[" + this.jdField_a_of_type_JavaUtilMap.size() + "] del it. url[" + paramString + "]");
+      return i;
+    }
+  }
+  
+  private int a(String paramString, Bundle paramBundle)
+  {
+    int j = 0;
+    int i;
+    if ((paramString == null) || (paramBundle == null)) {
+      i = -1;
+    }
+    Object localObject1;
+    String str;
+    long l;
+    label201:
+    do
+    {
+      return i;
+      localObject1 = paramBundle.getString("_filename_from_dlg");
+      try
+      {
+        localObject2 = URLDecoder.decode((String)localObject1, "utf-8");
+        localObject1 = localObject2;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        for (;;)
+        {
+          Object localObject2;
+          localUnsupportedEncodingException.printStackTrace();
+          continue;
+          paramBundle = localUnsupportedEncodingException;
+          if (localUnsupportedEncodingException == null) {
+            paramBundle = new Bundle();
+          }
+        }
+        int k = localUnsupportedEncodingException.jdField_a_of_type_Aucp.f();
+        QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>inRStartDownload. instance is exist.status:" + k + " may be do something. url:" + paramString);
+        i = j;
+        switch (k)
+        {
+        }
+      }
+      g(paramString, paramBundle);
+      str = paramBundle.getString("_notify_name_dialog", "");
+      l = paramBundle.getLong("_filesize_from_dlg");
+      localObject2 = paramBundle.getBundle("_user_data");
+      if ((localObject2 == null) && (paramBundle.containsKey("big_brother_source_key")))
+      {
+        localObject2 = new Bundle();
+        ((Bundle)localObject2).putString("big_brother_source_key", paramBundle.getString("big_brother_source_key"));
+        paramBundle = (Bundle)localObject2;
+        localObject2 = a(paramString);
+        if ((localObject2 != null) && ((localObject2 == null) || (((atzo)localObject2).jdField_a_of_type_Aucp != null))) {
+          break label201;
+        }
+        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>inRStartDownload. run a new download. url:" + paramString);
+        return a(paramString, (String)localObject1, l, str, paramBundle, -1, false);
+      }
+      return -4;
+      return -3;
+      paramString = a(paramString);
+      i = j;
+    } while (paramString == null);
+    localUnsupportedEncodingException.jdField_a_of_type_Aucp.a(paramString);
+    localUnsupportedEncodingException.jdField_a_of_type_Aucp.a(paramString, false);
+    return 0;
+    d(paramString);
+    return 0;
+    a(paramString);
+    a(paramString, (String)localObject1, l, str, paramBundle, -1, false);
+    return 0;
+    d(paramString);
+    return 0;
+    a(paramString);
+    return 0;
+  }
+  
+  private int a(String paramString1, String paramString2, long paramLong, String paramString3, Bundle paramBundle, int paramInt, boolean paramBoolean)
+  {
+    if ((paramString1 == null) || (paramString2 == null))
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] createAndStartDownloadTask.. param = null");
+      return -1;
+    }
+    long l = a();
+    aucp localaucp = new aucp(l, paramString1, paramBundle);
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("_PARAM_FILENAME", paramString2);
+    ((Bundle)localObject).putLong("_PARAM_FILESIZE", paramLong);
+    ((Bundle)localObject).putBundle("_PARAM_USER_DATA", paramBundle);
+    localaucp.a((Bundle)localObject);
+    if (1 == localaucp.g())
+    {
+      QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL][" + l + " - NEW_ID]. >>> create UniformDownloader.using appbaby. url: " + paramString1);
+      localaucp.a(new atzm(this), true);
+      localObject = a(paramString1);
+      if (localObject != null) {
+        localaucp.a((aucs)localObject, false);
+      }
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("_notify_param_Filename", paramString2);
+      if (TextUtils.isEmpty(paramString3)) {
+        break label424;
+      }
+      ((Bundle)localObject).putString("_notify_param_ContentTitle", paramString3);
+      label192:
+      ((Bundle)localObject).putString("_notify_param_Url", paramString1);
+      ((Bundle)localObject).putLong("_notify_param_Filesize", paramLong);
+      ((Bundle)localObject).putBundle("_notify_param_userdata", paramBundle);
+      paramInt = atzr.a().a(localaucp, (Bundle)localObject, l, paramInt);
+      a(paramString1, new atzo(this, null, localaucp.g(), localaucp, l, paramInt));
+      if (!paramBoolean) {
+        break label435;
+      }
+      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL][" + l + "] preHadStarted. url:" + paramString1);
+      localaucp.a(true);
+    }
+    for (;;)
+    {
+      if (b(paramString1) == 0)
+      {
+        localaucp.a(true);
+        atzr.a().b(paramInt, (Bundle)localObject);
+      }
+      this.jdField_b_of_type_Boolean = false;
+      return 0;
+      if (2 == localaucp.g())
+      {
+        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL][" + l + " - NEW_ID]. >>>create UniformDownloader.using common. url:" + paramString1);
+        break;
+      }
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL][" + l + " - NEW_ID] create UniformDownloader failed. url:" + paramString1);
+      return -2;
+      label424:
+      ((Bundle)localObject).putString("_notify_param_ContentTitle", paramString2);
+      break label192;
+      label435:
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+        if (1 == localaucp.g()) {
+          bcti.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Start_download_2-0_3-0");
+        } else if (2 == localaucp.g()) {
+          bcti.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Start_download_2-0_3-1");
+        }
       }
     }
-    label76:
-    for (jdField_a_of_type_Boolean = false;; jdField_a_of_type_Boolean = true)
+  }
+  
+  private long a()
+  {
+    return (int)(System.currentTimeMillis() / 1000L) << 32 | Math.abs(new Random().nextInt());
+  }
+  
+  public static atzj a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Atzj == null)
+      {
+        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr.getInstance.create");
+        jdField_a_of_type_Atzj = new atzj();
+      }
+      atzj localatzj = jdField_a_of_type_Atzj;
+      return localatzj;
+    }
+    finally {}
+  }
+  
+  private atzo a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      paramString = (atzo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      return paramString;
+    }
+  }
+  
+  private atzp a(String paramString)
+  {
+    if (paramString == null)
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] rBobjectOfString err, str=null");
+      return null;
+    }
+    String[] arrayOfString = paramString.split("\\^");
+    if (arrayOfString.length < 4)
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] rBobjectOfString err,l=" + arrayOfString.length + " str=" + paramString);
+      return null;
+    }
+    paramString = new atzp(this);
+    paramString.jdField_a_of_type_Int = Integer.parseInt(arrayOfString[0]);
+    paramString.jdField_a_of_type_JavaLangString = arrayOfString[1];
+    paramString.jdField_a_of_type_Long = Long.parseLong(arrayOfString[2]);
+    paramString.jdField_a_of_type_Boolean = Boolean.parseBoolean(arrayOfString[3]);
+    if (arrayOfString.length > 4)
+    {
+      paramString.b = arrayOfString[4];
+      return paramString;
+    }
+    paramString.b = paramString.jdField_a_of_type_JavaLangString;
+    return paramString;
+  }
+  
+  private atzq a(String paramString)
+  {
+    if (paramString == null)
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] sucInfoOfString err, str=null");
+      return null;
+    }
+    String[] arrayOfString = paramString.split("\\^");
+    if (arrayOfString.length < 2)
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] sucInfoOfString err,l=" + arrayOfString.length + " str=" + paramString);
+      return null;
+    }
+    return new atzq(arrayOfString[0], Integer.parseInt(arrayOfString[1]));
+  }
+  
+  private aucs a(String paramString)
+  {
+    if (paramString == null) {
+      paramString = null;
+    }
+    for (;;)
+    {
+      return paramString;
+      try
+      {
+        paramString = (aucs)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+      }
+      finally {}
+    }
+  }
+  
+  private String a(atzp paramatzp)
+  {
+    if (paramatzp == null)
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] stringOfRbObject err, obj=null");
+      return null;
+    }
+    return String.valueOf(paramatzp.jdField_a_of_type_Int) + "^" + paramatzp.jdField_a_of_type_JavaLangString + "^" + String.valueOf(paramatzp.jdField_a_of_type_Long) + "^" + String.valueOf(paramatzp.jdField_a_of_type_Boolean) + "^" + paramatzp.b;
+  }
+  
+  private String a(atzq paramatzq)
+  {
+    if (paramatzq == null)
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] stringOfSucInfo err, obj=null");
+      return null;
+    }
+    return String.valueOf(paramatzq.jdField_a_of_type_JavaLangString) + "^" + String.valueOf(paramatzq.jdField_a_of_type_Int);
+  }
+  
+  private void a(String paramString, aucs paramaucs)
+  {
+    if ((paramString != null) && (paramaucs != null)) {}
+    try
+    {
+      this.jdField_b_of_type_JavaUtilMap.put(paramString, paramaucs);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  private boolean a(String paramString, atzo paramatzo)
+  {
+    if ((paramString == null) || (paramatzo == null))
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] addDownloadInst.. param null");
+      return false;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+        return false;
+      }
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramatzo);
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] addDownloadInst.. total[" + this.jdField_a_of_type_JavaUtilMap.size() + "] add it. url[" + paramString + "]");
+    return true;
+  }
+  
+  private int b(String paramString)
+  {
+    int i = 0;
+    if ((bgnt.d(BaseApplication.getContext())) && (!atvo.a())) {}
+    for (int m = 2;; m = 1)
+    {
+      QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inPTryStartNextDownload. togetherDownloadMaxCount=" + m);
+      Object localObject2 = new ArrayList();
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        if (this.jdField_a_of_type_JavaUtilMap.size() <= 0) {
+          break label532;
+        }
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        j = 0;
+        i = 0;
+        if (localIterator.hasNext())
+        {
+          atzo localatzo = (atzo)((Map.Entry)localIterator.next()).getValue();
+          int n = j;
+          k = i;
+          if (localatzo.jdField_a_of_type_Aucp != null)
+          {
+            n = j;
+            k = i;
+            if (localatzo.jdField_a_of_type_Aucp.b())
+            {
+              i += 1;
+              n = j;
+              k = i;
+              if (paramString != null)
+              {
+                n = j;
+                k = i;
+                if (paramString.equalsIgnoreCase(localatzo.jdField_a_of_type_JavaLangString))
+                {
+                  QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inPTryStartNextDownload.. download is runing. traceUrl:" + paramString);
+                  n = 1;
+                  k = i;
+                }
+              }
+            }
+          }
+          ((List)localObject2).add(localatzo);
+          j = n;
+          i = k;
+        }
+      }
+      int k = j;
+      int j = i;
+      i = k;
+      for (;;)
+      {
+        if (j < m)
+        {
+          ??? = ((List)localObject2).iterator();
+          k = i;
+          if (((Iterator)???).hasNext())
+          {
+            localObject2 = (atzo)((Iterator)???).next();
+            k = j;
+            if (((atzo)localObject2).jdField_a_of_type_Aucp == null) {
+              break label526;
+            }
+            k = j;
+            if (!((atzo)localObject2).jdField_a_of_type_Aucp.a()) {
+              break label526;
+            }
+            if (j < m)
+            {
+              QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> Happy. start a download task, url:[" + ((atzo)localObject2).jdField_a_of_type_JavaLangString + "]");
+              j += 1;
+              ((atzo)localObject2).jdField_a_of_type_Aucp.a();
+              k = j;
+              if (paramString == null) {
+                break label526;
+              }
+              k = j;
+              if (!paramString.equalsIgnoreCase(((atzo)localObject2).jdField_a_of_type_JavaLangString)) {
+                break label526;
+              }
+              QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inPTryStartNextDownload.. download is started. traceUrl:" + paramString);
+              i = 2;
+            }
+          }
+        }
+        for (;;)
+        {
+          break;
+          QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inPTryStartNextDownload.. total[" + this.jdField_a_of_type_JavaUtilMap.size() + "] the task of downloading is overload,other need waiting... 1");
+          for (k = i;; k = i)
+          {
+            f();
+            return k;
+            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inPTrystartNextDownload.. total[" + this.jdField_a_of_type_JavaUtilMap.size() + "] the task of downloading is overload,other need waiting... 2");
+          }
+          label526:
+          j = k;
+        }
+        label532:
+        j = 0;
+      }
+    }
+  }
+  
+  private int b(String paramString, Bundle paramBundle)
+  {
+    if ((paramString == null) || (paramBundle == null))
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inRPauseDownload. param error!!");
+      return -1;
+    }
+    int i = paramBundle.getInt("_notify_param_Id");
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>inRPauseDownload. URL:" + paramString + " nofiyid:" + i);
+    if (-1 == c(paramString))
+    {
+      auck.a(paramString, new atzn(this));
+      atzr.a().a(i, (Bundle)paramBundle.clone());
+      b(null);
+    }
+    return 0;
+  }
+  
+  private aucs b(String paramString)
+  {
+    try
+    {
+      paramString = (aucs)this.jdField_b_of_type_JavaUtilMap.remove(paramString);
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  private int c(String paramString)
+  {
+    atzo localatzo = a(paramString);
+    if (localatzo != null)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        if (localatzo.jdField_a_of_type_Int != 1) {
+          break label71;
+        }
+        bcti.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Stop_download_2-2_3-0");
+      }
+      for (;;)
+      {
+        if (localatzo.jdField_a_of_type_Aucp != null) {
+          localatzo.jdField_a_of_type_Aucp.b();
+        }
+        b(null);
+        return 0;
+        label71:
+        bcti.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Stop_download_2-2_3-1");
+      }
+    }
+    QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inPPauseDownload.. inst not exsited. url:" + paramString);
+    return -1;
+  }
+  
+  private int c(String paramString, Bundle paramBundle)
+  {
+    if ((paramString == null) || (paramBundle == null))
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inRResumeDownload. param error!!");
+      return -1;
+    }
+    int i = paramBundle.getInt("_notify_param_Id");
+    String str1 = paramBundle.getString("_notify_param_Filename");
+    String str2 = paramBundle.getString("_notify_param_ContentTitle", "");
+    long l = paramBundle.getLong("_notify_param_Filesize");
+    paramBundle = paramBundle.getBundle("_notify_param_userdata");
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>inRResumeDownload. URL:" + paramString + " nofiyid:" + i);
+    if (-1 == d(paramString)) {
+      a(paramString, str1, l, str2, paramBundle, i, true);
+    }
+    return 0;
+  }
+  
+  private int d(String paramString)
+  {
+    atzo localatzo = a(paramString);
+    if (localatzo != null)
+    {
+      if (localatzo.jdField_a_of_type_Aucp != null)
+      {
+        paramString = a(paramString);
+        if (paramString != null) {
+          localatzo.jdField_a_of_type_Aucp.a(paramString, false);
+        }
+        localatzo.jdField_a_of_type_Aucp.c();
+      }
+      b(null);
+      return 0;
+    }
+    QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inPResumeDownload.. inst not exsited. url:" + paramString);
+    return -1;
+  }
+  
+  private int d(String paramString, Bundle paramBundle)
+  {
+    return c(paramString, paramBundle);
+  }
+  
+  private int e(String paramString)
+  {
+    atzo localatzo = a(paramString);
+    if (localatzo != null)
+    {
+      if (localatzo.jdField_a_of_type_Aucp != null) {
+        localatzo.jdField_a_of_type_Aucp.d();
+      }
+      return 0;
+    }
+    QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inPStopDownload.. inst not exsited. url:" + paramString);
+    return -1;
+  }
+  
+  private void f() {}
+  
+  private void g()
+  {
+    ThreadManager.getSubThreadHandler().post(new UniformDownloadMgr.6(this));
+  }
+  
+  private void g(String paramString, Bundle paramBundle)
+  {
+    if (paramBundle == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("MagicfaceViewController", 2, "cpuType=" + str1);
+        QLog.d("UniformDownloadEvent", 2, "params is null");
       }
       return;
     }
-  }
-  
-  public atzj(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_JavaLangRunnable = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "func MagicfaceViewController[Constructor] ends.isUseHardDecode:" + this.jdField_b_of_type_Boolean);
-    }
-  }
-  
-  public static boolean a()
-  {
-    if ((DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.magicface_support.name())) && (jdField_a_of_type_Boolean) && (DecoderUtil.IS_LOAD_SUCESS))
+    bcur.a().addDownloadURL(paramString);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("url", paramString);
+    localHashMap.put("NetworkType", bgnt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()) + "");
+    if (birz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {}
+    Object localObject2;
+    for (Object localObject1 = "1";; localObject1 = "0")
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceViewController", 2, "is_support_magic:TRUE");
+      localHashMap.put("isForeground", localObject1);
+      localHashMap.put("reportVia", "1");
+      localObject1 = new Throwable().getStackTrace();
+      localObject2 = new StringBuilder();
+      int i = 1;
+      while (i < localObject1.length)
+      {
+        ((StringBuilder)localObject2).append(localObject1[i].toString());
+        i += 1;
       }
-      return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "is_support_magic:FALSE");
+    if (((StringBuilder)localObject2).length() < 950)
+    {
+      localHashMap.put("Stack", ((StringBuilder)localObject2).toString());
+      label208:
+      localHashMap.put("_filesize_from_dlg", paramBundle.getLong("_filesize_from_dlg") + "");
+      localObject1 = paramBundle.getString("_filename_from_dlg");
+      localHashMap.put("_filename_from_dlg", localObject1);
+      if (((localObject1 == null) || (!((String)localObject1).endsWith(".apk"))) && (!paramBundle.getString("FILE_MIME_TYPE", "").equals("application/vnd.android.package-archive"))) {
+        break label720;
+      }
+      localHashMap.put("isAPK", "1");
+      label304:
+      localHashMap.put("ReferURL", paramBundle.getString("param_refer_url", ""));
+      paramBundle = paramBundle.getString("DOWNLOAD_BIG_BROTHER_SOURCE");
+      paramString = new StringBuilder(paramString);
+      paramString.append("|").append((String)localHashMap.get("NetworkType")).append("|").append(paramBundle).append("|").append((String)localObject1).append("|").append((String)localHashMap.get("_filesize_from_dlg")).append("|").append((String)localHashMap.get("ReferURL"));
     }
-    return false;
+    for (;;)
+    {
+      try
+      {
+        if (!TextUtils.isEmpty(paramBundle)) {
+          continue;
+        }
+        bctj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "UniformDownloadEvent_NO_SOURCE", true, 0L, 0L, localHashMap, "");
+        paramBundle = (String)localHashMap.get("isForeground");
+        localObject1 = (String)localHashMap.get("isAPK");
+        localObject2 = paramString.toString();
+        localStringBuilder = new StringBuilder().append((String)localHashMap.get("Stack"));
+        if (!localHashMap.containsKey("Stack1")) {
+          continue;
+        }
+        paramString = (String)localHashMap.get("Stack1");
+        bcst.b(null, "dc00898", "", "", "0X800A003", "0X800A003", 0, 0, paramBundle, (String)localObject1, (String)localObject2, paramString);
+      }
+      catch (Throwable paramString)
+      {
+        StringBuilder localStringBuilder;
+        label720:
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("UniformDownloadMgr<FileAssistant>", 2, paramString.toString());
+        continue;
+        paramString = "";
+        continue;
+        QLog.d("UniformDownloadEvent", 2, paramString.toString());
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      paramString = new StringBuilder();
+      paramBundle = localHashMap.keySet().iterator();
+      if (!paramBundle.hasNext()) {
+        continue;
+      }
+      localObject1 = (String)paramBundle.next();
+      paramString.append((String)localObject1).append("=").append((String)localHashMap.get(localObject1)).append("\n");
+      continue;
+      localHashMap.put("Stack", ((StringBuilder)localObject2).substring(0, 950));
+      if (((StringBuilder)localObject2).length() < 1901)
+      {
+        localHashMap.put("Stack1", ((StringBuilder)localObject2).substring(950));
+        break label208;
+      }
+      localHashMap.put("Stack1", ((StringBuilder)localObject2).substring(950, 1900));
+      break label208;
+      localHashMap.put("isAPK", "0");
+      break label304;
+      paramString = "";
+      continue;
+      localHashMap.put("DOWNLOAD_BIG_BROTHER_SOURCE", paramBundle);
+      bctj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "UniformDownloadEvent", true, 0L, 0L, localHashMap, "");
+      paramBundle = (String)localHashMap.get("isForeground");
+      localObject1 = (String)localHashMap.get("isAPK");
+      localObject2 = paramString.toString();
+      localStringBuilder = new StringBuilder().append((String)localHashMap.get("Stack"));
+      if (!localHashMap.containsKey("Stack1")) {
+        continue;
+      }
+      paramString = (String)localHashMap.get("Stack1");
+      bcst.b(null, "dc00898", "", "", "0X800A002", "0X800A002", 0, 0, paramBundle, (String)localObject1, (String)localObject2, paramString);
+    }
+  }
+  
+  private void h()
+  {
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] pauseSlienceRuningGenDownloadOfOldApp ...");
+    ThreadManager.getSubThreadHandler().post(new UniformDownloadMgr.14(this));
+  }
+  
+  private void i()
+  {
+    ThreadManager.getSubThreadHandler().post(new UniformDownloadMgr.15(this));
+  }
+  
+  private void j()
+  {
+    for (;;)
+    {
+      try
+      {
+        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] initSucDownloadInfo...");
+        ??? = BaseApplication.getContext().getSharedPreferences("download_suc_info", 0).getAll();
+        if (??? != null) {
+          QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] initSucDownloadInfo, size:[" + ((Map)???).size() + "]");
+        }
+        if ((??? != null) && (((Map)???).size() > 0))
+        {
+          Iterator localIterator = ((Map)???).entrySet().iterator();
+          if (localIterator.hasNext())
+          {
+            atzq localatzq = a((String)((Map.Entry)localIterator.next()).getKey());
+            if (localatzq == null) {
+              break label207;
+            }
+            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] initSucDownloadInfo, pkgName:[" + localatzq.jdField_a_of_type_JavaLangString + "]] nId:[" + localatzq.jdField_a_of_type_Int + "] ");
+            synchronized (this.jdField_a_of_type_JavaUtilList)
+            {
+              this.jdField_a_of_type_JavaUtilList.add(localatzq);
+            }
+          }
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      label207:
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] initSucDownloadInfo, value error. ");
+    }
+  }
+  
+  /* Error */
+  public long a(String paramString, int paramInt)
+  {
+    // Byte code:
+    //   0: lconst_0
+    //   1: lstore 6
+    //   3: iload_2
+    //   4: ifgt +9 -> 13
+    //   7: lconst_0
+    //   8: lstore 8
+    //   10: lload 8
+    //   12: lreturn
+    //   13: iconst_0
+    //   14: istore_3
+    //   15: iconst_0
+    //   16: istore 5
+    //   18: iconst_0
+    //   19: istore 4
+    //   21: aconst_null
+    //   22: astore 10
+    //   24: aconst_null
+    //   25: astore 12
+    //   27: new 735	java/net/URL
+    //   30: dup
+    //   31: aload_1
+    //   32: invokespecial 736	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   35: invokevirtual 740	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   38: checkcast 742	java/net/HttpURLConnection
+    //   41: astore 11
+    //   43: iload 5
+    //   45: istore_3
+    //   46: aload 11
+    //   48: invokevirtual 745	java/net/HttpURLConnection:getResponseCode	()I
+    //   51: sipush 302
+    //   54: if_icmpne +58 -> 112
+    //   57: iconst_1
+    //   58: istore_3
+    //   59: iconst_1
+    //   60: istore 4
+    //   62: aload 11
+    //   64: ldc_w 747
+    //   67: invokevirtual 750	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   70: astore_1
+    //   71: iload 4
+    //   73: istore_3
+    //   74: aload 11
+    //   76: ifnull +132 -> 208
+    //   79: aload 11
+    //   81: invokevirtual 753	java/net/HttpURLConnection:disconnect	()V
+    //   84: lload 6
+    //   86: lstore 8
+    //   88: iload_3
+    //   89: ifeq -79 -> 10
+    //   92: lload 6
+    //   94: lstore 8
+    //   96: aload_1
+    //   97: invokestatic 237	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   100: ifne -90 -> 10
+    //   103: aload_0
+    //   104: aload_1
+    //   105: iload_2
+    //   106: iconst_1
+    //   107: isub
+    //   108: invokevirtual 755	atzj:a	(Ljava/lang/String;I)J
+    //   111: lreturn
+    //   112: iload 5
+    //   114: istore_3
+    //   115: aload 11
+    //   117: invokevirtual 758	java/net/HttpURLConnection:getContentLength	()I
+    //   120: istore 5
+    //   122: iload 5
+    //   124: i2l
+    //   125: lstore 6
+    //   127: ldc 141
+    //   129: astore_1
+    //   130: iload 4
+    //   132: istore_3
+    //   133: goto -59 -> 74
+    //   136: astore 11
+    //   138: aload 12
+    //   140: astore_1
+    //   141: aload_1
+    //   142: astore 10
+    //   144: aload 11
+    //   146: invokevirtual 51	java/lang/Exception:printStackTrace	()V
+    //   149: aload_1
+    //   150: ifnull +49 -> 199
+    //   153: aload_1
+    //   154: invokevirtual 753	java/net/HttpURLConnection:disconnect	()V
+    //   157: lconst_0
+    //   158: lstore 6
+    //   160: ldc 141
+    //   162: astore_1
+    //   163: goto -79 -> 84
+    //   166: astore_1
+    //   167: aload 10
+    //   169: ifnull +8 -> 177
+    //   172: aload 10
+    //   174: invokevirtual 753	java/net/HttpURLConnection:disconnect	()V
+    //   177: aload_1
+    //   178: athrow
+    //   179: astore_1
+    //   180: aload 11
+    //   182: astore 10
+    //   184: goto -17 -> 167
+    //   187: astore 10
+    //   189: aload 11
+    //   191: astore_1
+    //   192: aload 10
+    //   194: astore 11
+    //   196: goto -55 -> 141
+    //   199: lconst_0
+    //   200: lstore 6
+    //   202: ldc 141
+    //   204: astore_1
+    //   205: goto -121 -> 84
+    //   208: goto -124 -> 84
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	211	0	this	atzj
+    //   0	211	1	paramString	String
+    //   0	211	2	paramInt	int
+    //   14	119	3	i	int
+    //   19	112	4	j	int
+    //   16	107	5	k	int
+    //   1	200	6	l1	long
+    //   8	87	8	l2	long
+    //   22	161	10	localObject1	Object
+    //   187	6	10	localException1	Exception
+    //   41	75	11	localHttpURLConnection	java.net.HttpURLConnection
+    //   136	54	11	localException2	Exception
+    //   194	1	11	localException3	Exception
+    //   25	114	12	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   27	43	136	java/lang/Exception
+    //   27	43	166	finally
+    //   144	149	166	finally
+    //   46	57	179	finally
+    //   62	71	179	finally
+    //   115	122	179	finally
+    //   46	57	187	java/lang/Exception
+    //   62	71	187	java/lang/Exception
+    //   115	122	187	java/lang/Exception
+  }
+  
+  public QQAppInterface a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] APP=null.");
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  }
+  
+  public List<atzq> a(String paramString, boolean paramBoolean)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      j();
+      this.jdField_a_of_type_Boolean = true;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator;
+    atzq localatzq;
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localatzq = (atzq)localIterator.next();
+        if ((localatzq != null) && (paramString.equalsIgnoreCase("package:" + localatzq.jdField_a_of_type_JavaLangString))) {
+          localArrayList.add(localatzq);
+        }
+      }
+    }
+    if ((localArrayList.size() > 0) && (paramBoolean))
+    {
+      QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] getSucDownloadInfoOfPkg. remove before size:" + this.jdField_a_of_type_JavaUtilList.size());
+      try
+      {
+        paramString = BaseApplication.getContext().getSharedPreferences("download_suc_info", 0).edit();
+        localIterator = localArrayList.iterator();
+        while (localIterator.hasNext())
+        {
+          localatzq = (atzq)localIterator.next();
+          this.jdField_a_of_type_JavaUtilList.remove(localatzq);
+          paramString.remove(a(localatzq));
+          continue;
+          QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] getSucDownloadInfoOfPkg. remove after size:" + this.jdField_a_of_type_JavaUtilList.size());
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    for (;;)
+    {
+      return localArrayList;
+      paramString.commit();
+    }
+  }
+  
+  public Map<String, atzp> a()
+  {
+    HashMap localHashMap = new HashMap();
+    for (;;)
+    {
+      String str;
+      try
+      {
+        Object localObject1 = BaseApplication.getContext().getSharedPreferences("downloading_rb_resume_info", 0).getAll();
+        if (localObject1 != null) {
+          QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] getDownloadingRbResmeInfo, size:[" + ((Map)localObject1).size() + "]");
+        }
+        if ((localObject1 != null) && (((Map)localObject1).size() > 0))
+        {
+          localObject1 = ((Map)localObject1).entrySet().iterator();
+          if (((Iterator)localObject1).hasNext())
+          {
+            Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+            str = (String)((Map.Entry)localObject2).getKey();
+            localObject2 = a((String)((Map.Entry)localObject2).getValue());
+            if (localObject2 == null) {
+              break label220;
+            }
+            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] getDownloadingRbResmeInfo, url:[" + str + "]] nId:[" + ((atzp)localObject2).jdField_a_of_type_Int + "] w:[" + ((atzp)localObject2).jdField_a_of_type_Boolean + "]");
+            localHashMap.put(str, localObject2);
+            continue;
+          }
+        }
+        return localHashMap;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      label220:
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] getDownloadingRbResmeInfo, value error. url:[" + str + "]");
+    }
   }
   
   public void a()
   {
-    if (!bdgk.d())
-    {
-      this.jdField_b_of_type_Boolean = false;
-      return;
-    }
-    if (Math.min(bdgk.g(), bdgk.h()) >= 720L)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_b_of_type_Boolean = false;
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr onAppDestroy...");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    h();
+    ThreadManager.executeOnSubThread(new UniformDownloadMgr.2(this));
   }
   
-  public void a(int paramInt)
+  public void a(atzq paramatzq)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (paramatzq == null) {
       return;
     }
-    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    if (Build.VERSION.SDK_INT < 26) {
-      localLayoutParams.type = 2002;
-    }
-    for (;;)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      localLayoutParams.flags = 40;
-      localLayoutParams.gravity = 51;
-      localLayoutParams.x = 0;
-      localLayoutParams.y = paramInt;
-      localLayoutParams.width = -1;
-      localLayoutParams.height = -2;
-      localLayoutParams.format = 1;
-      this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)BaseApplicationImpl.getContext().getSystemService("window"));
-      if (this.jdField_a_of_type_AndroidViewView.getParent() != null) {}
+      j();
+      this.jdField_a_of_type_Boolean = true;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramatzq);
+      QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] saveSucDownloadInfo. pkgName:" + paramatzq.jdField_a_of_type_JavaLangString + " notificationId:" + paramatzq.jdField_a_of_type_Int + " size:" + this.jdField_a_of_type_JavaUtilList.size());
       try
       {
-        this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
-        try
-        {
-          this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-          return;
-        }
-        catch (Exception localException1)
-        {
-          QLog.e("MagicfaceViewController", 1, "initTopbar: ", localException1);
-          return;
-        }
-        localException1.type = 2038;
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          QLog.e("MagicfaceViewController", 1, "initTopbar: ", localException2);
-        }
-      }
-    }
-  }
-  
-  public void a(Emoticon paramEmoticon)
-  {
-    this.jdField_d_of_type_AndroidWidgetButton.setTag(paramEmoticon);
-  }
-  
-  public void a(Emoticon paramEmoticon, int paramInt, String paramString)
-  {
-    bcka localbcka = (bcka)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(223);
-    if ((localbcka != null) && (localbcka.a != 1)) {
-      localbcka.e();
-    }
-    a(paramEmoticon, paramInt, paramString, 1);
-  }
-  
-  public void a(Emoticon paramEmoticon, int paramInt1, String paramString, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "func playMaigcface, magicValue:" + paramEmoticon.magicValue);
-    }
-    long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_Atzf != null) && (((View)this.jdField_a_of_type_Atzf).getVisibility() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 1.");
-      }
-      if (this.jdField_a_of_type_Atzo != null)
-      {
-        this.jdField_a_of_type_Atzo.a();
-        this.jdField_a_of_type_Atzo = null;
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if ((this.jdField_b_of_type_Atzf == null) || (((View)this.jdField_b_of_type_Atzf).getVisibility() != 0)) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 2.");
-          }
-        } while (this.jdField_a_of_type_Atzo == null);
-        this.jdField_a_of_type_Atzo.a();
-        this.jdField_a_of_type_Atzo = null;
+        ??? = BaseApplication.getContext().getSharedPreferences("download_suc_info", 0).edit();
+        ((SharedPreferences.Editor)???).putString(a(paramatzq), "-");
+        ((SharedPreferences.Editor)???).commit();
         return;
-        if ((this.jdField_a_of_type_Atys == null) || (!this.jdField_a_of_type_Atys.a())) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 3.");
-        }
-      } while (this.jdField_a_of_type_Atzo == null);
-      this.jdField_a_of_type_Atzo.a();
-      this.jdField_a_of_type_Atzo = null;
-      return;
-      if (paramInt1 != 1) {
-        break;
       }
-      this.jdField_a_of_type_Atya = atys.a(paramEmoticon, paramInt1, paramInt2);
-      if (this.jdField_a_of_type_Atya != null) {
-        break;
+      catch (Exception paramatzq)
+      {
+        paramatzq.printStackTrace();
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 4.");
-      }
-    } while (this.jdField_a_of_type_Atzo == null);
-    this.jdField_a_of_type_Atzo.a();
-    this.jdField_a_of_type_Atzo = null;
-    return;
-    this.jdField_a_of_type_JavaLangString = paramEmoticon.epId;
-    b();
-    this.jdField_a_of_type_Atys = new atys(this);
-    Object localObject2;
-    Object localObject1;
-    Object localObject3;
-    if (paramInt1 == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 5.");
-      }
-      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(8);
-      ((View)this.jdField_b_of_type_Atzf).setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(0);
-      localObject2 = this.jdField_a_of_type_Atzf;
-      localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setMagicfaceGestureListener(this.jdField_a_of_type_Atys);
-      localObject3 = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getWindow().getDecorView();
-      ((ViewGroup)localObject3).removeView(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView);
-      ((ViewGroup)localObject3).addView(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView);
     }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr onAppInit...");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    ThreadManager.executeOnSubThread(new UniformDownloadMgr.1(this));
+  }
+  
+  public void a(String paramString)
+  {
+    aucs localaucs = b(paramString);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = a(paramString);
+      if ((paramString != null) && (paramString.jdField_a_of_type_Aucp != null) && (localaucs != null)) {
+        paramString.jdField_a_of_type_Aucp.a(localaucs);
+      }
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (paramString == null) {
+      return;
+    }
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] removeSucDownloadInfo. pkgName:" + paramString + " notificationId:" + paramInt);
     for (;;)
     {
-      ((View)localObject2).setVisibility(0);
-      ((SurfaceView)localObject2).setZOrderOnTop(true);
-      ((SurfaceView)localObject2).getHolder().setFormat(-2);
-      localObject3 = new atza();
-      ((atza)localObject3).a((atym)localObject2);
-      this.jdField_a_of_type_Atys.a((atza)localObject3);
-      this.jdField_a_of_type_Atys.a(new atzl(this, paramInt1, (TextView)localObject1));
-      this.jdField_a_of_type_Atys.a(new atzm(this, l, paramInt1));
-      if (!((atzf)localObject2).a()) {
-        break;
+      synchronized (this.jdField_a_of_type_JavaUtilList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (localIterator.hasNext())
+        {
+          localObject = (atzq)localIterator.next();
+          if ((localObject == null) || (!paramString.equalsIgnoreCase(((atzq)localObject).jdField_a_of_type_JavaLangString)) || (paramInt != ((atzq)localObject).jdField_a_of_type_Int)) {
+            continue;
+          }
+          if (localObject != null)
+          {
+            this.jdField_a_of_type_JavaUtilList.remove(localObject);
+            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] removeSucDownloadInfo done. pkgName:" + paramString + " notificationId:" + paramInt + " size:" + this.jdField_a_of_type_JavaUtilList.size());
+          }
+          try
+          {
+            localObject = BaseApplication.getContext().getSharedPreferences("download_suc_info", 0).edit();
+            ((SharedPreferences.Editor)localObject).remove(a(new atzq(paramString, paramInt)));
+            ((SharedPreferences.Editor)localObject).commit();
+            return;
+          }
+          catch (Exception paramString)
+          {
+            paramString.printStackTrace();
+            return;
+          }
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 7.");
-      }
-      this.jdField_a_of_type_Atys.a(paramEmoticon, paramInt1, paramString, paramInt2);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 6.");
-      }
-      localObject1 = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getWindow().getDecorView();
-      ((ViewGroup)localObject1).removeView(this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView);
-      localObject2 = new Rect();
-      ((ViewGroup)localObject1).getWindowVisibleDisplayFrame((Rect)localObject2);
-      int i = ((Rect)localObject2).top;
-      localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundColor(0);
-      ((RelativeLayout.LayoutParams)localObject2).topMargin = i;
-      a(0);
-      ((ViewGroup)localObject1).addView(this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView);
-      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.updateViewLayout((View)this.jdField_b_of_type_Atzf, (ViewGroup.LayoutParams)localObject2);
-      this.jdField_a_of_type_AndroidOsHandler.post(new MagicfaceViewController.5(this));
-      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(8);
-      ((View)this.jdField_b_of_type_Atzf).setVisibility(8);
-      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(0);
-      this.jdField_b_of_type_Atzf.setIsFullScreen(this.jdField_a_of_type_Atya.jdField_b_of_type_Boolean);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      localObject2 = this.jdField_b_of_type_Atzf;
-      localObject1 = this.jdField_c_of_type_AndroidWidgetTextView;
-      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setMagicfaceGestureListener(this.jdField_a_of_type_Atys);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+      Object localObject = null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 8.");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new MagicfaceViewController.8(this), 200L);
-    ((atzf)localObject2).setSurfaceCreatelistener(new atzn(this, paramEmoticon, paramInt1, paramString, paramInt2));
   }
   
-  public void a(Emoticon paramEmoticon, atzo paramatzo)
+  public void a(String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "func magicfaceAutoPlay, magicValue:" + paramEmoticon.magicValue);
-    }
-    this.jdField_a_of_type_Atzo = paramatzo;
-    if (!a())
+    ThreadManager.getSubThreadHandler().post(new UniformDownloadMgr.7(this, paramString, paramBundle));
+  }
+  
+  public void a(String paramString, Bundle paramBundle, aucs paramaucs)
+  {
+    aucs localaucs = a(paramString);
+    a(paramString, paramaucs);
+    ThreadManager.getSubThreadHandler().post(new UniformDownloadMgr.9(this, paramBundle, paramString, localaucs));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    auck.a(paramString1, new atzl(this, paramString1, paramString2));
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong, Bundle paramBundle, int paramInt, boolean paramBoolean)
+  {
+    try
     {
-      if (this.jdField_a_of_type_Atzo != null)
+      QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] saveDownloadingRbResmeInfo, url:[" + paramString1 + "] nId:[" + paramInt + "] w:[" + paramBoolean + "]");
+      SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("downloading_rb_resume_info", 0).edit();
+      atzp localatzp = new atzp(this);
+      localatzp.jdField_a_of_type_Int = paramInt;
+      localatzp.jdField_a_of_type_JavaLangString = paramString2;
+      if (!TextUtils.isEmpty(paramString3)) {}
+      for (localatzp.b = paramString3;; localatzp.b = paramString2)
       {
-        this.jdField_a_of_type_Atzo.a();
-        this.jdField_a_of_type_Atzo = null;
+        localatzp.jdField_a_of_type_Long = paramLong;
+        localatzp.jdField_a_of_type_Boolean = paramBoolean;
+        localatzp.jdField_a_of_type_AndroidOsBundle = paramBundle;
+        localEditor.putString(paramString1, a(localatzp));
+        localEditor.commit();
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceViewController", 2, "func magicfaceAutoPlay ends, not support.");
-      }
-    }
-    do
-    {
       return;
-      paramatzo = new Emoticon();
-      paramatzo.eId = paramEmoticon.eId;
-      paramatzo.epId = paramEmoticon.epId;
-      paramatzo.magicValue = paramEmoticon.magicValue;
-      paramatzo.jobType = paramEmoticon.jobType;
-      this.jdField_a_of_type_ComTencentMobileqqDataEmoticon = paramatzo;
-    } while (this.jdField_a_of_type_AndroidOsHandler == null);
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new MagicfaceViewController.3(this);
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 400L);
+    catch (Exception paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return a(paramString) != null;
   }
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "initMagicfaceView begins");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.an();
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView == null)
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr onActiveAccount...");
+    i();
+  }
+  
+  public void b(String paramString)
+  {
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MagicfaceViewController", 2, "initMagicfaceView=======qvip_magicface_send");
-      }
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localView = View.inflate(BaseApplicationImpl.getContext(), 2131561739, null);
-        this.jdField_a_of_type_Atzf = ((atzf)localView.findViewById(2131369995));
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView = ((MagicfaceContainerView)localView.findViewById(2131369996));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370009));
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369997));
-        this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131370006));
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131369994));
-        this.jdField_d_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131370007));
-        this.e = ((Button)localView.findViewById(2131370008));
-        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-        this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(this);
-        this.e.setOnClickListener(this);
-      }
-    }
-    else if (this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView == null)
-    {
-      if (!this.jdField_b_of_type_Boolean) {
-        break label415;
-      }
-    }
-    label415:
-    for (View localView = View.inflate(BaseApplicationImpl.getContext(), 2131561738, null);; localView = View.inflate(BaseApplicationImpl.getContext(), 2131561740, null))
-    {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.getContext(), 2131561742, null);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370005);
-      this.jdField_b_of_type_Atzf = ((atzf)localView.findViewById(2131369998));
-      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView = ((MagicfaceContainerView)localView.findViewById(2131370000));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370004));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370002));
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131369999));
-      this.f = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131370001));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370003));
-      this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.f.setOnClickListener(this);
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceViewController", 2, "initMagicfaceView ends");
-      }
+      QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] removeDownloadingRbResmeInfo, url:[" + paramString + "]");
+      SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("downloading_rb_resume_info", 0).edit();
+      localEditor.remove(paramString);
+      localEditor.commit();
       return;
-      localView = View.inflate(BaseApplicationImpl.getContext(), 2131561741, null);
-      break;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public boolean b()
+  public void b(String paramString, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Atys != null) && ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.getVisibility() != 8) || (this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.getVisibility() != 8)))
-    {
-      g();
-      return true;
-    }
-    return false;
+    ThreadManager.getSubThreadHandler().post(new UniformDownloadMgr.8(this, paramBundle, paramString));
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Atys.b())
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr onQQProcessExit...");
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
-      this.e.setBackgroundResource(2130846720);
-      return;
+      if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        if (localIterator.hasNext())
+        {
+          atzo localatzo = (atzo)((Map.Entry)localIterator.next()).getValue();
+          if ((localatzo.jdField_a_of_type_Aucp != null) && (localatzo.jdField_a_of_type_Aucp.b())) {
+            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onQQProcessExit. stop download:url:" + localatzo.jdField_a_of_type_JavaLangString);
+          }
+          Bundle localBundle = new Bundle();
+          localBundle.putString("_notify_param_Url", localatzo.jdField_a_of_type_JavaLangString);
+          atzr.a().c(localatzo.b, localBundle);
+          QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onQQProcessExit. cancel notification:" + localatzo.b);
+        }
+      }
     }
-    this.e.setBackgroundResource(2130846719);
+    e();
+    d();
+    ThreadManager.getSubThreadHandler().post(new UniformDownloadMgr.3(this));
+  }
+  
+  public void c(String paramString, Bundle paramBundle)
+  {
+    ThreadManager.getSubThreadHandler().post(new UniformDownloadMgr.10(this, paramString, paramBundle));
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Atys.c())
+    try
     {
-      this.f.setBackgroundResource(2130846675);
+      QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] clearDownloadingRbResmeInfo...");
+      SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("downloading_rb_resume_info", 0).edit();
+      localEditor.clear();
+      localEditor.commit();
       return;
     }
-    this.f.setBackgroundResource(2130846717);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void d(String paramString, Bundle paramBundle)
+  {
+    ThreadManager.getSubThreadHandler().post(new UniformDownloadMgr.11(this, paramString, paramBundle));
   }
   
   public void e()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new MagicfaceViewController.2(this));
-  }
-  
-  public void f()
-  {
-    if (this.jdField_d_of_type_AndroidWidgetButton.getTag() == null) {}
-    Emoticon localEmoticon;
-    do
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      return;
-      localEmoticon = (Emoticon)this.jdField_d_of_type_AndroidWidgetButton.getTag();
-    } while (localEmoticon.jobType != 2);
-    if ((this.jdField_a_of_type_Atys != null) && (this.jdField_a_of_type_Atys.a() >= 0)) {
-      if (this.jdField_a_of_type_Atys.a() != 0) {
-        break label83;
-      }
-    }
-    label83:
-    for (localEmoticon.magicValue = "value=1";; localEmoticon.magicValue = ("value=" + this.jdField_a_of_type_Atys.a()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(localEmoticon);
-      g();
-      a(localEmoticon, null);
-      return;
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      this.jdField_a_of_type_JavaUtilList.clear();
+      QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] clearSucDownloadInfo...size:" + i);
     }
   }
   
-  public void g()
+  public void e(String paramString, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Atys != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(8);
-      ((View)this.jdField_a_of_type_Atzf).setVisibility(8);
-      this.jdField_a_of_type_Atzf.setSurfaceCreatelistener(null);
-      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setMagicfaceGestureListener(null);
-      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setMagicfaceGestureListener(null);
-      ((View)this.jdField_b_of_type_Atzf).setVisibility(8);
-      this.jdField_b_of_type_Atzf.setSurfaceCreatelistener(null);
-    }
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MagicfaceViewController", 2, "removeView=======DecorView");
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-      ((ViewGroup)localObject).removeView(this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView);
-      ((ViewGroup)localObject).removeView(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView);
-      if (this.jdField_a_of_type_AndroidViewView != null)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        if (this.jdField_a_of_type_AndroidViewWindowManager != null) {
-          this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      Object localObject;
-      label160:
-      break label160;
-    }
-    if (this.jdField_a_of_type_Atys.a())
-    {
-      localObject = this.jdField_a_of_type_Atys;
-      ((atys)localObject).a(new atzk(this, (atys)localObject));
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Atzo != null)
-      {
-        this.jdField_a_of_type_Atzo.a();
-        this.jdField_a_of_type_Atzo = null;
-      }
-      return;
-      this.jdField_a_of_type_Atys.h();
-    }
+    ThreadManager.getSubThreadHandler().post(new UniformDownloadMgr.12(this, paramString, paramBundle));
   }
   
-  public void h()
+  public void f(String paramString, Bundle paramBundle)
   {
-    g();
-    if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_JavaLangRunnable != null)) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    boolean bool3 = true;
-    boolean bool2 = true;
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131369994: 
-    case 2131369999: 
-    case 2131370006: 
-      do
-      {
-        return;
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
-        g();
-        return;
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
-        g();
-        return;
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "CliOper", "", "", "MbFasong", "MbChongzuo", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
-      } while (this.jdField_a_of_type_Atys == null);
-      this.jdField_a_of_type_Atys.f();
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new MagicfaceViewController.1(this), 300L);
-      return;
-    case 2131370007: 
-      f();
-      return;
-    case 2131370008: 
-      bool3 = this.jdField_a_of_type_Atys.b();
-      paramView = this.jdField_a_of_type_Atys;
-      if (!bool3)
-      {
-        bool1 = true;
-        label259:
-        paramView.a(bool1);
-        c();
-        paramView = this.jdField_a_of_type_Atys;
-        if (bool3) {
-          break label335;
-        }
-      }
-      label335:
-      for (bool1 = bool2;; bool1 = false)
-      {
-        paramView.c(bool1);
-        if (bool3) {
-          break;
-        }
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "CliOper", "", "", "MbFasong", "MbKaiqiShengxiao", 0, 0, "", "", "", "");
-        return;
-        bool1 = false;
-        break label259;
-      }
-    }
-    bool2 = this.jdField_a_of_type_Atys.c();
-    paramView = this.jdField_a_of_type_Atys;
-    if (!bool2)
-    {
-      bool1 = true;
-      label359:
-      paramView.b(bool1);
-      d();
-      paramView = this.jdField_a_of_type_Atys;
-      if (bool2) {
-        break label434;
-      }
-    }
-    label434:
-    for (boolean bool1 = bool3;; bool1 = false)
-    {
-      paramView.c(bool1);
-      if (bool2) {
-        break;
-      }
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "CliOper", "", "", "MbJieshou", "MbKaiqiShengxiao2", 0, 0, "", "", "", "");
-      return;
-      bool1 = false;
-      break label359;
-    }
+    ThreadManager.getSubThreadHandler().post(new UniformDownloadMgr.13(this, paramString, paramBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atzj
  * JD-Core Version:    0.7.0.1
  */

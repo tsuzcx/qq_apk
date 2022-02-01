@@ -1,16 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.guidingchannel;
 
+import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import rqj;
+import com.tencent.qphone.base.util.QLog;
+import snh;
 
 public final class ReadInJoyChannelGuidingManager$1
   implements Runnable
 {
-  public ReadInJoyChannelGuidingManager$1(ReadInJoyXListView paramReadInJoyXListView, rqj paramrqj) {}
+  public ReadInJoyChannelGuidingManager$1(ReadInJoyXListView paramReadInJoyXListView, snh paramsnh) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.performItemClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getHeaderViewsCount()), 0, this.jdField_a_of_type_Rqj.getItemId(0));
+    View localView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getHeaderViewsCount());
+    if (localView != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.performItemClick(localView, 0, this.jdField_a_of_type_Snh.getItemId(0));
+      return;
+    }
+    QLog.i("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle] view is null, open failed.");
   }
 }
 

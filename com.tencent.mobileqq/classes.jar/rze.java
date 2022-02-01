@@ -1,23 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class rze
-  implements smi
+final class rze
+  extends AnimatorListenerAdapter
 {
-  public rze(FastWebActivity paramFastWebActivity) {}
+  rze(View paramView) {}
   
-  public int a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return FastWebActivity.a(this.a);
-  }
-  
-  public boolean a()
-  {
-    return true;
+    super.onAnimationEnd(paramAnimator);
+    this.a.setTag(2131362680, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rze
  * JD-Core Version:    0.7.0.1
  */

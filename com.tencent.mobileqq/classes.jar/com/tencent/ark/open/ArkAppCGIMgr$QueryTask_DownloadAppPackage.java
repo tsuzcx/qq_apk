@@ -12,7 +12,7 @@ class ArkAppCGIMgr$QueryTask_DownloadAppPackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ark.open.ArkAppCGIMgr.QueryTask_DownloadAppPackage
  * JD-Core Version:    0.7.0.1
  */

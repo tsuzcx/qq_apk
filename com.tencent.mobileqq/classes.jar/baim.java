@@ -1,338 +1,419 @@
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.RequiresApi;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.register.QueryAccount.1;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
-import com.tencent.smtt.sdk.CookieSyncManager;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebSettings.PluginState;
-import com.tencent.smtt.sdk.WebViewClient;
-import java.io.File;
 import java.util.HashMap;
-import mqq.app.MobileQQ;
+import java.util.Locale;
+import mqq.manager.AccountManager;
+import mqq.observer.AccountObserver;
 
 public class baim
+  extends baip
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  private aqvm jdField_a_of_type_Aqvm;
-  begh jdField_a_of_type_Begh;
-  TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  SonicClientImpl jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl;
-  nmx jdField_a_of_type_Nmx;
-  public boolean a;
+  public int a;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private baiq jdField_a_of_type_Baiq;
+  public String a;
+  private HashMap<String, baio> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new bain(this);
+  public String b;
+  public String c;
+  private String d;
   
-  public baim(AppInterface paramAppInterface, Activity paramActivity, begh parambegh, Intent paramIntent, boolean paramBoolean)
+  public baim(RegisterNewBaseActivity paramRegisterNewBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Begh = parambegh;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = a(paramAppInterface, paramActivity, paramIntent, paramBoolean);
+    super(paramRegisterNewBaseActivity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
   }
   
-  private void b(TouchWebView paramTouchWebView)
+  private void a(int paramInt, long paramLong)
   {
-    bain localbain = new bain(this);
-    paramTouchWebView.setWebChromeClient(localbain);
-    this.jdField_a_of_type_Nmx = localbain;
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, RegisterVerifyCodeActivity.class);
+    localIntent.putExtra("phonenum", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString);
+    localIntent.putExtra("key", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("key_register_is_phone_num_registered", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_Boolean);
+    localIntent.putExtra("key_register_has_pwd", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_Boolean);
+    localIntent.putExtra("key_register_binded_qq", this.d);
+    localIntent.putExtra("key_register_left_time", paramInt);
+    localIntent.putExtra("key_register_exit_time", paramLong);
+    localIntent.putExtra("register_verify_code_start_time", System.currentTimeMillis());
+    localIntent.putExtra("selfSet_leftViewText", anni.a(2131709993));
+    localIntent.putExtra("key_register_from", 7);
+    if (QLog.isColorLevel()) {
+      QLog.d("QueryAccount", 2, "go2next countryCode=" + this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString + ", phoneNum=" + bgoc.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString) + ", leftTime=" + paramInt + ", exitTime=" + paramLong);
+    }
+    b(localIntent);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivityForResult(localIntent, 2);
   }
   
-  public TouchWebView a()
+  private boolean a(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    if (TextUtils.isEmpty(paramString1)) {
+      return TextUtils.isEmpty(paramString2);
+    }
+    return paramString1.equals(paramString2);
   }
   
-  public TouchWebView a(AppInterface paramAppInterface, Activity paramActivity, Intent paramIntent, boolean paramBoolean)
+  private void b(String paramString)
   {
-    ndq.a("Web_qqbrowser_init_only_webview");
-    long l1 = System.currentTimeMillis();
-    Object localObject1 = null;
-    Object localObject2;
-    if (baii.a(paramActivity, paramIntent.getStringExtra("url")))
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, RegisterSendUpSms.class);
+    localIntent.putExtra("phonenum", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString);
+    localIntent.putExtra("key", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("key_register_prompt_info", paramString);
+    localIntent.putExtra("key_register_is_phone_num_registered", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_Boolean);
+    localIntent.putExtra("key_register_has_pwd", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_Boolean);
+    localIntent.putExtra("key_register_binded_qq", this.d);
+    localIntent.putExtra("selfSet_leftViewText", anni.a(2131709990));
+    localIntent.putExtra("key_register_from", 7);
+    b(localIntent);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(localIntent);
+  }
+  
+  private void c()
+  {
+    if ((this.jdField_a_of_type_AndroidContentIntent != null) && (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("key_register_from_fail_pay_lh", false)))
     {
-      localObject2 = baii.a(paramActivity);
-      localObject1 = localObject2;
-      if (localObject2 != null)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        localObject1 = localObject2;
+      if (this.jdField_a_of_type_Baiq == null) {
+        this.jdField_a_of_type_Baiq = new baiq(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity);
       }
+      this.jdField_a_of_type_Baiq.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent());
+      return;
     }
-    if (localObject1 == null) {
-      if (paramBoolean) {
-        localObject1 = SwiftReuseTouchWebView.a(paramActivity);
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c();
+    RegisterPersonalInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString, "", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_Boolean, false, null, 7);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
+  }
+  
+  private void c(String paramString)
+  {
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_AndroidOsHandler.post(new QueryAccount.1(this, paramString));
+      return;
     }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public String a(String paramString)
+  {
+    int k = 0;
+    int j = 1;
+    if (paramString != null) {}
     for (;;)
     {
-      Object localObject3 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
-      localObject2 = ((TouchWebView)localObject1).getLayoutParams();
-      label108:
-      long l2;
-      long l3;
-      WebSettings localWebSettings;
-      label224:
-      String str1;
-      label266:
-      label326:
       int i;
-      if (localObject2 == null)
-      {
-        localObject2 = new ViewGroup.LayoutParams(((DisplayMetrics)localObject3).widthPixels, ((DisplayMetrics)localObject3).heightPixels);
-        ((TouchWebView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        l1 = System.currentTimeMillis() - l1;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebLog_WebViewWrapper", 2, "createWebView TouchWebView cost = " + l1);
-        }
-        ((TouchWebView)localObject1).setIntent(paramIntent);
-        ndq.b("Web_qqbrowser_init_only_webview");
-        l2 = System.currentTimeMillis();
-        a((TouchWebView)localObject1);
-        b((TouchWebView)localObject1);
-        l3 = System.currentTimeMillis();
-        ((TouchWebView)localObject1).setScrollBarStyle(0);
-        ndq.a("Web_AdjustSettings");
-        localWebSettings = ((TouchWebView)localObject1).getSettings();
-        ndq.a("Web_SetUserAgent");
-        if (!aoyh.a().a()) {
-          break label883;
-        }
-        localObject2 = " _tdocFlag/1";
-        localObject3 = new StringBuilder().append("tendocpreload get UA");
-        str1 = localWebSettings.getUserAgentString();
-        String str2 = a(this.jdField_a_of_type_Begh);
-        if (((TouchWebView)localObject1).getX5WebViewExtension() == null) {
-          break label891;
-        }
-        paramBoolean = true;
-        QLog.i("WebLog_WebViewWrapper", 1, beka.a(str1, str2, paramBoolean));
-        localObject3 = new StringBuilder();
-        str1 = localWebSettings.getUserAgentString();
-        str2 = a(this.jdField_a_of_type_Begh);
-        if (((TouchWebView)localObject1).getX5WebViewExtension() == null) {
-          break label897;
-        }
-        paramBoolean = true;
-        localWebSettings.setUserAgentString(beka.a(str1, str2, paramBoolean) + (String)localObject2);
-        ndq.b("Web_SetUserAgent");
-        localWebSettings.setSavePassword(false);
-        localWebSettings.setSaveFormData(false);
-        localWebSettings.setBuiltInZoomControls(true);
-        localWebSettings.setUseWideViewPort(true);
-        localWebSettings.setLoadWithOverviewMode(true);
-        localWebSettings.setPluginState(WebSettings.PluginState.ON);
-        localObject2 = paramAppInterface.getApplication().getPackageManager();
-        i = 0;
-      }
-      label787:
-      label928:
       try
       {
-        if (!((PackageManager)localObject2).hasSystemFeature("android.hardware.touchscreen.multitouch"))
+        if ("852".equals(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString)) {
+          break label189;
+        }
+        if ("853".equals(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString))
         {
-          paramBoolean = ((PackageManager)localObject2).hasSystemFeature("android.hardware.faketouch.multitouch.distinct");
-          if (!paramBoolean) {
-            break label903;
-          }
+          break label189;
+          paramString = paramString.toString().trim();
         }
-        i = 1;
       }
-      catch (RuntimeException localRuntimeException)
+      catch (Exception paramString)
       {
-        label436:
-        label444:
-        long l4;
-        label685:
-        label883:
-        label891:
-        break label436;
-      }
-      if (i == 0)
-      {
-        paramBoolean = true;
-        localWebSettings.setDisplayZoomControls(paramBoolean);
-        localWebSettings.setPluginsEnabled(true);
-        localWebSettings.setJavaScriptEnabled(true);
-        localWebSettings.setAllowContentAccess(true);
-        localWebSettings.setDatabaseEnabled(true);
-        localWebSettings.setDomStorageEnabled(true);
-        localWebSettings.setAppCacheEnabled(true);
-        str1 = MobileQQ.getMobileQQ().getQQProcessName();
-        localObject3 = "";
-        localObject2 = localObject3;
-        if (str1 != null)
-        {
-          i = str1.lastIndexOf(':');
-          localObject2 = localObject3;
-          if (i > -1) {
-            localObject2 = "_" + str1.substring(i + 1);
-          }
-        }
-        localWebSettings.setDatabasePath(paramAppInterface.getApplication().getApplicationContext().getDir("database" + (String)localObject2, 0).getPath());
-        localWebSettings.setAppCachePath(paramAppInterface.getApplication().getApplicationContext().getDir("appcache" + (String)localObject2, 0).getPath());
-        localWebSettings.setMediaPlaybackRequiresUserGesture(false);
-        if (Build.VERSION.SDK_INT >= 21) {
-          localWebSettings.setMixedContentMode(0);
-        }
-        l4 = System.currentTimeMillis();
-        if (Build.VERSION.SDK_INT >= 11) {
-          ((TouchWebView)localObject1).removeJavascriptInterface("searchBoxJavaBridge_");
-        }
+        boolean bool;
+        paramString = null;
       }
       try
       {
-        ((TouchWebView)localObject1).requestFocus();
-        paramBoolean = paramIntent.getBooleanExtra("fromArkAppDownload", false);
-        ((TouchWebView)localObject1).setFocusableInTouchMode(true);
-        this.jdField_a_of_type_Aqvm = new aqvm(paramAppInterface, paramActivity, (TouchWebView)localObject1);
-        this.jdField_a_of_type_Aqvm.a(paramBoolean);
-        ((TouchWebView)localObject1).setDownloadListener(this.jdField_a_of_type_Aqvm);
-        CookieSyncManager.createInstance(paramAppInterface.getApplication().getApplicationContext());
-        if (((TouchWebView)localObject1).getX5WebViewExtension() != null)
+        Long.parseLong(paramString);
+        if (paramString.length() < i) {
+          j = 0;
+        }
+        i = j;
+        if (!paramString.startsWith("1"))
         {
-          ((TouchWebView)localObject1).getX5WebViewExtension().setWebViewClientExtension(new baiq(this, (TouchWebView)localObject1, this.jdField_a_of_type_Begh));
-          aeoy.b(paramIntent, "use_x5", "1");
-          ndq.b("Web_AdjustSettings");
-          if (beiy.x) {
-            break label928;
+          i = j;
+          if ("86".equals(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString)) {
+            i = 0;
           }
         }
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "sReportPerformance:", Boolean.valueOf(beiy.x), " cost:", Long.valueOf(bejz.a) });
-          }
-          return localObject1;
-          localObject1 = new TouchWebView(paramActivity);
-          break;
-          ((ViewGroup.LayoutParams)localObject2).width = ((DisplayMetrics)localObject3).widthPixels;
-          ((ViewGroup.LayoutParams)localObject2).height = ((DisplayMetrics)localObject3).heightPixels;
-          break label108;
-          localObject2 = "";
-          break label224;
-          paramBoolean = false;
-          break label266;
-          label897:
-          paramBoolean = false;
-          break label326;
-          label903:
-          i = 0;
-          break label436;
-          paramBoolean = false;
-          break label444;
-          aeoy.b(paramIntent, "use_x5", "2");
-          break label787;
-          paramAppInterface = new HashMap(5);
-          paramAppInterface.put("createWebview", String.valueOf(l1));
-          paramAppInterface.put("initWebClient", String.valueOf(l3 - l2));
-          paramAppInterface.put("setWebSetting", String.valueOf(l4 - l2));
-          paramAppInterface.put("coreInit", String.valueOf(bejz.a));
-          paramAppInterface.put("coldStart", String.valueOf(beiy.s));
-          azri.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actWebviewInit", true, 0L, 0L, paramAppInterface, null);
+        if (!"86".equals(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString)) {
+          break label181;
         }
+        j = paramString.length();
+        if (j == 11) {
+          break label181;
+        }
+        i = k;
       }
       catch (Exception localException)
       {
-        break label685;
+        break label164;
+        continue;
+        i = 3;
+      }
+      if (i == 0) {
+        paramString = null;
+      }
+      return paramString;
+      bool = "886".equals(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString);
+      if (bool)
+      {
+        i = 9;
+        continue;
+        label164:
+        i = 0;
+        continue;
+        i = 0;
+        paramString = null;
+      }
+      else
+      {
+        label181:
+        continue;
+        label189:
+        i = 6;
       }
     }
-  }
-  
-  String a(begh parambegh)
-  {
-    if (parambegh != null) {
-      return parambegh.a();
-    }
-    return null;
-  }
-  
-  public nmx a()
-  {
-    return this.jdField_a_of_type_Nmx;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Begh != null) {
-      this.jdField_a_of_type_Begh = null;
-    }
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
-    {
-      WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
-      if (localWebViewPluginEngine != null) {
-        localWebViewPluginEngine.b();
-      }
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setPluginEngine(null);
-      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent() == null) {}
-    }
-    try
-    {
-      ((ViewGroup)this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent()).removeView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.stopLoading();
-        label77:
-        if (this.jdField_a_of_type_Boolean) {
-          baij.a().a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
-          if (this.jdField_a_of_type_Nmx != null)
-          {
-            this.jdField_a_of_type_Nmx.a();
-            this.jdField_a_of_type_Nmx = null;
-          }
-          return;
-          localException1 = localException1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("WebLog_WebViewWrapper", 2, "remove webview error");
-          break;
-          this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrlOriginal("about:blank");
-          this.jdField_a_of_type_ComTencentBizUiTouchWebView.clearView();
-          this.jdField_a_of_type_ComTencentBizUiTouchWebView.destroy();
-        }
-      }
-      catch (Exception localException2)
-      {
-        break label77;
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
+    if (this.jdField_a_of_type_Baiq != null) {
+      this.jdField_a_of_type_Baiq.a();
     }
   }
   
-  void a(TouchWebView paramTouchWebView)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (Object localObject = new baio(this);; localObject = new baip(this))
+    Object localObject;
+    String str1;
+    String str2;
+    long l;
+    if ((paramInt1 == 2) && (paramInt2 == -1))
     {
-      paramTouchWebView.setWebViewClient((WebViewClient)localObject);
+      localObject = paramIntent.getStringExtra("phonenum");
+      String str3 = paramIntent.getStringExtra("key");
+      str1 = paramIntent.getStringExtra("invite_code");
+      str2 = str3 + (String)localObject;
+      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str2)) {
+        this.jdField_a_of_type_JavaUtilHashMap.remove(str2);
+      }
+      paramInt1 = paramIntent.getIntExtra("key_register_left_time", 0);
+      l = paramIntent.getLongExtra("key_register_exit_time", 0L);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("doOnActivityResult countryCode=").append(str3).append(", phoneNum=").append(bgoc.a((String)localObject)).append(", leftTime=").append(paramInt1).append(", exitTime=").append(l).append(", inviteCode=");
+        if (str1 != null) {
+          break label231;
+        }
+      }
+    }
+    label231:
+    for (paramIntent = "";; paramIntent = str1)
+    {
+      QLog.d("QueryAccount", 2, paramIntent);
+      if ((paramInt1 > 0) && (l > 0L))
+      {
+        paramIntent = new baio(this);
+        paramIntent.jdField_a_of_type_Int = paramInt1;
+        paramIntent.jdField_a_of_type_Long = l;
+        paramIntent.jdField_a_of_type_JavaLangString = str1;
+        this.jdField_a_of_type_JavaUtilHashMap.put(str2, paramIntent);
+      }
       return;
     }
   }
   
-  public void a(SonicClientImpl paramSonicClientImpl)
+  @RequiresApi(api=23)
+  public void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl = paramSonicClientImpl;
-    QLog.i("WebLog_WebViewWrapper", 1, "setSonicClient sonicClient = " + paramSonicClientImpl);
+    String str2 = Locale.getDefault().getLanguage();
+    Object localObject = aoqd.a(BaseApplicationImpl.getContext(), "key_local_cache", "0");
+    if ("0".equals(localObject)) {
+      QLog.e("QueryAccount", 1, "addLocaleIdCookie, localeIdStr = 0");
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        i = Integer.parseInt((String)localObject);
+        try
+        {
+          paramContext = (WifiManager)paramContext.getSystemService("wifi");
+          if (paramContext == null) {
+            break label210;
+          }
+          paramContext = paramContext.getConnectionInfo();
+          if (paramContext == null) {
+            break label210;
+          }
+          paramContext = paramContext.getMacAddress();
+        }
+        catch (Throwable paramContext)
+        {
+          for (;;)
+          {
+            QLog.e("QueryAccount", 1, paramContext, new Object[0]);
+            paramContext = "02:00:00:00:00:00";
+          }
+        }
+        localObject = "";
+        try
+        {
+          String str1 = SosoInterface.b();
+          localObject = str1;
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            QLog.e("QueryAccount", 1, localThrowable, new Object[0]);
+          }
+        }
+        this.jdField_a_of_type_JavaLangString = paramContext;
+        this.jdField_b_of_type_JavaLangString = str2;
+        this.jdField_a_of_type_Int = i;
+        this.jdField_c_of_type_JavaLangString = ((String)localObject);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("QueryAccount", 2, new Object[] { "regMacAddr:", this.jdField_a_of_type_JavaLangString, " regOS:", this.jdField_b_of_type_JavaLangString, " regQQLang:", Integer.valueOf(this.jdField_a_of_type_Int), " regLocation:", this.jdField_c_of_type_JavaLangString });
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("QueryAccount", 1, localException.toString());
+          int i = 0;
+        }
+      }
+    }
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QueryAccount", 4, "setExtraInfo");
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (!a()) {
+      return;
+    }
+    try
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("wifi_mac", this.jdField_a_of_type_JavaLangString);
+      localBundle.putString("os_language", this.jdField_b_of_type_JavaLangString);
+      localBundle.putInt("qq_language", this.jdField_a_of_type_Int);
+      localBundle.putString("gps_location", this.jdField_c_of_type_JavaLangString);
+      ((AccountManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(0)).sendRegistByPhoneNumber(paramString, (byte)2, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString, Long.valueOf(AppSetting.a()), "8.4.1", localBundle, null);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = true;
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString = a(str);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131715755, 1);
+      bool = false;
+    }
+    return bool;
+  }
+  
+  public void b()
+  {
+    if (!a()) {
+      return;
+    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))
+    {
+      Object localObject = this.jdField_a_of_type_JavaUtilHashMap.get(str);
+      if ((localObject != null) && ((localObject instanceof baio)))
+      {
+        baio localbaio = (baio)localObject;
+        if ((localbaio.jdField_a_of_type_Int > 0) && (localbaio.jdField_a_of_type_Long > 0L) && (a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString, localbaio.jdField_a_of_type_JavaLangString)))
+        {
+          long l = System.currentTimeMillis() - localbaio.jdField_a_of_type_Long;
+          StringBuilder localStringBuilder;
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder().append("startQueryAccount countryCode=").append(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString).append(", phoneNum=").append(bgoc.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString)).append(", leftTime=").append(localbaio.jdField_a_of_type_Int).append(", exitTime=").append(localbaio.jdField_a_of_type_Long).append(", interval=").append(l).append(", inviteCode=");
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString != null) {
+              break label281;
+            }
+          }
+          label281:
+          for (localObject = "";; localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_c_of_type_JavaLangString)
+          {
+            QLog.d("QueryAccount", 2, (String)localObject);
+            if ((l <= 0L) || (l >= localbaio.jdField_a_of_type_Int * 1000L)) {
+              break;
+            }
+            a(localbaio.jdField_a_of_type_Int, localbaio.jdField_a_of_type_Long);
+            return;
+          }
+        }
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.remove(str);
+    }
+    if (!bgnt.d(BaseApplication.getContext()))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131691985, 0);
+      return;
+    }
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("queryMobile", 2, "startQueryAccount countryCode=" + this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString + " phoneNum=" + bgoc.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString));
+      }
+      ((AccountManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(0)).sendRegisterQueryMobile(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.jdField_a_of_type_JavaLangString, null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.b(2131715790);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void b(Intent paramIntent)
+  {
+    if ((paramIntent != null) && (this.jdField_a_of_type_AndroidContentIntent != null)) {
+      paramIntent.putExtras(this.jdField_a_of_type_AndroidContentIntent);
+    }
   }
 }
 

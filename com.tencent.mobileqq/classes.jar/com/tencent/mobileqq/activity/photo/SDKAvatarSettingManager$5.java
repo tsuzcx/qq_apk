@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aipa;
+import akfu;
 import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
 
 public class SDKAvatarSettingManager$5
   implements Runnable
 {
-  public SDKAvatarSettingManager$5(aipa paramaipa) {}
+  public SDKAvatarSettingManager$5(akfu paramakfu) {}
   
   public void run()
   {
-    if (aipa.a(this.this$0).isFinishing()) {
+    if (akfu.a(this.this$0).isFinishing()) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -19,12 +19,12 @@ public class SDKAvatarSettingManager$5
     }
     this.this$0.a = true;
     this.this$0.d();
-    aipa.a(this.this$0, aipa.a(this.this$0));
+    akfu.a(this.this$0, akfu.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.5
  * JD-Core Version:    0.7.0.1
  */

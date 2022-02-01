@@ -1,31 +1,26 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.MarketFace;
 
 public class acyu
-  extends VasQuickUpdateManager.CallBacker
+  extends aczg
 {
-  public acyu(FriendProfileCardActivity paramFriendProfileCardActivity, awra paramawra, Card paramCard) {}
-  
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public int a()
   {
-    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b != null)
-      {
-        if (this.jdField_a_of_type_Awra.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_Awra = this.jdField_a_of_type_Awra;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.obtainMessage(5, 0, 18, this.jdField_a_of_type_ComTencentMobileqqDataCard).sendToTarget();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "send msg of UI_MSG_UPDATE_CARD");
-        }
-      }
-      paramVasQuickUpdateManager.removeCallBacker(this);
-    }
+    return super.a() + 5;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    new bbzc().a(paramList, paramList1, paramStringBuilder, paramMsg, parambepr, paramBoolean2);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.market_face.has();
   }
 }
 

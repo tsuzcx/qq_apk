@@ -1,21 +1,31 @@
-import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class akle
-  extends ameq
+  extends AsyncTask<String, Void, AnimationView.AnimationInfo>
 {
-  akle(akld paramakld) {}
+  private akle(aklc paramaklc) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  protected AnimationView.AnimationInfo a(String... paramVarArgs)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString);
-    if (localBitmap != null) {
-      this.a.a(paramString, localBitmap);
+    if ("1".equals(paramVarArgs[1])) {
+      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
     }
+    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
+  }
+  
+  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
+    }
+    this.a.a(paramAnimationInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akle
  * JD-Core Version:    0.7.0.1
  */

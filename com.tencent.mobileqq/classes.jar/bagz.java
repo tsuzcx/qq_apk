@@ -1,43 +1,37 @@
+import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import java.lang.ref.WeakReference;
 
 public class bagz
+  implements ayxc
 {
-  protected bagw a;
-  TeamWorkFileImportInfo a;
+  private WeakReference<ReceiptMessageDetailFragment> a;
   
-  public bagz(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public bagz(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
-    if (paramQQAppInterface != null) {
-      this.jdField_a_of_type_Bagw = ((bagw)paramQQAppInterface.a(120));
-    }
+    this.a = new WeakReference(paramReceiptMessageDetailFragment);
   }
   
-  public void a(QQAppInterface paramQQAppInterface) {}
+  public void a(int paramInt, boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean)
+  public void a(ayxd paramayxd)
   {
-    int i = 0;
-    if ((paramBoolean) && (bdhb.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TeamWorkFileImportJob", 2, "---notifyUIFailed try local fileName: " + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
-      }
-      this.jdField_a_of_type_Bagw.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.a = false;
-      this.jdField_a_of_type_Bagw.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_Bagw.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        this.jdField_a_of_type_Bagw.d(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      }
+    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
+    if (localReceiptMessageDetailFragment == null) {
       return;
-      i = 1;
     }
+    switch (paramayxd.a)
+    {
+    default: 
+      return;
+    case -1: 
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
+      return;
+    }
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
   }
 }
 

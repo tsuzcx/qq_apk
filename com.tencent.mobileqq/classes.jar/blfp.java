@@ -1,12 +1,8 @@
-import android.view.View;
-import android.widget.TextView;
+import cooperation.plugin.PluginInfo;
 
-public final class blfp
+public abstract interface blfp
 {
-  public View a;
-  public TextView a;
-  
-  public blfp(blfn paramblfn) {}
+  public abstract void a(String paramString, PluginInfo paramPluginInfo, blfh paramblfh);
 }
 
 

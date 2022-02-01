@@ -3,12 +3,12 @@ package com.tencent.mobileqq.tribe.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import bbeu;
+import befs;
 
 public class TEditText
   extends EditText
 {
-  private bbeu a;
+  private befs a;
   
   public TEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,14 +23,14 @@ public class TEditText
     }
   }
   
-  public void setOnSelectionChangedListener(bbeu parambbeu)
+  public void setOnSelectionChangedListener(befs parambefs)
   {
-    this.a = parambbeu;
+    this.a = parambefs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.view.TEditText
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,15 @@
-public abstract interface alnr
+import com.tencent.mobileqq.app.QQAppInterface;
+
+final class alnr
+  implements alns
 {
-  public abstract void a();
+  alnr(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
+  
+  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  {
+    alnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
+    return true;
+  }
 }
 
 

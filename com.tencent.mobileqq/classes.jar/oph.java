@@ -1,33 +1,93 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class oph
 {
-  public static Bundle a(Bundle paramBundle, AdvertisementInfo paramAdvertisementInfo)
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    int k = 1;
+    for (;;)
+    {
+      try
+      {
+        if (paramAdData.a == null) {
+          return paramJSONObject;
+        }
+        paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_inner_game_cell");
+        if (!TextUtils.isEmpty(paramAdData.a.k)) {
+          paramJSONObject.put("id_inner_small_img", new JSONObject());
+        }
+        JSONObject localJSONObject;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_JavaLangString))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_JavaLangString);
+          paramJSONObject.put("id_inner_title", localJSONObject);
+        }
+        if ((!opz.c(paramAdData)) && (!TextUtils.isEmpty(paramAdData.a.h)))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.h);
+          paramJSONObject.put("id_inner_category", localJSONObject);
+        }
+        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Omk.d)) {
+          break label424;
+        }
+        paramJSONObject.put("id_inner_game_img1", new JSONObject());
+        paramJSONObject.put("id_game_img1_container1", new JSONObject());
+        i = 1;
+        j = 1;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Omk.e))
+        {
+          paramJSONObject.put("id_inner_game_img2", new JSONObject());
+          paramJSONObject.put("id_game_img2_container2", new JSONObject());
+          i = 1;
+          j = 1;
+        }
+        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Omk.f)) {
+          break label421;
+        }
+        paramJSONObject.put("id_inner_game_img3", new JSONObject());
+        paramJSONObject.put("id_game_img3_container3", new JSONObject());
+        i = 0;
+        j = 1;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Omk.g))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_Omk.g);
+          paramJSONObject.put("id_inner_ad_name", localJSONObject);
+          j = k;
+          if (j != 0) {
+            paramJSONObject.put("id_bottom_operation", new JSONObject());
+          }
+          if (i != 0) {
+            paramJSONObject.put("id_game_img_right_space", new JSONObject());
+          }
+          localJSONObject = new JSONObject();
+          localJSONObject.put("innerGameModel", paramAdData);
+          paramJSONObject.put("id_view_AdDownloadView", localJSONObject);
+          return paramJSONObject;
+        }
+      }
+      catch (JSONException paramAdData)
+      {
+        paramAdData.printStackTrace();
+        return paramJSONObject;
+      }
+      continue;
+      label421:
+      continue;
+      label424:
+      int i = 0;
+      int j = 0;
     }
-    localBundle.putString("param_ad_app_info_trace_id", paramAdvertisementInfo.mAdTraceId);
-    localBundle.putLong("param_ad_app_info_pull_time", paramAdvertisementInfo.mAdFetchTime);
-    localBundle.putString("param_ad_app_info_view_id", paramAdvertisementInfo.mAdViewId);
-    localBundle.putLong("param_ad_app_info_pos_id", paramAdvertisementInfo.mAdPosID);
-    localBundle.putInt("param_ad_app_info_kd_pos", paramAdvertisementInfo.mAdKdPos);
-    localBundle.putString("param_ad_app_info_product_id", paramAdvertisementInfo.mAdProductId);
-    localBundle.putInt("param_ad_app_info_product_type", paramAdvertisementInfo.mAdProductType);
-    localBundle.putString("param_ad_app_info_ap_url", paramAdvertisementInfo.mAdApurl);
-    localBundle.putString("param_ad_info_corporatelogo", paramAdvertisementInfo.mAdCorporateLogo);
-    localBundle.putString("param_ad_info_corporatename", paramAdvertisementInfo.mAdCorporationName);
-    localBundle.putString("param_ad_info_adtext", paramAdvertisementInfo.mAdTxt);
-    localBundle.putParcelable("param_ad_info", paramAdvertisementInfo);
-    localBundle.putParcelableArrayList("param_ad_info_dislike", paramAdvertisementInfo.mAdDislikeInfos);
-    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oph
  * JD-Core Version:    0.7.0.1
  */

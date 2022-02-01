@@ -1,38 +1,27 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class biwu
-  implements aocf
+class biwu
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Long jdField_a_of_type_JavaLangLong;
+  biwu(biws parambiws, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
   
-  public biwu(Context paramContext, Long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public ColorNote getColorNote()
-  {
-    aocl localaocl = new aocl();
-    if (QLog.isColorLevel()) {
-      QLog.i("FavColorNoteServiceInfo", 2, "getColorNote: colorNote key [" + "qfav" + "]");
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Biws, this.jdField_a_of_type_Int);
     }
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689642);
-    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131692401);
-    localaocl.a(17104896);
-    localaocl.a("" + this.jdField_a_of_type_JavaLangLong + "-4");
-    localaocl.b(str1);
-    localaocl.c(str2);
-    localaocl.d("resdrawable://2130843803");
-    return localaocl.a();
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Biws.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biwu
  * JD-Core Version:    0.7.0.1
  */

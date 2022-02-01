@@ -1,16 +1,35 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.3;
 
 public class bmtl
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ModuleDownloadListener
 {
-  public bmtl(DoodleEditView paramDoodleEditView, bmyj parambmyj) {}
+  public bmtl(VipARUtils.3 param3) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDownloadCanceled(String paramString)
   {
-    this.jdField_a_of_type_Bmyj.n = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.invalidate();
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("vip_tar_engine.jar")) {
+      return;
+    }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bmti.a(), " onDownloadSucceed = ", bmti.b() });
+    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bmti.b());
   }
 }
 

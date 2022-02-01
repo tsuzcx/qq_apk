@@ -1,38 +1,75 @@
-import com.tencent.mobileqq.data.MedalList;
-import com.tencent.mobileqq.data.MedalList.Info;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.qun.group_effect.group_effect.EffectInfo;
+import tencent.qun.group_effect.group_effect_commu.TEffectDetail;
+import tencent.qun.group_effect.group_effect_commu.TGetMyEffectRsp0x2;
 
 public class beum
 {
-  private MedalList a;
+  public int a;
+  public String a;
+  public ConcurrentHashMap<String, beun> a;
+  public int b;
   
-  public int a()
+  public beum()
   {
-    if (this.a != null) {
-      return this.a.infoList.size();
-    }
-    return 0;
+    this.jdField_a_of_type_Int = 600;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public int a(int paramInt)
+  public group_effect_commu.TGetMyEffectRsp0x2 a()
   {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).type;
+    group_effect_commu.TGetMyEffectRsp0x2 localTGetMyEffectRsp0x2 = new group_effect_commu.TGetMyEffectRsp0x2();
+    localTGetMyEffectRsp0x2.query_interval.set(this.jdField_a_of_type_Int);
+    localTGetMyEffectRsp0x2.global_effect_id.set(this.b);
+    new group_effect.EffectInfo().name.set(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0)
+    {
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(((beun)((Map.Entry)localIterator.next()).getValue()).a());
+      }
+      localTGetMyEffectRsp0x2.rpt_userconfig.set(localArrayList);
     }
-    return 0;
+    return localTGetMyEffectRsp0x2;
   }
   
-  public String a(int paramInt)
+  public void a(group_effect_commu.TGetMyEffectRsp0x2 paramTGetMyEffectRsp0x2)
   {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).value;
+    this.jdField_a_of_type_Int = paramTGetMyEffectRsp0x2.query_interval.get();
+    this.b = paramTGetMyEffectRsp0x2.global_effect_id.get();
+    Object localObject = (group_effect.EffectInfo)paramTGetMyEffectRsp0x2.st_global_effectinfo.get();
+    if (localObject != null) {
+      this.jdField_a_of_type_JavaLangString = ((group_effect.EffectInfo)localObject).name.get();
     }
-    return null;
-  }
-  
-  public void a(MedalList paramMedalList)
-  {
-    this.a = paramMedalList;
+    if ((paramTGetMyEffectRsp0x2.rpt_userconfig.has()) && (paramTGetMyEffectRsp0x2.rpt_userconfig.size() > 0))
+    {
+      paramTGetMyEffectRsp0x2 = paramTGetMyEffectRsp0x2.rpt_userconfig.get();
+      int i = 0;
+      while (i < paramTGetMyEffectRsp0x2.size())
+      {
+        localObject = (group_effect_commu.TEffectDetail)paramTGetMyEffectRsp0x2.get(i);
+        beun localbeun = new beun();
+        localbeun.a((group_effect_commu.TEffectDetail)localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopEnterEffect.EffectInfo", 2, "mergeFromPB rpt_userconfig index = " + i + " detail = " + localbeun.toString());
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localbeun.a + "", localbeun);
+        i += 1;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopEnterEffect.EffectInfo", 2, "mergeFromPB nextReqTime = " + this.jdField_a_of_type_Int + " global_effectId = " + this.b + " global_effectName = " + this.jdField_a_of_type_JavaLangString + " individual effect size = " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+    }
   }
 }
 

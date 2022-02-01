@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar;
 
-import amug;
-import amuh;
-import amui;
-import amuj;
-import anax;
-import anbc;
-import anbe;
-import anbm;
-import anbo;
-import anbu;
-import anct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aosx;
+import aosy;
+import aosz;
+import aota;
+import aozo;
+import aozt;
+import aozv;
+import apad;
+import apaf;
+import apal;
+import apbk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +22,7 @@ import java.util.List;
 public class ARRecognition
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARRecognition> CREATOR = new amug();
+  public static final Parcelable.Creator<ARRecognition> CREATOR = new aosx();
   public int a;
   public long a;
   public int b;
@@ -82,51 +82,51 @@ public class ARRecognition
     return l2;
   }
   
-  public static amuj a(ArrayList<ARRecognition> paramArrayList, anbm paramanbm)
+  public static aota a(ArrayList<ARRecognition> paramArrayList, apad paramapad)
   {
-    amuj localamuj = new amuj(0L, false);
+    aota localaota = new aota(0L, false);
     if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return localamuj;
+      return localaota;
     }
-    boolean bool1 = anax.a(paramanbm.jdField_a_of_type_Anax);
-    boolean bool2 = anbc.a(paramanbm.jdField_a_of_type_Anbc);
-    boolean bool3 = anbo.a(paramanbm.jdField_a_of_type_Anbo);
-    boolean bool4 = anct.a(paramanbm.jdField_a_of_type_Anct);
-    boolean bool5 = anbu.a(paramanbm.jdField_a_of_type_Anbu);
+    boolean bool1 = aozo.a(paramapad.jdField_a_of_type_Aozo);
+    boolean bool2 = aozt.a(paramapad.jdField_a_of_type_Aozt);
+    boolean bool3 = apaf.a(paramapad.jdField_a_of_type_Apaf);
+    boolean bool4 = apbk.a(paramapad.jdField_a_of_type_Apbk);
+    boolean bool5 = apal.a(paramapad.jdField_a_of_type_Apal);
     if ((!bool1) && (!bool2) && (!bool3) && (!bool4) && (!bool5)) {
-      return localamuj;
+      return localaota;
     }
-    paramanbm = new ArrayList();
+    paramapad = new ArrayList();
     if (bool1) {
-      paramanbm.add(new amui(1L, a(paramArrayList, 1L)));
+      paramapad.add(new aosz(1L, a(paramArrayList, 1L)));
     }
     if (bool3) {
-      paramanbm.add(new amui(4L, a(paramArrayList, 4L)));
+      paramapad.add(new aosz(4L, a(paramArrayList, 4L)));
     }
     if (bool2) {
-      paramanbm.add(new amui(2L, a(paramArrayList, 2L)));
+      paramapad.add(new aosz(2L, a(paramArrayList, 2L)));
     }
     if (bool4) {
-      paramanbm.add(new amui(128L, a(paramArrayList, 128L)));
+      paramapad.add(new aosz(128L, a(paramArrayList, 128L)));
     }
     if (bool5) {
-      paramanbm.add(new amui(2048L, a(paramArrayList, 2048L)));
+      paramapad.add(new aosz(2048L, a(paramArrayList, 2048L)));
     }
     paramArrayList = new StringBuilder();
     int i = 0;
-    while (i < paramanbm.size())
+    while (i < paramapad.size())
     {
-      paramArrayList.append("(index:").append(i).append(",prority=" + ((amui)paramanbm.get(i)).jdField_a_of_type_Long + ")\n");
+      paramArrayList.append("(index:").append(i).append(",prority=" + ((aosz)paramapad.get(i)).jdField_a_of_type_Long + ")\n");
       i += 1;
     }
     QLog.i("AREngine_CommonConfigInfo", 1, "getCurrentPriorityHighestResult print result " + paramArrayList.toString());
-    Collections.sort(paramanbm, new amuh());
-    localamuj.jdField_a_of_type_Long = ((amui)paramanbm.get(0)).jdField_a_of_type_Long;
-    if (paramanbm.size() == 1) {}
+    Collections.sort(paramapad, new aosy());
+    localaota.jdField_a_of_type_Long = ((aosz)paramapad.get(0)).jdField_a_of_type_Long;
+    if (paramapad.size() == 1) {}
     for (bool1 = true;; bool1 = false)
     {
-      localamuj.jdField_a_of_type_Boolean = bool1;
-      return localamuj;
+      localaota.jdField_a_of_type_Boolean = bool1;
+      return localaota;
     }
   }
   
@@ -178,34 +178,34 @@ public class ARRecognition
     return false;
   }
   
-  public static boolean a(anbm paramanbm, long paramLong)
+  public static boolean a(apad paramapad, long paramLong)
   {
-    if (paramanbm == null) {}
+    if (paramapad == null) {}
     do
     {
       return false;
       if (paramLong == 1L) {
-        return anax.a(paramanbm.jdField_a_of_type_Anax);
+        return aozo.a(paramapad.jdField_a_of_type_Aozo);
       }
       if (paramLong == 2L) {
-        return anbc.a(paramanbm.jdField_a_of_type_Anbc);
+        return aozt.a(paramapad.jdField_a_of_type_Aozt);
       }
       if (paramLong == 128L) {
-        return anct.a(paramanbm.jdField_a_of_type_Anct);
+        return apbk.a(paramapad.jdField_a_of_type_Apbk);
       }
       if (paramLong == 4L) {
-        return anbo.a(paramanbm.jdField_a_of_type_Anbo);
+        return apaf.a(paramapad.jdField_a_of_type_Apaf);
       }
       if (paramLong == 64L) {
-        return anbe.a(paramanbm.jdField_a_of_type_Anbe);
+        return aozv.a(paramapad.jdField_a_of_type_Aozv);
       }
     } while (paramLong != 2048L);
-    return anbu.a(paramanbm.jdField_a_of_type_Anbu);
+    return apal.a(paramapad.jdField_a_of_type_Apal);
   }
   
-  public static boolean a(anbm paramanbm, ArrayList<ARRecognition> paramArrayList, long paramLong)
+  public static boolean a(apad paramapad, ArrayList<ARRecognition> paramArrayList, long paramLong)
   {
-    if ((paramanbm == null) || (paramArrayList == null) || (!a(paramanbm, paramLong))) {
+    if ((paramapad == null) || (paramArrayList == null) || (!a(paramapad, paramLong))) {
       return false;
     }
     int j = a(paramArrayList, paramLong);
@@ -217,7 +217,7 @@ public class ARRecognition
       }
       long l = 1 << (int)((ARRecognition)paramArrayList.get(i)).jdField_a_of_type_Long;
       int k = ((ARRecognition)paramArrayList.get(i)).c;
-      if ((paramLong != l) && (a(paramanbm, l)) && (!a(paramLong, l, j, k))) {
+      if ((paramLong != l) && (a(paramapad, l)) && (!a(paramLong, l, j, k))) {
         break;
       }
       i += 1;
@@ -335,7 +335,7 @@ public class ARRecognition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecognition
  * JD-Core Version:    0.7.0.1
  */

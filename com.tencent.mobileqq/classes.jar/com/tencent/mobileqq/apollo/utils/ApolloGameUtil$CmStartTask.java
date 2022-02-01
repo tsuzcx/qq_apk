@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import akvv;
-import akwd;
-import alud;
+import ampb;
+import ampj;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
-import azri;
-import bdin;
-import bdug;
+import anni;
+import bctj;
+import bgnt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -49,14 +49,14 @@ public class ApolloGameUtil$CmStartTask
     {
       localQQAppInterface = (QQAppInterface)this.a.get();
       localStartCheckParam = (CmGameStartChecker.StartCheckParam)this.b.get();
-      if ((localQQAppInterface != null) && (localStartCheckParam != null) && (akwd.a(localQQAppInterface, localStartCheckParam))) {}
+      if ((localQQAppInterface != null) && (localStartCheckParam != null) && (ampj.a(localQQAppInterface, localStartCheckParam))) {}
     }
     else
     {
       return;
     }
     localStartCheckParam.notFullScreen = ApolloUtil.b();
-    boolean bool2 = akwd.a(localQQAppInterface.getApp());
+    boolean bool2 = ampj.a(localQQAppInterface.getApp());
     boolean bool1;
     label114:
     Object localObject2;
@@ -75,19 +75,19 @@ public class ApolloGameUtil$CmStartTask
     for (Object localObject1 = "1";; localObject1 = "0")
     {
       ((HashMap)localObject2).put("param_reqConf", localObject1);
-      azri.a(localQQAppInterface.getApp()).a(localQQAppInterface.getCurrentAccountUin(), "cmgame_data_req_conf", true, 0L, 0L, (HashMap)localObject2, "", false);
+      bctj.a(localQQAppInterface.getApp()).a(localQQAppInterface.getCurrentAccountUin(), "cmgame_data_req_conf", true, 0L, 0L, (HashMap)localObject2, "", false);
       if (!bool1) {
         break label371;
       }
-      if (!bdin.d(localQQAppInterface.getApp())) {
+      if (!bgnt.d(localQQAppInterface.getApp())) {
         break label358;
       }
-      localObject1 = (bdug)localQQAppInterface.a(71);
+      localObject1 = (VasExtensionHandler)localQQAppInterface.a(71);
       localObject2 = new Bundle();
       ((Bundle)localObject2).putInt("key_get_game_detail_from", 3);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(Integer.valueOf(localStartCheckParam.gameId));
-      ((bdug)localObject1).a(localArrayList, (Bundle)localObject2);
+      ((VasExtensionHandler)localObject1).a(localArrayList, (Bundle)localObject2);
       localStartCheckParam.isRequestConf = true;
       if (bool2) {
         break;
@@ -102,7 +102,7 @@ public class ApolloGameUtil$CmStartTask
       break label114;
     }
     label358:
-    ApolloGameUtil.a(alud.a(2131700766), 1, BaseApplicationImpl.getContext());
+    ApolloGameUtil.a(anni.a(2131699191), 1, BaseApplicationImpl.getContext());
     return;
     label371:
     if (localStartCheckParam.statMap == null) {
@@ -124,7 +124,7 @@ public class ApolloGameUtil$CmStartTask
       if (bool2)
       {
         localStartCheckParam.mLoadingOnMainProcess = false;
-        akvv.a().a(localStartCheckParam);
+        ampb.a().a(localStartCheckParam);
         localObject1 = new Intent();
         ((Intent)localObject1).setAction("com.tencent.mobileqq.webprocess.launch_cmgame");
         ((Intent)localObject1).putExtra("extra_startcheckparam", localStartCheckParam);
@@ -143,12 +143,12 @@ public class ApolloGameUtil$CmStartTask
         {
           localObject1 = "1";
           ((HashMap)localObject2).put("param_processOn", localObject1);
-          azri.a(localQQAppInterface.getApp()).a(localQQAppInterface.getCurrentAccountUin(), "cmgame_ipc_start", true, 0L, 0L, (HashMap)localObject2, "", false);
+          bctj.a(localQQAppInterface.getApp()).a(localQQAppInterface.getCurrentAccountUin(), "cmgame_ipc_start", true, 0L, 0L, (HashMap)localObject2, "", false);
           return;
           l1 = 0L;
           continue;
           localStartCheckParam.mLoadingOnMainProcess = true;
-          akwd.b(localStartCheckParam);
+          ampj.b(localStartCheckParam);
         }
       }
       catch (Throwable localThrowable)
@@ -165,7 +165,7 @@ public class ApolloGameUtil$CmStartTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.CmStartTask
  * JD-Core Version:    0.7.0.1
  */

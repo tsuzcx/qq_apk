@@ -1,110 +1,121 @@
-import android.content.Context;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class oci
-  extends sah
+public class oci
 {
-  private ProteusItemData jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  
-  public oci(och paramoch, View paramView, BaseData paramBaseData)
+  private static Bitmap a(Bitmap paramBitmap)
   {
-    super(paramView, paramBaseData);
-    if ((paramView instanceof Container)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
+    if (paramBitmap == null) {
+      return null;
     }
-  }
-  
-  private void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
-  {
-    paramJSONObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView();
-    ViewFactory.findClickableViewListener(paramJSONObject, new ocj(this, paramBaseData, paramContext, paramJSONObject));
-  }
-  
-  private void a(Container paramContainer, ProteusItemData paramProteusItemData)
-  {
-    if (paramContainer != null)
-    {
-      ViewBase localViewBase = paramContainer.getVirtualView();
-      Object localObject = localViewBase.findViewBaseByName("id_view_AdDownloadView");
-      if ((localObject != null) && ((localObject instanceof ogy)))
-      {
-        localObject = (ogy)localObject;
-        ((ogy)localObject).a(false);
-        ((ogy)localObject).b(false);
-        ((ogy)localObject).a(null, true);
-      }
-      if (((paramProteusItemData instanceof AdData)) && (((AdData)paramProteusItemData).a != null) && (odv.a((AdData)paramProteusItemData)))
-      {
-        localViewBase = localViewBase.findViewBaseByName("id_game_small_img");
-        if ((localViewBase != null) && ((localViewBase instanceof psj)) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).J)))
-        {
-          int i = aepi.a(40.0F, paramContainer.getContext().getResources());
-          odv.a(paramContainer.getContext(), localViewBase, ((AdData)paramProteusItemData).J, 10, i, i);
-        }
-      }
-    }
-  }
-  
-  private void a(ViewBase paramViewBase)
-  {
-    if (paramViewBase == null) {}
-    do
-    {
-      return;
-      paramViewBase = paramViewBase.findViewBaseByName("id_view_AdDownloadView");
-    } while ((paramViewBase == null) || (!(paramViewBase instanceof ogy)));
-    ((ogy)paramViewBase).a(false);
-  }
-  
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
-    TemplateBean localTemplateBean;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramBaseData2 instanceof ProteusItemData));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData = ((ProteusItemData)paramBaseData2);
-      localTemplateBean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
-    } while (localTemplateBean == null);
-    if ((paramBaseData1 == paramBaseData2) && ((paramBaseData2 instanceof ProteusBannerTriplePicItemData))) {
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
-    }
-    if (paramBaseData1 != paramBaseData2) {}
     try
     {
-      localTemplateBean.bindData(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.c);
-      opy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a.getViewBean());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
-      a(paramBaseData2, och.a(this.jdField_a_of_type_Och), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.c);
-      this.jdField_a_of_type_AndroidViewView.setTag(2131362036, paramBaseData2);
-      return;
+      int i = paramBitmap.getWidth();
+      int j = paramBitmap.getHeight();
+      localBitmap = paramBitmap;
+      if (i * j > 8000)
+      {
+        double d = Math.sqrt(8000.0D / (i * j));
+        localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(i * d), (int)(j * d), true);
+      }
     }
-    catch (Exception paramBaseData1)
+    catch (OutOfMemoryError paramBitmap)
     {
       for (;;)
       {
-        paramBaseData1.printStackTrace();
+        System.gc();
+        paramBitmap.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoShareUtils", 2, "scaleBitmapForWeChat ERROR OutOfMemoryError");
+        }
+        localBitmap = null;
+      }
+    }
+    catch (Exception paramBitmap)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoShareUtils", 2, "scaleBitmapForWeChat ERROR e=" + paramBitmap.getMessage());
+        }
+        Bitmap localBitmap = null;
+      }
+    }
+    return localBitmap;
+  }
+  
+  public static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, boolean paramBoolean1, String paramString4, boolean paramBoolean2, uan paramuan)
+  {
+    int k = 0;
+    int j = 0;
+    if (paramString1 == null) {}
+    for (paramBaseActivity = "";; paramBaseActivity = paramString1)
+    {
+      if (paramString2 == null) {}
+      for (paramString1 = "";; paramString1 = paramString2)
+      {
+        int i;
+        if (!WXShareHelper.a().a()) {
+          i = 2131719199;
+        }
+        for (;;)
+        {
+          if (i != -1) {
+            zvc.a(0, i);
+          }
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("VideoShareUtils", 2, "title=" + paramBaseActivity + ", description=" + paramString1 + ", shareUrl=" + paramString3 + ", toWeChat=" + paramBoolean1);
+            }
+            return;
+            if (WXShareHelper.a().b()) {
+              break label279;
+            }
+            i = 2131719200;
+            break;
+            paramString2 = String.valueOf(System.currentTimeMillis());
+            paramuan = new ocj(paramString2, paramuan);
+            WXShareHelper.a().a(paramuan);
+            if ((!paramBoolean1) || (TextUtils.isEmpty(paramString4)) || (paramBoolean2)) {
+              break label183;
+            }
+            WxShareHelperFromReadInjoy.a().b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, paramString4);
+          }
+          label183:
+          if (bmqa.t(pha.a()) == 1)
+          {
+            paramString4 = WXShareHelper.a();
+            paramBitmap = a(paramBitmap);
+            if (paramBoolean1) {}
+            for (i = j;; i = 1)
+            {
+              paramString4.c(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
+              break;
+            }
+          }
+          paramString4 = WxShareHelperFromReadInjoy.a();
+          paramBitmap = a(paramBitmap);
+          if (paramBoolean1) {}
+          for (i = k;; i = 1)
+          {
+            paramString4.b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
+            break;
+          }
+          label279:
+          i = -1;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oci
  * JD-Core Version:    0.7.0.1
  */

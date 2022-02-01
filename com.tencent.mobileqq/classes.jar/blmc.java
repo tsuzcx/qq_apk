@@ -1,96 +1,54 @@
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.coremedia.CMTimeRange;
-import com.tencent.tav.player.IPlayer.PlayerStatus;
-import com.tencent.tavcut.timeline.SliderChangeListener;
-import com.tencent.tavcut.util.Logger;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class blmc
-  implements SliderChangeListener
+public abstract class blmc
+  extends Binder
+  implements blmb
 {
-  private boolean jdField_a_of_type_Boolean;
-  
-  public blmc(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
-  
-  public void onIndicatorMove(float paramFloat) {}
-  
-  public void onIndicatorMove(long paramLong)
+  public blmc()
   {
-    CMTime.convertTimeScale(CMTime.fromMs(paramLong), 1000);
+    attachInterface(this, "cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
   }
   
-  public void onIndicatorPress()
+  public static blmb a(IBinder paramIBinder)
   {
-    AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, AEEditorMvClipMenu.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu));
-    AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, false);
-    AEEditorMvClipMenu.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, true);
-  }
-  
-  public void onIndicatorRelease()
-  {
-    AEEditorMvClipMenu localAEEditorMvClipMenu = this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu;
-    if (AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu) == IPlayer.PlayerStatus.PLAYING) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AEEditorMvClipMenu.a(localAEEditorMvClipMenu, bool);
-      AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, null);
-      AEEditorMvClipMenu.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, false);
-      return;
+    if (paramIBinder == null) {
+      return null;
     }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof blmb))) {
+      return (blmb)localIInterface;
+    }
+    return new blmd(paramIBinder);
   }
   
-  public void onSelectionChange(long paramLong1, long paramLong2, boolean paramBoolean)
+  public IBinder asBinder()
   {
-    Object localObject1 = CMTime.convertTimeScale(CMTime.fromMs(paramLong1), 1000);
-    CMTime localCMTime = CMTime.convertTimeScale(CMTime.fromMs(paramLong2), 1000);
-    Object localObject2 = localCMTime.sub((CMTime)localObject1);
-    if (!paramBoolean)
-    {
-      if (AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu) == null) {
-        AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, AEEditorMvClipMenu.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu));
-      }
-      AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, false);
-      AEEditorMvClipMenu.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, true);
-    }
-    Logger.i("VideoDemoSlider", "onSelectionChange: seek " + this.jdField_a_of_type_Boolean + localCMTime.getTimeSeconds());
-    AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, new CMTimeRange((CMTime)localObject1, (CMTime)localObject2));
-    localObject2 = this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      AEEditorMvClipMenu.a((AEEditorMvClipMenu)localObject2, (CMTime)localObject1);
-      if (paramBoolean)
-      {
-        AEEditorMvClipMenu.b(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, false);
-        localObject1 = this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu;
-        if (AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu) != IPlayer.PlayerStatus.PLAYING) {
-          break label211;
-        }
-      }
-    }
-    label211:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      AEEditorMvClipMenu.a((AEEditorMvClipMenu)localObject1, paramBoolean);
-      AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu, null);
-      return;
-      localObject1 = localCMTime;
-      break;
-    }
+    return this;
   }
   
-  public void onSliderBarMove(boolean paramBoolean, float paramFloat1, float paramFloat2)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onSliderBarRelease(boolean paramBoolean)
-  {
-    AEEditorMvClipMenu localAEEditorMvClipMenu = this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu;
-    if (AEEditorMvClipMenu.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorMvClipMenu) == IPlayer.PlayerStatus.PLAYING) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    switch (paramInt1)
     {
-      AEEditorMvClipMenu.a(localAEEditorMvClipMenu, paramBoolean);
-      return;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
+    paramInt1 = paramParcel1.readInt();
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramInt1, paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
     }
   }
 }

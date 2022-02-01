@@ -1,8 +1,8 @@
 package com.tencent.mfsdk.reporter;
 
-import abvw;
+import addo;
 import android.text.TextUtils;
-import bdhb;
+import bgmg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +15,7 @@ public class QCloudFileUploadRunnable
   extends BaseUploadRunnable
 {
   private int jdField_a_of_type_Int;
-  private abvw jdField_a_of_type_Abvw;
+  private addo jdField_a_of_type_Addo;
   private File jdField_a_of_type_JavaIoFile;
   private FileInputStream jdField_a_of_type_JavaIoFileInputStream;
   private String jdField_a_of_type_JavaLangString;
@@ -30,12 +30,12 @@ public class QCloudFileUploadRunnable
   private String d;
   private String e;
   
-  public QCloudFileUploadRunnable(URL paramURL, String paramString, JSONObject paramJSONObject, abvw paramabvw, int paramInt, MqqHandler paramMqqHandler)
+  public QCloudFileUploadRunnable(URL paramURL, String paramString, JSONObject paramJSONObject, addo paramaddo, int paramInt, MqqHandler paramMqqHandler)
   {
     this.jdField_a_of_type_JavaNetURL = paramURL;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Abvw = paramabvw;
+    this.jdField_a_of_type_Addo = paramaddo;
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     if (QLog.isColorLevel()) {
@@ -104,7 +104,7 @@ public class QCloudFileUploadRunnable
       l = System.currentTimeMillis();
       str = "out_" + String.valueOf(l) + ".zip";
       localObject = (String)localObject + "/" + str;
-      bdhb.e(this.jdField_a_of_type_JavaLangString, (String)localObject);
+      bgmg.e(this.jdField_a_of_type_JavaLangString, (String)localObject);
     }
     return false;
     return false;
@@ -309,10 +309,10 @@ public class QCloudFileUploadRunnable
     //   355: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   358: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   361: iload 4
-    //   363: ifne +286 -> 649
+    //   363: ifne +289 -> 652
     //   366: aload_0
     //   367: getfield 45	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Int	I
-    //   370: ifle +279 -> 649
+    //   370: ifle +282 -> 652
     //   373: aload_0
     //   374: iconst_0
     //   375: invokespecial 167	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Z)V
@@ -355,164 +355,165 @@ public class QCloudFileUploadRunnable
     //   446: aload 7
     //   448: invokevirtual 304	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   451: invokespecial 307	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   454: invokestatic 312	abwm:a	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   457: invokevirtual 314	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Ljava/lang/String;)Z
-    //   460: istore_3
-    //   461: aload 6
-    //   463: astore 5
-    //   465: aload_0
-    //   466: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Abvw	Labvw;
-    //   469: ifnull +24 -> 493
-    //   472: iload_3
-    //   473: ifeq +20 -> 493
-    //   476: aload 6
-    //   478: astore 5
-    //   480: aload_0
-    //   481: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Abvw	Labvw;
-    //   484: aload_0
-    //   485: getfield 27	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_c_of_type_Int	I
-    //   488: invokeinterface 318 2 0
-    //   493: iload_3
-    //   494: istore 4
-    //   496: aload 6
-    //   498: ifnull -183 -> 315
-    //   501: aload 6
-    //   503: invokevirtual 280	java/io/DataOutputStream:close	()V
-    //   506: iload_3
-    //   507: istore 4
-    //   509: goto -194 -> 315
-    //   512: astore 5
-    //   514: iload_3
-    //   515: istore 4
-    //   517: goto -202 -> 315
-    //   520: astore 5
-    //   522: aconst_null
-    //   523: astore 6
-    //   525: iconst_0
-    //   526: istore_3
-    //   527: aload 6
-    //   529: astore 5
-    //   531: aload_0
-    //   532: iconst_0
-    //   533: putfield 45	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Int	I
-    //   536: iload_3
-    //   537: istore 4
-    //   539: aload 6
-    //   541: ifnull -226 -> 315
-    //   544: aload 6
-    //   546: invokevirtual 280	java/io/DataOutputStream:close	()V
-    //   549: iload_3
-    //   550: istore 4
-    //   552: goto -237 -> 315
-    //   555: astore 5
-    //   557: iload_3
-    //   558: istore 4
-    //   560: goto -245 -> 315
-    //   563: astore 7
-    //   565: aconst_null
-    //   566: astore 6
-    //   568: iconst_0
-    //   569: istore_3
-    //   570: aload 6
-    //   572: astore 5
-    //   574: aload_0
-    //   575: iconst_0
-    //   576: putfield 45	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Int	I
-    //   579: aload 6
-    //   581: astore 5
-    //   583: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   586: ifeq +18 -> 604
-    //   589: aload 6
-    //   591: astore 5
-    //   593: ldc 68
-    //   595: iconst_2
-    //   596: ldc_w 279
-    //   599: aload 7
-    //   601: invokestatic 73	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   604: iload_3
-    //   605: istore 4
-    //   607: aload 6
-    //   609: ifnull -294 -> 315
-    //   612: aload 6
-    //   614: invokevirtual 280	java/io/DataOutputStream:close	()V
-    //   617: iload_3
-    //   618: istore 4
-    //   620: goto -305 -> 315
-    //   623: astore 5
-    //   625: iload_3
-    //   626: istore 4
-    //   628: goto -313 -> 315
-    //   631: astore 6
-    //   633: aconst_null
-    //   634: astore 5
-    //   636: aload 5
-    //   638: ifnull +8 -> 646
-    //   641: aload 5
-    //   643: invokevirtual 280	java/io/DataOutputStream:close	()V
-    //   646: aload 6
-    //   648: athrow
-    //   649: aload_0
-    //   650: iconst_0
-    //   651: invokespecial 167	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Z)V
-    //   654: return
-    //   655: astore 5
-    //   657: iload_3
-    //   658: istore 4
-    //   660: goto -345 -> 315
-    //   663: astore 5
-    //   665: goto -19 -> 646
-    //   668: astore 6
-    //   670: goto -34 -> 636
-    //   673: astore 7
-    //   675: iconst_0
-    //   676: istore_3
-    //   677: goto -107 -> 570
-    //   680: astore 7
-    //   682: goto -112 -> 570
-    //   685: astore 5
-    //   687: iconst_0
-    //   688: istore_3
-    //   689: goto -162 -> 527
-    //   692: astore 5
-    //   694: goto -167 -> 527
-    //   697: astore 7
-    //   699: aconst_null
-    //   700: astore 6
-    //   702: iconst_0
-    //   703: istore_3
-    //   704: goto -430 -> 274
-    //   707: astore 7
-    //   709: goto -435 -> 274
+    //   454: sipush 8192
+    //   457: invokestatic 313	com/tencent/qapmsdk/common/util/FileUtil:readStream	(Ljava/io/InputStream;I)Ljava/lang/String;
+    //   460: invokevirtual 315	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Ljava/lang/String;)Z
+    //   463: istore_3
+    //   464: aload 6
+    //   466: astore 5
+    //   468: aload_0
+    //   469: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   472: ifnull +24 -> 496
+    //   475: iload_3
+    //   476: ifeq +20 -> 496
+    //   479: aload 6
+    //   481: astore 5
+    //   483: aload_0
+    //   484: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   487: aload_0
+    //   488: getfield 27	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_c_of_type_Int	I
+    //   491: invokeinterface 319 2 0
+    //   496: iload_3
+    //   497: istore 4
+    //   499: aload 6
+    //   501: ifnull -186 -> 315
+    //   504: aload 6
+    //   506: invokevirtual 280	java/io/DataOutputStream:close	()V
+    //   509: iload_3
+    //   510: istore 4
+    //   512: goto -197 -> 315
+    //   515: astore 5
+    //   517: iload_3
+    //   518: istore 4
+    //   520: goto -205 -> 315
+    //   523: astore 5
+    //   525: aconst_null
+    //   526: astore 6
+    //   528: iconst_0
+    //   529: istore_3
+    //   530: aload 6
+    //   532: astore 5
+    //   534: aload_0
+    //   535: iconst_0
+    //   536: putfield 45	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Int	I
+    //   539: iload_3
+    //   540: istore 4
+    //   542: aload 6
+    //   544: ifnull -229 -> 315
+    //   547: aload 6
+    //   549: invokevirtual 280	java/io/DataOutputStream:close	()V
+    //   552: iload_3
+    //   553: istore 4
+    //   555: goto -240 -> 315
+    //   558: astore 5
+    //   560: iload_3
+    //   561: istore 4
+    //   563: goto -248 -> 315
+    //   566: astore 7
+    //   568: aconst_null
+    //   569: astore 6
+    //   571: iconst_0
+    //   572: istore_3
+    //   573: aload 6
+    //   575: astore 5
+    //   577: aload_0
+    //   578: iconst_0
+    //   579: putfield 45	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Int	I
+    //   582: aload 6
+    //   584: astore 5
+    //   586: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   589: ifeq +18 -> 607
+    //   592: aload 6
+    //   594: astore 5
+    //   596: ldc 68
+    //   598: iconst_2
+    //   599: ldc_w 279
+    //   602: aload 7
+    //   604: invokestatic 73	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   607: iload_3
+    //   608: istore 4
+    //   610: aload 6
+    //   612: ifnull -297 -> 315
+    //   615: aload 6
+    //   617: invokevirtual 280	java/io/DataOutputStream:close	()V
+    //   620: iload_3
+    //   621: istore 4
+    //   623: goto -308 -> 315
+    //   626: astore 5
+    //   628: iload_3
+    //   629: istore 4
+    //   631: goto -316 -> 315
+    //   634: astore 6
+    //   636: aconst_null
+    //   637: astore 5
+    //   639: aload 5
+    //   641: ifnull +8 -> 649
+    //   644: aload 5
+    //   646: invokevirtual 280	java/io/DataOutputStream:close	()V
+    //   649: aload 6
+    //   651: athrow
+    //   652: aload_0
+    //   653: iconst_0
+    //   654: invokespecial 167	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:a	(Z)V
+    //   657: return
+    //   658: astore 5
+    //   660: iload_3
+    //   661: istore 4
+    //   663: goto -348 -> 315
+    //   666: astore 5
+    //   668: goto -19 -> 649
+    //   671: astore 6
+    //   673: goto -34 -> 639
+    //   676: astore 7
+    //   678: iconst_0
+    //   679: istore_3
+    //   680: goto -107 -> 573
+    //   683: astore 7
+    //   685: goto -112 -> 573
+    //   688: astore 5
+    //   690: iconst_0
+    //   691: istore_3
+    //   692: goto -162 -> 530
+    //   695: astore 5
+    //   697: goto -167 -> 530
+    //   700: astore 7
+    //   702: aconst_null
+    //   703: astore 6
+    //   705: iconst_0
+    //   706: istore_3
+    //   707: goto -433 -> 274
+    //   710: astore 7
+    //   712: goto -438 -> 274
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	712	0	this	QCloudFileUploadRunnable
+    //   0	715	0	this	QCloudFileUploadRunnable
     //   202	51	1	i	int
     //   177	72	2	j	int
-    //   273	431	3	bool1	boolean
-    //   300	359	4	bool2	boolean
-    //   150	329	5	localDataOutputStream1	java.io.DataOutputStream
-    //   512	1	5	localIOException1	java.io.IOException
-    //   520	1	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   529	1	5	localDataOutputStream2	java.io.DataOutputStream
-    //   555	1	5	localIOException2	java.io.IOException
-    //   572	20	5	localDataOutputStream3	java.io.DataOutputStream
-    //   623	1	5	localIOException3	java.io.IOException
-    //   634	8	5	localObject1	Object
-    //   655	1	5	localIOException4	java.io.IOException
-    //   663	1	5	localIOException5	java.io.IOException
-    //   685	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   692	1	5	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   146	467	6	localDataOutputStream4	java.io.DataOutputStream
-    //   631	16	6	localObject2	Object
-    //   668	1	6	localObject3	Object
-    //   700	1	6	localObject4	Object
+    //   273	434	3	bool1	boolean
+    //   300	362	4	bool2	boolean
+    //   150	332	5	localDataOutputStream1	java.io.DataOutputStream
+    //   515	1	5	localIOException1	java.io.IOException
+    //   523	1	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   532	1	5	localDataOutputStream2	java.io.DataOutputStream
+    //   558	1	5	localIOException2	java.io.IOException
+    //   575	20	5	localDataOutputStream3	java.io.DataOutputStream
+    //   626	1	5	localIOException3	java.io.IOException
+    //   637	8	5	localObject1	Object
+    //   658	1	5	localIOException4	java.io.IOException
+    //   666	1	5	localIOException5	java.io.IOException
+    //   688	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   695	1	5	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   146	470	6	localDataOutputStream4	java.io.DataOutputStream
+    //   634	16	6	localObject2	Object
+    //   671	1	6	localObject3	Object
+    //   703	1	6	localObject4	Object
     //   57	82	7	localHttpURLConnection	java.net.HttpURLConnection
     //   270	177	7	localException1	Exception
-    //   563	37	7	localThrowable1	java.lang.Throwable
-    //   673	1	7	localThrowable2	java.lang.Throwable
-    //   680	1	7	localThrowable3	java.lang.Throwable
-    //   697	1	7	localException2	Exception
-    //   707	1	7	localException3	Exception
+    //   566	37	7	localThrowable1	java.lang.Throwable
+    //   676	1	7	localThrowable2	java.lang.Throwable
+    //   683	1	7	localThrowable3	java.lang.Throwable
+    //   700	1	7	localException2	Exception
+    //   710	1	7	localException3	Exception
     //   185	61	8	arrayOfByte	byte[]
     //   256	7	9	localOutOfMemoryError4	java.lang.OutOfMemoryError
     // Exception table:
@@ -528,62 +529,62 @@ public class QCloudFileUploadRunnable
     //   262	267	270	java/lang/Exception
     //   415	424	270	java/lang/Exception
     //   428	437	270	java/lang/Exception
-    //   441	461	270	java/lang/Exception
-    //   501	506	512	java/io/IOException
-    //   47	148	520	java/lang/OutOfMemoryError
-    //   544	549	555	java/io/IOException
-    //   47	148	563	java/lang/Throwable
-    //   612	617	623	java/io/IOException
-    //   47	148	631	finally
-    //   307	312	655	java/io/IOException
-    //   641	646	663	java/io/IOException
-    //   152	161	668	finally
-    //   165	178	668	finally
-    //   182	187	668	finally
-    //   191	203	668	finally
-    //   211	220	668	finally
-    //   224	237	668	finally
-    //   241	253	668	finally
-    //   262	267	668	finally
-    //   278	284	668	finally
-    //   288	299	668	finally
-    //   415	424	668	finally
-    //   428	437	668	finally
-    //   441	461	668	finally
-    //   465	472	668	finally
-    //   480	493	668	finally
-    //   531	536	668	finally
-    //   574	579	668	finally
-    //   583	589	668	finally
-    //   593	604	668	finally
-    //   152	161	673	java/lang/Throwable
-    //   165	178	673	java/lang/Throwable
-    //   182	187	673	java/lang/Throwable
-    //   191	203	673	java/lang/Throwable
-    //   211	220	673	java/lang/Throwable
-    //   224	237	673	java/lang/Throwable
-    //   241	253	673	java/lang/Throwable
-    //   262	267	673	java/lang/Throwable
-    //   415	424	673	java/lang/Throwable
-    //   428	437	673	java/lang/Throwable
-    //   441	461	673	java/lang/Throwable
-    //   465	472	680	java/lang/Throwable
-    //   480	493	680	java/lang/Throwable
-    //   152	161	685	java/lang/OutOfMemoryError
-    //   165	178	685	java/lang/OutOfMemoryError
-    //   182	187	685	java/lang/OutOfMemoryError
-    //   191	203	685	java/lang/OutOfMemoryError
-    //   224	237	685	java/lang/OutOfMemoryError
-    //   241	253	685	java/lang/OutOfMemoryError
-    //   262	267	685	java/lang/OutOfMemoryError
-    //   415	424	685	java/lang/OutOfMemoryError
-    //   428	437	685	java/lang/OutOfMemoryError
-    //   441	461	685	java/lang/OutOfMemoryError
-    //   465	472	692	java/lang/OutOfMemoryError
-    //   480	493	692	java/lang/OutOfMemoryError
-    //   47	148	697	java/lang/Exception
-    //   465	472	707	java/lang/Exception
-    //   480	493	707	java/lang/Exception
+    //   441	464	270	java/lang/Exception
+    //   504	509	515	java/io/IOException
+    //   47	148	523	java/lang/OutOfMemoryError
+    //   547	552	558	java/io/IOException
+    //   47	148	566	java/lang/Throwable
+    //   615	620	626	java/io/IOException
+    //   47	148	634	finally
+    //   307	312	658	java/io/IOException
+    //   644	649	666	java/io/IOException
+    //   152	161	671	finally
+    //   165	178	671	finally
+    //   182	187	671	finally
+    //   191	203	671	finally
+    //   211	220	671	finally
+    //   224	237	671	finally
+    //   241	253	671	finally
+    //   262	267	671	finally
+    //   278	284	671	finally
+    //   288	299	671	finally
+    //   415	424	671	finally
+    //   428	437	671	finally
+    //   441	464	671	finally
+    //   468	475	671	finally
+    //   483	496	671	finally
+    //   534	539	671	finally
+    //   577	582	671	finally
+    //   586	592	671	finally
+    //   596	607	671	finally
+    //   152	161	676	java/lang/Throwable
+    //   165	178	676	java/lang/Throwable
+    //   182	187	676	java/lang/Throwable
+    //   191	203	676	java/lang/Throwable
+    //   211	220	676	java/lang/Throwable
+    //   224	237	676	java/lang/Throwable
+    //   241	253	676	java/lang/Throwable
+    //   262	267	676	java/lang/Throwable
+    //   415	424	676	java/lang/Throwable
+    //   428	437	676	java/lang/Throwable
+    //   441	464	676	java/lang/Throwable
+    //   468	475	683	java/lang/Throwable
+    //   483	496	683	java/lang/Throwable
+    //   152	161	688	java/lang/OutOfMemoryError
+    //   165	178	688	java/lang/OutOfMemoryError
+    //   182	187	688	java/lang/OutOfMemoryError
+    //   191	203	688	java/lang/OutOfMemoryError
+    //   224	237	688	java/lang/OutOfMemoryError
+    //   241	253	688	java/lang/OutOfMemoryError
+    //   262	267	688	java/lang/OutOfMemoryError
+    //   415	424	688	java/lang/OutOfMemoryError
+    //   428	437	688	java/lang/OutOfMemoryError
+    //   441	464	688	java/lang/OutOfMemoryError
+    //   468	475	695	java/lang/OutOfMemoryError
+    //   483	496	695	java/lang/OutOfMemoryError
+    //   47	148	700	java/lang/Exception
+    //   468	475	710	java/lang/Exception
+    //   483	496	710	java/lang/Exception
   }
 }
 

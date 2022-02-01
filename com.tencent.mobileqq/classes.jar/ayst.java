@@ -1,33 +1,28 @@
-import android.content.Context;
-import com.tencent.image.AbstractGifImage;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.ui.LocationMapWidget;
+import com.tencent.mobileqq.onlinestatus.location.OnlineStatusLocationFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayst
-  extends ayss
+  implements View.OnClickListener
 {
-  protected aysq a(Context paramContext)
-  {
-    return new ayxf(this, paramContext);
-  }
+  public ayst(OnlineStatusLocationFragment paramOnlineStatusLocationFragment) {}
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    super.a(paramString1, paramString2, paramString3);
-    paramString1 = a();
-    if (paramString1 != null) {
-      paramString1.e();
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusLocationFragment", 2, "myBtn onClick: invoked. set my btn black");
     }
-  }
-  
-  public void b()
-  {
-    super.b();
-    AbstractGifImage.pauseAll();
-  }
-  
-  public void c()
-  {
-    super.c();
-    AbstractGifImage.resumeAll();
+    this.a.a.setClickable(false);
+    this.a.a.setImageDrawable(this.a.getActivity().getResources().getDrawable(2130840540));
+    OnlineStatusLocationFragment.a(this.a).a(true);
+    OnlineStatusLocationFragment.a(this.a, OnlineStatusLocationFragment.a(this.a).a());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

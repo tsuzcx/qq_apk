@@ -1,28 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.State;
 
-class ucu
-  implements Animation.AnimationListener
+public class ucu
+  extends LinearLayoutManager
 {
-  ucu(uct paramuct) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public ucu(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    this.a.a.clearAnimation();
-    this.a.a.c = false;
+    super(paramContext, paramInt, paramBoolean);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public int getExtraLayoutSpace(RecyclerView.State paramState)
   {
-    this.a.a.c = true;
+    return super.getExtraLayoutSpace(paramState) + upr.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ucu
  * JD-Core Version:    0.7.0.1
  */

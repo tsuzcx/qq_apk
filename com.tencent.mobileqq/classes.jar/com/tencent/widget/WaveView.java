@@ -9,9 +9,9 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
-import bhtb;
-import bich;
+import bkpr;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 
 public class WaveView
   extends ImageView
@@ -21,7 +21,7 @@ public class WaveView
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new bich(this));
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new bkpr(this));
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private Path jdField_b_of_type_AndroidGraphicsPath;
   public int c;
@@ -67,7 +67,7 @@ public class WaveView
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
     this.jdField_b_of_type_AndroidGraphicsPaint.setAlpha(38);
     this.i = getResources().getDisplayMetrics().widthPixels;
-    this.h = getResources().getDimensionPixelSize(2131298105);
+    this.h = getResources().getDimensionPixelSize(2131298187);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     jdField_a_of_type_Int = (int)(this.jdField_a_of_type_Float * 4.0F + 0.5D);
     this.c = jdField_a_of_type_Int;
@@ -115,7 +115,7 @@ public class WaveView
   
   private void d()
   {
-    if (!bhtb.e()) {
+    if (!VersionUtils.isHoneycomb()) {
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
@@ -123,7 +123,7 @@ public class WaveView
   
   private void e()
   {
-    if (!bhtb.e()) {
+    if (!VersionUtils.isHoneycomb()) {
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1003);
@@ -158,7 +158,7 @@ public class WaveView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.WaveView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,38 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.view.View;
+import com.tencent.biz.qqcircle.events.QCircleContentImmersiveEvent;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.ArrayList;
 
-class vjx
-  extends vik
+public class vjx
+  implements wbk
 {
-  vjx(vji paramvji, StoryVideoItem paramStoryVideoItem, vkq paramvkq)
-  {
-    super(paramStoryVideoItem);
-  }
+  public vjx(QCircleContentImage paramQCircleContentImage, FeedCloudMeta.StFeed paramStFeed) {}
   
-  public boolean b()
+  public void a(View paramView, float paramFloat1, float paramFloat2)
   {
-    String str = (String)a("result");
-    xqq.a(str);
-    xqq.a(this.jdField_a_of_type_Vkq.d);
-    if (this.jdField_a_of_type_Vkq.d == null)
+    zwp.a().a(new QCircleContentImmersiveEvent(1));
+    ArrayList localArrayList;
+    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null)
     {
-      this.jdField_a_of_type_Vkq.d = "";
-      wxe.c(this.b, "imageLocalPath is null", new Throwable());
+      localArrayList = new ArrayList();
+      localArrayList.add(vri.a("ext1", "1"));
+      if (!QCircleContentImmersiveEvent.isImmersive()) {
+        break label98;
+      }
     }
-    a("DownloadPic2FileJob_iiu", str);
-    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Vkq.d);
-    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Vkq.a));
-    return true;
+    label98:
+    for (paramView = "2";; paramView = "1")
+    {
+      localArrayList.add(vri.a("ext4", paramView));
+      vrg.a(90, 2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, QCircleContentImage.d(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage), QCircleContentImage.b(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage), localArrayList, QCircleContentImage.f(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vjx
  * JD-Core Version:    0.7.0.1
  */

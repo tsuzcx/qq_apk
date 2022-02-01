@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import awhp;
+import com.tencent.mobileqq.persistence.notColumn;
 
 public abstract class ChatMessage
   extends MessageRecord
@@ -14,6 +14,7 @@ public abstract class ChatMessage
   public boolean isFirstMsg;
   public boolean isFlowMessage;
   public boolean isShowQIMStyleGroup;
+  public boolean isShowQWalletPubAd;
   public boolean isShowQimStyleAvater;
   public boolean isShowTIMStyleGroup;
   public boolean isShowTimStyleAvater;
@@ -28,7 +29,7 @@ public abstract class ChatMessage
   public boolean mNeedGrayTips;
   public boolean mNeedTimeStamp;
   public boolean mPendantAnimatable;
-  @awhp
+  @notColumn
   private int mViewHeight;
   
   protected abstract void doParse();
@@ -65,6 +66,11 @@ public abstract class ChatMessage
   public boolean isSupportReply()
   {
     return false;
+  }
+  
+  public boolean needShowTimeStamp()
+  {
+    return true;
   }
   
   public void parse()

@@ -1,47 +1,65 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.manager.Manager;
 
 public class bavl
-  extends agkv
+  implements Manager
 {
-  public bavl(BaseApplicationImpl paramBaseApplicationImpl)
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<Long, bavq> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  
+  public bavl(QQAppInterface paramQQAppInterface)
   {
-    super(paramBaseApplicationImpl);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public File getFile(DownloadParams paramDownloadParams)
+  public static bavl a(QQAppInterface paramQQAppInterface)
   {
-    paramDownloadParams = paramDownloadParams.url;
+    return (bavl)paramQQAppInterface.getManager(294);
+  }
+  
+  public bavq a(long paramLong, int paramInt)
+  {
     try
     {
-      File localFile1 = new File(paramDownloadParams.toURI().getPath());
-      return localFile1;
-    }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      try
+      bavq localbavq2 = (bavq)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      bavq localbavq1 = localbavq2;
+      if (localbavq2 == null)
       {
-        File localFile2 = new File(paramDownloadParams.toString().replaceFirst("filegalleryorigimage:", ""));
-        return localFile2;
+        localbavq1 = new bavq(paramLong);
+        localbavq1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localbavq1.jdField_a_of_type_Int = paramInt;
+        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localbavq1);
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + paramDownloadParams, localException);
-        }
-        return null;
-      }
+      return localbavq1;
     }
-    catch (NullPointerException paramDownloadParams)
+    finally {}
+  }
+  
+  public void a(bavq parambavq)
+  {
+    try
     {
-      paramDownloadParams.printStackTrace();
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(parambavq.jdField_a_of_type_Long));
+      return;
     }
-    return null;
+    finally {}
+  }
+  
+  public void onDestroy()
+  {
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext()) {
+        ((bavq)localIterator.next()).b();
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+    finally {}
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

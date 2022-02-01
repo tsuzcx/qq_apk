@@ -19,6 +19,7 @@ public class DownloadRequest
   public boolean needMd5 = false;
   public DownloadRequest.OnResponseDataListener onResponseDataListener;
   public OutputStream outputStream;
+  public float progressCallbackStep = 0.0F;
   public long range;
   public int rangeNumber;
   
@@ -145,7 +146,7 @@ public class DownloadRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.component.network.downloader.DownloadRequest
  * JD-Core Version:    0.7.0.1
  */

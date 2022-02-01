@@ -15,15 +15,18 @@ class AEDetector$3
   
   public void run()
   {
-    ??? = AEDetector.access$000(this.this$0).getModuleType();
-    AEDetector.access$1300(this.this$0, (String)???);
     Object localObject1;
     AIData localAIData;
-    if (!AEDetector.access$1400(this.this$0, (String)???, Integer.valueOf(this.val$aiCtrl.getModuleFreq((String)???))))
+    if (AEDetector.access$000(this.this$0) != null)
     {
-      localObject1 = AEDetector.access$000(this.this$0).detect(this.val$aiInput, this.val$aiParam);
-      localAIData = this.val$aiDataSet.getAIData((String)???);
-      if (localAIData == null) {}
+      ??? = AEDetector.access$000(this.this$0).getModuleType();
+      AEDetector.access$1300(this.this$0, (String)???);
+      if (!AEDetector.access$1400(this.this$0, (String)???, Integer.valueOf(this.val$aiCtrl.getModuleFreq((String)???))))
+      {
+        localObject1 = AEDetector.access$000(this.this$0).detect(this.val$aiInput, this.val$aiParam);
+        localAIData = this.val$aiDataSet.getAIData((String)???);
+        if (localAIData == null) {}
+      }
     }
     synchronized (localAIData.getLock())
     {
@@ -36,7 +39,7 @@ class AEDetector$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.api.standard.ai.AEDetector.3
  * JD-Core Version:    0.7.0.1
  */

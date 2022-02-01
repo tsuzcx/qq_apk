@@ -1,27 +1,24 @@
-import android.view.ViewGroup;
-import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public abstract interface qsa
+class qsa
+  implements View.OnTouchListener
 {
-  public abstract long a();
+  qsa(qrv paramqrv, LinearLayout paramLinearLayout) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt, ISuperPlayer.OnSeekCompleteListener paramOnSeekCompleteListener);
-  
-  public abstract void a(String paramString, ViewGroup paramViewGroup);
-  
-  public abstract void a(qrv paramqrv);
-  
-  public abstract void a(qrw paramqrw, qry paramqry);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qsa
  * JD-Core Version:    0.7.0.1
  */

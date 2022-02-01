@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-class eq
-  implements View.OnLongClickListener
+public class eq
 {
-  eq(en paramen) {}
+  public long a;
+  public RelativeLayout a;
+  public TextView a;
+  public String a;
   
-  public boolean onLongClick(View paramView)
-  {
-    return this.a.a(paramView);
-  }
+  public eq(ek paramek) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     eq
  * JD-Core Version:    0.7.0.1
  */

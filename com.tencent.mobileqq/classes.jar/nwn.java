@@ -1,45 +1,47 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import java.util.List;
 
 class nwn
-  implements View.OnClickListener
+  extends nwo
 {
   nwn(nwm paramnwm) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle)
   {
-    if (otb.a()) {
-      return;
-    }
-    paramView = new Intent();
-    paramView.putExtra("currentIndex", nwm.a(this.a).getCurrentItem());
-    PublicTransFragmentActivity.b(nwm.a(this.a), paramView, ReadInJoyChannelPanelFragment.class);
-    try
+    if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
     {
-      ReadInJoyChannelPanelFragment.a("0X8009497", new orz().b().c(this.a.a()).a());
-      nwm.a(this.a, false);
-      nwm.a(this.a).setVisibility(8);
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      for (;;)
-      {
-        QLog.e("ReadInJoyChannelViewPagerController", 1, QLog.getStackTraceString(paramView));
+      paramList = (EncryptUinInfo)paramList.get(0);
+      if ((paramList.jdField_a_of_type_Int != 0) || (paramList.jdField_a_of_type_Long != this.a.mApp.getLongAccountUin()) || (TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString))) {
+        break label113;
       }
+      nwm.a(this.a, paramList.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: " + nwm.a(this.a));
+      }
+    }
+    label113:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: failed，code=" + paramList.jdField_a_of_type_Int);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt == 1)
+    {
+      super.onUpdate(paramInt, paramBoolean, paramObject);
+      this.a.mApp.removeObserver(nwm.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nwn
  * JD-Core Version:    0.7.0.1
  */

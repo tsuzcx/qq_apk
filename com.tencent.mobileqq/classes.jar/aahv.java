@@ -1,8 +1,16 @@
-public class aahv
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+
+class aahv
+  implements zxa<CertifiedAccountRead.StGetMainPageRsp>
 {
-  public String a;
-  public String b;
-  public String c;
+  aahv(aahu paramaahu, zzp paramzzp) {}
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  {
+    if (this.jdField_a_of_type_Zzp != null) {
+      this.jdField_a_of_type_Zzp.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetMainPageRsp });
+    }
+  }
 }
 
 

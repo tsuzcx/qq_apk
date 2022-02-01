@@ -1,28 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher.Event;
-
-public class uli
-  implements Dispatcher.Event
+class uli
+  implements ujj
 {
-  public ErrorMessage a = new ErrorMessage();
+  uli(ulf paramulf, boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3) {}
   
-  public String a()
+  public void a(uju paramuju)
   {
-    return this.a.getErrorMessage();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
-    if (this.a == null) {}
-    for (String str = "null";; str = "\"" + this.a + "\"") {
-      return str + "}";
-    }
+    ulf.a(this.jdField_a_of_type_Ulf, paramuju, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uli
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,60 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.gaudio.GaInviteActivity;
+import android.graphics.Bitmap;
 
-class lpx
-  implements DialogInterface.OnClickListener
+public abstract interface lpx
 {
-  lpx(lpw paramlpw) {}
+  public abstract float a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.a(-1040L, 11);
-  }
+  public abstract int a();
+  
+  public abstract Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2);
+  
+  public abstract lqa a();
+  
+  public abstract void a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, lqb paramlqb);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(lra paramlra);
+  
+  public abstract void a(lra paramlra, int paramInt1, int paramInt2);
+  
+  public abstract void a(lra paramlra, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void a(lra paramlra, int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3, int paramInt4);
+  
+  public abstract void a(lra paramlra, Bitmap paramBitmap);
+  
+  public abstract boolean a(lra paramlra);
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void b(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lpx
  * JD-Core Version:    0.7.0.1
  */

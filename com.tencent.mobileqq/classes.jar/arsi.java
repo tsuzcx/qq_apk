@@ -1,6 +1,6 @@
 public abstract interface arsi
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract float a(float paramFloat, long paramLong);
 }
 
 

@@ -1,28 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.PeakAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class alyc
-  extends BroadcastReceiver
+  implements Animation.AnimationListener
 {
-  public alyc(PeakAppInterface paramPeakAppInterface) {}
+  public alyc(SpecailCareListActivity paramSpecailCareListActivity, alyv paramalyv) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramIntent != null) && ("tencent.peak.q2v.AudioTransPush".equals(paramIntent.getAction())))
-    {
-      int i = paramIntent.getIntExtra("rsptype", 0);
-      paramContext = paramIntent.getByteArrayExtra("rspbody");
-      QLog.d("PeakAppInterface", 2, "ACTION_AUDIO_TRANS_PUSH rsptype=" + i + "|" + paramContext.length);
-      ((axxr)this.a.a(0)).a(i, paramContext);
-    }
+    paramAnimation = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Alyv.a.getLayoutParams());
+    paramAnimation.addRule(15);
+    paramAnimation.setMargins((int)(46.0F * SpecailCareListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, (int)(10.0F * SpecailCareListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
+    this.jdField_a_of_type_Alyv.a.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_Alyv.a.clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alyc
  * JD-Core Version:    0.7.0.1
  */

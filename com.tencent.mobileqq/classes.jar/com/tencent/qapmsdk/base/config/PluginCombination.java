@@ -16,10 +16,13 @@ public final class PluginCombination
   @JvmField
   @NotNull
   public static final DefaultPluginConfig anrPlugin;
-  private static final List<DefaultPluginConfig> austerityPlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { dropFramePlugin, dbPlugin, ioPlugin, leakPlugin, ceilingHprofPlugin, ceilingValuePlugin, batteryPlugin, devicePlugin, anrPlugin, crashPlugin, statisticsPlugin });
+  private static final List<DefaultPluginConfig> austerityPlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { dropFramePlugin, dbPlugin, ioPlugin, leakPlugin, ceilingHprofPlugin, ceilingValuePlugin, batteryPlugin, devicePlugin, anrPlugin, crashPlugin, statisticsPlugin, bigBitmapPlugin });
   @JvmField
   @NotNull
   public static final DefaultPluginConfig batteryPlugin;
+  @JvmField
+  @NotNull
+  public static final DefaultPluginConfig bigBitmapPlugin;
   @JvmField
   @NotNull
   public static final DefaultPluginConfig ceilingHprofPlugin;
@@ -54,7 +57,7 @@ public final class PluginCombination
   @NotNull
   public static final DefaultPluginConfig loopStackPlugin = (DefaultPluginConfig)new DefaultPluginConfig.LoopStackPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
   @NotNull
-  private static final List<DefaultPluginConfig> loosePlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { loopStackPlugin, resourcePlugin, webViewPlugin, httpPlugin, jsErrorPlugin, userBreadCrumbPlugin });
+  private static final List<DefaultPluginConfig> loosePlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { loopStackPlugin, resourcePlugin, webViewPlugin, httpPlugin, jsErrorPlugin, userBreadCrumbPlugin, batteryPlugin });
   @NotNull
   private static final Lazy modeAll$delegate;
   @NotNull
@@ -90,6 +93,7 @@ public final class PluginCombination
     jsErrorPlugin = (DefaultPluginConfig)new DefaultPluginConfig.JsErrorPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     userBreadCrumbPlugin = (DefaultPluginConfig)new DefaultPluginConfig.BreadCrumbPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     statisticsPlugin = (DefaultPluginConfig)new DefaultPluginConfig.StatisticsPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
+    bigBitmapPlugin = (DefaultPluginConfig)new DefaultPluginConfig.BigBitmapPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     modeAll$delegate = LazyKt.lazy((Function0)PluginCombination.Companion.modeAll.2.INSTANCE);
     modeStable$delegate = LazyKt.lazy((Function0)PluginCombination.Companion.modeStable.2.INSTANCE);
     stablePlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { loopStackPlugin, resourcePlugin, dropFramePlugin, userBreadCrumbPlugin });
@@ -97,7 +101,7 @@ public final class PluginCombination
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.config.PluginCombination
  * JD-Core Version:    0.7.0.1
  */

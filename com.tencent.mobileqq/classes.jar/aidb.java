@@ -1,17 +1,16 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aidb
+class aidb
   implements View.OnClickListener
 {
-  public aidb(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aidb(aicv paramaicv) {}
   
   public void onClick(View paramView)
   {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
-    this.a.getActivity().finish();
+    aicv.a(this.a, paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

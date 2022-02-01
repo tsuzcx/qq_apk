@@ -1,40 +1,32 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.text.TextUtils;
 
 public class beyw
-  implements AdapterView.OnItemClickListener
 {
-  public beyw(ShareActionSheetV2 paramShareActionSheetV2) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public beyw()
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof bdmy)) {
-      return;
+    this.jdField_a_of_type_JavaLangString = "default";
+  }
+  
+  public boolean a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || ("default".equals(this.jdField_a_of_type_JavaLangString))) {}
+    while ((this.b < 0) || (this.c < 0) || (this.d <= 0) || (this.e <= 0)) {
+      return false;
     }
-    paramView = ((bdmy)paramView).a;
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onItemClick(paramView, this.a);
-    }
-    ShareActionSheetV2 localShareActionSheetV2 = this.a;
-    if (paramAdapterView == this.a.a) {
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      ShareActionSheetV2.a(localShareActionSheetV2, paramView, paramInt);
-      return;
-      if (paramAdapterView == this.a.b) {
-        paramInt = 1;
-      } else if (paramAdapterView == this.a.c) {
-        paramInt = 2;
-      } else {
-        paramInt = -1;
-      }
-    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    return "Item{subject='" + this.jdField_a_of_type_JavaLangString + '\'' + ", correct=" + this.jdField_a_of_type_Boolean + ", confidence=" + this.jdField_a_of_type_Int + ", x=" + this.b + ", y=" + this.c + ", width=" + this.d + ", height=" + this.e + '}';
   }
 }
 

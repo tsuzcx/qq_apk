@@ -1,50 +1,35 @@
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class ahfq
-  implements ahfg
+class ahfq
+  implements View.OnTouchListener
 {
-  public ahfq(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  ahfq(ahfp paramahfp) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.jdField_b_of_type_Boolean) && (AddContactViewPagerTroopFragment.a(this.a) != null)) {
-      AddContactViewPagerTroopFragment.b(this.a).a(this.a.b(), paramBoolean, null);
-    }
-    if (paramBoolean)
+    switch (paramMotionEvent.getAction())
     {
-      if (paramInt <= 0) {
-        break label73;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    case 2: 
+    default: 
+      return true;
+    case 0: 
+      ahfp.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      ahfp.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(true);
+      return true;
+    case 3: 
+      ahfp.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      ahfp.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
+      return true;
     }
-    label73:
-    Object localObject;
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      localObject = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20191206115411_QbbYvjs7gs.png", null);
-      if ((localObject != null) && (1 != ((URLDrawable)localObject).getStatus())) {
-        ((URLDrawable)localObject).restartDownload();
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131689704);
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131689710);
-      this.a.c.setText(2131689705);
-      this.a.c.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.a.c.setOnClickListener(new ahfr(this));
-      localObject = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
-    } while ((localObject == null) || (!(localObject instanceof ViewGroup)));
-    ((ViewGroup)localObject).setBackgroundResource(2130839217);
+    ahfp.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    ahfp.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
+    paramView.performClick();
+    ahfp.a(this.a, paramView);
+    return true;
   }
 }
 

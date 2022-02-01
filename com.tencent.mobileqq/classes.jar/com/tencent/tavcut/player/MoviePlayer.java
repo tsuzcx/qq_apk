@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
 import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.support.annotation.NonNull;
@@ -18,6 +19,7 @@ import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.RenderContextParams;
 import com.tencent.tav.player.IPlayer.PlayerListener;
 import com.tencent.tav.player.IPlayer.PlayerStatus;
+import com.tencent.tav.player.OnReadSnapShootListener;
 import com.tencent.tav.player.Player;
 import com.tencent.tav.player.PlayerItem;
 import com.tencent.tav.player.PlayerLayer;
@@ -47,6 +49,7 @@ public class MoviePlayer
   private boolean loopPlay = false;
   private TextureView mContentView;
   private TAVCutVideoView mPlayerLayout;
+  private MoviePlayer.onVideoProgressListener mProgressListener;
   private RenderContextParams mRenderContextParams;
   private boolean needNewComposition = false;
   private CMTimeRange playRange;
@@ -60,6 +63,7 @@ public class MoviePlayer
   private CMTime seekTime;
   private Surface surface;
   private int surfaceHeight;
+  private List<MoviePlayer.SurfaceTextureChangeListener> surfaceTextureChangeListeners = new ArrayList();
   private int surfaceWidth;
   private TAVComposition tavComposition;
   private boolean updatingPlayItem = false;
@@ -101,6 +105,17 @@ public class MoviePlayer
       paramPlayerItem.play();
     }
     return paramPlayerItem;
+  }
+  
+  private void notifySurfaceTextureChange(SurfaceTexture paramSurfaceTexture)
+  {
+    if ((this.surfaceTextureChangeListeners != null) && (this.surfaceTextureChangeListeners.size() > 0))
+    {
+      Iterator localIterator = this.surfaceTextureChangeListeners.iterator();
+      while (localIterator.hasNext()) {
+        ((MoviePlayer.SurfaceTextureChangeListener)localIterator.next()).onTextureChange(paramSurfaceTexture);
+      }
+    }
   }
   
   private void onPlayerDestroy()
@@ -229,6 +244,14 @@ public class MoviePlayer
     this.playerListeners.add(paramPlayerListener);
   }
   
+  public void addTextureChangeListener(MoviePlayer.SurfaceTextureChangeListener paramSurfaceTextureChangeListener)
+  {
+    if (paramSurfaceTextureChangeListener == null) {
+      return;
+    }
+    this.surfaceTextureChangeListeners.add(paramSurfaceTextureChangeListener);
+  }
+  
   public void bindView(TAVCutVideoView paramTAVCutVideoView)
   {
     this.context = paramTAVCutVideoView.getContext();
@@ -247,17 +270,17 @@ public class MoviePlayer
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   3: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
     //   6: ifnonnull +11 -> 17
-    //   9: getstatic 450	com/tencent/tav/player/IPlayer$PlayerStatus:ERROR	Lcom/tencent/tav/player/IPlayer$PlayerStatus;
+    //   9: getstatic 472	com/tencent/tav/player/IPlayer$PlayerStatus:ERROR	Lcom/tencent/tav/player/IPlayer$PlayerStatus;
     //   12: astore_1
     //   13: aload_0
     //   14: monitorexit
     //   15: aload_1
     //   16: areturn
     //   17: aload_0
-    //   18: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   21: invokevirtual 453	com/tencent/tav/player/Player:currentStatus	()Lcom/tencent/tav/player/IPlayer$PlayerStatus;
+    //   18: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   21: invokevirtual 475	com/tencent/tav/player/Player:currentStatus	()Lcom/tencent/tav/player/IPlayer$PlayerStatus;
     //   24: astore_1
     //   25: goto -12 -> 13
     //   28: astore_1
@@ -294,6 +317,11 @@ public class MoviePlayer
     return this.playRange;
   }
   
+  public TAVCutVideoView getPlayerLayout()
+  {
+    return this.mPlayerLayout;
+  }
+  
   /* Error */
   public CMTime getPosition()
   {
@@ -301,17 +329,17 @@ public class MoviePlayer
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   3: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
     //   6: ifnull +15 -> 21
     //   9: aload_0
-    //   10: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   13: invokevirtual 467	com/tencent/tav/player/Player:position	()Lcom/tencent/tav/coremedia/CMTime;
+    //   10: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   13: invokevirtual 491	com/tencent/tav/player/Player:position	()Lcom/tencent/tav/coremedia/CMTime;
     //   16: astore_1
     //   17: aload_0
     //   18: monitorexit
     //   19: aload_1
     //   20: areturn
-    //   21: getstatic 461	com/tencent/tav/coremedia/CMTime:CMTimeInvalid	Lcom/tencent/tav/coremedia/CMTime;
+    //   21: getstatic 483	com/tencent/tav/coremedia/CMTime:CMTimeInvalid	Lcom/tencent/tav/coremedia/CMTime;
     //   24: astore_1
     //   25: goto -8 -> 17
     //   28: astore_1
@@ -353,6 +381,11 @@ public class MoviePlayer
     return this.tavComposition;
   }
   
+  public TextureView getTextureView()
+  {
+    return this.mContentView;
+  }
+  
   public float getVolume()
   {
     try
@@ -379,24 +412,24 @@ public class MoviePlayer
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   3: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
     //   6: ifnull +48 -> 54
     //   9: aload_0
-    //   10: getfield 84	com/tencent/tavcut/player/MoviePlayer:TAG	Ljava/lang/String;
-    //   13: new 61	java/lang/StringBuilder
+    //   10: getfield 88	com/tencent/tavcut/player/MoviePlayer:TAG	Ljava/lang/String;
+    //   13: new 65	java/lang/StringBuilder
     //   16: dup
-    //   17: invokespecial 62	java/lang/StringBuilder:<init>	()V
-    //   20: ldc_w 478
-    //   23: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: invokespecial 66	java/lang/StringBuilder:<init>	()V
+    //   20: ldc_w 504
+    //   23: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: aload_0
-    //   27: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   30: invokevirtual 480	com/tencent/tav/player/Player:isPlaying	()Z
-    //   33: invokevirtual 244	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   36: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   39: invokestatic 196	com/tencent/tavcut/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   30: invokevirtual 506	com/tencent/tav/player/Player:isPlaying	()Z
+    //   33: invokevirtual 256	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   39: invokestatic 208	com/tencent/tavcut/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   42: aload_0
-    //   43: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   46: invokevirtual 480	com/tencent/tav/player/Player:isPlaying	()Z
+    //   43: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   46: invokevirtual 506	com/tencent/tav/player/Player:isPlaying	()Z
     //   49: istore_1
     //   50: aload_0
     //   51: monitorexit
@@ -427,11 +460,11 @@ public class MoviePlayer
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   3: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
     //   6: ifnull +15 -> 21
     //   9: aload_0
-    //   10: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   13: invokevirtual 483	com/tencent/tav/player/Player:isReleased	()Z
+    //   10: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   13: invokevirtual 509	com/tencent/tav/player/Player:isReleased	()Z
     //   16: istore_1
     //   17: iload_1
     //   18: ifeq +9 -> 27
@@ -462,14 +495,15 @@ public class MoviePlayer
   public void onPositionChanged(CMTime paramCMTime)
   {
     if (this.updatingPlayItem) {}
-    for (;;)
+    do
     {
       return;
       Iterator localIterator = this.playerListeners.iterator();
       while (localIterator.hasNext()) {
         ((IPlayer.PlayerListener)localIterator.next()).onPositionChanged(paramCMTime);
       }
-    }
+    } while (this.mProgressListener == null);
+    this.mProgressListener.updateVideoProgress(paramCMTime.getTimeUs() / 1000L);
   }
   
   public void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
@@ -487,31 +521,31 @@ public class MoviePlayer
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 84	com/tencent/tavcut/player/MoviePlayer:TAG	Ljava/lang/String;
-    //   6: new 61	java/lang/StringBuilder
+    //   3: getfield 88	com/tencent/tavcut/player/MoviePlayer:TAG	Ljava/lang/String;
+    //   6: new 65	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 62	java/lang/StringBuilder:<init>	()V
-    //   13: ldc_w 493
-    //   16: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10: invokespecial 66	java/lang/StringBuilder:<init>	()V
+    //   13: ldc_w 533
+    //   16: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   19: aload_0
-    //   20: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   23: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokestatic 196	com/tencent/tavcut/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   20: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   23: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   29: invokestatic 208	com/tencent/tavcut/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   32: aload_0
-    //   33: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   33: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
     //   36: ifnull +17 -> 53
     //   39: aload_0
-    //   40: invokespecial 495	com/tencent/tavcut/player/MoviePlayer:abandonAudioFocus	()V
+    //   40: invokespecial 535	com/tencent/tavcut/player/MoviePlayer:abandonAudioFocus	()V
     //   43: aload_0
-    //   44: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   47: invokevirtual 497	com/tencent/tav/player/Player:pause	()V
+    //   44: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   47: invokevirtual 537	com/tencent/tav/player/Player:pause	()V
     //   50: aload_0
     //   51: monitorexit
     //   52: return
     //   53: aload_0
     //   54: iconst_0
-    //   55: putfield 88	com/tencent/tavcut/player/MoviePlayer:isAutoPlay	Z
+    //   55: putfield 92	com/tencent/tavcut/player/MoviePlayer:isAutoPlay	Z
     //   58: goto -8 -> 50
     //   61: astore_1
     //   62: aload_0
@@ -535,32 +569,32 @@ public class MoviePlayer
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 84	com/tencent/tavcut/player/MoviePlayer:TAG	Ljava/lang/String;
-    //   6: new 61	java/lang/StringBuilder
+    //   3: getfield 88	com/tencent/tavcut/player/MoviePlayer:TAG	Ljava/lang/String;
+    //   6: new 65	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 62	java/lang/StringBuilder:<init>	()V
-    //   13: ldc_w 499
-    //   16: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10: invokespecial 66	java/lang/StringBuilder:<init>	()V
+    //   13: ldc_w 539
+    //   16: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   19: aload_0
-    //   20: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   23: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokestatic 196	com/tencent/tavcut/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   20: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   23: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   29: invokestatic 208	com/tencent/tavcut/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   32: aload_0
-    //   33: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   33: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
     //   36: ifnull +20 -> 56
     //   39: aload_0
-    //   40: invokespecial 298	com/tencent/tavcut/player/MoviePlayer:requestAudioFocus	()Z
+    //   40: invokespecial 310	com/tencent/tavcut/player/MoviePlayer:requestAudioFocus	()Z
     //   43: ifeq +10 -> 53
     //   46: aload_0
-    //   47: getfield 180	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
-    //   50: invokevirtual 301	com/tencent/tav/player/Player:play	()V
+    //   47: getfield 192	com/tencent/tavcut/player/MoviePlayer:player	Lcom/tencent/tav/player/Player;
+    //   50: invokevirtual 313	com/tencent/tav/player/Player:play	()V
     //   53: aload_0
     //   54: monitorexit
     //   55: return
     //   56: aload_0
     //   57: iconst_1
-    //   58: putfield 88	com/tencent/tavcut/player/MoviePlayer:isAutoPlay	Z
+    //   58: putfield 92	com/tencent/tavcut/player/MoviePlayer:isAutoPlay	Z
     //   61: goto -8 -> 53
     //   64: astore_1
     //   65: aload_0
@@ -575,6 +609,11 @@ public class MoviePlayer
     //   from	to	target	type
     //   2	53	64	finally
     //   56	61	64	finally
+  }
+  
+  public void readSnapShootBitmap(OnReadSnapShootListener paramOnReadSnapShootListener)
+  {
+    this.player.readSnapShootBitmap(paramOnReadSnapShootListener);
   }
   
   public void refresh()
@@ -768,6 +807,11 @@ public class MoviePlayer
     updateComposition(localTAVComposition, false);
   }
   
+  public void setVideoProgressListener(MoviePlayer.onVideoProgressListener paramonVideoProgressListener)
+  {
+    this.mProgressListener = paramonVideoProgressListener;
+  }
+  
   public void setVolume(float paramFloat)
   {
     try
@@ -819,7 +863,7 @@ public class MoviePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.player.MoviePlayer
  * JD-Core Version:    0.7.0.1
  */

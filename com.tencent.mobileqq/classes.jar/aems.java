@@ -1,14 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Leba;
 
-class aems
-  implements View.OnClickListener
+public class aems
+  extends anry
 {
-  aems(aemq paramaemq) {}
+  public aems(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public void onPublicAccountNotification(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a.b(paramView.getTag());
+    if ((paramBoolean1) && (paramBoolean2) && (Leba.a(this.a) != null)) {
+      Leba.a(this.a).b();
+    }
   }
 }
 

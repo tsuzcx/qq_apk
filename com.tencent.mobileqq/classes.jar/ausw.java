@@ -1,50 +1,102 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-class ausw
-  implements URLDrawable.URLDrawableListener
+public class ausw
+  extends QIPCModule
 {
-  ausw(ausv paramausv) {}
+  public static ausw a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public ausw()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadCanceled");
-    }
+    super("module_game_buddy");
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  /* Error */
+  public static ausw a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadFialed");
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 17	ausw:a	Lausw;
+    //   6: ifnonnull +25 -> 31
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: getstatic 17	ausw:a	Lausw;
+    //   15: ifnonnull +13 -> 28
+    //   18: new 2	ausw
+    //   21: dup
+    //   22: invokespecial 19	ausw:<init>	()V
+    //   25: putstatic 17	ausw:a	Lausw;
+    //   28: ldc 2
+    //   30: monitorexit
+    //   31: getstatic 17	ausw:a	Lausw;
+    //   34: astore_0
+    //   35: ldc 2
+    //   37: monitorexit
+    //   38: aload_0
+    //   39: areturn
+    //   40: astore_0
+    //   41: ldc 2
+    //   43: monitorexit
+    //   44: aload_0
+    //   45: athrow
+    //   46: astore_0
+    //   47: ldc 2
+    //   49: monitorexit
+    //   50: aload_0
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   34	5	0	localausw	ausw
+    //   40	5	0	localObject1	java.lang.Object
+    //   46	5	0	localObject2	java.lang.Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	28	40	finally
+    //   28	31	40	finally
+    //   41	44	40	finally
+    //   3	12	46	finally
+    //   31	35	46	finally
+    //   44	46	46	finally
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadProgressed i:" + paramInt);
+      QLog.d("module_game_buddy", 2, "action = " + paramString + ", params = " + paramBundle + ",callbackId=" + paramInt);
     }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadSuccessed");
-    }
-    paramURLDrawable = paramURLDrawable.getCallback();
-    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof View)))
+    if ("action_check_aio_type".equals(paramString))
     {
-      ((View)paramURLDrawable).invalidate();
-      ((View)paramURLDrawable).requestLayout();
+      paramString = paramBundle.getString("uin_value");
+      paramBundle = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (paramBundle == null) {
+        break label139;
+      }
+      paramBundle = (anmw)paramBundle.getManager(51);
+      if ((paramBundle == null) || (TextUtils.isEmpty(paramString)) || (!paramBundle.b(paramString))) {
+        break label147;
+      }
+    }
+    label139:
+    label147:
+    for (int i = 0;; i = 10009)
+    {
+      paramString = new Bundle();
+      paramString.putInt("uin_type", i);
+      callbackResult(paramInt, EIPCResult.createResult(0, paramString));
+      return null;
+      QLog.w("module_game_buddy", 1, "app is null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ausw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,17 @@
-import android.content.Context;
-import android.content.res.Resources;
-import java.io.IOException;
-import org.xmlpull.v1.XmlPullParserException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bazw
+  implements View.OnClickListener
 {
-  private static bazv jdField_a_of_type_Bazv;
-  private static boolean jdField_a_of_type_Boolean;
+  public bazw(EditActivity paramEditActivity) {}
   
-  private static bazv a(Context paramContext)
+  public void onClick(View paramView)
   {
-    a(paramContext);
-    return jdField_a_of_type_Bazv;
-  }
-  
-  public static String a(Context paramContext, String paramString)
-  {
-    String str = paramString;
-    if (paramString != null) {
-      str = paramString.toLowerCase();
-    }
-    return a(paramContext).a(str);
-  }
-  
-  private static void a(Context paramContext)
-  {
-    bazu localbazu;
-    if (!jdField_a_of_type_Boolean)
-    {
-      localbazu = new bazu();
-      paramContext = paramContext.getResources().getXml(2131886084);
-    }
-    try
-    {
-      jdField_a_of_type_Bazv = localbazu.a(paramContext);
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
-    catch (XmlPullParserException paramContext)
-    {
-      throw new RuntimeException("PreselectedChannelsActivity: XmlPullParserException");
-    }
-    catch (IOException paramContext)
-    {
-      throw new RuntimeException("PreselectedChannelsActivity: IOException");
-    }
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

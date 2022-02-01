@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 class MainService$MyErrorHandler$3
   implements Runnable
 {
-  MainService$MyErrorHandler$3(MainService.MyErrorHandler paramMyErrorHandler, String paramString1, AppRuntime paramAppRuntime, Constants.LogoutReason paramLogoutReason, String paramString2, String paramString3, String paramString4, boolean paramBoolean) {}
+  MainService$MyErrorHandler$3(MainService.MyErrorHandler paramMyErrorHandler, String paramString1, AppRuntime paramAppRuntime, Constants.LogoutReason paramLogoutReason, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5) {}
   
   public void run()
   {
@@ -14,10 +14,10 @@ class MainService$MyErrorHandler$3
     if ((this.val$uin != null) && (this.val$uin.equals(this.val$app.getAccount())))
     {
       if (this.val$reason != Constants.LogoutReason.expired) {
-        break label429;
+        break label452;
       }
       if (this.val$app.isLogin()) {
-        break label499;
+        break label522;
       }
       bool = false;
     }
@@ -41,7 +41,7 @@ class MainService$MyErrorHandler$3
         localIntent.putExtra("isSameDevice", this.val$isSameDevice);
         localIntent.addFlags(268435456);
         if ((!this.val$app.isClearTaskBySystem) && ((!this.val$isSameDevice) || (this.val$action == null) || (!this.val$action.equalsIgnoreCase("mqq.intent.action.ACCOUNT_KICKED")) || (!this.val$app.isBackground_Stop))) {
-          break label434;
+          break label457;
         }
         if (QLog.isColorLevel()) {
           QLog.d("mqq", 2, "kicked samedevice and set kickIntent ");
@@ -58,15 +58,18 @@ class MainService$MyErrorHandler$3
         localIntent.putExtra("isSameDevice", this.val$isSameDevice);
         localIntent.putExtra("needNotify", false);
         localIntent.setPackage(MainService.access$000(this.this$1.this$0).getPackageName());
+        if ("QQConnectLogin.pre_auth".equals(this.val$serviceCmd)) {
+          localIntent.putExtra("serviceCmd", this.val$serviceCmd);
+        }
         MainService.access$000(this.this$1.this$0).sendBroadcast(localIntent);
         if (QLog.isColorLevel()) {
           QLog.d("mqq", 2, "kicked....kickPC...... in popupNotification end isNeedNotify = " + bool);
         }
         return;
-        label429:
+        label452:
         bool = true;
         break;
-        label434:
+        label457:
         if (!this.val$app.onReceiveUnhandledKickedMsg(this.val$action, localIntent)) {
           try
           {
@@ -81,7 +84,7 @@ class MainService$MyErrorHandler$3
           }
         }
       }
-      label499:
+      label522:
       bool = true;
     }
   }

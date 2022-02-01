@@ -1,37 +1,42 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.view.View;
 
-public class vgm
-  extends urt<vhx>
+class vgm
+  implements Drawable.Callback
 {
-  public String a()
+  vgm(vgl paramvgl) {}
+  
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    return uqn.a("StorySvc.video_apply_authkey");
+    this.a.e();
   }
   
-  public vhx a(byte[] paramArrayOfByte)
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
   {
-    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
-    try
+    if (vgl.a(this.a) != null)
     {
-      localRspAuthKey.mergeFrom(paramArrayOfByte);
-      return new vhx(localRspAuthKey);
+      View localView = vgl.a(this.a).a();
+      if (localView != null) {
+        localView.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wxe.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
-    }
-    return null;
   }
   
-  protected byte[] a()
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
   {
-    return new byte[0];
+    if (vgl.a(this.a) != null)
+    {
+      View localView = vgl.a(this.a).a();
+      if (localView != null) {
+        localView.unscheduleDrawable(paramDrawable, paramRunnable);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vgm
  * JD-Core Version:    0.7.0.1
  */

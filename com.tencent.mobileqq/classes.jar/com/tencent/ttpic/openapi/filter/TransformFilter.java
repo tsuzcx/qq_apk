@@ -58,6 +58,7 @@ public class TransformFilter
   private Map<String, List<DistortionItem>> mMeshCache = new HashMap();
   private int meshVersion = 2;
   private MeshDistortionType[] meshs = new MeshDistortionType[60];
+  private boolean needReCaculateFace = false;
   private float screenRatioX = 1.0F;
   private float screenRatioY = 1.0F;
   private List<StickerItem> stickerItems;
@@ -262,6 +263,11 @@ public class TransformFilter
     this.frameIndex = paramInt;
   }
   
+  public void setNeedReCaculateFace(boolean paramBoolean)
+  {
+    this.needReCaculateFace = paramBoolean;
+  }
+  
   public void stopTransform()
   {
     this.items = EMPTY;
@@ -414,7 +420,7 @@ public class TransformFilter
   
   public void updateFaceFeatures_new(List<PointF> paramList)
   {
-    if ((paramList == null) || (paramList.size() < 131) || (this.mFaceAngle == null)) {
+    if ((paramList == null) || (paramList.size() < 90) || (this.mFaceAngle == null)) {
       return;
     }
     float f3 = ((PointF)paramList.get(18)).x - ((PointF)paramList.get(0)).x;
@@ -444,18 +450,18 @@ public class TransformFilter
     PointF localPointF6 = new PointF();
     PointF localPointF7 = new PointF();
     int i = 0;
-    label431:
-    if (i < 131) {
+    label430:
+    if (i < paramList.size()) {
       if ((i < 99) || (i > 106)) {
-        break label462;
+        break label464;
       }
     }
     for (;;)
     {
       i += 1;
-      break label431;
+      break label430;
       break;
-      label462:
+      label464:
       localPointF1.x = (((PointF)paramList.get(i)).x * f13 - 1.0F);
       localPointF1.y = (((PointF)paramList.get(i)).y * f14 - 1.0F);
       int j = 0;
@@ -772,23 +778,27 @@ public class TransformFilter
   
   public void updatePreview(Object paramObject)
   {
-    if (!(paramObject instanceof PTDetectInfo)) {
-      return;
-    }
-    PTDetectInfo localPTDetectInfo = (PTDetectInfo)paramObject;
-    paramObject = localPTDetectInfo.faceAngles;
-    if ((localPTDetectInfo.phoneAngle == 90.0F) || (localPTDetectInfo.phoneAngle == 270.0F))
+    if (!(paramObject instanceof PTDetectInfo)) {}
+    PTDetectInfo localPTDetectInfo;
+    do
     {
-      paramObject = new float[3];
-      paramObject[0] = (-localPTDetectInfo.faceAngles[1]);
-      paramObject[1] = (-localPTDetectInfo.faceAngles[0]);
-      paramObject[2] = localPTDetectInfo.faceAngles[2];
-    }
-    if (this.dataPath != null) {
-      updateMeshParam();
-    }
-    updateParams(localPTDetectInfo.facePoints, localPTDetectInfo.triggeredExpression, this.mFaceDetScale, paramObject);
-    this.mFaceAngle = localPTDetectInfo.faceAngles;
+      return;
+      localPTDetectInfo = (PTDetectInfo)paramObject;
+      paramObject = localPTDetectInfo.faceAngles;
+      if ((localPTDetectInfo.phoneAngle == 90.0F) || (localPTDetectInfo.phoneAngle == 270.0F))
+      {
+        paramObject = new float[3];
+        paramObject[0] = (-localPTDetectInfo.faceAngles[1]);
+        paramObject[1] = (-localPTDetectInfo.faceAngles[0]);
+        paramObject[2] = localPTDetectInfo.faceAngles[2];
+      }
+      if (this.dataPath != null) {
+        updateMeshParam();
+      }
+      updateParams(localPTDetectInfo.facePoints, localPTDetectInfo.triggeredExpression, this.mFaceDetScale, paramObject);
+      this.mFaceAngle = localPTDetectInfo.faceAngles;
+    } while (!this.needReCaculateFace);
+    updateFaceFeatures_new(localPTDetectInfo.transformPoints);
   }
   
   public void updateStrength(float paramFloat)
@@ -818,7 +828,7 @@ public class TransformFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TransformFilter
  * JD-Core Version:    0.7.0.1
  */

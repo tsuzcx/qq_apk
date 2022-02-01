@@ -23,6 +23,7 @@ public class ApngImage
   implements Runnable
 {
   public static final int CAN_PLAY_TAG_AIO = 0;
+  private static final boolean DEBUG = false;
   public static int DECRYPTTYPE_DECRYPT = 1;
   public static final int DENSITY_NONE = 0;
   public static final int ERROR_CODE_SUCCESS = 0;

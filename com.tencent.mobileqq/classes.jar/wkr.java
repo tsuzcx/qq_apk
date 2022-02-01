@@ -1,46 +1,22 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.Spannable.Factory;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class wkr
-  implements View.OnTouchListener
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static WeakReference<QQAppInterface> a = new WeakReference(null);
+  
+  public static boolean a()
   {
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
-    {
-      Object localObject = ((TextView)paramView).getText();
-      localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
-      paramView = (TextView)paramView;
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramView.getTotalPaddingLeft();
-      int n = paramView.getTotalPaddingTop();
-      int i1 = paramView.getScrollX();
-      int i2 = paramView.getScrollY();
-      paramMotionEvent = paramView.getLayout();
-      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
-      if (paramMotionEvent.length != 0)
-      {
-        if (i == 1) {
-          paramMotionEvent[0].onClick(paramView);
-        }
-        return true;
-      }
+    QQAppInterface localQQAppInterface = (QQAppInterface)a.get();
+    if (localQQAppInterface == null) {
+      throw new IllegalStateException(anni.a(2131713097));
     }
-    return false;
+    return localQQAppInterface.a().a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wkr
  * JD-Core Version:    0.7.0.1
  */

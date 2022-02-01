@@ -1,89 +1,420 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.soload.LoadOptions;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.mobileqq.soload.LoadParam.LoadItem;
+import com.tencent.mobileqq.soload.SoLoadManager.1;
+import com.tencent.mobileqq.soload.SoLoadManager.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.GetPackageShopRsp;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.RspBody;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.StockItem;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
-class bcof
-  extends nab
+public class bcof
 {
-  bcof(bcod parambcod, bcoc parambcoc) {}
+  private static volatile bcof jdField_a_of_type_Bcof;
+  private static final Map<LoadParam, bcnv> b = new HashMap();
+  private final Map<LoadParam, List<bcob>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private final Set<LoadParam> jdField_a_of_type_JavaUtilSet = new HashSet();
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private long a(LoadParam paramLoadParam)
   {
-    if (paramInt != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Bcoc);
-      }
-      this.jdField_a_of_type_Bcoc.a(-1, "errorCode=" + paramInt);
+    int i = LoadParam.getItemSize(paramLoadParam);
+    long l = VACDReportUtil.a(null, "SoLoadModule", "SoLoad", "load.start", LoadParam.getReportStr(paramLoadParam), i, null);
+    paramLoadParam.mReportSeq = l;
+    return l;
+  }
+  
+  private static bcnv a(LoadParam paramLoadParam)
+  {
+    if (paramLoadParam.mLoadItems.size() > 1) {
+      return new bcny();
     }
-    do
+    return new bcnn();
+  }
+  
+  private static bcnv a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    synchronized (b)
     {
-      return;
-      paramBundle = new Oidb_0xcd1.RspBody();
-      if (paramArrayOfByte != null) {
-        break;
+      Object localObject2 = new LinkedList(b.values());
+      ??? = ((List)localObject2).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject2 = (bcnv)((Iterator)???).next();
+        if ((localObject2 != null) && (((bcnv)localObject2).a(paramString))) {
+          return localObject2;
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult erro data=" + null);
-    return;
+    }
+    return null;
+  }
+  
+  private bcob a(LoadParam paramLoadParam, long paramLong)
+  {
+    return new bcog(this, paramLoadParam);
+  }
+  
+  public static bcof a()
+  {
+    if (jdField_a_of_type_Bcof == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bcof == null) {
+        jdField_a_of_type_Bcof = new bcof();
+      }
+      return jdField_a_of_type_Bcof;
+    }
+    finally {}
+  }
+  
+  private LoadExtResult a(LoadParam paramLoadParam)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.SoLoadManager", 2, "loadSync loadParam=" + paramLoadParam);
+    }
+    long l = a(paramLoadParam);
+    if (!LoadParam.isValid(paramLoadParam)) {}
+    for (Object localObject = LoadExtResult.create(1, LoadParam.getItemSize(paramLoadParam));; localObject = ((bcnv)localObject).a(paramLoadParam))
+    {
+      b(((LoadExtResult)localObject).getResultCode(), (LoadExtResult)localObject, l, null, paramLoadParam);
+      if (((LoadExtResult)localObject).isNeedRetry()) {
+        a((LoadExtResult)localObject, paramLoadParam);
+      }
+      return localObject;
+      localObject = a(paramLoadParam);
+      paramLoadParam.mCallType = LoadParam.CALL_TYPE_SYNC;
+      a(paramLoadParam, (bcnv)localObject);
+    }
+  }
+  
+  private LoadParam a(LoadParam paramLoadParam, bcob parambcob)
+  {
     for (;;)
     {
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        localObject1 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        if (!((Iterator)localObject1).hasNext()) {
+          break label258;
+        }
+        Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+        LoadParam localLoadParam = (LoadParam)((Map.Entry)localObject2).getKey();
+        if ((localLoadParam == null) || (!localLoadParam.isSame(paramLoadParam))) {
+          continue;
+        }
+        if (localLoadParam.isOverTime())
+        {
+          localObject2 = (List)((Map.Entry)localObject2).getValue();
+          ((Iterator)localObject1).remove();
+          localObject1 = localObject2;
+          if (QLog.isColorLevel())
+          {
+            QLog.i("SoLoadWidget.SoLoadManager", 2, "[getSameParamInLoad] isOverTime:" + localObject2);
+            localObject1 = localObject2;
+          }
+          localObject2 = new LinkedList();
+          ((LinkedList)localObject2).add(parambcob);
+          paramLoadParam.mLoadTime = NetConnInfoCenter.getServerTimeMillis();
+          this.jdField_a_of_type_JavaUtilMap.put(paramLoadParam, localObject2);
+          if (localObject1 != null)
+          {
+            parambcob = ((List)localObject1).iterator();
+            if (parambcob.hasNext())
+            {
+              localObject1 = (bcob)parambcob.next();
+              if (localObject1 == null) {
+                continue;
+              }
+              ((bcob)localObject1).a(7, LoadExtResult.create(7, LoadParam.getItemSize(paramLoadParam)));
+              continue;
+            }
+          }
+        }
+        else
+        {
+          ((List)((Map.Entry)localObject2).getValue()).add(parambcob);
+          return localLoadParam;
+        }
+      }
+      return null;
+      label258:
+      Object localObject1 = null;
+    }
+  }
+  
+  private LoadParam a(String paramString, LoadOptions paramLoadOptions)
+  {
+    LoadParam localLoadParam = new LoadParam();
+    localLoadParam.mLoadItems.add(new LoadParam.LoadItem(paramString, paramLoadOptions));
+    return localLoadParam;
+  }
+  
+  private LoadParam a(String[] paramArrayOfString, LoadOptions[] paramArrayOfLoadOptions)
+  {
+    LoadParam localLoadParam = new LoadParam();
+    if (paramArrayOfString != null)
+    {
+      int i = 0;
+      while (i < paramArrayOfString.length)
+      {
+        String str = paramArrayOfString[i];
+        if (TextUtils.isEmpty(str))
+        {
+          i += 1;
+        }
+        else
+        {
+          if ((paramArrayOfLoadOptions != null) && (paramArrayOfLoadOptions.length > i)) {}
+          for (LoadOptions localLoadOptions = paramArrayOfLoadOptions[i];; localLoadOptions = null)
+          {
+            localLoadParam.mLoadItems.add(new LoadParam.LoadItem(str, localLoadOptions));
+            break;
+          }
+        }
+      }
+    }
+    return localLoadParam;
+  }
+  
+  private static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    Iterator localIterator = bcnn.a().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = "lib" + str1 + ".so";
+      if ((!TextUtils.isEmpty(str2)) && (paramString.contains(str2))) {
+        return str1;
+      }
+    }
+    return null;
+  }
+  
+  private void a(LoadExtResult arg1, LoadParam paramLoadParam)
+  {
+    paramLoadParam.mCallType = LoadParam.CALL_TYPE_ASYNC_BY_SYNC;
+    long l = ???.getDelayAyncTime();
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.SoLoadManager", 2, "[handleLoadSyncFail]delayTime:" + l);
+    }
+    if (l <= 0L)
+    {
+      a(paramLoadParam, null);
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilSet)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext())
+      {
+        LoadParam localLoadParam = (LoadParam)localIterator.next();
+        if (localLoadParam.isSame(paramLoadParam))
+        {
+          ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(localLoadParam);
+          localIterator.remove();
+        }
+      }
+    }
+    ThreadManager.getSubThreadHandler().postAtTime(new SoLoadManager.1(this, paramLoadParam), paramLoadParam, l + NetConnInfoCenter.getServerTimeMillis());
+    this.jdField_a_of_type_JavaUtilSet.add(paramLoadParam);
+  }
+  
+  private static void a(LoadParam paramLoadParam)
+  {
+    synchronized (b)
+    {
+      b.remove(paramLoadParam);
+      return;
+    }
+  }
+  
+  private static void a(LoadParam paramLoadParam, bcnv parambcnv)
+  {
+    if ((paramLoadParam == null) || (parambcnv == null)) {
+      return;
+    }
+    synchronized (b)
+    {
+      b.put(paramLoadParam, parambcnv);
+      return;
+    }
+  }
+  
+  private void a(LoadParam paramLoadParam, bcob parambcob)
+  {
+    ThreadManager.excute(new SoLoadManager.2(this, paramLoadParam, parambcob), 16, null, false);
+  }
+  
+  public static void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
+  {
+    paramString2 = null;
+    if (TextUtils.isEmpty(paramString3)) {}
+    for (;;)
+    {
+      return;
       try
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!paramBundle.get_pack_rsp.has()) {
-          break;
-        }
-        paramArrayOfByte = new Oidb_0xcd1.GetPackageShopRsp();
-        paramArrayOfByte.mergeFrom(((Oidb_0xcd1.GetPackageShopRsp)paramBundle.get_pack_rsp.get()).toByteArray());
-        paramBundle = new ArrayList();
-        if (paramArrayOfByte.msg_stock.has())
+        String str = a(paramString3);
+        if (TextUtils.isEmpty(str))
         {
-          List localList = paramArrayOfByte.msg_stock.get();
-          paramInt = 0;
-          if (paramInt < localList.size())
+          localObject = a(paramString3);
+          paramString2 = (String)localObject;
+          if (localObject == null)
           {
-            Oidb_0xcd1.StockItem localStockItem = (Oidb_0xcd1.StockItem)localList.get(paramInt);
-            bcoo localbcoo = new bcoo();
-            localbcoo.a = localStockItem.int32_productid.get();
-            localbcoo.b = localStockItem.int32_amount.get();
-            paramBundle.add(localbcoo);
-            paramInt += 1;
-            continue;
-          }
-        }
-        if (paramArrayOfByte.empty_package_page.has())
-        {
-          paramArrayOfByte = (Oidb_0xcd1.EmptyPackagePage)paramArrayOfByte.empty_package_page.get();
-          if (paramArrayOfByte != null)
-          {
-            paramArrayOfByte = new yvm(paramArrayOfByte);
-            if (this.jdField_a_of_type_Bcoc == null) {
-              break;
+            if (!paramString3.contains("com.tencent.mobileqq.soload")) {
+              continue;
             }
-            this.jdField_a_of_type_Bcoc.a(paramBundle, paramArrayOfByte);
-            return;
+            paramString2 = (String)localObject;
           }
+        }
+        Object localObject = BaseApplicationImpl.processName;
+        paramString1 = "process:" + (String)localObject + "msg:" + paramString1 + paramString3;
+        if (!TextUtils.isEmpty(str))
+        {
+          paramString2 = bcnn.a(str);
+          bcoc.a(str, paramString2, 1);
+          VACDReportUtil.a("ver=" + paramString2, "SoLoadModule", "SoLoadSingle", "Exception", str, 2, paramString1);
+          return;
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      catch (Throwable paramString1)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-        }
-        this.jdField_a_of_type_Bcoc.a(-1, "InvalidProtocolBufferMicroException");
+        paramString1.printStackTrace();
         return;
       }
-      paramArrayOfByte = null;
     }
+    if (paramString2 != null)
+    {
+      paramString2.a(paramString1);
+      return;
+    }
+    VACDReportUtil.a(null, "SoLoadModule", "SoLoadSingle", "Exception", "SoLoadWidget", 2, paramString1);
+  }
+  
+  private static void b(int paramInt, LoadExtResult paramLoadExtResult, long paramLong, bcob parambcob, LoadParam paramLoadParam)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.SoLoadManager", 2, "[LoadResult] resCode：" + paramInt);
+    }
+    int i;
+    if (paramLoadExtResult != null)
+    {
+      i = paramLoadExtResult.getReportCode();
+      if (paramLoadExtResult == null) {
+        break label126;
+      }
+    }
+    label126:
+    for (String str = paramLoadExtResult.getReportStr();; str = "")
+    {
+      if (paramInt != 0) {
+        VACDReportUtil.endReport(paramLong, "load.end", str, i, null);
+      }
+      if (parambcob != null) {
+        parambcob.a(paramInt, paramLoadExtResult);
+      }
+      a(paramLoadParam);
+      bcst.b(null, "dc00899", "SoLoad", "", "resStat", "resReport", 0, i, str, "", "", "");
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  private void b(LoadParam paramLoadParam, bcob parambcob)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.SoLoadManager", 2, "load loadParam=" + paramLoadParam);
+    }
+    long l = a(paramLoadParam);
+    parambcob = new bcoh(parambcob, l, paramLoadParam);
+    if (!LoadParam.isValid(paramLoadParam))
+    {
+      parambcob.a(1, LoadExtResult.create(1, LoadParam.getItemSize(paramLoadParam)));
+      return;
+    }
+    if ((paramLoadParam.mCallType != LoadParam.CALL_TYPE_ASYNC) && (paramLoadParam.mCallType != LoadParam.CALL_TYPE_ASYNC_BY_SYNC)) {
+      paramLoadParam.mCallType = LoadParam.CALL_TYPE_ASYNC;
+    }
+    parambcob = a(paramLoadParam, parambcob);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("load isSameParamInLoad=");
+      if (parambcob == null) {
+        break label189;
+      }
+    }
+    for (;;)
+    {
+      QLog.i("SoLoadWidget.SoLoadManager", 2, bool);
+      if (parambcob == null) {
+        break;
+      }
+      VACDReportUtil.a(l, null, "load.join.same.queue", "first=" + parambcob.mReportSeq, 0, null);
+      return;
+      label189:
+      bool = false;
+    }
+    parambcob = a(paramLoadParam, l);
+    Object localObject = a(paramLoadParam);
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.SoLoadManager", 2, "load getSoLoader=" + localObject);
+    }
+    a(paramLoadParam, (bcnv)localObject);
+    ((bcnv)localObject).a(paramLoadParam, parambcob);
+  }
+  
+  public LoadExtResult a(String paramString)
+  {
+    return a(paramString, null);
+  }
+  
+  public LoadExtResult a(String paramString, LoadOptions paramLoadOptions)
+  {
+    return a(a(paramString, paramLoadOptions));
+  }
+  
+  public void a(String paramString, bcob parambcob)
+  {
+    a(paramString, parambcob, null);
+  }
+  
+  public void a(String paramString, bcob parambcob, LoadOptions paramLoadOptions)
+  {
+    a(a(paramString, paramLoadOptions), parambcob);
+  }
+  
+  public void a(String[] paramArrayOfString, bcob parambcob)
+  {
+    a(paramArrayOfString, parambcob, null);
+  }
+  
+  public void a(String[] paramArrayOfString, bcob parambcob, LoadOptions[] paramArrayOfLoadOptions)
+  {
+    a(a(paramArrayOfString, paramArrayOfLoadOptions), parambcob);
+  }
+  
+  public void b(String paramString, bcob parambcob)
+  {
+    a(paramString, parambcob, new bcnx().a(true).a());
   }
 }
 

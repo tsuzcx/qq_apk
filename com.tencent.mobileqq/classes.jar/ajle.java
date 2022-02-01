@@ -1,17 +1,81 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.widget.MyGridView;
-import com.tencent.widget.SingleLineTextView;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Locale;
 
-public class ajle
-  extends ajjw
+class ajle
+  implements ajlp
 {
-  public ImageView a;
-  public TextView a;
-  public DragTextView a;
-  public MyGridView a;
-  public SingleLineTextView a;
+  ajle(ajld paramajld) {}
+  
+  public void a(List<MayKnowRecommend> paramList)
+  {
+    Object localObject2 = this.a.a(3);
+    boolean bool3 = ((ajky)localObject2).c;
+    Object localObject1 = ((ajky)localObject2).jdField_a_of_type_JavaLangObject;
+    Object localObject3;
+    boolean bool2;
+    boolean bool1;
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ((ajky)localObject2).jdField_a_of_type_JavaLangString = ajld.a(this.a).getApp().getResources().getString(2131698064);
+      ((ajky)localObject2).b = "";
+      ((ajky)localObject2).jdField_a_of_type_JavaLangObject = paramList;
+      localObject3 = (anpk)ajld.a(this.a).getManager(159);
+      if (localObject3 == null) {
+        break label262;
+      }
+      bool2 = ((anpk)localObject3).b("sp_mayknow_entry_list_recommend");
+      bool1 = ((anpk)localObject3).b("sp_mayknow_entry_list_head");
+    }
+    for (;;)
+    {
+      label128:
+      Object localObject4;
+      if ((bool1) && (!bool2))
+      {
+        ((ajky)localObject2).c = true;
+        ajld.a(this.a);
+        if (QLog.isColorLevel())
+        {
+          localObject3 = Locale.getDefault();
+          bool1 = ((ajky)localObject2).c;
+          localObject4 = ((ajky)localObject2).jdField_a_of_type_JavaLangObject;
+          localObject2 = ((ajky)localObject2).b;
+          if (paramList == null) {
+            break label257;
+          }
+        }
+      }
+      label257:
+      for (int i = paramList.size();; i = 0)
+      {
+        QLog.i("CTEntryMng", 2, String.format((Locale)localObject3, "updateMayKnow pre: [%s,%s], cur: [%s,%s], subtitle: %s recommends:%s", new Object[] { Boolean.valueOf(bool3), localObject1, Boolean.valueOf(bool1), localObject4, localObject2, Integer.valueOf(i) }));
+        return;
+        ((ajky)localObject2).jdField_a_of_type_JavaLangObject = null;
+        ((ajky)localObject2).b = null;
+        break;
+        ((ajky)localObject2).c = false;
+        break label128;
+      }
+      label262:
+      bool1 = true;
+      bool2 = false;
+    }
+  }
+  
+  public boolean a()
+  {
+    ajky localajky = this.a.a(3);
+    ajlk localajlk = this.a.a(3);
+    if (QLog.isColorLevel()) {
+      QLog.d("CTEntryMng", 2, "isMayKnowEntryShown, canBeShown = " + localajky.c + ", flagValue = " + localajlk.b);
+    }
+    return (localajky.c) && (localajlk.b == 0);
+  }
 }
 
 

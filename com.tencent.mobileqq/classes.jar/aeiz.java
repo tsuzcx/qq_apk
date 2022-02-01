@@ -1,21 +1,19 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeiz
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public aeiz(TroopTransferActivity paramTroopTransferActivity) {}
+  public aeiz(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
-    if (paramMotionEvent != null) {
-      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    }
-    return false;
+    PublicFragmentActivity.a(this.a, LangSettingFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

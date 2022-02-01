@@ -1,20 +1,20 @@
-import com.tencent.qqmini.sdk.launcher.AppUIProxy;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
 
 public class bguk
-  extends bgug
+  implements bkjc
 {
-  public bguk(AppUIProxy paramAppUIProxy) {}
+  public bguk(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout) {}
   
-  public void a(bguf parambguf)
+  public void a()
   {
-    if (parambguf.a == 11) {
-      this.a.hideLoading();
+    if (alqc.a().c()) {
+      alqc.a().d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bguk
  * JD-Core Version:    0.7.0.1
  */

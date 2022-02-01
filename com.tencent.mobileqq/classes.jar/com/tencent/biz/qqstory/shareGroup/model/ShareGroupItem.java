@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.shareGroup.model;
 
-import alud;
+import anni;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.ShareGroupEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
@@ -13,14 +13,14 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
 import java.util.List;
-import ulj;
-import uxe;
-import wxe;
-import xqq;
+import wev;
+import wqq;
+import yqp;
+import zkb;
 
 public class ShareGroupItem
   extends BaseUIItem
-  implements ulj, uxe
+  implements wev, wqq
 {
   public static final int OWNER_TYPE_CREATOR = 1;
   public static final int OWNER_TYPE_PARTICIPATOR = 2;
@@ -35,7 +35,7 @@ public class ShareGroupItem
   public int isDisband = -1;
   public int isSubscribed = -1;
   public int memberCount = -1;
-  public String name = alud.a(2131714311);
+  public String name = anni.a(2131712681);
   public int ownerType = 1;
   public String ownerUnionId;
   public String shareGroupId;
@@ -66,9 +66,9 @@ public class ShareGroupItem
   
   public void assertItem()
   {
-    xqq.a(this.shareGroupId);
+    zkb.a(this.shareGroupId);
     if (this.type == 2) {
-      wxe.d("Q.qqstory.shareGroup", "share group Item owner union id is null %s", new Object[] { this });
+      yqp.d("Q.qqstory.shareGroup", "share group Item owner union id is null %s", new Object[] { this });
     }
   }
   
@@ -295,7 +295,7 @@ public class ShareGroupItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem
  * JD-Core Version:    0.7.0.1
  */

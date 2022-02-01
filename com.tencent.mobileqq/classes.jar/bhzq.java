@@ -1,22 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.WindowManager;
 
-public class bhzq
-  implements View.OnClickListener
+class bhzq
+  implements Animator.AnimatorListener
 {
-  public bhzq(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView1, PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView2) {}
+  bhzq(bhzm parambhzm) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.b.jdField_a_of_type_Bhzs != null) {
-      this.b.jdField_a_of_type_Bhzs.a(this.a, this.b.jdField_a_of_type_AndroidViewView, this.b.f);
+    if (bhzm.a(this.a) != null)
+    {
+      bhzm.a(this.a).removeViewImmediate(bhzm.a(this.a));
+      bhzm.a(this.a, null);
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhzq
  * JD-Core Version:    0.7.0.1
  */

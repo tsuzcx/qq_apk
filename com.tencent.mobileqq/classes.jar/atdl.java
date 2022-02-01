@@ -1,19 +1,21 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.QQKandianInterface;
-
-class atdl
-  implements QQKandianInterface
+public abstract class atdl
 {
-  atdl(atdh paramatdh) {}
+  public asrx a;
   
-  public void jumpToKandianBiu(Bundle paramBundle)
+  public abstract int a();
+  
+  public abstract void a();
+  
+  public void a(asrx paramasrx)
   {
-    ateg.a().d(paramBundle);
+    this.a = paramasrx;
   }
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atdl
  * JD-Core Version:    0.7.0.1
  */

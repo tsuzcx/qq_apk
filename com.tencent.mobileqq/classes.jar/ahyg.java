@@ -1,31 +1,67 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.List;
 
-public class ahyg
-  implements aiav
+class ahyg
+  extends anuw
 {
-  public ahyg(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
+  ahyg(ahxt paramahxt) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    this.a.j();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
+    do
+    {
+      int k;
+      do
+      {
+        return;
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          k = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
+    } while (!paramBoolean);
+    this.a.bo();
   }
   
-  public void b()
+  protected void b(boolean paramBoolean, List<Long> paramList)
   {
-    if ((!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof ChatHistoryActivity)) || (!((ChatHistoryActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).c)) {
-      this.a.jdField_a_of_type_Aiei.a();
-    }
-    this.a.c = true;
-    this.a.b(true);
-  }
-  
-  public void c()
-  {
-    this.a.jdField_a_of_type_Aiei.b();
-    this.a.c = false;
-    this.a.b(false);
-    this.a.jdField_a_of_type_Aidt.a();
+    int k = 0;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
+    do
+    {
+      do
+      {
+        return;
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, true);
+    } while (!paramBoolean);
+    this.a.bo();
   }
 }
 

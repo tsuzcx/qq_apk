@@ -1,6 +1,6 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public class PlatformChannel$SystemChromeStyle
 {
@@ -26,7 +26,7 @@ public class PlatformChannel$SystemChromeStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformChannel.SystemChromeStyle
  * JD-Core Version:    0.7.0.1
  */

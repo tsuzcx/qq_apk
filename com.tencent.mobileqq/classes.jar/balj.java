@@ -1,42 +1,38 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class balj
-  extends bajx
+class balj
+  extends Handler
 {
-  protected int a;
-  
-  public balj(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
+  public balj(Looper paramLooper)
   {
-    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
-    this.jdField_a_of_type_Int = 0;
+    super(paramLooper);
   }
   
-  public View a(int paramInt1, baky parambaky, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramView == null)
+    baln.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
+    switch (paramMessage.what)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559171, null);
-      parambaky = new ball(null);
-      parambaky.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367367));
-      parambaky.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367368));
-      paramView.setTag(parambaky);
+    case 1: 
+    default: 
+      return;
+    case 2: 
+      i = paramMessage.arg1;
+      paramMessage = paramMessage.getData();
+      baln.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
+      return;
     }
-    for (;;)
+    int i = paramMessage.arg1;
+    switch (paramMessage.arg1)
     {
-      parambaky.jdField_a_of_type_AndroidWidgetTextView.setText(2131693321);
-      parambaky.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840075);
-      return paramView;
-      parambaky = (ball)paramView.getTag();
+    default: 
+      return;
     }
+    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    baln.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
   }
 }
 

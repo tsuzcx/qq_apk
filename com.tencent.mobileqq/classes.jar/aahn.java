@@ -1,30 +1,21 @@
-import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
 public class aahn
-  implements TVK_SDKMgr.InstallListener
+  extends BroadcastReceiver
 {
-  public aahn(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
+  private aahn(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GCApi", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
-    }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GCApi", 1, "plugin fail errorCode = " + paramInt);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GCApi", 1, "plugin success");
+    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")))
+    {
+      SubscribePersonalDetailFragment.b(this.a, false);
+      zwp.a().a(new UserStateUpdateEvent());
     }
   }
 }

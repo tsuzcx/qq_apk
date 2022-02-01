@@ -1,23 +1,29 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import phg;
-import phh;
-import phi;
-import phj;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import pmk;
+import pwk;
+import pyq;
+import pys;
+import pyt;
+import tencent.im.oidb.cmd0x978.oidb_cmd0x978.RspFollowOperationResult;
 
 public class UserOperationModule$3
   implements Runnable
 {
-  public UserOperationModule$3(phg paramphg, boolean paramBoolean, phh paramphh, int paramInt, String paramString) {}
+  public UserOperationModule$3(pyq parampyq, ArrayList paramArrayList, oidb_cmd0x978.RspFollowOperationResult paramRspFollowOperationResult, pys parampys) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      ((phi)this.jdField_a_of_type_Phh).a(false, null, this.jdField_a_of_type_Int + "");
-      return;
+      pmk.a().b(((pwk)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long, ((pwk)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Boolean);
+      i += 1;
     }
-    ((phj)this.jdField_a_of_type_Phh).a(false, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    ThreadManager.post(new UserOperationModule.3.1(this), 5, null, true);
+    ((pyt)this.jdField_a_of_type_Pys).a(true, this.jdField_a_of_type_JavaUtilArrayList, "");
   }
 }
 

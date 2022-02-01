@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import akoq;
+import amhw;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -29,7 +29,7 @@ class ApolloPanel$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloPanel.24
  * JD-Core Version:    0.7.0.1
  */

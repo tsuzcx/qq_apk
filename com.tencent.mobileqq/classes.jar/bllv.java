@@ -1,20 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
-import dov.com.qq.im.aeeditor.view.ClipConstant.Anchor;
-import dov.com.qq.im.aeeditor.view.EditorClipView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class bllv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnDismissListener
 {
-  public bllv(AEEditorImageClipFragment paramAEEditorImageClipFragment, EditorClipView paramEditorClipView) {}
+  public bllv(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_DovComQqImAeeditorViewEditorClipView.b(ClipConstant.Anchor.BOTTOM.v);
-    this.jdField_a_of_type_DovComQqImAeeditorViewEditorClipView.a(0.0F, -(i - AEEditorImageClipFragment.c(this.jdField_a_of_type_DovComQqImAeeditorModuleClipImageAEEditorImageClipFragment)));
-    AEEditorImageClipFragment.e(this.jdField_a_of_type_DovComQqImAeeditorModuleClipImageAEEditorImageClipFragment, i);
+    if (this.a.a) {
+      QQIndividualityBridgeActivity.b(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
+    }
   }
 }
 

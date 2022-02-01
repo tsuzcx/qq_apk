@@ -1,65 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class aoyb
-  extends aokh<aoxx>
+public abstract class aoyb
+  extends Binder
+  implements aoya
 {
-  public static aoxx a()
+  public aoyb()
   {
-    return (aoxx)aoks.a().a(525);
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArFaceCallback");
   }
   
-  public int a()
+  public static aoya a(IBinder paramIBinder)
   {
-    return 525;
-  }
-  
-  @NonNull
-  public aoxx a(int paramInt)
-  {
-    return new aoxx();
-  }
-  
-  @Nullable
-  public aoxx a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoxx.a(paramArrayOfaoko);
+    if (paramIBinder == null) {
+      return null;
     }
-    return null;
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof aoya))) {
+      return (aoya)localIInterface;
+    }
+    return new aoyc(paramIBinder);
   }
   
-  public Class<aoxx> a()
+  public IBinder asBinder()
   {
-    return aoxx.class;
+    return this;
   }
   
-  public void a(int paramInt)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    QLog.d("TencentDocLocalCooperationProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public void a(aoxx paramaoxx) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      a(paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+    b(paramParcel1.readInt(), paramParcel1.readInt());
+    paramParcel2.writeNoException();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyb
  * JD-Core Version:    0.7.0.1
  */

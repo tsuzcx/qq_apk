@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amdu;
+import anwd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,7 +11,7 @@ public class GetTroopConfig
   public int a()
   {
     if (this.a.app != null) {
-      ((amdu)this.a.app.a(20)).c();
+      ((anwd)this.a.app.a(20)).c();
     }
     return 7;
   }

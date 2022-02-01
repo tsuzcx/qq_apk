@@ -1,47 +1,26 @@
-import com.qq.taf.jce.HexUtil;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class bbbg
-  extends bbbi
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public int e;
+  public bbbg(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public String toString()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" name:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" width:");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(" height:");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" size:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" isRaw:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(" isContant:");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" picType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" busiType:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("typeHotPic:");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append("transferUrl:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    if (paramMotionEvent.getAction() == 1)
+    {
+      if (paramMotionEvent.getY() < paramView.findViewById(2131379907).getHeight() + afur.a(30.0F, paramView.getResources())) {
+        SignatureHistoryFragment.a(this.a, true);
+      }
+    }
+    else {
+      return false;
+    }
+    SignatureHistoryFragment.a(this.a, false);
+    return false;
   }
 }
 

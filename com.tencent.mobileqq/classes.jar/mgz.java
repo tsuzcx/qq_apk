@@ -1,22 +1,33 @@
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.av.ui.MultiIncomingCallsActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
-public class mgz
-  extends lht
+class mgz
+  implements DialogInterface.OnClickListener
 {
-  public mgz(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  mgz(mgx parammgx) {}
   
-  protected void a(long paramLong1, long paramLong2, ArrayList<lqk> paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new MultiIncomingCallsActivity.1.1(this, paramArrayList));
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    this.a.a.c();
+    mgv.a(this.a.a, false);
+    if (paramInt == 1)
+    {
+      bcst.b(null, "CliOper", "", "", "0X800A565", "0X800A565", 0, 0, "", "", "", "");
+      mgv.a(this.a.a);
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    mgv.a(this.a.a, mgv.a(this.a.a).a().w);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mgz
  * JD-Core Version:    0.7.0.1
  */

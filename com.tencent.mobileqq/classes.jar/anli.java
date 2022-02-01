@@ -1,28 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class anli
-  implements DialogInterface.OnClickListener
+  implements anil
 {
-  public anli(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bdjz parambdjz) {}
+  protected void a(List<CustomEmotionData> paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppSchemeCenter$TelSchemeHandler$1.a));
-    ArkAppCenter.a(paramDialogInterface);
-    BaseActivity.sTopActivity.startActivity(paramDialogInterface);
-    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {}
-    try
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Bdjz.dismiss();
+    default: 
+    case 0: 
+      do
+      {
+        return;
+      } while (paramObject == null);
+      a(((Boolean)paramObject).booleanValue());
+      return;
+    case 1: 
+      try
+      {
+        a((ArrayList)paramObject);
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("FavEmoRoamingObserver", 1, "onUploadReq error, ", paramObject);
+        return;
+      }
+    case 2: 
+      b(paramBoolean, paramObject);
       return;
     }
-    catch (Exception paramDialogInterface) {}
+    a(paramBoolean, paramObject);
   }
 }
 

@@ -1,23 +1,60 @@
-import com.tencent.mobileqq.activity.qwallet.emoj.QWalletFaceTracker.OnPreviewFrameHandlerListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.widget.QzoneAutoVerticalScrollTextView;
 
-class bkns
-  implements QWalletFaceTracker.OnPreviewFrameHandlerListener
+public class bkns
+  extends Animation
 {
-  bkns(bknm parambknm) {}
+  private float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private final boolean jdField_b_of_type_Boolean;
   
-  public void getFaceRecognizeResult(float paramFloat)
+  public bkns(QzoneAutoVerticalScrollTextView paramQzoneAutoVerticalScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onPreviewFrame: getFaceRecognizeResult=" + paramFloat);
-    }
-    if (paramFloat >= this.a.g)
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.jdField_b_of_type_Float;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    int i;
+    if (this.jdField_b_of_type_Boolean)
     {
-      bknm.a(this.a);
-      if (bknm.a(this.a)) {
-        this.a.ad();
+      i = 1;
+      paramTransformation = paramTransformation.getMatrix();
+      localCamera.save();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label99;
       }
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
     }
+    for (;;)
+    {
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f1, -f2);
+      paramTransformation.postTranslate(f1, f2);
+      return;
+      i = -1;
+      break;
+      label99:
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
+    }
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView.getHeight();
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView.getWidth();
   }
 }
 

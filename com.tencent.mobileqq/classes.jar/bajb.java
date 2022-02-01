@@ -1,16 +1,12 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-public class bajb
+final class bajb
   implements DialogInterface.OnClickListener
 {
-  public bajb(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.getActivity().finish();
+    paramDialogInterface.dismiss();
   }
 }
 

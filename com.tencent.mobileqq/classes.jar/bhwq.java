@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+import android.view.MotionEvent;
 
-public final class bhwq
-  implements Parcelable.Creator<ExpandableListConnector.GroupMetadata>
+public abstract interface bhwq
 {
-  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
-  {
-    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
-  }
-  
-  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
-  {
-    return new ExpandableListConnector.GroupMetadata[paramInt];
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhwq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-public class otq
-  implements AladdinConfigHandler
+class otq
+  implements oqy
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    Map localMap = osq.a(paramString);
-    Object localObject2 = localMap.keySet();
-    Object localObject1 = "";
-    paramString = "";
-    Iterator localIterator = ((Set)localObject2).iterator();
-    String str;
-    if (localIterator.hasNext())
-    {
-      str = (String)localIterator.next();
-      localObject2 = (String)localMap.get(str);
-      QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
-      if (TextUtils.equals(str, "native_article"))
-      {
-        bkbq.a("native_proteus_offline_bid", (String)localObject2);
-        paramString = (String)localObject1;
-        localObject1 = localObject2;
-      }
-    }
-    for (;;)
-    {
-      localObject2 = paramString;
-      paramString = (String)localObject1;
-      localObject1 = localObject2;
-      break;
-      if (TextUtils.equals(str, "native_article_cdn_url"))
-      {
-        localObject1 = paramString;
-        paramString = (String)localObject2;
-        continue;
-        sgl.a(paramString, (String)localObject1);
-        return true;
-      }
-      else
-      {
-        localObject2 = paramString;
-        paramString = (String)localObject1;
-        localObject1 = localObject2;
-      }
-    }
-  }
+  otq(otn paramotn) {}
   
-  public void onWipeConfig(int paramInt)
+  public void a()
   {
-    bkbq.a("native_proteus_offline_bid", "0");
+    if (otn.a(this.a).booleanValue())
+    {
+      if ((otn.a(this.a).isShown()) && (otn.a(this.a).getWindowVisibility() == 0))
+      {
+        otn.a(this.a, otn.a(this.a));
+        otn.a(this.a).removeCallbacks(otn.a(this.a));
+        otn.a(this.a).postDelayed(otn.a(this.a), otn.a(this.a).mAdvertisementExtInfo.p);
+      }
+    }
+    else {
+      return;
+    }
+    otn.a(this.a, Boolean.valueOf(false));
+    otn.a(this.a, otn.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     otq
  * JD-Core Version:    0.7.0.1
  */

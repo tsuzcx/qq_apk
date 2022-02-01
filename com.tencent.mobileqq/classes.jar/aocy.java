@@ -1,39 +1,75 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.app.face.GroupIconHelper;
+import java.util.ArrayList;
 
 public class aocy
-  implements aocw
 {
-  private void a(Intent paramIntent, ColorNote paramColorNote)
+  public byte a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<String> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  
+  private aocy(GroupIconHelper paramGroupIconHelper)
   {
-    String str = paramIntent.getStringExtra("url");
-    if ((!TextUtils.isEmpty(str)) && (str.matches("^https?://fm\\.qzone\\.qq\\.com/.*")))
-    {
-      paramColorNote = paramColorNote.getReserve();
-      if ((paramColorNote != null) && (paramColorNote.length > 0)) {
-        paramIntent.putExtra("url", new String(paramColorNote));
-      }
-    }
+    this.jdField_a_of_type_Byte = 1;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public void a(byte paramByte)
   {
-    if (paramColorNote == null) {}
-    Intent localIntent;
-    do
+    if (paramByte == 3)
     {
-      do
-      {
-        return;
-      } while (paramColorNote.getServiceType() != 16973824);
-      localIntent = QQPlayerService.a();
-    } while (localIntent == null);
-    a(localIntent, paramColorNote);
-    localIntent.addFlags(268435456);
-    paramContext.startActivity(localIntent);
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Byte = 1;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_b_of_type_Int = 0;
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.c = false;
+      this.d = false;
+      this.e = false;
+    }
+    while (paramByte != 2) {
+      return;
+    }
+    this.jdField_b_of_type_Boolean = false;
+    this.e = true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nGroupIconInfo");
+    localStringBuilder.append("\n |-").append("isChanged:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("\n |-").append("state:").append(this.jdField_a_of_type_Byte);
+    localStringBuilder.append("\n |-").append("isSyncFace:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("\n |-").append("startTime:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("\n |-").append("faceUinSet:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("faceCount:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\n |-").append("crateIconCount:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("\n |-").append("lastCreatedFaceUinSet:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("isPstnIcon:").append(this.c);
+    localStringBuilder.append("\n |-").append("hasRealPstnUser:").append(this.d);
+    localStringBuilder.append("\n |-").append("isFromCreate:").append(this.e);
+    try
+    {
+      localStringBuilder.append("\n |-").append("memberFaceList:").append(this.jdField_a_of_type_JavaUtilArrayList);
+      label243:
+      return localStringBuilder.toString();
+    }
+    catch (Exception localException)
+    {
+      break label243;
+    }
   }
 }
 

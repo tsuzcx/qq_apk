@@ -1,31 +1,33 @@
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.mobileqq.confess.ConfessPlugin.5;
+import com.tencent.mobileqq.confess.ConfessPlugin.5.1;
+import com.tencent.qphone.base.util.QLog;
 
-class aqju
-  implements Animation.AnimationListener
+public class aqju
+  implements bihh
 {
-  aqju(aqjt paramaqjt) {}
+  public aqju(ConfessPlugin.5.1 param1) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.removeView(this.a.jdField_a_of_type_AndroidViewView);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getWindow().setBackgroundDrawable(null);
-    Face2FaceAddFriendActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.n = true;
-    if (aqkl.a >= aqkl.b)
+    if (QLog.isColorLevel()) {
+      QLog.d("ConfessPlugin", 2, "onWXShareResp resp.errCode=" + paramBaseResp.errCode);
+    }
+    switch (paramBaseResp.errCode)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(aqkl.a, aqkl.b);
+    case -1: 
+    default: 
+      ConfessPlugin.a(this.a.a.this$0, false);
+      ConfessPlugin.a(this.a.a.this$0, 1, 2131718007);
+      return;
+    case 0: 
+      ConfessPlugin.a(this.a.a.this$0, true);
+      ConfessPlugin.a(this.a.a.this$0, 2, 2131718025);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(aqkl.a, 0L);
+    ConfessPlugin.a(this.a.a.this$0, false);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

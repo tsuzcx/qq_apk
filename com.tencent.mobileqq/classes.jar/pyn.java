@@ -1,158 +1,227 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule.1;
+import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule.2;
+import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule.3;
+import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule.5;
+import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule.6;
+import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule.7;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import mqq.os.MqqHandler;
 
 public class pyn
-  extends pxl
+  extends pxz
 {
-  public pyn(Context paramContext, bdbb parambdbb, rqj paramrqj)
+  private anry jdField_a_of_type_Anry = new pyo(this);
+  private List<twg> jdField_a_of_type_JavaUtilList;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private Handler b = new pyp(this, ThreadManager.getSubThreadLooper());
+  
+  public pyn(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qnd paramqnd, Handler paramHandler)
   {
-    super(paramContext, parambdbb, paramrqj);
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqnd, paramHandler);
   }
   
-  public pxl a()
+  private void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).h().f().g().q().l().n().j();
+    this.jdField_a_of_type_AndroidOsHandler.post(new SubscriptionInfoModule.7(this, paramInt1, paramInt2));
   }
   
-  public pxl d()
+  public int a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    int i = 0;
+    int j = 0;
+    if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
+      return j;
     }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial);
-    }
-    LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout2.setOrientation(1);
-    Object localObject = new LinearLayout.LayoutParams(-1, -2);
-    localLinearLayout2.setBackgroundColor(Color.parseColor("#F8F8F8"));
-    localLinearLayout2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary != null) {
-      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary);
-    }
-    if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentGalleryBiu)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
+    Iterator localIterator = twi.a().b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).iterator();
+    for (;;)
     {
-      localObject = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      ((LinearLayout)localObject).setOrientation(1);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams.leftMargin = aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams.rightMargin = aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams.bottomMargin = aepi.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams.gravity = 1;
-      ((LinearLayout)localObject).setLayoutParams(localLayoutParams);
-      localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      ((ComponentContentGalleryBiu)this.jdField_a_of_type_Pxk).setId(1);
-      ((ComponentContentGalleryBiu)this.jdField_a_of_type_Pxk).setLayoutParams(localLayoutParams);
-      ((LinearLayout)localObject).addView((ComponentContentGalleryBiu)this.jdField_a_of_type_Pxk);
-      localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setId(2);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
-      ((LinearLayout)localObject).addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setOnClickListener(new pyo(this));
-      ((LinearLayout)localObject).setOnClickListener(new pyp(this));
-      ((LinearLayout)localObject).setDuplicateParentStateEnabled(true);
-      ((LinearLayout)localObject).setOnTouchListener(new pyq(this, (LinearLayout)localObject));
-      localLinearLayout2.setOnTouchListener(new pyr(this, (LinearLayout)localObject));
-      opi.a((View)localObject, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842504));
-      localLinearLayout2.addView((View)localObject);
-      localLinearLayout2.setDuplicateParentStateEnabled(true);
-      localLinearLayout2.setOnTouchListener(new pys(this, localLinearLayout2));
-      localLinearLayout1.setOnTouchListener(new pyt(this, localLinearLayout2, (LinearLayout)localObject));
+      j = i;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      i = ((twg)localIterator.next()).b + i;
     }
-    localLinearLayout2.setOnClickListener(new pyu(this));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
-    }
-    if (localLinearLayout2.getChildCount() > 0) {
-      localLinearLayout1.addView(localLinearLayout2);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
-    return this;
   }
   
-  public pxl e()
+  public void a()
   {
-    return null;
-  }
-  
-  public pxl f()
-  {
-    super.f();
-    return this;
-  }
-  
-  public pxl g()
-  {
-    this.jdField_a_of_type_Pxk = new ComponentContentGalleryBiu(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public pxl o()
-  {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null)
+    this.jdField_a_of_type_Anry = null;
+    if (this.b != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_JavaLangObject);
-      if ((this.jdField_a_of_type_JavaLangObject instanceof pgd))
+      this.b.removeCallbacksAndMessages(null);
+      this.b = null;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  
+  public void a(String paramString)
+  {
+    int j;
+    twg localtwg;
+    if (!twi.a().a(paramString, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface))
+    {
+      twi.a().b(paramString, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      oat.a(null, "CliOper", "", "", "0X8006112", "0X8006112", 0, 0, "", "", "", "");
+      j = twi.a().a();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      do
       {
-        pgd localpgd = (pgd)this.jdField_a_of_type_JavaLangObject;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.setReadedStatus(this.jdField_a_of_type_Rqj.a(localpgd.e(), localpgd.a().mArticleID));
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localtwg = (twg)localIterator.next();
+      } while ((localtwg.a == null) || (!localtwg.a.equals(paramString)));
+    }
+    for (int i = localtwg.b;; i = 0)
+    {
+      f();
+      bcst.b(null, "dc00899", "Pb_account_lifeservice", paramString, "0X80064CD", "0X80064CD", 0, 0, "" + i, "" + j, "", "");
+      return;
+    }
+  }
+  
+  public void a(String paramString, Context paramContext)
+  {
+    if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SubscriptionInfoModule", 2, "mApp isn't instanceof QQAppInterface unFollowSubscribeAccount failed!");
+      }
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new SubscriptionInfoModule.5(this, paramString, paramContext));
+    paramContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    twg localtwg;
+    do
+    {
+      if (!paramContext.hasNext()) {
+        break;
+      }
+      localtwg = (twg)paramContext.next();
+    } while ((localtwg.a == null) || (!localtwg.a.equals(paramString)));
+    for (int i = localtwg.b;; i = 0)
+    {
+      bcst.b(null, "dc00899", "Pb_account_lifeservice", paramString, "0X80064CF", "0X80064CF", 0, 0, "" + i, "", "", "");
+      return;
+    }
+  }
+  
+  public void a(List<twg> paramList)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new SubscriptionInfoModule.3(this, paramList));
+  }
+  
+  public void b() {}
+  
+  public void b(String paramString)
+  {
+    twi.a().c(paramString, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    int j = twi.a().a();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    twg localtwg;
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localtwg = (twg)localIterator.next();
+    } while ((localtwg.a == null) || (!localtwg.a.equals(paramString)));
+    for (int i = localtwg.b;; i = 0)
+    {
+      f();
+      bcst.b(null, "dc00899", "Pb_account_lifeservice", paramString, "0X80064CE", "0X80064CE", 0, 0, "" + i, "" + j, "", "");
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {}
+  }
+  
+  public void c(String paramString)
+  {
+    if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SubscriptionInfoModule", 2, "mApp isn't instanceof QQAppInterface unFollowSubscribeAccount failed!");
+      }
+      return;
+    }
+    twi.a().a(paramString, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    f();
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new SubscriptionInfoModule.6(this, paramString));
+    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHandler(Conversation.class);
+    if (localObject != null) {
+      ((MqqHandler)localObject).sendEmptyMessage(1014);
+    }
+    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    twg localtwg;
+    do
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break;
+      }
+      localtwg = (twg)((Iterator)localObject).next();
+    } while ((localtwg.a == null) || (!localtwg.a.equals(paramString)));
+    for (int i = localtwg.b;; i = 0)
+    {
+      bcst.b(null, "dc00899", "Pb_account_lifeservice", paramString, "0X80064D0", "0X80064D0", 0, 0, "" + i, "", "", "");
+      return;
+    }
+  }
+  
+  public void d()
+  {
+    if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SubscriptionInfoModule", 2, "mApp isn't instanceof QQAppInterface init model failed!");
       }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
+    while (this.jdField_a_of_type_JavaUtilConcurrentExecutorService == null) {
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentGalleryBiu)))
-    {
-      ((ComponentContentGalleryBiu)this.jdField_a_of_type_Pxk).setAdapter(this.jdField_a_of_type_Rqj);
-      ((ComponentContentGalleryBiu)this.jdField_a_of_type_Pxk).setPosition(this.jdField_a_of_type_Int);
-    }
-    return this;
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new SubscriptionInfoModule.1(this));
   }
   
-  public pxl p()
+  public void e() {}
+  
+  public void f()
   {
-    super.p();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_Pxt);
+    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new SubscriptionInfoModule.2(this));
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_Pxt);
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    return this;
+    QLog.d("SubscriptionInfoModule", 2, "mApp isn't instanceof QQAppInterface");
+  }
+  
+  public void g()
+  {
+    a(((KandianMergeManager)((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getManager(162)).a(1), 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pyn
  * JD-Core Version:    0.7.0.1
  */

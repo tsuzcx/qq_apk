@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.widget.TextView;
 
-public class altl
+class altl
 {
   public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  
-  public altl(FriendListHandler paramFriendListHandler)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     altl
  * JD-Core Version:    0.7.0.1
  */

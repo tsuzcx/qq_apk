@@ -1,6 +1,11 @@
-public abstract interface apsn
+import android.view.animation.Animation;
+
+class apsn
+  extends bkfi
 {
-  public abstract void a(int paramInt);
+  apsn(apsl paramapsl) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
 }
 
 

@@ -1,26 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajnn
-  implements View.OnClickListener
+class ajnn
+  implements DialogInterface.OnClickListener
 {
-  public ajnn(LoginView paramLoginView) {}
+  ajnn(ajnk paramajnk) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.b != null) && (this.a.b.isShown())) {
-      this.a.b.setVisibility(8);
+    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "showAccountConfirm which=", Integer.valueOf(paramInt) });
+    if (paramInt == 1) {
+      ajnk.c(this.a);
     }
-    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
-    LoginView.c(this.a);
-    libsafeedit.clearPassBuffer();
-    LoginView.d(this.a);
+    while (paramInt != 0) {
+      return;
+    }
+    ajnk.a(this.a);
   }
 }
 

@@ -1,15 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aiwg
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public aiwg(RedPacketPopFragment paramRedPacketPopFragment) {}
+  public WeakReference<GroupSearchRecommendView> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aiwg(GroupSearchRecommendView paramGroupSearchRecommendView)
   {
-    paramDialogInterface.dismiss();
+    this.a = new WeakReference(paramGroupSearchRecommendView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    GroupSearchRecommendView localGroupSearchRecommendView = (GroupSearchRecommendView)this.a.get();
+    if (localGroupSearchRecommendView == null) {
+      return;
+    }
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      GroupSearchRecommendView.a(localGroupSearchRecommendView);
+      return;
+    case 2: 
+      if (QLog.isColorLevel()) {
+        QLog.i("GroupSearchRecommendView", 2, "fetch data successfully");
+      }
+      GroupSearchRecommendView.a(localGroupSearchRecommendView, false);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
+    }
+    GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
   }
 }
 

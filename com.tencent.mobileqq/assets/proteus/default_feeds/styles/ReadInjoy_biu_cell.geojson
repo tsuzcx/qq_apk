@@ -17,6 +17,12 @@
         "$includeComponet": "componet/social_header.geojson"
       },
       {
+          "$includeComponet": "componet/RIJ_social_header_padding_view.geojson"
+      },
+      {
+          "$includeComponet": "componet/RIJ_feeds_social_header.geojson"
+      },
+      {
         "$includeComponet": "componet/socialize_recommend_follow.geojson"
       },
       {
@@ -33,7 +39,8 @@
         },
         "attributes": {
           "setFrameString:": "-1",
-          "setArticleModel:": "-1"
+          "setArticleModel:": "-1",
+          "setPreAccountUin:": "$feeds_pre_account_uin"
         }
       },
       {
@@ -87,18 +94,20 @@
              },
              "subviews": [
                 {
-                  "view_type": "ReadInJoyMiddleBodyView",
-                  "view_id": "id_middle_body_content",
-                   "height": {
+                    "view_type": "ReadInJoyMiddleBodyView",
+                    "view_id": "id_middle_body_content",
+                    "padding_left": "12",
+                    "padding_right": "12",
+                    "height": {
                         "type": "wrap_content"
-                     },
-                     "width": {
-                         "type": "relative",
-                          "value": "375"
-                     },
-                     "attributes": {
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "375"
+                    },
+                    "attributes": {
                         "setArticleModel:": "-1"
-                     }
+                    }
                  },
                  {
                      "view_id": "id_live_status_container",
@@ -122,6 +131,9 @@
                      ]
                  }
              ]
+          },
+          {
+              "$includeComponet": "componet/ad_biu_small_image_ugc.geojson"
           },
           {
             "$includeComponet": "componet/capsule.geojson"
@@ -159,6 +171,9 @@
       },
       {
         "$includeComponet": "componet/social_bottom.geojson"
+      },
+      {
+        "$includeComponet": "componet/social_bottom_share_style_a.geojson"
       },
       {
         "$includeComponet": "componet/pack_bottom.geojson"

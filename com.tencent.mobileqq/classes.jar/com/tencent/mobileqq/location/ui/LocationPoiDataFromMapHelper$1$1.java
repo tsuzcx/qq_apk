@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.location.ui;
 
-import atsi;
-import atsj;
-import atsk;
+import avzm;
+import avzn;
+import avzo;
 
 public class LocationPoiDataFromMapHelper$1$1
   implements Runnable
 {
-  public LocationPoiDataFromMapHelper$1$1(atsj paramatsj) {}
+  public LocationPoiDataFromMapHelper$1$1(avzn paramavzn) {}
   
   public void run()
   {
-    atsi.a(this.a.a).a(atsi.a(this.a.a));
+    avzm.a(this.a.a).a(avzm.a(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

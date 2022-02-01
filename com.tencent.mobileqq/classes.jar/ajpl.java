@@ -1,38 +1,41 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import java.io.File;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
 public class ajpl
-  implements View.OnClickListener
+  extends AccountObserver
 {
-  public ajpl(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile, Button paramButton) {}
+  public ajpl(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onClick(View paramView)
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if (new File(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b).exists())
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
-      paramView = new ArrayList();
-      paramView.add(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b);
-      ajpy.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2, paramView);
-      this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.setResult(1001);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.finish();
-      if (ajpx.a == 1) {
-        ajpy.b("", "0X8005F5C", "0");
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 == null)
+      {
+        i = 0;
+        QLog.e("Q.history.C2CAllFragment", 2, i);
       }
     }
     else
     {
-      return;
+      paramString1 = this.a.a.obtainMessage(39);
+      if (!paramBoolean) {
+        break label103;
+      }
     }
-    ajpy.b("", "0X8005F5C", "1");
+    label103:
+    for (int i = 1;; i = 0)
+    {
+      paramString1.arg1 = i;
+      paramString1.arg2 = 0;
+      this.a.a.sendMessage(paramString1);
+      return;
+      i = paramString2.length();
+      break;
+    }
   }
 }
 

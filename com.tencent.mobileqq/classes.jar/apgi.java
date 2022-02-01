@@ -1,23 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
-import mqq.app.MobileQQ;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class apgi
-  implements DialogInterface.OnClickListener
+public class apgi
+  implements CompoundButton.OnCheckedChangeListener
 {
-  apgi(apgd paramapgd) {}
+  public apgi(QRScanEntryView paramQRScanEntryView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface.cancel();
-    apgd.a(this.a).b();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().remove(this.a.jdField_a_of_type_JavaLangString + DBFixManager.g).commit();
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, apgd.f, apgd.f, 0, 0, "", "", "", "");
-    apgd.a(this.a).c();
+    com.tencent.mobileqq.minicode.RecogUtil.SAVE_DETECT_IMAGE = paramBoolean;
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

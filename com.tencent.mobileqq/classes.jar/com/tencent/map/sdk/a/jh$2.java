@@ -18,7 +18,7 @@ public final class jh$2
       Object localObject = this.a.getBytes("UTF-8");
       try
       {
-        localObject = ((StatisticRequest)((nk)MapServiceManager.getService(nk.class)).c()).report(pz.a, jh.b(this.b), fz.g(), jh.c(this.b), fz.c(), fz.a(), fz.d(), fz.e(), "4.2.8.1", fz.f(), "androidsdk", fz.b(), (byte[])localObject);
+        localObject = ((StatisticRequest)((nk)MapServiceManager.getService(nk.class)).c()).report(pz.a, jh.b(this.b), fz.g(), jh.c(this.b), fz.c(), fz.a(), fz.d(), fz.e(), "4.2.8.2", fz.f(), "androidsdk", fz.b(), (byte[])localObject);
         if (localObject == null) {
           break label170;
         }
@@ -50,7 +50,7 @@ public final class jh$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.map.sdk.a.jh.2
  * JD-Core Version:    0.7.0.1
  */

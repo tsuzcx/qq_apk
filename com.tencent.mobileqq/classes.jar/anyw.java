@@ -1,47 +1,78 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.app.asyncdb.DBDelayManager;
+import com.tencent.mobileqq.app.asyncdb.FullCache;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class anyw
-  implements bhuk
+  extends FullCache
 {
-  public anyw(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public anyw(QQAppInterface paramQQAppInterface, DBDelayManager paramDBDelayManager)
   {
-    switch (paramInt)
+    super(paramQQAppInterface, paramDBDelayManager, AppletsAccountInfo.class);
+  }
+  
+  public AppletsAccountInfo a(String paramString)
+  {
+    return (AppletsAccountInfo)findCache(paramString);
+  }
+  
+  public void a()
+  {
+    Object localObject = this.app.getEntityManagerFactory().createEntityManager();
+    List localList = ((EntityManager)localObject).query(AppletsAccountInfo.class);
+    ((EntityManager)localObject).close();
+    if (localList != null)
     {
+      b();
+      localObject = localList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)((Iterator)localObject).next();
+        this.cacheMap.put(String.valueOf(localAppletsAccountInfo.uin), localAppletsAccountInfo);
+      }
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_Bhuf.e();
+      localObject = new StringBuilder().append("doInit size = ");
+      if (localList != null) {
+        break label118;
+      }
+    }
+    label118:
+    for (int i = 0;; i = localList.size())
+    {
+      QLog.d("AppletAccountCache", 2, i);
       return;
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
-      {
-        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app.a().b(this.jdField_a_of_type_JavaLangString);
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693563, 1);
-        continue;
-        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
-        {
-          paramView = new Intent();
-          paramView.setAction("android.intent.action.SENDTO");
-          paramView.setData(Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693563, 1);
-        }
-      }
     }
+  }
+  
+  public void a(AppletsAccountInfo paramAppletsAccountInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletAccountCache", 2, "saveAppletsAccount AppletsAccount = " + paramAppletsAccountInfo);
+    }
+    addCache(paramAppletsAccountInfo);
+    this.proxyManager.transSaveToDatabase();
+  }
+  
+  public void b()
+  {
+    this.cacheMap.clear();
+  }
+  
+  public void destroy() {}
+  
+  public String getKey(Entity paramEntity)
+  {
+    return ((AppletsAccountInfo)paramEntity).uin;
   }
 }
 

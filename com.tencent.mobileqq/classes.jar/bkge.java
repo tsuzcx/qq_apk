@@ -1,10 +1,19 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-
 public class bkge
-  implements BusinessObserver
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  private static ThreadLocal<StringBuilder> a = new ThreadLocal();
+  
+  public static StringBuilder a()
+  {
+    StringBuilder localStringBuilder = (StringBuilder)a.get();
+    if (localStringBuilder == null)
+    {
+      localStringBuilder = new StringBuilder();
+      a.set(localStringBuilder);
+      return localStringBuilder;
+    }
+    localStringBuilder.setLength(0);
+    return localStringBuilder;
+  }
 }
 
 

@@ -1,35 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.vote.VoteDashItem.1;
-import dov.com.tencent.biz.qqstory.takevideo.vote.VoteDashItem.2;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bnfb
+class bnfb
+  implements View.OnClickListener
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private volatile boolean jdField_a_of_type_Boolean;
+  bnfb(bnfa parambnfa) {}
   
-  public void a(bmrg parambmrg, View paramView, boolean paramBoolean, int paramInt1, int paramInt2, Runnable paramRunnable)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    int i;
-    for (;;)
-    {
-      i = 0;
-      while (i < paramInt1 - paramInt2)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VoteDashItem.1(this, parambmrg, paramView), i);
-        i += paramInt2;
-      }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VoteDashItem.2(this, parambmrg, paramBoolean, paramView, paramRunnable), i);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import atad;
+import avhx;
 
 public class GroupVideoManager$4
   implements Runnable
 {
-  public GroupVideoManager$4(atad paramatad, boolean paramBoolean) {}
+  public GroupVideoManager$4(avhx paramavhx, boolean paramBoolean) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class GroupVideoManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.4
  * JD-Core Version:    0.7.0.1
  */

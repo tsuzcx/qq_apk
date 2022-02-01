@@ -1,56 +1,38 @@
-import android.content.Context;
-import android.provider.Settings.Secure;
-import android.telephony.TelephonyManager;
-import java.io.File;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.util.Enumeration;
-import java.util.UUID;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aahj
-  extends bfiu
+  implements View.OnClickListener
 {
-  private static final String b = ;
+  public aahj(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, aagr paramaagr) {}
   
-  public static String a()
+  public void onClick(View paramView)
   {
-    return b + File.separator + ".GameCenterWebBuffer" + File.separator + "Images/games";
-  }
-  
-  public static String a(Context paramContext)
-  {
-    Object localObject = (TelephonyManager)paramContext.getSystemService("phone");
-    String str = "" + ((TelephonyManager)localObject).getDeviceId();
-    localObject = "" + ((TelephonyManager)localObject).getSimSerialNumber();
-    long l1 = ("" + Settings.Secure.getString(paramContext.getContentResolver(), "android_id")).hashCode();
-    long l2 = str.hashCode();
-    return new UUID(l1, ((String)localObject).hashCode() | l2 << 32).toString();
-  }
-  
-  public static String b()
-  {
-    try
-    {
-      InetAddress localInetAddress;
-      do
-      {
-        localObject = NetworkInterface.getNetworkInterfaces();
-        Enumeration localEnumeration;
-        while (!localEnumeration.hasMoreElements())
-        {
-          if (!((Enumeration)localObject).hasMoreElements()) {
-            break;
-          }
-          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
-        }
-        localInetAddress = (InetAddress)localEnumeration.nextElement();
-      } while (localInetAddress.isLoopbackAddress());
-      Object localObject = localInetAddress.getHostAddress().toString();
-      return localObject;
+    Intent localIntent = new Intent();
+    localIntent.putExtra("postUin", this.jdField_a_of_type_Aagr.a.poster.id.get());
+    if (this.jdField_a_of_type_Aagr.a.poster.youZhan.size() > 0) {
+      if (((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_Aagr.a.poster.youZhan.get(0)).type.get() <= 1) {
+        break label139;
+      }
     }
-    catch (SocketException localSocketException) {}
-    return null;
+    label139:
+    for (boolean bool = true;; bool = false)
+    {
+      localIntent.putExtra("has_shop", bool);
+      blsb.a(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment.getActivity(), localIntent, 0);
+      aaxb.b(this.jdField_a_of_type_Aagr.a.poster.id.get(), "auth_person", "blank_post", 0, 0, new String[0]);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

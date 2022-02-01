@@ -1,138 +1,131 @@
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.gameroom.RecentInviteUser;
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.1;
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.2;
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.3;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.hiboom.HiBoomPanelView;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import com.tencent.mobileqq.hiboom.SectorProgressView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class auzt
-  implements Manager
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public awgf a;
-  public QQAppInterface a;
-  public Object a;
-  public Map<String, RecentInviteUser> a;
-  protected Object b = new Object();
+  public int a;
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public HiBoomTextView a;
+  public SectorProgressView a;
+  public boolean a;
+  public ImageView b;
+  public ImageView c;
   
-  public auzt(QQAppInterface paramQQAppInterface)
+  public auzt(HiBoomPanelView paramHiBoomPanelView, View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    ThreadManager.post(new WerewolvesDataManager.1(this, paramQQAppInterface), 5, null, false);
-  }
-  
-  public List<RecentInviteUser> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    super(paramView);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean)
     {
-      Object localObject3 = this.jdField_a_of_type_JavaUtilMap.values();
-      ??? = ((Collection)localObject3).iterator();
-      while (((Iterator)???).hasNext())
-      {
-        localObject3 = (RecentInviteUser)((Iterator)???).next();
-        if (((RecentInviteUser)localObject3).uinType == 0) {
-          localArrayList.add(localObject3);
-        }
-      }
-    }
-    synchronized (this.b)
-    {
-      Collections.sort(localList);
-      return localList;
+      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView = ((HiBoomTextView)paramView.findViewById(2131367956));
+      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setLoadingScale(0.6F);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367954));
+      this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView = ((SectorProgressView)paramView.findViewById(2131367955));
+      this.b = ((ImageView)paramView.findViewById(2131367951));
+      this.c = ((ImageView)paramView.findViewById(2131367952));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131367949));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367953));
+      paramView.setOnClickListener(this);
     }
   }
   
-  public void a(RecentInviteUser paramRecentInviteUser)
+  public void onClick(View paramView)
   {
-    ThreadManager.post(new WerewolvesDataManager.3(this, paramRecentInviteUser), 5, null, false);
-  }
-  
-  public void a(String arg1, int paramInt, String paramString2)
-  {
-    String str = RecentInviteUser.getKey(paramInt, ???);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      ??? = (RecentInviteUser)this.jdField_a_of_type_JavaUtilMap.get(str);
-      ??? = ???;
-      if (??? == null)
+    int i;
+    if (this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.getVisibility() == 0) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.a())
       {
-        ??? = new RecentInviteUser();
-        ((RecentInviteUser)???).uniKey = str;
-      }
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(str, ???);
-        ((RecentInviteUser)???).uin = ???;
-        ((RecentInviteUser)???).uinType = paramInt;
-        ((RecentInviteUser)???).lastInviteId = paramString2;
+        this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.a();
+        this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setProgress(0);
+        i = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_Auzs.a(this.jdField_a_of_type_Int);
+        auzk.a.a(i);
       }
     }
-    synchronized (this.b)
+    for (;;)
     {
-      ((RecentInviteUser)???).lastInviteTime = System.currentTimeMillis();
-      a((RecentInviteUser)???);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      ??? = finally;
-      throw ???;
-      ??? = finally;
-      throw ???;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, auzu paramauzu)
-  {
-    ThreadManager.post(new WerewolvesDataManager.2(this, paramString1, paramString2, paramArrayList, paramauzu), 8, null, true);
-  }
-  
-  public boolean a(String paramString1, int paramInt, String paramString2)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      paramString1 = (RecentInviteUser)this.jdField_a_of_type_JavaUtilMap.get(RecentInviteUser.getKey(paramInt, paramString1));
-      if (paramString1 != null)
+      Object localObject2;
+      Object localObject1;
+      if (this.b.getVisibility() == 0)
       {
-        boolean bool = TextUtils.equals(paramString1.lastInviteId, paramString2);
-        return bool;
+        switch (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_Auzs.a(this.jdField_a_of_type_Int))
+        {
+        default: 
+          break;
+        case -1: 
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c();
+          if (this.c.getVisibility() == 0) {}
+          for (localObject1 = "0";; localObject1 = "1")
+          {
+            VasWebviewUtil.reportCommercialDrainage((String)localObject2, "HighFont", "ClickPlus", "", 1, 0, 0, "", "", (String)localObject1);
+            this.c.setVisibility(8);
+            this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getPreferences().edit().putBoolean("hiboom_red_dot_show", true).commit();
+            localObject1 = bgyg.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext(), "font", "mvip.gexinghua.mobile.font.client_tab_store") + "&haibao=1";
+            if (QLog.isColorLevel()) {
+              QLog.d("HiBoomFont.HiBoomPanelView", 2, "enter hiboom mall url = " + (String)localObject1);
+            }
+            VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext(), (String)localObject1, 4096L, null, false, -1);
+            break;
+          }
+        }
       }
-      return false;
-    }
-  }
-  
-  public List<RecentInviteUser> b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      Object localObject2 = this.jdField_a_of_type_JavaUtilMap.values();
-      ??? = ((Collection)localObject2).iterator();
-      while (((Iterator)???).hasNext())
+      else if (this.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 0)
       {
-        localObject2 = (RecentInviteUser)((Iterator)???).next();
-        if (((RecentInviteUser)localObject2).uinType == 1) {
-          localArrayList.add(localObject2);
+        if (QLog.isColorLevel()) {
+          QLog.d("HiBoomFont.HiBoomPanelView", 2, "dirty filter ");
+        }
+      }
+      else
+      {
+        if (auzk.b.compareAndSet(false, true))
+        {
+          localObject1 = (anuk)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(13);
+          localObject2 = (auzk)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(219);
+          i = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_Auzs.a(this.jdField_a_of_type_Int);
+          if (QLog.isColorLevel()) {
+            QLog.d("HiBoomFont.HiBoomPanelView", 2, "onClick hiboomid = " + i);
+          }
+          if (((auzk)localObject2).c.contains(Integer.valueOf(i))) {
+            ((anuk)localObject1).a(i, true, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.a());
+          }
+          for (;;)
+          {
+            bcst.b(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "CliOper", "", "", "0X80094D7", "0X80094D7", 0, 0, "", "", "", "");
+            break;
+            ((anuk)localObject1).a(i, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.a(), 2);
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("HiBoomFont.HiBoomPanelView", 2, "onClick is sending");
         }
       }
     }
-    Collections.sort(localList);
-    return localList;
   }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auzt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,33 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
+import android.os.Bundle;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function1;
+import org.jetbrains.annotations.Nullable;
 
-public class pdy
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/helper/RIJBiuNetworkHelper$requestBiuAfterComment$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pdy
+  extends niv
 {
-  private static int a;
-  private static int b;
-  private static int c;
-  private static int d;
+  pdy(Function1 paramFunction1) {}
   
-  public static void a()
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
-    a = Aladdin.getConfig(293).getIntegerFromString("reportOn", 0);
-    b = Aladdin.getConfig(293).getIntegerFromString("optOn", 0);
-    c = Aladdin.getConfig(293).getIntegerFromString("lifoOn", 0);
-    d = Aladdin.getConfig(293).getIntegerFromString("renderFirst", 0);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      this.a.invoke(Boolean.valueOf(true));
+      return;
+    }
+    this.a.invoke(Boolean.valueOf(false));
   }
   
-  public static boolean a()
+  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
   {
-    return a == 1;
-  }
-  
-  public static boolean b()
-  {
-    return c == 1;
-  }
-  
-  public static boolean c()
-  {
-    return d == 1;
+    this.a.invoke(Boolean.valueOf(false));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pdy
  * JD-Core Version:    0.7.0.1
  */

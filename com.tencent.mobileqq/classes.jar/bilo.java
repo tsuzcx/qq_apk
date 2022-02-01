@@ -1,25 +1,19 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import common.config.service.QzoneConfig;
-import common.config.service.QzoneConfig.2.1;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 
-public class bilo
-  extends ContentObserver
+class bilo
+  implements bipg
 {
-  public bilo(QzoneConfig paramQzoneConfig, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  bilo(biln parambiln, ImageView paramImageView) {}
   
-  public void onChange(boolean paramBoolean)
+  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    ThreadManager.post(new QzoneConfig.2.1(this, paramBoolean), 5, null, false);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bilo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,18 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
 
-public class vmi
-  extends uli
+class vmi
+  implements vuw
 {
-  public StoryVideoItem a;
-  public String a;
-  public String b;
+  vmi(vmh paramvmh) {}
   
-  public vmi(ErrorMessage paramErrorMessage, String paramString)
+  public void a(String paramString)
   {
-    this.a = paramErrorMessage;
-    this.b = paramString;
+    uxo.a(paramString, this.a.a().clone().setElementIdStr("portrait"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vmi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.SpecialCareInfo;
 
-public class arin
-  implements aoeq
+public final class arin
+  implements Parcelable.Creator<SpecialCareInfo>
 {
-  public String a()
+  public SpecialCareInfo a(Parcel paramParcel)
   {
-    return alud.a(2131699786);
+    return new SpecialCareInfo(paramParcel);
   }
   
-  public void a(View paramView, int paramInt)
+  public SpecialCareInfo[] a(int paramInt)
   {
-    if (paramView == null) {}
-    while (paramInt != 17039360) {
-      return;
-    }
-    paramView = paramView.getContext();
-    Intent localIntent = new Intent(paramView, FileAssistantActivity.class);
-    localIntent.putExtra("from", "FileAssistant");
-    paramView.startActivity(localIntent);
-    azqs.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 1, 0, "", "", "", "");
+    return new SpecialCareInfo[paramInt];
   }
 }
 

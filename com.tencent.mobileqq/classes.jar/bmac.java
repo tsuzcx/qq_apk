@@ -1,28 +1,18 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastOneShow;
 
-class bmac
-  extends RecyclerView.OnScrollListener
+public final class bmac
+  implements Parcelable.Creator<BroadcastOneShow>
 {
-  boolean jdField_a_of_type_Boolean = false;
-  
-  bmac(bmab parambmab) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public BroadcastOneShow a(Parcel paramParcel)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((paramInt == 0) && (this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Bmab.a();
-    }
+    return new BroadcastOneShow(paramParcel);
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public BroadcastOneShow[] a(int paramInt)
   {
-    if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    return new BroadcastOneShow[paramInt];
   }
 }
 

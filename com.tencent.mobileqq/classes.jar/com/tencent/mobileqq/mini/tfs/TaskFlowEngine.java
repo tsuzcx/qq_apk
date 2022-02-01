@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.tfs;
 
 import android.os.Handler.Callback;
 import android.os.Message;
+import com.tencent.mobileqq.mini.util.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.utils.DeviceInfoUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -179,7 +179,7 @@ public class TaskFlowEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.tfs.TaskFlowEngine
  * JD-Core Version:    0.7.0.1
  */

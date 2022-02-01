@@ -1,14 +1,12 @@
 package com.google.android.filament;
 
 import androidx.annotation.IntRange;
-import com.google.android.filament.proguard.UsedByReflection;
 
 public class Skybox
 {
   private long mNativeObject;
   
-  @UsedByReflection("KtxLoader.java")
-  Skybox(long paramLong)
+  public Skybox(long paramLong)
   {
     this.mNativeObject = paramLong;
   }
@@ -61,7 +59,7 @@ public class Skybox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.google.android.filament.Skybox
  * JD-Core Version:    0.7.0.1
  */

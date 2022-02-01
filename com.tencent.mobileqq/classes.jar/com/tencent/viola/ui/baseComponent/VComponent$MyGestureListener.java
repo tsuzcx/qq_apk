@@ -13,7 +13,7 @@ class VComponent$MyGestureListener
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     if (!this.this$0.mAppendEvents.contains("doubleClick")) {
-      VComponent.access$600(this.this$0, "click", paramMotionEvent);
+      this.this$0.fireClickAction("click", paramMotionEvent);
     }
     return false;
   }
@@ -29,20 +29,20 @@ class VComponent$MyGestureListener
       if (this.this$0.mAppendEvents.contains("doubleClick"))
       {
         VComponent.access$502(this.this$0, SystemClock.uptimeMillis());
-        VComponent.access$600(this.this$0, "doubleClick", paramMotionEvent);
+        this.this$0.fireClickAction("doubleClick", paramMotionEvent);
       }
     }
   }
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    VComponent.access$600(this.this$0, "longPress", paramMotionEvent);
+    this.this$0.fireClickAction("longPress", paramMotionEvent);
   }
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
     if ((this.this$0.mAppendEvents.contains("doubleClick")) && (SystemClock.uptimeMillis() - VComponent.access$500(this.this$0) > 500L)) {
-      VComponent.access$600(this.this$0, "click", paramMotionEvent);
+      this.this$0.fireClickAction("click", paramMotionEvent);
     }
     return false;
   }
@@ -50,14 +50,14 @@ class VComponent$MyGestureListener
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
     if (!this.this$0.mAppendEvents.contains("doubleClick")) {
-      VComponent.access$600(this.this$0, "click", paramMotionEvent);
+      this.this$0.fireClickAction("click", paramMotionEvent);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.VComponent.MyGestureListener
  * JD-Core Version:    0.7.0.1
  */

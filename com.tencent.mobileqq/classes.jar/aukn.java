@@ -1,25 +1,30 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
 
-public class aukn
-  implements View.OnClickListener
+class aukn
+  implements DialogInterface.OnClickListener
 {
-  public aukn(MultiAIOFragment paramMultiAIOFragment) {}
+  aukn(aukj paramaukj) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
+    if (paramInt == 1)
+    {
+      ForwardSdkBaseOption.a(aukj.a(this.a), false, "shareToQQ", aukj.a(this.a));
+      nmj.a(aukj.a(this.a), 0, "", "");
+      if (aukj.a(this.a) != null) {
+        aukj.a(this.a).b(1);
+      }
+      aukj.a(this.a).moveTaskToBack(true);
     }
-    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aukn
  * JD-Core Version:    0.7.0.1
  */

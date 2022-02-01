@@ -1,17 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
-
 public class ashs
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public ashs(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  public long a;
+  public String a;
+  public String b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public ashs(String paramString1, String paramString2, long paramLong)
   {
-    ((auad)this.a.a.getManager(303)).a((short)-23309, paramBoolean, true);
-    azqs.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 5, 5, "", "", "", "");
+    this.b = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{schoolId: ").append(this.b).append("}");
+    localStringBuilder.append("{schoolName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{schoolState: ").append(this.jdField_a_of_type_Long).append("}");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,32 +1,31 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.WebPreloadTask;
+import com.tencent.qphone.base.util.QLog;
 
-class aezj
-  implements yrb
+public class aezj
+  implements bhlk
 {
-  aezj(aezi paramaezi) {}
+  public aezj(QQSettingMe.WebPreloadTask paramWebPreloadTask, QQSettingMe paramQQSettingMe) {}
   
-  public void callback(Bundle paramBundle)
+  public void a(boolean paramBoolean)
   {
-    boolean bool;
-    if (paramBundle.getInt("type") == 73)
-    {
-      bool = paramBundle.getBoolean("isSuccess");
-      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.i)) {}
+    if ((paramBoolean) && (QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe) != null)) {
+      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).a();
     }
-    else
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
+      localStringBuilder = new StringBuilder().append("WebPreloadTask preloadWebProcess isProcessExist: ");
+      if (paramBoolean) {
+        break label64;
+      }
+    }
+    label64:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("QQSettingRedesign", 2, paramBoolean);
       return;
     }
-    if (Boolean.valueOf(bool).booleanValue())
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131720958, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131720955, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
   }
 }
 

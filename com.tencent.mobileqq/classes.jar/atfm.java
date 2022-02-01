@@ -1,179 +1,195 @@
-import android.app.Dialog;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import javax.annotation.Nonnull;
-import mqq.app.MobileQQ;
 
-public class atfm
+class atfm
+  extends atfi
 {
-  private static volatile String a;
+  public atfm(atfe paramatfe)
+  {
+    super(paramatfe);
+  }
   
-  public static int a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
+  protected String a()
+  {
+    return "StateChangeToOffFailedWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (a("onResumeTrans")) {}
+    FileManagerEntity localFileManagerEntity;
+    do
+    {
+      return;
+      localFileManagerEntity = this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "start send recv cmd.... [" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Atgp.a + "-" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Atgp.b + "]");
+    } while (!this.jdField_a_of_type_Atfe.a(localFileManagerEntity.peerUin, localFileManagerEntity.nOLfileSessionId));
+    atfe.c(this.jdField_a_of_type_Atfe, 9, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateWaitResultWhenRecv)");
+    this.jdField_a_of_type_Atfi = new atgo(this.jdField_a_of_type_Atfe);
+    this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 10, null, 6, null);
+    this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
+  }
+  
+  protected void a(int paramInt)
   {
     int i = 1;
-    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool")) {}
-    do
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
     {
-      try
-      {
-        paramContext = new Intent();
-        paramContext.setAction("action_show_together_floating_windows");
-        paramContext.setPackage(MobileQQ.getContext().getPackageName());
-        paramContext.putExtra("com.tencent.mobileqq.webprocess.together.floating.data", paramWatchTogetherFloatingData);
-        paramContext.setComponent(new ComponentName(MobileQQ.getContext(), "com.tencent.mobileqq.webprocess.WebProcessReceiver"));
-        BaseApplicationImpl.getContext().sendBroadcast(paramContext, "com.tencent.msg.permission.pushnotify");
-        if (QLog.isColorLevel()) {
-          QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow main..., data=", paramWatchTogetherFloatingData.toString() });
-        }
-        i = 0;
-        return i;
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TogetherWatchFloatingUtil", 2, "showFloatingWindow fail...", paramContext);
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow tool..., data=", paramWatchTogetherFloatingData.toString() });
-      }
-    } while (atfs.a().a(paramContext, paramWatchTogetherFloatingData) == 0);
-    return 2;
-  }
-  
-  public static Dialog a(Context paramContext)
-  {
-    if (paramContext == null) {
-      return null;
-    }
-    bext.b();
-    paramContext = bdgm.a(paramContext, 230, null, "一起看将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramContext.getString(2131690648), paramContext.getString(2131694953), new atfn(paramContext), null);
-    paramContext.setCancelable(false);
-    return paramContext;
-  }
-  
-  public static Dialog a(Context paramContext, Intent paramIntent)
-  {
-    paramContext = bhuf.a(paramContext);
-    paramContext.b(2131717662);
-    paramContext.a(2131690891, 3);
-    paramContext.c(2131690648);
-    paramContext.a(new atfo(paramIntent, paramContext));
-    return paramContext;
-  }
-  
-  public static void a()
-  {
-    a = "";
-    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
-    {
-      Bundle localBundle = new Bundle();
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS", localBundle, new atfr());
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. onFileRequestBeHandledByPC entity is null");
       return;
     }
-    atfs.a().b();
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    Intent localIntent = new Intent(paramContext, QQTranslucentBrowserActivity.class);
-    localIntent.putExtra("key_dialog_type", paramInt);
-    localIntent.putExtra("cur_uin", paramString);
-    localIntent.addFlags(805306368);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
-  {
-    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
+    if (5 != paramInt)
     {
-      boolean bool1 = b(2, paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType());
-      boolean bool2 = a();
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "closeFloatingWindow isSameFloatingInfo=", Boolean.valueOf(bool1), "isFloatingInfoEmpty=", Boolean.valueOf(bool2) });
+      this.jdField_a_of_type_Atfe.d();
+      switch (paramInt)
+      {
+      default: 
+        label63:
+        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]  is not foud . handledbypc type error:" + paramInt);
+        paramInt = 0;
       }
-      if ((!bool1) && (!bool2)) {
-        return;
-      }
-      a = "";
-      paramContext = new Bundle();
-      paramContext.putSerializable("BUNDLE_KEY_UI_DATA", paramWatchTogetherFloatingData);
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_QUIT_WATCH_FLOATING_WINDOWS", paramContext, new atfq());
+    }
+    while (paramInt != 0)
+    {
+      this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 0, null);
+      return;
+      this.jdField_a_of_type_Atfe.b();
+      break label63;
+      atfe.b(this.jdField_a_of_type_Atfe, 10, 5);
+      atfe.c(this.jdField_a_of_type_Atfe, 10, 5);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateAcceptByPCWhenPause)");
+      this.jdField_a_of_type_Atfi = new atfg(this.jdField_a_of_type_Atfe);
+      paramInt = i;
+      continue;
+      atfe.b(this.jdField_a_of_type_Atfe, 10, 6);
+      atfe.c(this.jdField_a_of_type_Atfe, 10, 6);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateRefuseByPCWhenPause)");
+      this.jdField_a_of_type_Atfi = new atfz(this.jdField_a_of_type_Atfe);
+      paramInt = i;
+      continue;
+      atfe.b(this.jdField_a_of_type_Atfe, 10, 8);
+      atfe.c(this.jdField_a_of_type_Atfe, 10, 8);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateSenderCancelSendWhenPause)");
+      this.jdField_a_of_type_Atfi = new atgg(this.jdField_a_of_type_Atfe);
+      paramInt = i;
+      continue;
+      atfe.b(this.jdField_a_of_type_Atfe, 10, 7);
+      atfe.c(this.jdField_a_of_type_Atfe, 10, 7);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateSaveToWeiYunByPCWhenPause)");
+      this.jdField_a_of_type_Atfi = new atgd(this.jdField_a_of_type_Atfe);
+      paramInt = i;
+      continue;
+      atfe.a(this.jdField_a_of_type_Atfe);
+      atfe.b(this.jdField_a_of_type_Atfe, 10, 11);
+      atfe.c(this.jdField_a_of_type_Atfe, 10, 14);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateChangeToOffWhenPause)");
+      this.jdField_a_of_type_Atfi = new atfo(this.jdField_a_of_type_Atfe);
+      paramInt = 0;
+    }
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    if (a("onSenderUploadProgressNotify")) {
       return;
     }
-    atfs.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
+    atfe.a(this.jdField_a_of_type_Atfe);
+    b(paramInt1, paramInt2);
+    atfe.a(this.jdField_a_of_type_Atfe, 10, 11);
+    atfe.a(this.jdField_a_of_type_Atfe, 10, 14, false);
+    a("StateUploadingWhenPause");
+    this.jdField_a_of_type_Atfi = new atgj(this.jdField_a_of_type_Atfe);
   }
   
-  public static void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  protected void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "setIsWatchFloatingShow isShow=", Boolean.valueOf(paramBoolean1), " uin=", paramString, " sessionType=", Integer.valueOf(paramInt) });
-    }
-    if (!paramBoolean1) {}
-    for (a = "";; a = "2_" + paramString + "_" + paramInt)
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      if (7 == BaseApplicationImpl.sProcessId)
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putBoolean("BUNDLE_SET_KEY_REFRESH_UI", paramBoolean2);
-        localBundle.putBoolean("BUNDLE_SET_STATUS", paramBoolean1);
-        localBundle.putString("BUNDLE_SET_KEY_UIN", paramString);
-        localBundle.putInt("BUNDLE_SET_KEY_SESSION_TYPE", paramInt);
-        QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_set_floating", localBundle, new atfp());
-      }
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
+    atfe.a(this.jdField_a_of_type_Atfe, 10, 12, true);
+    a("StateExcepInvalidWhenPause");
+    this.jdField_a_of_type_Atfi = new atfs(this.jdField_a_of_type_Atfe);
   }
   
-  public static boolean a()
+  protected void a(boolean paramBoolean)
   {
-    return TextUtils.isEmpty(a);
-  }
-  
-  public static boolean a(int paramInt1, String paramString, int paramInt2)
-  {
-    if (paramInt1 != 2) {}
-    do
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      do
-      {
-        return false;
-        if (QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool")) {
-          break;
-        }
-        a = null;
-      } while (!QLog.isColorLevel());
-      QLog.d("TogetherWatchFloatingUtil", 2, "isWatchFloatingShow， tool process NOT EXIST");
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. StateWaitingRecvResult entity is null");
+      return;
+    }
+    if (paramBoolean == true)
+    {
+      atfe.a(this.jdField_a_of_type_Atfe);
+      atfe.a(this.jdField_a_of_type_Atfe, 10, 11, true);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateLocalFailedWhenPause)");
+      this.jdField_a_of_type_Atfi = new atfw(this.jdField_a_of_type_Atfe);
+      return;
+    }
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateChangeToOffFailedWhenPause)");
+  }
+  
+  protected boolean a(int paramInt, String paramString, long paramLong)
+  {
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return false;
-    } while ((1 != BaseApplicationImpl.sProcessId) && (7 != BaseApplicationImpl.sProcessId));
-    paramString = paramInt1 + "_" + paramString + "_" + paramInt2;
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "key=", paramString, " info=", a });
     }
-    return TextUtils.equals(paramString, a);
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((atvo.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
+    }
+    this.jdField_a_of_type_Atfe.a(paramLong, localFileManagerEntity.peerUin);
+    localFileManagerEntity.setCloudType(1);
+    atfe.b(this.jdField_a_of_type_Atfe, 1, 3);
+    atfe.c(this.jdField_a_of_type_Atfe, 1, 3);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateUploadoneWhenPause)");
+    this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Atfi = new atgm(this.jdField_a_of_type_Atfe);
+    return true;
   }
   
-  public static boolean b()
+  protected void b()
   {
-    return a == null;
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atfe.a(this.jdField_a_of_type_Atfe, 10, 9, true);
+    a("StateCancelUploadWhenPause");
+    this.jdField_a_of_type_Atfi = new atfk(this.jdField_a_of_type_Atfe);
   }
   
-  public static boolean b(int paramInt1, String paramString, int paramInt2)
+  protected void b(boolean paramBoolean)
   {
-    return TextUtils.equals(paramInt1 + "_" + paramString + "_" + paramInt2, a);
+    if (paramBoolean == true)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + " recv  success response of ask progress, not handle it");
+      return;
+    }
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + " recv  failed response of ask progress, not handle it");
+  }
+  
+  protected void d()
+  {
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. onSenderReplayComeOnRecv entity is null");
+      return;
+    }
+    atfe.a(this.jdField_a_of_type_Atfe);
+    atfe.a(this.jdField_a_of_type_Atfe, 10, 11, true);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateLocalFailedWhenPause)");
+    this.jdField_a_of_type_Atfi = new atfw(this.jdField_a_of_type_Atfe);
   }
 }
 

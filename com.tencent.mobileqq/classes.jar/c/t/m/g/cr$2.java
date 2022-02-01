@@ -1,13 +1,25 @@
 package c.t.m.g;
 
+import java.io.File;
+
 final class cr$2
-  implements Runnable
+  implements de
 {
-  cr$2(cr paramcr, String paramString, byte[] paramArrayOfByte, de paramde) {}
+  cr$2(cr paramcr, File paramFile) {}
   
-  public final void run()
+  public final void a(String paramString)
   {
-    cu.j.a(this.a, this.b, this.c);
+    if (co.e()) {
+      co.a("upload succeed:".concat(String.valueOf(paramString)));
+    }
+    this.a.delete();
+  }
+  
+  public final void b(String paramString)
+  {
+    if (co.e()) {
+      co.b("upload failed:".concat(String.valueOf(paramString)));
+    }
   }
 }
 

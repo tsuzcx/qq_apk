@@ -1,29 +1,19 @@
-public class xsh
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+
+class xsh
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public static Throwable a(String paramString)
-  {
-    return new NullPointerException(paramString);
-  }
+  xsh(xsd paramxsd, xrz paramxrz) {}
   
-  public static Throwable a(String paramString, Throwable paramThrowable)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    if (paramThrowable == null) {
-      return new IllegalStateException(paramString);
-    }
-    return new IllegalStateException(paramString, paramThrowable);
-  }
-  
-  public static Throwable b(String paramString, Throwable paramThrowable)
-  {
-    if (paramThrowable == null) {
-      return new Throwable(paramString);
-    }
-    return new Throwable(paramString, paramThrowable);
+    this.jdField_a_of_type_Xrz.a(this.jdField_a_of_type_Xsd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xsh
  * JD-Core Version:    0.7.0.1
  */

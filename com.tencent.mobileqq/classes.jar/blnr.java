@@ -1,22 +1,86 @@
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface blnr
+public class blnr
+  extends bkzr
 {
-  public abstract void a(int paramInt, float paramFloat);
+  public final bkzq a;
+  private String d;
   
-  public abstract void a(int paramInt, String paramString, float paramFloat, AEEditorFilterBean paramAEEditorFilterBean);
+  public blnr(blnp paramblnp, int paramInt)
+  {
+    this.jdField_d_of_type_JavaLangString = "noreason";
+    this.jdField_a_of_type_JavaLangString = "com.tencent.mobileqq:tool";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangString = "qqreaderplugin.apk";
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_JavaLangString = "qqreaderplugin.apk";
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bkzq = new bkzq(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_Bkzq.a = new avaj("qqreader_leba_preload", "com.tencent.mobileqq:tool", "qqreaderplugin.apk");
+  }
   
-  public abstract boolean e();
+  protected void a()
+  {
+    blnp.a(this.jdField_a_of_type_Blnp, this.jdField_a_of_type_Bkzq, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int);
+  }
   
-  public abstract boolean f();
+  public void a(bkzx parambkzx)
+  {
+    if (parambkzx == null) {
+      return;
+    }
+    this.jdField_d_of_type_JavaLangString = parambkzx.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract void m();
+  protected boolean a(bkzx parambkzx)
+  {
+    boolean bool = blnp.a(this.jdField_a_of_type_Blnp);
+    if (parambkzx != null)
+    {
+      parambkzx.jdField_a_of_type_Int = 2;
+      if (!bool) {
+        break label66;
+      }
+    }
+    label66:
+    for (String str = "preload:ok:dpc";; str = "preload:fail:dpc")
+    {
+      parambkzx.jdField_a_of_type_JavaLangString = str;
+      blnp.a(this.jdField_a_of_type_Blnp);
+      if (this.jdField_a_of_type_Blnp.jdField_a_of_type_Bkzu.jdField_a_of_type_Int != -1) {
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_Blnp.jdField_a_of_type_Bkzu.jdField_b_of_type_Int;
+      }
+      return bool;
+    }
+  }
   
-  public abstract void n();
-  
-  public abstract void o();
-  
-  public abstract void p();
+  protected boolean b(bkzx parambkzx)
+  {
+    boolean bool1;
+    if (!this.jdField_a_of_type_Blnp.c)
+    {
+      if (parambkzx != null) {
+        parambkzx.jdField_a_of_type_JavaLangString = "preload:fail:serverswitch";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QRProcessManager", 2, "pluginType:" + this.jdField_b_of_type_Int + "  preload:fail:serverswitch");
+      }
+      bool1 = false;
+    }
+    boolean bool2;
+    do
+    {
+      return bool1;
+      String str = this.jdField_a_of_type_Blnp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      bool2 = a(this.jdField_a_of_type_Blnp.jdField_a_of_type_Bkzt, String.valueOf(769), this.jdField_a_of_type_Blnp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.read.android", this.jdField_a_of_type_Blnp.a(str), this.jdField_a_of_type_Blnp.a(str), this.jdField_a_of_type_Blnp.a(str), parambkzx);
+      this.jdField_d_of_type_JavaLangString = parambkzx.jdField_a_of_type_JavaLangString;
+      bool1 = bool2;
+    } while (this.jdField_a_of_type_Blnp.jdField_a_of_type_Bkzt == null);
+    this.jdField_d_of_type_Int = this.jdField_a_of_type_Blnp.jdField_a_of_type_Bkzt.jdField_a_of_type_Int;
+    return bool2;
+  }
 }
 
 

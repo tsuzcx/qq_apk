@@ -1,16 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 class agdk
-  implements bemz
+  implements bdet
 {
   agdk(agdj paramagdj) {}
   
-  public void a(View paramView)
+  public void a()
   {
-    aepi.n = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    bdez localbdez = new bdez(3000, 360, 0);
+    localbdez.a = true;
+    this.a.a.d.a(new bdes[] { localbdez });
   }
 }
 

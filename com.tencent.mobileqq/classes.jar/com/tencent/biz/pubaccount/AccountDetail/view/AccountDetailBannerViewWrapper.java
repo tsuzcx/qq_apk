@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.AccountDetail.view;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -17,22 +17,22 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
 import java.util.Iterator;
-import nhu;
-import nik;
-import npn;
-import npo;
+import nql;
+import nrb;
+import nyk;
+import nyl;
 
 public class AccountDetailBannerViewWrapper
-  extends nik
+  extends nrb
 {
-  public AccountDetailBannerViewWrapper(Context paramContext, ArrayList<npo> paramArrayList, nhu paramnhu, String paramString1, String paramString2)
+  public AccountDetailBannerViewWrapper(Context paramContext, ArrayList<nyl> paramArrayList, nql paramnql, String paramString1, String paramString2)
   {
-    super(paramContext, paramArrayList, paramnhu, paramString1, paramString2);
+    super(paramContext, paramArrayList, paramnql, paramString1, paramString2);
   }
   
-  public static View a(Context paramContext, View paramView, ViewGroup paramViewGroup, npn paramnpn, int paramInt, nhu paramnhu, String paramString1, String paramString2)
+  public static View a(Context paramContext, View paramView, ViewGroup paramViewGroup, nyk paramnyk, int paramInt, nql paramnql, String paramString1, String paramString2)
   {
-    paramViewGroup = a(paramnpn, paramInt);
+    paramViewGroup = a(paramnyk, paramInt);
     if (paramViewGroup.isEmpty())
     {
       paramContext = paramView;
@@ -49,8 +49,8 @@ public class AccountDetailBannerViewWrapper
         break;
       }
       paramView = (RelativeLayout)paramView;
-      paramnpn = paramView.getTag();
-      if ((paramnpn == null) || (!(paramnpn instanceof AccountDetailBannerViewWrapper)) || (!((AccountDetailBannerViewWrapper)paramnpn).a(paramViewGroup))) {
+      paramnyk = paramView.getTag();
+      if ((paramnyk == null) || (!(paramnyk instanceof AccountDetailBannerViewWrapper)) || (!((AccountDetailBannerViewWrapper)paramnyk).a(paramViewGroup))) {
         break;
       }
       paramContext = paramView;
@@ -60,23 +60,23 @@ public class AccountDetailBannerViewWrapper
     if (QLog.isDevelopLevel()) {
       QLog.d("AccountDetailBannerViewWrapper", 2, "createView new create!");
     }
-    paramContext = new AccountDetailBannerViewWrapper(paramContext, paramViewGroup, paramnhu, paramString1, paramString2);
+    paramContext = new AccountDetailBannerViewWrapper(paramContext, paramViewGroup, paramnql, paramString1, paramString2);
     paramView = paramContext.a();
     paramView.setTag(paramContext);
     return paramView;
   }
   
-  private View a(npo paramnpo)
+  private View a(nyl paramnyl)
   {
     RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
     localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
     URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
     localURLImageView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    localURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(paramnpo.e, null, null, true));
+    localURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(paramnyl.e, null, null, true));
     localURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#33000000")));
     localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     localRelativeLayout.addView(localURLImageView);
-    localRelativeLayout.setTag(paramnpo);
+    localRelativeLayout.setTag(paramnyl);
     localRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     return localRelativeLayout;
   }
@@ -87,8 +87,8 @@ public class AccountDetailBannerViewWrapper
       QLog.d("AccountDetailBannerViewWrapper", 2, "buildView!");
     }
     Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = aepi.a(160.0F, localResources);
-    int j = aepi.a(20.0F, localResources);
+    int i = afur.a(160.0F, localResources);
+    int j = afur.a(20.0F, localResources);
     RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
     localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, i + j));
     localRelativeLayout.setPadding(0, j, 0, 0);
@@ -98,7 +98,7 @@ public class AccountDetailBannerViewWrapper
     ArrayList localArrayList = new ArrayList();
     Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(a((npo)((Iterator)localObject).next()));
+      localArrayList.add(a((nyl)((Iterator)localObject).next()));
     }
     localObject = new AccountDetailBannerViewWrapper.ViewPagerAdapter();
     ((AccountDetailBannerViewWrapper.ViewPagerAdapter)localObject).a(localArrayList);
@@ -107,7 +107,7 @@ public class AccountDetailBannerViewWrapper
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(14, -1);
     localLayoutParams.addRule(12, -1);
-    localLayoutParams.setMargins(0, 0, 0, aepi.a(10.0F, localResources));
+    localLayoutParams.setMargins(0, 0, 0, afur.a(10.0F, localResources));
     ((AccountDetailBannerIndicator)localObject).setLayoutParams(localLayoutParams);
     localRelativeLayout.addView((View)localObject);
     localAccountDetailBannerViewPager.setIndicator((AccountDetailBannerIndicator)localObject);
@@ -119,7 +119,7 @@ public class AccountDetailBannerViewWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewWrapper
  * JD-Core Version:    0.7.0.1
  */

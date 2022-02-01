@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class aeke
-  implements DialogInterface.OnClickListener
+  extends WebViewClient
 {
-  public aeke(UpgradeActivity paramUpgradeActivity) {}
+  public aeke(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    this.a.finish();
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (this.a.a(paramString)) {}
+    return true;
   }
 }
 

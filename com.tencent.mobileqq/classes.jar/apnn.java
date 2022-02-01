@@ -1,6 +1,19 @@
+import com.tencent.mobileqq.ark.ArkAppCenter;
+
 class apnn
+  implements anil
 {
-  private static apnm a = new apnm();
+  apnn(apni paramapni) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (!paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "doVipReport(), sso request failed");
+      return;
+    }
+    ArkAppCenter.b("ArkApp.ArkAppCGI", "doVipReport().server.back=" + paramObject);
+  }
 }
 
 

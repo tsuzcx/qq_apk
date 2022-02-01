@@ -1,8 +1,16 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-public abstract interface anmi
+public class anmi
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(List<annb> paramList);
+  public anmi(FrameHelperActivity paramFrameHelperActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    FrameHelperActivity.a(this.a, null);
+  }
 }
 
 

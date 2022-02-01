@@ -1,23 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import dov.com.qq.im.ae.camera.ui.panel.AEGridView;
 
 public class bnmm
-  implements Animator.AnimatorListener
+  extends RecyclerView.ItemDecoration
 {
-  public bnmm(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public bnmm(AEGridView paramAEGridView, int paramInt1, int paramInt2)
   {
-    QIMCameraCaptureButtonLayout.a(this.a).setVisibility(8);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.top = this.b;
+  }
 }
 
 

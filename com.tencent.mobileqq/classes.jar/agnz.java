@@ -1,39 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-class agnz
-  extends alzr
+public abstract interface agnz
 {
-  agnz(agnn paramagnn) {}
+  public abstract View a();
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
+  public abstract void a();
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
+  public abstract void b();
   
-  public void t_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
-    }
-  }
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void j();
+  
+  public abstract void n();
 }
 
 

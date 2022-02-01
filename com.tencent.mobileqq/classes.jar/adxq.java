@@ -1,36 +1,33 @@
-import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class adxq
-  extends altm
+  implements DialogInterface.OnClickListener
 {
-  public adxq(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
+  public adxq(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void onGetBothDongtaiPermissions(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean1)
+    if (paramInt == 1)
     {
-      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean3);
+      paramDialogInterface = new Intent(this.a, LoginActivity.class);
+      paramDialogInterface.putExtra("is_change_account", true);
+      paramDialogInterface.putExtra("if_check_account_same", true);
+      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
+      paramDialogInterface.putExtra("key_action", ChatSettingForTroop.class.getSimpleName());
+      paramDialogInterface.addFlags(268435456);
+      paramDialogInterface.addFlags(67108864);
+      this.a.a.cancel();
+      this.a.startActivity(paramDialogInterface);
+      this.a.finish();
     }
-  }
-  
-  protected void onSetNotAllowedSeeMyDongtai(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1)
-    {
-      this.a.a(2131719884, 1);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+    while (paramInt != 0) {
+      return;
     }
-  }
-  
-  protected void onSetShieldHisDongtai(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1)
-    {
-      this.a.a(2131719884, 1);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean2);
-    }
+    this.a.finish();
   }
 }
 

@@ -1,20 +1,23 @@
-import android.os.Handler;
+import com.tencent.YTFace.model.FaceStatus;
 
-class apaw
-  implements nae
+public class apaw
 {
-  apaw(apau paramapau, nad[] paramArrayOfnad) {}
+  public float a;
+  public int a;
+  public FaceStatus a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public String toString()
   {
-    if (!paramBoolean)
-    {
-      apau.a(this.jdField_a_of_type_Apau).removeCallbacks(apau.a(this.jdField_a_of_type_Apau));
-      apau.a(this.jdField_a_of_type_Apau).run();
-      if (this.jdField_a_of_type_ArrayOfNad[0] != null) {
-        this.jdField_a_of_type_ArrayOfNad[0].a();
-      }
-    }
+    return "FaceInfo{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tracked=" + this.jdField_a_of_type_Boolean + ", lostCount=" + this.c + ", faceType=" + this.jdField_a_of_type_Int + ", faceStatus=" + this.jdField_a_of_type_ComTencentYTFaceModelFaceStatus + '}';
   }
 }
 

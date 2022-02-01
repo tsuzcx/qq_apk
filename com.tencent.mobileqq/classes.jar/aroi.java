@@ -1,22 +1,60 @@
-import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aroi
-  implements bhuk
+  extends arnz
 {
-  public aroi(SimpleFileViewer paramSimpleFileViewer, QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public aroi(QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    super("qq.android.early.precover", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10045;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return PrecoverData.class;
+  }
+  
+  public String a()
+  {
+    return "actEarlyPrecover";
+  }
+  
+  public void a(XmlData paramXmlData)
+  {
+    super.a(paramXmlData);
+    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
+      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
     }
-    bagk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-    this.jdField_a_of_type_Bhuf.dismiss();
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public String b()
+  {
+    return "prd";
+  }
+  
+  public boolean i()
+  {
+    File localFile = new File(c());
+    return (localFile != null) && (localFile.exists());
+  }
+  
+  public boolean j()
+  {
+    File localFile = new File(d());
+    return (localFile != null) && (localFile.exists());
   }
 }
 

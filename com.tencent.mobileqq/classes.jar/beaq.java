@@ -1,27 +1,47 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import dualsim.common.IKingCardInterface.OnChangeListener;
-import dualsim.common.OrderCheckResult;
-import mqq.app.AppRuntime;
+import android.content.res.XmlResourceParser;
+import org.xmlpull.v1.XmlPullParser;
 
 public class beaq
-  implements IKingCardInterface.OnChangeListener
 {
-  public void onChanged(OrderCheckResult paramOrderCheckResult)
+  private bear jdField_a_of_type_Bear;
+  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
+  
+  private void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("KC.KCWraperV2", 1, "state changed");
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((AppRuntime)localObject).getAccount())
+    String str1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "extension");
+    String str2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "mimetype");
+    this.jdField_a_of_type_Bear.a(str1, str2);
+  }
+  
+  public bear a()
+  {
+    this.jdField_a_of_type_Bear = new bear();
+    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
+    if (i != 1)
     {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramOrderCheckResult != null)) {
-        beam.a((String)localObject, paramOrderCheckResult);
+      String str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
+      if (i == 2) {
+        if (!str.equals("MimeTypes")) {}
       }
-      return;
+      for (;;)
+      {
+        i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
+        break;
+        if (str.equals("type"))
+        {
+          a();
+          continue;
+          if ((i != 3) || (!str.equals("MimeTypes"))) {}
+        }
+      }
     }
+    return this.jdField_a_of_type_Bear;
+  }
+  
+  public bear a(XmlResourceParser paramXmlResourceParser)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlResourceParser;
+    return a();
   }
 }
 

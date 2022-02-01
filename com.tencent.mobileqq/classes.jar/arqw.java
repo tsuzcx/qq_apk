@@ -1,12 +1,73 @@
-public abstract interface arqw
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.ListView;
+
+public class arqw
+  extends aryi
 {
-  public abstract void a();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private avad jdField_a_of_type_Avad;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String b;
   
-  public abstract void a(int paramInt);
+  public arqw(QQAppInterface paramQQAppInterface, Context paramContext, avad paramavad)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Avad = paramavad;
+  }
   
-  public abstract void a(long paramLong1, long paramLong2);
+  public int a()
+  {
+    return 2;
+  }
   
-  public abstract void a(String paramString1, String paramString2);
+  public Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  }
+  
+  public String a()
+  {
+    return "RichTextPanelEmoticonSearchLayoutHelper";
+  }
+  
+  public void a() {}
+  
+  public void a(ListView paramListView, arwf paramarwf)
+  {
+    b(paramListView, paramarwf);
+    paramarwf = b();
+    if (paramarwf.getParent() == null) {
+      paramListView.addFooterView(paramarwf);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Avad.n();
+  }
+  
+  public void c()
+  {
+    this.b = null;
+  }
 }
 
 

@@ -1,41 +1,73 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import UserGrowth.stNewIconStyle;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.view.ViewStub;
 
 public class utr
-  implements View.OnTouchListener
+  extends ueh<uru>
 {
-  public utr(StoryInputBarView paramStoryInputBarView) {}
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private uts jdField_a_of_type_Uts;
+  private utw jdField_a_of_type_Utw;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public utr(Context paramContext, utw paramutw)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      StoryInputBarView.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Whs.jdField_a_of_type_Boolean);
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label89;
-      }
+    super(paramContext);
+    this.jdField_a_of_type_Utw = paramutw;
+  }
+  
+  private stSimpleMetaFeed a()
+  {
+    uru localuru = (uru)a();
+    if ((localuru != null) && ((localuru.a() instanceof stSimpleMetaFeed))) {
+      return (stSimpleMetaFeed)localuru.a();
     }
-    label89:
-    for (boolean bool = true;; bool = false)
+    return null;
+  }
+  
+  private void b(uru paramuru)
+  {
+    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
     {
-      paramView.jdField_a_of_type_Boolean = bool;
-      return false;
+      if (this.jdField_a_of_type_Uts == null)
+      {
+        this.jdField_a_of_type_Uts = new uts(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Utw);
+        this.jdField_a_of_type_Uts.a(this.jdField_a_of_type_AndroidViewViewStub);
+      }
+      this.jdField_a_of_type_Uts.a(paramuru);
     }
-    label94:
-    this.a.a();
-    return false;
+  }
+  
+  protected void a() {}
+  
+  public void a(uru paramuru)
+  {
+    super.a(paramuru);
+    b(paramuru);
+  }
+  
+  protected int b()
+  {
+    return 2131560026;
+  }
+  
+  protected void b() {}
+  
+  protected void c()
+  {
+    if (this.jdField_a_of_type_Uts != null) {
+      this.jdField_a_of_type_Uts.c();
+    }
+  }
+  
+  protected void e()
+  {
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380518));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     utr
  * JD-Core Version:    0.7.0.1
  */

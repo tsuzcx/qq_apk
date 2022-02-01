@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
-public abstract interface afje
+public class afje
+  extends anmu
 {
-  public abstract void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
+  public afje(TroopDisbandActivity paramTroopDisbandActivity) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class aytw
-  extends ayuf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class aytw
+  implements View.OnClickListener
 {
-  public aytw(GroupSearchEngine paramGroupSearchEngine, ayug paramayug, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramayug, paramString, paramInt);
-  }
+  aytw(aytv paramaytv) {}
   
-  public aynt a(List<aynu> paramList, String paramString)
+  public final void onClick(View paramView)
   {
-    return new aylm(paramList, paramString, GroupSearchEngine.a(this.a));
+    this.a.dismiss();
+    this.a.a().a(1040);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

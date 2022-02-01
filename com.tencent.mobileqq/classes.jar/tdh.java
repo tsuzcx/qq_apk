@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class tdh
-  implements View.OnClickListener
+public abstract interface tdh
 {
-  tdh(tdf paramtdf) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tdh
  * JD-Core Version:    0.7.0.1
  */

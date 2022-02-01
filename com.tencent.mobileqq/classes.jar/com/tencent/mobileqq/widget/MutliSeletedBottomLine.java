@@ -6,7 +6,7 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
-import bdaq;
+import bggq;
 
 public class MutliSeletedBottomLine
   extends View
@@ -25,7 +25,7 @@ public class MutliSeletedBottomLine
   {
     super(paramContext);
     this.e = paramInt;
-    this.f = bdaq.a(paramContext, 29.0F);
+    this.f = bggq.a(paramContext, 29.0F);
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_Int = ((int)(paramInt / 8.0F));
   }
@@ -34,7 +34,7 @@ public class MutliSeletedBottomLine
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165253));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165283));
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     float f1;
     int i;
@@ -71,7 +71,7 @@ public class MutliSeletedBottomLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MutliSeletedBottomLine
  * JD-Core Version:    0.7.0.1
  */

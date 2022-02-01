@@ -31,11 +31,16 @@ class MainService$MyErrorHandler
   
   private void popupNotification(String paramString1, String paramString2, String paramString3, String paramString4, Constants.LogoutReason paramLogoutReason, boolean paramBoolean)
   {
+    popupNotification(paramString1, paramString2, paramString3, paramString4, paramLogoutReason, paramBoolean, "");
+  }
+  
+  private void popupNotification(String paramString1, String paramString2, String paramString3, String paramString4, Constants.LogoutReason paramLogoutReason, boolean paramBoolean, String paramString5)
+  {
     AppRuntime localAppRuntime = MainService.access$000(this.this$0).waitAppRuntime(null);
     if ((localAppRuntime != null) && (QLog.isColorLevel())) {
       QLog.d("mqq", 2, "kicked....kickPC...... in popupNotification isSameDevice = " + paramBoolean + "; runnbackGroud = " + localAppRuntime.isBackground_Stop + ";action = " + paramString1 + "; mApplicaiton.getProcessName() = " + MainService.access$000(this.this$0).getQQProcessName());
     }
-    localAppRuntime.runOnUiThread(new MainService.MyErrorHandler.3(this, paramString2, localAppRuntime, paramLogoutReason, paramString1, paramString3, paramString4, paramBoolean));
+    localAppRuntime.runOnUiThread(new MainService.MyErrorHandler.3(this, paramString2, localAppRuntime, paramLogoutReason, paramString1, paramString3, paramString4, paramBoolean, paramString5));
   }
   
   private void popupNotificationEx(String paramString1, String paramString2, String paramString3, String paramString4, Constants.LogoutReason paramLogoutReason, byte[] paramArrayOfByte)
@@ -189,7 +194,7 @@ class MainService$MyErrorHandler
     }
     MsfSdkUtils.updateSimpleAccount(paramFromServiceMsg.getUin(), false);
     MainService.access$000(this.this$0).setSortAccountList(MsfSdkUtils.getLoginedAccountList());
-    popupNotification("mqq.intent.action.ACCOUNT_EXPIRED", paramFromServiceMsg.getUin(), null, paramFromServiceMsg.getBusinessFailMsg(), Constants.LogoutReason.expired, paramBoolean);
+    popupNotification("mqq.intent.action.ACCOUNT_EXPIRED", paramFromServiceMsg.getUin(), null, paramFromServiceMsg.getBusinessFailMsg(), Constants.LogoutReason.expired, paramBoolean, paramFromServiceMsg.getServiceCmd());
     if (QLog.isColorLevel()) {
       QLog.d("mqq", 2, "kicked....onUserTokenExpired end ");
     }

@@ -7,10 +7,11 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Window;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class EmojiRedpacketUserGuideDialog
-  extends Dialog
+  extends ReportDialog
 {
   private static final String TAG = EmojiRedpacketUserGuideDialog.class.getSimpleName();
   public static String URL_DEFAULT = "https://i.gtimg.cn/channel/imglib/201904/upload_13e561ae68d934abd06b8b6830d99754.png";
@@ -68,7 +69,7 @@ public class EmojiRedpacketUserGuideDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.EmojiRedpacketUserGuideDialog
  * JD-Core Version:    0.7.0.1
  */

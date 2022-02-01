@@ -1,66 +1,30 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.text.TextUtils;
+import java.io.File;
+import java.io.FileFilter;
 
-public abstract class apao
+final class apao
+  implements FileFilter
 {
-  public static int a(Context paramContext)
+  public boolean accept(File paramFile)
   {
-    try
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
     {
-      int i = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-      return i;
-    }
-    catch (Exception paramContext) {}
-    return 0;
-  }
-  
-  public static int a(Context paramContext, String paramString)
-  {
-    try
-    {
-      int i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
-      return i;
-    }
-    catch (Exception paramContext) {}
-    return 0;
-  }
-  
-  public static String a(Context paramContext)
-  {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
-      return paramContext;
-    }
-    catch (Exception paramContext) {}
-    return "";
-  }
-  
-  public static boolean a(String paramString, Context paramContext)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
-    {
-      return false;
-      paramContext = paramContext.getPackageManager();
-      try
+      int i = 3;
+      while (i < paramFile.length())
       {
-        paramString = paramContext.getApplicationInfo(paramString, 0);
-        if (paramString != null) {
-          return true;
+        if (!Character.isDigit(paramFile.charAt(i))) {
+          return false;
         }
+        i += 1;
       }
-      catch (PackageManager.NameNotFoundException paramString) {}
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apao
  * JD-Core Version:    0.7.0.1
  */

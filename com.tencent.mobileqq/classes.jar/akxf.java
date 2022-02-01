@@ -1,13 +1,27 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
+import java.util.Iterator;
+import java.util.List;
 
-class akxf
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+public class akxf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  akxf(akxb paramakxb) {}
+  public akxf(KSongMicView paramKSongMicView) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 0) {}
+    float f = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = KSongMicView.a(this.a).iterator();
+    while (paramValueAnimator.hasNext())
+    {
+      akxg localakxg = (akxg)paramValueAnimator.next();
+      localakxg.jdField_c_of_type_Float = (localakxg.f + (localakxg.g - localakxg.f) * f);
+      localakxg.d = (localakxg.h + (localakxg.i - localakxg.h) * f);
+      localakxg.e = (localakxg.j + (localakxg.k - localakxg.j) * f);
+      localakxg.a = (localakxg.b + (int)((localakxg.jdField_c_of_type_Int - localakxg.b) * f));
+    }
+    this.a.invalidate();
   }
 }
 

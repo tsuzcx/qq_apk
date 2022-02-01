@@ -1,10 +1,12 @@
 public class ayxy
 {
-  private float jdField_a_of_type_Float;
-  private boolean jdField_a_of_type_Boolean;
-  private float b;
-  
-  public ayxy(ayxx paramayxx) {}
+  public int a = -2;
+  public ayxt a;
+  public ayxx a;
+  public Object a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 

@@ -1,12 +1,8 @@
-import java.util.Comparator;
-
-public final class bcmg
-  implements Comparator<bcmh>
+public class bcmg
 {
-  public int a(bcmh parambcmh1, bcmh parambcmh2)
-  {
-    return Long.signum(parambcmh2.a - parambcmh1.a);
-  }
+  public Object a;
+  public boolean a;
+  public boolean b;
 }
 
 

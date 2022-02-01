@@ -1,38 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.VideoInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class rbp
-  implements Animation.AnimationListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/service/redpacket/RIJAidlClientRedPacketModule$reportTaskProgress$1", "Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/IReportTaskProgressCallback$Stub;", "onRedPacketTaskFinish", "", "isFinish", "", "wording", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rbp
+  extends rbj
 {
-  rbp(rbo paramrbo) {}
+  rbp(qza paramqza) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, @Nullable String paramString)
   {
-    if ((raw.a(this.a.c) == rbo.a(this.a)) && (raw.a(this.a.c) != null)) {
-      raw.a(this.a.c).a(rbo.a(this.a));
+    qza localqza = this.a;
+    if (localqza != null) {
+      localqza.a(paramBoolean, paramString);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if ((rbo.a(this.a).a != null) && (rbo.a(this.a).a.a != null))
-    {
-      boolean bool = rbo.a(this.a).a.a.p;
-      if (rbo.a(this.a).l != null) {
-        rbo.a(this.a).l.setImageDrawable(raw.a(this.a.c, this.a.a(bool)));
-      }
-    }
-    paramAnimation.setInterpolator(new AnticipateInterpolator());
-  }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rbp
  * JD-Core Version:    0.7.0.1
  */

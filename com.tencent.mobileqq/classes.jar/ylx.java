@@ -1,26 +1,43 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserSelfInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-final class ylx
-  implements View.OnSystemUiVisibilityChangeListener
+public class ylx
+  extends wlf<yly>
 {
-  ylx(Window paramWindow) {}
+  public static final String a = wjz.a("StorySvc.get_user_base_info");
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public String a()
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 5894;; paramInt = 1799)
+    return a;
+  }
+  
+  public yly a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetUserSelfInfo localRspGetUserSelfInfo = new qqstory_service.RspGetUserSelfInfo();
+    try
     {
-      this.a.getDecorView().setSystemUiVisibility(paramInt);
-      return;
+      localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
+      return new yly(localRspGetUserSelfInfo);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        yqp.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ylx
  * JD-Core Version:    0.7.0.1
  */

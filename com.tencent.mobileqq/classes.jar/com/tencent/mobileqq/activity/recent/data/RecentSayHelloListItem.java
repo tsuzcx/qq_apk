@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abta;
-import abti;
+import acvy;
+import acwh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import apib;
-import bamp;
-import bdeu;
-import bdgc;
+import arkw;
+import bdnt;
+import bgjw;
+import bglf;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -18,6 +18,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.dating.FansEntity;
+import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentSayHelloListItem
@@ -44,27 +46,12 @@ public class RecentSayHelloListItem
     this.messageRecord = paramMessageRecord;
   }
   
-  public int a()
-  {
-    return this.messageRecord.istroop;
-  }
-  
-  public long a()
-  {
-    return this.messageRecord.time;
-  }
-  
-  public String a()
-  {
-    return this.messageRecord.senderuin;
-  }
-  
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     Object localObject1 = paramQQAppInterface.a();
     Object localObject2 = paramQQAppInterface.a();
     if (localObject1 != null) {}
-    for (localObject1 = ((QQMessageFacade)localObject1).a(a(), a());; localObject1 = null)
+    for (localObject1 = ((QQMessageFacade)localObject1).a(getRecentUserUin(), getRecentUserType());; localObject1 = null)
     {
       label78:
       MsgSummary localMsgSummary;
@@ -73,37 +60,37 @@ public class RecentSayHelloListItem
         this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
         if ((localObject2 != null) && (localObject1 != null))
         {
-          this.mUnreadNum = ((abta)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
-          if (abti.d((MessageRecord)localObject1)) {
+          this.mUnreadNum = ((acvy)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
+          if (acwh.d((MessageRecord)localObject1)) {
             this.mUnreadFlag = 3;
           }
-          localMsgSummary = super.a();
+          localMsgSummary = super.getMsgSummaryTemp();
           this.mHasFlowerMsg = false;
           this.mExtraInfoColor = 0;
           this.mMsgExtroInfo = null;
-          if (!apib.a(paramQQAppInterface, a(), 1001)) {
+          if (!arkw.a(paramQQAppInterface, getRecentUserUin(), 1001)) {
             break label366;
           }
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131693391);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
+          this.mMsgExtroInfo = paramContext.getResources().getString(2131692875);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131167092);
           if (localObject2 != null) {
-            localMsgSummary.strContent = ((abta)localObject2).a(a(), 1001, paramContext.getResources().getString(2131693390), 0);
+            localMsgSummary.strContent = ((acvy)localObject2).a(getRecentUserUin(), 1001, paramContext.getResources().getString(2131692874), 0);
           }
           label171:
-          localObject2 = bdgc.q(paramQQAppInterface, a());
+          localObject2 = bglf.q(paramQQAppInterface, getRecentUserUin());
           localObject1 = localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            localObject1 = bdgc.b(paramQQAppInterface, a(), false);
+            localObject1 = bglf.b(paramQQAppInterface, getRecentUserUin(), false);
           }
           localObject2 = localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            localObject2 = a();
+            localObject2 = getRecentUserUin();
           }
           this.mTitleName = ((String)localObject2);
           this.mAuthenIconId = 0;
-          super.a(paramQQAppInterface);
+          super.dealStatus(paramQQAppInterface);
           a(paramQQAppInterface, localMsgSummary);
-          super.a(paramQQAppInterface, paramContext, localMsgSummary);
+          super.extraUpdate(paramQQAppInterface, paramContext, localMsgSummary);
           if (AppSetting.c)
           {
             paramQQAppInterface = new StringBuilder(24);
@@ -128,14 +115,14 @@ public class RecentSayHelloListItem
         this.mDisplayTime = 0L;
         break label78;
         label366:
-        if (apib.b(paramQQAppInterface, a(), 1001))
+        if (arkw.b(paramQQAppInterface, getRecentUserUin(), 1001))
         {
           this.mHasFlowerMsg = true;
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131694561);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
+          this.mMsgExtroInfo = paramContext.getResources().getString(2131693827);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131167092);
           break label171;
         }
-        super.a((QQMessageFacade.Message)localObject1, a(), paramQQAppInterface, paramContext, localMsgSummary);
+        super.buildMessageBody((IMCoreMessageStub)localObject1, getRecentUserType(), paramQQAppInterface, paramContext, localMsgSummary);
         break label171;
         label430:
         if (this.mUnreadNum == 1) {
@@ -164,19 +151,19 @@ public class RecentSayHelloListItem
       do
       {
         return;
-        paramQQAppInterface = paramQQAppInterface.a(a(), a());
+        paramQQAppInterface = paramQQAppInterface.getDraftSummaryInfo(getRecentUserUin(), getRecentUserType());
       } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.getSummary())));
       l = paramQQAppInterface.getTime();
     } while (this.mDisplayTime > l);
     this.mDisplayTime = l;
     paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = new bamp(paramQQAppInterface.getSummary(), 3, 16);
+    paramMsgSummary.mDraft = new bdnt(paramQQAppInterface.getSummary(), 3, 16);
   }
   
   public boolean a(FansEntity paramFansEntity)
   {
     boolean bool = false;
-    if ((this.age != paramFansEntity.age) || (this.gender != paramFansEntity.gender) || (this.career != paramFansEntity.career) || (this.constellation != paramFansEntity.constellation) || (this.vip != paramFansEntity.vip) || (this.charmIcon != paramFansEntity.charmIcon) || (this.charmLevel != paramFansEntity.charmLevel) || (this.commonId != paramFansEntity.commonId) || (!bdeu.a(this.common, paramFansEntity.common)))
+    if ((this.age != paramFansEntity.age) || (this.gender != paramFansEntity.gender) || (this.career != paramFansEntity.career) || (this.constellation != paramFansEntity.constellation) || (this.vip != paramFansEntity.vip) || (this.charmIcon != paramFansEntity.charmIcon) || (this.charmLevel != paramFansEntity.charmLevel) || (this.commonId != paramFansEntity.commonId) || (!bgjw.a(this.common, paramFansEntity.common)))
     {
       this.age = paramFansEntity.age;
       this.gender = paramFansEntity.gender;
@@ -196,14 +183,43 @@ public class RecentSayHelloListItem
     return bool;
   }
   
-  public long b()
+  public void dealDraft(IMCoreAppRuntime paramIMCoreAppRuntime, MsgSummary paramMsgSummary)
+  {
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      a((QQAppInterface)paramIMCoreAppRuntime, paramMsgSummary);
+    }
+  }
+  
+  public long getLastDraftTime()
   {
     return 0L;
+  }
+  
+  public long getLastMsgTime()
+  {
+    return this.messageRecord.time;
+  }
+  
+  public int getRecentUserType()
+  {
+    return this.messageRecord.istroop;
+  }
+  
+  public String getRecentUserUin()
+  {
+    return this.messageRecord.senderuin;
+  }
+  
+  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext)
+  {
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      a((QQAppInterface)paramIMCoreAppRuntime, paramContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem
  * JD-Core Version:    0.7.0.1
  */

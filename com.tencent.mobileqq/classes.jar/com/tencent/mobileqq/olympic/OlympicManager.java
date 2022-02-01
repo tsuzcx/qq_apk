@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.olympic;
 
-import amsg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
@@ -14,33 +13,34 @@ import android.os.Message;
 import android.support.v4.util.SparseArrayCompat;
 import android.text.TextUtils;
 import android.util.Xml;
-import awah;
-import awaj;
-import awak;
-import awal;
-import awam;
-import awan;
-import awao;
-import awaq;
-import awci;
-import awge;
-import awgf;
-import awgg;
-import awgh;
-import azri;
-import bdgk;
-import bdhb;
-import bdin;
-import bdoo;
-import bhtd;
+import aoqx;
+import ayjz;
+import aykb;
+import aykc;
+import aykd;
+import ayke;
+import aykf;
+import aykg;
+import ayki;
+import ayma;
+import bctj;
+import bgln;
+import bgmg;
+import bgnt;
+import bgtn;
+import bkgm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.OlympicPredownInfo;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.io.ByteArrayInputStream;
@@ -69,7 +69,7 @@ public class OlympicManager
 {
   public static Bitmap a;
   public static Pair<Long, Bitmap> a;
-  private static Comparator<ShuayishuaConfig> jdField_a_of_type_JavaUtilComparator = new awak();
+  private static Comparator<ShuayishuaConfig> jdField_a_of_type_JavaUtilComparator = new aykc();
   static Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap(8);
   public static boolean a;
   private static final int[] jdField_b_of_type_ArrayOfInt;
@@ -79,17 +79,17 @@ public class OlympicManager
   private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
   private Handler jdField_a_of_type_AndroidOsHandler;
   SparseArrayCompat<ArrayList<Long>> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat(1);
-  private awah jdField_a_of_type_Awah;
-  public awaj a;
-  private awan jdField_a_of_type_Awan = new awam(this);
-  private awao jdField_a_of_type_Awao;
-  private awaq jdField_a_of_type_Awaq = new awal(this);
-  private awgf jdField_a_of_type_Awgf;
+  private ayjz jdField_a_of_type_Ayjz;
+  public aykb a;
+  private aykf jdField_a_of_type_Aykf = new ayke(this);
+  private aykg jdField_a_of_type_Aykg;
+  private ayki jdField_a_of_type_Ayki = new aykd(this);
   public QQAppInterface a;
   private OlyimpicConfig jdField_a_of_type_ComTencentMobileqqOlympicOlyimpicConfig;
   public OlympicActConfig a;
   private ShuayishuaConfig jdField_a_of_type_ComTencentMobileqqOlympicShuayishuaConfig;
   private TorchInfo jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
   SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = null;
   public final byte[] a;
   private final int[] jdField_a_of_type_ArrayOfInt = { 0, 0, 0 };
@@ -128,12 +128,12 @@ public class OlympicManager
   {
     this.jdField_a_of_type_ArrayOfByte = new byte[0];
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new bhtd(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new bkgm(Looper.getMainLooper(), this);
     this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_Awao = new awao(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Awgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Awan);
-    this.jdField_a_of_type_Awao.a(this.jdField_a_of_type_Awaq);
+    this.jdField_a_of_type_Aykg = new aykg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Aykf);
+    this.jdField_a_of_type_Aykg.a(this.jdField_a_of_type_Ayki);
     paramQQAppInterface.registObserver(this);
     ThreadManager.post(new OlympicManager.1(this), 5, null, false);
     if (QLog.isColorLevel()) {
@@ -161,18 +161,18 @@ public class OlympicManager
           ((XmlPullParser)localObject1).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
           paramInt = ((XmlPullParser)localObject1).getEventType();
           if (paramInt == 1) {
-            break label1158;
+            break label1157;
           }
           if (paramInt != 2) {
-            break label309;
+            break label308;
           }
           localObject2 = ((XmlPullParser)localObject1).getName();
           if (!((String)localObject2).equalsIgnoreCase("Common")) {
-            break label320;
+            break label319;
           }
           paramInt = ((XmlPullParser)localObject1).next();
           if (paramInt == 1) {
-            break label309;
+            break label308;
           }
           localObject2 = ((XmlPullParser)localObject1).getName();
           if (paramInt != 2) {
@@ -203,10 +203,10 @@ public class OlympicManager
         localOlyimpicConfig.reportNormalInterval = Long.valueOf(((XmlPullParser)localObject1).nextText()).longValue();
       }
     } while ((paramInt != 3) || (!"Common".equals(localObject2)));
-    label309:
-    label320:
+    label308:
+    label319:
     ArrayList localArrayList;
-    label397:
+    label396:
     String str;
     for (;;)
     {
@@ -223,11 +223,11 @@ public class OlympicManager
         ((ShuayishuaConfig)localObject2).grabWordingList = localArrayList;
         paramInt = ((XmlPullParser)localObject1).next();
         if (paramInt == 1) {
-          break label551;
+          break label550;
         }
         str = ((XmlPullParser)localObject1).getName();
         if ((paramInt != 3) || (!str.equalsIgnoreCase("Activity"))) {
-          break label508;
+          break label507;
         }
         if (((ShuayishuaConfig)localObject2).realEnd >= ((ShuayishuaConfig)localObject2).realBegin) {
           localOlyimpicConfig.shuayishuaConfigs.add(localObject2);
@@ -236,32 +236,32 @@ public class OlympicManager
         }
       }
     }
-    label508:
+    label507:
     if (paramInt == 2)
     {
       if (!str.equalsIgnoreCase("Id")) {
-        break label553;
+        break label552;
       }
       ((ShuayishuaConfig)localObject2).id = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
     }
     for (;;)
     {
       paramInt = ((XmlPullParser)localObject1).next();
-      break label397;
-      label551:
+      break label396;
+      label550:
       break;
-      label553:
+      label552:
       if (str.equalsIgnoreCase("Type"))
       {
         ((ShuayishuaConfig)localObject2).type = Integer.valueOf(((XmlPullParser)localObject1).nextText()).intValue();
       }
       else if (str.equalsIgnoreCase("Begin"))
       {
-        ((ShuayishuaConfig)localObject2).realBegin = awci.a(((XmlPullParser)localObject1).nextText());
+        ((ShuayishuaConfig)localObject2).realBegin = ayma.a(((XmlPullParser)localObject1).nextText());
       }
       else if (str.equalsIgnoreCase("End"))
       {
-        ((ShuayishuaConfig)localObject2).realEnd = awci.a(((XmlPullParser)localObject1).nextText());
+        ((ShuayishuaConfig)localObject2).realEnd = ayma.a(((XmlPullParser)localObject1).nextText());
       }
       else if (str.equalsIgnoreCase("BackGroundImg"))
       {
@@ -343,7 +343,7 @@ public class OlympicManager
         }
       }
     }
-    label1158:
+    label1157:
     int k = localOlyimpicConfig.shuayishuaConfigs.size();
     if (paramArrayList != null) {}
     for (int i = paramArrayList.size();; i = 0)
@@ -357,14 +357,14 @@ public class OlympicManager
         {
           paramInt = ((Integer)paramArrayList.get(0 % i)).intValue() * 1000;
           if (QLog.isColorLevel()) {
-            QLog.i("OlympicManager", 2, "parseConfig last.realBegin=" + ((ShuayishuaConfig)localObject1).realBegin + "(" + awci.a(((ShuayishuaConfig)localObject1).realBegin) + "),countHitConfig =" + 0 + ",diff = " + paramInt);
+            QLog.i("OlympicManager", 2, "parseConfig last.realBegin=" + ((ShuayishuaConfig)localObject1).realBegin + "(" + ayma.a(((ShuayishuaConfig)localObject1).realBegin) + "),countHitConfig =" + 0 + ",diff = " + paramInt);
           }
           ((ShuayishuaConfig)localObject1).realBegin += paramInt;
           l = ((ShuayishuaConfig)localObject1).realEnd;
           ((ShuayishuaConfig)localObject1).uiEnd = l;
           ((ShuayishuaConfig)localObject1).uiBegin = l;
           paramInt = 1;
-          break label1609;
+          break label1608;
         }
       }
       for (;;)
@@ -376,19 +376,19 @@ public class OlympicManager
           {
             int m = ((Integer)paramArrayList.get(paramInt % i)).intValue() * 1000;
             if (QLog.isColorLevel()) {
-              QLog.i("OlympicManager", 2, "parseConfig cur.realBegin=" + ((ShuayishuaConfig)localObject2).realBegin + "(" + awci.a(((ShuayishuaConfig)localObject2).realBegin) + "),countHitConfig =" + paramInt + ",diff = " + m);
+              QLog.i("OlympicManager", 2, "parseConfig cur.realBegin=" + ((ShuayishuaConfig)localObject2).realBegin + "(" + ayma.a(((ShuayishuaConfig)localObject2).realBegin) + "),countHitConfig =" + paramInt + ",diff = " + m);
             }
             ((ShuayishuaConfig)localObject2).realBegin += m;
             l = ((ShuayishuaConfig)localObject2).realEnd;
             ((ShuayishuaConfig)localObject2).uiEnd = l;
             ((ShuayishuaConfig)localObject2).uiBegin = l;
             if ((localObject1 == null) || (((ShuayishuaConfig)localObject1).type != 1)) {
-              break label1615;
+              break label1614;
             }
             l = ((ShuayishuaConfig)localObject2).realBegin;
             ((ShuayishuaConfig)localObject1).realEnd = l;
             ((ShuayishuaConfig)localObject1).uiEnd = l;
-            break label1615;
+            break label1614;
             ((ShuayishuaConfig)localObject1).uiBegin = ((ShuayishuaConfig)localObject1).realBegin;
             ((ShuayishuaConfig)localObject1).uiEnd = ((ShuayishuaConfig)localObject1).realEnd;
             paramInt = 0;
@@ -397,7 +397,7 @@ public class OlympicManager
           {
             ((ShuayishuaConfig)localObject2).uiBegin = ((ShuayishuaConfig)localObject2).realBegin;
             ((ShuayishuaConfig)localObject2).uiEnd = ((ShuayishuaConfig)localObject2).realEnd;
-            break label1619;
+            break label1618;
           }
         }
         else
@@ -405,12 +405,12 @@ public class OlympicManager
           Collections.sort(localOlyimpicConfig.shuayishuaConfigs, jdField_a_of_type_JavaUtilComparator);
           return localOlyimpicConfig;
         }
-        label1609:
+        label1608:
         int j = 1;
         continue;
-        label1615:
+        label1614:
         paramInt += 1;
-        label1619:
+        label1618:
         j += 1;
         localObject1 = localObject2;
       }
@@ -422,15 +422,15 @@ public class OlympicManager
   private void a(long paramLong)
   {
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqOlympicShuayishuaConfig;
-    awaj localawaj = this.jdField_a_of_type_Awaj;
-    if (localawaj == null) {
+    aykb localaykb = this.jdField_a_of_type_Aykb;
+    if (localaykb == null) {
       return;
     }
     long l = paramLong;
     if (paramLong == 0L) {
       l = NetConnInfoCenter.getServerTimeMillis();
     }
-    boolean bool1 = amsg.a().b();
+    boolean bool1 = aoqx.a().b();
     boolean bool2 = e();
     boolean bool3 = a("olympic_entrance_setting", true);
     StringBuilder localStringBuilder;
@@ -450,9 +450,9 @@ public class OlympicManager
     label235:
     for (localObject = "null";; localObject = "not null")
     {
-      QLog.d("OlympicManager", 2, (String)localObject + ",currentTime = " + l + "(" + awci.a(l) + "),closeEntrance = " + bool2 + ",mHasChechBreathOnRecovery = " + this.jdField_d_of_type_Boolean + ",olympicSettingFlag = " + bool3 + ",mTorchbearerFlag = " + this.jdField_a_of_type_Int);
+      QLog.d("OlympicManager", 2, (String)localObject + ",currentTime = " + l + "(" + ayma.a(l) + "),closeEntrance = " + bool2 + ",mHasChechBreathOnRecovery = " + this.jdField_d_of_type_Boolean + ",olympicSettingFlag = " + bool3 + ",mTorchbearerFlag = " + this.jdField_a_of_type_Int);
       if (this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig != null) {}
-      localawaj.a();
+      localaykb.a();
       return;
       localObject = "not null";
       break;
@@ -461,47 +461,47 @@ public class OlympicManager
   
   private void a(OlympicActConfig paramOlympicActConfig, boolean paramBoolean)
   {
-    awci.b("OlympicManager", new Object[] { "tryDownloadActResource ，forceDownload = " + paramBoolean });
+    ayma.b("OlympicManager", new Object[] { "tryDownloadActResource ，forceDownload = " + paramBoolean });
     if (paramOlympicActConfig == null)
     {
       QLog.i("OlympicManager", 1, "tryDownloadActResource actconfig == null!");
       return;
     }
     boolean bool;
-    if (this.jdField_a_of_type_Awah == null)
+    if (this.jdField_a_of_type_Ayjz == null)
     {
       localObject1 = "dpc is null";
       QLog.i("OlympicManager", 1, "tryDownloadActResource dpc =" + (String)localObject1);
-      if ((this.jdField_a_of_type_Awah != null) && (!this.jdField_a_of_type_Awah.jdField_a_of_type_Boolean)) {
+      if ((this.jdField_a_of_type_Ayjz != null) && (!this.jdField_a_of_type_Ayjz.jdField_a_of_type_Boolean)) {
         break label222;
       }
       bool = true;
       label105:
       localObject1 = new HashMap();
-      if (this.jdField_a_of_type_Awah != null) {
+      if (this.jdField_a_of_type_Ayjz != null) {
         break label228;
       }
     }
     label222:
     label228:
-    for (int i = 0;; i = this.jdField_a_of_type_Awah.jdField_a_of_type_Int)
+    for (int i = 0;; i = this.jdField_a_of_type_Ayjz.jdField_a_of_type_Int)
     {
       ((HashMap)localObject1).put("dpc", String.valueOf(i));
-      azri.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "olympic_down_dpc", bool, 0L, 0L, (HashMap)localObject1, "", false);
+      bctj.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "olympic_down_dpc", bool, 0L, 0L, (HashMap)localObject1, "", false);
       if (paramBoolean) {
         break label262;
       }
       if (d()) {
         break label239;
       }
-      awci.b("OlympicManager", new Object[] { "tryDownloadActResource, can't auto pre download, return" });
+      ayma.b("OlympicManager", new Object[] { "tryDownloadActResource, can't auto pre download, return" });
       return;
-      if (this.jdField_a_of_type_Awah.jdField_a_of_type_JavaLangString == null)
+      if (this.jdField_a_of_type_Ayjz.jdField_a_of_type_JavaLangString == null)
       {
         localObject1 = "dpc.string is null";
         break;
       }
-      localObject1 = this.jdField_a_of_type_Awah.jdField_a_of_type_JavaLangString;
+      localObject1 = this.jdField_a_of_type_Ayjz.jdField_a_of_type_JavaLangString;
       break;
       bool = false;
       break label105;
@@ -509,15 +509,15 @@ public class OlympicManager
     label239:
     if (!c())
     {
-      awci.b("OlympicManager", new Object[] { "tryDownloadActResource, isNetworkCanPredown is false, return" });
+      ayma.b("OlympicManager", new Object[] { "tryDownloadActResource, isNetworkCanPredown is false, return" });
       return;
     }
     label262:
     long l = NetConnInfoCenter.getServerTimeMillis();
     Object localObject1 = paramOlympicActConfig.getConfigString("HomePage", "End");
-    if ((TextUtils.isEmpty((CharSequence)localObject1)) || (awci.a((String)localObject1) < l))
+    if ((TextUtils.isEmpty((CharSequence)localObject1)) || (ayma.a((String)localObject1) < l))
     {
-      awci.b("OlympicManager", new Object[] { "tryDownloadActResource, time expired!" });
+      ayma.b("OlympicManager", new Object[] { "tryDownloadActResource, time expired!" });
       return;
     }
     ArrayList localArrayList1 = new ArrayList();
@@ -526,7 +526,7 @@ public class OlympicManager
     Object localObject3;
     if ((a()) && (this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo != null))
     {
-      awci.b("OlympicManager", new Object[] { "tryDownloadActResource, cityPic & starPic, isSelfTorchbearer() && mTorchbearerInfo != null" });
+      ayma.b("OlympicManager", new Object[] { "tryDownloadActResource, cityPic & starPic, isSelfTorchbearer() && mTorchbearerInfo != null" });
       localObject1 = localObject2;
       if (this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo.city_list.size() > 0)
       {
@@ -534,9 +534,9 @@ public class OlympicManager
         localObject1 = localObject2;
         if (localObject3 != null)
         {
-          this.jdField_a_of_type_Awao.a(((TorchInfo.CityInfo)localObject3).city_pic_url, ((TorchInfo.CityInfo)localObject3).city_pic_md5, new String[] { "ActConfig", "CityImage", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
+          this.jdField_a_of_type_Aykg.a(((TorchInfo.CityInfo)localObject3).city_pic_url, ((TorchInfo.CityInfo)localObject3).city_pic_md5, new String[] { "ActConfig", "CityImage", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
           localArrayList1.add(((TorchInfo.CityInfo)localObject3).city_pic_md5);
-          this.jdField_a_of_type_Awao.a(((TorchInfo.CityInfo)localObject3).cons_pic_url, ((TorchInfo.CityInfo)localObject3).cons_pic_md5, new String[] { "ActConfig", "StarImage", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
+          this.jdField_a_of_type_Aykg.a(((TorchInfo.CityInfo)localObject3).cons_pic_url, ((TorchInfo.CityInfo)localObject3).cons_pic_md5, new String[] { "ActConfig", "StarImage", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
           localArrayList1.add(((TorchInfo.CityInfo)localObject3).cons_pic_md5);
           localObject1 = localObject2;
           if (TextUtils.isEmpty("")) {
@@ -551,9 +551,9 @@ public class OlympicManager
         localObject2 = localObject1;
         if (localObject3 != null)
         {
-          this.jdField_a_of_type_Awao.a(((TorchInfo.CityInfo)localObject3).city_pic_url, ((TorchInfo.CityInfo)localObject3).city_pic_md5, new String[] { "ActConfig", "City2Image", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
+          this.jdField_a_of_type_Aykg.a(((TorchInfo.CityInfo)localObject3).city_pic_url, ((TorchInfo.CityInfo)localObject3).city_pic_md5, new String[] { "ActConfig", "City2Image", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
           localArrayList1.add(((TorchInfo.CityInfo)localObject3).city_pic_md5);
-          this.jdField_a_of_type_Awao.a(((TorchInfo.CityInfo)localObject3).cons_pic_url, ((TorchInfo.CityInfo)localObject3).cons_pic_md5, new String[] { "ActConfig", "Star2Image", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
+          this.jdField_a_of_type_Aykg.a(((TorchInfo.CityInfo)localObject3).cons_pic_url, ((TorchInfo.CityInfo)localObject3).cons_pic_md5, new String[] { "ActConfig", "Star2Image", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
           localArrayList1.add(((TorchInfo.CityInfo)localObject3).cons_pic_md5);
           localObject2 = localObject1;
         }
@@ -573,11 +573,11 @@ public class OlympicManager
         break;
       }
       paramBoolean = true;
-      awci.b("OlympicManager", new Object[] { "tryDownloadActResource, homePageBg==null?", Boolean.valueOf(paramBoolean) });
+      ayma.b("OlympicManager", new Object[] { "tryDownloadActResource, homePageBg==null?", Boolean.valueOf(paramBoolean) });
       if (localObject1 == null) {
         break label1943;
       }
-      this.jdField_a_of_type_Awao.a(((OlympicActConfig.HomePageBg)localObject1).url, ((OlympicActConfig.HomePageBg)localObject1).md5, new String[] { "ActConfig", "homePageBg", "01" }, false, 2, true);
+      this.jdField_a_of_type_Aykg.a(((OlympicActConfig.HomePageBg)localObject1).url, ((OlympicActConfig.HomePageBg)localObject1).md5, new String[] { "ActConfig", "homePageBg", "01" }, false, 2, true);
       localArrayList1.add(((OlympicActConfig.HomePageBg)localObject1).md5);
       localObject3 = ((OlympicActConfig.HomePageBg)localObject1).md5;
       localObject1 = paramOlympicActConfig.getHomePageBg("2");
@@ -585,14 +585,14 @@ public class OlympicManager
         break label1452;
       }
       paramBoolean = true;
-      awci.b("OlympicManager", new Object[] { "tryDownloadActResource, homePageBg2==null?", Boolean.valueOf(paramBoolean) });
+      ayma.b("OlympicManager", new Object[] { "tryDownloadActResource, homePageBg2==null?", Boolean.valueOf(paramBoolean) });
       if (localObject1 != null)
       {
-        this.jdField_a_of_type_Awao.a(((OlympicActConfig.HomePageBg)localObject1).url, ((OlympicActConfig.HomePageBg)localObject1).md5, new String[] { "ActConfig", "homePageBg", "02" }, false, 2, true);
+        this.jdField_a_of_type_Aykg.a(((OlympicActConfig.HomePageBg)localObject1).url, ((OlympicActConfig.HomePageBg)localObject1).md5, new String[] { "ActConfig", "homePageBg", "02" }, false, 2, true);
         localArrayList1.add(((OlympicActConfig.HomePageBg)localObject1).md5);
       }
       localObject1 = "";
-      awci.b("OlympicManager", new Object[] { "tryDownloadActResource, actConfig.mTorchImageMap.size() = ", Integer.valueOf(paramOlympicActConfig.getTorchImageMap().size()) });
+      ayma.b("OlympicManager", new Object[] { "tryDownloadActResource, actConfig.mTorchImageMap.size() = ", Integer.valueOf(paramOlympicActConfig.getTorchImageMap().size()) });
       localObject4 = paramOlympicActConfig.getTorchImageMap().keySet().iterator();
       while (((Iterator)localObject4).hasNext())
       {
@@ -601,14 +601,14 @@ public class OlympicManager
         if (localTorchImage == null) {
           break label1940;
         }
-        this.jdField_a_of_type_Awao.a(localTorchImage.url, localTorchImage.md5, new String[] { "ActConfig", "TorchImage", str }, false, 2, true);
+        this.jdField_a_of_type_Aykg.a(localTorchImage.url, localTorchImage.md5, new String[] { "ActConfig", "TorchImage", str }, false, 2, true);
         localArrayList1.add(localTorchImage.md5);
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           break label1940;
         }
         localObject1 = localTorchImage.md5;
       }
-      awci.b("OlympicManager", new Object[] { "tryDownloadActResource, actConfig.getChosenCityImageList.size() = ", Integer.valueOf(paramOlympicActConfig.getChosenCityImageList().size()) });
+      ayma.b("OlympicManager", new Object[] { "tryDownloadActResource, actConfig.getChosenCityImageList.size() = ", Integer.valueOf(paramOlympicActConfig.getChosenCityImageList().size()) });
       localObject3 = paramOlympicActConfig.getChosenCityImageList().iterator();
       localObject1 = localObject2;
       localObject2 = localObject1;
@@ -616,9 +616,9 @@ public class OlympicManager
     localObject2 = (OlympicActConfig.CityImage)((Iterator)localObject3).next();
     if (localObject2 != null)
     {
-      this.jdField_a_of_type_Awao.a(((OlympicActConfig.CityImage)localObject2).url, ((OlympicActConfig.CityImage)localObject2).md5, new String[] { "ActConfig", "CityImage", ((OlympicActConfig.CityImage)localObject2).companyId + "_" + ((OlympicActConfig.CityImage)localObject2).picId }, false, 2, true);
+      this.jdField_a_of_type_Aykg.a(((OlympicActConfig.CityImage)localObject2).url, ((OlympicActConfig.CityImage)localObject2).md5, new String[] { "ActConfig", "CityImage", ((OlympicActConfig.CityImage)localObject2).companyId + "_" + ((OlympicActConfig.CityImage)localObject2).picId }, false, 2, true);
       localArrayList1.add(((OlympicActConfig.CityImage)localObject2).md5);
-      this.jdField_a_of_type_Awao.a(((OlympicActConfig.CityImage)localObject2).starUrl, ((OlympicActConfig.CityImage)localObject2).starMd5, new String[] { "ActConfig", "StarImage", ((OlympicActConfig.CityImage)localObject2).companyId + "_" + ((OlympicActConfig.CityImage)localObject2).picId }, false, 2, true);
+      this.jdField_a_of_type_Aykg.a(((OlympicActConfig.CityImage)localObject2).starUrl, ((OlympicActConfig.CityImage)localObject2).starMd5, new String[] { "ActConfig", "StarImage", ((OlympicActConfig.CityImage)localObject2).companyId + "_" + ((OlympicActConfig.CityImage)localObject2).picId }, false, 2, true);
       localArrayList1.add(((OlympicActConfig.CityImage)localObject2).starMd5);
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         localObject1 = ((OlympicActConfig.CityImage)localObject2).md5;
@@ -636,7 +636,7 @@ public class OlympicManager
       str = paramOlympicActConfig.getConfigString("TorchAnim", "FileMd5");
       if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty(str)))
       {
-        this.jdField_a_of_type_Awao.a((String)localObject4, str, new String[] { "ActConfig", "TorchAnim" }, false, 2, true);
+        this.jdField_a_of_type_Aykg.a((String)localObject4, str, new String[] { "ActConfig", "TorchAnim" }, false, 2, true);
         localArrayList2.add(str);
         label1538:
         localObject4 = paramOlympicActConfig.getConfigString("MsgTabBG", "Img");
@@ -644,7 +644,7 @@ public class OlympicManager
         if ((TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty(str))) {
           break label1892;
         }
-        this.jdField_a_of_type_Awao.a((String)localObject4, str, new String[] { "ActConfig", "MsgTabBG" }, false, 2, true);
+        this.jdField_a_of_type_Aykg.a((String)localObject4, str, new String[] { "ActConfig", "MsgTabBG" }, false, 2, true);
         localArrayList1.add(str);
         label1619:
         localObject4 = paramOlympicActConfig.getConfigString("TorchImageNoBg", "FileUrl");
@@ -652,7 +652,7 @@ public class OlympicManager
         if ((TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty(str))) {
           break label1910;
         }
-        this.jdField_a_of_type_Awao.a((String)localObject4, str, new String[] { "ActConfig", "TorchImageNoBg" }, false, 2, true);
+        this.jdField_a_of_type_Aykg.a((String)localObject4, str, new String[] { "ActConfig", "TorchImageNoBg" }, false, 2, true);
         localArrayList1.add(str);
         label1700:
         localObject4 = paramOlympicActConfig.getConfigString("cityaward", "Img");
@@ -660,12 +660,12 @@ public class OlympicManager
         if ((TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty(paramOlympicActConfig))) {
           break label1922;
         }
-        this.jdField_a_of_type_Awao.a((String)localObject4, paramOlympicActConfig, null, false, 2, true);
+        this.jdField_a_of_type_Aykg.a((String)localObject4, paramOlympicActConfig, null, false, 2, true);
         localArrayList1.add(paramOlympicActConfig);
       }
       for (;;)
       {
-        if (awci.a(BaseApplicationImpl.getContext(), "olympic_predown_act")) {
+        if (ayma.a(BaseApplicationImpl.getContext(), "olympic_predown_act")) {
           this.jdField_b_of_type_AndroidOsHandler.postDelayed(new OlympicManager.13(this, localArrayList1, localArrayList2), 60000L);
         }
         if (!QLog.isColorLevel()) {
@@ -673,16 +673,16 @@ public class OlympicManager
         }
         QLog.d("OlympicManager", 2, "firstTorchMD5:" + (String)localObject1 + ",firstCityMD5:" + (String)localObject2 + ",firstCityBgMD5:" + (String)localObject3 + ",takeAwardImgUrl " + (String)localObject4 + ",takeAwardImgMd5" + paramOlympicActConfig);
         return;
-        awci.b("OlympicManager", new Object[] { "tryDownloadActResource, TorchAnim,  torchAnimUrl or torchAnimMd5 is empty" });
+        ayma.b("OlympicManager", new Object[] { "tryDownloadActResource, TorchAnim,  torchAnimUrl or torchAnimMd5 is empty" });
         break label1538;
         label1892:
-        awci.b("OlympicManager", new Object[] { "tryDownloadActResource, MsgTabBG,  msgTabImgUrl or msgTabImgMD5 is empty" });
+        ayma.b("OlympicManager", new Object[] { "tryDownloadActResource, MsgTabBG,  msgTabImgUrl or msgTabImgMD5 is empty" });
         break label1619;
         label1910:
         QLog.i("OlympicManager", 1, "tryDownloadActResource, TorchImageNoBg,  torchImageNoBgUrl or torchImageNoBgMD5 is empty");
         break label1700;
         label1922:
-        awci.b("OlympicManager", new Object[] { "tryDownloadActResource, takeAwardImg,  takeAwardImgUrl or takeAwardImgUrl is empty" });
+        ayma.b("OlympicManager", new Object[] { "tryDownloadActResource, takeAwardImg,  takeAwardImgUrl or takeAwardImgUrl is empty" });
       }
       label1940:
       break label1184;
@@ -712,7 +712,7 @@ public class OlympicManager
           bool2 = bool1;
           if (paramList1.hasNext())
           {
-            bool1 = awao.a((String)paramList1.next()) & bool1;
+            bool1 = aykg.a((String)paramList1.next()) & bool1;
             if (!bool1) {
               bool2 = bool1;
             }
@@ -724,7 +724,7 @@ public class OlympicManager
             bool3 = bool1;
             if (paramList1.hasNext())
             {
-              bool1 = awao.a((String)paramList1.next()) & bool1;
+              bool1 = aykg.a((String)paramList1.next()) & bool1;
               if (bool1) {
                 break label274;
               }
@@ -750,8 +750,8 @@ public class OlympicManager
             }
             paramList1 = "1";
             paramList2.put("act_all_resource", paramList1);
-            azri.a(BaseApplicationImpl.getContext()).a("", paramString, true, 0L, 0L, paramList2, "", false);
-            awci.a(BaseApplicationImpl.getContext(), paramString);
+            bctj.a(BaseApplicationImpl.getContext()).a("", paramString, true, 0L, 0L, paramList2, "", false);
+            ayma.a(BaseApplicationImpl.getContext(), paramString);
             return;
           }
         }
@@ -789,8 +789,8 @@ public class OlympicManager
       for (paramList1 = "1";; paramList1 = "0")
       {
         paramList2.put("shua_all_resource", paramList1);
-        azri.a(BaseApplicationImpl.getContext()).a("", paramString, true, 0L, 0L, paramList2, "", false);
-        awci.a(BaseApplicationImpl.getContext(), paramString);
+        bctj.a(BaseApplicationImpl.getContext()).a("", paramString, true, 0L, 0L, paramList2, "", false);
+        ayma.a(BaseApplicationImpl.getContext(), paramString);
         return;
       }
       paramList1 = "0";
@@ -882,7 +882,7 @@ public class OlympicManager
         if (j < ((ArrayList)localObject2).size())
         {
           ShuayishuaConfig localShuayishuaConfig = (ShuayishuaConfig)((ArrayList)localObject2).get(j);
-          ((StringBuilder)localObject1).append(localShuayishuaConfig.realBegin + "(" + awci.a(localShuayishuaConfig.realBegin) + ")").append("-").append(localShuayishuaConfig.uiEnd + "(" + awci.a(localShuayishuaConfig.uiEnd) + ")").append(";");
+          ((StringBuilder)localObject1).append(localShuayishuaConfig.realBegin + "(" + ayma.a(localShuayishuaConfig.realBegin) + ")").append("-").append(localShuayishuaConfig.uiEnd + "(" + ayma.a(localShuayishuaConfig.uiEnd) + ")").append(";");
           j += 1;
           continue;
           i = -k - 1;
@@ -897,7 +897,7 @@ public class OlympicManager
       if (((ShuayishuaConfig)localObject1).uiEnd < paramLong)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("OlympicManager", 2, "handleCheckTime ,cConfig.uiEnd = " + ((ShuayishuaConfig)localObject1).uiEnd + "(" + awci.a(((ShuayishuaConfig)localObject1).uiEnd) + "),current = " + paramLong + "(" + awci.a(paramLong) + ")");
+          QLog.d("OlympicManager", 2, "handleCheckTime ,cConfig.uiEnd = " + ((ShuayishuaConfig)localObject1).uiEnd + "(" + ayma.a(((ShuayishuaConfig)localObject1).uiEnd) + "),current = " + paramLong + "(" + ayma.a(paramLong) + ")");
         }
         localObject1 = null;
       }
@@ -943,7 +943,7 @@ public class OlympicManager
                   }
                   QLog.i("OlympicManager", 2, "handleCheckTime ,strTimeEnd=" + (String)localObject1 + ",end=" + l1 + ",delay = " + paramLong);
                   return;
-                  l2 = awci.a((String)localObject1);
+                  l2 = ayma.a((String)localObject1);
                   l1 = l2;
                   if (l2 <= 0L) {
                     break label560;
@@ -1050,12 +1050,12 @@ public class OlympicManager
       return;
       if (!d())
       {
-        awci.b("OlympicManager", new Object[] { "tryDownload, can't auto pre download, return" });
+        ayma.b("OlympicManager", new Object[] { "tryDownload, can't auto pre download, return" });
         return;
       }
       if (!c())
       {
-        awci.b("OlympicManager", new Object[] { "tryDownload, isNetworkCanPredown is false, return" });
+        ayma.b("OlympicManager", new Object[] { "tryDownload, isNetworkCanPredown is false, return" });
         return;
       }
       long l = NetConnInfoCenter.getServerTimeMillis();
@@ -1069,22 +1069,22 @@ public class OlympicManager
         {
           if ((!TextUtils.isEmpty(localShuayishuaConfig.LUIconImg)) && (!TextUtils.isEmpty(localShuayishuaConfig.LUIconImgMd5)))
           {
-            this.jdField_a_of_type_Awao.a(localShuayishuaConfig.LUIconImg, localShuayishuaConfig.LUIconImgMd5, new String[] { "shuayishua", String.valueOf(localShuayishuaConfig.id) }, false, 1, true);
+            this.jdField_a_of_type_Aykg.a(localShuayishuaConfig.LUIconImg, localShuayishuaConfig.LUIconImgMd5, new String[] { "shuayishua", String.valueOf(localShuayishuaConfig.id) }, false, 1, true);
             localArrayList1.add(localShuayishuaConfig.LUIconImgMd5);
           }
           if ((!TextUtils.isEmpty(localShuayishuaConfig.torchLogoImg)) && (!TextUtils.isEmpty(localShuayishuaConfig.torchLogoImgMd5)))
           {
-            this.jdField_a_of_type_Awao.a(localShuayishuaConfig.torchLogoImg, localShuayishuaConfig.torchLogoImgMd5, new String[] { "shuayishua", String.valueOf(localShuayishuaConfig.id) }, false, 1, true);
+            this.jdField_a_of_type_Aykg.a(localShuayishuaConfig.torchLogoImg, localShuayishuaConfig.torchLogoImgMd5, new String[] { "shuayishua", String.valueOf(localShuayishuaConfig.id) }, false, 1, true);
             localArrayList1.add(localShuayishuaConfig.torchLogoImgMd5);
           }
           if ((!TextUtils.isEmpty(localShuayishuaConfig.torchAnimUrl)) && (!TextUtils.isEmpty(localShuayishuaConfig.torchAnimMd5)))
           {
-            this.jdField_a_of_type_Awao.a(localShuayishuaConfig.torchAnimUrl, localShuayishuaConfig.torchAnimMd5, new String[] { "shuayishua_anim", String.valueOf(localShuayishuaConfig.id) }, false, 1, true);
+            this.jdField_a_of_type_Aykg.a(localShuayishuaConfig.torchAnimUrl, localShuayishuaConfig.torchAnimMd5, new String[] { "shuayishua_anim", String.valueOf(localShuayishuaConfig.id) }, false, 1, true);
             localArrayList2.add(localShuayishuaConfig.torchAnimMd5);
           }
         }
       }
-    } while (!awci.a(BaseApplicationImpl.getContext(), "olympic_predown_shua"));
+    } while (!ayma.a(BaseApplicationImpl.getContext(), "olympic_predown_shua"));
     this.jdField_b_of_type_AndroidOsHandler.postDelayed(new OlympicManager.12(this, localArrayList1, localArrayList2), 60000L);
   }
   
@@ -1181,7 +1181,7 @@ public class OlympicManager
     }
     try
     {
-      awci.b("OlympicManager", new Object[] { "getEntity, url=", str });
+      ayma.b("OlympicManager", new Object[] { "getEntity, url=", str });
       boolean bool = TextUtils.isEmpty(paramString);
       if (bool) {
         paramString = localObject;
@@ -1193,7 +1193,7 @@ public class OlympicManager
         break;
         try
         {
-          paramString = this.jdField_a_of_type_Awgf.a(OlympicPredownInfo.class, false, "url = ?", new String[] { paramString }, null, null, null, null);
+          paramString = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(OlympicPredownInfo.class, false, "url = ?", new String[] { paramString }, null, null, null, null);
           if ((paramString != null) && (paramString.size() > 0)) {
             paramString = (OlympicPredownInfo)paramString.get(0);
           }
@@ -1222,16 +1222,16 @@ public class OlympicManager
     //   3: dup
     //   4: getstatic 1136	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   7: invokevirtual 1140	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
-    //   10: new 213	java/lang/StringBuilder
+    //   10: new 212	java/lang/StringBuilder
     //   13: dup
-    //   14: invokespecial 214	java/lang/StringBuilder:<init>	()V
+    //   14: invokespecial 213	java/lang/StringBuilder:<init>	()V
     //   17: ldc_w 1142
-    //   20: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: aload_0
     //   24: getfield 142	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   27: invokevirtual 1145	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   30: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 231	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   36: invokespecial 1148	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   39: astore_1
     //   40: aload_1
@@ -1256,7 +1256,7 @@ public class OlympicManager
     //   76: astore_3
     //   77: aload_1
     //   78: invokevirtual 1167	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   81: checkcast 264	com/tencent/mobileqq/olympic/OlyimpicConfig
+    //   81: checkcast 263	com/tencent/mobileqq/olympic/OlyimpicConfig
     //   84: astore 5
     //   86: aload_1
     //   87: ifnull +7 -> 94
@@ -1270,21 +1270,21 @@ public class OlympicManager
     //   102: invokevirtual 1171	java/io/FileInputStream:close	()V
     //   105: aload 5
     //   107: astore_1
-    //   108: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   108: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   111: ifeq +29 -> 140
-    //   114: ldc 211
+    //   114: ldc 210
     //   116: iconst_2
-    //   117: new 213	java/lang/StringBuilder
+    //   117: new 212	java/lang/StringBuilder
     //   120: dup
-    //   121: invokespecial 214	java/lang/StringBuilder:<init>	()V
+    //   121: invokespecial 213	java/lang/StringBuilder:<init>	()V
     //   124: ldc_w 1173
-    //   127: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   130: aload_1
-    //   131: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   134: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   137: invokestatic 249	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   131: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   134: invokevirtual 231	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   137: invokestatic 248	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   140: aload_0
-    //   141: getfield 966	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlyimpicConfig	Lcom/tencent/mobileqq/olympic/OlyimpicConfig;
+    //   141: getfield 965	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlyimpicConfig	Lcom/tencent/mobileqq/olympic/OlyimpicConfig;
     //   144: ifnonnull +19 -> 163
     //   147: aload_1
     //   148: ifnull +15 -> 163
@@ -1292,29 +1292,29 @@ public class OlympicManager
     //   152: getfield 155	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   155: iconst_4
     //   156: aload_1
-    //   157: invokevirtual 1053	android/os/Handler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-    //   160: invokevirtual 921	android/os/Message:sendToTarget	()V
+    //   157: invokevirtual 1052	android/os/Handler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
+    //   160: invokevirtual 920	android/os/Message:sendToTarget	()V
     //   163: aload_1
     //   164: areturn
     //   165: astore_1
-    //   166: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   166: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   169: ifeq -75 -> 94
-    //   172: ldc 211
+    //   172: ldc 210
     //   174: iconst_2
-    //   175: ldc_w 634
+    //   175: ldc_w 633
     //   178: aload_1
-    //   179: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   179: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   182: goto -88 -> 94
     //   185: astore_2
     //   186: aload 5
     //   188: astore_1
-    //   189: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   189: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   192: ifeq -84 -> 108
-    //   195: ldc 211
+    //   195: ldc 210
     //   197: iconst_2
-    //   198: ldc_w 634
+    //   198: ldc_w 633
     //   201: aload_2
-    //   202: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   202: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   205: aload 5
     //   207: astore_1
     //   208: goto -100 -> 108
@@ -1327,17 +1327,17 @@ public class OlympicManager
     //   218: astore 4
     //   220: aload_1
     //   221: astore_3
-    //   222: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   222: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   225: ifeq +19 -> 244
     //   228: aload_2
     //   229: astore 4
     //   231: aload_1
     //   232: astore_3
-    //   233: ldc 211
+    //   233: ldc 210
     //   235: iconst_2
-    //   236: ldc_w 634
+    //   236: ldc_w 633
     //   239: aload 5
-    //   241: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   241: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   244: aload_1
     //   245: ifnull +7 -> 252
     //   248: aload_1
@@ -1350,22 +1350,22 @@ public class OlympicManager
     //   261: astore_1
     //   262: goto -154 -> 108
     //   265: astore_1
-    //   266: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   266: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   269: ifeq -17 -> 252
-    //   272: ldc 211
+    //   272: ldc 210
     //   274: iconst_2
-    //   275: ldc_w 634
+    //   275: ldc_w 633
     //   278: aload_1
-    //   279: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   279: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   282: goto -30 -> 252
     //   285: astore_1
-    //   286: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   286: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   289: ifeq +13 -> 302
-    //   292: ldc 211
+    //   292: ldc 210
     //   294: iconst_2
-    //   295: ldc_w 634
+    //   295: ldc_w 633
     //   298: aload_1
-    //   299: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   299: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   302: aconst_null
     //   303: astore_1
     //   304: goto -196 -> 108
@@ -1385,22 +1385,22 @@ public class OlympicManager
     //   328: aload_1
     //   329: athrow
     //   330: astore_3
-    //   331: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   331: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   334: ifeq -14 -> 320
-    //   337: ldc 211
+    //   337: ldc 210
     //   339: iconst_2
-    //   340: ldc_w 634
+    //   340: ldc_w 633
     //   343: aload_3
-    //   344: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   344: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   347: goto -27 -> 320
     //   350: astore_2
-    //   351: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   351: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   354: ifeq -26 -> 328
-    //   357: ldc 211
+    //   357: ldc 210
     //   359: iconst_2
-    //   360: ldc_w 634
+    //   360: ldc_w 633
     //   363: aload_2
-    //   364: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   364: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   367: goto -39 -> 328
     //   370: astore_1
     //   371: aconst_null
@@ -1485,16 +1485,16 @@ public class OlympicManager
     //   18: dup
     //   19: getstatic 1136	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   22: invokevirtual 1140	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
-    //   25: new 213	java/lang/StringBuilder
+    //   25: new 212	java/lang/StringBuilder
     //   28: dup
-    //   29: invokespecial 214	java/lang/StringBuilder:<init>	()V
+    //   29: invokespecial 213	java/lang/StringBuilder:<init>	()V
     //   32: ldc_w 1177
-    //   35: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: aload_0
     //   39: getfield 142	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   42: invokevirtual 1145	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   45: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: invokevirtual 231	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   51: invokespecial 1148	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   54: astore_2
     //   55: aload_2
@@ -1517,14 +1517,14 @@ public class OlympicManager
     //   88: astore_2
     //   89: aload_2
     //   90: invokevirtual 1167	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   93: checkcast 667	com/tencent/mobileqq/olympic/TorchInfo
+    //   93: checkcast 666	com/tencent/mobileqq/olympic/TorchInfo
     //   96: astore 4
     //   98: aload_0
-    //   99: getfield 538	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo	Lcom/tencent/mobileqq/olympic/TorchInfo;
+    //   99: getfield 537	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo	Lcom/tencent/mobileqq/olympic/TorchInfo;
     //   102: ifnonnull +9 -> 111
     //   105: aload_0
     //   106: aload 4
-    //   108: putfield 538	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo	Lcom/tencent/mobileqq/olympic/TorchInfo;
+    //   108: putfield 537	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo	Lcom/tencent/mobileqq/olympic/TorchInfo;
     //   111: aload_2
     //   112: ifnull +7 -> 119
     //   115: aload_2
@@ -1539,29 +1539,29 @@ public class OlympicManager
     //   132: astore_2
     //   133: aload 7
     //   135: monitorexit
-    //   136: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   136: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   139: ifeq +29 -> 168
-    //   142: ldc 211
+    //   142: ldc 210
     //   144: iconst_2
-    //   145: new 213	java/lang/StringBuilder
+    //   145: new 212	java/lang/StringBuilder
     //   148: dup
-    //   149: invokespecial 214	java/lang/StringBuilder:<init>	()V
+    //   149: invokespecial 213	java/lang/StringBuilder:<init>	()V
     //   152: ldc_w 1179
-    //   155: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   158: aload_2
-    //   159: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   162: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   165: invokestatic 249	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   159: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   162: invokevirtual 231	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   165: invokestatic 248	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   168: aload_2
     //   169: areturn
     //   170: astore_2
-    //   171: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   171: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   174: ifeq -55 -> 119
-    //   177: ldc 211
+    //   177: ldc 210
     //   179: iconst_2
-    //   180: ldc_w 634
+    //   180: ldc_w 633
     //   183: aload_2
-    //   184: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   184: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   187: goto -68 -> 119
     //   190: astore_2
     //   191: aload 7
@@ -1571,13 +1571,13 @@ public class OlympicManager
     //   196: astore_3
     //   197: aload 4
     //   199: astore_2
-    //   200: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   200: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   203: ifeq -70 -> 133
-    //   206: ldc 211
+    //   206: ldc 210
     //   208: iconst_2
-    //   209: ldc_w 634
+    //   209: ldc_w 633
     //   212: aload_3
-    //   213: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   213: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   216: aload 4
     //   218: astore_2
     //   219: goto -86 -> 133
@@ -1590,13 +1590,13 @@ public class OlympicManager
     //   231: astore_3
     //   232: aload 6
     //   234: astore 5
-    //   236: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   236: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   239: ifeq +14 -> 253
-    //   242: ldc 211
+    //   242: ldc 210
     //   244: iconst_2
-    //   245: ldc_w 634
+    //   245: ldc_w 633
     //   248: aload 5
-    //   250: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   250: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   253: aload 4
     //   255: ifnull +8 -> 263
     //   258: aload 4
@@ -1607,22 +1607,22 @@ public class OlympicManager
     //   268: invokevirtual 1171	java/io/FileInputStream:close	()V
     //   271: goto -138 -> 133
     //   274: astore 4
-    //   276: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   276: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   279: ifeq -16 -> 263
-    //   282: ldc 211
+    //   282: ldc 210
     //   284: iconst_2
-    //   285: ldc_w 634
+    //   285: ldc_w 633
     //   288: aload 4
-    //   290: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   290: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   293: goto -30 -> 263
     //   296: astore_3
-    //   297: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   297: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   300: ifeq +13 -> 313
-    //   303: ldc 211
+    //   303: ldc 210
     //   305: iconst_2
-    //   306: ldc_w 634
+    //   306: ldc_w 633
     //   309: aload_3
-    //   310: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   310: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   313: goto -180 -> 133
     //   316: astore_2
     //   317: aconst_null
@@ -1638,22 +1638,22 @@ public class OlympicManager
     //   337: aload_2
     //   338: athrow
     //   339: astore 4
-    //   341: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   341: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   344: ifeq -15 -> 329
-    //   347: ldc 211
+    //   347: ldc 210
     //   349: iconst_2
-    //   350: ldc_w 634
+    //   350: ldc_w 633
     //   353: aload 4
-    //   355: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   355: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   358: goto -29 -> 329
     //   361: astore_3
-    //   362: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   362: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   365: ifeq -28 -> 337
-    //   368: ldc 211
+    //   368: ldc 210
     //   370: iconst_2
-    //   371: ldc_w 634
+    //   371: ldc_w 633
     //   374: aload_3
-    //   375: invokestatic 329	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   375: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   378: goto -41 -> 337
     //   381: astore_2
     //   382: goto -63 -> 319
@@ -1813,7 +1813,7 @@ public class OlympicManager
         if ("handlePush0xb4, torchInfo=" + localTorchInfo == null) {}
         for (paramTorchbearerInfo = "null";; paramTorchbearerInfo = localTorchInfo.toString())
         {
-          awci.b("OlympicManager", new Object[] { paramTorchbearerInfo });
+          ayma.b("OlympicManager", new Object[] { paramTorchbearerInfo });
           return localTorchInfo;
         }
       }
@@ -1856,9 +1856,9 @@ public class OlympicManager
     //   1: monitorenter
     //   2: aload_1
     //   3: ifnonnull +33 -> 36
-    //   6: ldc_w 569
+    //   6: ldc_w 568
     //   9: astore_2
-    //   10: ldc 211
+    //   10: ldc 210
     //   12: iconst_2
     //   13: anewarray 4	java/lang/Object
     //   16: dup
@@ -1869,7 +1869,7 @@ public class OlympicManager
     //   23: iconst_1
     //   24: aload_2
     //   25: aastore
-    //   26: invokestatic 595	awci:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   26: invokestatic 594	ayma:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   29: aload_1
     //   30: ifnonnull +11 -> 41
     //   33: aload_0
@@ -1879,19 +1879,19 @@ public class OlympicManager
     //   37: astore_2
     //   38: goto -28 -> 10
     //   41: aload_0
-    //   42: getfield 185	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_Awgf	Lawgf;
-    //   45: invokevirtual 1256	awgf:a	()Lawgh;
+    //   42: getfield 184	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   45: invokevirtual 1257	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   48: astore_2
     //   49: aload_2
-    //   50: invokevirtual 1259	awgh:a	()V
+    //   50: invokevirtual 1262	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   53: aload_0
-    //   54: getfield 185	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_Awgf	Lawgf;
+    //   54: getfield 184	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   57: aload_1
-    //   58: invokevirtual 1262	awgf:b	(Lawge;)V
+    //   58: invokevirtual 1266	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   61: aload_2
-    //   62: invokevirtual 1264	awgh:c	()V
+    //   62: invokevirtual 1268	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   65: aload_2
-    //   66: invokevirtual 1266	awgh:b	()V
+    //   66: invokevirtual 1271	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   69: goto -36 -> 33
     //   72: astore_1
     //   73: aload_0
@@ -1899,16 +1899,16 @@ public class OlympicManager
     //   75: aload_1
     //   76: athrow
     //   77: astore_1
-    //   78: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   78: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   81: ifeq +7 -> 88
     //   84: aload_1
     //   85: invokevirtual 1127	java/lang/Exception:printStackTrace	()V
     //   88: aload_2
-    //   89: invokevirtual 1266	awgh:b	()V
+    //   89: invokevirtual 1271	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   92: goto -59 -> 33
     //   95: astore_1
     //   96: aload_2
-    //   97: invokevirtual 1266	awgh:b	()V
+    //   97: invokevirtual 1271	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   100: aload_1
     //   101: athrow
     // Local variable table:
@@ -1950,7 +1950,7 @@ public class OlympicManager
           localObjectOutputStream.writeObject(paramOlyimpicConfig);
           localObjectOutputStream.close();
           localByteArrayOutputStream.close();
-          bdhb.a(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_shuayishua_config_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
+          bgmg.a(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_shuayishua_config_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
         }
         catch (Throwable paramOlyimpicConfig)
         {
@@ -1965,10 +1965,10 @@ public class OlympicManager
   
   public void a(OlympicActConfig paramOlympicActConfig)
   {
-    awci.b("OlympicManager", new Object[] { "onGetActConfig" });
+    ayma.b("OlympicManager", new Object[] { "onGetActConfig" });
     if (paramOlympicActConfig == null)
     {
-      awci.b("OlympicManager", new Object[] { "onGetActConfig, config is null!" });
+      ayma.b("OlympicManager", new Object[] { "onGetActConfig, config is null!" });
       return;
     }
     this.jdField_c_of_type_Boolean = false;
@@ -2011,7 +2011,7 @@ public class OlympicManager
       long l;
       try
       {
-        awci.b("OlympicManager", new Object[] { "updateEntity, url=", localObject1, ", dailyInc=", Integer.valueOf(paramInt) });
+        ayma.b("OlympicManager", new Object[] { "updateEntity, url=", localObject1, ", dailyInc=", Integer.valueOf(paramInt) });
         boolean bool = TextUtils.isEmpty(paramString);
         if (bool)
         {
@@ -2042,14 +2042,14 @@ public class OlympicManager
         ((OlympicPredownInfo)localObject1).dailyStartTime = l;
         ((OlympicPredownInfo)localObject1).totalRetryCount += paramInt;
         label170:
-        paramString = this.jdField_a_of_type_Awgf.a();
+        paramString = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
       }
       try
       {
-        paramString.a();
-        this.jdField_a_of_type_Awgf.a((awge)localObject1);
-        paramString.c();
-        paramString.b();
+        paramString.begin();
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update((Entity)localObject1);
+        paramString.commit();
+        paramString.end();
         continue;
         ((OlympicPredownInfo)localObject1).dailyRetryCount += paramInt;
         ((OlympicPredownInfo)localObject1).totalRetryCount += paramInt;
@@ -2065,11 +2065,11 @@ public class OlympicManager
         if (QLog.isColorLevel()) {
           localException.printStackTrace();
         }
-        paramString.b();
+        paramString.end();
       }
       finally
       {
-        paramString.b();
+        paramString.end();
       }
     }
   }
@@ -2094,6 +2094,51 @@ public class OlympicManager
   
   public boolean a(String paramString)
   {
+    boolean bool2 = true;
+    boolean bool1;
+    if (TextUtils.isEmpty(paramString)) {
+      bool1 = false;
+    }
+    int j;
+    label55:
+    label102:
+    label113:
+    label119:
+    do
+    {
+      long l;
+      do
+      {
+        return bool1;
+        paramString = a(paramString);
+        l = System.currentTimeMillis();
+        bool1 = bool2;
+      } while (paramString == null);
+      int i;
+      if (this.jdField_a_of_type_Ayjz == null)
+      {
+        i = 3;
+        if (this.jdField_a_of_type_Ayjz != null) {
+          break label102;
+        }
+        j = 1000;
+        if ((paramString.dailyRetryCount < i) || (paramString.totalRetryCount >= j)) {
+          break label119;
+        }
+        if (l - paramString.dailyStartTime <= 86400000L) {
+          break label113;
+        }
+      }
+      for (bool1 = true;; bool1 = false)
+      {
+        return bool1;
+        i = this.jdField_a_of_type_Ayjz.jdField_b_of_type_Int;
+        break;
+        j = this.jdField_a_of_type_Ayjz.jdField_c_of_type_Int;
+        break label55;
+      }
+      bool1 = bool2;
+    } while (paramString.totalRetryCount < j);
     return false;
   }
   
@@ -2145,12 +2190,12 @@ public class OlympicManager
         QLog.d("OlympicManager", 2, "preDecodeActPic");
       }
       Object localObject;
-      if ((awci.a(paramTorchInfo.torch_pic_url) == null) && (jdField_a_of_type_Boolean))
+      if ((ayma.a(paramTorchInfo.torch_pic_url) == null) && (jdField_a_of_type_Boolean))
       {
-        localObject = awao.a() + paramTorchInfo.torch_pic_md5;
+        localObject = aykg.a() + paramTorchInfo.torch_pic_md5;
         if (jdField_a_of_type_Boolean)
         {
-          localObject = awci.a(paramTorchInfo.torch_pic_url, (String)localObject, this.jdField_a_of_type_Awah, 0);
+          localObject = ayma.a(paramTorchInfo.torch_pic_url, (String)localObject, this.jdField_a_of_type_Ayjz, 0);
           if (((Pair)localObject).second != null) {
             jdField_a_of_type_AndroidGraphicsBitmap = (Bitmap)((Pair)localObject).second;
           }
@@ -2164,12 +2209,12 @@ public class OlympicManager
         {
           paramTorchInfo = (TorchInfo.CityInfo)((Iterator)localObject).next();
           if (paramTorchInfo.city_id == l) {
-            if ((awci.a(paramTorchInfo.city_pic_url) == null) && (jdField_a_of_type_Boolean))
+            if ((ayma.a(paramTorchInfo.city_pic_url) == null) && (jdField_a_of_type_Boolean))
             {
-              localObject = awao.a() + paramTorchInfo.city_pic_md5;
+              localObject = aykg.a() + paramTorchInfo.city_pic_md5;
               if (jdField_a_of_type_Boolean)
               {
-                paramTorchInfo = awci.a(paramTorchInfo.city_pic_url, (String)localObject, this.jdField_a_of_type_Awah, 2);
+                paramTorchInfo = ayma.a(paramTorchInfo.city_pic_url, (String)localObject, this.jdField_a_of_type_Ayjz, 2);
                 if (paramTorchInfo.second != null) {
                   jdField_a_of_type_ComTencentUtilPair = new Pair(Long.valueOf(l), paramTorchInfo.second);
                 }
@@ -2191,7 +2236,7 @@ public class OlympicManager
         if (this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig != null)
         {
           bool = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig.save2File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
-          awci.b("OlympicManager", new Object[] { "saveActConfigToLocal, result=", Boolean.valueOf(bool) });
+          ayma.b("OlympicManager", new Object[] { "saveActConfigToLocal, result=", Boolean.valueOf(bool) });
           return bool;
         }
       }
@@ -2201,56 +2246,6 @@ public class OlympicManager
     }
   }
   
-  public boolean b(String paramString)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if (TextUtils.isEmpty(paramString)) {
-      bool1 = false;
-    }
-    int j;
-    label55:
-    label102:
-    label113:
-    label119:
-    do
-    {
-      long l;
-      do
-      {
-        return bool1;
-        paramString = a(paramString);
-        l = System.currentTimeMillis();
-        bool1 = bool2;
-      } while (paramString == null);
-      int i;
-      if (this.jdField_a_of_type_Awah == null)
-      {
-        i = 3;
-        if (this.jdField_a_of_type_Awah != null) {
-          break label102;
-        }
-        j = 1000;
-        if ((paramString.dailyRetryCount < i) || (paramString.totalRetryCount >= j)) {
-          break label119;
-        }
-        if (l - paramString.dailyStartTime <= 86400000L) {
-          break label113;
-        }
-      }
-      for (bool1 = true;; bool1 = false)
-      {
-        return bool1;
-        i = this.jdField_a_of_type_Awah.jdField_b_of_type_Int;
-        break;
-        j = this.jdField_a_of_type_Awah.jdField_c_of_type_Int;
-        break label55;
-      }
-      bool1 = bool2;
-    } while (paramString.totalRetryCount < j);
-    return false;
-  }
-  
   /* Error */
   public void c()
   {
@@ -2258,7 +2253,7 @@ public class OlympicManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 567	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
+    //   3: getfield 566	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
     //   6: astore_1
     //   7: aload_1
     //   8: ifnull +6 -> 14
@@ -2267,34 +2262,34 @@ public class OlympicManager
     //   13: return
     //   14: aload_0
     //   15: getfield 142	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   18: invokestatic 622	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   21: invokestatic 1419	com/tencent/mobileqq/olympic/OlympicActConfig:readFromFile	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;)Lcom/tencent/mobileqq/olympic/OlympicActConfig;
+    //   18: invokestatic 621	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   21: invokestatic 1425	com/tencent/mobileqq/olympic/OlympicActConfig:readFromFile	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;)Lcom/tencent/mobileqq/olympic/OlympicActConfig;
     //   24: astore_1
     //   25: aload_1
     //   26: ifnonnull +18 -> 44
-    //   29: ldc 211
+    //   29: ldc 210
     //   31: iconst_1
     //   32: anewarray 4	java/lang/Object
     //   35: dup
     //   36: iconst_0
-    //   37: ldc_w 1421
+    //   37: ldc_w 1427
     //   40: aastore
-    //   41: invokestatic 595	awci:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   41: invokestatic 594	ayma:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   44: aload_0
     //   45: getfield 94	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ArrayOfByte	[B
     //   48: astore_2
     //   49: aload_2
     //   50: monitorenter
     //   51: aload_0
-    //   52: getfield 567	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
+    //   52: getfield 566	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
     //   55: ifnonnull +44 -> 99
     //   58: aload_0
     //   59: aload_1
-    //   60: putfield 567	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
+    //   60: putfield 566	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
     //   63: aload_2
     //   64: monitorexit
     //   65: aload_0
-    //   66: invokevirtual 1299	com/tencent/mobileqq/olympic/OlympicManager:a	()V
+    //   66: invokevirtual 1304	com/tencent/mobileqq/olympic/OlympicManager:a	()V
     //   69: goto -58 -> 11
     //   72: astore_1
     //   73: aload_0
@@ -2302,56 +2297,56 @@ public class OlympicManager
     //   75: aload_1
     //   76: athrow
     //   77: astore_1
-    //   78: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   78: invokestatic 208	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   81: ifeq +13 -> 94
-    //   84: ldc 211
+    //   84: ldc 210
     //   86: iconst_2
-    //   87: ldc_w 1423
+    //   87: ldc_w 1429
     //   90: aload_1
-    //   91: invokestatic 1425	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   91: invokestatic 1431	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   94: aconst_null
     //   95: astore_1
     //   96: goto -71 -> 25
     //   99: aload_1
     //   100: ifnull -37 -> 63
-    //   103: ldc 211
+    //   103: ldc 210
     //   105: iconst_2
     //   106: anewarray 4	java/lang/Object
     //   109: dup
     //   110: iconst_0
-    //   111: ldc_w 1427
+    //   111: ldc_w 1433
     //   114: aastore
     //   115: dup
     //   116: iconst_1
     //   117: aload_0
-    //   118: getfield 567	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
-    //   121: getfield 1428	com/tencent/mobileqq/olympic/OlympicActConfig:version	I
-    //   124: invokestatic 751	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   118: getfield 566	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
+    //   121: getfield 1434	com/tencent/mobileqq/olympic/OlympicActConfig:version	I
+    //   124: invokestatic 750	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   127: aastore
-    //   128: invokestatic 595	awci:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   128: invokestatic 594	ayma:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   131: aload_0
-    //   132: getfield 567	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
-    //   135: getfield 1428	com/tencent/mobileqq/olympic/OlympicActConfig:version	I
+    //   132: getfield 566	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
+    //   135: getfield 1434	com/tencent/mobileqq/olympic/OlympicActConfig:version	I
     //   138: aload_1
-    //   139: getfield 1428	com/tencent/mobileqq/olympic/OlympicActConfig:version	I
+    //   139: getfield 1434	com/tencent/mobileqq/olympic/OlympicActConfig:version	I
     //   142: if_icmpge -79 -> 63
     //   145: aload_0
     //   146: aload_1
-    //   147: putfield 567	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
-    //   150: ldc 211
+    //   147: putfield 566	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
+    //   150: ldc 210
     //   152: iconst_2
     //   153: anewarray 4	java/lang/Object
     //   156: dup
     //   157: iconst_0
-    //   158: ldc_w 1430
+    //   158: ldc_w 1436
     //   161: aastore
     //   162: dup
     //   163: iconst_1
     //   164: aload_1
-    //   165: getfield 1428	com/tencent/mobileqq/olympic/OlympicActConfig:version	I
-    //   168: invokestatic 751	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   165: getfield 1434	com/tencent/mobileqq/olympic/OlympicActConfig:version	I
+    //   168: invokestatic 750	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   171: aastore
-    //   172: invokestatic 595	awci:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   172: invokestatic 594	ayma:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   175: goto -112 -> 63
     //   178: astore_1
     //   179: aload_2
@@ -2385,13 +2380,13 @@ public class OlympicManager
   public boolean c()
   {
     boolean bool = false;
-    awci.b("OlympicManager", new Object[] { "isNetworkCanPredown" });
-    if (this.jdField_a_of_type_Awah == null) {}
-    for (int i = 0; i == 1; i = this.jdField_a_of_type_Awah.jdField_a_of_type_Int) {
+    ayma.b("OlympicManager", new Object[] { "isNetworkCanPredown" });
+    if (this.jdField_a_of_type_Ayjz == null) {}
+    for (int i = 0; i == 1; i = this.jdField_a_of_type_Ayjz.jdField_a_of_type_Int) {
       return true;
     }
-    int j = bdin.a(BaseApplicationImpl.getContext());
-    awci.b("OlympicManager", new Object[] { "isNetworkCanPredown, type=", Integer.valueOf(j) });
+    int j = bgnt.a(BaseApplicationImpl.getContext());
+    ayma.b("OlympicManager", new Object[] { "isNetworkCanPredown, type=", Integer.valueOf(j) });
     if (i == 0) {
       if ((j != 1) && (j != 4)) {}
     }
@@ -2409,13 +2404,13 @@ public class OlympicManager
     int i;
     int j;
     String str;
-    if (this.jdField_a_of_type_Awah == null)
+    if (this.jdField_a_of_type_Ayjz == null)
     {
-      this.jdField_a_of_type_Awah = new awah();
-      i = (int)(bdgk.d() / 1024L / 1024L);
-      j = bdoo.a();
+      this.jdField_a_of_type_Ayjz = new ayjz();
+      i = (int)(bgln.d() / 1024L / 1024L);
+      j = bgtn.a();
       str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.olympic_act_config.name());
-      this.jdField_a_of_type_Awah.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Ayjz.jdField_a_of_type_JavaLangString = str;
     }
     try
     {
@@ -2425,37 +2420,37 @@ public class OlympicManager
         if (arrayOfString.length >= 9)
         {
           if (i <= Integer.valueOf(arrayOfString[0]).intValue()) {}
-          for (this.jdField_a_of_type_Awah.jdField_b_of_type_Boolean = true;; this.jdField_a_of_type_Awah.jdField_b_of_type_Boolean = true)
+          for (this.jdField_a_of_type_Ayjz.jdField_b_of_type_Boolean = true;; this.jdField_a_of_type_Ayjz.jdField_b_of_type_Boolean = true)
           {
             if (Integer.valueOf(arrayOfString[3]).intValue() == 1) {
-              this.jdField_a_of_type_Awah.jdField_d_of_type_Boolean = true;
+              this.jdField_a_of_type_Ayjz.jdField_d_of_type_Boolean = true;
             }
-            this.jdField_a_of_type_Awah.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[4]).intValue();
-            this.jdField_a_of_type_Awah.jdField_b_of_type_Int = Integer.valueOf(arrayOfString[5]).intValue();
-            this.jdField_a_of_type_Awah.jdField_c_of_type_Int = Integer.valueOf(arrayOfString[6]).intValue();
-            this.jdField_a_of_type_Awah.jdField_d_of_type_Int = Integer.valueOf(arrayOfString[7]).intValue();
-            this.jdField_a_of_type_Awah.jdField_e_of_type_Int = Integer.valueOf(arrayOfString[8]).intValue();
+            this.jdField_a_of_type_Ayjz.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[4]).intValue();
+            this.jdField_a_of_type_Ayjz.jdField_b_of_type_Int = Integer.valueOf(arrayOfString[5]).intValue();
+            this.jdField_a_of_type_Ayjz.jdField_c_of_type_Int = Integer.valueOf(arrayOfString[6]).intValue();
+            this.jdField_a_of_type_Ayjz.jdField_d_of_type_Int = Integer.valueOf(arrayOfString[7]).intValue();
+            this.jdField_a_of_type_Ayjz.jdField_e_of_type_Int = Integer.valueOf(arrayOfString[8]).intValue();
             bool1 = false;
-            this.jdField_a_of_type_Awah.jdField_a_of_type_Boolean = bool1;
+            this.jdField_a_of_type_Ayjz.jdField_a_of_type_Boolean = bool1;
             if (bool1)
             {
               if (i > 512) {
                 break label487;
               }
-              this.jdField_a_of_type_Awah.jdField_b_of_type_Boolean = true;
-              this.jdField_a_of_type_Awah.jdField_d_of_type_Boolean = false;
-              this.jdField_a_of_type_Awah.jdField_a_of_type_Int = 0;
-              this.jdField_a_of_type_Awah.jdField_b_of_type_Int = 3;
-              this.jdField_a_of_type_Awah.jdField_c_of_type_Int = 1000;
-              this.jdField_a_of_type_Awah.jdField_d_of_type_Int = 1;
-              this.jdField_a_of_type_Awah.jdField_e_of_type_Int = 1;
+              this.jdField_a_of_type_Ayjz.jdField_b_of_type_Boolean = true;
+              this.jdField_a_of_type_Ayjz.jdField_d_of_type_Boolean = false;
+              this.jdField_a_of_type_Ayjz.jdField_a_of_type_Int = 0;
+              this.jdField_a_of_type_Ayjz.jdField_b_of_type_Int = 3;
+              this.jdField_a_of_type_Ayjz.jdField_c_of_type_Int = 1000;
+              this.jdField_a_of_type_Ayjz.jdField_d_of_type_Int = 1;
+              this.jdField_a_of_type_Ayjz.jdField_e_of_type_Int = 1;
             }
-            if (this.jdField_a_of_type_Awah.jdField_d_of_type_Int != 1) {
+            if (this.jdField_a_of_type_Ayjz.jdField_d_of_type_Int != 1) {
               break label523;
             }
-            awci.a(bool2);
+            ayma.a(bool2);
             if (QLog.isColorLevel()) {
-              QLog.d("OlympicManager", 2, "loadDPCConfig|featureValue:" + str + ",systemTotalMem:" + i + ",screenWidth:" + j + ",isUseDefault:" + bool1 + ",dpc:" + this.jdField_a_of_type_Awah.toString());
+              QLog.d("OlympicManager", 2, "loadDPCConfig|featureValue:" + str + ",systemTotalMem:" + i + ",screenWidth:" + j + ",isUseDefault:" + bool1 + ",dpc:" + this.jdField_a_of_type_Ayjz.toString());
             }
             return;
             if (j > Integer.valueOf(arrayOfString[1]).intValue()) {
@@ -2477,16 +2472,16 @@ public class OlympicManager
         label523:
         if (j <= Integer.valueOf(localException[2]).intValue())
         {
-          this.jdField_a_of_type_Awah.jdField_c_of_type_Boolean = true;
+          this.jdField_a_of_type_Ayjz.jdField_c_of_type_Boolean = true;
           continue;
           label487:
           if (j <= 480)
           {
-            this.jdField_a_of_type_Awah.jdField_b_of_type_Boolean = true;
+            this.jdField_a_of_type_Ayjz.jdField_b_of_type_Boolean = true;
           }
           else if (j <= 720)
           {
-            this.jdField_a_of_type_Awah.jdField_c_of_type_Boolean = true;
+            this.jdField_a_of_type_Ayjz.jdField_c_of_type_Boolean = true;
             continue;
             bool2 = false;
           }
@@ -2497,9 +2492,9 @@ public class OlympicManager
   
   public boolean d()
   {
-    awci.b("OlympicManager", new Object[] { "isNetworkCanPredown" });
-    if (this.jdField_a_of_type_Awah == null) {}
-    for (int i = 1; i == 1; i = this.jdField_a_of_type_Awah.jdField_e_of_type_Int) {
+    ayma.b("OlympicManager", new Object[] { "isNetworkCanPredown" });
+    if (this.jdField_a_of_type_Ayjz == null) {}
+    for (int i = 1; i == 1; i = this.jdField_a_of_type_Ayjz.jdField_e_of_type_Int) {
       return true;
     }
     return false;
@@ -2507,7 +2502,7 @@ public class OlympicManager
   
   public void e()
   {
-    awci.b("OlympicManager", new Object[] { "clearActConfig" });
+    ayma.b("OlympicManager", new Object[] { "clearActConfig" });
     synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
       this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig = null;
@@ -2544,20 +2539,20 @@ public class OlympicManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 567	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
+    //   3: getfield 566	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
     //   6: ifnonnull +15 -> 21
-    //   9: ldc 211
+    //   9: ldc 210
     //   11: iconst_1
-    //   12: ldc_w 1511
-    //   15: invokestatic 249	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   12: ldc_w 1517
+    //   15: invokestatic 248	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   18: aload_0
     //   19: monitorexit
     //   20: return
     //   21: aload_0
     //   22: aload_0
-    //   23: getfield 567	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
+    //   23: getfield 566	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
     //   26: iconst_0
-    //   27: invokespecial 857	com/tencent/mobileqq/olympic/OlympicManager:a	(Lcom/tencent/mobileqq/olympic/OlympicActConfig;Z)V
+    //   27: invokespecial 856	com/tencent/mobileqq/olympic/OlympicManager:a	(Lcom/tencent/mobileqq/olympic/OlympicActConfig;Z)V
     //   30: goto -12 -> 18
     //   33: astore_1
     //   34: aload_0
@@ -2576,7 +2571,7 @@ public class OlympicManager
   
   public void g()
   {
-    if (awci.a(BaseApplicationImpl.getContext(), "olympic_config_act"))
+    if (ayma.a(BaseApplicationImpl.getContext(), "olympic_config_act"))
     {
       if (QLog.isColorLevel()) {
         QLog.d("OlympicManager", 2, new Object[] { "check24Hour, result=true, do Report, key=", "olympic_config_act" });
@@ -2586,14 +2581,14 @@ public class OlympicManager
       }
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig.version));
-      azri.a(BaseApplicationImpl.getContext()).a("", "olympic_config_act", false, 0L, 0L, localHashMap, "", false);
+      bctj.a(BaseApplicationImpl.getContext()).a("", "olympic_config_act", false, 0L, 0L, localHashMap, "", false);
     }
     for (;;)
     {
-      awci.a(BaseApplicationImpl.getContext(), "olympic_config_act");
+      ayma.a(BaseApplicationImpl.getContext(), "olympic_config_act");
       return;
       label106:
-      azri.a(BaseApplicationImpl.getContext()).a("", "olympic_config_act", true, 0L, 0L, null, "", false);
+      bctj.a(BaseApplicationImpl.getContext()).a("", "olympic_config_act", true, 0L, 0L, null, "", false);
     }
   }
   
@@ -2614,8 +2609,8 @@ public class OlympicManager
       {
         this.jdField_a_of_type_ComTencentMobileqqOlympicOlyimpicConfig = null;
         this.jdField_a_of_type_ComTencentMobileqqOlympicShuayishuaConfig = null;
-        if ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Awaj != null)) {
-          this.jdField_a_of_type_Awaj.a();
+        if ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Aykb != null)) {
+          this.jdField_a_of_type_Aykb.a();
         }
         this.jdField_b_of_type_Long = 2500L;
         this.jdField_c_of_type_Long = 180000L;
@@ -2633,9 +2628,9 @@ public class OlympicManager
         this.jdField_d_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqOlympicOlyimpicConfig.reportNormalInterval;
         this.jdField_c_of_type_Boolean = false;
       }
-      if (this.jdField_a_of_type_Awaj != null)
+      if (this.jdField_a_of_type_Aykb != null)
       {
-        this.jdField_a_of_type_Awaj.a(this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo);
+        this.jdField_a_of_type_Aykb.a(this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo);
         continue;
         l = ((Long)paramMessage.obj).longValue();
         if ((this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size() > 0) && (l > 0L)) {
@@ -2663,18 +2658,18 @@ public class OlympicManager
             if (QLog.isColorLevel()) {
               QLog.d("OlympicManager", 2, "MSG_BREATHE,type = " + i + ",isRecovery = " + bool);
             }
-            if (this.jdField_a_of_type_Awaj == null) {
+            if (this.jdField_a_of_type_Aykb == null) {
               break;
             }
-            this.jdField_a_of_type_Awaj.a(true, bool, i);
+            this.jdField_a_of_type_Aykb.a(true, bool, i);
             break;
           }
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putBoolean("in_breath_procedure", false).commit();
           if (QLog.isColorLevel()) {
             QLog.d("OlympicManager", 2, "MSG_STOP_BREATHE");
           }
-          if (this.jdField_a_of_type_Awaj != null) {
-            this.jdField_a_of_type_Awaj.a(false, false, -1);
+          if (this.jdField_a_of_type_Aykb != null) {
+            this.jdField_a_of_type_Aykb.a(false, false, -1);
           }
         }
       }
@@ -2695,9 +2690,9 @@ public class OlympicManager
     }
     this.jdField_b_of_type_AndroidOsHandler.removeMessages(7);
     this.jdField_b_of_type_AndroidOsHandler.removeMessages(8);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Awan);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aykf);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this);
-    this.jdField_a_of_type_Awao.b(this.jdField_a_of_type_Awaq);
+    this.jdField_a_of_type_Aykg.b(this.jdField_a_of_type_Ayki);
     if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
     {
       this.jdField_a_of_type_AndroidMediaSoundPool.release();
@@ -2742,7 +2737,7 @@ public class OlympicManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.OlympicManager
  * JD-Core Version:    0.7.0.1
  */

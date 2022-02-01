@@ -1,14 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable;
+
 public class ajta
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public String a;
-  public String b;
+  public ajta(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public ajta(int paramInt, String paramString1, String paramString2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.a.b.postDelayed(new ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable(this.a), 150L);
   }
 }
 

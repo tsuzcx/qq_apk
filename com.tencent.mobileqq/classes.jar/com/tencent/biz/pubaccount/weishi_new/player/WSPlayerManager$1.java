@@ -1,24 +1,34 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
-import thf;
-import thl;
+import java.util.ArrayList;
+import java.util.Iterator;
+import ujv;
+import ukb;
+import ukc;
 
 public class WSPlayerManager$1
   implements Runnable
 {
-  WSPlayerManager$1(WSPlayerManager paramWSPlayerManager, thl paramthl) {}
+  WSPlayerManager$1(WSPlayerManager paramWSPlayerManager, ukb paramukb) {}
   
   public void run()
   {
+    if (WSPlayerManager.a(this.this$0) != null)
+    {
+      Iterator localIterator = WSPlayerManager.a(this.this$0).iterator();
+      while (localIterator.hasNext()) {
+        ((ukc)localIterator.next()).f(this.a);
+      }
+    }
     if (this.a.a != null)
     {
       this.a.a.c(this.a);
       if (!this.this$0.b()) {
-        break label53;
+        break label104;
       }
       this.a.a.e(this.a);
     }
-    label53:
+    label104:
     do
     {
       return;
@@ -33,7 +43,7 @@ public class WSPlayerManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.1
  * JD-Core Version:    0.7.0.1
  */

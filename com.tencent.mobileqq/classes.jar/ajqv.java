@@ -1,28 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21.1.1;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
 public class ajqv
-  implements ajtc
+  implements advd
 {
-  public ajqv(NewFlowCameraActivity.21.1.1 param1) {}
+  public ajqv(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment) {}
   
-  public void a(int paramInt)
+  public boolean a(boolean paramBoolean)
   {
-    if (paramInt == 0)
-    {
-      NewFlowCameraActivity.b(this.a.a.a.this$0, true);
-      if (this.a.a.a.this$0.d.getVisibility() == 0)
-      {
-        this.a.a.a.this$0.d.setVisibility(8);
-        this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
-      }
-      return;
+    if (paramBoolean) {
+      bmyc.a(this.a.getActivity());
     }
-    NewFlowCameraActivity.b(this.a.a.a.this$0, false);
-    this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
+    return false;
   }
 }
 

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.qqcircle.widgets.QCircleRocketView android:id="@id/n7a" android:layout_width="115.0dip" android:layout_height="210.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -1,17 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8.1.1;
 
 public class apnb
+  extends apnq
 {
-  public View a;
-  public ImageView a;
-  public URLImageView a;
-  public View b;
-  public ImageView b;
-  public View c;
+  public apnb(ArkAiDictUpdateMgr.8 param8) {}
   
-  public apnb(apmt paramapmt) {}
+  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte)
+  {
+    ThreadManager.post(new ArkAiDictUpdateMgr.8.1.1(this, paramArrayOfByte, paramBoolean), 5, null, true);
+  }
 }
 
 

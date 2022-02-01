@@ -1,35 +1,20 @@
-import android.widget.ListAdapter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.FastScroller;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
 
 public class bhtr
-  extends AdapterView<ListAdapter>.bhuv
+  extends anxg
 {
-  public bhtr(AbsListView paramAbsListView)
-  {
-    super(paramAbsListView);
-  }
+  public bhtr(WerewolvesHostInterface paramWerewolvesHostInterface, QQAppInterface paramQQAppInterface) {}
   
-  public void onChanged()
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    super.onChanged();
-    if (this.a.mFastScroller != null) {
-      this.a.mFastScroller.c();
-    }
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-    if (this.a.mFastScroller != null) {
-      this.a.mFastScroller.c();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(6, new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2) });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhtr
  * JD-Core Version:    0.7.0.1
  */

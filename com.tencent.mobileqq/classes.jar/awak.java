@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class awak
-  implements Comparator<ShuayishuaConfig>
+class awak
+  implements View.OnClickListener
 {
-  public int a(ShuayishuaConfig paramShuayishuaConfig1, ShuayishuaConfig paramShuayishuaConfig2)
+  awak(awai paramawai) {}
+  
+  public void onClick(View paramView)
   {
-    long l = paramShuayishuaConfig1.realBegin - paramShuayishuaConfig2.realBegin;
-    if (l > 0L) {
-      return 1;
+    if (this.a.a.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      avzs.a(this.a.a, null);
+      bcst.b(null, "CliOper", "", "", "0X800A96B", "0X800A96B", 0, 0, "0", "0", "0", "");
     }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awak
  * JD-Core Version:    0.7.0.1
  */

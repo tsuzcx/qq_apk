@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat;
 
-import owy;
-import pfd;
+import pmh;
+import pwi;
 
 class ReadInJoyDynamicChannelFragment$3
   implements Runnable
@@ -10,9 +10,9 @@ class ReadInJoyDynamicChannelFragment$3
   
   public void run()
   {
-    pfd localpfd = owy.a().a();
-    if (localpfd != null) {
-      localpfd.b(ReadInJoyDynamicChannelFragment.l(this.this$0));
+    pwi localpwi = pmh.a().a();
+    if (localpwi != null) {
+      localpwi.b(ReadInJoyDynamicChannelFragment.l(this.this$0));
     }
   }
 }

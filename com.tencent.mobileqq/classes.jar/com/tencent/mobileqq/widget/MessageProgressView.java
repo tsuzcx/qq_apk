@@ -21,8 +21,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import bdii;
-import beqw;
+import bgno;
+import bhye;
 import com.tencent.qphone.base.util.QLog;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -43,7 +43,7 @@ public class MessageProgressView
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   public Drawable a;
   AccelerateDecelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator;
-  public beqw a;
+  public bhye a;
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat;
   public float b;
@@ -306,7 +306,7 @@ public class MessageProgressView
   
   public void a(String paramString)
   {
-    paramString = bdii.a().a(paramString);
+    paramString = bgno.a().a(paramString);
     if (paramString != null) {
       paramString.a(this);
     }
@@ -314,7 +314,7 @@ public class MessageProgressView
   
   public boolean a(String paramString)
   {
-    return bdii.a().a(paramString) != null;
+    return bgno.a().a(paramString) != null;
   }
   
   protected void b(Canvas paramCanvas)
@@ -332,7 +332,7 @@ public class MessageProgressView
   
   public void b(String paramString)
   {
-    bdii.a().a(paramString);
+    bgno.a().a(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("MessageProgressView", 2, " stopAnim  key=" + paramString);
     }
@@ -397,8 +397,25 @@ public class MessageProgressView
     float f3 = this.r;
     this.w = (f2 / 2.0F + f3);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(new BlurMaskFilter(f1, BlurMaskFilter.Blur.SOLID));
-    paramCanvas.drawCircle(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.w, this.jdField_a_of_type_AndroidGraphicsPaint);
+    try
+    {
+      BlurMaskFilter localBlurMaskFilter = new BlurMaskFilter(f1, BlurMaskFilter.Blur.SOLID);
+      if (localBlurMaskFilter != null) {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(localBlurMaskFilter);
+      }
+      paramCanvas.drawCircle(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.w, this.jdField_a_of_type_AndroidGraphicsPaint);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MessageProgressView", 2, "create BlurMaskFilter exp:" + localException.getMessage());
+        }
+        Object localObject = null;
+      }
+    }
   }
   
   protected void d()
@@ -576,12 +593,12 @@ public class MessageProgressView
     MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable;
     if (this.jdField_d_of_type_Int == 1)
     {
-      localRefreshProgressRunnable = bdii.a().a(paramString);
+      localRefreshProgressRunnable = bgno.a().a(paramString);
       if (localRefreshProgressRunnable != null) {
         break label96;
       }
       localRefreshProgressRunnable = new MessageProgressView.RefreshProgressRunnable(this, paramString);
-      bdii.a().a(paramString, localRefreshProgressRunnable);
+      bgno.a().a(paramString, localRefreshProgressRunnable);
       ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
       if (QLog.isColorLevel()) {
         QLog.d("MessageProgressView", 2, " setAnimProgress new AnimRunnable key=" + paramString + " progress=" + paramInt);
@@ -599,12 +616,12 @@ public class MessageProgressView
     MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable;
     if (this.jdField_d_of_type_Int == 1)
     {
-      localRefreshProgressRunnable = bdii.a().a(paramString2);
+      localRefreshProgressRunnable = bgno.a().a(paramString2);
       if (localRefreshProgressRunnable != null) {
         break label96;
       }
       localRefreshProgressRunnable = new MessageProgressView.RefreshProgressRunnable(this, paramString2);
-      bdii.a().a(paramString2, localRefreshProgressRunnable);
+      bgno.a().a(paramString2, localRefreshProgressRunnable);
       ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
       if (QLog.isColorLevel()) {
         QLog.d("MessageProgressView", 2, " setAnimProgress new AnimRunnable key=" + paramString2 + " progress=" + paramString1);
@@ -615,9 +632,9 @@ public class MessageProgressView
     localRefreshProgressRunnable.a(this);
   }
   
-  public void setAnimRunnableListener(beqw parambeqw)
+  public void setAnimRunnableListener(bhye parambhye)
   {
-    this.jdField_a_of_type_Beqw = parambeqw;
+    this.jdField_a_of_type_Bhye = parambhye;
   }
   
   public void setBreathingCircleRadius(float paramFloat)
@@ -750,7 +767,7 @@ public class MessageProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MessageProgressView
  * JD-Core Version:    0.7.0.1
  */

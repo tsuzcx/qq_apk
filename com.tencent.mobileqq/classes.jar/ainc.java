@@ -1,52 +1,66 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgModel;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class ainc
-  implements ailh
+public abstract class ainc
 {
-  public ainc(PhoneFrameActivity paramPhoneFrameActivity) {}
+  protected QQAppInterface a;
   
-  public View a()
+  protected String a(SessionInfo paramSessionInfo, String paramString)
   {
-    return this.a.jdField_a_of_type_AndroidViewView;
+    if ((paramSessionInfo != null) && (paramSessionInfo.a != 0) && (1 != paramSessionInfo.a) && (3000 != paramSessionInfo.a)) {
+      return paramString;
+    }
+    return "";
   }
   
-  public ImageView a()
+  protected boolean a(List<MessageRecord> paramList)
   {
-    return this.a.jdField_a_of_type_AndroidWidgetImageView;
+    boolean bool2;
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      boolean bool1 = true;
+      bool2 = bool1;
+      if (!paramList.hasNext()) {
+        break label46;
+      }
+      if (((MessageRecord)paramList.next()).isSend()) {
+        break label48;
+      }
+      bool1 = false;
+    }
+    label46:
+    label48:
+    for (;;)
+    {
+      break;
+      bool2 = true;
+      return bool2;
+    }
   }
   
-  public TextView a()
+  protected byte[] a(List<MessageRecord> paramList, int paramInt, String paramString1, String paramString2)
   {
-    return this.a.leftView;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public View b()
-  {
-    return this.a.b;
-  }
-  
-  public TextView b()
-  {
-    return this.a.rightViewText;
-  }
-  
-  public TextView c()
-  {
-    return this.a.centerView;
-  }
-  
-  public TextView d()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetTextView;
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(((MessageRecord)localIterator.next()).uniseq));
+    }
+    int j = 8;
+    int i = j;
+    if (paramList.size() == 1)
+    {
+      i = j;
+      if (paramInt == 1) {
+        i = aini.a((MessageRecord)paramList.get(0));
+      }
+    }
+    return new UpComingMsgModel(((MessageRecord)paramList.get(0)).frienduin, paramString2, localArrayList, ((MessageRecord)paramList.get(0)).istroop, paramInt, i, paramString1).toJson().getBytes();
   }
 }
 

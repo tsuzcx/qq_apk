@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
-abstract interface avsu
+public class avsu
 {
-  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
+  public static String a = new File(BaseApplicationImpl.getApplication().getFilesDir(), "ListenTogether_v828").getAbsolutePath();
   
-  public abstract void a(List<RedTouchItem> paramList);
+  static
+  {
+    if (bgjq.a())
+    {
+      a = new File(anhk.ba, "ListenTogether_v828").getAbsolutePath();
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avsu
  * JD-Core Version:    0.7.0.1
  */

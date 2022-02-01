@@ -1,10 +1,10 @@
 package com.idlefish.flutterboost.containers;
 
 import android.app.Activity;
-import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
 import io.flutter.embedding.android.FlutterEngineConfigurator;
 import io.flutter.embedding.android.FlutterEngineProvider;
 import io.flutter.embedding.android.FlutterView.RenderMode;
@@ -56,7 +56,7 @@ public abstract interface FlutterActivityAndFragmentDelegate$Host
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.containers.FlutterActivityAndFragmentDelegate.Host
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,19 @@
-import android.view.View;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
 
 public class bcqq
+  extends SQLiteOpenHelper
 {
-  public View a;
-  public URLImageView a;
+  public bcqq(MigrateSubscribeDB paramMigrateSubscribeDB, Context paramContext, String paramString, int paramInt)
+  {
+    super(paramContext, paramString, null, paramInt);
+  }
   
-  public bcqq(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter) {}
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 

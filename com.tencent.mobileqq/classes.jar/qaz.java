@@ -1,67 +1,52 @@
 import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.widget.ListView;
 
 public class qaz
-  extends pxl
+  implements qal
 {
-  public qaz(Context paramContext, bdbb parambdbb, rqj paramrqj)
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private pxk jdField_a_of_type_Pxk;
+  private qal jdField_a_of_type_Qal;
+  private stc jdField_a_of_type_Stc;
+  private qal b;
+  
+  public qaz(Context paramContext, spa paramspa, aobu paramaobu, snh paramsnh, bklj parambklj, ListView paramListView)
   {
-    super(paramContext, parambdbb, paramrqj);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Qal = new qau(this.jdField_a_of_type_AndroidContentContext, paramaobu, paramsnh, paramListView, parambklj);
+    this.b = new qam(this.jdField_a_of_type_AndroidContentContext, paramspa, paramsnh);
   }
   
-  public pxl a()
+  public void a(stc paramstc, pxk parampxk, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return f(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).q().l().n();
+    this.jdField_a_of_type_Stc = paramstc;
+    this.jdField_a_of_type_Pxk = parampxk;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Qal.a(paramstc, parampxk, paramInt);
+    this.b.a(paramstc, parampxk, paramInt);
+    if ((paramstc != null) && (paramstc.e != null))
+    {
+      if (parampxk.h()) {
+        paramstc.e.setVisibility(8);
+      }
+    }
+    else {
+      return;
+    }
+    paramstc.e.setVisibility(0);
   }
   
-  public pxl d()
+  public void a(stc paramstc, pxk parampxk, long paramLong, Bitmap paramBitmap)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("layoutComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
-  }
-  
-  public pxl e()
-  {
-    return null;
-  }
-  
-  public pxl o()
-  {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
+    this.jdField_a_of_type_Qal.a(paramstc, parampxk, paramLong, paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qaz
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import blsp;
+import bolt;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class FilterCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator<FilterCategory> CREATOR = new blsp();
+  public static final Parcelable.Creator<FilterCategory> CREATOR = new bolt();
   public int a;
   public String a;
   public List<QIMFilterCategoryItem> a;
@@ -172,7 +172,7 @@ public class FilterCategory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.data.FilterCategory
  * JD-Core Version:    0.7.0.1
  */

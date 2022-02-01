@@ -1,61 +1,116 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForText;
+import android.app.Activity;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class agdc
-  implements View.OnClickListener
+public class agdc
+  implements agcn
 {
-  agdc(agda paramagda) {}
+  private int jdField_a_of_type_Int;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<Integer, agde> jdField_a_of_type_JavaUtilHashMap;
+  private String b;
   
-  public void onClick(View paramView)
+  public agdc(@NonNull Activity paramActivity)
   {
-    paramView = aepi.a(paramView);
-    if (!(paramView instanceof MessageForText)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
-      }
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendShipViewManager", 2, "doOnResume");
     }
-    MessageForText localMessageForText;
-    do
+    agde localagde = (agde)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+    if (localagde != null) {
+      localagde.d();
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendShipViewManager", 2, "play anim " + paramInt);
+    }
+    if (paramInt == 0) {
+      return false;
+    }
+    agde localagde = (agde)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+    if (localagde != null)
     {
-      return;
-      localMessageForText = (MessageForText)paramView;
-      if (localMessageForText.sb == null) {
-        break;
+      localagde.b();
+      localagde.e();
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), null);
+      this.jdField_a_of_type_Int = 0;
+    }
+    localagde = (agde)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localagde == null)
+    {
+      localagde = agcz.a(paramInt, this.jdField_a_of_type_AndroidAppActivity);
+      if (localagde == null) {
+        return false;
       }
-      paramView = localMessageForText.sb.toString();
-      acjt localacjt = new acjt();
-      if ((this.a.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity))
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localagde);
+    }
+    for (;;)
+    {
+      if ((localagde instanceof agcu)) {
+        ((agcu)localagde).a(this.jdField_a_of_type_JavaLangString, this.b);
+      }
+      localagde.a(new agdd(this, localagde));
+      return true;
+    }
+  }
+  
+  public boolean a(int paramInt, String paramString1, String paramString2)
+  {
+    QLog.i("FriendShipViewManager", 1, "play , url = " + paramString1 + " md5:" + paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.trim();
+    }
+    if (this.b != null) {
+      this.b = this.b.trim();
+    }
+    a(3);
+    return true;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendShipViewManager", 2, "doOnPause");
+    }
+    agde localagde = (agde)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+    if (localagde != null) {
+      localagde.c();
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendShipViewManager", 2, "doOnDestroy");
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (localEntry.getValue() != null)
       {
-        localObject = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
-        if (localObject != null)
-        {
-          localObject = (afft)((BaseChatPie)localObject).a(27);
-          if (localObject != null) {
-            ((afft)localObject).a(paramView, localacjt, 0);
-          }
-        }
+        ((agde)localEntry.getValue()).b();
+        ((agde)localEntry.getValue()).e();
       }
-      Object localObject = MessageForText.getTroopMemberInfoFromExtrJson(localMessageForText.getExtInfoFromExtStr(ayzs.i));
-      acjm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramView, (ArrayList)localObject, localacjt);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1);
-    paramView = (HotChatManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60);
-    if ((paramView != null) && (paramView.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {}
-    for (paramView = "2";; paramView = "1")
-    {
-      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_msg", "", "grp_msg", "clk_like", 0, 0, localMessageForText.frienduin, "", paramView, "");
-      return;
-      paramView = localMessageForText.msg;
-      break;
     }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

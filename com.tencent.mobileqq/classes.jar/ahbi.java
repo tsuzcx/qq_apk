@@ -1,14 +1,17 @@
-import android.os.MessageQueue.IdleHandler;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahbi
-  implements MessageQueue.IdleHandler
+  extends ahbl
 {
-  ahbi(ahbf paramahbf) {}
-  
-  public boolean queueIdle()
+  ahbi(agwz paramagwz)
   {
-    ahbf.a(this.a, true);
-    return true;
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agwr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

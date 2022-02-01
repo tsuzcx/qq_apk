@@ -1,115 +1,77 @@
+import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import tencent.im.oidb.location.RoomOperate.ReqRoomOperation;
-import tencent.im.oidb.location.RoomOperate.RspRoomOperation;
-import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
-import tencent.im.oidb.location.qq_lbs_share.RoomKey;
 
 public class atqi
-  extends atps<atpw>
+  extends atri
+  implements ator
 {
-  private atpw a;
-  
-  atqi(QQAppInterface paramQQAppInterface, atpw paramatpw)
+  public atqi(atoo paramatoo, Activity paramActivity)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Atpw = paramatpw;
+    super(paramatoo, paramActivity);
   }
   
-  private void a(int paramInt1, int paramInt2, long paramLong)
+  public void a()
   {
-    Object localObject = this.jdField_a_of_type_Atpw.a();
+    super.a();
     if (QLog.isColorLevel()) {
-      QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoom: invoked. ", "operateType = [" + paramInt1 + "]  R_OPT_CREATE = 1; //创建房间 R_OPT_JOIN = 2; //加入 R_OPT_QUIT = 3; //退出\n", ", uinType = [" + paramInt2 + "], sessionUin = [" + paramLong + "], location = [" + localObject + "]" });
+      QLog.i("SimpleFilePresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = apk simple");
     }
-    if (localObject == null) {
+    String str = BaseApplicationImpl.getContext().getString(2131692463);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(str, true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
+    if ((this.jdField_a_of_type_Atoo.k() != 0) && (this.jdField_a_of_type_Atoo.k() != 4) && (!TextUtils.isEmpty(this.jdField_a_of_type_Atoo.o())))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(str, false);
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Atoo.p())) {
+        break label165;
+      }
+      str = this.jdField_a_of_type_Atoo.p();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(true, this.jdField_a_of_type_Atoo.o(), 0, new atqj(this, str));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(2130844263);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.e(this.jdField_a_of_type_Atoo.g());
+      this.jdField_a_of_type_Atoo.a(this);
+      return;
+      label165:
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(true, this.jdField_a_of_type_Atoo.o(), 0, null);
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, Bundle paramBundle)
+  {
+    if ((paramInt != 0) && (paramInt != 4) && (!TextUtils.isEmpty(paramString1)))
+    {
+      paramBundle = BaseApplicationImpl.getContext().getString(2131692463);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(paramBundle, false);
+      if (!TextUtils.isEmpty(paramString2)) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(true, paramString1, 0, new atql(this, paramString2));
+      }
+    }
+    else
+    {
       return;
     }
-    RoomOperate.ReqRoomOperation localReqRoomOperation = new RoomOperate.ReqRoomOperation();
-    qq_lbs_share.RoomKey localRoomKey = atue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt2, paramLong);
-    localReqRoomOperation.room_key.set(localRoomKey);
-    localReqRoomOperation.room_key.setHasFlag(true);
-    localReqRoomOperation.room_operation.set(paramInt1);
-    localReqRoomOperation.lat.set(((LatLng)localObject).latitude);
-    localReqRoomOperation.lon.set(((LatLng)localObject).longitude);
-    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "QQLBSShareSvc.room_operation");
-    ((ToServiceMsg)localObject).extraData.putInt("OPT_ROOM_TYPE", paramInt1);
-    ((ToServiceMsg)localObject).extraData.putInt("uintype", paramInt2);
-    ((ToServiceMsg)localObject).extraData.putString("uin", String.valueOf(paramLong));
-    ((ToServiceMsg)localObject).putWupBuffer(localReqRoomOperation.toByteArray());
-    a().sendPbReq((ToServiceMsg)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(true, paramString1, 0, null);
   }
   
-  private void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  protected void h()
   {
-    atue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, false);
-    atud.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, false);
-    a().notifyUI(1, false, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1), paramString });
-  }
-  
-  protected atpw a()
-  {
-    return atpw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    try
-    {
-      long l = Long.parseLong(paramString);
-      a(paramInt1, paramInt2, l);
-      return;
+    super.h();
+    if (this.jdField_a_of_type_Atoo.i() == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(anni.a(2131699101), new atqk(this));
     }
-    catch (NumberFormatException paramString)
-    {
-      QLog.e("RoomOperateHandler", 1, "requestOperateRoom: failed. ", paramString);
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int i;
-    if (a(paramToServiceMsg, paramFromServiceMsg, paramObject)) {
-      try
-      {
-        i = paramToServiceMsg.extraData.getInt("OPT_ROOM_TYPE");
-        int j = paramToServiceMsg.extraData.getInt("uintype", -1);
-        paramToServiceMsg = paramToServiceMsg.extraData.getString("uin");
-        paramFromServiceMsg = (qq_lbs_share.ResultInfo)((RoomOperate.RspRoomOperation)new RoomOperate.RspRoomOperation().mergeFrom((byte[])paramObject)).msg_result.get();
-        if (atue.a(paramFromServiceMsg))
-        {
-          a().notifyUI(1, true, new Object[] { Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), paramToServiceMsg });
-          return;
-        }
-        a(j, paramToServiceMsg, paramFromServiceMsg.uint32_result.get(), i);
-        return;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        QLog.e("RoomOperateHandler", 1, "requestOperateRoomResp: failed. ", paramToServiceMsg);
-        return;
-      }
-    }
-    if (paramFromServiceMsg != null)
-    {
-      i = paramFromServiceMsg.getResultCode();
-      if (QLog.isColorLevel()) {
-        QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoomResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
-      }
-    }
-    a(-2, "", -10001, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqi
  * JD-Core Version:    0.7.0.1
  */

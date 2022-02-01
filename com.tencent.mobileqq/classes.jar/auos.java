@@ -1,38 +1,18 @@
-import java.util.LinkedList;
-import java.util.List;
+import android.text.TextUtils;
 
-public class auos<T>
+public class auos
 {
-  private List<T> a = new LinkedList();
-  
-  public int a()
+  public static boolean a(String paramString)
   {
-    return this.a.size();
-  }
-  
-  public T a()
-  {
-    if (this.a.size() == 0) {
-      return null;
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    return this.a.remove(0);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(T paramT)
-  {
-    if (!this.a.contains(paramT)) {
-      this.a.add(paramT);
-    }
+    return paramString.startsWith("https://ti.qq.com/friends/unidirection?_wv=2&_wwv=128&tuin=");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auos
  * JD-Core Version:    0.7.0.1
  */

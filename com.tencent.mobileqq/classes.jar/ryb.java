@@ -1,37 +1,32 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.content.BroadcastReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ryb
-  implements qft
 {
-  public ryb(FastWebActivity paramFastWebActivity) {}
+  private static int jdField_a_of_type_Int = 5;
+  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ryc();
+  private static final String jdField_a_of_type_JavaLangString = ryb.class.getSimpleName();
+  private static Thread jdField_a_of_type_JavaLangThread;
+  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private static AtomicInteger b;
   
-  public void a(boolean paramBoolean)
+  static
   {
-    if (paramBoolean)
-    {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)FastWebActivity.a(this.a).getLayoutParams();
-      int i = xin.b(this.a, 144.0F);
-      localLayoutParams.rightMargin = i;
-      localLayoutParams.leftMargin = i;
-      FastWebActivity.a(this.a).setLayoutParams(localLayoutParams);
-      FastWebActivity.a(this.a).setVisibility(0);
-      FastWebActivity.a(this.a).setOnClickListener(new ryc(this));
-      FastWebActivity.a(this.a);
-      if (FastWebActivity.b(this.a)) {
-        FastWebActivity.a(this.a).setImageResource(2130848991);
-      }
-      FastWebActivity.a(this.a).a(2, FastWebActivity.a(this.a), FastWebActivity.a(this.a).innerUniqueID);
-    }
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    b = new AtomicInteger(0);
+  }
+  
+  private static long b()
+  {
+    for (long l = 0L; jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1; l += 1L) {}
+    return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ryb
  * JD-Core Version:    0.7.0.1
  */

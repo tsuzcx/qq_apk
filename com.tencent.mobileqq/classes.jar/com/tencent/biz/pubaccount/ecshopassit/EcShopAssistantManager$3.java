@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
-import ntw;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import oda;
 
 public class EcShopAssistantManager$3
   implements Runnable
 {
-  public EcShopAssistantManager$3(ntw paramntw, String paramString) {}
+  public EcShopAssistantManager$3(oda paramoda, String paramString) {}
   
   public void run()
   {
-    awgf localawgf = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    if (ntw.a(this.this$0, localawgf, this.a)) {
-      ntw.a(this.this$0, this.a);
+    EntityManager localEntityManager = this.this$0.a.a().createEntityManager();
+    if (oda.a(this.this$0, localEntityManager, this.a)) {
+      oda.a(this.this$0, this.a);
     }
-    localawgf.a();
+    localEntityManager.close();
   }
 }
 

@@ -1,13 +1,16 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ark.VariantWrapper;
 
-final class apin
-  extends nab
+public abstract interface apin
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    QLog.i("reportMsgBoxMomentRead", 1, " reportMsgBoxMomentRead code:" + paramInt);
-  }
+  public abstract String a();
+  
+  public abstract void a(apih paramapih, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract boolean b();
 }
 
 

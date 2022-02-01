@@ -1,24 +1,47 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
+import com.tencent.qphone.base.util.QLog;
 
 public class awup
-  implements Animation.AnimationListener
+  implements awtr
 {
-  public awup(BreatheEffectView paramBreatheEffectView) {}
+  public awup(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+    }
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return;
+          MultiCardFragment.a(this.a);
+          MultiCardFragment.a(this.a, true);
+        } while ((MultiCardFragment.a(this.a) == null) || (MultiCardFragment.a(this.a).a() <= MultiCardFragment.a(this.a).a()));
+        MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
+        MultiCardFragment.a(this.a).a();
+        return;
+        MultiCardFragment.b(this.a, true);
+        MultiCardFragment.a(this.a, false);
+      } while (MultiCardFragment.a(this.a) == null);
+      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
+      return;
+    }
+    MultiCardFragment.b(this.a, true);
+    MultiCardFragment.a(this.a, false);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awup
  * JD-Core Version:    0.7.0.1
  */

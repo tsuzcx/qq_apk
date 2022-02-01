@@ -1,12 +1,16 @@
 package com.tencent.mobileqq.richmediabrowser.model;
 
+import android.os.Bundle;
 import android.os.Parcel;
 import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import java.util.ArrayList;
 
 public class AIOFileVideoData
   extends AIOBrowserBaseData
 {
+  public Bundle a;
   public String a;
+  public ArrayList<String> a;
   public String b;
   public int c;
   public String c;
@@ -21,24 +25,21 @@ public class AIOFileVideoData
   public long f;
   public String f;
   public boolean f;
+  public int g;
+  public long g;
   public String g;
   public boolean g;
   public String h;
   public boolean h;
   public String i;
   public boolean i;
-  public String j;
   public boolean j;
-  public String k;
-  public boolean k;
-  public boolean l;
-  public boolean m;
-  public boolean n;
   
   public String a()
   {
     switch (this.status)
     {
+    case 7: 
     default: 
       return "undefine";
     case 0: 
@@ -47,7 +48,7 @@ public class AIOFileVideoData
       return "Buffering";
     case 1: 
       return "Downloading";
-    case 7: 
+    case 8: 
       return "Error";
     case 4: 
       return "Get URL";
@@ -73,11 +74,11 @@ public class AIOFileVideoData
     this.jdField_e_of_type_Long = paramParcel.readLong();
     this.jdField_c_of_type_Int = paramParcel.readInt();
     this.d = paramParcel.readInt();
-    this.i = paramParcel.readString();
+    this.g = paramParcel.readString();
     this.jdField_e_of_type_Int = paramParcel.readInt();
     this.f = paramParcel.readInt();
-    this.j = paramParcel.readString();
-    this.k = paramParcel.readString();
+    this.h = paramParcel.readString();
+    this.i = paramParcel.readString();
   }
   
   public void updateProgress(int paramInt)
@@ -99,16 +100,16 @@ public class AIOFileVideoData
     paramParcel.writeLong(this.jdField_e_of_type_Long);
     paramParcel.writeInt(this.jdField_c_of_type_Int);
     paramParcel.writeInt(this.d);
-    paramParcel.writeString(this.i);
+    paramParcel.writeString(this.g);
     paramParcel.writeInt(this.jdField_e_of_type_Int);
     paramParcel.writeInt(this.f);
-    paramParcel.writeString(this.j);
-    paramParcel.writeString(this.k);
+    paramParcel.writeString(this.h);
+    paramParcel.writeString(this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData
  * JD-Core Version:    0.7.0.1
  */

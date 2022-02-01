@@ -1,38 +1,8 @@
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.view.View;
 
-public class bkne
-  implements Animation.AnimationListener
+public abstract interface bkne
 {
-  public bkne(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEffectCameraCaptureUnit", 2, "clearAnimation end!");
-    }
-    if (QIMEffectCameraCaptureUnit.e(this.a) == null) {
-      return;
-    }
-    this.a.v = true;
-    QIMEffectCameraCaptureUnit.e(this.a).setText(2131699846);
-    QIMEffectCameraCaptureUnit.e(this.a).startAnimation(this.a.b);
-    this.a.a.setStartOffset(3000L);
-    this.a.a.setAnimationListener(QIMEffectCameraCaptureUnit.b(this.a));
-    QIMEffectCameraCaptureUnit.e(this.a).setAnimation(this.a.a);
-    this.a.a.startNow();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.v = true;
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

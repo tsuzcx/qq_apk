@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-class acqe
-  implements DialogInterface.OnClickListener
+public class acqe
+  implements View.OnClickListener
 {
-  acqe(acqd paramacqd, boolean paramBoolean) {}
+  public acqe(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    String str;
+    if (GdtInterstitialFragmentForJS.a(this.a) == null)
+    {
+      str = "loading ad data";
+      ackf localackf = new ackf();
+      localackf.a = GdtInterstitialFragmentForJS.a(this.a);
+      GdtInterstitialFragmentForJS.a(this.a, new ackd(localackf, new WeakReference(GdtInterstitialFragmentForJS.a(this.a))));
+      GdtInterstitialFragmentForJS.a(this.a).a(new WeakReference(this.a.getActivity()));
+    }
+    for (;;)
+    {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str = "load ad data error";
     }
   }
 }

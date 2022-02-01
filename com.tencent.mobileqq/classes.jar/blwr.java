@@ -1,18 +1,30 @@
-import android.text.Spanned;
+import android.content.Context;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
 
-class blwr
-  extends bmsw
+public class blwr
+  extends Scroller
 {
-  blwr(blwp paramblwp, int paramInt)
+  public int a;
+  
+  public blwr(Context paramContext, Interpolator paramInterpolator)
   {
-    super(paramInt);
+    super(paramContext, paramInterpolator);
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void a(int paramInt)
   {
-    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    this.jdField_a_of_type_Int = (str.length() - bcnt.b(str).length() + 20);
-    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    this.a = paramInt;
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
   }
 }
 

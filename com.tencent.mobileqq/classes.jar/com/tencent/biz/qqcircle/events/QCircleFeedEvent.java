@@ -1,7 +1,11 @@
 package com.tencent.biz.qqcircle.events;
 
 import android.text.TextUtils;
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.biz.qqcircle.beans.QCircleFakeFeed;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -17,7 +21,9 @@ import feedcloud.FeedCloudMeta.StVideo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import tqg;
+import qqcircle.QQCircleFeedBase.StSimulateData;
+import qqcircle.QQCircleFeedBase.StVideoBusiData;
+import uxc;
 
 public class QCircleFeedEvent
   extends SimpleBaseEvent
@@ -26,11 +32,14 @@ public class QCircleFeedEvent
   public static final int STATE_COMPOSITE_SUCCESS = 5;
   public static final int STATE_CREATE = 1;
   public static final int STATE_DELETE = 3;
+  public static final int STATE_DELETE_FEEDS_BY_UID = 6;
   public static final int STATE_INIT_FAKE_DATA = 4;
+  public static final int TARGET_ALL_PAGE = -1;
   public List<FeedCloudMeta.StFeed> mFakeFeedDataList;
   public FeedCloudMeta.StFeed mSingleFakeFeed;
   public int mState;
   public String mTargetId;
+  public int mTargetPage = -1;
   
   public QCircleFeedEvent(int paramInt)
   {
@@ -88,17 +97,15 @@ public class QCircleFeedEvent
         break label220;
       }
     }
-    Object localObject3;
-    Object localObject4;
     label220:
     for (long l = System.currentTimeMillis() / 1000L;; l = paramQCircleFakeFeed.a())
     {
       ((PBUInt64Field)localObject1).set(l);
-      if (paramQCircleFakeFeed.b() == null) {
+      if (paramQCircleFakeFeed.f() == null) {
         break label238;
       }
       localObject1 = new ArrayList();
-      localObject2 = paramQCircleFakeFeed.b().iterator();
+      localObject2 = paramQCircleFakeFeed.f().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (LabelInfo)((Iterator)localObject2).next();
@@ -117,45 +124,79 @@ public class QCircleFeedEvent
       localStFeed.poiInfo.address.set(paramQCircleFakeFeed.a().address);
       localStFeed.poiInfo.defaultName.set(paramQCircleFakeFeed.a().poiDefaultName);
     }
-    localStFeed.poster.set(tqg.a());
-    if (!TextUtils.isEmpty(tqg.b())) {
-      localStFeed.poster.nick.set(tqg.b());
+    localStFeed.poster.set(uxc.a());
+    if (!TextUtils.isEmpty(uxc.b())) {
+      localStFeed.poster.nick.set(uxc.b());
     }
     localStFeed.cover.picUrl.set(paramQCircleFakeFeed.e());
+    Object localObject1 = paramQCircleFakeFeed.a();
+    localObject2 = paramQCircleFakeFeed.b();
+    Object localObject3 = paramQCircleFakeFeed.c();
+    Object localObject4 = paramQCircleFakeFeed.d();
     switch (paramQCircleFakeFeed.a())
     {
     default: 
-      return localStFeed;
     case 3: 
-      localStFeed.video.width.set(paramQCircleFakeFeed.b());
-      localStFeed.video.height.set(paramQCircleFakeFeed.c());
-      localStFeed.video.duration.set(paramQCircleFakeFeed.d());
-      localStFeed.video.playUrl.set(paramQCircleFakeFeed.f());
+      do
+      {
+        return localStFeed;
+        localStFeed.video.width.set(paramQCircleFakeFeed.b());
+        localStFeed.video.height.set(paramQCircleFakeFeed.c());
+        localStFeed.video.duration.set(paramQCircleFakeFeed.d());
+        localStFeed.video.playUrl.set(paramQCircleFakeFeed.f());
+      } while (TextUtils.isEmpty((CharSequence)((ArrayList)localObject4).get(0)));
+      paramQCircleFakeFeed = new QQCircleFeedBase.StSimulateData();
+      paramQCircleFakeFeed.material_id.set((String)((ArrayList)localObject1).get(0));
+      paramQCircleFakeFeed.filter_id.set((String)((ArrayList)localObject2).get(0));
+      paramQCircleFakeFeed.simulate_name.set((String)((ArrayList)localObject3).get(0));
+      paramQCircleFakeFeed.simulate_schema.set((String)((ArrayList)localObject4).get(0));
+      paramQCircleFakeFeed.is_show_button.set(1);
+      localObject1 = new QQCircleFeedBase.StVideoBusiData();
+      ((QQCircleFeedBase.StVideoBusiData)localObject1).simulate_date.set(paramQCircleFakeFeed);
+      localStFeed.video.busiData.set(ByteStringMicro.copyFrom(((QQCircleFeedBase.StVideoBusiData)localObject1).toByteArray()));
       return localStFeed;
     }
     localStFeed.cover.width.set(paramQCircleFakeFeed.b());
     localStFeed.cover.height.set(paramQCircleFakeFeed.c());
-    Object localObject1 = new ArrayList();
-    if (paramQCircleFakeFeed.a() != null)
+    ArrayList localArrayList = new ArrayList();
+    if (paramQCircleFakeFeed.e() != null)
     {
-      localObject2 = paramQCircleFakeFeed.a().iterator();
-      while (((Iterator)localObject2).hasNext())
+      paramInt = 0;
+      while (paramInt < paramQCircleFakeFeed.e().size())
       {
-        localObject3 = (String)((Iterator)localObject2).next();
-        localObject4 = new FeedCloudMeta.StImage();
-        ((FeedCloudMeta.StImage)localObject4).picUrl.set((String)localObject3);
-        ((FeedCloudMeta.StImage)localObject4).width.set(paramQCircleFakeFeed.b());
-        ((FeedCloudMeta.StImage)localObject4).height.set(paramQCircleFakeFeed.c());
-        ((List)localObject1).add(localObject4);
+        Object localObject5 = (String)paramQCircleFakeFeed.e().get(paramInt);
+        FeedCloudMeta.StImage localStImage = new FeedCloudMeta.StImage();
+        localStImage.picUrl.set((String)localObject5);
+        localStImage.width.set(paramQCircleFakeFeed.b());
+        localStImage.height.set(paramQCircleFakeFeed.c());
+        if (!TextUtils.isEmpty((CharSequence)((ArrayList)localObject4).get(paramInt)))
+        {
+          localObject5 = new QQCircleFeedBase.StSimulateData();
+          ((QQCircleFeedBase.StSimulateData)localObject5).material_id.set((String)((ArrayList)localObject1).get(paramInt));
+          ((QQCircleFeedBase.StSimulateData)localObject5).filter_id.set((String)((ArrayList)localObject2).get(paramInt));
+          ((QQCircleFeedBase.StSimulateData)localObject5).simulate_name.set((String)((ArrayList)localObject3).get(paramInt));
+          ((QQCircleFeedBase.StSimulateData)localObject5).simulate_schema.set((String)((ArrayList)localObject4).get(paramInt));
+          ((QQCircleFeedBase.StSimulateData)localObject5).is_show_button.set(1);
+          QQCircleFeedBase.StVideoBusiData localStVideoBusiData = new QQCircleFeedBase.StVideoBusiData();
+          localStVideoBusiData.simulate_date.set((MessageMicro)localObject5);
+          localStImage.busiData.set(ByteStringMicro.copyFrom(localStVideoBusiData.toByteArray()));
+        }
+        localArrayList.add(localStImage);
+        paramInt += 1;
       }
     }
-    localStFeed.images.set((List)localObject1);
+    localStFeed.images.set(localArrayList);
     return localStFeed;
+  }
+  
+  public void setTargetPage(int paramInt)
+  {
+    this.mTargetPage = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.events.QCircleFeedEvent
  * JD-Core Version:    0.7.0.1
  */

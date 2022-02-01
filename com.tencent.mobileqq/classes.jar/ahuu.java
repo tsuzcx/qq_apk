@@ -1,160 +1,46 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.AlphaClickableRelativeLayout;
-import com.tencent.widget.XListView;
-import java.util.List;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ahuu
-  extends ahub
 {
-  public static boolean a;
-  private ahur jdField_a_of_type_Ahur;
-  private ahus jdField_a_of_type_Ahus = new ahuv(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahuw(this);
+  private static int a;
+  public ConcurrentHashMap<Long, ahux> a;
   
-  public ahuu(Activity paramActivity)
+  static
   {
-    super(paramActivity);
+    jdField_a_of_type_Int = 900000;
   }
   
-  private void a()
+  private ahuu()
   {
-    if (!a()) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public static final ahuu a()
+  {
+    return ahuw.a();
+  }
+  
+  public ahux a(long paramLong)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
+      return (ahux)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
     }
-    label125:
-    do
-    {
-      for (;;)
-      {
-        return;
-        Object localObject = (alwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159);
-        if (TextUtils.isEmpty(((alwd)localObject).a))
-        {
-          this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout.setOnClickListener(null);
-          this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout.setClickable(false);
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          if (this.jdField_a_of_type_Ahur != null) {
-            break label125;
-          }
-        }
-        for (int i = 0;; i = this.jdField_a_of_type_Ahur.getCount())
-        {
-          localObject = ((alwd)localObject).a(i);
-          if (localObject != null) {
-            break label136;
-          }
-          this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-          return;
-          this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout.setClickable(true);
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          break;
-        }
-        if (((List)localObject).isEmpty()) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        if (this.jdField_a_of_type_Ahur == null)
-        {
-          this.jdField_a_of_type_Ahur = new ahur(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 4, true, this.jdField_a_of_type_Ahus);
-          this.jdField_a_of_type_Ahur.a((List)localObject);
-          this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ahur);
-        }
-        while (((List)localObject).size() == 1)
-        {
-          f();
-          return;
-          this.jdField_a_of_type_Ahur.a((List)localObject);
-        }
-      }
-    } while (this.jdField_a_of_type_Ahur == null);
-    label136:
-    this.jdField_a_of_type_Ahur.notifyDataSetChanged();
+    return null;
   }
   
-  private void f()
+  public void a()
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-    localLayoutParams.height = aepi.a(88.0F, this.jdField_a_of_type_AndroidWidgetFrameLayout.getResources());
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(localLayoutParams);
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout.a(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131713646));
-    a();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    super.a(paramQQAppInterface);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-      if (this.jdField_a_of_type_Ahur != null) {
-        this.jdField_a_of_type_Ahur.a(paramQQAppInterface);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(" LongVideoUrlCacheManager", 2, "LongVideoUrlCacheManager,clearCache");
     }
-    a();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
   
-  public void a(String paramString)
+  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
   {
-    if ((this.jdField_a_of_type_Ahur != null) && (this.jdField_a_of_type_Ahur.a(paramString)))
-    {
-      ((alwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).i();
-      a();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Ahur != null) {
-      this.jdField_a_of_type_Ahur.a(paramBoolean);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    super.b(paramBoolean);
-    jdField_a_of_type_Boolean = true;
-    a();
-  }
-  
-  public void d()
-  {
-    super.d();
-    if (this.jdField_a_of_type_Ahur != null) {
-      this.jdField_a_of_type_Ahur.a();
-    }
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    a();
-  }
-  
-  public void e()
-  {
-    super.e();
-    if (this.jdField_a_of_type_ComTencentWidgetXListView != null) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(null);
-    }
-    if (this.jdField_a_of_type_Ahur != null) {
-      this.jdField_a_of_type_Ahur.a();
-    }
-    this.jdField_a_of_type_Ahur = null;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new ahux(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
   }
 }
 

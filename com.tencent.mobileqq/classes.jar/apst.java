@@ -1,34 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.util.LruCache;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 class apst
-  extends apsc
+  extends BroadcastReceiver
 {
   apst(apss paramapss) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a(paramEmoticonPackage, paramInt, paramBundle);
-    if ((paramEmoticonPackage != null) && (paramInt == 0))
+    if ((paramIntent == null) || (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("faceType", -1) != this.a.jdField_a_of_type_Int)) {}
+    ArrayList localArrayList;
+    do
     {
-      paramBundle = paramBundle.getBundle("jsonReqParams");
-      if (paramBundle != null)
-      {
-        paramInt = paramBundle.getInt(apss.jdField_a_of_type_JavaLangString);
-        paramBundle = paramBundle.getString(apss.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramEmoticonPackage.epId);
-        }
-        boolean bool = this.a.jdField_a_of_type_Apsx.a(paramInt);
-        if (bool) {
-          this.a.a(paramEmoticonPackage.epId, paramBundle, false);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
-        }
-      }
+      return;
+      paramContext = paramIntent.getStringArrayListExtra("uinList");
+      localArrayList = paramIntent.getStringArrayListExtra("headPathList");
+    } while ((paramContext == null) || (localArrayList == null));
+    int j = paramContext.size();
+    if (QLog.isColorLevel()) {
+      QLog.d("NonMainAppHeadLoader", 2, "onReceive, uinListSize:" + j + " reqSize:" + this.a.jdField_a_of_type_JavaUtilHashSet.size());
     }
+    paramIntent = new ArrayList(this.a.jdField_a_of_type_JavaUtilHashSet.size());
+    int i = 0;
+    while (i < j)
+    {
+      String str = (String)paramContext.get(i);
+      if (this.a.jdField_a_of_type_JavaUtilHashSet.contains(str))
+      {
+        this.a.jdField_a_of_type_JavaUtilHashSet.remove(str);
+        paramIntent.add(str);
+      }
+      this.a.jdField_b_of_type_AndroidSupportV4UtilLruCache.put(str, localArrayList.get(i));
+      i += 1;
+    }
+    paramContext = Message.obtain();
+    paramContext.obj = paramIntent;
+    paramContext.what = 1001;
+    this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(paramContext);
   }
 }
 

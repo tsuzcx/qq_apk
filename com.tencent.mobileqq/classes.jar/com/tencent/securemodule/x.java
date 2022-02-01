@@ -87,6 +87,7 @@ public class x
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new b(4, 21, SecureEngine.getEngineVersion(paramContext) + "&productid=" + at.a(paramContext, 30003, 0), ""));
+    ax.b("CloudServiceManager", "SecureEngine.getEngineVersion(context): " + SecureEngine.getEngineVersion(paramContext));
     localArrayList.add(new b(8, 21, "buildno=" + at.a(paramContext, 30004, 0) + "&version=" + at.a(paramContext, 30001, "") + "&productid=" + at.a(paramContext, 30003, 0), ""));
     return localArrayList;
   }
@@ -143,7 +144,7 @@ public class x
         if (parame.a().a() == 1) {
           bool = true;
         }
-        k = ay.a(this.a, ((r)localObject1).a(), bool);
+        k = ba.a(this.a, ((r)localObject1).a(), bool);
         j = i;
       }
       break;
@@ -229,12 +230,14 @@ public class x
   
   public int b()
   {
+    ax.b("CloudServiceManager", "handleCloudCmdFromServer");
     Object localObject = b(this.a);
     AtomicReference localAtomicReference = new AtomicReference();
     int i = ah.a(this.a).a((List)localObject, localAtomicReference);
     if (i != 0) {
       return i;
     }
+    ax.b("CloudServiceManager", "getUpdatesV2 back");
     localObject = (q)localAtomicReference.get();
     if (localObject != null)
     {
@@ -262,7 +265,7 @@ public class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.x
  * JD-Core Version:    0.7.0.1
  */

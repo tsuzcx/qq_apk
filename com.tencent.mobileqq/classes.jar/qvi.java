@@ -1,52 +1,31 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.CheckBox;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ExpandableListView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGallery;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qvi
-  extends qvp
+  implements View.OnClickListener
 {
-  private qvz a;
+  public qvi(ComponentContentGallery paramComponentContentGallery, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2) {}
   
-  public qvi(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView, boolean paramBoolean, qvz paramqvz)
+  public void onClick(View paramView)
   {
-    super(paramContext, paramQQAppInterface, paramExpandableListView, paramBoolean);
-    this.jdField_a_of_type_Qvz = paramqvz;
-  }
-  
-  protected void a()
-  {
-    if ((this.jdField_a_of_type_Qvz != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Qvz.b()))
+    if (ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery) == null) {}
+    for (;;)
     {
-      String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719026, new Object[] { String.valueOf(this.jdField_a_of_type_Qvz.c()) });
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, str, 0).a();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      soy localsoy = ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery).a();
+      if (localsoy != null) {
+        localsoy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1, ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery), this.b);
+      }
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719020), 0).a();
-  }
-  
-  protected void a(qvx paramqvx, Friends paramFriends)
-  {
-    if ((paramFriends == null) || (this.jdField_a_of_type_Qvz == null) || (this.jdField_a_of_type_Qvz.a() == null) || (this.jdField_a_of_type_Qvz.a().isEmpty())) {
-      return;
-    }
-    paramqvx.a.setBackgroundResource(2130848902);
-    if (this.jdField_a_of_type_Qvz.a().contains(paramFriends.uin))
-    {
-      paramqvx.a.setEnabled(false);
-      return;
-    }
-    paramqvx.a.setEnabled(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qvi
  * JD-Core Version:    0.7.0.1
  */

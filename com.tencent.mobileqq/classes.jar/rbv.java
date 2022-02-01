@@ -1,24 +1,30 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
+import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class rbv
-  implements Animation.AnimationListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "shouldDoTaskTiming", "", "onShouldDoTaskTimingCallback"}, k=3, mv={1, 1, 16})
+final class rbv
+  implements qzb
 {
-  public rbv(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
+  rbv(rbl paramrbl) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public final void a(boolean paramBoolean)
   {
-    VideoFeedsAioGuideView.b(this.a).setStartOffset(360L);
+    try
+    {
+      this.a.a(paramBoolean);
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      localRemoteException.printStackTrace();
+      QLog.e("RIJAidlServerRedPacketModule", 1, QLog.getStackTraceString((Throwable)localRemoteException));
+    }
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rbv
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,8 @@ import android.content.DialogInterface.OnDismissListener;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
-import bljn;
+import bnzb;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import dov.com.qq.im.aeeditor.view.ProgressView;
 
 class AEEditorBaseFragment$1
@@ -18,13 +19,13 @@ class AEEditorBaseFragment$1
   {
     if (this.this$0.getActivity().isFinishing())
     {
-      bljn.c(AEEditorBaseFragment.b(), "Activity has been destroy.");
+      bnzb.c(AEEditorBaseFragment.b(), "Activity has been destroy.");
       return;
     }
     if (this.this$0.jdField_a_of_type_AndroidAppDialog == null)
     {
       this.this$0.jdField_a_of_type_DovComQqImAeeditorViewProgressView = new ProgressView(this.jdField_a_of_type_AndroidContentContext);
-      this.this$0.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidContentContext);
+      this.this$0.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this.jdField_a_of_type_AndroidContentContext);
       this.this$0.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
       this.this$0.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
       this.this$0.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
@@ -43,7 +44,7 @@ class AEEditorBaseFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.arch.AEEditorBaseFragment.1
  * JD-Core Version:    0.7.0.1
  */

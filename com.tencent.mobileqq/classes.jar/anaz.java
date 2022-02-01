@@ -1,31 +1,45 @@
-public abstract class anaz
-  extends anbn
+import android.text.TextUtils;
+
+public class anaz
 {
-  private int a = 1;
-  private int b = 1;
+  int jdField_a_of_type_Int;
+  private anbj jdField_a_of_type_Anbj;
+  private anbk jdField_a_of_type_Anbk;
+  private anbm jdField_a_of_type_Anbm;
+  String jdField_a_of_type_JavaLangString;
+  int b = 30000;
   
-  public anaz(int paramInt1, int paramInt2)
+  public anax a()
   {
-    this(paramInt1, paramInt2, 5);
+    if (this.jdField_a_of_type_Anbm == null) {
+      this.jdField_a_of_type_Anbm = new anbi();
+    }
+    if (this.jdField_a_of_type_Anbk == null) {
+      this.jdField_a_of_type_Anbk = new anbh();
+    }
+    if (this.jdField_a_of_type_Anbj == null) {
+      this.jdField_a_of_type_Anbj = new anav();
+    }
+    if (this.jdField_a_of_type_Int == 0) {
+      throw new IllegalArgumentException("appId required.");
+    }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      throw new IllegalArgumentException("current account uid is required.");
+    }
+    return new anax(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Anbm, this.jdField_a_of_type_Anbk, this.jdField_a_of_type_Anbj, null);
   }
   
-  public anaz(int paramInt1, int paramInt2, int paramInt3)
+  public anaz a(int paramInt)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public static boolean a(anaz paramanaz)
+  public anaz a(String paramString)
   {
-    return (paramanaz != null) && (paramanaz.a());
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
-  
-  public int a()
-  {
-    return this.b;
-  }
-  
-  public abstract boolean a();
 }
 
 

@@ -1,21 +1,21 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 
-final class ajew
-  extends ClickableSpan
+public class ajew
+  implements DialogInterface.OnClickListener
 {
-  ajew(ajez paramajez, String paramString) {}
+  public ajew(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Ajez.a(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
+    this.a.k();
+    this.a.q();
+    if (TroopNotifyAndRecommendView.b(this.a) != null) {
+      TroopNotifyAndRecommendView.b(this.a).setVisibility(8);
+    }
+    bcst.b(this.a.a, "dc00899", "Grp_contacts_news", "", "notice", "clear_clk", 0, 0, "", "", "", "");
   }
 }
 

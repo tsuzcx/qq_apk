@@ -2,9 +2,9 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bkik;
-import bkit;
-import bkjb;
+import bmxe;
+import bmxi;
+import bmxq;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlParams;
 import java.util.ArrayList;
@@ -26,9 +26,9 @@ public class AppJsPlugin$AppDownloadManager
   private HashMap<String, AppJsPlugin.IWaldlCallback> mQueryCallbackMap = new HashMap();
   private HashMap<String, List<AppJsPlugin.IWaldlCallback>> mQueryDownloadInfoListenerMap = new HashMap();
   private int mRetryCount;
-  private bkik mWadlCallback = new AppJsPlugin.AppDownloadManager.1(this);
+  private bmxe mWadlCallback = new AppJsPlugin.AppDownloadManager.1(this);
   private HashMap<String, WadlParams> mWadlParams = new HashMap();
-  private bkit mWadlProxyService;
+  private bmxi mWadlProxyService;
   
   public AppJsPlugin$AppDownloadManager(AppJsPlugin paramAppJsPlugin, Context paramContext)
   {
@@ -43,16 +43,16 @@ public class AppJsPlugin$AppDownloadManager
     try
     {
       WadlParams localWadlParams = new WadlParams();
-      localWadlParams.m = "SmallGame";
-      localWadlParams.jdField_d_of_type_JavaLangString = "10036618";
-      localWadlParams.jdField_d_of_type_Int = 6;
-      localWadlParams.jdField_b_of_type_JavaLangString = paramJSONObject.optString("android_download_url");
+      localWadlParams.l = "SmallGame";
+      localWadlParams.c = "10036618";
+      localWadlParams.d = 6;
+      localWadlParams.jdField_e_of_type_JavaLangString = paramJSONObject.optString("android_download_url");
       localWadlParams.a = paramJSONObject.optString("appid");
-      localWadlParams.f = paramJSONObject.optInt("version_code");
-      localWadlParams.j = paramJSONObject.optString("pkg_name");
-      localWadlParams.k = paramJSONObject.optString("app_name");
-      localWadlParams.l = paramJSONObject.optString("app_icon");
-      localWadlParams.n = "interrupt";
+      localWadlParams.jdField_e_of_type_Int = paramJSONObject.optInt("version_code");
+      localWadlParams.f = paramJSONObject.optString("pkg_name");
+      localWadlParams.j = paramJSONObject.optString("app_name");
+      localWadlParams.k = paramJSONObject.optString("app_icon");
+      localWadlParams.m = "interrupt";
       return localWadlParams;
     }
     catch (Throwable paramJSONObject)
@@ -93,7 +93,7 @@ public class AppJsPlugin$AppDownloadManager
     this.mIsInitFlag = true;
     this.mRetryCount = 0;
     this.mDownloadListenerMap = new HashMap();
-    this.mWadlProxyService = new bkit();
+    this.mWadlProxyService = new bmxi();
     this.mWadlProxyService.a(this.mWadlCallback);
   }
   
@@ -114,7 +114,7 @@ public class AppJsPlugin$AppDownloadManager
       return false;
     }
     localWadlParams1.b(2);
-    localWadlParams1.jdField_b_of_type_Int = 5;
+    localWadlParams1.b = 5;
     this.mWadlProxyService.b(localWadlParams1);
     paramIWaldlCallback.onResult(true, null);
     return true;
@@ -128,8 +128,8 @@ public class AppJsPlugin$AppDownloadManager
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString);
     paramString = new AppJsPlugin.AppDownloadManager.QueryDownloadInfoListener(this, paramString, paramIWaldlCallback);
-    bkjb.a().a(paramString);
-    bkjb.a().a("10036618", localArrayList);
+    bmxq.a().a(paramString);
+    bmxq.a().a("10036618", localArrayList);
   }
   
   public void removeDownloadListener(String paramString)
@@ -166,7 +166,7 @@ public class AppJsPlugin$AppDownloadManager
           break label129;
         }
         paramString.b(7);
-        paramString.jdField_b_of_type_Int = 2;
+        paramString.b = 2;
         this.mWadlProxyService.a(paramString);
         return;
       }
@@ -195,7 +195,7 @@ public class AppJsPlugin$AppDownloadManager
       return false;
     }
     localWadlParams.b(2);
-    localWadlParams.jdField_b_of_type_Int = 3;
+    localWadlParams.b = 3;
     this.mWadlProxyService.a(6, paramString);
     return true;
   }
@@ -220,7 +220,7 @@ public class AppJsPlugin$AppDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AppJsPlugin.AppDownloadManager
  * JD-Core Version:    0.7.0.1
  */

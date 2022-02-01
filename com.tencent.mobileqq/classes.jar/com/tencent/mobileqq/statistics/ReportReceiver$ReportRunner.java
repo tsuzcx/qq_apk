@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.statistics;
 
-import ampj;
 import android.content.Intent;
-import aysc;
-import azpn;
-import azqs;
-import bkjb;
+import aooq;
+import bbrf;
+import bcro;
+import bcst;
+import bmxq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.report.ReportModel;
@@ -21,7 +21,7 @@ class ReportReceiver$ReportRunner
     this.a = paramIntent;
   }
   
-  public void run()
+  private void a()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {}
@@ -35,7 +35,7 @@ class ReportReceiver$ReportRunner
         i = localIntent.getIntExtra("is_runtime", -1);
         if (i == 1001)
         {
-          ((ampj)((QQAppInterface)localObject).getManager(126)).a(localIntent);
+          ((aooq)((QQAppInterface)localObject).getManager(126)).a(localIntent);
           return;
         }
         str1 = localIntent.getStringExtra("reporting_tag");
@@ -56,36 +56,36 @@ class ReportReceiver$ReportRunner
             if ((i == 0) || (i != 1)) {
               continue;
             }
-            aysc.a(str1, (QQAppInterface)localObject, (ReportModel)localIntent.getSerializableExtra("reporting_detail"));
+            bbrf.a(str1, (QQAppInterface)localObject, (ReportModel)localIntent.getSerializableExtra("reporting_detail"));
             return;
           }
           if ("dc02181".equals(str1))
           {
             if (i == 0)
             {
-              azpn.b(str1, (QQAppInterface)localObject, str2);
+              bcro.b(str1, (QQAppInterface)localObject, str2);
               return;
             }
             if (i != 1) {
               continue;
             }
-            azpn.a(str1, (QQAppInterface)localObject, str2);
+            bcro.a(str1, (QQAppInterface)localObject, str2);
             return;
           }
-          if ("dc05076".equals(str1))
+          if ("dc_qqgame".equals(str1))
           {
-            bkjb.a().a((AppRuntime)localObject, str1, str2);
+            bmxq.a().a((AppRuntime)localObject, str1, str2);
             return;
           }
           if (i == 0)
           {
-            azqs.b((QQAppInterface)localObject, str1, str2, j);
+            bcst.b((QQAppInterface)localObject, str1, str2, j);
             return;
           }
           if (i != 1) {
             continue;
           }
-          azqs.a((QQAppInterface)localObject, str1, str2, j);
+          bcst.a((QQAppInterface)localObject, str1, str2, j);
           return;
         }
         catch (OutOfMemoryError localOutOfMemoryError) {}
@@ -94,10 +94,20 @@ class ReportReceiver$ReportRunner
       }
     }
   }
+  
+  public void run()
+  {
+    try
+    {
+      a();
+      return;
+    }
+    catch (Throwable localThrowable) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ReportReceiver.ReportRunner
  * JD-Core Version:    0.7.0.1
  */

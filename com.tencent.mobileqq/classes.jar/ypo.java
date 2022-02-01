@@ -1,38 +1,22 @@
-import android.content.res.ColorStateList;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1;
 
 public class ypo
-  extends ClickableSpan
+  implements ymj
 {
-  private int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private String jdField_a_of_type_JavaLangString;
-  private ypp jdField_a_of_type_Ypp;
+  ypo(ypb paramypb) {}
   
-  public void onClick(View paramView)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Ypp != null)) {
-      this.jdField_a_of_type_Ypp.a(this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
-    }
-    paramTextPaint.setUnderlineText(false);
+    yqp.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.7.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ypo
  * JD-Core Version:    0.7.0.1
  */

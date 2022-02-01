@@ -1,7 +1,7 @@
 package com.tencent.common.app;
 
+import abev;
 import android.content.Context;
-import zhx;
 
 public final class SafeModeUtil$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class SafeModeUtil$1
   
   public void run()
   {
-    zhx.a(this.a, 2);
+    abev.a(this.a, 2);
   }
 }
 

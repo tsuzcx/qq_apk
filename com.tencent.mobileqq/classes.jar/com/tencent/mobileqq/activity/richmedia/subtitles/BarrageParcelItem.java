@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ajuf;
+import almv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class BarrageParcelItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<BarrageParcelItem> CREATOR = new ajuf();
+  public static final Parcelable.Creator<BarrageParcelItem> CREATOR = new almv();
   public float a;
   public int a;
   public int b;
@@ -39,7 +39,7 @@ public class BarrageParcelItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem
  * JD-Core Version:    0.7.0.1
  */

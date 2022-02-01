@@ -1,31 +1,47 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import cooperation.qzone.LbsDataV2;
-import cooperation.qzone.util.QZLog;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 
-final class azbz
-  extends ampn
+public class azbz
 {
-  azbz(String paramString, boolean paramBoolean)
+  public double a;
+  public float a;
+  public int a;
+  public long a;
+  public Bitmap a;
+  public float[] a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public int d;
+  public float e;
+  
+  public static Bitmap a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    super(paramString, paramBoolean);
+    return paramBitmap;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static azbz a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, int paramInt, Resources paramResources)
   {
-    QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet.NewLbsInterface", 1, "[QZ_LBS_MODULE]----locate");
-    long l1 = System.currentTimeMillis();
-    long l2 = azby.a();
-    bjqy.a(paramInt, this.businessId, l1 - l2);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
+    azbz localazbz = new azbz();
+    localazbz.jdField_d_of_type_Int = paramInt;
+    float f = paramBitmap.getHeight() / paramBitmap.getWidth();
+    if (paramInt == 0) {}
+    for (localazbz.jdField_a_of_type_Int = afur.a(30.0F, paramResources);; localazbz.jdField_a_of_type_Int = afur.a(22.0F, paramResources))
     {
-      azby.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.a));
-      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "[QZ_LBS_MODULE]onLocationFinish succeed! gps=" + azby.a());
-    }
-    for (;;)
-    {
-      azby.a(paramInt);
-      return;
-      QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "[QZ_LBS_MODULE]onLocationFinish failed: error in force gps info update..");
+      localazbz.jdField_b_of_type_Int = ((int)(f * localazbz.jdField_a_of_type_Int));
+      localazbz.jdField_a_of_type_ArrayOfFloat = new float[2];
+      localazbz.jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
+      localazbz.jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
+      localazbz.jdField_a_of_type_Float = ((float)Math.random() * afur.a(18.0F, paramResources) - afur.a(9.0F, paramResources));
+      localazbz.jdField_a_of_type_Double = (Math.random() * 3.141592653589793D / 6.0D + 1.308996938995747D);
+      localazbz.jdField_b_of_type_Float = (afur.a(150.0F, paramResources) + (float)Math.random() * afur.a(50.0F, paramResources));
+      localazbz.jdField_c_of_type_Float = ((float)(localazbz.jdField_b_of_type_Float * Math.cos(localazbz.jdField_a_of_type_Double)));
+      localazbz.jdField_d_of_type_Float = ((float)(localazbz.jdField_b_of_type_Float * Math.sin(localazbz.jdField_a_of_type_Double)));
+      localazbz.jdField_c_of_type_Int = 256;
+      localazbz.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      return localazbz;
     }
   }
 }

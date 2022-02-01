@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import oxb;
-import pfd;
+import pmk;
+import pwi;
 
 public class BannerInfoModule$2
   implements Runnable
 {
-  public BannerInfoModule$2(pfd parampfd, TopBannerInfo paramTopBannerInfo) {}
+  public BannerInfoModule$2(pwi parampwi, TopBannerInfo paramTopBannerInfo) {}
   
   public void run()
   {
-    oxb.a().a(this.a);
+    pmk.a().a(this.a);
   }
 }
 

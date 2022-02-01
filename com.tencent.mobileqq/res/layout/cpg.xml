@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/msq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+    <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="11.5dip" android:layout_marginTop="81.0dip" android:layout_marginRight="11.5dip">
+        <ImageView android:id="@id/mug" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ggu" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="26.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/kbs" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:maxWidth="200.0dip" android:text="广东深圳大学北校区文学院" android:lines="1" android:includeFontPadding="false" android:layout_toRightOf="@id/mug" android:layout_centerVertical="true" />
+        <com.tencent.biz.qqcircle.widgets.QCircleFollowTagView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="right" android:id="@id/nbp" android:background="@drawable/g9c" android:visibility="visible" android:layout_width="69.0dip" android:layout_height="41.0dip" android:text="关注" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="12.0dip" android:paddingTop="10.0dip" android:paddingBottom="22.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="121.0dip">
+        <com.tencent.biz.qqcircle.widgets.AvatarListView android:id="@id/l2_" android:layout_width="wrap_content" android:layout_height="wrap_content" app:avatarHeight="20.0dip" app:avatarRadius="90" app:avatarWidth="20.0dip" app:space="0.8" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff7c878e" android:id="@id/mdk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" />
+    </LinearLayout>
+</FrameLayout>

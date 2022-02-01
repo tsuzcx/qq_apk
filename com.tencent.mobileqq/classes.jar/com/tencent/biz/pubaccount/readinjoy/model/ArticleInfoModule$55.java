@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.text.TextUtils;
-import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleExposureInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import pew;
+import pwb;
 
 public class ArticleInfoModule$55
   implements Runnable
 {
-  public ArticleInfoModule$55(pew parampew, int paramInt) {}
+  public ArticleInfoModule$55(pwb parampwb, int paramInt) {}
   
   public void run()
   {
-    List localList = this.this$0.a.a(ArticleExposureInfo.class, true, "channelID = ?", new String[] { String.valueOf(this.a) }, null, null, "exposureTime desc", String.valueOf(100));
+    List localList = this.this$0.a.query(ArticleExposureInfo.class, true, "channelID = ?", new String[] { String.valueOf(this.a) }, null, null, "exposureTime desc", String.valueOf(100));
     if (localList != null)
     {
       ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
@@ -30,11 +30,11 @@ public class ArticleInfoModule$55
           localConcurrentHashMap.put(localArticleExposureInfo.rowkey, localArticleExposureInfo);
         }
       }
-      localObject = (ConcurrentHashMap)pew.c(this.this$0).get(Integer.valueOf(this.a));
+      localObject = (ConcurrentHashMap)pwb.c(this.this$0).get(Integer.valueOf(this.a));
       if ((localObject != null) && (((ConcurrentHashMap)localObject).size() > 0)) {
         localConcurrentHashMap.putAll((Map)localObject);
       }
-      pew.c(this.this$0).put(Integer.valueOf(this.a), localConcurrentHashMap);
+      pwb.c(this.this$0).put(Integer.valueOf(this.a), localConcurrentHashMap);
     }
     QLog.d("ArticleInfoModule", 1, "loadFeedsExposureInfo from db , channelID : " + this.a + ", result : " + localList);
   }

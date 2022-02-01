@@ -1,6 +1,15 @@
-public abstract interface ahky
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+
+class ahky
+  extends afuv
 {
-  public abstract void a();
+  public ViewGroup a;
+  public AnyScaleTypeImageView a;
+  public TextView b;
+  
+  ahky(ahku paramahku) {}
 }
 
 

@@ -5,13 +5,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Base64;
-import azqh;
-import azri;
-import bhsz;
-import biln;
-import bjml;
-import bjmm;
-import bjrd;
+import bctj;
+import bkgj;
+import bkyz;
+import bmau;
+import bmav;
+import bmfn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +23,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Properties;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import org.json.JSONObject;
@@ -90,7 +88,7 @@ public class MachineLearingSmartReport
     {
       HashMap localHashMap = (HashMap)paramArrayList.next();
       if (localHashMap != null) {
-        azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.report_cmd, true, 0L, 0L, localHashMap, null, true);
+        bctj.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.report_cmd, true, 0L, 0L, localHashMap, null, true);
       }
     }
     return true;
@@ -139,18 +137,6 @@ public class MachineLearingSmartReport
   
   private boolean MTAReport(ArrayList<HashMap<String, String>> paramArrayList)
   {
-    Properties localProperties = new Properties();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      HashMap localHashMap = (HashMap)paramArrayList.next();
-      if (localHashMap != null)
-      {
-        localProperties.clear();
-        localProperties.putAll(localHashMap);
-        azqh.a(BaseApplicationImpl.getContext()).reportKVEvent(this.report_cmd, localProperties);
-      }
-    }
     return true;
   }
   
@@ -491,7 +477,7 @@ public class MachineLearingSmartReport
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_FailCode", String.valueOf(paramInt));
       localHashMap.put("param_FailMsg", paramString);
-      azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "qzonesmartreport", true, 0L, 0L, localHashMap, null, true);
+      bctj.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "qzonesmartreport", true, 0L, 0L, localHashMap, null, true);
       if ((!TextUtils.isEmpty(paramString)) && (QLog.isColorLevel())) {
         QLog.w("MachineLearingSmartReport", 2, paramString);
       }
@@ -659,7 +645,7 @@ public class MachineLearingSmartReport
   
   public void downloadDataAcquisitionModule()
   {
-    String str1 = biln.a().a("ClientReport", "SmartReportDataAcquisitionConfig", "");
+    String str1 = bkyz.a().a("ClientReport", "SmartReportDataAcquisitionConfig", "");
     Object localObject1;
     String str2;
     Object localObject2;
@@ -667,7 +653,7 @@ public class MachineLearingSmartReport
     {
       try
       {
-        localObject1 = bhsz.b(str1);
+        localObject1 = bkgj.b(str1);
         if (!checkAbsoluteTime((Map)localObject1))
         {
           exceptionReport(2, "downloadDataAcquisitionModule is out of date");
@@ -702,13 +688,13 @@ public class MachineLearingSmartReport
         exceptionReport(12, "downloadDataAcquisitionModule moudlemethod is null");
         return;
       }
-      localObject2 = bjml.a().a(str2);
+      localObject2 = bmau.a().a(str2);
       if (localObject2 == null)
       {
         exceptionReport(9, "downloadDataAcquisitionModule modulerecord is null");
         return;
       }
-      localObject2 = ((bjmm)localObject2).f;
+      localObject2 = ((bmav)localObject2).f;
       if (TextUtils.isEmpty((CharSequence)localObject2))
       {
         exceptionReport(11, (String)localObject2 + " not set");
@@ -738,7 +724,7 @@ public class MachineLearingSmartReport
       }
       if (BaseApplicationImpl.sProcessId == 2)
       {
-        QzoneModuleManager.getInstance().downloadModule(str2, new bjrd(this, str2, (String)localObject2, (String)localObject1));
+        QzoneModuleManager.getInstance().downloadModule(str2, new bmfn(this, str2, (String)localObject2, (String)localObject1));
         return;
       }
       if (QLog.isColorLevel()) {
@@ -773,7 +759,7 @@ public class MachineLearingSmartReport
   public boolean isNeedReport()
   {
     boolean bool2 = false;
-    Object localObject = biln.a().a("ClientReport", "MachinelearningSmartReportConfig", "");
+    Object localObject = bkyz.a().a("ClientReport", "MachinelearningSmartReportConfig", "");
     if (QLog.isColorLevel()) {
       QLog.i("MachineLearingSmartReport", 2, "reportconfig:" + (String)localObject);
     }
@@ -888,7 +874,7 @@ public class MachineLearingSmartReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.MachineLearingSmartReport
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
 
 public class aooc
-  extends aokh<aoob>
+  implements ArkViewImplement.LoadCallback
 {
-  public int a()
+  public aooc(QQDailyArkView paramQQDailyArkView) {}
+  
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    return 598;
+    onLoadState(paramInt1);
   }
   
-  @NonNull
-  public aoob a(int paramInt)
+  public void onLoadState(int paramInt)
   {
-    return new aoob();
-  }
-  
-  @Nullable
-  public aoob a(aoko[] paramArrayOfaoko)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onParsed] config");
+    if (paramInt != 1) {
+      QQDailyArkView.a(this.a);
     }
-    return aoob.a(paramArrayOfaoko);
-  }
-  
-  public Class<aoob> a()
-  {
-    return aoob.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("LebaRedTouchSwitchProcessor", 1, "[onReqFailed] failCode=" + paramInt);
-  }
-  
-  public void a(aoob paramaoob)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onUpdate]");
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aooc
  * JD-Core Version:    0.7.0.1
  */

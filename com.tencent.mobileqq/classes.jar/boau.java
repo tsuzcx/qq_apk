@@ -1,0 +1,17 @@
+import android.os.Handler;
+import android.os.Looper;
+
+final class boau
+  extends boaw<Handler, Void>
+{
+  protected Handler a(Void paramVoid)
+  {
+    return new Handler(Looper.getMainLooper());
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     boau
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,28 +1,32 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class bdlo
-  implements TextWatcher
+public class bdlo
+  implements DialogInterface.OnClickListener
 {
-  bdlo(bdll parambdll, int paramInt) {}
+  public bdlo(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, PadInfo paramPadInfo) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Bdll.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
-    {
-      this.jdField_a_of_type_Bdll.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      this.jdField_a_of_type_Bdll.a.setSelection(this.jdField_a_of_type_Int - 1);
+    if (!bgnt.g(BaseApplicationImpl.getContext())) {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131691985), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298998));
     }
+    while (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Bdlj == null) {
+      return;
+    }
+    paramDialogInterface = bdjg.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.domainId, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.padId);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Bdlj.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, true);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdlo
  * JD-Core Version:    0.7.0.1
  */

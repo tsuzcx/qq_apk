@@ -1,22 +1,19 @@
-class bfzl
-  extends bfzo
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.5;
+
+public class bfzl
+  implements bdfr
 {
-  bfzl(bfzk parambfzk) {}
+  public bfzl(TroopGiftAnimationController.5.5 param5) {}
   
-  protected void a(boolean paramBoolean)
+  public void a(bdfw parambdfw)
   {
-    super.a(paramBoolean);
-    if (paramBoolean)
-    {
-      bfzk.a(this.a);
-      return;
-    }
-    bfzk.b(this.a);
+    this.a.a.this$0.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfzl
  * JD-Core Version:    0.7.0.1
  */

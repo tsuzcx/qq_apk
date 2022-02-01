@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
 
 public final class acki
-  implements DialogInterface.OnClickListener
+  implements Parcelable.Creator<GdtHandler.Options>
 {
-  public acki(acln paramacln) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public GdtHandler.Options a(Parcel paramParcel)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
+    return new GdtHandler.Options(paramParcel);
+  }
+  
+  public GdtHandler.Options[] a(int paramInt)
+  {
+    return new GdtHandler.Options[paramInt];
   }
 }
 

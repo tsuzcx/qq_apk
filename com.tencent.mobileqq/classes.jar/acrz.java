@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.ad.tangram.analysis.AdAnalysisEvent;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
-public class acrz
-  extends aqru
+public final class acrz
 {
-  public acrz(Conversation paramConversation) {}
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.a(8, paramString, -2147483648);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.a(8, paramString1, -2147483648);
-  }
+  List<AdAnalysisEvent> a = new ArrayList();
+  public qq_ad_get.QQAdGet.DeviceInfo a;
 }
 
 

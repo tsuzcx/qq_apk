@@ -1,61 +1,27 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qek
-  extends ClickableSpan
-  implements rvl
+class qek
+  implements ViewBase.OnClickListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  protected String a;
-  boolean jdField_a_of_type_Boolean;
+  qek(qeh paramqeh, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public qek(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend, String paramString, int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = oqu.k + bdfr.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 0);
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.getContext(), PublicAccountBrowser.class);
-    localIntent.putExtra("url", paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.getContext().startActivity(localIntent);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = -1)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a != null)
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
+      paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a;
+      ryx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+      qeh.a(this.jdField_a_of_type_Qeh, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qek
  * JD-Core Version:    0.7.0.1
  */

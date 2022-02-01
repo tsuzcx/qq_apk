@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.data;
 
-import aanz;
+import aclj;
 import android.text.TextUtils;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -49,7 +49,7 @@ public class BannerAdPosInfo
       return null;
     }
     paramInt1 = calculateLegalWidth(paramBannerAdPosInfo.mAdWidth, paramInt1, paramFloat, paramInt2, paramInt3);
-    paramInt2 = aanz.a(0, paramInt1);
+    paramInt2 = aclj.a(0, paramInt1);
     return new BannerAdPosInfo(paramBannerAdPosInfo.mAdUnitId, paramBannerAdPosInfo.mAdLeft, paramBannerAdPosInfo.mAdTop, paramBannerAdPosInfo.mAdWidth, paramBannerAdPosInfo.mAdHeight, paramInt1, paramInt2);
   }
   
@@ -284,7 +284,7 @@ public class BannerAdPosInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.data.BannerAdPosInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,8 @@
-import android.support.v4.util.LruCache;
-
-class apdg
-  extends LruCache<String, T>
+public abstract interface apdg
 {
-  apdg(apdf paramapdf, int paramInt)
-  {
-    super(paramInt);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  protected int a(String paramString, T paramT)
-  {
-    int i;
-    if (paramT == null) {
-      i = 0;
-    }
-    int j;
-    do
-    {
-      return i;
-      j = apdf.a(this.a, paramT);
-      i = j;
-    } while (j != 0);
-    return this.a.a(paramT);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

@@ -1,14 +1,14 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class angl
-  extends angm
+class angl
+  implements DialogInterface.OnClickListener
 {
-  public String a = "10001";
+  angl(angk paramangk) {}
   
-  public void a(AppInterface paramAppInterface, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramBundle.getString("PromotionDescription");
+    paramDialogInterface.dismiss();
   }
 }
 

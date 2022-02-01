@@ -1,14 +1,14 @@
 package com.tencent.av.smallscreen;
 
 import com.tencent.av.VideoController;
-import lid;
-import mbw;
-import meu;
+import ley;
+import lyy;
+import mbx;
 
 public class SmallScreenVideoController$3
   implements Runnable
 {
-  public SmallScreenVideoController$3(mbw parammbw, long paramLong) {}
+  public SmallScreenVideoController$3(lyy paramlyy, long paramLong) {}
   
   public void run()
   {
@@ -37,17 +37,17 @@ public class SmallScreenVideoController$3
     }
     label290:
     label318:
-    for (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().i = 1;; this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().i = 3000)
+    for (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().j = 1;; this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().j = 3000)
     {
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().b(this.a, false);
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().b("SmallScreen.onResume", 0);
-      if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().k) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().ax) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R > 0)) {
-        mbw.a(this.this$0);
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().c("SmallScreen.onResume", 0);
+      if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().k) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().ay) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().S > 0)) {
+        lyy.a(this.this$0);
       }
       if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int != 2) {
         break;
       }
-      this.this$0.jdField_a_of_type_Meu.d();
+      this.this$0.jdField_a_of_type_Mbx.d();
       return;
       if (i != 2) {
         break label143;
@@ -59,7 +59,7 @@ public class SmallScreenVideoController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoController.3
  * JD-Core Version:    0.7.0.1
  */

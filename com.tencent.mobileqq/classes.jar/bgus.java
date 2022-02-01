@@ -1,111 +1,49 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.shell.ProcessType;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.util.Pair;
 
 public class bgus
 {
-  public List<bguv> a;
-  public boolean a;
-  public boolean b = true;
+  public int a;
+  public Pair<CharSequence, CharSequence> a;
+  public String a;
   
-  private bgus(Context paramContext)
+  public bgus(String paramString, int paramInt, Pair<CharSequence, CharSequence> paramPair)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (a())
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidUtilPair = paramPair;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder().append("MsgSearchContactInfo{uin='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", uinType=").append(this.jdField_a_of_type_Int).append(", matchTitle=[");
+    if (this.jdField_a_of_type_AndroidUtilPair == null)
     {
-      b(paramContext);
-      return;
+      localObject = "null";
+      return (String)localObject + "]" + '}';
     }
-    QMLog.i("Configuration", "OK with CustomConfiguration not found. Use default configuration");
-    a(paramContext);
-  }
-  
-  private Class a(String paramString)
-  {
-    return AppLoaderFactory.g().findClass(paramString);
-  }
-  
-  private void a(Context paramContext)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.b = true;
-    paramContext = paramContext.getPackageName();
-    a(paramContext + ":mini1", a("com.tencent.qqmini.sdk.ui.MiniActivity1"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver1"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini2", a("com.tencent.qqmini.sdk.ui.MiniActivity2"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver2"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini3", a("com.tencent.qqmini.sdk.ui.MiniActivity3"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver3"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini4", a("com.tencent.qqmini.sdk.ui.MiniActivity4"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver4"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini5", a("com.tencent.qqmini.sdk.ui.MiniActivity5"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver5"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini_internal", a("com.tencent.qqmini.sdk.ui.InternalMiniActivity"), a("com.tencent.qqmini.sdk.receiver.InternalAppBrandMainReceiver"), ProcessType.MINI_INTERNAL);
-  }
-  
-  private void a(String paramString, Class paramClass1, Class paramClass2, ProcessType paramProcessType)
-  {
-    bguv localbguv = new bguv();
-    localbguv.jdField_a_of_type_JavaLangString = paramString;
-    localbguv.jdField_a_of_type_JavaLangClass = paramClass1;
-    localbguv.b = paramClass2;
-    localbguv.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = paramProcessType;
-    this.jdField_a_of_type_JavaUtilList.add(localbguv);
-  }
-  
-  private boolean a()
-  {
-    return a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration") != null;
-  }
-  
-  private void b(Context paramContext)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    paramContext = paramContext.getPackageName();
-    this.jdField_a_of_type_Boolean = ((Boolean)bgvg.a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").a("FLUTTER_ENABLED")).booleanValue();
-    this.b = ((Boolean)bgvg.a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").a("DEXLOADER_ENABLED")).booleanValue();
-    Iterator localIterator = ((List)bgvg.a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").a("MINI_PROCESS_LIST")).iterator();
-    label69:
-    Object localObject;
-    bguv localbguv;
-    String str;
-    while (localIterator.hasNext())
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    if (this.jdField_a_of_type_AndroidUtilPair.first == null)
     {
-      localObject = localIterator.next();
-      if ((localObject instanceof Map))
-      {
-        localObject = (Map)localObject;
-        localbguv = new bguv();
-        localbguv.jdField_a_of_type_JavaLangString = (paramContext + ":" + ((Map)localObject).get("name").toString());
-        str = ((Map)localObject).get("processType").toString();
-        if (!"MINI_GAME".equals(str)) {
-          break label230;
-        }
-        localbguv.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = ProcessType.MINI_GAME;
+      localObject = "null";
+      label92:
+      localStringBuilder2 = localStringBuilder2.append(localObject).append(", ");
+      if (this.jdField_a_of_type_AndroidUtilPair.second != null) {
+        break label142;
       }
     }
-    for (;;)
+    label142:
+    for (Object localObject = "null";; localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.second)
     {
-      localbguv.jdField_a_of_type_JavaLangClass = a(((Map)localObject).get("ui").toString());
-      localbguv.b = a(((Map)localObject).get("receiver").toString());
-      this.jdField_a_of_type_JavaUtilList.add(localbguv);
-      break label69;
+      localObject = localObject;
       break;
-      label230:
-      if ("MINI_APP".equals(str)) {
-        localbguv.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = ProcessType.MINI_APP;
-      }
+      localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.first;
+      break label92;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgus
  * JD-Core Version:    0.7.0.1
  */

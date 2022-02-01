@@ -1,75 +1,28 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ajmn
-  extends ajlr
-  implements Cloneable
 {
-  private String d;
+  private BaseActivity a;
   
-  public ajmn(Context paramContext)
+  public ajmn(BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699996);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.a = paramBaseActivity;
   }
   
-  public void a(String paramString)
+  public bkho a(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.d = paramString;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    QLog.d("TroopSpecialAttentionMsg", 2, "deSerialize");
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      this.d = paramArrayOfByte.getString("senderUin");
-      if ((this.c != null) && (this.c.length() != 0)) {
-        this.jdField_a_of_type_Bbpe.a(this.c);
-      }
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      localJSONObject.put("senderUin", this.d);
-      if (this.jdField_a_of_type_Bbpe != null) {
-        this.c = this.jdField_a_of_type_Bbpe.a();
-      }
-      localJSONObject.put("messageNavInfo", this.c);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-    return localJSONObject.toString().getBytes();
+    bkho localbkho = (bkho)bkif.a(this.a, null);
+    GridView localGridView = (GridView)View.inflate(this.a, 2131563032, null);
+    localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837574));
+    localGridView.setAdapter(new ajmp(this, null));
+    localGridView.setOnItemClickListener(paramOnItemClickListener);
+    localbkho.a(localGridView);
+    localbkho.c(2131690582);
+    return localbkho;
   }
 }
 

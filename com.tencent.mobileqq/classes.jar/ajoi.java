@@ -1,9 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ProgressBar;
 
-public class ajoi
-  extends azfy
+final class ajoi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ajoi(CameraPreviewNew paramCameraPreviewNew) {}
+  ajoi(ProgressBar paramProgressBar) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (this.a != null) {
+      this.a.setProgress(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    }
+  }
 }
 
 

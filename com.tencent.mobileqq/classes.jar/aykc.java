@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import java.util.Comparator;
 
-class aykc
-  implements View.OnClickListener
+public final class aykc
+  implements Comparator<ShuayishuaConfig>
 {
-  aykc(ayjz paramayjz) {}
-  
-  public void onClick(View paramView)
+  public int a(ShuayishuaConfig paramShuayishuaConfig1, ShuayishuaConfig paramShuayishuaConfig2)
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.f.setVisibility(8);
+    long l = paramShuayishuaConfig1.realBegin - paramShuayishuaConfig2.realBegin;
+    if (l > 0L) {
+      return 1;
+    }
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 

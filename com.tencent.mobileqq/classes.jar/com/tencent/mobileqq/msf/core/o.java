@@ -1,28 +1,17 @@
 package com.tencent.mobileqq.msf.core;
 
-import com.tencent.msf.boot.config.NativeConfigStore;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Comparator;
 
 final class o
-  extends Thread
+  implements Comparator
 {
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    try
-    {
-      Thread.sleep(180000L);
-      MsfStore.getNativeConfigStore().removeConfig("LOGLEVEL_");
-      MsfStore.getNativeConfigStore().removeConfig("LOGLEVELTIME");
-      QLog.d(h.b, 1, "LogLevel and time has removed");
-      return;
+    if (paramFile1.lastModified() > paramFile2.lastModified()) {
+      return 1;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
+    return 0;
   }
 }
 

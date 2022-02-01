@@ -63,7 +63,7 @@ class TAVStickerEditView$TavStickerTouchListener
     float f2 = paramMotionEvent.getX();
     float f1 = paramMotionEvent.getY();
     if (2 == paramMotionEvent.getPointerCount()) {
-      if (TAVStickerEditViewEventType.isHandleDoubleZoomRotate(this.this$0.mEventType))
+      if (TAVStickerEditViewEventType.isHandleDoubleZoomRotate(this.this$0.eventType))
       {
         TLog.d(TAVStickerEditView.TAG, "双指缩放旋转");
         this.operationMode = TAVStickerOperationMode.OP_DOUBLE_ZOOM_ROTATE;
@@ -83,13 +83,13 @@ class TAVStickerEditView$TavStickerTouchListener
         }
         if (this.operationMode == TAVStickerOperationMode.OP_SINGLE_ZOOM_ROTATE)
         {
-          if (TAVStickerEditViewEventType.isHandleSingleZoomRotate(this.this$0.mEventType))
+          if (TAVStickerEditViewEventType.isHandleSingleZoomRotate(this.this$0.eventType))
           {
             TLog.d(TAVStickerEditView.TAG, "单指缩放旋转");
             onHandleScaleAndRotate(this.centerPoint.x - paramMotionEvent.getX(), this.centerPoint.y - paramMotionEvent.getY());
           }
         }
-        else if (TAVStickerEditViewEventType.isHandleDrag(this.this$0.mEventType))
+        else if (TAVStickerEditViewEventType.isHandleDrag(this.this$0.eventType))
         {
           TLog.d(TAVStickerEditView.TAG, "单指移动");
           if (!this.isClickSticker) {
@@ -132,7 +132,7 @@ class TAVStickerEditView$TavStickerTouchListener
   private void handleActionUp(MotionEvent paramMotionEvent)
   {
     this.operationMode = TAVStickerOperationMode.OP_NONE;
-    if ((TAVStickerEditView.access$200(this.this$0) != null) && (checkClickInterval(paramMotionEvent)) && (this.isClickSticker) && (TAVStickerEditViewEventType.isHandleClick(this.this$0.mEventType))) {
+    if ((TAVStickerEditView.access$200(this.this$0) != null) && (checkClickInterval(paramMotionEvent)) && (this.isClickSticker) && (TAVStickerEditViewEventType.isHandleClick(this.this$0.eventType))) {
       TAVStickerEditView.access$200(this.this$0).onStickerClick(TAVStickerEditView.access$300(this.this$0), paramMotionEvent);
     }
     if (TAVStickerEditView.access$200(this.this$0) != null) {
@@ -223,7 +223,7 @@ class TAVStickerEditView$TavStickerTouchListener
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     this.actionIndex = paramMotionEvent.getActionIndex();
-    if ((!TAVStickerEditView.access$300(this.this$0).isEditable()) || (this.this$0.mEventType == 0)) {
+    if ((!TAVStickerEditView.access$300(this.this$0).isEditable()) || (this.this$0.eventType == 0)) {
       return false;
     }
     if (isTouchInSticker(paramMotionEvent))
@@ -253,7 +253,7 @@ class TAVStickerEditView$TavStickerTouchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerEditView.TavStickerTouchListener
  * JD-Core Version:    0.7.0.1
  */

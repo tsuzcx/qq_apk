@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amlb;
+import aofo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 

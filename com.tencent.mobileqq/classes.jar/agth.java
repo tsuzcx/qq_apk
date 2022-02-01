@@ -1,24 +1,28 @@
+import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.net.Uri;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.widget.QQToast;
 
 class agth
-  extends altm
+  extends ClickableSpan
 {
-  agth(agsy paramagsy) {}
+  agth(agte paramagte) {}
   
-  protected void onAddFriend(String paramString)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString))
+    if (!bgnt.d(this.a.a))
     {
-      Intent localIntent = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
-      localIntent.putExtra("uintype", 0);
-      agsy.b(this.a, localIntent);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "onAddFriend, addUin:" + paramString + "|updateSession");
-      }
+      QQToast.a(this.a.a, anni.a(2131702017), 2000).a();
+      return;
     }
+    paramView = new Intent();
+    paramView.setFlags(268435456);
+    paramView.setAction("android.intent.action.VIEW");
+    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
+    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
+    this.a.a.startActivity(paramView);
   }
 }
 

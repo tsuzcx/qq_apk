@@ -1,6 +1,33 @@
-public abstract interface bneu
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.album.AEAlbumLinearLayout;
+
+public class bneu
+  implements Animator.AnimatorListener
 {
-  public abstract void a();
+  public bneu(AEAlbumLinearLayout paramAEAlbumLinearLayout) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    AEAlbumLinearLayout.a(this.a, 0);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (AEAlbumLinearLayout.a(this.a) != null) {
+      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.b(this.a), AEAlbumLinearLayout.a(this.a, AEAlbumLinearLayout.b(this.a)));
+    }
+    AEAlbumLinearLayout.a(this.a, 0);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (AEAlbumLinearLayout.a(this.a) != null) {
+      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.b(this.a));
+    }
+  }
 }
 
 

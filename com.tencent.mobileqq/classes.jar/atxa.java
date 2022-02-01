@@ -1,25 +1,18 @@
-public abstract class atxa<T, P>
+class atxa
+  implements atve
 {
-  private volatile T a;
+  atxa(atwz paramatwz) {}
   
-  protected abstract T a(P paramP);
-  
-  public final T b(P paramP)
+  public void a()
   {
-    if (this.a == null) {}
-    try
-    {
-      if (this.a == null) {
-        this.a = a(paramP);
-      }
-      return this.a;
-    }
-    finally {}
+    dc.b(this.a.a, 0);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atxa
  * JD-Core Version:    0.7.0.1
  */

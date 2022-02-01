@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.util;
 
-import alof;
 import android.support.v4.util.MQLruCache;
+import anhk;
 import java.io.File;
 
 class PreloadManager$1
@@ -16,7 +16,7 @@ class PreloadManager$1
       PreloadManager.a(this.this$0).releaseLargeCache();
     }
     long l = System.currentTimeMillis();
-    Object localObject1 = new File(alof.cH);
+    Object localObject1 = new File(anhk.cK);
     int k;
     int i;
     Object localObject2;
@@ -34,7 +34,7 @@ class PreloadManager$1
         i += 1;
       }
     }
-    localObject1 = new File(alof.cI);
+    localObject1 = new File(anhk.cL);
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
       localObject1 = ((File)localObject1).listFiles();
@@ -53,7 +53,7 @@ class PreloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PreloadManager.1
  * JD-Core Version:    0.7.0.1
  */

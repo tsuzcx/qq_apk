@@ -1,41 +1,30 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
+import java.util.ArrayList;
+import java.util.List;
 
-class ygi
-  implements AbsListView.OnScrollListener
+public class ygi
+  extends wvn
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public int a;
+  public String a;
+  public List<ShareGroupCollectionItem> a;
   
-  ygi(ygg paramygg) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public ygi(ErrorMessage paramErrorMessage, String paramString)
   {
-    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public String toString()
   {
-    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!ygg.a(this.jdField_a_of_type_Ygg)) && (!ygg.b(this.jdField_a_of_type_Ygg)))
-    {
-      QLog.i(ygg.a(), 1, "onLastItemVisible");
-      ygg.a(this.jdField_a_of_type_Ygg, ygg.a(this.jdField_a_of_type_Ygg).a(ygg.a(this.jdField_a_of_type_Ygg)));
-      if (ygg.a(this.jdField_a_of_type_Ygg) != null)
-      {
-        ygg.a(this.jdField_a_of_type_Ygg).a(ygg.a(this.jdField_a_of_type_Ygg), true);
-        ygg.a(this.jdField_a_of_type_Ygg, true);
-      }
-    }
+    return "GetShareGroupListEvent{mShareGroupList=" + this.jdField_a_of_type_JavaUtilList.size() + ", mShareGroupTotalCount=" + this.jdField_a_of_type_Int + ", errorCode=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ygi
  * JD-Core Version:    0.7.0.1
  */

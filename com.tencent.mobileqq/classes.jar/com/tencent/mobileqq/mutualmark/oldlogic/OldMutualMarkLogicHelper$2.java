@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mutualmark.oldlogic;
 
-import alto;
-import autp;
+import anmw;
+import axav;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,13 +13,13 @@ public final class OldMutualMarkLogicHelper$2
   
   public void run()
   {
-    alto localalto = (alto)this.a.getManager(51);
-    if (localalto != null)
+    anmw localanmw = (anmw)this.a.getManager(51);
+    if (localanmw != null)
     {
-      HashSet localHashSet = autp.a();
+      HashSet localHashSet = axav.a();
       if ((localHashSet != null) && (localHashSet.size() > 0))
       {
-        localalto.b(new ArrayList(localHashSet));
+        localanmw.b(new ArrayList(localHashSet));
         localHashSet.clear();
       }
     }
@@ -27,7 +27,7 @@ public final class OldMutualMarkLogicHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.oldlogic.OldMutualMarkLogicHelper.2
  * JD-Core Version:    0.7.0.1
  */

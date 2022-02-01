@@ -1,50 +1,49 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class yjb
-  implements aocf
+class yjb
+  implements wld<wzm, wzn>
 {
-  public yjb(SubscribeBaseFragment paramSubscribeBaseFragment) {}
+  yjb(yja paramyja, JobContext paramJobContext, AtomicBoolean paramAtomicBoolean, Integer paramInteger) {}
   
-  public ColorNote getColorNote()
+  public void a(@NonNull wzm paramwzm, @Nullable wzn paramwzn, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null))
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      QLog.e("SubscribeBaseFragment", 1, "initColorNote, shareInfoBean is null");
-      return null;
+      yqp.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId pull segment cancel on net respond");
+      return;
     }
-    byte[] arrayOfByte = yly.a(new SubscribeColorNoteReserveBean(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.toByteArray(), this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType));
-    ydo localydo = new ydo();
-    localydo.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-    localydo.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-    String str1 = "";
-    String str3 = localydo.c();
-    String str2 = localydo.d();
-    String str4 = localydo.e();
-    switch (localydo.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
+    if ((paramErrorMessage.isFail()) || (paramwzn == null))
     {
+      yqp.a("Q.qqstory.home.data.HomeFeedListPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      yja.a(this.jdField_a_of_type_Yja, paramErrorMessage);
+      return;
     }
-    while (TextUtils.isEmpty(str1))
+    yja.a(this.jdField_a_of_type_Yja);
+    yja.a(this.jdField_a_of_type_Yja).a(paramwzn.jdField_a_of_type_JavaUtilList, paramwzn.jdField_a_of_type_JavaLangString, paramwzn.jdField_a_of_type_Boolean);
+    ((yij)wpm.a(11)).a(paramwzn.jdField_a_of_type_JavaUtilList);
+    boolean bool = yja.a(paramwzn, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+    yqp.d("Q.qqstory.home.data.HomeFeedListPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramwzn.b), Integer.valueOf(yja.b(this.jdField_a_of_type_Yja)), Boolean.valueOf(bool) });
+    if ((!paramwzn.jdField_a_of_type_Boolean) && (yja.b(this.jdField_a_of_type_Yja) < 10) && ((!paramwzn.b) || (bool)))
     {
-      return null;
-      str2 = localydo.f();
-      str1 = "" + localydo.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
-      continue;
-      str1 = "" + localydo.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+      yqp.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId list not end, pull more");
+      paramwzm.b = yja.a(this.jdField_a_of_type_Yja).a();
+      wlb.a().a(paramwzm, this);
+      return;
     }
-    return new aocl().a(16908291).a(str1).b(str3).c(str2).d(str4).a(arrayOfByte).a();
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) {
+      yja.a(this.jdField_a_of_type_Yja).c();
+    }
+    paramwzm = yja.a(this.jdField_a_of_type_Yja).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    yja.a(this.jdField_a_of_type_Yja, paramwzm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yjb
  * JD-Core Version:    0.7.0.1
  */

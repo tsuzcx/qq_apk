@@ -4,13 +4,13 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public final class a<T>
+public class a<T>
 {
-  private Lock a = new ReentrantLock();
-  private Condition b = this.a.newCondition();
+  final Lock a = new ReentrantLock();
+  final Condition b = this.a.newCondition();
   private volatile T c;
   
-  public final T a()
+  public T a()
   {
     this.a.lock();
     try
@@ -29,7 +29,7 @@ public final class a<T>
     return localObject2;
   }
   
-  public final void a(T paramT)
+  public void a(T paramT)
   {
     this.a.lock();
     try
@@ -46,14 +46,14 @@ public final class a<T>
     }
   }
   
-  public final T b()
+  public T b()
   {
     return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.stat.a
  * JD-Core Version:    0.7.0.1
  */

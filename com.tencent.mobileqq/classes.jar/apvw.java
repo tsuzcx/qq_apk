@@ -1,14 +1,23 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
 public class apvw
+  implements DialogInterface.OnDismissListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public URLImageView a;
+  public apvw(JumpConfirmFragment paramJumpConfirmFragment) {}
   
-  public apvw(apvu paramapvu) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
+  }
 }
 
 

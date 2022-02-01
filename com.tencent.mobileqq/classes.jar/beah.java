@@ -1,14 +1,15 @@
-final class beah
-  extends bead
+import android.graphics.Bitmap;
+
+public class beah
 {
-  public void onDone(beae parambeae)
-  {
-    super.onDone(parambeae);
-  }
+  beag a;
   
-  public boolean onStart(beae parambeae)
+  protected Bitmap b(Bitmap paramBitmap)
   {
-    return true;
+    if (this.a == null) {
+      return paramBitmap;
+    }
+    return this.a.a(paramBitmap);
   }
 }
 

@@ -1,16 +1,25 @@
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class afob
-  implements arsg
+public class afob
+  implements View.OnClickListener
 {
-  afob(afnq paramafnq) {}
+  public afob(TroopRequestActivity paramTroopRequestActivity) {}
   
   public void onClick(View paramView)
   {
-    PermisionPrivacyActivity.a(this.a.jdField_a_of_type_AndroidContentContext);
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X800994C", "0X800994C", 0, 0, "", "", "", "");
+    Intent localIntent = new Intent(this.a, AccountDetailActivity.class);
+    localIntent.putExtra("uin", this.a.a.req_uin.get() + "");
+    localIntent.putExtra("source", 112);
+    this.a.startActivity(localIntent);
+    bcst.b(this.a.app, "P_CliOper", "Grp_public", "", "oper", "Clk_invite", 0, 0, "", "", "", this.a.a.req_uin.get() + "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.open.appcommon;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bfox;
+import biwe;
 
 class AppClient$3$1
   implements Runnable
@@ -11,12 +11,12 @@ class AppClient$3$1
   
   public void run()
   {
-    bfox.a().a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.a, this.this$0.jdField_a_of_type_Boolean, false);
+    biwe.a().a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.a, this.this$0.jdField_a_of_type_Boolean, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.appcommon.AppClient.3.1
  * JD-Core Version:    0.7.0.1
  */

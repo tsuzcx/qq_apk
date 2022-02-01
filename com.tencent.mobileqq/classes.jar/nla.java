@@ -1,23 +1,21 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-
-public class nla
-  implements View.OnClickListener
+class nla
 {
-  public nla(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
+  public String a;
+  public nkl a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public nla(String paramString1, String paramString2, String paramString3, nkl paramnkl)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Nkl = paramnkl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nla
  * JD-Core Version:    0.7.0.1
  */

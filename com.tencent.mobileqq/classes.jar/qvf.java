@@ -1,37 +1,57 @@
-import android.content.Context;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.widget.CheckBox;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-import java.util.List;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentAccountSummary;
 
 public class qvf
-  extends qve
+  extends ClickableSpan
+  implements sth
 {
-  public qvf(Context paramContext, List<? extends Map<String, ?>> paramList, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  private int jdField_a_of_type_Int = -1;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  protected String a;
+  boolean jdField_a_of_type_Boolean;
+  
+  public qvf(ComponentAccountSummary paramComponentAccountSummary, String paramString, int paramInt)
   {
-    super(paramContext, paramList, paramInt, paramArrayOfString, paramArrayOfInt, arrayOfInt);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected void a(View paramView, ResultRecord paramResultRecord)
+  public void a(boolean paramBoolean)
   {
-    if ((paramView == null) || (FollowingListFragment.a(this.b) == null) || (FollowingListFragment.a(this.b).a() == null) || (FollowingListFragment.a(this.b).a().isEmpty())) {
-      return;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
     }
-    paramView = (CheckBox)paramView.findViewById(2131364256);
-    paramView.setBackgroundResource(2130848902);
-    if (FollowingListFragment.a(this.b).a().contains(paramResultRecord.a()))
+  }
+  
+  public void onClick(View paramView)
+  {
+    pha.a = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.a.a.a();
+    paramView = pgc.k + bgku.encodeToString(String.valueOf(this.jdField_a_of_type_JavaLangString).getBytes(), 2);
+    pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.getContext(), paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = 16119285)
     {
-      paramView.setEnabled(false);
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
       return;
     }
-    paramView.setEnabled(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qvf
  * JD-Core Version:    0.7.0.1
  */

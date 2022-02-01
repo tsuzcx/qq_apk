@@ -1,27 +1,13 @@
-import android.util.Property;
+import java.io.File;
 
-class bndj
-  extends Property<bndb, Float>
+public class bndj
 {
-  bndj(bndb parambndb, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
-  
-  public Float a(bndb parambndb)
-  {
-    if (parambndb != null) {
-      return Float.valueOf(bndb.d(parambndb));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(bndb parambndb, Float paramFloat)
-  {
-    if (parambndb != null) {
-      bndb.c(parambndb, paramFloat.floatValue());
-    }
-  }
+  public static final String a = bndv.a + File.separator + "aiscene";
+  public static final String b = a + File.separator + "res";
+  public static final String c = a + File.separator + "res_zip_download";
+  public static final String d = b + File.separator + "AISceneGuide";
+  public static final String e = b + File.separator + "AISceneLoading";
+  public static final String f = b + File.separator + "AutoAISceneAni";
 }
 
 

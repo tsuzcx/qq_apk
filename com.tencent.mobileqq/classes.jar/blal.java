@@ -1,67 +1,22 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 public class blal
+  implements blbw
 {
-  private static final String a;
+  private WeakReference<Handler> a;
   
-  static
+  public blal(Handler paramHandler)
   {
-    jdField_a_of_type_JavaLangString = blal.class.getSimpleName();
+    this.a = new WeakReference(paramHandler);
   }
   
-  public static void a(AppInterface paramAppInterface, blab paramblab, String paramString, blan paramblan)
+  public void a(int paramInt, String paramString)
   {
-    if (paramblab == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "startDownloadMaterial is null");
-      }
-      return;
-    }
-    b(paramAppInterface, paramblab, paramString, paramblan);
-  }
-  
-  private static void b(AppInterface paramAppInterface, blab paramblab, String paramString, blan paramblan)
-  {
-    if ((paramblab == null) || (paramAppInterface == null)) {}
-    for (;;)
-    {
-      return;
-      paramblab.a = System.currentTimeMillis();
-      paramblab.e = true;
-      baub localbaub = new baub();
-      localbaub.jdField_a_of_type_Baug = new blam(paramblab, paramString, paramblan);
-      localbaub.jdField_a_of_type_JavaLangString = paramblab.d;
-      localbaub.jdField_a_of_type_Int = 0;
-      if (paramblab.f == null)
-      {
-        QLog.i(jdField_a_of_type_JavaLangString, 1, "startDownloadMaterial fail, info.name is null, url:" + paramblab.d);
-        return;
-      }
-      localbaub.jdField_c_of_type_JavaLangString = new File(paramString, paramblab.f).getPath();
-      localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
-      localbaub.jdField_c_of_type_Long = 60000L;
-      try
-      {
-        paramAppInterface.getNetEngine(0).a(localbaub);
-        localbaub.jdField_a_of_type_Baug.onUpdateProgeress(localbaub, 1L, 100L);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "startDownloadMaterial url: " + paramblab.d);
-        return;
-      }
-      catch (Exception paramAppInterface)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            paramAppInterface.printStackTrace();
-          }
-        }
-      }
+    Handler localHandler = (Handler)this.a.get();
+    if (localHandler != null) {
+      localHandler.obtainMessage(1001, paramInt, 0, paramString).sendToTarget();
     }
   }
 }

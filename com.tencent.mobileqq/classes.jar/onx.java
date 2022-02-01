@@ -1,27 +1,21 @@
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class onx
-  extends oob
+  implements ViewFactory.FoundClickableViewListener
 {
-  onx(omz paramomz, int paramInt)
-  {
-    super(paramomz, null);
-  }
+  onx(onw paramonw, BaseData paramBaseData, Context paramContext) {}
   
-  void a(ooe paramooe)
+  public void onFound(ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      paramooe.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
-    }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    paramooe.onCommentLoadMore(1, false, new ArrayList(), false, 3);
+    paramViewBase.setOnClickListener(new ony(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     onx
  * JD-Core Version:    0.7.0.1
  */

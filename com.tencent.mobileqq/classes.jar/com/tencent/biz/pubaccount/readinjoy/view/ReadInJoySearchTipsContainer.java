@@ -15,21 +15,22 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import bdgz;
-import bdoo;
+import bgme;
+import bgtn;
 import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
 import java.util.List;
-import rux;
-import ruy;
+import sst;
+import ssu;
 
 public class ReadInJoySearchTipsContainer
   extends ViewGroup
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = bdoo.a(260.0F);
+  private int jdField_a_of_type_Int = bgtn.a(260.0F);
   private List<ReadInJoySearchTipsContainer.TipsInfo> jdField_a_of_type_JavaUtilList;
-  public ruy a;
+  public ssu a;
   private int jdField_b_of_type_Int = 5;
   private List<SearchProtocol.WordItem> jdField_b_of_type_JavaUtilList;
   
@@ -56,12 +57,12 @@ public class ReadInJoySearchTipsContainer
       return;
     }
     Button localButton = new Button(getContext());
-    localButton.setBackgroundResource(2130848974);
+    localButton.setBackgroundResource(2130849472);
     GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
     if (paramInt2 != 0)
     {
       localGradientDrawable.setStroke(1, paramInt2);
-      localButton.setPadding(bdoo.a(15.0F), bdoo.a(5.0F), bdoo.a(15.0F), bdoo.a(6.0F));
+      localButton.setPadding(bgtn.a(15.0F), bgtn.a(5.0F), bgtn.a(15.0F), bgtn.a(6.0F));
       localButton.setText(paramString1);
       localButton.setTextSize(14.0F);
       localButton.setSingleLine();
@@ -90,12 +91,12 @@ public class ReadInJoySearchTipsContainer
   
   protected int a(int paramInt)
   {
-    int i6 = (int)bdgz.a(getContext(), 7.0F);
-    int i1 = (int)bdgz.a(getContext(), 10.0F);
-    int i7 = (int)bdgz.a(getContext(), 10.0F);
-    int i8 = (int)bdgz.a(getContext(), 4.0F);
-    int m = (int)bdgz.a(getContext(), 12.0F);
-    int i9 = (int)bdgz.a(getContext(), 12.0F);
+    int i6 = (int)bgme.a(getContext(), 7.0F);
+    int i1 = (int)bgme.a(getContext(), 10.0F);
+    int i7 = (int)bgme.a(getContext(), 10.0F);
+    int i8 = (int)bgme.a(getContext(), 4.0F);
+    int m = (int)bgme.a(getContext(), 12.0F);
+    int i9 = (int)bgme.a(getContext(), 12.0F);
     int i10 = getChildCount();
     int n = 0;
     int k = m;
@@ -167,19 +168,20 @@ public class ReadInJoySearchTipsContainer
   
   public void onClick(View paramView)
   {
-    rux localrux = new rux(this, Looper.getMainLooper());
-    Message localMessage = localrux.obtainMessage();
+    sst localsst = new sst(this, Looper.getMainLooper());
+    Message localMessage = localsst.obtainMessage();
     localMessage.obj = paramView.getTag();
-    localrux.sendMessage(localMessage);
+    localsst.sendMessage(localMessage);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i2 = (int)bdgz.a(getContext(), 7.0F);
-    int k = (int)bdgz.a(getContext(), 10.0F);
-    int i3 = (int)bdgz.a(getContext(), 4.0F);
-    paramInt4 = (int)bdgz.a(getContext(), 12.0F);
-    int i4 = (int)bdgz.a(getContext(), 12.0F);
+    int i2 = (int)bgme.a(getContext(), 7.0F);
+    int k = (int)bgme.a(getContext(), 10.0F);
+    int i3 = (int)bgme.a(getContext(), 4.0F);
+    paramInt4 = (int)bgme.a(getContext(), 12.0F);
+    int i4 = (int)bgme.a(getContext(), 12.0F);
     int i5 = getChildCount();
     int i = 0;
     int j = 1;
@@ -247,19 +249,19 @@ public class ReadInJoySearchTipsContainer
     }
   }
   
-  public void setOnTipsClickListener(ruy paramruy)
-  {
-    this.jdField_a_of_type_Ruy = paramruy;
-  }
-  
-  public void setmMaxLines(int paramInt)
+  public void setMaxLines(int paramInt)
   {
     this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void setOnTipsClickListener(ssu paramssu)
+  {
+    this.jdField_a_of_type_Ssu = paramssu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer
  * JD-Core Version:    0.7.0.1
  */

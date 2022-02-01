@@ -1,20 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ahrq
-  implements QQPermissionCallback
+public class ahrq
+  extends BroadcastReceiver
 {
-  ahrq(ahrp paramahrp, View paramView, BaseActivity paramBaseActivity) {}
+  public ahrq(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bdgm.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    ahrp.a(this.jdField_a_of_type_Ahrp, this.jdField_a_of_type_AndroidViewView);
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryActivity", 2, "receive videochat in aiogallery");
+      }
+      this.a.finish();
+    }
   }
 }
 

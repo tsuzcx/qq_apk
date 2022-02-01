@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 import me.ele.uetool.util.JarResource;
 
@@ -34,6 +35,7 @@ public class PresetColorAdapter
   public void onBindViewHolder(@NonNull PresetColorAdapter.ColorHolder paramColorHolder, int paramInt)
   {
     paramColorHolder.setColor(((Integer)this.colorList.get(paramInt)).intValue());
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramColorHolder, paramInt, getItemId(paramInt));
   }
   
   @NonNull
@@ -55,7 +57,7 @@ public class PresetColorAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.colorpicker.PresetColorAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -106,6 +106,7 @@ public class WUserSigInfo
         this.loginTLVMap = localHashMap;
       }
       this._loginExtraProductTLVMap = ((HashMap)paramParcel.getSerializable("loginExtraProductTLVMap"));
+      this.loginResultTLVMap = ((HashMap)paramParcel.getSerializable("loginResultTLVMap"));
     }
   }
   
@@ -125,6 +126,7 @@ public class WUserSigInfo
     localBundle.putSerializable("extraRegTLVMap", this.extraRegTLVMap);
     localBundle.putSerializable("loginTLVMap", this.loginTLVMap);
     localBundle.putSerializable("loginExtraProductTLVMap", this._loginExtraProductTLVMap);
+    localBundle.putSerializable("loginResultTLVMap", this.loginResultTLVMap);
     paramParcel.writeBundle(localBundle);
   }
 }

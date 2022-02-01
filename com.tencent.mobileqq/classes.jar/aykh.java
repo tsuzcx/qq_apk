@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class aykh
-  implements Parcelable.Creator<AssociateSearchWordsFragment.AssociateItem>
+final class aykh
+  implements bdvv
 {
-  public AssociateSearchWordsFragment.AssociateItem a(Parcel paramParcel)
+  public void a(bdws parambdws, bdwt parambdwt)
   {
-    return new AssociateSearchWordsFragment.AssociateItem(paramParcel);
-  }
-  
-  public AssociateSearchWordsFragment.AssociateItem[] a(int paramInt)
-  {
-    return new AssociateSearchWordsFragment.AssociateItem[paramInt];
+    if ((parambdws == null) || (parambdwt == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(parambdws instanceof bdvs));
+      parambdws = (bdvs)parambdws;
+      parambdws.jdField_a_of_type_Long += parambdwt.c;
+      parambdwt.c = 0L;
+      parambdwt = "bytes=" + parambdws.jdField_a_of_type_Long + "-";
+      parambdws.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
+      parambdwt = parambdws.jdField_a_of_type_JavaLangString;
+      if (parambdwt.contains("range="))
+      {
+        String str = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
+        parambdws.jdField_a_of_type_JavaLangString = (str + "range=" + parambdws.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("OlympicResources", 2, "IBreakDownFix, " + parambdwt);
   }
 }
 

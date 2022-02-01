@@ -1,487 +1,338 @@
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.ArkViewImplement;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ArkAppMessage.Config;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForArkApp.Size;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.3;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.4;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
+import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.sdk.CookieSyncManager;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebSettings.PluginState;
+import com.tencent.smtt.sdk.WebViewClient;
 import java.io.File;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class bdjq
-  extends bdku
 {
-  int jdField_a_of_type_Int = 0;
-  afii jdField_a_of_type_Afii;
-  private afil jdField_a_of_type_Afil = new bdjr(this);
-  private ArkViewImplement.LoadCallback jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback = new bdjs(this);
-  ArkAppLoadLayout jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout;
-  ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  int b;
-  int c;
-  int jdField_d_of_type_Int = 0;
-  private boolean jdField_d_of_type_Boolean;
-  int jdField_e_of_type_Int = 0;
-  private boolean jdField_e_of_type_Boolean;
-  int jdField_f_of_type_Int = 0;
-  private boolean jdField_f_of_type_Boolean;
-  int g = -1;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  Intent jdField_a_of_type_AndroidContentIntent;
+  private atzf jdField_a_of_type_Atzf;
+  bhnj jdField_a_of_type_Bhnj;
+  TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  SonicClientImpl jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl;
+  nvu jdField_a_of_type_Nvu;
+  public boolean a;
   
-  public bdjq(Context paramContext, int paramInt)
+  public bdjq(AppInterface paramAppInterface, Activity paramActivity, bhnj parambhnj, Intent paramIntent, boolean paramBoolean)
   {
-    super(paramContext, paramInt);
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Bhnj = parambhnj;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = a(paramAppInterface, paramActivity, paramIntent, paramBoolean);
   }
   
-  private afii a(bdjt parambdjt, Bundle paramBundle)
+  private void b(TouchWebView paramTouchWebView)
   {
-    this.jdField_a_of_type_Afii = new afii();
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getWidth();
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getHeight();
-    if (QLog.isDebugVersion()) {
-      QLog.d("QQCustomArkDialog", 4, "w=" + i + ",h=" + j + ", appName:" + parambdjt.jdField_a_of_type_JavaLangString);
-    }
-    i = paramBundle.getInt("req_type");
-    if (ArkFullScreenAppActivity.a(paramBundle))
+    bdjr localbdjr = new bdjr(this);
+    paramTouchWebView.setWebChromeClient(localbdjr);
+    this.jdField_a_of_type_Nvu = localbdjr;
+  }
+  
+  public TouchWebView a()
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+  }
+  
+  public TouchWebView a(AppInterface paramAppInterface, Activity paramActivity, Intent paramIntent, boolean paramBoolean)
+  {
+    nmj.a("Web_qqbrowser_init_only_webview");
+    long l1 = System.currentTimeMillis();
+    Object localObject1 = null;
+    Object localObject2;
+    if (bdjm.a(paramActivity, paramIntent.getStringExtra("url")))
     {
-      this.jdField_a_of_type_Afii.a(parambdjt.jdField_a_of_type_JavaLangString, parambdjt.b, parambdjt.c, parambdjt.d, parambdjt.jdField_a_of_type_Float, parambdjt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      if ((this.jdField_e_of_type_Int == 0) || (this.jdField_f_of_type_Int == 0)) {
-        break label289;
+      localObject2 = bdjm.a(paramActivity);
+      localObject1 = localObject2;
+      if (localObject2 != null)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        localObject1 = localObject2;
       }
-      this.jdField_a_of_type_Afii.setFixSize(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+    }
+    if (localObject1 == null) {
+      if (paramBoolean) {
+        localObject1 = SwiftReuseTouchWebView.a(paramActivity);
+      }
     }
     for (;;)
     {
-      ankc.a = false;
-      return this.jdField_a_of_type_Afii;
-      String str1 = "news";
-      if (i == 2) {
-        str1 = "music";
-      }
-      for (;;)
+      Object localObject3 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
+      localObject2 = ((TouchWebView)localObject1).getLayoutParams();
+      label108:
+      long l2;
+      long l3;
+      WebSettings localWebSettings;
+      label224:
+      String str1;
+      label266:
+      label326:
+      int i;
+      if (localObject2 == null)
       {
-        new ArkAppMessage.Config().fromString("\"config\":{\n        \"forward\":true,\n        \"type\":\"normal\",\n        \"autosize\":true\n    }");
-        String str2 = a(paramBundle, "com.tencent.structmsg");
-        paramBundle = str2;
-        if (!TextUtils.isEmpty(str2)) {
-          paramBundle = str2.replace("\\/", "/");
-        }
+        localObject2 = new ViewGroup.LayoutParams(((DisplayMetrics)localObject3).widthPixels, ((DisplayMetrics)localObject3).heightPixels);
+        ((TouchWebView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        l1 = System.currentTimeMillis() - l1;
         if (QLog.isColorLevel()) {
-          QLog.d("QQCustomArkDialog", 2, ",metaData=" + paramBundle);
+          QLog.d("WebLog_WebViewWrapper", 2, "createWebView TouchWebView cost = " + l1);
         }
-        this.jdField_a_of_type_Afii.a("com.tencent.structmsg", str1, "0.0.0.1", paramBundle, anob.a(), parambdjt.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        break;
-        if (i == 4) {
-          str1 = "video";
+        ((TouchWebView)localObject1).setIntent(paramIntent);
+        nmj.b("Web_qqbrowser_init_only_webview");
+        l2 = System.currentTimeMillis();
+        a((TouchWebView)localObject1);
+        b((TouchWebView)localObject1);
+        l3 = System.currentTimeMillis();
+        ((TouchWebView)localObject1).setScrollBarStyle(0);
+        nmj.a("Web_AdjustSettings");
+        localWebSettings = ((TouchWebView)localObject1).getSettings();
+        nmj.a("Web_SetUserAgent");
+        if (!arbh.a().a()) {
+          break label883;
         }
+        localObject2 = " _tdocFlag/1";
+        localObject3 = new StringBuilder().append("tendocpreload get UA");
+        str1 = localWebSettings.getUserAgentString();
+        String str2 = a(this.jdField_a_of_type_Bhnj);
+        if (((TouchWebView)localObject1).getX5WebViewExtension() == null) {
+          break label891;
+        }
+        paramBoolean = true;
+        QLog.i("WebLog_WebViewWrapper", 1, bhre.a(str1, str2, paramBoolean));
+        localObject3 = new StringBuilder();
+        str1 = localWebSettings.getUserAgentString();
+        str2 = a(this.jdField_a_of_type_Bhnj);
+        if (((TouchWebView)localObject1).getX5WebViewExtension() == null) {
+          break label897;
+        }
+        paramBoolean = true;
+        localWebSettings.setUserAgentString(bhre.a(str1, str2, paramBoolean) + (String)localObject2);
+        nmj.b("Web_SetUserAgent");
+        localWebSettings.setSavePassword(false);
+        localWebSettings.setSaveFormData(false);
+        localWebSettings.setBuiltInZoomControls(true);
+        localWebSettings.setUseWideViewPort(true);
+        localWebSettings.setLoadWithOverviewMode(true);
+        localWebSettings.setPluginState(WebSettings.PluginState.ON);
+        localObject2 = paramAppInterface.getApplication().getPackageManager();
+        i = 0;
       }
-      label289:
-      this.jdField_a_of_type_Afii.setFixSize(this.jdField_d_of_type_Int, this.g);
-      this.jdField_a_of_type_Afii.setMaxSize(this.jdField_d_of_type_Int, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Afii.setMinSize(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-    }
-  }
-  
-  private String a(Bundle paramBundle, String paramString)
-  {
-    int i = paramBundle.getInt("req_type");
-    long l = paramBundle.getLong("req_share_id");
-    Object localObject = paramBundle.getString("title");
-    String str3 = paramBundle.getString("desc");
-    String str4 = paramBundle.getString("struct_share_key_source_url");
-    String str2 = paramBundle.getString("image_url_remote");
-    String str6 = paramBundle.getString("image_url");
-    paramBundle.getString("res_pkg_name");
-    String str1 = paramBundle.getString("audio_url");
-    String str5 = paramBundle.getString("app_name");
-    paramBundle = "news";
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    try
-    {
-      localJSONObject2.put("title", localObject);
-      if (i != 2) {
-        break label285;
-      }
-      paramBundle = "music";
-      localObject = b(str1);
-      localJSONObject2.put("musicUrl", localObject);
-      str1 = str3;
-      if (!TextUtils.isEmpty(str3))
+      label787:
+      label928:
+      try
       {
-        str1 = str3;
-        if (str3.contains(alud.a(2131710587))) {
-          str1 = str3.replace(alud.a(2131710591), "");
-        }
-      }
-      localJSONObject2.put("desc", str1);
-      if (TextUtils.isEmpty(str2)) {
-        break label304;
-      }
-      paramString = str2;
-    }
-    catch (Exception paramBundle)
-    {
-      label285:
-      label304:
-      for (;;)
-      {
-        label199:
-        if (QLog.isColorLevel())
+        if (!((PackageManager)localObject2).hasSystemFeature("android.hardware.touchscreen.multitouch"))
         {
-          QLog.e("QQCustomArkDialog", 2, paramBundle.toString());
-          continue;
-          paramString = "";
+          paramBoolean = ((PackageManager)localObject2).hasSystemFeature("android.hardware.faketouch.multitouch.distinct");
+          if (!paramBoolean) {
+            break label903;
+          }
+        }
+        i = 1;
+      }
+      catch (RuntimeException localRuntimeException)
+      {
+        label436:
+        label444:
+        long l4;
+        label685:
+        label883:
+        label891:
+        break label436;
+      }
+      if (i == 0)
+      {
+        paramBoolean = true;
+        localWebSettings.setDisplayZoomControls(paramBoolean);
+        localWebSettings.setPluginsEnabled(true);
+        localWebSettings.setJavaScriptEnabled(true);
+        localWebSettings.setAllowContentAccess(true);
+        localWebSettings.setDatabaseEnabled(true);
+        localWebSettings.setDomStorageEnabled(true);
+        localWebSettings.setAppCacheEnabled(true);
+        str1 = MobileQQ.getMobileQQ().getQQProcessName();
+        localObject3 = "";
+        localObject2 = localObject3;
+        if (str1 != null)
+        {
+          i = str1.lastIndexOf(':');
+          localObject2 = localObject3;
+          if (i > -1) {
+            localObject2 = "_" + str1.substring(i + 1);
+          }
+        }
+        localWebSettings.setDatabasePath(paramAppInterface.getApplication().getApplicationContext().getDir("database" + (String)localObject2, 0).getPath());
+        localWebSettings.setAppCachePath(paramAppInterface.getApplication().getApplicationContext().getDir("appcache" + (String)localObject2, 0).getPath());
+        localWebSettings.setMediaPlaybackRequiresUserGesture(false);
+        if (Build.VERSION.SDK_INT >= 21) {
+          localWebSettings.setMixedContentMode(0);
+        }
+        l4 = System.currentTimeMillis();
+        if (Build.VERSION.SDK_INT >= 11) {
+          ((TouchWebView)localObject1).removeJavascriptInterface("searchBoxJavaBridge_");
         }
       }
-    }
-    localJSONObject2.put("preview", paramString);
-    localJSONObject2.put("tag", str5);
-    if (i == 2)
-    {
-      paramBundle = "music";
-      localJSONObject2.put("musicUrl", localObject);
-    }
-    for (;;)
-    {
-      localJSONObject2.put("jumpUrl", b(str4));
-      localJSONObject2.put("appid", l);
-      localJSONObject2.put("app_type", 1);
-      localJSONObject1.put(paramBundle, localJSONObject2);
-      return localJSONObject1.toString();
-      localObject = str1;
-      if (i != 4) {
-        break;
-      }
-      paramBundle = "video";
-      localObject = str1;
-      break;
-      if (TextUtils.isEmpty(str6)) {
-        break label414;
-      }
-      str1 = a(str6);
-      paramString = ArkEnvironmentManager.getInstance().getAppResPath(paramString);
-      bdhb.d(str6, paramString + File.separator + str1);
-      paramString = "res:" + str1;
-      break label199;
-      if (i == 4) {
-        paramBundle = "video";
-      }
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    String str;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "";
-    }
-    int i;
-    do
-    {
-      return str;
-      i = paramString.lastIndexOf(File.separator);
-      str = paramString;
-    } while (i == -1);
-    return paramString.substring(i + 1);
-  }
-  
-  private void a(Bundle paramBundle)
-  {
-    bdjt localbdjt = new bdjt(paramBundle);
-    localbdjt.jdField_a_of_type_Float = anob.a();
-    paramBundle = a(localbdjt, paramBundle);
-    paramBundle.a(this.jdField_a_of_type_Afil);
-    if (QLog.isColorLevel()) {
-      QLog.w("QQCustomArkDialog", 2, "init");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
-  }
-  
-  private String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    do
-    {
-      return paramString;
-      str = paramString;
-      if (paramString.contains("http://")) {
-        str = paramString.replace("http://", "");
-      }
-      paramString = str;
-    } while (!str.contains("https://"));
-    return str.replace("https://", "");
-  }
-  
-  private void d(int paramInt)
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    while ((localObject != null) && (!((Activity)localObject).isFinishing())) {
-      if (paramInt != 1)
+      try
       {
-        localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).addRule(14);
-        ((RelativeLayout.LayoutParams)localObject).width = this.jdField_d_of_type_Int;
-        ((RelativeLayout.LayoutParams)localObject).height = this.jdField_d_of_type_Int;
-        ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, 0);
-        this.rBtn.setEnabled(false);
-        this.rBtn.setTextColor(Color.parseColor("#656565"));
-        return;
-        localObject = null;
+        ((TouchWebView)localObject1).requestFocus();
+        paramBoolean = paramIntent.getBooleanExtra("fromArkAppDownload", false);
+        ((TouchWebView)localObject1).setFocusableInTouchMode(true);
+        this.jdField_a_of_type_Atzf = new atzf(paramAppInterface, paramActivity, (TouchWebView)localObject1);
+        this.jdField_a_of_type_Atzf.a(paramBoolean);
+        ((TouchWebView)localObject1).setDownloadListener(this.jdField_a_of_type_Atzf);
+        CookieSyncManager.createInstance(paramAppInterface.getApplication().getApplicationContext());
+        if (((TouchWebView)localObject1).getX5WebViewExtension() != null)
+        {
+          ((TouchWebView)localObject1).getX5WebViewExtension().setWebViewClientExtension(new bdju(this, (TouchWebView)localObject1, this.jdField_a_of_type_Bhnj));
+          afuh.b(paramIntent, "use_x5", "1");
+          nmj.b("Web_AdjustSettings");
+          if (bhqc.x) {
+            break label928;
+          }
+        }
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "sReportPerformance:", Boolean.valueOf(bhqc.x), " cost:", Long.valueOf(bhrd.a) });
+          }
+          return localObject1;
+          localObject1 = new TouchWebView(paramActivity);
+          break;
+          ((ViewGroup.LayoutParams)localObject2).width = ((DisplayMetrics)localObject3).widthPixels;
+          ((ViewGroup.LayoutParams)localObject2).height = ((DisplayMetrics)localObject3).heightPixels;
+          break label108;
+          localObject2 = "";
+          break label224;
+          paramBoolean = false;
+          break label266;
+          label897:
+          paramBoolean = false;
+          break label326;
+          label903:
+          i = 0;
+          break label436;
+          paramBoolean = false;
+          break label444;
+          afuh.b(paramIntent, "use_x5", "2");
+          break label787;
+          paramAppInterface = new HashMap(5);
+          paramAppInterface.put("createWebview", String.valueOf(l1));
+          paramAppInterface.put("initWebClient", String.valueOf(l3 - l2));
+          paramAppInterface.put("setWebSetting", String.valueOf(l4 - l2));
+          paramAppInterface.put("coreInit", String.valueOf(bhrd.a));
+          paramAppInterface.put("coldStart", String.valueOf(bhqc.s));
+          bctj.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actWebviewInit", true, 0L, 0L, paramAppInterface, null);
+        }
       }
-      else
+      catch (Exception localException)
       {
-        this.rBtn.setEnabled(true);
-        return;
+        break label685;
       }
     }
-    QLog.d("QQCustomArkDialog", 1, "onLoadFinish.right now activity is null or finished");
+  }
+  
+  String a(bhnj parambhnj)
+  {
+    if (parambhnj != null) {
+      return parambhnj.getUAMark();
+    }
+    return null;
+  }
+  
+  public nvu a()
+  {
+    return this.jdField_a_of_type_Nvu;
   }
   
   public void a()
   {
-    ((LinearLayout)findViewById(2131368355)).setVisibility(8);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Afii == null) {
-      return;
+    if (this.jdField_a_of_type_Bhnj != null) {
+      this.jdField_a_of_type_Bhnj = null;
     }
-    this.jdField_a_of_type_Afii.doOnEvent(paramInt);
-  }
-  
-  public void a(Context paramContext, Bundle paramBundle)
-  {
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+    {
+      WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
+      if (localWebViewPluginEngine != null) {
+        localWebViewPluginEngine.b();
+      }
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setPluginEngine(null);
+      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent() == null) {}
+    }
     try
     {
-      getWindow().setFlags(16777216, 16777216);
-      if (QLog.isColorLevel()) {
-        QLog.i("QQCustomArkDialog", 2, "initArkView:" + paramBundle);
-      }
-      QLog.i("QQCustomArkDialog", 1, "get init dialog stack", new Exception("InitQQCustomArkDialogStack"));
-      b(7);
-      setContentView(2131558952);
-      View localView = LayoutInflater.from(paramContext).inflate(2131558762, null);
-      localView.setPadding(0, 0, 0, 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)localView.findViewById(2131362798));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)localView.findViewById(2131369757));
-      Object localObject1 = localView.findViewById(2131362821);
-      ((RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams()).addRule(14);
-      ((View)localObject1).setPadding(0, 0, 0, 0);
-      ((LinearLayout)localView.findViewById(2131362805)).setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setBorderType(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setLoadCallback(this.jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback);
-      boolean bool1 = paramBundle.getBoolean("is_ark_display_share", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQCustomArkDialog", 2, "from Forward:" + bool1);
-      }
-      localObject1 = new ArkAppMessage.Config();
-      Object localObject2 = paramBundle.getString("forward_ark_app_config");
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        ((ArkAppMessage.Config)localObject1).fromString((String)localObject2);
-      }
-      if ((ArkFullScreenAppActivity.a(paramBundle)) && ("card".equals(((ArkAppMessage.Config)localObject1).type))) {
-        this.g = anob.jdField_a_of_type_Int;
-      }
-      boolean bool2 = MessageForArkApp.isSetSizeByConfig((ArkAppMessage.Config)localObject1);
-      if (bool2)
+      ((ViewGroup)this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent()).removeView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+    }
+    catch (Exception localException1)
+    {
+      try
       {
-        localObject2 = MessageForArkApp.limitToSizeRange(anob.a(), ((ArkAppMessage.Config)localObject1).width.intValue(), ((ArkAppMessage.Config)localObject1).height.intValue());
-        if (localObject2 != null)
+        this.jdField_a_of_type_ComTencentBizUiTouchWebView.stopLoading();
+        label77:
+        if (this.jdField_a_of_type_Boolean) {
+          bdjn.a().a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+        }
+        for (;;)
         {
-          this.jdField_e_of_type_Int = ((MessageForArkApp.Size)localObject2).width;
-          if ((((ArkAppMessage.Config)localObject1).autoSize != null) && (((ArkAppMessage.Config)localObject1).autoSize.intValue() == 1)) {
-            this.jdField_e_of_type_Int = anob.jdField_a_of_type_Int;
-          }
-          this.jdField_f_of_type_Int = ((MessageForArkApp.Size)localObject2).height;
-          if (QLog.isColorLevel())
+          this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
+          if (this.jdField_a_of_type_Nvu != null)
           {
-            float f1 = anob.a();
-            i = (int)(((MessageForArkApp.Size)localObject2).width / f1);
-            j = (int)(((MessageForArkApp.Size)localObject2).height / f1);
-            QLog.d("QQCustomArkDialog", 2, "width_from_sdk:" + ((ArkAppMessage.Config)localObject1).width + ", height_from_sdk:" + ((ArkAppMessage.Config)localObject1).height + ", scale:" + f1 + ", realwidth:" + i + ", realheight:" + j);
+            this.jdField_a_of_type_Nvu.a();
+            this.jdField_a_of_type_Nvu = null;
           }
-        }
-      }
-      localObject1 = null;
-      if (this.bodyLayout != null)
-      {
-        localObject1 = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)paramContext.getResources().getDimension(2131296784));
-        ((RelativeLayout.LayoutParams)localObject1).leftMargin = ((int)paramContext.getResources().getDimension(2131296755));
-        ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)paramContext.getResources().getDimension(2131296756));
-        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = ((int)paramContext.getResources().getDimension(2131296780));
-      }
-      if (!bool1)
-      {
-        localObject2 = findViewById(2131363484);
-        if (localObject2 != null) {
-          ((View)localObject2).setVisibility(8);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
-        localObject2 = findViewById(2131365196);
-        if (localObject2 != null) {
-          ((View)localObject2).setVisibility(8);
-        }
-        localObject2 = findViewById(2131365214);
-        if (localObject2 != null) {
-          ((View)localObject2).setVisibility(8);
-        }
-        if (localObject1 != null)
-        {
-          ((RelativeLayout.LayoutParams)localObject1).setMargins(0, 0, 0, 0);
-          this.bodyLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        }
-        localObject2 = new LinearLayout.LayoutParams(-1, -2);
-        i = MessageForArkApp.dp2px(1.0F);
-        ((LinearLayout.LayoutParams)localObject2).setMargins(i, i, i, i);
-        GradientDrawable localGradientDrawable = new GradientDrawable();
-        localGradientDrawable.setStroke(i, 436207616);
-        if (this.bodyLayout != null)
-        {
-          if (!bool2) {
-            this.bodyLayout.setBackgroundDrawable(localGradientDrawable);
+          return;
+          localException1 = localException1;
+          if (!QLog.isColorLevel()) {
+            break;
           }
-          addCenterView(localView, (LinearLayout.LayoutParams)localObject2);
+          QLog.d("WebLog_WebViewWrapper", 2, "remove webview error");
+          break;
+          this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrlOriginal("about:blank");
+          this.jdField_a_of_type_ComTencentBizUiTouchWebView.clearView();
+          this.jdField_a_of_type_ComTencentBizUiTouchWebView.destroy();
         }
-        this.jdField_a_of_type_Int = MessageForArkApp.dp2px(390.0F);
-        this.jdField_b_of_type_Int = MessageForArkApp.dp2px(30.0F);
-        this.jdField_c_of_type_Int = MessageForArkApp.dp2px(30.0F);
-        i = paramContext.getResources().getDimensionPixelSize(2131296779);
-        j = ((RelativeLayout.LayoutParams)localObject1).leftMargin;
-        j = ((RelativeLayout.LayoutParams)localObject1).rightMargin + j;
-        QLog.i("QQCustomArkDialog", 1, "init bundle mWidth=" + this.jdField_d_of_type_Int + ", dialogWidth=" + i + ",bodyMargin=" + j);
-        this.jdField_d_of_type_Int = (i - j);
-        localObject1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject1).addRule(14);
-        ((RelativeLayout.LayoutParams)localObject1).width = this.jdField_d_of_type_Int;
-        ((RelativeLayout.LayoutParams)localObject1).height = this.jdField_d_of_type_Int;
-        ((RelativeLayout.LayoutParams)localObject1).setMargins(0, 0, 0, 0);
-        ThreadManager.getUIHandler().post(new QQCustomArkDialog.3(this, paramBundle));
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setInputHolderAnchor((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getRootView());
-        if (!(paramContext instanceof Activity)) {
-          break label1096;
-        }
-        paramContext = (Activity)paramContext;
-        if (paramContext != null)
-        {
-          anpk.a(paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
-          this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-        }
-        ThreadManager.getUIHandler().postDelayed(new QQCustomArkDialog.4(this), 200L);
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException2)
       {
-        int i;
-        int j;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("QQCustomArkDialog", 2, localException.getMessage());
-          continue;
-          if (localException != null)
-          {
-            i = localException.leftMargin;
-            j = localException.rightMargin;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("QQCustomArkDialog", 2, "margin=" + (i + j));
-              continue;
-              label1096:
-              paramContext = null;
-            }
-          }
-        }
+        break label77;
       }
     }
   }
   
-  public void a(String paramString)
+  void a(TouchWebView paramTouchWebView)
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.title.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131379214)).setText(paramString);
-  }
-  
-  public void dismiss()
-  {
-    if (this.jdField_a_of_type_Afii != null) {
-      this.jdField_a_of_type_Afii.doOnEvent(2);
-    }
-    QLog.d("QQCustomArkDialog", 1, "dismiss");
-    ankc.a = true;
-    super.dismiss();
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView != null) && (paramMotionEvent.getAction() == 0) && ((paramMotionEvent.getX() < this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getX() - 10.0F) || (paramMotionEvent.getX() > this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getX() + this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getWidth() + 10.0F) || (paramMotionEvent.getY() < this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getY() - 10.0F) || (paramMotionEvent.getY() > this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getY() + this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getHeight() + 10.0F)))
+    if (Build.VERSION.SDK_INT >= 21) {}
+    for (Object localObject = new bdjs(this);; localObject = new bdjt(this))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.mViewImpl.resetInputState();
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getContext().getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getWindowToken(), 0);
-      }
+      paramTouchWebView.setWebViewClient((WebViewClient)localObject);
+      return;
     }
-    return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnDismissListener(@Nullable DialogInterface.OnDismissListener paramOnDismissListener)
+  public void a(SonicClientImpl paramSonicClientImpl)
   {
-    super.setOnDismissListener(paramOnDismissListener);
-  }
-  
-  public void show()
-  {
-    this.jdField_d_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QQCustomArkDialog", 2, new Object[] { "dialog show,arkViewLoadFinish = ", Boolean.valueOf(this.jdField_e_of_type_Boolean), ";alreadyShowDialog:", Boolean.valueOf(this.jdField_f_of_type_Boolean) });
-    }
-    if (this.jdField_e_of_type_Boolean)
-    {
-      this.jdField_f_of_type_Boolean = true;
-      super.show();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl = paramSonicClientImpl;
+    QLog.i("WebLog_WebViewWrapper", 1, "setSonicClient sonicClient = " + paramSonicClientImpl);
   }
 }
 

@@ -1,25 +1,14 @@
-import android.view.View;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.6.1;
+import java.util.UUID;
 
-class beya
-  implements bexx
+public class beya
+  implements beyd
 {
   beya(bexz parambexz) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, beyc parambeyc)
   {
-    this.a.a(true, new View[] { this.a.a });
-  }
-  
-  public void b()
-  {
-    this.a.a(false, new View[] { this.a.a });
-  }
-  
-  public void c()
-  {
-    this.a.b(5);
+    bevn.a(new TroopFileUploadMgr.6.1(this, paramUUID, paramBoolean, paramInt, parambeyc), false);
   }
 }
 

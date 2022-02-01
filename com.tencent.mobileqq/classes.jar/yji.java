@@ -1,32 +1,55 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import java.util.List;
 
 public class yji
-  implements ygp
+  extends wfr<yjc, yiq>
 {
-  public yji(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
-  
-  public void a(int paramInt)
+  public yji(yjc paramyjc)
   {
-    SubscribeHybirdFragment.a(this.a).a(paramInt);
+    super(paramyjc);
   }
   
-  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
+  public void a(@NonNull yjc paramyjc, @NonNull yiq paramyiq)
   {
-    if ((paramStGetFeedDetailRsp == null) || (paramStGetFeedDetailRsp.feed.get() == null))
-    {
-      QQToast.a(this.a.a(), alud.a(2131715033), 0).a();
+    if (paramyiq.jdField_a_of_type_Int == 0) {
       return;
     }
-    SubscribeHybirdFragment.a(this.a, paramStGetFeedDetailRsp, paramLong, paramString);
+    Object localObject = paramyjc.a(paramyiq.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
+    {
+      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramyiq.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    if (!(localObject instanceof yir))
+    {
+      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramyiq.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    localObject = (yir)localObject;
+    FeedVideoInfo localFeedVideoInfo = ((yip)wpm.a(12)).a(paramyiq.jdField_a_of_type_JavaLangString, ((GeneralFeedItem)((yir)localObject).a).mVideoPullType);
+    if (localFeedVideoInfo == null)
+    {
+      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find video info for feedId:%s, pullType:%d", new Object[] { paramyiq.jdField_a_of_type_JavaLangString, Integer.valueOf(((GeneralFeedItem)((yir)localObject).a).mVideoPullType) });
+      return;
+    }
+    ((yir)localObject).c(localFeedVideoInfo.mVideoItemList, true);
+    ((GeneralFeedItem)((yir)localObject).a).updateVideoInfo(localFeedVideoInfo);
+    yqp.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video and cookie update after count:%d", paramyiq.jdField_a_of_type_JavaLangString, Integer.valueOf(((yir)localObject).a().size()));
+    yjc.a(paramyjc).a((yka)localObject);
   }
+  
+  public Class acceptEventClass()
+  {
+    return yiq.class;
+  }
+  
+  public void b(@NonNull yjc paramyjc, @NonNull yiq paramyiq) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yji
  * JD-Core Version:    0.7.0.1
  */

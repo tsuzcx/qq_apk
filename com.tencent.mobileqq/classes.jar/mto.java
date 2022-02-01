@@ -1,184 +1,208 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import java.net.URI;
 
 public class mto
 {
-  static final long a = a(-1L, 10L);
-  
-  static int a(long paramLong1, long paramLong2)
-  {
-    if (paramLong1 < paramLong2) {
-      return -1;
-    }
-    if (paramLong1 > paramLong2) {
-      return 1;
-    }
-    return 0;
-  }
-  
   public static int a(String paramString)
   {
-    int i = 0;
-    int j = 0;
-    if ((paramString != null) && (j < paramString.length()))
-    {
-      if (a(paramString.charAt(j))) {
-        i += 2;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        i += 1;
-      }
-    }
-    return i;
+    return a(paramString, 1, 1000);
   }
   
-  static long a(long paramLong1, long paramLong2)
+  public static int a(String paramString, int paramInt1, int paramInt2)
   {
-    int i = 1;
-    if (paramLong2 < 0L)
-    {
-      if (a(paramLong1, paramLong2) < 0) {
-        return 0L;
-      }
-      return 1L;
-    }
-    if (paramLong1 >= 0L) {
-      return paramLong1 / paramLong2;
-    }
-    long l = (paramLong1 >>> 1) / paramLong2 << 1;
-    if (a(paramLong1 - l * paramLong2, paramLong2) >= 0) {}
-    for (;;)
-    {
-      return i + l;
-      i = 0;
-    }
-  }
-  
-  public static long a(String paramString)
-  {
-    long l1 = 0L;
-    long l2;
-    if (paramString == null)
-    {
-      l2 = l1;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("CharacterUtil", 2, "the strind is null!");
-        l2 = l1;
-      }
-    }
+    paramString = a(paramString);
+    if (paramString == null) {}
     do
     {
-      return l2;
-      if (paramString.length() != 0) {
-        break;
-      }
-      l2 = l1;
-    } while (!QLog.isColorLevel());
-    QLog.e("CharacterUtil", 2, "invalid string!");
-    return 0L;
-    int i = 0;
-    for (;;)
+      return -1;
+      paramString = b(a(paramInt1, paramInt2, paramString));
+    } while (paramString == null);
+    try
     {
-      l2 = l1;
-      if (i >= paramString.length()) {
-        break;
-      }
-      int j = Character.digit(paramString.charAt(i), 10);
-      if (j == -1) {
-        throw new NumberFormatException(paramString);
-      }
-      if ((i > 18) && (a(l1, j, 10))) {
-        throw new NumberFormatException("Too large for unsigned long: " + paramString);
-      }
-      l1 = l1 * 10 + j;
-      i += 1;
+      paramInt1 = Math.round(Float.valueOf(paramString.substring(paramString.indexOf("min/avg/max/mdev") + 19).split("/")[1]).floatValue());
+      return paramInt1;
     }
+    catch (Exception paramString)
+    {
+      lbc.c("SignalStrengthReport", "getAvgRTT e:" + paramString);
+    }
+    return -1;
   }
   
-  public static String a(long paramLong)
+  private static String a(int paramInt1, int paramInt2, String paramString)
   {
-    long l = paramLong & 0xFFFFFFFF;
-    if (paramLong == l) {
-      return String.valueOf(l);
-    }
-    char[] arrayOfChar = "-9223372036854775808".toCharArray();
-    arrayOfChar[0] = '0';
-    int j = arrayOfChar.length - 1;
-    paramLong = l;
-    while ((j != 0) && (paramLong != 0L))
-    {
-      int i = (char)(int)(arrayOfChar[j] + paramLong % 10L);
-      arrayOfChar[j] = i;
-      if (i > 57)
-      {
-        arrayOfChar[j] = ((char)(arrayOfChar[j] - '\n'));
-        int k = j - 1;
-        arrayOfChar[k] = ((char)(arrayOfChar[k] + '\001'));
-      }
-      paramLong /= 10L;
-      j -= 1;
-    }
-    j = '1' - arrayOfChar[0];
-    return new String(arrayOfChar, j, arrayOfChar.length - j);
+    return "/system/bin/ping -c " + paramInt1 + " -w " + paramInt2 + " " + paramString;
   }
   
-  public static String a(String paramString, int paramInt1, int paramInt2)
+  private static String a(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
+    try
     {
-      int i = paramInt1;
-      int j = paramInt2;
-      paramInt2 = i;
-      for (i = j; paramInt2 < i; i = j)
-      {
-        j = i;
-        if (a(paramString.charAt(paramInt2))) {
-          j = i - 1;
-        }
-        paramInt2 += 1;
-      }
-      return paramString.substring(paramInt1, i);
+      paramString = URI.create(paramString).getHost();
+      return paramString;
     }
-    return "";
+    catch (Exception paramString)
+    {
+      lbc.c("SignalStrengthReport", "getDomain e:" + paramString);
+    }
+    return null;
   }
   
-  public static boolean a(char paramChar)
+  /* Error */
+  private static String b(String paramString)
   {
-    Character.UnicodeBlock localUnicodeBlock = Character.UnicodeBlock.of(paramChar);
-    return (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B) || (localUnicodeBlock == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_FORMS) || (localUnicodeBlock == Character.UnicodeBlock.GENERAL_PUNCTUATION);
-  }
-  
-  private static boolean a(long paramLong, int paramInt1, int paramInt2)
-  {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (paramLong >= 0L)
-    {
-      if (paramLong >= a) {
-        break label27;
-      }
-      bool1 = false;
-    }
-    label27:
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramLong > a);
-      bool1 = bool2;
-    } while (paramInt1 > 5);
-    return false;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: invokestatic 109	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   5: aload_0
+    //   6: invokevirtual 113	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   9: astore_1
+    //   10: aload_1
+    //   11: astore_0
+    //   12: aload_1
+    //   13: invokevirtual 119	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   16: astore_2
+    //   17: aload_1
+    //   18: astore_0
+    //   19: new 121	java/io/BufferedReader
+    //   22: dup
+    //   23: new 123	java/io/InputStreamReader
+    //   26: dup
+    //   27: aload_2
+    //   28: invokespecial 126	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   31: invokespecial 129	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   34: astore 4
+    //   36: aload_1
+    //   37: astore_0
+    //   38: new 58	java/lang/StringBuilder
+    //   41: dup
+    //   42: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   45: astore 5
+    //   47: aload_1
+    //   48: astore_0
+    //   49: aload 4
+    //   51: invokevirtual 132	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   54: astore 6
+    //   56: aload 6
+    //   58: ifnull +67 -> 125
+    //   61: aload_1
+    //   62: astore_0
+    //   63: aload 5
+    //   65: aload 6
+    //   67: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: pop
+    //   71: aload_1
+    //   72: astore_0
+    //   73: aload 5
+    //   75: ldc 134
+    //   77: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: pop
+    //   81: goto -34 -> 47
+    //   84: astore_2
+    //   85: aload_1
+    //   86: astore_0
+    //   87: ldc 56
+    //   89: new 58	java/lang/StringBuilder
+    //   92: dup
+    //   93: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   96: ldc 136
+    //   98: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: aload_2
+    //   102: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   105: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   108: invokestatic 81	lbc:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   111: aload_3
+    //   112: astore_0
+    //   113: aload_1
+    //   114: ifnull +9 -> 123
+    //   117: aload_1
+    //   118: invokevirtual 139	java/lang/Process:destroy	()V
+    //   121: aload_3
+    //   122: astore_0
+    //   123: aload_0
+    //   124: areturn
+    //   125: aload_1
+    //   126: astore_0
+    //   127: aload 4
+    //   129: invokevirtual 142	java/io/BufferedReader:close	()V
+    //   132: aload_1
+    //   133: astore_0
+    //   134: aload_2
+    //   135: invokevirtual 145	java/io/InputStream:close	()V
+    //   138: aload_1
+    //   139: astore_0
+    //   140: aload 5
+    //   142: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   145: astore_2
+    //   146: aload_2
+    //   147: astore_0
+    //   148: aload_1
+    //   149: ifnull -26 -> 123
+    //   152: aload_1
+    //   153: invokevirtual 139	java/lang/Process:destroy	()V
+    //   156: aload_2
+    //   157: areturn
+    //   158: astore_0
+    //   159: aconst_null
+    //   160: astore_2
+    //   161: aload_0
+    //   162: astore_1
+    //   163: aload_2
+    //   164: ifnull +7 -> 171
+    //   167: aload_2
+    //   168: invokevirtual 139	java/lang/Process:destroy	()V
+    //   171: aload_1
+    //   172: athrow
+    //   173: astore_1
+    //   174: aload_0
+    //   175: astore_2
+    //   176: goto -13 -> 163
+    //   179: astore_2
+    //   180: aconst_null
+    //   181: astore_1
+    //   182: goto -97 -> 85
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	185	0	paramString	String
+    //   9	163	1	localObject1	Object
+    //   173	1	1	localObject2	Object
+    //   181	1	1	localObject3	Object
+    //   16	12	2	localInputStream	java.io.InputStream
+    //   84	51	2	localThrowable1	java.lang.Throwable
+    //   145	31	2	str1	String
+    //   179	1	2	localThrowable2	java.lang.Throwable
+    //   1	121	3	localObject4	Object
+    //   34	94	4	localBufferedReader	java.io.BufferedReader
+    //   45	96	5	localStringBuilder	java.lang.StringBuilder
+    //   54	12	6	str2	String
+    // Exception table:
+    //   from	to	target	type
+    //   12	17	84	java/lang/Throwable
+    //   19	36	84	java/lang/Throwable
+    //   38	47	84	java/lang/Throwable
+    //   49	56	84	java/lang/Throwable
+    //   63	71	84	java/lang/Throwable
+    //   73	81	84	java/lang/Throwable
+    //   127	132	84	java/lang/Throwable
+    //   134	138	84	java/lang/Throwable
+    //   140	146	84	java/lang/Throwable
+    //   2	10	158	finally
+    //   12	17	173	finally
+    //   19	36	173	finally
+    //   38	47	173	finally
+    //   49	56	173	finally
+    //   63	71	173	finally
+    //   73	81	173	finally
+    //   87	111	173	finally
+    //   127	132	173	finally
+    //   134	138	173	finally
+    //   140	146	173	finally
+    //   2	10	179	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mto
  * JD-Core Version:    0.7.0.1
  */

@@ -1,83 +1,23 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import java.util.List;
+import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportRsp;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.requests.CommandReportRequest;
+import com.tencent.qphone.base.util.QLog;
 
-public class vro
-  extends xvp
+class vro
+  implements zxa<APP_REPORT_TRANSFER.StDataReportRsp>
 {
-  public static final String KEY = "PlayerCommentEmptySegment";
-  private View jdField_a_of_type_AndroidViewView;
-  private vrd jdField_a_of_type_Vrd;
-  public wiq a;
-  private boolean b = true;
+  vro(vrl paramvrl, CommandReportRequest paramCommandReportRequest) {}
   
-  public vro(Context paramContext)
+  public void a(boolean paramBoolean, long paramLong, String paramString, APP_REPORT_TRANSFER.StDataReportRsp paramStDataReportRsp)
   {
-    super(paramContext);
-  }
-  
-  private boolean b()
-  {
-    return (this.jdField_a_of_type_Vrd == null) || (this.jdField_a_of_type_Vrd.a());
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Wiq == null) || (this.jdField_a_of_type_Wiq.a(b()).size() == 0))) {
-      return 1;
+    if (((!paramBoolean) || (paramLong != 0L) || (paramStDataReportRsp == null)) && (!TextUtils.isEmpty(paramString))) {
+      QLog.e("QCircleReporter", 1, "performCommandReport error:" + paramString + ",traceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsCommandReportRequest.getTraceId());
     }
-    return 0;
-  }
-  
-  public View a(int paramInt, wtq paramwtq, ViewGroup paramViewGroup)
-  {
-    if (this.b) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      return paramwtq.a();
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public String a()
-  {
-    return "PlayerCommentEmptySegment";
-  }
-  
-  public wtq a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561535, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131369793);
-    if (QQStoryContext.a()) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166398));
-    }
-    return new wtq(paramViewGroup);
-  }
-  
-  public void a(vrd paramvrd)
-  {
-    this.jdField_a_of_type_Vrd = paramvrd;
-  }
-  
-  public void a(wiq paramwiq)
-  {
-    this.jdField_a_of_type_Wiq = paramwiq;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vro
  * JD-Core Version:    0.7.0.1
  */

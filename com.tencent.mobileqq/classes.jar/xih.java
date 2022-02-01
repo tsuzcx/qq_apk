@@ -1,104 +1,52 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RelativeLayout.LayoutParams;
-import java.io.File;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
 
 public class xih
-  extends xia<xhx>
-  implements View.OnClickListener
 {
-  public xih(Context paramContext)
+  private xiv jdField_a_of_type_Xiv;
+  private xix jdField_a_of_type_Xix;
+  private xiz jdField_a_of_type_Xiz = new xii(this);
+  public xjt a;
+  private xvy jdField_a_of_type_Xvy;
+  private xiz b = new xij(this);
+  
+  public void a(MsgTabPlayInfo paramMsgTabPlayInfo)
   {
-    super(paramContext);
+    this.jdField_a_of_type_Xjt = new xjt(new xjk(paramMsgTabPlayInfo));
+    this.jdField_a_of_type_Xvy = new xvy(this.jdField_a_of_type_Xjt);
+    this.jdField_a_of_type_Xvy.b();
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(HomeFeedPlayInfo paramHomeFeedPlayInfo)
   {
-    if (this.jdField_a_of_type_Xhr == null) {
-      return paramView;
-    }
-    if (paramView == null) {}
-    for (paramView = new xii(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((xhx)this.jdField_a_of_type_Xhr).a(), ((xhx)this.jdField_a_of_type_Xhr).a(), this);; paramView = (xii)paramView)
+    this.jdField_a_of_type_Xjt = new xjt(new xiq(paramHomeFeedPlayInfo));
+    this.jdField_a_of_type_Xvy = new xvy(this.jdField_a_of_type_Xjt);
+  }
+  
+  public void onClickTestDown(View paramView)
+  {
+    if (this.jdField_a_of_type_Xjt != null)
     {
-      paramView.a((xhx)this.jdField_a_of_type_Xhr, paramInt, getCount());
-      return paramView;
+      this.jdField_a_of_type_Xjt.a(this.b);
+      this.jdField_a_of_type_Xjt.b(this.jdField_a_of_type_Xiz);
+      this.jdField_a_of_type_Xjt.a(this.jdField_a_of_type_Xix, 2, 1, null);
     }
   }
   
-  public void onClick(View paramView)
+  public void onClickTestUp(View paramView)
   {
-    int i = 0;
-    ImageView localImageView = (ImageView)paramView;
-    int j = ((Integer)localImageView.getTag(2131377441)).intValue();
-    xhx localxhx = (xhx)this.jdField_a_of_type_Xhr;
-    Object localObject3 = Uri.parse(localxhx.a(j));
-    Object localObject1 = ((Uri)localObject3).getPath();
-    String str = new File((String)localObject1).getName();
-    try
+    if (this.jdField_a_of_type_Xjt != null)
     {
-      localObject1 = Drawable.createFromPath((String)localObject1);
-      if (localObject1 != null)
-      {
-        ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
-        try
-        {
-          j = ((RelativeLayout.LayoutParams)((ListView)paramView.getParent().getParent()).getLayoutParams()).leftMargin;
-          i = j;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            float f2;
-            float f3;
-            float f4;
-            float f5;
-            int k;
-            Object localObject2;
-            wxe.c("NormalFaceAdapter", "get marginLeft error : %s", localException);
-            continue;
-            float f1 = (i - (k + (i - j) / 2) * 2) / i;
-          }
-        }
-        localObject3 = (xii)paramView.getParent();
-        j = (int)xdl.b((View)localObject3);
-        f2 = xdl.a(paramView);
-        f3 = paramView.getWidth() / 2;
-        f4 = i;
-        f5 = ((xii)localObject3).getHeight() / 2 + j;
-        i = ((Drawable)localObject1).getIntrinsicWidth();
-        j = localImageView.getWidth();
-        k = localImageView.getPaddingLeft();
-        if (j > i)
-        {
-          f1 = (((j - i) / 2 - k) * 2 + i) / i;
-          paramView = new xep(localxhx.b, str, (Drawable)localObject1);
-          this.jdField_a_of_type_Xht.a(paramView, f4 + (f2 + f3), f5, f1 * 1.2F);
-          return;
-        }
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        wxe.c("NormalFaceAdapter", "createFromPath error", localOutOfMemoryError);
-        localObject2 = null;
-      }
-      wxe.e("NormalFaceAdapter", "can create drawable from uri:" + localException);
+      this.jdField_a_of_type_Xjt.b(this.b);
+      this.jdField_a_of_type_Xjt.a(this.jdField_a_of_type_Xiz);
+      this.jdField_a_of_type_Xjt.a(this.jdField_a_of_type_Xix, 0, 1, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xih
  * JD-Core Version:    0.7.0.1
  */

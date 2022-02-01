@@ -1,13 +1,39 @@
-import java.io.File;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.widget.TCWNumberPicker;
 
 public class bkpd
+  implements InputFilter
 {
-  public static final String a = bkpi.a + File.separator + "gif";
-  public static final String b = a + File.separator + "capture";
-  public static final String c = a + File.separator + "res";
-  public static final String d = a + File.separator + "res_zip_download";
-  public static final String e = c + File.separator + "GifGuide";
-  public static final String f = a + File.separator + "material_config";
+  private bkpd(TCWNumberPicker paramTCWNumberPicker) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    int i = 0;
+    if (TCWNumberPicker.a(this.a) == null)
+    {
+      paramCharSequence = TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      return paramCharSequence;
+    }
+    String str = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
+    paramSpanned = String.valueOf(String.valueOf(paramSpanned.subSequence(0, paramInt3)) + str + paramSpanned.subSequence(paramInt4, paramSpanned.length())).toLowerCase();
+    String[] arrayOfString = TCWNumberPicker.a(this.a);
+    paramInt2 = arrayOfString.length;
+    paramInt1 = i;
+    for (;;)
+    {
+      if (paramInt1 >= paramInt2) {
+        break label154;
+      }
+      paramCharSequence = str;
+      if (arrayOfString[paramInt1].toLowerCase().startsWith(paramSpanned)) {
+        break;
+      }
+      paramInt1 += 1;
+    }
+    label154:
+    return "";
+  }
 }
 
 

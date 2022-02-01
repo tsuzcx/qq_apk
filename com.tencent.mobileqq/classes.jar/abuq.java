@@ -1,34 +1,63 @@
-import org.json.JSONObject;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.av.widget.shimmer.ShimmerTextView;
+import com.tencent.device.msg.activities.DeviceTipActivity;
 
 public class abuq
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public abuq(DeviceTipActivity paramDeviceTipActivity) {}
   
-  public abuq(abun paramabun) {}
-  
-  public boolean a(JSONObject paramJSONObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
+    switch (paramMotionEvent.getAction())
     {
-      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_index"));
-      this.jdField_b_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_type"));
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("param_value1").trim();
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("param_value2").trim();
+    }
+    for (;;)
+    {
       return true;
+      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
+      DeviceTipActivity.c(this.a);
+      continue;
+      int i = (int)paramMotionEvent.getRawX() - this.a.jdField_b_of_type_Int;
+      if (i > 2)
+      {
+        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+      }
+      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.left += i;
+      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.right = (i + paramView.right);
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right >= this.a.d)
+      {
+        this.a.jdField_a_of_type_AndroidGraphicsRect.right = this.a.d;
+        this.a.jdField_a_of_type_AndroidGraphicsRect.left = (this.a.jdField_a_of_type_AndroidGraphicsRect.right - this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+      }
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.left <= this.a.e)
+      {
+        this.a.jdField_a_of_type_AndroidGraphicsRect.left = this.a.e;
+        this.a.jdField_a_of_type_AndroidGraphicsRect.right = (this.a.jdField_a_of_type_AndroidGraphicsRect.left + this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_a_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
+      this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left - this.a.e, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
+      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
+      continue;
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right == this.a.d)
+      {
+        this.a.b();
+      }
+      else if (this.a.jdField_a_of_type_AndroidGraphicsRect.right < this.a.d)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_b_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_b_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
+        this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_c_of_type_AndroidGraphicsRect.left, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
+        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
     }
-    catch (Exception paramJSONObject)
-    {
-      abui.a("KingKongNativePatch", "Parse parameter error!");
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return "Index " + this.jdField_a_of_type_Int + ": " + this.jdField_b_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_b_of_type_JavaLangString;
   }
 }
 

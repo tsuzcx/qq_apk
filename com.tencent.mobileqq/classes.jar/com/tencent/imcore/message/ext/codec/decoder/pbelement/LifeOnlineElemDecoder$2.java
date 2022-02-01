@@ -1,0 +1,26 @@
+package com.tencent.imcore.message.ext.codec.decoder.pbelement;
+
+import acyr;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+
+public class LifeOnlineElemDecoder$2
+  implements Runnable
+{
+  public LifeOnlineElemDecoder$2(acyr paramacyr, MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
+  
+  public void run()
+  {
+    ((PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a(11)).a(String.valueOf(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_head.from_uin.get()), 0L, 1);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.LifeOnlineElemDecoder.2
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,14 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-class bkmx
-  implements DialogInterface.OnClickListener
+public class bkmx
+  implements View.OnClickListener
 {
-  bkmx(bkms parambkms) {}
+  public bkmx(PinnedFooterExpandableListView paramPinnedFooterExpandableListView1, PinnedFooterExpandableListView paramPinnedFooterExpandableListView2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.a(2);
+    if (PinnedFooterExpandableListView.a(this.b) != null) {
+      PinnedFooterExpandableListView.a(this.b).a(this.a, this.b.a, this.b.c);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

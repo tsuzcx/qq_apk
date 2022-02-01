@@ -5,10 +5,10 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.os.Message;
 import android.widget.RelativeLayout;
-import bhtd;
+import bkgm;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import ndi;
+import nmb;
 
 class ApolloImageShareLayout$SaveImageTask
   implements Runnable
@@ -37,7 +37,7 @@ class ApolloImageShareLayout$SaveImageTask
     {
       return;
       localApolloImageShareLayout = (ApolloImageShareLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localApolloImageShareLayout == null) || (ApolloImageShareLayout.a(localApolloImageShareLayout) == null) || (localApolloImageShareLayout.jdField_a_of_type_Bhtd == null));
+    } while ((localApolloImageShareLayout == null) || (ApolloImageShareLayout.a(localApolloImageShareLayout) == null) || (localApolloImageShareLayout.jdField_a_of_type_Bkgm == null));
     for (;;)
     {
       try
@@ -57,8 +57,8 @@ class ApolloImageShareLayout$SaveImageTask
           localCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
         }
         localCanvas.drawBitmap((Bitmap)localObject1, (ApolloImageShareLayout.a(localApolloImageShareLayout).getWidth() - ((Bitmap)localObject1).getWidth()) / 2, ApolloImageShareLayout.a(localApolloImageShareLayout), null);
-        localObject1 = ndi.a((Bitmap)localObject3);
-        localObject3 = localApolloImageShareLayout.jdField_a_of_type_Bhtd.obtainMessage(this.jdField_a_of_type_Int);
+        localObject1 = nmb.a((Bitmap)localObject3);
+        localObject3 = localApolloImageShareLayout.jdField_a_of_type_Bkgm.obtainMessage(this.jdField_a_of_type_Int);
         ((Message)localObject3).obj = localObject1;
         ((Message)localObject3).sendToTarget();
         ApolloImageShareLayout.a(localApolloImageShareLayout).destroyDrawingCache();
@@ -87,7 +87,7 @@ class ApolloImageShareLayout$SaveImageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloImageShareLayout.SaveImageTask
  * JD-Core Version:    0.7.0.1
  */

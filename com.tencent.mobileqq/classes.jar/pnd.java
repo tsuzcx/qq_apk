@@ -1,19 +1,19 @@
-class pnd
-  implements qci
+final class pnd
+  implements pnh
 {
-  pnd(pna parampna, pgd parampgd) {}
-  
-  public void a()
+  public void l()
   {
-    rro localrro = this.jdField_a_of_type_Pgd.a().a();
-    if (localrro != null) {
-      localrro.a(null, this.jdField_a_of_type_Pgd.a(), 1);
-    }
+    pmy.a().a(null, false);
+  }
+  
+  public void m()
+  {
+    pmy.a().a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pnd
  * JD-Core Version:    0.7.0.1
  */

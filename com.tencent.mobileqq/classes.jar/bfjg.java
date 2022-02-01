@@ -1,81 +1,25 @@
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.open.appcommon.js.DownloadInterface;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
 
-public class bfjg
-  implements bfpr
+class bfjg
+  implements View.OnTouchListener
 {
-  protected String a;
+  bfjg(bfje parambfje, View paramView1, View paramView2) {}
   
-  public bfjg(DownloadInterface paramDownloadInterface, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
-      return;
+    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {}
+    for (int i = 1; (paramMotionEvent.getAction() == 4) && (AtPanelTouchController.a(this.b, paramMotionEvent)) && ((i == 0) || ((i != 0) && (!AtPanelTouchController.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)))); i = 0) {
+      return true;
     }
-    bflp.e("DownloadInterface", "JsCheckUpdateCallback onException >>> " + paramString);
-    paramString = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramString);
-  }
-  
-  public void a(ArrayList<ApkUpdateDetail> paramArrayList)
-  {
-    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
-      return;
-    }
-    bflp.a("DownloadInterface", "JsCheckUpdateCallback onResult >>> " + paramArrayList.size());
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    int i = 0;
-    try
-    {
-      while (i < paramArrayList.size())
-      {
-        ApkUpdateDetail localApkUpdateDetail = (ApkUpdateDetail)paramArrayList.get(i);
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("packageName", localApkUpdateDetail.packageName);
-        localJSONObject2.put("newapksize", localApkUpdateDetail.newapksize);
-        localJSONObject2.put("patchsize", localApkUpdateDetail.patchsize);
-        localJSONObject2.put("updatemethod", localApkUpdateDetail.updatemethod);
-        localJSONObject2.put("versioncode", localApkUpdateDetail.versioncode);
-        localJSONObject2.put("versionname", localApkUpdateDetail.versionname);
-        localJSONObject2.put("fileMd5", localApkUpdateDetail.fileMd5);
-        localJSONObject2.put("sigMd5", localApkUpdateDetail.sigMd5);
-        localJSONObject2.put("url", localApkUpdateDetail.url);
-        localJSONArray.put(localJSONObject2);
-        i += 1;
-      }
-      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject1.put("content", localJSONArray.toString());
-      localJSONObject1.put("resultCode", "0");
-      paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'" + localJSONArray.toString() + "'});}void(0);";
-    }
-    catch (JSONException paramArrayList)
-    {
-      for (;;)
-      {
-        paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
-      }
-    }
-    bflp.b("DownloadInterface", ">>checkUpdate jsUrl:" + paramArrayList);
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramArrayList);
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfjg
  * JD-Core Version:    0.7.0.1
  */

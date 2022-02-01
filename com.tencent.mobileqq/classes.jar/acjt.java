@@ -1,36 +1,28 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import android.content.Context;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import java.lang.ref.WeakReference;
 
 public class acjt
+  implements AdQQMINIProgramAdapter
 {
-  public int a;
-  public long a;
-  public MessageForReplyText.SourceMsgInfo a;
-  public EmojiStickerManager.StickerInfo a;
-  public String a;
-  public boolean a = true;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g = -1;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
+  public AdError show(AdQQMINIProgramAdapter.Params paramParams)
+  {
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    {
+      acqy.d("GdtQQMINIProgramAdapter", "show error");
+      return new AdError(4);
+    }
+    GdtAd localGdtAd = (GdtAd)GdtAd.class.cast(paramParams.ad);
+    acqy.b("GdtQQMINIProgramAdapter", String.format("show %s", new Object[] { localGdtAd.getUrlForLandingPage() }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramStart((Context)paramParams.context.get(), localGdtAd);
+    MiniAppLauncher.startMiniApp((Context)paramParams.context.get(), localGdtAd.getUrlForLandingPage(), 2054, new acju(this, paramParams, localGdtAd));
+    return new AdError(0);
+  }
 }
 
 

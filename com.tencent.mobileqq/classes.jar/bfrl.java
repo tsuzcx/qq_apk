@@ -1,50 +1,58 @@
-import com.tencent.open.virtual.OpenSdkVirtualManager.2;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class bfrl
-  extends bfrw
+  extends anif
 {
-  public bfrl(OpenSdkVirtualManager.2 param2) {}
+  int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private bfrk jdField_a_of_type_Bfrk;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public bfrl(Context paramContext, long paramLong, QQAppInterface paramQQAppInterface)
   {
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
-    aseh.a("KEY_DELETE_VIRTUAL_D18", this.a.jdField_a_of_type_Bfqv, paramBoolean);
-    int i = paramInt;
-    if (paramBoolean) {}
-    for (;;)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public bfrl(Context paramContext, bfrk parambfrk, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Bfrk = parambfrk;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  protected void b(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof bfrj))) {}
+    Context localContext;
+    long l1;
+    do
     {
-      try
+      return;
+      paramObject = (bfrj)paramObject;
+      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      long l2 = this.jdField_a_of_type_Long;
+      l1 = l2;
+      if (l2 == 0L)
       {
-        i = new JSONObject(paramString1).optInt("ErrorCode");
-        paramInt = i;
-        i = paramInt;
-        if (paramInt == 0)
-        {
-          paramBoolean = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("OpenSdkVirtualManager", 2, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
-          }
-          if (this.a.jdField_a_of_type_Bfrs != null) {
-            this.a.jdField_a_of_type_Bfrs.a(paramBoolean, paramInt);
-          }
-          return;
+        l1 = l2;
+        if (this.jdField_a_of_type_Bfrk != null) {
+          l1 = this.jdField_a_of_type_Bfrk.a();
         }
       }
-      catch (Exception paramString2)
-      {
-        QLog.e("OpenSdkVirtualManager", 1, "Exception.e", paramString2);
-        i = paramInt;
-      }
-      paramBoolean = false;
-      paramInt = i;
-    }
+    } while (localContext == null);
+    bfrh.a(paramObject, l1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfrl
  * JD-Core Version:    0.7.0.1
  */

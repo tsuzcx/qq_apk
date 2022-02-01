@@ -11,7 +11,7 @@
         </RelativeLayout>
     </RelativeLayout>
     <FrameLayout android:id="@id/ixw" android:background="@drawable/jh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/rlCommenTitle">
-        <com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator android:textSize="16.0dip" android:id="@id/ixv" android:layout_width="fill_parent" android:layout_height="56.0dip" app:checkTextColor="@color/skin_blue_item" app:indicatorAlpha="25" app:indicatorColor="@color/skin_blue_item" app:indicatorMarginLeftRight="14.0dip" app:indicatorMarginTopBottom="12.0dip" app:indicatorRoundRectX="16.0dip" app:indicatorRoundRectY="16.0dip" app:tabContainerPaddingLeftRight="16.0dip" app:tabGap="2.0dip" app:tabPaddingLeftRight="14.0dip" app:uncheckTextColor="@color/skin_gray2_theme_version2" />
+        <com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator android:textSize="16.0dip" android:id="@id/ixv" android:layout_width="fill_parent" android:layout_height="56.0dip" app:checkTextColor="@color/skin_blue_item" app:indicatorAlpha="25" app:indicatorColor="@color/skin_blue_item" app:indicatorMarginLeftRight="14.0dip" app:indicatorMarginTopBottom="12.0dip" app:indicatorRoundRectX="16.0dip" app:indicatorRoundRectY="16.0dip" app:tabContainerPaddingLeftRight="16.0dip" app:tabGap="2.0dip" app:tabPaddingLeftRight="14.0dip" app:uncheckTextColor="@color/skin_gray2_theme_version2" />
     </FrameLayout>
     <com.tencent.mobileqq.widget.QQViewPager android:id="@id/au1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ixw" />
 </RelativeLayout>

@@ -1,44 +1,47 @@
-import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
 
-public class awxo
+class awxo
+  implements ayxc
 {
-  public long a;
-  private int[] a;
+  awxo(awxi paramawxi, awxd paramawxd) {}
   
-  public awxo()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 500, 700, 1000, 1500, 2100, 2800, 3500, 4200, 4800, 5000 };
+    awxi.a(this.jdField_a_of_type_Awxi, this.jdField_a_of_type_Awxd, paramInt);
   }
   
-  public int a(int paramInt)
+  public void a(ayxd paramayxd)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    int j;
+    int i;
+    if (paramayxd != null)
     {
-      if (paramInt < this.jdField_a_of_type_ArrayOfInt[i]) {
-        return i;
+      j = paramayxd.jdField_a_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiRichMediaSaveManager", 2, "isFilePreDownload picReq result = " + j);
       }
-      i += 1;
+      if (paramayxd.jdField_a_of_type_Ayxt != null)
+      {
+        i = paramayxd.jdField_a_of_type_Ayxt.jdField_a_of_type_Int;
+        paramayxd = paramayxd.jdField_a_of_type_Ayxt.b;
+      }
     }
-    return 1;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    }
-    while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long >= 75L)
+    for (;;)
     {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      return true;
+      awxi.a(this.jdField_a_of_type_Awxi, this.jdField_a_of_type_Awxd, j, i, paramayxd);
+      return;
+      i = 0;
+      paramayxd = "";
+      continue;
+      j = 0;
+      i = 0;
+      paramayxd = "";
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awxo
  * JD-Core Version:    0.7.0.1
  */

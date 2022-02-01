@@ -1,77 +1,132 @@
-import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PublicAccountShowPictureReport;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
+import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
+import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import java.util.ArrayList;
+import java.util.List;
+import pb.unite.search.DynamicAssociationWord.SuggestUrlItem;
 
 public class bbid
-  implements bhuy
+  extends anxw
 {
-  public bbid(TroopAvatarWallPreviewActivity.2.1 param1) {}
+  public bbid(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt1, String paramString, int paramInt2) {}
+  
+  public void a(String paramString, int paramInt, List<AssociateSearchWordsFragment.AssociateItem> paramList, List<DynamicAssociationWord.SuggestUrlItem> paramList1, DynamicAssociationWord.SuggestUrlItem paramSuggestUrlItem)
   {
-    if (paramView == null) {
-      return;
-    }
-    if (TroopAvatarWallPreviewActivity.a(this.a.a.this$0).isReport)
+    if (paramString.equals(this.a.f))
     {
-      TroopAvatarWallPreviewActivity.a(this.a.a.this$0).addPicIndex(paramInt);
-      paramAdapterView = TroopAvatarWallPreviewActivity.a(this.a.a.this$0);
-      paramAdapterView.slide_number += 1;
-    }
-    this.a.a.this$0.jdField_a_of_type_Int = paramInt;
-    paramAdapterView = this.a.a.this$0.jdField_a_of_type_Int + 1 + "/" + this.a.a.this$0.jdField_b_of_type_Int;
-    this.a.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
-    boolean bool1;
-    if (this.a.a.this$0.c)
-    {
-      azqs.b(this.a.a.this$0.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.this$0.jdField_a_of_type_JavaLangString, "0", "", "");
-      if (this.a.a.this$0.jdField_b_of_type_Boolean) {
-        TroopAvatarWallPreviewActivity.a(this.a.a.this$0, this.a.a.this$0.jdField_a_of_type_Int);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment = new AssociateSearchWordsFragment();
       }
-      boolean bool2 = this.a.a.this$0.f;
-      if ((TroopAvatarWallPreviewActivity.a(this.a.a.this$0) != null) && (TroopAvatarWallPreviewActivity.a(this.a.a.this$0).getBoolean("from_personality_label", false)))
+      paramList1 = new ArrayList();
+      paramSuggestUrlItem = new AssociateSearchWordsFragment.AssociateItem();
+      paramSuggestUrlItem.jdField_a_of_type_Int = 1;
+      StringBuilder localStringBuilder = new StringBuilder("");
+      if ((paramList != null) && (paramList.size() > 0))
       {
-        paramAdapterView = this.a.a.this$0;
-        if (Long.valueOf((String)this.a.a.this$0.jdField_b_of_type_JavaUtilArrayList.get(this.a.a.this$0.jdField_a_of_type_Int)).longValue() == -1L) {
-          break label530;
+        paramInt = 0;
+        if (paramInt < paramList.size())
+        {
+          String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).jdField_a_of_type_JavaLangString;
+          AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
+          localAssociateItem.jdField_a_of_type_JavaLangString = str;
+          if ((this.a.jdField_c_of_type_Int == 25) || (this.a.jdField_c_of_type_Int == 26))
+          {
+            localAssociateItem.jdField_a_of_type_Int = 6;
+            label160:
+            localAssociateItem.d = (paramInt + 1);
+            paramList1.add(localAssociateItem);
+            if (paramInt == paramList.size() - 1) {
+              break label229;
+            }
+            paramList1.add(paramSuggestUrlItem);
+            localStringBuilder.append(str).append("::");
+          }
+          for (;;)
+          {
+            paramInt += 1;
+            break;
+            localAssociateItem.jdField_a_of_type_Int = 3;
+            break label160;
+            label229:
+            localStringBuilder.append(str);
+          }
         }
-        bool1 = true;
-        label363:
-        paramAdapterView.f = bool1;
       }
-      if (bool2 != this.a.a.this$0.f)
-      {
-        paramAdapterView = this.a.a.this$0.jdField_a_of_type_AndroidWidgetImageView;
-        if (!this.a.a.this$0.f) {
-          break label536;
-        }
-      }
-    }
-    label530:
-    label536:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      paramAdapterView.setVisibility(paramInt);
-      if (this.a.a.this$0.j) {
-        TroopAvatarWallPreviewActivity.b(this.a.a.this$0);
-      }
-      TroopAvatarWallPreviewActivity.b(this.a.a.this$0, this.a.a.this$0.jdField_a_of_type_Int);
-      return;
-      azqs.b(this.a.a.this$0.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.this$0.jdField_a_of_type_JavaLangString, "1", "", "");
-      break;
-      bool1 = false;
-      break label363;
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramList1);
+      UniteSearchActivity.e = this.a.getCurrentAccountUin() + System.currentTimeMillis();
+      bbrf.a(null, new ReportModelDC02528().module("all_result").action("exp_thinkword_list").ver1(this.a.a()).ver2(bbrf.a(this.a.jdField_c_of_type_Int)).ver3(UniteSearchActivity.jdField_d_of_type_JavaLangString).ver6(UniteSearchActivity.jdField_c_of_type_JavaLangString).ver7("{experiment_id:" + bbrf.b + "}").session_id(UniteSearchActivity.e).ver4(localStringBuilder.toString()));
     }
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public void a(String paramString1, Integer paramInteger, String paramString2) {}
+  
+  public void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3)
+  {
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.b.equals(paramString2)) {}
+    while (!this.a.f.equals(paramString1)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramString1, paramInt, paramString3);
+    this.a.jdField_c_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public void a(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List<bbms> paramList, List<bbmx> paramList1, int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.b.equals(paramString2);
+        if (!bool) {
+          return;
+        }
+        if ((this.a.f == null) || (!this.a.f.equals(paramString1))) {
+          continue;
+        }
+        if (!paramBoolean1)
+        {
+          this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+          this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramArrayOfByte);
+          paramString2 = bbhd.a(paramList1, paramBoolean1);
+          this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramString1, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString2, paramInt);
+          continue;
+        }
+        if (paramList != null) {
+          break label127;
+        }
+      }
+      finally {}
+      a(paramString1, paramBoolean1, paramString2, -1, "tabList == null");
+      continue;
+      label127:
+      if ((paramList.size() > 0) && ((((bbms)paramList.get(0)).jdField_a_of_type_JavaLangString.equals(anni.a(2131714573))) || ((((bbms)paramList.get(0)).jdField_a_of_type_JavaUtilList != null) && (((bbms)paramList.get(0)).jdField_a_of_type_JavaUtilList.size() == 0)))) {
+        paramList.remove(0);
+      }
+      this.a.jdField_c_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramArrayOfByte);
+      paramString2 = bbhd.a(paramList1, paramBoolean1);
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramString1, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString2, paramInt);
+      UniteSearchActivity.jdField_d_of_type_Boolean = true;
+    }
+  }
+  
+  public void a(List<bbof> paramList, int paramInt)
+  {
+    if (paramInt != this.a.c()) {}
+    while (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentSearchEntryFragment == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentSearchEntryFragment.a(paramList, false);
+  }
 }
 
 

@@ -43,7 +43,7 @@ class SecClientInfoTaskEx$1
         localObject3 = new ClientInfoB.EnvParamPacket();
         ((ClientInfoB.EnvParamPacket)localObject3).u32_platform.set(1);
         ((ClientInfoB.EnvParamPacket)localObject3).str_sysversion.set(Build.VERSION.RELEASE);
-        ((ClientInfoB.EnvParamPacket)localObject3).str_qqversion.set("8.3.5.4555");
+        ((ClientInfoB.EnvParamPacket)localObject3).str_qqversion.set("8.4.1.4680");
         ((ClientInfoB.EnvParamPacket)localObject3).u32_appid.set(AppSetting.a());
         ((ClientInfoB.EnvParamPacket)localObject3).bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
         ((ClientInfoB.EnvParamPacket)localObject3).str_uin.set(str);
@@ -100,7 +100,7 @@ class SecClientInfoTaskEx$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mqp.app.sec.SecClientInfoTaskEx.1
  * JD-Core Version:    0.7.0.1
  */

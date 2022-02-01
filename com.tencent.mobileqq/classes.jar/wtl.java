@@ -1,21 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Collections;
+import java.util.List;
 
 class wtl
-  implements View.OnClickListener
+  extends SimpleObserver<List<xfb>>
 {
-  wtl(wtd paramwtd, wwk paramwwk) {}
+  wtl(wti paramwti, wtm paramwtm, wrs paramwrs) {}
   
-  public void onClick(View paramView)
+  public void a(List<xfb> paramList)
   {
-    wxj.a("home_page", "guide_shoot", 0, 0, new String[0]);
-    this.jdField_a_of_type_Wtd.a.a(false, true, 13, null);
-    this.jdField_a_of_type_Wwk.dismiss();
+    super.onNext(paramList);
+    if (this.jdField_a_of_type_Wtm != null) {
+      this.jdField_a_of_type_Wtm.a(this.jdField_a_of_type_Wrs, Collections.emptyList());
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Wtm != null) {
+      this.jdField_a_of_type_Wtm.a(this.jdField_a_of_type_Wrs, paramError);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wtl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class aedi
-  implements DialogInterface.OnClickListener
+  extends bgwp
 {
-  public aedi(TroopInfoActivity paramTroopInfoActivity, boolean paramBoolean) {}
+  public aedi(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-    }
+    EditInfoActivity.a(this.a, EditInfoActivity.b(this.a));
   }
 }
 

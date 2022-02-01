@@ -1,294 +1,333 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyEntityManagerFactory;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.ad.video.strategy.VideoAdTimeLoadManager.2;
+import com.tencent.biz.pubaccount.readinjoy.ad.video.strategy.VideoAdTimeLoadManager.3;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class orm
 {
+  private static SparseArray<Integer> jdField_a_of_type_AndroidUtilSparseArray;
+  private static CopyOnWriteArrayList<VideoInfo> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  private static ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new orn(this, Looper.getMainLooper());
+  private ArrayList<VideoInfo> jdField_a_of_type_JavaUtilArrayList;
+  private rwy jdField_a_of_type_Rwy;
+  private boolean jdField_a_of_type_Boolean;
+  private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private boolean jdField_b_of_type_Boolean;
+  
+  static
+  {
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  }
+  
+  public orm(rwy paramrwy, ArrayList<VideoInfo> paramArrayList)
+  {
+    this.jdField_a_of_type_Rwy = paramrwy;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
   public static int a()
   {
-    SharedPreferences localSharedPreferences = a(ors.a());
-    if (localSharedPreferences == null)
+    if ((jdField_b_of_type_JavaUtilArrayList != null) && (jdField_b_of_type_JavaUtilArrayList.size() > 0)) {
+      return ((Integer)jdField_b_of_type_JavaUtilArrayList.get(jdField_b_of_type_JavaUtilArrayList.size() - 1)).intValue();
+    }
+    return 0;
+  }
+  
+  private int a(int paramInt)
+  {
+    Integer localInteger = (Integer)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
     {
-      QLog.d("ReadInJoyResetUtils", 2, "[getLocalResetVersion] return 0 for sp is null");
+      jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, Integer.valueOf(0));
       return 0;
     }
-    return localSharedPreferences.getInt("readinjoy_local_reset_config_version", 0);
+    return localInteger.intValue();
   }
   
-  private static SharedPreferences a(AppRuntime paramAppRuntime)
+  public static ArrayList<VideoInfo> a(ArrayList<VideoInfo> paramArrayList)
   {
-    if (paramAppRuntime == null)
+    ArrayList localArrayList = new ArrayList();
+    if (paramArrayList != null)
     {
-      QLog.e("ReadInJoyResetUtils", 1, "[getSharedPreferences] return null for runtime is null");
-      return null;
-    }
-    paramAppRuntime = "readinjoy_sp_reset_" + paramAppRuntime.getAccount();
-    return BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0);
-  }
-  
-  public static void a()
-  {
-    int i = bdne.N(BaseApplicationImpl.getApplication(), ors.a());
-    int j = a();
-    QLog.d("ReadInJoyResetUtils", 2, "[maybeClearAllConfigs] remoteVersion=" + i + ", localVersion=" + j);
-    if (i != j) {
-      try
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
       {
-        b();
-        oss.a();
-        d();
-        e();
-        f();
-        a(i);
-        QLog.i("ReadInJoyResetUtils", 1, "[maybeClearAllConfigs] done resetting, update local version to " + i);
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("ReadInJoyResetUtils", 1, "[maybeClearAllConfigs] ", localException);
-        return;
+        VideoInfo localVideoInfo = (VideoInfo)paramArrayList.next();
+        if (localVideoInfo.c) {
+          localArrayList.add(localVideoInfo);
+        }
       }
     }
-    QLog.d("ReadInJoyResetUtils", 2, "[maybeClearAllConfigs] won't reset");
+    if (localArrayList.size() > 0) {
+      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll(localArrayList);
+    }
+    return localArrayList;
   }
   
-  private static void a(int paramInt)
+  public static void a(int paramInt)
   {
-    SharedPreferences localSharedPreferences = a(ors.a());
-    if (localSharedPreferences == null)
-    {
-      QLog.d("ReadInJoyResetUtils", 2, "[putLocalResetVersion] sp == null");
+    if (paramInt != 88888888) {
       return;
     }
-    localSharedPreferences.edit().putInt("readinjoy_local_reset_config_version", paramInt).apply();
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
   }
   
-  private static void a(SharedPreferences paramSharedPreferences)
+  public static void a(int paramInt, ArrayList<AdvertisementInfo> paramArrayList)
   {
-    if (paramSharedPreferences != null)
-    {
-      List localList = qoa.a(paramSharedPreferences.getAll().keySet(), new orn());
-      paramSharedPreferences = paramSharedPreferences.edit();
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext()) {
-        paramSharedPreferences.remove((String)localIterator.next());
-      }
-      paramSharedPreferences.commit();
-      QLog.d("ReadInJoyResetUtils", 2, "[removeReadInJoyKeysInSharedPreferences] removed " + localList);
+    if ((paramInt != 88888888) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return;
     }
-  }
-  
-  public static void b()
-  {
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_COMMON_CONFIG - 92 to 0");
-    bdne.p(BaseApplicationImpl.getApplication(), 0, ors.a());
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_MERGE_CONFIG_CMD - 79 to 0");
-    bdne.o(BaseApplicationImpl.getApplication(), 0, ors.a());
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_FOLDER_CONFIG_CMD - 72 to 0");
-    bdne.s(BaseApplicationImpl.getApplication(), ors.a(), 0);
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_FOLDER_SETTING_CMD - 72 to 0");
-    bdne.o(BaseApplicationImpl.getApplication(), 0);
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_SEARCH_JUMP_URL_CONFIG - 292 to 0");
-    bdne.a(BaseApplicationImpl.getApplication(), "readinjoy_search_jump_url_version", ors.a(), 0);
-  }
-  
-  public static void c()
-  {
-    QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in mobileQQ SP");
-    a(BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4));
-    QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in mobileQQ SP success");
-    QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in default SP");
-    a(PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()));
-    QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in default SP success");
-  }
-  
-  public static void d()
-  {
-    QLog.d("ReadInJoyResetUtils", 2, "[clearReadInJoySharedPreferences] ");
-    Object localObject = bkbq.a(ors.a(), true, true);
-    if (localObject != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).clear();
-      if (((SharedPreferences.Editor)localObject).commit())
+      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramArrayList.next();
+      VideoInfo localVideoInfo = orj.a(localAdvertisementInfo, false);
+      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localVideoInfo);
+      localStringBuilder.append(localAdvertisementInfo.mTitle + "---");
+    }
+    oqh.a("VideoAdTimeLoadManager", "onAsyncDataReady :" + localStringBuilder.toString());
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    if ((!paramBoolean) && (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1))
+    {
+      localStringBuilder = new StringBuilder().append("repeat startPlay, so return isMainThread : ");
+      if (Looper.myLooper() == Looper.getMainLooper()) {}
+      for (paramBoolean = bool1;; paramBoolean = false)
       {
-        QLog.d("ReadInJoyResetUtils", 2, "[clearReadInJoySharedPreferences] clear account related sp success");
-        localObject = bkbq.a(ors.a(), false, true);
-        if (localObject == null) {
-          break label138;
-        }
-        localObject = ((SharedPreferences)localObject).edit();
-        ((SharedPreferences.Editor)localObject).clear();
-        if (!((SharedPreferences.Editor)localObject).commit()) {
-          break label126;
-        }
-        QLog.d("ReadInJoyResetUtils", 2, "[clearReadInJoySharedPreferences] clear account unrelated sp success");
+        oqh.a("VideoAdTimeLoadManager", paramBoolean);
+        return;
       }
     }
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder().append("startTiming :").append(this.jdField_a_of_type_Long).append(" isMainThread : ");
+    if (Looper.myLooper() == Looper.getMainLooper()) {}
+    for (paramBoolean = bool2;; paramBoolean = false)
     {
-      c();
+      oqh.a("VideoAdTimeLoadManager", paramBoolean);
+      this.jdField_a_of_type_Long += 1L;
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 1000L);
+      int i = orl.b;
+      if (this.jdField_a_of_type_Boolean) {
+        i = orl.c;
+      }
+      if (this.jdField_a_of_type_Long >= i - orl.d) {
+        i();
+      }
+      if (this.jdField_a_of_type_Long < i) {
+        break;
+      }
       g();
       return;
-      QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] fail when commit account related sp");
-      break;
-      QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] sp is null");
-      break;
-      label126:
-      QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] fail when commit account unrelated sp");
-      continue;
-      label138:
-      QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] sp is null");
     }
   }
   
-  public static void e()
+  private boolean a(int paramInt)
   {
-    QLog.d("ReadInJoyResetUtils", 2, "clearReadInJoyDatabase");
-    try
+    if ((this.jdField_a_of_type_Rwy == null) || (this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= paramInt))
     {
-      awgg localawgg = owy.a().a();
-      if ((localawgg instanceof ReadInJoyEntityManagerFactory)) {
-        ((ReadInJoyEntityManagerFactory)localawgg).a();
+      oqh.a("VideoAdTimeLoadManager", "Invalid parameter");
+      return false;
+    }
+    if (((VideoInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).c)
+    {
+      oqh.a("VideoAdTimeLoadManager", paramInt + " has adVideo");
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean b(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Rwy == null) || (this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= paramInt)) {
+      oqh.a("VideoAdTimeLoadManager", "Invalid parameter");
+    }
+    do
+    {
+      return false;
+      int i = a();
+      if ((i > 0) && (paramInt - i < orl.e + 1))
+      {
+        oqh.a("VideoAdTimeLoadManager", "not meet adProtectGap");
+        return false;
       }
+      if (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
+      {
+        oqh.a("VideoAdTimeLoadManager", "article size = " + this.jdField_a_of_type_JavaUtilArrayList.size() + " but  pos = " + paramInt);
+        return false;
+      }
+    } while (a(paramInt));
+    return true;
+  }
+  
+  public static void h()
+  {
+    jdField_b_of_type_JavaUtilArrayList.clear();
+    jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    jdField_a_of_type_AndroidUtilSparseArray.clear();
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+  }
+  
+  private void i()
+  {
+    if (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0) {
+      oqh.a("VideoAdTimeLoadManager", "adVideoCache size :" + jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+    }
+    while (a(this.jdField_a_of_type_Int + 1)) {
       return;
     }
-    catch (Exception localException)
+    int i = a();
+    int j = a(i);
+    if (j >= 3)
     {
-      QLog.e("ReadInJoyResetUtils", 2, "clearReadInJoyDatabase: ", localException);
-    }
-  }
-  
-  public static void f()
-  {
-    QLog.d("ReadInJoyResetUtils", 2, "clearReadInJoyLocalFiles");
-    h();
-    i();
-    j();
-  }
-  
-  private static void g()
-  {
-    QLog.d("ReadInJoyResetUtils", 2, "[clearSettings] QQSETTING_KANDIAN_DOWNLOAD_PIC_IN_WIFI_ONLY set to false");
-    SettingCloneUtil.writeValue(BaseApplicationImpl.getApplication(), ors.a(), null, "qqsetting_kandian_download_pic_flag", false);
-    QLog.d("ReadInJoyResetUtils", 2, "[clearSettings] done");
-  }
-  
-  private static void h()
-  {
-    QLog.d("ReadInJoyResetUtils", 2, "clearSkinRes");
-    Object localObject = new File(bfiu.e());
-    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
-    {
-      localObject = ((File)localObject).listFiles();
-      if ((localObject != null) && (localObject.length > 0))
-      {
-        int j = localObject.length;
-        int i = 0;
-        for (;;)
-        {
-          if (i < j)
-          {
-            String str = localObject[i];
-            try
-            {
-              if (str.getName().toLowerCase().contains("readinjoy"))
-              {
-                str = str.getAbsolutePath();
-                bdhb.a(str, false);
-                QLog.d("ReadInJoyResetUtils", 2, "[clearSkinRes] deleted " + str);
-              }
-              i += 1;
-            }
-            catch (Exception localException2)
-            {
-              for (;;)
-              {
-                QLog.e("ReadInJoyResetUtils", 1, "[clearSkinRes] ", localException2);
-              }
-            }
-          }
-        }
-      }
-    }
-    try
-    {
-      localObject = (qit)ors.a().getManager(271);
-      if (localObject != null)
-      {
-        ((qit)localObject).a();
-        QLog.d("ReadInJoyResetUtils", 2, "[clearSkinRes] successfully delete guide data in db");
-        return;
-      }
-      QLog.e("ReadInJoyResetUtils", 1, "[clearSkinRes] operation manager is null");
+      oqh.a("VideoAdTimeLoadManager", "has preLoad 3 times");
       return;
     }
-    catch (Exception localException1)
+    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
     {
-      QLog.e("ReadInJoyResetUtils", 1, "[clearSkinRes] ", localException1);
+      oqh.a("VideoAdTimeLoadManager", "preLoadAd :" + this.jdField_a_of_type_Long);
+      nwv localnwv = new nwv();
+      localnwv.h = 1;
+      localnwv.i = 2;
+      localnwv.j = i;
+      ThreadManager.executeOnSubThread(new VideoAdTimeLoadManager.2(this, localnwv));
+      jdField_a_of_type_AndroidUtilSparseArray.put(i, Integer.valueOf(j + 1));
+      return;
+    }
+    oqh.a("VideoAdTimeLoadManager", "preLoading : so return");
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public VideoInfo a()
+  {
+    if ((jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0)) {
+      return (VideoInfo)jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(0);
+    }
+    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+      i();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    a(false);
+  }
+  
+  public void b()
+  {
+    if (orl.b()) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+    StringBuilder localStringBuilder = new StringBuilder().append("pauseTiming :").append(this.jdField_a_of_type_Long).append(" isMainThread : ");
+    if (Looper.myLooper() == Looper.getMainLooper()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      oqh.a("VideoAdTimeLoadManager", bool);
+      return;
     }
   }
   
-  private static void i()
+  public void b(int paramInt)
   {
-    QLog.d("ReadInJoyResetUtils", 2, "clearProteusStyles");
-    sgi.c();
+    if (paramInt > this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_Int = paramInt;
+    }
+    oqh.a("VideoAdTimeLoadManager", "lastPlayPosition = " + this.jdField_a_of_type_Int);
   }
   
-  private static void j()
+  public void c()
   {
-    QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint");
-    try
-    {
-      Object localObject = ((QQAppInterface)ors.a()).a();
-      ((QQMessageFacade)localObject).a(alof.aA, 7220);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_MERGE_UIN cleared");
-      ((QQMessageFacade)localObject).a(alof.aR, 1008);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_SUBSCRIBE_UIN cleared");
-      ((QQMessageFacade)localObject).a(alof.az, 1008);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_PUBLIC_ACCOUNT cleared");
-      ((QQMessageFacade)localObject).a(alof.az, 0);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_FRIEND cleared");
-      ((QQMessageFacade)localObject).a(alof.ay, 1008);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: OLD_KANDIAN_UIN UIN_TYPE_PUBLIC_ACCOUNT cleared");
-      ((QQMessageFacade)localObject).a(alof.ay, 0);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_FRIEND cleared");
-      ((QQMessageFacade)localObject).a(alof.aQ, 1008);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: WEISHI_UIN cleared");
-      ((QQMessageFacade)localObject).a(alof.aS, 1008);
-      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_DAILY cleared");
-      localObject = bkbq.a((QQAppInterface)ors.a(), 1);
-      if (localObject != null)
-      {
-        if (((SharedPreferences)localObject).edit().clear().commit())
-        {
-          QLog.d("ReadInJoyResetUtils", 2, "[clearRedPoint] clear red point in sp xml success");
-          return;
-        }
-        QLog.d("ReadInJoyResetUtils", 2, "[clearRedPoint] clear red point in sp xml failed");
-        return;
-      }
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2) {
+      a(true);
     }
-    catch (Exception localException)
+  }
+  
+  public void c(int paramInt)
+  {
+    jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt));
+  }
+  
+  public void d()
+  {
+    b();
+  }
+  
+  public void e()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    f();
+  }
+  
+  public void f()
+  {
+    if (orl.b()) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+    oqh.a("VideoAdTimeLoadManager", "restoreTiming :" + this.jdField_a_of_type_Long);
+  }
+  
+  public void g()
+  {
+    oqh.a("VideoAdTimeLoadManager", "onInsertAd :");
+    int i = this.jdField_a_of_type_Int + 1;
+    if (!b(i)) {
+      return;
+    }
+    VideoInfo localVideoInfo = a();
+    if (localVideoInfo == null)
     {
-      QLog.e("ReadInJoyResetUtils", 2, "clearRedPoint: ", localException);
+      oqh.a("VideoAdTimeLoadManager", "empty cache");
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoAdTimeLoadManager.3(this, i, localVideoInfo));
+    localVideoInfo.a.jdField_a_of_type_Int = i;
+    int j = a();
+    if (j == 0) {}
+    for (localVideoInfo.a.b = 0;; localVideoInfo.a.b = (i - j))
+    {
+      localVideoInfo.a.c = orl.c;
+      c(i);
+      oqh.a("VideoAdTimeLoadManager", "insert success: pos = " + i);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     orm
  * JD-Core Version:    0.7.0.1
  */

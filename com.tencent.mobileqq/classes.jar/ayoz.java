@@ -1,20 +1,6 @@
-import android.text.TextUtils;
-
-public class ayoz
+final class ayoz
 {
-  public String a;
-  public String b;
-  
-  public ayoz(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.a);
-  }
+  private static final ayox a = new ayox(null);
 }
 
 

@@ -108,10 +108,10 @@ public final class ThumbnailUtil$1
     //   168: iload 5
     //   170: istore 4
     //   172: aload_0
-    //   173: getfield 66	dov/com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_Bnos	Lbnos;
+    //   173: getfield 66	dov/com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_Bqfm	Lbqfm;
     //   176: ifnull +18 -> 194
     //   179: aload_0
-    //   180: getfield 66	dov/com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_Bnos	Lbnos;
+    //   180: getfield 66	dov/com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_Bqfm	Lbqfm;
     //   183: iload 4
     //   185: aload_0
     //   186: getfield 44	dov/com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -231,7 +231,7 @@ public final class ThumbnailUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.mediacodec.utils.ThumbnailUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-
-public class aoty
-  extends aokh<aotx>
+public abstract interface aoty
 {
-  public int a()
-  {
-    return 449;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  @NonNull
-  public aotx a(int paramInt)
-  {
-    QLog.i("QFileIPv6ConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
-    return new aotx();
-  }
+  public abstract void a(aoug paramaoug);
   
-  @Nullable
-  public aotx a(aoko[] paramArrayOfaoko)
-  {
-    QLog.i("QFileIPv6ConfigProcessor", 1, "onParsed");
-    if (paramArrayOfaoko != null) {
-      try
-      {
-        if (paramArrayOfaoko.length > 0)
-        {
-          paramArrayOfaoko = (aotx)aolc.a(paramArrayOfaoko[0].a, aotx.class);
-          return paramArrayOfaoko;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfaoko) {}
-    }
-    return null;
-  }
+  public abstract int b();
   
-  public Class<aotx> a()
-  {
-    return aotx.class;
-  }
+  public abstract int c();
   
-  public void a(int paramInt)
-  {
-    QLog.i("QFileIPv6ConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
+  public abstract String c();
   
-  public void a(aotx paramaotx)
-  {
-    if (paramaotx == null) {
-      QLog.i("QFileIPv6ConfigProcessor", 1, "onUpdate: newConf is null.");
-    }
-    label141:
-    for (;;)
-    {
-      return;
-      QLog.i("QFileIPv6ConfigProcessor", 1, "onUpdate");
-      Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 instanceof QQAppInterface)) {}
-      for (localObject1 = (QQAppInterface)localObject1;; localObject1 = null)
-      {
-        if (localObject1 == null) {
-          break label141;
-        }
-        Object localObject2 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject1).c(), 0).edit();
-        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_all_switch", paramaotx.a);
-        ((SharedPreferences.Editor)localObject2).apply();
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putBoolean("ipv6_all_switch", paramaotx.a);
-        paramaotx = (aqud)((QQAppInterface)localObject1).getManager(317);
-        if (paramaotx == null) {
-          break;
-        }
-        paramaotx.b((Bundle)localObject2);
-        return;
-      }
-    }
-  }
+  public abstract void c();
   
-  public int b()
-  {
-    return 0;
-  }
+  public abstract void d();
   
-  public boolean b()
-  {
-    return false;
-  }
+  public abstract boolean d();
   
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract void e();
+  
+  public abstract boolean e();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoty
  * JD-Core Version:    0.7.0.1
  */

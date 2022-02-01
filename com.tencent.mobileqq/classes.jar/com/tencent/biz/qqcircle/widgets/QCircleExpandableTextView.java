@@ -8,19 +8,19 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
 import com.tencent.mobileqq.R.styleable;
-import uct;
-import ucw;
+import vuw;
+import vvz;
+import vwc;
 
 public class QCircleExpandableTextView
   extends LinearLayout
 {
   int jdField_a_of_type_Int = 0;
   public TextView a;
-  public AsyncRichTextView a;
+  public QCircleAsyncTextView a;
   public String a;
-  public ucw a;
+  public vwc a;
   boolean jdField_a_of_type_Boolean = false;
   public int b;
   public String b;
@@ -29,6 +29,7 @@ public class QCircleExpandableTextView
   public boolean c;
   public int d = 0;
   public int e = 0;
+  public int f = -16777216;
   
   public QCircleExpandableTextView(Context paramContext)
   {
@@ -50,9 +51,9 @@ public class QCircleExpandableTextView
     a(paramContext, paramAttributeSet);
   }
   
-  private int a(TextView paramTextView)
+  private int a(TextView paramTextView, int paramInt)
   {
-    return paramTextView.getLayout().getLineTop(paramTextView.getLineCount()) + paramTextView.getCompoundPaddingBottom() + paramTextView.getCompoundPaddingTop();
+    return paramTextView.getLayout().getLineTop(paramInt) + paramTextView.getCompoundPaddingBottom() + paramTextView.getCompoundPaddingTop();
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
@@ -68,17 +69,12 @@ public class QCircleExpandableTextView
   
   public TextView a()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView;
   }
   
   public boolean a()
   {
     return this.jdField_b_of_type_Boolean;
-  }
-  
-  public TextView b()
-  {
-    return this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView;
   }
   
   protected void onFinishInflate()
@@ -87,10 +83,10 @@ public class QCircleExpandableTextView
     if (getChildCount() < 2) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)getChildAt(0));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView = ((QCircleAsyncTextView)getChildAt(0));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getChildAt(1));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new uct(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new vvz(this));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -106,36 +102,47 @@ public class QCircleExpandableTextView
     }
     do
     {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setMaxLines(2147483647);
-        super.onMeasure(paramInt1, paramInt2);
-      } while (this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.getLineCount() <= this.jdField_a_of_type_Int);
-      this.jdField_c_of_type_Int = a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView);
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setMaxLines(this.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      return;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setMaxLines(2147483647);
       super.onMeasure(paramInt1, paramInt2);
-    } while (!this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.post(new QCircleExpandableTextView.2(this));
+    } while (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.getLineCount() <= this.jdField_a_of_type_Int);
+    this.jdField_c_of_type_Int = a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.getLineCount());
+    if (this.jdField_b_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setMaxLines(this.jdField_a_of_type_Int);
+    }
+    if ((this.jdField_a_of_type_Vwc != null) && (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 8)) {
+      this.jdField_a_of_type_Vwc.a();
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    super.onMeasure(paramInt1, paramInt2);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.post(new QCircleExpandableTextView.2(this));
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.post(new QCircleExpandableTextView.3(this));
   }
   
-  public void setListener(ucw paramucw)
+  public void setClickAreaTextColor(int paramInt)
   {
-    this.jdField_a_of_type_Ucw = paramucw;
+    this.f = paramInt;
   }
   
-  public void setText(String paramString)
+  public void setListener(vwc paramvwc)
+  {
+    this.jdField_a_of_type_Vwc = paramvwc;
+  }
+  
+  public void setText(String paramString, vuw paramvuw)
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setText(paramString);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setClickAreaTextColor(this.f);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setRichText(paramString, paramvuw);
   }
   
-  public void setText(String paramString, boolean paramBoolean)
+  public void setText(String paramString, boolean paramBoolean, vuw paramvuw)
   {
     boolean bool;
     if (!paramBoolean)
@@ -143,29 +150,29 @@ public class QCircleExpandableTextView
       bool = true;
       this.jdField_b_of_type_Boolean = bool;
       if (!this.jdField_b_of_type_Boolean) {
-        break label70;
+        break label74;
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
     }
     for (;;)
     {
       clearAnimation();
-      setText(paramString);
+      setText(paramString, paramvuw);
       getLayoutParams().height = -2;
-      if (this.jdField_a_of_type_Ucw != null) {
-        this.jdField_a_of_type_Ucw.a(paramBoolean);
+      if (this.jdField_a_of_type_Vwc != null) {
+        this.jdField_a_of_type_Vwc.b(paramBoolean);
       }
       return;
       bool = false;
       break;
-      label70:
+      label74:
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class ariv
-  extends ariu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ariv(arhz paramarhz)
-  {
-    super(paramarhz);
-  }
+  public ariv(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
   
-  public boolean a(String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    FileManagerEntity localFileManagerEntity = this.a.a();
-    if (localFileManagerEntity == null) {
-      return false;
+    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(aohq.a, 0).edit().putBoolean(aohq.b, paramBoolean).commit();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getApplicationContext(), anni.a(2131701661), 1).a();
+    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).b(false);
     }
-    return paramString.equals(String.valueOf(localFileManagerEntity.nSessionId));
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

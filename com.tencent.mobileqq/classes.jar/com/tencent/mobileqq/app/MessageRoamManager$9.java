@@ -1,52 +1,52 @@
 package com.tencent.mobileqq.app;
 
-import alwz;
-import alxa;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import beae;
-import beag;
-import beaj;
+import anqf;
+import anqg;
+import bhhf;
+import bhhh;
+import bhhk;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class MessageRoamManager$9
   implements Runnable
 {
-  public MessageRoamManager$9(alxa paramalxa) {}
+  public MessageRoamManager$9(anqg paramanqg) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg start...");
     }
-    beaj localbeaj = ((beag)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47)).a(1);
-    if ((localbeaj != null) && (localbeaj.a(alwz.a) == null))
+    bhhk localbhhk = ((bhhh)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47)).a(1);
+    if ((localbhhk != null) && (localbhhk.a(anqf.a) == null))
     {
-      Object localObject = new File(alwz.b);
-      beae localbeae = new beae(alwz.a, (File)localObject);
+      Object localObject = new File(anqf.b);
+      bhhf localbhhf = new bhhf(anqf.a, (File)localObject);
       if (((File)localObject).exists())
       {
         localObject = Long.valueOf(((File)localObject).lastModified());
-        localbeae.i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("cloudSearchCfgLastModify", 0L);
-        if (((Long)localObject).longValue() != localbeae.i)
+        localbhhf.i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("cloudSearchCfgLastModify", 0L);
+        if (((Long)localObject).longValue() != localbhhf.i)
         {
-          localbeae.m = true;
+          localbhhf.m = true;
           if (QLog.isColorLevel()) {
-            QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg file modified local time: " + localObject + ", sp time: " + localbeae.i);
+            QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg file modified local time: " + localObject + ", sp time: " + localbhhf.i);
           }
         }
       }
-      localbeae.j = true;
-      localbeae.p = false;
+      localbhhf.j = true;
+      localbhhf.p = false;
       localObject = new Bundle();
-      localbeaj.a(localbeae, this.this$0.jdField_a_of_type_Bead, (Bundle)localObject);
+      localbhhk.a(localbhhf, this.this$0.jdField_a_of_type_Bhhe, (Bundle)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.9
  * JD-Core Version:    0.7.0.1
  */

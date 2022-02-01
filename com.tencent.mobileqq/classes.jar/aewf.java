@@ -1,14 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aewf
-  implements View.OnClickListener
+public class aewf
+  implements aqgg
 {
-  aewf(aewe paramaewe) {}
+  public aewf(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.b();
+    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeClose");
+  }
+  
+  public void b()
+  {
+    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeNotClose");
   }
 }
 

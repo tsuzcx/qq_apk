@@ -1,23 +1,12 @@
-import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-class wds
-  implements wdo
+public abstract interface wds
 {
-  wds(wdr paramwdr) {}
-  
-  public void a(@NonNull wdm paramwdm)
-  {
-    paramwdm = paramwdm.a();
-    if (paramwdm != null) {
-      wdr.a(this.a, paramwdm);
-    }
-  }
-  
-  public void b(@NonNull wdm paramwdm) {}
+  public abstract void a(ArrayList<wcm> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wds
  * JD-Core Version:    0.7.0.1
  */

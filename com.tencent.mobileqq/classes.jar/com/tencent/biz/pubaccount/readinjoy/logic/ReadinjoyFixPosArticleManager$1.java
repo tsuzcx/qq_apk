@@ -1,18 +1,34 @@
 package com.tencent.biz.pubaccount.readinjoy.logic;
 
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import peo;
-import rqj;
+import pvq;
+import snh;
 
 public class ReadinjoyFixPosArticleManager$1
   implements Runnable
 {
-  public ReadinjoyFixPosArticleManager$1(peo parampeo, rqj paramrqj, List paramList) {}
+  public ReadinjoyFixPosArticleManager$1(pvq parampvq, snh paramsnh, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Rqj.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Rqj.notifyDataSetChanged();
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = this.jdField_a_of_type_Snh.a().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)((Iterator)localObject).next();
+      if (!pvq.a(localBaseArticleInfo.mRecommendSeq)) {
+        localArrayList.add(localBaseArticleInfo);
+      }
+    }
+    localObject = this.this$0.a(this.jdField_a_of_type_Int, localArrayList, localArrayList, 3);
+    if (localObject != localArrayList)
+    {
+      this.jdField_a_of_type_Snh.a((List)localObject);
+      this.jdField_a_of_type_Snh.notifyDataSetChanged();
+    }
   }
 }
 

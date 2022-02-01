@@ -1,8 +1,23 @@
-import android.view.View;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ayfd
+public class ayfd
+  extends BroadcastReceiver
 {
-  public abstract void a(View paramView, int paramInt, ayfc paramayfc);
+  public ayfd(OCRPerformFragment paramOCRPerformFragment) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      QLog.d("OCRPerformFragment", 4, "receive videochat");
+      this.a.getActivity().finish();
+    }
+  }
 }
 
 

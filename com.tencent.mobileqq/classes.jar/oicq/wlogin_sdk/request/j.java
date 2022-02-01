@@ -43,7 +43,7 @@ public class j
       Object localObject = a(i);
       try
       {
-        localObject = new URL("http://" + (String)localObject + "/cgi-bin/wlogin_proxy_log");
+        localObject = new URL("https://" + (String)localObject + "/cgi-bin/wlogin_proxy_log");
         util.LOGI("url=" + localObject, "" + this.a.f);
         localObject = (HttpURLConnection)((URL)localObject).openConnection();
         ((HttpURLConnection)localObject).setRequestMethod("POST");

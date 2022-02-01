@@ -1,6 +1,5 @@
 package com.tencent.aekit.api.standard.filter;
 
-import com.tencent.aekit.openrender.internal.AEChainI;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
@@ -8,7 +7,7 @@ import com.tencent.ttpic.openapi.filter.FaceFeatureParam;
 import com.tencent.ttpic.openapi.filter.TTBeautyV5BeautyFaceList;
 
 public class AEFaceBeauty
-  extends AEChainI
+  extends AEFaceBeautyBase
 {
   private static final String TAG = "AEFaceBeautyV5";
   private int beautyLevel;
@@ -60,6 +59,11 @@ public class AEFaceBeauty
       this.mBeautyFaceList.clear();
     }
     this.mIsApplied = false;
+  }
+  
+  public String getVersion()
+  {
+    return "V5";
   }
   
   public boolean isValid()
@@ -234,7 +238,7 @@ public class AEFaceBeauty
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AEFaceBeauty
  * JD-Core Version:    0.7.0.1
  */

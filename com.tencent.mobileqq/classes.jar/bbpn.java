@@ -1,13 +1,13 @@
-import java.util.List;
+import android.view.View;
 
 public class bbpn
+  implements bbps<bboh, bbwn>
 {
-  public int a;
-  public List<Integer> a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public void a(bboh parambboh, bbwn parambbwn)
+  {
+    parambbwn.a(parambboh);
+    parambbwn.a().setOnClickListener(new bbpo(this, parambboh));
+  }
 }
 
 

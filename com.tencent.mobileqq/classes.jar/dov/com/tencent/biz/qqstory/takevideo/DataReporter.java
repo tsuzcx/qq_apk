@@ -40,6 +40,8 @@ public class DataReporter
     case 7400: 
     case 10002: 
     case 10008: 
+    case 10009: 
+    case 10010: 
       return DataReporter.Destination.C2C;
     case 1: 
       return DataReporter.Destination.GROUP;
@@ -49,7 +51,7 @@ public class DataReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.DataReporter
  * JD-Core Version:    0.7.0.1
  */

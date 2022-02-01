@@ -1,32 +1,54 @@
-import android.os.SystemClock;
-import android.view.View;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.activity.aio.AudioSenorManager;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class afwd
-  implements bhuk
+public class afwd
+  implements SensorEventListener
 {
-  afwd(afwa paramafwa, MessageForMixedMsg paramMessageForMixedMsg, bhuf parambhuf) {}
+  public afwd(AudioSenorManager paramAudioSenorManager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    switch (paramInt)
-    {
-    }
+    int i = 1;
+    if (afur.b()) {}
+    label141:
+    label144:
     for (;;)
     {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      long l;
-      do
+      return;
+      boolean bool;
+      if (paramSensorEvent.values[0] < AudioSenorManager.c(this.a))
       {
+        bool = true;
+        label28:
+        QLog.d("AudioPlayer_SenorManager", 2, "ProximityEventListener$onSensorChanged close =" + bool + " | mIsMoving =" + this.a.a);
+        if ((!AudioHelper.c()) && (bool) && (!this.a.a)) {
+          continue;
+        }
+        if (!bool) {
+          break label141;
+        }
+      }
+      for (;;)
+      {
+        if (i == AudioSenorManager.a(this.a)) {
+          break label144;
+        }
+        AudioSenorManager.a(this.a, i);
+        if (AudioSenorManager.a(this.a) == null) {
+          break;
+        }
+        AudioSenorManager.a(this.a).a(i);
         return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_Afwa.c < 500L);
-      this.jdField_a_of_type_Afwa.c = l;
-      paramView = (aufc)this.jdField_a_of_type_Afwa.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174);
-      this.jdField_a_of_type_Afwa.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
-      paramView.a(this.jdField_a_of_type_Afwa.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
+        bool = false;
+        break label28;
+        i = 0;
+      }
     }
   }
 }

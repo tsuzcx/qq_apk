@@ -1,23 +1,49 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 
-class ubr
-  implements zac<FeedCloudRead.StGetMainPageRsp>
+public class ubr
 {
-  ubr(ubq paramubq, QCircleGetMainPageRequest paramQCircleGetMainPageRequest, boolean paramBoolean) {}
+  private anke jdField_a_of_type_Anke;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public ubr(AppInterface paramAppInterface)
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    QLog.d("QCirclePersonalDetailViewModel", 1, "requestData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
-    this.jdField_a_of_type_Ubq.a(paramBoolean, paramLong, paramString, paramStGetMainPageRsp, Boolean.valueOf(this.jdField_a_of_type_Boolean));
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Anke = new ubs(this);
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Anke);
+    }
+  }
+  
+  public long a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0L;
+    }
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    {
+      anjx localanjx = (anjx)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(8);
+      if (localanjx != null)
+      {
+        this.jdField_a_of_type_JavaLangString = paramString;
+        return localanjx.a(paramString, 0).longValue();
+      }
+    }
+    return 0L;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Anke);
+    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ubr
  * JD-Core Version:    0.7.0.1
  */

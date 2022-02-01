@@ -2,7 +2,7 @@ package com.tencent.av.ui.guide;
 
 import android.content.Context;
 import android.os.Handler;
-import bfvz;
+import bjda;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 
@@ -20,7 +20,7 @@ class GuideHelper$DelayTryShowRunnable
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_MqqUtilWeakReference = null;
     this.b = null;
-    bfvz.a().removeCallbacks(this);
+    bjda.a().removeCallbacks(this);
   }
   
   public final boolean a(long paramLong1, Context paramContext, GuideHelper paramGuideHelper, long paramLong2)
@@ -28,8 +28,8 @@ class GuideHelper$DelayTryShowRunnable
     this.jdField_a_of_type_Long = paramLong1;
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramContext);
     this.b = new WeakReference(paramGuideHelper);
-    bfvz.a().removeCallbacks(this);
-    return bfvz.a().postDelayed(this, paramLong2);
+    bjda.a().removeCallbacks(this);
+    return bjda.a().postDelayed(this, paramLong2);
   }
   
   public void run()
@@ -54,7 +54,7 @@ class GuideHelper$DelayTryShowRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.guide.GuideHelper.DelayTryShowRunnable
  * JD-Core Version:    0.7.0.1
  */

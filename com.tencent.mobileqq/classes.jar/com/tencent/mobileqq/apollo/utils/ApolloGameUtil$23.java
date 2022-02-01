@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aknx;
-import aliw;
+import amhd;
+import ancd;
 import android.util.SparseArray;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,13 +15,13 @@ final class ApolloGameUtil$23
   
   public void run()
   {
-    Object localObject = (aliw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
-    ((aliw)localObject).a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId);
-    aknx localaknx = (aknx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
-    if ((((aliw)localObject).a != null) && (((aliw)localObject).a.containsKey(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId))))
+    Object localObject = (ancd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+    ((ancd)localObject).a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId);
+    amhd localamhd = (amhd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+    if ((((ancd)localObject).a != null) && (((ancd)localObject).a.containsKey(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId))))
     {
-      localObject = (String)((aliw)localObject).a.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId));
-      localaknx.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId, (String)localObject);
+      localObject = (String)((ancd)localObject).a.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId));
+      localamhd.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId, (String)localObject);
     }
     if (ApolloGameUtil.a() != null) {
       ApolloGameUtil.a().put(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.viewMode));
@@ -30,7 +30,7 @@ final class ApolloGameUtil$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.23
  * JD-Core Version:    0.7.0.1
  */

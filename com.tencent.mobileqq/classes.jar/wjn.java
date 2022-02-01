@@ -1,55 +1,40 @@
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class wjn
-  implements bhuk
+  extends SimpleObserver<ErrorMessage>
 {
-  private final int jdField_a_of_type_Int;
-  private final bhuf jdField_a_of_type_Bhuf;
-  private final CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
-  private WeakReference<wjm> jdField_a_of_type_JavaLangRefWeakReference;
+  private wjn(BasePublishTask paramBasePublishTask) {}
   
-  public wjn(bhuf parambhuf, CommentEntry paramCommentEntry, int paramInt, wjm paramwjm)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Bhuf = parambhuf;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramwjm);
+    if (paramErrorMessage.isSuccess())
+    {
+      this.a.a(new ErrorMessage());
+      return;
+    }
+    this.a.a(paramErrorMessage);
   }
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCancel() {}
+  
+  public void onComplete() {}
+  
+  public void onError(@NonNull Error paramError)
   {
-    paramView = this.jdField_a_of_type_Bhuf.a(paramInt);
-    wxe.a("Q.qqstory.detail.DetailGeneralCommentEventProxy", "on action sheet item click. item is %s.", paramView);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)
+    if ((paramError instanceof ErrorMessage))
     {
-      wxe.e("Q.qqstory.detail.DetailGeneralCommentEventProxy", "callback is null when action sheet item click.");
+      this.a.a((ErrorMessage)paramError);
       return;
     }
-    wjm localwjm = (wjm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (wjl.a.equals(paramView)) {
-      localwjm.a(this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      if (wjl.b.equals(paramView)) {
-        localwjm.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
-      } else if (wjl.c.equals(paramView)) {
-        localwjm.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      } else if (wjl.d.equals(paramView)) {
-        localwjm.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      } else if (wjl.e.equals(paramView)) {
-        localwjm.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
-    }
+    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wjn
  * JD-Core Version:    0.7.0.1
  */

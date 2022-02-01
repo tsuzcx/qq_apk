@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ClickPreventableTextView
   extends TextView
@@ -47,10 +48,14 @@ public class ClickPreventableTextView
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_Boolean = false;
     }
-    while (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+        this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+      }
     }
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -72,7 +77,7 @@ public class ClickPreventableTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ClickPreventableTextView
  * JD-Core Version:    0.7.0.1
  */

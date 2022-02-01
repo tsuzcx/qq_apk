@@ -1,0 +1,229 @@
+package com.tencent.hippy.qq.update;
+
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.hippy.qq.app.HippyQQEngine;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.AppRuntime;
+
+public class HippyQQLibraryManager
+{
+  private static HippyQQLibraryManager INSTANCE;
+  public static final int STATE_LOADED = 2;
+  public static final int STATE_LOADING = 1;
+  public static final int STATE_UNLOAD = 0;
+  private static long mLastUpdateTime;
+  private final String[] SO_LIST = { "libmtt_shared.so", "libmttv8.so", "libhippybridge.so", "libflexbox.so" };
+  private String mCDNPath;
+  private List<HippyQQLibraryManager.LibraryLoadListener> mLibraryLoadListeners = new ArrayList();
+  private int mLoadState = 0;
+  private String mOfflinePath;
+  
+  private void HippyQQLibraryManager() {}
+  
+  private void addLibraryLoadListener(HippyQQLibraryManager.LibraryLoadListener paramLibraryLoadListener)
+  {
+    if ((paramLibraryLoadListener != null) && (!this.mLibraryLoadListeners.contains(paramLibraryLoadListener))) {
+      this.mLibraryLoadListeners.add(paramLibraryLoadListener);
+    }
+  }
+  
+  private boolean checkAndLoadLibrary()
+  {
+    String str = getOfflineLibraryPath();
+    if ((isLibraryExists(str)) && (loadLibrary(str))) {}
+    do
+    {
+      return true;
+      if (UpdateSetting.getInstance().getCDNUpdateFlag()) {
+        return false;
+      }
+      str = getCDNLibraryPath();
+    } while ((isLibraryExists(str)) && (loadLibrary(str)));
+    return false;
+  }
+  
+  private void checkOfflineUpdate()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    if (localQQAppInterface == null) {}
+    long l1;
+    long l2;
+    do
+    {
+      return;
+      l1 = System.currentTimeMillis();
+      l2 = l1 - mLastUpdateTime;
+    } while ((mLastUpdateTime > 0L) && (l2 > 0L) && (l2 < 3600000L));
+    mLastUpdateTime = l1;
+    ThreadManager.post(new HippyQQLibraryManager.3(this, localQQAppInterface), 8, null, true);
+  }
+  
+  private void downloadFromCDN()
+  {
+    ThreadManager.post(new HippyQQLibraryManager.4(this), 8, null, true);
+  }
+  
+  private AppRuntime getAppRuntime()
+  {
+    AppRuntime localAppRuntime = null;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      localAppRuntime = localBaseApplicationImpl.getRuntime();
+    }
+    return localAppRuntime;
+  }
+  
+  private String getCDNLibraryPath()
+  {
+    if (TextUtils.isEmpty(this.mCDNPath))
+    {
+      File localFile = HippyQQFileUtil.getCDNDownloadFile();
+      if (localFile != null) {
+        this.mCDNPath = (localFile.getAbsolutePath() + "/" + "armeabi");
+      }
+    }
+    return this.mCDNPath;
+  }
+  
+  public static HippyQQLibraryManager getInstance()
+  {
+    if (INSTANCE == null) {}
+    try
+    {
+      if (INSTANCE == null) {
+        INSTANCE = new HippyQQLibraryManager();
+      }
+      return INSTANCE;
+    }
+    finally {}
+  }
+  
+  private String getOfflineLibraryPath()
+  {
+    if (TextUtils.isEmpty(this.mOfflinePath))
+    {
+      File localFile = HippyQQFileUtil.getOfflineDownloadFile();
+      if (localFile != null) {
+        this.mOfflinePath = (localFile.getAbsolutePath() + "/" + "armeabi");
+      }
+    }
+    return this.mOfflinePath;
+  }
+  
+  private boolean isLibraryExists(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i >= this.SO_LIST.length) {
+        break label60;
+      }
+      File localFile = new File(paramString, this.SO_LIST[i]);
+      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
+        break;
+      }
+      i += 1;
+    }
+    label60:
+    return true;
+  }
+  
+  private boolean loadLibrary(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    int i = 0;
+    try
+    {
+      while (i < this.SO_LIST.length)
+      {
+        System.load(new File(paramString, this.SO_LIST[i]).getAbsolutePath());
+        i += 1;
+      }
+      return true;
+    }
+    catch (Throwable paramString) {}
+    return false;
+  }
+  
+  private void onDownloadFail(int paramInt)
+  {
+    HippyQQEngine.runTaskInUIThread(new HippyQQLibraryManager.2(this, paramInt));
+  }
+  
+  private void onDownloadSuccess()
+  {
+    HippyQQEngine.runTaskInUIThread(new HippyQQLibraryManager.1(this));
+  }
+  
+  private void removeLibraryLoadListener(HippyQQLibraryManager.LibraryLoadListener paramLibraryLoadListener)
+  {
+    if ((paramLibraryLoadListener != null) && (this.mLibraryLoadListeners.contains(paramLibraryLoadListener))) {
+      this.mLibraryLoadListeners.remove(paramLibraryLoadListener);
+    }
+  }
+  
+  public boolean isLibraryLoaded()
+  {
+    return this.mLoadState == 2;
+  }
+  
+  public void loadLibraryIfNeed(HippyQQLibraryManager.LibraryLoadListener paramLibraryLoadListener)
+  {
+    int j = 0;
+    int i;
+    switch (this.mLoadState)
+    {
+    default: 
+      i = j;
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        addLibraryLoadListener(paramLibraryLoadListener);
+        downloadFromCDN();
+      }
+      checkOfflineUpdate();
+      return;
+      if (checkAndLoadLibrary())
+      {
+        if (paramLibraryLoadListener != null) {
+          paramLibraryLoadListener.onLoadSuccess();
+        }
+        this.mLoadState = 2;
+        i = j;
+      }
+      else
+      {
+        this.mLoadState = 1;
+        i = 1;
+        continue;
+        addLibraryLoadListener(paramLibraryLoadListener);
+        i = j;
+        continue;
+        i = j;
+        if (paramLibraryLoadListener != null)
+        {
+          paramLibraryLoadListener.onLoadSuccess();
+          i = j;
+        }
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.hippy.qq.update.HippyQQLibraryManager
+ * JD-Core Version:    0.7.0.1
+ */

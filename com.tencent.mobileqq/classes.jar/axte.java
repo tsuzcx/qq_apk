@@ -1,31 +1,36 @@
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class axte
-  extends axtf
+class axte
+  implements aucs
 {
-  public int a = -1;
+  axte(axsd paramaxsd, String paramString) {}
   
-  public HashMap<String, String> a(String paramString)
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle) {}
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    if ("ShortVideo.Preview".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.b + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      paramString.put("param_playAction", this.a + "");
-      return paramString;
-    }
-    return null;
+    QLog.i("NearbyProfileDisplayPanel", 1, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
+    paramBundle = BaseApplicationImpl.getContext().getSharedPreferences(this.jdField_a_of_type_JavaLangString, 4);
+    paramBundle.edit().putInt("state", 1);
+    paramBundle.edit().putString("filePath", paramString);
   }
+  
+  public void b(int paramInt, Bundle paramBundle) {}
+  
+  public void c(int paramInt, Bundle paramBundle) {}
+  
+  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axte
  * JD-Core Version:    0.7.0.1
  */

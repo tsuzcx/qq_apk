@@ -1,16 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-
-public class acuv
-  implements View.OnClickListener
+class acuv
 {
-  public acuv(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public int a;
+  public long a;
+  public acvd a;
+  public String a;
   
-  public void onClick(View paramView)
+  public acuv(acuu paramacuu, int paramInt, long paramLong, String paramString, acvd paramacvd)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Acvd = paramacvd;
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import arag;
-import arah;
+import atgv;
+import atgw;
 
 public class ThumbHttpDownloader$1
   implements Runnable
 {
-  public ThumbHttpDownloader$1(arag paramarag, arah paramarah) {}
+  public ThumbHttpDownloader$1(atgv paramatgv, atgw paramatgw) {}
   
   public void run()
   {
-    arag.a(this.this$0, this.a);
+    atgv.a(this.this$0, this.a);
   }
 }
 

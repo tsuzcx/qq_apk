@@ -1,24 +1,12 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import java.util.List;
 
-class avhp
-  extends GestureDetector.SimpleOnGestureListener
+public abstract interface avhp
 {
-  avhp(avhf paramavhf) {}
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return true;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
+  public abstract void a(List<avij> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avhp
  * JD-Core Version:    0.7.0.1
  */

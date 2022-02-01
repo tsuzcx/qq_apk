@@ -1,26 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseIntArray;
 
 public class acya
-  extends BroadcastReceiver
+  implements acxz
 {
-  public acya(ForwardRecentActivity paramForwardRecentActivity) {}
+  private final SparseIntArray a = new SparseIntArray();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(int paramInt)
   {
-    if (!this.a.isFinishing())
+    try
     {
-      this.a.finish();
-      QLog.i("ForwardOption.ForwardEntranceActivity", 1, "ForwardRecentActivity has finished by broadcastReceiver.");
+      paramInt = this.a.get(paramInt, 1);
+      return paramInt;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      this.a.put(paramInt1, paramInt2);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acya
  * JD-Core Version:    0.7.0.1
  */

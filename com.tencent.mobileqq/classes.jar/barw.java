@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.view.Surface;
 
-class barw
-  implements ITransCallbackForReport
+@TargetApi(14)
+public class barw
 {
-  barw(bart parambart) {}
+  public int a;
+  public SurfaceTexture a;
+  public Surface a;
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public barw(int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
   {
-    bart localbart = this.a;
-    String str2 = this.a.c;
-    if (this.a.f == null) {}
-    for (String str1 = this.a.l;; str1 = this.a.f)
-    {
-      localbart.a("actRichMediaNetMonitor_pttUp", false, paramInt, paramString1, paramString2, str2, str1, null);
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
   }
 }
 

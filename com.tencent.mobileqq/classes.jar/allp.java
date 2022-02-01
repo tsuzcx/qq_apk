@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class allp
-  implements DialogInterface.OnClickListener
+public abstract interface allp
 {
-  allp(alln paramalln) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

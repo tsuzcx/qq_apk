@@ -21,6 +21,8 @@ public class PAGRenderer
     nativeSetup();
   }
   
+  private native void nativeFinalize();
+  
   private native void nativeGetMatrix(float[] paramArrayOfFloat);
   
   private static final native void nativeInit();
@@ -45,7 +47,7 @@ public class PAGRenderer
   
   protected void finalize()
   {
-    nativeRelease();
+    nativeFinalize();
   }
   
   public boolean flush()
@@ -81,6 +83,11 @@ public class PAGRenderer
   }
   
   public native float maxFrameRate();
+  
+  public void release()
+  {
+    nativeRelease();
+  }
   
   public void replaceImage(int paramInt, PAGImage paramPAGImage)
   {
@@ -139,7 +146,7 @@ public class PAGRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     org.libpag.PAGRenderer
  * JD-Core Version:    0.7.0.1
  */

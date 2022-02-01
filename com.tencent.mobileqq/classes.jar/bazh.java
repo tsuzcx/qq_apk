@@ -1,8 +1,28 @@
-import android.graphics.Bitmap;
+import java.util.ArrayList;
 
-public abstract interface bazh
+public class bazh
 {
-  public abstract Bitmap a(Bitmap paramBitmap);
+  public int a;
+  public String a;
+  public ArrayList<bazh> a;
+  public boolean a;
+  public int b = 1;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  
+  public bazh(int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

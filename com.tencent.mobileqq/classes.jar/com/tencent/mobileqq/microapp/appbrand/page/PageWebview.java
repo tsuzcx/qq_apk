@@ -5,18 +5,18 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.webkit.JavascriptInterface;
-import bdnn;
-import com.tencent.mobileqq.microapp.apkg.f;
-import com.tencent.mobileqq.microapp.apkg.r;
-import com.tencent.mobileqq.microapp.apkg.t;
+import bgsp;
+import com.tencent.mobileqq.microapp.apkg.j;
+import com.tencent.mobileqq.microapp.apkg.l;
 import com.tencent.mobileqq.microapp.appbrand.a;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
+import com.tencent.mobileqq.microapp.widget.g;
 import com.tencent.qphone.base.util.QLog;
 
 public class PageWebview
   extends BaseAppBrandWebview
 {
-  private static final String PREF_HTML_URL = "http://servicewechat.com/";
+  private static final String PREF_HTML_URL = "https://servicewechat.com/";
   private static final String TAG = PageWebview.class.getSimpleName() + "111";
   a appBrandRuntime;
   private byte[] contentBytes;
@@ -43,9 +43,9 @@ public class PageWebview
     init();
   }
   
-  public PageWebview(Context paramContext, a parama, f paramf, String paramString1, String paramString2, PageWebview.PageWebViewListener paramPageWebViewListener, WebViewEventListener paramWebViewEventListener)
+  public PageWebview(Context paramContext, a parama, com.tencent.mobileqq.microapp.a.c paramc, String paramString1, String paramString2, PageWebview.PageWebViewListener paramPageWebViewListener, WebViewEventListener paramWebViewEventListener)
   {
-    super(paramContext, paramf);
+    super(paramContext, paramc);
     this.appBrandRuntime = parama;
     this.mContext = paramContext;
     this.mRouteUrl = paramString1;
@@ -57,27 +57,27 @@ public class PageWebview
   
   private void initEnableDebug()
   {
-    if (this.apkgInfo.i())
+    if (this.apkgInfo$5475ea27.h())
     {
-      evaluteJs(this.apkgInfo.h(), null);
-      com.tencent.mobileqq.microapp.appbrand.utils.c.a(this.apkgInfo.d, true);
+      evaluteJs(this.apkgInfo$5475ea27.g(), null);
+      com.tencent.mobileqq.microapp.appbrand.b.c.a(this.apkgInfo$5475ea27.d, true);
       return;
     }
-    com.tencent.mobileqq.microapp.appbrand.utils.c.a(this.apkgInfo.d, false);
+    com.tencent.mobileqq.microapp.appbrand.b.c.a(this.apkgInfo$5475ea27.d, false);
   }
   
-  private void onWebViewReady(f paramf)
+  private void onWebViewReady$164d4c8c(com.tencent.mobileqq.microapp.a.c paramc)
   {
-    if (bdnn.a(this.wxssJsStr))
+    if (bgsp.a(this.wxssJsStr))
     {
-      String str = paramf.g(this.mRouteUrl);
+      String str = paramc.g(this.mRouteUrl);
       if (!TextUtils.isEmpty(str)) {
         evaluteJs(str);
       }
     }
-    paramf = paramf.b(this.mRouteUrl);
-    if (!TextUtils.isEmpty(paramf)) {
-      evaluteJs(paramf);
+    paramc = paramc.b(this.mRouteUrl);
+    if (!TextUtils.isEmpty(paramc)) {
+      evaluteJs(paramc);
     }
     if (this.listener != null) {
       this.listener.onWebViewReady(this.openType, this.mRouteUrl);
@@ -95,7 +95,7 @@ public class PageWebview
     {
       try
       {
-        if (this.apkgInfo.b.d(this.mRouteUrl).a.d)
+        if (this.apkgInfo$5475ea27.b.b(this.mRouteUrl).a.b)
         {
           i = (int)paramMotionEvent.getX();
           j = (int)paramMotionEvent.getY();
@@ -156,19 +156,19 @@ public class PageWebview
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "---start loadHtml---");
     }
-    loadUrl("http://servicewechat.com/page-frame.html");
+    loadUrl("https://servicewechat.com/page-frame.html");
   }
   
-  public void loadPageWebviewJs(f paramf)
+  public void loadPageWebviewJs$164d4c8c(com.tencent.mobileqq.microapp.a.c paramc)
   {
-    if (bdnn.a(this.mRouteUrl)) {}
+    if (bgsp.a(this.mRouteUrl)) {}
     while ((this.hasFLoad) || (!this.hasLoadHtmlFinish)) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i(TAG, 2, "----loadPageWebviewJs----");
     }
-    onWebViewReady(paramf);
+    onWebViewReady$164d4c8c(paramc);
     this.hasFLoad = true;
   }
   
@@ -185,7 +185,7 @@ public class PageWebview
   public void publishHandler(String paramString1, String paramString2, String paramString3)
   {
     if (this.eventListener != null) {
-      this.eventListener.onWebViewEvent(paramString1, paramString2, paramString3, this.apkgInfo.d, this.pageWebviewId);
+      this.eventListener.onWebViewEvent(paramString1, paramString2, paramString3, this.apkgInfo$5475ea27.d, this.pageWebviewId);
     }
   }
   
@@ -196,7 +196,7 @@ public class PageWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.PageWebview
  * JD-Core Version:    0.7.0.1
  */

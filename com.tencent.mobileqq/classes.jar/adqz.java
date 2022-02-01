@@ -1,14 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adqz
-  extends aeqi
+final class adqz
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public BreathAnimationLayout a;
-  public StringBuilder a;
-  public TextView c;
+  adqz(adsy paramadsy, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, adsx paramadsx) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Adsy.d = false;
+    this.jdField_a_of_type_Adsy.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adsx, this.jdField_a_of_type_Adsy);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

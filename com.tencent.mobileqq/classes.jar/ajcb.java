@@ -1,9 +1,6 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-
-public class ajcb
+public abstract interface ajcb
 {
-  public static final IRedPacket a = new RedPacketManager();
+  public abstract void a(boolean paramBoolean, ajcc paramajcc);
 }
 
 

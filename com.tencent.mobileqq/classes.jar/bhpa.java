@@ -1,42 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class bhpa
-  extends Handler
+public final class bhpa
+  implements WtTicketPromise
 {
-  public bhpa(bhou parambhou, Looper paramLooper)
+  public void Done(Ticket paramTicket)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService : Done");
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
     }
-    do
-    {
-      do
-      {
-        return;
-        bhou.a(this.a);
-        return;
-      } while (paramMessage.obj == null);
-      bhou.a(this.a, (List)paramMessage.obj);
-      return;
-      bhou.b(this.a);
-      return;
-      bhou.c(this.a);
-      return;
-    } while (paramMessage.obj == null);
-    bhou.a(this.a, (bhoy)paramMessage.obj);
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhpa
  * JD-Core Version:    0.7.0.1
  */

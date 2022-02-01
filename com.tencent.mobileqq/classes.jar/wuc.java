@@ -1,17 +1,27 @@
-class wuc
-  extends xwf
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public final class wuc
+  extends QQUIEventReceiver<wtu, wrr>
 {
-  wuc(wub paramwub) {}
-  
-  public boolean a(boolean paramBoolean)
+  public wuc(@NonNull wtu paramwtu)
   {
-    wub.a(this.a);
-    return true;
+    super(paramwtu);
+  }
+  
+  public void a(@NonNull wtu paramwtu, @NonNull wrr paramwrr)
+  {
+    paramwtu.a.a(paramwrr.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wrr.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wuc
  * JD-Core Version:    0.7.0.1
  */

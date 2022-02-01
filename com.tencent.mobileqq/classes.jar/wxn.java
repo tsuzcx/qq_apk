@@ -1,27 +1,24 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class wxn
-  implements View.OnSystemUiVisibilityChangeListener
+  extends weu
 {
-  public wxn(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
+  public final String a;
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public wxn(ErrorMessage paramErrorMessage, String paramString)
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 4870;; paramInt = 775)
-    {
-      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + "} ";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wxn
  * JD-Core Version:    0.7.0.1
  */

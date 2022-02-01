@@ -1,49 +1,35 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class qdk
-  implements View.OnClickListener
+class qdk
+  implements Animation.AnimationListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  qdk(qdi paramqdi, View paramView, boolean paramBoolean, Activity paramActivity, ArticleInfo paramArticleInfo) {}
   
-  private qdk(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
-  
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramView.getId())
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-    default: 
-      return;
-    case 2131366642: 
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList;
-      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramView.a(localRecommendFollowInfo, bool);
-        return;
+      if (this.jdField_a_of_type_Boolean) {
+        qdi.a(this.jdField_a_of_type_Qdi, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
       }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+    else {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qdk
  * JD-Core Version:    0.7.0.1
  */

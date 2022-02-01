@@ -1,25 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
 class alnv
-  extends bead
+  implements Comparator<bamx>
 {
-  alnv(alnu paramalnu, String paramString1, String paramString2, String paramString3) {}
+  alnv(alnu paramalnu) {}
   
-  public void onDone(beae parambeae)
+  public int a(bamx parambamx1, bamx parambamx2)
   {
-    super.onDone(parambeae);
-    if (3 == parambeae.a()) {
-      this.jdField_a_of_type_Alnu.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    if ((parambamx1 != null) && (parambamx2 != null)) {
+      return parambamx1.b - parambamx2.b;
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleFrameZipDecoder", 2, "downloadZip onDone task.getStatus()->" + parambeae.a());
-      }
-      return;
-      this.jdField_a_of_type_Alnu.a = 2;
-      this.jdField_a_of_type_Alnu.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
+    return -1;
   }
 }
 

@@ -1,25 +1,20 @@
-import java.util.Comparator;
+import com.tencent.av.gaudio.GaInviteDialogActivity;
 
-final class lmx
-  implements Comparator<lmw>
+public class lmx
+  implements adsw
 {
-  public int a(lmw paramlmw1, lmw paramlmw2)
+  public lmx(GaInviteDialogActivity paramGaInviteDialogActivity) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramlmw1 == paramlmw2) {
-      return 0;
-    }
-    if (paramlmw1 == null) {
-      return -1;
-    }
-    if (paramlmw2 == null) {
-      return 1;
-    }
-    return paramlmw1.a - paramlmw2.a;
+    this.a.g = paramInt1;
+    this.a.h = paramInt2;
+    GaInviteDialogActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lmx
  * JD-Core Version:    0.7.0.1
  */

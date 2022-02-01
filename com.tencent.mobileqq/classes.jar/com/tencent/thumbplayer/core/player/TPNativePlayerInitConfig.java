@@ -10,8 +10,12 @@ public class TPNativePlayerInitConfig
   public static final int BOOL_ENABLE_AUDIO_PASSTHROUGH = 210;
   public static final int BOOL_ENABLE_AUDIO_RENDERER_LATENCY_COMPENSATION = 401;
   public static final int BOOL_ENABLE_AV_SYNC = 400;
+  public static final int BOOL_ENABLE_COLOR_MANAGEMENT = 407;
+  public static final int BOOL_ENABLE_DROPFRAME_BY_REFRESHRATE = 406;
   public static final int BOOL_ENABLE_FORCE_FFMPEG_DEMUXER = 114;
   public static final int BOOL_ENABLE_HEVC_OPTIMIZATION = 115;
+  public static final int BOOL_ENABLE_MEDIA_CODEC_REUSE = 213;
+  public static final int BOOL_ENABLE_MEDIA_CODEC_SET_OPERATE_RATE = 212;
   public static final int BOOL_ENABLE_MULTI_RECEIVE_FRAMES = 209;
   public static final int BOOL_ENABLE_NATIVE_MEDIA_CODEC = 204;
   public static final int BOOL_ENABLE_SET_OUTPUT_SURFACE_API = 205;
@@ -19,6 +23,7 @@ public class TPNativePlayerInitConfig
   public static final int BOOL_HLS_HTTP_KEEP_ALIVE = 110;
   public static final int BOOL_HLS_SWITCH_BY_SEGMENT = 111;
   public static final int BOOL_KEEP_ORIGINAL_PTS = 112;
+  public static final int BOOL_RELEASE_MEDIA_CODEC_WHEN_SET_SURFACE = 211;
   public static final int BOOL_RESET_DECODER_ON_PARAMETER_CHANGE = 201;
   public static final int BOOL_START_PLAYING_TIME_ACCURATE_SEEK = 101;
   public static final int FLOAT_REDUCE_LATENCY_SPEED_UP_RATE = 120;
@@ -123,7 +128,7 @@ public class TPNativePlayerInitConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayerInitConfig
  * JD-Core Version:    0.7.0.1
  */

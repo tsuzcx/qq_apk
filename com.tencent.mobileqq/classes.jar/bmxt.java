@@ -1,133 +1,106 @@
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.animation.DecelerateInterpolator;
+import android.app.Application;
+import android.os.Build;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.AppInfo;
+import com.tencent.weiyun.transmission.WeiyunTransmissionStatus;
+import com.tencent.weiyun.transmission.upload.UploadFile;
+import com.tencent.weiyun.transmission.upload.UploadFile.UploadBatch;
+import com.tencent.weiyun.transmission.upload.UploadManager;
+import cooperation.weiyun.TransmissionHelper.5;
+import cooperation.weiyun.upload.WyUploadJob;
+import mqq.app.AppRuntime;
 
-public abstract class bmxt
-  extends Drawable
+public final class bmxt
 {
-  public static final int g = a(1.0F, BaseApplicationImpl.getContext().getResources());
-  protected ValueAnimator a;
-  protected Context a;
-  protected bmxh a;
-  private bmxw a;
-  protected String a;
-  protected ArrayList<Integer> a;
-  protected Bitmap b;
-  protected int f;
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile boolean jdField_a_of_type_Boolean;
   
-  public bmxt(Context paramContext, String paramString)
+  public static bmyy a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_Bmxh = new bmxh();
-    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static final int a(float paramFloat, Resources paramResources)
-  {
-    if (paramFloat == 0.0F) {
-      return 0;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString4))) {
+      return null;
     }
-    return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
-  }
-  
-  public int a()
-  {
-    return this.f;
-  }
-  
-  protected int a(ArrayList<Integer> paramArrayList, int paramInt1, int paramInt2)
-  {
-    int i = paramInt2;
-    if (paramArrayList != null)
-    {
-      i = paramInt2;
-      if (paramArrayList.size() > paramInt1)
-      {
-        paramArrayList = (Integer)paramArrayList.get(paramInt1);
-        i = paramInt2;
-        if (paramArrayList != null) {
-          i = paramArrayList.intValue();
-        }
-      }
-    }
-    return i;
-  }
-  
-  public Bitmap a()
-  {
-    return a(this.jdField_a_of_type_Bmxh.a());
-  }
-  
-  public Bitmap a(long paramLong)
-  {
-    Bitmap localBitmap = b();
-    Canvas localCanvas = new Canvas(localBitmap);
-    ArrayList localArrayList = this.jdField_a_of_type_Bmxh.a(paramLong);
-    if (localArrayList != null) {
-      a(localCanvas, localArrayList);
-    }
-    return localBitmap;
-  }
-  
-  protected abstract void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList);
-  
-  public abstract String[] a(String paramString);
-  
-  protected Bitmap b()
-  {
-    if (this.b == null) {
-      this.b = Bitmap.createBitmap(getIntrinsicWidth(), getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+    if (TextUtils.isEmpty(paramString3)) {
+      paramString3 = "0";
     }
     for (;;)
     {
-      return this.b;
-      new Canvas(this.b).drawColor(0, PorterDuff.Mode.CLEAR);
+      return bmyy.a(10, paramString1, paramString2, paramString3, paramLong, paramInt, BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString4, paramString5);
     }
   }
   
-  protected abstract void b();
-  
-  public String c()
+  public static UploadFile a(String paramString, UploadFile.UploadBatch paramUploadBatch, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if ((TextUtils.isEmpty(paramString)) || (paramUploadBatch == null) || (paramInt < 0)) {
+      return null;
+    }
+    String str = Build.MODEL;
+    paramString = UploadFile.createUploadFile(1, BaseApplicationImpl.getApplication().getRuntime().getAccount(), str, str, str, paramString, false, paramUploadBatch, paramInt);
+    paramString.autoBackupFlag = false;
+    return paramString;
   }
   
-  protected void c()
+  private static String a()
   {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofObject(this.jdField_a_of_type_Bmxh, new Object[] { this.jdField_a_of_type_Bmxh.b(), this.jdField_a_of_type_Bmxh.a() });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bmxu(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bmxv(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.jdField_a_of_type_Bmxh.a());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    if (jdField_a_of_type_JavaLangString == null) {
+      jdField_a_of_type_JavaLangString = "V1_AND_WY_VersionName_" + bdxz.a() + "_ChannelId_" + "B";
+    }
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public void draw(Canvas paramCanvas)
+  public static void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      a(paramCanvas, this.jdField_a_of_type_JavaUtilArrayList);
+    new Thread(new TransmissionHelper.5(paramInt)).start();
+  }
+  
+  public static void a(Application paramApplication, boolean paramBoolean)
+  {
+    if (jdField_a_of_type_Boolean) {
+      return;
+    }
+    WeiyunTransmissionGlobal.AppInfo localAppInfo = new WeiyunTransmissionGlobal.AppInfo(a(), 1000269, "mobileqq", bdxz.a(), 0, "unknown");
+    WeiyunTransmissionGlobal localWeiyunTransmissionGlobal = WeiyunTransmissionGlobal.getInstance();
+    if (paramBoolean) {}
+    for (String str = "weiyun_";; str = "qq_")
+    {
+      localWeiyunTransmissionGlobal.initTransmission(localAppInfo, paramApplication, new bmxz(str), bnaw.a());
+      WeiyunTransmissionGlobal.getInstance().getUploadManager().setSpareUploader(new WyUploadJob());
+      WeiyunTransmissionStatus.getInstance().setTranOnlyWifi(0, true, BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      WeiyunTransmissionStatus.getInstance().setLoginStatus(0, BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      AppNetConnInfo.registerNetChangeReceiver(null, new bmxu());
+      bmzf.a().a(new bmxv(), paramApplication);
+      bmzf.a().a(new bmxx());
+      WeiyunTransmissionGlobal.getInstance().getUploadManager().addGlobalObserver(new bmxy());
+      jdField_a_of_type_Boolean = true;
+      return;
     }
   }
   
-  public int getOpacity()
+  public static void a(boolean paramBoolean, long paramLong)
   {
-    return -3;
+    WeiyunTransmissionStatus localWeiyunTransmissionStatus = WeiyunTransmissionStatus.getInstance();
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      localWeiyunTransmissionStatus.setLoginStatus(i, Long.toString(paramLong));
+      bmyh.c();
+      return;
+    }
   }
   
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
+  public static UploadFile b(String paramString, UploadFile.UploadBatch paramUploadBatch, int paramInt)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramUploadBatch == null) || (paramInt < 0)) {
+      return null;
+    }
+    String[] arrayOfString = bmyh.a();
+    paramString = UploadFile.createUploadFile(0, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "QQ", arrayOfString[1], arrayOfString[0], paramString, false, paramUploadBatch, paramInt);
+    paramString.autoBackupFlag = false;
+    return paramString;
+  }
 }
 
 

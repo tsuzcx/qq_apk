@@ -1,62 +1,27 @@
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
 
 public class wks
-  extends wrj
 {
-  public wks(wkp paramwkp) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
+  public static Intent a(Context paramContext, int paramInt, String paramString)
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(wkp.a(this.a)).size())) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramObject = (CommentEntry)this.a.a.a(wkp.a(this.a)).get(paramInt);
-          switch (paramView.getId())
-          {
-          default: 
-            return;
-          }
-        } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
-        uqn.a(paramView.getContext(), 12, paramObject.authorUnionId);
-        return;
-      } while (wkp.a(this.a) == null);
-      wkp.a(this.a).a(paramObject, paramInt);
-      return;
-    } while (wkp.a(this.a) == null);
-    wkp.a(this.a).Q_();
+    return QQStoryMemoriesActivity.a(paramContext, paramInt, paramString);
   }
   
-  public void b(int paramInt, View paramView, Object paramObject, wtq paramwtq)
+  public static void a(Context paramContext, int paramInt, long paramLong)
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(wkp.a(this.a)).size())) {}
-    do
-    {
-      do
-      {
-        return;
-        paramObject = (CommentEntry)this.a.a.a(wkp.a(this.a)).get(paramInt);
-        switch (paramView.getId())
-        {
-        default: 
-          return;
-        }
-      } while (wkp.a(this.a) == null);
-      wkp.a(this.a).b(paramObject, paramInt);
-      return;
-    } while (wkp.a(this.a) == null);
-    wkp.a(this.a).Q_();
+    QQStoryMemoriesActivity.a(paramContext, paramInt, paramLong);
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    paramContext.startActivity(a(paramContext, paramInt, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wks
  * JD-Core Version:    0.7.0.1
  */

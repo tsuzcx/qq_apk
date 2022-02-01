@@ -1,91 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class aowq
-  implements aokj<String>
 {
-  public String a;
-  public ArrayList<aowr> a;
-  private String b = "place_holder";
-  private String c = "data";
-  private String d = "topic_id";
-  private String e = "topic_name";
+  public int a;
+  public long a;
+  public long[] a;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
+  public long f;
   
-  public aowq()
+  public aowq(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, double paramDouble, long[] paramArrayOfLong, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("SigTopicConfig", 1, "SigTopic config content is empty");
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        paramString = localJSONObject.optJSONArray(this.c);
-        this.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.b, alud.a(2131714550));
-        if (paramString == null) {
-          break;
-        }
-        i = 0;
-        if (i >= paramString.length()) {
-          break;
-        }
-        localJSONObject = paramString.getJSONObject(i);
-        localaowr = new aowr();
-        localaowr.jdField_a_of_type_Int = localJSONObject.optInt(this.d);
-        localaowr.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.e);
-        if (!TextUtils.isEmpty(localaowr.jdField_a_of_type_JavaLangString)) {
-          break label193;
-        }
-        if (!QLog.isColorLevel()) {
-          break label198;
-        }
-        QLog.e("SigTopicConfig", 2, new Object[] { "SigTopic config parse has invalid item,index=", Integer.valueOf(i) });
-      }
-      catch (JSONException paramString)
-      {
-        int i;
-        aowr localaowr;
-        QLog.e("SigTopicConfig", 1, "SigTopic config parse exception", paramString);
-        return;
-      }
-      if (j != 0) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localaowr);
-      }
-      i += 1;
-      continue;
-      label193:
-      int j = 1;
-      continue;
-      label198:
-      j = 0;
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.c = paramLong3;
+    this.d = paramLong4;
+    this.e = paramLong5;
+    this.f = ((0.9D + paramDouble));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
   }
   
   public String toString()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return "recommend title is " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_JavaUtilArrayList.toString();
-    }
-    return "";
+    return "70% :  " + this.c + " --------- 80% : " + this.b + " --------- 90% : " + this.jdField_a_of_type_Long + " --------- min : " + this.d + " --------- max : " + this.e + " --------- num : " + this.jdField_a_of_type_Int + "--------arr" + this.jdField_a_of_type_ArrayOfLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aowq
  * JD-Core Version:    0.7.0.1
  */

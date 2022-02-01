@@ -1,43 +1,39 @@
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.webview.swift.UnVisibleWebViewFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Date;
 
-final class bhnh
-  extends bhnl
+public class bhnh
+  implements View.OnLongClickListener
 {
-  bhnh(bhng parambhng)
-  {
-    super(null);
-  }
+  public bhnh(UnVisibleWebViewFragment paramUnVisibleWebViewFragment) {}
   
-  public boolean a(String paramString, bhoe parambhoe)
+  public boolean onLongClick(View paramView)
   {
-    if (this.a.size() >= this.a.maxSize())
+    if (!this.a.mSetting.a("web_view_long_click", true))
     {
-      bhng.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
+      }
+      return true;
+    }
+    if (!this.a.mSetting.a("image_long_click", false))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
       }
       return false;
     }
-    if (parambhoe.a > new Date().getTime())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, parambhoe.toString() }));
-      }
-      this.a.put(paramString, parambhoe);
-    }
-    for (;;)
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, parambhoe.toString() }));
-      }
+    bhpf localbhpf = (bhpf)this.a.mComponentsProvider.a(8);
+    if ((localbhpf != null) && (localbhpf.a(paramView))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhnh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,40 @@
-import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-public class twn
-  implements twi
+public final class twn
+  implements txg
 {
-  public twn(QCircleBaseFragment paramQCircleBaseFragment) {}
+  @NonNull
+  private final RecyclerView.Adapter a;
   
-  public void a(boolean paramBoolean, String paramString)
+  public twn(@NonNull RecyclerView.Adapter paramAdapter)
   {
-    QLog.i("QCircleBaseFragment", 1, paramBoolean + paramString);
+    this.a = paramAdapter;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2, paramObject);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemMoved(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     twn
  * JD-Core Version:    0.7.0.1
  */

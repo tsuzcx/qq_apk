@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
 class asbn
-  implements View.OnClickListener
+  implements asae
 {
   asbn(asbm paramasbm) {}
   
-  public void onClick(View paramView)
+  public void a(List<asac> paramList)
   {
-    this.a.b();
+    if (paramList != null)
+    {
+      this.a.a(paramList);
+      this.a.notifyDataSetChanged();
+    }
   }
 }
 

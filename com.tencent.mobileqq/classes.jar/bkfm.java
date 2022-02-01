@@ -1,71 +1,143 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.app.Notification;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.badge.CommonBadgeUtilImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BadgeUtils.1;
+import com.tencent.util.BadgeUtils.2;
 
 public class bkfm
-  extends bkfr
 {
-  public bkfm(String paramString, View paramView)
+  public static int a;
+  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private static Runnable jdField_a_of_type_JavaLangRunnable = new BadgeUtils.2();
+  public static boolean a;
+  public static boolean b;
+  public static boolean c;
+  
+  static
   {
-    super(paramString, paramView);
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_Int = -1;
   }
   
-  private ImageView.ScaleType a(String paramString)
+  public static int a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return ImageView.ScaleType.CENTER_CROP;
+    String str = "";
+    int i;
+    if (jdField_a_of_type_Int != -1) {
+      i = jdField_a_of_type_Int;
     }
-    if ("center_crop".equals(paramString)) {
-      return ImageView.ScaleType.CENTER_CROP;
-    }
-    if ("fit_center".equals(paramString)) {
-      return ImageView.ScaleType.FIT_CENTER;
-    }
-    return ImageView.ScaleType.CENTER_CROP;
-  }
-  
-  protected void a(String paramString)
-  {
-    if (!bhsz.a(paramString)) {}
-    do
+    for (;;)
     {
-      return;
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
-      {
-        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
-        localURLDrawableOptions.mRequestHeight = this.b;
+      if (QLog.isColorLevel()) {
+        QLog.d("BadgeUtils", 2, "getLimitCount Limitcount" + i);
       }
-      localURLDrawableOptions.mLoadingDrawable = bayu.a;
-      localURLDrawableOptions.mFailedDrawable = bayu.a;
-      localURLDrawableOptions.mPlayGifImage = false;
-      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    } while (paramString == null);
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(paramString);
+      return i;
+      try
+      {
+        Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1|1|999");
+        if (QLog.isColorLevel()) {
+          QLog.d("BadgeUtils", 2, "LimitConfig:" + (String)localObject);
+        }
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length > 3) {
+          str = localObject[3];
+        }
+        jdField_a_of_type_Int = Integer.valueOf(str).intValue();
+        i = jdField_a_of_type_Int;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BadgeUtils", 2, "getLimitCount e:" + localException.toString());
+        }
+        jdField_a_of_type_Int = 999;
+        i = jdField_a_of_type_Int;
+      }
+    }
   }
   
-  protected void a(String paramString1, String paramString2)
+  public static void a()
   {
-    super.a(paramString1, paramString2);
-    if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("BadgeUtils", 2, "enableBadge mobileqq");
+    }
+    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    BadgeUtilImpl.enableBadge(BaseApplicationImpl.sApplication);
+  }
+  
+  public static void a(Context paramContext, int paramInt)
+  {
+    if ((!jdField_a_of_type_Boolean) && (paramInt > 0)) {}
+    int i;
     do
     {
-      return;
-      if ("content".equals(paramString1))
+      do
       {
-        a(paramString2);
+        return;
+      } while (!a(paramContext));
+      i = a();
+      QLog.d("BadgeUtils_UnreadMonitor", 1, "setBadge limit: " + i + ", count: " + paramInt);
+      if (Looper.myLooper() == Looper.getMainLooper()) {
+        break;
+      }
+      BadgeUtilImpl.setLimitCount(i);
+      try
+      {
+        BadgeUtilImpl.setBadge(paramContext, paramInt);
         return;
       }
-    } while (!"scale_type".equals(paramString1));
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setScaleType(a(paramString2));
+      catch (Exception paramContext) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("BadgeUtilImpl", 2, "badge not support");
+    return;
+    ThreadManager.executeOnSubThread(new BadgeUtils.1(i, paramContext, paramInt));
   }
   
-  protected void b()
+  public static void a(Context paramContext, int paramInt, Notification paramNotification)
   {
-    super.b();
+    if (!c) {
+      if (!b)
+      {
+        c = CommonBadgeUtilImpl.isMIUI6();
+        b = true;
+        if (c) {}
+      }
+      else
+      {
+        return;
+      }
+    }
+    QLog.d("BadgeUtils_UnreadMonitor", 1, "setMIUI6Badge count: " + paramInt);
+    BadgeUtilImpl.setLimitCount(a());
+    BadgeUtilImpl.setMIUI6Badge(paramContext, paramInt, paramNotification);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return BadgeUtilImpl.isSupportBadge(paramContext);
+  }
+  
+  public static void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BadgeUtils", 2, "disableBadge mobileqq");
+    }
+    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    BadgeUtilImpl.disableBadge(BaseApplicationImpl.sApplication);
+    jdField_a_of_type_AndroidOsHandler.postDelayed(jdField_a_of_type_JavaLangRunnable, 2000L);
+  }
+  
+  public static void c()
+  {
+    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
 }
 

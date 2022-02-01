@@ -1,70 +1,55 @@
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class lja
+class lja
 {
-  private alpd[] a = new alpd[4];
+  int jdField_a_of_type_Int = -99;
+  boolean jdField_a_of_type_Boolean = false;
+  int b = -99;
+  int c = -99;
+  int d = -99;
+  int e = -99;
+  int f = -99;
+  int g = -99;
+  int h = -99;
+  int i = -99;
+  int j = -99;
   
-  private alpd b(VideoAppInterface paramVideoAppInterface, int paramInt)
+  void a()
   {
-    Object localObject = null;
-    long l1 = System.currentTimeMillis();
-    switch (paramInt)
+    a(-101, this.b, this.c, this.jdField_a_of_type_Boolean, -101, -101, -101, -101, -101, -101);
+  }
+  
+  void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
+  {
+    long l = this.j;
+    if (paramInt1 <= -99) {}
+    for (this.j = 0;; this.j += 1)
     {
-    }
-    for (paramVideoAppInterface = localObject;; paramVideoAppInterface = new lio(paramVideoAppInterface))
-    {
-      lek.c("BusinessHandlerFactory", "createHandler unknown name");
-      for (;;)
-      {
-        long l2 = System.currentTimeMillis();
-        lek.c("BusinessHandlerFactory", "createHandler,cost time:" + (l2 - l1));
-        return paramVideoAppInterface;
-        paramVideoAppInterface = new liz(paramVideoAppInterface);
-        continue;
-        paramVideoAppInterface = new liw(paramVideoAppInterface);
-        continue;
-        paramVideoAppInterface = new lwb(paramVideoAppInterface);
+      if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.jdField_a_of_type_Boolean != paramBoolean) || (this.d != paramInt4) || (this.e != paramInt5) || (this.f != paramInt6) || (this.g != paramInt7) || (this.h != paramInt8) || (this.i != paramInt9)) {
+        QLog.w("AndroidCamera", 1, "PreviewCallback, Index[" + l + "->" + this.j + "], degree[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], mCurCamera[" + this.b + "->" + paramInt2 + "], nInFPS[" + this.c + "->" + paramInt3 + "], mSupportLandscape[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "], cameraImageOrientation[" + this.d + "->" + paramInt4 + "], displayRotation[" + this.e + "->" + paramInt5 + "], mobileRotation[" + this.f + "->" + paramInt6 + "], dataLength[" + this.g + "->" + paramInt7 + "], w[" + this.h + "->" + paramInt8 + "], h[" + this.i + "->" + paramInt9 + "]");
       }
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.d = paramInt4;
+      this.e = paramInt5;
+      this.f = paramInt6;
+      this.g = paramInt7;
+      this.h = paramInt8;
+      this.i = paramInt9;
+      return;
     }
   }
   
-  public alpd a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  void b()
   {
-    Object localObject = this.a[paramInt];
-    if (localObject != null) {
-      return localObject;
-    }
-    synchronized (this.a)
-    {
-      alpd localalpd = this.a[paramInt];
-      localObject = localalpd;
-      if (localalpd == null)
-      {
-        paramVideoAppInterface = b(paramVideoAppInterface, paramInt);
-        localObject = paramVideoAppInterface;
-        if (paramVideoAppInterface != null)
-        {
-          this.a[paramInt] = paramVideoAppInterface;
-          localObject = paramVideoAppInterface;
-        }
-      }
-      return localObject;
-    }
-  }
-  
-  public void a(lil paramlil)
-  {
-    paramlil.a("TransInfoCreate.CreateSession", new int[] { 1 });
-    paramlil.a("TransInfo.JoinSession", new int[] { 0 });
-    paramlil.a("TransInfo.ExitSession", new int[] { 0 });
-    paramlil.a("TransInfo.ChangeSession", new int[] { 0 });
-    paramlil.a("TransInfo.RawData", new int[] { 0 });
-    paramlil.a("OidbSvc.0xa75", new int[] { 2 });
+    a(-100, this.b, this.c, this.jdField_a_of_type_Boolean, -100, -100, -100, -100, -100, -100);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lja
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,45 @@
-final class aaow
-  implements aaqv
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+
+class aaow
+  implements bcfg
 {
-  public aaqx a(aaqw paramaaqw)
+  aaow(aaor paramaaor, AppRuntime paramAppRuntime, Bundle paramBundle) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    String str2 = null;
-    aaqx localaaqx = new aaqx();
-    if (paramaaqw == null) {
-      if (paramaaqw == null) {
-        break label91;
-      }
-    }
-    label91:
-    for (String str1 = paramaaqw.a();; str1 = null)
+    VideoEnvironment.a("TroopMemberApiService", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
     {
-      if (paramaaqw != null) {
-        str2 = paramaaqw.b();
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.a("TroopMemberApiService", anni.a(2131714277) + paramInt2 + "]", null);
+        ShortVideoResourceManager.a(anni.a(2131714247));
+        bceg.a(1, paramInt2);
+        this.jdField_a_of_type_Aaor.a.b = false;
+        return;
       }
-      aase.b("GdtInterstitialPreDownloader", String.format("IPCHandlerForPreDownload.handle action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(localaaqx.a) }));
-      return localaaqx;
-      if (!paramaaqw.a()) {
-        break;
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.a("TroopMemberApiService", anni.a(2131714238), null);
+        ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList, new aaox(this));
+        return;
       }
-      aaot.a().a();
-      localaaqx.a = true;
-      break;
+      VideoEnvironment.a("TroopMemberApiService", anni.a(2131714239) + paramInt1 + "]", null);
+      ShortVideoResourceManager.a(anni.a(2131714276));
+      bceg.a(1, paramInt1);
+      return;
     }
+    VideoEnvironment.a("TroopMemberApiService", anni.a(2131714327) + paramInt2 + "]", null);
+    ShortVideoResourceManager.a(anni.a(2131714284));
+    bceg.a(1, paramInt2);
+    this.jdField_a_of_type_Aaor.a.b = false;
   }
 }
 

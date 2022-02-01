@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.fragment;
 
-import bcpe;
+import bftv;
 
 class TroopRobotFragment$2
   implements Runnable
 {
-  TroopRobotFragment$2(TroopRobotFragment paramTroopRobotFragment, bcpe parambcpe) {}
+  TroopRobotFragment$2(TroopRobotFragment paramTroopRobotFragment, bftv parambftv) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class TroopRobotFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.TroopRobotFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,13 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 
-public final class atjb
-  implements EIPCResultCallback
+public class atjb
+  extends anif
 {
-  public atjb(JSONObject paramJSONObject, spj paramspj, String paramString) {}
+  public atjb(TroopFileSearchFragment paramTroopFileSearchFragment) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  protected void a(Object paramObject)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null)) {}
-    for (boolean bool = paramEIPCResult.data.getBoolean("action_update_biu_and_comment_switch");; bool = false) {
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("isGrayscaleUser", bool);
-        QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig is " + bool);
-        this.jdField_a_of_type_Spj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
-        return;
-      }
-      catch (JSONException paramEIPCResult)
-      {
-        for (;;)
-        {
-          QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig error " + paramEIPCResult.getMessage());
-        }
-      }
-    }
+    TroopFileSearchFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

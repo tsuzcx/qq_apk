@@ -1,14 +1,12 @@
-public class arqg
+public abstract interface arqg
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public byte[] b;
-  public long c;
-  public long d;
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(arpo paramarpo);
+  
+  public abstract void b();
 }
 
 

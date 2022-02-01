@@ -36,7 +36,7 @@ public class w
     while (i < paramList.size())
     {
       AppInfo localAppInfo = (AppInfo)paramList.get(i);
-      localHashMap.put(Long.valueOf(ax.a(localAppInfo)), localAppInfo);
+      localHashMap.put(Long.valueOf(az.a(localAppInfo)), localAppInfo);
       i += 1;
     }
     return localHashMap;
@@ -62,6 +62,7 @@ public class w
             localAppInfo.safeLevel = localf.c;
             localAppInfo.isOfficial = localf.e;
             localArrayList.add(localAppInfo);
+            ax.a("CloudScan", "find VIRUS ! " + localf.a + " type = " + localf.b + " name = " + localAppInfo.softName + " safeLevel = " + localf.c + " category = " + localf.d);
             break;
             if (localf.c == 1) {
               localAppInfo.safeType = 2;
@@ -83,12 +84,14 @@ public class w
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      Object localObject = (f)paramArrayList.next();
-      if (((f)localObject).b == 3)
+      f localf = (f)paramArrayList.next();
+      if (localf.b == 3)
       {
-        localObject = (AppInfo)this.b.get(Long.valueOf(((f)localObject).a));
-        if (localObject != null) {
-          localArrayList.add(localObject);
+        AppInfo localAppInfo = (AppInfo)this.b.get(Long.valueOf(localf.a));
+        if (localAppInfo != null)
+        {
+          localArrayList.add(localAppInfo);
+          ax.a("CloudScan", "find VIRUS ! " + localf.a + " type = " + localf.b + " name = " + localAppInfo.softName + " safeLevel = " + localf.c + " category = " + localf.d);
         }
       }
     }
@@ -101,25 +104,27 @@ public class w
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      Object localObject = (f)paramArrayList.next();
-      if (((f)localObject).b == 6)
+      f localf = (f)paramArrayList.next();
+      ax.b("CloudScan", "collectDetailFeatureList app key =" + localf.a + " type = " + localf.b + " safeLevel = " + localf.c + " category = " + localf.d + " official = " + localf.e);
+      if (localf.b == 6)
       {
-        localObject = (AppInfo)this.b.get(Long.valueOf(((f)localObject).a));
-        if (localObject != null)
+        AppInfo localAppInfo = (AppInfo)this.b.get(Long.valueOf(localf.a));
+        if (localAppInfo != null)
         {
           g localg = new g();
-          localg.a = ax.a(((AppInfo)localObject).getPkgName());
-          localg.b = ax.a(((AppInfo)localObject).getCertMd5());
-          localg.c = ((int)((AppInfo)localObject).getFileSize());
-          if (((AppInfo)localObject).getAppType() == 1) {}
+          localg.a = az.a(localAppInfo.getPkgName());
+          localg.b = az.a(localAppInfo.getCertMd5());
+          localg.c = ((int)localAppInfo.getFileSize());
+          if (localAppInfo.getAppType() == 1) {}
           for (boolean bool = true;; bool = false)
           {
             localg.g = bool;
-            localg.f = ax.a(((AppInfo)localObject).getSoftName());
-            localg.d = ax.a(((AppInfo)localObject).getVersionName());
-            localg.e = ((AppInfo)localObject).getVersionCode();
-            localg.h = as.a(((AppInfo)localObject).apkPath);
+            localg.f = az.a(localAppInfo.getSoftName());
+            localg.d = az.a(localAppInfo.getVersionName());
+            localg.e = localAppInfo.getVersionCode();
+            localg.h = as.a(localAppInfo.apkPath);
             localArrayList.add(localg);
+            ax.b("CloudScan", "detailFeatureList add app key =" + localf.a + " type = " + localf.b + " pkg =" + localAppInfo.getPkgName());
             break;
           }
         }
@@ -134,37 +139,41 @@ public class w
     for (;;)
     {
       long l1;
-      Object localObject1;
-      Object localObject3;
+      ArrayList localArrayList;
+      Object localObject2;
       try
       {
         paramy.a();
         l1 = System.currentTimeMillis();
         this.b = a(as.a(this.a, true));
-        localObject1 = new ArrayList();
-        localObject2 = this.b.entrySet().iterator();
-        if (((Iterator)localObject2).hasNext())
+        localArrayList = new ArrayList();
+        localObject1 = this.b.entrySet().iterator();
+        if (((Iterator)localObject1).hasNext())
         {
-          localObject3 = (Map.Entry)((Iterator)localObject2).next();
-          AppInfo localAppInfo = (AppInfo)((Map.Entry)localObject3).getValue();
+          localObject2 = (Map.Entry)((Iterator)localObject1).next();
+          AppInfo localAppInfo = (AppInfo)((Map.Entry)localObject2).getValue();
           if ((localAppInfo == null) || (localAppInfo.getAppType() != 1)) {
-            break label288;
+            break label410;
           }
           bool = true;
-          ((ArrayList)localObject1).add(new d(((Long)((Map.Entry)localObject3).getKey()).longValue(), bool));
+          localArrayList.add(new d(((Long)((Map.Entry)localObject2).getKey()).longValue(), bool));
           continue;
         }
-        localObject3 = new ArrayList();
+        localObject2 = new ArrayList();
       }
       finally {}
-      Object localObject2 = new ArrayList();
-      int i = ah.a(this.a).a((ArrayList)localObject1, (ArrayList)localObject3);
+      Object localObject1 = new ArrayList();
+      int i = ah.a(this.a).a(localArrayList, (ArrayList)localObject2);
       if (i == 0)
       {
-        localObject1 = a((ArrayList)localObject3);
-        localObject2 = d((ArrayList)localObject3);
-        localObject3 = new ArrayList();
-        if (ah.a(this.a).b((ArrayList)localObject2, (ArrayList)localObject3) != 0) {}
+        ax.b("CloudScan", "tinyCloudCheck finish,CloudResult size:" + ((ArrayList)localObject2).size());
+        localObject1 = a((ArrayList)localObject2);
+        localArrayList = d((ArrayList)localObject2);
+        localObject2 = new ArrayList();
+        i = ah.a(this.a).b(localArrayList, (ArrayList)localObject2);
+        if (i == 0) {
+          ax.b("CloudScanEngine", "cloudCheck result: size " + ((ArrayList)localObject2).size() + "\n" + ((ArrayList)localObject2).toString());
+        }
       }
       for (;;)
       {
@@ -178,12 +187,12 @@ public class w
             paramy.a((ArrayList)localObject1);
           }
           return;
-          localObject1 = localObject2;
-          if (paramy != null)
-          {
+          ax.a("CloudScanEngine", "cloud scan error " + i);
+          continue;
+          if (paramy != null) {
             paramy.a(i);
-            localObject1 = localObject2;
           }
+          ax.a("CloudScanEngine", "cloud scan error " + i);
         }
         catch (InterruptedException localInterruptedException)
         {
@@ -193,14 +202,14 @@ public class w
           }
         }
       }
-      label288:
+      label410:
       boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.w
  * JD-Core Version:    0.7.0.1
  */

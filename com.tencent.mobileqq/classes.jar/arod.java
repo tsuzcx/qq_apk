@@ -1,152 +1,142 @@
-import android.app.Activity;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.os.Build;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.JpegSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.pic.JpegCompressor;
+import com.tencent.mobileqq.pic.JpegSoLoad;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class arod
+public class arod
+  extends arnz
 {
-  public Activity a;
-  protected Bundle a;
-  public View a;
-  protected ViewGroup a;
-  protected ProgressBar a;
-  protected RelativeLayout a;
-  protected TextView a;
-  protected aroe a;
-  protected View b;
-  protected TextView b;
-  protected TextView c;
+  long a = 0L;
+  QQAppInterface b = null;
+  boolean d = true;
   
-  public arod(Activity paramActivity)
+  public arod(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    super(e(), paramQQAppInterface);
+    this.b = paramQQAppInterface;
   }
   
-  public Rect a()
+  public static String e()
   {
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {
-      return (Rect)this.jdField_a_of_type_AndroidOsBundle.getParcelable("file_browser_params_thumb_bound");
+    if ("armeabi-v7a".equalsIgnoreCase(Build.CPU_ABI)) {
+      return "qq.android.pic.jpeg.so_v7_820";
     }
-    return null;
+    return "qq.android.pic.jpeg.so_v5_820";
   }
   
-  public View a()
+  public int a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return 10043;
   }
   
-  public abstract void a();
-  
-  public void a(int paramInt)
+  public Class<? extends XmlData> a()
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    return JpegSoData.class;
+  }
+  
+  public String a()
+  {
+    return "qjpegDownloadSoDuration";
+  }
+  
+  public void a(XmlData paramXmlData)
+  {
+    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof JpegSoData))) {
+      QLog.d("QJpegSoDownloadHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
     }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null))
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378269));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131378237));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378246));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365863));
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378236);
-    }
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
-  }
-  
-  public void a(aroe paramaroe)
-  {
-    this.jdField_a_of_type_Aroe = paramaroe;
+    super.a(paramXmlData);
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    }
-  }
-  
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    if (this.c == null) {
-      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371395));
-    }
-    if (this.c != null)
+    String str2 = JpegSoLoad.getJpegSolibPath(BaseApplicationImpl.getContext());
+    String str1 = str2 + JpegSoLoad.getLibActualName("jpegc_above820");
+    for (;;)
     {
-      this.c.setText(paramString);
-      this.c.setOnClickListener(paramOnClickListener);
-      this.c.setVisibility(0);
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QJpegSoDownloadHandler", 2, "download success: " + paramString + " ,so path:" + str1);
+        }
+        bgmg.a(paramString, str2, false);
+        str2 = bbfc.a(str1);
+        Object localObject2 = a();
+        if (!(localObject2 instanceof JpegSoData)) {
+          break label335;
+        }
+        localObject2 = (JpegSoData)localObject2;
+        if (QLog.isColorLevel()) {
+          QLog.d("QJpegSoDownloadHandler", 2, "doOnDownloadSuccess, soMD5:" + str2 + " soData.SO_MD5:" + ((JpegSoData)localObject2).SO_MD5);
+        }
+        if (!str2.equalsIgnoreCase(((JpegSoData)localObject2).SO_MD5)) {
+          break label335;
+        }
+        JpegCompressor.jpegcompressLoadSo();
+        bool = true;
+        if (!bool)
+        {
+          bgmg.d(str1);
+          bgmg.d(paramString);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QJpegSoDownloadHandler", 2, "doOnDownloadSuccess,suc:" + bool);
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("QJpegSoDownloadHandler", 2, localException, new Object[0]);
+        bgmg.d(str1);
+        bgmg.d(paramString);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("QJpegSoDownloadHandler", 2, "doOnDownloadSuccess,suc:" + false);
+        continue;
+      }
+      finally
+      {
+        bgmg.d(str1);
+        bgmg.d(paramString);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("QJpegSoDownloadHandler", 2, "doOnDownloadSuccess,suc:" + false);
+      }
+      super.a(paramString);
+      return;
+      label335:
+      boolean bool = false;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    TextView localTextView;
-    if (this.c != null)
+    if (a().loadState == 2)
     {
-      localTextView = this.c;
-      if (!paramBoolean) {
-        break label24;
+      if (QLog.isColorLevel()) {
+        QLog.d("QJpegSoDownloadHandler", 2, "is in downloading");
       }
-    }
-    label24:
-    for (int i = 0;; i = 4)
-    {
-      localTextView.setVisibility(i);
       return;
     }
+    super.a(paramBoolean);
   }
   
-  public void b()
+  public boolean a()
   {
-    if (this.jdField_b_of_type_AndroidViewView != null) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
+    return true;
   }
   
-  public void b(int paramInt)
+  public String b()
   {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    RelativeLayout localRelativeLayout;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      if (!paramBoolean) {
-        break label24;
-      }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localRelativeLayout.setVisibility(i);
-      return;
-    }
+    return null;
   }
 }
 

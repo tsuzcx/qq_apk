@@ -15,14 +15,14 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import aoks;
-import benn;
-import bhtb;
+import aqlk;
+import bhur;
+import com.tencent.util.VersionUtils;
 
 public class BubbleVideoView
   extends BubbleImageView
 {
-  private static benn a;
+  private static bhur a;
   private Bitmap b;
   private boolean c;
   
@@ -43,14 +43,14 @@ public class BubbleVideoView
   
   private void b(Canvas paramCanvas)
   {
-    if (jdField_a_of_type_Benn != null) {
-      jdField_a_of_type_Benn.a(this, paramCanvas);
+    if (jdField_a_of_type_Bhur != null) {
+      jdField_a_of_type_Bhur.a(this, paramCanvas);
     }
   }
   
-  public static void setDrawListener(benn parambenn)
+  public static void setDrawListener(bhur parambhur)
   {
-    jdField_a_of_type_Benn = parambenn;
+    jdField_a_of_type_Bhur = parambhur;
   }
   
   protected void a()
@@ -124,7 +124,7 @@ public class BubbleVideoView
   {
     this.e = f;
     int i;
-    if (bhtb.e())
+    if (VersionUtils.isHoneycomb())
     {
       this.jdField_a_of_type_Int = 1;
       a();
@@ -132,7 +132,7 @@ public class BubbleVideoView
       if (Build.VERSION.SDK_INT >= 28)
       {
         this.g = true;
-        Object localObject = (String)aoks.a().a(462);
+        Object localObject = (String)aqlk.a().a(462);
         if ((localObject != null) && (((String)localObject).length() > 0))
         {
           localObject = ((String)localObject).split("\\|");
@@ -206,7 +206,7 @@ public class BubbleVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BubbleVideoView
  * JD-Core Version:    0.7.0.1
  */

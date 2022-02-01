@@ -1,30 +1,17 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agze
-  implements View.OnClickListener
+  extends ahbl
 {
-  agze(agzd paramagzd) {}
-  
-  public void onClick(View paramView)
+  agze(agwz paramagwz)
   {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
-    {
-      paramView = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (paramView != null)
-      {
-        paramView = paramView.a();
-        if (paramView != null) {
-          paramView.b(agzd.a(this.a));
-        }
-      }
-      anpd.a().a();
-    }
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahgg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

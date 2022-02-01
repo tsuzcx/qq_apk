@@ -2,9 +2,9 @@ package com.tencent.mobileqq.richmediabrowser;
 
 import android.os.Handler;
 import android.os.Looper;
-import axyp;
-import axzm;
-import azqs;
+import baww;
+import baxu;
+import bcst;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
 import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
@@ -16,21 +16,21 @@ import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
 public class ImmersionHelper
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private axyp jdField_a_of_type_Axyp;
+  private baww jdField_a_of_type_Baww;
   private ImmersionHelper.ImmersionTimerRunnable jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper$ImmersionTimerRunnable;
   public boolean a;
   public boolean b;
   public boolean c;
   
-  public ImmersionHelper(axyp paramaxyp)
+  public ImmersionHelper(baww parambaww)
   {
-    this.jdField_a_of_type_Axyp = paramaxyp;
+    this.jdField_a_of_type_Baww = parambaww;
     this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper$ImmersionTimerRunnable = new ImmersionHelper.ImmersionTimerRunnable(this, null);
   }
   
   private int a()
   {
-    Object localObject = this.jdField_a_of_type_Axyp.getSelectedItem();
+    Object localObject = this.jdField_a_of_type_Baww.getSelectedItem();
     if ((localObject == null) || (((RichMediaBrowserInfo)localObject).baseData == null)) {
       return -1;
     }
@@ -64,7 +64,7 @@ public class ImmersionHelper
   private int a(String paramString)
   {
     int k = 1;
-    Object localObject = this.jdField_a_of_type_Axyp.getSelectedItem();
+    Object localObject = this.jdField_a_of_type_Baww.getSelectedItem();
     if ((localObject == null) || (((RichMediaBrowserInfo)localObject).baseData == null)) {}
     label89:
     label106:
@@ -117,7 +117,7 @@ public class ImmersionHelper
   
   public void a()
   {
-    if (!this.jdField_a_of_type_Axyp.b())
+    if (!this.jdField_a_of_type_Baww.b())
     {
       BrowserLogHelper.getInstance().getGalleryLog().d("ImmersionHelper", 2, "startImmersionTimer, immersion switch is not open");
       return;
@@ -140,8 +140,8 @@ public class ImmersionHelper
   
   public void c()
   {
-    this.b = this.jdField_a_of_type_Axyp.a.a();
-    this.c = this.jdField_a_of_type_Axyp.d();
+    this.b = this.jdField_a_of_type_Baww.a.a();
+    this.c = this.jdField_a_of_type_Baww.d();
   }
   
   public void d()
@@ -153,10 +153,10 @@ public class ImmersionHelper
   public void e()
   {
     int i = a("0X800A9B5");
-    if (this.jdField_a_of_type_Axyp.c()) {}
+    if (this.jdField_a_of_type_Baww.c()) {}
     for (String str = "1";; str = "2")
     {
-      azqs.b(null, "dc00898", "", "", "0X800A9B5", "0X800A9B5", i, 0, str, "", "", "");
+      bcst.b(null, "dc00898", "", "", "0X800A9B5", "0X800A9B5", i, 0, str, "", "", "");
       return;
     }
   }
@@ -166,19 +166,19 @@ public class ImmersionHelper
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = 2;; i = 1)
     {
-      azqs.b(null, "dc00898", "", "", "0X800A99B", "0X800A99B", i, 0, "" + a("0X800A99B"), "", "", "");
+      bcst.b(null, "dc00898", "", "", "0X800A99B", "0X800A99B", i, 0, "" + a("0X800A99B"), "", "", "");
       return;
     }
   }
   
   public void g()
   {
-    azqs.b(null, "dc00898", "", "", "0X800A9B4", "0X800A9B4", a(), 0, "", "", "", "");
+    bcst.b(null, "dc00898", "", "", "0X800A9B4", "0X800A9B4", a(), 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.ImmersionHelper
  * JD-Core Version:    0.7.0.1
  */

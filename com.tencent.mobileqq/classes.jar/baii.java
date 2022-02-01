@@ -1,61 +1,81 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.teamwork.TenDocWebPreLoadHelper.1;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.Utils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.OutputStream;
+import org.apache.http.Header;
 
 public class baii
+  extends bdsh
 {
-  public static volatile String a = "";
+  protected BaseApplicationImpl a;
   
-  public static TouchWebView a(Context paramContext)
+  public baii(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    baij localbaij = baij.a();
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseApplicationImpl.sApplication;
-    }
-    return localbaij.a((Context)localObject);
+    this.a = paramBaseApplicationImpl;
   }
   
-  public static void a(String paramString)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    QLog.d("TenDocWebPreLoadHelper", 1, "tendocpreload preCreateWebViewNoWebProcess ");
-    baij.a().a(paramString);
-  }
-  
-  public static boolean a(Activity paramActivity, String paramString)
-  {
-    if (!aoyh.a().a()) {}
-    while ((paramActivity == null) || (TextUtils.isEmpty(paramString)) || ((!(paramActivity instanceof TeamWorkDocEditBrowserActivity)) && (!baic.c(paramString))) || (!baij.a().a()) || ((!paramString.contains(a)) && (a != null))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static void b(String paramString)
-  {
-    QLog.d("TenDocWebPreLoadHelper", 1, "tendocpreload preloadTenDocUrl ");
-    if (!TextUtils.isEmpty(paramString))
+    if ((paramDownloadParams != null) && (paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
     {
-      a = paramString;
-      if (Looper.getMainLooper() != Looper.myLooper()) {
-        break label61;
-      }
-      if ((baic.c(paramString)) && (!baij.a().a(paramString)))
+      paramOutputStream = (String)paramDownloadParams.tag;
+      paramDownloadParams = bhgg.a(anhk.bg);
+      try
       {
-        baij.a().a(paramString);
-        baij.a().a(paramString);
+        paramDownloadParams = new File(paramDownloadParams);
+        paramDownloadParams.mkdirs();
+        paramDownloadParams = new File(paramDownloadParams, Utils.Crc64String(paramOutputStream));
+        if (paramDownloadParams.exists()) {
+          return paramDownloadParams;
+        }
+        int i = bhhh.a(new bhhf(paramOutputStream, paramDownloadParams), null);
+        if (i == 0) {
+          return paramDownloadParams;
+        }
+      }
+      catch (Exception paramOutputStream)
+      {
+        QLog.e("AbsDownloader", 1, "download exception " + paramOutputStream);
       }
     }
-    return;
-    label61:
-    new Handler(Looper.getMainLooper()).post(new TenDocWebPreLoadHelper.1(paramString));
+    return null;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if ((paramDownloadParams != null) && (paramFile != null))
+    {
+      paramDownloadParams = paramDownloadParams.getHeader("isCircle");
+      if (paramDownloadParams != null)
+      {
+        paramDownloadParams = paramDownloadParams.getValue();
+        if (!TextUtils.isEmpty(paramDownloadParams))
+        {
+          int j = Integer.valueOf(paramDownloadParams).intValue();
+          int i = 90;
+          if (this.a != null) {
+            i = bggq.a(this.a, 30.0F);
+          }
+          paramDownloadParams = bgmo.a(paramFile.getAbsolutePath(), i, i);
+          paramFile = paramDownloadParams;
+          if (j == 1)
+          {
+            if (paramDownloadParams != null) {
+              paramFile = bgmo.a(paramDownloadParams, paramDownloadParams.getWidth(), paramDownloadParams.getWidth(), paramDownloadParams.getHeight());
+            }
+          }
+          else {
+            return paramFile;
+          }
+        }
+      }
+    }
+    return null;
   }
 }
 

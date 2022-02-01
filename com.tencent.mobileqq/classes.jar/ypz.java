@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
 
 public class ypz
-  implements DialogInterface.OnDismissListener
+  implements Animation.AnimationListener
 {
-  public ypz(FollowTextView paramFollowTextView) {}
+  public ypz(NewMessageYellowBar paramNewMessageYellowBar) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FollowTextView.a(this.a, true);
+    this.a.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ypz
  * JD-Core Version:    0.7.0.1
  */

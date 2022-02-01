@@ -1,29 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class vao
-  extends QQUIEventReceiver<vai, vsu>
+class vao
+  implements DialogInterface.OnClickListener
 {
-  public vao(@NonNull vai paramvai)
-  {
-    super(paramvai);
-  }
+  vao(val paramval) {}
   
-  public void a(@NonNull vai paramvai, @NonNull vsu paramvsu)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramvai.a.a().equals(paramvsu.jdField_a_of_type_JavaLangString)) && ((paramvsu.jdField_a_of_type_Vpm instanceof vqa))) {
-      paramvai.a(((vqa)paramvsu.jdField_a_of_type_Vpm).a(), paramvsu.b);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vsu.class;
+    vab.a(this.a.jdField_a_of_type_Vab).b(this.a.jdField_a_of_type_Vab.a().hashCode(), vab.a(this.a.jdField_a_of_type_Vab), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vao
  * JD-Core Version:    0.7.0.1
  */

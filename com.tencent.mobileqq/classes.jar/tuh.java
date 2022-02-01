@@ -1,40 +1,24 @@
-import com.tencent.biz.qqcircle.comment.ItemReplyView;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StReply;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
 
 public class tuh
-  implements ucq
+  implements zxw<aacp>
 {
-  public tuh(ItemReplyView paramItemReplyView) {}
+  public tuh(FolderFollowTabFragment paramFolderFollowTabFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void a(zxz paramzxz, aacp paramaacp)
   {
-    FeedCloudMeta.StComment localStComment;
-    FeedCloudMeta.StReply localStReply;
-    yhn localyhn;
-    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
-    if (ItemReplyView.a(this.a) != null)
-    {
-      localStComment = ItemReplyView.a(this.a);
-      localStReply = ItemReplyView.a(this.a);
-      localyhn = ItemReplyView.a(this.a);
-      localQCircleCommentPraiseLayout = ItemReplyView.a(this.a);
-      if (!paramBoolean) {
-        break label83;
-      }
+    if (paramzxz.e()) {
+      FolderFollowTabFragment.a(this.a, paramaacp);
     }
-    label83:
-    for (int i = 14;; i = 15)
-    {
-      localyhn.a(localQCircleCommentPraiseLayout, i, ItemReplyView.a(this.a), new Object[] { localStComment, localStReply });
+    while ((!paramzxz.d()) && (!paramzxz.c())) {
       return;
     }
+    FolderFollowTabFragment.b(this.a, paramaacp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tuh
  * JD-Core Version:    0.7.0.1
  */

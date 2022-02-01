@@ -1,65 +1,107 @@
-import android.content.SharedPreferences;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.manager.TicketManager;
+import mqq.observer.BusinessObserver;
+import tencent.im.troop_search_searchtab.searchtab.ReqBody;
+import tencent.im.troop_search_userinfo.userinfo.AppInfo;
+import tencent.im.troop_search_userinfo.userinfo.GPS;
+import tencent.im.troop_search_userinfo.userinfo.UserInfo;
 
-class njj
-  implements Handler.Callback
+public class njj
 {
-  njj(nin paramnin) {}
+  protected QQAppInterface a;
   
-  public boolean handleMessage(Message paramMessage)
+  public njj(QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramMessage.what)
+    this.a = paramQQAppInterface;
+  }
+  
+  private userinfo.UserInfo a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    userinfo.UserInfo localUserInfo = new userinfo.UserInfo();
+    Object localObject;
+    if (paramSosoLbsInfo != null)
     {
-    default: 
-      bool1 = false;
+      localObject = new userinfo.GPS();
+      ((userinfo.GPS)localObject).uint32_lat.set(Double.valueOf(paramSosoLbsInfo.a.a * 1000000.0D).intValue());
+      ((userinfo.GPS)localObject).uint32_lon.set(Double.valueOf(paramSosoLbsInfo.a.b * 1000000.0D).intValue());
+      localUserInfo.gps.set((MessageMicro)localObject);
     }
-    do
+    try
     {
-      do
+      if (!TextUtils.isEmpty(this.a.getCurrentAccountUin())) {
+        localUserInfo.uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
+      }
+      paramSosoLbsInfo = new userinfo.AppInfo();
+      paramSosoLbsInfo.plat_type.set(2);
+      paramSosoLbsInfo.str_app_version.set(bgln.c());
+      localUserInfo.app_info.set(paramSosoLbsInfo);
+      localUserInfo.bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.4.1"));
+      paramSosoLbsInfo = (TicketManager)this.a.getManager(2);
+      localObject = this.a.getAccount();
+      if (!TextUtils.isEmpty(paramSosoLbsInfo.getSkey((String)localObject))) {
+        localUserInfo.skey.set(paramSosoLbsInfo.getSkey((String)localObject));
+      }
+      return localUserInfo;
+    }
+    catch (Exception paramSosoLbsInfo)
+    {
+      for (;;)
       {
-        return bool1;
-        if (QLog.isColorLevel()) {
-          QLog.i("AccountDetailGroupListContainer", 2, "refresh recent list, from_handle");
-        }
-        bool1 = bool2;
-      } while (!this.a.b);
-      bool1 = bool2;
-    } while (this.a.jdField_a_of_type_AndroidViewView == null);
-    this.a.jdField_a_of_type_AndroidContentSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("public_account_detail_setting_status", 0);
-    int i;
-    if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null)
-    {
-      i = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_result_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -10000);
-      this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_status_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);
+        paramSosoLbsInfo.printStackTrace();
+      }
     }
-    for (;;)
+  }
+  
+  private void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactTroopHandler", 2, "sendRequest:" + paramString);
+    }
+    NewIntent localNewIntent = new NewIntent(this.a.getApplication(), niq.class);
+    localNewIntent.setWithouLogin(true);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.setObserver(paramBusinessObserver);
+    this.a.startServlet(localNewIntent);
+  }
+  
+  private void a(userinfo.UserInfo paramUserInfo, njk paramnjk)
+  {
+    searchtab.ReqBody localReqBody = new searchtab.ReqBody();
+    localReqBody.user_info.set(paramUserInfo);
+    localReqBody.uint32_label_style.set(1);
+    a("SearchAsmTab.GetPopClassific", localReqBody.toByteArray(), new njl(paramnjk, this.a, 1));
+  }
+  
+  public void a(njk paramnjk)
+  {
+    try
     {
-      bool1 = bool2;
-      if (i != 0) {
-        break;
-      }
-      bool1 = bool2;
-      if (this.a.jdField_a_of_type_Int <= -1) {
-        break;
-      }
-      nin.b(this.a, this.a.jdField_a_of_type_Int);
-      this.a.jdField_a_of_type_AndroidViewView.setOnClickListener(new njk(this));
-      return true;
-      i = -10000;
+      a(a(null), paramnjk);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      paramnjk.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     njj
  * JD-Core Version:    0.7.0.1
  */

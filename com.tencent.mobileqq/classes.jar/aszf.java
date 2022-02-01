@@ -1,23 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.appinfo.data.AppDetail;
+import java.util.concurrent.Executor;
 
-public final class aszf
-  implements Parcelable.Creator<IVPluginInfo>
+class aszf
+  implements atal
 {
-  public IVPluginInfo a(Parcel paramParcel)
+  aszf(asze paramasze) {}
+  
+  public void a()
   {
-    return new IVPluginInfo(paramParcel);
+    QLog.i("FileManagerEngine<FileAssistant>", 1, "waterTest, onGetAppDetailTimeLimit. apkName[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkName + "]");
+    atvy.a().execute(this.a.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public IVPluginInfo[] a(int paramInt)
+  public void a(boolean paramBoolean, AppDetail paramAppDetail)
   {
-    return new IVPluginInfo[paramInt];
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkPackageName = paramAppDetail.packageName;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkName = paramAppDetail.appName;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkIconUrl = paramAppDetail.iconUrl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aszf
  * JD-Core Version:    0.7.0.1
  */

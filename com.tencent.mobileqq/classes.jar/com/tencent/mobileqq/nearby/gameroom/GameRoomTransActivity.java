@@ -1,29 +1,33 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
+import Override;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import auyz;
-import auza;
-import auzb;
-import auze;
-import auzf;
-import bdjz;
-import bema;
+import android.view.MotionEvent;
+import axgi;
+import axgj;
+import axgk;
+import axgn;
+import axgo;
+import bgpa;
+import bhte;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class GameRoomTransActivity
   extends BaseActivity
 {
   public DialogInterface.OnDismissListener a;
-  public bdjz a;
+  public bgpa a;
   
   public GameRoomTransActivity()
   {
-    this.jdField_a_of_type_Bdjz = null;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new auze(this);
+    this.jdField_a_of_type_Bgpa = null;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new axgn(this);
   }
   
   public void a()
@@ -53,7 +57,7 @@ public class GameRoomTransActivity
     {
       i = getIntent().getIntExtra("roomNum", 10);
       int j = getIntent().getIntExtra("zoneId", 0);
-      ((bema)this.app.a(107)).b(i, j, new auza(this, i));
+      ((bhte)this.app.a(107)).b(i, j, new axgj(this, i));
       return;
     }
     catch (Exception localException)
@@ -69,7 +73,7 @@ public class GameRoomTransActivity
   {
     String str = getIntent().getStringExtra("inviteId");
     int i = getIntent().getIntExtra("roomNum", 10);
-    ((bema)this.app.a(107)).a(str, true, new auzb(this, str, i));
+    ((bhte)this.app.a(107)).a(str, true, new axgk(this, str, i));
   }
   
   protected void d()
@@ -77,7 +81,15 @@ public class GameRoomTransActivity
     int i = getIntent().getIntExtra("roomNum", 10);
     int j = getIntent().getIntExtra("zoneId", 0);
     long l = getIntent().getLongExtra("gc", -1L);
-    ((bema)this.app.a(107)).a(new auzf(this, l, i, j));
+    ((bhte)this.app.a(107)).a(new axgo(this, l, i, j));
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -88,7 +100,7 @@ public class GameRoomTransActivity
     {
       if (checkSelfPermission("android.permission.RECORD_AUDIO") != 0)
       {
-        requestPermissions(new auyz(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+        requestPermissions(new axgi(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
         return true;
       }
       a();
@@ -98,6 +110,13 @@ public class GameRoomTransActivity
     return true;
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
@@ -105,7 +124,7 @@ public class GameRoomTransActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity
  * JD-Core Version:    0.7.0.1
  */

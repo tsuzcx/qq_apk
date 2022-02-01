@@ -1,19 +1,39 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public class aibp
-  implements aidx
+class aibp
+  implements View.OnTouchListener
 {
-  public aibp(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aibp(aiay paramaiay) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(1);
-  }
-  
-  public void b()
-  {
-    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(2);
+    boolean bool = false;
+    int i = paramMotionEvent.getAction();
+    paramView = this.a.jdField_a_of_type_Bhtu.a();
+    if (i == 0)
+    {
+      this.a.m.setText(anni.a(2131703926));
+      this.a.m.setTextColor(this.a.r);
+      this.a.jdField_a_of_type_Axey.b();
+      if (paramView != null) {
+        paramView.a(true);
+      }
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
+      bool = true;
+    }
+    while ((i != 3) && (i != 1)) {
+      return bool;
+    }
+    this.a.m.setText(anni.a(2131703865));
+    this.a.m.setTextColor(this.a.q);
+    this.a.jdField_a_of_type_Axey.c();
+    if (paramView != null) {
+      paramView.a(false);
+    }
+    return true;
   }
 }
 

@@ -1,25 +1,58 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import java.io.File;
 
 public class acue
-  implements bfah
+  extends URLDrawableParams
 {
-  public acue(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  Context a;
   
-  public void a(BaseResp paramBaseResp)
+  public acue(Context paramContext, File paramFile)
   {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    super(paramContext);
+    this.a = paramContext;
+    bdzx.a = paramFile;
+    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new bdua(paramFile);
+  }
+  
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  {
+    boolean bool = true;
+    if (("http".equals(paramString)) || ("https".equals(paramString)))
     {
-    case -2: 
-    case -1: 
-    default: 
-      ybk.a(1, 2131720031);
-      return;
+      if (BaseApplicationImpl.sProcessId == 1) {}
+      for (;;)
+      {
+        return new bdvl(bool, paramObject);
+        bool = false;
+      }
     }
-    ybk.a(2, 2131720050);
+    return null;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return bgzd.a();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return this.a.getResources().getDrawable(2130847826);
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return this.a.getResources().getDrawable(2130847826);
   }
 }
 

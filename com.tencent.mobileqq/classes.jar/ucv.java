@@ -1,38 +1,66 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
-import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class ucv
-  extends Animation
+public class ucv<V extends uch, P extends uck<V>>
+  implements ucj
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  private uci<V, P> a;
   
-  private ucv(QCircleExpandableTextView paramQCircleExpandableTextView, int paramInt1, int paramInt2)
+  public ucv(uci<V, P> paramuci)
   {
-    setDuration(paramQCircleExpandableTextView.b);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (paramuci == null) {
+      throw new NullPointerException("IWSDelegateCallback is null!");
+    }
+    this.a = paramuci;
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  private V a()
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    int i = (int)((this.b - this.jdField_a_of_type_Int) * paramFloat + this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.a.setMaxHeight(i - this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.e);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.getLayoutParams().height = i;
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.requestLayout();
+    uch localuch = this.a.a();
+    if (localuch == null) {
+      throw new NullPointerException("View returned from getMvpView() is null");
+    }
+    return localuch;
   }
   
-  public boolean willChangeBounds()
+  private P a()
   {
-    return true;
+    uck localuck = this.a.b();
+    if (localuck == null) {
+      throw new NullPointerException("Presenter returned from getPresenter() is null");
+    }
+    return localuck;
+  }
+  
+  public void a()
+  {
+    a().a();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    uck localuck = this.a.b();
+    paramBundle = localuck;
+    if (localuck == null) {
+      paramBundle = this.a.a();
+    }
+    this.a.a(paramBundle);
+  }
+  
+  public void a(View paramView, @Nullable Bundle paramBundle)
+  {
+    a().a(a());
+  }
+  
+  public void b()
+  {
+    a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ucv
  * JD-Core Version:    0.7.0.1
  */

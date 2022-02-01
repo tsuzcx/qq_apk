@@ -90,18 +90,22 @@ public class TVKCGIVideoInfoBuilder
   private void buildHlsCdnUrl(String paramString)
   {
     String str = getSdtfrom();
-    Object localObject = (TVKCGIVideoInfo.TVKCGIVideoUrlInfo)this.videoInfo.getUrlInfos().get(0);
-    if (localObject != null)
+    Object localObject;
+    if (this.videoInfo.getUrlInfos().size() > 0)
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        break label264;
+      localObject = (TVKCGIVideoInfo.TVKCGIVideoUrlInfo)this.videoInfo.getUrlInfos().get(0);
+      if (localObject != null)
+      {
+        if (!TextUtils.isEmpty(paramString)) {
+          break label277;
+        }
+        if (this.dltype != 3) {
+          break label235;
+        }
+        this.url = (((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getUrl() + String.format("%s&hlskey=%s&sdtfrom=%s", new Object[] { ((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getPt(), ((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getHk(), str }));
       }
-      if (this.dltype != 3) {
-        break label222;
-      }
-      this.url = (((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getUrl() + String.format("%s&hlskey=%s&sdtfrom=%s", new Object[] { ((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getPt(), ((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getHk(), str }));
     }
-    label264:
+    label277:
     for (;;)
     {
       localObject = this.videoInfo.getUrlInfos().iterator();
@@ -126,7 +130,7 @@ public class TVKCGIVideoInfoBuilder
           this.urlList.add(localStringBuffer.toString());
         }
       }
-      label222:
+      label235:
       if (this.dltype == 8)
       {
         this.url = (((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getUrl() + "&sdtfrom=" + str);
@@ -1219,7 +1223,7 @@ public class TVKCGIVideoInfoBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVideoInfoBuilder
  * JD-Core Version:    0.7.0.1
  */

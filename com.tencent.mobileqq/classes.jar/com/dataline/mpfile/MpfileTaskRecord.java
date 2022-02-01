@@ -1,9 +1,9 @@
 package com.dataline.mpfile;
 
-import alof;
-import awge;
+import anhk;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="time,msgid")
@@ -23,7 +23,7 @@ public class MpfileTaskRecord
   
   public MpfileTaskRecord()
   {
-    this.selfuin = String.valueOf(alof.z);
+    this.selfuin = String.valueOf(anhk.z);
     this.frienduin = this.selfuin;
     this.senderuin = this.selfuin;
     this.istroop = 6000;
@@ -54,7 +54,7 @@ public class MpfileTaskRecord
     prewrite();
   }
   
-  public Class<? extends awge> getClassForTable()
+  public Class<? extends Entity> getClassForTable()
   {
     return MpfileTaskRecord.class;
   }
@@ -70,7 +70,7 @@ public class MpfileTaskRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.dataline.mpfile.MpfileTaskRecord
  * JD-Core Version:    0.7.0.1
  */

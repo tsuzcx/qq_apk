@@ -7,33 +7,32 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.RelativeLayout;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import com.tencent.av.ui.QavMenuBaseView;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
 import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.widget.RedDotTextView;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import lyc;
-import mee;
-import mos;
-import mot;
-import mti;
+import lve;
+import mlv;
+import mlw;
+import mqo;
 
 public class QavBeautyMenuPanel
-  extends RelativeLayout
-  implements mee
+  extends QavMenuBaseView
 {
-  static final int[] jdField_a_of_type_ArrayOfInt = { 2131372800, 2131372801 };
+  static final int[] jdField_a_of_type_ArrayOfInt = { 2131373415, 2131373416 };
   long jdField_a_of_type_Long = 0L;
   final View jdField_a_of_type_AndroidViewView;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   final PanelViewPage jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage;
-  final SimpleSlidingIndicator jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator;
-  final mot jdField_a_of_type_Mot;
+  final SimpleSlidingIndicator jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator;
+  final mlw jdField_a_of_type_Mlw;
   boolean jdField_a_of_type_Boolean = false;
   boolean b = false;
   
@@ -50,37 +49,38 @@ public class QavBeautyMenuPanel
   public QavBeautyMenuPanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131559603, this);
+    this.jdField_a_of_type_JavaLangString = ("QavBeautyMenuPanel" + AudioHelper.b());
+    inflate(paramContext, 2131559740, this);
     Object localObject = paramContext.getResources();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131377381);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator = ((SimpleSlidingIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131376840));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131378206);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator = ((SimpleSlidingIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131377653));
     paramAttributeSet = ((Resources)localObject).getDisplayMetrics();
     int k = Math.min(paramAttributeSet.widthPixels, paramAttributeSet.heightPixels);
-    int j = ((Resources)localObject).getDimensionPixelSize(2131297456);
-    int i = ((Resources)localObject).getDimensionPixelSize(2131297453);
+    int j = ((Resources)localObject).getDimensionPixelSize(2131297535);
+    int i = ((Resources)localObject).getDimensionPixelSize(2131297532);
     if (k - i - j * 2 > 20) {}
     for (paramInt = (k - i - j * 2) / 2;; paramInt = (k - i - j * 2) / 2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a(j, i, 0, paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a(j, i, 0, paramInt);
       if (QLog.isDevelopLevel()) {
-        QLog.i("QavBeautyMenuPanel", 4, String.format("QavBeautyMenuPanel, init[%s, %s, %s, %s]", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramInt) }));
+        QLog.i(this.jdField_a_of_type_JavaLangString, 4, String.format("QavBeautyMenuPanel, init[%s, %s, %s, %s]", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramInt) }));
       }
-      paramAttributeSet = ((Resources)localObject).getString(2131695876);
-      localObject = ((Resources)localObject).getString(2131695877);
-      SimpleSlidingIndicator localSimpleSlidingIndicator = this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator;
+      paramAttributeSet = ((Resources)localObject).getString(2131694754);
+      localObject = ((Resources)localObject).getString(2131694755);
+      SimpleSlidingIndicator localSimpleSlidingIndicator = this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator;
       int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
       localSimpleSlidingIndicator.setTabData(new String[] { paramAttributeSet, localObject }, arrayOfInt);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.setCurrentPosition(0, false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.setOnTabListener(new mos(this));
-      this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage = ((PanelViewPage)findViewById(2131371568));
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.setCurrentPosition(0, false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.setOnTabListener(new mlv(this));
+      this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage = ((PanelViewPage)findViewById(2131372139));
       paramAttributeSet = new ArrayList(2);
       paramAttributeSet.add(new BeautyView(paramContext));
       paramAttributeSet.add(new MakeupView(paramContext));
-      this.jdField_a_of_type_Mot = new mot(this, paramAttributeSet);
-      this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.setAdapter(this.jdField_a_of_type_Mot);
+      this.jdField_a_of_type_Mlw = new mlw(this, paramAttributeSet);
+      this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.setAdapter(this.jdField_a_of_type_Mlw);
       this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.setIsPagingEnabled(false);
       this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.setCurrentItem(0, false);
-      setBackgroundResource(2130841835);
+      setBackgroundResource(2130842142);
       return;
       float f = j * 2 + i;
       f = (k - 20) / f;
@@ -91,7 +91,7 @@ public class QavBeautyMenuPanel
   
   private RedDotTextView a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.findViewById(jdField_a_of_type_ArrayOfInt[paramInt]);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.findViewById(jdField_a_of_type_ArrayOfInt[paramInt]);
     if ((localObject instanceof RedTouch))
     {
       localObject = (RedTouch)localObject;
@@ -112,58 +112,72 @@ public class QavBeautyMenuPanel
     if ((!this.b) && (paramInt == 1))
     {
       this.b = true;
-      mti.a("0X800AA61", 0);
+      mqo.a("0X800AA61", 0);
     }
   }
   
-  public void a()
+  public void a(QavPanel paramQavPanel)
   {
-    int i = this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.getCurrentItem();
-    BeautyBaseView localBeautyBaseView = this.jdField_a_of_type_Mot.a(i);
-    if (localBeautyBaseView != null) {
-      localBeautyBaseView.a();
-    }
-  }
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    int j = this.jdField_a_of_type_Mot.getCount();
+    super.a(paramQavPanel);
+    int j = this.jdField_a_of_type_Mlw.getCount();
     int i = 0;
     while (i < j)
     {
-      localObject = this.jdField_a_of_type_Mot.a(i);
-      if (localObject != null) {
-        ((BeautyBaseView)localObject).a(paramLong, paramBoolean);
+      paramQavPanel = this.jdField_a_of_type_Mlw.a(i);
+      if (paramQavPanel != null) {
+        paramQavPanel.setAppInterface(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
       }
       i += 1;
     }
-    Object localObject = lyc.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 8);
-    if (lyc.a((BusinessInfoCheckUpdate.AppInfo)localObject))
+  }
+  
+  public void c(long paramLong, boolean paramBoolean)
+  {
+    super.c(paramLong, paramBoolean);
+    Object localObject;
+    if (paramBoolean)
     {
-      RedDotTextView localRedDotTextView = a(1);
-      if (localRedDotTextView != null)
+      int j = this.jdField_a_of_type_Mlw.getCount();
+      int i = 0;
+      while (i < j)
       {
-        localRedDotTextView.a(true);
-        localObject = lyc.a(8);
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.e((String)localObject);
+        localObject = this.jdField_a_of_type_Mlw.a(i);
+        if (localObject != null) {
+          ((BeautyBaseView)localObject).a(paramLong, paramBoolean);
+        }
+        i += 1;
       }
+      localObject = lve.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 8);
+      if (!lve.a((BusinessInfoCheckUpdate.AppInfo)localObject)) {
+        break label148;
+      }
+      RedDotTextView localRedDotTextView = a(1);
+      if (localRedDotTextView == null) {
+        break label131;
+      }
+      localRedDotTextView.a(true);
+      localObject = lve.a(8);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.e((String)localObject);
     }
+    label131:
+    label148:
     for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a());
+      a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a());
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a(jdField_a_of_type_ArrayOfInt[1], (BusinessInfoCheckUpdate.AppInfo)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a(jdField_a_of_type_ArrayOfInt[1], (BusinessInfoCheckUpdate.AppInfo)localObject);
       break;
     }
   }
   
-  public void b(long paramLong, boolean paramBoolean)
+  public void d(long paramLong, boolean paramBoolean)
   {
-    int j = this.jdField_a_of_type_Mot.getCount();
+    super.d(paramLong, paramBoolean);
+    int j = this.jdField_a_of_type_Mlw.getCount();
     int i = 0;
     while (i < j)
     {
-      BeautyBaseView localBeautyBaseView = this.jdField_a_of_type_Mot.a(i);
+      BeautyBaseView localBeautyBaseView = this.jdField_a_of_type_Mlw.a(i);
       if (localBeautyBaseView != null) {
         localBeautyBaseView.b(paramLong, paramBoolean);
       }
@@ -184,20 +198,13 @@ public class QavBeautyMenuPanel
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void setAppInterface(VideoAppInterface paramVideoAppInterface)
+  public void f()
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != paramVideoAppInterface) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    }
-    int j = this.jdField_a_of_type_Mot.getCount();
-    int i = 0;
-    while (i < j)
-    {
-      BeautyBaseView localBeautyBaseView = this.jdField_a_of_type_Mot.a(i);
-      if (localBeautyBaseView != null) {
-        localBeautyBaseView.setAppInterface(paramVideoAppInterface);
-      }
-      i += 1;
+    super.f();
+    int i = this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.getCurrentItem();
+    BeautyBaseView localBeautyBaseView = this.jdField_a_of_type_Mlw.a(i);
+    if (localBeautyBaseView != null) {
+      localBeautyBaseView.a();
     }
   }
   
@@ -208,10 +215,10 @@ public class QavBeautyMenuPanel
     {
       return;
       if (QLog.isDevelopLevel()) {
-        QLog.i("QavBeautyMenuPanel", 4, "setCurSelTab, [(" + this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.getCurrentItem() + "," + this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a() + ") ---> " + paramInt1 + "], anim[" + paramBoolean + "], width[" + this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.getMeasuredWidth() + "], width[" + this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.getWidth() + "], from[" + paramInt2 + "]");
+        QLog.i(this.jdField_a_of_type_JavaLangString, 4, "setCurSelTab, [(" + this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.getCurrentItem() + "," + this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a() + ") ---> " + paramInt1 + "], anim[" + paramBoolean + "], width[" + this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.getMeasuredWidth() + "], width[" + this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.getWidth() + "], from[" + paramInt2 + "]");
       }
-      if ((paramInt2 != 1) && (paramInt1 != this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a())) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.setCurrentPosition(paramInt1, paramBoolean);
+      if ((paramInt2 != 1) && (paramInt1 != this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a())) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.setCurrentPosition(paramInt1, paramBoolean);
       }
       if ((paramInt2 != 2) && (paramInt1 != this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.getCurrentItem())) {
         this.jdField_a_of_type_ComTencentAvUiBeautyPanelViewPage.setCurrentItem(paramInt1, paramBoolean);
@@ -223,17 +230,17 @@ public class QavBeautyMenuPanel
     }
     for (;;)
     {
-      localObject = lyc.a(8);
+      localObject = lve.a(8);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.d((String)localObject);
       this.jdField_a_of_type_Boolean = false;
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a(jdField_a_of_type_ArrayOfInt[paramInt1]);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a(jdField_a_of_type_ArrayOfInt[paramInt1]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.beauty.QavBeautyMenuPanel
  * JD-Core Version:    0.7.0.1
  */

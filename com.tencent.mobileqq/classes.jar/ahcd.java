@@ -1,19 +1,18 @@
-import android.graphics.Paint;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
 
 public class ahcd
+  extends afwr
 {
-  public final Paint a;
-  public final float[] a;
-  public final String[] a;
-  public final Paint b;
+  public alqf a;
+  protected ViewGroup a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  protected ETTextView a;
+  protected TextView b;
+  public ETTextView b;
   
-  public ahcd(float[] paramArrayOfFloat, String[] paramArrayOfString, Paint paramPaint1, Paint paramPaint2)
-  {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint1;
-    this.b = paramPaint2;
-  }
+  public ahcd(ahbx paramahbx) {}
 }
 
 

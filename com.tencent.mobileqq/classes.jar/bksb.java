@@ -1,50 +1,93 @@
-import dov.com.qq.im.ae.album.nocropper.AECropperGridView;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
-import dov.com.qq.im.ae.album.nocropper.AECropperView;
+import android.content.Context;
 
 public class bksb
-  implements bkrw
 {
-  private bksb(AECropperView paramAECropperView) {}
+  protected int a;
+  Context a;
+  protected bksa a;
+  protected bksd a;
+  protected boolean a;
   
-  public void a()
+  public bksb(bksa parambksa, Context paramContext)
   {
-    boolean bool = true;
-    AECropperView.a(this.a, true);
-    AECropperGridView localAECropperGridView;
-    if (AECropperView.a(this.a) != null)
+    this.jdField_a_of_type_Int = 5;
+    this.jdField_a_of_type_Bksa = parambksa;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(bksd parambksd)
+  {
+    this.jdField_a_of_type_Bksd = parambksd;
+    if (parambksd != null)
     {
-      localAECropperGridView = AECropperView.a(this.a);
-      if (((AECropperView.a(this.a) != null) && (!AECropperView.a(this.a).a())) || (this.a.a == null) || (!this.a.a.b())) {
-        break label83;
-      }
+      a(true);
+      a(true, false);
     }
-    for (;;)
-    {
-      localAECropperGridView.setShowGrid(bool);
+    this.jdField_a_of_type_Bksa.setOnClickListener(new bksc(this));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean == paramBoolean) {
       return;
-      label83:
-      bool = false;
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Bksa.a(3);
+      return;
+    }
+    this.jdField_a_of_type_Bksa.a(0);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (!paramBoolean1)
+    {
+      this.jdField_a_of_type_Bksa.a(5);
+      return;
+    }
+    if (paramBoolean2) {}
+    for (int i = 3;; i = 4)
+    {
+      this.jdField_a_of_type_Bksa.a(i);
+      if ((!this.jdField_a_of_type_Bksa.b(i)) || (this.jdField_a_of_type_Bksd == null)) {
+        break;
+      }
+      this.jdField_a_of_type_Bksd.c();
+      return;
     }
   }
   
-  public void b()
+  public void b(boolean paramBoolean)
   {
-    boolean bool2 = false;
-    AECropperView.a(this.a, false);
-    if (AECropperView.a(this.a) != null)
+    if (!this.jdField_a_of_type_Boolean) {}
+    boolean bool;
+    do
     {
-      AECropperGridView localAECropperGridView = AECropperView.a(this.a);
-      boolean bool1 = bool2;
-      if (AECropperView.a(this.a) != null)
+      do
       {
-        bool1 = bool2;
-        if (AECropperView.a(this.a).b()) {
-          bool1 = true;
-        }
+        return;
+      } while ((this.jdField_a_of_type_Bksa.a() == 0) || (!this.jdField_a_of_type_Bksa.b(2)));
+      bool = true;
+      if (this.jdField_a_of_type_Bksd != null) {
+        bool = this.jdField_a_of_type_Bksd.a(paramBoolean);
       }
-      localAECropperGridView.setShowGrid(bool1);
-    }
+    } while (!bool);
+    this.jdField_a_of_type_Bksa.a(2);
   }
 }
 

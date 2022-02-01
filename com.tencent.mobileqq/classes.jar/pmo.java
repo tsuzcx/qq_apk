@@ -1,163 +1,172 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class pmo
-  implements poa
 {
-  private void a(ArticleInfo paramArticleInfo, int paramInt)
+  private static final aoou jdField_a_of_type_Aoou = new pmp("readinjoy_anti_cheating", false);
+  private static boolean jdField_a_of_type_Boolean;
+  
+  private static int a()
   {
-    Object localObject = paramArticleInfo.mNewPolymericInfo;
-    HashMap localHashMap = new HashMap();
-    localObject = (qlk)((qlj)localObject).jdField_a_of_type_JavaUtilList.get(paramInt);
-    localHashMap.put("rowkey", ((qlk)localObject).jdField_g_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(((qlk)localObject).k)) {
-      localHashMap.put("jump_report_info", ((qlk)localObject).k);
+    String str1 = a();
+    String str2 = (String)bmqa.a("readinjoy_sp_key_last_request_lbs_date", "");
+    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "getToadyRequestLbsTime, today = ", str1, ", lastRequestLbsDate = ", str2 });
+    if (str1.equals(str2)) {
+      return ((Integer)bmqa.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0))).intValue();
     }
-    rqj.a(paramArticleInfo, "0X8007625", "0X8007625", (int)paramArticleInfo.mChannelID, localHashMap);
+    return 0;
   }
   
-  private void a(ArticleInfo paramArticleInfo, String paramString)
+  private static SosoInterface.SosoLocation a()
   {
-    HashMap localHashMap = new HashMap();
-    if (!TextUtils.isEmpty(paramArticleInfo.mReportCommonData)) {
-      localHashMap.put("jump_report_info", paramString);
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = aoor.a("readinjoy_anti_cheating");
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null)) {
+      return localSosoLbsInfo.a;
     }
-    rqj.a(paramArticleInfo, "0X8007625", "0X8007625", (int)paramArticleInfo.mChannelID, localHashMap);
-  }
-  
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
     return null;
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  private static String a()
   {
-    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mNewPolymericInfo == null)) {
-      return new JSONObject();
-    }
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    qlj localqlj = paramBaseArticleInfo.mNewPolymericInfo;
-    localJSONObject1.put("style_ID", "ReadInJoy_video_set_card");
-    localJSONObject1.put("common_header_text", localqlj.jdField_b_of_type_JavaLangString);
-    localJSONObject1.put("topic_header_big_icon_url", localqlj.jdField_a_of_type_JavaLangString);
-    localJSONObject1.put("topic_header_small_icon_url", localqlj.e);
-    localJSONObject1.put("topic_header_desc_text", localqlj.jdField_c_of_type_JavaLangString);
-    String str2;
-    String str1;
-    label175:
-    label177:
-    qlk localqlk;
-    switch (localqlj.jdField_b_of_type_Int)
-    {
-    default: 
-      localJSONObject1.put("empty_header_visibility", "1");
-      switch (localqlj.jdField_c_of_type_Int)
-      {
-      default: 
-        str2 = "195";
-        str1 = "148";
-        paramInt = 0;
-        if (paramInt >= localqlj.jdField_a_of_type_JavaUtilList.size()) {
-          break label398;
-        }
-        localqlk = (qlk)localqlj.jdField_a_of_type_JavaUtilList.get(paramInt);
-        if (localqlk != null) {}
-        break;
-      }
-      break;
-    }
-    for (;;)
-    {
-      paramInt += 1;
-      break label177;
-      localJSONObject1.put("common_header_visibility", "1");
-      break;
-      localJSONObject1.put("topic_header_visibility", "1");
-      break;
-      str2 = "260";
-      str1 = "146";
-      break label175;
-      str2 = "315";
-      str1 = "236";
-      break label175;
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("style_ID", "ReadInJoy_video_set_card_collection_cell");
-      localJSONObject2.put("videoWidth", str1);
-      localJSONObject2.put("videoHeight", str2);
-      localJSONObject2.put("video_cover_url", localqlk.jdField_c_of_type_JavaLangString);
-      localJSONObject2.put("video_title_text", localqlk.jdField_a_of_type_JavaLangString);
-      localJSONObject2.put("play_count_text", localqlk.j);
-      localJSONObject2.put("comment_count_text", localqlk.jdField_g_of_type_Int + "评论");
-      localJSONObject2.put("rowkey", localqlk.jdField_g_of_type_JavaLangString);
-      localJSONArray.put(paramInt, localJSONObject2);
-    }
-    label398:
-    if (paramBaseArticleInfo.mNewPolymericInfo.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo == null) {
-      localJSONObject1.put("canScroll", "0");
-    }
-    for (;;)
-    {
-      localJSONObject1.put("video_data", localJSONArray);
-      localJSONObject1.put("card_jump_report_info", "");
-      QLog.d("NewPolymericMultiVideoProteusItem", 1, localJSONObject1.toString());
-      return localJSONObject1;
-      localJSONObject1.put("canScroll", "1");
-    }
+    return new SimpleDateFormat("yyyy.MM.dd").format(new Date());
   }
   
-  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
+  public static void a()
   {
-    ArticleInfo localArticleInfo = parampgd.a();
-    if (localArticleInfo == null) {}
-    Object localObject;
-    do
-    {
+    long l = System.currentTimeMillis();
+    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "init, app launch time = ", Long.valueOf(l) });
+    bmqa.a("readinjoy_sp_key_app_launch_time", Long.valueOf(l));
+  }
+  
+  public static void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
       return;
-      localObject = paramContainer.getVirtualView();
-      ptw localptw = (ptw)((ViewBase)localObject).findViewBaseByName("id_proteus_collection_view");
-      localptw.a(parampgd);
-      localptw.a(new pmp(this, localArticleInfo, paramContainer));
-      localptw.a(new pmq(this, localArticleInfo, parampgd));
-      parampgd = paramContainer.getLayoutParams();
-      localObject = ((ViewBase)localObject).getComLayoutParams();
-    } while ((parampgd == null) || (localObject == null));
-    parampgd.width = ((Layout.Params)localObject).mLayoutWidth;
-    parampgd.height = ((Layout.Params)localObject).mLayoutHeight;
-    paramContainer.setLayoutParams(parampgd);
+    }
+    SosoInterface.SosoLocation localSosoLocation = a();
+    if (localSosoLocation != null) {}
+    for (;;)
+    {
+      try
+      {
+        paramJSONObject.put("longitude", localSosoLocation.b);
+        paramJSONObject.put("latitude", localSosoLocation.a);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("ReadInJoySpEventReportUtil", 2, new Object[] { "json = ", paramJSONObject });
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.d("ReadInJoySpEventReportUtil", 1, "addLbsInfo e = ", localJSONException);
+        continue;
+      }
+      b();
+    }
   }
   
-  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
+  private static boolean a()
   {
-    if (paramViewBase == null) {}
-    String str;
-    do
+    Object localObject = (QQAppInterface)pha.a();
+    if ((localObject == null) || (!((QQAppInterface)localObject).isLogin()))
     {
-      do
+      QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, app is null or not login, do not request.");
+      return false;
+    }
+    if (jdField_a_of_type_Boolean)
+    {
+      QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, isRequestingLbs.");
+      return false;
+    }
+    if (a() != null)
+    {
+      QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, cache is valid, no need to request.");
+      return false;
+    }
+    localObject = BaseApplicationImpl.getApplication().getApplicationContext();
+    if ((localObject != null) && (Build.VERSION.SDK_INT >= 23) && (((Context)localObject).checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
+    {
+      QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, no location permission.");
+      return false;
+    }
+    localObject = Aladdin.getConfig(165);
+    if (localObject != null)
+    {
+      int i = ((AladdinConfig)localObject).getIntegerFromString("lbs_switch", 1);
+      QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "lbsSwitch = ", Integer.valueOf(i) });
+      if (i != 1)
       {
+        QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, switch is OFF, do not request.");
         return false;
-        str = paramViewBase.getClickEvnet();
-      } while (TextUtils.isEmpty(str));
-      parampgd = parampgd.a();
-    } while (!"cmd_video_set_card_click".equals(str));
-    paramViewBase.setOnClickListener(new pmr(this, parampgd, paramContainer));
+      }
+      i = ((AladdinConfig)localObject).getIntegerFromString("lbs_request_interval", 2);
+      long l1 = ((Long)bmqa.a("readinjoy_sp_key_app_launch_time", Long.valueOf(System.currentTimeMillis()))).longValue();
+      long l2 = (System.currentTimeMillis() - l1) / 1000L / 60L;
+      QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "from app launch interval = ", Long.valueOf(l2), ", lbsRequestInterval = ", Integer.valueOf(i), ", appLaunchTime = ", Long.valueOf(l1) });
+      if (l2 <= i)
+      {
+        QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, less than lbs request interval.");
+        return false;
+      }
+      i = ((AladdinConfig)localObject).getIntegerFromString("lbs_day_limit", 1);
+      int j = a();
+      QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "lbsDayLimit = ", Integer.valueOf(i), ", todayRequestTime = ", Integer.valueOf(j) });
+      if (j >= i)
+      {
+        QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, over lbs day limit.");
+        return false;
+      }
+    }
+    QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: YES !!!");
     return true;
+  }
+  
+  private static void b()
+  {
+    if (a())
+    {
+      aoor.a(jdField_a_of_type_Aoou);
+      jdField_a_of_type_Boolean = true;
+      c();
+    }
+  }
+  
+  private static void c()
+  {
+    String str = a();
+    Object localObject = (String)bmqa.a("readinjoy_sp_key_last_request_lbs_date", "");
+    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "updateToadyRequestLbsTime, today = ", str, ", lastRequestLbsDate = ", localObject });
+    if (str.equals(localObject))
+    {
+      localObject = (Integer)bmqa.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0));
+      QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "updateToadyRequestLbsTime, todayTime = ", localObject });
+      bmqa.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(((Integer)localObject).intValue() + 1));
+    }
+    for (;;)
+    {
+      bmqa.a("readinjoy_sp_key_last_request_lbs_date", str);
+      return;
+      QLog.d("ReadInJoySpEventReportUtil", 1, "updateToadyRequestLbsTime, first time today.");
+      bmqa.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(1));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pmo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceText;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-class aflp
-  implements DialogInterface.OnClickListener
+public class aflp
+  implements View.OnClickListener
 {
-  aflp(aflo paramaflo, MessageForDeviceText paramMessageForDeviceText) {}
+  public aflp(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ((zxz)this.jdField_a_of_type_Aflo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_Aflo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aflo.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aflo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
+    zkb.a(this.a.a);
+    zkb.a(this.a.a.a);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
+    {
+      localArrayList.add(((afna)this.a.a.a.get(i)).a);
+      i += 1;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", localArrayList);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

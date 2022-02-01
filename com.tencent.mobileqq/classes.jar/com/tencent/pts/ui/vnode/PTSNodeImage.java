@@ -6,19 +6,21 @@ import com.tencent.pts.ui.view.PTSImageView;
 public class PTSNodeImage
   extends PTSNodeVirtual<PTSImageView>
 {
-  private PTSNodeImage(PTSAppInstance paramPTSAppInstance)
+  public static final String TAG = "PTSNodeImage";
+  private String imageUrl;
+  
+  public PTSNodeImage(PTSAppInstance paramPTSAppInstance)
   {
     super(paramPTSAppInstance);
   }
   
   private void setImageSrc(String paramString) {}
   
-  public PTSImageView initView()
+  protected void onParseValueFinished()
   {
-    return new PTSImageView(this);
+    super.onParseValueFinished();
+    setImageSrc(this.imageUrl);
   }
-  
-  public void resetAll() {}
   
   protected boolean setAttribute(String paramString, Object paramObject)
   {
@@ -27,7 +29,7 @@ public class PTSNodeImage
     }
     if (("src".equalsIgnoreCase(paramString)) && ((paramObject instanceof String)))
     {
-      setImageSrc((String)paramObject);
+      this.imageUrl = ((String)paramObject);
       return true;
     }
     return false;
@@ -35,7 +37,7 @@ public class PTSNodeImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeImage
  * JD-Core Version:    0.7.0.1
  */

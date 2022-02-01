@@ -1,36 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
-final class ansx
-  implements bauf
+class ansx
+  implements lxe
 {
-  public void a(bave parambave, bavf parambavf)
+  ansx(ansp paramansp, byte[] paramArrayOfByte) {}
+  
+  public void a(lxd paramlxd)
   {
-    if ((parambave == null) || (parambavf == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambave instanceof baub));
-      parambave = (baub)parambave;
-      parambave.jdField_a_of_type_Long += parambavf.c;
-      parambavf.c = 0L;
-      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
-      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
-      parambavf = parambave.jdField_a_of_type_JavaLangString;
-      if (parambavf.contains("range="))
-      {
-        String str = parambavf.substring(0, parambavf.lastIndexOf("range="));
-        parambave.jdField_a_of_type_JavaLangString = (str + "range=" + parambave.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ResDownloadManager", 2, "IBreakDownFix, " + parambavf);
+    paramlxd.a(this.jdField_a_of_type_ArrayOfByte);
+    paramlxd.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ansx
  * JD-Core Version:    0.7.0.1
  */

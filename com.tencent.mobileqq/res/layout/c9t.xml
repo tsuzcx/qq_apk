@@ -9,7 +9,7 @@
         </RadioGroup>
         <ImageView android:id="@id/mb5" android:visibility="gone" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="50.0dip" android:layout_marginTop="13.0dip" android:src="@drawable/skin_tips_dot" android:layout_alignLeft="@id/m62" android:layout_alignTop="@id/m62" />
         <ImageView android:id="@id/lrn" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="@dimen/b8c" android:layout_marginRight="@dimen/b8d" android:src="@drawable/hll" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <com.tencent.mobileqq.widget.SquareImageView android:id="@id/lro" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="@dimen/b8d" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:round_radius="28.0dip" />
+        <com.tencent.mobileqq.widget.SquareImageView android:id="@id/lro" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="@dimen/b8d" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
     <android.support.v4.view.ViewPager android:id="@id/mft" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/title_bar_height" />
     <ImageView android:layout_gravity="bottom|center|right" android:id="@id/bb_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gxv" />

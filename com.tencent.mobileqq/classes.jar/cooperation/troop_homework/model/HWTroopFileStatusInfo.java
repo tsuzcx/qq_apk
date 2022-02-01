@@ -1,6 +1,6 @@
 package cooperation.troop_homework.model;
 
-import bbtn;
+import bety;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -28,62 +28,62 @@ public class HWTroopFileStatusInfo
   public String sha1;
   public long uniseq;
   
-  public static HWTroopFileStatusInfo parse(bbtn parambbtn)
+  public static HWTroopFileStatusInfo parse(bety parambety)
   {
-    if (parambbtn == null) {
+    if (parambety == null) {
       return null;
     }
     HWTroopFileStatusInfo localHWTroopFileStatusInfo = new HWTroopFileStatusInfo();
-    localHWTroopFileStatusInfo.Id = parambbtn.jdField_a_of_type_JavaUtilUUID;
-    localHWTroopFileStatusInfo.SeqId = parambbtn.jdField_a_of_type_Int;
-    localHWTroopFileStatusInfo.uniseq = parambbtn.jdField_a_of_type_Long;
-    localHWTroopFileStatusInfo.TroopUin = parambbtn.jdField_b_of_type_Long;
-    localHWTroopFileStatusInfo.Status = parambbtn.jdField_b_of_type_Int;
-    localHWTroopFileStatusInfo.IsNewStatus = parambbtn.jdField_a_of_type_Boolean;
-    localHWTroopFileStatusInfo.ErrorCode = parambbtn.jdField_c_of_type_Int;
-    localHWTroopFileStatusInfo.UploadTime = parambbtn.jdField_d_of_type_Int;
-    localHWTroopFileStatusInfo.ProgressTotal = parambbtn.jdField_c_of_type_Long;
-    localHWTroopFileStatusInfo.ProgressValue = parambbtn.jdField_d_of_type_Long;
-    localHWTroopFileStatusInfo.LocalFile = parambbtn.jdField_a_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.ThumbnailFile_Small = parambbtn.jdField_b_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.ThumbnailFile_Large = parambbtn.jdField_c_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.FilePath = parambbtn.jdField_e_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.sha1 = parambbtn.f;
-    localHWTroopFileStatusInfo.FileName = parambbtn.g;
-    localHWTroopFileStatusInfo.BusId = parambbtn.jdField_h_of_type_Int;
-    localHWTroopFileStatusInfo.entrySessionID = parambbtn.jdField_e_of_type_Long;
-    localHWTroopFileStatusInfo.NickName = parambbtn.jdField_h_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.Id = parambety.jdField_a_of_type_JavaUtilUUID;
+    localHWTroopFileStatusInfo.SeqId = parambety.jdField_a_of_type_Int;
+    localHWTroopFileStatusInfo.uniseq = parambety.jdField_a_of_type_Long;
+    localHWTroopFileStatusInfo.TroopUin = parambety.jdField_b_of_type_Long;
+    localHWTroopFileStatusInfo.Status = parambety.jdField_b_of_type_Int;
+    localHWTroopFileStatusInfo.IsNewStatus = parambety.jdField_a_of_type_Boolean;
+    localHWTroopFileStatusInfo.ErrorCode = parambety.jdField_c_of_type_Int;
+    localHWTroopFileStatusInfo.UploadTime = parambety.jdField_d_of_type_Int;
+    localHWTroopFileStatusInfo.ProgressTotal = parambety.jdField_c_of_type_Long;
+    localHWTroopFileStatusInfo.ProgressValue = parambety.jdField_d_of_type_Long;
+    localHWTroopFileStatusInfo.LocalFile = parambety.jdField_a_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.ThumbnailFile_Small = parambety.jdField_b_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.ThumbnailFile_Large = parambety.jdField_c_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.FilePath = parambety.jdField_e_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.sha1 = parambety.f;
+    localHWTroopFileStatusInfo.FileName = parambety.g;
+    localHWTroopFileStatusInfo.BusId = parambety.jdField_h_of_type_Int;
+    localHWTroopFileStatusInfo.entrySessionID = parambety.jdField_e_of_type_Long;
+    localHWTroopFileStatusInfo.NickName = parambety.jdField_h_of_type_JavaLangString;
     return localHWTroopFileStatusInfo;
   }
   
-  public bbtn toTroopFileStatusInfo()
+  public bety toTroopFileStatusInfo()
   {
-    bbtn localbbtn = new bbtn();
-    localbbtn.jdField_a_of_type_JavaUtilUUID = this.Id;
-    localbbtn.jdField_a_of_type_Int = this.SeqId;
-    localbbtn.jdField_a_of_type_Long = this.uniseq;
-    localbbtn.jdField_b_of_type_Long = this.TroopUin;
-    localbbtn.jdField_b_of_type_Int = this.Status;
-    localbbtn.jdField_a_of_type_Boolean = this.IsNewStatus;
-    localbbtn.jdField_c_of_type_Int = this.ErrorCode;
-    localbbtn.jdField_d_of_type_Int = this.UploadTime;
-    localbbtn.jdField_c_of_type_Long = this.ProgressTotal;
-    localbbtn.jdField_d_of_type_Long = this.ProgressValue;
-    localbbtn.jdField_a_of_type_JavaLangString = this.LocalFile;
-    localbbtn.jdField_b_of_type_JavaLangString = this.ThumbnailFile_Small;
-    localbbtn.jdField_c_of_type_JavaLangString = this.ThumbnailFile_Large;
-    localbbtn.jdField_e_of_type_JavaLangString = this.FilePath;
-    localbbtn.f = this.sha1;
-    localbbtn.g = this.FileName;
-    localbbtn.jdField_h_of_type_Int = this.BusId;
-    localbbtn.jdField_e_of_type_Long = this.entrySessionID;
-    localbbtn.jdField_h_of_type_JavaLangString = this.NickName;
-    return localbbtn;
+    bety localbety = new bety();
+    localbety.jdField_a_of_type_JavaUtilUUID = this.Id;
+    localbety.jdField_a_of_type_Int = this.SeqId;
+    localbety.jdField_a_of_type_Long = this.uniseq;
+    localbety.jdField_b_of_type_Long = this.TroopUin;
+    localbety.jdField_b_of_type_Int = this.Status;
+    localbety.jdField_a_of_type_Boolean = this.IsNewStatus;
+    localbety.jdField_c_of_type_Int = this.ErrorCode;
+    localbety.jdField_d_of_type_Int = this.UploadTime;
+    localbety.jdField_c_of_type_Long = this.ProgressTotal;
+    localbety.jdField_d_of_type_Long = this.ProgressValue;
+    localbety.jdField_a_of_type_JavaLangString = this.LocalFile;
+    localbety.jdField_b_of_type_JavaLangString = this.ThumbnailFile_Small;
+    localbety.jdField_c_of_type_JavaLangString = this.ThumbnailFile_Large;
+    localbety.jdField_e_of_type_JavaLangString = this.FilePath;
+    localbety.f = this.sha1;
+    localbety.g = this.FileName;
+    localbety.jdField_h_of_type_Int = this.BusId;
+    localbety.jdField_e_of_type_Long = this.entrySessionID;
+    localbety.jdField_h_of_type_JavaLangString = this.NickName;
+    return localbety;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.model.HWTroopFileStatusInfo
  * JD-Core Version:    0.7.0.1
  */

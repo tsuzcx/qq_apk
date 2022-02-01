@@ -14,14 +14,14 @@ public class MultiVideoCtrlLayerUI4Discussion$AutoCheckVideoRunnable
       QLog.d(this.this$0.d, 2, "AutoCheckVideoRunnable");
     }
     if (this.this$0.a != null) {
-      this.this$0.a.a().ak = true;
+      this.this$0.a.a().al = true;
     }
     this.this$0.v();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion.AutoCheckVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

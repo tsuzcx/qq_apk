@@ -1,23 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
-public class rwt
-  implements DialogInterface.OnClickListener
+class rwt
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public rwt(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  rwt(rwp paramrwp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog change cancel");
+      QLog.d(rwp.a(), 2, "播放器状态回调 onInfo what = " + paramInt + ", extra = " + paramObject);
+    }
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return false;
+      } while (rwp.a(this.a) == null);
+      localrwv = rwp.a(this.a);
+      if ((paramObject instanceof String)) {}
+      for (paramTVK_IMediaPlayer = (String)paramObject;; paramTVK_IMediaPlayer = null)
+      {
+        localrwv.a(2, paramTVK_IMediaPlayer, null, 0L);
+        break;
+      }
+    } while (rwp.a(this.a) == null);
+    rwv localrwv = rwp.a(this.a);
+    if ((paramObject instanceof String)) {}
+    for (paramTVK_IMediaPlayer = (String)paramObject;; paramTVK_IMediaPlayer = null)
+    {
+      localrwv.a(5, paramTVK_IMediaPlayer, null, 0L);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rwt
  * JD-Core Version:    0.7.0.1
  */

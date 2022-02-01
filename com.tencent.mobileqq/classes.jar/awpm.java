@@ -1,40 +1,44 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import java.util.HashSet;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCTransportFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class awpm
-  implements Animator.AnimatorListener
+  implements biea
 {
-  public awpm(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, awpp paramawpp, View paramView) {}
+  public awpm(MsgBackupPCTransportFragment paramMsgBackupPCTransportFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Awpp.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
+    int i = awng.a().a();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "page is in pc Link page! click cancel! bizType = " + i + ", pcHandler = " + this.a.e);
+      }
+      this.a.aG_();
+      return;
+      awnr.a = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "backup is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + awnr.a + ", curSpeed = " + this.a.a + ", hasFinishedCount = " + this.a.d);
+      }
+      awnr.a().a().a(null);
+      awnr.a().a(this.a.a, this.a.d, i, this.a.getActivity());
+      if (this.a.b != 1) {
+        break;
+      }
+    } while (!this.a.e);
+    awqs.a("0X800A260");
+    return;
+    awqs.a("0X800A284");
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Awpp.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpm
  * JD-Core Version:    0.7.0.1
  */

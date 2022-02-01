@@ -1,25 +1,44 @@
-import android.util.Log;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.utils.PokeBigResHandler.NetEngine.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public class amrl
-  implements baug
+class amrl
+  extends BroadcastReceiver
 {
-  public void onResp(bavf parambavf)
-  {
-    if (parambavf.jdField_a_of_type_Int == 0) {
-      ThreadManagerV2.excute(new PokeBigResHandler.NetEngine.1(this, parambavf.jdField_a_of_type_Bave.c), 64, null, true);
-    }
-  }
+  amrl(amrk paramamrk) {}
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Log.e("Ron", "req:[" + parambave.toString() + "\n curOffset" + paramLong1 + "\n totalLen" + paramLong2 + "]");
+    if (amrk.a(this.a) == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if ("android.intent.action.SCREEN_ON".equals(paramIntent.getAction()))
+        {
+          if (amrk.a(this.a))
+          {
+            amrk.a(this.a).runRenderTask(amrk.a(this.a));
+            return;
+          }
+          amrk.a(this.a);
+          return;
+        }
+      } while (!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()));
+      if (!amrk.a(this.a)) {
+        break;
+      }
+    } while (amrk.a(this.a) == null);
+    amrk.a(this.a).runRenderTask(amrk.b(this.a));
+    return;
+    amrk.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amrl
  * JD-Core Version:    0.7.0.1
  */

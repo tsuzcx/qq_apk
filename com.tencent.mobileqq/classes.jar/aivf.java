@@ -1,9 +1,25 @@
-import android.graphics.PointF;
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aivf
+class aivf
+  extends aoou
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList);
+  aivf(aive paramaive, String paramString)
+  {
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick tipswording3 grant onLocationFinish info = " + paramSosoLbsInfo);
+    }
+    if (paramInt != 0) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "onclick tipswording3 grant onLocationFinish, errorCode=" + paramInt);
+    }
+    this.a.a.a.a.b(false);
+  }
 }
 
 

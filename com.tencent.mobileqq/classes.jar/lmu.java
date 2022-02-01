@@ -1,14 +1,20 @@
-import com.tencent.av.chatroom.ChatRoomInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.gaudio.GaInviteActivity;
 
-public abstract interface lmu
+class lmu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, ChatRoomInfo paramChatRoomInfo);
+  lmu(lmt paramlmt) {}
   
-  public abstract void a(lmt paramlmt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.a(-1040L, 11);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lmu
  * JD-Core Version:    0.7.0.1
  */

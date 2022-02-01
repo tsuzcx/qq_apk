@@ -1,21 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.FaceInfo;
+import java.nio.ByteBuffer;
 
-public final class bdbt
-  implements Parcelable.Creator<FaceInfo>
+class bdbt
 {
-  public FaceInfo a(Parcel paramParcel)
-  {
-    FaceInfo localFaceInfo = new FaceInfo();
-    localFaceInfo.a(paramParcel);
-    return localFaceInfo;
-  }
-  
-  public FaceInfo[] a(int paramInt)
-  {
-    return new FaceInfo[paramInt];
-  }
+  public long a;
+  public ByteBuffer a;
+  public long b;
 }
 
 

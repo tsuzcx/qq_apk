@@ -1,35 +1,17 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class ahbq
-  extends RecyclerView.OnScrollListener
+  implements bhye
 {
-  public boolean a;
+  public ahbq(LightVideoItemBuilder paramLightVideoItemBuilder, ahbr paramahbr) {}
   
-  public ahbq(ZhituPanelView paramZhituPanelView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(String paramString)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
-      if ((localGridLayoutManager.findLastCompletelyVisibleItemPosition() + 1 == localGridLayoutManager.getItemCount()) && (this.jdField_a_of_type_Boolean)) {
-        ((ahbr)paramRecyclerView.getAdapter()).a();
-      }
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahbr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahbr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ahbr.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
     }
   }
 }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/mll" android:layout_width="64.0dip" android:layout_height="64.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/lnn" android:layout_width="64.0dip" android:layout_height="64.0dip" android:scaleType="centerCrop" />
+    <ImageView android:layout_gravity="center" android:id="@id/mt4" android:background="@drawable/gba" android:layout_width="25.0dip" android:layout_height="25.0dip" android:scaleType="centerCrop" />
+</FrameLayout>

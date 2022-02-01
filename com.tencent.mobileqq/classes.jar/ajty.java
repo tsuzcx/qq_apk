@@ -1,42 +1,15 @@
-public abstract interface ajty
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.Comparator;
+
+public class ajty
+  implements Comparator<ajtt>
 {
-  public abstract void A();
+  public ajty(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract int d();
-  
-  public abstract void g(boolean paramBoolean);
-  
-  public abstract void n();
-  
-  public abstract void o();
-  
-  public abstract void p();
-  
-  public abstract void q();
-  
-  public abstract void r();
-  
-  public abstract void s();
-  
-  public abstract void t();
-  
-  public abstract void u();
-  
-  public abstract void w();
-  
-  public abstract void x();
-  
-  public abstract void y();
-  
-  public abstract void z();
+  public int a(ajtt paramajtt1, ajtt paramajtt2)
+  {
+    return paramajtt1.f.compareToIgnoreCase(paramajtt2.f);
+  }
 }
 
 

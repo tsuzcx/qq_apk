@@ -1,13 +1,13 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aapz;
+import acov;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 
 public class GdtMvViewAnimationAbs$2
   implements Runnable
 {
-  public GdtMvViewAnimationAbs$2(aapz paramaapz, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, View paramView) {}
+  public GdtMvViewAnimationAbs$2(acov paramacov, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, View paramView) {}
   
   public void run()
   {
@@ -21,14 +21,14 @@ public class GdtMvViewAnimationAbs$2
       if (this.jdField_a_of_type_AndroidViewView != null) {
         this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
       }
-      aapz.b(this.jdField_a_of_type_AndroidViewView);
+      acov.b(this.jdField_a_of_type_AndroidViewView);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvViewAnimationAbs.2
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import android.graphics.Paint.Style;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import bamw;
-import fi;
+import bdoa;
+import fn;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -78,10 +78,10 @@ public class ETDecoration
       paramArrayOfObject.setTextSize(paramFloat4);
       paramArrayOfObject.setColor(paramInt2);
       paramArrayOfObject.setAlpha((int)(255.0F * paramFloat5));
-      if (!(paramMatrix instanceof bamw)) {
+      if (!(paramMatrix instanceof bdoa)) {
         break label114;
       }
-      paramArrayOfObject = (bamw)paramMatrix;
+      paramArrayOfObject = (bdoa)paramMatrix;
       paramInt1 = (int)paramFloat3 + paramArrayOfObject.a().getBounds().height();
       paramArrayOfObject.draw(paramCanvas, null, 0, 0, paramFloat2, 0, paramInt1, paramInt1, null);
     }
@@ -90,9 +90,9 @@ public class ETDecoration
       paramCanvas.restore();
       return;
       label114:
-      if ((paramMatrix instanceof fi))
+      if ((paramMatrix instanceof fn))
       {
-        paramMatrix = (fi)paramMatrix;
+        paramMatrix = (fn)paramMatrix;
         paramMatrix.draw(paramCanvas, null, 0, 0, paramFloat2, 0, 0, (int)(paramMatrix.getDrawable().getBounds().height() + paramFloat3), paramArrayOfObject);
       }
     }
@@ -426,7 +426,7 @@ public class ETDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.etrump.mixlayout.ETDecoration
  * JD-Core Version:    0.7.0.1
  */

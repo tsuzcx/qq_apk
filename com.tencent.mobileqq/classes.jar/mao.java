@@ -1,23 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.av.share.AVSchema;
+import com.tencent.av.ui.AVActivity;
+import java.util.Comparator;
 
 public class mao
-  implements DialogInterface.OnDismissListener
+  implements Comparator<lnn>
 {
-  public mao(AVSchema paramAVSchema) {}
+  public mao(AVActivity paramAVActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a(lnn paramlnn1, lnn paramlnn2)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if (paramlnn1.a) {}
+    while (paramlnn2.a) {
+      return 1;
     }
-    this.a.b();
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mao
  * JD-Core Version:    0.7.0.1
  */

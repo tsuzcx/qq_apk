@@ -1,18 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import kotlin.Metadata;
 
-class owa
-  implements qoc<DynamicChannelDataModel>
-{
-  owa(ovz paramovz, long paramLong) {}
-  
-  public boolean a(DynamicChannelDataModel paramDynamicChannelDataModel)
-  {
-    return paramDynamicChannelDataModel.recommendSeq > this.jdField_a_of_type_Long;
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerController$Companion;", "", "()V", "DATA_SET_AVATAR_STATUS", "", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class owa {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     owa
  * JD-Core Version:    0.7.0.1
  */

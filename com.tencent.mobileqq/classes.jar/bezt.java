@@ -1,11 +1,56 @@
-import com.tencent.wifisdk.TMSDKCustomConfig.ICustomReporter;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import javax.annotation.Nullable;
 
-final class bezt
-  implements TMSDKCustomConfig.ICustomReporter
+public class bezt
+  extends aqkz<bezs>
 {
-  public void reportAction(String paramString, int paramInt)
+  @NonNull
+  public bezs a(int paramInt)
   {
-    bezm.a(paramString);
+    QLog.d("PublishHwkThirdPartyEntryConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new bezs();
+  }
+  
+  @Nullable
+  public bezs a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return bezs.a(paramArrayOfaqlg);
+    }
+    return null;
+  }
+  
+  public void a(bezs parambezs) {}
+  
+  public Class<bezs> clazz()
+  {
+    return bezs.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("PublishHwkThirdPartyEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 605;
   }
 }
 

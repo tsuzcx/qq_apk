@@ -1,25 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-
 public class xaj
-  extends Handler
+  extends wla
 {
-  public xaj(EditVideoMusic paramEditVideoMusic) {}
+  public final byte[] a;
   
-  public void handleMessage(Message paramMessage)
+  public xaj(byte[] paramArrayOfByte)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.b();
+    this.a = paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xaj
  * JD-Core Version:    0.7.0.1
  */

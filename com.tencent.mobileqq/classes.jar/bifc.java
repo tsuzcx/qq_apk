@@ -1,62 +1,61 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 class bifc
-  extends RecyclerView.AdapterDataObserver
+  implements Animator.AnimatorListener
 {
-  bifc(bifb parambifb) {}
+  bifc(biez parambiez, int paramInt) {}
   
-  public void onChanged()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.notifyDataSetChanged();
-    if (bifb.a(this.a) != null) {
-      bifb.a(this.a).a(bifb.a(this.a));
+    if (this.jdField_a_of_type_Biez.a != null)
+    {
+      if (this.jdField_a_of_type_Int != 0) {
+        break label41;
+      }
+      this.jdField_a_of_type_Biez.a.setAlpha(1.0F);
+    }
+    for (;;)
+    {
+      biez.b(this.jdField_a_of_type_Biez, this.jdField_a_of_type_Int);
+      return;
+      label41:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Biez.a.setAlpha(0.0F);
+      }
     }
   }
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.notifyItemRangeChanged(bifb.a(this.a).size() + paramInt1, paramInt2);
-    if (bifb.a(this.a) != null) {
-      bifb.a(this.a).a(bifb.a(this.a));
+    biez.b(this.jdField_a_of_type_Biez, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      biez.a(this.jdField_a_of_type_Biez, false);
+      this.jdField_a_of_type_Biez.a(false, new View[] { biez.a(this.jdField_a_of_type_Biez) });
     }
+    biez.a(this.jdField_a_of_type_Biez);
   }
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
-  {
-    this.a.notifyItemRangeChanged(bifb.a(this.a).size() + paramInt1, paramInt2, paramObject);
-    if (bifb.a(this.a) != null) {
-      bifb.a(this.a).a(bifb.a(this.a));
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.notifyItemRangeInserted(bifb.a(this.a).size() + paramInt1, paramInt2);
-    if (bifb.a(this.a) != null) {
-      bifb.a(this.a).a(bifb.a(this.a));
-    }
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.notifyItemMoved(bifb.a(this.a).size() + paramInt1, bifb.a(this.a).size() + paramInt2);
-    if (bifb.a(this.a) != null) {
-      bifb.a(this.a).a(bifb.a(this.a));
-    }
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(bifb.a(this.a).size() + paramInt1, paramInt2);
-    if (bifb.a(this.a) != null) {
-      bifb.a(this.a).a(bifb.a(this.a));
+    biez.b(this.jdField_a_of_type_Biez, 2);
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      biez.a(this.jdField_a_of_type_Biez, true);
+      if (biez.a(this.jdField_a_of_type_Biez) == 1) {
+        this.jdField_a_of_type_Biez.a(true, new View[] { biez.a(this.jdField_a_of_type_Biez) });
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bifc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,19 @@
-import java.io.File;
-import java.util.ArrayList;
-
 public class ysl
 {
-  public int a;
-  String jdField_a_of_type_JavaLangString;
-  public ArrayList<String> a;
-  boolean jdField_a_of_type_Boolean;
-  public String b;
-  public ArrayList<String> b;
-  boolean b;
-  public String c;
-  public ArrayList<File> c = new ArrayList();
-  public String d;
-  public String e;
+  public final int a;
+  public final CharSequence a;
+  public final int b;
   
-  public ysl(ysb paramysb)
+  public ysl(int paramInt1, int paramInt2, CharSequence paramCharSequence)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ysl
  * JD-Core Version:    0.7.0.1
  */

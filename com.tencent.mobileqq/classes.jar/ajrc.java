@@ -1,15 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
-public class ajrc
-  implements CompoundButton.OnCheckedChangeListener
+class ajrc
+  implements awxb
 {
-  public ajrc(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  ajrc(ajrb paramajrb) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    NewFlowCameraActivity.a(this.a, paramBoolean);
+    this.a.jdField_a_of_type_Awxi.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Awxi.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.w();
   }
 }
 

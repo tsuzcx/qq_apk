@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.text.TextUtils;
-import bdgk;
-import bjhc;
+import bgln;
+import blvi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.module.base.inter.IDownloadConfig;
 import common.config.service.QzoneConfig;
@@ -68,7 +68,7 @@ class MiniDownloadConfig
   
   public int getNetworkStackType()
   {
-    return bjhc.a(1);
+    return blvi.a(1);
   }
   
   public int getOperator()
@@ -103,7 +103,7 @@ class MiniDownloadConfig
   
   public String getVersion()
   {
-    return bdgk.c();
+    return bgln.c();
   }
   
   public boolean isFromQzoneAlbum(String paramString)
@@ -134,7 +134,7 @@ class MiniDownloadConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniDownloadConfig
  * JD-Core Version:    0.7.0.1
  */

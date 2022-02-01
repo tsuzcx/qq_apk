@@ -40,7 +40,7 @@ public class TVKPlayerWrapperCGIModel
   public TVKPlayerWrapperCGIModel(@NonNull Looper paramLooper, TVKPlayerWrapperCGIModel.CGIWrapperCallback paramCGIWrapperCallback)
   {
     this.mCallback = paramCGIWrapperCallback;
-    this.mRequestQueue = new LinkedBlockingQueue(20);
+    this.mRequestQueue = new LinkedBlockingQueue();
     this.mRequestCallback = new TVKPlayerWrapperCGIModel.CGICombineCallback(this, null);
     this.mHandler = new TVKPlayerWrapperCGIModel.CGICallbackHandler(this, paramLooper);
   }
@@ -238,21 +238,21 @@ public class TVKPlayerWrapperCGIModel
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 60	com/tencent/qqlive/tvkplayer/vinfo/TVKPlayerWrapperCGIModel:mRequestQueue	Ljava/util/Queue;
-    //   6: invokeinterface 303 1 0
+    //   3: getfield 58	com/tencent/qqlive/tvkplayer/vinfo/TVKPlayerWrapperCGIModel:mRequestQueue	Ljava/util/Queue;
+    //   6: invokeinterface 302 1 0
     //   11: astore_3
     //   12: aload_3
-    //   13: invokeinterface 308 1 0
+    //   13: invokeinterface 307 1 0
     //   18: ifeq +39 -> 57
     //   21: aload_3
-    //   22: invokeinterface 312 1 0
-    //   27: checkcast 126	com/tencent/qqlive/tvkplayer/vinfo/TVKPlayerWrapperCGIModel$CGIRequest
+    //   22: invokeinterface 311 1 0
+    //   27: checkcast 125	com/tencent/qqlive/tvkplayer/vinfo/TVKPlayerWrapperCGIModel$CGIRequest
     //   30: astore 4
     //   32: aload 4
-    //   34: getfield 138	com/tencent/qqlive/tvkplayer/vinfo/TVKPlayerWrapperCGIModel$CGIRequest:reqState	I
+    //   34: getfield 137	com/tencent/qqlive/tvkplayer/vinfo/TVKPlayerWrapperCGIModel$CGIRequest:reqState	I
     //   37: ifeq +14 -> 51
     //   40: aload 4
-    //   42: getfield 138	com/tencent/qqlive/tvkplayer/vinfo/TVKPlayerWrapperCGIModel$CGIRequest:reqState	I
+    //   42: getfield 137	com/tencent/qqlive/tvkplayer/vinfo/TVKPlayerWrapperCGIModel$CGIRequest:reqState	I
     //   45: istore_1
     //   46: iload_1
     //   47: iconst_1
@@ -408,7 +408,7 @@ public class TVKPlayerWrapperCGIModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerWrapperCGIModel
  * JD-Core Version:    0.7.0.1
  */

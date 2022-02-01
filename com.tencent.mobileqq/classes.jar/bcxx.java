@@ -1,126 +1,140 @@
-import java.io.DataOutputStream;
-import java.io.OutputStream;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
 public class bcxx
-  extends DataOutputStream
+  extends bcvs
 {
-  private static final byte[] c = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
-  private static final byte[] d = { 13, 10 };
-  private static final byte[] e = { 48, 13, 10 };
-  protected int a;
-  protected byte[] a;
-  protected int b;
-  protected byte[] b;
+  public boolean a;
+  public int o;
   
-  public bcxx(OutputStream paramOutputStream)
+  public bcxx()
   {
-    this(new byte[512], paramOutputStream);
+    this.jdField_a_of_type_JavaLangString = "hr";
+    this.jdField_a_of_type_Int = 9;
   }
   
-  public bcxx(byte[] paramArrayOfByte, OutputStream paramOutputStream)
+  @TargetApi(11)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    super(paramOutputStream);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_ArrayOfByte = new byte[32];
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_b_of_type_Int = paramArrayOfByte.length;
-  }
-  
-  protected void a()
-  {
-    this.out.write(e, 0, 3);
-    this.out.write(d, 0, 2);
-    this.out.flush();
-  }
-  
-  protected final void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Int + 1 >= this.jdField_b_of_type_Int) {
-      b();
-    }
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    arrayOfByte[i] = ((byte)(paramInt & 0xFF));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      b();
-      a();
-      super.close();
-      return;
+      paramBundle = paramView;
+      if (paramView == null) {
+        paramBundle = new View(paramContext);
+      }
+      if (this.o == 0) {
+        paramBundle.setBackgroundColor(-2170912);
+      }
+      do
+      {
+        do
+        {
+          return paramBundle;
+        } while (this.o != 1);
+        paramBundle.setBackgroundResource(2130847466);
+      } while (Build.VERSION.SDK_INT < 11);
+      paramBundle.setLayerType(1, null);
+      return paramBundle;
     }
-    b();
-    a();
+    return null;
   }
   
-  protected void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public String a()
   {
-    if (paramInt2 == 0) {
-      return;
-    }
-    int i = 3;
-    this.jdField_b_of_type_ArrayOfByte[30] = 13;
-    this.jdField_b_of_type_ArrayOfByte[31] = 10;
-    int j = paramInt2;
-    while (j > 15)
+    return "Hr";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    if (this.jdField_a_of_type_Int > 4)
     {
-      this.jdField_b_of_type_ArrayOfByte[(32 - i)] = c[(j % 16)];
-      j >>= 4;
-      i += 1;
+      String str = paramObjectInput.readUTF();
+      if ((str != null) && (str.toLowerCase().equals("true"))) {
+        this.jdField_a_of_type_Boolean = true;
+      }
     }
-    this.jdField_b_of_type_ArrayOfByte[(32 - i)] = c[j];
-    this.out.write(this.jdField_b_of_type_ArrayOfByte, 32 - i, i);
-    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
-    this.out.write(d, 0, 2);
-    this.out.flush();
+    if (this.jdField_a_of_type_Int >= 9) {
+      this.o = paramObjectInput.readInt();
+    }
   }
   
-  protected void b()
+  public void a(ObjectOutput paramObjectOutput)
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      return;
-    }
-    a(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public final void b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Int + paramInt2 >= this.jdField_b_of_type_Int) {
-      b();
-    }
-    if (paramInt2 < this.jdField_a_of_type_ArrayOfByte.length)
+    super.a(paramObjectOutput);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "true";; str = "false")
     {
-      System.arraycopy(paramArrayOfByte, paramInt1, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, paramInt2);
-      this.jdField_a_of_type_Int += paramInt2;
+      paramObjectOutput.writeUTF(str);
+      paramObjectOutput.writeInt(this.o);
       return;
     }
-    a(paramArrayOfByte, paramInt1, paramInt2);
   }
   
-  public void close()
+  public void a(XmlSerializer paramXmlSerializer)
   {
-    a(true);
+    paramXmlSerializer.startTag(null, "hr");
+    if (this.jdField_a_of_type_Int > 4) {
+      if (!this.jdField_a_of_type_Boolean) {
+        break label76;
+      }
+    }
+    label76:
+    for (String str = "true";; str = "false")
+    {
+      paramXmlSerializer.attribute(null, "hidden", str);
+      if (this.jdField_a_of_type_Int >= 9) {
+        paramXmlSerializer.attribute(null, "style", String.valueOf(this.o));
+      }
+      paramXmlSerializer.endTag(null, "hr");
+      return;
+    }
   }
   
-  public void flush()
+  public boolean a(bcxj parambcxj)
   {
-    b();
-    super.flush();
-  }
-  
-  public void write(int paramInt)
-  {
-    a(paramInt);
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    b(paramArrayOfByte, paramInt1, paramInt2);
+    if (parambcxj == null) {}
+    for (;;)
+    {
+      return true;
+      if (this.jdField_a_of_type_Int > 4)
+      {
+        String str = parambcxj.a("hidden");
+        if ((str != null) && (str.toLowerCase().equals("true"))) {
+          this.jdField_a_of_type_Boolean = true;
+        }
+      }
+      if (this.jdField_a_of_type_Int >= 9)
+      {
+        parambcxj = parambcxj.a("style");
+        if (!TextUtils.isEmpty(parambcxj)) {
+          try
+          {
+            this.o = Integer.parseInt(parambcxj);
+            if (QLog.isColorLevel())
+            {
+              QLog.i("StructMsg", 2, "type=" + this.o);
+              return true;
+            }
+          }
+          catch (NumberFormatException parambcxj)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("StructMsg", 2, "", parambcxj);
+            }
+          }
+        }
+      }
+    }
+    return false;
   }
 }
 

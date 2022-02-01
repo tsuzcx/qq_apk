@@ -1,71 +1,92 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import android.net.Uri;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.appcommon.js.OpenJsBridge.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.smtt.sdk.WebView;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.HashMap;
 import java.util.List;
 
 public class biqw
+  extends avnj
 {
-  int jdField_a_of_type_Int = 0;
-  public Dialog a;
-  public Intent a;
-  public ServiceConnection a;
-  public asta a;
-  PluginBaseInfo jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo;
-  public Class<? extends Activity> a;
-  public String a;
-  public List<RemoteCommand> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c = 10000;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
+  public HashMap<String, avnl> b = new HashMap();
   
-  public biqw(int paramInt)
+  public HashMap<String, avnl> a()
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
+    return this.b;
   }
   
-  public void a()
+  public void a(avnl paramavnl, String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidContentIntent != null) && (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo != null))
+    this.b.put(paramString, paramavnl);
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null)
     {
-      QLog.d("plugin_tag", 1, "pluginStartupAttachInfo dex2Oat " + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat + "lib " + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib + "download " + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload + "apk " + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk);
-      if ((this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat != 0L) || (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib != 0L) || (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload != 0L) || (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk != 0L))
-      {
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("pluginOatCost", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("pluginLibCost", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("pluginDownloadCost", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("pluginApkCost", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk);
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk = 0L;
+      this.b.clear();
+      return;
+    }
+    this.b.remove(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2, List<String> paramList, avnk paramavnk)
+  {
+    long l1 = System.currentTimeMillis();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j) {
+        try
+        {
+          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
+          i += 1;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          for (;;)
+          {
+            localUnsupportedEncodingException.printStackTrace();
+            if (QLog.isDevelopLevel()) {
+              QLog.i("OpenJsBridge", 4, "[getResult]decode failed: " + (String)paramList.get(i));
+            }
+          }
+        }
       }
     }
+    long l2 = System.currentTimeMillis();
+    bisy.b("OpenJsBridge", "[getResult]time4-time3=" + (l2 - l1));
+    paramString1 = (avnl)this.b.get(paramString1);
+    if (paramString1 != null) {
+      paramString1.call(paramString2, paramList, paramavnk);
+    }
+    while (!(paramavnk instanceof biqx)) {
+      return;
+    }
+    ((biqx)paramavnk).b(paramString2);
   }
   
-  public void a(PluginBaseInfo paramPluginBaseInfo)
+  public boolean a(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo = paramPluginBaseInfo;
+    if (paramString == null) {}
+    Uri localUri;
+    do
+    {
+      return false;
+      localUri = Uri.parse(paramString);
+    } while ((localUri == null) || (localUri.getScheme() == null) || (!localUri.getScheme().equals("jsbridge")));
+    bisy.b("OpenJsBridge", "[canHandleUrl] AsyncInterface_start:" + paramString);
+    ThreadManager.executeOnSubThread(new OpenJsBridge.1(this, paramString, paramWebView));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biqw
  * JD-Core Version:    0.7.0.1
  */

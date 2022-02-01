@@ -1,59 +1,37 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.content.Context;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqdn
-  implements GestureDetector.OnGestureListener
+  implements aqdf
 {
-  public aqdn(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  private String a = "SubscribeColorNoteLauncher";
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    int j = 1;
-    if ((paramMotionEvent1 != null) && (paramMotionEvent2 != null)) {
-      if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 50.0F) {
-        break label102;
-      }
-    }
-    label102:
-    for (int i = 1;; i = 0)
+    try
     {
-      if (paramMotionEvent2.getY() - paramMotionEvent1.getY() > 50.0F) {
-        i = j;
+      paramColorNote = paramColorNote.getReserve();
+      if (paramColorNote == null) {
+        return;
       }
-      for (;;)
+      paramColorNote = (SubscribeColorNoteReserveBean)aajb.a(paramColorNote);
+      if (paramColorNote != null)
       {
-        if ((i != 0) && (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment != null))
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.a();
-          ExtendFriendEditFragment.a(this.a).setVisibility(8);
-          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        }
-        return false;
+        CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
+        localStFeed.mergeFrom(paramColorNote.feedData);
+        QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + localStFeed.toString());
+        aaae.a(paramContext, "", localStFeed, new ExtraTypeInfo(paramColorNote.pageType, 9003), null);
+        return;
       }
     }
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
 }
 

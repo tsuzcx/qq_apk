@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkBridgeActivity;
+import java.io.File;
+import java.util.Comparator;
 
-public class bitb
-  implements DialogInterface.OnDismissListener
+class bitb
+  implements Comparator<File>
 {
-  public bitb(QlinkBridgeActivity paramQlinkBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a(File paramFile1, File paramFile2)
   {
-    this.a.finish();
+    return paramFile1.getName().compareTo(paramFile2.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bitb
  * JD-Core Version:    0.7.0.1
  */

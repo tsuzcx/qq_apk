@@ -1,31 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
 
 public class yvw
-  implements DialogInterface.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public yvw(TroopGiftPanel paramTroopGiftPanel) {}
+  public yvw(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1)
-    {
-      bdun.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
-      azqs.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    azqs.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772039);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772039);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yvw
  * JD-Core Version:    0.7.0.1
  */

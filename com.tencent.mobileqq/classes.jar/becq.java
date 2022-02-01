@@ -1,6 +1,13 @@
+import java.util.ArrayList;
+
 public class becq
+  extends becx
 {
-  public static final String a = len.f() + "config.json";
+  public String a;
+  public ArrayList<bdyf> a = new ArrayList();
+  public boolean a;
+  public String b;
+  public ArrayList<bdyf> b = new ArrayList();
 }
 
 

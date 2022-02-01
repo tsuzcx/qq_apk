@@ -1,21 +1,65 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.common.app.BaseApplicationImpl;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class apxp
-  implements View.OnClickListener
+public class apxp
 {
-  apxp(apxn paramapxn, IPSiteModel.Goods paramGoods) {}
+  public int a;
+  public long a;
+  public Rect a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Rect b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
   
-  public void onClick(View paramView)
+  public apxp()
   {
-    paramView = new Intent(apxn.a(this.jdField_a_of_type_Apxn), QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(apxn.a(this.jdField_a_of_type_Apxn), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.moreUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(apxn.a(this.jdField_a_of_type_Apxn), "IP", "aio_productmore", "", 0, 0, 0, apxn.b(this.jdField_a_of_type_Apxn), apxn.c(this.jdField_a_of_type_Apxn), "", "", "", "", "", 0, 0, 0, 0);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+  }
+  
+  public void a(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_d_of_type_Int = paramInt;
+      paramString = BaseApplicationImpl.getContext();
+      if (paramJSONObject.has("rect"))
+      {
+        JSONArray localJSONArray = paramJSONObject.getJSONArray("rect");
+        this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+        this.jdField_a_of_type_AndroidGraphicsRect.left = afur.a(localJSONArray.getInt(0) / 2, paramString.getResources());
+        this.jdField_a_of_type_AndroidGraphicsRect.top = afur.a(localJSONArray.getInt(1) / 2, paramString.getResources());
+        this.jdField_a_of_type_AndroidGraphicsRect.right = afur.a(localJSONArray.getInt(2) / 2, paramString.getResources());
+        this.jdField_a_of_type_AndroidGraphicsRect.bottom = afur.a(localJSONArray.getInt(3) / 2, paramString.getResources());
+      }
+      this.jdField_a_of_type_Long = paramJSONObject.optInt("time", 0);
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("cycle_count", 1);
+      this.jdField_b_of_type_Int = paramJSONObject.optInt("count", 0);
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("img_prefix", "");
+      this.jdField_c_of_type_Int = paramJSONObject.optInt("alpha", 0);
+      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("align", "");
+      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("zip_name", "");
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("img_reverse", true);
+      paramJSONObject = paramJSONObject.optJSONArray("padding");
+    } while ((paramJSONObject == null) || (paramJSONObject.length() <= 0));
+    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_b_of_type_AndroidGraphicsRect.left = afur.a(paramJSONObject.getInt(0) / 2, paramString.getResources());
+    this.jdField_b_of_type_AndroidGraphicsRect.top = afur.a(paramJSONObject.getInt(1) / 2, paramString.getResources());
+    this.jdField_b_of_type_AndroidGraphicsRect.right = afur.a(paramJSONObject.getInt(2) / 2, paramString.getResources());
+    this.jdField_b_of_type_AndroidGraphicsRect.bottom = afur.a(paramJSONObject.getInt(3) / 2, paramString.getResources());
   }
 }
 

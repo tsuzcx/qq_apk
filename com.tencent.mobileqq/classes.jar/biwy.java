@@ -1,18 +1,15 @@
-import cooperation.qqfav.widget.LocationDetailActivity;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import java.util.ArrayList;
 
-public class biwy
-  implements aofp
+public abstract interface biwy
 {
-  public biwy(LocationDetailActivity paramLocationDetailActivity) {}
+  public abstract void a(String paramString);
   
-  public void onColorNoteAnimFinish()
-  {
-    this.a.superFinish();
-  }
+  public abstract void a(ArrayList<ApkUpdateDetail> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biwy
  * JD-Core Version:    0.7.0.1
  */

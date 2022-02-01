@@ -21,7 +21,7 @@ public class l
   
   public static Network a(Context paramContext, int paramInt)
   {
-    if (!b.f()) {
+    if (!b.g()) {
       return null;
     }
     try
@@ -59,7 +59,7 @@ public class l
   
   public static NetworkInfo a(Context paramContext, Network paramNetwork)
   {
-    if (!b.f()) {
+    if (!b.g()) {
       return null;
     }
     if (paramNetwork == null) {
@@ -83,7 +83,7 @@ public class l
   
   public static void a(Context paramContext)
   {
-    if (!b.f()) {}
+    if (!b.g()) {}
     for (;;)
     {
       return;
@@ -140,7 +140,7 @@ public class l
   
   public static Network b(Context paramContext)
   {
-    if (!b.f()) {
+    if (!b.g()) {
       return null;
     }
     try
@@ -165,7 +165,7 @@ public class l
   
   public static NetworkInfo b(Context paramContext, int paramInt)
   {
-    if (!b.f()) {
+    if (!b.g()) {
       return null;
     }
     try

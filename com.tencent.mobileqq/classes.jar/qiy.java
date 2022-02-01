@@ -1,48 +1,65 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RspBody;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-class qiy
-  extends nac
+public class qiy
+  extends ViewBase
 {
-  qiy(qix paramqix) {}
+  private NativeAwesomeCommentView a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public qiy(VafContext paramVafContext)
   {
-    boolean bool = true;
-    paramBundle = new oidb_0x5bd.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoySkinHandler", 2, "errorCode = " + paramInt + ", rspBody.msg_next_guide_info.has = " + paramBundle.msg_next_guide_info.has());
-      }
-      int i = paramBundle.uint32_source.get();
-      paramArrayOfByte = this.a;
-      if (paramInt == 0) {}
-      for (;;)
-      {
-        paramArrayOfByte.notifyUI(1, bool, new Object[] { paramBundle.msg_now_skin_info.get(), paramBundle.msg_next_guide_info.get(), paramBundle.msg_operation_guide_info.get(), paramBundle.msg_operation_refresh_info.get(), Integer.valueOf(i) });
-        return;
-        bool = false;
-      }
-      return;
+    super(paramVafContext);
+    this.a = new NativeAwesomeCommentView(paramVafContext.getContext());
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (this.a != null) {
+      this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    if (this.a != null) {
+      this.a.measure(paramInt1, paramInt2);
+    }
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      paramArrayOfByte.printStackTrace();
+    }
+    for (;;)
+    {
+      return super.setAttribute(paramInt, paramObject);
+      if (((paramObject instanceof ret)) && (this.a != null)) {
+        this.a.setAwesomeCommentInfo((ret)paramObject);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qiy
  * JD-Core Version:    0.7.0.1
  */

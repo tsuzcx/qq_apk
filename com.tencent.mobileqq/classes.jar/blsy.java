@@ -1,46 +1,55 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import NS_MOBILE_AIONewestFeed.AIONewestFeedReq;
+import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class blsy
-  extends bmri
+  extends QzoneExternalRequest
 {
-  public blsy(DoodleView paramDoodleView)
+  public JceStruct a;
+  
+  public blsy(long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString, int paramInt)
   {
-    super(paramDoodleView);
+    super.setRefer(paramString);
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong1);
+    paramString = new AIONewestFeedReq();
+    paramString.uOpUin = paramLong1;
+    paramString.uHostUin = paramArrayList;
+    paramString.uLastTime = paramLong2;
+    paramString.src = paramInt;
+    this.a = paramString;
   }
   
-  public String a()
+  public static AIONewestFeedRsp a(byte[] paramArrayOfByte, QQAppInterface paramQQAppInterface, int[] paramArrayOfInt)
   {
-    return "PickLayer";
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
+    }
+    do
+    {
+      return paramArrayOfByte;
+      paramQQAppInterface = (AIONewestFeedRsp)decode(paramArrayOfByte, "getAIONewestFeed", paramArrayOfInt);
+      paramArrayOfByte = paramQQAppInterface;
+    } while (paramQQAppInterface != null);
+    return null;
   }
   
-  public void a() {}
-  
-  protected void a(Canvas paramCanvas) {}
-  
-  public void a(Canvas paramCanvas, float paramFloat) {}
-  
-  public boolean a()
+  public String getCmdString()
   {
-    return true;
+    return "QzoneNewService.getAIONewestFeed";
   }
   
-  public boolean a(long paramLong)
+  public JceStruct getReq()
   {
-    return true;
+    return this.a;
   }
   
-  protected boolean a(MotionEvent paramMotionEvent)
+  public String uniKey()
   {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
+    return "getAIONewestFeed";
   }
 }
 

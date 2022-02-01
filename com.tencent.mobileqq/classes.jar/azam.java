@@ -1,72 +1,63 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import android.util.SparseIntArray;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class azam
-  extends FriendListHandler
-  implements azal
+public final class azam
 {
-  public static String a;
-  private ToServiceMsg a;
+  final SparseIntArray a = new SparseIntArray();
+  final SparseIntArray b = new SparseIntArray();
+  final SparseIntArray c = new SparseIntArray();
+  final SparseIntArray d = new SparseIntArray();
   
-  static
+  private void a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = "GetSimpleInfoCheckUpdateItem";
-  }
-  
-  public azam(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public ReqItem a(int paramInt)
-  {
-    Object localObject2 = null;
-    b(this.app.getAccount());
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null)
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
     {
-      zhu localzhu = this.app.a.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd());
-      localObject1 = localObject2;
-      if (localzhu != null)
+      paramString = new JSONObject(paramString);
+      if (paramString.has("c2c"))
       {
-        UniPacket localUniPacket = new UniPacket(true);
-        localUniPacket.setEncodeName("utf-8");
-        localObject1 = localObject2;
-        if (localzhu.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, localUniPacket))
+        paramString = paramString.optJSONObject("c2c");
+        if (paramString != null)
         {
-          localObject1 = new ReqItem();
-          ((ReqItem)localObject1).eServiceID = 113;
-          ((ReqItem)localObject1).vecParam = localUniPacket.encode();
+          if (paramString.has("defaultTheme")) {
+            a(paramString.optJSONObject("defaultTheme"), this.a);
+          }
+          if (paramString.has("conciseTheme")) {
+            a(paramString.optJSONObject("conciseTheme"), this.b);
+          }
         }
       }
+      return;
     }
-    return localObject1;
-  }
-  
-  public void a(RespItem paramRespItem)
-  {
-    if ((paramRespItem.eServiceID == 113) && (paramRespItem.cResult == 2))
+    catch (JSONException paramString)
     {
-      FromServiceMsg localFromServiceMsg = new FromServiceMsg(this.app.getAccount(), "ProfileService.GetSimpleInfo");
-      localFromServiceMsg.setMsgSuccess();
-      localFromServiceMsg.putWupBuffer(paramRespItem.vecUpdate);
-      this.app.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, localFromServiceMsg);
+      QLog.e("AIOPlusPanelAppInfoOrderConfigProcessor", 1, paramString, new Object[0]);
     }
   }
   
-  public void send(ToServiceMsg paramToServiceMsg)
+  private void a(JSONObject paramJSONObject, SparseIntArray paramSparseIntArray)
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    if (paramJSONObject != null) {
+      try
+      {
+        Iterator localIterator = paramJSONObject.keys();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          int i = paramJSONObject.optInt(str);
+          paramSparseIntArray.put(Integer.parseInt(str), i);
+        }
+        return;
+      }
+      catch (Throwable paramJSONObject)
+      {
+        QLog.e("AIOPlusPanelAppInfoOrderConfigProcessor", 1, paramJSONObject, new Object[0]);
+      }
+    }
   }
 }
 

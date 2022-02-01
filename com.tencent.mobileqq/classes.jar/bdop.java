@@ -1,28 +1,31 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class bdop
-  implements DialogInterface.OnClickListener
+public class bdop
+  implements anil
 {
-  public bdop(boolean paramBoolean, Context paramContext, String paramString1, String paramString2, int paramInt) {}
+  protected void a(boolean paramBoolean, List<String> paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramDialogInterface.putExtra("url", String.format(agzf.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_JavaLangString, "group_aio_popup" }));
-      paramDialogInterface.putExtra("hide_operation_bar", true);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
-    }
-    for (;;)
-    {
-      azqs.b(null, "dc00898", "", "", "qq_vip", this.b, this.jdField_a_of_type_Int, 0, "", "", "", "");
-      return;
-      amel.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "group_aio_popup");
+    if (paramInt == 1) {
+      try
+      {
+        if ((paramObject instanceof List))
+        {
+          a(paramBoolean, (List)paramObject);
+          return;
+        }
+        if (!paramBoolean)
+        {
+          a(false, null);
+          return;
+        }
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("ParticipleObserver", 1, paramObject, new Object[0]);
+      }
     }
   }
 }

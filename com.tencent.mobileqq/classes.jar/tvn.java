@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
+import java.lang.ref.WeakReference;
 
 class tvn
-  implements DialogInterface.OnClickListener
 {
-  tvn(tvl paramtvl) {}
+  WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<tvo> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  private tvn(tvl paramtvl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tvn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alud;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.graphics.Rect;
 import android.text.TextUtils;
 import android.view.View;
-import bgrm;
+import anni;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
@@ -24,6 +23,7 @@ import com.tencent.mobileqq.mini.widget.ToastView;
 import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.minigame.ui.NavigatorBarForMiniGame;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
 import java.util.Date;
@@ -76,7 +76,7 @@ public class UIJsPlugin
   private Rect menuButtonRect = new Rect(267, 34, 347, 64);
   private int menuButtonWidth = 80;
   private MutiPickerView mutiPickerView;
-  private bgrm toast;
+  private QQToast toast;
   private ToastView toastView;
   
   private String getMenuButtonDefaultValue()
@@ -243,9 +243,9 @@ public class UIJsPlugin
               localObject5 = localJSONObject5.optString("title", "");
               localObject6 = localJSONObject5.optString("content", "");
               bool = localJSONObject5.optBoolean("showCancel", true);
-              localObject7 = localJSONObject5.optString("cancelText", alud.a(2131716248));
+              localObject7 = localJSONObject5.optString("cancelText", anni.a(2131714529));
               localObject8 = localJSONObject5.optString("cancelColor", "#000000");
-              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.12(this, (String)localObject5, (String)localObject6, localJSONObject5.optString("confirmText", alud.a(2131716247)), localJSONObject5.optString("confirmColor", "#3CC51F"), paramJsRuntime, paramString1, paramInt, bool, (String)localObject7, (String)localObject8));
+              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.12(this, (String)localObject5, (String)localObject6, localJSONObject5.optString("confirmText", anni.a(2131714528)), localJSONObject5.optString("confirmColor", "#3CC51F"), paramJsRuntime, paramString1, paramInt, bool, (String)localObject7, (String)localObject8));
             }
             catch (JSONException localJSONException5)
             {
@@ -685,7 +685,7 @@ public class UIJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.UIJsPlugin
  * JD-Core Version:    0.7.0.1
  */

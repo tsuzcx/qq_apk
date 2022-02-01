@@ -1,6 +1,6 @@
 package com.tencent.imcore.message;
 
-import abss;
+import acvr;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class C2CMessageManager$1
   implements Runnable
 {
-  public C2CMessageManager$1(abss paramabss, MessageRecord paramMessageRecord) {}
+  public C2CMessageManager$1(acvr paramacvr, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class C2CMessageManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageManager.1
  * JD-Core Version:    0.7.0.1
  */

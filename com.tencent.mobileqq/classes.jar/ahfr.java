@@ -1,24 +1,18 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-class ahfr
-  implements View.OnClickListener
+public class ahfr
+  extends afuv
 {
-  ahfr(ahfq paramahfq) {}
-  
-  public void onClick(View paramView)
-  {
-    azqs.b(null, "dc00899", "Grp_find_new", "", "grptab", "seach_clk", 0, 0, this.a.a.c, this.a.a.a, "", "");
-    paramView = new Intent(this.a.a.getActivity(), SearchContactsActivity.class);
-    paramView.putExtra("from_key", 1);
-    paramView.putExtra("fromType", 13);
-    this.a.a.getActivity().startActivity(paramView);
-    this.a.a.getActivity().overridePendingTransition(0, 0);
-  }
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 

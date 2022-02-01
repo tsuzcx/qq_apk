@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.biu;
 
-import ohx;
+import ouo;
 
 public class ReadInJoyDeliverBiuActivity$13$1
   implements Runnable
 {
-  public ReadInJoyDeliverBiuActivity$13$1(ohx paramohx) {}
+  public ReadInJoyDeliverBiuActivity$13$1(ouo paramouo) {}
   
   public void run()
   {

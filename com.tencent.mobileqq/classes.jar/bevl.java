@@ -1,23 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDownFrameLayout;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr.ProtoRequestRunnable;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public class bevl
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bevl(SlideDownFrameLayout paramSlideDownFrameLayout) {}
+  public int a;
+  public long a;
+  public anqe a;
+  public bevk a;
+  public FromServiceMsg a;
+  public boolean a;
+  public TroopFileProtoReqMgr.ProtoRequestRunnable[] a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bevl()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    SlideDownFrameLayout.a(this.a).a().setY(f);
-    SlideDownFrameLayout.a(this.a).a(f, SlideDownFrameLayout.a(this.a).a().getHeight());
+    this.jdField_a_of_type_Anqe = new anqe();
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bevl
  * JD-Core Version:    0.7.0.1
  */

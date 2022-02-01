@@ -1,37 +1,28 @@
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
 
 class akjv
-  implements View.OnTouchListener
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  akjv(akjt paramakjt) {}
+  akjv(akju paramakju, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    switch (paramMotionEvent.getAction())
+    ((NewPhotoListActivity)this.jdField_a_of_type_Akju.mActivity).cancleProgressDailog();
+    if (bpwu.a(this.jdField_a_of_type_Akju.mActivity, paramLocalMediaInfo))
     {
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof ImageView))
-      {
-        ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
-        continue;
-        if ((paramView instanceof ImageView)) {
-          ((ImageView)paramView).getDrawable().clearColorFilter();
-        }
-      }
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.a(this.jdField_a_of_type_Akju.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjv
  * JD-Core Version:    0.7.0.1
  */

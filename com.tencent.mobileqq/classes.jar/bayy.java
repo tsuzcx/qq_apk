@@ -1,20 +1,29 @@
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
-public class bayy
-  extends NativeGifImage
+class bayy
+  implements DialogInterface.OnClickListener
 {
-  public bayy(bayx parambayx, File paramFile, boolean paramBoolean, float paramFloat)
-  {
-    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
-  }
+  bayy(bayw parambayw, int paramInt, Object paramObject) {}
   
-  public void executeNewTask()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.mCurrentFrameIndex >= 1) {
-      return;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
     }
-    super.executeNewTask();
+    do
+    {
+      return;
+    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOVideoData));
+    paramDialogInterface = (AIOVideoData)this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_Bayw.a.a(paramDialogInterface);
+    this.jdField_a_of_type_Bayw.a.a(paramDialogInterface.jdField_a_of_type_Long, paramDialogInterface.jdField_a_of_type_Int, 2);
+    this.jdField_a_of_type_Bayw.updateUI();
   }
 }
 

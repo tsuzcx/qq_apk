@@ -1,31 +1,22 @@
-import com.qq.android.dexposed.XC_MethodHook;
-import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
-import com.tencent.mobileqq.config.QConfigureException;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class aola
-  extends XC_MethodHook
+public class aola
+  extends aojt
 {
-  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    try
-    {
-      paramMethodHookParam = aokv.a();
-      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save")) && (!paramMethodHookParam.contains("android.app.SharedPreferencesImpl"))) {
-        aokv.a(new QConfigureException(paramMethodHookParam), "Can not parse xml beyond QConfigManager when app starting.", "QConfigWatchDog_Xml");
-      }
-      return;
-    }
-    catch (Exception paramMethodHookParam)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QConfigWatchDog", 2, "hook xml exception.", paramMethodHookParam);
-    }
+    paramQQAppInterface = new aokz(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qm";
+    paramQQAppInterface.c = "qr";
+    paramQQAppInterface.a("url", paramString);
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aola
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,8 @@ package com.tencent.biz.pubaccount.weishi_new.util;
 
 import UserGrowth.stSimpleMetaFeed;
 import android.text.TextUtils;
-import java.net.URL;
 import java.util.List;
-import sff;
-import sfg;
-import tlv;
-import tlz;
+import ups;
 
 public final class WeishiUtils$4
   implements Runnable
@@ -19,24 +15,20 @@ public final class WeishiUtils$4
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      Object localObject = tlv.a((stSimpleMetaFeed)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_Boolean);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+      String str = ups.a((stSimpleMetaFeed)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_Boolean);
+      if (TextUtils.isEmpty(str)) {}
       for (;;)
       {
         i += 1;
         break;
-        localObject = tlv.a((String)localObject);
-        sfg localsfg = new sfg();
-        localsfg.a = ((URL)localObject);
-        localsfg.b = true;
-        sff.a().a(localsfg, new tlz(this));
+        ups.a(str);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils.4
  * JD-Core Version:    0.7.0.1
  */

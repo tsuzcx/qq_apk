@@ -1,9 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 
 import android.text.TextUtils;
-import awgf;
-import bdne;
+import bgsg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ class ShortVideoTravellerManager$2
     {
       try
       {
-        localList = ShortVideoTravellerManager.a(this.this$0).a(ShortVideoTravellerManager.TravellerVideoItem.class);
+        localList = ShortVideoTravellerManager.a(this.this$0).query(ShortVideoTravellerManager.TravellerVideoItem.class);
         if ((localList == null) || (localList.size() <= 0)) {
           break label140;
         }
@@ -48,8 +48,8 @@ class ShortVideoTravellerManager$2
         return;
       }
       label140:
-      String str = bdne.s(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
-      int i = bdne.aH(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
+      String str = bgsg.s(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
+      int i = bgsg.aH(ShortVideoTravellerManager.a(this.this$0).getApp(), ShortVideoTravellerManager.a(this.this$0).getCurrentAccountUin());
       if (!TextUtils.isEmpty(str)) {
         this.this$0.a(str, i);
       }
@@ -59,7 +59,7 @@ class ShortVideoTravellerManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.videoconverter.ShortVideoTravellerManager.2
  * JD-Core Version:    0.7.0.1
  */

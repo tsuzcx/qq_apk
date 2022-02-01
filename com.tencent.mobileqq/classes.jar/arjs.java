@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class arjs
-  implements yuf
+public class arjs
+  implements View.OnLongClickListener, CompoundButton.OnCheckedChangeListener
 {
-  arjs(arjr paramarjr, boolean paramBoolean, String paramString, short paramShort) {}
+  public arjk a;
   
-  public void a(List<arnw> paramList)
+  protected arjs(DataReportSettingFragment paramDataReportSettingFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Arjr.a.jdField_a_of_type_Arkp != null) {
-      this.jdField_a_of_type_Arjr.a.jdField_a_of_type_Arkp.a(paramList, this.jdField_a_of_type_Arjr.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Arjr.a.b, this.jdField_a_of_type_Arjr.a.c, this.jdField_a_of_type_Arjr.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
-    }
-    if (paramList != null)
+    if (this.jdField_a_of_type_Arjk != null)
     {
-      azqs.b(this.jdField_a_of_type_Arjr.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.jdField_a_of_type_Arjr.a.jdField_a_of_type_Arhz.a().TroopUin, "", arrr.f(this.jdField_a_of_type_Arjr.a.c()), "1");
-      return;
+      this.jdField_a_of_type_Arjk.a = paramBoolean;
+      arki.a().e();
     }
-    azqs.b(this.jdField_a_of_type_Arjr.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.jdField_a_of_type_Arjr.a.jdField_a_of_type_Arhz.a().TroopUin, "-1", arrr.f(this.jdField_a_of_type_Arjr.a.c()), "1");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    bglp.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.getActivity(), 230, null, anni.a(2131701573), new arjt(this), new arju(this)).show();
+    return true;
   }
 }
 

@@ -1,25 +1,17 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
-import com.tencent.widget.ListView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-public class aykw
-  extends ayjp<aynx, ayxt>
+class aykw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aykw(MessageSearchDetailFragment paramMessageSearchDetailFragment, ListView paramListView, bdbb parambdbb, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
-  {
-    super(paramListView, parambdbb, paramSearchResultItem, paramString, paramQQAppInterface);
-  }
+  aykw(ayko paramayko, View paramView) {}
   
-  protected ayqp a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new ayrm(MessageSearchDetailFragment.a(this.a));
-  }
-  
-  protected aywe a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new ayxt(paramViewGroup, 2131562610);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
+    this.jdField_a_of_type_AndroidViewView.setTranslationY(f * afur.a(25.0F, ayko.a(this.jdField_a_of_type_Ayko)));
   }
 }
 

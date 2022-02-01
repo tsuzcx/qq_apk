@@ -1,16 +1,15 @@
-import android.graphics.Bitmap;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
-class afzw
-  implements aybs
+public class afzw
+  implements DialogInterface.OnClickListener
 {
-  public WeakReference<afzu> a;
+  public afzw(PlusPanel paramPlusPanel) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.get() != null) {
-      afzu.a((afzu)this.a.get(), paramInt1, paramInt2, paramBitmap, paramInt3);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

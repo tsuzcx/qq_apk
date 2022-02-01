@@ -1,33 +1,53 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MsgAutoMonitorUtil;
 
 public class aoah
-  implements View.OnTouchListener
+  extends anqd
 {
-  public aoah(ClearEllipsisEditText paramClearEllipsisEditText) {}
+  private aoah(GetTroopAssisMsg paramGetTroopAssisMsg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {}
-      for (int i = 1; (paramMotionEvent.getAction() == 0) && (i != 0); i = 0)
-      {
-        this.a.setText("");
-        this.a.setClearButtonVisible(false);
-        return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onGetAllProxyMsgFin:" + paramBoolean + ", timeoutFlag=" + paramLong1 + ", type=" + paramLong2);
+    }
+    if (paramLong2 == 1L) {
+      if ((!paramBoolean) || (paramLong1 == 8L) || (paramLong1 == 4L)) {
+        break label95;
       }
+    }
+    label95:
+    for (int i = 1; i == 0; i = 0)
+    {
+      this.a.a(6);
+      return;
+    }
+    this.a.a(7);
+  }
+  
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "on GetTroopMsg Fin:" + paramBoolean);
+    }
+    MsgAutoMonitorUtil.getInstance().markGrpFinishCost();
+    this.a.a(7);
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "on RegisterProxy Fin:" + paramBoolean);
+    }
+    if (!paramBoolean) {
+      this.a.a(6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoah
  * JD-Core Version:    0.7.0.1
  */

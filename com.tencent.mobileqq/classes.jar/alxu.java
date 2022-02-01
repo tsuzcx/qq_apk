@@ -1,75 +1,56 @@
 import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.NewFriendManager.3.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class alxu
-  extends altm
+  extends Handler
 {
-  alxu(alxr paramalxr) {}
+  public alxu(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  protected void onAddFriend(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    switch (paramMessage.what)
     {
-      return;
-      localObject = this.a.b();
-    } while (((ArrayList)localObject).isEmpty());
-    Object localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      avun localavun = (avun)((Iterator)localObject).next();
-      if ((localavun instanceof avui))
+    default: 
+    case 8193: 
+    case 8194: 
+      do
       {
-        int i = ((avui)localavun).a.structMsg.msg.sub_type.get();
-        String str = ((avui)localavun).a.senderuin;
-        if ((i == 13) && (paramString.equals(str)))
+        do
         {
-          ((Iterator)localObject).remove();
-          alxr.a(this.a).a().b(alof.M, 0, ((avui)localavun).a.uniseq, false);
-        }
-      }
+          do
+          {
+            return;
+            if (QQSpecialFriendSettingActivity.a(this.a) == null)
+            {
+              QQSpecialFriendSettingActivity.a(this.a, new biau(this.a, this.a.getTitleBarHeight()));
+              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
+                QQSpecialFriendSettingActivity.a(this.a).a((String)paramMessage.obj);
+              }
+            }
+          } while ((this.a.isFinishing()) || (QQSpecialFriendSettingActivity.a(this.a).isShowing()));
+          try
+          {
+            QQSpecialFriendSettingActivity.a(this.a).show();
+            return;
+          }
+          catch (Exception paramMessage) {}
+        } while (!QLog.isColorLevel());
+        QLog.e("QQSpecialFriendSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
+        return;
+      } while ((QQSpecialFriendSettingActivity.a(this.a) == null) || (!QQSpecialFriendSettingActivity.a(this.a).isShowing()));
+      QQSpecialFriendSettingActivity.a(this.a).dismiss();
+      QQSpecialFriendSettingActivity.a(this.a, null);
+      return;
     }
-    alxr.a(this.a).sendEmptyMessage(2);
-  }
-  
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (alxr.a(this.a) != null)) {
-      alxr.a(this.a).sendEmptyMessage(2);
-    }
-  }
-  
-  protected void onGetPushRecommend(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (alxr.a(this.a) != null)) {
-      alxr.a(this.a).sendEmptyMessage(2);
-    }
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    alxr.a(this.a).runOnUiThread(new NewFriendManager.3.1(this, paramBoolean));
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (alxr.a(this.a) != null)) {
-      alxr.a(this.a).sendEmptyMessage(2);
-    }
+    QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alxu
  * JD-Core Version:    0.7.0.1
  */

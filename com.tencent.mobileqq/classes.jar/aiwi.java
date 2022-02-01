@@ -1,24 +1,12 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
-
 public class aiwi
-  implements View.OnClickListener
 {
-  public aiwi(RedPacketVoiceFragment paramRedPacketVoiceFragment) {}
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public aiwi(String paramString1, String paramString2)
   {
-    if ((!this.a.c()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
-    {
-      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
-      localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
-      localIntent.putExtra("pay_requestcode", 5);
-      paramView.getContext().startActivity(localIntent);
-    }
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

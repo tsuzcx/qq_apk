@@ -1,43 +1,30 @@
-import android.animation.Animator;
-import android.content.res.Resources;
+import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.VersionUtils;
 
 public class ajpo
-  extends ajog
+  implements View.OnClickListener
 {
-  public ajpo(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public ajpo(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationEnd <<===");
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.x();
-    this.a.m();
-    if (!this.a.jdField_f_of_type_Boolean) {
-      this.a.e(false);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationStart ===>>");
-    }
-    this.a.e.setVisibility(0);
-    this.a.jdField_f_of_type_AndroidViewView.setBackgroundColor(this.a.getResources().getColor(2131165611));
-    this.a.c = true;
-    if (this.a.jdField_a_of_type_Ajqc != null) {
-      this.a.jdField_a_of_type_Ajqc.b();
-    }
-    if (this.a.jdField_f_of_type_Boolean)
+    if (!this.a.d)
     {
-      this.a.b.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.a.b.setLongClickable(false);
+      if (!VersionUtils.isHoneycomb()) {
+        break label40;
+      }
+      this.a.startActivity(new Intent("android.settings.SETTINGS"));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label40:
+      this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
     }
   }
 }

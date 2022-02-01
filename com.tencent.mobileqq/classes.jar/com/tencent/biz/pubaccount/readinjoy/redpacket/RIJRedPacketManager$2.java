@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.redpacket;
 
-import qft;
+import qzb;
 
 class RIJRedPacketManager$2
   implements Runnable
 {
-  RIJRedPacketManager$2(RIJRedPacketManager paramRIJRedPacketManager, qft paramqft, boolean paramBoolean) {}
+  RIJRedPacketManager$2(RIJRedPacketManager paramRIJRedPacketManager, qzb paramqzb, boolean paramBoolean) {}
   
   public void run()
   {
-    qft localqft = this.jdField_a_of_type_Qft;
+    qzb localqzb = this.jdField_a_of_type_Qzb;
     if ((this.jdField_a_of_type_Boolean) && (this.this$0.d())) {}
     for (boolean bool = true;; bool = false)
     {
-      localqft.a(bool);
+      localqzb.a(bool);
       return;
     }
   }

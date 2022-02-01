@@ -1,32 +1,20 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.pts.nativemodule.IPTSNavigateTo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Pattern;
+import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.4;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import java.util.Comparator;
 
 public class pwm
-  implements IPTSNavigateTo
+  implements Comparator<TabChannelCoverInfo>
 {
-  private final String a = "PTSNavigateToModule";
+  public pwm(ChannelCoverInfoModule.4 param4) {}
   
-  public void navigateTo(String paramString)
+  public int a(TabChannelCoverInfo paramTabChannelCoverInfo1, TabChannelCoverInfo paramTabChannelCoverInfo2)
   {
-    QLog.i("PTSNavigateToModule", 1, "[navigateTo], url = " + paramString);
-    paramString = Pattern.compile("\\/").split(paramString);
-    if ((paramString != null) && (paramString.length > 0))
-    {
-      paramString = paramString[(paramString.length - 1)];
-      Intent localIntent = new Intent();
-      localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppName", paramString);
-      PublicFragmentActivity.a(BaseActivity.sTopActivity, localIntent, PTSFragment.class);
-    }
+    return paramTabChannelCoverInfo1.seq - paramTabChannelCoverInfo2.seq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pwm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,235 +1,561 @@
-import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.util.HashMap;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-class bavc
-  implements ITransactionCallback
+public class bavc
+  implements bavk
 {
-  bavc(bavb parambavb, long paramLong) {}
+  public static String a;
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long = 0L;
+  anqd jdField_a_of_type_Anqd = new bave(this);
+  private bauw jdField_a_of_type_Bauw;
+  private bavf jdField_a_of_type_Bavf;
+  private bavg jdField_a_of_type_Bavg;
+  protected bavi a;
+  private bavj jdField_a_of_type_Bavj;
+  private Iterator<baux> jdField_a_of_type_JavaUtilIterator;
+  private ConcurrentLinkedQueue<baux> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
+  private String b;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  static
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
-    String str1 = (String)paramHashMap.get("rep_bdhTrans");
-    String str2 = (String)paramHashMap.get("segspercnt");
-    String str3 = (String)paramHashMap.get("param_conf_segSize");
-    String str4 = (String)paramHashMap.get("param_conf_segNum");
-    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms");
-    }
-    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
-    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
-    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
-    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
-    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
-    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
-    this.jdField_a_of_type_Bavb.a(l2, l3, l4, l5);
-    this.jdField_a_of_type_Bavb.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Bavb.jdField_b_of_type_Barh);
-    this.jdField_a_of_type_Bavb.d();
+    jdField_a_of_type_JavaLangString = "OrderMediaMsgSessionQueue";
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public bavc(String paramString, bauw parambauw)
   {
-    long l5 = SystemClock.uptimeMillis();
-    long l1 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l2 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    Object localObject = (String)paramHashMap.get("tc_p:");
-    String str1 = (String)paramHashMap.get("rep_bdhTrans");
-    String str2 = (String)paramHashMap.get("segspercnt");
-    String str3 = (String)paramHashMap.get("param_conf_segSize");
-    String str4 = (String)paramHashMap.get("param_conf_segNum");
-    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l5 - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.jdField_a_of_type_Long + " transInfo:" + str1);
+    this.jdField_a_of_type_Bavi = new bavd(this);
+    this.b = paramString;
+    this.jdField_a_of_type_Bauw = parambauw;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_Bavg = new bavg(this.b);
+    this.jdField_a_of_type_Bavg.a(this.jdField_a_of_type_Bavi);
+    this.jdField_a_of_type_Bavj = new bavj(this);
+  }
+  
+  private MessageRecord a(long paramLong)
+  {
+    Object localObject = null;
+    MessageRecord localMessageRecord = null;
+    if (paramLong != 0L)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+      localObject = localMessageRecord;
+      if (localIterator.hasNext())
+      {
+        localObject = (baux)localIterator.next();
+        if (paramLong != ((baux)localObject).jdField_a_of_type_Long) {
+          break label67;
+        }
+        localMessageRecord = ((baux)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      }
     }
-    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", localObject);
-    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
-    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
-    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
-    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
-    this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
-    this.jdField_a_of_type_Bavb.jdField_b_of_type_Barh.b();
-    this.jdField_a_of_type_Bavb.jdField_b_of_type_Barh.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Bavb.s = this.jdField_a_of_type_Bavb.q;
-    if ((this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 50) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 51)) {
-      paramHashMap = new Bdh_extinfo.UploadPicExtInfo();
+    label67:
+    for (;;)
+    {
+      break;
+      return localObject;
+    }
+  }
+  
+  private void a(baux parambaux)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doNextAddSend ").append(parambaux.jdField_a_of_type_Int).append(", uniseq:").append(parambaux.jdField_a_of_type_Long).append(", addStatus:").append(parambaux.jdField_b_of_type_Int).append(", sendStatus:").append(parambaux.c);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
+    }
+    this.jdField_a_of_type_Bavg.b(parambaux.jdField_a_of_type_Long);
+    if (parambaux.a()) {
+      this.jdField_a_of_type_Bauw.a(parambaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
+    if (parambaux.c()) {
+      this.jdField_a_of_type_Bauw.a(parambaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, parambaux.jdField_a_of_type_Anqd, parambaux.jdField_a_of_type_Bava);
+    }
+    b();
+    c();
+  }
+  
+  private void b()
+  {
+    Object localObject2;
+    try
+    {
+      localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+      do
+      {
+        for (;;)
+        {
+          if (!((Iterator)localObject2).hasNext()) {
+            break label325;
+          }
+          baux localbaux = (baux)((Iterator)localObject2).next();
+          if (!localbaux.a()) {
+            break;
+          }
+          localbaux.jdField_b_of_type_Int = 2;
+          this.jdField_a_of_type_Bavg.a(localbaux.jdField_a_of_type_Long);
+          this.jdField_a_of_type_Bauw.a(localbaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("success in add ").append(localbaux.jdField_a_of_type_Int).append(", uniseq:").append(localbaux.jdField_a_of_type_Long).append(", path:").append(localbaux.jdField_a_of_type_JavaLangString).append(", status:").append(localbaux.jdField_b_of_type_Int);
+            QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
+          }
+          if (localbaux.jdField_a_of_type_JavaLangRunnable != null)
+          {
+            this.jdField_a_of_type_Bavj.a(localbaux.jdField_a_of_type_JavaLangRunnable);
+            localbaux.jdField_a_of_type_JavaLangRunnable = null;
+            if (QLog.isColorLevel()) {
+              QLog.d(jdField_a_of_type_JavaLangString, 2, "remove mAddTimeoutRunable1 uniseq:" + localbaux.jdField_a_of_type_Long);
+            }
+          }
+          if (localbaux.jdField_b_of_type_Boolean)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(jdField_a_of_type_JavaLangString, 2, "invalid msg:" + localbaux.jdField_a_of_type_Long);
+            }
+            a(localbaux.jdField_a_of_type_Long);
+          }
+        }
+      } while (localObject1.b());
+    }
+    finally {}
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("not ready to add ").append(localObject1.jdField_a_of_type_Int).append(", path:").append(localObject1.jdField_a_of_type_JavaLangString).append(", mStatus:").append(localObject1.jdField_b_of_type_Int);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, ((StringBuilder)localObject2).toString());
+    }
+    label325:
+  }
+  
+  private void c()
+  {
+    for (;;)
+    {
+      StringBuilder localStringBuilder;
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
+        {
+          bavb.a(this.jdField_a_of_type_Int, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+          if (this.jdField_a_of_type_Bavf != null) {
+            this.jdField_a_of_type_Bavf.a(this.b);
+          }
+          this.jdField_a_of_type_Bavj.b();
+          this.jdField_a_of_type_Long = 0L;
+          this.jdField_a_of_type_Int = 0;
+          return;
+        }
+        baux localbaux = (baux)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek();
+        if (localbaux == null) {
+          continue;
+        }
+        if (localbaux.c())
+        {
+          localbaux.c = 4;
+          this.jdField_a_of_type_Bavj.a();
+          this.jdField_a_of_type_Bauw.a(localbaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Anqd, localbaux.jdField_a_of_type_Bava);
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("success in send ").append(localbaux.jdField_a_of_type_Int).append(", uniseq:").append(localbaux.jdField_a_of_type_Long).append(", dest:").append(localbaux.jdField_a_of_type_JavaLangString).append(", status:").append(localbaux.c);
+          QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
+          continue;
+        }
+        if (localObject.d()) {
+          continue;
+        }
+      }
+      finally {}
+      if (this.jdField_a_of_type_Bauw.c(localObject.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
+        localObject.jdField_a_of_type_Boolean = true;
+      }
+      boolean bool = this.jdField_a_of_type_Bavj.a(localObject.jdField_a_of_type_Long);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("not ready to send ").append(localObject.jdField_a_of_type_Int).append(", uniseq:").append(localObject.jdField_a_of_type_Long).append(", dest:").append(localObject.jdField_a_of_type_JavaLangString).append(", status:").append(localObject.c).append(", needCompress:").append(localObject.jdField_a_of_type_Boolean).append(", addSuccess:").append(bool);
+        QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
+      }
+    }
+  }
+  
+  public baux a(long paramLong)
+  {
+    this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+    while (this.jdField_a_of_type_JavaUtilIterator.hasNext())
+    {
+      baux localbaux = (baux)this.jdField_a_of_type_JavaUtilIterator.next();
+      if (paramLong == localbaux.jdField_a_of_type_Long)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("removeMediaMsgByUniseq ").append(localbaux.jdField_a_of_type_Int).append(", uniseq:").append(localbaux.jdField_a_of_type_Long);
+          QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
+        }
+        this.jdField_a_of_type_JavaUtilIterator.remove();
+        a(localbaux);
+        return localbaux;
+      }
+    }
+    return null;
+  }
+  
+  public baux a(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+    while (this.jdField_a_of_type_JavaUtilIterator.hasNext())
+    {
+      baux localbaux = (baux)this.jdField_a_of_type_JavaUtilIterator.next();
+      if (paramString.equals(localbaux.jdField_a_of_type_JavaLangString))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("removeMediaMsgByPath ").append(localbaux.jdField_a_of_type_Int).append(", uniseq:").append(localbaux.jdField_a_of_type_Long);
+          QLog.d(jdField_a_of_type_JavaLangString, 2, paramString.toString());
+        }
+        this.jdField_a_of_type_JavaUtilIterator.remove();
+        a(localbaux);
+        return localbaux;
+      }
+    }
+    return null;
+  }
+  
+  public bavg a()
+  {
+    return this.jdField_a_of_type_Bavg;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bavg != null)
+    {
+      this.jdField_a_of_type_Bavg.a();
+      this.jdField_a_of_type_Bavg = null;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = null;
+    }
+    if (this.jdField_a_of_type_Bavj != null)
+    {
+      this.jdField_a_of_type_Bavj.b();
+      this.jdField_a_of_type_Bavj = null;
+    }
+    this.jdField_a_of_type_Bavf = null;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Bavj.a();
+    baux localbaux = null;
+    if (paramLong != 0L) {
+      if (this.jdField_a_of_type_Bauw.a(a(paramLong))) {
+        localbaux = a(paramLong);
+      }
+    }
+    int i;
+    label53:
+    boolean bool;
+    for (;;)
+    {
+      if (localbaux != null) {
+        if (localbaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null)
+        {
+          i = 0;
+          bool = true;
+          label56:
+          bavb.a(i, bool);
+          if (!bool)
+          {
+            int j = this.jdField_a_of_type_Bauw.b(a(paramLong));
+            this.jdField_a_of_type_Bavj.a(paramLong, j, 3);
+          }
+          QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "timeout!!! send msg:", Long.valueOf(paramLong), " ,invalid:", Boolean.valueOf(bool), " ,msgtype:", Integer.valueOf(i) });
+          return;
+          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
+            continue;
+          }
+          localbaux = (baux)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek();
+          if ((localbaux == null) || (!this.jdField_a_of_type_Bauw.a(localbaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))) {
+            break label245;
+          }
+        }
+      }
+    }
+    label245:
+    for (localbaux = a(localbaux.jdField_a_of_type_Long);; localbaux = null)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "uniseq is invalid:", Long.valueOf(paramLong) });
+      break;
+      i = localbaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype;
+      break label53;
+      i = -1;
+      bool = false;
+      break label56;
+    }
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Bavj.a(paramLong);
+    if (paramInt2 == 0)
+    {
+      a(paramLong);
+      QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "blocking!!! count zero ", Long.valueOf(paramLong) });
+      return;
+    }
+    if (paramInt1 == -1)
+    {
+      paramInt1 = this.jdField_a_of_type_Bauw.b(a(paramLong));
+      this.jdField_a_of_type_Bavj.a(paramLong, paramInt1, paramInt2 - 1);
+      return;
+    }
+    int i = this.jdField_a_of_type_Bauw.b(a(paramLong));
+    if (i > paramInt1)
+    {
+      this.jdField_a_of_type_Bavj.a(paramLong, i, paramInt2);
+      return;
+    }
+    a(paramLong);
+    QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "blocking!!! progress stuck ", Long.valueOf(paramLong) });
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if ((paramLong1 == 0L) || (paramLong2 == 0L)) {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "oldSeq and newSeq should not be zero");
+      }
     }
     for (;;)
     {
-      try
-      {
-        paramHashMap.mergeFrom(paramArrayOfByte, 0, paramArrayOfByte.length);
-        this.jdField_a_of_type_Bavb.n = paramHashMap.bytes_file_resid.get().toStringUtf8();
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Bavb.n))
-        {
-          this.jdField_a_of_type_Bavb.e();
-          this.jdField_a_of_type_Bavb.a(l1, l2, l3, l4);
-          this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.a();
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        continue;
-        this.jdField_a_of_type_Bavb.d();
-        continue;
-      }
+      return;
       int i;
-      if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 23)
+      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
       {
-        paramHashMap = new Bdh_extinfo.CommFileExtRsp();
-        try
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+        for (;;)
         {
-          paramHashMap.mergeFrom(paramArrayOfByte, 0, paramArrayOfByte.length);
-          localObject = this.jdField_a_of_type_Bavb;
-          if (paramHashMap.bytes_download_url.has())
+          if (localIterator.hasNext())
           {
-            paramArrayOfByte = paramHashMap.bytes_download_url.get().toStringUtf8();
-            ((bavb)localObject).jdField_o_of_type_JavaLangString = paramArrayOfByte;
-            if (!paramHashMap.int32_retcode.has()) {
-              break label612;
-            }
-            i = paramHashMap.int32_retcode.get();
-            if (QLog.isColorLevel()) {
-              QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.ITransactionCallback.onSuccess(), business result code = " + i + " url : " + this.jdField_a_of_type_Bavb.jdField_o_of_type_JavaLangString);
-            }
-            if (i != 0) {
-              break label617;
-            }
-            this.jdField_a_of_type_Bavb.e();
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          for (;;)
-          {
-            paramArrayOfByte.printStackTrace();
-            continue;
-            paramArrayOfByte = "";
-            continue;
-            label612:
-            i = -1;
-          }
-          label617:
-          this.jdField_a_of_type_Bavb.d();
-        }
-      }
-      else
-      {
-        paramHashMap = ByteBuffer.wrap(paramArrayOfByte);
-        i = paramHashMap.get();
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.ITransactionCallback.onSuccess(), business result code = " + i);
-        }
-        if (i == 0)
-        {
-          if ((this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 8) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 64)) {
-            bavb.jdField_a_of_type_Int = Integer.parseInt(new String(paramArrayOfByte, 2, paramHashMap.get() & 0xFF));
-          }
-          for (;;)
-          {
-            this.jdField_a_of_type_Bavb.e();
-            break;
-            if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 21)
+            baux localbaux = (baux)localIterator.next();
+            if (paramLong1 == localbaux.jdField_a_of_type_Long)
             {
-              i = paramHashMap.get();
-              this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString = new String(paramArrayOfByte, 2, i & 0xFF);
-            }
-            else if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 22)
-            {
-              i = paramHashMap.get();
-              this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString = new String(paramArrayOfByte, 2, i & 0xFF);
-            }
-            else if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 35)
-            {
-              this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-            }
-            else if ((this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 36) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 37) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 38) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 39) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 40) || (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 41))
-            {
-              i = paramHashMap.get();
-              int j = paramHashMap.get();
-              int k = paramHashMap.get();
-              int m = paramHashMap.get();
-              this.jdField_a_of_type_Bavb.jdField_b_of_type_JavaLangString = new String(paramArrayOfByte, 5, (m & 0xFF) << 24 | 0x0 | i | (j & 0xFF) << 8 | (k & 0xFF) << 16);
-            }
-            else if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 48)
-            {
-              i = paramHashMap.get();
-              this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString = new String(paramArrayOfByte, 2, i & 0xFF);
-            }
-            else if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 56)
-            {
-              try
+              localbaux.jdField_a_of_type_Long = paramLong2;
+              if (localbaux.jdField_a_of_type_JavaLangRunnable != null)
               {
-                paramHashMap.getInt();
-                l5 = paramHashMap.getLong();
-                i = paramHashMap.getInt();
-                this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString = new String(paramArrayOfByte, paramHashMap.position(), i);
-                if (QLog.isColorLevel()) {
-                  QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.ITransactionCallback.onSuccess(). personalityLabel uuid:" + l5 + " url:" + this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString);
-                }
-                this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Bavb.jdField_a_of_type_Bayk.j;
-                this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.jdField_d_of_type_Long = l5;
-                this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.i = this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString;
-                if (TextUtils.isEmpty(this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.i)) {
-                  this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.i = this.jdField_a_of_type_Bavb.jdField_a_of_type_Bayk.i;
-                }
+                this.jdField_a_of_type_Bavj.a(localbaux.jdField_a_of_type_JavaLangRunnable);
+                localbaux.jdField_a_of_type_JavaLangRunnable = this.jdField_a_of_type_Bavj.a(paramLong2);
               }
-              catch (Exception paramArrayOfByte) {}
+              if (QLog.isColorLevel())
+              {
+                QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "updateMediaMsgByUniseq old:", Long.valueOf(paramLong1), ", new:", Long.valueOf(paramLong2) });
+                i = 1;
+              }
             }
           }
         }
-        if (this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass.b == 34)
+      }
+      while (i == 0)
+      {
+        a(paramLong2, "");
+        return;
+        i = 1;
+        continue;
+        i = 0;
+      }
+    }
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    a(paramLong, paramString, false);
+  }
+  
+  public void a(long paramLong, String paramString, boolean paramBoolean)
+  {
+    Object localObject = new baux();
+    ((baux)localObject).jdField_a_of_type_Long = paramLong;
+    ((baux)localObject).jdField_a_of_type_JavaLangString = paramString;
+    ((baux)localObject).jdField_b_of_type_Boolean = paramBoolean;
+    int i = this.jdField_a_of_type_Int + 1;
+    this.jdField_a_of_type_Int = i;
+    ((baux)localObject).jdField_a_of_type_Int = i;
+    ((baux)localObject).jdField_b_of_type_Int = 0;
+    ((baux)localObject).c = 0;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(localObject);
+    if (paramLong != 0L) {}
+    for (((baux)localObject).jdField_a_of_type_JavaLangRunnable = this.jdField_a_of_type_Bavj.a(paramLong);; ((baux)localObject).jdField_a_of_type_JavaLangRunnable = this.jdField_a_of_type_Bavj.a(paramString))
+    {
+      if (this.jdField_a_of_type_Long == 0L) {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("enqueueMediaMsg msgSize:").append(this.jdField_a_of_type_Int).append(", uniseq:").append(paramLong).append(", path:").append(paramString).append(", queue:").append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+        QLog.d(jdField_a_of_type_JavaLangString, 2, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+  }
+  
+  public void a(bavf parambavf)
+  {
+    this.jdField_a_of_type_Bavf = parambavf;
+  }
+  
+  public void a(MessageRecord paramMessageRecord, long paramLong, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("addOrderMsgRecord").append(" uniseq:").append(paramLong).append(", path:").append(paramString).append(", realadd:").append(paramBoolean);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+    baux localbaux;
+    if (((Iterator)localObject).hasNext())
+    {
+      localbaux = (baux)((Iterator)localObject).next();
+      if ((localbaux.jdField_a_of_type_Long == 0L) || (paramLong != localbaux.jdField_a_of_type_Long)) {
+        break label217;
+      }
+      localbaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+      if (!paramBoolean) {
+        break label145;
+      }
+      localbaux.jdField_b_of_type_Int = 1;
+    }
+    for (;;)
+    {
+      if (paramBoolean) {
+        b();
+      }
+      return;
+      label145:
+      localbaux.jdField_b_of_type_Int = 2;
+      if (localbaux.jdField_a_of_type_JavaLangRunnable != null)
+      {
+        this.jdField_a_of_type_Bavj.a(localbaux.jdField_a_of_type_JavaLangRunnable);
+        localbaux.jdField_a_of_type_JavaLangRunnable = null;
+        if (QLog.isColorLevel())
         {
-          paramArrayOfByte = new String(paramArrayOfByte);
-          this.jdField_a_of_type_Bavb.jdField_a_of_type_JavaLangString = paramArrayOfByte;
-          this.jdField_a_of_type_Bavb.e();
-        }
-        else
-        {
-          this.jdField_a_of_type_Bavb.d(1005);
-          this.jdField_a_of_type_Bavb.d();
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "remove mAddTimeoutRunable2 uniseq:" + localbaux.jdField_a_of_type_Long);
+          continue;
+          label217:
+          if ((localbaux.jdField_a_of_type_Long != 0L) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(localbaux.jdField_a_of_type_JavaLangString))) {
+            break;
+          }
+          localbaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+          localbaux.jdField_a_of_type_Long = paramLong;
+          if (paramBoolean)
+          {
+            localbaux.jdField_b_of_type_Int = 1;
+          }
+          else
+          {
+            localbaux.jdField_b_of_type_Int = 2;
+            if (localbaux.jdField_a_of_type_JavaLangRunnable != null)
+            {
+              this.jdField_a_of_type_Bavj.a(localbaux.jdField_a_of_type_JavaLangRunnable);
+              localbaux.jdField_a_of_type_JavaLangRunnable = null;
+              if (QLog.isColorLevel()) {
+                QLog.d(jdField_a_of_type_JavaLangString, 2, "remove mAddTimeoutRunable3 uniseq:" + localbaux.jdField_a_of_type_Long);
+              }
+            }
+          }
         }
       }
     }
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
+  public void a(MessageRecord paramMessageRecord, anqd paramanqd, bava parambava)
   {
-    this.jdField_a_of_type_Bavb.d("<BDH_LOG> onTransStart()");
-    this.jdField_a_of_type_Bavb.jdField_b_of_type_Barh.a();
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "sendOrderMsgRecord:" + paramMessageRecord.uniseq);
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+    while (localIterator.hasNext())
+    {
+      baux localbaux = (baux)localIterator.next();
+      if (paramMessageRecord.uniseq == localbaux.jdField_a_of_type_Long)
+      {
+        localbaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+        localbaux.jdField_a_of_type_Anqd = paramanqd;
+        localbaux.jdField_a_of_type_Bava = parambava;
+        localbaux.c = 3;
+        if (QLog.isColorLevel())
+        {
+          paramMessageRecord = new StringBuilder();
+          paramMessageRecord.append("ready to send ").append(localbaux.jdField_a_of_type_Int).append(", uniseq:").append(localbaux.jdField_a_of_type_Long).append(", addStatus:").append(localbaux.jdField_b_of_type_Int).append(", sendStatus:").append(localbaux.c);
+          QLog.d(jdField_a_of_type_JavaLangString, 2, paramMessageRecord.toString());
+        }
+      }
+    }
+    c();
   }
   
-  public void onUpdateProgress(int paramInt)
+  public void a(Object paramObject)
   {
-    bavb localbavb = this.jdField_a_of_type_Bavb;
-    bass localbass = this.jdField_a_of_type_Bavb.jdField_a_of_type_Bass;
-    long l = paramInt;
-    localbass.e = l;
-    localbavb.s = l;
-    if ((paramInt <= this.jdField_a_of_type_Bavb.q) && (!this.jdField_a_of_type_Bavb.jdField_o_of_type_Boolean) && (!this.jdField_a_of_type_Bavb.k)) {
-      this.jdField_a_of_type_Bavb.i();
+    baux localbaux = null;
+    int i;
+    if ((paramObject instanceof Long))
+    {
+      localbaux = a(((Long)paramObject).longValue());
+      i = 1;
     }
+    for (;;)
+    {
+      if ((localbaux != null) && (localbaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)) {}
+      for (int j = localbaux.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype;; j = -1)
+      {
+        bavb.a(j, i);
+        QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "timeout!!! add msg:", paramObject, " ,msgtype:", Integer.valueOf(j) });
+        return;
+        if (!(paramObject instanceof String)) {
+          break label114;
+        }
+        localbaux = a((String)paramObject);
+        i = 2;
+        break;
+      }
+      label114:
+      i = 0;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty();
+  }
+  
+  public boolean a(long paramLong, String paramString)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+    while (localIterator.hasNext())
+    {
+      baux localbaux = (baux)localIterator.next();
+      if ((localbaux.jdField_a_of_type_Long != 0L) && (paramLong == localbaux.jdField_a_of_type_Long)) {
+        return true;
+      }
+      if ((localbaux.jdField_a_of_type_Long == 0L) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(localbaux.jdField_a_of_type_JavaLangString))) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

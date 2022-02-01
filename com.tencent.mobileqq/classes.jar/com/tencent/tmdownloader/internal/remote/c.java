@@ -2,6 +2,8 @@ package com.tencent.tmdownloader.internal.remote;
 
 import android.os.IBinder;
 import android.os.Parcel;
+import com.tencent.tmassistant.appinfo.aidl.IGetAppInfoCallback;
+import com.tencent.tmassistant.appinfo.data.AppDetailReqParam;
 
 class c
   implements a
@@ -11,6 +13,44 @@ class c
   c(IBinder paramIBinder)
   {
     this.a = paramIBinder;
+  }
+  
+  public int a(AppDetailReqParam paramAppDetailReqParam, IGetAppInfoCallback paramIGetAppInfoCallback)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
+    {
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
+        if (paramAppDetailReqParam != null)
+        {
+          localParcel1.writeInt(1);
+          paramAppDetailReqParam.writeToParcel(localParcel1, 0);
+          if (paramIGetAppInfoCallback != null)
+          {
+            paramAppDetailReqParam = paramIGetAppInfoCallback.asBinder();
+            localParcel1.writeStrongBinder(paramAppDetailReqParam);
+            this.a.transact(16, localParcel1, localParcel2, 0);
+            localParcel2.readException();
+            int i = localParcel2.readInt();
+            return i;
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramAppDetailReqParam = null;
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
+    }
   }
   
   public void a()
@@ -320,7 +360,7 @@ class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.remote.c
  * JD-Core Version:    0.7.0.1
  */

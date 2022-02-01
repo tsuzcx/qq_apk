@@ -1,116 +1,82 @@
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.open.downloadnew.DownloaderGetCodeClient.1;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class bivz
-  extends aynv
 {
-  private static ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(ayvm.b());
-  public int a;
-  public long a;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  private static volatile bivz jdField_a_of_type_Bivz;
+  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new biwa(this);
+  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, List<bivi>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, String> b = new ConcurrentHashMap();
   
-  public CharSequence a()
+  public static bivz a()
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence == null) && (this.jdField_b_of_type_JavaLangString != null))
+    if (jdField_a_of_type_Bivz == null) {}
+    try
     {
-      bamp localbamp = new bamp(this.jdField_b_of_type_JavaLangString, 3, 20);
-      if ((this.jdField_a_of_type_Int == 0) && (this.jdField_c_of_type_Int > this.jdField_b_of_type_Int)) {
-        localbamp.setSpan(jdField_a_of_type_AndroidTextStyleForegroundColorSpan, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, 33);
+      if (jdField_a_of_type_Bivz == null) {
+        jdField_a_of_type_Bivz = new bivz();
       }
-      this.jdField_a_of_type_JavaLangCharSequence = localbamp;
+      return jdField_a_of_type_Bivz;
     }
-    return this.jdField_a_of_type_JavaLangCharSequence;
+    finally {}
   }
   
-  public String a()
+  private String a(String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return paramString + "_" + paramInt;
   }
   
-  public void a(View paramView)
+  private void a(String paramString, bivi parambivi)
   {
-    BaseActivity localBaseActivity = (BaseActivity)paramView.getContext();
-    bivc.a(localBaseActivity, localBaseActivity.getAppRuntime().getAccount(), this.jdField_a_of_type_Long);
-    ayvm.a(this.jdField_a_of_type_JavaLangString, 60, 0, paramView);
-    if ((localBaseActivity instanceof UniteSearchActivity)) {
-      ayvm.a("all_result", "clk_collect", new String[] { "" + this.jdField_a_of_type_JavaLangString });
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    if (this.jdField_c_of_type_Long == 0L) {
-      return null;
-    }
-    return "" + this.jdField_c_of_type_Long;
-  }
-  
-  public int c()
-  {
-    switch (this.e)
+    if ((TextUtils.isEmpty(paramString)) || (parambivi == null)) {}
+    List localList1;
+    do
     {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 4;
-    }
-    return 101;
-  }
-  
-  public CharSequence c()
-  {
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    if (this.jdField_c_of_type_JavaLangString != null)
-    {
-      if (this.jdField_a_of_type_Int == 1) {
-        localSpannableStringBuilder.append("来自: ").append(this.jdField_c_of_type_JavaLangString).setSpan(jdField_a_of_type_AndroidTextStyleForegroundColorSpan, this.jdField_b_of_type_Int + 4, this.jdField_c_of_type_Int + 4, 33);
+      return;
+      List localList2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      localList1 = localList2;
+      if (localList2 == null) {
+        localList1 = Collections.synchronizedList(new ArrayList());
       }
-    }
-    else {
-      return localSpannableStringBuilder;
-    }
-    return localSpannableStringBuilder.append("来自: ").append(ayvm.a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 30));
+    } while (localList1.contains(parambivi));
+    localList1.add(parambivi);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localList1);
   }
   
-  public CharSequence d()
+  public void a(String paramString, int paramInt, bivi parambivi)
   {
-    return null;
+    a(a(paramString, paramInt), parambivi);
+    parambivi = new Bundle();
+    parambivi.putString("PackageName", paramString);
+    parambivi.putInt("VersionCode", paramInt);
+    bisy.c("DownloaderGetCodeClient", paramString + "_" + paramInt + " begin getApkCode ......");
+    this.jdField_a_of_type_JavaUtilMap.put(a(paramString, paramInt), Boolean.valueOf(true));
+    QIPCClientHelper.getInstance().callServer("Module_DownloaderGetCodeServer", "DownloaderWriteCodeIPC_Action__GetCode", parambivi, this.jdField_a_of_type_EipcEIPCResultCallback);
+    ThreadManager.getSubThreadHandler().postDelayed(new DownloaderGetCodeClient.1(this, paramString, paramInt, parambivi), 3000L);
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt, bivi parambivi)
+  {
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.b.put(a(paramString2, paramInt), paramString1);
+    }
+    a(paramString2, paramInt, parambivi);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bivz
  * JD-Core Version:    0.7.0.1
  */

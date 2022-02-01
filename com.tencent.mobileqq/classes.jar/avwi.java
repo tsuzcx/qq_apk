@@ -1,37 +1,47 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class avwi
-  extends avzu
+  extends avwb
 {
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public avwi(OCRResultFragmentNew paramOCRResultFragmentNew) {}
-  
-  public void a(MotionEvent paramMotionEvent)
+  public avwi(BaseChatPie paramBaseChatPie)
   {
-    super.a(paramMotionEvent);
-    if ((this.jdField_a_of_type_Boolean) || (this.b)) {
-      avvq.a("0X800AC97", 0);
+    super(paramBaseChatPie);
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof ahzy)) {
+      ((ahzy)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).bz();
     }
   }
   
-  public void a(ScaleGestureDetector paramScaleGestureDetector)
+  public boolean a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    return true;
   }
   
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public boolean b()
   {
-    this.b = true;
-    return super.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    return true;
+  }
+  
+  public void c()
+  {
+    super.c();
+    this.jdField_a_of_type_Avwh.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Avwh.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    if (this.jdField_a_of_type_Avwh.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_Avwh.jdField_a_of_type_JavaLangString = "";
+    }
+    this.jdField_a_of_type_Avwg = new avwg();
+    this.jdField_a_of_type_Avwg.jdField_a_of_type_JavaLangString = "c2c_AIO";
+    this.jdField_a_of_type_Avwg.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Avwg.b = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avwi
  * JD-Core Version:    0.7.0.1
  */

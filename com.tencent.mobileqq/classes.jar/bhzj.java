@@ -1,23 +1,13 @@
-import android.database.DataSetObserver;
-
-class bhzj
-  extends DataSetObserver
+public class bhzj
 {
-  bhzj(bhzi parambhzi) {}
-  
-  public void onChanged()
-  {
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    this.a.notifyDataSetInvalidated();
-  }
+  public int a;
+  public String a;
+  public int b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhzj
  * JD-Core Version:    0.7.0.1
  */

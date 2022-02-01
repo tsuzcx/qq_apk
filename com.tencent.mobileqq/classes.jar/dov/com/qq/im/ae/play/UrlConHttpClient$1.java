@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.play;
 
-import blik;
+import bnxx;
 
 public class UrlConHttpClient$1
   implements Runnable
 {
-  public UrlConHttpClient$1(blik paramblik, String paramString1, int paramInt, String paramString2) {}
+  public UrlConHttpClient$1(bnxx parambnxx, String paramString1, int paramInt, String paramString2) {}
   
   /* Error */
   public void run()
@@ -69,13 +69,13 @@ public class UrlConHttpClient$1
     //   114: goto -25 -> 89
     //   117: astore_2
     //   118: aload_0
-    //   119: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lblik;
+    //   119: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lbnxx;
     //   122: aload_0
     //   123: getfield 20	dov/com/qq/im/ae/play/UrlConHttpClient$1:jdField_a_of_type_Int	I
     //   126: ldc 98
     //   128: aload_0
     //   129: getfield 22	dov/com/qq/im/ae/play/UrlConHttpClient$1:b	Ljava/lang/String;
-    //   132: invokestatic 103	blik:a	(Lblik;ILjava/lang/String;Ljava/lang/String;)V
+    //   132: invokestatic 103	bnxx:a	(Lbnxx;ILjava/lang/String;Ljava/lang/String;)V
     //   135: invokestatic 106	android/net/TrafficStats:clearThreadStatsTag	()V
     //   138: return
     //   139: aload 4
@@ -85,7 +85,7 @@ public class UrlConHttpClient$1
     //   148: astore 4
     //   150: aload_3
     //   151: invokevirtual 114	java/io/ByteArrayOutputStream:close	()V
-    //   154: invokestatic 116	blik:a	()Ljava/lang/String;
+    //   154: invokestatic 116	bnxx:a	()Ljava/lang/String;
     //   157: new 118	java/lang/StringBuilder
     //   160: dup
     //   161: invokespecial 119	java/lang/StringBuilder:<init>	()V
@@ -96,14 +96,14 @@ public class UrlConHttpClient$1
     //   174: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   177: invokestatic 131	com/tencent/ttpic/baseutils/log/LogUtils:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   180: aload_0
-    //   181: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lblik;
-    //   184: invokestatic 134	blik:a	(Lblik;)Lcom/tencent/ttpic/openapi/offlineset/utils/IResponseListener;
+    //   181: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lbnxx;
+    //   184: invokestatic 134	bnxx:a	(Lbnxx;)Lcom/tencent/ttpic/openapi/offlineset/utils/IResponseListener;
     //   187: ifnull +31 -> 218
     //   190: aload 4
     //   192: ifnull +34 -> 226
     //   195: aload_0
-    //   196: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lblik;
-    //   199: invokestatic 134	blik:a	(Lblik;)Lcom/tencent/ttpic/openapi/offlineset/utils/IResponseListener;
+    //   196: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lbnxx;
+    //   199: invokestatic 134	bnxx:a	(Lbnxx;)Lcom/tencent/ttpic/openapi/offlineset/utils/IResponseListener;
     //   202: aload_0
     //   203: getfield 20	dov/com/qq/im/ae/play/UrlConHttpClient$1:jdField_a_of_type_Int	I
     //   206: iconst_0
@@ -116,8 +116,8 @@ public class UrlConHttpClient$1
     //   222: invokestatic 106	android/net/TrafficStats:clearThreadStatsTag	()V
     //   225: return
     //   226: aload_0
-    //   227: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lblik;
-    //   230: invokestatic 134	blik:a	(Lblik;)Lcom/tencent/ttpic/openapi/offlineset/utils/IResponseListener;
+    //   227: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lbnxx;
+    //   230: invokestatic 134	bnxx:a	(Lbnxx;)Lcom/tencent/ttpic/openapi/offlineset/utils/IResponseListener;
     //   233: aload_0
     //   234: getfield 20	dov/com/qq/im/ae/play/UrlConHttpClient$1:jdField_a_of_type_Int	I
     //   237: iconst_1
@@ -128,13 +128,13 @@ public class UrlConHttpClient$1
     //   249: goto -31 -> 218
     //   252: astore_2
     //   253: aload_0
-    //   254: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lblik;
+    //   254: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lbnxx;
     //   257: aload_0
     //   258: getfield 20	dov/com/qq/im/ae/play/UrlConHttpClient$1:jdField_a_of_type_Int	I
     //   261: ldc 147
     //   263: aload_0
     //   264: getfield 22	dov/com/qq/im/ae/play/UrlConHttpClient$1:b	Ljava/lang/String;
-    //   267: invokestatic 103	blik:a	(Lblik;ILjava/lang/String;Ljava/lang/String;)V
+    //   267: invokestatic 103	bnxx:a	(Lbnxx;ILjava/lang/String;Ljava/lang/String;)V
     //   270: invokestatic 106	android/net/TrafficStats:clearThreadStatsTag	()V
     //   273: return
     //   274: iload_1
@@ -146,7 +146,7 @@ public class UrlConHttpClient$1
     //   287: invokevirtual 155	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   290: ifeq +54 -> 344
     //   293: aload_0
-    //   294: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lblik;
+    //   294: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lbnxx;
     //   297: aload_0
     //   298: getfield 20	dov/com/qq/im/ae/play/UrlConHttpClient$1:jdField_a_of_type_Int	I
     //   301: aload_0
@@ -156,20 +156,20 @@ public class UrlConHttpClient$1
     //   309: ldc 149
     //   311: ldc 157
     //   313: invokevirtual 161	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   316: invokevirtual 165	blik:get	(ILjava/lang/String;Ljava/lang/String;)V
+    //   316: invokevirtual 165	bnxx:get	(ILjava/lang/String;Ljava/lang/String;)V
     //   319: goto -97 -> 222
     //   322: astore_2
     //   323: aload_0
-    //   324: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lblik;
+    //   324: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lbnxx;
     //   327: aload_0
     //   328: getfield 20	dov/com/qq/im/ae/play/UrlConHttpClient$1:jdField_a_of_type_Int	I
     //   331: ldc 167
     //   333: aload_0
     //   334: getfield 22	dov/com/qq/im/ae/play/UrlConHttpClient$1:b	Ljava/lang/String;
-    //   337: invokestatic 103	blik:a	(Lblik;ILjava/lang/String;Ljava/lang/String;)V
+    //   337: invokestatic 103	bnxx:a	(Lbnxx;ILjava/lang/String;Ljava/lang/String;)V
     //   340: invokestatic 106	android/net/TrafficStats:clearThreadStatsTag	()V
     //   343: return
-    //   344: invokestatic 116	blik:a	()Ljava/lang/String;
+    //   344: invokestatic 116	bnxx:a	()Ljava/lang/String;
     //   347: new 118	java/lang/StringBuilder
     //   350: dup
     //   351: invokespecial 119	java/lang/StringBuilder:<init>	()V
@@ -183,7 +183,7 @@ public class UrlConHttpClient$1
     //   370: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   373: invokestatic 175	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   376: aload_0
-    //   377: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lblik;
+    //   377: getfield 16	dov/com/qq/im/ae/play/UrlConHttpClient$1:this$0	Lbnxx;
     //   380: aload_0
     //   381: getfield 20	dov/com/qq/im/ae/play/UrlConHttpClient$1:jdField_a_of_type_Int	I
     //   384: new 118	java/lang/StringBuilder
@@ -199,7 +199,7 @@ public class UrlConHttpClient$1
     //   407: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   410: aload_0
     //   411: getfield 22	dov/com/qq/im/ae/play/UrlConHttpClient$1:b	Ljava/lang/String;
-    //   414: invokestatic 103	blik:a	(Lblik;ILjava/lang/String;Ljava/lang/String;)V
+    //   414: invokestatic 103	bnxx:a	(Lbnxx;ILjava/lang/String;Ljava/lang/String;)V
     //   417: goto -195 -> 222
     //   420: astore_2
     //   421: invokestatic 106	android/net/TrafficStats:clearThreadStatsTag	()V
@@ -266,7 +266,7 @@ public class UrlConHttpClient$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.play.UrlConHttpClient.1
  * JD-Core Version:    0.7.0.1
  */

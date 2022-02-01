@@ -146,7 +146,7 @@ public class PreCacheManager
     String str3 = paramPreCacheInfo.getDataUrl;
     int i = str3.indexOf("?");
     if (i >= 0) {}
-    for (String str1 = str3.substring(0, i) + paramString2 + str3.substring(i + 1);; str1 = str3 + "?" + paramString2)
+    for (String str1 = str3.substring(0, i) + "?" + paramString2 + "&" + str3.substring(i + 1);; str1 = str3 + "?" + paramString2)
     {
       QLog.i("miniapp-start_PreCacheManager", 1, str2 + "doRequestPreCacheData requestUrl:" + str1 + " useProxy:" + paramPreCacheInfo.useProxy + " query:" + paramString2);
       if (paramPreCacheInfo.useProxy <= 0) {
@@ -161,7 +161,7 @@ public class PreCacheManager
     paramPreCacheInfo.scene = paramMiniAppConfig.launchParam.scene;
     paramPreCacheInfo.path = paramMiniAppConfig.launchParam.entryPath;
     MiniAppFileManager.getInstance();
-    paramString2 = MiniAppFileManager.getPreCacheFilePath(paramMiniAppConfig.config.appId, paramString1, paramPreCacheInfo.getCacheKey());
+    paramString2 = MiniAppFileManager.getPreCacheFilePath(paramMiniAppConfig.config.appId, paramString1, paramPreCacheInfo.getCacheKey(paramString1));
     MiniappDownloadUtil.getInstance().download(str1, paramString2, false, new PreCacheManager.4(this, str2, paramOnCacheListener, paramPreCacheInfo, paramString2, paramMiniAppConfig, paramString1), Downloader.DownloadMode.StrictMode, null);
   }
   
@@ -267,172 +267,187 @@ public class PreCacheManager
     //   11: dup
     //   12: aload_1
     //   13: aload_2
-    //   14: invokespecial 398	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:<init>	(Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;Ljava/lang/String;)V
+    //   14: invokespecial 401	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:<init>	(Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;Ljava/lang/String;)V
     //   17: astore 5
-    //   19: invokestatic 302	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
+    //   19: invokestatic 304	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
     //   22: pop
-    //   23: ldc 144
-    //   25: aload_1
-    //   26: getfield 86	com/tencent/mobileqq/mini/apkg/MiniAppConfig:config	Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
-    //   29: getfield 221	com/tencent/mobileqq/mini/apkg/MiniAppInfo:appId	Ljava/lang/String;
-    //   32: aload_2
-    //   33: new 104	java/lang/StringBuilder
-    //   36: dup
-    //   37: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   40: aload 5
-    //   42: invokevirtual 305	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:getCacheKey	()Ljava/lang/String;
-    //   45: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: ldc_w 400
-    //   51: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: invokestatic 309	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getPreCacheFilePath	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   60: invokestatic 406	com/tencent/mobileqq/mini/util/ParcelableUtil:readParcelableFromFile	(Ljava/lang/Class;Ljava/lang/String;)Landroid/os/Parcelable;
-    //   63: checkcast 144	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData
-    //   66: astore 5
-    //   68: aload 5
-    //   70: ifnull +154 -> 224
-    //   73: aload 5
-    //   75: getfield 409	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:filePath	Ljava/lang/String;
-    //   78: ifnull +146 -> 224
-    //   81: new 351	java/io/File
+    //   23: aload_1
+    //   24: getfield 86	com/tencent/mobileqq/mini/apkg/MiniAppConfig:config	Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
+    //   27: getfield 221	com/tencent/mobileqq/mini/apkg/MiniAppInfo:appId	Ljava/lang/String;
+    //   30: aload_2
+    //   31: new 104	java/lang/StringBuilder
+    //   34: dup
+    //   35: invokespecial 105	java/lang/StringBuilder:<init>	()V
+    //   38: aload 5
+    //   40: aload_2
+    //   41: invokevirtual 308	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:getCacheKey	(Ljava/lang/String;)Ljava/lang/String;
+    //   44: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: ldc_w 403
+    //   50: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokestatic 312	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getPreCacheFilePath	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   59: astore_1
+    //   60: ldc 144
+    //   62: aload_1
+    //   63: invokestatic 409	com/tencent/mobileqq/mini/util/ParcelableUtil:readParcelableFromFile	(Ljava/lang/Class;Ljava/lang/String;)Landroid/os/Parcelable;
+    //   66: checkcast 144	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData
+    //   69: astore_2
+    //   70: aload_2
+    //   71: ifnull +173 -> 244
+    //   74: aload_2
+    //   75: getfield 412	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:filePath	Ljava/lang/String;
+    //   78: ifnull +166 -> 244
+    //   81: new 354	java/io/File
     //   84: dup
-    //   85: aload 5
-    //   87: getfield 409	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:filePath	Ljava/lang/String;
-    //   90: invokespecial 354	java/io/File:<init>	(Ljava/lang/String;)V
-    //   93: astore_1
-    //   94: aload_1
-    //   95: invokevirtual 357	java/io/File:exists	()Z
-    //   98: istore 4
-    //   100: iload 4
-    //   102: ifne +29 -> 131
-    //   105: iconst_0
-    //   106: ifeq +11 -> 117
-    //   109: new 411	java/lang/NullPointerException
-    //   112: dup
-    //   113: invokespecial 412	java/lang/NullPointerException:<init>	()V
-    //   116: athrow
-    //   117: aconst_null
-    //   118: areturn
-    //   119: astore_1
-    //   120: ldc 17
+    //   85: aload_2
+    //   86: getfield 412	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:filePath	Ljava/lang/String;
+    //   89: invokespecial 357	java/io/File:<init>	(Ljava/lang/String;)V
+    //   92: astore_1
+    //   93: aload_1
+    //   94: invokevirtual 360	java/io/File:exists	()Z
+    //   97: istore 4
+    //   99: iload 4
+    //   101: ifne +45 -> 146
+    //   104: iconst_0
+    //   105: ifeq +11 -> 116
+    //   108: new 414	java/lang/NullPointerException
+    //   111: dup
+    //   112: invokespecial 415	java/lang/NullPointerException:<init>	()V
+    //   115: athrow
+    //   116: aconst_null
+    //   117: areturn
+    //   118: astore_1
+    //   119: ldc 17
+    //   121: iconst_1
     //   122: ldc 195
     //   124: aload_1
-    //   125: invokestatic 417	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   128: goto -11 -> 117
-    //   131: new 419	java/io/FileInputStream
-    //   134: dup
-    //   135: aload_1
-    //   136: invokespecial 422	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   139: astore_2
-    //   140: aload_2
-    //   141: astore_1
-    //   142: aload_2
-    //   143: invokevirtual 425	java/io/FileInputStream:available	()I
-    //   146: istore_3
-    //   147: aload_2
-    //   148: astore_1
-    //   149: iload_3
-    //   150: newarray byte
-    //   152: astore 6
-    //   154: aload_2
-    //   155: astore_1
-    //   156: aload_2
-    //   157: aload 6
-    //   159: iconst_0
-    //   160: iload_3
-    //   161: invokevirtual 429	java/io/FileInputStream:read	([BII)I
-    //   164: pop
-    //   165: aload_2
-    //   166: astore_1
-    //   167: aload 5
-    //   169: aload 6
-    //   171: putfield 432	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:data	[B
-    //   174: aload 5
-    //   176: astore_1
-    //   177: aload_2
-    //   178: ifnull -172 -> 6
-    //   181: aload_2
-    //   182: invokevirtual 435	java/io/FileInputStream:close	()V
-    //   185: aload 5
-    //   187: areturn
+    //   125: invokestatic 418	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   128: aload 5
+    //   130: astore_2
+    //   131: goto -61 -> 70
+    //   134: astore_1
+    //   135: ldc 17
+    //   137: ldc 195
+    //   139: aload_1
+    //   140: invokestatic 423	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   143: goto -27 -> 116
+    //   146: new 425	java/io/FileInputStream
+    //   149: dup
+    //   150: aload_1
+    //   151: invokespecial 428	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   154: astore 5
+    //   156: aload 5
+    //   158: astore_1
+    //   159: aload 5
+    //   161: invokevirtual 431	java/io/FileInputStream:available	()I
+    //   164: istore_3
+    //   165: aload 5
+    //   167: astore_1
+    //   168: iload_3
+    //   169: newarray byte
+    //   171: astore 6
+    //   173: aload 5
+    //   175: astore_1
+    //   176: aload 5
+    //   178: aload 6
+    //   180: iconst_0
+    //   181: iload_3
+    //   182: invokevirtual 435	java/io/FileInputStream:read	([BII)I
+    //   185: pop
+    //   186: aload 5
     //   188: astore_1
-    //   189: ldc 17
-    //   191: ldc 195
-    //   193: aload_1
-    //   194: invokestatic 417	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   189: aload_2
+    //   190: aload 6
+    //   192: putfield 438	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:data	[B
+    //   195: aload_2
+    //   196: astore_1
     //   197: aload 5
-    //   199: areturn
-    //   200: astore 5
-    //   202: aconst_null
-    //   203: astore_2
-    //   204: aload_2
-    //   205: astore_1
-    //   206: ldc 17
-    //   208: iconst_1
-    //   209: ldc 195
-    //   211: aload 5
-    //   213: invokestatic 438	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   216: aload_2
-    //   217: ifnull +7 -> 224
-    //   220: aload_2
-    //   221: invokevirtual 435	java/io/FileInputStream:close	()V
-    //   224: aconst_null
-    //   225: areturn
-    //   226: astore_1
-    //   227: ldc 17
+    //   199: ifnull -193 -> 6
+    //   202: aload 5
+    //   204: invokevirtual 441	java/io/FileInputStream:close	()V
+    //   207: aload_2
+    //   208: areturn
+    //   209: astore_1
+    //   210: ldc 17
+    //   212: ldc 195
+    //   214: aload_1
+    //   215: invokestatic 423	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   218: aload_2
+    //   219: areturn
+    //   220: astore 6
+    //   222: aconst_null
+    //   223: astore_2
+    //   224: aload_2
+    //   225: astore_1
+    //   226: ldc 17
+    //   228: iconst_1
     //   229: ldc 195
-    //   231: aload_1
-    //   232: invokestatic 417	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   235: goto -11 -> 224
-    //   238: astore_2
-    //   239: aconst_null
-    //   240: astore_1
-    //   241: aload_1
-    //   242: ifnull +7 -> 249
-    //   245: aload_1
-    //   246: invokevirtual 435	java/io/FileInputStream:close	()V
-    //   249: aload_2
-    //   250: athrow
-    //   251: astore_1
-    //   252: ldc 17
-    //   254: ldc 195
-    //   256: aload_1
-    //   257: invokestatic 417	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   260: goto -11 -> 249
-    //   263: astore_2
-    //   264: goto -23 -> 241
-    //   267: astore 5
-    //   269: goto -65 -> 204
+    //   231: aload 6
+    //   233: invokestatic 443	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   236: aload_2
+    //   237: ifnull +7 -> 244
+    //   240: aload_2
+    //   241: invokevirtual 441	java/io/FileInputStream:close	()V
+    //   244: aconst_null
+    //   245: areturn
+    //   246: astore_1
+    //   247: ldc 17
+    //   249: ldc 195
+    //   251: aload_1
+    //   252: invokestatic 423	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   255: goto -11 -> 244
+    //   258: astore_2
+    //   259: aconst_null
+    //   260: astore_1
+    //   261: aload_1
+    //   262: ifnull +7 -> 269
+    //   265: aload_1
+    //   266: invokevirtual 441	java/io/FileInputStream:close	()V
+    //   269: aload_2
+    //   270: athrow
+    //   271: astore_1
+    //   272: ldc 17
+    //   274: ldc 195
+    //   276: aload_1
+    //   277: invokestatic 423	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   280: goto -11 -> 269
+    //   283: astore_2
+    //   284: goto -23 -> 261
+    //   287: astore 6
+    //   289: aload 5
+    //   291: astore_2
+    //   292: goto -68 -> 224
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	272	0	this	PreCacheManager
-    //   0	272	1	paramMiniAppConfig	MiniAppConfig
-    //   0	272	2	paramString	String
-    //   146	15	3	i	int
-    //   98	3	4	bool	boolean
-    //   17	181	5	localPreCacheDescData	PreCacheManager.PreCacheDescData
-    //   200	12	5	localThrowable1	Throwable
-    //   267	1	5	localThrowable2	Throwable
-    //   152	18	6	arrayOfByte	byte[]
+    //   0	295	0	this	PreCacheManager
+    //   0	295	1	paramMiniAppConfig	MiniAppConfig
+    //   0	295	2	paramString	String
+    //   164	18	3	i	int
+    //   97	3	4	bool	boolean
+    //   17	273	5	localObject	Object
+    //   171	20	6	arrayOfByte	byte[]
+    //   220	12	6	localThrowable1	Throwable
+    //   287	1	6	localThrowable2	Throwable
     // Exception table:
     //   from	to	target	type
-    //   109	117	119	java/lang/Throwable
-    //   181	185	188	java/lang/Throwable
-    //   81	100	200	java/lang/Throwable
-    //   131	140	200	java/lang/Throwable
-    //   220	224	226	java/lang/Throwable
-    //   81	100	238	finally
-    //   131	140	238	finally
-    //   245	249	251	java/lang/Throwable
-    //   142	147	263	finally
-    //   149	154	263	finally
-    //   156	165	263	finally
-    //   167	174	263	finally
-    //   206	216	263	finally
-    //   142	147	267	java/lang/Throwable
-    //   149	154	267	java/lang/Throwable
-    //   156	165	267	java/lang/Throwable
-    //   167	174	267	java/lang/Throwable
+    //   60	70	118	java/lang/Throwable
+    //   108	116	134	java/lang/Throwable
+    //   202	207	209	java/lang/Throwable
+    //   81	99	220	java/lang/Throwable
+    //   146	156	220	java/lang/Throwable
+    //   240	244	246	java/lang/Throwable
+    //   81	99	258	finally
+    //   146	156	258	finally
+    //   265	269	271	java/lang/Throwable
+    //   159	165	283	finally
+    //   168	173	283	finally
+    //   176	186	283	finally
+    //   189	195	283	finally
+    //   226	236	283	finally
+    //   159	165	287	java/lang/Throwable
+    //   168	173	287	java/lang/Throwable
+    //   176	186	287	java/lang/Throwable
+    //   189	195	287	java/lang/Throwable
   }
   
   public String getResourcePreCachePath(String paramString1, String paramString2)
@@ -464,7 +479,7 @@ public class PreCacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.PreCacheManager
  * JD-Core Version:    0.7.0.1
  */

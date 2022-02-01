@@ -1,117 +1,65 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qg.loader.QGDownloader.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopFeedItem;
 
-public abstract class bfxe
+class bfxe
+  extends bfxd
 {
-  public int a;
-  private Map<String, List<bfxf>> a;
-  
-  @NonNull
-  static bfxe a()
+  bfxe(bfwx parambfwx)
   {
-    return new bfxj();
+    super(parambfwx);
   }
   
-  private void d(String paramString, boolean paramBoolean)
+  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
   {
-    paramString = (List)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    if (paramString != null)
+    View localView = paramView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(this.a.a).inflate(2131560558, null);
+    }
+    paramView = (bfxf)localView.getTag();
+    Object localObject = paramView;
+    if (paramView == null)
     {
-      paramString = paramString.iterator();
-      while (paramString.hasNext())
-      {
-        bfxf localbfxf = (bfxf)paramString.next();
-        if (paramBoolean) {
-          localbfxf.a();
-        } else {
-          localbfxf.b();
-        }
+      localObject = new bfxf(this);
+      ((bfxf)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131372517));
+      ((bfxf)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378776));
+      ((bfxf)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131381047));
+      ((bfxf)localObject).b = ((TextView)localView.findViewById(2131381050));
+      ((bfxf)localObject).c = ((TextView)localView.findViewById(2131381051));
+      localView.setOnClickListener(this.a);
+      localView.setTag(localObject);
+    }
+    ((bfxf)localObject).jdField_a_of_type_Int = paramInt;
+    ((bfxf)localObject).jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = paramTroopFeedItem;
+    paramView = "[" + paramTroopFeedItem.tag + "] " + paramTroopFeedItem.title;
+    ((bfxf)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+    ((bfxf)localObject).b.setText(paramTroopFeedItem.content);
+    ((bfxf)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    paramView = anni.a(2131713985) + paramTroopFeedItem.tag + " " + paramTroopFeedItem.title + " " + paramTroopFeedItem.content;
+    if (!bgsp.a(paramTroopFeedItem.ex_1))
+    {
+      ((bfxf)localObject).c.setText(paramTroopFeedItem.ex_1);
+      paramView = paramView + " " + paramTroopFeedItem.ex_1;
+    }
+    for (;;)
+    {
+      ((bfxf)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843588);
+      paramTroopFeedItem = paramView;
+      if (!paramBoolean) {
+        paramTroopFeedItem = paramView + " " + anni.a(2131713981);
       }
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QGDownloader", 2, "onFail.");
-    }
-    this.jdField_a_of_type_Int = 1;
-    c(paramString, false);
-    d(paramString, false);
-  }
-  
-  protected void a(String paramString, int paramInt) {}
-  
-  protected abstract void a(String paramString, boolean paramBoolean);
-  
-  public final void a(String paramString, boolean paramBoolean, bfxf parambfxf)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    }
-    if (parambfxf != null)
-    {
-      List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      Object localObject = localList;
-      if (localList == null) {
-        localObject = new ArrayList(1);
-      }
-      parambfxf.a = System.currentTimeMillis();
-      ((List)localObject).add(parambfxf);
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
-    }
-    a(paramString, paramBoolean);
-  }
-  
-  protected void b(String paramString, boolean paramBoolean)
-  {
-    boolean bool = bfxg.b.get();
-    if (QLog.isColorLevel()) {
-      QLog.d("QGDownloader", 2, new Object[] { "onSuccess. loadSo=", Boolean.valueOf(paramBoolean), ", soLoaded=", Boolean.valueOf(bool) });
-    }
-    this.jdField_a_of_type_Int = 0;
-    c(paramString, true);
-    if (!paramBoolean)
-    {
-      d(paramString, true);
-      return;
-    }
-    if (!bool)
-    {
-      ThreadManagerV2.excute(new QGDownloader.1(this, paramString), 16, null, true);
-      return;
-    }
-    d(paramString, false);
-  }
-  
-  protected void c(String paramString, boolean paramBoolean)
-  {
-    paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((paramString != null) && (!paramString.isEmpty())) {
-      paramString = (bfxf)paramString.get(0);
-    }
-    for (long l = System.currentTimeMillis() - paramString.a;; l = 0L)
-    {
-      if (paramBoolean) {}
-      for (paramString = "1";; paramString = "0")
-      {
-        wxj.b("video_game_tech", "qg_so_download", 0, 0, new String[] { String.valueOf(l), paramString });
-        return;
-      }
+      localView.setContentDescription(paramTroopFeedItem);
+      return localView;
+      ((bfxf)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfxe
  * JD-Core Version:    0.7.0.1
  */

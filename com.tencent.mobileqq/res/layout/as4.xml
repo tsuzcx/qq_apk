@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/fjt" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/lks" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="5.0dip">
-        <ImageView android:background="@drawable/cjd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/as3" />
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="center_vertical" android:id="@id/d49" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="5.0dip" android:scaleType="centerInside" />
-</LinearLayout>

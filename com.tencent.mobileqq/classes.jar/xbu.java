@@ -1,30 +1,37 @@
-import com.tencent.widget.AbsListView;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class xbu
-  implements bhtv
+public class xbu
+  implements xbt
 {
-  int jdField_a_of_type_Int = 0;
+  public void a() {}
   
-  xbu(xbs paramxbs) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == xbs.a(this.jdField_a_of_type_Xbs, xbs.a(this.jdField_a_of_type_Xbs)).a().size()) && (!xbs.a(this.jdField_a_of_type_Xbs, xbs.a(this.jdField_a_of_type_Xbs)).a()))
-    {
-      paramAbsListView = xbs.a(this.jdField_a_of_type_Xbs);
-      xbs.a(this.jdField_a_of_type_Xbs, xbs.a(this.jdField_a_of_type_Xbs)).b(paramAbsListView);
+    if (paramInt == 6) {
+      QQToast.a(BaseApplicationImpl.getContext(), 2131689980, 0).a();
     }
   }
+  
+  public void b() {}
+  
+  public void b(int paramInt) {}
+  
+  public void c() {}
+  
+  public void c(int paramInt)
+  {
+    QQToast.a(BaseApplication.getContext(), anni.a(2131706613), 0).a();
+  }
+  
+  public void d() {}
+  
+  public void d(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xbu
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.thumbplayer.datatransport;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.thumbplayer.adapter.player.TPUrlDataSource;
 import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamLong;
 import com.tencent.thumbplayer.api.TPVideoInfo;
@@ -65,7 +66,7 @@ public class TPPlayManagerImpl
   public TPPlayManagerImpl(Context paramContext)
   {
     this.mContext = paramContext;
-    TPGlobalEventNofication.getInstance().addEventListener(this);
+    TPGlobalEventNofication.addEventListener(this);
     TPNetworkChangeMonitor.getInstance().addOnNetStatusChangeListener(this);
     this.mInnerProxyListener = new TPPlayManagerImpl.InnerProxyListener(this, null);
     this.mPlayListener = new TPPlayProxyListenerEmptyImpl("TPThumbPlayer[TPPlayManagerImpl.java]");
@@ -318,19 +319,19 @@ public class TPPlayManagerImpl
     }
     int k = paramList.size();
     Object localObject1 = new HashMap();
-    int i = 1;
     int j = 0;
+    int i = 1;
     Object localObject2;
     if (j < k)
     {
       localObject2 = (ITPMediaTrackClip)paramList.get(j);
       if ((!(localObject2 instanceof TPMediaCompositionTrackClip)) || (!TPCommonUtils.isUrl(((TPMediaCompositionTrackClip)localObject2).getFilePath()))) {
-        break label575;
+        break label577;
       }
       ((HashMap)localObject1).put(localObject2, new TPPlayManagerImpl.TPDownloadSeqAndClipIndexMapping(i, j));
       i += 1;
     }
-    label575:
+    label577:
     for (;;)
     {
       j += 1;
@@ -353,7 +354,7 @@ public class TPPlayManagerImpl
             paramString = (ITPMediaTrackClip)paramArrayList.getKey();
             paramArrayList = (TPPlayManagerImpl.TPDownloadSeqAndClipIndexMapping)paramArrayList.getValue();
             if ((paramString instanceof TPMediaCompositionTrackClip)) {
-              ((TPMediaCompositionTrackClip)paramString).setFilePath(this.mDownloadProxy.getClipPlayUrl(i, paramArrayList.clipIndex + 1));
+              ((TPMediaCompositionTrackClip)paramString).setFilePath(this.mDownloadProxy.getClipPlayUrl(i, paramArrayList.clipIndex + 1, 1));
             }
           }
           return i;
@@ -381,7 +382,7 @@ public class TPPlayManagerImpl
             localObject2 = ((TPDownloadParamData)localObject3).getDownloadFileID();
             localObject3 = convertDownloadParam(((TPMediaCompositionTrackClip)localObject1).getFilePath(), (TPDownloadParamData)localObject3);
             if (this.mDownloadProxy.setClipInfo(i, paramString.downloadSeq, (String)localObject2, (TPDownloadParam)localObject3)) {
-              ((TPMediaCompositionTrackClip)localObject1).setFilePath(this.mDownloadProxy.getClipPlayUrl(i, paramString.downloadSeq));
+              ((TPMediaCompositionTrackClip)localObject1).setFilePath(this.mDownloadProxy.getClipPlayUrl(i, paramString.downloadSeq, 1));
             }
           }
         }
@@ -391,47 +392,59 @@ public class TPPlayManagerImpl
     }
   }
   
-  private String startSwitchDefTask(long paramLong, String paramString, TPDownloadParamData paramTPDownloadParamData)
+  private TPUrlDataSource startSwitchDefTask(long paramLong, String paramString, TPDownloadParamData paramTPDownloadParamData)
   {
-    String str2 = null;
-    if (!TPCommonUtils.isUrl(paramString)) {}
-    while (isInitDownloadProxyFailed()) {
-      return paramString;
+    String str = null;
+    TPUrlDataSource localTPUrlDataSource = new TPUrlDataSource(paramString);
+    if (!TPCommonUtils.isUrl(paramString)) {
+      return localTPUrlDataSource;
+    }
+    if (isInitDownloadProxyFailed()) {
+      return localTPUrlDataSource;
     }
     if (this.mPendingDefTaskQueue == null) {
       this.mPendingDefTaskQueue = new LinkedList();
     }
     if (paramTPDownloadParamData != null) {}
-    for (TPDownloadParam localTPDownloadParam = convertDownloadParam(paramString, paramTPDownloadParamData);; localTPDownloadParam = null)
+    for (Object localObject = convertDownloadParam(paramString, paramTPDownloadParamData);; localObject = null)
     {
-      if (paramTPDownloadParamData != null) {
-        str1 = paramString;
-      }
+      if (paramTPDownloadParamData != null) {}
       try
       {
-        str2 = paramTPDownloadParamData.getDownloadFileID();
-        str1 = paramString;
-        int i = this.mDownloadProxy.startPlay(str2, localTPDownloadParam, this.mInnerProxyListener);
+        str = paramTPDownloadParamData.getDownloadFileID();
+        i = this.mDownloadProxy.startPlay(str, (TPDownloadParam)localObject, this.mInnerProxyListener);
         if (i <= 0) {
-          break;
+          break label224;
         }
-        str1 = paramString;
-        paramString = this.mDownloadProxy.getPlayUrl(i);
-        str1 = paramString;
-        this.mPendingDefTaskQueue.offer(new TPPlayManagerImpl.TPDefTaskModel(paramLong, i));
-        str1 = paramString;
-        TPLogUtil.i("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy switch def sucess, defId:" + paramLong + ",playId:" + i);
-        return paramString;
+        localObject = this.mDownloadProxy.getPlayUrl(i, 1);
+        paramTPDownloadParamData = (TPDownloadParamData)localObject;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          paramTPDownloadParamData = paramString;
+        }
+        localTPUrlDataSource.setSelfPlayerUrl(paramTPDownloadParamData);
+        paramTPDownloadParamData = this.mDownloadProxy.getPlayUrl(this.mPlayID, 0);
+        if (!TextUtils.isEmpty(paramTPDownloadParamData)) {
+          continue;
+        }
       }
       catch (Throwable paramString)
       {
-        TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", paramString, "p2p proxy switch def failed");
-        return str1;
+        for (;;)
+        {
+          int i;
+          TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", paramString, "p2p proxy switch def failed");
+          continue;
+          paramString = paramTPDownloadParamData;
+        }
       }
+      localTPUrlDataSource.setSystemPlayerUrl(paramString);
+      this.mPendingDefTaskQueue.offer(new TPPlayManagerImpl.TPDefTaskModel(paramLong, i));
+      TPLogUtil.i("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy switch def sucess, defId:" + paramLong + ",playId:" + i);
+      return localTPUrlDataSource;
+      label224:
+      TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy switch def failed, cause : playId < 0");
+      return localTPUrlDataSource;
     }
-    String str1 = paramString;
-    TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy switch def failed, cause : playId < 0");
-    return paramString;
   }
   
   private void stopDownload(int paramInt)
@@ -647,7 +660,7 @@ public class TPPlayManagerImpl
   {
     stopDownload();
     TPNetworkChangeMonitor.getInstance().removeOnNetStatusChangeListener(this);
-    TPGlobalEventNofication.getInstance().removeEventListener(this);
+    TPGlobalEventNofication.removeEventListener(this);
     this.mPlayerProxyListener = null;
     this.mPlayListener = new TPPlayProxyListenerEmptyImpl("TPThumbPlayer[TPPlayManagerImpl.java]");
     this.mInnerProxyListener = null;
@@ -675,6 +688,22 @@ public class TPPlayManagerImpl
       while (localIterator.hasNext()) {
         resumeDownload(((Integer)localIterator.next()).intValue());
       }
+    }
+  }
+  
+  public void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    if (isInitDownloadProxyFailed()) {
+      return;
+    }
+    try
+    {
+      this.mDownloadProxy.setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable);
     }
   }
   
@@ -833,10 +862,10 @@ public class TPPlayManagerImpl
         str = paramString;
         paramInt = this.mDownloadProxy.startPlay(TPCommonUtils.getMd5(paramString), paramTPDownloadParamData, this.mInnerProxyListener);
         if (paramInt <= 0) {
-          break label201;
+          break label202;
         }
         str = paramString;
-        paramString = this.mDownloadProxy.getPlayUrl(paramInt);
+        paramString = this.mDownloadProxy.getPlayUrl(paramInt, 1);
         str = paramString;
         this.mTrackProxyUrlPlayIdMap.put(paramString, Integer.valueOf(paramInt));
         return paramString;
@@ -855,7 +884,7 @@ public class TPPlayManagerImpl
       paramTPDownloadParamData.add(paramString);
       i = 0;
       if (paramInt != 3) {
-        break label214;
+        break label215;
       }
       i = 10;
     }
@@ -864,94 +893,84 @@ public class TPPlayManagerImpl
       str = paramString;
       paramTPDownloadParamData = new TPDownloadParam(paramTPDownloadParamData, i, null);
       break;
-      label201:
+      label202:
       str = paramString;
       TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy start play failed, cause : playId < 0");
       return paramString;
-      label214:
+      label215:
       if (paramInt == 2) {
         i = 3;
       }
     }
   }
   
-  public String startDownloadPlay(String paramString)
+  public TPUrlDataSource startDownloadPlay(String paramString)
   {
-    if (!TPCommonUtils.isUrl(paramString)) {}
-    while (isInitDownloadProxyFailed(true)) {
-      return paramString;
+    TPUrlDataSource localTPUrlDataSource = new TPUrlDataSource(paramString);
+    if (!TPCommonUtils.isUrl(paramString)) {
+      return localTPUrlDataSource;
+    }
+    if (isInitDownloadProxyFailed(true)) {
+      return localTPUrlDataSource;
     }
     setPlayUserData();
     this.mOriginUrl = paramString;
     TPDownloadParamData localTPDownloadParamData = getDownloadParamDataWithIndex(this.mDownloadPramList, 0);
-    Object localObject2;
-    Object localObject1;
-    if (localTPDownloadParamData != null)
-    {
-      localObject2 = convertDownloadParam(paramString, localTPDownloadParamData);
-      localObject1 = paramString;
+    Object localObject;
+    if (localTPDownloadParamData != null) {
+      localObject = convertDownloadParam(paramString, localTPDownloadParamData);
     }
     for (;;)
     {
-      boolean bool;
       try
       {
         StringBuilder localStringBuilder = new StringBuilder().append("single url:").append(paramString).append(", paramData.savePath:");
-        if (localTPDownloadParamData != null)
-        {
-          localObject1 = paramString;
-          str = localTPDownloadParamData.getSavePath();
-          localObject1 = paramString;
-          localStringBuilder = localStringBuilder.append(str).append(", paramData.DownloadFileID:");
-          if (localTPDownloadParamData == null) {
-            break label284;
-          }
-          localObject1 = paramString;
-          str = localTPDownloadParamData.getDownloadFileID();
-          localObject1 = paramString;
-          TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", str);
-          localObject1 = paramString;
-          this.mPlayID = this.mDownloadProxy.startPlay(getFileId(), (TPDownloadParam)localObject2, this.mInnerProxyListener);
-          localObject1 = paramString;
-          if (this.mPlayID <= 0) {
-            break label259;
-          }
-          localObject1 = paramString;
-          localObject2 = this.mDownloadProxy.getPlayUrl(this.mPlayID);
+        if (localTPDownloadParamData == null) {
+          break label296;
         }
-      }
-      catch (Throwable paramString) {}
-      try
-      {
-        bool = TextUtils.isEmpty((CharSequence)localObject2);
-        if (!bool) {
-          break label278;
+        str = localTPDownloadParamData.getSavePath();
+        localStringBuilder = localStringBuilder.append(str).append(", paramData.DownloadFileID:");
+        if (localTPDownloadParamData == null) {
+          break label303;
+        }
+        str = localTPDownloadParamData.getDownloadFileID();
+        TPLogUtil.i("TPThumbPlayer[TPPlayManagerImpl.java]", str);
+        this.mPlayID = this.mDownloadProxy.startPlay(getFileId(), (TPDownloadParam)localObject, this.mInnerProxyListener);
+        if (this.mPlayID > 0)
+        {
+          str = this.mDownloadProxy.getPlayUrl(this.mPlayID, 0);
+          localObject = str;
+          if (TextUtils.isEmpty(str)) {
+            localObject = paramString;
+          }
+          TPLogUtil.i("TPThumbPlayer[TPPlayManagerImpl.java]", "startDownloadPlay, playId:" + this.mPlayID);
+          localTPUrlDataSource.setSelfPlayerUrl((String)localObject);
+          localObject = this.mDownloadProxy.getPlayUrl(this.mPlayID, 1);
+          if (TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localTPUrlDataSource.setSystemPlayerUrl(paramString);
+            break label288;
+          }
+        }
+        else
+        {
+          TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy start play failed, cause : playId < 0");
         }
       }
       catch (Throwable paramString)
       {
-        for (;;)
-        {
-          localObject1 = localObject2;
-        }
-        paramString = (String)localObject2;
-        continue;
+        TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", paramString, "p2p proxy start play failed");
       }
-      localObject1 = paramString;
-      TPLogUtil.i("TPThumbPlayer[TPPlayManagerImpl.java]", "startDownloadPlay, playId:" + this.mPlayID);
-      return paramString;
-      TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", paramString, "p2p proxy start play failed");
-      return localObject1;
-      localObject2 = null;
-      break;
+      paramString = (String)localObject;
+      continue;
+      label288:
+      return localTPUrlDataSource;
+      localObject = null;
+      continue;
+      label296:
       String str = "null";
       continue;
-      label259:
-      localObject1 = paramString;
-      TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy start play failed, cause : playId < 0");
-      return paramString;
-      label278:
-      label284:
+      label303:
       str = "null";
     }
   }
@@ -967,7 +986,7 @@ public class TPPlayManagerImpl
       if ((paramITPMediaAsset instanceof TPMediaDRMAsset))
       {
         localObject = startDownloadPlay(((TPMediaDRMAsset)paramITPMediaAsset).getDrmPlayUrl());
-        ((TPMediaDRMAsset)paramITPMediaAsset).setDrmPlayUrl((String)localObject);
+        ((TPMediaDRMAsset)paramITPMediaAsset).setDrmPlayUrl(((TPUrlDataSource)localObject).getSelfPlayerUrl());
         return paramITPMediaAsset;
       }
       localObject = getAssetClips(paramITPMediaAsset);
@@ -976,10 +995,10 @@ public class TPPlayManagerImpl
     return paramITPMediaAsset;
   }
   
-  public String startSwitchDefTask(long paramLong, String paramString, TPVideoInfo paramTPVideoInfo)
+  public TPUrlDataSource startSwitchDefTask(long paramLong, String paramString, TPVideoInfo paramTPVideoInfo)
   {
     if (paramTPVideoInfo == null) {
-      return paramString;
+      return new TPUrlDataSource(paramString);
     }
     TPDownloadParamData localTPDownloadParamData = null;
     if (paramTPVideoInfo.getDownloadPraramList() != null) {
@@ -1000,14 +1019,14 @@ public class TPPlayManagerImpl
     } while (paramTPVideoInfo == null);
     if ((paramITPMediaAsset instanceof ITPMediaDRMAsset)) {
       if (paramTPVideoInfo.getDownloadPraramList() == null) {
-        break label205;
+        break label206;
       }
     }
-    label205:
+    label206:
     for (paramTPVideoInfo = (TPDownloadParamData)paramTPVideoInfo.getDownloadPraramList().get(0);; paramTPVideoInfo = null)
     {
       paramTPVideoInfo = startSwitchDefTask(paramLong, ((ITPMediaDRMAsset)paramITPMediaAsset).getDrmPlayUrl(), paramTPVideoInfo);
-      ((ITPMediaDRMAsset)paramITPMediaAsset).setDrmPlayUrl(paramTPVideoInfo);
+      ((TPMediaDRMAsset)paramITPMediaAsset).setDrmPlayUrl(paramTPVideoInfo.getSelfPlayerUrl());
       return paramITPMediaAsset;
       List localList = getAssetClips(paramITPMediaAsset);
       if ((TPCommonUtils.isEmpty(localList)) || (paramTPVideoInfo == null)) {
@@ -1100,7 +1119,7 @@ public class TPPlayManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPPlayManagerImpl
  * JD-Core Version:    0.7.0.1
  */

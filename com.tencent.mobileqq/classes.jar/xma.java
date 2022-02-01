@@ -1,41 +1,72 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Map;
 
-class xma
-  implements ServiceConnection
+public class xma
+  extends AbsVideoInfoWidget
 {
-  private xly a;
+  private xmc a = new xmc(this);
+  private boolean e;
   
-  public xma(xly paramxly)
+  public xma(ViewGroup paramViewGroup)
   {
-    this.a = paramxly;
+    super(paramViewGroup);
   }
   
-  public void a()
+  public String a()
   {
-    this.a = null;
+    return "LoadingMoreWidget";
   }
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public xmc a()
   {
-    xly localxly = this.a;
-    if (localxly != null) {
-      localxly.a(paramComponentName, paramIBinder);
-    }
+    return this.a;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void a(View paramView) {}
+  
+  public void a(@NonNull Map<Subscriber, String> paramMap)
   {
-    xly localxly = this.a;
-    if (localxly != null) {
-      localxly.a(paramComponentName);
-    }
+    paramMap.put(new xmb(this), "");
   }
+  
+  public void a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem) {}
+  
+  public boolean a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return this.e;
+  }
+  
+  public int b()
+  {
+    return 2131561854;
+  }
+  
+  public void d()
+  {
+    this.e = true;
+    i();
+    yqp.b("Q.qqstory.playernew.LoadingMoreWidget", "showLoadMore");
+  }
+  
+  public void e()
+  {
+    this.e = false;
+    k();
+    yqp.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
+  }
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xma
  * JD-Core Version:    0.7.0.1
  */

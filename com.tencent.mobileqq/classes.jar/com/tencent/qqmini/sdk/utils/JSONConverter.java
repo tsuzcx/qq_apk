@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.utils;
 
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
@@ -176,21 +176,13 @@ public class JSONConverter
         return null;
       }
     }
-    catch (InstantiationException localInstantiationException)
+    catch (Exception localException)
     {
+      Object localObject2;
       for (;;)
       {
-        localInstantiationException.printStackTrace();
-        Object localObject2 = null;
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      Object localObject3;
-      for (;;)
-      {
-        localIllegalAccessException.printStackTrace();
-        localObject3 = null;
+        localException.printStackTrace();
+        localObject2 = null;
       }
       Field[] arrayOfField = paramClass.getDeclaredFields();
       if ((arrayOfField == null) || (arrayOfField.length == 0)) {
@@ -210,18 +202,18 @@ public class JSONConverter
           if ((!Modifier.isStatic(k)) || (!Modifier.isFinal(k)))
           {
             paramClass = localField.getName();
-            localObject4 = (Alias)localField.getAnnotation(Alias.class);
-            if (localObject4 != null) {
-              paramClass = ((Alias)localObject4).value();
+            localObject3 = (Alias)localField.getAnnotation(Alias.class);
+            if (localObject3 != null) {
+              paramClass = ((Alias)localObject3).value();
             }
             if ((!isEmpty(paramClass)) && (paramJSONObject.has(paramClass)))
             {
               try
               {
-                localObject4 = localField.getType().getSimpleName();
+                localObject3 = localField.getType().getSimpleName();
                 localField.setAccessible(true);
-                if ("int".equals(localObject4)) {
-                  localField.set(localObject3, Integer.valueOf(paramJSONObject.optInt(paramClass)));
+                if ("int".equals(localObject3)) {
+                  localField.set(localObject2, Integer.valueOf(paramJSONObject.optInt(paramClass)));
                 }
               }
               catch (IllegalAccessException paramJSONObject)
@@ -229,49 +221,49 @@ public class JSONConverter
                 paramJSONObject.printStackTrace();
                 return null;
               }
-              if ("boolean".equals(localObject4))
+              if ("boolean".equals(localObject3))
               {
-                localField.set(localObject3, Boolean.valueOf(paramJSONObject.optBoolean(paramClass)));
+                localField.set(localObject2, Boolean.valueOf(paramJSONObject.optBoolean(paramClass)));
               }
-              else if ("long".equals(localObject4))
+              else if ("long".equals(localObject3))
               {
-                localField.set(localObject3, Long.valueOf(paramJSONObject.optLong(paramClass)));
+                localField.set(localObject2, Long.valueOf(paramJSONObject.optLong(paramClass)));
               }
-              else if ("double".equals(localObject4))
+              else if ("double".equals(localObject3))
               {
-                localField.set(localObject3, Double.valueOf(paramJSONObject.optDouble(paramClass)));
+                localField.set(localObject2, Double.valueOf(paramJSONObject.optDouble(paramClass)));
               }
-              else if ("float".equals(localObject4))
+              else if ("float".equals(localObject3))
               {
-                localField.set(localObject3, Float.valueOf((float)paramJSONObject.optDouble(paramClass)));
+                localField.set(localObject2, Float.valueOf((float)paramJSONObject.optDouble(paramClass)));
               }
-              else if ("String".equals(localObject4))
+              else if ("String".equals(localObject3))
               {
-                localField.set(localObject3, paramJSONObject.optString(paramClass));
+                localField.set(localObject2, paramJSONObject.optString(paramClass));
               }
               else
               {
-                if (!"Object".equals(localObject4)) {
-                  break label382;
+                if (!"Object".equals(localObject3)) {
+                  break label369;
                 }
-                localField.set(localObject3, new Object());
+                localField.set(localObject2, new Object());
               }
             }
           }
         }
-        label382:
-        Object localObject4 = paramJSONObject.opt(paramClass);
-        if ((localObject4 instanceof JSONObject)) {
-          paramClass = convertFromJSONObject((JSONObject)localObject4, localField.getType());
+        label369:
+        Object localObject3 = paramJSONObject.opt(paramClass);
+        if ((localObject3 instanceof JSONObject)) {
+          paramClass = convertFromJSONObject((JSONObject)localObject3, localField.getType());
         }
         for (;;)
         {
-          localField.set(localObject3, paramClass);
+          localField.set(localObject2, paramClass);
           break;
-          if ((localObject4 instanceof JSONArray))
+          if ((localObject3 instanceof JSONArray))
           {
             paramClass = (ParameterizedType)localField.getGenericType();
-            paramClass = convertFromJSONArray((JSONArray)localObject4, paramClass.getActualTypeArguments()[0]);
+            paramClass = convertFromJSONArray((JSONArray)localObject3, paramClass.getActualTypeArguments()[0]);
           }
           else
           {
@@ -280,7 +272,7 @@ public class JSONConverter
           }
         }
       }
-      return localObject3;
+      return localObject2;
     }
   }
   
@@ -301,7 +293,7 @@ public class JSONConverter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.JSONConverter
  * JD-Core Version:    0.7.0.1
  */

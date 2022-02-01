@@ -1,50 +1,93 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
-import java.util.List;
+import GIFT_MALL_PROTOCOL.DouFuInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.FeedsManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.birthdaynotice.BirthDayNoticeManager.1;
+import cooperation.vip.manager.MonitorManager;
+import java.lang.ref.WeakReference;
+import java.util.Set;
+import mqq.app.NewIntent;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-class blwc
-  implements uxy
+public class blwc
 {
-  blwc(blwa paramblwa, String paramString) {}
+  private static blwd a = new blwd();
   
-  public void a(int paramInt, uxz paramuxz, List<TroopBarPOI> paramList)
+  private static JSONObject a(DouFuInfo paramDouFuInfo)
   {
-    this.jdField_a_of_type_Blwa.jdField_a_of_type_Uxz = paramuxz;
-    if (paramInt == 0) {
-      if (paramuxz.a()) {
-        break label199;
-      }
-    }
-    label199:
-    for (boolean bool = true;; bool = false)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_Blwa.d.setVisibility(0);
-      this.jdField_a_of_type_Blwa.a(bool);
-      if (this.jdField_a_of_type_Blwa.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_Blwa.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      if (this.jdField_a_of_type_Blwa.jdField_a_of_type_Uxz.b()) {
-        this.jdField_a_of_type_Blwa.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_Blwa.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (this.jdField_a_of_type_Blwa.jdField_a_of_type_Bnav != null)
-      {
-        this.jdField_a_of_type_Blwa.jdField_a_of_type_Bnav.a(this.jdField_a_of_type_Blwa.jdField_a_of_type_JavaUtilArrayList, null);
-        this.jdField_a_of_type_Blwa.jdField_a_of_type_Bnav.notifyDataSetChanged();
-        if (this.jdField_a_of_type_Blwa.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          this.jdField_a_of_type_Blwa.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_Blwa.d.setVisibility(4);
-        }
-      }
-      int i = paramInt;
-      if (paramInt == 0) {
-        i = 0;
-      }
-      wxj.b("edit_video", "poi_list_success", 0, i, new String[0]);
-      return;
+      localJSONObject.put("friendUin", paramDouFuInfo.uin);
+      localJSONObject.put("background", paramDouFuInfo.background);
+      localJSONObject.put("time", paramDouFuInfo.birthday);
+      localJSONObject.put("blessing", paramDouFuInfo.blessing);
+      localJSONObject.put("link", paramDouFuInfo.doufu_link);
+      localJSONObject.put("icon", paramDouFuInfo.icon);
+      return localJSONObject;
     }
+    catch (Exception paramDouFuInfo)
+    {
+      QLog.e("BirthDayNoticeManager", 1, "error convert to json " + paramDouFuInfo);
+      MonitorManager.a().a(19, 4, "convert to json error " + paramDouFuInfo, false);
+    }
+    return localJSONObject;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    String str = paramSessionInfo.a;
+    Set localSet = paramQQAppInterface.a().a();
+    long l1;
+    long l3;
+    if ((localSet != null) && (localSet.contains(str)) && (a(paramQQAppInterface, paramSessionInfo.a)))
+    {
+      l1 = paramQQAppInterface.a().b();
+      l3 = System.currentTimeMillis() / 1000L;
+      if (l3 - l1 >= 86400L)
+      {
+        QLog.i("BirthDayNoticeManager", 2, "requestBirthDayNotice ");
+        paramSessionInfo = new NewIntent(BaseApplicationImpl.getApplication(), bcce.class);
+        l1 = 0L;
+      }
+    }
+    try
+    {
+      long l2 = Long.parseLong(paramQQAppInterface.getCurrentAccountUin());
+      l1 = l2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("BirthDayNoticeManager", 1, "get uin error " + localException);
+      }
+    }
+    paramSessionInfo.putExtra("selfuin", l1);
+    a.a = new WeakReference(paramQQAppInterface);
+    paramQQAppInterface.registObserver(a);
+    paramQQAppInterface.startServlet(paramSessionInfo);
+    paramQQAppInterface.a().c(l3);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (awzp.a(paramQQAppInterface, paramString, 5L, false) != null) {}
+    while ((awzp.a(paramQQAppInterface, paramString, 12L, false) != null) || (awzp.a(paramQQAppInterface, paramString, false) != null)) {
+      return true;
+    }
+    return false;
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, DouFuInfo paramDouFuInfo)
+  {
+    JSONObject localJSONObject = a(paramDouFuInfo);
+    long l = FeedsManager.getToken(String.valueOf(paramDouFuInfo.uin));
+    ThreadManager.getSubThreadHandler().post(new BirthDayNoticeManager.1(paramDouFuInfo, paramQQAppInterface, localJSONObject, l));
   }
 }
 

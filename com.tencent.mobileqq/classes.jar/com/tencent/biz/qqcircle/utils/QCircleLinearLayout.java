@@ -8,7 +8,7 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import bdaq;
+import bggq;
 
 public class QCircleLinearLayout
   extends LinearLayout
@@ -40,16 +40,16 @@ public class QCircleLinearLayout
     int i1 = getPaddingBottom();
     Paint localPaint = new Paint();
     localPaint.setColor(Color.parseColor("#EBECF0"));
-    int i2 = bdaq.a(getContext(), 5.0F);
-    localPaint.setShadowLayer(bdaq.a(getContext(), 15.0F), 0, i2, Color.parseColor("#99A6ABBD"));
-    int i3 = bdaq.a(getContext(), 6.0F);
+    int i2 = bggq.a(getContext(), 5.0F);
+    localPaint.setShadowLayer(bggq.a(getContext(), 15.0F), 0, i2, Color.parseColor("#99A6ABBD"));
+    int i3 = bggq.a(getContext(), 6.0F);
     paramCanvas.drawRoundRect(new RectF(i, j - i2 / 2, k - m, n - i1 + i2 / 2), i3, i3, localPaint);
     super.onDraw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.utils.QCircleLinearLayout
  * JD-Core Version:    0.7.0.1
  */

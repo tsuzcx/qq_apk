@@ -1,13 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
-
-public class bnen
-  implements View.OnClickListener
+class bnen
+  implements banc
 {
-  public bnen(HorizontalAlumbListLayout paramHorizontalAlumbListLayout) {}
+  bnen(bndy parambndy) {}
   
-  public void onClick(View paramView) {}
+  public void a()
+  {
+    bndy.a(this.a).c();
+  }
 }
 
 

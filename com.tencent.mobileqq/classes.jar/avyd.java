@@ -1,21 +1,39 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class avyd
-  implements Comparator<String>
+public class avyd
+  implements DialogInterface.OnClickListener
 {
-  avyd(avyc paramavyc) {}
+  public avyd(LocationDialogUtil.6 param6) {}
   
-  public int a(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationDialogUtil", 2, new Object[] { "onClick: invoked. showStartShareLocationDialog  ", " which: ", Integer.valueOf(paramInt) });
     }
-    return paramString2.length() - paramString1.length();
+    if (BaseActivity.sTopActivity != null) {
+      LocationShareFragment.b(BaseActivity.sTopActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b);
+    }
+    try
+    {
+      avwv.a(BaseActivity.sTopActivity.app).a(true);
+      label79:
+      avxq.a(this.a.b, "0X800A769");
+      return;
+    }
+    catch (Throwable paramDialogInterface)
+    {
+      break label79;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avyd
  * JD-Core Version:    0.7.0.1
  */

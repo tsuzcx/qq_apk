@@ -1,26 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
 class aibr
-  implements View.OnClickListener
+  implements bhtl<oidb_0x8ed.RspBody>
 {
-  aibr(aibq paramaibq) {}
+  aibr(aiay paramaiay) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    this.a.a.g = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131692017);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.a.d.setVisibility(8);
-    this.a.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131368624));
-    this.a.a.d.setVisibility(0);
-    this.a.a.d.setOnClickListener(this.a.a.b);
-    if (this.a.a.jdField_a_of_type_Aidh != null) {
-      this.a.a.jdField_a_of_type_Aidh.a();
+    if ((paramInt == 0) && (this.a.ab))
+    {
+      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, anni.a(2131703907), 0).a();
+      bgsg.f(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      this.a.jdField_a_of_type_Axey.a(this.a.jdField_a_of_type_AndroidContentContext);
     }
   }
 }

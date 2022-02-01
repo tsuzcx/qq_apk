@@ -1,35 +1,28 @@
-import cooperation.qzone.statistic.access.concept.Key;
-import cooperation.qzone.statistic.access.concept.Statistic;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qqconnect.wtlogin.Login;
 
-final class bjsx
-  extends bjsw
+public class bjsx
+  implements Handler.Callback
 {
-  public String a(List<Statistic> paramList)
+  public bjsx(Login paramLogin) {}
+  
+  public boolean handleMessage(Message paramMessage)
   {
-    Key[] arrayOfKey = ((Statistic)paramList.get(0)).getKeys();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramList.size())
+    switch (paramMessage.what)
     {
-      Statistic localStatistic = (Statistic)paramList.get(i);
-      int k = arrayOfKey.length;
-      int j = 0;
-      while (j < k)
-      {
-        Key localKey = arrayOfKey[j];
-        localStringBuilder.append(localKey).append("→").append(localStatistic.getValue(localKey)).append(",");
-        j += 1;
-      }
-      localStringBuilder.append("\n");
-      i += 1;
     }
-    return localStringBuilder.toString();
+    for (;;)
+    {
+      return true;
+      this.a.setResult(0);
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjsx
  * JD-Core Version:    0.7.0.1
  */

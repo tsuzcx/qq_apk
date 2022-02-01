@@ -1,14 +1,18 @@
-import android.graphics.Bitmap;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
-class afam
+public class afam
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  WeakReference<Bitmap> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public afam(RegisterActivity paramRegisterActivity) {}
   
-  afam(afal paramafal) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.a.sendEmptyMessage(1);
+  }
 }
 
 

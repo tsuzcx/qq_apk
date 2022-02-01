@@ -1,16 +1,18 @@
-public class blze
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.GpsInfo4LocalImage;
+
+public final class blze
+  implements Parcelable.Creator<GpsInfo4LocalImage>
 {
-  String a = "";
-  String b = "";
-  String c = "";
-  
-  public blze() {}
-  
-  public blze(String paramString1, String paramString2, String paramString3)
+  public GpsInfo4LocalImage a(Parcel paramParcel)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
+  }
+  
+  public GpsInfo4LocalImage[] a(int paramInt)
+  {
+    return null;
   }
 }
 

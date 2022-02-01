@@ -1,24 +1,48 @@
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import android.text.TextUtils;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class apiv
+  implements apiu
 {
-  public View a;
-  public RelativeLayout a;
-  public TextView a;
-  public HeartLayout a;
-  public View b;
-  
-  public boolean a()
+  public boolean notify(String paramString1, String paramString2, String paramString3)
   {
-    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.b != null);
-  }
-  
-  public boolean a(View paramView1, TextView paramTextView, View paramView2, RelativeLayout paramRelativeLayout, HeartLayout paramHeartLayout)
-  {
-    return (this.jdField_a_of_type_AndroidViewView == paramView1) && (this.jdField_a_of_type_AndroidWidgetTextView == paramTextView) && (this.b == paramView2) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == paramRelativeLayout) && (this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout == paramHeartLayout);
+    JSONObject localJSONObject = null;
+    try
+    {
+      paramString3 = new JSONObject(paramString3).optString("gc");
+      if (TextUtils.isEmpty(paramString3)) {
+        return false;
+      }
+    }
+    catch (Exception paramString3)
+    {
+      for (;;)
+      {
+        QLog.e("ark.ArkAppNotifyCenter", 1, "notify json error!", paramString3);
+        paramString3 = localJSONObject;
+      }
+      if (paramString2.equals("GetIsTroopOwner")) {
+        try
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("isOwner", bfup.a(ArkAppNotifyCenter.getAppInterface(), paramString3, ArkAppNotifyCenter.getAppInterface().c()));
+          ark.arkNotify(paramString1, paramString2, localJSONObject.toString(), "json");
+          return true;
+        }
+        catch (Throwable paramString1)
+        {
+          for (;;)
+          {
+            QLog.e("ark.ArkAppNotifyCenter", 1, "ark.notify error!", paramString1);
+          }
+        }
+      }
+    }
+    return false;
   }
 }
 

@@ -1,21 +1,34 @@
-public class axux
-  implements axuy
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+
+class axux
+  implements View.OnClickListener
 {
-  public void a()
-  {
-    wxe.b("FlowEdit_NeoVideoFilterPlayView", "onResetAndStart");
-  }
+  axux(axuv paramaxuv) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    wxe.a("FlowEdit_NeoVideoFilterPlayView", "onSpeedChange, old=%d, new=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    NearbyPeopleProfileActivity localNearbyPeopleProfileActivity = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity;
+    if (i >= NearbyPeopleProfileActivity.c) {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 0, this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131693928), 0).a();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      axuv.c(this.a);
+    }
   }
-  
-  public void a(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axux
  * JD-Core Version:    0.7.0.1
  */

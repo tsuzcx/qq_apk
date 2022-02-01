@@ -1,24 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption.2;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-class aujy
-  implements DialogInterface.OnClickListener
+public class aujy
+  implements ayyt
 {
-  aujy(aujr paramaujr) {}
+  public aujy(ForwardSdkShareOption.2 param2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    paramDialogInterface.dismiss();
-    azqs.b(this.a.a, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
-    if (this.a.c()) {
-      aujr.a(this.a).a(false, null, false);
+    return null;
+  }
+  
+  public void a(ayyu paramayyu)
+  {
+    if ((paramayyu != null) && (QLog.isColorLevel())) {
+      QLog.d("ForwardOption.ForwardSdkShareOption", 2, new Object[] { "upCallBack updateMsg info =", paramayyu.toString() });
     }
+  }
+  
+  public void b(ayyu paramayyu)
+  {
+    aukw.b("KEY_STAGE_2_UPLOAD_IMAGE");
+    ForwardSdkShareOption.a(this.a.this$0, this.a.this$0.a, paramayyu, this.a.b, this.a.c, this.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aujy
  * JD-Core Version:    0.7.0.1
  */

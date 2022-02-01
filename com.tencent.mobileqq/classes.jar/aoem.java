@@ -1,50 +1,30 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoem
-  implements aoeq
+  extends anmu
 {
-  public String a()
-  {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131692447);
-  }
+  public aoem(HiddenChatFragment paramHiddenChatFragment) {}
   
-  public void a(View paramView, int paramInt)
+  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    boolean bool2 = true;
-    Context localContext = paramView.getContext();
-    boolean bool1;
-    if (!((BaseActivity)paramView.getContext()).isInMultiWindow())
-    {
-      bool1 = true;
-      if (!(localContext instanceof BaseActivity)) {
-        break label121;
-      }
-      if (((BaseActivity)localContext).isInMultiWindow()) {
-        break label116;
-      }
-      bool1 = bool2;
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
+      QLog.e("tag_hidden_chat", 1, "data not right");
     }
-    label116:
-    label121:
-    for (;;)
+    do
     {
-      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      bivc.a((Activity)localContext, paramView.getAccount(), null, -1, bool1);
-      bivo.b(paramView, 6, 0);
-      bivs.a(paramView.getCurrentAccountUin());
-      azqs.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 2, 0, "", "", "", "");
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-    }
+      do
+      {
+        return;
+        String[] arrayOfString = (String[])paramArrayOfObject[0];
+        paramArrayOfObject = (boolean[])paramArrayOfObject[1];
+        if (QLog.isColorLevel()) {
+          QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(arrayOfString.length), " len2:", Integer.valueOf(paramArrayOfObject.length) });
+        }
+      } while (!paramBoolean);
+      this.a.a();
+    } while (!QLog.isColorLevel());
+    QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
   }
 }
 

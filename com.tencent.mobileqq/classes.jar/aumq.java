@@ -1,13 +1,21 @@
-import android.view.MotionEvent;
+import android.app.Dialog;
 import android.view.View;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 
-public abstract interface aumq
+public class aumq
+  implements aybn
 {
-  public abstract void b(View paramView, MotionEvent paramMotionEvent);
+  public aumq(NearbyHybridFragment paramNearbyHybridFragment) {}
+  
+  public void a(Dialog paramDialog, View paramView, aybm paramaybm)
+  {
+    aybo.a(this.a.a, paramaybm, "home");
+    paramDialog.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aumq
  * JD-Core Version:    0.7.0.1
  */

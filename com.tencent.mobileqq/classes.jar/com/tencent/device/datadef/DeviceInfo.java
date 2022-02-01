@@ -1,14 +1,14 @@
 package com.tencent.device.datadef;
 
+import abqf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zth;
 
 public class DeviceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DeviceInfo> CREATOR = new zth();
+  public static final Parcelable.Creator<DeviceInfo> CREATOR = new abqf();
   public static final double MULTIVIDEOVER = 1.4D;
   public int SSOBid_Platform;
   public String SSOBid_Version = "";
@@ -115,7 +115,7 @@ public class DeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.device.datadef.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

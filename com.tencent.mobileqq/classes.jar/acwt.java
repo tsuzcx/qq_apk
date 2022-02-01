@@ -1,17 +1,13 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
 
 public class acwt
-  implements View.OnClickListener
+  implements ProxyListener
 {
-  public acwt(FontSettingActivity paramFontSettingActivity) {}
+  public void onDeleteFinish(String paramString, int paramInt) {}
   
-  public void onClick(View paramView)
-  {
-    FontSettingActivity.a(this.a).dismiss();
-  }
+  public void onInsertFinish(String paramString) {}
+  
+  public void onUpdateFinish(String paramString, int paramInt) {}
 }
 
 

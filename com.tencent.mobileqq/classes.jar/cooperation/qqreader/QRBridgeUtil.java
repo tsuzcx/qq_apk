@@ -2,9 +2,9 @@ package cooperation.qqreader;
 
 import android.os.Handler.Callback;
 import android.text.TextUtils;
-import biyu;
-import biyv;
-import bjbl;
+import blnf;
+import blng;
+import blpu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -61,7 +61,7 @@ public final class QRBridgeUtil
         break;
       }
       return "";
-      bjbl.a("QRBridgeUtil", "mApp null return null skey");
+      blpu.a("QRBridgeUtil", "mApp null return null skey");
     }
   }
   
@@ -93,7 +93,7 @@ public final class QRBridgeUtil
     if (localAppRuntime != null) {
       return ((TicketManager)localAppRuntime.getManager(2)).getSkey(paramString);
     }
-    bjbl.a("QRBridgeUtil", "mApp null return null skey");
+    blpu.a("QRBridgeUtil", "mApp null return null skey");
     return "";
   }
   
@@ -106,7 +106,7 @@ public final class QRBridgeUtil
       if (paramString != null) {
         return new String(WtloginHelper.GetTicketSig(paramString, 524288));
       }
-      bjbl.a("QRBridgeUtil", "get sig info null");
+      blpu.a("QRBridgeUtil", "get sig info null");
     }
     return "";
   }
@@ -115,13 +115,13 @@ public final class QRBridgeUtil
   {
     if (paramAppRuntime == null)
     {
-      bjbl.a("QRBridgeUtil", "Unable to get pskey due to null app runtime");
+      blpu.a("QRBridgeUtil", "Unable to get pskey due to null app runtime");
       return "";
     }
-    bjbl.c("QRBridgeUtil", "Try to preload pSkey");
+    blpu.c("QRBridgeUtil", "Try to preload pSkey");
     paramAppRuntime = (TicketManager)paramAppRuntime.getManager(2);
-    biyv localbiyv = new biyv(paramString2);
-    paramAppRuntime.GetPskey(paramString1, 16L, new String[] { paramString2 }, localbiyv);
+    blng localblng = new blng(paramString2);
+    paramAppRuntime.GetPskey(paramString1, 16L, new String[] { paramString2 }, localblng);
     return "";
   }
   
@@ -133,7 +133,7 @@ public final class QRBridgeUtil
     }
     localObject = (WtloginManager)((AppRuntime)localObject).getManager(1);
     if (!((WtloginManager)localObject).IsNeedLoginWithPasswd(paramString, 16)) {
-      ((WtloginManager)localObject).GetStWithoutPasswd(paramString, 16L, 16L, new biyu(paramCallback));
+      ((WtloginManager)localObject).GetStWithoutPasswd(paramString, 16L, 16L, new blnf(paramCallback));
     }
     for (boolean bool = true;; bool = false) {
       return bool;
@@ -142,7 +142,7 @@ public final class QRBridgeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.QRBridgeUtil
  * JD-Core Version:    0.7.0.1
  */

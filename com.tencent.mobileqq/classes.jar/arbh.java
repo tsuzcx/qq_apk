@@ -1,27 +1,56 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskDirFileBatchDeleteExMsgRsp;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class arbh
-  implements bkkj<WeiyunPB.DiskDirFileBatchDeleteExMsgRsp>
+public class arbh
+  extends aqkz<arbg>
 {
-  arbh(arau paramarau, WeiYunFileInfo paramWeiYunFileInfo) {}
-  
-  public void a(int paramInt, String paramString, WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
+  public static arbg a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onFailed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a + "]strFileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c + "]errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
-    }
-    arau.a(this.jdField_a_of_type_Arau).a().a(false, 20, new Object[] { Integer.valueOf(paramInt), paramString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c, Boolean.valueOf(false) });
+    return (arbg)aqlk.a().a(437);
   }
   
-  public void a(WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
+  @NonNull
+  public arbg a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onSucceed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a + "]strFileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c + "]");
+    return new arbg();
+  }
+  
+  @Nullable
+  public arbg a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return arbg.a(paramArrayOfaqlg);
     }
-    arau.a(this.jdField_a_of_type_Arau).a().a(true, 20, new Object[] { Integer.valueOf(0), null, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c, Boolean.valueOf(false) });
+    return null;
+  }
+  
+  public void a(arbg paramarbg) {}
+  
+  public Class<arbg> clazz()
+  {
+    return arbg.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 437;
   }
 }
 

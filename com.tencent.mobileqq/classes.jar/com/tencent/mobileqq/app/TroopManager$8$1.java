@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import aloz;
-import bcnx;
+import anie;
+import bfsn;
 import java.util.ArrayList;
 
 class TroopManager$8$1
@@ -11,12 +11,12 @@ class TroopManager$8$1
   
   public void run()
   {
-    ((aloz)this.jdField_a_of_type_ComTencentMobileqqAppTroopManager$8.this$0.a.a(22)).d(new bcnx(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager$8.a, this.jdField_a_of_type_JavaUtilArrayList));
+    ((anie)this.jdField_a_of_type_ComTencentMobileqqAppTroopManager$8.this$0.a.a(22)).d(new bfsn(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager$8.a, this.jdField_a_of_type_JavaUtilArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.8.1
  * JD-Core Version:    0.7.0.1
  */

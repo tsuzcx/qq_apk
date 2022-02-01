@@ -1,8 +1,8 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.util.Log;
-import azqo;
-import azty;
+import bcsp;
+import bcuy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -17,8 +17,8 @@ class DataReporter$1
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        azty localazty = (azty)localIterator.next();
-        azqo.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localazty);
+        bcuy localbcuy = (bcuy)localIterator.next();
+        bcsp.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localbcuy);
       }
       return;
     }
@@ -32,7 +32,7 @@ class DataReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.DataReporter.1
  * JD-Core Version:    0.7.0.1
  */

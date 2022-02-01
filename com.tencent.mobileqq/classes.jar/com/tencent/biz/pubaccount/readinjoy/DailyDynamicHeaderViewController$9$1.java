@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import ampk;
-import nvp;
+import aoor;
+import ofk;
 
 class DailyDynamicHeaderViewController$9$1
   implements Runnable
@@ -10,7 +10,7 @@ class DailyDynamicHeaderViewController$9$1
   
   public void run()
   {
-    ampk.a(nvp.a(this.a.this$0));
+    aoor.a(ofk.a(this.a.this$0));
   }
 }
 

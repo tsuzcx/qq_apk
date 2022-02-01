@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.profile.like.PraiseManager;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class awsu
-  implements awss
-{
-  public int a;
-  public awss a;
-  public int b;
-  
-  public awsu(PraiseManager paramPraiseManager) {}
-  
-  public void a(int paramInt1, awsr paramawsr, int paramInt2, String paramString)
-  {
-    paramInt1 = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt1 == this.b)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
-      if (this.jdField_a_of_type_Awss != null) {
-        this.jdField_a_of_type_Awss.a(0, null, 0, "");
-      }
-    }
-  }
-}
+@Inherited
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.TYPE})
+public @interface awsu {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awsu
  * JD-Core Version:    0.7.0.1
  */

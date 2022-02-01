@@ -1,13 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class afzo
-  implements DialogInterface.OnClickListener
-{
-  afzo(afzh paramafzh) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
-}
+public abstract interface afzo {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

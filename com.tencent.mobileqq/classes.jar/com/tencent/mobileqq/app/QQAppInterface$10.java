@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import atzz;
-import bhtk;
+import awhi;
+import bkgt;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.qphone.base.util.QLog;
 
@@ -27,8 +27,13 @@ class QQAppInterface$10
       localQQNotificationManager.cancel("QQAppInterface_removeNotification", 266);
       localQQNotificationManager.cancel("QQAppInterface_removeNotification", 524);
       localQQNotificationManager.cancel("QQAppInterface_removeNotification", 527);
-      ((bhtk)this.this$0.getManager(313)).a();
-      ((atzz)this.this$0.getManager(284)).a(localQQNotificationManager, -1);
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 3000529);
+      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 3000531);
+      bkgt localbkgt = (bkgt)this.this$0.getManager(313);
+      if (localbkgt != null) {
+        localbkgt.a();
+      }
+      ((awhi)this.this$0.getManager(284)).a(localQQNotificationManager, -1);
       if (QLog.isColorLevel()) {
         QLog.d("notification", 2, "removeNotification");
       }

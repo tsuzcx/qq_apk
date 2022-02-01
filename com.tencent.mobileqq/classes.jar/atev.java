@@ -1,19 +1,141 @@
-class atev
-  extends atex
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class atev
+  extends atcg
 {
-  atev(ateu paramateu) {}
+  private asyw a;
   
-  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  public atev(QQAppInterface paramQQAppInterface)
   {
-    super.a(paramBoolean, paramInt, paramLong, paramString1, paramString2);
-    if (paramBoolean) {
-      this.a.a(paramInt, paramLong, paramString1);
-    }
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Asyw = new atew(this);
+    paramQQAppInterface.a().addObserver(this.jdField_a_of_type_Asyw);
   }
+  
+  private atex a(long paramLong, boolean paramBoolean)
+  {
+    atch localatch = a(paramLong);
+    if (localatch == null) {
+      return null;
+    }
+    if ((localatch instanceof atex)) {
+      return (atex)localatch;
+    }
+    QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 1, "[downloadThumb] getSession  ID[" + paramLong + "] no instance");
+    return null;
+  }
+  
+  public String a(FileManagerEntity paramFileManagerEntity, int paramInt)
+  {
+    if (paramFileManagerEntity.Uuid == null)
+    {
+      QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 1, "[downloadThumb]  download. uuid = null nSession[" + paramFileManagerEntity.nSessionId + "]");
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
+      return null;
+    }
+    int i = a(paramFileManagerEntity.fileName);
+    if (-1 == i)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
+      return null;
+    }
+    a();
+    Object localObject1 = paramFileManagerEntity.Uuid.replace("/", "");
+    Object localObject2 = atut.a().d() + a(paramInt, (String)localObject1);
+    localObject1 = localObject2;
+    if (!atwl.b((String)localObject2))
+    {
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty(paramFileManagerEntity.strFileMd5)) {
+        localObject1 = atut.a().d() + a(paramInt, bkdr.a(paramFileManagerEntity.strFileMd5));
+      }
+    }
+    if (bgmg.b((String)localObject1) == true)
+    {
+      QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 1, "[downloadThumb] Id[" + paramFileManagerEntity.nSessionId + "] thumb Downloaded:" + (String)localObject1);
+      return localObject1;
+    }
+    localObject2 = new atex(paramFileManagerEntity);
+    ((atex)localObject2).jdField_a_of_type_Int = paramInt;
+    ((atex)localObject2).b = i;
+    a((atch)localObject2, (String)localObject1);
+    QLog.i("OfflineVideoThumbDownLoader<FileAssistant>", 1, "[downloadThumb] download  nSession[" + paramFileManagerEntity.nSessionId + "], ThumbDownloadId[" + ((atex)localObject2).jdField_a_of_type_Long + "]");
+    return null;
+  }
+  
+  public List<String> a(long paramLong, String paramString, int paramInt, boolean paramBoolean, List<String> paramList)
+  {
+    paramList = a(paramLong, false);
+    if ((paramList != null) && (paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (!TextUtils.isEmpty(paramString)) && (atcq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1)))
+    {
+      QLog.i("OfflineVideoThumbDownLoader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] [IPv6-File] offlineVideo thumb. is config enable IPv6. domain[" + paramString + "]");
+      paramString = new atcr(paramString, paramInt);
+      paramList = atcq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 1);
+      if ((paramList != null) && (!paramList.a()))
+      {
+        paramString = new ArrayList();
+        paramList = paramList.a.iterator();
+        while (paramList.hasNext())
+        {
+          atcs localatcs = (atcs)paramList.next();
+          paramString.add(localatcs.jdField_a_of_type_JavaLangString + ":" + localatcs.jdField_a_of_type_Int);
+        }
+        QLog.i("OfflineVideoThumbDownLoader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] [IPv6-File] offlineVideo thumb. use IPv6. hostlist:" + paramString.toString());
+        return paramString;
+      }
+      QLog.i("OfflineVideoThumbDownLoader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] [IPv6-File] offlineVideo thumb. use IPv4");
+    }
+    return null;
+  }
+  
+  public void a(long paramLong, atgw paramatgw) {}
+  
+  public void a(long paramLong, bgux parambgux)
+  {
+    parambgux.c = 0;
+  }
+  
+  public void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, atgw paramatgw)
+  {
+    atex localatex = a(paramLong, false);
+    if (localatex == null)
+    {
+      QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onDownloadCompleted no this session");
+      return;
+    }
+    if (paramBoolean)
+    {
+      localatex.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
+      atvo.d(localatex.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localatex.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramBoolean, 50, new Object[] { localatex.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(localatex.jdField_a_of_type_Int) });
+    super.a(paramLong, paramBoolean, paramInt, paramString, paramatgw);
+  }
+  
+  public boolean a(long paramLong, atgw paramatgw)
+  {
+    paramatgw = a(paramLong, false);
+    if (paramatgw == null)
+    {
+      QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onGetDownloadUrl no this session");
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramatgw.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramatgw.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, paramLong);
+    return true;
+  }
+  
+  public void b(long paramLong, atgw paramatgw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atev
  * JD-Core Version:    0.7.0.1
  */

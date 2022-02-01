@@ -1,41 +1,30 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.cs.smartptt.Smartptt.PttUpReq;
-import tencent.im.cs.smartptt.Smartptt.ReqBody;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 public class baxt
 {
-  public static Smartptt.ReqBody a(baxu parambaxu)
+  public int a;
+  public long a;
+  public MessageForShortVideo a;
+  String jdField_a_of_type_JavaLangString;
+  public String[] a;
+  
+  public baxt(baxq parambaxq, String[] paramArrayOfString, long paramLong, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
   {
-    int j = 0;
-    Smartptt.ReqBody localReqBody = new Smartptt.ReqBody();
-    localReqBody.uint32_sub_cmd.set(3);
-    Smartptt.PttUpReq localPttUpReq = new Smartptt.PttUpReq();
-    localPttUpReq.uint32_bits_per_sample.set(16);
-    localPttUpReq.uint32_voice_file_type.set(1);
-    localPttUpReq.uint32_voice_encode_type.set(parambaxu.jdField_a_of_type_Int);
-    localPttUpReq.uint32_samples_per_sec.set(16000);
-    localPttUpReq.str_voice_id.set(parambaxu.jdField_a_of_type_JavaLangString);
-    PBUInt32Field localPBUInt32Field = localPttUpReq.uint32_is_first;
-    if (parambaxu.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localPBUInt32Field.set(i);
-      localPBUInt32Field = localPttUpReq.uint32_is_end;
-      i = j;
-      if (parambaxu.jdField_b_of_type_Boolean) {
-        i = 1;
-      }
-      localPBUInt32Field.set(i);
-      localPttUpReq.uint32_offset.set(parambaxu.jdField_b_of_type_Int);
-      localPttUpReq.str_Filemd5.set(parambaxu.jdField_c_of_type_JavaLangString);
-      localPttUpReq.uint32_chat_type.set(parambaxu.e);
-      localPttUpReq.uint32_service_id.set(1);
-      localPttUpReq.uint32_voice_num.set(parambaxu.jdField_c_of_type_Int);
-      localPttUpReq.uint32_voice_offset.set(parambaxu.d);
-      localReqBody.msg_ptt_up_req.set(localPttUpReq);
-      return localReqBody;
-    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "UrlsCacheBean, now=  " + l1 + ", mGetTime" + this.jdField_a_of_type_Long + " diff=" + l2 + " urlTimeValidDiff=" + baxq.a());
+    return l2 < baxq.a();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.smooth;
 
-import avsz;
+import ayao;
 import java.util.concurrent.FutureTask;
 
 final class ItemLoader$LoadItemFutureTask<Params, Result>
@@ -11,23 +11,23 @@ final class ItemLoader$LoadItemFutureTask<Params, Result>
   
   public int a(LoadItemFutureTask<Params, Result> paramLoadItemFutureTask)
   {
-    avsz localavsz = this.a.a();
+    ayao localayao = this.a.a();
     paramLoadItemFutureTask = paramLoadItemFutureTask.a.a();
-    if ((localavsz.b != null) && (paramLoadItemFutureTask.b == null)) {
+    if ((localayao.b != null) && (paramLoadItemFutureTask.b == null)) {
       return -1;
     }
-    if ((localavsz.b == null) && (paramLoadItemFutureTask.b != null)) {
+    if ((localayao.b == null) && (paramLoadItemFutureTask.b != null)) {
       return 1;
     }
-    if (!localavsz.jdField_a_of_type_JavaLangInteger.equals(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger)) {
-      return localavsz.jdField_a_of_type_JavaLangInteger.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger);
+    if (!localayao.jdField_a_of_type_JavaLangInteger.equals(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger)) {
+      return localayao.jdField_a_of_type_JavaLangInteger.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger);
     }
-    return localavsz.jdField_a_of_type_JavaLangLong.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangLong);
+    return localayao.jdField_a_of_type_JavaLangLong.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemLoader.LoadItemFutureTask
  * JD-Core Version:    0.7.0.1
  */

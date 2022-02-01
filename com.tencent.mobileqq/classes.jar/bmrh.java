@@ -1,18 +1,12 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
-
-public class bmrh
-  implements bmrl
+class bmrh
+  implements ankk
 {
-  public static final String[] a = { "AtLayer0", "AtLayer1", "AtLayer2", "AtLayer3", "AtLayer4", "AtLayer5" };
+  bmrh(bmrg parambmrg) {}
   
-  public void a(List<bmri> paramList, DoodleView paramDoodleView)
+  public void a(boolean paramBoolean)
   {
-    int i = 0;
-    while (i < a.length)
-    {
-      paramList.add(new bmqa(paramDoodleView, a[i]));
-      i += 1;
+    if (paramBoolean) {
+      this.a.a();
     }
   }
 }

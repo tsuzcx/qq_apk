@@ -1,8 +1,26 @@
-import android.graphics.Bitmap;
+import android.os.Build.VERSION;
+import com.dataline.activities.LiteActivity;
+import com.tencent.widget.XListView;
 
-public abstract interface cb
+public class cb
+  implements aond
 {
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public cb(LiteActivity paramLiteActivity) {}
+  
+  public void a(int paramInt)
+  {
+    if (this.a.isFinishing()) {}
+    while ((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) {
+      return;
+    }
+    if (paramInt > 0)
+    {
+      this.a.jdField_a_of_type_Dy.b();
+      this.a.jdField_a_of_type_Dy.notifyDataSetChanged();
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setSelectionFromBottom(paramInt, 0);
+    }
+    this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+  }
 }
 
 

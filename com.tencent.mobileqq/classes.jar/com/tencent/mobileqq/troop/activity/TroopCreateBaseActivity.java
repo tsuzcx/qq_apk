@@ -1,22 +1,26 @@
 package com.tencent.mobileqq.troop.activity;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import bbks;
+import belg;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebView;
 
 public abstract class TroopCreateBaseActivity
   extends AbsBaseWebViewActivity
 {
-  protected bbks a;
+  protected belg a;
   public CustomWebView a;
   
   public void a(int paramInt)
@@ -43,11 +47,19 @@ public abstract class TroopCreateBaseActivity
   
   public void d() {}
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = b((ViewGroup)null);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setId(2131380175);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setId(2131381152);
     setContentView(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView);
     paramBundle = getIntent().getStringExtra("url");
     if (TextUtils.isEmpty(paramBundle)) {
@@ -63,7 +75,7 @@ public abstract class TroopCreateBaseActivity
     {
       this.b = Long.parseLong((String)localObject, 10);
       this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
-      this.leftView.setOnClickListener(new bbks(this, 0, null));
+      this.leftView.setOnClickListener(new belg(this, 0, null));
       return true;
     }
     catch (NumberFormatException localNumberFormatException)
@@ -84,17 +96,24 @@ public abstract class TroopCreateBaseActivity
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Bbks != null)
+    if (this.jdField_a_of_type_Belg != null)
     {
-      this.jdField_a_of_type_Bbks.onClick(this.leftView);
+      this.jdField_a_of_type_Belg.onClick(this.leftView);
       return true;
     }
     return false;
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity
  * JD-Core Version:    0.7.0.1
  */

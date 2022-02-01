@@ -1,22 +1,29 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
 
-class afqm
-  extends afuf
+public class afqm
+  implements TextWatcher
 {
-  afqm(afpy paramafpy)
+  public afqm(VerifyCodeActivity paramVerifyCodeActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramafpy, null);
+    if (paramEditable.length() >= 4)
+    {
+      VerifyCodeActivity.c(this.a, true);
+      return;
+    }
+    VerifyCodeActivity.d(this.a, false);
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agda(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afqm
  * JD-Core Version:    0.7.0.1
  */

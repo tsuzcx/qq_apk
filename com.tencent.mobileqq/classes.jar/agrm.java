@@ -1,18 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agrm
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  agrm(agqq paramagqq, bemp parambemp) {}
+  agrm(agrl paramagrl, int paramInt, ArkViewImplement.ArkViewInterface paramArkViewInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Agqq.ab = true;
-    this.jdField_a_of_type_Agqq.aa = true;
-    agqq.b(this.jdField_a_of_type_Agqq, false);
-    if ((this.jdField_a_of_type_Bemp.a()) && (!this.jdField_a_of_type_Bemp.b())) {
-      azqs.b(this.jdField_a_of_type_Agqq.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
+    int i = paramView.getId();
+    if (this.jdField_a_of_type_Int == 2) {
+      if (i == 0) {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (i == 1)
+      {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
+      }
+      else if (i == 2)
+      {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+        continue;
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          if (i == 0) {
+            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
+          } else if (i == 1) {
+            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
+          } else if (i == 2) {
+            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+          }
+        }
+        else {
+          this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+        }
+      }
     }
   }
 }

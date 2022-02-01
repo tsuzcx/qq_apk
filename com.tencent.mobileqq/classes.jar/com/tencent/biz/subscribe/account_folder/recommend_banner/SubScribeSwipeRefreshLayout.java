@@ -1,5 +1,6 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
+import aabg;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
@@ -13,7 +14,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import ycv;
 
 public class SubScribeSwipeRefreshLayout
   extends SwipeRefreshLayout
@@ -62,7 +62,7 @@ public class SubScribeSwipeRefreshLayout
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchEventListener(new ycv(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchEventListener(new aabg(this));
     }
   }
   
@@ -103,7 +103,7 @@ public class SubScribeSwipeRefreshLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.SubScribeSwipeRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

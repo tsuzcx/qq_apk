@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.apollo;
 
-import akoq;
-import alaq;
-import albf;
-import albi;
+import amhw;
+import amtw;
+import amul;
+import amuo;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ApolloPanelManager$2
   implements Runnable
 {
-  public ApolloPanelManager$2(akoq paramakoq) {}
+  public ApolloPanelManager$2(amhw paramamhw) {}
   
   public void run()
   {
     Object localObject = this.this$0;
     int i = this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    if (this.this$0.jdField_a_of_type_Allz != null) {}
+    if (this.this$0.jdField_a_of_type_Anff != null) {}
     for (boolean bool = true;; bool = false)
     {
-      ((akoq)localObject).a(i, bool, akoq.a(this.this$0));
-      if ((this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) && (!akoq.a(this.this$0)) && (this.this$0.a() != null) && (this.this$0.jdField_a_of_type_Allz != null))
+      ((amhw)localObject).a(i, bool, amhw.a(this.this$0));
+      if ((this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) && (!amhw.a(this.this$0)) && (this.this$0.a() != null) && (this.this$0.jdField_a_of_type_Anff != null))
       {
-        localObject = albi.a(this.this$0.a()).a();
+        localObject = amuo.a(this.this$0.a()).a();
         if (localObject != null) {
-          ((alaq)localObject).a(this.this$0.b);
+          ((amtw)localObject).a(this.this$0.b);
         }
       }
-      if (((akoq.a(this.this$0)) || (this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0)) && (this.this$0.jdField_a_of_type_Allz != null)) {
-        akoq.a(this.this$0, this.this$0.jdField_a_of_type_Allz);
+      if (((amhw.a(this.this$0)) || (this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0)) && (this.this$0.jdField_a_of_type_Anff != null)) {
+        amhw.a(this.this$0, this.this$0.jdField_a_of_type_Anff);
       }
       return;
     }
@@ -35,7 +35,7 @@ public class ApolloPanelManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloPanelManager.2
  * JD-Core Version:    0.7.0.1
  */

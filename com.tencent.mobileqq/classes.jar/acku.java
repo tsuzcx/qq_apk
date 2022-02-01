@@ -1,18 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public final class acku
-  implements DialogInterface.OnClickListener
+class acku
+  implements DialogInterface.OnDismissListener
 {
-  public acku(QQAppInterface paramQQAppInterface, String paramString) {}
+  acku(ackt paramackt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bdjn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    ackt.a(this.a).a();
+    this.a.jdField_a_of_type_Aclc.d();
+    this.a.jdField_a_of_type_Ackr.c();
   }
 }
 

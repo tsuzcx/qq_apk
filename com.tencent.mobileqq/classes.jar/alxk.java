@@ -1,62 +1,113 @@
-import java.util.List;
-import tencent.im.nearfield_group.nearfield_group.BusiRespHead;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class alxk
-  implements alpg
+  implements bcmt
 {
-  public void a(aqkt paramaqkt) {}
+  final int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  final String jdField_a_of_type_JavaLangString;
+  public Throwable a;
+  final int jdField_b_of_type_Int;
+  final long jdField_b_of_type_Long;
   
-  public void a(aqkx paramaqkx) {}
-  
-  public void a(nearfield_group.BusiRespHead paramBusiRespHead) {}
-  
-  public void a(nearfield_group.BusiRespHead paramBusiRespHead, String paramString) {}
-  
-  public void a(nearfield_group.BusiRespHead paramBusiRespHead, List<aqkt> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public alxk(String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    if (paramInt2 > 0) {}
+    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-        if ((paramBoolean) && (paramObject != null))
-        {
-          paramObject = (Object[])paramObject;
-          a((nearfield_group.BusiRespHead)paramObject[0], (List)paramObject[1]);
-          return;
-        }
-        a(null, null);
-        return;
-        if ((paramBoolean) && (paramObject != null))
-        {
-          a((nearfield_group.BusiRespHead)((Object[])(Object[])paramObject)[0]);
-          return;
-        }
-        a(null);
-        return;
-        if ((paramBoolean) && (paramObject != null))
-        {
-          paramObject = (Object[])paramObject;
-          a((nearfield_group.BusiRespHead)paramObject[0], (String)paramObject[1]);
-          return;
-        }
-        a(null, "");
-        return;
-      } while ((!paramBoolean) || (paramObject == null));
-      a((aqkt)((Object[])(Object[])paramObject)[0]);
+      this.jdField_a_of_type_JavaLangThrowable = null;
+      if (paramString == null) {}
       return;
-    } while ((!paramBoolean) || (paramObject == null));
-    a((aqkx)((Object[])(Object[])paramObject)[0]);
+    }
   }
+  
+  public bcmu a(int paramInt1, int paramInt2)
+  {
+    int j = 1280;
+    int i = 30;
+    bcmu localbcmu = new bcmu();
+    Object localObject;
+    if (paramInt1 <= paramInt2)
+    {
+      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      if (((File)localObject).exists()) {
+        ((File)localObject).delete();
+      }
+      localbcmu.jdField_a_of_type_JavaIoFile = ((File)localObject);
+      if (paramInt2 < 1280) {
+        break label278;
+      }
+      localObject = "720p";
+      paramInt1 = j;
+      label70:
+      if (paramInt2 >= paramInt1) {
+        break label307;
+      }
+    }
+    label278:
+    label307:
+    for (localbcmu.jdField_a_of_type_Int = ((int)(819200 * 1.0D / paramInt1 * paramInt2));; localbcmu.jdField_a_of_type_Int = 819200)
+    {
+      localbcmu.jdField_a_of_type_Float = (paramInt1 / paramInt2);
+      paramInt2 = i;
+      if (this.jdField_b_of_type_Int <= 30) {
+        paramInt2 = this.jdField_b_of_type_Int;
+      }
+      localbcmu.jdField_b_of_type_Int = paramInt2;
+      localbcmu.jdField_b_of_type_Boolean = a();
+      localbcmu.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      localbcmu.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCompressTask", 2, "CompressTask, step: getEncodeConfig() config.setRotation = " + localbcmu.jdField_b_of_type_Boolean + ", scaleRate=" + localbcmu.jdField_a_of_type_Float + ", videoBitRate=" + localbcmu.jdField_a_of_type_Int + ", videoFrameRate=" + localbcmu.jdField_b_of_type_Int + ", beginTime=" + localbcmu.jdField_a_of_type_Long + ", endTime=" + localbcmu.jdField_b_of_type_Long + ",quality:" + (String)localObject + ",videoLongestEdge=" + paramInt1);
+      }
+      return localbcmu;
+      paramInt2 = paramInt1;
+      break;
+      if (paramInt2 >= 960)
+      {
+        localObject = "540p";
+        paramInt1 = 960;
+        break label70;
+      }
+      paramInt1 = 640;
+      localObject = "480p";
+      break label70;
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(Throwable paramThrowable)
+  {
+    QLog.e("VideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onFailed:" + paramThrowable.getMessage());
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
+      bool = true;
+    }
+    while (Build.VERSION.SDK_INT <= 19) {
+      return bool;
+    }
+    return false;
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alxk
  * JD-Core Version:    0.7.0.1
  */

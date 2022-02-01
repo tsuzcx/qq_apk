@@ -1,21 +1,30 @@
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.ViewAnimation;
 
 class agud
-  implements yxg
+  extends AnimatorListenerAdapter
 {
-  agud(agti paramagti) {}
+  agud(agtx paramagtx) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if ((afwq.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (paramInt1 == 0))
+    super.onAnimationStart(paramAnimator);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation != null)
     {
-      this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a();
-      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.mImageLayer = null;
+      paramAnimator = ((ViewGroup)((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131362279);
+      if (paramAnimator != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setDuration(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getDuration());
+        paramAnimator.startAnimation(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation);
+      }
     }
-    aepi.n = true;
-    this.a.jdField_a_of_type_Nrc.a(paramString, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), paramInt1, agti.a(this.a), agti.b(this.a), paramInt2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    amrz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, agti.e(this.a), paramInt1);
   }
 }
 

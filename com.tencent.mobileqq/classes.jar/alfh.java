@@ -1,28 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Parcel;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
-class alfh
-  implements aleg
+public abstract class alfh
 {
-  alfh(alfe paramalfe, File paramFile, String paramString) {}
+  public abstract void a(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList);
   
-  public void a(boolean paramBoolean, int paramInt)
+  abstract void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
+  
+  public boolean a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
+    a(paramObject, paramArrayList, paramParcel);
+    if (b(paramObject, paramArrayList, paramParcel)) {
+      b(paramObject, paramArrayList, paramParcel);
     }
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 0, alud.a(2131700868));
-        return;
-      }
-      this.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 2, alud.a(2131700897));
-      return;
-    }
-    this.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 2, alud.a(2131700879));
+    return false;
   }
+  
+  abstract void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
+  
+  abstract boolean b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
 }
 
 

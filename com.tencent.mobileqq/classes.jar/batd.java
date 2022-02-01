@@ -1,40 +1,38 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.ImageUploadStep.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-public class batd
-  extends basy
+class batd
+  implements bary
 {
-  private int a;
+  batd(batc parambatc) {}
   
-  batd(basx parambasx)
+  public void a(int paramInt, Throwable paramThrowable)
   {
-    super(parambasx);
-    this.jdField_a_of_type_JavaLangString = "ImageUploadStep";
+    yqp.d("FlowEdit_VideoFlowDecodeWrapper", paramThrowable, "onDecodeError: %d", new Object[] { Integer.valueOf(paramInt) });
   }
   
-  protected boolean a()
+  public void a(long paramLong) {}
+  
+  public void b(long paramLong)
   {
-    return basx.a(this.jdField_b_of_type_Basx).get();
+    yqp.a("FlowEdit_VideoFlowDecodeWrapper", "onDecodeSeekTo: %d", Long.valueOf(paramLong));
   }
   
-  protected void d()
+  public void f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "ImageUploadStep|process|ready=" + basx.a(this.jdField_b_of_type_Basx) + ",remoteUrl=" + basx.a(this.jdField_b_of_type_Basx) + " ,localUrl=" + basx.b(this.jdField_b_of_type_Basx));
-    }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      f();
-      return;
-    }
-    if (basx.a(this.jdField_b_of_type_Basx).get())
-    {
-      b();
-      return;
-    }
-    ThreadManager.excute(new ForwardSdkShareProcessor.ImageUploadStep.1(this), 128, null, true);
+    yqp.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeStart: ");
+  }
+  
+  public void g()
+  {
+    yqp.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeFinish: ");
+  }
+  
+  public void i()
+  {
+    yqp.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeCancel: ");
+  }
+  
+  public void l()
+  {
+    yqp.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeRepeat: ");
   }
 }
 

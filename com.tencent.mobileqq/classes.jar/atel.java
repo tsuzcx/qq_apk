@@ -1,21 +1,22 @@
-import android.content.Intent;
-import android.os.Bundle;
-import java.util.concurrent.CountDownLatch;
+import androidx.annotation.NonNull;
 
 class atel
-  implements aszl
 {
-  atel(atek paramatek, aszh paramaszh, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
+  String c = "";
+  String d = "";
+  String e = "";
+  String f = "";
+  String g = "";
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  private atel(atee paramatee) {}
+  
+  @NonNull
+  public String toString()
   {
-    paramString = new Bundle(this.jdField_a_of_type_Aszh.a().a.getExtras());
-    Bundle localBundle = new Bundle();
-    localBundle.putBundle("data", paramString);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putInt("code", paramInt);
-    this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    return "busiType:" + this.jdField_a_of_type_Int + " fileMd5:" + this.f + " fileSha:" + this.g;
   }
 }
 

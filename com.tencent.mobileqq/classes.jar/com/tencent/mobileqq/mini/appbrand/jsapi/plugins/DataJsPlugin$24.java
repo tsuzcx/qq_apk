@@ -1,30 +1,29 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.mini.util.ApiUtil;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class DataJsPlugin$24
-  implements Handler.Callback
+  implements MiniAppCmdInterface
 {
   DataJsPlugin$24(DataJsPlugin paramDataJsPlugin, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    switch (paramMessage.what)
+    QLog.d("[mini] DataJsPlugin", 2, "webapi_plugin_login " + paramBoolean + ", " + paramJSONObject);
+    if (paramBoolean)
     {
+      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, paramJSONObject, this.val$callbackId);
+      return;
     }
-    for (;;)
-    {
-      return false;
-      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, ApiUtil.wrapCallbackFail(this.val$event, null), this.val$callbackId);
-    }
+    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.DataJsPlugin.24
  * JD-Core Version:    0.7.0.1
  */

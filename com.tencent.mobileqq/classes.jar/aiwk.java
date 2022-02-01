@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aiwk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aiwk(SendHbActivity paramSendHbActivity) {}
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected aiwk(aiwh paramaiwh) {}
+  
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    SendHbActivity.a(this.a);
+    if (aiwh.a(this.jdField_a_of_type_Aiwh) != null) {
+      aiwh.a(this.jdField_a_of_type_Aiwh).a(this.jdField_a_of_type_JavaLangString);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

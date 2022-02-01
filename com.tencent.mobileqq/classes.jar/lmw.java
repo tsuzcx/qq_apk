@@ -1,90 +1,45 @@
-import java.util.Comparator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteActivity;
 
 public class lmw
+  implements DialogInterface.OnClickListener
 {
-  public static final Object a;
-  public static final Comparator<lmw> a;
-  private static lmw b;
-  private static int c;
-  public int a;
-  public bamw a;
-  private lmw a;
-  public int b;
+  int jdField_a_of_type_Int;
   
-  static
+  public lmw(GaInviteActivity paramGaInviteActivity, int paramInt)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaUtilComparator = new lmx();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private lmw(bamw parambamw, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bamw = parambamw;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static lmw a(bamw parambamw, int paramInt1, int paramInt2)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    switch (this.jdField_a_of_type_Int)
     {
-      if (jdField_b_of_type_Lmw != null)
-      {
-        lmw locallmw = jdField_b_of_type_Lmw;
-        jdField_b_of_type_Lmw = locallmw.jdField_a_of_type_Lmw;
-        locallmw.a(parambamw, paramInt1, paramInt2);
-        c -= 1;
-        return locallmw;
-      }
-      return new lmw(parambamw, paramInt1, paramInt2);
     }
-  }
-  
-  private void a(bamw parambamw, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Lmw = null;
-    this.jdField_a_of_type_Bamw = parambamw;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static void a(List<lmw> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
     for (;;)
     {
+      paramDialogInterface.dismiss();
       return;
-      int i = paramList.size() - 1;
-      while (i >= 0)
+      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.g(true);
+      }
+      for (;;)
       {
-        lmw locallmw = (lmw)paramList.remove(i);
-        if (locallmw != null) {
-          locallmw.a();
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
+        break;
+        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e) {
+          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.m();
         }
-        i -= 1;
       }
-    }
-  }
-  
-  public void a()
-  {
-    a(null, -1, -1);
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (c < 50)
-      {
-        this.jdField_a_of_type_Lmw = jdField_b_of_type_Lmw;
-        jdField_b_of_type_Lmw = this;
-        c += 1;
-      }
-      return;
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lmw
  * JD-Core Version:    0.7.0.1
  */

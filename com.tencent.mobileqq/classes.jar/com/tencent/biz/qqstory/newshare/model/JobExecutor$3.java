@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.newshare.model;
 
-import vkh;
-import vkj;
+import xdt;
+import xdv;
 
 public class JobExecutor$3
   implements Runnable
 {
-  public JobExecutor$3(vkj paramvkj, vkh paramvkh) {}
+  public JobExecutor$3(xdv paramxdv, xdt paramxdt) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class JobExecutor$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.JobExecutor.3
  * JD-Core Version:    0.7.0.1
  */

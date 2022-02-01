@@ -1,23 +1,36 @@
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
-public class ahgw
-  extends nfu
+class ahgw
 {
-  public ahgw(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  private Map<Integer, LinkedList<View>> a = new HashMap();
   
-  public void a(int paramInt, List<SearchProtocol.WordItem> paramList)
+  View a(int paramInt)
   {
-    if (paramInt == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ClassificationSearchActivity", 2, "hot words size: " + paramList.size());
-      }
-      this.a.b = paramList;
-      ClassificationSearchActivity.a(this.a, true);
+    LinkedList localLinkedList = (LinkedList)this.a.get(Integer.valueOf(paramInt));
+    if (localLinkedList == null) {
+      return null;
     }
+    return (View)localLinkedList.poll();
+  }
+  
+  void a()
+  {
+    this.a.clear();
+  }
+  
+  void a(int paramInt, View paramView)
+  {
+    LinkedList localLinkedList2 = (LinkedList)this.a.get(Integer.valueOf(paramInt));
+    LinkedList localLinkedList1 = localLinkedList2;
+    if (localLinkedList2 == null)
+    {
+      localLinkedList1 = new LinkedList();
+      this.a.put(Integer.valueOf(paramInt), localLinkedList1);
+    }
+    localLinkedList1.add(paramView);
   }
 }
 

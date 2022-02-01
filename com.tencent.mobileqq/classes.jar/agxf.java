@@ -1,24 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Set;
 
-final class agxf
-  implements Animation.AnimationListener
+class agxf
+  extends ahbl
 {
-  public void onAnimationEnd(Animation paramAnimation)
+  agxf(agwz paramagwz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleHelper", 2, "onAllAnimationEnd " + paramAnimation);
-    }
+    super(paramagwz, null);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleHelper", 2, "onAnimationStart " + paramAnimation);
-    }
+    paramChatMessage = new ahbs(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    agwz.a(this.a).add(paramChatMessage);
+    return paramChatMessage;
+  }
+  
+  protected boolean a()
+  {
+    return false;
   }
 }
 

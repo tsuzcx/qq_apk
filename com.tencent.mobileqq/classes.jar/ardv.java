@@ -1,15 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class ardv
-  implements View.OnClickListener
+public abstract interface ardv
 {
-  ardv(ardu paramardu, aynu paramaynu) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Aynu.a(paramView);
-  }
+  public abstract void a(int paramInt);
 }
 
 

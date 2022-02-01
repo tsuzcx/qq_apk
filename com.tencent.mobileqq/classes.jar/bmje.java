@@ -1,18 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public final class bmje
-  implements Parcelable.Creator<EditLocalVideoSource>
+final class bmje
+  implements FilenameFilter
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
-  {
-    return new EditLocalVideoSource(paramParcel);
-  }
+  bmje(long paramLong1, long paramLong2) {}
   
-  public EditLocalVideoSource[] a(int paramInt)
+  public boolean accept(File paramFile, String paramString)
   {
-    return new EditLocalVideoSource[paramInt];
+    if (!paramString.endsWith(".trace")) {}
+    long l;
+    do
+    {
+      File localFile;
+      do
+      {
+        return false;
+        localFile = new File(paramFile + File.separator + paramString);
+      } while ((localFile == null) || (!localFile.exists()));
+      l = localFile.lastModified();
+      if (QLog.isDevelopLevel())
+      {
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
+      }
+    } while ((l < this.a) || (l > this.b));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
+    }
+    return true;
   }
 }
 

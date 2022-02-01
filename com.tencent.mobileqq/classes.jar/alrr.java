@@ -1,524 +1,276 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.crmqq.structmsg.StructMsg.GetCRMMenuResponse;
-import com.tencent.crmqq.structmsg.StructMsg.GetCrmQQMenuRequest;
-import com.tencent.crmqq.structmsg.StructMsg.RetInfo;
-import com.tencent.crmqq.structmsg.StructMsg.SendMenuEventRequest;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.PublicAccountHandler;
+import android.annotation.SuppressLint;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.mp.mobileqq_mp.CRMSendLBSInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetUserEqqListRequest;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetUserEqqListResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagRequset;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
-import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import java.util.Set;
 
 public class alrr
-  extends alpd
+  extends ambr
 {
-  public static final Long a = Long.valueOf(2202087152L);
+  private LinkedHashMap<String, List<DiscussionMemberInfo>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
   
-  public alrr(QQAppInterface paramQQAppInterface)
+  public alrr(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame)
   {
-    super(paramQQAppInterface);
+    super(paramDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, paramDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, true);
+    b();
   }
   
-  private long a()
+  @SuppressLint({"DefaultLocale"})
+  private void b()
   {
-    return this.app.getApp().getSharedPreferences(this.app.getAccount(), 0).getLong("eqq_data_seq2", 0L);
-  }
-  
-  private void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "getEqqList: start");
-    }
-    mobileqq_mp.GetUserEqqListRequest localGetUserEqqListRequest = new mobileqq_mp.GetUserEqqListRequest();
-    localGetUserEqqListRequest.version.set(1);
-    localGetUserEqqListRequest.begin.set(bdeu.a(paramLong1));
-    localGetUserEqqListRequest.limit.set(bdeu.a(paramLong2));
-    localGetUserEqqListRequest.seqno.set(bdeu.a(paramLong3));
-    ToServiceMsg localToServiceMsg = createToServiceMsg("EqqAccountSvc.get_eqq_list");
-    localToServiceMsg.putWupBuffer(localGetUserEqqListRequest.toByteArray());
-    localToServiceMsg.extraData.putLong("begin", paramLong1);
-    localToServiceMsg.extraData.putLong("limit", paramLong2);
-    localToServiceMsg.extraData.putLong("seqno", paramLong3);
-    localToServiceMsg.extraData.putLong("time", paramLong4);
-    sendPbReq(localToServiceMsg);
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("crmtest", 4, "handleGetList, ts=" + System.currentTimeMillis());
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handleGetList begin.");
-    }
-    alzt localalzt = new alzt();
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()) || (paramObject == null))
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    bjft localbjft = (bjft)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.getManager(165);
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject1 = null;
+    Object localObject3;
+    label163:
+    int i;
+    while (localIterator.hasNext())
     {
-      localalzt.jdField_a_of_type_Int = -1;
-      localalzt.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handleGetList error");
-      }
-      return;
-    }
-    int i = paramFromServiceMsg.getResultCode();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handleGetList result=" + i);
-    }
-    if (i != 1000)
-    {
-      localalzt.jdField_a_of_type_Int = -1;
-      localalzt.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    long l1 = paramToServiceMsg.extraData.getLong("begin");
-    paramToServiceMsg.extraData.getLong("seqno");
-    long l2 = paramToServiceMsg.extraData.getLong("time");
-    paramToServiceMsg = new mobileqq_mp.GetUserEqqListResponse();
-    boolean bool;
-    for (;;)
-    {
-      try
-      {
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if ((!paramToServiceMsg.ret_info.has()) || (!((mobileqq_mp.RetInfo)paramToServiceMsg.ret_info.get()).ret_code.has())) {
-          continue;
-        }
-        i = ((mobileqq_mp.RetInfo)paramToServiceMsg.ret_info.get()).ret_code.get();
-        localalzt.jdField_a_of_type_Int = i;
-        if (i == 0) {
-          continue;
-        }
-        localalzt.jdField_a_of_type_Boolean = true;
-        bool = false;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        long l3;
-        RecentUser localRecentUser;
-        localalzt.jdField_a_of_type_Int = -1;
-        localalzt.jdField_a_of_type_Boolean = true;
-        paramToServiceMsg.printStackTrace();
-        bool = false;
-        continue;
-        continue;
-        i = 0;
-        continue;
-        bool = false;
-        continue;
-      }
-      notifyUI(100, bool, localalzt);
-      ((PublicAccountHandler)this.app.a(11)).notifyUI(100, true, localalzt);
-      return;
-      i = 0;
-      continue;
-      if (paramToServiceMsg.seqno.has())
-      {
-        i = paramToServiceMsg.seqno.get();
-        l3 = bdeu.a(i);
-        paramFromServiceMsg = PublicAccountInfo.createPublicAccountInfoListFromEqq(paramToServiceMsg.accountInfo.get(), l2);
-        localalzt.jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
-        if ((!paramToServiceMsg.is_over.has()) || (!paramToServiceMsg.is_over.get())) {
-          continue;
-        }
-        bool = true;
-        localalzt.jdField_a_of_type_Boolean = bool;
-        paramObject = ((alzl)this.app.getManager(56)).a(paramFromServiceMsg, l2);
-        i = 0;
-        paramFromServiceMsg = this.app.a().a();
-        paramObject = paramObject.iterator();
-        if (paramObject.hasNext())
+      localObject3 = (DiscussionMemberInfo)localIterator.next();
+      if ((localObject3 == null) || (!localbjft.f(((DiscussionMemberInfo)localObject3).memberUin))) {
+        if ((localObject3 != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.u) && (str != null) && (str.equals(((DiscussionMemberInfo)localObject3).memberUin)))
         {
-          localRecentUser = paramFromServiceMsg.b(((PublicAccountInfo)paramObject.next()).getUin(), 0);
-          if (localRecentUser != null)
-          {
-            paramFromServiceMsg.b(localRecentUser);
-            i = 1;
-          }
+          localObject1 = localObject3;
         }
         else
         {
-          paramFromServiceMsg = this.app.getHandler(Conversation.class);
-          if ((i != 0) && (paramFromServiceMsg != null)) {
-            paramFromServiceMsg.sendEmptyMessage(1009);
-          }
-          if (!localalzt.jdField_a_of_type_Boolean) {
-            if (!paramToServiceMsg.next_pos.has()) {
-              break label602;
+          if ((((DiscussionMemberInfo)localObject3).displayedNamePinyinFirst == null) || (((DiscussionMemberInfo)localObject3).displayedNamePinyinFirst.length() == 0))
+          {
+            localObject2 = "#";
+            i = ((String)localObject2).charAt(0);
+            if (((65 > i) || (i > 90)) && ((97 > i) || (i > 122))) {
+              break label268;
             }
+          }
+          label268:
+          for (localObject2 = ((String)localObject2).toUpperCase();; localObject2 = "#")
+          {
+            if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject2) == null) {
+              this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject2, new ArrayList());
+            }
+            ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject2)).add(localObject3);
+            break;
+            localObject2 = ((DiscussionMemberInfo)localObject3).displayedNamePinyinFirst.substring(0, 1);
+            break label163;
           }
         }
       }
     }
-    label596:
-    label602:
-    for (l1 = paramToServiceMsg.next_pos.get();; l1 += 20L)
+    Object localObject2 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.u) && (localObject1 != null))
     {
-      a(l1, 20L, 0L, l2);
-      break label596;
-      b(l3);
-      bool = true;
-      break;
+      localObject3 = new ArrayList();
+      ((ArrayList)localObject3).add(localObject1);
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(anni.a(2131702148), localObject3);
     }
-  }
-  
-  private void b(long paramLong)
-  {
-    SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences(this.app.getAccount(), 0).edit();
-    localEditor.putLong("eqq_data_seq2", paramLong);
-    localEditor.commit();
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handlerGetMenu,begin.");
+    for (char c = 'A'; c <= 'Z'; c = (char)(c + '\001')) {
+      if (((LinkedHashMap)localObject2).get(String.valueOf(c)) != null) {
+        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c), ((LinkedHashMap)localObject2).get(String.valueOf(c)));
+      }
     }
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    if (((LinkedHashMap)localObject2).get("#") != null) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", ((LinkedHashMap)localObject2).get("#"));
+    }
+    ((LinkedHashMap)localObject2).clear();
+    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_ArrayOfInt.length];
+    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {}
     for (;;)
     {
       return;
-      try
+      this.jdField_a_of_type_ArrayOfInt[0] = 0;
+      i = 1;
+      while (i < this.jdField_a_of_type_ArrayOfInt.length)
       {
-        int i = paramFromServiceMsg.getResultCode();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handlerGetMenu. result=" + i);
-        }
-        if (i != 1000) {
-          continue;
-        }
-        i = -1;
-        paramToServiceMsg = new StructMsg.GetCRMMenuResponse();
-        try
+        localObject2 = this.jdField_a_of_type_ArrayOfInt;
+        int j = localObject2[i];
+        int k = this.jdField_a_of_type_ArrayOfInt[(i - 1)];
+        localObject2[i] = (((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((Iterator)localObject1).next())).size() + k + 1 + j);
+        i += 1;
+      }
+      localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+      i = 0;
+      while (((Iterator)localObject1).hasNext())
+      {
+        this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)((Iterator)localObject1).next());
+        i += 1;
+      }
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0) {
+      return 2131559317;
+    }
+    return 0;
+  }
+  
+  public int a(String paramString)
+  {
+    int i;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    {
+      i = 0;
+      if (i >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
+        break label53;
+      }
+      if (!this.jdField_a_of_type_ArrayOfJavaLangString[i].equals(paramString)) {}
+    }
+    for (;;)
+    {
+      if (i >= 0)
+      {
+        return this.jdField_a_of_type_ArrayOfInt[i];
+        i += 1;
+        break;
+      }
+      return -1;
+      return -1;
+      label53:
+      i = -1;
+    }
+  }
+  
+  public void a()
+  {
+    b();
+    super.notifyDataSetChanged();
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt) >= 0;
+  }
+  
+  public int b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localIterator.next())).size() + i) {}
+    return i;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {
+      return 0;
+    }
+    int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_ArrayOfInt.length - 1)];
+    return ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_ArrayOfJavaLangString.length - 1)])).size() + i + 1;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+    if (i >= 0) {
+      return null;
+    }
+    i = -(i + 1) - 1;
+    return (DiscussionMemberInfo)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
+    alrs localalrs;
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562867, paramViewGroup, false);
+      localalrs = new alrs(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame, null);
+      paramView.setTag(localalrs);
+      localalrs.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376678));
+      localalrs.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379723));
+      localalrs.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364466));
+      localalrs.c = ((ImageView)paramView.findViewById(2131368138));
+      localalrs.b = ((TextView)paramView.findViewById(2131371539));
+    }
+    for (;;)
+    {
+      localalrs = (alrs)paramView.getTag();
+      Object localObject;
+      if (i < 0)
+      {
+        i = -(i + 1) - 1;
+        localObject = (DiscussionMemberInfo)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b(((DiscussionMemberInfo)localObject).memberUin))
         {
-          paramToServiceMsg.mergeFrom((byte[])paramObject);
-          j = i;
-          if (paramToServiceMsg.ret_info.has())
-          {
-            paramFromServiceMsg = (StructMsg.RetInfo)paramToServiceMsg.ret_info.get();
-            if (paramFromServiceMsg.ret_code.has()) {
-              i = paramFromServiceMsg.ret_code.get();
-            }
-            j = i;
-            if (i != 0)
-            {
-              j = i;
-              if (paramFromServiceMsg.err_info.has())
-              {
-                paramFromServiceMsg.err_info.get();
-                if (i != 0) {
-                  continue;
-                }
-                paramFromServiceMsg = String.valueOf(paramToServiceMsg.uin.get());
-                i = paramToServiceMsg.seqno.get();
-                aqau.a(this.app).a(this.app, paramFromServiceMsg, i, paramToServiceMsg);
-                notifyUI(1, true, paramFromServiceMsg);
-                return;
-              }
-            }
+          localalrs.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+          localalrs.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+          localalrs.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          localalrs.c.setImageBitmap(a(((DiscussionMemberInfo)localObject).memberUin));
+          localalrs.b.setText(bglf.a((DiscussionMemberInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+          localalrs.jdField_a_of_type_JavaLangString = ((DiscussionMemberInfo)localObject).memberUin;
+          if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.contains(((DiscussionMemberInfo)localObject).memberUin))) {
+            break label418;
           }
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          for (;;)
+          localalrs.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
+          label316:
+          if ((AppSetting.c) && (localalrs.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()))
           {
-            int j;
-            paramFromServiceMsg.printStackTrace();
-            continue;
-            i = j;
+            if (!localalrs.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+              break label430;
+            }
+            paramView.setContentDescription(bglf.a((DiscussionMemberInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) + anni.a(2131702154));
           }
-        }
-        return;
-      }
-      catch (Exception paramToServiceMsg) {}
-    }
-  }
-  
-  /* Error */
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    // Byte code:
-    //   0: invokestatic 59	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +12 -> 15
-    //   6: ldc 61
-    //   8: iconst_2
-    //   9: ldc_w 387
-    //   12: invokestatic 67	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   15: aload_1
-    //   16: ifnull +7 -> 23
-    //   19: aload_2
-    //   20: ifnonnull +4 -> 24
-    //   23: return
-    //   24: aload_2
-    //   25: invokevirtual 180	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   28: sipush 1000
-    //   31: if_icmpne -8 -> 23
-    //   34: iconst_m1
-    //   35: istore 4
-    //   37: new 389	com/tencent/crmqq/structmsg/StructMsg$SendMenuEventResponse
-    //   40: dup
-    //   41: invokespecial 390	com/tencent/crmqq/structmsg/StructMsg$SendMenuEventResponse:<init>	()V
-    //   44: astore_1
-    //   45: aload_1
-    //   46: aload_3
-    //   47: checkcast 193	[B
-    //   50: checkcast 193	[B
-    //   53: invokevirtual 391	com/tencent/crmqq/structmsg/StructMsg$SendMenuEventResponse:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   56: pop
-    //   57: iload 4
-    //   59: istore 5
-    //   61: aload_1
-    //   62: getfield 392	com/tencent/crmqq/structmsg/StructMsg$SendMenuEventResponse:ret_info	Lcom/tencent/crmqq/structmsg/StructMsg$RetInfo;
-    //   65: invokevirtual 351	com/tencent/crmqq/structmsg/StructMsg$RetInfo:has	()Z
-    //   68: ifeq +76 -> 144
-    //   71: aload_1
-    //   72: getfield 392	com/tencent/crmqq/structmsg/StructMsg$SendMenuEventResponse:ret_info	Lcom/tencent/crmqq/structmsg/StructMsg$RetInfo;
-    //   75: invokevirtual 352	com/tencent/crmqq/structmsg/StructMsg$RetInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   78: checkcast 350	com/tencent/crmqq/structmsg/StructMsg$RetInfo
-    //   81: astore_1
-    //   82: aload_1
-    //   83: getfield 353	com/tencent/crmqq/structmsg/StructMsg$RetInfo:ret_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   86: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   89: ifeq +12 -> 101
-    //   92: aload_1
-    //   93: getfield 353	com/tencent/crmqq/structmsg/StructMsg$RetInfo:ret_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   96: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   99: istore 4
-    //   101: iload 4
-    //   103: istore 5
-    //   105: iload 4
-    //   107: ifeq +37 -> 144
-    //   110: iload 4
-    //   112: istore 5
-    //   114: aload_1
-    //   115: getfield 357	com/tencent/crmqq/structmsg/StructMsg$RetInfo:err_info	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   118: invokevirtual 360	com/tencent/mobileqq/pb/PBStringField:has	()Z
-    //   121: ifeq +23 -> 144
-    //   124: aload_1
-    //   125: getfield 357	com/tencent/crmqq/structmsg/StructMsg$RetInfo:err_info	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   128: invokevirtual 362	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   131: pop
-    //   132: iload 4
-    //   134: ifne -111 -> 23
-    //   137: return
-    //   138: astore_1
-    //   139: return
-    //   140: astore_2
-    //   141: goto -84 -> 57
-    //   144: iload 5
-    //   146: istore 4
-    //   148: goto -16 -> 132
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	151	0	this	alrr
-    //   0	151	1	paramToServiceMsg	ToServiceMsg
-    //   0	151	2	paramFromServiceMsg	FromServiceMsg
-    //   0	151	3	paramObject	Object
-    //   35	112	4	i	int
-    //   59	86	5	j	int
-    // Exception table:
-    //   from	to	target	type
-    //   24	34	138	java/lang/Exception
-    //   37	45	138	java/lang/Exception
-    //   61	82	138	java/lang/Exception
-    //   82	101	138	java/lang/Exception
-    //   114	132	138	java/lang/Exception
-    //   45	57	140	java/lang/Exception
-  }
-  
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handelCrmSendLBSInfo(): BEGIN");
-      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
-        paramToServiceMsg = new mobileqq_mp.CRMSendLBSInfoResponse();
-      }
-    }
-    else
-    {
-      try
-      {
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if ((paramToServiceMsg.ret_info.has()) && (((mobileqq_mp.RetInfo)paramToServiceMsg.ret_info.get()).ret_code.has()))
-        {
-          i = ((mobileqq_mp.RetInfo)paramToServiceMsg.ret_info.get()).ret_code.get();
-          QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handelCrmSendLBSInfo(): errCode=" + i);
-          return;
+          label382:
+          paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame);
         }
       }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      for (;;)
       {
-        for (;;)
-        {
-          paramFromServiceMsg.printStackTrace();
-          continue;
-          int i = -1;
-        }
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localalrs.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+        break;
+        label418:
+        localalrs.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
+        break label316;
+        label430:
+        paramView.setContentDescription(bglf.a((DiscussionMemberInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) + anni.a(2131702137));
+        break label382;
+        localalrs.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        localalrs.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        localObject = String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
+        localalrs.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+        localalrs.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberDiscussionMemberListInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131691635), new Object[] { ((String)localObject).toLowerCase() }));
       }
     }
-    QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handelCrmSendLBSInfo(): FAILED");
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("crmtest", 4, "getEqqList, ts=" + System.currentTimeMillis());
-    }
-    a(0L, 20L, a(), paramLong);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "getMenu: start");
-    }
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      paramString = new StructMsg.GetCrmQQMenuRequest();
-      paramString.seqno.set(0);
-      paramString.uin.set(l);
-      ToServiceMsg localToServiceMsg = createToServiceMsg("mq_crm.get_menu");
-      localToServiceMsg.putWupBuffer(paramString.toByteArray());
-      sendPbReq(localToServiceMsg);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "getMenu: arg uin error.");
-      }
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, BusinessObserver paramBusinessObserver)
-  {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      paramString = new NewIntent(this.app.getApplication().getApplicationContext(), nrz.class);
-      paramString.putExtra("cmd", "set_function_flag");
-      mobileqq_mp.SetFunctionFlagRequset localSetFunctionFlagRequset = new mobileqq_mp.SetFunctionFlagRequset();
-      localSetFunctionFlagRequset.luin.set(l);
-      localSetFunctionFlagRequset.type.set(paramInt1);
-      localSetFunctionFlagRequset.value.set(paramInt2);
-      localSetFunctionFlagRequset.account_type.set(paramInt3);
-      localSetFunctionFlagRequset.version.set(1);
-      paramString.putExtra("data", localSetFunctionFlagRequset.toByteArray());
-      paramString.setObserver(paramBusinessObserver);
-      this.app.startServlet(paramString);
-      return;
-    }
-    catch (Exception paramString) {}
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "sendMenuEvent: start");
-    }
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "sendMenuEvent: arg error.");
-      }
-      return;
-    }
-    try
-    {
-      long l = Long.valueOf(paramString1).longValue();
-      paramString1 = new StructMsg.SendMenuEventRequest();
-      paramString1.uin.set(l);
-      paramString1.key.set(paramString2);
-      paramString1.type.set(paramInt);
-      paramString1.is_need_lbs.set(paramBoolean);
-      if (paramBoolean)
-      {
-        paramString1.latitude.set(paramDouble1);
-        paramString1.longitude.set(paramDouble2);
-      }
-      paramString2 = createToServiceMsg("mq_crm.send_key");
-      paramString2.putWupBuffer(paramString1.toByteArray());
-      sendPbReq(paramString2);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "sendMenuEvent: arg uin error.");
-      }
-      paramString1.printStackTrace();
-    }
-  }
-  
-  protected Class<? extends alpg> observerClass()
-  {
-    return alrs.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if ((str == null) || (str.length() == 0)) {}
-    do
-    {
-      return;
-      if ("mq_crm.get_menu".equalsIgnoreCase(str))
-      {
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if ("mq_crm.send_key".equalsIgnoreCase(str))
-      {
-        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if ("EqqAccountSvc.get_eqq_list".equalsIgnoreCase(str))
-      {
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if ("CrmSvcEx.ReportLbs".equalsIgnoreCase(str))
-      {
-        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "cmdfilter error=" + str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alrr
  * JD-Core Version:    0.7.0.1
  */

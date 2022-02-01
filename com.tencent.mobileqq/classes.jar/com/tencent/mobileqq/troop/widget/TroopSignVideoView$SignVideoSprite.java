@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troop.widget;
 
 import android.content.Context;
 import android.opengl.GLES20;
-import bafh;
+import bdgl;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
 import java.io.File;
@@ -27,7 +27,7 @@ class TroopSignVideoView$SignVideoSprite
   
   public String b()
   {
-    return bafh.a(this.this$0.getContext(), "troop" + File.separator + "shaders" + File.separator + "FragmentShaderVideoForTroopSign.glsl");
+    return bdgl.a(this.this$0.getContext(), "troop" + File.separator + "shaders" + File.separator + "FragmentShaderVideoForTroopSign.glsl");
   }
   
   public void b(int paramInt1, int paramInt2)
@@ -75,7 +75,7 @@ class TroopSignVideoView$SignVideoSprite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopSignVideoView.SignVideoSprite
  * JD-Core Version:    0.7.0.1
  */

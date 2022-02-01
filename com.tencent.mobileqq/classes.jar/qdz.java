@@ -1,111 +1,77 @@
-import android.os.Looper;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONObject;
+import tencent.im.oidb.articlesummary.articlesummary.UrlJumpInfo;
+import tencent.im.oidb.articlesummary.articlesummary.WeishiUGInfo;
 
-public class qdz
-  extends oxe
+class qdz
+  implements ViewBase.OnClickListener
 {
-  public qdz(ComponentHeaderPolymeric paramComponentHeaderPolymeric) {}
+  qdz(qdy paramqdy, pxk parampxk, Container paramContainer) {}
   
-  public void a(long paramLong, boolean paramBoolean)
+  public void onClick(ViewBase paramViewBase)
   {
-    int i;
-    if (Looper.getMainLooper() == Looper.myLooper())
+    for (;;)
     {
-      i = 1;
-      if (i != 0) {
-        break label32;
-      }
-      QLog.e("ComponentHeaderPolymeric", 2, "Please call this method in main thread!!!");
-    }
-    label32:
-    ArticleInfo localArticleInfo;
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComponentHeaderPolymeric", 2, "onUpdateAfterSmallVideoTopicFollow topicId = " + paramLong + " isFollow = " + paramBoolean);
-      }
-      localArticleInfo = (ArticleInfo)this.a.a.a.a().mGroupSubArticleList.get(0);
-    } while ((localArticleInfo == null) || (localArticleInfo.mPolymericInfo == null) || (localArticleInfo.mPolymericInfo.f != paramLong));
-    ComponentHeaderPolymeric.a(this.a).setVisibility(0);
-    if (paramBoolean)
-    {
-      ComponentHeaderPolymeric.a(this.a, true);
-      if ((localArticleInfo.mTopicRecommendFeedsInfo != null) && (localArticleInfo.mTopicRecommendFeedsInfo.a != null)) {
-        ((qno)localArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).c = 1;
-      }
-      if (localArticleInfo.mPolymericInfo != null)
+      try
       {
-        localArticleInfo.mPolymericInfo.e = 2;
+        ArticleInfo localArticleInfo = this.jdField_a_of_type_Pxk.a();
+        pfr.a(localArticleInfo, localArticleInfo.mProteusTemplateBean, paramViewBase);
+        int j = 0;
+        if (bgnw.a(BaseApplicationImpl.getContext(), "com.tencent.reading"))
+        {
+          i = j;
+          if (this.jdField_a_of_type_Pxk.a().weishiUGInfo.msg_url_jump_info.uint32_jump_type.get() == 2)
+          {
+            paramViewBase = qdy.a(this.jdField_a_of_type_Qdy, this.jdField_a_of_type_Pxk.a().weishiUGInfo.msg_url_jump_info.bytes_jump_schema);
+            i = j;
+            if (!TextUtils.isEmpty(paramViewBase))
+            {
+              qdy.a(this.jdField_a_of_type_Qdy, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+              break label315;
+            }
+          }
+          if (i == 0)
+          {
+            paramViewBase = new JSONObject(localArticleInfo.proteusItemsData).getString("kandian_jump_url");
+            if (!TextUtils.isEmpty(paramViewBase)) {
+              bbup.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+            }
+          }
+          ogc.a(qdy.a(this.jdField_a_of_type_Qdy, this.jdField_a_of_type_Pxk.a().weishiUGInfo.bytes_report_base_url) + qdy.a(this.jdField_a_of_type_Qdy, this.jdField_a_of_type_Pxk.a().weishiUGInfo.bytes_click_report_tail));
+        }
+        else
+        {
+          i = j;
+          if (this.jdField_a_of_type_Pxk.a().weishiUGInfo.msg_url_jump_info.uint32_jump_type.get() != 1) {
+            continue;
+          }
+          paramViewBase = qdy.a(this.jdField_a_of_type_Qdy, this.jdField_a_of_type_Pxk.a().weishiUGInfo.msg_url_jump_info.bytes_jump_url);
+          i = j;
+          if (TextUtils.isEmpty(paramViewBase)) {
+            continue;
+          }
+          bbup.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+        }
+      }
+      catch (Exception paramViewBase)
+      {
         return;
       }
-      QLog.e("ComponentHeaderPolymeric", 2, "articleInfo mPolymericInfo == null articleInfo.mArticleID = " + localArticleInfo.mArticleID);
-      return;
+      label315:
+      int i = 1;
     }
-    ComponentHeaderPolymeric.a(this.a, false);
-    if ((localArticleInfo.mTopicRecommendFeedsInfo != null) && (localArticleInfo.mTopicRecommendFeedsInfo.a != null)) {
-      ((qno)localArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).c = 0;
-    }
-    if (localArticleInfo.mPolymericInfo != null)
-    {
-      localArticleInfo.mPolymericInfo.e = 1;
-      return;
-    }
-    QLog.e("ComponentHeaderPolymeric", 2, "articleInfo mPolymericInfo == null articleInfo.mArticleID = " + localArticleInfo.mArticleID);
-  }
-  
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    int i;
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      i = 1;
-      if (i != 0) {
-        break label32;
-      }
-      QLog.e("ComponentHeaderPolymeric", 2, "Please call this method in main thread!!!");
-    }
-    label32:
-    ArticleInfo localArticleInfo;
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComponentHeaderPolymeric", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
-      }
-      localArticleInfo = (ArticleInfo)this.a.a.a.a().mGroupSubArticleList.get(0);
-    } while ((localArticleInfo == null) || (localArticleInfo.mPolymericInfo == null) || (localArticleInfo.mPolymericInfo.b != paramLong));
-    SocializeFeedsInfo localSocializeFeedsInfo = localArticleInfo.mSocialFeedInfo;
-    ComponentHeaderPolymeric.a(this.a).setVisibility(0);
-    if (paramBoolean)
-    {
-      ComponentHeaderPolymeric.a(this.a, true);
-      if (localSocializeFeedsInfo != null) {
-        localSocializeFeedsInfo.h = 2;
-      }
-      localArticleInfo.mPolymericInfo.e = 2;
-      return;
-    }
-    ComponentHeaderPolymeric.a(this.a, false);
-    if (localSocializeFeedsInfo != null) {
-      localSocializeFeedsInfo.h = 1;
-    }
-    localArticleInfo.mPolymericInfo.e = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qdz
  * JD-Core Version:    0.7.0.1
  */

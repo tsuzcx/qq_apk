@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.soload.config;
 
-import ajeu;
+import akww;
 
 class SoConfig$2
   implements Runnable
@@ -11,14 +11,14 @@ class SoConfig$2
   {
     synchronized ()
     {
-      ajeu.a(this.this$0, SoConfig.access$100());
+      akww.a(this.this$0, SoConfig.access$100());
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.soload.config.SoConfig.2
  * JD-Core Version:    0.7.0.1
  */

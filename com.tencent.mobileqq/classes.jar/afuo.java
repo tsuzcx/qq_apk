@@ -1,36 +1,68 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.data.ExtendFriendUserInfo;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
-import com.tencent.mobileqq.limitchat.TopicTextView;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class afuo
-  extends aepm
+  extends QIPCModule
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ETTextView jdField_a_of_type_ComEtrumpMixlayoutETTextView;
-  public ExtendFriendUserInfo a;
-  ExtendFriendVoiceView jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView;
-  TopicTextView jdField_a_of_type_ComTencentMobileqqLimitchatTopicTextView;
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  String jdField_c_of_type_JavaLangString;
-  View jdField_d_of_type_AndroidViewView;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
-  TextView e;
+  private List<afun> a = new ArrayList();
+  
+  private afuo(String paramString)
+  {
+    super(paramString);
+  }
+  
+  public static afuo a()
+  {
+    return afuq.a();
+  }
+  
+  public static void a()
+  {
+    try
+    {
+      QIPCClientHelper.getInstance().register(a());
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOUnreadQIPCClient", 2, "register AIOUnreadQIPCClient");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("AIOUnreadQIPCClient", 1, "register ipc module error.", localException);
+    }
+  }
+  
+  private void a(int paramInt1, String paramString, int paramInt2)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((afun)localIterator.next()).a(paramInt1, paramString, paramInt2);
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOUnreadQIPCClient", 2, "onCall main server action=" + paramString);
+    }
+    if (("action_sync_single_con_unread_count".equals(paramString)) && (paramBundle != null))
+    {
+      paramString = paramBundle.getString("param_proc_uin");
+      paramInt = paramBundle.getInt("param_proc_uin_type");
+      int i = paramBundle.getInt("param_proc_single_con_badge_count");
+      a(paramInt, paramString, i);
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOUnreadQIPCClient", 2, "AIOUnreadQIPCClient, uin = " + paramString + "; type= " + paramInt + "; num= " + i);
+      }
+    }
+    return null;
+  }
 }
 
 

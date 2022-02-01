@@ -1,37 +1,64 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqShareVideoCollectionList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspShareVideoCollectionList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class wzj
-  extends QQUIEventReceiver<wzb, xfd>
+public class wzj
+  extends wlf<xaz>
 {
-  public wzj(@NonNull wzb paramwzb)
+  public String a = "";
+  public long b;
+  public String b;
+  public int c;
+  public int d;
+  
+  public String a()
   {
-    super(paramwzb);
+    return wjz.a("StorySvc.get_share_group_collection_list");
   }
   
-  public void a(@NonNull wzb paramwzb, @NonNull xfd paramxfd)
+  public wla a(byte[] paramArrayOfByte)
   {
-    wzl localwzl = paramwzb.a;
-    if (localwzl != null) {
-      localwzl.a(paramwzb.a());
-    }
-    for (;;)
+    qqstory_service.RspShareVideoCollectionList localRspShareVideoCollectionList = new qqstory_service.RspShareVideoCollectionList();
+    try
     {
-      wxj.b("edit_video", "face_list_success", 0, paramxfd.a.errorCode, new String[0]);
-      return;
-      wxe.b(this.TAG, "DoodleEmojiListEventReceiver adapter is null");
+      localRspShareVideoCollectionList.mergeFrom(paramArrayOfByte);
+      return new xaz(this.jdField_b_of_type_JavaLangString, localRspShareVideoCollectionList);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.d("Q.qqstory:GetShareGroupListRequest", "" + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public Class acceptEventClass()
+  protected byte[] a()
   {
-    return xfd.class;
+    qqstory_service.ReqShareVideoCollectionList localReqShareVideoCollectionList = new qqstory_service.ReqShareVideoCollectionList();
+    if (!TextUtils.isEmpty(this.a)) {
+      localReqShareVideoCollectionList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localReqShareVideoCollectionList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    localReqShareVideoCollectionList.collection_count.set(this.c);
+    localReqShareVideoCollectionList.collection_video_count.set(this.d);
+    localReqShareVideoCollectionList.seqno.set(this.jdField_b_of_type_Long);
+    return localReqShareVideoCollectionList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetShareGroupListRequest{startCookie='" + this.a + '\'' + ", collectionCount=" + this.c + ", collectionVideoCount=" + this.d + ", seqno=" + this.jdField_b_of_type_Long + ", unionId='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wzj
  * JD-Core Version:    0.7.0.1
  */

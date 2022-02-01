@@ -11,7 +11,7 @@ public class InternationMsg
     int i = 0;
     while (i < a.length)
     {
-      if ((paramMSG_TYPE == a[i].b) && (t.u == a[i].a)) {
+      if ((paramMSG_TYPE == a[i].b) && (t.v == a[i].a)) {
         return a[i].c;
       }
       i += 1;

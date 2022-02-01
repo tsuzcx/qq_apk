@@ -1,86 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
+import cooperation.qzone.QzoneIPCModule;
 import org.json.JSONObject;
 
 public class bltx
-  extends BroadcastReceiver
+  implements MiniAppPrePullManager.IPrePullListener
 {
-  public bltx(QIMMusicConfigManager paramQIMMusicConfigManager) {}
+  public bltx(QzoneIPCModule paramQzoneIPCModule) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
-    {
-      paramContext = paramIntent.getStringExtra("data");
-      paramIntent = paramIntent.getStringExtra("event");
-      if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("kTribeSelectMusic"))) {
-        break label43;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label43:
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMMusicConfigManager", 2, "onReceive:" + paramContext);
-      }
-      try
-      {
-        localJSONObject = new JSONObject(paramContext);
-        int i = localJSONObject.optInt("id");
-        paramContext = this.a.a(i);
-      }
-      catch (JSONException paramIntent)
-      {
-        for (;;)
-        {
-          for (;;)
-          {
-            try
-            {
-              boolean bool = localJSONObject.optBoolean("is_from_story", false);
-              if (paramContext != null) {
-                continue;
-              }
-              paramIntent = QIMMusicConfigManager.a(this.a, localJSONObject, bool);
-              paramContext = paramIntent;
-            }
-            catch (JSONException paramIntent)
-            {
-              JSONObject localJSONObject;
-              continue;
-              continue;
-            }
-            try
-            {
-              paramContext.mSongMid = localJSONObject.optString("mid");
-              if (QIMMusicConfigManager.a(this.a) == null) {
-                break;
-              }
-              paramIntent = QIMMusicConfigManager.a(this.a).iterator();
-              if (!paramIntent.hasNext()) {
-                break;
-              }
-              ((blty)paramIntent.next()).a(paramContext);
-              continue;
-              paramIntent = paramIntent;
-              paramContext = null;
-            }
-            catch (JSONException paramIntent) {}
-          }
-          if (QLog.isColorLevel()) {
-            QLog.e("QIMMusicConfigManager", 2, QLog.getStackTraceString(paramIntent));
-          }
-        }
-      }
-    }
+    QLog.d("QzoneIPCModule", 4, String.format("after preload For QQ MINI Program %b", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
 }
 

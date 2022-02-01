@@ -1,28 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.util.Pair;
-import cooperation.qqreader.net.BusinessTask;
+import java.util.Arrays;
 
 public final class bjcd
 {
-  public static final Pair<Integer, Integer> a = new Pair(Integer.valueOf(1154), Integer.valueOf(1));
-  public static final Pair<Integer, Integer> b = new Pair(Integer.valueOf(1529), Integer.valueOf(2));
-  public static final Pair<Integer, Integer> c = new Pair(Integer.valueOf(1201), Integer.valueOf(1));
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bjan parambjan)
+  public String toString()
   {
-    a(paramPair, parambjan, false);
-  }
-  
-  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bjan parambjan, boolean paramBoolean)
-  {
-    paramPair = new BusinessTask("ZzConfigDataTask", paramPair);
-    paramPair.a(parambjan, paramBoolean);
-    paramPair.a();
+    return "MultiParams{mRelationType=" + this.jdField_a_of_type_Int + ", mMultiAVType=" + this.b + ", mMultiAVSubType=" + this.c + ", mRoomId=" + this.d + ", mUin=" + this.jdField_a_of_type_Long + ", mOpenId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mSourceId=" + this.e + ", mSig=" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte) + ", mSvrRecogFlag=" + this.f + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjcd
  * JD-Core Version:    0.7.0.1
  */

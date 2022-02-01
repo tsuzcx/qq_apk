@@ -1,61 +1,49 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.ArrayList;
+import java.io.FileInputStream;
 
-class ands
-  implements baug
+final class ands
+  implements amxk
 {
-  ands(andr paramandr, andv paramandv, andu paramandu) {}
+  ands(String paramString, String[] paramArrayOfString, andp paramandp, int paramInt) {}
   
-  public void onResp(bavf parambavf)
-  {
-    if (parambavf.jdField_a_of_type_Int == 3)
-    {
-      QLog.i("AREngine_ARResourceDownload", 1, "Download init. url = " + ((baub)parambavf.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString);
-      return;
-    }
-    synchronized (andr.a(this.jdField_a_of_type_Andr))
-    {
-      int i;
-      if (andr.a(this.jdField_a_of_type_Andr) != null)
-      {
-        i = 0;
-        if (i < andr.a(this.jdField_a_of_type_Andr).size())
-        {
-          if (!((andv)andr.a(this.jdField_a_of_type_Andr).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Andv.jdField_a_of_type_JavaLangString)) {
-            break label268;
-          }
-          andr.a(this.jdField_a_of_type_Andr).remove(i);
-        }
-      }
-      if (parambavf.jdField_a_of_type_Int == 0)
-      {
-        ??? = new File(((baub)parambavf.jdField_a_of_type_Bave).c);
-        String str = awni.a(((File)???).getAbsolutePath());
-        if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_Andv.b))) && (this.jdField_a_of_type_Andv.jdField_a_of_type_Int != 1))
-        {
-          QLog.i("AREngine_ARResourceDownload", 1, "Download end. MD5 check error. url = " + ((baub)parambavf.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
-          this.jdField_a_of_type_Andu.a(false, this.jdField_a_of_type_Andv);
-          return;
-          label268:
-          i += 1;
-        }
-      }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Andu.a(bool, this.jdField_a_of_type_Andv);
-      return;
-    }
-  }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARResourceDownload", 2, "onUpdateProgeress. url = " + ((baub)parambave).jdField_a_of_type_JavaLangString + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
     }
-    this.jdField_a_of_type_Andu.a(paramLong1, paramLong2);
+    if (paramBoolean)
+    {
+      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
+      if (paramArrayOfInt.exists()) {
+        try
+        {
+          paramString = andq.a(this.jdField_a_of_type_ArrayOfJavaLangString);
+          if (andq.a(this.jdField_a_of_type_JavaLangString))
+          {
+            paramArrayOfInt = andq.a(paramArrayOfInt, paramString);
+            this.jdField_a_of_type_Andp.a(0, paramString, paramArrayOfInt);
+          }
+          while (QLog.isColorLevel())
+          {
+            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString + " id:" + this.jdField_a_of_type_Int });
+            return;
+            this.jdField_a_of_type_Andp.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
+          }
+          this.jdField_a_of_type_Andp.a(-1, null, null);
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
+          return;
+        }
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Andp.a(-1, null, null);
+    }
   }
 }
 

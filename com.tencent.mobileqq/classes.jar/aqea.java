@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aqea
-  implements aqeb
+class aqea
+  implements View.OnClickListener
 {
-  public aqea(ExtendFriendFragment paramExtendFriendFragment) {}
+  aqea(aqdz paramaqdz) {}
   
-  public void a()
-  {
-    ExtendFriendFragment.b(this.a);
-  }
+  public void onClick(View paramView) {}
 }
 
 

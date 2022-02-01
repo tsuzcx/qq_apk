@@ -1,80 +1,44 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import agyo;
-import agyv;
-import android.text.TextUtils;
-import awgf;
+import aijp;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 
 public class StickerRecManager$9
   implements Runnable
 {
-  public StickerRecManager$9(agyv paramagyv) {}
+  public StickerRecManager$9(aijp paramaijp, List paramList) {}
   
   public void run()
   {
-    int i = 0;
-    Object localObject = new File(agyo.a);
-    long l1 = 0L;
-    localObject = ((File)localObject).listFiles();
-    long l2 = l1;
-    if (localObject != null)
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      l2 = l1;
-      if (localObject.length > 0)
+      StickerRecCacheEntity localStickerRecCacheEntity1 = (StickerRecCacheEntity)localIterator.next();
+      StickerRecCacheEntity localStickerRecCacheEntity2 = (StickerRecCacheEntity)aijp.a(this.this$0).find(StickerRecCacheEntity.class, "md5=?", new String[] { localStickerRecCacheEntity1.md5 });
+      if (localStickerRecCacheEntity2 != null)
       {
-        int j = localObject.length;
-        for (;;)
-        {
-          l2 = l1;
-          if (i >= j) {
-            break;
-          }
-          l2 = localObject[i].length();
-          i += 1;
-          l1 = l2 + l1;
+        if (QLog.isColorLevel()) {
+          QLog.d("StickerRecManager", 2, "old exist: fileName=" + localStickerRecCacheEntity2.md5 + " lastTime=" + localStickerRecCacheEntity2.lastTime);
         }
+        localStickerRecCacheEntity2.lastTime = localStickerRecCacheEntity1.lastTime;
+        aijp.a(this.this$0).update(localStickerRecCacheEntity2);
       }
-    }
-    if (l2 < 104857600L) {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecManager", 2, "current cache length:" + l2 + ", not need delete cache");
-      }
-    }
-    for (;;)
-    {
-      return;
-      l1 = System.currentTimeMillis();
-      try
+      else
       {
-        localObject = new String[1];
-        localObject[0] = String.valueOf(l1 - 86400000L);
-        Iterator localIterator = agyv.a(this.this$0).a(StickerRecCacheEntity.class, StickerRecCacheEntity.class.getSimpleName(), false, "lastTime<?", (String[])localObject, "", "", "", "").iterator();
-        while (localIterator.hasNext())
-        {
-          StickerRecCacheEntity localStickerRecCacheEntity = (StickerRecCacheEntity)localIterator.next();
-          if (QLog.isColorLevel()) {
-            QLog.d("StickerRecManager", 2, new Object[] { "Overdue cache:", "fileName=" + localStickerRecCacheEntity.filePath + " md5=" + localStickerRecCacheEntity.md5 });
-          }
-          if (!TextUtils.isEmpty(localStickerRecCacheEntity.filePath)) {
-            new File(localStickerRecCacheEntity.filePath).delete();
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("StickerRecManager", 2, "old not exist: fileName=" + localStickerRecCacheEntity1.md5 + " lastTime=" + localStickerRecCacheEntity1.lastTime);
         }
-        if (!QLog.isColorLevel()) {}
+        aijp.a(this.this$0).persistOrReplace(localStickerRecCacheEntity1);
       }
-      catch (Exception localException) {}
     }
-    QLog.d("StickerRecManager", 2, "clearOverdueStickerCache error", localException);
-    return;
-    agyv.a(this.this$0).a(StickerRecCacheEntity.class.getSimpleName(), "lastTime<?", localException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecManager.9
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,26 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qqmini.sdk.log.QMLog;
-
-class bhkm
-  implements bgpq
+public class bhkm
 {
-  bhkm(bhkl parambhkl) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c = 2;
+  public int d;
+  public int e;
+  public int f;
   
-  public void a(Context paramContext, Intent paramIntent)
+  public bhkm(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramContext = paramIntent.getAction();
-    QMLog.i("MiniAppAudioPlayer", "onReceiveListener:" + paramContext);
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) && (this.a.a())) {
-      this.a.b();
-    }
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhkm
  * JD-Core Version:    0.7.0.1
  */

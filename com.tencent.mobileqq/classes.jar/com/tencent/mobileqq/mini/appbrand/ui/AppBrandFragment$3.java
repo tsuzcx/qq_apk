@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import bdhj;
+import bgmo;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -33,7 +33,7 @@ class AppBrandFragment$3
         ((RoundedBitmapDrawable)localObject).setAntiAlias(true);
         if (Build.VERSION.SDK_INT >= 21)
         {
-          localObject = new ActivityManager.TaskDescription(this.val$miniConfig.config.name, bdhj.b((Drawable)localObject));
+          localObject = new ActivityManager.TaskDescription(this.val$miniConfig.config.name, bgmo.b((Drawable)localObject));
           this.val$activity.setTaskDescription((ActivityManager.TaskDescription)localObject);
         }
         if (!localBitmap.isRecycled()) {
@@ -50,7 +50,7 @@ class AppBrandFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandFragment.3
  * JD-Core Version:    0.7.0.1
  */

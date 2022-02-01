@@ -1,98 +1,44 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.BabyQAIOPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 class agpw
-  extends alop
+  extends Handler
 {
-  agpw(agps paramagps) {}
-  
-  protected void a()
+  agpw(agpv paramagpv, Looper paramLooper)
   {
-    if (this.a.q != null)
-    {
-      Animation localAnimation = this.a.q.getAnimation();
-      if (localAnimation != null) {
-        localAnimation.cancel();
-      }
-      agps.b(this.a).removeView(this.a.q);
-      this.a.q = null;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.BabyQ", 2, "onStopGuide");
-      }
-    }
+    super(paramLooper);
   }
   
-  protected void a(Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    int i = -1;
-    paramObject = (Integer)paramObject;
-    switch (paramObject.intValue())
+    if (paramMessage.obj == null)
+    {
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 4: 
+        agpv.a(this.a);
+        return;
+      }
+      agpv.a(this.a, true);
+      return;
+    }
+    WeakReference localWeakReference = (WeakReference)paramMessage.obj;
+    switch (paramMessage.what)
     {
     default: 
-      if (i < 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.BabyQ", 2, "onStartGuide " + paramObject + " but panel is opened");
-        }
-        ((alok)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(53)).a();
-      }
-      break;
+      return;
+    case 1: 
+      agpv.a(this.a, localWeakReference);
+      return;
+    case 2: 
+      agpv.b(this.a, localWeakReference);
+      return;
     }
-    do
-    {
-      do
-      {
-        return;
-        if ((agps.a(this.a) != null) && (agps.b(this.a).getVisibility() == 0)) {
-          break;
-        }
-        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(aggx.l);
-        break;
-        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(aggx.v);
-        break;
-        if (ShortVideoUtils.f())
-        {
-          i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(aggx.s);
-          break;
-        }
-        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(aggx.v);
-        break;
-        if ((agps.a(this.a) != null) && (agps.b(this.a).getVisibility() == 0)) {
-          break;
-        }
-        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(aggx.a);
-        break;
-      } while (this.a.q != null);
-      this.a.q = new View(this.a.jdField_a_of_type_AndroidContentContext);
-      this.a.q.setBackgroundResource(2130844524);
-      Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.getChildAt(i);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(((View)localObject).getHeight(), ((View)localObject).getHeight());
-      localLayoutParams.addRule(12);
-      localLayoutParams.setMargins(((View)localObject).getLeft() + ((View)localObject).getWidth() / 2 - ((View)localObject).getHeight() / 2, 0, 0, (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.getHeight() - ((View)localObject).getHeight()) / 2);
-      agps.a(this.a).addView(this.a.q, localLayoutParams);
-      localObject = AnimationUtils.loadAnimation(this.a.jdField_a_of_type_AndroidContentContext, 2130772225);
-      ((Animation)localObject).setAnimationListener(new agpx(this));
-      this.a.q.startAnimation((Animation)localObject);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.BabyQ", 2, "onStartGuide " + paramObject);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBabyQAIOPanel != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBabyQAIOPanel.a();
-    }
+    agpv.c(this.a, localWeakReference);
   }
 }
 

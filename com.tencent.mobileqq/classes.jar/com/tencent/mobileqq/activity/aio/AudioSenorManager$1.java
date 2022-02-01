@@ -23,7 +23,7 @@ class AudioSenorManager$1
         {
           AudioSenorManager.a(this.this$0).registerListener(AudioSenorManager.a(this.this$0), AudioSenorManager.a(this.this$0), 3);
           if (QLog.isColorLevel()) {
-            QLog.d("AudioSenorManager", 2, "$requestPlay| mAccelerationSensro=" + AudioSenorManager.b(this.this$0) + " | mProximitySensor = " + AudioSenorManager.a(this.this$0));
+            QLog.d("AudioPlayer_SenorManager", 2, "$requestPlay| mAccelerationSensro=" + AudioSenorManager.b(this.this$0) + " | mProximitySensor = " + AudioSenorManager.a(this.this$0));
           }
           return;
           localException1 = localException1;
@@ -42,7 +42,7 @@ class AudioSenorManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AudioSenorManager.1
  * JD-Core Version:    0.7.0.1
  */

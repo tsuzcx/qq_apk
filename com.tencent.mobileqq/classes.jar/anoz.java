@@ -1,8 +1,32 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import java.util.Comparator;
 
-public abstract interface anoz
+public class anoz
+  implements Comparator<arcs>
 {
-  public abstract void b(ArrayList<anoi> paramArrayList);
+  private boolean a(arcs paramarcs)
+  {
+    return (paramarcs != null) && (paramarcs.a != null);
+  }
+  
+  public int a(arcs paramarcs1, arcs paramarcs2)
+  {
+    if ((a(paramarcs1)) && (a(paramarcs2))) {
+      if (paramarcs1.a.sPriority <= paramarcs2.a.sPriority) {}
+    }
+    do
+    {
+      return 1;
+      if (paramarcs1.a.sPriority < paramarcs2.a.sPriority) {
+        return -1;
+      }
+      return 0;
+      if (a(paramarcs1)) {
+        return -1;
+      }
+    } while (a(paramarcs2));
+    return 0;
+  }
 }
 
 

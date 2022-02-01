@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class agdf
-  implements DialogInterface.OnClickListener
+public abstract interface agdf
 {
-  agdf(agda paramagda) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

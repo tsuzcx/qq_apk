@@ -1,0 +1,316 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_feeds_social_header_wrapper",
+    "event_type": "cmd_social_header_wrapper_click",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "relative",
+        "value": "375"
+    },
+    "subviews": [
+        {
+            "view_type": "container",
+            "view_id": "id_feeds_social_header_container",
+            "layout_type": "layout_relative",
+            "height": {
+                "type": "absolutely",
+                "value": "39"
+            },
+            "width": {
+                "type": "relative",
+                "value": "375"
+            },
+            "margin_top": "11",
+            "margin_bottom": "5",
+            "subviews": [
+                {
+                    "view_type": "UIView",
+                    "view_id": "id_feeds_social_header",
+                    "direction": "horizontal",
+                    "align_parent_right": "YES",
+                    "align_parent_center_vertical": "YES",
+                    "margin_right": "12",
+                    "height": {
+                        "type": "match_parent"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "subviews": [
+                        {
+                            "view_type": "UIImageView",
+                            "view_id": "id_feeds_star_postmark",
+                            "margin_right": "18",
+                            "height": {
+                                "type": "relative",
+                                "value": "33"
+                            },
+                            "width": {
+                                "type": "relative",
+                                "value": "61"
+                            },
+                            "margin_top": "-11",
+                            "attributes": {
+                                "loadImageWithPath:": "$star_postmark"
+                            }
+                        },
+                        {
+                            "view_type": "UIButton",
+                            "view_id": "id_feeds_social_header_follow_button",
+                            "align_parent_center_vertical": "YES",
+                            "height": {
+                                "type": "absolutely",
+                                "value": "23"
+                            },
+                            "width": {
+                                "type": "absolutely",
+                                "value": "50"
+                            },
+                            "event_type": "cmd_social_header_follow_click",
+                            "attributes": {
+                                "setSelectedString:": "$selected_status",
+                                "setImages:colors:direction:forStates:": [
+                                    [
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "#FFFFFF",
+                                        "#8C000000"
+                                    ],
+                                    [
+                                        "0",
+                                        "0"
+                                    ],
+                                    [
+                                        "0",
+                                        "4"
+                                    ]
+                                ],
+                                "setFontSizeString:": "11",
+                                "setBackgroundImages:forStates:": [
+                                    [
+                                        "unfollow_bg",
+                                        "follow_bg"
+                                    ],
+                                    [
+                                        "0",
+                                        "4"
+                                    ]
+                                ]
+                            }
+                        },
+                        {
+                            "view_type": "UIButton",
+                            "view_id": "id_feeds_social_header_fold_button",
+                            "event_type": "cmd_social_header_folder_click",
+                            "margin_right": "-12",
+                            "margin_top": "17",
+                            "height": {
+                                "type": "absolutely",
+                                "value": "30"
+                            },
+                            "width": {
+                                "type": "absolutely",
+                                "value": "42"
+                            },
+                            "attributes": {
+                                "setImage:": "social_header_fold"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "view_type": "ReadInJoyAvatarView",
+                    "view_id": "id_feeds_info_avator",
+                    "align_parent_left": "YES",
+                    "align_parent_center_vertical": "YES",
+                    "event_type": "cmd_avatar_click",
+                    "margin_left": "9",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "39"
+                    },
+                    "width": {
+                        "type": "absolutely",
+                        "value": "39"
+                    },
+                    "attributes": {
+                        "setArticleModel:": "$article_model",
+                        "loadAvatarByUin:": "$info_avator_uin"
+                    }
+                },
+                {
+                    "view_type": "container",
+                    "layout_type": "layout_relative",
+                    "view_id": "id_feeds_header_container",
+                    "right_of_view": "id_feeds_info_avator",
+                    "left_of_view": "id_feeds_social_header",
+                    "align_parent_center_vertical": "YES",
+                    "default_visible": "YES",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "match_parent"
+                    },
+                    "subviews": [
+                        {
+                            "view_type": "container",
+                            "direction": "horizontal",
+                            "view_id": "id_feeds_nickname_wrapper",
+                            "height": {
+                                "type": "absolutely",
+                                "value": "21"
+                            },
+                            "width": {
+                                "type": "wrap_content"
+                            },
+                            "subviews": [
+                                {
+                                    "view_type": "UILabel",
+                                    "view_id": "id_feeds_nickname",
+                                    "event_type": "cmd_avatar_click",
+                                    "margin_left": "4",
+                                    "height": {
+                                        "type": "match_parent"
+                                    },
+                                    "width": {
+                                        "type": "wrap_content"
+                                    },
+                                    "attributes": {
+                                        "setText:": "$nickname_text",
+                                        "setTextColorString:": "#242424",
+                                        "setBoldFontSizeString:": "16",
+                                        "setNumberOfLinesString:": "1"
+                                    }
+                                },
+                                {
+                                    "view_type": "ReadInjoyAsynImageView",
+                                    "view_id": "id_feeds_header_medal",
+                                    "event_type": "cmd_header_medal_click",
+                                    "margin_left": "4.5",
+                                    "align_parent_center_vertical": "YES",
+                                    "height": {
+                                        "type": "absolutely",
+                                        "value": "20"
+                                    },
+                                    "width": {
+                                        "type": "absolutely",
+                                        "value": "40"
+                                    },
+                                    "attributes": {
+                                        "setImageWithURLString:lineup:": [
+                                            "$header_medal_image_url",
+                                            "1"
+                                        ],
+                                        "setWHRate:widthBenchmark:": [
+                                            "$header_medal_wh_rate",
+                                            "NO"
+                                        ],
+                                        "setAttatchInfo:": "$header_medal_jump_url"
+                                    }
+                                },
+                                {
+                                    "view_type": "UILabel",
+                                    "view_id": "id_feeds_biu_tips",
+                                    "margin_left": "6",
+                                    "height": {
+                                        "type": "match_parent"
+                                    },
+                                    "width": {
+                                        "type": "wrap_content"
+                                    },
+                                    "attributes": {
+                                        "setText:": "$biu_tips_text",
+                                        "setTextColorString:": "#4E525E",
+                                        "setFontSizeString:": "16",
+                                        "setNumberOfLinesString:": "1"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "view_id": "id_account_info",
+                            "view_type": "UIView",
+                            "layout_type": "layout_linear",
+                            "direction": "horizontal",
+                            "default_visible": "YES",
+                            "margin_top": "2",
+                            "margin_left": "4",
+                            "right_of_view": "id_feeds_info_avator",
+                            "below_of_view": "id_feeds_nickname_wrapper",
+                            "left_of_view": "id_feeds_social_header_follow_button",
+                            "height": {
+                                "type": "wrap_content"
+                            },
+                            "width": {
+                                "type": "match_parent"
+                            },
+                            "subviews": [
+                                {
+                                    "view_type": "UIView",
+                                    "layout_type": "layout_relative",
+                                    "view_id": "id_user_desc_follow_wrapper",
+                                    "visible_depend_on_children": "YES",
+                                    "margin_right": "6",
+                                    "height": {
+                                        "type": "absolutely",
+                                        "value": "16"
+                                    },
+                                    "width": {
+                                        "type": "wrap_content"
+                                    },
+                                    "attributes": {
+                                        "setBackgroundColorString:": "#1A00CAFC",
+                                        "setCornerRadiusString:": "4.0"
+                                    },
+                                    "subviews": [
+                                        {
+                                            "view_type": "UILabel",
+                                            "view_id": "id_user_desc_follow",
+                                            "margin_left": "4",
+                                            "margin_right": "4",
+                                            "height": {
+                                                "type": "match_parent"
+                                            },
+                                            "width": {
+                                                "type": "wrap_content"
+                                            },
+                                            "attributes": {
+                                                "setText:": "$user_desc_follow_text",
+                                                "setTextColorString:": "#00CAFC",
+                                                "setFontSizeString:": "11",
+                                                "setNumberOfLinesString:": "1"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "view_id": "id_feeds_biu_time",
+                                    "view_type": "UILabel",
+                                    "right_of_view": "id_user_desc_follow",
+                                    "margin_top": "2",
+                                    "height": {
+                                        "type": "wrap_content"
+                                    },
+                                    "width": {
+                                        "type": "wrap_content"
+                                    },
+                                    "attributes": {
+                                        "setText:": "$biu_time_text",
+                                        "setTextColorString:": "#B0B3BF",
+                                        "setFontSizeString:": "11",
+                                        "setNumberOfLinesString:": "1"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,62 +1,130 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qflutter.utils.FLog;
+import com.tencent.smtt.sdk.WebView;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.AdvVideoFloat.AdvGerneralProxy;
+import org.json.JSONObject;
 
 public class bmkt
-  extends Handler
+  extends bmmk
 {
-  public bmkt(EditVideoArtFilter paramEditVideoArtFilter) {}
+  public String a;
   
-  public void dispatchMessage(Message paramMessage)
+  public bmkt()
   {
-    super.dispatchMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public void a(String[] paramArrayOfString)
+  {
+    if ((paramArrayOfString == null) || (paramArrayOfString.length < 1)) {}
+    Object localObject;
+    String str;
     do
     {
+      int i;
       do
       {
-        return;
-        EditVideoArtFilter.a(this.a, false);
-        localObject = (String)paramMessage.obj;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER SUCCESS,fileOutputPath:" + (String)localObject);
+        for (;;)
+        {
+          return;
+          try
+          {
+            QZLog.i("AdvFloatVideoJsPlugin", "handleAdvLoadedNotify @advWebview");
+            localObject = new JSONObject(paramArrayOfString[0]);
+            i = ((JSONObject)localObject).getInt("status");
+            paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+            if (paramArrayOfString != null)
+            {
+              str = (String)paramArrayOfString.getTag(AdvGerneralProxy.getInstance().getFirstKey());
+              if (i == 0)
+              {
+                this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).getString("callback");
+                if (QZLog.isColorLevel()) {
+                  QZLog.i("AdvFloatVideoJsPlugin", "@advWebview onlykey =" + str);
+                }
+                this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { AdvGerneralProxy.getInstance().getCallBackData(str) });
+                paramArrayOfString.setTag(AdvGerneralProxy.getInstance().getFourthKey(), this.jdField_a_of_type_JavaLangString);
+                return;
+              }
+            }
+          }
+          catch (Exception paramArrayOfString)
+          {
+            QZLog.e("AdvFloatVideoJsPlugin", "handleAdvLoadedNotify eroo" + paramArrayOfString.toString());
+            return;
+          }
         }
-        this.a.a((String)localObject, paramMessage.arg1);
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(0, true);
-        return;
-        EditVideoArtFilter.a(this.a, false);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER ERROR");
-        }
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a();
-        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690295), 0).a();
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER TIMEOUT,state:isProcessing:" + this.a.jdField_a_of_type_Boolean + ",taskId:" + paramMessage.obj + ",currentFilterTaskId:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
-        }
-      } while ((!this.a.jdField_a_of_type_Boolean) || (((Integer)paramMessage.obj).intValue() != this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
-      EditVideoArtFilter.a(this.a, false);
-      this.a.c();
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690295), 0).a();
+      } while (i != 1);
+      localObject = ((JSONObject)localObject).getString("id");
+      paramArrayOfString.setTag(AdvGerneralProxy.getInstance().getSecondKey(), Integer.valueOf(1));
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    paramArrayOfString = str + "_" + (String)localObject;
+    AdvGerneralProxy.getInstance().notifyH5PageReady(paramArrayOfString);
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((paramString2 == null) || (!paramString2.equals("Qzone")) || (paramString3 == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
+      return false;
+    }
+    if ((paramString3.equals("AdvLoadedNotify")) && (paramVarArgs.length >= 1))
+    {
+      QZLog.i("AdvFloatVideoJsPlugin", "AdvLoadedNotify");
+      a(paramVarArgs);
+      return true;
+    }
+    if (paramString3.equals("AdvClickBlankArea"))
+    {
+      QZLog.i("AdvFloatVideoJsPlugin", "AdvClickBlankArea");
+      b(paramVarArgs);
+      return true;
+    }
+    if (paramString3.equals("AdvReportVas"))
+    {
+      QZLog.i("AdvFloatVideoJsPlugin", "AdvReportVas");
+      c(paramVarArgs);
+      return true;
+    }
+    return false;
+  }
+  
+  public void b(String[] paramArrayOfString)
+  {
+    if ((paramArrayOfString == null) || (paramArrayOfString.length < 1)) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "UPDATE_FILTER_PROGRESS,state:isProcessing:" + this.a.jdField_a_of_type_Boolean + ",taskId:" + paramMessage.arg1 + ",updateCount:" + paramMessage.arg2 + ",currentFilterTaskId:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
-      }
-    } while ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a.getVisibility() != 0) || (paramMessage.arg1 != this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(paramMessage.arg2, false);
-    Object localObject = EditVideoArtFilter.a(this.a).obtainMessage(38);
-    ((Message)localObject).arg1 = paramMessage.arg1;
-    ((Message)localObject).arg2 = (paramMessage.arg2 + 1);
-    EditVideoArtFilter.a(this.a).sendMessageDelayed((Message)localObject, 100L);
+    }
+    try
+    {
+      QZLog.i("AdvFloatVideoJsPlugin", "@advWebview handleAdvClickBlankArea");
+      paramArrayOfString = new JSONObject(paramArrayOfString[0]).optString("advid");
+      AdvGerneralProxy.getInstance().notifyVideoBlankClick(paramArrayOfString);
+      return;
+    }
+    catch (Exception paramArrayOfString)
+    {
+      FLog.e("AdvFloatVideoJsPlugin", paramArrayOfString.toString());
+    }
+  }
+  
+  public void c(String[] paramArrayOfString)
+  {
+    if ((paramArrayOfString == null) || (paramArrayOfString.length < 1)) {
+      return;
+    }
+    try
+    {
+      QZLog.i("AdvFloatVideoJsPlugin", "handleAdvReportVas");
+      int i = new JSONObject(paramArrayOfString[0]).optInt("area", -1);
+      AdvGerneralProxy.getInstance().notifyOnlyReportClickArea(i);
+      return;
+    }
+    catch (Exception paramArrayOfString)
+    {
+      FLog.e("AdvFloatVideoJsPlugin", paramArrayOfString.toString());
+    }
   }
 }
 

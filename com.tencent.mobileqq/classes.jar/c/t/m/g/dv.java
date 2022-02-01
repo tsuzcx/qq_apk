@@ -5,18 +5,21 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build.VERSION;
+import java.util.LinkedList;
 
 public final class dv
 {
-  public float a = -1.0F;
-  public float b;
-  public long c = -1L;
-  public double d = -1.0D;
-  public double e = -1.0D;
-  public double f = -1.0D;
-  public double g;
-  public double h = 0.0D;
-  public double i = 0.0D;
+  public LinkedList<fn> a = null;
+  public fp b = null;
+  public fp c = null;
+  public float d = 0.0F;
+  public float e = 0.0F;
+  public long f = 0L;
+  public boolean g = true;
+  public float h = 0.0F;
+  public ee i;
+  private final float j = 1.0F;
+  private final float k = 0.6F;
   
   @Deprecated
   @SuppressLint({"MissingPermission"})
@@ -44,15 +47,6 @@ public final class dv
     }
     catch (Throwable paramContext) {}
     return dv.a.a;
-  }
-  
-  public final void a()
-  {
-    this.f = -1.0D;
-    this.a = -1.0F;
-    this.c = -1L;
-    this.h = 0.0D;
-    this.i = 0.0D;
   }
 }
 

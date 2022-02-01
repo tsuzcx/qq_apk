@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.text.TextUtils;
-import aplw;
-import aplx;
+import aros;
+import arot;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import ndd;
+import nlw;
 import org.json.JSONObject;
-import oxi;
-import oxk;
-import oxo;
+import pmr;
+import pmt;
+import pmx;
 
 public final class ReadInjoyWebRenderSoLoader$1
   implements Runnable
 {
-  public ReadInjoyWebRenderSoLoader$1(oxk paramoxk) {}
+  public ReadInjoyWebRenderSoLoader$1(pmt parampmt) {}
   
   public void run()
   {
-    Object localObject = oxo.b();
+    Object localObject = pmx.b();
     int j;
     int i;
     label124:
@@ -27,14 +27,14 @@ public final class ReadInjoyWebRenderSoLoader$1
     {
       try
       {
-        String str = ndd.a(BaseApplication.context, (String)localObject, "GET", null, null);
+        String str = nlw.a(BaseApplication.context, (String)localObject, "GET", null, null);
         if (QLog.isColorLevel()) {
           QLog.d("viola.ReadInjoyWebRenderSoLoader", 2, "open :" + (String)localObject + ", result: " + str);
         }
         if (TextUtils.isEmpty(str))
         {
-          oxo.a();
-          oxi.a("viola.ReadInjoyWebRenderSoLoader", this.a);
+          pmx.a();
+          pmr.a("viola.ReadInjoyWebRenderSoLoader", this.a);
           return;
         }
         localObject = new JSONObject(str);
@@ -50,13 +50,13 @@ public final class ReadInjoyWebRenderSoLoader$1
       catch (Exception localException)
       {
         label183:
-        oxo.a();
-        oxo.b();
+        pmx.a();
+        pmx.b();
         return;
       }
-      if (j < aplx.a.length)
+      if (j < arot.a.length)
       {
-        if ((!bool) || (!oxo.b(aplx.a[j]))) {
+        if ((!bool) || (!pmx.b(arot.a[j]))) {
           break label296;
         }
         bool = true;
@@ -65,14 +65,14 @@ public final class ReadInjoyWebRenderSoLoader$1
       if (QLog.isColorLevel()) {
         QLog.e("viola.ReadInjoyWebRenderSoLoader", 2, "checkReinstallSoDel delJSC : " + bool);
       }
-      oxo.a();
+      pmx.a();
       if (i != 0)
       {
         i = 0;
         bool = true;
-        if (i < aplw.a.length)
+        if (i < aros.a.length)
         {
-          if ((!bool) || (!oxo.b(aplw.a[i]))) {
+          if ((!bool) || (!pmx.b(aros.a[i]))) {
             break label308;
           }
           bool = true;
@@ -82,7 +82,7 @@ public final class ReadInjoyWebRenderSoLoader$1
           QLog.e("viola.ReadInjoyWebRenderSoLoader", 2, "checkReinstallSoDel delBiz : " + bool);
         }
       }
-      oxo.b();
+      pmx.b();
       continue;
       label268:
       if (j == 0) {

@@ -2,8 +2,6 @@ package com.tencent.mobileqq.minigame.utils.thread;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
 
 public class TTHandleThread
   extends HandlerThread
@@ -38,26 +36,6 @@ public class TTHandleThread
     finally {}
   }
   
-  public final void execute(Runnable paramRunnable)
-  {
-    ThreadManager.excute(paramRunnable, 16, null, false);
-  }
-  
-  public final void execute(Runnable paramRunnable, ThreadExcutor.IThreadListener paramIThreadListener)
-  {
-    ThreadManager.excute(paramRunnable, 128, paramIThreadListener, false);
-  }
-  
-  public final void execute_FILE(Runnable paramRunnable)
-  {
-    ThreadManager.excute(paramRunnable, 64, null, false);
-  }
-  
-  public final void execute_NETWORK(Runnable paramRunnable)
-  {
-    ThreadManager.excute(paramRunnable, 128, null, false);
-  }
-  
   public final void post(Runnable paramRunnable)
   {
     handler.post(paramRunnable);
@@ -70,7 +48,7 @@ public class TTHandleThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.thread.TTHandleThread
  * JD-Core Version:    0.7.0.1
  */

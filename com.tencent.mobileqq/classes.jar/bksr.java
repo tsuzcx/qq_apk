@@ -1,23 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.core.AECameraManager.8;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-public class bksr
-  implements azht
+public abstract interface bksr
 {
-  public bksr(AECameraManager.8 param8) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AECameraManager", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
-    }
-    if (paramBoolean1)
-    {
-      bksp.c(this.a.this$0, true);
-      return;
-    }
-    bksp.a().g();
-  }
+  public abstract void a(RecyclerView.Adapter paramAdapter);
 }
 
 

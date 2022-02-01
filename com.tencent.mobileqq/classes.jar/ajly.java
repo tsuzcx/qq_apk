@@ -1,11 +1,23 @@
-import android.content.Context;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajly
-  extends ajlx
+class ajly
+  implements ajlv
 {
-  public ajly(Context paramContext)
+  ajly(ajlx paramajlx) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    this.a = ("[" + paramContext.getString(2131697714) + "]");
+    ((anpk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).c(paramString);
+    if (paramInt == 0)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      return;
+    }
+    if (this.a.jdField_a_of_type_Ajlb != null) {
+      this.a.jdField_a_of_type_Ajlb.a();
+    }
+    ajlx.a(this.a);
   }
 }
 

@@ -1,13 +1,21 @@
-import java.io.File;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface aqhu
-  extends bdpc
+public class aqhu
+  extends Handler
 {
-  public abstract void a(File paramFile);
+  public aqhu(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void f(int paramInt);
+  public void handleMessage(Message paramMessage)
+  {
+    if ((paramMessage.what == 1000) && ((this.a.j == 1) || (this.a.j == 2)))
+    {
+      this.a.a();
+      QQToast.a(this.a, 2131690905, 0).b(this.a.getTitleBarHeight());
+    }
+  }
 }
 
 

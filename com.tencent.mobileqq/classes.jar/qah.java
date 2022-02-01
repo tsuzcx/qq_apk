@@ -1,24 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
+import com.tencent.qphone.base.util.QLog;
 
 class qah
-  implements View.OnTouchListener
+  implements pnh
 {
-  qah(qaf paramqaf, RelativeLayout paramRelativeLayout) {}
+  qah(qag paramqag) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void l()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(false);
+    if (!qak.b())
+    {
+      QLog.d("FeedsPreloadManager", 1, "foreground, feeds preload.");
+      this.a.a(false);
+      return;
     }
-    return false;
+    QLog.d("FeedsPreloadManager", 1, "lock screen enter foreground, no need to preload.");
   }
+  
+  public void m() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qah
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agoe;
-import akvc;
+import ahyk;
+import amoi;
 import com.tencent.mobileqq.utils.VipUtils;
 
 public class CmGameChatPie$12
   implements Runnable
 {
-  public CmGameChatPie$12(agoe paramagoe, int paramInt1, int paramInt2, String paramString) {}
+  public CmGameChatPie$12(ahyk paramahyk, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
     int i = 2;
-    if (agoe.a(this.this$0) == null) {
-      agoe.a(this.this$0, new akvc(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    if (ahyk.a(this.this$0) == null) {
+      ahyk.a(this.this$0, new amoi(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
     }
-    agoe.a(this.this$0).a(this.this$0.b);
-    agoe.a(this.this$0).a(agoe.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
-    agoe.a(this.this$0).show();
-    agoe.a(this.this$0);
+    ahyk.a(this.this$0).a(this.this$0.b);
+    ahyk.a(this.this$0).a(ahyk.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    ahyk.a(this.this$0).show();
+    ahyk.a(this.this$0);
     if (this.b == 2) {}
     for (;;)
     {
@@ -30,7 +30,7 @@ public class CmGameChatPie$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.12
  * JD-Core Version:    0.7.0.1
  */

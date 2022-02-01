@@ -3,24 +3,24 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
 import java.util.Iterator;
 import java.util.List;
-import oxb;
-import pge;
+import pmk;
+import pxl;
 
 public class InterestLabelInfoModule$3
   implements Runnable
 {
-  public InterestLabelInfoModule$3(pge parampge, List paramList) {}
+  public InterestLabelInfoModule$3(pxl parampxl, List paramList) {}
   
   public void run()
   {
-    pge.a(this.this$0).clear();
+    pxl.a(this.this$0).clear();
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       InterestLabelInfo localInterestLabelInfo = (InterestLabelInfo)localIterator.next();
-      pge.a(this.this$0).add(localInterestLabelInfo);
+      pxl.a(this.this$0).add(localInterestLabelInfo);
     }
-    oxb.a().a(pge.a(this.this$0));
+    pmk.a().a(pxl.a(this.this$0));
   }
 }
 

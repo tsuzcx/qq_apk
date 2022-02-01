@@ -1,19 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
 
 public class adni
-  implements DialogInterface.OnClickListener
+  extends anvp
 {
-  public adni(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public adni(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, bdei parambdei)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "showRecommendDialog cancel clicked!");
-    }
-    azqs.b(this.a.app, "dc00898", "", "", "0X800A605", "0X800A605", 0, 0, "", "", "", "");
+    this.a.e();
+    AssociatedAccountManageActivity.b(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, bdei parambdei)
+  {
+    this.a.e();
+    AssociatedAccountManageActivity.b(this.a);
+  }
+  
+  protected void c(boolean paramBoolean, bdei parambdei)
+  {
+    this.a.e();
+    AssociatedAccountManageActivity.b(this.a);
   }
 }
 

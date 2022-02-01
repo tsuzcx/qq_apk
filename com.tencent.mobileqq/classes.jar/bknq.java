@@ -1,16 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class bknq
-  implements View.OnTouchListener
+public abstract interface bknq
 {
-  bknq(bknm parambknm) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract void b();
 }
 
 

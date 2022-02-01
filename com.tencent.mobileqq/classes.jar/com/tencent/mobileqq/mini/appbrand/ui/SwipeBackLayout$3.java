@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.os.Bundle;
-import aobz;
+import aqce;
 
 class SwipeBackLayout$3
-  extends aobz
+  extends aqce
 {
   SwipeBackLayout$3(SwipeBackLayout paramSwipeBackLayout) {}
   
@@ -16,7 +16,7 @@ class SwipeBackLayout$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.SwipeBackLayout.3
  * JD-Core Version:    0.7.0.1
  */

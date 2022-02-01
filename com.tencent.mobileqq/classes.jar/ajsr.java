@@ -1,10 +1,28 @@
-public abstract interface ajsr
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class ajsr
+  implements View.OnClickListener
 {
-  public abstract void b(int paramInt);
+  public ajsr(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, int paramInt1, int paramInt2) {}
   
-  public abstract void c(String paramString);
-  
-  public abstract void i();
+  public void onClick(View paramView)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), TroopMemberListActivity.class);
+    localIntent.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.c);
+    localIntent.putExtra("param_from", 15);
+    localIntent.putExtra("param_seq_days", ChatHistoryTroopMemberFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment));
+    localIntent.putExtra("param_seq_name", ChatHistoryTroopMemberFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment));
+    localIntent.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.startActivityForResult(localIntent, 4);
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.c, "" + this.b, "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

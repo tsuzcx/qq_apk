@@ -1,10 +1,31 @@
-public abstract interface avgl
+public class avgl
+  implements anil
 {
-  public abstract boolean a(avgi paramavgi, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b(paramBoolean, ((Boolean)paramObject).booleanValue());
+      return;
+    }
+    a(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avgl
  * JD-Core Version:    0.7.0.1
  */

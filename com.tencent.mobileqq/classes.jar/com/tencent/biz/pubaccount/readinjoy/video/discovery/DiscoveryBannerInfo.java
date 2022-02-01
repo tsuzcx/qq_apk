@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.video.discovery;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import rmh;
+import sht;
 
 public class DiscoveryBannerInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DiscoveryBannerInfo> CREATOR = new rmh();
+  public static final Parcelable.Creator<DiscoveryBannerInfo> CREATOR = new sht();
   public int a;
   public long a;
   public String a;

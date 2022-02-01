@@ -1,14 +1,17 @@
 import android.os.Handler;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.6.1.1;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.12.1;
 
 public class bckj
-  implements baej
+  implements agsm
 {
-  bckj(bcki parambcki) {}
+  bckj(bckg parambckg) {}
   
   public void a()
   {
-    this.a.a.a.post(new AIOAnimationControlManager.6.1.1(this));
+    if (bckg.a(this.a) == null) {
+      bckg.a(this.a, new Handler());
+    }
+    bckg.a(this.a).postDelayed(new RedBagVideoManager.12.1(this), 1000L);
   }
 }
 

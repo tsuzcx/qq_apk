@@ -1,990 +1,429 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Message;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.common.app.AppInterface;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RecommendTroopManagerImp.3;
-import com.tencent.mobileqq.app.RecommendTroopManagerImp.4;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecTroopBusinessItem;
-import com.tencent.mobileqq.data.RecommendTroopInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.data.NotificationRecommendTroopItem;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.List<Ltencent.qun.group_activity.group_activity.GroupAct;>;
-import mqq.app.NewIntent;
-import mqq.manager.Manager;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
-import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
-import tencent.im.oidb.cmd0x935.oidb_0x935.Color;
-import tencent.im.oidb.cmd0x935.oidb_0x935.GPS;
-import tencent.im.oidb.cmd0x935.oidb_0x935.Label;
-import tencent.im.oidb.cmd0x935.oidb_0x935.NotifyInfo;
-import tencent.im.oidb.cmd0x935.oidb_0x935.RecommendInfo;
-import tencent.im.oidb.cmd0x935.oidb_0x935.ReqBody;
-import tencent.im.oidb.cmd0x935.oidb_0x935.RgroupInfo;
-import tencent.im.oidb.cmd0x935.oidb_0x935.RspBody;
-import tencent.im.oidb.cmd0x9fa.oidb_0x9fa.AddFeedbackHateGroupCmd;
-import tencent.im.oidb.cmd0x9fa.oidb_0x9fa.ReqBody;
-import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.Color;
-import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.Label;
-import tencent.im.oidb.oidb_0xc26.RgoupLabel;
-import tencent.im.oidb.oidb_0xc26.RgroupColor;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import tencent.qun.group_activity.group_activity.GroupAct;
 
 public class ambh
-  implements Manager
+  extends BaseAdapter
 {
-  public int a;
-  protected amdu a;
-  private ampt jdField_a_of_type_Ampt = new ambj(this, 3, true, true, 60000L, false, false, "TroopNotifyAndRecommendView");
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  protected SparseArray<Boolean> a;
-  protected awgf a;
-  protected QQAppInterface a;
-  protected Object a;
-  protected final String a;
-  private ArrayList<oidb_0x935.NotifyInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  protected List<SearchGroup.GroupInfo> a;
-  public boolean a;
-  public int b;
-  protected SparseArray<Long> b;
-  protected final String b;
-  public List<RecommendTroopItem> b;
-  public int c;
-  protected int d = -1;
+  int jdField_a_of_type_Int = 1;
+  List<bgwe> jdField_a_of_type_JavaUtilList;
   
-  public ambh(QQAppInterface paramQQAppInterface)
+  public ambh(ambe paramambe) {}
+  
+  public void a(List<bgwe> paramList)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaLangString = "recommendtroop_notification";
-    this.jdField_b_of_type_JavaLangString = "recommendtroop_notification_status";
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("recommend_troop_info" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0);
-    this.jdField_a_of_type_Awgf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Amdu = ((amdu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20));
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    super.notifyDataSetChanged();
   }
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  public int getCount()
   {
-    paramQQAppInterface = paramQQAppInterface.a().b(alof.Y, 4001);
-    int j;
-    if ((paramQQAppInterface == null) || (paramQQAppInterface.size() == 0))
-    {
-      j = 0;
-      return j;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    paramQQAppInterface = paramQQAppInterface.iterator();
-    int i = 0;
-    label40:
-    if (paramQQAppInterface.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramQQAppInterface.next();
-      String str = localMessageRecord.msg;
-      if ((str == null) || (str.length() <= 0) || ((localMessageRecord.msgtype != -1039) && (localMessageRecord.msgtype != -1040)) || (localMessageRecord.extStr == null) || (localMessageRecord.extStr.length() <= 0) || (localMessageRecord.isread)) {
-        break label164;
-      }
-      i += 1;
-    }
-    label164:
-    for (;;)
-    {
-      break label40;
-      j = i;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("RecommendTroopManagerImp", 2, "getRecommendUnreadCount" + i);
-      return i;
-    }
+    return 0;
   }
   
-  public static List<oidb_0x9fb.Label> a(List<oidb_0x935.Label> paramList)
+  public Object getItem(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      oidb_0x935.Label localLabel = (oidb_0x935.Label)paramList.next();
-      oidb_0x9fb.Label localLabel1 = new oidb_0x9fb.Label();
-      localLabel1.bytes_name.set(localLabel.bytes_name.get());
-      localLabel1.edging_color.set(a((oidb_0x935.Color)localLabel.edging_color.get()));
-      localLabel1.text_color.set(a((oidb_0x935.Color)localLabel.text_color.get()));
-      localLabel1.enum_type.set(localLabel.enum_type.get());
-      localLabel1.uint32_label_attr.set(localLabel.uint32_label_attr.get());
-      localLabel1.uint32_label_type.set(localLabel.uint32_label_type.get());
-      localArrayList.add(localLabel1);
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    return localArrayList;
+    return null;
   }
   
-  private static oidb_0x9fb.Color a(oidb_0x935.Color paramColor)
+  public long getItemId(int paramInt)
   {
-    oidb_0x9fb.Color localColor = new oidb_0x9fb.Color();
-    localColor.uint32_b.set(paramColor.uint32_b.get());
-    localColor.uint32_g.set(paramColor.uint32_g.get());
-    localColor.uint32_r.set(paramColor.uint32_r.get());
-    return localColor;
+    return paramInt;
   }
   
-  private static oidb_0x9fb.Color a(oidb_0xc26.RgroupColor paramRgroupColor)
+  /* Error */
+  public android.view.View getView(int paramInt, android.view.View paramView, android.view.ViewGroup paramViewGroup)
   {
-    oidb_0x9fb.Color localColor = new oidb_0x9fb.Color();
-    localColor.uint32_b.set(paramRgroupColor.uint32_b.get());
-    localColor.uint32_g.set(paramRgroupColor.uint32_g.get());
-    localColor.uint32_r.set(paramRgroupColor.uint32_r.get());
-    return localColor;
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 22	ambh:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   4: astore 5
+    //   6: aload 5
+    //   8: ifnonnull +29 -> 37
+    //   11: aload_2
+    //   12: astore 5
+    //   14: aload_2
+    //   15: astore 6
+    //   17: aload 5
+    //   19: astore_2
+    //   20: invokestatic 61	com/tencent/qqlive/module/videoreport/collect/EventCollector:getInstance	()Lcom/tencent/qqlive/module/videoreport/collect/EventCollector;
+    //   23: iload_1
+    //   24: aload_2
+    //   25: aload_3
+    //   26: aload_0
+    //   27: iload_1
+    //   28: invokevirtual 63	ambh:getItemId	(I)J
+    //   31: invokevirtual 67	com/tencent/qqlive/module/videoreport/collect/EventCollector:onListGetView	(ILandroid/view/View;Landroid/view/ViewGroup;J)V
+    //   34: aload 6
+    //   36: areturn
+    //   37: aload_2
+    //   38: ifnonnull +501 -> 539
+    //   41: new 69	ambi
+    //   44: dup
+    //   45: aload_0
+    //   46: invokespecial 72	ambi:<init>	(Lambh;)V
+    //   49: astore 7
+    //   51: aload_0
+    //   52: getfield 13	ambh:jdField_a_of_type_Ambe	Lambe;
+    //   55: getfield 77	ambe:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   58: invokestatic 83	android/view/LayoutInflater:from	(Landroid/content/Context;)Landroid/view/LayoutInflater;
+    //   61: ldc 84
+    //   63: aload_3
+    //   64: iconst_0
+    //   65: invokevirtual 88	android/view/LayoutInflater:inflate	(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    //   68: astore 5
+    //   70: aload 5
+    //   72: astore_2
+    //   73: aload_2
+    //   74: astore 5
+    //   76: aload 7
+    //   78: aload_2
+    //   79: ldc 89
+    //   81: invokevirtual 95	android/view/View:findViewById	(I)Landroid/view/View;
+    //   84: checkcast 97	android/widget/RelativeLayout
+    //   87: putfield 100	ambi:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
+    //   90: aload_2
+    //   91: astore 5
+    //   93: aload 7
+    //   95: aload_2
+    //   96: ldc 101
+    //   98: invokevirtual 95	android/view/View:findViewById	(I)Landroid/view/View;
+    //   101: checkcast 103	com/tencent/mobileqq/vas/avatar/VasAvatar
+    //   104: putfield 106	ambi:jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar	Lcom/tencent/mobileqq/vas/avatar/VasAvatar;
+    //   107: aload_2
+    //   108: astore 5
+    //   110: aload 7
+    //   112: aload_2
+    //   113: ldc 107
+    //   115: invokevirtual 95	android/view/View:findViewById	(I)Landroid/view/View;
+    //   118: checkcast 109	android/widget/ImageView
+    //   121: putfield 112	ambi:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   124: aload_2
+    //   125: astore 5
+    //   127: aload 7
+    //   129: aload_2
+    //   130: ldc 113
+    //   132: invokevirtual 95	android/view/View:findViewById	(I)Landroid/view/View;
+    //   135: checkcast 115	android/widget/TextView
+    //   138: putfield 118	ambi:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   141: aload_2
+    //   142: astore 5
+    //   144: aload 7
+    //   146: aload_2
+    //   147: ldc 119
+    //   149: invokevirtual 95	android/view/View:findViewById	(I)Landroid/view/View;
+    //   152: checkcast 109	android/widget/ImageView
+    //   155: putfield 122	ambi:b	Landroid/widget/ImageView;
+    //   158: aload_2
+    //   159: astore 5
+    //   161: aload 7
+    //   163: getfield 100	ambi:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
+    //   166: invokevirtual 126	android/widget/RelativeLayout:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   169: astore 6
+    //   171: aload 6
+    //   173: ifnull +310 -> 483
+    //   176: aload_2
+    //   177: astore 5
+    //   179: aload 6
+    //   181: aload_0
+    //   182: getfield 13	ambh:jdField_a_of_type_Ambe	Lambe;
+    //   185: getfield 129	ambe:g	I
+    //   188: putfield 134	android/view/ViewGroup$LayoutParams:width	I
+    //   191: aload_2
+    //   192: astore 5
+    //   194: aload 6
+    //   196: aload_0
+    //   197: getfield 13	ambh:jdField_a_of_type_Ambe	Lambe;
+    //   200: getfield 129	ambe:g	I
+    //   203: putfield 137	android/view/ViewGroup$LayoutParams:height	I
+    //   206: aload_2
+    //   207: astore 5
+    //   209: aload 7
+    //   211: getfield 100	ambi:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
+    //   214: aload 6
+    //   216: invokevirtual 141	android/widget/RelativeLayout:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   219: aload_2
+    //   220: astore 5
+    //   222: aload_2
+    //   223: aload 7
+    //   225: invokevirtual 145	android/view/View:setTag	(Ljava/lang/Object;)V
+    //   228: aload 7
+    //   230: astore 6
+    //   232: aload_2
+    //   233: astore 5
+    //   235: aload_0
+    //   236: iload_1
+    //   237: invokevirtual 147	ambh:getItem	(I)Ljava/lang/Object;
+    //   240: checkcast 149	bgwe
+    //   243: astore 8
+    //   245: aload 8
+    //   247: ifnull +345 -> 592
+    //   250: aload_2
+    //   251: astore 5
+    //   253: aload 6
+    //   255: getfield 118	ambi:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   258: aload 8
+    //   260: getfield 152	bgwe:b	Ljava/lang/String;
+    //   263: invokevirtual 156	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   266: aload_2
+    //   267: astore 5
+    //   269: aload 8
+    //   271: getfield 157	bgwe:jdField_a_of_type_Int	I
+    //   274: istore 4
+    //   276: aload_2
+    //   277: astore 5
+    //   279: aload 6
+    //   281: getfield 106	ambi:jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar	Lcom/tencent/mobileqq/vas/avatar/VasAvatar;
+    //   284: invokevirtual 161	com/tencent/mobileqq/vas/avatar/VasAvatar:getDrawable	()Landroid/graphics/drawable/Drawable;
+    //   287: astore 7
+    //   289: aload_2
+    //   290: astore 5
+    //   292: aload 7
+    //   294: instanceof 163
+    //   297: ifeq +289 -> 586
+    //   300: aload_2
+    //   301: astore 5
+    //   303: aload 7
+    //   305: checkcast 163	com/tencent/image/URLDrawable
+    //   308: invokevirtual 166	com/tencent/image/URLDrawable:getCurrDrawable	()Landroid/graphics/drawable/Drawable;
+    //   311: astore 7
+    //   313: aload_2
+    //   314: astore 5
+    //   316: new 168	bhbe
+    //   319: dup
+    //   320: iload 4
+    //   322: bipush 7
+    //   324: ldc 170
+    //   326: iconst_1
+    //   327: invokespecial 173	bhbe:<init>	(IILjava/lang/String;Z)V
+    //   330: astore 9
+    //   332: aload_2
+    //   333: astore 5
+    //   335: aload 9
+    //   337: aload 7
+    //   339: putfield 176	bhbe:a	Landroid/graphics/drawable/Drawable;
+    //   342: aload_2
+    //   343: astore 5
+    //   345: aload 6
+    //   347: getfield 106	ambi:jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar	Lcom/tencent/mobileqq/vas/avatar/VasAvatar;
+    //   350: aconst_null
+    //   351: aload 9
+    //   353: invokevirtual 180	com/tencent/mobileqq/vas/avatar/VasAvatar:setLoader	(Lcom/tencent/mobileqq/vas/avatar/AvatarLayout;Lbhbe;)V
+    //   356: aload_2
+    //   357: astore 5
+    //   359: aload 6
+    //   361: getfield 100	ambi:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
+    //   364: aload 8
+    //   366: invokevirtual 181	android/widget/RelativeLayout:setTag	(Ljava/lang/Object;)V
+    //   369: aload_2
+    //   370: astore 5
+    //   372: aload_0
+    //   373: getfield 13	ambh:jdField_a_of_type_Ambe	Lambe;
+    //   376: ldc 183
+    //   378: iconst_0
+    //   379: invokestatic 189	cooperation/qzone/video/QzoneLiveVideoInterface:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   382: putfield 192	ambe:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
+    //   385: aload_2
+    //   386: astore 5
+    //   388: aload_0
+    //   389: getfield 13	ambh:jdField_a_of_type_Ambe	Lambe;
+    //   392: aload_0
+    //   393: getfield 13	ambh:jdField_a_of_type_Ambe	Lambe;
+    //   396: getfield 192	ambe:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
+    //   399: ldc 194
+    //   401: iconst_0
+    //   402: invokeinterface 200 3 0
+    //   407: putfield 203	ambe:n	I
+    //   410: aload_2
+    //   411: astore 5
+    //   413: aload_0
+    //   414: getfield 13	ambh:jdField_a_of_type_Ambe	Lambe;
+    //   417: getfield 203	ambe:n	I
+    //   420: aload 8
+    //   422: getfield 157	bgwe:jdField_a_of_type_Int	I
+    //   425: if_icmpne +126 -> 551
+    //   428: aload_2
+    //   429: astore 5
+    //   431: aload_2
+    //   432: aload_0
+    //   433: getfield 13	ambh:jdField_a_of_type_Ambe	Lambe;
+    //   436: getfield 77	ambe:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   439: invokevirtual 209	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   442: ldc 210
+    //   444: invokevirtual 215	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   447: invokevirtual 219	android/view/View:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   450: aload_2
+    //   451: astore 5
+    //   453: aload 8
+    //   455: getfield 157	bgwe:jdField_a_of_type_Int	I
+    //   458: aload_0
+    //   459: getfield 13	ambh:jdField_a_of_type_Ambe	Lambe;
+    //   462: getfield 222	ambe:m	I
+    //   465: if_icmpne +100 -> 565
+    //   468: aload_2
+    //   469: astore 5
+    //   471: aload 6
+    //   473: getfield 112	ambi:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   476: iconst_0
+    //   477: invokevirtual 226	android/widget/ImageView:setVisibility	(I)V
+    //   480: goto +112 -> 592
+    //   483: aload_2
+    //   484: astore 5
+    //   486: invokestatic 232	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   489: ifeq +14 -> 503
+    //   492: aload_2
+    //   493: astore 5
+    //   495: ldc 234
+    //   497: iconst_2
+    //   498: ldc 236
+    //   500: invokestatic 240	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   503: aload_2
+    //   504: astore 5
+    //   506: new 131	android/view/ViewGroup$LayoutParams
+    //   509: dup
+    //   510: aload_0
+    //   511: getfield 13	ambh:jdField_a_of_type_Ambe	Lambe;
+    //   514: getfield 129	ambe:g	I
+    //   517: aload_0
+    //   518: getfield 13	ambh:jdField_a_of_type_Ambe	Lambe;
+    //   521: getfield 243	ambe:h	I
+    //   524: invokespecial 246	android/view/ViewGroup$LayoutParams:<init>	(II)V
+    //   527: astore 6
+    //   529: goto -323 -> 206
+    //   532: astore_2
+    //   533: aload 5
+    //   535: astore_2
+    //   536: goto +56 -> 592
+    //   539: aload_2
+    //   540: invokevirtual 250	android/view/View:getTag	()Ljava/lang/Object;
+    //   543: checkcast 69	ambi
+    //   546: astore 6
+    //   548: goto -316 -> 232
+    //   551: aload_2
+    //   552: astore 5
+    //   554: aload_2
+    //   555: aconst_null
+    //   556: invokevirtual 219	android/view/View:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   559: goto -109 -> 450
+    //   562: astore_2
+    //   563: aload_2
+    //   564: athrow
+    //   565: aload_2
+    //   566: astore 5
+    //   568: aload 6
+    //   570: getfield 112	ambi:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   573: bipush 8
+    //   575: invokevirtual 226	android/widget/ImageView:setVisibility	(I)V
+    //   578: goto +14 -> 592
+    //   581: astore 5
+    //   583: goto +9 -> 592
+    //   586: aconst_null
+    //   587: astore 7
+    //   589: goto -276 -> 313
+    //   592: aload_2
+    //   593: astore 5
+    //   595: aload 5
+    //   597: astore 6
+    //   599: goto -579 -> 20
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	602	0	this	ambh
+    //   0	602	1	paramInt	int
+    //   0	602	2	paramView	android.view.View
+    //   0	602	3	paramViewGroup	android.view.ViewGroup
+    //   274	47	4	i	int
+    //   4	563	5	localObject1	Object
+    //   581	1	5	localThrowable	java.lang.Throwable
+    //   593	3	5	localView	android.view.View
+    //   15	583	6	localObject2	Object
+    //   49	539	7	localObject3	Object
+    //   243	211	8	localbgwe	bgwe
+    //   330	22	9	localbhbe	bhbe
+    // Exception table:
+    //   from	to	target	type
+    //   76	90	532	java/lang/Throwable
+    //   93	107	532	java/lang/Throwable
+    //   110	124	532	java/lang/Throwable
+    //   127	141	532	java/lang/Throwable
+    //   144	158	532	java/lang/Throwable
+    //   161	171	532	java/lang/Throwable
+    //   179	191	532	java/lang/Throwable
+    //   194	206	532	java/lang/Throwable
+    //   209	219	532	java/lang/Throwable
+    //   222	228	532	java/lang/Throwable
+    //   235	245	532	java/lang/Throwable
+    //   253	266	532	java/lang/Throwable
+    //   269	276	532	java/lang/Throwable
+    //   279	289	532	java/lang/Throwable
+    //   292	300	532	java/lang/Throwable
+    //   303	313	532	java/lang/Throwable
+    //   316	332	532	java/lang/Throwable
+    //   335	342	532	java/lang/Throwable
+    //   345	356	532	java/lang/Throwable
+    //   359	369	532	java/lang/Throwable
+    //   372	385	532	java/lang/Throwable
+    //   388	410	532	java/lang/Throwable
+    //   413	428	532	java/lang/Throwable
+    //   431	450	532	java/lang/Throwable
+    //   453	468	532	java/lang/Throwable
+    //   471	480	532	java/lang/Throwable
+    //   486	492	532	java/lang/Throwable
+    //   495	503	532	java/lang/Throwable
+    //   506	529	532	java/lang/Throwable
+    //   554	559	532	java/lang/Throwable
+    //   568	578	532	java/lang/Throwable
+    //   0	6	562	finally
+    //   41	70	562	finally
+    //   76	90	562	finally
+    //   93	107	562	finally
+    //   110	124	562	finally
+    //   127	141	562	finally
+    //   144	158	562	finally
+    //   161	171	562	finally
+    //   179	191	562	finally
+    //   194	206	562	finally
+    //   209	219	562	finally
+    //   222	228	562	finally
+    //   235	245	562	finally
+    //   253	266	562	finally
+    //   269	276	562	finally
+    //   279	289	562	finally
+    //   292	300	562	finally
+    //   303	313	562	finally
+    //   316	332	562	finally
+    //   335	342	562	finally
+    //   345	356	562	finally
+    //   359	369	562	finally
+    //   372	385	562	finally
+    //   388	410	562	finally
+    //   413	428	562	finally
+    //   431	450	562	finally
+    //   453	468	562	finally
+    //   471	480	562	finally
+    //   486	492	562	finally
+    //   495	503	562	finally
+    //   506	529	562	finally
+    //   539	548	562	finally
+    //   554	559	562	finally
+    //   568	578	562	finally
+    //   0	6	581	java/lang/Throwable
+    //   41	70	581	java/lang/Throwable
+    //   539	548	581	java/lang/Throwable
   }
-  
-  private void a(int paramInt, long paramLong, byte[] paramArrayOfByte)
-  {
-    for (;;)
-    {
-      try
-      {
-        oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-        localOIDBSSOPkg.mergeFrom(paramArrayOfByte);
-        if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
-        {
-          if (!localOIDBSSOPkg.uint32_result.has()) {
-            break label214;
-          }
-          paramInt = localOIDBSSOPkg.uint32_result.get();
-          if (!localOIDBSSOPkg.str_error_msg.has()) {
-            break label221;
-          }
-          paramArrayOfByte = localOIDBSSOPkg.str_error_msg.get();
-          QLog.e("RecommendTroopManagerImp", 1, String.format("parseRecommendTroop, errcode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramInt), paramArrayOfByte }));
-          return;
-        }
-        paramArrayOfByte = new oidb_0x935.RspBody();
-        paramArrayOfByte.mergeFrom(localOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
-        if ((paramInt != 1) && (paramInt == 2))
-        {
-          ThreadManager.post(new RecommendTroopManagerImp.3(this, paramLong, paramArrayOfByte), 8, null, true);
-          return;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("RecommendTroopManagerImp", 2, "parseRecommendTroop sso error");
-        }
-      }
-      return;
-      label214:
-      paramInt = -8888;
-      continue;
-      label221:
-      paramArrayOfByte = "";
-    }
-  }
-  
-  private void a(long paramLong, oidb_0x935.RspBody paramRspBody)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopManagerImp", 2, "saveNotificationRecommendTroop, lastuin = " + paramLong);
-    }
-    this.jdField_a_of_type_Int = paramRspBody.is_end.get();
-    int i = this.jdField_b_of_type_JavaUtilList.size();
-    if (paramRspBody.cur_pos.get() == 1)
-    {
-      c();
-      if (QLog.isColorLevel()) {
-        QLog.d("RecommendTroopManagerImp", 2, "get first page clear the db");
-      }
-    }
-    Object localObject = paramRspBody.recommend_info.get();
-    awgh localawgh = this.jdField_a_of_type_Awgf.a();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator1 = ((List)localObject).iterator();
-    int j = 50 - i;
-    if (localIterator1.hasNext())
-    {
-      localObject = (oidb_0x935.RecommendInfo)localIterator1.next();
-      if (j >= 0) {
-        break label324;
-      }
-      this.jdField_a_of_type_Int = 1;
-    }
-    try
-    {
-      localawgh.c();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Iterator localIterator2;
-        oidb_0x935.RgroupInfo localRgroupInfo;
-        NotificationRecommendTroopItem localNotificationRecommendTroopItem;
-        if (QLog.isColorLevel()) {
-          QLog.e("RecommendTroopManagerImp", 2, "saveNotificationRecommendTroop commit error");
-        }
-        localawgh.b();
-      }
-    }
-    finally
-    {
-      localawgh.b();
-    }
-    if (localArrayList.size() > 0) {
-      a(0);
-    }
-    if ((this.jdField_b_of_type_Int == paramRspBody.cur_pos.get() - 1) || (paramRspBody.cur_pos.get() == 1))
-    {
-      this.jdField_b_of_type_JavaUtilList.addAll(localArrayList);
-      this.jdField_b_of_type_Int = paramRspBody.cur_pos.get();
-      if (QLog.isColorLevel())
-      {
-        QLog.d("RecommendTroopManagerImp", 2, "getNotificationRecommendTroopList add page" + localArrayList.size());
-        paramRspBody = localArrayList.iterator();
-        while (paramRspBody.hasNext())
-        {
-          localObject = (RecommendTroopItem)paramRspBody.next();
-          QLog.d("RecommendTroopManagerImp", 2, "RecommendTroop from network = " + localObject);
-        }
-        label324:
-        localObject = ((oidb_0x935.RecommendInfo)localObject).msg_groups.get();
-        if (localObject == null) {
-          return;
-        }
-        localawgh.a();
-        localIterator2 = ((List)localObject).iterator();
-        i = j;
-        do
-        {
-          j = i;
-          if (!localIterator2.hasNext()) {
-            break;
-          }
-          localRgroupInfo = (oidb_0x935.RgroupInfo)localIterator2.next();
-          if (i < 0)
-          {
-            this.jdField_a_of_type_Int = 1;
-            j = i;
-            break;
-          }
-          localNotificationRecommendTroopItem = new NotificationRecommendTroopItem();
-        } while (!localRgroupInfo.uint64_group_code.has());
-        localNotificationRecommendTroopItem.uin = String.valueOf(localRgroupInfo.uint64_group_code.get());
-        if (localRgroupInfo.bytes_group_name.has()) {
-          localNotificationRecommendTroopItem.name = new String(localRgroupInfo.bytes_group_name.get().toByteArray());
-        }
-        if (localRgroupInfo.bytes_group_memo.has()) {
-          localNotificationRecommendTroopItem.intro = new String(localRgroupInfo.bytes_group_memo.get().toByteArray());
-        }
-        localNotificationRecommendTroopItem.labelList = a(localRgroupInfo.rpt_group_label.get());
-        localNotificationRecommendTroopItem.memberNum = localRgroupInfo.uint32_member_num.get();
-        localNotificationRecommendTroopItem.x935RgroupInfo = localRgroupInfo.toByteArray();
-        if (localRgroupInfo.bytes_algorithm.has())
-        {
-          localObject = localRgroupInfo.bytes_algorithm.get().toStringUtf8();
-          label568:
-          localNotificationRecommendTroopItem.recomAlgol = ((String)localObject);
-          if (!localRgroupInfo.bytes_join_group_auth.has()) {
-            break label729;
-          }
-          localObject = localRgroupInfo.bytes_join_group_auth.get().toStringUtf8();
-          label599:
-          localNotificationRecommendTroopItem.authSig = ((String)localObject);
-          if (!localRgroupInfo.uint32_activity.has()) {
-            break label737;
-          }
-          j = localRgroupInfo.uint32_activity.get();
-          label627:
-          localNotificationRecommendTroopItem.activity = j;
-          if (!localRgroupInfo.int32_uin_privilege.has()) {
-            break label743;
-          }
-        }
-        label729:
-        label737:
-        label743:
-        for (j = localRgroupInfo.int32_uin_privilege.get();; j = -1)
-        {
-          localNotificationRecommendTroopItem.privilege = j;
-          this.jdField_a_of_type_Awgf.b(localNotificationRecommendTroopItem);
-          localArrayList.add(localNotificationRecommendTroopItem);
-          if (QLog.isColorLevel()) {
-            QLog.d("RecommendTroopManagerImp", 2, "saveNotificationRecommendTroop into db, recommend troop = " + localNotificationRecommendTroopItem);
-          }
-          i -= 1;
-          break;
-          localObject = "";
-          break label568;
-          localObject = "";
-          break label599;
-          j = 0;
-          break label627;
-        }
-      }
-    }
-    this.jdField_a_of_type_Amdu.notifyUI(29, true, this.jdField_b_of_type_JavaUtilList);
-  }
-  
-  public static void a(AppInterface paramAppInterface, int paramInt, String paramString)
-  {
-    if ((paramAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    ThreadManager.post(new RecommendTroopManagerImp.4(paramAppInterface, paramInt, paramString), 5, null, true);
-  }
-  
-  public static void a(AppInterface paramAppInterface, int paramInt, String paramString, BusinessObserver paramBusinessObserver)
-  {
-    if ((paramAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      Object localObject1 = new oidb_0x9fa.ReqBody();
-      ((oidb_0x9fa.ReqBody)localObject1).uint32_appid.set(1);
-      ((oidb_0x9fa.ReqBody)localObject1).int32_channel.set(paramInt);
-      Object localObject2 = new oidb_0x9fa.AddFeedbackHateGroupCmd();
-      ((oidb_0x9fa.AddFeedbackHateGroupCmd)localObject2).uint64_group_code.add(Long.valueOf(l));
-      ((oidb_0x9fa.ReqBody)localObject1).msg_add_hate_group.set((MessageMicro)localObject2);
-      localObject2 = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2554);
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x9fa.ReqBody)localObject1).toByteArray()));
-      localObject1 = new NewIntent(paramAppInterface.getApplication(), mzx.class);
-      ((NewIntent)localObject1).setWithouLogin(true);
-      ((NewIntent)localObject1).putExtra("cmd", "OidbSvc.0x9fa_0");
-      ((NewIntent)localObject1).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
-      ((NewIntent)localObject1).setObserver(paramBusinessObserver);
-      paramAppInterface.startServlet((NewIntent)localObject1);
-      a(paramAppInterface, paramInt, paramString);
-      return;
-    }
-    catch (Exception paramAppInterface)
-    {
-      paramAppInterface.printStackTrace();
-    }
-  }
-  
-  public static int b(QQAppInterface paramQQAppInterface)
-  {
-    int i = 0;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("recommend_troop_info" + paramQQAppInterface.getAccount(), 0);
-    if (paramQQAppInterface != null) {
-      i = paramQQAppInterface.getInt("unread_recommend_troop_count", 0);
-    }
-    return i;
-  }
-  
-  public static List<oidb_0x9fb.Label> b(List<oidb_0xc26.RgoupLabel> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      oidb_0xc26.RgoupLabel localRgoupLabel = (oidb_0xc26.RgoupLabel)paramList.next();
-      oidb_0x9fb.Label localLabel = new oidb_0x9fb.Label();
-      localLabel.bytes_name.set(localRgoupLabel.bytes_name.get());
-      localLabel.edging_color.set(a((oidb_0xc26.RgroupColor)localRgoupLabel.edging_color.get()));
-      localLabel.text_color.set(a((oidb_0xc26.RgroupColor)localRgoupLabel.text_color.get()));
-      localLabel.enum_type.set(localRgoupLabel.enum_type.get());
-      localLabel.uint32_label_attr.set(localRgoupLabel.uint32_label_attr.get());
-      localLabel.uint32_label_type.set(localRgoupLabel.uint32_label_type.get());
-      localArrayList.add(localLabel);
-    }
-    return localArrayList;
-  }
-  
-  private void e()
-  {
-    int i = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    try
-    {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("unread_recommend_troop_count", i).commit();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(alof.W, 9000, b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-      Object localObject = (ambg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33);
-      MessageRecord localMessageRecord = a();
-      if ((localMessageRecord != null) && (!((ambg)localObject).a(alof.W, 9000, localMessageRecord.time))) {
-        ((ambg)localObject).a(alof.W, 9000, alud.a(2131691142), localMessageRecord.time, localMessageRecord.time);
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-      if (localObject != null) {
-        ((MqqHandler)localObject).sendMessage(((MqqHandler)localObject).obtainMessage(1009));
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(TroopNotifyAndRecommendView.class);
-      if (localObject != null) {
-        ((MqqHandler)localObject).sendMessage(((MqqHandler)localObject).obtainMessage(105));
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RecommendTroopManagerImp", 2, "update troopRecommendUnreadCount failed! + msg = " + localException.getMessage());
-        }
-      }
-    }
-  }
-  
-  private void f()
-  {
-    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ContactListView.class);
-    if (localMqqHandler != null)
-    {
-      localMqqHandler.removeMessages(1);
-      localMqqHandler.sendEmptyMessageDelayed(1, 100L);
-    }
-  }
-  
-  public MessageRecord a()
-  {
-    try
-    {
-      List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(alof.Y, 4001);
-      if ((localList != null) && (localList.size() > 0))
-      {
-        int i = localList.size() - 1;
-        while (i >= 0)
-        {
-          MessageRecord localMessageRecord = (MessageRecord)localList.get(i);
-          if (((localMessageRecord.msgtype == -1039) || (localMessageRecord.msgtype == -1040)) && (localMessageRecord.msg != null))
-          {
-            int j = localMessageRecord.msg.length();
-            if (j > 0) {
-              return localMessageRecord;
-            }
-          }
-          i -= 1;
-        }
-      }
-      return null;
-    }
-    catch (NullPointerException localNullPointerException) {}
-  }
-  
-  public String a()
-  {
-    try
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(alof.Y, 4001);
-      if ((localObject != null) && (((List)localObject).size() > 0))
-      {
-        int i = ((List)localObject).size() - 1;
-        while (i >= 0)
-        {
-          MessageRecord localMessageRecord = (MessageRecord)((List)localObject).get(i);
-          if (((localMessageRecord.msgtype == -1039) || (localMessageRecord.msgtype == -1040)) && (localMessageRecord.msg != null) && (localMessageRecord.msg.length() > 0))
-          {
-            localObject = localMessageRecord.msg;
-            return localObject;
-          }
-          i -= 1;
-        }
-      }
-      return "";
-    }
-    catch (NullPointerException localNullPointerException) {}
-  }
-  
-  public List<RecommendTroopItem> a()
-  {
-    List localList = null;
-    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(TroopNotifyAndRecommendView.class);
-    Message localMessage = localMqqHandler.obtainMessage();
-    localMessage.what = 1015;
-    if (this.jdField_a_of_type_Awgf != null)
-    {
-      localList = this.jdField_a_of_type_Awgf.a(NotificationRecommendTroopItem.class, false, null, new String[0], null, null, null, null);
-      this.jdField_a_of_type_Awgf.a();
-      localMessage.obj = localList;
-      if ((QLog.isColorLevel()) && (localList != null))
-      {
-        QLog.d("RecommendTroopManagerImp", 2, "getNotificationRecommendTroopList from db, sz = " + localList.size());
-        Iterator localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)localIterator.next();
-          QLog.d("RecommendTroopManagerImp", 2, "RecommendTroop from db = " + localRecommendTroopItem);
-        }
-      }
-      localMqqHandler.sendMessage(localMessage);
-    }
-    return localList;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RecommendTroopManagerImp", 4, "updateDBStatsus:" + paramInt);
-    }
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("recommendtroop_notification", 0).edit();
-    localEditor.putInt("recommendtroop_notification_status", paramInt);
-    localEditor.commit();
-    this.d = paramInt;
-  }
-  
-  public void a(int paramInt, oidb_0x935.GPS paramGPS, BusinessObserver paramBusinessObserver)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RecommendTroopManagerImp", 4, "getRecommend0x935TroopFromServer() start getRecommend0x935TroopFromServer");
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RecommendTroopManagerImp", 4, "getRecommendTroopFromServer() start getRecommendTroopFromServer");
-    }
-    if ((this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) && (((Boolean)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).booleanValue())) {
-      return;
-    }
-    if (this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt) != null) {}
-    for (long l1 = ((Long)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt)).longValue();; l1 = 0L)
-    {
-      long l2 = System.currentTimeMillis() / 1000L;
-      if ((l1 > 0L) && (l2 - l1 < 60L)) {}
-      this.jdField_b_of_type_AndroidUtilSparseArray.append(paramInt, Long.valueOf(l2));
-      this.jdField_a_of_type_AndroidUtilSparseArray.append(paramInt, Boolean.valueOf(true));
-      if (QLog.isDevelopLevel()) {
-        QLog.d("RecommendTroopManagerImp", 4, "getRecommendTroopFromServer() start");
-      }
-      Object localObject = new oidb_0x935.ReqBody();
-      ((oidb_0x935.ReqBody)localObject).uint32_appid.set(1);
-      ((oidb_0x935.ReqBody)localObject).uint32_pos.set(this.jdField_b_of_type_Int);
-      if (paramGPS != null) {
-        ((oidb_0x935.ReqBody)localObject).msg_gps.set(paramGPS);
-      }
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
-      {
-        if (QLog.isDevelopLevel())
-        {
-          paramGPS = new StringBuilder();
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-          while (localIterator.hasNext())
-          {
-            oidb_0x935.NotifyInfo localNotifyInfo = (oidb_0x935.NotifyInfo)localIterator.next();
-            paramGPS.append(localNotifyInfo.uint64_notify_gc.get() + "," + localNotifyInfo.uint32_notify_type.get() + " ");
-          }
-          QLog.d("RecommendTroopManagerImp", 4, "getRecommendTroopFromServer() report " + paramGPS.toString());
-        }
-        ((oidb_0x935.ReqBody)localObject).msg_notify_info.set(this.jdField_a_of_type_JavaUtilArrayList);
-      }
-      paramGPS = new oidb_sso.OIDBSSOPkg();
-      paramGPS.uint32_command.set(2357);
-      paramGPS.uint32_result.set(0);
-      paramGPS.uint32_service_type.set(4);
-      paramGPS.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x935.ReqBody)localObject).toByteArray()));
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), mzx.class);
-      ((NewIntent)localObject).setWithouLogin(true);
-      ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x935_4");
-      ((NewIntent)localObject).putExtra("data", paramGPS.toByteArray());
-      ((NewIntent)localObject).setObserver(paramBusinessObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-      return;
-    }
-  }
-  
-  public void a(long paramLong, oidb_0x935.GPS paramGPS)
-  {
-    a(2, paramGPS, new ambi(this, paramLong));
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(alof.Y, 4001);
-    if ((localList != null) && (localList.size() > 0))
-    {
-      i = localList.size() - 1;
-      while (i >= 0)
-      {
-        MessageRecord localMessageRecord = (MessageRecord)localList.get(i);
-        if ((localMessageRecord.msgtype == -1039) && (!TextUtils.isEmpty(localMessageRecord.extStr)) && (localMessageRecord.extStr.equals(paramString)))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
-          localList.remove(i);
-        }
-        i -= 1;
-      }
-    }
-    int i = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("unread_recommend_troop_count", i).commit();
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopManagerImp", 2, "updateTroopRecommend content:" + paramString + ",\n uin: " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + ", version:" + paramInt);
-    }
-    try
-    {
-      if (new JSONObject(paramString).getInt("showNewTroopRecommend") == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.jdField_a_of_type_Boolean = bool;
-        paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-        paramString.edit().putBoolean("show_new_troop_recommend", bool);
-        paramString.edit().commit();
-        return;
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      QLog.d("RecommendTroopManagerImp", 1, "updateLebaConfig e:" + paramString.toString());
-    }
-  }
-  
-  public void a(String paramString, BusinessObserver paramBusinessObserver)
-  {
-    Object localObject = new oidb_0x935.ReqBody();
-    try
-    {
-      l = Long.valueOf(paramString).longValue();
-      if (l == 0L) {
-        return;
-      }
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      long l;
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("RecommendTroopManagerImp", 2, "setRecommendTroopDeleted NumberFormatException + " + paramString);
-        }
-        l = 0L;
-      }
-      ((oidb_0x935.ReqBody)localObject).uint32_appid.set(1);
-      ((oidb_0x935.ReqBody)localObject).uint64_black_gc.set(l);
-      paramString = new oidb_sso.OIDBSSOPkg();
-      paramString.uint32_command.set(2357);
-      paramString.uint32_result.set(0);
-      paramString.uint32_service_type.set(7);
-      paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x935.ReqBody)localObject).toByteArray()));
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), mzx.class);
-      ((NewIntent)localObject).setWithouLogin(true);
-      ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x935_7");
-      ((NewIntent)localObject).putExtra("data", paramString.toByteArray());
-      ((NewIntent)localObject).setObserver(paramBusinessObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-    }
-  }
-  
-  public void a(ArrayList<oidb_0x935.NotifyInfo> paramArrayList)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("saveGroupSysNotifyReportData ");
-      if (paramArrayList != null) {
-        break label70;
-      }
-    }
-    label70:
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramArrayList.size()))
-    {
-      QLog.d("RecommendTroopManagerImp", 2, localObject);
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramArrayList != null))
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-      }
-      return;
-    }
-  }
-  
-  public void a(List<group_activity.GroupAct> paramList)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    long l = NetConnInfoCenter.getServerTime();
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    if (paramList != null)
-    {
-      localObject1 = localObject3;
-      if (paramList.size() != 0)
-      {
-        paramList = (group_activity.GroupAct)paramList.get(0);
-        localObject1 = localObject3;
-        if (paramList != null)
-        {
-          localObject1 = new RecTroopBusinessItem();
-          ((RecTroopBusinessItem)localObject1).id = String.valueOf(paramList.uint32_act_id.get());
-          ((RecTroopBusinessItem)localObject1).title = paramList.string_title.get();
-          ((RecTroopBusinessItem)localObject1).des = paramList.string_des.get();
-          ((RecTroopBusinessItem)localObject1).jumpType = paramList.uint32_jumptype.get();
-          ((RecTroopBusinessItem)localObject1).jumpUrl = paramList.string_url.get();
-          ((RecTroopBusinessItem)localObject1).jumpParam = paramList.string_jumpparam.get();
-          ((RecTroopBusinessItem)localObject1).iconUrl = paramList.string_iconurl.get();
-          ((RecTroopBusinessItem)localObject1).btnText = paramList.string_btntext.get();
-          ((RecTroopBusinessItem)localObject1).startTime = paramList.uint32_start_time.get();
-          ((RecTroopBusinessItem)localObject1).endTime = paramList.uint32_end_time.get();
-          ((RecTroopBusinessItem)localObject1).timeStamp = l;
-          this.jdField_a_of_type_Awgf.b((awge)localObject1);
-        }
-      }
-    }
-    int i;
-    awgh localawgh;
-    if (localObject1 == null)
-    {
-      localObject3 = this.jdField_a_of_type_Awgf.a(RecTroopBusinessItem.class, false, null, null, null, null, "timeStamp desc", null);
-      if ((localObject3 != null) && (((List)localObject3).size() != 0))
-      {
-        paramList = (RecTroopBusinessItem)((List)localObject3).get(0);
-        if (((List)localObject3).size() > 60)
-        {
-          i = ((List)localObject3).size() - 1;
-          while (i >= 60)
-          {
-            localObject1 = (RecTroopBusinessItem)((List)localObject3).get(i);
-            this.jdField_a_of_type_Awgf.b((awge)localObject1);
-            i -= 1;
-          }
-        }
-        if (paramList != null)
-        {
-          localObject1 = azaf.a(-1040);
-          ((MessageRecord)localObject1).extStr = paramList.id;
-          ((MessageRecord)localObject1).init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), alof.Y, "0", paramList.title, l, -1040, 4001, 0L);
-          localArrayList.add(localObject1);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(-1040);
-        }
-        localObject3 = new HashMap();
-        localawgh = this.jdField_a_of_type_Awgf.a();
-      }
-    }
-    for (;;)
-    {
-      int j;
-      int k;
-      int m;
-      try
-      {
-        localawgh.a();
-        i = localArrayList.size();
-        j = 0;
-        if (j < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          Object localObject4 = (SearchGroup.GroupInfo)this.jdField_a_of_type_JavaUtilList.get(j);
-          if ((localObject4 == null) || ((localObject4 != null) && (((SearchGroup.GroupInfo)localObject4).dwGroupUin.get() == 0) && (((SearchGroup.GroupInfo)localObject4).dwGroupCode.get() == 0))) {
-            break label1347;
-          }
-          localObject1 = (RecommendTroopInfo)this.jdField_a_of_type_Awgf.a(RecommendTroopInfo.class, String.valueOf(((SearchGroup.GroupInfo)localObject4).dwGroupCode.get()));
-          if (localObject1 != null) {
-            break label1335;
-          }
-          localObject1 = new RecommendTroopInfo();
-          k = 0;
-          ((RecommendTroopInfo)localObject1).code = String.valueOf(((SearchGroup.GroupInfo)localObject4).dwGroupUin.get());
-          ((RecommendTroopInfo)localObject1).uin = String.valueOf(((SearchGroup.GroupInfo)localObject4).dwGroupCode.get());
-          ((RecommendTroopInfo)localObject1).ownerUin = String.valueOf(((SearchGroup.GroupInfo)localObject4).dwGroupOwnerId.get());
-          ((RecommendTroopInfo)localObject1).curMemberNum = ((SearchGroup.GroupInfo)localObject4).dwCurMemberNum.get();
-          ((RecommendTroopInfo)localObject1).maxMemberNum = ((SearchGroup.GroupInfo)localObject4).dwMaxMemberNum.get();
-          ((RecommendTroopInfo)localObject1).name = ((SearchGroup.GroupInfo)localObject4).sGroupName.get();
-          ((RecommendTroopInfo)localObject1).fingerMemo = ((SearchGroup.GroupInfo)localObject4).sGroupFingerMem.get();
-          ((RecommendTroopInfo)localObject1).faceId = ((SearchGroup.GroupInfo)localObject4).dwGroupFaceId.get();
-          ((RecommendTroopInfo)localObject1).faceUrl = ((SearchGroup.GroupInfo)localObject4).sGroupFaceUrl.get();
-          ((RecommendTroopInfo)localObject1).tag = ((SearchGroup.GroupInfo)localObject4).sGroupTag.get();
-          ((RecommendTroopInfo)localObject1).classId = ((SearchGroup.GroupInfo)localObject4).dwGroupClass.get();
-          ((RecommendTroopInfo)localObject1).classText = ((SearchGroup.GroupInfo)localObject4).sGroupClassText.get();
-          ((RecommendTroopInfo)localObject1).level = ((SearchGroup.GroupInfo)localObject4).dwGroupLevel.get();
-          ((RecommendTroopInfo)localObject1).isSameCity = ((SearchGroup.GroupInfo)localObject4).bSameCity.get();
-          ((RecommendTroopInfo)localObject1).isTroopFull = ((SearchGroup.GroupInfo)localObject4).bGroupFull.get();
-          ((RecommendTroopInfo)localObject1).isTroopAllow = ((SearchGroup.GroupInfo)localObject4).bGroupAllow.get();
-          ((RecommendTroopInfo)localObject1).isTroopIn = ((SearchGroup.GroupInfo)localObject4).bGroupIn.get();
-          ((RecommendTroopInfo)localObject1).hotDegree = ((SearchGroup.GroupInfo)localObject4).dwGroupHotDegree.get();
-          ((RecommendTroopInfo)localObject1).flagExt = ((SearchGroup.GroupInfo)localObject4).dwGroupFlagExt.get();
-          ((RecommendTroopInfo)localObject1).authType = ((SearchGroup.GroupInfo)localObject4).dwAuthGroupType.get();
-          ((RecommendTroopInfo)localObject1).location = ((SearchGroup.GroupInfo)localObject4).sGroupLocation.get();
-          ((RecommendTroopInfo)localObject1).option = ((short)((SearchGroup.GroupInfo)localObject4).dwGroupOption.get());
-          if (k != 0) {
-            continue;
-          }
-          this.jdField_a_of_type_Awgf.b((awge)localObject1);
-          localObject4 = azaf.a(-1039);
-          String str = ((RecommendTroopInfo)localObject1).name;
-          ((MessageRecord)localObject4).extStr = ((RecommendTroopInfo)localObject1).uin;
-          ((MessageRecord)localObject4).init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), alof.Y, "0", str, l, -1039, 4001, 0L);
-          localArrayList.add(localObject4);
-          ((HashMap)localObject3).put(((RecommendTroopInfo)localObject1).uin, Integer.valueOf(1));
-          k = i + 1;
-          i = k;
-          if (k < 60) {
-            break label1347;
-          }
-        }
-        localawgh.c();
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        localawgh.b();
-        continue;
-      }
-      finally
-      {
-        localawgh.b();
-      }
-      if ((localArrayList.size() >= 1) || ((localArrayList.size() == 1) && (paramList == null)))
-      {
-        m = 60 - localArrayList.size();
-        if (m <= 0)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(-1039);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        f();
-        e();
-        return;
-        this.jdField_a_of_type_Awgf.a((awge)localObject1);
-        continue;
-      }
-      paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(alof.Y, 4001);
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        i = paramList.size() - 1;
-        Object localObject2;
-        while (i >= 0)
-        {
-          localObject2 = (MessageRecord)paramList.get(i);
-          if ((((MessageRecord)localObject2).msgtype == -1039) && (((HashMap)localObject3).containsKey(((MessageRecord)localObject2).extStr)))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq);
-            paramList.remove(i);
-          }
-          i -= 1;
-        }
-        j = 0;
-        k = paramList.size() - 1;
-        while (k >= 0)
-        {
-          localObject2 = (MessageRecord)paramList.get(k);
-          i = j;
-          if (((MessageRecord)localObject2).msgtype == -1039)
-          {
-            j += 1;
-            i = j;
-            if (j > m)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq);
-              localObject2 = (RecommendTroopInfo)this.jdField_a_of_type_Awgf.a(RecommendTroopInfo.class, ((MessageRecord)localObject2).extStr);
-              i = j;
-              if (localObject2 != null)
-              {
-                this.jdField_a_of_type_Awgf.b((awge)localObject2);
-                i = j;
-              }
-            }
-          }
-          k -= 1;
-          j = i;
-        }
-        continue;
-        label1335:
-        k = 1;
-        continue;
-        paramList = (List<group_activity.GroupAct>)localObject2;
-        break;
-        label1347:
-        j += 1;
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      SosoInterface.a(this.jdField_a_of_type_Ampt);
-      return true;
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(-1039);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(-1040);
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("unread_recommend_troop_count", 0).commit();
-  }
-  
-  public void b(List<group_activity.GroupAct> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    a(paramList);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Awgf != null) {
-      this.jdField_a_of_type_Awgf.a(NotificationRecommendTroopItem.class);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(-1039);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(-1040);
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("unread_recommend_troop_count", 0).commit();
-  }
-  
-  public void d()
-  {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaUtilList.clear();
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ambh
  * JD-Core Version:    0.7.0.1
  */

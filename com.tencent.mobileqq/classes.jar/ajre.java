@@ -1,17 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
 public class ajre
   implements DialogInterface.OnClickListener
 {
-  public ajre(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public ajre(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, advd paramadvd) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    wxj.a("video_shoot", "down_now", 0, 0, new String[0]);
-    atdh.b(null);
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Advd.a(false);
   }
 }
 

@@ -1,18 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class bbif
-  extends BroadcastReceiver
+  extends ClickableSpan
 {
-  public bbif(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public bbif(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramIntent != null) && (paramIntent.getAction().equals("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete"))) {
-      this.a.finish();
-    }
+    this.a.openContextMenu(this.a.a);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

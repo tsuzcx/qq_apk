@@ -1,366 +1,438 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalHitInfo;
-import com.tencent.av.redpacket.ui.RedPacketGameView;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class lwa
-  implements Handler.Callback, lwg
+class lwa
+  implements lvy
 {
-  public int a;
-  public Handler a;
-  public VideoAppInterface a;
-  public AVRedPacketManager a;
-  public AVActivity a;
-  public Handler b = new Handler(ThreadManager.getFileThreadLooper(), this);
+  private IBinder a;
   
-  public lwa(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
+  lwa(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvUiAVActivity = paramAVActivity;
-    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager = ((AVRedPacketManager)paramVideoAppInterface.a(6));
-    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(this);
+    this.a = paramIBinder;
   }
   
-  private RedPacketGameView a()
+  public int a(long paramLong, int paramInt)
   {
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131365411);
-    Object localObject1 = null;
-    Object localObject2;
-    View localView;
-    if (localViewGroup != null)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      localObject2 = (RedPacketGameView)localViewGroup.findViewById(2131372832);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new RedPacketGameView(localViewGroup.getContext(), this.jdField_a_of_type_ComTencentAvUiAVActivity);
-        if (this.jdField_a_of_type_ComTencentAvUiAVActivity.a != null) {
-          break label114;
-        }
-        i = 0;
-        ((RedPacketGameView)localObject1).setScoreMarginTop(i);
-        localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-        localView = localViewGroup.findViewById(2131372799);
-        if (localView == null) {
-          break label128;
-        }
-      }
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      localParcel1.writeLong(paramLong);
+      localParcel1.writeInt(paramInt);
+      this.a.transact(7, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      paramInt = localParcel2.readInt();
+      return paramInt;
     }
-    label128:
-    for (int i = localViewGroup.indexOfChild(localView);; i = -1)
+    finally
     {
-      localViewGroup.addView((View)localObject1, i, (ViewGroup.LayoutParams)localObject2);
-      return localObject1;
-      label114:
-      i = this.jdField_a_of_type_ComTencentAvUiAVActivity.a.e();
-      break;
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
-  private void c(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo)
+  /* Error */
+  public com.tencent.av.service.AVPbInfo a(byte[] paramArrayOfByte)
   {
-    int i = 3;
-    paramLocalFrameSyncInfo = paramLocalFrameSyncInfo.localHitInfo;
-    if (paramLocalFrameSyncInfo.topWordTipType == 1) {}
-    for (;;)
-    {
-      if (i != -1) {
-        this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(i, false);
-      }
-      if (paramLocalFrameSyncInfo.comboCnt > 0) {
-        this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(6, false);
-      }
-      return;
-      if (paramLocalFrameSyncInfo.topWordTipType == 2) {
-        i = 2;
-      } else if (paramLocalFrameSyncInfo.topWordTipType == 3) {
-        i = 4;
-      } else if (paramLocalFrameSyncInfo.topWordTipType == 4) {
-        i = 5;
-      } else {
-        i = -1;
-      }
-    }
-  }
-  
-  private boolean c()
-  {
-    return this.jdField_a_of_type_Int != -1;
-  }
-  
-  private void h()
-  {
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131365411);
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)localViewGroup.findViewById(2131372832);
-    if (localRedPacketGameView != null)
-    {
-      localRedPacketGameView.e();
-      localViewGroup.removeView(localRedPacketGameView);
-    }
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: astore_3
+    //   8: aload_2
+    //   9: ldc 25
+    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   14: aload_2
+    //   15: aload_1
+    //   16: invokevirtual 58	android/os/Parcel:writeByteArray	([B)V
+    //   19: aload_0
+    //   20: getfield 15	lwa:a	Landroid/os/IBinder;
+    //   23: bipush 9
+    //   25: aload_2
+    //   26: aload_3
+    //   27: iconst_0
+    //   28: invokeinterface 43 5 0
+    //   33: pop
+    //   34: aload_3
+    //   35: invokevirtual 46	android/os/Parcel:readException	()V
+    //   38: aload_3
+    //   39: invokevirtual 50	android/os/Parcel:readInt	()I
+    //   42: ifeq +26 -> 68
+    //   45: getstatic 64	com/tencent/av/service/AVPbInfo:CREATOR	Landroid/os/Parcelable$Creator;
+    //   48: aload_3
+    //   49: invokeinterface 70 2 0
+    //   54: checkcast 60	com/tencent/av/service/AVPbInfo
+    //   57: astore_1
+    //   58: aload_3
+    //   59: invokevirtual 53	android/os/Parcel:recycle	()V
+    //   62: aload_2
+    //   63: invokevirtual 53	android/os/Parcel:recycle	()V
+    //   66: aload_1
+    //   67: areturn
+    //   68: aconst_null
+    //   69: astore_1
+    //   70: goto -12 -> 58
+    //   73: astore_1
+    //   74: aload_3
+    //   75: invokevirtual 53	android/os/Parcel:recycle	()V
+    //   78: aload_2
+    //   79: invokevirtual 53	android/os/Parcel:recycle	()V
+    //   82: aload_1
+    //   83: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	84	0	this	lwa
+    //   0	84	1	paramArrayOfByte	byte[]
+    //   3	76	2	localParcel1	Parcel
+    //   7	68	3	localParcel2	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   8	58	73	finally
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.onGameFinish," + this.jdField_a_of_type_Int);
-    }
-    if (!c()) {}
-    while (this.jdField_a_of_type_Int == 5) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 5;
-    c();
-    h();
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.showGameRunning, " + this.jdField_a_of_type_Int + "," + paramInt);
-    }
-    if (!c()) {}
-    while (this.jdField_a_of_type_Int == 4) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 4;
-    c();
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372832);
-    localRedPacketGameView.setVisibility(0);
-    localRedPacketGameView.b(false);
-    if (paramInt == 2) {
-      localRedPacketGameView.c();
-    }
-    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(7, true);
-  }
-  
-  public void a(int paramInt, List<AVRedPacketManager.LocalEmojiInfo> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.showGameReady, " + this.jdField_a_of_type_Int + "," + paramInt);
-    }
-    if (!a()) {}
-    while (this.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 3;
-    c();
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372832);
-    localRedPacketGameView.setVisibility(0);
-    localRedPacketGameView.a(paramInt, paramList);
-  }
-  
-  public void a(int paramInt, lwh paramlwh)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.preLoadRes,mState = " + this.jdField_a_of_type_Int + ",type = " + paramInt + ",manager = " + this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager);
-    }
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     try
     {
-      long l1 = System.currentTimeMillis();
-      RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372832);
-      if (localRedPacketGameView != null) {
-        localRedPacketGameView.a(this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager);
-      }
-      for (boolean bool = true;; bool = false)
-      {
-        long l2 = System.currentTimeMillis();
-        if (QLog.isColorLevel()) {
-          QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.preLoadRes,suc = " + bool + ",type = " + paramInt + ",cost = " + (l2 - l1));
-        }
-        if (paramlwh == null) {
-          break;
-        }
-        paramlwh.a(bool, paramInt);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.preLoadRes  not init");
-        }
-      }
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      this.a.transact(12, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    catch (Exception paramlwh)
+    finally
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.preLoadRes  exception", paramlwh);
-      }
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(long paramLong)
   {
-    if (!a()) {}
-    RedPacketGameView localRedPacketGameView;
-    do
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      return;
-      localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372832);
-      if (paramInt == AVRedPacketManager.jdField_a_of_type_Int)
-      {
-        localRedPacketGameView.b(paramBoolean);
-        return;
-      }
-      if (paramInt == AVRedPacketManager.b)
-      {
-        localRedPacketGameView.c(paramBoolean);
-        return;
-      }
-      if (paramInt == AVRedPacketManager.c)
-      {
-        localRedPacketGameView.d(paramBoolean);
-        return;
-      }
-    } while (paramInt != AVRedPacketManager.d);
-    localRedPacketGameView.e(paramBoolean);
-  }
-  
-  public void a(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.onEmojiHit, " + this.jdField_a_of_type_Int + ",localFrameSyncInfo=" + paramLocalFrameSyncInfo);
-    }
-    if (!c()) {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      localParcel1.writeLong(paramLong);
+      this.a.transact(11, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372832);
-    localRedPacketGameView.setVisibility(0);
-    localRedPacketGameView.a(paramLocalFrameSyncInfo);
-    c(paramLocalFrameSyncInfo);
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
+  public void a(long paramLong, String paramString)
   {
-    Object localObject = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372832);
-    if (this.jdField_a_of_type_Int == -1)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      RedPacketGameView localRedPacketGameView = a();
-      localObject = localRedPacketGameView;
-      if (localRedPacketGameView != null)
-      {
-        this.jdField_a_of_type_Int = 1;
-        localObject = localRedPacketGameView;
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      localParcel1.writeLong(paramLong);
+      localParcel1.writeString(paramString);
+      this.a.transact(10, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      localParcel.writeString(paramString);
+      this.a.transact(8, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  /* Error */
+  public void a(String paramString, android.graphics.Bitmap paramBitmap)
+  {
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_3
+    //   4: aload_3
+    //   5: ldc 25
+    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_3
+    //   11: aload_1
+    //   12: invokevirtual 74	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   15: aload_2
+    //   16: ifnull +34 -> 50
+    //   19: aload_3
+    //   20: iconst_1
+    //   21: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+    //   24: aload_2
+    //   25: aload_3
+    //   26: iconst_0
+    //   27: invokevirtual 81	android/graphics/Bitmap:writeToParcel	(Landroid/os/Parcel;I)V
+    //   30: aload_0
+    //   31: getfield 15	lwa:a	Landroid/os/IBinder;
+    //   34: bipush 6
+    //   36: aload_3
+    //   37: aconst_null
+    //   38: iconst_1
+    //   39: invokeinterface 43 5 0
+    //   44: pop
+    //   45: aload_3
+    //   46: invokevirtual 53	android/os/Parcel:recycle	()V
+    //   49: return
+    //   50: aload_3
+    //   51: iconst_0
+    //   52: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+    //   55: goto -25 -> 30
+    //   58: astore_1
+    //   59: aload_3
+    //   60: invokevirtual 53	android/os/Parcel:recycle	()V
+    //   63: aload_1
+    //   64: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	65	0	this	lwa
+    //   0	65	1	paramString	String
+    //   0	65	2	paramBitmap	android.graphics.Bitmap
+    //   3	57	3	localParcel	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	15	58	finally
+    //   19	30	58	finally
+    //   30	45	58	finally
+    //   50	55	58	finally
+  }
+  
+  public void a(lvv paramlvv)
+  {
+    IBinder localIBinder = null;
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      if (paramlvv != null) {
+        localIBinder = paramlvv.asBinder();
       }
+      localParcel.writeStrongBinder(localIBinder);
+      this.a.transact(1, localParcel, null, 1);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "initUI," + this.jdField_a_of_type_Int + "," + localObject);
+    finally
+    {
+      localParcel.recycle();
     }
-    return localObject != null;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    int i = 0;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      if (paramBoolean) {
+        i = 1;
+      }
+      localParcel1.writeInt(i);
+      this.a.transact(14, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  /* Error */
+  public void a(boolean paramBoolean, android.app.Notification paramNotification)
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_3
+    //   2: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   5: astore 4
+    //   7: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   10: astore 5
+    //   12: aload 4
+    //   14: ldc 25
+    //   16: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   19: iload_1
+    //   20: ifeq +58 -> 78
+    //   23: aload 4
+    //   25: iload_3
+    //   26: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+    //   29: aload_2
+    //   30: ifnull +53 -> 83
+    //   33: aload 4
+    //   35: iconst_1
+    //   36: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+    //   39: aload_2
+    //   40: aload 4
+    //   42: iconst_0
+    //   43: invokevirtual 96	android/app/Notification:writeToParcel	(Landroid/os/Parcel;I)V
+    //   46: aload_0
+    //   47: getfield 15	lwa:a	Landroid/os/IBinder;
+    //   50: iconst_5
+    //   51: aload 4
+    //   53: aload 5
+    //   55: iconst_0
+    //   56: invokeinterface 43 5 0
+    //   61: pop
+    //   62: aload 5
+    //   64: invokevirtual 46	android/os/Parcel:readException	()V
+    //   67: aload 5
+    //   69: invokevirtual 53	android/os/Parcel:recycle	()V
+    //   72: aload 4
+    //   74: invokevirtual 53	android/os/Parcel:recycle	()V
+    //   77: return
+    //   78: iconst_0
+    //   79: istore_3
+    //   80: goto -57 -> 23
+    //   83: aload 4
+    //   85: iconst_0
+    //   86: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+    //   89: goto -43 -> 46
+    //   92: astore_2
+    //   93: aload 5
+    //   95: invokevirtual 53	android/os/Parcel:recycle	()V
+    //   98: aload 4
+    //   100: invokevirtual 53	android/os/Parcel:recycle	()V
+    //   103: aload_2
+    //   104: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	105	0	this	lwa
+    //   0	105	1	paramBoolean	boolean
+    //   0	105	2	paramNotification	android.app.Notification
+    //   1	79	3	i	int
+    //   5	94	4	localParcel1	Parcel
+    //   10	84	5	localParcel2	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   12	19	92	finally
+    //   23	29	92	finally
+    //   33	46	92	finally
+    //   46	67	92	finally
+    //   83	89	92	finally
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      localParcel.writeByteArray(paramArrayOfByte);
+      this.a.transact(2, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
   
   public void b()
   {
-    if (!c()) {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      this.a.transact(13, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    ((RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372832)).d();
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
   
-  public void b(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo)
+  public void b(byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.onUpdateFrameInfo, " + this.jdField_a_of_type_Int + "," + paramLocalFrameSyncInfo);
-    }
-    if (!c()) {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      localParcel1.writeByteArray(paramArrayOfByte);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    ((RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372832)).b(paramLocalFrameSyncInfo);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int != -1;
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Int == -1) {}
-    while ((b()) || (!QLog.isColorLevel())) {
-      return;
-    }
-    QLog.d("AVRedPacketManager", 2, "gameMode");
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.showRedPacketSend, " + this.jdField_a_of_type_Int);
-    }
-    if (!a()) {}
-    while (this.jdField_a_of_type_Int == 2) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 2;
-    c();
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372832);
-    localRedPacketGameView.setVisibility(0);
-    localRedPacketGameView.a();
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.showRedPacketCome, " + this.jdField_a_of_type_Int);
-    }
-    if (!a()) {}
-    while (this.jdField_a_of_type_Int == 2) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 2;
-    c();
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372832);
-    localRedPacketGameView.setVisibility(0);
-    localRedPacketGameView.b();
-  }
-  
-  public void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "AVRedPacketGameControl.showReceiverUserGuide, " + this.jdField_a_of_type_Int);
-    }
-    if (!a()) {}
-    RedPacketGameView localRedPacketGameView;
-    do
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      this.a.transact(15, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
-      localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131372832);
-    } while (localRedPacketGameView == null);
-    localRedPacketGameView.f();
-  }
-  
-  public void g()
-  {
-    if (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager != null) {
-      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(null);
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void c(byte[] paramArrayOfByte)
   {
-    int i = paramMessage.what;
-    return false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      localParcel1.writeByteArray(paramArrayOfByte);
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lwa
  * JD-Core Version:    0.7.0.1
  */

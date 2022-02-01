@@ -1,8 +1,6 @@
-public class bkpw
-  extends bmes
+public abstract interface bkpw
 {
-  public final bmen<bkya> a = new bmen();
-  public final bmen<bkto> b = new bmen();
+  public abstract boolean a();
 }
 
 

@@ -1,22 +1,19 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class aizb
-  implements TextWatcher
+public class aizb
+  implements View.OnClickListener
 {
-  protected EditText a;
+  public aizb(NewFriendMoreSysMsgSuspiciousFragment paramNewFriendMoreSysMsgSuspiciousFragment) {}
   
-  public aizb(EditText paramEditText)
+  public void onClick(View paramView)
   {
-    this.a = paramEditText;
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

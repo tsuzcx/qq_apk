@@ -1,43 +1,87 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqqs
-  implements arrh
+public class aqqs
+  implements aqlb<String>
 {
-  aqqs(aqqr paramaqqr, FileManagerEntity paramFileManagerEntity) {}
+  public ArrayList<aqqt> a = new ArrayList();
   
-  public void a()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Aqqr.a.a.a().ac();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      QfileBaseRecentFileTabView.t(this.jdField_a_of_type_Aqqr.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    alqo localalqo;
-    ArrayList localArrayList;
-    do
+    this.a.clear();
+    if (TextUtils.isEmpty(paramString))
     {
+      QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config content is empty");
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("random_list");
+        if (paramString != null)
+        {
+          i = 0;
+          if (i < paramString.length())
+          {
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            aqqt localaqqt = new aqqt();
+            localaqqt.a = localJSONObject.optString("nick", "");
+            localaqqt.b = localJSONObject.optString("headid", "");
+            localaqqt.c = localJSONObject.optString("url", "");
+            if ((!TextUtils.isEmpty(localaqqt.a)) && (!TextUtils.isEmpty(localaqqt.b)) && (!TextUtils.isEmpty(localaqqt.c))) {
+              break label230;
+            }
+            if (!QLog.isColorLevel()) {
+              break label235;
+            }
+            QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse.find invalid,index=", Integer.valueOf(i) });
+            break label235;
+            if (j == 0) {
+              break label240;
+            }
+            this.a.add(localaqqt);
+            break label240;
+          }
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse=", toString() });
+        return;
       }
-      localalqo = (alqo)QfileBaseRecentFileTabView.u(this.jdField_a_of_type_Aqqr.a).a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localalqo.a(localArrayList));
-    arri.a(2131692746);
-    return;
-    QfileBaseRecentFileTabView.v(this.jdField_a_of_type_Aqqr.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      catch (JSONException paramString)
+      {
+        QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config.getException.", paramString);
+        return;
+      }
+      label230:
+      int j = 1;
+      continue;
+      label235:
+      j = 0;
+      continue;
+      label240:
+      i += 1;
+    }
   }
   
-  public void b() {}
+  public String toString()
+  {
+    if (this.a.size() > 0) {
+      return this.a.toString();
+    }
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqqs
  * JD-Core Version:    0.7.0.1
  */

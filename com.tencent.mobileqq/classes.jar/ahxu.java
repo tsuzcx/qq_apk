@@ -1,16 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ProgressBar;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
 
-final class ahxu
-  implements ValueAnimator.AnimatorUpdateListener
+class ahxu
+  extends Handler
 {
-  ahxu(ProgressBar paramProgressBar) {}
+  ahxu(ahxt paramahxt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a != null) {
-      this.a.setProgress(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    super.handleMessage(paramMessage);
+    if (this.a.o.isShown()) {
+      this.a.o.setVisibility(8);
     }
   }
 }

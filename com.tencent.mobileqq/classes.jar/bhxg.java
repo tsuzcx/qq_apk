@@ -1,12 +1,26 @@
-import android.view.View;
+import android.graphics.drawable.BitmapDrawable;
 
-public abstract interface bhxg
+public class bhxg
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  public int a;
+  public long a;
+  public BitmapDrawable a;
+  
+  public bhxg(int paramInt, long paramLong, BitmapDrawable paramBitmapDrawable)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = paramBitmapDrawable;
+  }
+  
+  public String toString()
+  {
+    return "Frame{index=" + this.jdField_a_of_type_Int + ", targetTime=" + this.jdField_a_of_type_Long + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhxg
  * JD-Core Version:    0.7.0.1
  */

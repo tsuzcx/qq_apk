@@ -1,13 +1,6 @@
-public class blxk<F, S>
+public abstract interface blxk
 {
-  public F a;
-  public S b;
-  
-  public blxk(F paramF, S paramS)
-  {
-    this.a = paramF;
-    this.b = paramS;
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 

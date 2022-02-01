@@ -1,13 +1,15 @@
 package com.tencent.imcore.message;
 
-import ammx;
-import awge;
-import awhp;
+import aohs;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import java.util.ArrayList;
 
 public class QQMessageFacade$Message
   extends MessageRecord
+  implements IMCoreMessageStub
 {
   public String actMsgContentValue;
   public String action;
@@ -17,10 +19,12 @@ public class QQMessageFacade$Message
   public long fileSize = -1L;
   public int fileType = -1;
   public boolean hasReply;
-  @awhp
+  @notColumn
   public boolean isCacheValid = true;
+  @notColumn
+  public boolean isFromLS;
   public MessageRecord lastMsg;
-  public ArrayList<ammx> msgInfoList;
+  public ArrayList<aohs> msgInfoList;
   public String nickName;
   public String pttUrl;
   public long shareAppID;
@@ -34,7 +38,7 @@ public class QQMessageFacade$Message
     this.fileType = -1;
   }
   
-  public Class<? extends awge> getClassForTable()
+  public Class<? extends Entity> getClassForTable()
   {
     return Message.class;
   }
@@ -47,6 +51,11 @@ public class QQMessageFacade$Message
     return this.emoRecentMsg;
   }
   
+  public long getTime()
+  {
+    return this.time;
+  }
+  
   public boolean needNotification()
   {
     return (this.bizType == 24) || (this.bizType == 17) || (this.bizType == 16) || (this.bizType == 5) || (this.bizType == 13) || (this.bizType == 27) || (this.bizType == 4) || (this.bizType == 14) || (this.bizType == 12);
@@ -54,7 +63,7 @@ public class QQMessageFacade$Message
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.imcore.message.QQMessageFacade.Message
  * JD-Core Version:    0.7.0.1
  */

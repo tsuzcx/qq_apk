@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class aeyt
-  implements View.OnClickListener
+  implements bazy
 {
-  public aeyt(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  public aeyt(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    VoiceTextEditPanel.a(this.a);
+    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
+      this.a.z();
+    }
   }
 }
 

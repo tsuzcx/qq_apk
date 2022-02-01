@@ -1,142 +1,129 @@
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stWaterFallCardStyle;
+import android.app.Activity;
 import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendAdapter.1;
-import com.tencent.biz.pubaccount.weishi_new.download.RockDownloadListenerWrapper;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
-import java.util.List;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class tby
-  extends bieg<stSimpleMetaFeed, biej<stSimpleMetaFeed>>
 {
-  public static int b;
-  public int a;
-  public long a;
-  public RockDownloadListenerWrapper a;
-  private WSRedDotPushMsg jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg;
-  public RecyclerViewWithHeaderFooter a;
-  private tbz jdField_a_of_type_Tbz;
-  public tez a;
-  public int c;
-  public final int d;
-  public final int e;
-  public final int f;
-  public final int g;
+  private static bkly a;
   
-  public tby(Context paramContext, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter)
+  public static void a()
   {
-    super(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = paramRecyclerViewWithHeaderFooter;
-    this.d = azkz.e(paramContext);
-    this.e = azkz.a(3.0F);
-    this.f = azkz.a(18.0F);
-    this.g = azkz.a(14.0F);
-  }
-  
-  public int a(int paramInt)
-  {
-    Object localObject = a();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = (stSimpleMetaFeed)((List)localObject).get(paramInt);
-      if ((localObject != null) && (((stSimpleMetaFeed)localObject).waterFallCardStyle != null)) {
-        return ((stSimpleMetaFeed)localObject).waterFallCardStyle.cardType;
-      }
+    if ((a != null) && (a.isShowing())) {
+      a.dismiss();
     }
-    return 1;
+    a = null;
   }
   
-  public biej<stSimpleMetaFeed> a(ViewGroup paramViewGroup, int paramInt)
+  public static void a(Activity paramActivity, AdData paramAdData)
   {
-    return tfv.a(paramInt, paramViewGroup, this);
-  }
-  
-  public RockDownloadListenerWrapper a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper = new WSRecommendAdapter.1(this);
-    }
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper;
-  }
-  
-  public WSRedDotPushMsg a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg;
-  }
-  
-  public tez a()
-  {
-    if (this.jdField_a_of_type_Tez == null) {
-      this.jdField_a_of_type_Tez = tfa.a(100, 2);
-    }
-    return this.jdField_a_of_type_Tez;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int i = paramInt1 + this.c;
-    if ((i < 0) || (i >= a().size())) {
-      tlo.c("weishi-ding", "点赞position越界:" + i);
-    }
-    stSimpleMetaFeed localstSimpleMetaFeed;
-    do
-    {
-      return;
-      localstSimpleMetaFeed = (stSimpleMetaFeed)a(i);
-    } while (localstSimpleMetaFeed == null);
-    paramInt1 = localstSimpleMetaFeed.ding_count;
-    if (paramInt2 == 1) {
-      paramInt1 += 1;
+    if (paramAdData.c) {
+      a(paramActivity, paramAdData.r);
     }
     for (;;)
     {
-      localstSimpleMetaFeed.ding_count = paramInt1;
-      localstSimpleMetaFeed.is_ding = paramInt2;
-      notifyItemChanged(i);
-      tlo.b("weishi-ding", "第" + i + "个条目的点赞改变了~~~");
+      paramActivity = (QQAppInterface)pha.a();
+      if (paramActivity != null) {
+        nxw.a(paramActivity, paramAdData);
+      }
       return;
-      paramInt1 -= 1;
+      if (paramAdData.d == 12) {
+        a(paramActivity, paramAdData.p, paramAdData.n);
+      } else {
+        a(paramActivity, paramAdData.n);
+      }
     }
   }
   
-  public void a(biej<stSimpleMetaFeed> parambiej)
+  public static void a(Activity paramActivity, String paramString)
   {
-    if (this.jdField_a_of_type_Tbz != null) {
-      this.jdField_a_of_type_Tbz.a(parambiej);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("param_ad_json", paramString);
+    PublicTransFragmentActivity.b(paramActivity, localIntent, ReadInJoyNativeAdFragment.class);
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      if (bgnt.h(paramContext)) {
+        str = paramString + "&acttype=42";
+      }
     }
+    pha.a(paramContext, str);
   }
   
-  public void a(biej<stSimpleMetaFeed> parambiej, int paramInt)
+  public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)a(paramInt);
-    if (localstSimpleMetaFeed != null) {
-      parambiej.a(localstSimpleMetaFeed);
+    String str = paramString2;
+    if (!TextUtils.isEmpty(paramString2)) {
+      if (!paramString2.contains("?")) {
+        break label70;
+      }
     }
-  }
-  
-  public void a(WSRedDotPushMsg paramWSRedDotPushMsg)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg = paramWSRedDotPushMsg;
-  }
-  
-  public void a(List<stSimpleMetaFeed> paramList)
-  {
-    List localList = a();
-    if ((localList != null) && (localList.addAll(paramList))) {
-      notifyItemRangeChanged(localList.size() - paramList.size(), paramList.size());
+    label70:
+    for (str = paramString2 + "?"; nxw.a(paramContext, paramString1); str = paramString2 + "&")
+    {
+      pha.a(paramContext, str + "_wv=33554437");
+      return;
     }
+    a(paramContext, str + "_wv=1");
   }
   
-  public void a(tbz paramtbz)
+  public static void a(BaseData paramBaseData, View paramView, Context paramContext)
   {
-    this.jdField_a_of_type_Tbz = paramtbz;
+    Object localObject;
+    if ((paramBaseData != null) && ((paramBaseData.t == 10) || (paramBaseData.t == 17) || (paramBaseData.t == 22) || (paramBaseData.t == 24) || (paramBaseData.t == 9)))
+    {
+      if (paramBaseData.t != 17) {
+        break label147;
+      }
+      localObject = (ProteusBannerVideoItemData)paramBaseData;
+    }
+    for (;;)
+    {
+      if (a == null) {
+        a = new bkly((Activity)paramContext);
+      }
+      if (!a.a()) {
+        a.a();
+      }
+      paramBaseData = new tbz(paramContext, paramBaseData, (AdData)localObject);
+      if (a.a(0, ((AdData)localObject).b))
+      {
+        a.a(paramView, paramBaseData);
+        a.a(new tca(paramContext, (AdData)localObject));
+      }
+      return;
+      label147:
+      if (paramBaseData.t == 10) {
+        localObject = (ProteusBannerBigPicItemData)paramBaseData;
+      } else if (paramBaseData.t == 24) {
+        localObject = (ProteusBannerTriplePicItemData)paramBaseData;
+      } else if (paramBaseData.t == 9) {
+        localObject = (RecommendAdData)paramBaseData;
+      } else {
+        localObject = (ProteusInnerData)paramBaseData;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tby
  * JD-Core Version:    0.7.0.1
  */

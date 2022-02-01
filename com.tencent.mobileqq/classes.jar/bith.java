@@ -1,22 +1,12 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-final class bith
-  implements View.OnClickListener
+public abstract interface bith
 {
-  bith(Dialog paramDialog, String paramString) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-  }
+  public abstract void a(String paramString, byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bith
  * JD-Core Version:    0.7.0.1
  */

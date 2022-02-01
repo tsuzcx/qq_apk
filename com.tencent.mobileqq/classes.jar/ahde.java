@@ -1,27 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
 
 public class ahde
-  implements DialogInterface.OnKeyListener
+  extends afwr
 {
-  public ahde(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  private long jdField_a_of_type_Long;
+  public alqf a;
+  public TextView a;
+  public ETTextView a;
+  private MixedMsgLinearLayout jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout;
+  public boolean a;
+  public TextView b;
+  public ETTextView b;
+  private String b = "0";
+  public int e = -1;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 84) {}
-    do
-    {
-      return true;
-      if (paramInt != 4) {
-        break;
-      }
-    } while (BlessSelectMemberActivity.a() == null);
-    BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    return true;
-    return false;
-  }
+  public ahde(ahda paramahda) {}
 }
 
 

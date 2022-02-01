@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import amwz;
+import aovq;
 
 public class ArConfigService$ArConfigManagerStub$2
   implements Runnable
 {
-  public ArConfigService$ArConfigManagerStub$2(amwz paramamwz, ArConfigService paramArConfigService) {}
+  public ArConfigService$ArConfigManagerStub$2(aovq paramaovq, ArConfigService paramArConfigService) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ArConfigService$ArConfigManagerStub$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.ArConfigManagerStub.2
  * JD-Core Version:    0.7.0.1
  */

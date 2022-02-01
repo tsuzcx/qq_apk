@@ -1,149 +1,168 @@
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.media.MediaMetadataRetriever;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.pts.lite.PTSLiteSwiperEventDispatcher.handleSwiperDrag.1;
+import com.tencent.biz.pubaccount.readinjoy.pts.lite.PTSLiteSwiperEventDispatcher.handleSwiperItemExposure.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.SplashActivity;
+import java.util.HashMap;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher;", "", "()V", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "articleInfoMap", "Ljava/util/HashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "Lkotlin/collections/HashMap;", "positionMap", "", "getBehaviorTypeAndStayTimeMillis", "Landroid/util/Pair;", "", "channelId", "handleSwiperDrag", "", "identifier", "dataSet", "view", "Landroid/view/View;", "handleSwiperItemExposure", "folderStatus", "Builder", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class qnz
 {
-  public int a;
-  public long a;
-  public LocalMediaInfo a;
-  @Nullable
-  public String a;
-  public boolean a;
-  private int[] a;
-  public int b;
-  public long b;
-  @Nullable
-  public String b;
-  private boolean b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  @NotNull
-  public String e = "";
-  public String f = "";
-  private String g;
+  public static final qob a;
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private snh jdField_a_of_type_Snh;
+  private HashMap<String, ArticleInfo> b = new HashMap();
   
-  public qnz()
+  static
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
+    jdField_a_of_type_Qob = new qob(null);
   }
   
-  private int a(String paramString, boolean paramBoolean)
+  private final Pair<Integer, Long> a(int paramInt)
   {
+    long l2 = 0L;
     int j = 0;
-    try
+    int i = 0;
+    Object localObject = this.jdField_a_of_type_Snh;
+    if (localObject != null)
     {
-      paramString = paramString.split("x");
-      if (paramBoolean) {}
-      for (int i = 0;; i = 1)
-      {
-        if (paramString.length >= 2) {
-          j = Integer.parseInt(paramString[i]);
-        }
-        return j;
+      localObject = ((snh)localObject).a();
+      if (!(localObject instanceof ReadInJoyNewFeedsActivity)) {
+        break label274;
       }
-      return 0;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("LocalMediaInfo", 1, "getWidth error", paramString);
-    }
-  }
-  
-  private void a()
-  {
-    for (int i = 0;; i = 1) {
-      for (;;)
-      {
-        try
-        {
-          if (this.jdField_b_of_type_Boolean) {
-            return;
-          }
-          MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-          localMediaMetadataRetriever.setDataSource(this.jdField_b_of_type_JavaLangString);
-          int j = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(18));
-          int k = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(19));
-          if (Build.VERSION.SDK_INT >= 17)
-          {
-            int m = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(24));
-            if ((m == 90) || (m == 270)) {
-              break;
-            }
-            if (i != 0)
-            {
-              this.g = (k + "x" + j);
-              this.jdField_b_of_type_Boolean = true;
-            }
-          }
-          else
-          {
-            QLog.e("LocalMediaInfo", 1, "checkAndSetExifResolution can't get rotation...");
-            continue;
-          }
-          this.g = (j + "x" + k);
-        }
-        catch (Throwable localThrowable)
-        {
-          QLog.e("LocalMediaInfo", 1, "checkAndSetExifResolution", localThrowable);
-          return;
-        }
+      localObject = this.jdField_a_of_type_Snh;
+      if (localObject == null) {
+        break label72;
       }
     }
+    label72:
+    for (localObject = ((snh)localObject).a();; localObject = null)
+    {
+      if (localObject != null) {
+        break label78;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity");
+      localObject = null;
+      break;
+    }
+    label78:
+    long l1;
+    if (((ReadInJoyNewFeedsActivity)localObject).a() > 0L)
+    {
+      localObject = this.jdField_a_of_type_Snh;
+      if (localObject != null) {}
+      for (localObject = ((snh)localObject).a(); localObject == null; localObject = null) {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity");
+      }
+      l1 = ((ReadInJoyNewFeedsActivity)localObject).a();
+      localObject = this.jdField_a_of_type_Snh;
+      if (localObject == null) {
+        break label233;
+      }
+    }
+    label233:
+    for (localObject = ((snh)localObject).a();; localObject = null)
+    {
+      if (localObject != null) {
+        break label239;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity");
+      l1 = System.currentTimeMillis();
+      localObject = this.jdField_a_of_type_Snh;
+      if (localObject != null) {}
+      for (localObject = ((snh)localObject).a(); localObject == null; localObject = null) {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity");
+      }
+      l1 -= ((ReadInJoyNewFeedsActivity)localObject).b();
+      break;
+    }
+    label239:
+    if (((ReadInJoyNewFeedsActivity)localObject).b()) {
+      paramInt = 0;
+    }
+    label398:
+    for (;;)
+    {
+      return new Pair(Integer.valueOf(paramInt), Long.valueOf(l1));
+      paramInt = 1;
+      continue;
+      label274:
+      localObject = this.jdField_a_of_type_Snh;
+      if (localObject != null)
+      {
+        localObject = ((snh)localObject).a();
+        label292:
+        if (!(localObject instanceof SplashActivity)) {
+          break label370;
+        }
+        localObject = this.jdField_a_of_type_Snh;
+        if (localObject == null) {
+          break label359;
+        }
+        localObject = ((snh)localObject).a();
+        label318:
+        localObject = pha.a((Context)localObject);
+        if (localObject == null) {
+          break label398;
+        }
+        if (((ReadinjoyTabFrame)localObject).b == 0) {
+          break label365;
+        }
+      }
+      label359:
+      label365:
+      for (paramInt = j;; paramInt = 1)
+      {
+        l1 = ((ReadinjoyTabFrame)localObject).a();
+        break;
+        localObject = null;
+        break label292;
+        localObject = null;
+        break label318;
+      }
+      label370:
+      if (pil.c(paramInt))
+      {
+        l1 = l2;
+        paramInt = i;
+        if (pfk.b() == 0)
+        {
+          paramInt = 1;
+          l1 = l2;
+        }
+      }
+      else
+      {
+        paramInt = -1;
+        l1 = l2;
+      }
+    }
   }
   
-  private void b()
+  public final void a(@Nullable String paramString, @NotNull HashMap<String, String> paramHashMap, @Nullable View paramView)
   {
-    if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) || (this.jdField_a_of_type_ArrayOfInt[1] == 0))
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(this.jdField_b_of_type_JavaLangString, localOptions);
-      this.jdField_a_of_type_ArrayOfInt[0] = localOptions.outWidth;
-      this.jdField_a_of_type_ArrayOfInt[1] = localOptions.outHeight;
-    }
+    Intrinsics.checkParameterIsNotNull(paramHashMap, "dataSet");
+    bjda.a((Runnable)new PTSLiteSwiperEventDispatcher.handleSwiperDrag.1(paramString, paramHashMap));
   }
   
-  public int a()
+  public final void a(@Nullable String paramString1, @NotNull HashMap<String, String> paramHashMap, @Nullable View paramView, @Nullable String paramString2)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      b();
-      return this.jdField_a_of_type_ArrayOfInt[0];
-    }
-    a();
-    if (TextUtils.isEmpty(this.g)) {
-      return a(this.c, true);
-    }
-    return a(this.g, true);
-  }
-  
-  public int b()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      b();
-      return this.jdField_a_of_type_ArrayOfInt[1];
-    }
-    a();
-    if (TextUtils.isEmpty(this.g)) {
-      return a(this.c, false);
-    }
-    return a(this.g, false);
+    Intrinsics.checkParameterIsNotNull(paramHashMap, "dataSet");
+    bjda.a((Runnable)new PTSLiteSwiperEventDispatcher.handleSwiperItemExposure.1(this, paramString1, paramString2, paramHashMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qnz
  * JD-Core Version:    0.7.0.1
  */

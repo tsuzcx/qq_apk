@@ -1,37 +1,49 @@
-import com.tencent.tar.jni.ScanFeatureFilterView;
+import java.security.MessageDigest;
 
-public final class bhrr
+public class bhrr
 {
-  public float a;
-  public int a;
-  public long a;
-  public boolean a;
-  public float b;
-  public int b;
-  public long b;
-  public boolean b;
+  private static char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public float a(int paramInt, long paramLong)
+  public static String a(String paramString)
   {
-    if (paramLong < this.jdField_b_of_type_Long) {
-      return 0.0F;
+    try
+    {
+      paramString = a(paramString.getBytes(), "SHA1");
+      return paramString;
     }
-    if (paramLong - this.jdField_b_of_type_Long > paramInt) {
-      this.jdField_a_of_type_Boolean = true;
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
-    return (float)(paramLong - this.jdField_b_of_type_Long) / paramInt % 1.0F;
+    return "";
   }
   
-  public void a()
+  private static String a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Long = ScanFeatureFilterView.a();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      localStringBuilder.append(a[((paramArrayOfByte[i] & 0xF0) >>> 4)]);
+      localStringBuilder.append(a[(paramArrayOfByte[i] & 0xF)]);
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private static String a(byte[] paramArrayOfByte, String paramString)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return "";
+    }
+    paramString = MessageDigest.getInstance(paramString);
+    paramString.update(paramArrayOfByte, 0, paramArrayOfByte.length);
+    return a(paramString.digest());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhrr
  * JD-Core Version:    0.7.0.1
  */

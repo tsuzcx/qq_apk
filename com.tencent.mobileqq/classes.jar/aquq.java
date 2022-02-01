@@ -1,59 +1,72 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class aquq
-  implements aqsa
+public class aquq
+  extends aqkz<aqup>
 {
-  aquq(aqup paramaqup, String paramString, aqva paramaqva) {}
-  
-  public void a(int paramInt, String paramString)
+  @NonNull
+  public aqup a(int paramInt)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2BuddyTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
+    return new aqup();
+  }
+  
+  @Nullable
+  public aqup a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
     {
+      aqup localaqup = aqup.a(paramArrayOfaqlg[0].a);
       if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqup.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild:" + paramInt);
+        QLog.d("WVSecurityConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
       }
-      this.jdField_a_of_type_Aqva.a(aque.a(this.jdField_a_of_type_Aqup.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
+      return localaqup;
+    }
+    return null;
+  }
+  
+  public void a(aqup paramaqup)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVSecurityConfProcessor", 2, "onUpdate " + paramaqup.toString());
     }
   }
   
-  public void a(String paramString)
+  public Class<aqup> clazz()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "1");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqup.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqup.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqup.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqup.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqup.f);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqup.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send success");
-    }
-    this.jdField_a_of_type_Aqva.a(paramString, localBundle);
+    return aqup.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 158;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aquq
  * JD-Core Version:    0.7.0.1
  */

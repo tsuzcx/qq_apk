@@ -1,21 +1,21 @@
-import java.util.Arrays;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akom
+  implements View.OnClickListener
 {
-  public int a;
-  public boolean a;
-  public int[] a;
-  public int b;
-  public int[] b;
-  public int c;
-  public int d;
-  public int e;
+  public akom(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("userStatus:").append(this.d).append(",roleId:").append(this.jdField_a_of_type_Int).append(",dressIds:").append(Arrays.toString(this.jdField_a_of_type_ArrayOfInt)).append(",threeRoleId:").append(this.jdField_b_of_type_Int).append(",threeDressIds:").append(Arrays.toString(this.jdField_b_of_type_ArrayOfInt));
-    return localStringBuilder.toString();
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

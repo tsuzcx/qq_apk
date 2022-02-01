@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.proxy.fts;
 
-import amog;
+import aonn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -14,7 +14,7 @@ public class FTSTroopOperator$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.fts.FTSTroopOperator.3
  * JD-Core Version:    0.7.0.1
  */

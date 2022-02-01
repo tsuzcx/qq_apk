@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.hardware.display.DisplayManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.Global;
@@ -21,12 +22,15 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import azkz;
-import bhtb;
-import bjvp;
+import android.view.WindowManager.LayoutParams;
+import bclx;
+import bmjz;
+import bqcd;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -47,7 +51,7 @@ public class DisplayUtil
   
   static
   {
-    if (bhtb.i()) {}
+    if (VersionUtils.isKITKAT()) {}
     try
     {
       Method localMethod = Class.forName("android.os.SystemProperties").getDeclaredMethod("get", new Class[] { String.class });
@@ -119,6 +123,26 @@ public class DisplayUtil
     return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
   }
   
+  public static boolean enableXiaoMiNotch(Activity paramActivity)
+  {
+    try
+    {
+      paramActivity = paramActivity.getWindow();
+      Window.class.getMethod("addExtraFlags", new Class[] { Integer.TYPE }).invoke(paramActivity, new Object[] { Integer.valueOf(1792) });
+      if (QLog.isColorLevel()) {
+        QLog.i("DisplayUtil", 1, "enableXiaoMiNotch true");
+      }
+      return true;
+    }
+    catch (Exception paramActivity)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("DisplayUtil", 1, "enableXiaoMiNotch Exception", paramActivity);
+      }
+    }
+    return false;
+  }
+  
   public static float getDensity(Context paramContext)
   {
     if (density != 0.0F) {
@@ -143,8 +167,8 @@ public class DisplayUtil
     int j;
     if ((paramActivity != null) && (paramActivity.getWindow() != null) && (paramActivity.getWindow().getDecorView() != null))
     {
-      Rect localRect = bjvp.a(paramActivity.getWindow().getDecorView());
-      localRect.top = bjvp.a(paramActivity, paramActivity);
+      Rect localRect = bmjz.a(paramActivity.getWindow().getDecorView());
+      localRect.top = bmjz.a(paramActivity, paramActivity);
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       if (Build.VERSION.SDK_INT >= 17)
       {
@@ -184,6 +208,17 @@ public class DisplayUtil
       i1 = 0;
     }
     return localJSONObject;
+  }
+  
+  public static DisplayMetrics getDisplayMetrics(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getRealMetrics(localDisplayMetrics);
+      return localDisplayMetrics;
+    }
+    return paramContext.getResources().getDisplayMetrics();
   }
   
   private static int getInternalDimensionSize(Resources paramResources, String paramString)
@@ -303,7 +338,7 @@ public class DisplayUtil
       k = i;
       if (m != 0)
       {
-        j = azkz.c(BaseApplication.getContext());
+        j = bclx.c(BaseApplication.getContext());
         k = 0;
       }
       i = j;
@@ -327,6 +362,18 @@ public class DisplayUtil
       label239:
       m = 0;
     }
+  }
+  
+  public static int getScreenRefreshRate(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      paramContext = ((DisplayManager)paramContext.getSystemService("display")).getDisplays();
+      if ((paramContext != null) && (paramContext.length > 0)) {
+        return (int)paramContext[0].getRefreshRate();
+      }
+    }
+    return 60;
   }
   
   public static int getStatusBarHeight(Context paramContext)
@@ -546,6 +593,33 @@ public class DisplayUtil
     ImmersiveUtils.a(ThemeUtil.isDartStatusBar(paramActivity), paramActivity.getWindow());
   }
   
+  public static void setSystemUIVisible(BaseActivity paramBaseActivity, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      WindowManager.LayoutParams localLayoutParams = paramBaseActivity.getWindow().getAttributes();
+      localLayoutParams.flags &= 0xFFFFFBFF;
+      paramBaseActivity.getWindow().setAttributes(localLayoutParams);
+      paramBaseActivity.getWindow().clearFlags(512);
+      return;
+    }
+    bqcd.a(paramBaseActivity);
+    if (bqcd.b())
+    {
+      if ((!Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) || ((Build.VERSION.SDK_INT != 26) && (Build.VERSION.SDK_INT != 27))) {
+        break label100;
+      }
+      enableXiaoMiNotch(paramBaseActivity);
+    }
+    for (;;)
+    {
+      paramBaseActivity.getWindow().setFlags(1024, 1024);
+      return;
+      label100:
+      bqcd.c(paramBaseActivity);
+    }
+  }
+  
   public static int sp2px(Context paramContext, float paramFloat)
   {
     return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
@@ -570,7 +644,7 @@ public class DisplayUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.DisplayUtil
  * JD-Core Version:    0.7.0.1
  */

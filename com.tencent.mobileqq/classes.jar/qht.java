@@ -1,43 +1,47 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class qht
-  implements qhr
+public class qht
+  implements ViewBase.OnClickListener
 {
-  private IBinder a;
+  Context jdField_a_of_type_AndroidContentContext;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  snh jdField_a_of_type_Snh;
   
-  qht(IBinder paramIBinder)
+  public qht(ArticleInfo paramArticleInfo, Context paramContext, snh paramsnh)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Snh = paramsnh;
   }
   
-  public qhx a()
+  public void onClick(ViewBase paramViewBase)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.biz.pubaccount.readinjoy.service.IRIJAidlInterface");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      qhx localqhx = qhy.a(localParcel2.readStrongBinder());
-      return localqhx;
+    if (snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+      pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 1);
     }
-    finally
+    for (;;)
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      pfe.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Snh);
+      qhj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009442", "0X8009445");
+      return;
+      if (pha.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+      {
+        pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+        pfe.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A77", null);
+      }
+      else
+      {
+        pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 1);
+      }
     }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qht
  * JD-Core Version:    0.7.0.1
  */

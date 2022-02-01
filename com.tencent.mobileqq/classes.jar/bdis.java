@@ -1,38 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.teamwork.ReSendCmd;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class bdis
-  implements View.OnClickListener
+  implements WtTicketPromise
 {
-  bdis(bdio parambdio) {}
+  bdis(bdiq parambdiq, TicketManager paramTicketManager, ReSendCmd paramReSendCmd) {}
   
-  public void onClick(View paramView)
+  public void Done(Ticket paramTicket)
   {
-    switch (bdio.a(this.a))
-    {
-    default: 
-      return;
-    case 1: 
-      bflp.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
-      bdio.a(this.a);
-      return;
-    case 4: 
-      bdio.b(this.a);
-      bflp.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
-      return;
-    case 10: 
-      bflp.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
-      return;
-    case 3: 
-      bdio.c(this.a);
-      bflp.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
-      return;
-    case 2: 
-      this.a.c();
-      bflp.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
-      return;
+    int i;
+    if (paramTicket == null) {
+      i = 1;
     }
-    bflp.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
+    for (;;)
+    {
+      QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server : Done,result: " + i);
+      paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getSkey(this.jdField_a_of_type_Bdiq.mApp.getCurrentAccountUin());
+      if ((!TextUtils.isEmpty(paramTicket)) && (paramTicket.length() > 0))
+      {
+        bdiq.b(this.jdField_a_of_type_Bdiq, 0);
+        QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server success!");
+      }
+      bdiq.a(this.jdField_a_of_type_Bdiq, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+      return;
+      if ((paramTicket != null) && (paramTicket._sig == null)) {
+        i = 2;
+      } else {
+        i = 0;
+      }
+    }
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server : Failed, " + paramErrMsg);
+    bdiq.a(this.jdField_a_of_type_Bdiq, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server : Timeout, " + paramErrMsg);
+    bdiq.a(this.jdField_a_of_type_Bdiq, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
   }
 }
 

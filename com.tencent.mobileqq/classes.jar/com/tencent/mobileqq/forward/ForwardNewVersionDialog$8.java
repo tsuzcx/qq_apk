@@ -1,24 +1,27 @@
 package com.tencent.mobileqq.forward;
 
 import android.view.WindowManager;
-import asau;
+import auhv;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class ForwardNewVersionDialog$8
   implements Runnable
 {
-  public ForwardNewVersionDialog$8(asau paramasau) {}
+  public ForwardNewVersionDialog$8(auhv paramauhv) {}
   
   public void run()
   {
-    asau.a(this.this$0).addView(asau.a(this.this$0), asau.a(this.this$0));
-    asau.a(this.this$0, true);
-    asau.a(this.this$0).post(new ForwardNewVersionDialog.8.1(this));
+    if (auhv.b(this.this$0)) {
+      return;
+    }
+    auhv.a(this.this$0).addView(auhv.a(this.this$0), auhv.a(this.this$0));
+    auhv.a(this.this$0, true);
+    auhv.a(this.this$0).post(new ForwardNewVersionDialog.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardNewVersionDialog.8
  * JD-Core Version:    0.7.0.1
  */

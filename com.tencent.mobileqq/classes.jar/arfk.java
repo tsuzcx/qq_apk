@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-
 public class arfk
-  implements aofp
 {
-  public arfk(FileBrowserActivity paramFileBrowserActivity) {}
+  private static arez jdField_a_of_type_Arez;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public void onColorNoteAnimFinish()
+  public static void a(arfl paramarfl)
   {
-    FileBrowserActivity.a(this.a);
-    this.a.overridePendingTransition(0, 0);
+    if (paramarfl != null) {
+      argp.a(paramarfl);
+    }
+  }
+  
+  public static boolean a()
+  {
+    return (jdField_a_of_type_Boolean) && (b());
+  }
+  
+  private static boolean b()
+  {
+    if (jdField_a_of_type_Arez != null) {
+      return jdField_a_of_type_Arez.a();
+    }
+    return true;
   }
 }
 

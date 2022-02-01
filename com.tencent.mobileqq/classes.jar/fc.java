@@ -1,35 +1,23 @@
-import com.dataline.util.widget.AsyncImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.dataline.util.file.DLFileInfo;
 
-public class fc
-  implements URLDrawable.URLDrawableListener
+public final class fc
+  implements Parcelable.Creator<DLFileInfo>
 {
-  public fc(AsyncImageView paramAsyncImageView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public DLFileInfo a(Parcel paramParcel)
   {
-    QLog.d("AsyncImageView", 1, "canceled ");
+    return new DLFileInfo(paramParcel, null);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public DLFileInfo[] a(int paramInt)
   {
-    QLog.d("AsyncImageView", 1, "urldrawable load failed ");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.setImageDrawable(null);
-    this.a.setImageDrawable(paramURLDrawable);
-    QLog.d("AsyncImageView", 1, "successed ");
+    return new DLFileInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     fc
  * JD-Core Version:    0.7.0.1
  */

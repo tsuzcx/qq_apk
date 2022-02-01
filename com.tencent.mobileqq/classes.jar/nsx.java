@@ -1,26 +1,37 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+
 public class nsx
+  implements bkhw
 {
-  public int a = 5;
-  public String a;
-  public int b = 10;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
+  public nsx(AccountDetailActivity paramAccountDetailActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.F();
+      continue;
+      this.a.H();
+      continue;
+      AccountDetailActivity.d(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nsx
  * JD-Core Version:    0.7.0.1
  */

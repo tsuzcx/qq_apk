@@ -1,13 +1,20 @@
-import android.content.Context;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
+import com.tencent.widget.SingleLineTextView;
 
-public class ajlw
-  extends ajlx
+class ajlw
+  extends amcl
 {
-  public ajlw(Context paramContext)
-  {
-    this.a = paramContext.getString(2131697684);
-    this.b = this.a;
-  }
+  public View a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public RecentRecommendTroopItem a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

@@ -1,29 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
-import com.tencent.widget.BubblePopupWindow;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class rxh
-  implements View.OnClickListener
+class rxh
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public rxh(ReadinjoyTabbar paramReadinjoyTabbar) {}
+  rxh(rxg paramrxg) {}
   
-  public void onClick(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
-    try
-    {
-      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
-      ReadinjoyTabbar.a(this.a).b();
-      return;
+    if ((rxg.a(this.a) != null) && (rxg.a(this.a).a != null)) {
+      this.a.a.a(rxg.a(this.a).a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
     }
-    catch (Exception paramView) {}
+    return true;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((rxg.a(this.a) != null) && (rxg.a(this.a).b != null)) {
+      this.a.a.onClick(rxg.a(this.a).b);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rxh
  * JD-Core Version:    0.7.0.1
  */

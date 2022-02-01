@@ -1,49 +1,33 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
-
 public class aqqv
-  extends arsq
 {
-  public aqqv(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
+  private aqqw jdField_a_of_type_Aqqw;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a()
+  public aqqv()
   {
-    this.a.a.a().b();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Aqqw = new aqqw();
   }
   
-  public void b()
+  public aqqv(String paramString, aqqw paramaqqw)
   {
-    this.a.a.a().p();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aqqw = paramaqqw;
   }
   
-  public void c()
+  public aqqw a()
   {
-    this.a.a.a().q();
+    return this.jdField_a_of_type_Aqqw;
   }
   
-  public void d()
+  public String a()
   {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqqv
  * JD-Core Version:    0.7.0.1
  */

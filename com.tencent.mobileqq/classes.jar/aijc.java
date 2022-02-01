@@ -1,65 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecBarAdapter.ImgUpdateListener.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aijc
-  extends aokh
+  implements aijs
 {
-  public static aijb a()
+  public aiiz a;
+  
+  public aijc(aiiz paramaiiz)
   {
-    return (aijb)aoks.a().a(470);
+    this.a = paramaiiz;
   }
   
-  public int a()
+  public void a(List<aiit> paramList, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    return 470;
-  }
-  
-  @NonNull
-  public aijb a(int paramInt)
-  {
-    return new aijb();
-  }
-  
-  @Nullable
-  public aijb a(aoko[] paramArrayOfaoko)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaoko[0].a);
+    if (this.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecBarAdapter", 2, "data=" + paramList.size());
+      }
+      aiiz.a(this.a);
+      ThreadManager.getUIHandler().post(new StickerRecBarAdapter.ImgUpdateListener.1(this, paramInt, paramString3, paramString1, paramList, paramString2));
     }
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aijb.a(paramArrayOfaoko);
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    return null;
-  }
-  
-  public Class<aijb> a()
-  {
-    return aijb.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    QLog.d("StickerRecBarAdapter", 2, "mAdapter is null");
   }
 }
 

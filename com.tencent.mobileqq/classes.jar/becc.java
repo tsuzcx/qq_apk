@@ -1,6 +1,18 @@
-public abstract interface becc
+public class becc
+  extends becg
 {
-  public abstract void a(boolean paramBoolean);
+  public int a;
+  public long a;
+  public byte[] a;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" storeType:");
+    return localStringBuilder.toString();
+  }
 }
 
 

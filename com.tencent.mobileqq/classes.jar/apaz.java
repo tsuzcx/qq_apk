@@ -1,19 +1,6 @@
-public class apaz
+public abstract interface apaz
 {
-  private apbc a;
-  
-  public static apaz a()
-  {
-    return apbb.a();
-  }
-  
-  public apbc a()
-  {
-    if (this.a == null) {
-      this.a = new apbd();
-    }
-    return this.a;
-  }
+  public abstract void a(apba paramapba);
 }
 
 

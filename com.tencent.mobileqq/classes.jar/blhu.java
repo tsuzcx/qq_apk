@@ -1,13 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import dov.com.qq.im.ae.play.EditTextViewer;
+import cooperation.qlink.QlinkBridgeActivity;
 
 public class blhu
   implements DialogInterface.OnDismissListener
 {
-  public blhu(EditTextViewer paramEditTextViewer) {}
+  public blhu(QlinkBridgeActivity paramQlinkBridgeActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 

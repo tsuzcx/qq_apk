@@ -1,32 +1,13 @@
-public class bloy
-  extends blpo
+import android.support.annotation.NonNull;
+import cooperation.qqreader.net.BaseCgiTask;
+
+public abstract interface bloy
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  private String d;
-  private String e;
+  public abstract void a(@NonNull blpa paramblpa);
   
-  public bloy(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Int = paramInt;
-    this.e = paramString5;
-  }
+  public abstract void a(BaseCgiTask paramBaseCgiTask, String paramString);
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public abstract void b(@NonNull blpa paramblpa);
 }
 
 

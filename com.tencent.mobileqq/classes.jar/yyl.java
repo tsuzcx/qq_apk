@@ -1,27 +1,36 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class yyl
-  implements Animator.AnimatorListener
+  implements wld<wys, xaq>
 {
-  yyl(yyk paramyyk) {}
+  yyl(yye paramyye) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator)
+  public void a(@NonNull wys paramwys, @Nullable xaq paramxaq, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (yyk.a(this.a) != null) {
-      yyk.a(this.a).a();
+    yqp.b("DoodleEmojiManager", "fireRequestEmojiPackList, result : " + paramxaq + ", errorMsg = " + paramErrorMessage);
+    synchronized (this.a.jdField_b_of_type_JavaLangObject)
+    {
+      if (!TextUtils.equals(paramwys.a, this.a.jdField_b_of_type_JavaLangString))
+      {
+        yqp.d("DoodleEmojiManager", "cookie mismatch ! ignore this response : " + paramxaq);
+        return;
+      }
+      if ((paramxaq == null) || (paramErrorMessage.isFail()))
+      {
+        yqp.d("DoodleEmojiManager", "get emoji error : " + paramxaq + ", " + paramErrorMessage);
+        return;
+      }
     }
+    this.a.jdField_b_of_type_JavaLangString = paramxaq.a;
+    this.a.a(TextUtils.isEmpty(paramwys.a), paramxaq, false);
   }
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yyl
  * JD-Core Version:    0.7.0.1
  */

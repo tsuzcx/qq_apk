@@ -1,11 +1,17 @@
-class asra
-  implements bico
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class asra
+  implements View.OnClickListener
 {
-  asra(asqz paramasqz) {}
+  public asra(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a = true;
+    this.a.i();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

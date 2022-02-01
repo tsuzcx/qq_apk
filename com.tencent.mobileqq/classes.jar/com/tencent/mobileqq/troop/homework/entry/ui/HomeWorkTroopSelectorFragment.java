@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +9,9 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bbzl;
-import bbzm;
+import anni;
+import bezw;
+import bezx;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -29,7 +29,7 @@ public class HomeWorkTroopSelectorFragment
   extends IphoneTitleBarFragment
   implements Runnable
 {
-  private bbzm jdField_a_of_type_Bbzm;
+  private bezx jdField_a_of_type_Bezx;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
@@ -53,15 +53,15 @@ public class HomeWorkTroopSelectorFragment
   {
     if (this.jdField_a_of_type_ComTencentWidgetListView != null)
     {
-      this.jdField_a_of_type_Bbzm = new bbzm(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bbzm);
+      this.jdField_a_of_type_Bezx = new bezx(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bezx);
     }
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131367715));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131368027));
     this.jdField_a_of_type_ComTencentWidgetListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetListView.setDividerHeight(0);
     if (getActivity() == null) {}
@@ -75,8 +75,8 @@ public class HomeWorkTroopSelectorFragment
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    setRightButton(2131697880, new bbzl(this));
-    setTitle(alud.a(2131705898));
+    setRightButton(2131696724, new bezw(this));
+    setTitle(anni.a(2131704299));
     paramLayoutInflater = getArguments();
     if (paramLayoutInflater != null)
     {
@@ -94,7 +94,7 @@ public class HomeWorkTroopSelectorFragment
   
   public int getContentLayoutId()
   {
-    return 2131560466;
+    return 2131560621;
   }
   
   public boolean onBackEvent()
@@ -147,7 +147,7 @@ public class HomeWorkTroopSelectorFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment
  * JD-Core Version:    0.7.0.1
  */

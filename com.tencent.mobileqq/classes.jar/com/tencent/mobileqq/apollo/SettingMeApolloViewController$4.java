@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import albr;
+import amux;
 
 class SettingMeApolloViewController$4
   implements Runnable
@@ -18,7 +18,7 @@ class SettingMeApolloViewController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.SettingMeApolloViewController.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,15 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface agkl
-  extends IInterface
+class agkl
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  agkl(agki paramagki) {}
   
-  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3);
-  
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

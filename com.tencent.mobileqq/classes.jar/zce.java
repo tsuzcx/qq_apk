@@ -1,21 +1,44 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
 
-class zce
-  implements zac<CLIENT.StSmartMatchMusicRsp>
+public abstract class zce<T extends zcd>
 {
-  zce(zby paramzby) {}
+  protected int a;
+  public final View a;
+  public T a;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
+  protected zce(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    long l = System.currentTimeMillis() - zby.a(this.a);
-    zaj.a("edit_smart_music", zaj.a(paramLong, l, "", 0L));
-    this.a.a(alud.a(2131704294) + l + "ms");
-    zby.a(this.a, paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
+    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      throw new NullPointerException("onCreateView can not return null");
+    }
+  }
+  
+  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Zcd = null;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a(T paramT, int paramInt)
+  {
+    this.jdField_a_of_type_Zcd = paramT;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Zcd != null) && (this.jdField_a_of_type_Zcd.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zce
  * JD-Core Version:    0.7.0.1
  */

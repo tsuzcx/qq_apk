@@ -1,41 +1,13 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bnqa
-  implements Comparable<bnqa>
+final class bnqa
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public bnpv a;
-  public bnpw a;
-  public bnqe a;
-  public bnqi a;
-  public MessageForShortVideo a;
-  public String a;
-  public ArrayList<bnpw> a;
-  public int b;
-  public String b;
-  public int c = 201;
-  
-  public bnqa()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = awjl.a();
-  }
-  
-  public int a(bnqa parambnqa)
-  {
-    if (this.c < parambnqa.c) {
-      return -1;
-    }
-    if (this.c > parambnqa.c) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public void a(MessageForShortVideo paramMessageForShortVideo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+    bnzb.d("AEResUtil", "【Camera is in Prepareing】toast show: choose sure");
+    bnpy.a();
   }
 }
 

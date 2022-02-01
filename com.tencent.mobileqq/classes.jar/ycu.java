@@ -1,20 +1,26 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerViewNew;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class ycu
-  implements ych
+public abstract interface ycu
 {
-  public ycu(RecommendBannerViewNew paramRecommendBannerViewNew) {}
+  public abstract void P_();
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {
-      RecommendBannerViewNew.a(this.a, paramInt);
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(CommentEntry paramCommentEntry);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(CommentEntry paramCommentEntry);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void g_(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ycu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
 
 class ageq
-  implements View.OnTouchListener
+  implements Animator.AnimatorListener
 {
-  ageq(agem paramagem, aetk paramaetk) {}
+  ageq(agep paramagep, ViewGroup paramViewGroup) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Aetk.onTouch(paramView, paramMotionEvent);
-    return false;
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
   }
 }
 

@@ -1,22 +1,36 @@
-import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
-import com.tencent.TMG.sdk.AVContext.StartParam;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-class alhh
-  implements bgky
+public class alhh
+  implements View.OnTouchListener
 {
-  alhh(alhg paramalhg, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback) {}
+  public alhh(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.e(alhg.jdField_a_of_type_JavaLangString, 2, "ACTION_NOTICE_SERVICE_REQUEST_SSOCHANNEL:onError  identifier=" + this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier + ", nAppid=" + this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId + ", nGameID=" + ((algs)this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int + ", lGameRoomID=" + ((algs)this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long + ", UserRequestData.length" + this.jdField_a_of_type_ArrayOfByte.length + ", s info=" + paramString);
-    this.jdField_a_of_type_ComTencentTMGChannelAVAppChannel$CsCmdCallback.onError(paramInt, paramString);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    QLog.e(alhg.jdField_a_of_type_JavaLangString, 2, "ACTION_NOTICE_SERVICE_REQUEST_SSOCHANNEL:onSuccess  startParam_.identifier=" + this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier + ", nAppid=" + this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId + ", nGameID=" + ((algs)this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int + ", lGameRoomID=" + ((algs)this.jdField_a_of_type_Alhg.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long + ", UserRequestData.length" + paramArrayOfByte.length + ", bytes.length=" + this.jdField_a_of_type_ArrayOfByte.length);
-    this.jdField_a_of_type_ComTencentTMGChannelAVAppChannel$CsCmdCallback.onSuccess(paramArrayOfByte);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (EditLocalVideoActivity.a(this.a).isPlaying()) {
+        if (EditLocalVideoActivity.b(this.a))
+        {
+          EditLocalVideoActivity.b(this.a, false);
+          EditLocalVideoActivity.a(this.a).pause();
+          EditLocalVideoActivity.a(this.a).setVisibility(0);
+        }
+      }
+      while (!EditLocalVideoActivity.b(this.a)) {
+        return true;
+      }
+      EditLocalVideoActivity.a(this.a).start();
+      EditLocalVideoActivity.b(this.a, true);
+      EditLocalVideoActivity.a(this.a).setVisibility(4);
+      return true;
+    }
+    return false;
   }
 }
 

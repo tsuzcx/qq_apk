@@ -10,6 +10,7 @@ import android.view.Surface;
 import androidx.annotation.NonNull;
 import com.tencent.thumbplayer.adapter.ITPPlayerAdapter;
 import com.tencent.thumbplayer.adapter.TPPlayerAdapter;
+import com.tencent.thumbplayer.adapter.player.TPUrlDataSource;
 import com.tencent.thumbplayer.api.ITPPlayer;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnAudioFrameOutputListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnCompletionListener;
@@ -19,6 +20,7 @@ import com.tencent.thumbplayer.api.ITPPlayerListener.IOnPreparedListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnSeekCompleteListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnStateChangeListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnSubtitleDataListener;
+import com.tencent.thumbplayer.api.ITPPlayerListener.IOnSubtitleFrameOutListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnVideoFrameOutListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
@@ -41,6 +43,7 @@ import com.tencent.thumbplayer.api.report.ITPBusinessReportManager;
 import com.tencent.thumbplayer.config.TPPlayerConfig;
 import com.tencent.thumbplayer.datatransport.ITPPlayManager;
 import com.tencent.thumbplayer.datatransport.TPPlayManagerImpl;
+import com.tencent.thumbplayer.tplayer.plugins.ITPPluginBase;
 import com.tencent.thumbplayer.tplayer.plugins.ITPPluginManager;
 import com.tencent.thumbplayer.tplayer.plugins.TPPluginManager;
 import com.tencent.thumbplayer.tplayer.plugins.report.TPLogPlugin;
@@ -77,11 +80,14 @@ public class TPPlayer
   private static final int MSG_ON_PROXY_SWITCH_DEFINITION = 278;
   private static final int MSG_ON_SEEK_COMPLETE = 263;
   private static final int MSG_ON_SUBTITLE_DATA = 265;
+  private static final int MSG_ON_SUBTITLE_FRAME_BUFFER = 279;
   private static final int MSG_ON_VIDEOFRAMEOUT = 266;
   private static final int MSG_ON_VIDEO_SIZE_CHANGE = 264;
   private static int sPlayId = 0;
   private String TAG = "TPThumbPlayer[TPPlayer.java]";
   private Context mContext;
+  private long mCurrentDownloadSizeByte;
+  private long mDownloadPlayableDurationMs;
   private HandlerThread mHandlerThread;
   private ITPPlayManager mPlayProxyManager;
   private ITPPlayerAdapter mPlayerAdapter;
@@ -90,6 +96,7 @@ public class TPPlayer
   private int mProxyStatus = -1;
   private TPReportManager mReportManager;
   private ITPPluginManager mTPPluginManager;
+  private long mTotalFileSizeByte;
   private TPPlayer.EventHandler mTransformCallbackHandler;
   private String mUrl = null;
   private boolean mUseProxy = true;
@@ -128,6 +135,7 @@ public class TPPlayer
       this.mPlayerAdapter.setOnSeekCompleteListener(localInnerPlayerListener);
       this.mPlayerAdapter.setOnVideoSizeChangedListener(localInnerPlayerListener);
       this.mPlayerAdapter.setOnSubtitleDataListener(localInnerPlayerListener);
+      this.mPlayerAdapter.setOnSubtitleFrameOutListener(localInnerPlayerListener);
       this.mPlayerAdapter.setOnAudioPcmOutputListener(localInnerPlayerListener);
       this.mPlayerAdapter.setOnVideoFrameOutListener(localInnerPlayerListener);
       this.mPlayerAdapter.setOnPlayerStateChangeListener(localInnerPlayerListener);
@@ -342,6 +350,14 @@ public class TPPlayer
     this.mPlayerInternal.addAudioTrackSource(paramString1, paramString2, paramTPDownloadParamData);
   }
   
+  public ITPPluginManager addPlugin(ITPPluginBase paramITPPluginBase)
+  {
+    if (this.mTPPluginManager != null) {
+      this.mTPPluginManager.addPlugin(paramITPPluginBase);
+    }
+    return null;
+  }
+  
   public void addSubtitleSource(String paramString1, String paramString2, String paramString3)
   {
     TPLogUtil.i(this.TAG, LOG_API_CALL_PREFIX + "addSubtitleSource, url:" + paramString1 + ", mimeType:" + paramString2 + ", name:" + paramString3);
@@ -379,6 +395,11 @@ public class TPPlayer
   public long getDurationMs()
   {
     return this.mPlayerInternal.getDurationMs();
+  }
+  
+  public long getPlayableDurationMs()
+  {
+    return this.mPlayerInternal.getPlayableDurationMs();
   }
   
   public ITPPlayerProxy getPlayerProxy()
@@ -508,7 +529,7 @@ public class TPPlayer
     if (this.mPlayerAdapter.getDurationMs() == 0L) {
       return 0;
     }
-    return (int)(100.0F * (float)this.mPlayerAdapter.getBufferedDurationMs() / (float)this.mPlayerAdapter.getDurationMs());
+    return (int)(100.0F * (float)(this.mPlayerAdapter.getPlayableDurationMs() - this.mPlayerAdapter.getCurrentPositionMs()) / (float)this.mPlayerAdapter.getDurationMs());
   }
   
   public int handleGetCurrentPlayClipNo()
@@ -540,11 +561,23 @@ public class TPPlayer
     return null;
   }
   
+  public long handleGetPlayableDurationMs()
+  {
+    if (isUseProxyEnable())
+    {
+      if ((this.mCurrentDownloadSizeByte > 0L) && (this.mTotalFileSizeByte > 0L)) {
+        return (this.mCurrentDownloadSizeByte * 1.0D / this.mTotalFileSizeByte * this.mPlayerAdapter.getDurationMs());
+      }
+      return this.mDownloadPlayableDurationMs;
+    }
+    return this.mPlayerAdapter.getPlayableDurationMs();
+  }
+  
   public long handleGetPlayerBufferLength()
   {
     ITPPlayerAdapter localITPPlayerAdapter = this.mPlayerAdapter;
     if (localITPPlayerAdapter != null) {
-      return localITPPlayerAdapter.getBufferedDurationMs();
+      return localITPPlayerAdapter.getPlayableDurationMs() - this.mPlayerAdapter.getCurrentPositionMs();
     }
     return 0L;
   }
@@ -632,13 +665,17 @@ public class TPPlayer
     handlePlayerCallback(271, 0, 0, Integer.valueOf(0));
   }
   
-  public void handleOnDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  public void handleOnDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
+    this.mDownloadPlayableDurationMs = paramInt1;
+    this.mCurrentDownloadSizeByte = paramLong1;
+    this.mTotalFileSizeByte = paramLong2;
     TPPlayerMsg.TPDownLoadProgressInfo localTPDownLoadProgressInfo = new TPPlayerMsg.TPDownLoadProgressInfo();
     localTPDownLoadProgressInfo.playableDurationMS = paramInt1;
     localTPDownLoadProgressInfo.downloadSpeedKBps = paramInt2;
     localTPDownLoadProgressInfo.currentDownloadSize = paramLong1;
     localTPDownLoadProgressInfo.totalFileSize = paramLong2;
+    localTPDownLoadProgressInfo.extraInfo = paramString;
     TPLogUtil.i(this.TAG, "handleOnDownloadProgressUpdate");
     pushEvent(200, 0, 0, null, new TPHashMapBuilder().put("speed", Integer.valueOf(paramInt2)).build());
     handlePlayerCallback(274, 0, 0, localTPDownLoadProgressInfo);
@@ -671,7 +708,7 @@ public class TPPlayer
     }
     if (!(paramObject3 instanceof Integer))
     {
-      TPLogUtil.i(this.TAG, "MESSAGE_NOTIFY_PLAYER_SWITCH_DEFINITION, err.");
+      TPLogUtil.i(this.TAG, "MESSAGE_NOTIFY_PLAYER_SWITCH_DEFINITION, err ext3.");
       return null;
     }
     handlePlayerCallback(278, ((Integer)paramObject3).intValue(), 0, null);
@@ -724,6 +761,9 @@ public class TPPlayer
       this.mPlayerListeners = null;
       this.mPlayProxyManager.release();
       this.proxyTrackUrls.clear();
+      this.mDownloadPlayableDurationMs = -1L;
+      this.mCurrentDownloadSizeByte = -1L;
+      this.mTotalFileSizeByte = -1L;
     }
     catch (Exception localException)
     {
@@ -748,6 +788,9 @@ public class TPPlayer
       this.mPlayProxyManager.stopDownload();
       this.mProxyStatus = -1;
       this.proxyTrackUrls.clear();
+      this.mDownloadPlayableDurationMs = -1L;
+      this.mCurrentDownloadSizeByte = -1L;
+      this.mTotalFileSizeByte = -1L;
       return;
     }
     catch (Exception localException)
@@ -822,27 +865,21 @@ public class TPPlayer
         if (!TextUtils.isEmpty(paramTPDataSourceParams.url))
         {
           this.mUrl = paramTPDataSourceParams.url;
+          TPUrlDataSource localTPUrlDataSource = new TPUrlDataSource(paramTPDataSourceParams.url);
+          TPLogUtil.i(this.TAG, "handleSetDataSource originalUrl=" + paramTPDataSourceParams.url);
           if (isUseProxyEnable())
           {
-            paramTPDataSourceParams.url = this.mPlayProxyManager.startDownloadPlay(paramTPDataSourceParams.url);
-            TPLogUtil.i(this.TAG, "handleSetDataSource " + paramTPDataSourceParams.url);
+            localTPUrlDataSource = this.mPlayProxyManager.startDownloadPlay(paramTPDataSourceParams.url);
+            TPLogUtil.i(this.TAG, "handleSetDataSource selfPlayerUrl=" + localTPUrlDataSource.getSelfPlayerUrl());
+            TPLogUtil.i(this.TAG, "handleSetDataSource systemPlayerUrl=" + localTPUrlDataSource.getSystemPlayerUrl());
           }
-        }
-        while ((!TextUtils.isEmpty(paramTPDataSourceParams.url)) && (paramTPDataSourceParams.httpHeader != null))
-        {
-          this.mPlayerAdapter.setDataSource(paramTPDataSourceParams.url, paramTPDataSourceParams.httpHeader);
-          return;
-          if (paramTPDataSourceParams.mediaAsset != null)
+          if (paramTPDataSourceParams.httpHeader != null)
           {
-            if (isUseProxyEnable()) {
-              paramTPDataSourceParams.mediaAsset = this.mPlayProxyManager.startDownloadPlayByAsset(paramTPDataSourceParams.mediaAsset);
-            }
-            if (paramTPDataSourceParams.mediaAsset == null) {
-              return;
-            }
-            this.mPlayerAdapter.setDataSource(paramTPDataSourceParams.mediaAsset);
+            this.mPlayerAdapter.setDataSource(localTPUrlDataSource, paramTPDataSourceParams.httpHeader);
             return;
           }
+          this.mPlayerAdapter.setDataSource(localTPUrlDataSource);
+          return;
         }
       }
       catch (Exception paramTPDataSourceParams)
@@ -850,12 +887,21 @@ public class TPPlayer
         TPLogUtil.e(this.TAG, paramTPDataSourceParams);
         return;
       }
-      if (!TextUtils.isEmpty(paramTPDataSourceParams.url))
+      if (paramTPDataSourceParams.mediaAsset != null)
       {
-        this.mPlayerAdapter.setDataSource(paramTPDataSourceParams.url);
-        return;
+        if (isUseProxyEnable()) {
+          paramTPDataSourceParams.mediaAsset = this.mPlayProxyManager.startDownloadPlayByAsset(paramTPDataSourceParams.mediaAsset);
+        }
+        if (paramTPDataSourceParams.mediaAsset != null)
+        {
+          TPLogUtil.i(this.TAG, "handleSetDataSource mediaAsset=" + paramTPDataSourceParams.mediaAsset.getUrl());
+          this.mPlayerAdapter.setDataSource(paramTPDataSourceParams.mediaAsset);
+        }
       }
-      this.mPlayerAdapter.setDataSource(paramTPDataSourceParams.pfd);
+      else
+      {
+        this.mPlayerAdapter.setDataSource(paramTPDataSourceParams.pfd);
+      }
     }
   }
   
@@ -953,6 +999,9 @@ public class TPPlayer
       this.mPlayerAdapter.stop();
       pushEvent(107, 0, 0, null, new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).put("reason", Integer.valueOf(1)).build());
       this.mPlayProxyManager.setProxyPlayState(5);
+      this.mDownloadPlayableDurationMs = -1L;
+      this.mCurrentDownloadSizeByte = -1L;
+      this.mTotalFileSizeByte = -1L;
       return;
     }
     catch (Exception localException)
@@ -981,7 +1030,6 @@ public class TPPlayer
   public void handleSwitchDef(String paramString, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt)
   {
     paramTPVideoInfo = this.mPlayProxyManager.startSwitchDefTask(paramLong, paramString, paramTPVideoInfo);
-    if (!TextUtils.isEmpty(paramTPVideoInfo)) {}
     try
     {
       TPLogUtil.i(this.TAG, "handleSwitchDef, proxyUrl:" + paramString + ", defID:" + paramLong);
@@ -1111,8 +1159,14 @@ public class TPPlayer
     this.mPlayerInternal.setAudioGainRatio(paramFloat);
   }
   
+  public void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    this.mPlayProxyManager.setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+  }
+  
   public void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor)
   {
+    TPLogUtil.i(this.TAG, LOG_API_CALL_PREFIX + "setDataSource, ParcelFileDescriptor");
     if (paramParcelFileDescriptor == null) {
       throw new IllegalArgumentException("error : setDataSource , pfd invalid");
     }
@@ -1121,6 +1175,7 @@ public class TPPlayer
   
   public void setDataSource(ITPMediaAsset paramITPMediaAsset)
   {
+    TPLogUtil.i(this.TAG, LOG_API_CALL_PREFIX + "setDataSource, ITPMediaAsset");
     if (paramITPMediaAsset == null) {
       throw new IllegalArgumentException("asset is null");
     }
@@ -1146,6 +1201,11 @@ public class TPPlayer
       throw new IllegalArgumentException("error : setDataSource , data source invalid");
     }
     this.mPlayerInternal.setDataSource(paramString, paramMap);
+  }
+  
+  public void setIsActive(boolean paramBoolean)
+  {
+    this.mPlayProxyManager.setIsActive(paramBoolean);
   }
   
   public void setLoopback(boolean paramBoolean)
@@ -1213,6 +1273,13 @@ public class TPPlayer
   {
     if (this.mPlayerListeners != null) {
       this.mPlayerListeners.setOnSubtitleDataListener(paramIOnSubtitleDataListener);
+    }
+  }
+  
+  public void setOnSubtitleFrameOutListener(ITPPlayerListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener)
+  {
+    if (this.mPlayerListeners != null) {
+      this.mPlayerListeners.setOnSubtitleFrameOutListener(paramIOnSubtitleFrameOutListener);
     }
   }
   
@@ -1296,7 +1363,7 @@ public class TPPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayer
  * JD-Core Version:    0.7.0.1
  */

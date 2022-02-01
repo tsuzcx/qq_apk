@@ -1,24 +1,20 @@
-import com.tencent.device.datadef.DeviceInfo;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
 
-public class zto
-  implements alpg
+class zto
+  implements DialogInterface.OnClickListener
 {
-  protected void a(ArrayList<DeviceInfo> paramArrayList) {}
+  zto(ztm paramztm, CompoundButton paramCompoundButton) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a((ArrayList)paramObject);
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zto
  * JD-Core Version:    0.7.0.1
  */

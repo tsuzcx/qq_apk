@@ -1,14 +1,6 @@
-import java.util.Comparator;
-
-class apof
-  implements Comparator<String>
+public abstract interface apof
 {
-  apof(apod paramapod) {}
-  
-  public int a(String paramString1, String paramString2)
-  {
-    return paramString2.compareTo(paramString1);
-  }
+  public abstract Object a(int paramInt, Object paramObject);
 }
 
 

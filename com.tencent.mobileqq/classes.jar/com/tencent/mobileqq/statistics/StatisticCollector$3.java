@@ -3,19 +3,19 @@ package com.tencent.mobileqq.statistics;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import azri;
+import bctj;
 
 public class StatisticCollector$3
   implements Runnable
 {
-  public StatisticCollector$3(azri paramazri, String paramString) {}
+  public StatisticCollector$3(bctj parambctj, String paramString) {}
   
   public void run()
   {
     int i = 0;
     try
     {
-      SharedPreferences localSharedPreferences = azri.a().getSharedPreferences("crashcontrol", 0);
+      SharedPreferences localSharedPreferences = bctj.a().getSharedPreferences("crashcontrol", 0);
       if (localSharedPreferences != null)
       {
         if (localSharedPreferences.getBoolean("shouldStopMsf", false))

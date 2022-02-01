@@ -1,29 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-
-public class anhr
-  extends AnimatorListenerAdapter
+class anhr
 {
-  public anhr(QRScanEntryView paramQRScanEntryView, View paramView, boolean paramBoolean) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public anhr(anhp paramanhp, int paramInt, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

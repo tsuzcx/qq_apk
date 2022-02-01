@@ -1,28 +1,34 @@
 package com.tencent.av;
 
-import com.tencent.av.gaudio.QQGAudioCtrl;
-import com.tencent.qphone.base.util.QLog;
+import bgnt;
+import com.tencent.av.app.VideoAppInterface;
+import ley;
+import mqq.app.MobileQQ;
 
 class VideoController$23
   implements Runnable
 {
-  VideoController$23(VideoController paramVideoController, int paramInt) {}
+  VideoController$23(VideoController paramVideoController, int paramInt, long paramLong) {}
   
   public void run()
   {
-    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "GAudioCtrl.quit start.");
-    VideoController.b(this.this$0, this.this$0.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.quit(this.a));
-    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "GAudioCtrl.quit end. mQuitResult = " + VideoController.a(this.this$0));
-    synchronized (VideoController.a(this.this$0))
+    this.this$0.j = null;
+    this.this$0.a().a("acceptGAudioChat", 0);
+    boolean bool = bgnt.g(this.this$0.a.getApplication().getApplicationContext());
+    VideoController localVideoController = this.this$0;
+    int j = this.jdField_a_of_type_Int;
+    long l = this.jdField_a_of_type_Long;
+    if (bool) {}
+    for (int i = 69;; i = 68)
     {
-      VideoController.a(this.this$0).notify();
+      localVideoController.a(j, l, i, 0);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.VideoController.23
  * JD-Core Version:    0.7.0.1
  */

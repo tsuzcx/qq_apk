@@ -1,33 +1,62 @@
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.QQPermissionCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class adfh
-  implements QQPermissionCallback
+class adfh
+  extends adff
 {
-  public adfh(JumpActivity paramJumpActivity, boolean paramBoolean) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public adfh(adea paramadea, long paramLong)
   {
-    QLog.i("JumpAction", 1, "system share.doShare denied sd grant");
-    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, new adfi(this));
-    paramArrayOfString = new HashMap();
-    azri.a(BaseApplication.getContext()).a("", "noSDPermissionShareDeny", true, 0L, 0L, paramArrayOfString, "");
+    super(paramadea, 0, paramLong);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    QLog.i("JumpAction", 1, "system share.doShare user grant");
-    JumpActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_Boolean);
-    paramArrayOfString = new HashMap();
-    azri.a(BaseApplication.getContext()).a("", "noSDPermissionShareGrant", true, 0L, 0L, paramArrayOfString, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    if (paramInt == 0)
+    {
+      double d1 = paramSosoLbsInfo.a.jdField_a_of_type_Double;
+      double d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
+      double d3 = paramSosoLbsInfo.a.jdField_b_of_type_Float;
+      double d4 = paramSosoLbsInfo.a.jdField_a_of_type_Float;
+      double d5 = paramSosoLbsInfo.a.e;
+      paramSosoLbsInfo = new JSONObject();
+      try
+      {
+        paramSosoLbsInfo.put("latitude", d1);
+        paramSosoLbsInfo.put("longitude", d2);
+        paramSosoLbsInfo.put("speed", d3);
+        paramSosoLbsInfo.put("accuracy", d4);
+        paramSosoLbsInfo.put("altitude", d5);
+        paramSosoLbsInfo.put("verticalAccuracy", 0.0D);
+        paramSosoLbsInfo.put("horizontalAccuracy", d4);
+        adhh.a(this.jdField_a_of_type_Adea, paramSosoLbsInfo);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("DoraemonOpenAPI.sensor", 2, localJSONException.getMessage(), localJSONException);
+          }
+        }
+      }
+    }
+    adhh.a(this.jdField_a_of_type_Adea, paramInt, "error " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfh
  * JD-Core Version:    0.7.0.1
  */

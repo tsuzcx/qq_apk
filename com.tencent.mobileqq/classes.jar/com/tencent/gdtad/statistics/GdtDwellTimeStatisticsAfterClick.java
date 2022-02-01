@@ -1,8 +1,8 @@
 package com.tencent.gdtad.statistics;
 
-import aase;
-import aasi;
-import aasj;
+import acqy;
+import acrc;
+import acrd;
 import android.os.SystemClock;
 import android.view.View;
 import com.tencent.gdtad.aditem.GdtAd;
@@ -70,30 +70,30 @@ public final class GdtDwellTimeStatisticsAfterClick
   private void c()
   {
     this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    aase.b("GdtDwellTimeStatisticsAfterClick", String.format("enter %d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
+    acqy.b("GdtDwellTimeStatisticsAfterClick", String.format("enter %d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
   }
   
   private void d()
   {
     long l = SystemClock.elapsedRealtime();
-    aase.b("GdtDwellTimeStatisticsAfterClick", String.format("leave %d", new Object[] { Long.valueOf(l) }));
+    acqy.b("GdtDwellTimeStatisticsAfterClick", String.format("leave %d", new Object[] { Long.valueOf(l) }));
     if (this.jdField_a_of_type_Long == -2147483648L) {
-      aase.d("GdtDwellTimeStatisticsAfterClick", "leave error");
+      acqy.d("GdtDwellTimeStatisticsAfterClick", "leave error");
     }
     l -= this.jdField_a_of_type_Long;
-    aase.b("GdtDwellTimeStatisticsAfterClick", String.format("dwell %d", new Object[] { Long.valueOf(l) }));
+    acqy.b("GdtDwellTimeStatisticsAfterClick", String.format("dwell %d", new Object[] { Long.valueOf(l) }));
     this.jdField_a_of_type_Long = -2147483648L;
-    aasj localaasj = new aasj();
-    localaasj.jdField_a_of_type_ComTencentAdTangramAd = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-    localaasj.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(42);
-    localaasj.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(l);
-    aasi.a(localaasj);
+    acrd localacrd = new acrd();
+    localacrd.jdField_a_of_type_ComTencentAdTangramAd = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+    localacrd.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(42);
+    localacrd.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(l);
+    acrc.a(localacrd);
   }
   
   public void a()
   {
     if (!a()) {
-      aase.d("GdtDwellTimeStatisticsAfterClick", "click error");
+      acqy.d("GdtDwellTimeStatisticsAfterClick", "click error");
     }
     while (this.jdField_a_of_type_Boolean) {
       return;
@@ -104,7 +104,7 @@ public final class GdtDwellTimeStatisticsAfterClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick
  * JD-Core Version:    0.7.0.1
  */

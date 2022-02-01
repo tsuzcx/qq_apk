@@ -1,28 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import alof;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import ors;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import bmqa;
 
 class KandianMergeManager$12
   implements Runnable
 {
-  KandianMergeManager$12(KandianMergeManager paramKandianMergeManager, QQMessageFacade paramQQMessageFacade, String paramString1, String paramString2, int paramInt, boolean paramBoolean) {}
+  KandianMergeManager$12(KandianMergeManager paramKandianMergeManager, int paramInt) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b(alof.aA, 7220);
-    if (localMessageRecord != null) {}
-    for (localMessageRecord = KandianMergeManager.a(this.this$0, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);; localMessageRecord = KandianMergeManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int))
+    Object localObject = bmqa.a(KandianMergeManager.a(this.this$0), true, false);
+    if (localObject != null)
     {
-      if (localMessageRecord != null)
+      localObject = ((SharedPreferences)localObject).edit();
+      if (localObject != null)
       {
-        ors.a(localMessageRecord);
-        this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localMessageRecord, KandianMergeManager.a(this.this$0).c());
+        ((SharedPreferences.Editor)localObject).putInt("kandian_follow_data_length", this.a);
+        bmqa.a((SharedPreferences.Editor)localObject, true);
       }
-      return;
     }
   }
 }

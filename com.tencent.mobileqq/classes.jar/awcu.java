@@ -1,54 +1,223 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity.4.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.AppRuntime.Status;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class awcu
-  extends alpq
 {
-  public awcu(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
-  
-  protected void onGetAutoReplyList(boolean paramBoolean, List<AutoReplyText> paramList, int paramInt)
+  private static int a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateActivity", 2, String.format("onGetAutoReplyList, isSuccess: %s, selectId: %s, replyList: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramList }));
+    if (paramContext == null) {
+      return -1;
     }
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).runOnUiThread(new AccountOnlineStateActivity.4.1(this, paramBoolean, paramList));
+    if (!a(paramContext)) {
+      return 0;
     }
+    if (Build.VERSION.SDK_INT >= 26) {
+      return c(paramContext);
+    }
+    if (Build.VERSION.SDK_INT >= 22) {
+      return b(paramContext);
+    }
+    return d(paramContext);
   }
   
-  protected void onSetAutoReplyList(boolean paramBoolean)
+  public static void a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if (paramBoolean)
-    {
-      awev localawev = AccountOnlineStateActivity.a(this.a).a();
-      AppRuntime.Status localStatus = aweo.a().a(localawev);
-      if ((localStatus != null) && (!AccountOnlineStateActivity.a(this.a, localawev, localStatus)))
-      {
-        AccountOnlineStateActivity.a(this.a, true);
-        AccountOnlineStateActivity.a(this.a).a(localStatus, localawev.a);
-      }
+    if (paramContext == null) {
+      QLog.e("GatewayReportUtil", 1, "reportLoginSimCardNum but context is null");
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountOnlineStateActivity", 2, "onSetAutoReplyList, isSuccess: " + paramBoolean);
-      }
       return;
-      AccountOnlineStateActivity.a(this.a, true, 0);
+      int i = a(paramContext);
+      QLog.d("GatewayReportUtil", 1, new Object[] { "sim card num is ", Integer.valueOf(i) });
+      paramContext = null;
+      if (i == 0) {
+        paramContext = "0X800B0A9";
+      }
+      while (paramContext != null)
+      {
+        bcst.a(paramQQAppInterface, "dc00898", "", "", paramContext, paramContext, 0, 0, "", "", "", "");
+        return;
+        if (i == 1) {
+          paramContext = "0X800B0AB";
+        } else if (i == 2) {
+          paramContext = "0X800B0A1";
+        }
+      }
+    }
+  }
+  
+  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    if (paramContext == null) {
+      QLog.e("GatewayReportUtil", 1, "reportSimCardNum but context is null");
+    }
+    for (;;)
+    {
+      return;
+      int i = a(paramContext);
+      QLog.d("GatewayReportUtil", 1, new Object[] { "sim card num is ", Integer.valueOf(i) });
+      paramContext = null;
+      if (i == 0) {
+        paramContext = "0X800B0AA";
+      }
+      while (paramContext != null)
+      {
+        bcst.a(paramQQAppInterface, "dc00898", "", paramString, paramContext, paramContext, paramInt, 0, "", "", "", "");
+        return;
+        if (i == 1) {
+          paramContext = "0X800B0AC";
+        } else if (i == 2) {
+          paramContext = "0X800B0A3";
+        }
+      }
+    }
+  }
+  
+  private static boolean a(Context paramContext)
+  {
+    boolean bool;
+    switch (((TelephonyManager)paramContext.getSystemService("phone")).getSimState())
+    {
+    default: 
+      bool = true;
+    }
+    for (;;)
+    {
+      QLog.d("GatewayReportUtil", 1, new Object[] { "hasSimCard result : ", Boolean.valueOf(bool) });
+      return bool;
+      bool = false;
       continue;
-      AccountOnlineStateActivity.a(this.a, false, -2);
+      bool = false;
+    }
+  }
+  
+  @RequiresApi(api=22)
+  private static int b(Context paramContext)
+  {
+    try
+    {
+      SubscriptionManager localSubscriptionManager = (SubscriptionManager)paramContext.getSystemService("telephony_subscription_service");
+      if (ActivityCompat.checkSelfPermission(paramContext, "android.permission.READ_PHONE_STATE") != 0)
+      {
+        QLog.e("GatewayReportUtil", 1, "getSimCardNumV22 no permission");
+        return -1;
+      }
+      int i = localSubscriptionManager.getActiveSubscriptionInfoCount();
+      return i;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("GatewayReportUtil", 1, new Object[] { "getSimCardNumV22 error : ", paramContext.getMessage() });
+    }
+    return -1;
+  }
+  
+  @RequiresApi(api=26)
+  private static int c(Context paramContext)
+  {
+    try
+    {
+      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+      int j = 0;
+      int k;
+      for (int i = 0;; i = k)
+      {
+        k = i;
+        if (j >= 2) {
+          break;
+        }
+        int m = paramContext.getSimState(j);
+        k = i;
+        if (m == 5) {
+          k = i + 1;
+        }
+        j += 1;
+      }
+      return k;
+    }
+    catch (Exception paramContext)
+    {
+      k = -1;
+      QLog.d("GatewayReportUtil", 1, new Object[] { "getSimCardNumV26 error : ", paramContext.getMessage() });
+    }
+  }
+  
+  private static int d(Context paramContext)
+  {
+    for (;;)
+    {
+      try
+      {
+        paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+        i = paramContext.getSimState();
+        if (i == 5)
+        {
+          i = 1;
+          int j;
+          return i;
+        }
+      }
+      catch (NoSuchMethodException paramContext)
+      {
+        try
+        {
+          j = ((Integer)TelephonyManager.class.getMethod("getSimState", new Class[] { Integer.TYPE }).invoke(paramContext, new Object[] { Integer.valueOf(1) })).intValue();
+          if (j != 5) {
+            break label234;
+          }
+          return 2;
+        }
+        catch (InvocationTargetException paramContext)
+        {
+          continue;
+        }
+        catch (IllegalAccessException paramContext)
+        {
+          continue;
+        }
+        catch (NoSuchMethodException paramContext)
+        {
+          continue;
+        }
+        paramContext = paramContext;
+        i = 0;
+        QLog.e("GatewayReportUtil", 1, new Object[] { "getSimCardNumV21 NoSuchMethodException, count : ", Integer.valueOf(i), " error msg : ", paramContext.getMessage() });
+        return i;
+      }
+      catch (IllegalAccessException paramContext)
+      {
+        i = 0;
+        QLog.e("GatewayReportUtil", 1, new Object[] { "getSimCardNumV21 IllegalAccessException, count : ", Integer.valueOf(i), " error msg : ", paramContext.getMessage() });
+        return i;
+      }
+      catch (InvocationTargetException paramContext)
+      {
+        i = 0;
+        QLog.e("GatewayReportUtil", 1, new Object[] { "getSimCardNumV21 InvocationTargetException, count : ", Integer.valueOf(i), " error msg : ", paramContext.getMessage() });
+        return i;
+      }
+      catch (Exception paramContext)
+      {
+        QLog.e("GatewayReportUtil", 1, new Object[] { "getSimCardNumV21 other exception, count : ", Integer.valueOf(-1), " error msg : ", paramContext.getMessage() });
+        return -1;
+      }
+      label234:
+      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awcu
  * JD-Core Version:    0.7.0.1
  */

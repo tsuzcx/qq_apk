@@ -1,18 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afpq
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public afpq(HeartCombolEffectView paramHeartCombolEffectView, afpr paramafpr) {}
+  public afpq(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Afpr.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_Afpr.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Afpr.jdField_b_of_type_Float > 0.0F)) {
-      this.jdField_a_of_type_Afpr.jdField_b_of_type_Boolean = true;
-    }
+    this.a.a.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

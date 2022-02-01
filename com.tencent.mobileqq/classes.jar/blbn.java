@@ -1,24 +1,34 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.util.SparseArray;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.mobileqq.redtouch.RedTouchUI;
+import cooperation.comic.VipComicJumpActivity;
+import cooperation.comic.ui.QQComicTabBarView;
+import java.util.List;
 
-class blbn
-  implements Animation.AnimationListener
+public class blbn
+  implements blba
 {
-  blbn(blbl paramblbl, Runnable paramRunnable) {}
+  public blbn(QQComicTabBarView paramQQComicTabBarView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    blbl.a(this.jdField_a_of_type_Blbl).setVisibility(0);
+    paramInt1 = this.a.a();
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (paramInt1 < 0) || (paramInt1 >= this.a.jdField_a_of_type_JavaUtilList.size())) {}
+    RedTouchUI localRedTouchUI;
+    RedAppInfo localRedAppInfo;
+    do
+    {
+      return;
+      paramInt2 = VipComicJumpActivity.a("fav", this.a.jdField_a_of_type_JavaUtilList);
+      if ((paramBoolean) && (paramInt1 != paramInt2))
+      {
+        this.a.a(paramInt2);
+        return;
+      }
+      localRedTouchUI = (RedTouchUI)this.a.jdField_a_of_type_Blcc.get("1113.100801");
+      localRedAppInfo = (RedAppInfo)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
+    } while ((localRedTouchUI == null) || (!localRedTouchUI.b()) || (localRedAppInfo == null) || (localRedTouchUI.a != localRedAppInfo));
+    this.a.a(paramInt2, true);
   }
 }
 

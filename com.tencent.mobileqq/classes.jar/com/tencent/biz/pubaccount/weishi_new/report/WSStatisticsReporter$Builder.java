@@ -10,6 +10,7 @@ public class WSStatisticsReporter$Builder
   private String eventName = "";
   private Map<String, String> extParams = new HashMap();
   private boolean flush;
+  private boolean isImmediatelyUpload;
   private Map<String, String> params = new HashMap();
   
   public Builder addExtParams(Map<String, String> paramMap)
@@ -45,6 +46,9 @@ public class WSStatisticsReporter$Builder
   public WSStatisticsReporter build(String paramString)
   {
     this.eventName = paramString;
+    if (TextUtils.equals(paramString, "gzh_click")) {
+      umz.a = true;
+    }
     return new WSStatisticsReporter(this, null);
   }
   
@@ -64,6 +68,12 @@ public class WSStatisticsReporter$Builder
   public Builder setFlush(boolean paramBoolean)
   {
     this.flush = paramBoolean;
+    return this;
+  }
+  
+  public Builder setImmediatelyUpload(boolean paramBoolean)
+  {
+    this.isImmediatelyUpload = paramBoolean;
     return this;
   }
   
@@ -109,7 +119,7 @@ public class WSStatisticsReporter$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder
  * JD-Core Version:    0.7.0.1
  */

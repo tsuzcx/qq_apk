@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.os.Process;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 
 class GameActivity$17
   implements Runnable
@@ -9,12 +10,15 @@ class GameActivity$17
   
   public void run()
   {
-    Process.killProcess(Process.myPid());
+    Bundle localBundle = new Bundle();
+    localBundle.putString("param_proc_name", BaseApplicationImpl.getApplication().getQQProcessName());
+    localBundle.putString("param_proc_modulename", "mini_app_client_module");
+    this.this$0.onProcessBackground(localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.17
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,27 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acyd
+  extends aczg
 {
-  public static void a()
+  public int a()
   {
-    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), JumpActivity.class);
-    localIntent.addFlags(268435456);
-    localIntent.addFlags(536870912);
-    localIntent.addFlags(67108864);
-    localIntent.addFlags(131072);
-    localIntent.setData(Uri.parse("mqqapi://qzone/to_friend_feeds"));
-    BaseApplicationImpl.getContext().startActivity(localIntent);
+    return 1000;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Intent paramIntent, String paramString, boolean paramBoolean)
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
   {
-    if ((!"msg_tab_camera".equals(paramString)) || (paramIntent == null)) {
-      return;
-    }
-    bjdt.a(paramFragmentActivity, paramQQAppInterface, paramIntent, 20005, paramBoolean);
+    new bbzc().b(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (19 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

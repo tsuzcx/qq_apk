@@ -7,7 +7,7 @@ final class y$1
   
   public final void run()
   {
-    if (y.b(this.a, this.b, this.c)) {}
+    y.b(this.a, this.b, this.c);
   }
 }
 

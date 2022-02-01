@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.receipt;
 
-import azah;
+import bbzj;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -29,12 +29,12 @@ class ReceiptMessageDetailFragment$4
     }
     ReceiptMessageDetailFragment.a(this.this$0).addObserver(ReceiptMessageDetailFragment.a(this.this$0), false);
     QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c");
-    ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).a().a(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).getCurrentAccountUin()), ReceiptMessageDetailFragment.a(this.this$0), azah.a(ReceiptMessageDetailFragment.b(this.this$0))));
+    ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).a().a(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).getCurrentAccountUin()), ReceiptMessageDetailFragment.a(this.this$0), bbzj.a(ReceiptMessageDetailFragment.b(this.this$0))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.4
  * JD-Core Version:    0.7.0.1
  */

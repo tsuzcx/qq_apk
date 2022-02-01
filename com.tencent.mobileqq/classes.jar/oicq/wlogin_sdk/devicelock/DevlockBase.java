@@ -23,7 +23,7 @@ public class DevlockBase
     int i = _seq;
     _seq = i + 1;
     util.int32_to_buf(arrayOfByte, 27, i);
-    util.int16_to_buf(arrayOfByte, 39, t.u);
+    util.int16_to_buf(arrayOfByte, 39, t.v);
     util.int16_to_buf(arrayOfByte, 43, this._version);
     util.int8_to_buf(arrayOfByte, 45, 0);
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 111, paramArrayOfByte.length);

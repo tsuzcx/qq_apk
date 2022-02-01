@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class arvb
-  implements bezx
+public abstract interface arvb
 {
-  public arvb(QfileEditBottomBar paramQfileEditBottomBar) {}
+  public abstract void a(EmoticonPackage paramEmoticonPackage);
   
-  public void a(int paramInt)
-  {
-    QfileEditBottomBar.a(this.a);
-  }
+  public abstract void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2);
+  
+  public abstract void b(EmoticonPackage paramEmoticonPackage);
 }
 
 

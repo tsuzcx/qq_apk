@@ -1,16 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
 
-class rie
-  implements View.OnClickListener
+public class rie
 {
-  rie(ric paramric) {}
+  public String a;
+  public String b;
   
-  public void onClick(View paramView) {}
+  public static rie a(oidb_cmd0xbc9.MoreChannelItem paramMoreChannelItem)
+  {
+    rie localrie = new rie();
+    localrie.a = paramMoreChannelItem.bytes_title.get().toStringUtf8();
+    localrie.b = paramMoreChannelItem.bytes_link_url.get().toStringUtf8();
+    return localrie;
+  }
+  
+  public oidb_cmd0xbc9.MoreChannelItem a()
+  {
+    oidb_cmd0xbc9.MoreChannelItem localMoreChannelItem = new oidb_cmd0xbc9.MoreChannelItem();
+    if (!TextUtils.isEmpty(this.a))
+    {
+      localMoreChannelItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.a));
+      localMoreChannelItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    return localMoreChannelItem;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rie
  * JD-Core Version:    0.7.0.1
  */

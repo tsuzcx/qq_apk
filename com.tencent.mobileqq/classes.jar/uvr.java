@@ -1,68 +1,51 @@
-import com.tencent.biz.qqstory.database.ReportWatchVideoEntry;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
 
-public class uvr
+class uvr
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
+  private uvr(uvi paramuvi) {}
   
-  public uvr() {}
-  
-  public uvr(String paramString1, String paramString2, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.a = true;
+    uvi.b(this.a);
+    return false;
   }
   
-  public ReportWatchVideoEntry a()
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    ReportWatchVideoEntry localReportWatchVideoEntry = new ReportWatchVideoEntry();
-    localReportWatchVideoEntry.vid = this.jdField_a_of_type_JavaLangString;
-    localReportWatchVideoEntry.videoUnionId = this.jdField_b_of_type_JavaLangString;
-    localReportWatchVideoEntry.isLiveVideo = this.jdField_a_of_type_Boolean;
-    localReportWatchVideoEntry.createTime = this.jdField_a_of_type_Long;
-    localReportWatchVideoEntry.source = this.jdField_a_of_type_Int;
-    localReportWatchVideoEntry.vidType = this.jdField_b_of_type_Int;
-    return localReportWatchVideoEntry;
+    return super.onDoubleTapEvent(paramMotionEvent);
   }
   
-  public void a(ReportWatchVideoEntry paramReportWatchVideoEntry)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramReportWatchVideoEntry.vid;
-    this.jdField_b_of_type_JavaLangString = paramReportWatchVideoEntry.videoUnionId;
-    this.jdField_a_of_type_Boolean = paramReportWatchVideoEntry.isLiveVideo;
-    this.jdField_a_of_type_Long = paramReportWatchVideoEntry.createTime;
-    this.jdField_a_of_type_Int = paramReportWatchVideoEntry.source;
-    this.jdField_b_of_type_Int = paramReportWatchVideoEntry.vidType;
+    return false;
   }
   
-  public boolean equals(Object paramObject)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (this == paramObject) {
-      return true;
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent)
+  {
+    super.onShowPress(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((!(uvi.a(this.a).getTag() instanceof uvp)) || (((uvi.a(this.a).getTag() instanceof uvp)) && (!uvi.a(this.a).a(uvi.a(this.a)).booleanValue()))) {
+      uvi.c(this.a);
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
-    }
-    paramObject = (uvr)paramObject;
-    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
-  }
-  
-  public String toString()
-  {
-    return "InnerVideoItem { mVid=" + this.jdField_a_of_type_JavaLangString + " mVideoUid=" + this.jdField_b_of_type_JavaLangString + " mIsLiveVideo=" + this.jdField_a_of_type_Boolean + " mCreateTime=" + this.jdField_a_of_type_Long + " mSource=" + this.jdField_a_of_type_Int + " mVidType=" + this.jdField_b_of_type_Int + "}";
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uvr
  * JD-Core Version:    0.7.0.1
  */

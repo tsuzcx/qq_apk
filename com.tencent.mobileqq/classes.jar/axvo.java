@@ -1,16 +1,38 @@
-import android.media.MediaFormat;
-
-public abstract interface axvo
+class axvo
+  implements aqiw
 {
-  public abstract void a(MediaFormat paramMediaFormat);
+  axvo(axuv paramaxuv) {}
   
-  public abstract void a(axvl paramaxvl);
+  public int a()
+  {
+    return 1;
+  }
   
-  public abstract void k();
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 >= 0)
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 1) {}
+    }
+    else
+    {
+      paramInt1 = 0;
+    }
+    if (paramInt1 == 0) {
+      return anni.a(2131706071);
+    }
+    return anni.a(2131706042);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axvo
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,11 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import beft;
-import bjbn;
+import bhmv;
+import blpw;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebBackForwardList;
 import com.tencent.smtt.sdk.WebHistoryItem;
 import com.tencent.smtt.sdk.WebView;
@@ -43,7 +44,7 @@ public class ReaderCommentPageFragment
     if (!TextUtils.isEmpty(paramString)) {
       str2 = str1 + "&commentId=" + paramString;
     }
-    return bjbn.a("qqreaderComment") + "&id=" + paramLong + str2;
+    return blpw.a("qqreaderComment") + "&id=" + paramLong + str2;
   }
   
   private static String a(Intent paramIntent)
@@ -66,7 +67,7 @@ public class ReaderCommentPageFragment
     }
     for (;;)
     {
-      str = bjbn.a("qqreaderReadover") + "&recommend_bid=" + l1;
+      str = blpw.a("qqreaderReadover") + "&recommend_bid=" + l1;
       paramIntent = a(i, paramIntent, l2);
       if (bool2)
       {
@@ -120,20 +121,11 @@ public class ReaderCommentPageFragment
     return paramBundle;
   }
   
-  private boolean h()
+  private void b()
   {
-    String str;
-    if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (this.jdField_a_of_type_ComTencentBizUiTouchWebView.canGoBack())) {
-      str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.copyBackForwardList().getCurrentItem().getUrl();
-    }
-    return (!str.equals(b)) && (!str.contains("error.html"));
-  }
-  
-  private void j()
-  {
-    if (h())
+    if (b())
     {
-      k();
+      c();
       return;
     }
     switch (this.jdField_a_of_type_Int)
@@ -143,88 +135,93 @@ public class ReaderCommentPageFragment
     {
       getActivity().finish();
       return;
-      getActivity().overridePendingTransition(0, 2130772248);
+      getActivity().overridePendingTransition(0, 2130772257);
       continue;
-      getActivity().overridePendingTransition(0, 2130772246);
+      getActivity().overridePendingTransition(0, 2130772255);
     }
   }
   
-  private void k()
+  private boolean b()
   {
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+    String str;
+    if ((this.webView != null) && (this.webView.canGoBack())) {
+      str = this.webView.copyBackForwardList().getCurrentItem().getUrl();
+    }
+    return (!str.equals(b)) && (!str.contains("error.html"));
+  }
+  
+  private void c()
+  {
+    if (this.webView != null)
     {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.goBack();
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.invalidate();
+      this.webView.goBack();
+      this.webView.invalidate();
     }
   }
   
-  public void a(Intent paramIntent, String paramString)
+  public void initTitleBar(Intent paramIntent, String paramString)
   {
-    super.a(paramIntent, paramString);
+    super.initTitleBar(paramIntent, paramString);
     if ("readmenu".equals(this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Beft.a.setVisibility(8);
-      this.jdField_a_of_type_Beft.c.setVisibility(0);
-      this.jdField_a_of_type_Beft.c.setText("关闭");
-      this.jdField_a_of_type_Beft.c.setTypeface(Typeface.DEFAULT_BOLD);
+      this.mSwiftTitleUI.a.setVisibility(8);
+      this.mSwiftTitleUI.c.setVisibility(0);
+      this.mSwiftTitleUI.c.setText("关闭");
+      this.mSwiftTitleUI.c.setTypeface(Typeface.DEFAULT_BOLD);
     }
     do
     {
       return;
       if (("readover".equals(this.jdField_a_of_type_JavaLangString)) || ("chaptercomment".equals(this.jdField_a_of_type_JavaLangString)))
       {
-        this.jdField_a_of_type_Beft.a.setVisibility(0);
-        this.jdField_a_of_type_Beft.c.setText("");
-        this.jdField_a_of_type_Beft.c.setVisibility(8);
+        this.mSwiftTitleUI.a.setVisibility(0);
+        this.mSwiftTitleUI.c.setText("");
+        this.mSwiftTitleUI.c.setVisibility(8);
         return;
       }
     } while (!"chapterover".equals(this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_Beft.a.setVisibility(0);
-    this.jdField_a_of_type_Beft.b.setText("章节评论");
-    this.jdField_a_of_type_Beft.c.setVisibility(0);
-    this.jdField_a_of_type_Beft.c.setText("书友交流");
-    this.jdField_a_of_type_Beft.c.setTypeface(Typeface.DEFAULT_BOLD);
-  }
-  
-  public void b(WebView paramWebView, String paramString)
-  {
-    super.b(paramWebView, paramString);
-    if ("chapterover".equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Beft.b.setText("章节评论");
-    }
+    this.mSwiftTitleUI.a.setVisibility(0);
+    this.mSwiftTitleUI.b.setText("章节评论");
+    this.mSwiftTitleUI.c.setVisibility(0);
+    this.mSwiftTitleUI.c.setText("书友交流");
+    this.mSwiftTitleUI.c.setTypeface(Typeface.DEFAULT_BOLD);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_Beft.a) {
-      j();
+    if (paramView == this.mSwiftTitleUI.a) {
+      b();
     }
-    do
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramView != this.jdField_a_of_type_Beft.c) {
-        break label82;
+      if (paramView == this.mSwiftTitleUI.c)
+      {
+        if ("chapterover".equals(this.jdField_a_of_type_JavaLangString))
+        {
+          if (this.webView != null) {
+            this.webView.loadUrl("jsbridge://JSTopRightButton/handleCommentPageRightButton/500/" + this.jdField_a_of_type_Long);
+          }
+        }
+        else {
+          b();
+        }
       }
-      if (!"chapterover".equals(this.jdField_a_of_type_JavaLangString)) {
-        break;
+      else {
+        super.onClick(paramView);
       }
-    } while (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null);
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("jsbridge://JSTopRightButton/handleCommentPageRightButton/500/" + this.jdField_a_of_type_Long);
-    return;
-    j();
-    return;
-    label82:
-    super.onClick(paramView);
+    }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("defaultResultData");
+    paramBundle = this.intent.getParcelableExtra("defaultResultData");
     if ((paramBundle instanceof Intent)) {
       getActivity().setResult(0, (Intent)paramBundle);
     }
-    paramBundle = this.jdField_a_of_type_AndroidContentIntent.getExtras();
+    paramBundle = this.intent.getExtras();
     if (paramBundle != null)
     {
       this.jdField_a_of_type_Int = paramBundle.getInt("style");
@@ -238,10 +235,18 @@ public class ReaderCommentPageFragment
     super.onDestroy();
     b = "";
   }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+    if ("chapterover".equals(this.jdField_a_of_type_JavaLangString)) {
+      this.mSwiftTitleUI.b.setText("章节评论");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderCommentPageFragment
  * JD-Core Version:    0.7.0.1
  */

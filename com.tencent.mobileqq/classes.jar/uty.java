@@ -1,14 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public abstract class uty
-  implements View.OnClickListener
+class uty
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public void onClick(View paramView) {}
+  uty(utx paramutx) {}
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    upe.b("WSVerticalVideoItemView", "itemView onDoubleTap");
+    utx.a(this.a, paramMotionEvent);
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    upe.b("WSVerticalVideoItemView", "itemView onSingleTapConfirmed");
+    utx.a(this.a);
+    return super.onSingleTapConfirmed(paramMotionEvent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uty
  * JD-Core Version:    0.7.0.1
  */

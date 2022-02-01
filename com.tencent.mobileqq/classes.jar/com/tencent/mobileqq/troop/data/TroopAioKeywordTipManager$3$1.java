@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.data;
 
-import bbpz;
+import beqn;
 import com.tencent.mobileqq.data.MessageRecord;
 
 class TroopAioKeywordTipManager$3$1
@@ -19,7 +19,7 @@ class TroopAioKeywordTipManager$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.3.1
  * JD-Core Version:    0.7.0.1
  */

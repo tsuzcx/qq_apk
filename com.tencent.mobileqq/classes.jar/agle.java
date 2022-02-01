@@ -1,10 +1,57 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.widget.XEditTextEx;
 
-public abstract interface agle
+public class agle
+  implements agma
 {
-  public abstract boolean a(PhotoListPanel paramPhotoListPanel);
+  protected aglg a;
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  protected boolean a;
   
-  public abstract boolean b(PhotoListPanel paramPhotoListPanel);
+  public agle(BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.a();
+  }
+  
+  private void a(XEditTextEx paramXEditTextEx)
+  {
+    this.jdField_a_of_type_Boolean = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131694386), "qqsetting_enter_sendmsg_key", false);
+    if (this.jdField_a_of_type_Boolean) {
+      paramXEditTextEx.setImeOptions(4);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aglg == null) {
+        this.jdField_a_of_type_Aglg = new aglg(this, null);
+      }
+      paramXEditTextEx.setOnEditorActionListener(this.jdField_a_of_type_Aglg);
+      paramXEditTextEx.setOnKeyListener(this.jdField_a_of_type_Aglg);
+      return;
+      paramXEditTextEx.setImeOptions(0);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 20: 
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 20, 8 };
+  }
 }
 
 

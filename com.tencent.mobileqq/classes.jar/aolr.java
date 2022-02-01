@@ -1,71 +1,59 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.report.lp.LpReportInfo_dc02880;
 
 public class aolr
+  extends aojs
 {
-  protected String a = "";
-  
-  public aolr() {}
-  
-  public aolr(String paramString)
+  public aolr(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (paramString != null) {
-      this.a = paramString;
-    }
+    super(paramQQAppInterface, paramContext);
   }
   
-  public aols a()
+  public boolean a()
   {
-    if ((this instanceof aols)) {
-      return (aols)this;
+    try
+    {
+      boolean bool = h();
+      return bool;
     }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkAIDictConfBean object");
-    return null;
+    catch (Exception localException)
+    {
+      QLog.e("QzoneFriendFeedsV1AndV2Action", 1, "doAction error: " + localException.getMessage());
+      a("QzoneFriendFeedsV1AndV2Action");
+    }
+    return false;
   }
   
-  public aolt a()
+  public boolean h()
   {
-    if ((this instanceof aolt)) {
-      return (aolt)this;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return false;
     }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordConfBean object");
-    return null;
-  }
-  
-  public aolu a()
-  {
-    if ((this instanceof aolu)) {
-      return (aolu)this;
+    Object localObject = (bccv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
+    if ((localObject != null) && ((((bccv)localObject).a(2) > 0) || (((bccv)localObject).a(1) > 0))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("newflag", bool);
+      ((Intent)localObject).putExtra("refer", "schemeActiveFeeds");
+      QzonePluginProxyActivity.a((Intent)localObject, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
+      ((Intent)localObject).addFlags(805306368);
+      String str = Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("push_trans_channel");
+      blsb.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (Intent)localObject, str, -1);
+      LpReportInfo_dc02880.report(this.jdField_a_of_type_JavaLangString);
+      return true;
     }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordSDKShareConfBean object");
-    return null;
-  }
-  
-  public aolv a()
-  {
-    if ((this instanceof aolv)) {
-      return (aolv)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkMsgAIDisableConfBean object");
-    return null;
-  }
-  
-  public aolw a()
-  {
-    if ((this instanceof aolw)) {
-      return (aolw)this;
-    }
-    QLog.e("ArkConfBean", 1, "this object is not a ArkPlatformConfigBean object");
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aolr
  * JD-Core Version:    0.7.0.1
  */

@@ -4,18 +4,18 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bisc;
-import bisl;
+import blgw;
+import blhf;
 import com.tencent.qphone.base.util.QLog;
 
 public class SendMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<SendMsg> CREATOR = new bisl();
+  public static final Parcelable.Creator<SendMsg> CREATOR = new blhf();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = -1L;
   public final Bundle a;
-  public bisc a;
+  public blgw a;
   public String a;
   long b = -1L;
   
@@ -67,8 +67,8 @@ public class SendMsg
     //   61: aload_0
     //   62: aload_1
     //   63: invokevirtual 104	android/os/Parcel:readStrongBinder	()Landroid/os/IBinder;
-    //   66: invokestatic 109	bisd:a	(Landroid/os/IBinder;)Lbisc;
-    //   69: putfield 111	cooperation/qappcenter/remote/SendMsg:jdField_a_of_type_Bisc	Lbisc;
+    //   66: invokestatic 109	blgx:a	(Landroid/os/IBinder;)Lblgw;
+    //   69: putfield 111	cooperation/qappcenter/remote/SendMsg:jdField_a_of_type_Blgw	Lblgw;
     //   72: return
     //   73: astore_3
     //   74: aload_3
@@ -102,9 +102,9 @@ public class SendMsg
     return this.jdField_a_of_type_Int;
   }
   
-  public bisc a()
+  public blgw a()
   {
-    return this.jdField_a_of_type_Bisc;
+    return this.jdField_a_of_type_Blgw;
   }
   
   public String a()
@@ -130,7 +130,7 @@ public class SendMsg
       paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
       paramParcel.writeLong(this.jdField_a_of_type_Long);
       paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
-      paramParcel.writeStrongInterface(this.jdField_a_of_type_Bisc);
+      paramParcel.writeStrongInterface(this.jdField_a_of_type_Blgw);
       return;
     }
     catch (RuntimeException paramParcel)
@@ -142,7 +142,7 @@ public class SendMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qappcenter.remote.SendMsg
  * JD-Core Version:    0.7.0.1
  */

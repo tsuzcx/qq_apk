@@ -5,15 +5,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 import java.util.List;
-import tqs;
-import try;
-import tzv;
+import uxo;
+import uzl;
+import vhk;
+import vrf;
 
 public class QCircleMessageNoticeView
-  extends BaseWidgetView
+  extends QCircleBaseWidgetView
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int = 3;
@@ -22,7 +25,7 @@ public class QCircleMessageNoticeView
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private AvatarListView jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView;
-  private try jdField_a_of_type_Try;
+  private uzl jdField_a_of_type_Uzl;
   private LinearLayout b;
   
   public QCircleMessageNoticeView(Context paramContext)
@@ -33,55 +36,52 @@ public class QCircleMessageNoticeView
   
   public int a()
   {
-    return 2131560561;
+    return 2131560731;
+  }
+  
+  protected String a()
+  {
+    return "QCircleMessage_QCircleMessageNoticeView";
   }
   
   public void a(Context paramContext, View paramView)
   {
     if (paramView != null)
     {
-      this.b = ((LinearLayout)paramView.findViewById(2131369679));
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView = ((AvatarListView)paramView.findViewById(2131362555));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378886));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369678));
+      this.b = ((LinearLayout)paramView.findViewById(2131370102));
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView = ((AvatarListView)paramView.findViewById(2131362651));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379768));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370101));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     }
   }
   
   public void a(Object paramObject)
   {
-    TextView localTextView;
-    Context localContext;
-    if ((paramObject instanceof try))
+    if ((paramObject instanceof uzl))
     {
-      this.jdField_a_of_type_Try = ((try)paramObject);
-      if ((this.jdField_a_of_type_Try.a() == null) || (this.jdField_a_of_type_Try.a().size() <= 0)) {
-        break label191;
+      this.jdField_a_of_type_Uzl = ((uzl)paramObject);
+      paramObject = this.jdField_a_of_type_Uzl.a();
+      if ((paramObject == null) || (paramObject.size() <= 0)) {
+        break label189;
       }
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setVisibility(0);
-      if (this.jdField_a_of_type_Try.a().size() <= this.jdField_a_of_type_Int) {
-        break label174;
+      if (paramObject.size() <= this.jdField_a_of_type_Int) {
+        break label178;
       }
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setData(this.jdField_a_of_type_Try.a().subList(0, this.jdField_a_of_type_Int));
-      QLog.d("QCircleMessage_QCircleMessageNoticeView", 1, "bindData count" + this.jdField_a_of_type_Try.a());
-      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      localContext = getContext();
-      if (this.jdField_a_of_type_Try.a() <= 99) {
-        break label203;
-      }
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setData(paramObject.subList(0, this.jdField_a_of_type_Int));
     }
-    label174:
-    label191:
-    label203:
-    for (paramObject = "99+";; paramObject = String.valueOf(this.jdField_a_of_type_Try.a()))
+    for (;;)
     {
-      localTextView.setText(localContext.getString(2131698354, new Object[] { paramObject }));
+      QLog.d("QCircleMessage_QCircleMessageNoticeView", 1, "bindData allUnReadCount:" + this.jdField_a_of_type_Uzl.c() + " messageUnReadCount:" + this.jdField_a_of_type_Uzl.a() + " chatUnReadCount:" + this.jdField_a_of_type_Uzl.b());
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getContext().getString(2131697204, new Object[] { vhk.a(this.jdField_a_of_type_Uzl.c()) }));
       this.b.setVisibility(0);
       return;
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setData(this.jdField_a_of_type_Try.a());
-      break;
+      label178:
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setData(paramObject);
+      continue;
+      label189:
       this.jdField_a_of_type_ComTencentBizQqcircleWidgetsAvatarListView.setVisibility(8);
-      break;
     }
   }
   
@@ -96,13 +96,30 @@ public class QCircleMessageNoticeView
     switch (paramView.getId())
     {
     }
+    HashMap localHashMap;
     do
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      tzv.a("", 18, 2L);
-      tqs.c(null);
-    } while (this.jdField_a_of_type_AndroidViewView$OnClickListener == null);
-    postDelayed(new QCircleMessageNoticeView.1(this, paramView), 200L);
+      vrf.a("", 18, 2);
+      localHashMap = new HashMap();
+    } while (this.jdField_a_of_type_Uzl == null);
+    if (this.jdField_a_of_type_Uzl.a() > 0)
+    {
+      QLog.d("QCircleMessage_QCircleMessageNoticeView", 1, "jump to messageList page");
+      localHashMap.put("to", String.valueOf(0));
+    }
+    for (;;)
+    {
+      uxo.a(localHashMap, d(), a().clone().setElementIdStr("msg"));
+      if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+      break;
+      QLog.d("QCircleMessage_QCircleMessageNoticeView", 1, "jump to chatList page");
+      localHashMap.put("to", String.valueOf(1));
+    }
   }
   
   public void setAdapterListener(View.OnClickListener paramOnClickListener)
@@ -112,7 +129,7 @@ public class QCircleMessageNoticeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleMessageNoticeView
  * JD-Core Version:    0.7.0.1
  */

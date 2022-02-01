@@ -4,12 +4,12 @@ import LBS_V2_PROTOCOL.GetGeoInfoRsp_V2;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjdb;
+import blrn;
 
 public class LbsDataV2$GetGeoInfoRsp
   implements Parcelable
 {
-  public static final Parcelable.Creator<GetGeoInfoRsp> CREATOR = new bjdb();
+  public static final Parcelable.Creator<GetGeoInfoRsp> CREATOR = new blrn();
   public LbsDataV2.GeoInfo stGeoInfo;
   public LbsDataV2.GpsInfo stGps;
   
@@ -50,7 +50,7 @@ public class LbsDataV2$GetGeoInfoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.GetGeoInfoRsp
  * JD-Core Version:    0.7.0.1
  */

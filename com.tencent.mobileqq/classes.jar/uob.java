@@ -1,38 +1,22 @@
-import android.annotation.TargetApi;
-import java.util.List;
+import UserGrowth.stGetCollectionReq;
+import UserGrowth.stGetCollectionRsp;
 
-@TargetApi(14)
 public class uob
-  implements unm
+  extends ujr<stGetCollectionRsp>
 {
-  public int a;
-  
-  public void a()
+  public uob(String paramString1, String paramString2, int paramInt)
   {
-    ((unu)uwa.a(6)).a(this.a);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public void a(List<unj> paramList, boolean paramBoolean)
-  {
-    if (paramList == null) {
-      return;
-    }
-    ((unu)uwa.a(6)).a(paramList, this.a, paramBoolean);
-  }
-  
-  public void a(unn paramunn)
-  {
-    ((unu)uwa.a(6)).a(paramunn);
+    super("GetCollection", paramInt);
+    stGetCollectionReq localstGetCollectionReq = new stGetCollectionReq();
+    localstGetCollectionReq.cid = paramString1;
+    localstGetCollectionReq.attachInfo = paramString2;
+    localstGetCollectionReq.scene = paramInt;
+    this.a = localstGetCollectionReq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uob
  * JD-Core Version:    0.7.0.1
  */

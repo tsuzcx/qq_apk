@@ -1,22 +1,18 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+
 public class agwp
-  implements bcms
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public String a;
+  public agwp(HeartCombolEffectView paramHeartCombolEffectView, agwq paramagwq) {}
   
-  public agwp(String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = paramString;
-  }
-  
-  public long a()
-  {
-    try
-    {
-      long l = Long.parseLong(this.a);
-      return l;
+    this.jdField_a_of_type_Agwq.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Agwq.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Agwq.jdField_b_of_type_Float > 0.0F)) {
+      this.jdField_a_of_type_Agwq.jdField_b_of_type_Boolean = true;
     }
-    catch (Exception localException) {}
-    return 0L;
   }
 }
 

@@ -1,13 +1,18 @@
 package com.tencent.litetransfersdk;
 
-import alqo;
+import abqn;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import arri;
-import arrr;
-import arsx;
+import anjx;
+import atcq;
+import atcr;
+import atcs;
+import atct;
+import atvf;
+import atvo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.GifDrawable;
@@ -61,7 +66,6 @@ import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MpFileNot
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.NFCNotify;
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.RNFCNotify;
-import ztp;
 
 public class ProtocolHelper
 {
@@ -73,17 +77,175 @@ public class ProtocolHelper
   static final int DEVICETYPE_UNK5 = 5;
   public static final int TYPE_TINYID = 1;
   public static final int TYPE_UIN = 0;
+  public static int V6SelectType_DomainV6 = 3;
+  public static int V6SelectType_IPv4 = 0;
+  public static int V6SelectType_IPv6 = 0;
+  public static int V6SelectType_Unkown = 0;
   public static int mDstAppId = 1;
-  public static int mDstInstId = 1;
+  public static int mDstInstId = 0;
   public static int mDstType = 1;
   public static final String sTagName = "dataline.ProtocolHelper";
   protected AppInterface mApp;
   protected int mUinType = 0;
   
+  static
+  {
+    mDstInstId = 1;
+    V6SelectType_IPv4 = 1;
+    V6SelectType_IPv6 = 2;
+  }
+  
   public ProtocolHelper(AppInterface paramAppInterface, int paramInt)
   {
     this.mApp = paramAppInterface;
     this.mUinType = paramInt;
+  }
+  
+  private void FillIPv6InfoForDownloadResp(MsgSCBody paramMsgSCBody, cmd0x346.RspBody paramRspBody)
+  {
+    int i = 0;
+    if ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface))) {}
+    do
+    {
+      do
+      {
+        return;
+        localObject = (QQAppInterface)this.mApp;
+      } while (!atcq.a().a((QQAppInterface)localObject, 7));
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.v6_select_type = V6SelectType_IPv4;
+      paramRspBody = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_dns.get();
+    } while (TextUtils.isEmpty(paramRspBody));
+    paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_dns = paramRspBody;
+    QLog.i("Dataline", 1, "[IPv6-File] recv dataline file. is config enable IPv6. domain[" + paramRspBody + "]");
+    paramRspBody = new atcr(paramRspBody, 0);
+    Object localObject = atcq.a().a((QQAppInterface)localObject, paramRspBody, 7);
+    if ((localObject != null) && (!((atct)localObject).a()))
+    {
+      if (atcq.a())
+      {
+        QLog.d("Dataline", 1, "[IPv6-File] recv dataline file. debugIsDisableIPv4OnDoubleStack");
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_ip = "";
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadip_list = null;
+      }
+      if (((atct)localObject).jdField_a_of_type_Int == 2)
+      {
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.v6_select_type = V6SelectType_IPv6;
+        int j = ((atct)localObject).jdField_a_of_type_JavaUtilList.size();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadipv6_list = new String[j];
+        paramRspBody = "";
+        while (i < j)
+        {
+          atcs localatcs = (atcs)((atct)localObject).jdField_a_of_type_JavaUtilList.get(i);
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadipv6_list[i] = localatcs.a();
+          paramRspBody = paramRspBody + " " + localatcs.a() + ":" + localatcs.jdField_a_of_type_Int;
+          i += 1;
+        }
+        QLog.i("Dataline", 1, "[IPv6-File] recv dataline file use IPv6. iplist:" + paramRspBody);
+        return;
+      }
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.v6_select_type = V6SelectType_DomainV6;
+      QLog.i("Dataline", 1, "[IPv6-File] recv dataline file use IPv6. domain");
+      return;
+    }
+    QLog.i("Dataline", 1, "[IPv6-File] recv dataline file use IPv4");
+  }
+  
+  private void FillIPv6InfoForUploadRspV2(MsgSCBody paramMsgSCBody, cmd0x346.RspBody paramRspBody)
+  {
+    int i = 0;
+    if ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface))) {}
+    do
+    {
+      do
+      {
+        return;
+        localObject = (QQAppInterface)this.mApp;
+      } while (!atcq.a().a((QQAppInterface)localObject, 7));
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_IPv4;
+      paramRspBody = paramRspBody.msg_apply_upload_rsp_v2.str_upload_dns.get();
+    } while (TextUtils.isEmpty(paramRspBody));
+    QLog.i("Dataline", 1, "[IPv6-File] v2 send dataline file. is config enable IPv6. domain[" + paramRspBody + "]");
+    paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody;
+    paramRspBody = new atcr(paramRspBody, 0);
+    Object localObject = atcq.a().a((QQAppInterface)localObject, paramRspBody, 7);
+    if ((localObject != null) && (!((atct)localObject).a()))
+    {
+      if (atcq.a())
+      {
+        QLog.d("Dataline", 1, "[IPv6-File] v2 send dataline file. debugIsDisableIPv4OnDoubleStack");
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = "";
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = null;
+      }
+      if (((atct)localObject).jdField_a_of_type_Int == 2)
+      {
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_IPv6;
+        int j = ((atct)localObject).jdField_a_of_type_JavaUtilList.size();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadipv6_list = new String[j];
+        paramRspBody = "";
+        while (i < j)
+        {
+          atcs localatcs = (atcs)((atct)localObject).jdField_a_of_type_JavaUtilList.get(i);
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadipv6_list[i] = localatcs.a();
+          paramRspBody = paramRspBody + " " + localatcs.a() + ":" + localatcs.jdField_a_of_type_Int;
+          i += 1;
+        }
+        QLog.i("Dataline", 1, "[IPv6-File] v2 send dataline file use IPv6. iplist:" + paramRspBody);
+        return;
+      }
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_DomainV6;
+      QLog.i("Dataline", 1, "[IPv6-File] v2 send dataline file use IPv6. domain");
+      return;
+    }
+    QLog.i("Dataline", 1, "[IPv6-File] v2 send dataline file use IPv4");
+  }
+  
+  private void FillIPv6InfoForUploadRspV3(MsgSCBody paramMsgSCBody, cmd0x346.RspBody paramRspBody)
+  {
+    int i = 0;
+    if ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface))) {}
+    do
+    {
+      do
+      {
+        return;
+        localObject = (QQAppInterface)this.mApp;
+      } while (!atcq.a().a((QQAppInterface)localObject, 7));
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_IPv4;
+      paramRspBody = paramRspBody.msg_apply_upload_rsp_v3.str_upload_dns.get();
+    } while (TextUtils.isEmpty(paramRspBody));
+    QLog.i("Dataline", 1, "[IPv6-File] v3 send dataline file. is config enable IPv6. domain[" + paramRspBody + "]");
+    paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody;
+    paramRspBody = new atcr(paramRspBody, 0);
+    Object localObject = atcq.a().a((QQAppInterface)localObject, paramRspBody, 7);
+    if ((localObject != null) && (!((atct)localObject).a()))
+    {
+      if (atcq.a())
+      {
+        QLog.d("Dataline", 1, "[IPv6-File] v3 send dataline file. debugIsDisableIPv4OnDoubleStack");
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = "";
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = null;
+      }
+      if (((atct)localObject).jdField_a_of_type_Int == 2)
+      {
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_IPv6;
+        int j = ((atct)localObject).jdField_a_of_type_JavaUtilList.size();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadipv6_list = new String[j];
+        paramRspBody = "";
+        while (i < j)
+        {
+          atcs localatcs = (atcs)((atct)localObject).jdField_a_of_type_JavaUtilList.get(i);
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadipv6_list[i] = localatcs.a();
+          paramRspBody = paramRspBody + " " + localatcs.a() + ":" + localatcs.jdField_a_of_type_Int;
+          i += 1;
+        }
+        QLog.i("Dataline", 1, "[IPv6-File] v3 send dataline file use IPv6. iplist:" + paramRspBody);
+        return;
+      }
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_DomainV6;
+      QLog.i("Dataline", 1, "[IPv6-File] v3 send dataline file use IPv6. domain");
+      return;
+    }
+    QLog.i("Dataline", 1, "[IPv6-File] v3 send dataline file use IPv4");
   }
   
   public static String FixImageFileExtName(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
@@ -92,17 +254,17 @@ public class ProtocolHelper
     if (paramInt == 1)
     {
       str = paramString1;
-      if (arrr.a(paramString1) != 0)
+      if (atvo.a(paramString1) != 0)
       {
         str = paramString1;
         if (!paramBoolean) {
           if (!GifDrawable.isGifFile(new File(paramString2))) {
-            break label65;
+            break label66;
           }
         }
       }
     }
-    label65:
+    label66:
     for (paramString2 = ".gif";; paramString2 = ".jpg")
     {
       str = paramString1 + paramString2;
@@ -193,50 +355,56 @@ public class ProtocolHelper
       if (QLog.isColorLevel()) {
         QLog.e("dataline.ProtocolHelper", 2, "PBToMsgSCBody : msgtype is not cmd0x346");
       }
+      return;
     case 1610: 
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.int32_ret_code = paramRspBody.msg_apply_upload_rsp_v2.int32_ret_code.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_ret_msg = paramRspBody.msg_apply_upload_rsp_v2.str_ret_msg.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_total_space = paramRspBody.msg_apply_upload_rsp_v2.uint64_total_space.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_used_space = paramRspBody.msg_apply_upload_rsp_v2.uint64_used_space.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_uploaded_size = paramRspBody.msg_apply_upload_rsp_v2.uint64_uploaded_size.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = paramRspBody.msg_apply_upload_rsp_v2.str_upload_ip.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_domain = paramRspBody.msg_apply_upload_rsp_v2.str_upload_domain.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_port = paramRspBody.msg_apply_upload_rsp_v2.uint32_upload_port.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_uuid = paramRspBody.msg_apply_upload_rsp_v2.bytes_uuid.get().toStringUtf8();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_upload_key = paramRspBody.msg_apply_upload_rsp_v2.bytes_upload_key.get().toByteArray();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_file_exist = paramRspBody.msg_apply_upload_rsp_v2.bool_file_exist.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v2.uint32_pack_size.get();
+      localList = paramRspBody.msg_apply_upload_rsp_v2.rpt_str_uploadip_list.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])localList.toArray(new String[localList.size()]));
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_httpsvr_api_ver = paramRspBody.msg_apply_upload_rsp_v2.uint32_httpsvr_api_ver.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_sha = paramRspBody.msg_apply_upload_rsp_v2.bytes_sha.get().toByteArray();
+      FillIPv6InfoForUploadRspV2(paramMsgSCBody, paramRspBody);
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_https_port = paramRspBody.msg_apply_upload_rsp_v2.uint32_upload_https_port.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_https_domain = paramRspBody.msg_apply_upload_rsp_v2.str_upload_https_domain.get();
+      paramRspBody = this.mApp.getApp().getSharedPreferences("dataline_config_" + this.mApp.getCurrentAccountUin(), 0);
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_new_httpclient = paramRspBody.getBoolean("use_new_httpclient", false);
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_https = paramRspBody.getBoolean("use_https_connect", false);
+      QLog.d("dataline.ProtocolHelper", 1, "FillMsgSCBody use_new_httpclient[" + paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_new_httpclient + "], bool_use_https[" + paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_https + "]");
+      return;
     case 1710: 
-      do
-      {
-        do
-        {
-          return;
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.int32_ret_code = paramRspBody.msg_apply_upload_rsp_v2.int32_ret_code.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_ret_msg = paramRspBody.msg_apply_upload_rsp_v2.str_ret_msg.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_total_space = paramRspBody.msg_apply_upload_rsp_v2.uint64_total_space.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_used_space = paramRspBody.msg_apply_upload_rsp_v2.uint64_used_space.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_uploaded_size = paramRspBody.msg_apply_upload_rsp_v2.uint64_uploaded_size.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = paramRspBody.msg_apply_upload_rsp_v2.str_upload_ip.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_domain = paramRspBody.msg_apply_upload_rsp_v2.str_upload_domain.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_port = paramRspBody.msg_apply_upload_rsp_v2.uint32_upload_port.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_uuid = paramRspBody.msg_apply_upload_rsp_v2.bytes_uuid.get().toStringUtf8();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_upload_key = paramRspBody.msg_apply_upload_rsp_v2.bytes_upload_key.get().toByteArray();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_file_exist = paramRspBody.msg_apply_upload_rsp_v2.bool_file_exist.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v2.uint32_pack_size.get();
-          localList = paramRspBody.msg_apply_upload_rsp_v2.rpt_str_uploadip_list.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])localList.toArray(new String[localList.size()]));
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_httpsvr_api_ver = paramRspBody.msg_apply_upload_rsp_v2.uint32_httpsvr_api_ver.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_sha = paramRspBody.msg_apply_upload_rsp_v2.bytes_sha.get().toByteArray();
-        } while ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface)) || (!arsx.b((QQAppInterface)this.mApp)));
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody.msg_apply_upload_rsp_v2.str_upload_dns.get();
-        return;
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.int32_ret_code = paramRspBody.msg_apply_upload_rsp_v3.int32_ret_code.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_ret_msg = paramRspBody.msg_apply_upload_rsp_v3.str_ret_msg.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_total_space = paramRspBody.msg_apply_upload_rsp_v3.uint64_total_space.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_used_space = paramRspBody.msg_apply_upload_rsp_v3.uint64_used_space.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_uploaded_size = paramRspBody.msg_apply_upload_rsp_v3.uint64_uploaded_size.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = paramRspBody.msg_apply_upload_rsp_v3.str_upload_ip.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_domain = paramRspBody.msg_apply_upload_rsp_v3.str_upload_domain.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_port = paramRspBody.msg_apply_upload_rsp_v3.uint32_upload_port.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_uuid = paramRspBody.msg_apply_upload_rsp_v3.bytes_uuid.get().toStringUtf8();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_upload_key = paramRspBody.msg_apply_upload_rsp_v3.bytes_upload_key.get().toByteArray();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_file_exist = paramRspBody.msg_apply_upload_rsp_v3.bool_file_exist.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v3.uint32_pack_size.get();
-        localList = paramRspBody.msg_apply_upload_rsp_v3.rpt_str_uploadip_list.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])localList.toArray(new String[localList.size()]));
-      } while ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface)) || (!arsx.b((QQAppInterface)this.mApp)));
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody.msg_apply_upload_rsp_v3.str_upload_dns.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.int32_ret_code = paramRspBody.msg_apply_upload_rsp_v3.int32_ret_code.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_ret_msg = paramRspBody.msg_apply_upload_rsp_v3.str_ret_msg.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_total_space = paramRspBody.msg_apply_upload_rsp_v3.uint64_total_space.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_used_space = paramRspBody.msg_apply_upload_rsp_v3.uint64_used_space.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_uploaded_size = paramRspBody.msg_apply_upload_rsp_v3.uint64_uploaded_size.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = paramRspBody.msg_apply_upload_rsp_v3.str_upload_ip.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_domain = paramRspBody.msg_apply_upload_rsp_v3.str_upload_domain.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_port = paramRspBody.msg_apply_upload_rsp_v3.uint32_upload_port.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_uuid = paramRspBody.msg_apply_upload_rsp_v3.bytes_uuid.get().toStringUtf8();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_upload_key = paramRspBody.msg_apply_upload_rsp_v3.bytes_upload_key.get().toByteArray();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_file_exist = paramRspBody.msg_apply_upload_rsp_v3.bool_file_exist.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v3.uint32_pack_size.get();
+      localList = paramRspBody.msg_apply_upload_rsp_v3.rpt_str_uploadip_list.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])localList.toArray(new String[localList.size()]));
+      FillIPv6InfoForUploadRspV3(paramMsgSCBody, paramRspBody);
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_https_port = paramRspBody.msg_apply_upload_rsp_v3.uint32_upload_https_port.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_https_domain = paramRspBody.msg_apply_upload_rsp_v3.str_upload_https_domain.get();
+      paramRspBody = this.mApp.getApp().getSharedPreferences("dataline_config_" + this.mApp.getCurrentAccountUin(), 0);
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_new_httpclient = paramRspBody.getBoolean("use_new_httpclient", false);
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_https = paramRspBody.getBoolean("use_https_connect", false);
+      QLog.d("dataline.ProtocolHelper", 1, "FillMsgSCBody use_new_httpclient[" + paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_new_httpclient + "], bool_use_https[" + paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_https + "]");
       return;
     case 1810: 
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810 = new ApplyUploadHitRsp();
@@ -262,10 +430,14 @@ public class ProtocolHelper
       localList = paramRspBody.msg_apply_download_rsp.msg_download_info.rpt_str_downloadip_list.get();
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadip_list = ((String[])localList.toArray(new String[localList.size()]));
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_cookie = paramRspBody.msg_apply_download_rsp.msg_download_info.str_cookie.get();
-      if ((this.mApp != null) && ((this.mApp instanceof QQAppInterface)) && (arsx.b((QQAppInterface)this.mApp))) {
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_dns = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_dns.get();
-      }
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_file_info = createFileInfo(paramRspBody.msg_apply_download_rsp.msg_file_info);
+      FillIPv6InfoForDownloadResp(paramMsgSCBody, paramRspBody);
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.uint32_https_port = paramRspBody.msg_apply_download_rsp.msg_download_info.uint32_https_port.get();
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_https_download_domain = paramRspBody.msg_apply_download_rsp.msg_download_info.str_https_download_domain.get();
+      paramRspBody = this.mApp.getApp().getSharedPreferences("dataline_config_" + this.mApp.getCurrentAccountUin(), 0);
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.bool_use_new_httpclient = paramRspBody.getBoolean("use_new_httpclient", false);
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.bool_use_https = paramRspBody.getBoolean("use_https_connect", false);
+      QLog.d("dataline.ProtocolHelper", 1, "FillMsgSCBody use_new_httpclient[" + paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.bool_use_new_httpclient + "], bool_use_https[" + paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.bool_use_https + "]");
       return;
     case 810: 
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_810 = new UploadSuccRsp();
@@ -427,7 +599,7 @@ public class ProtocolHelper
       return Long.valueOf(this.mApp.getCurrentAccountUin()).longValue();
     }
     if (this.mUinType == 1) {
-      return ((ztp)((QQAppInterface)this.mApp).a(51)).a();
+      return ((abqn)((QQAppInterface)this.mApp).a(51)).a();
     }
     return 0L;
   }
@@ -1234,7 +1406,7 @@ public class ProtocolHelper
   
   public Session genSession(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    Session localSession = genSession(paramDataLineMsgRecord.fileFrom, paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, paramDataLineMsgRecord.filename, alqo.b(paramDataLineMsgRecord.msgtype), 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex);
+    Session localSession = genSession(paramDataLineMsgRecord.fileFrom, paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, paramDataLineMsgRecord.filename, anjx.b(paramDataLineMsgRecord.msgtype), 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex);
     if (localSession != null)
     {
       localSession.uFileSizeSrc = paramDataLineMsgRecord.filesize;
@@ -1303,7 +1475,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      arri.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131694022));
+      atvf.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131693318));
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.1(this, paramString));
@@ -1314,7 +1486,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      arri.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131694026));
+      atvf.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131693322));
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.3(this, paramString));
@@ -1325,7 +1497,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      arri.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131694024));
+      atvf.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131693320));
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.2(this, paramString));
@@ -1336,7 +1508,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      arri.a(2131694063);
+      atvf.a(2131693359);
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.5(this));
@@ -1347,7 +1519,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      arri.a(2131694062);
+      atvf.a(2131693358);
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.4(this));
@@ -1355,7 +1527,7 @@ public class ProtocolHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProtocolHelper
  * JD-Core Version:    0.7.0.1
  */

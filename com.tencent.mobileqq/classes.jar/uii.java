@@ -1,23 +1,27 @@
-public class uii
-  extends uij
+import UserGrowth.stSchema;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+
+public abstract interface uii
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  public abstract stSchema a();
   
-  public uii(int paramInt)
-  {
-    super(paramInt);
-    this.g = 6;
-  }
+  public abstract Context a();
+  
+  public abstract WSDownloadParams a();
+  
+  public abstract MiniAppLauncher.MiniAppLaunchListener a();
+  
+  public abstract uih a();
+  
+  public abstract uos a();
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uii
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqux
-  implements aqtt
+public class aqux
 {
-  aqux(aquw paramaquw, String paramString) {}
+  private int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = -1;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int jdField_c_of_type_Int = -1;
+  private String jdField_c_of_type_JavaLangString = "";
+  private int jdField_d_of_type_Int = -1;
+  private String jdField_d_of_type_JavaLangString = "";
+  private String e = "";
   
-  public void a(boolean paramBoolean)
+  public static aqux a(aqlg[] paramArrayOfaqlg)
   {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aquw.jdField_a_of_type_Aquv.jdField_a_of_type_JavaLangString + " start upload Discfile success");
-      }
-      aquv.a(this.jdField_a_of_type_Aquw.jdField_a_of_type_Aquv).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aquw.jdField_a_of_type_Aqva.a(this.jdField_a_of_type_JavaLangString, aquv.a(this.jdField_a_of_type_Aquw.jdField_a_of_type_Aquv));
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
+      return null;
     }
-    for (;;)
+    aqux localaqux = new aqux();
+    try
     {
-      aque.a(this.jdField_a_of_type_Aquw.jdField_a_of_type_Aquv.jdField_a_of_type_Aque).a().a(aquv.a(this.jdField_a_of_type_Aquw.jdField_a_of_type_Aquv));
-      return;
-      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Aquw.jdField_a_of_type_Aquv.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
-      this.jdField_a_of_type_Aquw.jdField_a_of_type_Aqva.a(aque.a(this.jdField_a_of_type_Aquw.jdField_a_of_type_Aquv.jdField_a_of_type_Long, false), true);
+      paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg[0].jdField_a_of_type_JavaLangString);
+      localaqux.jdField_a_of_type_Int = paramArrayOfaqlg.getInt("check_day");
+      localaqux.jdField_b_of_type_Int = paramArrayOfaqlg.getInt("check_time");
+      localaqux.jdField_c_of_type_Int = paramArrayOfaqlg.getInt("album_days");
+      localaqux.jdField_d_of_type_Int = paramArrayOfaqlg.getInt("photos_limit");
+      localaqux.jdField_a_of_type_JavaLangString = paramArrayOfaqlg.getString("tips");
+      localaqux.jdField_b_of_type_JavaLangString = paramArrayOfaqlg.getString("jump_text");
+      localaqux.jdField_c_of_type_JavaLangString = paramArrayOfaqlg.getString("t_show");
+      localaqux.jdField_d_of_type_JavaLangString = paramArrayOfaqlg.getString("t_click");
+      localaqux.e = paramArrayOfaqlg.getString("t_close");
+      localaqux.jdField_a_of_type_Boolean = true;
+      return localaqux;
     }
+    catch (JSONException paramArrayOfaqlg)
+    {
+      QLog.e("WeiyunCheckAlbumConfigBean", 1, "wy check album config parse failed", paramArrayOfaqlg);
+    }
+    return localaqux;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqux
  * JD-Core Version:    0.7.0.1
  */

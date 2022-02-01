@@ -1,33 +1,22 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class atvu
-  implements URLDrawable.URLDrawableListener
+final class atvu
+  implements atve
 {
-  public atvu(LoginWelcomeManager paramLoginWelcomeManager) {}
+  atvu(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "tryToShowCGLayer drawable onLoadSuccessed");
-    }
-    if (this.a.a != null) {
-      this.a.a.a(paramURLDrawable);
-    }
-    this.a.g();
+    atvo.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atvu
  * JD-Core Version:    0.7.0.1
  */

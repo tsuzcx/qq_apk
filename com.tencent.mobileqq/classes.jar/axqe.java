@@ -1,21 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class axqe
-  implements ValueAnimator.AnimatorUpdateListener
+class axqe
+  implements View.OnTouchListener
 {
-  public axqe(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  axqe(axqd paramaxqd) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    CameraCaptureButtonLayout.a(this.a, f);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axqe
  * JD-Core Version:    0.7.0.1
  */

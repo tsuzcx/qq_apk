@@ -1,54 +1,55 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 import com.tencent.qphone.base.util.QLog;
 
-class asej
-  extends URLDrawableDownListener.Adapter
+public class asej
+  extends anlc
 {
-  asej(asei paramasei) {}
+  public asej(AIOEmotionFragment paramAIOEmotionFragment) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadCancelled");
+    switch (paramInt)
+    {
     }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
+    EmoticonResp localEmoticonResp;
+    int i;
+    label134:
+    QQAppInterface localQQAppInterface;
     do
     {
-      return;
-      paramView.setBackgroundDrawable(null);
-      if ((paramView instanceof ImageView))
+      do
       {
-        ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ((ImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
+        return;
+      } while (paramObject == null);
+      localEmoticonResp = (EmoticonResp)paramObject;
+      if (paramBoolean)
+      {
+        i = localEmoticonResp.delEpId;
+        if ((localEmoticonResp.keySeq == null) || (localEmoticonResp.keySeq.equals(""))) {
+          paramObject = anni.a(2131698830);
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadSuccessed");
+      for (;;)
+      {
+        if (!TextUtils.isEmpty(localEmoticonResp.emoticonId)) {
+          break label134;
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("AIOEmotionFragment", 2, "auth type emoticon id is null");
+        return;
+        paramObject = localEmoticonResp.keySeq;
+        continue;
+        i = -404;
+        paramObject = anni.a(2131698831);
+      }
+      localQQAppInterface = this.a.a();
+    } while (localQQAppInterface == null);
+    ((awmr)localQQAppInterface.getManager(14)).a(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new asek(this, paramInt, localQQAppInterface, i, paramObject));
   }
 }
 

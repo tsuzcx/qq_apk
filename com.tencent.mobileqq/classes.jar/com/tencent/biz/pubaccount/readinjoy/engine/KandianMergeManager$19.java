@@ -1,42 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import acjm;
-import alof;
-import com.tencent.imcore.message.QQMessageFacade;
+import adrm;
+import anhk;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.concurrent.atomic.AtomicInteger;
 
 class KandianMergeManager$19
   implements Runnable
 {
-  KandianMergeManager$19(KandianMergeManager paramKandianMergeManager, MessageRecord paramMessageRecord) {}
+  KandianMergeManager$19(KandianMergeManager paramKandianMergeManager) {}
   
   public void run()
   {
-    KandianMergeManager.a(this.this$0).a().a(alof.aA, 7220, false, false);
-    if (this.a.extInt == 2)
-    {
-      this.a.isValid = false;
-      if (KandianMergeManager.a(this.this$0).get() > 0) {
-        this.this$0.c(2);
-      }
-    }
-    do
-    {
-      return;
-      if (this.a.extInt == 1)
-      {
-        SessionInfo localSessionInfo = new SessionInfo();
-        localSessionInfo.jdField_a_of_type_JavaLangString = alof.az;
-        localSessionInfo.jdField_a_of_type_Int = 1008;
-        acjm.a(KandianMergeManager.a(this.this$0), localSessionInfo);
-        return;
-      }
-    } while (this.a.extInt != 5);
-    this.a.isValid = false;
-    KandianMergeManager.a(this.this$0).a().b(alof.aA, 7220, this.a.uniseq);
+    SessionInfo localSessionInfo = new SessionInfo();
+    localSessionInfo.jdField_a_of_type_JavaLangString = anhk.az;
+    localSessionInfo.jdField_a_of_type_Int = 1008;
+    adrm.a(KandianMergeManager.a(this.this$0), localSessionInfo);
   }
 }
 

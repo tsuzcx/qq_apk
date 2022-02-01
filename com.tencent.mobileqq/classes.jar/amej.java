@@ -1,64 +1,76 @@
-import android.content.Context;
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-public class amej
+class amej
+  extends anmu
 {
-  private int a;
-  private int b;
+  amej(ameh paramameh) {}
   
-  public amej(QQAppInterface paramQQAppInterface)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    TroopManager.a(paramQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if ((this.a.jdField_a_of_type_Amdt != null) && ((this.a.jdField_a_of_type_Amdt instanceof amdu))) {
+        ((amdu)this.a.jdField_a_of_type_Amdt).a(paramString);
+      }
+      ameh.a(this.a);
+    }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, String paramString, int paramInt, ChatMessage paramChatMessage)
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
   {
-    String str;
-    if (paramEditText != null)
-    {
-      str = "";
-      if (paramInt != 0) {
-        break label166;
-      }
-      this.a = ((int)(Math.random() * TroopManager.c.size()));
-      if (TroopManager.c.size() != 1) {
-        break label124;
-      }
-      str = (String)TroopManager.c.get(0);
-      TroopManager.a(paramQQAppInterface);
+    if (paramBoolean) {
+      ameh.a(this.a);
     }
-    label166:
-    for (;;)
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ameh.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ameh.a(this.a);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      Object localObject = (alto)paramQQAppInterface.getManager(51);
-      localObject = bdgc.h(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.senderuin);
-      paramEditText.setText(bciq.a(paramQQAppInterface, paramContext, paramString, paramChatMessage.senderuin, (String)localObject, false, paramEditText, true, true));
-      paramEditText.append(str);
-      paramEditText.setSelection(paramEditText.getText().length());
-      return;
-      label124:
-      if (this.a < TroopManager.c.size())
+      this.a.notifyDataSetChanged();
+      if (ameh.a(this.a) != null)
       {
-        str = (String)TroopManager.c.get(this.a);
-        TroopManager.c.remove(this.a);
-        continue;
-        if (this.b < TroopManager.d.size())
-        {
-          str = (String)TroopManager.d.get(this.b);
-          this.b = ((this.b + 1) % TroopManager.d.size());
-        }
+        ameh.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        ameh.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amej
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,34 @@
-public abstract interface aiel
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aiel
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  aiel(aidp paramaidp) {}
+  
+  public void onClick(View paramView)
+  {
+    afur.n = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
+    }
+    if (this.a.h != null) {
+      this.a.h.setVisibility(0);
+    }
+    if (this.a.i != null) {
+      this.a.i.setVisibility(0);
+    }
+    this.a.aA();
+    if (this.a.jdField_a_of_type_Nzz.b(this.a.a()) != 0) {
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

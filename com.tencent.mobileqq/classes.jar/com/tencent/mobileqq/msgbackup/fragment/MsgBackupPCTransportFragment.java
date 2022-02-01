@@ -9,17 +9,16 @@ import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import augd;
-import augo;
-import augu;
-import augy;
-import auij;
-import aujh;
-import aujo;
-import aujq;
-import bdoo;
+import awng;
+import awnr;
+import awnx;
+import awob;
+import awpm;
+import awql;
+import awqs;
+import awqu;
+import bgtn;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
-import com.tencent.mobileqq.msgbackup.transport.MsgBackupEndPoint;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
@@ -32,9 +31,9 @@ public class MsgBackupPCTransportFragment
   private void n()
   {
     this.vg.setLeftBackVisible(8);
-    this.vg.setLeftButton(2131690422);
-    this.vg.setRightButton(2131690398);
-    this.vg.setOnItemSelectListener(new auij(this));
+    this.vg.setLeftButton(2131690421);
+    this.vg.setRightButton(2131690403);
+    this.vg.setOnItemSelectListener(new awpm(this));
     switch (this.jdField_a_of_type_Int)
     {
     case 3: 
@@ -43,7 +42,7 @@ public class MsgBackupPCTransportFragment
     default: 
       return;
     }
-    this.vg.a();
+    this.vg.hideLeft();
   }
   
   private void o()
@@ -55,15 +54,15 @@ public class MsgBackupPCTransportFragment
     if (this.jdField_e_of_type_AndroidWidgetTextView != null)
     {
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165798));
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690416);
+      this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165847));
+      this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690415);
     }
     if (this.jdField_b_of_type_Int == 1)
     {
-      aujo.a("0X800A264", 1);
+      awqs.a("0X800A264", 1);
       return;
     }
-    aujo.a("0X800A287", 1);
+    awqs.a("0X800A287", 1);
   }
   
   private void p()
@@ -74,8 +73,8 @@ public class MsgBackupPCTransportFragment
       return;
     }
     this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165799));
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690419);
+    this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165848));
+    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690418);
   }
   
   protected void a()
@@ -83,9 +82,9 @@ public class MsgBackupPCTransportFragment
     boolean bool2 = true;
     boolean bool1 = true;
     super.a();
-    aujq.a();
-    this.jdField_c_of_type_Int = augo.jdField_b_of_type_Int;
-    if (aujh.a().a() == 1) {
+    awqu.a();
+    this.jdField_c_of_type_Int = awnr.jdField_b_of_type_Int;
+    if (awql.a().e() == 1) {
       this.jdField_b_of_type_MqqOsMqqHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 15000L);
     }
     int i;
@@ -100,64 +99,64 @@ public class MsgBackupPCTransportFragment
       return;
     case 5: 
       this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Long = augo.a().a();
-      augo.jdField_a_of_type_Boolean = false;
-      int j = augo.a().a();
+      this.jdField_a_of_type_Long = awnr.a().a();
+      awnr.jdField_a_of_type_Boolean = false;
+      int j = awnr.a().a();
       this.jdField_d_of_type_Int = j;
       c(this.jdField_d_of_type_Int, this.jdField_c_of_type_Int);
       i = j;
-      if (j != augo.jdField_b_of_type_Int) {
+      if (j != awnr.jdField_b_of_type_Int) {
         i = j + 1;
       }
-      if (aujh.a().a() == 1)
+      if (awql.a().e() == 1)
       {
-        localObject1 = getActivity().getResources().getString(2131690480);
+        localObject1 = getActivity().getResources().getString(2131690467);
         if (this.jdField_d_of_type_AndroidWidgetTextView != null)
         {
-          localObject2 = aujq.a(this.jdField_a_of_type_Long);
+          localObject2 = awqu.a(this.jdField_a_of_type_Long);
           this.jdField_d_of_type_AndroidWidgetTextView.setText(String.format((String)localObject1, new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_c_of_type_Int), (String)localObject2 + "B/s" }));
         }
-        if (!aujh.a().b()) {
+        if (!awql.a().b()) {
           break label296;
         }
         p();
       }
       for (;;)
       {
-        augo.a().a().a(this);
-        if (aujh.a().a() != 2) {
+        awnr.a().a().a(this);
+        if (awql.a().e() != 2) {
           break label303;
         }
         if (!this.jdField_e_of_type_Boolean) {
           break;
         }
-        aujo.a("0X800A261");
+        awqs.a("0X800A261");
         return;
-        localObject1 = getActivity().getResources().getString(2131690479);
+        localObject1 = getActivity().getResources().getString(2131690466);
         break label161;
         label296:
         o();
       }
       label303:
-      aujo.a("0X800A285");
+      awqs.a("0X800A285");
       return;
     }
     long l2;
     long l1;
-    if (augo.a().a().a() == 1)
+    if (awnr.a().a().a() == 1)
     {
-      augo.a().a().a(this);
+      awnr.a().a().a(this);
       if (this.jdField_e_of_type_Boolean) {
-        augo.a().a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        awnr.a().a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
       }
-      augo.jdField_b_of_type_Int = augo.a().jdField_a_of_type_JavaUtilHashSet.size();
-      aujo.a();
-      aujo.a.b = augo.jdField_b_of_type_Int;
-      localObject1 = new augu();
-      localObject2 = new HashSet(augo.a().jdField_a_of_type_JavaUtilHashSet.size());
-      ((HashSet)localObject2).addAll(augo.a().jdField_a_of_type_JavaUtilHashSet);
-      ((augu)localObject1).jdField_a_of_type_JavaUtilHashSet = ((HashSet)localObject2);
-      ((augu)localObject1).jdField_a_of_type_Int = 0;
+      awnr.jdField_b_of_type_Int = awnr.a().jdField_a_of_type_JavaUtilHashSet.size();
+      awqs.a();
+      awqs.a.b = awnr.jdField_b_of_type_Int;
+      localObject1 = new awnx();
+      localObject2 = new HashSet(awnr.a().jdField_a_of_type_JavaUtilHashSet.size());
+      ((HashSet)localObject2).addAll(awnr.a().jdField_a_of_type_JavaUtilHashSet);
+      ((awnx)localObject1).jdField_a_of_type_JavaUtilHashSet = ((HashSet)localObject2);
+      ((awnx)localObject1).jdField_a_of_type_Int = 0;
       if (getActivity() == null) {
         break label658;
       }
@@ -171,34 +170,34 @@ public class MsgBackupPCTransportFragment
     }
     for (;;)
     {
-      aujq.b("MsgBackup_MsgBackupPCTransportFragment", "select params startTime = %d ,endTime = %d,contentType = %d ", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(i) });
+      awqu.b("MsgBackup_MsgBackupPCTransportFragment", "select params startTime = %d ,endTime = %d,contentType = %d ", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(i) });
       if ((l2 != 0L) && (l1 != 0L) && (l2 < l1))
       {
-        ((augu)localObject1).jdField_a_of_type_Long = l2;
-        ((augu)localObject1).b = l1;
+        ((awnx)localObject1).jdField_a_of_type_Long = l2;
+        ((awnx)localObject1).b = l1;
         if (i == 2) {}
         for (;;)
         {
-          ((augu)localObject1).jdField_a_of_type_Boolean = bool1;
-          augo.a().a((augu)localObject1);
+          ((awnx)localObject1).jdField_a_of_type_Boolean = bool1;
+          awnr.a().a((awnx)localObject1);
           return;
           bool1 = false;
         }
       }
-      ((augu)localObject1).jdField_a_of_type_Long = 0L;
-      ((augu)localObject1).b = 9223372036854775807L;
+      ((awnx)localObject1).jdField_a_of_type_Long = 0L;
+      ((awnx)localObject1).b = 9223372036854775807L;
       if (i == 2) {}
       for (bool1 = bool2;; bool1 = false)
       {
-        ((augu)localObject1).jdField_a_of_type_Boolean = bool1;
+        ((awnx)localObject1).jdField_a_of_type_Boolean = bool1;
         break;
       }
-      augo.a().a().a(this);
-      augo.a().a().f(4);
+      awnr.a().a().a(this);
+      awnr.a().a().j(4);
       if (!this.jdField_e_of_type_Boolean) {
         break;
       }
-      augo.a().a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      awnr.a().a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
       return;
       label658:
       i = 1;
@@ -231,9 +230,9 @@ public class MsgBackupPCTransportFragment
   {
     super.a(paramLong);
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "speedState!!! increment = " + paramLong + " , isStart = " + this.jdField_a_of_type_Boolean + ", MsgBackupManager.isTransportStart = " + augo.jdField_e_of_type_Boolean);
+      QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "speedState!!! increment = " + paramLong + " , isStart = " + this.jdField_a_of_type_Boolean + ", MsgBackupManager.isTransportStart = " + awnr.jdField_e_of_type_Boolean);
     }
-    if ((this.jdField_a_of_type_Boolean) || (augo.jdField_e_of_type_Boolean))
+    if ((this.jdField_a_of_type_Boolean) || (awnr.jdField_e_of_type_Boolean))
     {
       this.jdField_a_of_type_Long = paramLong;
       Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10002);
@@ -265,23 +264,20 @@ public class MsgBackupPCTransportFragment
     }
     if (paramBoolean)
     {
-      localObject1 = (augy)paramObject;
+      localObject1 = (awob)paramObject;
       if (this.jdField_b_of_type_Int != 1) {
-        break label337;
+        break label285;
       }
       if (paramObject != null) {
         break label81;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "onConfirmQrResponse, data is null!");
+        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "processConfirmQRRsp: backup data is null!");
       }
     }
     label81:
-    String str;
     int i;
-    MsgBackupEndPoint localMsgBackupEndPoint1;
-    MsgBackupEndPoint localMsgBackupEndPoint2;
-    label337:
+    label285:
     do
     {
       do
@@ -290,75 +286,68 @@ public class MsgBackupPCTransportFragment
         {
           do
           {
-            do
-            {
-              return;
-              paramObject = ((augy)localObject1).b();
-              str = ((augy)localObject1).a();
-              i = ((augy)localObject1).a();
-              localMsgBackupEndPoint1 = new MsgBackupEndPoint();
-              localMsgBackupEndPoint2 = new MsgBackupEndPoint();
-              j = aujq.a(((augy)localObject1).a().a());
-              localMsgBackupEndPoint1.ipv4 = j;
-              localMsgBackupEndPoint2.ipv4 = j;
-              localObject2 = ((augy)localObject1).a().a();
-            } while (((List)localObject2).size() != 2);
-            localMsgBackupEndPoint2.port = ((Integer)((List)localObject2).get(0)).intValue();
-            localMsgBackupEndPoint1.port = ((Integer)((List)localObject2).get(1)).intValue();
-            aujh localaujh = augo.a().a();
-            augd localaugd = augd.a();
-            localaujh.b(paramObject);
-            localaugd.b(str);
-            localaugd.a(i);
-            localaujh.b(localMsgBackupEndPoint2);
-            localaujh.a(localMsgBackupEndPoint1);
-            localaujh.c(2);
-            localaujh.b(2);
-          } while (!QLog.isColorLevel());
-          QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "onConfirmQrResponse: client ip = " + ((augy)localObject1).a().a() + ", udpport = " + ((List)localObject2).get(1) + ", tcpport = " + ((List)localObject2).get(0));
+            return;
+            localObject2 = ((awob)localObject1).b();
+            paramObject = ((awob)localObject1).a();
+            i = ((awob)localObject1).a();
+            localObject3 = ((awob)localObject1).a().a();
+          } while (((List)localObject3).size() != 2);
+          localObject1 = ((awob)localObject1).a().a();
+          j = ((Integer)((List)localObject3).get(0)).intValue();
+          k = ((Integer)((List)localObject3).get(1)).intValue();
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "processConfirmQRRsp: backup client ip = " + (String)localObject1 + ", udpport = " + k + ", tcpport = " + j);
+          }
+          localObject3 = awnr.a().a();
+          ((awql)localObject3).d((String)localObject2);
+          localObject2 = awng.a();
+          ((awng)localObject2).b(paramObject);
+          ((awng)localObject2).a(i);
+          ((awql)localObject3).b((String)localObject1);
+          ((awql)localObject3).b(j);
+          ((awql)localObject3).a(k);
+          ((awql)localObject3).g(2);
+          ((awql)localObject3).f(2);
           return;
         } while (this.jdField_b_of_type_Int != 2);
         if (paramObject != null) {
           break;
         }
       } while (!QLog.isColorLevel());
-      QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "onConfirmQrResponse, data is null!");
+      QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "processConfirmQRRsp: restore data is null!");
       return;
-      paramObject = ((augy)localObject1).b();
-      str = ((augy)localObject1).a();
-      i = ((augy)localObject1).a();
-      localMsgBackupEndPoint1 = new MsgBackupEndPoint();
-      localMsgBackupEndPoint2 = new MsgBackupEndPoint();
-      int j = aujq.a(((augy)localObject1).a().a());
-      localMsgBackupEndPoint1.ipv4 = j;
-      localMsgBackupEndPoint2.ipv4 = j;
-      localObject2 = ((augy)localObject1).a().a();
-    } while (((List)localObject2).size() != 2);
-    localMsgBackupEndPoint2.port = ((Integer)((List)localObject2).get(0)).intValue();
-    localMsgBackupEndPoint1.port = ((Integer)((List)localObject2).get(1)).intValue();
+      localObject2 = ((awob)localObject1).b();
+      paramObject = ((awob)localObject1).a();
+      i = ((awob)localObject1).a();
+      localObject3 = ((awob)localObject1).a().a();
+    } while (((List)localObject3).size() != 2);
+    Object localObject1 = ((awob)localObject1).a().a();
+    int j = ((Integer)((List)localObject3).get(0)).intValue();
+    int k = ((Integer)((List)localObject3).get(1)).intValue();
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "processConfirmRsp: server ip = " + ((augy)localObject1).a().a() + ", udpport = " + ((List)localObject2).get(1) + ", tcpport = " + ((List)localObject2).get(0));
+      QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "processConfirmRsp: restore server ip = " + (String)localObject1 + ", udpport = " + k + ", tcpport = " + j);
     }
-    Object localObject1 = augo.a().a();
-    Object localObject2 = augd.a();
-    ((aujh)localObject1).b(paramObject);
-    ((augd)localObject2).b(str);
-    ((augd)localObject2).a(i);
-    ((aujh)localObject1).d(localMsgBackupEndPoint2);
-    ((aujh)localObject1).c(localMsgBackupEndPoint1);
-    ((aujh)localObject1).c(1);
-    ((aujh)localObject1).b(1);
+    Object localObject3 = awnr.a().a();
+    ((awql)localObject3).d((String)localObject2);
+    Object localObject2 = awng.a();
+    ((awng)localObject2).b(paramObject);
+    ((awng)localObject2).a(i);
+    ((awql)localObject3).c((String)localObject1);
+    ((awql)localObject3).d(j);
+    ((awql)localObject3).c(k);
+    ((awql)localObject3).g(1);
+    ((awql)localObject3).f(1);
   }
   
-  public void aI_()
+  public void aG_()
   {
-    super.aI_();
+    super.aG_();
     if ((this.jdField_e_of_type_Boolean) && (this.jdField_b_of_type_Int == 1))
     {
       if (!this.f) {
         break label56;
       }
-      aujo.a("0X800A266", 3);
+      awqs.a("0X800A266", 3);
     }
     for (;;)
     {
@@ -367,17 +356,17 @@ public class MsgBackupPCTransportFragment
         if (this.f) {
           break;
         }
-        aujo.a("0X800A288", 1);
+        awqs.a("0X800A288", 1);
       }
       return;
       label56:
       if (!this.jdField_a_of_type_Boolean) {
-        aujo.a("0X800A266", 1);
+        awqs.a("0X800A266", 1);
       } else {
-        aujo.a("0X800A266", 2);
+        awqs.a("0X800A266", 2);
       }
     }
-    aujo.a("0X800A288", 2);
+    awqs.a("0X800A288", 2);
   }
   
   public void b(boolean paramBoolean)
@@ -392,12 +381,12 @@ public class MsgBackupPCTransportFragment
   protected void c()
   {
     super.c();
-    bdoo.b(this.jdField_a_of_type_AndroidWidgetLinearLayout, 8);
-    bdoo.b(this.jdField_b_of_type_AndroidWidgetLinearLayout, 8);
-    bdoo.b(this.jdField_c_of_type_AndroidWidgetLinearLayout, 8);
-    bdoo.b(this.jdField_d_of_type_AndroidWidgetLinearLayout, 0);
+    bgtn.b(this.jdField_a_of_type_AndroidWidgetLinearLayout, 8);
+    bgtn.b(this.jdField_b_of_type_AndroidWidgetLinearLayout, 8);
+    bgtn.b(this.jdField_c_of_type_AndroidWidgetLinearLayout, 8);
+    bgtn.b(this.jdField_d_of_type_AndroidWidgetLinearLayout, 0);
     if (this.jdField_b_of_type_Int == 1) {
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841024);
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841274);
     }
     for (;;)
     {
@@ -408,13 +397,13 @@ public class MsgBackupPCTransportFragment
       default: 
         return;
         if (this.jdField_b_of_type_Int == 2) {
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841023);
+          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841273);
         }
         break;
       }
     }
     n();
-    this.jdField_c_of_type_Boolean = aujh.a().b();
+    this.jdField_c_of_type_Boolean = awql.a().b();
     if (this.jdField_c_of_type_Boolean)
     {
       p();
@@ -422,16 +411,16 @@ public class MsgBackupPCTransportFragment
     }
     o();
     return;
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(2131690478);
+    this.jdField_d_of_type_AndroidWidgetTextView.setText(2131690465);
     this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(10014);
     this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(10014, 800L);
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690419);
+    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690418);
     n();
   }
   
   protected void c(int paramInt1, int paramInt2)
   {
-    aujq.b("MsgBackup_MsgBackupPCTransportFragment", "refreshProgress is called! finishedCount = %d, total = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    awqu.b("MsgBackup_MsgBackupPCTransportFragment", "refreshProgress is called! finishedCount = %d, total = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt2 == 0) {}
     do
     {
@@ -450,13 +439,13 @@ public class MsgBackupPCTransportFragment
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_b_of_type_Int == 1) {
       if (this.jdField_e_of_type_Boolean) {
-        aujo.a("0X800A25F");
+        awqs.a("0X800A25F");
       }
     }
     while (this.jdField_b_of_type_Int != 2) {
       return;
     }
-    aujo.a("0X800A283");
+    awqs.a("0X800A283");
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -466,7 +455,7 @@ public class MsgBackupPCTransportFragment
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "doOnKeyDown is called! KEYCODE_BACK");
       }
-      aI_();
+      aG_();
       return true;
     }
     return super.doOnKeyDown(paramInt, paramKeyEvent);
@@ -490,18 +479,18 @@ public class MsgBackupPCTransportFragment
           return super.handleMessage(paramMessage);
           l();
         }
-      } while ((!this.jdField_a_of_type_Boolean) && (!augo.jdField_e_of_type_Boolean));
+      } while ((!this.jdField_a_of_type_Boolean) && (!awnr.jdField_e_of_type_Boolean));
       if (this.jdField_d_of_type_Boolean)
       {
         this.jdField_d_of_type_Boolean = false;
         if (this.jdField_b_of_type_Int == 1) {
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841024);
+          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841274);
         }
       }
       else
       {
-        this.vg.setLeftButton(2131690422);
-        str2 = aujq.a(this.jdField_a_of_type_Long);
+        this.vg.setLeftButton(2131690421);
+        str2 = awqu.a(this.jdField_a_of_type_Long);
         j = paramMessage.arg1;
         k = paramMessage.arg2;
         c(j, k);
@@ -515,14 +504,14 @@ public class MsgBackupPCTransportFragment
     label754:
     for (int i = j + 1;; i = j)
     {
-      if (aujh.a().a() == 1) {}
-      for (String str1 = getActivity().getResources().getString(2131690480);; str1 = getActivity().getResources().getString(2131690479))
+      if (awql.a().e() == 1) {}
+      for (String str1 = getActivity().getResources().getString(2131690467);; str1 = getActivity().getResources().getString(2131690466))
       {
         if (this.jdField_d_of_type_AndroidWidgetTextView != null) {
           this.jdField_d_of_type_AndroidWidgetTextView.setText(String.format(str1, new Object[] { Integer.valueOf(i), Integer.valueOf(k), str2 + "B/s" }));
         }
         if (this.jdField_e_of_type_AndroidWidgetTextView != null) {
-          this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690419);
+          this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690418);
         }
         if (j != k) {
           break;
@@ -530,8 +519,8 @@ public class MsgBackupPCTransportFragment
         if (QLog.isColorLevel()) {
           QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "sessionCompleted->>>>>>>>");
         }
-        augo.a().a().a(null);
-        if (aujh.a().a() != 1) {
+        awnr.a().a().a(null);
+        if (awql.a().e() != 1) {
           break label357;
         }
         MsgBackupCompleteFragment.j(getActivity(), this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
@@ -539,49 +528,49 @@ public class MsgBackupPCTransportFragment
         if (this.jdField_b_of_type_Int != 2) {
           break label112;
         }
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841023);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841273);
         break label112;
       }
       MsgBackupCompleteFragment.a(getActivity(), this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.jdField_e_of_type_Boolean);
       break;
-      if ((!this.jdField_a_of_type_Boolean) && (!augo.jdField_e_of_type_Boolean)) {
+      if ((!this.jdField_a_of_type_Boolean) && (!awnr.jdField_e_of_type_Boolean)) {
         break;
       }
       if (this.jdField_d_of_type_Boolean)
       {
         this.jdField_d_of_type_Boolean = false;
         if (this.jdField_b_of_type_Int == 1) {
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841024);
+          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841274);
         }
       }
       else
       {
-        this.vg.setLeftButton(2131690422);
-        str2 = aujq.a(this.jdField_a_of_type_Long);
-        aujq.b("MsgBackup_MsgBackupPCTransportFragment", "transport speed ...xp.increaseLen = %d,compute result = %s", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), str2 });
+        this.vg.setLeftButton(2131690421);
+        str2 = awqu.a(this.jdField_a_of_type_Long);
+        awqu.b("MsgBackup_MsgBackupPCTransportFragment", "transport speed ...xp.increaseLen = %d,compute result = %s", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), str2 });
         j = this.jdField_d_of_type_Int;
         i = j;
-        if (j != augo.jdField_b_of_type_Int) {
+        if (j != awnr.jdField_b_of_type_Int) {
           i = j + 1;
         }
-        if (aujh.a().a() != 1) {
+        if (awql.a().e() != 1) {
           break label612;
         }
       }
-      for (str1 = getActivity().getResources().getString(2131690480);; str1 = getActivity().getResources().getString(2131690479))
+      for (str1 = getActivity().getResources().getString(2131690467);; str1 = getActivity().getResources().getString(2131690466))
       {
         if (this.jdField_d_of_type_AndroidWidgetTextView != null) {
-          this.jdField_d_of_type_AndroidWidgetTextView.setText(String.format(str1, new Object[] { Integer.valueOf(i), Integer.valueOf(augo.jdField_b_of_type_Int), str2 + "B/s" }));
+          this.jdField_d_of_type_AndroidWidgetTextView.setText(String.format(str1, new Object[] { Integer.valueOf(i), Integer.valueOf(awnr.jdField_b_of_type_Int), str2 + "B/s" }));
         }
         if (this.jdField_e_of_type_AndroidWidgetTextView == null) {
           break;
         }
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690419);
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690418);
         break;
         if (this.jdField_b_of_type_Int != 2) {
           break label422;
         }
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841023);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841273);
         break label422;
       }
       if (paramMessage.arg1 == 1)
@@ -594,7 +583,7 @@ public class MsgBackupPCTransportFragment
       if ((this.jdField_d_of_type_AndroidWidgetTextView == null) || (this.jdField_d_of_type_AndroidWidgetTextView.getVisibility() != 0) || (this.jdField_a_of_type_Boolean)) {
         break;
       }
-      str1 = getActivity().getString(2131690478);
+      str1 = getActivity().getString(2131690465);
       i = this.jdField_e_of_type_Int + 1;
       this.jdField_e_of_type_Int = i;
       str1 = str1.substring(0, str1.length() - (2 - i % 3));
@@ -611,28 +600,28 @@ public class MsgBackupPCTransportFragment
     if (getActivity() != null)
     {
       if (this.jdField_c_of_type_AndroidWidgetImageView != null) {
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841019);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841269);
       }
       if (this.jdField_d_of_type_AndroidWidgetTextView != null) {
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(getString(2131690445));
+        this.jdField_d_of_type_AndroidWidgetTextView.setText(getString(2131690441));
       }
       if (this.jdField_e_of_type_AndroidWidgetTextView != null)
       {
-        this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165799));
+        this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165848));
         if (this.jdField_b_of_type_Int != 2) {
           break label120;
         }
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(getString(2131690420));
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(getString(2131690419));
       }
     }
     for (;;)
     {
-      bdoo.b(this.jdField_b_of_type_AndroidWidgetProgressBar, 8);
-      bdoo.b(this.jdField_c_of_type_AndroidWidgetProgressBar, 8);
-      this.vg.b();
+      bgtn.b(this.jdField_b_of_type_AndroidWidgetProgressBar, 8);
+      bgtn.b(this.jdField_c_of_type_AndroidWidgetProgressBar, 8);
+      this.vg.hideLeftText();
       return;
       label120:
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(getString(2131690387));
+      this.jdField_e_of_type_AndroidWidgetTextView.setText(getString(2131690392));
     }
   }
   
@@ -648,30 +637,30 @@ public class MsgBackupPCTransportFragment
     else {
       return;
     }
-    paramActivity.overridePendingTransition(2130772091, 2130772090);
+    paramActivity.overridePendingTransition(2130772094, 2130772093);
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (!augo.jdField_a_of_type_Boolean)
+    if (!awnr.jdField_a_of_type_Boolean)
     {
-      augo.a().d();
-      augo.a().a().a(null);
+      awnr.a().d();
+      awnr.a().a().a(null);
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    augo.a().b(getActivity());
+    awnr.a().b(getActivity());
   }
   
   public void onResume()
   {
     super.onResume();
-    augo.a().a(getActivity());
-    augo.f = true;
+    awnr.a().a(getActivity());
+    awnr.f = true;
   }
   
   public void onStop()
@@ -682,7 +671,7 @@ public class MsgBackupPCTransportFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCTransportFragment
  * JD-Core Version:    0.7.0.1
  */

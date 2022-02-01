@@ -28,7 +28,7 @@ public abstract class RecyclerView$LayoutManager
   private int mHeightSpec;
   boolean mIsAttachedToWindow = false;
   private boolean mMeasurementCacheEnabled = true;
-  RecyclerView mRecyclerView;
+  public RecyclerView mRecyclerView;
   private boolean mRequestedSimpleAnimations = false;
   @Nullable
   RecyclerView.SmoothScroller mSmoothScroller;

@@ -1,84 +1,48 @@
 import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 
-final class bbel
-  implements BusinessObserver
+class bbel
 {
-  bbel(bbem parambbem) {}
+  private final Drawable a;
+  private final Drawable b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  bbel(Context paramContext)
   {
-    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    String str = localContext.getString(2131696746);
-    Object localObject2 = null;
-    int i = -1;
-    if (paramBoolean) {
-      paramInt = i;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          continue;
-        }
-        paramInt = i;
-        localObject1 = new WebSsoBody.WebSsoResponseBody();
-        paramInt = i;
-        ((WebSsoBody.WebSsoResponseBody)localObject1).mergeFrom(paramBundle);
-        paramInt = i;
-        i = ((WebSsoBody.WebSsoResponseBody)localObject1).ret.get();
-        paramInt = i;
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject1).data.get());
-        if (i == 0) {
-          continue;
-        }
-        paramInt = i;
-        str = paramBundle.optString("msg");
-        localObject1 = localObject2;
-        paramBundle = str;
-        paramInt = i;
-        if (TextUtils.isEmpty(str))
-        {
-          paramInt = i;
-          paramBundle = localContext.getString(2131696747, new Object[] { Integer.valueOf(i) });
-          localObject1 = localObject2;
-        }
-        localObject2 = localObject1;
-        paramInt = i;
-        localObject1 = paramBundle;
-        paramBundle = localObject2;
-      }
-      catch (Exception paramBundle)
-      {
-        Object localObject1 = localContext.getString(2131696747, new Object[] { Integer.valueOf(9992) });
-        paramBundle = null;
-        continue;
-      }
-      this.a.a(paramInt, (String)localObject1, paramBundle);
-      return;
-      paramInt = i;
-      localObject1 = bbej.a(paramBundle.getJSONObject("result").optJSONArray("feeds"));
-      paramBundle = str;
-      continue;
-      paramInt = i;
-      localObject1 = localContext.getString(2131696747, new Object[] { Integer.valueOf(9991) });
-      paramBundle = null;
-      paramInt = -1;
-      continue;
-      paramInt = i;
-      localObject1 = localContext.getString(2131696747, new Object[] { Integer.valueOf(9992) });
-      paramBundle = null;
-      paramInt = -1;
-    }
+    paramContext = paramContext.getResources();
+    this.a = paramContext.getDrawable(2130837561);
+    this.b = paramContext.getDrawable(2130837565);
+  }
+  
+  private Drawable a(Drawable paramDrawable)
+  {
+    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
+  }
+  
+  private Drawable b(Drawable paramDrawable)
+  {
+    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
+    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
+    return paramDrawable;
+  }
+  
+  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  {
+    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
+    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
+    return paramDrawable;
+  }
+  
+  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
+  {
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
+    localStateListDrawable.addState(new int[0], paramDrawable1);
+    return localStateListDrawable;
   }
 }
 

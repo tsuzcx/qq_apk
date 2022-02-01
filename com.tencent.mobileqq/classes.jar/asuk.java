@@ -1,18 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asuk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public asuk(HotPicPageView paramHotPicPageView, asuq paramasuq, int paramInt) {}
+  public asuk(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.jdField_a_of_type_Asuq, this.jdField_a_of_type_Int);
-    QLog.d("HotPicManagerHotPicPageView", 2, "User allowed downd");
+    if (paramView == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseCloudFileTabView.b, 2, "qfilebaserecenttabview del error, tag is null");
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramView.getTag();
+      if (localWeiYunFileInfo != null)
+      {
+        if (this.a.a != null) {
+          this.a.a.a(null);
+        }
+        QfileBaseCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo);
+      }
+      this.a.a.a(Integer.valueOf(-1));
+      paramView.setVisibility(4);
+      this.a.setListFooter();
+      this.a.aw_();
+    }
   }
 }
 

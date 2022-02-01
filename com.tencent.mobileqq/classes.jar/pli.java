@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
 
 class pli
-  implements View.OnClickListener
+  implements riz<DynamicChannelDataModel>
 {
-  pli(ple parample, rqj paramrqj, pgd parampgd) {}
+  pli(plh paramplh, long paramLong) {}
   
-  public void onClick(View paramView)
+  public boolean a(DynamicChannelDataModel paramDynamicChannelDataModel)
   {
-    rro localrro = this.jdField_a_of_type_Rqj.a();
-    if (localrro != null) {
-      localrro.a(paramView, this.jdField_a_of_type_Pgd.a(), 2);
-    }
+    return paramDynamicChannelDataModel.recommendSeq > this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pli
  * JD-Core Version:    0.7.0.1
  */

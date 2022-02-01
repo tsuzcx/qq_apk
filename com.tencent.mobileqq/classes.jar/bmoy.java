@@ -1,13 +1,8 @@
 public abstract interface bmoy
-  extends bmni
 {
-  public abstract bmox a();
+  public abstract void a();
   
-  public abstract void a(bmrg parambmrg, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(int paramInt, bnaz parambnaz);
-  
-  public abstract void d();
+  public abstract void a(int paramInt, String paramString1, String paramString2);
 }
 
 

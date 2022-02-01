@@ -39,6 +39,7 @@ public class LayoutAttrSet
   public String gradientDirection;
   public int gradientEndColor;
   public int gradientStartColor;
+  public int gravity = 3;
   public int height = -2;
   public String id;
   public int layout_gravity = 3;
@@ -62,6 +63,7 @@ public class LayoutAttrSet
   public int topPadding;
   public int topRightRadius;
   public int topShadowSize;
+  public int weight = 0;
   public int width = -2;
   
   public static LayoutAttrSet createFrom(JSONObject paramJSONObject)
@@ -100,6 +102,21 @@ public class LayoutAttrSet
     }
   }
   
+  private Integer isDpOrPxValue(String paramString, float paramFloat, int paramInt1, char[] paramArrayOfChar, int paramInt2)
+  {
+    if ((paramArrayOfChar[paramInt2] == 'd') && (paramArrayOfChar[(paramInt2 + 1)] == 'p'))
+    {
+      attrValueCache.put(paramString, Integer.valueOf((int)(DittoUIEngine.g().getDensity() * paramFloat * paramInt1)));
+      return Integer.valueOf((int)(DittoUIEngine.g().getDensity() * paramFloat * paramInt1));
+    }
+    if ((paramArrayOfChar[paramInt2] == 'p') && (paramArrayOfChar[(paramInt2 + 1)] == 'x'))
+    {
+      attrValueCache.put(paramString, Integer.valueOf((int)paramFloat * paramInt1));
+      return Integer.valueOf((int)paramFloat * paramInt1);
+    }
+    return null;
+  }
+  
   private int parseColor(String paramString)
   {
     try
@@ -112,6 +129,229 @@ public class LayoutAttrSet
       DittoLog.e("DITTO_UI", "the text " + paramString + " can't be parsed as color string", localThrowable);
     }
     return 0;
+  }
+  
+  private void parseContentB(String paramString, Object paramObject)
+  {
+    if ("shadow_size".equals(paramString))
+    {
+      parseShadowSize(paramObject.toString());
+      return;
+    }
+    if ("bg_color".equals(paramString))
+    {
+      this.bg_color = parseColor(paramObject.toString());
+      return;
+    }
+    if ("centerVertical".equals(paramString))
+    {
+      this.centerVertical = ((Boolean)paramObject).booleanValue();
+      return;
+    }
+    if ("centerHorizontal".equals(paramString))
+    {
+      this.centerHorizontal = ((Boolean)paramObject).booleanValue();
+      return;
+    }
+    if ("centerInParent".equals(paramString))
+    {
+      this.centerInParent = ((Boolean)paramObject).booleanValue();
+      return;
+    }
+    if ("alignParentLeft".equals(paramString))
+    {
+      this.alignParentLeft = ((Boolean)paramObject).booleanValue();
+      return;
+    }
+    if ("alignParentBottom".equals(paramString))
+    {
+      this.alignParentBottom = ((Boolean)paramObject).booleanValue();
+      return;
+    }
+    if ("alignParentRight".equals(paramString))
+    {
+      this.alignParentRight = ((Boolean)paramObject).booleanValue();
+      return;
+    }
+    if ("alignParentTop".equals(paramString))
+    {
+      this.alignParentTop = ((Boolean)paramObject).booleanValue();
+      return;
+    }
+    parseContentC(paramString, paramObject);
+  }
+  
+  private void parseContentC(String paramString, Object paramObject)
+  {
+    if ("alignWithParentIfMissing".equals(paramString))
+    {
+      this.alignWithParentIfMissing = ((Boolean)paramObject).booleanValue();
+      return;
+    }
+    if ("alignTop".equals(paramString))
+    {
+      this.alignTop = paramObject.toString();
+      return;
+    }
+    if ("alignBottom".equals(paramString))
+    {
+      this.alignBottom = paramObject.toString();
+      return;
+    }
+    if ("alignLeft".equals(paramString))
+    {
+      this.alignLeft = paramObject.toString();
+      return;
+    }
+    if ("alignRight".equals(paramString))
+    {
+      this.alignRight = paramObject.toString();
+      return;
+    }
+    if ("above".equals(paramString))
+    {
+      this.above = paramObject.toString();
+      return;
+    }
+    if ("below".equals(paramString))
+    {
+      this.below = paramObject.toString();
+      return;
+    }
+    if ("toLeftOf".equals(paramString))
+    {
+      this.toLeftOf = paramObject.toString();
+      return;
+    }
+    if ("toRightOf".equals(paramString))
+    {
+      this.toRightOf = paramObject.toString();
+      return;
+    }
+    parseContentD(paramString, paramObject);
+  }
+  
+  private void parseContentD(String paramString, Object paramObject)
+  {
+    if ("margin_left".equals(paramString))
+    {
+      this.leftMargin = parseInteger(paramObject.toString());
+      return;
+    }
+    if ("margin_right".equals(paramString))
+    {
+      this.rightMargin = parseInteger(paramObject.toString());
+      return;
+    }
+    if ("margin_top".equals(paramString))
+    {
+      this.topMargin = parseInteger(paramObject.toString());
+      return;
+    }
+    if ("margin_bottom".equals(paramString))
+    {
+      this.bottomMargin = parseInteger(paramObject.toString());
+      return;
+    }
+    if ("padding_left".equals(paramString))
+    {
+      this.leftPadding = parseInteger(paramObject.toString());
+      return;
+    }
+    if ("padding_right".equals(paramString))
+    {
+      this.rightPadding = parseInteger(paramObject.toString());
+      return;
+    }
+    if ("padding_top".equals(paramString))
+    {
+      this.topPadding = parseInteger(paramObject.toString());
+      return;
+    }
+    if ("padding_bottom".equals(paramString))
+    {
+      this.bottomPadding = parseInteger(paramObject.toString());
+      return;
+    }
+    if ("shadow_id".equals(paramString))
+    {
+      this.shadowResourceId = DittoUIEngine.g().getResourceId(paramObject.toString());
+      return;
+    }
+    parseContentE(paramString, paramObject);
+  }
+  
+  private void parseContentE(String paramString, Object paramObject)
+  {
+    if ("border_radii4".equals(paramString)) {
+      parseRadii4(paramObject.toString());
+    }
+    do
+    {
+      return;
+      if ("bgGradientDir".equals(paramString))
+      {
+        this.gradientDirection = paramObject.toString();
+        return;
+      }
+      if ("bgGradientStartColor".equals(paramString))
+      {
+        this.gradientStartColor = parseColor(paramObject.toString());
+        return;
+      }
+      if ("bgGradientEndColor".equals(paramString))
+      {
+        this.gradientEndColor = parseColor(paramObject.toString());
+        return;
+      }
+      if ("pressedAlpha".equals(paramString))
+      {
+        this.pressedAlpha = parseInteger(paramObject.toString());
+        return;
+      }
+    } while (!"weight".equals(paramString));
+    this.weight = ((Integer)paramObject).intValue();
+  }
+  
+  private Integer parseIntegerNormal(String paramString)
+  {
+    label48:
+    int i;
+    switch (paramString.hashCode())
+    {
+    default: 
+      i = -1;
+    }
+    for (;;)
+    {
+      switch (i)
+      {
+      default: 
+        return null;
+        if (!paramString.equals("wrap_content")) {
+          break label48;
+        }
+        i = 0;
+        continue;
+        if (!paramString.equals("match_parent")) {
+          break label48;
+        }
+        i = 1;
+        continue;
+        if (!paramString.equals("0")) {
+          break label48;
+        }
+        i = 2;
+        continue;
+        if (!paramString.equals("-0")) {
+          break label48;
+        }
+        i = 3;
+      }
+    }
+    return Integer.valueOf(-2);
+    return Integer.valueOf(-1);
+    return Integer.valueOf(0);
   }
   
   public void addLayoutAttr(String paramString, Object paramObject)
@@ -331,6 +571,11 @@ public class LayoutAttrSet
       this.layout_gravity = LayoutAttrDefine.Gravity.parse(paramObject.toString());
       return;
     }
+    if ("gravity".equals(paramString))
+    {
+      this.gravity = LayoutAttrDefine.Gravity.parse(paramObject.toString());
+      return;
+    }
     if ("margin".equals(paramString))
     {
       parseMargin(paramObject.toString());
@@ -341,313 +586,77 @@ public class LayoutAttrSet
       parsePadding(paramObject.toString());
       return;
     }
-    if ("shadow_size".equals(paramString))
-    {
-      parseShadowSize(paramObject.toString());
-      return;
-    }
-    if ("bg_color".equals(paramString))
-    {
-      this.bg_color = parseColor(paramObject.toString());
-      return;
-    }
-    if ("centerVertical".equals(paramString))
-    {
-      this.centerVertical = ((Boolean)paramObject).booleanValue();
-      return;
-    }
-    if ("centerHorizontal".equals(paramString))
-    {
-      this.centerHorizontal = ((Boolean)paramObject).booleanValue();
-      return;
-    }
-    if ("centerInParent".equals(paramString))
-    {
-      this.centerInParent = ((Boolean)paramObject).booleanValue();
-      return;
-    }
-    if ("alignParentLeft".equals(paramString))
-    {
-      this.alignParentLeft = ((Boolean)paramObject).booleanValue();
-      return;
-    }
-    if ("alignParentBottom".equals(paramString))
-    {
-      this.alignParentBottom = ((Boolean)paramObject).booleanValue();
-      return;
-    }
-    if ("alignParentRight".equals(paramString))
-    {
-      this.alignParentRight = ((Boolean)paramObject).booleanValue();
-      return;
-    }
-    if ("alignParentTop".equals(paramString))
-    {
-      this.alignParentTop = ((Boolean)paramObject).booleanValue();
-      return;
-    }
-    if ("alignWithParentIfMissing".equals(paramString))
-    {
-      this.alignWithParentIfMissing = ((Boolean)paramObject).booleanValue();
-      return;
-    }
-    if ("alignTop".equals(paramString))
-    {
-      this.alignTop = paramObject.toString();
-      return;
-    }
-    if ("alignBottom".equals(paramString))
-    {
-      this.alignBottom = paramObject.toString();
-      return;
-    }
-    if ("alignLeft".equals(paramString))
-    {
-      this.alignLeft = paramObject.toString();
-      return;
-    }
-    if ("alignRight".equals(paramString))
-    {
-      this.alignRight = paramObject.toString();
-      return;
-    }
-    if ("above".equals(paramString))
-    {
-      this.above = paramObject.toString();
-      return;
-    }
-    if ("below".equals(paramString))
-    {
-      this.below = paramObject.toString();
-      return;
-    }
-    if ("toLeftOf".equals(paramString))
-    {
-      this.toLeftOf = paramObject.toString();
-      return;
-    }
-    if ("toRightOf".equals(paramString))
-    {
-      this.toRightOf = paramObject.toString();
-      return;
-    }
-    if ("margin_left".equals(paramString))
-    {
-      this.leftMargin = parseInteger(paramObject.toString());
-      return;
-    }
-    if ("margin_right".equals(paramString))
-    {
-      this.rightMargin = parseInteger(paramObject.toString());
-      return;
-    }
-    if ("margin_top".equals(paramString))
-    {
-      this.topMargin = parseInteger(paramObject.toString());
-      return;
-    }
-    if ("margin_bottom".equals(paramString))
-    {
-      this.bottomMargin = parseInteger(paramObject.toString());
-      return;
-    }
-    if ("padding_left".equals(paramString))
-    {
-      this.leftPadding = parseInteger(paramObject.toString());
-      return;
-    }
-    if ("padding_right".equals(paramString))
-    {
-      this.rightPadding = parseInteger(paramObject.toString());
-      return;
-    }
-    if ("padding_top".equals(paramString))
-    {
-      this.topPadding = parseInteger(paramObject.toString());
-      return;
-    }
-    if ("padding_bottom".equals(paramString))
-    {
-      this.bottomPadding = parseInteger(paramObject.toString());
-      return;
-    }
-    if ("shadow_id".equals(paramString))
-    {
-      this.shadowResourceId = DittoUIEngine.g().getResourceId(paramObject.toString());
-      return;
-    }
-    if ("border_radii4".equals(paramString))
-    {
-      parseRadii4(paramObject.toString());
-      return;
-    }
-    if ("bgGradientDir".equals(paramString))
-    {
-      this.gradientDirection = paramObject.toString();
-      return;
-    }
-    if ("bgGradientStartColor".equals(paramString))
-    {
-      this.gradientStartColor = parseColor(paramObject.toString());
-      return;
-    }
-    if ("bgGradientEndColor".equals(paramString))
-    {
-      this.gradientEndColor = parseColor(paramObject.toString());
-      return;
-    }
-    if ("pressedAlpha".equals(paramString)) {
-      this.pressedAlpha = parseInteger(paramObject.toString());
-    }
+    parseContentB(paramString, paramObject);
   }
   
   public int parseInteger(String paramString)
   {
-    int j = -1;
-    if (attrValueCache.containsKey(paramString))
-    {
-      j = ((Integer)attrValueCache.get(paramString)).intValue();
-      return j;
+    int k = 0;
+    if (attrValueCache.containsKey(paramString)) {
+      return ((Integer)attrValueCache.get(paramString)).intValue();
     }
-    float f2 = 0.0F;
-    int i;
-    int m;
-    int k;
-    float f1;
+    float f1 = 0.0F;
+    Object localObject = parseIntegerNormal(paramString);
+    if (localObject != null) {
+      return ((Integer)localObject).intValue();
+    }
+    paramString = paramString.replaceAll(" ", "");
+    localObject = paramString.toCharArray();
+    int j = 10;
+    int i = 0;
+    int m = 1;
+    float f2;
     int n;
-    int i1;
-    int i2;
-    for (;;)
-    {
-      try
-      {
-        switch (paramString.hashCode())
+    if (k < localObject.length) {
+      if ((localObject[k] >= '0') && (localObject[k] <= '9')) {
+        if (i != 0)
         {
-        case 343327108: 
-          arrayOfChar = paramString.toCharArray();
-          i = 0;
-          j = 1;
-          m = 10;
-          k = 0;
-          if (i >= arrayOfChar.length) {
-            break label503;
-          }
-          if ((arrayOfChar[i] < '0') || (arrayOfChar[i] > '9')) {
-            break label595;
-          }
-          if (k != 0)
-          {
-            f1 = f2 + Integer.parseInt(Character.valueOf(arrayOfChar[i]).toString()) / m;
-            n = m * 10;
-            i1 = k;
-            i2 = j;
-            break label567;
-            if (!paramString.equals("wrap_content")) {
-              break label527;
-            }
-            i = 0;
-          }
-          break;
-        case 1386124388: 
-          if (!paramString.equals("match_parent")) {
-            break label527;
-          }
-          i = 1;
-          break;
-        case 48: 
-          if (!paramString.equals("0")) {
-            break label527;
-          }
-          i = 2;
-          break;
-        case 1443: 
-          if (!paramString.equals("-0")) {
-            break label527;
-          }
-          i = 3;
-          break label530;
-          f1 = f2 * 10.0F + Integer.parseInt(Character.valueOf(arrayOfChar[i]).toString());
-          n = m;
-          i1 = k;
-          i2 = j;
-          break label567;
+          f2 = Integer.parseInt(Character.valueOf(localObject[k]).toString()) / j;
+          n = j * 10;
+          f1 += f2;
+          j = i;
+          i = n;
         }
       }
-      catch (Exception localException)
-      {
-        char[] arrayOfChar;
-        label277:
-        localException = localException;
-        DittoLog.i("DITTO_UI", "parseInteger error. str=" + paramString, localException);
-        throw new RuntimeException("value string of \"" + paramString + "\" is out of format");
-      }
-      finally {}
-      n = m;
-      i1 = k;
-      i2 = j;
-      f1 = f2;
-      if (arrayOfChar[i] == ' ') {
-        break;
-      }
-      if ((arrayOfChar[i] == 'd') && (arrayOfChar[(i + 1)] == 'p'))
-      {
-        attrValueCache.put(paramString, Integer.valueOf((int)(DittoUIEngine.g().getDensity() * f2 * j)));
-        return (int)(DittoUIEngine.g().getDensity() * f2 * j);
-      }
-      n = m;
-      i1 = k;
-      i2 = j;
-      f1 = f2;
-      if (arrayOfChar[i] != 'p') {
-        break;
-      }
-      n = m;
-      i1 = k;
-      i2 = j;
-      f1 = f2;
-      if (arrayOfChar[(i + 1)] != 'x') {
-        break;
-      }
-      attrValueCache.put(paramString, Integer.valueOf((int)f2 * j));
-      return (int)f2 * j;
-      label503:
-      attrValueCache.put(paramString, Integer.valueOf((int)f2 * j));
-      return (int)f2 * j;
-      label527:
-      i = -1;
-      label530:
-      switch (i)
-      {
-      }
     }
     for (;;)
     {
-      label567:
-      i += 1;
-      m = n;
-      k = i1;
-      j = i2;
-      f2 = f1;
+      k += 1;
+      n = j;
+      j = i;
+      i = n;
       break;
-      return -2;
-      return 0;
-      label595:
-      if (localException[i] == '.')
+      f2 = Integer.parseInt(Character.valueOf(localObject[k]).toString());
+      f1 = f2 + 10.0F * f1;
+      n = i;
+      i = j;
+      j = n;
+      continue;
+      if (localObject[k] == '.')
       {
-        i1 = 1;
-        n = m;
-        i2 = j;
-        f1 = f2;
+        i = j;
+        j = 1;
+      }
+      else if (localObject[k] == '-')
+      {
+        n = -1;
+        m = i;
+        i = j;
+        j = m;
+        m = n;
       }
       else
       {
-        if (localException[i] != '-') {
-          break label277;
+        Integer localInteger = isDpOrPxValue(paramString, f1, m, (char[])localObject, k);
+        if (localInteger != null)
+        {
+          return localInteger.intValue();
+          attrValueCache.put(paramString, Integer.valueOf((int)f1 * m));
+          return (int)f1 * m;
         }
-        i2 = -1;
-        n = m;
-        i1 = k;
-        f1 = f2;
+        n = i;
+        i = j;
+        j = n;
       }
     }
   }
@@ -833,7 +842,7 @@ public class LayoutAttrSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.ditto.shell.LayoutAttrSet
  * JD-Core Version:    0.7.0.1
  */

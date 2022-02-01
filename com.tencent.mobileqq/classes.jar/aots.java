@@ -1,108 +1,55 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.Surface;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
-@Deprecated
 public class aots
-  extends aokh<aotr>
 {
-  public int a()
+  private bati jdField_a_of_type_Bati;
+  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = (EGL10)EGLContext.getEGL();
+  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext();
+  private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentDisplay();
+  private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentSurface(12377);
+  
+  public aots(bath parambath, Surface paramSurface)
   {
-    return 533;
+    this.jdField_a_of_type_Bati = new bati(parambath);
+    this.jdField_a_of_type_Bati.a(paramSurface);
   }
   
-  @NonNull
-  public aotr a(int paramInt)
+  public void a()
   {
-    return new aotr();
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
   }
   
-  @Nullable
-  public aotr a(aoko[] paramArrayOfaoko)
+  public void a(long paramLong)
   {
-    QLog.i("QFileExcitingConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaoko != null) {
-      try
-      {
-        if (paramArrayOfaoko.length > 0)
-        {
-          paramArrayOfaoko = (aotr)aolc.a(paramArrayOfaoko[0].a, aotr.class);
-          return paramArrayOfaoko;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfaoko)
-      {
-        QLog.e("QFileExcitingConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaoko.getMessage());
-      }
-    }
-    return null;
+    this.jdField_a_of_type_Bati.a(paramLong);
   }
   
-  public Class<aotr> a()
+  public void b()
   {
-    return aotr.class;
+    this.jdField_a_of_type_Bati.b();
   }
   
-  public void a(int paramInt)
+  public void c()
   {
-    QLog.i("QFileExcitingConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+    this.jdField_a_of_type_Bati.a();
   }
   
-  public void a(aotr paramaotr)
+  public void d()
   {
-    if (paramaotr != null)
+    if (this.jdField_a_of_type_Bati != null)
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label152;
-      }
+      this.jdField_a_of_type_Bati.a();
+      this.jdField_a_of_type_Bati = null;
     }
-    label152:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (TextUtils.isEmpty(paramaotr.a)) {
-          paramaotr.a = "{}";
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_exciting_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("qfile_file_exciting", paramaotr.a);
-        localEditor.apply();
-        QLog.i("QFileExcitingConfigProcessor<FileAssistant>", 1, "save download config [" + paramaotr.a + "]");
-        localObject = (aqud)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((aqud)localObject).a(paramaotr);
-        }
-      }
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aots
  * JD-Core Version:    0.7.0.1
  */

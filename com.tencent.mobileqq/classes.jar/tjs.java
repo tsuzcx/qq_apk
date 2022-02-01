@@ -1,23 +1,26 @@
-import UserGrowth.stWeishiReportRsp;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelBottomBanner;
 
-final class tjs
-  implements tgt
+public class tjs
+  implements tjx
 {
-  tjs(String paramString) {}
+  public tjs(ChannelBottomBanner paramChannelBottomBanner) {}
   
-  public void a(the paramthe)
+  public void a(int paramInt)
   {
-    tlo.b("weishi-report", "report " + this.a + " start...");
-    if ((paramthe != null) && (paramthe.a != null) && ((paramthe.a instanceof stWeishiReportRsp)))
+    switch (paramInt)
     {
-      paramthe = (stWeishiReportRsp)paramthe.a;
-      tlo.b("weishi-report", "report" + this.a + "end: " + paramthe.code + paramthe.msg);
+    default: 
+      return;
+    case 0: 
+      this.a.e();
+      return;
     }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tjs
  * JD-Core Version:    0.7.0.1
  */

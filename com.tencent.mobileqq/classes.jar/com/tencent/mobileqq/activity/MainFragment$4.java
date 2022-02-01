@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bdne;
+import bgsg;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class MainFragment$4
@@ -11,13 +11,13 @@ class MainFragment$4
   public void run()
   {
     if (BaseApplicationImpl.getContext() != null) {
-      bdne.a(BaseApplicationImpl.getContext(), "");
+      bgsg.a(BaseApplicationImpl.getContext(), "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MainFragment.4
  * JD-Core Version:    0.7.0.1
  */

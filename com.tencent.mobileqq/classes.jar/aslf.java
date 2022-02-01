@@ -1,22 +1,11 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
-
-class aslf
-  implements Animation.AnimationListener
+public class aslf
+  extends asle
 {
-  aslf(askz paramaskz) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public aslf(asld paramasld, askk paramaskk)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.c();
-    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    super(paramasld, paramaskk);
+    this.a = -1;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

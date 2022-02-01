@@ -1,842 +1,1344 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.provider.Settings.Secure;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import com.tencent.common.config.AppSetting;
+import com.tencent.ims.device_lock_query_status.ReqBody;
+import com.tencent.ims.device_lock_query_status.RspBody;
+import com.tencent.ims.get_config.ReqBody;
+import com.tencent.ims.get_config.RspBody;
+import com.tencent.ims.wx_msg_opt.ReqBody;
+import com.tencent.ims.wx_msg_opt.RspBody;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicUtils.1;
-import com.tencent.mobileqq.shortvideo.util.ShortVideoTrimmer;
+import com.tencent.mobileqq.app.SecSvcHandler.1;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mqp.app.sec.d;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Calendar;
-import java.util.TimeZone;
+import com.tencent.smtt.utils.Apn;
+import java.nio.ByteBuffer;
+import mqq.app.MobileQQ;
+import tencent.im.oidb.cmd0x614.Oidb_0x614.DeviceManageHead;
+import tencent.im.oidb.cmd0x614.Oidb_0x614.ReNameDeviceNameReqBody;
+import tencent.im.oidb.cmd0x614.Oidb_0x614.ReqBody;
+import tencent.im.oidb.cmd0x6de.Oidb_0x6de.DevInfo;
+import tencent.im.oidb.cmd0x6de.Oidb_0x6de.PhoneInfo;
+import tencent.im.oidb.cmd0x6de.Oidb_0x6de.ReqBody;
+import tencent.im.oidb.cmd0x6de.Oidb_0x6de.RspBody;
+import tencent.im.oidb.cmd0x6df.Oidb_0x6df.DevInfo;
+import tencent.im.oidb.cmd0x6df.Oidb_0x6df.PhoneInfo;
+import tencent.im.oidb.cmd0x6df.Oidb_0x6df.ReqBody;
+import tencent.im.oidb.cmd0x6df.Oidb_0x6df.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc6.SubMsgType0xc6.AccountExceptionAlertBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc6.SubMsgType0xc6.MsgBody;
 
 public class anus
+  extends anii
 {
+  private int a = 1;
+  
+  public anus(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
+  
+  private void a(int paramInt, SubMsgType0xc6.AccountExceptionAlertBody paramAccountExceptionAlertBody)
+  {
+    if (paramAccountExceptionAlertBody == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SecSvcHandler", 2, "account exception alert, null body");
+      }
+    }
+    do
+    {
+      return;
+      if (this.app.isLogin()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("SecSvcHandler", 2, "user not logined, no alert");
+    return;
+    String str1 = "";
+    String str2 = "";
+    String str3 = "";
+    String str4 = "";
+    String str5 = "";
+    if (paramAccountExceptionAlertBody.str_title.has()) {
+      str1 = paramAccountExceptionAlertBody.str_title.get();
+    }
+    if (paramAccountExceptionAlertBody.str_content.has()) {
+      str2 = paramAccountExceptionAlertBody.str_content.get();
+    }
+    if (paramAccountExceptionAlertBody.str_left_button_text.has()) {
+      str3 = paramAccountExceptionAlertBody.str_left_button_text.get();
+    }
+    if (paramAccountExceptionAlertBody.str_right_button_text.has()) {
+      str4 = paramAccountExceptionAlertBody.str_right_button_text.get();
+    }
+    if (paramAccountExceptionAlertBody.str_right_button_link.has()) {
+      str5 = paramAccountExceptionAlertBody.str_right_button_link.get();
+    }
+    if (paramAccountExceptionAlertBody.uint32_left_button_id.has()) {}
+    for (int i = paramAccountExceptionAlertBody.uint32_left_button_id.get();; i = 0)
+    {
+      if (paramAccountExceptionAlertBody.uint32_right_button_id.has()) {}
+      for (int j = paramAccountExceptionAlertBody.uint32_right_button_id.get();; j = 0)
+      {
+        if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str4))))
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("SecSvcHandler", 2, "empty title or content, or no buttons, so no alert");
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SecSvcHandler", 2, String.format("cmd=%d, args: title=%s, msg=%s, lbtn=%s, rbtn=%s, url=%s,lbip=%d, rbid=%d", new Object[] { Integer.valueOf(paramInt), str1, str2, str3, str4, str5, Integer.valueOf(i), Integer.valueOf(j) }));
+        }
+        new Handler(Looper.getMainLooper()).post(new SecSvcHandler.1(this, str1, str2, str3, str4, str5, i, j, paramInt));
+        return;
+      }
+    }
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int j = 0;
+    int i = 1;
+    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
+    {
+      notifyUI(1, false, null);
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramFromServiceMsg = new get_config.RspBody();
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+        paramObject = new Bundle();
+        if (paramFromServiceMsg.u32_proto_version.has()) {
+          i = paramFromServiceMsg.u32_proto_version.get();
+        }
+        paramObject.putInt("proto_version", i);
+        paramToServiceMsg = "";
+        if (paramFromServiceMsg.str_config_name.has()) {
+          paramToServiceMsg = paramFromServiceMsg.str_config_name.get();
+        }
+        paramObject.putString("config_name", paramToServiceMsg);
+        if (!paramFromServiceMsg.u32_config_version.has()) {
+          break label266;
+        }
+        i = paramFromServiceMsg.u32_config_version.get();
+        paramObject.putInt("config_version", i);
+        i = j;
+        if (paramFromServiceMsg.u32_effect_time.has()) {
+          i = paramFromServiceMsg.u32_effect_time.get();
+        }
+        paramObject.putInt("effect_time", i);
+        paramToServiceMsg = "";
+        if (paramFromServiceMsg.str_md5.has()) {
+          paramToServiceMsg = paramFromServiceMsg.str_md5.get();
+        }
+        paramObject.putString("md5", paramToServiceMsg);
+        paramToServiceMsg = "";
+        if (paramFromServiceMsg.str_download_link.has()) {
+          paramToServiceMsg = paramFromServiceMsg.str_download_link.get();
+        }
+        paramObject.putString("download_url", paramToServiceMsg);
+        notifyUI(1, true, paramObject);
+        return;
+      }
+      catch (Exception paramToServiceMsg) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("SecSvcHandler", 2, "onGetAntiFraudConfig error:" + paramToServiceMsg.getMessage());
+      return;
+      label266:
+      i = 0;
+    }
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = 1;
+    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
+    {
+      notifyUI(2, false, null);
+      return;
+    }
+    paramObject = new wx_msg_opt.RspBody();
+    for (;;)
+    {
+      try
+      {
+        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        paramFromServiceMsg = new Bundle();
+        if (paramObject.uint32_cmd.has()) {
+          i = paramObject.uint32_cmd.get();
+        }
+        paramFromServiceMsg.putInt("cmd", i);
+        i = -1;
+        if (paramObject.uint32_ret.has()) {
+          i = paramObject.uint32_ret.get();
+        }
+        paramFromServiceMsg.putInt("ret", i);
+        if (!paramObject.uint32_opt.has()) {
+          break label203;
+        }
+        i = paramObject.uint32_opt.get();
+        paramFromServiceMsg.putInt("opt", i);
+        paramToServiceMsg = "";
+        if (paramObject.str_wording.has()) {
+          paramToServiceMsg = paramObject.str_wording.get();
+        }
+        paramFromServiceMsg.putString("wording", paramToServiceMsg);
+        notifyUI(2, true, paramFromServiceMsg);
+        return;
+      }
+      catch (Exception paramToServiceMsg) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("SecSvcHandler", 2, "onWXSyncQQMsgOption error:" + paramToServiceMsg.getMessage());
+      return;
+      label203:
+      i = 2;
+    }
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool2 = false;
+    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
+    {
+      notifyUI(3, false, null);
+      return;
+    }
+    paramObject = new device_lock_query_status.RspBody();
+    for (;;)
+    {
+      try
+      {
+        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        paramFromServiceMsg = new Bundle();
+        if (!paramObject.u32_status.has()) {
+          break label178;
+        }
+        i = paramObject.u32_status.get();
+        paramFromServiceMsg.putInt("status", i);
+        paramToServiceMsg = "";
+        if (paramObject.str_wording.has()) {
+          paramToServiceMsg = paramObject.str_wording.get();
+        }
+        paramFromServiceMsg.putString("wording", paramToServiceMsg);
+        boolean bool1 = bool2;
+        if (paramObject.u32_ret.has())
+        {
+          bool1 = bool2;
+          if (paramObject.u32_ret.get() == 0) {
+            bool1 = true;
+          }
+        }
+        notifyUI(3, bool1, paramFromServiceMsg);
+        return;
+      }
+      catch (Exception paramToServiceMsg) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("SecSvcHandler", 2, "onQueryDevLockStatus error:" + paramToServiceMsg.getMessage());
+      return;
+      label178:
+      int i = 0;
+    }
+  }
+  
   /* Error */
-  private static int a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 11
-    //   3: invokestatic 18	java/lang/System:currentTimeMillis	()J
-    //   6: lstore 5
-    //   8: new 20	azlf
-    //   11: dup
-    //   12: invokespecial 24	azlf:<init>	()V
-    //   15: astore 9
-    //   17: aload 9
-    //   19: iload_3
-    //   20: putfield 28	azlf:c	I
-    //   23: aload 9
-    //   25: iload_3
-    //   26: putfield 31	azlf:d	I
-    //   29: aload 9
-    //   31: ldc 33
-    //   33: putfield 36	azlf:a	Ljava/lang/String;
-    //   36: aload 9
-    //   38: iload 4
-    //   40: putfield 39	azlf:e	I
-    //   43: aload_1
-    //   44: aload_2
-    //   45: aload 9
-    //   47: invokestatic 42	anus:a	(Ljava/lang/String;Ljava/lang/String;Lazlf;)[Ljava/lang/String;
-    //   50: astore_1
-    //   51: aload_1
-    //   52: ifnonnull +8 -> 60
-    //   55: ldc 44
-    //   57: invokestatic 47	anus:a	(Ljava/lang/String;)V
-    //   60: aload_0
-    //   61: invokestatic 53	com/tencent/video/decode/ShortVideoSoLoad:getShortVideoSoPath	(Landroid/content/Context;)Ljava/lang/String;
-    //   64: astore_0
-    //   65: invokestatic 58	com/tencent/mobileqq/shortvideo/VideoEnvironment:a	()Ljava/lang/String;
-    //   68: astore 9
-    //   70: new 60	java/lang/StringBuilder
-    //   73: dup
-    //   74: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   77: ldc 63
-    //   79: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: aload_0
-    //   83: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: ldc 69
-    //   88: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: aload 9
-    //   93: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   96: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   99: invokestatic 47	anus:a	(Ljava/lang/String;)V
-    //   102: new 74	java/lang/ProcessBuilder
-    //   105: dup
-    //   106: iconst_0
-    //   107: anewarray 76	java/lang/String
-    //   110: invokespecial 79	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
-    //   113: astore 10
-    //   115: aload 10
-    //   117: iconst_1
-    //   118: invokevirtual 83	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
-    //   121: pop
-    //   122: new 85	java/util/ArrayList
-    //   125: dup
-    //   126: invokespecial 86	java/util/ArrayList:<init>	()V
-    //   129: astore 12
-    //   131: aload 12
-    //   133: new 60	java/lang/StringBuilder
-    //   136: dup
-    //   137: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   140: aload_0
-    //   141: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   144: ldc 88
-    //   146: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   152: invokeinterface 94 2 0
-    //   157: pop
-    //   158: new 60	java/lang/StringBuilder
-    //   161: dup
-    //   162: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   165: ldc 96
-    //   167: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: aload 12
-    //   172: iconst_0
-    //   173: invokeinterface 100 2 0
-    //   178: checkcast 76	java/lang/String
-    //   181: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   184: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   187: invokestatic 47	anus:a	(Ljava/lang/String;)V
-    //   190: aload_1
-    //   191: arraylength
-    //   192: istore 4
-    //   194: iconst_0
-    //   195: istore_3
-    //   196: iload_3
-    //   197: iload 4
-    //   199: if_icmpge +21 -> 220
-    //   202: aload 12
-    //   204: aload_1
-    //   205: iload_3
-    //   206: aaload
-    //   207: invokeinterface 94 2 0
-    //   212: pop
-    //   213: iload_3
-    //   214: iconst_1
-    //   215: iadd
-    //   216: istore_3
-    //   217: goto -21 -> 196
-    //   220: aload 12
-    //   222: new 60	java/lang/StringBuilder
-    //   225: dup
-    //   226: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   229: aload_0
-    //   230: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: aload 9
-    //   235: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   241: invokeinterface 94 2 0
-    //   246: pop
-    //   247: aload 10
-    //   249: aload 12
-    //   251: invokevirtual 104	java/lang/ProcessBuilder:command	(Ljava/util/List;)Ljava/lang/ProcessBuilder;
-    //   254: pop
-    //   255: new 60	java/lang/StringBuilder
-    //   258: dup
-    //   259: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   262: ldc 106
-    //   264: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: aload 12
-    //   269: aload 12
-    //   271: invokeinterface 110 1 0
-    //   276: iconst_1
-    //   277: isub
-    //   278: invokeinterface 100 2 0
-    //   283: checkcast 76	java/lang/String
-    //   286: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   289: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   292: invokestatic 47	anus:a	(Ljava/lang/String;)V
-    //   295: aload 10
-    //   297: invokevirtual 114	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
-    //   300: astore 13
-    //   302: aload 13
-    //   304: invokevirtual 120	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   307: astore_0
-    //   308: new 122	java/io/InputStreamReader
-    //   311: dup
-    //   312: aload_0
-    //   313: invokespecial 125	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   316: astore_1
-    //   317: new 127	java/io/BufferedReader
-    //   320: dup
-    //   321: aload_1
-    //   322: invokespecial 130	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   325: astore 12
-    //   327: aload 12
-    //   329: astore 11
-    //   331: aload_1
-    //   332: astore 10
-    //   334: aload_0
-    //   335: astore 9
-    //   337: aload 13
-    //   339: invokevirtual 133	java/lang/Process:waitFor	()I
-    //   342: pop
-    //   343: aload 12
-    //   345: astore 11
-    //   347: aload_1
-    //   348: astore 10
-    //   350: aload_0
-    //   351: astore 9
-    //   353: aload 13
-    //   355: invokevirtual 136	java/lang/Process:exitValue	()I
-    //   358: istore 4
-    //   360: aload 12
-    //   362: astore 11
-    //   364: aload_1
-    //   365: astore 10
-    //   367: aload_0
-    //   368: astore 9
-    //   370: new 60	java/lang/StringBuilder
-    //   373: dup
-    //   374: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   377: ldc 138
-    //   379: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   382: iload 4
-    //   384: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   387: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   390: invokestatic 47	anus:a	(Ljava/lang/String;)V
-    //   393: aload 12
-    //   395: astore 11
-    //   397: aload_1
-    //   398: astore 10
-    //   400: aload_0
-    //   401: astore 9
-    //   403: aload 12
-    //   405: invokevirtual 144	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   408: astore 14
-    //   410: aload 14
-    //   412: ifnull +218 -> 630
-    //   415: aload 12
-    //   417: astore 11
-    //   419: aload_1
-    //   420: astore 10
-    //   422: aload_0
-    //   423: astore 9
-    //   425: new 60	java/lang/StringBuilder
-    //   428: dup
-    //   429: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   432: ldc 146
-    //   434: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   437: aload 14
-    //   439: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   442: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   445: invokestatic 47	anus:a	(Ljava/lang/String;)V
-    //   448: goto -55 -> 393
-    //   451: astore 13
-    //   453: sipush -1001
-    //   456: istore 4
-    //   458: aload 12
-    //   460: astore 11
-    //   462: aload_1
-    //   463: astore 10
-    //   465: aload_0
-    //   466: astore 9
-    //   468: aload 13
-    //   470: invokevirtual 149	java/io/IOException:printStackTrace	()V
-    //   473: aload 12
-    //   475: astore 11
-    //   477: aload_1
-    //   478: astore 10
-    //   480: aload_0
-    //   481: astore 9
-    //   483: new 60	java/lang/StringBuilder
-    //   486: dup
-    //   487: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   490: ldc 151
-    //   492: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   495: aload 13
-    //   497: invokevirtual 152	java/io/IOException:toString	()Ljava/lang/String;
-    //   500: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   503: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   506: invokestatic 47	anus:a	(Ljava/lang/String;)V
-    //   509: aload_0
-    //   510: ifnull +7 -> 517
-    //   513: aload_0
-    //   514: invokevirtual 157	java/io/InputStream:close	()V
-    //   517: aload_1
-    //   518: ifnull +7 -> 525
-    //   521: aload_1
-    //   522: invokevirtual 158	java/io/InputStreamReader:close	()V
-    //   525: iload 4
-    //   527: istore_3
-    //   528: aload 12
-    //   530: ifnull +11 -> 541
-    //   533: aload 12
-    //   535: invokevirtual 159	java/io/BufferedReader:close	()V
-    //   538: iload 4
-    //   540: istore_3
-    //   541: invokestatic 18	java/lang/System:currentTimeMillis	()J
-    //   544: lstore 7
-    //   546: new 60	java/lang/StringBuilder
-    //   549: dup
-    //   550: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   553: ldc 161
-    //   555: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   558: lload 7
-    //   560: lload 5
-    //   562: lsub
-    //   563: invokevirtual 164	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   566: ldc 166
-    //   568: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   571: iload_3
-    //   572: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   575: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   578: invokestatic 47	anus:a	(Ljava/lang/String;)V
-    //   581: iload_3
-    //   582: ifeq +46 -> 628
-    //   585: new 168	java/io/File
-    //   588: dup
-    //   589: aload_2
-    //   590: invokespecial 170	java/io/File:<init>	(Ljava/lang/String;)V
-    //   593: astore_0
-    //   594: aload_0
-    //   595: invokevirtual 174	java/io/File:exists	()Z
-    //   598: ifeq +30 -> 628
-    //   601: aload_0
-    //   602: invokevirtual 177	java/io/File:delete	()Z
-    //   605: pop
-    //   606: new 60	java/lang/StringBuilder
-    //   609: dup
-    //   610: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   613: ldc 179
-    //   615: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   618: iload_3
-    //   619: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   622: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   625: invokestatic 47	anus:a	(Ljava/lang/String;)V
-    //   628: iload_3
-    //   629: ireturn
-    //   630: aload 12
-    //   632: astore 11
-    //   634: aload_1
-    //   635: astore 10
-    //   637: aload_0
-    //   638: astore 9
-    //   640: aload 13
-    //   642: invokevirtual 182	java/lang/Process:destroy	()V
-    //   645: aload 12
-    //   647: astore 11
-    //   649: aload_1
-    //   650: astore 10
-    //   652: aload_0
-    //   653: astore 9
-    //   655: ldc 184
-    //   657: invokestatic 47	anus:a	(Ljava/lang/String;)V
-    //   660: aload_0
-    //   661: ifnull +7 -> 668
-    //   664: aload_0
-    //   665: invokevirtual 157	java/io/InputStream:close	()V
-    //   668: aload_1
-    //   669: ifnull +7 -> 676
-    //   672: aload_1
-    //   673: invokevirtual 158	java/io/InputStreamReader:close	()V
-    //   676: iload 4
-    //   678: istore_3
-    //   679: aload 12
-    //   681: ifnull -140 -> 541
-    //   684: aload 12
-    //   686: invokevirtual 159	java/io/BufferedReader:close	()V
-    //   689: iload 4
-    //   691: istore_3
-    //   692: goto -151 -> 541
-    //   695: astore_0
-    //   696: iload 4
-    //   698: istore_3
-    //   699: goto -158 -> 541
-    //   702: astore 13
-    //   704: aconst_null
-    //   705: astore 12
-    //   707: aconst_null
-    //   708: astore_1
-    //   709: aconst_null
-    //   710: astore_0
-    //   711: sipush -1002
-    //   714: istore 4
-    //   716: aload 12
-    //   718: astore 11
-    //   720: aload_1
-    //   721: astore 10
-    //   723: aload_0
-    //   724: astore 9
-    //   726: aload 13
-    //   728: invokevirtual 185	java/lang/InterruptedException:printStackTrace	()V
-    //   731: aload 12
-    //   733: astore 11
-    //   735: aload_1
-    //   736: astore 10
-    //   738: aload_0
-    //   739: astore 9
-    //   741: new 60	java/lang/StringBuilder
-    //   744: dup
-    //   745: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   748: ldc 187
-    //   750: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   753: aload 13
-    //   755: invokevirtual 188	java/lang/InterruptedException:toString	()Ljava/lang/String;
-    //   758: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   761: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   764: invokestatic 47	anus:a	(Ljava/lang/String;)V
-    //   767: aload_0
-    //   768: ifnull +7 -> 775
-    //   771: aload_0
-    //   772: invokevirtual 157	java/io/InputStream:close	()V
-    //   775: aload_1
-    //   776: ifnull +7 -> 783
-    //   779: aload_1
-    //   780: invokevirtual 158	java/io/InputStreamReader:close	()V
-    //   783: iload 4
-    //   785: istore_3
-    //   786: aload 12
-    //   788: ifnull -247 -> 541
-    //   791: aload 12
-    //   793: invokevirtual 159	java/io/BufferedReader:close	()V
-    //   796: iload 4
-    //   798: istore_3
-    //   799: goto -258 -> 541
-    //   802: astore_0
-    //   803: iload 4
-    //   805: istore_3
-    //   806: goto -265 -> 541
-    //   809: astore 13
-    //   811: aconst_null
-    //   812: astore 12
-    //   814: aconst_null
-    //   815: astore_1
-    //   816: aconst_null
-    //   817: astore_0
-    //   818: sipush -1003
-    //   821: istore 4
-    //   823: aload 12
-    //   825: astore 11
-    //   827: aload_1
-    //   828: astore 10
-    //   830: aload_0
-    //   831: astore 9
-    //   833: aload 13
-    //   835: invokevirtual 189	java/lang/Exception:printStackTrace	()V
-    //   838: aload 12
-    //   840: astore 11
-    //   842: aload_1
-    //   843: astore 10
-    //   845: aload_0
-    //   846: astore 9
-    //   848: new 60	java/lang/StringBuilder
-    //   851: dup
-    //   852: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   855: ldc 191
-    //   857: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   860: aload 13
-    //   862: invokevirtual 192	java/lang/Exception:toString	()Ljava/lang/String;
-    //   865: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   868: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   871: invokestatic 47	anus:a	(Ljava/lang/String;)V
-    //   874: aload_0
-    //   875: ifnull +7 -> 882
-    //   878: aload_0
-    //   879: invokevirtual 157	java/io/InputStream:close	()V
-    //   882: aload_1
-    //   883: ifnull +7 -> 890
-    //   886: aload_1
-    //   887: invokevirtual 158	java/io/InputStreamReader:close	()V
-    //   890: iload 4
-    //   892: istore_3
-    //   893: aload 12
-    //   895: ifnull -354 -> 541
-    //   898: aload 12
-    //   900: invokevirtual 159	java/io/BufferedReader:close	()V
-    //   903: iload 4
-    //   905: istore_3
-    //   906: goto -365 -> 541
-    //   909: astore_0
-    //   910: iload 4
-    //   912: istore_3
-    //   913: goto -372 -> 541
-    //   916: astore_2
-    //   917: aconst_null
-    //   918: astore_1
-    //   919: aconst_null
-    //   920: astore_0
-    //   921: aload_0
-    //   922: ifnull +7 -> 929
-    //   925: aload_0
-    //   926: invokevirtual 157	java/io/InputStream:close	()V
-    //   929: aload_1
-    //   930: ifnull +7 -> 937
-    //   933: aload_1
-    //   934: invokevirtual 158	java/io/InputStreamReader:close	()V
-    //   937: aload 11
-    //   939: ifnull +8 -> 947
-    //   942: aload 11
-    //   944: invokevirtual 159	java/io/BufferedReader:close	()V
-    //   947: aload_2
-    //   948: athrow
-    //   949: astore_0
-    //   950: iload_3
-    //   951: ireturn
-    //   952: astore_0
-    //   953: goto -6 -> 947
-    //   956: astore_2
-    //   957: aconst_null
-    //   958: astore_1
-    //   959: goto -38 -> 921
-    //   962: astore_2
-    //   963: goto -42 -> 921
-    //   966: astore_2
-    //   967: aload 10
-    //   969: astore_1
-    //   970: aload 9
-    //   972: astore_0
-    //   973: goto -52 -> 921
-    //   976: astore 13
-    //   978: aconst_null
-    //   979: astore 12
-    //   981: aconst_null
-    //   982: astore_1
-    //   983: goto -165 -> 818
-    //   986: astore 13
-    //   988: aconst_null
-    //   989: astore 12
-    //   991: goto -173 -> 818
-    //   994: astore 13
-    //   996: goto -178 -> 818
-    //   999: astore 13
-    //   1001: aconst_null
-    //   1002: astore 12
-    //   1004: aconst_null
-    //   1005: astore_1
-    //   1006: goto -295 -> 711
-    //   1009: astore 13
-    //   1011: aconst_null
-    //   1012: astore 12
-    //   1014: goto -303 -> 711
-    //   1017: astore 13
-    //   1019: goto -308 -> 711
-    //   1022: astore_0
-    //   1023: iload 4
-    //   1025: istore_3
-    //   1026: goto -485 -> 541
-    //   1029: astore 13
-    //   1031: aconst_null
-    //   1032: astore 12
-    //   1034: aconst_null
-    //   1035: astore_1
-    //   1036: aconst_null
-    //   1037: astore_0
-    //   1038: goto -585 -> 453
-    //   1041: astore 13
-    //   1043: aconst_null
-    //   1044: astore 12
-    //   1046: aconst_null
-    //   1047: astore_1
-    //   1048: goto -595 -> 453
-    //   1051: astore 13
-    //   1053: aconst_null
-    //   1054: astore 12
-    //   1056: goto -603 -> 453
+    //   0: aload_3
+    //   1: ifnull +252 -> 253
+    //   4: aload_2
+    //   5: invokevirtual 133	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   8: ifeq +245 -> 253
+    //   11: new 253	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   14: dup
+    //   15: invokespecial 254	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   18: astore_3
+    //   19: aload_3
+    //   20: aload_2
+    //   21: invokevirtual 212	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   24: invokevirtual 255	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   27: pop
+    //   28: aload_3
+    //   29: getfield 259	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   32: invokevirtual 262	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   35: ifeq +218 -> 253
+    //   38: new 264	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody
+    //   41: dup
+    //   42: invokespecial 265	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody:<init>	()V
+    //   45: astore_2
+    //   46: aload_2
+    //   47: aload_3
+    //   48: getfield 259	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   51: invokevirtual 268	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   54: invokevirtual 273	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   57: invokevirtual 274	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   60: pop
+    //   61: aload_2
+    //   62: getfield 278	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody:msg_dm_head	Ltencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead;
+    //   65: invokevirtual 281	tencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead:has	()Z
+    //   68: ifeq +185 -> 253
+    //   71: aload_2
+    //   72: getfield 278	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody:msg_dm_head	Ltencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead;
+    //   75: astore_2
+    //   76: aload_2
+    //   77: getfield 284	tencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   80: invokevirtual 75	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   83: ifeq +170 -> 253
+    //   86: aload_2
+    //   87: getfield 284	tencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   90: invokevirtual 78	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   93: istore 4
+    //   95: iload 4
+    //   97: ifne +156 -> 253
+    //   100: new 150	android/os/Bundle
+    //   103: dup
+    //   104: invokespecial 151	android/os/Bundle:<init>	()V
+    //   107: astore_3
+    //   108: aload_1
+    //   109: getfield 290	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   112: getstatic 296	com/tencent/mobileqq/activity/AuthDevRenameActivity:i	Ljava/lang/String;
+    //   115: invokevirtual 300	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   118: istore 4
+    //   120: aload_3
+    //   121: getstatic 296	com/tencent/mobileqq/activity/AuthDevRenameActivity:i	Ljava/lang/String;
+    //   124: iload 4
+    //   126: invokevirtual 160	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   129: aload_1
+    //   130: getfield 290	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   133: getstatic 303	com/tencent/mobileqq/activity/AuthDevRenameActivity:f	Ljava/lang/String;
+    //   136: invokevirtual 307	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   139: astore_2
+    //   140: aload_3
+    //   141: getstatic 303	com/tencent/mobileqq/activity/AuthDevRenameActivity:f	Ljava/lang/String;
+    //   144: aload_2
+    //   145: invokevirtual 169	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   148: aload_1
+    //   149: getfield 290	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   152: getstatic 310	com/tencent/mobileqq/activity/AuthDevRenameActivity:h	Ljava/lang/String;
+    //   155: invokevirtual 314	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   158: astore_1
+    //   159: aload_3
+    //   160: getstatic 310	com/tencent/mobileqq/activity/AuthDevRenameActivity:h	Ljava/lang/String;
+    //   163: aload_1
+    //   164: invokevirtual 318	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
+    //   167: iconst_1
+    //   168: istore 6
+    //   170: aload_0
+    //   171: iconst_4
+    //   172: iload 6
+    //   174: aload_3
+    //   175: invokevirtual 137	anus:notifyUI	(IZLjava/lang/Object;)V
+    //   178: return
+    //   179: astore_2
+    //   180: iconst_0
+    //   181: istore 5
+    //   183: aconst_null
+    //   184: astore_1
+    //   185: aload_1
+    //   186: astore_3
+    //   187: iload 5
+    //   189: istore 6
+    //   191: invokestatic 20	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   194: ifeq -24 -> 170
+    //   197: ldc 22
+    //   199: iconst_2
+    //   200: new 191	java/lang/StringBuilder
+    //   203: dup
+    //   204: invokespecial 192	java/lang/StringBuilder:<init>	()V
+    //   207: ldc_w 320
+    //   210: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   213: aload_2
+    //   214: invokevirtual 201	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   217: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   223: invokestatic 28	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   226: aload_1
+    //   227: astore_3
+    //   228: iload 5
+    //   230: istore 6
+    //   232: goto -62 -> 170
+    //   235: astore_2
+    //   236: aconst_null
+    //   237: astore_1
+    //   238: iconst_1
+    //   239: istore 5
+    //   241: goto -56 -> 185
+    //   244: astore_2
+    //   245: iconst_1
+    //   246: istore 5
+    //   248: aload_3
+    //   249: astore_1
+    //   250: goto -65 -> 185
+    //   253: iconst_0
+    //   254: istore 6
+    //   256: aconst_null
+    //   257: astore_3
+    //   258: goto -88 -> 170
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1059	0	paramContext	Context
-    //   0	1059	1	paramString1	String
-    //   0	1059	2	paramString2	String
-    //   0	1059	3	paramInt1	int
-    //   0	1059	4	paramInt2	int
-    //   6	555	5	l1	long
-    //   544	15	7	l2	long
-    //   15	956	9	localObject1	Object
-    //   113	855	10	localObject2	Object
-    //   1	942	11	localObject3	Object
-    //   129	926	12	localObject4	Object
-    //   300	54	13	localProcess	java.lang.Process
-    //   451	190	13	localIOException1	java.io.IOException
-    //   702	52	13	localInterruptedException1	java.lang.InterruptedException
-    //   809	52	13	localException1	java.lang.Exception
-    //   976	1	13	localException2	java.lang.Exception
-    //   986	1	13	localException3	java.lang.Exception
-    //   994	1	13	localException4	java.lang.Exception
-    //   999	1	13	localInterruptedException2	java.lang.InterruptedException
-    //   1009	1	13	localInterruptedException3	java.lang.InterruptedException
-    //   1017	1	13	localInterruptedException4	java.lang.InterruptedException
-    //   1029	1	13	localIOException2	java.io.IOException
-    //   1041	1	13	localIOException3	java.io.IOException
-    //   1051	1	13	localIOException4	java.io.IOException
-    //   408	30	14	str	String
+    //   0	261	0	this	anus
+    //   0	261	1	paramToServiceMsg	ToServiceMsg
+    //   0	261	2	paramFromServiceMsg	FromServiceMsg
+    //   0	261	3	paramObject	Object
+    //   93	32	4	i	int
+    //   181	66	5	bool1	boolean
+    //   168	87	6	bool2	boolean
     // Exception table:
     //   from	to	target	type
-    //   337	343	451	java/io/IOException
-    //   353	360	451	java/io/IOException
-    //   370	393	451	java/io/IOException
-    //   403	410	451	java/io/IOException
-    //   425	448	451	java/io/IOException
-    //   640	645	451	java/io/IOException
-    //   655	660	451	java/io/IOException
-    //   664	668	695	java/io/IOException
-    //   672	676	695	java/io/IOException
-    //   684	689	695	java/io/IOException
-    //   102	194	702	java/lang/InterruptedException
-    //   202	213	702	java/lang/InterruptedException
-    //   220	308	702	java/lang/InterruptedException
-    //   771	775	802	java/io/IOException
-    //   779	783	802	java/io/IOException
-    //   791	796	802	java/io/IOException
-    //   102	194	809	java/lang/Exception
-    //   202	213	809	java/lang/Exception
-    //   220	308	809	java/lang/Exception
-    //   878	882	909	java/io/IOException
-    //   886	890	909	java/io/IOException
-    //   898	903	909	java/io/IOException
-    //   102	194	916	finally
-    //   202	213	916	finally
-    //   220	308	916	finally
-    //   585	628	949	java/lang/Exception
-    //   925	929	952	java/io/IOException
-    //   933	937	952	java/io/IOException
-    //   942	947	952	java/io/IOException
-    //   308	317	956	finally
-    //   317	327	962	finally
-    //   337	343	966	finally
-    //   353	360	966	finally
-    //   370	393	966	finally
-    //   403	410	966	finally
-    //   425	448	966	finally
-    //   468	473	966	finally
-    //   483	509	966	finally
-    //   640	645	966	finally
-    //   655	660	966	finally
-    //   726	731	966	finally
-    //   741	767	966	finally
-    //   833	838	966	finally
-    //   848	874	966	finally
-    //   308	317	976	java/lang/Exception
-    //   317	327	986	java/lang/Exception
-    //   337	343	994	java/lang/Exception
-    //   353	360	994	java/lang/Exception
-    //   370	393	994	java/lang/Exception
-    //   403	410	994	java/lang/Exception
-    //   425	448	994	java/lang/Exception
-    //   640	645	994	java/lang/Exception
-    //   655	660	994	java/lang/Exception
-    //   308	317	999	java/lang/InterruptedException
-    //   317	327	1009	java/lang/InterruptedException
-    //   337	343	1017	java/lang/InterruptedException
-    //   353	360	1017	java/lang/InterruptedException
-    //   370	393	1017	java/lang/InterruptedException
-    //   403	410	1017	java/lang/InterruptedException
-    //   425	448	1017	java/lang/InterruptedException
-    //   640	645	1017	java/lang/InterruptedException
-    //   655	660	1017	java/lang/InterruptedException
-    //   513	517	1022	java/io/IOException
-    //   521	525	1022	java/io/IOException
-    //   533	538	1022	java/io/IOException
-    //   102	194	1029	java/io/IOException
-    //   202	213	1029	java/io/IOException
-    //   220	308	1029	java/io/IOException
-    //   308	317	1041	java/io/IOException
-    //   317	327	1051	java/io/IOException
+    //   4	95	179	java/lang/Exception
+    //   100	108	235	java/lang/Exception
+    //   108	167	244	java/lang/Exception
   }
   
-  public static int a(String paramString1, String paramString2, int paramInt, Context paramContext)
+  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return a(paramString1, paramString2, paramInt, paramContext, 25);
-  }
-  
-  public static int a(String paramString1, String paramString2, int paramInt1, Context paramContext, int paramInt2)
-  {
-    long l1 = System.currentTimeMillis();
-    int i = -1;
-    if (ShortVideoTrimmer.a(paramContext, 0, 0))
+    int i = 0;
+    paramToServiceMsg = null;
+    Oidb_0x6de.PhoneInfo localPhoneInfo = null;
+    if (paramObject != null) {}
+    for (;;)
     {
-      azlf localazlf = ShortVideoTrimmer.a(paramString1);
-      localazlf.c = paramInt1;
-      localazlf.d = paramInt1;
-      if (QLog.isColorLevel()) {
-        QLog.i("DynamicUtils", 2, "CompressTask, step: Try to compress using ShortVideoTrimmer.compressVideo");
-      }
-      paramInt1 = a(paramContext, paramString1, paramString2, paramInt1, paramInt2);
-      long l2 = System.currentTimeMillis();
-      i = paramInt1;
-      if (paramInt1 == 0)
+      try
       {
-        long l3 = new File(paramString1).length();
-        long l4 = new File(paramString2).length();
-        i = paramInt1;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("DynamicUtils", 2, "CompressTask，step: ShortVideoTrimmer compress ret = " + paramInt1 + ", cost:" + (l2 - l1) + "ms, fileSourceSize=" + l3 + ", fileTargetSize=" + l4);
-          i = paramInt1;
+        if (!paramFromServiceMsg.isSuccess()) {
+          break label589;
         }
+        paramObject = new oidb_sso.OIDBSSOPkg();
+        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        if (!paramObject.bytes_bodybuffer.has()) {
+          break label589;
+        }
+        paramFromServiceMsg = new Oidb_0x6de.RspBody();
+        paramFromServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
+        if (!paramFromServiceMsg.uint32_result.has()) {
+          break label589;
+        }
+        int j = paramFromServiceMsg.uint32_result.get();
+        if (j != 0) {
+          break label606;
+        }
+        bool1 = true;
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        bool1 = false;
+        paramToServiceMsg = localPhoneInfo;
+        continue;
+      }
+      try
+      {
+        paramToServiceMsg = new Bundle();
+        try
+        {
+          if (paramFromServiceMsg.uint32_src.has()) {
+            paramToServiceMsg.putInt("src", paramFromServiceMsg.uint32_src.get());
+          }
+          if (paramFromServiceMsg.str_country_code.has()) {
+            paramToServiceMsg.putString("country_code", paramFromServiceMsg.str_country_code.get());
+          }
+          if (paramFromServiceMsg.str_binding_phone.has()) {
+            paramToServiceMsg.putString("phone", paramFromServiceMsg.str_binding_phone.get());
+          }
+          if (paramFromServiceMsg.uint32_binding_time.has()) {
+            paramToServiceMsg.putInt("binding_time", paramFromServiceMsg.uint32_binding_time.get());
+          }
+          if (paramFromServiceMsg.uint32_need_unify.has()) {
+            paramToServiceMsg.putInt("need_unify", paramFromServiceMsg.uint32_need_unify.get());
+          }
+          if (paramFromServiceMsg.uint32_phone_type.has()) {
+            paramToServiceMsg.putInt("phone_type", paramFromServiceMsg.uint32_phone_type.get());
+          }
+          if (!paramFromServiceMsg.phone_info.has()) {
+            continue;
+          }
+          paramObject = new Bundle[paramFromServiceMsg.phone_info.size()];
+          if (i >= paramFromServiceMsg.phone_info.size()) {
+            continue;
+          }
+          localPhoneInfo = (Oidb_0x6de.PhoneInfo)paramFromServiceMsg.phone_info.get(i);
+          if (localPhoneInfo == null) {
+            break label597;
+          }
+          Bundle localBundle = new Bundle();
+          if (localPhoneInfo.uint32_type.has()) {
+            localBundle.putInt("phone_type", localPhoneInfo.uint32_type.get());
+          }
+          if (localPhoneInfo.str_country_code.has()) {
+            localBundle.putString("country_code", localPhoneInfo.str_country_code.get());
+          }
+          if (localPhoneInfo.str_phone.has()) {
+            localBundle.putString("phone", localPhoneInfo.str_phone.get());
+          }
+          if (localPhoneInfo.uint32_bu_status.has()) {
+            localBundle.putInt("status", localPhoneInfo.uint32_bu_status.get());
+          }
+          paramObject[i] = localBundle;
+        }
+        catch (Exception paramFromServiceMsg) {}
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        paramToServiceMsg = localPhoneInfo;
+        continue;
+      }
+      paramObject = paramToServiceMsg;
+      boolean bool2 = bool1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("SecSvcHandler", 2, "onGetPhoneBindInfo error:" + paramFromServiceMsg.getMessage());
+        bool2 = bool1;
+        paramObject = paramToServiceMsg;
+      }
+      notifyUI(5, bool2, paramObject);
+      return;
+      paramToServiceMsg.putParcelableArray("phone_info", paramObject);
+      if (paramFromServiceMsg.bytes_skip_url.has()) {
+        paramToServiceMsg.putString("skip_url", paramFromServiceMsg.bytes_skip_url.get().toStringUtf8());
+      }
+      if (paramFromServiceMsg.bytes_vas_result.has()) {
+        paramToServiceMsg.putByteArray("vaskey", paramFromServiceMsg.bytes_vas_result.get().toByteArray());
+      }
+      ((ajby)this.app.getManager(102)).a(paramToServiceMsg);
+      paramObject = paramToServiceMsg;
+      bool2 = bool1;
+      continue;
+      label589:
+      bool2 = false;
+      paramObject = paramToServiceMsg;
+      continue;
+      label597:
+      i += 1;
+      continue;
+      label606:
+      boolean bool1 = false;
+    }
+  }
+  
+  private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int j = 0;
+    paramToServiceMsg = null;
+    Oidb_0x6df.PhoneInfo localPhoneInfo = null;
+    if (paramObject != null) {}
+    for (;;)
+    {
+      try
+      {
+        if (!paramFromServiceMsg.isSuccess()) {
+          break label622;
+        }
+        paramObject = new oidb_sso.OIDBSSOPkg();
+        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        if (!paramObject.uint32_result.has()) {
+          break label639;
+        }
+        i = paramObject.uint32_result.get();
+        if (!paramObject.bytes_bodybuffer.has()) {
+          break label622;
+        }
+        paramFromServiceMsg = new Oidb_0x6df.RspBody();
+        paramFromServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
+        if (!paramFromServiceMsg.uint32_result.has()) {
+          break label622;
+        }
+        int k = paramFromServiceMsg.uint32_result.get();
+        if (k != 0) {
+          break label645;
+        }
+        bool1 = true;
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        bool1 = false;
+        paramToServiceMsg = localPhoneInfo;
+        continue;
+      }
+      try
+      {
+        paramToServiceMsg = new Bundle();
+        try
+        {
+          paramToServiceMsg.putInt("sso_result", i);
+          if (paramFromServiceMsg.uint32_src.has()) {
+            paramToServiceMsg.putInt("src", paramFromServiceMsg.uint32_src.get());
+          }
+          if (paramFromServiceMsg.str_country_code.has()) {
+            paramToServiceMsg.putString("country_code", paramFromServiceMsg.str_country_code.get());
+          }
+          if (paramFromServiceMsg.str_binding_phone.has()) {
+            paramToServiceMsg.putString("phone", paramFromServiceMsg.str_binding_phone.get());
+          }
+          if (paramFromServiceMsg.uint32_binding_time.has()) {
+            paramToServiceMsg.putInt("binding_time", paramFromServiceMsg.uint32_binding_time.get());
+          }
+          if (paramFromServiceMsg.uint32_need_unify.has()) {
+            paramToServiceMsg.putInt("need_unify", paramFromServiceMsg.uint32_need_unify.get());
+          }
+          if (paramFromServiceMsg.uint32_phone_type.has()) {
+            paramToServiceMsg.putInt("phone_type", paramFromServiceMsg.uint32_phone_type.get());
+          }
+          if (!paramFromServiceMsg.phone_info.has()) {
+            continue;
+          }
+          paramObject = new Bundle[paramFromServiceMsg.phone_info.size()];
+          i = j;
+          if (i >= paramFromServiceMsg.phone_info.size()) {
+            continue;
+          }
+          localPhoneInfo = (Oidb_0x6df.PhoneInfo)paramFromServiceMsg.phone_info.get(i);
+          if (localPhoneInfo == null) {
+            break label630;
+          }
+          Bundle localBundle = new Bundle();
+          if (localPhoneInfo.uint32_type.has()) {
+            localBundle.putInt("phone_type", localPhoneInfo.uint32_type.get());
+          }
+          if (localPhoneInfo.str_country_code.has()) {
+            localBundle.putString("country_code", localPhoneInfo.str_country_code.get());
+          }
+          if (localPhoneInfo.str_phone.has()) {
+            localBundle.putString("phone", localPhoneInfo.str_phone.get());
+          }
+          if (localPhoneInfo.uint32_bu_status.has()) {
+            localBundle.putInt("status", localPhoneInfo.uint32_bu_status.get());
+          }
+          paramObject[i] = localBundle;
+        }
+        catch (Exception paramFromServiceMsg) {}
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        paramToServiceMsg = localPhoneInfo;
+        continue;
+      }
+      paramObject = paramToServiceMsg;
+      boolean bool2 = bool1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("SecSvcHandler", 2, "onSetPhoneBindInfo error:" + paramFromServiceMsg.getMessage());
+        bool2 = bool1;
+        paramObject = paramToServiceMsg;
+      }
+      notifyUI(6, bool2, paramObject);
+      return;
+      paramToServiceMsg.putParcelableArray("phone_info", paramObject);
+      if (paramFromServiceMsg.bytes_skip_url.has()) {
+        paramToServiceMsg.putString("skip_url", paramFromServiceMsg.bytes_skip_url.get().toStringUtf8());
+      }
+      if (paramFromServiceMsg.bytes_vas_result.has()) {
+        paramToServiceMsg.putByteArray("vaskey", paramFromServiceMsg.bytes_vas_result.get().toByteArray());
+      }
+      ((ajby)this.app.getManager(102)).a(paramToServiceMsg);
+      paramObject = paramToServiceMsg;
+      bool2 = bool1;
+      continue;
+      label622:
+      bool2 = false;
+      paramObject = paramToServiceMsg;
+      continue;
+      label630:
+      i += 1;
+      continue;
+      label639:
+      int i = -1;
+      continue;
+      label645:
+      boolean bool1 = false;
+    }
+  }
+  
+  private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool1 = false;
+    boolean bool3 = false;
+    boolean bool4 = false;
+    if (paramObject != null) {}
+    for (;;)
+    {
+      try
+      {
+        if (!paramFromServiceMsg.isSuccess()) {
+          break label212;
+        }
+        paramObject = new oidb_sso.OIDBSSOPkg();
+        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        paramFromServiceMsg = new Bundle();
+        bool2 = bool3;
+        paramToServiceMsg = paramFromServiceMsg;
+      }
+      catch (Exception paramObject)
+      {
+        try
+        {
+          if (paramObject.uint32_result.has())
+          {
+            bool1 = bool4;
+            bool2 = bool3;
+            if (paramObject.uint32_result.get() == 0) {
+              bool1 = true;
+            }
+            bool2 = bool1;
+            paramFromServiceMsg.putInt("ret_code", paramObject.uint32_result.get());
+          }
+          paramToServiceMsg = paramFromServiceMsg;
+          bool2 = bool1;
+        }
+        catch (Exception paramObject)
+        {
+          for (;;)
+          {
+            bool1 = bool2;
+          }
+        }
+        try
+        {
+          if (paramObject.str_error_msg.has())
+          {
+            paramFromServiceMsg.putString("err_msg", paramObject.str_error_msg.get());
+            bool2 = bool1;
+            paramToServiceMsg = paramFromServiceMsg;
+          }
+          notifyUI(7, bool2, paramToServiceMsg);
+          return;
+        }
+        catch (Exception paramObject)
+        {
+          break label150;
+        }
+        paramObject = paramObject;
+        paramFromServiceMsg = null;
+        bool1 = false;
+      }
+      label150:
+      boolean bool2 = bool1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("SecSvcHandler", 2, "onBindPhoneNumLogin error:" + paramObject.getMessage());
+        paramToServiceMsg = paramFromServiceMsg;
+        bool2 = bool1;
+        continue;
+        label212:
+        paramToServiceMsg = null;
+        bool2 = false;
       }
     }
-    return i;
   }
   
-  public static Bitmap a(int paramInt1, int paramInt2, int paramInt3)
+  private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
+    boolean bool1 = false;
+    boolean bool3 = false;
+    boolean bool4 = false;
+    if (paramObject != null) {}
+    for (;;)
+    {
+      try
+      {
+        if (!paramFromServiceMsg.isSuccess()) {
+          break label212;
+        }
+        paramObject = new oidb_sso.OIDBSSOPkg();
+        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        paramFromServiceMsg = new Bundle();
+        bool2 = bool3;
+        paramToServiceMsg = paramFromServiceMsg;
+      }
+      catch (Exception paramObject)
+      {
+        try
+        {
+          if (paramObject.uint32_result.has())
+          {
+            bool1 = bool4;
+            bool2 = bool3;
+            if (paramObject.uint32_result.get() == 0) {
+              bool1 = true;
+            }
+            bool2 = bool1;
+            paramFromServiceMsg.putInt("ret_code", paramObject.uint32_result.get());
+          }
+          paramToServiceMsg = paramFromServiceMsg;
+          bool2 = bool1;
+        }
+        catch (Exception paramObject)
+        {
+          for (;;)
+          {
+            bool1 = bool2;
+          }
+        }
+        try
+        {
+          if (paramObject.str_error_msg.has())
+          {
+            paramFromServiceMsg.putString("err_msg", paramObject.str_error_msg.get());
+            bool2 = bool1;
+            paramToServiceMsg = paramFromServiceMsg;
+          }
+          notifyUI(8, bool2, paramToServiceMsg);
+          return;
+        }
+        catch (Exception paramObject)
+        {
+          break label150;
+        }
+        paramObject = paramObject;
+        paramFromServiceMsg = null;
+        bool1 = false;
+      }
+      label150:
+      boolean bool2 = bool1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("SecSvcHandler", 2, "onUnbindPhoneNumLogin error:" + paramObject.getMessage());
+        paramToServiceMsg = paramFromServiceMsg;
+        bool2 = bool1;
+        continue;
+        label212:
+        paramToServiceMsg = null;
+        bool2 = false;
+      }
+    }
+  }
+  
+  private void i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramObject != null) && (paramFromServiceMsg.isSuccess())) {}
     try
     {
-      Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_4444);
-      if (localBitmap != null)
-      {
-        Paint localPaint = new Paint(7);
-        localBitmap.eraseColor(0);
-        Canvas localCanvas = new Canvas(localBitmap);
-        Rect localRect = new Rect(0, 0, paramInt1, paramInt2);
-        localPaint.setColor(Color.parseColor("#38000000"));
-        localCanvas.drawRect(localRect, localPaint);
-        localPaint.setColor(0);
-        localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-        localCanvas.drawCircle(paramInt1 * 0.5F, paramInt2 * 0.5F, paramInt3, localPaint);
-      }
-      return localBitmap;
+      d.e(3, d.x(), paramFromServiceMsg.getWupBuffer());
+      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    catch (Throwable paramToServiceMsg)
+    {
+      paramToServiceMsg.printStackTrace();
+    }
+  }
+  
+  private void j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
+    {
+      QLog.e("SecSvcHandler", 1, String.format("[SFU] onQQProtectUpdate failed, FromServiceMsg: %s", new Object[] { paramFromServiceMsg.getStringForLog() }));
+      return;
+    }
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SecSvcHandler", 2, "[SFU] Received reply from server.");
+      }
+      ((bkda)this.app.getManager(194)).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      QLog.e("SecSvcHandler", 2, "[SFU] onQQProtectUpdate error:" + paramToServiceMsg.getMessage());
+    }
+  }
+  
+  public void a()
+  {
+    wx_msg_opt.ReqBody localReqBody = new wx_msg_opt.ReqBody();
+    localReqBody.uint64_uin.set(this.app.getLongAccountUin());
+    localReqBody.uint32_cmd.set(1);
+    Object localObject = localReqBody.uint32_seq;
+    int i = this.a;
+    this.a = (i + 1);
+    ((PBUInt32Field)localObject).set(i);
+    localReqBody.uint32_opt.set(1);
+    localObject = createToServiceMsg("DevLockAuthSvc.WxMsgOpt");
+    ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  {
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new Oidb_0x6de.DevInfo();
+      }
+      catch (Exception localException1)
+      {
+        Object localObject2;
+        Object localObject4;
+        int i;
+        label206:
+        localObject1 = null;
+      }
+      for (;;)
+      {
+        try
+        {
+          localObject2 = this.app.getApplication().getApplicationContext();
+          ((Oidb_0x6de.DevInfo)localObject1).uint32_appid.set(AppSetting.a());
+          ((Oidb_0x6de.DevInfo)localObject1).bytes_imei.set(ByteStringMicro.copyFromUtf8(bgln.a()));
+          ((Oidb_0x6de.DevInfo)localObject1).bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
+          localObject4 = Settings.Secure.getString(((Context)localObject2).getContentResolver(), "android_id");
+          if (!TextUtils.isEmpty((CharSequence)localObject4)) {
+            ((Oidb_0x6de.DevInfo)localObject1).bytes_androidid.set(ByteStringMicro.copyFromUtf8((String)localObject4));
+          }
+          localObject4 = ((Oidb_0x6de.DevInfo)localObject1).uint32_wifi;
+          if (Apn.getApnType((Context)localObject2) == 3)
+          {
+            i = 1;
+            ((PBUInt32Field)localObject4).set(i);
+            localObject2 = localObject1;
+          }
+        }
+        catch (Exception localException2)
+        {
+          Object localObject3;
+          continue;
+        }
+        try
+        {
+          localObject1 = new Oidb_0x6de.ReqBody();
+        }
+        catch (Exception paramString2)
+        {
+          paramString1 = null;
+          paramString2.printStackTrace();
+          break label206;
+        }
+      }
+      try
+      {
+        ((Oidb_0x6de.ReqBody)localObject1).uint32_src.set(paramInt1);
+        ((Oidb_0x6de.ReqBody)localObject1).uint32_phone_type.set(paramInt2);
+        if (!TextUtils.isEmpty(paramString1)) {
+          ((Oidb_0x6de.ReqBody)localObject1).str_country_code.set(paramString1);
+        }
+        if (!TextUtils.isEmpty(paramString2)) {
+          ((Oidb_0x6de.ReqBody)localObject1).str_phone.set(paramString2);
+        }
+        paramString1 = (String)localObject1;
+        if (localObject2 != null)
+        {
+          ((Oidb_0x6de.ReqBody)localObject1).dev_info.set((MessageMicro)localObject2);
+          paramString1 = (String)localObject1;
+        }
+        paramString2 = new oidb_sso.OIDBSSOPkg();
+        paramString2.uint32_command.set(1758);
+        paramString2.uint32_service_type.set(0);
+        paramString2.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramString1.toByteArray()));
+        paramString1 = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "OidbSvc.0x6de");
+        paramString1.putWupBuffer(paramString2.toByteArray());
+        sendPbReq(paramString1);
+        return;
+      }
+      catch (Exception paramString2)
+      {
+        paramString1 = (String)localObject1;
+        break;
+      }
+      i = 0;
+      continue;
+      localException1.printStackTrace();
+      localObject3 = localObject1;
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new Oidb_0x6df.DevInfo();
+      }
+      catch (Exception localException1)
+      {
+        Object localObject2;
+        Object localObject4;
+        int i;
+        label195:
+        localObject1 = null;
+      }
+      for (;;)
+      {
+        try
+        {
+          localObject2 = this.app.getApplication().getApplicationContext();
+          ((Oidb_0x6df.DevInfo)localObject1).uint32_appid.set(AppSetting.a());
+          ((Oidb_0x6df.DevInfo)localObject1).bytes_imei.set(ByteStringMicro.copyFromUtf8(bgln.a()));
+          ((Oidb_0x6df.DevInfo)localObject1).bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
+          localObject4 = Settings.Secure.getString(((Context)localObject2).getContentResolver(), "android_id");
+          if (!TextUtils.isEmpty((CharSequence)localObject4)) {
+            ((Oidb_0x6df.DevInfo)localObject1).bytes_androidid.set(ByteStringMicro.copyFromUtf8((String)localObject4));
+          }
+          localObject4 = ((Oidb_0x6df.DevInfo)localObject1).uint32_wifi;
+          if (Apn.getApnType((Context)localObject2) == 3)
+          {
+            i = 1;
+            ((PBUInt32Field)localObject4).set(i);
+            localObject2 = localObject1;
+          }
+        }
+        catch (Exception localException2)
+        {
+          Object localObject3;
+          continue;
+        }
+        try
+        {
+          localObject1 = new Oidb_0x6df.ReqBody();
+        }
+        catch (Exception paramString2)
+        {
+          paramString1 = null;
+          paramString2.printStackTrace();
+          break label195;
+        }
+      }
+      try
+      {
+        ((Oidb_0x6df.ReqBody)localObject1).uint32_src.set(paramInt);
+        if (!TextUtils.isEmpty(paramString1)) {
+          ((Oidb_0x6df.ReqBody)localObject1).str_country_code.set(paramString1);
+        }
+        if (!TextUtils.isEmpty(paramString2)) {
+          ((Oidb_0x6df.ReqBody)localObject1).str_phone.set(paramString2);
+        }
+        paramString1 = (String)localObject1;
+        if (localObject2 != null)
+        {
+          ((Oidb_0x6df.ReqBody)localObject1).dev_info.set((MessageMicro)localObject2);
+          paramString1 = (String)localObject1;
+        }
+        paramString2 = new oidb_sso.OIDBSSOPkg();
+        paramString2.uint32_command.set(1759);
+        paramString2.uint32_service_type.set(0);
+        paramString2.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramString1.toByteArray()));
+        paramString1 = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "OidbSvc.0x6df");
+        paramString1.putWupBuffer(paramString2.toByteArray());
+        sendPbReq(paramString1);
+        return;
+      }
+      catch (Exception paramString2)
+      {
+        paramString1 = (String)localObject1;
+        break;
+      }
+      i = 0;
+      continue;
+      localException1.printStackTrace();
+      localObject3 = localObject1;
+    }
+  }
+  
+  public void a(long paramLong, byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SecSvcHandler", 2, "SecSvcHandler onReceivePushMessage subMsgTye = " + Integer.toHexString((int)paramLong));
+    }
+    switch ((int)paramLong)
+    {
+    }
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        try
+        {
+          paramArrayOfByte = (SubMsgType0xc6.MsgBody)new SubMsgType0xc6.MsgBody().mergeFrom(paramArrayOfByte);
+          i = paramArrayOfByte.uint32_sec_cmd.get();
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("SecSvcHandler", 2, "SecSvcHandler onReceivePushMessage SecCmd = " + i);
+        }
+        catch (Exception paramArrayOfByte)
+        {
+          return;
+        }
+      } while (!paramArrayOfByte.msg_s2c_account_exception_notify.has());
+      a(i, (SubMsgType0xc6.AccountExceptionAlertBody)paramArrayOfByte.msg_s2c_account_exception_notify.get());
+      return;
+      try
+      {
+        ((bkda)this.app.getManager(194)).b(i);
+        return;
+      }
+      catch (Exception paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("SecSvcHandler", 2, "onQQProtectUpdate error:" + paramArrayOfByte.getMessage());
+    return;
+    switch (i)
+    {
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    Object localObject1 = paramBundle.getString(AuthDevRenameActivity.a);
+    Object localObject2 = paramBundle.getString(AuthDevRenameActivity.b);
+    long l3 = paramBundle.getLong(AuthDevRenameActivity.c);
+    long l4 = paramBundle.getLong(AuthDevRenameActivity.d);
+    byte[] arrayOfByte2 = paramBundle.getByteArray(AuthDevRenameActivity.e);
+    String str = paramBundle.getString(AuthDevRenameActivity.f);
+    byte[] arrayOfByte1 = paramBundle.getByteArray(AuthDevRenameActivity.h);
+    int i = paramBundle.getInt(AuthDevRenameActivity.i);
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong((String)localObject1);
+      l1 = l2;
+    }
+    catch (Throwable paramBundle)
     {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("qqBaseActivity", 2, localOutOfMemoryError.getMessage(), localOutOfMemoryError);
-        }
-        Object localObject = null;
+        Oidb_0x614.ReNameDeviceNameReqBody localReNameDeviceNameReqBody;
+        paramBundle.printStackTrace();
       }
     }
+    paramBundle = new Oidb_0x614.DeviceManageHead();
+    paramBundle.uint32_cmd.set(0);
+    paramBundle.uint32_result.set(0);
+    paramBundle.uint64_uin.set(l1);
+    paramBundle.bytes_guid.set(ByteStringMicro.copyFrom(arrayOfByte2));
+    paramBundle.uint32_appid.set((int)l3);
+    paramBundle.uint32_subappid.set((int)l4);
+    paramBundle.bytes_appname.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+    localReNameDeviceNameReqBody = new Oidb_0x614.ReNameDeviceNameReqBody();
+    localReNameDeviceNameReqBody.bytes_guid.set(ByteStringMicro.copyFrom(arrayOfByte2));
+    localReNameDeviceNameReqBody.uint32_appid.set((int)l3);
+    localReNameDeviceNameReqBody.uint32_subappid.set((int)l4);
+    localReNameDeviceNameReqBody.bytes_appname.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+    localReNameDeviceNameReqBody.bytes_device_des.set(ByteStringMicro.copyFrom(arrayOfByte1));
+    localReNameDeviceNameReqBody.bytes_rename_device_name.set(ByteStringMicro.copyFromUtf8(str));
+    localObject2 = new Oidb_0x614.ReqBody();
+    ((Oidb_0x614.ReqBody)localObject2).msg_dm_head.set(paramBundle);
+    ((Oidb_0x614.ReqBody)localObject2).msg_mdn_req_body.set(localReNameDeviceNameReqBody);
+    paramBundle = new oidb_sso.OIDBSSOPkg();
+    paramBundle.uint32_command.set(1556);
+    paramBundle.uint32_service_type.set(1);
+    paramBundle.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((Oidb_0x614.ReqBody)localObject2).toByteArray()));
+    localObject1 = new ToServiceMsg("mobileqq.service", (String)localObject1, "OidbSvc.0x614_1");
+    ((ToServiceMsg)localObject1).putWupBuffer(paramBundle.toByteArray());
+    ((ToServiceMsg)localObject1).extraData.putLong(AuthDevRenameActivity.a, l1);
+    ((ToServiceMsg)localObject1).extraData.putString(AuthDevRenameActivity.f, str);
+    ((ToServiceMsg)localObject1).extraData.putByteArray(AuthDevRenameActivity.h, arrayOfByte1);
+    ((ToServiceMsg)localObject1).extraData.putInt(AuthDevRenameActivity.i, i);
+    sendPbReq((ToServiceMsg)localObject1);
   }
   
-  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
-  {
-    Bitmap localBitmap2 = null;
-    Bitmap localBitmap1 = null;
-    if (paramBitmap == null) {
-      paramBitmap = localBitmap1;
-    }
-    do
-    {
-      return paramBitmap;
-      localBitmap1 = localBitmap2;
-      try
-      {
-        localBitmap2 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.RGB_565);
-        localBitmap1 = localBitmap2;
-        Canvas localCanvas = new Canvas(localBitmap2);
-        localBitmap1 = localBitmap2;
-        Paint localPaint = new Paint(6);
-        localBitmap1 = localBitmap2;
-        localCanvas.drawBitmap(paramBitmap, null, new Rect(0, 0, paramInt1, paramInt2), localPaint);
-        return localBitmap2;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        paramBitmap = localBitmap1;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("qqBaseActivity", 2, localOutOfMemoryError.getMessage(), localOutOfMemoryError);
-    return localBitmap1;
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    String str2 = null;
-    String str1 = str2;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      File localFile = new File(paramString);
-      str1 = str2;
-      if (localFile != null)
-      {
-        str1 = str2;
-        if (localFile.exists())
-        {
-          str2 = localFile.getParent() + "/dynamicAvatar_" + paramInt + "_" + System.currentTimeMillis() + ".mp4";
-          str1 = str2;
-          if (QLog.isColorLevel())
-          {
-            QLog.i("DynamicUtils", 2, "getDynamicAvatarCompressPath: sourcePath=" + paramString + "/n compressPath=" + str2);
-            str1 = str2;
-          }
-        }
-      }
-    }
-    return str1;
-  }
-  
-  public static void a(AppInterface paramAppInterface, String paramString, int paramInt)
-  {
-    ThreadManager.post(new DynamicUtils.1(paramAppInterface, paramString, paramInt), 2, null, true);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    bayk localbayk = new bayk();
-    localbayk.jdField_a_of_type_Boolean = true;
-    localbayk.i = paramString;
-    localbayk.jdField_a_of_type_Long = System.currentTimeMillis();
-    localbayk.b = 48;
-    paramQQAppInterface.a().a(localbayk);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    bayk localbayk = new bayk();
-    localbayk.jdField_a_of_type_Boolean = true;
-    localbayk.i = paramString;
-    localbayk.jdField_a_of_type_Long = System.currentTimeMillis();
-    localbayk.b = paramInt1;
-    paramString = new lnb();
-    paramString.a(paramInt2);
-    paramString.a(paramInt3);
-    localbayk.jdField_a_of_type_ArrayOfByte = paramString.a();
-    paramQQAppInterface.a().a(localbayk);
-  }
-  
-  private static void a(String paramString)
+  public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("DynamicUtils", 2, paramString);
+      QLog.d("SecSvcHandler", 2, "getAntiFraudConfig");
     }
-  }
-  
-  public static boolean a(long paramLong1, long paramLong2)
-  {
-    boolean bool = true;
-    if ((paramLong1 <= 0L) || (paramLong2 <= 0L)) {
-      bool = false;
-    }
-    Calendar localCalendar1;
-    Calendar localCalendar2;
-    do
+    get_config.ReqBody localReqBody = new get_config.ReqBody();
+    localReqBody.u64_uin.set(this.app.getLongAccountUin());
+    localReqBody.u32_appid.set(AppSetting.a());
+    localReqBody.u32_proto_version.set(1);
+    PBUInt32Field localPBUInt32Field = localReqBody.u32_seq;
+    int i = this.a;
+    this.a = (i + 1);
+    localPBUInt32Field.set(i);
+    localReqBody.str_config_name.set(paramString);
+    paramString = bgke.a().a(paramString, "Version");
+    int j = 0;
+    i = j;
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
     {
-      return bool;
-      localCalendar1 = Calendar.getInstance(TimeZone.getTimeZone("GMT+08"));
-      localCalendar1.setTimeInMillis(paramLong1);
-      localCalendar2 = Calendar.getInstance(TimeZone.getTimeZone("GMT+08"));
-      localCalendar2.setTimeInMillis(paramLong2);
-    } while ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6)));
-    return false;
-  }
-  
-  private static String[] a(String paramString1, String paramString2, azlf paramazlf)
-  {
-    String str1 = "1";
-    if (ShortVideoTrimmer.a() >= 2) {
-      str1 = "2";
+      i = Integer.parseInt(paramString);
+      localReqBody.u32_config_version.set(i);
+      paramString = createToServiceMsg("SecuritySvc.GetConfig");
+      paramString.putWupBuffer(localReqBody.toByteArray());
+      sendPbReq(paramString);
+      return;
     }
-    String str2 = paramazlf.c + "x" + String.valueOf(paramazlf.d);
-    a("[@] generateCommand threads=" + str1 + "  resolution=" + str2);
-    return new String[] { "-d", "-y", "-threads", str1, "-copyts", "-copytb", "0", "-i", paramString1, "-metadata:s", "rotate=" + paramazlf.a, "-acodec", "aac", "-vcodec", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-profile:v", "High", "-level", "1.3", "-minrate", "300k", "-maxrate", "600k", "-bufsize", "800k", "-qmin", "1", "-qmax", String.valueOf(paramazlf.e), "-qdiff", "3", "-bf", "3", "-coder", "1", "-refs", "1", "-s", str2, "-movflags", "faststart", paramString2 };
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        i = j;
+      }
+    }
   }
   
-  public static void b(AppInterface paramAppInterface, String paramString, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramAppInterface.reportClickEvent("dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("SecSvcHandler", 2, "setWXSyncQQMsgOption");
+    }
+    wx_msg_opt.ReqBody localReqBody = new wx_msg_opt.ReqBody();
+    localReqBody.uint64_uin.set(this.app.getLongAccountUin());
+    localReqBody.uint32_cmd.set(2);
+    Object localObject = localReqBody.uint32_seq;
+    int j = this.a;
+    this.a = (j + 1);
+    ((PBUInt32Field)localObject).set(j);
+    localObject = localReqBody.uint32_opt;
+    if (paramBoolean) {
+      i = 1;
+    }
+    ((PBUInt32Field)localObject).set(i);
+    localObject = createToServiceMsg("DevLockAuthSvc.WxMsgOpt");
+    ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null)
+    {
+      notifyUI(7, false, null);
+      return;
+    }
+    Object localObject = ByteBuffer.allocate(paramArrayOfByte.length + 19);
+    ((ByteBuffer)localObject).putShort((short)3);
+    ((ByteBuffer)localObject).putInt((int)this.app.getLongAccountUin());
+    ((ByteBuffer)localObject).put((byte)paramArrayOfByte.length);
+    ((ByteBuffer)localObject).put(paramArrayOfByte);
+    ((ByteBuffer)localObject).putShort((short)2);
+    ((ByteBuffer)localObject).putShort((short)1);
+    ((ByteBuffer)localObject).putShort((short)1);
+    ((ByteBuffer)localObject).put((byte)0);
+    ((ByteBuffer)localObject).putShort((short)2);
+    ((ByteBuffer)localObject).putShort((short)1);
+    ((ByteBuffer)localObject).put((byte)1);
+    paramArrayOfByte = new oidb_sso.OIDBSSOPkg();
+    paramArrayOfByte.uint32_command.set(2579);
+    paramArrayOfByte.uint32_service_type.set(16);
+    paramArrayOfByte.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject).array()));
+    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "OidbSvc.0xa13");
+    ((ToServiceMsg)localObject).putWupBuffer(paramArrayOfByte.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void b()
+  {
+    device_lock_query_status.ReqBody localReqBody = new device_lock_query_status.ReqBody();
+    Object localObject = localReqBody.u32_seq;
+    int i = this.a;
+    this.a = (i + 1);
+    ((PBUInt32Field)localObject).set(i);
+    localReqBody.u32_sys_type.set(1);
+    localReqBody.u32_app_id.set(AppSetting.a());
+    localObject = createToServiceMsg("DevLockSecSvc.DevLockQuery");
+    ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void b(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null)
+    {
+      notifyUI(8, false, Integer.valueOf(-1));
+      return;
+    }
+    Object localObject = ByteBuffer.allocate(paramArrayOfByte.length + 7);
+    ((ByteBuffer)localObject).putShort((short)3);
+    ((ByteBuffer)localObject).putInt((int)this.app.getLongAccountUin());
+    ((ByteBuffer)localObject).put((byte)paramArrayOfByte.length);
+    ((ByteBuffer)localObject).put(paramArrayOfByte);
+    paramArrayOfByte = new oidb_sso.OIDBSSOPkg();
+    paramArrayOfByte.uint32_command.set(1197);
+    paramArrayOfByte.uint32_service_type.set(11);
+    paramArrayOfByte.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject).array()));
+    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "OidbSvc.0x4ad");
+    ((ToServiceMsg)localObject).putWupBuffer(paramArrayOfByte.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return anut.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if (str.equalsIgnoreCase("SecuritySvc.GetConfig"))
+    {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str.equalsIgnoreCase("DevLockAuthSvc.WxMsgOpt"))
+    {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str.equalsIgnoreCase("DevLockSecSvc.DevLockQuery"))
+    {
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str.equalsIgnoreCase("OidbSvc.0x614_1"))
+    {
+      d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str.equalsIgnoreCase("OidbSvc.0x6de"))
+    {
+      e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str.equalsIgnoreCase("OidbSvc.0x6df"))
+    {
+      f(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str.equalsIgnoreCase("OidbSvc.0xa13"))
+    {
+      g(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str.equalsIgnoreCase("OidbSvc.0x4ad"))
+    {
+      h(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str.equalsIgnoreCase("MamonoSvc.Pa"))
+    {
+      i(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (str.equalsIgnoreCase("MobileQQprotect.QPUpdate"))
+    {
+      j(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    bkct.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

@@ -4,11 +4,14 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.SparseArray;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import com.tencent.pts.core.PTSAppInstance;
+import com.tencent.pts.ui.vnode.PTSNodeView;
 import com.tencent.pts.ui.vnode.PTSNodeVirtual;
 import com.tencent.pts.utils.PTSAnimationUtil.AnimationInfo;
 import com.tencent.pts.utils.PTSLog;
 import com.tencent.pts.utils.PTSTimeCostUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -192,23 +195,62 @@ public class PTSRecyclerViewAdapter
     bindNodeInfo(paramPTSViewHolder, localPTSNodeInfo, this.mAppInstance);
     PTSLog.d("PTSRecyclerViewAdapter", "[onBindViewHolder] position = " + paramInt + ", nodeInfo = " + localPTSNodeInfo);
     PTSTimeCostUtil.end("[onBindViewHolder], position = " + paramInt);
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramPTSViewHolder, paramInt, getItemId(paramInt));
   }
   
   @NonNull
   public PTSRecyclerViewAdapter.PTSViewHolder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
     PTSTimeCostUtil.start("[onCreateViewHolder], viewType = " + paramInt);
-    Object localObject = (PTSNodeInfo)this.mViewTypeToNodeInfoMap.get(paramInt);
-    if (localObject == null) {
-      throw new IllegalArgumentException("[onCreateViewHolder], no this viewType.");
+    Object localObject1 = (PTSNodeInfo)this.mViewTypeToNodeInfoMap.get(paramInt);
+    if (localObject1 == null)
+    {
+      PTSLog.e("PTSRecyclerViewAdapter", "[onCreateViewHolder], no this viewType.");
+      if (PTSLog.isDebug()) {
+        throw new IllegalArgumentException("[onCreateViewHolder], no this viewType.");
+      }
     }
-    paramViewGroup = new HashMap();
-    localObject = PTSNodeFactory.buildVirtualNodeBFS((PTSNodeInfo)localObject, this.mAppInstance, paramViewGroup);
-    if (localObject == null) {
-      throw new IllegalArgumentException("[onCreateViewHolder], create null parent node.");
+    HashMap localHashMap = new HashMap();
+    Object localObject4 = PTSNodeFactory.buildVirtualNodeBFS((PTSNodeInfo)localObject1, this.mAppInstance, localHashMap);
+    localObject1 = localObject4;
+    if (localObject4 == null)
+    {
+      PTSLog.e("PTSRecyclerViewAdapter", "[onCreateViewHolder], create null parent node.");
+      if (PTSLog.isDebug()) {
+        throw new IllegalArgumentException("[onCreateViewHolder], create null parent node.");
+      }
+      localObject1 = new PTSNodeView(this.mAppInstance);
     }
     PTSTimeCostUtil.end("[onCreateViewHolder], viewType = " + paramInt);
-    return new PTSRecyclerViewAdapter.PTSViewHolder((PTSNodeVirtual)localObject, paramViewGroup);
+    try
+    {
+      localObject1 = new PTSRecyclerViewAdapter.PTSViewHolder((PTSNodeVirtual)localObject1, localHashMap);
+      localObject4 = localObject1;
+      if (localObject1 == null)
+      {
+        paramViewGroup = new FrameLayout(paramViewGroup.getContext());
+        paramViewGroup.setVisibility(8);
+        localObject4 = new PTSRecyclerViewAdapter.PTSViewHolder(paramViewGroup);
+        PTSLog.i("PTSRecyclerViewAdapter", "[onCreateViewHolder], use empty container.");
+      }
+      return localObject4;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      for (;;)
+      {
+        PTSLog.e("PTSRecyclerViewAdapter", "[onCreateViewHolder], viewType = " + paramInt + ", e = " + localIllegalArgumentException);
+        Object localObject2 = null;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        PTSLog.e("PTSRecyclerViewAdapter", "[onCreateViewHolder], viewType = " + paramInt + ", e = " + localException);
+        Object localObject3 = null;
+      }
+    }
   }
   
   public void onLayoutTempPatchFinished()
@@ -246,7 +288,7 @@ public class PTSRecyclerViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.PTSRecyclerViewAdapter
  * JD-Core Version:    0.7.0.1
  */

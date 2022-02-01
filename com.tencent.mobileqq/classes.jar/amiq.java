@@ -1,7 +1,14 @@
-public class amiq {}
+public abstract interface amiq
+{
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void b(long paramLong);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amiq
  * JD-Core Version:    0.7.0.1
  */

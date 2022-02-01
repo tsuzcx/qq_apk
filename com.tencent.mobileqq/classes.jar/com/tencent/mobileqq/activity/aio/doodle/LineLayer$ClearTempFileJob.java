@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import alof;
-import bdhb;
+import anhk;
+import bgmg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class LineLayer$ClearTempFileJob
   implements Runnable
 {
-  public final String a = alof.cm + "temp" + File.separator;
+  public final String a = anhk.cp + "temp" + File.separator;
   
   public LineLayer$ClearTempFileJob(LineLayer paramLineLayer) {}
   
@@ -16,7 +16,7 @@ class LineLayer$ClearTempFileJob
   {
     try
     {
-      bdhb.a(this.a, true);
+      bgmg.a(this.a, true);
       return;
     }
     catch (Exception localException)
@@ -27,7 +27,7 @@ class LineLayer$ClearTempFileJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.LineLayer.ClearTempFileJob
  * JD-Core Version:    0.7.0.1
  */

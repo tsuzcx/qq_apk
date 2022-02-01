@@ -1,53 +1,52 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.lang.ref.WeakReference;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class wag
-  extends QQUIEventReceiver<wad, vtr>
+class wag
+  extends RecyclerView.Adapter<wah>
 {
-  private WeakReference<vzk> a;
+  public List<FeedCloudMeta.StTagInfo> a;
   
-  public wag(@NonNull wad paramwad)
+  private wag(wae paramwae)
   {
-    super(paramwad);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(vzk paramvzk)
+  public wah a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.a = new WeakReference(paramvzk);
+    return new wah(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560704, paramViewGroup, false));
   }
   
-  public void a(@NonNull wad paramwad, @NonNull vtr paramvtr)
+  public void a(List<FeedCloudMeta.StTagInfo> paramList)
   {
-    if (paramvtr.jdField_a_of_type_Boolean) {
-      if ((paramvtr.jdField_a_of_type_JavaLangString != null) && (this.a != null))
-      {
-        paramwad = (vzk)this.a.get();
-        if (paramwad != null) {
-          paramwad.b(paramvtr.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        wxe.e(this.TAG, "StoryVideoDownloadResultReceiver, onEvent download failed, vid:%s", new Object[] { paramvtr.jdField_a_of_type_JavaLangString });
-      } while (this.a == null);
-      paramwad = (vzk)this.a.get();
-    } while (paramwad == null);
-    paramwad.d();
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
   }
   
-  public Class acceptEventClass()
+  public void a(wah paramwah, int paramInt)
   {
-    return vtr.class;
+    paramwah.a((FeedCloudMeta.StTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramwah, paramInt, getItemId(paramInt));
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wag
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,6 @@ package com.tencent.mobileqq.highway.config;
 
 import android.content.Context;
 import android.os.SystemClock;
-import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.iplearning.IpLearning;
 import com.tencent.mobileqq.highway.iplearning.IpLearningImpl;
 import com.tencent.mobileqq.highway.utils.BdhLogUtil;
@@ -1354,14 +1353,14 @@ public class IpContainer
       paramAppRuntime = readDiskOrCreateNew(paramContext, this.mFileName);
     }
     finally {}
-    boolean bool2;
-    boolean bool1;
     if ((paramHwConfig != null) && (paramHwConfig.ipList != null) && (!paramHwConfig.ipList.isEmpty()))
     {
       insertOrReplace(paramContext, paramAppRuntime.mIpList, paramHwConfig.ipList, false);
       insertOrReplace(paramContext, this.mCfg.mIpList, paramHwConfig.ipList, true);
-      bool2 = true;
-      bool1 = bool2;
+    }
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      boolean bool1 = bool2;
       if (paramHwConfig != null)
       {
         bool1 = bool2;
@@ -1372,19 +1371,10 @@ public class IpContainer
           {
             insertOrReplace(paramContext, paramAppRuntime.mIpv6List, paramHwConfig.ipv6List, false);
             insertOrReplace(paramContext, this.mCfg.mIpv6List, paramHwConfig.ipv6List, true);
-            if (paramConfigManager == null) {
-              break label438;
-            }
-            paramConfigManager.mIpv6Available.clearIpv6Available(paramContext);
-            if (paramConfigManager.getHwEngine() == null) {
-              break label438;
-            }
-            paramConfigManager.getHwEngine().preConnect();
-            break label438;
+            bool1 = true;
           }
         }
       }
-      label236:
       bool2 = bool1;
       if (paramHwConfig != null)
       {
@@ -1402,18 +1392,11 @@ public class IpContainer
             {
               insertOrReplace(paramContext, paramAppRuntime.mIpv6List, paramHwConfig.ipv6List, false);
               insertOrReplace(paramContext, this.mCfg.mIpv6List, paramHwConfig.ipv6List, true);
-              if (paramConfigManager == null) {
-                break label444;
-              }
-              paramConfigManager.mIpv6Available.clearIpv6Available(paramContext);
-              break label444;
+              bool2 = true;
             }
           }
         }
       }
-    }
-    for (;;)
-    {
       bool1 = bool2;
       if (paramHwConfig != null)
       {
@@ -1435,13 +1418,6 @@ public class IpContainer
         write2disk(paramContext, this.mFileName, paramAppRuntime);
       }
       return bool1;
-      bool2 = false;
-      break;
-      label438:
-      bool1 = true;
-      break label236;
-      label444:
-      bool2 = true;
     }
   }
   
@@ -1561,7 +1537,7 @@ public class IpContainer
     //   34: getfield 34	com/tencent/mobileqq/highway/config/IpContainer:mCfg	Lcom/tencent/mobileqq/highway/config/IpContainer$PersistentConfig;
     //   37: getfield 245	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpv6List	Ljava/util/concurrent/ConcurrentHashMap;
     //   40: aload_1
-    //   41: invokevirtual 480	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   41: invokevirtual 460	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   44: checkcast 38	java/util/ArrayList
     //   47: astore_1
     //   48: aload_1
@@ -1582,7 +1558,7 @@ public class IpContainer
     //   73: getfield 34	com/tencent/mobileqq/highway/config/IpContainer:mCfg	Lcom/tencent/mobileqq/highway/config/IpContainer$PersistentConfig;
     //   76: getfield 242	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpList	Ljava/util/concurrent/ConcurrentHashMap;
     //   79: aload_1
-    //   80: invokevirtual 480	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   80: invokevirtual 460	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   83: checkcast 38	java/util/ArrayList
     //   86: astore_1
     //   87: goto -39 -> 48
@@ -1632,7 +1608,7 @@ public class IpContainer
     //   37: getfield 34	com/tencent/mobileqq/highway/config/IpContainer:mCfg	Lcom/tencent/mobileqq/highway/config/IpContainer$PersistentConfig;
     //   40: getfield 245	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpv6List	Ljava/util/concurrent/ConcurrentHashMap;
     //   43: aload_1
-    //   44: invokevirtual 480	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   44: invokevirtual 460	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   47: checkcast 38	java/util/ArrayList
     //   50: astore_1
     //   51: aload_1
@@ -1650,7 +1626,7 @@ public class IpContainer
     //   69: getfield 34	com/tencent/mobileqq/highway/config/IpContainer:mCfg	Lcom/tencent/mobileqq/highway/config/IpContainer$PersistentConfig;
     //   72: getfield 242	com/tencent/mobileqq/highway/config/IpContainer$PersistentConfig:mIpList	Ljava/util/concurrent/ConcurrentHashMap;
     //   75: aload_1
-    //   76: invokevirtual 480	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   76: invokevirtual 460	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   79: checkcast 38	java/util/ArrayList
     //   82: astore_1
     //   83: goto -32 -> 51

@@ -1,17 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
 
-public class bkpx
+public abstract interface bkpx
 {
-  public static bmet a(@NonNull bmey parambmey)
-  {
-    return new bmet(parambmey, bmeu.a(BaseApplicationImpl.getApplication()));
-  }
-  
-  public static bmet a(@NonNull bmey parambmey, bmev parambmev)
-  {
-    return new bmet(parambmey, parambmev);
-  }
+  public abstract boolean a(String paramString, Bundle paramBundle);
 }
 
 

@@ -1,6 +1,20 @@
-public abstract interface bfaz
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class bfaz
+  implements View.OnClickListener
 {
-  public abstract void a(Object paramObject1, Object paramObject2);
+  public bfaz(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    bkft.b(paramView);
+    this.a.getActivity().doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,76 +1,82 @@
-import android.util.Log;
-import com.tencent.aekit.openrender.internal.Frame;
-import java.util.List;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.view.MotionEvent;
+import android.widget.TextView;
 
 public class ltn
+  extends LinkMovementMethod
 {
-  private int jdField_a_of_type_Int;
-  public Frame a;
-  private String jdField_a_of_type_JavaLangString = "RefFrame-" + Integer.toHexString(hashCode());
-  public List<lto> a;
+  private static ltn a;
+  public int a;
+  public int b = -7447805;
   
-  private ltn(Frame paramFrame)
+  public ltn()
   {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = paramFrame;
+    this.jdField_a_of_type_Int = -10864125;
   }
   
-  private ltn(Frame paramFrame, List<lto> paramList)
+  static int a(TextView paramTextView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = paramFrame;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public static ltn a(Frame paramFrame)
-  {
-    return new ltn(paramFrame);
-  }
-  
-  public static ltn a(Frame paramFrame, List<lto> paramList)
-  {
-    return new ltn(paramFrame, paramList);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.unlock();
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      b();
-      return;
+    paramTextView = paramTextView.getTag(paramInt1);
+    if ((paramTextView instanceof Integer)) {
+      paramInt2 = ((Integer)paramTextView).intValue();
     }
-    b(1);
+    return paramInt2;
   }
   
-  public void a(int paramInt)
+  public static MovementMethod a()
   {
-    this.jdField_a_of_type_Int += paramInt;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty());
-  }
-  
-  void b(int paramInt)
-  {
-    if (paramInt > this.jdField_a_of_type_Int) {
-      Log.e(this.jdField_a_of_type_JavaLangString, "unlock: count=" + paramInt + ", ref=" + this.jdField_a_of_type_Int);
+    if (jdField_a_of_type_Ltn == null) {
+      jdField_a_of_type_Ltn = new ltn();
     }
-    do
+    return jdField_a_of_type_Ltn;
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
     {
-      return;
-      this.jdField_a_of_type_Int -= paramInt;
-    } while (this.jdField_a_of_type_Int != 0);
-    b();
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      Object localObject = paramTextView.getLayout();
+      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
+      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (localObject.length != 0)
+      {
+        if (i == 1)
+        {
+          i = a(paramTextView, 2131378263, this.b);
+          localObject[0].onClick(paramTextView);
+          paramSpannable.setSpan(new ForegroundColorSpan(i), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+        }
+        for (;;)
+        {
+          return true;
+          if (i == 0)
+          {
+            paramSpannable.setSpan(new ForegroundColorSpan(a(paramTextView, 2131378262, this.jdField_a_of_type_Int)), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+            Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
+          }
+        }
+      }
+      Selection.removeSelection(paramSpannable);
+    }
+    return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ltn
  * JD-Core Version:    0.7.0.1
  */

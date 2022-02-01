@@ -1,22 +1,17 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import alud;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
 
 class GameActivity$20
   implements Runnable
 {
-  GameActivity$20(GameActivity paramGameActivity, String paramString, long paramLong) {}
+  GameActivity$20(GameActivity paramGameActivity) {}
   
-  public void run()
-  {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131705407) + this.val$errMsg, 1).a();
-  }
+  public void run() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.20
  * JD-Core Version:    0.7.0.1
  */

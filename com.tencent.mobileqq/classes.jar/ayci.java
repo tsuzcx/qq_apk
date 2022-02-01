@@ -1,20 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import kotlin.Metadata;
 
-public class ayci
-  implements DialogInterface.OnClickListener
-{
-  public ayci(SignTextEditFragment paramSignTextEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.a.clear();
-    SignTextEditFragment.a(this.a);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/KanDianJumpScheme$Companion;", "", "()V", "KAN_DIAN_SUB_ID", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayci {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

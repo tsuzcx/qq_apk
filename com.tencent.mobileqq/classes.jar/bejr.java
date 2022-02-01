@@ -1,40 +1,30 @@
-import android.os.MessageQueue.IdleHandler;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bejr
-  implements MessageQueue.IdleHandler
+public class bejr
+  implements View.OnClickListener
 {
-  bejr(bejq parambejq) {}
+  public bejr(TroopBarPublishActivity.16 param16) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    Object localObject;
-    int i;
-    if (!bejq.a().isEmpty())
+    Intent localIntent = new Intent();
+    localIntent.putExtra("path", this.a.a);
+    PublicFragmentActivity.a(this.a.this$0, localIntent, TribeVideoPreviewFragment.class);
+    this.a.this$0.overridePendingTransition(2130772331, 2130772332);
+    if ((this.a.this$0.b != null) && (this.a.this$0.b.getVisibility() == 0)) {}
+    for (int i = 2;; i = 1)
     {
-      localObject = (bejt)bejq.a().remove(0);
-      i = ((bejt)localObject).a();
-      if (2 == i) {
-        bejq.a().add(localObject);
-      }
-    }
-    else
-    {
-      label38:
-      localObject = this.a;
-      if (bejq.a().isEmpty()) {
-        break label75;
-      }
-    }
-    label75:
-    for (boolean bool = true;; bool = false)
-    {
-      ((bejq)localObject).a = bool;
-      return this.a.a;
-      if (1 != i) {
-        break;
-      }
-      break label38;
+      bcst.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_full_screen", i, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.dating;
 
-import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,17 +12,19 @@ import android.view.View.OnClickListener;
 import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azqs;
-import bayu;
-import bdhb;
-import bdhk;
-import bdib;
+import anni;
+import bcst;
+import bdzx;
+import bgmg;
+import bgmp;
+import bgng;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.struct.AdData;
 import com.tencent.mobileqq.widget.CarrierADView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.BorderTextView;
 import com.tencent.widget.SingleLineTextView;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ import mqq.os.MqqHandler;
 public class CarrierHelper
   implements View.OnClickListener
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { alud.a(2131701843), alud.a(2131701846), alud.a(2131701849), alud.a(2131701847), alud.a(2131701844), alud.a(2131701843), alud.a(2131701848) };
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { anni.a(2131700263), anni.a(2131700266), anni.a(2131700269), anni.a(2131700267), anni.a(2131700264), anni.a(2131700263), anni.a(2131700268) };
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
@@ -133,16 +134,16 @@ public class CarrierHelper
   
   public void a(View paramView, AdData paramAdData)
   {
-    Object localObject = (ImageView)paramView.findViewById(2131362015);
-    BorderTextView localBorderTextView = (BorderTextView)paramView.findViewById(2131362032);
-    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131362050);
-    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131362031);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131361973);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131361975);
-    View localView = paramView.findViewById(2131364018);
+    Object localObject = (ImageView)paramView.findViewById(2131362072);
+    BorderTextView localBorderTextView = (BorderTextView)paramView.findViewById(2131362089);
+    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131362109);
+    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131362088);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131362031);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131362033);
+    View localView = paramView.findViewById(2131364219);
     localBorderTextView.setTextSize(1, 11.0F);
     localBorderTextView.setBorderWidth(Math.round(localBorderTextView.getResources().getDisplayMetrics().density * 1.0F));
-    ((ImageView)localObject).setImageDrawable(bayu.a(paramAdData.img_url));
+    ((ImageView)localObject).setImageDrawable(bdzx.a(paramAdData.img_url));
     int i;
     if ((paramAdData.wording != null) && (paramAdData.wording.length() > 0))
     {
@@ -172,7 +173,7 @@ public class CarrierHelper
       paramView.setContentDescription((CharSequence)localObject);
       localView.setContentDescription((CharSequence)localObject);
       localView.setTag(paramAdData.jump_url);
-      localView.setTag(2131373501, Integer.valueOf(paramAdData.ad_source));
+      localView.setTag(2131374206, Integer.valueOf(paramAdData.ad_source));
       localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       return;
       localBorderTextView.setVisibility(4);
@@ -189,7 +190,7 @@ public class CarrierHelper
       return;
     }
     int i = this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.a();
-    bdhb.a(paramString, new Object[] { this.jdField_a_of_type_JavaUtilList, Integer.valueOf(i), this.jdField_a_of_type_JavaUtilArrayList });
+    bgmg.a(paramString, new Object[] { this.jdField_a_of_type_JavaUtilList, Integer.valueOf(i), this.jdField_a_of_type_JavaUtilArrayList });
   }
   
   public void a(List<AdData> paramList, int paramInt, ArrayList<CarrierHelper.EntranceConfig> paramArrayList)
@@ -213,35 +214,39 @@ public class CarrierHelper
   
   public void onClick(View paramView)
   {
-    Object localObject = (Integer)paramView.getTag(2131373501);
+    Object localObject1 = (Integer)paramView.getTag(2131374206);
     String str = (String)paramView.getTag();
-    if ((localObject == null) || (str == null)) {
-      return;
-    }
-    if ((this.b == 2) || (this.b == 1)) {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80050D1", "0X80050D1", this.b, 0, String.valueOf(localObject), "", "", "");
-    }
-    if (((Integer)localObject).intValue() == 5) {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052A3", "0X80052A3", this.b, 0, "", "", "", "");
-    }
-    if (this.jdField_a_of_type_AndroidAppActivity == null) {}
-    for (paramView = BaseApplicationImpl.getContext();; paramView = this.jdField_a_of_type_AndroidAppActivity)
+    if ((localObject1 == null) || (str == null)) {}
+    for (;;)
     {
-      localObject = bdib.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, str);
-      if (localObject == null) {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((this.b == 2) || (this.b == 1)) {
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80050D1", "0X80050D1", this.b, 0, String.valueOf(localObject1), "", "", "");
+      }
+      if (((Integer)localObject1).intValue() == 5) {
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052A3", "0X80052A3", this.b, 0, "", "", "", "");
+      }
+      if (this.jdField_a_of_type_AndroidAppActivity == null) {}
+      for (localObject1 = BaseApplicationImpl.getContext();; localObject1 = this.jdField_a_of_type_AndroidAppActivity)
+      {
+        localObject2 = bgng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)localObject1, str);
+        if (localObject2 == null) {
+          break label182;
+        }
+        ((bgmp)localObject2).a();
         break;
       }
-      ((bdhk)localObject).c();
-      return;
+      label182:
+      Object localObject2 = new Intent(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", URLUtil.guessUrl(str));
+      ((Context)localObject1).startActivity((Intent)localObject2);
     }
-    localObject = new Intent(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", URLUtil.guessUrl(str));
-    paramView.startActivity((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.CarrierHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
-
-public class atvs
-  extends awhx
+final class atvs
+  implements bhhd
 {
-  public atvs(LoginWelcomeManager paramLoginWelcomeManager) {}
+  atvs(atve paramatve) {}
   
-  protected void a(NewerGuidePlugin.RecommendedListResp paramRecommendedListResp)
+  public void callback(int paramInt)
   {
-    try
+    if ((paramInt == 1) || (paramInt == 2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, String.format("onGetRecommendedList resp=%s", new Object[] { paramRecommendedListResp }));
-      }
-      if (LoginWelcomeManager.a(this.a) != null)
-      {
-        Bundle localBundle = LoginWelcomeManager.a(this.a).getBundle("request");
-        if (localBundle != null) {
-          localBundle.putParcelable("result", paramRecommendedListResp);
-        }
-        this.a.b();
-      }
-      LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
+      this.a.a();
       return;
     }
-    catch (Throwable paramRecommendedListResp)
-    {
-      QLog.e("LoginWelcomeManager", 1, "onGetRecommendedList fail.", paramRecommendedListResp);
-    }
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, String.format("ShowCommonGuideWebResult result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atvs
  * JD-Core Version:    0.7.0.1
  */

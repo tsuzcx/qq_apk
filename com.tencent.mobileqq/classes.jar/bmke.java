@@ -1,44 +1,35 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.util.XMPCoreUtil.2;
 
-class bmke
-  implements Handler.Callback
+public class bmke
+  implements ModuleDownloadListener
 {
-  bmke(bmkb parambmkb) {}
+  public bmke(XMPCoreUtil.2 param2) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onDownloadCanceled(String paramString)
   {
-    switch (paramMessage.what)
-    {
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("xmpcore.jar")) {
+      return;
     }
-    for (;;)
-    {
-      return true;
-      if (bmkb.a(this.a)) {
-        return false;
-      }
-      bmkb.a(this.a, new bluo());
-      paramMessage = Message.obtain();
-      paramMessage.what = 111;
-      bmkb.b(this.a).sendMessageDelayed(paramMessage, 1000L);
-      continue;
-      paramMessage = this.a.a();
-      if ((paramMessage != null) && (paramMessage.exists()))
-      {
-        bmkb.a(this.a).a(paramMessage);
-        bmkb.a(this.a).a(this.a.a());
-        bmkb.a(this.a).a();
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("EditRecognitionPart", 2, "handleMessage: invoked. info: Failed to get audioFile. audioFile = " + paramMessage);
-        }
-        bflz.a().a(2131698619);
-      }
-    }
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", bmkc.a(), " onDownloadSucceed = ", bmkc.b() });
+    LocalMultiProcConfig.putString("xmp_core_file_md5", bmkc.b());
   }
 }
 

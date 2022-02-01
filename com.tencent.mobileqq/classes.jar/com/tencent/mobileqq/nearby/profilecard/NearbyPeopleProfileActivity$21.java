@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import antx;
+import apuc;
 import com.tencent.qphone.base.util.QLog;
 
 class NearbyPeopleProfileActivity$21
@@ -20,7 +20,7 @@ class NearbyPeopleProfileActivity$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.21
  * JD-Core Version:    0.7.0.1
  */

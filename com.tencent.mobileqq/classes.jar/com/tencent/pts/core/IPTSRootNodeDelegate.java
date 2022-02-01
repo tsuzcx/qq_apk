@@ -10,6 +10,8 @@ public abstract interface IPTSRootNodeDelegate
 {
   public abstract boolean animation(PTSNodeInfo paramPTSNodeInfo, PTSAnimationUtil.AnimationInfo paramAnimationInfo);
   
+  public abstract View getRootView();
+  
   public abstract boolean insert(PTSNodeInfo paramPTSNodeInfo, int paramInt);
   
   public abstract boolean modify(PTSNodeInfo paramPTSNodeInfo);
@@ -26,7 +28,7 @@ public abstract interface IPTSRootNodeDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.IPTSRootNodeDelegate
  * JD-Core Version:    0.7.0.1
  */

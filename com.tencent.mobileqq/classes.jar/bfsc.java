@@ -1,45 +1,101 @@
-import com.tencent.gamecenter.appointment.GameCenterReceiver;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.open.wadl.WadlConfigCenter.1;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 public class bfsc
+  extends aarj
 {
-  static bfsc jdField_a_of_type_Bfsc;
-  static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private HashMap<String, bfsa> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public bfsc(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  private bfsc()
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    a();
-    GameCenterReceiver.a();
-  }
-  
-  public static bfsc a()
-  {
-    if (jdField_a_of_type_Bfsc == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    long l = paramBundle.getLong("troopUin");
+    try
     {
-      if (jdField_a_of_type_Bfsc == null) {
-        jdField_a_of_type_Bfsc = new bfsc();
+      paramString1 = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
+      if (paramString1 == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileTransferManager", 4, "bad troopUin" + l);
+        }
+        return;
       }
-      return jdField_a_of_type_Bfsc;
+      paramString3 = paramBundle.getString("itemKey");
+      if (paramString3 == null) {
+        return;
+      }
+      paramBundle = UUID.fromString(paramString3);
+      try
+      {
+        paramString2 = (TroopFileTransferManager.Item)paramString1.a.get(paramBundle);
+        if (paramString2 == null)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.i("TroopFileTransferManager", 4, "bad item key" + paramString3);
+          }
+          return;
+        }
+      }
+      finally {}
     }
-  }
-  
-  public <T> T a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public void a()
-  {
-    ThreadManagerV2.executeOnFileThread(new WadlConfigCenter.1(this));
+    finally {}
+    if (paramBoolean)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.e("TroopFileTransferManager", 4, String.format("onCopyToResult - retCode: %d", new Object[] { Integer.valueOf(paramInt1) }));
+      }
+      if (paramString2.BusId == 25) {
+        label445:
+        for (;;)
+        {
+          try
+          {
+            bmxr.a(paramInt1);
+            if (paramInt1 == 0)
+            {
+              this.a.b.remove(paramBundle);
+              if (this.a.b.size() != 0) {
+                break label330;
+              }
+              paramString3 = new bfrj(paramString2.FileName, this.a.e, 5, 604);
+              this.a.a(paramString2, 5, paramString3);
+              return;
+            }
+          }
+          finally {}
+          this.a.b.put(paramBundle, Integer.valueOf(paramInt1));
+          continue;
+          label330:
+          paramString3 = this.a.b.keySet().iterator();
+          do
+          {
+            if (!paramString3.hasNext()) {
+              break;
+            }
+            paramBundle = (UUID)paramString3.next();
+          } while (((Integer)this.a.b.get(paramBundle)).intValue() != 2147483647);
+          for (paramInt1 = 0;; paramInt1 = 1)
+          {
+            if (paramInt1 == 0) {
+              break label445;
+            }
+            paramString3 = new bfrj(paramString2.FileName, this.a.e, 5, 605);
+            this.a.a(paramString2, 5, paramString3);
+            break;
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfsc
  * JD-Core Version:    0.7.0.1
  */

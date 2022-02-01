@@ -1,20 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.os.Bundle;
+import eipc.EIPCResult;
 
-public class avfc
-  implements DialogInterface.OnClickListener
+class avfc
+  extends ayeu
 {
-  public avfc(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  avfc(avfb paramavfb, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    paramDialogInterface.dismiss();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("cmd", paramString1);
+    localBundle.putInt("code", paramInt);
+    localBundle.putString("msg", paramString2);
+    this.jdField_a_of_type_Avfb.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, localBundle));
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("usable", paramBoolean);
+    localBundle.putString("msg", paramString);
+    this.jdField_a_of_type_Avfb.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, localBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avfc
  * JD-Core Version:    0.7.0.1
  */

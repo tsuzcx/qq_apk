@@ -1,41 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.CommTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adaq
-  implements DialogInterface.OnClickListener
+  implements acxp
 {
-  public adaq(FriendProfileCardActivity paramFriendProfileCardActivity, String paramString, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    QLog.e("QVipProfileCard.FriendProfileCardActivity", 1, "set friend profile card click and aid=" + this.jdField_a_of_type_JavaLangString + " pay type=" + this.jdField_a_of_type_Int);
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 3: 
-    default: 
-      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getApplicationContext(), 2131695637, 0).show();
+    return 10008;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
+    localCommTmp.c2c_type.set(1);
+    localCommTmp.svr_type.set(165);
+    paramQQAppInterface = paramQQAppInterface.a().f(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
+    if (paramQQAppInterface != null) {
+      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramQQAppInterface));
     }
-    for (;;)
-    {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "", "0X800A4C2", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.C();
-      return;
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 1, this.jdField_a_of_type_JavaLangString);
-      continue;
-      VipUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 1, this.jdField_a_of_type_JavaLangString);
-      continue;
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, false, 12, false, this.jdField_a_of_type_JavaLangString);
-      continue;
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, true, 12, false, this.jdField_a_of_type_JavaLangString);
-      continue;
-      bdun.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_JavaLangString, "SVHHZLH", 0, false, false);
-      continue;
-      bdun.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_JavaLangString, "SVHHZLH", 12, false, false);
-    }
+    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.comm_tmp.set(localCommTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
 }
 

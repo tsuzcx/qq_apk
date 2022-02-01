@@ -1,74 +1,50 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class bcky
-  extends bckw
 {
-  public bcky(String paramString1, String paramString2, bckx parambckx, int paramInt, Bundle paramBundle)
+  public static long a()
   {
-    super(paramString1, paramString2, parambckx, paramInt, paramBundle);
+    return b(1) - c(1);
   }
   
-  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
+  public static long a(int paramInt)
   {
-    if (isCancelled()) {
-      return null;
-    }
-    Object localObject = paramVarArgs[0];
-    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
+    long l = Runtime.getRuntime().maxMemory() - a() * 1024L;
+    switch (paramInt)
     {
-      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
-      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
+    case 0: 
+    default: 
+      return l;
+    case 1: 
+      return l / 1024L;
     }
-    for (;;)
+    return l / 1048576L;
+  }
+  
+  private static long b(int paramInt)
+  {
+    switch (paramInt)
     {
-      try
-      {
-        Bundle localBundle = new Bundle();
-        String str1 = ((Bundle)localObject).getString("Cookie");
-        String str2 = ((Bundle)localObject).getString("Referer");
-        String str3 = ((Bundle)localObject).getString("Origin");
-        if (str1 != null)
-        {
-          localBundle.putString("Cookie", str1);
-          ((Bundle)localObject).remove("Cookie");
-        }
-        if (str2 != null)
-        {
-          localBundle.putString("Referer", str2);
-          ((Bundle)localObject).remove("Referer");
-        }
-        if (str3 != null)
-        {
-          localBundle.putString("Origin", str3);
-          ((Bundle)localObject).remove("Origin");
-        }
-        paramVarArgs = new JSONObject(ndd.a(paramVarArgs, this.a, this.b, (Bundle)localObject, localBundle));
-      }
-      catch (IOException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (JSONException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (OutOfMemoryError paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-      }
-      return paramVarArgs;
-      paramVarArgs = null;
+    default: 
+      return Runtime.getRuntime().totalMemory();
+    case 0: 
+      return Runtime.getRuntime().totalMemory();
+    case 1: 
+      return Runtime.getRuntime().totalMemory() / 1024L;
     }
+    return Runtime.getRuntime().totalMemory() / 1024L / 1024L;
+  }
+  
+  private static long c(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return Runtime.getRuntime().freeMemory();
+    case 0: 
+      return Runtime.getRuntime().freeMemory();
+    case 1: 
+      return Runtime.getRuntime().freeMemory() / 1024L;
+    }
+    return Runtime.getRuntime().freeMemory() / 1024L / 1024L;
   }
 }
 

@@ -1,50 +1,26 @@
-import android.view.Surface;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class amvb
+public final class amvb
+  implements EIPCResultCallback
 {
-  private axvh jdField_a_of_type_Axvh;
-  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = (EGL10)EGLContext.getEGL();
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext();
-  private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentDisplay();
-  private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentSurface(12377);
+  public amvb(String paramString1, String paramString2, amvg paramamvg) {}
   
-  public amvb(axvg paramaxvg, Surface paramSurface)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_Axvh = new axvh(paramaxvg);
-    this.jdField_a_of_type_Axvh.a(paramSurface);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Axvh.a(paramLong);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Axvh.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Axvh.a();
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Axvh != null)
-    {
-      this.jdField_a_of_type_Axvh.a();
-      this.jdField_a_of_type_Axvh = null;
+    CmShowRenderView.a(true);
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("selfUinStatus");
+    int j = paramEIPCResult.getInt("friendUinStatus");
+    amuz.a(this.jdField_a_of_type_JavaLangString, i);
+    amuz.a(this.b, j);
+    if (this.jdField_a_of_type_Amvg != null) {
+      this.jdField_a_of_type_Amvg.a(true);
     }
+    QLog.i("CmShow_CmShowRenderView", 1, "initCmShowData selfUinStatus:" + i + " friendUinStatus:" + j);
   }
 }
 

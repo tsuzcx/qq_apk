@@ -1,24 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class alzd
-  implements DialogInterface.OnClickListener
+class alzd
+  implements MediaPlayer.OnCompletionListener
 {
-  alzd(DialogInterface.OnClickListener paramOnClickListener) {}
+  alzd(alyz paramalyz, int paramInt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "play completed, soundId:" + this.jdField_a_of_type_Int);
+    try
+    {
+      paramMediaPlayer = new JSONObject();
+      paramMediaPlayer.put("code", 1);
+      this.jdField_a_of_type_Alyz.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
+      return;
     }
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
+    catch (JSONException paramMediaPlayer)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onCompletion: " + this.jdField_a_of_type_Int, paramMediaPlayer);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alzd
  * JD-Core Version:    0.7.0.1
  */

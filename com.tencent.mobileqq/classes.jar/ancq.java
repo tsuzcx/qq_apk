@@ -1,34 +1,15 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ancq
-  extends ancs
+final class ancq
+  implements amxk
 {
-  public float a;
-  public int a;
-  public long a;
-  public ArCloudConfigInfo a;
-  public String a;
-  public float[] a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
+  ancq(ancs paramancs, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, amls paramamls, int[] paramArrayOfInt) {}
   
-  public ancq()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    this.jdField_b_of_type_Long = 1L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_ArrayOfFloat = null;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-  }
-  
-  public String toString()
-  {
-    return "ARLocalMarkerRecogResult{recogType = " + this.jdField_b_of_type_Long + ", frameIdx = " + this.jdField_a_of_type_Long + ", state = " + this.jdField_a_of_type_Int + ", markerName = " + this.jdField_a_of_type_JavaLangString + ", markerType = " + this.jdField_b_of_type_Int + ", markerWidth = " + this.jdField_a_of_type_Float + ", markerHeight = " + this.jdField_b_of_type_Float + ", markerDiameter = " + this.c + ", pose = " + this.jdField_a_of_type_ArrayOfFloat + ", arResourceInfo = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo + '}';
+    if (this.jdField_a_of_type_Ancs != null) {
+      this.jdField_a_of_type_Ancs.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Amls.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, 22);
+    }
   }
 }
 

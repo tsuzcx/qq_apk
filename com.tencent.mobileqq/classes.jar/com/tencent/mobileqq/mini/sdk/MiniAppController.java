@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.sdk;
 
 import NS_COMM.COMM.StCommonExt;
-import adpn;
+import aevv;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -14,14 +14,16 @@ import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import astc;
-import bdin;
-import bhsz;
+import aval;
+import bgnt;
+import bjxn;
+import bkgj;
 import com.tencent.av.gaudio.GaInviteLockActivity;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.VideoInviteActivity;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -68,7 +70,9 @@ public class MiniAppController
   public static final int ACTION_REQUEST_API_PERMISSION = 5;
   public static final int ACTION_REQUEST_CODE_CAMERA = 4;
   public static final int ACTION_REQUEST_CODE_CHOOSE_LOCATION = 3;
+  public static final int ACTION_REQUEST_CODE_GAME_PAY_BY_FRIEND_H5 = 3004;
   public static final int ACTION_REQUEST_CODE_GAME_PAY_BY_H5 = 3003;
+  public static final int ACTION_REQUEST_CODE_GAME_PAY_BY_WX_H5 = 3005;
   public static final int ACTION_REQUEST_CODE_GAME_PAY_THROUGH_TOOL = 3002;
   public static final int ACTION_REQUEST_CODE_GET_VIDEO = 2;
   public static final int ACTION_REQUEST_CODE_LOAD_MINI_CONF = 1;
@@ -86,7 +90,7 @@ public class MiniAppController
   private static final int REPORT_FOREGROUND_RESERVES_MINI_PROGRAM = 1;
   private static final int REPORT_NO_FOREGROUND = 0;
   public static final String TAG = "MiniAppController";
-  private static astc hitPluginSession;
+  private static aval hitPluginSession;
   private static MiniAppController instance;
   private static byte[] lock = new byte[0];
   private static Handler mainHander = new Handler(Looper.getMainLooper());
@@ -99,7 +103,7 @@ public class MiniAppController
   
   static
   {
-    hitPluginSession = new astc("mini_myfile", "com.tencent.mobileqq:mini");
+    hitPluginSession = new aval("mini_myfile", "com.tencent.mobileqq:mini");
     MINI_PROGRAM_ACTIVITY_SET = new HashSet();
     MINI_GAME_ACTIVITY_SET = new HashSet();
     MINI_PROGRAM_ACTIVITY_SET.addAll(Arrays.asList(new String[] { AppBrandLaunchUI.class.getName(), InternalAppBrandUI.class.getName(), AppBrandUI.class.getName(), AppBrandUI1.class.getName(), AppBrandUI2.class.getName(), AppBrandUI3.class.getName(), AppBrandUI4.class.getName() }));
@@ -127,7 +131,7 @@ public class MiniAppController
                 return 3;
               }
               if ((AVActivity.class.getName().equals(localObject)) || (VideoInviteActivity.class.getName().equals(localObject)) || (GaInviteLockActivity.class.getName().equals(localObject))) {
-                break label183;
+                break label185;
               }
               if (MINI_PROGRAM_ACTIVITY_SET.contains(localObject)) {
                 return 1;
@@ -147,7 +151,7 @@ public class MiniAppController
     } else {
       return 0;
     }
-    label183:
+    label185:
     return 4;
   }
   
@@ -200,7 +204,7 @@ public class MiniAppController
     if ((paramLaunchParam != null) && (paramLaunchParam.scene == 2072)) {
       return true;
     }
-    paramString = bhsz.a(paramString);
+    paramString = bkgj.a(paramString);
     return (paramString.containsKey("scene")) && (((String)paramString.get("scene")).equals(String.valueOf(2072)));
   }
   
@@ -246,7 +250,7 @@ public class MiniAppController
       if (!(paramContext instanceof Activity)) {
         localIntent.addFlags(268435456);
       }
-      adpn.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
+      aevv.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
       if ((paramContext instanceof Activity)) {
         ((Activity)paramContext).overridePendingTransition(0, 0);
       }
@@ -269,7 +273,7 @@ public class MiniAppController
       if (!(paramContext instanceof Activity)) {
         localIntent.addFlags(268435456);
       }
-      adpn.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
+      aevv.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
       if ((paramContext instanceof Activity)) {
         ((Activity)paramContext).overridePendingTransition(0, 0);
       }
@@ -286,6 +290,11 @@ public class MiniAppController
   
   public static void preloadPackage(@NonNull MiniAppInfo paramMiniAppInfo)
   {
+    if (bjxn.a(paramMiniAppInfo.isEngineTypeMiniApp()))
+    {
+      QLog.w("MiniAppController", 1, "preloadPackage disable for sdk mode.");
+      return;
+    }
     AppBrandProxy.g().preloadPackage(paramMiniAppInfo);
   }
   
@@ -313,7 +322,11 @@ public class MiniAppController
   
   public static void startAppByAppid(Context paramContext, String paramString1, String paramString2, String paramString3, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    if (!bdin.g(paramContext)) {
+    QLog.i("MiniAppController", 1, "startAppByAppid appid:" + paramString1 + " entryPath:" + paramString2 + " envVersion:" + paramString3 + "  param:" + paramLaunchParam);
+    if (BaseActivity.sTopActivity != null) {
+      QLog.d("MiniAppController", 1, "cur Activity:" + BaseActivity.sTopActivity.getActivityName() + "  class :" + BaseActivity.sTopActivity.getLocalClassName());
+    }
+    if (!bgnt.g(paramContext)) {
       AppBrandTask.runTaskOnUiThread(new MiniAppController.2(paramContext));
     }
     do
@@ -337,14 +350,18 @@ public class MiniAppController
         localIntent.putExtra("mini_receiver", new MiniAppController.4(new Handler(Looper.getMainLooper()), paramMiniAppLaunchListener));
       }
       localIntent.putExtra("public_fragment_window_feature", 1);
-      adpn.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
+      aevv.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
     } while (!(paramContext instanceof Activity));
     ((Activity)paramContext).overridePendingTransition(0, 0);
   }
   
   public static void startAppByLink(Context paramContext, String paramString, int paramInt, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    if (!bdin.g(paramContext))
+    QLog.i("MiniAppController", 1, "startAppByLink link:" + paramString + " linkType:" + paramInt + "  param:" + paramLaunchParam);
+    if (BaseActivity.sTopActivity != null) {
+      QLog.d("MiniAppController", 1, "cur Activity:" + BaseActivity.sTopActivity.getActivityName() + "  class :" + BaseActivity.sTopActivity.getLocalClassName());
+    }
+    if (!bgnt.g(paramContext))
     {
       AppBrandTask.runTaskOnUiThread(new MiniAppController.6(paramContext));
       return;
@@ -565,10 +582,20 @@ public class MiniAppController
       QLog.e("MiniAppController", 1, paramActivityResultListener, new Object[0]);
     }
   }
+  
+  public void unRegisterActivityResultListener()
+  {
+    QLog.d("MiniAppController", 1, "unRegisterActivityResultListener");
+    if (this.activityResultListenerList != null)
+    {
+      this.activityResultListenerList.clear();
+      this.activityResultListenerList = null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppController
  * JD-Core Version:    0.7.0.1
  */

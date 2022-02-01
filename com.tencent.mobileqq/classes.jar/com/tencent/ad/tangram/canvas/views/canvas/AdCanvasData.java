@@ -23,9 +23,11 @@ public class AdCanvasData
   public String firstPictureComponentIdWithHotArea = "";
   public ArrayList<com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a> fixedButtonComponentDataList = new ArrayList();
   public boolean hasFixedButtonData = false;
+  public boolean hasMultiPictureData = false;
   public String id;
   public String name;
   public long pageId = -2147483648L;
+  public String pageTitle;
   public String pageType;
   public String pageUrl;
   public List<com.tencent.ad.tangram.canvas.views.canvas.framework.a> pages;
@@ -34,10 +36,7 @@ public class AdCanvasData
   
   public boolean getAutoDownLoad()
   {
-    if (isValid()) {
-      return this.autodownload;
-    }
-    return false;
+    return (isValid()) && (this.autodownload);
   }
   
   public com.tencent.ad.tangram.canvas.views.canvas.framework.a getPage(int paramInt)
@@ -144,7 +143,7 @@ public class AdCanvasData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.AccountDetail.model;
 
 import com.tencent.qphone.base.util.QLog;
-import nhz;
+import nqq;
 
 public class AccountDetailDynamicDataManager$1
   implements Runnable
 {
-  public AccountDetailDynamicDataManager$1(nhz paramnhz, long paramLong, byte[] paramArrayOfByte) {}
+  public AccountDetailDynamicDataManager$1(nqq paramnqq, long paramLong, byte[] paramArrayOfByte) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class AccountDetailDynamicDataManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicDataManager.1
  * JD-Core Version:    0.7.0.1
  */

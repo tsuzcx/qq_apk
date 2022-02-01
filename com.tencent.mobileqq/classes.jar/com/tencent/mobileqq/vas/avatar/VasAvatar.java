@@ -4,9 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import bdwc;
-import berb;
-import berc;
+import bhbe;
+import bhyj;
+import bhyk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
@@ -16,27 +16,28 @@ import com.tencent.widget.URLThemeImageView;
 
 public class VasAvatar
   extends URLThemeImageView
-  implements berc
+  implements bhyk
 {
   public Drawable a;
-  public bdwc a;
-  private berb jdField_a_of_type_Berb;
+  public bhbe a;
+  private bhyj jdField_a_of_type_Bhyj;
   private AvatarLayout jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout;
   private String jdField_a_of_type_JavaLangString;
   
   public VasAvatar(Context paramContext)
   {
-    super(paramContext);
+    this(paramContext, null);
   }
   
   public VasAvatar(Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(paramContext, paramAttributeSet);
+    this(paramContext, paramAttributeSet, -1);
   }
   
   public VasAvatar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    setSupportMaskView(false);
   }
   
   public static String a(int paramInt)
@@ -82,9 +83,9 @@ public class VasAvatar
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Berb != null)
+    if (this.jdField_a_of_type_Bhyj != null)
     {
-      this.jdField_a_of_type_Berb.a(paramCanvas);
+      this.jdField_a_of_type_Bhyj.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -92,9 +93,9 @@ public class VasAvatar
   
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Berb != null)
+    if (this.jdField_a_of_type_Bhyj != null)
     {
-      this.jdField_a_of_type_Berb.b(paramCanvas);
+      this.jdField_a_of_type_Bhyj.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
@@ -113,35 +114,35 @@ public class VasAvatar
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    this.jdField_a_of_type_Bdwc = null;
+    this.jdField_a_of_type_Bhbe = null;
   }
   
-  public void setLoader(AvatarLayout paramAvatarLayout, bdwc parambdwc)
+  public void setLoader(AvatarLayout paramAvatarLayout, bhbe parambhbe)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambdwc.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    parambdwc.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambhbe.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    parambhbe.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = paramAvatarLayout;
-    this.jdField_a_of_type_Bdwc = parambdwc;
-    this.jdField_a_of_type_JavaLangString = parambdwc.jdField_a_of_type_JavaLangString;
-    parambdwc.a(this);
+    this.jdField_a_of_type_Bhbe = parambhbe;
+    this.jdField_a_of_type_JavaLangString = parambhbe.jdField_a_of_type_JavaLangString;
+    parambhbe.a(this);
   }
   
-  public void setMosaicEffect(berb paramberb)
+  public void setMosaicEffect(bhyj parambhyj)
   {
-    if (this.jdField_a_of_type_Berb != null) {
-      this.jdField_a_of_type_Berb.a(null);
+    if (this.jdField_a_of_type_Bhyj != null) {
+      this.jdField_a_of_type_Bhyj.a(null);
     }
-    this.jdField_a_of_type_Berb = paramberb;
-    if (this.jdField_a_of_type_Berb != null) {
-      this.jdField_a_of_type_Berb.a(this);
+    this.jdField_a_of_type_Bhyj = parambhyj;
+    if (this.jdField_a_of_type_Bhyj != null) {
+      this.jdField_a_of_type_Bhyj.a(this);
     }
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasAvatar
  * JD-Core Version:    0.7.0.1
  */

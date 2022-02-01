@@ -1,70 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.RspBody;
 
-public class atlw
+final class atlw
+  extends niv
 {
-  public static final String a;
-  public int a;
-  public long a;
-  public alrb a;
-  public int b = 0;
+  atlw(atlx paramatlx) {}
   
-  static
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.ltcfg.name();
-  }
-  
-  private atlw()
-  {
-    this.jdField_a_of_type_Int = 50;
-    this.jdField_a_of_type_Long = 3000L;
-    this.jdField_a_of_type_Alrb = new atlx(this);
-    a();
-    DeviceProfileManager.a(this.jdField_a_of_type_Alrb);
-  }
-  
-  public static atlw a()
-  {
-    return atly.a();
-  }
-  
-  private void a()
-  {
-    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
-    try
+    if (paramInt == 0) {
+      paramBundle = new oidb_0x6e7.RspBody();
+    }
+    do
     {
-      if (!TextUtils.isEmpty(str))
+      try
       {
-        String[] arrayOfString = str.split("\\|");
-        if (arrayOfString.length >= 4)
-        {
-          this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
-          this.b = Integer.valueOf(arrayOfString[1]).intValue();
-          this.jdField_a_of_type_Long = Long.valueOf(arrayOfString[2]).longValue();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, "is_white = " + paramBundle.uint32_is_white.get() + ", req_interval = " + paramBundle.uint32_interval.get());
+        }
+        if (this.a != null) {
+          this.a.a(paramBundle.uint32_is_white.get(), paramBundle.uint32_interval.get());
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, QLog.getStackTraceString(paramArrayOfByte));
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.d("ListenTogether.dpc", 2, String.format("loadDpc, dpcValue: %s, [%s]", new Object[] { str, this }));
+        QLog.d("zivonchen", 2, "requestWhiteList() errorCode = " + paramInt);
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("ListenTogether.dpc", 1, "loadDpc", localException);
-        this.jdField_a_of_type_Int = 50;
-        this.b = 0;
-        this.jdField_a_of_type_Long = 3000L;
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    return "ListenTogetherDPC{maxCacheCount=" + this.jdField_a_of_type_Int + ", preDownloadNetType=" + this.b + ", playingAdjustInterval=" + this.jdField_a_of_type_Long + '}';
+    } while (this.a == null);
+    this.a.a(0, -1);
   }
 }
 

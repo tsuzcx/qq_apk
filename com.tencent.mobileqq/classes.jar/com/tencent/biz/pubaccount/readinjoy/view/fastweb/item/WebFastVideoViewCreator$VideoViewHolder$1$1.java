@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.item;
 
-import oxb;
-import sbp;
+import pmk;
+import szt;
 
 public class WebFastVideoViewCreator$VideoViewHolder$1$1
   implements Runnable
 {
-  public WebFastVideoViewCreator$VideoViewHolder$1$1(sbp paramsbp) {}
+  public WebFastVideoViewCreator$VideoViewHolder$1$1(szt paramszt) {}
   
   public void run()
   {
-    oxb.a().b();
+    pmk.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastVideoViewCreator.VideoViewHolder.1.1
  * JD-Core Version:    0.7.0.1
  */

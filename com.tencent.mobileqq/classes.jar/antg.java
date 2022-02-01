@@ -1,89 +1,153 @@
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
-import java.util.List;
+import QQWalletPay.ReqCheckChangePwdAuth;
+import Wallet.AuthCodeReq;
+import Wallet.GetPasswordReq;
+import Wallet.GetPasswordRsp;
+import Wallet.PfaFriendRqt;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.PatternLockUtils;
+import cooperation.qwallet.plugin.QWalletHelper;
 
 public class antg
-  extends antj
+  extends anii
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  boolean jdField_a_of_type_Boolean = false;
-  private float b = -1.0F;
-  private float c = -1.0F;
-  private float[] d = new float[3];
-  private float[] e = new float[3];
-  private float[] f = new float[3];
-  private float[] g = new float[3];
-  private float[] h = new float[16];
-  private float[] i = new float[3];
+  private boolean a;
   
-  public antg(Context paramContext, int paramInt, SensorManager paramSensorManager, antb paramantb)
+  public antg(QQAppInterface paramQQAppInterface)
   {
-    super(paramContext, paramInt, paramSensorManager, paramantb);
-    paramContext = paramSensorManager.getDefaultSensor(1);
-    paramSensorManager = paramSensorManager.getDefaultSensor(2);
-    if ((paramContext != null) && (paramSensorManager != null))
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramContext);
-      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager);
-      return;
-    }
-    throw new OrientationProviderNotFound("1,2");
+    super(paramQQAppInterface);
   }
   
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  public void a(ReqCheckChangePwdAuth paramReqCheckChangePwdAuth)
   {
-    if (this.jdField_a_of_type_Antb == null) {
+    if (paramReqCheckChangePwdAuth == null) {}
+    do
+    {
       return;
-    }
-    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 2.0F)
-    {
-      this.jdField_a_of_type_Float = paramFloat1;
-      this.jdField_a_of_type_Antb.updateAzimuth(paramFloat1);
-    }
-    if (Math.abs(paramFloat2 - this.b) > 2.0F)
-    {
-      this.b = paramFloat2;
-      this.jdField_a_of_type_Antb.updatePitch(paramFloat2);
-    }
-    if (Math.abs(paramFloat3 - this.c) > 2.0F)
-    {
-      this.c = paramFloat3;
-      this.jdField_a_of_type_Antb.updateRoll(paramFloat3);
-    }
-    this.jdField_a_of_type_Antb.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "QQWalletPayAuthServer.checkChangePwdAuth");
+      localToServiceMsg.extraData.putSerializable("ReqCheckChangePwdAuth", paramReqCheckChangePwdAuth);
+      super.send(localToServiceMsg);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendCheckModifyPassReq: on send--cmd=QQWalletPayAuthServer.checkChangePwdAuth");
   }
   
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void a(AuthCodeReq paramAuthCodeReq)
   {
-    if (paramSensorEvent.sensor.getType() == 2)
+    if (paramAuthCodeReq == null) {}
+    do
     {
-      System.arraycopy(paramSensorEvent.values, 0, this.d, 0, 3);
-      antc.a(this.d, this.g);
-      System.arraycopy(this.d, 0, this.g, 0, 3);
-      this.jdField_a_of_type_Boolean = true;
+      return;
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "VacThirdCodeSvc.fetchCodes");
+      localToServiceMsg.extraData.putSerializable("AuthCodeReq", paramAuthCodeReq);
+      super.send(localToServiceMsg);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetAuthCode: on send--cmd=VacThirdCodeSvc.fetchCodes");
+  }
+  
+  public void a(GetPasswordReq paramGetPasswordReq)
+  {
+    if (paramGetPasswordReq == null) {}
+    do
+    {
+      return;
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "WalletGestureSvc.GetPassword");
+      localToServiceMsg.extraData.putSerializable("GetPasswordReq", paramGetPasswordReq);
+      super.send(localToServiceMsg);
+      this.a = true;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetPasswordReq: on send--cmd=WalletGestureSvc.GetPassword");
+  }
+  
+  public void a(PfaFriendRqt paramPfaFriendRqt)
+  {
+    if (paramPfaFriendRqt == null) {}
+    do
+    {
+      return;
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "QWalletPfa.RecFriend");
+      localToServiceMsg.extraData.putSerializable("PfaFriendRqt", paramPfaFriendRqt);
+      super.send(localToServiceMsg);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetRecentList: on send--cmd=QWalletPfa.RecFriend");
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return anth.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    boolean bool;
+    do
+    {
+      return;
+      bool = paramFromServiceMsg.isSuccess();
+      paramToServiceMsg = paramToServiceMsg.getServiceCmd();
+    } while (TextUtils.isEmpty(paramToServiceMsg));
+    if (paramToServiceMsg.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0)
+    {
+      super.notifyUI(1, bool, paramObject);
+      return;
     }
-    for (;;)
+    if (paramToServiceMsg.compareTo("WalletGestureSvc.GetPassword") == 0) {
+      if ((paramObject == null) || (!(paramObject instanceof GetPasswordRsp))) {
+        break label402;
+      }
+    }
+    label402:
+    for (paramToServiceMsg = (GetPasswordRsp)paramObject;; paramToServiceMsg = null)
     {
-      if ((this.jdField_a_of_type_Boolean) && (SensorManager.getRotationMatrix(this.h, null, this.e, this.d)))
+      if ((bool) && (paramToServiceMsg != null) && (paramToServiceMsg.ret == 0))
       {
-        SensorManager.getOrientation(this.h, this.i);
-        if (this.jdField_a_of_type_Int == 1) {
-          break;
+        PatternLockUtils.setSyncPatternLockState(this.app.getApp(), this.app.getCurrentAccountUin(), false);
+        paramFromServiceMsg = "";
+        if (!TextUtils.isEmpty(paramToServiceMsg.password))
+        {
+          paramFromServiceMsg = QWalletHelper.getQWDevId();
+          paramFromServiceMsg = MD5.toMD5(paramFromServiceMsg + paramToServiceMsg.password);
         }
-        super.a(this.h);
+        PatternLockUtils.setPWD(this.app.getApp(), this.app.getCurrentAccountUin(), paramFromServiceMsg);
+        PatternLockUtils.setPWDType(this.app.getApp(), this.app.getCurrentAccountUin(), paramToServiceMsg.passwordType);
+        PatternLockUtils.setCheckIntervalTime(this.app.getApp(), this.app.getCurrentAccountUin(), paramToServiceMsg.checkInterval);
+        PatternLockUtils.setForgroundIntervalTime(this.app.getApp(), this.app.getCurrentAccountUin(), paramToServiceMsg.passInterval);
       }
-      return;
-      if (paramSensorEvent.sensor.getType() == 1)
+      while (QLog.isColorLevel())
       {
-        System.arraycopy(paramSensorEvent.values, 0, this.e, 0, 3);
-        antc.a(this.e, this.f);
-        System.arraycopy(this.e, 0, this.f, 0, 3);
+        QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetPasswordReq: onReceive isSuccess:" + bool);
+        return;
+        if ((this.a) && (bgnt.d(this.app.getApp())))
+        {
+          this.a = false;
+          paramToServiceMsg = new GetPasswordReq();
+          paramToServiceMsg.MQOS = "Android";
+          paramToServiceMsg.MQVersion = bgln.a(this.app.getApp());
+          paramFromServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "WalletGestureSvc.GetPassword");
+          paramFromServiceMsg.extraData.putSerializable("GetPasswordReq", paramToServiceMsg);
+          super.send(paramFromServiceMsg);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qwallet.auth.AuthHandler", 2, "RetrySendGetPasswordReq: on send--cmd=WalletGestureSvc.GetPassword");
+          }
+        }
       }
+      break;
+      if (paramToServiceMsg.compareTo("VacThirdCodeSvc.fetchCodes") == 0)
+      {
+        super.notifyUI(4, bool, paramObject);
+        return;
+      }
+      if (paramToServiceMsg.compareTo("QWalletPfa.RecFriend") != 0) {
+        break;
+      }
+      super.notifyUI(5, bool, paramObject);
+      return;
     }
-    a((float)(Math.toDegrees(this.i[0] + a()) + 360.0D) % 360.0F, (float)(this.i[1] * 180.0F / 3.141592653589793D), (float)(this.i[2] * 180.0F / 3.141592653589793D));
   }
 }
 

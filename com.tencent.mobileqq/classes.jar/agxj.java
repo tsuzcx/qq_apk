@@ -1,22 +1,17 @@
-import android.graphics.Point;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agxj
+class agxj
+  extends ahbl
 {
-  private int jdField_a_of_type_Int;
-  private agwz jdField_a_of_type_Agwz;
-  private agxa jdField_a_of_type_Agxa;
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  
-  agxj(Point paramPoint, String paramString, boolean paramBoolean, agxa paramagxa, agwz paramagwz, int paramInt)
+  agxj(agwz paramagwz)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Agxa = paramagxa;
-    this.jdField_a_of_type_Agwz = paramagwz;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahcf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

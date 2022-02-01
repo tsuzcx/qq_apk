@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aufx;
+import awnb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,19 +11,19 @@ public class GetQZoneFeedCount
 {
   public int a()
   {
-    aufx localaufx;
+    awnb localawnb;
     if ((this.a != null) && (this.a.app != null))
     {
-      localaufx = (aufx)this.a.app.getManager(10);
-      if (localaufx != null)
+      localawnb = (awnb)this.a.app.getManager(10);
+      if (localawnb != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("GetQZoneFeedCount", 2, "GetQZoneFeedCount isFirstGetUnread:" + localaufx.a() + ",isBackground_Pause:" + this.a.app.isBackground_Pause);
+          QLog.d("GetQZoneFeedCount", 2, "GetQZoneFeedCount isFirstGetUnread:" + localawnb.a() + ",isBackground_Pause:" + this.a.app.isBackground_Pause);
         }
-        if (!localaufx.a()) {
+        if (!localawnb.a()) {
           break label120;
         }
-        localaufx.a(this.a.app.getAccount(), null);
+        localawnb.a(this.a.app.getAccount(), null);
       }
     }
     for (;;)
@@ -31,9 +31,9 @@ public class GetQZoneFeedCount
       return 7;
       label120:
       if (this.a.app.isBackground_Pause) {
-        localaufx.b(6);
+        localawnb.b(6);
       } else {
-        localaufx.a(5);
+        localawnb.a(5);
       }
     }
   }

@@ -1,18 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
-import cooperation.qwallet.plugin.QWalletPrivacyUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
 
 public class aivk
-  implements DialogInterface.OnClickListener
+  implements ajhv
 {
-  public aivk(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
+  public aivk(TroopView paramTroopView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    QWalletPrivacyUtils.setHasClickAgree(this.a.getActivity().app);
-    this.a.a();
+    if (TroopView.a(this.a) != null) {
+      TroopView.a(this.a).a(paramInt1, paramInt2);
+    }
+    if (paramInt1 >= paramInt2) {
+      if (!TroopView.a(this.a))
+      {
+        TroopView.a(this.a, true);
+        if (this.a.a != null) {
+          this.a.a.a(TroopView.a(this.a));
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!TroopView.a(this.a));
+      TroopView.a(this.a, false);
+    } while (this.a.a == null);
+    this.a.a.a(TroopView.a(this.a));
   }
 }
 

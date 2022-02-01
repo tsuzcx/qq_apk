@@ -1,14 +1,14 @@
-public class anck
+import com.tencent.mobileqq.data.ApolloKapuEntranceTips;
+import java.util.Comparator;
+
+class anck
+  implements Comparator<ApolloKapuEntranceTips>
 {
-  public float a;
-  public boolean a;
-  public float b = 0.0F;
-  public float c = 0.0F;
+  anck(ancd paramancd) {}
   
-  public anck()
+  public int a(ApolloKapuEntranceTips paramApolloKapuEntranceTips1, ApolloKapuEntranceTips paramApolloKapuEntranceTips2)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = true;
+    return paramApolloKapuEntranceTips1.priority - paramApolloKapuEntranceTips2.priority;
   }
 }
 

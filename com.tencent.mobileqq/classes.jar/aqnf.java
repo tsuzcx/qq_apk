@@ -1,39 +1,49 @@
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import android.text.TextUtils;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class aqnf
-  extends aqru
+class aqnf
 {
-  public aqnf(VerifyPwdView paramVerifyPwdView) {}
+  private static volatile aqnf a;
   
-  protected void a(int paramInt, String paramString)
+  public static aqnf a()
   {
-    arri.a(paramString);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (!paramBoolean)
+    if (a == null) {}
+    try
     {
-      VerifyPwdView.a(this.a);
-      return;
+      if (a == null) {
+        a = new aqnf();
+      }
+      return a;
     }
-    VerifyPwdView.b(this.a);
+    finally {}
   }
   
-  protected void b(int paramInt, String paramString)
+  public String a(String paramString)
   {
-    arri.a(paramString);
-    VerifyPwdView.c(this.a);
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      paramString = Pattern.compile("^\\[(\\d+)\\]$").matcher(paramString);
+    } while (!paramString.find());
+    return paramString.group(1);
   }
   
-  protected void e()
+  public String b(String paramString)
   {
-    VerifyPwdView.a(this.a);
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      paramString = Pattern.compile("^\\[('|\")(.+)('|\")\\]$").matcher(paramString);
+    } while (!paramString.find());
+    return paramString.group(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqnf
  * JD-Core Version:    0.7.0.1
  */

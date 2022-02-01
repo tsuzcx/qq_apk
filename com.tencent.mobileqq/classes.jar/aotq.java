@@ -1,107 +1,54 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aotq
-  extends aokh<aotp>
+  extends Handler
 {
-  public int a()
+  private WeakReference<VideoEncoderCore> a;
+  
+  public aotq(Looper paramLooper, VideoEncoderCore paramVideoEncoderCore)
   {
-    return 557;
+    super(paramLooper);
+    this.a = new WeakReference(paramVideoEncoderCore);
   }
   
-  @NonNull
-  public aotp a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new aotp();
-  }
-  
-  @Nullable
-  public aotp a(aoko[] paramArrayOfaoko)
-  {
-    QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaoko != null) {
-      try
+    if (this.a != null) {}
+    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
+    {
+      switch (paramMessage.what)
       {
-        if (paramArrayOfaoko.length > 0)
+      }
+      do
+      {
+        do
         {
-          paramArrayOfaoko = (aotp)aolc.a(paramArrayOfaoko[0].a, aotp.class);
-          return paramArrayOfaoko;
+          return;
+        } while (localVideoEncoderCore == null);
+        paramMessage = (Object[])paramMessage.obj;
+        try
+        {
+          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
+          return;
         }
-      }
-      catch (QStorageInstantiateException paramArrayOfaoko)
-      {
-        QLog.e("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaoko.getMessage());
-      }
-    }
-    return null;
-  }
-  
-  public Class<aotp> a()
-  {
-    return aotp.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public void a(aotp paramaotp)
-  {
-    if (paramaotp != null)
-    {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label152;
-      }
-    }
-    label152:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (TextUtils.isEmpty(paramaotp.a)) {
-          paramaotp.a = "{}";
+        catch (Exception paramMessage)
+        {
+          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
         }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("c2cfile_excitingupload_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("qfile_c2cfile_excitingupload", paramaotp.a);
-        localEditor.apply();
-        QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Upload config [" + paramaotp.a + "]");
-        localObject = (aqud)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((aqud)localObject).a(paramaotp);
-        }
-      }
+      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
+      VideoEncoderCore.a(localVideoEncoderCore).a(3);
       return;
     }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aotq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import alof;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -9,13 +8,14 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import apmh;
-import apml;
-import apmq;
-import bdgm;
-import bdin;
-import bdkn;
-import begz;
+import anhk;
+import arpd;
+import arph;
+import arpm;
+import bglp;
+import bgnt;
+import bgpp;
+import bhod;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -58,7 +58,7 @@ public class ThemeAndBubbleCommonJsPlugin
   
   public void getNetwork(JSONObject paramJSONObject, String paramString)
   {
-    int i = bdin.a(this.mRuntime.a());
+    int i = bgnt.a(this.mRuntime.a());
     try
     {
       paramJSONObject = new JSONObject();
@@ -143,7 +143,7 @@ public class ThemeAndBubbleCommonJsPlugin
     {
       paramString2 = new Bundle();
       paramString2.putString("jumpTo", paramJsBridgeListener.optString("jumpto"));
-      super.sendRemoteReq(apml.a("ipc_open_settings", paramString1, this.mOnRemoteResp.key, paramString2), false, true);
+      super.sendRemoteReq(arph.a("ipc_open_settings", paramString1, this.mOnRemoteResp.key, paramString2), false, true);
       return true;
     }
     if ("isWhiteName".equals(paramString3))
@@ -243,16 +243,16 @@ public class ThemeAndBubbleCommonJsPlugin
       paramString = new StringBuilder();
       paramString.append(paramJSONObject);
       paramString.append("?client=androidQQ");
-      paramString.append("&version=8.3.5.4555");
+      paramString.append("&version=8.4.1.4680");
       paramString.append("&system=" + Build.VERSION.RELEASE);
       paramString.append("&device=" + Build.DEVICE);
       paramString.append("&uin=" + ((AppActivity)this.mRuntime.a()).getAppRuntime().getAccount());
-      paramJSONObject = apmq.a("VIP_xingying", paramString.toString());
+      paramJSONObject = arpm.a("VIP_xingying", paramString.toString());
       if (QLog.isColorLevel()) {
         QLog.i("CommonJsHandler", 2, "CommonJsHandler saveImage imageUrl=" + paramJSONObject);
       }
       paramString = System.currentTimeMillis() + ".jpg";
-      ThreadManager.executeOnNetWorkThread(new ThemeAndBubbleCommonJsPlugin.5(this, paramJSONObject, new File(alof.bd, paramString)));
+      ThreadManager.executeOnNetWorkThread(new ThemeAndBubbleCommonJsPlugin.5(this, paramJSONObject, new File(anhk.bg, paramString)));
       return;
     }
     catch (Exception paramJSONObject)
@@ -274,19 +274,19 @@ public class ThemeAndBubbleCommonJsPlugin
       }
       if (paramJSONObject.length >= 1)
       {
-        localObject = bdgm.a(this.mRuntime.a(), 230);
-        ((bdkn)localObject).a(str2);
-        ((bdkn)localObject).b(str1);
-        ((bdkn)localObject).a(paramJSONObject[0], new ThemeAndBubbleCommonJsPlugin.1(this, paramString));
+        localObject = bglp.a(this.mRuntime.a(), 230);
+        ((bgpp)localObject).a(str2);
+        ((bgpp)localObject).b(str1);
+        ((bgpp)localObject).a(paramJSONObject[0], new ThemeAndBubbleCommonJsPlugin.1(this, paramString));
         if (paramJSONObject.length >= 2) {
-          ((bdkn)localObject).b(paramJSONObject[1], new ThemeAndBubbleCommonJsPlugin.2(this, paramString));
+          ((bgpp)localObject).b(paramJSONObject[1], new ThemeAndBubbleCommonJsPlugin.2(this, paramString));
         }
         if (paramJSONObject.length >= 3) {
-          ((bdkn)localObject).c(paramJSONObject[2], new ThemeAndBubbleCommonJsPlugin.3(this, paramString));
+          ((bgpp)localObject).c(paramJSONObject[2], new ThemeAndBubbleCommonJsPlugin.3(this, paramString));
         }
-        ((bdkn)localObject).setCanceledOnTouchOutside(false);
-        ((bdkn)localObject).setOnKeyListener(new ThemeAndBubbleCommonJsPlugin.4(this, (bdkn)localObject, paramString));
-        ((bdkn)localObject).show();
+        ((bgpp)localObject).setCanceledOnTouchOutside(false);
+        ((bgpp)localObject).setOnKeyListener(new ThemeAndBubbleCommonJsPlugin.4(this, (bgpp)localObject, paramString));
+        ((bgpp)localObject).show();
         return;
       }
       super.callJsOnError(paramString, "Button no found - " + (String)localObject);
@@ -317,7 +317,7 @@ public class ThemeAndBubbleCommonJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeAndBubbleCommonJsPlugin
  * JD-Core Version:    0.7.0.1
  */

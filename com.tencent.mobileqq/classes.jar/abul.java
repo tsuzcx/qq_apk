@@ -1,44 +1,54 @@
-import android.util.Base64;
-import java.security.Key;
-import java.security.KeyFactory;
-import java.security.spec.X509EncodedKeySpec;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESKeySpec;
-import javax.crypto.spec.IvParameterSpec;
+import android.view.View;
+import com.tencent.device.msg.data.MessageForDevPtt;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class abul
+class abul
+  implements bkhw
 {
-  public static String a = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD3ywzb5M1Acw/gPd4869if4PlW\rhH8ekZvuoW3JYzxzeI1Rb5ENlEErZFUFvQrdTtapycinwjtQUHpgJBkAYxe8fI8k\ralWhJxQAOJZxIVPiZcPzGl4kaPkGHonKhT1md+FwoFGfosNbccQ4RcvUT/iSuqPh\rFd9e4fbNnLf9pPf5LQIDAQAB";
+  abul(abuk paramabuk, MessageForPtt paramMessageForPtt, bkho parambkho) {}
   
-  public static String a(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = Base64.decode(a, 0);
-    localObject = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec((byte[])localObject));
-    Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-    localCipher.init(1, (Key)localObject);
-    return Base64.encodeToString(localCipher.doFinal(paramString.getBytes()), 2);
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    int j = paramString.length();
-    int i = 0;
-    while (i < paramInt - j % paramInt)
+    this.jdField_a_of_type_Abuk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq);
+    paramView = null;
+    if (this.jdField_a_of_type_Abuk.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
     {
-      paramString = paramString + " ";
-      i += 1;
+      paramView = bbzh.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+      ((MessageForPtt)paramView).fileSize = -3L;
+      this.jdField_a_of_type_Abuk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView, this.jdField_a_of_type_Abuk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     }
-    return paramString;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    paramString1 = new DESKeySpec(paramString1.getBytes());
-    paramString1 = SecretKeyFactory.getInstance("DES").generateSecret(paramString1);
-    Cipher localCipher = Cipher.getInstance("DES/CBC/NoPadding");
-    localCipher.init(1, paramString1, new IvParameterSpec("12345678".getBytes()));
-    return Base64.encodeToString(localCipher.doFinal(a(paramString2, localCipher.getBlockSize()).getBytes()), 2);
+    if (paramView != null)
+    {
+      if (!"device_groupchat".equals(paramView.extStr)) {
+        break label256;
+      }
+      if ((!bgnt.d(BaseApplication.getContext())) && ((paramView instanceof MessageForDevPtt)))
+      {
+        paramView = (MessageForDevPtt)paramView;
+        paramView.fileSize = -1L;
+        paramView.extraflag = 32768;
+        paramView.extStr = "device_groupchat";
+        paramView.serial();
+        this.jdField_a_of_type_Abuk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView.frienduin, paramView.istroop, paramView.uniseq, paramView.msgData);
+        this.jdField_a_of_type_Abuk.b();
+        this.jdField_a_of_type_Bkho.dismiss();
+        return;
+      }
+      ahzf.a(((abqn)this.jdField_a_of_type_Abuk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(this.jdField_a_of_type_Abuk.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength), paramView);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Abuk.b();
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      label256:
+      ((abux)this.jdField_a_of_type_Abuk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(abux.f, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, Long.parseLong(this.jdField_a_of_type_Abuk.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), paramView.uniseq, paramView.istroop, (int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgRecTime / 1000);
+    }
   }
 }
 

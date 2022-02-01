@@ -1,28 +1,21 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.UUID;
 
-public class bexd
+class bexd
+  extends aarj
 {
-  public static void a(View paramView)
-  {
-    if (paramView.isEnabled())
-    {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.5F);
-      localAlphaAnimation.setDuration(200L);
-      localAlphaAnimation.setFillAfter(true);
-      paramView.startAnimation(localAlphaAnimation);
-    }
-  }
+  bexd(bexc parambexc) {}
   
-  public static void b(View paramView)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    if (paramView.isEnabled())
+    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
+    do
     {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-      localAlphaAnimation.setDuration(200L);
-      localAlphaAnimation.setFillAfter(true);
-      paramView.startAnimation(localAlphaAnimation);
-    }
+      return;
+      paramBundle = paramBundle.getString("itemKey");
+    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId != 25));
+    bexc.a(this.a, paramBoolean, paramInt1, paramInt2, paramString1, paramString2, paramString3);
   }
 }
 

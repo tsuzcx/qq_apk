@@ -1,113 +1,112 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.os.SystemClock;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
 
 public class ryp
-  implements bhtv
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public ryp(FastWebActivity paramFastWebActivity) {}
+  public ryp(VideoFeedsGestureLayout paramVideoFeedsGestureLayout) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    if (FastWebActivity.a(this.a) != null)
+    switch (paramMotionEvent.getAction())
     {
-      FastWebActivity.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-      FastWebActivity.a(this.a).a(this.a.app, paramAbsListView, paramInt1, paramInt2);
-    }
-    FastWebActivity.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    if (FastWebActivity.a(this.a) != null) {
-      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a), FastWebActivity.a(this.a).getFirstVisiblePosition(), paramInt2);
-    }
-    FastWebActivity.a(this.a, paramAbsListView, paramInt1 + paramInt2 - 1, false);
-    FastWebActivity.a(this.a, 0);
-    paramAbsListView = paramAbsListView.getChildAt(0);
-    if ((paramAbsListView != null) && (FastWebActivity.c(this.a) != paramAbsListView.getTop()))
-    {
-      FastWebActivity.b(this.a, paramAbsListView.getTop());
-      FastWebActivity.c(this.a, 0);
-    }
-    if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0) && (paramInt1 == 0))
-    {
-      QLog.d(FastWebActivity.a(this.a), 2, "on scroller top");
-      FastWebActivity.a(this.a, 1);
-    }
-    if (paramInt2 + paramInt1 == paramInt3)
-    {
-      QLog.d(FastWebActivity.a(this.a), 2, "on scroller bottom");
-      FastWebActivity.a(this.a, 2);
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    boolean bool1 = FastWebActivity.a(this.a, FastWebActivity.a(this.a).getLastVisiblePosition());
-    String str1;
-    String str2;
-    if (bool1)
-    {
-      str1 = "list_comment_kandian";
-      str2 = str1;
-      if (pwu.a().a())
-      {
-        str2 = str1;
-        if (TextUtils.equals(str1, "list_kandian_native_web")) {
-          str2 = "list_kandian_native_web_lite";
-        }
-      }
-      if (paramInt != 0) {
-        break label341;
-      }
-      AbstractGifImage.resumeAll();
-      int i = FastWebActivity.a(this.a).getFirstVisiblePosition();
-      FastWebActivity.e(this.a);
-      FastWebActivity.a(this.a, i);
-      abvl.a().a(str2, false);
-      label101:
-      boolean bool2 = FastWebActivity.b(this.a, FastWebActivity.a(this.a).getFirstVisiblePosition());
-      sdn.a(paramAbsListView, paramInt, FastWebActivity.a(this.a).innerUniqueID, FastWebActivity.a(this.a, paramAbsListView, paramInt), bool2);
-      if (FastWebActivity.a(this.a) != null) {
-        FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
-      }
-      FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
-      FastWebActivity.f(this.a);
-      if (FastWebActivity.a(this.a) != null) {
-        FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
-      }
-      if (paramInt == 1) {
-        FastWebActivity.e(this.a);
-      }
-      if (!bool1) {
-        break label355;
-      }
-      FastWebActivity.a(this.a).a();
-      if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).a() != null)) {
-        FastWebActivity.a(this.a).a().a(FastWebActivity.a(this.a).getFirstVisiblePosition() - FastWebActivity.a(this.a).getCount(), FastWebActivity.a(this.a).getLastVisiblePosition() - FastWebActivity.a(this.a).getCount());
-      }
     }
     for (;;)
     {
-      this.a.a(paramAbsListView, paramInt);
-      return;
-      str1 = "list_kandian_native_web";
-      break;
-      label341:
-      AbstractGifImage.pauseAll();
-      abvl.a().a(str2);
-      break label101;
-      label355:
-      FastWebActivity.a(this.a).b();
+      return false;
+      if (VideoFeedsGestureLayout.a(this.a) != null)
+      {
+        VideoFeedsGestureLayout.a(this.a, SystemClock.uptimeMillis());
+        VideoFeedsGestureLayout.a(this.a).a(this.a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+      }
     }
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    if (VideoFeedsGestureLayout.a(this.a) != null) {
+      VideoFeedsGestureLayout.a(this.a).b(this.a);
+    }
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    paramFloat1 = 1.0F;
+    int i = ryx.b(VideoFeedsGestureLayout.a(this.a))[0];
+    i = ryx.b(VideoFeedsGestureLayout.a(this.a))[1];
+    paramFloat2 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
+    float f = paramMotionEvent2.getX() - paramMotionEvent1.getX();
+    if (VideoFeedsGestureLayout.a(this.a) == 0)
+    {
+      if (Math.abs(f) - Math.abs(paramFloat2) >= 0.0F) {
+        break label154;
+      }
+      if (paramMotionEvent1.getX() >= this.a.getWidth() / 2) {
+        break label142;
+      }
+      VideoFeedsGestureLayout.a(this.a, 2);
+    }
+    switch (VideoFeedsGestureLayout.a(this.a))
+    {
+    default: 
+    case 1: 
+    case 2: 
+      label142:
+      label154:
+      do
+      {
+        return false;
+        VideoFeedsGestureLayout.a(this.a, 1);
+        break;
+        VideoFeedsGestureLayout.a(this.a, 3);
+        break;
+      } while (VideoFeedsGestureLayout.a(this.a) == null);
+      paramFloat2 /= this.a.getHeight() / 2;
+      if (Math.abs(paramFloat2) > 1.0F) {
+        if (paramFloat2 <= 1.0F) {
+          break;
+        }
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.a.a(VideoFeedsGestureLayout.a(this.a), paramFloat1);
+      return false;
+      paramFloat1 = -1.0F;
+      continue;
+      if (VideoFeedsGestureLayout.a(this.a) == null) {
+        break;
+      }
+      paramFloat2 = f / (this.a.getWidth() / 4 * 3);
+      if (Math.abs(paramFloat2) > 1.0F) {
+        if (paramFloat2 <= 1.0F) {}
+      }
+      for (;;)
+      {
+        this.a.a(VideoFeedsGestureLayout.a(this.a), paramFloat1);
+        return false;
+        paramFloat1 = -1.0F;
+        continue;
+        paramFloat1 = paramFloat2;
+      }
+      paramFloat1 = paramFloat2;
+    }
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((VideoFeedsGestureLayout.a(this.a) != null) && (SystemClock.uptimeMillis() - VideoFeedsGestureLayout.a(this.a) > 500L)) {
+      VideoFeedsGestureLayout.a(this.a).a(this.a);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ryp
  * JD-Core Version:    0.7.0.1
  */

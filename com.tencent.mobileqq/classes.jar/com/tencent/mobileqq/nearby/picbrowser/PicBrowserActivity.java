@@ -1,30 +1,34 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
+import Override;
+import abgc;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import avjh;
+import android.view.MotionEvent;
+import axqr;
 import com.tencent.image.AbstractVideoImage;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
-import zje;
 
 public class PicBrowserActivity
   extends BaseActivity
 {
+  public abgc a;
   protected ImmersiveTitleBar2 a;
-  public zje a;
   public int b;
   public ArrayList<PicInfo> b;
   public boolean b;
   
   public PicBrowserActivity()
   {
-    this.jdField_a_of_type_Zje = new avjh(this);
+    this.jdField_a_of_type_Abgc = new axqr(this);
   }
   
   protected void a()
@@ -36,15 +40,23 @@ public class PicBrowserActivity
   
   protected void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131378030));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131378874));
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(0);
     ImmersiveUtils.a(getWindow(), ThemeUtil.isNowThemeIsDefault(this.app, false, null));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(getResources().getColor(2131165307));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(getResources().getColor(2131165343));
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnBackPressed()
   {
-    if (!this.jdField_a_of_type_Zje.b()) {
+    if (!this.jdField_a_of_type_Abgc.b()) {
       super.doOnBackPressed();
     }
   }
@@ -54,22 +66,22 @@ public class PicBrowserActivity
     this.mActNeedImmersive = false;
     this.mNeedStatusTrans = true;
     super.doOnCreate(paramBundle);
-    setContentView(2131561089);
+    setContentView(2131561300);
     d();
     a();
-    this.jdField_a_of_type_Zje.a(this);
+    this.jdField_a_of_type_Abgc.a(this);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Zje.c(this);
+    this.jdField_a_of_type_Abgc.c(this);
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!this.jdField_a_of_type_Zje.a(paramInt, paramKeyEvent)) {
+    if (!this.jdField_a_of_type_Abgc.a(paramInt, paramKeyEvent)) {
       return super.doOnKeyDown(paramInt, paramKeyEvent);
     }
     return true;
@@ -78,20 +90,20 @@ public class PicBrowserActivity
   public void doOnPause()
   {
     AbstractVideoImage.pauseAll();
-    this.jdField_a_of_type_Zje.b();
+    this.jdField_a_of_type_Abgc.b();
   }
   
   public void doOnResume()
   {
     AbstractVideoImage.resumeAll();
-    this.jdField_a_of_type_Zje.c();
+    this.jdField_a_of_type_Abgc.c();
   }
   
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
     if (paramBoolean) {
-      this.jdField_a_of_type_Zje.b(this);
+      this.jdField_a_of_type_Abgc.b(this);
     }
   }
   
@@ -104,10 +116,17 @@ public class PicBrowserActivity
   {
     return false;
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

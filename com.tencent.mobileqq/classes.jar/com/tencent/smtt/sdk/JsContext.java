@@ -7,10 +7,10 @@ import java.net.URL;
 
 public final class JsContext
 {
-  private final IX5JsContext mContext;
-  private JsContext.ExceptionHandler mExceptionHandler;
-  private String mName;
-  private final JsVirtualMachine mVirtualMachine;
+  private final JsVirtualMachine a;
+  private final IX5JsContext b;
+  private JsContext.ExceptionHandler c;
+  private String d;
   
   public JsContext(Context paramContext)
   {
@@ -22,11 +22,11 @@ public final class JsContext
     if (paramJsVirtualMachine == null) {
       throw new IllegalArgumentException("The virtualMachine value can not be null");
     }
-    this.mVirtualMachine = paramJsVirtualMachine;
-    this.mContext = this.mVirtualMachine.createJsContext();
+    this.a = paramJsVirtualMachine;
+    this.b = this.a.a();
     try
     {
-      this.mContext.setPerContextData(this);
+      this.b.setPerContextData(this);
       return;
     }
     catch (AbstractMethodError paramJsVirtualMachine) {}
@@ -34,17 +34,17 @@ public final class JsContext
   
   public static JsContext current()
   {
-    return (JsContext)X5JsCore.currentContextData();
+    return (JsContext)X5JsCore.a();
   }
   
   public void addJavascriptInterface(Object paramObject, String paramString)
   {
-    this.mContext.addJavascriptInterface(paramObject, paramString);
+    this.b.addJavascriptInterface(paramObject, paramString);
   }
   
   public void destroy()
   {
-    this.mContext.destroy();
+    this.b.destroy();
   }
   
   public void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
@@ -54,7 +54,7 @@ public final class JsContext
   
   public void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback, URL paramURL)
   {
-    this.mContext.evaluateJavascript(paramString, paramValueCallback, paramURL);
+    this.b.evaluateJavascript(paramString, paramValueCallback, paramURL);
   }
   
   public JsValue evaluateScript(String paramString)
@@ -64,7 +64,7 @@ public final class JsContext
   
   public JsValue evaluateScript(String paramString, URL paramURL)
   {
-    paramString = this.mContext.evaluateScript(paramString, paramURL);
+    paramString = this.b.evaluateScript(paramString, paramURL);
     if (paramString == null) {
       return null;
     }
@@ -76,71 +76,71 @@ public final class JsContext
     if (paramValueCallback == null) {}
     for (paramValueCallback = null;; paramValueCallback = new JsContext.1(this, paramValueCallback))
     {
-      this.mContext.evaluateScriptAsync(paramString, paramValueCallback, paramURL);
+      this.b.evaluateScriptAsync(paramString, paramValueCallback, paramURL);
       return;
     }
   }
   
   public JsContext.ExceptionHandler exceptionHandler()
   {
-    return this.mExceptionHandler;
+    return this.c;
   }
   
   public byte[] getNativeBuffer(int paramInt)
   {
-    return this.mContext.getNativeBuffer(paramInt);
+    return this.b.getNativeBuffer(paramInt);
   }
   
   public int getNativeBufferId()
   {
-    return this.mContext.getNativeBufferId();
+    return this.b.getNativeBufferId();
   }
   
   public String name()
   {
-    return this.mName;
+    return this.d;
   }
   
   public void removeJavascriptInterface(String paramString)
   {
-    this.mContext.removeJavascriptInterface(paramString);
+    this.b.removeJavascriptInterface(paramString);
   }
   
   public void setExceptionHandler(JsContext.ExceptionHandler paramExceptionHandler)
   {
-    this.mExceptionHandler = paramExceptionHandler;
+    this.c = paramExceptionHandler;
     if (paramExceptionHandler == null)
     {
-      this.mContext.setExceptionHandler(null);
+      this.b.setExceptionHandler(null);
       return;
     }
-    this.mContext.setExceptionHandler(new JsContext.2(this));
+    this.b.setExceptionHandler(new JsContext.2(this));
   }
   
   public void setName(String paramString)
   {
-    this.mName = paramString;
-    this.mContext.setName(paramString);
+    this.d = paramString;
+    this.b.setName(paramString);
   }
   
   public int setNativeBuffer(int paramInt, byte[] paramArrayOfByte)
   {
-    return this.mContext.setNativeBuffer(paramInt, paramArrayOfByte);
+    return this.b.setNativeBuffer(paramInt, paramArrayOfByte);
   }
   
   public void stealValueFromOtherCtx(String paramString1, JsContext paramJsContext, String paramString2)
   {
-    this.mContext.stealValueFromOtherCtx(paramString1, paramJsContext.mContext, paramString2);
+    this.b.stealValueFromOtherCtx(paramString1, paramJsContext.b, paramString2);
   }
   
   public JsVirtualMachine virtualMachine()
   {
-    return this.mVirtualMachine;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.JsContext
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import org.json.JSONObject;
 
 public class avpp
-  implements DialogInterface.OnClickListener
+  implements tol
 {
-  public avpp(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public avpp(UiApiPlugin paramUiApiPlugin) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    paramDialogInterface.dismiss();
+    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avpp
  * JD-Core Version:    0.7.0.1
  */

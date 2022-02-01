@@ -1,10 +1,10 @@
 package com.tencent.qg;
 
 import android.content.Context;
-import bfxa;
-import bfxc;
-import bfxd;
-import bfxl;
+import bjem;
+import bjeo;
+import bjep;
+import bjex;
 import com.tencent.qg.sdk.QGBitmapLoader;
 import com.tencent.qg.sdk.QGGLSurfaceView;
 import com.tencent.qg.sdk.QGReporter;
@@ -33,17 +33,17 @@ public class StoryQGSurfaceView
   
   public void a()
   {
-    GLog.init(new bfxc());
-    QGBitmapLoader.setBitmapLoader(new bfxa());
-    QGReporter.setReporter(new bfxd());
+    GLog.init(new bjeo());
+    QGBitmapLoader.setBitmapLoader(new bjem());
+    QGReporter.setReporter(new bjep());
     this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine = new ModuleEngine();
-    this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.registerJsModule(new bfxl());
+    this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.registerJsModule(new bjex());
     setModuleEngin(this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.StoryQGSurfaceView
  * JD-Core Version:    0.7.0.1
  */

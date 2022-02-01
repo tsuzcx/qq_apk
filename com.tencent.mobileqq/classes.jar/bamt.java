@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class bamt
-  implements bhum
+public abstract interface bamt
 {
-  bamt(bamp parambamp, QQAppInterface paramQQAppInterface, int paramInt) {}
-  
-  public void onDismiss()
-  {
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", this.jdField_a_of_type_Int, 0, "", "", "", "");
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

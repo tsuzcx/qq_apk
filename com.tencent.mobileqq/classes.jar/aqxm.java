@@ -1,16 +1,61 @@
-public abstract interface aqxm
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class aqxm
+  extends aqwr<aqxl>
 {
-  public abstract void a(int paramInt, String paramString);
+  @NonNull
+  public aqxl a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
+    }
+    return new aqxl();
+  }
   
-  public abstract void a(String paramString1, String paramString2);
+  @NonNull
+  public aqxl a(@NonNull aqlg[] paramArrayOfaqlg)
+  {
+    aqxl localaqxl = new aqxl();
+    try
+    {
+      localaqxl.a = new JSONObject(paramArrayOfaqlg[0].a).optBoolean("showVipIcon", false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localaqxl.a);
+      }
+      return localaqxl;
+    }
+    catch (JSONException paramArrayOfaqlg)
+    {
+      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfaqlg);
+    }
+    return localaqxl;
+  }
   
-  public abstract void aG_();
+  @NonNull
+  public aqxl b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
+    }
+    return new aqxl();
+  }
   
-  public abstract void aH_();
+  public Class<aqxl> clazz()
+  {
+    return aqxl.class;
+  }
+  
+  public int type()
+  {
+    return 465;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxm
  * JD-Core Version:    0.7.0.1
  */

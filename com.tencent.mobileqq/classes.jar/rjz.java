@@ -1,49 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
 
 public class rjz
+  extends pmn
 {
-  public static int a;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 3;
-  public static int e = 4;
-  public static int f = 1;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
+  public rjz(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public rjz(int paramInt1, int paramInt2)
+  public void a(int paramInt, rfr paramrfr)
   {
-    this.m = paramInt1;
-    this.n = paramInt2;
-  }
-  
-  public HashMap<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_hitCount", String.valueOf(this.g));
-    localHashMap.put("param_notHitCount", String.valueOf(this.h));
-    localHashMap.put("param_triggerCount", String.valueOf(this.i));
-    localHashMap.put("param_triggerHitCount", String.valueOf(this.j));
-    localHashMap.put("param_distinctTriggerHitCount", String.valueOf(this.k));
-    localHashMap.put("param_realTriggerHitCount", String.valueOf(this.l));
-    localHashMap.put("param_sceneType", String.valueOf(this.m));
-    localHashMap.put("param_strategy", String.valueOf(this.n));
-    if (QLog.isColorLevel()) {
-      QLog.i("wgs", 2, "VideoPreloadReportData getReportMap " + localHashMap.toString());
+    if ((paramInt == 0) && (ReadInJoyDeliverVideoActivity.a(this.a)))
+    {
+      ReadInJoyDeliverVideoActivity.a(this.a, new Bundle());
+      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_cover_url", paramrfr.h);
+      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_url", paramrfr.g);
+      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_title", paramrfr.jdField_d_of_type_JavaLangString);
+      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_uuid", paramrfr.f);
+      ReadInJoyDeliverVideoActivity.a(this.a).putLong("arg_video_duration", paramrfr.jdField_a_of_type_Long);
+      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_width", paramrfr.c);
+      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_height", paramrfr.jdField_b_of_type_Int);
+      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_width", paramrfr.e);
+      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_height", paramrfr.jdField_d_of_type_Int);
+      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_topic_id", paramrfr.jdField_a_of_type_Int + "");
+      ReadInJoyDeliverVideoActivity.a(this.a).setHint("#" + paramrfr.jdField_a_of_type_JavaLangString + "#");
+      ReadInJoyDeliverVideoActivity.a(this.a, paramrfr.jdField_b_of_type_JavaLangString);
+      ReadInJoyDeliverVideoActivity.a(this.a, true);
+      ReadInJoyDeliverVideoActivity.a(this.a, paramrfr.h);
     }
-    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rjz
  * JD-Core Version:    0.7.0.1
  */

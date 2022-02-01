@@ -1,28 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import java.util.List;
 
-public class arqc
-  extends arpx
+class arqc
+  extends anli
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  arqc(arpz paramarpz) {}
   
-  public arqc(bbtn parambbtn)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = parambbtn.e;
-    this.jdField_a_of_type_Int = 1;
-    this.b = String.valueOf(parambbtn.b);
+    arpz.a(this.a).clear();
   }
   
-  public String a()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)))
-    {
-      QLog.e("TroopFileControlReq<QFile>", 1, "key params is null");
-      return "";
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.e();
     }
-    return a(this.jdField_a_of_type_Int + "", this.b, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Integer)) && (arpz.a(this.a) != null)) {
+      arpz.a(this.a).obtainMessage(208, paramObject).sendToTarget();
+    }
+    if ((this.a.a != null) && (paramBoolean)) {
+      this.a.a.e();
+    }
   }
 }
 

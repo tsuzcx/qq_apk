@@ -1,40 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class ohf
+class ohf
+  implements srw
 {
-  public static AtomicBoolean a;
+  private WeakReference<oha> a;
   
-  public static ArkAppMessage a(qkf paramqkf)
+  ohf(oha paramoha)
   {
-    return null;
+    this.a = new WeakReference(paramoha);
   }
   
-  public static void a() {}
-  
-  public static void a(int paramInt) {}
-  
-  public static void a(View paramView) {}
-  
-  public static void a(ArkAppMessage paramArkAppMessage, int paramInt) {}
-  
-  public static void a(ohd paramohd, int paramInt) {}
-  
-  public static boolean a(ArkAppMessage paramArkAppMessage)
+  public void a(ChannelCoverInfo paramChannelCoverInfo)
   {
-    return false;
+    oha localoha = (oha)this.a.get();
+    if (((localoha == null) || (oha.a(localoha).a())) && (QLog.isColorLevel()))
+    {
+      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
+      return;
+    }
+    localoha.a(paramChannelCoverInfo);
   }
-  
-  public static void b() {}
-  
-  public static void b(int paramInt) {}
-  
-  public static void b(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohf
  * JD-Core Version:    0.7.0.1
  */

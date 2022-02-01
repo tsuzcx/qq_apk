@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.NearbyActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adjd
-  implements QQPermissionCallback
+class adjd
+  implements DialogInterface.OnClickListener
 {
-  public adjd(NearbyActivity paramNearbyActivity) {}
+  adjd(adjb paramadjb) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a();
+    paramDialogInterface.dismiss();
   }
 }
 

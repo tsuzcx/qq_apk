@@ -1,32 +1,75 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.freshnews.BlockableEditTextView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ashw
-  implements ActionMode.Callback
 {
-  public ashw(BlockableEditTextView paramBlockableEditTextView) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public ashw()
   {
-    return false;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public ashw(int paramInt1, String paramString, int paramInt2)
   {
-    if (BlockableEditTextView.a(this.a) == 0) {
-      return true;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
+  
+  public static String a(ArrayList<ashw> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return "";
     }
-    return BlockableEditTextView.a(this.a);
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramArrayList.size())
+      {
+        ashw localashw = (ashw)paramArrayList.get(i);
+        JSONObject localJSONObject;
+        if (localashw != null) {
+          localJSONObject = new JSONObject();
+        }
+        try
+        {
+          localJSONObject.put("tagId", localashw.jdField_a_of_type_Int);
+          localJSONObject.put("tagName", localashw.jdField_a_of_type_JavaLangString);
+          localJSONObject.put("isHotTag", localashw.b);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.e("TagInfo CLASS", 2, "convertToJson error" + localException.toString());
+          }
+        }
+      }
+    }
+    return localJSONArray.toString();
   }
   
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public boolean a()
   {
-    return false;
+    return this.b == 1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{tagId: ").append(this.jdField_a_of_type_Int).append("}");
+    localStringBuilder.append("{tagName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{isHotTag: ").append(this.b).append("}");
+    return localStringBuilder.toString();
   }
 }
 

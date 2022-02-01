@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import azig;
+import bcjg;
 import com.tencent.maxvideo.mediadevice.AVCodec;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
-import xca;
+import yvl;
 
 public class EditWebVideoPartManager$3
   implements Runnable
 {
-  public EditWebVideoPartManager$3(xca paramxca, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public EditWebVideoPartManager$3(yvl paramyvl, RMVideoStateMgr paramRMVideoStateMgr) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class EditWebVideoPartManager$3
       if (QLog.isColorLevel()) {
         QLog.d("EditWebVideoActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.a.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
       }
-      azig.a().a().recordSubmit();
+      bcjg.a().a().recordSubmit();
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -43,7 +43,7 @@ public class EditWebVideoPartManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager.3
  * JD-Core Version:    0.7.0.1
  */

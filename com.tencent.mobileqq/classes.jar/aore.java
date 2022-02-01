@@ -1,96 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
-public class aore
-  extends aokh<aorf>
+class aore
+  implements ServiceConnection
 {
-  public int a()
-  {
-    return 252;
-  }
+  aore(aord paramaord) {}
   
-  @NonNull
-  public aorf a(int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = bdne.n(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
-    return new aorf(bdne.o(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin()), str);
-  }
-  
-  @Nullable
-  public aorf a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
-      return null;
-    }
-    paramArrayOfaoko = paramArrayOfaoko[0].a;
+    aord.a(this.a, aoye.a(paramIBinder));
     if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onParsed, content:" + paramArrayOfaoko);
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + aord.a(this.a));
     }
-    try
-    {
-      paramArrayOfaoko = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramArrayOfaoko.getBytes("utf-8")));
-      NodeList localNodeList = paramArrayOfaoko.getElementsByTagName("video_redbag_config");
-      if ((localNodeList != null) && (localNodeList.getLength() > 0))
-      {
-        paramArrayOfaoko = new aorf(paramArrayOfaoko.getElementsByTagName("resUrl").item(0).getFirstChild().getNodeValue(), paramArrayOfaoko.getElementsByTagName("resMd5").item(0).getFirstChild().getNodeValue());
-        return paramArrayOfaoko;
-      }
-    }
-    catch (Exception paramArrayOfaoko)
-    {
-      QLog.e("RedBagVideoResProcessor", 1, "handleVideoRedbagConfig failed" + paramArrayOfaoko);
-    }
-    return null;
   }
   
-  public Class<aorf> a()
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    return aorf.class;
-  }
-  
-  public void a(int paramInt)
-  {
+    aord.a(this.a, null);
     if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onReqFailed");
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + aord.a(this.a));
     }
-  }
-  
-  public void a(aorf paramaorf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onUpdate");
-    }
-  }
-  
-  public int b()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    return bdne.an(localQQAppInterface.getApp(), localQQAppInterface.c());
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aore
  * JD-Core Version:    0.7.0.1
  */

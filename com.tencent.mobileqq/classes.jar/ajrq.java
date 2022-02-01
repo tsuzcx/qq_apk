@@ -1,79 +1,65 @@
-import android.content.Context;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
 public class ajrq
-  extends GestureDetector.SimpleOnGestureListener
+  implements bkmq
 {
-  float jdField_a_of_type_Float;
+  public ajrq(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public ajrq(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.c(l);
+      return;
+    }
   }
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.r == 10002) {
-      wxj.a("video_shoot", "camera_clkdouble", 0, 0, new String[0]);
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisableAndReleased");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.i) {}
-    do
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
-      do
-      {
-        return true;
-        if (NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) != null) {
-          NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).c();
-        }
-      } while (!azhe.c());
-      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, -1, false);
-    } while ((ajpx.a != 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a != null));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.D();
+      paramView.a(l);
+      if (!bgnt.g(this.a.getActivity())) {
+        break;
+      }
+      ChatHistoryTroopFileFragment.a(this.a).a(0, 0);
+      return true;
+    }
+    ChatHistoryTroopFileFragment.a(this.a, 1);
+    bfsj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.a));
     return true;
   }
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void b(int paramInt, View paramView, ListView paramListView)
   {
-    return super.onDown(paramMotionEvent);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisable");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.t) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    if (Math.abs(f) > this.jdField_a_of_type_Float)
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a(f);
-      if (NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) != null) {
-        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).c();
-      }
-      return true;
+      paramView.b(l);
+      return;
     }
-    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void c(int paramInt, View paramView, ListView paramListView)
   {
-    return NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, paramMotionEvent);
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return super.onSingleTapUp(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewNotCompleteVisableAndReleased");
+    }
   }
 }
 

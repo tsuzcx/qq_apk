@@ -3,7 +3,7 @@ package dov.com.qq.im.capture.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blss;
+import bolw;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.text.ParseException;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class LockedCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator<LockedCategory> CREATOR = new blss();
+  public static final Parcelable.Creator<LockedCategory> CREATOR = new bolw();
   public int a;
   public String a;
   public boolean a;
@@ -99,7 +99,7 @@ public class LockedCategory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.data.LockedCategory
  * JD-Core Version:    0.7.0.1
  */

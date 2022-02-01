@@ -1,73 +1,34 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.richstatus.ActionUrlActivity;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 public class bazn
+  extends WebChromeClient
 {
-  public String a;
-  public ArrayList<bazs> a;
+  private bazn(ActionUrlActivity paramActionUrlActivity) {}
   
-  public bazn(String paramString, ArrayList<bazs> paramArrayList)
+  @Override
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
+      return true;
+    }
+    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
   }
   
-  public static String a(HashMap<String, bazn> paramHashMap)
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    if (paramHashMap == null) {
-      return null;
-    }
-    try
-    {
-      JSONArray localJSONArray = new JSONArray();
-      paramHashMap = paramHashMap.values().iterator();
-      while (paramHashMap.hasNext())
-      {
-        bazn localbazn = (bazn)paramHashMap.next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("n", localbazn.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("l", bazs.a(localbazn.jdField_a_of_type_JavaUtilArrayList));
-        localJSONArray.put(localJSONObject);
-      }
-      paramHashMap = localJSONArray.toString();
-    }
-    catch (Exception paramHashMap)
-    {
-      paramHashMap.printStackTrace();
-      return null;
-    }
-    return paramHashMap;
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    super.onProgressChanged(paramWebView, paramInt);
   }
   
-  public static HashMap<String, bazn> a(String paramString)
+  public void onReceivedTitle(WebView paramWebView, String paramString)
   {
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      JSONArray localJSONArray = new JSONArray(paramString);
-      int i = 0;
-      for (;;)
-      {
-        paramString = localHashMap;
-        if (i >= localJSONArray.length()) {
-          break;
-        }
-        paramString = localJSONArray.getJSONObject(i);
-        String str = paramString.getString("n");
-        localHashMap.put(str, new bazn(str, bazs.a(paramString.getString("l"))));
-        i += 1;
-      }
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      paramString = null;
-    }
+    this.a.setTitle(paramString);
+    this.a.a();
   }
 }
 

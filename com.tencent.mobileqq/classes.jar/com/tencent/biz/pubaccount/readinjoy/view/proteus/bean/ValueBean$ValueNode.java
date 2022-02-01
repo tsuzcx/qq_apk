@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.bean;
 
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.AssertUtil;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.QLog;
 import java.util.Iterator;
 import java.util.Map;
@@ -156,7 +157,7 @@ class ValueBean$ValueNode
     if ((this.styleDynamicValue instanceof String))
     {
       if (!isDynamicValue(paramString2, (String)this.styleDynamicValue)) {
-        break label98;
+        break label108;
       }
       bool = true;
     }
@@ -164,6 +165,9 @@ class ValueBean$ValueNode
     {
       if ((bool) && (paramMap != null)) {
         paramMap.put(paramString1, paramObject);
+      }
+      if (AssertUtil.isDebugVersion()) {
+        AssertUtil.assertInValidAttributesBinding(paramString1);
       }
       return;
       Object localObject2 = paramMap.get(paramString1);
@@ -174,7 +178,7 @@ class ValueBean$ValueNode
       bool = setTrueValue(this.styleDynamicValue, localObject1, paramString2, paramObject);
       paramObject = localObject1;
       continue;
-      label98:
+      label108:
       paramObject = null;
       bool = false;
     }
@@ -182,7 +186,7 @@ class ValueBean$ValueNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean.ValueNode
  * JD-Core Version:    0.7.0.1
  */

@@ -6,15 +6,15 @@ import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Iterator;
 import java.util.List;
-import nwh;
+import ogc;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rzv;
+import sxt;
 
 public class WebFastAdapter$5
   implements Runnable
 {
-  public WebFastAdapter$5(rzv paramrzv, DownloadInfo paramDownloadInfo) {}
+  public WebFastAdapter$5(sxt paramsxt, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -74,9 +74,9 @@ public class WebFastAdapter$5
                 }
               }
               j = i;
-              nwh.a(nwh.a("https://qbdsp.html5.qq.com/ug/stat?st=CgBOEgABiDILFgcxMDY5Mjc2IiAAAAA2JTkuMTQ2LjE0NC42MV8xNTgzMTMzNDQ0Njk1XzExNTYyNzY1MTNCXlyzBFkMgAOdAAAbDBABJgY0MTk3NjI2CTY2NjY2NjY2NkYAUAFsqAw%3D&itemid=ARTICLE_ID&qq=USER_QQ&acttype=ACTION_TYPE", (String)localObject1, "20"));
+              ogc.a(ogc.a("https://qbdsp.html5.qq.com/ug/stat?st=CgBOEgABiDILFgcxMDY5Mjc2IiAAAAA2JTkuMTQ2LjE0NC42MV8xNTgzMTMzNDQ0Njk1XzExNTYyNzY1MTNCXlyzBFkMgAOdAAAbDBABJgY0MTk3NjI2CTY2NjY2NjY2NkYAUAFsqAw%3D&itemid=ARTICLE_ID&qq=USER_QQ&acttype=ACTION_TYPE", (String)localObject1, "20"));
               j = i;
-              nwh.a(nwh.a("https://qbdsp.html5.qq.com/ug/stat?st=CgBOEgABiDILFgcxMDY5Mjc2IiAAAAA2JTkuMTQ2LjE0NC42MV8xNTgzMTMzNDQ0Njk1XzExNTYyNzY1MTNCXlyzBFkMgAOdAAAbDBABJgY0MTk3NjI2CTY2NjY2NjY2NkYAUAFsqAw%3D&itemid=ARTICLE_ID&qq=USER_QQ&acttype=ACTION_TYPE", (String)localObject1, "11"));
+              ogc.a(ogc.a("https://qbdsp.html5.qq.com/ug/stat?st=CgBOEgABiDILFgcxMDY5Mjc2IiAAAAA2JTkuMTQ2LjE0NC42MV8xNTgzMTMzNDQ0Njk1XzExNTYyNzY1MTNCXlyzBFkMgAOdAAAbDBABJgY0MTk3NjI2CTY2NjY2NjY2NkYAUAFsqAw%3D&itemid=ARTICLE_ID&qq=USER_QQ&acttype=ACTION_TYPE", (String)localObject1, "11"));
               i = k;
             }
             catch (JSONException localJSONException2)
@@ -100,7 +100,7 @@ public class WebFastAdapter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter.5
  * JD-Core Version:    0.7.0.1
  */

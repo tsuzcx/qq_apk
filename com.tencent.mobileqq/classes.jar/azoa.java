@@ -1,48 +1,38 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.MobileQQ;
+import android.os.Handler;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-public class azoa
-  extends URLDrawableParams
+class azoa
+  extends asgf
 {
-  private ProtocolDownloader a;
+  azoa(aznv paramaznv) {}
   
-  public azoa(MobileQQ paramMobileQQ)
+  protected void a(boolean paramBoolean, Card paramCard)
   {
-    super(paramMobileQQ);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    if ((("http".equals(paramString)) || ("https".equals(paramString))) && (this.a == null)) {
-      this.a = new batt();
+    if (QLog.isColorLevel()) {
+      if (paramCard == null) {
+        break label124;
+      }
     }
-    return this.a;
-  }
-  
-  public String doGetLocalFilePath(String paramString)
-  {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return bdua.a();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847367);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847367);
+    label124:
+    for (paramCard = paramCard.declaration;; paramCard = null)
+    {
+      QLog.d("ProfileExtendFriendComponent", 2, String.format("onGetExtendFriendInfo success=%s declaration=%s", new Object[] { Boolean.valueOf(paramBoolean), paramCard }));
+      if (aznv.a(this.a) != null) {
+        aznv.a(this.a).removeCallbacks(aznv.a(this.a));
+      }
+      if (aznv.a(this.a) != null)
+      {
+        aznv.a(this.a).dismiss();
+        aznv.a(this.a, null);
+      }
+      if (!aznv.d(this.a))
+      {
+        aznv.b(this.a, true);
+        aznv.b(this.a);
+      }
+      return;
+    }
   }
 }
 

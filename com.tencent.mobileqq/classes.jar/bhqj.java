@@ -1,53 +1,26 @@
-public final class bhqj
-  implements Cloneable
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
+
+class bhqj
+  implements View.OnClickListener
 {
-  private long a;
+  bhqj(bhqg parambhqg) {}
   
-  public bhqj(long paramLong)
+  public void onClick(View paramView)
   {
-    this.a = paramLong;
-  }
-  
-  public bhqj(byte[] paramArrayOfByte)
-  {
-    this(paramArrayOfByte, 0);
-  }
-  
-  public bhqj(byte[] paramArrayOfByte, int paramInt)
-  {
-    this.a = (paramArrayOfByte[(paramInt + 3)] << 24 & 0xFF000000);
-    this.a += (paramArrayOfByte[(paramInt + 2)] << 16 & 0xFF0000);
-    this.a += (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
-    this.a += (paramArrayOfByte[paramInt] & 0xFF);
-  }
-  
-  public long a()
-  {
-    return this.a;
-  }
-  
-  public byte[] a()
-  {
-    return new byte[] { (byte)(int)(this.a & 0xFF), (byte)(int)((this.a & 0xFF00) >> 8), (byte)(int)((this.a & 0xFF0000) >> 16), (byte)(int)((this.a & 0xFF000000) >> 24) };
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof bhqj))) {}
-    while (this.a != ((bhqj)paramObject).a()) {
-      return false;
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return (int)this.a;
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(102));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqj
  * JD-Core Version:    0.7.0.1
  */

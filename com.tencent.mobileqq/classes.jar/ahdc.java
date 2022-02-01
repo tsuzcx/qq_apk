@@ -1,23 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class ahdc
-  implements DialogInterface.OnClickListener
+class ahdc
+  implements bhud
 {
-  public ahdc(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  ahdc(ahda paramahda) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView)
   {
-    if (!bdin.g(this.a.getApplicationContext())) {
-      QQToast.a(this.a, 2131695131, 1).a();
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
+    afur.n = true;
+    if (this.a.a()) {
       return;
-      this.a.f();
+    }
+    Object localObject = (FragmentActivity)paramView.getContext();
+    if (localObject != null) {}
+    for (localObject = ((FragmentActivity)localObject).getChatFragment();; localObject = null)
+    {
+      if (localObject == null)
+      {
+        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+        return;
+      }
+      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      return;
     }
   }
 }

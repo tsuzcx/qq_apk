@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.play;
 
 import android.graphics.Bitmap;
-import blhy;
-import blhz;
+import bnxl;
+import bnxm;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class FaceChangeUtils$2
   implements Runnable
 {
-  public FaceChangeUtils$2(List paramList, Bitmap paramBitmap, blhz paramblhz) {}
+  public FaceChangeUtils$2(List paramList, Bitmap paramBitmap, bnxm parambnxm) {}
   
   public void run()
   {
@@ -17,15 +17,15 @@ public final class FaceChangeUtils$2
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localArrayList.add(blhy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (String)this.jdField_a_of_type_JavaUtilList.get(i)));
+      localArrayList.add(bnxl.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (String)this.jdField_a_of_type_JavaUtilList.get(i)));
       i += 1;
     }
-    this.jdField_a_of_type_Blhz.a(localArrayList);
+    this.jdField_a_of_type_Bnxm.a(localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.play.FaceChangeUtils.2
  * JD-Core Version:    0.7.0.1
  */

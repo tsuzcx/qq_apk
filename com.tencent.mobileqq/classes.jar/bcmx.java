@@ -1,40 +1,10 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-
-class bcmx
-  extends ytx
+public abstract interface bcmx
 {
-  bcmx(bcmu parambcmu) {}
+  public abstract void X_();
   
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298914);
-    paramBundle = paramBundle.getString("fileId");
-    bbvl.c("TroopFileManager", bbvl.a, "delete onActionResult: fileId:" + paramBundle + " isSuccess:" + paramBoolean + " errorCode:" + paramInt);
-    if (paramBoolean)
-    {
-      this.a.b(paramBundle);
-      return;
-    }
-    switch (paramInt)
-    {
-    default: 
-      QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131715759), 0).b(i);
-      return;
-    case -302: 
-    case -301: 
-    case -103: 
-      QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131715756), 0).b(i);
-      this.a.a(paramBundle);
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), alud.a(2131715740), 0).b(i);
-  }
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

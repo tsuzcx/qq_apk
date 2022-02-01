@@ -1,26 +1,75 @@
-import java.util.Comparator;
+import android.app.Activity;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ssr
-  implements Comparator<ssj>
 {
-  public ssr(ssp paramssp) {}
+  private static ssr jdField_a_of_type_Ssr;
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private ubl jdField_a_of_type_Ubl;
+  private Integer b;
   
-  public int a(ssj paramssj1, ssj paramssj2)
+  public static ssr a(Activity paramActivity)
   {
-    long l1 = paramssj1.a;
-    long l2 = paramssj2.a;
-    if (l2 > l1) {
-      return 1;
+    int i;
+    int j;
+    if (jdField_a_of_type_Ssr == null)
+    {
+      jdField_a_of_type_Ssr = new ssr();
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+      i = localDisplayMetrics.widthPixels;
+      j = localDisplayMetrics.heightPixels;
     }
-    if (l2 < l1) {
-      return -1;
+    try
+    {
+      jdField_a_of_type_Ssr.jdField_a_of_type_Ubl = new ubl(paramActivity, i, j);
+      jdField_a_of_type_Ssr.jdField_a_of_type_Ubl.a(new sss());
+      return jdField_a_of_type_Ssr;
     }
-    return 0;
+    catch (SecurityException paramActivity)
+    {
+      for (;;)
+      {
+        QLog.e("ReadInJoyScreenShotReporter", 1, "SecurityException error = " + paramActivity.toString());
+        jdField_a_of_type_Ssr.jdField_a_of_type_Ubl = null;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if (jdField_a_of_type_Ssr != null)
+    {
+      jdField_a_of_type_Ssr.jdField_a_of_type_JavaLangInteger = null;
+      jdField_a_of_type_Ssr.b = null;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (jdField_a_of_type_Ssr != null)
+    {
+      jdField_a_of_type_Ssr.jdField_a_of_type_JavaLangInteger = new Integer(paramInt2);
+      jdField_a_of_type_Ssr.b = new Integer(paramInt1);
+    }
+  }
+  
+  public void b()
+  {
+    if ((jdField_a_of_type_Ssr != null) && (jdField_a_of_type_Ssr.jdField_a_of_type_Ubl != null))
+    {
+      jdField_a_of_type_Ssr.jdField_a_of_type_Ubl.a();
+      jdField_a_of_type_Ssr.jdField_a_of_type_Ubl = null;
+    }
+    jdField_a_of_type_Ssr = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ssr
  * JD-Core Version:    0.7.0.1
  */

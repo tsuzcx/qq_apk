@@ -54,7 +54,7 @@ public class Md5Utils
     //   69: goto -61 -> 8
     //   72: aload_2
     //   73: invokevirtual 48	java/security/MessageDigest:digest	()[B
-    //   76: invokestatic 54	com/tencent/smtt/utils/ByteUtils:byteToHexString	([B)Ljava/lang/String;
+    //   76: invokestatic 54	com/tencent/smtt/utils/ByteUtils:a	([B)Ljava/lang/String;
     //   79: astore_2
     //   80: aload_2
     //   81: astore_3
@@ -167,7 +167,7 @@ public class Md5Utils
       paramString = paramString.getBytes();
       MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
       localMessageDigest.update(paramString);
-      paramString = ByteUtils.byteToHexString(localMessageDigest.digest());
+      paramString = ByteUtils.a(localMessageDigest.digest());
       return paramString;
     }
     catch (Exception paramString) {}
@@ -215,7 +215,7 @@ public class Md5Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.utils.Md5Utils
  * JD-Core Version:    0.7.0.1
  */

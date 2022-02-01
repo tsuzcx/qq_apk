@@ -1,19 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.data.AppShareID;
+import mqq.os.MqqHandler;
 
 public class adzf
-  implements DialogInterface.OnKeyListener
+  extends anjq
 {
-  public adzf(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public adzf(Conversation paramConversation) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
   {
-    if (paramInt == 4) {
-      this.a.finish();
+    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
+      if (!this.a.h) {
+        this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1134068, new String[] { paramString1, paramString2, paramString3 }).sendToTarget();
+      }
     }
-    return false;
+  }
+  
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  {
+    if (paramBoolean) {
+      this.a.a(0L);
+    }
   }
 }
 

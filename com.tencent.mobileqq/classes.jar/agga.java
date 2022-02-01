@@ -1,17 +1,10 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.graphics.Bitmap;
 
-public class agga
-  implements afky
+public abstract interface agga
 {
-  public agga(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void onUpdate(int paramInt)
-  {
-    if (paramInt == 23) {
-      UnlimitedBladeWorks.a(this.a).start();
-    }
-  }
+  public abstract void a(String paramString, long paramLong, Bitmap paramBitmap);
 }
 
 

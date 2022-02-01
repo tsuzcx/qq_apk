@@ -1,22 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.Properties;
 
-class aipg
-  implements DialogInterface.OnClickListener
+public class aipg
 {
-  aipg(aipa paramaipa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(String paramString, Properties paramProperties)
   {
-    if (paramInt == 1) {
-      aipa.a(this.a, aipa.a(this.a));
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    this.a.b();
-    aipa.a(this.a).moveTaskToBack(true);
+    bcsi.a(VideoEnvironment.a()).reportKVEvent(paramString, paramProperties);
+  }
+  
+  public static void a(String paramString, Properties paramProperties, int paramInt)
+  {
+    bcsi.a(VideoEnvironment.a()).reportTimeKVEvent(paramString, paramProperties, paramInt);
   }
 }
 

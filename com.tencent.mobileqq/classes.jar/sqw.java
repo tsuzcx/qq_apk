@@ -1,27 +1,22 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1.1.1;
-import com.tencent.viola.core.ViolaEnvironment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
 public class sqw
-  implements bdav
+  extends pue
 {
-  public sqw(ViolaBaseView.10.1 param1) {}
-  
-  public void onInfo(long paramLong, double paramDouble)
+  public sqw(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, int paramInt, List paramList)
   {
-    if (ViolaBaseView.a(this.a.a.a) == 0.0D)
-    {
-      ViolaBaseView.a(this.a.a.a, paramDouble);
-      ViolaBaseView.a(this.a.a.a).addReportData(ViolaEnvironment.KEY_FRAME_PAGE, String.format("%.2f", new Object[] { Double.valueOf(ViolaBaseView.a(this.a.a.a)) }));
-    }
-    new Handler().postDelayed(new ViolaBaseView.10.1.1.1(this), 500L);
+    super(paramString);
+  }
+  
+  public void a(ptx paramptx)
+  {
+    paramptx.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sqw
  * JD-Core Version:    0.7.0.1
  */

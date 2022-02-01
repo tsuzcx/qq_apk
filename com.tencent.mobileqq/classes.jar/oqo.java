@@ -1,16 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-class oqo
-  implements ViewBase.OnClickListener
+public abstract interface oqo
 {
-  oqo(oqd paramoqd) {}
+  public abstract void a(sey paramsey, AdvertisementInfo paramAdvertisementInfo);
   
-  public void onClick(ViewBase paramViewBase) {}
+  public abstract void b(sey paramsey, AdvertisementInfo paramAdvertisementInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oqo
  * JD-Core Version:    0.7.0.1
  */

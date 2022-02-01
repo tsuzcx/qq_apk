@@ -1,203 +1,159 @@
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import org.json.JSONObject;
 
 public class pcy
+  implements pcp
 {
-  public static boolean a(int paramInt)
+  private int jdField_a_of_type_Int = 10;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
+  
+  private void a(String paramString, ArticleInfo paramArticleInfo)
   {
-    Object localObject = (QQAppInterface)ors.a();
-    if (localObject != null)
-    {
-      localObject = (oxd)((QQAppInterface)localObject).getManager(163);
-      if ((localObject != null) && (((oxd)localObject).a() != null))
-      {
-        localObject = ((oxd)localObject).a().b();
-        if ((localObject == null) || (((List)localObject).isEmpty()))
-        {
-          QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[isInMyChannelList] res = false, myChannelList is empty.");
-          return false;
-        }
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          if (paramInt == ((TabChannelCoverInfo)((Iterator)localObject).next()).mChannelCoverId)
-          {
-            QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[isInMyChannelList] res = true, channelID = " + paramInt);
-            return true;
-          }
-        }
-      }
-    }
-    QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[isInMyChannelList] res = false, channelID = " + paramInt);
-    return false;
+    phi localphi = new phi();
+    localphi.i().b("wording", "" + pij.a());
+    paa.a(paramString, paramArticleInfo, localphi);
   }
   
-  public static boolean a(Context paramContext, String paramString)
+  public View a(ViewGroup paramViewGroup, View paramView, Context paramContext, pay parampay)
   {
-    return a(paramContext, paramString, true);
+    if (!a(parampay)) {
+      return paramView;
+    }
+    if ((!TextUtils.isEmpty(parampay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID)) && (!this.jdField_a_of_type_JavaUtilSet.contains(parampay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID)))
+    {
+      a("0X8009FE9", parampay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      this.jdField_a_of_type_JavaUtilSet.add(parampay.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
+    }
+    this.jdField_a_of_type_Boolean = true;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.getLayoutParams();
+    if (localLayoutParams.bottomMargin >= 0) {
+      localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131298708));
+    }
+    paramViewGroup.setLayoutParams(localLayoutParams);
+    if (paramView != null) {}
+    for (;;)
+    {
+      paramView.setOnClickListener(new pcz(this, parampay, paramContext));
+      return paramView;
+      paramView = LayoutInflater.from(paramContext).inflate(2131560292, null);
+    }
   }
   
-  public static boolean a(Context paramContext, String paramString, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
-    {
-      QLog.d("ReadInJoyChannelGuidingJumpUtils", 1, "context or scheme is null");
-      return false;
+    QLog.d("GuideHelper", 1, "showGuidePagerNum : " + paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(ArticleInfo paramArticleInfo)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.d("GuideHelper", 1, "extraInfo : " + paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
-    QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel], scheme = " + paramString);
-    Object localObject = Uri.parse(paramString);
-    String str1 = ((Uri)localObject).getQueryParameter("target");
-    String str2 = ((Uri)localObject).getQueryParameter("channelid");
-    String str3 = ((Uri)localObject).getQueryParameter("ispush");
-    QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel], target = " + str1 + ", channelID = " + str2 + ", isPush = " + str3 + ",doDynamicOrder = " + paramBoolean);
-    int i = -1;
     try
     {
-      int j = Integer.parseInt(str2);
-      i = j;
+      this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).getString("app_schema");
+      QLog.d("GuideHelper", 1, "scheme : " + this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    catch (NumberFormatException localNumberFormatException)
+    catch (Exception paramString)
     {
-      for (;;)
-      {
-        QLog.e("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel], e = " + localNumberFormatException);
-      }
-      if (!paramBoolean) {
-        break label301;
-      }
-      paramBoolean = bkbq.B();
-      if ((!paramBoolean) || (!b(i))) {
-        break label362;
-      }
-      if (c(i)) {
-        break label318;
-      }
-      QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel] channelID = " + str2 + " not my channel");
-      owy.a().c(i, 1);
-      if (!a(str3, i)) {
-        break label400;
-      }
-      ors.a(paramContext, paramString, null);
-      for (;;)
-      {
-        return true;
-        QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel] channelID = " + str2 + " is my channel");
-        owy.a().a(i, 1, false, true);
-        break;
-        QLog.d("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel] isDynamicOrderSwitchOn = " + paramBoolean + ", channelID = " + str2);
-        break;
-        paramString = nxu.b(paramContext, 0, i);
-        if (!(paramContext instanceof BaseActivity)) {
-          paramString.setFlags(268435456);
+      QLog.d("GuideHelper", 1, "setGuideExtraInfo : ", paramString);
+    }
+  }
+  
+  public void a(boolean paramBoolean, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = 0;
+    if (paramViewGroup == null) {
+      return;
+    }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.getLayoutParams();
+    if (!paramBoolean) {
+      localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131298706));
+    }
+    paramViewGroup.setLayoutParams(localLayoutParams);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(List<pay> paramList)
+  {
+    int i = this.b;
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (i > this.jdField_a_of_type_Int) && (paramList != null))
+    {
+      pay localpay = new pay(6, null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext()) {
+        if (((pay)localIterator.next()).jdField_a_of_type_Int == 6) {
+          localIterator.remove();
         }
-        paramContext.startActivity(paramString);
       }
-      QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel] failed, target = " + str1 + ", scheme = " + paramString);
+      paramList.add(localpay);
+      QLog.d("GuideHelper", 1, "addGuidePager : " + i + "  articleInfo :" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      return true;
     }
-    localObject = ((Uri)localObject).getQueryParameter("v_url_base64");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      ReadInJoyViolaChannelFragment.a(i, (String)localObject);
-    }
-    if (("2".equals(str1)) && (!TextUtils.isEmpty(str2))) {
-      if (pdb.a(paramContext, paramString))
-      {
-        QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[jumpToChannel], jump to recommend channel, using floating window.");
-        return true;
-      }
-    }
-    label301:
-    label318:
-    label362:
     return false;
   }
   
-  public static boolean a(String paramString, int paramInt)
+  public boolean a(pay parampay)
   {
-    boolean bool1 = TextUtils.equals(paramString, "1");
-    boolean bool2 = bkbq.i();
-    boolean bool3 = a(paramInt);
-    QLog.i("ReadInJoyChannelGuidingJumpUtils", 1, "[shouldPushNewPage, isPushBoolean = " + bool1 + ", KDTab = " + bool2 + ", isInMyChannel = " + bool3 + ", channelID = " + paramInt);
-    return (bool1) || (!bool2) || (!bool3);
+    return (parampay != null) && (parampay.jdField_a_of_type_Int == 6);
   }
   
-  private static boolean b(int paramInt)
+  public void onCommentCreate(boolean paramBoolean, pay parampay, List<pay> paramList, int paramInt) {}
+  
+  public void onCommentCreate(boolean paramBoolean1, pay parampay, boolean paramBoolean2, List<pay> paramList, int paramInt) {}
+  
+  public void onCommentDelete(int paramInt1, boolean paramBoolean, pay parampay, int paramInt2) {}
+  
+  public void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<pay> paramList, boolean paramBoolean2, int paramInt2, int paramInt3)
   {
-    boolean bool2 = false;
-    List localList = owy.a().a();
-    boolean bool1 = bool2;
-    int i;
-    if (localList != null)
-    {
-      bool1 = bool2;
-      if (localList.size() > 0) {
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      qkm localqkm;
-      int j;
-      if (i < localList.size())
-      {
-        localqkm = (qkm)localList.get(i);
-        j = 0;
-      }
-      while (j < localqkm.a.size())
-      {
-        if (paramInt == ((TabChannelCoverInfo)localqkm.a.get(j)).mChannelCoverId)
-        {
-          bool1 = true;
-          return bool1;
-        }
-        j += 1;
-      }
-      i += 1;
-    }
+    this.b = 1;
+    a(paramList);
   }
   
-  private static boolean c(int paramInt)
+  public void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<pay> paramList, boolean paramBoolean2, int paramInt2)
   {
-    boolean bool2 = false;
-    Object localObject = owy.a().a();
-    boolean bool1 = bool2;
-    int i;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((List)localObject).size() > 0)
-      {
-        localObject = (qkm)((List)localObject).get(0);
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < ((qkm)localObject).a.size())
-      {
-        if (paramInt == ((TabChannelCoverInfo)((qkm)localObject).a.get(i)).mChannelCoverId) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
+    this.b += 1;
+    a(paramList);
   }
+  
+  public void onCommentReply(boolean paramBoolean, pay parampay) {}
+  
+  public void onCommentStateError(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pcy
  * JD-Core Version:    0.7.0.1
  */

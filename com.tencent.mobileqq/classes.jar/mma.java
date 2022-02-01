@@ -1,21 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class mma
-  implements DialogInterface.OnClickListener
+class mma
+  implements View.OnClickListener
 {
-  public mma(VideoControlUI paramVideoControlUI, long paramLong) {}
+  mma(mlz parammlz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionNormalDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
+    mlz.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mma
  * JD-Core Version:    0.7.0.1
  */

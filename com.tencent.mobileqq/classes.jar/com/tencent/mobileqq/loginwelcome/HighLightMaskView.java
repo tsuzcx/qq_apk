@@ -10,7 +10,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-import bhtb;
+import com.tencent.util.VersionUtils;
 
 public class HighLightMaskView
   extends View
@@ -22,11 +22,13 @@ public class HighLightMaskView
   public HighLightMaskView(Context paramContext)
   {
     super(paramContext);
+    a();
   }
   
   public HighLightMaskView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    a();
   }
   
   public void a()
@@ -35,7 +37,7 @@ public class HighLightMaskView
       this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     }
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    if (bhtb.e()) {
+    if (VersionUtils.isHoneycomb()) {
       setLayerType(1, null);
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);
@@ -53,19 +55,22 @@ public class HighLightMaskView
   
   public void setCircleSrc(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    a();
     this.jdField_a_of_type_AndroidGraphicsPath.addCircle(paramFloat1, paramFloat2, paramFloat3, Path.Direction.CW);
+  }
+  
+  public void setHighLightRect(RectF paramRectF)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPath.addRect(paramRectF, Path.Direction.CW);
   }
   
   public void setRoundSrc(RectF paramRectF, float[] paramArrayOfFloat)
   {
-    a();
     this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(paramRectF, paramArrayOfFloat, Path.Direction.CW);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.HighLightMaskView
  * JD-Core Version:    0.7.0.1
  */

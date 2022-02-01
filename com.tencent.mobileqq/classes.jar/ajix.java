@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
+import java.util.ArrayList;
 
-class ajix
-  implements DialogInterface.OnClickListener
+public class ajix
+  extends abqm
 {
-  ajix(ajit paramajit) {}
+  public ajix(DeviceFragment paramDeviceFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(ArrayList<DeviceInfo> paramArrayList)
   {
-    ((alpk)this.a.a.a(2)).m(false);
+    if (this.a.e)
+    {
+      this.a.e = false;
+      if (DeviceFragment.a(this.a) != null) {
+        DeviceFragment.b(this.a).a(this.a.b(), true, null);
+      }
+    }
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.a = ((ArrayList)paramArrayList.clone());
+    this.a.a.notifyDataSetChanged();
   }
 }
 

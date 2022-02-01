@@ -1,28 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDns;
 
-public class avka
-  implements Animation.AnimationListener
+class avka
+  implements CustomizedDns
 {
-  public avka(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  avka(avju paramavju) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public String getip(String paramString)
   {
-    paramAnimation = this.a;
-    paramAnimation.k += 1;
-    if (NearbyPeopleProfileActivity.a(this.a) != null) {
-      NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
-    }
+    return avkt.a().a(paramString);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avka
  * JD-Core Version:    0.7.0.1
  */

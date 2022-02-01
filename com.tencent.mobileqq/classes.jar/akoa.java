@@ -1,82 +1,49 @@
+import Wallet.PfaFriendRsp;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Vector;
 
-class akoa
+final class akoa
   extends Handler
 {
-  akoa(aknx paramaknx, Looper paramLooper)
+  akoa(Looper paramLooper)
   {
     super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == aknx.jdField_a_of_type_Int)
+    boolean bool2 = true;
+    switch (paramMessage.what)
     {
-      paramMessage = (bdug)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
-      if (paramMessage != null) {
-        localObject = new ArrayList(aknx.jdField_a_of_type_JavaUtilVector.size());
+    default: 
+      return;
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramMessage.obj != null)
+    {
+      localObject1 = localObject2;
+      if ((paramMessage.obj instanceof PfaFriendRsp)) {
+        localObject1 = (PfaFriendRsp)paramMessage.obj;
       }
     }
-    while (paramMessage.what != aknx.jdField_b_of_type_Int)
+    boolean bool1;
+    if (paramMessage.arg1 == 1)
     {
-      try
-      {
-        Iterator localIterator = aknx.jdField_a_of_type_JavaUtilVector.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          if (!((ArrayList)localObject).contains(str)) {
-            ((ArrayList)localObject).add(Long.valueOf(Long.parseLong(str)));
-          }
-        }
-        paramMessage.a((ArrayList)localObject, "troop");
-      }
-      catch (Exception localException) {}
-      for (;;)
-      {
-        aknx.jdField_a_of_type_JavaUtilVector.clear();
-        if (aknx.jdField_b_of_type_JavaUtilVector.size() > 0)
-        {
-          paramMessage.a((String[])aknx.jdField_b_of_type_JavaUtilVector.toArray(new String[0]));
-          aknx.jdField_b_of_type_JavaUtilVector.clear();
-        }
-        return;
-        if ((aknx.a(this.a) != null) && (aknx.a(this.a).apolloLocalTS != aknx.a(this.a).apolloServerTS) && (!((ArrayList)localObject).contains(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()))) {
-          ((ArrayList)localObject).add(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()));
-        }
-      }
-    }
-    Object localObject = (String)paramMessage.obj;
-    if (paramMessage.arg1 == 1) {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!aknx.jdField_a_of_type_JavaUtilVector.contains(localObject)))
-      {
-        aknx.jdField_a_of_type_JavaUtilVector.add(localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloManager", 2, "addToBulkPullMap-->dress uin:" + (String)localObject);
-        }
+      bool1 = true;
+      if (paramMessage.arg2 != 1) {
+        break label93;
       }
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(aknx.jdField_a_of_type_Int);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(aknx.jdField_a_of_type_Int, 200L);
+      aknz.a(bool1, (PfaFriendRsp)localObject1, bool2);
       return;
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!aknx.jdField_b_of_type_JavaUtilVector.contains(localObject)))
-      {
-        aknx.jdField_b_of_type_JavaUtilVector.add(localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloManager", 2, "addToBulkPullMap-->info uin:" + (String)localObject);
-        }
-      }
+      bool1 = false;
+      break;
+      label93:
+      bool2 = false;
     }
   }
 }

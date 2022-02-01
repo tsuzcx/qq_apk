@@ -1,26 +1,23 @@
-import android.util.Property;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-class bndu
-  extends Property<bnds, Integer>
+public class bndu
 {
-  bndu(bnds parambnds, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  protected static final String a = BaseApplicationImpl.getContext().getCacheDir().getPath();
+  protected static final String b;
+  protected static final String c = BaseApplicationImpl.getContext().getFilesDir().getParent();
   
-  public Integer a(bnds parambnds)
+  static
   {
-    if (parambnds != null) {
-      return Integer.valueOf(bnds.b(parambnds));
+    if ((BaseApplicationImpl.getContext().getExternalFilesDir(null) != null) && (BaseApplicationImpl.getContext().getExternalCacheDir() != null)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      b = BaseApplicationImpl.getContext().getExternalFilesDir(null).getPath();
+      a = BaseApplicationImpl.getContext().getExternalCacheDir().getPath();
+      return;
     }
-    return Integer.valueOf(255);
-  }
-  
-  public void a(bnds parambnds, Integer paramInteger)
-  {
-    if (parambnds != null) {
-      bnds.b(parambnds, paramInteger.intValue());
-    }
+    b = BaseApplicationImpl.getContext().getFilesDir().getPath();
   }
 }
 

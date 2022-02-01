@@ -1,70 +1,146 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
 public class bdxr
-  implements SeekBar.OnSeekBarChangeListener
 {
-  public bdxr(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString) {}
+  private static int a;
+  public static bdxu a;
+  private static int b;
+  public static bdxu b;
+  private static int c;
+  public static bdxu c;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  static
   {
-    Iterator localIterator;
-    if (((paramSeekBar.getProgress() == paramSeekBar.getMax()) || (this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int > paramSeekBar.getProgress())) && (!this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b)) {
-      localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
-    }
-    while (localIterator.hasNext())
+    jdField_a_of_type_Int = 18;
+    jdField_b_of_type_Int = 6;
+    jdField_c_of_type_Int = 600000;
+    jdField_a_of_type_Bdxu = new bdxs();
+    jdField_b_of_type_Bdxu = new bdxt();
+    jdField_c_of_type_Bdxu = new bdxy();
+  }
+  
+  public static int a()
+  {
+    try
     {
-      Object localObject1 = (String)localIterator.next();
-      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject1)).seekTo(0);
-      paramSeekBar.setProgress(0);
-      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject1)).pause();
-      Object localObject2 = (FrameLayout)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_JavaUtilHashMap.get(localObject1);
-      localObject1 = (SeekBar)((FrameLayout)localObject2).findViewById(2131376325);
-      TextView localTextView1 = (TextView)((FrameLayout)localObject2).findViewById(2131373613);
-      TextView localTextView2 = (TextView)((FrameLayout)localObject2).findViewById(2131373612);
-      ImageView localImageView1 = (ImageView)((FrameLayout)localObject2).findViewById(2131373611);
-      ImageView localImageView2 = (ImageView)((FrameLayout)localObject2).findViewById(2131373610);
-      localObject2 = (TextView)((FrameLayout)localObject2).findViewById(2131373609);
-      localImageView1.setImageResource(2130848685);
-      localImageView1.setVisibility(0);
-      ((SeekBar)localObject1).setVisibility(4);
-      localTextView1.setVisibility(4);
-      localTextView2.setVisibility(4);
-      localImageView2.setVisibility(4);
-      ((TextView)localObject2).setVisibility(4);
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = 0;
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = paramSeekBar.getProgress();
+      int i = jdField_a_of_type_Int;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public static bdxu a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "onStartTrackingTouch");
+    bdxu localbdxu = jdField_a_of_type_Bdxu;
+    switch (paramInt)
+    {
+    case 0: 
+    case 2: 
+    default: 
+      return localbdxu;
+    case 1: 
+    case 4: 
+    case 5: 
+      return jdField_c_of_type_Bdxu;
+    }
+    return jdField_b_of_type_Bdxu;
+  }
+  
+  public static void a(String paramString)
+  {
+    int i = 0;
+    if (paramString != null) {}
+    for (;;)
+    {
+      try
+      {
+        if (paramString.length() > 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("RichMediaStrategy", 2, "updataFromDpc: dpcString = " + paramString);
+          }
+          paramString = paramString.split("\\|");
+          int j;
+          if (paramString != null)
+          {
+            j = paramString.length;
+            if (j == 3) {
+              if (i >= 3) {
+                continue;
+              }
+            }
+          }
+          try
+          {
+            j = Integer.valueOf(paramString[i]).intValue();
+            if (j > 0) {
+              continue;
+            }
+          }
+          catch (NumberFormatException paramString)
+          {
+            QLog.e("RichMediaStrategy", 2, "updataFromDpc Erro", paramString);
+            continue;
+          }
+          return;
+          i += 1;
+          continue;
+          jdField_a_of_type_Int = Integer.valueOf(paramString[0]).intValue();
+          jdField_b_of_type_Int = Integer.valueOf(paramString[1]).intValue();
+          jdField_c_of_type_Int = Integer.valueOf(paramString[2]).intValue() * 1000;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("RichMediaStrategy", 2, "updataFromDpc: TryCount_dpc = " + jdField_a_of_type_Int + " FixSchedulTryCount_dpc = " + jdField_b_of_type_Int + " TryTime_dpc = " + jdField_c_of_type_Int);
+          continue;
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+      }
+      finally {}
+      QLog.d("RichMediaStrategy", 2, "updataFromDpc: dpcString is null !");
     }
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public static boolean a(int paramInt)
   {
-    int i = paramSeekBar.getProgress();
-    long l = ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).getDuration();
-    i = (int)(i / 100.0D * l);
-    ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).seekTo(i);
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = paramSeekBar.getProgress();
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "mLastprogressTime1:" + this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int);
+    boolean bool = false;
+    if ((paramInt == 9361) || (paramInt == 9037)) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static int b()
+  {
+    try
+    {
+      int i = jdField_b_of_type_Int;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static int c()
+  {
+    try
+    {
+      int i = jdField_c_of_type_Int;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }

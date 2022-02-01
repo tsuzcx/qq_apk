@@ -18,7 +18,7 @@ public final class QPayReminderMsg$GetInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.mobileim.structmsg.QPayReminderMsg.GetInfoReq
  * JD-Core Version:    0.7.0.1
  */

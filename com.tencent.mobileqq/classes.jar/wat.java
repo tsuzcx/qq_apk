@@ -1,116 +1,138 @@
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleGridFeedItemView;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleTimeLineFeedItemView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StImage;
 
 public class wat
-  extends vzg
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private vtt jdField_a_of_type_Vtt;
-  private String b = "";
-  private boolean c;
+  private int jdField_a_of_type_Int;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
+  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+  private Object jdField_a_of_type_JavaLangObject;
   
-  private uxo a(StoryVideoItem paramStoryVideoItem)
+  public wat(QCircleTimeLineFeedItemView paramQCircleTimeLineFeedItemView, View paramView)
   {
-    uxp localuxp = paramStoryVideoItem.getOALinkInfo();
-    if ((localuxp != null) && (localuxp.a != null))
-    {
-      wxe.b("GameBannerVideoInfoBuilder", "parse game link info from oa");
-      return paramStoryVideoItem.getOALinkInfo().a;
-    }
-    wxe.b("GameBannerVideoInfoBuilder", "parse game link info from extern");
-    return paramStoryVideoItem.getVideoLinkInfo().a;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131369125));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369116));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379644));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
   
-  public Set<vrx> a()
+  public void a(FeedCloudMeta.StFeed paramStFeed)
   {
-    HashSet localHashSet = new HashSet(1);
-    localHashSet.add(new wau(this));
-    return localHashSet;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
   }
   
-  public boolean a(View paramView)
+  public void a(Object paramObject, int paramInt)
   {
-    if (!super.a(paramView)) {
-      return false;
-    }
-    if ((this.jdField_a_of_type_Vtt != null) && (this.jdField_a_of_type_Vtt.a().isGameVideo())) {
-      wxj.a("video_game", "clk_url", 0, 0, new String[] { "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Vtt.a().mVid });
-    }
-    return true;
-  }
-  
-  public void b(vzh paramvzh, vtt paramvtt)
-  {
-    this.jdField_a_of_type_Vtt = paramvtt;
-    Object localObject2 = paramvtt.a();
-    Object localObject1 = a((StoryVideoItem)localObject2);
-    this.jdField_a_of_type_Vzd.k();
-    localObject2 = ((StoryVideoItem)localObject2).getVideoGameInfo();
-    if (localObject2 != null) {
-      this.jdField_a_of_type_JavaLangString = ((uxn)localObject2).jdField_a_of_type_JavaLangString;
-    }
-    paramvzh.c.setVisibility(0);
-    paramvzh.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    paramvzh.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    paramvzh.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839431);
-    paramvzh.jdField_a_of_type_AndroidViewView.setPadding(paramvzh.jdField_a_of_type_AndroidViewView.getPaddingLeft(), paramvzh.jdField_a_of_type_AndroidViewView.getPaddingTop(), paramvzh.jdField_a_of_type_AndroidViewView.getPaddingRight(), paramvzh.jdField_a_of_type_AndroidViewView.getPaddingBottom());
-    Object localObject3 = ((uwm)uwa.a(2)).b(paramvtt.a().mOwnerUid);
-    String str;
-    if ((localObject3 != null) && (((QQUserUIItem)localObject3).isMe()))
+    int i = 0;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Int = paramInt;
+    wav localwav;
+    Object localObject;
+    if (((this.jdField_a_of_type_JavaLangObject instanceof wav)) && (this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView != null))
     {
-      str = ((uxo)localObject1).d;
-      localObject2 = ((uxo)localObject1).e;
-      localObject1 = ((uxo)localObject1).f;
-      localObject3 = paramvzh.c;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label339;
+      localwav = (wav)this.jdField_a_of_type_JavaLangObject;
+      paramObject = localwav.jdField_a_of_type_FeedcloudFeedCloudMeta$StImage;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams();
+      if (localwav.jdField_a_of_type_Int != 1002) {
+        break label314;
       }
-      label176:
-      ((TextView)localObject3).setText((CharSequence)localObject1);
-      vzd.a(str, paramvzh.jdField_a_of_type_AndroidWidgetImageView, paramvzh.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramvzh.jdField_a_of_type_Int, paramvzh.jdField_a_of_type_Int);
-      paramvzh.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-      paramvzh.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      if (!TextUtils.equals(this.b, paramvtt.jdField_a_of_type_JavaLangString)) {
-        break label348;
+      ((ViewGroup.LayoutParams)localObject).width = (QCircleTimeLineFeedItemView.jdField_a_of_type_Int * 2);
+      ((ViewGroup.LayoutParams)localObject).height = (QCircleTimeLineFeedItemView.jdField_a_of_type_Int * 2);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = paramObject.picUrl.get();
+      paramObject = URLDrawable.URLDrawableOptions.obtain();
+      paramObject.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843922);
+      paramObject.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844002);
+      paramObject = "";
+      if ((this.itemView.getTag(2131373857) instanceof String)) {
+        paramObject = (String)this.itemView.getTag(2131373857);
       }
-      this.c = false;
-    }
-    for (;;)
-    {
-      if ((this.c) && (this.jdField_a_of_type_Vtt != null)) {
-        wxj.a("video_game", "exp_url", 0, 0, new String[] { "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Vtt.a().mVid });
-      }
-      return;
-      str = ((uxo)localObject1).jdField_a_of_type_JavaLangString;
-      localObject2 = ((uxo)localObject1).b;
-      if ((localObject3 != null) && (((QQUserUIItem)localObject3).isFriend()))
+      this.itemView.setTag(2131373857, localObject);
+      if (!paramObject.equals(localObject))
       {
-        localObject1 = ((uxo)localObject1).c;
+        paramObject = new vou().a((String)localObject).a(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView).b(false).a(true).c(QCircleGridFeedItemView.b).b(QCircleGridFeedItemView.b);
+        QCircleFeedPicLoader.a().a(paramObject, new wau(this));
+      }
+      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+      {
+        paramObject = this.jdField_a_of_type_AndroidWidgetTextView;
+        if (localwav.b <= 0) {
+          break label344;
+        }
+        paramInt = 0;
+        label265:
+        paramObject.setVisibility(paramInt);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(localwav.b));
+      }
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+      {
+        paramObject = this.jdField_a_of_type_AndroidWidgetImageView;
+        if (localwav.c != 3) {
+          break label350;
+        }
+      }
+    }
+    label314:
+    label344:
+    label350:
+    for (paramInt = i;; paramInt = 8)
+    {
+      paramObject.setVisibility(paramInt);
+      return;
+      if (localwav.jdField_a_of_type_Int != 1001) {
         break;
       }
-      localObject1 = alud.a(2131705409);
+      ((ViewGroup.LayoutParams)localObject).width = QCircleTimeLineFeedItemView.jdField_a_of_type_Int;
+      ((ViewGroup.LayoutParams)localObject).height = QCircleTimeLineFeedItemView.jdField_a_of_type_Int;
       break;
-      label339:
-      localObject1 = alud.a(2131705408);
-      break label176;
-      label348:
-      this.c = true;
-      if (!bkny.a(this.jdField_a_of_type_Vzd.b())) {
-        bkny.a(this.jdField_a_of_type_Vzd.b());
-      }
-      this.b = paramvtt.jdField_a_of_type_JavaLangString;
+      paramInt = 8;
+      break label265;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    String str2 = uxx.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleTimeLineFeedItemView.getContext());
+    if (uxx.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleTimeLineFeedItemView.getContext())) {}
+    for (String str1 = "1";; str1 = "2")
+    {
+      vrf.a(str2, 11, 19, 3, str1, "", "", "", "");
+      QCircleTimeLineFeedItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleTimeLineFeedItemView, this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView, getLayoutPosition());
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wat
  * JD-Core Version:    0.7.0.1
  */

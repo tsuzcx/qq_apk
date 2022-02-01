@@ -1,46 +1,64 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.json.JSONArray;
 
-class aqps
-  implements bhuk
+public class aqps
 {
-  aqps(aqpr paramaqpr, FileInfo paramFileInfo, bhuf parambhuf) {}
+  private List<String> a = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
   
-  public void OnClick(View paramView, int paramInt)
+  public static aqps a(aqlg[] paramArrayOfaqlg)
   {
-    if ((!arso.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())) || (arso.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())))
+    aqps localaqps = new aqps();
+    int i = 0;
+    Object localObject;
+    for (;;)
     {
-      arrr.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c());
-      this.jdField_a_of_type_Aqpr.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
-    }
-    try
-    {
-      paramView = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      paramView.setData(Uri.fromFile(new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())));
-      this.jdField_a_of_type_Aqpr.a.a.a.sendBroadcast(paramView);
-      label104:
-      this.jdField_a_of_type_Aqpr.a.a.f();
-      if (this.jdField_a_of_type_Bhuf.isShowing()) {
-        this.jdField_a_of_type_Bhuf.dismiss();
+      localObject = localaqps;
+      try
+      {
+        if (i < paramArrayOfaqlg.length)
+        {
+          localaqps.a.clear();
+          localObject = paramArrayOfaqlg[i].a;
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localObject = new JSONArray((String)localObject);
+            int j = 0;
+            while (j < ((JSONArray)localObject).length())
+            {
+              localaqps.a.add(((JSONArray)localObject).getString(j));
+              j += 1;
+            }
+          }
+          i += 1;
+        }
       }
-      return;
-      arri.a(2131692487);
-      return;
+      catch (Throwable paramArrayOfaqlg)
+      {
+        QLog.d("MiniAppApiReportProcessor", 2, "parse, failed!", paramArrayOfaqlg);
+        localObject = null;
+      }
     }
-    catch (Exception paramView)
-    {
-      break label104;
-    }
+    return localObject;
+  }
+  
+  public List<String> a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    new StringBuilder().append("getApiReportList:").append(TextUtils.join(",", a()));
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqps
  * JD-Core Version:    0.7.0.1
  */

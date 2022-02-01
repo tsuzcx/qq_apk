@@ -1,61 +1,47 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.qq.taf.jce.HexUtil;
 
 public class bece
+  extends becg
 {
   public int a;
+  public long a;
   public String a;
-  public List<becg> a;
   public boolean a;
+  public byte[] a;
+  public int b;
   public String b;
-  public String c;
-  
-  public bece()
-  {
-    this.jdField_a_of_type_Int = -30009;
-  }
-  
-  public bece(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Int = -30009;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("msg");
-    if (paramJSONObject.optInt("openflag") == 1)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
-      this.c = paramJSONObject.optString("content");
-      this.b = paramJSONObject.optString("url");
-      paramJSONObject = paramJSONObject.optString("list");
-      if (!TextUtils.isEmpty(paramJSONObject)) {
-        break label96;
-      }
-    }
-    for (;;)
-    {
-      return;
-      bool = false;
-      break;
-      label96:
-      paramJSONObject = new JSONArray(paramJSONObject);
-      int j = paramJSONObject.length();
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      while (i < j)
-      {
-        JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
-        if (localJSONObject != null) {
-          this.jdField_a_of_type_JavaUtilList.add(new becg(localJSONObject.optString("num"), localJSONObject.optString("light")));
-        }
-        i += 1;
-      }
-    }
-  }
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public int e;
   
   public String toString()
   {
-    return "LiangHaoRsp{openFlag=" + this.jdField_a_of_type_Boolean + ", ret=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", moreUrl='" + this.b + '\'' + ", content='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" name:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" width:");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(" height:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" isRaw:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(" isContant:");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(" md5:");
+    localStringBuilder.append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
+    localStringBuilder.append(" picType:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" busiType:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("typeHotPic:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("transferUrl:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 

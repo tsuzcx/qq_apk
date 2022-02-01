@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import com.tencent.mobileqq.widget.QQViewPager;
-
 class EmoticonPanelController$8
   implements Runnable
 {
@@ -9,14 +7,14 @@ class EmoticonPanelController$8
   
   public void run()
   {
-    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem();
-    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(i, false);
+    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelViewPager.getCurrentItem();
+    this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelViewPager.setAdapter(this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelViewPager.setCurrentItem(i, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelController.8
  * JD-Core Version:    0.7.0.1
  */

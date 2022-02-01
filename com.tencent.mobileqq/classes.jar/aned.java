@@ -1,20 +1,14 @@
-import android.graphics.Rect;
+import com.tencent.mobileqq.data.ApolloActionData;
 
 public class aned
 {
-  public float a;
-  public int a;
-  public Rect a;
+  public void a() {}
   
-  public aned()
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  }
+  public void a(ApolloActionData paramApolloActionData) {}
   
-  public String toString()
-  {
-    return String.format("AIRect[%d,%.2f,%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), this.jdField_a_of_type_AndroidGraphicsRect });
-  }
+  public void a(Boolean paramBoolean) {}
+  
+  public void b(ApolloActionData paramApolloActionData) {}
 }
 
 

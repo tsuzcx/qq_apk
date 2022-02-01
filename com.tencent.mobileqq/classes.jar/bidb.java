@@ -1,48 +1,31 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.widget.VerticalCenterImageSpan;
 
 public class bidb
-  extends BaseAdapter
-  implements bicp
+  extends VerticalCenterImageSpan
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
+  private int a;
   
-  public bidb(View paramView)
+  public bidb(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Int = 0;
-      return;
-    }
-    this.jdField_a_of_type_Int = 1;
+    super(paramDrawable, 0);
   }
   
-  public int getCount()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    this.a = paramInt;
   }
   
-  public Object getItem(int paramInt)
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return this.jdField_a_of_type_AndroidViewView;
+    return super.getSize(paramPaint, paramCharSequence, paramInt1, paramInt2, paramFontMetricsInt) + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bidb
  * JD-Core Version:    0.7.0.1
  */

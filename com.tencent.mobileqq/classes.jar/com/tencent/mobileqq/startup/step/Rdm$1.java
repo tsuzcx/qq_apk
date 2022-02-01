@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import aawe;
-import aawf;
+import acvd;
+import acve;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.QFixApplicationImpl;
 import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
@@ -13,16 +13,16 @@ class Rdm$1
   
   public void run()
   {
-    aawe localaawe = aawf.a(BaseApplicationImpl.sApplication, "dex");
-    if ((localaawe != null) && (localaawe.a(BaseApplicationImpl.sApplication, true))) {
-      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, this.a, localaawe.b(), 0);
+    acvd localacvd = acve.a(BaseApplicationImpl.sApplication, "dex");
+    if ((localacvd != null) && (localacvd.a(BaseApplicationImpl.sApplication, BaseApplicationImpl.processName))) {
+      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, this.a, localacvd.b(), 0);
     }
     QFixApplicationImpl.a(BaseApplicationImpl.sApplication);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Rdm.1
  * JD-Core Version:    0.7.0.1
  */

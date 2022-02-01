@@ -1,82 +1,34 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.1;
-import com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.2;
-import java.util.List;
+import android.graphics.RectF;
 
 public class apbn
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private apbz jdField_a_of_type_Apbz;
+  public int a;
+  public RectF a;
+  public String a;
+  apbm[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public apbn(apbz paramapbz)
+  public apbn()
   {
-    this.jdField_a_of_type_Apbz = paramapbz;
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_c_of_type_Int = -1;
   }
   
-  private Handler a()
+  public String toString()
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {}
-    try
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",sessionId:").append(this.jdField_c_of_type_JavaLangString).append(",moreUrl:").append(this.d);
+    int i = 0;
+    while ((this.jdField_a_of_type_ArrayOfApbm != null) && (i < this.jdField_a_of_type_ArrayOfApbm.length))
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("DanmakuMeasureThread");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandlerThread.setUncaughtExceptionHandler(new apdp());
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      return this.jdField_a_of_type_AndroidOsHandler;
+      localStringBuilder.append("\n{index=").append(i).append(":").append(this.jdField_a_of_type_ArrayOfApbm[i].toString()).append("}\n");
+      i += 1;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        apds.d("DanmakuMeasureManager", new Object[] { localThrowable });
-      }
-    }
-  }
-  
-  public static void a(apbz paramapbz, apbq paramapbq)
-  {
-    if (paramapbq.b()) {
-      return;
-    }
-    paramapbz = paramapbz.a(paramapbq).a(paramapbq);
-    paramapbq.d(paramapbz.a() + apbz.a().g() * 2);
-    paramapbq.e(paramapbz.b() + apbz.a().c() * 2);
-    paramapbq.g();
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
-      return;
-    }
-    if (apdq.a())
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-  }
-  
-  public void a(apbq paramapbq, apbo paramapbo)
-  {
-    Handler localHandler = a();
-    if (localHandler != null) {
-      localHandler.post(new DanmakuMeasureManager.1(this, paramapbq, paramapbo));
-    }
-  }
-  
-  public void a(List<apbq> paramList, apbo paramapbo)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    Handler localHandler;
-    do
-    {
-      return;
-      localHandler = a();
-    } while (localHandler == null);
-    localHandler.post(new DanmakuMeasureManager.2(this, paramList, paramapbo));
+    return localStringBuilder.toString();
   }
 }
 

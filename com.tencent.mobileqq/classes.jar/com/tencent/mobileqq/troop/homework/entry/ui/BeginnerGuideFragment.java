@@ -12,30 +12,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bbzc;
-import bbze;
-import bbzf;
-import bbzj;
-import bcbe;
-import bety;
+import bezn;
+import bezp;
+import bezq;
+import bezu;
+import bfbp;
+import biau;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.io.File;
 import java.net.URL;
 
 public class BeginnerGuideFragment
   extends PublicBaseFragment
-  implements bcbe
+  implements bfbp
 {
   private int jdField_a_of_type_Int;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private View jdField_a_of_type_AndroidViewView;
-  private bbzj jdField_a_of_type_Bbzj;
-  private bety jdField_a_of_type_Bety;
+  private bezu jdField_a_of_type_Bezu;
+  private biau jdField_a_of_type_Biau;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   protected ComplexGuidViewPager a;
   private boolean jdField_a_of_type_Boolean;
@@ -49,7 +50,7 @@ public class BeginnerGuideFragment
     localIntent.putExtra("BeginnerGuideFragment:page_type", true);
     localIntent.putExtra("BeginnerGuideFragment:hw_type", paramInt);
     PublicFragmentActivity.a(paramActivity, localIntent, BeginnerGuideFragment.class);
-    paramActivity.overridePendingTransition(2130772293, 2130771990);
+    paramActivity.overridePendingTransition(2130772302, 2130771990);
   }
   
   private void a(String paramString, int paramInt)
@@ -102,7 +103,7 @@ public class BeginnerGuideFragment
         try
         {
           String str3 = new File(new URL(str2).getFile()).getName();
-          new bbzc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, str1).a(this.jdField_a_of_type_Bbzj, i, false);
+          new bezn(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, str1).a(this.jdField_a_of_type_Bezu, i, false);
           return true;
         }
         catch (Exception localException) {}
@@ -132,7 +133,7 @@ public class BeginnerGuideFragment
     localIntent.putExtra("BeginnerGuideFragment:page_type", false);
     localIntent.putExtra("BeginnerGuideFragment:hw_type", paramInt);
     PublicFragmentActivity.a(paramActivity, localIntent, BeginnerGuideFragment.class);
-    paramActivity.overridePendingTransition(2130772293, 2130771990);
+    paramActivity.overridePendingTransition(2130772302, 2130771990);
   }
   
   private void d()
@@ -140,10 +141,10 @@ public class BeginnerGuideFragment
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager == null) {
       return;
     }
-    bbze localbbze = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a;
+    bezp localbezp = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a;
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (localbbze != null)
+    if (localbezp != null)
     {
       if (!this.jdField_a_of_type_Boolean) {
         break label135;
@@ -155,14 +156,14 @@ public class BeginnerGuideFragment
         localObject1 = localObject2;
       }
     }
-    while ((localObject1 != null) && (((bbzf)localObject1).jdField_a_of_type_JavaLangString != null) && (((bbzf)localObject1).jdField_a_of_type_JavaUtilArrayList != null))
+    while ((localObject1 != null) && (((bezq)localObject1).jdField_a_of_type_JavaLangString != null) && (((bezq)localObject1).jdField_a_of_type_JavaUtilArrayList != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setData(((bbzf)localObject1).jdField_a_of_type_JavaLangString, ((bbzf)localObject1).jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setData(((bezq)localObject1).jdField_a_of_type_JavaLangString, ((bezq)localObject1).jdField_a_of_type_JavaUtilArrayList);
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.invalidate();
       return;
-      localObject1 = localbbze.b;
+      localObject1 = localbezp.b;
       continue;
-      localObject1 = localbbze.a;
+      localObject1 = localbezp.a;
       continue;
       label135:
       switch (this.jdField_a_of_type_Int)
@@ -173,10 +174,10 @@ public class BeginnerGuideFragment
         localObject1 = localObject2;
         break;
       case 4: 
-        localObject1 = localbbze.c;
+        localObject1 = localbezp.c;
         break;
       case 7: 
-        localObject1 = localbbze.d;
+        localObject1 = localbezp.d;
       }
     }
   }
@@ -195,13 +196,13 @@ public class BeginnerGuideFragment
     {
       if (!getActivity().isFinishing())
       {
-        if (this.jdField_a_of_type_Bety == null)
+        if (this.jdField_a_of_type_Biau == null)
         {
-          this.jdField_a_of_type_Bety = new bety(getActivity(), getActivity().getTitleBarHeight());
-          this.jdField_a_of_type_Bety.setCancelable(false);
-          this.jdField_a_of_type_Bety.show();
+          this.jdField_a_of_type_Biau = new biau(getActivity(), getActivity().getTitleBarHeight());
+          this.jdField_a_of_type_Biau.setCancelable(false);
+          this.jdField_a_of_type_Biau.show();
         }
-        this.jdField_a_of_type_Bety.c(paramInt);
+        this.jdField_a_of_type_Biau.c(paramInt);
       }
     }
     catch (Exception localException)
@@ -226,12 +227,12 @@ public class BeginnerGuideFragment
   
   protected void c()
   {
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {}
+    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bety.dismiss();
+      this.jdField_a_of_type_Biau.dismiss();
       label24:
-      this.jdField_a_of_type_Bety = null;
+      this.jdField_a_of_type_Biau = null;
       if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager != null) {
         this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setVisibility(0);
       }
@@ -270,31 +271,33 @@ public class BeginnerGuideFragment
       QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment create view");
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_a_of_type_Bbzj = new bbzj(this, Looper.myLooper());
+    this.jdField_a_of_type_Bezu = new bezu(this, Looper.myLooper());
     this.jdField_a_of_type_AndroidOsBundle = getArguments();
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("BeginnerGuideFragment:hw_type", -1000);
       if (!this.jdField_a_of_type_AndroidOsBundle.containsKey("BeginnerGuideFragment:page_type")) {
-        break label177;
+        break label184;
       }
       this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("BeginnerGuideFragment:page_type", true);
     }
     for (;;)
     {
       boolean bool = a();
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560450, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560605, paramViewGroup, false);
       if (this.jdField_a_of_type_AndroidViewView == null) {
         getActivity().finish();
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager = ((ComplexGuidViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131364667));
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager = ((ComplexGuidViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131364882));
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setOnActionBtnClickListener(this);
       d();
       if (bool) {
-        a(2131697870);
+        a(2131696714);
       }
-      return this.jdField_a_of_type_AndroidViewView;
-      label177:
+      paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
+      label184:
       if (QLog.isColorLevel()) {
         QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment create view failed, cannot determine which page to show");
       }
@@ -305,20 +308,20 @@ public class BeginnerGuideFragment
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Bbzj != null) {
-      this.jdField_a_of_type_Bbzj.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_Bezu != null) {
+      this.jdField_a_of_type_Bezu.removeCallbacksAndMessages(null);
     }
   }
   
   public void onFinish()
   {
     super.onFinish();
-    getActivity().overridePendingTransition(2130771990, 2130772295);
+    getActivity().overridePendingTransition(2130771990, 2130772304);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment
  * JD-Core Version:    0.7.0.1
  */

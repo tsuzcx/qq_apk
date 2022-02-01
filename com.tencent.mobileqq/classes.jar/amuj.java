@@ -1,13 +1,7 @@
 public class amuj
 {
-  public long a;
-  public boolean a;
-  
-  public amuj(long paramLong, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public int a;
+  public int b;
 }
 
 

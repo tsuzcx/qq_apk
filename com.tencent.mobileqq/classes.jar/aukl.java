@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aukl
-  implements alxf
+final class aukl
+  implements DialogInterface.OnClickListener
 {
-  public aukl(MultiAIOFragment paramMultiAIOFragment) {}
+  aukl(long paramLong, int paramInt, Activity paramActivity) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MultiAIOFragment.a(this.a).a(paramString, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("SDK_SHARE.ForwardShareByServerHelper", 2, "-->qbShowShareResultDialog--stay");
+    }
+    aukj.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aukl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,20 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.SeekBar;
-import com.tencent.av.ui.BeautyToolbar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
 public class mel
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnDismissListener
 {
-  public mel(BeautyToolbar paramBeautyToolbar) {}
+  public mel(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void onGlobalLayout()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.a.mIs1stShow) && (this.a.mSeek != null) && (this.a.mSeek.getWidth() > 0))
-    {
-      this.a.mIs1stShow = false;
-      this.a.updateTip(this.a.mSeek.getProgress());
-    }
+    this.a.b("onDismiss");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mel
  * JD-Core Version:    0.7.0.1
  */

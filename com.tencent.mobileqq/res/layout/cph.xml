@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/afy" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/mji" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/cpi" />
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/n70" android:visibility="visible" android:layout_width="74.0dip" android:layout_height="74.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="26.0dip" android:src="@drawable/g9a" android:scaleType="fitCenter" />
+    <ViewStub android:id="@id/n8_" android:layout="@layout/cnh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/n_3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cnr" />
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cmn" />
+    <com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView android:id="@id/n_t" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

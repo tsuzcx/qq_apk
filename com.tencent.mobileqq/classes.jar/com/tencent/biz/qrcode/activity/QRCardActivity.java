@@ -1,8 +1,10 @@
 package com.tencent.biz.qrcode.activity;
 
+import Override;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +13,7 @@ import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
@@ -20,26 +23,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdgm;
-import bdjz;
-import bhuf;
-import bhus;
+import bglp;
+import bgpa;
+import bkho;
+import bkif;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import xym;
-import xyn;
-import xyo;
-import xyp;
-import xyq;
-import xyr;
-import xys;
-import ybj;
+import zrx;
+import zry;
+import zrz;
+import zsa;
+import zsb;
+import zsc;
+import zsd;
+import zvb;
 
 public class QRCardActivity
   extends IphoneTitleBarActivity
@@ -55,10 +59,10 @@ public class QRCardActivity
   public ImageView a;
   protected LinearLayout a;
   protected TextView a;
-  public bhuf a;
+  public bkho a;
   protected String a;
   protected Thread a;
-  public ybj a;
+  public zvb a;
   public boolean a;
   protected TextView b;
   protected String b;
@@ -80,8 +84,8 @@ public class QRCardActivity
   
   public QRCardActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new xym(this);
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new xys(this);
+    this.jdField_a_of_type_AndroidOsHandler = new zrx(this);
+    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new zsd(this);
   }
   
   private ViewGroup a()
@@ -97,7 +101,7 @@ public class QRCardActivity
   
   private void a(Context paramContext, int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Bhuf = ((bhuf)bhus.a(this, null));
+    this.jdField_a_of_type_Bkho = ((bkho)bkif.a(this, null));
     boolean[] arrayOfBoolean = new boolean[4];
     boolean[] tmp19_17 = arrayOfBoolean;
     tmp19_17[0] = 0;
@@ -111,38 +115,38 @@ public class QRCardActivity
     if (paramInt == 2)
     {
       arrayOfBoolean[0] = true;
-      String str = this.jdField_a_of_type_AndroidContentResResources.getString(2131721263);
-      this.jdField_a_of_type_Bhuf.a(str, 0);
-      str = this.jdField_a_of_type_AndroidContentResResources.getString(2131721261);
-      this.jdField_a_of_type_Bhuf.a(str, 0);
+      String str = this.jdField_a_of_type_AndroidContentResResources.getString(2131718985);
+      this.jdField_a_of_type_Bkho.a(str, 0);
+      str = this.jdField_a_of_type_AndroidContentResResources.getString(2131718983);
+      this.jdField_a_of_type_Bkho.a(str, 0);
     }
     if (paramInt == 0)
     {
       arrayOfBoolean[1] = true;
-      this.jdField_a_of_type_Bhuf.a(this.jdField_a_of_type_AndroidContentResResources.getString(2131691700), 1);
+      this.jdField_a_of_type_Bkho.a(this.jdField_a_of_type_AndroidContentResResources.getString(2131691437), 1);
     }
     if (paramInt == 4)
     {
       arrayOfBoolean[2] = true;
-      this.jdField_a_of_type_Bhuf.a(this.jdField_a_of_type_AndroidContentResResources.getString(2131689778), 1);
-      this.jdField_a_of_type_Bhuf.a(this.jdField_a_of_type_AndroidContentResResources.getString(2131689773), 1);
+      this.jdField_a_of_type_Bkho.a(this.jdField_a_of_type_AndroidContentResResources.getString(2131689664), 1);
+      this.jdField_a_of_type_Bkho.a(this.jdField_a_of_type_AndroidContentResResources.getString(2131689660), 1);
     }
     if (paramInt == 3)
     {
       arrayOfBoolean[3] = true;
-      this.jdField_a_of_type_Bhuf.a(2131691700, 1);
-      this.jdField_a_of_type_Bhuf.a(2131691361, 1);
-      this.jdField_a_of_type_Bhuf.a(2131689648, 1);
-      this.jdField_a_of_type_Bhuf.a(2131693813, 1);
-      this.jdField_a_of_type_Bhuf.a(String.format(paramContext.getString(2131694910), new Object[] { paramString1 }));
+      this.jdField_a_of_type_Bkho.a(2131691437, 1);
+      this.jdField_a_of_type_Bkho.a(2131691140, 1);
+      this.jdField_a_of_type_Bkho.a(2131689569, 1);
+      this.jdField_a_of_type_Bkho.a(2131693155, 1);
+      this.jdField_a_of_type_Bkho.a(String.format(paramContext.getString(2131694052), new Object[] { paramString1 }));
     }
-    this.jdField_a_of_type_Bhuf.a(new xyn(this, arrayOfBoolean, paramString2, paramContext, paramString1));
-    this.jdField_a_of_type_Bhuf.c(2131690648);
-    this.jdField_a_of_type_Bhuf.setOnDismissListener(new xyo(this));
-    if (!this.jdField_a_of_type_Bhuf.isShowing())
+    this.jdField_a_of_type_Bkho.a(new zry(this, arrayOfBoolean, paramString2, paramContext, paramString1));
+    this.jdField_a_of_type_Bkho.c(2131690582);
+    this.jdField_a_of_type_Bkho.setOnDismissListener(new zrz(this));
+    if (!this.jdField_a_of_type_Bkho.isShowing())
     {
       this.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_Bhuf.show();
+      this.jdField_a_of_type_Bkho.show();
     }
   }
   
@@ -162,15 +166,15 @@ public class QRCardActivity
     TextView localTextView;
     if (paramInt == 0)
     {
-      i1 = this.jdField_a_of_type_Ybj.c.size();
-      i1 = this.jdField_a_of_type_Ybj.b.size() + i1;
+      i1 = this.jdField_a_of_type_Zvb.c.size();
+      i1 = this.jdField_a_of_type_Zvb.b.size() + i1;
       if (paramInt != 0) {
         break label683;
       }
       i3 = i1;
-      if (!this.jdField_a_of_type_Ybj.c.isEmpty())
+      if (!this.jdField_a_of_type_Zvb.c.isEmpty())
       {
-        localObject2 = this.jdField_a_of_type_Ybj.c.keySet().iterator();
+        localObject2 = this.jdField_a_of_type_Zvb.c.keySet().iterator();
         paramInt = i4;
       }
     }
@@ -184,7 +188,7 @@ public class QRCardActivity
           break label413;
         }
         localObject3 = (String)((Iterator)localObject2).next();
-        localObject5 = (String)this.jdField_a_of_type_Ybj.c.get(localObject3);
+        localObject5 = (String)this.jdField_a_of_type_Zvb.c.get(localObject3);
         localObject4 = ((String)localObject5).split(";");
         if ((localObject4 != null) && (localObject4.length > 0))
         {
@@ -202,10 +206,10 @@ public class QRCardActivity
                 break;
               }
               localObject5 = localObject4[i3];
-              localObject6 = ((LayoutInflater)localObject1).inflate(2131560234, null);
+              localObject6 = ((LayoutInflater)localObject1).inflate(2131560386, null);
               ((View)localObject6).setTag(Integer.valueOf(0));
-              localTextView = (TextView)((View)localObject6).findViewById(2131364771);
-              ((TextView)((View)localObject6).findViewById(2131377938)).setText((CharSequence)localObject3);
+              localTextView = (TextView)((View)localObject6).findViewById(2131364999);
+              ((TextView)((View)localObject6).findViewById(2131378776)).setText((CharSequence)localObject3);
               localTextView.setText((CharSequence)localObject5);
               a(i2, i4, (View)localObject6, paramViewGroup, 1);
               i2 += 1;
@@ -214,16 +218,16 @@ public class QRCardActivity
             if (paramInt != 1) {
               break;
             }
-            i1 = this.jdField_a_of_type_Ybj.e.size();
-            i5 = this.jdField_a_of_type_Ybj.f.size();
-            int i6 = this.jdField_a_of_type_Ybj.d.size();
-            i1 = this.jdField_a_of_type_Ybj.a.size() + (i1 + i5 + i6);
+            i1 = this.jdField_a_of_type_Zvb.e.size();
+            i5 = this.jdField_a_of_type_Zvb.f.size();
+            int i6 = this.jdField_a_of_type_Zvb.d.size();
+            i1 = this.jdField_a_of_type_Zvb.a.size() + (i1 + i5 + i6);
             break;
           }
-          localObject4 = ((LayoutInflater)localObject1).inflate(2131560234, null);
+          localObject4 = ((LayoutInflater)localObject1).inflate(2131560386, null);
           ((View)localObject4).setTag(Integer.valueOf(0));
-          localObject6 = (TextView)((View)localObject4).findViewById(2131364771);
-          ((TextView)((View)localObject4).findViewById(2131377938)).setText((CharSequence)localObject3);
+          localObject6 = (TextView)((View)localObject4).findViewById(2131364999);
+          ((TextView)((View)localObject4).findViewById(2131378776)).setText((CharSequence)localObject3);
           ((TextView)localObject6).setText((CharSequence)localObject5);
           a(paramInt, i4, (View)localObject4, paramViewGroup, 1);
           paramInt += 1;
@@ -233,13 +237,13 @@ public class QRCardActivity
     }
     label413:
     label1182:
-    if (!this.jdField_a_of_type_Ybj.b.isEmpty())
+    if (!this.jdField_a_of_type_Zvb.b.isEmpty())
     {
-      localObject2 = this.jdField_a_of_type_Ybj.b.keySet().iterator();
+      localObject2 = this.jdField_a_of_type_Zvb.b.keySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (String)((Iterator)localObject2).next();
-        localObject5 = (String)this.jdField_a_of_type_Ybj.b.get(localObject3);
+        localObject5 = (String)this.jdField_a_of_type_Zvb.b.get(localObject3);
         localObject4 = ((String)localObject5).split(";");
         if ((localObject4 != null) && (localObject4.length > 0))
         {
@@ -257,18 +261,18 @@ public class QRCardActivity
                 break;
               }
               localObject5 = localObject4[i1];
-              localObject6 = ((LayoutInflater)localObject1).inflate(2131560232, null);
-              localTextView = (TextView)((View)localObject6).findViewById(2131364771);
-              ((TextView)((View)localObject6).findViewById(2131377938)).setText((CharSequence)localObject3);
+              localObject6 = ((LayoutInflater)localObject1).inflate(2131560385, null);
+              localTextView = (TextView)((View)localObject6).findViewById(2131364999);
+              ((TextView)((View)localObject6).findViewById(2131378776)).setText((CharSequence)localObject3);
               localTextView.setText((CharSequence)localObject5);
               a(paramInt, i4, (View)localObject6, paramViewGroup, 0);
               paramInt += 1;
               i1 += 1;
             }
           }
-          localObject4 = ((LayoutInflater)localObject1).inflate(2131560232, null);
-          localObject6 = (TextView)((View)localObject4).findViewById(2131364771);
-          ((TextView)((View)localObject4).findViewById(2131377938)).setText((CharSequence)localObject3);
+          localObject4 = ((LayoutInflater)localObject1).inflate(2131560385, null);
+          localObject6 = (TextView)((View)localObject4).findViewById(2131364999);
+          ((TextView)((View)localObject4).findViewById(2131378776)).setText((CharSequence)localObject3);
           ((TextView)localObject6).setText((CharSequence)localObject5);
           a(i2, i4, (View)localObject4, paramViewGroup, 0);
           i2 += 1;
@@ -279,52 +283,52 @@ public class QRCardActivity
       if (paramInt == 1)
       {
         paramInt = i3;
-        if (!this.jdField_a_of_type_Ybj.f.isEmpty())
+        if (!this.jdField_a_of_type_Zvb.f.isEmpty())
         {
           localObject2 = this.k;
-          localObject3 = (String)this.jdField_a_of_type_Ybj.f.get(this.k);
-          localObject4 = ((LayoutInflater)localObject1).inflate(2131560234, null);
+          localObject3 = (String)this.jdField_a_of_type_Zvb.f.get(this.k);
+          localObject4 = ((LayoutInflater)localObject1).inflate(2131560386, null);
           ((View)localObject4).setTag(Integer.valueOf(2));
-          localObject5 = (TextView)((View)localObject4).findViewById(2131364771);
-          ((TextView)((View)localObject4).findViewById(2131377938)).setText((CharSequence)localObject2);
+          localObject5 = (TextView)((View)localObject4).findViewById(2131364999);
+          ((TextView)((View)localObject4).findViewById(2131378776)).setText((CharSequence)localObject2);
           ((TextView)localObject5).setText((CharSequence)localObject3);
           a(0, i1, (View)localObject4, paramViewGroup, 1);
           paramInt = 1;
         }
         i2 = paramInt;
-        if (!this.jdField_a_of_type_Ybj.e.isEmpty())
+        if (!this.jdField_a_of_type_Zvb.e.isEmpty())
         {
           localObject2 = this.j;
-          localObject3 = (String)this.jdField_a_of_type_Ybj.e.get(this.j);
-          localObject4 = ((LayoutInflater)localObject1).inflate(2131560232, null);
-          localObject5 = (TextView)((View)localObject4).findViewById(2131364771);
-          ((TextView)((View)localObject4).findViewById(2131377938)).setText((CharSequence)localObject2);
+          localObject3 = (String)this.jdField_a_of_type_Zvb.e.get(this.j);
+          localObject4 = ((LayoutInflater)localObject1).inflate(2131560385, null);
+          localObject5 = (TextView)((View)localObject4).findViewById(2131364999);
+          ((TextView)((View)localObject4).findViewById(2131378776)).setText((CharSequence)localObject2);
           ((TextView)localObject5).setText((CharSequence)localObject3);
           a(paramInt, i1, (View)localObject4, paramViewGroup, 0);
           i2 = paramInt + 1;
         }
-        if (!this.jdField_a_of_type_Ybj.d.isEmpty())
+        if (!this.jdField_a_of_type_Zvb.d.isEmpty())
         {
           localObject2 = this.h;
-          localObject3 = (String)this.jdField_a_of_type_Ybj.d.get(this.h);
+          localObject3 = (String)this.jdField_a_of_type_Zvb.d.get(this.h);
           if (!Pattern.compile(o).matcher((CharSequence)localObject3).matches()) {
             break label1182;
           }
-          localObject4 = ((LayoutInflater)localObject1).inflate(2131560234, null);
+          localObject4 = ((LayoutInflater)localObject1).inflate(2131560386, null);
           ((View)localObject4).setTag(Integer.valueOf(1));
-          localObject5 = (TextView)((View)localObject4).findViewById(2131364771);
-          ((TextView)((View)localObject4).findViewById(2131377938)).setText((CharSequence)localObject2);
+          localObject5 = (TextView)((View)localObject4).findViewById(2131364999);
+          ((TextView)((View)localObject4).findViewById(2131378776)).setText((CharSequence)localObject2);
           ((TextView)localObject5).setText((CharSequence)localObject3);
           a(i2, i1, (View)localObject4, paramViewGroup, 1);
         }
-        while (!this.jdField_a_of_type_Ybj.a.isEmpty())
+        while (!this.jdField_a_of_type_Zvb.a.isEmpty())
         {
-          localObject1 = ((LayoutInflater)localObject1).inflate(2131560232, null);
-          localObject2 = (TextView)((View)localObject1).findViewById(2131364771);
-          localObject3 = (TextView)((View)localObject1).findViewById(2131377938);
+          localObject1 = ((LayoutInflater)localObject1).inflate(2131560385, null);
+          localObject2 = (TextView)((View)localObject1).findViewById(2131364999);
+          localObject3 = (TextView)((View)localObject1).findViewById(2131378776);
           ((TextView)localObject2).setMovementMethod(LinkMovementMethod.getInstance());
           ((TextView)localObject3).setText(this.i);
-          localObject3 = (String)this.jdField_a_of_type_Ybj.a.get(this.i);
+          localObject3 = (String)this.jdField_a_of_type_Zvb.a.get(this.i);
           localObject4 = new SpannableString((CharSequence)localObject3);
           localObject5 = Pattern.compile("\\d{5,}").matcher((CharSequence)localObject3);
           for (;;)
@@ -337,9 +341,9 @@ public class QRCardActivity
               {
                 ((SpannableString)localObject4).setSpan(new QRCardActivity.NumberSpan(this, ((String)localObject3).toString().substring(paramInt, i2)), paramInt, i2, 33);
                 continue;
-                localObject4 = ((LayoutInflater)localObject1).inflate(2131560232, null);
-                localObject5 = (TextView)((View)localObject4).findViewById(2131364771);
-                ((TextView)((View)localObject4).findViewById(2131377938)).setText((CharSequence)localObject2);
+                localObject4 = ((LayoutInflater)localObject1).inflate(2131560385, null);
+                localObject5 = (TextView)((View)localObject4).findViewById(2131364999);
+                ((TextView)((View)localObject4).findViewById(2131378776)).setText((CharSequence)localObject2);
                 ((TextView)localObject5).setText((CharSequence)localObject3);
                 a(i2, i1, (View)localObject4, paramViewGroup, 0);
                 break;
@@ -357,7 +361,7 @@ public class QRCardActivity
           if (i1 != 1) {
             break label1333;
           }
-          ((View)localObject1).setBackgroundResource(2130839254);
+          ((View)localObject1).setBackgroundResource(2130839432);
         }
       }
     }
@@ -366,26 +370,26 @@ public class QRCardActivity
       paramViewGroup.addView((View)localObject1);
       return;
       label1333:
-      ((View)localObject1).setBackgroundResource(2130839261);
+      ((View)localObject1).setBackgroundResource(2130839439);
     }
   }
   
   private void b()
   {
-    super.setTitle(2131695696);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367819));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377606));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379268));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131366626));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371161));
+    super.setTitle(2131694588);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131368138));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378445));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380195));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131366895));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371720));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131368482));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131368790));
     if (!TextUtils.isEmpty(this.m)) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.m);
     }
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       if (!TextUtils.isEmpty(this.n)) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131720834) + ": " + this.n);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131718577) + ": " + this.n);
       }
     }
     for (;;)
@@ -398,9 +402,9 @@ public class QRCardActivity
       }
       c();
       return;
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131694804) + ": " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131693975) + ": " + this.jdField_a_of_type_JavaLangString);
       if (!TextUtils.isEmpty(this.n)) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131720834) + ": " + this.n);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131718577) + ": " + this.n);
       }
     }
   }
@@ -422,41 +426,41 @@ public class QRCardActivity
   {
     this.jdField_a_of_type_AndroidContentResResources = super.getResources();
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density;
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentResResources.getString(2131720726);
-    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentResResources.getString(2131693387);
-    this.d = this.jdField_a_of_type_AndroidContentResResources.getString(2131721465);
-    this.e = this.jdField_a_of_type_AndroidContentResResources.getString(2131689779);
-    this.f = this.jdField_a_of_type_AndroidContentResResources.getString(2131693386);
-    this.g = this.jdField_a_of_type_AndroidContentResResources.getString(2131721464);
-    this.h = this.jdField_a_of_type_AndroidContentResResources.getString(2131721259);
-    this.i = this.jdField_a_of_type_AndroidContentResResources.getString(2131694870);
-    this.j = this.jdField_a_of_type_AndroidContentResResources.getString(2131695091);
-    this.k = this.jdField_a_of_type_AndroidContentResResources.getString(2131692044);
-    this.jdField_a_of_type_Int = super.getResources().getColor(2131165717);
-    this.jdField_a_of_type_Ybj = new ybj();
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentResResources.getString(2131718518);
+    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentResResources.getString(2131692871);
+    this.d = this.jdField_a_of_type_AndroidContentResResources.getString(2131719165);
+    this.e = this.jdField_a_of_type_AndroidContentResResources.getString(2131689665);
+    this.f = this.jdField_a_of_type_AndroidContentResResources.getString(2131692870);
+    this.g = this.jdField_a_of_type_AndroidContentResResources.getString(2131719164);
+    this.h = this.jdField_a_of_type_AndroidContentResResources.getString(2131718981);
+    this.i = this.jdField_a_of_type_AndroidContentResResources.getString(2131694012);
+    this.j = this.jdField_a_of_type_AndroidContentResResources.getString(2131694159);
+    this.k = this.jdField_a_of_type_AndroidContentResResources.getString(2131691699);
+    this.jdField_a_of_type_Int = super.getResources().getColor(2131165765);
+    this.jdField_a_of_type_Zvb = new zvb();
   }
   
   public void a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, int paramInt3)
   {
     if (paramInt1 == 0) {
-      paramView.setBackgroundResource(2130839270);
+      paramView.setBackgroundResource(2130839448);
     }
     for (;;)
     {
       if (paramInt2 == 1) {
-        paramView.setBackgroundResource(2130839254);
+        paramView.setBackgroundResource(2130839432);
       }
       if (paramInt3 == 1)
       {
-        paramView.setOnClickListener(new xyr(this));
+        paramView.setOnClickListener(new zsc(this));
         paramView.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
       }
       paramViewGroup.addView(paramView);
       return;
       if (paramInt1 == paramInt2 - 1) {
-        paramView.setBackgroundResource(2130839261);
+        paramView.setBackgroundResource(2130839439);
       } else {
-        paramView.setBackgroundResource(2130839264);
+        paramView.setBackgroundResource(2130839442);
       }
     }
   }
@@ -541,29 +545,29 @@ public class QRCardActivity
       if (((String)localObject3).equals("tel"))
       {
         localObject1 = paramString;
-        if (this.jdField_a_of_type_Ybj.c.containsKey(this.jdField_b_of_type_JavaLangString)) {
-          localObject1 = (String)this.jdField_a_of_type_Ybj.c.get(this.jdField_b_of_type_JavaLangString) + ";" + paramString;
+        if (this.jdField_a_of_type_Zvb.c.containsKey(this.jdField_b_of_type_JavaLangString)) {
+          localObject1 = (String)this.jdField_a_of_type_Zvb.c.get(this.jdField_b_of_type_JavaLangString) + ";" + paramString;
         }
-        this.jdField_a_of_type_Ybj.c.put(this.jdField_b_of_type_JavaLangString, localObject1);
+        this.jdField_a_of_type_Zvb.c.put(this.jdField_b_of_type_JavaLangString, localObject1);
         break label74;
       }
       if (((String)localObject3).equals("adr"))
       {
         localObject1 = paramString;
-        if (this.jdField_a_of_type_Ybj.b.containsKey(this.e)) {
-          localObject1 = (String)this.jdField_a_of_type_Ybj.b.get(this.e) + ";" + paramString;
+        if (this.jdField_a_of_type_Zvb.b.containsKey(this.e)) {
+          localObject1 = (String)this.jdField_a_of_type_Zvb.b.get(this.e) + ";" + paramString;
         }
-        this.jdField_a_of_type_Ybj.b.put(this.e, localObject1);
+        this.jdField_a_of_type_Zvb.b.put(this.e, localObject1);
         break label74;
       }
       if (((String)localObject3).equals("email"))
       {
-        this.jdField_a_of_type_Ybj.f.put(this.k, paramString);
+        this.jdField_a_of_type_Zvb.f.put(this.k, paramString);
         break label74;
       }
       if (((String)localObject3).equals("org"))
       {
-        this.jdField_a_of_type_Ybj.e.put(this.j, paramString);
+        this.jdField_a_of_type_Zvb.e.put(this.j, paramString);
         break label74;
       }
       if (((String)localObject3).equals("url"))
@@ -582,7 +586,7 @@ public class QRCardActivity
           }
           paramString = paramString.toString();
         }
-        this.jdField_a_of_type_Ybj.d.put(this.h, paramString);
+        this.jdField_a_of_type_Zvb.d.put(this.h, paramString);
         break label74;
       }
       if (((String)localObject3).equals("note"))
@@ -601,7 +605,7 @@ public class QRCardActivity
           }
           paramString = paramString.toString();
         }
-        this.jdField_a_of_type_Ybj.a.put(this.i, paramString);
+        this.jdField_a_of_type_Zvb.a.put(this.i, paramString);
         break label74;
       }
       if (!((String)localObject3).equals("nickname")) {
@@ -724,10 +728,10 @@ public class QRCardActivity
       for (;;)
       {
         localObject3 = paramString;
-        if (this.jdField_a_of_type_Ybj.c.containsKey(localObject2)) {
-          localObject3 = (String)this.jdField_a_of_type_Ybj.c.get(localObject2) + ";" + paramString;
+        if (this.jdField_a_of_type_Zvb.c.containsKey(localObject2)) {
+          localObject3 = (String)this.jdField_a_of_type_Zvb.c.get(localObject2) + ";" + paramString;
         }
-        this.jdField_a_of_type_Ybj.c.put(localObject2, localObject3);
+        this.jdField_a_of_type_Zvb.c.put(localObject2, localObject3);
         break label813;
         if (((String)localObject2).contains("work"))
         {
@@ -784,19 +788,19 @@ public class QRCardActivity
         for (;;)
         {
           localObject3 = paramString;
-          if (this.jdField_a_of_type_Ybj.b.containsKey(localObject2)) {
-            localObject3 = (String)this.jdField_a_of_type_Ybj.b.get(localObject2) + ";" + paramString;
+          if (this.jdField_a_of_type_Zvb.b.containsKey(localObject2)) {
+            localObject3 = (String)this.jdField_a_of_type_Zvb.b.get(localObject2) + ";" + paramString;
           }
-          this.jdField_a_of_type_Ybj.b.put(localObject2, localObject3);
+          this.jdField_a_of_type_Zvb.b.put(localObject2, localObject3);
           break label813;
           if (((String)localObject2).equals("email"))
           {
-            this.jdField_a_of_type_Ybj.f.put(this.k, paramString);
+            this.jdField_a_of_type_Zvb.f.put(this.k, paramString);
             break label813;
           }
           if (((String)localObject2).equals("org"))
           {
-            this.jdField_a_of_type_Ybj.e.put(this.j, paramString);
+            this.jdField_a_of_type_Zvb.e.put(this.j, paramString);
             break label813;
           }
           if (((String)localObject2).equals("url"))
@@ -815,7 +819,7 @@ public class QRCardActivity
               }
               paramString = paramString.toString();
             }
-            this.jdField_a_of_type_Ybj.d.put(this.h, paramString);
+            this.jdField_a_of_type_Zvb.d.put(this.h, paramString);
             break label813;
           }
           if (!((String)localObject2).equals("note")) {
@@ -835,7 +839,7 @@ public class QRCardActivity
             }
             paramString = paramString.toString();
           }
-          this.jdField_a_of_type_Ybj.a.put(this.i, paramString);
+          this.jdField_a_of_type_Zvb.a.put(this.i, paramString);
           break label813;
           if (paramString.length() <= "BIZCARD:;;".length()) {
             break;
@@ -900,10 +904,10 @@ public class QRCardActivity
                 if (((String)localObject3).equals("b"))
                 {
                   localObject3 = localObject2;
-                  if (this.jdField_a_of_type_Ybj.c.containsKey(this.jdField_b_of_type_JavaLangString)) {
-                    localObject3 = (String)this.jdField_a_of_type_Ybj.c.get(this.jdField_b_of_type_JavaLangString) + ";" + (String)localObject2;
+                  if (this.jdField_a_of_type_Zvb.c.containsKey(this.jdField_b_of_type_JavaLangString)) {
+                    localObject3 = (String)this.jdField_a_of_type_Zvb.c.get(this.jdField_b_of_type_JavaLangString) + ";" + (String)localObject2;
                   }
-                  this.jdField_a_of_type_Ybj.c.put(this.jdField_b_of_type_JavaLangString, localObject3);
+                  this.jdField_a_of_type_Zvb.c.put(this.jdField_b_of_type_JavaLangString, localObject3);
                   localObject2 = paramString;
                   paramString = (String)localObject1;
                   localObject1 = localObject2;
@@ -912,10 +916,10 @@ public class QRCardActivity
                 if (((String)localObject3).equals("a"))
                 {
                   localObject3 = localObject2;
-                  if (this.jdField_a_of_type_Ybj.b.containsKey(this.e)) {
-                    localObject3 = (String)this.jdField_a_of_type_Ybj.b.get(this.e) + ";" + (String)localObject2;
+                  if (this.jdField_a_of_type_Zvb.b.containsKey(this.e)) {
+                    localObject3 = (String)this.jdField_a_of_type_Zvb.b.get(this.e) + ";" + (String)localObject2;
                   }
-                  this.jdField_a_of_type_Ybj.b.put(this.e, localObject3);
+                  this.jdField_a_of_type_Zvb.b.put(this.e, localObject3);
                   localObject2 = paramString;
                   paramString = (String)localObject1;
                   localObject1 = localObject2;
@@ -923,14 +927,14 @@ public class QRCardActivity
                 }
                 if (((String)localObject3).equals("e"))
                 {
-                  this.jdField_a_of_type_Ybj.f.put(this.k, localObject2);
+                  this.jdField_a_of_type_Zvb.f.put(this.k, localObject2);
                   localObject2 = paramString;
                   paramString = (String)localObject1;
                   localObject1 = localObject2;
                   continue;
                 }
                 if (((String)localObject3).equals("c")) {
-                  this.jdField_a_of_type_Ybj.e.put(this.j, localObject2);
+                  this.jdField_a_of_type_Zvb.e.put(this.j, localObject2);
                 }
               }
               localObject2 = paramString;
@@ -1025,29 +1029,47 @@ public class QRCardActivity
   
   public void a(String paramString)
   {
-    bdjz localbdjz = bdgm.a(this, 230);
-    localbdjz.setTitle(2131717628);
-    localbdjz.setMessage(paramString);
-    xyp localxyp = new xyp(this);
-    localbdjz.setPositiveButton(2131694953, new xyq(this, paramString));
-    localbdjz.setNegativeButton(2131690648, localxyp);
-    localbdjz.show();
+    bgpa localbgpa = bglp.a(this, 230);
+    localbgpa.setTitle(2131715853);
+    localbgpa.setMessage(paramString);
+    zsa localzsa = new zsa(this);
+    localbgpa.setPositiveButton(2131694081, new zsb(this, paramString));
+    localbgpa.setNegativeButton(2131690582, localzsa);
+    localbgpa.show();
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void onClick(View paramView)
   {
     switch (paramView.getId())
     {
-    default: 
-      return;
     }
-    a(null, 4, null, null);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      a(null, 4, null, null);
+    }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131560239);
+    super.setContentView(2131560392);
     paramBundle = super.getIntent();
     a();
     String str = paramBundle.getStringExtra("QRCARDSTR");
@@ -1063,14 +1085,14 @@ public class QRCardActivity
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
     }
-    if (this.jdField_a_of_type_Bhuf != null) {
-      this.jdField_a_of_type_Bhuf.dismiss();
+    if (this.jdField_a_of_type_Bkho != null) {
+      this.jdField_a_of_type_Bkho.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRCardActivity
  * JD-Core Version:    0.7.0.1
  */

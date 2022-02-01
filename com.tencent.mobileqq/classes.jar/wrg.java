@@ -1,31 +1,43 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class wrg
-  extends QQUIEventReceiver<wrf, uvd>
+class wrg
+  extends aopa
 {
-  public wrg(wrf paramwrf1, @NonNull wrf paramwrf2)
+  wrg(wrf paramwrf, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    super(paramwrf2);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void a(@NonNull wrf paramwrf, @NonNull uvd paramuvd)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.playernew.StoryPlayerActivity", 2, "GetStoryListReceiver");
+    yqp.b("LbsManager", "onLocationFinish.");
+    boolean bool;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      bool = true;
+      if (!bool) {
+        break label114;
+      }
+      this.a.b = wre.a(paramSosoLbsInfo.a);
+      yqp.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
     }
-    paramwrf.b(paramuvd.a);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uvd.class;
+    for (;;)
+    {
+      if (!wrf.a(this.a)) {
+        this.a.a(bool, this.a.b);
+      }
+      this.a.a = false;
+      return;
+      bool = false;
+      break;
+      label114:
+      yqp.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wrg
  * JD-Core Version:    0.7.0.1
  */

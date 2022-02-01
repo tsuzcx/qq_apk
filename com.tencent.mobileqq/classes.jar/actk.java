@@ -1,66 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.image.URLDrawable;
 
-public class actk
-  extends WtloginObserver
+public abstract interface actk
 {
-  public actk(DevlockPushActivity paramDevlockPushActivity) {}
+  public abstract void a(URLDrawable paramURLDrawable);
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (!this.a.isResume())
-    {
-      this.a.b();
-      return;
-    }
-    if (((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing())) && (paramInt == 0) && (paramDevlockInfo != null))
-    {
-      this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
-      aqax.a().a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
-      return;
-    }
-    this.a.b();
-    if ((paramInt == 0) && (paramDevlockInfo != null))
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
-      }
-      this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
-      aqax.a().a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
-      this.a.a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
-      }
-      if (paramDevlockInfo == null) {
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus DevlockInfo is null");
-      }
-    }
-    paramDevlockInfo = this.a.getString(2131692204);
-    paramWUserSigInfo = paramDevlockInfo;
-    if (paramErrMsg != null)
-    {
-      paramWUserSigInfo = paramDevlockInfo;
-      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
-        paramWUserSigInfo = paramErrMsg.getMessage();
-      }
-    }
-    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
-  }
+  public abstract void b(URLDrawable paramURLDrawable);
 }
 
 

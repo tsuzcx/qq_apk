@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-class bcre
-  implements View.OnClickListener
+public final class bcre
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  bcre(bcrd parambcrd, bcrf parambcrf, MediaPreviewInfo paramMediaPreviewInfo) {}
+  public bcre(bcow parambcow) {}
   
-  public void onClick(View paramView)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_Bcrf.a.setVisibility(8);
-    this.jdField_a_of_type_Bcrd.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo, this.jdField_a_of_type_Bcrf);
+    QLog.i("QSplash@QbossSplashUtil", 1, "video finish");
+    this.a.a(15, 1, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcre
  * JD-Core Version:    0.7.0.1
  */

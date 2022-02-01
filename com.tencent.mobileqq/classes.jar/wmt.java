@@ -1,52 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class wmt
-  extends ulw
+public class wmt
+  extends wnn
 {
-  wmt(wms paramwms) {}
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public wmt(wms paramwms, String paramString, boolean paramBoolean)
   {
-    paramInt = 1;
-    if ((this.a.a == null) || (!TextUtils.equals(paramString, this.a.a.uid))) {
-      return;
-    }
-    if (paramBoolean1)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String a()
+  {
+    return wms.jdField_a_of_type_JavaLangString;
+  }
+  
+  public wno a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
+    try
     {
-      paramString = this.a.a;
-      if (paramBoolean2)
-      {
-        paramString.isSubscribe = paramInt;
-        paramString = (ulu)vls.a().getManager(181);
-        if (!paramBoolean2) {
-          break label128;
-        }
-        if (!paramString.h()) {
-          paramString.b();
-        }
-        QQToast.a(vls.a(), 2, alud.a(2131711334), 0).a();
-      }
-      for (;;)
-      {
-        wms.a(this.a).e();
-        wms.a(this.a).c();
-        return;
-        paramInt = 0;
-        break;
-        label128:
-        QQToast.a(vls.a(), 2, alud.a(2131711330), 0).a();
-      }
+      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
+      return new wmu(this.jdField_a_of_type_Wms, localRspFeedLikeList, this.jdField_a_of_type_Boolean);
     }
-    QQToast.a(vls.a(), 1, alud.a(2131711339), 0).a();
+    catch (Exception paramArrayOfByte)
+    {
+      yqp.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
+    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2;; i = 1)
+    {
+      localReqFeedLikeList.source.set(i);
+      return localReqFeedLikeList.toByteArray();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wmt
  * JD-Core Version:    0.7.0.1
  */

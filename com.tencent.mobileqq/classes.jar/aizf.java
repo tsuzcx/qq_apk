@@ -1,12 +1,17 @@
-import java.util.Comparator;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
 
-final class aizf
-  implements Comparator<aize>
+public class aizf
+  extends amcl
 {
-  public int a(aize paramaize1, aize paramaize2)
-  {
-    return paramaize1.a - paramaize2.a;
-  }
+  public Button a;
+  public TextView a;
+  public SysSuspiciousMsg a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

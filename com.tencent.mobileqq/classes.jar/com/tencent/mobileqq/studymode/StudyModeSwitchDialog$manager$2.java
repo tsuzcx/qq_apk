@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.studymode;
 
-import baau;
-import babh;
+import bdby;
+import bdcl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import kotlin.Metadata;
@@ -14,26 +14,26 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mobileqq/studymode/ModeSwitchManager;", "invoke"}, k=3, mv={1, 1, 16})
 public final class StudyModeSwitchDialog$manager$2
   extends Lambda
-  implements Function0<baau>
+  implements Function0<bdby>
 {
-  public StudyModeSwitchDialog$manager$2(babh parambabh)
+  public StudyModeSwitchDialog$manager$2(bdcl parambdcl)
   {
     super(0);
   }
   
   @NotNull
-  public final baau invoke()
+  public final bdby invoke()
   {
-    Manager localManager = babh.a(this.this$0).app.getManager(361);
+    Manager localManager = bdcl.a(this.this$0).app.getManager(361);
     if (localManager == null) {
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.studymode.ModeSwitchManager");
     }
-    return (baau)localManager;
+    return (bdby)localManager;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialog.manager.2
  * JD-Core Version:    0.7.0.1
  */

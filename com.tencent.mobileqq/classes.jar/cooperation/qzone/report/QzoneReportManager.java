@@ -1,13 +1,13 @@
 package cooperation.qzone.report;
 
-import bjrc;
-import bjsl;
+import bmfm;
+import bmgv;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class QzoneReportManager
 {
-  private static final bjsl<QzoneReportManager, Void> jdField_a_of_type_Bjsl = new bjrc();
+  private static final bmgv<QzoneReportManager, Void> jdField_a_of_type_Bmgv = new bmfm();
   public static String a;
   public static boolean a;
   volatile int jdField_a_of_type_Int = 0;
@@ -43,7 +43,7 @@ public class QzoneReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.QzoneReportManager
  * JD-Core Version:    0.7.0.1
  */

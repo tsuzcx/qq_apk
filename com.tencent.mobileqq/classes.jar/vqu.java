@@ -1,159 +1,80 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogTopGestureLayout;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
-import com.tencent.widget.XEditTextEx;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
-import javax.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import mqq.manager.Manager;
+import qqcircle.QQCircleCounter.RedPointInfo;
 
 public class vqu
-  extends Dialog
+  implements Manager, vqt
 {
-  private int jdField_a_of_type_Int;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private CommentFloatDialogTopGestureLayout jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout;
-  private StoryPlayerCommentListView jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView;
-  private String jdField_a_of_type_JavaLangString;
-  private vrd jdField_a_of_type_Vrd;
-  private wiq jdField_a_of_type_Wiq;
-  @Nullable
-  private wjf jdField_a_of_type_Wjf;
-  private boolean jdField_a_of_type_Boolean;
-  private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private static boolean jdField_a_of_type_Boolean;
+  private final vqr jdField_a_of_type_Vqr;
+  private vqt jdField_a_of_type_Vqt;
+  private final vqx jdField_a_of_type_Vqx;
   
-  public vqu(@NonNull Context paramContext, @NonNull String paramString1, vrd paramvrd, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public vqu(QQAppInterface paramQQAppInterface)
   {
-    super(paramContext, 2131755118);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Vrd = paramvrd;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561603, null);
-    a(paramContext, paramString2);
-    this.jdField_a_of_type_Vrd.a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Vrd.b();
-    super.setContentView(paramContext);
-    paramContext = getWindow();
-    if (paramContext != null)
+    this.jdField_a_of_type_Vqr = new vqr(paramQQAppInterface);
+    this.jdField_a_of_type_Vqx = new vqx(paramQQAppInterface);
+    boolean bool1 = QzoneConfig.isEeveeSysTemPolling();
+    boolean bool2 = QzoneConfig.isQQCircleUseEeveeRedPoint();
+    if ((bool1) && (bool2)) {
+      this.jdField_a_of_type_Vqt = this.jdField_a_of_type_Vqr;
+    }
+    for (jdField_a_of_type_Boolean = true;; jdField_a_of_type_Boolean = false)
     {
-      paramContext.setSoftInputMode(16);
-      paramString1 = paramContext.getAttributes();
-      paramString1.width = -1;
-      paramString1.height = xsm.c(getContext());
-      paramString1.flags |= 0x20;
-      paramString1.gravity = 80;
-      paramContext.setAttributes(paramString1);
-      if (ImmersiveUtils.isSupporImmersive() == 1)
-      {
-        getWindow().addFlags(67108864);
-        paramContext = new SystemBarCompact(this, true, getContext().getResources().getColor(17170445));
-        paramContext.setStatusBarDrawable(null);
-        paramContext.init();
-      }
+      QLog.e("QCircleRedPointManager", 1, "isQQCircleCurrentUseEeveeRedPoint: " + jdField_a_of_type_Boolean + ", ( isEeveeSysTemPolling: " + bool1 + ", isQQCircleUseEeveeRedPoint: " + bool2 + " )");
+      return;
+      this.jdField_a_of_type_Vqt = this.jdField_a_of_type_Vqx;
     }
   }
   
-  private void a(View paramView, String paramString)
+  private vqt a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout = ((CommentFloatDialogTopGestureLayout)paramView.findViewById(2131364771));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364736));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView = ((StoryPlayerCommentListView)paramView.findViewById(2131364577));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView.a(this.jdField_a_of_type_Vrd, new vrc(this, null), this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.a(this, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout);
-    if (QQStoryContext.a())
-    {
-      ((InputLinearLayout)paramView.findViewById(2131375660)).setBackgroundColor(getContext().getResources().getColor(2131166399));
-      ((LinearLayout)paramView.findViewById(2131363406)).setBackgroundColor(getContext().getResources().getColor(2131166398));
-      ((XEditTextEx)paramView.findViewById(2131365837)).setHintTextColor(getContext().getResources().getColor(2131166400));
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView.setBackgroundColor(getContext().getResources().getColor(2131166398));
-      paramView.findViewById(2131377989).setBackgroundColor(getContext().getResources().getColor(2131166398));
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.setBackgroundColor(getContext().getResources().getColor(2131166398));
-      paramView.findViewById(2131365355).setBackgroundColor(getContext().getResources().getColor(2131166399));
-    }
-    paramView.setOnClickListener(new vqv(this));
-    ImageView localImageView = (ImageView)paramView.findViewById(2131364337);
-    localImageView.setOnClickListener(new vqw(this));
-    if (QQStoryContext.a()) {
-      localImageView.setBackgroundResource(2130846001);
-    }
-    ((TextView)paramView.findViewById(2131377938)).setText(paramString);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(400L);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(300L);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(new vqx(this));
+    return this.jdField_a_of_type_Vqt;
   }
   
-  public CharSequence a()
+  public static boolean a()
   {
-    if (this.jdField_a_of_type_Wjf != null) {
-      return this.jdField_a_of_type_Wjf.a.getText();
-    }
-    return "";
+    return jdField_a_of_type_Boolean;
   }
   
-  public void a()
+  public QQCircleCounter.RedPointInfo a(String paramString)
   {
-    if (!this.c)
-    {
-      this.c = true;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-    }
+    return a().a(paramString);
   }
   
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    if (!this.c)
-    {
-      this.c = true;
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 0, paramInt, 1, 1.0F);
-      localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new vqy(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.startAnimation(localTranslateAnimation);
-    }
+    this.jdField_a_of_type_Vqr.b(paramString);
+    this.jdField_a_of_type_Vqx.b(paramString);
   }
   
-  public boolean a()
+  public void a(String paramString, vqv paramvqv, boolean paramBoolean)
   {
-    return (this.jdField_a_of_type_Wiq != null) && (this.jdField_a_of_type_Wiq.a != null) && (this.jdField_a_of_type_Wiq.a.getOwner().isMe());
+    a().a(paramString, paramvqv, paramBoolean);
   }
   
-  public boolean b()
+  public void a(String paramString, vqw paramvqw)
   {
-    return (this.jdField_a_of_type_Wiq != null) && (this.jdField_a_of_type_Wiq.a != null) && (this.jdField_a_of_type_Wiq.a.getOwner().isVip());
+    this.jdField_a_of_type_Vqr.a(paramString, paramvqw);
+    this.jdField_a_of_type_Vqx.a(paramString, paramvqw);
   }
   
-  protected void onStart()
+  public QQCircleCounter.RedPointInfo b(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-    super.onStart();
+    return a().b(paramString);
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_Vqr.onDestroy();
+    this.jdField_a_of_type_Vqx.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vqu
  * JD-Core Version:    0.7.0.1
  */

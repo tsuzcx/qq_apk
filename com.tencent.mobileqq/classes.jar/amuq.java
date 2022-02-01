@@ -1,21 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 
-class amuq
-  implements QQPermissionCallback
+public abstract interface amuq
 {
-  amuq(amup paramamup) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bdgm.a(amup.a(this.a), paramArrayOfString, paramArrayOfInt);
-    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION deny");
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION allow restart it");
-  }
+  public abstract void b(SpriteTaskParam paramSpriteTaskParam);
 }
 
 

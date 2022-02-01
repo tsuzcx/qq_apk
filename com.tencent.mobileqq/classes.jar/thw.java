@@ -1,14 +1,20 @@
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
-public abstract interface thw
+public class thw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract List<thx> a(int paramInt, boolean paramBoolean);
+  public thw(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public abstract boolean a();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.invalidate();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     thw
  * JD-Core Version:    0.7.0.1
  */

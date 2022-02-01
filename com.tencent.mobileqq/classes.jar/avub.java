@@ -1,61 +1,28 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
 public class avub
-  implements GestureDetector.OnGestureListener
+  implements DialogInterface.OnClickListener
 {
-  public avub(OverCoverFrameLayout paramOverCoverFrameLayout) {}
+  public avub(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (Math.abs(paramFloat2) <= this.a.e) {}
-    while ((this.a.a != null) && (this.a.a.a())) {
-      return false;
-    }
-    if (paramFloat2 < 0.0F) {
-      this.a.a();
-    }
-    for (;;)
+    if (FloatingScreenPermission.requestPermission(BaseApplicationImpl.getContext()))
     {
-      return true;
-      this.a.b();
+      ListenTogetherOverlayFragment.a(this.a, true);
+      return;
     }
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (Math.abs(paramFloat2) <= this.a.d) {}
-    while ((this.a.a != null) && (this.a.a.a())) {
-      return false;
-    }
-    if (paramFloat2 > 0.0F) {
-      this.a.a();
-    }
-    for (;;)
-    {
-      return true;
-      this.a.b();
-    }
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+    ListenTogetherOverlayFragment.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avub
  * JD-Core Version:    0.7.0.1
  */

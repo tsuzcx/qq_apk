@@ -1,14 +1,41 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class bcex<D extends bcdy>
-  extends RecyclerView.ViewHolder
+class bcex
+  implements bcfg
 {
-  public D a;
+  bcex(bcew parambcew) {}
   
-  public bcex(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    super(paramView);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startDownloadConfigNoLogin onConfigResult | result=").append(paramInt1).append("serverError=").append(paramInt2);
+    VideoEnvironment.a(bcew.a(), ((StringBuilder)localObject).toString(), null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
+    {
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.a(bcew.a(), "startDownloadConfigNoLogin onConfigResult| uncompress config error=" + paramInt2, null);
+        bcew.a(this.a);
+        return;
+      }
+      localObject = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(bcew.a(this.a), (List)localObject);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.a(bcew.a(), "startDownloadConfigNoLogin onConfigResult| check config success...", null);
+        bcew.a(this.a).a();
+        avfb.a().a();
+        return;
+      }
+      VideoEnvironment.a(bcew.a(), "startDownloadConfigNoLogin onConfigResult| check config error=" + paramInt1, null);
+      bcew.a(this.a);
+      return;
+    }
+    VideoEnvironment.a(bcew.a(), "startDownloadConfigNoLogin onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
+    bcew.a(this.a);
   }
 }
 

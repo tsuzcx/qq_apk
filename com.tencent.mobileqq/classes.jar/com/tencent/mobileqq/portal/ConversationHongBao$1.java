@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.portal;
 
-import awmf;
+import azav;
 import com.tencent.widget.HongBaoListView;
 
 public class ConversationHongBao$1
   implements Runnable
 {
-  public ConversationHongBao$1(awmf paramawmf) {}
+  public ConversationHongBao$1(azav paramazav) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public class ConversationHongBao$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBao.1
  * JD-Core Version:    0.7.0.1
  */

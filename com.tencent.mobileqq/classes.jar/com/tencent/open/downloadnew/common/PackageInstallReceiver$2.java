@@ -1,7 +1,7 @@
 package com.tencent.open.downloadnew.common;
 
-import bflp;
-import bfok;
+import bisy;
+import bivr;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 class PackageInstallReceiver$2
@@ -11,14 +11,14 @@ class PackageInstallReceiver$2
   
   public void run()
   {
-    bflp.c(this.this$0.a, "ACTION_PACKAGE_REPLACED >> " + this.a);
+    bisy.c(this.this$0.a, "ACTION_PACKAGE_REPLACED >> " + this.a);
     DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    bfok.a().a(13, localDownloadInfo);
+    bivr.a().a(13, localDownloadInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.PackageInstallReceiver.2
  * JD-Core Version:    0.7.0.1
  */

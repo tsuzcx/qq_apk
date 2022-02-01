@@ -1,17 +1,22 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class anmg
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class anmg
+  implements View.OnClickListener
 {
-  anmg(anmf paramanmf, anmh paramanmh) {}
+  public anmg(FrameHelperActivity paramFrameHelperActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if (paramBitmap != null) {
-      this.jdField_a_of_type_Anmh.a.setImageBitmap(paramBitmap);
+    if ((FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity) != null) && (FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).isShowing())) {
+      FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).dismiss();
     }
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

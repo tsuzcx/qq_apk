@@ -1,56 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class arqa
+class arqa
+  implements arpf
 {
-  protected arqb a;
-  protected QQAppInterface a;
-  protected ChatMessage a;
+  arqa(arpz paramarpz) {}
   
-  public arqa(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public void a(List<arxg> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-  }
-  
-  public static arqa a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null)
-    {
-      QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is null");
-      return null;
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
     }
-    if ((paramChatMessage instanceof MessageForFile)) {
-      return new arpu(paramQQAppInterface, paramChatMessage);
+    QLog.d("FavEmoRoamingHandler", 1, new Object[] { "fav emoticon size:", Integer.valueOf(((List)localObject).size()) });
+    if (((List)localObject).size() >= arrm.a) {
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
     }
-    if ((paramChatMessage instanceof MessageForTroopFile)) {
-      return new arqd(paramQQAppInterface, paramChatMessage);
+    if (((List)localObject).size() >= arrm.b) {
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
     }
-    QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is not support. messageType[" + paramChatMessage.getClass().getName() + "]");
-    return null;
+    if (this.a.jdField_a_of_type_Arpp != null) {
+      this.a.jdField_a_of_type_Arpp.b((List)localObject);
+    }
   }
-  
-  public abstract long a();
-  
-  public abstract arpx a();
-  
-  public abstract String a();
-  
-  public void a(arqb paramarqb)
-  {
-    this.jdField_a_of_type_Arqb = paramarqb;
-  }
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
 }
 
 

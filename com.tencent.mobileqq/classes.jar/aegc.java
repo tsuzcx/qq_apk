@@ -1,50 +1,50 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 public class aegc
-  implements View.OnClickListener
+  implements afdb
 {
-  public aegc(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aegc(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onClick(View paramView)
+  public void a(Editable paramEditable)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (!(localObject instanceof Integer))) {}
-    int i;
-    do
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      ForwardTroopListFragment.a(this.a).setVisibility(8);
+    }
+    for (;;)
     {
+      if (ForwardTroopListFragment.a(this.a) != null) {
+        ForwardTroopListFragment.a(this.a).a(paramEditable);
+      }
       return;
-      i = ((Integer)localObject).intValue();
-    } while (i < 0);
-    paramView = paramView.findViewById(2131378883);
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof Boolean))) {}
-    for (boolean bool = ((Boolean)paramView.getTag()).booleanValue();; bool = false)
+      ForwardTroopListFragment.a(this.a).setVisibility(0);
+    }
+  }
+  
+  public void a(ResultRecord paramResultRecord)
+  {
+    if (paramResultRecord != null) {
+      ForwardTroopListFragment.a(this.a, paramResultRecord.a, paramResultRecord.a());
+    }
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (ForwardTroopListFragment.a(this.a) == null))
     {
-      if (bool)
-      {
-        paramView = (aegt)this.a.jdField_a_of_type_Aegx.getItem(i);
-        this.a.a(paramView);
-        if ((this.a.jdField_b_of_type_AndroidAppDialog != null) && (this.a.jdField_b_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_b_of_type_AndroidAppDialog.dismiss();
-        }
-        if (this.a.d != 11) {
-          break;
-        }
-        azqs.b(this.a.app, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
-        return;
-      }
-      paramView = (aegt)this.a.jdField_a_of_type_Aegv.getItem(i);
-      this.a.a(paramView);
-      if (this.a.d == 11) {
-        azqs.b(this.a.app, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
-      }
-      if (this.a.d != 18) {
-        break;
-      }
-      azqs.b(this.a.app, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.jdField_b_of_type_JavaLangString, "", "", "");
-      return;
+      ForwardTroopListFragment.a(this.a, ContactSearchFragment.a(8, 2097176, null, null, ForwardTroopListFragment.a(this.a)));
+      FragmentTransaction localFragmentTransaction = this.a.getActivity().getSupportFragmentManager().beginTransaction();
+      localFragmentTransaction.add(2131376449, ForwardTroopListFragment.a(this.a));
+      localFragmentTransaction.commitAllowingStateLoss();
     }
   }
 }

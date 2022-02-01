@@ -1,23 +1,19 @@
-import android.os.Handler;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatSettingForTroop.ClearChatRecordTask;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class adwy
-  implements INetEventHandler
+  implements bhwc
 {
-  adwy(adws paramadws) {}
+  public adwy(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    if (!paramBoolean)
-    {
-      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131694778), 1).show();
-      SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
-      new Handler().postDelayed(local1, 3000L);
-    }
+    ThreadManager.post(new ChatSettingForTroop.ClearChatRecordTask(this.a), 5, null, false);
+    bgjt.a("Grp_set_new", "grpData_admin", "confirm_delRecord", 0, 0, new String[] { this.a.a.troopUin, bgjt.a(this.a.a) });
   }
 }
 

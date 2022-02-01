@@ -1,21 +1,30 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class vac
-  extends uro
+class vac
+  implements vye
 {
-  public vac(qqstory_service.RspQQStoryGuide paramRspQQStoryGuide)
-  {
-    super(paramRspQQStoryGuide.result);
-  }
+  vac(vab paramvab) {}
   
-  public String toString()
+  public void a(int paramInt)
   {
-    return "QQStoryGuideResponse{}";
+    if (paramInt == 1) {
+      vab.a(this.a, 56);
+    }
+    for (;;)
+    {
+      vrr.a().a(new vrt().a("pushbutton").b("push").a(vab.a(this.a).a).a(this.a.a()).a(this.a.c()).c(vab.a(this.a).a.poster.id.get()).d(String.valueOf(paramInt)));
+      return;
+      if (paramInt > 1) {
+        vab.a(this.a, 57);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vac
  * JD-Core Version:    0.7.0.1
  */

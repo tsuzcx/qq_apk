@@ -1,26 +1,26 @@
 package dov.com.qq.im.capture.control;
 
-import bknb;
-import blqr;
+import abfc;
+import bnbo;
+import bojv;
 import com.tencent.mobileqq.app.automator.AsyncStep;
-import zie;
 
 public class CaptureAsyncStep$OnShowOther
   extends AsyncStep
 {
   public int a()
   {
-    bknb localbknb = (bknb)blqr.a(13);
-    localbknb.d(0);
-    localbknb.a(2);
-    zie.a().h = 1;
-    zie.a().j = 1;
+    bnbo localbnbo = (bnbo)bojv.a(13);
+    localbnbo.d(0);
+    localbnbo.a(2);
+    abfc.a().h = 1;
+    abfc.a().j = 1;
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.control.CaptureAsyncStep.OnShowOther
  * JD-Core Version:    0.7.0.1
  */

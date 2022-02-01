@@ -1,18 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
 
 public class aims
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public aims(DialogBaseActivity paramDialogBaseActivity) {}
+  public aims(VideoStatusTipsBar paramVideoStatusTipsBar) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.setOnDismissListener(null);
+    mqw.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    this.a.a = null;
   }
 }
 

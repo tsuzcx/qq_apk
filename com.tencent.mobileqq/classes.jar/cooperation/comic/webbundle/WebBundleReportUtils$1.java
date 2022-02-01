@@ -2,8 +2,8 @@ package cooperation.comic.webbundle;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import azps;
-import ndd;
+import bcrt;
+import nlw;
 
 public final class WebBundleReportUtils$1
   implements Runnable
@@ -29,7 +29,7 @@ public final class WebBundleReportUtils$1
         break label301;
       }
       str4 = "";
-      switch (ndd.a())
+      switch (nlw.a())
       {
       case 0: 
       default: 
@@ -53,7 +53,7 @@ public final class WebBundleReportUtils$1
       localStringBuffer.append(this.jdField_d_of_type_JavaLangString).append('|');
       localStringBuffer.append(this.e).append('|');
       localStringBuffer.append(this.f);
-      azps.a(null, "sendtdbank|b_sng_qqvip_sng_qq_comic|sng_mobileqq_times_statistics", localStringBuffer.toString(), true);
+      bcrt.a(null, "sendtdbank|b_sng_qqvip_sng_qq_comic|sng_mobileqq_times_statistics", localStringBuffer.toString(), true);
       return;
       str2 = Build.BRAND;
       break;
@@ -77,7 +77,7 @@ public final class WebBundleReportUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.comic.webbundle.WebBundleReportUtils.1
  * JD-Core Version:    0.7.0.1
  */

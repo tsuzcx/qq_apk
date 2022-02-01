@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import atxe;
+import awen;
 
 public class LyricViewController$6
   implements Runnable
@@ -9,12 +9,12 @@ public class LyricViewController$6
   {
     this.this$0.a.a(this.a);
     this.this$0.a.a();
-    atxe.a(this.this$0).b(this.this$0.a.a());
+    awen.a(this.this$0).b(this.this$0.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewController.6
  * JD-Core Version:    0.7.0.1
  */

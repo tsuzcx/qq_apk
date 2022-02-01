@@ -7,7 +7,7 @@ import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.c.a;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.d;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.qphone.base.remote.FromServiceMsg;

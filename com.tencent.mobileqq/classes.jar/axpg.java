@@ -1,30 +1,27 @@
-import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.richmedia.capture.gesture.GL3DGesture.1;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class axpg
-  implements GLGestureListener
+class axpg
+  implements View.OnTouchListener
 {
-  public GameplayEngine a;
+  axpg(axop paramaxop) {}
   
-  public int onGetPriority()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return 1040;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    paramMotionEvent = new azjb(paramMotionEvent);
-    GLGestureProxy.getInstance().getGLSurfaceView().queueEvent(new GL3DGesture.1(this, paramMotionEvent));
-    return false;
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131364754).setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.findViewById(2131364754).setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axpg
  * JD-Core Version:    0.7.0.1
  */

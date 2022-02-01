@@ -1,28 +1,21 @@
-import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
-import java.util.Comparator;
-
-public class augb
-  implements Comparator<TroopMessageNavigateInfo>
+class augb
+  implements augl
 {
-  public int a(TroopMessageNavigateInfo paramTroopMessageNavigateInfo1, TroopMessageNavigateInfo paramTroopMessageNavigateInfo2)
+  augb(aufz paramaufz) {}
+  
+  public void a()
   {
-    if (paramTroopMessageNavigateInfo1.type == paramTroopMessageNavigateInfo2.type)
-    {
-      int i = 0;
-      if (paramTroopMessageNavigateInfo1.msgseq > paramTroopMessageNavigateInfo2.msgseq) {
-        i = -1;
-      }
-      while (paramTroopMessageNavigateInfo1.msgseq >= paramTroopMessageNavigateInfo2.msgseq) {
-        return i;
-      }
-      return 1;
-    }
-    return -(paramTroopMessageNavigateInfo1.getMsgBizType() - paramTroopMessageNavigateInfo2.getMsgBizType());
+    this.a.a.setProgressBarVisibility(0);
+  }
+  
+  public void b()
+  {
+    this.a.a.setProgressBarVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     augb
  * JD-Core Version:    0.7.0.1
  */

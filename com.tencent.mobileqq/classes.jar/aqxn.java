@@ -1,12 +1,19 @@
-public abstract interface aqxn
+public class aqxn
 {
-  public abstract void a();
+  public String a;
+  public boolean a;
+  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
+  public String c = "https://club.vip.qq.com/interact/selector?from=setting";
   
-  public abstract void b();
+  public aqxn()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = anni.a(2131710036);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxn
  * JD-Core Version:    0.7.0.1
  */

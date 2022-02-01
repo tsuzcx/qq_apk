@@ -1,45 +1,31 @@
-public class pfs<T>
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+
+final class pfs
+  implements ViewFactory.FoundClickableViewListener
 {
-  private long jdField_a_of_type_Long;
-  T jdField_a_of_type_JavaLangObject;
-  public boolean a;
-  private long b;
+  pfs(VafContext paramVafContext, TemplateBean paramTemplateBean) {}
   
-  public pfs(T paramT)
+  public void onFound(ViewBase paramViewBase)
   {
-    this(paramT, localObject, 600000L);
-    if (localObject == null) {
-      this.jdField_a_of_type_Boolean = true;
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      paramViewBase.setOnClickListener(new pfv(this, paramViewBase));
+      return;
+    case 1130: 
+      paramViewBase.setOnClickListener(new pft(this));
+      return;
     }
-  }
-  
-  public pfs(T paramT, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramLong;
-    this.b = System.currentTimeMillis();
-    Object localObject;
-    this.jdField_a_of_type_Long = localObject;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a(T paramT)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.b = System.currentTimeMillis();
-  }
-  
-  public boolean a()
-  {
-    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
+    paramViewBase.setOnClickListener(new pfu(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pfs
  * JD-Core Version:    0.7.0.1
  */

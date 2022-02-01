@@ -1,22 +1,64 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class tsn
-  implements MediaPlayer.OnErrorListener
+public class tsn
+  implements tln
 {
-  tsn(tsk paramtsk) {}
+  public tsn(ViolaBaseView paramViolaBaseView, String paramString1, String paramString2, tsq paramtsq) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void a()
   {
-    tsk.a(this.a);
-    QLog.e("QCircleFolderSplashPart", 1, "play splash video error!what:" + paramInt1 + ",extra:" + paramInt2);
-    return true;
+    String str1 = nku.a(this.jdField_a_of_type_JavaLangString);
+    str1 = str1 + this.jdField_a_of_type_JavaLangString + File.separator;
+    String str2 = nko.d(this.b);
+    if (new File(str1 + str2).exists()) {
+      if (QLog.isColorLevel()) {
+        QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess js exists [url:" + this.b + "]");
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        str1 = tlg.a(this.b);
+        if (TextUtils.isEmpty(str1)) {
+          break;
+        }
+        if (this.jdField_a_of_type_Tsq != null) {
+          this.jdField_a_of_type_Tsq.a(str1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess and jsSource succ [url:" + this.b + "]");
+        }
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess js no exists [url:" + this.b + "]");
+        }
+      }
+      if (this.jdField_a_of_type_Tsq != null) {
+        this.jdField_a_of_type_Tsq.a();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess but js null [url:" + this.b + "]");
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Tsq != null) {
+      this.jdField_a_of_type_Tsq.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e(ViolaBaseView.a(), 2, "downloadOfflineFailed [url:" + this.b + "]");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tsn
  * JD-Core Version:    0.7.0.1
  */

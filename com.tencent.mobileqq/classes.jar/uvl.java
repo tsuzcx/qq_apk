@@ -1,13 +1,21 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface uvl
+class uvl
+  implements View.OnClickListener
 {
-  public abstract void a(List<StoryVideoItem> paramList, boolean paramBoolean);
+  uvl(uvi paramuvi) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uvl
  * JD-Core Version:    0.7.0.1
  */

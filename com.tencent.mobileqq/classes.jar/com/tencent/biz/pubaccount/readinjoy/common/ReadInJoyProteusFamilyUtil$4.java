@@ -1,35 +1,35 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.text.TextUtils;
-import bkbq;
+import bmqa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import ndk;
-import orf;
+import nmd;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import orj;
+import pgn;
+import pgr;
 
 public class ReadInJoyProteusFamilyUtil$4
   implements Runnable
 {
-  public ReadInJoyProteusFamilyUtil$4(orf paramorf) {}
+  public ReadInJoyProteusFamilyUtil$4(pgn parampgn) {}
   
   public void run()
   {
     try
     {
-      Object localObject2 = (String)bkbq.a(orf.c(), "");
-      QLog.d(orf.a(), 2, "local card data str " + (String)localObject2);
+      Object localObject2 = (String)bmqa.a(pgn.c(), "");
+      QLog.d(pgn.a(), 2, "local card data str " + (String)localObject2);
       Object localObject1 = localObject2;
       Object localObject3;
       int j;
       int i;
-      if (ndk.a(BaseApplicationImpl.context))
+      if (nmd.a(BaseApplicationImpl.context))
       {
-        localObject3 = orf.b(null);
+        localObject3 = pgn.b(null);
         localObject1 = localObject2;
         if (!TextUtils.isEmpty((CharSequence)localObject3))
         {
@@ -45,7 +45,7 @@ public class ReadInJoyProteusFamilyUtil$4
         {
           localObject3 = ((JSONArray)localObject2).optJSONObject(i);
           if (localObject3 != null) {
-            ((JSONObject)localObject1).put(((JSONObject)localObject3).optString(orf.d()), ((JSONObject)localObject3).optString(orf.e()));
+            ((JSONObject)localObject1).put(((JSONObject)localObject3).optString(pgn.d()), ((JSONObject)localObject3).optString(pgn.e()));
           }
         }
         else
@@ -53,25 +53,25 @@ public class ReadInJoyProteusFamilyUtil$4
           if (((JSONObject)localObject1).length() > 0)
           {
             localObject1 = ((JSONObject)localObject1).toString();
-            QLog.d(orf.a(), 2, "loadProteusFamilyData | update local cardDataStr " + (String)localObject1);
-            bkbq.a(orf.c(), localObject1);
-            orf.a(this.this$0, orf.a((String)localObject1));
-            if (orf.a(this.this$0) != null) {
-              orf.a(this.this$0).a(true, orf.a(this.this$0));
+            QLog.d(pgn.a(), 2, "loadProteusFamilyData | update local cardDataStr " + (String)localObject1);
+            bmqa.a(pgn.c(), localObject1);
+            pgn.a(this.this$0, pgn.a((String)localObject1));
+            if (pgn.a(this.this$0) != null) {
+              pgn.a(this.this$0).a(true, pgn.a(this.this$0));
             }
-            localObject1 = orf.a();
+            localObject1 = pgn.a();
             localObject2 = new StringBuilder().append("loadProteusFamilyData | proteus family members updated ");
-            if (orf.a() == null) {
+            if (pgn.a() == null) {
               break label316;
             }
           }
           label316:
-          for (i = orf.a().size();; i = 0)
+          for (i = pgn.a().size();; i = 0)
           {
             QLog.d((String)localObject1, 2, i);
             return;
-            localObject1 = (String)bkbq.a(orf.c(), "");
-            QLog.d(orf.a(), 2, "loadProteusFamilyData | no need to update just use local cardDataStr " + (String)localObject1);
+            localObject1 = (String)bmqa.a(pgn.c(), "");
+            QLog.d(pgn.a(), 2, "loadProteusFamilyData | no need to update just use local cardDataStr " + (String)localObject1);
             break;
           }
         }

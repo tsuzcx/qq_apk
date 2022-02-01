@@ -101,7 +101,7 @@ public abstract class AdFormItemView
       AdLog.e("GdtFormItemView", "getIndex error");
       return -1;
     }
-    return ((TableLayout)TableLayout.class.cast(getParent())).indexOfChild(this);
+    return ((TableLayout)getParent()).indexOfChild(this);
   }
   
   public abstract void reset();
@@ -139,7 +139,7 @@ public abstract class AdFormItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.form.framework.AdFormItemView
  * JD-Core Version:    0.7.0.1
  */

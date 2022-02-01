@@ -1,38 +1,18 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aswj
-  extends RecyclerView.AdapterDataObserver
+public class aswj
+  extends ayes
 {
-  aswj(aswi paramaswi) {}
+  public aswj(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onChanged()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.onChanged();
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeChanged(paramInt1, paramInt2);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeInserted(paramInt1, paramInt2);
-    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2 + paramInt3);
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeRemoved(paramInt1, paramInt2);
-    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+    QLog.i("FileAssistantActivity", 1, " fileRedTouch get push GameCenterObserver ");
+    paramBundle = this.a.a.obtainMessage(1);
+    this.a.a.sendMessage(paramBundle);
   }
 }
 

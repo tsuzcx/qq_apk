@@ -6,7 +6,11 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import feedcloud.FeedCloudCommon.StCommonExt;
+import feedcloud.FeedCloudMeta.StTagInfo;
 import feedcloud.FeedCloudMeta.StUser;
 
 public final class QQCircleProfile$StGetMainPageProfileRsp
@@ -16,17 +20,20 @@ public final class QQCircleProfile$StGetMainPageProfileRsp
   public final PBInt32Field TempChatBtnStatus = PBField.initInt32(0);
   public final PBBytesField bizData = PBField.initBytes(ByteStringMicro.EMPTY);
   public FeedCloudCommon.StCommonExt extInfo = new FeedCloudCommon.StCommonExt();
+  public final PBUInt32Field pattonType = PBField.initUInt32(0);
+  public final PBStringField pmBeginShow = PBField.initString("");
+  public final PBRepeatMessageField<FeedCloudMeta.StTagInfo> recomTagList = PBField.initRepeatMessage(FeedCloudMeta.StTagInfo.class);
   public FeedCloudMeta.StUser user = new FeedCloudMeta.StUser();
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32 }, new String[] { "extInfo", "user", "bizData", "TempChatBtnStatus" }, new Object[] { null, null, localByteStringMicro, Integer.valueOf(0) }, StGetMainPageProfileRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48, 58 }, new String[] { "extInfo", "user", "bizData", "TempChatBtnStatus", "recomTagList", "pattonType", "pmBeginShow" }, new Object[] { null, null, localByteStringMicro, Integer.valueOf(0), null, Integer.valueOf(0), "" }, StGetMainPageProfileRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qqcircle.QQCircleProfile.StGetMainPageProfileRsp
  * JD-Core Version:    0.7.0.1
  */

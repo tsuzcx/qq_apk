@@ -1,53 +1,23 @@
-import android.graphics.Rect;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo;
 
-public class lxg
-  extends lxh
+public final class lxg
+  implements Parcelable.Creator<RecvGVideoLevelInfo>
 {
-  public lxc a;
-  public int b;
-  public int c;
-  
-  public lxg(lxc paramlxc)
+  public RecvGVideoLevelInfo a(Parcel paramParcel)
   {
-    this.jdField_b_of_type_Long = 1800L;
-    this.a = paramlxc;
+    return new RecvGVideoLevelInfo(paramParcel);
   }
   
-  public void a(long paramLong)
+  public RecvGVideoLevelInfo[] a(int paramInt)
   {
-    super.a(paramLong);
-    Rect localRect = this.a.a();
-    int i = (localRect.left + localRect.right - this.jdField_b_of_type_Int) / 2;
-    int j = (localRect.top + localRect.bottom - this.c) / 2;
-    int k = (localRect.left + localRect.right + this.jdField_b_of_type_Int) / 2;
-    int m = localRect.top;
-    a(i, j, k, (localRect.bottom + m + this.c) / 2);
-    if (this.a.a != null) {
-      a(this.a.a());
-    }
-    for (;;)
-    {
-      b(this.a.a());
-      return;
-      a(0);
-    }
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.a = null;
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_b_of_type_Int = (paramInt1 * 152 / 160);
-    this.c = (paramInt1 * 152 / 160);
+    return new RecvGVideoLevelInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lxg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mgn;
+import mdr;
 
 public class GAudioMembersCtrlActivity$7$1
   implements Runnable
 {
-  public GAudioMembersCtrlActivity$7$1(mgn parammgn) {}
+  public GAudioMembersCtrlActivity$7$1(mdr parammdr) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class GAudioMembersCtrlActivity$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.GAudioMembersCtrlActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,23 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.statistics.c2s.GdtC2SReportInterface.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class acro
-  implements View.OnTouchListener
+  extends acrp
 {
-  public acro(Conversation paramConversation) {}
+  acro(acrn paramacrn) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel())
+    acqy.a("GdtC2SReporter", "onCheckC2SReport: " + paramInt + "， request ADID: " + paramString2);
+    acrl.a(BaseApplicationImpl.getApplication(), this.a, paramInt, this.a.jdField_a_of_type_Long);
+    this.a.jdField_a_of_type_Long = -2147483648L;
+    if (acrn.a(this.a).equals(paramString2))
     {
-      paramView = new StringBuilder().append("statusTitle onTouch event :").append(paramMotionEvent.toString()).append(", mGestureDetector is null ");
-      if (this.a.a == null) {
-        break label81;
+      bcst.a(null, "dc00898", "", "", "0X8009EBD", "0X8009EBD", this.a.jdField_a_of_type_Int, paramInt, "", "", acrn.a(this.a), "");
+      if ((paramInt != 1) && (paramInt != 2)) {
+        ThreadManager.executeOnNetWorkThread(new GdtC2SReportInterface.1.1(this));
       }
-    }
-    label81:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("Q.recent", 2, bool);
-      if (this.a.a != null) {
-        this.a.a.onTouchEvent(paramMotionEvent);
-      }
-      return true;
     }
   }
 }

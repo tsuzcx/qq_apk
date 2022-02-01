@@ -2,11 +2,11 @@ package com.tencent.mobileqq.msf.core.auth;
 
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ag;
-import com.tencent.mobileqq.msf.core.ah;
+import com.tencent.mobileqq.msf.core.aj;
+import com.tencent.mobileqq.msf.core.ak;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
-import com.tencent.mobileqq.msf.service.t;
+import com.tencent.mobileqq.msf.service.u;
 import com.tencent.msf.service.protocol.security.CustomSigContent;
 import com.tencent.msf.service.protocol.security.RespondCustomSig;
 import com.tencent.msf.service.protocol.security.c;
@@ -200,7 +200,7 @@ public class j
     //   225: invokevirtual 126	com/tencent/mobileqq/msf/core/auth/a:j	([B)V
     //   228: aload_2
     //   229: aload_0
-    //   230: invokestatic 131	com/tencent/mobileqq/msf/service/t:b	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Ljava/lang/String;
+    //   230: invokestatic 131	com/tencent/mobileqq/msf/service/u:b	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Ljava/lang/String;
     //   233: invokevirtual 134	com/tencent/mobileqq/msf/core/auth/a:c	(Ljava/lang/String;)V
     //   236: aload 5
     //   238: invokevirtual 137	java/io/ByteArrayInputStream:close	()V
@@ -472,7 +472,7 @@ public class j
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, UniPacket paramUniPacket, k paramk)
   {
-    ah.a(paramFromServiceMsg);
+    ak.a(paramFromServiceMsg);
     VerifyCodeInfo localVerifyCodeInfo = new VerifyCodeInfo();
     localVerifyCodeInfo.ssoSeq = paramFromServiceMsg.getRequestSsoSeq();
     localVerifyCodeInfo.wupSeq = paramUniPacket.getRequestId();
@@ -554,7 +554,7 @@ public class j
     QLog.d("MSF.C.AuthCoder", 2, "can not find account " + paramFromServiceMsg.getUin() + " info.");
     return;
     QLog.d("MSF.C.AuthCoder", 1, MD5.toMD5(paramFromServiceMsg.getUin()) + " login succ.");
-    locala.c(t.b(paramToServiceMsg));
+    locala.c(u.b(paramToServiceMsg));
     this.n.a(locala);
     if (a(paramToServiceMsg, paramk, locala))
     {
@@ -571,7 +571,7 @@ public class j
       byte[] arrayOfByte6 = locala.k();
       CodecWarpper.nativeSetAccountKey(paramk, new byte[0], arrayOfByte1, arrayOfByte2, arrayOfByte3, arrayOfByte4, arrayOfByte5, arrayOfByte6, new byte[0], null);
       this.n.m(locala.d());
-      ag.a(locala.d(), false);
+      aj.a(locala.d(), false);
     }
     for (;;)
     {

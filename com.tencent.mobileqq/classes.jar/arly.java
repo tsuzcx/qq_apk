@@ -1,36 +1,29 @@
-import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
 
-public class arly
-  extends armw
+public final class arly
 {
-  public arly(arki paramarki, Activity paramActivity)
+  public static arlz a(QQAppInterface paramQQAppInterface)
   {
-    super(paramarki, paramActivity);
-  }
-  
-  public void a()
-  {
-    super.a();
+    paramQQAppInterface = new arlz();
+    arar localarar = aras.a();
+    paramQQAppInterface.jdField_a_of_type_Boolean = localarar.a();
+    paramQQAppInterface.jdField_a_of_type_JavaLangString = localarar.a();
+    paramQQAppInterface.b = localarar.b();
+    paramQQAppInterface.jdField_a_of_type_Int = localarar.a();
+    paramQQAppInterface.c = localarar.c();
     if (QLog.isColorLevel()) {
-      QLog.i("SimpleFilePresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = apk simple");
+      QLog.d("TencentDocEntryUtils", 2, "getGrayTipsInfo " + paramQQAppInterface.toString());
     }
-    String str = BaseApplicationImpl.getContext().getString(2131692938);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(str, true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(2130843875);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.e(this.jdField_a_of_type_Arki.g());
+    return paramQQAppInterface;
   }
   
-  protected void b()
+  public static Pair<Boolean, Integer> a(AppInterface paramAppInterface)
   {
-    super.b();
-    if (this.jdField_a_of_type_Arki.i() == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(alud.a(2131700675), new arlz(this));
-    }
+    paramAppInterface = arac.a();
+    return new Pair(Boolean.valueOf(paramAppInterface.a()), Integer.valueOf(paramAppInterface.a()));
   }
 }
 

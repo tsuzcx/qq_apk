@@ -1,15 +1,73 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
+import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
 
 public class adld
-  implements DialogInterface.OnClickListener
+  implements bkhw
 {
-  public adld(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public adld(AddRequestActivity paramAddRequestActivity, bkho parambkho) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.finish();
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+    }
+    if (bgnt.d(BaseApplication.getContext()))
+    {
+      long l1 = bdgm.a().b();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a = bdgm.a().a(Long.valueOf(l1));
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a != null)
+      {
+        paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_type.get();
+        l1 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_seq.get();
+        long l2 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.req_uin.get();
+        int i = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_type.get();
+        int j = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.src_id.get();
+        int k = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_src_id.get();
+        int m = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.group_msg_type.get();
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.actions.get();
+        if ((paramView != null) && (1 < paramView.size()))
+        {
+          ((structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get()).blacklist.set(true);
+          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, true);
+          this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.a().a().a(paramInt, l1, l2, i, j, k, m, (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get(), 1, null, false);
+          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131717771, 1000L, false);
+        }
+      }
+    }
+    for (;;)
+    {
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "0X800AA45", "0X800AA45", 0, 0, "", "", "", "");
+      break;
+      StringBuilder localStringBuilder = new StringBuilder().append("shield, ");
+      if (paramView != null) {}
+      for (paramInt = paramView.size();; paramInt = -1)
+      {
+        QLog.d("Q.systemmsg.AddRequestActivity", 1, paramInt);
+        break;
+      }
+      QLog.d("Q.systemmsg.AddRequestActivity", 1, "shield");
+      continue;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131693948, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+    }
   }
 }
 

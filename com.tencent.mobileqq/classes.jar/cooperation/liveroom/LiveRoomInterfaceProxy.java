@@ -2,9 +2,9 @@ package cooperation.liveroom;
 
 import android.content.Intent;
 import android.os.Bundle;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -79,7 +79,7 @@ public class LiveRoomInterfaceProxy
     return this.mRuntime.getDevLockIntent();
   }
   
-  public awgg getEntityManagerFactory(String paramString)
+  public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
     return this.mRuntime.getQQEntityManagerFactory();
   }
@@ -283,7 +283,7 @@ public class LiveRoomInterfaceProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomInterfaceProxy
  * JD-Core Version:    0.7.0.1
  */

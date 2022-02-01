@@ -1,283 +1,1038 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.BroadcastReceiver;
-import android.database.Cursor;
+import TT;;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Array;
+import java.nio.BufferUnderflowException;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class try
+public final class try
 {
-  public static volatile try g;
-  public if a = new if("udid");
-  public if b = new if("oaid");
-  public if c = new if("aaid");
-  public if d = new if("vaid");
-  public Boolean e;
-  public BroadcastReceiver f;
+  public ByteBuffer i;
+  public String j = "GBK";
   
-  public static int a(Cursor paramCursor)
+  public try() {}
+  
+  public try(byte[] paramArrayOfByte)
   {
-    int localint = new int(null, 0);
-    if (paramCursor == null) {}
-    int i;
+    this.i = ByteBuffer.wrap(paramArrayOfByte);
+  }
+  
+  public try(byte[] paramArrayOfByte, int paramInt)
+  {
+    this.i = ByteBuffer.wrap(paramArrayOfByte);
+    this.i.position(paramInt);
+  }
+  
+  public byte a(byte paramByte, int paramInt, boolean paramBoolean)
+  {
+    if (a(paramInt))
+    {
+      localByteBuffer = this.i;
+      paramInt = localByteBuffer.get();
+      k = (byte)(paramInt & 0xF);
+      if ((paramInt & 0xF0) >> 4 == 15) {
+        localByteBuffer.get();
+      }
+      if (k != 0) {
+        if (k != 11)
+        {
+          if (k != 12) {
+            break label68;
+          }
+          paramByte = 0;
+        }
+      }
+    }
+    label68:
+    while (!paramBoolean)
+    {
+      ByteBuffer localByteBuffer;
+      int k;
+      return paramByte;
+      throw new int("type mismatch.");
+      return this.i.get();
+    }
+    throw new int("require field not exist.");
+  }
+  
+  public double a(double paramDouble, int paramInt, boolean paramBoolean)
+  {
+    if (a(paramInt))
+    {
+      localByteBuffer = this.i;
+      paramInt = localByteBuffer.get();
+      k = (byte)(paramInt & 0xF);
+      if ((paramInt & 0xF0) >> 4 == 15) {
+        localByteBuffer.get();
+      }
+      if (k != 4) {
+        if (k != 5) {
+          if (k != 11)
+          {
+            if (k != 12) {
+              break label75;
+            }
+            paramDouble = 0.0D;
+          }
+        }
+      }
+    }
+    label75:
+    while (!paramBoolean)
+    {
+      ByteBuffer localByteBuffer;
+      int k;
+      return paramDouble;
+      throw new int("type mismatch.");
+      return this.i.getDouble();
+      return this.i.getFloat();
+    }
+    throw new int("require field not exist.");
+  }
+  
+  public float a(float paramFloat, int paramInt, boolean paramBoolean)
+  {
+    if (a(paramInt))
+    {
+      localByteBuffer = this.i;
+      paramInt = localByteBuffer.get();
+      k = (byte)(paramInt & 0xF);
+      if ((paramInt & 0xF0) >> 4 == 15) {
+        localByteBuffer.get();
+      }
+      if (k != 4) {
+        if (k != 11)
+        {
+          if (k != 12) {
+            break label69;
+          }
+          paramFloat = 0.0F;
+        }
+      }
+    }
+    label69:
+    while (!paramBoolean)
+    {
+      ByteBuffer localByteBuffer;
+      int k;
+      return paramFloat;
+      throw new int("type mismatch.");
+      return this.i.getFloat();
+    }
+    throw new int("require field not exist.");
+  }
+  
+  public int a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (a(paramInt2))
+    {
+      localByteBuffer = this.i;
+      k = localByteBuffer.get();
+      paramInt2 = (byte)(k & 0xF);
+      if ((k & 0xF0) >> 4 == 15) {
+        localByteBuffer.get();
+      }
+      if (paramInt2 != 0) {
+        if (paramInt2 != 1) {
+          if (paramInt2 != 2) {
+            if (paramInt2 != 11)
+            {
+              if (paramInt2 != 12) {
+                break label77;
+              }
+              paramInt1 = 0;
+            }
+          }
+        }
+      }
+    }
+    label77:
+    while (!paramBoolean)
+    {
+      ByteBuffer localByteBuffer;
+      int k;
+      return paramInt1;
+      throw new int("type mismatch.");
+      return this.i.getInt();
+      return this.i.getShort();
+      return this.i.get();
+    }
+    throw new int("require field not exist.");
+  }
+  
+  public long a(long paramLong, int paramInt, boolean paramBoolean)
+  {
+    if (a(paramInt))
+    {
+      localByteBuffer = this.i;
+      paramInt = localByteBuffer.get();
+      k = (byte)(paramInt & 0xF);
+      if ((paramInt & 0xF0) >> 4 == 15) {
+        localByteBuffer.get();
+      }
+      if (k != 11)
+      {
+        if (k == 12) {
+          break label139;
+        }
+        switch (k)
+        {
+        default: 
+          throw new int("type mismatch.");
+        case 3: 
+          paramLong = this.i.getLong();
+        }
+      }
+    }
+    label139:
+    while (!paramBoolean)
+    {
+      ByteBuffer localByteBuffer;
+      int k;
+      return paramLong;
+      return this.i.getInt();
+      return this.i.getShort();
+      return this.i.get();
+      return 0L;
+    }
+    throw new int("require field not exist.");
+  }
+  
+  public case a(case paramcase, int paramInt, boolean paramBoolean)
+  {
+    ByteBuffer localByteBuffer = null;
+    if (a(paramInt)) {}
+    do
+    {
+      try
+      {
+        paramcase = (case)paramcase.getClass().newInstance();
+        localByteBuffer = this.i;
+        paramInt = localByteBuffer.get();
+        int k = (byte)(paramInt & 0xF);
+        if ((paramInt & 0xF0) >> 4 == 15) {
+          localByteBuffer.get();
+        }
+        if (k == 10)
+        {
+          paramcase.a(this);
+          b();
+          return paramcase;
+        }
+        throw new int("type mismatch.");
+      }
+      catch (Exception paramcase)
+      {
+        throw new int(paramcase.getMessage());
+      }
+      paramcase = localByteBuffer;
+    } while (!paramBoolean);
+    throw new int("require field not exist.");
+  }
+  
+  public <T> Object a(T paramT, int paramInt, boolean paramBoolean)
+  {
+    Object localObject = null;
+    if ((paramT instanceof Byte)) {
+      paramT = Byte.valueOf(a((byte)0, paramInt, paramBoolean));
+    }
+    label450:
+    label467:
+    label610:
+    label627:
     do
     {
       do
       {
-        return localint;
-      } while (paramCursor.isClosed());
-      paramCursor.moveToFirst();
-      i = paramCursor.getColumnIndex("value");
-      if (i >= 0) {
-        localint.value = paramCursor.getString(i);
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            Object[] arrayOfObject;
+                            do
+                            {
+                              return paramT;
+                              if ((paramT instanceof Boolean)) {
+                                return Boolean.valueOf(a(false, paramInt, paramBoolean));
+                              }
+                              if ((paramT instanceof Short)) {
+                                return Short.valueOf(a((short)0, paramInt, paramBoolean));
+                              }
+                              if ((paramT instanceof Integer)) {
+                                return Integer.valueOf(a(0, paramInt, paramBoolean));
+                              }
+                              if ((paramT instanceof Long)) {
+                                return Long.valueOf(a(0L, paramInt, paramBoolean));
+                              }
+                              if ((paramT instanceof Float)) {
+                                return Float.valueOf(a(0.0F, paramInt, paramBoolean));
+                              }
+                              if ((paramT instanceof Double)) {
+                                return Double.valueOf(a(0.0D, paramInt, paramBoolean));
+                              }
+                              if ((paramT instanceof String)) {
+                                return a(paramInt, paramBoolean);
+                              }
+                              if ((paramT instanceof Map)) {
+                                return a((Map)paramT, paramInt, paramBoolean);
+                              }
+                              if (!(paramT instanceof List)) {
+                                break;
+                              }
+                              paramT = (List)paramT;
+                              if ((paramT == null) || (paramT.isEmpty())) {
+                                return new ArrayList();
+                              }
+                              arrayOfObject = b(paramT.get(0), paramInt, paramBoolean);
+                              paramT = (TT)localObject;
+                            } while (arrayOfObject == null);
+                            localObject = new ArrayList();
+                            paramInt = 0;
+                            for (;;)
+                            {
+                              paramT = (TT)localObject;
+                              if (paramInt >= arrayOfObject.length) {
+                                break;
+                              }
+                              ((ArrayList)localObject).add(arrayOfObject[paramInt]);
+                              paramInt += 1;
+                            }
+                            if ((paramT instanceof case)) {
+                              return a((case)paramT, paramInt, paramBoolean);
+                            }
+                            if (!paramT.getClass().isArray()) {
+                              break label1302;
+                            }
+                            if (((paramT instanceof byte[])) || ((paramT instanceof Byte[]))) {
+                              return a(null, paramInt, paramBoolean);
+                            }
+                            if (!(paramT instanceof boolean[])) {
+                              break label467;
+                            }
+                            if (!a(paramInt)) {
+                              break label450;
+                            }
+                            paramT = this.i;
+                            paramInt = paramT.get();
+                            k = (byte)(paramInt & 0xF);
+                            if ((paramInt & 0xF0) >> 4 == 15) {
+                              paramT.get();
+                            }
+                            if (k == 9) {
+                              break;
+                            }
+                            paramT = (TT)localObject;
+                          } while (k == 11);
+                          throw new int("type mismatch.");
+                          k = a(0, 0, true);
+                          if (k >= 0)
+                          {
+                            localObject = new boolean[k];
+                            paramInt = 0;
+                            for (;;)
+                            {
+                              paramT = (TT)localObject;
+                              if (paramInt >= k) {
+                                break;
+                              }
+                              localObject[paramInt] = a(localObject[0], 0, true);
+                              paramInt += 1;
+                            }
+                          }
+                          throw new int(do.a("size invalid: ", k));
+                          paramT = (TT)localObject;
+                        } while (!paramBoolean);
+                        throw new int("require field not exist.");
+                        if (!(paramT instanceof short[])) {
+                          break label627;
+                        }
+                        if (!a(paramInt)) {
+                          break label610;
+                        }
+                        paramT = this.i;
+                        paramInt = paramT.get();
+                        k = (byte)(paramInt & 0xF);
+                        if ((paramInt & 0xF0) >> 4 == 15) {
+                          paramT.get();
+                        }
+                        if (k == 9) {
+                          break;
+                        }
+                        paramT = (TT)localObject;
+                      } while (k == 11);
+                      throw new int("type mismatch.");
+                      k = a(0, 0, true);
+                      if (k >= 0)
+                      {
+                        localObject = new short[k];
+                        paramInt = 0;
+                        for (;;)
+                        {
+                          paramT = (TT)localObject;
+                          if (paramInt >= k) {
+                            break;
+                          }
+                          localObject[paramInt] = a(localObject[0], 0, true);
+                          paramInt += 1;
+                        }
+                      }
+                      throw new int(do.a("size invalid: ", k));
+                      paramT = (TT)localObject;
+                    } while (!paramBoolean);
+                    throw new int("require field not exist.");
+                    if (!(paramT instanceof int[])) {
+                      break label787;
+                    }
+                    if (!a(paramInt)) {
+                      break label770;
+                    }
+                    paramT = this.i;
+                    paramInt = paramT.get();
+                    k = (byte)(paramInt & 0xF);
+                    if ((paramInt & 0xF0) >> 4 == 15) {
+                      paramT.get();
+                    }
+                    if (k == 9) {
+                      break;
+                    }
+                    paramT = (TT)localObject;
+                  } while (k == 11);
+                  throw new int("type mismatch.");
+                  k = a(0, 0, true);
+                  if (k >= 0)
+                  {
+                    localObject = new int[k];
+                    paramInt = 0;
+                    for (;;)
+                    {
+                      paramT = (TT)localObject;
+                      if (paramInt >= k) {
+                        break;
+                      }
+                      localObject[paramInt] = a(localObject[0], 0, true);
+                      paramInt += 1;
+                    }
+                  }
+                  throw new int(do.a("size invalid: ", k));
+                  paramT = (TT)localObject;
+                } while (!paramBoolean);
+                throw new int("require field not exist.");
+                if (!(paramT instanceof long[])) {
+                  break label947;
+                }
+                if (!a(paramInt)) {
+                  break label930;
+                }
+                paramT = this.i;
+                paramInt = paramT.get();
+                k = (byte)(paramInt & 0xF);
+                if ((paramInt & 0xF0) >> 4 == 15) {
+                  paramT.get();
+                }
+                if (k == 9) {
+                  break;
+                }
+                paramT = (TT)localObject;
+              } while (k == 11);
+              throw new int("type mismatch.");
+              k = a(0, 0, true);
+              if (k >= 0)
+              {
+                localObject = new long[k];
+                paramInt = 0;
+                for (;;)
+                {
+                  paramT = (TT)localObject;
+                  if (paramInt >= k) {
+                    break;
+                  }
+                  localObject[paramInt] = a(localObject[0], 0, true);
+                  paramInt += 1;
+                }
+              }
+              throw new int(do.a("size invalid: ", k));
+              paramT = (TT)localObject;
+            } while (!paramBoolean);
+            throw new int("require field not exist.");
+            if (!(paramT instanceof float[])) {
+              break label1112;
+            }
+            paramT = (float[])null;
+            if (!a(paramInt)) {
+              break label1095;
+            }
+            paramT = this.i;
+            paramInt = paramT.get();
+            k = (byte)(paramInt & 0xF);
+            if ((paramInt & 0xF0) >> 4 == 15) {
+              paramT.get();
+            }
+            if (k == 9) {
+              break;
+            }
+            paramT = (TT)localObject;
+          } while (k == 11);
+          throw new int("type mismatch.");
+          k = a(0, 0, true);
+          if (k >= 0)
+          {
+            localObject = new float[k];
+            paramInt = 0;
+            for (;;)
+            {
+              paramT = (TT)localObject;
+              if (paramInt >= k) {
+                break;
+              }
+              localObject[paramInt] = a(localObject[0], 0, true);
+              paramInt += 1;
+            }
+          }
+          throw new int(do.a("size invalid: ", k));
+          paramT = (TT)localObject;
+        } while (!paramBoolean);
+        throw new int("require field not exist.");
+        if (!(paramT instanceof double[])) {
+          break label1272;
+        }
+        if (!a(paramInt)) {
+          break label1255;
+        }
+        paramT = this.i;
+        paramInt = paramT.get();
+        k = (byte)(paramInt & 0xF);
+        if ((paramInt & 0xF0) >> 4 == 15) {
+          paramT.get();
+        }
+        if (k == 9) {
+          break;
+        }
+        paramT = (TT)localObject;
+      } while (k == 11);
+      throw new int("type mismatch.");
+      int k = a(0, 0, true);
+      if (k >= 0)
+      {
+        localObject = new double[k];
+        paramInt = 0;
+        for (;;)
+        {
+          paramT = (TT)localObject;
+          if (paramInt >= k) {
+            break;
+          }
+          localObject[paramInt] = a(localObject[0], 0, true);
+          paramInt += 1;
+        }
       }
-      i = paramCursor.getColumnIndex("code");
-      if (i >= 0) {
-        localint.code = paramCursor.getInt(i);
-      }
-      i = paramCursor.getColumnIndex("expired");
-    } while (i < 0);
-    localint.k = paramCursor.getLong(i);
-    return localint;
+      throw new int(do.a("size invalid: ", k));
+      paramT = (TT)localObject;
+    } while (!paramBoolean);
+    label770:
+    label787:
+    label930:
+    label947:
+    label1095:
+    label1112:
+    label1255:
+    throw new int("require field not exist.");
+    label1272:
+    paramT = (Object[])paramT;
+    if (paramT.length != 0) {
+      return b(paramT[0], paramInt, paramBoolean);
+    }
+    throw new int("unable to get type of key and value.");
+    label1302:
+    throw new int("read object error: unsupport type.");
   }
   
-  public static final try d()
+  public String a(int paramInt, boolean paramBoolean)
   {
-    if (g == null) {}
-    try
+    if (a(paramInt))
     {
-      g = new try();
-      return g;
+      localObject = this.i;
+      paramInt = ((ByteBuffer)localObject).get();
+      k = (byte)(paramInt & 0xF);
+      if ((paramInt & 0xF0) >> 4 == 15) {
+        ((ByteBuffer)localObject).get();
+      }
+      if (k != 6) {
+        if (k != 7) {
+          if (k != 11) {}
+        }
+      }
     }
-    finally {}
+    while (!paramBoolean)
+    {
+      return null;
+      throw new int("type mismatch.");
+      paramInt = this.i.getInt();
+      if ((paramInt <= 104857600) && (paramInt >= 0))
+      {
+        localObject = new byte[paramInt];
+        this.i.get((byte[])localObject);
+        try
+        {
+          String str1 = new String((byte[])localObject, this.j);
+          return str1;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException1)
+        {
+          return new String((byte[])localObject);
+        }
+      }
+      throw new int(do.a("String too long: ", paramInt));
+      int k = this.i.get();
+      paramInt = k;
+      if (k < 0) {
+        paramInt = k + 256;
+      }
+      Object localObject = new byte[paramInt];
+      this.i.get((byte[])localObject);
+      try
+      {
+        String str2 = new String((byte[])localObject, this.j);
+        return str2;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException2)
+      {
+        return new String((byte[])localObject);
+      }
+    }
+    throw new int("require field not exist.");
   }
   
-  /* Error */
-  public final boolean a(android.content.Context paramContext, boolean paramBoolean)
+  public String a(String paramString, int paramInt, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aconst_null
-    //   3: astore 4
-    //   5: aload_0
-    //   6: getfield 97	com/tencent/turingfd/sdk/xq/try:e	Ljava/lang/Boolean;
-    //   9: astore 5
-    //   11: aload 5
-    //   13: ifnull +13 -> 26
-    //   16: iload_2
-    //   17: ifne +9 -> 26
-    //   20: aload 5
-    //   22: invokevirtual 102	java/lang/Boolean:booleanValue	()Z
-    //   25: ireturn
-    //   26: aload_1
-    //   27: ifnull +14 -> 41
-    //   30: aload_1
-    //   31: invokevirtual 108	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
-    //   34: astore 5
-    //   36: aload 5
-    //   38: ifnonnull +19 -> 57
-    //   41: iconst_0
-    //   42: istore_3
-    //   43: iload_3
-    //   44: ifne +27 -> 71
-    //   47: aload_0
-    //   48: iconst_0
-    //   49: invokestatic 112	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   52: putfield 97	com/tencent/turingfd/sdk/xq/try:e	Ljava/lang/Boolean;
-    //   55: iconst_0
-    //   56: ireturn
-    //   57: aload 5
-    //   59: ldc 114
-    //   61: iconst_0
-    //   62: invokevirtual 120	android/content/pm/PackageManager:resolveContentProvider	(Ljava/lang/String;I)Landroid/content/pm/ProviderInfo;
-    //   65: ifnull -24 -> 41
-    //   68: goto -25 -> 43
-    //   71: ldc 122
-    //   73: invokestatic 128	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   76: astore 5
-    //   78: aload_1
-    //   79: invokevirtual 132	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   82: astore_1
-    //   83: aload_1
-    //   84: aload 5
-    //   86: aconst_null
-    //   87: aconst_null
-    //   88: iconst_1
-    //   89: anewarray 134	java/lang/String
-    //   92: dup
-    //   93: iconst_0
-    //   94: ldc 136
-    //   96: aastore
-    //   97: aconst_null
-    //   98: invokevirtual 142	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   101: astore_1
-    //   102: aload_1
-    //   103: ifnull +62 -> 165
-    //   106: aload_1
-    //   107: invokestatic 144	com/tencent/turingfd/sdk/xq/try:a	(Landroid/database/Cursor;)Lcom/tencent/turingfd/sdk/xq/int;
-    //   110: getfield 69	com/tencent/turingfd/sdk/xq/int:value	Ljava/lang/String;
-    //   113: astore 4
-    //   115: aload_1
-    //   116: invokeinterface 147 1 0
-    //   121: aload 4
-    //   123: astore_1
-    //   124: new 149	java/lang/StringBuilder
-    //   127: dup
-    //   128: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   131: ldc 152
-    //   133: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   136: aload_1
-    //   137: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   143: pop
-    //   144: aload_0
-    //   145: ldc 162
-    //   147: aload_1
-    //   148: invokevirtual 166	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   151: invokestatic 112	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   154: putfield 97	com/tencent/turingfd/sdk/xq/try:e	Ljava/lang/Boolean;
-    //   157: aload_0
-    //   158: getfield 97	com/tencent/turingfd/sdk/xq/try:e	Ljava/lang/Boolean;
-    //   161: invokevirtual 102	java/lang/Boolean:booleanValue	()Z
-    //   164: ireturn
-    //   165: aload_1
-    //   166: ifnull +9 -> 175
-    //   169: aload_1
-    //   170: invokeinterface 147 1 0
-    //   175: aconst_null
-    //   176: astore_1
-    //   177: goto -53 -> 124
-    //   180: astore 5
-    //   182: aload 4
-    //   184: astore_1
-    //   185: aload 5
-    //   187: astore 4
-    //   189: aload_1
-    //   190: ifnull +9 -> 199
-    //   193: aload_1
-    //   194: invokeinterface 147 1 0
-    //   199: aload 4
-    //   201: athrow
-    //   202: astore 4
-    //   204: aconst_null
-    //   205: astore_1
-    //   206: new 149	java/lang/StringBuilder
-    //   209: dup
-    //   210: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   213: astore 5
-    //   215: aload 5
-    //   217: ldc 168
-    //   219: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: aload 4
-    //   224: invokevirtual 171	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   227: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   233: pop
-    //   234: aload_1
-    //   235: ifnull -60 -> 175
-    //   238: goto -69 -> 169
-    //   241: astore 4
-    //   243: goto -54 -> 189
-    //   246: astore 4
-    //   248: goto -42 -> 206
-    //   251: astore 4
-    //   253: goto -64 -> 189
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	256	0	this	try
-    //   0	256	1	paramContext	android.content.Context
-    //   0	256	2	paramBoolean	boolean
-    //   1	43	3	i	int
-    //   3	197	4	localObject1	Object
-    //   202	21	4	localException1	java.lang.Exception
-    //   241	1	4	localObject2	Object
-    //   246	1	4	localException2	java.lang.Exception
-    //   251	1	4	localObject3	Object
-    //   9	76	5	localObject4	Object
-    //   180	6	5	localObject5	Object
-    //   213	3	5	localStringBuilder	java.lang.StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   78	83	180	finally
-    //   83	102	180	finally
-    //   78	83	202	java/lang/Exception
-    //   83	102	202	java/lang/Exception
-    //   206	215	241	finally
-    //   215	234	241	finally
-    //   106	115	246	java/lang/Exception
-    //   106	115	251	finally
+    if (a(paramInt))
+    {
+      localObject = this.i;
+      paramInt = ((ByteBuffer)localObject).get();
+      k = (byte)(paramInt & 0xF);
+      if ((paramInt & 0xF0) >> 4 == 15) {
+        ((ByteBuffer)localObject).get();
+      }
+      if (k != 6) {
+        if (k != 7) {
+          if (k != 11) {}
+        }
+      }
+    }
+    while (!paramBoolean)
+    {
+      Object localObject;
+      return paramString;
+      throw new int("type mismatch.");
+      paramInt = this.i.getInt();
+      if ((paramInt <= 104857600) && (paramInt >= 0))
+      {
+        paramString = new byte[paramInt];
+        this.i.get(paramString);
+        try
+        {
+          localObject = new String(paramString, this.j);
+          return localObject;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException1)
+        {
+          return new String(paramString);
+        }
+      }
+      throw new int(do.a("String too long: ", paramInt));
+      int k = this.i.get();
+      paramInt = k;
+      if (k < 0) {
+        paramInt = k + 256;
+      }
+      paramString = new byte[paramInt];
+      this.i.get(paramString);
+      try
+      {
+        String str = new String(paramString, this.j);
+        return str;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException2)
+      {
+        return new String(paramString);
+      }
+    }
+    throw new int("require field not exist.");
   }
   
-  public if d(String paramString)
+  public <K, V> HashMap<K, V> a(Map<K, V> paramMap, int paramInt, boolean paramBoolean)
   {
-    if ("oaid".equals(paramString)) {
-      return this.b;
+    HashMap localHashMap = new HashMap();
+    if ((paramMap == null) || (paramMap.isEmpty())) {
+      return new HashMap();
     }
-    if ("vaid".equals(paramString)) {
-      return this.d;
+    Object localObject = (Map.Entry)paramMap.entrySet().iterator().next();
+    paramMap = ((Map.Entry)localObject).getKey();
+    localObject = ((Map.Entry)localObject).getValue();
+    if (a(paramInt))
+    {
+      ByteBuffer localByteBuffer = this.i;
+      paramInt = localByteBuffer.get();
+      int k = (byte)(paramInt & 0xF);
+      if ((paramInt & 0xF0) >> 4 == 15) {
+        localByteBuffer.get();
+      }
+      if (k != 8)
+      {
+        if (k == 11) {
+          return localHashMap;
+        }
+        throw new int("type mismatch.");
+      }
+      k = a(0, 0, true);
+      if (k >= 0)
+      {
+        paramInt = 0;
+        while (paramInt < k)
+        {
+          localHashMap.put(a(paramMap, 0, true), a(localObject, 1, true));
+          paramInt += 1;
+        }
+      }
+      throw new int(do.a("size invalid: ", k));
     }
-    if ("aaid".equals(paramString)) {
-      return this.c;
+    if (!paramBoolean) {
+      return localHashMap;
     }
-    if ("udid".equals(paramString)) {
-      return this.a;
-    }
-    return null;
+    throw new int("require field not exist.");
+    return localHashMap;
   }
   
-  /* Error */
-  public final void g(android.content.Context paramContext)
+  public short a(short paramShort, int paramInt, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 175	com/tencent/turingfd/sdk/xq/try:f	Landroid/content/BroadcastReceiver;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: ifnull +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: new 177	android/content/IntentFilter
-    //   17: dup
-    //   18: invokespecial 178	android/content/IntentFilter:<init>	()V
-    //   21: astore_2
-    //   22: aload_2
-    //   23: ldc 180
-    //   25: invokevirtual 183	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   28: aload_0
-    //   29: new 185	com/tencent/turingfd/sdk/xq/new
-    //   32: dup
-    //   33: invokespecial 186	com/tencent/turingfd/sdk/xq/new:<init>	()V
-    //   36: putfield 175	com/tencent/turingfd/sdk/xq/try:f	Landroid/content/BroadcastReceiver;
-    //   39: aload_1
-    //   40: aload_0
-    //   41: getfield 175	com/tencent/turingfd/sdk/xq/try:f	Landroid/content/BroadcastReceiver;
-    //   44: aload_2
-    //   45: ldc 188
-    //   47: aconst_null
-    //   48: invokevirtual 192	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
-    //   51: pop
-    //   52: goto -41 -> 11
-    //   55: astore_1
-    //   56: aload_0
-    //   57: monitorexit
-    //   58: aload_1
-    //   59: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	60	0	this	try
-    //   0	60	1	paramContext	android.content.Context
-    //   6	39	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	55	finally
-    //   14	52	55	finally
+    if (a(paramInt))
+    {
+      localByteBuffer = this.i;
+      paramInt = localByteBuffer.get();
+      k = (byte)(paramInt & 0xF);
+      if ((paramInt & 0xF0) >> 4 == 15) {
+        localByteBuffer.get();
+      }
+      if (k != 0) {
+        if (k != 1) {
+          if (k != 11)
+          {
+            if (k != 12) {
+              break label74;
+            }
+            paramShort = 0;
+          }
+        }
+      }
+    }
+    label74:
+    while (!paramBoolean)
+    {
+      ByteBuffer localByteBuffer;
+      int k;
+      return paramShort;
+      throw new int("type mismatch.");
+      return this.i.getShort();
+      return (short)this.i.get();
+    }
+    throw new int("require field not exist.");
+  }
+  
+  public final void a()
+  {
+    ByteBuffer localByteBuffer = this.i;
+    int k = localByteBuffer.get();
+    byte b = (byte)(k & 0xF);
+    if ((k & 0xF0) >> 4 == 15) {
+      localByteBuffer.get();
+    }
+    a(b);
+  }
+  
+  public final void a(byte paramByte)
+  {
+    byte b2 = 0;
+    byte b1 = 0;
+    switch (paramByte)
+    {
+    default: 
+      throw new int("invalid type.");
+    case 13: 
+      ByteBuffer localByteBuffer = this.i;
+      b1 = localByteBuffer.get();
+      b2 = (byte)(b1 & 0xF);
+      if ((b1 & 0xF0) >> 4 == 15) {
+        localByteBuffer.get();
+      }
+      if (b2 == 0) {
+        skip(a(0, 0, true));
+      }
+    case 11: 
+    case 12: 
+      return;
+      throw new int("skipField with invalid type, type value: " + paramByte + ", " + b2);
+    case 10: 
+      b();
+      return;
+    case 9: 
+      b2 = a(0, 0, true);
+      paramByte = b1;
+      while (paramByte < b2)
+      {
+        a();
+        paramByte += 1;
+      }
+    case 8: 
+      b1 = a(0, 0, true);
+      paramByte = b2;
+      while (paramByte < b1 * 2)
+      {
+        a();
+        paramByte += 1;
+      }
+    case 7: 
+      skip(this.i.getInt());
+      return;
+    case 6: 
+      b1 = this.i.get();
+      paramByte = b1;
+      if (b1 < 0) {
+        paramByte = b1 + 256;
+      }
+      skip(paramByte);
+      return;
+    case 5: 
+      skip(8);
+      return;
+    case 4: 
+      skip(4);
+      return;
+    case 3: 
+      skip(8);
+      return;
+    case 2: 
+      skip(4);
+      return;
+    case 1: 
+      skip(2);
+      return;
+    }
+    skip(1);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    int k;
+    byte b;
+    int m;
+    for (;;)
+    {
+      try
+      {
+        ByteBuffer localByteBuffer = this.i.duplicate();
+        k = localByteBuffer.get();
+        b = (byte)(k & 0xF);
+        k = (k & 0xF0) >> 4;
+        if (k != 15) {
+          break label94;
+        }
+        k = localByteBuffer.get() & 0xFF;
+        m = 2;
+      }
+      catch (int localint)
+      {
+        return false;
+        return false;
+      }
+      catch (BufferUnderflowException localBufferUnderflowException)
+      {
+        continue;
+      }
+      skip(m);
+      a(b);
+    }
+    while ((paramInt <= k) || (b == 11)) {
+      if (paramInt == k)
+      {
+        return true;
+        label94:
+        m = 1;
+      }
+    }
+  }
+  
+  public boolean a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  {
+    return a((byte)paramBoolean1, paramInt, paramBoolean2) != 0;
+  }
+  
+  public byte[] a(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
+  {
+    paramArrayOfByte = null;
+    if (a(paramInt))
+    {
+      localObject = this.i;
+      m = ((ByteBuffer)localObject).get();
+      k = (byte)(m & 0xF);
+      if ((m & 0xF0) >> 4 == 15) {
+        ((ByteBuffer)localObject).get();
+      }
+      if (k != 9) {
+        if (k != 11)
+        {
+          if (k != 13) {
+            break label254;
+          }
+          paramArrayOfByte = this.i;
+          n = paramArrayOfByte.get();
+          m = (byte)(n & 0xF);
+          if ((n & 0xF0) >> 4 == 15) {
+            paramArrayOfByte.get();
+          }
+          if (m != 0) {
+            break label204;
+          }
+          n = a(0, 0, true);
+          if (n < 0) {
+            break label143;
+          }
+          paramArrayOfByte = new byte[n];
+          this.i.get(paramArrayOfByte);
+        }
+      }
+    }
+    label143:
+    label204:
+    label254:
+    while (!paramBoolean)
+    {
+      Object localObject;
+      int m;
+      int n;
+      return paramArrayOfByte;
+      throw new int("invalid size, tag: " + paramInt + ", type: " + k + ", " + m + ", size: " + n);
+      throw new int("type mismatch, tag: " + paramInt + ", type: " + k + ", " + m);
+      throw new int("type mismatch.");
+      int k = a(0, 0, true);
+      if (k >= 0)
+      {
+        localObject = new byte[k];
+        paramInt = 0;
+        for (;;)
+        {
+          paramArrayOfByte = (byte[])localObject;
+          if (paramInt >= k) {
+            break;
+          }
+          localObject[paramInt] = a(localObject[0], 0, true);
+          paramInt += 1;
+        }
+      }
+      throw new int(do.a("size invalid: ", k));
+    }
+    throw new int("require field not exist.");
+  }
+  
+  public int b(String paramString)
+  {
+    this.j = paramString;
+    return 0;
+  }
+  
+  public void b()
+  {
+    byte b;
+    do
+    {
+      if (this.i.remaining() == 0) {
+        return;
+      }
+      ByteBuffer localByteBuffer = this.i;
+      int k = localByteBuffer.get();
+      b = (byte)(k & 0xF);
+      if ((k & 0xF0) >> 4 == 15) {
+        localByteBuffer.get();
+      }
+      a(b);
+    } while (b != 11);
+  }
+  
+  public final <T> T[] b(T paramT, int paramInt, boolean paramBoolean)
+  {
+    if (a(paramInt))
+    {
+      localObject = this.i;
+      paramInt = ((ByteBuffer)localObject).get();
+      k = (byte)(paramInt & 0xF);
+      if ((paramInt & 0xF0) >> 4 == 15) {
+        ((ByteBuffer)localObject).get();
+      }
+      if (k != 9) {
+        if (k != 11) {}
+      }
+    }
+    while (!paramBoolean)
+    {
+      Object localObject = null;
+      return localObject;
+      throw new int("type mismatch.");
+      int k = a(0, 0, true);
+      if (k >= 0)
+      {
+        Object[] arrayOfObject = (Object[])Array.newInstance(paramT.getClass(), k);
+        paramInt = 0;
+        for (;;)
+        {
+          localObject = arrayOfObject;
+          if (paramInt >= k) {
+            break;
+          }
+          arrayOfObject[paramInt] = a(paramT, 0, true);
+          paramInt += 1;
+        }
+      }
+      throw new int(do.a("size invalid: ", k));
+    }
+    throw new int("require field not exist.");
+  }
+  
+  public final void skip(int paramInt)
+  {
+    ByteBuffer localByteBuffer = this.i;
+    localByteBuffer.position(localByteBuffer.position() + paramInt);
+  }
+  
+  public void wrap(byte[] paramArrayOfByte)
+  {
+    this.i = ByteBuffer.wrap(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.try
  * JD-Core Version:    0.7.0.1
  */

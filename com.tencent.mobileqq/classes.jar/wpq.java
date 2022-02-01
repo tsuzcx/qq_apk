@@ -1,49 +1,49 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 class wpq
-  implements urr<vga, vgb>
+  implements wld<wyw, wyy>
 {
-  wpq(wpp paramwpp, JobContext paramJobContext, AtomicBoolean paramAtomicBoolean, Integer paramInteger) {}
+  wpq(wpp paramwpp) {}
   
-  public void a(@NonNull vga paramvga, @Nullable vgb paramvgb, @NonNull ErrorMessage paramErrorMessage)
+  public void a(@NonNull wyw paramwyw, @Nullable wyy paramwyy, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    paramwyw = paramwyw.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramwyw.hasNext())
     {
-      wxe.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId pull segment cancel on net respond");
+      localObject = (String)paramwyw.next();
+      wpp.a(this.a).remove(localObject);
+    }
+    paramwyw = new wpr();
+    paramwyw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    if ((paramErrorMessage.isFail()) || (paramwyy == null))
+    {
+      yqp.d("Q.qqstory:TagManager", "request fail for get tag request");
+      wfo.a().dispatch(paramwyw);
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramvgb == null))
+    paramErrorMessage = paramwyw.jdField_a_of_type_JavaUtilMap;
+    Object localObject = (wpp)wpm.a(27);
+    paramwyy = paramwyy.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramwyy.hasNext())
     {
-      wxe.a("Q.qqstory.home.data.HomeFeedListPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      wpp.a(this.jdField_a_of_type_Wpp, paramErrorMessage);
-      return;
+      wyx localwyx = (wyx)paramwyy.next();
+      ((wpp)localObject).a(localwyx.jdField_a_of_type_JavaLangString, localwyx.jdField_a_of_type_JavaUtilList);
+      paramErrorMessage.put(localwyx.jdField_a_of_type_JavaLangString, localwyx);
+      yqp.a("Q.qqstory:TagManager", "save feedId :%s , %s", localwyx.jdField_a_of_type_JavaLangString, localwyx.jdField_a_of_type_JavaUtilList);
     }
-    wpp.a(this.jdField_a_of_type_Wpp);
-    wpp.a(this.jdField_a_of_type_Wpp).a(paramvgb.jdField_a_of_type_JavaUtilList, paramvgb.jdField_a_of_type_JavaLangString, paramvgb.jdField_a_of_type_Boolean);
-    ((woy)uwa.a(11)).a(paramvgb.jdField_a_of_type_JavaUtilList);
-    boolean bool = wpp.a(paramvgb, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
-    wxe.d("Q.qqstory.home.data.HomeFeedListPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramvgb.b), Integer.valueOf(wpp.b(this.jdField_a_of_type_Wpp)), Boolean.valueOf(bool) });
-    if ((!paramvgb.jdField_a_of_type_Boolean) && (wpp.b(this.jdField_a_of_type_Wpp) < 10) && ((!paramvgb.b) || (bool)))
-    {
-      wxe.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId list not end, pull more");
-      paramvga.b = wpp.a(this.jdField_a_of_type_Wpp).a();
-      urp.a().a(paramvga, this);
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) {
-      wpp.a(this.jdField_a_of_type_Wpp).c();
-    }
-    paramvga = wpp.a(this.jdField_a_of_type_Wpp).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    wpp.a(this.jdField_a_of_type_Wpp, paramvga);
+    wfo.a().dispatch(paramwyw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wpq
  * JD-Core Version:    0.7.0.1
  */

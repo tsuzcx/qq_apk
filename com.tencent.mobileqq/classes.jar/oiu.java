@@ -1,52 +1,23 @@
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class oiu
-  extends bmla
+  implements nkl
 {
-  public oiu(@NonNull bmnj parambmnj, long paramLong)
-  {
-    super(parambmnj, paramLong);
-  }
+  public oiu(ReadInJoyFeedsActivity.1 param1) {}
   
-  private void j()
+  public void loaded(String paramString, int paramInt)
   {
-    ((ImageView)a(2131378170)).setVisibility(8);
-    ((TextView)a(2131364830)).setText(alud.a(2131713252));
-  }
-  
-  public void a()
-  {
-    super.a();
-    j();
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.onClick(paramView);
-    int i = paramView.getId();
-    paramView = (Long)this.a.get(i);
-    if (paramView != null) {}
-    switch ((int)paramView.longValue())
-    {
-    default: 
-      return;
-    case 4: 
-      nrt.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "3", "", "", "", false);
-      return;
-    case 8: 
-      nrt.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "1", "", "", "", false);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
     }
-    nrt.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "2", "", "", "", false);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oiu
  * JD-Core Version:    0.7.0.1
  */

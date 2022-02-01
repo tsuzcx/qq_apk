@@ -1,9 +1,11 @@
 package com.tencent.viola.vinstance;
 
 import android.content.Context;
+import android.os.ConditionVariable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.baseComponent.VComponent;
@@ -23,7 +25,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class VInstanceAction
@@ -34,6 +35,7 @@ public abstract class VInstanceAction
   public static final int STATE_INIT_SUCCESS = 3;
   public static final String TAG = "Wormhole";
   protected Map<String, String> bindFailMap = new ConcurrentHashMap();
+  private Map<String, ConditionVariable> conditionVariableMap = new ConcurrentHashMap();
   protected Map<String, VInstanceAction.VInstanceEventListener> eventMap = new HashMap();
   protected Map<String, String> failMap = new ConcurrentHashMap();
   protected ConcurrentHashMap<String, WeakReference<DomObjectVInstance>> instanceMap = new ConcurrentHashMap();
@@ -104,6 +106,16 @@ public abstract class VInstanceAction
       return true;
     }
     return bool;
+  }
+  
+  private void removeId(String paramString)
+  {
+    this.eventMap.remove(paramString);
+    this.failMap.remove(paramString);
+    this.pendingMap.remove(paramString);
+    this.bindFailMap.remove(paramString);
+    this.conditionVariableMap.remove(paramString);
+    ViolaLogUtils.d("Wormhole", "release id: " + paramString);
   }
   
   private void tryUpdateInstanceWhenBindFail(String paramString1, String paramString2)
@@ -194,7 +206,7 @@ public abstract class VInstanceAction
   public boolean bindData(String paramString1, String paramString2, View paramView)
   {
     ViolaLogUtils.d("Wormhole", "bindData, id: " + paramString1 + ", state: " + this.state + ", data: " + paramString2);
-    DomObjectVInstance localDomObjectVInstance = getDomObjectVInstance(paramView, paramString1);
+    DomObjectVInstance localDomObjectVInstance = getDomObjectVInstance(paramString1);
     if (localDomObjectVInstance == null)
     {
       ViolaLogUtils.d("Wormhole", "bindData fail: " + paramString1 + "state: " + this.state.get() + ", data: " + paramString2);
@@ -218,7 +230,9 @@ public abstract class VInstanceAction
       if ((paramString2.getParent() instanceof ViewGroup)) {
         ((ViewGroup)paramString2.getParent()).removeView(paramString2);
       }
-      ((ViewGroup)paramView).addView(paramString2);
+      if ((paramView instanceof ViewGroup)) {
+        ((ViewGroup)paramView).addView(paramString2);
+      }
     }
     for (paramString2 = localVInstance;; paramString2 = localVInstance)
     {
@@ -231,7 +245,73 @@ public abstract class VInstanceAction
     }
   }
   
+  public boolean bindNativeVueView(String paramString1, String paramString2, View paramView)
+  {
+    ViolaLogUtils.d("Wormhole", "bindDataWithoutView, id: " + paramString1 + ", state: " + this.state + ", data: " + paramString2);
+    if ((paramView instanceof VInstanceView))
+    {
+      paramString1 = ((VInstanceView)paramView).getComponent();
+      if (paramString1 != null)
+      {
+        paramString1.bindData();
+        return true;
+      }
+    }
+    else
+    {
+      paramView = getDomObjectVInstance(paramString1);
+      if (paramView == null)
+      {
+        ViolaLogUtils.e("Wormhole", "bindData fail: " + paramString1 + "state: " + this.state.get() + ", data: " + paramString2);
+        tryUpdateInstanceWhenBindFail(paramString1, paramString2);
+        return false;
+      }
+      paramString1 = getVInstanceFromDomContext(paramView.getRef());
+      if (paramString1 != null)
+      {
+        paramString1.bindData();
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public View createNativeVueView(String paramString, Context paramContext)
+  {
+    Object localObject = getDomObjectVInstance(paramString);
+    if (localObject == null)
+    {
+      ViolaLogUtils.e("Wormhole", "createNativeVueView fail. dom is null:  " + paramString + "state: " + this.state.get());
+      return null;
+    }
+    localObject = getVInstanceFromDomContext(((DomObjectVInstance)localObject).getRef());
+    if (localObject == null)
+    {
+      ViolaLogUtils.e("Wormhole", "createNativeVueView fail. component is null:  " + paramString + "state: " + this.state.get());
+      return null;
+    }
+    ((VInstance)localObject).lazy(false);
+    if (((VInstance)localObject).getHostView() == null)
+    {
+      ((VInstance)localObject).createView(paramContext);
+      ((VInstance)localObject).applyEvents();
+      ((VInstance)localObject).applyLayout();
+    }
+    return ((VInstance)localObject).getHostView();
+  }
+  
   public abstract void createVInstance(String paramString1, String paramString2);
+  
+  public boolean createVInstanceSync(String paramString1, String paramString2)
+  {
+    ConditionVariable localConditionVariable = new ConditionVariable();
+    createVInstance(paramString1, paramString2);
+    this.conditionVariableMap.put(paramString1, localConditionVariable);
+    boolean bool = localConditionVariable.block(1000L);
+    this.conditionVariableMap.remove(paramString1);
+    ViolaLogUtils.e("Wormhole", "id: " + paramString1 + ", su: " + bool);
+    return bool;
+  }
   
   public void disappear(View paramView)
   {
@@ -262,13 +342,31 @@ public abstract class VInstanceAction
     }
   }
   
-  public DomObjectVInstance getDomObjectVInstance(View paramView, String paramString)
+  public DomObjectVInstance getDomObjectVInstance(String paramString)
   {
-    paramView = (WeakReference)this.instanceMap.get(paramString);
-    if (paramView != null) {
-      return (DomObjectVInstance)paramView.get();
+    paramString = (WeakReference)this.instanceMap.get(paramString);
+    if (paramString != null) {
+      return (DomObjectVInstance)paramString.get();
     }
     return null;
+  }
+  
+  public int getHeight(String paramString)
+  {
+    paramString = getDomObjectVInstance(paramString);
+    if (paramString == null) {
+      return 0;
+    }
+    return (int)paramString.getLayoutHeight();
+  }
+  
+  public int getWidth(String paramString)
+  {
+    paramString = getDomObjectVInstance(paramString);
+    if (paramString == null) {
+      return 0;
+    }
+    return (int)paramString.getLayoutWidth();
   }
   
   /* Error */
@@ -278,8 +376,8 @@ public abstract class VInstanceAction
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 63	com/tencent/viola/vinstance/VInstanceAction:state	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   6: invokevirtual 172	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   3: getfield 65	com/tencent/viola/vinstance/VInstanceAction:state	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   6: invokevirtual 192	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   9: istore_2
     //   10: iload_2
     //   11: iconst_1
@@ -291,16 +389,16 @@ public abstract class VInstanceAction
     //   21: monitorexit
     //   22: return
     //   23: aload_0
-    //   24: getfield 63	com/tencent/viola/vinstance/VInstanceAction:state	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   24: getfield 65	com/tencent/viola/vinstance/VInstanceAction:state	Ljava/util/concurrent/atomic/AtomicInteger;
     //   27: iconst_1
-    //   28: invokevirtual 347	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   31: invokestatic 353	com/tencent/viola/core/ViolaSDKManager:getInstance	()Lcom/tencent/viola/core/ViolaSDKManager;
-    //   34: new 355	com/tencent/viola/vinstance/VInstanceAction$2
+    //   28: invokevirtual 405	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   31: invokestatic 411	com/tencent/viola/core/ViolaSDKManager:getInstance	()Lcom/tencent/viola/core/ViolaSDKManager;
+    //   34: new 413	com/tencent/viola/vinstance/VInstanceAction$3
     //   37: dup
     //   38: aload_0
     //   39: iload_1
-    //   40: invokespecial 358	com/tencent/viola/vinstance/VInstanceAction$2:<init>	(Lcom/tencent/viola/vinstance/VInstanceAction;Z)V
-    //   43: invokevirtual 362	com/tencent/viola/core/ViolaSDKManager:postOnThreadPool	(Ljava/lang/Runnable;)V
+    //   40: invokespecial 416	com/tencent/viola/vinstance/VInstanceAction$3:<init>	(Lcom/tencent/viola/vinstance/VInstanceAction;Z)V
+    //   43: invokevirtual 420	com/tencent/viola/core/ViolaSDKManager:postOnThreadPool	(Ljava/lang/Runnable;)V
     //   46: goto -26 -> 20
     //   49: astore_3
     //   50: aload_0
@@ -344,7 +442,11 @@ public abstract class VInstanceAction
     if (paramDomObjectVInstance != null)
     {
       ViolaLogUtils.d("Wormhole", "[onAddVInstance] refreshItem, id: " + paramString + ", data: " + paramDomObjectVInstance);
-      ViolaSDKManager.getInstance().postOnUiThread(new VInstanceAction.3(this, paramString));
+      ViolaSDKManager.getInstance().postOnUiThread(new VInstanceAction.4(this, paramString));
+    }
+    paramString = (ConditionVariable)this.conditionVariableMap.remove(paramString);
+    if (paramString != null) {
+      paramString.open();
     }
   }
   
@@ -352,6 +454,9 @@ public abstract class VInstanceAction
   {
     this.state.compareAndSet(1, 2);
     notifyError();
+    if ((this.preconditor != null) && (this.preconditor.getAdapter() != null)) {
+      this.preconditor.getAdapter().onInitError();
+    }
     ViolaLogUtils.d("Wormhole", "initError");
   }
   
@@ -366,23 +471,35 @@ public abstract class VInstanceAction
   
   public void onSuccess()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    ViolaBridgeManager.getInstance().post(new VInstanceAction.1(this));
+    this.state.compareAndSet(1, 3);
+    tryRunFailQueue();
+    if ((this.preconditor != null) && (this.preconditor.getAdapter() != null)) {
+      this.preconditor.getAdapter().onInitSuccess();
+    }
+    ViolaLogUtils.d("Wormhole", "initSuccess");
+  }
+  
+  public void release(String paramString1, String paramString2)
+  {
+    String str = paramString2;
+    if (paramString2 == null) {
+      str = "";
+    }
+    if (this.state.get() == 3) {
+      this.violaInstance.updateInstance(str);
+    }
+    if (!TextUtils.isEmpty(paramString1)) {
+      removeId(paramString1);
+    }
+    paramString1 = (WeakReference)this.instanceMap.remove(paramString1);
+    if ((paramString1 == null) || (paramString1.get() == null)) {}
+    do
     {
-      localJSONObject.put("param", this.param);
-      this.violaInstance.renderJSSource(this.preconditor.getServiceJsCode(), localJSONObject.toString(), null);
-      this.state.compareAndSet(1, 3);
-      tryRunFailQueue();
-      ViolaLogUtils.d("Wormhole", "initSuccess");
       return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+      paramString1 = getVInstanceFromDomContext(((DomObjectVInstance)paramString1.get()).getRef());
+    } while (paramString1 == null);
+    paramString1.unregisterFromContext(true);
   }
   
   public void release(List<String> paramList, String paramString)
@@ -395,14 +512,8 @@ public abstract class VInstanceAction
         this.violaInstance.updateInstance(paramString);
       }
       paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        paramString = (String)paramList.next();
-        this.eventMap.remove(paramString);
-        this.failMap.remove(paramString);
-        this.pendingMap.remove(paramString);
-        this.bindFailMap.remove(paramString);
-        ViolaLogUtils.d("Wormhole", "release id: " + paramString);
+      while (paramList.hasNext()) {
+        removeId((String)paramList.next());
       }
     }
   }
@@ -414,7 +525,7 @@ public abstract class VInstanceAction
   
   protected void retryInit()
   {
-    ViolaSDKManager.getInstance().postOnThreadPool(new VInstanceAction.4(this));
+    ViolaSDKManager.getInstance().postOnThreadPool(new VInstanceAction.5(this));
   }
   
   protected void tryRunFailQueue()
@@ -438,12 +549,12 @@ public abstract class VInstanceAction
     if (localVInstance == null) {
       return;
     }
-    paramView.post(new VInstanceAction.1(this, localVInstance, paramView, paramViewGroup));
+    paramView.post(new VInstanceAction.2(this, localVInstance, paramView, paramViewGroup));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.vinstance.VInstanceAction
  * JD-Core Version:    0.7.0.1
  */

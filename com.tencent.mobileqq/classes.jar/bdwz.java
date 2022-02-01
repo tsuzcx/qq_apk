@@ -1,56 +1,47 @@
-import android.app.WallpaperColors;
-import android.service.wallpaper.WallpaperService.Engine;
-import android.view.SurfaceHolder;
-import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
-import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class bdwz
-  extends WallpaperService.Engine
+  extends ahuy
 {
-  private final WallpaperHelper jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper = new WallpaperHelper();
-  
-  private bdwz(VipWallpaperService paramVipWallpaperService)
+  public bdwz(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    super(paramVipWallpaperService);
+    super(paramBaseApplicationImpl);
   }
   
-  public WallpaperColors onComputeColors()
+  public File getFile(DownloadParams paramDownloadParams)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a();
-  }
-  
-  public void onOffsetsChanged(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2)
-  {
-    super.onOffsetsChanged(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramInt2);
-  }
-  
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.onSurfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    super.onSurfaceCreated(paramSurfaceHolder);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService, paramSurfaceHolder);
-  }
-  
-  public void onSurfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    super.onSurfaceDestroyed(paramSurfaceHolder);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a();
-  }
-  
-  public void onSurfaceRedrawNeeded(SurfaceHolder paramSurfaceHolder)
-  {
-    super.onSurfaceRedrawNeeded(paramSurfaceHolder);
-  }
-  
-  public void onVisibilityChanged(boolean paramBoolean)
-  {
-    super.onVisibilityChanged(paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(paramBoolean);
+    paramDownloadParams = paramDownloadParams.url;
+    try
+    {
+      File localFile1 = new File(paramDownloadParams.toURI().getPath());
+      return localFile1;
+    }
+    catch (URISyntaxException localURISyntaxException)
+    {
+      try
+      {
+        File localFile2 = new File(paramDownloadParams.toString().replaceFirst("filegalleryorigimage:", ""));
+        return localFile2;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + paramDownloadParams, localException);
+        }
+        return null;
+      }
+    }
+    catch (NullPointerException paramDownloadParams)
+    {
+      paramDownloadParams.printStackTrace();
+    }
+    return null;
   }
 }
 

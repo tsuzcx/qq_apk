@@ -1,23 +1,29 @@
-public abstract interface aryl
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aryl
+  implements View.OnClickListener
 {
-  public static final Integer a = Integer.valueOf(0);
-  public static final Integer b = Integer.valueOf(1);
-  public static final Integer c = Integer.valueOf(2);
-  public static final Integer d = Integer.valueOf(3);
-  public static final Integer e = Integer.valueOf(4);
-  public static final Integer f = Integer.valueOf(5);
-  public static final Integer g = Integer.valueOf(6);
-  public static final Integer h = Integer.valueOf(8);
-  public static final Integer i = Integer.valueOf(9);
-  public static final Integer j = Integer.valueOf(10);
-  public static final Integer k = Integer.valueOf(11);
-  public static final Integer l = Integer.valueOf(12);
-  public static final Integer m = Integer.valueOf(13);
-  public static final Integer n = Integer.valueOf(14);
+  aryl(aryk paramaryk, Button paramButton) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetButton.getText() == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      String str = this.jdField_a_of_type_AndroidWidgetButton.getText().toString();
+      this.jdField_a_of_type_Aryk.a.d(str);
+      bcst.b(this.jdField_a_of_type_Aryk.a.a(), "dc00898", "", "", "0X800AE1F", "0X800AE1F", 0, 0, "2", "", str, "");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryl
  * JD-Core Version:    0.7.0.1
  */

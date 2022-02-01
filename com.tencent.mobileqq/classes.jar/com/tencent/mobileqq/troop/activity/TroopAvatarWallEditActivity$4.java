@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.activity;
 
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 class TroopAvatarWallEditActivity$4
   implements Runnable
@@ -12,15 +12,15 @@ class TroopAvatarWallEditActivity$4
   
   public void run()
   {
-    awgf localawgf = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    Setting localSetting = (Setting)localawgf.a(Setting.class, "troop_" + this.this$0.a);
-    localawgf.a();
+    EntityManager localEntityManager = this.this$0.app.a().createEntityManager();
+    Setting localSetting = (Setting)localEntityManager.find(Setting.class, "troop_" + this.this$0.a);
+    localEntityManager.close();
     this.this$0.runOnUiThread(new TroopAvatarWallEditActivity.4.1(this, localSetting));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.4
  * JD-Core Version:    0.7.0.1
  */

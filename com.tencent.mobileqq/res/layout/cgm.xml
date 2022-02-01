@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_gravity="center_horizontal" android:focusableInTouchMode="true" android:layout_width="228.0dip" android:layout_height="128.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/kks" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" android:contentDescription="@string/cli" />
+    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/kn0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gp3" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <View android:id="@id/klr" android:background="@drawable/div" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/km9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:text="0" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -3,370 +3,394 @@ package com.tencent.tmediacodec;
 import android.annotation.TargetApi;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
-import android.media.MediaCodec.Callback;
 import android.media.MediaCodec.CryptoInfo;
 import android.media.MediaCrypto;
 import android.media.MediaDescrambler;
 import android.media.MediaFormat;
+import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.Surface;
-import androidx.annotation.NonNull;
 import com.tencent.tmediacodec.callback.CodecCallback;
 import com.tencent.tmediacodec.codec.CodecWrapper;
+import com.tencent.tmediacodec.statistics.MediaCodecStatistics;
 import com.tencent.tmediacodec.util.LogUtils;
 import com.tencent.tmediacodec.util.TUtils;
+import com.tencent.tmediacodec.util.ThreadManager;
+import java.io.IOException;
 import java.nio.ByteBuffer;
-import kotlin.Metadata;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tmediacodec/TMediaCodec;", "Lcom/tencent/tmediacodec/IMediaCodec;", "nameOrType", "", "(Ljava/lang/String;)V", "<set-?>", "Lcom/tencent/tmediacodec/callback/CodecCallback;", "codecCallback", "getCodecCallback", "()Lcom/tencent/tmediacodec/callback/CodecCallback;", "Lcom/tencent/tmediacodec/codec/CodecWrapper;", "codecWrapper", "getCodecWrapper", "()Lcom/tencent/tmediacodec/codec/CodecWrapper;", "isReUsed", "", "isReUsed$tmediacodec_lib_debug", "()Z", "setReUsed$tmediacodec_lib_debug", "(Z)V", "isVideo", "mConfigureCalled", "getNameOrType", "()Ljava/lang/String;", "configure", "", "format", "Landroid/media/MediaFormat;", "surface", "Landroid/view/Surface;", "crypto", "Landroid/media/MediaCrypto;", "flags", "", "descrambler", "Landroid/media/MediaDescrambler;", "dequeueInputBuffer", "timeoutUs", "", "dequeueOutputBuffer", "info", "Landroid/media/MediaCodec$BufferInfo;", "flush", "getInputBuffer", "Ljava/nio/ByteBuffer;", "index", "getInputBuffers", "", "kotlin.jvm.PlatformType", "()[Ljava/nio/ByteBuffer;", "getOutputBuffer", "getOutputBuffers", "getOutputFormat", "queueInputBuffer", "offset", "size", "presentationTimeUs", "queueSecureInputBuffer", "Landroid/media/MediaCodec$CryptoInfo;", "release", "releaseOutputBuffer", "render", "renderTimestampNs", "reset", "setCallback", "cb", "Lcom/tencent/tmediacodec/TMediaCodec$Callback;", "handler", "Landroid/os/Handler;", "setCodecCallback", "setOutputSurface", "setVideoScalingMode", "mode", "start", "stop", "Callback", "Companion", "HookCallback", "tmediacodec_lib_debug"}, k=1, mv={1, 1, 15})
 public final class TMediaCodec
   implements IMediaCodec
 {
-  public static final TMediaCodec.Companion Companion = new TMediaCodec.Companion(null);
-  public static final int ERROR_CODEC_NULL = -1000;
-  @NotNull
   public static final String TAG = "TMediaCodec";
-  @org.jetbrains.annotations.Nullable
+  @Nullable
   private CodecCallback codecCallback;
-  @org.jetbrains.annotations.Nullable
+  @Nullable
   private CodecWrapper codecWrapper;
-  private boolean isReUsed;
+  private TMediaCodec.CreateBy createBy;
+  public boolean isReUsed;
+  private final MediaCodecStatistics mCodecStatistics;
   private boolean mConfigureCalled;
-  @NotNull
+  @NonNull
   private final String nameOrType;
+  private boolean reUseEnable = true;
   
-  private TMediaCodec(String paramString)
+  private TMediaCodec(String paramString, TMediaCodec.CreateBy paramCreateBy)
   {
     this.nameOrType = paramString;
+    this.createBy = paramCreateBy;
+    this.mCodecStatistics = new MediaCodecStatistics(isVideo());
   }
   
-  @JvmStatic
-  @NotNull
-  public static final TMediaCodec createByCodecName(@NotNull String paramString)
+  public static TMediaCodec createByCodecName(@NonNull String paramString)
   {
-    return Companion.createByCodecName(paramString);
+    return new TMediaCodec(paramString, TMediaCodec.CreateBy.CreateByName);
   }
   
-  @JvmStatic
-  @NotNull
-  public static final TMediaCodec createDecoderByType(@NotNull String paramString)
+  public static TMediaCodec createDecoderByType(@NonNull String paramString)
   {
-    return Companion.createDecoderByType(paramString);
+    return new TMediaCodec(paramString, TMediaCodec.CreateBy.CreateByType);
+  }
+  
+  private void onAfterConfigure()
+  {
+    this.mCodecStatistics.configCodecEnd(this.isReUsed);
+    ThreadManager.postOnSubThread(new TMediaCodec.1(this));
+  }
+  
+  private void onAfterStart()
+  {
+    this.mCodecStatistics.startCodecEnd();
+    ThreadManager.postOnSubThread(new TMediaCodec.2(this));
+  }
+  
+  private void onBeforeConfigure()
+  {
+    this.mCodecStatistics.createByCodecStart();
+    this.mCodecStatistics.createByCodecEnd();
+    MediaCodecStatistics localMediaCodecStatistics = this.mCodecStatistics;
+    if ((isReuseEnable()) && (TCodecManager.getInstance().isGlobalReuseEnable())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localMediaCodecStatistics.configCodecStart(bool);
+      return;
+    }
+  }
+  
+  private void onBeforeStart()
+  {
+    this.mCodecStatistics.startCodecStart();
   }
   
   @TargetApi(26)
-  public void configure(@NotNull MediaFormat paramMediaFormat, @org.jetbrains.annotations.Nullable Surface paramSurface, int paramInt, @org.jetbrains.annotations.Nullable MediaDescrambler paramMediaDescrambler)
+  public void configure(@NonNull MediaFormat paramMediaFormat, @Nullable Surface paramSurface, int paramInt, @Nullable MediaDescrambler paramMediaDescrambler)
   {
-    Intrinsics.checkParameterIsNotNull(paramMediaFormat, "format");
-    if (this.mConfigureCalled) {
-      LogUtils.w$default(LogUtils.INSTANCE, "TMediaCodec", "configure ignored, mediaFormat:" + paramMediaFormat + " surface:" + paramSurface + " flags:" + paramInt + " descrambler:" + paramMediaDescrambler + " stack:" + Log.getStackTraceString(new Throwable()), null, 4, null);
-    }
-    do
+    if (this.mConfigureCalled)
     {
+      LogUtils.w("TMediaCodec", "configure ignored, mediaFormat:" + paramMediaFormat + " surface:" + paramSurface + " flags:" + paramInt + " descrambler:" + paramMediaDescrambler + " stack:" + Log.getStackTraceString(new Throwable()));
       return;
-      this.mConfigureCalled = true;
-      LogUtils.INSTANCE.d("TMediaCodec", "configure mediaFormat:" + paramMediaFormat + " surface:" + paramSurface + " flags:" + paramInt + " descrambler:" + paramMediaDescrambler);
-      this.codecWrapper = TCodecManager.Companion.getInstance().configure(paramMediaFormat, paramSurface, paramInt, paramMediaDescrambler, this);
-      paramMediaFormat = this.codecWrapper;
-      if (paramMediaFormat != null) {
-        paramMediaFormat.setCodecCallback(this.codecCallback);
+    }
+    this.mConfigureCalled = true;
+    onBeforeConfigure();
+    try
+    {
+      this.codecWrapper = TCodecManager.getInstance().configure(paramMediaFormat, paramSurface, paramInt, paramMediaDescrambler, this);
+      onAfterConfigure();
+      return;
+    }
+    catch (IOException paramSurface)
+    {
+      for (;;)
+      {
+        LogUtils.e("TMediaCodec", "createCodec mediaFormat:" + paramMediaFormat, paramSurface);
       }
-      paramMediaFormat = this.codecCallback;
-    } while (paramMediaFormat == null);
-    paramMediaFormat.onCreate(this.isReUsed);
+    }
   }
   
-  public void configure(@NotNull MediaFormat paramMediaFormat, @org.jetbrains.annotations.Nullable Surface paramSurface, @org.jetbrains.annotations.Nullable MediaCrypto paramMediaCrypto, int paramInt)
+  public void configure(@NonNull MediaFormat paramMediaFormat, @Nullable Surface paramSurface, @Nullable MediaCrypto paramMediaCrypto, int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramMediaFormat, "format");
-    if (this.mConfigureCalled) {
-      LogUtils.w$default(LogUtils.INSTANCE, "TMediaCodec", "configure ignored, mediaFormat:" + paramMediaFormat + " surface:" + paramSurface + " crypto:" + paramMediaCrypto + " flags:" + paramInt + " stack:" + Log.getStackTraceString(new Throwable()), null, 4, null);
-    }
-    do
+    if (this.mConfigureCalled)
     {
+      LogUtils.w("TMediaCodec", "configure ignored, mediaFormat:" + paramMediaFormat + " surface:" + paramSurface + " crypto:" + paramMediaCrypto + " flags:" + paramInt + " stack:" + Log.getStackTraceString(new Throwable()));
       return;
-      this.mConfigureCalled = true;
-      LogUtils.INSTANCE.d("TMediaCodec", "configure mediaFormat:" + paramMediaFormat + " surface:" + paramSurface + " crypto:" + paramMediaCrypto + " flags:" + paramInt);
-      this.codecWrapper = TCodecManager.Companion.getInstance().configure(paramMediaFormat, paramSurface, paramMediaCrypto, paramInt, this);
-      paramMediaFormat = this.codecWrapper;
-      if (paramMediaFormat != null) {
-        paramMediaFormat.setCodecCallback(this.codecCallback);
+    }
+    this.mConfigureCalled = true;
+    onBeforeConfigure();
+    try
+    {
+      this.codecWrapper = TCodecManager.getInstance().configure(paramMediaFormat, paramSurface, paramMediaCrypto, paramInt, this);
+      onAfterConfigure();
+      return;
+    }
+    catch (IOException paramSurface)
+    {
+      for (;;)
+      {
+        LogUtils.e("TMediaCodec", "createCodec mediaFormat:" + paramMediaFormat, paramSurface);
       }
-      paramMediaFormat = this.codecCallback;
-    } while (paramMediaFormat == null);
-    paramMediaFormat.onCreate(this.isReUsed);
+    }
   }
   
   public final int dequeueInputBuffer(long paramLong)
   {
-    CodecWrapper localCodecWrapper = this.codecWrapper;
-    if (localCodecWrapper != null) {
-      return localCodecWrapper.dequeueInputBuffer(paramLong);
+    if (this.codecWrapper != null) {
+      return this.codecWrapper.dequeueInputBuffer(paramLong);
     }
     return -1000;
   }
   
-  public final int dequeueOutputBuffer(@NotNull MediaCodec.BufferInfo paramBufferInfo, long paramLong)
+  public final int dequeueOutputBuffer(@NonNull MediaCodec.BufferInfo paramBufferInfo, long paramLong)
   {
-    Intrinsics.checkParameterIsNotNull(paramBufferInfo, "info");
-    CodecWrapper localCodecWrapper = this.codecWrapper;
-    if (localCodecWrapper != null) {
-      return localCodecWrapper.dequeueOutputBuffer(paramBufferInfo, paramLong);
+    if (this.codecWrapper != null) {
+      return this.codecWrapper.dequeueOutputBuffer(paramBufferInfo, paramLong);
     }
     return -1000;
   }
   
   public final void flush()
   {
-    CodecWrapper localCodecWrapper = this.codecWrapper;
-    if (localCodecWrapper != null) {
-      localCodecWrapper.flush();
+    if (this.codecWrapper != null) {
+      this.codecWrapper.flush();
     }
   }
   
-  @org.jetbrains.annotations.Nullable
   public final CodecCallback getCodecCallback()
   {
     return this.codecCallback;
   }
   
-  @org.jetbrains.annotations.Nullable
+  @Nullable
   public final CodecWrapper getCodecWrapper()
   {
     return this.codecWrapper;
   }
   
+  public TMediaCodec.CreateBy getCreateBy()
+  {
+    return this.createBy;
+  }
+  
   @TargetApi(21)
-  @androidx.annotation.Nullable
-  @org.jetbrains.annotations.Nullable
+  @Nullable
   public final ByteBuffer getInputBuffer(int paramInt)
   {
-    Object localObject = this.codecWrapper;
-    if (localObject != null)
+    if (this.codecWrapper != null) {
+      return this.codecWrapper.getMediaCodec().getInputBuffer(paramInt);
+    }
+    return null;
+  }
+  
+  @NonNull
+  @Nullable
+  public final ByteBuffer[] getInputBuffers()
+  {
+    if (this.codecWrapper != null)
     {
-      localObject = ((CodecWrapper)localObject).getMediaCodec();
-      if (localObject != null) {
-        return ((MediaCodec)localObject).getInputBuffer(paramInt);
+      MediaCodec localMediaCodec = this.codecWrapper.getMediaCodec();
+      if (localMediaCodec != null) {
+        return localMediaCodec.getInputBuffers();
       }
     }
     return null;
   }
   
   @NonNull
-  @org.jetbrains.annotations.Nullable
-  public final ByteBuffer[] getInputBuffers()
-  {
-    Object localObject = this.codecWrapper;
-    if (localObject != null)
-    {
-      localObject = ((CodecWrapper)localObject).getMediaCodec();
-      if (localObject != null) {
-        return ((MediaCodec)localObject).getInputBuffers();
-      }
-    }
-    return null;
-  }
-  
-  @NotNull
   public final String getNameOrType()
   {
     return this.nameOrType;
   }
   
   @TargetApi(21)
-  @androidx.annotation.Nullable
-  @org.jetbrains.annotations.Nullable
+  @Nullable
   public final ByteBuffer getOutputBuffer(int paramInt)
   {
-    Object localObject = this.codecWrapper;
-    if (localObject != null)
+    if (this.codecWrapper != null)
     {
-      localObject = ((CodecWrapper)localObject).getMediaCodec();
-      if (localObject != null) {
-        return ((MediaCodec)localObject).getOutputBuffer(paramInt);
+      MediaCodec localMediaCodec = this.codecWrapper.getMediaCodec();
+      if (localMediaCodec != null) {
+        return localMediaCodec.getOutputBuffer(paramInt);
       }
     }
     return null;
   }
   
   @NonNull
-  @org.jetbrains.annotations.Nullable
+  @Nullable
   public final ByteBuffer[] getOutputBuffers()
   {
-    Object localObject = this.codecWrapper;
-    if (localObject != null)
+    if (this.codecWrapper != null)
     {
-      localObject = ((CodecWrapper)localObject).getMediaCodec();
-      if (localObject != null) {
-        return ((MediaCodec)localObject).getOutputBuffers();
+      MediaCodec localMediaCodec = this.codecWrapper.getMediaCodec();
+      if (localMediaCodec != null) {
+        return localMediaCodec.getOutputBuffers();
       }
     }
     return null;
   }
   
   @NonNull
-  @org.jetbrains.annotations.Nullable
+  @Nullable
   public final MediaFormat getOutputFormat()
   {
-    Object localObject = this.codecWrapper;
-    if (localObject != null)
+    if (this.codecWrapper != null)
     {
-      localObject = ((CodecWrapper)localObject).getMediaCodec();
-      if (localObject != null) {
-        return ((MediaCodec)localObject).getOutputFormat();
+      MediaCodec localMediaCodec = this.codecWrapper.getMediaCodec();
+      if (localMediaCodec != null) {
+        return localMediaCodec.getOutputFormat();
       }
     }
     return null;
   }
   
-  public final boolean isReUsed$tmediacodec_lib_debug()
+  public final boolean isReuseEnable()
   {
-    return this.isReUsed;
+    return this.reUseEnable;
   }
   
   public final boolean isVideo()
   {
-    return TUtils.INSTANCE.isVideo(this.nameOrType);
+    return TUtils.isVideo(this.nameOrType);
   }
   
   public final void queueInputBuffer(int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4)
   {
-    CodecWrapper localCodecWrapper = this.codecWrapper;
-    if (localCodecWrapper != null) {
-      localCodecWrapper.queueInputBuffer(paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
+    if (this.codecWrapper != null) {
+      this.codecWrapper.queueInputBuffer(paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
     }
   }
   
-  public final void queueSecureInputBuffer(int paramInt1, int paramInt2, @NonNull @NotNull MediaCodec.CryptoInfo paramCryptoInfo, long paramLong, int paramInt3)
+  public final void queueSecureInputBuffer(int paramInt1, int paramInt2, @NonNull MediaCodec.CryptoInfo paramCryptoInfo, long paramLong, int paramInt3)
   {
-    Intrinsics.checkParameterIsNotNull(paramCryptoInfo, "info");
-    Object localObject = this.codecWrapper;
-    if (localObject != null)
+    if (this.codecWrapper != null)
     {
-      localObject = ((CodecWrapper)localObject).getMediaCodec();
-      if (localObject != null) {
-        ((MediaCodec)localObject).queueSecureInputBuffer(paramInt1, paramInt2, paramCryptoInfo, paramLong, paramInt3);
+      MediaCodec localMediaCodec = this.codecWrapper.getMediaCodec();
+      if (localMediaCodec != null) {
+        localMediaCodec.queueSecureInputBuffer(paramInt1, paramInt2, paramCryptoInfo, paramLong, paramInt3);
       }
     }
   }
   
   public void release()
   {
-    CodecWrapper localCodecWrapper = this.codecWrapper;
-    if (localCodecWrapper != null) {
-      localCodecWrapper.release();
+    if (this.codecWrapper != null) {
+      this.codecWrapper.release();
     }
   }
   
   @TargetApi(21)
   public void releaseOutputBuffer(int paramInt, long paramLong)
   {
-    CodecWrapper localCodecWrapper = this.codecWrapper;
-    if (localCodecWrapper != null) {
-      localCodecWrapper.releaseOutputBuffer(paramInt, paramLong);
+    if (this.codecWrapper != null) {
+      this.codecWrapper.releaseOutputBuffer(paramInt, paramLong);
     }
   }
   
   public void releaseOutputBuffer(int paramInt, boolean paramBoolean)
   {
-    CodecWrapper localCodecWrapper = this.codecWrapper;
-    if (localCodecWrapper != null) {
-      localCodecWrapper.releaseOutputBuffer(paramInt, paramBoolean);
+    if (this.codecWrapper != null) {
+      this.codecWrapper.releaseOutputBuffer(paramInt, paramBoolean);
     }
   }
   
   @TargetApi(21)
   public void reset()
   {
-    CodecWrapper localCodecWrapper = this.codecWrapper;
-    if (localCodecWrapper != null) {
-      localCodecWrapper.reset();
+    if (this.codecWrapper != null) {
+      this.codecWrapper.reset();
     }
   }
   
   @TargetApi(21)
-  public final void setCallback(@org.jetbrains.annotations.Nullable TMediaCodec.Callback paramCallback)
+  public final void setCallback(@Nullable TMediaCodec.Callback paramCallback)
   {
-    Object localObject = this.codecWrapper;
-    if (localObject != null)
+    if (this.codecWrapper != null)
     {
-      localObject = ((CodecWrapper)localObject).getMediaCodec();
-      if (localObject != null) {
-        ((MediaCodec)localObject).setCallback((MediaCodec.Callback)new TMediaCodec.HookCallback(this, paramCallback));
+      MediaCodec localMediaCodec = this.codecWrapper.getMediaCodec();
+      if (localMediaCodec != null) {
+        localMediaCodec.setCallback(new TMediaCodec.HookCallback(this, paramCallback));
       }
     }
   }
   
   @TargetApi(23)
-  public final void setCallback(@androidx.annotation.Nullable @NotNull TMediaCodec.Callback paramCallback, @androidx.annotation.Nullable @org.jetbrains.annotations.Nullable Handler paramHandler)
+  public final void setCallback(@NonNull TMediaCodec.Callback paramCallback, @Nullable Handler paramHandler)
   {
-    Intrinsics.checkParameterIsNotNull(paramCallback, "cb");
-    Object localObject = this.codecWrapper;
-    if (localObject != null)
+    if (this.codecWrapper != null)
     {
-      localObject = ((CodecWrapper)localObject).getMediaCodec();
-      if (localObject != null) {
-        ((MediaCodec)localObject).setCallback((MediaCodec.Callback)new TMediaCodec.HookCallback(this, paramCallback), paramHandler);
+      MediaCodec localMediaCodec = this.codecWrapper.getMediaCodec();
+      if (localMediaCodec != null) {
+        localMediaCodec.setCallback(new TMediaCodec.HookCallback(this, paramCallback), paramHandler);
       }
     }
   }
   
-  public final void setCodecCallback(@org.jetbrains.annotations.Nullable CodecCallback paramCodecCallback)
+  public final void setCodecCallback(@Nullable CodecCallback paramCodecCallback)
   {
     this.codecCallback = paramCodecCallback;
   }
   
   @TargetApi(23)
-  public final void setOutputSurface(@NonNull @NotNull Surface paramSurface)
+  public final void setOutputSurface(@NonNull Surface paramSurface)
   {
-    Intrinsics.checkParameterIsNotNull(paramSurface, "surface");
-    CodecWrapper localCodecWrapper = this.codecWrapper;
-    if (localCodecWrapper != null) {
-      localCodecWrapper.setOutputSurface(paramSurface);
+    if (this.codecWrapper != null) {
+      this.codecWrapper.setOutputSurface(paramSurface);
     }
   }
   
-  public final void setReUsed$tmediacodec_lib_debug(boolean paramBoolean)
-  {
-    this.isReUsed = paramBoolean;
-  }
-  
-  public final void setVideoScalingMode(int paramInt)
+  @TargetApi(19)
+  public void setParameters(@Nullable Bundle paramBundle)
   {
     Object localObject = this.codecWrapper;
     if (localObject != null)
     {
       localObject = ((CodecWrapper)localObject).getMediaCodec();
       if (localObject != null) {
-        ((MediaCodec)localObject).setVideoScalingMode(paramInt);
+        ((MediaCodec)localObject).setParameters(paramBundle);
+      }
+    }
+  }
+  
+  public final void setReuseEnable(boolean paramBoolean)
+  {
+    this.reUseEnable = paramBoolean;
+  }
+  
+  public final void setVideoScalingMode(int paramInt)
+  {
+    if (this.codecWrapper != null)
+    {
+      MediaCodec localMediaCodec = this.codecWrapper.getMediaCodec();
+      if (localMediaCodec != null) {
+        localMediaCodec.setVideoScalingMode(paramInt);
       }
     }
   }
   
   public void start()
   {
-    LogUtils.INSTANCE.d("TMediaCodec", "start codecWrapper:" + this.codecWrapper);
-    CodecWrapper localCodecWrapper = this.codecWrapper;
-    if (localCodecWrapper != null) {
-      localCodecWrapper.start();
+    if (LogUtils.isLogEnable()) {
+      LogUtils.d("TMediaCodec", "start codecWrapper:" + this.codecWrapper);
     }
+    onBeforeStart();
+    if (this.codecWrapper != null) {
+      this.codecWrapper.start();
+    }
+    onAfterStart();
   }
   
   public void stop()
   {
-    CodecWrapper localCodecWrapper = this.codecWrapper;
-    if (localCodecWrapper != null) {
-      localCodecWrapper.stop();
+    if (this.codecWrapper != null) {
+      this.codecWrapper.stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.TMediaCodec
  * JD-Core Version:    0.7.0.1
  */

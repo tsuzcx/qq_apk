@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class ReadinjoyFollowingUserBriefInfo
-  extends awge
+  extends Entity
 {
   public int followed = 0;
-  @awhs
+  @unique
   public long uin;
   
   public ReadinjoyFollowingUserBriefInfo()

@@ -46,19 +46,19 @@ public class SkinnableBitmapDrawable
   public SkinnableBitmapDrawable(Resources paramResources)
   {
     this.b = new SkinnableBitmapDrawable.a((Bitmap)null);
-    this.b.r = this.d;
+    this.b.g = this.d;
   }
   
   public SkinnableBitmapDrawable(Resources paramResources, Bitmap paramBitmap)
   {
     this(new SkinnableBitmapDrawable.a(paramBitmap), paramResources);
-    this.b.r = this.d;
+    this.b.g = this.d;
   }
   
   public SkinnableBitmapDrawable(Resources paramResources, InputStream paramInputStream)
   {
     this(new SkinnableBitmapDrawable.a(BitmapFactory.decodeStream(paramInputStream)), null);
-    this.b.r = this.d;
+    this.b.g = this.d;
     if (this.c == null) {
       Log.w("BitmapDrawable", "BitmapDrawable cannot decode " + paramInputStream);
     }
@@ -67,7 +67,7 @@ public class SkinnableBitmapDrawable
   public SkinnableBitmapDrawable(Resources paramResources, String paramString)
   {
     this(new SkinnableBitmapDrawable.a(BitmapFactory.decodeFile(paramString)), null);
-    this.b.r = this.d;
+    this.b.g = this.d;
     if (this.c == null) {
       Log.w("BitmapDrawable", "BitmapDrawable cannot decode " + paramString);
     }
@@ -87,15 +87,15 @@ public class SkinnableBitmapDrawable
     }
     for (;;)
     {
-      a(parama.l);
-      if (parama.s)
+      a(parama.a);
+      if (parama.h)
       {
         this.g = true;
         this.f = true;
       }
       return;
       if (parama != null) {
-        this.d = parama.r;
+        this.d = parama.g;
       } else {
         this.d = 160;
       }
@@ -124,7 +124,7 @@ public class SkinnableBitmapDrawable
   {
     int n = paramAttributeSet1.getAttributeCount();
     paramResources = new SkinnableBitmapDrawable.a((Bitmap)null);
-    paramResources.s = true;
+    paramResources.h = true;
     Paint localPaint = new Paint();
     int m = 0;
     int i1;
@@ -143,8 +143,8 @@ public class SkinnableBitmapDrawable
           throw new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <bitmap> requires a valid src attribute");
         }
         localObject1 = (SkinnableBitmapDrawable.a)SkinEngine.getInstances().a(i1);
-        paramResources.l = ((SkinnableBitmapDrawable.a)localObject1).l;
-        paramResources.k = ((SkinnableBitmapDrawable.a)localObject1).k;
+        paramResources.a = ((SkinnableBitmapDrawable.a)localObject1).a;
+        paramResources.mImageSizeWhenOOM = ((SkinnableBitmapDrawable.a)localObject1).mImageSizeWhenOOM;
         continue;
         localPaint.setAntiAlias(paramAttributeSet1.getAttributeBooleanValue(m, localPaint.isAntiAlias()));
         continue;
@@ -152,7 +152,7 @@ public class SkinnableBitmapDrawable
         continue;
         localPaint.setDither(paramAttributeSet1.getAttributeBooleanValue(m, localPaint.isDither()));
         continue;
-        paramResources.n = paramAttributeSet1.getAttributeIntValue(m, 119);
+        paramResources.c = paramAttributeSet1.getAttributeIntValue(m, 119);
         continue;
         i1 = paramAttributeSet1.getAttributeIntValue(m, -1);
         if (i1 != -1) {
@@ -161,16 +161,16 @@ public class SkinnableBitmapDrawable
           default: 
             break;
           case 0: 
-            paramResources.p = Shader.TileMode.CLAMP;
-            paramResources.q = Shader.TileMode.CLAMP;
+            paramResources.e = Shader.TileMode.CLAMP;
+            paramResources.f = Shader.TileMode.CLAMP;
             break;
           case 1: 
-            paramResources.p = Shader.TileMode.REPEAT;
-            paramResources.q = Shader.TileMode.REPEAT;
+            paramResources.e = Shader.TileMode.REPEAT;
+            paramResources.f = Shader.TileMode.REPEAT;
             break;
           case 2: 
-            paramResources.p = Shader.TileMode.MIRROR;
-            paramResources.q = Shader.TileMode.MIRROR;
+            paramResources.e = Shader.TileMode.MIRROR;
+            paramResources.f = Shader.TileMode.MIRROR;
           }
         }
       }
@@ -195,7 +195,7 @@ public class SkinnableBitmapDrawable
             continue;
             localPaint.setDither(paramAttributeSet2.getAttributeBooleanValue(m, localPaint.isDither()));
             continue;
-            paramResources.n = paramAttributeSet2.getAttributeIntValue(m, 119);
+            paramResources.c = paramAttributeSet2.getAttributeIntValue(m, 119);
             continue;
             i1 = paramAttributeSet2.getAttributeIntValue(m, -2);
             if (i1 != -2) {
@@ -204,20 +204,20 @@ public class SkinnableBitmapDrawable
               default: 
                 break;
               case -1: 
-                paramResources.p = null;
-                paramResources.q = null;
+                paramResources.e = null;
+                paramResources.f = null;
                 break;
               case 0: 
-                paramResources.p = Shader.TileMode.CLAMP;
-                paramResources.q = Shader.TileMode.CLAMP;
+                paramResources.e = Shader.TileMode.CLAMP;
+                paramResources.f = Shader.TileMode.CLAMP;
                 break;
               case 1: 
-                paramResources.p = Shader.TileMode.REPEAT;
-                paramResources.q = Shader.TileMode.REPEAT;
+                paramResources.e = Shader.TileMode.REPEAT;
+                paramResources.f = Shader.TileMode.REPEAT;
                 break;
               case 2: 
-                paramResources.p = Shader.TileMode.MIRROR;
-                paramResources.q = Shader.TileMode.MIRROR;
+                paramResources.e = Shader.TileMode.MIRROR;
+                paramResources.f = Shader.TileMode.MIRROR;
               }
             }
           }
@@ -313,50 +313,50 @@ public class SkinnableBitmapDrawable
                   else
                   {
                     if (!"end".equals(localObject2)) {
-                      break label1149;
+                      break label1147;
                     }
                     m |= 0x800005;
                   }
                 }
-                label1149:
+                label1147:
                 throw new XmlPullParserException("error attribute value: " + paramAttributeSet1);
               }
-              paramResources.n = m;
+              paramResources.c = m;
             }
             else if ("tileMode".equals(paramAttributeSet1))
             {
               paramAttributeSet1 = paramAttributeSet2.getAttributeValue(n);
               if ("clamp".equals(paramAttributeSet1))
               {
-                paramResources.p = Shader.TileMode.CLAMP;
-                paramResources.q = Shader.TileMode.CLAMP;
+                paramResources.e = Shader.TileMode.CLAMP;
+                paramResources.f = Shader.TileMode.CLAMP;
               }
               else if ("repeat".equals(paramAttributeSet1))
               {
-                paramResources.p = Shader.TileMode.REPEAT;
-                paramResources.q = Shader.TileMode.REPEAT;
+                paramResources.e = Shader.TileMode.REPEAT;
+                paramResources.f = Shader.TileMode.REPEAT;
               }
               else if ("mirror".equals(paramAttributeSet1))
               {
-                paramResources.p = Shader.TileMode.MIRROR;
-                paramResources.q = Shader.TileMode.MIRROR;
+                paramResources.e = Shader.TileMode.MIRROR;
+                paramResources.f = Shader.TileMode.MIRROR;
               }
               else
               {
                 if (!"disabled".equals(paramAttributeSet1)) {
-                  break label1309;
+                  break label1307;
                 }
-                paramResources.p = null;
-                paramResources.q = null;
+                paramResources.e = null;
+                paramResources.f = null;
               }
             }
           }
-          label1309:
+          label1307:
           throw new XmlPullParserException("error attribute value: " + paramAttributeSet1);
         }
       }
     }
-    if ((paramResources.l == null) && (paramResources.k == null)) {
+    if ((paramResources.a == null) && (paramResources.mImageSizeWhenOOM == null)) {
       throw new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <bitmap> requires a valid src attribute");
     }
     return paramResources;
@@ -365,11 +365,11 @@ public class SkinnableBitmapDrawable
   private void a()
   {
     b();
-    if (this.b.k != null)
+    if (this.b.mImageSizeWhenOOM != null)
     {
-      int[] arrayOfInt = this.b.k;
-      this.i = a.a(arrayOfInt[0], arrayOfInt[2], this.d);
-      this.i = a.a(arrayOfInt[1], arrayOfInt[2], this.d);
+      int[] arrayOfInt = this.b.mImageSizeWhenOOM;
+      this.i = BaseConstantState.scaleFromDensity(arrayOfInt[0], arrayOfInt[2], this.d);
+      this.i = BaseConstantState.scaleFromDensity(arrayOfInt[1], arrayOfInt[2], this.d);
       return;
     }
     this.i = this.c.getScaledWidth(this.d);
@@ -390,19 +390,19 @@ public class SkinnableBitmapDrawable
   
   private void b()
   {
-    if (this.c != this.b.l)
+    if (this.c != this.b.a)
     {
-      this.c = this.b.l;
-      if (this.b.s)
+      this.c = this.b.a;
+      if (this.b.h)
       {
         this.g = true;
         this.f = true;
       }
-      if (this.b.k != null)
+      if (this.b.mImageSizeWhenOOM != null)
       {
-        int[] arrayOfInt = this.b.k;
-        this.i = a.a(arrayOfInt[0], arrayOfInt[2], this.d);
-        this.i = a.a(arrayOfInt[1], arrayOfInt[2], this.d);
+        int[] arrayOfInt = this.b.mImageSizeWhenOOM;
+        this.i = BaseConstantState.scaleFromDensity(arrayOfInt[0], arrayOfInt[2], this.d);
+        this.i = BaseConstantState.scaleFromDensity(arrayOfInt[1], arrayOfInt[2], this.d);
       }
     }
     else
@@ -423,26 +423,26 @@ public class SkinnableBitmapDrawable
         if ((paramBitmap != null) && ((paramBitmap instanceof TextView)))
         {
           paramBitmap = (TextView)paramBitmap;
-          i.d("SkinnableBitmapDrawable", 2, "errorTextID:" + paramBitmap.getId() + "errorTextString: " + paramBitmap.getText().toString(), null);
+          h.d("SkinnableBitmapDrawable", 2, "errorTextID:" + paramBitmap.getId() + "errorTextString: " + paramBitmap.getText().toString(), null);
         }
       }
       return;
     }
     catch (NoSuchMethodError paramBitmap)
     {
-      i.d("SkinnableBitmapDrawable", 2, paramBitmap.toString(), null);
+      h.d("SkinnableBitmapDrawable", 2, paramBitmap.toString(), null);
       return;
     }
     catch (Exception paramBitmap)
     {
-      i.d("SkinnableBitmapDrawable", 2, paramBitmap.toString(), null);
+      h.d("SkinnableBitmapDrawable", 2, paramBitmap.toString(), null);
     }
   }
   
   public void draw(Canvas paramCanvas)
   {
     b();
-    if (this.b.k != null) {}
+    if (this.b.mImageSizeWhenOOM != null) {}
     Bitmap localBitmap;
     Object localObject1;
     do
@@ -452,41 +452,41 @@ public class SkinnableBitmapDrawable
         return;
         localBitmap = this.c;
       } while (localBitmap == null);
-      if (this.b.e != 1) {
+      if (this.b.bitmapType != 1) {
         break;
       }
       setGravity(48);
       localObject1 = getImageDrawnRect(getBounds());
     } while ((((Rect)localObject1).width() <= 0) || (((Rect)localObject1).height() <= 0));
     b(this.c);
-    paramCanvas.drawBitmap(this.c, (Rect)localObject1, getBounds(), this.b.o);
+    paramCanvas.drawBitmap(this.c, (Rect)localObject1, getBounds(), this.b.d);
     return;
     SkinnableBitmapDrawable.a locala = this.b;
     Object localObject2;
     Shader.TileMode localTileMode;
     if (this.g)
     {
-      localObject2 = locala.p;
-      localTileMode = locala.q;
+      localObject2 = locala.e;
+      localTileMode = locala.f;
       if ((localObject2 != null) || (localTileMode != null)) {
         break label223;
       }
-      locala.o.setShader(null);
+      locala.d.setShader(null);
     }
     for (;;)
     {
       this.g = false;
       copyBounds(this.e);
-      if (locala.o.getShader() != null) {
+      if (locala.d.getShader() != null) {
         break;
       }
       if (this.f)
       {
-        Gravity.apply(locala.n, this.i, this.j, getBounds(), this.e);
+        Gravity.apply(locala.c, this.i, this.j, getBounds(), this.e);
         this.f = false;
       }
       b(localBitmap);
-      paramCanvas.drawBitmap(localBitmap, null, this.e, locala.o);
+      paramCanvas.drawBitmap(localBitmap, null, this.e, locala.d);
       return;
       label223:
       localObject1 = localObject2;
@@ -498,14 +498,14 @@ public class SkinnableBitmapDrawable
         localObject2 = Shader.TileMode.CLAMP;
       }
       localObject1 = new BitmapShader(localBitmap, (Shader.TileMode)localObject1, (Shader.TileMode)localObject2);
-      locala.o.setShader((Shader)localObject1);
+      locala.d.setShader((Shader)localObject1);
     }
     if (this.f)
     {
       this.e.set(getBounds());
       this.f = false;
     }
-    paramCanvas.drawRect(this.e, locala.o);
+    paramCanvas.drawRect(this.e, locala.d);
   }
   
   public final Bitmap getBitmap()
@@ -516,7 +516,7 @@ public class SkinnableBitmapDrawable
   
   public int getChangingConfigurations()
   {
-    return super.getChangingConfigurations() | this.b.m;
+    return super.getChangingConfigurations() | this.b.b;
   }
   
   public final Drawable.ConstantState getConstantState()
@@ -526,7 +526,7 @@ public class SkinnableBitmapDrawable
   
   public int getGravity()
   {
-    return this.b.n;
+    return this.b.c;
   }
   
   protected Rect getImageDrawnRect(Rect paramRect)
@@ -569,30 +569,30 @@ public class SkinnableBitmapDrawable
   
   public int getOpacity()
   {
-    if (this.b.n != 119) {}
+    if (this.b.c != 119) {}
     Bitmap localBitmap;
     do
     {
       return -3;
       b();
       localBitmap = this.c;
-    } while ((localBitmap == null) || (localBitmap.hasAlpha()) || (this.b.o.getAlpha() < 255));
+    } while ((localBitmap == null) || (localBitmap.hasAlpha()) || (this.b.d.getAlpha() < 255));
     return -1;
   }
   
   public final Paint getPaint()
   {
-    return this.b.o;
+    return this.b.d;
   }
   
   public Shader.TileMode getTileModeX()
   {
-    return this.b.p;
+    return this.b.e;
   }
   
   public Shader.TileMode getTileModeY()
   {
-    return this.b.q;
+    return this.b.f;
   }
   
   public Drawable mutate()
@@ -613,32 +613,32 @@ public class SkinnableBitmapDrawable
   
   public void setAlpha(int paramInt)
   {
-    this.b.o.setAlpha(paramInt);
+    this.b.d.setAlpha(paramInt);
   }
   
   public void setAntiAlias(boolean paramBoolean)
   {
-    this.b.o.setAntiAlias(paramBoolean);
+    this.b.d.setAntiAlias(paramBoolean);
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.b.o.setColorFilter(paramColorFilter);
+    this.b.d.setColorFilter(paramColorFilter);
   }
   
   public void setDither(boolean paramBoolean)
   {
-    this.b.o.setDither(paramBoolean);
+    this.b.d.setDither(paramBoolean);
   }
   
   public void setFilterBitmap(boolean paramBoolean)
   {
-    this.b.o.setFilterBitmap(paramBoolean);
+    this.b.d.setFilterBitmap(paramBoolean);
   }
   
   public void setGravity(int paramInt)
   {
-    this.b.n = paramInt;
+    this.b.c = paramInt;
     this.f = true;
   }
   
@@ -671,23 +671,23 @@ public class SkinnableBitmapDrawable
   
   public void setTileModeX(Shader.TileMode paramTileMode)
   {
-    setTileModeXY(paramTileMode, this.b.q);
+    setTileModeXY(paramTileMode, this.b.f);
   }
   
   public void setTileModeXY(Shader.TileMode paramTileMode1, Shader.TileMode paramTileMode2)
   {
     SkinnableBitmapDrawable.a locala = this.b;
-    if ((locala.o.getShader() == null) || (locala.p != paramTileMode1) || (locala.q != paramTileMode2))
+    if ((locala.d.getShader() == null) || (locala.e != paramTileMode1) || (locala.f != paramTileMode2))
     {
-      locala.p = paramTileMode1;
-      locala.q = paramTileMode2;
+      locala.e = paramTileMode1;
+      locala.f = paramTileMode2;
       this.g = true;
     }
   }
   
   public final void setTileModeY(Shader.TileMode paramTileMode)
   {
-    setTileModeXY(this.b.p, paramTileMode);
+    setTileModeXY(this.b.e, paramTileMode);
   }
 }
 

@@ -1,52 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class ambt
-  extends alpd
+  implements Cloneable
 {
-  public static String a = "Add_friend_to_desktop|";
-  public static String b = "Click_desktop_friend|";
-  private String c = "FuMeiTiCeSu|";
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public TextView b;
   
-  public ambt(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    return "PLUG|" + paramString1 + "|" + paramString2 + "|internal|" + paramString3 + "|PB|" + paramString4 + "||";
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if ((paramBundle != null) && (paramBundle.containsKey("data")))
-    {
-      ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
-      localToServiceMsg.extraData.putAll(paramBundle);
-      super.send(localToServiceMsg);
-    }
-  }
-  
-  public void a(String[] paramArrayOfString)
-  {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
-    localToServiceMsg.extraData.putStringArray("data", paramArrayOfString);
-    super.send(localToServiceMsg);
-  }
-  
-  protected Class<? extends alpg> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public ambt(ambs paramambs) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ambt
  * JD-Core Version:    0.7.0.1
  */

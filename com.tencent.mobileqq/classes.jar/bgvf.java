@@ -1,370 +1,398 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Environment;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.MiniSDKConst;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.utils.SharedPreferencesUtil;
-import java.io.File;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.hardware.Camera.Parameters;
+import android.view.Window;
+import java.util.List;
 
 public class bgvf
 {
-  private static volatile bgvf jdField_a_of_type_Bgvf;
-  private static volatile byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  protected Context a;
-  private ClassLoader jdField_a_of_type_JavaLangClassLoader;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  private bgve a = bgve.a();
   
   public static bgvf a()
   {
-    if (jdField_a_of_type_Bgvf == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_Bgvf == null) {
-        jdField_a_of_type_Bgvf = new bgvf();
-      }
-      return jdField_a_of_type_Bgvf;
-    }
+    return bgvh.a;
   }
   
-  private String a()
+  public int a()
   {
-    String str1 = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "sdk.jar";
-    if (new File(str1).exists()) {
-      return str1;
-    }
-    str1 = SharedPreferencesUtil.getPreference().getString("downloadUrl", "");
-    String str2 = SharedPreferencesUtil.getPreference().getString("version", "1.14.0.00225");
-    String str3 = MiniSDKConst.getAppBaseLibDir(str1, str2);
-    if ((!TextUtils.isEmpty(str3)) && (new File(str3).exists())) {
-      return str3 + "sdk.jar";
-    }
-    str1 = MiniSDKConst.getQQAppBaseLibDir(str1, str2);
-    if (!TextUtils.isEmpty(str1)) {
-      return str1 + "sdk.jar";
+    return 1;
+  }
+  
+  /* Error */
+  @android.annotation.TargetApi(16)
+  public android.app.Notification a(Intent paramIntent, Bitmap paramBitmap, String paramString1, String paramString2, String paramString3, boolean paramBoolean, com.tencent.mobileqq.app.QQAppInterface paramQQAppInterface)
+  {
+    // Byte code:
+    //   0: aload 7
+    //   2: invokevirtual 39	com/tencent/mobileqq/app/QQAppInterface:b	()Z
+    //   5: istore 10
+    //   7: ldc 40
+    //   9: istore 9
+    //   11: aload_1
+    //   12: ldc 42
+    //   14: iconst_m1
+    //   15: invokevirtual 48	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   18: sipush 1008
+    //   21: if_icmpne +199 -> 220
+    //   24: getstatic 54	anhk:u	Ljava/lang/String;
+    //   27: aload_1
+    //   28: ldc 56
+    //   30: invokevirtual 60	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   33: invokevirtual 66	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   36: ifeq +177 -> 213
+    //   39: iload 9
+    //   41: istore 8
+    //   43: aload_1
+    //   44: ldc 68
+    //   46: iconst_0
+    //   47: invokevirtual 72	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   50: ifeq +7 -> 57
+    //   53: ldc 73
+    //   55: istore 8
+    //   57: aload_1
+    //   58: ldc 75
+    //   60: iload 8
+    //   62: invokevirtual 79	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   65: pop
+    //   66: invokestatic 85	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   69: iconst_0
+    //   70: aload_1
+    //   71: ldc 86
+    //   73: invokestatic 92	android/app/PendingIntent:getActivity	(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    //   76: astore_1
+    //   77: invokestatic 97	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   80: ifeq +28 -> 108
+    //   83: ldc 99
+    //   85: iconst_2
+    //   86: new 101	java/lang/StringBuilder
+    //   89: dup
+    //   90: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   93: ldc 104
+    //   95: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: aload_1
+    //   99: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   102: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   105: invokestatic 119	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   108: getstatic 125	android/os/Build$VERSION:SDK_INT	I
+    //   111: bipush 11
+    //   113: if_icmpge +204 -> 317
+    //   116: new 127	android/app/Notification
+    //   119: dup
+    //   120: iload 8
+    //   122: aload_3
+    //   123: invokestatic 133	java/lang/System:currentTimeMillis	()J
+    //   126: invokespecial 136	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   129: astore_2
+    //   130: aload_2
+    //   131: aload_1
+    //   132: putfield 140	android/app/Notification:contentIntent	Landroid/app/PendingIntent;
+    //   135: iload 10
+    //   137: ifeq +24 -> 161
+    //   140: aload_2
+    //   141: aload_2
+    //   142: getfield 143	android/app/Notification:flags	I
+    //   145: bipush 32
+    //   147: ior
+    //   148: putfield 143	android/app/Notification:flags	I
+    //   151: aload_2
+    //   152: aload_2
+    //   153: getfield 143	android/app/Notification:flags	I
+    //   156: iconst_2
+    //   157: ior
+    //   158: putfield 143	android/app/Notification:flags	I
+    //   161: invokestatic 85	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   164: aload 7
+    //   166: invokestatic 148	bghv:a	(Landroid/content/Context;Lcom/tencent/common/app/AppInterface;)Z
+    //   169: ifeq +42 -> 211
+    //   172: invokestatic 154	java/util/Calendar:getInstance	()Ljava/util/Calendar;
+    //   175: bipush 11
+    //   177: invokevirtual 158	java/util/Calendar:get	(I)I
+    //   180: pop
+    //   181: aload_2
+    //   182: aload_2
+    //   183: getfield 143	android/app/Notification:flags	I
+    //   186: iconst_1
+    //   187: ior
+    //   188: putfield 143	android/app/Notification:flags	I
+    //   191: aload_2
+    //   192: ldc 159
+    //   194: putfield 162	android/app/Notification:ledARGB	I
+    //   197: aload_2
+    //   198: sipush 2000
+    //   201: putfield 165	android/app/Notification:ledOffMS	I
+    //   204: aload_2
+    //   205: sipush 2000
+    //   208: putfield 168	android/app/Notification:ledOnMS	I
+    //   211: aload_2
+    //   212: areturn
+    //   213: ldc 169
+    //   215: istore 8
+    //   217: goto -174 -> 43
+    //   220: aload_1
+    //   221: ldc 42
+    //   223: iconst_m1
+    //   224: invokevirtual 48	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   227: sipush 1010
+    //   230: if_icmpne +28 -> 258
+    //   233: getstatic 172	anhk:ab	Ljava/lang/String;
+    //   236: invokestatic 176	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   239: aload_1
+    //   240: ldc 56
+    //   242: invokevirtual 60	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   245: invokevirtual 66	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   248: ifeq +10 -> 258
+    //   251: ldc 177
+    //   253: istore 8
+    //   255: goto -212 -> 43
+    //   258: aload_1
+    //   259: ldc 42
+    //   261: iconst_m1
+    //   262: invokevirtual 48	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   265: sipush 1001
+    //   268: if_icmpeq +20 -> 288
+    //   271: iload 9
+    //   273: istore 8
+    //   275: aload_1
+    //   276: ldc 42
+    //   278: iconst_m1
+    //   279: invokevirtual 48	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   282: sipush 10002
+    //   285: if_icmpne -242 -> 43
+    //   288: iload 9
+    //   290: istore 8
+    //   292: getstatic 180	anhk:H	Ljava/lang/String;
+    //   295: invokestatic 176	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   298: aload_1
+    //   299: ldc 56
+    //   301: invokevirtual 60	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   304: invokevirtual 66	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   307: ifeq -264 -> 43
+    //   310: ldc 181
+    //   312: istore 8
+    //   314: goto -271 -> 43
+    //   317: new 183	android/app/Notification$Builder
+    //   320: dup
+    //   321: invokestatic 85	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   324: invokespecial 186	android/app/Notification$Builder:<init>	(Landroid/content/Context;)V
+    //   327: iload 8
+    //   329: invokevirtual 190	android/app/Notification$Builder:setSmallIcon	(I)Landroid/app/Notification$Builder;
+    //   332: iconst_1
+    //   333: invokevirtual 194	android/app/Notification$Builder:setAutoCancel	(Z)Landroid/app/Notification$Builder;
+    //   336: invokestatic 133	java/lang/System:currentTimeMillis	()J
+    //   339: invokevirtual 198	android/app/Notification$Builder:setWhen	(J)Landroid/app/Notification$Builder;
+    //   342: aload_3
+    //   343: invokevirtual 202	android/app/Notification$Builder:setTicker	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+    //   346: astore 11
+    //   348: iload 10
+    //   350: ifeq +10 -> 360
+    //   353: aload 11
+    //   355: iconst_1
+    //   356: invokevirtual 205	android/app/Notification$Builder:setOngoing	(Z)Landroid/app/Notification$Builder;
+    //   359: pop
+    //   360: ldc 207
+    //   362: invokestatic 213	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   365: ldc 215
+    //   367: iconst_1
+    //   368: anewarray 209	java/lang/Class
+    //   371: dup
+    //   372: iconst_0
+    //   373: getstatic 221	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   376: aastore
+    //   377: invokevirtual 225	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   380: astore 12
+    //   382: aload 12
+    //   384: ifnull +22 -> 406
+    //   387: aload 12
+    //   389: aload 11
+    //   391: iconst_1
+    //   392: anewarray 4	java/lang/Object
+    //   395: dup
+    //   396: iconst_0
+    //   397: iconst_1
+    //   398: invokestatic 228	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   401: aastore
+    //   402: invokevirtual 234	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   405: pop
+    //   406: invokestatic 85	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   409: aload 7
+    //   411: invokestatic 148	bghv:a	(Landroid/content/Context;Lcom/tencent/common/app/AppInterface;)Z
+    //   414: ifeq +26 -> 440
+    //   417: invokestatic 154	java/util/Calendar:getInstance	()Ljava/util/Calendar;
+    //   420: bipush 11
+    //   422: invokevirtual 158	java/util/Calendar:get	(I)I
+    //   425: pop
+    //   426: aload 11
+    //   428: ldc 159
+    //   430: sipush 2000
+    //   433: sipush 2000
+    //   436: invokevirtual 238	android/app/Notification$Builder:setLights	(III)Landroid/app/Notification$Builder;
+    //   439: pop
+    //   440: iload 6
+    //   442: ifeq +57 -> 499
+    //   445: aload_2
+    //   446: ifnull +10 -> 456
+    //   449: aload 11
+    //   451: aload_2
+    //   452: invokevirtual 242	android/app/Notification$Builder:setLargeIcon	(Landroid/graphics/Bitmap;)Landroid/app/Notification$Builder;
+    //   455: pop
+    //   456: aload 11
+    //   458: aload 4
+    //   460: invokevirtual 245	android/app/Notification$Builder:setContentTitle	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+    //   463: aload 5
+    //   465: invokevirtual 248	android/app/Notification$Builder:setContentText	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+    //   468: aload_1
+    //   469: invokevirtual 252	android/app/Notification$Builder:setContentIntent	(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+    //   472: pop
+    //   473: getstatic 125	android/os/Build$VERSION:SDK_INT	I
+    //   476: bipush 16
+    //   478: if_icmplt +52 -> 530
+    //   481: aload 11
+    //   483: invokevirtual 256	android/app/Notification$Builder:build	()Landroid/app/Notification;
+    //   486: astore_1
+    //   487: aload_1
+    //   488: areturn
+    //   489: astore 12
+    //   491: aload 12
+    //   493: invokevirtual 259	java/lang/Exception:printStackTrace	()V
+    //   496: goto -90 -> 406
+    //   499: aload 11
+    //   501: aload 4
+    //   503: invokevirtual 245	android/app/Notification$Builder:setContentTitle	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+    //   506: aload 5
+    //   508: invokevirtual 248	android/app/Notification$Builder:setContentText	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+    //   511: aload_1
+    //   512: invokevirtual 252	android/app/Notification$Builder:setContentIntent	(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+    //   515: pop
+    //   516: aload_2
+    //   517: ifnull -44 -> 473
+    //   520: aload 11
+    //   522: aload_2
+    //   523: invokevirtual 242	android/app/Notification$Builder:setLargeIcon	(Landroid/graphics/Bitmap;)Landroid/app/Notification$Builder;
+    //   526: pop
+    //   527: goto -54 -> 473
+    //   530: getstatic 125	android/os/Build$VERSION:SDK_INT	I
+    //   533: bipush 16
+    //   535: if_icmpge +17 -> 552
+    //   538: getstatic 125	android/os/Build$VERSION:SDK_INT	I
+    //   541: bipush 11
+    //   543: if_icmplt +9 -> 552
+    //   546: aload 11
+    //   548: invokevirtual 262	android/app/Notification$Builder:getNotification	()Landroid/app/Notification;
+    //   551: areturn
+    //   552: new 127	android/app/Notification
+    //   555: dup
+    //   556: iload 8
+    //   558: aload_3
+    //   559: invokestatic 133	java/lang/System:currentTimeMillis	()J
+    //   562: invokespecial 136	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   565: astore_1
+    //   566: aload_1
+    //   567: areturn
+    //   568: astore_1
+    //   569: invokestatic 97	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   572: ifeq +14 -> 586
+    //   575: ldc_w 264
+    //   578: iconst_2
+    //   579: aload_1
+    //   580: invokevirtual 267	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   583: invokestatic 270	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   586: new 127	android/app/Notification
+    //   589: dup
+    //   590: iload 8
+    //   592: aload_3
+    //   593: invokestatic 133	java/lang/System:currentTimeMillis	()J
+    //   596: invokespecial 136	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   599: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	600	0	this	bgvf
+    //   0	600	1	paramIntent	Intent
+    //   0	600	2	paramBitmap	Bitmap
+    //   0	600	3	paramString1	String
+    //   0	600	4	paramString2	String
+    //   0	600	5	paramString3	String
+    //   0	600	6	paramBoolean	boolean
+    //   0	600	7	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
+    //   41	550	8	i	int
+    //   9	280	9	j	int
+    //   5	344	10	bool	boolean
+    //   346	201	11	localBuilder	android.app.Notification.Builder
+    //   380	8	12	localMethod	java.lang.reflect.Method
+    //   489	3	12	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   360	382	489	java/lang/Exception
+    //   387	406	489	java/lang/Exception
+    //   473	487	568	java/lang/Exception
+    //   530	552	568	java/lang/Exception
+    //   552	566	568	java/lang/Exception
+  }
+  
+  public Intent a(Intent paramIntent)
+  {
+    paramIntent.putExtra(a(), Integer.parseInt(b()));
+    return null;
+  }
+  
+  public Bitmap a(Bitmap paramBitmap, int paramInt)
+  {
+    if (paramBitmap != null) {
+      return Bitmap.createScaledBitmap(paramBitmap, paramInt, paramInt, true);
     }
     return null;
   }
   
-  /* Error */
-  public java.lang.Class a(String paramString)
+  public String a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 101	bgvf:jdField_a_of_type_JavaLangClassLoader	Ljava/lang/ClassLoader;
-    //   4: ifnonnull +7 -> 11
-    //   7: aload_0
-    //   8: invokevirtual 103	bgvf:a	()V
-    //   11: ldc 105
-    //   13: new 28	java/lang/StringBuilder
-    //   16: dup
-    //   17: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   20: ldc 107
-    //   22: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: aload_1
-    //   26: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 113	com/tencent/qqmini/sdk/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   35: aload_0
-    //   36: getfield 101	bgvf:jdField_a_of_type_JavaLangClassLoader	Ljava/lang/ClassLoader;
-    //   39: ifnull +47 -> 86
-    //   42: aload_0
-    //   43: getfield 101	bgvf:jdField_a_of_type_JavaLangClassLoader	Ljava/lang/ClassLoader;
-    //   46: aload_1
-    //   47: invokevirtual 118	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   50: astore_2
-    //   51: ldc 105
-    //   53: new 28	java/lang/StringBuilder
-    //   56: dup
-    //   57: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   60: ldc 107
-    //   62: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   65: aload_1
-    //   66: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: ldc 120
-    //   71: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: aload_2
-    //   75: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   78: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   81: invokestatic 113	com/tencent/qqmini/sdk/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   84: aload_2
-    //   85: areturn
-    //   86: aload_0
-    //   87: invokevirtual 127	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   90: invokevirtual 133	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   93: aload_1
-    //   94: invokevirtual 118	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   97: astore_2
-    //   98: aload_2
-    //   99: areturn
-    //   100: astore_3
-    //   101: aconst_null
-    //   102: astore_2
-    //   103: ldc 105
-    //   105: new 28	java/lang/StringBuilder
-    //   108: dup
-    //   109: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   112: ldc 107
-    //   114: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: aload_1
-    //   118: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: ldc 135
-    //   123: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: aload_3
-    //   127: invokevirtual 138	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   130: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   136: invokestatic 141	com/tencent/qqmini/sdk/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   139: aload_0
-    //   140: invokevirtual 127	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   143: invokevirtual 133	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   146: aload_1
-    //   147: invokevirtual 118	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   150: astore 4
-    //   152: aload 4
-    //   154: areturn
-    //   155: astore 4
-    //   157: ldc 105
-    //   159: new 28	java/lang/StringBuilder
-    //   162: dup
-    //   163: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   166: ldc 107
-    //   168: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: aload_1
-    //   172: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   175: ldc 135
-    //   177: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   180: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   183: aload_3
-    //   184: invokestatic 144	com/tencent/qqmini/sdk/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   187: aload_2
-    //   188: areturn
-    //   189: astore_3
-    //   190: goto -87 -> 103
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	193	0	this	bgvf
-    //   0	193	1	paramString	String
-    //   50	138	2	localClass1	java.lang.Class
-    //   100	84	3	localException1	java.lang.Exception
-    //   189	1	3	localException2	java.lang.Exception
-    //   150	3	4	localClass2	java.lang.Class
-    //   155	1	4	localThrowable	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   0	11	100	java/lang/Exception
-    //   11	51	100	java/lang/Exception
-    //   86	98	100	java/lang/Exception
-    //   139	152	155	java/lang/Throwable
-    //   51	84	189	java/lang/Exception
+    return bgve.a;
   }
   
-  /* Error */
-  public Object a(String paramString)
+  public String a(Camera.Parameters paramParameters)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 101	bgvf:jdField_a_of_type_JavaLangClassLoader	Ljava/lang/ClassLoader;
-    //   4: ifnonnull +7 -> 11
-    //   7: aload_0
-    //   8: invokevirtual 103	bgvf:a	()V
-    //   11: ldc 105
-    //   13: new 28	java/lang/StringBuilder
-    //   16: dup
-    //   17: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   20: ldc 147
-    //   22: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: aload_1
-    //   26: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 113	com/tencent/qqmini/sdk/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   35: aload_0
-    //   36: getfield 101	bgvf:jdField_a_of_type_JavaLangClassLoader	Ljava/lang/ClassLoader;
-    //   39: ifnull +53 -> 92
-    //   42: aload_1
-    //   43: aload_0
-    //   44: getfield 101	bgvf:jdField_a_of_type_JavaLangClassLoader	Ljava/lang/ClassLoader;
-    //   47: invokestatic 152	bgvg:a	(Ljava/lang/String;Ljava/lang/ClassLoader;)Lbgvg;
-    //   50: invokevirtual 155	bgvg:a	()Lbgvg;
-    //   53: invokevirtual 158	bgvg:a	()Ljava/lang/Object;
-    //   56: astore_2
-    //   57: ldc 105
-    //   59: new 28	java/lang/StringBuilder
-    //   62: dup
-    //   63: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   66: ldc 147
-    //   68: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: aload_1
-    //   72: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: ldc 160
-    //   77: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: aload_2
-    //   81: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   84: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: invokestatic 113	com/tencent/qqmini/sdk/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   90: aload_2
-    //   91: areturn
-    //   92: aload_1
-    //   93: aload_0
-    //   94: invokevirtual 127	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   97: invokevirtual 133	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   100: invokestatic 152	bgvg:a	(Ljava/lang/String;Ljava/lang/ClassLoader;)Lbgvg;
-    //   103: invokevirtual 155	bgvg:a	()Lbgvg;
-    //   106: invokevirtual 158	bgvg:a	()Ljava/lang/Object;
-    //   109: astore_2
-    //   110: aload_2
-    //   111: areturn
-    //   112: astore_3
-    //   113: aconst_null
-    //   114: astore_2
-    //   115: ldc 105
-    //   117: new 28	java/lang/StringBuilder
-    //   120: dup
-    //   121: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   124: ldc 162
-    //   126: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   129: aload_1
-    //   130: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: ldc 135
-    //   135: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: aload_3
-    //   139: invokevirtual 138	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   142: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   148: invokestatic 141	com/tencent/qqmini/sdk/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   151: aload_1
-    //   152: aload_0
-    //   153: invokevirtual 127	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   156: invokevirtual 133	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   159: invokestatic 152	bgvg:a	(Ljava/lang/String;Ljava/lang/ClassLoader;)Lbgvg;
-    //   162: invokevirtual 155	bgvg:a	()Lbgvg;
-    //   165: invokevirtual 158	bgvg:a	()Ljava/lang/Object;
-    //   168: astore 4
-    //   170: aload 4
-    //   172: areturn
-    //   173: astore 4
-    //   175: ldc 105
-    //   177: new 28	java/lang/StringBuilder
-    //   180: dup
-    //   181: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   184: ldc 162
-    //   186: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: aload_1
-    //   190: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   193: ldc 135
-    //   195: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   201: aload_3
-    //   202: invokestatic 144	com/tencent/qqmini/sdk/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   205: aload_2
-    //   206: areturn
-    //   207: astore_3
-    //   208: goto -93 -> 115
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	211	0	this	bgvf
-    //   0	211	1	paramString	String
-    //   56	150	2	localObject1	Object
-    //   112	90	3	localException1	java.lang.Exception
-    //   207	1	3	localException2	java.lang.Exception
-    //   168	3	4	localObject2	Object
-    //   173	1	4	localThrowable	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   0	11	112	java/lang/Exception
-    //   11	57	112	java/lang/Exception
-    //   92	110	112	java/lang/Exception
-    //   151	170	173	java/lang/Throwable
-    //   57	90	207	java/lang/Exception
+    String str = "off";
+    List localList = paramParameters.getSupportedFlashModes();
+    if (localList.contains("torch")) {
+      paramParameters = "torch";
+    }
+    do
+    {
+      return paramParameters;
+      if (localList.contains("on")) {
+        return "on";
+      }
+      paramParameters = str;
+    } while (!localList.contains("auto"));
+    return "auto";
   }
   
-  /* Error */
-  public void a()
+  public void a(Intent paramIntent)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 21	bgvf:jdField_a_of_type_Boolean	Z
-    //   6: ifeq +19 -> 25
-    //   9: aload_0
-    //   10: getfield 164	bgvf:b	Z
-    //   13: ifne +12 -> 25
-    //   16: aload_0
-    //   17: getfield 166	bgvf:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   20: astore_1
-    //   21: aload_1
-    //   22: ifnonnull +6 -> 28
-    //   25: aload_0
-    //   26: monitorexit
-    //   27: return
-    //   28: aload_0
-    //   29: invokevirtual 127	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   32: invokevirtual 133	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   35: pop
-    //   36: aload_0
-    //   37: invokevirtual 168	bgvf:a	()Z
-    //   40: ifeq +42 -> 82
-    //   43: aload_0
-    //   44: getfield 101	bgvf:jdField_a_of_type_JavaLangClassLoader	Ljava/lang/ClassLoader;
-    //   47: ifnonnull +35 -> 82
-    //   50: aload_0
-    //   51: new 170	bgve
-    //   54: dup
-    //   55: aload_0
-    //   56: invokespecial 172	bgvf:a	()Ljava/lang/String;
-    //   59: aload_0
-    //   60: getfield 166	bgvf:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   63: invokevirtual 178	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   66: getfield 183	android/content/pm/ApplicationInfo:nativeLibraryDir	Ljava/lang/String;
-    //   69: aload_0
-    //   70: invokevirtual 127	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   73: invokevirtual 133	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   76: invokespecial 186	bgve:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   79: putfield 101	bgvf:jdField_a_of_type_JavaLangClassLoader	Ljava/lang/ClassLoader;
-    //   82: aload_0
-    //   83: iconst_1
-    //   84: putfield 164	bgvf:b	Z
-    //   87: goto -62 -> 25
-    //   90: astore_1
-    //   91: aload_0
-    //   92: monitorexit
-    //   93: aload_1
-    //   94: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	95	0	this	bgvf
-    //   20	2	1	localContext	Context
-    //   90	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	21	90	finally
-    //   28	82	90	finally
-    //   82	87	90	finally
+    paramIntent.setFlags(337641472);
   }
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public void a(Window paramWindow)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    QMLog.w("minisdk-MiniAppDexLoader", "enableDex: " + paramBoolean);
+    paramWindow.setType(2004);
   }
   
   public boolean a()
   {
-    String str = a();
-    if (TextUtils.isEmpty(str)) {}
-    while (!new File(str).exists()) {
-      return false;
-    }
-    QMLog.i("minisdk-MiniAppDexLoader", "load dexPath : " + str);
-    return true;
+    return (!this.a.a(0)) && (this.a.a(1));
+  }
+  
+  public String b()
+  {
+    return bgve.c;
+  }
+  
+  public void b(Window paramWindow)
+  {
+    paramWindow.setType(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgvf
  * JD-Core Version:    0.7.0.1
  */

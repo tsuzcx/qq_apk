@@ -73,11 +73,15 @@ public class PAGFile
   
   public native void setDuration(long paramLong);
   
+  public native void setTimeStretchMode(int paramInt);
+  
   public native int tagLevel();
+  
+  public native int timeStretchMode();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     org.libpag.PAGFile
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,70 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
 public class uzo
-  extends urt<uzp>
 {
-  static final String a = uqn.a("StorySvc.msgtab_node_watched");
-  public long b;
-  public String b;
-  public int c;
-  public int d;
+  public QQCircleFeedBase.StTabInfo a;
+  private boolean a;
+  
+  public uzo(QQCircleFeedBase.StTabInfo paramStTabInfo)
+  {
+    this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTabInfo = paramStTabInfo;
+  }
+  
+  public static uzo a(QQCircleFeedBase.StTabInfo paramStTabInfo)
+  {
+    return new uzo(paramStTabInfo);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTabInfo.tabType.get();
+  }
   
   public String a()
   {
-    return a;
+    return this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTabInfo.tabName.get();
   }
   
-  public uro a(byte[] paramArrayOfByte)
+  public uzo a(boolean paramBoolean)
   {
-    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
-    try
-    {
-      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
-      return new uzp(localRspMsgTabNodeWatched);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wxe.d("Q.qqstory.msgTab:ReqMsgTabNodeWatched", "" + paramArrayOfByte);
-    }
-    return null;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
   }
   
-  protected byte[] a()
+  public boolean a()
   {
-    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
-    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqMsgTabNodeWatched.node_type.set(this.c);
-    localReqMsgTabNodeWatched.operation.set(this.d);
-    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
-    return localReqMsgTabNodeWatched.toByteArray();
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    switch (a())
+    {
+    case 5: 
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 2: 
+      return 4;
+    case 3: 
+      return 6;
+    case 4: 
+      return 5;
+    }
+    return 10;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_QqcircleQQCircleFeedBase$StTabInfo.attachInfo.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uzo
  * JD-Core Version:    0.7.0.1
  */

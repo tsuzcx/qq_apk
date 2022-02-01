@@ -1,24 +1,28 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ahly;
-import akkd;
-import alxr;
+import Override;
+import aiyr;
+import aiza;
+import amdv;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.SwipListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class NewFriendMoreSysMsgActivity
   extends BaseActivity
 {
-  private akkd a;
+  private amdv a;
   
   public static void a(Activity paramActivity, int paramInt1, int paramInt2)
   {
@@ -27,41 +31,49 @@ public class NewFriendMoreSysMsgActivity
     paramActivity.startActivityForResult(localIntent, paramInt1);
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   @TargetApi(14)
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     int i = getIntent().getIntExtra("first_visible_index", 0);
-    setContentView(2131561115);
-    paramBundle = (LinearLayout)findViewById(2131376034);
+    setContentView(2131561326);
+    paramBundle = (LinearLayout)findViewById(2131376788);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
       paramBundle.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    paramBundle = (SwipListView)findViewById(2131377344);
-    View localView = findViewById(2131371179);
-    TextView localTextView = (TextView)findViewById(2131368670);
+    paramBundle = (SwipListView)findViewById(2131378170);
+    View localView = findViewById(2131371740);
+    TextView localTextView = (TextView)findViewById(2131368994);
     localTextView.setVisibility(0);
-    localTextView.setText(2131694791);
-    setTitle(getString(2131694791));
-    localTextView = (TextView)findViewById(2131368624);
+    localTextView.setText(2131693968);
+    setTitle(getString(2131693968));
+    localTextView = (TextView)findViewById(2131368947);
     localTextView.setVisibility(0);
     localTextView.setText("");
-    localTextView.setOnClickListener(new ahly(this));
-    localTextView = (TextView)findViewById(2131368655);
+    localTextView.setOnClickListener(new aiza(this));
+    localTextView = (TextView)findViewById(2131368979);
     localTextView.setVisibility(0);
-    localTextView.setText(2131699919);
-    this.a = new akkd(this, this.app, paramBundle, localView, localTextView, this.mFlingHandler, i);
+    localTextView.setText(2131698363);
+    this.a = new amdv(this, this.app, paramBundle, localView, localTextView, this.mFlingHandler, i);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    alxr localalxr = (alxr)this.app.getManager(34);
-    localalxr.g();
-    localalxr.k();
+    aiyr localaiyr = (aiyr)this.app.getManager(34);
+    localaiyr.g();
+    localaiyr.k();
     this.a.a();
   }
   
@@ -69,10 +81,17 @@ public class NewFriendMoreSysMsgActivity
   {
     super.doOnResume();
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity
  * JD-Core Version:    0.7.0.1
  */

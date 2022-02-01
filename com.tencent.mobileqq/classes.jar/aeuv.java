@@ -1,10 +1,9 @@
+import android.widget.TextView;
+
 public class aeuv
 {
   public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public TextView a;
 }
 
 

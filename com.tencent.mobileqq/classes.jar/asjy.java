@@ -1,79 +1,55 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class asjy
+  extends asgf
 {
-  public int a;
-  public String a;
-  public ArrayList<asjz> a;
-  private boolean a;
-  public int b = -1;
-  public int c;
-  public int d;
+  public asjy(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  private int a(asjz paramasjz1, asjz paramasjz2)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    int i = Math.abs(paramasjz2.jdField_a_of_type_Int - paramasjz1.jdField_a_of_type_Int);
-    int j = Math.abs(paramasjz2.b - paramasjz1.b);
-    return (int)Math.ceil(Math.sqrt(i * i + j * j));
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, String.format("onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+    }
+    if ((paramBoolean) && (paramInt == 1)) {
+      ExtendFriendSquareFragment.b(this.a);
+    }
+    if (paramBoolean) {
+      ExtendFriendSquareFragment.a(this.a);
+    }
   }
   
-  public int a()
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, ashh paramashh, int paramInt3)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, String.format("onMatchResponse success=%s match_op=%s retCode=%s info=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramashh }));
     }
-    asjz localasjz1 = (asjz)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    asjz localasjz2 = (asjz)this.jdField_a_of_type_JavaUtilArrayList.get(1);
-    int i = localasjz2.jdField_a_of_type_Int - localasjz1.jdField_a_of_type_Int;
-    int j = localasjz2.b - localasjz1.b;
-    double d1 = Math.sqrt(i * i + j * j);
-    float f = (float)(Math.asin(j / d1) / 3.141592653589793D * 180.0D);
-    if (localasjz2.jdField_a_of_type_Int < localasjz1.jdField_a_of_type_Int) {
-      if (f > 0.0F) {
-        f = 180.0F - f;
-      }
+  }
+  
+  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<asht> paramList, ashg paramashg)
+  {
+    if (this.a.b != paramLong) {
+      return;
     }
-    for (;;)
+    try
     {
-      return Math.round(f);
-      f = -(180.0F + f);
+      ExtendFriendSquareFragment.a(this.a, 1);
+      ExtendFriendSquareFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramashg);
+      return;
     }
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (!this.jdField_a_of_type_Boolean)
+    catch (Exception paramString)
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        ((asjz)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int = ((int)(((asjz)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int * paramFloat));
-        ((asjz)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b = ((int)(((asjz)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b * paramFloat));
-        i += 1;
-      }
-      this.jdField_a_of_type_Boolean = true;
+      QLog.e("ExtendFriendSquareFragment", 1, "onGetSquareStrangerList exception", paramString);
     }
   }
   
-  public int b()
+  protected void d(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, "onLimitChatResourceStateUpdate, isReady = " + paramBoolean);
     }
-    return a((asjz)this.jdField_a_of_type_JavaUtilArrayList.get(0), (asjz)this.jdField_a_of_type_JavaUtilArrayList.get(2));
-  }
-  
-  public int c()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
-      return 0;
-    }
-    return a((asjz)this.jdField_a_of_type_JavaUtilArrayList.get(0), (asjz)this.jdField_a_of_type_JavaUtilArrayList.get(3));
-  }
-  
-  public String toString()
-  {
-    return "PicOcrResult{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", confidence=" + this.jdField_a_of_type_Int + ", coorPoints=" + this.jdField_a_of_type_JavaUtilArrayList + ", arc=" + a() + '}';
+    ExtendFriendSquareFragment.a(this.a);
   }
 }
 

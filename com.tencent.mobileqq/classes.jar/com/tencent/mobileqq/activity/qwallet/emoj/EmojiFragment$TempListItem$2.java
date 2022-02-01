@@ -3,11 +3,11 @@ package com.tencent.mobileqq.activity.qwallet.emoj;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.ImageView;
-import bayv;
+import bdzy;
 import com.tencent.image.URLDrawable;
 
 class EmojiFragment$TempListItem$2
-  extends bayv
+  extends bdzy
 {
   EmojiFragment$TempListItem$2(EmojiFragment.TempListItem paramTempListItem, EmojiFragment.TemplateInfo paramTemplateInfo) {}
   
@@ -15,7 +15,7 @@ class EmojiFragment$TempListItem$2
   {
     super.onLoadFialed(paramURLDrawable, paramThrowable);
     EmojiFragment.TempListItem.access$200(this.this$1).setImageDrawable(null);
-    EmojiFragment.TempListItem.access$300(this.this$1).setBackgroundDrawable(this.this$1.getResources().getDrawable(2130843130));
+    EmojiFragment.TempListItem.access$300(this.this$1).setBackgroundDrawable(this.this$1.getResources().getDrawable(2130843477));
     EmojiFragment.TempListItem.access$400(this.this$1).setVisibility(8);
   }
   
@@ -29,7 +29,7 @@ class EmojiFragment$TempListItem$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.EmojiFragment.TempListItem.2
  * JD-Core Version:    0.7.0.1
  */

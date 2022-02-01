@@ -1,16 +1,83 @@
-class aqrz
-  extends aqty
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import java.io.File;
+
+public class aqrz
+  extends aqkz<bosi>
 {
-  aqrz(aqrv paramaqrv, aqsa paramaqsa) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  @NonNull
+  public bosi a(int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aqsa.a(paramString2);
-      return;
+    return new bosi();
+  }
+  
+  @Nullable
+  public bosi a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0)) {
+      return null;
     }
-    this.jdField_a_of_type_Aqsa.a(paramInt, paramString1);
+    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onParsed, content:" + paramArrayOfaqlg);
+    }
+    return new bosf().a(paramArrayOfaqlg, QIMMusicConfigManager.a.getAbsolutePath(), "temp_music_zip", new aqsa(this));
+  }
+  
+  public void a(bosi parambosi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onUpdate");
+    }
+  }
+  
+  public Class<bosi> clazz()
+  {
+    return bosi.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (!QIMMusicConfigManager.a()) {
+      return 0;
+    }
+    return bgsg.B(BaseApplicationImpl.getContext());
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onReqFailed");
+    }
+  }
+  
+  public int onSend(int paramInt)
+  {
+    if (!QIMMusicConfigManager.a())
+    {
+      QLog.i("QIMMusicConfigProcessor", 1, "config file not exist");
+      aqlk.a().a(305, 0);
+      return 0;
+    }
+    return super.onSend(paramInt);
+  }
+  
+  public int type()
+  {
+    return 305;
   }
 }
 

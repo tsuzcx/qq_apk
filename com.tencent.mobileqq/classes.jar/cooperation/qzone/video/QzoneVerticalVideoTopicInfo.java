@@ -5,15 +5,15 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bjwg;
-import bjwh;
+import bmkq;
+import bmkr;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class QzoneVerticalVideoTopicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<QzoneVerticalVideoTopicInfo> CREATOR = new bjwg();
+  public static final Parcelable.Creator<QzoneVerticalVideoTopicInfo> CREATOR = new bmkq();
   private String a = QzoneVerticalVideoTopicInfo.class.getSimpleName();
   private String b;
   private String c;
@@ -100,9 +100,9 @@ public class QzoneVerticalVideoTopicInfo
   
   public String f()
   {
-    bjwh localbjwh = new bjwh(this);
-    localbjwh.a("weishi_feedId", this.b).a("weishi_fileId", this.c).a("weishi_musicId", this.d).a("weishi_musicName", this.e).a("weishi_thumbUrl", this.g).a("weishi_topicID", this.h).a("weishi_topicName", this.i);
-    return localbjwh.toString();
+    bmkr localbmkr = new bmkr(this);
+    localbmkr.a("weishi_feedId", this.b).a("weishi_fileId", this.c).a("weishi_musicId", this.d).a("weishi_musicName", this.e).a("weishi_thumbUrl", this.g).a("weishi_topicID", this.h).a("weishi_topicName", this.i);
+    return localbmkr.toString();
   }
   
   public String g()
@@ -143,7 +143,7 @@ public class QzoneVerticalVideoTopicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.video.QzoneVerticalVideoTopicInfo
  * JD-Core Version:    0.7.0.1
  */

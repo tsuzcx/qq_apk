@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo;
 
-import qwp;
-import qwu;
+import rsn;
+import rss;
 
 public class SelectVideoPresenter$5$1
   implements Runnable
 {
-  public SelectVideoPresenter$5$1(qwu paramqwu) {}
+  public SelectVideoPresenter$5$1(rss paramrss) {}
   
   public void run()
   {
-    qwp.a(this.a.a);
+    rsn.a(this.a.a);
   }
 }
 

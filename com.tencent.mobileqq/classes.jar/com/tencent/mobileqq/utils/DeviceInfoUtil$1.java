@@ -3,8 +3,8 @@ package com.tencent.mobileqq.utils;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
-import bdgk;
-import bhsp;
+import bgln;
+import bkfy;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
 import java.util.concurrent.TimeUnit;
@@ -27,8 +27,8 @@ public final class DeviceInfoUtil$1
   public void run()
   {
     Object localObject1 = null;
-    bdgk.a(System.currentTimeMillis());
-    this.a.edit().putLong("device_perf_level_timestamps", bdgk.n()).apply();
+    bgln.a(System.currentTimeMillis());
+    this.a.edit().putLong("device_perf_level_timestamps", bgln.n()).apply();
     for (;;)
     {
       try
@@ -37,7 +37,7 @@ public final class DeviceInfoUtil$1
         ((JSONObject)localObject2).put("pid", "1");
         ((JSONObject)localObject2).put("device", URLEncoder.encode(Build.MODEL, "UTF-8"));
         ((JSONObject)localObject2).put("version", "1.0.0");
-        ((JSONObject)localObject2).put("uin", bhsp.a("a4bd32"));
+        ((JSONObject)localObject2).put("uin", bkfy.a("a4bd32"));
         ((JSONObject)localObject2).put("userSwitch", "0");
         ((JSONObject)localObject2).put("lastSwitch", "0");
         if (QLog.isColorLevel())
@@ -79,13 +79,13 @@ public final class DeviceInfoUtil$1
             localObject1 = localObject2;
             this.a.edit().putInt("device_perf_level", i).apply();
             localObject1 = localObject2;
-            bdgk.a(i);
+            bgln.a(i);
           }
         }
         if (localObject2 != null) {
           ((Response)localObject2).close();
         }
-        bdgk.a().set(false);
+        bgln.a().set(false);
         return;
       }
       finally

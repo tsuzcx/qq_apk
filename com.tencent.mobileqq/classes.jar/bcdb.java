@@ -1,25 +1,63 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import com.tencent.widget.AdapterView;
-import java.util.Set;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcdb
-  implements bhuw
+  extends MSFServlet
 {
-  public bcdb(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (this.a.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
-      this.a.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
-    }
-    for (;;)
+    int i;
+    if (paramFromServiceMsg != null)
     {
-      this.a.jdField_a_of_type_Bcdd.notifyDataSetChanged();
-      this.a.e();
-      return;
-      this.a.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
+      i = paramFromServiceMsg.getResultCode();
+      if (i != 1000) {
+        break label83;
+      }
+      paramIntent = bmeu.a(paramFromServiceMsg.getWupBuffer());
+      if (paramIntent == null) {
+        break label68;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QbossErrorReportServlet", 2, "report qboss success state = " + paramIntent.iRet);
+      }
     }
+    label68:
+    label83:
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        return;
+        i = -1;
+        break;
+      } while (!QLog.isColorLevel());
+      QLog.d("QbossErrorReportServlet", 2, "report qboss exception fail, decode result is null");
+      return;
+    }
+    QLog.d("QbossErrorReportServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    long l = paramIntent.getLongExtra("uin", 0L);
+    int i = paramIntent.getIntExtra("appId", 0);
+    int j = paramIntent.getIntExtra("taskId", 0);
+    Object localObject = paramIntent.getStringExtra("message");
+    bmeu localbmeu = new bmeu(l, i, j, paramIntent.getIntExtra("code", 0), (String)localObject);
+    localObject = localbmeu.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
+    {
+      QLog.e("QbossErrorReportServlet", 1, "onSend request encode result is null.cmd=" + localbmeu.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbmeu.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

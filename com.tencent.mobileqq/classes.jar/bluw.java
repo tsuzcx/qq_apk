@@ -1,61 +1,46 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.image.NativeApngDecoder;
-import com.tencent.mobileqq.richmedia.capture.data.GifDecoder;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import cooperation.qzone.QzoneVideoSoDownloadModule;
+import java.util.ArrayList;
 
 public class bluw
-  implements GifDecoder
+  implements bcfg
 {
-  private NativeApngDecoder jdField_a_of_type_ComTencentImageNativeApngDecoder;
-  private String jdField_a_of_type_JavaLangString;
+  private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public bluw(String paramString)
+  public bluw(QzoneVideoSoDownloadModule paramQzoneVideoSoDownloadModule, QQAppInterface paramQQAppInterface, ResultReceiver paramResultReceiver)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
   }
   
-  public Bitmap getNextGifFrame(long paramLong)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentImageNativeApngDecoder != null) {
-      return this.jdField_a_of_type_ComTencentImageNativeApngDecoder.getNextFrameBitmap(paramLong);
-    }
-    return null;
-  }
-  
-  public void init()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    File localFile;
-    do
+    VideoEnvironment.a("QzoneVideoSoDownloadModule", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
     {
-      do
+      if (paramInt2 != 0)
       {
+        QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, anni.a(2131711279) + paramInt2 + "]");
+        bceg.b(1, paramInt2);
         return;
-        if (bdua.a().b()) {
-          break;
-        }
-        bdua.a().a();
-      } while (!QLog.isColorLevel());
-      QLog.d("ApngDecodeWrapper", 2, "so not loaded");
-      return;
-      localFile = new File(this.jdField_a_of_type_JavaLangString);
-    } while ((!localFile.exists()) || (!localFile.isFile()));
-    try
-    {
-      this.jdField_a_of_type_ComTencentImageNativeApngDecoder = new NativeApngDecoder(localFile);
+      }
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
+      if (paramInt1 == 0)
+      {
+        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, new blux(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver));
+        return;
+      }
+      QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, anni.a(2131711363) + paramInt1 + "]");
+      bceg.b(1, paramInt1);
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void release()
-  {
-    this.jdField_a_of_type_ComTencentImageNativeApngDecoder = null;
+    QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -2, anni.a(2131711254) + paramInt2 + "]");
+    bceg.b(1, paramInt2);
   }
 }
 

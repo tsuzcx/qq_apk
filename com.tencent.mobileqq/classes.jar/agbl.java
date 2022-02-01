@@ -1,15 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class agbl
-  implements ValueAnimator.AnimatorUpdateListener
+class agbl
+  extends AnimatorListenerAdapter
 {
-  public agbl(SixCombolEffectView paramSixCombolEffectView, agbz paramagbz) {}
+  agbl(agbk paramagbk) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Agbz.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.d();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.d();
   }
 }
 

@@ -1,9 +1,36 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.app.face.FaceInfo;
 
-public abstract interface aocw
+public class aocw
+  implements anil
 {
-  public abstract void a(Context paramContext, ColorNote paramColorNote);
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo) {}
+  
+  public void b(boolean paramBoolean, FaceInfo paramFaceInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    Object localObject = null;
+    if (paramInt == 0) {
+      if (paramObject == null)
+      {
+        paramObject = null;
+        a(paramBoolean, paramObject);
+      }
+    }
+    while (paramInt != 1) {
+      for (;;)
+      {
+        return;
+        paramObject = (FaceInfo)paramObject;
+      }
+    }
+    if (paramObject == null) {}
+    for (paramObject = localObject;; paramObject = (FaceInfo)paramObject)
+    {
+      b(paramBoolean, paramObject);
+      return;
+    }
+  }
 }
 
 

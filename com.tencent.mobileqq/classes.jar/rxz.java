@@ -1,20 +1,24 @@
-public abstract class rxz
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
+
+public class rxz
+  implements Animation.AnimationListener
 {
-  private static int a = 7;
+  public rxz(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
   
-  public static int a()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    return a;
+    VideoFeedsAioGuideView.a(this.a).setStartOffset(360L);
   }
   
-  public static void a(int paramInt)
-  {
-    a = paramInt;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rxz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ors;
+import pha;
 
 class MainFragment$18
   implements Runnable
@@ -11,7 +11,7 @@ class MainFragment$18
   {
     try
     {
-      ors.d();
+      pha.d();
       return;
     }
     catch (Exception localException)
@@ -22,7 +22,7 @@ class MainFragment$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MainFragment.18
  * JD-Core Version:    0.7.0.1
  */

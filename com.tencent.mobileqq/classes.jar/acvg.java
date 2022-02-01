@@ -1,24 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
 
 public class acvg
-  implements View.OnClickListener
 {
-  public acvg(EditActivity paramEditActivity) {}
+  private static int a = 3600;
   
-  public void onClick(View paramView)
+  public static void a(int paramInt)
   {
-    EditActivity.a(this.a).setVisibility(4);
-    EditActivity.a(this.a).setImageResource(2130847428);
-    EditActivity.a(this.a, false);
+    if ((paramInt >= 0) && (a != paramInt)) {
+      a = paramInt;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
+  {
+    if ("doOnReconnect".equals(paramString2))
+    {
+      if (a > 0)
+      {
+        long l1 = PatchSharedPreUtil.getLastTimePullPatchReconnect(BaseApplicationImpl.sApplication);
+        long l2 = System.currentTimeMillis();
+        if (Math.abs(l2 - l1) > a * 1000L)
+        {
+          arcj.a(paramQQAppInterface, paramString1, paramInt, paramString2);
+          PatchSharedPreUtil.updateLastTimePullPatchReconnect(BaseApplicationImpl.sApplication, l2);
+        }
+      }
+      return;
+    }
+    arcj.a(paramQQAppInterface, paramString1, paramInt, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acvg
  * JD-Core Version:    0.7.0.1
  */

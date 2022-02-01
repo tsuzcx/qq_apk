@@ -1,40 +1,61 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
-
-class auqn
-  implements azdv
+public class auqn
 {
-  auqn(auqc paramauqc, aupx paramaupx, String paramString) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void a(int paramInt)
+  public String a()
   {
-    if ((this.jdField_a_of_type_Aupx.a != null) && (this.jdField_a_of_type_Aupx.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
-      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onComplete, key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Aupx.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    }
-    this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_Aupx, paramInt, 0, "");
+    return "OCRReqContext{chatType=" + this.jdField_a_of_type_Int + ", imagePath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", compressPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", oriMd5='" + this.d + '\'' + ", comMd5='" + this.e + '\'' + ", hasCrop=" + this.jdField_a_of_type_Boolean + '\'' + ", comWidth=" + this.jdField_b_of_type_Int + '\'' + ", comHeiht=" + this.jdField_c_of_type_Int + '\'' + ", serverUrl=" + this.f + '\'' + ", seqNumber=" + this.jdField_b_of_type_Long + '\'' + '}';
   }
   
-  public void b(int paramInt)
+  public void a()
   {
-    if ((this.jdField_a_of_type_Aupx.a != null) && (this.jdField_a_of_type_Aupx.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
-      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onProgress , key = " + this.jdField_a_of_type_JavaLangString + ", pos = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Aupx.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    }
-    if (this.jdField_a_of_type_Aupx.a != null)
-    {
-      String str = this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_Aupx.a.jdField_a_of_type_Azdg);
-      aupy localaupy = this.jdField_a_of_type_Auqc.a(str);
-      if ((localaupy != null) && (!localaupy.a))
-      {
-        localaupy.c = paramInt;
-        this.jdField_a_of_type_Auqc.a(str, localaupy);
-        auqc.a(this.jdField_a_of_type_Auqc, localaupy, localaupy.c);
-      }
-    }
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.f = "";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.d = "";
+    this.e = "";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0) && (bgmg.b(this.jdField_c_of_type_JavaLangString));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auqn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,165 +1,66 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
-import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureFilterManager;
+import android.graphics.Bitmap;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import org.json.JSONObject;
 
 public class lsq
+  extends lsp
 {
-  private String jdField_a_of_type_JavaLangString;
-  private Map<String, Drawable> jdField_a_of_type_JavaUtilMap = new HashMap();
-  public lks a;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public Bitmap a;
+  public byte[] a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public int f;
+  public String f;
+  int g;
+  int h;
   
-  public void a()
+  public lsq()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_f_of_type_Int = -1;
   }
   
-  public void a(long paramLong)
+  void a(String paramString)
   {
-    a(false);
-    c();
-    a("clearState_" + paramLong, null);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject;
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+    super.a(paramString);
+    if ((1 == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
     {
-      if (!GestureFilterManager.sGestureType.equals("fivea")) {
-        break label79;
+      if (this.jdField_b_of_type_Int != 0) {
+        break label205;
       }
-      localObject = VideoController.a().a().getResources().getDrawable(2130841791);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
-      lek.e("TipsInfo", "ProcessGestureSDK pandentInfo.gestureType drawable insert, drawable" + String.valueOf(localObject));
-      return;
-      label79:
-      if (GestureFilterManager.sGestureType.equals("palmup")) {
-        localObject = VideoController.a().a().getResources().getDrawable(2130841792);
-      } else if (GestureFilterManager.sGestureType.equals("qheart")) {
-        localObject = VideoController.a().a().getResources().getDrawable(2130841793);
-      } else {
-        localObject = new BitmapDrawable(arso.a(azgn.a() + paramString + ".png"));
+      this.jdField_f_of_type_Int = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
+      this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("peer_gender");
+      this.c = bgmj.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_ennick", null));
+      this.d = bgmj.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("ensessionname", null));
+      this.e = this.jdField_a_of_type_OrgJsonJSONObject.optString("headurl", null);
+      if (!this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("oldproto", false)) {
+        break label164;
       }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TipsInfo", 1, "setGestureType[" + paramString1 + "], GestureTips[" + this.jdField_a_of_type_JavaLangString + "->" + paramString2 + "]");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString2;
-  }
-  
-  public void a(lsa paramlsa, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
-  {
-    if (4 == paramlsa.a())
-    {
-      a(false);
-      return;
-    }
-    if ((paramInt > 0) || (!paramBoolean2))
-    {
-      c();
-      if (paramBoolean1)
-      {
-        paramlsa = GestureMgrRecognize.getInstance().getGestureInfo();
-        if ((!paramlsa.vaild) || (!paramlsa.type.equals(paramString2)))
-        {
-          b(paramString1, paramString2);
-          return;
-        }
-        a(true);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.w("RandomWebProtocol", 2, "[1v1] parse method is oldproto");
       }
-      a(false);
-      return;
+      this.jdField_b_of_type_JavaLangString = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null));
+      this.jdField_a_of_type_ArrayOfByte = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
     }
-    a(false);
-    b();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("TipsInfo", 1, "hideGestureTips, bGettureShown[" + paramBoolean + "], mCurGestureType[" + this.jdField_a_of_type_JavaLangString + "]");
-    }
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return;
-    }
-    a("hideGestureTips", null);
-    if (paramBoolean) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    this.jdField_a_of_type_Lks.c(0);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (!a()) {}
-    while (this.b) {
-      return;
-    }
-    lek.c("TipsInfo", "processTips showfaceTips");
-    this.jdField_a_of_type_Lks.b(lks.a);
-    this.b = true;
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if (!a()) {}
-    do
+    label164:
+    label205:
+    while (this.jdField_b_of_type_Int != 1)
     {
-      do
-      {
-        return;
-      } while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString2));
-      lek.c("TipsInfo", "showGestureTips showGestureTips mHasGestureTipsShow[" + this.jdField_a_of_type_Boolean + "]");
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Lks.a(paramString1);
-        a("showGestureTips1", paramString2);
-        return;
-      }
-    } while (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString2));
-    Drawable localDrawable = (Drawable)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
-    this.jdField_a_of_type_Lks.a(localDrawable, paramString1);
-    a("showGestureTips2", paramString2);
-  }
-  
-  public void c()
-  {
-    if (!this.b) {
+      return;
+      this.jdField_b_of_type_JavaLangString = ChatActivityUtils.a(RandomWebProtocol.a(), bgmj.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null)));
+      this.jdField_a_of_type_ArrayOfByte = bgmj.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
       return;
     }
-    lek.c("TipsInfo", "processTips hideFaceTips");
-    this.jdField_a_of_type_Lks.c(0);
-    this.b = false;
+    this.h = Math.max(this.jdField_a_of_type_OrgJsonJSONObject.optInt("waittime"), 200);
+    this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("uniqkey", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lsq
  * JD-Core Version:    0.7.0.1
  */

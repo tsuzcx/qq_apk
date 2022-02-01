@@ -1,21 +1,23 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.Iterator;
 
-public class adfy
-  implements ViewSwitcher.ViewFactory
+final class adfy
+  extends BroadcastReceiver
 {
-  public adfy(Leba paramLeba) {}
-  
-  public View makeView()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    Iterator localIterator = adfx.a().iterator();
+    while (localIterator.hasNext())
+    {
+      adfx localadfx = (adfx)((WeakReference)localIterator.next()).get();
+      if (localadfx != null) {
+        localadfx.a(paramContext, paramIntent);
+      }
+    }
   }
 }
 

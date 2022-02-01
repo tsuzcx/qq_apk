@@ -1,22 +1,66 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public class wtj
-  implements View.OnClickListener
+class wtj
+  extends SimpleObserver<List<xfb>>
 {
-  public wtj(StoryListPresenter.4.1 param1) {}
+  wtj(wti paramwti, wtm paramwtm, wrs paramwrs) {}
   
-  public void onClick(View paramView)
+  public void a(List<xfb> paramList)
   {
-    wxj.a("home_page", "clk_up_close", 0, 0, new String[0]);
-    this.a.a.this$0.a.dismiss();
+    super.onNext(paramList);
+    ArrayList localArrayList;
+    int i;
+    xfb localxfb;
+    if (this.jdField_a_of_type_Wtm != null)
+    {
+      localArrayList = new ArrayList();
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        Collections.sort(paramList, new wtk(this));
+        paramList = paramList.iterator();
+        i = 0;
+        if (paramList.hasNext())
+        {
+          localxfb = (xfb)paramList.next();
+          if (i < wti.a(this.jdField_a_of_type_Wti)) {
+            break label100;
+          }
+        }
+      }
+      this.jdField_a_of_type_Wtm.a(this.jdField_a_of_type_Wrs, localArrayList);
+    }
+    else
+    {
+      return;
+    }
+    label100:
+    if ((localxfb != null) && (!localxfb.jdField_a_of_type_Boolean) && (localxfb.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
+    {
+      localArrayList.add(localxfb.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      i += 1;
+    }
+    for (;;)
+    {
+      break;
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Wtm != null) {
+      this.jdField_a_of_type_Wtm.a(this.jdField_a_of_type_Wrs, paramError);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wtj
  * JD-Core Version:    0.7.0.1
  */

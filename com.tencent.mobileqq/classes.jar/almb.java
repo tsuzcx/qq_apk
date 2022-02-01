@@ -1,27 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.redtouch.RedTouch;
-
 public class almb
 {
-  public allz a;
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public RedTouch a;
-  public ImageView b;
-  public RelativeLayout b;
-  public TextView b;
-  public ImageView c;
-  public RelativeLayout c;
-  public TextView c;
-  public ImageView d;
-  public ImageView e;
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  
+  public String toString()
+  {
+    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
+  }
 }
 
 

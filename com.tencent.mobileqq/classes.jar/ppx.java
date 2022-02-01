@@ -1,39 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.articlesummary.articlesummary.PartnerAccountInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ppx
+  implements View.OnClickListener
 {
-  public static void a(Container paramContainer, pgd parampgd)
-  {
-    a(paramContainer, parampgd, "id_nickname");
-  }
+  public ppx(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment, ImageView paramImageView) {}
   
-  public static void a(Container paramContainer, pgd parampgd, String paramString)
+  public void onClick(View paramView)
   {
-    ArticleInfo localArticleInfo = parampgd.a();
-    paramContainer = paramContainer.getVirtualView();
-    pqg localpqg = (pqg)paramContainer.findViewBaseByName("id_partner_info_avator");
-    if (localpqg != null) {
-      localpqg.a(parampgd);
-    }
-    paramContainer = (pso)paramContainer.findViewBaseByName(paramString);
-    if (paramContainer != null)
-    {
-      long l = 0L;
-      if (localArticleInfo.mPartnerAccountInfo != null) {
-        l = localArticleInfo.mPartnerAccountInfo.uint64_uin.get();
-      }
-      paramContainer.a(l);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyFragment.getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ppx
  * JD-Core Version:    0.7.0.1
  */

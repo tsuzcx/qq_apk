@@ -1,10 +1,14 @@
 package com.tencent.mobileqq.search.activity;
 
-import alud;
+import Override;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.MotionEvent;
+import anni;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class MessageSearchActivity
   extends BaseSearchActivity
@@ -23,12 +27,27 @@ public class MessageSearchActivity
   
   protected String a()
   {
-    return alud.a(2131707054);
+    return anni.a(2131705445);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.MessageSearchActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import pfi;
+import com.tencent.mobileqq.persistence.EntityManager;
+import pwn;
 
 public class ChannelInfoModule$6
   implements Runnable
 {
-  public ChannelInfoModule$6(pfi parampfi, ChannelInfo paramChannelInfo) {}
+  public ChannelInfoModule$6(pwn parampwn, ChannelInfo paramChannelInfo) {}
   
   public void run()
   {
-    this.this$0.a.b(this.a);
+    this.this$0.a.remove(this.a);
   }
 }
 

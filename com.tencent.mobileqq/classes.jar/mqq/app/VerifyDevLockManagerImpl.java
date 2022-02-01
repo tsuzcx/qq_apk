@@ -118,9 +118,10 @@ public class VerifyDevLockManagerImpl
         paramToServiceMsg = new Intent();
         paramToServiceMsg.setFlags(268435456);
         if (!"com.tencent.mobileqq:openSdk".equals(str4)) {
-          break label531;
+          break label545;
         }
         paramToServiceMsg.setAction("mqq.opensdk.intent.action.ACTION_VERYFY_LOCK_CODE");
+        paramToServiceMsg.setPackage(MobileQQ.sMobileQQ.getPackageName());
       }
       for (;;)
       {
@@ -135,7 +136,7 @@ public class VerifyDevLockManagerImpl
         return;
         paramToServiceMsg = localVerifyDevLockWrapper.mVerifyDevLockObserver;
         break;
-        label531:
+        label545:
         if (paramInt == 239)
         {
           paramToServiceMsg.setAction("android.intent.action.VIEW");
@@ -247,25 +248,26 @@ public class VerifyDevLockManagerImpl
     if (paramVerifyDevLockObserver == null) {
       QLog.d(TAG, 2, "submitSms observer == null!");
     }
-    Object localObject2;
+    Object localObject;
     do
     {
       return;
-      localObject2 = (VerifyDevLockManagerImpl.VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramVerifyDevLockObserver.getSeq()));
-    } while (localObject2 == null);
-    Object localObject1 = ((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject2).mToServiceMsg;
-    ((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject2).mVerifyDevLockObserver = paramVerifyDevLockObserver;
-    paramVerifyDevLockObserver = this.mApp.getService().msfSub.getCheckSMSAndGetStMsg(((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject2).mUin, new byte[0]);
-    paramVerifyDevLockObserver.setRequestSsoSeq(((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject2).mSeq);
-    paramVerifyDevLockObserver.setAppSeq(((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject2).mSeq);
-    if (((ToServiceMsg)localObject1).getAttribute("from_where") != null)
+      localObject = (VerifyDevLockManagerImpl.VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramVerifyDevLockObserver.getSeq()));
+    } while (localObject == null);
+    ToServiceMsg localToServiceMsg = ((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject).mToServiceMsg;
+    ((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject).mVerifyDevLockObserver = paramVerifyDevLockObserver;
+    paramVerifyDevLockObserver = this.mApp.getService().msfSub.getCheckSMSAndGetStMsg(((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject).mUin, new byte[0]);
+    paramVerifyDevLockObserver.setRequestSsoSeq(((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject).mSeq);
+    paramVerifyDevLockObserver.setAppSeq(((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject).mSeq);
+    if (localToServiceMsg.getAttribute("from_where") != null)
     {
-      localObject2 = (String)((ToServiceMsg)localObject1).getAttribute("from_where");
-      localObject1 = (String)((ToServiceMsg)localObject1).getAttribute("mainaccount");
-      paramVerifyDevLockObserver.addAttribute("from_where", localObject2);
-      paramVerifyDevLockObserver.addAttribute("mainaccount", localObject1);
+      localObject = (String)localToServiceMsg.getAttribute("from_where");
+      String str = (String)localToServiceMsg.getAttribute("mainaccount");
+      paramVerifyDevLockObserver.addAttribute("from_where", localObject);
+      paramVerifyDevLockObserver.addAttribute("mainaccount", str);
     }
     paramVerifyDevLockObserver.addAttribute("smsExtraData", paramArrayOfByte);
+    VerifyCodeManagerImpl.addConnectData(localToServiceMsg, paramVerifyDevLockObserver);
     this.mApp.getService().msfSub.sendMsg(paramVerifyDevLockObserver);
   }
   
@@ -287,6 +289,7 @@ public class VerifyDevLockManagerImpl
     paramVerifyDevLockObserver = this.mApp.getService().msfSub.getRefreshDevLockSmsMsg(localVerifyDevLockWrapper.mUin);
     paramVerifyDevLockObserver.setRequestSsoSeq(localVerifyDevLockWrapper.mSeq);
     paramVerifyDevLockObserver.setAppSeq(localVerifyDevLockWrapper.mSeq);
+    VerifyCodeManagerImpl.addConnectData(localVerifyDevLockWrapper.mToServiceMsg, paramVerifyDevLockObserver);
     this.mApp.getService().msfSub.sendMsg(paramVerifyDevLockObserver);
   }
   
@@ -307,6 +310,7 @@ public class VerifyDevLockManagerImpl
     paramVerifyDevLockObserver.setRequestSsoSeq(localVerifyDevLockWrapper.mSeq);
     paramVerifyDevLockObserver.setAppSeq(localVerifyDevLockWrapper.mSeq);
     paramVerifyDevLockObserver.getAttributes().put("smsExtraData", paramArrayOfByte);
+    VerifyCodeManagerImpl.addConnectData(localVerifyDevLockWrapper.mToServiceMsg, paramVerifyDevLockObserver);
     this.mApp.getService().msfSub.sendMsg(paramVerifyDevLockObserver);
   }
   
@@ -322,7 +326,7 @@ public class VerifyDevLockManagerImpl
     if (paramVerifyDevLockObserver == null) {
       QLog.d(TAG, 2, "submitSms observer == null!");
     }
-    VerifyDevLockManagerImpl.VerifyDevLockWrapper localVerifyDevLockWrapper;
+    Object localObject;
     do
     {
       return;
@@ -331,21 +335,22 @@ public class VerifyDevLockManagerImpl
         QLog.d(TAG, 2, "submitSms smscode is empty!");
         return;
       }
-      localVerifyDevLockWrapper = (VerifyDevLockManagerImpl.VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramVerifyDevLockObserver.getSeq()));
-    } while (localVerifyDevLockWrapper == null);
+      localObject = (VerifyDevLockManagerImpl.VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramVerifyDevLockObserver.getSeq()));
+    } while (localObject == null);
     QLog.d(TAG, 2, "submitSms smscode:" + paramString);
-    Object localObject = localVerifyDevLockWrapper.mToServiceMsg;
-    localVerifyDevLockWrapper.mVerifyDevLockObserver = paramVerifyDevLockObserver;
-    paramVerifyDevLockObserver = this.mApp.getService().msfSub.getCheckSMSAndGetStMsg(localVerifyDevLockWrapper.mUin, paramString.getBytes());
-    paramVerifyDevLockObserver.setRequestSsoSeq(localVerifyDevLockWrapper.mSeq);
-    paramVerifyDevLockObserver.setAppSeq(localVerifyDevLockWrapper.mSeq);
-    if (((ToServiceMsg)localObject).getAttribute("from_where") != null)
+    ToServiceMsg localToServiceMsg = ((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject).mToServiceMsg;
+    ((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject).mVerifyDevLockObserver = paramVerifyDevLockObserver;
+    paramVerifyDevLockObserver = this.mApp.getService().msfSub.getCheckSMSAndGetStMsg(((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject).mUin, paramString.getBytes());
+    paramVerifyDevLockObserver.setRequestSsoSeq(((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject).mSeq);
+    paramVerifyDevLockObserver.setAppSeq(((VerifyDevLockManagerImpl.VerifyDevLockWrapper)localObject).mSeq);
+    if (localToServiceMsg.getAttribute("from_where") != null)
     {
-      paramString = (String)((ToServiceMsg)localObject).getAttribute("from_where");
-      localObject = (String)((ToServiceMsg)localObject).getAttribute("mainaccount");
+      paramString = (String)localToServiceMsg.getAttribute("from_where");
+      localObject = (String)localToServiceMsg.getAttribute("mainaccount");
       paramVerifyDevLockObserver.addAttribute("from_where", paramString);
       paramVerifyDevLockObserver.addAttribute("mainaccount", localObject);
     }
+    VerifyCodeManagerImpl.addConnectData(localToServiceMsg, paramVerifyDevLockObserver);
     this.mApp.getService().msfSub.sendMsg(paramVerifyDevLockObserver);
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import beib;
-import bety;
+import bhpf;
+import biau;
 
 class SwiftBrowserLongClickHandler$4$2
   implements Runnable
@@ -17,7 +17,7 @@ class SwiftBrowserLongClickHandler$4$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.4.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,14 @@
-class fy
-  implements aufz<Void, Void>
+import com.etrump.mixlayout.ETTextView;
+
+public abstract interface fy
 {
-  fy(fx paramfx, alto paramalto, String paramString) {}
+  public abstract void a(ETTextView paramETTextView);
   
-  public Void a(Void paramVoid)
-  {
-    this.jdField_a_of_type_Alto.a(this.jdField_a_of_type_JavaLangString);
-    return null;
-  }
+  public abstract void a(ETTextView paramETTextView, CharSequence paramCharSequence);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     fy
  * JD-Core Version:    0.7.0.1
  */

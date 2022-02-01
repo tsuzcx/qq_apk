@@ -1,77 +1,113 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.vip.diy.common.DIYImageView;
 
-@bglp(a="RuntimeInitTask")
 public class bhii
-  extends bhlw
+  extends bmuf
 {
-  private bhey jdField_a_of_type_Bhey;
-  private boolean jdField_a_of_type_Boolean;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public bhii(Context paramContext, bgun parambgun)
+  public bhii(String paramString1, View paramView, @NonNull String paramString2)
   {
-    super(paramContext, parambgun);
+    super(paramString1, paramView);
+    if ((paramView != null) && ((paramView instanceof DIYImageView))) {
+      this.jdField_a_of_type_AndroidWidgetImageView = ((DIYImageView)paramView).a();
+    }
+    this.jdField_a_of_type_JavaLangString = paramString2;
+  }
+  
+  private ImageView.ScaleType a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return ImageView.ScaleType.CENTER_CROP;
+    }
+    if ("center_crop".equals(paramString)) {
+      return ImageView.ScaleType.CENTER_CROP;
+    }
+    if ("fit_center".equals(paramString)) {
+      return ImageView.ScaleType.FIT_CENTER;
+    }
+    return ImageView.ScaleType.CENTER_CROP;
   }
   
   public void a()
   {
-    bhbs.a(202, "", a().getMiniAppInfoForReport());
-    MiniAppInfo localMiniAppInfo = a().getMiniAppInfo();
-    Object localObject2;
-    if (a() != null)
+    super.a();
+    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {}
+    ViewGroup.LayoutParams localLayoutParams1;
+    ViewGroup.LayoutParams localLayoutParams2;
+    do
     {
-      localObject2 = a();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label121;
-      }
-      localObject1 = bhio.class;
-      localObject1 = (bhil)((bgun)localObject2).getTask((Class)localObject1);
-      if (localObject1 == null) {
-        break label132;
-      }
-    }
-    label132:
-    for (Object localObject1 = ((bhil)localObject1).a();; localObject1 = null)
-    {
-      localObject2 = (bhih)a().getTask(bhih.class);
-      if (localObject2 != null)
-      {
-        this.jdField_a_of_type_Bhey = ((bhih)localObject2).a();
-        this.jdField_a_of_type_Bhey.a((bhhq)localObject1);
-      }
-      if ((this.jdField_a_of_type_Bhey != null) && (localMiniAppInfo != null))
-      {
-        this.jdField_a_of_type_Bhey.a(localMiniAppInfo, null);
-        c();
-        return;
-        label121:
-        localObject1 = bhil.class;
-        break;
-      }
-      e();
       return;
+      if ((this.jdField_a_of_type_AndroidViewView.getParent() != null) && ((this.jdField_a_of_type_AndroidViewView.getParent() instanceof ViewGroup))) {
+        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).setClipChildren(false);
+      }
+      localLayoutParams1 = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams2 = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    } while ((localLayoutParams1 == null) || (localLayoutParams2 == null));
+    localLayoutParams2.width = localLayoutParams1.width;
+    localLayoutParams2.height = localLayoutParams1.height;
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams2);
+  }
+  
+  protected void a(String paramString)
+  {
+    String str = paramString;
+    if (!paramString.startsWith("http")) {
+      str = this.jdField_a_of_type_JavaLangString + paramString;
     }
+    if (!bkgj.a(str)) {}
+    do
+    {
+      return;
+      paramString = URLDrawable.URLDrawableOptions.obtain();
+      if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
+      {
+        paramString.mRequestWidth = this.jdField_a_of_type_Int;
+        paramString.mRequestHeight = this.b;
+      }
+      paramString.mLoadingDrawable = bdzx.a;
+      paramString.mFailedDrawable = bdzx.a;
+      paramString.mPlayGifImage = false;
+      paramString = URLDrawable.getDrawable(str, paramString);
+    } while (paramString == null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
   }
   
-  public void a(boolean paramBoolean)
+  protected void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super.a(paramString1, paramString2);
+    if (!(this.jdField_a_of_type_AndroidViewView instanceof DIYImageView)) {
+      zkb.a("JsonInflateViewModel current view type illegal!", new Object[0]);
+    }
+    do
+    {
+      return;
+      if ("content".equals(paramString1))
+      {
+        a(paramString2);
+        return;
+      }
+    } while (!"scale_type".equals(paramString1));
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(a(paramString2));
   }
   
-  public void c()
+  protected void b()
   {
-    super.c();
-    bhbs.a(203, "", a().getMiniAppInfoForReport());
-  }
-  
-  public void d()
-  {
-    bhbs.a(222, "", a().getMiniAppInfoForReport());
+    super.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhii
  * JD-Core Version:    0.7.0.1
  */

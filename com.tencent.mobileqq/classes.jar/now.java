@@ -1,29 +1,29 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class now
-  implements rsd
+  extends Handler
 {
-  now(not paramnot, AdvertisementInfo paramAdvertisementInfo) {}
-  
-  public void a()
+  now(nov paramnov, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdDislikeHelper", 2, "onComplain");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_from_type", 1);
-    localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
-    PublicFragmentActivity.a(not.a(this.jdField_a_of_type_Not), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
-    not.a(this.jdField_a_of_type_Not).dismiss();
+    this.a.a = true;
+    nov.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     now
  * JD-Core Version:    0.7.0.1
  */

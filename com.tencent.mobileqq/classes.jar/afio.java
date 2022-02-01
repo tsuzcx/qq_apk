@@ -1,44 +1,34 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class afio
-  extends Handler
+public class afio
+  implements View.OnClickListener
 {
-  afio(afin paramafin, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public afio(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.obj == null)
+    int i = 0;
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    for (;;)
     {
-      switch (paramMessage.what)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bcst.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_confirm", 0, 0, "", "", "", "");
+      this.a.jdField_a_of_type_Bgrs = ((bgrs)this.a.app.getManager(31));
+      this.a.b.setCompoundDrawablesWithIntrinsicBounds(2130839402, 0, 0, 0);
+      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
       {
-      default: 
-        return;
-      case 4: 
-        afin.a(this.a);
-        return;
+        String str = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
+        this.a.a(str, 4);
+        i += 1;
       }
-      afin.a(this.a, true);
-      return;
     }
-    WeakReference localWeakReference = (WeakReference)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      afin.a(this.a, localWeakReference);
-      return;
-    case 2: 
-      afin.b(this.a, localWeakReference);
-      return;
-    }
-    afin.c(this.a, localWeakReference);
   }
 }
 

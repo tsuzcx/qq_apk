@@ -1,82 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.qphone.base.util.QLog;
 
-public class amjf
+class amjf
+  implements andx
 {
-  public static int a;
-  public static long a;
-  public static Integer[] a;
-  public static int b;
-  public static Integer[] b;
-  public static int c;
+  amjf(amje paramamje) {}
   
-  static
+  public void a(int paramInt)
   {
-    jdField_a_of_type_Int = 9999;
-    jdField_b_of_type_Int = 2147483647;
-    c = 3000;
-    jdField_a_of_type_Long = 863913600L;
-    jdField_a_of_type_ArrayOfJavaLangInteger = new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(3000) };
-    jdField_b_of_type_ArrayOfJavaLangInteger = new Integer[] { Integer.valueOf(1), Integer.valueOf(4), Integer.valueOf(2), Integer.valueOf(3) };
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    boolean bool2 = false;
-    Integer[] arrayOfInteger = jdField_a_of_type_ArrayOfJavaLangInteger;
-    int j = arrayOfInteger.length;
-    int i = 0;
-    for (;;)
+    QLog.d("sava_ChatPieApolloViewController", 1, "sava_native_log preLoadApolloEngine onSoLoadComplete ret:" + paramInt);
+    if (paramInt == 0)
     {
-      boolean bool1 = bool2;
-      if (i < j)
+      if (QLog.isColorLevel()) {
+        QLog.d("sava_ChatPieApolloViewController", 2, "sava_native_log preLoadApolloEngine onSoLoadComplete");
+      }
+      if (amje.a(this.a))
       {
-        if (arrayOfInteger[i].intValue() == paramInt) {
-          bool1 = true;
-        }
+        QLog.i("sava_ChatPieApolloViewController", 1, "onSoLoadComplete but AIO destroy!");
+        return;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
-  {
-    if (NetConnInfoCenter.getServerTime() - paramRecentUser.lastmsgtime >= jdField_a_of_type_Long) {}
-    while ((!a(paramRecentUser.getType())) || ((paramRecentUser.getType() == 1) && (!b(paramQQAppInterface.b(paramRecentUser.uin))))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    boolean bool2 = false;
-    Integer[] arrayOfInteger = jdField_b_of_type_ArrayOfJavaLangInteger;
-    int j = arrayOfInteger.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
+      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloRender != null)
       {
-        if (arrayOfInteger[i].intValue() == paramInt) {
-          bool1 = true;
-        }
+        this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.preLoadDirector();
+        amje.a(this.a);
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    andw.b(this.a.jdField_a_of_type_Andx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amjf
  * JD-Core Version:    0.7.0.1
  */

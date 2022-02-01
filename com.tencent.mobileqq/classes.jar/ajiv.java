@@ -1,13 +1,17 @@
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
 
-class ajiv
-  implements vdr
+public class ajiv
+  extends anke
 {
-  ajiv(ajit paramajit) {}
+  public ajiv(DeviceFragment paramDeviceFragment) {}
   
-  public void a()
+  protected void b()
   {
-    this.a.a.invalidateViews();
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.d();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

@@ -20,6 +20,7 @@ import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tencentmap.mapsdk.maps.BaseMap;
 import com.tencent.tencentmap.mapsdk.maps.BaseMapView;
 import com.tencent.tencentmap.mapsdk.maps.model.IndoorBuilding;
@@ -330,27 +331,30 @@ public final class ij
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = this.a.getMap();
-    if (paramAdapterView == null) {
-      return;
-    }
-    if (this.z != null)
+    BaseMap localBaseMap = this.a.getMap();
+    if (localBaseMap == null) {}
+    for (;;)
     {
-      this.z.a.setTextColor(-16777216);
-      this.z.b.setVisibility(4);
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      if (this.z != null)
+      {
+        this.z.a.setTextColor(-16777216);
+        this.z.b.setVisibility(4);
+      }
+      ij.a.a locala = (ij.a.a)paramView.getTag();
+      locala.a.setTextColor(-1);
+      locala.b.setVisibility(0);
+      this.z = locala;
+      this.u = paramInt;
+      this.c = true;
+      localBaseMap.setIndoorFloor(paramInt);
     }
-    paramView = (ij.a.a)paramView.getTag();
-    paramView.a.setTextColor(-1);
-    paramView.b.setVisibility(0);
-    this.z = paramView;
-    this.u = paramInt;
-    this.c = true;
-    paramAdapterView.setIndoorFloor(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.map.sdk.a.ij
  * JD-Core Version:    0.7.0.1
  */

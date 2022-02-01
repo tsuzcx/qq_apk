@@ -1,33 +1,32 @@
-public class awah
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class awah
+  implements View.OnClickListener
 {
-  public int a = 0;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e = 1;
+  awah(awac paramawac, avzs paramavzs) {}
   
-  public awah()
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_c_of_type_Int = 1000;
-    this.jdField_d_of_type_Int = 1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append("allUseInSimple_2=").append(this.jdField_b_of_type_Boolean).append(", bgUseInSimple_2=").append(this.jdField_c_of_type_Boolean).append(", cfgUse_argb8888=").append(this.jdField_d_of_type_Boolean).append(", networkControl=").append(this.a).append(", dailyRetryTimes=").append(this.jdField_b_of_type_Int).append(", countRetryTimes=").append(this.jdField_c_of_type_Int).append(", entranceControl=").append(this.jdField_d_of_type_Int).append(", autoPreDownload=").append(this.e);
-    return localStringBuilder.toString();
+    if (this.jdField_a_of_type_Awac.jdField_a_of_type_Avzs.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!paramView.isSelected())
+      {
+        this.jdField_a_of_type_Awac.a(paramView);
+        this.jdField_a_of_type_Awac.jdField_a_of_type_Int = 3;
+        avzs.a(this.jdField_a_of_type_Awac.jdField_a_of_type_Avzs, Integer.valueOf(3));
+        bcst.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 1, 0, "0", "0", "0", "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awah
  * JD-Core Version:    0.7.0.1
  */

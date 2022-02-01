@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo;
 
-import akrc;
-import algr;
+import amki;
+import amzy;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
 class ApolloRenderDriver$5
   extends IApolloRunnableTask
 {
-  ApolloRenderDriver$5(ApolloRenderDriver paramApolloRenderDriver, String[] paramArrayOfString, algr paramalgr) {}
+  ApolloRenderDriver$5(ApolloRenderDriver paramApolloRenderDriver, String[] paramArrayOfString, amzy paramamzy) {}
   
   public String a()
   {
@@ -27,11 +27,11 @@ class ApolloRenderDriver$5
         i += 1;
       }
       this.this$0.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      if (this.jdField_a_of_type_Algr != null) {
-        this.jdField_a_of_type_Algr.d();
+      if (this.jdField_a_of_type_Amzy != null) {
+        this.jdField_a_of_type_Amzy.d();
       }
-      if ((!this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.this$0.jdField_a_of_type_Akrc != null)) {
-        this.this$0.jdField_a_of_type_Akrc.onRender();
+      if ((!this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.this$0.jdField_a_of_type_Amki != null)) {
+        this.this$0.jdField_a_of_type_Amki.onRender();
       }
       return;
     }
@@ -43,7 +43,7 @@ class ApolloRenderDriver$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRenderDriver.5
  * JD-Core Version:    0.7.0.1
  */

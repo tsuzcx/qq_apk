@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class LastLoginPhoneInfo
-  extends awge
+  extends Entity
 {
-  @awhs
+  @unique
   public String unifiedCode;
   
   public String toString()

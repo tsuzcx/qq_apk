@@ -1,25 +1,38 @@
-import java.util.ArrayList;
+import android.graphics.Paint.Align;
 
-public class avuu
-  extends avun
+public abstract interface avuu
 {
-  public ArrayList<ahnq> a;
-  public boolean a;
+  public abstract int a();
   
-  public avuu(ArrayList<ahnq> paramArrayList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract String a();
   
-  public boolean a()
-  {
-    return true;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void setAlign(Paint.Align paramAlign);
+  
+  public abstract void setLineMaxWidth(int paramInt);
+  
+  public abstract void setLyric(awdu paramawdu, int paramInt);
+  
+  public abstract void setOnSizeChangeListener(avvf paramavvf);
+  
+  public abstract void setSongId(String paramString);
+  
+  public abstract void setStrokeColor(int paramInt);
+  
+  public abstract void setStrokeWidth(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avuu
  * JD-Core Version:    0.7.0.1
  */

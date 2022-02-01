@@ -1,42 +1,33 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
-class amni
-  implements View.OnTouchListener
+public class amni
+  implements Observer
 {
-  amni(amne paramamne, ImageView paramImageView) {}
+  public amni(ApolloGameStateMachine paramApolloGameStateMachine) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    if ((paramObject != null) && ((paramObject instanceof Bundle)))
     {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
+      paramObservable = (Bundle)paramObject;
+      long l1 = paramObservable.getLong("START_TIME_KEY");
+      long l2 = paramObservable.getLong("END_TIME_KEY");
+      paramObject = paramObservable.getString("MESSAGE");
+      int i = paramObservable.getInt("FROM");
+      int j = paramObservable.getInt("TO");
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameStateMachine", 2, new Object[] { "[pipLineObserver] cost:[", Long.valueOf(l2 - l1), "ms] message:[", paramObject, "] from:[", Integer.valueOf(i), "] to:[", Integer.valueOf(j), "] start:[", Long.valueOf(l1), "] end:[", Long.valueOf(l2), "]" });
       }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
-    }
-    for (;;)
-    {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amni
  * JD-Core Version:    0.7.0.1
  */

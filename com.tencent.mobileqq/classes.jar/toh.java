@@ -1,78 +1,51 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Stack;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.gdtad.api.GdtAd;
+import org.json.JSONObject;
 
 public class toh
+  implements acko
 {
-  private static int jdField_a_of_type_Int = 3;
-  private static String jdField_a_of_type_JavaLangString = "PublicAccountImageCollectionActivityManager";
-  private static Stack<Activity> jdField_a_of_type_JavaUtilStack;
-  private static toh jdField_a_of_type_Toh;
+  public toh(BridgeModule paramBridgeModule, String paramString) {}
   
-  public static toh a()
+  public void onAdClicked(GdtAd paramGdtAd) {}
+  
+  public void onAdClosed(GdtAd paramGdtAd) {}
+  
+  public void onAdFailedToLoad(GdtAd paramGdtAd, ackn paramackn)
   {
-    if (jdField_a_of_type_Toh == null) {
-      jdField_a_of_type_Toh = new toh();
-    }
-    return jdField_a_of_type_Toh;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramackn.a());
   }
   
-  private void b()
-  {
-    Activity localActivity = (Activity)jdField_a_of_type_JavaUtilStack.firstElement();
-    if (localActivity != null)
-    {
-      localActivity.finish();
-      jdField_a_of_type_JavaUtilStack.remove(localActivity);
-    }
-  }
+  public void onAdImpression(GdtAd paramGdtAd) {}
   
-  public int a()
+  public void onAdLoaded(GdtAd paramGdtAd)
   {
-    if (jdField_a_of_type_JavaUtilStack != null)
+    Object localObject = oql.a(paramGdtAd);
+    paramGdtAd = new JSONObject();
+    for (;;)
     {
-      int i = jdField_a_of_type_JavaUtilStack.size();
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getActivityStackNum = " + i);
-      }
-      return i;
-    }
-    return 0;
-  }
-  
-  public void a()
-  {
-    if ((jdField_a_of_type_JavaUtilStack != null) && (jdField_a_of_type_JavaUtilStack.size() > jdField_a_of_type_Int))
-    {
-      int j = jdField_a_of_type_JavaUtilStack.size();
-      int k = jdField_a_of_type_Int;
-      int i = 0;
-      while (i < j - k)
+      try
       {
-        b();
-        i += 1;
+        paramGdtAd.put("adInfo", localObject);
+        if (localObject != null) {
+          continue;
+        }
+        paramGdtAd.put("retCode", -1);
       }
-    }
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if (jdField_a_of_type_JavaUtilStack == null) {
-      jdField_a_of_type_JavaUtilStack = new Stack();
-    }
-    jdField_a_of_type_JavaUtilStack.add(paramActivity);
-  }
-  
-  public void b(Activity paramActivity)
-  {
-    if ((jdField_a_of_type_JavaUtilStack != null) && (paramActivity != null)) {
-      jdField_a_of_type_JavaUtilStack.remove(paramActivity);
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        continue;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramGdtAd);
+      return;
+      paramGdtAd.put("retCode", 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     toh
  * JD-Core Version:    0.7.0.1
  */

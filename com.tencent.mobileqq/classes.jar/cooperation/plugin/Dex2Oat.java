@@ -3,11 +3,11 @@ package cooperation.plugin;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Log;
-import bdqk;
-import biqj;
-import biqk;
-import biql;
-import birh;
+import bgvk;
+import blfd;
+import blfe;
+import blff;
+import blgb;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,7 +27,7 @@ public final class Dex2Oat
   
   public static String a()
   {
-    String str2 = (String)bdqk.a("dalvik.system.VMRuntime", "getCurrentInstructionSet");
+    String str2 = (String)bgvk.a("dalvik.system.VMRuntime", "getCurrentInstructionSet");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = "arm";
@@ -69,7 +69,7 @@ public final class Dex2Oat
   
   public static boolean a(String paramString)
   {
-    String str = birh.a();
+    String str = blgb.a();
     if ((paramString == null) || (paramString.equals("")) || (str == null) || (str.equals("")))
     {
       Log.d("plugin_tag.Dex2Oat", "fingerprint empty:" + paramString + ",current:" + str);
@@ -84,24 +84,24 @@ public final class Dex2Oat
     return true;
   }
   
-  public static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, biql parambiql)
+  public static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, blff paramblff)
   {
-    return a(paramCollection, paramFile, paramBoolean, paramString, new AtomicInteger(0), parambiql, 2);
+    return a(paramCollection, paramFile, paramBoolean, paramString, new AtomicInteger(0), paramblff, 2);
   }
   
-  private static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, AtomicInteger paramAtomicInteger, biql parambiql, int paramInt)
+  private static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, AtomicInteger paramAtomicInteger, blff paramblff, int paramInt)
   {
     try
     {
       CountDownLatch localCountDownLatch = new CountDownLatch(paramCollection.size());
-      ExecutorService localExecutorService = Executors.newFixedThreadPool(paramInt, new biqj());
+      ExecutorService localExecutorService = Executors.newFixedThreadPool(paramInt, new blfd());
       long l = System.nanoTime();
       Object localObject = new ArrayList(paramCollection);
-      Collections.sort((List)localObject, new biqk());
+      Collections.sort((List)localObject, new blfe());
       Collections.reverse((List)localObject);
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        localExecutorService.submit(new Dex2Oat.OptimizeWorker((File)((Iterator)localObject).next(), paramFile, paramBoolean, paramString, paramAtomicInteger, localCountDownLatch, parambiql));
+        localExecutorService.submit(new Dex2Oat.OptimizeWorker((File)((Iterator)localObject).next(), paramFile, paramBoolean, paramString, paramAtomicInteger, localCountDownLatch, paramblff));
       }
       try
       {
@@ -172,7 +172,7 @@ public final class Dex2Oat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.plugin.Dex2Oat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,17 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class aenm
-  implements aenf
+  extends VasQuickUpdateManager.CallBacker
 {
-  public aenm(BirthdayActivatePage paramBirthdayActivatePage) {}
+  public aenm(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void a(int paramInt)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (paramInt > 0)
-    {
-      this.a.a.setEnabled(true);
-      return;
+    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (paramInt1 == 0) && (this.a.a != null)) {
+      this.a.b(this.a.a);
     }
-    this.a.a.setEnabled(false);
   }
 }
 

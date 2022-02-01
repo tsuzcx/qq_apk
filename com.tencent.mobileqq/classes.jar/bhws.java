@@ -1,68 +1,130 @@
-import com.tencent.widget.ExpandableListConnector.GroupMetadata;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.AutoCompleteTextView;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.widget.DropdownView;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public class bhws
+  extends AutoCompleteTextView
 {
-  private static ArrayList<bhws> a;
-  public int a;
-  public bhwt a;
-  public ExpandableListConnector.GroupMetadata a;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public bhws(DropdownView paramDropdownView, Context paramContext)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+    super(paramContext);
+    setId(526);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  private static bhws a()
+  public bhws(DropdownView paramDropdownView, Context paramContext, AttributeSet paramAttributeSet)
   {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    super(paramContext, paramAttributeSet);
+    setId(526);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public bhws(DropdownView paramDropdownView, Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+    setId(526);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public boolean enoughToFilter()
+  {
+    return true;
+  }
+  
+  public boolean isPopupShowing()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return super.isPopupShowing();
+    }
+    return false;
+  }
+  
+  public void onEditorAction(int paramInt)
+  {
+    if (paramInt == 5)
     {
-      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        localbhws = (bhws)jdField_a_of_type_JavaUtilArrayList.remove(0);
-        localbhws.b();
-        return localbhws;
+      View localView = focusSearch(130);
+      if ((localView != null) && (!localView.requestFocus(130))) {
+        throw new IllegalStateException("focus search returned a view that wasn't able to take focus!");
       }
-      bhws localbhws = new bhws();
-      return localbhws;
+    }
+    else
+    {
+      super.onEditorAction(paramInt);
     }
   }
   
-  public static bhws a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ExpandableListConnector.GroupMetadata paramGroupMetadata, int paramInt5)
+  protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    bhws localbhws = a();
-    localbhws.jdField_a_of_type_Bhwt = bhwt.a(paramInt2, paramInt3, paramInt4, paramInt1);
-    localbhws.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = paramGroupMetadata;
-    localbhws.jdField_a_of_type_Int = paramInt5;
-    return localbhws;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Bhwt = null;
-    this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = null;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    try
     {
-      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
-        jdField_a_of_type_JavaUtilArrayList.add(this);
+      if (isPopupShowing()) {
+        dismissDropDown();
       }
       return;
     }
+    catch (Exception paramCharSequence) {}
   }
   
-  public boolean a()
+  protected void performFiltering(CharSequence paramCharSequence, int paramInt) {}
+  
+  public void showDropDown()
   {
-    return this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata != null;
+    try
+    {
+      super.showDropDown();
+      if (Build.VERSION.SDK_INT <= 8) {
+        return;
+      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
+      return;
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      return;
+    }
+    try
+    {
+      Object localObject1 = getClass().getSuperclass().getDeclaredField("mDropDownList");
+      ((Field)localObject1).setAccessible(true);
+      localObject1 = ((Field)localObject1).get(this);
+      localObject1.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(0) });
+      return;
+    }
+    catch (Exception localException2)
+    {
+      try
+      {
+        Object localObject2 = getClass().getSuperclass().getDeclaredField("mPopup");
+        ((Field)localObject2).setAccessible(true);
+        localObject2 = ((Field)localObject2).get(this);
+        Object localObject3 = localObject2.getClass().getDeclaredField("mDropDownList");
+        ((Field)localObject3).setAccessible(true);
+        localObject3 = ((Field)localObject3).get(localObject2);
+        localObject3.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject3, new Object[] { Integer.valueOf(0) });
+        ((PopupWindow)localObject2).setAnimationStyle(2130772303);
+        return;
+      }
+      catch (Exception localException3) {}
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhws
  * JD-Core Version:    0.7.0.1
  */

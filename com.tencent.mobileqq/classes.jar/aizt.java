@@ -1,59 +1,52 @@
-import android.text.InputFilter;
-import android.text.InputFilter.LengthFilter;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aizt
-  implements aizp
+  extends aiyi
+  implements View.OnClickListener
 {
-  private List<String> a;
-  
-  public String a(CopyOnWriteArrayList<String> paramCopyOnWriteArrayList, boolean paramBoolean)
+  public aizt(Context paramContext, QQAppInterface paramQQAppInterface, ajae paramajae, ajax paramajax)
   {
-    int i = paramCopyOnWriteArrayList.size() - 1;
-    while (i >= 0)
-    {
-      String str = (String)paramCopyOnWriteArrayList.remove(i);
-      if (!TextUtils.isEmpty(str)) {
-        return str;
-      }
-      i -= 1;
-    }
-    if (paramBoolean)
-    {
-      if (this.a == null)
-      {
-        this.a = new ArrayList(4);
-        this.a.add("apple");
-        this.a.add("good");
-        this.a.add("study");
-        this.a.add("play");
-      }
-      i = new Random().nextInt(this.a.size());
-      if (QLog.isColorLevel()) {
-        QLog.i("WordChainBizImpl", 2, "getRandomIdiom get backIdiom:" + i + " backWordListSize:" + this.a.size());
-      }
-      return (String)this.a.get(i);
-    }
-    return "";
+    super(paramContext, paramQQAppInterface, paramajae, paramajax);
   }
   
-  public boolean a(String paramString)
+  public View a(int paramInt, View paramView)
   {
-    return !TextUtils.isEmpty(paramString);
+    aizu localaizu;
+    if ((paramView == null) || (!(paramView.getTag() instanceof aizu)))
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561568, null);
+      localaizu = new aizu();
+      localaizu.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367826));
+      paramView.setOnClickListener(this);
+      paramView.setTag(localaizu);
+    }
+    for (;;)
+    {
+      String str = ((ajbf)this.jdField_a_of_type_Ajax).b;
+      localaizu.jdField_f_of_type_JavaLangString = str;
+      localaizu.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Ajae.a(1, str));
+      aiwt.a += 1;
+      return paramView;
+      localaizu = (aizu)paramView.getTag();
+    }
   }
   
-  public InputFilter[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((bdep.d()) || (bdep.e())) {}
-    for (int i = 1; (i == 0) && (paramInt > 0); i = 0) {
-      return new InputFilter[] { new InputFilter.LengthFilter(paramInt) };
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerifyBlockedBuilder", 2, "start PhoneLaunchActivity");
     }
-    return new InputFilter[0];
+    aiwt.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+    bcst.b(null, "dc00898", "", "", "0X800A3A4", "0X800A3A4", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

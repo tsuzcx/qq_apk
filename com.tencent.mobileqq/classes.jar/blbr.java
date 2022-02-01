@@ -1,27 +1,19 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.1;
-import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.2;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class blbr
-  implements blae
+class blbr
+  implements View.OnClickListener
 {
-  blbr(blbp paramblbp) {}
+  blbr(blbq paramblbq) {}
   
-  public void a(MetaMaterial paramMetaMaterial)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.1(this, paramMetaMaterial));
-  }
-  
-  public void a(MetaMaterial paramMetaMaterial, int paramInt)
-  {
-    blbp.a(this.a).a(new blaj(paramMetaMaterial, 1, paramInt));
-  }
-  
-  public void b(MetaMaterial paramMetaMaterial)
-  {
-    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.2(this, paramMetaMaterial));
+    if ((this.a.a.a != null) && (!this.a.a.a.isFinishing())) {
+      this.a.a.a.finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

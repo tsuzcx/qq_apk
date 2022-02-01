@@ -1,10 +1,14 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public abstract interface ajmz
+class ajmz
 {
-  public abstract void a();
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public abstract void a(GuideBaseFragment paramGuideBaseFragment);
+  private ajmz(ajmw paramajmw) {}
 }
 
 

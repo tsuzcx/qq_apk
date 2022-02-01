@@ -1,56 +1,111 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchFragment;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.LebaPluginInfo;
 import java.util.Iterator;
 import java.util.List;
 
 public class arcs
-  extends ayjo<aynu, aywd>
 {
-  public arcs(ListView paramListView, bdbb parambdbb, List<aynu> paramList, String paramString, QQAppInterface paramQQAppInterface)
+  public byte a;
+  public int a;
+  public long a;
+  public LebaPluginInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  
+  public arcs()
   {
-    super(parambdbb, paramList);
-    if (paramString == null) {
-      return;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 2147483647;
+  }
+  
+  public static String a(List<arcs> paramList)
+  {
+    if (paramList == null) {
+      return " print lebaData == null";
     }
-    if (paramString.size() == 1)
+    if (paramList.isEmpty()) {
+      return " print lebaData.isEmpty()";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(" print lebaData size = ").append(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramListView = (arcp)paramString.get(0);
-      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
+      arcs localarcs = (arcs)paramList.next();
+      if (localarcs == null)
       {
-        parambdbb = new ArrayList();
-        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramList.hasNext())
-        {
-          paramString = (FileManagerEntity)paramList.next();
-          paramQQAppInterface = new arcp();
-          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
-          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
-          parambdbb.add(paramQQAppInterface);
+        localStringBuilder.append("|item = null");
+      }
+      else
+      {
+        localStringBuilder.append("|item = ").append(localarcs.jdField_a_of_type_Long).append("|").append(localarcs.jdField_a_of_type_JavaLangString).append("|").append(localarcs.jdField_b_of_type_JavaLangString).append("|").append(localarcs.jdField_a_of_type_Int).append("|").append(localarcs.jdField_a_of_type_Byte).append("|").append(localarcs.jdField_b_of_type_Long).append("|").append(localarcs.jdField_a_of_type_Boolean).append("|");
+        if (localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) {
+          localStringBuilder.append("info=null");
+        } else {
+          localStringBuilder.append(localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.toString());
         }
-        a(parambdbb);
-        return;
       }
     }
-    a(paramString);
+    return localStringBuilder.toString();
   }
   
-  protected ayqp<aynu, aywd> a(int paramInt)
+  public void a()
   {
-    return new arcu(FileSearchFragment.a(this.a));
+    this.jdField_a_of_type_Byte = 0;
   }
   
-  protected aywe a(int paramInt, ViewGroup paramViewGroup)
+  public boolean a()
   {
-    return new arcv(paramViewGroup);
+    return this.jdField_a_of_type_Byte == 0;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Byte = 1;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.cCanChangeState != 0);
+  }
+  
+  public boolean c()
+  {
+    return (!b()) || (this.jdField_b_of_type_Int == 2147483647);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramObject == null) || (this.jdField_a_of_type_Long == 0L)) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (this == paramObject);
+      if (!(paramObject instanceof arcs)) {
+        break;
+      }
+      paramObject = (arcs)paramObject;
+      bool1 = bool2;
+    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return Long.valueOf(this.jdField_a_of_type_Long).hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcs
  * JD-Core Version:    0.7.0.1
  */

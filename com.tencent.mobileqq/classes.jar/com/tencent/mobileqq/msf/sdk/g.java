@@ -124,8 +124,17 @@ public class g
       {
         for (;;)
         {
+          int i;
           QLog.e(a, 1, "getNetworkType excep!", localException);
-          int i = paramTelephonyManager.getNetworkType();
+          try
+          {
+            i = paramTelephonyManager.getNetworkType();
+          }
+          catch (SecurityException paramTelephonyManager)
+          {
+            QLog.e(a, 1, "getNetworkType se", localException);
+            i = 0;
+          }
         }
       }
     }

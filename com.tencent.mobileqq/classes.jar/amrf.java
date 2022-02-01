@@ -1,32 +1,30 @@
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class amrf
+  implements TVK_SDKMgr.InstallListener
 {
-  public static Object a(byte[] paramArrayOfByte)
+  public amrf(CmGameAppInterface paramCmGameAppInterface) {}
+  
+  public void onInstallProgress(float paramFloat)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    return new ObjectInputStream(new ByteArrayInputStream(paramArrayOfByte)).readObject();
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstallProgress] v:" + paramFloat);
   }
   
-  public static byte[] a(Serializable paramSerializable)
+  public void onInstalledFailed(int paramInt)
   {
-    if (paramSerializable == null) {
-      return null;
-    }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    new ObjectOutputStream(localByteArrayOutputStream).writeObject(paramSerializable);
-    return localByteArrayOutputStream.toByteArray();
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledFailed], i:" + paramInt);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledSuccessed]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amrf
  * JD-Core Version:    0.7.0.1
  */

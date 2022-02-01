@@ -1,23 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-class axjx
-  extends AnimatorListenerAdapter
+public abstract interface axjx
 {
-  axjx(axjw paramaxjw) {}
+  @Deprecated
+  public abstract void a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (axjs.a(this.a.a) != null) {
-      axjs.a(this.a.a).c();
-    }
-    axjs.a(this.a.a, 8);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(VideoData paramVideoData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axjx
  * JD-Core Version:    0.7.0.1
  */

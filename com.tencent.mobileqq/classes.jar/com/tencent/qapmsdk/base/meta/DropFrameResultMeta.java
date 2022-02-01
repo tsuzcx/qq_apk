@@ -125,16 +125,17 @@ public final class DropFrameResultMeta
   
   public void reset()
   {
-    int i = 0;
     this.dropCount = 0;
     this.duration = 0.0F;
     int j = this.dropIntervals.length;
+    int i = 0;
     while (i < j)
     {
       this.dropIntervals[i] = 0L;
       i += 1;
     }
     this.scene = "";
+    this.state = 0;
   }
   
   @NotNull
@@ -145,7 +146,7 @@ public final class DropFrameResultMeta
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.meta.DropFrameResultMeta
  * JD-Core Version:    0.7.0.1
  */

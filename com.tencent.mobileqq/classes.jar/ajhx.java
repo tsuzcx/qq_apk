@@ -1,22 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.os.MqqHandler;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment;
 
-class ajhx
-  implements View.OnClickListener
+public class ajhx
+  extends View.AccessibilityDelegate
 {
-  private final int jdField_a_of_type_Int;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public ajhx(ContactsBaseFragment paramContactsBaseFragment) {}
   
-  public ajhx(int paramInt, MqqHandler paramMqqHandler)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(this.jdField_a_of_type_Int);
+    int i = paramInt;
+    if (paramInt == 8) {
+      i = 32768;
+    }
+    super.sendAccessibilityEvent(paramView, i);
   }
 }
 

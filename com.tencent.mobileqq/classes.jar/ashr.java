@@ -1,17 +1,12 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
-
 public class ashr
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public ashr(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  public int a;
+  public String a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public ashr()
   {
-    ((auad)this.a.a.getManager(303)).a((short)-23310, paramBoolean, true);
-    azqs.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 4, 4, "", "", "", "");
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

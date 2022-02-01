@@ -6,11 +6,12 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 import io.flutter.Log;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.FlutterEngineCache;
@@ -18,12 +19,11 @@ import io.flutter.embedding.engine.FlutterShellArgs;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.embedding.engine.dart.DartExecutor.DartEntrypoint;
 import io.flutter.embedding.engine.plugins.activity.ActivityControlSurface;
-import io.flutter.embedding.engine.renderer.OnFirstFrameRenderedListener;
+import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
 import io.flutter.embedding.engine.systemchannels.LifecycleChannel;
 import io.flutter.embedding.engine.systemchannels.NavigationChannel;
 import io.flutter.embedding.engine.systemchannels.SystemChannel;
 import io.flutter.plugin.platform.PlatformPlugin;
-import io.flutter.view.FlutterMain;
 import java.util.Arrays;
 
 final class FlutterActivityAndFragmentDelegate
@@ -33,13 +33,13 @@ final class FlutterActivityAndFragmentDelegate
   private FlutterEngine flutterEngine;
   @Nullable
   private FlutterSplashView flutterSplashView;
+  @NonNull
+  private final FlutterUiDisplayListener flutterUiDisplayListener = new FlutterActivityAndFragmentDelegate.1(this);
   @Nullable
   private FlutterView flutterView;
   @NonNull
   private FlutterActivityAndFragmentDelegate.Host host;
   private boolean isFlutterEngineFromHost;
-  @NonNull
-  private final OnFirstFrameRenderedListener onFirstFrameRenderedListener = new FlutterActivityAndFragmentDelegate.1(this);
   @Nullable
   private PlatformPlugin platformPlugin;
   
@@ -75,43 +75,24 @@ final class FlutterActivityAndFragmentDelegate
     throw new IllegalStateException("Cannot execute method on a destroyed FlutterActivityAndFragmentDelegate.");
   }
   
-  private void initializeFlutter(@NonNull Context paramContext)
-  {
-    FlutterMain.ensureInitializationComplete(paramContext.getApplicationContext(), this.host.getFlutterShellArgs().toArray());
-  }
-  
-  private void setupFlutterEngine()
-  {
-    Log.d("FlutterActivityAndFragmentDelegate", "Setting up FlutterEngine.");
-    String str = this.host.getCachedEngineId();
-    if (str != null)
-    {
-      this.flutterEngine = FlutterEngineCache.getInstance().get(str);
-      this.isFlutterEngineFromHost = true;
-      if (this.flutterEngine != null) {
-        return;
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("The requested cached FlutterEngine did not exist in the FlutterEngineCache: '");
-      localStringBuilder.append(str);
-      localStringBuilder.append("'");
-      throw new IllegalStateException(localStringBuilder.toString());
-    }
-    this.flutterEngine = this.host.provideFlutterEngine(this.host.getContext());
-    if (this.flutterEngine != null)
-    {
-      this.isFlutterEngineFromHost = true;
-      return;
-    }
-    Log.d("FlutterActivityAndFragmentDelegate", "No preferred FlutterEngine was provided. Creating a new FlutterEngine for this FlutterFragment.");
-    this.flutterEngine = new FlutterEngine(this.host.getContext());
-    this.isFlutterEngineFromHost = false;
-  }
-  
   @Nullable
   FlutterEngine getFlutterEngine()
   {
     return this.flutterEngine;
+  }
+  
+  boolean isFlutterEngineFromHost()
+  {
+    return this.isFlutterEngineFromHost;
+  }
+  
+  void onActivityCreated(@Nullable Bundle paramBundle)
+  {
+    Log.v("FlutterActivityAndFragmentDelegate", "onActivityCreated. Giving plugins an opportunity to restore state.");
+    ensureAlive();
+    if (this.host.shouldAttachEngineToActivity()) {
+      this.flutterEngine.getActivityControlSurface().onRestoreInstanceState(paramBundle);
+    }
   }
   
   void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -136,7 +117,6 @@ final class FlutterActivityAndFragmentDelegate
   void onAttach(@NonNull Context paramContext)
   {
     ensureAlive();
-    initializeFlutter(paramContext);
     if (this.flutterEngine == null) {
       setupFlutterEngine();
     }
@@ -167,7 +147,7 @@ final class FlutterActivityAndFragmentDelegate
     Log.v("FlutterActivityAndFragmentDelegate", "Creating FlutterView.");
     ensureAlive();
     this.flutterView = new FlutterView(this.host.getActivity(), this.host.getRenderMode(), this.host.getTransparencyMode());
-    this.flutterView.addOnFirstFrameRenderedListener(this.onFirstFrameRenderedListener);
+    this.flutterView.addOnFirstFrameRenderedListener(this.flutterUiDisplayListener);
     this.flutterSplashView = new FlutterSplashView(this.host.getContext());
     if (Build.VERSION.SDK_INT >= 17) {
       this.flutterSplashView.setId(View.generateViewId());
@@ -184,18 +164,19 @@ final class FlutterActivityAndFragmentDelegate
   {
     Log.v("FlutterActivityAndFragmentDelegate", "onDestroyView()");
     ensureAlive();
-    this.flutterView.removeOnFirstFrameRenderedListener(this.onFirstFrameRenderedListener);
+    this.flutterView.removeOnFirstFrameRenderedListener(this.flutterUiDisplayListener);
   }
   
   void onDetach()
   {
     Log.v("FlutterActivityAndFragmentDelegate", "onDetach()");
     ensureAlive();
+    this.host.cleanUpFlutterEngine(this.flutterEngine);
     if (this.host.shouldAttachEngineToActivity())
     {
       Log.d("FlutterActivityAndFragmentDelegate", "Detaching FlutterEngine from the Activity that owns this Fragment.");
       if (!this.host.getActivity().isChangingConfigurations()) {
-        break label130;
+        break label153;
       }
       this.flutterEngine.getActivityControlSurface().detachFromActivityForConfigChanges();
     }
@@ -206,6 +187,7 @@ final class FlutterActivityAndFragmentDelegate
         this.platformPlugin.destroy();
         this.platformPlugin = null;
       }
+      this.flutterEngine.getLifecycleChannel().appIsDetached();
       if (this.host.shouldDestroyEngineWithHost())
       {
         this.flutterEngine.destroy();
@@ -215,7 +197,7 @@ final class FlutterActivityAndFragmentDelegate
         this.flutterEngine = null;
       }
       return;
-      label130:
+      label153:
       this.flutterEngine.getActivityControlSurface().detachFromActivity();
     }
   }
@@ -286,6 +268,15 @@ final class FlutterActivityAndFragmentDelegate
     this.flutterEngine.getLifecycleChannel().appIsResumed();
   }
   
+  void onSaveInstanceState(@Nullable Bundle paramBundle)
+  {
+    Log.v("FlutterActivityAndFragmentDelegate", "onSaveInstanceState. Giving plugins an opportunity to save state.");
+    ensureAlive();
+    if (this.host.shouldAttachEngineToActivity()) {
+      this.flutterEngine.getActivityControlSurface().onSaveInstanceState(paramBundle);
+    }
+  }
+  
   void onStart()
   {
     Log.v("FlutterActivityAndFragmentDelegate", "onStart()");
@@ -338,10 +329,39 @@ final class FlutterActivityAndFragmentDelegate
     this.flutterView = null;
     this.platformPlugin = null;
   }
+  
+  @VisibleForTesting
+  void setupFlutterEngine()
+  {
+    Log.d("FlutterActivityAndFragmentDelegate", "Setting up FlutterEngine.");
+    String str = this.host.getCachedEngineId();
+    if (str != null)
+    {
+      this.flutterEngine = FlutterEngineCache.getInstance().get(str);
+      this.isFlutterEngineFromHost = true;
+      if (this.flutterEngine != null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("The requested cached FlutterEngine did not exist in the FlutterEngineCache: '");
+      localStringBuilder.append(str);
+      localStringBuilder.append("'");
+      throw new IllegalStateException(localStringBuilder.toString());
+    }
+    this.flutterEngine = this.host.provideFlutterEngine(this.host.getContext());
+    if (this.flutterEngine != null)
+    {
+      this.isFlutterEngineFromHost = true;
+      return;
+    }
+    Log.d("FlutterActivityAndFragmentDelegate", "No preferred FlutterEngine was provided. Creating a new FlutterEngine for this FlutterFragment.");
+    this.flutterEngine = new FlutterEngine(this.host.getContext(), this.host.getFlutterShellArgs().toArray());
+    this.isFlutterEngineFromHost = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterActivityAndFragmentDelegate
  * JD-Core Version:    0.7.0.1
  */

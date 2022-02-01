@@ -1,86 +1,28 @@
-import android.os.Handler;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.1;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.2;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.3;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.4.4;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.profile.like.PraiseManager;
+import java.lang.ref.WeakReference;
 
-public class aruc
-  implements ITMAssistantDownloadClientListener
+class aruc
+  implements azho
 {
-  aruc(arub paramarub) {}
+  aruc(arti paramarti) {}
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
-    arub.b(this.a);
-    if (!arub.a(this.a).post(new UniformDownloaderAppBabySdk.4.1(this, paramString, paramLong1, paramLong2))) {
-      QLog.e(arub.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
-    }
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    int i = 0;
-    int j = 0;
-    Object localObject2 = null;
-    QLog.i(arub.a, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[" + paramInt1 + "] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
-    String str = "";
-    Object localObject1;
-    if ((paramTMAssistantDownloadClient != null) && (4 == paramInt1))
+    MessengerService localMessengerService = (MessengerService)this.a.a.get();
+    if (localMessengerService != null)
     {
-      try
-      {
-        localObject1 = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
-        i = 0;
-        paramTMAssistantDownloadClient = str;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("id", paramInt2);
+      localBundle.putInt("code", paramInt1);
+      localBundle.putString("url", paramString);
+      paramBundle.putBundle("response", localBundle);
+      localMessengerService.a(paramBundle);
+      if ((paramInt1 == 0) && (MessengerService.e(localMessengerService) != null) && ((MessengerService.f(localMessengerService) instanceof QQAppInterface))) {
+        ((PraiseManager)((QQAppInterface)MessengerService.g(localMessengerService)).getManager(209)).a(paramInt2, true, "from_praise_mall");
       }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        do
-        {
-          for (;;)
-          {
-            paramTMAssistantDownloadClient.printStackTrace();
-            paramTMAssistantDownloadClient = artu.a(22);
-            localObject1 = null;
-            j = 22;
-            i = 1;
-            continue;
-            localObject1 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
-          }
-        } while ((arub.a(this.a) == null) || (arub.a(this.a).post(new UniformDownloaderAppBabySdk.4.3(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject1))));
-        QLog.e(arub.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
-        return;
-      }
-      if (localObject1 == null) {
-        localObject1 = localObject2;
-      }
-    }
-    for (;;)
-    {
-      arub.b(this.a);
-      if (i != 0)
-      {
-        if (!arub.a(this.a).post(new UniformDownloaderAppBabySdk.4.2(this, paramString1, j, paramTMAssistantDownloadClient))) {
-          QLog.e(arub.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. haveErr and thread error!!");
-        }
-        return;
-      }
-      localObject1 = null;
-      paramTMAssistantDownloadClient = "";
-      j = 0;
-    }
-  }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
-  {
-    QLog.e(arub.a, 1, "[UniformDL] ABSdkdownload service invalid ");
-    arub.b(this.a);
-    if (!arub.a(this.a).post(new UniformDownloaderAppBabySdk.4.4(this))) {
-      QLog.e(arub.a, 1, "[UniformDL] OnDwonloadSDKServiceInvalid. thread error!!");
     }
   }
 }

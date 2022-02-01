@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import arqx;
-import arrj;
-import arvi;
+import atut;
+import atvg;
+import atxz;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,14 +25,14 @@ class QfileLocalFileDocTabView$1
     {
       localObject1 = this.this$0.d.iterator();
       while (((Iterator)localObject1).hasNext()) {
-        arrj.a(bool, ((arvi)((Iterator)localObject1).next()).a(), ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
+        atvg.a(bool, ((atxz)((Iterator)localObject1).next()).a(), ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
       }
     }
     if (this.this$0.f) {}
-    for (Object localObject1 = arqx.a().a();; localObject1 = null)
+    for (Object localObject1 = atut.a().a();; localObject1 = null)
     {
       if (localObject1 != null) {
-        arrj.a(bool, (String)localObject1, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
+        atvg.a(bool, (String)localObject1, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
       }
       localObject1 = new HashMap();
       Iterator localIterator = localHashMap.keySet().iterator();
@@ -47,13 +47,13 @@ class QfileLocalFileDocTabView$1
         ((List)((HashMap)localObject1).get(str)).addAll((Collection)localObject2);
       }
     }
-    arrj.a((Map)localObject1);
+    atvg.a((Map)localObject1);
     QfileLocalFileDocTabView.a(this.this$0, new QfileLocalFileDocTabView.1.1(this, (HashMap)localObject1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView.1
  * JD-Core Version:    0.7.0.1
  */

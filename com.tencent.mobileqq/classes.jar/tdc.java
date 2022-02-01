@@ -1,33 +1,33 @@
-import NS_KING_INTERFACE.stPostCommentDingRsp;
-import UserGrowth.stSimpleComment;
-import com.tribe.async.dispatch.Dispatcher;
+import android.view.View;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import org.json.JSONObject;
 
 class tdc
-  implements tgt
+  implements URLDrawableDownListener
 {
-  tdc(tcu paramtcu, stSimpleComment paramstSimpleComment) {}
+  tdc(tcx paramtcx) {}
   
-  public void a(the paramthe)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if ((paramthe.jdField_a_of_type_JavaLangObject instanceof stPostCommentDingRsp))
-    {
-      stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramthe.jdField_a_of_type_JavaLangObject;
-      if (this.jdField_a_of_type_UserGrowthStSimpleComment.isDing == 1) {
-        tlo.d(tcu.a(), "点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
-      }
-      for (;;)
-      {
-        umc.a().dispatch(this.jdField_a_of_type_Tcu.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
-        return;
-        tlo.d(tcu.a(), "取消点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
-      }
-    }
-    tlo.d(tcu.a(), "评论点赞失败new！");
+    AbstractGifImage.resumeAll();
+    tcx.a(this.a).setVisibility(0);
+    this.a.a("0X800920C", new JSONObject());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tdc
  * JD-Core Version:    0.7.0.1
  */

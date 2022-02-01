@@ -1,25 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class adzj
-  implements DialogInterface.OnClickListener
+  extends anvm
 {
-  public adzj(SplashActivity paramSplashActivity) {}
+  public adzj(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(List<String> paramList)
   {
-    Intent localIntent = new Intent(this.a, GesturePWDSettingActivity.class);
-    localIntent.putExtra("key_reset", true);
-    this.a.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    aong localaong;
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      localaong = this.a.a.a();
+      if (localaong != null) {
+        break label37;
+      }
+      QLog.d("Q.recent", 1, "onBatchDelete, proxy == null");
+    }
+    for (;;)
+    {
+      return;
+      label37:
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        RecentUser localRecentUser = (RecentUser)localaong.findRecentUserByUin((String)paramList.next(), 0);
+        if (localRecentUser != null) {
+          localaong.delRecentUser(localRecentUser);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzj
  * JD-Core Version:    0.7.0.1
  */

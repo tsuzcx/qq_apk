@@ -1,70 +1,71 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
+import tencent.im.oidb.articlesummary.articlesummary.SpecialTopicInfo;
 
 public class rga
-  implements rcc
 {
-  private rga(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  public int a;
+  public long a;
+  public String a;
+  public articlesummary.PackInfo a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public long e;
+  public int f;
+  public long f;
   
-  public void a(boolean paramBoolean)
+  public rga()
   {
-    boolean bool2 = true;
-    VideoFeedsRecyclerView localVideoFeedsRecyclerView;
-    if (VideoFeedsRecommendFragment.a(this.a) != null)
-    {
-      VideoFeedsRecommendFragment.a(this.a).a.d(paramBoolean);
-      if ((!VideoFeedsRecommendFragment.a(this.a).b) && ((VideoFeedsRecommendFragment.a(this.a).itemView.getParent() instanceof VideoFeedsRecyclerView)))
-      {
-        localVideoFeedsRecyclerView = (VideoFeedsRecyclerView)VideoFeedsRecommendFragment.a(this.a).itemView.getParent();
-        if (paramBoolean) {
-          break label201;
-        }
-        bool1 = true;
-        localVideoFeedsRecyclerView.setScrollable(bool1);
-      }
-    }
-    if (paramBoolean)
-    {
-      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
-      label112:
-      if (!VideoFeedsRecommendFragment.b(this.a))
-      {
-        localVideoFeedsRecyclerView = VideoFeedsRecommendFragment.a(this.a);
-        if (paramBoolean) {
-          break label223;
-        }
-      }
-    }
-    label201:
-    label223:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localVideoFeedsRecyclerView.setScrollable(bool1);
-      if ((!paramBoolean) && (VideoFeedsRecommendFragment.c(this.a)))
-      {
-        VideoFeedsRecommendFragment.a(this.a).a();
-        VideoFeedsRecommendFragment.a(this.a, false);
-      }
-      if (VideoFeedsRecommendFragment.a(this.a) != null) {
-        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
-      }
-      return;
-      bool1 = false;
-      break;
-      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
-      break label112;
-    }
+    this.jdField_a_of_type_Int = 6;
   }
   
-  public void b()
+  public static rga a(articlesummary.PackInfo paramPackInfo)
   {
-    this.a.b(true);
+    try
+    {
+      rga localrga = new rga();
+      localrga.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackInfo = paramPackInfo;
+      localrga.jdField_a_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_title.get();
+      localrga.jdField_b_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).bytes_recommend_reason.get().toStringUtf8();
+      localrga.jdField_b_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_puin.get();
+      localrga.jdField_c_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_icon_url.get();
+      localrga.jdField_a_of_type_Int = paramPackInfo.pack_type.get();
+      localrga.jdField_c_of_type_Long = paramPackInfo.uint64_pack_id.get();
+      localrga.jdField_d_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_jump_url.get();
+      localrga.jdField_b_of_type_Int = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_icon_shape.get();
+      localrga.jdField_e_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_algorithm_id.get();
+      localrga.jdField_d_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_strategy_id.get();
+      localrga.f = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_topic_id.get();
+      localrga.jdField_a_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_posttime.get();
+      localrga.jdField_e_of_type_Int = paramPackInfo.uint32_follow_status.get();
+      return localrga;
+    }
+    catch (Exception paramPackInfo) {}
+    return null;
+  }
+  
+  public String toString()
+  {
+    return "PolymericInfo【 packID : " + this.jdField_c_of_type_Long + "\n polymericType : " + this.jdField_a_of_type_Int + "\n algorithmID : " + this.jdField_e_of_type_Long + "\n strategyID : " + this.jdField_d_of_type_Long + "\n title : " + this.jdField_a_of_type_JavaLangString + "\n desc : " + this.jdField_b_of_type_JavaLangString + "\n publicTime : " + this.jdField_a_of_type_Long + "\n iconUrl : " + this.jdField_c_of_type_JavaLangString + "\n uin : " + this.jdField_b_of_type_Long + "\n topicID : " + this.f + "\n topicMemberCount : " + this.jdField_c_of_type_Int + "\n jumpUrl : " + this.jdField_d_of_type_JavaLangString + "\n videoCount : " + this.jdField_d_of_type_Int + "\n followStatus : " + this.jdField_e_of_type_Int + "】";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rga
  * JD-Core Version:    0.7.0.1
  */

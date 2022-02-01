@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew;
 
 import android.widget.TextView;
-import rdm;
+import ryx;
 
 class ViolaVideoView$11
   implements Runnable
@@ -10,12 +10,12 @@ class ViolaVideoView$11
   
   public void run()
   {
-    rdm.a(this.a, 8);
+    ryx.a(this.a, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView.11
  * JD-Core Version:    0.7.0.1
  */

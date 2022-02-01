@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import oxb;
-import pew;
+import pmk;
+import pwb;
 
 public class ArticleInfoModule$29
   implements Runnable
 {
-  public ArticleInfoModule$29(pew parampew, int paramInt) {}
+  public ArticleInfoModule$29(pwb parampwb, int paramInt) {}
   
   public void run()
   {
-    oxb.a().c(this.a);
+    pmk.a().c(this.a);
   }
 }
 

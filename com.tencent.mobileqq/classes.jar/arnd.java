@@ -1,17 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.10.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-
 public class arnd
-  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  arnd(arnb paramarnb) {}
+  public int a;
+  public String a;
+  public boolean a;
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public arnd(String paramString, int paramInt)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new VideoFilePresenter.10.1(this));
+    this(paramString, paramInt, true);
+  }
+  
+  public arnd(String paramString, int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("ComboObject:");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append(',').append(this.jdField_a_of_type_Int).append(',').append(this.jdField_a_of_type_Boolean);
+    return localStringBuffer.toString();
   }
 }
 

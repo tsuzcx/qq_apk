@@ -1,49 +1,33 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-final class vla
-  implements bfah
+class vla
+  implements View.OnClickListener
 {
-  vla(String paramString, vij paramvij, vkr paramvkr) {}
+  vla(vks paramvks) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
-      return;
+    if ((this.a.a() instanceof Activity)) {
+      this.a.a(0.0F, 0.0F);
     }
-    switch (paramBaseResp.errCode)
+    ArrayList localArrayList = new ArrayList();
+    if (vks.a(this.a)) {}
+    for (String str = "1";; str = "2")
     {
-    case -3: 
-    case -1: 
-    default: 
-      if (this.jdField_a_of_type_Vij != null) {
-        this.jdField_a_of_type_Vij.b(this.jdField_a_of_type_Vkr);
-      }
-      break;
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
+      localArrayList.add(vri.a("ext1", str));
+      vrg.a(91, 2, this.a.a(), localArrayList, vks.b(this.a));
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Vij != null)
-      {
-        this.jdField_a_of_type_Vij.a(this.jdField_a_of_type_Vkr);
-        continue;
-        if (this.jdField_a_of_type_Vij != null)
-        {
-          this.jdField_a_of_type_Vij.c(this.jdField_a_of_type_Vkr);
-          continue;
-          if (this.jdField_a_of_type_Vij != null) {
-            this.jdField_a_of_type_Vij.b(this.jdField_a_of_type_Vkr);
-          }
-        }
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vla
  * JD-Core Version:    0.7.0.1
  */

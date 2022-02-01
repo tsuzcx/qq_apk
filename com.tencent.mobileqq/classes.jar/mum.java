@@ -1,73 +1,23 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import android.os.Message;
 
-public class mum
+class mum
+  extends Handler
 {
-  public static String a()
+  public void handleMessage(Message paramMessage)
   {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
+    mul localmul = (mul)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("ImageUtil", 2, "[image download] getFilesDir is null");
-      }
-      return "";
+    default: 
+      return;
     }
-    return localFile.getParent() + "/qav/image_download/";
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ImageUtil", 2, "[image early] trigger early download");
-    }
-    paramQQAppInterface = (apks)paramQQAppInterface.getManager(77);
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = (aplr)paramQQAppInterface.a("qq.android.qav.image2");
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.a(false);
-      }
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return new File(b(), paramString).exists();
-  }
-  
-  public static String b()
-  {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ImageUtil", 2, "[image early] getFilesDir is null");
-      }
-      return "";
-    }
-    return localFile.getParent() + "/qav/image_early/";
-  }
-  
-  public static String c()
-  {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ImageUtil", 2, "[video early] getFilesDir is null");
-      }
-      return "";
-    }
-    return localFile.getParent() + "/qav/video_early/";
+    localmul.jdField_a_of_type_Muk.a(((mun[])localmul.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mum
  * JD-Core Version:    0.7.0.1
  */

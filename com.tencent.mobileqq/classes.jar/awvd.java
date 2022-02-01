@@ -1,20 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
 
 public class awvd
-  implements View.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public awvd(ProfileHeaderView paramProfileHeaderView, awqt paramawqt) {}
+  public awvd(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView, this.jdField_a_of_type_Awqt);
+    if (MultiCardRecommendFragment.a(this.a) != null)
+    {
+      if ((paramInt == 0) || (paramInt == 1)) {
+        break label38;
+      }
+      MultiCardRecommendFragment.a(this.a);
+    }
+    for (;;)
+    {
+      if (paramInt == 0) {
+        MultiCardRecommendFragment.d(this.a);
+      }
+      return;
+      label38:
+      MultiCardRecommendFragment.b(this.a);
+      MultiCardRecommendFragment.c(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvd
  * JD-Core Version:    0.7.0.1
  */

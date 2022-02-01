@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class azdr
-  implements SDKInitListener
+public class azdr
+  extends anmu
 {
-  azdr(azdq paramazdq, azdx paramazdx) {}
+  public azdr(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public void onSDKInited(boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    azdq.b(this.jdField_a_of_type_Azdq, this.jdField_a_of_type_Azdx);
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelGalleryActivity", 2, "onUpdateFriendInfo refresh UI uin:" + paramString + " suc:" + paramBoolean);
+    }
+    if ((paramBoolean) && (TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), paramString)) && (!PersonalityLabelGalleryActivity.a(this.a)))
+    {
+      PersonalityLabelGalleryActivity.a(this.a, bglf.a(this.a.app, PersonalityLabelGalleryActivity.a(this.a)));
+      if (!TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), PersonalityLabelGalleryActivity.b(this.a))) {
+        PersonalityLabelGalleryActivity.d(this.a);
+      }
+    }
   }
 }
 

@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import android.content.Intent;
 
-public class ahvj
-  extends View.AccessibilityDelegate
+public abstract interface ahvj
 {
-  public ahvj(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  public abstract void a(Intent paramIntent);
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    if (paramInt != 4096) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
-  }
+  public abstract boolean a(int paramInt);
 }
 
 

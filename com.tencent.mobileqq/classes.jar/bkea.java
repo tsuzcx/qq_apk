@@ -1,72 +1,122 @@
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import android.content.IntentFilter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.sharp.jni.TraeAudioManager;
 
-public class bkea
+public abstract class bkea
 {
-  public static List<bkgn> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    bkgn localbkgn = new bkgn();
-    localbkgn.b = 1;
-    localbkgn.jdField_a_of_type_Int = 339;
-    localArrayList.add(localbkgn);
-    localbkgn = new bkgn();
-    localbkgn.b = 1;
-    localbkgn.jdField_a_of_type_Int = 340;
-    localArrayList.add(localbkgn);
-    localbkgn = new bkgn();
-    localbkgn.b = 1;
-    localbkgn.jdField_a_of_type_Int = 341;
-    localArrayList.add(localbkgn);
-    return localArrayList;
-  }
+  bkea(TraeAudioManager paramTraeAudioManager) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2)
-  {
-    bkgq localbkgq = new bkgq();
-    long l = System.currentTimeMillis() / 1000L;
-    localbkgq.b = (String.valueOf(paramQQAppInterface.getCurrentAccountUin()) + '_' + l);
-    localbkgq.d = paramInt;
-    localbkgq.jdField_e_of_type_Int = 1;
-    localbkgq.g = String.valueOf(paramString1);
-    localbkgq.jdField_a_of_type_Long = l;
-    localbkgq.jdField_a_of_type_Int = 1;
-    localbkgq.jdField_e_of_type_JavaLangString = "tianshu.31";
-    localbkgq.i = "";
-    localbkgq.l = paramString2;
-    bkgp.a().a(localbkgq);
-  }
+  public abstract String a();
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
+  String a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("TianshuAdUtils", 2, "url empty");
-    }
-    do
+    String str;
+    switch (paramInt)
     {
-      return;
-      if (MiniAppLauncher.isMiniAppUrl(paramString))
+    default: 
+      str = "unknow";
+    }
+    for (;;)
+    {
+      return str + ":" + paramInt;
+      str = "STATE_OFF";
+      continue;
+      str = "STATE_TURNING_ON";
+      continue;
+      str = "STATE_ON";
+      continue;
+      str = "STATE_TURNING_OFF";
+    }
+  }
+  
+  public abstract void a();
+  
+  abstract void a(Context paramContext, Intent paramIntent);
+  
+  public void a(Context paramContext, Intent paramIntent, bkeb parambkeb)
+  {
+    if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(paramIntent.getAction()))
+    {
+      int i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
+      int j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_STATE", -1);
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "BT ACTION_STATE_CHANGED|   EXTRA_STATE " + a(i));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "BT ACTION_STATE_CHANGED|   EXTRA_PREVIOUS_STATE " + a(j));
+      }
+      if (i == 10)
       {
-        MiniAppLauncher.startMiniApp(paramContext, paramString, paramInt, null);
+        if (QLog.isColorLevel()) {
+          QLog.w("TraeAudioManager", 2, "    BT off");
+        }
+        parambkeb.a("DEVICE_BLUETOOTHHEADSET", false);
+      }
+      while ((i != 12) || (!QLog.isColorLevel())) {
         return;
       }
-      if ((!paramString.startsWith("mqqapi://")) || (paramQQAppInterface == null)) {
-        break;
-      }
-      paramQQAppInterface = bdib.a(paramQQAppInterface, paramContext, paramString);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.c();
-    return;
-    paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
-    paramQQAppInterface.putExtra("url", paramString);
-    paramContext.startActivity(paramQQAppInterface);
+      QLog.w("TraeAudioManager", 2, "BT OFF-->ON,Visiable it...");
+      return;
+    }
+    a(paramContext, paramIntent);
+  }
+  
+  abstract void a(IntentFilter paramIntentFilter);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Context paramContext, bkeb parambkeb);
+  
+  String b(int paramInt)
+  {
+    String str;
+    switch (paramInt)
+    {
+    default: 
+      str = "unknow";
+    }
+    for (;;)
+    {
+      return str + ":" + paramInt;
+      str = "SCO_AUDIO_STATE_DISCONNECTED";
+      continue;
+      str = "SCO_AUDIO_STATE_CONNECTED";
+      continue;
+      str = "SCO_AUDIO_STATE_CONNECTING";
+      continue;
+      str = "SCO_AUDIO_STATE_ERROR";
+    }
+  }
+  
+  public void b(IntentFilter paramIntentFilter)
+  {
+    paramIntentFilter.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
+    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_CONNECTED");
+    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_DISCONNECTED");
+    a(paramIntentFilter);
+  }
+  
+  String c(int paramInt)
+  {
+    String str;
+    switch (paramInt)
+    {
+    default: 
+      str = "unknow";
+    }
+    for (;;)
+    {
+      return str + ":" + paramInt;
+      str = "STATE_DISCONNECTED";
+      continue;
+      str = "STATE_CONNECTING";
+      continue;
+      str = "STATE_CONNECTED";
+      continue;
+      str = "STATE_DISCONNECTING";
+    }
   }
 }
 

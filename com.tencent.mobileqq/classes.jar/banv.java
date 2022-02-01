@@ -1,15 +1,6 @@
-import android.os.IInterface;
-
 public abstract interface banv
-  extends IInterface
 {
-  public abstract void beginSwitch();
-  
-  public abstract void doSwitch(String paramString1, String paramString2);
-  
-  public abstract void onProgress(long paramLong1, long paramLong2);
-  
-  public abstract void postSwitch(int paramInt);
+  public abstract void a();
 }
 
 

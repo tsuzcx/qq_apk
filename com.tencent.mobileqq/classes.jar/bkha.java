@@ -1,29 +1,35 @@
-import cooperation.qzone.util.QZLog;
+import android.widget.ListAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.FastScroller;
 
 public class bkha
+  extends AdapterView<ListAdapter>.bkii
 {
-  public static int a = 2;
-  public static int b = 1;
-  public static int c = 4;
-  
-  public static void a(String paramString1, String paramString2)
+  public bkha(AbsListView paramAbsListView)
   {
-    QZLog.d(paramString1, c, paramString2);
+    super(paramAbsListView);
   }
   
-  public static void b(String paramString1, String paramString2)
+  public void onChanged()
   {
-    QZLog.d(paramString1, b, paramString2);
+    super.onChanged();
+    if (this.a.mFastScroller != null) {
+      this.a.mFastScroller.c();
+    }
   }
   
-  public static void c(String paramString1, String paramString2)
+  public void onInvalidated()
   {
-    QZLog.e(paramString1, paramString2, null);
+    super.onInvalidated();
+    if (this.a.mFastScroller != null) {
+      this.a.mFastScroller.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkha
  * JD-Core Version:    0.7.0.1
  */

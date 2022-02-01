@@ -1,39 +1,14 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class aikd
-  extends aijq
 {
-  public aikd(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-  }
+  public List<String> a;
+  public List<aikb> b;
   
-  protected boolean b()
+  public aikd(List<String> paramList, List<aikb> paramList1)
   {
-    return true;
-  }
-  
-  protected void g()
-  {
-    this.e = true;
-    super.g();
-  }
-  
-  protected void u()
-  {
-    super.u();
-  }
-  
-  protected void v()
-  {
-    super.v();
-  }
-  
-  protected void y()
-  {
-    this.a = "MiniPieForTroop";
+    this.a = paramList;
+    this.b = paramList1;
   }
 }
 

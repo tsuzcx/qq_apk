@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.receipt;
 
-import axkm;
+import bagu;
 
 public class ReceiptMessageDetailFragment$DetailHandler$1
   implements Runnable
 {
-  public ReceiptMessageDetailFragment$DetailHandler$1(axkm paramaxkm, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public ReceiptMessageDetailFragment$DetailHandler$1(bagu parambagu, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ReceiptMessageDetailFragment$DetailHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.DetailHandler.1
  * JD-Core Version:    0.7.0.1
  */

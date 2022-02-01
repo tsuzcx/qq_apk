@@ -1,22 +1,19 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdPopSheetBrowserFragment;
 
-class pog
-  implements View.OnClickListener
+public class pog
+  implements osz
 {
-  pog(poe parampoe, Context paramContext, ArticleInfo paramArticleInfo) {}
+  public pog(ReadInJoyAdPopSheetBrowserFragment paramReadInJoyAdPopSheetBrowserFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    ors.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, false, 6, false);
-    rqj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pog
  * JD-Core Version:    0.7.0.1
  */

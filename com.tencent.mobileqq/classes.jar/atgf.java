@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
-
-public final class atgf
-  implements Parcelable.Creator<WatchTogetherSession>
+class atgf
+  extends atfq
 {
-  public WatchTogetherSession a(Parcel paramParcel)
+  public atgf(atfe paramatfe)
   {
-    return new WatchTogetherSession(paramParcel);
+    super(paramatfe);
   }
   
-  public WatchTogetherSession[] a(int paramInt)
+  protected String a()
   {
-    return new WatchTogetherSession[paramInt];
+    return "StateSenderCancelSend";
   }
 }
 

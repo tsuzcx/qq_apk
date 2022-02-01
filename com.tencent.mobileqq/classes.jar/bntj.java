@@ -1,10 +1,20 @@
-public abstract interface bntj
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.8.1;
+
+public class bntj
+  implements View.OnClickListener
 {
-  public abstract void c();
+  bntj(bnta parambnta) {}
   
-  public abstract void d();
-  
-  public abstract void i();
+  public void onClick(View paramView)
+  {
+    bnta.b(this.a);
+    new Handler().postDelayed(new AEGIFTextEditFragment.8.1(this), 200L);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

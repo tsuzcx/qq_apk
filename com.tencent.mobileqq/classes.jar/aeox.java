@@ -1,90 +1,54 @@
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.AIOInputTypeHelper.1;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
+import mqq.observer.SubAccountObserver;
 
 public class aeox
+  extends SubAccountObserver
 {
-  public static volatile boolean a;
-  public static boolean b;
-  public static boolean c;
-  private static boolean d;
+  public aeox(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  public static SharedPreferences a(QQAppInterface paramQQAppInterface)
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    return paramQQAppInterface.getApp().getSharedPreferences("sp_aio_input_helper_" + paramQQAppInterface.getAccount(), 0);
-  }
-  
-  public static void a()
-  {
-    c = true;
-    BaseApplication.getContext().getSharedPreferences("sp_upgrade", 0).edit().putBoolean("upgrade", true).commit();
-  }
-  
-  /* Error */
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: ifnull +11 -> 15
-    //   7: getstatic 70	aeox:d	Z
-    //   10: istore_1
-    //   11: iload_1
-    //   12: ifeq +7 -> 19
-    //   15: ldc 2
-    //   17: monitorexit
-    //   18: return
-    //   19: aload_0
-    //   20: invokestatic 72	aeox:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Landroid/content/SharedPreferences;
-    //   23: ldc 74
-    //   25: iconst_1
-    //   26: invokeinterface 78 3 0
-    //   31: putstatic 80	aeox:a	Z
-    //   34: iconst_1
-    //   35: putstatic 70	aeox:d	Z
-    //   38: goto -23 -> 15
-    //   41: astore_0
-    //   42: ldc 2
-    //   44: monitorexit
-    //   45: aload_0
-    //   46: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	47	0	paramQQAppInterface	QQAppInterface
-    //   10	2	1	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   7	11	41	finally
-    //   19	38	41	finally
-  }
-  
-  @TargetApi(9)
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool1 = false;
-    if (!d) {
-      a(paramQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: mainAccount=" + paramString1 + " subAccount=" + paramString2);
     }
-    if (a)
+    if (TextUtils.isEmpty(paramString3))
     {
-      a = false;
-      ThreadManager.getFileThreadHandler().post(new AIOInputTypeHelper.1(paramQQAppInterface));
-      boolean bool2 = true;
-      bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.aio.BaseChatPie", 2, "inputhelper : need guide");
-        bool1 = bool2;
+      paramString1 = new HashMap();
+      paramString1.put("param_FailCode", "12005");
+      paramString1.put("fail_step", "getKeyEmpty");
+      paramString1.put("fail_location", "subLogin");
+      bctj.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBGeykey", false, 0L, 0L, paramString1, "");
+      this.a.c();
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack:subLogin ...has Failed key  =  null");
       }
+      this.a.a(2131718313, 0);
     }
-    return bool1;
+    do
+    {
+      return;
+      paramString1 = new HashMap();
+      paramString1.put("param_FailCode", "12006");
+      paramString1.put("fail_step", "getKeyNotEmpty");
+      paramString1.put("fail_location", "subLogin");
+      bctj.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBGeykey", true, 0L, 0L, paramString1, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: key not null");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "subaccount onGetKeyBack goto bind");
+      }
+      paramString1 = (bdee)this.a.app.getManager(28);
+      if (paramString1 != null) {
+        paramString1.a(paramString2, paramString3, LoginVerifyCodeActivity.b(this.a));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: success .........");
   }
 }
 

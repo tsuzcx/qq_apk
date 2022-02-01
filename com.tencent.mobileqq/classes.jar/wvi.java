@@ -1,54 +1,61 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.graphics.Color;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
+import java.util.List;
 
-class wvi
-  extends wrj
+public class wvi
+  extends wnt<wrs>
 {
-  wvi(wvg paramwvg) {}
+  protected ImageView a;
+  protected TextView a;
+  protected RotateCircleImageView a;
+  protected ImageView b;
+  protected TextView b;
+  protected ImageView c = (ImageView)a(2131376227);
   
-  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
+  public wvi(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((paramView == paramwtq.a(2131373794)) || (paramView == paramwtq.a(2131373795)) || (paramView == paramwtq.a(2131373798))) {
-      if (wvg.a(this.a)) {
-        wxe.d("Q.qqstory.home.LocalVideoPushSegment", "now is opening the new page, so ignore the click");
-      }
-    }
-    while (paramView != paramwtq.a(2131373793))
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView = ((RotateCircleImageView)a(2131364490));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131367834));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131378149));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131378776));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131376228));
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.STILL);
+    int[] arrayOfInt = new int[paramInt1];
+    int i = 0;
+    if (i < paramInt1)
     {
-      return;
-      wvg.a(this.a, true);
-      paramObject = new Bundle();
-      paramObject.putInt("capture_intent_mode", 3);
-      if (wvg.a(this.a) == 1) {
-        paramObject.putString("story_capture_album_id", "default_id");
+      if (i < paramInt1 - paramInt2) {
+        arrayOfInt[i] = Color.parseColor("#DEDFE0");
       }
       for (;;)
       {
-        xpk.a().a((Activity)wvg.a(this.a), paramObject, 20000);
-        wxj.a("home_page", "clk_smartalbum", 0, 0, new String[] { wvg.a(this.a, wvg.a(this.a)) });
-        return;
-        if (wvg.a(this.a) == 2)
-        {
-          if (wvg.a(this.a) != null) {}
-          for (paramView = String.valueOf(wvg.a(this.a).a());; paramView = "default_id")
-          {
-            paramObject.putString("story_capture_album_id", paramView);
-            break;
-          }
-        }
-        if (wvg.a(this.a) != 3) {}
+        i += 1;
+        break;
+        arrayOfInt[i] = Color.parseColor("#19D7FD");
       }
     }
-    this.a.a.b("last_cancel_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-    this.a.a(null, 4);
-    wxj.a("home_page", "close_smartalbum", 0, 0, new String[] { wvg.a(this.a, wvg.a(this.a)) });
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderColors(arrayOfInt);
+  }
+  
+  public void a(wrs paramwrs)
+  {
+    if ((paramwrs.a != null) && (!paramwrs.a.isEmpty())) {
+      a(paramwrs.a.size(), paramwrs.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wvi
  * JD-Core Version:    0.7.0.1
  */

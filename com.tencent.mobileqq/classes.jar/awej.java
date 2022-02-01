@@ -1,30 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-
-public class awej
-  implements View.OnClickListener
+public abstract class awej<T, P>
 {
-  public awej(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  private volatile T a;
   
-  public void onClick(View paramView)
+  protected abstract T a(P paramP);
+  
+  public final T b(P paramP)
   {
-    if (AutoReplyEditActivity.c(this.a))
+    if (this.a == null) {}
+    try
     {
-      AutoReplyEditActivity.a(this.a, false);
-      return;
+      if (this.a == null) {
+        this.a = a(paramP);
+      }
+      return this.a;
     }
-    if (AutoReplyEditActivity.d(this.a))
-    {
-      AutoReplyEditActivity.b(this.a, false);
-      return;
-    }
-    AutoReplyEditActivity.a(this.a, true);
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awej
  * JD-Core Version:    0.7.0.1
  */

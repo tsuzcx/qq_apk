@@ -1,16 +1,32 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface asvp
+public class asvp
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public asvp(QfileFavFileTabView paramQfileFavFileTabView) {}
   
-  public abstract void a(int paramInt, View paramView);
-  
-  public abstract void a(View paramView);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    if (!QfileFavFileTabView.a(this.a)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QfileFavFileTabView.a(this.a);
+      this.a.a();
+      if (this.a.jdField_a_of_type_Asti.getGroupCount() > 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_Asti.getGroupCount() - 1);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
+      QfileFavFileTabView.a(this.a, false);
+      this.a.g();
+    }
+  }
 }
 
 

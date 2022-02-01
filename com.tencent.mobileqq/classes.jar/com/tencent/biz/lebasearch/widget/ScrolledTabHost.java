@@ -15,10 +15,11 @@ import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
-import nfy;
-import nfz;
+import noo;
+import nop;
 
 public class ScrolledTabHost
   extends FrameLayout
@@ -30,7 +31,7 @@ public class ScrolledTabHost
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   HorizontalScrollView jdField_a_of_type_AndroidWidgetHorizontalScrollView;
   List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  nfz jdField_a_of_type_Nfz;
+  nop jdField_a_of_type_Nop;
   
   public ScrolledTabHost(Context paramContext)
   {
@@ -55,10 +56,10 @@ public class ScrolledTabHost
   
   private void c()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560775, this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377375));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131377387));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366493);
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560979, this);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378200));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131378212));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366758);
   }
   
   public View a(int paramInt)
@@ -72,7 +73,7 @@ public class ScrolledTabHost
     while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
     {
       View localView = this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-      localView.findViewById(2131377361).setVisibility(4);
+      localView.findViewById(2131378187).setVisibility(4);
       this.jdField_a_of_type_JavaUtilList.add(localView);
       i += 1;
     }
@@ -100,11 +101,11 @@ public class ScrolledTabHost
       label66:
       if (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
       {
-        localObject = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).findViewById(2131379043);
+        localObject = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).findViewById(2131379957);
         if (i != paramInt) {
           break label146;
         }
-        ((TextView)localObject).setTextColor(getResources().getColor(2131166908));
+        ((TextView)localObject).setTextColor(getResources().getColor(2131166991));
       }
     }
     for (;;)
@@ -118,7 +119,7 @@ public class ScrolledTabHost
       this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.smoothScrollBy(j + i - k, 0);
       break label64;
       label146:
-      ((TextView)localObject).setTextColor(getResources().getColor(2131166978));
+      ((TextView)localObject).setTextColor(getResources().getColor(2131167061));
     }
   }
   
@@ -126,8 +127,8 @@ public class ScrolledTabHost
   {
     View localView1 = a(paramInt1);
     View localView2 = a(paramInt2);
-    localView1 = localView1.findViewById(2131377361);
-    localView2 = localView2.findViewById(2131377361);
+    localView1 = localView1.findViewById(2131378187);
+    localView2 = localView2.findViewById(2131378187);
     if (paramInt1 == paramInt2)
     {
       localView2.setVisibility(0);
@@ -148,7 +149,7 @@ public class ScrolledTabHost
     ((TranslateAnimation)localObject1).setDuration(300L);
     ((TranslateAnimation)localObject1).setFillAfter(false);
     ((AnimationSet)localObject2).addAnimation((Animation)localObject1);
-    ((AnimationSet)localObject2).setAnimationListener(new nfy(this, localView1, localView2, paramInt2));
+    ((AnimationSet)localObject2).setAnimationListener(new noo(this, localView1, localView2, paramInt2));
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     localView1.setVisibility(4);
     this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject2);
@@ -157,16 +158,16 @@ public class ScrolledTabHost
   public void a(String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 0) {}
-    for (View localView = LayoutInflater.from(getContext()).inflate(2131560779, null);; localView = (View)this.jdField_a_of_type_JavaUtilList.remove(0))
+    for (View localView = LayoutInflater.from(getContext()).inflate(2131560983, null);; localView = (View)this.jdField_a_of_type_JavaUtilList.remove(0))
     {
-      ((TextView)localView.findViewById(2131379043)).setText(paramString);
+      ((TextView)localView.findViewById(2131379957)).setText(paramString);
       localView.setTag(-3, paramString);
       if (localView.getParent() == null) {
         break;
       }
       return;
     }
-    localView.findViewById(2131377361).setVisibility(4);
+    localView.findViewById(2131378187).setVisibility(4);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(localView);
     localView.setOnClickListener(this);
   }
@@ -179,7 +180,7 @@ public class ScrolledTabHost
       int i = 0;
       if (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
       {
-        View localView = this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).findViewById(2131377361);
+        View localView = this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).findViewById(2131378187);
         if (i == 0) {
           localView.setVisibility(0);
         }
@@ -190,19 +191,20 @@ public class ScrolledTabHost
           localView.setVisibility(4);
         }
       }
-      if (this.jdField_a_of_type_Nfz != null) {
-        this.jdField_a_of_type_Nfz.a(0);
+      if (this.jdField_a_of_type_Nop != null) {
+        this.jdField_a_of_type_Nop.a(0);
       }
     }
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Nfz != null)
+    if (this.jdField_a_of_type_Nop != null)
     {
-      this.jdField_a_of_type_Nfz.a(this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView));
-      this.jdField_a_of_type_Nfz.b(this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView));
+      this.jdField_a_of_type_Nop.a(this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView));
+      this.jdField_a_of_type_Nop.b(this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView));
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setCurrentTab(int paramInt)
@@ -212,34 +214,34 @@ public class ScrolledTabHost
     }
     int j = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Nfz != null) {
-      this.jdField_a_of_type_Nfz.a(paramInt);
+    if (this.jdField_a_of_type_Nop != null) {
+      this.jdField_a_of_type_Nop.a(paramInt);
     }
     int i = 0;
     if (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
     {
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).findViewById(2131379043);
+      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).findViewById(2131379957);
       if (i == paramInt) {
-        localTextView.setTextColor(getResources().getColor(2131166908));
+        localTextView.setTextColor(getResources().getColor(2131166991));
       }
       for (;;)
       {
         i += 1;
         break;
-        localTextView.setTextColor(getResources().getColor(2131166978));
+        localTextView.setTextColor(getResources().getColor(2131167061));
       }
     }
     a(j, this.jdField_a_of_type_Int);
   }
   
-  public void setOnTabSelectedListener(nfz paramnfz)
+  public void setOnTabSelectedListener(nop paramnop)
   {
-    this.jdField_a_of_type_Nfz = paramnfz;
+    this.jdField_a_of_type_Nop = paramnop;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.lebasearch.widget.ScrolledTabHost
  * JD-Core Version:    0.7.0.1
  */

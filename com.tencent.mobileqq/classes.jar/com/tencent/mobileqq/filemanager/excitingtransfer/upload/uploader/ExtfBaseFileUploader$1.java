@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.upload.uploader;
 
-import arfc;
+import atkg;
 
 public class ExtfBaseFileUploader$1
   implements Runnable
 {
-  public ExtfBaseFileUploader$1(arfc paramarfc, long paramLong1, long paramLong2) {}
+  public ExtfBaseFileUploader$1(atkg paramatkg, long paramLong1, long paramLong2) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ExtfBaseFileUploader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.upload.uploader.ExtfBaseFileUploader.1
  * JD-Core Version:    0.7.0.1
  */

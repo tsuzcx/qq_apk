@@ -1,21 +1,28 @@
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class ahfn
-  implements View.OnClickListener
+class ahfn
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public ahfn(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  ahfn(ahfm paramahfm) {}
   
-  public void onClick(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener");
+    if (this.a.jdField_a_of_type_Ahfk.a()) {
+      return false;
     }
-    azqs.b(null, "dc00899", "Grp_find_new", "", "grptab", "location_set_exp", 0, 0, "", "", "", "");
-    this.a.getActivity().requestPermissions(new ahfo(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    afur.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_Ahfk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Ahfk.jdField_a_of_type_AndroidContentContext);
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    if (this.a.jdField_a_of_type_Afzq != null) {
+      this.a.jdField_a_of_type_Afzq.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
+    }
   }
 }
 

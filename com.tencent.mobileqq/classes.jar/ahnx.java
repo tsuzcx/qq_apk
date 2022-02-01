@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.Comparator;
+import android.widget.RelativeLayout;
 
 class ahnx
-  implements Comparator<MayKnowRecommend>
+  extends afwr
 {
-  ahnx(ahns paramahns) {}
+  public RelativeLayout a;
   
-  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
-  {
-    return paramMayKnowRecommend2.timestamp - paramMayKnowRecommend1.timestamp;
-  }
+  private ahnx(ahnv paramahnv) {}
 }
 
 

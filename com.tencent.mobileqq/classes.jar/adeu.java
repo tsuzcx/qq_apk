@@ -1,10 +1,24 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class adeu
+class adeu
+  extends JobSegment<awlp, awlp>
 {
-  public URLImageView a;
-  MessageForPic a;
+  adeu(adep paramadep, String paramString, int paramInt) {}
+  
+  protected void a(JobContext paramJobContext, awlp paramawlp)
+  {
+    if (paramawlp.b())
+    {
+      notifyResult(paramawlp);
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.permissionHelper", 2, "appBaseInfo cache is valid");
+      }
+      return;
+    }
+    awlu.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new adev(this, this));
+  }
 }
 
 

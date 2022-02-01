@@ -2,21 +2,21 @@ package com.tencent.qapmsdk.impl.instrumentation;
 
 import android.content.Context;
 import com.tencent.qapmsdk.common.logger.Logger;
-import com.tencent.qapmsdk.impl.appstate.AppStateTimeInfo;
-import com.tencent.qapmsdk.impl.appstate.QAPMActivityTrace;
+import com.tencent.qapmsdk.impl.appstate.b;
+import com.tencent.qapmsdk.impl.appstate.g;
 
 public class QAPMAppInstrumentation
 {
   private static final String TAG = "QAPM_Impl_QAPMAppInstrumentation";
-  public static QAPMActivityTrace activityTrace = new QAPMActivityTrace();
-  public static AppStateTimeInfo appStateTimeInfo;
+  public static g activityTrace = new g();
+  public static b appStateTimeInfo;
   public static volatile boolean isAppInBackground;
   
   static
   {
     try
     {
-      appStateTimeInfo = AppStateTimeInfo.getInstance();
+      appStateTimeInfo = b.a();
       label16:
       isAppInBackground = true;
       return;
@@ -27,16 +27,15 @@ public class QAPMAppInstrumentation
     }
   }
   
-  @QAPMReplaceCallSite
   public static void activityCreateBeginIns(String paramString)
   {
     try
     {
-      activityTrace.onCreateOrOnRestartEnterMethod(paramString, "#onCreate");
+      activityTrace.a(paramString, "#onCreate");
       if (!isAppInBackground) {
         return;
       }
-      appStateTimeInfo.activityCreateBeginIns(paramString);
+      appStateTimeInfo.a(paramString);
       return;
     }
     catch (Throwable paramString)
@@ -45,16 +44,15 @@ public class QAPMAppInstrumentation
     }
   }
   
-  @QAPMReplaceCallSite
   public static void activityCreateEndIns()
   {
     try
     {
-      activityTrace.onCreateOrOnRestartExitMethod();
+      activityTrace.a();
       if (!isAppInBackground) {
         return;
       }
-      appStateTimeInfo.activityCreateEndIns();
+      appStateTimeInfo.e();
       return;
     }
     catch (Throwable localThrowable)
@@ -63,16 +61,15 @@ public class QAPMAppInstrumentation
     }
   }
   
-  @QAPMReplaceCallSite
   public static void activityRestartBeginIns(String paramString)
   {
     try
     {
-      activityTrace.onCreateOrOnRestartEnterMethod(paramString, "#onRestart");
+      activityTrace.a(paramString, "#onRestart");
       if (!isAppInBackground) {
         return;
       }
-      appStateTimeInfo.activityRestartBeginIns(paramString);
+      appStateTimeInfo.c(paramString);
       return;
     }
     catch (Throwable paramString)
@@ -81,16 +78,15 @@ public class QAPMAppInstrumentation
     }
   }
   
-  @QAPMReplaceCallSite
   public static void activityRestartEndIns()
   {
-    activityTrace.onCreateOrOnRestartExitMethod();
+    activityTrace.a();
     try
     {
       if (!isAppInBackground) {
         return;
       }
-      appStateTimeInfo.activityRestartEndIns();
+      appStateTimeInfo.g();
       return;
     }
     catch (Throwable localThrowable)
@@ -99,16 +95,15 @@ public class QAPMAppInstrumentation
     }
   }
   
-  @QAPMReplaceCallSite
   public static void activityResumeBeginIns(String paramString)
   {
     try
     {
-      activityTrace.onResumeEnterMethod(paramString);
+      activityTrace.b(paramString);
       if (!isAppInBackground) {
         return;
       }
-      appStateTimeInfo.activityResumeBeginIns(paramString);
+      appStateTimeInfo.d(paramString);
       return;
     }
     catch (Throwable paramString)
@@ -117,15 +112,14 @@ public class QAPMAppInstrumentation
     }
   }
   
-  @QAPMReplaceCallSite
   public static void activityResumeEndIns()
   {
     try
     {
       if (isAppInBackground) {
-        appStateTimeInfo.activityResumeEndIns();
+        appStateTimeInfo.h();
       }
-      activityTrace.onResumeExitMethod();
+      activityTrace.c();
       return;
     }
     catch (Throwable localThrowable)
@@ -134,16 +128,15 @@ public class QAPMAppInstrumentation
     }
   }
   
-  @QAPMReplaceCallSite
   public static void activityStartBeginIns(String paramString)
   {
     try
     {
-      activityTrace.onStartEnterMethod(paramString);
+      activityTrace.a(paramString);
       if (!isAppInBackground) {
         return;
       }
-      appStateTimeInfo.activityStartBeginIns(paramString);
+      appStateTimeInfo.b(paramString);
       return;
     }
     catch (Throwable paramString)
@@ -156,11 +149,11 @@ public class QAPMAppInstrumentation
   {
     try
     {
-      activityTrace.onStartExitMethod();
+      activityTrace.b();
       if (!isAppInBackground) {
         return;
       }
-      appStateTimeInfo.activityStartEndIns();
+      appStateTimeInfo.f();
       return;
     }
     catch (Exception localException)
@@ -169,12 +162,11 @@ public class QAPMAppInstrumentation
     }
   }
   
-  @QAPMReplaceCallSite
   public static void applicationCreateBeginIns()
   {
     try
     {
-      appStateTimeInfo.applicationCreateBeginIns();
+      appStateTimeInfo.c();
       return;
     }
     catch (Throwable localThrowable)
@@ -183,12 +175,11 @@ public class QAPMAppInstrumentation
     }
   }
   
-  @QAPMReplaceCallSite
   public static void applicationCreateEndIns()
   {
     try
     {
-      appStateTimeInfo.applicationCreateEndIns();
+      appStateTimeInfo.d();
       return;
     }
     catch (Throwable localThrowable)
@@ -197,12 +188,11 @@ public class QAPMAppInstrumentation
     }
   }
   
-  @QAPMReplaceCallSite
   public static void attachBaseContextBeginIns(Context paramContext)
   {
     try
     {
-      appStateTimeInfo.attachBaseContextBeginIns(paramContext);
+      appStateTimeInfo.a(paramContext);
       return;
     }
     catch (Throwable paramContext)
@@ -211,12 +201,11 @@ public class QAPMAppInstrumentation
     }
   }
   
-  @QAPMReplaceCallSite
   public static void attachBaseContextEndIns()
   {
     try
     {
-      appStateTimeInfo.attachBaseContextEndIns();
+      appStateTimeInfo.b();
       return;
     }
     catch (Throwable localThrowable)
@@ -227,7 +216,7 @@ public class QAPMAppInstrumentation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMAppInstrumentation
  * JD-Core Version:    0.7.0.1
  */

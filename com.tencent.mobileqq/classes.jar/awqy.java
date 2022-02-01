@@ -1,39 +1,25 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class awqy
-  implements AdapterView.OnItemClickListener
+  implements awxb
 {
-  awqy(awqw paramawqw) {}
+  awqy(awqx paramawqx) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    if (awqw.a(this.a).isShowing()) {
-      awqw.a(this.a).dismiss();
+    if ((awqv.a(this.a.jdField_a_of_type_Awqv) != null) && (awqv.a(this.a.jdField_a_of_type_Awqv).a != null)) {
+      this.a.jdField_a_of_type_Awxi.a(this.a.jdField_a_of_type_JavaUtilList, 2, awqv.a(this.a.jdField_a_of_type_Awqv).a.a);
     }
-    paramInt = -1;
-    switch ((int)paramLong)
-    {
-    }
-    for (;;)
-    {
-      if (awqw.a(this.a) != null) {
-        awqw.a(this.a).a(paramInt, awqw.a(this.a));
-      }
-      return;
-      awqw.a(this.a);
-      paramInt = 0;
-      continue;
-      awqw.b(this.a);
-      paramInt = 2;
+    this.a.jdField_a_of_type_Awxi.a();
+    if (awqv.a(this.a.jdField_a_of_type_Awqv) != null) {
+      awqv.a(this.a.jdField_a_of_type_Awqv).a(false, null, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awqy
  * JD-Core Version:    0.7.0.1
  */

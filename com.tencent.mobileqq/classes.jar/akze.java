@@ -1,39 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.Pair;
 
 class akze
-  extends bead
+  implements View.OnClickListener
 {
-  akze(akzc paramakzc) {}
+  akze(akyh paramakyh) {}
   
-  public void onDone(beae parambeae)
+  public void onClick(View paramView)
   {
-    super.onDone(parambeae);
-    QLog.i("cmgame_process.CmGameRscDownloader", 2, "[onDone], status:" + parambeae.a());
-  }
-  
-  public void onDoneFile(beae parambeae)
-  {
-    if ((parambeae == null) || (akzc.a(this.a) == null)) {
-      return;
+    Intent localIntent = new Intent(akyh.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("uin", ((QQAppInterface)akyh.a(this.a).getAppRuntime()).getCurrentAccountUin());
+    Pair localPair = (Pair)paramView.getTag();
+    if (localPair != null) {
+      akyh.a(this.a).startActivity(localIntent.putExtra("url", "https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=" + ((Long)localPair.first).longValue() + "&deviceRemark=" + (String)localPair.second));
     }
-    if (parambeae.a() != 3)
-    {
-      akzc.a(this.a, 2);
-      if (akzc.a(this.a) != null) {
-        akzc.a(this.a).c(-1005, akzc.a(this.a).jdField_b_of_type_JavaLangString);
-      }
-      QLog.e("cmgame_process.CmGameRscDownloader", 1, "downLoad game res fail retCode: " + parambeae.a());
-      return;
-    }
-    akzc.a(this.a);
-  }
-  
-  public void onProgress(beae parambeae)
-  {
-    int i = (int)parambeae.a;
-    if (akzc.a(this.a) != null) {
-      akzc.a(this.a).a(i, akzc.a(this.a).jdField_b_of_type_Int, akzc.a(this.a).jdField_b_of_type_JavaLangString);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

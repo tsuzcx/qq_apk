@@ -1,43 +1,37 @@
-import android.graphics.Color;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-
-public class ahwg
-  extends RecyclerView.OnScrollListener
+public abstract interface ahwg
 {
-  public ahwg(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public static final String a = anni.a(2131704096);
+  public static final String b = anni.a(2131704095);
+  public static final String c = anni.a(2131704093);
+  public static final String d = anni.a(2131704097);
+  public static final String e = anni.a(2131704101);
+  public static final String f = anni.a(2131704098);
+  public static final String g = anni.a(2131704100);
+  public static final String h = anni.a(2131704099);
+  public static final String i = anni.a(2131704094);
+  public static final String j = anni.a(2131704519);
+  public static final String k = anni.a(2131704516);
+  public static final String l = anni.a(2131704517);
+  public static final String m = anni.a(2131704518);
+  public static final String n = anni.a(2131710049);
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    paramInt1 = paramRecyclerView.findFirstVisibleItemPosition();
-    String str = EmoticonGroupStoreFragment.a(this.a).a(paramInt1);
-    if ((str != null) && (paramInt2 != 0))
-    {
-      EmoticonGroupStoreFragment.a(this.a).setTextSize(16.0F);
-      EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF000000"));
-      EmoticonGroupStoreFragment.a(this.a).setText(str);
-    }
-    if (paramInt2 < 0)
-    {
-      paramRecyclerView = paramRecyclerView.findViewByPosition(paramInt1);
-      if (paramRecyclerView != null)
-      {
-        float f = paramRecyclerView.getY();
-        if ((paramInt1 == 0) && (0.0F == f))
-        {
-          EmoticonGroupStoreFragment.a(this.a).setTextSize(14.0F);
-          EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF777777"));
-          EmoticonGroupStoreFragment.a(this.a).setText(EmoticonGroupStoreFragment.a(this.a));
-        }
-      }
-    }
-  }
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

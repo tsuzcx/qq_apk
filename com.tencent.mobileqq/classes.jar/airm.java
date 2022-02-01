@@ -1,43 +1,30 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.DragGallery;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
 
-class airm
-  implements View.OnClickListener
+public class airm
+  extends anot
 {
-  airm(airj paramairj) {}
+  public airm(AddContactsView paramAddContactsView) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
-    if (((NewPhotoPreviewActivity)this.a.mActivity).getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
-    {
-      paramView = this.a.mPhotoCommonData.selectedPhotoList.iterator();
-      for (long l = 0L; paramView.hasNext(); l = bdhb.a((String)paramView.next()) + l) {}
-      if (this.a.mPhotoCommonData.selectedPhotoList.size() == 0)
-      {
-        int i = ((NewPhotoPreviewActivity)this.a.mActivity).gallery.getFirstVisiblePosition();
-        if (i < this.a.a.paths.size()) {
-          bdhb.a((String)this.a.a.paths.get(i));
-        }
-      }
-      if (arrr.a()) {
-        arre.a(this.a.mActivity, 2131692754, 2131692759, new airn(this));
-      }
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString = paramLBSInfo.a();
     }
-    for (;;)
+    if ((this.a.jdField_a_of_type_ArrayOfJavaLangString == null) || (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 4)) {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "-1", "-1", "-1", "-1" };
+    }
+    if (this.a.c) {
+      this.a.f();
+    }
+    if (!"-1".equals(this.a.jdField_a_of_type_ArrayOfJavaLangString[0]))
     {
-      LpReportInfo_pf00064.allReport(603, 1);
-      return;
-      this.a.c();
-      continue;
-      this.a.c();
+      this.a.jdField_a_of_type_ArrayOfJavaLangString[3] = "0";
+      this.a.jdField_a_of_type_Anjh.a(this.a.jdField_a_of_type_ArrayOfJavaLangString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", autoReqLocation : " + this.a.c + ", locationCodes[0] : " + this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
     }
   }
 }

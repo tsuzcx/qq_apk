@@ -1,49 +1,46 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.Player;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
-public final class agmq
-  extends AnimationView.Player
+public class agmq
+  implements agma
 {
-  public static boolean a;
+  private ahrb jdField_a_of_type_Ahrb;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   
-  public agmq(AnimationView paramAnimationView)
+  public agmq(BaseChatPie paramBaseChatPie)
   {
-    super(paramAnimationView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  public static void a(boolean paramBoolean)
+  private PlusPanel a()
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Ahrb == null) {
+      this.jdField_a_of_type_Ahrb = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    }
+    return (PlusPanel)this.jdField_a_of_type_Ahrb.b(8);
   }
   
-  public void a(AnimationView paramAnimationView)
+  public void a(int paramInt)
   {
-    reset();
-    this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAnimationView);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    PlusPanel localPlusPanel = a();
+    switch (paramInt)
     {
     }
-    for (;;)
+    do
     {
-      return false;
-      if (jdField_a_of_type_Boolean)
+      do
       {
-        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
-      }
-      else
-      {
-        a();
-      }
-    }
+        return;
+      } while (localPlusPanel == null);
+      localPlusPanel.e();
+      return;
+    } while (localPlusPanel == null);
+    localPlusPanel.f();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 5, 13 };
   }
 }
 

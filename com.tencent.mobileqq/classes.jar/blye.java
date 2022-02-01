@@ -1,21 +1,14 @@
-import android.graphics.RectF;
+import java.io.File;
+import java.io.FileFilter;
 
-public class blye
-  extends blwt
+class blye
+  implements FileFilter
 {
-  private int a;
+  blye(blya paramblya) {}
   
-  public blye(int paramInt)
+  public boolean accept(File paramFile)
   {
-    this.a = paramInt;
-  }
-  
-  void a(int paramInt, blwu paramblwu)
-  {
-    RectF localRectF = paramblwu.a;
-    localRectF.top += this.a * paramInt;
-    paramblwu = paramblwu.a;
-    paramblwu.bottom += this.a * paramInt;
+    return paramFile.getName().endsWith(".ftf");
   }
 }
 

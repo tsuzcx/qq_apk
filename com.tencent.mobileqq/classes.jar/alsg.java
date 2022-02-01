@@ -1,111 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.event.ForeBackgroundEvent;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class alsg
+public class alsg
+  extends aywi
 {
-  private List<alsi> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  public alsg(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public static alsg a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return alsj.a();
-  }
-  
-  public List<alsi> a()
-  {
-    try
+    this.a.a.unRegistObserver(this);
+    switch (PhoneContactTabView.a(this.a).d())
     {
-      List localList = this.jdField_a_of_type_JavaUtilList;
-      return localList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForeBackgroundSwitch", 2, "onAppBackground: invoked. ");
-    }
-    yiw.a().a(new ForeBackgroundEvent(true));
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppBackground ==============");
-    tld.a().a();
-    atuf.b();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((alsi)localIterator.next()).b();
-    }
-  }
-  
-  public void a(alsi paramalsi)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramalsi);
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      PhoneContactTabView.b(this.a);
+      return;
+    case 9: 
+      this.a.d();
+      return;
+    case 0: 
+    case 1: 
+    case 5: 
+    case 7: 
+      PhoneContactTabView.a(this.a);
       return;
     }
-    finally
+    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
     {
-      paramalsi = finally;
-      throw paramalsi;
-    }
-  }
-  
-  public final void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForeBackgroundSwitch", 2, "onAppForeground: invoked. " + paramString);
-    }
-    if (zhx.b <= 0L)
-    {
-      zhx.b = System.currentTimeMillis();
-      QLog.d("ForeBackgroundSwitch", 1, new Object[] { "onAppForeground: invoked. ", " sFirstForegroundTimestamp: ", Long.valueOf(zhx.b) });
-    }
-    atuf.a();
-    if ((TextUtils.equals("com.tencent.mobileqq:qzone", paramString)) || ((!TextUtils.isEmpty(paramString)) && (paramString.contains("mini")))) {
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
-    for (;;)
-    {
-      QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppForeground ==============");
-      paramString = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramString.hasNext()) {
-        ((alsi)paramString.next()).a();
-      }
-      paramString = new ForeBackgroundEvent(false);
-      yiw.a().a(paramString);
-      continue;
-      paramString = new ForeBackgroundEvent(false);
-      yiw.a().a(paramString);
-    }
-  }
-  
-  public void b(alsi paramalsi)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramalsi);
+      this.a.d();
       return;
     }
-    finally
-    {
-      paramalsi = finally;
-      throw paramalsi;
-    }
+    PhoneContactTabView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alsg
  * JD-Core Version:    0.7.0.1
  */

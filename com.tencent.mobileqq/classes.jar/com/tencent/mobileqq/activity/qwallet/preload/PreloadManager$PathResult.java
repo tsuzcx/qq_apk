@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ajeu;
+import akww;
 import android.text.TextUtils;
 import java.io.Serializable;
 
@@ -38,8 +38,13 @@ public class PreloadManager$PathResult
     if ((TextUtils.isEmpty(this.filePath)) || (TextUtils.isEmpty(this.folderPath))) {
       return false;
     }
-    ajeu.a(this.folderPath);
-    return PreloadResource.unzipAtomically(this.filePath, this.folderPath);
+    try
+    {
+      akww.a(this.folderPath);
+      boolean bool = PreloadResource.unzipAtomically(this.filePath, this.folderPath);
+      return bool;
+    }
+    finally {}
   }
   
   public String toString()
@@ -49,7 +54,7 @@ public class PreloadManager$PathResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult
  * JD-Core Version:    0.7.0.1
  */

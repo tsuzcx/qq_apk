@@ -1,27 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class awic
-  implements DialogInterface.OnClickListener
+public class awic
+  extends anmu
 {
-  awic(awia paramawia) {}
+  public awic(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString))) {
+      this.a.a();
     }
-    catch (Exception paramDialogInterface)
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      paramDialogInterface.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("MatchChatMsgListFragment", 2, "onUpdateFriendInfo uin =" + paramString);
+      }
+      int i = 0;
+      if (this.a.a(paramString)) {
+        i = 1;
+      }
+      if (i != 0) {
+        this.a.a();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awic
  * JD-Core Version:    0.7.0.1
  */

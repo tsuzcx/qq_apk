@@ -24,10 +24,10 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import bhtb;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 import java.util.Arrays;
 
 public class BubbleImageView
@@ -507,7 +507,7 @@ public class BubbleImageView
   protected void b()
   {
     this.jdField_e_of_type_Boolean = jdField_f_of_type_Boolean;
-    if (bhtb.e())
+    if (VersionUtils.isHoneycomb())
     {
       this.jdField_a_of_type_Int = 1;
       a();
@@ -582,7 +582,7 @@ public class BubbleImageView
     {
       l1 = System.currentTimeMillis() - l1;
       boolean bool = false;
-      if (bhtb.e()) {
+      if (VersionUtils.isHoneycomb()) {
         bool = paramCanvas.isHardwareAccelerated();
       }
       if ((QLog.isColorLevel()) && (l1 > 10L)) {
@@ -611,7 +611,7 @@ public class BubbleImageView
     if (this.jdField_e_of_type_Boolean) {
       setLayerType(1, null);
     }
-    while ((this.jdField_a_of_type_Int != 1) || (!bhtb.e())) {
+    while ((this.jdField_a_of_type_Int != 1) || (!VersionUtils.isHoneycomb())) {
       return;
     }
     setLayerType(2, null);
@@ -621,7 +621,7 @@ public class BubbleImageView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((this.jdField_a_of_type_Int == 1) && (bhtb.e())) {
+    if ((this.jdField_a_of_type_Int == 1) && (VersionUtils.isHoneycomb())) {
       setLayerType(0, null);
     }
   }
@@ -706,7 +706,7 @@ public class BubbleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BubbleImageView
  * JD-Core Version:    0.7.0.1
  */

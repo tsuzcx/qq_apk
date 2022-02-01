@@ -1,21 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-final class aluo
-  implements DialogInterface.OnClickListener
+class aluo
+  extends anxg
 {
-  aluo(QQAppInterface paramQQAppInterface) {}
+  aluo(alun paramalun) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    paramDialogInterface.dismiss();
-    azqs.b(this.a, "CliOper", "", "", "0X8004C6C", "0X8004C6C", 0, 0, "", "", "", "");
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      alun.a(this.a, paramString, localBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aluo
  * JD-Core Version:    0.7.0.1
  */

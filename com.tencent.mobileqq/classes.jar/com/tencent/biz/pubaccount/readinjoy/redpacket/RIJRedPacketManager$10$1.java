@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.redpacket;
 
 import java.util.List;
-import qfq;
+import qyy;
 
 class RIJRedPacketManager$10$1
   implements Runnable

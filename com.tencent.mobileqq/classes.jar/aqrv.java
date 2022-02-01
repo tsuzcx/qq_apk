@@ -1,42 +1,83 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import java.io.File;
 
 public class aqrv
+  extends aqkz<bosi>
 {
-  private QQAppInterface a;
-  
-  public aqrv(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public bosi a(int paramInt)
   {
-    this.a = paramQQAppInterface;
+    return new bosi();
   }
   
-  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong, String paramString5, aqsa paramaqsa)
+  @Nullable
+  public bosi a(aqlg[] paramArrayOfaqlg)
   {
-    aqua localaqua = this.a.a().a();
-    aqub localaqub = new aqub();
-    localaqub.jdField_a_of_type_JavaLangString = paramString4;
-    localaqub.jdField_a_of_type_Long = paramLong;
-    localaqub.c = paramString5;
-    localaqub.b = paramString3;
-    if (paramInt1 != 3000)
-    {
-      localaqua.a(paramString1, paramInt1, paramString2, paramInt2, localaqub, 5000, 5, new aqry(this, paramaqsa));
-      return;
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0)) {
+      return null;
     }
-    localaqua.a(paramString1, paramString2, localaqub, new aqrz(this, paramaqsa));
+    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onParsed, content:" + paramArrayOfaqlg);
+    }
+    return new bosf().a(paramArrayOfaqlg, DynamicTextConfigManager.a.getAbsolutePath(), "temp_dynamic_text_zip", new aqrw(this));
   }
   
-  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, long paramLong, int paramInt2, aqsa paramaqsa)
+  public void a(bosi parambosi)
   {
-    aqua localaqua = this.a.a().a();
-    aqub localaqub = new aqub();
-    localaqub.jdField_a_of_type_JavaLangString = paramString3;
-    localaqub.jdField_a_of_type_Long = paramLong;
-    if ((paramInt1 == 3000) || (paramInt1 == 1))
-    {
-      localaqua.a(paramString2, paramString1, localaqub, paramInt2, 5000, 3, new aqrw(this, paramaqsa));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onUpdate");
     }
-    localaqua.a(paramString1, paramInt1, paramString2, 5000, 3, new aqrx(this, paramaqsa));
+  }
+  
+  public Class<bosi> clazz()
+  {
+    return bosi.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (!DynamicTextConfigManager.b()) {
+      return 0;
+    }
+    return bgsg.a(BaseApplicationImpl.getContext());
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onReqFailed");
+    }
+  }
+  
+  public int onSend(int paramInt)
+  {
+    if (!DynamicTextConfigManager.b())
+    {
+      QLog.i("QIMDynamicTextConfigProcessor", 1, "config file not exist");
+      aqlk.a().a(309, 0);
+      return 0;
+    }
+    return super.onSend(paramInt);
+  }
+  
+  public int type()
+  {
+    return 309;
   }
 }
 

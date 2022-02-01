@@ -1,112 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.data.TroopAssistantData;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.TroopAssistantManagerProxy.Proxy;
 
-public class bcqa
-  implements Manager
+public final class bcqa
+  implements RecentRoute.TroopAssistantManagerProxy.Proxy
 {
-  protected Handler a;
-  QQAppInterface a;
-  public Map<String, Integer> a;
-  
-  public bcqa(QQAppInterface paramQQAppInterface)
+  public TroopAssistantData a(IMCoreAppRuntime paramIMCoreAppRuntime)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    b();
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      return awhv.a().a((QQAppInterface)paramIMCoreAppRuntime);
+    }
+    return null;
   }
   
-  public int a(String paramString)
+  public int getTroopAssistantUnreadNum(IMCoreAppRuntime paramIMCoreAppRuntime)
   {
-    paramString = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramString));
-    if (paramString != null) {
-      return paramString.intValue();
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      return awhv.a().a(null, (QQAppInterface)paramIMCoreAppRuntime);
     }
     return 0;
   }
-  
-  public void a()
-  {
-    Object localObject = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(str)).intValue() == 1) {
-        ((StringBuilder)localObject).append(str).append(";");
-      }
-    }
-    if (((StringBuilder)localObject).length() > 0)
-    {
-      localObject = ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1).toString();
-      bdea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify", (String)localObject);
-      return;
-    }
-    bdea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify", "");
-  }
-  
-  public void a(long paramLong)
-  {
-    int j = 0;
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramLong));
-    if (localInteger != null) {}
-    for (int i = localInteger.intValue();; i = 0)
-    {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramLong);
-      if ((bool) && (i == 0)) {
-        j = 1;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(String.valueOf(paramLong), Integer.valueOf(j));
-        if (j != i) {
-          a();
-        }
-        return;
-        if (bool) {
-          j = i;
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (a(paramString) == 1)
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(2));
-      a();
-    }
-  }
-  
-  public void b()
-  {
-    Object localObject = bdea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = ((String)localObject).split(";");
-      if (localObject != null)
-      {
-        int i = 0;
-        while (i < localObject.length)
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(localObject[i], Integer.valueOf(1));
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public void onDestroy() {}
 }
 
 

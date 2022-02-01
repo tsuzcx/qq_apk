@@ -1,24 +1,38 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import java.util.List;
 
-class pzd
-  implements View.OnTouchListener
+public abstract interface pzd<BEAN>
 {
-  pzd(pyz parampyz, LinearLayout paramLinearLayout) {}
+  public abstract void setCenterEmpty();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
-  }
+  public abstract void setCenterError(int paramInt, String paramString);
+  
+  public abstract void setCenterHide();
+  
+  public abstract void setCenterLoading();
+  
+  public abstract void setFooterError(int paramInt, String paramString);
+  
+  public abstract void setFooterHasMore();
+  
+  public abstract void setFooterHide();
+  
+  public abstract void setFooterLoading();
+  
+  public abstract void setFooterNoMore();
+  
+  public abstract void setHeaderError(int paramInt, String paramString);
+  
+  public abstract void setHeaderLoading();
+  
+  public abstract void setHeaderSuccess();
+  
+  public abstract void setListData(List<BEAN> paramList, boolean paramBoolean);
+  
+  public abstract void setTotal(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pzd
  * JD-Core Version:    0.7.0.1
  */

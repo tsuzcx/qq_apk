@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.widget.SwipListView;
 
-class airr
-  implements DialogInterface.OnClickListener
+public class airr
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  airr(airj paramairj) {}
+  public airr(AddContactsView paramAddContactsView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-    if (((NewPhotoPreviewActivity)this.a.mActivity).sendBtn != null) {
-      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(true);
-    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.setListViewHeightBasedOnChildren(this.a.a);
   }
 }
 

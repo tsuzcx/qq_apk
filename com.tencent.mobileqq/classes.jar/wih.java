@@ -1,32 +1,26 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.util.ArrayList;
 
-class wih
-  extends ParallelJobSegment<String, wid>
+public final class wih
 {
-  public int a;
+  public ShareGroupFeedItem a;
+  public VideoListFeedItem a;
+  public ArrayList<wig> a;
   
-  public wih(wib paramwib, int paramInt)
+  public wih()
   {
-    super("RequestLikeListSegment");
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public String toString()
   {
-    wiv localwiv = new wiv();
-    localwiv.jdField_a_of_type_JavaLangString = paramString;
-    localwiv.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int != -1) {
-      localwiv.c = this.jdField_a_of_type_Int;
-    }
-    urp.a().a(localwiv, new wii(this, paramJobContext, paramString));
+    return "ShareGroupFakeItem{mFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem + ", mSucFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem + ", mVideos=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wih
  * JD-Core Version:    0.7.0.1
  */

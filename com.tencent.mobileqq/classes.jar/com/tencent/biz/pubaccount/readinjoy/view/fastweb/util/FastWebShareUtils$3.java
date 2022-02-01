@@ -1,79 +1,60 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import android.content.Context;
 import android.graphics.Bitmap;
-import bety;
-import bkbq;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.graphics.BitmapFactory;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import java.io.IOException;
 import java.util.Map;
-import mqq.app.MobileQQ;
-import ors;
-import scx;
-import sdn;
+import nlw;
+import tbm;
 
 public class FastWebShareUtils$3
   implements Runnable
 {
-  public FastWebShareUtils$3(scx paramscx, Map paramMap, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, AppInterface paramAppInterface, String paramString6, ArticleInfo paramArticleInfo, int paramInt) {}
+  public FastWebShareUtils$3(tbm paramtbm, String paramString, boolean paramBoolean, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
   
   public void run()
   {
-    int j = 1;
-    int i = 1;
-    if (scx.a(this.this$0).isShowing()) {
-      scx.a(this.this$0).dismiss();
-    }
-    scx.a(this.this$0, String.valueOf(System.currentTimeMillis()));
-    Object localObject1 = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
-    Object localObject2;
-    if (this.jdField_a_of_type_Boolean)
+    label149:
+    try
     {
-      WxShareHelperFromReadInjoy.a().a(scx.a(this.this$0), this.jdField_a_of_type_JavaLangString, (Bitmap)localObject1, this.b, this.c, this.d);
-      localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getApplicationContext();
-      localObject2 = this.f;
-      if (!"2".equals(this.e)) {
-        break label303;
+      localObject = nlw.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      if (localObject == null) {
+        break label127;
       }
+      localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
+      if (localObject == null) {
+        break label127;
+      }
+      int i = ((Bitmap)localObject).getWidth();
+      int j = ((Bitmap)localObject).getHeight();
+      if ((i * j <= 8000) || (this.jdField_a_of_type_Boolean)) {
+        break label149;
+      }
+      double d = Math.sqrt(8000.0D / (i * j));
+      Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
+      ((Bitmap)localObject).recycle();
+      localObject = localBitmap;
     }
-    label303:
-    for (i = 4;; i = 5)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      scx.a((Context)localObject1, (String)localObject2, i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      sdn.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false);
-      return;
-      if (bkbq.t(ors.a()) == 1)
-      {
-        localObject2 = WXShareHelper.a();
-        str1 = scx.a(this.this$0);
-        str2 = this.jdField_a_of_type_JavaLangString;
-        str3 = this.b;
-        str4 = this.c;
-        if ("2".equals(this.e)) {
-          i = 0;
-        }
-        ((WXShareHelper)localObject2).b(str1, str2, (Bitmap)localObject1, str3, str4, i);
-        break;
-      }
-      localObject2 = WxShareHelperFromReadInjoy.a();
-      String str1 = scx.a(this.this$0);
-      String str2 = this.jdField_a_of_type_JavaLangString;
-      String str3 = this.b;
-      String str4 = this.c;
-      i = j;
-      if ("2".equals(this.e)) {
-        i = 0;
-      }
-      ((WxShareHelperFromReadInjoy)localObject2).a(str1, str2, (Bitmap)localObject1, str3, str4, i);
-      break;
+      Object localObject;
+      break label127;
     }
+    catch (IOException localIOException)
+    {
+      label127:
+      for (;;) {}
+    }
+    this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils.3
  * JD-Core Version:    0.7.0.1
  */

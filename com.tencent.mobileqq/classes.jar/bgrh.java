@@ -1,38 +1,12 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.View;
-import com.tencent.qqmini.sdk.log.QMLog;
-
-class bgrh
+public abstract interface bgrh
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
+  public abstract void a(azue paramazue, azuf paramazuf);
   
-  private void a()
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
-    {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
-      if ((localDrawable instanceof GradientDrawable)) {
-        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QMLog.w("BrandColorManager", "set band border-color fail");
-  }
-  
-  void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
-  }
+  public abstract void b(azue paramazue, azuf paramazuf);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgrh
  * JD-Core Version:    0.7.0.1
  */

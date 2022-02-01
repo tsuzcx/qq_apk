@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import bdhj;
+import bgmo;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,7 +21,7 @@ class ScanningSurfaceView$3
           localURLDrawable.startDownload();
           return;
         }
-        this.a.b = bdhj.a(localURLDrawable);
+        this.a.b = bgmo.a(localURLDrawable);
         return;
       }
     }
@@ -33,7 +33,7 @@ class ScanningSurfaceView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanningSurfaceView.3
  * JD-Core Version:    0.7.0.1
  */

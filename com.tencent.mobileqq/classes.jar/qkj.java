@@ -1,12 +1,19 @@
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 
-public abstract interface qkj
+public class qkj
+  extends qkl
 {
-  public abstract URL a(URL paramURL);
+  public qkj(VafContext paramVafContext)
+  {
+    super(paramVafContext);
+    this.a.setIsCacheIcon(true);
+    this.a.setIsClosedoAlphaAniamation(true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qkj
  * JD-Core Version:    0.7.0.1
  */

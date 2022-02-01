@@ -1,47 +1,70 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.PeakAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.PicShareToWX;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.os.MqqHandler;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class ayyc
-  extends ayyd
+  implements ayyt
 {
-  PeakAppInterface a;
+  private String jdField_a_of_type_JavaLangString;
   
-  public ayyc(PeakAppInterface paramPeakAppInterface)
+  public ayyc(PicShareToWX paramPicShareToWX, String paramString)
   {
-    this.a = paramPeakAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public AppInterface a()
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    return this.a;
+    return null;
   }
   
-  protected void a()
+  public void a(ayyu paramayyu) {}
+  
+  public void b(ayyu paramayyu)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("PicShareToWX", 1, "onSend, result.result = " + paramayyu.a);
+    }
+    if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
+      ThreadManager.getUIHandler().removeCallbacks(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX));
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a.dismiss();
+    }
+    if (paramayyu.a != 0)
     {
-      super.a();
-      a(new bkzs(this.a));
-      super.b();
+      if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
+        PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX).callbackResult(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), EIPCResult.createResult(-102, null));
+      }
+      if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
+        QQToast.a(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), 2131718008, 0).a();
+      }
+      PicShareToWX.a(PicShareToWX.b(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), false);
+      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, false, paramayyu.a, 0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a();
+      if ((paramayyu.a == 0) && (!PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX)))
+      {
+        paramayyu = paramayyu.e;
+        Object localObject = new BitmapFactory.Options();
+        bgmo.a((BitmapFactory.Options)localObject, this.jdField_a_of_type_JavaLangString, 400);
+        localObject = SafeBitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a(paramayyu, (Bitmap)localObject, PicShareToWX.b(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX));
+      }
       return;
+      if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
+        PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX).callbackResult(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), EIPCResult.createSuccessResult(null));
+      }
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    a(paramToServiceMsg, null, azbe.class);
-  }
-  
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    super.a(paramBoolean, paramToServiceMsg, paramFromServiceMsg, null);
   }
 }
 

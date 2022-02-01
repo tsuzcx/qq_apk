@@ -1,6 +1,14 @@
-public abstract interface bksu
+import com.tencent.widget.pull2refresh.XRecyclerView;
+
+public class bksu
+  extends ThreadLocal<Boolean>
 {
-  public abstract void a(String paramString);
+  public bksu(XRecyclerView paramXRecyclerView) {}
+  
+  protected Boolean a()
+  {
+    return Boolean.valueOf(false);
+  }
 }
 
 

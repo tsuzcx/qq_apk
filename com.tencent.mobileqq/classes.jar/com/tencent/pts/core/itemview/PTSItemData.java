@@ -11,11 +11,11 @@ public class PTSItemData
 {
   public static final Parcelable.Creator<PTSItemData> CREATOR = new PTSItemData.1();
   public static final String TAG = "PTSItemData";
-  private String appName;
   private String frameTreeJson;
   private String itemId;
   private String jsonData;
   private String pageJs;
+  private String pageName;
   
   public int describeContents()
   {
@@ -28,11 +28,6 @@ public class PTSItemData
       return (TextUtils.equals(this.itemId, ((PTSItemData)paramObject).getItemID())) && (TextUtils.equals(this.jsonData, ((PTSItemData)paramObject).getJSONData()));
     }
     return false;
-  }
-  
-  public String getAppName()
-  {
-    return this.appName;
   }
   
   public String getFrameTreeJson()
@@ -55,10 +50,15 @@ public class PTSItemData
     return this.pageJs;
   }
   
+  public String getPageName()
+  {
+    return this.pageName;
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.itemId);
-    paramParcel.writeString(this.appName);
+    paramParcel.writeString(this.pageName);
     paramParcel.writeString(this.jsonData);
     paramParcel.writeString(this.frameTreeJson);
     paramParcel.writeString(this.pageJs);
@@ -66,7 +66,7 @@ public class PTSItemData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.itemview.PTSItemData
  * JD-Core Version:    0.7.0.1
  */

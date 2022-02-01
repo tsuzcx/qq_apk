@@ -1,208 +1,367 @@
 import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qmcf.QmcfManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.video.decode.ShortVideoSoLoad;
+import dov.com.qq.im.ae.SessionWrap;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.app.Packet;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.RspBody;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.UdcUinData;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class bchd
 {
-  private final float jdField_a_of_type_Float;
-  private ameq jdField_a_of_type_Ameq;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  private final bchv jdField_a_of_type_Bchv;
-  private TroopChatPie jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
-  private final String jdField_b_of_type_JavaLangString;
+  private static bchd jdField_a_of_type_Bchd;
+  private int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private String d;
-  private String e;
   
-  public bchd(TroopChatPie paramTroopChatPie, TroopInfo paramTroopInfo, QQAppInterface paramQQAppInterface, bchv parambchv)
+  public static bchd a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie = paramTroopChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator;
-    if ((paramQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopowneruin)) || ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.contains(paramQQAppInterface.getCurrentAccountUin())))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a().getResources().getDrawable(2130839229);
-      this.d = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode;
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Float = a().getDisplayMetrics().density;
-      this.jdField_a_of_type_Bchv = parambchv;
-      d();
-      return;
+    if (jdField_a_of_type_Bchd == null) {
+      jdField_a_of_type_Bchd = new bchd();
     }
+    return jdField_a_of_type_Bchd;
   }
   
-  private Activity a()
+  public static boolean a(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a();
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 3000);
   }
   
-  private Resources a()
+  public static boolean a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    return a().getResources();
-  }
-  
-  private String a(int paramInt)
-  {
-    return BaseApplication.getContext().getString(paramInt);
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_Ameq = new bchg(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ameq);
-  }
-  
-  public void a()
-  {
-    amdu localamdu = (amdu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if (localamdu != null)
-    {
-      localamdu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_b_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("AllMemberItem", 2, "fetchRemainCountInfo: invoked. ");
+    boolean bool;
+    if (paramBoolean) {
+      if (paramInt2 == 5)
+      {
+        paramBoolean = true;
+        if (paramInt2 != 6) {
+          break label55;
+        }
+        bool = true;
+        label19:
+        switch (paramInt1)
+        {
+        }
       }
     }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(String paramString)
-  {
-    a(true, paramString, this.jdField_b_of_type_Boolean, 0, 0, this.e, this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Boolean);
-  }
-  
-  public void a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, int paramInt1, int paramInt2, String paramString2, String paramString3, boolean paramBoolean3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AllMemberItem", 2, new Object[] { "updateUIForAtAllRemainedCount: invoked. ", " isSuccess: ", Boolean.valueOf(paramBoolean1), " bCanAtAll: ", Boolean.valueOf(paramBoolean2), " troopCode: ", paramString1, " remainCount: ", Integer.valueOf(paramInt1), " discRemainCount: ", Integer.valueOf(paramInt2), " remainTips: ", paramString2, " noRemainTips: ", paramString3, " allowMemberAtAll:", Boolean.valueOf(paramBoolean3) });
-    }
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.e = paramString2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    if ((!this.jdField_a_of_type_Boolean) && (paramBoolean3) && (this.jdField_a_of_type_AndroidViewView != null))
-    {
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378896)).setText(a(2131721077));
-      paramString3 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375631);
-      paramString3.setTextSize(12.0F);
-      paramString3.setText("");
-      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368796)).setBackgroundDrawable(bdhj.d());
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setEnabled(false);
-    }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null))
-    {
-      paramString3 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372562);
-      paramString3.setVisibility(0);
-      paramString3.setOnClickListener(new bche(this));
-    }
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
-    {
-      ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375631)).setCompoundDrawables(null, null, null, null);
-    }
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() != 8))
-    {
-      this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-      if ((paramBoolean1) && (paramString1 != null)) {
-        break label383;
-      }
-    }
-    label383:
-    String str;
-    Button localButton;
+    label55:
+    label67:
+    label82:
     do
     {
-      return;
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378896)).setTextColor(a().getColor(2131166903));
-      paramString3 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375631);
-      str = alud.a(2131700604);
-      localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131371390);
-      localButton.setVisibility(8);
-      localButton.setOnClickListener(new bchf(this));
-      paramInt1 = ((amca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).g();
-    } while (!paramString1.equals(this.jdField_b_of_type_JavaLangString));
-    if (TextUtils.isEmpty(paramString2))
-    {
-      QLog.e("AllMemberItem", 1, "updateUIForAtAllRemainedCount remainTips empty");
-      return;
-    }
-    if ((!this.jdField_b_of_type_Boolean) && (paramInt1 != 3)) {
-      localButton.setVisibility(0);
-    }
-    paramString1 = new SpannableString(this.e);
-    paramString2 = Pattern.compile("[^0-9]").matcher(this.e).replaceAll("").trim();
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramInt1 = this.e.indexOf(paramString2);
-      paramInt2 = paramString2.length();
-      paramString1.setSpan(new ForegroundColorSpan(-48606), paramInt1, paramInt2 + paramInt1, 33);
-    }
-    if (this.e.contains(alud.a(2131700606)))
-    {
-      paramInt1 = this.e.indexOf(alud.a(2131700609));
-      paramInt2 = alud.a(2131700605).length();
-      paramString1.setSpan(new ForegroundColorSpan(-48606), paramInt1, paramInt2 + paramInt1, 33);
-    }
-    paramString3.setText(paramString1);
-    paramString1 = str + "," + this.e;
-    this.jdField_a_of_type_AndroidViewView.setContentDescription(paramString1);
+      return false;
+      paramBoolean = false;
+      break;
+      bool = false;
+      break label19;
+      if (paramInt2 == 3)
+      {
+        paramBoolean = true;
+        if (paramInt2 != 4) {
+          break label82;
+        }
+      }
+      for (bool = true;; bool = false)
+      {
+        break;
+        paramBoolean = false;
+        break label67;
+      }
+      return paramBoolean;
+      return bool;
+    } while ((!paramBoolean) && (!bool));
+    return true;
   }
   
-  boolean a()
+  public static boolean a(AppInterface paramAppInterface)
+  {
+    if (VideoEnvironment.a() == null) {}
+    do
+    {
+      do
+      {
+        return false;
+        if (ShortVideoUtils.a()) {
+          break;
+        }
+        ShortVideoUtils.a(paramAppInterface);
+      } while (!ShortVideoUtils.a());
+    } while ((bnpy.a(bnpt.b) == 2) || (bcls.a() == 2));
+    return true;
+  }
+  
+  public static boolean b(AppInterface paramAppInterface)
+  {
+    paramAppInterface = VideoEnvironment.a();
+    if (TextUtils.isEmpty(paramAppInterface)) {}
+    do
+    {
+      String str;
+      do
+      {
+        return false;
+        if (ShortVideoUtils.a()) {
+          break;
+        }
+        str = ShortVideoSoLoad.getShortVideoSoPath(VideoEnvironment.a());
+      } while (!bgmg.a(str + paramAppInterface));
+    } while ((bnpy.a(bnpt.b) == 2) || (bcls.a() == 2));
+    return true;
+  }
+  
+  public static boolean c()
+  {
+    boolean bool1 = QmcfManager.getInstance().hasQmcfEntrance(2);
+    boolean bool2 = bool1;
+    int i;
+    if (bool1)
+    {
+      i = bckf.a();
+      if (i <= 0) {
+        break label77;
+      }
+    }
+    label77:
+    for (bool1 = true;; bool1 = false)
+    {
+      bool2 = bool1;
+      if (!bool1)
+      {
+        QmcfManager.getInstance().setQmcfMobileNotSupport(bckf.jdField_a_of_type_JavaLangString);
+        QLog.d("DanceGameVideoManager", 1, String.format("isDanceGameSupport supportFrameType[%d], gpuinfo[%s], model[%s]", new Object[] { Integer.valueOf(i), bckf.jdField_a_of_type_JavaLangString, Build.MODEL }));
+        bool2 = bool1;
+      }
+      return bool2;
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getRuntime().getApplication().getSharedPreferences("danceConfig", 4).edit();
+    localEditor.putInt(paramString + "_max_score", paramInt);
+    localEditor.commit();
+    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("DanceGameVideoManager", 2, "updateDanceMaxScore maxScore:" + this.jdField_a_of_type_Int + " ,new:" + paramInt);
+    }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(Activity paramActivity, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    if (a(paramQQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("DanceGameVideoManager", 2, "jumpToVideoPreview by danceVideo tail");
+      }
+      paramQQAppInterface = null;
+      if (paramSessionInfo != null) {
+        paramQQAppInterface = new SessionWrap(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.d, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.b);
+      }
+      paramQQAppInterface = bnbe.a(paramQQAppInterface, paramActivity.getClass().getName(), 10000, 100, true, 10, "");
+      ziv.a().a(paramActivity, paramQQAppInterface, 11);
+    }
+  }
+  
+  public void a(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
+  {
+    try
+    {
+      if ((!paramFromServiceMsg.isSuccess()) || (paramArrayOfByte == null)) {
+        break label297;
+      }
+      paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom(paramArrayOfByte);
+      if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.uint32_result.has())) {
+        break label252;
+      }
+      j = paramFromServiceMsg.uint32_result.get();
+      if (j != 0) {
+        break label197;
+      }
+      paramArrayOfByte = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
+      paramFromServiceMsg = new oidb_0x5eb.RspBody();
+      paramFromServiceMsg.mergeFrom(paramArrayOfByte.array());
+      k = paramFromServiceMsg.rpt_msg_uin_data.size();
+      i = 0;
+    }
+    catch (Exception paramFromServiceMsg)
+    {
+      for (;;)
+      {
+        int j;
+        int k;
+        int i;
+        String str;
+        int m;
+        label197:
+        label252:
+        this.jdField_a_of_type_JavaLangString = paramFromServiceMsg.getMessage();
+        QLog.e("DanceGameVideoManager", 1, "handleGetDanceMaxScore exception: ", paramFromServiceMsg);
+        continue;
+        paramFromServiceMsg = "no pkg result";
+        continue;
+        label297:
+        this.jdField_a_of_type_JavaLangString = ("msg fail " + paramFromServiceMsg.getBusinessFailCode());
+        continue;
+        i += 1;
+      }
+    }
+    if (i < k)
+    {
+      paramArrayOfByte = (oidb_0x5eb.UdcUinData)paramFromServiceMsg.rpt_msg_uin_data.get(i);
+      str = String.valueOf(paramArrayOfByte.uint64_uin.get());
+      if (paramArrayOfByte.uint32_dance_max_score.has())
+      {
+        m = paramArrayOfByte.uint32_dance_max_score.get();
+        a(m, str);
+        if (QLog.isColorLevel()) {
+          QLog.d("DanceGameVideoManager", 2, new Object[] { "handleGetDanceMaxScore uin:", str, " maxScore:", Integer.valueOf(m) });
+        }
+      }
+    }
+    else
+    {
+      for (this.jdField_a_of_type_JavaLangString = ("error ret " + j);; this.jdField_a_of_type_JavaLangString = paramFromServiceMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DanceGameVideoManager", 2, new Object[] { "handleGetDanceMaxScore result: ", this.jdField_a_of_type_JavaLangString });
+        }
+        return;
+        if (paramFromServiceMsg != null) {
+          break;
+        }
+        paramFromServiceMsg = "no pkg";
+      }
+    }
+  }
+  
+  public void a(Packet paramPacket, String paramString)
+  {
+    Object localObject = new oidb_0x5eb.ReqBody();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Long.valueOf(Long.parseLong(paramString)));
+    ((oidb_0x5eb.ReqBody)localObject).rpt_uint64_uins.set(localArrayList);
+    ((oidb_0x5eb.ReqBody)localObject).uint32_req_dance_max_score.set(1);
+    paramString = new oidb_sso.OIDBSSOPkg();
+    paramString.uint32_command.set(1515);
+    paramString.uint32_service_type.set(203);
+    paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x5eb.ReqBody)localObject).toByteArray()));
+    paramString = paramString.toByteArray();
+    localObject = ByteBuffer.allocate(paramString.length + 4);
+    ((ByteBuffer)localObject).putInt(paramString.length + 4);
+    ((ByteBuffer)localObject).put(paramString);
+    paramPacket.putSendData(((ByteBuffer)localObject).array());
+    paramPacket.setSSOCommand("OidbSvc.0x5eb_203");
+  }
+  
+  public void a(Packet paramPacket, String paramString, int paramInt)
+  {
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(13);
+    long l = Long.parseLong(paramString);
+    this.jdField_b_of_type_Int = paramInt;
+    localByteBuffer.putInt(bgjw.a(l)).put((byte)0).putShort((short)1).putShort((short)27245).putShort((short)2).putShort((short)paramInt);
+    paramString = new oidb_sso.OIDBSSOPkg();
+    paramString.uint32_command.set(1279);
+    paramString.uint32_service_type.set(9);
+    paramString.uint32_result.set(0);
+    paramString.str_client_version.set(AppSetting.f());
+    paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localByteBuffer.array()));
+    paramString = paramString.toByteArray();
+    localByteBuffer = ByteBuffer.allocate(paramString.length + 4);
+    localByteBuffer.putInt(paramString.length + 4);
+    localByteBuffer.put(paramString);
+    paramPacket.putSendData(localByteBuffer.array());
+    paramPacket.setSSOCommand("OidbSvc.0x4ff_203");
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
   {
     return this.jdField_b_of_type_Boolean;
   }
   
-  void b()
+  public void b(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
-    if (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+    for (;;)
     {
-      QQToast.a(a(), this.jdField_c_of_type_JavaLangString, 0).a();
+      try
+      {
+        if ((!paramFromServiceMsg.isSuccess()) || (paramArrayOfByte == null)) {
+          continue;
+        }
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom(paramArrayOfByte);
+        if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.uint32_result.has())) {
+          continue;
+        }
+        int i = paramFromServiceMsg.uint32_result.get();
+        if (i == 0)
+        {
+          long l = bgjw.a(ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray()).getInt());
+          if (this.jdField_b_of_type_Int > this.jdField_a_of_type_Int)
+          {
+            a(this.jdField_b_of_type_Int, String.valueOf(Long.valueOf(l)));
+            this.jdField_b_of_type_Boolean = true;
+          }
+        }
+        this.jdField_a_of_type_JavaLangString = ("error ret " + i);
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        this.jdField_a_of_type_JavaLangString = paramFromServiceMsg.getMessage();
+        QLog.e("DanceGameVideoManager", 1, "handleSetDanceMaxScore exception: ", paramFromServiceMsg);
+        continue;
+        paramFromServiceMsg = "no pkg result";
+        continue;
+        this.jdField_a_of_type_JavaLangString = ("msg fail " + paramFromServiceMsg.getBusinessFailCode());
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("DanceGameVideoManager", 2, new Object[] { "handleSetDanceMaxScore result: ", this.jdField_a_of_type_JavaLangString });
+      }
       return;
+      if (paramFromServiceMsg != null) {
+        continue;
+      }
+      paramFromServiceMsg = "no pkg";
+      this.jdField_a_of_type_JavaLangString = paramFromServiceMsg;
     }
-    QQToast.a(a(), alud.a(2131700608), 0).a();
   }
   
-  public void c()
+  public boolean b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ameq);
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

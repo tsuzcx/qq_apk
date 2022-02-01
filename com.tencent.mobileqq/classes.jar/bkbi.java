@@ -1,16 +1,6 @@
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
-
-class bkbi
-  implements QzoneZipCacheHelperCallBack
+public abstract interface bkbi
 {
-  bkbi(bkbh parambkbh) {}
-  
-  public void onResult(boolean paramBoolean)
-  {
-    bkbh.a(this.a, paramBoolean);
-  }
-  
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
+  public abstract void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
 }
 
 

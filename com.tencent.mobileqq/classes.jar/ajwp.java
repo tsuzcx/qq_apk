@@ -1,8 +1,19 @@
-import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ajwp
+class ajwp
+  extends aooo
 {
-  public abstract void a(Bitmap paramBitmap);
+  ajwp(ajvr paramajvr) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
+      this.a.g();
+    }
+  }
 }
 
 

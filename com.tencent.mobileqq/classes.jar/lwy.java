@@ -1,61 +1,42 @@
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
 public class lwy
-  extends lwt
+  implements bnpw
 {
-  public boolean a;
+  final WeakReference<QQServiceForAV> a;
   
-  public void a(long paramLong)
+  lwy(QQServiceForAV paramQQServiceForAV)
   {
-    paramLong -= this.jdField_a_of_type_Long;
-    int j = 0;
-    float f2 = 1.0F;
-    int i;
-    float f1;
-    if (paramLong <= 500L)
-    {
-      i = 0;
-      f1 = f2;
-    }
-    for (;;)
-    {
-      a(i);
-      b(f1);
-      return;
-      if ((paramLong > 500L) && (paramLong < 1167L))
-      {
-        i = (int)(255L * (paramLong - 500L) / 667L);
-        f1 = (0.5F * (float)(paramLong + 1167L) - 500.0F) / 667.0F;
-      }
-      else if (((paramLong >= 1167L) && (paramLong <= 2167L)) || (!this.jdField_a_of_type_Boolean))
-      {
-        i = 255;
-        f1 = f2;
-      }
-      else
-      {
-        f1 = f2;
-        i = j;
-        if (paramLong > 2167L)
-        {
-          f1 = f2;
-          i = j;
-          if (paramLong < 2500L)
-          {
-            i = (int)((paramLong - 2500L) * 255L / -333L);
-            f1 = f2;
-          }
-        }
-      }
-    }
+    this.a = new WeakReference(paramQQServiceForAV);
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(bnpt parambnpt, long paramLong1, long paramLong2) {}
+  
+  public void a(bnpt parambnpt, String paramString, boolean paramBoolean, int paramInt)
   {
-    a(paramInt1 * 5 / 1500, paramInt2 - paramInt1 * 752 / 750, paramInt1 * 1495 / 1500, paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.i("QQServiceForAV", 2, "PTULibpagDownloadCallback onAEResDownloadResult, package[" + parambnpt.a + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt + "]");
+    }
+    paramString = (QQServiceForAV)this.a.get();
+    if (paramString != null)
+    {
+      paramString = (QQAppInterface)paramString.a();
+      Intent localIntent = new Intent("tencent.video.q2v.ptuLibpagDownloadRet");
+      localIntent.putExtra("packageIdx", parambnpt.a);
+      localIntent.putExtra("isDownloaded", paramBoolean);
+      localIntent.putExtra("errorType", paramInt);
+      paramString.getApp().sendBroadcast(localIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lwy
  * JD-Core Version:    0.7.0.1
  */

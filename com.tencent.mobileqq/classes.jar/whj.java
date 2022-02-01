@@ -1,30 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
 
-class whj
-  extends SimpleObserver<Void>
+public final class whj
 {
-  whj(whh paramwhh, whl paramwhl) {}
+  protected int a = 0;
   
-  public void a(Void paramVoid)
+  public PreloadQueue a()
   {
-    super.onNext(paramVoid);
-    wxe.b("QQStoryTakeVideoHelper", "generate video manifest success.");
-    this.jdField_a_of_type_Whh.a = 2;
-    this.jdField_a_of_type_Whl.a();
+    PreloadQueue localPreloadQueue = new PreloadQueue();
+    PreloadQueue.access$002(localPreloadQueue, this.a);
+    return localPreloadQueue;
   }
   
-  public void onError(@NonNull Error paramError)
+  public whj a(int paramInt)
   {
-    super.onError(paramError);
-    wxe.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
-    this.jdField_a_of_type_Whh.a = -1;
-    this.jdField_a_of_type_Whl.b();
+    this.a = paramInt;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     whj
  * JD-Core Version:    0.7.0.1
  */

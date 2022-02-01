@@ -1,32 +1,7 @@
-import android.content.Context;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
-import java.util.List;
-
 public class antl
-  extends antj
+  implements anil
 {
-  private float[] d = new float[16];
-  
-  public antl(Context paramContext, int paramInt, SensorManager paramSensorManager, antb paramantb)
-  {
-    super(paramContext, paramInt, paramSensorManager, paramantb);
-    paramContext = paramSensorManager.getDefaultSensor(11);
-    if ((Build.VERSION.SDK_INT >= 9) && (paramContext != null))
-    {
-      this.a.add(paramContext);
-      return;
-    }
-    throw new OrientationProviderNotFound(String.valueOf(3));
-  }
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    antd.a(this.d, paramSensorEvent);
-    super.a(this.d);
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

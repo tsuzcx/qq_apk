@@ -1,56 +1,94 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqui
-  extends aqvc
+public class aqui
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
+  public String a;
+  public boolean a;
+  public String b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
   
-  aqui(aque paramaque, MessageRecord paramMessageRecord)
+  public aqui()
   {
-    super(paramaque);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    this.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqva paramaqva)
+  public static aqui a(aqlg[] paramArrayOfaqlg)
   {
-    if ("1".equals(this.f))
+    aqui localaqui = new aqui();
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      int j = paramArrayOfaqlg.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramArrayOfaqlg[i];
+        if ((localObject == null) || (((aqlg)localObject).jdField_a_of_type_JavaLangString == null))
+        {
+          i += 1;
+        }
+        else
+        {
+          localObject = ((aqlg)localObject).jdField_a_of_type_JavaLangString;
+          for (;;)
+          {
+            try
+            {
+              JSONObject localJSONObject = new JSONObject((String)localObject);
+              if (localJSONObject.has("announcementUrl")) {
+                localaqui.jdField_a_of_type_JavaLangString = localJSONObject.optString("announcementUrl");
+              }
+              if (localJSONObject.has("autoApprovalUrl")) {
+                localaqui.b = localJSONObject.optString("autoApprovalUrl");
+              }
+              if (!localJSONObject.has("frequencyLimitVisible")) {
+                continue;
+              }
+              if (localJSONObject.getInt("frequencyLimitVisible") != 1) {
+                continue;
+              }
+              bool = true;
+              localaqui.jdField_a_of_type_Boolean = bool;
+            }
+            catch (JSONException localJSONException)
+            {
+              boolean bool;
+              localJSONException.printStackTrace();
+              continue;
+            }
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.i("TroopUrlConfBean", 2, "parse: " + (String)localObject);
+            break;
+            bool = false;
+            continue;
+            localaqui.jdField_a_of_type_Boolean = false;
+          }
+        }
       }
-      paramaqva.a(aque.a(this.jdField_a_of_type_Long, false), false);
-      return;
     }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild,文件不存在或已失效");
-      }
-      paramaqva.a(aque.a(this.jdField_a_of_type_Long, true), false);
-      return;
+    if (TextUtils.isEmpty(localaqui.jdField_a_of_type_JavaLangString)) {
+      localaqui.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
     }
-    aque.a(this.jdField_a_of_type_Aque).a().a().a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 106, new aquj(this, paramString, paramaqva));
+    if (TextUtils.isEmpty(localaqui.b)) {
+      localaqui.b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
+    }
+    return localaqui;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(200);
+    localStringBuilder.append("TroopUrlConfBean [announcement: ").append(this.jdField_a_of_type_JavaLangString).append(", autoApproval: ").append(this.b).append(", freqLimitVisible: ").append(this.jdField_a_of_type_Boolean).append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqui
  * JD-Core Version:    0.7.0.1
  */

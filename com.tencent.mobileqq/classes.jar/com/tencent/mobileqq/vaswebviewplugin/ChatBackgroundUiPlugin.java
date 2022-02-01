@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import begz;
+import arpd;
+import arui;
+import bhod;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import java.util.Map;
@@ -10,6 +12,7 @@ public class ChatBackgroundUiPlugin
   extends VasWebviewUiPlugin
 {
   private static final String TAG = "ChatBackgroundUiPlugin";
+  arpd mOnRemoteResp = new ChatBackgroundUiPlugin.1(this);
   private Bundle mReqBundle;
   private String uin;
   
@@ -20,8 +23,15 @@ public class ChatBackgroundUiPlugin
     this.uin = this.mRuntime.a().getAccount();
     WebViewFragment localWebViewFragment = this.mRuntime.a();
     if (localWebViewFragment != null) {
-      localWebViewFragment.g = super.decodeUrl(localWebViewFragment.g);
+      localWebViewFragment.mUrl = super.decodeUrl(localWebViewFragment.mUrl);
     }
+    arui.a().a(this.mOnRemoteResp);
+  }
+  
+  void OnActivityDestroy()
+  {
+    super.OnActivityDestroy();
+    arui.a().b(this.mOnRemoteResp);
   }
   
   protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -36,7 +46,7 @@ public class ChatBackgroundUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatBackgroundUiPlugin
  * JD-Core Version:    0.7.0.1
  */

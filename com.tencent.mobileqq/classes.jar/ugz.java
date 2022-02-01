@@ -1,92 +1,95 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.widgets.QCircleAvatarView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StNotice;
-import feedcloud.FeedCloudMeta.StOperation;
-import feedcloud.FeedCloudMeta.StUser;
-import qqcircle.QQCircleFeedBase.StNoticeBusiData;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
 
-public abstract class ugz
+final class ugz
+  extends ugw
 {
-  protected int a;
-  protected Context a;
-  protected View a;
-  protected TextView a;
-  protected QCircleAvatarView a;
-  protected FeedCloudMeta.StNotice a;
-  protected QQCircleFeedBase.StNoticeBusiData a;
-  protected View b;
-  protected TextView b;
-  protected TextView c;
-  
-  public ugz(int paramInt)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (paramView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView = ((QCircleAvatarView)paramView.findViewById(2131368706));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378900));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378887));
-      this.c = ((TextView)paramView.findViewById(2131378888));
-      this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369677);
-      uha localuha = new uha(this);
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView.setOnClickListener(localuha);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localuha);
-      b(paramContext, paramView);
-    }
-  }
-  
-  public void a(FeedCloudMeta.StNotice paramStNotice, int paramInt)
-  {
-    if ((paramStNotice != null) && (paramStNotice.operation.get() != null))
-    {
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice = paramStNotice;
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))
-      {
-        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAvatarView.setUser(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, (FeedCloudMeta.StUser)paramStNotice.operation.opUser.get());
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStNotice.operation.opUser.nick.get());
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(paramStNotice.message.get());
-        this.c.setText(tra.a(paramStNotice.createTime.get() * 1000L));
-      }
-      if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.busiData.get() != null) {
-        this.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData = new QQCircleFeedBase.StNoticeBusiData();
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.mergeFrom(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.busiData.get().toByteArray());
-      b(paramStNotice, paramInt);
+    super.installSucceed(paramString1, paramString2);
+    if (!ugx.b()) {
       return;
     }
-    catch (Exception localException)
+    ugx.a(paramString1, paramString2, true);
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    upe.c("WeishiDownloadUtil", "qzone onDownloadCancel info = " + paramDownloadInfo);
+    if (ugx.a(paramDownloadInfo))
     {
-      for (;;)
-      {
-        QLog.e("QCircleBaseMessagePresenter", 1, "getNoticeBusiData error" + localException.getMessage());
-      }
+      ugx.a();
+      int i = ugx.b();
+      WSPublicAccReport.getInstance().reportDownload(ugx.a(), i, 3, 2, 0);
     }
   }
   
-  abstract void b(Context paramContext, View paramView);
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    upe.d("WeishiDownloadUtil", "qzone onDownloadError info = " + paramDownloadInfo);
+    if (ugx.a(paramDownloadInfo))
+    {
+      ugx.a();
+      paramInt2 = ugx.b();
+      WSPublicAccReport.getInstance().reportDownload(ugx.a(), paramInt2, 3, 2, 0);
+      upe.d("WeishiDownloadUtil", "qzone  errorCode:" + paramInt1 + ", errorMsg: " + paramString);
+      ugx.a(paramDownloadInfo, paramInt1);
+    }
+  }
   
-  abstract void b(FeedCloudMeta.StNotice paramStNotice, int paramInt);
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    ugx.a();
+    upe.a("WeishiDownloadUtil", "qzone onDownloadFinish~~~");
+    int i = ugx.a();
+    int j = ugx.b();
+    if (j != 3)
+    {
+      upe.c("WeishiDownloadUtil", "onDownloadFinish return!qzone只有主动下载");
+      return;
+    }
+    if (!ugx.b())
+    {
+      upe.d("WeishiDownloadUtil", "这是Qzone的监听器，不响应qq onDownloadFinish eventId:" + i + ",eventType:" + j);
+      return;
+    }
+    ugx.a(paramDownloadInfo, i, j, "Qzone");
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    super.onDownloadPause(paramDownloadInfo);
+    upe.d("WeishiDownloadUtil", "qzone onDownloadPause info = " + paramDownloadInfo);
+    if (ugx.a(paramDownloadInfo)) {
+      ugx.a();
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    super.onDownloadUpdate(paramList);
+    if (!ugx.b()) {}
+    while ((paramList == null) || (paramList.size() <= 0)) {
+      return;
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    super.onDownloadWait(paramDownloadInfo);
+    upe.d("WeishiDownloadUtil", "qzone onDownloadWait info = " + paramDownloadInfo);
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    super.packageReplaced(paramString1, paramString2);
+    upe.d("WeishiDownloadUtil", "qzone packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ugz
  * JD-Core Version:    0.7.0.1
  */

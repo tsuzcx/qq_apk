@@ -1,18 +1,25 @@
 import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 
-public class anir
-  implements ArkAppCacheMgr.OnGetAppIcon
+class anir
+  extends azjc
 {
-  public anir(ArkAppDeviceModule.ObserverMethod.6 param6, bdjz parambdjz) {}
-  
-  public void callback(String paramString, Bitmap paramBitmap)
+  anir(anip paramanip, long paramLong)
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_Bdjz.findViewById(2131365192)).setImageBitmap(paramBitmap);
+    super(paramLong);
+  }
+  
+  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  {
+    paramUploadImageSize = azjb.a(paramAbstractUploadTask.uploadFilePath);
+    if (paramUploadImageSize != null)
+    {
+      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
+      paramUploadImageSize.recycle();
+      return paramAbstractUploadTask;
     }
+    return new IUploadConfig.UploadImageSize(640, 1136, 100);
   }
 }
 

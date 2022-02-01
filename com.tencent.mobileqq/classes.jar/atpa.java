@@ -1,36 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.MobileQQ;
 
-final class atpa
-  implements bauf
+class atpa
+  implements DialogInterface.OnClickListener
 {
-  public void a(bave parambave, bavf parambavf)
+  atpa(atow paramatow) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((parambave == null) || (parambavf == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambave instanceof baub));
-      parambave = (baub)parambave;
-      parambave.jdField_a_of_type_Long += parambavf.c;
-      parambavf.c = 0L;
-      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
-      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
-      parambavf = parambave.jdField_a_of_type_JavaLangString;
-      if (parambavf.contains("range="))
-      {
-        String str = parambavf.substring(0, parambavf.lastIndexOf("range="));
-        parambave.jdField_a_of_type_JavaLangString = (str + "range=" + parambave.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ListenTogether.downloader", 2, "IBreakDownFix, " + parambavf);
+    this.a.b();
+    this.a.a.removeObserver(atow.a(this.a));
+    Intent localIntent = new Intent(this.a.a.getApplication(), LiteActivity.class);
+    localIntent.addFlags(67108864);
+    this.a.a.getApplication().startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atpa
  * JD-Core Version:    0.7.0.1
  */

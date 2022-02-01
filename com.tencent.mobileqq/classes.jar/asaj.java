@@ -1,38 +1,26 @@
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.2;
+import com.tencent.widget.AbsListView;
 
 public class asaj
+  implements bkhe
 {
-  private static asaj jdField_a_of_type_Asaj;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public asaj(EmotionPanelViewPagerAdapter.2 param2) {}
   
-  public static asaj a()
-  {
-    if (jdField_a_of_type_Asaj == null) {
-      jdField_a_of_type_Asaj = new asaj();
-    }
-    return jdField_a_of_type_Asaj;
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public static String a(String paramString)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (jdField_a_of_type_Asaj == null) {
-      paramString = null;
-    }
-    String str;
-    do
+    if ((paramInt == 0) || (paramInt == 2))
     {
-      return paramString;
-      str = (String)jdField_a_of_type_Asaj.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      paramString = str;
-    } while (!jdField_a_of_type_Asaj.jdField_a_of_type_JavaUtilMap.isEmpty());
-    jdField_a_of_type_Asaj = null;
-    return str;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+      URLDrawable.resume();
+      if (this.a.jdField_a_of_type_Int == 1) {
+        EmotionPanelViewPagerAdapter.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_ComTencentWidgetListView);
+      }
+      return;
+    }
+    URLDrawable.pause();
   }
 }
 

@@ -1,23 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import java.io.File;
+import java.util.Comparator;
 
-public final class avde
-  implements Parcelable.Creator<VideoData>
+final class avde
+  implements Comparator<File>
 {
-  public VideoData a(Parcel paramParcel)
+  private int a(long paramLong1, long paramLong2)
   {
-    return new VideoData(paramParcel);
+    if (paramLong1 < paramLong2) {
+      return -1;
+    }
+    if (paramLong1 == paramLong2) {
+      return 0;
+    }
+    return 1;
   }
   
-  public VideoData[] a(int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    return new VideoData[paramInt];
+    return a(paramFile1.lastModified(), paramFile2.lastModified());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avde
  * JD-Core Version:    0.7.0.1
  */

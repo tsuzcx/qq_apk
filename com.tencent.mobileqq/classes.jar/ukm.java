@@ -1,28 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import java.util.List;
 
-class ukm
-  implements Animation.AnimationListener
+public abstract interface ukm
 {
-  ukm(ukl paramukl) {}
+  public abstract List<ukn> a(int paramInt, boolean paramBoolean);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.b.setVisibility(8);
-    this.a.d.setVisibility(8);
-    this.a.g.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ukm
  * JD-Core Version:    0.7.0.1
  */

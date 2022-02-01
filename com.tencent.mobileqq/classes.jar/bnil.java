@@ -1,24 +1,66 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.ViewStub;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class bnil
-  implements Comparable<bnil>
+public abstract class bnil
 {
-  public int a;
-  public long a;
-  public int b;
+  private final ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
+  private boolean jdField_a_of_type_Boolean;
   
-  public bnil(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
+  public bnil(ViewStub paramViewStub)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
-    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
+    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
+    this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
   }
   
-  public int a(bnil parambnil)
+  private void b()
   {
-    return -(int)(this.jdField_a_of_type_Long - parambnil.jdField_a_of_type_Long);
+    for (;;)
+    {
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
+      if (localRunnable != null) {
+        try
+        {
+          localRunnable.run();
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          throw new RuntimeException("doPendingActions encounter an error", localException);
+        }
+      }
+    }
+  }
+  
+  protected final void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+    this.jdField_a_of_type_Boolean = true;
+    a(localView);
+    b();
+  }
+  
+  protected abstract void a(View paramView);
+  
+  protected void a(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      paramRunnable.run();
+    }
+    while (paramRunnable == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilQueue.add(paramRunnable);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

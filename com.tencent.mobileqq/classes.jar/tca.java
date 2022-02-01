@@ -1,51 +1,33 @@
-import UserGrowth.stGlobalConfig;
-import UserGrowth.stNotificationRsp;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class tca
-  implements tmc
+final class tca
+  implements bklw
 {
-  public tca(WSRecommendFragment paramWSRecommendFragment) {}
+  tca(Context paramContext, AdData paramAdData) {}
   
-  public void a(String paramString, int paramInt)
+  public void a()
   {
-    if (WSRecommendFragment.a(this.a) == null) {}
-    for (int i = 1;; i = WSRecommendFragment.a(this.a).link_strategy_type)
+    if (QLog.isColorLevel()) {
+      QLog.d("JumpAdUtils", 2, "onPopupWindowForAdComplain");
+    }
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
-      tlq.a(this.a.getActivity(), "biz_src_jc_gzh_weishi", paramString, 1, i, WSRecommendFragment.a(this.a, WSRecommendFragment.a(this.a)));
-      tjr.a(4, 114, 0, null, null);
-      tju.a(114, paramInt, WSRecommendFragment.a(this.a).cid);
-      WSPublicAccReport.getInstance().reportMsgEntry("gzh_click", paramInt, 1000003, WSRecommendFragment.a(this.a).cid, WSRecommendFragment.a(this.a).trace_id);
-      return;
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 3);
+      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData);
+      PublicFragmentActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
     }
   }
-  
-  public void b(String paramString, int paramInt)
-  {
-    ors.d(this.a.getActivity(), paramString);
-    tju.a(140, paramInt, WSRecommendFragment.a(this.a).cid);
-    WSPublicAccReport.getInstance().reportMsgEntry("gzh_click", paramInt, 1000004, WSRecommendFragment.a(this.a).cid, WSRecommendFragment.a(this.a).trace_id);
-  }
-  
-  public void c(String paramString, int paramInt)
-  {
-    if (WSRecommendFragment.a(this.a) == null) {}
-    for (int i = 1;; i = WSRecommendFragment.a(this.a).link_strategy_type)
-    {
-      paramString = WSRecommendFragment.a(this.a, i);
-      tfa.a(this.a.getActivity(), paramString, false);
-      tju.a(115, paramInt, WSRecommendFragment.a(this.a).cid);
-      WSPublicAccReport.getInstance().reportMsgEntry("gzh_click", paramInt, 1000002, WSRecommendFragment.a(this.a).cid, WSRecommendFragment.a(this.a).trace_id);
-      return;
-    }
-  }
-  
-  public void d(String paramString, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tca
  * JD-Core Version:    0.7.0.1
  */

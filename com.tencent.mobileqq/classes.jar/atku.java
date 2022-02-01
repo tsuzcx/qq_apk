@@ -1,24 +1,16 @@
-import com.tencent.widget.AbsListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public abstract interface atku
+class atku
+  implements DialogInterface.OnDismissListener
 {
-  public abstract int a();
+  atku(atkt paramatkt) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, boolean paramBoolean, int paramInt2);
-  
-  public abstract void a(atkw paramatkw);
-  
-  public abstract void a(AbsListView paramAbsListView, int paramInt);
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+  }
 }
 
 

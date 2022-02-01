@@ -1,47 +1,37 @@
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
 
 class nof
-  implements View.OnClickListener
+  extends Handler
 {
   nof(noe paramnoe) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_Nnw.b == 2)
+    super.handleMessage(paramMessage);
+    if (this.a.jdField_a_of_type_Int == this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.getScrollY())
     {
-      paramView = new Intent((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", this.a.jdField_a_of_type_Nnw.jdField_c_of_type_JavaLangString);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      noy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 3, 0);
-    }
-    while (this.a.jdField_a_of_type_Nnw.b != 1) {
+      if ((this.a.jdField_a_of_type_Int > 0) && (!this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.a()))
+      {
+        int i = this.a.jdField_a_of_type_Int;
+        i = (int)(this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_Int * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double) + this.a.jdField_a_of_type_Int);
+        int j = (int)(this.a.jdField_a_of_type_Int - (this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_AndroidWidgetTextView.getHeight() + this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_Float * 56.0F - this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_Int * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double)));
+        if ((i > this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_AndroidWidgetTextView.getHeight() + this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_Float * 56.0F) || (i > this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_AndroidWidgetTextView.getHeight())) {
+          this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.scrollBy(0, -j);
+        }
+      }
       return;
     }
-    switch (this.a.jdField_c_of_type_Int)
-    {
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      noe.a(this.a);
-      return;
-    case 1: 
-      noy.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Nnw.f);
-      noy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 1, 0);
-      return;
-    }
-    noy.a(this.a.jdField_a_of_type_Nnw);
-    noy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 4, 0);
+    this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.getScrollY();
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nof
  * JD-Core Version:    0.7.0.1
  */

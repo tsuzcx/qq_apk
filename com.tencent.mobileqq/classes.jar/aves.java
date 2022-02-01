@@ -1,82 +1,88 @@
-import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.ListView;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.10.1;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.QQIdentiferLegacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
+import java.util.concurrent.atomic.AtomicBoolean;
+import tencent.im.oidb.oidb_0x5e1.RspBody;
+import tencent.im.oidb.oidb_0x5e1.UdcUinData;
 
 public class aves
-  implements AbsListView.OnScrollListener
 {
-  public aves(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt, avew paramavew)
   {
-    if (paramInt1 == 0)
-    {
-      paramAbsListView = ShortVideoCommentsView.a(this.a).getChildAt(0);
-      if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0))
-      {
-        ShortVideoCommentsView.a(this.a, true);
-        return;
-      }
-      ShortVideoCommentsView.a(this.a, false);
-      return;
-    }
-    ShortVideoCommentsView.a(this.a, false);
+    AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
+    YTAGReflectLiveCheckInterface.getLiveCheckType(paramContext.getApplicationContext(), new aveu(paramInt, localAtomicBoolean, paramString1, paramString2, paramString3, paramLong, paramavew));
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, oidb_0x5e1.RspBody paramRspBody, FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse, Runnable paramRunnable)
   {
-    if (paramInt == 0)
+    if (((oidb_0x5e1.UdcUinData)paramRspBody.rpt_msg_uin_data.get(0)).user_login_guard_face.get() == 0)
     {
-      if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.a.a.a.size() > 0) && (!ShortVideoCommentsView.b(this.a)) && (!ShortVideoCommentsView.c(this.a))) {
-        ShortVideoCommentsView.c(this.a);
-      }
-      if (ShortVideoCommentsView.a(this.a) == null) {
-        break label269;
-      }
-      paramAbsListView = ShortVideoCommentsView.a(this.a).jdField_a_of_type_JavaLangString;
-      if (ShortVideoCommentsView.a(this.a) != null) {
-        long l = ShortVideoCommentsView.a(this.a).jdField_a_of_type_Long;
-      }
-      paramInt = ShortVideoCommentsView.a(this.a);
-      if ((paramInt < ShortVideoCommentsView.b(this.a)) || (paramInt < mww.a(this.a.getContext(), 40.0F))) {
-        break label272;
-      }
-      if (!ShortVideoCommentsView.d(this.a))
+      if ((paramSecureCheckResponse == null) || (!paramSecureCheckResponse.bool_sec_pass.get()))
       {
-        ShortVideoCommentsView.a(this.a, true);
-        if (ShortVideoCommentsView.a(this.a).j != 4) {}
+        if (System.currentTimeMillis() - AuthDevVerifyCodeActivity.a >= 60000L)
+        {
+          bccl.a(paramQQAppInterface, new avet(paramActivity, paramString, paramRunnable));
+          return;
+        }
+        paramRspBody = new Intent(paramActivity, AuthDevVerifyCodeActivity.class);
+        paramRspBody.putExtra("k_from", "f_SetFaceData");
+        paramQQAppInterface = paramString;
+        if (paramString == null) {
+          paramQQAppInterface = "";
+        }
+        paramRspBody.putExtra("phone_num", paramQQAppInterface);
+        paramActivity.startActivityForResult(paramRspBody, 11);
+        return;
       }
-      this.a.f();
-    }
-    for (;;)
-    {
-      ShortVideoCommentsView.a(this.a, paramInt);
-      if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0) && (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() == 0) && (!ShortVideoCommentsView.e(this.a)))
-      {
-        ShortVideoCommentsView.b(this.a, true);
-        this.a.postDelayed(new ShortVideoCommentsView.10.1(this), 100L);
-      }
+      paramQQAppInterface = new Intent(paramActivity, QQIdentiferLegacyActivity.class);
+      paramQQAppInterface.putExtra("platformAppId", 101810106);
+      paramQQAppInterface.putExtra("srcAppId", 101810106);
+      paramQQAppInterface.putExtra("srcOpenId", paramSecureCheckResponse.str_openid.get());
+      paramQQAppInterface.putExtra("key", paramSecureCheckResponse.str_tmpkey.get());
+      paramQQAppInterface.putExtra("method", "setFaceData");
+      paramQQAppInterface.putExtra("serviceType", 2);
+      paramActivity.startActivityForResult(paramQQAppInterface, 21);
       return;
-      label269:
-      break;
-      label272:
-      if (!ShortVideoCommentsView.e(this.a))
-      {
-        this.a.j();
-        ShortVideoCommentsView.a(this.a, 2);
+    }
+    PublicFragmentActivity.a(paramActivity, DeleteFaceFragment.class, 12);
+  }
+  
+  private static void b(int paramInt, String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, avew paramavew)
+  {
+    QLog.d("FaceLoginHelper", 1, new Object[] { "start sendPacket appid : ", Integer.valueOf(paramInt) });
+    if (paramInt != 0)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("srcAppId", paramInt);
+      localBundle.putString("key", paramString1);
+      localBundle.putString("lightInfo", paramString4);
+      localBundle.putString("method", paramString2);
+      localBundle.putString("uin", paramString3);
+      localBundle.putLong("nonce", paramLong);
+      if (QLog.isColorLevel()) {
+        QLog.d("FaceLoginHelper", 1, "sendPacket" + paramString4);
       }
+      QIPCClientHelper.getInstance().callServer("IdentificationIpcServer_Model", "action_app_conf", localBundle, new avev(paramavew));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aves
  * JD-Core Version:    0.7.0.1
  */

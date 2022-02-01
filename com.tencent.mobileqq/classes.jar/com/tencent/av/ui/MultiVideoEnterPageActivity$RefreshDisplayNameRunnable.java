@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.widget.TextView;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import mjc;
+import mgg;
 
 class MultiVideoEnterPageActivity$RefreshDisplayNameRunnable
   implements Runnable
@@ -13,13 +13,13 @@ class MultiVideoEnterPageActivity$RefreshDisplayNameRunnable
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695842);
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131694720);
     if (this.this$0.jdField_c_of_type_Int == 2) {
       localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(3000, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
     }
     for (;;)
     {
-      this.this$0.jdField_a_of_type_Mjc.a.setText((CharSequence)localObject);
+      this.this$0.jdField_a_of_type_Mgg.a.setText((CharSequence)localObject);
       localObject = this.this$0;
       ((MultiVideoEnterPageActivity)localObject).g += 1;
       if (this.this$0.jdField_c_of_type_JavaLangRunnable != null)
@@ -39,7 +39,7 @@ class MultiVideoEnterPageActivity$RefreshDisplayNameRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoEnterPageActivity.RefreshDisplayNameRunnable
  * JD-Core Version:    0.7.0.1
  */

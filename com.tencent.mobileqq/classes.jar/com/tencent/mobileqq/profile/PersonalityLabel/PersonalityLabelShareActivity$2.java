@@ -26,7 +26,7 @@ class PersonalityLabelShareActivity$2
     //   26: aload 11
     //   28: invokevirtual 37	android/graphics/Bitmap:isRecycled	()Z
     //   31: ifne +575 -> 606
-    //   34: getstatic 43	alof:bd	Ljava/lang/String;
+    //   34: getstatic 43	anhk:bg	Ljava/lang/String;
     //   37: astore 5
     //   39: new 45	java/io/File
     //   42: dup
@@ -349,7 +349,7 @@ class PersonalityLabelShareActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity.2
  * JD-Core Version:    0.7.0.1
  */

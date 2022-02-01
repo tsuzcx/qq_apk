@@ -1,25 +1,14 @@
-import QQService.StreamInfo;
-
-public class ayzx
+public final class ayzx
+  extends ayzn
 {
-  public int a;
-  public StreamInfo a;
-  public String a;
-  public short a;
-  public int b;
-  
-  public ayzx(String paramString, short paramShort, int paramInt1, StreamInfo paramStreamInfo, int paramInt2)
+  protected int a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Short = paramShort;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_QQServiceStreamInfo = paramStreamInfo;
-    this.b = paramInt2;
+    return 505;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayzx
  * JD-Core Version:    0.7.0.1
  */

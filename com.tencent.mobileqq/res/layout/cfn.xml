@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" app:ratioH="1" app:ratioW="1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.image.URLImageView android:id="@id/duw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <FrameLayout android:id="@id/enp" android:background="@drawable/bip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/e46" />
-    </FrameLayout>
-</com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/mt9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:contentDescription="@string/wcd" />
+</LinearLayout>

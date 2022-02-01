@@ -1,14 +1,24 @@
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+
 public class swm
+  implements syg
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public swm(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
+  
+  public BaseData a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+  }
+  
+  public void a()
+  {
+    tcc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     swm
  * JD-Core Version:    0.7.0.1
  */

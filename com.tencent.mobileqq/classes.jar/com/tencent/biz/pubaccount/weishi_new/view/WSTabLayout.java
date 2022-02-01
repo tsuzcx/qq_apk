@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.weishi_new.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import azkz;
+import bclx;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import sko;
-import tlo;
-import tod;
-import toe;
+import tjf;
+import upe;
+import uvd;
+import uve;
 
 public class WSTabLayout
   extends TabLayoutCompat
 {
-  public static float c = azkz.a(22.0F);
-  public static float d = azkz.a(15.0F);
-  public static float e = azkz.a(2.0F);
+  public static float c = bclx.a(22.0F);
+  public static float d = bclx.a(15.0F);
+  public static float e = bclx.a(2.0F);
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private tod jdField_a_of_type_Tod;
+  private uvd jdField_a_of_type_Uvd;
   
   public WSTabLayout(Context paramContext)
   {
@@ -54,7 +54,7 @@ public class WSTabLayout
       if (QLog.isColorLevel()) {
         QLog.e("WSTabLayout2", 2, "createTab infos: null");
       }
-      tlo.a("WSTabLayout2", "initData list: null");
+      upe.a("WSTabLayout2", "initData list: null");
     }
     label196:
     for (;;)
@@ -88,28 +88,28 @@ public class WSTabLayout
           setTabGravity(1);
           break label76;
         }
-        paramList.a(2131559867);
-        toe localtoe = new toe(this, paramList.a());
-        localtoe.a(i);
-        paramList.a(localtoe);
-        localtoe.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        paramList.a(2131560010);
+        uve localuve = new uve(this, paramList.a());
+        localuve.a(i);
+        paramList.a(localuve);
+        localuve.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(i));
         d(paramList);
         if (paramInt == i) {
-          localtoe.a();
+          localuve.a();
         }
         i += 1;
       }
     }
   }
   
-  public void setTabContentClickListener(tod paramtod)
+  public void setTabContentClickListener(uvd paramuvd)
   {
-    this.jdField_a_of_type_Tod = paramtod;
+    this.jdField_a_of_type_Uvd = paramuvd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout
  * JD-Core Version:    0.7.0.1
  */

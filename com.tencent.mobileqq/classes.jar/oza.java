@@ -1,34 +1,34 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.animation.AlphaAnimation;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
+import android.text.Editable;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import java.util.Comparator;
 
 public class oza
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Comparator<BiuNicknameSpan>
 {
-  public oza(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, ReadInJoyStaticGridView paramReadInJoyStaticGridView, View paramView) {}
+  private Editable jdField_a_of_type_AndroidTextEditable;
   
-  public void onGlobalLayout()
+  public oza(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, Editable paramEditable)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getHeight() > 0) {
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
+    this.jdField_a_of_type_AndroidTextEditable = paramEditable;
+  }
+  
+  public int a(BiuNicknameSpan paramBiuNicknameSpan1, BiuNicknameSpan paramBiuNicknameSpan2)
+  {
+    int i = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan1);
+    int j = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan2);
+    if (i > j) {
+      return 1;
     }
-    while (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
-      return;
+    if (i < j) {
+      return -1;
     }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 0.0F);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setDuration(400L);
-    localAlphaAnimation.setAnimationListener(new ozb(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oza
  * JD-Core Version:    0.7.0.1
  */

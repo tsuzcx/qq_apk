@@ -1,44 +1,28 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.UpgradeTipsDialog;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
 
 public class aeky
-  extends WebViewClient
+  extends anmu
 {
-  public aeky(UpgradeTipsDialog paramUpgradeTipsDialog) {}
+  public aeky(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onPageFinished: " + paramString);
+    if (paramBoolean)
+    {
+      paramString = ((anmw)this.a.app.getManager(51)).e(this.a.a + "");
+      if (paramString != null)
+      {
+        this.a.e = paramString.name;
+        JoinDiscussionActivity.a(this.a);
+      }
     }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onPageStarted: " + paramString);
+    while (!QLog.isColorLevel()) {
+      return;
     }
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onReceivedError: " + paramInt + ", " + paramString1);
-    }
-    azqs.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "Update_tips", "Upd_fail", 0, paramInt, "", "", "", "");
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
-    while (UpgradeTipsDialog.a(this.a).a(paramWebView, paramString)) {
-      return true;
-    }
-    this.a.a.loadUrl(paramString);
-    return true;
+    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
   }
 }
 

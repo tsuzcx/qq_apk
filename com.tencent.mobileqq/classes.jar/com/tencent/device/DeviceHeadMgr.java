@@ -1,6 +1,6 @@
 package com.tencent.device;
 
-import alof;
+import abqn;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,11 +13,12 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Environment;
 import android.text.TextUtils;
-import bayc;
-import bdal;
-import bdep;
-import bdhj;
-import bfbm;
+import anhk;
+import bdzf;
+import bggl;
+import bgjq;
+import bgmo;
+import biip;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.datadef.DeviceInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,7 +28,7 @@ import com.tencent.theme.SkinnableBitmapDrawable;
 import java.io.File;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
-import ndq;
+import nmj;
 import org.apache.http.conn.params.ConnManagerParams;
 import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
@@ -36,7 +37,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
-import ztp;
 
 @SuppressLint({"UseSparseArrays"})
 public class DeviceHeadMgr
@@ -77,7 +77,7 @@ public class DeviceHeadMgr
   
   private String getLastModified(String paramString)
   {
-    return bfbm.a().a().getSharedPreferences("sd_http_lastmodify", 0).getString(paramString, "");
+    return biip.a().a().getSharedPreferences("sd_http_lastmodify", 0).getString(paramString, "");
   }
   
   public static String getLogoIconUrl(String paramString)
@@ -99,16 +99,16 @@ public class DeviceHeadMgr
     localSchemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
     try
     {
-      localSchemeRegistry.register(new Scheme("https", new bayc(DeviceHeadMgr.class.getSimpleName()), 443));
+      localSchemeRegistry.register(new Scheme("https", new bdzf(DeviceHeadMgr.class.getSimpleName()), 443));
       label56:
       BasicHttpParams localBasicHttpParams = new BasicHttpParams();
       ConnManagerParams.setTimeout(localBasicHttpParams, 3000L);
       HttpConnectionParams.setConnectionTimeout(localBasicHttpParams, 30000);
       HttpConnectionParams.setSoTimeout(localBasicHttpParams, 30000);
       this.sHttpClient = new DefaultHttpClient(new ThreadSafeClientConnManager(new BasicHttpParams(), localSchemeRegistry), null);
-      ndq.a(this.mStrCachePath);
-      if (bdep.a()) {}
-      for (this.mStrCachePath = alof.bN;; this.mStrCachePath = "/data/data/com.tencent.mobileqq/files/head/_dhd/")
+      nmj.a(this.mStrCachePath);
+      if (bgjq.a()) {}
+      for (this.mStrCachePath = anhk.bQ;; this.mStrCachePath = "/data/data/com.tencent.mobileqq/files/head/_dhd/")
       {
         if (this.mDeviceHeadMap == null) {
           this.mDeviceHeadMap = new HashMap();
@@ -130,7 +130,7 @@ public class DeviceHeadMgr
   
   private void saveLastModified(String paramString1, String paramString2)
   {
-    SharedPreferences.Editor localEditor = bfbm.a().a().getSharedPreferences("sd_http_lastmodify", 0).edit();
+    SharedPreferences.Editor localEditor = biip.a().a().getSharedPreferences("sd_http_lastmodify", 0).edit();
     localEditor.putString(paramString1, paramString2);
     localEditor.commit();
   }
@@ -423,7 +423,7 @@ public class DeviceHeadMgr
   
   public Bitmap getDeviceHeadByDin(String paramString)
   {
-    paramString = ((ztp)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a(Long.parseLong(paramString));
+    paramString = ((abqn)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a(Long.parseLong(paramString));
     if (paramString == null) {
       return getDeviceHeadByPID(0);
     }
@@ -448,7 +448,7 @@ public class DeviceHeadMgr
       }
       try
       {
-        ??? = BitmapFactory.decodeResource(BaseApplication.getContext().getResources(), 2130839383);
+        ??? = BitmapFactory.decodeResource(BaseApplication.getContext().getResources(), 2130839562);
         return ???;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
@@ -463,7 +463,7 @@ public class DeviceHeadMgr
     }
     else
     {
-      Bitmap localBitmap1 = bdal.a(str);
+      Bitmap localBitmap1 = bggl.a(str);
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       if (!this.mDownedDevicePid.containsKey(Integer.valueOf(paramInt)))
       {
@@ -495,10 +495,10 @@ public class DeviceHeadMgr
           if (localBitmap1 != null) {
             return ???;
           }
-          return bdal.a(BaseApplication.getContext().getResources(), 2130839383);
+          return bggl.a(BaseApplication.getContext().getResources(), 2130839562);
           new Thread(new DeviceHeadMgr.2(this, (String)???, str, paramInt)).start();
           break;
-          localBitmap1 = bdhj.c(localBitmap1, 50, 50);
+          localBitmap1 = bgmo.c(localBitmap1, 50, 50);
         }
       }
     }
@@ -507,20 +507,20 @@ public class DeviceHeadMgr
   
   public Drawable getDeviceHeadDrawableByDin(String paramString)
   {
-    if (alof.y.equals(paramString))
+    if (anhk.y.equals(paramString))
     {
-      paramString = bdal.a(BaseApplication.getContext().getResources(), 2130839385);
+      paramString = bggl.a(BaseApplication.getContext().getResources(), 2130839564);
       return new BitmapDrawable(BaseApplication.getContext().getResources(), paramString);
     }
     long l = Long.parseLong(paramString);
-    DeviceInfo localDeviceInfo = ((ztp)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a(Long.valueOf(l).longValue());
+    DeviceInfo localDeviceInfo = ((abqn)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a(Long.valueOf(l).longValue());
     Bitmap localBitmap = null;
     if (localDeviceInfo != null)
     {
       localBitmap = getDeviceHeadByPID(localDeviceInfo.productId);
       if (isLostQfindDevice(paramString))
       {
-        paramString = BaseApplication.getContext().getResources().getDrawable(2130839382);
+        paramString = BaseApplication.getContext().getResources().getDrawable(2130839561);
         if ((paramString instanceof SkinnableBitmapDrawable)) {
           ((SkinnableBitmapDrawable)paramString).setGravity(119);
         }
@@ -539,13 +539,13 @@ public class DeviceHeadMgr
   
   public Bitmap getDeviceHeadSD(int paramInt)
   {
-    return bdal.a(this.mStrCachePath + paramInt);
+    return bggl.a(this.mStrCachePath + paramInt);
   }
   
   public Bitmap getDeviceWithLogoByPid(int paramInt)
   {
     if (paramInt == 9971) {
-      ??? = bdal.a(BaseApplication.getContext().getResources(), 2130839386);
+      ??? = bggl.a(BaseApplication.getContext().getResources(), 2130839565);
     }
     for (;;)
     {
@@ -557,7 +557,7 @@ public class DeviceHeadMgr
         if (localBitmap != null) {
           continue;
         }
-        localBitmap = bdal.a(this.mStrCachePath + String.valueOf(paramInt) + "_mark");
+        localBitmap = bggl.a(this.mStrCachePath + String.valueOf(paramInt) + "_mark");
         ??? = localBitmap;
         if (localBitmap != null) {
           continue;
@@ -567,19 +567,19 @@ public class DeviceHeadMgr
         if (localBitmap != null) {
           continue;
         }
-        return bdal.a(BaseApplication.getContext().getResources(), 2130839383);
+        return bggl.a(BaseApplication.getContext().getResources(), 2130839562);
       }
     }
   }
   
   public boolean isLostQfindDevice(String paramString)
   {
-    return ((ztp)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a(Long.parseLong(paramString));
+    return ((abqn)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51)).a(Long.parseLong(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.device.DeviceHeadMgr
  * JD-Core Version:    0.7.0.1
  */

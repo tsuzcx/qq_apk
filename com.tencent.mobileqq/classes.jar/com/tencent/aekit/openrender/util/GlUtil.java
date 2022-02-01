@@ -10,6 +10,7 @@ import android.opengl.GLES20;
 import android.opengl.GLES31;
 import android.opengl.GLUtils;
 import android.opengl.Matrix;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import com.tencent.aekit.openrender.AEOpenRenderConfig;
 import com.tencent.aekit.openrender.internal.Frame;
@@ -235,6 +236,17 @@ public final class GlUtil
     return enableLog;
   }
   
+  @RequiresApi(api=18)
+  public static void loadFloatTexture(int paramInt1, FloatBuffer paramFloatBuffer, int paramInt2, int paramInt3)
+  {
+    GLES20.glBindTexture(3553, paramInt1);
+    GLES20.glTexParameteri(3553, 10241, 9729);
+    GLES20.glTexParameteri(3553, 10240, 9729);
+    checkGlError("loadFloatTexture");
+    GLES20.glTexImage2D(3553, 0, 33328, paramInt2, paramInt3, 0, 33319, 5126, paramFloatBuffer);
+    checkGlError("loadFloatTexture");
+  }
+  
   public static void loadTexture(int paramInt, Bitmap paramBitmap)
   {
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
@@ -385,7 +397,7 @@ public final class GlUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.openrender.util.GlUtil
  * JD-Core Version:    0.7.0.1
  */

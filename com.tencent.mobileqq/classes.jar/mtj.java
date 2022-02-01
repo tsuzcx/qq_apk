@@ -1,113 +1,34 @@
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class mtj
+final class mtj
+  extends BroadcastReceiver
 {
-  public static int a(int[] paramArrayOfInt, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return a(paramArrayOfInt, paramInt, 0);
-  }
-  
-  public static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
-  {
-    if (paramArrayOfInt == null)
-    {
-      paramInt2 = -1;
-      return paramInt2;
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    while (!mti.a.equals(paramIntent.getAction())) {
+      return;
     }
-    int i = paramInt2;
-    if (paramInt2 < 0) {
-      i = 0;
+    if (QLog.isDevelopLevel()) {
+      QLog.w("SensorReport", 1, "H264_decode");
     }
-    for (;;)
-    {
-      if (i >= paramArrayOfInt.length) {
-        break label38;
-      }
-      paramInt2 = i;
-      if (paramInt1 == paramArrayOfInt[i]) {
-        break;
-      }
-      i += 1;
+    HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("params");
+    paramIntent = paramIntent.getStringExtra("key");
+    paramContext = paramIntent;
+    if (paramIntent == null) {
+      paramContext = mti.a;
     }
-    label38:
-    return -1;
-  }
-  
-  public static int a(Object[] paramArrayOfObject, Object paramObject)
-  {
-    return a(paramArrayOfObject, paramObject, 0);
-  }
-  
-  public static int a(Object[] paramArrayOfObject, Object paramObject, int paramInt)
-  {
-    if (paramArrayOfObject == null)
-    {
-      paramInt = -1;
-      return paramInt;
-    }
-    if (paramInt < 0) {
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      int i;
-      if (paramObject == null)
-      {
-        i = paramInt;
-        for (;;)
-        {
-          if (i >= paramArrayOfObject.length) {
-            break label82;
-          }
-          paramInt = i;
-          if (paramArrayOfObject[i] == null) {
-            break;
-          }
-          i += 1;
-        }
-      }
-      if (paramArrayOfObject.getClass().getComponentType().isInstance(paramObject))
-      {
-        i = paramInt;
-        for (;;)
-        {
-          if (i >= paramArrayOfObject.length) {
-            break label82;
-          }
-          paramInt = i;
-          if (paramObject.equals(paramArrayOfObject[i])) {
-            break;
-          }
-          i += 1;
-        }
-      }
-      label82:
-      return -1;
-    }
-  }
-  
-  public static <T> boolean a(List<T> paramList, T paramT)
-  {
-    if (paramList == null) {}
-    while (paramList.indexOf(paramT) < 0) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(int[] paramArrayOfInt, int paramInt)
-  {
-    return a(paramArrayOfInt, paramInt) != -1;
-  }
-  
-  public static boolean a(Object[] paramArrayOfObject, Object paramObject)
-  {
-    return a(paramArrayOfObject, paramObject) != -1;
+    UserAction.onUserAction(paramContext, true, -1L, -1L, localHashMap, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mtj
  * JD-Core Version:    0.7.0.1
  */

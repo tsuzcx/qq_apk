@@ -1,36 +1,17 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.LinearLayout.LayoutParams;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.widget.AdapterView;
 
 public class azvz
-  extends Animation
+  implements bkij
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public azvz(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public azvz(ViewGroup paramViewGroup)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * (1.0F - paramFloat)));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
-    if (paramFloat == 1.0F)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      paramTransformation.height = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
-    }
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+    paramAdapterView = ajbk.a(((TextView)paramView.findViewById(2131374197)).getText().toString());
+    this.a.a(this.a.getActivity(), paramAdapterView);
   }
 }
 

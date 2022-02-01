@@ -1,189 +1,117 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QZLog;
+import java.util.List;
+import java.util.Map;
 
-public class aidq
-  extends aqni
+class aidq
+  extends Handler
 {
-  private aids jdField_a_of_type_Aids;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private boolean jdField_a_of_type_Boolean;
-  private View.OnClickListener b;
+  aidq(aidp paramaidp) {}
   
-  public aidq(Context paramContext, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramContext, paramObject);
-  }
-  
-  private void a(aidr paramaidr, FileManagerEntity paramFileManagerEntity)
-  {
-    if (arrr.a(paramFileManagerEntity.fileName) == 0)
+    switch (paramMessage.what)
     {
-      if (bdhb.b(paramFileManagerEntity.getFilePath()))
-      {
-        arrr.a(paramaidr.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, paramFileManagerEntity.getFilePath(), paramFileManagerEntity.nFileType);
-        return;
-      }
-      if (bdhb.b(paramFileManagerEntity.strThumbPath))
-      {
-        paramaidr.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130843911);
-        paramaidr.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncImage(paramFileManagerEntity.strThumbPath);
-        return;
-      }
-      arrr.a(paramaidr.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, paramFileManagerEntity.fileName, paramFileManagerEntity.nFileType);
-      return;
-    }
-    arrr.a(paramaidr.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, paramFileManagerEntity);
-  }
-  
-  private void b(aidr paramaidr, FileManagerEntity paramFileManagerEntity)
-  {
-    switch (paramFileManagerEntity.status)
-    {
-    case 16: 
-    case 17: 
-    default: 
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-      return;
-    case 2: 
-    case 18: 
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(1);
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-      paramaidr.jdField_a_of_type_Int = 2;
-      return;
-    case 0: 
-    case 3: 
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-      paramaidr.jdField_a_of_type_Int = 3;
-      return;
-    case 1: 
-      boolean bool = arso.a(paramFileManagerEntity.getFilePath());
-      if ((paramFileManagerEntity.getCloudType() == 3) || (paramFileManagerEntity.getCloudType() == 5) || (bool))
-      {
-        paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-        paramaidr.jdField_a_of_type_Int = 0;
-        return;
-      }
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-      paramaidr.jdField_a_of_type_Int = 1;
-      return;
     case 5: 
-    case 6: 
-    case 7: 
     case 8: 
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-      paramaidr.jdField_a_of_type_Int = 0;
-      return;
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
     case 4: 
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-      paramaidr.jdField_a_of_type_Int = 1;
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+    case 6: 
+    case 9: 
+    case 7: 
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        return;
+                      } while (((this.a.am) && ((!this.a.an) || (((anrs)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).c(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString) == null))) || ((aidp.a(this.a)) && ((!aidp.b(this.a)) || (aidp.c(this.a))) && (aidp.a(this.a) != null) && (aidp.a(this.a).a(aidp.a(this.a)))) || (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()));
+                      try
+                      {
+                        this.a.bu();
+                        return;
+                      }
+                      catch (Exception paramMessage)
+                      {
+                        paramMessage.printStackTrace();
+                        return;
+                      }
+                      paramMessage = this.a.jdField_a_of_type_Nzz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
+                      this.a.c(paramMessage);
+                    } while ((paramMessage == null) || (paramMessage.isEmpty()));
+                    if ((!aidp.d(this.a)) || (!auuc.a())) {
+                      this.a.v(true);
+                    }
+                  } while (aidp.a(this.a));
+                  this.a.v(true);
+                  return;
+                } while (((aidp.d(this.a)) && (auuc.a())) || (aidp.a(this.a)));
+                this.a.bs();
+                this.a.br();
+                if (QLog.isColorLevel()) {
+                  QZLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "setInitHeader in INIT_PUBLICACCOUNT_COVER_MENU");
+                }
+              } while (this.a.q == 1);
+              this.a.t = 5;
+              return;
+            } while ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) || (this.a.d == null) || (!this.a.d.isShowing()));
+            this.a.d.dismiss();
+            QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2131697671, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+            return;
+          } while ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) || (paramMessage.arg2 != 1));
+          int i = paramMessage.arg1;
+          aidp.a(this.a, bglp.a(this.a.jdField_a_of_type_AndroidContentContext, 230, null, String.format(anni.a(2131707523), new Object[] { (String)paramMessage.obj }), anni.a(2131707537), anni.a(2131707533), new aidr(this, i), null));
+          aidp.a(this.a).show();
+          return;
+          paramMessage = paramMessage.getData();
+        } while (paramMessage == null);
+        this.a.jdField_a_of_type_Bers.a.put(paramMessage.getString("troopUin"), Integer.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessage.getString("troopUin"), 1)));
+        this.a.jdField_a_of_type_Bers.d();
+        this.a.jdField_a_of_type_Bers.e();
+        this.a.jdField_a_of_type_Bers.c();
+        return;
+      } while (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null);
+      this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.springBackOverScrollHeaderView();
+      this.a.aa = false;
       return;
-    case -1: 
-    case 13: 
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-      paramaidr.jdField_a_of_type_Int = 1;
+    }
+    if (!(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof SplashActivity))
+    {
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
       return;
     }
-    paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-    paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-    paramaidr.jdField_a_of_type_Int = 2;
-  }
-  
-  private void c(aidr paramaidr, FileManagerEntity paramFileManagerEntity)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramaidr.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-      paramaidr.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-      paramaidr.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-      if (this.jdField_a_of_type_Aids != null) {
-        bool = this.jdField_a_of_type_Aids.a(paramFileManagerEntity);
-      }
-      paramaidr.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-      return;
-    }
-    paramaidr.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-  }
-  
-  public void a(aids paramaids)
-  {
-    this.jdField_a_of_type_Aids = paramaids;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.b = paramOnClickListener;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    notifyDataSetChanged();
-  }
-  
-  public void b(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
-  {
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)getChild(paramInt1, paramInt2);
-    if ((paramView != null) && ((paramView.getTag() instanceof aidr)))
-    {
-      aidr localaidr = (aidr)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = localaidr;
-    }
-    for (;;)
-    {
-      arrr.a(paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      paramView.jdField_a_of_type_JavaLangObject = localFileManagerEntity;
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setOnClickListener(this.b);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setTag(paramView);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setProgress((int)(localFileManagerEntity.fProgress * 100.0F));
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setProgressRingWidth(3.0F);
-      a(paramView, localFileManagerEntity);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localFileManagerEntity.fileName);
-      if (5 != localFileManagerEntity.cloudType) {
-        arrr.c(localFileManagerEntity);
-      }
-      b(paramView, localFileManagerEntity);
-      c(paramView, localFileManagerEntity);
-      arrr.a(paramView.b, localFileManagerEntity);
-      return paramViewGroup;
-      paramView = new aidr(this);
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560642, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131375387));
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(paramView);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramViewGroup.findViewById(2131361889));
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131366315));
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131366301));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131366313));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131366299));
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(aepi.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aepi.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      paramViewGroup.setTag(paramView);
-    }
+    paramMessage = new Intent(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, SplashActivity.class);
+    paramMessage.putExtra("tab_index", MainFragment.b);
+    paramMessage.putExtra("fragment_id", 1);
+    paramMessage.setFlags(67108864);
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramMessage);
   }
 }
 

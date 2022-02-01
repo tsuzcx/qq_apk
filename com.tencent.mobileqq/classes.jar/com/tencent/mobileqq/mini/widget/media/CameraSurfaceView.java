@@ -16,8 +16,8 @@ import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import azhe;
-import azhf;
+import bcie;
+import bcif;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
@@ -235,7 +235,7 @@ public class CameraSurfaceView
   
   boolean canFocus()
   {
-    return !azhf.d(azhf.a);
+    return !bcif.d(bcif.a);
   }
   
   public void closeCamera()
@@ -317,7 +317,7 @@ public class CameraSurfaceView
             bool1 = bool2;
           }
         }
-      } while (!azhe.a().a(paramString));
+      } while (!bcie.a().a(paramString));
       localRuntimeException.setFocusMode(paramString);
       bool2 = setCameraParameters(localRuntimeException);
       bool1 = bool2;
@@ -356,7 +356,7 @@ public class CameraSurfaceView
       {
         mCamera = Camera.open(i);
         i = 90;
-        if (azhf.d(azhf.g)) {
+        if (bcif.d(bcif.g)) {
           i = 270;
         }
         mCamera.setDisplayOrientation(i);
@@ -497,7 +497,7 @@ public class CameraSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.CameraSurfaceView
  * JD-Core Version:    0.7.0.1
  */

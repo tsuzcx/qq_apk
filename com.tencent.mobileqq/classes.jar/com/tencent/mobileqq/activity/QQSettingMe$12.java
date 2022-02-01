@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.os.Message;
-import axlx;
+import baif;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
@@ -15,8 +15,8 @@ class QQSettingMe$12
   
   public void run()
   {
-    Object localObject = (axlx)this.this$0.a.getManager(36);
-    this.this$0.j = ((axlx)localObject).a(String.valueOf(100460));
+    Object localObject = (baif)this.this$0.a.getManager(36);
+    this.this$0.j = ((baif)localObject).a(String.valueOf(100460));
     if ((this.this$0.j != null) && (this.this$0.j.iNewFlag.has()) && (this.this$0.j.iNewFlag.get() == 1)) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -35,7 +35,7 @@ class QQSettingMe$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.12
  * JD-Core Version:    0.7.0.1
  */

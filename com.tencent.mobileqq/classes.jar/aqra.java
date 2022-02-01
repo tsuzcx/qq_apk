@@ -1,49 +1,120 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqra
-  extends arsq
 {
-  public aqra(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
+  public long c;
   
-  public void a()
+  public aqra()
   {
-    this.a.a.a().b();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 8;
+    this.jdField_a_of_type_Long = 100000000L;
+    this.jdField_b_of_type_Int = 7;
+    this.jdField_b_of_type_Long = 16777216L;
+    this.jdField_c_of_type_Long = 16777216L;
+    this.jdField_c_of_type_Int = -1;
   }
   
-  public void b()
+  public static aqra a(aqlg[] paramArrayOfaqlg)
   {
-    this.a.a.a().p();
+    aqra localaqra = new aqra();
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    {
+      int j = paramArrayOfaqlg.length;
+      int i = 0;
+      if (i < j)
+      {
+        Object localObject = paramArrayOfaqlg[i];
+        if (localObject == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = ((aqlg)localObject).a;
+          try
+          {
+            JSONObject localJSONObject = new JSONObject((String)localObject);
+            a(localJSONObject, localaqra);
+            b(localJSONObject, localaqra);
+            c(localJSONObject, localaqra);
+            if (QLog.isColorLevel()) {
+              QLog.i("PicCommonBean", 2, "parse: " + (String)localObject + " bean:" + localaqra);
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+        }
+      }
+    }
+    if (localaqra.jdField_a_of_type_Int < 0) {
+      localaqra.jdField_a_of_type_Int = 8;
+    }
+    if (localaqra.jdField_a_of_type_Long < 0L) {
+      localaqra.jdField_a_of_type_Long = 100000000L;
+    }
+    if (localaqra.jdField_b_of_type_Int < 1) {
+      localaqra.jdField_a_of_type_Long = 7L;
+    }
+    return localaqra;
   }
   
-  public void c()
+  private static void a(JSONObject paramJSONObject, aqra paramaqra)
   {
-    this.a.a.a().q();
+    paramJSONObject = paramJSONObject.getJSONObject("regionDecode");
+    if (paramJSONObject.has("ramThreshold")) {
+      paramaqra.jdField_a_of_type_Int = paramJSONObject.optInt("ramThreshold");
+    }
+    if (paramJSONObject.has("pxThreshold")) {
+      paramaqra.jdField_a_of_type_Long = paramJSONObject.optLong("pxThreshold");
+    }
+    if (paramJSONObject.has("threadCount")) {
+      paramaqra.jdField_b_of_type_Int = paramJSONObject.optInt("threadCount");
+    }
+    if (paramJSONObject.has("needRegionDecode")) {
+      paramaqra.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("needRegionDecode");
+    }
   }
   
-  public void d()
+  private static void b(JSONObject paramJSONObject, aqra paramaqra)
   {
-    this.a.a.a().r();
+    paramJSONObject = paramJSONObject.getJSONObject("uploadLimit");
+    if (paramJSONObject.has("c2c")) {
+      paramaqra.jdField_b_of_type_Long = paramJSONObject.optInt("c2c");
+    }
+    if (paramJSONObject.has("group")) {
+      paramaqra.jdField_c_of_type_Long = paramJSONObject.optInt("group");
+    }
   }
   
-  public void e()
+  private static void c(JSONObject paramJSONObject, aqra paramaqra)
   {
-    this.a.a.a().s();
+    paramJSONObject = paramJSONObject.getJSONObject("switchEXIF");
+    if (paramJSONObject.has("switch")) {
+      paramaqra.jdField_c_of_type_Int = paramJSONObject.optInt("switch");
+    }
   }
   
-  public void f()
+  public String toString()
   {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    return "PicCommonBean{needRegionDecode=" + this.jdField_a_of_type_Boolean + ", ramThreshold=" + this.jdField_a_of_type_Int + ", pxThreshold=" + this.jdField_a_of_type_Long + ", threadCount=" + this.jdField_b_of_type_Int + ", C2C_FileSize_Limit=" + this.jdField_b_of_type_Long + ", GROUP_FileSize_Limit=" + this.jdField_c_of_type_Long + ", EXIF_SWITCH=" + this.jdField_c_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqra
  * JD-Core Version:    0.7.0.1
  */

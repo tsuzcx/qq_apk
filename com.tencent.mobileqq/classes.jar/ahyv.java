@@ -1,91 +1,33 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.teamwork.DocsGrayTipsInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class ahyv
-  extends baht
+class ahyv
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public ahyv(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  ahyv(ahyk paramahyk, ahyx paramahyx) {}
   
-  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  public boolean onPreDraw()
   {
-    try
+    ahyk.a(this.jdField_a_of_type_Ahyk).getViewTreeObserver().removeOnPreDrawListener(this);
+    if (this.jdField_a_of_type_Ahyx.b == 1)
     {
-      Object localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
-      String str = (String)paramArrayOfObject[1];
-      long l = ((Long)paramArrayOfObject[2]).longValue();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131720699).equals(str))
-      {
-        paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((DocsGrayTipsInfo)localObject).a, 0, l);
-        if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
-        {
-          localObject = (MessageForUniteGrayTip)paramArrayOfObject;
-          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null)) {
-            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
-          }
-          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
-          localObject = new Message();
-          Bundle localBundle = new Bundle();
-          localBundle.putLong("messageUniseq", paramArrayOfObject.uniseq);
-          ((Message)localObject).setData(localBundle);
-          ((Message)localObject).what = 78;
-          ((Message)localObject).arg1 = 0;
-          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
-        }
-      }
-      QQToast.a(this.a.getActivity(), str, 0).a();
-      QLog.i(bagj.i, 2, " onGetUserAuth  isSuccess = " + paramBoolean + " tips =" + str);
-      return;
+      ahyk.a(this.jdField_a_of_type_Ahyk).setBackgroundDrawable(new arnk(Color.parseColor("#1fa4fc"), 5.0F, afur.a(14.0F, this.jdField_a_of_type_Ahyk.a.getResources()), afur.a(14.0F, this.jdField_a_of_type_Ahyk.a.getResources())));
+      ahyk.b(this.jdField_a_of_type_Ahyk).setBackgroundDrawable(new arnk(Color.parseColor("#1fa4fc"), 5.0F, ahyk.b(this.jdField_a_of_type_Ahyk).getMeasuredWidth(), ahyk.b(this.jdField_a_of_type_Ahyk).getMeasuredHeight()));
+      ahyk.a(this.jdField_a_of_type_Ahyk).setImageResource(2130839204);
     }
-    catch (Exception paramArrayOfObject)
+    for (;;)
     {
-      QLog.e(bagj.i, 2, " onGetUserAuth  exception = " + paramArrayOfObject.toString());
-    }
-  }
-  
-  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    try
-    {
-      QLog.i(bagj.i, 2, " onSetUserAuth  isSuccess = " + paramBoolean);
-      Object localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
-      String str = (String)paramArrayOfObject[1];
-      long l = ((Long)paramArrayOfObject[2]).longValue();
-      if (paramBoolean)
-      {
-        paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((DocsGrayTipsInfo)localObject).a, 0, l);
-        if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
-        {
-          localObject = (MessageForUniteGrayTip)paramArrayOfObject;
-          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null)) {
-            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
-          }
-          ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
-          localObject = new Message();
-          Bundle localBundle = new Bundle();
-          localBundle.putLong("messageUniseq", paramArrayOfObject.uniseq);
-          ((Message)localObject).setData(localBundle);
-          ((Message)localObject).what = 78;
-          ((Message)localObject).arg1 = 0;
-          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
-        }
-      }
-      QQToast.a(this.a.getActivity(), str, 0).a();
-      return;
-    }
-    catch (Exception paramArrayOfObject)
-    {
-      QLog.e(bagj.i, 1, " onSetUserAuth  exception  = " + paramArrayOfObject.toString());
+      ahyk.a(this.jdField_a_of_type_Ahyk).setBackgroundDrawable(new arnk(Color.parseColor("#b2b5bd"), 5.0F, ahyk.a(this.jdField_a_of_type_Ahyk).getMeasuredWidth(), ahyk.a(this.jdField_a_of_type_Ahyk).getMeasuredHeight()));
+      ahyk.c(this.jdField_a_of_type_Ahyk).setBackgroundDrawable(new arnk(Color.parseColor("#b2b5bd"), 5.0F, ahyk.c(this.jdField_a_of_type_Ahyk).getMeasuredWidth(), ahyk.c(this.jdField_a_of_type_Ahyk).getMeasuredHeight()));
+      return true;
+      ahyk.a(this.jdField_a_of_type_Ahyk).setBackgroundDrawable(new arnk(Color.parseColor("#ff5fb5"), 5.0F, afur.a(14.0F, this.jdField_a_of_type_Ahyk.a.getResources()), afur.a(14.0F, this.jdField_a_of_type_Ahyk.a.getResources())));
+      ahyk.b(this.jdField_a_of_type_Ahyk).setBackgroundDrawable(new arnk(Color.parseColor("#ff5fb5"), 5.0F, ahyk.b(this.jdField_a_of_type_Ahyk).getMeasuredWidth(), ahyk.b(this.jdField_a_of_type_Ahyk).getMeasuredHeight()));
+      ahyk.a(this.jdField_a_of_type_Ahyk).setImageResource(2130839203);
     }
   }
 }

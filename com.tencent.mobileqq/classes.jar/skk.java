@@ -1,57 +1,26 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat.TabLayoutOnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
 
-public class skk
-  extends DataSetObserver
+class skk
+  extends skd
 {
-  private boolean jdField_a_of_type_Boolean;
+  skk(ske paramske) {}
   
-  public skk(TabLayoutCompat paramTabLayoutCompat) {}
-  
-  void a()
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a != null) && (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null))
+    paramBaseArticleInfo = ske.a(this.a);
+    if (paramBaseArticleInfo != null)
     {
-      int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a.getCurrentItem();
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == i) {
-        TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).b(i, 300);
-      }
-    }
-    if (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null) {
-      TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).a();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onChanged()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
+      rjh.b(ske.a(this.a), paramBaseArticleInfo.innerUniqueID, 3);
       return;
     }
-    a();
-  }
-  
-  public void onInvalidated()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
-      return;
-    }
-    a();
+    QLog.e("Q.readinjoy.video.VideoShareHelper", 1, "add video to topic failed, mArticleInfo = null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     skk
  * JD-Core Version:    0.7.0.1
  */

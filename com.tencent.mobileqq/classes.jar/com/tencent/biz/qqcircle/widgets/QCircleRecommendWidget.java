@@ -8,21 +8,20 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StDittoFeed;
 import feedcloud.FeedCloudMeta.StFeed;
 import qqcircle.QQCircleDitto.StItemContainer;
-import ufh;
-import ufi;
-import ufj;
-import yip;
+import vyf;
+import vyg;
+import zyi;
 
 public class QCircleRecommendWidget
-  extends BaseWidgetView
+  extends QCircleBaseWidgetView
 {
   private RecyclerView.LayoutManager jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
@@ -30,7 +29,7 @@ public class QCircleRecommendWidget
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ReportExtraTypeInfo jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo = new ReportExtraTypeInfo();
   private QQCircleDitto.StItemContainer jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer;
-  private ufj jdField_a_of_type_Ufj;
+  private vyg jdField_a_of_type_Vyg;
   
   public QCircleRecommendWidget(@NonNull Context paramContext, int paramInt)
   {
@@ -39,26 +38,30 @@ public class QCircleRecommendWidget
   
   public int a()
   {
-    return 2131560545;
+    return 2131560703;
+  }
+  
+  protected String a()
+  {
+    return "QCircleRecommendWidget";
   }
   
   public void a(Context paramContext, View paramView)
   {
     if (paramView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372551));
-      ufh localufh = new ufh(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(localufh);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372536));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localufh);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131372549));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new yip(paramContext, 0, false);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373162));
+      vyf localvyf = new vyf(this);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(localvyf);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373147));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localvyf);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131373160));
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new zyi(paramContext, 0, false);
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
-      this.jdField_a_of_type_Ufj = new ufj(this);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ufj);
-      this.jdField_a_of_type_Ufj.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-      this.jdField_a_of_type_Ufj.a(this);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new ufi(this));
+      this.jdField_a_of_type_Vyg = new vyg(this);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Vyg);
+      this.jdField_a_of_type_Vyg.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+      this.jdField_a_of_type_Vyg.a(this);
     }
   }
   
@@ -69,7 +72,7 @@ public class QCircleRecommendWidget
   {
     FeedCloudMeta.StFeed localStFeed;
     FeedCloudMeta.StDittoFeed localStDittoFeed;
-    if (((paramObject instanceof FeedCloudMeta.StFeed)) && (this.jdField_a_of_type_Ufj != null))
+    if (((paramObject instanceof FeedCloudMeta.StFeed)) && (this.jdField_a_of_type_Vyg != null))
     {
       localStFeed = (FeedCloudMeta.StFeed)paramObject;
       localStDittoFeed = ((FeedCloudMeta.StFeed)localStFeed.get()).dittoFeed;
@@ -81,9 +84,13 @@ public class QCircleRecommendWidget
     try
     {
       this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.mergeFrom(localStDittoFeed.dittoData.get().toByteArray());
-      if (this.jdField_a_of_type_Ufj != null) {
-        this.jdField_a_of_type_Ufj.a(localStFeed, paramInt, this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.items.get());
-      }
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeAllViews();
+      this.jdField_a_of_type_Vyg = new vyg(this);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Vyg);
+      this.jdField_a_of_type_Vyg.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+      this.jdField_a_of_type_Vyg.a(this);
+      this.jdField_a_of_type_Vyg.a(localStFeed, paramInt, this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.items.get(), this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.styleType.get());
+      QLog.d("QCircleRecommendWidget", 4, "style:" + this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.styleType.get());
       QLog.d("QCircleRecommendWidget", 1, new Object[] { "bind dittoFeed pos:", Integer.valueOf(paramInt), ",item size:", Integer.valueOf(this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.items.size()) });
       return;
     }
@@ -92,10 +99,15 @@ public class QCircleRecommendWidget
       QLog.e("QCircleRecommendWidget", 1, new Object[] { "bindData Exception:", paramObject.toString() });
     }
   }
+  
+  protected String b()
+  {
+    return "pymk_container";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleRecommendWidget
  * JD-Core Version:    0.7.0.1
  */

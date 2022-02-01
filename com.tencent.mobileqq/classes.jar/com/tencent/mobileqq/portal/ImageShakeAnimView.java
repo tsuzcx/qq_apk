@@ -8,8 +8,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Transformation;
-import awmy;
-import bdob;
+import azbo;
+import bgta;
 
 public class ImageShakeAnimView
   extends View
@@ -19,7 +19,7 @@ public class ImageShakeAnimView
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   public Transformation a;
-  bdob<Float> jdField_a_of_type_Bdob = null;
+  bgta<Float> jdField_a_of_type_Bgta = null;
   public boolean a;
   public float b;
   int b;
@@ -64,15 +64,15 @@ public class ImageShakeAnimView
   public void a()
   {
     float f;
-    bdob localbdob;
+    bgta localbgta;
     if (this.jdField_a_of_type_Boolean)
     {
       f = 720.0F;
-      localbdob = new bdob(Float.valueOf(0.0F), Float.valueOf(f), new awmy(this));
-      if (this.jdField_a_of_type_Bdob != null) {
-        this.jdField_a_of_type_Bdob.cancel();
+      localbgta = new bgta(Float.valueOf(0.0F), Float.valueOf(f), new azbo(this));
+      if (this.jdField_a_of_type_Bgta != null) {
+        this.jdField_a_of_type_Bgta.cancel();
       }
-      this.jdField_a_of_type_Bdob = localbdob;
+      this.jdField_a_of_type_Bgta = localbgta;
       if (!this.jdField_a_of_type_Boolean) {
         break label88;
       }
@@ -80,8 +80,8 @@ public class ImageShakeAnimView
     label88:
     for (long l = 720L;; l = 500L)
     {
-      localbdob.setDuration(l);
-      localbdob.start();
+      localbgta.setDuration(l);
+      localbgta.start();
       invalidate();
       return;
       f = 500.0F;
@@ -107,8 +107,8 @@ public class ImageShakeAnimView
       this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int * this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, null);
       paramCanvas.restore();
-    } while (this.jdField_a_of_type_Bdob == null);
-    return this.jdField_a_of_type_Bdob.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
+    } while (this.jdField_a_of_type_Bgta == null);
+    return this.jdField_a_of_type_Bgta.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -131,7 +131,7 @@ public class ImageShakeAnimView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ImageShakeAnimView
  * JD-Core Version:    0.7.0.1
  */

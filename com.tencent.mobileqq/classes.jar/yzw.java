@@ -1,69 +1,69 @@
-import java.io.InputStream;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.util.List;
 
-public abstract class yzw
+public class yzw
+  implements yxf
 {
-  protected static int a;
-  protected static ArrayList<String[]> a;
+  public yzw(DoodleLayout paramDoodleLayout) {}
   
-  static
+  public void a(int paramInt)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.a.jdField_a_of_type_Zaa != null) {
+      this.a.jdField_a_of_type_Zaa.b(1, paramInt);
+    }
   }
   
-  public String a(String paramString)
+  public void a(ywz paramywz)
   {
-    return svi.b(paramString);
-  }
-  
-  public abstract yzx a(String paramString);
-  
-  public abstract void a();
-  
-  public abstract void a(String paramString);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract boolean a(String paramString, InputStream paramInputStream);
-  
-  public abstract boolean a(String paramString1, String paramString2);
-  
-  public void b()
-  {
-    for (;;)
+    this.a.jdField_a_of_type_Ywz = paramywz;
+    if (this.a.jdField_a_of_type_Zaa != null)
     {
-      try
+      yqp.b("DoodleLayout", "selectLocation: clickItem-->" + paramywz.toString());
+      this.a.jdField_a_of_type_Zaa.a(this.a.jdField_a_of_type_Ywz.a());
+    }
+  }
+  
+  public boolean a(yxc paramyxc)
+  {
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null)
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
+      Object localObject;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
       {
-        int i = jdField_a_of_type_Int;
-        if (i >= 1) {
-          return;
+        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
+        ((zcb)localObject).d = false;
+        if (!(localObject instanceof yxc)) {
+          break label120;
         }
-        jdField_a_of_type_Int += 1;
-        if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
-        {
-          String[] arrayOfString = (String[])jdField_a_of_type_JavaUtilArrayList.remove(0);
-          a(arrayOfString[0], arrayOfString[1]);
-          try
-          {
-            Thread.sleep(100L);
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
-        else
-        {
-          jdField_a_of_type_Int -= 1;
+        ywy localywy = this.a.a();
+        if (localywy != null) {
+          localywy.a.add((yxc)localObject);
         }
       }
-      finally {}
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramyxc);
+        paramyxc.d = true;
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
+        return true;
+        label120:
+        if ((localObject instanceof yxo))
+        {
+          localObject = this.a.a();
+          if (localObject != null) {
+            ((yxm)localObject).d();
+          }
+        }
+      }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yzw
  * JD-Core Version:    0.7.0.1
  */

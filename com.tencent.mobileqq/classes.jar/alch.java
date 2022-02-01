@@ -1,518 +1,380 @@
-import android.os.Bundle;
-import android.os.Parcelable;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
-import com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.2;
-import com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.3;
-import com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.5;
-import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.RecentLiveTipItemBuilder.1;
+import com.tencent.mobileqq.activity.recent.TimeManager;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.MessageForNearbyLiveTip;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.URLThemeImageView;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Map;
 
 public class alch
-  implements albk
+  extends alcd
 {
-  private albn jdField_a_of_type_Albn;
-  private alcg jdField_a_of_type_Alcg;
-  private alcm jdField_a_of_type_Alcm;
-  private alcn jdField_a_of_type_Alcn;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public static int a;
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private int b;
+  private int c;
   
-  public alch(alcg paramalcg, albn paramalbn, alcm paramalcm, alcn paramalcn)
+  private void a(FragmentActivity paramFragmentActivity, MessageForNearbyLiveTip paramMessageForNearbyLiveTip)
   {
-    this.jdField_a_of_type_Alcg = paramalcg;
-    this.jdField_a_of_type_Albn = paramalbn;
-    this.jdField_a_of_type_Alcm = paramalcm;
-    this.jdField_a_of_type_Alcn = paramalcn;
-  }
-  
-  private boolean a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Alcg == null) {}
-    while (this.jdField_a_of_type_Alcn.a(paramInt1, paramInt2) == null) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    try
+    Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramMessageForNearbyLiveTip.senderuin);
+    if ((localBoolean == null) || (!localBoolean.booleanValue()))
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("taskId", paramInt2);
-      ((JSONObject)localObject).put("actionId", paramInt1);
-      ((JSONObject)localObject).put("stopAll", 1);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("stopAction('").append(((JSONObject)localObject).toString()).append("');");
-      localObject = this.jdField_a_of_type_Alcn.a(100);
-      if (localObject == null)
-      {
-        QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
-        return;
-      }
-      ((alce)localObject).a(localStringBuilder.toString());
-      this.jdField_a_of_type_Albn.a(paramInt2);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "showBubble e:" + localThrowable);
+      this.jdField_a_of_type_JavaUtilMap.put(paramMessageForNearbyLiveTip.senderuin, Boolean.valueOf(true));
+      paramFragmentActivity = paramFragmentActivity.app;
+      ThreadManagerV2.excute(new RecentLiveTipItemBuilder.1(this, paramFragmentActivity, paramMessageForNearbyLiveTip, (axby)paramFragmentActivity.getManager(106)), 32, null, false);
     }
   }
   
-  public void a(alcg paramalcg, int paramInt, alby paramalby, Bundle paramBundle)
+  private void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, alci paramalci)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_SpriteDrawerInfoBridge", 2, "[initSprite]");
-    }
-    alhp.a(paramalcg.a());
-    alhp.a(paramalcg.a(), 300);
-    if ((this.jdField_a_of_type_Alcm == null) || (paramalcg == null) || (!paramalcg.a())) {
-      if (paramalcg != null) {
-        alhp.a(paramalcg.a(), 300, 160, new Object[] { "glview is not ready" });
-      }
-    }
-    do
+    MessageForNearbyLiveTip localMessageForNearbyLiveTip;
+    Object localObject;
+    if ((paramRecentBaseData instanceof RecentItemNearbyLiveTipData))
     {
-      return;
-      if (a(100, -1)) {
-        break;
-      }
-      QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "[initSprite], fail to load script.");
-      if (paramalcg.jdField_e_of_type_Int == 1) {
-        ThreadManager.getUIHandler().post(new CmShowSpriteDrawerInfoBridge.5(this, paramalcg));
-      }
-    } while (paramalcg == null);
-    alhp.a(paramalcg.a(), 300, 200, new Object[] { "script no exit" });
-    return;
-    Bundle localBundle = new Bundle();
-    IPCSpriteContext localIPCSpriteContext = paramalcg.a();
-    if (paramBundle != null)
-    {
-      localIPCSpriteContext.d = paramBundle.getInt("SelfRotate");
-      localIPCSpriteContext.jdField_e_of_type_Int = paramBundle.getInt("FriendRotate");
-      QLog.i("CmShow_SpriteDrawerInfoBridge", 1, "mSelfRotate:" + localIPCSpriteContext.d + " mFriendRotate:" + localIPCSpriteContext.jdField_e_of_type_Int);
-      if (!TextUtils.isEmpty(paramalcg.jdField_b_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramalcg.jdField_b_of_type_JavaLangString, Integer.valueOf(localIPCSpriteContext.d));
-      }
-      if (!TextUtils.isEmpty(paramalcg.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramalcg.jdField_a_of_type_JavaLangString, Integer.valueOf(localIPCSpriteContext.jdField_e_of_type_Int));
-      }
-    }
-    localBundle.putParcelable("IPCSpriteContext", localIPCSpriteContext);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_get_initavatar_js", localBundle, new alck(this, paramalby, paramInt, paramalcg));
-  }
-  
-  public void a(alcg paramalcg, CmShowRenderView.PlayActionConfig paramPlayActionConfig)
-  {
-    int i = 1;
-    if ((paramalcg == null) || (paramPlayActionConfig == null)) {
-      return;
-    }
-    long l = System.currentTimeMillis();
-    Object localObject1 = albt.a(paramPlayActionConfig);
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      QLog.i("CmShow_SpriteDrawerInfoBridge", 1, "playAction cacheActionJs:" + (String)localObject1);
-      localObject2 = new SpriteTaskParam();
-      ((SpriteTaskParam)localObject2).f = paramPlayActionConfig.jdField_a_of_type_Int;
-      ((SpriteTaskParam)localObject2).jdField_e_of_type_Int = 1;
-      ((SpriteTaskParam)localObject2).h = 0;
-      ((SpriteTaskParam)localObject2).g = 6;
-      ((SpriteTaskParam)localObject2).jdField_a_of_type_Boolean = true;
-      if ((!TextUtils.isEmpty(paramalcg.jdField_b_of_type_JavaLangString)) && (!paramalcg.jdField_b_of_type_JavaLangString.equals(paramPlayActionConfig.jdField_a_of_type_JavaLangString)))
-      {
-        ((SpriteTaskParam)localObject2).jdField_b_of_type_JavaLangString = paramalcg.jdField_b_of_type_JavaLangString;
-        ((SpriteTaskParam)localObject2).jdField_a_of_type_JavaLangString = paramalcg.jdField_a_of_type_JavaLangString;
-        ((SpriteTaskParam)localObject2).jdField_a_of_type_Int = paramPlayActionConfig.jdField_b_of_type_Int;
-        ((SpriteTaskParam)localObject2).l = paramPlayActionConfig.jdField_c_of_type_Int;
-        ((SpriteTaskParam)localObject2).jdField_e_of_type_JavaLangString = ((String)localObject1);
-        if (!paramPlayActionConfig.jdField_a_of_type_Boolean) {
-          break label222;
+      localMessageForNearbyLiveTip = ((RecentItemNearbyLiveTipData)paramRecentBaseData).nearbyLiveTipMsg;
+      if (localMessageForNearbyLiveTip != null) {
+        if (acwh.g(localMessageForNearbyLiveTip.senderuin))
+        {
+          if (paramRecentBaseData.getUnreadNum() >= 1) {
+            break label355;
+          }
+          localObject = "0";
         }
+      }
+    }
+    for (;;)
+    {
+      bcst.b(null, "dc00899", "grp_lbs", "", "msg_box", "assist_exp", 0, 0, "", "", "", (String)localObject);
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramalci.jdField_a_of_type_ComTencentWidgetURLThemeImageView.getHeight();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramalci.jdField_a_of_type_ComTencentWidgetURLThemeImageView.getWidth();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = bgmo.b();
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = bgmo.b();
+      ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
+      try
+      {
+        localObject = URLDrawable.getDrawable(localMessageForNearbyLiveTip.headUrl, (URLDrawable.URLDrawableOptions)localObject);
+        ((URLDrawable)localObject).setDecodeHandler(bgey.a);
+        paramalci.jdField_a_of_type_ComTencentWidgetURLThemeImageView.setImageDrawable((Drawable)localObject);
+        paramalci.jdField_a_of_type_AndroidWidgetTextView.setText(localMessageForNearbyLiveTip.nickName);
+        if ((MessageForNearbyLiveTip.isHuayangTip(localMessageForNearbyLiveTip.jumpingUrl)) && (!localMessageForNearbyLiveTip.isLiving))
+        {
+          if (!TextUtils.isEmpty(localMessageForNearbyLiveTip.c2cMsgWording)) {
+            localMessageForNearbyLiveTip.msg = localMessageForNearbyLiveTip.c2cMsgWording;
+          }
+        }
+        else
+        {
+          paramalci.d.setText(localMessageForNearbyLiveTip.msg);
+          if (localMessageForNearbyLiveTip.senderuin.equals(String.valueOf(1822701914L + anhk.g))) {
+            localMessageForNearbyLiveTip.isLiving = false;
+          }
+          if ((!localMessageForNearbyLiveTip.isLiving) || (MessageForNearbyLiveTip.isGroupVideoTip(localMessageForNearbyLiveTip.jumpingUrl))) {
+            break label457;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          try
+          {
+            localObject = bdwn.a("https://8.url.cn/huayang/resource/now/gift/ilive_animation.gif");
+            URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+            localURLDrawableOptions.mPlayGifImage = true;
+            localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
+            paramalci.jdField_b_of_type_ComTencentWidgetURLThemeImageView.setImageDrawable((Drawable)localObject);
+            paramalci.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+            paramalci.jdField_b_of_type_ComTencentWidgetURLThemeImageView.setVisibility(0);
+            paramalci.c.setVisibility(8);
+            a(paramalci, paramContext);
+            b(paramView, paramRecentBaseData, paramContext, paramalci);
+            a((FragmentActivity)paramContext, localMessageForNearbyLiveTip);
+            return;
+            label355:
+            localObject = "1";
+            break;
+            localException = localException;
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.i("Q.nearby.tag_nearby_live_tip", 2, "url=" + localMessageForNearbyLiveTip.headUrl);
+            continue;
+            localMessageForNearbyLiveTip.msg = localMessageForNearbyLiveTip.liveEndWording;
+          }
+          catch (MalformedURLException localMalformedURLException)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("Q.nearby.freshNews", 2, "RecentLiveTipItemBuilder getview get nowBoardcastGif error, " + localMalformedURLException);
+            continue;
+          }
+          label457:
+          paramalci.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+          paramalci.jdField_b_of_type_ComTencentWidgetURLThemeImageView.setVisibility(8);
+          paramalci.c.setVisibility(0);
+          paramalci.c.setText(paramRecentBaseData.mShowTime);
+        }
+      }
+    }
+  }
+  
+  private void b(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, alci paramalci)
+  {
+    int j = 1;
+    int k = 0;
+    int i = paramRecentBaseData.mUnreadNum;
+    int m = paramRecentBaseData.mUnreadFlag;
+    if (i > 0) {
+      if (m == 0)
+      {
+        paramalci.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
+        j = 0;
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bkjh.a(paramalci.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, k, j, 99, null);
+      return;
+      if (m == 2)
+      {
+        paramalci.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
+        m = 0;
+        i = j;
+        j = m;
+      }
+      else if (m == 3)
+      {
+        paramalci.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1, paramView);
+        paramalci.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(paramContext.getResources().getColor(2131167110));
+        j = 2130850396;
+        m = 3;
+        k = i;
+        i = m;
+      }
+      else
+      {
+        j = 2130850392;
+        paramalci.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
+        paramalci.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(paramContext.getResources().getColor(2131167111));
+        k = i;
+        i = 3;
+        continue;
+        j = 0;
+        i = 0;
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public View a(int paramInt, Object paramObject, alby paramalby, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aled paramaled)
+  {
+    paramaled = null;
+    paramViewGroup = paramaled;
+    if (paramView != null)
+    {
+      paramViewGroup = paramaled;
+      if ((paramView.getTag() instanceof alci)) {
+        paramViewGroup = (alci)paramView.getTag();
+      }
+    }
+    if (paramViewGroup == null)
+    {
+      paramViewGroup = new alci();
+      paramView = a(paramContext, 2131562789, paramViewGroup);
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetURLThemeImageView = ((URLThemeImageView)paramView.findViewById(2131368138));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131380256));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(16908308));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370009));
+      paramViewGroup.jdField_b_of_type_ComTencentWidgetURLThemeImageView = ((URLThemeImageView)paramView.findViewById(2131370007));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131369522));
+      paramViewGroup.d = ((TextView)paramView.findViewById(16908309));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378447);
+      paramView.setTag(paramViewGroup);
+      if (this.jdField_a_of_type_Albc != null) {
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_Albc.a());
+      }
+      this.b = paramContext.getResources().getDisplayMetrics().widthPixels;
+      this.c = ((int)paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.getPaint().measureText(paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.getText().toString()));
+    }
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
+      if (AppSetting.c) {
+        paramView.setContentDescription(null);
+      }
+      if ((paramObject instanceof RecentBaseData))
+      {
+        RecentBaseData localRecentBaseData = (RecentBaseData)paramObject;
+        paramaled = null;
+        if (paramalby != null) {
+          paramaled = paramalby.a(localRecentBaseData);
+        }
+        a(paramView, localRecentBaseData, paramContext, paramaled);
       }
       for (;;)
       {
-        ((SpriteTaskParam)localObject2).m = i;
-        ((SpriteTaskParam)localObject2).jdField_a_of_type_Albk = this;
-        ((SpriteTaskParam)localObject2).jdField_a_of_type_AndroidOsBundle = paramPlayActionConfig.jdField_a_of_type_AndroidOsBundle;
-        a((SpriteTaskParam)localObject2);
+        a(paramContext, paramView, paramInt, paramObject, paramViewGroup, paramOnClickListener);
+        paramView.setOnClickListener(paramOnClickListener);
+        paramView.setOnLongClickListener(paramOnLongClickListener);
+        paramView.setTag(-1, Integer.valueOf(paramInt));
+        return paramView;
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramViewGroup.jdField_b_of_type_ComTencentWidgetURLThemeImageView.setVisibility(8);
+        paramViewGroup.d.setText("");
+        paramViewGroup.c.setText("");
+      }
+    }
+  }
+  
+  public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
+  {
+    if ((paramRecentBaseData == null) || (paramContext == null)) {
+      return null;
+    }
+    paramRecentBaseData = paramContext.getResources();
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[0]));
+      return this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+  }
+  
+  protected void a(alci paramalci, Context paramContext)
+  {
+    try
+    {
+      localObject = paramalci.c;
+      localView = paramalci.jdField_a_of_type_AndroidViewView;
+      paramalci = paramalci.jdField_a_of_type_AndroidWidgetTextView;
+      if (((TextView)localObject).getVisibility() != 0)
+      {
+        i = bclx.a(12.0F);
+        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), i, localView.getPaddingBottom());
+        paramalci.setMaxWidth(this.b - this.c - bclx.a(113.0F));
         return;
-        ((SpriteTaskParam)localObject2).jdField_b_of_type_JavaLangString = paramalcg.jdField_a_of_type_JavaLangString;
-        ((SpriteTaskParam)localObject2).jdField_a_of_type_JavaLangString = paramalcg.jdField_b_of_type_JavaLangString;
-        break;
-        label222:
+      }
+      paramalci = TimeManager.getInstance().getMsgDisplayTime("000000", 1225168973512L);
+      if (!TextUtils.isEmpty(paramalci)) {
+        break label318;
+      }
+      paramalci = TimeManager.getInstance().getDateFormat();
+    }
+    catch (Exception paramalci)
+    {
+      Object localObject;
+      View localView;
+      int i;
+      float f;
+      int j;
+      label292:
+      label318:
+      while (QLog.isDevelopLevel())
+      {
+        QLog.i("RecentLiveTipItemBuilder", 4, paramalci.toString());
+        return;
+        jdField_a_of_type_Int = i;
+        continue;
+        jdField_a_of_type_Int = (int)(paramContext.measureText("yyyy-MM-dd") + f * 6.0F);
+        continue;
         i = 0;
       }
     }
-    localObject1 = new Bundle();
-    Object localObject2 = paramalcg.a();
-    if ((!TextUtils.isEmpty(paramalcg.jdField_b_of_type_JavaLangString)) && (!paramalcg.jdField_b_of_type_JavaLangString.equals(paramPlayActionConfig.jdField_a_of_type_JavaLangString)))
+    if ((!TextUtils.isEmpty(paramalci)) && (paramalci.length() != "yyyy-MM-dd".length()))
     {
-      ((IPCSpriteContext)localObject2).jdField_a_of_type_JavaLangString = ((IPCSpriteContext)localObject2).jdField_b_of_type_JavaLangString;
-      ((IPCSpriteContext)localObject2).jdField_b_of_type_JavaLangString = paramPlayActionConfig.jdField_a_of_type_JavaLangString;
-    }
-    ((Bundle)localObject1).putParcelable("IPCSpriteContext", (Parcelable)localObject2);
-    ((Bundle)localObject1).putParcelable("PlayActionConfig", paramPlayActionConfig);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_play_action", (Bundle)localObject1, new alci(this, l, paramPlayActionConfig));
-  }
-  
-  public void a(alcg paramalcg, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_SpriteDrawerInfoBridge", 2, "[initSprite]");
-    }
-    if ((this.jdField_a_of_type_Alcm == null) || (paramalcg == null) || (!paramalcg.a())) {
-      if (paramalcg != null) {
-        alhp.a(paramalcg.a(), 300, 160, new Object[] { "glview is not ready" });
+      i = 1;
+      if ((jdField_a_of_type_Int <= 0) || (i != 0))
+      {
+        f = paramContext.getResources().getDisplayMetrics().density;
+        localObject = ((TextView)localObject).getPaint();
+        paramContext = (Context)localObject;
+        if (localObject == null)
+        {
+          paramContext = new TextPaint();
+          paramContext.setTextSize(f * 12.0F);
+        }
+        if (i == 0) {
+          break label292;
+        }
+        i = (int)(paramContext.measureText("yyyy-MM-dd") + f * 6.0F);
+        j = (int)(paramContext.measureText(paramalci) + f * 6.0F);
+        if (j > i) {
+          jdField_a_of_type_Int = j;
+        }
+      }
+      else
+      {
+        i = localView.getPaddingRight();
+        if (i >= jdField_a_of_type_Int) {
+          return;
+        }
+        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), i, localView.getPaddingBottom());
+        return;
       }
     }
+  }
+  
+  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
+  {
+    if ((paramView == null) || (paramRecentBaseData == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "bindView|param invalidate");
+      }
+    }
+    Object localObject;
     do
     {
       return;
-      if (a(100, -1)) {
+      localObject = paramView.getTag();
+      paramDrawable = null;
+      if ((localObject instanceof alci)) {
+        paramDrawable = (alci)localObject;
+      }
+      if (paramDrawable != null) {
         break;
       }
-      QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "[checkfDressChanged], fail to load script.");
-    } while (paramalcg.jdField_e_of_type_Int != 1);
-    ThreadManager.getUIHandler().post(new CmShowSpriteDrawerInfoBridge.3(this, paramalcg));
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.recent", 2, "bindView|holder is null, tag = " + localObject);
     return;
-    Bundle localBundle = new Bundle();
-    IPCSpriteContext localIPCSpriteContext = paramalcg.a();
-    String str1 = localIPCSpriteContext.jdField_b_of_type_JavaLangString;
-    String str2 = localIPCSpriteContext.jdField_a_of_type_JavaLangString;
-    Integer localInteger;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2);
-      if (localInteger != null) {
-        localIPCSpriteContext.jdField_e_of_type_Int = localInteger.intValue();
-      }
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-      if (localInteger != null) {
-        localIPCSpriteContext.d = localInteger.intValue();
-      }
-    }
-    localIPCSpriteContext.jdField_a_of_type_JavaLangString = paramString2;
-    localIPCSpriteContext.jdField_b_of_type_JavaLangString = paramString1;
-    localBundle.putParcelable("IPCSpriteContext", localIPCSpriteContext);
-    localIPCSpriteContext.jdField_a_of_type_JavaLangString = str2;
-    localIPCSpriteContext.jdField_b_of_type_JavaLangString = str1;
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_get_initavatar_js", localBundle, new alcj(this, paramalcg));
-  }
-  
-  public void a(SpriteTaskParam paramSpriteTaskParam)
-  {
-    if (paramSpriteTaskParam == null) {
-      return;
-    }
-    ThreadManager.excute(new CmShowSpriteDrawerInfoBridge.2(this, paramSpriteTaskParam), 192, null, true);
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("uin", paramString);
-      paramString = new StringBuilder();
-      paramString.append("removeBubbleAccessory('").append(((JSONObject)localObject).toString()).append("');");
-      localObject = this.jdField_a_of_type_Alcn.a(100);
-      if (localObject == null)
-      {
-        QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
-        return;
-      }
-      ((alce)localObject).a(paramString.toString());
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "showBubble e:" + paramString);
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("uin", paramString);
-        if (paramInt == 1)
-        {
-          localObject1 = "2D";
-          ((JSONObject)localObject2).put("model", localObject1);
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("changeSpriteModel('").append(((JSONObject)localObject2).toString()).append("');");
-          localObject2 = this.jdField_a_of_type_Alcn.a(100);
-          if (localObject2 == null)
-          {
-            QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
-            return;
-          }
-          ((alce)localObject2).a(((StringBuilder)localObject1).toString());
-          albt.a(paramString, paramInt);
-          return;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "changeSpriteModel e:" + paramString);
-        return;
-      }
-      Object localObject1 = "3D";
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(paramInt3));
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("uin", paramString);
-      ((JSONObject)localObject).put("xPos", paramInt1);
-      ((JSONObject)localObject).put("yPos", paramInt2);
-      ((JSONObject)localObject).put("rotate", paramInt3);
-      paramString = new StringBuilder();
-      paramString.append("updateSpriteParam('").append(((JSONObject)localObject).toString()).append("');");
-      localObject = this.jdField_a_of_type_Alcn.a(100);
-      if (localObject == null)
-      {
-        QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
-        return;
-      }
-      ((alce)localObject).a(paramString.toString());
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "updateAvatarParam e:" + paramString);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("uin", paramString1);
-        localJSONObject.put("text", albi.a(bdfr.encodeToString(paramString2.getBytes("utf-8"), 0)));
-        localJSONObject.put("direction", paramInt1);
-        paramString1 = "";
-        if (paramInt2 != 1) {
-          break label408;
-        }
-        Object localObject = albb.a(paramString2, 1);
-        if (QLog.isColorLevel()) {
-          QLog.d("CmShow_SpriteDrawerInfoBridge", 2, new Object[] { "showBubble, 2d bubbleInfo=", localObject });
-        }
-        if (localObject == null) {
-          break label408;
-        }
-        paramString1 = (String)((Pair)localObject).first;
-        paramInt1 = ((Integer)((Pair)localObject).second).intValue();
-        localObject = paramString1;
-        if (TextUtils.isEmpty(paramString1))
-        {
-          ApolloUtil.b("本地无qzone气泡资源，请检查配置是否ok");
-          localObject = albb.a(paramString2, 0, 1);
-        }
-        localJSONObject.put("bubblePath2D", localObject);
-        if (paramInt1 != -1) {
-          localJSONObject.put("bubbleId2D", paramInt1);
-        }
-        paramString1 = "";
-        if (paramInt2 == 1)
-        {
-          localObject = albb.a(paramString2, 2);
-          if (QLog.isColorLevel()) {
-            QLog.d("CmShow_SpriteDrawerInfoBridge", 2, new Object[] { "showBubble, 3d bubbleInfo=", localObject });
-          }
-          if (localObject != null)
-          {
-            paramString1 = (String)((Pair)localObject).first;
-            paramInt1 = ((Integer)((Pair)localObject).second).intValue();
-            localObject = paramString1;
-            if (TextUtils.isEmpty(paramString1)) {
-              localObject = albb.a(paramString2, 0, 2);
-            }
-            localJSONObject.put("bubblePath3D", localObject);
-            if (paramInt1 != -1) {
-              localJSONObject.put("bubbleId3D", paramInt1);
-            }
-            paramString1 = new StringBuilder();
-            paramString1.append("setBubbleAccessory('").append(localJSONObject.toString()).append("');");
-            paramString2 = this.jdField_a_of_type_Alcn.a(100);
-            if (paramString2 == null)
-            {
-              QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
-              return;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("CmShow_SpriteDrawerInfoBridge", 2, new Object[] { "showBubble, script=", paramString1.toString() });
-            }
-            paramString2.a(paramString1.toString());
-            return;
-          }
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "showBubble e:" + paramString1);
-        return;
-      }
-      paramInt1 = -1;
-      continue;
-      label408:
-      paramInt1 = -1;
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject = new JSONObject();
-        ((JSONObject)localObject).put("uin", paramString);
-        if (paramBoolean)
-        {
-          i = 1;
-          ((JSONObject)localObject).put("showOrHide", i);
-          paramString = new StringBuilder();
-          paramString.append("showOrHideSprite('").append(((JSONObject)localObject).toString()).append("');");
-          localObject = this.jdField_a_of_type_Alcn.a(100);
-          if (localObject == null)
-          {
-            QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
-            return;
-          }
-          ((alce)localObject).a(paramString.toString());
-          return;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "showOrHideAvatar e:" + paramString);
-        return;
-      }
-      int i = 2;
-    }
-  }
-  
-  public void a(List<String> paramList, boolean paramBoolean)
-  {
-    Object localObject;
-    try
-    {
-      localObject = new JSONObject();
-      if (paramList == null) {
-        break label172;
-      }
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        localJSONArray.put((String)paramList.next());
-      }
-      ((JSONObject)localObject).put("uins", localJSONArray);
-    }
-    catch (Throwable paramList)
-    {
-      QLog.e("CmShow_SpriteDrawerInfoBridge", 1, "clearAvatar e:" + paramList);
-      return;
-    }
-    for (;;)
-    {
-      int i;
-      ((JSONObject)localObject).put("isClearAll", i);
-      paramList = new StringBuilder();
-      paramList.append("clearSprite('").append(((JSONObject)localObject).toString()).append("');");
-      localObject = this.jdField_a_of_type_Alcn.a(100);
-      if (localObject == null)
-      {
-        QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
-        return;
-      }
-      ((alce)localObject).a(paramList.toString());
-      return;
-      label172:
-      if (paramBoolean) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-    }
-  }
-  
-  public void b(SpriteTaskParam paramSpriteTaskParam)
-  {
-    if ((paramSpriteTaskParam == null) || (this.jdField_a_of_type_Alcm == null) || (this.jdField_a_of_type_Alcg == null) || (!this.jdField_a_of_type_Alcg.a())) {
-      return;
-    }
-    Object localObject1 = this.jdField_a_of_type_Alcm;
-    alcm.a(paramSpriteTaskParam);
-    localObject1 = "";
-    if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_e_of_type_JavaLangString)) {
-      localObject1 = paramSpriteTaskParam.jdField_e_of_type_JavaLangString;
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
-      return;
-    }
-    Object localObject3 = this.jdField_a_of_type_Alcn.a(paramSpriteTaskParam.jdField_c_of_type_Int);
-    Object localObject2 = localObject3;
-    if (localObject3 == null)
-    {
-      QLog.i("CmShow_SpriteDrawerInfoBridge", 1, "playAction CmShow_ get sdk basic script");
-      localObject3 = this.jdField_a_of_type_Alcn.a(100);
-      localObject2 = localObject3;
-      if (localObject3 == null)
-      {
-        QLog.w("CmShow_SpriteDrawerInfoBridge", 1, "actionScript == null.");
-        paramSpriteTaskParam.jdField_b_of_type_Int = 4;
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_SpriteDrawerInfoBridge", 2, new Object[] { "[playAction], ready to play, actionId:", Integer.valueOf(paramSpriteTaskParam.f) });
-    }
-    paramSpriteTaskParam.jdField_b_of_type_Int = 2;
-    localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append("playAction('").append((String)localObject1).append("');");
-    localObject2.a(((StringBuilder)localObject3).toString());
-    localObject2.a(paramSpriteTaskParam.jdField_a_of_type_JavaLangString, false);
-    localObject2.a(paramSpriteTaskParam.jdField_b_of_type_JavaLangString, false);
-    localObject1 = ApolloUtil.a();
-    if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      algj.a((QQAppInterface)localObject1, paramSpriteTaskParam, bool, paramSpriteTaskParam.jdField_b_of_type_Boolean);
-      return;
-    }
+    a(paramView, paramRecentBaseData, paramContext, paramDrawable);
   }
 }
 

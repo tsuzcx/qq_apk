@@ -1,25 +1,34 @@
-import android.annotation.TargetApi;
-import android.os.Looper;
-import android.support.annotation.NonNull;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@TargetApi(18)
-public class axur
-  extends axvw
+class axur
+  implements View.OnClickListener
 {
-  @NonNull
-  protected axvy a(Looper paramLooper)
-  {
-    return new axvy(this, paramLooper, this);
-  }
+  axur(axtp paramaxtp, String paramString) {}
   
-  public void a(Runnable paramRunnable)
+  public void onClick(View paramView)
   {
-    this.a.post(paramRunnable);
+    Intent localIntent = new Intent(this.jdField_a_of_type_Axtp.a, QQBrowserActivity.class);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
+    Object localObject = this.jdField_a_of_type_Axtp.a;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Axtp.a.j)) {}
+    for (localObject = "1";; localObject = "2")
+    {
+      localIntent.putExtra("url", (String)localObject);
+      bcst.b(this.jdField_a_of_type_Axtp.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Axtp.a.startActivity(localIntent);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axur
  * JD-Core Version:    0.7.0.1
  */

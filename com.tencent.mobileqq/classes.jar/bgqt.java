@@ -1,30 +1,52 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.core.widget.ActionSheetDialog.3;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class bgqt
-  implements Animation.AnimationListener
+class bgqt
+  implements View.OnClickListener
 {
-  public bgqt(ActionSheetDialog.3 param3) {}
+  bgqt(bgqn parambgqn, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    try
+    String str = this.jdField_a_of_type_Bgqn.getInputValue();
+    if (TextUtils.isEmpty(str)) {}
+    for (;;)
     {
-      bgqs.a(this.a.this$0);
-      bgqs.a(this.a.this$0, true);
-      return;
+      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+      {
+        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgqn, 1);
+        this.jdField_a_of_type_Bgqn.a();
+      }
+      try
+      {
+        if (this.jdField_a_of_type_Bgqn.isShowing()) {
+          this.jdField_a_of_type_Bgqn.dismiss();
+        }
+        label60:
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        if ((this.jdField_a_of_type_Bgqn.a == null) || (this.jdField_a_of_type_Bgqn.a.size() <= 0)) {
+          continue;
+        }
+        int i = 0;
+        while ((i < this.jdField_a_of_type_Bgqn.a.size()) && (!str.equals(this.jdField_a_of_type_Bgqn.a.get(i)))) {
+          i += 1;
+        }
+      }
+      catch (Exception localException)
+      {
+        break label60;
+      }
     }
-    catch (Exception paramAnimation) {}
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgqt
  * JD-Core Version:    0.7.0.1
  */

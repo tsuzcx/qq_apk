@@ -1,262 +1,115 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.RecentUser;
+import android.util.SparseArray;
+import com.tencent.mobileqq.apollo.CmShowRscCacheManager.1;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Comparator;
+import java.io.File;
 import java.util.Iterator;
-import java.util.List;
+import org.json.JSONObject;
 
 public class amjg
-  implements Comparator<RecentBaseData>
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  private static amjg jdField_a_of_type_Amjg;
+  private final SparseArray<amjh> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  public amjg(QQAppInterface paramQQAppInterface)
+  private amjg()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a();
   }
   
-  private int a(String paramString1, String paramString2)
+  public static amjg a()
   {
-    long l1 = Long.parseLong(paramString1);
-    long l2 = Long.parseLong(paramString2);
-    if (l1 - l2 == 0L) {
-      return 0;
+    try
+    {
+      if (jdField_a_of_type_Amjg == null) {
+        jdField_a_of_type_Amjg = new amjg();
+      }
+      amjg localamjg = jdField_a_of_type_Amjg;
+      return localamjg;
     }
-    if (l1 - l2 > 0L) {
-      return 1;
-    }
-    return -1;
+    finally {}
   }
   
-  private boolean a(String paramString, int paramInt)
+  private void b()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(paramString, paramInt) > 0);
-  }
-  
-  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
-  {
-    if (((paramRecentBaseData1 instanceof RecentUserBaseData)) && ((paramRecentBaseData2 instanceof RecentUserBaseData)))
-    {
-      paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
-      paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
-      TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-      boolean bool1;
-      if ((paramRecentBaseData1.mUser.getType() == 1) && (!auud.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData1.mUser)))
+    Object localObject1 = new amjo();
+    ((amjo)localObject1).jdField_a_of_type_Int = 100;
+    ((amjo)localObject1).jdField_a_of_type_Long = 1L;
+    ((amjo)localObject1).jdField_a_of_type_JavaLangString = "all_room3D";
+    localObject1 = ((amjo)localObject1).b() + "all_room3D.json";
+    Object localObject2 = new File((String)localObject1);
+    if (((File)localObject2).exists()) {
+      try
       {
-        bool1 = localTroopManager.b(paramRecentBaseData1.a());
-        if ((paramRecentBaseData2.mUser.getType() != 1) || (auud.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData2.mUser))) {
-          break label138;
-        }
-      }
-      label138:
-      for (boolean bool2 = localTroopManager.b(paramRecentBaseData2.a());; bool2 = FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData2.mUser))
-      {
-        if ((!bool1) || (bool2)) {
-          break label154;
-        }
-        return -1;
-        bool1 = FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentBaseData1.mUser);
-        break;
-      }
-      label154:
-      if ((!bool1) && (bool2)) {
-        return 1;
-      }
-      if ((!bool1) && (!bool2)) {
-        if ((paramRecentBaseData1.mUnreadNum > 0) && (paramRecentBaseData1.mUser.getType() == 0) && (akey.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + paramRecentBaseData1.mUser.uin)) && (!a(paramRecentBaseData1.mUser.uin, 0)))
+        localObject2 = new JSONObject(bgmg.b((File)localObject2)).optJSONObject("data");
+        if (localObject2 != null)
         {
-          i = 1;
-          if (i == 0) {
-            break label594;
-          }
-        }
-      }
-    }
-    label325:
-    label465:
-    label594:
-    for (int i = 4096;; i = 0)
-    {
-      if ((paramRecentBaseData2.mUnreadNum > 0) && (paramRecentBaseData2.mUser.getType() == 0) && (akey.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + paramRecentBaseData2.mUser.uin)) && (!a(paramRecentBaseData2.mUser.uin, 0)))
-      {
-        j = 1;
-        if (j == 0) {
-          break label588;
-        }
-      }
-      for (int j = 4096;; j = 0)
-      {
-        long l2 = Math.max(paramRecentBaseData1.mUser.lastmsgtime, paramRecentBaseData1.mUser.lastmsgdrafttime);
-        long l3 = Math.max(paramRecentBaseData2.mUser.lastmsgtime, paramRecentBaseData2.mUser.lastmsgdrafttime);
-        long l1 = l2;
-        if (paramRecentBaseData1.mUser.lastmsgtime <= 0L)
-        {
-          l1 = l2;
-          if (paramRecentBaseData1.mUser.lastmsgdrafttime <= 0L) {
-            l1 = Math.max(l2, paramRecentBaseData1.mUser.opTime);
-          }
-        }
-        l2 = l3;
-        if (paramRecentBaseData2.mUser.lastmsgtime <= 0L)
-        {
-          l2 = l3;
-          if (paramRecentBaseData2.mUser.lastmsgdrafttime <= 0L) {
-            l2 = Math.max(l3, paramRecentBaseData2.mUser.opTime);
-          }
-        }
-        if (l1 > l2) {
-          l1 = 3L;
-        }
-        for (;;)
-        {
-          l1 = (int)(l1 | i) - (int)(0x2 | j);
-          if (l1 != 0L) {
-            break label575;
-          }
-          return a(paramRecentBaseData1.mUser.uin, paramRecentBaseData2.mUser.uin);
-          i = 0;
-          break;
-          j = 0;
-          break label325;
-          l1 = paramRecentBaseData1.mDisplayTime;
-          l2 = paramRecentBaseData2.mDisplayTime;
-          j = 0;
-          i = 0;
-          break label465;
-          if (l1 < l2) {
-            l1 = 1L;
-          } else {
-            l1 = 2L;
-          }
-        }
-        if (l1 < 0L) {
-          return 1;
-        }
-        return -1;
-        return 0;
-      }
-    }
-  }
-  
-  public void a(List<RecentUser> paramList)
-  {
-    RecentUser localRecentUser;
-    if (QLog.isDevelopLevel())
-    {
-      if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
-        this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaLangStringBuilder.append("checkRUList, src[");
-        localObject = paramList.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          localRecentUser = (RecentUser)((Iterator)localObject).next();
-          this.jdField_a_of_type_JavaLangStringBuilder.append(localRecentUser.uin + "|" + localRecentUser.getType() + ",");
-        }
-        this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("], [");
-    }
-    Object localObject = null;
-    int i;
-    if (paramList == null)
-    {
-      i = 0;
-      i -= 1;
-      label141:
-      if (i < 0) {
-        break label560;
-      }
-      localRecentUser = (RecentUser)paramList.get(i);
-      if (localRecentUser != null) {
-        break label187;
-      }
-      paramList.remove(i);
-    }
-    label187:
-    label597:
-    label600:
-    for (;;)
-    {
-      i -= 1;
-      break label141;
-      i = paramList.size();
-      break;
-      if ((TextUtils.isEmpty(localRecentUser.uin)) || (TextUtils.isEmpty(localRecentUser.uin.trim())))
-      {
-        paramList.remove(i);
-        if ((this.jdField_a_of_type_JavaLangStringBuilder != null) && (QLog.isDevelopLevel())) {
-          this.jdField_a_of_type_JavaLangStringBuilder.append(i).append(",").append(localRecentUser.getType()).append(";");
-        }
-      }
-      else if ((localRecentUser.getType() == 1) && ((localRecentUser.lFlag & 1L) != 0L))
-      {
-        if ((localObject != null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-          break label597;
-        }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(true);
-      }
-      for (;;)
-      {
-        if ((localObject == null) || (((HotChatManager)localObject).b(localRecentUser.uin))) {
-          break label600;
-        }
-        paramList.remove(i);
-        if ((this.jdField_a_of_type_JavaLangStringBuilder == null) || (!QLog.isDevelopLevel())) {
-          break label600;
-        }
-        this.jdField_a_of_type_JavaLangStringBuilder.append("invalide hotchat ").append(i).append(",").append(localRecentUser.uin).append(";");
-        break;
-        if (localRecentUser.getType() == 3000)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-            break label557;
-          }
-          DiscussionInfo localDiscussionInfo = ((alrk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(localRecentUser.uin);
-          if ((localDiscussionInfo == null) || (localDiscussionInfo.isUIControlFlag_Hidden_RecentUser()) || (localDiscussionInfo.isHidden()))
+          localObject1 = ((JSONObject)localObject2).optString("downloadUrl");
+          localObject2 = ((JSONObject)localObject2).optJSONObject("list");
+          Iterator localIterator = ((JSONObject)localObject2).keys();
+          while (localIterator.hasNext())
           {
-            paramList.remove(i);
-            if ((this.jdField_a_of_type_JavaLangStringBuilder != null) && (QLog.isDevelopLevel())) {
-              this.jdField_a_of_type_JavaLangStringBuilder.append("hidden_RecentUser ").append(i).append(",").append(localRecentUser.uin).append(";");
+            Object localObject3 = (String)localIterator.next();
+            int i = ApolloUtil.b((String)localObject3);
+            if (i > -2147483648)
+            {
+              localObject3 = ((JSONObject)localObject2).optJSONObject((String)localObject3);
+              if (localObject3 != null)
+              {
+                localObject3 = ((JSONObject)localObject3).optString("source_qq");
+                if (!TextUtils.isEmpty((CharSequence)localObject3))
+                {
+                  amjh localamjh = new amjh();
+                  localamjh.c = "all_room3D.json";
+                  localamjh.jdField_b_of_type_JavaLangString = ((String)localObject1);
+                  localamjh.jdField_b_of_type_Int = i;
+                  localamjh.jdField_a_of_type_Int = 8;
+                  localamjh.jdField_a_of_type_JavaLangString = ((String)localObject3);
+                  this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localamjh);
+                }
+              }
             }
           }
-          break;
         }
-        if (localRecentUser.lFlag == 16L)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-            break label557;
-          }
-          nlx.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser);
-          break;
-        }
-        if ((localRecentUser.getType() == 10005) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-          asyc.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser);
-        }
-        break;
-        if ((this.jdField_a_of_type_JavaLangStringBuilder != null) && (QLog.isDevelopLevel()))
-        {
-          this.jdField_a_of_type_JavaLangStringBuilder.append("]");
-          QLog.i("Q.recent", 4, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+        ApolloUtil.b("小窝json不存在");
+      }
+      catch (Exception localException)
+      {
+        QLog.e("rscContent_CmShowRscCacheManager", 1, "initRoomJson e:", localException);
+        if (QLog.isColorLevel()) {
+          QLog.d("rscContent_CmShowRscCacheManager", 2, "initRoomJson mRoomRscMap:" + this.jdField_a_of_type_AndroidUtilSparseArray);
         }
         return;
       }
     }
+    QLog.e("rscContent_CmShowRscCacheManager", 1, "initRoomJson file is no exsit path:" + localException);
+  }
+  
+  public amjh a(int paramInt1, int paramInt2)
+  {
+    amjh localamjh = null;
+    if (paramInt1 == 8) {
+      localamjh = (amjh)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
+    }
+    if (localamjh == null) {
+      ApolloUtil.b("未获取资源getRscItem type:" + paramInt1 + " id:" + paramInt2);
+    }
+    return localamjh;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("rscContent_CmShowRscCacheManager", 2, "onRoomZipUpdated");
+    }
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    ThreadManager.executeOnSubThread(new CmShowRscCacheManager.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amjg
  * JD-Core Version:    0.7.0.1
  */

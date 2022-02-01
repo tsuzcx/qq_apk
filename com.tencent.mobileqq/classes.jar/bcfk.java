@@ -1,30 +1,82 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.MD5;
+import java.io.File;
 
-class bcfk
-  implements View.OnFocusChangeListener
+public class bcfk
 {
-  bcfk(bcfg parambcfg, bceh parambceh, bcfm parambcfm) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public static bcfl a(String paramString)
   {
-    QLog.i("xmediaEditor", 1, "mData.position:" + this.jdField_a_of_type_Bceh.c + ", text:" + this.jdField_a_of_type_Bceh.jdField_a_of_type_JavaLangString + ",onFocusChange:" + paramBoolean);
-    if (paramBoolean)
+    return new bcfl(paramString);
+  }
+  
+  public static String a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("short_video_mgr_sp", 4).getString("sv_md5_version_soname_key", "d000_1");
+  }
+  
+  public static String a(File paramFile)
+  {
+    return bgmg.a(paramFile);
+  }
+  
+  public static String a(String paramString)
+  {
+    try
     {
-      this.jdField_a_of_type_Bcfm.a.setCursorVisible(true);
-      this.jdField_a_of_type_Bcfg.a.c(this.jdField_a_of_type_Bcfm);
-      this.jdField_a_of_type_Bceh.jdField_a_of_type_Boolean = true;
+      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+      VideoEnvironment.a("ShortVideoSoManager:computeMd5[MD5.getFileMd5]md5=" + str1, null);
+      String str3;
+      if (str1 != null)
+      {
+        str3 = str1;
+        if (!"".equals(str1)) {}
+      }
+      else
+      {
+        str3 = b(paramString);
+      }
+      return str3;
     }
-    for (;;)
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      this.jdField_a_of_type_Bcfm.a.setFocusable(paramBoolean);
-      this.jdField_a_of_type_Bcfm.a.setFocusableInTouchMode(paramBoolean);
-      return;
-      this.jdField_a_of_type_Bcfm.a.setCursorVisible(false);
-      this.jdField_a_of_type_Bcfg.a.d(this.jdField_a_of_type_Bcfm);
+      for (;;)
+      {
+        VideoEnvironment.a("ShortVideoSoManager:computeMd5[MD5.getFileMd5] ", localUnsatisfiedLinkError);
+        String str2 = b(paramString);
+      }
     }
+  }
+  
+  public static final String a(String paramString1, String paramString2)
+  {
+    return paramString1 + '_' + paramString2;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_mgr_sp", 4).edit();
+    localEditor.putString("sv_md5_version_soname_key", paramString);
+    boolean bool = localEditor.commit();
+    VideoEnvironment.a("ShortVideoSoManager.storeSoNewVersion saveAVCodecOK=" + bool, null);
+    return bool;
+  }
+  
+  static String b(String paramString)
+  {
+    try
+    {
+      paramString = bkcx.a(new File(paramString));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      VideoEnvironment.a("ShortVideoSoManager:computeMd5[getFileMD5String]", paramString);
+    }
+    return null;
   }
 }
 

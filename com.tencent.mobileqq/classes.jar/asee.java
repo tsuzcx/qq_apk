@@ -1,54 +1,44 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.PicMessageExtraData;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-class asee
-  extends alrl
+public class asee
+  implements View.OnTouchListener
 {
-  asee(aseb paramaseb) {}
+  public asee(AIOEmotionFragment paramAIOEmotionFragment, int paramInt, MessageForPic paramMessageForPic) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onGetFlyTicket: " + paramBoolean + " sigUrl=" + paramString1);
-    }
-    if (!paramBoolean)
+    if (paramMotionEvent.getAction() == 1)
     {
-      this.a.x();
-      switch (paramInt)
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E7");
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
+      if (this.jdField_a_of_type_Int == 1)
       {
-      default: 
-        paramString1 = alud.a(2131705217);
-        aseb.c(this.a, null);
-        aseb.a(this.a, false);
-        QQToast.a(this.a.a, 1, paramString1, 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E9");
+        EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a().getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.emojiPkgId, false, false);
       }
     }
-    while ((aseb.c(this.a) == null) || (Long.parseLong(aseb.c(this.a)) != paramLong2)) {
-      for (;;)
-      {
-        return;
-        paramString1 = alud.a(2131705224);
-        continue;
-        paramString1 = alud.a(2131705223);
-      }
-    }
-    if (aseb.a(this.a))
+    while (paramMotionEvent.getAction() != 0)
     {
-      aseb.c(this.a, paramString1);
-      aseb.a(this.a, aseb.c(this.a), true);
+      return false;
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E8");
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.webUrl);
+      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity().startActivity(paramView);
+      return false;
     }
-    aseb.a(this.a, false);
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ForwardOption.ForwardShareCardOption", 2, "onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramString + "]");
-    }
-    if ((aseb.c(this.a) != null) && (aseb.c(this.a).equals(paramString))) {
-      aseb.a(this.a, aseb.c(this.a), false);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+    return false;
   }
 }
 

@@ -17,7 +17,7 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bjue;
+import bmio;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
@@ -39,6 +39,7 @@ public class MiniAppLivePlayer
 {
   private static final String ON_LIVE_PLAYER_EVENT = "onLivePlayerEvent";
   private static final String ON_LIVE_PLAYER_FULLSCREENCHANGE = "onLivePlayerFullScreenChange";
+  private static final String ON_LIVE_PLAYER_META_DATA = "onLivePlayerMetadata";
   private static final String ON_LIVE_PLAYER_NETSTATUS = "onLivePlayerNetStatus";
   private static final String ON_LIVE_PLAYER_ON_AUDIO_VOLUME_NOTIFY = "onLivePlayerAudioVolumeNotify";
   private static final String TAG = "MiniAppLivePlayer";
@@ -155,7 +156,7 @@ public class MiniAppLivePlayer
   
   private void initPlayerView()
   {
-    this.tXCloudVideoView = bjue.a("com.tencent.rtmp.ui.TXCloudVideoView", bjue.a(new Class[] { Context.class }), new Object[] { getContext() });
+    this.tXCloudVideoView = bmio.a("com.tencent.rtmp.ui.TXCloudVideoView", bmio.a(new Class[] { Context.class }), new Object[] { getContext() });
     if (this.tXCloudVideoView == null)
     {
       QLog.e("MiniAppLivePlayer", 1, "tXCloudVideoView is null?! ");
@@ -178,28 +179,28 @@ public class MiniAppLivePlayer
   private static void saveJpeg(android.graphics.Bitmap paramBitmap, java.io.File paramFile)
   {
     // Byte code:
-    //   0: new 345	java/io/BufferedOutputStream
+    //   0: new 348	java/io/BufferedOutputStream
     //   3: dup
-    //   4: new 347	java/io/FileOutputStream
+    //   4: new 350	java/io/FileOutputStream
     //   7: dup
     //   8: aload_1
-    //   9: invokespecial 350	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 353	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   9: invokespecial 353	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 356	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   15: astore_1
     //   16: aload_0
-    //   17: getstatic 359	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   17: getstatic 362	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   20: bipush 100
     //   22: bipush 100
-    //   24: invokestatic 365	java/lang/Math:min	(II)I
+    //   24: invokestatic 368	java/lang/Math:min	(II)I
     //   27: aload_1
-    //   28: invokevirtual 371	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   28: invokevirtual 374	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   31: pop
     //   32: aload_1
-    //   33: invokevirtual 374	java/io/BufferedOutputStream:flush	()V
+    //   33: invokevirtual 377	java/io/BufferedOutputStream:flush	()V
     //   36: aload_1
     //   37: ifnull +7 -> 44
     //   40: aload_1
-    //   41: invokevirtual 377	java/io/BufferedOutputStream:close	()V
+    //   41: invokevirtual 380	java/io/BufferedOutputStream:close	()V
     //   44: return
     //   45: astore_0
     //   46: aconst_null
@@ -207,7 +208,7 @@ public class MiniAppLivePlayer
     //   48: aload_1
     //   49: ifnull +7 -> 56
     //   52: aload_1
-    //   53: invokevirtual 377	java/io/BufferedOutputStream:close	()V
+    //   53: invokevirtual 380	java/io/BufferedOutputStream:close	()V
     //   56: aload_0
     //   57: athrow
     //   58: astore_0
@@ -236,11 +237,11 @@ public class MiniAppLivePlayer
     this.hasSetUp = true;
     setTag("MiniAppLivePlayer");
     this.mContext = paramContext;
-    this.view = LayoutInflater.from(paramContext).inflate(2131559313, null);
-    this.video_container = ((VideoGestureRelativeLayout)this.view.findViewById(2131369306));
+    this.view = LayoutInflater.from(paramContext).inflate(2131559406, null);
+    this.video_container = ((VideoGestureRelativeLayout)this.view.findViewById(2131369697));
     this.video_container.setContentDescription("video_container");
-    this.video_pop_container = ((FrameLayout)this.view.findViewById(2131379799));
-    this.play_status_img = ((ImageView)this.view.findViewById(2131372094));
+    this.video_pop_container = ((FrameLayout)this.view.findViewById(2131380757));
+    this.play_status_img = ((ImageView)this.view.findViewById(2131372665));
     this.play_status_img.setVisibility(8);
     this.video_container.setOnClickListener(this);
     this.mVideoGestureLayout = new VideoGestureLayout(this.mContext);
@@ -280,9 +281,6 @@ public class MiniAppLivePlayer
   {
     if (QLog.isColorLevel()) {
       QLog.d("MiniAppLivePlayer", 2, "initLivePlayerSettings isFullScreen: " + this.isFullScreen);
-    }
-    if (this.isFullScreen) {
-      return;
     }
     initPlayerView();
     this.livePlayerJsAdapter = new TXLivePlayerJSAdapter(getContext());
@@ -324,13 +322,11 @@ public class MiniAppLivePlayer
     if ("requestFullScreen".equalsIgnoreCase(paramString))
     {
       fullScreen();
-      this.webviewContainer.callbackJsEventOK("operateLivePlayer", null, paramInt);
       return;
     }
     if ("exitFullScreen".equalsIgnoreCase(paramString))
     {
       smallScreen();
-      this.webviewContainer.callbackJsEventOK("operateLivePlayer", null, paramInt);
       return;
     }
     if ("snapshot".equalsIgnoreCase(paramString))
@@ -353,7 +349,6 @@ public class MiniAppLivePlayer
       return;
     }
     this.livePlayerJsAdapter.operateLivePlayer(paramString, paramJSONObject);
-    this.webviewContainer.callbackJsEventOK("operateLivePlayer", null, paramInt);
   }
   
   public void release()
@@ -377,9 +372,6 @@ public class MiniAppLivePlayer
   
   public void stop()
   {
-    if (this.isFullScreen) {
-      smallScreen();
-    }
     if (this.livePlayerJsAdapter != null) {
       this.livePlayerJsAdapter.operateLivePlayer("stop", null);
     }
@@ -401,8 +393,7 @@ public class MiniAppLivePlayer
     if (QLog.isColorLevel()) {
       QLog.d("MiniAppLivePlayer", 2, "updateLivePlayerSetting isFullScreen: " + this.isFullScreen);
     }
-    if (this.isFullScreen) {}
-    while (this.livePlayerJsAdapter == null) {
+    if (this.livePlayerJsAdapter == null) {
       return;
     }
     this.livePlayerJsAdapter.updateLivePlayer(paramJSONObject);
@@ -410,7 +401,7 @@ public class MiniAppLivePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppLivePlayer
  * JD-Core Version:    0.7.0.1
  */

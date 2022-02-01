@@ -1,119 +1,40 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.ImageView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.RecentDynamicAvatarView;
 
-class bbeb
-  implements BusinessObserver
+public class bbeb
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  bbeb(bbea parambbea, bbej parambbej, String paramString) {}
+  public final TextView a;
+  private bbdz jdField_a_of_type_Bbdz;
+  public RecentDynamicAvatarView a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public bbeb(bbdy parambbdy, View paramView, bbdz parambbdz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeVideoListPlayerFragment", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
+    super(paramView);
+    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131368138));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371720));
+    this.jdField_a_of_type_Bbdz = parambbdz;
+    paramView.setOnClickListener(this);
+    paramView.setTag(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_Bbdz != null) && (bbdy.a(this.jdField_a_of_type_Bbdy))) {
+      this.jdField_a_of_type_Bbdz.a(paramView, getAdapterPosition() - 1);
     }
-    Object localObject1 = this.jdField_a_of_type_Bbea.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity();
-    Object localObject2;
-    if (localObject1 == null)
+    for (;;)
     {
-      localObject1 = BaseApplicationImpl.getContext();
-      if (paramBoolean)
-      {
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle == null) {
-            break label540;
-          }
-          localObject2 = new WebSsoBody.WebSsoResponseBody();
-          ((WebSsoBody.WebSsoResponseBody)localObject2).mergeFrom(paramBundle);
-          paramInt = ((WebSsoBody.WebSsoResponseBody)localObject2).ret.get();
-          paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject2).data.get());
-          if (QLog.isColorLevel()) {
-            QLog.i("TribeVideoListPlayerFragment", 2, "retCode = [" + paramInt + "]");
-          }
-          if (paramInt == 0) {
-            break label267;
-          }
-          paramBundle = paramBundle.optString("msg");
-          if (!TextUtils.isEmpty(paramBundle))
-          {
-            QQToast.a((Context)localObject1, 1, "" + paramBundle, 1).a();
-            return;
-          }
-          QQToast.a((Context)localObject1, 1, alud.a(2131715516), 1).a();
-          return;
-        }
-        catch (Exception paramBundle)
-        {
-          QQToast.a((Context)localObject1, 1, alud.a(2131715502), 1).a();
-          if (!QLog.isColorLevel()) {
-            break label637;
-          }
-        }
-        QLog.e("TribeVideoListPlayerFragment", 2, "未知异常，请稍后重试", paramBundle);
-        return;
-        label267:
-        if (paramBundle.optInt("retcode") != 0) {
-          break label637;
-        }
-        paramBundle = this.jdField_a_of_type_Bbej;
-        if (this.jdField_a_of_type_Bbej.jdField_c_of_type_Boolean) {
-          break label638;
-        }
-      }
-    }
-    label540:
-    label637:
-    label638:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramBundle.jdField_c_of_type_Boolean = paramBoolean;
-      paramBundle = this.jdField_a_of_type_Bbea.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramBundle.hasNext())
-      {
-        localObject2 = (bbeg)paramBundle.next();
-        if (((localObject2 instanceof bbej)) && (((bbej)localObject2).jdField_c_of_type_Long == this.jdField_a_of_type_Bbej.jdField_c_of_type_Long)) {
-          ((bbej)localObject2).jdField_c_of_type_Boolean = this.jdField_a_of_type_Bbej.jdField_c_of_type_Boolean;
-        }
-      }
-      if (this.jdField_a_of_type_Bbej.jdField_c_of_type_Boolean) {}
-      for (paramBundle = alud.a(2131715517);; paramBundle = alud.a(2131715515))
-      {
-        QQToast.a((Context)localObject1, 2, paramBundle, 1).a();
-        if ((this.jdField_a_of_type_Bbea.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Bbea.jdField_a_of_type_Int) == this.jdField_a_of_type_Bbej) && (this.jdField_a_of_type_Bbej.jdField_c_of_type_Boolean) && (TribeVideoListPlayerFragment.jdField_a_of_type_JavaLangRefWeakReference != null) && (TribeVideoListPlayerFragment.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-          ((TribeVideoPlugin)TribeVideoListPlayerFragment.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Bbej.jdField_c_of_type_Long);
-        }
-        azqs.b(null, "dc00899", "Grp_tribe", "", "video_player", "follow_suc", 0, 0, this.jdField_a_of_type_Bbej.d, this.jdField_a_of_type_Bbej.b + "", "", this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      this.jdField_a_of_type_Bbea.l.clearAnimation();
-      this.jdField_a_of_type_Bbea.k.clearAnimation();
-      this.jdField_a_of_type_Bbea.f.clearAnimation();
-      QQToast.a((Context)localObject1, 1, alud.a(2131715514), 1).a();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_Bbea.l.clearAnimation();
-      this.jdField_a_of_type_Bbea.k.clearAnimation();
-      this.jdField_a_of_type_Bbea.f.clearAnimation();
-      QQToast.a((Context)localObject1, 1, alud.a(2131715499), 1).a();
-      return;
-      break;
-      return;
+      if (this.jdField_a_of_type_Bbdz != null) {
+        this.jdField_a_of_type_Bbdz.a(paramView, getAdapterPosition());
+      }
     }
   }
 }

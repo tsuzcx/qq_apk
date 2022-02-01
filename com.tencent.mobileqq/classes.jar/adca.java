@@ -1,28 +1,6 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-
-public class adca
-  implements aoil
-{
-  public adca(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
-  
-  public void a()
-  {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {}
-    for (paramInt1 = 0;; paramInt1 = 1)
-    {
-      this.a.c = true;
-      this.a.a(paramInt1, true);
-      return;
-    }
-  }
-}
+public abstract interface adca
+  extends adbu
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

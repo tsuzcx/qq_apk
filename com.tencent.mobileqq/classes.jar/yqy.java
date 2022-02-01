@@ -1,44 +1,27 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
 
 public class yqy
-  implements BusinessObserver
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public yqy(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  public yqy(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditUniqueTitleActivity", 2, "setUniqueTitle, onReceive. type=" + paramInt + ", isSuccess=" + paramBoolean);
-    }
-    if (!paramBoolean)
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 4870;; paramInt = 775)
     {
-      EditUniqueTitleActivity.a(this.a, -1);
+      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
       return;
-    }
-    paramBundle = paramBundle.getByteArray("data");
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    try
-    {
-      localOIDBSSOPkg.mergeFrom(paramBundle);
-      paramInt = localOIDBSSOPkg.uint32_result.get();
-      EditUniqueTitleActivity.a(this.a, paramInt);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      EditUniqueTitleActivity.a(this.a, -1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yqy
  * JD-Core Version:    0.7.0.1
  */

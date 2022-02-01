@@ -1,60 +1,28 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aeak
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements aled
 {
-  public aeak(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  private final int jdField_a_of_type_Int = -2147483648;
   
-  public void onGlobalLayout()
+  private aeak(Conversation paramConversation) {}
+  
+  public void a(int paramInt, List<RecentBaseData> paramList) {}
+  
+  public void onChange(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    Object localObject = new Rect();
-    this.a.jdField_a_of_type_Bejh.d.getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.a.jdField_a_of_type_Bejh.d.getRootView().getHeight();
-    int j = i - ((Rect)localObject).bottom;
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
+    if (paramDragFrameLayout.a() == -1)
     {
-      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.a.e = j;
-    }
-    if (j > i / 3)
-    {
-      if (this.a.c) {
-        this.a.c(false);
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Int == 2) {
-          this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        }
-        i = (int)mww.b(BaseApplicationImpl.getApplication(), this.a.b + j);
-        return;
-        this.a.c(true);
-      }
-    }
-    this.a.c(false);
-    if (this.a.jdField_a_of_type_Int == 2) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    }
-    if (this.a.jdField_a_of_type_Int == 2) {
-      i = (int)mww.b(BaseApplicationImpl.getApplication(), this.a.b);
-    }
-    for (;;)
-    {
-      this.a.d = false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b.sendEmptyMessage(10);
+      FrameHelperActivity.c(true);
       return;
-      if (this.a.jdField_a_of_type_Int != 1) {}
     }
+    FrameHelperActivity.c(false);
   }
 }
 

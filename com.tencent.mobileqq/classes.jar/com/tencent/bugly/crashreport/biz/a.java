@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import com.tencent.bugly.crashreport.common.strategy.StrategyBean;
-import com.tencent.bugly.proguard.ap;
+import com.tencent.bugly.proguard.am;
 import com.tencent.bugly.proguard.k;
 import com.tencent.bugly.proguard.p;
 import com.tencent.bugly.proguard.t;
@@ -122,14 +122,13 @@ public final class a
   {
     boolean bool1 = false;
     Object localObject4;
-    Object localObject5;
     label109:
     int j;
     label126:
-    Object localObject6;
+    Object localObject5;
     label213:
     label252:
-    Object localObject7;
+    Object localObject6;
     label390:
     label440:
     Object localObject3;
@@ -142,16 +141,16 @@ public final class a
         if (!bool2) {
           return;
         }
-        localObject4 = u.a();
-        if (localObject4 == null) {
+        localObject1 = u.a();
+        if (localObject1 == null) {
           continue;
         }
-        localObject1 = com.tencent.bugly.crashreport.common.strategy.a.a();
-        if ((localObject1 == null) || ((((com.tencent.bugly.crashreport.common.strategy.a)localObject1).b()) && (!((u)localObject4).b(1001)))) {
+        localObject4 = com.tencent.bugly.crashreport.common.strategy.a.a();
+        if ((localObject4 == null) || ((((com.tencent.bugly.crashreport.common.strategy.a)localObject4).b()) && (!((u)localObject1).b(1001)))) {
           continue;
         }
         localObject1 = com.tencent.bugly.crashreport.common.info.a.a(this.a).d;
-        localObject5 = new ArrayList();
+        localObject4 = new ArrayList();
         localObject1 = a((String)localObject1);
         if (localObject1 == null) {
           break label440;
@@ -161,48 +160,48 @@ public final class a
         {
           i = 0;
           if (i >= ((List)localObject1).size() - 1) {
-            break label709;
+            break label661;
           }
           j = i + 1;
           if (j >= ((List)localObject1).size()) {
-            break label702;
+            break label654;
           }
           if (((UserInfoBean)((List)localObject1).get(i)).e <= ((UserInfoBean)((List)localObject1).get(j)).e) {
-            break label695;
+            break label647;
           }
-          localObject6 = (UserInfoBean)((List)localObject1).get(i);
+          localObject5 = (UserInfoBean)((List)localObject1).get(i);
           ((List)localObject1).set(i, ((List)localObject1).get(j));
-          ((List)localObject1).set(j, localObject6);
-          break label695;
+          ((List)localObject1).set(j, localObject5);
+          break label647;
           if (i < k)
           {
-            ((List)localObject5).add(((List)localObject1).get(i));
+            ((List)localObject4).add(((List)localObject1).get(i));
             i += 1;
             continue;
           }
         }
-        localObject6 = ((List)localObject1).iterator();
+        localObject5 = ((List)localObject1).iterator();
         i = 0;
-        if (((Iterator)localObject6).hasNext())
+        if (((Iterator)localObject5).hasNext())
         {
-          localObject7 = (UserInfoBean)((Iterator)localObject6).next();
-          if (((UserInfoBean)localObject7).f != -1L)
+          localObject6 = (UserInfoBean)((Iterator)localObject5).next();
+          if (((UserInfoBean)localObject6).f != -1L)
           {
-            ((Iterator)localObject6).remove();
-            if (((UserInfoBean)localObject7).e < z.b()) {
-              ((List)localObject5).add(localObject7);
+            ((Iterator)localObject5).remove();
+            if (((UserInfoBean)localObject6).e < z.b()) {
+              ((List)localObject4).add(localObject6);
             }
           }
-          if (((UserInfoBean)localObject7).e <= System.currentTimeMillis() - 600000L) {
-            break label692;
+          if (((UserInfoBean)localObject6).e <= System.currentTimeMillis() - 600000L) {
+            break label644;
           }
-          if ((((UserInfoBean)localObject7).b == 1) || (((UserInfoBean)localObject7).b == 4)) {
-            break label714;
+          if ((((UserInfoBean)localObject6).b == 1) || (((UserInfoBean)localObject6).b == 4)) {
+            break label666;
           }
-          if (((UserInfoBean)localObject7).b != 3) {
-            break label692;
+          if (((UserInfoBean)localObject6).b != 3) {
+            break label644;
           }
-          break label714;
+          break label666;
         }
         if (i <= 15) {
           break;
@@ -211,8 +210,8 @@ public final class a
         i = 0;
       }
       finally {}
-      if (((List)localObject5).size() > 0) {
-        a((List)localObject5);
+      if (((List)localObject4).size() > 0) {
+        a((List)localObject4);
       }
       if ((i == 0) || (((List)localObject1).size() == 0))
       {
@@ -225,70 +224,50 @@ public final class a
       {
         x.c("[UserInfo] Upload user info(size: %d)", new Object[] { Integer.valueOf(((List)localObject3).size()) });
         if (this.c != 1) {
-          break label724;
-        }
-        i = 1;
-        label488:
-        localObject5 = com.tencent.bugly.proguard.a.a((List)localObject3, i);
-        if (localObject5 == null)
-        {
-          x.d("[UserInfo] Failed to create UserInfoPackage.", new Object[0]);
-        }
-        else
-        {
-          localObject5 = com.tencent.bugly.proguard.a.a((k)localObject5);
-          if (localObject5 == null) {
-            x.d("[UserInfo] Failed to encode data.", new Object[0]);
-          } else {
-            if (!((u)localObject4).b) {
-              break label729;
-            }
-          }
+          break label676;
         }
       }
     }
-    label679:
-    label692:
-    label695:
-    label702:
-    label709:
-    label714:
-    label718:
-    label721:
-    label724:
-    label729:
-    for (int i = 840;; i = 640)
+    label644:
+    label647:
+    label654:
+    label661:
+    label666:
+    label670:
+    label673:
+    label676:
+    for (int i = 1;; i = 2)
     {
-      localObject5 = com.tencent.bugly.proguard.a.a(this.a, i, (byte[])localObject5);
-      if (localObject5 == null)
+      localObject4 = com.tencent.bugly.proguard.a.a((List)localObject3, i);
+      if (localObject4 == null)
+      {
+        x.d("[UserInfo] Failed to create UserInfoPackage.", new Object[0]);
+        break;
+      }
+      localObject4 = com.tencent.bugly.proguard.a.a((k)localObject4);
+      if (localObject4 == null)
+      {
+        x.d("[UserInfo] Failed to encode data.", new Object[0]);
+        break;
+      }
+      localObject4 = com.tencent.bugly.proguard.a.a(this.a, 840, (byte[])localObject4);
+      if (localObject4 == null)
       {
         x.d("[UserInfo] Request package is null.", new Object[0]);
         break;
       }
-      localObject6 = new a.1(this, (List)localObject3);
-      localObject3 = com.tencent.bugly.crashreport.common.strategy.a.a().c();
-      if (((u)localObject4).b)
-      {
-        localObject3 = ((StrategyBean)localObject3).r;
-        label619:
-        if (!((u)localObject4).b) {
-          break label679;
-        }
+      localObject3 = new a.1(this, (List)localObject3);
+      localObject5 = com.tencent.bugly.crashreport.common.strategy.a.a().c().q;
+      localObject6 = StrategyBean.b;
+      u localu = u.a();
+      if (this.c == 1) {
+        bool1 = true;
       }
-      for (localObject4 = StrategyBean.b;; localObject4 = StrategyBean.a)
-      {
-        localObject7 = u.a();
-        if (this.c == 1) {
-          bool1 = true;
-        }
-        ((u)localObject7).a(1001, (ap)localObject5, (String)localObject3, (String)localObject4, (t)localObject6, bool1);
-        break;
-        localObject3 = ((StrategyBean)localObject3).t;
-        break label619;
-      }
+      localu.a(1001, (am)localObject4, (String)localObject5, (String)localObject6, (t)localObject3, bool1);
+      break;
       i = 1;
-      break label721;
-      break label718;
+      break label673;
+      break label670;
       j += 1;
       break label126;
       i += 1;
@@ -298,8 +277,6 @@ public final class a
       i += 1;
       break label252;
       break label390;
-      i = 2;
-      break label488;
     }
   }
   
@@ -308,7 +285,7 @@ public final class a
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 313	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;)Z
+    //   1: invokestatic 306	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;)Z
     //   4: ifeq +35 -> 39
     //   7: aconst_null
     //   8: astore_1
@@ -319,23 +296,23 @@ public final class a
     //   16: aconst_null
     //   17: aconst_null
     //   18: iconst_1
-    //   19: invokevirtual 316	com/tencent/bugly/proguard/p:a	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Lcom/tencent/bugly/proguard/o;Z)Landroid/database/Cursor;
+    //   19: invokevirtual 309	com/tencent/bugly/proguard/p:a	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Lcom/tencent/bugly/proguard/o;Z)Landroid/database/Cursor;
     //   22: astore_1
     //   23: aload_1
     //   24: ifnonnull +42 -> 66
     //   27: aload_1
     //   28: ifnull +9 -> 37
     //   31: aload_1
-    //   32: invokeinterface 319 1 0
+    //   32: invokeinterface 312 1 0
     //   37: aconst_null
     //   38: areturn
     //   39: new 158	java/lang/StringBuilder
     //   42: dup
-    //   43: ldc_w 321
-    //   46: invokespecial 324	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   43: ldc_w 314
+    //   46: invokespecial 317	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   49: aload_1
     //   50: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: ldc_w 326
+    //   53: ldc_w 319
     //   56: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   62: astore_1
@@ -349,10 +326,10 @@ public final class a
     //   79: invokespecial 220	java/util/ArrayList:<init>	()V
     //   82: astore 4
     //   84: aload_1
-    //   85: invokeinterface 329 1 0
+    //   85: invokeinterface 322 1 0
     //   90: ifeq +127 -> 217
     //   93: aload_1
-    //   94: invokestatic 331	com/tencent/bugly/crashreport/biz/a:a	(Landroid/database/Cursor;)Lcom/tencent/bugly/crashreport/biz/UserInfoBean;
+    //   94: invokestatic 324	com/tencent/bugly/crashreport/biz/a:a	(Landroid/database/Cursor;)Lcom/tencent/bugly/crashreport/biz/UserInfoBean;
     //   97: astore 6
     //   99: aload 6
     //   101: ifnull +43 -> 144
@@ -370,7 +347,7 @@ public final class a
     //   132: aload_1
     //   133: ifnull +9 -> 142
     //   136: aload_1
-    //   137: invokeinterface 319 1 0
+    //   137: invokeinterface 312 1 0
     //   142: aconst_null
     //   143: areturn
     //   144: aload_1
@@ -389,7 +366,7 @@ public final class a
     //   175: pop
     //   176: goto -92 -> 84
     //   179: astore 6
-    //   181: ldc_w 333
+    //   181: ldc_w 326
     //   184: iconst_0
     //   185: anewarray 4	java/lang/Object
     //   188: invokestatic 260	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -403,7 +380,7 @@ public final class a
     //   203: aload 4
     //   205: ifnull +10 -> 215
     //   208: aload 4
-    //   210: invokeinterface 319 1 0
+    //   210: invokeinterface 312 1 0
     //   215: aload_1
     //   216: athrow
     //   217: aload 5
@@ -416,7 +393,7 @@ public final class a
     //   234: iconst_4
     //   235: invokevirtual 187	java/lang/String:substring	(I)Ljava/lang/String;
     //   238: astore 5
-    //   240: ldc_w 335
+    //   240: ldc_w 328
     //   243: iconst_2
     //   244: anewarray 4	java/lang/Object
     //   247: dup
@@ -439,7 +416,7 @@ public final class a
     //   275: aload_1
     //   276: ifnull +9 -> 285
     //   279: aload_1
-    //   280: invokeinterface 319 1 0
+    //   280: invokeinterface 312 1 0
     //   285: aload 4
     //   287: areturn
     //   288: astore_1
@@ -504,7 +481,7 @@ public final class a
   {
     int i = 1;
     Object localObject = com.tencent.bugly.crashreport.common.strategy.a.a();
-    if ((localObject != null) && (!((com.tencent.bugly.crashreport.common.strategy.a)localObject).c().h) && (paramInt != 1) && (paramInt != 3))
+    if ((localObject != null) && (!((com.tencent.bugly.crashreport.common.strategy.a)localObject).c().g) && (paramInt != 1) && (paramInt != 3))
     {
       x.e("UserInfo is disable", new Object[0]);
       return;

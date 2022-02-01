@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ampp
-  extends ampn
+class ampp
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public ampp(String paramString, boolean paramBoolean)
+  ampp(ampn paramampn) {}
+  
+  public void onAudioFocusChange(int paramInt)
   {
-    super(paramString, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d(ampn.a, 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
+    }
   }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
-  
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampp
  * JD-Core Version:    0.7.0.1
  */

@@ -5,11 +5,11 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import aqgl;
+import aslq;
 
 public abstract class LoadingLayoutBase
   extends FrameLayout
-  implements aqgl
+  implements aslq
 {
   public LoadingLayoutBase(Context paramContext)
   {
@@ -60,7 +60,7 @@ public abstract class LoadingLayoutBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agke;
+import ahuh;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.io.File;
 public abstract class AIORichMediaData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AIORichMediaData> CREATOR = new agke();
+  public static final Parcelable.Creator<AIORichMediaData> CREATOR = new ahuh();
   public int f;
   public long f;
   public int g;
@@ -130,7 +130,7 @@ public abstract class AIORichMediaData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIORichMediaData
  * JD-Core Version:    0.7.0.1
  */

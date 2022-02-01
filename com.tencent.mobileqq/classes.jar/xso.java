@@ -1,112 +1,264 @@
-import android.os.SystemClock;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.v4.util.Pools.Pool;
+import android.support.v4.util.Pools.SimplePool;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.net.URL;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Map;
 
-class xso
-  implements URLDrawable.DownloadListener, URLDrawable.URLDrawableListener
+public class xso
+  extends AbsVideoInfoWidget
+  implements View.OnClickListener
 {
-  public static String c;
-  public static int f = 1;
-  public static int g = 2;
-  public static int h = 4;
-  public static int i = 8;
-  public static int j = 16;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  String jdField_a_of_type_JavaLangString;
-  xsq jdField_a_of_type_Xsq;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString = "";
-  int c;
-  int d = 0;
-  int e = 0;
+  public static SparseArray<Pools.Pool<xsr>> a;
+  private xsq a;
+  public xsr a;
+  public xss a;
+  private int b;
   
-  static
+  public xso(ViewGroup paramViewGroup)
   {
-    jdField_c_of_type_JavaLangString = "story_url_drawable";
+    super(paramViewGroup);
   }
   
-  public xso(xsq paramxsq, URLDrawable paramURLDrawable, String paramString)
+  private int a(StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
-    this.jdField_a_of_type_Xsq = paramxsq;
-    this.jdField_a_of_type_JavaLangString = paramURLDrawable.getURL().toString();
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_b_of_type_JavaLangString = paramString;
+    int k = 0;
+    wrb localwrb = paramStoryVideoItem.getOALinkInfo();
+    int i;
+    if ((localwrb != null) && (localwrb.jdField_a_of_type_Int > 0))
+    {
+      i = paramStoryVideoItem.getOALinkInfo().jdField_a_of_type_Int;
+      paramStoryVideoItem = null;
+    }
+    for (;;)
+    {
+      switch (i)
+      {
+      }
+      label60:
+      do
+      {
+        int j = i;
+        do
+        {
+          do
+          {
+            return j;
+            paramStoryVideoItem = paramStoryVideoItem.getVideoLinkInfo();
+            if (paramStoryVideoItem == null) {
+              break label118;
+            }
+            i = paramStoryVideoItem.jdField_a_of_type_Int;
+            break;
+            if (bclh.p()) {
+              break label60;
+            }
+            return 0;
+            j = k;
+          } while (paramStoryVideoItem == null);
+          j = k;
+        } while (paramStoryVideoItem.jdField_a_of_type_Wrc == null);
+      } while (!paramStoryVideoItem.jdField_a_of_type_Wrc.a());
+      return 0;
+      label118:
+      i = 0;
+    }
   }
   
-  void a()
+  private xsr a(int paramInt)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_b_of_type_Long;
-    wxj.b(jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 0, this.jdField_b_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_Long), String.valueOf(l1 - l2), String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString });
+    if ((this.jdField_a_of_type_Xsr != null) && (this.jdField_b_of_type_Int == paramInt)) {
+      return this.jdField_a_of_type_Xsr;
+    }
+    if (jdField_a_of_type_AndroidUtilSparseArray == null) {
+      jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    }
+    Pools.Pool localPool = (Pools.Pool)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = localPool;
+    if (localPool == null)
+    {
+      localObject = new Pools.SimplePool(5);
+      jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
+    }
+    localObject = (xsr)((Pools.Pool)localObject).acquire();
+    if (localObject == null) {
+      localObject = b(paramInt);
+    }
+    for (;;)
+    {
+      if (localObject != null) {
+        ((xsr)localObject).b = true;
+      }
+      localPool = (Pools.Pool)jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_b_of_type_Int);
+      if ((localPool != null) && (this.jdField_a_of_type_Xsr != null))
+      {
+        localPool.release(this.jdField_a_of_type_Xsr);
+        this.jdField_a_of_type_Xsr.b = false;
+      }
+      this.jdField_a_of_type_Xsr = ((xsr)localObject);
+      return localObject;
+    }
   }
   
-  public void onFileDownloadFailed(int paramInt)
+  public static void a(String paramString, @NonNull ImageView paramImageView, Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_Int |= g;
-    this.jdField_a_of_type_Int = paramInt;
-    wxe.a("Q.qqstory.UIUtils", "onFileDownloadFailed() %s, error(%d), %s, %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    try
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = paramDrawable;
+      localURLDrawableOptions.mFailedDrawable = paramDrawable;
+      localURLDrawableOptions.mPlayGifImage = false;
+      localURLDrawableOptions.mGifRoundCorner = 0.0F;
+      localURLDrawableOptions.mRequestWidth = paramInt1;
+      localURLDrawableOptions.mRequestHeight = paramInt2;
+      localURLDrawableOptions.mMemoryCacheKeySuffix = "link";
+      Object localObject = null;
+      if (nlw.a(paramString))
+      {
+        paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+        paramString.startDownload();
+        paramImageView.setImageDrawable(paramString);
+      }
+      while (paramString != null) {
+        if (paramString.getStatus() == 1)
+        {
+          return;
+          yqp.d("BannerVideoInfoWidget", "invalid url, failed to parse the url drawable " + paramString);
+          paramImageView.setImageDrawable(paramDrawable);
+          paramString = localObject;
+        }
+        else
+        {
+          paramString.setURLDrawableListener(new xsp(paramImageView, paramDrawable));
+        }
+      }
+    }
+    catch (IllegalArgumentException paramString)
+    {
+      yqp.b("BannerVideoInfoWidget", "set image fail , %s", paramString);
+      paramImageView.setImageDrawable(paramDrawable);
+      return;
+    }
   }
   
-  public void onFileDownloadStarted()
+  private xsr b(int paramInt)
   {
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    wxe.a("Q.qqstory.UIUtils", "onFileDownloadStarted() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    switch (paramInt)
+    {
+    case 4: 
+    default: 
+      return null;
+    case 1: 
+      return new xug();
+    case 2: 
+      return new xue();
+    case 3: 
+      return new xto();
+    case 5: 
+      return new xvp();
+    case 6: 
+      return new xvr();
+    }
+    return new xtm();
   }
   
-  public void onFileDownloadSucceed(long paramLong)
+  public String a()
   {
-    this.jdField_b_of_type_Int |= f;
-    this.jdField_a_of_type_Long = paramLong;
-    wxe.a("Q.qqstory.UIUtils", "onFileDownloadSucceed() %s, %d, %s, %d", this.jdField_a_of_type_JavaLangString, Long.valueOf(paramLong), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    return "BannerVideoInfoWidget";
   }
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(View paramView)
   {
-    this.jdField_b_of_type_Int |= j;
-    wxe.a("Q.qqstory.UIUtils", "onLoadCanceled() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
-    a();
-    this.e += 1;
-    this.jdField_a_of_type_Xsq.a(this);
+    if (jdField_a_of_type_AndroidUtilSparseArray == null) {
+      jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(Map<Subscriber, String> paramMap)
   {
-    this.jdField_b_of_type_Int |= i;
-    wxe.a("Q.qqstory.UIUtils", "onLoadFialed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
-    a();
-    this.jdField_c_of_type_Int += 1;
-    this.jdField_a_of_type_Xsq.a(this);
+    this.jdField_a_of_type_Xsq = new xsq(this);
+    a(this.jdField_a_of_type_Xsq);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  public void a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem)
   {
-    wxe.a("Q.qqstory.UIUtils", "onLoadProgressed(%d/10000%%) %s, %s, %d", Integer.valueOf(paramInt), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    yqp.a(this.jdField_b_of_type_JavaLangString, "BannerVideoInfoWidget3 doOnBindUIWhileVideoInfoReady, dataVid:%s, videoItemVid:%s", paramxne.jdField_a_of_type_JavaLangString, paramStoryVideoItem.mVid);
+    if (this.jdField_a_of_type_Xss == null)
+    {
+      this.jdField_a_of_type_Xss = new xss(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    }
+    int i = a(paramStoryVideoItem);
+    paramStoryVideoItem = a(i);
+    if (paramStoryVideoItem != null) {
+      paramStoryVideoItem.a(this, i, paramxne);
+    }
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public boolean a(xne paramxne, StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_b_of_type_Int |= h;
-    wxe.a("Q.qqstory.UIUtils", "onLoadSuccessed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
-    a();
-    this.d += 1;
-    this.jdField_a_of_type_Xsq.a(this);
+    if ((a().mUIStyle.hideBannerInfo) || ((paramxne.jdField_a_of_type_Wrs != null) && (paramxne.jdField_a_of_type_Wrs.jdField_a_of_type_Int == 13))) {}
+    while (a(paramStoryVideoItem) <= 0) {
+      return false;
+    }
+    return true;
   }
   
-  public String toString()
+  public int b()
   {
-    return "DrawableListenerHolder{url='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileSize=" + this.jdField_a_of_type_Long + ", startTime=" + this.jdField_b_of_type_Long + ", errorCode=" + this.jdField_a_of_type_Int + ", result=" + this.jdField_b_of_type_Int + ", loadFailTime=" + this.jdField_c_of_type_Int + ", loadSuccessTime=" + this.d + ", loadCancelTime=" + this.e + ", op_name='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    return 2131561848;
+  }
+  
+  public void f() {}
+  
+  public void g()
+  {
+    if ((jdField_a_of_type_AndroidUtilSparseArray != null) && (jdField_a_of_type_AndroidUtilSparseArray.size() > 0))
+    {
+      int i = 0;
+      while (i < jdField_a_of_type_AndroidUtilSparseArray.size())
+      {
+        Pools.Pool localPool = (Pools.Pool)jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+        for (;;)
+        {
+          xsr localxsr = (xsr)localPool.acquire();
+          if (localxsr == null) {
+            break;
+          }
+          localxsr.a();
+        }
+        i += 1;
+      }
+      jdField_a_of_type_AndroidUtilSparseArray.clear();
+    }
+    if (this.jdField_a_of_type_Xsq != null) {
+      b(this.jdField_a_of_type_Xsq);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Xsr != null) {
+      this.jdField_a_of_type_Xsr.a(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xso
  * JD-Core Version:    0.7.0.1
  */

@@ -1,147 +1,147 @@
-import UserGrowth.stReportItem;
-import android.app.Activity;
-import android.content.Context;
-import android.util.Log;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class tet
-  extends bdjz
 {
-  private static WeakReference<tet> a;
+  private static Map<String, teu> a = new ConcurrentHashMap();
   
-  public tet(Context paramContext, int paramInt)
+  static
   {
-    super(paramContext, paramInt);
-    b();
+    a();
   }
   
-  public static void a()
+  public static String a(String paramString)
   {
-    if (a != null)
-    {
-      tet localtet = (tet)a.get();
-      if (localtet != null)
-      {
-        if (tfa.b()) {
-          tlo.c("WeishiDownloadUtil", "关闭qzone弹窗");
-        }
-        for (;;)
-        {
-          localtet.dismiss();
-          return;
-          tlo.c("WeishiDownloadUtil", "关闭qq弹窗");
-        }
-      }
-      if (tfa.b())
-      {
-        tlo.d("WeishiDownloadUtil", "qzone弹窗 is null");
-        return;
-      }
-      tlo.d("WeishiDownloadUtil", "qq弹窗 is null");
-      return;
-    }
-    tlo.d("WeishiDownloadUtil", "download弹窗 mWeakRefrence is null");
-  }
-  
-  public static void a(int paramInt, WSDownloadParams paramWSDownloadParams)
-  {
-    if ((paramWSDownloadParams == null) || (paramWSDownloadParams.mStReportItem == null)) {
-      return;
-    }
-    paramWSDownloadParams.mStReportItem.downloadscene = tfa.a(paramWSDownloadParams.mScene, paramWSDownloadParams.mLinkStrategyType, paramWSDownloadParams.mEventId);
-    tjr.a(paramInt, paramWSDownloadParams.mStReportItem);
-  }
-  
-  public static void a(Activity paramActivity)
-  {
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject;
     try
     {
-      if (tfa.b()) {
-        tlo.d("WeishiDownloadUtil", "弹出qzone弹窗---");
-      }
-      for (;;)
+      localObject = (teu)a.get(paramString);
+      localJSONObject.put("app", "QQ");
+      localJSONObject.put("appVersion", "8.4.1");
+      localJSONObject.put("businessID", ((teu)localObject).b);
+      localJSONObject.put("os", "android");
+      localObject = new JSONObject();
+      paramString = tew.a(paramString, false);
+      if (paramString != null)
       {
-        if ((a == null) || (a.get() == null))
+        paramString = paramString.a().entrySet().iterator();
+        while (paramString.hasNext())
         {
-          paramActivity = new tet(paramActivity, 2131755801);
-          paramActivity.setTitle("正在下载腾讯微视APP");
-          paramActivity.setMessage("️⬆完成安装即可领取最高188红包⬆");
-          paramActivity.setPositiveButton(alud.a(2131717400), new teu());
-          a = new WeakReference(paramActivity);
+          Map.Entry localEntry = (Map.Entry)paramString.next();
+          ((JSONObject)localObject).put((String)localEntry.getKey(), localEntry.getValue());
+          continue;
+          return localJSONObject.toString();
         }
-        ((tet)a.get()).show();
-        return;
-        tlo.d("WeishiDownloadUtil", "弹出qq弹窗");
       }
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("RealTimeController", 1, "", paramString);
+    }
+    for (;;)
+    {
+      localJSONObject.put("styles", localObject);
+      QLog.d("RealTimeController", 1, "styles: " + localJSONObject);
+    }
+  }
+  
+  public static tew a(String paramString)
+  {
+    if (a.containsKey(paramString))
+    {
+      paramString = (teu)a.get(paramString);
+      if ((paramString != null) && (paramString.jdField_a_of_type_Tev != null)) {
+        return paramString.jdField_a_of_type_Tev.a();
+      }
+    }
+    return null;
+  }
+  
+  private static void a()
+  {
+    a(new teu("default_feeds", "1"));
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    QLog.d("RealTimeController", 1, "serviceKey:" + paramString1 + " styles:" + paramString2);
+    if (TextUtils.isEmpty(paramString2)) {}
+    teu localteu;
+    do
+    {
+      return;
+      localteu = (teu)a.get(paramString1);
+    } while (localteu == null);
+    paramString1 = tew.a(paramString1, true);
+    if (paramString1 == null)
+    {
+      QLog.d("RealTimeController", 1, "realTimeTemplateFactory == null styles:" + paramString2);
       return;
     }
-    catch (Exception paramActivity)
+    for (;;)
     {
-      tlo.d("WeishiDownloadUtil", "showDownloadDialog error:" + paramActivity.getLocalizedMessage());
+      try
+      {
+        paramString1.a(ten.a());
+        localObject = new JSONObject(paramString2);
+        paramString2 = ((JSONObject)localObject).getString("businessID");
+        QLog.d("RealTimeController", 1, "realTimeBusinessID: " + paramString2);
+        paramString2 = ((JSONObject)localObject).getJSONArray("styleList");
+        if (!((JSONObject)localObject).has("deleteList")) {
+          break label282;
+        }
+        localObject = ((JSONObject)localObject).getJSONArray("deleteList");
+        ArrayList localArrayList = new ArrayList();
+        i = 0;
+        if (i < ((JSONArray)localObject).length())
+        {
+          String str = ((JSONArray)localObject).getString(i);
+          localArrayList.add(str);
+          paramString1.d(str);
+          i += 1;
+          continue;
+        }
+        localteu.jdField_a_of_type_Tev.a(localArrayList);
+      }
+      catch (Exception paramString1)
+      {
+        Object localObject;
+        QLog.d("RealTimeController", 1, "", paramString1);
+        return;
+      }
+      if (i >= paramString2.length()) {
+        break;
+      }
+      localObject = (JSONObject)paramString2.get(i);
+      localteu.jdField_a_of_type_Tev.a(paramString1, (JSONObject)localObject, true);
+      i += 1;
+      continue;
+      label282:
+      int i = 0;
     }
   }
   
-  public static void a(Activity paramActivity, WSDownloadParams paramWSDownloadParams)
+  public static void a(teu paramteu)
   {
-    if (a(paramActivity, paramWSDownloadParams))
-    {
-      a(115, paramWSDownloadParams);
-      a(paramActivity);
+    if ((paramteu.jdField_a_of_type_JavaLangString == null) || (paramteu.b == null)) {
       return;
     }
-    Log.e("WeishiDownloadUtil", "QQ download start error");
-  }
-  
-  public static void a(Activity paramActivity, String paramString, WSDownloadParams paramWSDownloadParams, int paramInt)
-  {
-    tet localtet = new tet(paramActivity, 2131755801);
-    localtet.setTitle("来腾讯微视，创造挖掘神评论");
-    localtet.setMessage("️⬆完成安装即可领取最高188红包⬆");
-    if (paramWSDownloadParams.mStReportItem == null) {}
-    for (int i = paramWSDownloadParams.mScene;; i = paramWSDownloadParams.mStReportItem.pagetype)
-    {
-      localtet.setPositiveButton(alud.a(2131717402), new tev(paramActivity, paramString, paramWSDownloadParams, i, paramInt));
-      localtet.setNegativeButton(alud.a(2131717401), new tew(i, paramInt));
-      localtet.show();
-      tju.b(6, 0, 0);
-      tjr.a(6, i, paramInt, null);
-      return;
-    }
-  }
-  
-  public static boolean a(Activity paramActivity, WSDownloadParams paramWSDownloadParams)
-  {
-    paramWSDownloadParams.mTestId = tju.b();
-    return tfa.a(paramActivity, paramWSDownloadParams, true, 3);
-  }
-  
-  private void b()
-  {
-    setContentView(2131558942);
-    setCanceledOnTouchOutside(true);
-  }
-  
-  public static void b(Activity paramActivity, WSDownloadParams paramWSDownloadParams)
-  {
-    if (tfa.c())
-    {
-      a(paramActivity, paramWSDownloadParams);
-      return;
-    }
-    tet localtet = new tet(paramActivity, 2131755801);
-    localtet.setTitle(alud.a(2131717403));
-    localtet.setMessage("️⬆完成安装即可领取最高188红包⬆");
-    localtet.setPositiveButton(alud.a(2131717399), new tex(paramActivity, paramWSDownloadParams));
-    localtet.setNegativeButton(alud.a(2131717401), new tey(paramWSDownloadParams));
-    localtet.show();
-    tju.a(paramWSDownloadParams.mScene, true, false);
-    a(124, paramWSDownloadParams);
+    a.put(paramteu.jdField_a_of_type_JavaLangString, paramteu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tet
  * JD-Core Version:    0.7.0.1
  */

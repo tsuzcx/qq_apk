@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
 
 class nhb
-  implements View.OnClickListener
+  extends nhd
 {
-  nhb(ngw paramngw) {}
+  nhb(nha paramnha) {}
   
-  public void onClick(View paramView)
+  public boolean a(int paramInt, String paramString, myc parammyc)
   {
-    this.a.d(this.a.b());
+    bjcq.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
+    nha.a(this.a).removeCallbacksAndMessages(null);
+    nha.a(this.a).sendEmptyMessage(2);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nhb
  * JD-Core Version:    0.7.0.1
  */

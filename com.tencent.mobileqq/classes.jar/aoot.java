@@ -1,95 +1,51 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
-public class aoot
-  extends aokh<aoor>
+class aoot
 {
-  @NonNull
-  public static aoor a()
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  
+  public aoot(String paramString, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    aoor localaoor2 = (aoor)aoks.a().a(458);
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "loadConfig bean: " + localaoor2);
-    }
-    aoor localaoor1 = localaoor2;
-    if (localaoor2 == null) {
-      localaoor1 = new aoor();
-    }
-    return localaoor1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
   }
   
   public int a()
   {
-    return 458;
-  }
-  
-  @NonNull
-  public aoor a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
+    if (this.jdField_a_of_type_Int == 5) {
+      return 0;
     }
-    return new aoor();
-  }
-  
-  @Nullable
-  public aoor a(aoko[] paramArrayOfaoko)
-  {
-    return aoor.a(paramArrayOfaoko);
-  }
-  
-  public Class<aoor> a()
-  {
-    return aoor.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "onReqFailed " + paramInt);
+    if (this.jdField_a_of_type_Int == 4) {
+      return 60000;
     }
-  }
-  
-  public void a(aoor paramaoor)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate " + paramaoor.toString());
+    if (this.jdField_a_of_type_Int == 3) {
+      return 180000;
     }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      if (((QQAppInterface)localObject).a(34))
-      {
-        ((alxr)((QQAppInterface)localObject).getManager(34)).a = paramaoor;
-        if (QLog.isColorLevel()) {
-          QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate bean");
-        }
-      }
+    if (this.jdField_a_of_type_Int == 2) {
+      return 600000;
     }
+    return 1800000;
   }
   
-  public int b()
+  public String toString()
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("businessId: ").append(this.jdField_a_of_type_JavaLangString).append(",").append("reqLonAndLat: ").append(this.jdField_a_of_type_Boolean).append(",").append("realTimeRequirement: ").append(this.jdField_a_of_type_Int).append(",").append("requestDataLevel: ").append(this.jdField_b_of_type_Int).append(",").append("reqGoon: ").append(this.jdField_b_of_type_Boolean).append(",").append("canUseGps: ").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoot
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,59 @@
-import java.io.File;
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
 
-public abstract class ysz
+public class ysz
+  implements ytb
 {
-  ysz jdField_a_of_type_Ysz;
-  yta jdField_a_of_type_Yta;
-  String c;
-  String d;
+  private long jdField_a_of_type_Long;
   
-  public ysz(ysb paramysb, yta paramyta, String paramString)
-  {
-    this.jdField_a_of_type_Yta = paramyta;
-    this.c = paramString;
-  }
+  public ysz(EditVideoFilter paramEditVideoFilter) {}
   
-  public File a()
+  public void a(MotionEvent paramMotionEvent)
   {
-    int i = this.c.indexOf("_");
-    Object localObject = this.c.substring(i + 1, this.c.length());
-    localObject = new File(ysb.jdField_a_of_type_JavaLangString + File.separator + (String)localObject);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
+    yrd localyrd = (yrd)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(yrd.class);
+    if (localyrd != null) {
+      localyrd.a(paramMotionEvent);
     }
-    return localObject;
   }
   
-  public ysl a()
+  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
   {
-    synchronized (this.b.jdField_a_of_type_JavaLangObject)
+    if (paramMotionEvent2 != null)
     {
-      ysl localysl = (ysl)this.b.jdField_a_of_type_JavaUtilHashMap.get(this.c);
-      return localysl;
+      yrd localyrd = (yrd)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(yrd.class);
+      if (localyrd != null) {}
+      for (boolean bool = localyrd.a(paramMotionEvent2);; bool = false)
+      {
+        if (bool)
+        {
+          a(paramMotionEvent1);
+          a(paramMotionEvent2);
+        }
+        return bool;
+      }
     }
+    return false;
   }
   
-  public abstract void a();
-  
-  public File b()
+  public void onClick(View paramView)
   {
-    File localFile = new File(ysb.jdField_a_of_type_JavaLangString + File.separator + "cache");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > 300L)
+    {
+      this.jdField_a_of_type_Long = l;
+      paramView = (yrd)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(yrd.class);
+      if (paramView != null) {
+        paramView.f_();
+      }
+      return;
     }
-    return localFile;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Ysz != null) {
-      this.jdField_a_of_type_Ysz.a();
-    }
+    yqp.b("Q.qqstory.publish.edit.EditVideoFilter", "repeat viewpager click.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ysz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.history;
 
-import alto;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
-import bdgg;
+import anmw;
+import bglj;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import java.util.List;
 
 class ChatHistoryTroopMemberFragment$3
   implements Runnable
 {
-  ChatHistoryTroopMemberFragment$3(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, alto paramalto) {}
+  ChatHistoryTroopMemberFragment$3(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, anmw paramanmw) {}
   
   public void run()
   {
-    Object localObject1 = bdgg.a().a(this.this$0.getActivity().app, this.this$0.c, this.this$0.w);
-    bdgg.a().a(this.this$0.getActivity().app, this.this$0.c, this.this$0.w);
+    Object localObject1 = bglj.a().a(this.this$0.getActivity().app, this.this$0.c, this.this$0.w);
+    bglj.a().a(this.this$0.getActivity().app, this.this$0.c, this.this$0.w);
     if ((localObject1 != null) && (this.a != null))
     {
       this.this$0.a(this.this$0.w);
@@ -31,7 +31,7 @@ class ChatHistoryTroopMemberFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.3
  * JD-Core Version:    0.7.0.1
  */

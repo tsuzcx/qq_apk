@@ -1,23 +1,24 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nqm
-  implements DialogInterface.OnClickListener
+class nqm
+  implements View.OnClickListener
 {
-  public nqm(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, Context paramContext, Uri paramUri, String paramString1, String paramString2) {}
+  nqm(nql paramnql, Dialog paramDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, true, this.b);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nqm
  * JD-Core Version:    0.7.0.1
  */

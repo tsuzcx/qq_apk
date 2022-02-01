@@ -1,12 +1,6 @@
 public abstract interface andm
 {
-  public abstract void a();
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(boolean paramBoolean, andn paramandn);
-  
-  public abstract void b();
+  public abstract void a(int paramInt);
 }
 
 

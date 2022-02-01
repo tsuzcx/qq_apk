@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import mqq.app.AppRuntime.Status;
 
-public class aynp
+public abstract interface aynp
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  
-  public aynp(HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
+  public abstract void a(AppRuntime.Status paramStatus);
 }
 
 

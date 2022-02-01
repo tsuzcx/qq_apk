@@ -1,93 +1,19 @@
-import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.lang.ref.WeakReference;
-import java.util.List;
-
-public class aapw
-  implements bfoj
+class aapw
+  extends aapy
 {
-  private WeakReference<GdtMvDownloadBtnManager> a;
-  
-  public aapw(GdtMvDownloadBtnManager paramGdtMvDownloadBtnManager)
+  public aapw(aapa paramaapa, aapz paramaapz, String paramString)
   {
-    this.a = new WeakReference(paramGdtMvDownloadBtnManager);
+    super(paramaapa, paramaapz, paramString);
   }
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void a()
   {
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.a(paramString1, paramString2);
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    aase.a("GdtMvDownloadBtnManager", "onDownloadCancel: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.d(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.a(paramDownloadInfo, paramInt1, paramString, paramInt2);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    aase.a("GdtMvDownloadBtnManager", "onDownloadFinish: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.c(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    aase.a("GdtMvDownloadBtnManager", "onDownloadPause: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.a(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    aase.a("GdtMvDownloadBtnManager", "onDownloadUpdate: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.a(paramList);
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    aase.a("GdtMvDownloadBtnManager", "onDownloadWait: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.b(paramDownloadInfo);
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.c(paramString1, paramString2);
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.b(paramString1, paramString2);
-    }
+    this.jdField_a_of_type_Aapa.a.a();
+    aapk localaapk = a();
+    this.jdField_a_of_type_Aapa.a.a(localaapk.e, localaapk.jdField_a_of_type_JavaLangString, localaapk.jdField_a_of_type_Int, new aapx(this));
+    this.jdField_a_of_type_Aapz.b(this);
+    this.jdField_a_of_type_Aapy = new aapj(this.jdField_a_of_type_Aapa, this.jdField_a_of_type_Aapz, this.c);
+    b();
   }
 }
 

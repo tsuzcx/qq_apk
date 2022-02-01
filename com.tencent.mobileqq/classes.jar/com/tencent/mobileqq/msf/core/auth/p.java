@@ -5,9 +5,11 @@ import com.qq.jce.wup.UniPacket;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.w;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
+import com.tencent.mobileqq.msf.service.u;
 import com.tencent.msf.service.protocol.security.CustomSigContent;
 import com.tencent.msf.service.protocol.security.RespondCustomSig;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -81,7 +83,7 @@ class p
     if (this.g) {}
     try
     {
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+      FromServiceMsg localFromServiceMsg = u.a(this.d);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("userAccount", Long.valueOf(paramLong));
       localFromServiceMsg.addAttribute("supersig", paramArrayOfByte1);
@@ -109,7 +111,7 @@ class p
     if (this.g) {}
     try
     {
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+      FromServiceMsg localFromServiceMsg = u.a(this.d);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("appid", Long.valueOf(paramLong1));
       localFromServiceMsg.addAttribute("subAppid", Long.valueOf(paramLong2));
@@ -135,7 +137,7 @@ class p
     if (this.g) {
       try
       {
-        paramWUserSigInfo = com.tencent.mobileqq.msf.service.t.a(this.d);
+        paramWUserSigInfo = u.a(this.d);
         paramWUserSigInfo.setBusinessFail(3002, paramString);
         paramWUserSigInfo.addAttribute("error", paramString);
         paramWUserSigInfo.addAttribute("cmd", Integer.valueOf(paramInt));
@@ -148,7 +150,7 @@ class p
         return;
       }
     }
-    paramWUserSigInfo = com.tencent.mobileqq.msf.core.t.a(this.d);
+    paramWUserSigInfo = w.a(this.d);
     paramWUserSigInfo.setBusinessFail(3001, paramString);
     MsfSdkUtils.addFromMsgProcessName("*", paramWUserSigInfo);
     this.e.addRespToQuque(this.d, paramWUserSigInfo);
@@ -159,7 +161,7 @@ class p
     if (this.g) {}
     try
     {
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+      FromServiceMsg localFromServiceMsg = u.a(this.d);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("userAccount", paramString);
       localFromServiceMsg.addAttribute("dwAppid", Long.valueOf(paramLong1));
@@ -182,7 +184,7 @@ class p
     Object localObject1;
     if (this.h)
     {
-      localObject1 = com.tencent.mobileqq.msf.core.t.a(this.d);
+      localObject1 = w.a(this.d);
       ((FromServiceMsg)localObject1).setMsgSuccess();
       this.d.setMsfCommand(MsfCommand.verifyPasswd);
       ((FromServiceMsg)localObject1).setMsfCommand(MsfCommand.verifyPasswd);
@@ -241,7 +243,7 @@ class p
         switch (paramInt2)
         {
         case 1: 
-          localObject2 = com.tencent.mobileqq.msf.service.t.a(this.d);
+          localObject2 = u.a(this.d);
           ((FromServiceMsg)localObject2).setMsgSuccess();
           ((FromServiceMsg)localObject2).addAttribute("userAccount", paramString1);
           ((FromServiceMsg)localObject2).addAttribute("dwAppid", Long.valueOf(paramLong1));
@@ -279,7 +281,7 @@ class p
           l.d.getAccountCenter().a(false);
           localObject1 = localObject2;
           continue;
-          localObject1 = com.tencent.mobileqq.msf.core.t.a(this.d);
+          localObject1 = w.a(this.d);
           ((FromServiceMsg)localObject1).setMsgSuccess();
           ((FromServiceMsg)localObject1).addAttribute("userAccount", paramString1);
           ((FromServiceMsg)localObject1).addAttribute("dwAppid", Long.valueOf(paramLong1));
@@ -388,7 +390,7 @@ class p
     if (this.g) {}
     try
     {
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+      FromServiceMsg localFromServiceMsg = u.a(this.d);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("userAccount", paramString);
       localFromServiceMsg.addAttribute("dwSrcAppid", Long.valueOf(paramLong1));
@@ -435,7 +437,7 @@ class p
       {
         try
         {
-          paramArrayOfLong = com.tencent.mobileqq.msf.service.t.a(this.d);
+          paramArrayOfLong = u.a(this.d);
           paramArrayOfLong.setMsgSuccess();
           paramArrayOfLong.addAttribute("userAccount", paramString);
           paramArrayOfLong.addAttribute("dwSrcAppid", Long.valueOf(paramLong1));
@@ -458,7 +460,7 @@ class p
           QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "OnGetStWithoutPasswd error " + paramString, paramString);
           return;
         }
-        FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.core.t.a(this.d);
+        FromServiceMsg localFromServiceMsg = w.a(this.d);
         localFromServiceMsg.addAttribute("wtTicket", a(paramWUserSigInfo));
         localFromServiceMsg.addAttribute("st_temp", WtloginHelper.GetTicketSig(paramWUserSigInfo, 128));
         try
@@ -688,7 +690,7 @@ class p
     if (this.g) {
       try
       {
-        FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+        FromServiceMsg localFromServiceMsg = u.a(this.d);
         localFromServiceMsg.setMsfCommand(MsfCommand.wt_RefreshSMSData);
         localFromServiceMsg.setMsgSuccess();
         localFromServiceMsg.addAttribute("userAccount", paramString);
@@ -722,7 +724,7 @@ class p
     if (this.g) {}
     try
     {
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+      FromServiceMsg localFromServiceMsg = u.a(this.d);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("ret", Integer.valueOf(paramInt3));
       localFromServiceMsg.addAttribute("mobile", paramString1);
@@ -744,7 +746,7 @@ class p
     if (this.g) {}
     try
     {
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+      FromServiceMsg localFromServiceMsg = u.a(this.d);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("ret", Integer.valueOf(paramInt));
       localFromServiceMsg.addAttribute("mobile", paramString1);
@@ -764,7 +766,7 @@ class p
     if (this.h) {
       try
       {
-        paramWUserSigInfo = com.tencent.mobileqq.msf.service.t.a(this.d);
+        paramWUserSigInfo = u.a(this.d);
         paramWUserSigInfo.setMsgSuccess();
         paramWUserSigInfo.addAttribute("userAccount", paramString);
         paramWUserSigInfo.addAttribute("pictureData", paramArrayOfByte);
@@ -782,7 +784,7 @@ class p
     if (this.g) {
       try
       {
-        paramWUserSigInfo = com.tencent.mobileqq.msf.service.t.a(this.d);
+        paramWUserSigInfo = u.a(this.d);
         paramWUserSigInfo.setMsgSuccess();
         paramWUserSigInfo.addAttribute("userAccount", paramString);
         paramWUserSigInfo.addAttribute("pictureData", paramArrayOfByte);
@@ -797,7 +799,7 @@ class p
         return;
       }
     }
-    paramArrayOfByte = com.tencent.mobileqq.msf.core.t.a(this.d);
+    paramArrayOfByte = w.a(this.d);
     if (paramInt == 0)
     {
       n.b.put(Integer.valueOf(this.d.getRequestSsoSeq()), this);
@@ -817,7 +819,7 @@ class p
       {
         paramWUserSigInfo = new ErrMsg();
         paramWUserSigInfo.setMessage(new String(paramArrayOfByte2, "utf-8"));
-        localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+        localFromServiceMsg = u.a(this.d);
         localFromServiceMsg.setMsgSuccess();
         localFromServiceMsg.addAttribute("userAccount", paramString);
         localFromServiceMsg.addAttribute("appName", paramArrayOfByte1);
@@ -853,7 +855,7 @@ class p
     {
       ErrMsg localErrMsg = new ErrMsg();
       localErrMsg.setMessage(new String(paramArrayOfByte2, "utf-8"));
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+      FromServiceMsg localFromServiceMsg = u.a(this.d);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("userAccount", paramString);
       localFromServiceMsg.addAttribute("appName", paramArrayOfByte1);
@@ -881,7 +883,7 @@ class p
       if (paramInt == 0) {
         l.d.getAccountCenter().a(false);
       }
-      localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+      localFromServiceMsg = u.a(this.d);
       localFromServiceMsg.setMsfCommand(MsfCommand.submitPuzzleVerifyCodeTicket);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("userAccount", paramString);
@@ -905,7 +907,7 @@ class p
         }
       }
     }
-    FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.core.t.a(this.d);
+    FromServiceMsg localFromServiceMsg = w.a(this.d);
     localFromServiceMsg.setMsfCommand(MsfCommand.submitPuzzleVerifyCodeTicket);
     localFromServiceMsg.setMsgSuccess();
     localFromServiceMsg.addAttribute("userAccount", paramString);
@@ -1000,7 +1002,7 @@ class p
         FromServiceMsg localFromServiceMsg;
         try
         {
-          localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+          localFromServiceMsg = u.a(this.d);
           localFromServiceMsg.setMsfCommand(MsfCommand.wt_CheckSMSAndGetStExt);
           localFromServiceMsg.setMsgSuccess();
           localFromServiceMsg.addAttribute("userAccount", paramString);
@@ -1076,7 +1078,7 @@ class p
   public void a(WUserSigInfo paramWUserSigInfo, int paramInt1, int paramInt2, int paramInt3)
   {
     if (this.g) {}
-    paramWUserSigInfo = com.tencent.mobileqq.msf.core.t.a(this.d);
+    paramWUserSigInfo = w.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt1));
     paramWUserSigInfo.attributes.put("resp_register_shNextResendTime", Integer.valueOf(paramInt2));
@@ -1089,7 +1091,7 @@ class p
     if (this.g) {
       return;
     }
-    FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.core.t.a(this.d);
+    FromServiceMsg localFromServiceMsg = w.a(this.d);
     localFromServiceMsg.setMsgSuccess();
     localFromServiceMsg.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt1));
     localFromServiceMsg.attributes.put("resp_register_shNextResendTime", Integer.valueOf(paramInt2));
@@ -1145,12 +1147,13 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = com.tencent.mobileqq.msf.core.t.a(this.d);
+    paramWUserSigInfo = w.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt));
     paramWUserSigInfo.attributes.put("resp_register_uin", String.valueOf(paramLong));
     paramWUserSigInfo.attributes.put("resp_register_contactssig", paramArrayOfByte2);
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramArrayOfByte3);
+    paramWUserSigInfo.attributes.put("resp_register_supersig", paramArrayOfByte1);
     if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0))
     {
       if (QLog.isColorLevel()) {
@@ -1169,7 +1172,7 @@ class p
     if (this.g) {}
     try
     {
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+      FromServiceMsg localFromServiceMsg = u.a(this.d);
       localFromServiceMsg.setMsfCommand(MsfCommand.wt_CheckDevLockSms);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("sigInfo", paramWUserSigInfo);
@@ -1188,7 +1191,7 @@ class p
   {
     if (this.g)
     {
-      paramWUserSigInfo = com.tencent.mobileqq.msf.core.t.a(this.d);
+      paramWUserSigInfo = w.a(this.d);
       paramWUserSigInfo.setBusinessFail(3001, String.valueOf(paramInt));
       paramWUserSigInfo.attributes.put("msg", paramArrayOfByte);
       MsfSdkUtils.addFromMsgProcessName("*", paramWUserSigInfo);
@@ -1196,7 +1199,7 @@ class p
       QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "found RegError " + paramInt + " on call " + this.d.getServiceCmd());
       return;
     }
-    paramWUserSigInfo = com.tencent.mobileqq.msf.core.t.a(this.d);
+    paramWUserSigInfo = w.a(this.d);
     if (paramInt == 7)
     {
       paramWUserSigInfo.setMsgSuccess();
@@ -1219,7 +1222,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = com.tencent.mobileqq.msf.core.t.a(this.d);
+    paramWUserSigInfo = w.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(2));
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramString.getBytes());
@@ -1231,7 +1234,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = com.tencent.mobileqq.msf.core.t.a(this.d);
+    paramWUserSigInfo = w.a(this.d);
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(4));
     if ((TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
       paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramString2.getBytes());
@@ -1253,7 +1256,7 @@ class p
     if (this.g) {}
     try
     {
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+      FromServiceMsg localFromServiceMsg = u.a(this.d);
       localFromServiceMsg.setMsfCommand(MsfCommand.wt_CheckDevLockStatus);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("sigInfo", paramWUserSigInfo);
@@ -1274,7 +1277,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = com.tencent.mobileqq.msf.core.t.a(this.d);
+    paramWUserSigInfo = w.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(8));
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramArrayOfByte);
@@ -1301,7 +1304,7 @@ class p
     //   9: new 173	java/lang/StringBuilder
     //   12: dup
     //   13: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 878
+    //   16: ldc_w 880
     //   19: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: iload 4
     //   24: invokevirtual 239	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1312,13 +1315,13 @@ class p
     //   37: ifeq +170 -> 207
     //   40: aload_0
     //   41: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   44: invokestatic 123	com/tencent/mobileqq/msf/service/t:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Lcom/tencent/qphone/base/remote/FromServiceMsg;
+    //   44: invokestatic 123	com/tencent/mobileqq/msf/service/u:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Lcom/tencent/qphone/base/remote/FromServiceMsg;
     //   47: astore_3
     //   48: aload_3
-    //   49: ldc_w 880
-    //   52: invokevirtual 883	com/tencent/qphone/base/remote/FromServiceMsg:setServiceCmd	(Ljava/lang/String;)V
+    //   49: ldc_w 882
+    //   52: invokevirtual 885	com/tencent/qphone/base/remote/FromServiceMsg:setServiceCmd	(Ljava/lang/String;)V
     //   55: aload_3
-    //   56: getstatic 886	com/tencent/mobileqq/msf/sdk/MsfCommand:verifyPasswdImage	Lcom/tencent/mobileqq/msf/sdk/MsfCommand;
+    //   56: getstatic 888	com/tencent/mobileqq/msf/sdk/MsfCommand:verifyPasswdImage	Lcom/tencent/mobileqq/msf/sdk/MsfCommand;
     //   59: invokevirtual 84	com/tencent/qphone/base/remote/FromServiceMsg:setMsfCommand	(Lcom/tencent/mobileqq/msf/sdk/MsfCommand;)V
     //   62: aload_3
     //   63: ldc 125
@@ -1350,7 +1353,7 @@ class p
     //   137: invokevirtual 115	com/tencent/mobileqq/msf/core/MsfCore:addRespToQuque	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;)V
     //   140: return
     //   141: aload_3
-    //   142: ldc_w 888
+    //   142: ldc_w 890
     //   145: getstatic 282	com/tencent/mobileqq/msf/core/auth/l:e	Loicq/wlogin_sdk/request/WtloginHelper;
     //   148: aload_1
     //   149: invokevirtual 362	oicq/wlogin_sdk/request/WtloginHelper:GetPictureData	(Ljava/lang/String;)[B
@@ -1368,7 +1371,7 @@ class p
     //   175: new 173	java/lang/StringBuilder
     //   178: dup
     //   179: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   182: ldc_w 890
+    //   182: ldc_w 892
     //   185: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   188: aload_1
     //   189: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -1390,10 +1393,10 @@ class p
     //   223: iload 4
     //   225: tableswitch	default:+782 -> 1007, 0:+214->439, 1:+27->252, 2:+202->427
     //   253: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   256: invokestatic 123	com/tencent/mobileqq/msf/service/t:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Lcom/tencent/qphone/base/remote/FromServiceMsg;
+    //   256: invokestatic 123	com/tencent/mobileqq/msf/service/u:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Lcom/tencent/qphone/base/remote/FromServiceMsg;
     //   259: astore 7
     //   261: aload 7
-    //   263: getstatic 893	com/tencent/mobileqq/msf/sdk/MsfCommand:wt_CheckPictureAndGetSt	Lcom/tencent/mobileqq/msf/sdk/MsfCommand;
+    //   263: getstatic 895	com/tencent/mobileqq/msf/sdk/MsfCommand:wt_CheckPictureAndGetSt	Lcom/tencent/mobileqq/msf/sdk/MsfCommand;
     //   266: invokevirtual 84	com/tencent/qphone/base/remote/FromServiceMsg:setMsfCommand	(Lcom/tencent/mobileqq/msf/sdk/MsfCommand;)V
     //   269: aload 7
     //   271: invokevirtual 97	com/tencent/qphone/base/remote/FromServiceMsg:setMsgSuccess	()V
@@ -1408,7 +1411,7 @@ class p
     //   289: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   292: pop
     //   293: aload 7
-    //   295: ldc_w 888
+    //   295: ldc_w 890
     //   298: aload 6
     //   300: invokevirtual 135	com/tencent/qphone/base/remote/FromServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   303: pop
@@ -1462,7 +1465,7 @@ class p
     //   402: new 173	java/lang/StringBuilder
     //   405: dup
     //   406: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   409: ldc_w 895
+    //   409: ldc_w 897
     //   412: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   415: aload_1
     //   416: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -1488,10 +1491,10 @@ class p
     //   461: goto -77 -> 384
     //   464: aload_0
     //   465: getfield 34	com/tencent/mobileqq/msf/core/auth/p:d	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   468: invokestatic 223	com/tencent/mobileqq/msf/core/t:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Lcom/tencent/qphone/base/remote/FromServiceMsg;
+    //   468: invokestatic 223	com/tencent/mobileqq/msf/core/w:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Lcom/tencent/qphone/base/remote/FromServiceMsg;
     //   471: astore 6
     //   473: aload 6
-    //   475: getstatic 893	com/tencent/mobileqq/msf/sdk/MsfCommand:wt_CheckPictureAndGetSt	Lcom/tencent/mobileqq/msf/sdk/MsfCommand;
+    //   475: getstatic 895	com/tencent/mobileqq/msf/sdk/MsfCommand:wt_CheckPictureAndGetSt	Lcom/tencent/mobileqq/msf/sdk/MsfCommand;
     //   478: invokevirtual 84	com/tencent/qphone/base/remote/FromServiceMsg:setMsfCommand	(Lcom/tencent/mobileqq/msf/sdk/MsfCommand;)V
     //   481: aload 6
     //   483: invokevirtual 97	com/tencent/qphone/base/remote/FromServiceMsg:setMsgSuccess	()V
@@ -1555,7 +1558,7 @@ class p
     //   658: invokevirtual 214	com/tencent/qphone/base/remote/FromServiceMsg:setBusinessFail	(ILjava/lang/String;)V
     //   661: ldc 156
     //   663: iconst_1
-    //   664: ldc_w 897
+    //   664: ldc_w 899
     //   667: invokestatic 379	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   670: iload 4
     //   672: ifeq +71 -> 743
@@ -1691,7 +1694,7 @@ class p
     //   946: invokevirtual 330	com/tencent/qphone/base/remote/FromServiceMsg:setBusinessFail	(I)V
     //   949: ldc 156
     //   951: iconst_1
-    //   952: ldc_w 899
+    //   952: ldc_w 901
     //   955: invokestatic 379	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   958: goto -288 -> 670
     //   961: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1701,7 +1704,7 @@ class p
     //   970: new 173	java/lang/StringBuilder
     //   973: dup
     //   974: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   977: ldc_w 901
+    //   977: ldc_w 903
     //   980: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   983: iload 4
     //   985: invokevirtual 239	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1750,7 +1753,7 @@ class p
     if (this.g) {}
     try
     {
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+      FromServiceMsg localFromServiceMsg = u.a(this.d);
       localFromServiceMsg.setMsfCommand(MsfCommand.wt_CloseDevLock);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("sigInfo", paramWUserSigInfo);
@@ -1773,7 +1776,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = com.tencent.mobileqq.msf.core.t.a(this.d);
+    paramWUserSigInfo = w.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt));
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramArrayOfByte);
@@ -1788,7 +1791,7 @@ class p
     if (this.g) {}
     try
     {
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+      FromServiceMsg localFromServiceMsg = u.a(this.d);
       localFromServiceMsg.setMsfCommand(MsfCommand.wt_AskDevLockSms);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("sigInfo", paramWUserSigInfo);
@@ -1809,7 +1812,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = com.tencent.mobileqq.msf.core.t.a(this.d);
+    paramWUserSigInfo = w.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(3));
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramArrayOfByte);
@@ -1827,7 +1830,7 @@ class p
         FromServiceMsg localFromServiceMsg;
         try
         {
-          localFromServiceMsg = com.tencent.mobileqq.msf.service.t.a(this.d);
+          localFromServiceMsg = u.a(this.d);
           localFromServiceMsg.setMsfCommand(MsfCommand.wt_CheckSMSAndGetSt);
           localFromServiceMsg.setMsgSuccess();
           localFromServiceMsg.addAttribute("userAccount", paramString);
@@ -1916,7 +1919,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = com.tencent.mobileqq.msf.core.t.a(this.d);
+    paramWUserSigInfo = w.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(1));
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramArrayOfByte);
@@ -1926,7 +1929,7 @@ class p
   public void d(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte)
   {
     if (this.g) {}
-    FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.core.t.a(this.d);
+    FromServiceMsg localFromServiceMsg = w.a(this.d);
     localFromServiceMsg.setMsgSuccess();
     localFromServiceMsg.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt));
     localFromServiceMsg.attributes.put("resp_register_promptinfo", paramArrayOfByte);
@@ -1983,7 +1986,7 @@ class p
     if (this.g) {
       return;
     }
-    paramWUserSigInfo = com.tencent.mobileqq.msf.core.t.a(this.d);
+    paramWUserSigInfo = w.a(this.d);
     paramWUserSigInfo.setMsgSuccess();
     paramWUserSigInfo.attributes.put("resp_register_resultcode", Integer.valueOf(paramInt));
     paramWUserSigInfo.attributes.put("resp_register_promptinfo", paramArrayOfByte);
@@ -1995,7 +1998,7 @@ class p
     if (this.g) {
       return;
     }
-    FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.core.t.a(this.d);
+    FromServiceMsg localFromServiceMsg = w.a(this.d);
     localFromServiceMsg.setMsgSuccess();
     if (QLog.isColorLevel()) {
       QLog.d("Login_Optimize_WtProviderImpl", 2, "ret=" + paramInt);

@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.widget.OverScrollCallbackHorizontalListView;
+import java.util.Comparator;
 
-public abstract interface berl
+final class berl
+  implements Comparator<String>
 {
-  public abstract void a(OverScrollCallbackHorizontalListView paramOverScrollCallbackHorizontalListView);
+  public int a(String paramString1, String paramString2)
+  {
+    try
+    {
+      int i = paramString1.getBytes("utf-8").length;
+      int j = paramString2.getBytes("utf-8").length;
+      return i - j;
+    }
+    catch (Exception localException) {}
+    return paramString1.getBytes().length - paramString2.getBytes().length;
+  }
 }
 
 

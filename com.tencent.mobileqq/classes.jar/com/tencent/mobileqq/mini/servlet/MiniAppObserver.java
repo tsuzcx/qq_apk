@@ -8,6 +8,7 @@ import mqq.observer.BusinessObserver;
 public class MiniAppObserver
   implements BusinessObserver
 {
+  public static final int MINI_APP_ADD_PHONE_NUMBER = 1073;
   public static final int MINI_APP_BATCH_GET_CONTACT = 1039;
   public static final int MINI_APP_BATCH_GET_USER_INFO = 1028;
   public static final int MINI_APP_BATCH_QUERY_APP_INFO = 1013;
@@ -15,8 +16,10 @@ public class MiniAppObserver
   public static final int MINI_APP_CHECK_NAVIGATE_RIGHT = 1023;
   public static final int MINI_APP_CHECK_OFFER_ID = 1021;
   public static final int MINI_APP_CHECK_SESSION = 1002;
+  public static final int MINI_APP_CREATE_UPDATABLE_MSG = 1076;
   public static final int MINI_APP_DC_REPORT = 1005;
   public static final int MINI_APP_DEL_ITEM = 1006;
+  public static final int MINI_APP_DEL_PHONE_NUMBER = 1074;
   public static final int MINI_APP_DO_LIKE = 1009;
   public static final int MINI_APP_GET_APPINFO_BY_ID = 1024;
   public static final int MINI_APP_GET_APPINFO_BY_ID_FOR_SDK = 1055;
@@ -60,6 +63,7 @@ public class MiniAppObserver
   public static final int MINI_APP_MIDAS_QUERY_RESULT = 1026;
   public static final int MINI_APP_MODIFY_FRIEND_INTERACTIVE_STORAGE_SERVLET = 1058;
   public static final int MINI_APP_OPEN_CHANNEL = 1054;
+  public static final int MINI_APP_REAL_TIME_LOG_REPORT = 1075;
   public static final int MINI_APP_REMOVE_USER_CLOUD_STORAGE = 1017;
   public static final int MINI_APP_REPORT_LOG_FILE_URL = 1035;
   public static final int MINI_APP_REPORT_SHARE = 1063;
@@ -75,6 +79,7 @@ public class MiniAppObserver
   public static final int MINI_APP_UPDATE_USER_SETTING = 1052;
   public static final int MINI_APP_USE_USER_APP = 1014;
   public static final int MINI_APP_VERIFY_PLUGIN = 1038;
+  public static final int MINI_APP_WX_PAY_CHECK_URL = 1077;
   public static final String TAG = "[mini] MiniAppObserver";
   
   public static String getCmdByObserverId(int paramInt)
@@ -273,6 +278,18 @@ public class MiniAppObserver
     }
     if (1072 == paramInt) {
       return "MINI_APP_SEARCH_APP";
+    }
+    if (1073 == paramInt) {
+      return "MINI_APP_ADD_PHONE_NUMBER";
+    }
+    if (1074 == paramInt) {
+      return "MINI_APP_DEL_PHONE_NUMBER";
+    }
+    if (1075 == paramInt) {
+      return "MINI_APP_REAL_TIME_LOG_REPORT";
+    }
+    if (1077 == paramInt) {
+      return "MINI_APP_WX_PAY_CHECK_URL";
     }
     return "default cmd";
   }
@@ -622,9 +639,36 @@ public class MiniAppObserver
         onGetHotSearchApps(i, paramBoolean, paramBundle);
         return;
       }
-    } while (paramInt != 1072);
-    onSearchApp(i, paramBoolean, paramBundle);
+      if (paramInt == 1072)
+      {
+        onSearchApp(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1075)
+      {
+        onRealTimeLogReport(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1076)
+      {
+        onCreateUpdatableMsgResult(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1073)
+      {
+        onAddPhoneNumber(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1074)
+      {
+        onDelPhoneNumber(i, paramBoolean, paramBundle);
+        return;
+      }
+    } while (paramInt != 1077);
+    onWxPayCheckUrlResult(i, paramBoolean, paramBundle);
   }
+  
+  protected void onAddPhoneNumber(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onBatchGetContact(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
@@ -640,9 +684,13 @@ public class MiniAppObserver
   
   protected void onCheckSessionFin(int paramInt1, boolean paramBoolean, int paramInt2, String paramString) {}
   
+  protected void onCreateUpdatableMsgResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onDcReport(int paramInt1, boolean paramBoolean, int paramInt2) {}
   
   protected void onDelMiniAppFin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onDelPhoneNumber(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetAppInfoByIdForSDKServlet(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
@@ -728,6 +776,8 @@ public class MiniAppObserver
   
   protected void onOpenChannel(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onRealTimeLogReport(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     ThreadManagerV2.excute(new MiniAppObserver.1(this, paramInt, paramBoolean, paramBundle), 16, null, false);
@@ -764,10 +814,12 @@ public class MiniAppObserver
   protected void onUseUserAppFin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onVerifyPlugin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onWxPayCheckUrlResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppObserver
  * JD-Core Version:    0.7.0.1
  */

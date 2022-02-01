@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adui
-  implements DialogInterface.OnClickListener
+class adui
+  implements View.OnClickListener
 {
-  public adui(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  adui(aduc paramaduc, MessageRecord paramMessageRecord) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    RegisterChooseLoginActivity.a(this.a, true);
-    RegisterChooseLoginActivity.a(this.a, true);
-    azqs.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
-    azqs.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 1, 0, "", "", "", "");
-    azqs.a(this.a.app, "new_reg", "next_ask", "new_clk", "", 1, "");
+    AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Aduc.a.a, abga.a(paramView));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

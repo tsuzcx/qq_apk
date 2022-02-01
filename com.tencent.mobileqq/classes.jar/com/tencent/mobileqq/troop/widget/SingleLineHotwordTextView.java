@@ -8,8 +8,8 @@ import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import arso;
-import bcpx;
+import atwl;
+import bfup;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -104,7 +104,7 @@ public class SingleLineHotwordTextView
       return null;
     }
     paramString = new SpannableString(paramString);
-    if (bcpx.a(paramArrayList)) {
+    if (bfup.a(paramArrayList)) {
       return paramString;
     }
     String str1 = paramString.toString().toLowerCase();
@@ -420,7 +420,7 @@ public class SingleLineHotwordTextView
     String str1;
     if (paramInt1 == 1)
     {
-      str1 = arso.a(str2);
+      str1 = atwl.a(str2);
       if (!TextUtils.isEmpty(str1))
       {
         paramInt1 = str2.toLowerCase().lastIndexOf(str1.toLowerCase());
@@ -511,7 +511,7 @@ public class SingleLineHotwordTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView
  * JD-Core Version:    0.7.0.1
  */

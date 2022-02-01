@@ -1,43 +1,44 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.ShieldFriendsListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class adxs
-  extends altm
+  implements bmre
 {
-  public adxs(ShieldFriendsListActivity paramShieldFriendsListActivity) {}
+  public adxs(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void a(int paramInt)
   {
-    super.onUpdateFriendShieldFlag(paramLong, paramBoolean1, paramBoolean2, paramBoolean3, paramString);
-    if (!paramBoolean2)
+    int i = 0;
+    boolean bool;
+    Object localObject;
+    if (paramInt == 0)
     {
-      paramString = this.a;
-      if (!paramBoolean1)
-      {
-        paramBoolean1 = true;
-        if (ShieldFriendsListActivity.a(paramString, paramLong, paramBoolean1)) {
-          QQToast.a(BaseApplication.getContext(), alud.a(2131714388), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+      this.a.b = true;
+      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim();
+      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[5];
+      if (localObject != null) {
+        if (!bool) {
+          break label88;
         }
       }
     }
-    do
+    label88:
+    for (paramInt = 0;; paramInt = 8)
     {
-      return;
-      paramBoolean1 = false;
-      break;
-      if (ShieldFriendsListActivity.a(this.a).a(String.valueOf(paramLong)))
+      ((View)localObject).setVisibility(paramInt);
+      localObject = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[6];
+      if (localObject != null)
       {
-        ShieldFriendsListActivity.a(this.a, paramLong, paramBoolean1);
-        return;
+        paramInt = i;
+        if (bool) {
+          paramInt = 3;
+        }
+        ((FormSimpleItem)localObject).setBgType(paramInt);
       }
-      paramString = ((alto)this.a.app.getManager(51)).e(String.valueOf(paramLong));
-    } while ((paramString == null) || (paramString.isShield()));
-    ShieldFriendsListActivity.a(this.a).a(paramString);
-    ShieldFriendsListActivity.a(this.a);
+      return;
+    }
   }
 }
 

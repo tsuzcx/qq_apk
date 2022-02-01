@@ -1,20 +1,26 @@
-import android.support.annotation.NonNull;
-import dov.com.qq.im.capture.control.CaptureAsyncAutomator;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.GeoInfo;
+import cooperation.qzone.LbsDataV2.GetGeoInfoRsp;
+import cooperation.qzone.LbsDataV2.GpsInfo;
 
-public class blrn
-  implements ThreadFactory
+public final class blrn
+  implements Parcelable.Creator<LbsDataV2.GetGeoInfoRsp>
 {
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  
-  private blrn(CaptureAsyncAutomator paramCaptureAsyncAutomator) {}
-  
-  public Thread newThread(@NonNull Runnable paramRunnable)
+  public LbsDataV2.GetGeoInfoRsp a(Parcel paramParcel)
   {
-    paramRunnable = new Thread(paramRunnable, "CaptureAsyncAutomator_" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
-    paramRunnable.setPriority(4);
-    return paramRunnable;
+    LbsDataV2.GetGeoInfoRsp localGetGeoInfoRsp = new LbsDataV2.GetGeoInfoRsp();
+    if (paramParcel != null)
+    {
+      localGetGeoInfoRsp.stGps = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
+      localGetGeoInfoRsp.stGeoInfo = ((LbsDataV2.GeoInfo)paramParcel.readParcelable(LbsDataV2.GeoInfo.class.getClassLoader()));
+    }
+    return localGetGeoInfoRsp;
+  }
+  
+  public LbsDataV2.GetGeoInfoRsp[] a(int paramInt)
+  {
+    return null;
   }
 }
 

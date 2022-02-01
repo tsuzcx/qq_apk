@@ -1,6 +1,12 @@
 public abstract interface apcd
 {
   public abstract void a();
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(boolean paramBoolean, apce paramapce);
+  
+  public abstract void b();
 }
 
 

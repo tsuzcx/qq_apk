@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.materialdownload;
 
-import ocx;
+import oon;
 
 public class AdMaterialResManager$2
   implements Runnable
 {
-  public AdMaterialResManager$2(ocx paramocx) {}
+  public AdMaterialResManager$2(oon paramoon) {}
   
   public void run()
   {
-    ocx.a(this.this$0, ocx.a(this.this$0));
+    oon.a(this.this$0, oon.a(this.this$0));
   }
 }
 

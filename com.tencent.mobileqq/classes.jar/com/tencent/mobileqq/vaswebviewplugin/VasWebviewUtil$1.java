@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdhb;
-import bdrh;
-import bdrl;
+import bgmg;
+import bgwh;
+import bgwl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ final class VasWebviewUtil$1
           return;
         }
         ((SharedPreferences)localObject1).edit().putLong("read_vas_asyncCookie", System.currentTimeMillis()).commit();
-        localObject1 = bdhb.a(new File(BaseApplicationImpl.getContext().getFilesDir(), bdrh.e.a));
+        localObject1 = bgmg.a(new File(BaseApplicationImpl.getContext().getFilesDir(), bgwh.e.a));
         if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
           break;
         }
@@ -65,7 +65,7 @@ final class VasWebviewUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil.1
  * JD-Core Version:    0.7.0.1
  */

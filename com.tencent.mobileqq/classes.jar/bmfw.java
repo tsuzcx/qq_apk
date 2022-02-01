@@ -1,16 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bmfw
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public bmfw(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  public bmfw(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.b.setTranslationX(0.0F);
+    if (!this.a.d) {
+      this.a.f();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.h();
+      this.a.a();
+    }
   }
 }
 

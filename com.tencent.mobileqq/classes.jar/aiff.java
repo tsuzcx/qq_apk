@@ -1,12 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
 
 class aiff
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  aiff(aife paramaife) {}
+  aiff(aidp paramaidp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.I();
+  }
 }
 
 

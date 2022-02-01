@@ -1,35 +1,88 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.redbag.OtherBtnController.2;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class mpr
-  implements Animation.AnimationListener
+  extends mqf
 {
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  int jdField_a_of_type_Int = 2130841955;
+  Runnable jdField_a_of_type_JavaLangRunnable = null;
+  WeakReference<AVActivity> jdField_a_of_type_JavaLangRefWeakReference = null;
+  public mbx a;
   
-  public mpr(EffectFilterTextPager paramEffectFilterTextPager, View paramView)
+  mpr(moy parammoy)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    super(parammoy);
+    this.jdField_a_of_type_Mbx = null;
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    lek.c("EffectFilterTextPager", "onAnimationEnd :" + localView + "|" + paramAnimation);
-    if (localView != null) {
-      localView.setVisibility(4);
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    AVActivity localAVActivity = a();
+    QLog.w(this.i, 1, "setBtnsStyle, lightStyle[" + paramBoolean + "], avActivity[" + localAVActivity + "]");
+    if (localAVActivity == null) {}
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    for (AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(); localAVActivity == null; localAVActivity = null) {
+      return false;
+    }
+    if (localAVActivity == a()) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  void b()
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {}
+    boolean bool;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Mbx == null) {
+        this.jdField_a_of_type_Mbx = new mps(this);
+      }
+      if (this.jdField_a_of_type_JavaLangRunnable != null)
+      {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        this.jdField_a_of_type_JavaLangRunnable = null;
+      }
+      bool = a();
+      QLog.w(this.i, 1, "hook, mHook[" + bool + "]");
+      if (!bool) {
+        this.jdField_a_of_type_Int = 2130841955;
+      }
+      a(false);
+    } while (bool);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(a());
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Mbx);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  void c()
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaLangRunnable == null) {
+      this.jdField_a_of_type_JavaLangRunnable = new OtherBtnController.2(this);
+    }
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(this.jdField_a_of_type_JavaLangRunnable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mpr
  * JD-Core Version:    0.7.0.1
  */

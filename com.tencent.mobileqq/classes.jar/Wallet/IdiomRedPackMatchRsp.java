@@ -14,6 +14,7 @@ public final class IdiomRedPackMatchRsp
   public String groupid = "";
   public String hbIdiom = "";
   public String hbIdiomLastPY = "";
+  public String hbPoemRule = "";
   public int idiomSeq;
   public int isFinished;
   public long makeUin;
@@ -21,25 +22,6 @@ public final class IdiomRedPackMatchRsp
   public String strErr = "";
   public int subchannel;
   public int timeInterval;
-  
-  public IdiomRedPackMatchRsp() {}
-  
-  public IdiomRedPackMatchRsp(long paramLong1, String paramString1, long paramLong2, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4, String paramString4, int paramInt5, String paramString5, int paramInt6)
-  {
-    this.grabUin = paramLong1;
-    this.billno = paramString1;
-    this.makeUin = paramLong2;
-    this.status = paramInt1;
-    this.timeInterval = paramInt2;
-    this.strErr = paramString2;
-    this.hbIdiom = paramString3;
-    this.idiomSeq = paramInt3;
-    this.fromType = paramInt4;
-    this.groupid = paramString4;
-    this.isFinished = paramInt5;
-    this.hbIdiomLastPY = paramString5;
-    this.subchannel = paramInt6;
-  }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -56,6 +38,7 @@ public final class IdiomRedPackMatchRsp
     this.isFinished = paramJceInputStream.read(this.isFinished, 10, false);
     this.hbIdiomLastPY = paramJceInputStream.readString(11, false);
     this.subchannel = paramJceInputStream.read(this.subchannel, 12, false);
+    this.hbPoemRule = paramJceInputStream.readString(13, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -83,6 +66,9 @@ public final class IdiomRedPackMatchRsp
       paramJceOutputStream.write(this.hbIdiomLastPY, 11);
     }
     paramJceOutputStream.write(this.subchannel, 12);
+    if (this.hbPoemRule != null) {
+      paramJceOutputStream.write(this.hbPoemRule, 13);
+    }
   }
 }
 

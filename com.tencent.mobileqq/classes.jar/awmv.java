@@ -1,27 +1,22 @@
-import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
 
-public class awmv
+class awmv
+  extends anun
 {
-  public float a;
-  public int a;
-  public Bitmap a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
-  public float d = 0.0F;
-  public float e;
+  awmv(awmr paramawmr) {}
   
-  private awmv()
+  public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonManager", 2, "mVipStatusObserver vip change");
+    }
+    super.a();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awmv
  * JD-Core Version:    0.7.0.1
  */

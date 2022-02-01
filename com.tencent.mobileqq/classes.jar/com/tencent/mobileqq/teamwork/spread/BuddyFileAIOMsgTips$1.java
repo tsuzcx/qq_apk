@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import arby;
-import bajf;
-import baji;
+import athj;
+import bdkj;
+import bdkm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.List;
 public class BuddyFileAIOMsgTips$1
   implements Runnable
 {
-  public BuddyFileAIOMsgTips$1(baji parambaji, bajf parambajf) {}
+  public BuddyFileAIOMsgTips$1(bdkm parambdkm, bdkj parambdkj) {}
   
   public void run()
   {
@@ -30,7 +30,7 @@ public class BuddyFileAIOMsgTips$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.BuddyFileAIOMsgTips.1
  * JD-Core Version:    0.7.0.1
  */

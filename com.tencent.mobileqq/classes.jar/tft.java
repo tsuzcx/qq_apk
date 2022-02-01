@@ -1,20 +1,18 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import java.util.ArrayList;
+import android.view.View;
 
-abstract interface tft
+public class tft
+  extends tfs
 {
-  public abstract void a(Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed);
+  public tft(String paramString)
+  {
+    super(-16777216, 0, 0, paramString);
+  }
   
-  public abstract void a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed);
-  
-  public abstract void a(Context paramContext, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt);
-  
-  public abstract boolean a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed);
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tft
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,39 @@
-import android.app.Activity;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.os.Build;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class mjc
+  extends msu
 {
-  public Button a;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  public TextView a;
-  public Button b;
-  public TextView b;
-  
-  public mjc()
-  {
-    this.jdField_a_of_type_AndroidWidgetButton = null;
-    this.jdField_b_of_type_AndroidWidgetButton = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-  }
+  public mjc(VideoControlUI paramVideoControlUI) {}
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetButton = null;
-    this.jdField_b_of_type_AndroidWidgetButton = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+    this.a.m();
   }
   
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(paramInt);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-    }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(paramInt);
-    }
-    if ((this.jdField_b_of_type_AndroidWidgetButton != null) && (paramInt != 0)) {
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(paramInt);
-    }
-  }
+  public void b() {}
   
-  public void a(Activity paramActivity)
+  public void c() {}
+  
+  public void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131372788));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131372623));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131372622));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131372653));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131372646));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity.findViewById(2131372651));
+    if (!this.a.h) {
+      this.a.e(0);
+    }
+    if ("GT-I9100G".equals(Build.MODEL))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.d, 2, "Model is 9100G, don't do animation");
+      }
+      return;
+    }
+    this.a.F();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mjc
  * JD-Core Version:    0.7.0.1
  */

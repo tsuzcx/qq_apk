@@ -1,39 +1,78 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import android.content.Context;
+import com.tencent.superplayer.api.SuperPlayerOption;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class sip
-  implements ViewTreeObserver.OnPreDrawListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayer;", "", "currentPositionMs", "", "getCurrentPositionMs", "()J", "durationMs", "getDurationMs", "isBuffering", "", "()Z", "isLoopBack", "setLoopBack", "(Z)V", "isPauseing", "isPlaying", "isPrepared", "isPrepareing", "outputMute", "getOutputMute", "setOutputMute", "speedRatio", "", "getSpeedRatio", "()F", "setSpeedRatio", "(F)V", "videoHeight", "", "getVideoHeight", "()I", "videoWidth", "getVideoWidth", "getStreamDumpInfo", "", "getToken", "getVideoView", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "openMediaPlayer", "", "context", "Landroid/content/Context;", "videoInfo", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerVideoInfo;", "startPositionMilsec", "playerOption", "Lcom/tencent/superplayer/api/SuperPlayerOption;", "pause", "pauseDownload", "prePlayViewShow", "release", "resumeDownload", "seekTo", "positionMilsec", "mode", "setEventListener", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IEventListener;", "setHttpBufferRange", "emergencyTime", "safePlayTime", "preloadDuration", "setLoopback", "isLoopback", "setXYaxis", "type", "start", "stop", "updatePlayerVideoView", "videoView", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface sip
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  public static final siq a = siq.a;
   
-  sip(sio paramsio, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract int a();
   
-  public boolean onPreDraw()
-  {
-    this.jdField_a_of_type_Sio.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a) + sio.a(this.jdField_a_of_type_Sio));
-    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Sio.a, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Sio.a) + sio.b(this.jdField_a_of_type_Sio));
-    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a) != null) {
-      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a).setVisibility(0);
-    }
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a, this.jdField_a_of_type_Sio.a.a(ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a)));
-    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a) != null) {
-      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a).setVisibility(4);
-    }
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a, this.jdField_a_of_type_Int, this.b);
-    return true;
-  }
+  public abstract long a();
+  
+  @Nullable
+  public abstract String a();
+  
+  @Nullable
+  public abstract six a();
+  
+  public abstract void a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void a(@NotNull Context paramContext, @NotNull sja paramsja, long paramLong, @NotNull SuperPlayerOption paramSuperPlayerOption);
+  
+  public abstract void a(@Nullable sio paramsio);
+  
+  public abstract void a(@Nullable six paramsix);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  @NotNull
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract boolean c();
+  
+  public abstract void d();
+  
+  public abstract boolean d();
+  
+  public abstract void e();
+  
+  public abstract boolean e();
+  
+  public abstract void f();
+  
+  public abstract boolean f();
+  
+  public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sip
  * JD-Core Version:    0.7.0.1
  */

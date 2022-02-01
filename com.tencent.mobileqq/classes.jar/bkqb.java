@@ -1,11 +1,8 @@
+import android.widget.ListAdapter;
+
 public abstract interface bkqb
-{
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-}
+  extends ListAdapter
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

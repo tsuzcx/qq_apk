@@ -1,104 +1,33 @@
-import android.os.Build;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.effect.engine.QEffectData;
 
 public class bdqi
+  implements OnCompositionLoadedListener
 {
-  public static int a;
-  public static boolean a = true;
-  public static boolean b = true;
-  public static boolean c = true;
-  public static boolean d = true;
-  public static boolean e = true;
-  public static boolean f = true;
-  public static boolean g = true;
-  public static boolean h = true;
-  public static boolean i = true;
-  public static boolean j = true;
-  public static boolean k = true;
-  public static boolean l;
-  public static boolean m;
+  public bdqi(QEffectLottieImageView paramQEffectLottieImageView) {}
   
-  static
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    String str1 = Build.MODEL;
-    String str2 = Build.MANUFACTURER;
-    if (str2.equalsIgnoreCase("htc")) {
-      bdqj.a().b(str1);
+    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
+      QLog.e("QEffectLottieImageView", 1, "onCompositionLoaded: composition= " + paramLottieComposition);
     }
-    do
-    {
+    if (paramLottieComposition == null) {
       return;
-      if ((str2.equalsIgnoreCase("samsung")) || (str2.equalsIgnoreCase("samsng")))
-      {
-        bdqj.a().a(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("motorola"))
-      {
-        bdqj.a().c(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("huawei"))
-      {
-        bdqj.a().d(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("zte"))
-      {
-        bdqj.a().e(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("meizu"))
-      {
-        bdqj.a().f(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("alps"))
-      {
-        bdqj.a().g(str1);
-        return;
-      }
-      if ((str2.equalsIgnoreCase("k-touch")) || (str2.equalsIgnoreCase("sprd")))
-      {
-        bdqj.a().h(str1);
-        return;
-      }
-      if ((str2.equalsIgnoreCase("yulong")) || (str2.equalsIgnoreCase("coolpad")))
-      {
-        bdqj.a().i(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("lenovo"))
-      {
-        bdqj.a().j(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("bbk"))
-      {
-        bdqj.a().k(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("gionee"))
-      {
-        bdqj.a().l(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("eton"))
-      {
-        bdqj.a().m(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("doov"))
-      {
-        bdqj.a().n(str1);
-        return;
-      }
-      if (str2.equalsIgnoreCase("sony ericsson"))
-      {
-        bdqj.a().o(str1);
-        return;
-      }
-    } while (!"xiaomi".equalsIgnoreCase(str2));
-    bdqj.a().p(str1);
+    }
+    if (QEffectLottieImageView.a(this.a))
+    {
+      QLog.e("QEffectLottieImageView", 1, "onCompositionLoaded: mIsStop " + QEffectLottieImageView.a(this.a));
+      return;
+    }
+    this.a.cancelAnimation();
+    this.a.setComposition(paramLottieComposition);
+    this.a.setProgress(0.0F);
+    this.a.setRepeatCount(QEffectLottieImageView.a(this.a).repeat);
+    this.a.setVisibility(0);
+    this.a.playAnimation();
   }
 }
 

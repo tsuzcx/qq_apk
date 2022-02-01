@@ -3,42 +3,42 @@ package com.tencent.av.ui.chatroom;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import mpc;
-import mpe;
+import mmh;
+import mmj;
 
 public class VideoChatRoomUIContoller$3
   implements Runnable
 {
-  public VideoChatRoomUIContoller$3(mpe parammpe) {}
+  public VideoChatRoomUIContoller$3(mmj parammmj) {}
   
   public void run()
   {
-    if ((QLog.isDevelopLevel()) && (mpe.a(this.this$0) != null))
+    if ((QLog.isDevelopLevel()) && (mmj.a(this.this$0) != null))
     {
-      if (mpe.a(this.this$0) == null) {
-        mpe.a(this.this$0, new StringBuilder(300));
+      if (mmj.a(this.this$0) == null) {
+        mmj.a(this.this$0, new StringBuilder(300));
       }
-      mpe.a(this.this$0).setLength(0);
-      mpe.a(this.this$0).append("updateChatRoomMsgList, list[");
-      Iterator localIterator = mpe.a(this.this$0).iterator();
+      mmj.a(this.this$0).setLength(0);
+      mmj.a(this.this$0).append("updateChatRoomMsgList, list[");
+      Iterator localIterator = mmj.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        mpc localmpc = (mpc)localIterator.next();
-        if (localmpc != null) {
-          mpe.a(this.this$0).append(localmpc.b()).append(", ");
+        mmh localmmh = (mmh)localIterator.next();
+        if (localmmh != null) {
+          mmj.a(this.this$0).append(localmmh.b()).append(", ");
         }
       }
-      mpe.a(this.this$0).append("]");
-      QLog.i("ChatRoomUtil", 4, mpe.a(this.this$0).toString());
+      mmj.a(this.this$0).append("]");
+      QLog.i("ChatRoomUtil", 4, mmj.a(this.this$0).toString());
     }
-    if ((mpe.a(this.this$0) != null) && (mpe.a(this.this$0) != null)) {
-      mpe.a(this.this$0).a(mpe.a(this.this$0), true);
+    if ((mmj.a(this.this$0) != null) && (mmj.a(this.this$0) != null)) {
+      mmj.a(this.this$0).a(mmj.a(this.this$0), true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.VideoChatRoomUIContoller.3
  * JD-Core Version:    0.7.0.1
  */

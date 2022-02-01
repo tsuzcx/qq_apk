@@ -1,43 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 class vpg
-  implements urr<vga, vgb>
+  implements zwo
 {
-  vpg(vpf paramvpf, vps paramvps) {}
+  vpg(vpe paramvpe) {}
   
-  public void a(@NonNull vga paramvga, @Nullable vgb paramvgb, @NonNull ErrorMessage paramErrorMessage)
+  public void a(boolean paramBoolean, Map<String, zwm> paramMap)
   {
-    if ((paramErrorMessage.isFail()) || (paramvgb == null))
+    if ((paramBoolean) && (paramMap != null))
     {
-      wxe.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Vps.a(paramErrorMessage, null, false);
-      return;
+      Iterator localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Object localObject = (zwm)paramMap.get(str);
+        if (!vpp.a.containsKey(str))
+        {
+          localObject = AnimationView.AnimationInfo.loadFromFolder(((zwm)localObject).b);
+          if (localObject != null)
+          {
+            ((AnimationView.AnimationInfo)localObject).mInterval = 50;
+            ((AnimationView.AnimationInfo)localObject).mCycle = 2147483647;
+            vpp.a.put(str, localObject);
+          }
+        }
+      }
+      vpe.a(this.a);
     }
-    vpf.a(this.jdField_a_of_type_Vpf);
-    this.jdField_a_of_type_Vpf.b.a(paramvgb.jdField_a_of_type_JavaUtilList, paramvgb.jdField_a_of_type_JavaLangString, paramvgb.jdField_a_of_type_Boolean);
-    ((woy)uwa.a(11)).a(paramvgb.jdField_a_of_type_JavaUtilList);
-    AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
-    boolean bool = wpp.a(paramvgb, localAtomicBoolean);
-    wxe.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramvgb.b), Integer.valueOf(vpf.b(this.jdField_a_of_type_Vpf)), Boolean.valueOf(bool) });
-    if ((!paramvgb.jdField_a_of_type_Boolean) && (vpf.b(this.jdField_a_of_type_Vpf) < 10) && ((!paramvgb.b) || (bool)))
-    {
-      wxe.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "feedId list not end, pull more");
-      paramvga.b = this.jdField_a_of_type_Vpf.b.a();
-      urp.a().a(paramvga, this);
-      return;
-    }
-    if (localAtomicBoolean.getAndSet(false)) {
-      this.jdField_a_of_type_Vpf.b.c();
-    }
-    this.jdField_a_of_type_Vps.a(paramErrorMessage, vpa.b(paramvgb.jdField_a_of_type_JavaUtilList), paramvgb.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vpg
  * JD-Core Version:    0.7.0.1
  */

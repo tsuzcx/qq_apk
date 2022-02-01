@@ -1,8 +1,12 @@
 package cooperation.plugin;
 
+import Override;
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PluginBaseActivity
   extends BasePluginActivity
@@ -11,7 +15,7 @@ public class PluginBaseActivity
   
   protected String a()
   {
-    return getString(2131690623);
+    return getString(2131690563);
   }
   
   protected boolean a()
@@ -19,19 +23,34 @@ public class PluginBaseActivity
     return false;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public int g()
   {
-    return getResources().getDimensionPixelSize(2131298914);
+    return getResources().getDimensionPixelSize(2131298998);
   }
   
   public final Activity getActivity()
   {
     return this;
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.plugin.PluginBaseActivity
  * JD-Core Version:    0.7.0.1
  */

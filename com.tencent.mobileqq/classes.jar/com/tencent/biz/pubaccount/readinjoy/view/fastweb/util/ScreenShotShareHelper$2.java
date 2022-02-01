@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import sdq;
+import tcf;
 
 public class ScreenShotShareHelper$2
   implements Runnable
 {
-  public ScreenShotShareHelper$2(sdq paramsdq) {}
+  public ScreenShotShareHelper$2(tcf paramtcf) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ScreenShotShareHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ScreenShotShareHelper.2
  * JD-Core Version:    0.7.0.1
  */

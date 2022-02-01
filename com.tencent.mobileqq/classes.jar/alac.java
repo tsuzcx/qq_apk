@@ -1,27 +1,44 @@
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.webviewplugin.Hole;
-import com.tencent.mobileqq.apollo.process.ui.framework.QzoneGameFloatView;
+import android.view.View.OnClickListener;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class alac
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class alac
+  implements View.OnClickListener
 {
-  public alac(QzoneGameFloatView paramQzoneGameFloatView, View paramView, DisplayMetrics paramDisplayMetrics) {}
+  alac(akyh paramakyh, ajbx paramajbx) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    bcst.b(akyh.a(this.jdField_a_of_type_Akyh).app, "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    Intent localIntent;
+    if (localBaseActivity != null)
+    {
+      if (!URLUtil.isValidUrl(this.jdField_a_of_type_Ajbx.a)) {
+        break label151;
+      }
+      localIntent = new Intent(localBaseActivity, QQBrowserActivity.class);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", this.jdField_a_of_type_Ajbx.a);
+      localIntent.putExtra("hideRightButton", true);
+      localBaseActivity.startActivity(localIntent);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentBizWebviewpluginHole.setHole((this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getLeft() + this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getRight()) / 2 - 1, (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getBottom()) / 2 - 1, (int)(30.0F * this.jdField_a_of_type_AndroidUtilDisplayMetrics.density));
-      this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentBizWebviewpluginHole.invalidate();
+      this.jdField_a_of_type_Akyh.a(7, 0);
+      bcst.a(akyh.a(this.jdField_a_of_type_Akyh).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 5, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      label151:
+      localIntent = new Intent(localBaseActivity, PhoneUnityBindInfoActivity.class);
+      localIntent.putExtra("kSrouce", 0);
+      localBaseActivity.startActivity(localIntent);
     }
   }
 }

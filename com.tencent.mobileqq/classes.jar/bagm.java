@@ -1,25 +1,6 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-final class bagm
-  implements DialogInterface.OnClickListener
+public abstract interface bagm
 {
-  bagm(Context paramContext, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    try
-    {
-      arrr.c(this.jdField_a_of_type_AndroidContentContext, aoxg.a().a());
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
-    }
-  }
+  public abstract void a();
 }
 
 

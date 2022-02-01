@@ -1,15 +1,14 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import kotlin.Metadata;
 
-public final class aytx
-  implements ThreadFactory
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class aytx
+  implements View.OnClickListener
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  public static final aytx a = new aytx();
   
-  public Thread newThread(Runnable paramRunnable)
-  {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
-  }
+  public final void onClick(View paramView) {}
 }
 
 

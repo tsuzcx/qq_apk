@@ -1,15 +1,15 @@
 package cooperation.qwallet.plugin.ipc;
 
-import altm;
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import bdgc;
+import anmu;
+import bglf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import cooperation.qwallet.plugin.QWalletHelper;
 import java.util.HashMap;
 
 class CorpReq$TenpayFriendListObserver
-  extends altm
+  extends anmu
 {
   private static TenpayFriendListObserver _self;
   private HashMap<String, ResultReceiver> mRecieverMap = new HashMap();
@@ -42,7 +42,7 @@ class CorpReq$TenpayFriendListObserver
       return;
       CorpResp localCorpResp = new CorpResp();
       localCorpResp.corpReqType = CorpReq.corpReqType;
-      localCorpResp.userNick = bdgc.c((QQAppInterface)localObject, paramString, false);
+      localCorpResp.userNick = bglf.c((QQAppInterface)localObject, paramString, false);
       localObject = new Bundle();
       localCorpResp.toBundle((Bundle)localObject);
       paramString = (ResultReceiver)this.mRecieverMap.remove(paramString);
@@ -52,7 +52,7 @@ class CorpReq$TenpayFriendListObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.CorpReq.TenpayFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.model;
 
-import amvh;
-import angf;
+import aoty;
+import apew;
 
 public class UniformGLRenderManagerImpl$1
   implements Runnable
 {
-  public UniformGLRenderManagerImpl$1(angf paramangf, amvh paramamvh) {}
+  public UniformGLRenderManagerImpl$1(apew paramapew, aoty paramaoty) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class UniformGLRenderManagerImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.UniformGLRenderManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

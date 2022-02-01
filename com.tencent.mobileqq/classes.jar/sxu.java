@@ -1,18 +1,16 @@
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.6;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class sxu
-  implements beua
+class sxu
+  implements View.OnClickListener
 {
-  public sxu(PublicAccountH5AbilityPlugin.6 param6, ref paramref) {}
+  sxu(sxt paramsxt) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$6.this$0.a.b(this.jdField_a_of_type_Ref);
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sxu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,7 @@
-import android.content.Context;
-import com.tencent.ad.tangram.net.AdNet;
-
 public class aasg
 {
-  public static int a(Context paramContext)
-  {
-    return AdNet.getType(paramContext);
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return bdin.d(paramContext);
-  }
+  public String a;
+  public boolean a;
 }
 
 

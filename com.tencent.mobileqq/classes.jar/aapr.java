@@ -1,22 +1,24 @@
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class aapr
+class aapr
+  extends zmm
 {
-  public float a;
-  public float b;
-  public View f;
-  public View g;
-  public View h;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
-  public int o;
+  aapr(aapl paramaapl, aapv paramaapv) {}
   
-  public String toString()
+  public void onFailure(String paramString)
   {
-    return " \nvideoViewScaleXby " + this.a + " videoViewScaleYby " + this.b + " videoViewXBy " + this.l + " videoViewYBy " + this.m + " btnTopMarginOffset " + this.j + " btnLeftMarginOffset " + this.k;
+    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
+    this.jdField_a_of_type_Aapv.onFailure(paramString);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
+      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Aapl.a.a));
+    }
+    this.jdField_a_of_type_Aapl.a.a = System.currentTimeMillis();
   }
 }
 

@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bktc;
+import bnid;
 
 class AECameraGLSurfaceView$17
   implements Runnable
@@ -9,15 +9,15 @@ class AECameraGLSurfaceView$17
   
   public void run()
   {
-    bktc localbktc = (bktc)AECameraGLSurfaceView.a(this.this$0);
-    if (localbktc != null) {
-      localbktc.b(this.a);
+    bnid localbnid = (bnid)AECameraGLSurfaceView.a(this.this$0);
+    if (localbnid != null) {
+      localbnid.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.17
  * JD-Core Version:    0.7.0.1
  */

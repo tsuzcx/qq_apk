@@ -1,32 +1,13 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import java.util.ArrayList;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView.3;
 
-class bapi
-  implements bkgo
+public class bapi
+  implements banv
 {
-  bapi(baph parambaph) {}
+  public bapi(EffectsCameraCaptureView.3 param3) {}
   
-  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  public void a()
   {
-    QLog.d("TogetherControlManager", 2, new Object[] { "ongetAdvs result:", Boolean.valueOf(paramBoolean), " rsp:", paramGetAdsRsp.toString() });
-    if (paramBoolean)
-    {
-      paramGetAdsRsp = bapo.a(paramBoolean, paramGetAdsRsp);
-      if (paramGetAdsRsp != null)
-      {
-        this.a.a.add(paramGetAdsRsp);
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        URLDrawable.getDrawable(paramGetAdsRsp.c, localURLDrawableOptions).startDownload();
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.d("TogetherControlManager", 2, "ongetAdvs banner is null");
+    bnnx.a().a();
   }
 }
 

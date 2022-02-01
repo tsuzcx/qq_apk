@@ -1,39 +1,94 @@
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
+import android.animation.Animator;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.Fragment;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.mobileqq.activity.photo.album.AlbumListBaseData;
+import com.tencent.qqlive.module.videoreport.inject.fragment.FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportFragment;
+import com.tencent.widget.XFrameLayout;
+import com.tencent.widget.XListView;
 
-public class bnfa
+public abstract class bnfa
+  extends ReportFragment
 {
-  public static final int[] a;
-  public static final int[] b;
-  public int a;
-  public Drawable a;
-  public String a;
-  public int b;
-  public String b;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  public bnex a;
+  public bnfe a;
+  public bnfq a;
+  AlbumListBaseData jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData;
+  XFrameLayout jdField_a_of_type_ComTencentWidgetXFrameLayout;
+  public XListView a;
   
-  static
+  @TargetApi(14)
+  private void a(View paramView)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { -1, -2148308, -1009097, -8136876, -13338378 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130846327, 2130846330, 2130846328, 2130846333, 2130846332 };
+    this.jdField_a_of_type_ComTencentWidgetXFrameLayout = ((XFrameLayout)paramView.findViewById(2131369942));
+    this.jdField_a_of_type_ComTencentWidgetXFrameLayout.setCornerRadiusAndMode(Utils.dp2px(10.0D), 5);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131362552));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setWrapByScroll(true);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bnex);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new bnfd(this, null));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362583));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new bnfb(this));
+    paramView.findViewById(2131362582).setVisibility(8);
+    int i = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_index", 0);
+    int j = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_y", 0);
+    Looper.myQueue().addIdleHandler(new bnfc(this, i, j));
+    this.jdField_a_of_type_Bnfq.b();
   }
   
-  public bnfa(Drawable paramDrawable, int paramInt1, int paramInt2)
+  protected abstract bnfq a();
+  
+  public void a(bnfe parambnfe)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if (paramInt1 == 0) {
-      this.jdField_b_of_type_JavaLangString = ColorPicker.a(paramInt2);
+    this.jdField_a_of_type_Bnfe = parambnfe;
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+  }
+  
+  public Animator onCreateAnimator(int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    return null;
+  }
+  
+  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  {
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561037, paramViewGroup, false);
+    this.jdField_a_of_type_Bnfq = a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData = this.jdField_a_of_type_Bnfq.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData;
+    paramViewGroup = getActivity().getIntent();
+    this.jdField_a_of_type_Bnfq.a(paramViewGroup);
+    a(paramLayoutInflater);
+    FragmentCollector.onFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+  }
+  
+  public void onDestroyView()
+  {
+    super.onDestroyView();
+    if (this.jdField_a_of_type_Bnfq != null) {
+      this.jdField_a_of_type_Bnfq.a();
     }
-  }
-  
-  public bnfa(Drawable paramDrawable, int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = Color.parseColor(paramString);
   }
 }
 

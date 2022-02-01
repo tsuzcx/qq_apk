@@ -1,10 +1,17 @@
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
-class aymd
+public class aymd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  long jdField_a_of_type_Long;
-  DiscussionMemberInfo jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo;
-  String jdField_a_of_type_JavaLangString;
+  public aymd(ScanIconAnimateView paramScanIconAnimateView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
+  }
 }
 
 

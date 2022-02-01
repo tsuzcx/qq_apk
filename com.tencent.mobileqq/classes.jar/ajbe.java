@@ -1,18 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.OnConvertListener;
-import eipc.EIPCResult;
+import java.util.ArrayList;
 
-class ajbe
-  implements EmojiGifHelper.OnConvertListener
+public class ajbe
+  extends ajax
 {
-  ajbe(ajaz paramajaz, int paramInt) {}
+  public ArrayList<aixh> a;
+  public boolean a;
   
-  public void onConvertResult(boolean paramBoolean, String paramString)
+  public ajbe(ArrayList<aixh> paramArrayList, boolean paramBoolean)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("res", paramBoolean);
-    localBundle.putString("path", paramString);
-    this.jdField_a_of_type_Ajaz.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

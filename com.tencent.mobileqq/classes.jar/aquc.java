@@ -1,26 +1,73 @@
-class aquc
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
+public class aquc
+  extends aqkz<aqua>
 {
-  private int jdField_a_of_type_Int;
-  private aqtw jdField_a_of_type_Aqtw;
-  
-  public aquc(aqua paramaqua, aqtw paramaqtw)
+  @NonNull
+  public aqua a(int paramInt)
   {
-    this.jdField_a_of_type_Aqtw = paramaqtw;
+    return new aqua();
   }
   
-  public int a()
+  @Nullable
+  public aqua a(aqlg[] paramArrayOfaqlg)
   {
-    return this.jdField_a_of_type_Int;
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
+    {
+      aqua localaqua = aqua.a(paramArrayOfaqlg[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherEntryConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
+      }
+      return localaqua;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherEntryConfProcessor", 2, "onParsed is null");
+    }
+    return null;
   }
   
-  public aqtw a()
+  public void a(aqua paramaqua)
   {
-    return this.jdField_a_of_type_Aqtw;
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherEntryConfProcessor", 2, "onUpdate " + paramaqua.toString());
+    }
   }
   
-  public void a(int paramInt)
+  public Class<aqua> clazz()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return aqua.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherEntryConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherEntryConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 553;
   }
 }
 

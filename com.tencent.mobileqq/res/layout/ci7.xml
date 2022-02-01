@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/ktt" android:layout_width="60.0dip" android:layout_height="60.0dip"
+<RelativeLayout android:layout_width="296.0dip" android:layout_height="166.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/lnn" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" />
-    <ImageView android:layout_gravity="center" android:id="@id/met" android:background="@drawable/e87" android:layout_width="25.0dip" android:layout_height="25.0dip" android:scaleType="centerCrop" />
-</FrameLayout>
+    <com.tencent.image.URLImageView android:id="@id/joh" android:layout_width="fill_parent" android:layout_height="93.0dip" android:scaleType="fitXY" android:layout_alignParentTop="true" />
+    <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wm_" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/i2z" android:background="@drawable/brz" android:layout_width="254.0dip" android:layout_height="93.0dip" android:layout_marginTop="55.0dip" android:layout_centerHorizontal="true" />
+</RelativeLayout>

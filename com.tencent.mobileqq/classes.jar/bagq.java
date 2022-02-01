@@ -1,62 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bagq
+  implements View.OnClickListener
 {
-  public static FileManagerEntity a(ForwardFileInfo paramForwardFileInfo)
-  {
-    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
-    localFileManagerEntity.fileName = paramForwardFileInfo.d();
-    localFileManagerEntity.nFileType = arrr.a(localFileManagerEntity.fileName);
-    localFileManagerEntity.nSessionId = paramForwardFileInfo.b();
-    localFileManagerEntity.cloudType = paramForwardFileInfo.d();
-    return localFileManagerEntity;
-  }
+  public bagq(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, MessageForPic paramMessageForPic) {}
   
-  public static String a(int paramInt)
+  public void onClick(View paramView)
   {
-    String str = alud.a(2131715187);
-    if (paramInt == 3) {
-      str = "word";
-    }
-    do
+    if (!this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.isAdded()) {}
+    for (;;)
     {
-      return str;
-      if (paramInt == 6) {
-        return "excel";
-      }
-      if (paramInt == 7) {
-        return "ppt";
-      }
-    } while (paramInt != 9);
-    return "pdf";
-  }
-  
-  public static void a(Activity paramActivity, String paramString)
-  {
-    a(paramActivity, paramString, false);
-  }
-  
-  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
-  {
-    Object localObject = new FileManagerEntity();
-    ((FileManagerEntity)localObject).nSessionId = arrr.a().longValue();
-    ((FileManagerEntity)localObject).fileName = paramString;
-    paramString = new ForwardFileInfo();
-    paramString.d(9);
-    paramString.b(10001);
-    paramString.d(((FileManagerEntity)localObject).fileName);
-    paramString.b(((FileManagerEntity)localObject).nSessionId);
-    localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("isMiniProgram", paramBoolean);
-    Intent localIntent = new Intent(paramActivity, FileBrowserActivity.class);
-    localIntent.putExtra("fileinfo", paramString);
-    localIntent.putExtra("file_browser_extra_params", (Bundle)localObject);
-    paramActivity.startActivityForResult(localIntent, 102);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.getActivity(), ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment));
+    }
   }
 }
 

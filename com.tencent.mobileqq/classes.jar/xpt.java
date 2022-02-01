@@ -1,24 +1,24 @@
-import android.os.Handler;
-
 class xpt
-  extends alwx
+  implements xpo
 {
-  xpt(xpr paramxpr) {}
+  public xpo a;
   
-  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
+  private xpt(xpr paramxpr) {}
+  
+  public boolean a(xpl paramxpl, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    paramalwy = this.a.a;
-    if (paramBoolean) {}
-    for (int i = 4;; i = 5)
-    {
-      paramalwy.sendEmptyMessage(i);
-      return;
+    if (xpr.a(this.jdField_a_of_type_Xpr) != null) {
+      xpr.a(this.jdField_a_of_type_Xpr).c(xpr.a(this.jdField_a_of_type_Xpr));
     }
+    if (this.jdField_a_of_type_Xpo != null) {
+      return this.jdField_a_of_type_Xpo.a(paramxpl, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xpt
  * JD-Core Version:    0.7.0.1
  */

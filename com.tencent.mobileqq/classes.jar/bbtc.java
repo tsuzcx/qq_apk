@@ -1,22 +1,18 @@
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
 import java.util.List;
 
-public abstract interface bbtc
+public class bbtc
+  extends bbti
 {
-  public abstract void a(int paramInt);
+  public bbtc(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
+  {
+    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
+  }
   
-  public abstract void a(bbsa parambbsa);
-  
-  public abstract void a(bbsa parambbsa, String paramString);
-  
-  public abstract void a(List<bbsa> paramList, boolean paramBoolean, String paramString, long paramLong);
-  
-  public abstract void b(bbsa parambbsa);
-  
-  public abstract void c(bbsa parambbsa);
-  
-  public abstract void d(bbsa parambbsa);
-  
-  public abstract void e(bbsa parambbsa);
+  public bbmx a(List<bbmy> paramList, String paramString)
+  {
+    return new bbmq(paramList, paramString, GroupSearchEngine.a(this.a));
+  }
 }
 
 

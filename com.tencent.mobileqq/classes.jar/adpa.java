@@ -1,35 +1,25 @@
-import android.app.Dialog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adpa
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public adpa(PublicAccountListActivity paramPublicAccountListActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
+  public adpa(BaseChatPie paramBaseChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    while (paramAnimation != this.b) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.requestLayout();
+    this.a.jdField_a_of_type_Aimj.a();
+    SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+    localEditor.putInt("funcall_tip_" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 4);
+    localEditor.commit();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

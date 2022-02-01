@@ -1,32 +1,72 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.data.ArkFlashChatMessage;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import tencent.im.oidb.cmd0x79a.oidb_0x79a.RspBody;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
 
-class afka
-  implements DialogInterface.OnClickListener
+public class afka
+  implements nnw
 {
-  afka(afjw paramafjw, MessageForArkFlashChat paramMessageForArkFlashChat) {}
+  public afka(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface = (MessageForArkFlashChat)azaf.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat);
-    if (paramDialogInterface.msgData == null) {
-      if (paramDialogInterface.ark_app_message == null) {
-        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
+    this.a.stopTitleProgress();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwAppPrivilegeFlag & 0x4000) != 0L) {
+      TroopInfoActivity.h(this.a);
+    }
+  }
+  
+  public void a(oidb_0x79a.RspBody paramRspBody)
+  {
+    oidb_0x88d.GroupInfo localGroupInfo = paramRspBody.info;
+    this.a.stopTitleProgress();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus = paramRspBody.uint32_tribe_status.get();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.modifyCount = paramRspBody.uint32_modify_countdown.get();
+    int j = 0;
+    int i;
+    if (4 != this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
+    {
+      i = j;
+      if (3 != this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt) {}
+    }
+    else
+    {
+      i = j;
+      if (localGroupInfo != null) {
+        if (4 != localGroupInfo.uint32_group_type_flag.get())
+        {
+          i = j;
+          if (3 != localGroupInfo.uint32_group_type_flag.get()) {}
+        }
+        else
+        {
+          this.a.a(localGroupInfo);
+          i = 1;
+        }
       }
     }
-    while (this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 1) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 2) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 3))
     {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramRspBody.uint64_tribe_id.get();
+      this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramRspBody.str_tribe_name.get();
+      if (i == 0) {
+        this.a.a(localGroupInfo);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(7);
       return;
-      paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
     }
-    this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.uniseq);
-    this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwAppPrivilegeFlag & 0x4000) != 0L)
+    {
+      TroopInfoActivity.h(this.a);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
   }
 }
 

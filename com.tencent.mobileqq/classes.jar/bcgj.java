@@ -1,64 +1,41 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.media.Image;
+import android.media.Image.Plane;
+import android.media.ImageReader;
+import android.media.ImageReader.OnImageAvailableListener;
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
+import java.nio.ByteBuffer;
 
-class bcgj
-  implements View.OnTouchListener
+public class bcgj
+  implements ImageReader.OnImageAvailableListener
 {
-  long jdField_a_of_type_Long = 0L;
+  public bcgj(Camera2Control paramCamera2Control) {}
   
-  bcgj(bcgh parambcgh) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onImageAvailable(ImageReader paramImageReader)
   {
-    if ((this.jdField_a_of_type_Bcgh.jdField_a_of_type_Boolean) || (!(paramView instanceof ImageView))) {
-      return false;
-    }
-    int i = paramMotionEvent.getAction();
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof autj))) {}
-    for (paramMotionEvent = (autj)paramView.getTag();; paramMotionEvent = null)
+    try
     {
-      switch (i)
+      bcgu.a(1, "[Camera2]Image Capture cost:" + (float)(System.currentTimeMillis() - Camera2Control.a(this.a)) / 1000.0F);
+      bcgt.a(2, Camera2Control.a(this.a).a * Camera2Control.a(this.a).b, System.currentTimeMillis() - Camera2Control.a(this.a));
+      paramImageReader = paramImageReader.acquireNextImage();
+      if (paramImageReader != null)
       {
-      }
-      for (;;)
-      {
-        return true;
-        if (paramMotionEvent != null)
+        ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
+        byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
+        localByteBuffer.get(arrayOfByte);
+        if ((Camera2Control.a(this.a) != null) && (Camera2Control.a(this.a) != null))
         {
-          paramView.setAlpha(paramMotionEvent.a() * 0.5F);
+          Camera2Control.a(this.a).a = Camera2Control.a(this.a).a;
+          Camera2Control.a(this.a).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.a)));
         }
-        else
-        {
-          paramView.setAlpha(0.5F);
-          continue;
-          if (paramMotionEvent != null) {
-            paramView.setAlpha(paramMotionEvent.a());
-          }
-          while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
-          {
-            return true;
-            paramView.setAlpha(1.0F);
-          }
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          azqs.b(this.jdField_a_of_type_Bcgh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Bcgh.jdField_a_of_type_JavaLangString, "0X800A852", "0X800A852", 0, 0, "" + paramMotionEvent.jdField_a_of_type_Long, "", "", "");
-          paramView = bcos.a().a(this.jdField_a_of_type_Bcgh.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bcgh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          paramMotionEvent = new Intent(this.jdField_a_of_type_Bcgh.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-          paramMotionEvent.putExtra("url", paramView);
-          this.jdField_a_of_type_Bcgh.jdField_a_of_type_AndroidAppActivity.startActivity(paramMotionEvent);
-          continue;
-          if (paramMotionEvent != null) {
-            paramView.setAlpha(paramMotionEvent.a());
-          } else {
-            paramView.setAlpha(1.0F);
-          }
-        }
+        paramImageReader.close();
       }
+      return;
+    }
+    catch (Exception paramImageReader)
+    {
+      bcgu.a(1, "[Camera2] onImageAvailable mImageReader exception:" + paramImageReader);
     }
   }
 }

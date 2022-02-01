@@ -1,26 +1,38 @@
-public abstract interface uxe
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
+import qqcircle.QQCircleFeedBase.StBusiInfoData;
+
+final class uxe
+  implements zxa<FeedCloudRead.StGetBusiInfoRsp>
 {
-  public abstract String getName();
-  
-  public abstract int getRelationType();
-  
-  public abstract String getUnionId();
-  
-  public abstract boolean isFriend();
-  
-  public abstract boolean isMe();
-  
-  public abstract boolean isSubscribe();
-  
-  public abstract boolean isSubscribeButNoFriend();
-  
-  public abstract boolean isVip();
-  
-  public abstract boolean isVipButNoFriend();
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
+  {
+    QLog.i("QCircleGlobalInfo", 1, "updateCircleInfo onReceive: isSuccess=" + paramBoolean + " retCode=" + paramLong);
+    if ((paramBoolean) && (paramLong == 0L))
+    {
+      paramString = paramStGetBusiInfoRsp.busiRspData.get();
+      if (paramString != null) {
+        paramStGetBusiInfoRsp = new QQCircleFeedBase.StBusiInfoData();
+      }
+    }
+    try
+    {
+      paramStGetBusiInfoRsp.mergeFrom(paramString.toByteArray());
+      uxc.a(paramStGetBusiInfoRsp.schoolInfos.get(), paramStGetBusiInfoRsp.companyInfos.get());
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("QCircleGlobalInfo", 1, "updateCircleInfo error", paramString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uxe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class adpc
-  implements View.OnClickListener
+  implements bkql
 {
-  public adpc(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adpc(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.a.cancel();
+    if (paramBoolean)
+    {
+      BaseChatPie.a(this.a);
+      BaseChatPie.b(this.a);
+    }
   }
 }
 

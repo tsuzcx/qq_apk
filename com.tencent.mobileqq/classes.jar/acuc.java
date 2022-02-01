@@ -1,24 +1,128 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
-class acuc
-  implements DialogInterface.OnClickListener
+public class acuc
+  extends bhll
+  implements bhmj
 {
-  acuc(acua paramacua, String paramString) {}
+  protected Intent a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acuc(Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    DiscussionInfoCardActivity.a(this.jdField_a_of_type_Acua.a).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Acua.a.app.a().a();
-    paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaLangString, 3000));
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_Acua.a.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_Acua.a.finish();
+    super(paramContext, paramActivity, paramAppInterface);
+    this.a = paramIntent;
+  }
+  
+  public void a()
+  {
+    super.doOnResume();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.doOnCreate(this.a);
+  }
+  
+  public void a(TouchWebView paramTouchWebView)
+  {
+    this.mWebview = paramTouchWebView;
+  }
+  
+  public boolean a(WebView paramWebView, String paramString)
+  {
+    QLog.i("AbsWebView", 1, "qZoneShouldOverrideUrlLoading:" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    Object localObject;
+    do
+    {
+      return true;
+      localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      {
+        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+        for (boolean bool = true;; bool = false) {
+          return bool;
+        }
+      }
+      paramString = Uri.parse(paramString);
+      localObject = paramString.getScheme();
+    } while (!nhe.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
+    paramWebView = new Intent("android.intent.action.VIEW", paramString);
+    paramWebView.addFlags(268435456);
+    try
+    {
+      this.mContext.startActivity(paramWebView);
+      return true;
+    }
+    catch (Exception paramWebView)
+    {
+      QLog.e("AbsWebView", 1, "startActivity", paramWebView);
+    }
+    return true;
+  }
+  
+  public void b()
+  {
+    super.doOnPause();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    super.bindJavaScript(paramArrayList);
+  }
+  
+  public void buildBottomBar() {}
+  
+  public void buildContentView(Bundle paramBundle) {}
+  
+  public void buildData() {}
+  
+  public void buildLayout() {}
+  
+  public void buildTitleBar() {}
+  
+  public final void buildWebView(AppInterface paramAppInterface)
+  {
+    super.buildBaseWebView(paramAppInterface);
+  }
+  
+  public void c()
+  {
+    try
+    {
+      super.doOnDestroy();
+      return;
+    }
+    catch (Exception localException)
+    {
+      acqy.d("GdtWebViewBuilder", "getVideoComponent error", localException);
+    }
+  }
+  
+  public void preInitWebviewPlugin()
+  {
+    super.preInitPluginEngine();
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
+      return true;
+    }
+    paramWebView.loadUrl(paramString);
+    return true;
   }
 }
 

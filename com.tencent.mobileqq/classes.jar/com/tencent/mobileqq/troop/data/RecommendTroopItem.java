@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.data;
 
-import awge;
-import awhp;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import java.util.List;
 import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.Label;
 
 public class RecommendTroopItem
-  extends awge
+  extends Entity
 {
   private static final String JUMP_SCHEME = "mqqapi://app/joinImmediately?source_id=3&version=1.0&src_type=app&pkg=com.tencent.mobileqq&cmp=com.tencent.biz.JoinGroupTransitActivity&group_code=%s&subsource_id=%s";
   public int activity;
   public String authSig;
-  @awhp
+  @notColumn
   public boolean hasRequestJoin;
   public String intro;
   public List<oidb_0x9fb.Label> labelList;
@@ -23,7 +23,7 @@ public class RecommendTroopItem
   public String recomAlgol;
   public String recommendReason;
   public int troopType;
-  @awhs
+  @unique
   public String uin;
   public byte[] x935RgroupInfo;
   public byte[] x9fbRgroupInfo;
@@ -45,7 +45,7 @@ public class RecommendTroopItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.RecommendTroopItem
  * JD-Core Version:    0.7.0.1
  */

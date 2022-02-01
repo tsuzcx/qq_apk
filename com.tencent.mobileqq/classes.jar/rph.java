@@ -1,71 +1,44 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class rph
-  extends BaseAdapter
+class rph
+  implements rox
 {
-  private rph(ChannelClassificationListView paramChannelClassificationListView) {}
+  rph(rpf paramrpf, ColumnInfo paramColumnInfo) {}
   
-  public T a(int paramInt)
+  public void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    return (rpj)ChannelClassificationListView.a(this.a).get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return ChannelClassificationListView.a(this.a).size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131562512, paramViewGroup, false);
-      paramView.setOnClickListener(new rpi(this, paramViewGroup));
+    QLog.i("RIJUGC.ManageColumnPresenter", 2, "createTopic response errorCode = " + paramInt1 + ", errorMsg = " + paramString + ", bizCode = " + paramInt2 + ", topicId = " + paramInt3);
+    if (rpf.a(this.jdField_a_of_type_Rpf) == null) {
+      return;
     }
-    for (;;)
+    rpf.a(this.jdField_a_of_type_Rpf).d();
+    if (paramInt1 == 0)
     {
-      paramViewGroup = (rpj)ChannelClassificationListView.a(this.a).get(paramInt);
-      paramView.setTag(Integer.valueOf(paramInt));
-      ((TextView)paramView).setText(paramViewGroup.a());
-      if (!paramViewGroup.a())
+      if (paramInt2 == 0)
       {
-        paramViewGroup.a(true);
-        paramViewGroup = new JSONObject();
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID = paramInt3;
+        rpf.a(this.jdField_a_of_type_Rpf).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, true);
+        rpf.a(this.jdField_a_of_type_Rpf).a(2131716953);
+        rpf.a(this.jdField_a_of_type_Rpf).a();
+        return;
       }
-      try
+      rpf.a(this.jdField_a_of_type_Rpf).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
+      if (!paramString.isEmpty())
       {
-        paramViewGroup.put("subchannelid", a(paramInt).b());
-        paramViewGroup.put("subchannelname", a(paramInt).a());
-        paramViewGroup.put("channelid", ChannelClassificationListView.a(this.a));
-        nrt.a(null, ors.a() + "", "0X8009932", "0X8009932", 0, 0, "", "", "", paramViewGroup.toString(), false);
-        return paramView;
+        rpf.a(this.jdField_a_of_type_Rpf).a(paramString);
+        return;
       }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
+      rpf.a(this.jdField_a_of_type_Rpf).a(2131716952);
+      return;
     }
+    rpf.a(this.jdField_a_of_type_Rpf).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
+    rpf.a(this.jdField_a_of_type_Rpf).a(2131716952);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rph
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,25 @@
-import android.content.Context;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajmj
-  extends ajlx
+  extends anhl
 {
-  public ajmj(Context paramContext)
+  public ajmj(TroopFragment paramTroopFragment) {}
+  
+  protected void a(int paramInt)
   {
-    this.a = paramContext.getString(2131698833);
-    this.b = this.a;
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.e();
   }
 }
 

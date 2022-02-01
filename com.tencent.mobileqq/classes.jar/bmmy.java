@@ -1,26 +1,29 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.res.Resources;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1;
 
-class bmmy
-  implements View.OnTouchListener
+public class bmmy
+  implements DialogInterface.OnClickListener
 {
-  bmmy(bmmx parambmmx) {}
+  public bmmy(QzoneQunFeedJsPlugin.2.1 param1) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
-      continue;
-      this.a.a.setTextColor(Color.parseColor("#ffffff"));
-    }
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.a.a.a.mRuntime.a().getAccount();
+    Intent localIntent = new Intent();
+    String str = this.a.a.a.a.mRuntime.a().getResources().getString(2131716322);
+    QzonePluginProxyActivity.a(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
+    localIntent.putExtra("aid", "jhan_plxz");
+    localIntent.putExtra("success_tips", str);
+    localIntent.putExtra("direct_go", true);
+    QzonePluginProxyActivity.a(this.a.a.a.a.mRuntime.a(), paramDialogInterface, localIntent, 4);
   }
 }
 

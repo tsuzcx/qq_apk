@@ -2,21 +2,22 @@ package com.tencent.biz.qqcircle.report;
 
 import java.util.List;
 import qqcircle.QQCircleReport.SingleDcData;
-import uab;
+import vrl;
 
 public class QCircleReporter$6
   implements Runnable
 {
-  public QCircleReporter$6(uab paramuab, QQCircleReport.SingleDcData paramSingleDcData) {}
+  public QCircleReporter$6(vrl paramvrl, QQCircleReport.SingleDcData paramSingleDcData) {}
   
   public void run()
   {
-    uab.a(this.this$0).add(this.a);
+    vrl.d(this.this$0).add(this.a);
+    vrl.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.report.QCircleReporter.6
  * JD-Core Version:    0.7.0.1
  */

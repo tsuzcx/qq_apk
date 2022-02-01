@@ -1,15 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troopAddFrd.TroopRecommendFriendFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.statistics.WtloginReporter.1;
 
 public class bcue
-  implements View.OnClickListener
 {
-  public bcue(TroopRecommendFriendFragment paramTroopRecommendFriendFragment, bcty parambcty) {}
-  
-  public void onClick(View paramView)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopAddFrdTroopRecommendFriendFragment, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopAddFrdTroopRecommendFriendFragment), this.jdField_a_of_type_Bcty.a, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopAddFrdTroopRecommendFriendFragment));
+    ThreadManagerV2.executeOnFileThread(new WtloginReporter.1(paramQQAppInterface.getCurrentAccountUin()));
   }
 }
 

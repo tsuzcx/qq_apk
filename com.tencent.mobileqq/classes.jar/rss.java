@@ -1,24 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoPresenter.5.1;
+import java.util.List;
 
 public class rss
-  implements bhtv
+  implements rjg
 {
-  public rss(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  rss(rsn paramrsn) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public List a(int paramInt1, int paramInt2)
   {
-    this.a.a(new rsu(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
+    return riv.a(paramInt1, paramInt2);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(List paramList, boolean paramBoolean)
   {
-    this.a.a(new rst(this, "onScrollStateChanged", paramAbsListView, paramInt));
+    rsn.a(this.a).a(paramList, paramBoolean);
+    bjda.c(new SelectVideoPresenter.5.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rss
  * JD-Core Version:    0.7.0.1
  */

@@ -1,74 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agyn
-  extends aokh<agym>
+class agyn
+  extends ahbl
 {
-  public int a()
+  agyn(agwz paramagwz)
   {
-    return 410;
+    super(paramagwz, null);
   }
   
-  @NonNull
-  public agym a(int paramInt)
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    return new agym();
-  }
-  
-  @Nullable
-  public agym a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
-    {
-      agym localagym = agym.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecConfigProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
-      }
-      return localagym;
-    }
-    return null;
-  }
-  
-  public Class<agym> a()
-  {
-    return agym.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(agym paramagym)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      String str = ((QQAppInterface)localObject).c();
-      agyv.a(BaseApplicationImpl.getApplication(), str, paramagym.a());
-      agyv.a((QQAppInterface)localObject, paramagym.a());
-    }
-  }
-  
-  public boolean a()
-  {
-    return super.a();
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return new ahnj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

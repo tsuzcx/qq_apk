@@ -20,6 +20,8 @@ public abstract interface ITPDownloadProxyAidl
   
   public abstract int resumeDownload(int paramInt);
   
+  public abstract void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  
   public abstract boolean setClipInfo(int paramInt1, int paramInt2, String paramString, TPDownloadParamAidl paramTPDownloadParamAidl);
   
   public abstract void setMaxStorageSizeMB(long paramLong);
@@ -40,7 +42,7 @@ public abstract interface ITPDownloadProxyAidl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl
  * JD-Core Version:    0.7.0.1
  */

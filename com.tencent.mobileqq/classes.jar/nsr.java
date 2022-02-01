@@ -1,23 +1,91 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdDownloadInfo;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class nsr
-  implements Parcelable.Creator<VideoInfo.GameAdDownloadInfo>
+public class nsr
+  extends anry
 {
-  public VideoInfo.GameAdDownloadInfo a(Parcel paramParcel)
+  public nsr(AccountDetailActivity paramAccountDetailActivity) {}
+  
+  void a()
   {
-    return new VideoInfo.GameAdDownloadInfo(paramParcel);
+    if (this.a.jdField_j_of_type_Boolean) {
+      this.a.G();
+    }
+    this.a.jdField_j_of_type_Boolean = true;
   }
   
-  public VideoInfo.GameAdDownloadInfo[] a(int paramInt)
+  public void onDynamicListGet(boolean paramBoolean, int paramInt)
   {
-    return new VideoInfo.GameAdDownloadInfo[paramInt];
+    boolean bool2 = false;
+    boolean bool1 = false;
+    super.onDynamicListGet(paramBoolean, paramInt);
+    if (this.a.jdField_a_of_type_Npm == null) {
+      return;
+    }
+    this.a.r = true;
+    if (paramInt == 0)
+    {
+      nqg localnqg = nqq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.e);
+      if (localnqg != null)
+      {
+        this.a.jdField_a_of_type_Npm.a(localnqg.b(), localnqg.a);
+        this.a.jdField_a_of_type_Npm.a(localnqg.b());
+      }
+    }
+    if (paramBoolean) {
+      if (this.a.jdField_a_of_type_Npm.a() == 0)
+      {
+        paramBoolean = bool1;
+        if (paramBoolean) {
+          this.a.v();
+        }
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.b(paramBoolean);
+        bool1 = paramBoolean;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "onDynamicListGet: --hasMoreData=" + paramBoolean);
+          bool1 = paramBoolean;
+        }
+        label172:
+        if (paramInt != 1) {
+          break label246;
+        }
+      }
+    }
+    for (this.a.l = AccountDetailActivity.jdField_j_of_type_Int;; this.a.l = AccountDetailActivity.k) {
+      label246:
+      do
+      {
+        this.a.jdField_a_of_type_Npm.b(this.a.l);
+        this.a.jdField_a_of_type_Npm.notifyDataSetChanged();
+        return;
+        paramBoolean = true;
+        break;
+        this.a.jdField_a_of_type_Npm.notifyDataSetChanged();
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.b();
+        bool1 = bool2;
+        break label172;
+      } while ((paramInt != 4) && ((paramInt != 0) || (bool1)));
+    }
+  }
+  
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  {
+    super.onFollowPublicAccount(paramBoolean, paramString);
+    a();
+  }
+  
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    super.onUnfollowPublicAccount(paramInt, paramPublicAccountInfo);
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nsr
  * JD-Core Version:    0.7.0.1
  */

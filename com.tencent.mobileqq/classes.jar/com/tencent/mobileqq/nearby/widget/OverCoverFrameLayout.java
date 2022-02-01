@@ -9,8 +9,8 @@ import android.view.ViewConfiguration;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import avub;
-import avuc;
+import aybq;
+import aybr;
 import com.tencent.qphone.base.util.QLog;
 
 public class OverCoverFrameLayout
@@ -20,7 +20,7 @@ public class OverCoverFrameLayout
   protected Context a;
   protected GestureDetector a;
   protected Scroller a;
-  public avuc a;
+  public aybr a;
   protected boolean a;
   protected int b;
   protected boolean b;
@@ -52,12 +52,12 @@ public class OverCoverFrameLayout
   protected void a()
   {
     if (((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) && (this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) && ((this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) || (this.jdField_b_of_type_Int == 0))) {
-      if (this.jdField_a_of_type_Avuc != null)
+      if (this.jdField_a_of_type_Aybr != null)
       {
         if ((!this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Int != 0)) {
           break label90;
         }
-        this.jdField_a_of_type_Avuc.a(0, 0, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Aybr.a(0, 0, this.jdField_b_of_type_Int);
       }
     }
     for (;;)
@@ -67,7 +67,7 @@ public class OverCoverFrameLayout
       return;
       label90:
       if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int)) {
-        this.jdField_a_of_type_Avuc.a(0, 1, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Aybr.a(0, 1, this.jdField_b_of_type_Int);
       }
     }
   }
@@ -81,7 +81,7 @@ public class OverCoverFrameLayout
     if (QLog.isColorLevel()) {
       QLog.d("OverCoverFrameLayout", 2, "init: minDis=" + this.jdField_d_of_type_Int + ", minVelocity=" + this.e);
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new avub(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new aybq(this));
   }
   
   public boolean a()
@@ -97,8 +97,8 @@ public class OverCoverFrameLayout
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(this.jdField_a_of_type_Int, 0, -this.jdField_a_of_type_Int, 0, 200);
-    if (this.jdField_a_of_type_Avuc != null) {
-      this.jdField_a_of_type_Avuc.a(1, 0, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Aybr != null) {
+      this.jdField_a_of_type_Aybr.a(1, 0, this.jdField_a_of_type_Int);
     }
     invalidate();
     this.jdField_a_of_type_Boolean = false;
@@ -118,8 +118,8 @@ public class OverCoverFrameLayout
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, 0, this.jdField_a_of_type_Int, 0, 200);
-    if (this.jdField_a_of_type_Avuc != null) {
-      this.jdField_a_of_type_Avuc.a(1, 1, 0);
+    if (this.jdField_a_of_type_Aybr != null) {
+      this.jdField_a_of_type_Aybr.a(1, 1, 0);
     }
     invalidate();
     this.jdField_a_of_type_Boolean = true;
@@ -229,14 +229,14 @@ public class OverCoverFrameLayout
     this.jdField_b_of_type_Int = 0;
   }
   
-  public void setOnActionListener(avuc paramavuc)
+  public void setOnActionListener(aybr paramaybr)
   {
-    this.jdField_a_of_type_Avuc = paramavuc;
+    this.jdField_a_of_type_Aybr = paramaybr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout
  * JD-Core Version:    0.7.0.1
  */

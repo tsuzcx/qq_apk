@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class aemw
-  implements Comparator<MessageRecord>
+  extends asgf
 {
-  public aemw(ActivateFriendActivity paramActivateFriendActivity) {}
+  public aemw(Leba paramLeba) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  protected void a(int paramInt)
   {
-    long l2 = paramMessageRecord1.time - paramMessageRecord2.time;
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = paramMessageRecord1.getId() - paramMessageRecord2.getId();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.lebatab.leba", 2, "onUpdateRedPoint " + paramInt);
     }
-    if (l1 > 0L) {
-      return -1;
+    if (Leba.a(this.a) != null) {
+      Leba.a(this.a).b();
     }
-    if (l1 < 0L) {
-      return 1;
-    }
-    return 0;
   }
 }
 

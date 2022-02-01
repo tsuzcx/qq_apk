@@ -1,38 +1,60 @@
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.util.HashSet;
+import java.util.Set;
 
-class rrg
-  extends pdi
+public class rrg
+  extends bbqp
 {
-  rrg(rqj paramrqj, String paramString, int paramInt1, BaseArticleInfo paramBaseArticleInfo, int paramInt2, View paramView, ViewGroup paramViewGroup)
+  private bbpl jdField_a_of_type_Bbpl;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  
+  rrg(aobu paramaobu, bbpl parambbpl, Set<String> paramSet)
   {
-    super(paramString);
+    super(paramaobu);
+    this.jdField_a_of_type_Bbpl = parambbpl;
+    this.jdField_a_of_type_JavaUtilSet = paramSet;
   }
   
-  public void a(pdc parampdc)
+  public void a(bbmy parambbmy, bbvg parambbvg)
   {
-    biby.a("ReadInJoyBaseAdapter.Viewtype " + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Rqj.a(this.jdField_a_of_type_Int)) {
-      if ((opy.a(this.jdField_a_of_type_Rqj.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) && (this.jdField_a_of_type_Rqj.c != 56))
-      {
-        if ((parampdc instanceof pde)) {}
-      }
-      else {
-        while ((parampdc instanceof pde)) {
-          return;
-        }
-      }
+    if ((parambbmy instanceof rrj))
+    {
+      parambbmy = ((rrj)parambbmy).a().b();
+      parambbvg = parambbvg.b();
+      Drawable localDrawable = parambbvg.getResources().getDrawable(2130840264);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = localDrawable;
+      localURLDrawableOptions.mFailedDrawable = localDrawable;
+      parambbmy = URLDrawable.getDrawable(parambbmy, localURLDrawableOptions);
+      parambbmy.setTag(bgey.a(140, 140));
+      parambbmy.setDecodeHandler(bgey.p);
+      parambbvg.setImageDrawable(parambbmy);
+      return;
     }
-    if (parampdc.a(this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_JavaLangObject = parampdc.a(this.b, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup);
+    super.a(parambbmy, parambbvg);
+  }
+  
+  public void b(bbmy parambbmy, bbvg parambbvg)
+  {
+    super.b(parambbmy, parambbvg);
+  }
+  
+  protected void c(bbmy parambbmy, bbvg parambbvg)
+  {
+    super.c(parambbmy, parambbvg);
+    if ((this.jdField_a_of_type_Bbpl != null) && (!this.jdField_a_of_type_JavaUtilSet.contains(parambbmy.b()))) {
+      parambbvg.a().setOnClickListener(new rrh(this));
     }
-    biby.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rrg
  * JD-Core Version:    0.7.0.1
  */

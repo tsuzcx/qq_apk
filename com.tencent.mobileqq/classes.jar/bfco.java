@@ -1,44 +1,35 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.open.agent.AuthorityControlFragment;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class bfco
-  implements bhzf
+  implements DialogInterface.OnClickListener
 {
-  public bfco(AuthorityControlFragment paramAuthorityControlFragment) {}
+  public bfco(ReciteFragment paramReciteFragment, QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {
-      AuthorityControlFragment.a(this.a).c(0L);
-    }
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    if (paramInt == 0)
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.c();
+    QQAppInterface localQQAppInterface;
+    String str1;
+    String str2;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      AuthorityControlFragment.a(this.a).a(0L);
-      AuthorityControlFragment.a(this.a, (bfqt)AuthorityControlFragment.a(this.a).a(151));
-      AuthorityControlFragment.a(this.a).a();
-      AuthorityControlFragment.a(this.a).notifyDataSetChanged();
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      str1 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bfeo.f;
+      str2 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Bfeo.f;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo == null) {
+        break label108;
+      }
     }
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (paramInt == 0) {
-      AuthorityControlFragment.a(this.a).b(0L);
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    if (paramInt == 0) {
-      AuthorityControlFragment.a(this.a).c(0L);
+    label108:
+    for (paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title;; paramDialogInterface = "")
+    {
+      bgjt.a(localQQAppInterface, str1, "Grp_recite", "Out_Recite_Clk", 0, 0, new String[] { str2, "", paramDialogInterface, "" });
+      return;
     }
   }
 }

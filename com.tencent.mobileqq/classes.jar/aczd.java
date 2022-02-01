@@ -1,39 +1,26 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.RichMsg;
 
 public class aczd
-  extends bdon
+  extends aczg
 {
-  public aczd(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
+  public int a()
   {
-    super(paramInt);
+    return super.a() + 6;
   }
   
-  public void a()
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
   {
-    Intent localIntent = new Intent(this.a, CardPicGalleryActivity.class);
-    ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b)) {
-      localIntent.putExtra("extra_default", 2130845333);
-    }
-    localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b);
-    localIntent.putExtra("extra_mode", 2);
-    localIntent.putExtra("is_from_mine_profile", true);
-    localIntent.putStringArrayListExtra("business_card_pics", localArrayList);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.e == 0) {}
-    for (int i = this.a.jdField_a_of_type_Awqt.a.defaultCardId;; i = 0)
-    {
-      localIntent.putExtra("default_card_id", i);
-      this.a.startActivity(localIntent);
-      this.a.overridePendingTransition(2130772302, 0);
-      this.a.b(1);
-      return;
-    }
+    new bbzc().f(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.rich_msg.has();
   }
 }
 

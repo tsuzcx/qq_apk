@@ -11,7 +11,7 @@ import android.view.ViewGroup.LayoutParams;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ArrayBlockingQueue;
-import rqd;
+import snb;
 
 public class LayoutInflateProcessor
 {
@@ -24,21 +24,21 @@ public class LayoutInflateProcessor
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  private void a(rqd paramrqd)
+  private void a(snb paramsnb)
   {
-    if (paramrqd == null) {
+    if (paramsnb == null) {
       return;
     }
-    ArrayBlockingQueue localArrayBlockingQueue2 = (ArrayBlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(rqd.a(paramrqd));
+    ArrayBlockingQueue localArrayBlockingQueue2 = (ArrayBlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(snb.a(paramsnb));
     ArrayBlockingQueue localArrayBlockingQueue1;
     if (localArrayBlockingQueue2 == null)
     {
       localArrayBlockingQueue1 = new ArrayBlockingQueue(9);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(rqd.a(paramrqd), localArrayBlockingQueue1);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(snb.a(paramsnb), localArrayBlockingQueue1);
     }
     do
     {
-      paramrqd.a = localArrayBlockingQueue1;
+      paramsnb.a = localArrayBlockingQueue1;
       return;
       localArrayBlockingQueue1 = localArrayBlockingQueue2;
     } while (localArrayBlockingQueue2.size() != 9);
@@ -79,21 +79,21 @@ public class LayoutInflateProcessor
   }
   
   @UiThread
-  public void a(rqd[] paramArrayOfrqd)
+  public void a(snb[] paramArrayOfsnb)
   {
-    int j = paramArrayOfrqd.length;
+    int j = paramArrayOfsnb.length;
     int i = 0;
     while (i < j)
     {
-      a(paramArrayOfrqd[i]);
+      a(paramArrayOfsnb[i]);
       i += 1;
     }
-    ThreadManager.excute(new LayoutInflateProcessor.InflateTask(paramArrayOfrqd, this.jdField_a_of_type_AndroidViewLayoutInflater), 16, null, true);
+    ThreadManager.excute(new LayoutInflateProcessor.InflateTask(paramArrayOfsnb, this.jdField_a_of_type_AndroidViewLayoutInflater), 16, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.LayoutInflateProcessor
  * JD-Core Version:    0.7.0.1
  */

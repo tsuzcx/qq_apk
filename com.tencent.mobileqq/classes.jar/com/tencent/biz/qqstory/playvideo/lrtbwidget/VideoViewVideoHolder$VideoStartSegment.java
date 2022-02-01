@@ -15,9 +15,9 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tribe.async.async.JobContext;
 import com.tribe.async.async.JobSegment;
 import mqq.os.MqqHandler;
-import voh;
-import vwa;
-import wxe;
+import xhs;
+import xpl;
+import yqp;
 
 class VideoViewVideoHolder$VideoStartSegment
   extends JobSegment<StoryVideoItem, StoryVideoItem>
@@ -41,9 +41,9 @@ class VideoViewVideoHolder$VideoStartSegment
       if ((VideoViewVideoHolder.a(paramVideoViewVideoHolder) != null) && (VideoViewVideoHolder.a(paramVideoViewVideoHolder).getWidth() == paramTextureView.getWidth() / 16) && (VideoViewVideoHolder.a(paramVideoViewVideoHolder).getHeight() == paramTextureView.getHeight() / 16))
       {
         paramTextureView = paramTextureView.getBitmap(VideoViewVideoHolder.a(paramVideoViewVideoHolder));
-        if (voh.a(paramTextureView, 4, 16))
+        if (xhs.a(paramTextureView, 4, 16))
         {
-          wxe.a(paramVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d", Long.valueOf(paramLong));
+          yqp.a(paramVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d", Long.valueOf(paramLong));
           return true;
         }
       }
@@ -68,12 +68,12 @@ class VideoViewVideoHolder$VideoStartSegment
         }
         return false;
       }
-      wxe.d(this.this$0.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack StoryPlayerTest.isBlack false. treat as not-black frame");
+      yqp.d(this.this$0.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack StoryPlayerTest.isBlack false. treat as not-black frame");
     }
     for (;;)
     {
       return false;
-      wxe.d(this.this$0.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack targetView.isAvailable() false. treat as not-black frame");
+      yqp.d(this.this$0.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack targetView.isAvailable() false. treat as not-black frame");
     }
   }
   
@@ -95,15 +95,15 @@ class VideoViewVideoHolder$VideoStartSegment
       }
       return;
     }
-    wxe.e(this.this$0.jdField_a_of_type_JavaLangString, "onPrepared, is not on foreground, do not start video view !!");
+    yqp.e(this.this$0.jdField_a_of_type_JavaLangString, "onPrepared, is not on foreground, do not start video view !!");
     notifyError(new ErrorMessage(0, "onPrepared, is not on foreground"));
   }
   
   public void onCancel()
   {
     super.onCancel();
-    wxe.b(this.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment onCancel");
-    this.this$0.jdField_a_of_type_Vwa.a();
+    yqp.b(this.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment onCancel");
+    this.this$0.jdField_a_of_type_Xpl.a();
   }
   
   public void run()
@@ -111,25 +111,25 @@ class VideoViewVideoHolder$VideoStartSegment
     VideoViewVideoHolder localVideoViewVideoHolder = this.this$0;
     if (!localVideoViewVideoHolder.c())
     {
-      wxe.d(localVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "!holder.isSelected() holder = %s", new Object[] { localVideoViewVideoHolder });
+      yqp.d(localVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "!holder.isSelected() holder = %s", new Object[] { localVideoViewVideoHolder });
       notifyError(new ErrorMessage(0, "!holder.isSelected"));
       return;
     }
     if (VideoViewVideoHolder.e(this.this$0) == 1)
     {
-      wxe.d(this.this$0.jdField_a_of_type_JavaLangString, "SOFT DECODE, waiting PLAYER_INFO_START_RENDERING");
+      yqp.d(this.this$0.jdField_a_of_type_JavaLangString, "SOFT DECODE, waiting PLAYER_INFO_START_RENDERING");
       a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
       return;
     }
-    long l1 = localVideoViewVideoHolder.jdField_a_of_type_Vwa.a();
+    long l1 = localVideoViewVideoHolder.jdField_a_of_type_Xpl.a();
     if (l1 > 0L)
     {
-      TextureView localTextureView = voh.a(localVideoViewVideoHolder.jdField_a_of_type_Vwa.a());
+      TextureView localTextureView = xhs.a(localVideoViewVideoHolder.jdField_a_of_type_Xpl.a());
       if (localTextureView != null)
       {
         long l2 = SystemClock.uptimeMillis();
         boolean bool = a(localVideoViewVideoHolder, localTextureView, l1);
-        wxe.a(this.this$0.jdField_a_of_type_JavaLangString, "check black cost %d ms", Long.valueOf(SystemClock.uptimeMillis() - l2));
+        yqp.a(this.this$0.jdField_a_of_type_JavaLangString, "check black cost %d ms", Long.valueOf(SystemClock.uptimeMillis() - l2));
         if (!bool)
         {
           a(localVideoViewVideoHolder, l1, "NotBlackFrame");
@@ -153,8 +153,8 @@ class VideoViewVideoHolder$VideoStartSegment
     }
     if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long > 4000L)
     {
-      wxe.d(this.this$0.jdField_a_of_type_JavaLangString, "check black frame time out. holder = %s", new Object[] { localVideoViewVideoHolder });
-      localVideoViewVideoHolder.jdField_a_of_type_Vwa.a();
+      yqp.d(this.this$0.jdField_a_of_type_JavaLangString, "check black frame time out. holder = %s", new Object[] { localVideoViewVideoHolder });
+      localVideoViewVideoHolder.jdField_a_of_type_Xpl.a();
       VideoViewVideoHolder.c(this.this$0, 14);
       notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.this$0), "check black frame time out"));
       return;
@@ -164,7 +164,7 @@ class VideoViewVideoHolder$VideoStartSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoStartSegment
  * JD-Core Version:    0.7.0.1
  */

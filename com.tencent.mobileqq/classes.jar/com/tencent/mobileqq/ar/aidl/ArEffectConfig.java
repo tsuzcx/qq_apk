@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import amzf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import aoxw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class ArEffectConfig
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArEffectConfig> CREATOR = new amzf();
+  public static final Parcelable.Creator<ArEffectConfig> CREATOR = new aoxw();
   public int a;
   public ArrayList<String> a;
   public int b;
@@ -310,7 +310,7 @@ public class ArEffectConfig
     //   144: invokevirtual 287	java/io/BufferedOutputStream:flush	()V
     //   147: aload 7
     //   149: aload 5
-    //   151: invokestatic 292	bdhb:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   151: invokestatic 292	bgmg:b	(Ljava/io/File;Ljava/io/File;)Z
     //   154: istore_2
     //   155: aload 6
     //   157: invokevirtual 295	android/os/Parcel:recycle	()V
@@ -497,7 +497,7 @@ public class ArEffectConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ArEffectConfig
  * JD-Core Version:    0.7.0.1
  */

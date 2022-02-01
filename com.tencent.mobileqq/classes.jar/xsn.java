@@ -1,33 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 
-final class xsn
-  implements DownloadParams.DecodeHandler
+public class xsn
+  extends xmr
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public xsn(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
+  
+  public void g()
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    super.g();
+    if (this.a.jdField_b_of_type_Boolean)
     {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return xsm.a(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+      AbsVideoInfoWidget.a(this.a);
+      yqp.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xsn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,36 @@
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.view.Window;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public abstract interface bkqx
+public class bkqx
 {
-  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
+  private final int jdField_a_of_type_Int;
+  private final boolean jdField_a_of_type_Boolean;
+  private final boolean b;
   
-  public abstract String a();
+  private bkqx(Window paramWindow, boolean paramBoolean)
+  {
+    if (paramWindow.getContext().getResources().getConfiguration().orientation == 1) {}
+    for (;;)
+    {
+      this.b = bool;
+      this.jdField_a_of_type_Int = ImmersiveUtils.getStatusBarHeight(paramWindow.getContext());
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+      bool = false;
+    }
+  }
   
-  public abstract List<LocalMediaInfo> a(Context paramContext, int paramInt1, int paramInt2, MediaFileFilter paramMediaFileFilter, int paramInt3, boolean paramBoolean, ArrayList<String> paramArrayList);
-  
-  public abstract List<QQAlbumInfo> a(List<QQAlbumInfo> paramList1, List<QQAlbumInfo> paramList2, int paramInt);
-  
-  public abstract void a(int paramInt);
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkqx
  * JD-Core Version:    0.7.0.1
  */

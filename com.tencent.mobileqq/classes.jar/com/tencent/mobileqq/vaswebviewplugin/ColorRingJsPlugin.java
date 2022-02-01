@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import begz;
-import beie;
+import bhod;
+import bhpi;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -34,13 +34,13 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "changeTab");
     }
-    beie localbeie = (beie)super.getBrowserComponent(32);
-    if (localbeie != null)
+    bhpi localbhpi = (bhpi)super.getBrowserComponent(32);
+    if (localbhpi != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("callbackId", paramString);
-      paramString = localbeie.a.obtainMessage(5, localBundle);
-      localbeie.a.dispatchMessage(paramString);
+      paramString = localbhpi.a.obtainMessage(5, localBundle);
+      localbhpi.a.dispatchMessage(paramString);
     }
   }
   
@@ -126,15 +126,15 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "play, id=" + paramLong);
     }
-    beie localbeie = (beie)super.getBrowserComponent(32);
-    if (localbeie != null)
+    bhpi localbhpi = (bhpi)super.getBrowserComponent(32);
+    if (localbhpi != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putLong("id", paramLong);
       localBundle.putString("callbackId", paramString2);
       localBundle.putString("type", paramString1);
-      paramString1 = localbeie.a.obtainMessage(3, localBundle);
-      localbeie.a.dispatchMessage(paramString1);
+      paramString1 = localbhpi.a.obtainMessage(3, localBundle);
+      localbhpi.a.dispatchMessage(paramString1);
     }
   }
   
@@ -143,22 +143,22 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "setup, id=" + paramLong);
     }
-    beie localbeie = (beie)super.getBrowserComponent(32);
-    if (localbeie != null)
+    bhpi localbhpi = (bhpi)super.getBrowserComponent(32);
+    if (localbhpi != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putLong("id", paramLong);
       localBundle.putInt("status", paramInt);
       localBundle.putString("type", paramString1);
       localBundle.putString("callbackId", paramString2);
-      paramString1 = localbeie.a.obtainMessage(4, localBundle);
-      localbeie.a.dispatchMessage(paramString1);
+      paramString1 = localbhpi.a.obtainMessage(4, localBundle);
+      localbhpi.a.dispatchMessage(paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ColorRingJsPlugin
  * JD-Core Version:    0.7.0.1
  */

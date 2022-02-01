@@ -1,22 +1,75 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aydg
-  implements View.OnLayoutChangeListener
 {
-  public aydg(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public static String a(ChatMessage paramChatMessage)
   {
-    if ((paramInt2 < paramInt6) && (this.a.a != null))
+    if (!(paramChatMessage instanceof MessageForStructing)) {
+      return "";
+    }
+    paramChatMessage = (MessageForStructing)paramChatMessage;
+    if (!(paramChatMessage.structingMsg instanceof StructMsgForGeneralShare)) {
+      return "";
+    }
+    return ((StructMsgForGeneralShare)paramChatMessage.structingMsg).mContentCover;
+  }
+  
+  public static String a(MessageForArkApp paramMessageForArkApp)
+  {
+    if ((paramMessageForArkApp == null) || (paramMessageForArkApp.ark_app_message == null) || (TextUtils.isEmpty(paramMessageForArkApp.ark_app_message.metaList))) {}
+    for (;;)
     {
-      paramInt1 = SignatureHistoryFragment.a(this.a, this.a.a);
-      paramInt3 = this.a.a.getHeight();
-      if (paramInt1 + paramInt3 > paramInt2) {
-        SignatureHistoryFragment.a(this.a, paramInt1, paramInt3, false);
+      return "";
+      try
+      {
+        paramMessageForArkApp = new JSONObject(paramMessageForArkApp.ark_app_message.metaList);
+        if (!TextUtils.isEmpty(paramMessageForArkApp.optString("msgInfo")))
+        {
+          paramMessageForArkApp = new JSONObject(paramMessageForArkApp.optString("msgInfo")).optString("jump_url");
+          return paramMessageForArkApp;
+        }
+      }
+      catch (JSONException paramMessageForArkApp)
+      {
+        paramMessageForArkApp.printStackTrace();
+        QLog.e("ChatMessageHelper", 4, paramMessageForArkApp, new Object[0]);
       }
     }
+    return "";
+  }
+  
+  public static String b(ChatMessage paramChatMessage)
+  {
+    paramChatMessage = paramChatMessage.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend");
+    if (TextUtils.isEmpty(paramChatMessage)) {
+      return "";
+    }
+    try
+    {
+      paramChatMessage = new JSONObject(paramChatMessage).optString("oac_triggle");
+      if (TextUtils.isEmpty(paramChatMessage)) {
+        return "";
+      }
+      int i = paramChatMessage.indexOf("ad_id=");
+      if (paramChatMessage.length() < i + 12) {
+        return paramChatMessage.substring(i + 6);
+      }
+      paramChatMessage = paramChatMessage.substring(i + 6, i + 12);
+      return paramChatMessage;
+    }
+    catch (JSONException paramChatMessage)
+    {
+      paramChatMessage.printStackTrace();
+    }
+    return "";
   }
 }
 

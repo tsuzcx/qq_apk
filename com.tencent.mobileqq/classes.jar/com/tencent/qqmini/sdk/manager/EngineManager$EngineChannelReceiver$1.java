@@ -1,22 +1,30 @@
 package com.tencent.qqmini.sdk.manager;
 
-import bgwe;
-import bgwh;
-import bgxk;
+import com.tencent.qqmini.sdk.launcher.action.EngineChannel;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import org.json.JSONObject;
 
-public class EngineManager$EngineChannelReceiver$1
-  implements Runnable
+class EngineManager$EngineChannelReceiver$1
+  implements AsyncResult
 {
-  public EngineManager$EngineChannelReceiver$1(bgwh parambgwh, EngineChannel paramEngineChannel) {}
+  EngineManager$EngineChannelReceiver$1(EngineManager.EngineChannelReceiver paramEngineChannelReceiver, int paramInt, EngineChannel paramEngineChannel) {}
   
-  public void run()
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    bgwe.a(this.jdField_a_of_type_Bgwh.a, bgxk.a().a, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
+    QMLog.i("EngineManager", "[MiniEng] updateBaseLib response. isSuc=" + paramBoolean + " rsp=" + paramJSONObject);
+    if ((paramBoolean) && (paramJSONObject != null))
+    {
+      paramJSONObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(this.val$baseLibType)));
+      QMLog.i("EngineManager", "[MiniEng] engineLibInfo " + paramJSONObject);
+      EngineManager.access$400(this.this$1.this$0, paramJSONObject, this.val$remote);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.EngineManager.EngineChannelReceiver.1
  * JD-Core Version:    0.7.0.1
  */

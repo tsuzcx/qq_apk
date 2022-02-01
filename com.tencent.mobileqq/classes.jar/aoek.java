@@ -1,81 +1,78 @@
-import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class aoek
+  extends anif
 {
-  private int a(ColorNote paramColorNote)
-  {
-    switch (aocr.a(paramColorNote.getServiceType()) & 0xFFFF0000)
-    {
-    default: 
-      return 2130843981;
-    case 16973824: 
-      return 2130843926;
-    case 17039360: 
-      return 2130839045;
-    case 16842752: 
-      return 2130839046;
-    case 16908288: 
-      return 2130839047;
-    }
-    return 2130843763;
-  }
+  public aoek(HiddenChatFragment paramHiddenChatFragment) {}
   
-  private Drawable a(Context paramContext, ColorNote paramColorNote)
+  public void a(int paramInt1, int paramInt2, Map<String, Integer> paramMap, String paramString)
   {
-    paramContext = paramContext.getResources();
-    int i = a(paramColorNote);
-    try
+    paramString = this.a.getActivity();
+    String str1 = HiddenChatFragment.a(this.a).getCurrentAccountUin();
+    if ((paramMap != null) && (paramMap.size() > 0))
     {
-      paramColorNote = new URL(paramColorNote.getPicUrl());
-      boolean bool = "resdrawable".equals(paramColorNote.getProtocol());
-      if (bool) {
-        try
-        {
-          paramColorNote = paramContext.getDrawable(Integer.parseInt(paramColorNote.getHost()));
-          return paramColorNote;
-        }
-        catch (NumberFormatException paramColorNote)
-        {
-          return paramContext.getDrawable(i);
+      Iterator localIterator = paramMap.keySet().iterator();
+      paramInt1 = 0;
+      if (localIterator.hasNext())
+      {
+        String str2 = (String)localIterator.next();
+        paramInt2 = ((Integer)paramMap.get(str2)).intValue();
+        if (paramInt2 == 4000) {
+          bgsg.j(paramString, str1, str2);
         }
       }
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = aepi.a(40.0F, paramContext);
-      localURLDrawableOptions.mRequestHeight = aepi.a(40.0F, paramContext);
-      localURLDrawableOptions.mLoadingDrawable = paramContext.getDrawable(i);
-      localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
-      paramColorNote = URLDrawable.getDrawable(paramColorNote, localURLDrawableOptions);
-      return paramColorNote;
     }
-    catch (MalformedURLException paramColorNote)
+    for (;;)
     {
-      paramContext = paramContext.getDrawable(i);
-      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
-      return paramContext;
+      break;
+      if (paramInt2 != 0)
+      {
+        paramInt1 = 1;
+        continue;
+        if (paramInt1 == 0) {
+          bgsg.j(this.a.getActivity(), HiddenChatFragment.a(this.a).getCurrentAccountUin());
+        }
+        return;
+      }
     }
-    catch (NullPointerException paramColorNote)
-    {
-      paramContext = paramContext.getDrawable(i);
-      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
-    }
-    return paramContext;
   }
   
-  public HistoryFormItem a(Context paramContext, ColorNote paramColorNote)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    HistoryFormItem localHistoryFormItem = new HistoryFormItem(paramContext);
-    localHistoryFormItem.setLeftText(paramColorNote.getMainTitle());
-    localHistoryFormItem.setLeftIcon(a(paramContext, paramColorNote), paramContext.getResources().getDimensionPixelSize(2131298700), paramContext.getResources().getDimensionPixelSize(2131298699));
-    return localHistoryFormItem;
+    if (paramInt2 != 0)
+    {
+      paramString1 = paramString2;
+      if (!this.a.getActivity().isFinishing())
+      {
+        paramString1 = paramString2;
+        if (!"troop_delete_top_from_conversation".equals(paramString3))
+        {
+          paramString1 = paramString2;
+          if (TextUtils.isEmpty(paramString2)) {
+            paramString1 = this.a.getResources().getString(2131694156);
+          }
+          QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
+        }
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("tag_hidden_chat", 2, "onSetCommonUsedTroop, retCode = " + paramInt2 + " , wording = " + paramString1);
+      }
+      return;
+      this.a.a();
+      paramString1 = paramString2;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 public abstract interface blky
 {
-  public abstract void a();
+  public abstract void a(int paramInt, Object paramObject, Object... paramVarArgs);
 }
 
 

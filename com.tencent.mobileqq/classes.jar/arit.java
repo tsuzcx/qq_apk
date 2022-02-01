@@ -1,22 +1,19 @@
-public abstract interface arit
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class arit
+  implements View.OnClickListener
 {
-  public abstract long a();
+  public arit(DBFixConfigActivity paramDBFixConfigActivity) {}
   
-  public abstract String a();
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(aqxm paramaqxm);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract String c();
+  public void onClick(View paramView)
+  {
+    ThreadManager.post(this.a.a, 8, null, true);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

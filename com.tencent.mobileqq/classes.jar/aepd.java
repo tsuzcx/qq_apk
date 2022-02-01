@@ -1,8 +1,14 @@
-public abstract interface aepd
+import com.tencent.mobileqq.activity.MainFragment;
+
+public class aepd
+  implements bicu
 {
-  public abstract void a(ahan paramahan);
+  public aepd(MainFragment paramMainFragment) {}
   
-  public abstract void b(ahan paramahan);
+  public void a()
+  {
+    MainFragment.c(this.a);
+  }
 }
 
 

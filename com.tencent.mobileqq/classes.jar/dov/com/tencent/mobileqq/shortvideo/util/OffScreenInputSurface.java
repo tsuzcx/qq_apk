@@ -8,7 +8,7 @@ import android.opengl.EGLDisplay;
 import android.opengl.EGLSurface;
 import android.os.Build.VERSION;
 import android.util.Log;
-import azhf;
+import bcif;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(17)
@@ -65,7 +65,7 @@ public class OffScreenInputSurface
     EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
     int[] arrayOfInt2 = new int[1];
     arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
-    boolean bool = azhf.e(azhf.v);
+    boolean bool = bcif.e(bcif.v);
     if (bool) {
       arrayOfInt1 = jdField_b_of_type_ArrayOfInt;
     }
@@ -169,7 +169,7 @@ public class OffScreenInputSurface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.OffScreenInputSurface
  * JD-Core Version:    0.7.0.1
  */

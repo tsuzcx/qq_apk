@@ -1,16 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.gamecenter.appointment.GameCenterCheck;
+import com.tencent.qphone.base.util.QLog;
 
-public class acee
-  implements View.OnClickListener
+final class acee
+  extends BroadcastReceiver
 {
-  public acee(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
-  
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(2130771997, 2130772001);
+    boolean bool = false;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+        {
+          if (QLog.isColorLevel()) {
+            bize.c("GameCenterBroadcastReceiver", "mScreenOff = true");
+          }
+          GameCenterCheck.a();
+          return;
+        }
+        if (!"android.intent.action.BATTERY_CHANGED".equals(paramContext)) {
+          break;
+        }
+        aced.a = paramIntent.getIntExtra("level", 0) * 100 / paramIntent.getIntExtra("scale", 100);
+      } while (!QLog.isColorLevel());
+      bize.c("GameCenterBroadcastReceiver", "battery cap= " + aced.a);
+      return;
+    } while ((!"android.intent.action.ACTION_POWER_CONNECTED".equals(paramContext)) && (!"android.intent.action.ACTION_POWER_DISCONNECTED".equals(paramContext)));
+    int i = paramIntent.getIntExtra("status", -1);
+    if ((i == 2) || (i == 5)) {
+      bool = true;
+    }
+    aced.b = bool;
   }
 }
 

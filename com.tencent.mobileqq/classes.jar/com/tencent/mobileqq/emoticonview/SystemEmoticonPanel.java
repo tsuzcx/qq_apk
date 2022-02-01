@@ -10,9 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import apuc;
-import apzg;
-import apzi;
+import arxd;
+import asdc;
+import asde;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class SystemEmoticonPanel
 {
   protected Context a;
   protected ViewPager a;
-  private apzg a;
+  private asdc a;
   protected EmoticonPagerAdapter a;
   protected EmoticonPagerRadioGroup a;
   protected boolean a;
@@ -42,12 +42,12 @@ public class SystemEmoticonPanel
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public SystemEmoticonPanel(Context paramContext, apuc paramapuc)
+  public SystemEmoticonPanel(Context paramContext, arxd paramarxd)
   {
-    this(paramContext, paramapuc, false);
+    this(paramContext, paramarxd, false);
   }
   
-  public SystemEmoticonPanel(Context paramContext, apuc paramapuc, boolean paramBoolean)
+  public SystemEmoticonPanel(Context paramContext, arxd paramarxd, boolean paramBoolean)
   {
     super(paramContext);
     if (Build.VERSION.SDK_INT < 24) {}
@@ -58,7 +58,7 @@ public class SystemEmoticonPanel
       ((HashMap)localField.get(LayoutInflater.from(paramContext))).remove("android.support.v4.view.ViewPager");
       this.b = LayoutInflater.from(paramContext).inflate(a(), this);
       this.jdField_a_of_type_Boolean = paramBoolean;
-      a(paramContext, paramapuc);
+      a(paramContext, paramarxd);
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -86,7 +86,7 @@ public class SystemEmoticonPanel
   
   protected int a()
   {
-    return 2131559069;
+    return 2131559138;
   }
   
   public void a()
@@ -96,14 +96,14 @@ public class SystemEmoticonPanel
     }
   }
   
-  protected void a(Context paramContext, apuc paramapuc)
+  protected void a(Context paramContext, arxd paramarxd)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.b.findViewById(2131375192));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.b.findViewById(2131379906));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.b.findViewById(2131375922));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.b.findViewById(2131380863));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter = new EmoticonPagerAdapter();
     ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(new apzi(paramContext, paramapuc, 0));
+    localArrayList.add(new asde(paramContext, paramarxd, 0));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.a(localArrayList);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0);
@@ -112,7 +112,7 @@ public class SystemEmoticonPanel
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_Apzg != null) && (this.jdField_a_of_type_Apzg.a(paramKeyEvent))) {
+    if ((this.jdField_a_of_type_Asdc != null) && (this.jdField_a_of_type_Asdc.a(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEvent(paramKeyEvent);
@@ -143,19 +143,19 @@ public class SystemEmoticonPanel
     }
   }
   
-  public void setCallBack(apuc paramapuc)
+  public void setCallBack(arxd paramarxd)
   {
-    a(this.jdField_a_of_type_AndroidContentContext, paramapuc);
+    a(this.jdField_a_of_type_AndroidContentContext, paramarxd);
   }
   
-  public void setDispatchKeyEventListener(apzg paramapzg)
+  public void setDispatchKeyEventListener(asdc paramasdc)
   {
-    this.jdField_a_of_type_Apzg = paramapzg;
+    this.jdField_a_of_type_Asdc = paramasdc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemEmoticonPanel
  * JD-Core Version:    0.7.0.1
  */

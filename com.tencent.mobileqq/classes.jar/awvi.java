@@ -1,25 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
 
 public class awvi
-  implements View.OnClickListener
+  extends RecyclerView.ItemDecoration
 {
-  public awvi(ProfileHeaderView paramProfileHeaderView, View paramView) {}
+  private final int jdField_a_of_type_Int = afur.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources());
   
-  public void onClick(View paramView)
+  private awvi(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a.getCurrentAccountUin(), 0).edit().putBoolean("common_topic_friend_list_should_show", false).apply();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    paramRect.top = this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,50 @@
-import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aiat
-  extends aiac
+class aiat
+  extends auto
 {
-  public static final int[] a = { 2131690787 };
-  public static final int[] b = { 2131364161 };
+  aiat(aias paramaias) {}
   
-  public aiat(FragmentActivity paramFragmentActivity)
+  protected void a(Object paramObject)
   {
-    super(paramFragmentActivity);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
+    QLog.i(aias.g, 1, "[onGameUsrInfoChangedNotify]");
+    for (;;)
+    {
+      autc localautc;
+      try
+      {
+        if ((paramObject instanceof ArrayList))
+        {
+          paramObject = ((ArrayList)paramObject).iterator();
+          if (paramObject.hasNext())
+          {
+            localautc = (autc)paramObject.next();
+            if ((TextUtils.isEmpty(localautc.b)) || (!localautc.b.equals(this.a.a.a()))) {
+              break label115;
+            }
+            aias.a(this.a, localautc);
+            aias.a(this.a, localautc);
+            QLog.i(aias.g, 1, "update friend info.");
+            continue;
+          }
+        }
+        return;
+      }
+      catch (Throwable paramObject)
+      {
+        QLog.e(aias.g, 1, paramObject.getMessage());
+      }
+      label115:
+      if ((!TextUtils.isEmpty(localautc.b)) && (localautc.b.equals(this.a.a.b())))
+      {
+        aias.b(this.a, localautc);
+        QLog.i(aias.g, 1, "update my info.");
+      }
+    }
   }
 }
 

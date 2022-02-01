@@ -1,127 +1,77 @@
+import cooperation.qzone.statistic.access.concept.Collector;
+
 public class bmhf
+  extends bmhi
 {
-  public int a;
-  public boolean a;
-  private int b;
-  public boolean b;
-  private int c;
-  public boolean c;
-  private int d;
-  public boolean d;
-  private int e;
-  public boolean e;
-  private boolean f = true;
-  private boolean g = true;
-  private boolean h = true;
-  private boolean i;
-  private boolean j;
-  private boolean k;
-  private boolean l;
-  private boolean m;
-  private boolean n;
+  protected int a;
+  protected long a;
+  protected boolean a;
   
-  public bmhf()
+  public bmhf(long paramLong, int paramInt, boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_e_of_type_Int = 1;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 30000L;
+    this.jdField_a_of_type_Int = 50;
+    this.jdField_a_of_type_Boolean = true;
+    a(paramLong);
+    a(paramInt);
+    a(paramBoolean);
   }
   
-  public bmhd a()
-  {
-    return new bmhd(this, null);
-  }
-  
-  public bmhf a(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bmhf a(boolean paramBoolean)
-  {
-    this.f = paramBoolean;
-    return this;
-  }
-  
-  public bmhf b(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bmhf b(boolean paramBoolean)
-  {
-    this.h = paramBoolean;
-    return this;
-  }
-  
-  public bmhf c(int paramInt)
+  public void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    return this;
   }
   
-  public bmhf c(boolean paramBoolean)
+  public void a(long paramLong)
   {
-    this.i = paramBoolean;
-    return this;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public bmhf d(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bmhf e(boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
   }
   
-  public bmhf f(boolean paramBoolean)
+  public boolean a(Collector paramCollector)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bmhf g(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bmhf h(boolean paramBoolean)
-  {
-    this.k = paramBoolean;
-    return this;
-  }
-  
-  public bmhf i(boolean paramBoolean)
-  {
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bmhf j(boolean paramBoolean)
-  {
-    this.l = paramBoolean;
-    return this;
-  }
-  
-  public bmhf k(boolean paramBoolean)
-  {
-    this.m = paramBoolean;
-    return this;
-  }
-  
-  public bmhf l(boolean paramBoolean)
-  {
-    this.n = paramBoolean;
-    return this;
+    int i;
+    int j;
+    label30:
+    int k;
+    if (paramCollector.a().a() > 0)
+    {
+      i = 1;
+      if (System.currentTimeMillis() - paramCollector.a() <= this.jdField_a_of_type_Long) {
+        break label89;
+      }
+      j = 1;
+      if (paramCollector.a().a() < this.jdField_a_of_type_Int) {
+        break label94;
+      }
+      k = 1;
+      label47:
+      if ((!this.jdField_a_of_type_Boolean) || (!paramCollector.a())) {
+        break label100;
+      }
+    }
+    label89:
+    label94:
+    label100:
+    for (int m = 1;; m = 0)
+    {
+      if ((i == 0) || ((j == 0) && (k == 0) && (m == 0))) {
+        break label106;
+      }
+      return true;
+      i = 0;
+      break;
+      j = 0;
+      break label30;
+      k = 0;
+      break label47;
+    }
+    label106:
+    return false;
   }
 }
 

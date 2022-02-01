@@ -1,16 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3.3.1;
 
 public class agbn
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bkfi
 {
-  public agbn(SixCombolEffectView paramSixCombolEffectView, agbz paramagbz) {}
+  agbn(agbk paramagbk) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Agbz.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
+    if ((agbk.a(this.a) != null) && (agbk.a(this.a).isShown())) {
+      this.a.a.post(new ComboAnimation3.3.1(this));
+    }
   }
 }
 

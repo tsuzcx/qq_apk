@@ -1,29 +1,67 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class alfg
-  implements aleg
+public class alfg
+  extends alej
 {
-  alfg(alff paramalff) {}
+  public alfg(Context paramContext) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    QLog.d("ApolloPluginRscLoader", 1, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
-    Object localObject = this.a.jdField_a_of_type_Alfe;
-    String str = this.a.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_JavaIoFile.exists()) {}
-    for (paramInt = 0;; paramInt = 2)
+    return null;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      localObject = alfe.a((alfe)localObject, 6, str, paramInt);
-      this.a.jdField_a_of_type_OrgJsonJSONArray.put(localObject);
-      if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0)) {
-        break;
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Beps == null) {
+        this.jdField_a_of_type_Beps = new beps();
       }
-      this.a.jdField_a_of_type_Alfe.a(this.a.b, alud.a(2131700871), this.a.jdField_a_of_type_OrgJsonJSONArray);
+      this.jdField_a_of_type_Beps.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
     }
-    alfe.a(this.a.jdField_a_of_type_Alfe, this.a.jdField_a_of_type_ArrayOfInt, this.a.b, this.a.jdField_a_of_type_OrgJsonJSONArray);
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Beps != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Beps.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

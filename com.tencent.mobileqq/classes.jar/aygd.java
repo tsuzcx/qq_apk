@@ -1,48 +1,52 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.text.TextUtils;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aygd
+public class aygd
+  implements ActionMode.Callback
 {
-  private final Drawable a;
-  private final Drawable b;
+  public aygd(OCRResultFragmentNew paramOCRResultFragmentNew, EditText paramEditText) {}
   
-  aygd(Context paramContext)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837549);
-    this.b = paramContext.getDrawable(2130837553);
+    if (paramMenuItem.getItemId() == 2131371903)
+    {
+      paramActionMode = ayfi.a(this.jdField_a_of_type_AndroidWidgetEditText);
+      if (TextUtils.isEmpty(paramActionMode)) {
+        QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 1, anni.a(2131706589), 0).a();
+      }
+    }
+    else
+    {
+      return false;
+    }
+    OCRTextSearchActivity.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), paramActionMode);
+    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew).overridePendingTransition(2130771992, 0);
+    return true;
   }
   
-  private Drawable a(Drawable paramDrawable)
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
+    paramActionMode = paramActionMode.getMenuInflater();
+    if (paramActionMode != null) {
+      paramActionMode.inflate(2131623940, paramMenu);
+    }
+    return true;
   }
   
-  private Drawable b(Drawable paramDrawable)
-  {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
   
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    return false;
   }
 }
 

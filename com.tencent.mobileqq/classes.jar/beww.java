@@ -1,12 +1,8 @@
-public class beww
+import java.util.UUID;
+
+public abstract interface beww
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
-  public long e;
+  public abstract void a(UUID paramUUID, boolean paramBoolean, int paramInt, bewu parambewu);
 }
 
 

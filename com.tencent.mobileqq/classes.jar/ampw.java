@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import org.json.JSONObject;
 
-public final class ampw
-  implements Parcelable.Creator<SosoInterface.SosoLbsInfo>
+class ampw
+  implements MediaPlayer.OnCompletionListener
 {
-  public SosoInterface.SosoLbsInfo a(Parcel paramParcel)
-  {
-    return new SosoInterface.SosoLbsInfo(paramParcel);
-  }
+  ampw(ampr paramampr, amqr paramamqr, JSONObject paramJSONObject) {}
   
-  public SosoInterface.SosoLbsInfo[] a(int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    return new SosoInterface.SosoLbsInfo[paramInt];
+    this.jdField_a_of_type_Amqr.a(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Ampr.a(10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampw
  * JD-Core Version:    0.7.0.1
  */

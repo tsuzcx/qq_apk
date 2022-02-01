@@ -2,9 +2,9 @@ package com.tencent.mobileqq.app;
 
 import android.os.Handler;
 import android.os.Looper;
-import awgf;
-import awgg;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.troop.utils.TroopNameHelper;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -24,13 +24,13 @@ public class TroopManager$SaveTroopMemberTask
   public void run()
   {
     this.b = true;
-    awgf localawgf = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = this.this$0.a.a().createEntityManager();
     if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      localawgf.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localEntityManager.persistOrReplace(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
     for (;;)
     {
-      localawgf.a();
+      localEntityManager.close();
       new Handler(Looper.getMainLooper()).post(new TroopManager.SaveTroopMemberTask.1(this));
       if (this.jdField_a_of_type_Boolean) {
         TroopNameHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin);
@@ -39,13 +39,13 @@ public class TroopManager$SaveTroopMemberTask
       this.this$0.b.remove(this);
       this.this$0.c();
       return;
-      localawgf.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localEntityManager.update(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.SaveTroopMemberTask
  * JD-Core Version:    0.7.0.1
  */

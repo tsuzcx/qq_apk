@@ -1,23 +1,128 @@
+import android.content.Context;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class qvm
-  implements AdapterView.OnItemClickListener
+  extends BaseAdapter
 {
-  public qvm(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
+  String jdField_a_of_type_JavaLangString;
+  List<URL> jdField_a_of_type_JavaUtilList;
+  String jdField_b_of_type_JavaLangString;
+  List<svs> jdField_b_of_type_JavaUtilList;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public qvm(ComponentContentGridImage paramComponentContentGridImage, qvn paramqvn)
   {
-    this.a.a.remove(paramInt);
-    this.a.e();
+    a(paramqvn);
+  }
+  
+  private int a()
+  {
+    int i = afur.a(82.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage.getResources());
+    int j = getCount();
+    if ((j == 2) || (j == 4)) {
+      i = afur.a(116.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage.getResources());
+    }
+    return i;
+  }
+  
+  private <T> List<T> a(List<T> paramList, int paramInt)
+  {
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return paramList;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = Math.min(paramList.size(), paramInt);
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      localArrayList.add(paramList.get(paramInt));
+      paramInt += 1;
+    }
+    return localArrayList;
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_JavaUtilList = a(this.jdField_a_of_type_JavaUtilList, 3);
+    this.jdField_b_of_type_JavaUtilList = a(this.jdField_b_of_type_JavaUtilList, 3);
+  }
+  
+  private int b()
+  {
+    int i = afur.a(116.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage.getResources());
+    int j = getCount();
+    if ((j == 2) || (j == 4)) {
+      i = afur.a(175.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage.getResources());
+    }
+    return i;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<URL> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(qvn paramqvn)
+  {
+    this.jdField_b_of_type_JavaUtilList = paramqvn.a();
+    this.jdField_a_of_type_JavaUtilList = paramqvn.b();
+    this.jdField_a_of_type_JavaLangString = paramqvn.a();
+    this.jdField_b_of_type_JavaLangString = paramqvn.b();
+    a();
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_b_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_b_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Context localContext = paramViewGroup.getContext();
+    if (paramView == null) {
+      paramView = new SquareCornerTextImageView(localContext);
+    }
+    for (;;)
+    {
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, a()));
+      ((SquareCornerTextImageView)paramView).a((svs)this.jdField_b_of_type_JavaUtilList.get(paramInt), ((URL)this.jdField_a_of_type_JavaUtilList.get(paramInt)).toString(), b(), a());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage.a(paramView);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qvm
  * JD-Core Version:    0.7.0.1
  */

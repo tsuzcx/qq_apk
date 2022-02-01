@@ -1,40 +1,93 @@
-import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.SendMsg;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class blia
 {
-  public final int a;
-  public final Bitmap a;
-  public final String a;
-  public final Throwable a;
-  public final boolean a;
+  private blic jdField_a_of_type_Blic;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   
-  private blia(boolean paramBoolean, int paramInt, String paramString, Throwable paramThrowable, Bitmap paramBitmap)
+  public blia(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+    this.jdField_a_of_type_Blic = new blic(paramQQAppInterface);
   }
   
-  private static blia b(int paramInt, String paramString)
+  private int a(String paramString, Bundle paramBundle, Handler paramHandler, long paramLong)
   {
-    return new blia(false, paramInt, paramString, null, null);
+    paramHandler = new SendMsg(paramString);
+    paramString = paramBundle;
+    if (paramBundle == null) {
+      paramString = new Bundle();
+    }
+    if ((paramString != null) && (paramString.size() > 0)) {
+      paramHandler.a.putAll(paramString);
+    }
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    paramHandler.a(i);
+    if (paramLong > 0L) {
+      paramHandler.a(paramLong);
+    }
+    try
+    {
+      this.jdField_a_of_type_Blic.a(paramHandler);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      throw new RuntimeException("sendMsg is fail", paramString);
+    }
   }
   
-  private static blia b(Bitmap paramBitmap)
+  public int a(String paramString, Bundle paramBundle)
   {
-    return new blia(true, 0, null, null, paramBitmap);
+    try
+    {
+      int i = a(paramString, paramBundle, null, 0L);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return -1;
   }
   
-  public String toString()
+  public void a()
   {
-    return "ChangeFaceResult{isSuccess=" + this.jdField_a_of_type_Boolean + ", errCode=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", exception=" + this.jdField_a_of_type_JavaLangThrowable + ", data=" + this.jdField_a_of_type_AndroidGraphicsBitmap + '}';
+    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
+    if (localPluginCommunicationHandler == null)
+    {
+      QLog.e("QlinkServiceManager", 1, "[QLINK] QQ - PluginCommunicationHandler.getInstance failed");
+      return;
+    }
+    localPluginCommunicationHandler.register(new blib(this, "qlink.notify"));
   }
+  
+  public void a(long paramLong) {}
+  
+  public boolean a(long paramLong1, int paramInt, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    return true;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte)
+  {
+    return true;
+  }
+  
+  public void b(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blia
  * JD-Core Version:    0.7.0.1
  */

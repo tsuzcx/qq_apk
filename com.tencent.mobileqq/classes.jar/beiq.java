@@ -1,22 +1,17 @@
-import java.util.Hashtable;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
+import com.tencent.widget.AdapterView;
 
 public class beiq
-  extends behq
+  implements bkij
 {
-  Hashtable<String, Boolean> a = new Hashtable();
+  public beiq(TroopAvatarWallPreviewActivity.2.1 param1) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.put(paramString, Boolean.valueOf(paramBoolean));
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    paramString = (Boolean)this.a.get(paramString);
-    if (paramString == null) {
-      return paramBoolean;
-    }
-    return paramString.booleanValue();
+    this.a.a.this$0.a();
   }
 }
 

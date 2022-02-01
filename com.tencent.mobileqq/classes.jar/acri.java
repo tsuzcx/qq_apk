@@ -1,16 +1,8 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
 
-class acri
-  implements View.OnClickListener
+public abstract interface acri
 {
-  acri(acrh paramacrh) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.onClick(this.a.a.a);
-  }
+  public abstract void reportImpression(View paramView);
 }
 
 

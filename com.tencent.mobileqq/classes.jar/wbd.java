@@ -1,21 +1,7 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-class wbd
-  implements bhum
-{
-  wbd(wax paramwax, AtomicBoolean paramAtomicBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  public void onDismiss()
-  {
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-  }
-}
+public abstract interface wbd {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wbd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,33 @@
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.storyHome.VideoEncodeActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class whr
-  implements RadioGroup.OnCheckedChangeListener
+class whr
+  extends SimpleJob<Void>
 {
-  public whr(VideoEncodeActivity paramVideoEncodeActivity) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  whr(whq paramwhq, String paramString)
   {
-    paramRadioGroup = (RadioButton)paramRadioGroup.findViewById(paramInt);
-    VideoEncodeActivity.a(this.a, (String)paramRadioGroup.getTag());
-    wxe.d("Q.qqstory:VideoEncodeActivity", "select fake vid %s", new Object[] { VideoEncodeActivity.a(this.a) });
-    VideoEncodeActivity.a(this.a);
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    boolean bool = zkr.a(500L);
+    if (this.a.a(bool)) {
+      whq.a(this.a, bool);
+    }
+    return null;
+  }
+  
+  public int getJobType()
+  {
+    return 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     whr
  * JD-Core Version:    0.7.0.1
  */

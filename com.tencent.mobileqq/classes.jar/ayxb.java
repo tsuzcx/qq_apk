@@ -1,28 +1,18 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-public class ayxb
-  extends aywk
+public final class ayxb
+  implements Parcelable.Creator<CompressInfo>
 {
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
-  
-  public ayxb(ViewGroup paramViewGroup, int paramInt)
+  public CompressInfo a(Parcel paramParcel)
   {
-    super(paramViewGroup, paramInt);
+    return new CompressInfo(paramParcel, null);
   }
   
-  protected void a()
+  public CompressInfo[] a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131376282));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369384));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375835));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131368482));
+    return new CompressInfo[paramInt];
   }
 }
 

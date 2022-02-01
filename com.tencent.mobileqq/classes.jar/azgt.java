@@ -1,8 +1,6 @@
-public abstract interface azgt
+public class azgt
 {
-  public abstract azgy a();
-  
-  public abstract azgy a(int paramInt);
+  public static final String a = bhgg.a(new StringBuilder().append(anhk.ba).append(".profilecard/").toString()) + "diyCardFonts/";
 }
 
 

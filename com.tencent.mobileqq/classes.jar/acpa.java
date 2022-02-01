@@ -1,13 +1,16 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public abstract interface acpa
+class acpa
+  implements DialogInterface.OnKeyListener
 {
-  public abstract void a(Activity paramActivity);
+  acpa(acow paramacow) {}
   
-  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt);
-  
-  public abstract void b(QQAppInterface paramQQAppInterface, int paramInt);
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    return (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0);
+  }
 }
 
 

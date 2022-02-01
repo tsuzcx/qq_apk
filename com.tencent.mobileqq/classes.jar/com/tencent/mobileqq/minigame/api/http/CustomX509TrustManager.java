@@ -272,7 +272,7 @@ public class CustomX509TrustManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.api.http.CustomX509TrustManager
  * JD-Core Version:    0.7.0.1
  */

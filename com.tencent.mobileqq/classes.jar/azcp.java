@@ -1,80 +1,70 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator.MultiForwardShortVideoTask;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.PrecoverResource;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import tencent.im.msg.im_msg_body.RichText;
+import eipc.EIPCResult;
 
-public class azcp
-  implements awkh
+class azcp
+  extends QIPCModule
 {
-  final int jdField_a_of_type_Int;
-  azej jdField_a_of_type_Azej;
-  
-  public azcp(BaseShortVideoOprerator.MultiForwardShortVideoTask paramMultiForwardShortVideoTask, int paramInt)
+  azcp(azco paramazco, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Azej = ((azej)paramMultiForwardShortVideoTask.b.get(this.jdField_a_of_type_Int));
+    super(paramString);
   }
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    return (MessageForShortVideo)((azdi)this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
-  }
-  
-  public void a(awki paramawki)
-  {
-    MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)((azdi)this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
-    localMessageForShortVideo.videoFileStatus = 1003;
-    localMessageForShortVideo.md5 = paramawki.jdField_d_of_type_JavaLangString;
-    localMessageForShortVideo.uuid = paramawki.jdField_c_of_type_JavaLangString;
-    localMessageForShortVideo.thumbFileSize = ((int)paramawki.jdField_c_of_type_Long);
-    localMessageForShortVideo.videoAttr = paramawki.jdField_c_of_type_Int;
-    localMessageForShortVideo.videoKandianType = paramawki.jdField_d_of_type_Int;
-    localMessageForShortVideo.serial();
-    paramawki = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.this$0.a.a();
-    if (paramawki != null) {
-      paramawki.a(localMessageForShortVideo, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverIPCServer", 2, new Object[] { "onCall, action=" + paramString + ", params=" + paramBundle + ", callbackId=", Integer.valueOf(paramInt) });
     }
-  }
-  
-  public void b(awki paramawki)
-  {
-    for (;;)
+    if (paramBundle == null) {
+      QLog.d("PrecoverIPCServer", 1, new Object[] { "onCall, params is null!!. action=" + paramString + ", callbackId=", Integer.valueOf(paramInt) });
+    }
+    do
     {
-      int i;
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.b)
+      Object localObject;
+      do
       {
-        if (paramawki.jdField_a_of_type_Int == 0)
+        do
         {
-          a(paramawki);
-          this.jdField_a_of_type_Azej.jdField_a_of_type_Int = 0;
-          if (QLog.isColorLevel()) {
-            QLog.d("BaseShortVideoOprerator", 2, "onsend success!");
+          return null;
+          if (azco.a(this.a) == null)
+          {
+            QLog.d("PrecoverIPCServer", 1, new Object[] { "onCall, mManager is null!!. action=" + paramString + ", callbackId=", Integer.valueOf(paramInt) });
+            return null;
           }
-          i = BaseShortVideoOprerator.MultiForwardShortVideoTask.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask);
-          if (i == 0) {
-            this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.this$0.a(3, 0, this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.b);
+          paramBundle.putString("key_action", paramString);
+          if (azcn.a.equals(paramString)) {
+            return azco.a(this.a, paramBundle, paramInt);
           }
-        }
-        else
-        {
-          this.jdField_a_of_type_Azej.jdField_a_of_type_Int = -1;
-          this.jdField_a_of_type_Azej.jdField_a_of_type_Awjh = new awjh();
-          this.jdField_a_of_type_Azej.jdField_a_of_type_Awjh.b = paramawki.jdField_a_of_type_JavaLangString;
-          this.jdField_a_of_type_Azej.jdField_a_of_type_Awjh.jdField_a_of_type_Int = paramawki.b;
-          if (!QLog.isColorLevel()) {
-            continue;
+          if (azcn.b.equals(paramString))
+          {
+            paramString = azco.a(this.a, paramBundle, paramInt);
+            if (paramString.isSuccess())
+            {
+              localObject = (PrecoverResource)paramBundle.getParcelable("resource");
+              if (QLog.isColorLevel()) {
+                QLog.d("PrecoverIPCServer", 2, "onCall, params.getParcelable, res=" + localObject);
+              }
+              if (azco.a(this.a).a().a((PrecoverResource)localObject, new Object[] { "PrecoverIPCServer_MODEL", Integer.valueOf(paramInt) })) {
+                return EIPCResult.createResult(11, paramBundle);
+              }
+              paramBundle.putInt("errCode", -2);
+              paramBundle.putString("errDesc", "args invalid or file already exist!");
+              azco.a(this.a).callbackResult(paramInt, EIPCResult.createResult(-2, paramBundle));
+            }
+            return paramString;
           }
-          QLog.d("BaseShortVideoOprerator", 2, "onsend fail! err:" + paramawki.jdField_a_of_type_JavaLangString);
-        }
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.size() - i) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.a();
-      }
-    }
+        } while (!azcn.c.equals(paramString));
+        paramString = paramBundle.getString("businessId");
+        localObject = paramBundle.getString("md5");
+      } while ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject)));
+      paramString = azco.a(this.a).a().a((String)localObject);
+    } while (paramString == null);
+    paramBundle.putLong("key_total", paramString.a);
+    paramBundle.putLong("key_loaded", paramString.b);
+    return EIPCResult.createSuccessResult(paramBundle);
   }
 }
 

@@ -1,50 +1,44 @@
-import android.graphics.RectF;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class berx
+public class berx
+  extends berz
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  public bamp a;
-  private List<RectF> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private List<bamp> b = new ArrayList();
-  
-  private berx(bamp parambamp)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Bamp = parambamp;
-  }
-  
-  private void a(RectF paramRectF, bamp parambamp)
-  {
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      int i = 0;
-      j = i;
-      if (!localIterator.hasNext()) {
-        break label63;
-      }
-      if (!paramRectF.equals((RectF)localIterator.next())) {
-        break label91;
-      }
-      i = 1;
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
     }
-    label63:
-    label91:
-    for (;;)
+    localTroopFeedItem.type = 18;
+    try
     {
-      break;
-      j = 0;
-      if (j == 0)
+      localTroopFeedItem.title = (paramJSONObject.getString("album_name") + anni.a(2131713982) + paramJSONObject.getString("photo_num") + anni.a(2131713984));
+      localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+      paramJSONObject = paramJSONObject.getJSONArray("content");
+      int i = 0;
+      for (;;)
       {
-        this.jdField_a_of_type_JavaUtilList.add(paramRectF);
-        this.b.add(parambamp);
+        if (i < paramJSONObject.length())
+        {
+          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+          if (localJSONObject.getInt("type") == 3) {
+            localTroopFeedItem.picPath = (localJSONObject.getString("pic_url") + "200");
+          }
+        }
+        else
+        {
+          return localTroopFeedItem;
+        }
+        i += 1;
       }
-      return;
+      return null;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
     }
   }
 }

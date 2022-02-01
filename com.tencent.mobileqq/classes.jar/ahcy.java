@@ -1,8 +1,24 @@
-public class ahcy
-  implements Cloneable
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.MessageForMedalNews;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+
+class ahcy
+  extends afuv
 {
+  public long a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  MessageForMedalNews jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
   public String a;
-  public String b;
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
+  
+  ahcy(ahcw paramahcw) {}
 }
 
 

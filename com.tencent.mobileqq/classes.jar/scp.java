@@ -1,82 +1,66 @@
 import android.app.Activity;
-import android.content.Context;
-import android.os.SystemClock;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
-public class scp
+class scp
+  implements spt
 {
-  public static long a;
-  public static GdtHandler.Params a;
+  scp(sce paramsce, VideoInfo paramVideoInfo) {}
   
-  static
+  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    jdField_a_of_type_Long = -2147483648L;
-  }
-  
-  public static void a(Context paramContext, BaseData paramBaseData, boolean paramBoolean, int paramInt)
-  {
-    a(paramContext, paramBaseData, false, paramBoolean, paramInt);
-  }
-  
-  public static void a(Context paramContext, BaseData paramBaseData, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    if ((paramBaseData == null) || (paramContext == null) || (!(paramContext instanceof Activity))) {}
+    paramView = pha.a();
     AdvertisementInfo localAdvertisementInfo;
-    Object localObject;
-    do
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
     {
-      do
-      {
-        return;
-        szl.a(paramContext);
-        localAdvertisementInfo = oef.a((AdData)paramBaseData);
-      } while (szl.a(paramContext, (AdData)paramBaseData, localAdvertisementInfo));
-      localAdvertisementInfo.setClickPos(paramInt);
-      if ((oee.h(localAdvertisementInfo)) && ((paramInt == 4) || (paramInt == 3)) && ((paramContext instanceof Activity)))
-      {
-        oee.a((Activity)paramContext, 1);
-        szl.a((Activity)paramContext, localAdvertisementInfo);
-        noy.a(new obk().a(BaseApplication.getContext()).a(noy.a).b(noy.ai).a(localAdvertisementInfo).d(noy.a((AdData)paramBaseData)).a());
-        return;
+      if (sce.a(this.jdField_a_of_type_Sce).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
+        ryx.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
       }
-      localObject = new obg();
-      if (paramInt == 8) {
-        ((obg)localObject).c = true;
+      pmh.a().a(Long.valueOf(paramView).longValue(), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.makeDislikeParam(paramArrayList, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g));
+      localAdvertisementInfo = nxw.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
+      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
+        break label304;
       }
-      localObject = szl.a((Activity)paramContext, localAdvertisementInfo, null, 5, paramBoolean2, false, paramBoolean1, (obg)localObject);
-    } while (localObject == null);
-    ((GdtHandler.Params)localObject).f = oed.b((AdData)paramBaseData);
-    szl.a((GdtHandler.Params)localObject, paramContext, localAdvertisementInfo);
-    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = (GdtHandler.Params)localObject;
-    if (jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params != null) {}
-    for (long l = SystemClock.elapsedRealtime();; l = -2147483648L)
-    {
-      jdField_a_of_type_Long = l;
-      oef.a((AdData)paramBaseData, paramInt);
-      return;
     }
-  }
-  
-  public void a()
-  {
-    szl.a(2, jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params, jdField_a_of_type_Long);
-    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
-    jdField_a_of_type_Long = -2147483648L;
-  }
-  
-  public void b()
-  {
-    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
-    jdField_a_of_type_Long = -2147483648L;
+    label301:
+    label304:
+    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
+    {
+      paramView = "";
+      int i = 0;
+      if (i < paramArrayList.size())
+      {
+        paramObject = (DislikeInfo)paramArrayList.get(i);
+        if (paramObject == null) {
+          break label301;
+        }
+        paramObject = paramView + paramObject.a;
+        paramView = paramObject;
+        if (i != paramArrayList.size() - 1) {
+          paramView = paramObject + ",";
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        nxw.a(new omp().a(sce.a(this.jdField_a_of_type_Sce)).a(nxw.c).b(nxw.R).a(localAdvertisementInfo).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo).a(l).a(paramView).a());
+        QQToast.a(sce.a(this.jdField_a_of_type_Sce), -1, sce.a(this.jdField_a_of_type_Sce).getString(2131698481), 0).b(sce.a(this.jdField_a_of_type_Sce).getResources().getDimensionPixelSize(2131298998));
+        sce.a(this.jdField_a_of_type_Sce).dismiss();
+        return true;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     scp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import amun;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,6 +13,7 @@ import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+import aote;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
@@ -82,15 +82,15 @@ public class ARVideoRecordButtonView
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130838536);
-    this.c = a(2130838537);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130838637);
+    this.c = a(2130838638);
   }
   
   private void a(float paramFloat1, float paramFloat2)
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 });
     localValueAnimator.setDuration(1000L);
-    localValueAnimator.addUpdateListener(new amun(this));
+    localValueAnimator.addUpdateListener(new aote(this));
     localValueAnimator.start();
   }
   
@@ -181,7 +181,7 @@ public class ARVideoRecordButtonView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView
  * JD-Core Version:    0.7.0.1
  */

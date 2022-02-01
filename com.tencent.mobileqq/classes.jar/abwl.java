@@ -1,22 +1,36 @@
+import java.util.List;
+
 public class abwl
 {
-  public double a;
+  private static int d;
   public int a;
   public long a;
   public String a;
-  public double b;
+  public List<String> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
   public long b;
   public String b;
-  public String c = "";
+  public boolean b;
+  public int c;
+  public boolean c;
   
   public abwl()
   {
-    this.jdField_a_of_type_Double = (0.0D / 0.0D);
-    this.jdField_a_of_type_Long = 9223372036854775807L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Double = (0.0D / 0.0D);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    d += 1;
+    this.jdField_a_of_type_Int = d;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
+    this.c = 0;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString.replaceAll(":", "") + "0000";
   }
 }
 

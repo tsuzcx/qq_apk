@@ -1,140 +1,153 @@
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class axlq
-  extends axlp
 {
-  public int a;
-  public String a;
-  public String b = "";
+  public static int a;
+  public static long a;
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  boolean a;
+  protected int b;
+  boolean b;
+  protected int c;
+  protected int d;
+  protected String e = "";
+  protected String f = "";
+  protected String g = "";
+  protected String h = "";
+  protected String i = "";
+  protected String j = "";
+  protected String k = "";
+  protected String l = "";
+  protected String m = "";
+  protected String n = "";
+  protected String o = "";
+  protected String p = "";
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
+    jdField_c_of_type_JavaLangString = "";
+    jdField_d_of_type_JavaLangString = "";
+  }
   
   public axlq()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 1001;
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
   
-  private RedAppInfo a(String paramString, QQAppInterface paramQQAppInterface)
+  public axlq a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq getRedPointInfo", 2, "path = " + paramString);
-    }
-    if ("7720.772004".equals(paramString)) {}
-    for (paramString = auau.a(paramQQAppInterface, paramString);; paramString = ((axlx)paramQQAppInterface.getManager(36)).a(paramString)) {
-      return axmc.a(paramString);
-    }
+    this.jdField_a_of_type_Boolean = true;
+    return this;
   }
   
-  private void a(QQAppInterface paramQQAppInterface, String paramString)
+  public axlq a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq clearRed", 2, "path = " + paramString);
-    }
-    ((axlx)paramQQAppInterface.getManager(36)).b(paramString);
+    this.e = paramString;
+    return this;
   }
   
-  private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq reportRedInfo", 2, "path = " + paramString + "act_id == " + paramInt);
+    if (this.jdField_a_of_type_Boolean) {
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
     }
-    if (paramString == null) {
+    if (this.jdField_b_of_type_Boolean) {
+      this.m = ("" + axdz.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
+    }
+    long l1 = System.currentTimeMillis() - jdField_a_of_type_Long;
+    if (l1 % 1000L > 500L) {}
+    for (l1 = (int)l1 / 1000 + 1;; l1 = (int)l1 / 1000)
+    {
+      this.e = (l1 + "");
+      this.f = jdField_c_of_type_JavaLangString;
+      this.g = jdField_b_of_type_JavaLangString;
+      this.h = jdField_a_of_type_JavaLangString;
+      this.i = (nlw.a() + "");
+      bcst.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
       return;
     }
-    try
-    {
-      if (paramString.contains("\\.")) {}
-      for (i = Integer.parseInt(paramString.split("\\.")[0]);; i = Integer.parseInt(paramString))
-      {
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          paramString = ((axlx)paramQQAppInterface.getManager(36)).a(paramString);
-          localJSONObject.put("service_type", 0);
-          localJSONObject.put("act_id", paramInt);
-          localJSONObject.put("obj_id", "");
-          localJSONObject.put("pay_amt", 0);
-          localJSONObject.put("service_id", i);
-          ((axlx)paramQQAppInterface.getManager(36)).c(paramString, localJSONObject.toString());
-          return;
-        }
-        catch (JSONException paramQQAppInterface)
-        {
-          paramQQAppInterface.printStackTrace();
-          return;
-        }
-      }
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        localNumberFormatException.printStackTrace();
-        int i = 0;
-      }
-    }
   }
   
-  public int a()
+  public axlq b()
   {
-    return 1;
+    this.jdField_b_of_type_Boolean = true;
+    return this;
   }
   
-  public void a(Bundle paramBundle)
+  public axlq b(String paramString)
   {
-    super.a(paramBundle);
-    paramBundle.putString("path", this.jdField_a_of_type_JavaLangString);
-    paramBundle.putInt("act_id", this.jdField_a_of_type_Int);
-    paramBundle.putString("reportPath", this.b);
+    this.f = paramString;
+    return this;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  public void b(QQAppInterface paramQQAppInterface)
   {
-    Object localObject = paramBundle.getString("cmd");
-    if ("getRedInfo".equals(localObject))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
-      }
-      paramQQAppInterface = a(this.jdField_a_of_type_JavaLangString, paramQQAppInterface);
-      localObject = new Bundle();
-      ((Bundle)localObject).putParcelable("redInfoResp", paramQQAppInterface);
-      paramBundle.putBundle("keyResponse", (Bundle)localObject);
-      super.a(paramBundle);
+    if ((this.jdField_a_of_type_Boolean) && (paramQQAppInterface != null)) {
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
     }
-    do
+    if ((this.jdField_b_of_type_Boolean) && (paramQQAppInterface != null))
     {
-      return;
-      if ("reportRedInfo".equals(localObject))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
-        }
-        a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        return;
-      }
-    } while (!"clearRedInfo".equals(localObject));
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
+      this.jdField_b_of_type_Boolean = true;
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("gender", 0));
     }
-    a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    this.i = (nlw.a() + "");
+    bcst.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
   }
   
-  public void b(Bundle paramBundle)
+  public axlq c(String paramString)
   {
-    super.b(paramBundle);
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("path");
-    this.jdField_a_of_type_Int = paramBundle.getInt("act_id");
-    this.b = paramBundle.getString("reportPath");
+    this.g = paramString;
+    return this;
+  }
+  
+  public axlq d(String paramString)
+  {
+    this.h = paramString;
+    return this;
+  }
+  
+  public axlq e(String paramString)
+  {
+    this.m = paramString;
+    return this;
+  }
+  
+  public axlq f(String paramString)
+  {
+    this.n = paramString;
+    return this;
+  }
+  
+  public axlq g(String paramString)
+  {
+    this.p = paramString;
+    return this;
+  }
+  
+  public axlq h(String paramString)
+  {
+    this.j = paramString;
+    return this;
+  }
+  
+  public axlq i(String paramString)
+  {
+    this.k = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axlq
  * JD-Core Version:    0.7.0.1
  */

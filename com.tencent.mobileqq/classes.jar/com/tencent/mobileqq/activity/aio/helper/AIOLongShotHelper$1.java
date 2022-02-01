@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import alud;
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
+import anni;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -26,7 +26,7 @@ class AIOLongShotHelper$1
       label41:
       if (!this.b)
       {
-        QQToast.a(AIOLongShotHelper.a(this.this$0).jdField_a_of_type_AndroidContentContext, 1, alud.a(2131700489), 0).a();
+        QQToast.a(AIOLongShotHelper.a(this.this$0).jdField_a_of_type_AndroidContentContext, 1, anni.a(2131698915), 0).a();
         AIOLongShotHelper.a("0X800A50D");
       }
     }
@@ -34,7 +34,7 @@ class AIOLongShotHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper.1
  * JD-Core Version:    0.7.0.1
  */

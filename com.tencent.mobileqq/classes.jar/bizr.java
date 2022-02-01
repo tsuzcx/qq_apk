@@ -1,25 +1,15 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import cooperation.qqreader.ReaderSplashImpl.3.1;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-public class bizr
-  implements EnterCallback
+public abstract interface bizr
 {
-  bizr(bizo parambizo) {}
+  public abstract void a(int paramInt, WadlResult paramWadlResult);
   
-  public void onCloseLoadingView() {}
-  
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView)
-  {
-    bizo.a(this.a).runOnUiThread(new ReaderSplashImpl.3.1(this, paramView));
-  }
+  public abstract void a(ArrayList<WadlResult> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bizr
  * JD-Core Version:    0.7.0.1
  */

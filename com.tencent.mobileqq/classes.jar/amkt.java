@@ -1,19 +1,19 @@
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import java.util.Comparator;
+
 public class amkt
+  implements Comparator<amkw>
 {
-  public int a;
-  public String a;
-  public int b;
+  public amkt(ApolloCmdChannel paramApolloCmdChannel) {}
   
-  public amkt(String paramString, int paramInt1, int paramInt2)
+  public int a(amkw paramamkw1, amkw paramamkw2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    return paramamkw1.a() - paramamkw2.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amkt
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.mobileqq.microapp.R.id;
-import com.tencent.mobileqq.microapp.apkg.s;
-import com.tencent.mobileqq.microapp.apkg.s.a;
+import com.tencent.mobileqq.microapp.apkg.k;
+import com.tencent.mobileqq.microapp.apkg.k.a;
 import com.tencent.mobileqq.microapp.util.DisplayUtil;
 
 public final class TabBarView$a
@@ -20,34 +20,31 @@ public final class TabBarView$a
   public View d;
   public View e;
   public View f;
-  public View g;
-  public TextView h;
-  public Drawable i;
-  public Drawable j;
-  public s.a k;
-  public s l;
-  public boolean m = false;
+  public Drawable g;
+  public Drawable h;
+  public k.a i;
+  public k j;
   
-  public static a a(View paramView, s.a parama, s params)
+  public static a a(View paramView, k.a parama, k paramk)
   {
     a locala = new a();
-    locala.a = ((TextView)paramView.findViewById(R.id.aw));
-    locala.b = ((ImageView)paramView.findViewById(R.id.z));
-    locala.c = paramView.findViewById(R.id.bc);
-    locala.d = paramView.findViewById(R.id.h);
-    locala.e = paramView.findViewById(R.id.i);
-    locala.g = paramView.findViewById(R.id.ar);
-    locala.h = ((TextView)paramView.findViewById(R.id.g));
+    locala.a = ((TextView)paramView.findViewById(R.id.m));
+    locala.b = ((ImageView)paramView.findViewById(R.id.i));
+    locala.c = paramView.findViewById(R.id.p);
+    locala.d = paramView.findViewById(R.id.b);
+    locala.e = paramView.findViewById(R.id.c);
+    paramView.findViewById(R.id.l);
+    paramView.findViewById(R.id.a);
     locala.f = paramView;
-    locala.l = params;
-    locala.k = parama;
+    locala.j = paramk;
+    locala.i = parama;
     return locala;
   }
   
   public void a()
   {
     RelativeLayout.LayoutParams localLayoutParams;
-    if ("top".equals(this.l.e))
+    if ("top".equals(this.j.e))
     {
       localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
       localLayoutParams.bottomMargin = DisplayUtil.dip2px(this.f.getContext(), 15.0F);
@@ -57,8 +54,8 @@ public final class TabBarView$a
       this.b.setVisibility(8);
       this.c.setVisibility(8);
       this.d.setVisibility(0);
-      this.a.setText(this.k.b);
-      if (!"top".equals(this.l.e)) {
+      this.a.setText(this.i.b);
+      if (!"top".equals(this.j.e)) {
         break label225;
       }
     }
@@ -76,68 +73,62 @@ public final class TabBarView$a
       this.b.setVisibility(0);
       break;
       label225:
-      this.i = new BitmapDrawable(this.f.getContext().getResources(), this.k.e);
-      this.j = new BitmapDrawable(this.f.getContext().getResources(), this.k.f);
+      this.g = new BitmapDrawable(this.f.getContext().getResources(), this.i.c);
+      this.h = new BitmapDrawable(this.f.getContext().getResources(), this.i.d);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    int n = 855638016;
-    this.m = paramBoolean;
-    this.f.setBackgroundColor(this.l.c);
+    int k = 855638016;
+    this.f.setBackgroundColor(this.j.c);
     if (!paramBoolean)
     {
-      this.a.setTextColor(this.l.a);
-      if ("top".equals(this.l.e))
+      this.a.setTextColor(this.j.a);
+      if ("top".equals(this.j.e))
       {
         this.e.setVisibility(8);
-        if (!"top".equals(this.l.e)) {
-          break label193;
+        if (!"top".equals(this.j.e)) {
+          break label188;
         }
         localView = this.d;
-        if (!"black".equals(this.l.d)) {
-          break label187;
+        if (!"black".equals(this.j.d)) {
+          break label182;
         }
       }
     }
     for (;;)
     {
-      localView.setBackgroundColor(n);
-      this.e.setBackgroundColor(this.l.b);
+      localView.setBackgroundColor(k);
+      this.e.setBackgroundColor(this.j.b);
       return;
-      this.b.setImageDrawable(this.i);
+      this.b.setImageDrawable(this.g);
       break;
-      this.a.setTextColor(this.l.b);
-      if ("top".equals(this.l.e))
+      this.a.setTextColor(this.j.b);
+      if ("top".equals(this.j.e))
       {
         this.e.setVisibility(0);
         break;
       }
-      this.b.setImageDrawable(this.j);
+      this.b.setImageDrawable(this.h);
       break;
-      label187:
-      n = 872415231;
+      label182:
+      k = 872415231;
     }
-    label193:
+    label188:
     View localView = this.c;
-    if ("black".equals(this.l.d)) {}
+    if ("black".equals(this.j.d)) {}
     for (;;)
     {
-      localView.setBackgroundColor(n);
+      localView.setBackgroundColor(k);
       return;
-      n = 872415231;
+      k = 872415231;
     }
-  }
-  
-  public void b()
-  {
-    a(this.m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.TabBarView.a
  * JD-Core Version:    0.7.0.1
  */

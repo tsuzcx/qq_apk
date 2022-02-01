@@ -1,21 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nqn
-  implements DialogInterface.OnClickListener
+class nqn
+  implements View.OnClickListener
 {
-  public nqn(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, String paramString) {}
+  nqn(nql paramnql, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, false, this.jdField_a_of_type_JavaLangString);
+    Intent localIntent = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    nql.a(this.jdField_a_of_type_Nql).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nqn
  * JD-Core Version:    0.7.0.1
  */

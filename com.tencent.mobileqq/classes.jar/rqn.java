@@ -1,45 +1,52 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.CheckBox;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.ExpandableListView;
+import java.util.List;
 
-class rqn
-  extends rko
+public class rqn
+  extends rqu
 {
-  rqn(rqj paramrqj, BaseArticleInfo paramBaseArticleInfo) {}
+  private rre a;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public rqn(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView, boolean paramBoolean, rre paramrre)
   {
-    if (paramBoolean3)
+    super(paramContext, paramQQAppInterface, paramExpandableListView, paramBoolean);
+    this.jdField_a_of_type_Rre = paramrre;
+  }
+  
+  protected void a()
+  {
+    if ((this.jdField_a_of_type_Rre != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Rre.b()))
     {
-      if (paramBoolean4) {
-        this.jdField_a_of_type_Rqj.jdField_a_of_type_Rjg.c();
-      }
-    }
-    else
-    {
-      if (paramBoolean1) {
-        break label77;
-      }
-      this.jdField_a_of_type_Rqj.b = false;
-    }
-    for (;;)
-    {
-      if ((paramBoolean2) && (this.jdField_a_of_type_Rqj.jdField_a_of_type_Rkb != null)) {
-        this.jdField_a_of_type_Rqj.jdField_a_of_type_Rkb.a(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, 0L, 0L);
-      }
+      String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131717150, new Object[] { String.valueOf(this.jdField_a_of_type_Rre.c()) });
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, str, 0).a();
       return;
-      this.jdField_a_of_type_Rqj.jdField_a_of_type_Rjg.b(2);
-      break;
-      label77:
-      if (this.jdField_a_of_type_Rqj.b)
-      {
-        this.jdField_a_of_type_Rqj.jdField_a_of_type_Rjg.c();
-        this.jdField_a_of_type_Rqj.b = false;
-      }
     }
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131717144), 0).a();
+  }
+  
+  protected void a(rrc paramrrc, Friends paramFriends)
+  {
+    if ((paramFriends == null) || (this.jdField_a_of_type_Rre == null) || (this.jdField_a_of_type_Rre.a() == null) || (this.jdField_a_of_type_Rre.a().isEmpty())) {
+      return;
+    }
+    paramrrc.a.setBackgroundResource(2130849390);
+    if (this.jdField_a_of_type_Rre.a().contains(paramFriends.uin))
+    {
+      paramrrc.a.setEnabled(false);
+      return;
+    }
+    paramrrc.a.setEnabled(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rqn
  * JD-Core Version:    0.7.0.1
  */

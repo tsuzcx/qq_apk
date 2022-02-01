@@ -1,16 +1,93 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.res.Resources;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.dating.NearbyTransitActivity;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
-class arln
-  implements View.OnClickListener
+public class arln
+  extends annz
 {
-  arln(arkz paramarkz, FileManagerEntity paramFileManagerEntity) {}
+  public arln(NearbyTransitActivity paramNearbyTransitActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, Boolean paramBoolean1)
   {
-    azqs.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
-    arsx.a(this.jdField_a_of_type_Arkz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Arkz.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFileID, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId);
+    arkw.a("NearbyTransitActivity", new Object[] { "onJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), paramString1 });
+    NearbyTransitActivity.a("onJoinHotChat", 1);
+    if (NearbyTransitActivity.a(this.a)) {
+      return;
+    }
+    NearbyTransitActivity.a(this.a).removeMessages(2);
+    NearbyTransitActivity.a(this.a).removeMessages(5);
+    if (this.a.jdField_a_of_type_Biax != null) {
+      this.a.jdField_a_of_type_Biax.b();
+    }
+    paramBoolean1 = Message.obtain();
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString1))) {
+      paramBoolean1.what = 3;
+    }
+    for (paramBoolean1.obj = new Object[] { paramString1, paramString2, paramString4 };; paramBoolean1.obj = paramString1)
+    {
+      NearbyTransitActivity.a(this.a).sendMessage(paramBoolean1);
+      return;
+      paramString1 = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        paramString1 = NearbyTransitActivity.jdField_a_of_type_JavaLangString;
+      }
+      paramBoolean1.what = 1;
+      paramBoolean1.arg1 = 11;
+    }
+  }
+  
+  public void a(boolean paramBoolean, HotChatInfo paramHotChatInfo, Common.WifiPOIInfo paramWifiPOIInfo, int paramInt, String paramString)
+  {
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      if (paramHotChatInfo != null) {
+        str = paramHotChatInfo.name;
+      }
+    }
+    if ((NearbyTransitActivity.a(this.a) == 1) && (!bgjw.a(str, NearbyTransitActivity.a(this.a)))) {}
+    do
+    {
+      return;
+      NearbyTransitActivity.a("onQuickJoinHotChat", 1);
+      arkw.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), Integer.valueOf(NearbyTransitActivity.a(this.a)), Integer.valueOf(paramInt), str, paramHotChatInfo, paramWifiPOIInfo });
+    } while (NearbyTransitActivity.a(this.a));
+    NearbyTransitActivity.a(this.a).removeMessages(2);
+    NearbyTransitActivity.a(this.a).removeMessages(5);
+    if (this.a.jdField_a_of_type_Biax != null) {
+      this.a.jdField_a_of_type_Biax.b();
+    }
+    paramWifiPOIInfo = Message.obtain();
+    if (paramBoolean) {
+      if ((paramHotChatInfo != null) && ((paramInt == 1) || (paramInt == 2)))
+      {
+        paramWifiPOIInfo.what = 3;
+        paramWifiPOIInfo.obj = new Object[] { paramHotChatInfo.troopUin, paramHotChatInfo.troopCode, paramHotChatInfo.name };
+      }
+    }
+    while ((NearbyTransitActivity.b(this.a) == 1) && (paramWifiPOIInfo.what == 3) && (paramHotChatInfo.mFissionRoomNum > 0))
+    {
+      axei.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat allocate room success,is to showing entering tip " });
+      paramString = Message.obtain();
+      paramString.what = 5;
+      paramString.obj = String.format(this.a.getResources().getString(2131692889), new Object[] { Integer.valueOf(paramHotChatInfo.mFissionRoomNum) });
+      NearbyTransitActivity.a(this.a).sendMessage(paramString);
+      NearbyTransitActivity.a(this.a).sendMessageDelayed(paramWifiPOIInfo, 600L);
+      return;
+      paramWifiPOIInfo.what = 1;
+      paramWifiPOIInfo.arg1 = 5;
+      paramWifiPOIInfo.obj = NearbyTransitActivity.jdField_a_of_type_JavaLangString;
+      continue;
+      paramWifiPOIInfo.what = 1;
+      paramWifiPOIInfo.arg1 = (paramInt + 100);
+      paramWifiPOIInfo.obj = axbp.a(paramInt);
+    }
+    NearbyTransitActivity.a(this.a).sendMessage(paramWifiPOIInfo);
   }
 }
 

@@ -1,39 +1,43 @@
-import android.os.SystemClock;
-import com.tribe.async.async.JobSegment;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-public abstract class xlo<IN, OUT>
-  extends JobSegment<IN, OUT>
+final class xlo
+  extends AnimatorListenerAdapter
 {
-  protected long a;
-  private final String a;
-  private long b;
+  xlo(Animator.AnimatorListener paramAnimatorListener, ViewGroup paramViewGroup, ImageView paramImageView) {}
   
-  public xlo()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
+    super.onAnimationCancel(paramAnimator);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
   }
   
-  public void call(IN paramIN)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    super.call(paramIN);
+    yqp.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation, onAnimationEnd");
+    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
+    paramAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
+    paramAnimator.setStartDelay(400L);
+    paramAnimator.setDuration(400L);
+    paramAnimator.addUpdateListener(new xlp(this));
+    paramAnimator.addListener(new xlq(this));
+    paramAnimator.start();
   }
   
-  public void notifyError(Error paramError)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyError(paramError);
-  }
-  
-  public void notifyResult(OUT paramOUT)
-  {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyResult(paramOUT);
+    super.onAnimationStart(paramAnimator);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xlo
  * JD-Core Version:    0.7.0.1
  */

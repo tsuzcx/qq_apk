@@ -3,8 +3,8 @@ package com.tencent.av;
 import android.content.Context;
 import com.tencent.av.utils.PopupDialog;
 import com.tencent.qphone.base.util.QLog;
-import lfs;
-import lid;
+import lcn;
+import ley;
 
 public class VideoController$AnyChatReqTimeoutRunnable
   implements Runnable
@@ -17,13 +17,13 @@ public class VideoController$AnyChatReqTimeoutRunnable
   {
     try
     {
-      if (!this.this$0.a().k())
+      if (!this.this$0.a().l())
       {
         if (QLog.isColorLevel()) {
           QLog.e(VideoController.a, 2, "AnyChatReqTimeoutRunnable show dialog!");
         }
         Context localContext = this.this$0.a();
-        PopupDialog.b(localContext, 230, null, localContext.getString(2131721303), 0, 2131721336, new lfs(this), null);
+        PopupDialog.b(localContext, 230, null, localContext.getString(2131719020), 0, 2131719054, new lcn(this), null);
       }
       return;
     }
@@ -32,7 +32,7 @@ public class VideoController$AnyChatReqTimeoutRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.VideoController.AnyChatReqTimeoutRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 
-import sfc;
+import tds;
 
 class RunningJob$3
   implements Runnable
 {
-  RunningJob$3(RunningJob paramRunningJob, sfc paramsfc) {}
+  RunningJob$3(RunningJob paramRunningJob, tds paramtds) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class RunningJob$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob.3
  * JD-Core Version:    0.7.0.1
  */

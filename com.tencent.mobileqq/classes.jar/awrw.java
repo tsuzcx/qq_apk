@@ -1,20 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.qphone.base.util.QLog;
 
 public class awrw
-  implements DialogInterface.OnClickListener
+  implements awtr
 {
-  public awrw(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public awrw(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.a.e();
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      MultiAIOFragment.a(this.a, MultiAIOFragment.a(this.a).a());
+      return;
+    case 1: 
+      MultiAIOFragment.c(this.a);
+      return;
+    }
+    MultiAIOFragment.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrw
  * JD-Core Version:    0.7.0.1
  */

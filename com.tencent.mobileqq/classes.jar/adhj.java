@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adhj
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public adhj(LoginInfoActivity paramLoginInfoActivity) {}
+  public adhj(AboutActivity paramAboutActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface == LoginInfoActivity.a(this.a)) {
-      LoginInfoActivity.a(this.a, null);
-    }
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+    localIntent.putExtra("uin", this.a.app.getCurrentAccountUin());
+    this.a.startActivity(localIntent.putExtra("url", AboutActivity.a(this.a)));
+    bcst.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

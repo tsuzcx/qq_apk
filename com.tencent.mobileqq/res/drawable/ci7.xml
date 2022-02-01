@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="50" android:drawable="@drawable/gxz" />
+    <item android:duration="50" android:drawable="@drawable/gy0" />
+    <item android:duration="50" android:drawable="@drawable/gy3" />
+    <item android:duration="50" android:drawable="@drawable/gy4" />
+    <item android:duration="50" android:drawable="@drawable/gy7" />
+    <item android:duration="50" android:drawable="@drawable/gy8" />
+    <item android:duration="50" android:drawable="@drawable/gy9" />
+    <item android:duration="50" android:drawable="@drawable/gyg" />
+    <item android:duration="50" android:drawable="@drawable/gyh" />
+    <item android:duration="50" android:drawable="@drawable/gyi" />
+    <item android:duration="50" android:drawable="@drawable/gyj" />
+    <item android:duration="50" android:drawable="@drawable/gyk" />
+    <item android:duration="50" android:drawable="@drawable/gyl" />
+    <item android:duration="50" android:drawable="@drawable/gym" />
+    <item android:duration="50" android:drawable="@drawable/gyn" />
+</animation-list>

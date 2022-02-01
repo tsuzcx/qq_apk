@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.os.Handler;
-import bcnu;
+import bfsk;
 import java.util.ArrayList;
 
 public class TroopGagMgr$1
@@ -15,7 +15,7 @@ public class TroopGagMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGagMgr.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package io.flutter.embedding.engine.plugins.service;
 
 import android.app.Service;
-import android.arch.lifecycle.Lifecycle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
 
 public abstract interface ServiceControlSurface
 {
-  public abstract void attachToService(@NonNull Service paramService, @NonNull Lifecycle paramLifecycle, boolean paramBoolean);
+  public abstract void attachToService(@NonNull Service paramService, @Nullable Lifecycle paramLifecycle, boolean paramBoolean);
   
   public abstract void detachFromService();
   
@@ -16,7 +17,7 @@ public abstract interface ServiceControlSurface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.plugins.service.ServiceControlSurface
  * JD-Core Version:    0.7.0.1
  */

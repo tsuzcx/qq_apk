@@ -1,23 +1,64 @@
-import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.View;
-import android.view.animation.Transformation;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity.2.1;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity.2.2;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
-class bekg
-  implements bdoh<Integer>
+public class bekg
+  implements bkmq
 {
-  bekg(beke parambeke, int paramInt) {}
+  public bekg(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
   
-  public void a(bdob<Integer> parambdob, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    if (!this.jdField_a_of_type_Beke.jdField_a_of_type_Boolean) {}
-    do
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
+      paramView.c(l);
       return;
-      this.jdField_a_of_type_Beke.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
-      this.jdField_a_of_type_Beke.jdField_a_of_type_Int = paramInteger.intValue();
-    } while (this.jdField_a_of_type_Beke.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Beke.jdField_a_of_type_Boolean = false;
+    }
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L)
+    {
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!bgnt.g(this.a.getActivity())) {
+        break label97;
+      }
+      this.a.a(0, true);
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopBarPublishLocationSelectActivity.2.1(this), 300L);
+    }
+    for (;;)
+    {
+      ((ajhj)paramView.getTag()).a = true;
+      return true;
+      l = this.a.jdField_a_of_type_Long;
+      break;
+      label97:
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopBarPublishLocationSelectActivity.2.2(this), 300L);
+    }
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

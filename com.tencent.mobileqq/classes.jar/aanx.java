@@ -1,22 +1,16 @@
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
-public final class aanx
-  extends aanf
+public class aanx
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public GdtDwellTimeStatisticsAfterClick a;
-  public int b = -2147483648;
-  public int c = -2147483648;
+  public aanx(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public aanx()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = -2147483648;
-  }
-  
-  public boolean a()
-  {
-    return (super.a()) && (this.jdField_a_of_type_Int != -2147483648) && (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.b()) && (this.b > 0) && (this.c > 0);
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

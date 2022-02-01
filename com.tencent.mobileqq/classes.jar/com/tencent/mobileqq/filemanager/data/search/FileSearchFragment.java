@@ -5,20 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import arcs;
-import arcw;
-import ayjn;
-import aynu;
-import ayug;
+import atic;
+import atig;
+import bbio;
+import bbmy;
+import bbtj;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.List;
 
 public class FileSearchFragment
-  extends BaseSearchFragment<aynu>
+  extends BaseSearchFragment<bbmy>
 {
   protected boolean a;
   public String b;
-  public List<aynu> b;
+  public List<bbmy> b;
   int c = -1;
   
   public FileSearchFragment()
@@ -26,19 +27,19 @@ public class FileSearchFragment
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public ayjn a()
+  public bbio a()
   {
-    return new arcs(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new atic(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aobu, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public ayug a()
+  public bbtj a()
   {
     return new FileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
   }
   
   public String a()
   {
-    return arcw.jdField_b_of_type_JavaLangString;
+    return atig.jdField_b_of_type_JavaLangString;
   }
   
   public void b(boolean paramBoolean)
@@ -49,19 +50,21 @@ public class FileSearchFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramViewGroup = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367565);
-    if (!this.jdField_a_of_type_Boolean)
-    {
+    paramViewGroup = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367877);
+    if (!this.jdField_a_of_type_Boolean) {
       paramViewGroup.setVisibility(8);
-      return paramLayoutInflater;
     }
-    paramViewGroup.setVisibility(0);
-    return paramLayoutInflater;
+    for (;;)
+    {
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
+      paramViewGroup.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchFragment
  * JD-Core Version:    0.7.0.1
  */

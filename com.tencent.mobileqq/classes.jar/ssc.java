@@ -1,30 +1,16 @@
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
-import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelView;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import android.view.View;
+import com.tencent.widget.ListView;
 
-public class ssc
-  implements TopGestureLayout.InterceptTouchEventListener
+public abstract interface ssc
+  extends bkmq
 {
-  public ssc(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
+  public abstract void a(int paramInt1, View paramView, ListView paramListView, int paramInt2);
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
-  {
-    if (ServiceAccountFolderActivity.a(this.a) != null)
-    {
-      float f = paramMotionEvent.getY();
-      if ((f > ServiceAccountFolderActivity.a(this.a).getTop()) && (f < ServiceAccountFolderActivity.a(this.a).getBottom())) {
-        return false;
-      }
-    }
-    return true;
-  }
+  public abstract void a(View paramView, ListView paramListView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ssc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,13 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.mobileqq.fts.FTSDatabase;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
 public class asiy
-  extends FTSDatabase
+  implements asja
 {
-  public boolean a()
+  public asiy(ExtendFriendFragment paramExtendFriendFragment) {}
+  
+  public void a()
   {
-    if ((Build.VERSION.SDK_INT < 18) && (!SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "sqlite_qq"))) {
-      amnu.a = false;
-    }
-    boolean bool = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "FTSDatabaseV2");
-    if (!bool) {
-      amnu.a = false;
-    }
-    return bool;
+    ExtendFriendFragment.b(this.a);
   }
 }
 

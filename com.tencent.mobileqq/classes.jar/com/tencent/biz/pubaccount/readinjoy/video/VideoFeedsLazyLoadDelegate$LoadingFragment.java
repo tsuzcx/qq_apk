@@ -1,13 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class VideoFeedsLazyLoadDelegate$LoadingFragment
-  extends Fragment
+  extends ReportV4Fragment
 {
   private VideoFeedsLazyLoadDelegate a;
   
@@ -20,7 +21,9 @@ public class VideoFeedsLazyLoadDelegate$LoadingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return this.a.a(paramLayoutInflater, paramViewGroup, paramBundle);
+    paramLayoutInflater = this.a.a(paramLayoutInflater, paramViewGroup, paramBundle);
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import alrb;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
-import awxt;
-import bavo;
-import bavp;
-import bavq;
-import bavr;
-import bavs;
-import bawk;
-import bdqa;
+import ankk;
+import azti;
+import bdxc;
+import bdxd;
+import bdxe;
+import bdxf;
+import bdxg;
+import bdxr;
+import bgva;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -24,11 +24,11 @@ import mqq.app.BuiltInServlet;
 import mqq.app.NewIntent;
 
 public class ProtoReqManager
-  implements alrb
+  implements ankk
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  ConcurrentHashMap<Intent, bavr> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  ConcurrentHashMap<Intent, bdxf> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private boolean jdField_a_of_type_Boolean;
   
   public ProtoReqManager(AppInterface paramAppInterface)
@@ -36,36 +36,36 @@ public class ProtoReqManager
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  private void a(Intent paramIntent, bavr parambavr)
+  private void a(Intent paramIntent, bdxf parambdxf)
   {
     int i = paramIntent.getIntExtra("key_runnable_index", 0);
-    parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_b_of_type_Boolean = true;
-    parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_c_of_type_Long = System.currentTimeMillis();
+    parambdxf.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_b_of_type_Boolean = true;
+    parambdxf.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_c_of_type_Long = System.currentTimeMillis();
   }
   
-  private void a(bavr parambavr)
+  private void a(bdxf parambdxf)
   {
-    parambavr.jdField_a_of_type_Boolean = true;
+    parambdxf.jdField_a_of_type_Boolean = true;
     int i = 0;
-    while (i < parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable.length)
+    while (i < parambdxf.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable.length)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_a_of_type_MqqAppNewIntent);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i]);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(parambdxf.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_a_of_type_MqqAppNewIntent);
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(parambdxf.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i]);
       i += 1;
     }
   }
   
-  private boolean a(bavq parambavq)
+  private boolean a(bdxe parambdxe)
   {
-    return ("PttStore.GroupPttUp".equals(parambavq.jdField_a_of_type_JavaLangString)) || ("PttStore.GroupPttDown".equals(parambavq.jdField_a_of_type_JavaLangString)) || ("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_UPLOAD-500".equals(parambavq.jdField_a_of_type_JavaLangString)) || ("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_DOWNLOAD-1200".equals(parambavq.jdField_a_of_type_JavaLangString));
+    return ("PttStore.GroupPttUp".equals(parambdxe.jdField_a_of_type_JavaLangString)) || ("PttStore.GroupPttDown".equals(parambdxe.jdField_a_of_type_JavaLangString)) || ("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_UPLOAD-500".equals(parambdxe.jdField_a_of_type_JavaLangString)) || ("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_DOWNLOAD-1200".equals(parambdxe.jdField_a_of_type_JavaLangString));
   }
   
-  private boolean a(bavr parambavr)
+  private boolean a(bdxf parambdxf)
   {
     int i = 0;
-    while (i < parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable.length)
+    while (i < parambdxf.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable.length)
     {
-      if ((!parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_b_of_type_Boolean) && ((parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_a_of_type_Boolean == true) || (parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_c_of_type_Boolean == true))) {
+      if ((!parambdxf.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_b_of_type_Boolean) && ((parambdxf.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_a_of_type_Boolean == true) || (parambdxf.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_c_of_type_Boolean == true))) {
         return false;
       }
       i += 1;
@@ -76,26 +76,26 @@ public class ProtoReqManager
   private void b()
   {
     if (DeviceProfileManager.a().a() == 4) {
-      bawk.a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.RichProReqCfg.name()));
+      bdxr.a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.RichProReqCfg.name()));
     }
   }
   
-  private void c(bavq parambavq)
+  private void c(bdxe parambdxe)
   {
-    parambavq.jdField_a_of_type_Int = bawk.c();
-    parambavq.jdField_b_of_type_Int = bawk.a();
-    parambavq.c = bawk.b();
+    parambdxe.jdField_a_of_type_Int = bdxr.c();
+    parambdxe.jdField_b_of_type_Int = bdxr.a();
+    parambdxe.c = bdxr.b();
   }
   
-  private void d(bavq parambavq)
+  private void d(bdxe parambdxe)
   {
     if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
     {
-      parambavq.jdField_a_of_type_Int = awxt.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      parambavq.jdField_b_of_type_Int = awxt.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      parambavq.c = awxt.c((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      parambdxe.jdField_a_of_type_Int = azti.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      parambdxe.jdField_b_of_type_Int = azti.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      parambdxe.c = azti.c((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.richmedia.ProtoReqManager", 2, "ptt config from dpc:" + parambavq.jdField_a_of_type_Int + parambavq.jdField_b_of_type_Int + parambavq.c);
+        QLog.d("Q.richmedia.ProtoReqManager", 2, "ptt config from dpc:" + parambdxe.jdField_a_of_type_Int + parambdxe.jdField_b_of_type_Int + parambdxe.c);
       }
     }
   }
@@ -114,7 +114,7 @@ public class ProtoReqManager
     Object localObject = null;
     for (;;)
     {
-      bavp localbavp;
+      bdxd localbdxd;
       try
       {
         if (QLog.isColorLevel()) {
@@ -123,112 +123,112 @@ public class ProtoReqManager
         if ((paramIntent == null) || (paramFromServiceMsg == null)) {
           break label538;
         }
-        localObject = (bavr)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramIntent);
+        localObject = (bdxf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramIntent);
         if (localObject == null) {
           break label523;
         }
-        if (((bavr)localObject).jdField_a_of_type_Boolean)
+        if (((bdxf)localObject).jdField_a_of_type_Boolean)
         {
-          localbavq = null;
+          localbdxe = null;
           paramIntent = null;
           paramFromServiceMsg = (FromServiceMsg)localObject;
-          localObject = localbavq;
+          localObject = localbdxe;
           if (localObject != null) {
-            ((bavp)localObject).a(paramFromServiceMsg, paramIntent);
+            ((bdxd)localObject).a(paramFromServiceMsg, paramIntent);
           }
           return;
         }
-        a(paramIntent, (bavr)localObject);
-        localbavq = ((bavr)localObject).jdField_a_of_type_Bavq;
-        ((bavr)localObject).jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-        ((bavr)localObject).jdField_a_of_type_Alwy.jdField_b_of_type_Int = ((bavr)localObject).jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getResultCode();
+        a(paramIntent, (bdxf)localObject);
+        localbdxe = ((bdxf)localObject).jdField_a_of_type_Bdxe;
+        ((bdxf)localObject).jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
+        ((bdxf)localObject).jdField_a_of_type_Anqe.jdField_b_of_type_Int = ((bdxf)localObject).jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getResultCode();
         int i = paramFromServiceMsg.getResultCode();
         if (i == 1000)
         {
-          a((bavr)localObject);
+          a((bdxf)localObject);
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramIntent);
-          if (localbavq.jdField_a_of_type_Bavp != null)
+          if (localbdxe.jdField_a_of_type_Bdxd != null)
           {
             i = paramFromServiceMsg.getWupBuffer().length - 4;
             paramIntent = new byte[i];
-            bdqa.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+            bgva.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
             paramFromServiceMsg.putWupBuffer(paramIntent);
-            localbavp = localbavq.jdField_a_of_type_Bavp;
+            localbdxd = localbdxe.jdField_a_of_type_Bdxd;
             paramFromServiceMsg = (FromServiceMsg)localObject;
-            paramIntent = localbavq;
-            localObject = localbavp;
+            paramIntent = localbdxe;
+            localObject = localbdxd;
           }
         }
         else
         {
           if (i == 2901)
           {
-            long l1 = System.currentTimeMillis() - ((bavr)localObject).jdField_a_of_type_Long;
-            if ((l1 < localbavq.e) && (((bavr)localObject).jdField_a_of_type_Int < localbavq.jdField_b_of_type_Int))
+            long l1 = System.currentTimeMillis() - ((bdxf)localObject).jdField_a_of_type_Long;
+            if ((l1 < localbdxe.e) && (((bdxf)localObject).jdField_a_of_type_Int < localbdxe.jdField_b_of_type_Int))
             {
-              long l2 = localbavq.jdField_a_of_type_Int;
+              long l2 = localbdxe.jdField_a_of_type_Int;
               paramIntent = localObject.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[localObject.jdField_a_of_type_Int];
-              ((bavr)localObject).jdField_a_of_type_Int += 1;
+              ((bdxf)localObject).jdField_a_of_type_Int += 1;
               paramIntent.jdField_a_of_type_Long = (l2 - l1 - 5000L);
               a(paramIntent, 0L);
-              localbavp = null;
+              localbdxd = null;
               paramFromServiceMsg = (FromServiceMsg)localObject;
-              paramIntent = localbavq;
-              localObject = localbavp;
+              paramIntent = localbdxe;
+              localObject = localbdxd;
               continue;
             }
             if (QLog.isColorLevel()) {
-              QLog.d("Q.richmedia.ProtoReqManager", 2, "onReceive found 2901 but do not retry : elapse:" + l1 + " index:" + ((bavr)localObject).jdField_a_of_type_Int);
+              QLog.d("Q.richmedia.ProtoReqManager", 2, "onReceive found 2901 but do not retry : elapse:" + l1 + " index:" + ((bdxf)localObject).jdField_a_of_type_Int);
             }
           }
-          if (a((bavr)localObject))
+          if (a((bdxf)localObject))
           {
-            a((bavr)localObject);
+            a((bdxf)localObject);
             this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramIntent);
             if (i == 1013)
             {
               paramIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), BuiltInServlet.class);
-              paramIntent.setObserver(new bavo(this, (bavr)localObject, localbavq));
+              paramIntent.setObserver(new bdxc(this, (bdxf)localObject, localbdxe));
               paramIntent.putExtra("action", 2201);
               this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramIntent);
-              localbavp = null;
+              localbdxd = null;
               paramFromServiceMsg = (FromServiceMsg)localObject;
-              paramIntent = localbavq;
-              localObject = localbavp;
+              paramIntent = localbdxe;
+              localObject = localbdxd;
               continue;
             }
-            if (localbavq.jdField_a_of_type_Bavp != null)
+            if (localbdxe.jdField_a_of_type_Bdxd != null)
             {
-              localbavp = localbavq.jdField_a_of_type_Bavp;
+              localbdxd = localbdxe.jdField_a_of_type_Bdxd;
               paramFromServiceMsg = (FromServiceMsg)localObject;
-              paramIntent = localbavq;
-              localObject = localbavp;
+              paramIntent = localbdxe;
+              localObject = localbdxd;
               continue;
             }
           }
         }
-        localbavp = null;
+        localbdxd = null;
       }
       finally {}
       paramFromServiceMsg = (FromServiceMsg)localObject;
-      paramIntent = localbavq;
-      localObject = localbavp;
+      paramIntent = localbdxe;
+      localObject = localbdxd;
       continue;
       label523:
-      bavq localbavq = null;
+      bdxe localbdxe = null;
       paramIntent = null;
       paramFromServiceMsg = (FromServiceMsg)localObject;
-      localObject = localbavq;
+      localObject = localbdxe;
       continue;
       label538:
       paramIntent = null;
-      localbavq = null;
+      localbdxe = null;
       paramFromServiceMsg = (FromServiceMsg)localObject;
-      localObject = localbavq;
+      localObject = localbdxe;
     }
   }
   
-  public void a(bavq parambavq)
+  public void a(bdxe parambdxe)
   {
     for (;;)
     {
@@ -237,7 +237,7 @@ public class ProtoReqManager
       try
       {
         if (QLog.isColorLevel()) {
-          QLog.d("Q.richmedia.ProtoReqManager", 2, "req:" + parambavq.jdField_a_of_type_JavaLangString);
+          QLog.d("Q.richmedia.ProtoReqManager", 2, "req:" + parambdxe.jdField_a_of_type_JavaLangString);
         }
         if (!this.jdField_a_of_type_Boolean)
         {
@@ -248,39 +248,39 @@ public class ProtoReqManager
         if (localObject1 == null) {
           return;
         }
-        if (parambavq == null) {
+        if (parambdxe == null) {
           continue;
         }
-        if ((parambavq.jdField_a_of_type_JavaLangString != null) && ((parambavq.jdField_a_of_type_JavaLangString.equals("ImgStore.GroupPicUp")) || (parambavq.jdField_a_of_type_JavaLangString.equals("LongConn.OffPicUp")))) {
-          c(parambavq);
+        if ((parambdxe.jdField_a_of_type_JavaLangString != null) && ((parambdxe.jdField_a_of_type_JavaLangString.equals("ImgStore.GroupPicUp")) || (parambdxe.jdField_a_of_type_JavaLangString.equals("LongConn.OffPicUp")))) {
+          c(parambdxe);
         }
-        if ((parambavq.jdField_a_of_type_JavaLangString != null) && ((parambavq.jdField_a_of_type_JavaLangString.equals("PttStore.GroupPttUp")) || (parambavq.jdField_a_of_type_JavaLangString.equals("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_UPLOAD-500")))) {
-          d(parambavq);
+        if ((parambdxe.jdField_a_of_type_JavaLangString != null) && ((parambdxe.jdField_a_of_type_JavaLangString.equals("PttStore.GroupPttUp")) || (parambdxe.jdField_a_of_type_JavaLangString.equals("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_UPLOAD-500")))) {
+          d(parambdxe);
         }
-        localObject1 = new bavr();
-        parambavq.jdField_a_of_type_Bavr = ((bavr)localObject1);
-        ((bavr)localObject1).jdField_a_of_type_Bavq = parambavq;
-        ((bavr)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
-        ((bavr)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable = new ProtoReqManager.ProtoReqRunnable[parambavq.jdField_b_of_type_Int];
-        byte[] arrayOfByte = parambavq.jdField_a_of_type_ArrayOfByte;
+        localObject1 = new bdxf();
+        parambdxe.jdField_a_of_type_Bdxf = ((bdxf)localObject1);
+        ((bdxf)localObject1).jdField_a_of_type_Bdxe = parambdxe;
+        ((bdxf)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
+        ((bdxf)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable = new ProtoReqManager.ProtoReqRunnable[parambdxe.jdField_b_of_type_Int];
+        byte[] arrayOfByte = parambdxe.jdField_a_of_type_ArrayOfByte;
         Object localObject2 = ByteBuffer.allocate(arrayOfByte.length + 4);
         ((ByteBuffer)localObject2).putInt(arrayOfByte.length + 4).put(arrayOfByte);
         arrayOfByte = ((ByteBuffer)localObject2).array();
         i = 0;
-        if (i >= parambavq.jdField_b_of_type_Int) {
+        if (i >= parambdxe.jdField_b_of_type_Int) {
           break label516;
         }
         localObject2 = new ProtoReqManager.ProtoReqRunnable(this);
-        ((bavr)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i] = localObject2;
-        ((ProtoReqManager.ProtoReqRunnable)localObject2).jdField_a_of_type_Bavr = ((bavr)localObject1);
-        ((ProtoReqManager.ProtoReqRunnable)localObject2).jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), bavs.class);
+        ((bdxf)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i] = localObject2;
+        ((ProtoReqManager.ProtoReqRunnable)localObject2).jdField_a_of_type_Bdxf = ((bdxf)localObject1);
+        ((ProtoReqManager.ProtoReqRunnable)localObject2).jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), bdxg.class);
         localObject2 = ((ProtoReqManager.ProtoReqRunnable)localObject2).jdField_a_of_type_MqqAppNewIntent;
         ((NewIntent)localObject2).putExtra("key_body", arrayOfByte);
-        ((NewIntent)localObject2).putExtra("key_cmd", parambavq.jdField_a_of_type_JavaLangString);
+        ((NewIntent)localObject2).putExtra("key_cmd", parambdxe.jdField_a_of_type_JavaLangString);
         ((NewIntent)localObject2).putExtra("key_runnable_index", i);
-        ((NewIntent)localObject2).putExtra("key_fastresend", parambavq.jdField_a_of_type_Boolean);
-        ((NewIntent)localObject2).putExtra("remind_slown_network", parambavq.jdField_b_of_type_Boolean);
-        if ((!a(parambavq)) || (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) || (!awxt.d((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface))) {
+        ((NewIntent)localObject2).putExtra("key_fastresend", parambdxe.jdField_a_of_type_Boolean);
+        ((NewIntent)localObject2).putExtra("remind_slown_network", parambdxe.jdField_b_of_type_Boolean);
+        if ((!a(parambdxe)) || (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) || (!azti.d((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface))) {
           break label509;
         }
         ((NewIntent)localObject2).putExtra("quickSendEnable", true);
@@ -291,18 +291,18 @@ public class ProtoReqManager
         QLog.d("http_sideway", 2, "set");
       }
       finally {}
-      if (i < parambavq.c)
+      if (i < parambdxe.c)
       {
-        long l1 = parambavq.jdField_a_of_type_Int * i / parambavq.c;
-        long l2 = parambavq.jdField_a_of_type_Int;
-        long l3 = parambavq.d * i;
+        long l1 = parambdxe.jdField_a_of_type_Int * i / parambdxe.c;
+        long l2 = parambdxe.jdField_a_of_type_Int;
+        long l3 = parambdxe.d * i;
         localObject1.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_a_of_type_Long = (l2 - l1 - l3);
         a(localObject1.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i], l1);
         i += 1;
       }
       else
       {
-        ((bavr)localObject1).jdField_a_of_type_Int = parambavq.c;
+        ((bdxf)localObject1).jdField_a_of_type_Int = parambdxe.c;
         continue;
         label509:
         i += 1;
@@ -329,25 +329,25 @@ public class ProtoReqManager
   public void a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      bawk.a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.RichProReqCfg.name()));
+      bdxr.a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.RichProReqCfg.name()));
     }
     DeviceProfileManager.b(this);
   }
   
-  public void b(bavq parambavq)
+  public void b(bdxe parambdxe)
   {
-    if (parambavq != null) {}
+    if (parambdxe != null) {}
     try
     {
-      if (parambavq.jdField_a_of_type_Bavr != null) {
-        a(parambavq.jdField_a_of_type_Bavr);
+      if (parambdxe.jdField_a_of_type_Bdxf != null) {
+        a(parambdxe.jdField_a_of_type_Bdxf);
       }
       return;
     }
     finally
     {
-      parambavq = finally;
-      throw parambavq;
+      parambdxe = finally;
+      throw parambdxe;
     }
   }
 }

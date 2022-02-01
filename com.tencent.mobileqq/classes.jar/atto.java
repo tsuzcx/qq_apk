@@ -1,27 +1,20 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import java.util.List;
 
-public class atto
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class atto
+  implements bigw
 {
-  public atto(MapWidget paramMapWidget, LocationRoom.Venue paramVenue) {}
+  atto(attk paramattk, List paramList) {}
   
-  public void onGlobalLayout()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(true, Float.valueOf(15.0F));
-      return;
+    if (paramInt == 2) {
+      bfsj.a(attk.a(this.jdField_a_of_type_Attk), attk.a(this.jdField_a_of_type_Attk), this.jdField_a_of_type_JavaUtilList);
     }
-    MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atto
  * JD-Core Version:    0.7.0.1
  */

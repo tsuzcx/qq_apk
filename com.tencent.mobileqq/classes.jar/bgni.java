@@ -1,127 +1,213 @@
-import java.io.ByteArrayOutputStream;
-import java.io.Closeable;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.Charset;
+import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 
-class bgni
-  implements Closeable
+public class bgni
 {
-  private int jdField_a_of_type_Int;
-  private final InputStream jdField_a_of_type_JavaIoInputStream;
-  private final Charset jdField_a_of_type_JavaNioCharsetCharset;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int b;
+  public static boolean a;
+  private static boolean jdField_b_of_type_Boolean;
+  bgmp jdField_a_of_type_Bgmp = null;
+  String jdField_a_of_type_JavaLangString = "-1";
+  private String jdField_b_of_type_JavaLangString = "-1";
+  private String jdField_c_of_type_JavaLangString = "-1";
+  private boolean jdField_c_of_type_Boolean;
+  private String d = "-1";
+  private String e = "-1";
+  private String f = "-1";
+  private String g = "-1";
   
-  public bgni(InputStream paramInputStream, int paramInt, Charset paramCharset)
+  public bgni()
   {
-    if ((paramInputStream == null) || (paramCharset == null)) {
-      throw new NullPointerException();
-    }
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("capacity <= 0");
-    }
-    if (!paramCharset.equals(bgnb.jdField_a_of_type_JavaNioCharsetCharset)) {
-      throw new IllegalArgumentException("Unsupported encoding");
-    }
-    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
-    this.jdField_a_of_type_JavaNioCharsetCharset = paramCharset;
-    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
-  }
-  
-  public bgni(InputStream paramInputStream, Charset paramCharset)
-  {
-    this(paramInputStream, 8192, paramCharset);
-  }
-  
-  private void a()
-  {
-    int i = this.jdField_a_of_type_JavaIoInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
-    if (i == -1) {
-      throw new EOFException();
-    }
-    this.jdField_a_of_type_Int = 0;
-    this.b = i;
-  }
-  
-  public String a()
-  {
-    synchronized (this.jdField_a_of_type_JavaIoInputStream)
-    {
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
-        throw new IOException("LineReader is closed");
-      }
-    }
-    if (this.jdField_a_of_type_Int >= this.b) {
-      a();
-    }
-    int i = this.jdField_a_of_type_Int;
+    if (jdField_b_of_type_Boolean) {}
+    label200:
     for (;;)
     {
-      if (i != this.b)
-      {
-        if (this.jdField_a_of_type_ArrayOfByte[i] != 10) {
-          break label272;
-        }
-        if ((i == this.jdField_a_of_type_Int) || (this.jdField_a_of_type_ArrayOfByte[(i - 1)] != 13)) {
-          break label267;
-        }
-      }
-      label267:
-      for (int j = i - 1;; j = i)
-      {
-        Object localObject2 = new String(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, j - this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaNioCharsetCharset.name());
-        this.jdField_a_of_type_Int = (i + 1);
-        return localObject2;
-        localObject2 = new bgnj(this, this.b - this.jdField_a_of_type_Int + 80);
-        for (;;)
-        {
-          ((ByteArrayOutputStream)localObject2).write(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b - this.jdField_a_of_type_Int);
-          this.b = -1;
-          a();
-          i = this.jdField_a_of_type_Int;
-          while (i != this.b)
-          {
-            if (this.jdField_a_of_type_ArrayOfByte[i] == 10)
-            {
-              if (i != this.jdField_a_of_type_Int) {
-                ((ByteArrayOutputStream)localObject2).write(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, i - this.jdField_a_of_type_Int);
-              }
-              this.jdField_a_of_type_Int = (i + 1);
-              localObject2 = ((ByteArrayOutputStream)localObject2).toString();
-              return localObject2;
-            }
-            i += 1;
-          }
-        }
-      }
-      label272:
-      i += 1;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.b == -1;
-  }
-  
-  public void close()
-  {
-    synchronized (this.jdField_a_of_type_JavaIoInputStream)
-    {
-      if (this.jdField_a_of_type_ArrayOfByte != null)
-      {
-        this.jdField_a_of_type_ArrayOfByte = null;
-        this.jdField_a_of_type_JavaIoInputStream.close();
-      }
       return;
+      jdField_b_of_type_Boolean = true;
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("JumpReportCtr_SP", 0);
+      long l = localSharedPreferences.getLong("lastShotTime", 0L);
+      if (Math.abs(System.currentTimeMillis() - l) >= 43200000L) {
+        if (0.01F >= Math.random())
+        {
+          jdField_a_of_type_Boolean = bool;
+          localSharedPreferences.edit().putLong("lastShotTime", System.currentTimeMillis()).putBoolean("lastShotResult", jdField_a_of_type_Boolean).apply();
+        }
+      }
+      for (;;)
+      {
+        if (!QLog.isColorLevel()) {
+          break label200;
+        }
+        QLog.d("JumpActivity.Report", 2, "JumpReportCtr init needReport= " + jdField_a_of_type_Boolean);
+        return;
+        bool = false;
+        break;
+        jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("lastShotResult", false);
+      }
     }
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (!jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      if (paramIntent != null) {
+        this.jdField_c_of_type_JavaLangString = paramIntent.getComponent().getClassName();
+      }
+      if (!this.jdField_c_of_type_Boolean) {
+        break;
+      }
+      paramIntent = new HashMap(5);
+      paramIntent.put("action", this.d);
+      paramIntent.put("scheme", this.e);
+      paramIntent.put("type", this.f);
+      paramIntent.put("data", this.g);
+      paramIntent.put("fromPkg", this.jdField_b_of_type_JavaLangString);
+      paramIntent.put("jumpToAct", this.jdField_c_of_type_JavaLangString);
+      paramIntent.put("shareContext", this.jdField_a_of_type_JavaLangString);
+      bctj.a(BaseApplicationImpl.getApplication()).a(null, "jump_act_system_report", true, 0L, 0L, paramIntent, null);
+      paramIntent = new StringBuilder(256);
+      paramIntent.append("action=").append(this.d).append(", pkgName=").append(this.jdField_b_of_type_JavaLangString).append(", jumpToAct=").append(this.jdField_c_of_type_JavaLangString).append(", scheme=").append(this.e).append(", type=").append(this.f).append(", shareContext=").append(this.jdField_a_of_type_JavaLangString).append("\n data=").append(this.g);
+    } while (!QLog.isColorLevel());
+    QLog.d("JumpActivity.Report", 2, "systemShare|report : \n" + paramIntent.toString());
+    return;
+    String str;
+    if (this.jdField_a_of_type_Bgmp != null)
+    {
+      str = this.jdField_a_of_type_Bgmp.jdField_b_of_type_JavaLangString;
+      paramIntent = this.jdField_a_of_type_Bgmp.jdField_c_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      Object localObject = new HashMap(8);
+      ((HashMap)localObject).put("action", this.d);
+      ((HashMap)localObject).put("scheme", this.e);
+      ((HashMap)localObject).put("type", this.f);
+      ((HashMap)localObject).put("data", this.g);
+      ((HashMap)localObject).put("fromPkg", this.jdField_b_of_type_JavaLangString);
+      ((HashMap)localObject).put("jumpToAct", this.jdField_c_of_type_JavaLangString);
+      ((HashMap)localObject).put("server_name", str);
+      ((HashMap)localObject).put("action_name", paramIntent);
+      bctj.a(BaseApplicationImpl.getApplication()).a(null, "jump_act_business_report", true, 0L, 0L, (HashMap)localObject, null);
+      localObject = new StringBuilder(256);
+      ((StringBuilder)localObject).append("action=").append(this.d).append(", type=").append(this.f).append(", pkgName=").append(this.jdField_b_of_type_JavaLangString).append(", jumpToAct=").append(this.jdField_c_of_type_JavaLangString).append(", scheme=").append(this.e).append(", server_name=").append(str).append(", action_name=").append(paramIntent).append("\n data=").append(this.g);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("JumpActivity.Report", 2, "business share |report params: \n" + ((StringBuilder)localObject).toString());
+      return;
+      paramIntent = "-1";
+      str = "-1";
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Intent paramIntent)
+  {
+    if (paramIntent == null) {}
+    label4:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              break label4;
+              break label4;
+              break label4;
+              do
+              {
+                return;
+              } while (!jdField_a_of_type_Boolean);
+              Object localObject = bgnf.a(paramActivity);
+              StringBuilder localStringBuilder = new StringBuilder();
+              if ((localObject != null) && (!((HashSet)localObject).isEmpty()))
+              {
+                localObject = ((HashSet)localObject).iterator();
+                while (((Iterator)localObject).hasNext())
+                {
+                  String str = (String)((Iterator)localObject).next();
+                  if (localStringBuilder.length() > 0) {
+                    localStringBuilder.append("|");
+                  }
+                  localStringBuilder.append(str);
+                }
+              }
+              this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+              this.jdField_c_of_type_Boolean = a(paramIntent);
+              this.d = paramIntent.getAction();
+              this.e = paramIntent.getScheme();
+              this.f = paramIntent.getType();
+              this.g = paramIntent.getDataString();
+              if (!this.jdField_c_of_type_Boolean) {
+                break;
+              }
+            } while ((!this.d.equals("android.intent.action.SEND")) && (!this.d.equals("android.intent.action.SEND_MULTIPLE")));
+            paramQQAppInterface = paramIntent.getExtras();
+          } while (paramQQAppInterface == null);
+          if (!TextUtils.isEmpty(paramQQAppInterface.getString("android.intent.extra.TEXT")))
+          {
+            this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getString("android.intent.extra.TEXT");
+            return;
+          }
+          paramQQAppInterface = paramQQAppInterface.get("android.intent.extra.STREAM");
+        } while (paramQQAppInterface == null);
+        if ((paramQQAppInterface instanceof Uri))
+        {
+          this.jdField_a_of_type_JavaLangString = ((Uri)paramQQAppInterface).toString();
+          return;
+        }
+        if ((paramQQAppInterface instanceof String))
+        {
+          this.jdField_a_of_type_JavaLangString = ((String)paramQQAppInterface);
+          return;
+        }
+      } while (!(paramQQAppInterface instanceof ArrayList));
+      this.jdField_a_of_type_JavaLangString = "MULTIPLE_SHARE";
+      return;
+    } while ((TextUtils.isEmpty(this.g)) || (paramQQAppInterface == null));
+    this.jdField_a_of_type_Bgmp = bgng.a(paramQQAppInterface, paramActivity, this.g);
+  }
+  
+  public boolean a(Intent paramIntent)
+  {
+    if (paramIntent == null) {}
+    String str;
+    do
+    {
+      do
+      {
+        return false;
+        str = paramIntent.getAction();
+      } while (TextUtils.isEmpty(str));
+      if ((str.equals("android.intent.action.SEND")) || (str.equals("android.intent.action.SEND_MULTIPLE"))) {
+        return true;
+      }
+      paramIntent = paramIntent.getScheme();
+    } while ((!str.equals("android.intent.action.VIEW")) || (TextUtils.isEmpty(paramIntent)) || ((!paramIntent.equals("file")) && (!paramIntent.equals("content"))));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgni
  * JD-Core Version:    0.7.0.1
  */

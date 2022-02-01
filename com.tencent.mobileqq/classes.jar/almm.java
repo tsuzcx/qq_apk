@@ -1,41 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class almm
-  implements DialogInterface.OnClickListener
 {
-  public almm(ApolloPanel paramApolloPanel, String paramString1, String paramString2, String paramString3) {}
+  public int a;
+  almn jdField_a_of_type_Almn = new almn(this.jdField_a_of_type_Alml);
+  String jdField_a_of_type_JavaLangString;
+  public AtomicInteger a;
+  volatile boolean jdField_a_of_type_Boolean;
+  public int b;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  public int c;
+  public String c;
+  public String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public almm(alml paramalml)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.n();
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null))
-    {
-      paramDialogInterface = (bdug)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
-      if (!this.jdField_a_of_type_JavaLangString.equals(String.valueOf(2))) {}
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "icon_alert_clickbuy", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.b });
-      }
-      String str = new JSONObject(this.c).getString("packageId");
-      paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), Integer.parseInt(this.b), Integer.parseInt(str));
-      return;
-    }
-    catch (JSONException paramDialogInterface)
-    {
-      QLog.e("ApolloPanel", 1, "[showAioDialog] Exception:", paramDialogInterface);
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   }
 }
 

@@ -1,54 +1,40 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class bbvl
+  extends bbvn
 {
-  public static int a;
-  public static String a;
-  public static int b = 1;
-  public static int c = 2;
+  public int a;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public SquareImageView a;
+  public int b;
+  public LinearLayout b;
+  public LinearLayout c;
+  public LinearLayout d;
   
-  static
+  public bbvl(ViewGroup paramViewGroup, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "<TroopFile> ";
+    super(paramViewGroup, paramInt);
   }
   
-  private static int a(int paramInt)
+  protected void a()
   {
-    int j = 2;
-    int i;
-    if (jdField_a_of_type_Int == paramInt) {
-      i = 1;
-    }
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while (b == paramInt);
-      i = j;
-    } while (c != paramInt);
-    return 4;
-  }
-  
-  public static void a(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.e(paramString1, a(paramInt), jdField_a_of_type_JavaLangString + paramString2);
-  }
-  
-  public static void b(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.w(paramString1, a(paramInt), jdField_a_of_type_JavaLangString + paramString2);
-  }
-  
-  public static void c(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i(paramString1, a(paramInt), jdField_a_of_type_JavaLangString + paramString2);
-  }
-  
-  public static void d(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.d(paramString1, a(paramInt), jdField_a_of_type_JavaLangString + paramString2);
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378776));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131377604));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368338));
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369758));
+    this.jdField_b_of_type_Int = this.jdField_b_of_type_AndroidWidgetLinearLayout.getChildCount();
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131368341));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131372553));
+    this.d = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131372554));
   }
 }
 

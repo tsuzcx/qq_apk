@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import java.util.ArrayList;
-import xtc;
+import zmn;
 
 public class FFmpeg$5
   extends ArrayList<Object>
 {
-  public FFmpeg$5(xtc paramxtc, ArrayList paramArrayList, String paramString)
+  public FFmpeg$5(zmn paramzmn, ArrayList paramArrayList, String paramString)
   {
     add(this.val$tsList);
     add(this.val$outMedia);
@@ -15,7 +15,7 @@ public class FFmpeg$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg.5
  * JD-Core Version:    0.7.0.1
  */

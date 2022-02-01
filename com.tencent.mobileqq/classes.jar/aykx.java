@@ -1,23 +1,16 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
-import com.tencent.widget.ListView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.widget.RelativeLayout;
 
-public class aykx
-  extends ayjo<aynu, aywd>
+class aykx
+  extends AnimatorListenerAdapter
 {
-  public aykx(MessageSearchFragment paramMessageSearchFragment, ListView paramListView, bdbb parambdbb)
-  {
-    super(paramListView, parambdbb);
-  }
+  aykx(ayko paramayko, View paramView) {}
   
-  protected ayqp<aynu, aywd> a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new ayrm(this.a.a);
-  }
-  
-  protected aywe a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new ayxt(paramViewGroup, 2131562607);
+    ayko.a(this.jdField_a_of_type_Ayko).removeView(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

@@ -1,19 +1,6 @@
-import android.os.Message;
-import mqq.os.MqqHandler;
-
-class apiu
-  implements awss
+public abstract interface apiu
 {
-  apiu(apit paramapit, int paramInt) {}
-  
-  public void a(int paramInt1, awsr paramawsr, int paramInt2, String paramString)
-  {
-    if (this.jdField_a_of_type_Apit.a.hasMessages(0))
-    {
-      this.jdField_a_of_type_Apit.a.removeMessages(0);
-      this.jdField_a_of_type_Apit.a.obtainMessage(0, this.jdField_a_of_type_Int, 0).sendToTarget();
-    }
-  }
+  public abstract boolean notify(String paramString1, String paramString2, String paramString3);
 }
 
 

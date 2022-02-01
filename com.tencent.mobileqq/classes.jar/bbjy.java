@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
 
-public final class bbjy
-  implements QQPermissionCallback
+public class bbjy
+  implements ssu
 {
-  public bbjy(bbkd parambbkd, BaseActivity paramBaseActivity) {}
+  public bbjy(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(String paramString)
   {
-    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Bbkd.a(bcmc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, alof.bd, 1001));
+    if (!TextUtils.isEmpty(paramString))
+    {
+      FragmentActivity localFragmentActivity = this.a.getActivity();
+      if ((localFragmentActivity instanceof ActiveEntitySearchActivity))
+      {
+        ((ActiveEntitySearchActivity)localFragmentActivity).b(paramString);
+        if (this.a.a != null) {
+          bbup.a("sub_result", "clk_hot", new String[] { paramString, bbup.a(this.a.a) });
+        }
+      }
+    }
   }
 }
 

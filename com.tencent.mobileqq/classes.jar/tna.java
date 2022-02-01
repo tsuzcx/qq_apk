@@ -1,218 +1,199 @@
-import UserGrowth.stReportItem;
-import UserGrowth.stSchema;
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
-import android.app.Activity;
-import android.content.Context;
-import android.support.annotation.UiThread;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.utils.ViolaLogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
 public class tna
-  extends tck<tmv>
-  implements View.OnClickListener
+  implements DownloadListener
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private RoundImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView;
-  private tep jdField_a_of_type_Tep;
-  private TextView b;
+  public tna(BridgeModule paramBridgeModule, String paramString1, String paramString2) {}
   
-  public tna(Context paramContext)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    super(paramContext);
-  }
-  
-  public tna(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
-  {
-    this(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
-  }
-  
-  private void a(stSimpleMetaPerson paramstSimpleMetaPerson)
-  {
-    if (TextUtils.equals(tlv.f(), paramstSimpleMetaPerson.id))
+    try
     {
-      this.b.setVisibility(8);
+      paramString1 = new JSONObject();
+      paramString1.put("type", 6);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d(BridgeModule.TAG, 2, "downloadApk installSucceed, packageName = " + paramString2);
+      }
       return;
     }
-    int i = paramstSimpleMetaPerson.followStatus;
-    tlo.d("WSVerticalItemTopController", "followStatus:" + i + ",personInfo hashCode:" + paramstSimpleMetaPerson.hashCode());
-    if (tlf.a(paramstSimpleMetaPerson.followStatus))
+    catch (Exception paramString1)
     {
-      this.b.setVisibility(8);
-      return;
+      for (;;)
+      {
+        ViolaLogUtils.e("downloadApk", "installSucceed error:" + paramString1.getMessage());
+      }
     }
-    this.b.setText("关注");
-    this.b.setVisibility(0);
   }
   
-  private void b(stSimpleMetaPerson paramstSimpleMetaPerson)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if (paramstSimpleMetaPerson != null)
+    try
     {
-      paramstSimpleMetaPerson = paramstSimpleMetaPerson.avatarSchema;
-      if (paramstSimpleMetaPerson != null) {
-        switch (paramstSimpleMetaPerson.type)
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("type", 3);
+      if ((paramDownloadInfo != null) && (this.jdField_a_of_type_JavaLangString.equals(paramDownloadInfo.d))) {
+        localJSONObject.put("data", paramDownloadInfo.f);
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, localJSONObject);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ViolaLogUtils.e("onDownloadCancel", "onDownloadError error:" + localException.getMessage());
+        localException.printStackTrace();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(BridgeModule.TAG, 2, "downloadApk onDownloadCancel, url = " + paramDownloadInfo.d + " , packageName = " + paramDownloadInfo.e);
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("type", 4);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d(BridgeModule.TAG, 2, "downloadApk onDownloadError, url = " + paramDownloadInfo.d + " , packageName = " + paramDownloadInfo.e);
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        ViolaLogUtils.e("downloadApk", "onDownloadError error:" + paramString.getMessage());
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("type", 2);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, localJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.d(BridgeModule.TAG, 2, "downloadApk onDownloadFinish, url = " + paramDownloadInfo.d + " , packageName = " + paramDownloadInfo.e);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ViolaLogUtils.e("downloadApk", "onDownloadFinish error:" + localException.getMessage());
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("type", 5);
+      if ((paramDownloadInfo != null) && (this.jdField_a_of_type_JavaLangString.equals(paramDownloadInfo.d))) {
+        localJSONObject.put("data", paramDownloadInfo.f);
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, localJSONObject);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ViolaLogUtils.e("onDownloadPause", "onDownloadPause error:" + localException.getMessage());
+        localException.printStackTrace();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(BridgeModule.TAG, 2, "downloadApk onDownloadPause, url = " + paramDownloadInfo.d + " , packageName = " + paramDownloadInfo.e);
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    paramList = paramList.iterator();
+    for (;;)
+    {
+      if (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        if (this.jdField_a_of_type_JavaLangString.equals(localDownloadInfo.d)) {}
+        try
         {
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("type", 1);
+          localJSONObject.put("data", localDownloadInfo.f);
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, localJSONObject);
+          if (QLog.isColorLevel()) {
+            QLog.d(BridgeModule.TAG, 2, "downloadApk onDownloadUpdate, url = " + localDownloadInfo.d + " , packageName = " + localDownloadInfo.e + " process = " + localDownloadInfo.f);
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            ViolaLogUtils.e("downloadApk", "onDownloadFinish error:" + localException.getMessage());
+            localException.printStackTrace();
+          }
         }
       }
     }
-    for (;;)
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(BridgeModule.TAG, 2, "downloadApk onDownloadWait, url = " + paramDownloadInfo.d + " , packageName = " + paramDownloadInfo.e);
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    try
     {
-      tlo.b("WSVerticalItemTopController", "Jump to personal page.");
-      return;
-      Object localObject = paramstSimpleMetaPerson.miniAppSchema;
-      tlo.d("weishi", "miniShema is :" + (String)localObject);
-      tgn.a().a(this.jdField_a_of_type_AndroidContentContext, paramstSimpleMetaPerson.miniAppSchema);
-      tnt.c(1000001, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-      continue;
-      paramstSimpleMetaPerson = paramstSimpleMetaPerson.schema;
-      int i = tee.a().a();
-      if (xsx.a(this.jdField_a_of_type_AndroidContentContext))
-      {
-        tlq.a(this.jdField_a_of_type_AndroidContentContext, "biz_src_jc_gzh_weishi", paramstSimpleMetaPerson, 1, i, 1);
-        tnt.c(1000003, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+      paramString1 = new JSONObject();
+      paramString1.put("type", 6);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d(BridgeModule.TAG, 2, "downloadApk packageReplaced, packageName = " + paramString2);
       }
+      return;
+    }
+    catch (Exception paramString1)
+    {
       for (;;)
       {
-        tlo.d("weishi", "schema is :" + paramstSimpleMetaPerson);
-        break;
-        localObject = new WSDownloadParams();
-        ((WSDownloadParams)localObject).mScene = 1;
-        ((WSDownloadParams)localObject).mLinkStrategyType = i;
-        ((WSDownloadParams)localObject).mEventId = 1;
-        ((WSDownloadParams)localObject).mTestId = tlv.a(2);
-        stReportItem localstReportItem = tjr.a();
-        localstReportItem.pagetype = 2;
-        localstReportItem.optype = 115;
-        ((WSDownloadParams)localObject).mStReportItem = localstReportItem;
-        ((WSDownloadParams)localObject).mScheme = paramstSimpleMetaPerson;
-        tfa.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), (WSDownloadParams)localObject, false);
-        tnt.c(1000002, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+        ViolaLogUtils.e("downloadApk", "packageReplaced error:" + paramString1.getMessage());
       }
-      paramstSimpleMetaPerson = paramstSimpleMetaPerson.H5Url;
-      tch.a(this.jdField_a_of_type_AndroidContentContext, paramstSimpleMetaPerson);
-      tlo.d("weishi", "h5Url is :" + paramstSimpleMetaPerson);
-      tnt.c(1000004, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
     }
   }
   
-  private void f()
+  public void uninstallSucceed(String paramString1, String paramString2)
   {
-    if (!ndk.a(a())) {
-      bflz.a().a(2131721489);
+    if (QLog.isColorLevel()) {
+      QLog.d(BridgeModule.TAG, 2, "downloadApk uninstallSucceed, packageName = " + paramString2);
     }
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (this.jdField_a_of_type_Tep == null) {
-            this.jdField_a_of_type_Tep = tep.a();
-          }
-          localObject = (tmv)a();
-        } while (localObject == null);
-        tlo.b("WSVerticalItemTopController", "Follow user.");
-      } while (!(((tmv)localObject).a() instanceof stSimpleMetaFeed));
-      localObject = ((stSimpleMetaFeed)((tmv)localObject).a()).poster;
-    } while (localObject == null);
-    if (tlf.a(((stSimpleMetaPerson)localObject).followStatus))
-    {
-      tlf.a(a(), new tnb(this, (stSimpleMetaPerson)localObject), null);
-      return;
-    }
-    this.jdField_a_of_type_Tep.b(((stSimpleMetaPerson)localObject).id, 1);
-    ((stSimpleMetaPerson)localObject).followStatus = 1;
-    if ((tfw.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (tfw.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster != null)) {
-      tfw.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.followStatus = 1;
-    }
-    this.b.setText("已关注");
-    tlo.a("WSVerticalItemTopController", "---> followStatus:" + ((stSimpleMetaPerson)localObject).followStatus + ",personInfo hashCode:" + localObject.hashCode());
-    this.b.setVisibility(8);
-  }
-  
-  protected void a()
-  {
-    tmv localtmv = (tmv)a();
-    if (localtmv == null) {}
-    while (!(localtmv.a() instanceof stSimpleMetaFeed)) {
-      return;
-    }
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)localtmv.a());
-  }
-  
-  protected int b()
-  {
-    return 2131559873;
-  }
-  
-  @UiThread
-  protected void b()
-  {
-    tlo.a("WSVerticalItemTopController", "onUpdateUI hashcode******************************" + hashCode() + ",position:" + a());
-    Object localObject = (tmv)a();
-    if (localObject == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(((tmv)localObject).a() instanceof stSimpleMetaFeed));
-      localObject = ((stSimpleMetaFeed)((tmv)localObject).a()).poster;
-    } while (localObject == null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(((stSimpleMetaPerson)localObject).nick);
-    tlv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, ((stSimpleMetaPerson)localObject).avatar);
-    a((stSimpleMetaPerson)localObject);
-  }
-  
-  protected void c() {}
-  
-  protected void e()
-  {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = tlu.b();
-    localLayoutParams.width = -2;
-    localLayoutParams.topMargin = tlu.b((Activity)this.jdField_a_of_type_AndroidContentContext);
-    localLayoutParams.leftMargin = tlu.a();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)a(2131379557));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379559));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.b = ((TextView)a(2131379558));
-    this.b.setOnClickListener(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    stSimpleMetaPerson localstSimpleMetaPerson = ((stSimpleMetaFeed)((tmv)a()).a()).poster;
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131379557: 
-    case 2131379559: 
-      b(localstSimpleMetaPerson);
-      return;
-    }
-    f();
-    tnt.d(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tna
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.msgbackup.data;
 
 import android.text.TextUtils;
-import aujq;
-import awge;
-import awhp;
+import awqu;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 
 public class MsgBackupMsgEntity
-  extends awge
+  extends Entity
 {
   public static final String TABLE_NAME = "msg";
   public int chatType;
   public String chatUin;
   public byte[] extensionData;
   public byte[] extraData;
-  @awhp
+  @notColumn
   public String extraDataStr;
   public long msgRandom;
   public long msgSeq;
@@ -28,7 +28,7 @@ public class MsgBackupMsgEntity
   public void postRead()
   {
     super.postRead();
-    aujq.a(this);
+    awqu.a(this);
     try
     {
       if (this.extraData != null) {
@@ -38,7 +38,7 @@ public class MsgBackupMsgEntity
     }
     catch (Exception localException)
     {
-      aujq.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
+      awqu.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
       this.extraDataStr = "";
     }
   }
@@ -49,12 +49,12 @@ public class MsgBackupMsgEntity
     if (!TextUtils.isEmpty(this.extraDataStr)) {
       this.extraData = this.extraDataStr.getBytes();
     }
-    aujq.b(this);
+    awqu.b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupMsgEntity
  * JD-Core Version:    0.7.0.1
  */

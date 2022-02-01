@@ -1,65 +1,40 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetSDKOpenKeyTokenReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetSDKOpenKeyTokenRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.vas.update.business.BaseUpdateBusiness;
+import com.tencent.vas.update.entity.BusinessItemInfo;
+import java.io.File;
 
 public class bhdk
-  extends bhdw
+  extends BaseUpdateBusiness
 {
-  private INTERFACE.StGetSDKOpenKeyTokenReq a = new INTERFACE.StGetSDKOpenKeyTokenReq();
-  
-  public bhdk(COMM.StCommonExt paramStCommonExt)
+  private String a(String paramString)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    return localBaseApplication.getFilesDir() + File.separator + "test_dir" + File.separator + paramString + ".zip";
   }
   
-  protected String a()
+  public long getBid()
   {
-    return "mini_program_auth";
+    return 1000000L;
   }
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  public BusinessItemInfo getBusinessItemInfo(long paramLong, String paramString)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetSDKOpenKeyTokenRsp localStGetSDKOpenKeyTokenRsp = new INTERFACE.StGetSDKOpenKeyTokenRsp();
-    try
-    {
-      localStGetSDKOpenKeyTokenRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetSDKOpenKeyTokenRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("token", localStGetSDKOpenKeyTokenRsp.token.get());
-        return paramArrayOfByte;
-      }
-      QMLog.d("GetSDKOpenKeyTokenRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("GetSDKOpenKeyTokenRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
+    paramString = new BusinessItemInfo();
+    paramString.mSaveInDir = false;
+    paramString.mSavePath = a("test");
+    return paramString;
   }
   
-  protected byte[] a()
+  public String getFrom()
   {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetSDKOpenKeyToken";
+    return "TestUpdateBusinessV2";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhdk
  * JD-Core Version:    0.7.0.1
  */

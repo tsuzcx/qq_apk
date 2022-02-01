@@ -1,36 +1,19 @@
-public abstract class aynv
-  implements aynu
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aynv
+  implements View.OnClickListener
 {
-  private int a;
-  private int b;
-  public boolean f = true;
-  public int r;
-  public int s;
+  aynv(aynq paramaynq, AutoReplyText paramAutoReplyText, boolean paramBoolean) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return this.a;
-  }
-  
-  public Object a(String paramString)
-  {
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.s = paramInt;
+    if (aynq.a(this.jdField_a_of_type_Aynq) != null) {
+      aynq.a(this.jdField_a_of_type_Aynq).b(this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText, this.jdField_a_of_type_Boolean);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

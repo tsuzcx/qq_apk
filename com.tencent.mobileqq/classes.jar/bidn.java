@@ -1,12 +1,12 @@
-import android.view.MotionEvent;
-
-abstract interface bidn
+public abstract interface bidn
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bidn
  * JD-Core Version:    0.7.0.1
  */

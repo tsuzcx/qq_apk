@@ -14,13 +14,13 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bcxg;
-import bcxi;
-import bdaq;
+import bgbr;
+import bgbt;
+import bggq;
 
 public class ShakePicView
   extends FrameLayout
-  implements bcxg
+  implements bgbr
 {
   public Handler a;
   protected ImageView a;
@@ -68,8 +68,8 @@ public class ShakePicView
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    Object localObject1 = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_X, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.142F, -bdaq.a(getContext(), 2.5F)), Keyframe.ofFloat(0.285F, -bdaq.a(getContext(), 7.5F)), Keyframe.ofFloat(0.426F, -bdaq.a(getContext(), 2.5F)), Keyframe.ofFloat(0.568F, -bdaq.a(getContext(), 2.5F)), Keyframe.ofFloat(0.71F, -bdaq.a(getContext(), 7.5F)), Keyframe.ofFloat(0.852F, -bdaq.a(getContext(), 2.5F)), Keyframe.ofFloat(1.0F, 0.0F) });
-    Object localObject2 = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_Y, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.142F, 0.0F), Keyframe.ofFloat(0.285F, -bdaq.a(getContext(), 3.5F)), Keyframe.ofFloat(0.426F, -bdaq.a(getContext(), 13.5F)), Keyframe.ofFloat(0.568F, 0.0F), Keyframe.ofFloat(0.71F, -bdaq.a(getContext(), 3.5F)), Keyframe.ofFloat(0.852F, -bdaq.a(getContext(), 13.5F)), Keyframe.ofFloat(1.0F, 0.0F) });
+    Object localObject1 = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_X, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.142F, -bggq.a(getContext(), 2.5F)), Keyframe.ofFloat(0.285F, -bggq.a(getContext(), 7.5F)), Keyframe.ofFloat(0.426F, -bggq.a(getContext(), 2.5F)), Keyframe.ofFloat(0.568F, -bggq.a(getContext(), 2.5F)), Keyframe.ofFloat(0.71F, -bggq.a(getContext(), 7.5F)), Keyframe.ofFloat(0.852F, -bggq.a(getContext(), 2.5F)), Keyframe.ofFloat(1.0F, 0.0F) });
+    Object localObject2 = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_Y, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.142F, 0.0F), Keyframe.ofFloat(0.285F, -bggq.a(getContext(), 3.5F)), Keyframe.ofFloat(0.426F, -bggq.a(getContext(), 13.5F)), Keyframe.ofFloat(0.568F, 0.0F), Keyframe.ofFloat(0.71F, -bggq.a(getContext(), 3.5F)), Keyframe.ofFloat(0.852F, -bggq.a(getContext(), 13.5F)), Keyframe.ofFloat(1.0F, 0.0F) });
     localObject1 = ObjectAnimator.ofPropertyValuesHolder(this.b, new PropertyValuesHolder[] { localObject1 }).setDuration(280L);
     localObject2 = ObjectAnimator.ofPropertyValuesHolder(this.b, new PropertyValuesHolder[] { localObject2 }).setDuration(280L);
     Object localObject3 = new AnimatorSet();
@@ -89,7 +89,7 @@ public class ShakePicView
     localAnimatorSet.play((Animator)localObject2).with((Animator)localObject3).with((Animator)localObject1);
     localAnimatorSet.start();
     this.c.setTag(localAnimatorSet);
-    localAnimatorSet.addListener(new bcxi(this));
+    localAnimatorSet.addListener(new bgbt(this));
   }
   
   public void setBitmap(Bitmap paramBitmap)
@@ -101,7 +101,7 @@ public class ShakePicView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.ShakePicView
  * JD-Core Version:    0.7.0.1
  */

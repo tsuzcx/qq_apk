@@ -1,33 +1,24 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class bnnk
+class bnnk
+  implements Animation.AnimationListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  bnnk(bnnj parambnnj) {}
   
-  private void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+    if (bnnj.a(this.a) != null)
+    {
+      bnnj.a(this.a).clearAnimation();
+      bnnj.a(this.a).setVisibility(8);
     }
   }
   
-  private void a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup != null) {
-      paramViewGroup.removeAllViews();
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
-    a(paramRelativeLayout);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
-    a();
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -2,29 +2,29 @@ package com.tencent.biz.qqstory.playvideo;
 
 import android.os.Handler;
 import java.lang.ref.WeakReference;
-import vng;
-import vwa;
+import xgs;
+import xpl;
 
 public class ProgressControler$2
   implements Runnable
 {
-  public ProgressControler$2(vng paramvng) {}
+  public ProgressControler$2(xgs paramxgs) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {}
-    vwa localvwa;
+    xpl localxpl;
     do
     {
       do
       {
         return;
       } while (this.this$0.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localvwa = (vwa)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localvwa == null);
-    if (localvwa.b() > 0L)
+      localxpl = (xpl)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localxpl == null);
+    if (localxpl.b() > 0L)
     {
-      this.this$0.a(localvwa.a(), localvwa.b(), localvwa);
+      this.this$0.a(localxpl.a(), localxpl.b(), localxpl);
       return;
     }
     this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
@@ -32,7 +32,7 @@ public class ProgressControler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.ProgressControler.2
  * JD-Core Version:    0.7.0.1
  */

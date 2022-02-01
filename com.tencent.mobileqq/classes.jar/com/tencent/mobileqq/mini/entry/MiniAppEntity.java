@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class MiniAppEntity
-  extends awge
+  extends Entity
 {
   public static final String TAG = "MiniAppEntity";
-  @awhs
+  @unique
   public String appId;
   public byte[] appInfo;
   public String name;
@@ -236,7 +236,7 @@ public class MiniAppEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pts.nativemodule.IPTSLoadFeeds;
-import com.tencent.qphone.base.util.QLog;
-
-public class pwj
-  implements IPTSLoadFeeds
+class pwj
+  implements pwf
 {
-  private final String jdField_a_of_type_JavaLangString = "PTSLoadFeedsModule";
-  private pvj jdField_a_of_type_Pvj = new pwk(this);
+  pwj(pwi parampwi) {}
   
-  public pwj()
+  public void a(int paramInt)
   {
-    pvi.a().a(this.jdField_a_of_type_Pvj);
-  }
-  
-  public void loadFeeds(long paramLong1, long paramLong2, int paramInt, long paramLong3)
-  {
-    oxd localoxd = (oxd)((QQAppInterface)ors.a()).getManager(163);
-    QLog.i("PTSLoadFeedsModule", 1, "[loadFeeds], channelID = " + paramLong1 + ", limitCount = " + paramInt);
-    if (localoxd != null) {
-      localoxd.a().a((int)paramLong1, paramInt, 9223372036854775807L, true, paramLong3);
+    if (this.a.a(paramInt) == null) {
+      this.a.c(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pwj
  * JD-Core Version:    0.7.0.1
  */

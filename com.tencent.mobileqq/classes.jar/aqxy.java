@@ -1,28 +1,42 @@
-public abstract interface aqxy
+public class aqxy
 {
-  public abstract int a();
+  private String jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/qzone/visitor/";
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public abstract long a();
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract String a();
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
-  public abstract void a();
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public abstract void a(aqxg paramaqxg);
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
   
-  public abstract boolean a();
-  
-  public abstract boolean a(long paramLong);
-  
-  public abstract int b();
-  
-  public abstract long b();
+  public boolean b()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxy
  * JD-Core Version:    0.7.0.1
  */

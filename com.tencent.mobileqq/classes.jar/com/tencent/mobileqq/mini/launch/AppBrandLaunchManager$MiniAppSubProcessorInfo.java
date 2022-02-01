@@ -5,6 +5,9 @@ import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.util.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 
 public class AppBrandLaunchManager$MiniAppSubProcessorInfo
 {
@@ -55,11 +58,20 @@ public class AppBrandLaunchManager$MiniAppSubProcessorInfo
   
   public void onEnterBackground()
   {
+    int i = 0;
     this.isForeground = false;
     if (this.appConfig == null) {}
     do
     {
       return;
+      if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_screen_detect", 1) > 0) {
+        i = 1;
+      }
+      if ((i != 0) && (!DeviceInfoUtil.isScreenOn(AppBrandLaunchManager.access$100(AppBrandLaunchManager.g()))))
+      {
+        QLog.i("miniapp-process_AppBrandLaunchManager", 1, "onAppBackground isScreenOn=false");
+        return;
+      }
       this.enterBackgroundTimestamp = System.currentTimeMillis();
       this.mainHandler.removeCallbacks(this.processRecycleRunnable);
     } while ((isAppStore()) && (!this.appConfig.isInternalApp()));
@@ -124,7 +136,7 @@ public class AppBrandLaunchManager$MiniAppSubProcessorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.MiniAppSubProcessorInfo
  * JD-Core Version:    0.7.0.1
  */

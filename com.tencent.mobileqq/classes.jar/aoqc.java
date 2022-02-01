@@ -1,75 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.util.Log;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.utils.PokeBigResHandler.NetEngine.1;
 
 public class aoqc
-  extends aokh<aoqb>
+  implements bdvw
 {
-  public int a()
+  public void onResp(bdwt parambdwt)
   {
-    return 390;
-  }
-  
-  @NonNull
-  public aoqb a(int paramInt)
-  {
-    return new aoqb();
-  }
-  
-  @Nullable
-  public aoqb a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
-    {
-      aoqb localaoqb = aoqb.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfPushProcessor", 0, "onParsed " + paramArrayOfaoko[0].a);
-      }
-      return localaoqb;
-    }
-    return new aoqb();
-  }
-  
-  public Class<aoqb> a()
-  {
-    return aoqb.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoqb paramaoqb)
-  {
-    ((auaa)BaseApplicationImpl.getApplication().getRuntime().getManager(308)).a(paramaoqb);
-    if (QLog.isColorLevel()) {
-      QLog.d("QConfPushProcessor", 0, "onUpdate " + paramaoqb);
+    if (parambdwt.jdField_a_of_type_Int == 0) {
+      ThreadManagerV2.excute(new PokeBigResHandler.NetEngine.1(this, parambdwt.jdField_a_of_type_Bdws.c), 64, null, true);
     }
   }
   
-  public boolean a()
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
   {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    Log.e("Ron", "req:[" + parambdws.toString() + "\n curOffset" + paramLong1 + "\n totalLen" + paramLong2 + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoqc
  * JD-Core Version:    0.7.0.1
  */

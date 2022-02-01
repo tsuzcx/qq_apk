@@ -1,12 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class bclo
-  implements View.OnClickListener
 {
-  bclo(bcln parambcln) {}
-  
-  public void onClick(View paramView) {}
+  public int a = -1;
+  public boolean a;
+  public int b;
 }
 
 

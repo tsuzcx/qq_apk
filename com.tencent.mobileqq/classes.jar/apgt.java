@@ -1,30 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.ark.ark.Application;
+import com.tencent.qphone.base.util.QLog;
 
-class apgt
-  implements DialogInterface.OnClickListener
+public class apgt
 {
-  apgt(apgs paramapgs) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static boolean a(String paramString1, long paramLong, ark.Application paramApplication, String paramString2)
   {
-    EditText localEditText = (EditText)((bdjz)paramDialogInterface).findViewById(2131370985);
-    paramDialogInterface = (EditText)((bdjz)paramDialogInterface).findViewById(2131361898);
-    if ((TextUtils.isEmpty(localEditText.getText().toString())) || (TextUtils.isEmpty(paramDialogInterface.getText().toString())))
-    {
-      QQToast.a(this.a.a.getActivity(), 1, alud.a(2131703161), 0).a();
-      return;
+    boolean bool;
+    if (paramLong == 0L) {
+      bool = true;
     }
-    aphq localaphq = new aphq();
-    localaphq.a = localEditText.getText().toString();
-    localaphq.jdField_b_of_type_JavaLangString = paramDialogInterface.getText().toString();
-    localaphq.jdField_b_of_type_Boolean = true;
-    aphn.a().a(localaphq);
-    this.a.a.a.notifyDataSetChanged();
+    for (;;)
+    {
+      if (!bool) {
+        QLog.i("ArkApp.ArkAPIPermission", 1, String.format("ModuleCheckPermission.denied:Name:%s,Permission:%s.", new Object[] { paramString1, paramString2 }));
+      }
+      return bool;
+      if ((paramApplication != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+        bool = paramApplication.CheckPermissions(paramString2);
+      } else {
+        bool = false;
+      }
+    }
   }
 }
 

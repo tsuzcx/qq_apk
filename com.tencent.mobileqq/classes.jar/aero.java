@@ -1,39 +1,41 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeCustomizeStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import mqq.os.MqqHandler;
 
 public class aero
-  implements ajal
+  implements DialogInterface.OnClickListener
 {
-  public aero(CustomizeStrategyFactory.ThemeCustomizeStrategy.1 param1) {}
+  private int jdField_a_of_type_Int;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public aero(NotificationActivity paramNotificationActivity, int paramInt)
   {
-    paramPathResult = paramPathResult.filePath;
-    if (paramInt == 0) {}
-    try
-    {
-      this.a.a.background = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy info.background=" + this.a.a.background);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      if (this.jdField_a_of_type_Int == 1) {
+        NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
       }
-      CustomizeStrategyFactory.a().a(this.a.a);
+    }
+    while (paramInt != 1)
+    {
+      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity).sendEmptyMessage(4);
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Int != 2);
+      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
       return;
     }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
+    NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aero
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
 
-class bbfb
+public abstract interface bbfb
 {
-  public RelativeLayout a;
-  public TextView a;
+  public abstract void a(View paramView, int paramInt1, ScribbleResMgr.ResInfo paramResInfo, int paramInt2);
 }
 
 

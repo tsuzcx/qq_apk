@@ -1,45 +1,142 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
-class tdo
-  implements AbsListView.OnScrollListener
+public class tdo
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public static final String a;
+  int a;
+  public List<byte[]> a;
+  public tdq a;
+  public tea<Bitmap> a;
+  int jdField_b_of_type_Int = 0;
+  final List<SoftReference<Bitmap>> jdField_b_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   
-  tdo(tdn paramtdn) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  static
   {
-    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3)) {}
-    for (boolean bool = true;; bool = false)
+    jdField_a_of_type_JavaLangString = "zimage." + tdo.class.getSimpleName();
+  }
+  
+  tdo(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
+    this.jdField_a_of_type_Tdq = new tdq(2097152);
+    this.jdField_a_of_type_Int = 0;
+    while (paramInt < 5)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+      this.jdField_a_of_type_JavaUtilList.add(new byte[16384]);
+      paramInt += 1;
+    }
+    this.jdField_a_of_type_Tea = new tdp(this);
+  }
+  
+  public Bitmap a(BitmapFactory.Options paramOptions)
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        this.jdField_b_of_type_Int += 1;
+        ArrayList localArrayList = new ArrayList();
+        List localList = this.jdField_b_of_type_JavaUtilList;
+        i = 0;
+        try
+        {
+          if (i < this.jdField_b_of_type_JavaUtilList.size())
+          {
+            localBitmap = (Bitmap)((SoftReference)this.jdField_b_of_type_JavaUtilList.get(i)).get();
+            if (localBitmap != null)
+            {
+              if (ted.a(localBitmap, paramOptions))
+              {
+                localArrayList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+                str = "cache";
+                if (!localArrayList.isEmpty()) {
+                  this.jdField_b_of_type_JavaUtilList.removeAll(localArrayList);
+                }
+                if (localBitmap != null) {
+                  this.jdField_a_of_type_Int += 1;
+                }
+                if (QLog.isColorLevel()) {
+                  ted.a(jdField_a_of_type_JavaLangString, "getReuseableBitmap found:" + str + " picSize:" + paramOptions.outWidth + "x" + paramOptions.outHeight + " bitmap:" + localBitmap + " state:" + toString());
+                }
+                return localBitmap;
+              }
+            }
+            else {
+              localArrayList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+            }
+          }
+        }
+        finally {}
+        String str = "notFound";
+      }
+      finally {}
+      Bitmap localBitmap = null;
+      continue;
+      i += 1;
     }
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  tds a(tdw paramtdw)
   {
-    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!tdn.a(this.jdField_a_of_type_Tdn)) && (!tdn.b(this.jdField_a_of_type_Tdn)))
+    if (paramtdw == null) {}
+    do
     {
-      tlo.c(tdn.a(this.jdField_a_of_type_Tdn), "onScrollStateChanged scrollState:" + paramInt);
-      tdn.a(this.jdField_a_of_type_Tdn, this.jdField_a_of_type_Tdn.a().a(tdn.b(this.jdField_a_of_type_Tdn)));
-      if (tdn.c(this.jdField_a_of_type_Tdn) != null)
-      {
-        this.jdField_a_of_type_Tdn.a().a(tdn.a(this.jdField_a_of_type_Tdn), true);
-        tdn.a(this.jdField_a_of_type_Tdn, true);
-      }
-    }
-    else
+      return null;
+      paramtdw = bglc.a(paramtdw.a());
+    } while ((paramtdw == null) || (!paramtdw.a()));
+    return paramtdw.a();
+  }
+  
+  public void a()
+  {
+    try
     {
+      this.jdField_a_of_type_Tdq.a();
+      this.jdField_b_of_type_JavaUtilList.clear();
       return;
     }
-    tlo.c(tdn.a(this.jdField_a_of_type_Tdn), "mCommentAttachInfo is null");
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(tdw paramtdw, tds paramtds)
+  {
+    if (paramtdw == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        bglc.a(paramtdw.a(), paramtds);
+      }
+      finally {}
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("total:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" reuse:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tdo
  * JD-Core Version:    0.7.0.1
  */

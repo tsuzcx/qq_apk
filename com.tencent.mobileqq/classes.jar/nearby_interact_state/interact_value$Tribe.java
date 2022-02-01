@@ -36,7 +36,7 @@ public final class interact_value$Tribe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nearby_interact_state.interact_value.Tribe
  * JD-Core Version:    0.7.0.1
  */

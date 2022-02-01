@@ -1,20 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class adph
-  extends akit
+  implements DialogInterface.OnClickListener
 {
-  public adpf a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  public adph(BaseChatPie paramBaseChatPie) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

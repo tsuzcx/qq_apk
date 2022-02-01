@@ -1,21 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-class beem
-  extends beep
+public class beem
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  beem(beej parambeej)
-  {
-    super(parambeej, null);
-  }
+  public beem(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "old shouldInterceptRequest");
-    }
-    return a(paramWebView, paramString);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.setAlpha(f);
   }
 }
 

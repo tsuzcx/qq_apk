@@ -1,75 +1,37 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QQFriendRelation2Config;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class aouo
-  extends aouf<QQFriendRelation2Config>
+  extends aouc
 {
-  public static QQFriendRelation2Config c()
+  public aoxu a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public aouo(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, aoxu paramaoxu, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    QQFriendRelation2Config localQQFriendRelation2Config2 = (QQFriendRelation2Config)aoks.a().a(491);
-    QQFriendRelation2Config localQQFriendRelation2Config1 = localQQFriendRelation2Config2;
-    if (localQQFriendRelation2Config2 == null) {
-      localQQFriendRelation2Config1 = new QQFriendRelation2Config();
-    }
-    return localQQFriendRelation2Config1;
+    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Aoxu = paramaoxu;
   }
   
-  public int a()
+  public String toString()
   {
-    return 491;
-  }
-  
-  @NonNull
-  public QQFriendRelation2Config a()
-  {
-    return new QQFriendRelation2Config();
-  }
-  
-  @NonNull
-  public QQFriendRelation2Config a(aoko[] paramArrayOfaoko)
-  {
-    boolean bool = true;
-    localQQFriendRelation2Config = new QQFriendRelation2Config();
-    paramArrayOfaoko = paramArrayOfaoko[0].a;
-    try
-    {
-      if (!TextUtils.isEmpty(paramArrayOfaoko)) {
-        if (new JSONObject(paramArrayOfaoko).optInt("enable", 1) != 1) {
-          break label49;
-        }
-      }
-      for (;;)
-      {
-        localQQFriendRelation2Config.mIsEnable = bool;
-        return localQQFriendRelation2Config;
-        label49:
-        bool = false;
-      }
-      return localQQFriendRelation2Config;
-    }
-    catch (JSONException paramArrayOfaoko)
-    {
-      wxe.e("QQFriendRelation2Processor", "QQFriendRelation2Config onParsed exception :" + paramArrayOfaoko.getMessage());
-    }
-  }
-  
-  public Class<QQFriendRelation2Config> a()
-  {
-    return QQFriendRelation2Config.class;
-  }
-  
-  @NonNull
-  public QQFriendRelation2Config b()
-  {
-    return new QQFriendRelation2Config();
+    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
+    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
+    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aoxu).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aouo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,103 +1,63 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.webkit.MimeTypeMap;
-import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bfrb
+public abstract class bfrb
+  extends niv
 {
-  public static Intent a(Context paramContext, File paramFile)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramContext == null) || (paramFile == null) || (!paramFile.isFile())) {
-      return null;
-    }
-    String str = paramFile.getName().toLowerCase().trim();
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.addFlags(268435456);
-    if (a(str, paramContext.getResources().getStringArray(2130968625))) {
-      localIntent.setDataAndType(Uri.fromFile(paramFile), "image/*");
+    boolean bool2 = false;
+    mobileqq_mp.FollowResponse localFollowResponse;
+    if (paramInt == 0) {
+      localFollowResponse = new mobileqq_mp.FollowResponse();
     }
     for (;;)
     {
-      FileProvider7Helper.intentCompatForN(paramContext, localIntent);
-      return localIntent;
-      if (a(str, paramContext.getResources().getStringArray(2130968631)))
+      try
       {
-        localIntent.setDataAndType(Uri.parse(paramFile.toString()).buildUpon().encodedAuthority("com.android.htmlfileprovider").scheme("content").encodedPath(paramFile.toString()).build(), "text/html");
+        localFollowResponse.mergeFrom(paramArrayOfByte);
+        if (!((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.has()) {
+          break label146;
+        }
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt != 0) {
+          break label146;
+        }
+        bool1 = true;
       }
-      else if (a(str, paramContext.getResources().getStringArray(2130968622)))
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        localIntent.addFlags(67108864);
-        localIntent.putExtra("oneshot", 0);
-        localIntent.putExtra("configchange", 0);
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "audio/*");
+        bool1 = bool2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("TroopBindPubAccountProtocol", 2, paramArrayOfByte.toString());
+        bool1 = bool2;
+        continue;
       }
-      else if (a(str, paramContext.getResources().getStringArray(2130968630)))
+      a(bool1, paramBundle);
+      return;
+      boolean bool1 = bool2;
+      if (QLog.isColorLevel())
       {
-        localIntent.addFlags(67108864);
-        localIntent.putExtra("oneshot", 0);
-        localIntent.putExtra("configchange", 0);
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "video/*");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968629)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "text/plain");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968628)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/pdf");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968632)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/msword");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968624)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-excel");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968626)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-powerpoint");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968623)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/x-chm");
-      }
-      else
-      {
-        str = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str.substring(str.lastIndexOf(".") + 1).toLowerCase().trim());
-        localIntent.setDataAndType(Uri.fromFile(paramFile), str);
+        QLog.i("TroopBindPubAccountProtocol", 2, "follow pubAccount failed, errorCode=" + paramInt);
+        bool1 = bool2;
+        continue;
+        label146:
+        bool1 = false;
       }
     }
   }
   
-  public static boolean a(String paramString, String[] paramArrayOfString)
-  {
-    boolean bool2 = false;
-    int j = paramArrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramString.endsWith(paramArrayOfString[i])) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
+  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfrb
  * JD-Core Version:    0.7.0.1
  */

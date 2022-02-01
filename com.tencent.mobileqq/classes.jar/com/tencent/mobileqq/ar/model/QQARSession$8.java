@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbm;
-import anfx;
+import apad;
+import apeo;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$8
   implements Runnable
 {
-  public QQARSession$8(anfx paramanfx, anbm paramanbm) {}
+  public QQARSession$8(apeo paramapeo, apad paramapad) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class QQARSession$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.8
  * JD-Core Version:    0.7.0.1
  */

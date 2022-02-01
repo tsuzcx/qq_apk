@@ -1,185 +1,331 @@
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
+import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase.5;
+import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase.6;
+import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase.7;
+import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase.8;
+import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase.9;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
-public class nxe
+public abstract class nxe
+  implements DownloadListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
+  protected int a;
+  protected AnimatorSet a;
+  protected Dialog a;
+  public Context a;
+  public View a;
+  public AdProgressButton a;
+  protected QQAppInterface a;
+  public INetInfoHandler a;
+  protected String a;
+  protected nww a;
+  protected boolean a;
+  protected int b;
+  protected String b;
   public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  protected String c;
   
-  public nxe()
+  public static nxe a(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
+    if (paramJSONObject == null) {
+      return null;
+    }
+    for (;;)
+    {
+      try
+      {
+        switch (paramJSONObject.optInt("moduleType"))
+        {
+        case 1: 
+          if (paramJSONObject == null) {
+            return paramJSONObject;
+          }
+          paramJSONObject.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        paramQQAppInterface.printStackTrace();
+        return null;
+      }
+      paramJSONObject = nxj.a(paramJSONObject.optJSONObject("singleImageModule"));
+      continue;
+      paramJSONObject = nxm.a(paramJSONObject.optJSONObject("mixVideoModule"));
+      continue;
+      paramJSONObject = null;
+    }
+    return paramJSONObject;
   }
   
-  /* Error */
-  public static nxe a(String paramString)
+  private boolean a(DownloadInfo paramDownloadInfo)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokestatic 35	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: ifne +158 -> 162
-    //   7: new 2	nxe
-    //   10: dup
-    //   11: invokespecial 36	nxe:<init>	()V
-    //   14: astore_1
-    //   15: new 38	org/json/JSONObject
-    //   18: dup
-    //   19: aload_0
-    //   20: invokespecial 41	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   23: astore_0
-    //   24: aload_1
-    //   25: aload_0
-    //   26: ldc 43
-    //   28: invokevirtual 47	org/json/JSONObject:optLong	(Ljava/lang/String;)J
-    //   31: putfield 23	nxe:jdField_a_of_type_Long	J
-    //   34: aload_1
-    //   35: aload_0
-    //   36: ldc 49
-    //   38: invokevirtual 53	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   41: putfield 25	nxe:jdField_a_of_type_Int	I
-    //   44: aload_1
-    //   45: aload_0
-    //   46: ldc 55
-    //   48: invokevirtual 53	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   51: putfield 57	nxe:jdField_b_of_type_Int	I
-    //   54: aload_1
-    //   55: aload_0
-    //   56: ldc 59
-    //   58: invokevirtual 53	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   61: putfield 61	nxe:jdField_c_of_type_Int	I
-    //   64: aload_1
-    //   65: aload_0
-    //   66: ldc 63
-    //   68: invokevirtual 53	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   71: putfield 65	nxe:jdField_d_of_type_Int	I
-    //   74: aload_1
-    //   75: aload_0
-    //   76: ldc 43
-    //   78: invokevirtual 69	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   81: putfield 71	nxe:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   84: aload_1
-    //   85: aload_0
-    //   86: ldc 73
-    //   88: invokevirtual 69	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   91: putfield 75	nxe:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   94: aload_1
-    //   95: aload_0
-    //   96: ldc 77
-    //   98: invokevirtual 69	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   101: putfield 79	nxe:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   104: aload_1
-    //   105: aload_0
-    //   106: ldc 81
-    //   108: invokevirtual 69	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   111: putfield 83	nxe:f	Ljava/lang/String;
-    //   114: aload_1
-    //   115: aload_0
-    //   116: ldc 85
-    //   118: invokevirtual 69	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   121: putfield 87	nxe:e	Ljava/lang/String;
-    //   124: aload_1
-    //   125: aload_0
-    //   126: ldc 89
-    //   128: invokevirtual 69	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   131: putfield 91	nxe:h	Ljava/lang/String;
-    //   134: aload_1
-    //   135: aload_0
-    //   136: ldc 93
-    //   138: invokevirtual 69	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   141: putfield 95	nxe:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   144: aload_1
-    //   145: aload_0
-    //   146: ldc 97
-    //   148: invokevirtual 69	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   151: putfield 99	nxe:g	Ljava/lang/String;
-    //   154: aload_1
-    //   155: areturn
-    //   156: astore_0
-    //   157: aconst_null
-    //   158: areturn
-    //   159: astore_0
-    //   160: aload_1
-    //   161: areturn
-    //   162: aconst_null
-    //   163: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	164	0	paramString	String
-    //   14	147	1	localnxe	nxe
-    // Exception table:
-    //   from	to	target	type
-    //   0	15	156	java/lang/Exception
-    //   15	154	159	java/lang/Exception
+    if ((paramDownloadInfo == null) || (this.jdField_a_of_type_Nww == null) || (TextUtils.isEmpty(paramDownloadInfo.e)) || (TextUtils.isEmpty(paramDownloadInfo.jdField_c_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_a_of_type_Nww.f)) || (TextUtils.isEmpty(this.jdField_a_of_type_Nww.d))) {}
+    while ((!paramDownloadInfo.e.equals(this.jdField_a_of_type_Nww.f)) || (!paramDownloadInfo.jdField_c_of_type_JavaLangString.equals(this.jdField_a_of_type_Nww.d))) {
+      return false;
+    }
+    return true;
   }
   
-  public String a()
+  private void d()
   {
-    JSONObject localJSONObject = new JSONObject();
+    if (!bgnt.g(this.jdField_a_of_type_AndroidContentContext))
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131716972), 0).b(0);
+      return;
+    }
+    if (bgnt.h(this.jdField_a_of_type_AndroidContentContext))
+    {
+      e();
+      return;
+    }
+    f();
+  }
+  
+  private void e()
+  {
+    nxw.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Nww, this);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131717071));
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setTextColor(-16777216);
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130839317);
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgress(0);
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setClickable(false);
+    }
+    this.jdField_c_of_type_Int = 3;
+    nxw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, 3, 2, 0);
+  }
+  
+  private void f()
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext != null) && (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()))
+    {
+      if (this.jdField_a_of_type_AndroidAppDialog == null)
+      {
+        this.jdField_a_of_type_AndroidAppDialog = nxw.a(this.jdField_a_of_type_AndroidContentContext, null, this.jdField_a_of_type_AndroidContentContext.getString(2131717079), new nxh(this), this.jdField_a_of_type_AndroidContentContext.getString(2131717080), new nxi(this), this.jdField_a_of_type_AndroidContentContext.getString(2131717081));
+        this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
+      }
+      this.jdField_a_of_type_AndroidAppDialog.show();
+    }
+  }
+  
+  private void g()
+  {
+    if (this.jdField_c_of_type_Int == 3)
+    {
+      bivr.a().a(this.jdField_a_of_type_Nww.d);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131717082), 0).b(0);
+      ThreadManager.getUIHandler().post(new AdModuleBase.5(this));
+    }
+  }
+  
+  public View a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, nww paramnww, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_Nww = paramnww;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return null;
+  }
+  
+  public void a()
+  {
+    AdProgressButton localAdProgressButton;
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Nww != null) && (this.jdField_a_of_type_Nww.jdField_a_of_type_Int == 2))
+    {
+      localAdProgressButton = (AdProgressButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131372940);
+      if (this.jdField_a_of_type_Nww.jdField_b_of_type_Int != 2) {
+        break label70;
+      }
+      localAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131717085));
+    }
+    label70:
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Nww.jdField_b_of_type_Int != 1);
+      if (nxw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Nww.f))
+      {
+        localAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131717083));
+        this.jdField_c_of_type_Int = 1;
+        return;
+      }
+      if (nxp.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Nww.f))
+      {
+        localAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131717076));
+        this.jdField_c_of_type_Int = 2;
+        return;
+      }
+    } while (this.jdField_c_of_type_Int == 3);
+    localAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131717070));
+    this.jdField_c_of_type_Int = 0;
+  }
+  
+  public void a(Context paramContext, View paramView)
+  {
+    Object localObject1 = LayoutInflater.from(paramContext).inflate(2131560212, null);
+    Object localObject2 = new RelativeLayout.LayoutParams(-1, -2);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(12, -1);
+    ((ViewGroup)paramView).addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+    if (((this.jdField_a_of_type_Nww == null) || (this.jdField_a_of_type_Nww.jdField_a_of_type_Int != 1)) && (!this.jdField_a_of_type_Boolean) && ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 2)))
+    {
+      paramView.findViewById(2131378739).setVisibility(0);
+      if (this.jdField_b_of_type_Int == 1) {
+        paramView.findViewById(2131378741).setVisibility(8);
+      }
+      localObject1 = paramView.findViewById(2131380357);
+      localObject2 = paramView.findViewById(2131380358);
+      ((View)localObject1).setAlpha(0.0F);
+      ((View)localObject1).setVisibility(0);
+      ((View)localObject2).setAlpha(0.0F);
+      ((View)localObject2).setVisibility(0);
+      localObject2 = ObjectAnimator.ofFloat(localObject2, "alpha", new float[] { 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F });
+      localObject1 = ObjectAnimator.ofFloat(localObject1, "alpha", new float[] { 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F });
+      ((ObjectAnimator)localObject2).setDuration(1800L);
+      ((ObjectAnimator)localObject2).setRepeatCount(-1);
+      ((ObjectAnimator)localObject2).setRepeatMode(1);
+      ((ObjectAnimator)localObject2).setStartDelay(100L);
+      ((ObjectAnimator)localObject1).setDuration(1800L);
+      ((ObjectAnimator)localObject1).setRepeatCount(-1);
+      ((ObjectAnimator)localObject1).setRepeatMode(1);
+      ((ObjectAnimator)localObject1).setStartDelay(240L);
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObject2, localObject1 });
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+    }
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Nww != null) && (this.jdField_a_of_type_Nww.jdField_a_of_type_Int == 2)) {
+      paramView.findViewById(2131365660).setVisibility(0);
+    }
     try
     {
-      if (this.jdField_a_of_type_Long > 0L) {
-        localJSONObject.put("medalid", this.jdField_a_of_type_Long);
+      localObject1 = new URL(this.jdField_a_of_type_Nww.jdField_a_of_type_JavaLangString);
+      ((ResizeURLImageView)paramView.findViewById(2131365672)).setImage((URL)localObject1);
+      ((TextView)paramView.findViewById(2131365669)).setText(this.jdField_a_of_type_Nww.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton = ((AdProgressButton)paramView.findViewById(2131372940));
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgressColor(paramContext.getResources().getColor(2131165368));
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setOnClickListener(new nxf(this));
+      int i = nxw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Nww);
+      if (i >= 0)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.jdField_a_of_type_AndroidContentContext.getText(2131717071));
+        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setTextColor(-16777216);
+        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130839317);
+        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgress(i);
+        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setClickable(false);
+        this.jdField_c_of_type_Int = 3;
+        bivr.a().a(this);
       }
-      if (this.jdField_a_of_type_Int > 0) {
-        localJSONObject.put("mMedalType", this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler == null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new nxg(this);
+        AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
       }
-      if (this.jdField_b_of_type_Int > 0) {
-        localJSONObject.put("mIsJump", this.jdField_b_of_type_Int);
-      }
-      if (this.jdField_c_of_type_Int > 0) {
-        localJSONObject.put("mPicWidth", this.jdField_c_of_type_Int);
-      }
-      if (this.jdField_d_of_type_Int > 0) {
-        localJSONObject.put("mPicHeight", this.jdField_d_of_type_Int);
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        localJSONObject.put("medal_name", this.jdField_a_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty("medal_url")) {
-        localJSONObject.put("medal_url", this.jdField_b_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty("mJumpUrl")) {
-        localJSONObject.put("mJumpUrl", this.jdField_c_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty("medal_scene")) {
-        localJSONObject.put("medal_scene", this.e);
-      }
-      if (!TextUtils.isEmpty("medal_pos")) {
-        localJSONObject.put("medal_pos", this.f);
-      }
-      if (!TextUtils.isEmpty("channelid")) {
-        localJSONObject.put("channelid", this.jdField_d_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty("feedsid")) {
-        localJSONObject.put("feedsid", this.g);
-      }
-      if (!TextUtils.isEmpty("medal_uin")) {
-        localJSONObject.put("medal_uin", this.h);
-      }
+      return;
     }
     catch (Exception localException)
     {
-      label254:
-      break label254;
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
-    return localJSONObject.toString();
   }
+  
+  public abstract void b();
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidViewView = null;
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
+    {
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
+    }
+    this.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_Boolean) {
+      bivr.a().b(this);
+    }
+  }
+  
+  public void installSucceed(String paramString1, String paramString2) {}
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    if (a(paramDownloadInfo)) {
+      ThreadManager.getUIHandler().post(new AdModuleBase.7(this));
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if (a(paramDownloadInfo)) {
+      ThreadManager.getUIHandler().post(new AdModuleBase.9(this));
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if (a(paramDownloadInfo))
+    {
+      ThreadManager.getUIHandler().post(new AdModuleBase.6(this));
+      nxw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, 3, 4, 0);
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+      if (a(localDownloadInfo)) {
+        ThreadManager.getUIHandler().post(new AdModuleBase.8(this, localDownloadInfo));
+      }
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nxe
  * JD-Core Version:    0.7.0.1
  */

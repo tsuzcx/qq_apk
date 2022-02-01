@@ -1,64 +1,37 @@
-import android.text.TextUtils;
+import com.tencent.biz.PoiMapActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.widget.AbsListView;
 
 public class nhp
+  implements bkhe
 {
-  public long a;
-  private ArrayList<nhq> a = new ArrayList();
-  public boolean a;
-  public long b;
-  private ArrayList<nhq> b = new ArrayList();
-  public long c;
+  public nhp(PoiMapActivity paramPoiMapActivity) {}
   
-  public ArrayList<nhq> a()
-  {
-    return this.a;
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(ArrayList<nhq> paramArrayList)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramArrayList != null) {
-      this.a.addAll(paramArrayList);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("addOldDynamicInfoItemList", 2, "mDynamicInfoList.size():" + this.a.size());
-    }
-  }
-  
-  public ArrayList<nhq> b()
-  {
-    return this.b;
-  }
-  
-  public void b(ArrayList<String> paramArrayList)
-  {
-    this.b.clear();
-    if (paramArrayList == null) {}
-    for (int i = 0;; i = paramArrayList.size())
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1))
     {
-      int j = 0;
-      while (j < i)
-      {
-        String str = (String)paramArrayList.get(j);
-        if (!TextUtils.isEmpty(str))
-        {
-          nhq localnhq = new nhq();
-          localnhq.a(str);
-          this.b.add(localnhq);
-        }
-        j += 1;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "onScrollStateChanged");
       }
-    }
-    this.a.addAll(this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("parceJson2DynamicInfoItemList", 2, "mDynamicInfoList.size():" + this.b.size());
+      if ((!this.a.f) && (this.a.d))
+      {
+        this.a.f = true;
+        paramAbsListView = this.a;
+        paramAbsListView.n += 1;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PoiMapActivity", 4, "onScrollStateChanged mSearchPage:" + this.a.n);
+        }
+        this.a.a(this.a.h, this.a.i, this.a.c, "", this.a.n, 20);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nhp
  * JD-Core Version:    0.7.0.1
  */

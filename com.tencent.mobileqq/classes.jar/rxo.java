@@ -1,23 +1,55 @@
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.widget.AbsListView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
 
 public class rxo
-  implements bhtv
+  extends RecyclerView.ViewHolder
 {
-  public rxo(SlideActiveAnimController paramSlideActiveAnimController) {}
+  public final int a;
+  public VideoFeedsAlphaMaskView a;
+  public int b;
+  public int c;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public rxo(View paramView, int paramInt)
   {
-    if (paramInt == 0) {
-      this.a.e = false;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramView.findViewById(2131364840));
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(rwy paramrwy, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean)
+  {
+    int i = 1;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.getVisibility() != 0)) {
+      return;
+    }
+    if (paramLinearLayoutManager.getOrientation() == 1)
+    {
+      if (i == 0) {
+        break label118;
+      }
+      i = paramLinearLayoutManager.getDecoratedMeasuredHeight(this.itemView);
+    }
+    for (float f1 = Math.abs(paramLinearLayoutManager.getDecoratedTop(this.itemView) - (paramLinearLayoutManager.getHeight() / 2 - i / 2)) / i;; f1 = Math.abs(paramLinearLayoutManager.getDecoratedLeft(this.itemView) - (paramLinearLayoutManager.getWidth() / 2 - i / 2)) / i)
+    {
+      float f2 = Math.round(f1 * 100.0F) / 100.0F;
+      f1 = f2;
+      if (f2 > 1.0F) {
+        f1 = 1.0F;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setAlpha(f1);
+      return;
+      i = 0;
+      break;
+      label118:
+      i = paramLinearLayoutManager.getDecoratedMeasuredWidth(this.itemView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rxo
  * JD-Core Version:    0.7.0.1
  */

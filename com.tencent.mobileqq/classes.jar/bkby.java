@@ -1,76 +1,44 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import cooperation.readinjoy.content.ReadInJoyDataProvider;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class bkby
-  extends SQLiteOpenHelper
+  extends Handler
 {
-  public String a;
-  
-  public bkby(ReadInJoyDataProvider paramReadInJoyDataProvider, Context paramContext, String paramString)
+  public bkby(QSecFramework paramQSecFramework, Looper paramLooper)
   {
-    super(paramContext, "readinjoy_main_" + paramString, null, 84);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramLooper);
   }
   
-  private void a(SQLiteDatabase paramSQLiteDatabase, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramString.equals("subscribe_msg_records")) || (paramString.equals("notify_msg_records"))) {
-      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "msgID" + " INTEGER UNIQUE NOT NULL, " + "subscribeID" + " TEXT NOT NULL, " + "msgURL" + " TEXT NOT NULL, " + "msgContent" + " TEXT NOT NULL, " + "msgTime" + " INTEGER NOT NULL, " + "bindUin" + " INTEGER NOT NULL);");
-    }
-    while (!paramString.equals("feeds_msg_records")) {
+    try
+    {
+      if ((paramMessage.what == 1) && (!TextUtils.isEmpty((CharSequence)paramMessage.obj)))
+      {
+        long l = Long.parseLong((String)paramMessage.obj);
+        if (l != 0L)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QSecFramework", 2, "handle native msg for cookie:" + l);
+          }
+          QSecFramework.a(6L, l, 0L, 0L, null, null, null, null);
+        }
+      }
       return;
     }
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "pushTime" + " INTEGER NOT NULL, " + "notifyType" + " INTEGER NOT NULL, " + "feedsOwner" + " INTEGER NOT NULL, " + "feedsID" + " INTEGER NOT NULL, " + "feedsSubject" + " TEXT DEFAULT '', " + "deleteUin" + " INTEGER NOT NULL, " + "publishFail" + " INTEGER NOT NULL, " + "likeUin" + " INTEGER NOT NULL, " + "commentUin" + " INTEGER NOT NULL, " + "commentID" + " VARCHAR(32) DEFAULT '', " + "replyUin" + " INTEGER NOT NULL, " + "replyID" + " VARCHAR(32) DEFAULT '', " + "commentInfo" + " TEXT DEFAULT '', " + "isDelete" + " INTEGER DEFAULT 0, " + "processSeq" + " INTEGER DEFAULT 0, " + "receiveTime" + " INTEGER NOT NULL);");
-  }
-  
-  private void b(SQLiteDatabase paramSQLiteDatabase, String paramString)
-  {
-    if ("common_records".equalsIgnoreCase(paramString)) {
-      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "common_version" + " INTEGER NOT NULL, " + "common_key" + " TEXT DEFAULT '', " + "common_content" + " TEXT DEFAULT '');");
-    }
-  }
-  
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
-  {
-    a(paramSQLiteDatabase, "subscribe_msg_records");
-    a(paramSQLiteDatabase, "notify_msg_records");
-    a(paramSQLiteDatabase, "feeds_msg_records");
-    b(paramSQLiteDatabase, "common_records");
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < 80)
+    catch (Exception paramMessage)
     {
-      paramSQLiteDatabase.execSQL(awhf.a("subscribe_msg_records"));
-      paramSQLiteDatabase.execSQL(awhf.a("notify_msg_records"));
-      a(paramSQLiteDatabase, "subscribe_msg_records");
-      a(paramSQLiteDatabase, "notify_msg_records");
-    }
-    if (paramInt1 < 81) {
-      a(paramSQLiteDatabase, "feeds_msg_records");
-    }
-    for (;;)
-    {
-      if (paramInt1 < 84) {
-        b(paramSQLiteDatabase, "common_records");
-      }
-      return;
-      if (paramInt1 < 82) {
-        paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s %s;", new Object[] { "feeds_msg_records", "isDelete", "INTEGER DEFAULT 0" }));
-      }
-      if (paramInt1 < 83) {
-        paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s %s;", new Object[] { "feeds_msg_records", "processSeq", "INTEGER DEFAULT 0" }));
-      }
+      paramMessage.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkby
  * JD-Core Version:    0.7.0.1
  */

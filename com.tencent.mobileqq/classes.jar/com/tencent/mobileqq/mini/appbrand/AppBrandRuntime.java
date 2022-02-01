@@ -42,14 +42,12 @@ import com.tencent.mobileqq.mini.monitor.service.TaskMonitorManager;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
 import com.tencent.mobileqq.mini.report.MiniAppStartState;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04363;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.sdk.MiniAppException;
 import com.tencent.mobileqq.mini.util.ApiUtil;
-import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.CoverMapView;
 import com.tencent.mobileqq.mini.widget.media.MiniAppVideoPlayer;
@@ -214,6 +212,13 @@ public final class AppBrandRuntime
     ThreadManager.excute(new AppBrandRuntime.5(this), 16, null, false);
   }
   
+  private void detectWhiteScreen()
+  {
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_enable_white_screen_check_after_domready", 1) > 0) {
+      ThreadManager.getSubThreadHandler().postDelayed(new AppBrandRuntime.10(this), 5000L);
+    }
+  }
+  
   private void getScreenshotFromView(BaseAppBrandRuntime.ShareScreenshotCallback paramShareScreenshotCallback, View paramView)
   {
     paramView = buildBitmapFromView(paramView);
@@ -226,7 +231,7 @@ public final class AppBrandRuntime
     {
       this.isGettingScreenShot = false;
       return;
-      ThreadManagerV2.executeOnFileThread(new AppBrandRuntime.19(this, paramShareScreenshotCallback, paramView));
+      ThreadManagerV2.executeOnFileThread(new AppBrandRuntime.20(this, paramShareScreenshotCallback, paramView));
     }
   }
   
@@ -329,21 +334,24 @@ public final class AppBrandRuntime
     }
     StringBuilder localStringBuilder;
     if (("custom_event_PAGE_EVENT".equals(paramString1)) && (paramString2 != null) && (paramString2.contains("__DOMReady"))) {
-      if ((!this.isFirstDomReady) && (this.pageContainer != null) && (this.pageContainer.getCurrentPage() != null))
-      {
-        MiniProgramLpReportDC04239.reportPageView(this.apkgInfo.appConfig, "0", this.pageContainer.getCurrentPage().getUrl(), "show", "first_frame");
-        MiniAppReportManager2.reportPageView("2launch", "first_frame", this.pageContainer.getCurrentPage().getUrl(), this.apkgInfo.appConfig);
-        localStringBuilder = new StringBuilder().append("--- report show firstframe appid:");
-        if ((this.apkgInfo.appConfig == null) || (this.apkgInfo.appConfig.config == null)) {
-          break label308;
+      if (!this.isFirstDomReady) {
+        if ((this.pageContainer != null) && (this.pageContainer.getCurrentPage() != null))
+        {
+          MiniProgramLpReportDC04239.reportPageView(this.apkgInfo.appConfig, "0", this.pageContainer.getCurrentPage().getUrl(), "show", "first_frame");
+          MiniAppReportManager2.reportPageView("2launch", "first_frame", this.pageContainer.getCurrentPage().getUrl(), this.apkgInfo.appConfig);
+          localStringBuilder = new StringBuilder().append("--- report show firstframe appid:");
+          if ((this.apkgInfo.appConfig == null) || (this.apkgInfo.appConfig.config == null)) {
+            break label312;
+          }
         }
       }
     }
-    label308:
+    label312:
     for (Object localObject = this.apkgInfo.appConfig.config.appId;; localObject = Integer.valueOf(0))
     {
       QLog.i("AppBrandRuntime", 1, localObject);
       setBootState(2);
+      detectWhiteScreen();
       this.isFirstDomReady = true;
       BrandPagePool.g().preloadBrandPage(this);
       if (this.reportLaunchEndTimeoutRunnable != null)
@@ -471,7 +479,7 @@ public final class AppBrandRuntime
       if ((localView1 instanceof MiniAppVideoPlayer))
       {
         QLog.d("AppBrandRuntime", 2, new Object[] { "getShareScreenshot", " has video player" });
-        ((MiniAppVideoPlayer)localView1).captureImage(new AppBrandRuntime.16(this, localFrameLayout, paramShareScreenshotCallback, localView1));
+        ((MiniAppVideoPlayer)localView1).captureImage(new AppBrandRuntime.17(this, localFrameLayout, paramShareScreenshotCallback, localView1));
       }
     }
     do
@@ -480,12 +488,12 @@ public final class AppBrandRuntime
       if ((localView2 instanceof CoverMapView))
       {
         QLog.d("AppBrandRuntime", 2, new Object[] { "yuki getShareScreenshot", " has CoverMapView" });
-        ((CoverMapView)localView2).captureImage(new AppBrandRuntime.17(this, localFrameLayout, paramShareScreenshotCallback, localView2));
+        ((CoverMapView)localView2).captureImage(new AppBrandRuntime.18(this, localFrameLayout, paramShareScreenshotCallback, localView2));
         return;
       }
-      if ((getCurPage() != null) && (getCurPage().getCurrentPageWebview() != null) && (getCurPage().getCurrentPageWebview().getEmbeddedWidgetClientFactory() != null) && (getCurPage().getCurrentPageWebview().getEmbeddedWidgetClientFactory().getVideoEmbeddedWidgetClientMap() != null) && (getCurPage().getCurrentPageWebview().getEmbeddedWidgetClientFactory().getVideoEmbeddedWidgetClientMap().size() > 0))
+      if ((getCurPage() != null) && (getCurPage().getCurrentPageWebview() != null) && (getCurPage().getCurrentPageWebview().getEmbeddedWidgetClientFactory() != null) && (getCurPage().getCurrentPageWebview().getEmbeddedWidgetClientFactory().getEmbeddedWidgetClientHolderMap() != null) && (getCurPage().getCurrentPageWebview().getEmbeddedWidgetClientFactory().getEmbeddedWidgetClientHolderMap().size() > 0))
       {
-        getCurPage().getCurrentPageWebview().shotWebview(new AppBrandRuntime.18(this, paramShareScreenshotCallback, localFrameLayout));
+        getCurPage().getCurrentPageWebview().shotWebview(new AppBrandRuntime.19(this, paramShareScreenshotCallback, localFrameLayout));
         return;
       }
       QLog.d("AppBrandRuntime", 2, new Object[] { "getShareScreenshot", " no video player and mapview" });
@@ -852,62 +860,7 @@ public final class AppBrandRuntime
   
   public String onServiceNativeRequest(String paramString1, String paramString2, int paramInt)
   {
-    JSONObject localJSONObject = null;
-    String str = null;
-    Object localObject = null;
-    if (("reportIDKey".equals(paramString1)) || ("reportRealtimeAction".equals(paramString1))) {
-      if ("reportRealtimeAction".equals(paramString1)) {
-        try
-        {
-          paramString1 = new JSONObject(new JSONObject(paramString2).optString("actionData", ""));
-          if (paramString1 != null)
-          {
-            paramString1 = paramString1.optString("eventID", "");
-            if (JSONUtil.isJson(paramString1))
-            {
-              localJSONObject = new JSONObject(paramString1);
-              if ((localJSONObject != null) && (localJSONObject.has("finishShow")))
-              {
-                if (this.apkgInfo == null) {
-                  break label906;
-                }
-                paramString1 = this.apkgInfo.appConfig;
-                str = MiniProgramLpReportDC04239.getAppType(this.apkgInfo.appConfig);
-                if (this.pageContainer != null) {
-                  localObject = MiniProgramReportHelper.currentUrlFromAppBrandRuntime(this.pageContainer.appBrandRuntime);
-                }
-                MiniProgramLpReportDC04239.reportPageView(paramString1, str, (String)localObject, "finishshow", null);
-                if (localJSONObject.length() == 1) {
-                  return "";
-                }
-              }
-            }
-            else if (paramString1.equals("finishShow"))
-            {
-              if (this.apkgInfo != null) {}
-              for (paramString1 = this.apkgInfo.appConfig;; paramString1 = null)
-              {
-                str = MiniProgramLpReportDC04239.getAppType(this.apkgInfo.appConfig);
-                localObject = localJSONObject;
-                if (this.pageContainer != null) {
-                  localObject = MiniProgramReportHelper.currentUrlFromAppBrandRuntime(this.pageContainer.appBrandRuntime);
-                }
-                MiniProgramLpReportDC04239.reportPageView(paramString1, str, (String)localObject, "finishshow", null);
-                return "";
-              }
-            }
-          }
-          return "";
-        }
-        catch (Throwable paramString1)
-        {
-          QLog.e("AppBrandRuntime", 1, "reportRealtimeAction error", paramString1);
-          if (this.apkgInfo != null) {
-            MiniProgramLpReportDC04363.handleReportRealTimeAction(this.apkgInfo.appId, paramString2);
-          }
-        }
-      }
-    }
+    localObject = null;
     if (this.mFinished) {
       return "";
     }
@@ -917,109 +870,104 @@ public final class AppBrandRuntime
       QLog.i("AppBrandRuntime", 1, "WeixinJSBridge finished.");
       return "";
     }
-    for (;;)
+    try
     {
-      try
+      if (("redirectTo".equals(paramString1)) || ("navigateTo".equals(paramString1)) || ("navigateBack".equals(paramString1)) || ("switchTab".equals(paramString1)) || ("reLaunch".equals(paramString1)) || ("exitMiniProgram".equals(paramString1)))
       {
-        if (("redirectTo".equals(paramString1)) || ("navigateTo".equals(paramString1)) || ("navigateBack".equals(paramString1)) || ("switchTab".equals(paramString1)) || ("reLaunch".equals(paramString1)) || ("exitMiniProgram".equals(paramString1)))
-        {
-          localObject = str;
-          if (this.apkgInfo != null) {
-            localObject = this.apkgInfo.appConfig;
-          }
-          MiniReportManager.reportEventType((MiniAppConfig)localObject, 612, MiniProgramReportHelper.currentUrlFromAppBrandRuntime(this), null, null, 0);
+        if (this.apkgInfo != null) {
+          localObject = this.apkgInfo.appConfig;
         }
-        if ("redirectTo".equals(paramString1))
-        {
-          localObject = new JSONObject(paramString2).optString("url", "");
-          this.curLaunchPath = ((String)localObject);
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            AppBrandTask.runTaskOnUiThread(new AppBrandRuntime.10(this, (String)localObject, paramString1, paramInt));
-          }
-          return ApiUtil.wrapCallbackOk(paramString1, null).toString();
-        }
-        if ("navigateTo".equals(paramString1))
-        {
-          localObject = new JSONObject(paramString2).optString("url", "");
-          this.curLaunchPath = ((String)localObject);
-          if (!TextUtils.isEmpty((CharSequence)localObject))
-          {
-            if (this.apkgInfo == null) {
-              break label911;
-            }
-            bool = this.apkgInfo.isTabBarPage((String)localObject);
-            if (bool) {
-              return ApiUtil.wrapCallbackFail(paramString1, null).toString();
-            }
-            if (this.isResume)
-            {
-              this.isNavigateBeforeResume = false;
-              AppBrandTask.runTaskOnUiThread(new AppBrandRuntime.11(this, (String)localObject, paramString1, paramInt));
-            }
-          }
-          else
-          {
-            return ApiUtil.wrapCallbackOk(paramString1, null).toString();
-          }
-          this.isNavigateBeforeResume = true;
-          continue;
-        }
-        int i;
-        paramString1 = null;
+        MiniReportManager.reportEventType((MiniAppConfig)localObject, 612, MiniProgramReportHelper.currentUrlFromAppBrandRuntime(this), null, null, 0);
       }
-      catch (JSONException paramString1)
+      if ("redirectTo".equals(paramString1))
       {
-        paramString1.printStackTrace();
-        return "";
-        if ("navigateBack".equals(paramString1))
-        {
-          i = new JSONObject(paramString2).optInt("delta", 0);
-          if (i > 0) {
-            AppBrandTask.runTaskOnUiThread(new AppBrandRuntime.12(this, i, paramString1, paramInt));
-          }
-          return ApiUtil.wrapCallbackOk(paramString1, null).toString();
+        localObject = new JSONObject(paramString2).optString("url", "");
+        this.curLaunchPath = ((String)localObject);
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          AppBrandTask.runTaskOnUiThread(new AppBrandRuntime.11(this, (String)localObject, paramString1, paramInt));
         }
-        if ("switchTab".equals(paramString1))
-        {
-          localObject = new JSONObject(paramString2).optString("url", "");
-          this.curLaunchPath = ((String)localObject);
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            AppBrandTask.runTaskOnUiThread(new AppBrandRuntime.13(this, (String)localObject, paramString1, paramInt));
-          }
-          return ApiUtil.wrapCallbackOk(paramString1, null).toString();
-        }
-        if ("reLaunch".equals(paramString1))
-        {
-          localObject = new JSONObject(paramString2).optString("url", "");
-          this.curLaunchPath = ((String)localObject);
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            AppBrandTask.runTaskOnUiThread(new AppBrandRuntime.14(this, (String)localObject, paramString1, paramInt));
-          }
-          return ApiUtil.wrapCallbackOk(paramString1, null).toString();
-        }
-        if ("exitMiniProgram".equals(paramString1))
-        {
-          AppBrandTask.runTaskOnUiThread(new AppBrandRuntime.15(this));
-          return handleNativeRequest(paramString1, paramString2, this.serviceRuntime, paramInt);
-        }
-        if ((!"updateApp".equals(paramString1)) || (this.newAppConfig == null)) {
-          continue;
-        }
-        this.needReboot = true;
-        this.newAppConfig.forceReroad = 1;
-        this.newAppConfig.launchParam.scene = this.apkgInfo.appConfig.launchParam.scene;
-        MiniAppController.startApp(null, this.newAppConfig, null);
-        continue;
+        return ApiUtil.wrapCallbackOk(paramString1, null).toString();
       }
-      catch (Throwable localThrowable)
+      if (!"navigateTo".equals(paramString1)) {
+        break label318;
+      }
+      localObject = new JSONObject(paramString2).optString("url", "");
+      this.curLaunchPath = ((String)localObject);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label292;
+      }
+      if (this.apkgInfo == null) {
+        break label608;
+      }
+      bool = this.apkgInfo.isTabBarPage((String)localObject);
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+      return "";
+      if (!"navigateBack".equals(paramString1)) {
+        break label372;
+      }
+      int i = new JSONObject(paramString2).optInt("delta", 0);
+      if (i <= 0) {
+        break label363;
+      }
+      AppBrandTask.runTaskOnUiThread(new AppBrandRuntime.13(this, i, paramString1, paramInt));
+      return ApiUtil.wrapCallbackOk(paramString1, null).toString();
+      if (!"switchTab".equals(paramString1)) {
+        break label437;
+      }
+      localObject = new JSONObject(paramString2).optString("url", "");
+      this.curLaunchPath = ((String)localObject);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label428;
+      }
+      AppBrandTask.runTaskOnUiThread(new AppBrandRuntime.14(this, (String)localObject, paramString1, paramInt));
+      return ApiUtil.wrapCallbackOk(paramString1, null).toString();
+      if (!"reLaunch".equals(paramString1)) {
+        break label502;
+      }
+      localObject = new JSONObject(paramString2).optString("url", "");
+      this.curLaunchPath = ((String)localObject);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label493;
+      }
+      AppBrandTask.runTaskOnUiThread(new AppBrandRuntime.15(this, (String)localObject, paramString1, paramInt));
+      return ApiUtil.wrapCallbackOk(paramString1, null).toString();
+      if (!"exitMiniProgram".equals(paramString1)) {
+        break label534;
+      }
+      AppBrandTask.runTaskOnUiThread(new AppBrandRuntime.16(this));
+      for (;;)
       {
+        return handleNativeRequest(paramString1, paramString2, this.serviceRuntime, paramInt);
+        if (("updateApp".equals(paramString1)) && (this.newAppConfig != null))
+        {
+          this.needReboot = true;
+          this.newAppConfig.forceReroad = 1;
+          this.newAppConfig.launchParam.scene = this.apkgInfo.appConfig.launchParam.scene;
+          MiniAppController.startApp(null, this.newAppConfig, null);
+        }
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        label292:
         localThrowable.printStackTrace();
         continue;
+        boolean bool = false;
       }
-      label906:
-      break;
-      label911:
-      boolean bool = false;
+    }
+    if (bool) {
+      return ApiUtil.wrapCallbackFail(paramString1, null).toString();
+    }
+    if (this.isResume) {}
+    for (this.isNavigateBeforeResume = false;; this.isNavigateBeforeResume = true)
+    {
+      AppBrandTask.runTaskOnUiThread(new AppBrandRuntime.12(this, (String)localObject, paramString1, paramInt));
+      return ApiUtil.wrapCallbackOk(paramString1, null).toString();
     }
   }
   
@@ -1078,7 +1026,7 @@ public final class AppBrandRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.AppBrandRuntime
  * JD-Core Version:    0.7.0.1
  */

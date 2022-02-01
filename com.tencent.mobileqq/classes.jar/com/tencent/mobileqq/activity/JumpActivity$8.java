@@ -7,7 +7,7 @@ class JumpActivity$8
   
   public void run()
   {
-    JumpActivity.a(this.this$0);
+    JumpActivity.b(this.this$0);
   }
 }
 

@@ -1,164 +1,136 @@
-import android.os.Handler;
-import android.text.SpannableString;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ExecutorService;
-import tencent.im.oidb.oidb_0xbfe.RspBody;
+import android.app.Activity;
+import android.text.TextPaint;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoInfoViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.VideoViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
 
 public class pga
-  extends pgp
 {
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private pgc jdField_a_of_type_Pgc;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
-  
-  public pga(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public static sey a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
-  }
-  
-  public static void a(String paramString)
-  {
-    int i;
-    switch (bdin.a(BaseApplicationImpl.getApplication().getApplicationContext()))
+    sey localsey = new sey();
+    localsey.jdField_c_of_type_JavaLangString = paramBaseArticleInfo.mVideoVid;
+    localsey.jdField_c_of_type_Long = paramBaseArticleInfo.mArticleID;
+    localsey.jdField_b_of_type_Int = paramBaseArticleInfo.mVideoDuration;
+    localsey.jdField_c_of_type_Int = paramBaseArticleInfo.mVideoJsonWidth;
+    localsey.jdField_d_of_type_Int = paramBaseArticleInfo.mVideoJsonHeight;
+    if (paramBaseArticleInfo.mVideoCoverUrl == null) {}
+    for (Object localObject = null;; localObject = paramBaseArticleInfo.mVideoCoverUrl.getFile())
     {
-    default: 
-      i = 2;
-    }
-    for (;;)
-    {
-      nrt.a(null, "", paramString, paramString, 0, 0, "" + i, ors.a(), "0", null, false);
-      return;
-      i = 1;
-      continue;
-      i = 0;
-    }
-  }
-  
-  public static CharSequence b()
-  {
-    Object localObject = alud.a(2131705255);
-    int i = ((String)localObject).indexOf("领取1G流量");
-    localObject = new SpannableString((CharSequence)localObject);
-    ((SpannableString)localObject).setSpan(new pgb(), i, i + 6, 33);
-    return localObject;
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool = true;
-    paramToServiceMsg = new oidb_0xbfe.RspBody();
-    int i = pvb.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    QLog.d("FreeNetFlowInfoModule", 2, new Object[] { "handle0xBe6FreeNetFlowInfo result = ", Integer.valueOf(i) });
-    if (i == 0) {
-      if (paramToServiceMsg.has())
-      {
-        if (this.jdField_a_of_type_Pgc == null) {
-          this.jdField_a_of_type_Pgc = new pgc();
-        }
-        if (paramToServiceMsg.uint32_receive_status.has()) {
-          this.jdField_a_of_type_Pgc.jdField_a_of_type_Int = paramToServiceMsg.uint32_receive_status.get();
-        }
-        if (paramToServiceMsg.bytes_jump_url.has()) {
-          this.jdField_a_of_type_Pgc.jdField_a_of_type_JavaLangString = paramToServiceMsg.bytes_jump_url.get().toStringUtf8();
-        }
-        if (paramToServiceMsg.uint32_flag.has())
-        {
-          paramFromServiceMsg = this.jdField_a_of_type_Pgc;
-          if (paramToServiceMsg.uint32_flag.get() != 1) {
-            break label223;
-          }
-          paramFromServiceMsg.jdField_a_of_type_Boolean = bool;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("FreeNetFlowInfoModule", 2, "free netflow, status: " + this.jdField_a_of_type_Pgc.jdField_a_of_type_Int + ", jumpUrl: " + this.jdField_a_of_type_Pgc.jdField_a_of_type_JavaLangString + ", isActive: " + this.jdField_a_of_type_Pgc.jdField_a_of_type_Boolean);
-        }
-      }
-    }
-    label223:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      this.jdField_a_of_type_Boolean = true;
-    } while (!QLog.isColorLevel());
-    QLog.d("FreeNetFlowInfoModule", 2, "get free netflow error, result code: " + paramFromServiceMsg.getResultCode());
-  }
-  
-  public CharSequence a()
-  {
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
-      this.jdField_a_of_type_JavaLangCharSequence = b();
-    }
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String a()
-  {
-    Object localObject = null;
-    if (this.jdField_a_of_type_Pgc != null)
-    {
-      String str = this.jdField_a_of_type_Pgc.jdField_a_of_type_JavaLangString;
-      localObject = str;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("FreeNetFlowInfoModule", 2, "get url from freeNetFlow: " + str);
-        localObject = str;
-      }
-    }
-    return localObject;
-  }
-  
-  public void a()
-  {
-    a(false);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xbfe")) {
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      localsey.jdField_b_of_type_JavaLangString = ((String)localObject);
+      localsey.k = paramBaseArticleInfo.mSubscribeID;
+      localsey.jdField_g_of_type_Int = paramBaseArticleInfo.mStrategyId;
+      localsey.jdField_g_of_type_Long = paramBaseArticleInfo.mAlgorithmID;
+      localObject = new rgc();
+      ((rgc)localObject).jdField_a_of_type_JavaLangLong = Long.valueOf(paramBaseArticleInfo.mArticleID);
+      ((rgc)localObject).jdField_a_of_type_JavaLangString = paramBaseArticleInfo.innerUniqueID;
+      ((rgc)localObject).jdField_b_of_type_JavaLangString = paramBaseArticleInfo.mVideoVid;
+      ((rgc)localObject).jdField_a_of_type_Int = paramBaseArticleInfo.busiType;
+      localsey.jdField_a_of_type_Rgc = ((rgc)localObject);
+      localsey.jdField_d_of_type_JavaLangString = paramBaseArticleInfo.thirdIcon;
+      localsey.e = paramBaseArticleInfo.thirdName;
+      localsey.jdField_f_of_type_JavaLangString = paramBaseArticleInfo.thirdAction;
+      localsey.jdField_f_of_type_Int = paramBaseArticleInfo.busiType;
+      localsey.j = paramBaseArticleInfo.innerUniqueID;
+      localsey.jdField_b_of_type_Long = paramBaseArticleInfo.mChannelID;
+      return localsey;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public static void a(LinearLayout paramLinearLayout, int paramInt1, int paramInt2, Activity paramActivity, int paramInt3, int paramInt4)
   {
-    this.b = paramBoolean;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      if (QLog.isColorLevel()) {
-        QLog.d("FreeNetFlowInfoModule", 2, "setShowingFreeNetFlow: " + paramBoolean);
-      }
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Pgc != null)) {
-        this.jdField_a_of_type_Pgc.a();
-      }
+    paramLinearLayout.setVisibility(0);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)paramLinearLayout.getLayoutParams();
+    localLayoutParams.leftMargin = paramInt3;
+    localLayoutParams.topMargin = paramInt4;
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = (afur.a(42.0F, paramActivity.getResources()) + paramInt2);
+    paramLinearLayout.setLayoutParams(localLayoutParams);
+  }
+  
+  public static void a(LinearLayout paramLinearLayout, ArticleInfo paramArticleInfo, Activity paramActivity, sng paramsng, int paramInt1, int paramInt2, int paramInt3)
+  {
+    pum localpum = new pum(paramActivity);
+    localpum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetRoundAngleFrameLayout = ((RoundAngleFrameLayout)paramLinearLayout.findViewById(2131380771));
+    localpum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramLinearLayout.findViewById(2131368246));
+    localpum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramLinearLayout.findViewById(2131368138));
+    localpum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramLinearLayout.findViewById(2131376014));
+    localpum.b = ((TextView)paramLinearLayout.findViewById(2131365742));
+    localpum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup = ((VideoViewGroup)paramLinearLayout.findViewById(2131380694));
+    localpum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoInfoViewGroup = ((ReadInJoyVideoInfoViewGroup)paramLinearLayout.findViewById(2131369518));
+    a(localpum, paramArticleInfo, paramLinearLayout, paramActivity, paramsng, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public static void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, boolean paramBoolean, Activity paramActivity, ArticleInfo paramArticleInfo)
+  {
+    qyo.a(paramActivity, paramKandianUrlImageView);
+    if (snh.c(paramArticleInfo) == 71) {
+      paramURL = paramArticleInfo.getVideoCoverUrlWithSmartCut(false);
+    }
+    pgk.a(paramKandianUrlImageView, paramURL, paramActivity, paramBoolean);
+  }
+  
+  public static void a(ReadInJoyHeadImageView paramReadInJoyHeadImageView)
+  {
+    paramReadInJoyHeadImageView.setImageDrawable(bgmo.b());
+  }
+  
+  public static void a(pum parampum, ArticleInfo paramArticleInfo, LinearLayout paramLinearLayout, Activity paramActivity, sng paramsng, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramArticleInfo == null) {
       return;
     }
+    a(parampum, paramArticleInfo);
+    sey localsey = parampum.jdField_a_of_type_Sey;
+    parampum.b.setText(pgk.a(localsey.jdField_b_of_type_Int));
+    a(parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView);
+    parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setTag(paramArticleInfo);
+    parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setContentDescription(paramArticleInfo.mSubscribeName);
+    Object localObject = paramArticleInfo.mSubscribeName;
+    if (paramArticleInfo.mSubscribeName.length() > 18) {
+      localObject = paramArticleInfo.mSubscribeName.substring(0, 17) + "…";
+    }
+    parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setVisibility(0);
+    parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText((CharSequence)localObject);
+    parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setContentDescription(paramArticleInfo.mSubscribeName);
+    parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.getPaint().setFakeBoldText(true);
+    localObject = new HashSet();
+    parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoInfoViewGroup.setArticleInfo(paramArticleInfo, paramsng, paramInt1, (Set)localObject);
+    a(parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramArticleInfo.getVideoCoverUrlWithSmartCut(false), false, paramActivity, paramArticleInfo);
+    parampum.b.setVisibility(0);
+    parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.setCustomSize(1.0F, pgk.a(localsey.jdField_c_of_type_Int, localsey.jdField_d_of_type_Int));
+    float f1 = bgln.b(paramActivity);
+    float f2 = f1 * pgk.a(localsey.jdField_c_of_type_Int, localsey.jdField_d_of_type_Int);
+    paramArticleInfo = parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetRoundAngleFrameLayout.getLayoutParams();
+    paramArticleInfo.width = ((int)f1);
+    paramArticleInfo.height = ((int)f2);
+    parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetRoundAngleFrameLayout.setLayoutParams(paramArticleInfo);
+    a(paramLinearLayout, (int)f1, (int)f2, paramActivity, paramInt2, paramInt3);
   }
   
-  public boolean a()
+  public static void a(pum parampum, BaseArticleInfo paramBaseArticleInfo)
   {
-    return (!this.b) && (this.jdField_a_of_type_Pgc != null) && (this.jdField_a_of_type_Pgc.a());
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
+    sey localsey = a(paramBaseArticleInfo);
+    localsey.jdField_a_of_type_AndroidViewView = parampum.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
+    localsey.jdField_a_of_type_Int = parampum.jdField_a_of_type_Int;
+    localsey.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+    parampum.jdField_a_of_type_Sey = localsey;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pga
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,18 @@
-import java.util.List;
-
-public class aylv
+public abstract interface aylv
 {
-  public int a;
-  public String a;
-  public List<aynw> a;
-  public String b;
-  public String c;
-  public String d;
+  public abstract void a(aosj paramaosj);
   
-  public aylv() {}
+  public abstract void a(aosj paramaosj, boolean paramBoolean);
   
-  public aylv(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, List<aynw> paramList)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

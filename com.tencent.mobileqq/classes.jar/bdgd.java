@@ -1,13 +1,6 @@
-public class bdgd
+public abstract interface bdgd
 {
-  public String a;
-  public boolean a;
-  
-  bdgd(String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void a();
 }
 
 

@@ -1,8 +1,8 @@
 package cooperation.comic.ui;
 
-import binm;
-import biof;
-import bioj;
+import blbb;
+import blbu;
+import blby;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -16,12 +16,12 @@ class QQComicTabBarView$5
   public void run()
   {
     this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
-    this.this$0.jdField_a_of_type_Bioj = ((bioj)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(213));
-    if (this.this$0.jdField_a_of_type_Bioj != null) {
-      this.this$0.jdField_a_of_type_Bioj.addObserver(this.this$0.jdField_a_of_type_Biol);
+    this.this$0.jdField_a_of_type_Blby = ((blby)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(213));
+    if (this.this$0.jdField_a_of_type_Blby != null) {
+      this.this$0.jdField_a_of_type_Blby.addObserver(this.this$0.jdField_a_of_type_Blca);
     }
-    if (biof.a != null) {
-      biof.a.a(this.this$0.jdField_a_of_type_Binl);
+    if (blbu.a != null) {
+      blbu.a.a(this.this$0.jdField_a_of_type_Blba);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebViewTabBarView", 2, "register observers");
@@ -30,7 +30,7 @@ class QQComicTabBarView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.comic.ui.QQComicTabBarView.5
  * JD-Core Version:    0.7.0.1
  */

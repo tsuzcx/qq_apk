@@ -1,19 +1,22 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class aemk
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnFocusChangeListener
 {
-  public aemk(VisitorsActivity paramVisitorsActivity) {}
+  public aemk(Leba paramLeba) {}
   
-  public void onGlobalLayout()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int[] arrayOfInt = new int[2];
-    this.a.b.getLocationInWindow(arrayOfInt);
-    this.a.i = arrayOfInt[1];
+    if (paramBoolean)
+    {
+      paramView.clearFocus();
+      bbrf.a(null, 0, 21, "0X8009D15", 0, 0, null, null);
+      UniteSearchActivity.a(this.a.a(), null, 21, 0L, null, 3);
+      bcst.b(this.a.a, "CliOper", "", "", "0x8004B21", "0x8004B21", 0, 0, "", "", "", "");
+    }
   }
 }
 

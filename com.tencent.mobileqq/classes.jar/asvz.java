@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.10;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asvz
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public asvz(PresenceInterfaceImpl.10 param10) {}
+  public asvz(QfileFavPicFileTabView paramQfileFavPicFileTabView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("PresenceInterfaceImpl", 2, "user click button");
+    QfileFavPicFileTabView.a(this.a, paramView, true);
+    paramView.sendAccessibilityEvent(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

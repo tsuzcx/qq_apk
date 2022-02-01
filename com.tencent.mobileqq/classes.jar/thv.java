@@ -1,33 +1,25 @@
-import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
-import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
 public class thv
-  implements TVK_ICacheMgr.IPreloadCallback
+  implements TypeEvaluator<Rect>
 {
-  public thv(WSVideoPreDownloadManager paramWSVideoPreDownloadManager) {}
+  public thv(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "预下载回调 videoUrl:" + WSVideoPreDownloadManager.a(this.a) + " ERROR code: " + paramInt);
-    }
-    ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
   }
   
-  public void onPreLoadSucess(String paramString1, String paramString2)
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
   {
-    if (QLog.isColorLevel()) {
-      tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "预下载回调 videoUrl:" + WSVideoPreDownloadManager.a(this.a) + " SUCCESS");
-    }
-    ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     thv
  * JD-Core Version:    0.7.0.1
  */

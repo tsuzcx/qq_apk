@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.apkg;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bjdm;
+import blru;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.minigame.utils.GameLog;
@@ -20,13 +20,14 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class ApkgBaseInfo
 {
   private static final String CONFIG_SPLIT = ";";
-  private static final String[] DOMAIN_NAME_LIST = { "Request", "Websocket", "Download", "Upload", "Webview" };
+  private static final String[] DOMAIN_NAME_LIST = { "Request", "Websocket", "Download", "Upload", "Webview", "UDP" };
   public static final int DOMIAN_TYPE_DOWNLOAD = 2;
   public static final int DOMIAN_TYPE_REQUEST = 0;
+  public static final int DOMIAN_TYPE_UDP = 5;
   public static final int DOMIAN_TYPE_UPLOAD = 3;
   public static final int DOMIAN_TYPE_WEBSOCKET = 1;
   public static final int DOMIAN_TYPE_WEBVIEW = 4;
-  public static boolean isRdmBuild = bjdm.a().toLowerCase().contains("rdm");
+  public static boolean isRdmBuild = blru.a().toLowerCase().contains("rdm");
   private static String mCurWhiteListConfig;
   private static ArrayList<String> sDominWhiteList;
   public String apkgFolderPath;
@@ -53,7 +54,7 @@ public abstract class ApkgBaseInfo
     {
       if (sDominWhiteList == null)
       {
-        String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "defaultAllowedHostList", ".qlogo.cn;.tcb.qcloud.la;open.mp.qq.com");
+        String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "defaultAllowedHostList", ".qlogo.cn;.tcb.qcloud.la;open.mp.qq.com;api-report.q.qq.com;rpt.gdt.qq.com;.gtimg.cn");
         if ((str1 != null) && (!str1.equals(mCurWhiteListConfig)))
         {
           QLog.i("[mini] http.", 1, "Default white domain:" + str1);
@@ -172,114 +173,128 @@ public abstract class ApkgBaseInfo
   
   public boolean isDomainValid(boolean paramBoolean, String paramString, int paramInt)
   {
+    boolean bool = true;
     if (TextUtils.isEmpty(paramString)) {
-      return false;
+      paramBoolean = false;
     }
-    if (paramBoolean)
+    Object localObject1;
+    label379:
+    DomainConfig localDomainConfig;
+    do
     {
-      QLog.d("[mini] http.domainValid", 1, DOMAIN_NAME_LIST[paramInt] + ":域名检查 skipDomainCheckFromJs:" + paramString);
-      return true;
-    }
-    if (this.appConfig.config.skipDomainCheck == 1) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      QLog.d("[mini] http.domainValid", 1, DOMAIN_NAME_LIST[paramInt] + ":域名检查 skip:" + paramString);
-      return true;
-    }
-    Object localObject1 = paramString.toLowerCase();
-    if ((!isOnlineVersion()) && (getEnableDebug()))
-    {
-      if (!isValidPrefix((String)localObject1, true))
+      return paramBoolean;
+      if (paramBoolean)
       {
-        QLog.d("[mini] http.domainValid", 1, DOMAIN_NAME_LIST[paramInt] + "域名不合法，需使用https或wss协议:" + paramString);
-        return false;
+        QLog.d("[mini] http.domainValid", 1, DOMAIN_NAME_LIST[paramInt] + ":域名检查 skipDomainCheckFromJs:" + paramString);
+        return true;
       }
-      QLog.d("[mini] http.domainValid", 1, "debug opened and not online version, skip:" + paramString);
-      return true;
-    }
-    if (!isRdmBuild) {}
-    while (!isValidPrefix((String)localObject1, false))
-    {
-      QLog.e("[mini] http.domainValid", 1, DOMAIN_NAME_LIST[paramInt] + ":请求域名不合法，请使用https或wss协议,reqeustUrl:" + paramString);
-      if (!isOnlineVersion())
+      if (this.appConfig.config.skipDomainCheck == 1) {}
+      for (int i = 1; i != 0; i = 0)
       {
-        GameLog.vconsoleLog(DOMAIN_NAME_LIST[paramInt] + "域名不合法，需使用https或wss协议:" + (String)localObject1);
-        AppBrandTask.runTaskOnUiThread(new ApkgBaseInfo.1(this, paramInt, (String)localObject1));
-        return false;
-        if (paramString.startsWith(QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppRMDDomainWhiteList", "https://www.urlshare.cn/")))
+        QLog.d("[mini] http.domainValid", 1, DOMAIN_NAME_LIST[paramInt] + ":域名检查 skip:" + paramString);
+        return true;
+      }
+      localObject1 = paramString.toLowerCase();
+      if ((!isOnlineVersion()) && (getEnableDebug()))
+      {
+        if (!isValidPrefix((String)localObject1, true))
         {
-          QLog.d("[mini] http.domainValid", 1, "rdm mode, https://www.urlshare.cn/ is valid, current Url is: " + paramString);
-          return true;
+          QLog.d("[mini] http.domainValid", 1, DOMAIN_NAME_LIST[paramInt] + "域名不合法，需使用https或wss协议:" + paramString);
+          return false;
+        }
+        QLog.d("[mini] http.domainValid", 1, "debug opened and not online version, skip:" + paramString);
+        return true;
+      }
+      if (!isRdmBuild)
+      {
+        if (paramInt != 4) {
+          break label379;
+        }
+        paramBoolean = true;
+      }
+      for (;;)
+      {
+        if (!isValidPrefix((String)localObject1, paramBoolean))
+        {
+          QLog.e("[mini] http.domainValid", 1, DOMAIN_NAME_LIST[paramInt] + ":请求域名不合法，请使用https或wss协议,reqeustUrl:" + paramString);
+          if (!isOnlineVersion())
+          {
+            GameLog.vconsoleLog(DOMAIN_NAME_LIST[paramInt] + "域名不合法，需使用https或wss协议:" + (String)localObject1);
+            AppBrandTask.runTaskOnUiThread(new ApkgBaseInfo.1(this, paramInt, (String)localObject1));
+            return false;
+            if (!paramString.startsWith(QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppRMDDomainWhiteList", "https://www.urlshare.cn/"))) {
+              break;
+            }
+            QLog.d("[mini] http.domainValid", 1, "rdm mode, https://www.urlshare.cn/ is valid, current Url is: " + paramString);
+            return true;
+            paramBoolean = false;
+            continue;
+          }
+          return false;
         }
       }
-      else
-      {
-        return false;
-      }
-    }
-    DomainConfig localDomainConfig = DomainConfig.getDomainConfig((String)localObject1);
-    if (isDomainConfigCached(localDomainConfig, paramInt)) {
-      return true;
-    }
-    if ((localDomainConfig != null) && (!TextUtils.isEmpty(localDomainConfig.host)) && (this.appConfig != null) && (this.appConfig.config != null))
+      localDomainConfig = DomainConfig.getDomainConfig((String)localObject1);
+      paramBoolean = bool;
+    } while (isDomainConfigCached(localDomainConfig, paramInt));
+    if ((localDomainConfig != null) && (!TextUtils.isEmpty(localDomainConfig.host)))
     {
-      localObject1 = this.appConfig.config.requestDomainList;
-      switch (paramInt)
+      if ((this.appConfig != null) && (this.appConfig.config != null))
       {
-      default: 
-        if (localObject1 != null) {
-          localObject1 = ((List)localObject1).iterator();
-        }
-        break;
-      case 1: 
-      case 2: 
-      case 3: 
-      case 4: 
-        for (;;)
+        localObject1 = this.appConfig.config.requestDomainList;
+        switch (paramInt)
         {
+        default: 
+          if (localObject1 != null) {
+            localObject1 = ((List)localObject1).iterator();
+          }
+          break;
+        case 1: 
+        case 2: 
+        case 3: 
+        case 4: 
           for (;;)
           {
             if (!((Iterator)localObject1).hasNext()) {
-              break label673;
+              break label694;
             }
             Object localObject2 = (String)((Iterator)localObject1).next();
             try
             {
-              if (!TextUtils.isEmpty((CharSequence)localObject2))
-              {
-                localObject2 = DomainConfig.getDomainConfig(((String)localObject2).toLowerCase());
-                if (DomainConfig.isDomainConfigMatch((DomainConfig)localObject2, localDomainConfig))
-                {
-                  putDomainConfigToCache(localDomainConfig, paramInt);
-                  return true;
-                  localObject1 = this.appConfig.config.socketDomainList;
-                  break;
-                  localObject1 = this.appConfig.config.downloadFileDomainList;
-                  break;
-                  localObject1 = this.appConfig.config.uploadFileDomainList;
-                  break;
-                  localObject1 = this.appConfig.config.businessDomainList;
-                  break;
-                }
-                QLog.i("[mini] http.domainValid", 1, "request:" + localDomainConfig + ",allow:" + localObject2);
+              if (TextUtils.isEmpty((CharSequence)localObject2)) {
+                continue;
               }
+              localObject2 = DomainConfig.getDomainConfig(((String)localObject2).toLowerCase(), true);
+              if (!DomainConfig.isDomainConfigMatch((DomainConfig)localObject2, localDomainConfig)) {
+                break label652;
+              }
+              putDomainConfigToCache(localDomainConfig, paramInt);
+              return true;
             }
             catch (Throwable localThrowable2)
             {
               QLog.e("[mini] http.domainValid", 1, "check domainValid error, requestUrl:" + paramString, localThrowable2);
             }
+            continue;
+            localObject1 = this.appConfig.config.socketDomainList;
+            break;
+            localObject1 = this.appConfig.config.downloadFileDomainList;
+            break;
+            localObject1 = this.appConfig.config.uploadFileDomainList;
+            break;
+            localObject1 = this.appConfig.config.businessDomainList;
+            break;
+            label652:
+            QLog.i("[mini] http.domainValid", 1, "request:" + localDomainConfig + ",allow:" + localThrowable2);
           }
         }
       }
-      label673:
+      label694:
       localObject1 = getDomainWhiteList();
       try
       {
         localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          String str = (String)((Iterator)localObject1).next();
-          if (((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(localDomainConfig.host)) && (str.startsWith(".")) && (str.split("\\.").length >= 1) && (localDomainConfig.host.endsWith(str))) || (str.equals(localDomainConfig.host)))
+        while (((Iterator)localObject1).hasNext()) {
+          if (DomainConfig.isDomainMatchRfc2019((String)((Iterator)localObject1).next(), localDomainConfig))
           {
             putDomainConfigToCache(localDomainConfig, paramInt);
             return true;
@@ -332,20 +347,23 @@ public abstract class ApkgBaseInfo
       QLog.d("[mini] http.udp", 1, "udp ip检查 skip: " + paramString);
       return true;
     }
-    if ((!isOnlineVersion()) && (getEnableDebug()))
-    {
-      QLog.d("[mini] http.udp", 1, "debug opened and not online version, skip:" + paramString);
-      return true;
-    }
     if (this.mUdpIpWhiteSet == null) {}
+    boolean bool;
     try
     {
       if (this.mUdpIpWhiteSet == null) {
         this.mUdpIpWhiteSet = new HashSet(this.appConfig.config.udpIpList);
       }
-      return this.mUdpIpWhiteSet.contains(paramString);
+      bool = this.mUdpIpWhiteSet.contains(paramString);
+      if ((!bool) && (!isOnlineVersion()) && (getEnableDebug()))
+      {
+        QLog.d("[mini] http.udp", 1, "debug opened and not online version, skip:" + paramString);
+        AppBrandTask.runTaskOnUiThread(new ApkgBaseInfo.3(this, paramString));
+        return true;
+      }
     }
     finally {}
+    return bool;
   }
   
   public abstract boolean isUrlResReady(String paramString);
@@ -372,7 +390,7 @@ public abstract class ApkgBaseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgBaseInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,38 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class lel
+class lel
+  extends BroadcastReceiver
 {
-  private static baue jdField_a_of_type_Baue;
-  private static bdpy jdField_a_of_type_Bdpy = new lem();
+  lel(lek paramlek) {}
   
-  public static baue a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (jdField_a_of_type_Baue == null) {}
-    try
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
     {
-      if (jdField_a_of_type_Baue == null)
+      do
       {
-        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_Bdpy, 128);
-        localHttpCommunicator.a();
-        jdField_a_of_type_Baue = new bavh(localHttpCommunicator, true);
+        return;
+        paramContext = lek.a(this.a).a();
+      } while (paramContext == null);
+      if (QLog.isColorLevel()) {
+        QLog.d("GVipFunCallMonitor", 2, "recv vipfuncall msg broadcast: " + paramIntent.getAction());
       }
-      return jdField_a_of_type_Baue;
+    } while (!paramIntent.getAction().equals("tencent.video.q2v.AnnimateDownloadFinish"));
+    if (QLog.isColorLevel()) {
+      QLog.d("GVipFunCallMonitor", 2, "ACTION_ANNIMATE_DOWNLOAD_FINISH");
     }
-    finally {}
+    paramContext.e(paramIntent.getIntExtra("fun_call_id", 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,11 @@
-public abstract interface asjc
+import android.widget.TextView;
+
+public class asjc
 {
-  public abstract void a(String paramString1, String paramString2, String paramString3);
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public abstract void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable);
+  protected asjc(asjb paramasjb) {}
 }
 
 

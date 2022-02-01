@@ -1,25 +1,81 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.1.1;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoFullInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wzt
-  implements uva<uwr>
+  extends wlf<xbe>
 {
-  wzt(wzs paramwzs) {}
+  public static final String a;
+  public List<String> a;
+  public int c;
   
-  public void a(boolean paramBoolean, uwr paramuwr)
+  static
   {
-    wxe.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramuwr != null))
+    jdField_a_of_type_JavaLangString = wjz.a("StorySvc.union_batch_vid_basic_info");
+  }
+  
+  public wzt()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchGetVideoFullInfoList localRspBatchGetVideoFullInfoList = new qqstory_service.RspBatchGetVideoFullInfoList();
+    try
     {
-      wxe.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramuwr.a));
-      int i = paramuwr.a;
-      wzs.a(this.a).post(new EditVideoFilterNeo.1.1(this, i));
+      localRspBatchGetVideoFullInfoList.mergeFrom(paramArrayOfByte);
+      yqp.a("Q.qqstory.net:GetVideoFullInfoListRequest", "%s", zlb.a(localRspBatchGetVideoFullInfoList));
+      return new xbe(localRspBatchGetVideoFullInfoList);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.b("Q.qqstory.net:GetVideoFullInfoListRequest", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchGetVideoFullInfoList localReqBatchGetVideoFullInfoList = new qqstory_service.ReqBatchGetVideoFullInfoList();
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (!str.startsWith("Loading")) {}
+        for (boolean bool = true;; bool = false)
+        {
+          zkb.a(bool);
+          localReqBatchGetVideoFullInfoList.vid_list.add(ByteStringMicro.copyFromUtf8(str));
+          break;
+        }
+      }
+    }
+    localReqBatchGetVideoFullInfoList.source.set(this.c);
+    return localReqBatchGetVideoFullInfoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetVideoFullInfoListRequest{vidList='" + this.jdField_a_of_type_JavaUtilList + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wzt
  * JD-Core Version:    0.7.0.1
  */

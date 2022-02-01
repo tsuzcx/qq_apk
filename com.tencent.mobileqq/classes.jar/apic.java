@@ -1,18 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.dating.DatingUtil.1;
-
-public class apic
-  implements DialogInterface.OnClickListener
+public abstract interface apic
+  extends apie
 {
-  public apic(DatingUtil.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 

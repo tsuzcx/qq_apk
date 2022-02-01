@@ -1,82 +1,65 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import com.tencent.theme.SkinnableBitmapDrawable;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.DocExportFilePresenter.3.1;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"MAX_SHOWN_AVATAR_COUNT", "", "TAG", "", "getHalfAlphaDrawableList", "Landroid/graphics/drawable/Drawable;", "context", "Landroid/content/Context;", "d", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class atqo
+public class atqo
+  implements atlt
 {
-  @NotNull
-  public static final Drawable a(@NotNull Context paramContext, @NotNull Drawable paramDrawable)
+  atqo(atqm paramatqm) {}
+  
+  public View a()
   {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    Intrinsics.checkParameterIsNotNull(paramDrawable, "d");
-    Drawable localDrawable;
-    Object localObject;
-    Bitmap localBitmap;
-    Resources localResources;
-    if (!(paramDrawable instanceof SkinnableBitmapDrawable))
-    {
-      localDrawable = paramDrawable;
-      if (!(paramDrawable instanceof BitmapDrawable)) {}
+    return null;
+  }
+  
+  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_Atml != null) {
+      this.a.jdField_a_of_type_Atml.a(paramBoolean);
     }
-    else
-    {
-      localObject = (Bitmap)null;
-      if (!(paramDrawable instanceof SkinnableBitmapDrawable)) {
-        break label175;
-      }
-      localObject = ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
-      localBitmap = Bitmap.createBitmap((Bitmap)localObject);
-      localResources = paramContext.getResources();
-      localDrawable = paramDrawable;
-      if (localResources != null) {
-        if ((localObject == null) || (localBitmap != null)) {
-          break label193;
-        }
-      }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a()) && (paramBoolean)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c();
     }
-    label175:
-    label193:
-    label204:
-    for (paramContext = (Context)localObject;; paramContext = localBitmap)
+    while ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b() == null) || (paramBoolean)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Atoo.a());
+  }
+  
+  public boolean a()
+  {
+    if (this.a.jdField_a_of_type_Atmk != null) {
+      return this.a.jdField_a_of_type_Atmk.b();
+    }
+    return false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Atml != null)) {
+      this.a.jdField_a_of_type_Atml.a();
+    }
+    if (paramBoolean)
     {
-      paramDrawable = new BitmapDrawable(localResources, (Bitmap)localObject);
-      localObject = new BitmapDrawable(localResources, paramContext);
-      ((BitmapDrawable)localObject).setAlpha(127);
-      paramContext = new StateListDrawable();
-      localObject = (Drawable)localObject;
-      paramContext.addState(new int[] { 16842919, 16842910 }, (Drawable)localObject);
-      localObject = (Drawable)paramDrawable;
-      paramContext.addState(new int[] { 16842908 }, (Drawable)localObject);
-      paramDrawable = (Drawable)paramDrawable;
-      paramContext.addState(new int[0], paramDrawable);
-      localDrawable = (Drawable)paramContext;
-      do
-      {
-        return localDrawable;
-        if (!(paramDrawable instanceof BitmapDrawable)) {
-          break;
-        }
-        localObject = ((BitmapDrawable)paramDrawable).getBitmap();
-        break;
-        if (localObject != null) {
-          break label204;
-        }
-        localDrawable = paramDrawable;
-      } while (localBitmap == null);
+      atlp.a().b(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Atoo.d(), this);
+      this.a.jdField_a_of_type_Boolean = false;
+      QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, 2, 2131692077, 1).a();
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new DocExportFilePresenter.3.1(this), 800L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqo
  * JD-Core Version:    0.7.0.1
  */

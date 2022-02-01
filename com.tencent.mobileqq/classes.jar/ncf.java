@@ -1,32 +1,36 @@
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.avgame.gameroom.stage.guesssong.GuessSongStageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
 
 public class ncf
-  extends bazx
+  implements URLDrawable.URLDrawableListener
 {
-  public BidDownloader a;
+  public ncf(GuessSongStageView paramGuessSongStageView) {}
   
-  public ncf(QQAppInterface paramQQAppInterface, String paramString, BidDownloader paramBidDownloader)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramQQAppInterface, paramString);
-    this.a = paramBidDownloader;
+    QLog.d("GuessSongStageView", 2, "onLoadFialed " + paramThrowable);
   }
   
-  protected void realCancel()
-  {
-    QLog.i(ncc.a, 1, "cancel predown bid=" + this.a.a);
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  protected void realStart()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    QLog.i(ncc.a, 1, "start predown bid=" + this.a.a);
-    this.a.a();
+    QLog.d("GuessSongStageView", 2, "onLoadSuccessed ");
+    if ((paramURLDrawable != null) && (paramURLDrawable.getCurrDrawable() != null) && (this.a.a != null) && (this.a.a.getImageAsset("image_6") != null))
+    {
+      paramURLDrawable = GuessSongStageView.a(this.a, paramURLDrawable, 280, 280);
+      this.a.a.updateBitmap("image_6", paramURLDrawable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ncf
  * JD-Core Version:    0.7.0.1
  */

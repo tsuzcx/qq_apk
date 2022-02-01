@@ -1,33 +1,37 @@
 package com.tencent.mobileqq.troop.activity;
 
+import Override;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.TextView;
-import azqs;
-import bbgm;
-import bbgn;
-import bbgo;
-import bcky;
-import bcmc;
-import bdgm;
-import bdjz;
-import bety;
-import bhsj;
+import bcst;
+import behk;
+import behl;
+import behm;
+import bfpp;
+import bfqu;
+import bglp;
+import bgpa;
+import biau;
+import bkft;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.troop.widget.PublishItemContainer;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 import mqq.manager.TicketManager;
-import ndd;
+import nlw;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,7 +63,7 @@ public class QLifeCommentActivity
     HashMap localHashMap = new HashMap();
     localHashMap.put("BUNDLE", new Bundle());
     localHashMap.put("CONTEXT", getApplicationContext());
-    new bcky("http://s.p.qq.com/cgi-bin/coupon_q/shop/shop_list.fcg?cid=" + this.v + "&maplat=" + paramDouble1 + "&maplng=" + paramDouble2 + "&coordinate=1", "", this, 1002, null).a(localHashMap);
+    new bfpp("https://s.p.qq.com/cgi-bin/coupon_q/shop/shop_list.fcg?cid=" + this.v + "&maplat=" + paramDouble1 + "&maplng=" + paramDouble2 + "&coordinate=1", "", this, 1002, null).a(localHashMap);
   }
   
   protected void a()
@@ -68,14 +72,14 @@ public class QLifeCommentActivity
     if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    this.jdField_e_of_type_AndroidViewView = ((ViewStub)findViewById(2131380001)).inflate();
-    this.d = ((TextView)findViewById(2131379061));
+    this.jdField_e_of_type_AndroidViewView = ((ViewStub)findViewById(2131380961)).inflate();
+    this.d = ((TextView)findViewById(2131379976));
     this.jdField_e_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_f_of_type_AndroidViewView = findViewById(2131369259);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379062));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379061));
+    this.jdField_f_of_type_AndroidViewView = findViewById(2131369649);
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379977));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379976));
     if (TextUtils.isEmpty(this.A)) {
-      this.jdField_f_of_type_AndroidWidgetTextView.setHint(2131696659);
+      this.jdField_f_of_type_AndroidWidgetTextView.setHint(2131695484);
     }
     for (;;)
     {
@@ -90,7 +94,7 @@ public class QLifeCommentActivity
       }
       this.rightViewText.setEnabled(false);
       if ((!TextUtils.isEmpty(this.v)) && (this.jdField_g_of_type_Boolean)) {
-        SosoInterface.a(new bbgm(this, 0, true, true, 0L, false, false, "QLifeCommentActivity"));
+        SosoInterface.a(new behk(this, 0, true, true, 0L, false, false, "QLifeCommentActivity"));
       }
       return;
       this.jdField_f_of_type_AndroidWidgetTextView.setHint(this.A);
@@ -139,8 +143,8 @@ public class QLifeCommentActivity
           paramBundle.putExtra("result", paramJSONObject.toString());
           setResult(-1, paramBundle);
           finish();
-          QQToast.a(this, 2, 2131696729, 1).b(getTitleBarHeight());
-          azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "success", 0, 0, paramJSONObject.optString("comment_id"), this.w, this.jdField_a_of_type_JavaUtilArrayList.size() + "", this.z);
+          QQToast.a(this, 2, 2131695554, 1).b(getTitleBarHeight());
+          bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "success", 0, 0, paramJSONObject.optString("comment_id"), this.w, this.jdField_a_of_type_JavaUtilArrayList.size() + "", this.z);
         }
         for (;;)
         {
@@ -149,17 +153,17 @@ public class QLifeCommentActivity
           paramBundle = paramJSONObject.optString("msg");
           paramJSONObject = paramBundle;
           if (TextUtils.isEmpty(paramBundle)) {
-            paramJSONObject = getString(2131696747, new Object[] { Integer.valueOf(paramInt) });
+            paramJSONObject = getString(2131695572, new Object[] { Integer.valueOf(paramInt) });
           }
           QQToast.a(this, 1, paramJSONObject, 0).b(getTitleBarHeight());
           c(false);
-          if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
-            this.jdField_a_of_type_Bety.dismiss();
+          if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
+            this.jdField_a_of_type_Biau.dismiss();
           }
           this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
           this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
           this.rightViewText.setEnabled(true);
-          azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "fail", 0, 0, "", this.w, this.jdField_a_of_type_JavaUtilArrayList.size() + "", this.z);
+          bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "fail", 0, 0, "", this.w, this.jdField_a_of_type_JavaUtilArrayList.size() + "", this.z);
         }
       }
     } while (paramJSONObject.optInt("retcode", -1) != 0);
@@ -187,7 +191,7 @@ public class QLifeCommentActivity
           break label7;
         }
         this.jdField_f_of_type_AndroidWidgetTextView.setText(paramJSONObject);
-        this.jdField_e_of_type_JavaLangString = ("http://s.p.qq.com/cgi-bin/coupon_q/social/binary_upload.fcg?&sp=" + this.w + "&shopid=" + this.u);
+        this.jdField_e_of_type_JavaLangString = ("https://s.p.qq.com/cgi-bin/coupon_q/social/binary_upload.fcg?&sp=" + this.w + "&shopid=" + this.u);
         return;
       }
       catch (JSONException paramJSONObject) {}
@@ -201,6 +205,14 @@ public class QLifeCommentActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
@@ -211,13 +223,13 @@ public class QLifeCommentActivity
       return false;
       this.t = paramBundle.getSkey(this.app.getAccount());
     } while (TextUtils.isEmpty(this.t));
-    this.jdField_e_of_type_JavaLangString = ("http://s.p.qq.com/cgi-bin/coupon_q/social/binary_upload.fcg?&sp=" + this.w + "&shopid=" + this.u);
+    this.jdField_e_of_type_JavaLangString = ("https://s.p.qq.com/cgi-bin/coupon_q/social/binary_upload.fcg?&sp=" + this.w + "&shopid=" + this.u);
     this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity$ShopSelectReceiver = new QLifeCommentActivity.ShopSelectReceiver(this);
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
     registerReceiver(this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity$ShopSelectReceiver, paramBundle, "com.tencent.msg.permission.pushnotify", null);
-    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "write", 0, 0, "", "", "", this.z);
-    azqs.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "qlife.activity.show", 0, 0, "", "", "", "");
+    bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "write", 0, 0, "", "", "", this.z);
+    bcst.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "qlife.activity.show", 0, 0, "", "", "", "");
     return true;
   }
   
@@ -232,14 +244,14 @@ public class QLifeCommentActivity
     int j = 0;
     try
     {
-      bhsj.b(this.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText);
+      bkft.b(this.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText);
       if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$PicUploadThread != null)
       {
         this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$PicUploadThread.a = true;
         this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$PicUploadThread = null;
       }
-      if (!ndd.a(this)) {
-        QQToast.a(this, 2131694702, 0).b(getTitleBarHeight());
+      if (!nlw.a(this)) {
+        QQToast.a(this, 2131693919, 0).b(getTitleBarHeight());
       }
       do
       {
@@ -247,7 +259,7 @@ public class QLifeCommentActivity
         if (TextUtils.isEmpty(this.u))
         {
           if (TextUtils.isEmpty(this.B)) {
-            QQToast.a(this, 2131696660, 1).b(getTitleBarHeight());
+            QQToast.a(this, 2131695485, 1).b(getTitleBarHeight());
           }
           for (;;)
           {
@@ -256,7 +268,7 @@ public class QLifeCommentActivity
             QQToast.a(this, this.B, 1).b(getTitleBarHeight());
           }
         }
-        localObject1 = bcmc.a(this.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText);
+        localObject1 = bfqu.a(this.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText);
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           break;
         }
@@ -264,12 +276,12 @@ public class QLifeCommentActivity
         i = ((String)localObject1).length();
         if (i < this.jdField_e_of_type_Int)
         {
-          QQToast.a(this, getString(2131696713, new Object[] { Integer.valueOf(this.jdField_e_of_type_Int) }), 0).b(getTitleBarHeight());
+          QQToast.a(this, getString(2131695538, new Object[] { Integer.valueOf(this.jdField_e_of_type_Int) }), 0).b(getTitleBarHeight());
           return;
         }
         if (i > this.jdField_f_of_type_Int)
         {
-          QQToast.a(this, getString(2131696714, new Object[] { Integer.valueOf(this.jdField_f_of_type_Int) }), 0).b(getTitleBarHeight());
+          QQToast.a(this, getString(2131695539, new Object[] { Integer.valueOf(this.jdField_f_of_type_Int) }), 0).b(getTitleBarHeight());
           return;
         }
       } while (!a(this.jdField_i_of_type_Int, false));
@@ -282,7 +294,7 @@ public class QLifeCommentActivity
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
         localObject2 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((TroopBarPublishActivity.Pic_list)bcmc.a.get(localObject2) == null)
+        if ((TroopBarPublishActivity.Pic_list)bfqu.a.get(localObject2) == null)
         {
           a(1, this.jdField_a_of_type_AndroidOsHandler);
           return;
@@ -305,7 +317,7 @@ public class QLifeCommentActivity
         while (i < localArrayList.size())
         {
           Object localObject3 = (String)localArrayList.get(i);
-          localObject3 = (TroopBarPublishActivity.Pic_list)bcmc.a.get(localObject3);
+          localObject3 = (TroopBarPublishActivity.Pic_list)bfqu.a.get(localObject3);
           if (localObject3 != null) {
             ((StringBuilder)localObject1).append(((TroopBarPublishActivity.Pic_list)localObject3).url).append(",");
           }
@@ -314,14 +326,14 @@ public class QLifeCommentActivity
         ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
       }
       ((Bundle)localObject2).putString("spic", ((StringBuilder)localObject1).toString());
-      ((Bundle)localObject2).putString("version", "8.3.5");
+      ((Bundle)localObject2).putString("version", "8.4.1");
       ((Bundle)localObject2).putString("platform", "android");
-      ((Bundle)localObject2).putString("Origin", "http://qlife.qq.com");
+      ((Bundle)localObject2).putString("Origin", "https://qlife.qq.com");
       ((Bundle)localObject2).putString("Cookie", "skey=" + this.t + ";uin=" + this.app.getCurrentAccountUin());
       localObject1 = new HashMap();
       ((HashMap)localObject1).put("BUNDLE", localObject2);
       ((HashMap)localObject1).put("CONTEXT", getApplicationContext());
-      new bcky("http://s.p.qq.com/cgi-bin/coupon_q/social/comment.fcg?", "", this, 1001, null).a((HashMap)localObject1);
+      new bfpp("https://s.p.qq.com/cgi-bin/coupon_q/social/comment.fcg?", "", this, 1001, null).a((HashMap)localObject1);
       return;
     }
     catch (Exception localException)
@@ -362,18 +374,25 @@ public class QLifeCommentActivity
     if (this.o)
     {
       a(this);
-      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "cancel", 0, 0, "", "", "", this.z);
+      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "cancel", 0, 0, "", "", "", this.z);
       return true;
     }
-    Object localObject = getString(2131720808);
-    String str = getString(2131696658);
-    localObject = bdgm.a(this, 230).setTitle((String)localObject).setMessage(str);
-    ((bdjz)localObject).setPositiveButton(getString(2131721503), new bbgn(this, (bdjz)localObject));
-    ((bdjz)localObject).setNegativeButton(getString(2131694806), new bbgo(this, (bdjz)localObject));
-    ((bdjz)localObject).setPositiveButtonContentDescription(getString(2131721503));
-    ((bdjz)localObject).setNegativeButtonContentDescription(getString(2131721503));
-    ((bdjz)localObject).show();
+    Object localObject = getString(2131718563);
+    String str = getString(2131695483);
+    localObject = bglp.a(this, 230).setTitle((String)localObject).setMessage(str);
+    ((bgpa)localObject).setPositiveButton(getString(2131719210), new behl(this, (bgpa)localObject));
+    ((bgpa)localObject).setNegativeButton(getString(2131693977), new behm(this, (bgpa)localObject));
+    ((bgpa)localObject).setPositiveButtonContentDescription(getString(2131719210));
+    ((bgpa)localObject).setNegativeButtonContentDescription(getString(2131719210));
+    ((bgpa)localObject).show();
     return true;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
@@ -388,7 +407,7 @@ public class QLifeCommentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.QLifeCommentActivity
  * JD-Core Version:    0.7.0.1
  */

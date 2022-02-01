@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.utils;
 import android.os.Build.VERSION;
 import android.system.Os;
 import android.system.StructStat;
-import bdhb;
+import bgmg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -108,7 +108,7 @@ public class FileUtils
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("/", getStats(paramString));
-      Object localObject = bdhb.a(paramString, true);
+      Object localObject = bgmg.a(paramString, true);
       paramString = new File(paramString);
       paramString = paramString.getCanonicalPath() + "/";
       localObject = ((ArrayList)localObject).iterator();
@@ -598,7 +598,7 @@ public class FileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.FileUtils
  * JD-Core Version:    0.7.0.1
  */

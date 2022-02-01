@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alud;
+import anni;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
@@ -8,10 +8,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import xtk;
+import zmv;
 
 class VideoJsPlugin$6
-  implements xtk
+  implements zmv
 {
   VideoJsPlugin$6(VideoJsPlugin paramVideoJsPlugin, long paramLong1, String paramString1, LocalMediaInfo paramLocalMediaInfo, int paramInt, String paramString2, long paramLong2, AppBrandRuntime paramAppBrandRuntime) {}
   
@@ -70,7 +70,7 @@ class VideoJsPlugin$6
             i = (int)((float)(TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(j) + (1000.0D * d)) * 100.0F / (float)this.val$duration);
             if ((i < 100) && (this.val$runtime != null))
             {
-              VideoJsPlugin.access$900(this.this$0, this.val$runtime, alud.a(2131716694) + i + "%");
+              VideoJsPlugin.access$900(this.this$0, this.val$runtime, anni.a(2131714971) + i + "%");
               return;
             }
           }
@@ -105,7 +105,7 @@ class VideoJsPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.VideoJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

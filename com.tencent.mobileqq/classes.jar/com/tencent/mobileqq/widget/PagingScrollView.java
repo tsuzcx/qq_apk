@@ -7,9 +7,9 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
-import bero;
-import berp;
-import berq;
+import bhyv;
+import bhyw;
+import bhyx;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ScrollView;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class PagingScrollView
   private boolean mCanScroll = true;
   protected GestureDetector mGestureDetector;
   public boolean mIsOnSpecialView = false;
-  protected berp mScrollChangedListener;
+  protected bhyw mScrollChangedListener;
   protected ArrayList<View> pagingViews;
   
   public PagingScrollView(Context paramContext)
@@ -44,7 +44,7 @@ public class PagingScrollView
       this.pagingViews = new ArrayList();
     }
     this.pagingViews.add(paramView);
-    paramView.setOnTouchListener(new bero(this));
+    paramView.setOnTouchListener(new bhyv(this));
   }
   
   public void clearPagingViews()
@@ -67,7 +67,7 @@ public class PagingScrollView
       setOverScrollMode(0);
     }
     setFadingEdgeLength(0);
-    this.mGestureDetector = new GestureDetector(paramContext, new berq(this));
+    this.mGestureDetector = new GestureDetector(paramContext, new bhyx(this));
   }
   
   protected boolean isOnView(View paramView, float paramFloat1, float paramFloat2)
@@ -191,14 +191,14 @@ public class PagingScrollView
     }
   }
   
-  public void setOnScrollChangedListener(berp paramberp)
+  public void setOnScrollChangedListener(bhyw parambhyw)
   {
-    this.mScrollChangedListener = paramberp;
+    this.mScrollChangedListener = parambhyw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PagingScrollView
  * JD-Core Version:    0.7.0.1
  */

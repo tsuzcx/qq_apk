@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListView.SavedState;
+import android.graphics.Color;
 
-public final class bhxa
-  implements Parcelable.Creator<ExpandableListView.SavedState>
+public abstract interface bhxa
 {
-  public ExpandableListView.SavedState a(Parcel paramParcel)
-  {
-    return new ExpandableListView.SavedState(paramParcel, null);
-  }
-  
-  public ExpandableListView.SavedState[] a(int paramInt)
-  {
-    return new ExpandableListView.SavedState[paramInt];
-  }
+  public static final int b = bgtn.b(0.5F);
+  public static final int c = Color.parseColor("#EBEDF5");
+  public static final int d = bgtn.b(16.0F);
+  public static final int e = bgtn.b(9.0F);
+  public static final int f = bgtn.b(15.0F);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhxa
  * JD-Core Version:    0.7.0.1
  */

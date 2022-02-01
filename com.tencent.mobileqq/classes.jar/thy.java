@@ -1,22 +1,27 @@
-public abstract interface thy
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+
+public class thy
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  public thy(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public abstract void a(int paramInt, Object paramObject);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, false);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
+  }
   
-  public abstract void a(String paramString1, boolean paramBoolean, String paramString2);
-  
-  public abstract void a(tho paramtho);
-  
-  public abstract void a(tho paramtho, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(tho paramtho);
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, true);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     thy
  * JD-Core Version:    0.7.0.1
  */

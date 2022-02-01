@@ -9,14 +9,14 @@ class AudioJsPlugin$InnerAudioManager$3
   
   public void run()
   {
-    if (AudioJsPlugin.InnerAudioManager.access$1600(this.this$1) != null) {
-      AudioJsPlugin.InnerAudioManager.access$1600(this.this$1).seekTo(this.val$mSec);
+    if (AudioJsPlugin.InnerAudioManager.access$1700(this.this$1) != null) {
+      AudioJsPlugin.InnerAudioManager.access$1700(this.this$1).seekTo(this.val$mSec);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AudioJsPlugin.InnerAudioManager.3
  * JD-Core Version:    0.7.0.1
  */

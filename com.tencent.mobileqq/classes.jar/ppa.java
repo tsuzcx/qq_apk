@@ -1,180 +1,151 @@
-import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBBCircleFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFollowFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyRecommendFeedsFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfCenterViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyTribeChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.util.WeakReference;
 
 public class ppa
-  extends ppl
 {
-  public ppa(ArticleInfo paramArticleInfo, Context paramContext)
+  static ppa jdField_a_of_type_Ppa;
+  WeakReference<ReadInJoyNewFeedsActivity> jdField_a_of_type_MqqUtilWeakReference = null;
+  
+  public static ReadInJoyBaseFragment a(int paramInt)
   {
-    super(paramArticleInfo, paramContext);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 0: 
+      return ReadInJoyRecommendFeedsFragment.a();
+    case 1: 
+      ReadInJoyVideoChannelFragment localReadInJoyVideoChannelFragment = new ReadInJoyVideoChannelFragment();
+      localReadInJoyVideoChannelFragment.b(1002);
+      return localReadInJoyVideoChannelFragment;
+    case 2: 
+      return ReadInJoyFollowFragment.a();
+    }
+    if (Aladdin.getConfig(322).getString("page_type", "1").equals("2")) {
+      return ReadInJoySelfCenterViolaFragment.a("https://viola.qq.com/js/usercenter.js?_rij_violaUrl=1&hideNav=1&v_nav_immer=1&v_tid=6&v_bundleName=usercenter&v_bid=3740&jump_source=2");
+    }
+    return new ReadInJoySelfFragment();
   }
   
-  private void a(ButtonBase paramButtonBase)
+  public static ppa a()
   {
-    boolean bool = true;
-    int i;
-    if (paramButtonBase.isSelected())
+    try
     {
-      i = -1;
-      paramButtonBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo;
-      paramButtonBase.b += i;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b < 0) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b = 0;
+      if (jdField_a_of_type_Ppa == null) {
+        jdField_a_of_type_Ppa = new ppa();
       }
-      paramButtonBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo;
-      if (i <= 0) {
-        break label136;
-      }
+      return jdField_a_of_type_Ppa;
     }
-    label136:
-    for (int j = 1;; j = 0)
+    finally {}
+  }
+  
+  public Fragment a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    if (paramTabChannelCoverInfo == null)
     {
-      paramButtonBase.c = j;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
-      ors.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-      if ((!ors.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID))) {
-        break label141;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("ATLAS", 2, "atlas native has undercarriage");
-      }
-      oxb.a().b();
-      return;
-      i = 1;
-      break;
+      QLog.d("ReadInJoyFragmentFactory", 1, "tabChannelCoverInfo is null.");
+      paramTabChannelCoverInfo = (TabChannelCoverInfo)localObject2;
+      return paramTabChannelCoverInfo;
     }
-    label141:
-    paramButtonBase = owy.a();
-    long l1 = ors.a();
-    long l2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId;
-    if (i > 0) {}
+    QLog.d("ReadInJoyFragmentFactory", 2, new Object[] { "new Fragment, channelName = ", paramTabChannelCoverInfo.mChannelCoverName, ", channelID = ", Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId) });
+    QLog.d("ReadInJoyFragmentFactory", 1, "ReadInJoyConstnats.RECOMMEND= 0");
+    if (paramTabChannelCoverInfo.mChannelCoverId == pwl.a()) {
+      localObject1 = ReadInJoyRecommendFeedsFragment.a();
+    }
     for (;;)
     {
-      paramButtonBase.a(l1, l2, bool, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.clone());
-      break;
-      bool = false;
-    }
-  }
-  
-  protected int a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.c == 1) {
-      return 2;
-    }
-    return 13;
-  }
-  
-  protected void a(ArticleInfo paramArticleInfo)
-  {
-    String str2 = ors.a(paramArticleInfo);
-    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
-    boolean bool = szp.a(paramArticleInfo.mChannelID);
-    Object localObject;
-    String str1;
-    if (bool)
-    {
-      localObject = "0X800935E";
-      if (!bool) {
-        break label163;
+      paramTabChannelCoverInfo = (TabChannelCoverInfo)localObject1;
+      if (!(localObject1 instanceof ReadInJoyBaseFragment)) {
+        break;
       }
-      str1 = "0X800935F";
-      label35:
-      if (localSocializeFeedsInfo.c != 1) {
-        break label268;
-      }
-      if ((!rqj.i(paramArticleInfo)) && (!rqj.b(paramArticleInfo)) && (!rqj.j(paramArticleInfo)) && (!rqj.k(paramArticleInfo))) {
-        break label170;
-      }
-      if (!rqj.o(paramArticleInfo)) {
-        nrt.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Qmw.jdField_a_of_type_Long), (String)localObject, (String)localObject, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
-      }
-      if ((!ors.k(paramArticleInfo)) && (!ors.l(paramArticleInfo))) {
-        rqj.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
-      }
-    }
-    label163:
-    label170:
-    do
-    {
-      return;
-      localObject = "0X8007B65";
-      break;
-      str1 = "0X8007B66";
-      break label35;
-      if (ors.b(paramArticleInfo))
+      ((ReadInJoyBaseFragment)localObject1).b(true);
+      return localObject1;
+      switch (paramTabChannelCoverInfo.mChannelCoverId)
       {
-        localObject = new JSONObject();
-        try
+      default: 
+        if (tlg.a(paramTabChannelCoverInfo.mChannelJumpUrl))
         {
-          ((JSONObject)localObject).put("like", 0);
-          opn.a(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo, "0X8009A74", (JSONObject)localObject);
-          return;
+          localObject1 = ReadInJoyViolaChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelVersion);
+          ((ReadInJoyViolaChannelFragment)localObject1).a(paramTabChannelCoverInfo.mChannelJumpUrl);
         }
-        catch (JSONException localJSONException1)
+        break;
+      case 0: 
+        localObject1 = ReadInJoyRecommendFeedsFragment.a();
+        break;
+      case 56: 
+        localObject1 = new ReadInJoyVideoChannelFragment();
+        ((ReadInJoyVideoChannelFragment)localObject1).b(1003);
+        break;
+      case 70: 
+        localObject1 = new ReadInJoyBBCircleFragment();
+        break;
+      case 41522: 
+        localObject1 = new ReadInJoyPicWaterFallFragment();
+        break;
+      case 41450: 
+        localObject1 = new ReadInJoyTribeChannelFragment();
+        continue;
+        if (paramTabChannelCoverInfo.bid > 0L)
         {
-          for (;;)
+          localObject2 = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.a(paramTabChannelCoverInfo.mChannelCoverId));
+          if (localObject2 != null)
           {
-            localJSONException1.printStackTrace();
+            localObject2 = ((teh)localObject2).a();
+            if (localObject2 == null) {
+              continue;
+            }
+            if (!TextUtils.isEmpty(((pkj)localObject2).b("cgi"))) {}
+            for (paramTabChannelCoverInfo = ReadInJoyCGIDynamicChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, 0, paramTabChannelCoverInfo.mChannelCoverName);; paramTabChannelCoverInfo = ReadInJoyDynamicChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, 0, paramTabChannelCoverInfo.mChannelCoverName))
+            {
+              localObject1 = paramTabChannelCoverInfo;
+              break;
+            }
           }
         }
-      }
-      nrt.a(null, paramArticleInfo.mSubscribeID, (String)localObject, (String)localObject, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
-      return;
-      if ((!rqj.i(paramArticleInfo)) && (!rqj.b(paramArticleInfo)) && (!rqj.j(paramArticleInfo)) && (!rqj.k(paramArticleInfo))) {
-        break label383;
-      }
-      if (!rqj.o(paramArticleInfo)) {
-        nrt.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Qmw.jdField_a_of_type_Long), localJSONException1, localJSONException1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
-      }
-    } while ((ors.k(paramArticleInfo)) || (ors.l(paramArticleInfo)));
-    label268:
-    rqj.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
-    return;
-    label383:
-    if (ors.b(paramArticleInfo))
-    {
-      localObject = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject).put("like", 1);
-        opn.a(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo, "0X8009A74", (JSONObject)localObject);
-        return;
-      }
-      catch (JSONException localJSONException2)
-      {
-        for (;;)
-        {
-          localJSONException2.printStackTrace();
-        }
+        localObject1 = ReadInJoySubChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelType, paramTabChannelCoverInfo.mChannelCoverName);
       }
     }
-    nrt.a(null, paramArticleInfo.mSubscribeID, localJSONException2, localJSONException2, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
   }
   
-  protected void a(ViewBase paramViewBase)
+  public void a()
   {
-    QLog.d("OnLikeClickListener", 1, "cick like");
-    if ((paramViewBase instanceof ButtonBase)) {
-      a((ButtonBase)paramViewBase);
-    }
-    do
+    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
     {
-      return;
-      paramViewBase = paramViewBase.findViewBaseByName("id_like_button");
-    } while ((paramViewBase == null) || (!(paramViewBase instanceof prf)));
-    ((prf)paramViewBase).onClick();
+      this.jdField_a_of_type_MqqUtilWeakReference.clear();
+      this.jdField_a_of_type_MqqUtilWeakReference = null;
+    }
+  }
+  
+  public void a(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity)
+  {
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramReadInJoyNewFeedsActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ppa
  * JD-Core Version:    0.7.0.1
  */

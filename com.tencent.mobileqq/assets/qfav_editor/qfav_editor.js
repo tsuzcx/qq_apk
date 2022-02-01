@@ -182,8 +182,8 @@ QfavEditor.E.prototype.getSelectionRect = function (absolute) {
                 var child = baseNode;
                 if (baseNode.nodeType != Node.ELEMENT_NODE) {
                     child = baseNode.parentElement.lastChild;
-                } else if (baseNode.childNodes.length > baseOffset) {
-                    child = baseNode.childNodes[baseOffset];
+                } else if (baseNode.childNodes.length >= baseOffset && baseNode.childNodes.length > 0) {
+                    child = baseNode.childNodes[Math.max(0, baseOffset-1)];
                 }
                 if (child.getBoundingClientRect) {
                     bounding = child.getBoundingClientRect();
@@ -197,7 +197,7 @@ QfavEditor.E.prototype.getSelectionRect = function (absolute) {
             }
          }
 
-        QfavUtil.log('select baseNode:' + baseNode);
+        QfavUtil.log('select baseNode:' + baseNode + ' nodeType' + baseNode.nodeType);
     } catch (e) {
         QfavUtil.log(e.message);
     } finally {

@@ -1,57 +1,64 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class ahnh
-  extends alrl
+  extends afuu
 {
-  public ahnh(SystemMsgListView paramSystemMsgListView) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  public ahnh(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (paramBoolean) {
-      SystemMsgListView.a(this.a).b(paramLong);
-    }
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
   }
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  protected afuv a()
   {
-    if (paramBoolean) {
-      if (!(paramObject instanceof ArrayList)) {
-        break label76;
-      }
-    }
-    label76:
-    for (paramObject = (ArrayList)paramObject;; paramObject = null)
+    return new ahni(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, afuv paramafuv, View paramView, LinearLayout paramLinearLayout, afzq paramafzq)
+  {
+    paramafuv = (ahni)paramafuv;
+    paramafuv = paramView;
+    if (paramView == null)
     {
-      if ((paramObject != null) && (paramObject.size() > 0))
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558892, null);
+      paramafuv = (TextView)paramView.findViewById(2131367600);
+      paramafuv.setMovementMethod(null);
+      paramafuv.setGravity(17);
+      paramafuv = paramView;
+      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
-        paramObject = paramObject.iterator();
-        while (paramObject.hasNext())
-        {
-          Object localObject = paramObject.next();
-          if ((localObject instanceof Long)) {
-            SystemMsgListView.a(this.a).b(((Long)localObject).longValue());
-          }
-        }
+        paramafuv = (TextView)paramView.findViewById(2131367944);
+        paramLinearLayout = (TextView)paramView.findViewById(2131367945);
+        paramafuv.setBackgroundColor(2130842497);
+        paramLinearLayout.setBackgroundColor(2130842497);
+        paramafuv = paramView;
       }
-      return;
     }
+    paramView = (TextView)paramafuv.findViewById(2131367600);
+    if ((paramMessageRecord.istroop == 1) && (njo.a().a(paramMessageRecord.senderuin)))
+    {
+      paramView.setTextColor(njo.d);
+      return paramafuv;
+    }
+    paramView.setTextColor(paramafuv.getResources().getColorStateList(2131165537));
+    return paramafuv;
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bguj[] a(View paramView)
   {
-    if (paramBoolean) {}
-    try
-    {
-      long l = Long.parseLong(paramString);
-      SystemMsgListView.a(this.a).b(l);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return null;
   }
 }
 

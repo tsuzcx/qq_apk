@@ -1,51 +1,171 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.graphics.Color;
+import com.google.gson.Gson;
+import com.tencent.lbssearch.httpresponse.HttpResponseListener;
+import com.tencent.lbssearch.object.result.DrivingResultObject;
+import com.tencent.lbssearch.object.result.DrivingResultObject.Result;
+import com.tencent.lbssearch.object.result.DrivingResultObject.Route;
+import com.tencent.lbssearch.object.result.TransitResultObject;
+import com.tencent.lbssearch.object.result.TransitResultObject.Line;
+import com.tencent.lbssearch.object.result.TransitResultObject.Result;
+import com.tencent.lbssearch.object.result.TransitResultObject.Route;
+import com.tencent.lbssearch.object.result.TransitResultObject.Segment;
+import com.tencent.lbssearch.object.result.TransitResultObject.Transit;
+import com.tencent.lbssearch.object.result.TransitResultObject.Walking;
+import com.tencent.lbssearch.object.result.WalkingResultObject;
+import com.tencent.lbssearch.object.result.WalkingResultObject.Result;
+import com.tencent.lbssearch.object.result.WalkingResultObject.Route;
+import com.tencent.mobileqq.location.ui.MapWidget;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class awat
-  extends ayyb
+  implements HttpResponseListener
 {
-  OlympicToolAppInterface jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  public awat(MapWidget paramMapWidget, int paramInt, away paramaway) {}
   
-  public awat(OlympicToolAppInterface paramOlympicToolAppInterface)
+  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
   {
+    if (QLog.isColorLevel())
+    {
+      if (paramThrowable != null) {
+        paramThrowable.printStackTrace();
+      }
+      QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onFailure invoked. error code: " + paramInt + " msg: " + paramString);
+    }
+    if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null) {
+      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(false, this.jdField_a_of_type_Away);
+    }
+  }
+  
+  public void onSuccess(int paramInt, Object paramObject)
+  {
+    Object localObject1 = new Gson().toJson(paramObject);
     if (QLog.isColorLevel()) {
-      QLog.i("OlympicToolService", 2, "new OlympicToolService");
+      QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. routeType: " + this.jdField_a_of_type_Int + " result: " + (String)localObject1);
     }
-    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = paramOlympicToolAppInterface;
-    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
-  }
-  
-  protected void a()
-  {
-    try
+    switch (this.jdField_a_of_type_Int)
     {
-      super.a();
-      return;
+    default: 
+      paramObject = null;
     }
-    finally
+    label90:
+    label739:
+    label744:
+    for (;;)
     {
-      localObject = finally;
-      throw localObject;
+      if (paramObject != null)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null) {
+          this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.c(false);
+        }
+        if (bkpg.a())
+        {
+          paramInt = Color.parseColor("#0071FF");
+          label124:
+          this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addPolyline(new PolylineOptions().addAll(paramObject).color(paramInt).width(bggq.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getContext(), 5.0F)));
+          if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a();
+            if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_Int == 0) {
+              MapWidget.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
+            }
+          }
+          if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null)
+          {
+            localObject1 = MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
+            if ((paramObject == null) || (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline == null)) {
+              break label739;
+            }
+          }
+        }
+      }
+      for (boolean bool = true;; bool = false)
+      {
+        ((awax)localObject1).a(bool, this.jdField_a_of_type_Away);
+        return;
+        paramObject = (DrivingResultObject)paramObject;
+        if ((paramObject.result == null) || (paramObject.result.routes == null) || (paramObject.result.routes.isEmpty()))
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error ROUTE_TYPE_DRIVE");
+          paramObject = null;
+          break label90;
+        }
+        paramObject = (DrivingResultObject.Route)paramObject.result.routes.get(0);
+        this.jdField_a_of_type_Away.a = paramObject.duration;
+        this.jdField_a_of_type_Away.b = paramObject.distance;
+        paramObject = paramObject.polyline;
+        break label90;
+        localObject1 = (TransitResultObject)paramObject;
+        if ((((TransitResultObject)localObject1).result == null) || (((TransitResultObject)localObject1).result.routes == null) || (((TransitResultObject)localObject1).result.routes.isEmpty()))
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error ROUTE_TYPE_BUS");
+          paramObject = null;
+          break label90;
+        }
+        paramObject = new ArrayList();
+        localObject1 = (TransitResultObject.Route)((TransitResultObject)localObject1).result.routes.get(0);
+        Iterator localIterator = ((TransitResultObject.Route)localObject1).steps.iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject2 = (TransitResultObject.Segment)localIterator.next();
+          if ((localObject2 instanceof TransitResultObject.Walking))
+          {
+            paramObject.addAll(((TransitResultObject.Walking)localObject2).polyline);
+          }
+          else if ((localObject2 instanceof TransitResultObject.Transit))
+          {
+            localObject2 = (TransitResultObject.Transit)localObject2;
+            if ((((TransitResultObject.Transit)localObject2).lines != null) && (!((TransitResultObject.Transit)localObject2).lines.isEmpty())) {
+              paramObject.addAll(((TransitResultObject.Line)((TransitResultObject.Transit)localObject2).lines.get(0)).polyline);
+            }
+          }
+        }
+        this.jdField_a_of_type_Away.a = ((float)((TransitResultObject.Route)localObject1).duration);
+        this.jdField_a_of_type_Away.b = ((TransitResultObject.Route)localObject1).distance;
+        if (!paramObject.isEmpty()) {
+          break label744;
+        }
+        paramObject = null;
+        break label90;
+        paramObject = (WalkingResultObject)paramObject;
+        if ((paramObject == null) || (paramObject.result == null) || (paramObject.result.routes == null) || (paramObject.result.routes.isEmpty()))
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error ROUTE_TYPE_WALK");
+          paramObject = null;
+          break label90;
+        }
+        paramObject = (WalkingResultObject.Route)paramObject.result.routes.get(0);
+        this.jdField_a_of_type_Away.a = paramObject.duration;
+        this.jdField_a_of_type_Away.b = paramObject.distance;
+        paramObject = paramObject.polyline;
+        break label90;
+        paramInt = Color.parseColor("#4D94FF");
+        break label124;
+        if (!QLog.isColorLevel()) {
+          break label206;
+        }
+        QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error polyline: null");
+        break label206;
+      }
     }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    super.b(paramToServiceMsg, null, awau.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awat
  * JD-Core Version:    0.7.0.1
  */

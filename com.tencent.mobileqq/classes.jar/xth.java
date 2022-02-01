@@ -1,51 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class xth
-  extends BroadcastReceiver
+public final class xth
+  extends QQUIEventReceiver<xsw, wwb>
 {
-  xth(xtc paramxtc) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public xth(@NonNull xsw paramxsw)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.SCREEN_OFF")) {
-      if ((this.a.jdField_a_of_type_Xtj != null) && (!this.a.jdField_a_of_type_Xtj.a()))
+    super(paramxsw);
+  }
+  
+  public void a(@NonNull xsw paramxsw, @NonNull wwb paramwwb)
+  {
+    if ((paramwwb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwwb.jdField_a_of_type_JavaUtilList != null) && (paramxsw.a != null))
+    {
+      paramwwb = paramwwb.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwwb.hasNext())
       {
-        this.a.b = true;
-        wxe.d("Q.qqstory.ffmpeg.FFmpegCmd", "屏幕灭屏了，FFmpeg还在执行当中");
+        wqp localwqp = (wqp)paramwwb.next();
+        if (TextUtils.equals(paramxsw.a.b, localwqp.a)) {
+          paramxsw.i();
+        }
       }
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramContext.equals("android.intent.action.SCREEN_ON")) || (!this.a.b));
-      this.a.b = false;
-    } while ((this.a.jdField_a_of_type_Xti == null) || (this.a.jdField_a_of_type_Int == -9999) || (this.a.jdField_a_of_type_Xti.a == null));
-    if (this.a.jdField_a_of_type_Int == 1)
-    {
-      paramContext = alud.a(2131704876);
-      this.a.jdField_a_of_type_Xti.a.onSuccess(paramContext);
-      this.a.jdField_a_of_type_Xti.a.onFinish(true);
-      wxe.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = -9999;
-      return;
-      paramContext = alud.a(2131704875);
-      this.a.jdField_a_of_type_Xti.a.onFailure(paramContext);
-      this.a.jdField_a_of_type_Xti.a.onFinish(false);
-      wxe.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wwb.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xth
  * JD-Core Version:    0.7.0.1
  */

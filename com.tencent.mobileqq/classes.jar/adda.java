@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.5;
 
 public class adda
-  implements View.OnClickListener
+  implements adcb
 {
-  public adda(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public adda(MemoryDumpHelper.5 param5) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    PublicFragmentActivity.a(this.a.getActivity(), QQSettingAutoDownloadAndSaveFragment.class);
-    azqs.b(null, "CliOper", "", "", "0X800A2DB", "0X800A2DB", 0, 0, "", "", "", "");
+    adcw.c(this.a.this$0);
   }
 }
 

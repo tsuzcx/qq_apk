@@ -1,25 +1,9 @@
-import java.util.Comparator;
-
-class bbag
-  implements Comparator
+public class bbag
 {
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    paramObject1 = (bbad)paramObject1;
-    paramObject2 = (bbad)paramObject2;
-    if (paramObject1.c > paramObject2.c) {}
-    do
-    {
-      return -1;
-      if (paramObject1.c < paramObject2.c) {
-        return 1;
-      }
-    } while (paramObject1.d > paramObject2.d);
-    if (paramObject1.d < paramObject2.d) {
-      return 1;
-    }
-    return 0;
-  }
+  public int a;
+  public String a;
+  public int b;
+  public int c;
 }
 
 

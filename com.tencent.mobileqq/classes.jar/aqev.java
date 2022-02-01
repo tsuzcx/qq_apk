@@ -1,21 +1,83 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class aqev
-  extends RecyclerView.AdapterDataObserver
 {
-  public aqev(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
-  
-  public void onChanged()
+  private int a(ColorNote paramColorNote)
   {
-    if (this.a.jdField_a_of_type_Aqfh.a() == 0)
+    switch (aqda.a(paramColorNote.getServiceType()) & 0xFFFF0000)
     {
-      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Aqfi);
-      return;
+    default: 
+      return 2130844375;
+    case 16973824: 
+      return 2130844317;
+    case 17039360: 
+      return 2130839215;
+    case 16842752: 
+      return 2130839216;
+    case 16908288: 
+      return 2130839217;
     }
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Aqfi);
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_Aqfi);
+    return 2130844128;
+  }
+  
+  private Drawable a(Context paramContext, ColorNote paramColorNote)
+  {
+    paramContext = paramContext.getResources();
+    int i = a(paramColorNote);
+    try
+    {
+      Object localObject = new URL(paramColorNote.getPicUrl());
+      boolean bool = "resdrawable".equals(((URL)localObject).getProtocol());
+      if (bool) {
+        try
+        {
+          localObject = paramContext.getDrawable(Integer.parseInt(((URL)localObject).getHost()));
+          return localObject;
+        }
+        catch (Throwable localThrowable)
+        {
+          Drawable localDrawable = paramContext.getDrawable(i);
+          QLog.e("DefaultFormItemBuilder", 1, "service type: " + paramColorNote.getServiceType() + " url error.", localThrowable);
+          return localDrawable;
+        }
+      }
+      return paramContext;
+    }
+    catch (MalformedURLException paramColorNote)
+    {
+      paramContext = paramContext.getDrawable(i);
+      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
+      return paramContext;
+      paramColorNote = URLDrawable.URLDrawableOptions.obtain();
+      paramColorNote.mRequestWidth = afur.a(40.0F, paramContext);
+      paramColorNote.mRequestHeight = afur.a(40.0F, paramContext);
+      paramColorNote.mLoadingDrawable = paramContext.getDrawable(i);
+      paramColorNote.mFailedDrawable = paramColorNote.mLoadingDrawable;
+      paramColorNote = URLDrawable.getDrawable(localThrowable, paramColorNote);
+      return paramColorNote;
+    }
+    catch (NullPointerException paramColorNote)
+    {
+      paramContext = paramContext.getDrawable(i);
+      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
+    }
+  }
+  
+  public HistoryFormItem a(Context paramContext, ColorNote paramColorNote)
+  {
+    HistoryFormItem localHistoryFormItem = new HistoryFormItem(paramContext);
+    localHistoryFormItem.setLeftText(paramColorNote.getMainTitle());
+    localHistoryFormItem.setLeftIcon(a(paramContext, paramColorNote), paramContext.getResources().getDimensionPixelSize(2131298783), paramContext.getResources().getDimensionPixelSize(2131298782));
+    return localHistoryFormItem;
   }
 }
 

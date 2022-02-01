@@ -1,23 +1,14 @@
-import android.widget.TextView;
-import com.tencent.widget.AbsListView;
+import com.tencent.qphone.base.util.QLog;
 
 class ahey
-  implements bhtv
+  extends voy
 {
-  ahey(ahex paramahex) {}
+  ahey(ahew paramahew) {}
   
-  private boolean a(AbsListView paramAbsListView)
+  public void a(int paramInt, vou paramvou)
   {
-    return (paramAbsListView.getChildAt(paramAbsListView.getChildCount() - 1) == this.a.a) && (this.a.a.getBottom() == this.a.a.getBottom());
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (a(paramAbsListView))) {
-      this.a.d();
-    }
+    super.a(paramInt, paramvou);
+    QLog.d("QCircleFeedItemBuilder", 1, paramvou.a() + ", \nstate callback:" + paramInt);
   }
 }
 

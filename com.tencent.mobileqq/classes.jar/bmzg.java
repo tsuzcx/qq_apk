@@ -1,6 +1,12 @@
-public abstract interface bmzg
+import com.tencent.weiyun.utils.Singleton;
+
+final class bmzg
+  extends Singleton<bmzf, Void>
 {
-  public abstract void b(float paramFloat);
+  protected bmzf a(Void paramVoid)
+  {
+    return new bmzf(null);
+  }
 }
 
 

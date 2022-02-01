@@ -1,39 +1,142 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.support.annotation.RequiresApi;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfjy
-  implements DialogInterface.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bfjy(DownloadJSApi.2 param2) {}
+  public static int a;
+  public static boolean a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private bfjz jdField_a_of_type_Bfjz;
+  private int b = 1;
+  private int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bfjy(Activity paramActivity)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bfoh.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bfoh.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      bfok.a().a(10, paramDialogInterface);
-      return;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public static int a(Activity paramActivity)
+  {
+    paramActivity = paramActivity.getWindow().getDecorView();
+    int i = paramActivity.getHeight();
+    if (a(paramActivity) > i * 3 / 4) {
+      return 2;
     }
-    catch (Exception paramDialogInterface)
+    return 1;
+  }
+  
+  public static int a(View paramView)
+  {
+    Rect localRect = new Rect();
+    paramView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    jdField_a_of_type_Int = a(paramActivity.getWindow().getDecorView());
+    jdField_a_of_type_Boolean = a(paramActivity);
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    Rect localRect = new Rect();
+    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    if (QLog.isColorLevel()) {
+      QLog.d("AtPanelStatus", 2, "onGlobalLayout, top=" + localRect.top + " bottom=" + localRect.bottom);
+    }
+    return localRect.top == 0;
+  }
+  
+  @RequiresApi(api=16)
+  public void a()
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
     {
-      break label6;
+      this.b = 1;
+      this.jdField_a_of_type_Bfjz = null;
+      this.c = 0;
+      return;
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(bfjz parambfjz)
+  {
+    if (parambfjz != null) {
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(this);
+    }
+    this.b = 1;
+    this.jdField_a_of_type_Bfjz = parambfjz;
+    this.c = 0;
+  }
+  
+  public void onGlobalLayout()
+  {
+    View localView = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
+    if (localView == null) {}
+    int i;
+    int j;
+    int k;
+    do
+    {
+      return;
+      i = localView.getHeight();
+      j = a(localView);
+      k = i - j;
+      if (this.jdField_a_of_type_AndroidViewView != null)
+      {
+        int m = this.jdField_a_of_type_AndroidViewView.getHeight();
+        if ((m != this.c) && (this.jdField_a_of_type_Bfjz != null)) {
+          this.jdField_a_of_type_Bfjz.b(this.b, j, this.c);
+        }
+        this.c = m;
+      }
+    } while (j == this.c);
+    if (k > i / 4)
+    {
+      this.b = 1;
+      if (this.jdField_a_of_type_Bfjz != null) {
+        this.jdField_a_of_type_Bfjz.a(this.b, j, k);
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AtPanelStatus", 2, "onGlobalLayout, screenHeight=" + i + " visibleHeight=" + j + " differHeight=" + k + " mode=" + this.b);
+      }
+      this.c = j;
+      return;
+      if (k < i * 3 / 4)
+      {
+        this.b = 2;
+        if (this.jdField_a_of_type_Bfjz != null) {
+          this.jdField_a_of_type_Bfjz.a(this.b, j, k);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfjy
  * JD-Core Version:    0.7.0.1
  */

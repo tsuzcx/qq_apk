@@ -7,7 +7,7 @@ import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.widget.FrameLayout;
-import bcxh;
+import bgbs;
 
 public class PhantomPicView$1
   implements Runnable
@@ -35,12 +35,12 @@ public class PhantomPicView$1
     ((AnimatorSet)localObject3).play((Animator)localObject1).with((Animator)localObject4).with((Animator)localObject2);
     ((AnimatorSet)localObject3).start();
     this.this$0.b.setTag(localObject3);
-    ((AnimatorSet)localObject3).addListener(new bcxh(this));
+    ((AnimatorSet)localObject3).addListener(new bgbs(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.PhantomPicView.1
  * JD-Core Version:    0.7.0.1
  */

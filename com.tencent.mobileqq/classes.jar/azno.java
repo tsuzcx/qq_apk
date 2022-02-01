@@ -1,40 +1,23 @@
-import android.app.Activity;
 import android.content.Intent;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class azno
-  extends WebViewPlugin
+class azno
+  implements View.OnClickListener
 {
-  private boolean a;
+  azno(aznl paramaznl) {}
   
-  public azno()
+  public void onClick(View paramView)
   {
-    this.mPluginNameSpace = "splashADPlugin";
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if (paramLong == 8589934598L)
-    {
-      QLog.i("QSplash@QbossSplashUtil", 1, "handleEvent finish or destroy. isFromSP:" + this.a);
-      if (this.a) {
-        this.mRuntime.a().startActivity(new Intent(this.mRuntime.a(), SplashActivity.class));
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
-  {
-    super.onWebViewCreated(paramCustomWebView);
-    if (this.mRuntime.a().getIntent() != null) {
-      this.a = this.mRuntime.a().getIntent().getBooleanExtra("key_from_splash_ad", false);
-    }
+    QLog.d("ProfileCircleComponent", 4, "qqCircleWriteEntrance onClick");
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_is_publish", true);
+    localIntent.putExtra("key_jump_from", "5");
+    uxo.a(aznl.a(this.a), localIntent);
+    vrf.a("", 3, 2, 2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,42 +1,43 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class ope
-  implements View.OnTouchListener
+  implements qft
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  
-  public ope(Context paramContext, View paramView)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    return null;
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return false;
-    }
-    switch (paramMotionEvent.getAction())
+    return qbv.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    if ((parampxk != null) && (parampxk.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampxk.a())))
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130848866));
-      return false;
+      paramContainer = paramContainer.findViewBaseByName("id_article_triple_image_interact");
+      if ((paramContainer != null) && ((paramContainer instanceof ots))) {
+        ((ots)paramContainer).a(parampxk);
+      }
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130848890));
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
+  {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ope
  * JD-Core Version:    0.7.0.1
  */

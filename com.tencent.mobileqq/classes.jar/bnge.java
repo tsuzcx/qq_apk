@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
 class bnge
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  bnge(bngb parambngb) {}
+  bnge(bngd parambngd, bnfk parambnfk, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
-    ((bnfx)this.a.a).f(false);
-    bngb.a(this.a).setSelected(false);
+    if (this.jdField_a_of_type_Bnfk.a.isChecked())
+    {
+      paramView = (LocalMediaInfo)bngd.a(this.jdField_a_of_type_Bngd).get(this.jdField_a_of_type_Int);
+      bngd.a(this.jdField_a_of_type_Bngd, paramView, this.jdField_a_of_type_Bnfk);
+      bngd.a(this.jdField_a_of_type_Bngd, this.jdField_a_of_type_Bnfk);
+      bngd.a(this.jdField_a_of_type_Bngd);
+      if (bngd.b(this.jdField_a_of_type_Bngd).isEmpty()) {
+        ((bnff)this.jdField_a_of_type_Bngd.a.get()).a.notifyDataSetChanged();
+      }
+      return true;
+    }
+    return false;
   }
 }
 

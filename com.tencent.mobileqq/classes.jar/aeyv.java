@@ -1,16 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditScrollerView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class aeyv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aeyv(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt1, int paramInt2, View paramView) {}
+  public aeyv(QQSettingMe paramQQSettingMe) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onGlobalLayout()
   {
-    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView, paramValueAnimator, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidViewView);
+    if (QQSettingMe.a(this.a)) {
+      QQSettingMe.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

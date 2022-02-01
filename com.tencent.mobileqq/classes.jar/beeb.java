@@ -1,17 +1,20 @@
-class beeb
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+
+public class beeb
+  implements View.OnTouchListener
 {
-  int jdField_a_of_type_Int;
-  char[] jdField_a_of_type_ArrayOfChar = new char[4];
+  public beeb(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, FrameLayout paramFrameLayout, View paramView) {}
   
-  private void a(byte[] paramArrayOfByte)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = bedz.a(paramArrayOfByte);
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfChar.length)
-    {
-      this.jdField_a_of_type_ArrayOfChar[i] = ((char)paramArrayOfByte[(i + 4)]);
-      i += 1;
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_AndroidViewView);
     }
+    return false;
   }
 }
 

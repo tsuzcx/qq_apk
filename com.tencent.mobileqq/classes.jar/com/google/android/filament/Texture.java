@@ -12,8 +12,7 @@ public class Texture
   public static final int BASE_LEVEL = 0;
   private long mNativeObject;
   
-  @UsedByReflection("KtxLoader.java")
-  Texture(long paramLong)
+  public Texture(long paramLong)
   {
     this.mNativeObject = paramLong;
   }
@@ -187,7 +186,7 @@ public class Texture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.google.android.filament.Texture
  * JD-Core Version:    0.7.0.1
  */

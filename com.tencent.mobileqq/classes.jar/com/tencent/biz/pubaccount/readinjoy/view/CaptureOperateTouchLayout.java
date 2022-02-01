@@ -14,10 +14,10 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import orc;
-import rpb;
-import rpd;
-import rpf;
+import pgk;
+import sma;
+import smc;
+import sme;
 
 public class CaptureOperateTouchLayout
   extends FrameLayout
@@ -31,7 +31,7 @@ public class CaptureOperateTouchLayout
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private VideoMeasureScaleView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private rpf jdField_a_of_type_Rpf;
+  private sme jdField_a_of_type_Sme;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -108,8 +108,8 @@ public class CaptureOperateTouchLayout
   
   private void b()
   {
-    if (this.jdField_a_of_type_Rpf != null) {
-      this.jdField_a_of_type_Rpf.a(a());
+    if (this.jdField_a_of_type_Sme != null) {
+      this.jdField_a_of_type_Sme.a(a());
     }
   }
   
@@ -134,7 +134,7 @@ public class CaptureOperateTouchLayout
     int i = (this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - this.jdField_a_of_type_AndroidWidgetTextView.getWidth()) / 2;
     this.jdField_a_of_type_AndroidWidgetImageView.setX(f1);
     this.jdField_a_of_type_AndroidWidgetTextView.setX(f1 + i);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(orc.a(this.c / 1000));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(pgk.a(this.c / 1000));
     b();
   }
   
@@ -162,9 +162,9 @@ public class CaptureOperateTouchLayout
     this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void setOnCaptureOperateCallback(rpf paramrpf)
+  public void setOnCaptureOperateCallback(sme paramsme)
   {
-    this.jdField_a_of_type_Rpf = paramrpf;
+    this.jdField_a_of_type_Sme = paramsme;
   }
   
   public void setup(ImageView paramImageView, TextView paramTextView1, TextView paramTextView2, VideoMeasureScaleView paramVideoMeasureScaleView, int paramInt)
@@ -175,12 +175,12 @@ public class CaptureOperateTouchLayout
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView = paramVideoMeasureScaleView;
     this.d = paramInt;
     this.f = (jdField_a_of_type_Int * paramInt);
-    paramImageView.setOnTouchListener(new rpd(this, new rpb(this, paramTextView2, paramVideoMeasureScaleView, paramImageView)));
+    paramImageView.setOnTouchListener(new smc(this, new sma(this, paramTextView2, paramVideoMeasureScaleView, paramImageView)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout
  * JD-Core Version:    0.7.0.1
  */

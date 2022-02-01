@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import aksl;
+import amlr;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
@@ -28,8 +28,8 @@ class ApolloRenderDriver$10
         while (i < j)
         {
           String str = "layout" + i;
-          aksl localaksl = (aksl)this.a.get(i);
-          localStringBuilder1.append("var ").append(str).append(" = ").append(localaksl.toString()).append(";\n");
+          amlr localamlr = (amlr)this.a.get(i);
+          localStringBuilder1.append("var ").append(str).append(" = ").append(localamlr.toString()).append(";\n");
           localStringBuilder2.append("bubbleLayoutList.push(").append(str).append(");\n");
           i += 1;
         }
@@ -55,7 +55,7 @@ class ApolloRenderDriver$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRenderDriver.10
  * JD-Core Version:    0.7.0.1
  */

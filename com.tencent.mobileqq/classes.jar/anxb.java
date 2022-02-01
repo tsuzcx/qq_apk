@@ -1,45 +1,14 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
+import com.tencent.mobileqq.app.TroopManager;
 
 public class anxb
-  extends QQLruCache<Integer, anwo>
 {
-  public anxb(BubbleManager paramBubbleManager, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public long a;
+  public String a;
   
-  public void a()
+  public anxb(TroopManager paramTroopManager, String paramString, long paramLong)
   {
-    Map localMap = snapshot();
-    if (localMap != null)
-    {
-      Iterator localIterator = localMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((anwo)localIterator.next()).a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("BubbleManager", 2, "BubbleInfoLruCache cleared, size = " + localMap.size());
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Integer paramInteger, anwo paramanwo1, anwo paramanwo2)
-  {
-    super.entryRemoved(paramBoolean, paramInteger, paramanwo1, paramanwo2);
-    if (QLog.isColorLevel()) {
-      QLog.d("BubbleManager", 2, "entryRemoved key=" + paramInteger);
-    }
-    paramanwo1.a();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return get(Integer.valueOf(paramInt)) != null;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

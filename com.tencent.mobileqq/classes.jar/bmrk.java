@@ -1,20 +1,10 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
-
-public class bmrk
-  implements bmrl
+public abstract interface bmrk
 {
-  public void a(List<bmri> paramList, DoodleView paramDoodleView)
-  {
-    bmqg localbmqg = new bmqg(paramDoodleView);
-    bmqe localbmqe = new bmqe(paramDoodleView);
-    bmqs localbmqs = new bmqs(paramDoodleView);
-    paramDoodleView = new bmqw(paramDoodleView);
-    paramList.add(localbmqg);
-    paramList.add(localbmqe);
-    paramList.add(localbmqs);
-    paramList.add(paramDoodleView);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b(int paramInt);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.notifymsg;
 
-import aizx;
-import ajeu;
+import akrq;
+import akww;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -15,15 +15,15 @@ public final class NotifyMsgManager$2
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = ajeu.a();
+    QQAppInterface localQQAppInterface = akww.a();
     if (localQQAppInterface != null)
     {
       Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
-        aizx localaizx = (aizx)localIterator.next();
-        if ((localaizx != null) && (localaizx.a != null)) {
-          localQQAppInterface.a().a(localaizx.a.frienduin, localaizx.a.istroop, localaizx.a.uniseq, "extStr", localaizx.a.extStr);
+        akrq localakrq = (akrq)localIterator.next();
+        if ((localakrq != null) && (localakrq.a != null)) {
+          localQQAppInterface.a().a(localakrq.a.frienduin, localakrq.a.istroop, localakrq.a.uniseq, "extStr", localakrq.a.extStr);
         }
       }
     }
@@ -31,7 +31,7 @@ public final class NotifyMsgManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.2
  * JD-Core Version:    0.7.0.1
  */

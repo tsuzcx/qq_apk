@@ -1,124 +1,28 @@
-import android.app.Activity;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.view.ArkHeaderView;
-import com.tencent.mobileqq.gamecenter.view.GameArkView;
-import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
-import com.tencent.mobileqq.gamecenter.view.MoreMsgHeaderView;
-import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class asof
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class asof
+  implements View.OnClickListener
 {
-  public static asnu a(MessageRecord paramMessageRecord, Activity paramActivity)
-  {
-    if ((paramMessageRecord instanceof MessageForArkApp)) {
-      return new ArkHeaderView(paramActivity, null);
-    }
-    if ((paramMessageRecord instanceof MessageForStructing)) {}
-    for (;;)
-    {
-      int n;
-      int i1;
-      try
-      {
-        paramMessageRecord = (ArrayList)((StructMsgForGeneralShare)((MessageForStructing)paramMessageRecord).structingMsg).getStructMsgItemLists();
-        if (paramMessageRecord != null) {
-          break label247;
-        }
-        return null;
-      }
-      catch (Throwable paramMessageRecord)
-      {
-        QLog.e("QQGamePubHeaderFactory", 1, "createHeader failed structMsg error=" + paramMessageRecord.toString());
-        return null;
-      }
-      if (n < paramMessageRecord.size())
-      {
-        if (!(paramMessageRecord.get(n) instanceof azut)) {
-          break label269;
-        }
-        ArrayList localArrayList = ((azut)paramMessageRecord.get(n)).a;
-        k = i;
-        i = j;
-        i1 = 0;
-        j = k;
-        k = j;
-        m = i;
-        if (i1 >= localArrayList.size()) {
-          break label275;
-        }
-        if ((localArrayList.get(i1) instanceof StructMsgItemTitle))
-        {
-          k = 1;
-          if ((k != 0) && (j != 0))
-          {
-            paramMessageRecord = new ImgHeaderView(paramActivity);
-            return paramMessageRecord;
-          }
-        }
-        else
-        {
-          k = i;
-          if (!(localArrayList.get(i1) instanceof azwv)) {
-            continue;
-          }
-          j = 1;
-          k = i;
-          continue;
-        }
-      }
-      else
-      {
-        if (paramMessageRecord.size() != 2) {
-          continue;
-        }
-        paramMessageRecord = new TextHeaderView(paramActivity);
-        return paramMessageRecord;
-        if ((paramMessageRecord instanceof MessageForPubAccount)) {
-          return new ImgHeaderView(paramActivity);
-        }
-        return new MoreMsgHeaderView(paramActivity);
-        label247:
-        n = 0;
-        i = 0;
-        j = 0;
-        continue;
-      }
-      i1 += 1;
-      int i = k;
-      continue;
-      label269:
-      int m = j;
-      int k = i;
-      label275:
-      n += 1;
-      int j = m;
-      i = k;
-    }
-  }
+  asof(asnz paramasnz) {}
   
-  public static asnu a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity)
+  public final void onClick(View paramView)
   {
-    if (paramQQGameMsgInfo == null) {
-      return new MoreMsgHeaderView(paramActivity);
+    bcst.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 1, 0, "", "", "", "");
+    this.a.dismiss();
+    if (asnz.a(this.a) != null)
+    {
+      asob localasob = asnz.a(this.a);
+      if (localasob == null) {
+        Intrinsics.throwNpe();
+      }
+      localasob.a(asnz.a(this.a));
     }
-    if (paramQQGameMsgInfo.msgType == 1) {
-      return new GameArkView(paramActivity, null);
-    }
-    if (paramQQGameMsgInfo.msgType == 2) {
-      return new ImgHeaderView(paramActivity);
-    }
-    if (paramQQGameMsgInfo.msgType == 3) {
-      return new TextHeaderView(paramActivity);
-    }
-    return new MoreMsgHeaderView(paramActivity);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

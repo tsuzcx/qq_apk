@@ -1,27 +1,39 @@
-class lni
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+
+public class lni
 {
   int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  int e = 0;
-  int f = 0;
-  int g = 0;
-  int h = 0;
-  int i = 0;
-  int j = 0;
-  int k = 0;
-  int l = 0;
-  int m = 0;
-  int n = 0;
-  int o = 0;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  long b = 0L;
   
-  lni(lnf paramlnf) {}
+  public lni(String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = ("EventCountLog_" + paramString);
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  void a()
+  {
+    if (!AudioHelper.f()) {}
+    long l1;
+    do
+    {
+      return;
+      l1 = System.currentTimeMillis();
+      this.jdField_a_of_type_Int += 1;
+    } while (this.b >= l1);
+    long l2 = this.jdField_a_of_type_Long;
+    long l3 = this.b;
+    this.b = (l1 + this.jdField_a_of_type_Long);
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "EventCountLog, eventCount[" + this.jdField_a_of_type_Int + "], intervalMS[" + (l2 + l1 - l3) + "]");
+    this.jdField_a_of_type_Int = 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lni
  * JD-Core Version:    0.7.0.1
  */

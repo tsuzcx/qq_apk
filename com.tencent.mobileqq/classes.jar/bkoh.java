@@ -1,60 +1,19 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import android.text.DynamicLayout;
+import android.text.Layout.Alignment;
+import android.text.TextPaint;
+import android.text.TextUtils.TruncateAt;
 
 public class bkoh
+  extends DynamicLayout
 {
-  public static int a;
-  private static QQFilterRenderManager a;
-  public static int b;
-  private static QQFilterRenderManager b;
-  public static int c = 2;
-  private static int d;
-  
-  static
+  public bkoh(CharSequence paramCharSequence1, CharSequence paramCharSequence2, TextPaint paramTextPaint, int paramInt1, Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt2)
   {
-    bkoq.a();
-    axpm.a(true);
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 1;
+    super(paramCharSequence1, paramCharSequence2, paramTextPaint, paramInt1, paramAlignment, paramFloat1, paramFloat2, paramBoolean, paramTruncateAt, paramInt2);
   }
   
-  public static int a()
+  public int getParagraphDirection(int paramInt)
   {
-    return d;
-  }
-  
-  public static QQFilterRenderManager a()
-  {
-    return new QQFilterRenderManager(new int[] { 70, 80, 90, 184 });
-  }
-  
-  public static QQFilterRenderManager a(int paramInt)
-  {
-    if (paramInt == c) {
-      return jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
-    }
-    return EffectsCameraCaptureView.b();
-  }
-  
-  public static void a(QQFilterRenderManager paramQQFilterRenderManager)
-  {
-    jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = paramQQFilterRenderManager;
-  }
-  
-  public static QQFilterRenderManager b()
-  {
-    try
-    {
-      if ((jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null) && (jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.isSurfaceDestroyed())) {
-        jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
-      }
-      if (jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null) {
-        jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = a();
-      }
-      QQFilterRenderManager localQQFilterRenderManager = jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
-      return localQQFilterRenderManager;
-    }
-    finally {}
+    return 1;
   }
 }
 

@@ -14,7 +14,7 @@
         "default_visible": "YES",
         "event_type": "cmd_url_click_card_report",
         "attributes": {
-            "setAttatchInfo:": "$url"
+            "setAttatchInfo:": "$video_jump_url"
         },
         "data_attributes": {
             "setLocalInfo:": {
@@ -24,7 +24,28 @@
         },
         "subviews": [
             {
-                "$includeComponet": "componet/live_info_with_avatar_cell.geojson"
+                "$includeComponet": "componet/RIJ_feeds_social_header.geojson"
+            },
+            {
+                "view_id": "id_user_info",
+                "view_type": "UILabel",
+                "align_parent_top": "YES",
+                "align_parent_left": "YES",
+                "margin_left": "12",
+                "default_visible": "YES",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "351"
+                },
+                "attributes": {
+                    "setText:": "$user_info_text",
+                    "setTextColorString:": "#262626",
+                    "setFontSizeString:": "16",
+                    "setNumberOfLinesString:": "2"
+                }
             },
             {
                 "view_id": "id_common_topic_video_container",
@@ -36,7 +57,7 @@
                 },
                 "width": {
                     "type": "relative",
-                    "value": "363"
+                    "value": "351"
                 },
                 "margin_top": "8",
                 "margin_bottom": "8",
@@ -48,7 +69,8 @@
                 },
                 "data_attributes": {
                     "setLocalInfo:": {
-                        "feeds_type": "2004"
+                        "feeds_type": "2004",
+                        "is_show_followed": "$is_show_followed"
                     },
                     "setRemoteInfo:": "$video_jump_report_info"
                 },
@@ -136,6 +158,45 @@
                         },
                         "attributes": {
                             "loadImageWithPath:": "$play_icon_url"
+                        }
+                    },
+                    {
+                        "view_id": "id_dislike_button_bg",
+                        "view_type": "UIButton",
+                        "align_parent_right": "YES",
+                        "align_parent_bottom": "YES",
+                        "default_visible": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "70"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "70"
+                        },
+                        "attributes": {
+                            "setImage:": "dislike_right_bottom"
+                        }
+                    },
+                    {
+                        "view_id": "id_dislike_button_2",
+                        "view_type": "UIButton",
+                        "align_parent_right": "YES",
+                        "align_parent_bottom": "YES",
+                        "margin_right": "6",
+                        "margin_bottom": "6",
+                        "event_type": "cmd_dislike_click",
+                        "default_visible": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "12"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "12"
+                        },
+                        "attributes": {
+                            "setImage:": "dislike_x"
                         }
                     },
                     {

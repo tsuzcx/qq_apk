@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import azkt;
+import bcls;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ class PtvTemplateManager$8
       this.this$0.b.clear();
       this.this$0.b.addAll(localList);
       this.this$0.d = true;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (azkt.c())) {
+      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (bcls.a())) {
         this.this$0.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.this$0.b);
       }
       PtvTemplateManager.a(this.this$0);
@@ -38,7 +38,7 @@ class PtvTemplateManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.8
  * JD-Core Version:    0.7.0.1
  */

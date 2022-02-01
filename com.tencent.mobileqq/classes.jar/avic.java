@@ -1,45 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class avic
-  extends AnimatorListenerAdapter
+  implements INetEventHandler
 {
-  avic(avhf paramavhf) {}
+  avic(avhx paramavhx) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.a.c = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.c = false;
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366649).setVisibility(8);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366623).setTranslationY(0.0F);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366648).setTranslationY(0.0F);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366658).setVisibility(8);
-  }
-  
-  public void onAnimationPause(Animator paramAnimator)
-  {
-    this.a.c = false;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.c = true;
-    int i = this.a.jdField_b_of_type_Int;
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366647).setBackgroundResource(2130845024);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366647).getBackground().setColorFilter(new LightingColorFilter(-16777216, i));
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366646).setBackgroundColor(0);
+    if (avhx.a(this.a) == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + avhx.a(this.a).e);
+      }
+    } while (!paramBoolean);
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avic
  * JD-Core Version:    0.7.0.1
  */

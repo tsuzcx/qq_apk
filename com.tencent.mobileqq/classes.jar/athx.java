@@ -1,38 +1,51 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
-import org.json.JSONObject;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.ChatFileSearchFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class athx
-  implements QQPermissionCallback
+  extends bbip<bbmy, bbvg>
 {
-  public athx(MediaApiPlugin paramMediaApiPlugin, Intent paramIntent, Context paramContext, String paramString, JSONObject paramJSONObject, boolean paramBoolean, BasePluginActivity paramBasePluginActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public athx(ListView paramListView, aobu paramaobu, List<bbmy> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    QLog.d(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, "User requestPermissions RECORD_AUDIO denied");
-    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkBasePluginActivity.getOutActivity(), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
-      MediaApiPlugin.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).putString("getMediaParam", this.jdField_a_of_type_OrgJsonJSONObject.toString()).putBoolean("calledFromOpenApi", this.jdField_a_of_type_Boolean).commit();
+    super(paramaobu, paramList);
+    if (paramString == null) {
       return;
     }
-    catch (Exception paramArrayOfString)
+    if (paramString.size() == 1)
     {
-      QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690645, 0).a();
+      paramListView = (athv)paramString.get(0);
+      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
+      {
+        paramaobu = new ArrayList();
+        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramList.hasNext())
+        {
+          paramString = (FileManagerEntity)paramList.next();
+          paramQQAppInterface = new athv();
+          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
+          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
+          paramaobu.add(paramQQAppInterface);
+        }
+        a(paramaobu);
+        return;
+      }
     }
+    a(paramString);
+  }
+  
+  protected bbps<bbmy, bbvg> a(int paramInt)
+  {
+    return new atie(ChatFileSearchFragment.a(this.a));
+  }
+  
+  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new athy(paramViewGroup);
   }
 }
 

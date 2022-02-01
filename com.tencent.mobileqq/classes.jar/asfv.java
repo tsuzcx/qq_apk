@@ -1,34 +1,14 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.data.Card;
 
-final class asfv
-  extends mzz
+class asfv
+  extends aniz
 {
-  asfv(NearbyAppInterface paramNearbyAppInterface) {}
+  asfv(asfu paramasfu) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    boolean bool2 = false;
-    if (paramInt == 0) {
-      auwq.b(this.a.getCurrentAccountUin(), false);
-    }
-    for (boolean bool1 = false;; bool1 = auwq.b(this.a.getCurrentAccountUin()))
-    {
-      paramArrayOfByte = new HashMap();
-      paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
-      paramBundle = azri.a(BaseApplicationImpl.getContext());
-      String str = this.a.getCurrentAccountUin();
-      if (paramInt == 0) {
-        bool2 = true;
-      }
-      paramBundle.a(str, "oidb_0x91f", bool2, 0L, 0L, paramArrayOfByte, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby", 2, "oidb_0x91f| visible:" + bool1 + "replyCode:" + paramInt);
-      }
-      return;
+    if ((paramBoolean) && (paramInt == 0)) {
+      asfu.a(this.a);
     }
   }
 }

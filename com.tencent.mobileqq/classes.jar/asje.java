@@ -1,43 +1,42 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.Fragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
+import com.tencent.widget.XEditTextEx;
 
 public class asje
-  implements asjc
+  implements asny
 {
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    a(paramString1, paramString2, paramString3, null);
-  }
+  public asje(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  public void a()
   {
-    if ("i".equals(paramString2)) {
-      if (QLog.isColorLevel()) {
-        QLog.i(paramString1, 2, paramString3, paramThrowable);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.a()) {
+      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.b();
+    }
+    this.a.b = "";
+    ExtendFriendProfileEditFragment.b(this.a, 0);
+    Fragment localFragment = this.a.getParentFragment();
+    if ((localFragment != null) && ((localFragment instanceof ExtendFriendEditFragment))) {
+      ((ExtendFriendEditFragment)localFragment).a = null;
+    }
+    ExtendFriendProfileEditFragment.a(this.a, null);
+    ExtendFriendProfileEditFragment.c(this.a);
+    if (ExtendFriendProfileEditFragment.b(this.a))
+    {
+      ExtendFriendProfileEditFragment.a(this.a, true);
+      ExtendFriendProfileEditFragment.b(this.a);
+    }
+    for (;;)
+    {
+      this.a.c = true;
+      ExtendFriendProfileEditFragment.b(this.a);
+      return;
+      ExtendFriendProfileEditFragment.a(this.a, false);
+      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()))) {
+        ExtendFriendProfileEditFragment.a(this.a);
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        if (!"d".equals(paramString2)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(paramString1, 2, paramString3, paramThrowable);
-      return;
-      if ("w".equals(paramString2))
-      {
-        QLog.w(paramString1, 2, paramString3, paramThrowable);
-        return;
-      }
-      if ("e".equals(paramString2))
-      {
-        QLog.e(paramString1, 2, paramString3, paramThrowable);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(paramString1, 2, paramString3, paramThrowable);
   }
 }
 

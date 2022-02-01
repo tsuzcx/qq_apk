@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import akrc;
-import bhtd;
+import amki;
+import bkgm;
 import java.lang.ref.WeakReference;
 
 class ApolloRenderDriver$RenderRunnable
@@ -20,9 +20,9 @@ class ApolloRenderDriver$RenderRunnable
     if ((this.a != null) && (this.a.get() != null))
     {
       localApolloRenderDriver = (ApolloRenderDriver)this.a.get();
-      if ((localApolloRenderDriver != null) && (localApolloRenderDriver.jdField_a_of_type_Akrc != null) && (localApolloRenderDriver.jdField_a_of_type_Bhtd != null))
+      if ((localApolloRenderDriver != null) && (localApolloRenderDriver.jdField_a_of_type_Amki != null) && (localApolloRenderDriver.jdField_a_of_type_Bkgm != null))
       {
-        localApolloRenderDriver.jdField_a_of_type_Akrc.onRender();
+        localApolloRenderDriver.jdField_a_of_type_Amki.onRender();
         if (((ApolloRenderDriver)this.a.get()).jdField_a_of_type_Int <= 0) {
           break label101;
         }
@@ -31,14 +31,14 @@ class ApolloRenderDriver$RenderRunnable
     label101:
     for (int i = 1000 / ((ApolloRenderDriver)this.a.get()).jdField_a_of_type_Int;; i = 50)
     {
-      localApolloRenderDriver.jdField_a_of_type_Bhtd.postDelayed(this, i);
+      localApolloRenderDriver.jdField_a_of_type_Bkgm.postDelayed(this, i);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRenderDriver.RenderRunnable
  * JD-Core Version:    0.7.0.1
  */

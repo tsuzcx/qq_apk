@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel;
 
-import aepi;
+import afur;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -10,12 +10,12 @@ import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import arwp;
-import blqr;
-import bltq;
-import bmxb;
-import bmxc;
-import bmxd;
+import audz;
+import bojv;
+import bomu;
+import bpoh;
+import bpoi;
+import bpoj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.text.DynamicTextConfigManager;
@@ -25,7 +25,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 import mqq.app.AppRuntime;
-import wxj;
+import yqu;
 
 public class EditTextEffectView
   extends RecyclerView
@@ -36,9 +36,9 @@ public class EditTextEffectView
   public static final int c;
   public Handler a;
   public LinearLayoutManager a;
-  arwp jdField_a_of_type_Arwp;
-  bltq jdField_a_of_type_Bltq = new bmxb(this);
-  bmxc jdField_a_of_type_Bmxc = null;
+  audz jdField_a_of_type_Audz;
+  bomu jdField_a_of_type_Bomu = new bpoh(this);
+  bpoi jdField_a_of_type_Bpoi = null;
   public Vector<DynamicTextConfigManager.DynamicTextConfigBean> a;
   public boolean a;
   public int d = -1;
@@ -47,17 +47,17 @@ public class EditTextEffectView
   static
   {
     Resources localResources = BaseApplicationImpl.sApplication.getResources();
-    b = aepi.a(5.0F, localResources);
-    jdField_a_of_type_Int = aepi.a(5.0F, localResources);
-    c = aepi.a(3.0F, localResources);
+    b = afur.a(5.0F, localResources);
+    jdField_a_of_type_Int = afur.a(5.0F, localResources);
+    c = afur.a(3.0F, localResources);
   }
   
-  public EditTextEffectView(Context paramContext, arwp paramarwp)
+  public EditTextEffectView(Context paramContext, audz paramaudz)
   {
     super(paramContext);
     this.jdField_a_of_type_JavaUtilVector = new Vector();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_Arwp = paramarwp;
+    this.jdField_a_of_type_Audz = paramaudz;
     setClipToPadding(false);
     b();
     a();
@@ -80,13 +80,13 @@ public class EditTextEffectView
   
   public int a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Bmxc != null) && (this.jdField_a_of_type_Bmxc.a != null))
+    if ((this.jdField_a_of_type_Bpoi != null) && (this.jdField_a_of_type_Bpoi.a != null))
     {
-      int j = this.jdField_a_of_type_Bmxc.a.size();
+      int j = this.jdField_a_of_type_Bpoi.a.size();
       int i = 0;
       while (i < j)
       {
-        if (((DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_Bmxc.a.get(i)).text_id == paramInt) {
+        if (((DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_Bpoi.a.get(i)).text_id == paramInt) {
           return i;
         }
         i += 1;
@@ -97,10 +97,10 @@ public class EditTextEffectView
   
   public DynamicTextConfigManager.DynamicTextConfigBean a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bmxc.a == null) {
+    if (this.jdField_a_of_type_Bpoi.a == null) {
       return null;
     }
-    return (DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_Bmxc.a.get(paramInt);
+    return (DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_Bpoi.a.get(paramInt);
   }
   
   public void a()
@@ -108,7 +108,7 @@ public class EditTextEffectView
     if (QLog.isColorLevel()) {
       QLog.d("EditTextEffectView", 2, "loadData");
     }
-    DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)blqr.a(7);
+    DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)bojv.a(7);
     if (!localDynamicTextConfigManager.a()) {
       localDynamicTextConfigManager.c();
     }
@@ -116,8 +116,8 @@ public class EditTextEffectView
     ArrayList localArrayList = localDynamicTextConfigManager.a();
     localDynamicTextConfigManager.a(localArrayList, this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_JavaUtilVector.addAll(a(localArrayList));
-    this.jdField_a_of_type_Bmxc.a(this.jdField_a_of_type_JavaUtilVector);
-    this.jdField_a_of_type_Bmxc.notifyDataSetChanged();
+    this.jdField_a_of_type_Bpoi.a(this.jdField_a_of_type_JavaUtilVector);
+    this.jdField_a_of_type_Bpoi.notifyDataSetChanged();
   }
   
   public void a(int paramInt)
@@ -125,20 +125,20 @@ public class EditTextEffectView
     if (paramInt == -1) {
       return;
     }
-    if ((this.jdField_a_of_type_Bmxc.a != null) && (paramInt < this.jdField_a_of_type_Bmxc.a.size()))
+    if ((this.jdField_a_of_type_Bpoi.a != null) && (paramInt < this.jdField_a_of_type_Bpoi.a.size()))
     {
-      this.d = ((DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_Bmxc.a.get(paramInt)).text_id;
+      this.d = ((DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_Bpoi.a.get(paramInt)).text_id;
       int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getChildCount();
       int i = 0;
       label65:
-      bmxd localbmxd;
+      bpoj localbpoj;
       if (i < j)
       {
-        localbmxd = (bmxd)getChildViewHolder(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getChildAt(i));
-        if (localbmxd.jdField_a_of_type_Int == paramInt) {
+        localbpoj = (bpoj)getChildViewHolder(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getChildAt(i));
+        if (localbpoj.jdField_a_of_type_Int == paramInt) {
           break label109;
         }
-        localbmxd.b(false);
+        localbpoj.b(false);
       }
       for (;;)
       {
@@ -146,8 +146,8 @@ public class EditTextEffectView
         break label65;
         break;
         label109:
-        localbmxd.b(true);
-        wxj.a("video_edit_new", "text_element", this.e, 0, new String[] { "0", String.valueOf(this.d) });
+        localbpoj.b(true);
+        yqu.a("video_edit_new", "text_element", this.e, 0, new String[] { "0", String.valueOf(this.d) });
       }
     }
     QLog.e("EditTextEffectView", 1, "select position = " + paramInt + " no item");
@@ -160,8 +160,8 @@ public class EditTextEffectView
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext());
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(0);
     setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Bmxc = new bmxc(this, this.jdField_a_of_type_Arwp);
-    setAdapter(this.jdField_a_of_type_Bmxc);
+    this.jdField_a_of_type_Bpoi = new bpoi(this, this.jdField_a_of_type_Audz);
+    setAdapter(this.jdField_a_of_type_Bpoi);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -180,14 +180,14 @@ public class EditTextEffectView
   {
     super.onAttachedToWindow();
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().waitAppRuntime(null);
-    this.jdField_a_of_type_Bltq = new bltq();
-    localAppRuntime.registObserver(this.jdField_a_of_type_Bltq);
+    this.jdField_a_of_type_Bomu = new bomu();
+    localAppRuntime.registObserver(this.jdField_a_of_type_Bomu);
   }
   
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    BaseApplicationImpl.getApplication().waitAppRuntime(null).unRegistObserver(this.jdField_a_of_type_Bltq);
+    BaseApplicationImpl.getApplication().waitAppRuntime(null).unRegistObserver(this.jdField_a_of_type_Bomu);
   }
   
   protected void onVisibilityChanged(View paramView, int paramInt)
@@ -215,7 +215,7 @@ public class EditTextEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView
  * JD-Core Version:    0.7.0.1
  */

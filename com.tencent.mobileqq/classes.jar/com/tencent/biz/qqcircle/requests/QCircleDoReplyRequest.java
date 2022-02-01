@@ -15,8 +15,7 @@ import feedcloud.FeedCloudWrite.StDoReplyReq;
 import feedcloud.FeedCloudWrite.StDoReplyRsp;
 import java.util.ArrayList;
 import java.util.List;
-import tra;
-import tzy;
+import uxx;
 
 public class QCircleDoReplyRequest
   extends QCircleBaseRequest
@@ -26,7 +25,7 @@ public class QCircleDoReplyRequest
   public static final int OPER_TYPE_OWNER_DELETE = 2;
   FeedCloudWrite.StDoReplyReq req;
   
-  public QCircleDoReplyRequest(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply, int paramInt)
+  public QCircleDoReplyRequest(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply, int paramInt, boolean paramBoolean)
   {
     if (paramStFeed == null)
     {
@@ -34,7 +33,7 @@ public class QCircleDoReplyRequest
       return;
     }
     this.req = new FeedCloudWrite.StDoReplyReq();
-    this.req.feed.set(tra.a(paramStFeed));
+    this.req.feed.set(uxx.a(paramStFeed));
     this.req.comment.set(paramStComment);
     this.req.reply.set(paramStReply);
     this.req.from.set(0);
@@ -44,7 +43,7 @@ public class QCircleDoReplyRequest
     }
     paramStFeed = new FeedCloudCommon.Entry();
     paramStFeed.key.set("ext_source");
-    if (((tzy.a().c(61)) && (tzy.a().d(57))) || (tzy.a().c(57))) {
+    if (paramBoolean) {
       paramStFeed.value.set("2");
     }
     for (;;)
@@ -78,7 +77,7 @@ public class QCircleDoReplyRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleDoReplyRequest
  * JD-Core Version:    0.7.0.1
  */

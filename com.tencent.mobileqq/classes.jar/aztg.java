@@ -1,121 +1,116 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
 
 public class aztg
+  implements ankk, Manager
 {
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
-  private TreeMap<azth, String> jdField_a_of_type_JavaUtilTreeMap;
+  private QQAppInterface a;
   
-  private String a()
+  public aztg(QQAppInterface paramQQAppInterface)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nBusiness\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
-    int i = 0;
-    if (localIterator.hasNext())
+    this.a = paramQQAppInterface;
+    String str = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.SilkCfg.name(), "null");
+    if (!"null".equalsIgnoreCase(str))
     {
-      localObject = (Map.Entry)localIterator.next();
-      if (i < 20) {}
+      bgrn.a(paramQQAppInterface, str);
+      bgrn.a(paramQQAppInterface, true);
+      str = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.StreamCfg.name(), "null");
+      if ("null".equalsIgnoreCase(str)) {
+        break label161;
+      }
+      azto.a(paramQQAppInterface, str);
+      azto.a(paramQQAppInterface, true);
     }
-    else
-    {
-      return localStringBuilder.toString();
-    }
-    localStringBuilder.append("fd: ").append((String)((Map.Entry)localObject).getValue()).append(" ").append("(").append("count: ").append(((azth)((Map.Entry)localObject).getKey()).jdField_a_of_type_Int).append(")").append("\n");
-    Object localObject = new ArrayList(((azth)((Map.Entry)localObject).getKey()).jdField_a_of_type_JavaUtilHashMap.values());
-    Collections.sort((List)localObject);
-    localObject = ((List)localObject).iterator();
-    int j = 0;
     for (;;)
     {
-      azth localazth;
-      if (((Iterator)localObject).hasNext())
+      paramQQAppInterface = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.aio_config.name(), "").split("\\|");
+      if (paramQQAppInterface.length > 13)
       {
-        localazth = (azth)((Iterator)localObject).next();
-        if (j >= 5) {
-          localStringBuilder.append("\t\t").append("…").append("\n");
+        boolean bool = "1".equals(paramQQAppInterface[12]);
+        SyncService.b(BaseApplicationImpl.sApplication, bool);
+        if (paramQQAppInterface.length > 14)
+        {
+          bool = "1".equals(paramQQAppInterface[13]);
+          bcsd.a(BaseApplicationImpl.sApplication, bool);
         }
       }
-      else
-      {
-        i += 1;
-        break;
-      }
-      j += 1;
-      localStringBuilder.append("\t\t").append(localazth.jdField_a_of_type_JavaLangString).append("(").append("count: ").append(localazth.jdField_a_of_type_Int).append(")").append("\n");
+      DeviceProfileManager.a(this);
+      return;
+      bgrn.a(paramQQAppInterface, false);
+      break;
+      label161:
+      azto.a(paramQQAppInterface, false);
     }
   }
   
-  private void a(azti paramazti)
+  public void a(String paramString)
   {
-    paramazti.a();
-    c(paramazti);
-    b(paramazti);
-  }
-  
-  private String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nSystem\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    QQAppInterface localQQAppInterface = this.a;
+    bdwu.a();
+    if (localQQAppInterface != null)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      localStringBuilder.append("fd: ").append((String)localEntry.getKey()).append(" ").append("(").append("count: ").append(localEntry.getValue()).append(")").append("\n");
+      azto.b(localQQAppInterface, paramString);
+      azto.b(localQQAppInterface, true);
     }
-    return localStringBuilder.toString();
   }
   
-  private void b(azti paramazti)
+  public void a(boolean paramBoolean)
   {
-    Object localObject = paramazti.a();
-    paramazti = new HashMap(20);
-    localObject = ((HashMap)localObject).entrySet().iterator();
-    while (((Iterator)localObject).hasNext())
+    Object localObject = this.a;
+    if ((localObject != null) && (paramBoolean))
     {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      String str = (String)localEntry.getValue();
-      if (azti.a(str) == null) {
-        paramazti.put(localEntry.getKey(), str);
+      bgrn.a((QQAppInterface)localObject, DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.SilkCfg.name(), ""));
+      bgrn.a((QQAppInterface)localObject, true);
+      azto.a((QQAppInterface)localObject, DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.StreamCfg.name(), ""));
+      azto.a((QQAppInterface)localObject, true);
+      localObject = DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.aio_config.name(), "").split("\\|");
+      if (localObject.length > 13)
+      {
+        paramBoolean = "1".equals(localObject[12]);
+        SyncService.b(BaseApplicationImpl.sApplication, paramBoolean);
+        if (localObject.length > 14)
+        {
+          paramBoolean = "1".equals(localObject[13]);
+          bcsd.a(BaseApplicationImpl.sApplication, paramBoolean);
+        }
       }
     }
-    this.jdField_a_of_type_JavaUtilTreeMap = new TreeMap(paramazti);
   }
   
-  private void c(azti paramazti)
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap(10);
-    paramazti = paramazti.b().entrySet().iterator();
-    while (paramazti.hasNext())
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null)
     {
-      Object localObject = (Map.Entry)paramazti.next();
-      azth localazth = (azth)((Map.Entry)localObject).getKey();
-      localObject = (String)((Map.Entry)localObject).getValue();
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(localazth.jdField_a_of_type_Int));
-      }
-      else
-      {
-        Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        Map localMap = this.jdField_a_of_type_JavaUtilMap;
-        int i = localInteger.intValue();
-        localMap.put(localObject, Integer.valueOf(localazth.jdField_a_of_type_Int + i));
-      }
+      azti.a(localQQAppInterface, paramString);
+      azti.a(localQQAppInterface, true);
     }
   }
   
-  public String a(azti paramazti)
+  public void c(String paramString)
   {
-    a(paramazti);
-    return a() + b();
+    if (TextUtils.isEmpty(paramString)) {}
+    bdwu.a();
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null)
+    {
+      aztx.a(localQQAppInterface, paramString);
+      aztx.a(localQQAppInterface, true);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    aztx.a();
+    DeviceProfileManager.b(this);
+    bgrn.a();
+    azto.a();
   }
 }
 

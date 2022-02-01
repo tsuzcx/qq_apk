@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.data;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 import java.util.List;
 import tencent.im.oidb.cmd0x935.oidb_0x935.Label;
 
 public class NewRecommendTroopItem
-  extends awge
+  extends Entity
 {
   public int group_flag;
   public int group_flag_ext;
@@ -20,7 +20,7 @@ public class NewRecommendTroopItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.NewRecommendTroopItem
  * JD-Core Version:    0.7.0.1
  */

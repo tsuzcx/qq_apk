@@ -1,24 +1,39 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class bdlm
-  implements View.OnTouchListener
+public class bdlm
+  implements DialogInterface.OnClickListener
 {
-  bdlm(bdll parambdll) {}
+  public bdlm(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, PadInfo paramPadInfo) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setImageResource(2130846838);
-    this.a.a.setTag(Integer.valueOf(2130846838));
-    this.a.a();
-    return false;
+    if (!bgnt.g(BaseApplicationImpl.getContext())) {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131691985), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298998));
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Bdlj == null) {
+      return;
+    }
+    paramDialogInterface = bdjg.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.domainId, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.padId);
+    if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getCheckBoxState()) {
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Bdlj.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(1);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Bdlj.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdlm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendHorizontalTagsView;
 
-final class asnn
-  implements ajal
+public class asnn
 {
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public int a;
+  public String a;
+  
+  public asnn(ExtendFriendHorizontalTagsView paramExtendFriendHorizontalTagsView, int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameHelper", 1, "dowloadFullPopRes complete! rescpde=" + paramInt);
-    }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)) && (QLog.isColorLevel())) {
-      QLog.d("QQGameHelper", 1, "dowloadFullPopRes fileUrl=" + paramPathResult.url + " unzipPath=" + paramPathResult.folderPath);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

@@ -1,37 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class adjq
-  extends VerifyDevLockManager.VerifyDevLockObserver
+  implements View.OnTouchListener
 {
-  private WeakReference<VerifyDevLockManager.VerifyDevLockObserver> a;
+  public adjq(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public adjq(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = new WeakReference(paramVerifyDevLockObserver);
-  }
-  
-  public void onReceive(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt, Object paramObject)
-  {
-    if (this.a.get() == null)
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-      QLog.e("NewAuthDevUgFragment", 1, "VerifyObserverWrapper onReceive mObserver.get() is null");
-      return;
     }
-    ((VerifyDevLockManager.VerifyDevLockObserver)this.a.get()).onReceive(paramNotifyType, paramInt, paramObject);
-  }
-  
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (this.a.get() == null)
+    do
     {
-      QLog.e("NewAuthDevUgFragment", 1, "VerifyObserverWrapper onVerifyClose mObserver.get() is null");
-      return;
-    }
-    ((VerifyDevLockManager.VerifyDevLockObserver)this.a.get()).onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 

@@ -1,76 +1,133 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.quickat.ui.AIOAtSearchManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import com.tencent.mobileqq.utils.confighandler.ConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-class bchi
-  extends ameq
+public class bchi
 {
-  bchi(bchh parambchh) {}
+  bchj jdField_a_of_type_Bchj = null;
+  DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
+  boolean jdField_a_of_type_Boolean = false;
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  bchi()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AtPanel", 2, "onUpdateTroopGetMemberList troopUin=" + paramString + " isSuccess=" + paramBoolean + " reqType=" + paramInt1 + " type" + paramInt2 + " reqTimestamp=" + paramLong);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGesture", 4, "GestureMgrAppDownload in QQAppInterface");
     }
-    if (paramInt1 != 2) {}
-    do
-    {
-      return;
-      if ((paramString != null) && (paramString.equals(bchh.a(this.a).a))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AtPanel", 2, " onUpdateTroopGetMemberList troopUin =" + paramString + " mSession.troopUin=" + bchh.a(this.a).a);
-    return;
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder().append(" onUpdateTroopGetMemberList troopMemberInfoList =");
-        if (paramList != null) {
-          break label224;
-        }
-      }
-      label224:
-      for (paramInt1 = 0;; paramInt1 = paramList.size())
-      {
-        QLog.d("AtPanel", 2, paramInt1);
-        if (bchh.a(this.a) != null) {
-          break label235;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AtPanel", 2, " onUpdateTroopGetMemberList mPopupWindow = null");
-        return;
-      }
-      label235:
-      bchh.a(this.a).a(0, 2131689924);
-      return;
-    }
-    paramString = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)paramList.next();
-      paramString.add(bchn.a(bchh.a(this.a), localTroopMemberInfo));
-    }
-    bchh.a(this.a).a(paramString);
-    bchh.a(this.a).a(bchh.a(this.a), bchh.a(this.a), bchh.a(this.a).G());
+    this.jdField_a_of_type_Bchj = new bchj();
   }
   
-  protected void b()
+  static void a(int paramInt)
   {
-    super.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("AtPanel", 2, "onTroopMemberUpdate: invoked. ");
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    Intent localIntent = new Intent("tencent.video.gesturemgr.notify");
+    localIntent.setPackage(localBaseApplicationImpl.getPackageName());
+    localIntent.putExtra("Event_Progress", paramInt);
+    localBaseApplicationImpl.sendBroadcast(localIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGesture", 4, "onEnterBackground");
     }
-    bchh.a(this.a, true);
+    a();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, ConfigInfo paramConfigInfo)
+  {
+    bchg.a().a.b(paramQQAppInterface, paramString, paramConfigInfo);
+  }
+  
+  public static void a(DownloadInfo paramDownloadInfo, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = DownloadInfo.getSP();
+    String str;
+    if ((paramInt & 0x1) == 1)
+    {
+      str = paramDownloadInfo.MD5_zip_so;
+      localSharedPreferences.edit().putString("so_zip_md5", str).commit();
+      a(paramDownloadInfo.so_name);
+    }
+    if ((paramInt & 0x2) == 2)
+    {
+      str = paramDownloadInfo.MD5_zip_model;
+      localSharedPreferences.edit().putString("model_zip_md5", str).commit();
+    }
+    if ((paramInt & 0x3) == 3)
+    {
+      paramDownloadInfo = paramDownloadInfo.MD5_zip_gamemodel;
+      localSharedPreferences.edit().putString("gamemodel_zip_md5", paramDownloadInfo).commit();
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    BaseApplicationImpl.sApplication.getSharedPreferences("so_sp", 4).edit().putString("key_so_version_" + paramString, AppSetting.g()).commit();
+  }
+  
+  public static boolean a()
+  {
+    return bchg.a().a.b();
+  }
+  
+  void b(QQAppInterface paramQQAppInterface, String paramString, ConfigInfo paramConfigInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = ((DownloadInfo)paramConfigInfo);
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+    }
+    QLog.w("QavGesture", 1, "handle_QAG_Gesture_Config, configInfo[" + paramConfigInfo + "], mDownloadInfo[" + this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo + "]");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo != null) {
+        a();
+      }
+    }
+  }
+  
+  boolean b()
+  {
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    boolean bool2;
+    if ((localObject instanceof QQAppInterface))
+    {
+      if (((QQAppInterface)localObject).getManager(21) == null)
+      {
+        QLog.d("QavGesture", 1, "innerDownload, getNetEngine 为空");
+        bool2 = false;
+        return bool2;
+      }
+    }
+    else
+    {
+      QLog.d("QavGesture", 1, "appRuntime 不是 QQAppInterface");
+      return false;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo;
+    if (localObject == null)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    if (11 == bchn.a((DownloadInfo)localObject)) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      bool2 = bool1;
+      if (!bool1) {
+        break;
+      }
+      return this.jdField_a_of_type_Bchj.a((DownloadInfo)localObject);
+    }
   }
 }
 

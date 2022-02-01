@@ -1,41 +1,75 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import java.util.HashMap;
 
-public class nlg
-  implements ViewPager.OnPageChangeListener
+class nlg
+  implements ITMAssistantDownloadClientListener
 {
-  public nlg(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  nlg(nlf paramnlf) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
+    if (paramTMAssistantDownloadClient == null) {}
+    do
     {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
       return;
-    }
+      paramTMAssistantDownloadClient = (nla)nlf.a().get(paramString);
+    } while ((paramTMAssistantDownloadClient == null) || (paramTMAssistantDownloadClient.a == null));
+    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+    paramTMAssistantDownloadClient.a.progress(i);
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt2 != 0) {}
-    for (boolean bool = true;; bool = false)
+    if (QLog.isColorLevel()) {
+      QLog.d("OfflineDownload", 2, "task onDownloadSDKTaskStateChanged + url = " + paramString1 + ", state = " + paramInt1 + ", errorCode = " + paramInt2);
+    }
+    if (paramTMAssistantDownloadClient == null) {
+      this.a.a(null, paramString1, null, -1, "client is null, " + paramString2);
+    }
+    do
     {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      do
+      {
+        do
+        {
+          return;
+          paramString2 = (nla)nlf.a().get(paramString1);
+          if ((paramString2 == null) || (paramString2.a == null))
+          {
+            this.a.a(null, paramString1, null, -1, "download info is null or callback is null");
+            return;
+          }
+          switch (paramInt1)
+          {
+          default: 
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("OfflineDownload", 2, "task downloading + url = " + paramString1);
+        return;
+        this.a.a(paramTMAssistantDownloadClient, paramString2, paramString1);
+        return;
+        this.a.a(paramString2.a, paramString1, paramString2.c, paramInt2, "offline zip download fail");
+        try
+        {
+          this.a.a.cancelDownloadTask(paramString1);
+          return;
+        }
+        catch (Exception paramTMAssistantDownloadClient) {}
+      } while (!QLog.isDevelopLevel());
+      QLog.d("OfflineDownload", 4, paramTMAssistantDownloadClient.toString());
       return;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("OfflineDownload", 2, "task paused + url = " + paramString1);
   }
   
-  public void onPageSelected(int paramInt)
-  {
-    PublicAccountAdvertisementActivity.a(this.a, paramInt);
-  }
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nlg
  * JD-Core Version:    0.7.0.1
  */

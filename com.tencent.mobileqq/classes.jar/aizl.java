@@ -1,21 +1,36 @@
-import Wallet.PopDialog;
-import Wallet.SkinInfo;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aizl
-  implements DialogInterface.OnClickListener
+public class aizl
+  extends aiyi
+  implements View.OnClickListener
 {
-  aizl(aizk paramaizk, aize paramaize) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aizl(Context paramContext, QQAppInterface paramQQAppInterface, ajae paramajae, ajax paramajax)
   {
-    paramDialogInterface = this.jdField_a_of_type_Aize.a.pop_dialog.left_url;
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      bjcf.a(aizh.a(this.jdField_a_of_type_Aizk.a), paramDialogInterface);
+    super(paramContext, paramQQAppInterface, paramajae, paramajax);
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    aizm localaizm;
+    if ((paramView == null) || (!(paramView.getTag() instanceof aizm)))
+    {
+      localaizm = new aizm();
+      paramView = LayoutInflater.from(this.a).inflate(2131561335, null);
+      paramView.setTag(localaizm);
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(this);
+      return paramView;
+      localaizm = (aizm)paramView.getTag();
     }
   }
+  
+  public void onClick(View paramView) {}
 }
 
 

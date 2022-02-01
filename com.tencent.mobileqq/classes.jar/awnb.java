@@ -1,36 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import mqq.manager.Manager;
 
-public final class awnb
-  implements bauf
+public abstract interface awnb
+  extends Manager
 {
-  public void a(bave parambave, bavf parambavf)
-  {
-    if ((parambave == null) || (parambavf == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambave instanceof baub));
-      parambave = (baub)parambave;
-      parambave.jdField_a_of_type_Long += parambavf.c;
-      parambavf.c = 0L;
-      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
-      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
-      parambavf = parambave.jdField_a_of_type_JavaLangString;
-      if (parambavf.contains("range="))
-      {
-        String str = parambavf.substring(0, parambavf.lastIndexOf("range="));
-        parambave.jdField_a_of_type_JavaLangString = (str + "range=" + parambave.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("PortalManager", 2, "IBreakDownFix, " + parambavf);
-  }
+  public abstract int a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awnb
  * JD-Core Version:    0.7.0.1
  */

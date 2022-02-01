@@ -2,14 +2,13 @@ package dov.com.qq.im.aeeditor.arch;
 
 import android.app.Dialog;
 import android.content.DialogInterface.OnDismissListener;
-import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
-import bljy;
+import bnzp;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.widget.immersive.SystemBarCompact;
+import dov.com.qq.im.aeeditor.AEEditorActivity;
 import dov.com.qq.im.aeeditor.view.ProgressView;
 
 public abstract class AEEditorBaseFragment
@@ -18,7 +17,7 @@ public abstract class AEEditorBaseFragment
   private static final String b = AEEditorBaseFragment.class.getSimpleName();
   protected Dialog a;
   protected Handler a;
-  private bljy a;
+  private bnzp a;
   protected ProgressView a;
   public String a;
   
@@ -28,28 +27,21 @@ public abstract class AEEditorBaseFragment
   }
   
   @NonNull
-  public bljy a()
+  public bnzp a()
   {
-    if (this.jdField_a_of_type_Bljy == null) {
+    if (this.jdField_a_of_type_Bnzp == null) {
       throw new RuntimeException("moduleManager not set");
     }
-    return this.jdField_a_of_type_Bljy;
+    return this.jdField_a_of_type_Bnzp;
   }
   
   public abstract String a();
   
   public void a() {}
   
-  protected void a(int paramInt)
+  public void a(bnzp parambnzp)
   {
-    if (getActivity().mSystemBarComp != null) {
-      getActivity().mSystemBarComp.setStatusBarColor(getResources().getColor(paramInt));
-    }
-  }
-  
-  public void a(bljy parambljy)
-  {
-    this.jdField_a_of_type_Bljy = parambljy;
+    this.jdField_a_of_type_Bnzp = parambnzp;
   }
   
   public void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener)
@@ -72,10 +64,18 @@ public abstract class AEEditorBaseFragment
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_AndroidOsHandler.post(new AEEditorBaseFragment.2(this));
   }
+  
+  public void onResume()
+  {
+    super.onResume();
+    if ((this.jdField_a_of_type_Bnzp == null) && (getActivity() != null) && ((getActivity() instanceof AEEditorActivity))) {
+      this.jdField_a_of_type_Bnzp = ((AEEditorActivity)getActivity()).a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.arch.AEEditorBaseFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.vip.ad.TianshuAdManager.1.1;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import mqq.os.MqqHandler;
 
-class bmsj
-  implements View.OnTouchListener
+public class bmsj
+  implements bmvh
 {
   bmsj(bmsi parambmsi) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    return true;
+    if ((paramBoolean) && (paramGetAdsRsp != null)) {
+      ThreadManager.getUIHandler().postDelayed(new TianshuAdManager.1.1(this, paramGetAdsRsp), 500L);
+    }
   }
 }
 

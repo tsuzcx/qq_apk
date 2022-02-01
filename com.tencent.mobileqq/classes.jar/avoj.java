@@ -1,37 +1,27 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import java.util.ArrayList;
+import android.content.Intent;
+import com.tencent.mobileqq.jsp.IdentificationApiPlugin.2.1;
+import mqq.app.QQPermissionCallback;
 
-class avoj
-  implements View.OnClickListener
+public class avoj
+  implements QQPermissionCallback
 {
-  avoj(avnl paramavnl, int paramInt) {}
+  public avoj(IdentificationApiPlugin.2.1 param1) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    if (localPicInfo == null) {
-      return;
-    }
-    bhuf localbhuf = bhuf.a(this.jdField_a_of_type_Avnl.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-    if (this.jdField_a_of_type_Int != 0) {
-      localbhuf.c(this.jdField_a_of_type_Avnl.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131694731));
-    }
-    localbhuf.c(alud.a(2131707655));
-    if (this.jdField_a_of_type_Avnl.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-      localbhuf.a(alud.a(2131707738), 3);
-    }
-    localbhuf.c(2131690648);
-    localbhuf.a(new avok(this, paramView, localPicInfo, localbhuf));
-    localbhuf.show();
+    bglp.a(avog.a(this.a.jdField_a_of_type_Avoi.a), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    paramArrayOfString = new Intent();
+    paramArrayOfString.putExtra("FaceRecognition.AppConf", this.a.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager$AppConf);
+    avog.a(this.a.jdField_a_of_type_Avoi.a, paramArrayOfString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avoj
  * JD-Core Version:    0.7.0.1
  */

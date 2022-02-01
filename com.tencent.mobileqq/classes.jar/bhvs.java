@@ -1,28 +1,53 @@
-import android.annotation.TargetApi;
-import android.graphics.Outline;
-import android.graphics.Rect;
+import android.graphics.Camera;
+import android.graphics.Matrix;
 import android.view.View;
-import android.view.ViewOutlineProvider;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-@TargetApi(21)
-public class bhvs
-  extends ViewOutlineProvider
+class bhvs
+  extends Animation
 {
-  private float a;
+  private int jdField_a_of_type_Int;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
   
-  public bhvs(float paramFloat)
+  public bhvs(View paramView)
   {
-    this.a = paramFloat;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public void getOutline(View paramView, Outline paramOutline)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    paramOutline.setRoundRect(new Rect(0, 0, paramView.getWidth(), paramView.getHeight()), this.a);
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramFloat = 90.0F * paramFloat;
+    this.jdField_a_of_type_AndroidGraphicsCamera.save();
+    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - paramFloat / 90.0F);
+      this.jdField_a_of_type_AndroidViewView.invalidate();
+    }
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int, -this.b);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int, this.b);
+    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhvs
  * JD-Core Version:    0.7.0.1
  */

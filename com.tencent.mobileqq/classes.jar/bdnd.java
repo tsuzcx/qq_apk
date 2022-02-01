@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bdnd
-  implements View.OnClickListener
+public abstract interface bdnd
 {
-  bdnd(bdnc parambdnc) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void b(int paramInt);
 }
 
 

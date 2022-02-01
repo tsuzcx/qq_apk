@@ -1,15 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-
-class bmmi
-  extends AnimatorListenerAdapter
+public class bmmi
 {
-  bmmi(bmmh parambmmh) {}
+  public int a;
+  public int b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public bmmi(int paramInt1, int paramInt2)
   {
-    bmmh.a(this.a).sendEmptyMessageDelayed(1, 1500L);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

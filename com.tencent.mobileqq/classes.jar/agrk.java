@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
-class agrk
-  implements DialogInterface.OnClickListener
+public class agrk
+  extends afwr
 {
-  agrk(agqq paramagqq) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.aa = true;
-    agqq.a(this.a, false);
-  }
+  public TextView a;
+  public AutoStartProgressBar a;
+  public ArkAppLoadLayout a;
+  public ArkAppView a;
+  public String b;
+  public View c;
+  public View d;
 }
 
 

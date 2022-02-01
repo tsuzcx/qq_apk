@@ -1,17 +1,10 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.ColorNickTextView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
 
-public class ahem
+public abstract interface ahem
 {
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ColorNickTextView a;
-  public TextView b;
+  public abstract void a(PttAudioWaveView paramPttAudioWaveView);
+  
+  public abstract void a(PttAudioWaveView paramPttAudioWaveView, float paramFloat);
 }
 
 

@@ -1,12 +1,30 @@
-public class bayp
+import android.text.TextUtils;
+import android.view.View;
+
+class bayp
+  implements bkhw
 {
-  public int a;
-  public int b;
+  bayp(bayi parambayi, bkho parambkho) {}
   
-  public bayp(int paramInt1, int paramInt2)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+    }
+    paramView = this.jdField_a_of_type_Bkho.a(paramInt);
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+    }
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+    }
+    this.jdField_a_of_type_Bkho.dismiss();
   }
 }
 

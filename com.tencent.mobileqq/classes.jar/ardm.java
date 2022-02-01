@@ -1,203 +1,111 @@
 import android.content.Context;
-import android.content.Intent;
-import android.text.SpannableStringBuilder;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.copyprompt.CopyPromptHelper.4;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
 
 public class ardm
-  extends ardh
+  implements agma, View.OnClickListener
 {
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private List<FileInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private CharSequence b;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ardn(this);
+  private View jdField_a_of_type_AndroidViewView;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CopyPromptHelper.4(this);
   
-  public ardm(String paramString, int paramInt)
+  public ardm(BaseChatPie paramBaseChatPie)
   {
-    super(paramString, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  private String a(FileInfo paramFileInfo)
+  private View a(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(arth.b(paramFileInfo.b()));
-    localStringBuilder.append("  ");
-    localStringBuilder.append(arso.a(paramFileInfo.a()));
-    return localStringBuilder.toString();
+    View localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext).inflate(2131559587, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c, false);
+    ((TextView)localView.findViewById(2131372968)).setText(new bdnt(paramString, 3, 16));
+    paramString = new RelativeLayout.LayoutParams(-2, -2);
+    paramString.addRule(9);
+    paramString.addRule(2, 2131368652);
+    paramString.leftMargin = afur.a(14.0F, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources());
+    ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131364345)).addView(localView, paramString);
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", "", "0X800B22B", "0X800B22B", 0, 0, "", "", "", "");
+    return localView;
   }
   
-  public CharSequence a()
+  private boolean a()
   {
-    return ayvm.a(((FileInfo)this.jdField_a_of_type_JavaUtilList.get(0)).d().toLowerCase(), this.jdField_a_of_type_JavaLangString);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131364436).getVisibility() == 0;
   }
   
-  public List<aynu> a(QQAppInterface paramQQAppInterface, Context paramContext)
+  private void b()
   {
-    paramQQAppInterface = new ArrayList();
-    paramContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramContext.hasNext())
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(320);
+    if ((localObject instanceof ardq))
     {
-      FileInfo localFileInfo = (FileInfo)paramContext.next();
-      ardm localardm = new ardm(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      localardm.a(this.jdField_a_of_type_AndroidOsBundle);
-      ArrayList localArrayList = new ArrayList(1);
-      localArrayList.add(localFileInfo);
-      localardm.a(localArrayList);
-      paramQQAppInterface.add(localardm);
-    }
-    return paramQQAppInterface;
-  }
-  
-  public void a(List<FileInfo> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-  }
-  
-  public CharSequence b()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  protected void b(View paramView)
-  {
-    Object localObject = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    paramView = (BaseActivity)paramView.getContext();
-    localObject = arrr.a((FileInfo)localObject);
-    paramView = new arls(paramView, new arlq(paramView.app, paramView, (FileManagerEntity)localObject, 10000));
-    paramView.a(8);
-    paramView.a();
-  }
-  
-  public boolean b()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return arbs.a(localFileInfo);
-    }
-    return false;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public CharSequence c()
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaLangCharSequence == null)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
-        break label61;
+      localObject = ((ardq)localObject).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("CopyPromptHelper", 2, "handlePrompt content : " + (String)localObject);
       }
-      localObject = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-      localObject = new SpannableStringBuilder();
-      ((SpannableStringBuilder)localObject).append(d());
-    }
-    label61:
-    for (this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject);; this.jdField_a_of_type_JavaLangCharSequence = d()) {
-      return this.jdField_a_of_type_JavaLangCharSequence;
-    }
-  }
-  
-  public String c()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null)
-    {
-      int i = arrr.a(localFileInfo.c());
-      if ((i == 0) || (i == 2) || (i == 5)) {
-        return localFileInfo.c();
-      }
-    }
-    return "";
-  }
-  
-  protected void c(View paramView)
-  {
-    paramView = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (arbs.a(paramView)) {
-      arbs.b(paramView);
-    }
-    for (;;)
-    {
-      if (!arso.b(paramView.c()))
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        arri.a(arrr.d(paramView.d()) + alud.a(2131710018));
-        arbs.b(paramView);
+        a();
+        this.jdField_a_of_type_AndroidViewView = a((String)localObject);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
+        niw[] arrayOfniw = new niw[1];
+        arrayOfniw[0] = new niw(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c, new ardo(this, arrayOfniw));
+        if (this.jdField_a_of_type_AndroidViewView != null) {
+          this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ardp(this, (String)localObject));
+        }
       }
-      return;
-      arbs.a(paramView);
-      azqs.b(null, "dc00898", "", "", "0X800AA91", "0X800AA91", 2, 0, "0", "0", "", "");
     }
   }
   
-  public int d()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
   
-  public CharSequence d()
+  public void a(int paramInt)
   {
-    if (this.b != null) {
-      return this.b;
-    }
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i > 1)
+    switch (paramInt)
     {
-      localSpannableStringBuilder = new SpannableStringBuilder(i + alud.a(2131704903) + "\"");
-      localSpannableStringBuilder.append(ayvm.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
-      localSpannableStringBuilder.append("\"").append(alud.a(2131692540));
-      this.b = localSpannableStringBuilder;
-      return this.b;
     }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    localSpannableStringBuilder.append(ayvm.a(a((FileInfo)this.jdField_a_of_type_JavaUtilList.get(0)), this.jdField_a_of_type_JavaLangString));
-    if (this.b == null) {
-      this.b = localSpannableStringBuilder;
-    }
-    return this.b;
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.a(this);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      return;
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    } while (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx == null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
   }
   
-  public String d()
+  public int[] a()
   {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return localFileInfo.d();
-    }
-    return "";
+    return new int[] { 3, 13 };
   }
   
-  protected void d(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = (BaseActivity)paramView.getContext();
-    FileSelectorSearchGroupFragment.a(this);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("qfile_search_param_ex_params", this.jdField_a_of_type_AndroidOsBundle);
-    PublicFragmentActivity.a(paramView, localIntent, FileSelectorSearchGroupFragment.class, 9999);
-  }
-  
-  public int e()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return arrr.a(localFileInfo.c());
+    if (!a()) {
+      b();
     }
-    return 11;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

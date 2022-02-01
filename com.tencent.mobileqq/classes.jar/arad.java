@@ -1,106 +1,85 @@
-import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.1;
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.2;
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.3;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 
 public class arad
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private aqxw jdField_a_of_type_Aqxw = new arae(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private LinkedHashMap<String, araf> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private List<araf> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<String> b = new ArrayList();
+  private boolean a;
+  private boolean b;
   
-  public arad(QQAppInterface paramQQAppInterface)
+  public static arad a(aqlg[] paramArrayOfaqlg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ThumbDownloadManager.3(this));
-  }
-  
-  private void a(araf paramaraf)
-  {
-    if (paramaraf == null) {}
-    do
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
+      return null;
+    }
+    arad localarad = new arad();
+    ArrayList localArrayList = new ArrayList();
+    int j = paramArrayOfaqlg.length;
+    int i = 0;
+    while (i < j)
     {
-      return;
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramaraf.jdField_a_of_type_JavaLangString, paramaraf);
-    } while (!QLog.isColorLevel());
-    QLog.i("ThumbDownloadManager", 2, "addDownloadingTask : MapDowloadingTask currentSize[" + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
-  }
-  
-  private void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ThumbDownloadManager.2(this, paramString));
-  }
-  
-  private boolean a(long paramLong, String paramString1, String paramString2)
-  {
-    paramString2 = arrr.g(paramString2);
-    if (!a(paramString1, paramString2)) {
-      return false;
+      localArrayList.add(paramArrayOfaqlg[i].a);
+      i += 1;
     }
-    araf localaraf = new araf();
-    localaraf.b = paramString1;
-    localaraf.jdField_a_of_type_JavaLangString = paramString2;
-    localaraf.jdField_a_of_type_Long = paramLong;
-    this.b.add(paramString2);
-    this.jdField_a_of_type_JavaUtilList.add(localaraf);
-    return true;
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    if (this.b.contains(paramString2)) {}
-    while (arso.b(paramString1)) {
-      return false;
-    }
-    return true;
-  }
-  
-  private void b(araf paramaraf)
-  {
-    if (paramaraf == null) {
-      return;
-    }
-    new aqxv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramaraf.jdField_a_of_type_Long, paramaraf.b, paramaraf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqxw);
-  }
-  
-  private void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("ThumbDownloadManager", 2, "removeDownloadingTask : MapDowloadingTask currentSize[" + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
-    }
-  }
-  
-  private void c(String paramString)
-  {
-    if (!this.b.remove(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ThumbDownloadManager", 2, "removeDownloadingList : ListDownloadTask remove task fail, thumbUrl[" + paramString + "]");
+    if (localArrayList.size() > 0)
+    {
+      paramArrayOfaqlg = new HashMap();
+      i = 0;
+      if (i < localArrayList.size())
+      {
+        Object localObject = (String)localArrayList.get(i);
+        if (QLog.isColorLevel()) {
+          QLog.d("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd receiveAllConfigs |type: 294,content: " + (String)localObject);
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject)) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = ((String)localObject).split("=");
+          if (localObject.length == 2)
+          {
+            if (!TextUtils.isEmpty(localObject[1])) {
+              localObject[1] = localObject[1].trim();
+            }
+            paramArrayOfaqlg.put(localObject[0], localObject[1]);
+            if (QLog.isColorLevel()) {
+              QLog.i("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd, name=" + localObject[0] + ", val=" + localObject[1]);
+            }
+          }
+        }
+      }
+      localarad.a = "1".equals(paramArrayOfaqlg.get("enable_tencent_docs_assistant"));
+      localarad.b = "1".equals(paramArrayOfaqlg.get("preload_tool_process"));
+      paramArrayOfaqlg = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramArrayOfaqlg instanceof QQAppInterface))
+      {
+        paramArrayOfaqlg = (QQAppInterface)paramArrayOfaqlg;
+        bdjg.b(paramArrayOfaqlg, localarad.b);
+        bdjg.a(paramArrayOfaqlg, localarad.a);
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    for (;;)
+    {
+      return localarad;
+      if (QLog.isColorLevel()) {
+        QLog.d("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd receiveAllConfigs|type: 294,content_list is empty ");
+      }
     }
-    QLog.i("ThumbDownloadManager", 2, "removeDownloadingList : ListDownloadTask currentSize[" + this.b.size() + "]");
   }
   
-  public void a(long paramLong, String paramString1, String paramString2)
+  public boolean a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ThumbDownloadManager.1(this, paramLong, paramString1, paramString2));
+    return this.a;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 

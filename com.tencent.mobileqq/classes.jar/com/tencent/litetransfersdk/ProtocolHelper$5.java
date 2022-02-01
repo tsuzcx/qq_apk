@@ -1,6 +1,6 @@
 package com.tencent.litetransfersdk;
 
-import arri;
+import atvf;
 
 class ProtocolHelper$5
   implements Runnable
@@ -9,12 +9,12 @@ class ProtocolHelper$5
   
   public void run()
   {
-    arri.a(2131694063);
+    atvf.a(2131693359);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProtocolHelper.5
  * JD-Core Version:    0.7.0.1
  */

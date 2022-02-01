@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment.6;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public class bffj
-  implements DialogInterface.OnClickListener
+public abstract interface bffj
 {
-  public bffj(OpenAuthorityFragment.6 param6) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
+  
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
+  
+  public abstract void b(RecyclerView.ViewHolder paramViewHolder);
+  
+  public abstract void c(RecyclerView.ViewHolder paramViewHolder);
+  
+  public abstract void d(RecyclerView.ViewHolder paramViewHolder);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bffj
  * JD-Core Version:    0.7.0.1
  */

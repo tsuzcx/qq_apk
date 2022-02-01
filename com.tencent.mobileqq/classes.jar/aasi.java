@@ -1,40 +1,47 @@
-import com.tencent.ad.tangram.Ad;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
+import org.json.JSONObject;
 
 public class aasi
 {
-  public static void a(aasj paramaasj)
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  
+  public aasi(JSONObject paramJSONObject, int paramInt)
   {
-    if ((paramaasj == null) || (!paramaasj.a()))
-    {
-      aase.d("GdtActionReporter", "report error");
-      return;
-    }
-    Object localObject1 = paramaasj.jdField_a_of_type_ComTencentAdTangramAd.getUrlForAction();
-    try
-    {
-      Object localObject2 = ((String)localObject1).replace("__TRACE_ID__", URLEncoder.encode(paramaasj.jdField_a_of_type_ComTencentAdTangramAd.getTraceId(), "utf-8")).replace("__PAGE_ACTION_ID__", String.valueOf(paramaasj.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.get()));
-      localObject1 = localObject2;
-      if (paramaasj.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.has()) {
-        localObject1 = ((String)localObject2).replace("__PAGE_TIME__", String.valueOf(paramaasj.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.get()));
-      }
-      localObject2 = localObject1;
-      if (paramaasj.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.has()) {
-        localObject2 = ((String)localObject1).replace("__LANDING_ERROR_CODE__", String.valueOf(paramaasj.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.get()));
-      }
-      paramaasj = ((String)localObject2).replace("__OS_TYPE__", String.valueOf(2)).replace("__VERSION__", URLEncoder.encode(aash.a(), "utf-8"));
-      aase.b("GdtActionReporter", "GdtActionReporter report url = " + paramaasj);
-      aasq.a(paramaasj);
-      return;
-    }
-    catch (UnsupportedEncodingException paramaasj)
-    {
-      aase.d("GdtActionReporter", "report error", paramaasj);
-    }
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("goodsWord");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("gifUrl");
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("pngUrl");
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("packageID");
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("quantity");
+    this.jdField_c_of_type_Int = paramJSONObject.optInt("playRule");
+    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("selectedWording");
+    this.jdField_d_of_type_Int = paramJSONObject.optInt("giftValue");
+    this.jdField_e_of_type_Int = paramJSONObject.optInt("giftID");
+    this.f = paramJSONObject.optInt("giftPrice");
+    this.jdField_c_of_type_Boolean = paramJSONObject.optBoolean("isFreeGift");
+    this.h = paramJSONObject.optInt("addTime");
+    this.i = paramJSONObject.optInt("freegiftlimit");
+    this.g = paramInt;
+    this.j = paramJSONObject.optInt("svip");
+    this.k = paramJSONObject.optInt("year_svip");
+    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("svip_logo");
   }
 }
 

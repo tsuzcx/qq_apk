@@ -37,7 +37,7 @@
 					"attributes": {
 						"setTextColorString:": "#000000",
 						"setText:": "-1",
-						"setBoldFontSizeString:": "16"
+						"setBoldFontSizeString:ratio:":["16","$attribute_text_size_ratio"]
 					}
 				},
 				{
@@ -88,7 +88,7 @@
 							"attributes": {
 								"setTextColorString:": "#000000",
 								"setText:": "-1",
-								"setFontSizeString:": "14",
+								"setFontSizeString:ratio:":["14","$attribute_text_size_ratio"],
 								"setNumberOfLinesString:": "1",
 								"setAttatchInfo:": "-1"
 							}
@@ -143,7 +143,7 @@
 							"attributes": {
 								"setTextColorString:": "#000000",
 								"setText:": "-1",
-								"setFontSizeString:": "14",
+								"setFontSizeString:ratio:":["14","$attribute_text_size_ratio"],
 								"setNumberOfLinesString:": "1",
 								"setAttatchInfo:": "-1"
 							}
@@ -198,7 +198,7 @@
 							"attributes": {
 								"setTextColorString:": "#000000",
 								"setText:": "-1",
-								"setFontSizeString:": "14",
+								"setFontSizeString:ratio:":["14","$attribute_text_size_ratio"],
 								"setNumberOfLinesString:": "1",
 								"setAttatchInfo:": "-1"
 							}
@@ -253,7 +253,7 @@
 							"attributes": {
 								"setTextColorString:": "#000000",
 								"setText:": "-1",
-								"setFontSizeString:": "14",
+								"setFontSizeString:ratio:":["14","$attribute_text_size_ratio"],
 								"setNumberOfLinesString:": "1",
 								"setAttatchInfo:": "-1"
 							}
@@ -308,7 +308,7 @@
 							"attributes": {
 								"setTextColorString:": "#000000",
 								"setText:": "-1",
-								"setFontSizeString:": "14",
+								"setFontSizeString:ratio:":["14","$attribute_text_size_ratio"],
 								"setNumberOfLinesString:": "1",
 								"setAttatchInfo:": "-1"
 							}
@@ -363,7 +363,7 @@
 							"attributes": {
 								"setTextColorString:": "#000000",
 								"setText:": "-1",
-								"setFontSizeString:": "14",
+								"setFontSizeString:ratio:":["14","$attribute_text_size_ratio"],
 								"setNumberOfLinesString:": "1",
 								"setAttatchInfo:": "-1"
 							}

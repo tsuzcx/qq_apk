@@ -1,54 +1,23 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class obn
+public final class obn
+  implements Parcelable.Creator<VideoInfo>
 {
-  public long a;
-  public AdvertisementInfo a;
-  public String a;
-  public boolean a;
-  public long b;
-  public long c;
-  public long d;
-  
-  public void a(Bundle paramBundle)
+  public VideoInfo a(Parcel paramParcel)
   {
-    long l1;
-    long l2;
-    long l3;
-    if (paramBundle != null)
-    {
-      String str = paramBundle.getString("adid", "");
-      l1 = paramBundle.getLong("navigationStart", 0L);
-      l2 = paramBundle.getLong("htmlLoaded", 0L);
-      l3 = paramBundle.getLong("domComplete", 0L);
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (str.equals(this.jdField_a_of_type_JavaLangString))) {
-        break label71;
-      }
-    }
-    label71:
-    do
-    {
-      return;
-      if (l1 > 0L) {
-        this.b = l1;
-      }
-      if (l2 > 0L) {
-        this.c = l2;
-      }
-    } while (l3 <= 0L);
-    this.d = l3;
+    return new VideoInfo(paramParcel);
   }
   
-  public boolean a()
+  public VideoInfo[] a(int paramInt)
   {
-    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Long > 0L) && ((this.b > 0L) || (this.c > 0L) || (this.d > 0L));
+    return new VideoInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     obn
  * JD-Core Version:    0.7.0.1
  */

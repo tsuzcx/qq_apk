@@ -16,7 +16,18 @@ public class PAGImageLayer
     super(paramLong);
   }
   
+  public static PAGImageLayer Make(int paramInt1, int paramInt2, long paramLong)
+  {
+    paramLong = nativeMake(paramInt1, paramInt2, paramLong);
+    if (paramLong == 0L) {
+      return null;
+    }
+    return new PAGImageLayer(paramLong);
+  }
+  
   private static native void nativeInit();
+  
+  private static native long nativeMake(int paramInt1, int paramInt2, long paramLong);
   
   private native void replaceImage(long paramLong);
   
@@ -36,7 +47,7 @@ public class PAGImageLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     org.libpag.PAGImageLayer
  * JD-Core Version:    0.7.0.1
  */

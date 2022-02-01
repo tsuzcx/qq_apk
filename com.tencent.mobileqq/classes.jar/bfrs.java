@@ -1,22 +1,46 @@
-import com.tencent.open.model.CreateVirtualResult;
-import com.tencent.open.model.GetVirtualListResult;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class bfrs
 {
-  protected void a(boolean paramBoolean, int paramInt) {}
+  public int a;
+  public long a;
+  public ByteStringMicro a;
+  public List<besl> a;
+  public Map<String, besl> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public int d = 0;
   
-  protected void a(boolean paramBoolean, int paramInt, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse) {}
-  
-  protected void a(boolean paramBoolean, CreateVirtualResult paramCreateVirtualResult, int paramInt) {}
-  
-  public void a(boolean paramBoolean, GetVirtualListResult paramGetVirtualListResult) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
+  public bfrs(bfrm parambfrm, long paramLong)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    if (paramLong == 0L) {
+      this.c = 0;
+    }
+    for (;;)
+    {
+      this.c = i;
+      return;
+      i = 3;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfrs
  * JD-Core Version:    0.7.0.1
  */

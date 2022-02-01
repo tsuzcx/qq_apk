@@ -1,33 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.8.1;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import mqq.os.MqqHandler;
 
 public class rju
-  implements TVK_ICacheMgr.IPreloadCallback
+  implements DialogInterface.OnDismissListener
 {
-  public rju(VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
+  public rju(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " ERROR code: " + paramInt);
-    }
-    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " SUCCESS");
-    }
-    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
+    ReadInJoyDeliverUGCActivity.b(this.a, false);
+    ThreadManager.getUIHandler().postDelayed(new ReadInJoyDeliverUGCActivity.8.1(this), 300L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rju
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class OpenAuthorityFragment$2$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$2.this$0.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$2.this$0.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$2.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, false);
+    OpenAuthorityFragment.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$2.this$0).a(OpenAuthorityFragment.b(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$2.this$0), this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment$2.a, this.jdField_a_of_type_AndroidGraphicsBitmap, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.agent.OpenAuthorityFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

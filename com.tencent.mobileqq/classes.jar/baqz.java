@@ -1,60 +1,101 @@
 import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 class baqz
-  implements ITransactionCallback
+  extends barl
 {
-  baqz(baqy parambaqy, long paramLong) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "receiver";
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private String d;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public baqz(int paramInt, String paramString) {}
+  
+  private void a()
   {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_Baqy.a(paramHashMap);
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Int += 1;
+      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+      if (this.jdField_b_of_type_Int > 1) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = 0;
     }
-    this.jdField_a_of_type_Baqy.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Baqy.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Baqy.b);
-    this.jdField_a_of_type_Baqy.d();
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  private void b()
   {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_Baqy.a(paramHashMap);
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Baqy.a.jdField_a_of_type_Long);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Long = Math.max((SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / 1000L, this.jdField_a_of_type_Long);
+      this.jdField_b_of_type_Long = 0L;
+      this.jdField_b_of_type_Boolean = false;
     }
-    this.jdField_a_of_type_Baqy.b.b();
-    this.jdField_a_of_type_Baqy.b.a = 1;
-    this.jdField_a_of_type_Baqy.s = this.jdField_a_of_type_Baqy.q;
-    this.jdField_a_of_type_Baqy.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Baqy.e();
-    this.jdField_a_of_type_Baqy.a.a();
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
+  private void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "<BDH_LOG> onTransStart()");
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int == 0)) {
+      this.jdField_a_of_type_Int = 1;
     }
-    this.jdField_a_of_type_Baqy.b.a();
   }
   
-  public void onUpdateProgress(int paramInt)
+  public HashMap<String, String> a(String paramString)
   {
-    baqy localbaqy = this.jdField_a_of_type_Baqy;
-    bass localbass = this.jdField_a_of_type_Baqy.a;
-    long l = paramInt;
-    localbass.e = l;
-    localbaqy.s = l;
-    if ((paramInt < this.jdField_a_of_type_Baqy.q) && (!this.jdField_a_of_type_Baqy.o) && (!this.jdField_a_of_type_Baqy.k)) {
-      this.jdField_a_of_type_Baqy.i();
+    Object localObject2 = null;
+    Object localObject1;
+    if (this.jdField_b_of_type_Int <= 0)
+    {
+      localObject1 = localObject2;
+      if (QLog.isDevelopLevel())
+      {
+        QLog.i(barm.jdField_a_of_type_JavaLangString, 4, "View count is 0!");
+        localObject1 = localObject2;
+      }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          return localObject1;
+          if (!"Pic.AioPreview".equals(paramString)) {
+            break;
+          }
+          paramString = new HashMap();
+          paramString.put("stay_seconds", String.valueOf(this.jdField_a_of_type_Long));
+          paramString.put("gesture_double_click", String.valueOf(this.jdField_a_of_type_Int));
+          paramString.put("view_count", String.valueOf(this.jdField_b_of_type_Int));
+          paramString.put("send_type", this.jdField_a_of_type_JavaLangString);
+          if (this.jdField_a_of_type_Boolean) {
+            paramString.put("view_again", "1");
+          }
+          if (this.jdField_b_of_type_JavaLangString != null) {
+            paramString.put("size_type", this.jdField_b_of_type_JavaLangString);
+          }
+          localObject1 = paramString;
+        } while (this.jdField_c_of_type_JavaLangString == null);
+        paramString.put("format_type", this.jdField_c_of_type_JavaLangString);
+        return paramString;
+        localObject1 = localObject2;
+      } while (!"Pic.AioPreview.Preload".equals(paramString));
+      localObject1 = localObject2;
+    } while (this.d == null);
+    paramString = new HashMap();
+    paramString.put("preload_status", String.valueOf(this.jdField_c_of_type_Boolean));
+    paramString.put("preload_fail_filetype", this.d);
+    return paramString;
   }
 }
 

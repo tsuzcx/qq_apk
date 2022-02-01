@@ -9,12 +9,12 @@ class BaseChatPie$40
   
   public void run()
   {
-    this.this$0.a.showOverScrollHeader();
+    this.this$0.a.setSelectionFromBottom(this.this$0.a.getCount() - 1, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.40
  * JD-Core Version:    0.7.0.1
  */

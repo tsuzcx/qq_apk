@@ -1,43 +1,29 @@
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
-import com.tencent.widget.ListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardStructingMsgOption;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aukz
-  extends auma
+  implements View.OnClickListener
 {
-  public aukz(MultiAIOItemFragment paramMultiAIOItemFragment, bhtv parambhtv, ListView paramListView) {}
+  public aukz(ForwardStructingMsgOption paramForwardStructingMsgOption, boolean paramBoolean, String paramString, long paramLong) {}
   
-  public void b(int paramInt)
+  public void onClick(View paramView)
   {
-    super.b(paramInt);
-    boolean bool;
-    switch (paramInt)
-    {
-    default: 
-      bool = false;
-      paramInt = 0;
-    }
+    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption.a == null) {}
     for (;;)
     {
-      this.jdField_a_of_type_Bhtv.onScrollStateChanged(this.jdField_a_of_type_ComTencentWidgetListView, paramInt);
-      if ((this.jdField_a_of_type_ComTencentWidgetListView instanceof ChatXListView))
-      {
-        ChatXListView localChatXListView = (ChatXListView)this.jdField_a_of_type_ComTencentWidgetListView;
-        int[] arrayOfInt = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
-        localChatXListView.setDisableLayout(bool, arrayOfInt[0], arrayOfInt[1]);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bool = false;
-      paramInt = 1;
-      continue;
-      paramInt = 2;
-      bool = true;
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption.a.hideSoftInputFromWindow();
+      ForwardStructingMsgOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption.E();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aukz
  * JD-Core Version:    0.7.0.1
  */

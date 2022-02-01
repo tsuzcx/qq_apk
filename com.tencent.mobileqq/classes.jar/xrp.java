@@ -1,22 +1,30 @@
+import android.os.Build.VERSION;
+
 public class xrp
 {
-  public static long a(String paramString, long paramLong)
+  public static boolean a(int paramInt)
   {
-    try
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    switch (paramInt)
     {
-      long l = Long.valueOf(paramString).longValue();
-      return l;
+    default: 
+      bool1 = false;
+    case 3: 
+    case 1: 
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (Build.VERSION.SDK_INT >= 21);
+      return false;
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      wxe.d("NumberUtils", "Invalid num string " + paramString + ", return default number " + paramLong);
-    }
-    return paramLong;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xrp
  * JD-Core Version:    0.7.0.1
  */

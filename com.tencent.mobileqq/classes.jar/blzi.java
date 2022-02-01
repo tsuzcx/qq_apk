@@ -1,9 +1,19 @@
-public class blzi
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.MapParcelable;
+
+public final class blzi
+  implements Parcelable.Creator<MapParcelable>
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public int c;
+  public MapParcelable a(Parcel paramParcel)
+  {
+    return new MapParcelable(paramParcel.readHashMap(getClass().getClassLoader()));
+  }
+  
+  public MapParcelable[] a(int paramInt)
+  {
+    return null;
+  }
 }
 
 

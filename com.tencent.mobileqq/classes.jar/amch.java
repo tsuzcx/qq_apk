@@ -1,158 +1,65 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.manager.Manager;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class amch
-  implements Manager
+class amch
+  implements View.OnClickListener
 {
-  public static final String a;
-  public static boolean a;
-  private QQAppInterface a;
+  amch(amce paramamce) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = amch.class.getSimpleName();
-  }
-  
-  public amch() {}
-  
-  public amch(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private static String a()
-  {
-    return (String)bkbq.a("search_keyword_list", "");
-  }
-  
-  private static void b(String paramString)
-  {
-    jdField_a_of_type_Boolean = true;
-    bkbq.a("search_keyword_list", paramString);
-  }
-  
-  public ArrayList<String> a()
-  {
-    localArrayList = new ArrayList();
-    Object localObject = a();
-    if (localObject != null) {
-      try
+    ((SlideDetectListView)amce.a(this.a)).a();
+    Object localObject = (View)paramView.getParent();
+    if ((localObject instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localObject).d();
+    }
+    localObject = paramView.getTag();
+    if (!(localObject instanceof DiscussionInfo)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      DiscussionInfo localDiscussionInfo = (DiscussionInfo)localObject;
+      if (bgnt.a(amce.a(this.a)) == 0)
       {
-        localObject = new JSONArray((String)localObject);
-        int i = 0;
-        while (i < ((JSONArray)localObject).length())
+        localObject = (BaseActivity)amce.a(this.a);
+        QQToast.a((Context)localObject, 2131695415, 0).b(((BaseActivity)localObject).getTitleBarHeight());
+      }
+      else if ((!localDiscussionInfo.hasCollect) && (((ankw)this.a.a.getManager(53)).a() >= 80))
+      {
+        localObject = (BaseActivity)amce.a(this.a);
+        QQToast.a((Context)localObject, amce.a(this.a).getString(2131695414, new Object[] { String.valueOf(80) }), 0).b(((BaseActivity)localObject).getTitleBarHeight());
+      }
+      else
+      {
+        anks localanks = (anks)this.a.a.a(6);
+        if (localDiscussionInfo.hasCollect) {}
+        for (localObject = "0X8006898";; localObject = "0X8006897")
         {
-          localArrayList.add(((JSONArray)localObject).optString(i));
-          i += 1;
+          bcst.b(this.a.a, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+          if (!localDiscussionInfo.hasCollect) {
+            break label269;
+          }
+          localanks.e(Long.valueOf(localDiscussionInfo.uin).longValue());
+          break;
         }
-        return localArrayList;
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
+        label269:
+        localanks.d(Long.valueOf(localDiscussionInfo.uin).longValue());
       }
     }
   }
-  
-  public void a()
-  {
-    b("");
-  }
-  
-  public void a(int paramInt)
-  {
-    ArrayList localArrayList = a();
-    if ((localArrayList != null) && (paramInt < localArrayList.size())) {
-      localArrayList.remove(paramInt);
-    }
-    JSONArray localJSONArray = new JSONArray();
-    paramInt = 0;
-    while (paramInt < localArrayList.size())
-    {
-      localJSONArray.put(localArrayList.get(paramInt));
-      paramInt += 1;
-    }
-    b(localJSONArray.toString());
-  }
-  
-  public void a(String paramString)
-  {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "addSearchHistory key word is null");
-      }
-      return;
-    }
-    ArrayList localArrayList = a();
-    if (localArrayList.size() >= 10) {
-      localArrayList.remove(localArrayList.size() - 1);
-    }
-    localArrayList.remove(paramString);
-    localArrayList.add(0, paramString);
-    paramString = new JSONArray();
-    while (i < localArrayList.size())
-    {
-      paramString.put(localArrayList.get(i));
-      i += 1;
-    }
-    b(paramString.toString());
-  }
-  
-  public void a(JSONArray paramJSONArray)
-  {
-    int j = 0;
-    if (paramJSONArray == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "addAllSearchHistory key word is null");
-      }
-      return;
-    }
-    ArrayList localArrayList2 = a();
-    ArrayList localArrayList1 = localArrayList2;
-    if (localArrayList2 == null) {
-      localArrayList1 = new ArrayList();
-    }
-    localArrayList2 = new ArrayList();
-    int i = 0;
-    while (i < paramJSONArray.length())
-    {
-      String str = paramJSONArray.optString(i);
-      if (!TextUtils.isEmpty(str))
-      {
-        localArrayList2.add(str);
-        localArrayList1.remove(str);
-      }
-      i += 1;
-    }
-    localArrayList2.addAll(localArrayList1);
-    paramJSONArray = new JSONArray();
-    if (localArrayList2.size() > 10) {
-      i = 10;
-    }
-    while (j < i)
-    {
-      paramJSONArray.put(localArrayList2.get(j));
-      j += 1;
-      continue;
-      i = localArrayList2.size();
-    }
-    b(paramJSONArray.toString());
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amch
  * JD-Core Version:    0.7.0.1
  */

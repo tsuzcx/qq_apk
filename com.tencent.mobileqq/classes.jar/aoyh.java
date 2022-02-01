@@ -1,61 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class aoyh
-  extends aokh<aoyg>
+public abstract class aoyh
+  extends Binder
+  implements aoyg
 {
-  public static aoyg a()
+  public aoyh()
   {
-    return (aoyg)aoks.a().a(437);
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArMiniCallback");
   }
   
-  public int a()
+  public static aoyg a(IBinder paramIBinder)
   {
-    return 437;
-  }
-  
-  @NonNull
-  public aoyg a(int paramInt)
-  {
-    return new aoyg();
-  }
-  
-  @Nullable
-  public aoyg a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoyg.a(paramArrayOfaoko);
+    if (paramIBinder == null) {
+      return null;
     }
-    return null;
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof aoyg))) {
+      return (aoyg)localIInterface;
+    }
+    return new aoyi(paramIBinder);
   }
   
-  public Class<aoyg> a()
+  public IBinder asBinder()
   {
-    return aoyg.class;
+    return this;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(aoyg paramaoyg) {}
-  
-  public int b()
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      a(paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+    b(paramParcel1.readInt(), paramParcel1.readInt());
+    paramParcel2.writeNoException();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyh
  * JD-Core Version:    0.7.0.1
  */

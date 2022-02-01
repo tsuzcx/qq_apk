@@ -1,40 +1,23 @@
-import android.database.DataSetObserver;
-import android.widget.BaseAdapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.widget.SlideDownFrameLayout;
 
-public abstract class bici
-  extends BaseAdapter
-  implements bicp
+public class bici
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private final bick a = new bick(this);
+  public bici(SlideDownFrameLayout paramSlideDownFrameLayout) {}
   
-  public void c(int paramInt1, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a(paramInt1, paramInt2);
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.a.notifyChanged();
-  }
-  
-  public void notifyDataSetInvalidated()
-  {
-    this.a.notifyInvalidated();
-  }
-  
-  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    this.a.registerObserver(paramDataSetObserver);
-  }
-  
-  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    this.a.unregisterObserver(paramDataSetObserver);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    SlideDownFrameLayout.a(this.a).a().setY(f);
+    SlideDownFrameLayout.a(this.a).a(f, SlideDownFrameLayout.a(this.a).a().getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bici
  * JD-Core Version:    0.7.0.1
  */

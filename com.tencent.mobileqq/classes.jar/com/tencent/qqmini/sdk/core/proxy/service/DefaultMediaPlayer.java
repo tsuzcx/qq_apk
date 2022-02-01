@@ -3,16 +3,16 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 import android.media.MediaPlayer;
 import android.view.Surface;
 import android.view.SurfaceHolder;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnBufferingUpdateListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnCompletionListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnErrorListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnInfoListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnLoopStartListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnPreparedListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnSeekCompleteListener;
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer.OnVideoSizeChangedListener;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnBufferingUpdateListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnCompletionListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnErrorListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnInfoListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnLoopStartListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnPreparedListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnVideoSizeChangedListener;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 public class DefaultMediaPlayer
   implements IMediaPlayer
@@ -162,7 +162,7 @@ public class DefaultMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.DefaultMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

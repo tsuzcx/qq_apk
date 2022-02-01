@@ -1,6 +1,39 @@
-public abstract interface apji
+import com.tencent.ark.ark.VariantWrapper;
+
+class apji
+  extends apjl
 {
-  public abstract void a(apjh paramapjh);
+  private apji()
+  {
+    super(null);
+  }
+  
+  public String a()
+  {
+    return "GetPskey";
+  }
+  
+  public void a(apih paramapih, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length == 1)) {
+      paramVariantWrapper.SetString(apkf.b(paramArrayOfVariantWrapper[0].GetString()));
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
 }
 
 

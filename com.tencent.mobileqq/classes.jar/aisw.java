@@ -1,17 +1,29 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aisw
-  extends aira
+  implements View.OnClickListener
 {
-  public aisw(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  public aisw(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void initData(Intent paramIntent)
+  public void onClick(View paramView)
   {
-    super.initData(paramIntent);
+    if (TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText()))
+    {
+      this.a.setResult(0);
+      this.a.finish();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), false);
+    }
   }
 }
 

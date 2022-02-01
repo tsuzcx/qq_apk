@@ -1,9 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+
 public class akbz
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public awge a;
+  public akbz(BaseActivityView paramBaseActivityView) {}
   
-  protected akbz(akbx paramakbx) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a = null;
+  }
 }
 
 

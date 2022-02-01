@@ -1,50 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.provider.LocalPhotoGroupData;
-import java.util.ArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PointF;
+import android.view.View;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
-final class azqq
-  implements bjqx
+public class azqq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  azqq(QQAppInterface paramQQAppInterface) {}
+  public azqq(VasProfileTagView paramVasProfileTagView, View paramView, PointF paramPointF) {}
   
-  public void onWebEvent(String paramString, Bundle paramBundle)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data")))
-    {
-      QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent data == null || !data.containsKey(\"data\")");
-      return;
-    }
-    paramBundle = paramBundle.getBundle("data");
-    if (paramBundle == null)
-    {
-      QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent getTravelGroup bundle is empty");
-      return;
-    }
-    boolean bool;
-    if ("cmd.getTravelGroup".equals(paramString))
-    {
-      QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent CMD_GET_TRAVEL_GROUP");
-      paramString = (LocalPhotoGroupData)paramBundle.getSerializable("groupData");
-      if ((paramString == null) || (paramString.pathList == null) || (paramString.pathList.size() == 0))
-      {
-        QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData == null");
-        bool = false;
-      }
-    }
-    for (;;)
-    {
-      azqp.a(this.a, bool);
-      bjqu.a().b(this);
-      return;
-      QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData:" + paramString.toString());
-      LocalMultiProcConfig.putLong("SP_LAST_UPDATE_TIME", paramString.startTime);
-      bool = true;
-      continue;
-      bool = false;
-    }
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_AndroidViewView.setScaleX(paramValueAnimator.floatValue());
+    this.jdField_a_of_type_AndroidViewView.setScaleY(paramValueAnimator.floatValue());
+    float f1 = this.jdField_a_of_type_AndroidGraphicsPointF.x;
+    float f2 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).x;
+    float f3 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).getWidth();
+    float f4 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
+    float f5 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).y;
+    float f6 = VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).getHeight();
+    this.jdField_a_of_type_AndroidViewView.setTranslationX((f1 - f2) * f3 * paramValueAnimator.floatValue());
+    this.jdField_a_of_type_AndroidViewView.setTranslationY((f4 - f5) * f6 * paramValueAnimator.floatValue());
+    this.jdField_a_of_type_AndroidViewView.setRotation(paramValueAnimator.floatValue() * 120.0F - 120.0F);
   }
 }
 

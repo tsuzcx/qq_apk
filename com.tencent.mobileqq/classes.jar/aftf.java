@@ -1,17 +1,17 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aftf
-  extends afuf
+public class aftf
+  implements View.OnClickListener
 {
-  aftf(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public aftf(ReminderListFragment paramReminderListFragment) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new aflo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    ReminderListFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

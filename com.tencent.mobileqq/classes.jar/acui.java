@@ -1,29 +1,19 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
 
 public class acui
-  implements View.OnTouchListener
+  implements actz
 {
-  public acui(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public acui(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    if ((paramMotionEvent != null) && (this.a.a != null))
+    switch (paramView.getId())
     {
-      paramView = this.a.a;
-      if (paramMotionEvent.getAction() != 0) {
-        break label39;
-      }
+    default: 
+      return;
     }
-    label39:
-    for (float f = 0.5F;; f = 1.0F)
-    {
-      paramView.setAlpha(f);
-      return false;
-    }
+    this.a.a();
   }
 }
 

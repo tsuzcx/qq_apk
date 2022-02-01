@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import aujh;
+import awql;
 
 public class MsgBackupTransportProcessor$5
   implements Runnable
 {
-  public MsgBackupTransportProcessor$5(aujh paramaujh) {}
+  public MsgBackupTransportProcessor$5(awql paramawql) {}
   
   public void run()
   {
-    aujh.a(this.this$0);
+    awql.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupTransportProcessor.5
  * JD-Core Version:    0.7.0.1
  */

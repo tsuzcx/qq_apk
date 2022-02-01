@@ -1,86 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.MedalInfo;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
-public class aubj
+public final class aubj
+  extends WebChromeClient
 {
-  public int a;
-  public MedalInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
+  private final IHostInterface.IWebClient a;
   
-  public aubj()
+  private aubj(IHostInterface.IWebClient paramIWebClient)
   {
-    this.jdField_a_of_type_Int = 0;
+    this.a = paramIWebClient;
   }
   
-  public boolean a()
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    for (;;)
-    {
-      try
-      {
-        localJSONArray = new JSONArray(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.strResJson);
-        localJSONObject = null;
-        i = localJSONArray.length();
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevelCount <= 1) || (i <= this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel)) {
-          continue;
-        }
-        localJSONObject = localJSONArray.getJSONObject(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel);
-        if ((localJSONObject != null) && (localJSONObject.has("owned3d"))) {
-          this.jdField_a_of_type_JavaLangString = MedalWallMng.a(localJSONObject.getString("owned3d"));
-        }
-        if ((localJSONObject != null) && (localJSONObject.has("share"))) {
-          this.c = MedalWallMng.a(localJSONObject.getString("share"));
-        }
-      }
-      catch (Exception localException)
-      {
-        JSONArray localJSONArray;
-        JSONObject localJSONObject;
-        int i;
-        localException.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("MedalWallMng", 2, "parse res json fail", localException);
-        continue;
-        if (this.jdField_a_of_type_Int != 1) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        continue;
-        if (!bdhb.b(this.b)) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        continue;
-      }
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b))) {
-        this.b = (MedalWallMng.b + bflr.d(this.jdField_a_of_type_JavaLangString));
-      }
-      if (this.jdField_a_of_type_Int != 2) {
-        continue;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return this.jdField_a_of_type_Boolean;
-      if (i > 1) {
-        localJSONObject = localJSONArray.getJSONObject(1);
-      }
+    if ((this.a == null) || (!this.a.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
+      return super.onConsoleMessage(paramConsoleMessage);
     }
+    return true;
+  }
+  
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  {
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {}
+    do
+    {
+      return true;
+      if ((this.a == null) || (!this.a.onJsPrompt(paramWebView, paramString1, paramString2, paramString3))) {
+        return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+      }
+    } while (paramJsPromptResult == null);
+    paramJsPromptResult.cancel();
+    return true;
+  }
+  
+  @Override
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    super.onProgressChanged(paramWebView, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aubj
  * JD-Core Version:    0.7.0.1
  */

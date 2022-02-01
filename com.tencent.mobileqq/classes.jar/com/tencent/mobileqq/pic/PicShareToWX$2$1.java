@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.pic;
 
-import awjp;
+import ayyb;
 import eipc.EIPCResult;
 
 public class PicShareToWX$2$1
   implements Runnable
 {
-  public PicShareToWX$2$1(awjp paramawjp, EIPCResult paramEIPCResult) {}
+  public PicShareToWX$2$1(ayyb paramayyb, EIPCResult paramEIPCResult) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class PicShareToWX$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicShareToWX.2.1
  * JD-Core Version:    0.7.0.1
  */

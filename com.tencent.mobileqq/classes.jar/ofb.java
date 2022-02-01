@@ -1,85 +1,69 @@
-import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ofb
-  extends Dialog
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int = -1;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ListView jdField_a_of_type_AndroidWidgetListView;
-  private List<GiftServiceBean> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ofd jdField_a_of_type_Ofd;
-  private ofe jdField_a_of_type_Ofe;
-  private LinearLayout b;
+  public ofb(EcshopNewPageFragment paramEcshopNewPageFragment) {}
   
-  public ofb(Context paramContext, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramContext, 2131755332);
-    requestWindowFeature(1);
-    getWindow().setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(17170445)));
-    setContentView(2131560043);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131369898));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369909));
-    this.jdField_a_of_type_Ofe = new ofe(this);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Ofe);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new ofc(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369909));
-    this.b = ((LinearLayout)findViewById(2131369915));
-    this.b.setOnClickListener(this);
-    syo.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, aepi.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
-    syo.a(this.jdField_a_of_type_AndroidWidgetListView, aepi.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
-    setCanceledOnTouchOutside(true);
-  }
-  
-  public void a(List<GiftServiceBean> paramList, ofd paramofd, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Ofd = paramofd;
-    this.jdField_a_of_type_Ofe.notifyDataSetChanged();
     int i = 0;
-    for (;;)
+    if (paramIntent != null)
     {
-      if (i < paramList.size())
-      {
-        paramofd = (GiftServiceBean)paramList.get(i);
-        if ((!TextUtils.isEmpty(paramofd.t)) && (paramofd.t.equals(paramString))) {
-          this.jdField_a_of_type_Int = i;
-        }
+      paramContext = paramIntent.getAction();
+      if (!"com.tencent.biz.pubaccount.ecshop.tabpage.finish".equals(paramContext)) {
+        break label41;
       }
-      else
+      if (this.a.getActivity() != null) {
+        this.a.getActivity().finish();
+      }
+    }
+    label41:
+    int j;
+    int k;
+    do
+    {
+      do
       {
         return;
-      }
-      i += 1;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+      } while (!"action_notify_view_update".equals(paramContext));
+      j = paramIntent.getIntExtra("businessId", 0);
+      k = paramIntent.getIntExtra("viewId", 0);
+    } while ((25 != j) || (k != 1));
+    for (;;)
     {
-    default: 
-      return;
+      try
+      {
+        paramContext = new JSONObject(paramIntent.getStringExtra("extstr"));
+        if (EcshopNewPageFragment.a(this.a) == null) {
+          break;
+        }
+        paramIntent = EcshopNewPageFragment.a(this.a);
+        if (paramContext.optInt("isShow") == 1)
+        {
+          paramIntent.setVisibility(i);
+          return;
+        }
+      }
+      catch (JSONException paramContext)
+      {
+        paramContext.printStackTrace();
+        return;
+      }
+      i = 8;
     }
-    dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ofb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,27 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import com.tencent.widget.AbsListView;
 
-class ssg
-  implements View.OnClickListener
+public class ssg
+  implements bkhe
 {
-  ssg(ssf paramssf, CertifiedAccountMeta.StUser paramStUser) {}
+  public ssg(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    ybt.a(this.jdField_a_of_type_Ssf.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
-    zaj.b("auth_follow", "clk_head", 0, 0, new String[0]);
+    this.a.a(new ssi(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.a.a(new ssh(this, "onScrollStateChanged", paramAbsListView, paramInt));
+    if ((pha.a()) && (paramInt != 0)) {
+      adcd.a().a("proteus_family_feeds");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ssg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,27 @@
-public abstract interface afao
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
+
+public class afao
+  extends Handler
 {
-  public abstract void a();
+  public afao(RegisterBaseActivity paramRegisterBaseActivity) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131718943);
+    }
+    this.a.a(paramMessage, 1);
+  }
 }
 
 

@@ -1,13 +1,18 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
 
-final class bamv
-  implements bhuk
+public final class bamv
+  implements Parcelable.Creator<FilterCategory>
 {
-  bamv(bhsx parambhsx) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public FilterCategory a(Parcel paramParcel)
   {
-    this.a.a(Integer.valueOf(paramInt));
+    return new FilterCategory(paramParcel);
+  }
+  
+  public FilterCategory[] a(int paramInt)
+  {
+    return new FilterCategory[paramInt];
   }
 }
 

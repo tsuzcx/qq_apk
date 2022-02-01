@@ -1,10 +1,14 @@
+import android.view.View;
+
 public abstract interface bksl
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public abstract void a(View paramView);
   
-  public abstract void b();
+  public abstract void a(View paramView, int paramInt);
   
-  public abstract void c();
+  public abstract void a(View paramView, boolean paramBoolean);
+  
+  public abstract boolean a(View paramView);
 }
 
 

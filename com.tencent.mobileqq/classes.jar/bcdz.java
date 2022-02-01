@@ -1,68 +1,126 @@
-import android.text.TextUtils;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qmcf.QmcfManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr.1;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bcdz
 {
-  static HashMap<String, Integer> a = new HashMap();
-  
-  static
+  public static String a()
   {
-    a.put("str", Integer.valueOf(0));
-    a.put("img", Integer.valueOf(1));
-    a.put("video", Integer.valueOf(2));
-    a.put("voice", Integer.valueOf(3));
-    a.put("recite", Integer.valueOf(4));
-    a.put("calculation", Integer.valueOf(7));
+    String str = BaseApplicationImpl.getApplication().getSharedPreferences("QmcfConfig", 4).getString("art_res_sv_md5_version_soname_key", "artfilter000_0");
+    boolean bool = bcdq.a(str, 9);
+    VideoEnvironment.a("ShortVideoArtResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
+    if (bool) {
+      return str;
+    }
+    return "artfilter000_0";
   }
   
-  public static bcdy a(String paramString)
+  private static void a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    ThreadManager.post(new ShortVideoArtResourceMgr.1(), 5, null, false);
   }
   
-  public static bcdy a(JSONObject paramJSONObject)
+  static boolean a()
   {
-    try
+    return bcls.d();
+  }
+  
+  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  {
+    if (!bcls.c()) {
+      return false;
+    }
+    int i = bckf.a();
+    QmcfManager.getInstance().setCurrFrameType(i);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoArtResourceMgr", 2, String.format("supportFrameType[%s]", new Object[] { Integer.valueOf(i) }));
+    }
+    switch (i)
     {
-      Object localObject = paramJSONObject.getString("type");
-      localObject = (Integer)a.get(localObject);
-      if (localObject == null) {
-        return null;
-      }
-      switch (((Integer)localObject).intValue())
+    }
+    for (;;)
+    {
+      return true;
+      QmcfManager.getInstance().setQmcfMobileNotSupport(bckf.a);
+      return false;
+      paramSVConfigItem.armv7a_url = paramSVConfigItem.extend1;
+      paramSVConfigItem.armv7a_md5 = paramSVConfigItem.extend2;
+    }
+  }
+  
+  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    boolean bool2 = false;
+    paramQQAppInterface = b();
+    paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
+    File localFile = new File(paramQQAppInterface);
+    if (localFile.exists())
+    {
+      if ((a().equals(paramString1)) && (bcdq.a(paramQQAppInterface, "artfilter_config_file")))
       {
-      case 0: 
-        paramJSONObject = new bceh(paramJSONObject);
-        return paramJSONObject;
+        VideoEnvironment.a("ShortVideoArtResourceMgr", "uncompressPendantZip:[checkConfigFileListIsOK]success=true", null);
+        return false;
+      }
+      bgmg.a(paramQQAppInterface);
+      VideoEnvironment.a("ShortVideoArtResourceMgr", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
+    }
+    boolean bool1 = localFile.mkdirs();
+    VideoEnvironment.a("ShortVideoArtResourceMgr", "uncompressPendantZip:[exists]mkOK=" + bool1, null);
+    try
+    {
+      bgmg.a(paramString2, paramQQAppInterface, false);
+      bool1 = bcdq.a(paramQQAppInterface, "artfilter_config_file");
+      VideoEnvironment.a("ShortVideoArtResourceMgr", "uncompressPendantZip:checkConfigFileListIsOK success=" + bool1, null);
+      if (bool1)
+      {
+        boolean bool3 = a(paramString1);
+        VideoEnvironment.a("ShortVideoArtResourceMgr", "uncompressPendantZip:checkConfigFileListIsOK saveOK=" + bool3, null);
+        bool1 = bool2;
+        if (!bool3)
+        {
+          bool3 = a(paramString1);
+          VideoEnvironment.a("ShortVideoArtResourceMgr", "uncompressPendantZip:checkConfigFileListIsOK[two]saveOK=" + bool3, null);
+          bool1 = bool2;
+          if (!bool3)
+          {
+            VideoEnvironment.a("ShortVideoArtResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
+            bool1 = a("artfilter000_0");
+            VideoEnvironment.a("ShortVideoArtResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
+            bool1 = true;
+          }
+        }
+        a();
+        return bool1;
       }
     }
-    catch (Exception paramJSONObject)
+    catch (Exception paramQQAppInterface)
     {
-      paramJSONObject.printStackTrace();
-      break label142;
-      return new bced(paramJSONObject);
-      return new bcej(paramJSONObject);
-      return new bcdx(paramJSONObject);
-      return new bcea(paramJSONObject);
-      paramJSONObject = new bcdv(paramJSONObject);
-      return paramJSONObject;
+      paramQQAppInterface.printStackTrace();
+      return true;
     }
-    label142:
-    return null;
+    return true;
+  }
+  
+  private static boolean a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("QmcfConfig", 4).edit();
+    localEditor.putString("art_res_sv_md5_version_soname_key", paramString);
+    return localEditor.commit();
+  }
+  
+  public static String b()
+  {
+    String str = bcls.a();
+    return str + "art_res_cache" + File.separator;
   }
 }
 

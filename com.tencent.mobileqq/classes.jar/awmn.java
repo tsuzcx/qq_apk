@@ -1,31 +1,25 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Bundle;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.theme.diy.ResData;
 
-class awmn
-  implements ValueAnimator.AnimatorUpdateListener
+public class awmn
+  implements bdqf
 {
-  awmn(awmf paramawmf, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  public awmn(ChatBackgroundManager paramChatBackgroundManager) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
-    {
-      return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-awmf.a(this.jdField_a_of_type_Awmf) * (1.0F - f));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Awmf.f);
-    this.b.setAlpha(f);
+    if (paramInt2 == 4) {
+      BaseApplicationImpl.sImageCache.evictAll();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awmn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,30 @@
+import android.app.Dialog;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebView.HitTestResult;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.vip.lianghao.view.LiangHaoDialogView;
 
 public class bhjq
-  implements View.OnLongClickListener
+  implements bgmd
 {
-  public bhjq(InnerWebView paramInnerWebView) {}
+  private Dialog a;
   
-  public boolean onLongClick(View paramView)
+  public Dialog a(Context paramContext, bhji parambhji, View.OnClickListener paramOnClickListener)
   {
-    paramView = InnerWebView.a(this.a).getHitTestResult();
-    if ((paramView.getType() == 5) || (paramView.getType() == 8))
-    {
-      paramView = paramView.getExtra();
-      if (QMLog.isColorLevel()) {
-        QMLog.e("ProgressWebView", "onLongClick : " + paramView);
-      }
-      bgsi localbgsi = bgsi.a(InnerWebView.a(this.a).getContext());
-      localbgsi.a("发送给朋友", 7);
-      localbgsi.a("保存到手机", 7);
-      localbgsi.a("取消");
-      localbgsi.a(true);
-      localbgsi.a(new bhjr(this, localbgsi, paramView));
-      localbgsi.show();
-      return true;
-    }
-    return false;
+    this.a = bglp.a(paramContext, 2131693216, this, parambhji, 2131690582, 2131693214, new bhjr(this), paramOnClickListener, false, false);
+    return this.a;
+  }
+  
+  public View a(Context paramContext, Object paramObject)
+  {
+    paramContext = new LiangHaoDialogView(paramContext);
+    paramContext.a((bhji)paramObject);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjq
  * JD-Core Version:    0.7.0.1
  */

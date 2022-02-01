@@ -1,36 +1,65 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import cooperation.troop.NearbyVideoChatProxyActivity;
-import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
 
-class auvg
-  implements yrb
+public class auvg
+  extends Animation
 {
-  auvg(auvf paramauvf, String paramString) {}
+  private float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private final boolean jdField_b_of_type_Boolean;
   
-  public void callback(Bundle paramBundle)
+  public auvg(ScrollTextView paramScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramBundle.getBoolean("isOtherTypeChatting", false))
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.jdField_b_of_type_Float;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    int i;
+    if (this.jdField_b_of_type_Boolean)
     {
-      paramBundle = bdgm.a(this.jdField_a_of_type_Auvf.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), 230);
-      paramBundle.setMessage(this.jdField_a_of_type_Auvf.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a().getString(2131696353));
-      paramBundle.setNegativeButton(alud.a(2131707587), new auvh(this));
-      paramBundle.show();
-      return;
+      i = 1;
+      paramTransformation = paramTransformation.getMatrix();
+      localCamera.save();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label99;
+      }
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
     }
-    yqz.a();
-    paramBundle = new oidb_0x8dd.SelfInfo();
-    paramBundle.uint32_gender.set(this.jdField_a_of_type_Auvf.jdField_a_of_type_Int);
-    paramBundle.uint32_charm_level.set(this.jdField_a_of_type_Auvf.b);
-    paramBundle.uint32_age.set(this.jdField_a_of_type_Auvf.c);
-    NearbyVideoChatProxyActivity.a(this.jdField_a_of_type_Auvf.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), this.jdField_a_of_type_Auvf.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), null, this.jdField_a_of_type_JavaLangString, paramBundle, 0);
+    for (;;)
+    {
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f1, -f2);
+      paramTransformation.postTranslate(f1, f2);
+      return;
+      i = -1;
+      break;
+      label99:
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
+    }
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getHeight();
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getWidth();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvg
  * JD-Core Version:    0.7.0.1
  */

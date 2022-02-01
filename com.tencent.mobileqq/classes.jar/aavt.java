@@ -1,73 +1,128 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.util.ArrayList;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.SmoothScroller;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
 
 public class aavt
-  extends WebViewPlugin
 {
-  private ArrayList<aavr> a = new ArrayList();
+  private RecyclerView.LayoutManager a;
   
-  public aavt()
+  public aavt(@NonNull RecyclerView.LayoutManager paramLayoutManager)
   {
-    this.mPluginNameSpace = "GdtWebReportPlugin";
-    aavs localaavs = new aavs(this);
-    aavu localaavu = new aavu(this);
-    odh localodh = new odh();
-    this.a.add(localaavs);
-    this.a.add(localaavu);
-    this.a.add(localodh);
+    this.a = paramLayoutManager;
   }
   
-  public Activity a()
+  public int a()
   {
-    if (this.mRuntime != null) {}
-    for (Activity localActivity1 = this.mRuntime.a();; localActivity1 = null)
-    {
-      Activity localActivity2 = localActivity1;
-      if ((localActivity1 instanceof BasePluginActivity)) {
-        localActivity2 = ((BasePluginActivity)BasePluginActivity.class.cast(localActivity1)).getOutActivity();
-      }
-      return localActivity2;
-    }
+    return this.a.getChildCount();
   }
   
-  public void callJs(String paramString)
+  public int a(View paramView)
   {
-    super.callJs(paramString);
+    return this.a.getPosition(paramView);
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  public View a(int paramInt)
   {
-    int i = 0;
-    while (i < this.a.size())
-    {
-      ((aavr)this.a.get(i)).a(paramString, paramLong, paramMap);
-      i += 1;
-    }
-    return false;
+    return this.a.getChildAt(paramInt);
   }
   
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  public View a(int paramInt, RecyclerView.Recycler paramRecycler)
   {
-    return super.handleSchemaRequest(paramString1, paramString2);
+    paramRecycler = paramRecycler.getViewForPosition(paramInt);
+    this.a.addView(paramRecycler);
+    this.a.measureChildWithMargins(paramRecycler, 0, 0);
+    return paramRecycler;
   }
   
-  public void onActivityReady()
+  public void a()
   {
-    super.onActivityReady();
+    this.a.requestLayout();
   }
   
-  public void onCreate()
+  public void a(int paramInt)
   {
-    super.onCreate();
+    this.a.offsetChildrenHorizontal(paramInt);
   }
   
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  public void a(RecyclerView.Recycler paramRecycler)
   {
-    super.onWebViewCreated(paramCustomWebView);
+    this.a.detachAndScrapAttachedViews(paramRecycler);
+  }
+  
+  public void a(RecyclerView.SmoothScroller paramSmoothScroller)
+  {
+    this.a.startSmoothScroll(paramSmoothScroller);
+  }
+  
+  public void a(View paramView)
+  {
+    this.a.attachView(paramView);
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+    this.a.layoutDecorated(paramView, localLayoutParams.leftMargin + paramInt1, localLayoutParams.topMargin + paramInt2, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
+  }
+  
+  public void a(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    this.a.detachAndScrapView(paramView, paramRecycler);
+  }
+  
+  public int b()
+  {
+    return this.a.getItemCount();
+  }
+  
+  public int b(View paramView)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+    int i = this.a.getDecoratedMeasuredWidth(paramView);
+    int j = localMarginLayoutParams.leftMargin;
+    return localMarginLayoutParams.rightMargin + (i + j);
+  }
+  
+  public void b()
+  {
+    this.a.removeAllViews();
+  }
+  
+  public void b(RecyclerView.Recycler paramRecycler)
+  {
+    this.a.removeAndRecycleAllViews(paramRecycler);
+  }
+  
+  public void b(View paramView)
+  {
+    this.a.detachView(paramView);
+  }
+  
+  public void b(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    paramRecycler.recycleView(paramView);
+  }
+  
+  public int c()
+  {
+    return this.a.getWidth();
+  }
+  
+  public int c(View paramView)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+    int i = this.a.getDecoratedMeasuredHeight(paramView);
+    int j = localMarginLayoutParams.topMargin;
+    return localMarginLayoutParams.bottomMargin + (i + j);
+  }
+  
+  public int d()
+  {
+    return this.a.getHeight();
   }
 }
 

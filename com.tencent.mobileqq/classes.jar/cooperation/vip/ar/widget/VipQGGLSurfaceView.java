@@ -1,10 +1,10 @@
 package cooperation.vip.ar.widget;
 
 import android.content.Context;
-import bfxa;
-import bfxd;
-import bfxl;
-import bkex;
+import bjem;
+import bjep;
+import bjex;
+import bmth;
 import com.tencent.qg.sdk.QGBitmapLoader;
 import com.tencent.qg.sdk.QGGLSurfaceView;
 import com.tencent.qg.sdk.QGReporter;
@@ -17,7 +17,7 @@ public class VipQGGLSurfaceView
   extends QGGLSurfaceView
 {
   private static String jdField_a_of_type_JavaLangString = "VipQGGLSurfaceView";
-  private bfxl jdField_a_of_type_Bfxl;
+  private bjex jdField_a_of_type_Bjex;
   private ModuleEngine jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine;
   
   public VipQGGLSurfaceView(Context paramContext)
@@ -34,25 +34,25 @@ public class VipQGGLSurfaceView
   
   public void a()
   {
-    GLog.init(new bkex());
-    QGBitmapLoader.setBitmapLoader(new bfxa());
-    QGReporter.setReporter(new bfxd());
+    GLog.init(new bmth());
+    QGBitmapLoader.setBitmapLoader(new bjem());
+    QGReporter.setReporter(new bjep());
     this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine = new ModuleEngine();
-    this.jdField_a_of_type_Bfxl = new bfxl();
-    this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.registerJsModule(this.jdField_a_of_type_Bfxl);
+    this.jdField_a_of_type_Bjex = new bjex();
+    this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.registerJsModule(this.jdField_a_of_type_Bjex);
     setModuleEngin(this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine);
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine != null) && (this.jdField_a_of_type_Bfxl != null)) {
-      this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.unRegisterJsModule(this.jdField_a_of_type_Bfxl);
+    if ((this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine != null) && (this.jdField_a_of_type_Bjex != null)) {
+      this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.unRegisterJsModule(this.jdField_a_of_type_Bjex);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.ar.widget.VipQGGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

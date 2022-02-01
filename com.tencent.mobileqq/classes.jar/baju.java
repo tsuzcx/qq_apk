@@ -1,63 +1,106 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.im.oidb.cmd0xe8c.oidb_0xe8c.ReqBody;
+import tencent.im.oidb.cmd0xe8c.oidb_0xe8c.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-class baju
-  extends bibk
+public class baju
+  extends anii
 {
-  baju(bajs parambajs, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, List paramList, int[] paramArrayOfInt5)
+  public baju(QQAppInterface paramQQAppInterface)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    super(paramQQAppInterface);
   }
   
-  public View a(int paramInt, Object paramObject, bibj parambibj, View.OnClickListener paramOnClickListener)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    parambibj = super.a(paramInt, paramObject, parambibj, paramOnClickListener);
-    if (parambibj != null) {
-      parambibj.setTag(-10, paramObject);
-    }
-    return parambibj;
-  }
-  
-  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
-  {
-    paramInt = 0;
-    Object localObject = this.jdField_a_of_type_Bajs.a((baky)paramObject);
-    int i = ((List)localObject).size();
-    paramObject = localObject;
-    if (i > 3)
-    {
-      paramObject = ((List)localObject).subList(i - 2, i);
-      paramObject.add(0, bajs.a);
-    }
-    i = Math.min(paramObject.size(), 3);
-    if (paramInt < paramArrayOfbibj.length)
+    bajz localbajz = new bajz();
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {}
+    for (;;)
     {
       int j;
-      if (paramInt < i)
+      try
       {
-        localObject = (bakz)paramObject.get(paramInt);
-        j = this.jdField_a_of_type_JavaUtilList.indexOf(localObject);
-        if (j < 0)
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if (paramToServiceMsg.uint32_result.get() == 0)
         {
-          if (QLog.isColorLevel()) {
-            QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getRightMenuItemInfo error, can not find the menu， menuId[" + ((bakz)localObject).b() + "]");
+          i = 1;
+          if (i == 0) {
+            break label224;
           }
-          paramArrayOfbibj[paramInt].b = -1;
-          paramArrayOfbibj[paramInt].a = -1;
+          paramFromServiceMsg = new oidb_0xe8c.RspBody();
+          paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+          long l = paramFromServiceMsg.uint64_friend_uin.get();
+          j = paramFromServiceMsg.uint32_flag.get();
+          if ((j & 0x1) != 0)
+          {
+            i = 1;
+            break label230;
+            localbajz.jdField_a_of_type_Long = l;
+            if ((i != 0) || (j == 0)) {
+              continue;
+            }
+            bool = true;
+            localbajz.jdField_a_of_type_Boolean = bool;
+            bool = true;
+            if (QLog.isColorLevel()) {
+              QLog.d("OneWayFriendHandler", 0, String.format("handleGetOneWayFriendFlag success=%s result=%s", new Object[] { Boolean.valueOf(bool), localbajz }));
+            }
+            notifyUI(1, bool, localbajz);
+          }
         }
-      }
-      for (;;)
-      {
-        paramInt += 1;
-        break;
-        paramArrayOfbibj[paramInt].b = j;
-        paramArrayOfbibj[paramInt].a = this.jdField_a_of_type_ArrayOfInt[j];
+        else
+        {
+          i = 0;
+          continue;
+        }
+        int i = 0;
+        break label230;
+        j = 0;
         continue;
-        paramArrayOfbibj[paramInt].b = -1;
-        paramArrayOfbibj[paramInt].a = -1;
+        boolean bool = false;
+        continue;
+        bool = false;
       }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.e("OneWayFriendHandler", 1, "handleGetOneWayFriendFlag fail.", paramToServiceMsg);
+      }
+      label224:
+      continue;
+      label230:
+      if ((j & 0x2) != 0) {
+        j = 1;
+      }
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OneWayFriendHandler", 0, String.format("getOneWayFriendFlag friendUin=%s", new Object[] { Long.valueOf(paramLong) }));
+    }
+    oidb_0xe8c.ReqBody localReqBody = new oidb_0xe8c.ReqBody();
+    localReqBody.uint64_friend_uin.set(paramLong);
+    sendPbReq(makeOIDBPkg("OidbSvc.0xe8c", 3724, 0, localReqBody.toByteArray()));
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return bajy.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("OidbSvc.0xe8c".equals(paramToServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
 }

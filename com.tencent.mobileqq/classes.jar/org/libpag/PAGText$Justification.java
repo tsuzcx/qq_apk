@@ -9,12 +9,10 @@ public class PAGText$Justification
   public static final int FullJustifyLastLineRight = 4;
   public static final int Left = 0;
   public static final int Right = 2;
-  
-  public PAGText$Justification(PAGText paramPAGText) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     org.libpag.PAGText.Justification
  * JD-Core Version:    0.7.0.1
  */

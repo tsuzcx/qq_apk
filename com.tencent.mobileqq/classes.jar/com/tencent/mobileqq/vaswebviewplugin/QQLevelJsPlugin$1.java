@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bant;
+import bdox;
 
 class QQLevelJsPlugin$1
-  extends bant
+  extends bdox
 {
   QQLevelJsPlugin$1(QQLevelJsPlugin paramQQLevelJsPlugin, String paramString) {}
   
@@ -16,7 +16,7 @@ class QQLevelJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QQLevelJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

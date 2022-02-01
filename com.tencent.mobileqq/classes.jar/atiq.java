@@ -1,17 +1,13 @@
-import android.support.v4.util.ArraySet;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
 
 class atiq
-  implements anvo
+  implements atix
 {
-  atiq(atip paramatip, String paramString) {}
+  atiq(atip paramatip) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a()
   {
-    if (atip.a(this.jdField_a_of_type_Atip) != null) {
-      atip.a(this.jdField_a_of_type_Atip).remove(Integer.valueOf(paramInt1));
-    }
-    anwc.a().a(paramInt1);
-    this.jdField_a_of_type_Atip.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"openresult\":" + paramInt2 + "}" });
+    FileSelectorSearchGroupFragment.a(this.a.a).a();
   }
 }
 

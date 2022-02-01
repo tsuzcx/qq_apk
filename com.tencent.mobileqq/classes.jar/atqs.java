@@ -1,22 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class atqs
-  implements DialogInterface.OnClickListener
+class atqs
+  implements View.OnClickListener
 {
-  atqs(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2) {}
+  atqs(atqp paramatqp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    attk.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-    azqs.b(null, "CliOper", "", "", "0X800A970", "0X800A970", 0, 0, "0", "0", "0", "");
+    atvo.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Atoo.d());
+    this.a.b = true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqs
  * JD-Core Version:    0.7.0.1
  */

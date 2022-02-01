@@ -1,92 +1,231 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-import dov.com.qq.im.ae.mode.AECaptureMode;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.content.Context;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Date;
 
-class bktt
-  implements bmeo<blfi>
+public class bktt
 {
-  bktt(bktp parambktp) {}
+  protected double a;
+  protected float a;
+  public int a;
+  protected long a;
+  protected boolean a;
+  private float jdField_b_of_type_Float;
+  protected int b;
+  protected long b;
+  private boolean jdField_b_of_type_Boolean;
+  private float c;
+  protected int c;
+  private float d;
+  protected int d;
+  private float e;
+  protected int e;
+  private float jdField_f_of_type_Float;
+  private int jdField_f_of_type_Int;
+  private float jdField_g_of_type_Float;
+  private int jdField_g_of_type_Int;
+  private int h;
+  private int i;
   
-  public void a(@Nullable blfi paramblfi)
+  public bktt()
   {
-    int i = 1;
-    if (paramblfi == null) {}
-    label305:
-    label336:
-    do
+    a();
+  }
+  
+  private long a()
+  {
+    return new Date().getTime();
+  }
+  
+  private long b()
+  {
+    return new Date().getTime();
+  }
+  
+  public int a(Context paramContext, long paramLong)
+  {
+    this.jdField_b_of_type_Int = bgnt.a(BaseApplication.getContext());
+    if (!this.jdField_a_of_type_Boolean) {
+      switch (this.jdField_b_of_type_Int)
+      {
+      default: 
+        this.jdField_c_of_type_Int = 4096;
+      }
+    }
+    for (;;)
     {
-      return;
-      paramblfi = paramblfi.a;
-      bktp.a(this.a, paramblfi);
-      bljn.a("VideoStoryPiecesPart", "[GifAuthor]---checkShowGifAuthor when capture mode change");
-      bktp.a(this.a);
-      bktp.a(this.a).q();
-      if (paramblfi == AECaptureMode.NORMAL) {
-        bktp.a(this.a).c(true);
+      if (paramLong < 102400L) {
+        this.jdField_c_of_type_Int *= 4;
       }
-      for (;;)
+      if (paramLong - this.jdField_c_of_type_Int <= this.jdField_c_of_type_Int / 2) {
+        this.jdField_c_of_type_Int = ((int)paramLong);
+      }
+      return this.jdField_c_of_type_Int;
+      this.jdField_c_of_type_Int = 32768;
+      continue;
+      this.jdField_c_of_type_Int = 16384;
+      continue;
+      this.jdField_c_of_type_Int = 8192;
+    }
+  }
+  
+  public int a(Context paramContext, long paramLong1, long paramLong2, int paramInt)
+  {
+    this.jdField_a_of_type_Long = a();
+    if (paramLong1 < 102400L) {}
+    for (this.h = 1; true == this.jdField_b_of_type_Boolean; this.h = 2)
+    {
+      a();
+      this.jdField_d_of_type_Int = a(paramContext, paramLong1);
+      this.jdField_b_of_type_Boolean = false;
+      return this.jdField_d_of_type_Int;
+    }
+    this.jdField_c_of_type_Float = ((float)(this.jdField_d_of_type_Int / this.jdField_a_of_type_Double));
+    label144:
+    label176:
+    float f1;
+    if (0.0F == this.jdField_e_of_type_Float)
+    {
+      this.jdField_e_of_type_Float = this.jdField_c_of_type_Float;
+      if (this.jdField_a_of_type_Int != 2)
       {
-        if (bktp.a(this.a) != null) {
-          bktp.a(this.a).a(paramblfi);
+        this.i += 1;
+        if (this.jdField_d_of_type_Float != 0.0F) {
+          break label278;
         }
-        if (paramblfi != AECaptureMode.NORMAL) {
-          break label336;
+        this.jdField_a_of_type_Float = 1.0F;
+        if (this.i == this.h) {
+          this.jdField_b_of_type_Float = this.jdField_e_of_type_Float;
         }
-        bktp.a(this.a).setVisibility(0);
-        if (bktp.a(this.a) != null)
+      }
+      switch (this.jdField_a_of_type_Int)
+      {
+      default: 
+        if (paramLong1 - paramLong2 - this.jdField_d_of_type_Int <= this.jdField_d_of_type_Int / 2) {
+          this.jdField_d_of_type_Int = ((int)(paramLong1 - paramLong2));
+        }
+        if (this.i == 0)
         {
-          if ((!blat.g(bktp.b(this.a).getIntent())) && (!blat.h(bktp.c(this.a).getIntent()))) {
-            break label305;
+          f1 = this.jdField_d_of_type_Float;
+          label219:
+          if ((paramInt <= 0) || ((this.jdField_d_of_type_Int >= 0) && (this.jdField_d_of_type_Int <= paramInt))) {
+            break label646;
           }
-          bktp.a(this.a).setFunctionFlag(bktp.d(this.a).getIntent().getIntExtra("ability_flag", 2));
+          this.jdField_d_of_type_Int = paramInt;
         }
-        bktp.a(this.a).setMaxDuration(bktp.a());
-        bktp.a(this.a).a(false);
-        bktp.a(this.a).b(blat.i(bktp.e(this.a).getIntent()));
-        bktp.a(this.a).c(false);
-        if (bktp.b(this.a)) {
-          bktp.a(this.a).setVisibility(0);
-        }
-        bktp.a(this.a).setVisibility(0);
-        if (blat.a(bktp.a(this.a).a())) {
-          break;
-        }
-        bktp.a(this.a).a().b();
-        return;
-        bktp.a(this.a).c(false);
+        break;
       }
-      paramblfi = bktp.a(this.a);
-      if (bktp.a(this.a)) {}
+    }
+    for (;;)
+    {
+      return this.jdField_d_of_type_Int;
+      this.jdField_e_of_type_Float = ((float)(0.8D * this.jdField_c_of_type_Float + 0.2D * this.jdField_e_of_type_Float));
+      break;
+      label278:
+      if (this.i != this.h) {
+        break label144;
+      }
+      this.jdField_a_of_type_Float = ((float)((this.jdField_e_of_type_Float - this.jdField_d_of_type_Float) / this.jdField_b_of_type_Float / ((this.jdField_d_of_type_Int - this.jdField_e_of_type_Int) / (this.jdField_c_of_type_Int + 0.0D))));
+      break label144;
+      if (this.i != this.h) {
+        break label176;
+      }
+      if (this.jdField_a_of_type_Float < 0.09D)
+      {
+        this.jdField_a_of_type_Int = 1;
+        this.jdField_d_of_type_Int = ((int)(1.05D * this.jdField_e_of_type_Int));
+      }
       for (;;)
       {
-        paramblfi.setFunctionFlag(i);
+        this.jdField_e_of_type_Float = 0.0F;
+        this.i = 0;
         break;
-        i = 3;
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_e_of_type_Int = this.jdField_d_of_type_Int;
+        this.jdField_d_of_type_Int = (this.jdField_e_of_type_Int * 2);
+        this.jdField_d_of_type_Float = this.jdField_e_of_type_Float;
       }
-      if (paramblfi == AECaptureMode.GIF)
+      if (this.i != this.h) {
+        break label176;
+      }
+      if (this.jdField_a_of_type_Float < 0.09D)
       {
-        bktp.a(this.a).setVisibility(0);
-        bktp.a(this.a).setFunctionFlag(4);
-        bktp.a(this.a).setMaxDuration(bktp.b());
-        bktp.a(this.a).a(true);
-        bktp.a(this.a).c(true);
-        if (bktp.b(this.a)) {
-          bktp.a(this.a).setVisibility(0);
-        }
-        bktp.a(this.a).setVisibility(0);
-        bktp.a(this.a).a();
-        return;
+        this.jdField_a_of_type_Int = 2;
+        this.jdField_f_of_type_Float = this.jdField_e_of_type_Float;
+        this.jdField_d_of_type_Float = 0.0F;
+        this.jdField_e_of_type_Int = 0;
+        this.jdField_g_of_type_Float = this.jdField_e_of_type_Float;
+        break label176;
       }
-    } while (paramblfi != AECaptureMode.PLAY);
-    bktp.a(this.a).setVisibility(8);
-    bktp.a(this.a).setVisibility(8);
-    bktp.a(this.a).setVisibility(8);
-    bktp.a(this.a).setMaterial(null);
+      this.jdField_a_of_type_Int = 1;
+      this.jdField_e_of_type_Int = this.jdField_d_of_type_Int;
+      this.jdField_d_of_type_Int = ((int)(1.05D * this.jdField_e_of_type_Int));
+      this.jdField_d_of_type_Float = this.jdField_e_of_type_Float;
+      this.jdField_g_of_type_Float = this.jdField_e_of_type_Float;
+      this.jdField_e_of_type_Float = 0.0F;
+      this.i = 0;
+      break label176;
+      if (Math.abs(this.jdField_e_of_type_Float - this.jdField_f_of_type_Float) > 0.2D * this.jdField_f_of_type_Float) {}
+      for (this.jdField_f_of_type_Int += 1;; this.jdField_f_of_type_Int = 0)
+      {
+        if (this.jdField_f_of_type_Int >= this.jdField_g_of_type_Int) {
+          break label596;
+        }
+        this.jdField_a_of_type_Int = 2;
+        break;
+      }
+      label596:
+      this.jdField_f_of_type_Int = 0;
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
+      this.jdField_d_of_type_Float = 0.0F;
+      this.jdField_e_of_type_Int = 0;
+      this.jdField_e_of_type_Float = 0.0F;
+      this.i = 0;
+      break label176;
+      f1 = this.jdField_e_of_type_Float;
+      break label219;
+      label646:
+      if (this.jdField_d_of_type_Int < 0)
+      {
+        this.jdField_f_of_type_Int = 0;
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
+        this.jdField_d_of_type_Float = 0.0F;
+        this.jdField_e_of_type_Int = 0;
+        this.jdField_e_of_type_Float = 0.0F;
+        this.i = 0;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Float = 0.0F;
+    this.jdField_d_of_type_Float = 0.0F;
+    this.jdField_e_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Double = 0.0D;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_g_of_type_Float = 0.0F;
+    this.jdField_f_of_type_Int = 0;
+    this.i = 0;
+    this.jdField_g_of_type_Int = 3;
+    this.h = 2;
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_Long = b();
+    this.jdField_a_of_type_Double = ((this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000.0D);
+    QLog.d("upload", 2, "sendFilePakage time:" + this.jdField_a_of_type_Double);
   }
 }
 

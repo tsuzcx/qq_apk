@@ -1,22 +1,8 @@
-public class anau
+public abstract class anau
 {
-  public int a;
-  public anav a;
-  public String a;
+  public abstract void a(int paramInt);
   
-  public anau()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Anav = null;
-  }
-  
-  public String toString()
-  {
-    return "ARCloudLBSLocationCheckResult{retCode = " + this.jdField_a_of_type_Int + ", imageId = " + this.jdField_a_of_type_JavaLangString + ", nearestPOIInfo = " + this.jdField_a_of_type_Anav + '}';
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

@@ -1,23 +1,6 @@
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter;
-import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter.Params;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.videoimax.TransitionContext;
-
-public class aamr
-  implements AdVideoSpliceAdapter
+public abstract interface aamr
 {
-  public AdError show(AdVideoSpliceAdapter.Params paramParams)
-  {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
-    {
-      aase.d("GdtVideoSpliceAdapter", "show error");
-      return new AdError(4);
-    }
-    aase.b("GdtVideoSpliceAdapter", "show");
-    new TransitionContext(paramParams).b();
-    return new AdError(0);
-  }
+  public abstract boolean a(String paramString);
 }
 
 

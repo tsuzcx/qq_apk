@@ -1,21 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
-class aswf
-  implements DialogInterface.OnClickListener
+public class aswf
+  implements View.OnTouchListener
 {
-  aswf(asvy paramasvy) {}
+  public aswf(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    asvy.jdField_a_of_type_Boolean = false;
-    asvy.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
-    QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
+    }
+    return false;
   }
 }
 

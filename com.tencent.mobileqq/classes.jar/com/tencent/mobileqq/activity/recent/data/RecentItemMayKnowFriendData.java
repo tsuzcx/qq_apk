@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 
 public class RecentItemMayKnowFriendData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public String curUin;
   
@@ -23,7 +23,7 @@ public class RecentItemMayKnowFriendData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendData
  * JD-Core Version:    0.7.0.1
  */

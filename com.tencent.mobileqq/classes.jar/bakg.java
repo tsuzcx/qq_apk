@@ -1,27 +1,42 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Build;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Date;
 
-public class bakg
-  implements View.OnClickListener
+final class bakg
+  implements DialogInterface.OnDismissListener
 {
-  public bakg(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  bakg(IosTimepicker paramIosTimepicker, JsBridgeListener paramJsBridgeListener) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    baic.a(this.a.app, "0X800993E", String.valueOf(this.a.a));
-    paramView = (PadInfo)((bajy)paramView.getTag()).a;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", nbv.a(paramView.pad_url, "_bid=2517"));
-    localBundle.putInt("key_team_work_edit_type", paramView.type);
-    localBundle.putString("key_team_work_title", paramView.title);
-    localBundle.putString("key_team_work_rul", paramView.pad_url);
-    localBundle.putInt("key_team_work_pad_list_type", paramView.type_list);
-    localBundle.putString("tdsourcetag", "s_qq_grpfile");
-    TeamWorkDocEditBrowserActivity.a(this.a, localBundle, true);
+    long l1;
+    if ((this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null))
+    {
+      l1 = this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.a() / 1000L;
+      if (!Build.MODEL.equals("Coolpad 5890")) {
+        break label126;
+      }
+      long l2 = new Date().getTime() / 1000L;
+      if (l1 >= l2) {
+        break label126;
+      }
+      l1 = l2;
+    }
+    label126:
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(bake.a(), 2, "onDismiss Time :" + bakj.a(1000L * l1));
+      }
+      this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.setOnTimePickerSelectListener(null);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.a(Long.valueOf(l1));
+      bake.a = true;
+      return;
+    }
   }
 }
 

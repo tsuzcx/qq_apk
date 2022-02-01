@@ -1,73 +1,71 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.AddFriendBlockedInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aiww
-  implements TextWatcher
+  implements anil
 {
-  public aiww(TransactionActivity paramTransactionActivity) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    for (boolean bool = true;; bool = false)
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
+    }
+    switch (paramInt)
     {
-      try
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendVerification.obsever", 2, " default type =" + paramInt);
+      }
+      return;
+    case 1: 
+      b(paramBoolean, null);
+      return;
+    case 2: 
+      a(paramBoolean, null);
+      return;
+    case 3: 
+      paramObject = (Object[])paramObject;
+      boolean bool1 = ((Boolean)paramObject[0]).booleanValue();
+      boolean bool2 = ((Boolean)paramObject[1]).booleanValue();
+      paramObject = (String)paramObject[2];
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendVerification.obsever", 2, " isShowEntrance =" + bool1 + " isShowRedPoint =" + bool2);
+      }
+      a(paramBoolean, bool1, bool2, paramObject);
+      return;
+    case 4: 
+      paramObject = (Object[])paramObject;
+      List localList = (List)paramObject[0];
+      String str = (String)paramObject[1];
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
       {
-        Button localButton = TransactionActivity.a(this.a);
-        if (TextUtils.isEmpty(paramEditable.toString())) {
-          continue;
-        }
-        localButton.setEnabled(bool);
-        float f = Float.parseFloat(paramEditable.toString());
-        int i = TransactionActivity.a(this.a).getText().length();
-        paramEditable = TransactionActivity.a(this.a, f);
-        if (bdnn.a(paramEditable))
-        {
-          TransactionActivity.a(this.a).setVisibility(0);
-          TransactionActivity.a(this.a).setVisibility(8);
-          TransactionActivity.a(this.a).setVisibility(8);
-        }
-        while ((i > 0) && (!TransactionActivity.a(this.a).getText().toString().startsWith(".")) && (!TransactionActivity.a(this.a).getText().toString().endsWith(".")) && (TransactionActivity.a(this.a, TransactionActivity.a(this.a).getText().toString())))
-        {
-          if ((TransactionActivity.a(this.a) > 0) && (!TextUtils.isEmpty(TransactionActivity.a(this.a))) && (f * 100.0F >= TransactionActivity.a(this.a)) && (!TextUtils.isEmpty(TransactionActivity.a(this.a)))) {
-            this.a.a(TransactionActivity.a(this.a));
-          }
-          if (TransactionActivity.a(this.a).isEnabled()) {
-            break label406;
-          }
-          TransactionActivity.a(this.a).setEnabled(true);
-          this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.enable", "", "", TransactionActivity.b(this.a), "");
-          return;
-          TransactionActivity.a(this.a).setVisibility(8);
-          TransactionActivity.a(this.a).setVisibility(0);
-          TransactionActivity.a(this.a).setVisibility(0);
-          TransactionActivity.a(this.a).setText(paramEditable);
-        }
-        if (!TransactionActivity.a(this.a).isEnabled()) {
-          break label406;
+        localStringBuilder = new StringBuilder().append(" blockedInfos =");
+        if (localList == null) {
+          break label297;
         }
       }
-      catch (Exception paramEditable)
+      label297:
+      for (paramObject = Integer.valueOf(localList.size());; paramObject = " is null")
       {
-        paramEditable.printStackTrace();
+        QLog.d("NewFriendVerification.obsever", 2, paramObject);
+        a(paramBoolean, localList, str);
         return;
       }
-      TransactionActivity.a(this.a).setEnabled(false);
-      this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.disable", "", "", TransactionActivity.b(this.a), "");
-      label406:
-      return;
     }
+    paramObject = (Object[])paramObject;
+    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

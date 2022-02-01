@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.launch;
 
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import alud;
+import addy;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
@@ -25,7 +26,10 @@ import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.LruCache;
-import bdne;
+import anni;
+import aqpv;
+import bgsg;
+import bjxn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -35,7 +39,6 @@ import com.tencent.mobileqq.mini.apkg.ApkgMainProcessManager;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.apkg.RenderInfo;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppEntityManager;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppInfoEntity;
@@ -68,6 +71,7 @@ import com.tencent.mobileqq.mini.utils.NavigateBackUtils;
 import com.tencent.mobileqq.minigame.gpkg.GpkgManager;
 import com.tencent.mobileqq.minigame.manager.EngineManager;
 import com.tencent.mobileqq.minigame.manager.EngineVersion;
+import com.tencent.mobileqq.minigame.report.MiniGameBeaconReport;
 import com.tencent.mobileqq.minigame.splash.SplashMiniGameData;
 import com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
@@ -81,9 +85,11 @@ import com.tencent.mobileqq.minigame.utils.CPUUtil;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.MiniSdkUtil;
-import com.tencent.qqmini.sdk.core.tissue.TissueEnv;
-import com.tencent.qqmini.sdk.core.tissue.TissueGlobal;
+import com.tencent.qqmini.sdk.MiniSDK;
+import com.tencent.qqmini.sdk.core.utils.WnsConfig;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.shell.ICommonManager;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.util.QZLog;
 import java.util.ArrayList;
@@ -95,6 +101,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
@@ -105,6 +112,7 @@ public class AppBrandLaunchManager
   private static final int KILL__MODE_BROADCAST = 1;
   public static final int MINI_APP_CRASH_PROTECT_TIME_DEFAULT = 3600000;
   private static final int MINI_APP_PROCESS_DETECT_TIME_DEFAULT = 600000;
+  private static final long MINI_APP_USED_DURATION_MS = TimeUnit.HOURS.toMillis(36L);
   private static final int MINI_GAME_PROCESS_REUSE_DEFAULT = 1;
   private static final int PROCESS_APP_RECYCLE_TIME = 1800000;
   private static final int PROCESS_GAME_MAX_COUNT_DEFAULT = 3;
@@ -122,17 +130,19 @@ public class AppBrandLaunchManager
   public static LinkedHashMap<String, AppBrandLaunchManager.MiniAppSubProcessorInfo> subProcessorInfoMap = new LinkedHashMap();
   public long appProcessRecycleTime = 1800000L;
   public long gameProcessRecycleTime = 900000L;
+  private int hardCoderTimeout;
   private boolean isFirstTimeUpdateBaseLib;
   private boolean isUpdatingBaseLib;
   private AppBrandLaunchManager.MiniAppSubProcessorInfo lastKillingProcessor;
+  private final Runnable mCheckPreloadRunnable = new AppBrandLaunchManager.15(this);
   private Context mContext = BaseApplicationImpl.getApplication();
   protected Handler mHandler = new Handler(ThreadManager.getSubThreadHandler().getLooper());
   private int mKillProcessMode = 0;
   private long mLastPreloadDetectTime;
-  private boolean mMiniAppUsed;
+  private long mMiniAppLastUseTimeStamp;
   private ConcurrentHashMap<String, String> mPreloadingTask = new ConcurrentHashMap();
   private int mProcessGameMaxCount;
-  private int mProcessMaxCount = bdne.a(this.mContext, 6);
+  private int mProcessMaxCount = bgsg.a(this.mContext, 6);
   private int mProcessPreloadCount;
   private LruCache<String, AppBrandLaunchManager.MiniAppSubProcessorInfo> mProcessStack;
   private int mStartTimeInterval = 1500;
@@ -170,7 +180,7 @@ public class AppBrandLaunchManager
       for (;;)
       {
         if (j >= this.mProcessMaxCount) {
-          break label253;
+          break label267;
         }
         AppBrandLaunchManager.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo = (AppBrandLaunchManager.MiniAppSubProcessorInfo)sSupportProcessList.get(j);
         subProcessorInfoMap.put(localMiniAppSubProcessorInfo.processName, localMiniAppSubProcessorInfo);
@@ -190,16 +200,16 @@ public class AppBrandLaunchManager
         continue;
         subGameProcessorInfoMap.put(localThrowable1.processName, localThrowable1);
       }
-      label253:
+      label267:
       subProcessorInfoMap.put(sInternalProcessInfo.processName, sInternalProcessInfo);
-      this.mProcessPreloadCount = bdne.c(this.mContext, 2);
+      this.mProcessPreloadCount = bgsg.c(this.mContext, 2);
       if (this.mProcessPreloadCount < 0) {
         this.mProcessPreloadCount = 2;
       }
       if (this.mProcessPreloadCount > this.mProcessMaxCount) {
         this.mProcessPreloadCount = this.mProcessMaxCount;
       }
-      this.mProcessGameMaxCount = bdne.b(this.mContext, 3);
+      this.mProcessGameMaxCount = bgsg.b(this.mContext, 3);
       if (this.mProcessGameMaxCount <= 0) {
         this.mProcessGameMaxCount = 3;
       }
@@ -209,15 +219,18 @@ public class AppBrandLaunchManager
       if (this.mProcessGameMaxCount > subGameProcessorInfoMap.size()) {
         this.mProcessGameMaxCount = subGameProcessorInfoMap.size();
       }
-      this.appProcessRecycleTime = bdne.b(this.mContext, "mini_app_process_recycle_time", 1800000);
-      this.gameProcessRecycleTime = bdne.b(this.mContext, "mini_game_process_recycle_time", 900000);
+      this.appProcessRecycleTime = bgsg.b(this.mContext, "mini_app_process_recycle_time", 1800000);
+      this.gameProcessRecycleTime = bgsg.b(this.mContext, "mini_game_process_recycle_time", 900000);
     }
     try
     {
       this.mStartTimeInterval = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_start_interval_time", 1500);
       this.mKillProcessMode = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_process_kill_mode", 0);
+      this.mMiniAppLastUseTimeStamp = StorageUtil.getPreference().getLong("key_mini_app_last_use_time", 0L);
       this.mProcessStack = new LruCache(this.mProcessMaxCount);
       getHandler().postDelayed(new AppBrandLaunchManager.1(this), 10000L);
+      MiniGameBeaconReport.init();
+      this.hardCoderTimeout = WnsConfig.getConfig("qqminiapp", "mini_app_hard_coder_timeout", 10000);
       return;
     }
     catch (Throwable localThrowable2)
@@ -236,10 +249,10 @@ public class AppBrandLaunchManager
     {
       i = 1;
       if (i != 0) {
-        break label28;
+        break label29;
       }
     }
-    label28:
+    label29:
     long l1;
     long l2;
     do
@@ -432,15 +445,15 @@ public class AppBrandLaunchManager
       i += 1;
       break;
     }
-    QQToast.a(this.mContext, alud.a(2131700986), 0).a();
+    QQToast.a(this.mContext, anni.a(2131699411), 0).a();
   }
   
   private void checkPreload()
   {
-    QLog.i("miniapp-process_AppBrandLaunchManager", 1, "checkPreload MiniAppUsed:" + this.mMiniAppUsed);
+    QLog.i("miniapp-process_AppBrandLaunchManager", 1, "checkPreload MiniAppUsed:" + isMiniAppUsed());
     try
     {
-      if (this.mMiniAppUsed)
+      if (isMiniAppUsed())
       {
         this.mLastPreloadDetectTime = System.currentTimeMillis();
         checkAndCleanAllMiniProcess();
@@ -475,48 +488,66 @@ public class AppBrandLaunchManager
   private void doFetchPeriodicCache()
   {
     QLog.i("miniapp-process_AppBrandLaunchManager", 1, "start update periodicCache.");
-    try
+    for (;;)
     {
-      Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 instanceof QQAppInterface))
+      Object localObject3;
+      try
       {
-        localObject1 = ((MiniAppEntityManager)((AppRuntime)localObject1).getManager(330)).queryEntity(MiniAppInfoEntity.class, false, null, null, null, null, null, null);
-        if (localObject1 != null)
-        {
-          if (((List)localObject1).size() <= 0) {
-            return;
-          }
-          localObject1 = ((List)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            Object localObject2 = (MiniAppInfoEntity)((Iterator)localObject1).next();
-            INTERFACE.StApiAppInfo localStApiAppInfo = new INTERFACE.StApiAppInfo();
-            localStApiAppInfo.mergeFrom(((MiniAppInfoEntity)localObject2).appInfo);
-            localObject2 = new MiniAppConfig(MiniAppInfo.from(localStApiAppInfo));
-            PreCacheManager.g().fetchPeriodicCacheIfNeed((MiniAppConfig)localObject2, new AppBrandLaunchManager.4(this, (MiniAppConfig)localObject2));
-          }
+        Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+        if (!(localObject1 instanceof QQAppInterface)) {
+          break;
         }
+        localObject1 = ((MiniAppEntityManager)((AppRuntime)localObject1).getManager(330)).queryEntity(MiniAppInfoEntity.class, false, null, null, null, null, null, null);
+        if (localObject1 == null) {
+          break;
+        }
+        if (((List)localObject1).size() <= 0) {
+          return;
+        }
+        localObject1 = ((List)localObject1).iterator();
+        if (!((Iterator)localObject1).hasNext()) {
+          break;
+        }
+        Object localObject2 = (MiniAppInfoEntity)((Iterator)localObject1).next();
+        localObject3 = new INTERFACE.StApiAppInfo();
+        ((INTERFACE.StApiAppInfo)localObject3).mergeFrom(((MiniAppInfoEntity)localObject2).appInfo);
+        localObject2 = com.tencent.mobileqq.mini.apkg.MiniAppInfo.from((INTERFACE.StApiAppInfo)localObject3);
+        localObject3 = new MiniAppConfig((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2);
+        if (!((MiniAppConfig)localObject3).isEngineTypeMiniGame())
+        {
+          bool = true;
+          if (!bjxn.a(bool)) {
+            break label184;
+          }
+          localObject2 = MiniSdkLauncher.convert((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2);
+          MiniSDK.init(this.mContext);
+          AppLoaderFactory.g().getCommonManager().fetchPeriodicCacheIfNeed((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject2);
+          continue;
+        }
+        boolean bool = false;
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("miniapp-process_AppBrandLaunchManager", 1, localThrowable, new Object[0]);
+      catch (Throwable localThrowable)
+      {
+        QLog.e("miniapp-process_AppBrandLaunchManager", 1, localThrowable, new Object[0]);
+        return;
+      }
+      continue;
+      label184:
+      PreCacheManager.g().fetchPeriodicCacheIfNeed((MiniAppConfig)localObject3, new AppBrandLaunchManager.4(this, (MiniAppConfig)localObject3));
     }
   }
   
   private void doPreloadApp(AppBrandLaunchManager.MiniAppSubProcessorInfo paramMiniAppSubProcessorInfo, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramMiniAppSubProcessorInfo == null) || ((!paramBoolean2) && (!canPreloadApp(paramMiniAppSubProcessorInfo)))) {}
-    do
-    {
+    if ((paramMiniAppSubProcessorInfo == null) || ((!paramBoolean2) && (!canPreloadApp(paramMiniAppSubProcessorInfo)))) {
       return;
-      if (!MiniSdkUtil.needJumpToMiniSDK(paramBoolean1)) {
-        break;
-      }
+    }
+    if (bjxn.a(paramBoolean1))
+    {
       QLog.i("miniapp-process_AppBrandLaunchManager", 1, "doPreloadApp needJumpToMiniSDK");
       MiniSdkLauncher.preloadMiniApp(BaseApplicationImpl.getContext(), paramBoolean1);
-    } while (!paramBoolean1);
+      return;
+    }
     QLog.i("miniapp-process_AppBrandLaunchManager", 1, "do preload mini process name=" + paramMiniAppSubProcessorInfo.processName + " Preload=" + paramMiniAppSubProcessorInfo.appPreLoadClass.getSimpleName() + " isMiniApp:" + paramBoolean1);
     Intent localIntent = new Intent();
     localIntent.setClass(this.mContext, paramMiniAppSubProcessorInfo.appPreLoadClass);
@@ -529,10 +560,10 @@ public class AppBrandLaunchManager
       localObject = this.mPreloadingTask;
       str = paramMiniAppSubProcessorInfo.processName;
       if (!paramBoolean1) {
-        break label186;
+        break label183;
       }
     }
-    label186:
+    label183:
     for (paramMiniAppSubProcessorInfo = "preload_app";; paramMiniAppSubProcessorInfo = "preload_game")
     {
       ((ConcurrentHashMap)localObject).put(str, paramMiniAppSubProcessorInfo);
@@ -546,148 +577,182 @@ public class AppBrandLaunchManager
   @SuppressLint({"WrongConstant"})
   private void doStartMiniApp(Activity paramActivity, MiniAppConfig paramMiniAppConfig, ResultReceiver paramResultReceiver)
   {
-    if ((paramMiniAppConfig.config.renderInfo != null) && (paramMiniAppConfig.config.renderInfo.renderMode == 1) && (paramMiniAppConfig.config.renderInfo.renderMaterialMap.get(Integer.valueOf(1)) != null) && (enableFlutter()))
+    int i;
+    if (WnsConfig.getConfig("qqminiapp", "mini_app_hard_coder_enabled", true))
     {
+      i = addy.a().a(0, 1, 1, Process.myTid(), this.hardCoderTimeout, 601, 1L, Process.myTid(), "miniLaunch");
+      QMLog.w("miniapp-process_AppBrandLaunchManager", "hard coder started, reqId: " + i);
+      if (paramMiniAppConfig.isEngineTypeMiniGame()) {
+        break label203;
+      }
+    }
+    label203:
+    for (boolean bool = true;; bool = false)
+    {
+      if ((paramMiniAppConfig.config.renderInfo == null) || (paramMiniAppConfig.config.renderInfo.renderMode != 1) || (paramMiniAppConfig.config.renderInfo.renderMaterialMap.get(Integer.valueOf(1)) == null) || (!enableFlutter()) || (!bjxn.a(bool))) {
+        break label209;
+      }
       paramMiniAppConfig.isSdkMode = true;
       paramResultReceiver = new Bundle();
-      paramResultReceiver.putString("tissuenativelibdir", TissueGlobal.tissueEnv.getNativeLibDir());
+      paramResultReceiver.putString("tissuenativelibdir", TissueEnvImpl.getNativeLibDir());
       MiniSdkLauncher.startMiniApp(paramActivity, paramMiniAppConfig, paramResultReceiver);
+      if ((!paramMiniAppConfig.isEngineTypeMiniGame()) && (paramMiniAppConfig.launchParam.scene != 2004)) {
+        AnimUtil.setOpenAnim(paramActivity);
+      }
       return;
+      QMLog.w("miniapp-process_AppBrandLaunchManager", "hard coder disabled");
+      break;
     }
-    if (!paramMiniAppConfig.isEngineTypeMiniGame()) {}
-    for (boolean bool = true; (paramMiniAppConfig != null) && (!bool) && (MiniSdkUtil.needJumpToMiniSDK(bool)); bool = false)
-    {
-      MiniSdkLauncher.startMiniApp(paramActivity, paramMiniAppConfig, null);
-      return;
-    }
-    paramMiniAppConfig.isSdkMode = false;
-    AppBrandLaunchManager.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo = obtainIdleProcessor(paramMiniAppConfig);
-    if ((localMiniAppSubProcessorInfo == null) || (paramMiniAppConfig == null))
-    {
-      QLog.e("miniapp-process_AppBrandLaunchManager", 1, "obtain idle processor config failed!");
-      return;
-    }
-    if ((this.mStartingMiniAppConfig != null) && (this.mStartingMiniAppConfig.equals(paramMiniAppConfig)) && (System.currentTimeMillis() - this.mStartTimestamp <= this.mStartTimeInterval))
-    {
-      QLog.w("miniapp-process_AppBrandLaunchManager", 1, "startMiniApp duplicate. The miniapp is starting! interval=" + this.mStartTimeInterval + " appId=" + paramMiniAppConfig.config.appId);
-      return;
-    }
-    Object localObject1;
-    if (paramMiniAppConfig.isEngineTypeMiniGame())
-    {
-      MiniAppReportManager.reportClickDc04239(paramMiniAppConfig, MiniProgramLpReportDC04239.getAppType(paramMiniAppConfig), null, "click", null, true);
-      MiniAppReportManager2.reportPageView("2click", null, null, paramMiniAppConfig);
-      QLog.i("[minigame][start]", 1, "game[" + paramMiniAppConfig.config.getEngineType() + "][" + paramMiniAppConfig.config.name + "] 启动游戏!");
-      if (!GameWnsUtils.gameEnable())
-      {
-        MiniProgramLpReportDC04239.reportPageView(paramMiniAppConfig, MiniProgramLpReportDC04239.getAppType(paramMiniAppConfig), null, "load_fail", "system_version_limit_fail");
-        MiniAppReportManager2.reportPageView("2launch_fail", "system_version_limit_fail", null, paramMiniAppConfig);
-        QLog.e("miniapp-process_AppBrandLaunchManager", 1, "尾号 & 机型 不匹配！");
-        ThreadManager.getUIHandler().post(new AppBrandLaunchManager.6(this));
-      }
-    }
-    else
-    {
-      localObject2 = MiniProgramLpReportDC04239.getAppType(paramMiniAppConfig);
-      if (paramMiniAppConfig.launchParam == null) {
-        break label824;
-      }
-      localObject1 = paramMiniAppConfig.launchParam.entryPath;
-      MiniAppReportManager.reportClickDc04239(paramMiniAppConfig, (String)localObject2, (String)localObject1, "click", null, true);
-      if (paramMiniAppConfig.launchParam == null) {
-        break label830;
-      }
-      localObject1 = paramMiniAppConfig.launchParam.entryPath;
-      label433:
-      MiniAppReportManager2.reportPageView("2click", null, (String)localObject1, paramMiniAppConfig);
-      if (paramMiniAppConfig.launchParam != null) {
-        paramMiniAppConfig.launchParam.launchClickTimeMillis = System.currentTimeMillis();
-      }
-      localObject2 = new StringBuilder().append("--- report click appid:");
-      if (paramMiniAppConfig.config == null) {
-        break label836;
-      }
-      localObject1 = paramMiniAppConfig.config.appId;
-      label491:
-      QLog.i("miniapp-process_AppBrandLaunchManager", 1, localObject1);
-    }
+    label209:
     if (paramMiniAppConfig.config != null) {
       this.startAppIdMap.put(paramMiniAppConfig.config.appId, Long.valueOf(System.currentTimeMillis()));
     }
-    NavigateBackUtils.clearTag();
-    this.mStartingMiniAppConfig = paramMiniAppConfig;
-    this.mStartTimestamp = System.currentTimeMillis();
-    QLog.i("miniapp-process_AppBrandLaunchManager", 1, "[MiniEng]doStartMiniApp appId=" + paramMiniAppConfig.config.appId + " appName=" + paramMiniAppConfig.config.name + " engineType=" + paramMiniAppConfig.config.getEngineType() + " reportType=" + paramMiniAppConfig.config.getReportType() + " targetProcess=" + localMiniAppSubProcessorInfo.processName);
-    Object localObject2 = this.mContext;
-    label664:
-    int i;
-    label764:
-    int j;
-    if (paramMiniAppConfig.isEngineTypeMiniGame())
+    if (bjxn.a(bool))
     {
-      localObject1 = localMiniAppSubProcessorInfo.gameUIClass;
-      localObject1 = new Intent((Context)localObject2, (Class)localObject1);
-      if (paramMiniAppConfig.isEngineTypeMiniGame()) {
-        MiniAppStartUtils.saveMiniAppInfoToFile(paramMiniAppConfig, localMiniAppSubProcessorInfo.processName);
+      if (!bool) {
+        break label1127;
       }
-      ((Intent)localObject1).addFlags(805371904);
-      ((Intent)localObject1).putExtra("CONFIG", paramMiniAppConfig);
-      ((Intent)localObject1).putExtra("receiver", paramResultReceiver);
-      ((Intent)localObject1).putExtra("processName", localMiniAppSubProcessorInfo.processName);
-      ((Intent)localObject1).putExtra("startDuration", System.currentTimeMillis());
-      localObject2 = EngineManager.g();
-      if (!paramMiniAppConfig.isEngineTypeMiniGame()) {
-        break label855;
-      }
-      i = 2;
-      ((Intent)localObject1).putExtra("engineChannel", ((EngineManager)localObject2).getChannelForType(i));
-      j = 3;
-      if ((localMiniAppSubProcessorInfo.pid <= 0) || (localMiniAppSubProcessorInfo.appConfig != null)) {
-        break label861;
-      }
-      i = 1;
+      paramResultReceiver = new Bundle();
+      paramResultReceiver.putBoolean("sdk_mode", true);
     }
     for (;;)
     {
-      ((Intent)localObject1).putExtra("start_mode", i);
-      if (paramActivity == null) {
-        break label891;
-      }
-      paramActivity.startActivity((Intent)localObject1);
+      MiniSdkLauncher.startMiniApp(paramActivity, paramMiniAppConfig, paramResultReceiver);
+      getHandler().postDelayed(new AppBrandLaunchManager.7(this), 600L);
       return;
-      label824:
-      localObject1 = null;
-      break;
-      label830:
-      localObject1 = null;
-      break label433;
-      label836:
-      localObject1 = Integer.valueOf(0);
-      break label491;
-      localObject1 = localMiniAppSubProcessorInfo.appBrandUIClass;
-      break label664;
-      label855:
-      i = 3;
-      break label764;
-      label861:
-      i = j;
-      if (localMiniAppSubProcessorInfo.pid > 0)
+      paramMiniAppConfig.isSdkMode = false;
+      AppBrandLaunchManager.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo = obtainIdleProcessor(paramMiniAppConfig);
+      if ((localMiniAppSubProcessorInfo == null) || (paramMiniAppConfig == null))
       {
-        i = j;
-        if (localMiniAppSubProcessorInfo.appConfig != null) {
-          i = 2;
+        QLog.e("miniapp-process_AppBrandLaunchManager", 1, "obtain idle processor config failed!");
+        return;
+      }
+      if ((this.mStartingMiniAppConfig != null) && (this.mStartingMiniAppConfig.equals(paramMiniAppConfig)) && (System.currentTimeMillis() - this.mStartTimestamp <= this.mStartTimeInterval))
+      {
+        QLog.w("miniapp-process_AppBrandLaunchManager", 1, "startMiniApp duplicate. The miniapp is starting! interval=" + this.mStartTimeInterval + " appId=" + paramMiniAppConfig.config.appId);
+        return;
+      }
+      Object localObject1;
+      if (paramMiniAppConfig.isEngineTypeMiniGame())
+      {
+        MiniAppReportManager.reportClickDc04239(paramMiniAppConfig, MiniProgramLpReportDC04239.getAppType(paramMiniAppConfig), null, "click", null, true);
+        MiniAppReportManager2.reportPageView("2click", null, null, paramMiniAppConfig);
+        QLog.i("[minigame][start]", 1, "game[" + paramMiniAppConfig.config.getEngineType() + "][" + paramMiniAppConfig.config.name + "] 启动游戏!");
+        if (!GameWnsUtils.gameEnable())
+        {
+          MiniProgramLpReportDC04239.reportPageView(paramMiniAppConfig, MiniProgramLpReportDC04239.getAppType(paramMiniAppConfig), null, "load_fail", "system_version_limit_fail");
+          MiniAppReportManager2.reportPageView("2launch_fail", "system_version_limit_fail", null, paramMiniAppConfig);
+          QLog.e("miniapp-process_AppBrandLaunchManager", 1, "尾号 & 机型 不匹配！");
+          ThreadManager.getUIHandler().post(new AppBrandLaunchManager.8(this));
         }
       }
-    }
-    label891:
-    if (paramResultReceiver != null)
-    {
-      paramActivity = ((Intent)localObject1).getExtras();
-      paramActivity.putParcelable("Activity", ((Intent)localObject1).getComponent());
-      paramResultReceiver.send(1, paramActivity);
+      else
+      {
+        localObject2 = MiniProgramLpReportDC04239.getAppType(paramMiniAppConfig);
+        if (paramMiniAppConfig.launchParam == null) {
+          break label1021;
+        }
+        localObject1 = paramMiniAppConfig.launchParam.entryPath;
+        MiniAppReportManager.reportClickDc04239(paramMiniAppConfig, (String)localObject2, (String)localObject1, "click", null, true);
+        if (paramMiniAppConfig.launchParam == null) {
+          break label1027;
+        }
+        localObject1 = paramMiniAppConfig.launchParam.entryPath;
+        label597:
+        MiniAppReportManager2.reportPageView("2click", null, (String)localObject1, paramMiniAppConfig);
+        if (paramMiniAppConfig.launchParam != null) {
+          paramMiniAppConfig.launchParam.launchClickTimeMillis = System.currentTimeMillis();
+        }
+        localObject2 = new StringBuilder().append("--- report click appid:");
+        if (paramMiniAppConfig.config == null) {
+          break label1033;
+        }
+        localObject1 = paramMiniAppConfig.config.appId;
+        label655:
+        QLog.i("miniapp-process_AppBrandLaunchManager", 1, localObject1);
+      }
+      NavigateBackUtils.clearTag();
+      this.mStartingMiniAppConfig = paramMiniAppConfig;
+      this.mStartTimestamp = System.currentTimeMillis();
+      QLog.i("miniapp-process_AppBrandLaunchManager", 1, "[MiniEng]doStartMiniApp appId=" + paramMiniAppConfig.config.appId + " appName=" + paramMiniAppConfig.config.name + " engineType=" + paramMiniAppConfig.config.getEngineType() + " reportType=" + paramMiniAppConfig.config.getReportType() + " targetProcess=" + localMiniAppSubProcessorInfo.processName);
+      Object localObject2 = this.mContext;
+      label800:
+      int j;
+      if (paramMiniAppConfig.isEngineTypeMiniGame())
+      {
+        localObject1 = localMiniAppSubProcessorInfo.gameUIClass;
+        localObject1 = new Intent((Context)localObject2, (Class)localObject1);
+        if (paramMiniAppConfig.isEngineTypeMiniGame()) {
+          MiniAppStartUtils.saveMiniAppInfoToFile(paramMiniAppConfig, localMiniAppSubProcessorInfo.processName);
+        }
+        ((Intent)localObject1).addFlags(805371904);
+        ((Intent)localObject1).putExtra("CONFIG", paramMiniAppConfig);
+        ((Intent)localObject1).putExtra("receiver", paramResultReceiver);
+        ((Intent)localObject1).putExtra("processName", localMiniAppSubProcessorInfo.processName);
+        ((Intent)localObject1).putExtra("startDuration", System.currentTimeMillis());
+        localObject2 = EngineManager.g();
+        if (!paramMiniAppConfig.isEngineTypeMiniGame()) {
+          break label1052;
+        }
+        i = 2;
+        label900:
+        ((Intent)localObject1).putExtra("engineChannel", ((EngineManager)localObject2).getChannelForType(i));
+        j = 3;
+        if ((localMiniAppSubProcessorInfo.pid <= 0) || (localMiniAppSubProcessorInfo.appConfig != null)) {
+          break label1058;
+        }
+        i = 1;
+      }
+      for (;;)
+      {
+        if ((localMiniAppSubProcessorInfo.pid == 0) && (paramMiniAppConfig.config != null) && (ApkgMainProcessManager.getDownloadingPackageCount() == 0))
+        {
+          QLog.i("miniapp-process_AppBrandLaunchManager", 1, "[MiniEng]downloadMiniApp in main process during miniX process is starting " + paramMiniAppConfig.config.appId);
+          preloadPackage(paramMiniAppConfig.config);
+        }
+        ((Intent)localObject1).putExtra("start_mode", i);
+        if (paramActivity == null) {
+          break label1088;
+        }
+        paramActivity.startActivity((Intent)localObject1);
+        return;
+        label1021:
+        localObject1 = null;
+        break;
+        label1027:
+        localObject1 = null;
+        break label597;
+        label1033:
+        localObject1 = Integer.valueOf(0);
+        break label655;
+        localObject1 = localMiniAppSubProcessorInfo.appBrandUIClass;
+        break label800;
+        label1052:
+        i = 3;
+        break label900;
+        label1058:
+        i = j;
+        if (localMiniAppSubProcessorInfo.pid > 0)
+        {
+          i = j;
+          if (localMiniAppSubProcessorInfo.appConfig != null) {
+            i = 2;
+          }
+        }
+      }
+      label1088:
+      if (paramResultReceiver != null)
+      {
+        paramActivity = ((Intent)localObject1).getExtras();
+        paramActivity.putParcelable("Activity", ((Intent)localObject1).getComponent());
+        paramResultReceiver.send(1, paramActivity);
+        return;
+      }
+      this.mContext.startActivity((Intent)localObject1);
       return;
+      label1127:
+      paramResultReceiver = null;
     }
-    this.mContext.startActivity((Intent)localObject1);
   }
   
   private boolean enableFlutter()
@@ -696,25 +761,22 @@ public class AppBrandLaunchManager
     if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_flutter_enable", 1) == 1)
     {
       bool1 = true;
-      if (TissueGlobal.tissueEnv == null) {
-        TissueGlobal.tissueEnv = new TissueEnvImpl();
-      }
-      if ((TextUtils.isEmpty(TissueGlobal.tissueEnv.getNativeLibDir())) || (!TissueGlobal.verifyTissueEngine(TissueGlobal.tissueEnv.getNativeLibDir()))) {
-        break label115;
+      if ((TextUtils.isEmpty(TissueEnvImpl.getNativeLibDir())) || (!TissueEnvImpl.verifyTissueEngine(TissueEnvImpl.getNativeLibDir()))) {
+        break label90;
       }
     }
-    label115:
+    label90:
     for (boolean bool2 = true;; bool2 = false)
     {
       QZLog.i("Tissue", " enableFlutter enable:" + bool1 + ",envReady:" + bool2);
       if ((!bool1) || (!bool2)) {
-        break label120;
+        break label95;
       }
       return true;
       bool1 = false;
       break;
     }
-    label120:
+    label95:
     return false;
   }
   
@@ -726,10 +788,10 @@ public class AppBrandLaunchManager
     {
       i = 1;
       if (i != 0) {
-        break label30;
+        break label31;
       }
     }
-    label30:
+    label31:
     String str;
     do
     {
@@ -898,7 +960,7 @@ public class AppBrandLaunchManager
     return null;
   }
   
-  private static void handleStartMiniappByBroadcast(MiniAppInfo paramMiniAppInfo, int paramInt, String paramString)
+  private static void handleStartMiniappByBroadcast(com.tencent.mobileqq.mini.apkg.MiniAppInfo paramMiniAppInfo, int paramInt, String paramString)
   {
     if (paramMiniAppInfo != null) {
       try
@@ -1002,6 +1064,11 @@ public class AppBrandLaunchManager
         }
       }
     }
+  }
+  
+  private void notifyDesktop()
+  {
+    getHandler().postDelayed(new AppBrandLaunchManager.16(this), 600L);
   }
   
   private AppBrandLaunchManager.MiniAppSubProcessorInfo obtainIdleMiniAppProcessor(MiniAppConfig paramMiniAppConfig)
@@ -1273,6 +1340,78 @@ public class AppBrandLaunchManager
     return obtainIdleMiniAppProcessor(paramMiniAppConfig);
   }
   
+  private void prelaunchLatestMiniApp()
+  {
+    int i;
+    for (;;)
+    {
+      try
+      {
+        if (!bjxn.a(true)) {
+          return;
+        }
+        if (aqpv.a("mini_sdk_prelaunch_all_enable", 1) == 1)
+        {
+          i = 1;
+          if (i != 0) {
+            break;
+          }
+          QLog.i("miniapp-process_AppBrandLaunchManager", 1, "prelaunchLatestMiniApp disable");
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("miniapp-process_AppBrandLaunchManager", 1, localThrowable, new Object[0]);
+        return;
+      }
+      i = 0;
+    }
+    QLog.i("miniapp-process_AppBrandLaunchManager", 1, "prelaunch Latest MiniApp.");
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface))
+    {
+      localObject1 = ((MiniAppEntityManager)((AppRuntime)localObject1).getManager(330)).queryEntity(MiniAppInfoEntity.class, false, null, null, null, null, null, null);
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = (MiniAppInfoEntity)((Iterator)localObject1).next();
+          Object localObject3 = new INTERFACE.StApiAppInfo();
+          ((INTERFACE.StApiAppInfo)localObject3).mergeFrom(((MiniAppInfoEntity)localObject2).appInfo);
+          localObject2 = com.tencent.mobileqq.mini.apkg.MiniAppInfo.from((INTERFACE.StApiAppInfo)localObject3);
+          localObject3 = new MiniAppConfig((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2);
+          if (!((MiniAppConfig)localObject3).isEngineTypeMiniGame()) {}
+          for (i = 1; (i != 0) && (!"1108291530".equals(((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2).appId)); i = 0)
+          {
+            QLog.i("miniapp-process_AppBrandLaunchManager", 1, "prelaunch MiniApp appid=" + ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject2).appId);
+            MiniSdkLauncher.preLaunchMiniApp(this.mContext, (MiniAppConfig)localObject3);
+            return;
+          }
+        }
+      }
+    }
+  }
+  
+  private void prepareUpdateDesktopRecommendList(MiniAppConfig paramMiniAppConfig)
+  {
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (paramMiniAppConfig.config.noNeedRealRecommend == 0) && (this.startAppIdMap != null) && (this.startAppIdMap.containsKey(paramMiniAppConfig.config.appId)))
+    {
+      long l1 = StorageUtil.getPreference().getLong("key_mini_app_recommend_time", 5L) * 1000L;
+      Object localObject = new ArrayList();
+      long l2 = System.currentTimeMillis();
+      long l3 = ((Long)this.startAppIdMap.get(paramMiniAppConfig.config.appId)).longValue();
+      localObject = new AppBrandLaunchManager.RecommendRunnable(this, paramMiniAppConfig.config.appId, paramMiniAppConfig.config.verType, l2 - l3, (ArrayList)localObject);
+      if (this.recommendMap != null) {
+        this.recommendMap.put(paramMiniAppConfig.config.appId, localObject);
+      }
+      this.startAppIdMap.remove(paramMiniAppConfig.config.appId);
+      QLog.e("miniapp-process_AppBrandLaunchManager", 2, "postDelayed recommendRunnable : " + paramMiniAppConfig.config.appId + "; recommendTime : " + l1);
+      ThreadManager.getSubThreadHandler().postDelayed((Runnable)localObject, l1);
+    }
+  }
+  
   private void printProcessStack()
   {
     StringBuilder localStringBuilder = new StringBuilder(500);
@@ -1301,6 +1440,19 @@ public class AppBrandLaunchManager
     paramContext.registerReceiver(new AppBrandLaunchManager.StartMiniAppReceiver(null), localIntentFilter);
   }
   
+  private void removeRecommendCallback(MiniAppConfig paramMiniAppConfig)
+  {
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (this.recommendMap != null) && (this.recommendMap.containsKey(paramMiniAppConfig.config.appId)))
+    {
+      AppBrandLaunchManager.RecommendRunnable localRecommendRunnable = (AppBrandLaunchManager.RecommendRunnable)this.recommendMap.remove(paramMiniAppConfig.config.appId);
+      if (localRecommendRunnable != null)
+      {
+        QLog.e("miniapp-process_AppBrandLaunchManager", 2, "removeCallbacks recommendRunnable : " + paramMiniAppConfig.config.appId);
+        ThreadManager.getSubThreadHandler().removeCallbacks(localRecommendRunnable);
+      }
+    }
+  }
+  
   public int checkIfAnyMiniProcessForeground()
   {
     Iterator localIterator = this.mProcessStack.snapshot().entrySet().iterator();
@@ -1324,6 +1476,27 @@ public class AppBrandLaunchManager
       }
     }
     return 0;
+  }
+  
+  public void checkPreloadApp()
+  {
+    QLog.i("miniapp-process_AppBrandLaunchManager", 1, "checkPreloadApp MiniAppUsed:" + isMiniAppUsed());
+    try
+    {
+      if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_preload_extra", 1) > 0) {}
+      for (int i = 1;; i = 0)
+      {
+        if ((i != 0) && (isMiniAppUsed())) {
+          preloadExtraMiniApp(true);
+        }
+        return;
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("miniapp-process_AppBrandLaunchManager", 1, "", localThrowable);
+    }
   }
   
   public void forceKillProcess(AppBrandLaunchManager.MiniAppSubProcessorInfo paramMiniAppSubProcessorInfo)
@@ -1360,7 +1533,7 @@ public class AppBrandLaunchManager
     this.mContext.sendBroadcast(localIntent);
   }
   
-  public AppBrandLaunchManager.MiniAppSubProcessorInfo getCacheApp(MiniAppInfo paramMiniAppInfo)
+  public AppBrandLaunchManager.MiniAppSubProcessorInfo getCacheApp(com.tencent.mobileqq.mini.apkg.MiniAppInfo paramMiniAppInfo)
   {
     Object localObject1 = this.mProcessStack.snapshot();
     if (paramMiniAppInfo != null)
@@ -1384,51 +1557,103 @@ public class AppBrandLaunchManager
     return null;
   }
   
+  public AppBrandLaunchManager.MiniAppSubProcessorInfo getCacheApp(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    Object localObject1 = this.mProcessStack.snapshot();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject1 = ((Map)localObject1).entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+        if (localObject2 != null)
+        {
+          String str = (String)((Map.Entry)localObject2).getKey();
+          localObject2 = (AppBrandLaunchManager.MiniAppSubProcessorInfo)((Map.Entry)localObject2).getValue();
+          if ((localObject2 != null) && (((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject2).appConfig != null) && (((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject2).appConfig.config != null) && (((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject2).appConfig.config.appId.equals(paramString)))
+          {
+            QLog.i("miniapp-process_AppBrandLaunchManager", 1, "obtain loaded processor from stack:" + str);
+            return localObject2;
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
   public Handler getHandler()
   {
     return this.mHandler;
   }
   
+  public boolean isMiniAppUsed()
+  {
+    return System.currentTimeMillis() - this.mMiniAppLastUseTimeStamp < MINI_APP_USED_DURATION_MS;
+  }
+  
+  public void markMiniAppUsed()
+  {
+    this.mMiniAppLastUseTimeStamp = System.currentTimeMillis();
+    StorageUtil.getPreference().edit().putLong("key_mini_app_last_use_time", this.mMiniAppLastUseTimeStamp).apply();
+  }
+  
   public void onAppBackground(String paramString, MiniAppConfig paramMiniAppConfig, Bundle paramBundle)
   {
-    int k = -1;
     Object localObject2 = null;
-    if (!isProcessValid(paramString)) {
-      return;
-    }
     MiniAppUtils.updateMiniAppList(7);
-    label39:
+    removeRecommendCallback(paramMiniAppConfig);
+    boolean bool;
+    if (paramMiniAppConfig != null) {
+      if (!paramMiniAppConfig.isEngineTypeMiniGame())
+      {
+        bool = true;
+        if (!bjxn.a(bool)) {
+          break label42;
+        }
+      }
+    }
+    label42:
+    while (!isProcessValid(paramString))
+    {
+      return;
+      bool = false;
+      break;
+    }
+    label69:
     Object localObject1;
+    label89:
+    int i;
     if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null))
     {
       paramBundle = paramMiniAppConfig.config.appId;
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break label380;
+        break label306;
       }
       localObject1 = paramMiniAppConfig.config.name;
-      label59:
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break label386;
+        break label312;
+      }
+      i = paramMiniAppConfig.config.getEngineType();
+      label109:
+      if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
+        break label318;
       }
     }
-    label386:
-    for (int i = paramMiniAppConfig.config.getEngineType();; i = -1)
+    label306:
+    label312:
+    label318:
+    for (int j = paramMiniAppConfig.config.getReportType();; j = -1)
     {
-      int j = k;
-      if (paramMiniAppConfig != null)
-      {
-        j = k;
-        if (paramMiniAppConfig.config != null) {
-          j = paramMiniAppConfig.config.getReportType();
-        }
-      }
       QLog.i("miniapp-process_AppBrandLaunchManager", 1, "onAppBackground process=" + paramString + " appId=" + paramBundle + " appName=" + (String)localObject1 + " engineType=" + i + " reportType=" + j);
       if (TextUtils.isEmpty(paramString)) {
         break;
       }
       AppBrandLaunchManager.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo = (AppBrandLaunchManager.MiniAppSubProcessorInfo)this.mProcessStack.snapshot().get(paramString);
       if (localMiniAppSubProcessorInfo == null) {
-        break label392;
+        break label324;
       }
       paramString = (String)localObject2;
       if (localMiniAppSubProcessorInfo.appConfig != null)
@@ -1450,39 +1675,31 @@ public class AppBrandLaunchManager
       }
       ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject1).onEnterBackground();
       printProcessStack();
-      if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null) || (this.recommendMap == null) || (!this.recommendMap.containsKey(paramMiniAppConfig.config.appId))) {
-        break;
-      }
-      paramString = (AppBrandLaunchManager.RecommendRunnable)this.recommendMap.remove(paramMiniAppConfig.config.appId);
-      if (paramString == null) {
-        break;
-      }
-      QLog.e("miniapp-process_AppBrandLaunchManager", 2, "removeCallbacks recommendRunnable : " + paramMiniAppConfig.config.appId);
-      ThreadManager.getSubThreadHandler().removeCallbacks(paramString);
       return;
       paramBundle = null;
-      break label39;
-      label380:
+      break label69;
       localObject1 = null;
-      break label59;
+      break label89;
+      i = -1;
+      break label109;
     }
-    label392:
+    label324:
     localObject2 = (AppBrandLaunchManager.MiniAppSubProcessorInfo)subProcessorInfoMap.get(paramString);
     if (localObject2 != null)
     {
       paramBundle = ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject2).appBrandUIClass;
-      label415:
+      label347:
       if (localObject2 == null) {
-        break label479;
+        break label411;
       }
       localObject1 = ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject2).gameUIClass;
-      label427:
+      label359:
       if (localObject2 == null) {
-        break label485;
+        break label417;
       }
     }
-    label479:
-    label485:
+    label411:
+    label417:
     for (localObject2 = ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject2).appPreLoadClass;; localObject2 = null)
     {
       localObject1 = new AppBrandLaunchManager.MiniAppSubProcessorInfo(paramString, paramBundle, (Class)localObject1, (Class)localObject2);
@@ -1490,131 +1707,122 @@ public class AppBrandLaunchManager
       this.mProcessStack.put(paramString, localObject1);
       break;
       paramBundle = null;
-      break label415;
+      break label347;
       localObject1 = null;
-      break label427;
+      break label359;
     }
   }
   
   public void onAppForeground(String paramString, MiniAppConfig paramMiniAppConfig, Bundle paramBundle)
   {
-    boolean bool = false;
-    if (!isProcessValid(paramString)) {}
-    Object localObject1;
-    label32:
-    Object localObject2;
-    label52:
-    int i;
-    label72:
-    int j;
-    label92:
-    int k;
-    label105:
+    boolean bool2 = true;
+    notifyDesktop();
+    checkNetworkStatus(paramMiniAppConfig);
+    prepareUpdateDesktopRecommendList(paramMiniAppConfig);
+    boolean bool1;
+    if (paramMiniAppConfig != null) {
+      if (!paramMiniAppConfig.isEngineTypeMiniGame())
+      {
+        bool1 = true;
+        if (!bjxn.a(bool1)) {
+          break label46;
+        }
+      }
+    }
+    label46:
+    label74:
+    label94:
+    label114:
+    label374:
+    label380:
+    label510:
     do
     {
-      return;
-      if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break;
-      }
-      localObject1 = paramMiniAppConfig.config.appId;
-      if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break label562;
-      }
-      localObject2 = paramMiniAppConfig.config.name;
-      if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break label568;
-      }
-      i = paramMiniAppConfig.config.getEngineType();
-      if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break label574;
-      }
-      j = paramMiniAppConfig.config.getReportType();
-      if (paramBundle == null) {
-        break label580;
-      }
-      k = paramBundle.getInt("PID");
-      QLog.i("miniapp-process_AppBrandLaunchManager", 1, "onAppForeground process=" + paramString + " appId=" + (String)localObject1 + " appName=" + (String)localObject2 + " engineType=" + i + " reportType=" + j);
-    } while (TextUtils.isEmpty(paramString));
-    paramBundle = (AppBrandLaunchManager.MiniAppSubProcessorInfo)this.mProcessStack.get(paramString);
-    if (paramBundle != null)
-    {
-      paramBundle.appConfig = paramMiniAppConfig;
-      paramString = paramBundle;
-      if ((this.mStartingMiniAppConfig != null) && (this.mStartingMiniAppConfig.equals(paramMiniAppConfig))) {
-        this.mStartingMiniAppConfig = null;
-      }
-      if (k > 0) {
-        paramString.pid = k;
-      }
-      paramString.onEnterForeground();
-      printProcessStack();
-      if (paramMiniAppConfig != null)
+      do
       {
+        return;
+        bool1 = false;
+        break;
+      } while (!isProcessValid(paramString));
+      Object localObject1;
+      int i;
+      int j;
+      if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null))
+      {
+        localObject1 = paramMiniAppConfig.config.appId;
+        if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
+          break label356;
+        }
+        localObject2 = paramMiniAppConfig.config.name;
+        if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
+          break label362;
+        }
+        i = paramMiniAppConfig.config.getEngineType();
+        if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
+          break label368;
+        }
+        j = paramMiniAppConfig.config.getReportType();
+        if (paramBundle == null) {
+          break label374;
+        }
+      }
+      for (int k = paramBundle.getInt("PID");; k = 0)
+      {
+        QLog.i("miniapp-process_AppBrandLaunchManager", 1, "onAppForeground process=" + paramString + " appId=" + (String)localObject1 + " appName=" + (String)localObject2 + " engineType=" + i + " reportType=" + j);
+        if (TextUtils.isEmpty(paramString)) {
+          break;
+        }
+        paramBundle = (AppBrandLaunchManager.MiniAppSubProcessorInfo)this.mProcessStack.get(paramString);
+        if (paramBundle == null) {
+          break label380;
+        }
+        paramBundle.appConfig = paramMiniAppConfig;
+        paramString = paramBundle;
+        if ((this.mStartingMiniAppConfig != null) && (this.mStartingMiniAppConfig.equals(paramMiniAppConfig))) {
+          this.mStartingMiniAppConfig = null;
+        }
+        if (k > 0) {
+          paramString.pid = k;
+        }
+        paramString.onEnterForeground();
+        printProcessStack();
+        if (paramMiniAppConfig == null) {
+          break;
+        }
         if (!paramMiniAppConfig.isEngineTypeMiniGame()) {
-          break label746;
+          break label543;
         }
         paramString = findLastMiniGameProcessor(paramMiniAppConfig);
         if (paramString == null) {
-          break label718;
+          break label510;
         }
         if (!enableGameProcessReuse()) {
-          break label684;
+          break label478;
         }
         QLog.w("miniapp-process_AppBrandLaunchManager", 1, "onAppForeground enableGameProcessReuse, try finishAndRemoveTask lastMiniGameProcessor =" + paramString);
         finishAndRemoveTask(paramString);
+        return;
+        localObject1 = null;
+        break label74;
+        localObject2 = null;
+        break label94;
+        i = -1;
+        break label114;
+        j = -1;
+        break label134;
       }
-    }
-    for (;;)
-    {
-      getHandler().postDelayed(new AppBrandLaunchManager.11(this), 600L);
-      if (paramMiniAppConfig != null) {
-        checkNetworkStatus(paramMiniAppConfig);
-      }
-      if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null) || (paramMiniAppConfig.config.noNeedRealRecommend != 0) || (this.startAppIdMap == null) || (!this.startAppIdMap.containsKey(paramMiniAppConfig.config.appId))) {
-        break;
-      }
-      long l1 = StorageUtil.getPreference().getLong("key_mini_app_recommend_time", 5L) * 1000L;
-      paramString = new ArrayList();
-      long l2 = System.currentTimeMillis();
-      long l3 = ((Long)this.startAppIdMap.get(paramMiniAppConfig.config.appId)).longValue();
-      paramString = new AppBrandLaunchManager.RecommendRunnable(this, paramMiniAppConfig.config.appId, paramMiniAppConfig.config.verType, l2 - l3, paramString);
-      if (this.recommendMap != null) {
-        this.recommendMap.put(paramMiniAppConfig.config.appId, paramString);
-      }
-      this.startAppIdMap.remove(paramMiniAppConfig.config.appId);
-      QLog.e("miniapp-process_AppBrandLaunchManager", 2, "postDelayed recommendRunnable : " + paramMiniAppConfig.config.appId + "; recommendTime : " + l1);
-      ThreadManager.getSubThreadHandler().postDelayed(paramString, l1);
-      return;
-      localObject1 = null;
-      break label32;
-      label562:
-      localObject2 = null;
-      break label52;
-      label568:
-      i = -1;
-      break label72;
-      label574:
-      j = -1;
-      break label92;
-      label580:
-      k = 0;
-      break label105;
-      localObject2 = (AppBrandLaunchManager.MiniAppSubProcessorInfo)subProcessorInfoMap.get(paramString);
+      Object localObject2 = (AppBrandLaunchManager.MiniAppSubProcessorInfo)subProcessorInfoMap.get(paramString);
       if (localObject2 != null)
       {
         paramBundle = ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject2).appBrandUIClass;
-        label609:
         if (localObject2 == null) {
-          break label672;
+          break label466;
         }
         localObject1 = ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject2).gameUIClass;
-        label621:
         if (localObject2 == null) {
-          break label678;
+          break label472;
         }
       }
-      label672:
-      label678:
       for (localObject2 = ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject2).appPreLoadClass;; localObject2 = null)
       {
         paramBundle = new AppBrandLaunchManager.MiniAppSubProcessorInfo(paramString, paramBundle, (Class)localObject1, (Class)localObject2);
@@ -1623,62 +1831,81 @@ public class AppBrandLaunchManager
         paramString = paramBundle;
         break;
         paramBundle = null;
-        break label609;
+        break label403;
         localObject1 = null;
-        break label621;
+        break label415;
       }
-      label684:
       QLog.w("miniapp-process_AppBrandLaunchManager", 1, "onAppForeground disableGameProcessReuse, try kill lastMiniGameProcessor = " + paramString);
       forceKillProcess(paramString);
-      continue;
-      label718:
+      return;
       QLog.w("miniapp-process_AppBrandLaunchManager", 1, "onAppForeground lastMiniGameProcessor is null, try preload process");
-      if (!paramMiniAppConfig.isEngineTypeMiniGame()) {
-        bool = true;
+      if (!paramMiniAppConfig.isEngineTypeMiniGame()) {}
+      for (bool1 = bool2;; bool1 = false)
+      {
+        preloadExtraMiniApp(bool1);
+        return;
       }
-      preloadExtraMiniApp(bool);
-      continue;
-      label746:
-      if (paramMiniAppConfig != null) {
-        getHandler().postDelayed(new AppBrandLaunchManager.10(this, paramMiniAppConfig), 500L);
-      }
-    }
+    } while (paramMiniAppConfig == null);
+    label134:
+    label356:
+    label362:
+    label368:
+    getHandler().postDelayed(new AppBrandLaunchManager.12(this, paramMiniAppConfig), 500L);
+    label403:
+    label415:
+    label466:
+    label472:
+    label478:
+    return;
   }
   
   public void onAppStart(String paramString, MiniAppConfig paramMiniAppConfig, Bundle paramBundle)
   {
+    int k = 0;
     Object localObject4 = null;
-    if (!isProcessValid(paramString)) {}
-    label52:
+    boolean bool;
+    if (paramMiniAppConfig != null) {
+      if (!paramMiniAppConfig.isEngineTypeMiniGame())
+      {
+        bool = true;
+        if (!bjxn.a(bool)) {
+          break label35;
+        }
+      }
+    }
+    label35:
+    label83:
     int i;
-    label72:
+    label103:
     int j;
-    label92:
-    int k;
-    label105:
+    label123:
     do
     {
-      return;
-      if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
+      do
+      {
+        return;
+        bool = false;
         break;
+      } while (!isProcessValid(paramString));
+      if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
+        break label413;
       }
       localObject1 = paramMiniAppConfig.config.appId;
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break label388;
+        break label419;
       }
       localObject2 = paramMiniAppConfig.config.name;
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break label394;
+        break label425;
       }
       i = paramMiniAppConfig.config.getEngineType();
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break label400;
+        break label431;
       }
       j = paramMiniAppConfig.config.getReportType();
-      if (paramBundle == null) {
-        break label406;
+      if (paramBundle != null) {
+        k = paramBundle.getInt("PID");
       }
-      k = paramBundle.getInt("PID");
       QLog.i("miniapp-process_AppBrandLaunchManager", 1, "[MiniEng]onAppStart process=" + paramString + " appId=" + (String)localObject1 + " appName=" + (String)localObject2 + " engineType=" + i + " reportType=" + j);
     } while (TextUtils.isEmpty(paramString));
     Object localObject2 = (AppBrandLaunchManager.MiniAppSubProcessorInfo)this.mProcessStack.get(paramString);
@@ -1687,26 +1914,26 @@ public class AppBrandLaunchManager
     {
       localObject3 = (AppBrandLaunchManager.MiniAppSubProcessorInfo)subProcessorInfoMap.get(paramString);
       if (localObject3 == null) {
-        break label412;
+        break label437;
       }
       localObject1 = ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject3).appBrandUIClass;
-      label228:
+      label259:
       if (localObject3 == null) {
-        break label418;
+        break label443;
       }
       localObject2 = ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject3).gameUIClass;
-      label240:
+      label271:
       if (localObject3 == null) {
-        break label424;
+        break label449;
       }
     }
-    label388:
-    label394:
-    label400:
-    label406:
-    label412:
-    label418:
-    label424:
+    label413:
+    label419:
+    label425:
+    label431:
+    label437:
+    label443:
+    label449:
     for (Object localObject3 = ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject3).appPreLoadClass;; localObject3 = null)
     {
       localObject2 = new AppBrandLaunchManager.MiniAppSubProcessorInfo(paramString, (Class)localObject1, (Class)localObject2, (Class)localObject3);
@@ -1731,51 +1958,61 @@ public class AppBrandLaunchManager
       localObject1 = null;
       break;
       localObject2 = null;
-      break label52;
+      break label83;
       i = -1;
-      break label72;
+      break label103;
       j = -1;
-      break label92;
-      k = 0;
-      break label105;
+      break label123;
       localObject1 = null;
-      break label228;
+      break label259;
       localObject2 = null;
-      break label240;
+      break label271;
     }
   }
   
   public void onAppStop(String paramString, MiniAppConfig paramMiniAppConfig, Bundle paramBundle)
   {
-    int k = -1;
-    if (!isProcessValid(paramString)) {
+    boolean bool;
+    if (paramMiniAppConfig != null) {
+      if (!paramMiniAppConfig.isEngineTypeMiniGame())
+      {
+        bool = true;
+        if (!bjxn.a(bool)) {
+          break label29;
+        }
+      }
+    }
+    label29:
+    while (!isProcessValid(paramString))
+    {
       return;
+      bool = false;
+      break;
     }
     String str;
+    label76:
+    int i;
     if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null))
     {
       paramBundle = paramMiniAppConfig.config.appId;
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break label183;
+        break label200;
       }
       str = paramMiniAppConfig.config.name;
-      label51:
       if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-        break label189;
+        break label206;
+      }
+      i = paramMiniAppConfig.config.getEngineType();
+      label96:
+      if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
+        break label212;
       }
     }
-    label183:
-    label189:
-    for (int i = paramMiniAppConfig.config.getEngineType();; i = -1)
+    label200:
+    label206:
+    label212:
+    for (int j = paramMiniAppConfig.config.getReportType();; j = -1)
     {
-      int j = k;
-      if (paramMiniAppConfig != null)
-      {
-        j = k;
-        if (paramMiniAppConfig.config != null) {
-          j = paramMiniAppConfig.config.getReportType();
-        }
-      }
       QLog.i("miniapp-process_AppBrandLaunchManager", 1, "onAppStop process=" + paramString + " appId=" + paramBundle + " appName=" + str + " engineType=" + i + " reportType=" + j);
       cleanProcess(paramString);
       printProcessStack();
@@ -1783,17 +2020,43 @@ public class AppBrandLaunchManager
       paramBundle = null;
       break;
       str = null;
-      break label51;
+      break label76;
+      i = -1;
+      break label96;
     }
   }
   
   public void onEnterForeground()
   {
     long l = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_process_detect_time", 600000);
-    if ((System.currentTimeMillis() - this.mLastPreloadDetectTime > l) && (this.mMiniAppUsed))
+    if ((System.currentTimeMillis() - this.mLastPreloadDetectTime > l) && (isMiniAppUsed()))
     {
-      QLog.i("miniapp-process_AppBrandLaunchManager", 1, "doProcessDetect MiniAppUsed:" + this.mMiniAppUsed + " lastTime:" + this.mLastPreloadDetectTime);
-      getHandler().postDelayed(new AppBrandLaunchManager.14(this), 3000L);
+      QLog.i("miniapp-process_AppBrandLaunchManager", 1, "doProcessDetect MiniAppUsed:" + isMiniAppUsed() + " lastTime:" + this.mLastPreloadDetectTime);
+      getHandler().postDelayed(this.mCheckPreloadRunnable, 3000L);
+    }
+  }
+  
+  public void onMiniAppUIOpen()
+  {
+    if ((System.currentTimeMillis() - this.mLastPreloadDetectTime > 10000L) && (isMiniAppUsed()))
+    {
+      getHandler().removeCallbacks(this.mCheckPreloadRunnable);
+      getHandler().post(this.mCheckPreloadRunnable);
+    }
+  }
+  
+  public void preLaunchMiniApp(Context paramContext, MiniAppConfig paramMiniAppConfig)
+  {
+    if (paramMiniAppConfig == null) {}
+    for (;;)
+    {
+      return;
+      if (!paramMiniAppConfig.isEngineTypeMiniGame()) {}
+      for (boolean bool = true; (bool) && (bjxn.a(bool)); bool = false)
+      {
+        MiniSdkLauncher.preLaunchMiniApp(paramContext, paramMiniAppConfig);
+        return;
+      }
     }
   }
   
@@ -1849,11 +2112,11 @@ public class AppBrandLaunchManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 295	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager:mProcessStack	Landroid/util/LruCache;
-    //   6: invokevirtual 1115	android/util/LruCache:size	()I
+    //   3: getfield 336	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager:mProcessStack	Landroid/util/LruCache;
+    //   6: invokevirtual 1242	android/util/LruCache:size	()I
     //   9: istore_1
     //   10: aload_0
-    //   11: getfield 226	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager:mProcessMaxCount	I
+    //   11: getfield 251	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager:mProcessMaxCount	I
     //   14: istore_2
     //   15: iload_1
     //   16: iload_2
@@ -1862,17 +2125,17 @@ public class AppBrandLaunchManager
     //   21: monitorexit
     //   22: return
     //   23: aload_0
-    //   24: getfield 295	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager:mProcessStack	Landroid/util/LruCache;
-    //   27: invokevirtual 397	android/util/LruCache:snapshot	()Ljava/util/Map;
-    //   30: getstatic 111	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager:sInternalProcessInfo	Lcom/tencent/mobileqq/mini/launch/AppBrandLaunchManager$MiniAppSubProcessorInfo;
-    //   33: getfield 254	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager$MiniAppSubProcessorInfo:processName	Ljava/lang/String;
-    //   36: invokeinterface 1117 2 0
+    //   24: getfield 336	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager:mProcessStack	Landroid/util/LruCache;
+    //   27: invokevirtual 452	android/util/LruCache:snapshot	()Ljava/util/Map;
+    //   30: getstatic 129	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager:sInternalProcessInfo	Lcom/tencent/mobileqq/mini/launch/AppBrandLaunchManager$MiniAppSubProcessorInfo;
+    //   33: getfield 279	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager$MiniAppSubProcessorInfo:processName	Ljava/lang/String;
+    //   36: invokeinterface 1244 2 0
     //   41: ifne -21 -> 20
     //   44: aload_0
-    //   45: getstatic 111	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager:sInternalProcessInfo	Lcom/tencent/mobileqq/mini/launch/AppBrandLaunchManager$MiniAppSubProcessorInfo;
+    //   45: getstatic 129	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager:sInternalProcessInfo	Lcom/tencent/mobileqq/mini/launch/AppBrandLaunchManager$MiniAppSubProcessorInfo;
     //   48: iconst_1
     //   49: iconst_0
-    //   50: invokespecial 1346	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager:doPreloadApp	(Lcom/tencent/mobileqq/mini/launch/AppBrandLaunchManager$MiniAppSubProcessorInfo;ZZ)V
+    //   50: invokespecial 1500	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager:doPreloadApp	(Lcom/tencent/mobileqq/mini/launch/AppBrandLaunchManager$MiniAppSubProcessorInfo;ZZ)V
     //   53: goto -33 -> 20
     //   56: astore_3
     //   57: aload_0
@@ -1918,25 +2181,26 @@ public class AppBrandLaunchManager
         printProcessStack();
         updateBaseLib();
         ThreadManagerV2.executeOnFileThread(new AppBrandLaunchManager.5(this));
+        ThreadManager.getFileThreadHandler().postDelayed(new AppBrandLaunchManager.6(this), 10000L);
         if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_process_preload_priority", 1) == 1)
         {
           doPreloadApp(sInternalProcessInfo, true, true);
           localMap = this.mProcessStack.snapshot();
           i = 0;
-          break label408;
+          break label427;
           if (bool)
           {
             localObject1 = subAppProcessorInfoMap;
             localObject1 = ((LinkedHashMap)localObject1).entrySet().iterator();
             if (!((Iterator)localObject1).hasNext()) {
-              break label423;
+              break label442;
             }
             localEntry = (Map.Entry)((Iterator)localObject1).next();
             if (localMap.containsKey((String)localEntry.getKey())) {
               continue;
             }
             doPreloadApp((AppBrandLaunchManager.MiniAppSubProcessorInfo)localEntry.getValue(), bool, true);
-            break label423;
+            break label442;
           }
           localObject1 = subGameProcessorInfoMap;
           continue;
@@ -1975,46 +2239,46 @@ public class AppBrandLaunchManager
         continue;
         for (;;)
         {
-          label408:
+          label427:
           if (j <= 0) {
-            break label432;
+            break label451;
           }
           if (i % 2 != 0) {
-            break label434;
+            break label453;
           }
           bool = true;
           break;
-          label423:
+          label442:
           j -= 1;
           i += 1;
         }
-        label432:
+        label451:
         continue;
-        label434:
+        label453:
         bool = false;
         continue;
       }
       for (;;)
       {
         if (j <= 0) {
-          break label463;
+          break label482;
         }
         if (i % 2 != 0) {
-          break label465;
+          break label484;
         }
         bool = true;
         break;
         j -= 1;
         i += 1;
       }
-      label463:
+      label482:
       continue;
-      label465:
+      label484:
       boolean bool = false;
     }
   }
   
-  public void preloadPackage(@NonNull MiniAppInfo paramMiniAppInfo)
+  public void preloadPackage(@NonNull com.tencent.mobileqq.mini.apkg.MiniAppInfo paramMiniAppInfo)
   {
     ApkgMainProcessManager.checkShouldLoadPkgInMainProcess(new MiniAppConfig(paramMiniAppInfo), null, true);
     QLog.i("miniapp-process_AppBrandLaunchManager", 1, "preloadPackage" + paramMiniAppInfo.appId + " " + paramMiniAppInfo.name);
@@ -2029,7 +2293,7 @@ public class AppBrandLaunchManager
         paramString = paramBundle.getString("bundle_key_process_name", null);
         paramBundle = paramBundle.getString("bundle_key_preload_game_baselib_version", null);
         if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramBundle))) {
-          getHandler().post(new AppBrandLaunchManager.12(this, paramString, paramBundle));
+          getHandler().post(new AppBrandLaunchManager.13(this, paramString, paramBundle));
         }
       }
       return;
@@ -2048,12 +2312,12 @@ public class AppBrandLaunchManager
       QLog.i("miniapp-process_AppBrandLaunchManager", 1, "[MiniEng]startMiniApp. " + paramMiniAppConfig.config.name + ",size=" + paramMiniAppConfig.config.fileSize + ", versionId:" + paramMiniAppConfig.config.versionId + ", versionUpdateTime:" + paramMiniAppConfig.config.versionUpdateTime + " fromProcess=" + BaseApplicationImpl.getApplication().getQQProcessName());
       if ((paramMiniAppConfig.config == null) || (TextUtils.isEmpty(paramMiniAppConfig.config.appId)))
       {
-        AppBrandTask.runTaskOnUiThread(new AppBrandLaunchManager.7(this, paramMiniAppConfig, paramActivity));
+        AppBrandTask.runTaskOnUiThread(new AppBrandLaunchManager.9(this, paramMiniAppConfig, paramActivity));
         return;
       }
       if ((paramMiniAppConfig.launchParam == null) || (paramMiniAppConfig.launchParam.scene == 9999))
       {
-        AppBrandTask.runTaskOnUiThread(new AppBrandLaunchManager.8(this, paramMiniAppConfig));
+        AppBrandTask.runTaskOnUiThread(new AppBrandLaunchManager.10(this, paramMiniAppConfig));
         return;
       }
       if ((paramMiniAppConfig.config.verType == 3) || (!TextUtils.isEmpty(paramMiniAppConfig.config.ide_scene))) {}
@@ -2067,7 +2331,7 @@ public class AppBrandLaunchManager
         if (!TextUtils.isEmpty(paramMiniAppConfig.config.ide_extraData)) {
           paramMiniAppConfig.launchParam.navigateExtData = paramMiniAppConfig.config.ide_extraData;
         }
-        this.mMiniAppUsed = true;
+        markMiniAppUsed();
         Object localObject1;
         if ((paramMiniAppConfig.isEngineTypeMiniGame()) && (GameWnsUtils.enableHotReload()) && (paramMiniAppConfig.config.verType == 3))
         {
@@ -2091,7 +2355,7 @@ public class AppBrandLaunchManager
         {
           Object localObject2 = new StringBuilder().append("---startApp----");
           if (paramMiniAppConfig.launchParam == null) {
-            break label999;
+            break label998;
           }
           localObject1 = paramMiniAppConfig.launchParam.entryPath;
           QLog.i("miniapp-start", 1, (String)localObject1);
@@ -2131,7 +2395,7 @@ public class AppBrandLaunchManager
             cleanProcess(((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject1).processName);
           }
           if (!paramMiniAppConfig.isEngineTypeMiniGame()) {
-            break label1007;
+            break label1006;
           }
           AnimUtil.clearAnim(paramActivity);
           if ((paramMiniAppConfig.isFromShowInfo()) || (paramMiniAppConfig.isShortcutFakeApp())) {
@@ -2155,10 +2419,10 @@ public class AppBrandLaunchManager
           {
             paramMiniAppConfig.launchParam.entryPath = (paramMiniAppConfig.config.firstPage.pagePath + ".html");
             continue;
-            label999:
+            label998:
             String str = "N/A";
             continue;
-            label1007:
+            label1006:
             if (paramMiniAppConfig.launchParam.scene != 2004) {
               AnimUtil.setOpenAnim(paramActivity);
             }
@@ -2172,7 +2436,7 @@ public class AppBrandLaunchManager
   {
     try
     {
-      BaseLibManager.g().updateBaseLib(new AppBrandLaunchManager.13(this));
+      BaseLibManager.g().updateBaseLib(new AppBrandLaunchManager.14(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -2187,7 +2451,7 @@ public class AppBrandLaunchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager
  * JD-Core Version:    0.7.0.1
  */

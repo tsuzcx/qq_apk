@@ -1,16 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap.Config;
 
-class aobp
-  implements View.OnClickListener
+public abstract interface aobp
 {
-  aobp(aobo paramaobo, ajgb paramajgb) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Aobo.a(this.jdField_a_of_type_Ajgb);
-    this.jdField_a_of_type_Aobo.a();
-  }
+  public static final Bitmap.Config a = Bitmap.Config.ARGB_8888;
 }
 
 

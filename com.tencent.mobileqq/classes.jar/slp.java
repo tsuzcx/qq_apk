@@ -1,17 +1,10 @@
-class slp
+public abstract interface slp
 {
-  final int jdField_a_of_type_Int;
-  final int b;
-  
-  public slp(slo paramslo, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a(slr paramslr);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     slp
  * JD-Core Version:    0.7.0.1
  */

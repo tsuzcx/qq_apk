@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amvq;
+import aouh;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 
 public class ARTransferPromotionRenderable$18
   implements Runnable
 {
-  public ARTransferPromotionRenderable$18(amvq paramamvq) {}
+  public ARTransferPromotionRenderable$18(aouh paramaouh) {}
   
   public void run()
   {
-    if ((amvq.a(this.this$0) != null) && (this.this$0.b <= 4)) {
-      amvq.a(this.this$0).native_startTranversalAnimation();
+    if ((aouh.a(this.this$0) != null) && (this.this$0.b <= 4)) {
+      aouh.a(this.this$0).native_startTranversalAnimation();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.18
  * JD-Core Version:    0.7.0.1
  */

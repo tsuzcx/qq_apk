@@ -1,75 +1,79 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.common.galleryactivity.AbstractImageAdapter;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.widget.AdapterView;
 import java.io.File;
 
 public class axqt
+  extends abfl
 {
-  public static final String a;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public float a;
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public int d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
-  private int j;
-  private int k = 1;
-  private int l = 2000000;
-  private int m = 1;
-  private int n = 1;
+  protected axqs a;
+  public axqv a;
+  protected axqz a;
+  protected PicBrowserActivity a;
+  protected boolean a;
+  private boolean b;
   
-  static
+  public axqt(PicBrowserActivity paramPicBrowserActivity, abfp paramabfp)
   {
-    jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getFilesDir().getPath() + "/Android/data/com.tencent.mobileqq/qq/video/LightVideo/";
-    jdField_c_of_type_JavaLangString = "key_aio_fbo";
-    jdField_d_of_type_JavaLangString = "key_riji_h_compress_fbo";
-    jdField_e_of_type_JavaLangString = "key_riji_h_clip_fbo";
-    jdField_f_of_type_JavaLangString = "key_riji_l_compress_fbo";
-    jdField_g_of_type_JavaLangString = "key_riji_l_clip_fbo";
-    jdField_h_of_type_JavaLangString = "key_ae_gif_fbo";
+    super(paramPicBrowserActivity, paramabfp);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity = paramPicBrowserActivity;
+    this.jdField_a_of_type_Axqz = ((axqz)paramabfp);
+    paramPicBrowserActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity.getIntent();
+    if (paramPicBrowserActivity != null) {
+      this.jdField_a_of_type_Boolean = paramPicBrowserActivity.getBooleanExtra("is_forbid_action_sheet", false);
+    }
   }
   
-  public axqt()
+  private void a(String paramString)
   {
-    this.jdField_e_of_type_Int = 960;
-    this.jdField_f_of_type_Int = 720;
-    this.jdField_g_of_type_Int = 960;
-    this.jdField_h_of_type_Int = 720;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_JavaLangString = (BaseApplicationImpl.getContext().getFilesDir().getPath() + "/Android/data/com.tencent.mobileqq/qq/video/Source/" + this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
+    if (!new File(paramString).exists()) {
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.setClass(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity, ForwardRecentActivity.class);
+    localIntent.putExtra("forward_type", 1);
+    localIntent.putExtra("forward_thumb", paramString);
+    localIntent.putExtra("key_flag_from_plugin", true);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity.startActivityForResult(localIntent, 1001);
+  }
+  
+  protected RelativeLayout a()
+  {
+    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561301, null);
+  }
+  
+  protected AbstractImageAdapter a(Context paramContext)
+  {
+    if (this.jdField_a_of_type_Axqs == null) {
+      this.jdField_a_of_type_Axqs = new axqs(paramContext);
+    }
+    return this.jdField_a_of_type_Axqs;
   }
   
   public void a()
   {
-    this.jdField_b_of_type_JavaLangString = (jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long);
+    axqw localaxqw = this.jdField_a_of_type_Axqz.a();
+    if (localaxqw != null)
+    {
+      localaxqw.jdField_a_of_type_AndroidGraphicsRect = ((Rect)this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity.getIntent().getParcelableExtra("KEY_THUMBNAL_BOUND"));
+      localaxqw.c = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity.getIntent().getBooleanExtra("extra_is_image_center_crop", false);
+    }
   }
   
-  public void a(float paramFloat)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
+    super.a(paramInt1, paramInt2, paramIntent);
+    if ((paramInt2 == -1) && (paramInt1 == 1001)) {}
   }
   
   public void a(boolean paramBoolean)
@@ -77,79 +81,145 @@ public class axqt
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void b(int paramInt)
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_f_of_type_Int = paramInt;
+    if (82 == paramKeyEvent.getKeyCode())
+    {
+      d(this.jdField_a_of_type_Axqz.b());
+      return true;
+    }
+    return super.a(paramInt, paramKeyEvent);
   }
   
-  public void b(boolean paramBoolean)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    d(paramInt);
+    return super.a(paramAdapterView, paramView, paramInt, paramLong);
   }
   
-  public void c(int paramInt)
+  public void c()
   {
-    this.jdField_g_of_type_Int = paramInt;
+    if ((this.jdField_a_of_type_Axqz instanceof axqz))
+    {
+      this.jdField_a_of_type_Axqz.a();
+      this.b = true;
+    }
+    super.c();
   }
   
-  public void d(int paramInt)
+  public void d()
   {
-    this.jdField_h_of_type_Int = paramInt;
+    int i = -1;
+    int k;
+    axqw localaxqw1;
+    axqw localaxqw2;
+    if (this.jdField_a_of_type_Axqz != null)
+    {
+      j = this.jdField_a_of_type_Axqz.b();
+      k = this.jdField_a_of_type_Axqz.a();
+      if (k == 1)
+      {
+        localaxqw1 = this.jdField_a_of_type_Axqz.b(j);
+        j = i;
+        localaxqw2 = localaxqw1;
+        if (this.jdField_a_of_type_Axqs != null)
+        {
+          this.jdField_a_of_type_Axqs.notifyDataSetChanged();
+          localaxqw2 = localaxqw1;
+        }
+      }
+    }
+    for (int j = i;; j = i)
+    {
+      if (this.jdField_a_of_type_Axqv != null) {
+        this.jdField_a_of_type_Axqv.a(localaxqw2, j);
+      }
+      return;
+      if (j == k - 1)
+      {
+        localaxqw1 = this.jdField_a_of_type_Axqz.b(j);
+        i = j - 1;
+        this.jdField_a_of_type_Axqz.a(i);
+        break;
+      }
+      if ((j >= 0) && (j < k))
+      {
+        localaxqw1 = this.jdField_a_of_type_Axqz.b(j);
+        this.jdField_a_of_type_Axqz.a(j);
+        i = j;
+        break;
+      }
+      localaxqw1 = null;
+      break;
+      localaxqw2 = null;
+    }
   }
   
-  public void e(int paramInt)
+  protected void d(int paramInt)
   {
-    this.i = paramInt;
+    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity.isFinishing())) {}
+    for (;;)
+    {
+      return;
+      Object localObject3 = "";
+      Object localObject4 = null;
+      Object localObject1 = localObject4;
+      Object localObject2 = localObject3;
+      if (this.jdField_a_of_type_Axqz.a(paramInt) != null)
+      {
+        localObject1 = localObject4;
+        localObject2 = localObject3;
+        if (this.jdField_a_of_type_Axqz.a(paramInt).jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo != null)
+        {
+          if (TextUtils.isEmpty(this.jdField_a_of_type_Axqz.a(paramInt).jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c)) {
+            break label182;
+          }
+          localObject2 = this.jdField_a_of_type_Axqz.a(paramInt).jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c;
+        }
+      }
+      for (localObject1 = new File(this.jdField_a_of_type_Axqz.a(paramInt).jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.c); localObject1 != null; localObject1 = bdsh.a(this.jdField_a_of_type_Axqz.a(paramInt).jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a))
+      {
+        localObject3 = bkho.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity);
+        ((bkho)localObject3).c(anni.a(2131706915));
+        ((bkho)localObject3).c("发送给QQ好友");
+        ((bkho)localObject3).d(anni.a(2131706916));
+        ((bkho)localObject3).a(new axqu(this, (bkho)localObject3, (File)localObject1, (String)localObject2));
+        ((bkho)localObject3).show();
+        return;
+        label182:
+        localObject2 = bdsh.d(this.jdField_a_of_type_Axqz.a(paramInt).jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.a);
+      }
+    }
   }
   
-  public void f(int paramInt)
+  public boolean f()
   {
-    this.j = paramInt;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public void g(int paramInt)
+  public void h_()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (((this.jdField_a_of_type_Axqz instanceof axqz)) && (this.b) && (this.jdField_a_of_type_Axqs != null)) {
+      this.jdField_a_of_type_Axqs.notifyDataSetChanged();
+    }
+    this.b = false;
+    super.h_();
   }
   
-  public void h(int paramInt)
+  public void i()
   {
-    this.jdField_b_of_type_Int = paramInt;
+    super.i();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity.e();
   }
   
-  public void i(int paramInt)
+  public void j()
   {
-    this.k = paramInt;
-  }
-  
-  public void j(int paramInt)
-  {
-    this.l = paramInt;
-  }
-  
-  public void k(int paramInt)
-  {
-    this.m = paramInt;
-  }
-  
-  public void l(int paramInt)
-  {
-    this.n = paramInt;
-  }
-  
-  public void m(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "CaptureParam{wantedPreviewWidth=" + this.jdField_e_of_type_Int + ", wantedPreviewHeight=" + this.jdField_f_of_type_Int + ", defaultCamera=" + this.k + ", videoSizeRate=" + this.jdField_a_of_type_Float + ", videoBitRate=" + this.l + ", videoIFrameInterval=" + this.m + ", captureDir='" + this.jdField_b_of_type_JavaLangString + '\'' + ", audioCaptureEnable=" + this.jdField_a_of_type_Boolean + ", functionFlag=" + this.n + '}';
+    super.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axqt
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,14 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
-import bcko;
+import bfpg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.data.TroopTipsEntity;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForDeliverGiftTips
   extends MessageForGrayTips
-  implements bcko
+  implements bfpg
 {
   public static final String MESSAGERECORD_EXTSTR_TYPE = "troop_send_gift_ext_remind";
   public static final int VERSION = 2;

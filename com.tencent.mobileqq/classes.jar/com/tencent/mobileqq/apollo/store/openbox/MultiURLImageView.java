@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import aldt;
-import alfa;
+import amwz;
+import amyh;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -17,7 +17,7 @@ import java.util.List;
 public class MultiURLImageView
   extends LinearLayout
 {
-  private List<alfa> a;
+  private List<amyh> a;
   
   public MultiURLImageView(Context paramContext)
   {
@@ -34,20 +34,20 @@ public class MultiURLImageView
       paramInt2 = 0;
       if (localIterator.hasNext())
       {
-        alfa localalfa = (alfa)localIterator.next();
+        amyh localamyh = (amyh)localIterator.next();
         int i;
         if (super.getOrientation() == 1)
         {
-          i = localalfa.jdField_b_of_type_Int;
-          paramInt2 = Math.max(paramInt2, localalfa.jdField_a_of_type_Int);
+          i = localamyh.jdField_b_of_type_Int;
+          paramInt2 = Math.max(paramInt2, localamyh.jdField_a_of_type_Int);
           paramInt1 += i;
         }
         for (;;)
         {
           break;
-          i = localalfa.jdField_a_of_type_Int;
-          int j = localalfa.c;
-          paramInt1 = Math.max(paramInt1, localalfa.jdField_b_of_type_Int);
+          i = localamyh.jdField_a_of_type_Int;
+          int j = localamyh.c;
+          paramInt1 = Math.max(paramInt1, localamyh.jdField_b_of_type_Int);
           paramInt2 += i + j;
         }
       }
@@ -66,19 +66,19 @@ public class MultiURLImageView
     super.setGravity(16);
   }
   
-  public void setViewLayoutDatas(List<alfa> paramList)
+  public void setViewLayoutDatas(List<amyh> paramList)
   {
     this.a = paramList;
     int i;
-    alfa localalfa;
+    amyh localamyh;
     Object localObject;
     if (this.a != null)
     {
       i = 0;
       if (i < this.a.size())
       {
-        localalfa = (alfa)this.a.get(i);
-        if (!TextUtils.isEmpty(localalfa.jdField_a_of_type_JavaLangString)) {}
+        localamyh = (amyh)this.a.get(i);
+        if (!TextUtils.isEmpty(localamyh.jdField_a_of_type_JavaLangString)) {}
       }
       else
       {
@@ -92,11 +92,11 @@ public class MultiURLImageView
           i += 1;
         }
       }
-      localObject = localalfa.jdField_b_of_type_JavaLangString;
+      localObject = localamyh.jdField_b_of_type_JavaLangString;
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         break label266;
       }
-      localObject = Utils.Crc64String(localalfa.jdField_a_of_type_JavaLangString);
+      localObject = Utils.Crc64String(localamyh.jdField_a_of_type_JavaLangString);
     }
     label266:
     for (;;)
@@ -116,13 +116,13 @@ public class MultiURLImageView
         for (;;)
         {
           LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramList.getLayoutParams();
-          localLayoutParams.width = localalfa.jdField_a_of_type_Int;
-          localLayoutParams.height = localalfa.jdField_b_of_type_Int;
-          localLayoutParams.leftMargin = localalfa.c;
-          localObject = aldt.a((String)localObject, null, localalfa.jdField_a_of_type_JavaLangString);
+          localLayoutParams.width = localamyh.jdField_a_of_type_Int;
+          localLayoutParams.height = localamyh.jdField_b_of_type_Int;
+          localLayoutParams.leftMargin = localamyh.c;
+          localObject = amwz.a((String)localObject, null, localamyh.jdField_a_of_type_JavaLangString);
           ((URLDrawable)localObject).startDownload();
           paramList.setImageDrawable((Drawable)localObject);
-          paramList.setScaleType(localalfa.jdField_a_of_type_AndroidWidgetImageView$ScaleType);
+          paramList.setScaleType(localamyh.jdField_a_of_type_AndroidWidgetImageView$ScaleType);
           paramList.setVisibility(0);
           i += 1;
           break;
@@ -136,7 +136,7 @@ public class MultiURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.MultiURLImageView
  * JD-Core Version:    0.7.0.1
  */

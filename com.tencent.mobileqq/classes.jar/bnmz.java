@@ -1,17 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
 public class bnmz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Animator.AnimatorListener
 {
-  public bnmz(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  public bnmz(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(this.a.c);
+    if (QLog.isColorLevel()) {
+      QLog.d("AEProviderContainerView", 2, "panel closed");
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

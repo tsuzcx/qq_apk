@@ -1,12 +1,11 @@
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-public abstract interface arwp
-  extends View.OnTouchListener
+public class arwp
+  extends arwg
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
-  
-  public abstract void b(View paramView, int paramInt1, int paramInt2);
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
 }
 
 

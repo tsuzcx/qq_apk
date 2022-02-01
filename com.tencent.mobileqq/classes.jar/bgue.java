@@ -1,27 +1,23 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.Observable;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
 
 public class bgue
-  extends Observable
+  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
 {
-  public void a(Object paramObject)
+  public bgue(QAVFunCallHandler paramQAVFunCallHandler) {}
+  
+  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
   {
-    if (paramObject == null) {
-      return;
-    }
-    QMLog.d("minisdk-start_AppStateManager", "notifyChange msg=" + paramObject);
-    setChanged();
-    if (paramObject != null)
-    {
-      notifyObservers(paramObject);
-      return;
-    }
-    notifyObservers();
+    this.a.setConfig(paramQAVFunCallConfig);
+    this.a.onGetConfig(paramAppInterface);
+    QAVFunCallHandler.access$000(this.a, "onGetConfig", paramAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgue
  * JD-Core Version:    0.7.0.1
  */

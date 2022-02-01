@@ -1,203 +1,432 @@
-import android.content.BroadcastReceiver;
-import android.text.TextUtils;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.1;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Locale;
+import com.tencent.troop.group_activity_info.GroupActInfo;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import tencent.qun.group_activity.group_activity.GroupAct;
 
 public class anif
-  extends ankc
+  implements anil
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private anig jdField_a_of_type_Anig = new anig(this, null);
-  private anii jdField_a_of_type_Anii = new anii(this, null);
-  private aniw jdField_a_of_type_Aniw = new aniw(this, null);
-  private aniy jdField_a_of_type_Aniy = new aniy(this, null);
-  public anjo a;
-  private HashMap<String, anih> b = new ArkAppDeviceModule.1(this);
+  private final String a = "BizTroopObserver";
   
-  public anif(ark.Application paramApplication, long paramLong)
+  private void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super(paramApplication, paramLong);
-    this.jdField_a_of_type_Anjo = new anjo(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  private void a(long paramLong, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doScanCodeCallback cbId=" + paramLong + ", scanResult=" + paramString1 + ", scanType=" + paramString2);
-    }
-    ark.VariantWrapper localVariantWrapper1 = a(paramLong);
-    if (localVariantWrapper1 == null) {
+    if (paramInt != 2) {
       return;
     }
-    int i;
-    ark.VariantWrapper localVariantWrapper2;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    c(paramBoolean, paramObject);
+  }
+  
+  private void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramInt != 6) {}
+    while (paramArrayOfObject == null) {
+      return;
+    }
+    if (paramBoolean)
     {
-      i = 1;
-      localVariantWrapper2 = localVariantWrapper1.Create();
-      if (i == 0) {
-        break label186;
+      a(paramBoolean, (String)paramArrayOfObject[0], ((Boolean)paramArrayOfObject[1]).booleanValue(), (List)paramArrayOfObject[2]);
+      return;
+    }
+    a(paramBoolean, (String)paramArrayOfObject[0], ((Boolean)paramArrayOfObject[1]).booleanValue(), null);
+  }
+  
+  private void b(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 9) {
+      return;
+    }
+    a(paramObject);
+  }
+  
+  private void b(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramInt != 12) {}
+    while (paramArrayOfObject == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      a(true, ((Integer)paramArrayOfObject[0]).intValue(), ((Integer)paramArrayOfObject[1]).intValue(), ((Integer)paramArrayOfObject[2]).intValue(), (ArrayList)paramArrayOfObject[3], 0);
+      return;
+    }
+    a(false, ((Integer)paramArrayOfObject[2]).intValue(), 0, 0, null, ((Integer)paramArrayOfObject[4]).intValue());
+  }
+  
+  private void c(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 8) {
+      return;
+    }
+    d(paramBoolean, paramObject);
+  }
+  
+  private void c(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramInt != 18) {}
+    while (paramArrayOfObject == null) {
+      return;
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfObject.length == 5)
+    {
+      localObject1 = localObject2;
+      if (paramArrayOfObject[4] != null) {
+        localObject1 = (String)paramArrayOfObject[4];
       }
-      if (!"QR_CODE".equalsIgnoreCase(paramString2)) {
-        break label179;
-      }
-      paramString2 = "QRCode";
-      label104:
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"result\":\"%s\",\"type\":\"%s\",\"charset\":\"%s\"}", new Object[] { paramString1, paramString2, "utf-8" }));
     }
-    for (;;)
-    {
-      paramString1 = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString1);
-      paramString1.Reset();
-      localVariantWrapper2.Reset();
-      localVariantWrapper1.Reset();
-      return;
-      i = 0;
-      break;
-      label179:
-      paramString2 = "BarCode";
-      break label104;
-      label186:
-      localVariantWrapper2.SetNull();
-    }
+    a((String)paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue(), ((Integer)paramArrayOfObject[2]).intValue(), (String)paramArrayOfObject[3], (String)localObject1);
   }
   
-  private void a(long paramLong, boolean paramBoolean, double paramDouble1, double paramDouble2)
+  private void d(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doPositionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", lat=" + paramDouble1 + ", lng=" + paramDouble2);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
+    if (paramInt != 10) {
       return;
     }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    if (paramBoolean) {
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"latitude\":%.6f,\"longitude\":%.6f}", new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) }));
-    }
-    for (;;)
-    {
-      ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, localVariantWrapper3);
-      localVariantWrapper3.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      localVariantWrapper2.SetNull();
-    }
+    e(paramBoolean, paramObject);
   }
   
-  private void a(long paramLong, boolean paramBoolean, String paramString)
+  private void d(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doConnectionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", netType=" + paramString);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    if (paramBoolean) {
-      localVariantWrapper2.SetString(paramString);
-    }
-    for (;;)
+    int i = 0;
+    if (paramInt != 42) {}
+    do
     {
-      paramString = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
-      paramString.Reset();
-      localVariantWrapper2.Reset();
       return;
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doSensorCallback cbId=" + paramLong + ", success=" + paramBoolean + ", sensorEventType=" + paramString + ", argA=" + paramFloat1 + ", argB=" + paramFloat2 + ", argC=" + paramFloat3);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    String str = null;
-    if ("Motion".equals(paramString))
-    {
-      str = "{\"x\":%.6f,\"y\":%.6f,\"z\":%.6f}";
-      if ((!paramBoolean) || (TextUtils.isEmpty(str))) {
-        break label220;
-      }
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, str, new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3) }));
-    }
-    for (;;)
-    {
-      paramString = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
-      paramString.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      if (!"Orientation".equals(paramString)) {
+      if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0)) {
         break;
       }
-      str = "{\"alpha\":%.6f,\"beta\":%.6f,\"gamma\":%.6f}";
-      break;
-      label220:
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  public void Destruct()
-  {
-    if (this.jdField_a_of_type_Anjo != null) {
-      this.jdField_a_of_type_Anjo.a();
-    }
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
-    try
+    } while (!QLog.isColorLevel());
+    QLog.d("BizTroopObserver", 2, "onUpdate(), case BizTroopHandler.TYPE_SET_COMMONLY_USED_TROOP_LIST, array is null or empty ...");
+    return;
+    Map localMap;
+    if ((paramArrayOfObject[0] instanceof Integer))
     {
-      BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      label31:
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      super.Destruct();
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label31;
-    }
-  }
-  
-  public String GetTypeName()
-  {
-    return "Device";
-  }
-  
-  public boolean HasMenthod(String paramString)
-  {
-    return (this.b != null) && (this.b.containsKey(paramString)) && (this.b.get(paramString) != null);
-  }
-  
-  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "invokeFunc=" + paramString);
-    }
-    if (!a(paramString)) {
-      return false;
-    }
-    if (this.b != null)
-    {
-      anih localanih = (anih)this.b.get(paramString);
-      if (localanih != null) {
-        return localanih.a(paramString, paramArrayOfVariantWrapper, paramVariantWrapper);
+      paramInt = ((Integer)paramArrayOfObject[0]).intValue();
+      if ((paramArrayOfObject[1] instanceof Integer)) {
+        i = ((Integer)paramArrayOfObject[1]).intValue();
+      }
+      if (!(paramArrayOfObject[2] instanceof Map)) {
+        break label122;
+      }
+      localMap = (Map)paramArrayOfObject[2];
+      label90:
+      if (!(paramArrayOfObject[3] instanceof String)) {
+        break label128;
       }
     }
-    return false;
+    label128:
+    for (paramArrayOfObject = (String)paramArrayOfObject[3];; paramArrayOfObject = null)
+    {
+      a(paramInt, i, localMap, paramArrayOfObject);
+      return;
+      paramInt = -1;
+      break;
+      label122:
+      localMap = null;
+      break label90;
+    }
+  }
+  
+  private void e(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 11) {
+      return;
+    }
+    a(paramBoolean, (List)paramObject);
+  }
+  
+  private void e(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramInt != 29) {
+      return;
+    }
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0))
+    {
+      a(false, -1L, "");
+      return;
+    }
+    a(paramBoolean, ((Long)paramArrayOfObject[0]).longValue(), (String)paramArrayOfObject[1]);
+  }
+  
+  private void f(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 13) {
+      return;
+    }
+    b(paramObject);
+  }
+  
+  private void f(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramInt != 32) {}
+    while (paramArrayOfObject == null) {
+      return;
+    }
+    a(paramBoolean, ((Long)paramArrayOfObject[0]).longValue(), ((Long)paramArrayOfObject[1]).longValue());
+  }
+  
+  private void g(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 20) {
+      return;
+    }
+    c(paramObject);
+  }
+  
+  private void g(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramInt != 33) {}
+    while (paramArrayOfObject == null) {
+      return;
+    }
+    a(paramBoolean, ((Integer)paramArrayOfObject[1]).intValue(), ((Integer)paramArrayOfObject[2]).intValue());
+  }
+  
+  private void h(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 19) {}
+  }
+  
+  private void h(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramInt != 31) {}
+    while (paramArrayOfObject == null) {
+      return;
+    }
+    b(paramBoolean, ((Boolean)paramArrayOfObject[1]).booleanValue());
+  }
+  
+  private void i(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 27) {
+      return;
+    }
+    f(paramBoolean, paramObject);
+  }
+  
+  private void i(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramInt != 38) {
+      return;
+    }
+    if ((paramBoolean) && (paramArrayOfObject != null))
+    {
+      a(((Long)paramArrayOfObject[0]).longValue(), ((Long)paramArrayOfObject[1]).longValue(), ((Long)paramArrayOfObject[2]).longValue(), (String)paramArrayOfObject[3]);
+      return;
+    }
+    a(-1L, -1L, -1L, "");
+  }
+  
+  private void j(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 28) {
+      return;
+    }
+    g(paramBoolean, paramObject);
+  }
+  
+  private void j(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramInt != 41) {
+      return;
+    }
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 1)) {}
+    for (paramInt = ((Integer)paramArrayOfObject[0]).intValue(); (paramBoolean) && (paramArrayOfObject != null) && (paramArrayOfObject.length >= 4); paramInt = 2131695434)
+    {
+      a(paramBoolean, paramInt, (String)paramArrayOfObject[1], (String)paramArrayOfObject[2], (Boolean)paramArrayOfObject[3]);
+      return;
+    }
+    a(paramBoolean, paramInt, null, null, Boolean.valueOf(true));
+  }
+  
+  private void k(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 21) {
+      return;
+    }
+    j(paramBoolean, paramObject);
+  }
+  
+  private void k(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramInt != 43) {}
+    while (paramArrayOfObject == null) {
+      return;
+    }
+    if (paramArrayOfObject.length >= 4) {}
+    for (paramInt = ((Integer)paramArrayOfObject[3]).intValue();; paramInt = 0)
+    {
+      a(paramBoolean, (String)paramArrayOfObject[0], (String)paramArrayOfObject[1], (String)paramArrayOfObject[2], paramInt);
+      return;
+    }
+  }
+  
+  private void l(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 22) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("BizTroopObserver", 4, "TroopHandler.TYPE_TROOP_GAG_STATUS");
+    }
+    a((bfsn)paramObject);
+  }
+  
+  private void l(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramInt != 50) {}
+    while (paramArrayOfObject == null) {
+      return;
+    }
+    a((bety)paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue(), ((Integer)paramArrayOfObject[2]).intValue(), (String)paramArrayOfObject[3], (String)paramArrayOfObject[4], (Bundle)paramArrayOfObject[5]);
+  }
+  
+  private void m(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 30) {
+      return;
+    }
+    a(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void n(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 24) {
+      return;
+    }
+    k(paramBoolean, paramObject);
+  }
+  
+  private void o(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 36) {
+      return;
+    }
+    a(paramBoolean, paramObject);
+  }
+  
+  private void p(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 44) {
+      return;
+    }
+    b(paramBoolean, paramObject);
+  }
+  
+  private void q(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 39) {
+      return;
+    }
+    h(paramBoolean, paramObject);
+  }
+  
+  private void r(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 40) {
+      return;
+    }
+    i(paramBoolean, paramObject);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Map<String, Integer> paramMap, String paramString) {}
+  
+  protected void a(long paramLong1, long paramLong2, long paramLong3, String paramString) {}
+  
+  protected void a(bety parambety, int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle) {}
+  
+  protected void a(bfsn parambfsn) {}
+  
+  protected void a(Object paramObject) {}
+  
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
+  
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, ArrayList<bfpr> paramArrayList, int paramInt4) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1) {}
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2) {}
+  
+  protected void a(boolean paramBoolean, long paramLong, String paramString) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt) {}
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, List<group_activity_info.GroupActInfo> paramList) {}
+  
+  protected void a(boolean paramBoolean, List<group_activity.GroupAct> paramList) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void b(Object paramObject) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void c(Object paramObject) {}
+  
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  protected void d(boolean paramBoolean, Object paramObject) {}
+  
+  protected void e(boolean paramBoolean, Object paramObject) {}
+  
+  protected void f(boolean paramBoolean, Object paramObject) {}
+  
+  protected void g(boolean paramBoolean, Object paramObject) {}
+  
+  protected void h(boolean paramBoolean, Object paramObject) {}
+  
+  protected void i(boolean paramBoolean, Object paramObject) {}
+  
+  protected void j(boolean paramBoolean, Object paramObject) {}
+  
+  protected void k(boolean paramBoolean, Object paramObject) {}
+  
+  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    Object[] arrayOfObject = null;
+    if ((paramObject instanceof Object[])) {
+      arrayOfObject = (Object[])paramObject;
+    }
+    a(paramInt, paramBoolean, paramObject);
+    b(paramInt, paramBoolean, paramObject);
+    a(paramInt, paramBoolean, arrayOfObject);
+    c(paramInt, paramBoolean, paramObject);
+    d(paramInt, paramBoolean, paramObject);
+    e(paramInt, paramBoolean, paramObject);
+    b(paramInt, paramBoolean, arrayOfObject);
+    f(paramInt, paramBoolean, paramObject);
+    g(paramInt, paramBoolean, paramObject);
+    c(paramInt, paramBoolean, arrayOfObject);
+    d(paramInt, paramBoolean, arrayOfObject);
+    h(paramInt, paramBoolean, paramObject);
+    i(paramInt, paramBoolean, paramObject);
+    j(paramInt, paramBoolean, paramObject);
+    e(paramInt, paramBoolean, arrayOfObject);
+    k(paramInt, paramBoolean, paramObject);
+    l(paramInt, paramBoolean, paramObject);
+    m(paramInt, paramBoolean, paramObject);
+    n(paramInt, paramBoolean, paramObject);
+    f(paramInt, paramBoolean, arrayOfObject);
+    g(paramInt, paramBoolean, arrayOfObject);
+    h(paramInt, paramBoolean, arrayOfObject);
+    o(paramInt, paramBoolean, paramObject);
+    p(paramInt, paramBoolean, paramObject);
+    i(paramInt, paramBoolean, arrayOfObject);
+    q(paramInt, paramBoolean, paramObject);
+    r(paramInt, paramBoolean, paramObject);
+    j(paramInt, paramBoolean, arrayOfObject);
+    k(paramInt, paramBoolean, arrayOfObject);
+    l(paramInt, paramBoolean, arrayOfObject);
   }
 }
 

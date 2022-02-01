@@ -1,47 +1,67 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.DelCommentResp;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class axjv
+class axjv
+  extends niu
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  axjv(axjs paramaxjs, axjp paramaxjp, Comments.Comment paramComment) {}
   
-  public static axjv a(String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    axjv localaxjv = new axjv();
-    try
+    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      paramString = new JSONObject(paramString);
-      localaxjv.jdField_a_of_type_Int = paramString.optInt("animationType");
-      localaxjv.jdField_a_of_type_JavaLangString = paramString.optString("boxZipUrl", null);
-      localaxjv.b = paramString.optString("giftZipUrl", null);
-      localaxjv.c = paramString.optString("giftParticleUrl", null);
-      localaxjv.d = paramString.optString("lottieUrl", null);
-      return localaxjv;
+      paramBundle = new oidb_0xada.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new NowNearbyVideoCommentProto.DelCommentResp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (QLog.isColorLevel()) {
+            QLog.i("CommentsDataSource", 1, "ret:" + paramArrayOfByte.result.get());
+          }
+          this.jdField_a_of_type_Axjp.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)paramArrayOfByte.result.get());
+          paramArrayOfByte = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (paramArrayOfByte == null) {
+            return;
+          }
+          ((axyl)paramArrayOfByte.getManager(263)).a(axjs.a(this.jdField_a_of_type_Axjs).a, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a);
+          return;
+        }
+        QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
+        this.jdField_a_of_type_Axjp.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("CommentsDataSource", 1, "merge delete resp data error");
+        this.jdField_a_of_type_Axjp.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+        return;
+      }
     }
-    catch (Exception paramString)
+    else
     {
-      paramString.printStackTrace();
-      QLog.e("QzoneGiftManager", 1, "handleFlashChatConfig failed" + paramString);
+      this.jdField_a_of_type_Axjp.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
     }
-    return localaxjv;
-  }
-  
-  public String toString()
-  {
-    return " mBoxZipUrl = " + this.jdField_a_of_type_JavaLangString + " mGiftZipUrl = " + this.b + " mGiftUrl = " + this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axjv
  * JD-Core Version:    0.7.0.1
  */

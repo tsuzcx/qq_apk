@@ -1,29 +1,30 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class aehg
-  extends alpq
+  implements Animation.AnimationListener
 {
-  public aehg(TroopRequestActivity paramTroopRequestActivity) {}
+  public aehg(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.systemmsg.TroopRequestActivity", 2, "onCardDownload() isSuccess = " + paramBoolean + "  data:" + paramObject);
+    this.a.a.execute(new Void[0]);
+    this.a.f = false;
+    if (this.a.d) {
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    if (paramObject == null) {}
-    Card localCard;
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (!(paramObject instanceof Card)));
-      localCard = (Card)paramObject;
-    } while ((localCard.uin == null) || (!localCard.uin.equals(this.a.b)));
-    TroopRequestActivity.a(this.a, (Card)paramObject);
+    while (this.a.jdField_c_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

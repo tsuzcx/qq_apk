@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import algb;
+import amzi;
 
 class ApolloJsPlugin$1
   implements Runnable
@@ -9,13 +9,13 @@ class ApolloJsPlugin$1
   
   public void run()
   {
-    this.this$0.mInterceptor = algb.a(false, this.val$innerUrl);
+    this.this$0.mInterceptor = amzi.a(false, this.val$innerUrl);
     ApolloJsPlugin.access$002(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ApolloJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

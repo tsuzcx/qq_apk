@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-
-public class acou
-  implements DialogInterface.OnClickListener
+public abstract interface acou
 {
-  public acou(ChatSettingActivity paramChatSettingActivity) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void b();
 }
 
 

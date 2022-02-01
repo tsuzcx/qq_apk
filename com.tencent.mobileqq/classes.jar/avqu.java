@@ -1,22 +1,37 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class avqu
-  implements avrh
+  extends WebViewPlugin
 {
-  public avqu(NearbyMomentFragment paramNearbyMomentFragment, avra paramavra) {}
+  public static final String a;
+  protected aanz a;
   
-  public void a(boolean paramBoolean1, List<avsg> paramList, boolean paramBoolean2, int paramInt)
+  static
   {
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).clear();
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).addAll(paramList);
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramList);
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramBoolean1, paramBoolean2, paramInt, paramList, this.jdField_a_of_type_Avra);
+    jdField_a_of_type_JavaLangString = avqu.class.getSimpleName();
+  }
+  
+  public avqu()
+  {
+    this.mPluginNameSpace = "ftssearch";
+    this.jdField_a_of_type_Aanz = aanz.a();
+    this.jdField_a_of_type_Aanz.a();
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {}
+    while ("ftssearch".equals(paramString2)) {
+      return false;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avqu
  * JD-Core Version:    0.7.0.1
  */

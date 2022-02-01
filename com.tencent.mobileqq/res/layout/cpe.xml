@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="16.0dip" android:paddingTop="16.0dip" android:paddingRight="12.0dip" android:paddingBottom="12.0dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:id="@id/nbd" android:layout_width="48.0dip" android:layout_height="48.0dip" app:authIconHeight="15.0dip" app:authIconMarginBottom="-2.0dip" app:authIconMarginRight="-3.0dip" app:authIconWidth="15.0dip" />
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_weight="1.0">
+        <com.tencent.mobileqq.widget.EllipsizeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/nbg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <com.tencent.image.URLImageView android:id="@id/nbh" android:visibility="gone" android:layout_width="47.5dip" android:layout_height="16.0dip" android:layout_marginLeft="8.0dip" android:scaleType="fitXY" />
+        </com.tencent.mobileqq.widget.EllipsizeLayout>
+        <TextView android:textSize="14.0dip" android:textColor="#ff7a7a8d" android:ellipsize="end" android:id="@id/nbf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <TextView android:textStyle="bold" android:textColor="#ff000000" android:gravity="center" android:id="@id/nbe" android:background="@drawable/g9e" android:layout_width="80.0dip" android:layout_height="48.0dip" android:text="取消" />
+</LinearLayout>

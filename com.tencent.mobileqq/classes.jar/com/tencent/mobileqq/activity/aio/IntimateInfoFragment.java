@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aesk;
-import afgu;
-import afgw;
+import afyw;
+import agnz;
+import agoe;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -12,13 +12,14 @@ import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 
 public class IntimateInfoFragment
   extends PublicBaseFragment
 {
-  private afgu a;
+  private agnz a;
   
   public void a()
   {
@@ -54,14 +55,16 @@ public class IntimateInfoFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = getActivity().getIntent().getStringExtra("FORWARD_PEER_UIN");
-    this.a = afgw.a(getActivity().app, getActivity(), getActivity(), paramLayoutInflater);
-    if ((this.a == null) || (this.a.a() == null)) {
-      return null;
+    this.a = agoe.a(getActivity().app, getActivity(), getActivity(), paramLayoutInflater);
+    if ((this.a == null) || (this.a.a() == null)) {}
+    for (paramLayoutInflater = null;; paramLayoutInflater = this.a.a())
+    {
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
+      if ((this.a instanceof afyw)) {
+        ((afyw)this.a).a(2);
+      }
     }
-    if ((this.a instanceof aesk)) {
-      ((aesk)this.a).a(2);
-    }
-    return this.a.a();
   }
   
   public void onDestroy()
@@ -73,8 +76,8 @@ public class IntimateInfoFragment
   public void onPause()
   {
     super.onPause();
-    if ((this.a instanceof aesk)) {
-      ((aesk)this.a).h();
+    if ((this.a instanceof afyw)) {
+      ((afyw)this.a).h();
     }
   }
   
@@ -83,9 +86,9 @@ public class IntimateInfoFragment
     super.onResume();
     this.a.b(true);
     this.a.d();
-    this.a.p();
-    if ((this.a instanceof aesk)) {
-      ((aesk)this.a).i();
+    this.a.n();
+    if ((this.a instanceof afyw)) {
+      ((afyw)this.a).i();
     }
   }
   
@@ -99,7 +102,7 @@ public class IntimateInfoFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoFragment
  * JD-Core Version:    0.7.0.1
  */

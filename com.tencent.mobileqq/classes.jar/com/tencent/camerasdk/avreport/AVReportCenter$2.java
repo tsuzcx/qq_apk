@@ -16,7 +16,7 @@ class AVReportCenter$2
       AVReportCenter.access$202(this.this$0, new Reporter(new File(AVReportCenter.access$000(this.this$0)), AVReportCenter.access$300(this.this$0)));
     }
     Object localObject = this.val$bean.extractReportData(this.val$explicit);
-    ((HashMap)localObject).put("device", DeviceInfo.getBrand() + DeviceInfo.getDeviceName());
+    ((HashMap)localObject).put("device", DeviceInfo.getBrand() + " + " + DeviceInfo.getDeviceName());
     ((HashMap)localObject).put("device_id", AVReportCenter.access$400(this.this$0));
     ((HashMap)localObject).put("platform", "and");
     ((HashMap)localObject).put("os", AVReportCenter.access$500(this.this$0));
@@ -28,7 +28,7 @@ class AVReportCenter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.AVReportCenter.2
  * JD-Core Version:    0.7.0.1
  */

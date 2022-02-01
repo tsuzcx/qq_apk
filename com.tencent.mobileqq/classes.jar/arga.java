@@ -1,19 +1,11 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.link.LinkByWeiyunFragment;
-
-final class arga
-  implements View.OnClickListener
+public class arga
 {
-  arga(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
+  public int a = -1;
+  public boolean a;
   
-  public void onClick(View paramView)
+  public arga(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, true);
-    }
+    this.a = paramInt;
   }
 }
 

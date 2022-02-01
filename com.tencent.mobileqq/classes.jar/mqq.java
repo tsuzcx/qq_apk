@@ -1,24 +1,41 @@
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.Window;
+import android.widget.FrameLayout;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+
 public class mqq
+  extends ReportDialog
 {
-  public float a;
-  public int a;
-  public int b;
+  public mqq(Context paramContext, boolean paramBoolean) {}
   
-  public mqq(int paramInt1, int paramInt2, int paramInt3)
+  void a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramInt3;
+    super.getWindow().setGravity(17);
+    super.setContentView(2131559782);
   }
   
-  public String toString()
+  public void a(View paramView, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Int + "_" + this.b + "_" + this.jdField_a_of_type_Float;
+    if (paramBoolean) {
+      b();
+    }
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131373528);
+    localFrameLayout.setOnClickListener(new mqr(this));
+    if (paramView != null) {
+      localFrameLayout.addView(paramView);
+    }
+  }
+  
+  void b()
+  {
+    findViewById(2131373527).setOnClickListener(new mqs(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mqq
  * JD-Core Version:    0.7.0.1
  */

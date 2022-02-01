@@ -1,33 +1,23 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
 
-public class rip
+public final class rip
+  implements Parcelable.Creator<VideoColumnInfo>
 {
-  public static long a;
-  
-  public static void a()
+  public VideoColumnInfo a(Parcel paramParcel)
   {
-    a = System.currentTimeMillis();
+    return new VideoColumnInfo(paramParcel);
   }
   
-  public static void a(Context paramContext)
+  public VideoColumnInfo[] a(int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (l - a < 10000L)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_starttime", String.valueOf(l - a));
-      ors.d(paramContext, ors.a(), true, localHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsStartStatistic", 2, "doReportStartTime param_starttime=" + (l - a));
-      }
-    }
+    return new VideoColumnInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rip
  * JD-Core Version:    0.7.0.1
  */

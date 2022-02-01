@@ -1,24 +1,20 @@
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bdlx
+public class bdlx
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  
-  public bdlx(bdls parambdls, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public bdlx(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, View paramView) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Bdls.a != null)
-    {
-      this.jdField_a_of_type_Bdls.a.onClick(this.jdField_a_of_type_Bdls, this.jdField_a_of_type_Bdls.a(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_Bdls.dismiss();
-    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).notifyDataSetChanged();
+    bgsg.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.c(), 1, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import aqlt;
-import arrp;
-import arrq;
-import arso;
+import asrt;
+import atvm;
+import atvn;
+import atwl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.widget.FileWebView;
 import com.tencent.qphone.base.util.QLog;
@@ -11,13 +11,13 @@ import com.tencent.qphone.base.util.QLog;
 public class FilePreviewActivity$6$1
   implements Runnable
 {
-  public FilePreviewActivity$6$1(aqlt paramaqlt) {}
+  public FilePreviewActivity$6$1(asrt paramasrt) {}
   
   public void run()
   {
     if ((this.a.a.h == null) || (this.a.a.h.length() == 0))
     {
-      this.a.a.jdField_c_of_type_Boolean = false;
+      this.a.a.d = false;
       FilePreviewActivity.a(this.a.a);
       return;
     }
@@ -30,11 +30,11 @@ public class FilePreviewActivity$6$1
     for (;;)
     {
       QLog.i("<FileAssistant>FilePreviewActivity", 1, "mWebView.loadUrl(" + str1 + ")");
-      arrq localarrq = new arrq();
-      localarrq.b = "sf_preview_again";
-      localarrq.jdField_c_of_type_JavaLangString = arso.a(this.a.a.jdField_c_of_type_JavaLangString);
-      localarrq.jdField_a_of_type_Long = this.a.a.jdField_a_of_type_Long;
-      arrp.a(this.a.a.app.getCurrentAccountUin(), localarrq);
+      atvn localatvn = new atvn();
+      localatvn.b = "sf_preview_again";
+      localatvn.c = atwl.a(this.a.a.c);
+      localatvn.jdField_a_of_type_Long = this.a.a.jdField_a_of_type_Long;
+      atvm.a(this.a.a.app.getCurrentAccountUin(), localatvn);
       try
       {
         this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str1);
@@ -52,7 +52,7 @@ public class FilePreviewActivity$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

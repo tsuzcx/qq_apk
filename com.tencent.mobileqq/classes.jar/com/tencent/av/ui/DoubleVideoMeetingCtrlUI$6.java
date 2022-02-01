@@ -14,7 +14,7 @@ class DoubleVideoMeetingCtrlUI$6
     this.jdField_a_of_type_ComTencentAvUiAVActivity.a(4, false);
     if ((this.jdField_a_of_type_Boolean) && (this.this$0.a != null))
     {
-      this.this$0.g(this.jdField_a_of_type_Long, 2131695840);
+      this.this$0.g(this.jdField_a_of_type_Long, 2131694718);
       ScreenShareCtrl localScreenShareCtrl = this.this$0.a.a();
       if (localScreenShareCtrl != null) {
         localScreenShareCtrl.a(this.this$0.a(), this.jdField_a_of_type_Long);
@@ -24,7 +24,7 @@ class DoubleVideoMeetingCtrlUI$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoMeetingCtrlUI.6
  * JD-Core Version:    0.7.0.1
  */

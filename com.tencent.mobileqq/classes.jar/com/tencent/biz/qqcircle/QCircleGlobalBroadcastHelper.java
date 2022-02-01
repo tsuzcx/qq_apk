@@ -1,12 +1,12 @@
 package com.tencent.biz.qqcircle;
 
 import android.content.IntentFilter;
-import axlx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
+import vqu;
 
 public class QCircleGlobalBroadcastHelper
 {
@@ -49,6 +49,8 @@ public class QCircleGlobalBroadcastHelper
       localIntentFilter.addAction("action_update_native_user_follow_state");
       localIntentFilter.addAction("action_update_native_tag_follow_state");
       localIntentFilter.addAction("action_receive_message_push");
+      localIntentFilter.addAction("action_refresh_feed_list");
+      localIntentFilter.addAction("action_refresh_hippy_page");
       BaseApplicationImpl.getApplication().registerReceiver(this.jdField_a_of_type_ComTencentBizQqcircleQCircleGlobalBroadcastHelper$QCircleGlobalBroadcastReceiver, localIntentFilter);
       return;
     }
@@ -77,14 +79,13 @@ public class QCircleGlobalBroadcastHelper
   
   public void c()
   {
-    axlx localaxlx = (axlx)BaseApplicationImpl.getApplication().getRuntime().getManager(36);
-    localaxlx.a(localaxlx.a("140000"), 9, "");
+    ((vqu)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).a("circle_entrance");
     ThreadManager.getSubThreadHandler().postDelayed(new QCircleGlobalBroadcastHelper.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.QCircleGlobalBroadcastHelper
  * JD-Core Version:    0.7.0.1
  */

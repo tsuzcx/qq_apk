@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.widget.AbsListView;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
-public class ahej
-  implements bhtv
+class ahej
+  implements ImageAssetDelegate
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  ahej(ahei paramahei) {}
   
-  public ahej(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Aheo.getCount();
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.c) || (this.b <= 0)) {}
-    while ((paramInt != 0) || (this.b > this.jdField_a_of_type_Int)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a(21);
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
   }
 }
 

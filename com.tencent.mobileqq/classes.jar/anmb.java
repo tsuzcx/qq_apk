@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-class anmb
-  implements afil
+public class anmb
+  implements Animation.AnimationListener
 {
-  anmb(anma paramanma) {}
+  public anmb(FrameHelperActivity paramFrameHelperActivity, View paramView) {}
   
-  public boolean a(afii paramafii)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (anma.a(this.a) != null)
-    {
-      anma.a(this.a).ar();
-      return true;
-    }
-    return false;
+    paramAnimation = new AnimationSet(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.3F, 1.2F, 1.3F, 1.2F, 1, 0.5F, 1, 0.5F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.6F, 0.5F);
+    paramAnimation.addAnimation(localScaleAnimation);
+    paramAnimation.addAnimation(localAlphaAnimation);
+    paramAnimation.setDuration(30L);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
   }
   
-  public boolean a(afii paramafii, String paramString1, String paramString2)
-  {
-    return false;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

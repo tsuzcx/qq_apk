@@ -1,21 +1,14 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class aeqb
-  extends View.AccessibilityDelegate
+  extends axir
 {
-  public aeqb(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  public aeqb(NearbyActivity paramNearbyActivity) {}
   
-  @TargetApi(16)
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  protected void a()
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramAccessibilityNodeInfo.setVisibleToUser(false);
-    }
+    this.a.a.sendEmptyMessageDelayed(2, 0L);
   }
 }
 

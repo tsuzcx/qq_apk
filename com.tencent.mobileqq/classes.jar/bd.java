@@ -1,19 +1,16 @@
+import android.view.View;
+import android.view.View.OnLongClickListener;
 import com.dataline.activities.LiteActivity;
-import mqq.app.QQPermissionCallback;
 
 public class bd
-  implements QQPermissionCallback
+  implements View.OnLongClickListener
 {
   public bd(LiteActivity paramLiteActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean onLongClick(View paramView)
   {
-    bdgm.b(this.a.getActivity());
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.r();
+    afur.n = true;
+    return this.a.a(paramView);
   }
 }
 

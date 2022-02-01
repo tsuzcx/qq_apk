@@ -1,15 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Point;
 
-class aiid
-  implements View.OnClickListener
+public class aiid
 {
-  aiid(aihy paramaihy) {}
+  private int jdField_a_of_type_Int;
+  private aiht jdField_a_of_type_Aiht;
+  private aihu jdField_a_of_type_Aihu;
+  private Point jdField_a_of_type_AndroidGraphicsPoint;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  aiid(Point paramPoint, String paramString, boolean paramBoolean, aihu paramaihu, aiht paramaiht, int paramInt)
   {
-    aihy.a(this.a, paramView);
-    this.a.dismiss();
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Aihu = paramaihu;
+    this.jdField_a_of_type_Aiht = paramaiht;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

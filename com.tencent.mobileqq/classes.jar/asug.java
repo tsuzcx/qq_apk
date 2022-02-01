@@ -1,59 +1,79 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.1;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.2;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.3;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class asug
-  extends BroadcastReceiver
+  extends asyw
 {
-  private final String jdField_a_of_type_JavaLangString = "reason";
-  private final String b = "homekey";
+  public asug(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public asug(HotPicPageView paramHotPicPageView) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(athr paramathr)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicManagerHotPicPageView", 2, "onReceive ===>" + paramContext);
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
-      HotPicPageView.b = true;
-    }
-    label49:
+    if (paramathr == null) {}
     do
     {
+      FileManagerEntity localFileManagerEntity;
       do
       {
-        do
-        {
-          do
-          {
-            break label49;
-            break label49;
-            do
-            {
-              return;
-            } while ("android.intent.action.SCREEN_ON".equals(paramContext));
-            if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-            {
-              HotPicPageView.b = true;
-              return;
-            }
-          } while (("tencent.av.v2q.StopVideoChat".equals(paramContext)) || (!paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")));
-          paramContext = paramIntent.getStringExtra("reason");
-          if (paramContext != null) {
-            break;
-          }
-        } while ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a == null) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a != 3));
-        paramContext = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a();
-      } while (paramContext == null);
-      paramContext.d();
+        return;
+        if (!(paramathr.a instanceof FileManagerEntity)) {
+          break;
+        }
+        localFileManagerEntity = (FileManagerEntity)paramathr.a;
+      } while ((paramathr.b == null) || (paramathr.b.length() <= 0));
+      localFileManagerEntity.strThumbPath = paramathr.b;
+      QfileBaseCloudFileTabView.k(this.a).a().c(localFileManagerEntity);
+      this.a.i();
       return;
-    } while (!paramContext.equals("homekey"));
-    HotPicPageView.b = true;
+    } while (!(paramathr.a instanceof WeiYunFileInfo));
+    this.a.i();
+  }
+  
+  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
+  {
+    athc.a(paramString1);
+    atvo.a(paramInteger.intValue(), paramString2);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(false);
+  }
+  
+  protected void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    paramString2 = athc.a(paramString1);
+    if ((!this.a.b(paramString2)) && (this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      paramString2 = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramString2.hasNext())
+      {
+        WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramString2.next();
+        if (localWeiYunFileInfo.a.equalsIgnoreCase(paramString1) == true) {
+          this.a.b(localWeiYunFileInfo);
+        }
+      }
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(false);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    QfileBaseCloudFileTabView.a(this.a, new QfileBaseCloudFileTabView.13.1(this));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    QfileBaseCloudFileTabView.b(this.a, new QfileBaseCloudFileTabView.13.2(this, paramLong2));
+  }
+  
+  protected void b()
+  {
+    super.b();
+    QfileBaseCloudFileTabView.c(this.a, new QfileBaseCloudFileTabView.13.3(this));
   }
 }
 

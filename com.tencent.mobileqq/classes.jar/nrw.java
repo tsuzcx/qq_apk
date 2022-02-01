@@ -1,12 +1,24 @@
-import java.util.ArrayList;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface nrw
+class nrw
+  implements View.OnClickListener
 {
-  public abstract void a(ArrayList<nry> paramArrayList, String paramString, boolean paramBoolean);
+  nrw(nre paramnre, Dialog paramDialog) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nrw
  * JD-Core Version:    0.7.0.1
  */

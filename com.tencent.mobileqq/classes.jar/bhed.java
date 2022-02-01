@@ -1,74 +1,62 @@
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StSetUserCloudStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StSetUserCloudStorageRsp;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import com.tencent.image.ApngDrawable;
 
 public class bhed
-  extends bhdw
+  implements bhea
 {
-  private CloudStorage.StSetUserCloudStorageReq a = new CloudStorage.StSetUserCloudStorageReq();
+  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   
-  public bhed(HashMap<String, String> paramHashMap, String paramString)
+  public bhed(Drawable paramDrawable)
   {
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
-      CloudStorage.StKVData localStKVData = new CloudStorage.StKVData();
-      localStKVData.key.set((String)localEntry.getKey());
-      localStKVData.value.set((String)localEntry.getValue());
-      this.a.KVDataList.add(localStKVData);
-    }
-    this.a.appid.set(paramString);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
   
-  protected String a()
+  private void a(boolean paramBoolean)
   {
-    return "mini_app_cloudstorage";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    CloudStorage.StSetUserCloudStorageRsp localStSetUserCloudStorageRsp = new CloudStorage.StSetUserCloudStorageRsp();
-    try
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof ApngDrawable))
     {
-      localStSetUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStSetUserCloudStorageRsp != null) {
-        return new JSONObject();
+      if (paramBoolean) {
+        ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).resume();
       }
-      QMLog.d("SetCloudStorageRequest", "onResponse fail.rsp = null");
-      return null;
     }
-    catch (Exception paramArrayOfByte)
+    else {
+      return;
+    }
+    ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).pause();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
-      QMLog.d("SetCloudStorageRequest", "onResponse fail." + paramArrayOfByte);
+      a(true);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, false);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
     }
-    return null;
   }
   
-  protected byte[] a()
+  public void a(bheb parambheb)
   {
-    return this.a.toByteArray();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new bhee(this, parambheb);
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+    }
   }
   
-  protected String b()
+  public void b()
   {
-    return "SetUserCloudStorage";
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      a(false);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhed
  * JD-Core Version:    0.7.0.1
  */

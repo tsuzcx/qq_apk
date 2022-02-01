@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
@@ -14,12 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bayu;
-import bczz;
-import bdaq;
+import anni;
+import bdzx;
+import bgfz;
+import bggq;
 import com.tencent.mobileqq.widget.RoundImageView;
 import cooperation.qwallet.plugin.QWalletPicHelper;
-import xsm;
+import zlx;
 
 class EmojiRedpacketUserGuideDialog$UserGuidView
   extends FrameLayout
@@ -38,9 +38,9 @@ class EmojiRedpacketUserGuideDialog$UserGuidView
     ((RelativeLayout)localObject1).addView(paramEmojiRedpacketUserGuideDialog);
     localObject2 = (RelativeLayout.LayoutParams)paramEmojiRedpacketUserGuideDialog.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject2).addRule(13);
-    ((RelativeLayout.LayoutParams)localObject2).width = bdaq.a(paramContext, 40.0F);
-    ((RelativeLayout.LayoutParams)localObject2).height = bdaq.a(paramContext, 40.0F);
-    localObject2 = getResources().getDrawable(2130843053);
+    ((RelativeLayout.LayoutParams)localObject2).width = bggq.a(paramContext, 40.0F);
+    ((RelativeLayout.LayoutParams)localObject2).height = bggq.a(paramContext, 40.0F);
+    localObject2 = getResources().getDrawable(2130843400);
     paramEmojiRedpacketUserGuideDialog.setBackgroundDrawable((Drawable)localObject2);
     ((Animatable)localObject2).start();
     paramEmojiRedpacketUserGuideDialog = new LinearLayout(paramContext);
@@ -51,27 +51,27 @@ class EmojiRedpacketUserGuideDialog$UserGuidView
     ((RelativeLayout.LayoutParams)localObject1).width = -1;
     ((RelativeLayout.LayoutParams)localObject1).height = -2;
     localObject1 = new RoundImageView(paramContext);
-    ((RoundImageView)localObject1).setmRadius(xsm.a(paramContext, 10.0F), false);
-    ((RoundImageView)localObject1).setImageDrawable(QWalletPicHelper.getNetDrawableForQWallet(EmojiRedpacketUserGuideDialog.URL_DEFAULT, bayu.a, bayu.a));
+    ((RoundImageView)localObject1).setmRadius(zlx.a(paramContext, 10.0F), false);
+    ((RoundImageView)localObject1).setImageDrawable(QWalletPicHelper.getNetDrawableForQWallet(EmojiRedpacketUserGuideDialog.URL_DEFAULT, bdzx.a, bdzx.a));
     paramEmojiRedpacketUserGuideDialog.addView((View)localObject1);
     localObject1 = (LinearLayout.LayoutParams)((RoundImageView)localObject1).getLayoutParams();
     ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-    ((LinearLayout.LayoutParams)localObject1).height = ((int)(xsm.d(paramContext) * 0.7D));
-    ((LinearLayout.LayoutParams)localObject1).width = xsm.a(paramContext, 320.0F);
+    ((LinearLayout.LayoutParams)localObject1).height = ((int)(zlx.d(paramContext) * 0.7D));
+    ((LinearLayout.LayoutParams)localObject1).width = zlx.a(paramContext, 320.0F);
     localObject1 = new ImageView(paramContext);
-    ((ImageView)localObject1).setImageResource(2130846088);
+    ((ImageView)localObject1).setImageResource(2130846527);
     paramEmojiRedpacketUserGuideDialog.addView((View)localObject1);
     paramEmojiRedpacketUserGuideDialog = (LinearLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
-    paramEmojiRedpacketUserGuideDialog.topMargin = ((int)(xsm.d(paramContext) * 0.02D));
+    paramEmojiRedpacketUserGuideDialog.topMargin = ((int)(zlx.d(paramContext) * 0.02D));
     paramEmojiRedpacketUserGuideDialog.gravity = 1;
-    paramEmojiRedpacketUserGuideDialog.width = xsm.a(paramContext, 37.0F);
-    paramEmojiRedpacketUserGuideDialog.height = xsm.a(paramContext, 37.0F);
-    bczz.a((View)localObject1, alud.a(2131704412), null);
+    paramEmojiRedpacketUserGuideDialog.width = zlx.a(paramContext, 37.0F);
+    paramEmojiRedpacketUserGuideDialog.height = zlx.a(paramContext, 37.0F);
+    bgfz.a((View)localObject1, anni.a(2131702809), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.EmojiRedpacketUserGuideDialog.UserGuidView
  * JD-Core Version:    0.7.0.1
  */

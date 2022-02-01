@@ -1,18 +1,22 @@
-class arzg
-  implements arrh
+public abstract class arzg
 {
-  arzg(arzf paramarzf) {}
+  public int b;
   
-  public void a()
+  public arzg(int paramInt)
   {
-    cx.b(this.a.a.a, 0);
+    this.b = paramInt;
   }
   
-  public void b() {}
+  public void a() {}
+  
+  public int b()
+  {
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arzg
  * JD-Core Version:    0.7.0.1
  */

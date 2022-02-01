@@ -1,16 +1,19 @@
-import android.webkit.ValueCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bglu
+final class bglu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString);
+  bglu(bgpa parambgpa) {}
   
-  public abstract void a(String paramString, ValueCallback paramValueCallback);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bglu
  * JD-Core Version:    0.7.0.1
  */

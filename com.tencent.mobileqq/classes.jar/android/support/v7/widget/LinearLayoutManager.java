@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class LinearLayoutManager
@@ -1506,6 +1507,7 @@ public class LinearLayoutManager
       this.mPendingSavedState.invalidateAnchor();
     }
     requestLayout();
+    EventCollector.getInstance().onRecyclerViewScrollToPosition(this);
   }
   
   public void scrollToPositionWithOffset(int paramInt1, int paramInt2)
@@ -1516,6 +1518,7 @@ public class LinearLayoutManager
       this.mPendingSavedState.invalidateAnchor();
     }
     requestLayout();
+    EventCollector.getInstance().onRecyclerViewScrollToPositionWithOffset(this);
   }
   
   public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)

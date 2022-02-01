@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class acwp
-  extends apsb
+  implements athb
 {
-  public acwp(EmosmActivity paramEmosmActivity) {}
+  public acwp(QQMessageFacade paramQQMessageFacade, MessageForFile paramMessageForFile, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  public void a()
   {
-    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
-    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
-      return;
-    }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop).c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
   }
   
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  public void a(int paramInt, String paramString)
+  {
+    if ((paramInt == -6101) || (paramInt == -7003))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
+      QQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    }
+    QQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade).a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop, aogp.e, 0);
+  }
 }
 
 

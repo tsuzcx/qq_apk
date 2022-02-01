@@ -1,14 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 
-final class becs
-  implements View.OnTouchListener
+public class becs
+  extends becx
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public mobileqq_mp.RetInfo a;
+  public String a;
+  public String b;
 }
 
 

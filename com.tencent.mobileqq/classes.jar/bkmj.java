@@ -1,66 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.weiyun.utils.ILog;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
-public final class bkmj
-  implements ILog
+public class bkmj
+  extends ImageSpan
 {
-  private static bkmj a;
-  
-  public static bkmj a()
+  public bkmj(Drawable paramDrawable, int paramInt)
   {
-    if (a == null) {
-      a = new bkmj();
-    }
-    return a;
+    super(paramDrawable, paramInt);
   }
   
-  public void d(String paramString1, String paramString2)
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    QLog.d(paramString1, 2, paramString2);
-  }
-  
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    d(paramString1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    e(paramString1, paramString2);
-  }
-  
-  public int getLogLevel()
-  {
-    return 1;
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    i(paramString1, paramString2);
-  }
-  
-  public void v(String paramString1, String paramString2) {}
-  
-  public void v(String paramString1, String paramString2, Throwable paramThrowable) {}
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    w(paramString1, paramString2);
+    paramCharSequence = getDrawable();
+    paramPaint = paramPaint.getFontMetricsInt();
+    paramInt1 = paramPaint.descent;
+    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
+    paramInt2 = paramCharSequence.getBounds().bottom / 2;
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 

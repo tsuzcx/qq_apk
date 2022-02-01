@@ -1,12 +1,24 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
-public abstract interface unc
+public abstract class unc
 {
-  public abstract void a(unj paramunj, ErrorMessage paramErrorMessage);
+  private int a;
+  
+  public unc(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  abstract String a();
+  
+  abstract String b();
+  
+  public String c()
+  {
+    return ups.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     unc
  * JD-Core Version:    0.7.0.1
  */

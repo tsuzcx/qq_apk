@@ -1,30 +1,23 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 
-class bgrg
-  implements View.OnClickListener
+public final class bgrg
+  implements Parcelable.Creator<QQRecorder.RecorderParam>
 {
-  bgrg(bgrb parambgrb, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public QQRecorder.RecorderParam a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgrb, 1);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Bgrb.isShowing()) {
-        this.jdField_a_of_type_Bgrb.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    return new QQRecorder.RecorderParam(paramParcel);
+  }
+  
+  public QQRecorder.RecorderParam[] a(int paramInt)
+  {
+    return new QQRecorder.RecorderParam[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgrg
  * JD-Core Version:    0.7.0.1
  */

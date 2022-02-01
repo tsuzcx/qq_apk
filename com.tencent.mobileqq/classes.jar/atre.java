@@ -1,39 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
-public class atre
-  implements DialogInterface.OnClickListener
+class atre
+  implements bkil
 {
-  public atre(LocationDialogUtil.6 param6) {}
+  atre(atra paramatra) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationDialogUtil", 2, new Object[] { "onClick: invoked. showStartShareLocationDialog  ", " which: ", Integer.valueOf(paramInt) });
-    }
-    if (BaseActivity.sTopActivity != null) {
-      LocationShareFragment.b(BaseActivity.sTopActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b);
-    }
-    try
+    atra.a(this.a, paramInt);
+    paramAdapterView = this.a.jdField_a_of_type_Atsm;
+    if (atra.a(this.a) == atra.b(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      atpw.a(BaseActivity.sTopActivity.app).a(true);
-      label79:
-      atqr.a(this.a.b, "0X800A769");
+      paramAdapterView.d(bool);
+      this.a.a(paramInt);
+      if (this.a.jdField_a_of_type_Atml != null) {
+        this.a.jdField_a_of_type_Atml.a(paramInt);
+      }
+      paramAdapterView = (atoq)atra.a(this.a).get(paramInt);
+      if (paramAdapterView != null) {
+        break;
+      }
+      atvf.b(BaseApplicationImpl.getContext().getString(2131692146));
       return;
     }
-    catch (Throwable paramDialogInterface)
-    {
-      break label79;
+    this.a.jdField_a_of_type_Atoo.a().a(paramAdapterView);
+    this.a.jdField_a_of_type_Atoo.a(paramInt, paramAdapterView);
+    this.a.jdField_a_of_type_Atsm.c(atra.a(this.a, atra.a(this.a)));
+    this.a.jdField_a_of_type_Atsm.c();
+    if (this.a.jdField_a_of_type_Atmk != null) {
+      this.a.jdField_a_of_type_Atmk.c();
     }
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_Atml.a(true);
+      this.a.jdField_a_of_type_Atsm.a(false);
+      atra.a(this.a, true);
+    }
+    this.a.jdField_a_of_type_Boolean = true;
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atre
  * JD-Core Version:    0.7.0.1
  */

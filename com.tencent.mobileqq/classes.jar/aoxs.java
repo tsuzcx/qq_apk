@@ -1,65 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-public class aoxs
-  extends aokh<aoxr>
+public final class aoxs
+  implements Parcelable.Creator<ARScanStarFaceConfigInfo>
 {
-  public static aoxr a()
+  public ARScanStarFaceConfigInfo a(Parcel paramParcel)
   {
-    return (aoxr)aoks.a().a(338);
+    return new ARScanStarFaceConfigInfo(paramParcel);
   }
   
-  public int a()
+  public ARScanStarFaceConfigInfo[] a(int paramInt)
   {
-    return 338;
-  }
-  
-  @NonNull
-  public aoxr a(int paramInt)
-  {
-    return new aoxr();
-  }
-  
-  @Nullable
-  public aoxr a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoxr.a(paramArrayOfaoko);
-    }
-    return null;
-  }
-  
-  public Class<aoxr> a()
-  {
-    return aoxr.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocGrayTipsProcessor", 1, "TENCENT_DOC_GRAY_TIPS failed, resultCode:" + paramInt);
-  }
-  
-  public void a(aoxr paramaoxr) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return new ARScanStarFaceConfigInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoxs
  * JD-Core Version:    0.7.0.1
  */

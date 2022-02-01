@@ -1,53 +1,52 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.InterestSwitchEditActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.AccostTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adag
-  implements View.OnClickListener
+  implements acxp
 {
-  public adag(FriendProfileCardActivity paramFriendProfileCardActivity, Card paramCard) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    switch (paramView.getId())
+    return 1001;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.AccostTmp localAccostTmp = new msg_svc.AccostTmp();
+    localAccostTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    QQMessageFacade.Message localMessage = paramQQAppInterface.a().a(paramMessageRecord.frienduin, 1001);
+    localAccostTmp.reply.set(localMessage.hasReply);
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSFriendRoutingType", 2, "LBS_FRIEND------>reply=" + localMessage.hasReply);
+    }
+    paramMessageRecord = paramQQAppInterface.a().n(paramMessageRecord.frienduin);
+    if (paramMessageRecord != null)
     {
-    default: 
-      return;
-    case 2131363579: 
-      if ((FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity) != null) && (FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity).isShowing())) {
-        FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity).dismiss();
+      if (QLog.isDevelopLevel()) {
+        QLog.d("fight_accost", 4, "发送附近人临时会消息 有keyLBSFriend------>" + bgmj.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
       }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration))
-      {
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80092EC", "0X80092EC", 0, 0, "", "", "", "");
-        return;
-      }
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80092E9", "0X80092E9", 0, 0, "", "", "", "");
-      return;
+      localAccostTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration)) {
-      PublicFragmentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getActivity(), ExtendFriendEditFragment.class);
-    }
-    for (;;)
-    {
-      if ((FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity) != null) && (FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity).isShowing())) {
-        FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity).dismiss();
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.declaration)) {
-        break;
-      }
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80092EB", "0X80092EB", 0, 0, "", "", "", "");
-      return;
-      paramView = InterestSwitchEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1022);
-    }
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80092E8", "0X80092E8", 0, 0, "", "", "", "");
+    paramRoutingHead.accost_tmp.set(localAccostTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
 }
 

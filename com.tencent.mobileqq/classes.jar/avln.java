@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-class avln
-  implements View.OnClickListener
+public class avln
+  implements BusinessObserver
 {
-  avln(avkt paramavkt) {}
+  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!this.a.a.onBackEvent())
+    switch (paramInt)
     {
-      this.a.a.finish();
-      this.a.a.b(false);
+    default: 
+      return;
     }
+    a(paramBoolean, paramBundle.getInt("appId"), paramBundle.getLong("uin", 0L), paramBundle.getString("openId"), paramBundle.getString("error_msg"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avln
  * JD-Core Version:    0.7.0.1
  */

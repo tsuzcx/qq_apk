@@ -1,19 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 
-public class spi
-  implements spj
+public abstract interface spi
 {
-  public spi(BridgeModule paramBridgeModule) {}
-  
-  public void a(String paramString, JSONObject paramJSONObject)
-  {
-    this.a.invokeCallJS(paramString, paramJSONObject);
-  }
+  public abstract void a(ReadInJoyBaseListView paramReadInJoyBaseListView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     spi
  * JD-Core Version:    0.7.0.1
  */

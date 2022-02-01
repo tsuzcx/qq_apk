@@ -1,12 +1,19 @@
-class bird
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.List;
+
+public abstract interface bird
+  extends DownloadListener
 {
-  private baub jdField_a_of_type_Baub;
-  private bazx jdField_a_of_type_Bazx;
-  private bire jdField_a_of_type_Bire;
+  public abstract void a(int paramInt);
+  
+  public abstract void a(DownloadInfo paramDownloadInfo, int paramInt);
+  
+  public abstract void a(List<DownloadInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bird
  * JD-Core Version:    0.7.0.1
  */

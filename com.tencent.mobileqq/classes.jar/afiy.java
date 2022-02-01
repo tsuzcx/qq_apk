@@ -1,21 +1,20 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afiy
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class afiy
+  implements View.OnClickListener
 {
-  afiy(afix paramafix) {}
+  public afiy(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if (paramBitmap != null)
-    {
-      this.a.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

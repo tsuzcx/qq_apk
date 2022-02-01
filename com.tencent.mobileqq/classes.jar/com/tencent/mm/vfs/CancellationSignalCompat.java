@@ -20,7 +20,7 @@ public class CancellationSignalCompat
   
   public void cancel()
   {
-    if (this.signal != null)
+    if (Build.VERSION.SDK_INT >= 16)
     {
       this.signal.cancel();
       return;
@@ -30,7 +30,7 @@ public class CancellationSignalCompat
   
   public boolean isCanceled()
   {
-    if (this.signal != null) {
+    if (Build.VERSION.SDK_INT >= 16) {
       return this.signal.isCanceled();
     }
     return this.signalBeforeJB.isCanceled();
@@ -38,7 +38,7 @@ public class CancellationSignalCompat
   
   public void throwIfCanceled()
   {
-    if (this.signal != null)
+    if (Build.VERSION.SDK_INT >= 16)
     {
       if (this.signal.isCanceled()) {
         throw new OperationCanceledException();

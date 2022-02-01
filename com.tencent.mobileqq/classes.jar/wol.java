@@ -1,30 +1,77 @@
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class wol
-  extends uln<wop>
+public abstract class wol<DATA>
 {
-  private Stream<whz> a;
+  public static final String a;
+  protected DATA a;
+  protected List<wom<DATA>> a;
   
-  public void a(wop paramwop)
+  static
   {
-    this.a = Stream.of(paramwop).map(new ThreadOffFunction("Q.qqstory.home.data.FeedCommentBackgroundSyncer", 2)).map(new won(null));
-    this.a.subscribe(new wom(this));
+    jdField_a_of_type_JavaLangString = wol.class.getName();
+  }
+  
+  public wol()
+  {
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  }
+  
+  public DATA a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    a(null);
+  }
+  
+  public void a(@NonNull wom<DATA> paramwom)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramwom)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramwom);
+    }
+  }
+  
+  protected abstract void a(wre paramwre);
+  
+  protected void a(boolean paramBoolean, DATA paramDATA)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((wom)localIterator.next()).a(paramBoolean, paramDATA);
+    }
+  }
+  
+  public void b()
+  {
+    yqp.b(jdField_a_of_type_JavaLangString, "onInit");
+  }
+  
+  public void b(@NonNull wom<DATA> paramwom)
+  {
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramwom)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramwom);
+    }
+  }
+  
+  public void b(wre paramwre)
+  {
+    a(paramwre);
   }
   
   public void c()
   {
-    wxe.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull consumer destroy");
-    if (this.a != null)
-    {
-      this.a.cancel();
-      this.a = null;
-    }
+    yqp.b(jdField_a_of_type_JavaLangString, "onDestroy");
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wol
  * JD-Core Version:    0.7.0.1
  */

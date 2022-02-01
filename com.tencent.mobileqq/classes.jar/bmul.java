@@ -1,8 +1,13 @@
-public class bmul
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+
+class bmul
+  implements bmvh
 {
-  public static boolean a(int paramInt)
+  bmul(bmuk parambmuk) {}
+  
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
+    this.a.a(paramBoolean, paramGetAdsRsp);
   }
 }
 

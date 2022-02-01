@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearby;
 
-import ambz;
 import android.database.Cursor;
-import awgf;
-import awhf;
-import awhl;
-import awhm;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import com.tencent.mobileqq.persistence.defaultValue;
+import com.tencent.mobileqq.persistence.defaultzero;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 public class NearbyEntityManagerFactory
-  extends QQEntityManagerFactory
+  extends EntityManagerFactory
 {
   public static HashMap<String, Class<?>> a = new HashMap();
   
@@ -37,15 +37,15 @@ public class NearbyEntityManagerFactory
     if (localObject1 != null) {
       if (((Cursor)localObject1).moveToNext())
       {
-        str1 = SecurityUtile.b(((Cursor)localObject1).getString(0));
+        str1 = SecurityUtile.decode(((Cursor)localObject1).getString(0));
         localCursor = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str1 });
         localObject3 = (Class)a.get(str1.trim());
         if ((localCursor != null) && (localObject3 != null))
         {
-          localObject4 = awhf.a((Class)localObject3);
+          localObject4 = TableBuilder.getValidField((Class)localObject3);
           if (localCursor.moveToFirst())
           {
-            localObject3 = SecurityUtile.b(localCursor.getString(0)).split(",");
+            localObject3 = SecurityUtile.decode(localCursor.getString(0)).split(",");
             localObject4 = ((List)localObject4).iterator();
           }
         }
@@ -74,20 +74,20 @@ public class NearbyEntityManagerFactory
           break label394;
         }
         boolean bool;
-        if (localField.isAnnotationPresent(awhm.class))
+        if (localField.isAnnotationPresent(defaultzero.class))
         {
           i = 0;
           bool = true;
         }
         for (;;)
         {
-          localArrayList.add(awhf.a(str1, localField.getName(), (String)awhf.a.get(localField.getType()), bool, i));
+          localArrayList.add(TableBuilder.addColumn(str1, localField.getName(), (String)TableBuilder.TYPES.get(localField.getType()), bool, i));
           break label138;
           i += 1;
           break label162;
-          if (localField.isAnnotationPresent(awhl.class))
+          if (localField.isAnnotationPresent(defaultValue.class))
           {
-            i = ((awhl)localField.getAnnotation(awhl.class)).a();
+            i = ((defaultValue)localField.getAnnotation(defaultValue.class)).defaultInteger();
             bool = true;
             continue;
             if (localCursor == null) {
@@ -122,18 +122,23 @@ public class NearbyEntityManagerFactory
     }
   }
   
-  public ambz build(String paramString)
+  public SQLiteOpenHelper build(String paramString)
   {
     if (this.dbHelper == null)
     {
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "nearby_" + paramString + ".db", null, 1);
-      this.dbHelper = new ambz(this.mInnerDbHelper);
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "nearby_" + paramString + ".db", null, 1);
+      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
       this.name = ("nearby_" + paramString);
     }
     return this.dbHelper;
   }
   
   public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase) {}
+  
+  public String getPackageName()
+  {
+    return getClass().getPackage().getName();
+  }
   
   public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
@@ -144,14 +149,14 @@ public class NearbyEntityManagerFactory
   {
     if (this.name.matches("^nearby_[0-9]*$"))
     {
-      awgf localawgf = createEntityManager();
-      NearbyEntityManagerFactory.VerifyEntity localVerifyEntity = (NearbyEntityManagerFactory.VerifyEntity)localawgf.a(NearbyEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "nearby_verify_entity" });
+      EntityManager localEntityManager = createEntityManager();
+      NearbyEntityManagerFactory.VerifyEntity localVerifyEntity = (NearbyEntityManagerFactory.VerifyEntity)localEntityManager.find(NearbyEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "nearby_verify_entity" });
       if (localVerifyEntity == null)
       {
         localVerifyEntity = new NearbyEntityManagerFactory.VerifyEntity();
         localVerifyEntity.name = this.name;
         localVerifyEntity.flags = "nearby_verify_entity";
-        localawgf.b(localVerifyEntity);
+        localEntityManager.persistOrReplace(localVerifyEntity);
         return true;
       }
       if ((!localVerifyEntity.flags.equals("nearby_verify_entity")) || (!localVerifyEntity.name.equals(this.name)))
@@ -159,7 +164,7 @@ public class NearbyEntityManagerFactory
         this.mInnerDbHelper.dropAllTable();
         localVerifyEntity = new NearbyEntityManagerFactory.VerifyEntity();
         localVerifyEntity.name = this.name;
-        localawgf.b(localVerifyEntity);
+        localEntityManager.persistOrReplace(localVerifyEntity);
         return false;
       }
     }
@@ -168,7 +173,7 @@ public class NearbyEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

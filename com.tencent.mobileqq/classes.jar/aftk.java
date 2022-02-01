@@ -1,17 +1,34 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import Wallet.AcsPullMsgRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import java.util.ArrayList;
 
-class aftk
-  extends afuf
+public class aftk
+  implements afua
 {
-  aftk(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public aftk(ReminderListFragment paramReminderListFragment) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    return new afkj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if (paramBoolean)
+    {
+      paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null)
+      {
+        paramBundle = paramBundle.msgs;
+        if ((paramBundle != null) && (!paramBundle.isEmpty()))
+        {
+          ArrayList localArrayList = new ArrayList(paramBundle.size());
+          ReminderListFragment.a(this.a, paramBundle, localArrayList, true);
+          return;
+        }
+        ReminderListFragment.b(this.a);
+        return;
+      }
+      ReminderListFragment.b(this.a);
+      return;
+    }
+    ReminderListFragment.a(this.a, anni.a(2131712152));
   }
 }
 

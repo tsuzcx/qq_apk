@@ -1,22 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajsk
-  extends Handler
+  implements View.OnClickListener
 {
-  public ajsk(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ajsk(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 10) {
-      postDelayed(QzoneSlideShowPreparingFragment.a(this.a), 200L);
+    zkb.a(this.a.a);
+    zkb.a(this.a.a.a);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
+    {
+      localArrayList.add(((ajtt)this.a.a.a.get(i)).a);
+      i += 1;
     }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", localArrayList);
+    this.a.getActivity().setResult(-1, localIntent);
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

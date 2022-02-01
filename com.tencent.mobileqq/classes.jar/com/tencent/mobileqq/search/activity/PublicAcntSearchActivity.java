@@ -1,11 +1,15 @@
 package com.tencent.mobileqq.search.activity;
 
-import alud;
+import Override;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.MotionEvent;
+import anni;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
-import swy;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tyg;
 
 public class PublicAcntSearchActivity
   extends BaseSearchActivity
@@ -28,14 +32,29 @@ public class PublicAcntSearchActivity
   protected String a()
   {
     if (d == 12) {
-      return alud.a(2131709135) + swy.a(this.app, getApplicationContext());
+      return anni.a(2131707511) + tyg.a(this.app, getApplicationContext());
     }
-    return alud.a(2131709193);
+    return anni.a(2131707569);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.PublicAcntSearchActivity
  * JD-Core Version:    0.7.0.1
  */

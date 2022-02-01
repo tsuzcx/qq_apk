@@ -1,26 +1,30 @@
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import android.graphics.Bitmap;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class sio
-  implements siv
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IEventListener;", "", "onCaptureImageFailed", "", "player", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayer;", "id", "", "errCode", "onCaptureImageSucceed", "width", "height", "bitmap", "Landroid/graphics/Bitmap;", "onCompletion", "onDownloadCallback", "info", "", "onError", "", "module", "errorType", "errorCode", "extraInfo", "onInfo", "what", "extra", "onSeekComplete", "onVideoPrepared", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface sio
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public abstract void a(@Nullable String paramString);
   
-  public sio(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
-  {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
+  public abstract void a(@NotNull sip paramsip);
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new sip(this, paramInt1, paramInt2));
-  }
+  public abstract void a(@NotNull sip paramsip, int paramInt1, int paramInt2);
+  
+  public abstract void a(@NotNull sip paramsip, int paramInt1, int paramInt2, int paramInt3, @Nullable Bitmap paramBitmap);
+  
+  public abstract boolean a(@NotNull sip paramsip, int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString);
+  
+  public abstract boolean a(@NotNull sip paramsip, int paramInt, @Nullable Object paramObject);
+  
+  public abstract void b(@NotNull sip paramsip);
+  
+  public abstract void c(@NotNull sip paramsip);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sio
  * JD-Core Version:    0.7.0.1
  */

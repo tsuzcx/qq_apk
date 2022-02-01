@@ -1,39 +1,28 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.doutu.DoutuData;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-class apju
-  implements URLDrawableDownListener
+public class apju
+  implements DialogInterface.OnClickListener
 {
-  apju(apjt paramapjt) {}
+  public apju(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bgpa parambgpa) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof apjv)))
+    paramDialogInterface = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppSchemeCenter$TelSchemeHandler$1.a));
+    ArkAppCenter.a(paramDialogInterface);
+    BaseActivity.sTopActivity.startActivity(paramDialogInterface);
+    if ((this.jdField_a_of_type_Bgpa != null) && (this.jdField_a_of_type_Bgpa.isShowing())) {}
+    try
     {
-      paramView = (apjv)paramView;
-      if (paramView.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-      }
-      if (this.a.a == null) {
-        this.a.a = new HashMap();
-      }
-      if ((paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5 != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url != null)) {
-        this.a.a.put(paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5, paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url);
-      }
+      this.jdField_a_of_type_Bgpa.dismiss();
+      return;
     }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

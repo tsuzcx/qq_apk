@@ -1,29 +1,22 @@
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
 
 public class adnr
-  extends adnt
+  extends ayeu
 {
-  public adnr(PortraitImageview paramPortraitImageview) {}
+  public adnr(AuthDevActivity paramAuthDevActivity) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
   {
-    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
-      try
-      {
-        float f1 = this.a.a();
-        float f2 = paramScaleGestureDetector.getScaleFactor();
-        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
-        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-        this.a.invalidate();
-        return true;
-      }
-      catch (IllegalArgumentException paramScaleGestureDetector)
-      {
-        paramScaleGestureDetector.printStackTrace();
-      }
-    }
-    return false;
+    AuthDevActivity.a(this.a, paramSecureCheckResponse);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    QQToast.a(this.a, paramString2, 0).a();
+    QLog.e("Q.devlock.AuthDevActivity", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
   }
 }
 

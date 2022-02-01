@@ -1,27 +1,132 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.message.TinyInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.util.WeakReference;
 
 public class asmx
+  implements asmv
 {
-  public static String a(MessageRecord paramMessageRecord)
+  private static volatile asmx jdField_a_of_type_Asmx;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  protected asmt a;
+  private WeakReference<BaseActivity> jdField_a_of_type_MqqUtilWeakReference;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private WeakReference<ExtendFriendVoiceView> b;
+  
+  private asmx(BaseActivity paramBaseActivity)
   {
-    TinyInfo localTinyInfo = new TinyInfo();
-    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
-    if (paramMessageRecord.isSend()) {
-      return localTinyInfo.fromRoleId;
-    }
-    return localTinyInfo.toRoleId;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
   }
   
-  public static String b(MessageRecord paramMessageRecord)
+  public static final asmx a(BaseActivity paramBaseActivity)
   {
-    TinyInfo localTinyInfo = new TinyInfo();
-    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
-    if (paramMessageRecord.isSend()) {
-      return localTinyInfo.toRoleId;
+    if (jdField_a_of_type_Asmx == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Asmx == null) {
+        jdField_a_of_type_Asmx = new asmx(paramBaseActivity);
+      }
+      return jdField_a_of_type_Asmx;
     }
-    return localTinyInfo.fromRoleId;
   }
+  
+  public static final void a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      b();
+      jdField_a_of_type_Asmx = null;
+      return;
+    }
+  }
+  
+  public static final void b()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Asmx != null)
+      {
+        if (jdField_a_of_type_Asmx.a()) {
+          jdField_a_of_type_Asmx.c();
+        }
+        ExtendFriendVoiceView localExtendFriendVoiceView = jdField_a_of_type_Asmx.a();
+        if ((localExtendFriendVoiceView != null) && (localExtendFriendVoiceView.b())) {
+          localExtendFriendVoiceView.d();
+        }
+      }
+      return;
+    }
+  }
+  
+  public ExtendFriendVoiceView a()
+  {
+    if (this.b != null) {
+      return (ExtendFriendVoiceView)this.b.get();
+    }
+    return null;
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Asmt != null) {
+      this.jdField_a_of_type_Asmt.b();
+    }
+  }
+  
+  public void a(ExtendFriendVoiceView paramExtendFriendVoiceView)
+  {
+    if (paramExtendFriendVoiceView != null) {
+      this.b = new WeakReference(paramExtendFriendVoiceView);
+    }
+  }
+  
+  public void a(File paramFile) {}
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MatchChatAioVoicePlayerManager", 2, "playVoice " + paramString);
+    }
+    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localBaseActivity != null)
+    {
+      if (this.jdField_a_of_type_Asmt == null) {
+        this.jdField_a_of_type_Asmt = new asmt(this, localBaseActivity);
+      }
+      if (!TextUtils.isEmpty(paramString))
+      {
+        this.jdField_a_of_type_Asmt.a(paramString);
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MatchChatAioVoicePlayerManager", 2, "stopVoice");
+    }
+    if (this.jdField_a_of_type_Asmt != null)
+    {
+      this.jdField_a_of_type_Asmt.a();
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void c(boolean paramBoolean) {}
+  
+  public void f(int paramInt) {}
 }
 
 

@@ -1,5 +1,6 @@
 package com.tencent.viola.ui.baseComponent;
 
+import android.text.TextUtils;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.core.ViolaSDKManager;
 import java.util.ArrayList;
@@ -88,6 +89,15 @@ public class ComponentRegistry
     }
   }
   
+  public static boolean registerOnlyNativeComponent(String paramString, IFComponentHolder paramIFComponentHolder)
+  {
+    if ((paramIFComponentHolder == null) || (TextUtils.isEmpty(paramString))) {
+      return false;
+    }
+    ViolaBridgeManager.getInstance().post(new ComponentRegistry.3(paramString, paramIFComponentHolder));
+    return true;
+  }
+  
   public static void reload()
   {
     ViolaBridgeManager.getInstance().post(new ComponentRegistry.2());
@@ -95,7 +105,7 @@ public class ComponentRegistry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.ComponentRegistry
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,21 @@
-import android.text.Editable;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.7;
 
 public class avyf
-  implements TextView.OnEditorActionListener
+  implements DialogInterface.OnClickListener
 {
-  public avyf(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  public avyf(LocationDialogUtil.7 param7) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      OCRTextSearchActivity.a(this.a);
-      this.a.a.setSelection(this.a.a.getText().length());
-      return true;
-    }
-    return false;
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avyf
  * JD-Core Version:    0.7.0.1
  */

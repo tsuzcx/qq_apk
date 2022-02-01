@@ -1,7 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import bkbq;
-
 class KandianMergeManager$30
   implements Runnable
 {
@@ -9,7 +7,7 @@ class KandianMergeManager$30
   
   public void run()
   {
-    bkbq.n(KandianMergeManager.a(this.this$0), true);
+    KandianMergeManager.a(this.this$0).trySetTopKandianMsg(KandianMergeManager.a(this.this$0));
   }
 }
 

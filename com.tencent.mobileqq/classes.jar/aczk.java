@@ -1,18 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.TransElem;
 
 public class aczk
-  implements View.OnClickListener
+  extends aczg
 {
-  public aczk(FriendProfileCardActivity paramFriendProfileCardActivity, bhuf parambhuf) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity) == 98) {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X800A97D", "0X800A97D", 3, 0, "0", "0", "", "");
-    }
-    this.jdField_a_of_type_Bhuf.a.onClick(null);
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    new bbzc().a(paramList, paramList1, paramStringBuilder, paramMsg);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.trans_elem_info.has();
   }
 }
 

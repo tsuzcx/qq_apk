@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import nvp;
+import ofk;
 
 public class DailyDynamicHeaderViewController$11
   implements Runnable
 {
-  public DailyDynamicHeaderViewController$11(nvp paramnvp) {}
+  public DailyDynamicHeaderViewController$11(ofk paramofk) {}
   
   public void run()
   {
-    nvp.a(this.this$0, true);
+    ofk.a(this.this$0, true);
   }
 }
 

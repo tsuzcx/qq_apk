@@ -1,22 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import android.support.annotation.NonNull;
 
-class ydx
-  implements View.OnClickListener
+public class ydx
+  extends wfr<ydh, wor>
 {
-  ydx(ydw paramydw) {}
-  
-  public void onClick(View paramView)
+  public ydx(ydh paramydh)
   {
-    if ((this.a.getParentFragment() instanceof SubscribeBaseFragment)) {
-      ((SubscribeBaseFragment)this.a.getParentFragment()).a(this.a.a(2));
-    }
+    super(paramydh);
   }
+  
+  public void a(@NonNull ydh paramydh, @NonNull wor paramwor)
+  {
+    ydh.a(paramydh, paramwor.a, this.TAG);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wor.class;
+  }
+  
+  public void b(@NonNull ydh paramydh, @NonNull wor paramwor) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ydx
  * JD-Core Version:    0.7.0.1
  */

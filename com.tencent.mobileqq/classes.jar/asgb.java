@@ -1,24 +1,33 @@
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class asgb
-  implements TouchWebView.OnScrollChangedListener
+class asgb
+  extends aoou
 {
-  public asgb(NearbyHybridFragment paramNearbyHybridFragment) {}
-  
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  asgb(asfu paramasfu, String paramString, boolean paramBoolean, asmh paramasmh)
   {
-    if (paramInt4 > paramInt2) {
-      if (paramInt2 == 0) {
-        this.a.a.b();
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendManager", 2, "getExtendFriendLocationInfoAsync onLocationFinish " + paramInt);
+    }
+    asfu localasfu;
+    if (this.jdField_a_of_type_Asmh != null)
+    {
+      localasfu = this.jdField_a_of_type_Asfu;
+      if (paramInt != 0) {
+        break label62;
       }
     }
-    while ((paramInt4 >= paramInt2) || (paramInt2 < this.a.c.getHeight())) {
+    label62:
+    for (boolean bool = true;; bool = false)
+    {
+      asfu.a(localasfu, bool, paramSosoLbsInfo, this.jdField_a_of_type_Asmh);
       return;
     }
-    this.a.a.a();
   }
 }
 

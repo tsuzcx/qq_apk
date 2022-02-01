@@ -1,23 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-
 public class arvl
-  implements View.OnClickListener
 {
-  public arvl(SendBottomBar paramSendBottomBar) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public arvl(String paramString1, String paramString2, int paramInt)
   {
-    if (SendBottomBar.a(this.a).isChecked())
-    {
-      SendBottomBar.b(this.a, true);
-      arrp.a("0X800942B");
-      return;
-    }
-    SendBottomBar.c(this.a, false);
-    SendBottomBar.b(this.a, false);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString1.substring(paramString1.lastIndexOf("/") + 1);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

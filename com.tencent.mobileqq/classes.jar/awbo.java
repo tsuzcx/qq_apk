@@ -1,27 +1,24 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awbo
-  implements Handler.Callback
+class awbo
+  implements View.OnClickListener
 {
-  public awbo(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
+  awbo(awbl paramawbl, View.OnClickListener paramOnClickListener) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     }
-    for (;;)
-    {
-      return true;
-      this.a.f();
-    }
+    this.jdField_a_of_type_Awbl.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awbo
  * JD-Core Version:    0.7.0.1
  */

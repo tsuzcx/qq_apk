@@ -1,23 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.smtt.sdk.WebView;
 
 public class nzn
-  implements nbs
+  implements DialogInterface.OnClickListener
 {
-  public nzn(ReadInJoyNewFeedsActivity.2 param2) {}
+  public nzn(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 3256 html web resource finish");
-    }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
+    if (paramDialogInterface == null) {}
+    do
+    {
+      return;
+      if (paramInt == 0)
+      {
+        paramDialogInterface.loadUrl("javascript:" + this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    } while (paramInt != 1);
+    paramDialogInterface.loadUrl("javascript:" + this.b);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzn
  * JD-Core Version:    0.7.0.1
  */

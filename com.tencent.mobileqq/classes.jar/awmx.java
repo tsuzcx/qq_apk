@@ -1,30 +1,19 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.portal.ImageAlphaSwitchView;
+import android.util.Pair;
+import com.tencent.mobileqq.data.Emoticon;
 
-public class awmx
-  implements bdoh<Float>
+class awmx
+  implements awnd<Pair<String, String>, Emoticon>
 {
-  public awmx(ImageAlphaSwitchView paramImageAlphaSwitchView) {}
+  awmx(awmr paramawmr) {}
   
-  public void a(bdob<Float> parambdob, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public Emoticon a(Pair<String, String> paramPair)
   {
-    this.a.jdField_a_of_type_Float = paramFloat1.floatValue();
-    if (paramFloat1.floatValue() >= 255.0F)
-    {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.b;
-      this.a.b = null;
-      this.a.jdField_a_of_type_Float = 0.0F;
-      if (this.a.jdField_a_of_type_Bdob != null)
-      {
-        this.a.jdField_a_of_type_Bdob.cancel();
-        this.a.jdField_a_of_type_Bdob = null;
-      }
-    }
+    return this.a.a((String)paramPair.first, (String)paramPair.second);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awmx
  * JD-Core Version:    0.7.0.1
  */

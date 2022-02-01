@@ -1,37 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.view.View;
 
 public class ambc
-  extends alpd
+  extends ambd
 {
-  public ambc(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public ambd a;
+  public View a;
+  public ambd b;
+  public View b;
+  public View c;
   
-  protected Class<? extends alpg> observerClass()
+  public ambc(ambb paramambb)
   {
-    return ambd.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("QzoneService.GetNewAndUnread".equals(paramToServiceMsg.getServiceCmd()))
-    {
-      if (paramObject == null) {
-        notifyUI(1, false, null);
-      }
-    }
-    else {
-      return;
-    }
-    notifyUI(1, true, null);
+    super(paramambb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ambc
  * JD-Core Version:    0.7.0.1
  */

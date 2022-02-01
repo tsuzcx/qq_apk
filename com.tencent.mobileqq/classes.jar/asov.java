@@ -1,27 +1,15 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
+import java.io.File;
+import java.util.Comparator;
 
 public class asov
-  implements bexc
+  implements Comparator<File>
 {
-  public asov(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  public asov(SignalBombAnimationView paramSignalBombAnimationView) {}
   
-  public void a(View paramView, int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    if ((paramInt == 5) || (paramInt == 4))
-    {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", "2747277822");
-      this.a.startActivity(paramView);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    QQGameFeedWebFragment.a(this.a, this.a.a);
-    this.a.getActivity().finish();
+    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
   }
 }
 

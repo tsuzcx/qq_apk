@@ -1,73 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class aorm
-  extends aokh<aorn>
+class aorm
+  implements SoundPool.OnLoadCompleteListener
 {
-  public int a()
-  {
-    return 551;
-  }
+  aorm(aorl paramaorl) {}
   
-  @NonNull
-  public aorn a(int paramInt)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    return new aorn();
-  }
-  
-  @Nullable
-  public aorn a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null)) {
-      return aorn.a(paramArrayOfaoko[0].a);
+    if (paramInt2 != 0) {}
+    try
+    {
+      QLog.e("ARMusicController", 2, "load fire music failed. " + aorl.a(this.a));
+      return;
+    }
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
     }
     if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onParsed is null");
+      QLog.d("ARMusicController", 2, "load fire music success. : " + aorl.a(this.a));
     }
-    return null;
-  }
-  
-  public Class<aorn> a()
-  {
-    return aorn.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    aorl.a(this.a, true);
+    if (aorl.a(this.a))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
     }
-  }
-  
-  public void a(aorn paramaorn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onUpdate " + paramaorn.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aorm
  * JD-Core Version:    0.7.0.1
  */

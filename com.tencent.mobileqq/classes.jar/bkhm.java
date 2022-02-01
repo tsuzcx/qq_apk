@@ -1,15 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.AbsSpinner.SavedState;
 
-class bkhm
-  implements View.OnTouchListener
+public final class bkhm
+  implements Parcelable.Creator<AbsSpinner.SavedState>
 {
-  bkhm(bkhk parambkhk) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public AbsSpinner.SavedState a(Parcel paramParcel)
   {
-    return paramMotionEvent.getAction() == 2;
+    return new AbsSpinner.SavedState(paramParcel, null);
+  }
+  
+  public AbsSpinner.SavedState[] a(int paramInt)
+  {
+    return new AbsSpinner.SavedState[paramInt];
   }
 }
 

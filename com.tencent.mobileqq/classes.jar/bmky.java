@@ -1,105 +1,39 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.widget.RelativeLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bmky
-  implements bmrj<bmqa>
+  extends bmmk
 {
-  private final float jdField_a_of_type_Float = 1.5F;
-  private final int jdField_a_of_type_Int = aepi.a(40.0F, bmkv.a(this.jdField_a_of_type_Bmkv).getResources());
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final int jdField_b_of_type_Int = 5;
-  private float c;
-  
-  public bmky(bmkv parambmkv) {}
-  
-  public boolean a(bmqa parambmqa, MotionEvent paramMotionEvent)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      label97:
-      do
-      {
-        return false;
-        this.c = f1;
-        this.jdField_b_of_type_Float = f2;
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        return false;
-        float f3 = Math.abs(f2 - this.jdField_b_of_type_Float);
-        float f4 = Math.abs(f1 - this.c);
-        int i;
-        if (f3 > 5.0F)
-        {
-          i = 1;
-          if (f4 <= 5.0F) {
-            break label324;
-          }
-        }
-        for (int j = 1; (j | i) != 0; j = 0)
-        {
-          this.c = f1;
-          this.jdField_b_of_type_Float = f2;
-          if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true))
-          {
-            bmkv.a(this.jdField_a_of_type_Bmkv).setVisibility(0);
-            this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-            bmkv.a(this.jdField_a_of_type_Bmkv).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-            parambmqa = this.jdField_a_of_type_AndroidGraphicsRect;
-            parambmqa.left -= this.jdField_a_of_type_Int;
-            parambmqa = this.jdField_a_of_type_AndroidGraphicsRect;
-            parambmqa.top -= this.jdField_a_of_type_Int;
-            parambmqa = this.jdField_a_of_type_AndroidGraphicsRect;
-            parambmqa.right += this.jdField_a_of_type_Int;
-            parambmqa = this.jdField_a_of_type_AndroidGraphicsRect;
-            parambmqa.bottom += this.jdField_a_of_type_Int;
-            bmkv.a(this.jdField_a_of_type_Bmkv, 9);
-          }
-          if (!this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f2)) {
-            break label330;
-          }
-          wxe.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "the at label enter rubbish area.");
-          this.jdField_a_of_type_Boolean = true;
-          bmkv.a(this.jdField_a_of_type_Bmkv).a(1.5F);
-          bmkv.a(this.jdField_a_of_type_Bmkv).getDrawable().setColorFilter(Color.parseColor("#F31919"), PorterDuff.Mode.MULTIPLY);
-          return false;
-          i = 0;
-          break label97;
-        }
-      } while (!this.jdField_a_of_type_Boolean);
-      label324:
-      label330:
-      wxe.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "the face leave rubbish area.");
-      this.jdField_a_of_type_Boolean = false;
-      bmkv.a(this.jdField_a_of_type_Bmkv).a(1.0F);
-      bmkv.a(this.jdField_a_of_type_Bmkv).getDrawable().clearColorFilter();
+    if ((!paramString2.equals("qqexplive")) || (this.a == null)) {}
+    while (TextUtils.isEmpty(paramString3)) {
       return false;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    QLog.i("QZoneECLiveJsPlugin", 2, "ec_live_jsbridge, dispatch method callback linkchain, " + paramString3);
+    try
     {
-      if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f2)))
+      paramJsBridgeListener = new Intent("com.tencent.mobileqq.action.ACTION_EC_LIVE_DISPATCH_EVENT");
+      paramJsBridgeListener.putExtra("event", paramString3);
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
       {
-        wxe.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "remove at label.");
-        bmkv.a(this.jdField_a_of_type_Bmkv).a(1.0F);
-        bmkv.a(this.jdField_a_of_type_Bmkv).getDrawable().clearColorFilter();
-        bmkv.a(this.jdField_a_of_type_Bmkv).aZ_();
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        if (paramString1 != null) {
+          paramJsBridgeListener.putExtra("data", paramString1.toString());
+        }
       }
-      bmkv.a(this.jdField_a_of_type_Bmkv, 0);
+      BaseApplicationImpl.getContext().sendBroadcast(paramJsBridgeListener, "com.tencent.msg.permission.pushnotify");
+      return true;
     }
-    bmkv.a(this.jdField_a_of_type_Bmkv).setVisibility(4);
+    catch (Throwable paramJsBridgeListener)
+    {
+      QLog.e("QZoneECLiveJsPlugin", 1, "qz_livevideo_jsbridge, dispatch method callback linkchain exception", paramJsBridgeListener);
+    }
     return false;
   }
 }

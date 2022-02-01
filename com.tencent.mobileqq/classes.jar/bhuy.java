@@ -1,11 +1,6 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
-
 public abstract interface bhuy
 {
-  public abstract void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
-  
-  public abstract void onNothingSelected(AdapterView<?> paramAdapterView);
+  public abstract void m();
 }
 
 

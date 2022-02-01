@@ -1,42 +1,38 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class aujj
+class aujj
+  implements ayyt
 {
-  private boolean a;
+  aujj(aujf paramaujf, Bundle paramBundle, long paramLong) {}
   
-  public static aujj a(String paramString)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
+    return null;
+  }
+  
+  public void a(ayyu paramayyu)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("upCallBack updateMsg info =");
+    if (paramayyu == null) {}
+    for (paramayyu = "null";; paramayyu = paramayyu.toString())
     {
-      aujj localaujj = new aujj();
-      if (new JSONObject(paramString).optInt("isChatMigrateEnable", 0) == 1) {}
-      for (;;)
-      {
-        localaujj.a = bool;
-        return localaujj;
-        bool = false;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("MsgBackupConfigProcessor", 2, "MsgBackupConfigData parse error", paramString);
+      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, paramayyu);
+      return;
     }
   }
   
-  public boolean a()
+  public void b(ayyu paramayyu)
   {
-    return this.a;
+    QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "upCallBack onSend result=", paramayyu });
+    aujf.a(this.jdField_a_of_type_Aujf, paramayyu, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aujj
  * JD-Core Version:    0.7.0.1
  */

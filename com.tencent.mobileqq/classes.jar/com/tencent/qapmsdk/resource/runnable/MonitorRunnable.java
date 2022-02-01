@@ -10,66 +10,72 @@ import java.util.Vector;
 public class MonitorRunnable
   implements Runnable
 {
+  private static final long MILLS_SECOND = 1000L;
+  private static final long SPAN_DEBUG = 1000L;
+  private static final long SPAN_PUBLIC = 5000L;
+  private static final String TAG = "QAPM_resource_collect";
   @Nullable
   private static volatile MonitorRunnable instance = null;
-  private long delayTime = 1000L;
-  Handler handler = new Handler(ThreadManager.getMonitorThreadLooper());
-  private boolean isRun;
-  
-  private MonitorRunnable(boolean paramBoolean)
-  {
-    this.isRun = paramBoolean;
-  }
+  private Handler handler = new Handler(ThreadManager.getMonitorThreadLooper());
+  boolean isRunning = false;
   
   @Nullable
-  public static MonitorRunnable getInstance(boolean paramBoolean)
+  public static MonitorRunnable getInstance()
   {
     if (instance == null) {}
     try
     {
       if (instance == null) {
-        instance = new MonitorRunnable(paramBoolean);
+        instance = new MonitorRunnable();
       }
-      instance.setState(paramBoolean);
       return instance;
     }
     finally {}
   }
   
-  private void setState(boolean paramBoolean)
+  public void collectPerfItemRightNow()
   {
-    this.isRun = paramBoolean;
-    if (ResourceMonitor.getInstance().isPublicMode()) {
-      this.delayTime = 5000L;
+    Object localObject = ResourceMonitor.getInstance().samplePerfValue(new PerfItem());
+    ((PerfItem)localObject).eventTime = (System.currentTimeMillis() / 1000L);
+    ResourceMonitor.immediatePerfItems.add(localObject);
+    if (ResourceMonitor.immediatePerfItems.size() > 900)
+    {
+      localObject = DumpSampleFileRunnable.getInstance();
+      this.handler.post((Runnable)localObject);
     }
   }
   
-  public PerfItem forceSampleOnce()
+  public long getDelayTime()
   {
-    PerfItem localPerfItem = ResourceMonitor.getInstance().samplePerfValue(new PerfItem());
-    localPerfItem.eventTime = (System.currentTimeMillis() / 1000.0D);
-    return localPerfItem;
+    long l = 1000L;
+    if (ResourceMonitor.getInstance().isPublicMode()) {
+      l = 5000L;
+    }
+    return l;
   }
   
   public void run()
   {
-    if (this.isRun)
-    {
-      Object localObject = forceSampleOnce();
-      ResourceMonitor.immediatePerfItems.add(localObject);
-      localObject = getInstance(true);
-      this.handler.postDelayed((Runnable)localObject, this.delayTime);
-      if (ResourceMonitor.immediatePerfItems.size() > 900)
-      {
-        localObject = DumpSampleFileRunnable.getInstance();
-        this.handler.post((Runnable)localObject);
-      }
+    collectPerfItemRightNow();
+    if (this.isRunning) {
+      this.handler.postDelayed(this, getDelayTime());
     }
+  }
+  
+  public void start()
+  {
+    this.isRunning = true;
+    this.handler.post(this);
+  }
+  
+  public void stop()
+  {
+    this.isRunning = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.resource.runnable.MonitorRunnable
  * JD-Core Version:    0.7.0.1
  */

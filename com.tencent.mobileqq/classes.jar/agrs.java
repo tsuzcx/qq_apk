@@ -1,26 +1,14 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
 class agrs
-  implements DialogInterface.OnClickListener
+  implements bdzl
 {
-  agrs(agrr paramagrr) {}
+  agrs(agrq paramagrq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ArrayList<MessageRecord> paramArrayList)
   {
-    this.a.jdField_a_of_type_Agrn.h = new Dialog(this.a.jdField_a_of_type_Agrn.a(), 2131755801);
-    this.a.jdField_a_of_type_Agrn.h.setContentView(2131558428);
-    this.a.jdField_a_of_type_Agrn.h.setCancelable(true);
-    ((TextView)this.a.jdField_a_of_type_Agrn.h.findViewById(2131365233)).setText(this.a.jdField_a_of_type_Agrn.a().getString(2131719785));
-    this.a.jdField_a_of_type_Agrn.h.show();
-    ((aluj)this.a.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).b(this.a.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.a.jdField_a_of_type_JavaLangString, 1);
-    azqs.b(this.a.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005D55", "0X8005D55", 0, 0, "", "", "", "");
+    this.a.b();
   }
 }
 

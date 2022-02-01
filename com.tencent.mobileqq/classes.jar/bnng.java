@@ -1,18 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 
 class bnng
-  implements View.OnClickListener
+  extends Handler
 {
-  bnng(bnnf parambnnf) {}
+  private bnng(bnne parambnne) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a.isShowing())
+    switch (paramMessage.what)
     {
-      this.a.a.cancel();
-      this.a.a.dismiss();
+    default: 
+      return;
+    case 1004: 
+    case 1009: 
+      bnne.a(this.a);
+      return;
     }
+    this.a.a();
   }
 }
 

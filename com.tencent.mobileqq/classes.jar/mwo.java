@@ -1,108 +1,71 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.os.SystemClock;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class mwo
-  extends BaseAdapter
+public class mwo
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  mwq jdField_a_of_type_Mwq;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private mwm[] a = new mwm[5];
   
-  mwo(Context paramContext, @NonNull mwq parammwq)
+  private mwm b(AVGameAppInterface paramAVGameAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Mwq = parammwq;
-    this.jdField_a_of_type_ArrayOfJavaLangString = parammwq.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(Context paramContext, @NonNull mwq parammwq)
-  {
-    if (paramContext != null) {
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
+    Object localObject = null;
+    long l1 = 0L;
+    if (QLog.isColorLevel()) {
+      l1 = SystemClock.elapsedRealtime();
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = parammwq.a();
-    this.jdField_a_of_type_Mwq = parammwq;
-    notifyDataSetInvalidated();
-  }
-  
-  public void a(String paramString)
-  {
-    int j = getCount();
-    int i = 0;
+    switch (paramInt)
+    {
+    default: 
+      paramAVGameAppInterface = localObject;
+    }
     for (;;)
     {
-      if (i < j)
+      if (QLog.isColorLevel())
       {
-        mwr localmwr = (mwr)getItem(i);
-        if ((localmwr != null) && (localmwr.jdField_a_of_type_JavaLangString != null) && (localmwr.jdField_a_of_type_JavaLangString.equals(paramString))) {
-          a(i);
-        }
+        long l2 = SystemClock.elapsedRealtime();
+        QLog.i("HandlerFactory", 2, "createBusinessHandler, cost[" + (l2 - l1) + "], handlerId[" + paramInt + "], handler[" + paramAVGameAppInterface + "]");
       }
-      else
-      {
-        return;
-      }
-      i += 1;
+      return paramAVGameAppInterface;
+      paramAVGameAppInterface = new mwp(paramAVGameAppInterface);
+      continue;
+      paramAVGameAppInterface = new mza(paramAVGameAppInterface);
+      continue;
+      paramAVGameAppInterface = new myz(paramAVGameAppInterface);
+      continue;
+      paramAVGameAppInterface = new mzb(paramAVGameAppInterface);
     }
   }
   
-  public int getCount()
+  public mwm a(AVGameAppInterface paramAVGameAppInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Mwq != null) {
-      return this.jdField_a_of_type_Mwq.a();
+    Object localObject;
+    if ((paramInt < 0) || (paramInt >= this.a.length)) {
+      localObject = null;
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_Mwq.a(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (mwr)getItem(paramInt);
-    if (paramViewGroup != null) {
-      if (paramView == null)
-      {
-        paramView = new mwp(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.jdField_a_of_type_Int, paramViewGroup.b);
-        paramViewGroup = (mwp)paramView;
-        if (paramInt != this.jdField_a_of_type_Int) {
-          break label94;
-        }
-      }
-    }
-    label94:
-    for (boolean bool = true;; bool = false)
+    mwm localmwm;
+    do
     {
-      paramViewGroup.a(bool);
-      return paramView;
-      ((mwp)paramView).a(paramViewGroup.b);
-      paramView.setContentDescription(paramViewGroup.b);
-      ((mwp)paramView).a(paramViewGroup.jdField_a_of_type_Int);
-      break;
+      return localObject;
+      localmwm = this.a[paramInt];
+      localObject = localmwm;
+    } while (localmwm != null);
+    synchronized (this.a)
+    {
+      localmwm = this.a[paramInt];
+      localObject = localmwm;
+      if (localmwm == null) {
+        localObject = b(paramAVGameAppInterface, paramInt);
+      }
+      if (localObject != null) {
+        this.a[paramInt] = localObject;
+      }
+      return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mwo
  * JD-Core Version:    0.7.0.1
  */

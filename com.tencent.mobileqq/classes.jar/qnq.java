@@ -1,23 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 
-public final class qnq
-  implements Parcelable.Creator<UgcVideo>
+public class qnq
+  implements ogx
 {
-  public UgcVideo a(Parcel paramParcel)
-  {
-    return new UgcVideo(paramParcel);
-  }
+  public qnq(PTSFragment paramPTSFragment) {}
   
-  public UgcVideo[] a(int paramInt)
-  {
-    return new UgcVideo[paramInt];
-  }
+  public void a(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qnq
  * JD-Core Version:    0.7.0.1
  */

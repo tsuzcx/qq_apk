@@ -1,80 +1,123 @@
-import android.content.res.Resources;
-import android.os.Message;
-import android.widget.Button;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.model.GetVirtualListResult;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.qqfav.util.HandlerPlus;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.ViewGroup;
 
 public class bffk
-  implements bfrt
 {
-  public bffk(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  private SparseArray<bffi> a;
+  
+  @NonNull
+  public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
+  {
+    bffi localbffi = a(paramInt);
+    if (localbffi != null) {
+      return localbffi.a(paramViewGroup);
+    }
+    return null;
+  }
+  
+  public bffi a(int paramInt)
+  {
+    return (bffi)this.a.get(paramInt);
+  }
   
   public void a()
   {
-    if (!OpenAuthorityFragment.b(this.a))
+    int i = 0;
+    while (i < this.a.size())
     {
-      QLog.e("OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess for activity is finished");
-      return;
-    }
-    Object localObject1 = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "updatePreAuthFromServer use cached appid=", OpenAuthorityFragment.a(this.a), ", appInfo=", ((aryj)localObject1).toString() });
-    Object localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-    ((Message)localObject2).what = 3;
-    ((Message)localObject2).obj = localObject1;
-    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
-    localObject1 = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
-    boolean bool;
-    if (localObject1 != null)
-    {
-      QLog.d("OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess null != virtualResult");
-      localObject2 = this.a.jdField_a_of_type_Bfrs;
-      if (((GetVirtualListResult)localObject1).a == 0)
-      {
-        bool = true;
-        ((bfrs)localObject2).a(bool, (GetVirtualListResult)localObject1);
-      }
-    }
-    for (;;)
-    {
-      if (!this.a.b) {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      }
-      localObject1 = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
-      localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-      ((Message)localObject2).what = 0;
-      ((Message)localObject2).obj = localObject1;
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
-      return;
-      bool = false;
-      break;
-      QLog.d("OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess null == virtualResult");
-      this.a.jdField_a_of_type_Bfrs.a(false, null);
+      ((bffi)this.a.valueAt(i)).a();
+      i += 1;
     }
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(RecyclerView.ViewHolder paramViewHolder)
   {
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "updatePreAuthFromServer | onFail: | uin : *" + bfii.a(this.a.jdField_a_of_type_Bfqv.a), ", errorCode=", Integer.valueOf(paramInt), ", errorMsg=", paramString });
-    if (!OpenAuthorityFragment.b(this.a))
+    paramViewHolder = (bffl)paramViewHolder;
+    if (paramViewHolder.a != null)
     {
-      QLog.e("OpenAuthorityFragment", 1, "updatePreAuthFromServer onFail for activity is finished");
-      return;
+      bffi localbffi = a(paramViewHolder.a.b());
+      if (localbffi != null) {
+        localbffi.a(paramViewHolder);
+      }
     }
-    this.a.jdField_a_of_type_Bfrs.a(false, null);
-    this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
-    paramString = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-    paramString.what = 6;
-    paramString.arg1 = 3001;
-    paramString.obj = this.a.getResources().getString(2131695056);
-    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramString);
+  }
+  
+  public void a(@NonNull RecyclerView.ViewHolder paramViewHolder, bfem parambfem, int paramInt)
+  {
+    bffi localbffi = a(parambfem.b());
+    if (localbffi != null)
+    {
+      ((bffl)paramViewHolder).a = parambfem;
+      localbffi.a(paramViewHolder, parambfem, paramInt);
+    }
+  }
+  
+  public void a(SparseArray<bffi> paramSparseArray)
+  {
+    this.a = paramSparseArray;
+  }
+  
+  public void a(bfem parambfem)
+  {
+    bffi localbffi = a(parambfem.b());
+    if (localbffi != null) {
+      localbffi.b(parambfem);
+    }
+  }
+  
+  public void a(bfew parambfew)
+  {
+    bffi localbffi = a(parambfew.b());
+    if ((localbffi != null) && ((localbffi instanceof bfgb))) {
+      ((bfgb)localbffi).a(parambfew);
+    }
+  }
+  
+  public void b(RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramViewHolder = (bffl)paramViewHolder;
+    if (paramViewHolder.a != null)
+    {
+      bffi localbffi = a(paramViewHolder.a.b());
+      if (localbffi != null) {
+        localbffi.b(paramViewHolder);
+      }
+    }
+  }
+  
+  public void b(bfem parambfem)
+  {
+    bffi localbffi = a(parambfem.b());
+    if (localbffi != null) {
+      localbffi.c(parambfem);
+    }
+  }
+  
+  public void c(RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramViewHolder = (bffl)paramViewHolder;
+    if (paramViewHolder.a != null)
+    {
+      bffi localbffi = a(paramViewHolder.a.b());
+      if (localbffi != null) {
+        localbffi.c(paramViewHolder);
+      }
+    }
+  }
+  
+  public void c(bfem parambfem)
+  {
+    bffi localbffi = a(parambfem.b());
+    if (localbffi != null) {
+      localbffi.d(parambfem);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bffk
  * JD-Core Version:    0.7.0.1
  */

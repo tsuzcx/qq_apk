@@ -148,7 +148,7 @@
             "event_type": "ad_nothing_click_in_detail",
             "subviews": [
               {
-                "view_type": "ReadinjoyNativeArticleAdDownloadView",
+                "view_type": "ReadInJoyAdDownloadView",
                 "view_id": "id_view_AdDownloadView",
                 "height": {
                   "type": "relative",

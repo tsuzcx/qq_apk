@@ -1,6 +1,15 @@
-public abstract interface akpj
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbUIFragment;
+
+public class akpj
+  extends akqb
 {
-  public abstract void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, long paramLong);
+  public akpj(BaseHbUIFragment paramBaseHbUIFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    this.a.a();
+  }
 }
 
 

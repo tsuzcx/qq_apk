@@ -1,88 +1,50 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.common.galleryactivity.AbstractImageAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.1;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.2;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.3;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class avji
-  extends AbstractImageAdapter
-  implements avjo
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private avjo jdField_a_of_type_Avjo;
+  public long a;
+  private DownloaderTask a;
+  public String a;
+  public String b;
+  public String c;
+  public String d = "now_for_qq";
+  public String e = "now_appid_2";
+  public String f = "now";
+  public String g;
+  public String h;
   
-  public avji(Context paramContext)
+  public static avji a(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    avji localavji = new avji();
+    localavji.jdField_a_of_type_JavaLangString = "2";
+    localavji.g = paramString3.substring(0, paramString3.lastIndexOf("/") + 1);
+    localavji.h = paramString3.substring(paramString3.lastIndexOf("/") + 1);
+    localavji.b = paramString1;
+    localavji.c = paramString2;
+    localavji.jdField_a_of_type_Long = System.currentTimeMillis();
+    QLog.i("NowDownloadTaskInfo", 4, localavji.toString());
+    return localavji;
   }
   
-  public void a(int paramInt)
+  public DownloaderTask a()
   {
-    int i = ndd.a();
-    if ((i != 1) && (i != 4)) {}
-    avjm localavjm;
-    do
-    {
-      return;
-      localavjm = (avjm)getItem(paramInt + 1);
-      if (localavjm != null) {
-        localavjm.a();
-      }
-      localavjm = (avjm)getItem(paramInt - 1);
-    } while (localavjm == null);
-    localavjm.a();
+    return this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(DownloaderTask paramDownloaderTask)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.1(this, paramInt1, paramInt2));
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask = paramDownloaderTask;
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.3(this, paramInt, paramBoolean));
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    ((avjm)getItem(paramInt)).a(paramView, paramInt, this);
-  }
-  
-  public void a(avjo paramavjo)
-  {
-    this.jdField_a_of_type_Avjo = paramavjo;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.2(this, paramInt1, paramInt2));
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView != null) {
-      return paramView;
-    }
-    paramView = (avjm)getItem(paramInt);
-    paramViewGroup = paramView.a;
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof PicBrowserActivity)) && (((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).b)) {
-      ((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).app.a().b(paramViewGroup.a);
-    }
-    paramView = paramView.a(paramInt, this.jdField_a_of_type_AndroidOsHandler, this);
-    paramView.setTag(2131296390, Boolean.valueOf(true));
-    return paramView;
+    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avji
  * JD-Core Version:    0.7.0.1
  */

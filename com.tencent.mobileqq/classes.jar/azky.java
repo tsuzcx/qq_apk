@@ -1,69 +1,48 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView.SharedMemWriteFile;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
-import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class azky
+class azky
+  implements bhat
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  public CameraFilterGLView.SharedMemWriteFile a;
-  public ByteBuffer a;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  
-  public azky(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = 0;
-  }
+  azky(azks paramazks) {}
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsProfileHeaderComponent", 2, "ZanDoubleDialog: onLeftClick: ");
+    }
+    if (azks.e(this.a).getIntent().hasExtra("troopUin")) {}
+    for (Object localObject = "1";; localObject = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(azks.d(this.a).getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", (String)localObject, "");
+      localObject = new Intent(azks.f(this.a), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("fragmentStyle", 3);
+      ((Intent)localObject).putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
+      ((Intent)localObject).putExtra("isTransparentTitle", true);
+      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+      azks.g(this.a).startActivity((Intent)localObject);
+      return;
+    }
   }
   
-  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  public void b()
   {
-    int i = paramInt1 * paramInt2 * paramInt3;
-    if ((this.jdField_a_of_type_Boolean) && (this.b == i) && (this.jdField_a_of_type_JavaNioByteBuffer != null)) {
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsProfileHeaderComponent", 2, "ZanDoubleDialog: onRightClick: ");
     }
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-    try
+    if (azks.h(this.a).getIntent().hasExtra("troopUin")) {}
+    for (String str = "1";; str = "0")
     {
-      this.jdField_a_of_type_Long = PtvFilterUtils.getNativePtrIndex(paramInt1, paramInt2, paramInt3, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Long == 0L) {
-        return false;
-      }
+      VasWebviewUtil.reportCommercialDrainage(azks.e(this.a).getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", str, "");
+      bgzo.a(azks.i(this.a), "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
+      azks.a(this.a).set(true);
+      return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
-    {
-      for (;;)
-      {
-        this.jdField_a_of_type_Long = 0L;
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaNioByteBuffer = PtvFilterUtils.allocateSharedMem(this.jdField_a_of_type_Long);
-        if (this.jdField_a_of_type_JavaNioByteBuffer == null) {
-          return false;
-        }
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
-      {
-        for (;;)
-        {
-          this.jdField_a_of_type_JavaNioByteBuffer = null;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        this.b = i;
-      }
-    }
-    return true;
   }
 }
 

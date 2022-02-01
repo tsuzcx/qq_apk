@@ -1,95 +1,81 @@
-import android.content.Context;
-import android.content.Intent;
-import android.util.Base64;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import cooperation.qzone.util.QZLog;
-import java.net.URLEncoder;
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
-import okhttp3.Call;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Request.Builder;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public class yli
+class yli
+  implements wvp
 {
-  private static String a(String paramString)
-  {
-    try
-    {
-      paramString = Base64.decode(paramString, 0);
-      SecretKeySpec localSecretKeySpec = new SecretKeySpec("d41d8cd98f00b204e9800998ecf8427e".getBytes(), "AES");
-      Cipher localCipher = Cipher.getInstance("AES/ECB/NoPadding");
-      localCipher.init(2, localSecretKeySpec);
-      paramString = new String(localCipher.doFinal(paramString), "utf-8");
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QZLog.e("EvilReportUtil", "decrypt key error! " + paramString);
-    }
-    return "";
-  }
+  yli(ylh paramylh, ArrayList paramArrayList) {}
   
-  private static String a(ylk paramylk, String paramString)
+  public void a(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramylk.a);
-    localStringBuilder.append("_").append(paramylk.b);
-    localStringBuilder.append("_").append(paramylk.h);
-    localStringBuilder.append("_").append(a(paramString));
-    paramString = bhqh.a(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder().append(paramylk.d);
-    localStringBuilder.append("_").append(paramylk.k);
-    localStringBuilder.append("_").append(paramylk.l);
-    localStringBuilder.append("_").append(paramylk.m);
-    localStringBuilder.append("_").append(paramylk.n);
-    localStringBuilder.append("_").append(paramylk.o);
-    localStringBuilder.append("_").append(paramylk.p);
-    localStringBuilder.append("_").append(paramylk.q);
-    localStringBuilder.append("_").append(paramString);
-    return bhqh.a(localStringBuilder.toString());
-  }
-  
-  public static void a(Context paramContext, ylk paramylk)
-  {
-    if ((paramContext == null) || (paramylk == null)) {
+    yqp.d("GetMyStoryDesFromVidListStep", "onFinishAll(%b[isEveryTaskSuccess])", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (!paramBoolean)
+    {
+      yqp.e("GetMyStoryDesFromVidListStep", "Get vid to basic info failed!");
+      if (this.jdField_a_of_type_Ylh.jdField_a_of_type_Ymm != null)
+      {
+        this.jdField_a_of_type_Ylh.jdField_a_of_type_Ymm.a(this.jdField_a_of_type_Ylh.a());
+        return;
+      }
+      yqp.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
       return;
     }
-    Request localRequest = new Request.Builder().url("https://jubao.qq.com/uniform_impeach/impeach_cryptokey").build();
-    new OkHttpClient().newCall(localRequest).enqueue(new ylj(paramContext, paramylk));
-  }
-  
-  private static void b(Context paramContext, ylk paramylk, String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("https://jubao.qq.com/uniform_impeach/impeach_entry");
-    localStringBuilder.append("?system=").append(paramylk.a);
-    localStringBuilder.append("&version=").append(paramylk.b);
-    localStringBuilder.append("&uintype=").append(paramylk.c);
-    localStringBuilder.append("&eviluin=").append(paramylk.d);
-    localStringBuilder.append("&appname=").append(paramylk.e);
-    localStringBuilder.append("&appid=").append(paramylk.f);
-    localStringBuilder.append("&subapp=").append(paramylk.g);
-    localStringBuilder.append("&scene=").append(paramylk.h);
-    localStringBuilder.append("&buddyflag=").append(paramylk.i);
-    localStringBuilder.append("&contentid=").append(paramylk.j);
-    localStringBuilder.append("&srv_para=").append(paramylk.k);
-    localStringBuilder.append("&text_evidence=").append(paramylk.l);
-    localStringBuilder.append("&img_evidence=").append(URLEncoder.encode(paramylk.m));
-    localStringBuilder.append("&url_evidence=").append(paramylk.n);
-    localStringBuilder.append("&video_evidence=").append(URLEncoder.encode(paramylk.o));
-    localStringBuilder.append("&file_evidence=").append(paramylk.p);
-    localStringBuilder.append("&audio_evidence=").append(paramylk.q);
-    localStringBuilder.append("&user_input_param=").append(paramylk.r);
-    localStringBuilder.append("&cryptograph=").append(a(paramylk, paramString));
-    paramylk = new Intent(paramContext, QQBrowserDelegationActivity.class);
-    paramylk.putExtra("url", localStringBuilder.toString());
-    paramContext.startActivity(paramylk);
+    Object localObject1 = (wpj)wpm.a(5);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2;
+    Object localObject3;
+    while (localIterator.hasNext())
+    {
+      localObject2 = (String)localIterator.next();
+      localObject3 = ((wpj)localObject1).a((String)localObject2);
+      yqp.b("GetMyStoryDesFromVidListStep", "manager.queryVideoByVid(%s) = %s", localObject2, localObject3);
+      if (localObject3 == null) {
+        yqp.e("GetMyStoryDesFromVidListStep", "manager.queryVideoByVid(%s) return null", new Object[] { localObject2 });
+      } else {
+        localArrayList.add(localObject3);
+      }
+    }
+    ((wpj)localObject1).a(QQStoryContext.a().b(), 0, localArrayList, true);
+    localIterator = ((wpj)localObject1).a(false).iterator();
+    while (localIterator.hasNext())
+    {
+      localObject2 = (StoryVideoItem)localIterator.next();
+      localObject3 = yjc.b((StoryVideoItem)localObject2, localArrayList);
+      if (localObject3 != null)
+      {
+        ((wpj)localObject1).a(((StoryVideoItem)localObject2).mVid);
+        yqp.d("GetMyStoryDesFromVidListStep", "delete local fake item because we get real item from server, local vid=%s, network vid=%s", new Object[] { ((StoryVideoItem)localObject2).mVid, localObject3 });
+      }
+      else
+      {
+        yjc.a((StoryVideoItem)localObject2);
+      }
+    }
+    localObject1 = ((wpj)localObject1).b(QQStoryContext.a().b());
+    ylh.a(this.jdField_a_of_type_Ylh).b();
+    ylh.a(this.jdField_a_of_type_Ylh).a((List)localObject1);
+    ylh.a(this.jdField_a_of_type_Ylh).jdField_a_of_type_Wqp = this.jdField_a_of_type_Ylh.jdField_a_of_type_Yln.jdField_a_of_type_Wqp;
+    ylh.a(this.jdField_a_of_type_Ylh).b = this.jdField_a_of_type_Ylh.jdField_a_of_type_Yln.jdField_a_of_type_Boolean;
+    Collections.sort(ylh.a(this.jdField_a_of_type_Ylh).a());
+    if (ylh.a(this.jdField_a_of_type_Ylh) != null) {
+      ylh.a(this.jdField_a_of_type_Ylh).a(ylh.a(this.jdField_a_of_type_Ylh));
+    }
+    if (this.jdField_a_of_type_Ylh.jdField_a_of_type_Ymm != null)
+    {
+      this.jdField_a_of_type_Ylh.jdField_a_of_type_Ymm.a(this.jdField_a_of_type_Ylh.a());
+      return;
+    }
+    yqp.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yli
  * JD-Core Version:    0.7.0.1
  */

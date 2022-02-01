@@ -1,22 +1,10 @@
-import com.tencent.mobileqq.persistence.EntityDaoRegister;
-
-public class awgr
+public abstract interface awgr
 {
-  public static awgr a = new awgr();
-  
-  public static awgr a()
-  {
-    return a;
-  }
-  
-  public awgq a(Class paramClass)
-  {
-    return EntityDaoRegister.a(paramClass);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awgr
  * JD-Core Version:    0.7.0.1
  */

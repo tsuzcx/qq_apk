@@ -1,1117 +1,673 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.transfile.GroupPttUploadProcessor.3;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.GLES20;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.HWVideoDecoder;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.RandomAccessFile;
-import java.util.HashMap;
-import tencent.im.cs.cmd0x388.cmd0x388.ReqBody;
-import tencent.im.cs.cmd0x388.cmd0x388.TryUpPttReq;
-import tencent.im.cs.ptt_reserve.ptt_reserve.ReserveStruct;
-import tencent.im.msg.im_msg_body.Ptt;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
 
+@TargetApi(11)
 public class batn
-  extends bark
-  implements beds, INetEventHandler
+  implements SurfaceTexture.OnFrameAvailableListener, bary, bast, batv
 {
-  long jdField_a_of_type_Long;
-  alwx jdField_a_of_type_Alwx = new batq(this);
-  bayf jdField_a_of_type_Bayf;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
+  public int a;
+  private long jdField_a_of_type_Long = -1L;
+  private almx jdField_a_of_type_Almx;
+  private barv jdField_a_of_type_Barv;
+  private batj jdField_a_of_type_Batj;
+  private bato jdField_a_of_type_Bato;
+  private batv jdField_a_of_type_Batv;
+  private batx jdField_a_of_type_Batx = new batx();
+  private baun jdField_a_of_type_Baun;
+  private HWVideoDecoder jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder = new HWVideoDecoder();
+  private GPUBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
+  private GPUOESBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter;
+  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 0;
+  private long jdField_b_of_type_Long = -1L;
+  private GPUBaseFilter jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
+  private Object jdField_b_of_type_JavaLangObject = new Object();
   private boolean jdField_b_of_type_Boolean;
-  private long c;
-  private boolean g;
-  private String n;
-  private volatile boolean q;
+  private int jdField_c_of_type_Int;
+  private GPUBaseFilter jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
+  private boolean jdField_c_of_type_Boolean;
+  private int jdField_d_of_type_Int = -1;
+  private boolean jdField_d_of_type_Boolean;
+  private int e;
+  private int f;
   
-  public batn(bayf parambayf, bayk parambayk)
+  private void d()
   {
-    super(parambayf, parambayk);
-    this.jdField_a_of_type_Bayf = parambayf;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.a);
-    AppNetConnInfo.registerNetChangeReceiver(BaseApplication.getContext(), this);
-  }
-  
-  private bbbh a()
-  {
-    bbbh localbbbh = new bbbh();
-    localbbbh.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    localbbbh.jdField_b_of_type_Int = ((int)this.jdField_q_of_type_Long);
-    localbbbh.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localbbbh.jdField_a_of_type_Int = QQRecorder.a(this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    localbbbh.jdField_d_of_type_Int = this.jdField_a_of_type_Bayk.jdField_n_of_type_Int;
-    localbbbh.jdField_c_of_type_Int = ((MessageForPtt)this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).voiceType;
-    localbbbh.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString;
-    localbbbh.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString;
-    localbbbh.e = this.jdField_a_of_type_Bayk.jdField_d_of_type_JavaLangString;
-    localbbbh.f = this.jdField_a_of_type_Bayk.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Bayk.jdField_a_of_type_Int == 1026)
-    {
-      localbbbh.f = 1;
-      if (QLog.isColorLevel()) {
-        QLog.i("PttShow", 2, "sendRequest, UIN_TYPE_HOTCHAT_TOPIC");
-      }
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter.destroy();
+    if (this.jdField_a_of_type_Baun != null) {
+      this.jdField_a_of_type_Baun.destroy();
     }
-    return localbbbh;
-  }
-  
-  private void a(im_msg_body.RichText paramRichText, MessageForPtt paramMessageForPtt)
-  {
-    if ((paramMessageForPtt != null) && (paramRichText != null))
-    {
-      paramRichText.ptt.uint32_format.set(paramMessageForPtt.voiceType);
-      paramRichText.ptt.uint32_time.set(bdeu.a(paramMessageForPtt.voiceLength));
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.destroy();
     }
-  }
-  
-  private byte[] a(MessageForPtt paramMessageForPtt)
-  {
-    Object localObject = new ptt_reserve.ReserveStruct();
-    if (paramMessageForPtt != null)
-    {
-      ((ptt_reserve.ReserveStruct)localObject).uint32_change_voice.set(paramMessageForPtt.voiceChangeFlag);
-      ((ptt_reserve.ReserveStruct)localObject).uint32_redpack_type.set(ajfi.a(paramMessageForPtt));
-      ((ptt_reserve.ReserveStruct)localObject).uint32_autototext_voice.set(paramMessageForPtt.autoToText);
-      if (paramMessageForPtt.hasSttTxt()) {
-        ((ptt_reserve.ReserveStruct)localObject).bytes_voice_text_abs.set(ByteStringMicro.copyFrom(paramMessageForPtt.sttText.getBytes()));
-      }
-      ByteStringMicro localByteStringMicro = ajfi.a(paramMessageForPtt);
-      if (localByteStringMicro != null) {
-        ((ptt_reserve.ReserveStruct)localObject).bytes_redpack_score_id.set(localByteStringMicro);
-      }
+    if (this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null) {
+      this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.destroy();
     }
-    localObject = ((ptt_reserve.ReserveStruct)localObject).toByteArray();
-    if ((QLog.isColorLevel()) && (paramMessageForPtt != null)) {
-      QLog.d("pttchangevoice", 2, "change flag is " + paramMessageForPtt.voiceChangeFlag);
+    if (this.jdField_a_of_type_Almx != null) {
+      this.jdField_a_of_type_Almx.c();
     }
-    return localObject;
-  }
-  
-  private void c(boolean paramBoolean)
-  {
-    String str = "Q.richmedia." + baws.b(this.jdField_a_of_type_Bayk.jdField_a_of_type_Int) + "." + baws.a(this.jdField_a_of_type_Bayk.jdField_b_of_type_Int);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id:" + this.jdField_a_of_type_Bayk.jdField_a_of_type_Long + "  ");
-    localStringBuilder.append("errCode:" + this.jdField_j_of_type_Int + "  ");
-    localStringBuilder.append("errDesc:" + this.jdField_j_of_type_JavaLangString);
-    QLog.d(str, 1, localStringBuilder.toString());
-  }
-  
-  private void t()
-  {
-    if (this.jdField_a_of_type_Bayk.jdField_n_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Barh.a(this.jdField_k_of_type_Long);
-      this.jdField_b_of_type_Barh.a(this.jdField_k_of_type_Long);
-    }
-  }
-  
-  private void u()
-  {
-    String str;
-    if (this.jdField_j_of_type_Int == 9004)
-    {
-      str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("param_reason");
-      if (!"connError_unreachable".equalsIgnoreCase(str)) {
-        break label49;
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_reason", "N_1");
-    }
-    label49:
-    while (!"connError_noroute".equalsIgnoreCase(str)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put("param_reason", "N_2");
-  }
-  
-  private void v()
-  {
-    this.jdField_a_of_type_Bass.jdField_a_of_type_Bast.a();
-    this.jdField_a_of_type_Bass.b.a();
-    this.jdField_a_of_type_Bass.jdField_a_of_type_Basu.a();
-    this.jdField_a_of_type_Bass.jdField_c_of_type_Bast.a();
-    bass localbass = this.jdField_a_of_type_Bass;
-    long l = System.nanoTime();
-    localbass.g = l;
-    this.jdField_k_of_type_Long = l;
-    this.jdField_a_of_type_Bass.h = 0L;
-  }
-  
-  public int a()
-  {
-    AppNetConnInfo.unregisterNetEventHandler(this);
-    return super.a();
+    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.destroy();
   }
   
   /* Error */
-  protected im_msg_body.RichText a()
-  {
-    // Byte code:
-    //   0: new 142	tencent/im/msg/im_msg_body$Ptt
-    //   3: dup
-    //   4: invokespecial 369	tencent/im/msg/im_msg_body$Ptt:<init>	()V
-    //   7: astore_3
-    //   8: aload_3
-    //   9: getfield 372	tencent/im/msg/im_msg_body$Ptt:uint32_file_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   12: iconst_4
-    //   13: invokevirtual 152	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   16: aload_3
-    //   17: getfield 376	tencent/im/msg/im_msg_body$Ptt:uint64_src_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   20: aload_0
-    //   21: getfield 79	batn:jdField_a_of_type_Bayk	Lbayk;
-    //   24: getfield 104	bayk:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   27: invokestatic 382	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   30: invokevirtual 386	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
-    //   33: aload_3
-    //   34: getfield 389	tencent/im/msg/im_msg_body$Ptt:uint32_file_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   37: aload_0
-    //   38: getfield 390	batn:jdField_a_of_type_Long	J
-    //   41: l2i
-    //   42: invokevirtual 152	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   45: aload_0
-    //   46: getfield 391	batn:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   49: astore_2
-    //   50: aload_2
-    //   51: ifnull +23 -> 74
-    //   54: aload_3
-    //   55: getfield 394	tencent/im/msg/im_msg_body$Ptt:bytes_group_file_key	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   58: aload_0
-    //   59: getfield 391	batn:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   62: ldc_w 396
-    //   65: invokevirtual 399	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   68: invokestatic 212	com/tencent/mobileqq/pb/ByteStringMicro:copyFrom	([B)Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   71: invokevirtual 217	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
-    //   74: aload_0
-    //   75: getfield 43	batn:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   78: aload_0
-    //   79: getfield 43	batn:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   82: invokevirtual 402	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   85: invokestatic 407	azah:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)I
-    //   88: istore_1
-    //   89: new 409	tencent/im/msg/im_msg_body$Elem
-    //   92: dup
-    //   93: invokespecial 410	tencent/im/msg/im_msg_body$Elem:<init>	()V
-    //   96: astore 4
-    //   98: new 412	tencent/im/msg/im_msg_body$ElemFlags2
-    //   101: dup
-    //   102: invokespecial 413	tencent/im/msg/im_msg_body$ElemFlags2:<init>	()V
-    //   105: astore_2
-    //   106: aload_2
-    //   107: getfield 416	tencent/im/msg/im_msg_body$ElemFlags2:uint32_vip_status	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   110: iload_1
-    //   111: invokevirtual 152	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   114: aload 4
-    //   116: getfield 420	tencent/im/msg/im_msg_body$Elem:elem_flags2	Ltencent/im/msg/im_msg_body$ElemFlags2;
-    //   119: aload_2
-    //   120: invokevirtual 423	tencent/im/msg/im_msg_body$ElemFlags2:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   123: aload_3
-    //   124: getfield 427	tencent/im/msg/im_msg_body$Ptt:bool_valid	Lcom/tencent/mobileqq/pb/PBBoolField;
-    //   127: iconst_1
-    //   128: invokevirtual 431	com/tencent/mobileqq/pb/PBBoolField:set	(Z)V
-    //   131: aload_3
-    //   132: getfield 434	tencent/im/msg/im_msg_body$Ptt:uint32_file_size	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   135: aload_0
-    //   136: getfield 69	batn:jdField_q_of_type_Long	J
-    //   139: l2i
-    //   140: invokevirtual 152	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   143: aload_3
-    //   144: getfield 437	tencent/im/msg/im_msg_body$Ptt:bytes_file_md5	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   147: aload_0
-    //   148: getfield 75	batn:jdField_a_of_type_ArrayOfByte	[B
-    //   151: invokestatic 212	com/tencent/mobileqq/pb/ByteStringMicro:copyFrom	([B)Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   154: invokevirtual 217	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
-    //   157: aload_3
-    //   158: getfield 440	tencent/im/msg/im_msg_body$Ptt:bytes_file_name	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   161: aload_0
-    //   162: getfield 65	batn:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   165: invokestatic 444	com/tencent/mobileqq/pb/ByteStringMicro:copyFromUtf8	(Ljava/lang/String;)Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   168: invokevirtual 217	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
-    //   171: aload_0
-    //   172: aload_0
-    //   173: getfield 79	batn:jdField_a_of_type_Bayk	Lbayk;
-    //   176: getfield 84	bayk:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
-    //   179: checkcast 97	com/tencent/mobileqq/data/MessageForPtt
-    //   182: invokespecial 446	batn:a	(Lcom/tencent/mobileqq/data/MessageForPtt;)[B
-    //   185: astore_2
-    //   186: aload_2
-    //   187: ifnull +14 -> 201
-    //   190: aload_3
-    //   191: getfield 449	tencent/im/msg/im_msg_body$Ptt:bytes_pb_reserve	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   194: aload_2
-    //   195: invokestatic 212	com/tencent/mobileqq/pb/ByteStringMicro:copyFrom	([B)Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   198: invokevirtual 217	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
-    //   201: new 136	tencent/im/msg/im_msg_body$RichText
-    //   204: dup
-    //   205: invokespecial 450	tencent/im/msg/im_msg_body$RichText:<init>	()V
-    //   208: astore_2
-    //   209: aload_2
-    //   210: getfield 140	tencent/im/msg/im_msg_body$RichText:ptt	Ltencent/im/msg/im_msg_body$Ptt;
-    //   213: aload_3
-    //   214: invokevirtual 451	tencent/im/msg/im_msg_body$Ptt:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   217: aload_2
-    //   218: getfield 455	tencent/im/msg/im_msg_body$RichText:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   221: aload 4
-    //   223: invokevirtual 460	com/tencent/mobileqq/pb/PBRepeatMessageField:add	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   226: aload_2
-    //   227: areturn
-    //   228: astore_3
-    //   229: aconst_null
-    //   230: astore_2
-    //   231: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   234: ifeq -8 -> 226
-    //   237: ldc_w 462
-    //   240: iconst_2
-    //   241: ldc_w 464
-    //   244: aload_3
-    //   245: invokestatic 467	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   248: aconst_null
-    //   249: areturn
-    //   250: astore_2
-    //   251: goto -177 -> 74
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	254	0	this	batn
-    //   88	23	1	i	int
-    //   49	182	2	localObject	Object
-    //   250	1	2	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
-    //   7	207	3	localPtt	im_msg_body.Ptt
-    //   228	17	3	localException	Exception
-    //   96	126	4	localElem	tencent.im.msg.im_msg_body.Elem
-    // Exception table:
-    //   from	to	target	type
-    //   0	50	228	java/lang/Exception
-    //   54	74	228	java/lang/Exception
-    //   74	186	228	java/lang/Exception
-    //   190	201	228	java/lang/Exception
-    //   201	226	228	java/lang/Exception
-    //   54	74	250	java/io/UnsupportedEncodingException
-  }
-  
-  public im_msg_body.RichText a(MessageForPtt paramMessageForPtt)
-  {
-    im_msg_body.RichText localRichText = a();
-    a(localRichText, paramMessageForPtt);
-    return localRichText;
-  }
-  
-  /* Error */
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void a()
   {
     // Byte code:
     //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 79	batn:jdField_a_of_type_Bayk	Lbayk;
-    //   6: iconst_1
-    //   7: putfield 476	bayk:jdField_l_of_type_Boolean	Z
-    //   10: aload_0
-    //   11: getfield 79	batn:jdField_a_of_type_Bayk	Lbayk;
-    //   14: getfield 84	bayk:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
-    //   17: checkcast 97	com/tencent/mobileqq/data/MessageForPtt
-    //   20: astore_1
-    //   21: aload_1
-    //   22: iload_3
-    //   23: putfield 158	com/tencent/mobileqq/data/MessageForPtt:voiceLength	I
-    //   26: aload_1
-    //   27: iload_2
-    //   28: putfield 100	com/tencent/mobileqq/data/MessageForPtt:voiceType	I
-    //   31: aload_0
-    //   32: getfield 478	batn:jdField_b_of_type_Boolean	Z
-    //   35: ifne +18 -> 53
-    //   38: aload_0
-    //   39: invokevirtual 480	batn:d	()I
-    //   42: ifne +8 -> 50
-    //   45: aload_0
-    //   46: iconst_0
-    //   47: invokevirtual 482	batn:b	(Z)V
-    //   50: aload_0
-    //   51: monitorexit
-    //   52: return
-    //   53: aload_0
-    //   54: invokevirtual 480	batn:d	()I
-    //   57: ifne -7 -> 50
-    //   60: aload_0
-    //   61: iconst_1
-    //   62: invokevirtual 482	batn:b	(Z)V
-    //   65: goto -15 -> 50
-    //   68: astore_1
+    //   1: ldc 97
+    //   3: invokestatic 103	com/tencent/mobileqq/richmedia/mediacodec/utils/GlUtil:createTexture	(I)I
+    //   6: putfield 105	batn:jdField_c_of_type_Int	I
+    //   9: aload_0
+    //   10: new 107	com/tencent/ttpic/openapi/filter/RenderBuffer
+    //   13: dup
+    //   14: aload_0
+    //   15: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   18: getfield 113	batj:jdField_a_of_type_Int	I
+    //   21: aload_0
+    //   22: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   25: getfield 114	batj:jdField_b_of_type_Int	I
+    //   28: ldc 115
+    //   30: invokespecial 118	com/tencent/ttpic/openapi/filter/RenderBuffer:<init>	(III)V
+    //   33: putfield 120	batn:jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer	Lcom/tencent/ttpic/openapi/filter/RenderBuffer;
+    //   36: aload_0
+    //   37: bipush 102
+    //   39: invokestatic 125	bauf:a	(I)Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   42: checkcast 69	com/tencent/ttpic/openapi/filter/GPUOESBaseFilter
+    //   45: putfield 67	batn:jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUOESBaseFilter;
+    //   48: aload_0
+    //   49: getfield 67	batn:jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUOESBaseFilter;
+    //   52: aload_0
+    //   53: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   56: getfield 113	batj:jdField_a_of_type_Int	I
+    //   59: aload_0
+    //   60: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   63: getfield 114	batj:jdField_b_of_type_Int	I
+    //   66: invokevirtual 129	com/tencent/ttpic/openapi/filter/GPUOESBaseFilter:onOutputSizeChanged	(II)V
     //   69: aload_0
-    //   70: monitorexit
-    //   71: aload_1
-    //   72: athrow
+    //   70: getfield 67	batn:jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUOESBaseFilter;
+    //   73: invokevirtual 132	com/tencent/ttpic/openapi/filter/GPUOESBaseFilter:init	()V
+    //   76: aload_0
+    //   77: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   80: getfield 134	batj:f	I
+    //   83: invokestatic 137	bauf:a	(I)Z
+    //   86: ifne +13 -> 99
+    //   89: aload_0
+    //   90: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   93: getfield 140	batj:c	Ljava/lang/String;
+    //   96: ifnull +110 -> 206
+    //   99: aload_0
+    //   100: new 76	baun
+    //   103: dup
+    //   104: invokespecial 141	baun:<init>	()V
+    //   107: putfield 74	batn:jdField_a_of_type_Baun	Lbaun;
+    //   110: aload_0
+    //   111: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   114: getfield 134	batj:f	I
+    //   117: invokestatic 137	bauf:a	(I)Z
+    //   120: ifeq +20 -> 140
+    //   123: aload_0
+    //   124: getfield 74	batn:jdField_a_of_type_Baun	Lbaun;
+    //   127: aload_0
+    //   128: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   131: getfield 134	batj:f	I
+    //   134: invokestatic 125	bauf:a	(I)Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   137: invokevirtual 144	baun:a	(Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;)V
+    //   140: aload_0
+    //   141: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   144: getfield 140	batj:c	Ljava/lang/String;
+    //   147: ifnull +31 -> 178
+    //   150: bipush 106
+    //   152: invokestatic 125	bauf:a	(I)Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   155: astore_1
+    //   156: aload_1
+    //   157: checkcast 146	bauk
+    //   160: aload_0
+    //   161: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   164: getfield 140	batj:c	Ljava/lang/String;
+    //   167: invokevirtual 149	bauk:a	(Ljava/lang/String;)V
+    //   170: aload_0
+    //   171: getfield 74	batn:jdField_a_of_type_Baun	Lbaun;
+    //   174: aload_1
+    //   175: invokevirtual 144	baun:a	(Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;)V
+    //   178: aload_0
+    //   179: getfield 74	batn:jdField_a_of_type_Baun	Lbaun;
+    //   182: aload_0
+    //   183: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   186: getfield 113	batj:jdField_a_of_type_Int	I
+    //   189: aload_0
+    //   190: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   193: getfield 114	batj:jdField_b_of_type_Int	I
+    //   196: invokevirtual 150	baun:onOutputSizeChanged	(II)V
+    //   199: aload_0
+    //   200: getfield 74	batn:jdField_a_of_type_Baun	Lbaun;
+    //   203: invokevirtual 151	baun:init	()V
+    //   206: aload_0
+    //   207: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   210: getfield 153	batj:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   213: invokestatic 159	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   216: ifne +313 -> 529
+    //   219: invokestatic 165	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   222: ifeq +11 -> 233
+    //   225: ldc 167
+    //   227: iconst_2
+    //   228: ldc 169
+    //   230: invokestatic 172	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   233: aload_0
+    //   234: aload_0
+    //   235: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   238: getfield 153	batj:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   241: aload_0
+    //   242: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   245: getfield 113	batj:jdField_a_of_type_Int	I
+    //   248: i2f
+    //   249: aload_0
+    //   250: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   253: getfield 114	batj:jdField_b_of_type_Int	I
+    //   256: i2f
+    //   257: ldc 173
+    //   259: aload_0
+    //   260: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   263: getfield 174	batj:jdField_d_of_type_Int	I
+    //   266: i2f
+    //   267: fdiv
+    //   268: f2i
+    //   269: invokestatic 179	almp:a	(Ljava/lang/String;FFI)Lalmx;
+    //   272: putfield 86	batn:jdField_a_of_type_Almx	Lalmx;
+    //   275: aload_0
+    //   276: getfield 86	batn:jdField_a_of_type_Almx	Lalmx;
+    //   279: ifnull +50 -> 329
+    //   282: aload_0
+    //   283: getfield 86	batn:jdField_a_of_type_Almx	Lalmx;
+    //   286: iconst_1
+    //   287: invokevirtual 182	almx:a	(Z)Z
+    //   290: pop
+    //   291: aload_0
+    //   292: sipush 1000
+    //   295: invokestatic 125	bauf:a	(I)Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   298: putfield 84	batn:jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   301: aload_0
+    //   302: getfield 84	batn:jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   305: aload_0
+    //   306: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   309: getfield 113	batj:jdField_a_of_type_Int	I
+    //   312: aload_0
+    //   313: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   316: getfield 114	batj:jdField_b_of_type_Int	I
+    //   319: invokevirtual 183	com/tencent/ttpic/openapi/filter/GPUBaseFilter:onOutputSizeChanged	(II)V
+    //   322: aload_0
+    //   323: getfield 84	batn:jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   326: invokevirtual 184	com/tencent/ttpic/openapi/filter/GPUBaseFilter:init	()V
+    //   329: aload_0
+    //   330: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   333: getfield 186	batj:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   336: astore_1
+    //   337: aload_1
+    //   338: ifnull +120 -> 458
+    //   341: aload_0
+    //   342: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   345: getfield 186	batj:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   348: invokestatic 192	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   351: astore_2
+    //   352: aload_0
+    //   353: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   356: getfield 195	batj:g	I
+    //   359: ifeq +220 -> 579
+    //   362: aload_2
+    //   363: sipush 360
+    //   366: aload_0
+    //   367: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   370: getfield 195	batj:g	I
+    //   373: isub
+    //   374: i2f
+    //   375: invokestatic 200	zlx:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
+    //   378: astore_1
+    //   379: aload_0
+    //   380: sipush 3553
+    //   383: aload_1
+    //   384: invokestatic 203	com/tencent/mobileqq/richmedia/mediacodec/utils/GlUtil:createTexture	(ILandroid/graphics/Bitmap;)I
+    //   387: putfield 54	batn:jdField_d_of_type_Int	I
+    //   390: aload_0
+    //   391: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   394: getfield 206	batj:i	I
+    //   397: ifne +214 -> 611
+    //   400: aload_0
+    //   401: aload_1
+    //   402: invokevirtual 212	android/graphics/Bitmap:getWidth	()I
+    //   405: putfield 214	batn:e	I
+    //   408: aload_0
+    //   409: aload_1
+    //   410: invokevirtual 217	android/graphics/Bitmap:getHeight	()I
+    //   413: putfield 218	batn:f	I
+    //   416: aload_1
+    //   417: invokevirtual 221	android/graphics/Bitmap:recycle	()V
+    //   420: aload_0
+    //   421: sipush 1000
+    //   424: invokestatic 125	bauf:a	(I)Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   427: putfield 79	batn:jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   430: aload_0
+    //   431: getfield 79	batn:jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   434: aload_0
+    //   435: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   438: getfield 113	batj:jdField_a_of_type_Int	I
+    //   441: aload_0
+    //   442: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   445: getfield 114	batj:jdField_b_of_type_Int	I
+    //   448: invokevirtual 183	com/tencent/ttpic/openapi/filter/GPUBaseFilter:onOutputSizeChanged	(II)V
+    //   451: aload_0
+    //   452: getfield 79	batn:jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   455: invokevirtual 184	com/tencent/ttpic/openapi/filter/GPUBaseFilter:init	()V
+    //   458: aload_0
+    //   459: bipush 101
+    //   461: invokestatic 125	bauf:a	(I)Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   464: putfield 92	batn:jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   467: aload_0
+    //   468: getfield 92	batn:jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   471: aload_0
+    //   472: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   475: getfield 113	batj:jdField_a_of_type_Int	I
+    //   478: aload_0
+    //   479: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   482: getfield 114	batj:jdField_b_of_type_Int	I
+    //   485: invokevirtual 183	com/tencent/ttpic/openapi/filter/GPUBaseFilter:onOutputSizeChanged	(II)V
+    //   488: aload_0
+    //   489: getfield 92	batn:jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
+    //   492: invokevirtual 184	com/tencent/ttpic/openapi/filter/GPUBaseFilter:init	()V
+    //   495: aload_0
+    //   496: getfield 64	batn:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder;
+    //   499: aload_0
+    //   500: getfield 223	batn:jdField_a_of_type_Barv	Lbarv;
+    //   503: aload_0
+    //   504: getfield 105	batn:jdField_c_of_type_Int	I
+    //   507: aload_0
+    //   508: aload_0
+    //   509: invokevirtual 226	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder:a	(Lbarv;ILandroid/graphics/SurfaceTexture$OnFrameAvailableListener;Lbary;)V
+    //   512: aload_0
+    //   513: getfield 228	batn:jdField_a_of_type_Batv	Lbatv;
+    //   516: ifnull +160 -> 676
+    //   519: aload_0
+    //   520: getfield 228	batn:jdField_a_of_type_Batv	Lbatv;
+    //   523: invokeinterface 230 1 0
+    //   528: return
+    //   529: invokestatic 165	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   532: ifeq -203 -> 329
+    //   535: ldc 167
+    //   537: iconst_2
+    //   538: ldc 232
+    //   540: invokestatic 234	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   543: goto -214 -> 329
+    //   546: astore_1
+    //   547: aload_0
+    //   548: iconst_4
+    //   549: aload_1
+    //   550: invokevirtual 238	batn:a_	(ILjava/lang/Throwable;)V
+    //   553: ldc 167
+    //   555: iconst_1
+    //   556: new 240	java/lang/StringBuilder
+    //   559: dup
+    //   560: invokespecial 241	java/lang/StringBuilder:<init>	()V
+    //   563: ldc 243
+    //   565: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   568: aload_1
+    //   569: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   572: invokevirtual 254	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   575: invokestatic 234	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   578: return
+    //   579: aload_2
+    //   580: astore_1
+    //   581: aload_0
+    //   582: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   585: getfield 206	batj:i	I
+    //   588: ifeq -209 -> 379
+    //   591: aload_2
+    //   592: sipush 360
+    //   595: aload_0
+    //   596: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   599: getfield 206	batj:i	I
+    //   602: isub
+    //   603: i2f
+    //   604: invokestatic 200	zlx:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
+    //   607: astore_1
+    //   608: goto -229 -> 379
+    //   611: aload_0
+    //   612: aload_1
+    //   613: invokevirtual 217	android/graphics/Bitmap:getHeight	()I
+    //   616: putfield 214	batn:e	I
+    //   619: aload_0
+    //   620: aload_1
+    //   621: invokevirtual 212	android/graphics/Bitmap:getWidth	()I
+    //   624: putfield 218	batn:f	I
+    //   627: goto -211 -> 416
+    //   630: astore_1
+    //   631: invokestatic 165	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   634: ifeq +36 -> 670
+    //   637: ldc 167
+    //   639: iconst_2
+    //   640: new 240	java/lang/StringBuilder
+    //   643: dup
+    //   644: invokespecial 241	java/lang/StringBuilder:<init>	()V
+    //   647: ldc_w 256
+    //   650: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   653: aload_0
+    //   654: getfield 109	batn:jdField_a_of_type_Batj	Lbatj;
+    //   657: getfield 186	batj:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   660: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   663: invokevirtual 254	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   666: aload_1
+    //   667: invokestatic 259	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   670: aload_0
+    //   671: iconst_1
+    //   672: aload_1
+    //   673: invokevirtual 238	batn:a_	(ILjava/lang/Throwable;)V
+    //   676: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	73	0	this	batn
-    //   0	73	1	paramString	String
-    //   0	73	2	paramInt1	int
-    //   0	73	3	paramInt2	int
+    //   0	677	0	this	batn
+    //   155	262	1	localObject1	Object
+    //   546	23	1	localException	Exception
+    //   580	41	1	localObject2	Object
+    //   630	43	1	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   351	241	2	localBitmap	android.graphics.Bitmap
     // Exception table:
     //   from	to	target	type
-    //   2	50	68	finally
-    //   50	52	68	finally
-    //   53	65	68	finally
-    //   69	71	68	finally
+    //   0	99	546	java/lang/Exception
+    //   99	140	546	java/lang/Exception
+    //   140	178	546	java/lang/Exception
+    //   178	206	546	java/lang/Exception
+    //   206	233	546	java/lang/Exception
+    //   233	329	546	java/lang/Exception
+    //   329	337	546	java/lang/Exception
+    //   341	379	546	java/lang/Exception
+    //   379	416	546	java/lang/Exception
+    //   416	420	546	java/lang/Exception
+    //   420	458	546	java/lang/Exception
+    //   458	528	546	java/lang/Exception
+    //   529	543	546	java/lang/Exception
+    //   581	608	546	java/lang/Exception
+    //   611	627	546	java/lang/Exception
+    //   631	670	546	java/lang/Exception
+    //   670	676	546	java/lang/Exception
+    //   341	379	630	java/lang/OutOfMemoryError
+    //   379	416	630	java/lang/OutOfMemoryError
+    //   416	420	630	java/lang/OutOfMemoryError
+    //   581	608	630	java/lang/OutOfMemoryError
+    //   611	627	630	java/lang/OutOfMemoryError
   }
   
-  protected void a(boolean paramBoolean)
+  public void a(int paramInt, Throwable paramThrowable)
   {
-    if (!paramBoolean)
-    {
-      c(paramBoolean);
-      u();
-      if (this.v == 1)
-      {
-        this.jdField_c_of_type_Barh.jdField_a_of_type_Int = 1;
-        paramBoolean = true;
-      }
+    a_(paramInt + 10000, paramThrowable);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Mp4ReEncoder", 2, "onDecodeFrame wait timestamp = " + paramLong);
     }
-    for (;;)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      t();
-      Object localObject = this.jdField_a_of_type_Barh.a(1) + ";" + this.jdField_b_of_type_Barh.a(2) + ";" + this.jdField_c_of_type_Barh.a(3);
+      if (this.jdField_a_of_type_Long >= paramLong)
+      {
+        this.jdField_b_of_type_Boolean = true;
+        QLog.e("Mp4ReEncoder", 2, "mLastDecodeTimestamp >= timestampNanos; mLastDecodeTimestamp = " + this.jdField_a_of_type_Long + " timestampNanos = " + paramLong);
+        return;
+      }
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Long = paramLong;
+    }
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      this.jdField_b_of_type_JavaLangObject.notifyAll();
       if (QLog.isColorLevel()) {
-        QLog.d("GroupPttUploadProcessor", 2, "doDSReport : GroupPic doReport : result:" + paramBoolean);
+        QLog.d("Mp4ReEncoder", 2, "onDecodeFrame start timestamp = " + paramLong);
       }
-      if (this.jdField_a_of_type_Bayk.e == 1030)
-      {
-        AppNetConnInfo.unregisterNetEventHandler(this);
-        return;
-      }
-      if ((!paramBoolean) && (bawk.b(this.jdField_j_of_type_Int)))
-      {
-        AppNetConnInfo.unregisterNetEventHandler(this);
-        return;
-      }
-      if ((this.h) || ((paramBoolean) && ((this.jdField_m_of_type_Int & 0x2) > 0)) || ((!paramBoolean) && ((this.jdField_m_of_type_Int & 0x1) > 0)))
-      {
-        AppNetConnInfo.unregisterNetEventHandler(this);
-        return;
-      }
-      int j = this.jdField_m_of_type_Int;
-      int i;
-      MessageForPtt localMessageForPtt;
-      label267:
-      long l1;
-      label275:
-      long l2;
-      if (paramBoolean)
-      {
-        i = 2;
-        this.jdField_m_of_type_Int = (i | j);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Bayk.jdField_i_of_type_JavaLangString))
-        {
-          localMessageForPtt = (MessageForPtt)this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-          String str = this.jdField_a_of_type_Bayk.jdField_i_of_type_JavaLangString;
-          if (localMessageForPtt != null) {
-            break label1107;
-          }
-          i = 0;
-          if (localMessageForPtt != null) {
-            break label1117;
-          }
-          l1 = 0L;
-          bavt.a(str, true, paramBoolean, i, l1);
-        }
-        this.jdField_l_of_type_Long = System.currentTimeMillis();
-        long l3 = System.nanoTime();
-        l2 = (l3 - this.jdField_k_of_type_Long) / 1000000L;
-        Log.i("AutoMonitor", "SendGrpPic, cost=" + (this.jdField_b_of_type_Barh.jdField_b_of_type_Long - this.jdField_b_of_type_Barh.jdField_a_of_type_Long) / 1000000L);
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_step", localObject);
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_grpUin", this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString);
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_fileid", String.valueOf(this.jdField_a_of_type_Long));
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_picmd5", this.jdField_d_of_type_JavaLangString);
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_isPresend", this.jdField_a_of_type_Bayk.jdField_i_of_type_Boolean + "");
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_isSecondTrans", this.f + "");
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_PhoneType", aips.a() + "");
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_NetType", bdin.a(BaseApplication.getContext()) + "");
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_IsRawPic", this.jdField_l_of_type_Boolean + "");
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_uinType", String.valueOf(this.jdField_a_of_type_Bayk.jdField_a_of_type_Int));
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_quickHttp", String.valueOf(this.jdField_i_of_type_Boolean));
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_picType", String.valueOf(this.jdField_u_of_type_Int));
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_busi", String.valueOf(this.jdField_a_of_type_Bayk.e));
-        localObject = this.jdField_a_of_type_JavaUtilHashMap;
-        if (!this.jdField_a_of_type_Bayk.jdField_q_of_type_Boolean) {
-          break label1127;
-        }
-        i = 1;
-        label691:
-        ((HashMap)localObject).put("param_source_type", String.valueOf(i));
-        if (this.g)
-        {
-          this.jdField_a_of_type_JavaUtilHashMap.put("param_pttNetDown", String.valueOf(this.jdField_b_of_type_Long / 1000000L));
-          if (QLog.isColorLevel()) {
-            QLog.d("weak_net", 2, String.valueOf(this.jdField_b_of_type_Long / 1000000L));
-          }
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_pttOpt", String.valueOf(awxt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)));
-        f(paramBoolean);
-        if (!paramBoolean) {
-          break label1133;
-        }
-        p();
-        if (this.jdField_a_of_type_Bayk.jdField_i_of_type_Boolean)
-        {
-          l1 = 0L;
-          if (this.jdField_u_of_type_Long != 0L) {
-            l1 = (l3 - this.jdField_u_of_type_Long) / 1000000L;
-          }
-          if (this.jdField_a_of_type_Bayk.j) {
-            l1 = l2;
-          }
-          double d = l1 / l2;
-          aips.a(l1, this.jdField_q_of_type_Long, this.f, d);
-          if ((d >= 0.0D) && (d <= 1.0D)) {
-            this.jdField_a_of_type_JavaUtilHashMap.put("param_AIOPercent", d + "");
-          }
-          this.jdField_a_of_type_JavaUtilHashMap.put("param_AIODuration", l1 + "");
-          if (QLog.isColorLevel()) {
-            QLog.d("GroupPttUploadProcessor", 2, "doReport ,mStartTime = " + this.jdField_k_of_type_Long + ",mEnterAioTime = " + this.jdField_u_of_type_Long + ",finishTime  = " + l3 + ", aioDuration = " + l1 + ", duration = " + l2 + "processor:" + this + ",mUiRequest.myPresendInvalid = " + this.jdField_a_of_type_Bayk.j + ",Percent = " + d);
-          }
-        }
-        b(true, l2);
-        azri.a(BaseApplication.getContext()).a(null, b(), true, l2, this.jdField_q_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
-      }
-      for (;;)
-      {
-        l();
-        AppNetConnInfo.unregisterNetEventHandler(this);
-        return;
-        i = 1;
-        break;
-        label1107:
-        i = localMessageForPtt.voiceChangeFlag;
-        break label267;
-        label1117:
-        l1 = localMessageForPtt.fileSize;
-        break label275;
-        label1127:
-        i = 0;
-        break label691;
-        label1133:
-        if (this.jdField_j_of_type_Int != -9527) {
-          this.jdField_a_of_type_JavaUtilHashMap.remove("param_rspHeader");
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.remove("param_url");
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.jdField_j_of_type_Int));
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.jdField_j_of_type_JavaLangString);
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_picSize", String.valueOf(this.jdField_q_of_type_Long));
-        this.jdField_a_of_type_JavaUtilHashMap.put("param_uniseq", String.valueOf(this.jdField_a_of_type_Bayk.jdField_a_of_type_Long));
-        b(false, l2);
-        azri.a(BaseApplication.getContext()).a(null, b(), false, l2, this.jdField_q_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
-      }
-    }
-  }
-  
-  public void aP_()
-  {
-    super.aP_();
-    if (!this.jdField_a_of_type_Bayk.jdField_l_of_type_Boolean)
-    {
-      if (bedn.a(this.jdField_a_of_type_Bayk.jdField_i_of_type_JavaLangString, this)) {
-        try
-        {
-          if (this.jdField_b_of_type_Boolean)
-          {
-            d(1001);
-            this.jdField_b_of_type_Boolean = true;
-          }
-          return;
-        }
-        finally {}
-      }
-      if (d() == 0) {
-        b(false);
-      }
-    }
-    else
-    {
-      b(false);
-    }
-  }
-  
-  public int b()
-  {
-    if ((this.jdField_a_of_type_Bayk.jdField_n_of_type_Boolean) && (this.jdField_a_of_type_Bayk.o))
-    {
-      i();
-      g();
-    }
-    while (!this.jdField_k_of_type_Boolean) {
-      return 0;
-    }
-    this.jdField_k_of_type_Boolean = false;
-    this.o = false;
-    d(1002);
-    if (this.w != 1) {
-      this.jdField_m_of_type_JavaLangString = null;
-    }
-    this.t = 0;
-    this.jdField_s_of_type_Int = 0;
-    this.jdField_r_of_type_Int = 0;
-    this.jdField_j_of_type_Int = 0;
-    this.jdField_j_of_type_JavaLangString = "";
-    v();
-    this.jdField_a_of_type_Bayf.a.post(new GroupPttUploadProcessor.3(this));
-    return 0;
-  }
-  
-  protected String b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return "actGrpPttUp";
-    }
-    return "actDisscusPttUp";
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      d(1001);
-    }
-    d(1000);
-    this.jdField_a_of_type_Bass.a();
-    d(1001);
-    if ((this.jdField_a_of_type_ArrayOfByte == null) && (!h()))
-    {
-      d();
-      return;
-    }
-    if (this.jdField_a_of_type_JavaIoRandomAccessFile == null) {
       try
       {
-        this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(this.jdField_a_of_type_Bayk.jdField_i_of_type_JavaLangString, "r");
-        if (this.jdField_a_of_type_JavaIoRandomAccessFile == null)
-        {
-          b(9303, "read file error");
-          d();
-          return;
+        this.jdField_a_of_type_JavaLangObject.wait(2000L);
+        if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int == 0) && (!this.jdField_c_of_type_Boolean)) {
+          a_(3, new RuntimeException("frame wait timed out"));
         }
+        if (QLog.isColorLevel()) {
+          QLog.d("Mp4ReEncoder", 2, "onDecodeFrame end timestamp = " + paramLong);
+        }
+        this.jdField_a_of_type_Boolean = false;
+        return;
       }
-      catch (FileNotFoundException localFileNotFoundException)
+      catch (InterruptedException localInterruptedException)
       {
-        for (;;)
-        {
-          localFileNotFoundException.printStackTrace();
-          this.jdField_a_of_type_JavaIoRandomAccessFile = null;
+        if (!QLog.isColorLevel()) {
+          break label274;
         }
+        QLog.d("Mp4ReEncoder", 2, "onDecodeFrame InterruptedException");
+        this.jdField_a_of_type_Boolean = false;
+        throw localInterruptedException;
       }
-    }
-    MessageForPtt localMessageForPtt = (MessageForPtt)this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    String str = this.jdField_a_of_type_Bayk.jdField_i_of_type_JavaLangString;
-    int i;
-    if (localMessageForPtt == null)
-    {
-      i = 0;
-      if (localMessageForPtt != null) {
-        break label184;
-      }
-    }
-    label184:
-    for (long l = 0L;; l = localMessageForPtt.fileSize)
-    {
-      bavt.a(str, false, false, i, l);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().preConnect();
-      f();
-      return;
-      i = localMessageForPtt.voiceChangeFlag;
-      break;
+      localObject3 = finally;
+      throw localObject3;
     }
   }
   
-  public int c()
+  public void a(barv parambarv, batj parambatj, batv parambatv, bato parambato)
   {
-    super.c();
-    if (!this.jdField_a_of_type_Bayk.jdField_l_of_type_Boolean) {
-      return 0;
-    }
-    return d();
+    this.jdField_a_of_type_Barv = parambarv;
+    this.jdField_a_of_type_Batj = parambatj;
+    this.jdField_a_of_type_Batv = parambatv;
+    this.jdField_a_of_type_Bato = parambato;
+    this.jdField_a_of_type_Batx.a(parambatj, this);
+    this.jdField_c_of_type_Boolean = false;
   }
   
-  public long c()
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Bayk.jdField_l_of_type_Boolean) {
-      return super.c();
+    if (this.jdField_a_of_type_Batv != null) {
+      this.jdField_a_of_type_Batv.a(paramString);
     }
-    return 7000L;
+    if (this.jdField_d_of_type_Int != -1)
+    {
+      GlUtil.deleteTexture(this.jdField_d_of_type_Int);
+      this.jdField_d_of_type_Int = -1;
+    }
+    if (this.jdField_c_of_type_Int != -1)
+    {
+      GlUtil.deleteTexture(this.jdField_c_of_type_Int);
+      this.jdField_c_of_type_Int = -1;
+    }
+    GlUtil.deleteTexture(this.jdField_c_of_type_Int);
+    d();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
   }
+  
+  public void a_(int paramInt, Throwable paramThrowable)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder.a();
+    if (this.jdField_a_of_type_Batv != null) {
+      this.jdField_a_of_type_Batv.a_(paramInt, paramThrowable);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Batv != null) {
+      this.jdField_a_of_type_Batv.b();
+    }
+  }
+  
+  public void b(long paramLong) {}
   
   public void c()
   {
-    super.c();
-    if (!this.jdField_k_of_type_Boolean)
-    {
-      this.jdField_k_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        b("pause", "");
-      }
-      d(1006);
-      if (this.jdField_a_of_type_Bbax != null)
-      {
-        bbcd.b(this.jdField_a_of_type_Bbax);
-        this.jdField_a_of_type_Bbax = null;
-      }
+    yqp.d("Richard", "cancelEncode");
+    if (QLog.isColorLevel()) {
+      QLog.d("Mp4ReEncoder", 2, "cancelEncode");
     }
-    switch (this.w)
-    {
-    default: 
-      return;
-    case 0: 
-      d("<BDH_LOG> pause() BUT current status is INIT");
-      return;
-    }
-    if (this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction != null)
-    {
-      d("<BDH_LOG> pause() pause BDH channel, transation id=" + this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().stopTransactionTask(this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-      return;
-    }
-    d("<BDH_LOG> pause() pause BDH channel, but trans == null");
-  }
-  
-  protected int d()
-  {
-    b("uiParam", this.jdField_a_of_type_Bayk.toString());
-    switch (this.jdField_a_of_type_Bayk.jdField_a_of_type_Int)
-    {
-    }
-    for (this.jdField_a_of_type_Boolean = false; this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null; this.jdField_a_of_type_Boolean = true)
-    {
-      b(9302, a(new Exception("message null")));
-      d();
-      return -1;
-    }
-    String str = this.jdField_a_of_type_Bayk.jdField_i_of_type_JavaLangString;
-    if (TextUtils.isEmpty(str))
-    {
-      b(9302, a(new Exception("filePath null")));
-      d();
-      return -1;
-    }
-    File localFile = new File(str);
-    if (!localFile.exists())
-    {
-      b(9042, a(new Exception("sendFile not exist " + str)));
-      d();
-      return -1;
-    }
-    if (!localFile.canRead())
-    {
-      b(9070, a(new Exception("sendFile not readable " + this.jdField_a_of_type_Bass.jdField_c_of_type_JavaLangString)));
-      d();
-      return -1;
-    }
-    this.n = str;
-    long l = localFile.length();
-    this.jdField_a_of_type_Bass.jdField_a_of_type_Long = l;
-    this.jdField_q_of_type_Long = l;
-    if (l <= 0L)
-    {
-      b(9071, a(new Exception("file size 0 " + str)));
-      d();
-      return -1;
-    }
-    this.e = "amr";
-    return 0;
-  }
-  
-  void d()
-  {
-    super.d();
-    d(1005);
-    if (this.jdField_a_of_type_Bayk.jdField_a_of_type_Awkh != null)
-    {
-      awki localawki = new awki();
-      localawki.jdField_a_of_type_Int = -1;
-      localawki.jdField_b_of_type_Int = this.jdField_j_of_type_Int;
-      localawki.jdField_a_of_type_JavaLangString = this.jdField_j_of_type_JavaLangString;
-      this.jdField_a_of_type_Bayk.jdField_a_of_type_Awkh.b(localawki);
-    }
-    if (this.jdField_a_of_type_Bayk.jdField_n_of_type_Boolean) {
-      awym.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(a());
-    }
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    MessageRecord localMessageRecord;
-    if (this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
-    {
-      localMessageRecord = this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      if (localMessageRecord != null) {
-        break label78;
-      }
-      b("updateDb", "msg null");
-    }
-    label78:
-    Object localObject;
-    label316:
-    azwy localazwy;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, this.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
-            b("updateDb", "findmsgbyMsgId,need fix");
-            break;
-            if (localMessageRecord.isMultiMsg)
-            {
-              b("updateDb", "is multiMsg");
-              return;
-            }
-            if ((this.jdField_a_of_type_Bayk.jdField_b_of_type_Int != 2) || (!(localMessageRecord instanceof MessageForPtt))) {
-              break label316;
-            }
-            localObject = (MessageForPtt)localMessageRecord;
-            if (!this.jdField_a_of_type_Bayk.jdField_n_of_type_Boolean) {
-              ((MessageForPtt)localObject).url = MessageForPtt.getMsgFilePath(((MessageForPtt)localObject).voiceType, this.jdField_a_of_type_Bayk.jdField_i_of_type_JavaLangString);
-            }
-            ((MessageForPtt)localObject).fileSize = this.jdField_q_of_type_Long;
-            ((MessageForPtt)localObject).urlAtServer = this.jdField_d_of_type_JavaLangString;
-            ((MessageForPtt)localObject).itemType = 2;
-            ((MessageForPtt)localObject).groupFileID = this.jdField_a_of_type_Long;
-            ((MessageForPtt)localObject).groupFileKeyStr = this.jdField_a_of_type_JavaLangString;
-            ((MessageForPtt)localObject).md5 = this.jdField_c_of_type_JavaLangString;
-            ((MessageForPtt)localObject).serial();
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, localMessageRecord.uniseq, ((MessageForPtt)localObject).msgData);
-          } while ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForPtt)) || (!((baam)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(17)).b((MessageForPtt)localMessageRecord)));
-          azqs.b(null, "dc00898", "", "", "0X8009DF6", "0X8009DF6", 0, 0, "", "", "", "");
-          ((baaj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(17)).b((MessageForPtt)localMessageRecord, 2);
-          return;
-          if ((localMessageRecord instanceof MessageForPic))
-          {
-            localObject = (MessageForPic)localMessageRecord;
-            ((MessageForPic)localObject).path = this.jdField_a_of_type_Bayk.jdField_i_of_type_JavaLangString;
-            ((MessageForPic)localObject).size = this.jdField_q_of_type_Long;
-            ((MessageForPic)localObject).uuid = this.jdField_d_of_type_JavaLangString;
-            ((MessageForPic)localObject).groupFileID = this.jdField_a_of_type_Long;
-            ((MessageForPic)localObject).md5 = this.jdField_c_of_type_JavaLangString;
-            ((MessageForPic)localObject).type = 1;
-            ((MessageForPic)localObject).serial();
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, localMessageRecord.uniseq, ((MessageForPic)localObject).msgData);
-            return;
-          }
-        } while (!(localMessageRecord instanceof MessageForStructing));
-        localObject = (MessageForStructing)localMessageRecord;
-      } while ((((MessageForStructing)localObject).structingMsg == null) || (!(((MessageForStructing)localObject).structingMsg instanceof StructMsgForImageShare)));
-      localazwy = ((StructMsgForImageShare)((MessageForStructing)localObject).structingMsg).getFirstImageElement();
-    } while (localazwy == null);
-    localazwy.U = this.jdField_c_of_type_JavaLangString;
-    localazwy.T = this.jdField_d_of_type_JavaLangString;
-    localazwy.d = this.jdField_q_of_type_Long;
-    localazwy.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
-    localazwy.e = localMessageRecord.time;
-    ((MessageForStructing)localObject).msgData = ((MessageForStructing)localObject).structingMsg.getBytes();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, localMessageRecord.uniseq, ((MessageForStructing)localObject).msgData);
-  }
-  
-  void e()
-  {
-    super.e();
-    if (this.jdField_a_of_type_Bayk.jdField_a_of_type_Awkh != null)
-    {
-      awki localawki = new awki();
-      localawki.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
-      localawki.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-      localawki.jdField_c_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-      localawki.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Bayk.jdField_i_of_type_JavaLangString;
-      localawki.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Bayk.jdField_a_of_type_Awkh.b(localawki);
-    }
-    for (;;)
-    {
-      d(1003);
-      return;
-      d(true);
-    }
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder.a();
   }
   
   public void f()
   {
-    int i = 3;
     if (QLog.isColorLevel()) {
-      QLog.d("GroupPttUploadProcessor", 2, "<BDH_LOG> sendFileByBDH Start.   this:" + this);
+      QLog.d("Mp4ReEncoder", 2, "onDecodeStart");
     }
-    this.jdField_b_of_type_Barh.a();
-    if (this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
+    this.jdField_d_of_type_Boolean = false;
+  }
+  
+  public void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Mp4ReEncoder", 2, "onDecodeFinish");
+    }
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_Batx.b();
+  }
+  
+  public void i()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Mp4ReEncoder", 2, "onDecodeCancel");
+    }
+    this.jdField_a_of_type_Batx.b();
+  }
+  
+  public void l() {}
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    if ((this.jdField_b_of_type_Long >= this.jdField_a_of_type_Long) && (!this.jdField_b_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Mp4ReEncoder", 2, "onFrameAvailable wait onDecodeFrame. mLastAvailableTimestamp = " + this.jdField_b_of_type_Long + " , mLastDecodeTimestamp " + this.jdField_a_of_type_Long);
+      }
+      try
+      {
+        synchronized (this.jdField_b_of_type_JavaLangObject)
+        {
+          this.jdField_b_of_type_JavaLangObject.wait(5L);
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          localInterruptedException.printStackTrace();
+        }
+      }
+    }
+    if (this.jdField_b_of_type_Boolean)
+    {
+      QLog.e("Mp4ReEncoder", 2, "onFrameAvailable skipDecode");
       return;
     }
-    long l = SystemClock.uptimeMillis();
-    Object localObject1 = new cmd0x388.ReqBody();
-    ((cmd0x388.ReqBody)localObject1).setHasFlag(true);
-    ((cmd0x388.ReqBody)localObject1).uint32_subcmd.set(3);
-    int j = bbaj.a();
-    ((cmd0x388.ReqBody)localObject1).uint32_net_type.set(j);
     if (QLog.isColorLevel()) {
-      QLog.d("RecordParams", 2, "GroupPttUp: net[" + j + "]");
+      QLog.d("Mp4ReEncoder", 2, "onFrameAvailable wait");
     }
-    Object localObject2 = a();
-    cmd0x388.TryUpPttReq localTryUpPttReq = new cmd0x388.TryUpPttReq();
-    localTryUpPttReq.setHasFlag(true);
-    localTryUpPttReq.uint64_src_uin.set(Long.valueOf(((bbbh)localObject2).jdField_c_of_type_JavaLangString).longValue());
-    localTryUpPttReq.uint64_group_code.set(Long.valueOf(((bbbh)localObject2).jdField_d_of_type_JavaLangString).longValue());
-    localTryUpPttReq.uint64_file_id.set(0L);
-    localTryUpPttReq.uint64_file_size.set(((bbbh)localObject2).jdField_b_of_type_Int);
-    localTryUpPttReq.bytes_file_md5.set(ByteStringMicro.copyFrom(((bbbh)localObject2).jdField_a_of_type_ArrayOfByte));
-    localTryUpPttReq.bytes_file_name.set(ByteStringMicro.copyFromUtf8(((bbbh)localObject2).jdField_a_of_type_JavaLangString));
-    localTryUpPttReq.uint32_src_term.set(5);
-    localTryUpPttReq.uint32_platform_type.set(9);
-    PBUInt32Field localPBUInt32Field = localTryUpPttReq.uint32_bu_type;
-    if (((bbbh)localObject2).f == 1) {}
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if ((this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Int != 0) || (this.jdField_d_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_JavaLangObject.notifyAll();
+        QLog.w("Mp4ReEncoder", 2, "onFrameAvailable error=" + this.jdField_b_of_type_Int + " ; canceled=" + this.jdField_c_of_type_Boolean + "; stopped=" + this.jdField_d_of_type_Boolean);
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Mp4ReEncoder", 2, "onFrameAvailable start");
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      a_(5, new RuntimeException("mFrameAvailable already set, frame could be dropped"));
+    }
+    label754:
     for (;;)
     {
-      localPBUInt32Field.set(i);
-      localTryUpPttReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(baws.a()));
-      localTryUpPttReq.uint32_voice_length.set(((bbbh)localObject2).jdField_a_of_type_Int);
-      localTryUpPttReq.uint32_codec.set(((bbbh)localObject2).jdField_c_of_type_Int);
-      localTryUpPttReq.uint32_voice_type.set(((bbbh)localObject2).jdField_d_of_type_Int);
-      localTryUpPttReq.bool_new_up_chan.set(true);
-      if (QLog.isColorLevel()) {
-        QLog.d("RecordParams", 2, "GroupPttUp: panel[" + ((bbbh)localObject2).jdField_d_of_type_Int + "] type[" + ((bbbh)localObject2).jdField_c_of_type_Int + "] length[" + ((bbbh)localObject2).jdField_a_of_type_Int + "] size[" + ((bbbh)localObject2).jdField_b_of_type_Int + "]");
+      try
+      {
+        paramSurfaceTexture.updateTexImage();
+        this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+        if (QLog.isColorLevel()) {
+          QLog.d("Mp4ReEncoder", 2, "onFrameAvailable timestap = " + this.jdField_b_of_type_Long);
+        }
+        float[] arrayOfFloat = new float[16];
+        paramSurfaceTexture.getTransformMatrix(arrayOfFloat);
+        ??? = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter.drawTexture(this.jdField_c_of_type_Int, null, null);
+        paramSurfaceTexture = (SurfaceTexture)???;
+        if (this.jdField_a_of_type_Baun != null)
+        {
+          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+          this.jdField_a_of_type_Baun.drawTexture(((RenderBuffer)???).getTexId(), null, null);
+          paramSurfaceTexture = this.jdField_a_of_type_Baun.a();
+          paramSurfaceTexture.bind();
+        }
+        if ((this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null) && (this.jdField_a_of_type_Almx != null))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Mp4ReEncoder", 2, "subtitle encoder begin");
+          }
+          paramSurfaceTexture.unbind();
+          if (!this.jdField_a_of_type_Almx.a(this.jdField_b_of_type_Long / 1000000L)) {
+            break label754;
+          }
+          paramSurfaceTexture.bind();
+          i = this.jdField_a_of_type_Almx.d();
+          if (i >= 0)
+          {
+            GLES20.glEnable(3042);
+            GLES20.glBlendFunc(770, 771);
+            this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(i, null, null);
+            GLES20.glDisable(3042);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("Mp4ReEncoder", 2, "subtitle draw texture end");
+          }
+        }
+        if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null)
+        {
+          ??? = GPUBaseFilter.caculateCenterCropMvpMatrix(this.jdField_a_of_type_Batj.jdField_a_of_type_Int, this.jdField_a_of_type_Batj.jdField_b_of_type_Int, this.e, this.f);
+          GLES20.glEnable(3042);
+          GLES20.glBlendFunc(770, 771);
+          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(this.jdField_d_of_type_Int, null, (float[])???);
+          GLES20.glDisable(3042);
+        }
+        if (this.jdField_a_of_type_Bato != null) {
+          this.jdField_a_of_type_Bato.a();
+        }
+        paramSurfaceTexture.unbind();
+        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(paramSurfaceTexture.getTexId(), arrayOfFloat, null);
+        this.jdField_a_of_type_Batx.a(3553, paramSurfaceTexture.getTexId(), arrayOfFloat, null, this.jdField_b_of_type_Long);
+        int i = 1;
+        if (i > this.jdField_a_of_type_Int) {
+          break;
+        }
+        this.jdField_a_of_type_Batx.a(3553, paramSurfaceTexture.getTexId(), arrayOfFloat, null, this.jdField_b_of_type_Long + i * 5 * 1000);
+        i += 1;
+        continue;
+        paramSurfaceTexture.bind();
       }
-      ((cmd0x388.ReqBody)localObject1).rpt_msg_tryup_ptt_req.add(localTryUpPttReq);
-      localObject1 = ((cmd0x388.ReqBody)localObject1).toByteArray();
-      localObject2 = new bato(this, l);
-      this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 29, this.n, (int)this.jdField_r_of_type_Long, this.jdField_a_of_type_ArrayOfByte, (ITransactionCallback)localObject2, (byte[])localObject1, false);
-      localObject1 = new batp(this);
-      this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.cbForReport = ((ITransCallbackForReport)localObject1);
-      i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().submitTransactionTask(this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupPttUploadProcessor", 2, "<BDH_LOG>sendFileByBDH Transaction submit RetCode:" + i + " T_ID:" + this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " UniSeq:" + this.jdField_a_of_type_Bayk.jdField_a_of_type_Long + " MD5:" + this.jdField_c_of_type_JavaLangString + " uuid:" + this.jdField_l_of_type_JavaLangString + " Path:" + this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + 29);
+      catch (Exception paramSurfaceTexture)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_JavaLangObject.notifyAll();
+        QLog.w("Mp4ReEncoder", 2, "onFrameAvailable error=" + this.jdField_b_of_type_Int + " ; canceled=" + this.jdField_c_of_type_Boolean, paramSurfaceTexture);
+        return;
       }
-      if (i == 0) {
-        break;
-      }
-      a(i, "sendFileByBDH SubmitError.", "", this.jdField_b_of_type_Barh);
-      d();
-      return;
-      i = 4;
     }
-  }
-  
-  void g()
-  {
-    if (!f()) {
-      return;
-    }
-    this.jdField_c_of_type_Barh.a();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangObject.notifyAll();
     if (QLog.isColorLevel()) {
-      QLog.d("GroupPttUploadProcessor", 2, "TestPicSend finish upload,currentTime = " + System.currentTimeMillis() + ",processor = " + this);
+      QLog.d("Mp4ReEncoder", 2, "onFrameAvailable end");
     }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      h();
-      return;
-    }
-    r();
-  }
-  
-  void h()
-  {
-    Object localObject2 = a();
-    if (localObject2 == null)
-    {
-      a(9368, "constructpberror", null, this.jdField_c_of_type_Barh);
-      d();
-    }
-    label165:
-    label192:
-    MessageForPtt localMessageForPtt;
-    do
-    {
-      return;
-      if (!e())
-      {
-        a(9366, "illegal app", null, this.jdField_c_of_type_Barh);
-        d();
-        return;
-      }
-      if (this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
-      {
-        localObject1 = this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-        if ((localObject1 instanceof MessageForPtt)) {
-          break label192;
-        }
-        localObject2 = new StringBuilder().append("Mr_");
-        if (localObject1 != null) {
-          break label165;
-        }
-      }
-      for (Object localObject1 = "null";; localObject1 = "" + ((MessageRecord)localObject1).msgtype)
-      {
-        a(9368, "msgtypeError", (String)localObject1, this.jdField_c_of_type_Barh);
-        d();
-        return;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, this.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
-        break;
-      }
-      localMessageForPtt = (MessageForPtt)this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      a((im_msg_body.RichText)localObject2, localMessageForPtt);
-      if (QLog.isColorLevel()) {
-        QLog.d("RecordParams", 2, "<---sendGroupMsg voiceType：" + localMessageForPtt.voiceType + " voiceLengh:" + localMessageForPtt.voiceLength);
-      }
-      ((MessageForPtt)localObject1).richText = ((im_msg_body.RichText)localObject2);
-      if ((this.jdField_a_of_type_Bayk.jdField_a_of_type_Int == 1026) && (QLog.isColorLevel())) {
-        QLog.i("PttShow", 2, "sendGroupMsg, UIN_TYPE_HOTCHAT_TOPIC");
-      }
-      if (this.jdField_c_of_type_Boolean)
-      {
-        if (ajfi.a((MessageRecord)localObject1))
-        {
-          ajfi.a().a((MessageRecord)localObject1, this.jdField_a_of_type_Alwx, this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte, null, this);
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b((MessageRecord)localObject1, this.jdField_a_of_type_Alwx);
-        return;
-      }
-    } while (this.jdField_a_of_type_Bayk.jdField_a_of_type_Awkh == null);
-    localMessageForPtt.url = MessageForPtt.getMsgFilePath(localMessageForPtt.voiceType, this.jdField_a_of_type_Bayk.jdField_i_of_type_JavaLangString);
-    localMessageForPtt.fileSize = this.jdField_q_of_type_Long;
-    localMessageForPtt.urlAtServer = this.jdField_d_of_type_JavaLangString;
-    localMessageForPtt.itemType = 2;
-    localMessageForPtt.groupFileID = this.jdField_a_of_type_Long;
-    localMessageForPtt.groupFileKeyStr = this.jdField_a_of_type_JavaLangString;
-    localMessageForPtt.md5 = this.jdField_c_of_type_JavaLangString;
-    localMessageForPtt.serial();
-    this.jdField_a_of_type_Bayk.jdField_a_of_type_Awkh.a((im_msg_body.RichText)localObject2);
-  }
-  
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (this.jdField_c_of_type_Long > 0L) {
-        this.jdField_b_of_type_Long += System.nanoTime() - this.jdField_c_of_type_Long;
-      }
-    }
-    for (this.jdField_c_of_type_Long = 0L;; this.jdField_c_of_type_Long = System.nanoTime())
-    {
-      this.g = true;
-      return;
-    }
-  }
-  
-  void r()
-  {
-    Object localObject2 = a();
-    if (localObject2 == null)
-    {
-      a(9368, "constructpberror", null, this.jdField_c_of_type_Barh);
-      d();
-    }
-    label169:
-    label196:
-    MessageForPtt localMessageForPtt;
-    do
-    {
-      return;
-      if (!e())
-      {
-        a(9366, "illegal app", null, this.jdField_c_of_type_Barh);
-        d();
-        return;
-      }
-      if (this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
-      {
-        localObject1 = this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-        if ((localObject1 != null) && ((localObject1 instanceof MessageForPtt))) {
-          break label196;
-        }
-        localObject2 = new StringBuilder().append("Mr_");
-        if (localObject1 != null) {
-          break label169;
-        }
-      }
-      for (Object localObject1 = "null";; localObject1 = "" + ((MessageRecord)localObject1).msgtype)
-      {
-        a(9368, "msgtypeError", (String)localObject1, this.jdField_c_of_type_Barh);
-        d();
-        return;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, this.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
-        break;
-      }
-      localMessageForPtt = (MessageForPtt)this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      a((im_msg_body.RichText)localObject2, localMessageForPtt);
-      if (QLog.isColorLevel()) {
-        QLog.d("RecordParams", 2, "<---sendDiscussMsg voiceType：" + localMessageForPtt.voiceType + " voiceLengh:" + localMessageForPtt.voiceLength);
-      }
-      ((MessageForPtt)localObject1).richText = ((im_msg_body.RichText)localObject2);
-      if (this.jdField_c_of_type_Boolean)
-      {
-        if (ajfi.a((MessageRecord)localObject1))
-        {
-          ajfi.a().a((MessageRecord)localObject1, this.jdField_a_of_type_Alwx, this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte, null, this);
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b((MessageRecord)localObject1, this.jdField_a_of_type_Alwx);
-        return;
-      }
-    } while (this.jdField_a_of_type_Bayk.jdField_a_of_type_Awkh == null);
-    localMessageForPtt.url = MessageForPtt.getMsgFilePath(localMessageForPtt.voiceType, this.jdField_a_of_type_Bayk.jdField_i_of_type_JavaLangString);
-    localMessageForPtt.fileSize = this.jdField_q_of_type_Long;
-    localMessageForPtt.urlAtServer = this.jdField_d_of_type_JavaLangString;
-    localMessageForPtt.itemType = 2;
-    localMessageForPtt.groupFileID = this.jdField_a_of_type_Long;
-    localMessageForPtt.groupFileKeyStr = this.jdField_a_of_type_JavaLangString;
-    localMessageForPtt.md5 = this.jdField_c_of_type_JavaLangString;
-    localMessageForPtt.serial();
-    this.jdField_a_of_type_Bayk.jdField_a_of_type_Awkh.a((im_msg_body.RichText)localObject2);
-  }
-  
-  public void s()
-  {
-    if (this.o) {
-      return;
-    }
-    if ((this.jdField_m_of_type_JavaLangString != null) && (this.jdField_a_of_type_Long != 0L))
-    {
-      if (this.jdField_s_of_type_Long >= this.jdField_q_of_type_Long)
-      {
-        g();
-        return;
-      }
-      if ((this.w == 1) && (this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction != null))
-      {
-        d("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel");
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().resumeTransactionTask(this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-        return;
-      }
-      aP_();
-      return;
-    }
-    aP_();
   }
 }
 

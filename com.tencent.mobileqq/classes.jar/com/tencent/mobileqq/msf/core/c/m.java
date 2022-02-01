@@ -4,7 +4,7 @@ import android.os.Process;
 import android.text.TextUtils;
 import com.tencent.feedback.eup.CrashHandleListener;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.LinkedBlockingDeque;
 

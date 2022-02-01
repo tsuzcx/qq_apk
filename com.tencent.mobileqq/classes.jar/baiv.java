@@ -1,35 +1,28 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.os.Bundle;
 
-public class baiv
-  implements bhuk
+class baiv
+  extends anmu
 {
-  public baiv(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, bhuf parambhuf) {}
+  baiv(baiu parambaiu) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
-    {
-      paramInt = -1;
-      switch (paramInt)
-      {
-      }
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(1, paramString);
     }
-    for (;;)
-    {
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
-      if (this.jdField_a_of_type_Bhuf.isShowing()) {
-        this.jdField_a_of_type_Bhuf.dismiss();
-      }
-      return;
-      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
-      break;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
-      continue;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 1);
-      continue;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 0);
+  }
+  
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramBoolean) {
+      this.a.a(1, paramString);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(2, null);
     }
   }
 }

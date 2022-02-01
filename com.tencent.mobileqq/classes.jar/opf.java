@@ -1,38 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class opf
-  implements View.OnClickListener
+  implements qft
 {
-  public opf(ReadInJoyCommentLikeView paramReadInJoyCommentLikeView) {}
-  
-  public void onClick(View paramView)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if (ors.j()) {}
-    while (ReadInJoyCommentLikeView.a(this.a) == null) {
-      return;
-    }
-    if (ReadInJoyCommentLikeView.a(this.a).isLiked()) {
-      if (ReadInJoyCommentLikeView.a(this.a) != null) {
-        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 0, 0);
-      }
-    }
-    for (;;)
-    {
-      ReadInJoyCommentLikeView.a(this.a, ReadInJoyCommentLikeView.a(this.a));
-      ReadInJoyCommentLikeView.a(this.a);
-      return;
-      if (ReadInJoyCommentLikeView.a(this.a) != null) {
-        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 1, 0);
-      }
-    }
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return qbu.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     opf
  * JD-Core Version:    0.7.0.1
  */

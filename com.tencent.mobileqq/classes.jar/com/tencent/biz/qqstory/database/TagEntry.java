@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import awge;
-import ulj;
+import com.tencent.mobileqq.persistence.Entity;
+import wev;
 
 public class TagEntry
-  extends awge
-  implements ulj
+  extends Entity
+  implements wev
 {
   public String desc;
   public String feedId;
@@ -27,7 +27,7 @@ public class TagEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.TagEntry
  * JD-Core Version:    0.7.0.1
  */

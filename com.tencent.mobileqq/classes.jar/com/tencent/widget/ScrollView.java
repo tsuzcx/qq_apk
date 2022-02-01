@@ -27,12 +27,12 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bhtb;
-import bhwp;
-import bhzg;
-import biar;
-import bias;
+import bkkb;
+import bkmr;
+import bkoc;
+import bkod;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -54,8 +54,8 @@ public class ScrollView
   private Drawable mContentBackgroundDrawable;
   int mCurScrollState = 0;
   private boolean mEdgeEffectEnabled;
-  private bhwp mEdgeGlowBottom;
-  private bhwp mEdgeGlowTop;
+  private bkkb mEdgeGlowBottom;
+  private bkkb mEdgeGlowTop;
   @ViewDebug.ExportedProperty(category="layout")
   private boolean mFillViewport;
   private Object mFlingStrictSpan;
@@ -71,11 +71,11 @@ public class ScrollView
   private int mOverScrollMode;
   protected int mOverflingDistance;
   protected int mOverscrollDistance;
-  biar mScrollChangeCompatListener;
+  bkoc mScrollChangeCompatListener;
   public int mScrollFlag = 0;
-  bias mScrollListener;
+  bkod mScrollListener;
   private Object mScrollStrictSpan;
-  public bhzg mScroller;
+  public bkmr mScroller;
   private boolean mSmoothScrollingEnabled = true;
   private final Rect mTempRect = new Rect();
   private int mTouchSlop;
@@ -175,7 +175,7 @@ public class ScrollView
     }
     try
     {
-      if (bhtb.c()) {
+      if (VersionUtils.isGingerBread()) {
         localObject1 = StrictMode.class.getMethod("enterCriticalSpan", new Class[] { String.class }).invoke(null, new Object[] { paramString });
       }
       return localObject1;
@@ -348,7 +348,7 @@ public class ScrollView
   
   private void initScrollView()
   {
-    this.mScroller = new bhzg(getContext());
+    this.mScroller = new bkmr(getContext());
     setFocusable(true);
     setDescendantFocusability(262144);
     setWillNotDraw(false);
@@ -931,7 +931,7 @@ public class ScrollView
     return this.mOverScrollMode;
   }
   
-  public bhzg getOverScroller()
+  public bkmr getOverScroller()
   {
     return this.mScroller;
   }
@@ -944,7 +944,7 @@ public class ScrollView
   @TargetApi(11)
   protected void invalidateParentIfNeeded()
   {
-    if ((bhtb.e()) && (isHardwareAccelerated()) && ((this.mParent instanceof View))) {
+    if ((VersionUtils.isHoneycomb()) && (isHardwareAccelerated()) && ((this.mParent instanceof View))) {
       ((View)this.mParent).invalidate();
     }
   }
@@ -1366,7 +1366,7 @@ public class ScrollView
       }
       paramMotionEvent = this.mVelocityTracker;
       paramMotionEvent.computeCurrentVelocity(1000, this.mMaximumVelocity);
-      if (bhtb.b())
+      if (VersionUtils.isrFroyo())
       {
         f = paramMotionEvent.getYVelocity(this.mActivePointerId);
         label634:
@@ -1614,7 +1614,7 @@ public class ScrollView
       return;
     }
     this.mContentBackgroundDrawable = paramDrawable;
-    this.mOverScrollHeaderShadow = getResources().getDrawable(2130840340);
+    this.mOverScrollHeaderShadow = getResources().getDrawable(2130840519);
   }
   
   public void setEdgeEffectEnabled(boolean paramBoolean)
@@ -1628,10 +1628,10 @@ public class ScrollView
       if ((this.mOverScrollMode != 2) && (this.mEdgeGlowTop == null))
       {
         localContext = getContext();
-        this.mEdgeGlowTop = new bhwp(localContext);
+        this.mEdgeGlowTop = new bkkb(localContext);
       }
     }
-    for (this.mEdgeGlowBottom = new bhwp(localContext);; this.mEdgeGlowBottom = null)
+    for (this.mEdgeGlowBottom = new bkkb(localContext);; this.mEdgeGlowBottom = null)
     {
       this.mEdgeEffectEnabled = paramBoolean;
       return;
@@ -1678,14 +1678,14 @@ public class ScrollView
     }
   }
   
-  public void setOnScrollChangeListenerCompat(biar parambiar)
+  public void setOnScrollChangeListenerCompat(bkoc parambkoc)
   {
-    this.mScrollChangeCompatListener = parambiar;
+    this.mScrollChangeCompatListener = parambkoc;
   }
   
-  public void setOnScrollStateChangedListener(bias parambias)
+  public void setOnScrollStateChangedListener(bkod parambkod)
   {
-    this.mScrollListener = parambias;
+    this.mScrollListener = parambkod;
   }
   
   public void setOverScrollMode(int paramInt)
@@ -1701,8 +1701,8 @@ public class ScrollView
     }
     try
     {
-      this.mEdgeGlowTop = new bhwp(localContext);
-      this.mEdgeGlowBottom = new bhwp(localContext);
+      this.mEdgeGlowTop = new bkkb(localContext);
+      this.mEdgeGlowBottom = new bkkb(localContext);
       label90:
       this.mOverflingDistance = 2147483647;
       this.mOverscrollDistance = 2147483647;
@@ -1785,7 +1785,7 @@ public class ScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.ScrollView
  * JD-Core Version:    0.7.0.1
  */

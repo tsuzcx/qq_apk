@@ -6,7 +6,7 @@ import java.util.HashMap;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.MD5;
 import oicq.wlogin_sdk.tools.cryptor;
-import oicq.wlogin_sdk.tools.d;
+import oicq.wlogin_sdk.tools.f;
 import oicq.wlogin_sdk.tools.util;
 
 public class c
@@ -73,7 +73,7 @@ public class c
           paramInt = util.buf_to_int16(paramArrayOfByte, k);
           i = k + 2;
           util.LOGI("reg cmd 0x3 has " + paramInt + " tlv");
-          i = d.a(paramInt, paramArrayOfByte, i, paramArrayOfByte.length - i, paramj.B);
+          i = f.a(paramInt, paramArrayOfByte, i, paramArrayOfByte.length - i, paramj.B);
           if (i != 0)
           {
             util.LOGI("parser tlv failed " + i, "");
@@ -217,7 +217,7 @@ public class c
       }
       i = util.buf_to_int16(paramArrayOfByte, j);
       j += 2;
-      j = d.a(i, paramArrayOfByte, j, paramArrayOfByte.length - j, paramj.B);
+      j = f.a(i, paramArrayOfByte, j, paramArrayOfByte.length - j, paramj.B);
       i = j;
     } while (j == 0);
     util.LOGI("parser tlv failed " + j, "");
@@ -312,7 +312,7 @@ public class c
       }
       i = util.buf_to_int16((byte[])localObject, k);
       k += 2;
-      i = d.a(i, (byte[])localObject, k, localObject.length - k, paramj.B);
+      i = f.a(i, (byte[])localObject, k, localObject.length - k, paramj.B);
       if (i != 0)
       {
         util.LOGI("parse tlv failed " + i, "");
@@ -419,7 +419,7 @@ public class c
           util.LOGI("no tlv in rsp", "");
           return -1;
         }
-        i = d.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, paramj.B);
+        i = f.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, paramj.B);
         if (i != 0)
         {
           util.LOGI("parser tlv failed " + i, "");
@@ -472,7 +472,7 @@ public class c
           util.LOGI("no tlv in rsp", "");
           return -1;
         }
-        i = d.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, paramj.B);
+        i = f.a(util.buf_to_int16(arrayOfByte, 0), arrayOfByte, 2, arrayOfByte.length - 2, paramj.B);
         if (i != 0)
         {
           util.LOGI("parser tlv failed " + i, "");

@@ -1,18 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
-
-public class pue
-  implements ViewBase.IBuilder
+public abstract class pue
 {
-  public ViewBase build(VafContext paramVafContext)
+  public Object a;
+  private String a;
+  
+  public pue(String paramString)
   {
-    return new ptw(paramVafContext);
+    this.a = paramString;
   }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public abstract void a(ptx paramptx);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pue
  * JD-Core Version:    0.7.0.1
  */

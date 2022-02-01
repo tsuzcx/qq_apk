@@ -1,29 +1,47 @@
-import android.app.Activity;
-import android.view.View;
+import android.content.Context;
+import com.tencent.avgame.app.AVGameAppInterface;
 
-class nda
-  implements bhuk
+public class nda
+  extends mdt
 {
-  nda(ncv paramncv, Activity paramActivity, String paramString, bhuf parambhuf) {}
+  private final boolean p;
+  private boolean q;
   
-  public void OnClick(View paramView, int paramInt)
+  public nda(Context paramContext, AVGameAppInterface paramAVGameAppInterface, String paramString, long paramLong)
   {
-    switch (paramInt)
-    {
+    this(paramContext, paramAVGameAppInterface, paramString, paramLong, true);
+  }
+  
+  public nda(Context paramContext, AVGameAppInterface paramAVGameAppInterface, String paramString, long paramLong, boolean paramBoolean)
+  {
+    super(paramContext, null, paramString, paramLong, paramBoolean);
+    this.p = paramBoolean;
+  }
+  
+  protected boolean a(int paramInt)
+  {
+    if (h() == 2) {
+      return false;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      ncv.c(this.jdField_a_of_type_Ncv, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      ncv.a(this.jdField_a_of_type_Ncv, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    return super.a(paramInt);
+  }
+  
+  protected void b(lpx paramlpx)
+  {
+    if (this.p) {
+      super.b(paramlpx);
     }
+  }
+  
+  protected void d(lpx paramlpx)
+  {
+    this.q = true;
+    super.d(paramlpx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nda
  * JD-Core Version:    0.7.0.1
  */

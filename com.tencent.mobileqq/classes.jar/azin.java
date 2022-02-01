@@ -1,62 +1,48 @@
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.9.1;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.XEditTextEx;
+
 public class azin
+  implements TextWatcher
 {
-  double a;
+  private int jdField_a_of_type_Int;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private int b;
   
-  azin(double paramDouble)
+  public azin(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a = paramDouble;
+    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (bdol.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 300))
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.getActivity(), 1, 2131690184, 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
+    }
+    paramEditable = azhv.a(StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment));
+    if ((TextUtils.isEmpty(paramEditable)) || (TextUtils.isEmpty(paramEditable.trim()))) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(false);
+    }
+    for (;;)
+    {
+      if (StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment) != null) {
+        StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment).post(new StickyNotePublishFragment.9.1(this));
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(true);
+    }
   }
   
-  public boolean a(int[][] paramArrayOfInt)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    double d2 = 0.0D;
-    int k = paramArrayOfInt.length;
-    int m = paramArrayOfInt[0].length;
-    double[] arrayOfDouble1 = new double[k];
-    double[] arrayOfDouble2 = new double[m];
-    double d1 = 0.0D;
-    int i = 0;
-    int j;
-    while (i < k)
-    {
-      j = 0;
-      while (j < m)
-      {
-        arrayOfDouble1[i] += paramArrayOfInt[i][j];
-        d1 += paramArrayOfInt[i][j];
-        j += 1;
-      }
-      i += 1;
-    }
-    i = 0;
-    while (i < m)
-    {
-      j = 0;
-      while (j < k)
-      {
-        arrayOfDouble2[i] += paramArrayOfInt[j][i];
-        j += 1;
-      }
-      i += 1;
-    }
-    i = 0;
-    while (i < k)
-    {
-      j = 0;
-      while (j < m)
-      {
-        double d4 = 1.0D * arrayOfDouble1[i] * arrayOfDouble2[j] / d1;
-        double d5 = paramArrayOfInt[i][j];
-        double d3 = d2;
-        if (d4 > 0.0D) {
-          d3 = d2 + (d4 - d5) * (d4 - d5) / d4;
-        }
-        j += 1;
-        d2 = d3;
-      }
-      i += 1;
-    }
-    return d2 > this.a + 1.0E-008D;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = (paramInt1 + paramInt3);
   }
 }
 

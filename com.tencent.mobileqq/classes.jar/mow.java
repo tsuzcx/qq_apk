@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBagConfig.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class mow
-  implements View.OnClickListener
+public class mow
+  extends lfe
 {
-  mow(mov parammov) {}
+  mow(mou parammou) {}
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    mov.a(this.a);
+    ThreadManager.post(new AVRedBagConfig.2.1(this), 10, null, true);
+    this.a.a.b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mow
  * JD-Core Version:    0.7.0.1
  */

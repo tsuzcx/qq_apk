@@ -1,27 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.util.WeakReference;
 
 class bngg
-  extends blts
+  implements View.OnClickListener
 {
-  bngg(bngf parambngf) {}
+  bngg(bngd parambngd, bnfk parambnfk, int paramInt) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      bngf.a(this.a, true);
-      bngf.a(this.a);
-      return;
-    }
-    QLog.i("EditPicQzComment", 2, "download music fail" + paramInt);
+    ((bnff)this.jdField_a_of_type_Bngd.a.get()).a(this.jdField_a_of_type_Bnfk.itemView, this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

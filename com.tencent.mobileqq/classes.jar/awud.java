@@ -1,12 +1,28 @@
-import QC.UniBusiGetOneItemWithCheckRsp;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.multicard.MultiCardItemFragment;
+import java.lang.ref.WeakReference;
 
-public abstract interface awud
+class awud
+  implements View.OnLongClickListener
 {
-  public abstract void a(boolean paramBoolean, UniBusiGetOneItemWithCheckRsp paramUniBusiGetOneItemWithCheckRsp);
+  awud(awuc paramawuc) {}
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (this.a.a != null)
+    {
+      paramView = (MultiCardItemFragment)this.a.a.get();
+      if (paramView != null) {
+        paramView.a(this.a);
+      }
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awud
  * JD-Core Version:    0.7.0.1
  */

@@ -1,103 +1,24 @@
 package c.t.m.g;
 
-import android.util.Pair;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 public final class dw
-  implements ez
 {
-  private byte[] a = new byte[512];
+  public float a = -1.0F;
+  public float b;
+  public long c = -1L;
+  public double d = -1.0D;
+  public double e = -1.0D;
+  public double f = -1.0D;
+  public double g;
+  public double h = 0.0D;
+  public double i = 0.0D;
   
-  private static String a(String paramString)
+  public final void a()
   {
-    String str2 = "GBK";
-    String str1 = str2;
-    int j;
-    int i;
-    if (paramString != null)
-    {
-      paramString = paramString.split(";");
-      j = paramString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      str1 = str2;
-      if (i < j)
-      {
-        str1 = paramString[i].trim();
-        int k = str1.indexOf("charset=");
-        if (-1 != k) {
-          str1 = str1.substring(k + 8, str1.length());
-        }
-      }
-      else
-      {
-        return str1;
-      }
-      i += 1;
-    }
-  }
-  
-  private byte[] a(InputStream paramInputStream)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(256);
-    for (;;)
-    {
-      int i = paramInputStream.read(this.a);
-      if (i == -1) {
-        break;
-      }
-      localByteArrayOutputStream.write(this.a, 0, i);
-    }
-    paramInputStream.close();
-    return localByteArrayOutputStream.toByteArray();
-  }
-  
-  public final Pair<byte[], String> a(String paramString, byte[] paramArrayOfByte)
-  {
-    paramString = (HttpURLConnection)new URL(paramString).openConnection();
-    for (;;)
-    {
-      try
-      {
-        paramString.setRequestProperty("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
-        paramString.setRequestMethod("POST");
-        paramString.setConnectTimeout(10000);
-        paramString.setDoOutput(true);
-        paramString.setFixedLengthStreamingMode(paramArrayOfByte.length);
-        localObject = paramString.getOutputStream();
-        ((OutputStream)localObject).write(paramArrayOfByte);
-        ((OutputStream)localObject).flush();
-        ((OutputStream)localObject).close();
-        int i = paramString.getResponseCode();
-        switch (i)
-        {
-        case 200: 
-          throw new IOException("net sdk error: ".concat(String.valueOf(i)));
-        }
-      }
-      finally
-      {
-        paramString.disconnect();
-      }
-      paramArrayOfByte = a(paramString.getHeaderField("content-type"));
-      Object localObject = a(paramString.getInputStream());
-      if ((localObject == null) || (localObject.length == 0))
-      {
-        paramArrayOfByte = Pair.create("{}".getBytes(), "utf-8");
-        paramString.disconnect();
-        return paramArrayOfByte;
-      }
-      paramArrayOfByte = Pair.create(localObject, paramArrayOfByte);
-      paramString.disconnect();
-      return paramArrayOfByte;
-    }
+    this.f = -1.0D;
+    this.a = -1.0F;
+    this.c = -1L;
+    this.h = 0.0D;
+    this.i = 0.0D;
   }
 }
 

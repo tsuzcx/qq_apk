@@ -1,24 +1,49 @@
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
+
 public class azfv
+  extends VasWebviewJsPlugin
 {
-  public float a;
-  public int a;
-  public ajrv a;
-  public boolean a;
-  public float b;
-  public int b;
-  public int c;
-  
-  public azfv() {}
-  
-  public azfv(boolean paramBoolean)
+  public azfv()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mPluginNameSpace = "usersummary";
   }
   
-  public boolean a()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    return (this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Ajrv != null) && (this.jdField_a_of_type_Float > 0.01F) && (this.jdField_b_of_type_Float > 0.01F);
+    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("usersummary"))) {
+      return false;
+    }
+    if ((this.mRuntime.a() instanceof FriendProfileCardActivity))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin handle FriendProfileCardActivity");
+      }
+      paramJsBridgeListener = (FriendProfileCardActivity)this.mRuntime.a();
+      paramJsBridgeListener.a(paramJsBridgeListener.a.a, false);
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin handle none");
+      }
+    }
   }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin onActivityResult,requestCode = " + paramByte + ", resultCode = " + paramInt + ", data = " + paramIntent);
+    }
+    if (paramInt != -1) {}
+  }
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 

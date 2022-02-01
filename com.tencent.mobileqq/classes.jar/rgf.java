@@ -1,109 +1,159 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import tencent.im.oidb.articlesummary.articlesummary.RecommendAccountInfo;
+import tencent.im.oidb.articlesummary.articlesummary.RecommendFollowInfos;
+import tencent.im.oidb.oidb_0xc2f.GetFollowUserRecommendListRsp;
+import tencent.im.oidb.oidb_0xc2f.RecommendAccountInfo;
 
 public class rgf
-  implements qyy, rjd, rje
 {
-  private rgf(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  public int a;
+  public String a;
+  public HashMap<Long, RecommendFollowInfo> a;
+  public List<RecommendFollowInfo> a;
+  public boolean a;
+  public byte[] a;
+  public String b;
+  public List<rfj> b;
+  public boolean b;
   
-  public List<qyp> a(List<VideoInfo> paramList)
+  public rgf()
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      VideoInfo localVideoInfo = (VideoInfo)paramList.next();
-      localArrayList.add(a(localVideoInfo));
-      if (VideoFeedsRecommendFragment.a(this.a) != null) {
-        VideoFeedsRecommendFragment.a(this.a).b(localVideoInfo);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public static rgf a(articlesummary.RecommendFollowInfos paramRecommendFollowInfos)
+  {
+    boolean bool = true;
+    rgf localrgf = new rgf();
+    if (paramRecommendFollowInfos.uint32_show_full_card.has()) {
+      if (paramRecommendFollowInfos.uint32_show_full_card.get() != 1) {
+        break label252;
       }
     }
-    return localArrayList;
-  }
-  
-  public rgg a(VideoInfo paramVideoInfo)
-  {
-    rgg localrgg = new rgg(null);
-    rgg.a(localrgg, paramVideoInfo);
-    localrgg.jdField_b_of_type_Long = 409409L;
-    localrgg.jdField_a_of_type_Int = 0;
-    localrgg.jdField_a_of_type_JavaLangString = paramVideoInfo.c;
-    localrgg.jdField_b_of_type_JavaLangString = paramVideoInfo.jdField_b_of_type_JavaLangString;
-    localrgg.c = paramVideoInfo.jdField_a_of_type_JavaLangString;
-    localrgg.jdField_a_of_type_Long = paramVideoInfo.jdField_b_of_type_Long;
-    return localrgg;
-  }
-  
-  public void a()
-  {
-    VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Qyv.f(false);
-    VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Riw.a(6);
-  }
-  
-  public void a(qyp paramqyp)
-  {
-    if ((paramqyp instanceof rgg))
+    Object localObject2;
+    Object localObject3;
+    Object localObject1;
+    for (;;)
     {
-      paramqyp = rgg.a((rgg)paramqyp);
-      if (paramqyp != VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rfs.a) {
-        break label54;
+      localrgf.jdField_a_of_type_Boolean = bool;
+      if (paramRecommendFollowInfos.bytes_account_next_cookie.has()) {
+        localrgf.jdField_a_of_type_ArrayOfByte = paramRecommendFollowInfos.bytes_account_next_cookie.get().toByteArray();
       }
-      VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rfs, false);
+      localrgf.jdField_a_of_type_Int = paramRecommendFollowInfos.uint32_card_style.get();
+      localrgf.jdField_a_of_type_JavaLangString = paramRecommendFollowInfos.bytes_card_title.get().toStringUtf8();
+      localrgf.jdField_b_of_type_JavaLangString = paramRecommendFollowInfos.bytes_jump_url.get().toStringUtf8();
+      if (!paramRecommendFollowInfos.rpt_recommend_account_info.has()) {
+        return localrgf;
+      }
+      paramRecommendFollowInfos = paramRecommendFollowInfos.rpt_recommend_account_info.get();
+      localObject2 = new HashMap();
+      localObject3 = paramRecommendFollowInfos.iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        RecommendFollowInfo localRecommendFollowInfo = RecommendFollowInfo.parseByPB((articlesummary.RecommendAccountInfo)((Iterator)localObject3).next());
+        localrgf.jdField_a_of_type_JavaUtilList.add(localRecommendFollowInfo);
+        if ((localrgf.jdField_a_of_type_Int == 2) && (!TextUtils.isEmpty(localRecommendFollowInfo.className)))
+        {
+          localObject1 = (List)((HashMap)localObject2).get(localRecommendFollowInfo.className);
+          paramRecommendFollowInfos = (articlesummary.RecommendFollowInfos)localObject1;
+          if (localObject1 == null)
+          {
+            paramRecommendFollowInfos = new ArrayList();
+            ((HashMap)localObject2).put(localRecommendFollowInfo.className, paramRecommendFollowInfos);
+          }
+          if (paramRecommendFollowInfos.size() < 3) {
+            paramRecommendFollowInfos.add(localRecommendFollowInfo);
+          }
+        }
+      }
+      label252:
+      bool = false;
     }
-    label54:
-    int i;
-    do
+    if (!((HashMap)localObject2).isEmpty())
     {
-      return;
-      i = VideoFeedsRecommendFragment.a(this.a).c;
-      VideoFeedsRecommendFragment.a(this.a).remove(i);
-      VideoFeedsRecommendFragment.a(this.a).add(i, paramqyp);
-    } while (!VideoFeedsRecommendFragment.a(this.a).jdField_b_of_type_Boolean);
-    VideoFeedsRecommendFragment.a(this.a).notifyItemChanged(i);
+      paramRecommendFollowInfos = ((HashMap)localObject2).entrySet().iterator();
+      while (paramRecommendFollowInfos.hasNext())
+      {
+        localObject1 = (Map.Entry)paramRecommendFollowInfos.next();
+        localObject2 = (List)((Map.Entry)localObject1).getValue();
+        if (((List)localObject2).size() == 3)
+        {
+          localObject3 = new rfj();
+          ((rfj)localObject3).jdField_a_of_type_JavaLangString = ((String)((Map.Entry)localObject1).getKey());
+          ((rfj)localObject3).jdField_a_of_type_JavaUtilList = ((List)localObject2);
+          localrgf.jdField_b_of_type_JavaUtilList.add(localObject3);
+        }
+      }
+    }
+    return localrgf;
   }
   
-  public void a(qyp paramqyp1, qyp paramqyp2, int paramInt, boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean)
+  public static rgf a(oidb_0xc2f.GetFollowUserRecommendListRsp paramGetFollowUserRecommendListRsp)
   {
-    Object localObject = rgg.a((rgg)VideoFeedsRecommendFragment.a(this.a).a());
-    VideoInfo localVideoInfo = VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rfs.a;
-    if (VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rfs.a != localObject)
+    rgf localrgf = new rgf();
+    localrgf.jdField_b_of_type_JavaLangString = paramGetFollowUserRecommendListRsp.bytes_jump_url.get().toStringUtf8();
+    if (paramGetFollowUserRecommendListRsp.rpt_msg_recommend_list.has())
     {
-      VideoFeedsRecommendFragment.a(this.a).add(VideoFeedsRecommendFragment.a(this.a).c, localObject);
-      VideoFeedsRecommendFragment.a(this.a).notifyItemInserted(VideoFeedsRecommendFragment.a(this.a).c);
-      if (!VideoFeedsRecommendFragment.a(this.a).jdField_b_of_type_Boolean) {
-        break label231;
+      paramGetFollowUserRecommendListRsp = paramGetFollowUserRecommendListRsp.rpt_msg_recommend_list.get().iterator();
+      while (paramGetFollowUserRecommendListRsp.hasNext())
+      {
+        RecommendFollowInfo localRecommendFollowInfo = RecommendFollowInfo.parseByPB((oidb_0xc2f.RecommendAccountInfo)paramGetFollowUserRecommendListRsp.next());
+        localrgf.jdField_a_of_type_JavaUtilList.add(localRecommendFollowInfo);
       }
-      localObject = VideoFeedsRecommendFragment.a(this.a);
     }
-    label231:
-    for (((rbt)localObject).jdField_b_of_type_Int += 1;; VideoFeedsRecommendFragment.a(this.a).jdField_b_of_type_Int = 0)
-    {
-      localObject = VideoFeedsRecommendFragment.a(this.a);
-      ((rbt)localObject).c += 1;
-      VideoFeedsRecommendFragment.a(this.a).scrollToPosition(VideoFeedsRecommendFragment.a(this.a).c);
-      if (paramBoolean) {
-        VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rfs, false);
-      }
-      nrt.a(null, "", "0X8009505", "0X8009505", 0, 0, "", "0", "", new ron(null, null, localVideoInfo.jdField_a_of_type_JavaLangString, localVideoInfo.g).a(409409).a().a(), false);
-      return;
-    }
+    return localrgf;
   }
   
-  public void j()
+  public byte[] a()
   {
-    VideoFeedsRecommendFragment.a(this.a).b();
+    articlesummary.RecommendFollowInfos localRecommendFollowInfos = new articlesummary.RecommendFollowInfos();
+    if (this.jdField_a_of_type_Boolean) {
+      localRecommendFollowInfos.uint32_show_full_card.set(1);
+    }
+    ArrayList localArrayList;
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length > 0)) {
+        localRecommendFollowInfos.bytes_account_next_cookie.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ArrayOfByte));
+      }
+      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
+        break label132;
+      }
+      localArrayList = new ArrayList();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(((RecommendFollowInfo)localIterator.next()).toPB());
+      }
+      localRecommendFollowInfos.uint32_show_full_card.set(0);
+    }
+    localRecommendFollowInfos.rpt_recommend_account_info.set(localArrayList);
+    label132:
+    localRecommendFollowInfos.uint32_card_style.set(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      localRecommendFollowInfos.bytes_card_title.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    }
+    if (this.jdField_b_of_type_JavaLangString != null) {
+      localRecommendFollowInfos.bytes_jump_url.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    return localRecommendFollowInfos.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rgf
  * JD-Core Version:    0.7.0.1
  */

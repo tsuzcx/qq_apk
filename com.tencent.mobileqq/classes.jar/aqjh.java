@@ -1,17 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.confess.ConfessInfo;
+import com.tencent.util.Pair;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aqjh
-  implements DialogInterface.OnClickListener
 {
-  public aqjh(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public static final Object a;
+  Pair<String, Boolean> jdField_a_of_type_ComTencentUtilPair = new Pair("", Boolean.valueOf(false));
+  ConcurrentHashMap<String, ConfessInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    this.a.a = false;
-    this.a.doOnBackPressed();
-    azqs.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_admin", "Clk_quit", 0, 0, this.a.d, "", "", "");
+    jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public ConfessInfo a(String arg1, int paramInt1, int paramInt2)
+  {
+    Object localObject1 = aqjq.a(???, paramInt1, paramInt2);
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      localObject1 = (ConfessInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject1);
+      return localObject1;
+    }
+  }
+  
+  public ConfessInfo a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, String paramString4, long paramLong)
+  {
+    ConfessInfo localConfessInfo = new ConfessInfo();
+    localConfessInfo.reset();
+    localConfessInfo.topicId = paramInt2;
+    localConfessInfo.confessorSex = paramInt3;
+    localConfessInfo.confessorNick = paramString3;
+    try
+    {
+      localConfessInfo.confessorUin = Long.parseLong(paramString2);
+      label44:
+      localConfessInfo.confessorUinStr = paramString2;
+      localConfessInfo.confessTime = paramLong;
+      if (paramString4 != null) {
+        localConfessInfo.topic = paramString4;
+      }
+      a(paramString1, paramInt1, localConfessInfo);
+      return localConfessInfo;
+    }
+    catch (Exception paramString3)
+    {
+      break label44;
+    }
+  }
+  
+  public void a(String arg1, int paramInt, ConfessInfo paramConfessInfo)
+  {
+    String str = aqjq.a(???, paramInt, paramConfessInfo.topicId);
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      ConfessInfo localConfessInfo = (ConfessInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      if ((localConfessInfo == null) || (!localConfessInfo.equals(paramConfessInfo))) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramConfessInfo);
+      }
+      return;
+    }
   }
 }
 

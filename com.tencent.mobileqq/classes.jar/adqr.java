@@ -1,22 +1,8 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
-
-public class adqr
-  implements Comparator<ChatMessage>
+public abstract interface adqr
 {
-  public adqr(QQLSActivity paramQQLSActivity) {}
+  public abstract void a();
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
-  {
-    if (paramChatMessage1.time == paramChatMessage2.time) {
-      return 0;
-    }
-    if (paramChatMessage1.time > paramChatMessage2.time) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

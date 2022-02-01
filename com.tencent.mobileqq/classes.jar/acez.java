@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-
-public class acez
-  implements DialogInterface.OnClickListener
+public abstract interface acez
 {
-  public acez(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.b();
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

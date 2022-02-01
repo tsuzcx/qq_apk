@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.ViewGroup;
-import bdnn;
+import bgsp;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.util.ColorUtil;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.CoverView;
 import com.tencent.mobileqq.mini.widget.media.CoverVideoView;
-import com.tencent.mobileqq.minigame.api.DisplayUtil;
 import com.tencent.mobileqq.minigame.jsapi.manager.GameVideoPlayerManager;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.minigame.utils.GameLog;
@@ -108,7 +108,7 @@ public class VideoPlugin
         ((CoverVideoView)localCoverView).setVisibility(0);
       }
       paramJSONObject = paramJSONObject.optString("src");
-      if (!bdnn.a(paramJSONObject)) {
+      if (!bgsp.a(paramJSONObject)) {
         ((CoverVideoView)localCoverView).setVideoPath(paramJSONObject);
       }
     }
@@ -173,6 +173,9 @@ public class VideoPlugin
           paramString2 = (CoverView)this.mCoverViewSparseArray.get(i);
           if ((paramString2 instanceof CoverVideoView))
           {
+            if (((CoverVideoView)paramString2).isFullScreen()) {
+              ((CoverVideoView)paramString2).smallScreen();
+            }
             ((CoverVideoView)paramString2).pauseWithUi();
             ((CoverVideoView)paramString2).stop();
             ((CoverVideoView)paramString2).release();
@@ -331,7 +334,7 @@ public class VideoPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.VideoPlugin
  * JD-Core Version:    0.7.0.1
  */

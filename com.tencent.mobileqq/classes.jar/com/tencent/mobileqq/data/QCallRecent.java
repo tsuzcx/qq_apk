@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import abti;
-import awge;
-import bdil;
+import acwh;
+import bgnr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type")
 public class QCallRecent
-  extends awge
+  extends Entity
 {
   public static final int DISCUSS_STATE_CALL = 4;
   public static final int DISCUSS_STATE_CALLED = 3;
@@ -87,9 +87,9 @@ public class QCallRecent
           bool1 = bool3;
         } while (!this.uin.equals(paramObject.uin));
         bool1 = bool3;
-      } while (!abti.d(this.type));
+      } while (!acwh.d(this.type));
       bool1 = bool3;
-    } while (!abti.d(paramObject.type));
+    } while (!acwh.d(paramObject.type));
     return true;
   }
   
@@ -110,7 +110,7 @@ public class QCallRecent
   
   public boolean isSend()
   {
-    return bdil.a(this.sendFlag);
+    return bgnr.a(this.sendFlag);
   }
   
   public boolean isVideo()
@@ -125,7 +125,7 @@ public class QCallRecent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.QCallRecent
  * JD-Core Version:    0.7.0.1
  */

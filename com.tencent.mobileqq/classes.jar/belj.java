@@ -1,9 +1,17 @@
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public abstract interface belj
-  extends begg
+public class belj
+  implements beln
 {
-  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener);
+  public belj(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
+  
+  public void a(Bitmap paramBitmap)
+  {
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bihh);
+    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
+  }
 }
 
 

@@ -1,14 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 class beiv
-  implements DialogInterface.OnClickListener
+  implements bkhw
 {
-  beiv(beir parambeir, int paramInt, String paramString) {}
+  beiv(beiu parambeiu, bkho parambkho) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    beir.a(this.jdField_a_of_type_Beir, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      this.jdField_a_of_type_Beiu.a.a(this.jdField_a_of_type_Beiu.a.a);
+    }
   }
 }
 

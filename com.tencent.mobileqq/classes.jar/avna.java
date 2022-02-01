@@ -1,54 +1,89 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.ProgressButton;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import java.lang.reflect.Field;
 
 class avna
-  implements DialogInterface.OnClickListener
+  implements HookMethodCallback
 {
-  avna(avmf paramavmf) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    if (paramInt == 1)
-    {
-      if (this.a.jdField_a_of_type_Avpv != null) {
-        this.a.jdField_a_of_type_Avpv.a(2);
-      }
-      if (avmf.a(this.a) != null)
-      {
-        if (!this.a.n) {
-          break label88;
-        }
-        azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, avmf.a(this.a).uin, "", "yes", "android");
-      }
-    }
-    label88:
+    if (paramMethodHookParam.throwable == null) {}
+    View localView;
     do
     {
-      do
+      return;
+      localView = (View)paramMethodHookParam.args[0];
+    } while (localView == null);
+    Object localObject1 = localView.getContext();
+    Object localObject2 = localObject1;
+    if ("android.view.ContextThemeWrapper".equals(localObject1.getClass().getName())) {}
+    label295:
+    for (;;)
+    {
+      try
       {
-        return;
-        azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, avmf.a(this.a).uin, "", "yes", "android");
-        return;
-      } while (paramInt != 0);
-      if (this.a.jdField_a_of_type_Avpv != null) {
-        this.a.jdField_a_of_type_Avpv.a(10);
+        localObject2 = Class.forName("android.view.ContextThemeWrapper").getDeclaredField("mBase");
+        ((Field)localObject2).setAccessible(true);
+        localObject2 = ((Field)localObject2).get(localView.getContext());
+        if ((localObject2 == null) || (!(localObject2 instanceof Context))) {
+          break label295;
+        }
+        localObject2 = (Context)localObject2;
+        localObject1 = localObject2;
+        localObject2 = localObject1;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
+      catch (ClassNotFoundException localClassNotFoundException)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131699251);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
+        bgjw.a(localClassNotFoundException);
+        Object localObject3 = localObject1;
+        continue;
       }
-      this.a.jdField_a_of_type_Int = 2;
-    } while (avmf.a(this.a) == null);
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, avmf.a(this.a).uin, "", "yes", "android");
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        bgjw.a(localNoSuchFieldException);
+        Object localObject4 = localObject1;
+        continue;
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        bgjw.a(localIllegalArgumentException);
+        Object localObject5 = localObject1;
+        continue;
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        bgjw.a(localIllegalAccessException);
+        Object localObject6 = localObject1;
+        continue;
+        localObject1 = paramMethodHookParam.throwable;
+        continue;
+        paramMethodHookParam.throwable = new RuntimeException(paramMethodHookParam.throwable.getMessage() + " -- context is " + localObject6.getClass().getName(), paramMethodHookParam.throwable);
+        return;
+      }
+      if (paramMethodHookParam.throwable.getCause() != null)
+      {
+        localObject1 = paramMethodHookParam.throwable.getCause();
+        if ((!(localObject2 instanceof Activity)) || (((Activity)localObject2).isFinishing()) || (!(localObject1 instanceof WindowManager.BadTokenException))) {
+          continue;
+        }
+        avmy.a(1, localObject2.getClass().getName(), paramMethodHookParam.throwable.getMessage(), 0);
+        avmy.a(2, localObject2.getClass().getName(), null, 10000);
+        avmy.a(3, localObject2.getClass().getName(), null, 60000);
+        paramMethodHookParam.throwable = null;
+        ((Activity)localObject2).finish();
+      }
+    }
   }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avna
  * JD-Core Version:    0.7.0.1
  */

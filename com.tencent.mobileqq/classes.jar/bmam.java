@@ -1,20 +1,21 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.widget.AdapterView;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bmam
   implements DialogInterface.OnClickListener
 {
-  public bmam(MusicProviderView paramMusicProviderView, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  public bmam(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, bmar parambmar) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
+    if (this.jdField_a_of_type_Bmar != null) {
+      this.jdField_a_of_type_Bmar.a();
+    }
     paramDialogInterface.dismiss();
-    MusicProviderView.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_Bmau.k();
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.onItemClick(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.isFlowWarningVisible = false;
   }
 }
 

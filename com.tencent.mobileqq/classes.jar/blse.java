@@ -1,6 +1,12 @@
-public class blse
+import android.content.DialogInterface;
+
+final class blse
+  extends bgmc
 {
-  public static final String[] a = { "Jitter", "SoulOut" };
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

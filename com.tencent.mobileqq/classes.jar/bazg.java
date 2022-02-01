@@ -1,9 +1,10 @@
-import android.graphics.Bitmap;
-import java.net.URL;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
-public abstract interface bazg
+public class bazg
 {
-  public abstract Bitmap getBitmap(URL paramURL);
+  public BaseVideoView a;
+  
+  public bazg(bayw parambayw) {}
 }
 
 

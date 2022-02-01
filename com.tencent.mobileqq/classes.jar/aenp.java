@@ -1,24 +1,14 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public class aenp
-  implements aenf
+class aenp
 {
-  public aenp(PositionActivatePage paramPositionActivatePage) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.a.a.setEnabled(true);
-    }
-    while (paramInt > 1)
-    {
-      this.a.a.setText(2131689597);
-      return;
-      this.a.a.setEnabled(false);
-    }
-    this.a.a.setText(2131689598);
-  }
+  aenp(aeno paramaeno) {}
 }
 
 

@@ -72,7 +72,7 @@
                 "$busi_type"
               ],
               "setShouldRepeat:": "YES",
-              "setPlayIconUrl:": "http://qqpublic.qpic.cn/qq_public/0/0-2652434506-F059E11DBA4D14791005FEBF4164D972/0",
+              "setPlayIconUrl:": "http://pub.idqqimg.com/pc/misc/files/20200609/9a711edcef31434296a24ad323932e46.png",
               "setPlayIconWidth: heigth:": [
                 "100",
                 "100"
@@ -231,11 +231,11 @@
         "view_id": "id_info_container",
         "visible_depend_on_children": "YES",
         "layout_type": "layout_relative",
-        "margin_top": "5",
+        "margin_top": "0.5",
         "margin_left": "8",
         "height": {
-          "type": "absolutely",
-          "value": "16"
+          "type": "relative",
+          "value": "30"
         },
         "width": {
           "type": "match_parent"
@@ -255,6 +255,7 @@
               {
                 "view_type": "UILabel",
                 "view_id": "id_chioceness_label",
+                "align_parent_center_vertical": "YES",
                 "margin_right": "6",
                 "height": {
                   "type": "absolutely",
@@ -273,6 +274,7 @@
               {
                 "view_type": "UIView",
                 "layout_type": "layout_relative",
+                "align_parent_center_vertical": "YES",
                 "view_id": "id_recommend_wrapper",
                 "visible_depend_on_children": "YES",
                 "margin_right": "6",
@@ -311,6 +313,7 @@
               {
                 "view_type": "UILabel",
                 "view_id": "id_sub_article_title",
+                "align_parent_center_vertical": "YES",
                 "margin_right": "6",
                 "height": {
                   "type": "absolutely",
@@ -329,6 +332,7 @@
               {
                 "view_type": "UILabel",
                 "view_id": "id_info_title",
+                "align_parent_center_vertical": "YES",
                 "margin_right": "6",
                 "height": {
                   "type": "absolutely",
@@ -347,6 +351,7 @@
               {
                 "view_type": "UILabel",
                 "view_id": "id_chioceness_label_gray",
+                "align_parent_center_vertical": "YES",
                 "padding_left": "3",
                 "padding_right": "3",
                 "height": {
@@ -368,24 +373,7 @@
             ]
           },
           {
-            "view_type": "UIButton",
-            "view_id": "id_dislike_button",
-            "default_visible": "YES",
-            "align_parent_right": "YES",
-            "align_parent_center_vertical": "YES",
-            "margin_right": "1",
-            "event_type": "cmd_dislike_click",
-            "height": {
-              "type": "relative",
-              "value": "30"
-            },
-            "width": {
-              "type": "relative",
-              "value": "40"
-            },
-            "attributes": {
-              "setImage:": "feeds_dislike"
-            }
+            "$includeComponet": "componet/RIJ_dislike_button.geojson"
           }
         ]
       },
@@ -393,7 +381,7 @@
         "view_type": "UIView",
         "view_id": "id_separator",
         "margin_left": "6",
-        "margin_top": "14",
+        "margin_top": "7",
         "default_visible": "YES",
         "height": {
           "type": "absolutely",

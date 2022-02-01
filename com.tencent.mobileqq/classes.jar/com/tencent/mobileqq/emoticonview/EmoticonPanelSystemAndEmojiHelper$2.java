@@ -8,12 +8,12 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
-import apvp;
+import aryv;
 
 public class EmoticonPanelSystemAndEmojiHelper$2
   implements Runnable
 {
-  public EmoticonPanelSystemAndEmojiHelper$2(apvp paramapvp) {}
+  public EmoticonPanelSystemAndEmojiHelper$2(aryv paramaryv) {}
   
   public void run()
   {
@@ -43,7 +43,7 @@ public class EmoticonPanelSystemAndEmojiHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelSystemAndEmojiHelper.2
  * JD-Core Version:    0.7.0.1
  */

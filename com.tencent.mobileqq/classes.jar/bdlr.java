@@ -1,46 +1,22 @@
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.ArrayList;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class bdlr
-  implements View.OnClickListener
+public class bdlr
+  extends bdix
 {
-  bdlr(bdll parambdll, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bdlr(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    paramView = this.jdField_a_of_type_Bdll.getInputValue();
-    if (TextUtils.isEmpty(paramView)) {}
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
-      {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdll, 1);
-        this.jdField_a_of_type_Bdll.a();
-      }
-      try
-      {
-        if (this.jdField_a_of_type_Bdll.isShowing()) {
-          this.jdField_a_of_type_Bdll.dismiss();
-        }
-        return;
-      }
-      catch (Exception paramView) {}
-      if ((this.jdField_a_of_type_Bdll.a != null) && (this.jdField_a_of_type_Bdll.a.size() > 0))
-      {
-        int i = 0;
-        while ((i < this.jdField_a_of_type_Bdll.a.size()) && (!paramView.equals(this.jdField_a_of_type_Bdll.a.get(i)))) {
-          i += 1;
-        }
-      }
+    GroupTeamWorkListActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePad success: " + paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdlr
  * JD-Core Version:    0.7.0.1
  */

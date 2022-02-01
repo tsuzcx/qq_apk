@@ -1,8 +1,27 @@
-import android.view.KeyEvent;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface apze
+public class apze
+  extends ContentObserver
 {
-  public abstract boolean a(KeyEvent paramKeyEvent);
+  public apze(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
+  {
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
+    }
+    if (BusinessCardEditActivity.a(this.a))
+    {
+      this.a.a(2131697807, 2);
+      BusinessCardEditActivity.a(this.a, false);
+    }
+  }
 }
 
 

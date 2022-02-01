@@ -17,8 +17,8 @@ import android.widget.TextView;
 public class ProfileCardFavorShowView
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
+  private int a;
+  protected Context a;
   public ViewGroup a;
   public ImageView a;
   public LinearLayout a;
@@ -34,6 +34,7 @@ public class ProfileCardFavorShowView
   public ProfileCardFavorShowView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a();
   }
@@ -41,6 +42,7 @@ public class ProfileCardFavorShowView
   public ProfileCardFavorShowView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = paramInt;
     a();
@@ -51,7 +53,7 @@ public class ProfileCardFavorShowView
     if (this.jdField_a_of_type_Int > 0) {
       return this.jdField_a_of_type_Int;
     }
-    return 2131559395;
+    return 2131559511;
   }
   
   public View a(int paramInt)
@@ -67,14 +69,14 @@ public class ProfileCardFavorShowView
   protected void a()
   {
     LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(a(), this, true);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((LinearLayout)findViewById(2131376044));
-    this.b = ((ViewGroup)findViewById(2131364633));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377760));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367961));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131372320));
-    this.c = ((RelativeLayout)findViewById(2131367420));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166903));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839098);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((LinearLayout)findViewById(2131376798));
+    this.b = ((ViewGroup)findViewById(2131364850));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378600));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368286));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131372912));
+    this.c = ((RelativeLayout)findViewById(2131367729));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166986));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839273);
   }
   
   public void a(int paramInt)
@@ -113,7 +115,7 @@ public class ProfileCardFavorShowView
       }
     }
     label50:
-    for (int i = getResources().getDimensionPixelSize(2131297387);; i = 0)
+    for (int i = getResources().getDimensionPixelSize(2131297466);; i = 0)
     {
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
       if (localLayoutParams != null)
@@ -170,7 +172,7 @@ public class ProfileCardFavorShowView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileCardFavorShowView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,27 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import java.util.ArrayList;
 
-public class pbi
-  implements View.OnTouchListener
+class pbi
+  extends pcm
 {
-  public pbi(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, GestureDetector paramGestureDetector) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  pbi(pbe parampbe, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    return true;
+    super(parampbe, null);
+  }
+  
+  void a(pcp parampcp)
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      parampcp.onCommentListLoad(2, false, new ArrayList(), false, 4, 4);
+    }
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    parampcp.onCommentLoadMore(2, false, new ArrayList(), false, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pbi
  * JD-Core Version:    0.7.0.1
  */

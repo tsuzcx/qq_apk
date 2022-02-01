@@ -1,16 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.SendMsg;
 
-public class blha
-  implements DialogInterface.OnCancelListener
+public abstract class blha
+  extends Binder
+  implements blgz
 {
-  public blha(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public blha()
   {
-    AEVideoShelfEditFragment.a(this.a).cancelSave();
+    attachInterface(this, "cooperation.qappcenter.remote.IServiceHandler");
+  }
+  
+  public static blgz a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IServiceHandler");
+    if ((localIInterface != null) && ((localIInterface instanceof blgz))) {
+      return (blgz)localIInterface;
+    }
+    return new blhb(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qappcenter.remote.IServiceHandler");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IServiceHandler");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
+    }
   }
 }
 

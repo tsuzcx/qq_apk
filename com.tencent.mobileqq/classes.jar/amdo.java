@@ -1,28 +1,27 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public final class amdo
-  extends MqqHandler
+class amdo
+  implements Animation.AnimationListener
 {
-  public amdo(Looper paramLooper)
+  amdo(amdl paramamdl, View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramLooper);
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getTag() instanceof amdr))) {
+      ((amdr)this.jdField_a_of_type_AndroidViewView.getTag()).a = true;
+    }
+    amdl.a(this.jdField_a_of_type_Amdl);
   }
   
-  public void removeCallbacksAndMessages(Object paramObject)
-  {
-    if (paramObject == null)
-    {
-      QLog.e("ThreadManager", 1, "global fileHandler cannot excute removeCallbacksAndMessages");
-      return;
-    }
-    super.removeCallbacksAndMessages(paramObject);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amdo
  * JD-Core Version:    0.7.0.1
  */

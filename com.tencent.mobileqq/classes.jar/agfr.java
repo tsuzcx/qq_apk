@@ -1,22 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForTroopStory;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
 
-class agfr
-  implements bhuk
+public class agfr
+  implements bhow
 {
-  agfr(agfq paramagfq, MessageForTroopStory paramMessageForTroopStory, bhuf parambhuf) {}
+  public agfr(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public Object a(int paramInt)
   {
     switch (paramInt)
     {
+    default: 
+      return null;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      xpr.a(this.jdField_a_of_type_Agfq.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory).f();
-    }
+    return new agfs(this.a);
   }
 }
 

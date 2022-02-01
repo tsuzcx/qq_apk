@@ -1,32 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Video;
+import com.tencent.mobileqq.ar.model.ArModelResource;
 
 public final class apeh
-  implements Parcelable.Creator
+  implements Parcelable.Creator<ArModelResource>
 {
-  public IPSiteModel.Video a(Parcel paramParcel)
+  public ArModelResource a(Parcel paramParcel)
   {
-    IPSiteModel.Video localVideo = new IPSiteModel.Video();
-    localVideo.id = paramParcel.readString();
-    localVideo.buttonDesc = paramParcel.readString();
-    localVideo.content = paramParcel.readString();
-    localVideo.cover = paramParcel.readString();
-    localVideo.desc = paramParcel.readString();
-    localVideo.name = paramParcel.readString();
-    localVideo.endTime = paramParcel.readString();
-    localVideo.isShow = paramParcel.readInt();
-    localVideo.newStartTime = paramParcel.readLong();
-    localVideo.newEndTime = paramParcel.readLong();
-    localVideo.redirectUrl = paramParcel.readString();
-    localVideo.videoSource = paramParcel.readString();
-    localVideo.showDate = paramParcel.readString();
-    return localVideo;
+    return new ArModelResource(paramParcel);
   }
   
-  public IPSiteModel.Video[] a(int paramInt)
+  public ArModelResource[] a(int paramInt)
   {
-    return new IPSiteModel.Video[paramInt];
+    return new ArModelResource[paramInt];
   }
 }
 

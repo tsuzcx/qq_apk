@@ -1,23 +1,12 @@
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import android.view.View;
 
-public class xzx
-  implements aznz
+public abstract interface xzx
 {
-  public xzx(QRLoginMgrActivity paramQRLoginMgrActivity, ybe paramybe) {}
-  
-  public void a()
-  {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_Ybe);
-  }
-  
-  public void b()
-  {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_Ybe);
-  }
+  public abstract void a(String paramString, int paramInt, View paramView, ygo paramygo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xzx
  * JD-Core Version:    0.7.0.1
  */

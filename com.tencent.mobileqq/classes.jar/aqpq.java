@@ -1,29 +1,62 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqpq
-  implements View.OnLongClickListener
 {
-  public aqpq(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  private boolean a;
+  private boolean b;
+  private boolean c = true;
   
-  public boolean onLongClick(View paramView)
+  public static aqpq a(String paramString)
   {
-    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
-      return false;
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        aqpq localaqpq = new aqpq();
+        paramString = new JSONObject(paramString);
+        localaqpq.a = paramString.optBoolean("isIPCDivideToTransportEnable", false);
+        localaqpq.b = paramString.optBoolean("isSleepThreadWhenIPCBlockEnable", false);
+        localaqpq.c = paramString.optBoolean("isSendQuickHBByDeepSleepEnable", true);
+        return localaqpq;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("MSFConfigProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public static String a(aqpq paramaqpq)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (paramaqpq != null) {}
+    try
+    {
+      localJSONObject.put("isIPCDivideToTransportEnable", paramaqpq.a);
+      localJSONObject.put("isSleepThreadWhenIPCBlockEnable", paramaqpq.b);
+      localJSONObject.put("isSendQuickHBByDeepSleepEnable", paramaqpq.c);
+      return localJSONObject.toString();
     }
-    paramView.setSelected(true);
-    bdpi localbdpi = new bdpi();
-    localbdpi.a(2131366762, paramView.getContext().getString(2131692837));
-    localbdpi.a(2131365065, paramView.getContext().getString(2131691562));
-    this.a.a = bdft.a(paramView, localbdpi, new aqpr(this, paramView), new aqpt(this, paramView));
-    return true;
+    catch (JSONException paramaqpq)
+    {
+      for (;;)
+      {
+        paramaqpq.printStackTrace();
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "MSFConfigBean{isIPCDivideToTransportEnable=" + this.a + ", isSleepThreadWhenIPCBlockEnable=" + this.b + ", isSendQuickHBByDeepSleepEnable=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqpq
  * JD-Core Version:    0.7.0.1
  */

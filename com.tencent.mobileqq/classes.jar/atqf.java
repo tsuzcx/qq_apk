@@ -1,56 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class atqf
-  implements alpg
+  implements View.OnClickListener
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  atqf(atqe paramatqe) {}
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  protected void d(boolean paramBoolean, Object paramObject) {}
-  
-  protected void e(boolean paramBoolean, Object paramObject) {}
-  
-  protected void f(boolean paramBoolean, Object paramObject) {}
-  
-  protected void g(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationObserverBase", 2, new Object[] { "onUpdate: invoked. ", " type: ", Integer.valueOf(paramInt), " isSuccess: ", Boolean.valueOf(paramBoolean), " data: ", paramObject });
-    }
-    switch (paramInt)
+    Object localObject = atqe.a(this.a);
+    String str = this.a.jdField_a_of_type_Atoo.k();
+    if ((TextUtils.isEmpty(str)) || (localObject == null) || (!((atae)localObject).a(this.a.jdField_a_of_type_AndroidAppActivity, str, atqe.a(this.a))))
     {
-    default: 
-      return;
-    case 1: 
-      g(paramBoolean, paramObject);
-      return;
-    case 2: 
-      a(paramBoolean, paramObject);
-      return;
-    case 3: 
-      f(paramBoolean, paramObject);
-      return;
-    case 4: 
-      e(paramBoolean, paramObject);
-      return;
-    case 5: 
-      d(paramBoolean, paramObject);
-      return;
-    case 6: 
-      c(paramBoolean, paramObject);
-      return;
+      int i = atwt.b(this.a.jdField_a_of_type_Atoo.e());
+      bcst.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
+      localObject = this.a.jdField_a_of_type_Atoo.a();
+      if (localObject != null)
+      {
+        ((atnd)localObject).a();
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(false);
+      }
     }
-    b(paramBoolean, paramObject);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqf
  * JD-Core Version:    0.7.0.1
  */

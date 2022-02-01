@@ -1,8 +1,13 @@
-import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-public abstract interface beob
+public class beob
+  extends amcl
 {
-  public abstract void a(View paramView, int paramInt);
+  public CheckBox a;
+  public Object a;
+  public TextView d;
+  public TextView e;
 }
 
 

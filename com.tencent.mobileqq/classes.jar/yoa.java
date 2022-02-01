@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
-public class yoa
-  implements View.OnClickListener
+class yoa
+  implements bhye
 {
-  public yoa(SubscribeQRCodeShareHelper.3 param3) {}
+  yoa(ynm paramynm, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
   
-  public void onClick(View paramView) {}
+  public void a(String paramString)
+  {
+    yqp.a("Q.qqstory.home:FeedSegment", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
+    wik.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yoa
  * JD-Core Version:    0.7.0.1
  */

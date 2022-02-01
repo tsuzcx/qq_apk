@@ -21,11 +21,11 @@ public abstract interface ITPPlayerBase
   
   public abstract void deselectTrack(int paramInt, long paramLong);
   
-  public abstract long getBufferedDurationMs();
-  
   public abstract long getCurrentPositionMs();
   
   public abstract long getDurationMs();
+  
+  public abstract long getPlayableDurationMs();
   
   public abstract TPProgramInfo[] getProgramInfo();
   
@@ -85,6 +85,8 @@ public abstract interface ITPPlayerBase
   
   public abstract void setOnSubtitleDataListener(ITPPlayerBaseListener.IOnSubtitleDataListener paramIOnSubtitleDataListener);
   
+  public abstract void setOnSubtitleFrameOutListener(ITPPlayerBaseListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener);
+  
   public abstract void setOnVideoFrameOutListener(ITPPlayerBaseListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener);
   
   public abstract void setOnVideoSizeChangedListener(ITPPlayerBaseListener.IOnVideoSizeChangedListener paramIOnVideoSizeChangedListener);
@@ -107,7 +109,7 @@ public abstract interface ITPPlayerBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.ITPPlayerBase
  * JD-Core Version:    0.7.0.1
  */

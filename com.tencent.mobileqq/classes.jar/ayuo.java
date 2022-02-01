@@ -1,20 +1,8 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
-
 public class ayuo
-  extends aytg
 {
-  private Comparator<aynq> a = new ayup(this);
-  
-  public ayuo(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  public static final boolean a(int paramInt)
   {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
-  }
-  
-  public Comparator<aynq> a()
-  {
-    return this.a;
+    return (paramInt == 1) || (paramInt == 4) || (paramInt == 2);
   }
 }
 

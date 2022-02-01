@@ -1,33 +1,79 @@
-import android.view.View;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ajfz
+  extends anqd
 {
-  public int a;
-  public View a;
-  public boolean a;
-  public int b;
+  public ajfz(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public ajfz(int paramInt1, int paramInt2)
+  protected void a(String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if ((TroopSuspiciousFragment.a(this.a) != null) && (TroopSuspiciousFragment.a(this.a).isShowing()))
+    {
+      TroopSuspiciousFragment.a(this.a).dismiss();
+      paramString = this.a.a.getResources().getString(2131718381);
+      QQToast.a(this.a.a, 1, paramString, 0).b(this.a.a());
+    }
   }
   
-  public static boolean a(int paramInt)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
   {
-    return paramInt >= 2;
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopSuspiciousFragment", 2, "onSendSystemMsgActionFin");
+    }
+    long l2 = bdgn.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
+    {
+      l1 = Long.parseLong(paramString1);
+      if (!paramBoolean)
+      {
+        TroopSuspiciousFragment.a(this.a, paramString2, paramInt3, paramString3, paramString4, l1);
+        return;
+      }
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        paramString1.printStackTrace();
+        l1 = l2;
+      }
+      TroopSuspiciousFragment.a(this.a, paramInt1, paramString2, paramInt2, l1);
+    }
   }
   
-  public boolean a()
+  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
   {
-    return this.b >= 2;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer(20);
-    localStringBuffer.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.jdField_a_of_type_AndroidViewView).append("]");
-    return localStringBuffer.toString();
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopSuspiciousFragment", 2, "onGetSuspiciousSystemMsgFin.bengin");
+    }
+    if (this.a.a.isFinishing()) {
+      return;
+    }
+    TroopSuspiciousFragment.d(this.a);
+    if (!paramBoolean1) {
+      TroopSuspiciousFragment.a(this.a, paramBoolean2);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopSuspiciousFragment", 2, "onGetSuspiciousSystemMsgFin.success");
+    }
+    try
+    {
+      TroopSuspiciousFragment.a(this.a, paramList);
+      return;
+    }
+    catch (Exception paramList)
+    {
+      paramList.printStackTrace();
+    }
   }
 }
 

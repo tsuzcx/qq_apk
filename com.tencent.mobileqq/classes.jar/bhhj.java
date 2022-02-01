@@ -1,21 +1,20 @@
-import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
-import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.OnLoadBaselibListener;
-
-class bhhj
-  implements BaselibLoader.OnLoadBaselibListener
+public class bhhj
 {
-  bhhj(bhhh parambhhh) {}
+  public boolean a;
   
-  public void onResult(int paramInt, String paramString, BaselibLoader.BaselibContent paramBaselibContent)
+  public bhhj()
   {
-    if ((paramInt == 0) && (paramBaselibContent != null)) {
-      this.a.a(paramBaselibContent.waServiceJsStr, paramBaselibContent.waServicePath);
-    }
+    this.a = false;
+  }
+  
+  public bhhj(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhhj
  * JD-Core Version:    0.7.0.1
  */

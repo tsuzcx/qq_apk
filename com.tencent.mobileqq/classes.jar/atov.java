@@ -1,21 +1,16 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.listentogether.data.ISong;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import java.util.List;
 
-public class atov
+public abstract interface atov
 {
-  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  ISong jdField_a_of_type_ComTencentMobileqqListentogetherDataISong;
+  public abstract void a(long paramLong);
   
-  public atov(QQMusicPlayService paramQQMusicPlayService, MediaPlayer paramMediaPlayer, ISong paramISong)
-  {
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong = paramISong;
-  }
+  public abstract void a(List<atsc> paramList, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, short paramShort);
+  
+  public abstract void b(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atov
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,30 @@
-import com.tencent.biz.subscribe.utils.SubscribeAdDeviceInfoHelper.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class ylz
+public abstract class ylz<T extends Dispatcher.Dispatchable>
+  extends QQUIEventReceiver<ylf, T>
+  implements ymk
 {
-  private static ylz jdField_a_of_type_Ylz;
-  private qq_ad_get.QQAdGet.DeviceInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
+  protected static AtomicLong a = new AtomicLong(0L);
+  public int a;
+  public long a;
+  public wvr a;
+  public ymm a;
+  public int b;
   
-  public static ylz a()
-  {
-    if (jdField_a_of_type_Ylz == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ylz == null) {
-        jdField_a_of_type_Ylz = new ylz();
-      }
-      return jdField_a_of_type_Ylz;
-    }
-    finally {}
-  }
+  public abstract int a(T paramT);
   
-  public qq_ad_get.QQAdGet.DeviceInfo a()
-  {
-    a();
-    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
-  }
+  public abstract void a(T paramT);
   
-  public void a()
+  public boolean b()
   {
-    ThreadManager.getFileThreadHandler().post(new SubscribeAdDeviceInfoHelper.1(this));
+    return this.b > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ylz
  * JD-Core Version:    0.7.0.1
  */

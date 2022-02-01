@@ -1,21 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class acmq
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingDialog$initView$3", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acmq
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public acmq(ChatHistory paramChatHistory) {}
+  acmq(ViewGroup paramViewGroup) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a.b > 1000L)
-    {
-      this.a.b = l;
-      this.a.b();
-      azqs.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
-    }
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
+    QLog.i("GdtMotiveBrowsingDialog", 1, "onGlobalLayout:" + acml.a(this.jdField_a_of_type_Acml) + " l=" + this.jdField_a_of_type_AndroidViewViewGroup.getLeft() + ",t=" + this.jdField_a_of_type_AndroidViewViewGroup.getTop() + ",r=" + this.jdField_a_of_type_AndroidViewViewGroup.getRight() + ",b=" + this.jdField_a_of_type_AndroidViewViewGroup.getBottom());
   }
 }
 

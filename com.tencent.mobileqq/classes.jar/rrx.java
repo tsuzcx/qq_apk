@@ -1,46 +1,10 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class rrx
-  implements rpz
-{
-  public rrx(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
-  
-  public void a(Bundle paramBundle)
-  {
-    String str = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, str);
-    qod.b(paramBundle);
-  }
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    paramString = this.a.a();
-    Intent localIntent;
-    if ((paramBundle != null) && (paramString != null))
-    {
-      localIntent = new Intent();
-      localIntent.putExtras(paramBundle);
-      localIntent.setClass(paramString, KandianVideoUploadService.class);
-    }
-    try
-    {
-      paramString.startService(localIntent);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.d("KandianVideoUpload", 1, "Kandian retryFail", paramString);
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicView$Companion;", "", "()V", "REQUEST_CODE_CREATE_TOPIC", "", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rrx {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rrx
  * JD-Core Version:    0.7.0.1
  */

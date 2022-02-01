@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class aejv
-  extends awhw
+  implements bkij
 {
-  public aejv(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public aejv(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
+    if ((paramInt - 1 < 0) || (this.a.a.size() <= paramInt - 1)) {
+      return;
     }
+    GroupManagerActivity.a(this.a, (Groups)this.a.a.get(paramInt - 1));
+    GroupManagerActivity.a(this.a, bglp.a(this.a, 2131692819, 2131692823, GroupManagerActivity.a(this.a).group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 1);
   }
 }
 

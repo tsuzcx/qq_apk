@@ -1,22 +1,30 @@
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import javax.annotation.Nullable;
+import android.view.ViewGroup;
+import java.util.concurrent.ArrayBlockingQueue;
 
-class snb
-  implements sna
+public class snb
 {
-  public InputStream a(@Nullable InputStream paramInputStream)
+  private int jdField_a_of_type_Int;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public ArrayBlockingQueue a;
+  private snc jdField_a_of_type_Snc;
+  private int b;
+  
+  public snb(int paramInt1, int paramInt2, ViewGroup paramViewGroup, snc paramsnc)
   {
-    return paramInputStream;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_Snc = paramsnc;
   }
   
-  public void a() {}
-  
-  public void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString) {}
+  public snb(int paramInt, ViewGroup paramViewGroup, snc paramsnc)
+  {
+    this(paramInt, 1, paramViewGroup, paramsnc);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     snb
  * JD-Core Version:    0.7.0.1
  */

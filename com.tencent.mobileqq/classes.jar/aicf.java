@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.XListView;
 
-public class aicf
-  implements View.OnClickListener
+class aicf
+  implements bkhe
 {
-  public aicf(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aicf(aibv paramaibv) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.a.setText("");
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_Amcz != null) && (this.a.jdField_a_of_type_Amcz.a() != 0) && (this.a.jdField_a_of_type_Amcz.a()))
+    {
+      this.a.jdField_a_of_type_Amcz.b();
+      aibv.a(this.a, this.a.jdField_a_of_type_Amcz.a(), 10);
+    }
   }
 }
 

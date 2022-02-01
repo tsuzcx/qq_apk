@@ -1,7 +1,10 @@
-public class azak
+public final class azak
+  extends ayzn
 {
-  public int a;
-  public byte[] a;
+  protected int a()
+  {
+    return 503;
+  }
 }
 
 

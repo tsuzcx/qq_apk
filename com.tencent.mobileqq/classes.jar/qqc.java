@@ -1,21 +1,10 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import kotlin.Metadata;
 
-public class qqc
-  implements View.OnClickListener
-{
-  public qqc(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.getActivity().finish();
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/mvp/RIJPushNotifyDialog$Companion;", "", "()V", "DEFAULT_AVATAR_URL", "", "DEFAULT_SELECT_STATUS", "", "ID_CLOSE", "", "ID_DISMISS", "ID_LEFT", "ID_RIGHT", "MATCH_ALL_UIN", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qqc {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qqc
  * JD-Core Version:    0.7.0.1
  */

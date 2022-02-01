@@ -1,31 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class mix
-  implements DialogInterface.OnClickListener
+  implements mic
 {
-  public mix(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity, View paramView) {}
+  public mix(VideoControlUI paramVideoControlUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public long a()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b()) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setEnabled(false);
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b = this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_JavaLangString, 1, "kickOutUsers begin, mGAudioRoomId[" + this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b + "]");
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(1, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
-    azqs.b(null, "CliOper", "", "", "0X8009E2A", "0X8009E2A", 0, 0, "", "", "", "");
-    paramDialogInterface.dismiss();
+    return this.a.a();
+  }
+  
+  public void a()
+  {
+    this.a.C(AudioHelper.b());
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.a.c(paramBoolean1, paramBoolean2);
+  }
+  
+  public boolean a()
+  {
+    return this.a.g();
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mix
  * JD-Core Version:    0.7.0.1
  */

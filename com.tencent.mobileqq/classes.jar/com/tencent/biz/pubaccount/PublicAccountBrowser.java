@@ -1,23 +1,26 @@
 package com.tencent.biz.pubaccount;
 
-import alud;
+import Override;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import aobw;
-import bdgk;
-import bdin;
-import bkbq;
+import anni;
+import aqcb;
+import bgln;
+import bgnt;
+import bmqa;
 import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
 import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView;
 import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
@@ -29,33 +32,34 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.FadeIconImageView;
 import java.util.regex.Pattern;
 import mqq.app.AppRuntime;
-import npv;
-import npw;
-import npx;
-import npy;
-import npz;
-import nqa;
-import nqb;
-import nqd;
-import nqg;
-import nrt;
+import nys;
+import nyt;
+import nyu;
+import nyv;
+import nyw;
+import nyx;
+import nyy;
+import nza;
+import nzd;
+import oat;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ors;
-import orz;
-import oxb;
-import oxe;
-import qig;
-import syb;
+import pha;
+import phi;
+import pmk;
+import pmn;
+import rbo;
+import tzo;
 
 public class PublicAccountBrowser
   extends QQBrowserActivity
 {
-  private static final String jdField_a_of_type_JavaLangString = alud.a(2131709168);
+  private static final String jdField_a_of_type_JavaLangString = anni.a(2131707544);
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -66,7 +70,7 @@ public class PublicAccountBrowser
   private FadeIconImageView jdField_a_of_type_ComTencentWidgetFadeIconImageView;
   private Runnable jdField_a_of_type_JavaLangRunnable;
   public final Pattern a;
-  private oxe jdField_a_of_type_Oxe = new npx(this);
+  private pmn jdField_a_of_type_Pmn = new nyt(this);
   public boolean a;
   private Handler jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private RIJRedPacketPopupView jdField_b_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView;
@@ -97,16 +101,16 @@ public class PublicAccountBrowser
   {
     if (this.jdField_a_of_type_ComTencentWidgetFadeIconImageView == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131368638));
+      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131368961));
       if (this.jdField_a_of_type_ComTencentWidgetFadeIconImageView != null) {
-        this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibilityHandler(new npv(this));
+        this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibilityHandler(new nyv(this));
       }
     }
     if (this.jdField_a_of_type_AndroidWidgetImageView == null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368643));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368966));
       if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new npz(this));
+        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new nyw(this));
       }
     }
   }
@@ -121,7 +125,7 @@ public class PublicAccountBrowser
     {
       localAlphaAnimation.setDuration(500L);
       localAlphaAnimation.setFillAfter(true);
-      localAlphaAnimation.setAnimationListener(new npw(this, paramBoolean, paramView));
+      localAlphaAnimation.setAnimationListener(new nys(this, paramBoolean, paramView));
       paramView.startAnimation(localAlphaAnimation);
       return;
     }
@@ -136,11 +140,11 @@ public class PublicAccountBrowser
     paramRIJRedPacketPopupView.setText(paramCharSequence);
     paramRIJRedPacketPopupView.a(paramBoolean2);
     if (paramBoolean2) {
-      paramRIJRedPacketPopupView.setOnCloseIconClickListener(new nqg(this, paramRIJRedPacketPopupView));
+      paramRIJRedPacketPopupView.setOnCloseIconClickListener(new nzd(this, paramRIJRedPacketPopupView));
     }
     paramRIJRedPacketPopupView.b(paramBoolean1);
     a(paramRIJRedPacketPopupView, true);
-    this.jdField_b_of_type_AndroidOsHandler.postDelayed(new PublicAccountBrowser.9(this, paramRIJRedPacketPopupView), paramInt3);
+    this.jdField_b_of_type_AndroidOsHandler.postDelayed(new PublicAccountBrowser.10(this, paramRIJRedPacketPopupView), paramInt3);
   }
   
   private void a(String paramString)
@@ -152,7 +156,7 @@ public class PublicAccountBrowser
     paramString = BaseApplicationImpl.getApplication();
     if (paramString != null)
     {
-      paramString = bkbq.a(paramString.getRuntime(), false, true);
+      paramString = bmqa.a(paramString.getRuntime(), false, true);
       if (paramString != null)
       {
         paramString = paramString.edit();
@@ -165,19 +169,19 @@ public class PublicAccountBrowser
   
   private void b()
   {
-    if (!bkbq.o()) {
+    if (!bmqa.n()) {
       return;
     }
-    bkbq.e();
-    this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.postDelayed(new PublicAccountBrowser.7(this), 200L);
+    bmqa.e();
+    this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.postDelayed(new PublicAccountBrowser.8(this), 200L);
   }
   
   private void b(String paramString)
   {
     int j = 1;
-    orz localorz = new orz();
-    paramString = localorz.a("uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin())).a("rowkey", paramString).a("os", Integer.valueOf(1)).a("imsi", bdgk.b()).a("imei", ors.f());
-    if (bdin.h(BaseApplicationImpl.getContext()))
+    phi localphi = new phi();
+    paramString = localphi.a("uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin())).a("rowkey", paramString).a("os", Integer.valueOf(1)).a("imsi", bgln.b()).a("imei", pha.h());
+    if (bgnt.h(BaseApplicationImpl.getContext()))
     {
       i = 2;
       paramString = paramString.a("network_type", Integer.valueOf(i));
@@ -196,7 +200,7 @@ public class PublicAccountBrowser
     for (int i = j;; i = 0)
     {
       paramString.a("is_tips", Integer.valueOf(i)).a("page_type", Integer.valueOf(2));
-      nrt.a("0X800AD2F", localorz.a());
+      oat.a("0X800AD2F", localphi.a());
       return;
       i = 1;
       break;
@@ -224,14 +228,14 @@ public class PublicAccountBrowser
       if (!TextUtils.isEmpty(str))
       {
         this.jdField_c_of_type_JavaLangString = str;
-        if ((qig.a().a()) && (qig.a().d()) && (qig.a().b()))
+        if ((rbo.a().a()) && (rbo.a().d()) && (rbo.a().b()))
         {
-          RIJRedPacketManager.a().a(str, new nqa(this));
-          qig.a().a(new nqb(this, str));
+          RIJRedPacketManager.a().a(str, new nyx(this));
+          rbo.a().a(new nyy(this, str));
         }
         this.d = a(paramString);
-        if ((!TextUtils.isEmpty(this.d)) && (qig.a().b())) {
-          this.jdField_b_of_type_AndroidOsHandler.postDelayed(new PublicAccountBrowser.5(this, str), 500L);
+        if ((!TextUtils.isEmpty(this.d)) && (rbo.a().b())) {
+          this.jdField_b_of_type_AndroidOsHandler.postDelayed(new PublicAccountBrowser.6(this, str), 500L);
         }
       }
     }
@@ -239,7 +243,7 @@ public class PublicAccountBrowser
   
   private void d(String paramString)
   {
-    RIJRedPacketManager.a().a(paramString, this.d, 5, new nqd(this, paramString));
+    RIJRedPacketManager.a().a(paramString, this.d, 5, new nza(this, paramString));
   }
   
   private void e(String paramString)
@@ -249,13 +253,21 @@ public class PublicAccountBrowser
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     QLog.i("PublicAccountBrowser", 1, "resume timing:  task time has gone: " + this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_JavaLangRunnable = new PublicAccountBrowser.11(this, paramString);
+    this.jdField_a_of_type_JavaLangRunnable = new PublicAccountBrowser.12(this, paramString);
     this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
   public String a()
   {
     return getIntent().getExtras().getString("puin");
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -281,14 +293,14 @@ public class PublicAccountBrowser
         paramBundle.g();
       }
     }
-    oxb.a().a(this.jdField_a_of_type_Oxe);
+    pmk.a().a(this.jdField_a_of_type_Pmn);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    oxb.a().b(this.jdField_a_of_type_Oxe);
+    pmk.a().b(this.jdField_a_of_type_Pmn);
     if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
       b(this.jdField_c_of_type_JavaLangString);
     }
@@ -297,7 +309,7 @@ public class PublicAccountBrowser
   public void doOnPause()
   {
     super.doOnPause();
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null) && (qig.a().a()) && (qig.a().d()) && (qig.a().b()) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.getVisibility() == 0)) {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null) && (rbo.a().a()) && (rbo.a().d()) && (rbo.a().b()) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.getVisibility() == 0)) {
       c();
     }
   }
@@ -307,7 +319,7 @@ public class PublicAccountBrowser
     super.doOnResume();
     String str = getIntent().getStringExtra("url");
     a();
-    c(str);
+    new Handler().postDelayed(new PublicAccountBrowser.1(this, str), 200L);
   }
   
   public void finish()
@@ -321,7 +333,7 @@ public class PublicAccountBrowser
   public ColorNote getColorNote()
   {
     ColorNote localColorNote = super.getColorNote();
-    if (syb.c(getIntent().getStringExtra("url"))) {}
+    if (tzo.c(getIntent().getStringExtra("url"))) {}
     try
     {
       JSONObject localJSONObject = new JSONObject(new String(localColorNote.getReserve()));
@@ -339,21 +351,33 @@ public class PublicAccountBrowser
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    TouchWebView localTouchWebView = (TouchWebView)findViewById(2131380175);
+    TouchWebView localTouchWebView = (TouchWebView)findViewById(2131381152);
     if (localTouchWebView != null)
     {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener = new npy(this);
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener = new nyu(this);
       localTouchWebView.addScrollChangedListener(this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener);
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    TouchWebView localTouchWebView = (TouchWebView)findViewById(2131380175);
+    TouchWebView localTouchWebView = (TouchWebView)findViewById(2131381152);
     if ((localTouchWebView != null) && (this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener != null)) {
       localTouchWebView.removeScrollChangedListener(this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener);
     }
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
   }
 }
 

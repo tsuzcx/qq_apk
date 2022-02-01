@@ -1,117 +1,164 @@
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
-import com.tencent.common.galleryactivity.AbstractImageAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOLightVideoData;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.AIOEmoticonGuideHelper.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emoticonview.EmoticonGuideBubbleView;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.GestureSelectGridView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-class agjn
-  implements bhuw
+public class agjn
+  implements aglz, agma, Handler.Callback, View.OnClickListener
 {
-  agjn(agji paramagji) {}
+  private aqsp jdField_a_of_type_Aqsp;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private EmoticonGuideBubbleView jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public agjn(BaseChatPie paramBaseChatPie)
   {
-    boolean bool = true;
-    Object localObject1 = this.a.a.a(paramInt);
-    if (!agkf.class.isInstance(localObject1)) {}
-    label646:
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bkfv(Looper.getMainLooper(), this);
+  }
+  
+  private void a(aqsp paramaqsp)
+  {
+    if (paramaqsp == null) {}
+    String str;
+    boolean bool;
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (!a(paramaqsp)) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() == null));
+      if (QLog.isColorLevel()) {
+        QLog.d("aio_emoticon_guide.helper", 2, "realShowGuideBubble start.");
+      }
+      this.jdField_a_of_type_Aqsp = paramaqsp;
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("aio_emoticon_guide.helper", 2, "showGuideBubble  mGuideBubbleView is new create.");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView = new EmoticonGuideBubbleView(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext);
+      }
+      str = paramaqsp.a.a;
+      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
+        str = paramaqsp.a.b;
+      }
+      bool = ThemeUtil.isNowThemeIsSimple(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null);
+    } while (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout, str, paramaqsp.a.e, paramaqsp.a.f, bool));
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4C", "0X800AD4C", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.setOnClickListener(this);
+    bgsg.a("key_show_emoticon_guide", Boolean.valueOf(false));
+    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 3000L);
+  }
+  
+  private boolean a(aqsp paramaqsp)
+  {
+    if (paramaqsp == null) {
+      return false;
+    }
+    if ((((Boolean)bgsg.a("key_show_emoticon_guide", Boolean.valueOf(true))).booleanValue()) && (paramaqsp.a.b())) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public void a()
+  {
+    if (!((Boolean)bgsg.a("key_show_emoticon_guide", Boolean.valueOf(true))).booleanValue()) {
+      return;
+    }
+    ThreadManager.getFileThreadHandler().post(new AIOEmoticonGuideHelper.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    b();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 9, 13 };
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.getVisibility() == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("aio_emoticon_guide.helper", 2, "removeGuideBubble ");
+      }
+      this.jdField_a_of_type_Aqsp = null;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+    }
+    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView = null;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      b();
+    }
+    while (paramMessage.what != 2) {
+      return true;
+    }
+    a((aqsp)paramMessage.obj);
+    return true;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() == null) || (this.jdField_a_of_type_Aqsp == null)) {}
+    label164:
     for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      localObject1 = (agkf)localObject1;
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOImageListScene", 2, "onItemClick" + paramInt + " FirstVisiblePosition " + agji.a(this.a).getFirstVisiblePosition() + " LastVisiblePosition " + agji.b(this.a).getLastVisiblePosition());
-      }
-      Object localObject2;
-      int i;
-      if (agji.a(this.a))
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+      int i = this.jdField_a_of_type_Aqsp.a.c;
+      int k = this.jdField_a_of_type_Aqsp.a.d;
+      if (k == 1)
       {
-        localObject2 = ((agkf)localObject1).a;
-        if (AIOFilePicData.class.isInstance(localObject2))
+        i = arvq.b(i);
+        if (!arvq.c(i)) {}
+      }
+      else
+      {
+        for (;;)
         {
-          if ((((AIOFilePicData)localObject2).a(20) == null) && (((AIOFilePicData)localObject2).a(18) == null) && (((AIOFilePicData)localObject2).a(16) == null))
+          if (i == -1) {
+            break label164;
+          }
+          bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4D", "0X800AD4D", 0, 0, "", "", "", "");
+          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a(k, i);
+          break;
+          if (k == 2)
           {
-            if (!QLog.isColorLevel()) {
+            int j = arvj.b(i);
+            i = j;
+            if (arvj.a(j)) {
               continue;
             }
-            QLog.d("AIOImageListScene", 2, "AIOFilePicData has null path,onItemClick: " + paramInt);
+            break;
           }
+          i = -1;
         }
-        else if (AIOLightVideoData.class.isInstance(((agkf)localObject1).a))
-        {
-          QQToast.a(agji.n(this.a), alud.a(2131700470), 0).a();
-          return;
-        }
-        i = this.a.a();
-        if (i == 1)
-        {
-          if (AIOShortVideoData.class.isInstance(localObject2)) {
-            QQToast.a(agji.o(this.a), alud.a(2131700477), 0).a();
-          }
-        }
-        else if (i == 2)
-        {
-          if (AIOImageData.class.isInstance(localObject2)) {
-            QQToast.a(agji.p(this.a), alud.a(2131700475), 0).a();
-          }
-        }
-        else {
-          if ((i == 0) && (!AIOImageData.class.isInstance(localObject2))) {
-            break label481;
-          }
-        }
-        if (((agkf)localObject1).b() == 1)
-        {
-          i = 1;
-          label343:
-          localObject2 = this.a;
-          if (i != 0) {
-            break label510;
-          }
-          label354:
-          ((agji)localObject2).a((agkf)localObject1, bool, false);
-          if (!this.a.a(paramView, (zjd)localObject1)) {
-            ((AbstractImageAdapter)paramAdapterView.getAdapter()).notifyDataSetChanged();
-          }
-          this.a.w();
-        }
-      }
-      for (;;)
-      {
-        if (!QLog.isColorLevel()) {
-          break label646;
-        }
-        QLog.d("AIOImageListScene", 2, "onItemClick" + paramInt + " FirstVisiblePosition " + agji.e(this.a).getFirstVisiblePosition() + " LastVisiblePosition " + agji.f(this.a).getLastVisiblePosition() + " SelectedIndex = " + this.a.a.b());
-        return;
-        label481:
-        if ((AIOFilePicData.class.isInstance(localObject2)) || (!AIOShortVideoData.class.isInstance(localObject2))) {
-          break;
-        }
-        break;
-        i = 0;
-        break label343;
-        label510:
-        bool = false;
-        break label354;
-        if (AIOLightVideoData.class.isInstance(((agkf)localObject1).a))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AIOImageListScene", 2, "lightvideo could not be opened");
-          }
-          QQToast.a(agji.q(this.a), alud.a(2131700480), 0).a();
-          return;
-        }
-        if (AIOShortVideoData.class.isInstance(((agkf)localObject1).a)) {}
-        this.a.a.e(paramInt);
-        this.a.a.b(agji.c(this.a).getFirstVisiblePosition());
-        this.a.a.c(agji.d(this.a).getLastVisiblePosition());
-        this.a.t();
-        this.a.a("Multi_Pic_big", 1);
       }
     }
   }

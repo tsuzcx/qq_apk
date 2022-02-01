@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity.2;
-import mqq.app.QQPermissionCallback;
-
 public class aohs
-  implements QQPermissionCallback
 {
-  public aohs(LocationSelectActivity.2 param2) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public long c;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public aohs(String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3)
   {
-    bdgm.a(this.a.this$0, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    LocationSelectActivity.a(this.a.this$0);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.c = paramLong3;
   }
 }
 

@@ -1,19 +1,8 @@
-import android.os.Handler;
-import cooperation.qzone.zipanimate.ZipAnimationDrawable.ZipAnimationState.1.1;
+import android.util.Pair;
 
-public class bkbg
-  implements bkbo
+abstract interface bkbg
 {
-  bkbg(bkbf parambkbf) {}
-  
-  public void onZipLoaded(boolean paramBoolean)
-  {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Boolean = paramBoolean;
-      this.a.jdField_a_of_type_Bkbb.a.post(new ZipAnimationDrawable.ZipAnimationState.1.1(this));
-    }
-  }
+  public abstract Pair<String, String> a(String paramString);
 }
 
 

@@ -1,22 +1,35 @@
-import tencent.gdt.qq_ad_get.QQAdGet;
-import tencent.gdt.qq_ad_get.QQAdGetRsp;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aamv
+  extends anry
 {
-  public int a;
-  public long a;
-  public qq_ad_get.QQAdGet a;
-  public qq_ad_get.QQAdGetRsp a;
+  public aamv(FollowTextView paramFollowTextView) {}
   
-  public aamv()
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_a_of_type_Long = -2147483648L;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet != null;
+    super.onFollowPublicAccount(paramBoolean, paramString);
+    FollowTextView.a(this.a, true);
+    if (paramBoolean)
+    {
+      if (!FollowTextView.a(this.a)) {
+        FollowTextView.a(this.a, true, FollowTextView.a(this.a));
+      }
+      this.a.a(1);
+      if (FollowTextView.a(this.a) != null)
+      {
+        if (FollowTextView.a(this.a) != null) {
+          FollowTextView.a(this.a).a(true, FollowTextView.a(this.a));
+        }
+        zwp.a().a(new FollowUpdateEvent(1, FollowTextView.a(this.a).poster.id.get()));
+      }
+      return;
+    }
+    QQToast.a(this.a.getContext(), 2131690622, 0).a();
   }
 }
 

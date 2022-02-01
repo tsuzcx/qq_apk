@@ -7,16 +7,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import arre;
-import arwp;
-import bczz;
-import blqr;
-import blwl;
-import blxf;
-import blxj;
-import bmxe;
-import bmxf;
-import bmxg;
+import atvb;
+import audz;
+import bgfz;
+import bojv;
+import bopp;
+import boqj;
+import boqn;
+import bpok;
+import bpol;
+import bpom;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -25,13 +25,13 @@ import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean
 
 public class EditTextPanel
   extends RelativeLayout
-  implements arwp
+  implements audz
 {
   public static String a;
   int jdField_a_of_type_Int = -1;
   EditText jdField_a_of_type_AndroidWidgetEditText;
-  private blxj jdField_a_of_type_Blxj = new bmxe(this);
-  bmxg jdField_a_of_type_Bmxg;
+  private boqn jdField_a_of_type_Boqn = new bpok(this);
+  bpom jdField_a_of_type_Bpom;
   public EditTextEffectView a;
   int b = -1;
   int c;
@@ -58,8 +58,8 @@ public class EditTextPanel
   
   private void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, int paramInt)
   {
-    if (this.jdField_a_of_type_Bmxg != null) {
-      this.jdField_a_of_type_Bmxg.a(paramDynamicTextConfigBean, paramInt);
+    if (this.jdField_a_of_type_Bpom != null) {
+      this.jdField_a_of_type_Bpom.a(paramDynamicTextConfigBean, paramInt);
     }
   }
   
@@ -136,11 +136,11 @@ public class EditTextPanel
     while (!QLog.isColorLevel()) {
       try
       {
-        bczz.a(paramView, blxf.a(localDynamicTextConfigBean.text_id, 0));
-        DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)blqr.a(7);
-        blwl localblwl = (blwl)blqr.a(14);
+        bgfz.a(paramView, boqj.a(localDynamicTextConfigBean.text_id, 0));
+        DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)bojv.a(7);
+        bopp localbopp = (bopp)bojv.a(14);
         if (localDynamicTextConfigBean != null) {
-          localblwl.a(String.valueOf(localDynamicTextConfigBean.text_id), 5);
+          localbopp.a(String.valueOf(localDynamicTextConfigBean.text_id), 5);
         }
         if (localDynamicTextConfigManager.a(localDynamicTextConfigBean))
         {
@@ -156,10 +156,10 @@ public class EditTextPanel
         }
         if (NetConnInfoCenter.isMobileConn())
         {
-          arre.a(paramView.getContext(), 2131698588, 2131698587, new bmxf(this, localException, localDynamicTextConfigBean));
+          atvb.a(paramView.getContext(), 2131697499, 2131697498, new bpol(this, localException, localDynamicTextConfigBean));
           return;
         }
-        localException.a(localDynamicTextConfigBean, this.jdField_a_of_type_Blxj);
+        localException.a(localDynamicTextConfigBean, this.jdField_a_of_type_Boqn);
         return;
       }
     }
@@ -195,14 +195,14 @@ public class EditTextPanel
     }
   }
   
-  public void setPanelListener(bmxg parambmxg)
+  public void setPanelListener(bpom parambpom)
   {
-    this.jdField_a_of_type_Bmxg = parambmxg;
+    this.jdField_a_of_type_Bpom = parambpom;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel
  * JD-Core Version:    0.7.0.1
  */

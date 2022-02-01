@@ -1,155 +1,228 @@
-import android.content.Context;
-import android.graphics.Rect;
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.drawable.Drawable.Callback;
+import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import com.tencent.qphone.base.util.QLog;
 
 public class yxk
-  extends yxm
+  extends yxs
+  implements Drawable.Callback
 {
-  private int jdField_a_of_type_Int;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private List<yxj> jdField_a_of_type_JavaUtilList = new ArrayList();
-  protected yxg a;
-  private int b;
+  public static final String a;
+  public int a;
+  public yxl a;
+  public zca a;
+  public zcb a;
+  public boolean a;
   
-  public yxk(Context paramContext)
+  static
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    a(2131559081);
-    this.b = 4;
-    this.jdField_a_of_type_Int = 0;
+    jdField_a_of_type_JavaLangString = yxk.class.getSimpleName();
   }
   
-  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public yxk(DoodleView paramDoodleView)
   {
-    int i = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredWidth();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    if (paramInt3 > paramInt1)
-    {
-      if (paramInt3 > paramInt2 * 2)
-      {
-        localLayoutParams.leftMargin = (paramInt2 - i / 2);
-        return;
+    super(paramDoodleView);
+    this.jdField_a_of_type_Zca = new zca();
+    this.jdField_a_of_type_Zca.a(false);
+    this.jdField_a_of_type_Zca.a(6.0F);
+    this.jdField_a_of_type_Zca.b(0.2F);
+  }
+  
+  private void a(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (this.jdField_a_of_type_Zca.b(this.jdField_a_of_type_Zcb, f1, f2)) {
+      if (this.jdField_a_of_type_Yxl != null) {
+        this.jdField_a_of_type_Yxl.a(this.jdField_a_of_type_Zcb);
       }
-      if (paramInt3 > (paramInt4 - paramInt2) * 2)
-      {
-        localLayoutParams.leftMargin = (paramInt2 + paramInt3 - paramInt4 - i / 2);
-        return;
-      }
-      localLayoutParams.addRule(14);
+    }
+    while ((this.jdField_a_of_type_Zca.a(this.jdField_a_of_type_Zcb, f1, f2)) || (!this.jdField_a_of_type_Zca.a(this.jdField_a_of_type_Zcb, f1, f2, true)) || (this.jdField_a_of_type_Yxl == null) || (this.jdField_a_of_type_Zcb == null)) {
       return;
     }
-    localLayoutParams.addRule(14);
+    yqp.b(jdField_a_of_type_JavaLangString, "click the item:" + this.jdField_a_of_type_Zcb);
+    this.jdField_a_of_type_Yxl.a(this.jdField_a_of_type_Zcb, 0, 0);
   }
   
-  private void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  private boolean a(float paramFloat1, float paramFloat2)
   {
-    switch (this.b)
-    {
-    default: 
+    return this.jdField_a_of_type_Zca.a(this.jdField_a_of_type_Zcb, paramFloat1, paramFloat2, true);
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public zcb a()
+  {
+    return this.jdField_a_of_type_Zcb;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Zcb = null;
+    this.jdField_a_of_type_Zca.a();
+  }
+  
+  protected void a(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Zcb == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755040);
+    paramCanvas.save();
+    this.jdField_a_of_type_Zcb.a(paramCanvas);
+    paramCanvas.restore();
   }
   
-  public void a(int paramInt)
+  public void a(yxl paramyxl)
   {
-    this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131370197));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362829));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-    super.b(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_Yxl = paramyxl;
   }
   
-  public void a(View paramView)
+  public void a(zcb paramzcb)
   {
-    a();
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    Rect localRect = new Rect(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
-    this.jdField_a_of_type_AndroidViewView.measure(-2, -2);
-    int i = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
-    int j = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
-    int k = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getWidth();
-    int m = arrayOfInt[0];
-    int n = (paramView.getWidth() - i) / 2;
-    int i1 = localRect.top;
-    a(paramView.getWidth(), localRect.centerX(), i, k);
-    a(k, localRect.centerX(), true);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, m + n, i1 - j - 10);
-  }
-  
-  public void a(yxg paramyxg)
-  {
-    this.jdField_a_of_type_Yxg = paramyxg;
-  }
-  
-  public void a(yxj paramyxj)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramyxj);
-    String str = paramyxj.a();
-    Drawable localDrawable = paramyxj.a();
-    if (this.jdField_a_of_type_Int != 0)
+    this.jdField_a_of_type_Zcb = paramzcb;
+    if (this.jdField_a_of_type_Zcb == null) {}
+    do
     {
-      localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageView)localObject1).setBackgroundResource(2130839473);
-      localObject2 = new LinearLayout.LayoutParams(-1, -2, 1.0F);
-      ((LinearLayout.LayoutParams)localObject2).setMargins(aepi.a(15.0F, ((ImageView)localObject1).getResources()), 0, aepi.a(15.0F, ((ImageView)localObject1).getResources()), 0);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+      return;
+      if ((this.jdField_a_of_type_Zcb instanceof yxo))
+      {
+        this.jdField_a_of_type_Zca.a(6.0F);
+        this.jdField_a_of_type_Zca.b(0.2F);
+        return;
+      }
+    } while (!(this.jdField_a_of_type_Zcb instanceof yxc));
+    this.jdField_a_of_type_Zca.a(18.0F);
+    this.jdField_a_of_type_Zca.b(0.2F);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  protected boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Zcb = null;
+    g();
+  }
+  
+  public void b(Canvas paramCanvas)
+  {
+    throw new IllegalStateException("TextFaceEditLayer should not save");
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Zcb != null;
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (this.jdField_a_of_type_Zca.a(this.jdField_a_of_type_Zcb, f1, f2, true))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "accept inside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
+      }
+      return true;
     }
-    Object localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559080, null);
-    Object localObject2 = (ImageView)((View)localObject1).findViewById(2131370203);
-    TextView localTextView = (TextView)((View)localObject1).findViewById(2131370216);
-    if (localDrawable != null)
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "accept outside x:" + paramMotionEvent.getX() + " y:" + paramMotionEvent.getY());
+    }
+    return false;
+  }
+  
+  public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean e(MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Yxt != null) {
+      this.jdField_a_of_type_Yxt.a(this, paramMotionEvent);
+    }
+    int i = (int)paramMotionEvent.getY();
+    int j = Math.abs(i - this.jdField_a_of_type_Int);
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-      ((ImageView)localObject2).setImageDrawable(localDrawable);
-      if (str == null) {
-        break label267;
-      }
-      if (ndp.a(str) <= 18) {
-        break label258;
-      }
-      localTextView.setText(ndp.a(str, 18, "..."));
     }
     for (;;)
     {
-      ((View)localObject1).setOnClickListener(new yxl(this, paramyxj.b(), paramyxj.a()));
-      ((View)localObject1).setFocusable(true);
-      ((View)localObject1).setClickable(true);
-      paramyxj = new LinearLayout.LayoutParams(-1, -2, 1.0F);
-      paramyxj.gravity = 17;
-      ((View)localObject1).setLayoutParams(paramyxj);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1);
-      this.jdField_a_of_type_Int += 1;
-      return;
-      ((ImageView)localObject2).setVisibility(8);
-      break;
-      label258:
-      localTextView.setText(str);
-      continue;
-      label267:
-      localTextView.setVisibility(8);
+      this.jdField_a_of_type_Zca.a(paramMotionEvent, true);
+      if (this.jdField_a_of_type_Zcb == null) {
+        break;
+      }
+      this.jdField_a_of_type_Yxl.a(this.jdField_a_of_type_Zcb.f, this.jdField_a_of_type_Zcb.k, (int)this.jdField_a_of_type_Zcb.l, (int)this.jdField_a_of_type_Zcb.m, this.jdField_a_of_type_Zcb.a, this.jdField_a_of_type_Zcb.e, 2);
+      return true;
+      this.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Zcb != null)
+      {
+        this.jdField_a_of_type_Zcb.e = false;
+        this.jdField_a_of_type_Zcb.f = false;
+      }
+      a(paramMotionEvent.getX(0), paramMotionEvent.getY(0));
+      if (this.jdField_a_of_type_Zcb != null)
+      {
+        this.jdField_a_of_type_Zca.a(this.jdField_a_of_type_Zcb);
+        continue;
+        if (this.jdField_a_of_type_Zcb != null) {
+          this.jdField_a_of_type_Zcb.f = true;
+        }
+        if (j > 10)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          continue;
+          if (this.jdField_a_of_type_Zcb != null)
+          {
+            this.jdField_a_of_type_Zcb.e = false;
+            this.jdField_a_of_type_Zcb.f = false;
+          }
+          if (!this.jdField_a_of_type_Boolean) {
+            a(paramMotionEvent);
+          }
+          this.jdField_a_of_type_Zca.a();
+          continue;
+          if (this.jdField_a_of_type_Zcb != null)
+          {
+            this.jdField_a_of_type_Zcb.e = true;
+            continue;
+            if (this.jdField_a_of_type_Zcb != null) {
+              this.jdField_a_of_type_Zcb.e = false;
+            }
+          }
+        }
+      }
     }
+    this.jdField_a_of_type_Yxl.a(false, 0.0F, 0, 0, null, false, 2);
+    return true;
   }
+  
+  public void invalidateDrawable(@NonNull Drawable paramDrawable)
+  {
+    g();
+  }
+  
+  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
+  
+  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yxk
  * JD-Core Version:    0.7.0.1
  */

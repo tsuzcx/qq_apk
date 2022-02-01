@@ -1,43 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
 import com.tencent.qphone.base.util.QLog;
 
 public class mfe
-  implements Animation.AnimationListener
+  extends mbx
 {
-  public mfe(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
+  public mfe(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(bgol parambgol)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationEnd, seq[" + this.jdField_a_of_type_Long + "]");
-    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a != null)
+    if ((QLog.isDevelopLevel()) || (this.a.a != parambgol.a)) {
+      QLog.w(this.a.d, 1, "onGroupInviteFlagChanged, mCanAutoInviteMemIntoTroop[" + this.a.a + "->" + parambgol.a + "]");
+    }
+    if (this.a.a != parambgol.a)
     {
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b = true;
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.j();
-    }
-    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
-    if (paramAnimation != null) {
-      paramAnimation.g(this.jdField_a_of_type_Long);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationStart, seq[" + this.jdField_a_of_type_Long + "]");
-    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
-    if (paramAnimation != null) {
-      paramAnimation.g(this.jdField_a_of_type_Long);
+      this.a.a = parambgol.a;
+      this.a.f(0L, 65535);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mfe
  * JD-Core Version:    0.7.0.1
  */

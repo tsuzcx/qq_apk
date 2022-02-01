@@ -4,7 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
 import com.tencent.mobileqq.msf.core.b.b;
-import com.tencent.mobileqq.msf.core.h.a;
+import com.tencent.mobileqq.msf.core.i.a;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.msf.service.protocol.serverconfig.f;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -35,7 +35,7 @@ class d
       MsfCore.initAppProMsg("*", this.b.getAppId());
     }
     label133:
-    h.a locala1;
+    i.a locala1;
     do
     {
       do
@@ -43,7 +43,7 @@ class d
         return;
       } while (locala.a != 1);
       localObject = this.a.c + "&" + System.currentTimeMillis();
-      locala1 = new h.a();
+      locala1 = new i.a();
       locala1.b = this.a.c;
       com.tencent.mobileqq.msf.core.b.a.a(com.tencent.mobileqq.msf.core.b.a.j, (String)localObject, locala1);
       if (b.b(this.a.c))

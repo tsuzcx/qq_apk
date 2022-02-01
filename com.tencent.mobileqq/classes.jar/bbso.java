@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import java.util.List;
 
 class bbso
-  implements DialogInterface.OnClickListener
 {
-  bbso(bbsn parambbsn, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
+  String jdField_a_of_type_JavaLangString;
+  List<bbmu> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bbso(String paramString, List<bbmu> paramList)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b(this.jdField_a_of_type_JavaUtilUUID);
-    }
+    this.jdField_a_of_type_JavaLangString = paramList;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
 }
 

@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import mqq.util.WeakReference;
+import android.os.Bundle;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class aprm
-  extends VasQuickUpdateManager.CallBacker
+  implements EIPCResultCallback
 {
-  aprm(aprl paramaprl) {}
+  aprm(aprj paramaprj, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramString2 = (QQAppInterface)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (paramString2 == null) {}
-    while (!"emoji_app_vip_emoji_aio_android_config.json".equals(paramString1)) {
-      return;
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.download url=", this.jdField_a_of_type_JavaLangString, ", ipc call back code=", Integer.valueOf(paramEIPCResult.code) });
+    int j = -1;
+    int i = j;
+    if (paramEIPCResult.code == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data;
+      i = j;
+      if (paramEIPCResult != null)
+      {
+        i = j;
+        if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+          i = paramEIPCResult.getInt("code");
+        }
+      }
     }
-    ((VasQuickUpdateManager)paramString2.getManager(184)).removeCallBacker(this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-    paramString1 = VasQuickUpdateManager.getJSONFromLocal(paramString2, "emoji_app_vip_emoji_aio_android_config.json", false, null);
-    this.a.a(paramString1);
+    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(i);
+    }
   }
 }
 

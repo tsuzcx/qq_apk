@@ -1,58 +1,62 @@
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.RectF;
-import android.text.TextPaint;
-import android.text.style.ReplacementSpan;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class omy
-  extends ReplacementSpan
+public class omy
 {
-  private omy(omt paramomt) {}
+  private static int jdField_a_of_type_Int;
+  private static final String jdField_a_of_type_JavaLangString = omy.class.getSimpleName();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String b;
   
-  private float a(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public omy(QQAppInterface paramQQAppInterface)
   {
-    return paramPaint.measureText(paramCharSequence, paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = pha.a();
+    jdField_a_of_type_Int = 0;
   }
   
-  private TextPaint a(Paint paramPaint)
+  private int c()
   {
-    paramPaint = new TextPaint(paramPaint);
-    paramPaint.setTextSize(bdoo.d(9.0F));
-    return paramPaint;
+    int i = 0;
+    boolean bool = bmqa.F(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (!bool) {
+      bmqa.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0));
+    }
+    if (bool) {
+      i = ((Integer)bmqa.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0))).intValue();
+    }
+    return i;
   }
   
-  public void draw(@NotNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NotNull Paint paramPaint)
+  public int a()
   {
-    paramPaint.setColor(Color.parseColor("#376099"));
-    paramPaint.setTextSize(bdoo.b(9.0F));
-    Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
-    int i = localFontMetricsInt.bottom - localFontMetricsInt.top;
-    Math.abs(localFontMetricsInt.leading);
-    Math.abs(localFontMetricsInt.ascent);
-    Math.abs(localFontMetricsInt.descent);
-    paramPaint.setAntiAlias(true);
-    RectF localRectF = new RectF();
-    localRectF.left = ((int)paramFloat);
-    int j = (paramInt5 - paramInt3 - localFontMetricsInt.descent + localFontMetricsInt.top) / 2;
-    localRectF.top = (paramInt3 + j);
-    localRectF.bottom = (paramInt5 - j);
-    localRectF.right = (localRectF.left + (int)paramPaint.measureText(paramCharSequence, paramInt1, paramInt2));
-    paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt4 - localFontMetricsInt.descent, paramPaint);
-    omt.a(paramCanvas, paramPaint, (int)a(paramPaint, paramCharSequence, paramInt1, paramInt2), i, bdoo.b(1.0F), bdoo.b(1.0F), bdoo.b(1.0F), bdoo.b(1.0F), bdoo.b(1.0F), paramFloat, paramInt4 - i);
+    return jdField_a_of_type_Int;
   }
   
-  public int getSize(@NotNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public void a()
   {
-    paramCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
-    return (int)a(paramPaint).measureText(paramCharSequence.toString());
+    try
+    {
+      int i = c();
+      jdField_a_of_type_Int += 1;
+      bmqa.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(i + 1));
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "解析引流条出现的条件出错: " + localException.getMessage());
+    }
+  }
+  
+  public int b()
+  {
+    return c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     omy
  * JD-Core Version:    0.7.0.1
  */

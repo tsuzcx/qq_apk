@@ -1,24 +1,150 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.Handler;
 import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.QavSharpnessSVIPHelper.1;
+import com.tencent.qphone.base.util.QLog;
 
-class mif
-  implements View.OnClickListener
+public final class mif
 {
-  mif(mie parammie) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private biau jdField_a_of_type_Biau;
+  private VideoController jdField_a_of_type_ComTencentAvVideoController;
+  private Boolean jdField_a_of_type_JavaLangBoolean;
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new QavSharpnessSVIPHelper.1(this);
+  private zuh jdField_a_of_type_Zuh;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public mif(VideoController paramVideoController, AVActivity paramAVActivity)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.j();
+    this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
+    this.jdField_a_of_type_AndroidAppActivity = paramAVActivity;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+  }
+  
+  public void a() {}
+  
+  public void a(Activity paramActivity)
+  {
+    QLog.d("QavSharpnessSVIPHelper", 2, "launchQQPayFunction");
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Zuh == null) {
+      this.jdField_a_of_type_Zuh = new zuh(paramActivity);
     }
-    azqs.b(null, "CliOper", "", "", "0X8005DF1", "0X8005DF1", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+    }
+    this.jdField_a_of_type_Zuh.a("doubleVideo", 5000L, new mig(this, paramActivity, l));
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaLangBoolean == null)
+    {
+      this.jdField_a_of_type_JavaLangBoolean = new Boolean(false);
+      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.n());
+      if (QLog.isColorLevel()) {
+        QLog.w("QavSharpnessSVIPHelper", 1, "isSVIP:= " + this.jdField_a_of_type_JavaLangBoolean);
+      }
+    }
+    return this.jdField_a_of_type_JavaLangBoolean.booleanValue();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("QavSharpnessSVIPHelper", 1, "promotionSVIPSuccess");
+    }
+    this.jdField_a_of_type_JavaLangBoolean = new Boolean(true);
+  }
+  
+  public void b(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("QavSharpnessSVIPHelper", 1, "doRealLaunchQQPayFuntion");
+    }
+    if (this.jdField_a_of_type_Zuh != null)
+    {
+      this.jdField_a_of_type_Zuh.a();
+      this.jdField_a_of_type_Zuh = null;
+    }
+    bgzo.a(this.jdField_a_of_type_AndroidAppActivity, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=17301507&aid=mvip.n.a.hdvcall&type=!svip&isAskFriendPay=0&isSend=0");
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavSharpnessSVIPHelper", 2, "showProgress mProgressShowing:" + this.jdField_a_of_type_Boolean);
+    }
+    if (this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      try
+      {
+        if (this.jdField_a_of_type_Biau == null)
+        {
+          this.jdField_a_of_type_Biau = new biau(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298998));
+          this.jdField_a_of_type_Biau.a(anni.a(2131707712));
+          this.jdField_a_of_type_Biau.c(false);
+        }
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Biau.show();
+        return;
+      }
+      catch (Exception localException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("QavSharpnessSVIPHelper", 2, "");
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavSharpnessSVIPHelper", 2, "hideProgress  mProgressShowing:" + this.jdField_a_of_type_Boolean);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      }
+      if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
+        this.jdField_a_of_type_Biau.dismiss();
+      }
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavSharpnessSVIPHelper", 2, "hide init check progress:" + localException.getMessage());
+      }
+      localException.printStackTrace();
+    }
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_JavaLangBoolean = null;
+    this.jdField_a_of_type_AndroidAppActivity = null;
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    if (this.jdField_a_of_type_Zuh != null)
+    {
+      this.jdField_a_of_type_Zuh.a();
+      this.jdField_a_of_type_Zuh = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mif
  * JD-Core Version:    0.7.0.1
  */

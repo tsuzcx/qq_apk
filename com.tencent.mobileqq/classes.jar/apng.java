@@ -1,32 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import java.util.List;
-
-class apng
-  extends alsc
+public class apng
 {
-  apng(apnd paramapnd) {}
+  public volatile int a;
+  public volatile boolean a;
   
-  public void a(boolean paramBoolean)
+  private apng()
   {
-    apnd.a(this.a).clear();
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.e();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject != null) && ((paramObject instanceof Integer)) && (apnd.a(this.a) != null)) {
-      apnd.a(this.a).obtainMessage(208, paramObject).sendToTarget();
-    }
-    if ((this.a.a != null) && (paramBoolean)) {
-      this.a.a.e();
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

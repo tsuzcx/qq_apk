@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import amdu;
-import amdz;
+import anwd;
+import anwo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -12,7 +12,7 @@ import java.util.Map;
 import tencent.im.oidb.cmd0xb36.oidb_cmd0xb36.RspBody;
 import tencent.im.oidb.cmd0xb36.oidb_cmd0xb36.ToastInfo;
 
-class TroopManager$1
+public class TroopManager$1
   implements Runnable
 {
   TroopManager$1(TroopManager paramTroopManager) {}
@@ -26,8 +26,8 @@ class TroopManager$1
       QLog.e(".troop.survey", 1, "Error: check survey list expire, app is null!");
       return;
     }
-    amdu localamdu = (amdu)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if (localamdu == null)
+    anwd localanwd = (anwd)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if (localanwd == null)
     {
       QLog.e(".troop.survey", 1, "Error: check survey list expire, troop handler is null!");
       return;
@@ -42,7 +42,7 @@ class TroopManager$1
         if (QLog.isColorLevel()) {
           QLog.d(".troop.survey", 2, new Object[] { "group id ", str, "request survey toast, expiredTime: ", Integer.valueOf(localRspBody.toast.expired.get()) });
         }
-        amdz.a(localamdu, str, 0);
+        anwo.a(localanwd, str, 0);
       }
     }
     this.this$0.a();
@@ -50,7 +50,7 @@ class TroopManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.1
  * JD-Core Version:    0.7.0.1
  */

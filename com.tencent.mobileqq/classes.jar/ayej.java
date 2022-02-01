@@ -1,17 +1,48 @@
 public class ayej
 {
-  public long a;
-  public ayek a;
-  
-  public ayej()
+  public static void a()
   {
-    this.jdField_a_of_type_Long = 0L;
+    new ayem().a("now_qq_gzh").b("notice_click").a();
   }
   
-  public ayej(long paramLong, ayek paramayek)
+  public static void a(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Ayek = paramayek;
+    new ayem().a("now_qq_gzh").b("msg_exp").a(paramInt).d(paramString1).e(paramString2).a();
+  }
+  
+  public static void a(String paramString)
+  {
+    new ayem().a("now_qq_gzh").b("homepage_view").c(paramString).a();
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    new ayem().a("now_qq_gzh").b("follow_anchor_click").a("anchor", paramString).a(paramInt).a();
+  }
+  
+  public static void b()
+  {
+    new ayem().a("now_qq_gzh").b("notice_page_view").a();
+  }
+  
+  public static void b(int paramInt, String paramString1, String paramString2)
+  {
+    new ayem().a("now_qq_gzh").b("msg_click").a(paramInt).d(paramString1).e(paramString2).a();
+  }
+  
+  public static void b(String paramString)
+  {
+    new ayem().a("now_qq_gzh").b("follow_anchor_exp").a("anchor", paramString).a();
+  }
+  
+  public static void b(String paramString, int paramInt)
+  {
+    new ayem().a("now_qq_gzh").b("rec_anchor_click").a("anchor", paramString).a(paramInt).a();
+  }
+  
+  public static void c(String paramString)
+  {
+    new ayem().a("now_qq_gzh").b("rec_anchor_exp").a("anchor", paramString).a();
   }
 }
 

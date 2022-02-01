@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import berb;
-import berc;
+import bhyj;
+import bhyk;
 
 public class CommonImageView
   extends ImageView
-  implements berc
+  implements bhyk
 {
-  private berb a;
+  private bhyj a;
   
   public CommonImageView(Context paramContext)
   {
@@ -59,22 +59,22 @@ public class CommonImageView
     super.onDraw(paramCanvas);
   }
   
-  public void setMosaicEffect(berb paramberb)
+  public void setMosaicEffect(bhyj parambhyj)
   {
-    berb localberb = this.a;
-    if (localberb != null) {
-      localberb.a(null);
+    bhyj localbhyj = this.a;
+    if (localbhyj != null) {
+      localbhyj.a(null);
     }
-    this.a = paramberb;
-    if (paramberb != null) {
-      paramberb.a(this);
+    this.a = parambhyj;
+    if (parambhyj != null) {
+      parambhyj.a(this);
     }
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CommonImageView
  * JD-Core Version:    0.7.0.1
  */

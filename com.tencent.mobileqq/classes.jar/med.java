@@ -1,69 +1,28 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.AVLoadingDialogActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.av.ui.MultiIncomingCallsActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class med
-  extends Handler
+  extends len
 {
-  final String a;
+  public med(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public med(String paramString)
+  protected void a(long paramLong1, long paramLong2, ArrayList<lnh> paramArrayList)
   {
-    this.a = paramString;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((paramMessage.obj != null) && ((paramMessage.obj instanceof WeakReference)))
+    if (MultiIncomingCallsActivity.a(this.a) != null)
     {
-      localObject = (WeakReference)paramMessage.obj;
-      if (localObject != null)
-      {
-        localObject = ((WeakReference)localObject).get();
-        if ((localObject == null) || (!(localObject instanceof AVLoadingDialogActivity))) {}
-      }
+      ThreadManager.getUIHandler().removeCallbacks(MultiIncomingCallsActivity.a(this.a));
+      MultiIncomingCallsActivity.a(this.a, null);
     }
-    for (Object localObject = new WeakReference((AVLoadingDialogActivity)localObject);; localObject = null)
-    {
-      switch (paramMessage.what)
-      {
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while ((localObject == null) || (((WeakReference)localObject).get() == null));
-        paramMessage = (Intent)((AVLoadingDialogActivity)((WeakReference)localObject).get()).getIntent().getParcelableExtra("avactivity_intent");
-        paramMessage.setExtrasClassLoader(ResultRecord.class.getClassLoader());
-        long l = mwd.a(paramMessage);
-        QLog.w(this.a, 1, "avideo handleMessage MSG_START_AVACTIVITY, seq[" + l + "]");
-        try
-        {
-          AudioHelper.a(this.a + ".MSG_START_AVACTIVITY", paramMessage.getExtras());
-          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).startActivity(paramMessage);
-          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).overridePendingTransition(2130772166, 0);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.w(this.a, 1, "MSG_START_AVACTIVITY, Exception, seq[" + l + "]", paramMessage);
-          return;
-        }
-      } while ((localObject == null) || (((WeakReference)localObject).get() == null));
-      ((AVLoadingDialogActivity)((WeakReference)localObject).get()).finish();
-      return;
-    }
+    MultiIncomingCallsActivity.a(this.a, new MultiIncomingCallsActivity.1.1(this, paramArrayList));
+    ThreadManager.getUIHandler().post(MultiIncomingCallsActivity.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     med
  * JD-Core Version:    0.7.0.1
  */

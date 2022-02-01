@@ -1,57 +1,61 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.BindNumberFromPcActivity;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class akcm
-  extends xtb
+  extends aywi
 {
-  long jdField_a_of_type_Long;
-  akcl jdField_a_of_type_Akcl;
-  PublishVideoEntry jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public akcm(BindNumberFromPcActivity paramBindNumberFromPcActivity) {}
   
-  public akcm(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = paramPublishVideoEntry;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(akcl paramakcl)
-  {
-    this.jdField_a_of_type_Akcl = paramakcl;
-  }
-  
-  public void onFailure(String paramString)
-  {
-    this.jdField_a_of_type_Akcl.a(-11);
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|second step fail:" + paramString);
+    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.a.b();
+    int i;
+    if (paramBoolean)
+    {
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0))
+      {
+        paramBundle = new Intent(this.a, BindVerifyActivity.class);
+        paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+        paramBundle.putExtra("k_country_code", this.a.b);
+        if ((paramBundle != null) && (!this.a.isFinishing()))
+        {
+          paramBundle.addFlags(536870912);
+          this.a.startActivityForResult(paramBundle, 1);
+        }
+      }
     }
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|second step cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D + ", isSuccess:" + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.jdField_a_of_type_Akcl.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.b);
-    }
-  }
-  
-  public void onStart()
-  {
-    super.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    bdhb.d(this.jdField_a_of_type_JavaLangString);
-    akci.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, 2);
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|second step success!");
+    for (;;)
+    {
+      this.a.app.unRegistObserver(BindNumberFromPcActivity.a(this.a));
+      BindNumberFromPcActivity.a(this.a, null);
+      return;
+      if (i == 107)
+      {
+        Intent localIntent = new Intent(this.a, RebindActivity.class);
+        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
+        localIntent.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("k_country_code", this.a.b);
+        paramBundle = localIntent;
+        break;
+      }
+      if (i == 106)
+      {
+        this.a.setResult(-1);
+        this.a.finish();
+        paramBundle = null;
+        break;
+      }
+      this.a.a(a(i));
+      paramBundle = null;
+      break;
+      this.a.a(2131717326);
     }
   }
 }

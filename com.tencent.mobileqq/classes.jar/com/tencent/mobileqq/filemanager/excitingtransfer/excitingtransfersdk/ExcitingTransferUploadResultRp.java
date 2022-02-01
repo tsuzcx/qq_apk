@@ -14,6 +14,7 @@ public class ExcitingTransferUploadResultRp
   public long m_nSrvReturCode;
   public int m_nTcpCnnCode;
   public int m_nTcpSocketCode;
+  public String m_strFileIdCrc;
   public String m_strFileName;
   public String m_strFileUrl;
   public String m_strServerIp;
@@ -50,7 +51,7 @@ public class ExcitingTransferUploadResultRp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp
  * JD-Core Version:    0.7.0.1
  */

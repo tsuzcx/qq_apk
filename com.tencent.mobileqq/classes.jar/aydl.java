@@ -1,21 +1,50 @@
-import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class aydl
-  implements bhuk
+  implements afzq
 {
-  public aydl(SignatureHistoryFragment paramSignatureHistoryFragment, int paramInt1, int paramInt2, int paramInt3) {}
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float b;
+  private float c;
+  private float d;
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onClick(View paramView)
   {
-    if (paramInt == 0)
+    return false;
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    return false;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
     {
-      VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "" + this.jdField_a_of_type_Int, "", "", "", "", 0, 0, 0, 0);
-      bdom.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity().app, 0, "signature_history", -1, this.b, this.c, null);
     }
-    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).dismiss();
+    while ((paramView instanceof ArkAppView))
+    {
+      return ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.b = paramMotionEvent.getY();
+      this.c = 0.0F;
+      this.d = 0.0F;
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      continue;
+      this.c += Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float);
+      this.d += Math.abs(paramMotionEvent.getY() - this.b);
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.b = paramMotionEvent.getY();
+      continue;
+      if (((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 200L) || ((this.c <= 20.0F) && (this.d <= 20.0F))) && (onClick(paramView))) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

@@ -19,6 +19,8 @@ import oicq.wlogin_sdk.request.WtloginHelper;
 public class TicketManagerImpl
   implements TicketManager
 {
+  public static final int APPID_QQ = 16;
+  public static final int BUFLAG_OPEN_CONNECT = 1600001540;
   private static final int FAIL_NOT_PSKEY_DOMAIN = -5;
   private static final int FAIL_SDK_EXCEPTION = -4;
   private static final int FAIL_TICKET_NULL = -2;
@@ -36,6 +38,94 @@ public class TicketManagerImpl
     this.mWtLoginHelper = new WtloginHelper(BaseApplication.getContext(), this);
     this.mWtLoginHelper.SetMsfTransportFlag(1);
     oicq.wlogin_sdk.tools.util.LOGCAT_OUT = false;
+  }
+  
+  private String getA2Impl(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (TextUtils.isEmpty(paramString1)) {
+          continue;
+        }
+        Object localObject = this.mWtLoginHelper.GetLocalTicket(paramString1, paramInt1, paramInt2);
+        if (localObject == null) {
+          continue;
+        }
+        localObject = ((Ticket)localObject)._sig;
+        if (localObject != null)
+        {
+          reportGetTicketResult(true, paramString2, paramString1, 0);
+          QLog.d("TicketManager", 1, "get ticket succ, a!");
+          return HexUtil.bytes2HexStr((byte[])localObject);
+        }
+        QLog.d("TicketManager", 1, "get ticket failed, A2, sig is null");
+        paramInt1 = -3;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("TicketManager", 1, "get ticket failed, A2, exception: " + localException.toString());
+        paramInt1 = -4;
+        continue;
+        reportGetTicketResult(false, paramString2, paramString1, paramInt1);
+      }
+      if ((this.mApp == null) || (TextUtils.isEmpty(paramString1)) || (!paramString1.equals(this.mApp.getAccount())) || (TextUtils.isEmpty((CharSequence)this.mAlterTicketsMap.get(paramString2)))) {
+        continue;
+      }
+      reportGetTicketResult(true, paramString2, paramString1, paramInt1);
+      return (String)this.mAlterTicketsMap.get(paramString2);
+      QLog.d("TicketManager", 1, "get ticket failed, A2, ticket is null");
+      paramInt1 = -2;
+      continue;
+      QLog.d("TicketManager", 1, "get ticket failed, A2, uin is empty!");
+      paramInt1 = -1;
+    }
+    return null;
+  }
+  
+  private String getSkey(String paramString, int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (TextUtils.isEmpty(paramString)) {
+          continue;
+        }
+        Object localObject = this.mWtLoginHelper.GetLocalTicket(paramString, paramInt, 4096);
+        if (localObject == null) {
+          continue;
+        }
+        localObject = ((Ticket)localObject)._sig;
+        if (localObject != null)
+        {
+          reportGetTicketResult(true, "SKEY", paramString, 0);
+          QLog.d("TicketManager", 1, "get ticket succ, sk!");
+          return new String((byte[])localObject);
+        }
+        QLog.d("TicketManager", 1, "get ticket failed, SKEY, sig is null");
+        paramInt = -3;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("TicketManager", 1, "get ticket failed, SKEY, exception: " + localException.toString());
+        paramInt = -4;
+        continue;
+        reportGetTicketResult(false, "SKEY", paramString, paramInt);
+      }
+      if ((this.mApp == null) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.mApp.getAccount())) || (TextUtils.isEmpty((CharSequence)this.mAlterTicketsMap.get("skey")))) {
+        continue;
+      }
+      reportGetTicketResult(true, "SKEY", paramString, paramInt);
+      return (String)this.mAlterTicketsMap.get("skey");
+      QLog.d("TicketManager", 1, "get ticket failed, SKEY, ticket is null");
+      paramInt = -2;
+      continue;
+      QLog.d("TicketManager", 1, "get ticket failed, SKEY, uin is empty!");
+      paramInt = -1;
+    }
+    return null;
   }
   
   private void reportGetTicketResult(boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
@@ -98,46 +188,7 @@ public class TicketManagerImpl
   
   public String getA2(String paramString)
   {
-    for (;;)
-    {
-      try
-      {
-        if (TextUtils.isEmpty(paramString)) {
-          continue;
-        }
-        Object localObject = this.mWtLoginHelper.GetLocalTicket(paramString, 16L, 64);
-        if (localObject == null) {
-          continue;
-        }
-        localObject = ((Ticket)localObject)._sig;
-        if (localObject != null)
-        {
-          reportGetTicketResult(true, "A2", paramString, 0);
-          QLog.d("TicketManager", 1, "get ticket succ, a!");
-          return HexUtil.bytes2HexStr((byte[])localObject);
-        }
-        QLog.d("TicketManager", 1, "get ticket failed, A2, sig is null");
-        i = -3;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("TicketManager", 1, "get ticket failed, A2, exception: " + localException.toString());
-        int i = -4;
-        continue;
-        reportGetTicketResult(false, "A2", paramString, i);
-      }
-      if ((this.mApp == null) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.mApp.getAccount())) || (TextUtils.isEmpty((CharSequence)this.mAlterTicketsMap.get("A2")))) {
-        continue;
-      }
-      reportGetTicketResult(true, "A2", paramString, i);
-      return (String)this.mAlterTicketsMap.get("A2");
-      QLog.d("TicketManager", 1, "get ticket failed, A2, ticket is null");
-      i = -2;
-      continue;
-      QLog.d("TicketManager", 1, "get ticket failed, A2, uin is empty!");
-      i = -1;
-    }
-    return null;
+    return getA2Impl(paramString, 16, 64, "A2");
   }
   
   public byte[] getDA2(String paramString)
@@ -177,6 +228,19 @@ public class TicketManagerImpl
       QLog.d("TicketManager", 1, "get ticket failed, da2, uin is empty!");
       i = -1;
     }
+  }
+  
+  public String getOpenSdkKey(String paramString, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      QLog.d("TicketManager", 1, "getOpenSdkKey type: " + paramInt);
+      return null;
+    case 64: 
+      return getA2Impl(paramString, 1600001540, paramInt, "OpenConnectA2");
+    }
+    return getSkey(paramString, 1600001540);
   }
   
   public String getPskey(String paramString1, String paramString2)
@@ -261,46 +325,7 @@ public class TicketManagerImpl
   
   public String getSkey(String paramString)
   {
-    for (;;)
-    {
-      try
-      {
-        if (TextUtils.isEmpty(paramString)) {
-          continue;
-        }
-        Object localObject = this.mWtLoginHelper.GetLocalTicket(paramString, 16L, 4096);
-        if (localObject == null) {
-          continue;
-        }
-        localObject = ((Ticket)localObject)._sig;
-        if (localObject != null)
-        {
-          reportGetTicketResult(true, "SKEY", paramString, 0);
-          QLog.d("TicketManager", 1, "get ticket succ, sk!");
-          return new String((byte[])localObject);
-        }
-        QLog.d("TicketManager", 1, "get ticket failed, SKEY, sig is null");
-        i = -3;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("TicketManager", 1, "get ticket failed, SKEY, exception: " + localException.toString());
-        int i = -4;
-        continue;
-        reportGetTicketResult(false, "SKEY", paramString, i);
-      }
-      if ((this.mApp == null) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.mApp.getAccount())) || (TextUtils.isEmpty((CharSequence)this.mAlterTicketsMap.get("skey")))) {
-        continue;
-      }
-      reportGetTicketResult(true, "SKEY", paramString, i);
-      return (String)this.mAlterTicketsMap.get("skey");
-      QLog.d("TicketManager", 1, "get ticket failed, SKEY, ticket is null");
-      i = -2;
-      continue;
-      QLog.d("TicketManager", 1, "get ticket failed, SKEY, uin is empty!");
-      i = -1;
-    }
-    return null;
+    return getSkey(paramString, 16);
   }
   
   public byte[] getSt(String paramString, int paramInt)

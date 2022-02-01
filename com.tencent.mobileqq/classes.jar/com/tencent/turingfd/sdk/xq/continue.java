@@ -1,16 +1,30 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.Context;
-
 public abstract interface continue
 {
-  public abstract void a(Context paramContext);
+  public abstract long getErrorCode();
   
-  public abstract interface b(Context paramContext);
+  public abstract String getFileMd5();
+  
+  public abstract String getFileName();
+  
+  public abstract String getFileSha1();
+  
+  public abstract String getHandleUrl();
+  
+  public abstract String getPkgName();
+  
+  public abstract int getRiskCategory();
+  
+  public abstract String getRiskTips();
+  
+  public abstract int getSafeLevel();
+  
+  public abstract boolean isSucceed();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.continue
  * JD-Core Version:    0.7.0.1
  */

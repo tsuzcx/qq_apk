@@ -1,41 +1,40 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import alud;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import azah;
-import bamp;
+import anni;
+import bbzj;
+import bdnt;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import ojj;
-import ojk;
-import ojl;
 import org.json.JSONArray;
+import owl;
+import owm;
+import own;
 
 public class CommentInfo
-  extends ojl
+  extends own
   implements Serializable
 {
   public static final int HOT_AREA = 1;
   public static final int NEW_AREA = 2;
-  private String TAG = "CommentInfo";
   public boolean anonymous;
   public int area;
   public transient ArticleInfo articleInfo;
-  public String authorAvater = "";
+  public String authorAvatar = "";
   public String authorComment = "";
   public long authorCreateTime;
   public String authorHomepage = "";
   public String authorNickName = "";
   public transient SpannableStringBuilder authorRealCommentSpanSb;
+  public int authorSelection;
   public String authorUin = "";
-  public int author_selection;
   public int awesome;
   public boolean commentByMyself;
   public String commentContent = "";
@@ -43,10 +42,10 @@ public class CommentInfo
   public String commentId = "";
   public long commentTime;
   public int commentType;
-  public transient bamp decodedCommentContent;
+  public transient bdnt decodedCommentContent;
   public int disLikeCount;
   public boolean disLiked;
-  public transient JSONArray gift_list;
+  public transient JSONArray giftList;
   public boolean hasNextPage = true;
   public boolean hasTarget;
   public int level;
@@ -58,18 +57,18 @@ public class CommentInfo
   public int rank = -1;
   public String retMsg = "";
   public transient List<SpannableStringBuilder> secondLevelCommentSpanSbList;
-  public String sub_comments = "";
-  public int sub_comments_total;
+  public String subComments = "";
+  public int subCommentsTotal;
   public String toNickName = "";
   public String toUin = "";
   public String uuid = "";
   
   public void createDecodedCommentContent()
   {
-    if ((TextUtils.isEmpty(this.commentContent)) && (this.gift_list == null)) {
-      this.commentContent = alud.a(2131702569);
+    if ((TextUtils.isEmpty(this.commentContent)) && (this.giftList == null)) {
+      this.commentContent = anni.a(2131700989);
     }
-    this.decodedCommentContent = new bamp(azah.b(this.commentContent), 7, 16);
+    this.decodedCommentContent = new bdnt(bbzj.b(this.commentContent), 7, 16);
   }
   
   public void createProcessedAuthorComment()
@@ -79,7 +78,7 @@ public class CommentInfo
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       localSpannableStringBuilder.append("作者回复：");
       localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 0, localSpannableStringBuilder.length(), 33);
-      localSpannableStringBuilder.append(new bamp(azah.b(this.authorComment), 7, 16));
+      localSpannableStringBuilder.append(new bdnt(bbzj.b(this.authorComment), 7, 16));
       this.authorRealCommentSpanSb = localSpannableStringBuilder;
     }
   }
@@ -118,18 +117,18 @@ public class CommentInfo
       if (!TextUtils.isEmpty(localCommentInfo.authorNickName))
       {
         localSpannableStringBuilder.append(localCommentInfo.authorNickName);
-        localSpannableStringBuilder.setSpan(new ojj(this, localCommentInfo, paramBaseActivity), 0, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new owl(this, localCommentInfo, paramBaseActivity), 0, localSpannableStringBuilder.length(), 33);
       }
       if ((localCommentInfo.hasTarget) && (!TextUtils.isEmpty(localCommentInfo.toNickName)))
       {
         localSpannableStringBuilder.append(" 回复 ");
         int k = localSpannableStringBuilder.length();
         localSpannableStringBuilder.append(localCommentInfo.toNickName);
-        localSpannableStringBuilder.setSpan(new ojk(this, localCommentInfo, paramBaseActivity), k, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new owm(this, localCommentInfo, paramBaseActivity), k, localSpannableStringBuilder.length(), 33);
       }
       localSpannableStringBuilder.append("：");
       if (!TextUtils.isEmpty(localCommentInfo.commentContent)) {
-        localSpannableStringBuilder.append(new bamp(azah.b(localCommentInfo.commentContent), 7, 16));
+        localSpannableStringBuilder.append(new bdnt(bbzj.b(localCommentInfo.commentContent), 7, 16));
       }
       this.secondLevelCommentSpanSbList.add(localSpannableStringBuilder);
     }
@@ -137,20 +136,18 @@ public class CommentInfo
   
   public void toLogString(String paramString)
   {
-    String str;
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      str = this.TAG;
       localStringBuilder = new StringBuilder().append(paramString).append("CommentInfo  info: article id=");
       if (this.articleInfo == null) {
-        break label275;
+        break label270;
       }
     }
-    label275:
+    label270:
     for (paramString = Long.valueOf(this.articleInfo.mArticleID);; paramString = "null")
     {
-      QLog.d(str, 2, paramString + " uuid=" + this.uuid + " commentid=" + this.commentId + " commentcontent=" + this.commentContent + " commentTime=" + this.commentTime + " retMsg=" + this.retMsg + " likecount=" + this.likeCount + " liked=" + this.liked + " anonymous=" + this.anonymous + " level=" + this.level + " commentByMyself" + this.commentByMyself + " authorhome=" + this.authorHomepage + " authoruin" + this.authorUin + " authornickname" + this.authorNickName + " authorAvater=" + this.authorAvater + " author_select=" + this.author_selection + "  hastarget=" + this.hasTarget + "  toNick`name" + this.toNickName);
+      QLog.d("CommentInfo", 2, paramString + " uuid=" + this.uuid + " commentid=" + this.commentId + " commentcontent=" + this.commentContent + " commentTime=" + this.commentTime + " retMsg=" + this.retMsg + " likecount=" + this.likeCount + " liked=" + this.liked + " anonymous=" + this.anonymous + " level=" + this.level + " commentByMyself" + this.commentByMyself + " authorhome=" + this.authorHomepage + " authoruin" + this.authorUin + " authornickname" + this.authorNickName + " authorAvater=" + this.authorAvatar + " author_select=" + this.authorSelection + "  hastarget=" + this.hasTarget + "  toNick`name" + this.toNickName);
       return;
     }
   }

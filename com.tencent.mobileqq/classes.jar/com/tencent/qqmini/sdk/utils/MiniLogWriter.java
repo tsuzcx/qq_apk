@@ -167,7 +167,7 @@ public class MiniLogWriter
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 62	com/tencent/qqmini/sdk/utils/MiniLogWriter:mInited	Z
+    //   1: getfield 54	com/tencent/qqmini/sdk/utils/MiniLogWriter:mInited	Z
     //   4: ifne +23 -> 27
     //   7: aload_0
     //   8: aload_1
@@ -177,7 +177,7 @@ public class MiniLogWriter
     //   14: putfield 218	com/tencent/qqmini/sdk/utils/MiniLogWriter:mRecycleBuffer	Ljava/nio/CharBuffer;
     //   17: aload_0
     //   18: iconst_1
-    //   19: putfield 62	com/tencent/qqmini/sdk/utils/MiniLogWriter:mInited	Z
+    //   19: putfield 54	com/tencent/qqmini/sdk/utils/MiniLogWriter:mInited	Z
     //   22: aload_0
     //   23: getfield 218	com/tencent/qqmini/sdk/utils/MiniLogWriter:mRecycleBuffer	Ljava/nio/CharBuffer;
     //   26: areturn
@@ -433,7 +433,7 @@ public class MiniLogWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniLogWriter
  * JD-Core Version:    0.7.0.1
  */

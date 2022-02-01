@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import ajeu;
+import akww;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -41,7 +41,7 @@ public class ApkgConfigHolder
     String str = getConfigPath(paramQQAppInterface);
     try
     {
-      paramQQAppInterface = (ApkgConfigHolder)ajeu.a(str);
+      paramQQAppInterface = (ApkgConfigHolder)akww.a(str);
       Object localObject = paramQQAppInterface;
       if (paramQQAppInterface == null) {
         localObject = new ApkgConfigHolder();
@@ -122,7 +122,7 @@ public class ApkgConfigHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgConfigHolder
  * JD-Core Version:    0.7.0.1
  */

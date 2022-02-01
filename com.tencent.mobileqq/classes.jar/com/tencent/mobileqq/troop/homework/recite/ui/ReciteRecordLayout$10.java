@@ -9,12 +9,12 @@ class ReciteRecordLayout$10
   
   public void run()
   {
-    this.this$0.a.setText(2131697906);
+    this.this$0.a.setText(2131696750);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.10
  * JD-Core Version:    0.7.0.1
  */

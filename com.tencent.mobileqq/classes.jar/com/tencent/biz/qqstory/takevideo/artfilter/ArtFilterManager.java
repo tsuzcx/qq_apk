@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
-import alof;
-import awni;
-import bbaa;
-import bdhb;
-import bead;
-import bhpp;
-import bhsl;
+import anhk;
+import azby;
+import beaw;
+import bgmg;
+import bhhe;
+import bkcx;
+import bkfv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -19,26 +19,26 @@ import mqq.manager.Manager;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import xct;
-import xcv;
-import xcw;
+import ywe;
+import ywg;
+import ywh;
 
 public class ArtFilterManager
   implements Manager
 {
   public static int a;
   public static final String a;
-  public static final String b = alof.aX + "pddata/prd/picedit/artfilter/";
-  private bead jdField_a_of_type_Bead;
-  private bhsl jdField_a_of_type_Bhsl;
+  public static final String b = anhk.ba + "pddata/prd/picedit/artfilter/";
+  private bhhe jdField_a_of_type_Bhhe;
+  private bkfv jdField_a_of_type_Bkfv;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private List<xct> jdField_a_of_type_JavaUtilList;
-  public xcv a;
+  private List<ywe> jdField_a_of_type_JavaUtilList;
+  public ywg a;
   public boolean a;
   
   static
   {
-    jdField_a_of_type_JavaLangString = alof.aX + "artfilter/";
+    jdField_a_of_type_JavaLangString = anhk.ba + "artfilter/";
   }
   
   /* Error */
@@ -50,11 +50,11 @@ public class ArtFilterManager
     //   3: aload_0
     //   4: invokespecial 50	java/lang/Object:<init>	()V
     //   7: aload_0
-    //   8: new 52	xcx
+    //   8: new 52	ywi
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 55	xcx:<init>	(Lcom/tencent/biz/qqstory/takevideo/artfilter/ArtFilterManager;)V
-    //   16: putfield 57	com/tencent/biz/qqstory/takevideo/artfilter/ArtFilterManager:jdField_a_of_type_Bead	Lbead;
+    //   13: invokespecial 55	ywi:<init>	(Lcom/tencent/biz/qqstory/takevideo/artfilter/ArtFilterManager;)V
+    //   16: putfield 57	com/tencent/biz/qqstory/takevideo/artfilter/ArtFilterManager:jdField_a_of_type_Bhhe	Lbhhe;
     //   19: invokestatic 63	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   22: ifeq +11 -> 33
     //   25: ldc 65
@@ -65,12 +65,12 @@ public class ArtFilterManager
     //   34: aload_1
     //   35: putfield 73	com/tencent/biz/qqstory/takevideo/artfilter/ArtFilterManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
     //   38: aload_0
-    //   39: new 75	bhsl
+    //   39: new 75	bkfv
     //   42: dup
     //   43: invokestatic 81	com/tencent/mobileqq/app/ThreadManager:getFileThreadLooper	()Landroid/os/Looper;
     //   46: aconst_null
-    //   47: invokespecial 84	bhsl:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   50: putfield 86	com/tencent/biz/qqstory/takevideo/artfilter/ArtFilterManager:jdField_a_of_type_Bhsl	Lbhsl;
+    //   47: invokespecial 84	bkfv:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   50: putfield 86	com/tencent/biz/qqstory/takevideo/artfilter/ArtFilterManager:jdField_a_of_type_Bkfv	Lbkfv;
     //   53: aload_1
     //   54: invokevirtual 91	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   57: invokestatic 94	com/tencent/biz/qqstory/takevideo/artfilter/ArtFilterManager:a	(Ljava/lang/String;)Z
@@ -278,14 +278,14 @@ public class ArtFilterManager
   private void a(String paramString1, String paramString2, String paramString3)
   {
     File localFile = new File(paramString2);
-    paramString3 = new xcw(this, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString2, paramString1, paramString2, localFile, paramString3);
-    boolean bool = ((bbaa)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(193)).a(10015, "prd", paramString1, 0, paramString1, paramString2, 2, 0, true, paramString3);
+    paramString3 = new ywh(this, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString2, paramString1, paramString2, localFile, paramString3);
+    boolean bool = ((beaw)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(193)).a(10015, "prd", paramString1, 0, paramString1, paramString2, 2, 0, true, paramString3);
     if (QLog.isColorLevel()) {
       QLog.d("ArtFilterManager", 2, "PreDownloadController ret:" + bool);
     }
   }
   
-  private void a(List<xct> paramList, xcv paramxcv)
+  private void a(List<ywe> paramList, ywg paramywg)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ArtFilterManager", 2, "[deleteOldResources] start");
@@ -299,7 +299,7 @@ public class ArtFilterManager
       if (paramList != null) {
         break label53;
       }
-      bdhb.a(b);
+      bgmg.a(b);
     }
     label53:
     do
@@ -316,7 +316,7 @@ public class ArtFilterManager
     Object localObject3;
     int n;
     int j;
-    xct localxct;
+    ywe localywe;
     if (i < k)
     {
       localObject2 = localObject1[i];
@@ -326,10 +326,10 @@ public class ArtFilterManager
       str = localObject2.getName();
       if (str.equals("loading"))
       {
-        if (paramxcv != null)
+        if (paramywg != null)
         {
-          m = paramxcv.b;
-          str = paramxcv.b + ".zip";
+          m = paramywg.b;
+          str = paramywg.b + ".zip";
           localObject3 = localObject2.listFiles();
           if (localObject3 != null)
           {
@@ -337,26 +337,26 @@ public class ArtFilterManager
             j = 0;
             if (j < n)
             {
-              localxct = localObject3[j];
-              if (localxct.isDirectory()) {
-                if (!localxct.getName().equals(String.valueOf(m)))
+              localywe = localObject3[j];
+              if (localywe.isDirectory()) {
+                if (!localywe.getName().equals(String.valueOf(m)))
                 {
                   if (QLog.isColorLevel()) {
-                    QLog.d("ArtFilterManager", 2, "[updateFilterResource] delete old loading dir: " + localObject2.getName() + File.separator + localxct.getName());
+                    QLog.d("ArtFilterManager", 2, "[updateFilterResource] delete old loading dir: " + localObject2.getName() + File.separator + localywe.getName());
                   }
-                  bdhb.a(localxct.getAbsolutePath());
+                  bgmg.a(localywe.getAbsolutePath());
                 }
               }
               for (;;)
               {
                 j += 1;
                 break;
-                if (!localxct.getName().equals(str))
+                if (!localywe.getName().equals(str))
                 {
                   if (QLog.isColorLevel()) {
-                    QLog.d("ArtFilterManager", 2, "[updateFilterResource] delete old loading file: " + localObject2.getName() + File.separator + localxct.getName());
+                    QLog.d("ArtFilterManager", 2, "[updateFilterResource] delete old loading file: " + localObject2.getName() + File.separator + localywe.getName());
                   }
-                  localxct.delete();
+                  localywe.delete();
                 }
               }
             }
@@ -381,11 +381,11 @@ public class ArtFilterManager
       {
         if (((Iterator)localObject3).hasNext())
         {
-          localxct = (xct)((Iterator)localObject3).next();
-          if (str.equals(localxct.c))
+          localywe = (ywe)((Iterator)localObject3).next();
+          if (str.equals(localywe.c))
           {
-            m = localxct.jdField_a_of_type_Int;
-            str = localxct.jdField_a_of_type_Int + ".zip";
+            m = localywe.jdField_a_of_type_Int;
+            str = localywe.jdField_a_of_type_Int + ".zip";
             localObject3 = localObject2.listFiles();
             if (localObject3 != null)
             {
@@ -393,26 +393,26 @@ public class ArtFilterManager
               j = 0;
               if (j < n)
               {
-                localxct = localObject3[j];
-                if (localxct.isDirectory()) {
-                  if (!localxct.getName().equals(String.valueOf(m)))
+                localywe = localObject3[j];
+                if (localywe.isDirectory()) {
+                  if (!localywe.getName().equals(String.valueOf(m)))
                   {
                     if (QLog.isColorLevel()) {
-                      QLog.d("ArtFilterManager", 2, "[updateFilterResource] delete old dir: " + localObject2.getName() + File.separator + localxct.getName());
+                      QLog.d("ArtFilterManager", 2, "[updateFilterResource] delete old dir: " + localObject2.getName() + File.separator + localywe.getName());
                     }
-                    bdhb.a(localxct.getAbsolutePath());
+                    bgmg.a(localywe.getAbsolutePath());
                   }
                 }
                 for (;;)
                 {
                   j += 1;
                   break;
-                  if (!localxct.getName().equals(str))
+                  if (!localywe.getName().equals(str))
                   {
                     if (QLog.isColorLevel()) {
-                      QLog.d("ArtFilterManager", 2, "[updateFilterResource] delete old file: " + localObject2.getName() + File.separator + localxct.getName());
+                      QLog.d("ArtFilterManager", 2, "[updateFilterResource] delete old file: " + localObject2.getName() + File.separator + localywe.getName());
                     }
-                    localxct.delete();
+                    localywe.delete();
                   }
                 }
               }
@@ -428,7 +428,7 @@ public class ArtFilterManager
         if (QLog.isColorLevel()) {
           QLog.d("ArtFilterManager", 2, "[updateFilterResource] delete old dir: " + localObject2.getName());
         }
-        bdhb.a(localObject2.getAbsolutePath());
+        bgmg.a(localObject2.getAbsolutePath());
         break;
         if (localObject2.getName().endsWith("artfilter.config")) {
           break;
@@ -454,8 +454,8 @@ public class ArtFilterManager
   
   public String a()
   {
-    if (this.jdField_a_of_type_Xcv != null) {
-      return this.jdField_a_of_type_Xcv.a();
+    if (this.jdField_a_of_type_Ywg != null) {
+      return this.jdField_a_of_type_Ywg.a();
     }
     return null;
   }
@@ -464,7 +464,7 @@ public class ArtFilterManager
   {
     try
     {
-      str1 = awni.a(paramString);
+      str1 = azby.a(paramString);
       paramString = str1;
       str1 = paramString;
       if (paramString == null) {
@@ -483,7 +483,7 @@ public class ArtFilterManager
       {
         try
         {
-          paramString = bhpp.a(paramString);
+          paramString = bkcx.a(paramString);
           if (paramString == null) {
             continue;
           }
@@ -520,7 +520,7 @@ public class ArtFilterManager
     }
   }
   
-  public List<xct> a()
+  public List<ywe> a()
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       return null;
@@ -528,7 +528,7 @@ public class ArtFilterManager
     return new ArrayList(this.jdField_a_of_type_JavaUtilList);
   }
   
-  public List<xct> a(String paramString)
+  public List<ywe> a(String paramString)
   {
     try
     {
@@ -540,7 +540,7 @@ public class ArtFilterManager
       if (!this.jdField_a_of_type_Boolean) {
         return null;
       }
-      this.jdField_a_of_type_Xcv = xcv.a(paramString.getJSONObject("artisticFilter_loading"));
+      this.jdField_a_of_type_Ywg = ywg.a(paramString.getJSONObject("artisticFilter_loading"));
       jdField_a_of_type_Int = Integer.parseInt(paramString.getString("artisticFilter_maxside"));
       paramString = paramString.getJSONArray("artisticFilter_templates");
       localObject = new ArrayList();
@@ -548,7 +548,7 @@ public class ArtFilterManager
       while (i < paramString.length())
       {
         JSONObject localJSONObject = paramString.getJSONObject(i);
-        ((List)localObject).add(new xct(localJSONObject.getString("id"), localJSONObject.getInt("version"), localJSONObject.getInt("priority"), localJSONObject.getString("url"), localJSONObject.getString("name"), localJSONObject.optString("md5"), localJSONObject.optString("pron")));
+        ((List)localObject).add(new ywe(localJSONObject.getString("id"), localJSONObject.getInt("version"), localJSONObject.getInt("priority"), localJSONObject.getString("url"), localJSONObject.getString("name"), localJSONObject.optString("md5"), localJSONObject.optString("pron")));
         i += 1;
       }
       return localObject;
@@ -565,7 +565,7 @@ public class ArtFilterManager
     String str = paramString.substring(0, paramString.indexOf(".zip")) + File.separator;
     try
     {
-      bdhb.a(paramString, str, false);
+      bgmg.a(paramString, str, false);
       if (QLog.isColorLevel()) {
         QLog.d("ArtFilterManager", 2, "[unzip] success: " + paramString);
       }
@@ -583,21 +583,21 @@ public class ArtFilterManager
     if (QLog.isColorLevel()) {
       QLog.d("ArtFilterManager", 2, "[updateFilterResource] isDelete=" + paramBoolean);
     }
-    this.jdField_a_of_type_Bhsl.post(new ArtFilterManager.UpdateTask(this, this.jdField_a_of_type_JavaUtilList, paramBoolean, this.jdField_a_of_type_Xcv));
+    this.jdField_a_of_type_Bkfv.post(new ArtFilterManager.UpdateTask(this, this.jdField_a_of_type_JavaUtilList, paramBoolean, this.jdField_a_of_type_Ywg));
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Bhsl != null)
+    if (this.jdField_a_of_type_Bkfv != null)
     {
-      this.jdField_a_of_type_Bhsl.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_Bhsl = null;
+      this.jdField_a_of_type_Bkfv.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_Bkfv = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager
  * JD-Core Version:    0.7.0.1
  */

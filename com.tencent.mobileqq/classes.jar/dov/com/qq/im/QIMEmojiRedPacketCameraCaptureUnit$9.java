@@ -1,27 +1,27 @@
 package dov.com.qq.im;
 
-import alud;
 import android.widget.TextView;
-import azqs;
-import bknm;
+import anni;
+import bcst;
+import bnbz;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 
 public class QIMEmojiRedPacketCameraCaptureUnit$9
   implements Runnable
 {
-  public QIMEmojiRedPacketCameraCaptureUnit$9(bknm parambknm) {}
+  public QIMEmojiRedPacketCameraCaptureUnit$9(bnbz parambnbz) {}
   
   public void run()
   {
     this.this$0.g();
-    this.this$0.c.setText(alud.a(2131710189));
+    this.this$0.c.setText(anni.a(2131708565));
     this.this$0.a.B();
-    azqs.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.failure", 0, 0, "", "", "", "");
+    bcst.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.failure", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.9
  * JD-Core Version:    0.7.0.1
  */

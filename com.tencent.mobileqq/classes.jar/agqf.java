@@ -1,18 +1,23 @@
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+
 class agqf
-  implements aepd
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  agqf(agps paramagps) {}
+  agqf(agqe paramagqe1, agqe paramagqe2) {}
   
-  public void a(ahan paramahan)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    ((atpj)this.a.a(32)).a(1, paramahan);
-    ((afgf)this.a.a(43)).b(1, paramahan);
-  }
-  
-  public void b(ahan paramahan)
-  {
-    ((atpj)this.a.a(32)).b(1, paramahan);
-    ((afgf)this.a.a(43)).a(1, paramahan);
+    if (paramBitmap != null)
+    {
+      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
 }
 

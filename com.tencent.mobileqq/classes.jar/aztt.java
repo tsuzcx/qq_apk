@@ -1,46 +1,17 @@
-import com.tencent.mobileqq.startup.step.InitMagnifierSDK;
-import com.tencent.qapmsdk.base.listener.IMemoryCellingListener;
-import com.tencent.qapmsdk.memory.DumpMemInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
-
 public class aztt
-  implements IMemoryCellingListener
 {
-  public void onAfterDump()
-  {
-    QLog.i("QAPM_QQ_Impl", 1, "Celling onAfterDump ");
-  }
+  public int a;
+  public final azty a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  @NotNull
-  public List<String> onBeforeDump(@NotNull String paramString)
+  public aztt(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramString = DumpMemInfoHandler.generateHprof(paramString);
-    boolean bool = ((Boolean)paramString[0]).booleanValue();
-    if ((bool) && (paramString[1] != null)) {
-      localArrayList.add((String)paramString[1]);
-    }
-    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeDump " + bool);
-    return localArrayList;
-  }
-  
-  public void onBeforeUploadJson()
-  {
-    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeUploadJson");
-  }
-  
-  public boolean onCanDump(long paramLong)
-  {
-    InitMagnifierSDK.a(paramLong);
-    return false;
-  }
-  
-  public void onLowMemory(long paramLong)
-  {
-    amkc.a().a(paramLong);
+    this.jdField_a_of_type_Azty = new azty();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Azty.jdField_a_of_type_Int = -2147483648;
   }
 }
 

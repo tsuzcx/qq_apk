@@ -1,7 +1,7 @@
 package com.tencent.av;
 
 import com.tencent.av.core.VcControllerImpl;
-import lid;
+import ley;
 
 class VideoController$8
   implements Runnable
@@ -10,17 +10,17 @@ class VideoController$8
   
   public void run()
   {
-    lid locallid = this.this$0.a();
-    if ((locallid.e) && (locallid.n) && (locallid.jdField_d_of_type_Int == 2))
+    ley localley = this.this$0.a();
+    if ((localley.e) && (localley.n) && (localley.jdField_d_of_type_Int == 2))
     {
-      locallid.a(this.a, false);
-      this.this$0.a.pauseVideo(locallid.jdField_d_of_type_JavaLangString);
+      localley.a(this.a, false);
+      this.this$0.a.pauseVideo(localley.jdField_d_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.VideoController.8
  * JD-Core Version:    0.7.0.1
  */

@@ -27,9 +27,9 @@ public class ViewerMoreRelativeLayout
   public ViewerMoreRelativeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560661, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131379905));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379982));
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560861, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131380862));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380942));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -57,7 +57,7 @@ public class ViewerMoreRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

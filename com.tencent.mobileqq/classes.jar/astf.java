@@ -1,9 +1,35 @@
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+
 public class astf
+  extends asyw
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
+  public astf(VerifyPwdView paramVerifyPwdView) {}
+  
+  protected void a(int paramInt, String paramString)
+  {
+    atvf.a(paramString);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      VerifyPwdView.a(this.a);
+      return;
+    }
+    VerifyPwdView.b(this.a);
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    atvf.a(paramString);
+    VerifyPwdView.c(this.a);
+  }
+  
+  protected void e()
+  {
+    VerifyPwdView.a(this.a);
+  }
 }
 
 

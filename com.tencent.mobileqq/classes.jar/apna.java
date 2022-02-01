@@ -1,45 +1,50 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.open.base.BspatchUtil;
+import java.io.File;
 
 class apna
-  implements URLDrawableDownListener
+  implements apnd
 {
-  apna(apmt paramapmt, apuf paramapuf, apnb paramapnb) {}
+  apna(apms paramapms, apnc paramapnc1, String paramString1, apnc paramapnc2, String paramString2, apne paramapne) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void a(byte[] paramArrayOfByte)
   {
-    QLog.e("FavEmosmViewPage", 1, "onLoadFailed: " + this.jdField_a_of_type_Apuf.toString());
-    apmt.a(this.jdField_a_of_type_Apmt, this.jdField_a_of_type_Apnb.a, this.jdField_a_of_type_Apnb);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("FavEmosmViewPage", 1, "onLoadFailed: " + this.jdField_a_of_type_Apuf.toString());
-    apmt.a(this.jdField_a_of_type_Apmt, this.jdField_a_of_type_Apnb.a, this.jdField_a_of_type_Apnb);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    QLog.e("FavEmosmViewPage", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Apuf.toString());
-    apmt.a(this.jdField_a_of_type_Apmt, this.jdField_a_of_type_Apnb.a, this.jdField_a_of_type_Apnb);
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FavEmosmViewPage", 2, "onLoadProgressed: " + this.jdField_a_of_type_Apuf.toString());
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Apnc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apnc.jdField_b_of_type_JavaLangString }));
     }
-    apmt.a(this.jdField_a_of_type_Apmt, this.jdField_a_of_type_Apnb.a, this.jdField_a_of_type_Apnb);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FavEmosmViewPage", 2, "onLoadSuccess: " + this.jdField_a_of_type_Apuf.toString());
+    for (;;)
+    {
+      this.jdField_a_of_type_Apne.a(false);
+      return;
+      if (!apms.b(paramArrayOfByte, this.jdField_a_of_type_Apnc.f))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, md5 mismatch, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Apnc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apnc.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Apnc.f }));
+      }
+      else
+      {
+        String str1 = apms.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Apnc.jdField_a_of_type_JavaLangString);
+        if (!new File(str1).isFile())
+        {
+          ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, src path not exist, name=%s, path=s", new Object[] { this.jdField_a_of_type_Apnc.jdField_a_of_type_JavaLangString, str1 }));
+        }
+        else
+        {
+          String str2 = String.format("%s/diff-%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Apnc.d });
+          if (!apms.a(paramArrayOfByte, str2))
+          {
+            ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, write diff to file fail, name=%s, path=%s", new Object[] { this.jdField_a_of_type_Apnc.jdField_a_of_type_JavaLangString, str2 }));
+          }
+          else
+          {
+            if (BspatchUtil.a(str1, str2, String.format("%s/%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Apnc.jdField_a_of_type_JavaLangString }))) {
+              break;
+            }
+            ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, patch fail, name=%s, diff-md5=%s", new Object[] { this.jdField_a_of_type_Apnc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apnc.f }));
+          }
+        }
+      }
     }
-    apmt.a(this.jdField_a_of_type_Apmt, this.jdField_a_of_type_Apnb.a, this.jdField_a_of_type_Apnb);
+    this.jdField_a_of_type_Apne.a(true);
   }
 }
 

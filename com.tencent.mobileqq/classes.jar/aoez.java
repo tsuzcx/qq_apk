@@ -1,21 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class aoez
-  implements DialogInterface.OnCancelListener
+  extends aofa
 {
-  public aoez(ColorNoteSmallScreenPermissionDialogFragment paramColorNoteSmallScreenPermissionDialogFragment) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public aoez(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
-    if (this.a.getActivity() != null)
+    super(paramQQAppInterface, paramQQMessageFacade);
+    this.jdField_a_of_type_JavaLangString = anhk.A;
+    this.jdField_a_of_type_Int = 6003;
+  }
+  
+  public long a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
+  {
+    if (paramDataLineMsgRecord != null)
     {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+      paramDataLineMsgRecord.selfuin = this.jdField_a_of_type_JavaLangString;
+      paramDataLineMsgRecord.frienduin = paramDataLineMsgRecord.selfuin;
+      paramDataLineMsgRecord.senderuin = paramDataLineMsgRecord.selfuin;
+      paramDataLineMsgRecord.istroop = this.jdField_a_of_type_Int;
+      paramDataLineMsgRecord.dataline_type = 1;
     }
-    azqs.b(null, "dc00898", "", "", "0X800AB3B", "0X800AB3B", 0, 0, "", "", "", "");
+    return super.a(paramDataLineMsgRecord, paramBoolean);
+  }
+  
+  protected aonc a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
+  }
+  
+  protected void a()
+  {
+    ((anjx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).b(false);
   }
 }
 

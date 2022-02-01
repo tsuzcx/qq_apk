@@ -1,8 +1,8 @@
-import java.util.List;
+import android.widget.TextView;
 
-public abstract interface aiyz
+public class aiyz
 {
-  public abstract void a(boolean paramBoolean, List<String> paramList);
+  public TextView a;
 }
 
 

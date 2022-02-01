@@ -30,6 +30,7 @@ public class ArkView
   private ArkAppInfo.Size mPrefferSize = null;
   private float mRadius = 0.0F;
   private float mRadiusTop = 0.0F;
+  private float mScale = 0.0F;
   
   public ArkView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -58,9 +59,13 @@ public class ArkView
       if (this.mArkViewCallback != null) {
         setLoadCallback((ArkViewImplement.LoadCallback)this.mArkViewCallback.get());
       }
-      float f = this.mContext.getResources().getDisplayMetrics().scaledDensity;
+      float f2 = this.mScale;
+      float f1 = f2;
+      if (f2 == 0.0F) {
+        f1 = this.mContext.getResources().getDisplayMetrics().scaledDensity;
+      }
       this.mArkModel.setAppPath(paramInitInfo.appPath);
-      this.mArkModel.init(paramInitInfo.appName, paramInitInfo.appView, paramInitInfo.minVersion, paramInitInfo.metaData, paramInitInfo.appConfig, f);
+      this.mArkModel.init(paramInitInfo.appName, paramInitInfo.appView, paramInitInfo.minVersion, paramInitInfo.metaData, paramInitInfo.appConfig, f1);
       if (this.mMinSize != null)
       {
         this.mArkModel.setMinSize(this.mMinSize.width, this.mMinSize.height);
@@ -209,6 +214,11 @@ public class ArkView
     ENV.logI("ArkApp.ArkView", "setOnStartTemporaryDetach:" + paramBoolean);
   }
   
+  public void setScaleDensity(float paramFloat)
+  {
+    this.mScale = paramFloat;
+  }
+  
   public boolean setSize(ArkAppInfo.Size paramSize1, ArkAppInfo.Size paramSize2, ArkAppInfo.Size paramSize3)
   {
     if ((paramSize1 != null) || (paramSize2 != null) || (paramSize3 != null))
@@ -254,7 +264,7 @@ public class ArkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ark.open.ArkView
  * JD-Core Version:    0.7.0.1
  */

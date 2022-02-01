@@ -1,70 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
 
-public class yzi
-  extends aokh<yzh>
+class yzi
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a()
-  {
-    return 406;
-  }
+  private yzi(yzc paramyzc) {}
   
-  public Class<yzh> a()
+  public void onGlobalLayout()
   {
-    return yzh.class;
-  }
-  
-  @NonNull
-  public yzh a(int paramInt)
-  {
-    return new yzh();
-  }
-  
-  @Nullable
-  public yzh a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return yzh.a(paramArrayOfaoko[0].a);
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom() - this.a.c > this.a.b)
+    {
+      this.a.dismiss();
+      return;
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    super.a();
-    bkyt.a().a(false);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(yzh paramyzh)
-  {
-    bkyt.a().a(true);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.a.jdField_a_of_type_Yzg.a(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yzi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.text.TextUtils;
-import auul;
+import axby;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -266,7 +266,7 @@ public class NearbyGrayTipsManager$GrayTipsConfig
     }
     if (this.sexTypes != null)
     {
-      paramInt1 = ((auul)paramQQAppInterface.getManager(106)).a(paramInt2);
+      paramInt1 = ((axby)paramQQAppInterface.getManager(106)).a(paramInt2);
       if (!this.sexTypes.contains(Integer.valueOf(paramInt1))) {
         return false;
       }
@@ -281,7 +281,7 @@ public class NearbyGrayTipsManager$GrayTipsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyGrayTipsManager.GrayTipsConfig
  * JD-Core Version:    0.7.0.1
  */

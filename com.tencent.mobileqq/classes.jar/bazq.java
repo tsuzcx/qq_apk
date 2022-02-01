@@ -1,32 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bazq
-  implements EIPCOnGetConnectionListener
+  implements View.OnClickListener
 {
-  bazq(bazo parambazo) {}
+  bazq(bazp parambazp) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void onClick(View paramView)
   {
-    if (paramEIPCConnection != null) {
-      bazo.a(this.a, paramEIPCConnection.procName);
-    }
-    bazo.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "onConnectBind");
-    }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      bazo.a(this.a, paramEIPCConnection.procName);
-    }
-    bazo.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "onConnectUnbind");
-    }
+    Intent localIntent = new Intent(bazp.a(this.a).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, PublicFragmentActivity.class);
+    localIntent.putExtra("key_uin", bazp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    localIntent.putExtra("key_uin_name", bazp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    localIntent.putExtra("key_open_via", "history-liaotian");
+    aevv.a(bazp.a(this.a).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localIntent, PublicFragmentActivity.class, SignatureHistoryFragment.class);
+    bazp.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X800A66B");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

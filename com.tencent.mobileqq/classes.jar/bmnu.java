@@ -1,88 +1,17 @@
-import android.support.annotation.NonNull;
+import com.tencent.component.network.utils.thread.ThreadPool.Job;
+import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
 
-public class bmnu
-  extends bmnh
-  implements blwi
+public final class bmnu
+  implements ThreadPool.Job<Object>
 {
-  private blwf a;
+  public bmnu(String paramString1, String paramString2) {}
   
-  public bmnu(@NonNull bmnj parambmnj)
+  public Object run(ThreadPool.JobContext paramJobContext)
   {
-    super(parambmnj);
-    this.jdField_a_of_type_Blwf = new blwf();
-    this.jdField_a_of_type_Blwf.a(this);
-    this.jdField_a_of_type_Blwf.a().a(this.jdField_a_of_type_Bmnj.a);
+    QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$000(this.a, this.b)), true);
+    return null;
   }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Blwf.a(this.jdField_a_of_type_Bmor.a());
-  }
-  
-  public boolean a()
-  {
-    return b();
-  }
-  
-  public void aW_()
-  {
-    this.jdField_a_of_type_Blwf.a().b();
-  }
-  
-  public void aX_()
-  {
-    b();
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Blwf.d();
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Blwf.a();
-      this.jdField_a_of_type_Blwf.a().a(true, this.jdField_a_of_type_Bmor.getActivity());
-    } while (!(paramObject instanceof bmmc));
-    paramObject = (bmmc)paramObject;
-    this.jdField_a_of_type_Blwf.a().a(paramObject.jdField_a_of_type_Bmnv, paramObject.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Blwf.e();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bmnj.a(4, this.jdField_a_of_type_Blwf.a().a());
-  }
-  
-  protected boolean b()
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Blwf.a())
-    {
-      this.jdField_a_of_type_Bmnj.a(0);
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public void c()
-  {
-    bmnj localbmnj = this.jdField_a_of_type_Bmnj;
-    if (this.jdField_a_of_type_Bmnj.a()) {}
-    for (String str = "2";; str = "1")
-    {
-      localbmnj.a("change_poi", 0, 0, new String[] { str });
-      wxk.a("0X80076D0");
-      wxk.b("0X80075E5");
-      b();
-      return;
-    }
-  }
-  
-  public void z_() {}
 }
 
 

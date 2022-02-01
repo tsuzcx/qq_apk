@@ -1,33 +1,25 @@
-import QC.SetFontBubbleRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
 public class asrq
-  extends amcd
+  implements aucg
 {
-  private WeakReference<BaseChatPie> a;
+  public asrq(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public asrq(BaseChatPie paramBaseChatPie)
+  public void a(int paramInt)
   {
-    this.a = new WeakReference(paramBaseChatPie);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
-    if (localBaseChatPie != null) {
-      asrm.a(localBaseChatPie.a).a(localBaseChatPie, paramBundle);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      FilePreviewActivity.a(this.a, bdho.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131718487), false));
+      return;
     }
+    bdho.a(this.a.app, this.a, "<FileAssistant>FilePreviewActivity", FilePreviewActivity.a(this.a));
   }
   
-  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt)
-  {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
-    if (localBaseChatPie != null) {
-      asrm.a(localBaseChatPie.a).a(localBaseChatPie, paramBoolean, paramSetFontBubbleRsp, paramInt);
-    }
-  }
+  public void a(ImageView paramImageView) {}
 }
 
 

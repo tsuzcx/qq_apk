@@ -1,23 +1,10 @@
-import com.tencent.mobileqq.data.NewFriendMoreInfo;
-
-public class avuo
-  extends avun
+class avuo
 {
-  public NewFriendMoreInfo a;
-  
-  public avuo(NewFriendMoreInfo paramNewFriendMoreInfo)
-  {
-    this.a = paramNewFriendMoreInfo;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
+  private static avum a = new avum(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avuo
  * JD-Core Version:    0.7.0.1
  */

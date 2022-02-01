@@ -1,55 +1,47 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
-class agsr
-  extends aqru
+abstract class agsr
 {
-  agsr(agso paramagso) {}
+  protected int a;
+  protected agww a;
+  protected String a;
+  protected int b;
+  protected String b;
   
-  protected void a(arcg paramarcg)
+  public int a()
   {
-    if (paramarcg == null) {}
-    do
-    {
-      FileManagerEntity localFileManagerEntity;
-      do
-      {
-        do
-        {
-          return;
-        } while (!(paramarcg.a instanceof FileManagerEntity));
-        localFileManagerEntity = (FileManagerEntity)paramarcg.a;
-      } while ((paramarcg.b == null) || (paramarcg.b.length() <= 0));
-      localFileManagerEntity.strThumbPath = paramarcg.b;
-      this.a.a.a().c(localFileManagerEntity);
-    } while (agso.a(this.a) == null);
-    agso.a(this.a).notifyDataSetChanged();
+    return this.jdField_b_of_type_Int;
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public String a()
   {
-    if (agso.a(this.a) != null) {
-      agso.a(this.a).notifyDataSetChanged();
-    }
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public abstract void a();
+  
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiForwardActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    if (agso.a(this.a) != null) {
-      agso.a(this.a).notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void a(agww paramagww)
   {
-    if (agso.a(this.a) != null) {
-      agso.a(this.a).notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_Agww = paramagww;
   }
+  
+  public boolean a(String paramString)
+  {
+    a();
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = -1;
+    return true;
+  }
+  
+  public abstract boolean b(String paramString);
 }
 
 

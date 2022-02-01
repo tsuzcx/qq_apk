@@ -1,62 +1,59 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class xur
-  extends Drawable
+class xur
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private int b;
+  xur(xui paramxui, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem, yip paramyip) {}
   
-  public xur(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this(null, paramInt1, paramInt2);
-  }
-  
-  public xur(Bitmap paramBitmap, int paramInt1, int paramInt2)
-  {
-    wxe.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable.");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    setBounds(0, 0, paramInt1, paramInt2);
-    if (paramBitmap == null) {}
-    for (this.jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a();; this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
+    switch (paramInt)
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(paramInt1 / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), paramInt2 / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    case 0: 
+    default: 
       return;
     }
+    this.jdField_a_of_type_Xui.a("");
+    if (StoryVideoItem.isFakeVid(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
+    {
+      ((why)wpm.a(3)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      paramDialogInterface = new wor(new ErrorMessage(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
+      paramDialogInterface.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+      if (paramDialogInterface.a == 0L) {
+        paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
+      }
+      wfo.a().dispatch(paramDialogInterface);
+    }
+    for (;;)
+    {
+      yqu.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      return;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType == 2)
+      {
+        ((ziz)xfe.a().getManager(208)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0, false, new xus(this));
+      }
+      else
+      {
+        this.jdField_a_of_type_Yip.a(this.jdField_a_of_type_Xui.a.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        this.jdField_a_of_type_Yip.a(this.jdField_a_of_type_Xui.a.b, 1, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        new wvx().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      }
+    }
   }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(this.jdField_a_of_type_Int / paramBitmap.getWidth(), this.b / paramBitmap.getHeight());
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    wxe.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw start.");
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
-    wxe.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw end.");
-  }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xur
  * JD-Core Version:    0.7.0.1
  */

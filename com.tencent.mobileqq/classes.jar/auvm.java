@@ -1,23 +1,43 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
 public class auvm
-  implements INetEventHandler
+  extends Handler
 {
-  private int jdField_a_of_type_Int = -1;
+  public auvm(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public auvm(NearbyJsInterface paramNearbyJsInterface) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    int i = ndd.a();
-    NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, this.jdField_a_of_type_Int, i);
-    this.jdField_a_of_type_Int = i;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+    case 3: 
+      this.a.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2, (String)paramMessage.obj);
+      return;
+    case 100: 
+      QQGameFeedWebFragment.a(this.a).setVisibility(8);
+      return;
+    }
+    int i = paramMessage.arg1;
+    try
+    {
+      QQGameFeedWebFragment.a(this.a, i);
+      return;
+    }
+    catch (Throwable paramMessage)
+    {
+      paramMessage.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvm
  * JD-Core Version:    0.7.0.1
  */

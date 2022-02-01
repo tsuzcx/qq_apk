@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class blly
-  implements DialogInterface.OnClickListener
+  extends blmo
 {
-  public blly(AEEditorImageClipFragment paramAEEditorImageClipFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public blly(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext)
   {
-    this.a.a().a(this.a.getActivity());
+    super(paramContext);
+  }
+  
+  public void onBackPressed()
+  {
+    if (this.a.a) {
+      super.onBackPressed();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 

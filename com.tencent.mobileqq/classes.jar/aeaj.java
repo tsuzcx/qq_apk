@@ -1,49 +1,40 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 public class aeaj
-  implements Handler.Callback
+  extends aoqm
 {
-  public aeaj(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  private WeakReference<Conversation> a;
   
-  public boolean handleMessage(Message paramMessage)
+  public aeaj(Conversation paramConversation)
   {
-    switch (paramMessage.what)
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  {
+    if ((paramBoolean) && (paramList != null))
     {
-    default: 
-    case 1: 
-      do
+      if (QLog.isColorLevel()) {
+        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
+      }
+      Conversation localConversation = (Conversation)this.a.get();
+      if (localConversation != null)
       {
-        do
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
         {
-          return true;
-          paramMessage = (Intent)paramMessage.obj;
-          this.a.c = paramMessage.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
-          if ((55 == paramMessage.getIntExtra(bdez.h, -1)) && (paramMessage.getExtras().containsKey("PhotoConst.PHOTO_PATHS")))
-          {
-            ArrayList localArrayList = paramMessage.getExtras().getStringArrayList("PhotoConst.PHOTO_PATHS");
-            if ((localArrayList != null) && (localArrayList.size() > 0))
-            {
-              this.a.a(BaseApplicationImpl.getApplication(), localArrayList);
-              return true;
-            }
+          AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)paramList.next();
+          if (localAppletsAccountInfo != null) {
+            localConversation.a(9, localAppletsAccountInfo.uin, 1038);
           }
-        } while (!paramMessage.getBooleanExtra("IS_FROM_PREVIEW_ACTIVITY", false));
-        paramMessage = paramMessage.getStringArrayListExtra("key_photo_preview");
-      } while (paramMessage == null);
-      this.a.a(BaseApplicationImpl.getApplication(), paramMessage);
-      return true;
-    case 2: 
-      this.a.b(null);
-      return true;
+        }
+      }
     }
-    this.a.u();
-    return true;
   }
 }
 

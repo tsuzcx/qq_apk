@@ -1,17 +1,13 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-class aodo
-  implements View.OnTouchListener
+public abstract interface aodo
 {
-  aodo(aodl paramaodl) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return aodl.a(this.a).onTouchEvent(paramMotionEvent);
-  }
+  public abstract boolean a(byte[] paramArrayOfByte, ExtensionInfo paramExtensionInfo, Friends paramFriends, Set<String> paramSet, List<String> paramList1, List<String> paramList2, Map<String, Integer> paramMap, List<String> paramList3, Map<String, Boolean> paramMap1, SpecialCareInfo paramSpecialCareInfo, long paramLong);
 }
 
 

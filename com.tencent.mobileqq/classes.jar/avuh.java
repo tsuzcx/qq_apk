@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.data.ContactMatch;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment.1.1;
 
 public class avuh
-  extends avun
+  implements awyo
 {
-  public ContactMatch a;
+  public avuh(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
   
-  public avuh(ContactMatch paramContactMatch)
+  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataContactMatch = paramContactMatch;
-    this.jdField_a_of_type_Long = paramContactMatch.timestamp;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataContactMatch.isReaded;
+    this.a.getActivity().runOnUiThread(new ListenTogetherPlayFragment.1.1(this, paramString, paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avuh
  * JD-Core Version:    0.7.0.1
  */

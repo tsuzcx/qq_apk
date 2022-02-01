@@ -1,34 +1,40 @@
-public class sfv
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class sfv
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public String a;
-  public sfq a;
-  public String b;
+  sfv(sfq paramsfq) {}
   
-  public sfv(String paramString, sfq paramsfq, boolean paramBoolean)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException();
+    int i = paramSeekBar.getProgress();
+    int j = sfq.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + sfa.a(j));
     }
-    this.jdField_a_of_type_Sfq = paramsfq;
-    if (paramBoolean)
+    if (j == 3) {
+      sfq.a(this.a).a(i * 1000, sfq.a(this.a));
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
+      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
       return;
+      if (j == 5) {
+        sfq.a(this.a).c(i * 1000);
+      }
     }
-    this.b = paramString;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return this.b;
-    }
-    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sfv
  * JD-Core Version:    0.7.0.1
  */

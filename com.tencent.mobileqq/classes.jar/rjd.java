@@ -1,12 +1,14 @@
 public abstract interface rjd
 {
-  public abstract void a(qyp paramqyp1, qyp paramqyp2, int paramInt, boolean paramBoolean);
+  public abstract void a(String paramString, float paramFloat);
   
-  public abstract void j();
+  public abstract void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3, String paramString4);
+  
+  public abstract void a(String paramString, int paramInt, rtm paramrtm);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rjd
  * JD-Core Version:    0.7.0.1
  */

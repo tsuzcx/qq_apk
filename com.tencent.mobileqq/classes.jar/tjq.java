@@ -1,14 +1,22 @@
-import UserGrowth.stSimpleMetaPerson;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface tjq
+public class tjq
+  implements View.OnClickListener
 {
-  public abstract void a(stSimpleMetaPerson paramstSimpleMetaPerson);
+  public tjq(BannerAdapter paramBannerAdapter, int paramInt) {}
   
-  public abstract void b(stSimpleMetaPerson paramstSimpleMetaPerson);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.a(this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tjq
  * JD-Core Version:    0.7.0.1
  */

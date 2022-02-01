@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.shortvideo.util.videoconverter;
 
 import android.annotation.TargetApi;
-import azlv;
-import azlx;
+import bcmt;
+import bcmv;
 import java.io.File;
 import java.lang.ref.WeakReference;
 
 @TargetApi(18)
 public class JBMR2VideoConverterImpl
-  implements azlx
+  implements bcmv
 {
   private WeakReference<Thread> jdField_a_of_type_JavaLangRefWeakReference;
   boolean jdField_a_of_type_Boolean = false;
@@ -24,12 +24,12 @@ public class JBMR2VideoConverterImpl
     return false;
   }
   
-  public boolean a(File paramFile, azlv paramazlv, boolean paramBoolean)
+  public boolean a(File paramFile, bcmt parambcmt, boolean paramBoolean)
   {
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      paramFile = new Thread(new JBMR2VideoConverterImpl.Converter(this, paramFile, paramazlv), "VideoConvert");
+      paramFile = new Thread(new JBMR2VideoConverterImpl.Converter(this, paramFile, parambcmt), "VideoConvert");
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFile);
       paramFile.start();
       if (paramBoolean) {}
@@ -61,7 +61,7 @@ public class JBMR2VideoConverterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl
  * JD-Core Version:    0.7.0.1
  */

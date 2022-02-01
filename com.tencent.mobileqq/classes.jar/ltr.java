@@ -1,16 +1,311 @@
-import com.tencent.av.opengl.program.TextureProgram;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.RemoteException;
+import android.text.TextUtils;
+import com.tencent.av.redpacket.config.AVRedPacketConfigManager.1;
+import com.tencent.av.redpacket.config.AVRedPacketConfigManager.2;
+import com.tencent.av.service.AVRedPacketConfig;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class ltr
-  extends TextureProgram
+  implements Handler.Callback, apte, Manager
 {
-  public ltr()
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  public aptb a;
+  public AVRedPacketConfig a;
+  public QQAppInterface a;
+  public Object a;
+  public String a;
+  public lvs a;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public volatile boolean a;
+  public String b;
+  public lvs b;
+  public volatile boolean b;
+  public volatile boolean c;
+  
+  public ltr(QQAppInterface paramQQAppInterface)
   {
-    super("uniform  mat4   uMatrix;\nuniform  mat4 uTextureMatrix;\nattribute vec2  aPosition ;\nvarying vec2 vTextureCoord;\nvoid main(void)\n{\nvec4 pos = vec4(aPosition, 0.0, 1.0);\n gl_Position = uMatrix * pos;\n vTextureCoord = (uTextureMatrix * (pos+vec4(0.5,0.5,0.0,0.0))).xy;\n}\n", "#ifdef GL_ES\nprecision highp float;\n#endif\nvarying vec2 vTextureCoord;\t\t\t\t//vTextureCoord;\nuniform sampler2D uTextureSampler0;\t\t\t// 原始纹理 rgba\nuniform float fWidth;\t\t\t// 纹理宽 短边\nuniform float fHeight;\t\t\t// 纹理高 长边\n\nvoid main() {\n\n  vec2 samplingPos =vec2(0.0,0.0);\n\tvec4 texel=vec4(0.0,0.0,0.0,0.0);\n\t\n\tvec3 offset = vec3(0.0, 0.5, 0.5);\n\t//颜色系数矩阵\n\tvec3 ycoeff = vec3(0.2990, 0.5870, 0.1140);\n\tvec3 ucoeff = vec3(-0.1687,-0.3313, 0.5);\n\tvec3 vcoeff = vec3(0.5,-0.4187,-0.0813);\n\n\tvec2 nowTxtPos = vTextureCoord;\n\tvec2 size = vec2(fWidth, fHeight);\n\n\tvec2 yScale = vec2(1,1);\n\tvec2 uvScale = vec2(4,2);\n\tvec2 hehe =vec2(0.5,0.5);\n\n/*\n    顶点旋转后，纹理坐标原点变为右下角，x轴向上，y轴向左\n\trbg纹理大小为 w*h， fbo 纹理大小为 (w/4)*(h*3/2)\n    fbo中yuv420数据保存在纹理左侧1/4处，从上到下为 V ,U，Y\n    V占用空间为w/4 * h/4,U占用空间为w/4 * h/4, Y占用空间为w/4 * h\n\n*/\n\tif(nowTxtPos.y <=1.0 &&  nowTxtPos.x <= 1.0 && nowTxtPos.x >= 0.8333333333333333)//采集V   纵轴 5/6 到1\n\t{\n        if(nowTxtPos.y < 0.5){//先写第二行，再写第一行，glreadPixel是从下往上反着读的\n             nowTxtPos.y += 0.5;\n        }else{\n             nowTxtPos.y -= 0.5;\n        }\n\n        float newOffset = 0.0;\n        if(nowTxtPos.y < 0.5){ //采集下一行\n               newOffset =2.0;\n        }\n        if(nowTxtPos.y > 0.5){ //不减前半部分无法采样\n              nowTxtPos.y -= 0.5;\n        }\n\n        nowTxtPos.x = nowTxtPos.x* 1.5; //恢复为RGB中比例\n        nowTxtPos.x -=1.25; //scale后纹理坐标返回 (1,1)\n\t\tvec2 basePos1 = (nowTxtPos * size +hehe);//rgb 中的像素点\n        vec2 basePos =vec2(int(basePos1.x),int(basePos1.y))* uvScale;//取整\n\n\t\t//得到像素坐标\n        float v1,v2,v3,v4;\n        basePos.x -=newOffset; //从左上角往右往下写yuv\n        //1\n        basePos.x+=0.0;\n        basePos.y+=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tv1 = dot(texel.rgb, vcoeff);\n\t\tv1 += offset.z;\n\t\t//2\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tv2 = dot(texel.rgb, vcoeff);\n\t\tv2 += offset.z;\n\t\t//3\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tv3 = dot(texel.rgb, vcoeff);\n\t\tv3 += offset.z;\n\t\t//4\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tv4 = dot(texel.rgb, vcoeff);\n\t\tv4 += offset.z;\n\t\t//写入V值\n        gl_FragColor = vec4(v1, v2, v3, v4);\n\n\t\t\n\t}\n\t//奇数行采集U\n\telse if(nowTxtPos.y <= 1.0 && nowTxtPos.x >= 0.6666666666666667 && nowTxtPos.x < 0.8333333333333333 )//采集U   纵轴 4/6 到5/6\n\t{\n        if(nowTxtPos.y < 0.5){//先写第二行，再写第一行，glreadPixel是从下往上反着读的\n             nowTxtPos.y += 0.5;\n        }else{\n             nowTxtPos.y -= 0.5;\n        }\n\n        float newOffset = 0.0;\n        if(nowTxtPos.y < 0.5){ //采集下一行\n              newOffset =2.0;\n        }\n        if(nowTxtPos.y > 0.5){ //不减前半部分无法采样\n              nowTxtPos.y -= 0.5;\n        }\n\n\t\tnowTxtPos.x = nowTxtPos.x* 1.5; //恢复为RGB中比例\n\t\tnowTxtPos.x -=1.0; //scale 后纹理坐标返回 (1,1)\n\t\tvec2 basePos1 = (nowTxtPos * size +hehe) ; \n        vec2 basePos =vec2(int(basePos1.x),int(basePos1.y))* uvScale;//取整\n\n\n        basePos.x -= newOffset;\n        //得到像素坐标\n        float u1,u2,u3,u4;\n        //1\n        basePos.x+=0.0;\n        basePos.y+=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tu1 = dot(texel.rgb, ucoeff);\n\t\tu1 += offset.y;\n\t\t//2\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tu2 = dot(texel.rgb, ucoeff);\n\t\tu2 += offset.y;\n\t\t//3\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tu3 = dot(texel.rgb, ucoeff);\n\t\tu3 += offset.y;\n\t\t//4\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tu4 = dot(texel.rgb, ucoeff);\n\t\tu4 += offset.y;\n\t\t//写入U值\n        gl_FragColor = vec4(u1, u2, u3, u4);\n\t}else if(nowTxtPos.y <= 1.0 && nowTxtPos.x >= 0.0 && nowTxtPos.x <= 0.6666666666666667){ //采集Y值 纵轴 0 到4/6\n          \t    nowTxtPos.x = nowTxtPos.x* 1.5; //恢复为RGB中比例\n\n\n                // y base postion\n                vec2 basePos1 = (nowTxtPos * size +hehe) ; //  0.99996的情况？\n                vec2 basePos =vec2(int(basePos1.x),int(basePos1.y))* yScale;//取整\n\n          \t\tfloat y1,y2,y3,y4;\n\n          \t\t //1\n          \t\tsamplingPos =  basePos / size;\n          \t\ttexel = texture2D(uTextureSampler0, samplingPos);\n          \t\ty1 = dot(texel.rgb, ycoeff);\n          \t\ty1 += offset.x;\n\n          \t    //2\n          \t\tbasePos.y -= 1.0;\n          \t\tsamplingPos = basePos/size;\n          \t\ttexel = texture2D(uTextureSampler0, samplingPos);\n          \t\ty2 = dot(texel.rgb, ycoeff);\n          \t\ty2 += offset.x;\n\n          \t//3\n          \t\tbasePos.y -= 1.0;\n          \t\tsamplingPos = basePos/size;\n          \t\ttexel = texture2D(uTextureSampler0, samplingPos);\n          \t\ty3 = dot(texel.rgb, ycoeff);\n          \t\ty3 += offset.x;\n\n          \t//4\n          \t\tbasePos.y -= 1.0;\n          \t\tsamplingPos = basePos/size;\n          \t\ttexel = texture2D(uTextureSampler0, samplingPos);\n          \t\ty4 = dot(texel.rgb, ycoeff);\n          \t\ty4 += offset.x;\n\n          \t\t//写入亮度值\n          \t\tgl_FragColor = vec4(y1, y2, y3, y4);\n\n          \t\t}\n\telse\n\t{\n\t\tgl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);\n\t}\n}", new ltw[] { new ltv("aPosition"), new ltx("uMatrix"), new ltx("uAlpha"), new ltx("uTextureMatrix"), new ltx("uTextureSampler0"), new ltx("uTextureSampler1"), new ltx("uTextureSampler2"), new ltx("fWidth"), new ltx("fHeight"), new ltx("colorMat"), new ltx("yuvFormat"), new ltx("leavel") }, false);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Aptb = ((aptb)paramQQAppInterface.getManager(191));
+    this.jdField_a_of_type_Aptb.a(this);
+  }
+  
+  public int a()
+  {
+    AVRedPacketConfig localAVRedPacketConfig = a();
+    if (localAVRedPacketConfig == null) {}
+    for (int i = 0;; i = localAVRedPacketConfig.version)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AVRedPacketConfigManger", 2, "getConfigVersion:" + i);
+      }
+      return i;
+    }
+  }
+  
+  public AVRedPacketConfig a()
+  {
+    return a(true);
+  }
+  
+  public AVRedPacketConfig a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig == null) && (paramBoolean))
+    {
+      a();
+      if (QLog.isColorLevel()) {
+        QLog.d("AVRedPacketConfigManger", 2, "getAVRedPacketConfig:" + this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig);
+      }
+    }
+    return this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig;
+  }
+  
+  MqqHandler a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("QAV_RedPacketResDownload", 0);
+        this.jdField_a_of_type_AndroidOsHandlerThread.start();
+        QLog.w("AVRedPacketConfigManger", 1, "getDownloadHandle, 创建mDownloadHandleThread");
+      }
+      if (this.jdField_a_of_type_MqqOsMqqHandler == null)
+      {
+        this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+        QLog.w("AVRedPacketConfigManger", 1, "getDownloadHandle, 创建mDownloadHandle");
+      }
+      MqqHandler localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+      return localMqqHandler;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig == null)
+      {
+        this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig = AVRedPacketConfig.readFromFile(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        if (QLog.isColorLevel()) {
+          QLog.d("AVRedPacketConfigManger", 2, "loadConfigFromFile,redPacketConfig =   " + this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig);
+        }
+      }
+      return;
+    }
+  }
+  
+  public void a(AVRedPacketConfig paramAVRedPacketConfig, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketConfigManger", 2, "onGetConfig ,isNewConfig = " + paramBoolean + ",config = " + paramAVRedPacketConfig);
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig = paramAVRedPacketConfig;
+      lvs locallvs = this.jdField_a_of_type_Lvs;
+      if (locallvs != null) {}
+      try
+      {
+        this.jdField_a_of_type_Lvs.a(true, paramAVRedPacketConfig);
+        this.jdField_a_of_type_Boolean = false;
+        if ((paramBoolean) && (this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig != null)) {
+          this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.saveToFile(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AVRedPacketConfigManger", 2, "onGetConfig finish, isGettingConfig =" + this.jdField_a_of_type_Boolean);
+        }
+        return;
+      }
+      catch (RemoteException paramAVRedPacketConfig)
+      {
+        for (;;)
+        {
+          paramAVRedPacketConfig.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+      {
+        this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+        this.jdField_a_of_type_MqqOsMqqHandler = null;
+        QLog.w("AVRedPacketConfigManger", 1, "clearDownloadHandle[" + paramString + "], 释放mDownloadHandle");
+      }
+      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+        this.jdField_a_of_type_AndroidOsHandlerThread = null;
+        QLog.w("AVRedPacketConfigManger", 1, "clearDownloadHandle[" + paramString + "], 释放mDownloadHandleThread");
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketConfigManger", 2, "onDownloadUpdate,url =   " + paramString1 + ",md5 = " + paramString2 + ",percent = " + paramInt);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketConfigManger", 2, "onDownloadFinish,url =   " + paramString1 + ",md5 = " + paramString2 + ",errCode = " + paramInt + ",path = " + paramString3 + ",userData = " + paramObject);
+    }
+    String str = null;
+    int i;
+    if ((paramObject instanceof Integer))
+    {
+      i = ((Integer)paramObject).intValue();
+      if (i != 1) {
+        break label182;
+      }
+      paramObject = this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL;
+      ltb.a(i, paramInt);
+      if (!paramString3.endsWith("/")) {
+        break label204;
+      }
+    }
+    label182:
+    label204:
+    for (str = paramString3;; str = paramString3 + File.separator)
+    {
+      if ((!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString1)) && (paramString1.equals(paramObject)))
+      {
+        paramString3 = a();
+        if (paramString3 == null) {
+          break label230;
+        }
+        paramString3.post(new AVRedPacketConfigManager.2(this, paramInt, str, paramString2, i, paramString1));
+      }
+      return;
+      paramObject = str;
+      if (i != 2) {
+        break;
+      }
+      paramObject = this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl;
+      break;
+    }
+    label230:
+    QLog.w("AVRedPacketConfigManger", 1, "onDownloadFinish, downloadHandle is null");
+  }
+  
+  public void a(lvs paramlvs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketConfigManger", 2, "downloadRes");
+    }
+    if (this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig == null)
+    {
+      QLog.d("AVRedPacketConfigManger", 1, "downloadRes, redPacketConfig is null");
+      return;
+    }
+    Object localObject = (beaw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
+    ((beaw)localObject).a(this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL);
+    ((beaw)localObject).a(this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl);
+    localObject = a();
+    if (localObject != null)
+    {
+      ((MqqHandler)localObject).post(new AVRedPacketConfigManager.1(this, paramlvs));
+      return;
+    }
+    QLog.w("AVRedPacketConfigManger", 1, "downloadRes, downloadHandle is null");
+  }
+  
+  public void b() {}
+  
+  public void b(String paramString)
+  {
+    paramString = AVRedPacketConfig.parse(paramString);
+    if (paramString == null) {
+      AVRedPacketConfig.deleteLocalConfig(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    }
+    for (;;)
+    {
+      ltb.a(true);
+      return;
+      a(paramString, true);
+    }
+  }
+  
+  public void b(lvs paramlvs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketConfigManger", 2, "getAVRedPacketConfig,start");
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AVRedPacketConfigManger", 2, "getAVRedPacketConfig,isGettingConfig =   " + this.jdField_a_of_type_Boolean);
+      }
+      this.jdField_a_of_type_Lvs = paramlvs;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        paramlvs = this.jdField_a_of_type_Lvs;
+        if (paramlvs == null) {}
+      }
+      try
+      {
+        this.jdField_a_of_type_Lvs.a(true, this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig);
+        return;
+      }
+      catch (RemoteException paramlvs)
+      {
+        for (;;)
+        {
+          paramlvs.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.d("AVRedPacketConfigManger", 2, "getAVRedPacketConfig,error    ", paramlvs);
+          }
+        }
+      }
+    }
+  }
+  
+  public void c()
+  {
+    a(a(), false);
+    ltb.a(false);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 100) {
+      mno.f();
+    }
+    return true;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_Aptb.b(this);
+    a("onDestroy");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ltr
  * JD-Core Version:    0.7.0.1
  */

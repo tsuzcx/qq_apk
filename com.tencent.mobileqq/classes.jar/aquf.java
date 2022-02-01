@@ -1,34 +1,96 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-final class aquf
-  extends yuj
+public class aquf
+  extends aqkz<aque>
 {
-  aquf(String paramString, aqva paramaqva, long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  public static aque a()
   {
-    if (!paramBoolean)
+    return (aque)aqlk.a().a(635);
+  }
+  
+  @NonNull
+  public aque a(int paramInt)
+  {
+    return new aque();
+  }
+  
+  @Nullable
+  public aque a(aqlg[] paramArrayOfaqlg)
+  {
+    QLog.i("TroopFoldMsgConfProcessor", 1, "[onParsed] config");
+    aque localaque2 = null;
+    aque localaque1;
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
     {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aqva.a(aque.a(this.jdField_a_of_type_Long, false), true);
-      return;
+      localaque2 = aque.a(paramArrayOfaqlg[0].a);
+      localaque1 = localaque2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
+        localaque1 = localaque2;
+      }
     }
-    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
-    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
-    if (paramInt1 == 0)
+    for (;;)
     {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aqva.a(this.jdField_a_of_type_JavaLangString, paramBundle);
-      return;
+      paramArrayOfaqlg = localaque1;
+      if (localaque1 == null) {
+        paramArrayOfaqlg = new aque();
+      }
+      return paramArrayOfaqlg;
+      localaque1 = localaque2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed is null");
+        localaque1 = localaque2;
+      }
     }
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Aqva.a(aque.a(this.jdField_a_of_type_Long, false), false);
+  }
+  
+  public void a(aque paramaque)
+  {
+    QLog.i("TroopFoldMsgConfProcessor", 1, "[onUpdate]");
+  }
+  
+  public Class<aque> clazz()
+  {
+    return aque.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.i("TroopFoldMsgConfProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 635;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aquf
  * JD-Core Version:    0.7.0.1
  */

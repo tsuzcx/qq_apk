@@ -1,13 +1,20 @@
-import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.location.OnlineStatusLocationFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class ayss
-  extends aysv
+public class ayss
+  implements View.OnClickListener
 {
-  protected abstract aysq a(Context paramContext);
+  public ayss(OnlineStatusLocationFragment paramOnlineStatusLocationFragment) {}
   
-  public int b()
+  public void onClick(View paramView)
   {
-    return 1;
+    if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing())) {
+      this.a.getActivity().finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

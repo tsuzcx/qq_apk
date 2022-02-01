@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-public class ajwi
-  implements azlj
+class ajwi
+  implements DialogInterface.OnClickListener
 {
-  public ajwi(CameraFilterGLView paramCameraFilterGLView) {}
+  ajwi(ajvr paramajvr, String paramString) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CameraFilterGLView.b(this.a);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Ajvr.a, SearchContactsActivity.class);
+    paramDialogInterface.putExtra("from_key", 0);
+    paramDialogInterface.putExtra("fromType", 13);
+    paramDialogInterface.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.putExtra("auto_add_and_prohibit_auto_search", true);
+    this.jdField_a_of_type_Ajvr.a.startActivity(paramDialogInterface);
   }
 }
 

@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public class acsu
-  extends aqbl
+class acsu
+  extends AdHttp.Params
 {
-  public acsu(Conversation paramConversation) {}
+  public int a = -2147483648;
   
-  protected void a(boolean paramBoolean)
+  public boolean isSuccess()
   {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
+    return (super.isSuccess()) && (this.responseData != null);
   }
 }
 

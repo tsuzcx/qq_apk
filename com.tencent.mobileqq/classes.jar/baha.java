@@ -1,70 +1,64 @@
-import android.text.TextUtils;
+import android.os.Handler;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import org.json.JSONObject;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class baha
-  extends bagz
+  implements ayxc
 {
-  private aqtp jdField_a_of_type_Aqtp = new bahb(this);
-  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  private int jdField_a_of_type_Int;
+  private WeakReference<ReceiptMessageDetailFragment> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public baha(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public baha(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReceiptMessageDetailFragment);
   }
   
-  private boolean a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    while (TextUtils.isEmpty(paramJSONObject.optString("ownertype"))) {
-      return false;
-    }
-    return true;
-  }
+  public void a(int paramInt, boolean paramBoolean) {}
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public void a(ayxd paramayxd)
   {
-    int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
-    {
-      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString))) {
-        break label240;
-      }
-      MessageRecord localMessageRecord = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
-      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForFile))) {
-        break label219;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.j = localMessageRecord.senderuin;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = arrr.a(paramQQAppInterface, (MessageForFile)localMessageRecord);
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid))) {
-        break label240;
-      }
-      i = 1;
-      paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, this.jdField_a_of_type_Aqtp);
-    }
-    for (;;)
-    {
-      if (i == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Bagw.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      }
-      this.jdField_a_of_type_Bagw.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localReceiptMessageDetailFragment == null) {
       return;
-      label219:
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
-      break;
-      label240:
-      i = 0;
     }
+    if ((paramayxd.b == 0) && (paramayxd.a != null))
+    {
+      MessageRecord localMessageRecord = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_JavaLangString, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_Int, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment));
+      Object localObject = localMessageRecord;
+      if (localMessageRecord == null)
+      {
+        localObject = new MessageForStructing();
+        ((MessageRecord)localObject).senderuin = "0";
+        ((MessageRecord)localObject).uniseq = ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment);
+      }
+      paramayxd = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a().a(paramayxd.a, null, (MessageRecord)localObject, null);
+      if ((paramayxd != null) && (!paramayxd.isEmpty()))
+      {
+        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(10);
+        return;
+      }
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "ReceiptMessageDownloadCallBack onDownload, download msg fail with code: " + paramayxd.b);
+    }
+    int i = this.jdField_a_of_type_Int + 1;
+    this.jdField_a_of_type_Int = i;
+    if (i <= 3)
+    {
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(0);
+      return;
+    }
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
   }
 }
 

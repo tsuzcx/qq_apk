@@ -1,27 +1,29 @@
-import android.content.Intent;
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-final class atfo
-  implements bhuk
+class atfo
+  extends atfi
 {
-  atfo(Intent paramIntent, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public atfo(atfe paramatfe)
   {
-    switch (paramInt)
+    super(paramatfe);
+  }
+  
+  protected String a()
+  {
+    return "StateChangeToOffWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-    default: 
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
-    azqs.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_opener", 0, 0, this.jdField_a_of_type_AndroidContentIntent.getStringExtra("cur_uin"), paramInt + "", "", "");
-    paramView = atfs.a();
-    if (paramInt == 0) {}
-    for (paramInt = 2;; paramInt = 1)
-    {
-      paramView.a(paramInt);
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-    }
+    atfe.b(this.jdField_a_of_type_Atfe, 9, 11);
+    atfe.c(this.jdField_a_of_type_Atfe, 9, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateUploadingWhenRecv)");
+    this.jdField_a_of_type_Atfi = new atgk(this.jdField_a_of_type_Atfe);
   }
 }
 

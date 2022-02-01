@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import com.tencent.mobileqq.msf.core.u;
+import com.tencent.mobileqq.msf.core.x;
 import com.tencent.qphone.base.util.QLog;
 
 public class MSFAliveJobService
@@ -14,7 +14,7 @@ public class MSFAliveJobService
 {
   private static final int MESSAGE_ID_TASK = 1;
   public static final String TAG = "MSFAliveJobService";
-  public final Handler mHandler = new Handler(u.c().getLooper(), new i(this));
+  public final Handler mHandler = new Handler(x.c().getLooper(), new j(this));
   
   public void onCreate()
   {

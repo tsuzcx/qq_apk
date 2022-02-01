@@ -17,6 +17,7 @@ public final class cmd0x346$FileInfo
   public final PBBytesField bytes_sha = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_uuid = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBStringField str_file_name = PBField.initString("");
+  public final PBStringField str_fileidcrc = PBField.initString("");
   public final PBUInt32Field uint32_abs_file_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_client_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_danger_evel = PBField.initUInt32(0);
@@ -33,12 +34,12 @@ public final class cmd0x346$FileInfo
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 720, 802, 810, 880, 960, 968, 1040 }, new String[] { "uint64_uin", "uint32_danger_evel", "uint64_file_size", "uint32_life_time", "uint32_upload_time", "bytes_uuid", "str_file_name", "uint32_abs_file_type", "bytes_10m_md5", "bytes_sha", "uint32_client_type", "uint64_owner_uin", "uint64_peer_uin", "uint32_expire_time" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, "", Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, FileInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 720, 802, 810, 880, 960, 968, 1040, 1122 }, new String[] { "uint64_uin", "uint32_danger_evel", "uint64_file_size", "uint32_life_time", "uint32_upload_time", "bytes_uuid", "str_file_name", "uint32_abs_file_type", "bytes_10m_md5", "bytes_sha", "uint32_client_type", "uint64_owner_uin", "uint64_peer_uin", "uint32_expire_time", "str_fileidcrc" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, "", Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), "" }, FileInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.cs.cmd0x346.cmd0x346.FileInfo
  * JD-Core Version:    0.7.0.1
  */

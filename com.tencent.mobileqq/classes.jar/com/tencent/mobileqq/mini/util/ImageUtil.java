@@ -8,11 +8,16 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.text.TextUtils;
-import bdnn;
+import bgsp;
 import com.tencent.image.SafeBitmapFactory;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
+import com.tencent.mobileqq.minigame.utils.PathUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
@@ -304,35 +309,57 @@ public class ImageUtil
     }
   }
   
+  public static Drawable getDrawable(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mFailedDrawable = new ColorDrawable(0);
+      localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
+      localURLDrawableOptions.mPlayGifImage = true;
+      if (PathUtil.isNetworkUrl(paramString)) {
+        return URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      }
+      return URLDrawable.getFileDrawable(MiniAppFileManager.getInstance().getAbsolutePath(paramString), localURLDrawableOptions);
+    }
+    return null;
+  }
+  
   public static int getExifOrientation(String paramString)
   {
-    try
+    if (isPngFile(paramString)) {}
+    for (;;)
     {
-      paramString = new ExifInterface(paramString);
-      int i;
-      if (paramString != null)
+      return 0;
+      try
       {
-        i = paramString.getAttributeInt("Orientation", -1);
-        if (i == -1) {}
+        paramString = new ExifInterface(paramString);
+        if (paramString != null)
+        {
+          int i = paramString.getAttributeInt("Orientation", -1);
+          if (i != -1) {
+            switch (i)
+            {
+            case 4: 
+            case 5: 
+            case 7: 
+            default: 
+              return 0;
+            case 3: 
+              return 180;
+            }
+          }
+        }
       }
-      switch (i)
+      catch (IOException paramString)
       {
-      case 4: 
-      case 5: 
-      case 7: 
-      default: 
-        return 0;
+        for (;;)
+        {
+          paramString = null;
+        }
+        return 90;
       }
     }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        paramString = null;
-      }
-      return 90;
-    }
-    return 180;
     return 270;
   }
   
@@ -343,43 +370,43 @@ public class ImageUtil
     //   0: aconst_null
     //   1: astore_2
     //   2: aload_0
-    //   3: invokestatic 204	bdnn:a	(Ljava/lang/String;)Z
+    //   3: invokestatic 260	bgsp:a	(Ljava/lang/String;)Z
     //   6: ifeq +7 -> 13
     //   9: aload_2
     //   10: astore_0
     //   11: aload_0
     //   12: areturn
-    //   13: new 206	java/io/FileInputStream
+    //   13: new 262	java/io/FileInputStream
     //   16: dup
     //   17: aload_0
-    //   18: invokespecial 207	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   18: invokespecial 263	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   21: astore_0
-    //   22: new 209	java/io/BufferedInputStream
+    //   22: new 265	java/io/BufferedInputStream
     //   25: dup
     //   26: aload_0
     //   27: sipush 8192
-    //   30: invokespecial 212	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   30: invokespecial 268	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   33: astore_1
     //   34: aload_1
-    //   35: invokestatic 216	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   35: invokestatic 272	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   38: astore_3
     //   39: aload_3
     //   40: astore_2
     //   41: aload_0
     //   42: ifnull +7 -> 49
     //   45: aload_0
-    //   46: invokevirtual 217	java/io/FileInputStream:close	()V
+    //   46: invokevirtual 273	java/io/FileInputStream:close	()V
     //   49: aload_2
     //   50: astore_0
     //   51: aload_1
     //   52: ifnull -41 -> 11
     //   55: aload_1
-    //   56: invokevirtual 218	java/io/BufferedInputStream:close	()V
+    //   56: invokevirtual 274	java/io/BufferedInputStream:close	()V
     //   59: aload_2
     //   60: areturn
     //   61: astore_0
     //   62: aload_0
-    //   63: invokevirtual 221	java/io/IOException:printStackTrace	()V
+    //   63: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   66: aload_2
     //   67: areturn
     //   68: astore_0
@@ -390,18 +417,18 @@ public class ImageUtil
     //   73: aload_0
     //   74: ifnull +7 -> 81
     //   77: aload_0
-    //   78: invokevirtual 217	java/io/FileInputStream:close	()V
+    //   78: invokevirtual 273	java/io/FileInputStream:close	()V
     //   81: aload_2
     //   82: astore_0
     //   83: aload_1
     //   84: ifnull -73 -> 11
     //   87: aload_1
-    //   88: invokevirtual 218	java/io/BufferedInputStream:close	()V
+    //   88: invokevirtual 274	java/io/BufferedInputStream:close	()V
     //   91: aconst_null
     //   92: areturn
     //   93: astore_0
     //   94: aload_0
-    //   95: invokevirtual 221	java/io/IOException:printStackTrace	()V
+    //   95: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   98: aconst_null
     //   99: areturn
     //   100: astore_0
@@ -412,18 +439,18 @@ public class ImageUtil
     //   105: aload_0
     //   106: ifnull +7 -> 113
     //   109: aload_0
-    //   110: invokevirtual 217	java/io/FileInputStream:close	()V
+    //   110: invokevirtual 273	java/io/FileInputStream:close	()V
     //   113: aload_2
     //   114: astore_0
     //   115: aload_1
     //   116: ifnull -105 -> 11
     //   119: aload_1
-    //   120: invokevirtual 218	java/io/BufferedInputStream:close	()V
+    //   120: invokevirtual 274	java/io/BufferedInputStream:close	()V
     //   123: aconst_null
     //   124: areturn
     //   125: astore_0
     //   126: aload_0
-    //   127: invokevirtual 221	java/io/IOException:printStackTrace	()V
+    //   127: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   130: aconst_null
     //   131: areturn
     //   132: astore_2
@@ -434,16 +461,16 @@ public class ImageUtil
     //   137: aload_0
     //   138: ifnull +7 -> 145
     //   141: aload_0
-    //   142: invokevirtual 217	java/io/FileInputStream:close	()V
+    //   142: invokevirtual 273	java/io/FileInputStream:close	()V
     //   145: aload_1
     //   146: ifnull +7 -> 153
     //   149: aload_1
-    //   150: invokevirtual 218	java/io/BufferedInputStream:close	()V
+    //   150: invokevirtual 274	java/io/BufferedInputStream:close	()V
     //   153: aload_2
     //   154: athrow
     //   155: astore_0
     //   156: aload_0
-    //   157: invokevirtual 221	java/io/IOException:printStackTrace	()V
+    //   157: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   160: goto -7 -> 153
     //   163: astore_2
     //   164: aconst_null
@@ -501,7 +528,7 @@ public class ImageUtil
   
   public static Bitmap getLocalCompressedBitmap(String paramString, BitmapFactory.Options paramOptions)
   {
-    if ((bdnn.a(paramString)) || (paramOptions == null)) {
+    if ((bgsp.a(paramString)) || (paramOptions == null)) {
       paramOptions = null;
     }
     Bitmap localBitmap;
@@ -626,26 +653,26 @@ public class ImageUtil
   public static ByteArrayInputStream getLocalNoBitmapImageStream(String paramString)
   {
     // Byte code:
-    //   0: new 294	java/io/File
+    //   0: new 346	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 295	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 347	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_0
     //   9: aload_0
-    //   10: invokevirtual 298	java/io/File:exists	()Z
+    //   10: invokevirtual 350	java/io/File:exists	()Z
     //   13: ifne +5 -> 18
     //   16: aconst_null
     //   17: areturn
-    //   18: new 206	java/io/FileInputStream
+    //   18: new 262	java/io/FileInputStream
     //   21: dup
     //   22: aload_0
-    //   23: invokespecial 301	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   23: invokespecial 353	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   26: astore_2
-    //   27: new 209	java/io/BufferedInputStream
+    //   27: new 265	java/io/BufferedInputStream
     //   30: dup
     //   31: aload_2
     //   32: sipush 8192
-    //   35: invokespecial 212	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   35: invokespecial 268	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   38: astore_3
     //   39: new 62	java/io/ByteArrayOutputStream
     //   42: dup
@@ -668,7 +695,7 @@ public class ImageUtil
     //   70: astore 4
     //   72: aload_3
     //   73: aload 7
-    //   75: invokevirtual 305	java/io/BufferedInputStream:read	([B)I
+    //   75: invokevirtual 357	java/io/BufferedInputStream:read	([B)I
     //   78: istore_1
     //   79: iload_1
     //   80: iconst_m1
@@ -683,7 +710,7 @@ public class ImageUtil
     //   94: aload 7
     //   96: iconst_0
     //   97: iload_1
-    //   98: invokevirtual 309	java/io/ByteArrayOutputStream:write	([BII)V
+    //   98: invokevirtual 361	java/io/ByteArrayOutputStream:write	([BII)V
     //   101: goto -38 -> 63
     //   104: astore 7
     //   106: aload_3
@@ -693,7 +720,7 @@ public class ImageUtil
     //   112: aload_2
     //   113: astore 4
     //   115: aload 7
-    //   117: invokevirtual 310	java/io/FileNotFoundException:printStackTrace	()V
+    //   117: invokevirtual 362	java/io/FileNotFoundException:printStackTrace	()V
     //   120: aload_0
     //   121: ifnull +7 -> 128
     //   124: aload_0
@@ -701,16 +728,16 @@ public class ImageUtil
     //   128: aload_3
     //   129: ifnull +7 -> 136
     //   132: aload_3
-    //   133: invokevirtual 218	java/io/BufferedInputStream:close	()V
+    //   133: invokevirtual 274	java/io/BufferedInputStream:close	()V
     //   136: aload_2
     //   137: ifnull -121 -> 16
     //   140: aload_2
-    //   141: invokevirtual 217	java/io/FileInputStream:close	()V
+    //   141: invokevirtual 273	java/io/FileInputStream:close	()V
     //   144: aconst_null
     //   145: areturn
     //   146: astore_0
     //   147: aload_0
-    //   148: invokevirtual 221	java/io/IOException:printStackTrace	()V
+    //   148: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   151: aconst_null
     //   152: areturn
     //   153: aload_3
@@ -719,11 +746,11 @@ public class ImageUtil
     //   157: astore 5
     //   159: aload_2
     //   160: astore 4
-    //   162: new 278	java/io/ByteArrayInputStream
+    //   162: new 330	java/io/ByteArrayInputStream
     //   165: dup
     //   166: aload_0
     //   167: invokevirtual 71	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   170: invokespecial 281	java/io/ByteArrayInputStream:<init>	([B)V
+    //   170: invokespecial 333	java/io/ByteArrayInputStream:<init>	([B)V
     //   173: astore 7
     //   175: aload_0
     //   176: ifnull +7 -> 183
@@ -732,16 +759,16 @@ public class ImageUtil
     //   183: aload_3
     //   184: ifnull +7 -> 191
     //   187: aload_3
-    //   188: invokevirtual 218	java/io/BufferedInputStream:close	()V
+    //   188: invokevirtual 274	java/io/BufferedInputStream:close	()V
     //   191: aload_2
     //   192: ifnull +7 -> 199
     //   195: aload_2
-    //   196: invokevirtual 217	java/io/FileInputStream:close	()V
+    //   196: invokevirtual 273	java/io/FileInputStream:close	()V
     //   199: aload 7
     //   201: areturn
     //   202: astore_0
     //   203: aload_0
-    //   204: invokevirtual 221	java/io/IOException:printStackTrace	()V
+    //   204: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   207: goto -8 -> 199
     //   210: astore 7
     //   212: aconst_null
@@ -757,7 +784,7 @@ public class ImageUtil
     //   224: aload_2
     //   225: astore 4
     //   227: aload 7
-    //   229: invokevirtual 221	java/io/IOException:printStackTrace	()V
+    //   229: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   232: aload_0
     //   233: ifnull +7 -> 240
     //   236: aload_0
@@ -765,16 +792,16 @@ public class ImageUtil
     //   240: aload_3
     //   241: ifnull +7 -> 248
     //   244: aload_3
-    //   245: invokevirtual 218	java/io/BufferedInputStream:close	()V
+    //   245: invokevirtual 274	java/io/BufferedInputStream:close	()V
     //   248: aload_2
     //   249: ifnull -233 -> 16
     //   252: aload_2
-    //   253: invokevirtual 217	java/io/FileInputStream:close	()V
+    //   253: invokevirtual 273	java/io/FileInputStream:close	()V
     //   256: aconst_null
     //   257: areturn
     //   258: astore_0
     //   259: aload_0
-    //   260: invokevirtual 221	java/io/IOException:printStackTrace	()V
+    //   260: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   263: aconst_null
     //   264: areturn
     //   265: astore_0
@@ -791,16 +818,16 @@ public class ImageUtil
     //   283: aload_3
     //   284: ifnull +7 -> 291
     //   287: aload_3
-    //   288: invokevirtual 218	java/io/BufferedInputStream:close	()V
+    //   288: invokevirtual 274	java/io/BufferedInputStream:close	()V
     //   291: aload_2
     //   292: ifnull +7 -> 299
     //   295: aload_2
-    //   296: invokevirtual 217	java/io/FileInputStream:close	()V
+    //   296: invokevirtual 273	java/io/FileInputStream:close	()V
     //   299: aload_0
     //   300: athrow
     //   301: astore_2
     //   302: aload_2
-    //   303: invokevirtual 221	java/io/IOException:printStackTrace	()V
+    //   303: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   306: goto -7 -> 299
     //   309: astore_0
     //   310: aconst_null
@@ -973,42 +1000,42 @@ public class ImageUtil
     //   4: aload_1
     //   5: ifnonnull +4 -> 9
     //   8: return
-    //   9: new 294	java/io/File
+    //   9: new 346	java/io/File
     //   12: dup
     //   13: aload_1
-    //   14: invokevirtual 361	java/io/File:getParent	()Ljava/lang/String;
-    //   17: invokespecial 295	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: invokevirtual 407	java/io/File:getParent	()Ljava/lang/String;
+    //   17: invokespecial 347	java/io/File:<init>	(Ljava/lang/String;)V
     //   20: astore_2
     //   21: aload_2
-    //   22: invokevirtual 298	java/io/File:exists	()Z
+    //   22: invokevirtual 350	java/io/File:exists	()Z
     //   25: ifeq +10 -> 35
     //   28: aload_2
-    //   29: invokevirtual 364	java/io/File:isDirectory	()Z
+    //   29: invokevirtual 410	java/io/File:isDirectory	()Z
     //   32: ifne +8 -> 40
     //   35: aload_2
-    //   36: invokevirtual 367	java/io/File:mkdirs	()Z
+    //   36: invokevirtual 413	java/io/File:mkdirs	()Z
     //   39: pop
     //   40: aload_1
-    //   41: invokevirtual 298	java/io/File:exists	()Z
+    //   41: invokevirtual 350	java/io/File:exists	()Z
     //   44: ifeq +10 -> 54
     //   47: aload_1
-    //   48: invokevirtual 370	java/io/File:isFile	()Z
+    //   48: invokevirtual 416	java/io/File:isFile	()Z
     //   51: ifne +8 -> 59
     //   54: aload_1
-    //   55: invokevirtual 373	java/io/File:createNewFile	()Z
+    //   55: invokevirtual 419	java/io/File:createNewFile	()Z
     //   58: pop
-    //   59: new 375	java/io/BufferedOutputStream
+    //   59: new 421	java/io/BufferedOutputStream
     //   62: dup
-    //   63: new 377	java/io/FileOutputStream
+    //   63: new 423	java/io/FileOutputStream
     //   66: dup
     //   67: aload_1
-    //   68: invokespecial 378	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   71: invokespecial 381	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   68: invokespecial 424	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   71: invokespecial 427	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   74: astore_2
     //   75: aload_2
     //   76: astore_1
     //   77: aload_0
-    //   78: getstatic 238	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   78: getstatic 291	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   81: bipush 90
     //   83: aload_2
     //   84: invokevirtual 67	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
@@ -1016,11 +1043,11 @@ public class ImageUtil
     //   88: aload_2
     //   89: astore_1
     //   90: aload_2
-    //   91: invokevirtual 384	java/io/BufferedOutputStream:flush	()V
+    //   91: invokevirtual 430	java/io/BufferedOutputStream:flush	()V
     //   94: aload_2
     //   95: ifnull -87 -> 8
     //   98: aload_2
-    //   99: invokevirtual 385	java/io/BufferedOutputStream:close	()V
+    //   99: invokevirtual 431	java/io/BufferedOutputStream:close	()V
     //   102: return
     //   103: astore_3
     //   104: aconst_null
@@ -1032,7 +1059,7 @@ public class ImageUtil
     //   111: new 88	java/lang/StringBuilder
     //   114: dup
     //   115: invokespecial 89	java/lang/StringBuilder:<init>	()V
-    //   118: ldc_w 387
+    //   118: ldc_w 433
     //   121: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: aload_3
     //   125: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -1041,7 +1068,7 @@ public class ImageUtil
     //   134: aload_0
     //   135: ifnull -127 -> 8
     //   138: aload_0
-    //   139: invokevirtual 385	java/io/BufferedOutputStream:close	()V
+    //   139: invokevirtual 431	java/io/BufferedOutputStream:close	()V
     //   142: return
     //   143: astore_0
     //   144: aconst_null
@@ -1049,7 +1076,7 @@ public class ImageUtil
     //   146: aload_1
     //   147: ifnull +7 -> 154
     //   150: aload_1
-    //   151: invokevirtual 385	java/io/BufferedOutputStream:close	()V
+    //   151: invokevirtual 431	java/io/BufferedOutputStream:close	()V
     //   154: aload_0
     //   155: athrow
     //   156: astore_0
@@ -1100,63 +1127,63 @@ public class ImageUtil
     //   24: astore 4
     //   26: aload 5
     //   28: astore_3
-    //   29: new 294	java/io/File
+    //   29: new 346	java/io/File
     //   32: dup
     //   33: aload_1
-    //   34: invokevirtual 361	java/io/File:getParent	()Ljava/lang/String;
-    //   37: invokespecial 295	java/io/File:<init>	(Ljava/lang/String;)V
+    //   34: invokevirtual 407	java/io/File:getParent	()Ljava/lang/String;
+    //   37: invokespecial 347	java/io/File:<init>	(Ljava/lang/String;)V
     //   40: astore 6
     //   42: aload 5
     //   44: astore_3
     //   45: aload 6
-    //   47: invokevirtual 298	java/io/File:exists	()Z
+    //   47: invokevirtual 350	java/io/File:exists	()Z
     //   50: ifeq +14 -> 64
     //   53: aload 5
     //   55: astore_3
     //   56: aload 6
-    //   58: invokevirtual 364	java/io/File:isDirectory	()Z
+    //   58: invokevirtual 410	java/io/File:isDirectory	()Z
     //   61: ifne +12 -> 73
     //   64: aload 5
     //   66: astore_3
     //   67: aload 6
-    //   69: invokevirtual 367	java/io/File:mkdirs	()Z
+    //   69: invokevirtual 413	java/io/File:mkdirs	()Z
     //   72: pop
     //   73: aload 5
     //   75: astore_3
     //   76: aload_1
-    //   77: invokevirtual 298	java/io/File:exists	()Z
+    //   77: invokevirtual 350	java/io/File:exists	()Z
     //   80: ifeq +13 -> 93
     //   83: aload 5
     //   85: astore_3
     //   86: aload_1
-    //   87: invokevirtual 370	java/io/File:isFile	()Z
+    //   87: invokevirtual 416	java/io/File:isFile	()Z
     //   90: ifne +11 -> 101
     //   93: aload 5
     //   95: astore_3
     //   96: aload_1
-    //   97: invokevirtual 373	java/io/File:createNewFile	()Z
+    //   97: invokevirtual 419	java/io/File:createNewFile	()Z
     //   100: pop
     //   101: aload 5
     //   103: astore_3
-    //   104: new 377	java/io/FileOutputStream
+    //   104: new 423	java/io/FileOutputStream
     //   107: dup
     //   108: aload_1
-    //   109: invokespecial 378	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   109: invokespecial 424	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   112: astore_1
     //   113: aload_1
     //   114: aload_0
-    //   115: invokevirtual 390	java/io/FileOutputStream:write	([B)V
+    //   115: invokevirtual 436	java/io/FileOutputStream:write	([B)V
     //   118: aload_1
-    //   119: invokevirtual 391	java/io/FileOutputStream:flush	()V
+    //   119: invokevirtual 437	java/io/FileOutputStream:flush	()V
     //   122: aload_1
     //   123: ifnull -105 -> 18
     //   126: aload_1
-    //   127: invokevirtual 392	java/io/FileOutputStream:close	()V
+    //   127: invokevirtual 438	java/io/FileOutputStream:close	()V
     //   130: iconst_1
     //   131: ireturn
     //   132: astore_0
     //   133: aload_0
-    //   134: invokevirtual 393	java/lang/Exception:printStackTrace	()V
+    //   134: invokevirtual 439	java/lang/Exception:printStackTrace	()V
     //   137: iconst_1
     //   138: ireturn
     //   139: astore_1
@@ -1165,27 +1192,27 @@ public class ImageUtil
     //   143: aload_0
     //   144: astore_3
     //   145: aload_1
-    //   146: invokevirtual 221	java/io/IOException:printStackTrace	()V
+    //   146: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   149: aload_0
     //   150: ifnull +7 -> 157
     //   153: aload_0
-    //   154: invokevirtual 392	java/io/FileOutputStream:close	()V
+    //   154: invokevirtual 438	java/io/FileOutputStream:close	()V
     //   157: iconst_0
     //   158: ireturn
     //   159: astore_0
     //   160: aload_0
-    //   161: invokevirtual 393	java/lang/Exception:printStackTrace	()V
+    //   161: invokevirtual 439	java/lang/Exception:printStackTrace	()V
     //   164: goto -7 -> 157
     //   167: astore_0
     //   168: aload_3
     //   169: ifnull +7 -> 176
     //   172: aload_3
-    //   173: invokevirtual 392	java/io/FileOutputStream:close	()V
+    //   173: invokevirtual 438	java/io/FileOutputStream:close	()V
     //   176: aload_0
     //   177: athrow
     //   178: astore_1
     //   179: aload_1
-    //   180: invokevirtual 393	java/lang/Exception:printStackTrace	()V
+    //   180: invokevirtual 439	java/lang/Exception:printStackTrace	()V
     //   183: goto -7 -> 176
     //   186: astore_0
     //   187: aload_1
@@ -1280,7 +1307,7 @@ public class ImageUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.ImageUtil
  * JD-Core Version:    0.7.0.1
  */

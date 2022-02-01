@@ -1,33 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agbs
-  extends AnimatorListenerAdapter
+class agbs
+  implements View.OnClickListener
 {
-  public agbs(SixCombolEffectView paramSixCombolEffectView) {}
+  agbs(agbr paramagbr, agbe paramagbe, ChatMessage paramChatMessage) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
-      return;
-    }
-    SixCombolEffectView.b(this.a).start();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    if (SixCombolEffectView.a(this.a)) {}
-    do
-    {
-      return;
-      SixCombolEffectView.jdField_a_of_type_Int = 2;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 2 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+    Context localContext = agbr.a(this.jdField_a_of_type_Agbr).getContext();
+    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_Agbe.a);
+    localContext.startActivity(localIntent);
+    agbr.a(this.jdField_a_of_type_Agbr, this.jdField_a_of_type_Agbe, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

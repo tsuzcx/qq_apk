@@ -1,25 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
+import android.support.v4.util.LruCache;
 
-public class avan
-  implements Animation.AnimationListener
+class avan
+  extends LruCache<String, avao>
 {
-  public avan(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  avan(avam paramavam, int paramInt)
   {
-    ChooseInterestTagActivity.a(this.a).fullScroll(66);
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, avao paramavao)
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avan
  * JD-Core Version:    0.7.0.1
  */

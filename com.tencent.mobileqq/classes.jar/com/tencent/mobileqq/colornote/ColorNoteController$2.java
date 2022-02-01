@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.colornote;
 
-import aobw;
-import aofz;
+import aqcb;
+import aqgj;
 
 public class ColorNoteController$2
   implements Runnable
 {
-  public ColorNoteController$2(aobw paramaobw) {}
+  public ColorNoteController$2(aqcb paramaqcb) {}
   
   public void run()
   {
-    aobw.a(this.this$0).a();
+    aqcb.a(this.this$0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.ColorNoteController.2
  * JD-Core Version:    0.7.0.1
  */

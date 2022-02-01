@@ -12,48 +12,47 @@ import java.io.File;
 public class UpdatePluginVersion
   extends Step
 {
-  public static final String[] a = { "qwallet_plugin.apk", "qqdataline.apk", "qlink_plugin.apk", "qqsmartdevice.apk", "qqreaderplugin.apk", "readinjoy_plugin.apk", "comic_plugin.apk", "QQWifiPlugin.apk", "group_video_plugin.apk", "qqpim_plugin.apk", "qqindividuality_plugin.apk", "LiveRoomPlugin.apk", "qzone_live_video_plugin.apk" };
+  public static final String[] a = { "qwallet_plugin.apk", "qqdataline.apk", "qlink_plugin.apk", "qqsmartdevice.apk", "qqreaderplugin.apk", "readinjoy_plugin.apk", "comic_plugin.apk", "QQWifiPlugin.apk", "group_video_plugin.apk", "qqpim_plugin.apk", "qqindividuality_plugin.apk", "LiveRoomPlugin.apk", "qzone_live_video_plugin.apk", "qzone_vertical_video_plugin.apk" };
   
   protected boolean doStep()
   {
-    Context localContext = BaseApplicationImpl.sApplication.getApplicationContext();
-    SharedPreferences localSharedPreferences = localContext.getSharedPreferences("update_plugin_version", 0);
-    Object localObject = localSharedPreferences.getString("cur_version", "");
+    Object localObject2 = BaseApplicationImpl.sApplication.getApplicationContext();
+    SharedPreferences localSharedPreferences = ((Context)localObject2).getSharedPreferences("update_plugin_version", 0);
+    Object localObject1 = localSharedPreferences.getString("cur_version", "");
     String str1 = AppSetting.f();
-    QLog.d("UpdatePluginVersion", 1, (String)localObject + ", " + str1);
-    if (!str1.equals(localObject))
+    QLog.d("UpdatePluginVersion", 1, (String)localObject1 + ", " + str1);
+    if (!str1.equals(localObject1))
     {
-      localObject = PluginUtils.getPluginInstallDir(localContext);
-      File localFile1 = localContext.getDir("plugin_info", 0);
+      localObject1 = PluginUtils.getPluginInstallDir((Context)localObject2);
+      localObject2 = ((Context)localObject2).getDir("plugin_info", 0);
       int i = 0;
       while (i < a.length)
       {
         String str2 = a[i];
-        File localFile2 = new File((File)localObject, str2 + ".cfg");
+        File localFile = new File((File)localObject1, str2 + ".cfg");
         boolean bool;
-        if (localFile2.exists())
+        if (localFile.exists())
         {
-          bool = localFile2.delete();
+          bool = localFile.delete();
           QLog.d("UpdatePluginVersion", 1, "clear cfg" + str2 + bool);
         }
-        localFile2 = new File((File)localObject, str2);
+        localFile = new File((File)localObject1, str2);
         int j = 0;
-        while ((localFile2.exists()) && (j < 3))
+        while ((localFile.exists()) && (j < 3))
         {
-          bool = localFile2.delete();
+          bool = localFile.delete();
           QLog.d("UpdatePluginVersion", 1, "clear plugin" + str2 + bool);
           j += 1;
         }
-        localFile2 = new File(localFile1, str2 + ".cfg");
-        if (localFile2.exists())
+        localFile = new File((File)localObject2, str2 + ".cfg");
+        if (localFile.exists())
         {
-          bool = localFile2.delete();
+          bool = localFile.delete();
           QLog.d("UpdatePluginVersion", 1, "clear update cfg" + str2 + bool);
         }
         i += 1;
       }
       localSharedPreferences.edit().putString("cur_version", str1).commit();
-      localContext.getSharedPreferences("proc_reporter", 0).edit().clear().commit();
     }
     return true;
   }

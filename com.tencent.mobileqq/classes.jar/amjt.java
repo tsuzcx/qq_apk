@@ -1,36 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView;
-import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView.1.1;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.apollo.GLTextureView;
 
 public class amjt
-  implements View.OnClickListener
+  implements View.OnLayoutChangeListener
 {
-  public amjt(AIOIceBreakView paramAIOIceBreakView) {}
+  public amjt(GLTextureView paramGLTextureView) {}
   
-  public void onClick(View paramView)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    AIOIceBreakView.a(this.a).u(24);
-    paramView.postDelayed(new AIOIceBreakView.1.1(this), 500L);
-    if (abti.a(AIOIceBreakView.a(this.a).a.a) != 1044) {
-      if (AIOIceBreakView.a(this.a).a.a != 0) {
-        break label129;
-      }
-    }
-    label129:
-    for (int i = 1;; i = 2)
-    {
-      azqs.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CC", "0X800A4CC", i, 0, "", "", "", "");
-      azqs.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CD", "0X800A4CD", i, 0, "", "", "", "");
-      return;
-    }
+    this.a.surfaceChanged(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amjt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.data;
 
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="msgSeq")
 public class TroopTipsEntity
-  extends awge
+  extends Entity
 {
   public static final int SHOW_IN_AIO_BOTTOM = 1;
   public String OptActionData_a;
@@ -47,7 +47,7 @@ public class TroopTipsEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopTipsEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,33 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.qphone.base.util.QLog;
 
-public class ahlq
-  extends ahln
-  implements View.OnClickListener
+class ahlq
+  extends ahlr
 {
-  public ahlq(Context paramContext, QQAppInterface paramQQAppInterface, akln paramakln, avun paramavun)
-  {
-    super(paramContext, paramQQAppInterface, paramakln, paramavun);
-  }
+  ahlq(ahln paramahln) {}
   
-  public View a(int paramInt, View paramView)
-  {
-    View localView;
-    if (paramView != null)
-    {
-      localView = paramView;
-      if ((paramView.getTag() instanceof ahlr)) {}
-    }
-    else
-    {
-      localView = LayoutInflater.from(this.a).inflate(2131561333, null);
-    }
-    localView.setOnClickListener(this);
-    localView.setTag(new ahlr());
-    return localView;
-  }
-  
-  public void onClick(View paramView)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("NewFriendBindContactGuideBuilder", 2, "start PhoneLaunchActivity");
+      QLog.i("TribeShortVideoItemBuilder", 2, "get video download finish,vid=" + paramString1);
     }
-    Intent localIntent = new Intent(paramView.getContext(), BindNumberActivity.class);
-    localIntent.putExtra("kSrouce", 15);
-    ((Activity)paramView.getContext()).startActivityForResult(localIntent, 230);
+    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
+  }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeShortVideoItemBuilder", 2, "Download video failed,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_Ahln.a(this.jdField_a_of_type_Ahls, this.jdField_a_of_type_Long);
+  }
+  
+  public void b(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeShortVideoItemBuilder", 2, "Download video onPause,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_Ahln.a(this.jdField_a_of_type_Ahls, this.jdField_a_of_type_Long);
   }
 }
 

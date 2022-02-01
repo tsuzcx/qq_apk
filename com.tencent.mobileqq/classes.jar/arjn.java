@@ -1,17 +1,18 @@
-class arjn
-  implements arrh
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class arjn
+  implements View.OnClickListener
 {
-  arjn(arjm paramarjm) {}
+  public arjn(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    arjk.a(this.a.a);
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
-    }
+    bglp.a(this.a.getActivity(), 0, 2131559603, anni.a(2131701571), "", anni.a(2131701566), anni.a(2131701572), new arjo(this), new arjp(this)).show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void b() {}
 }
 
 

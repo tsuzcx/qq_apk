@@ -4,16 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import aviw;
+import axqg;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import mww;
+import mue;
 
 public class TopicLabelListView
   extends LinearLayout
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new aviw(this);
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new axqg(this);
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   private final String jdField_a_of_type_JavaLangString = "TopicLabelListView";
   private List<String> jdField_a_of_type_JavaUtilList;
@@ -40,7 +40,7 @@ public class TopicLabelListView
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView = new HorizontalListView(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)mww.a(paramContext, 5.0F));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)mue.a(paramContext, 5.0F));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
     addView(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, -1, -1);
   }
@@ -53,7 +53,7 @@ public class TopicLabelListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView
  * JD-Core Version:    0.7.0.1
  */

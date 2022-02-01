@@ -1,75 +1,57 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.opengl.texture.YUVTexture;
 
 public class lrh
+  extends Handler
 {
-  private static lrh a;
-  
-  public static lrh a()
+  public lrh(YUVTexture paramYUVTexture, Looper paramLooper)
   {
-    if (a != null) {
-      return a;
-    }
-    try
-    {
-      a = new lrh();
-      lrh locallrh = a;
-      return locallrh;
-    }
-    catch (Exception localException) {}
-    return null;
+    super(paramLooper);
   }
   
-  public float a()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    int i = paramMessage.what;
+    this.a.d = true;
+    switch (i)
     {
-      float f1 = Float.parseFloat(lim.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseratio", "15.0"));
-      float f2;
-      if (f1 <= 0.0D) {
-        f2 = 0.0F;
-      }
+    }
+    do
+    {
       do
       {
-        return f2;
-        f2 = f1;
-      } while (f1 < 30.0D);
-      return 30.0F;
+        do
+        {
+          do
+          {
+            return;
+          } while (YUVTexture.a(this.a) == null);
+          YUVTexture.a(this.a).c();
+          return;
+        } while (YUVTexture.a(this.a) == null);
+        YUVTexture.a(this.a).b();
+        return;
+      } while (YUVTexture.a(this.a) == null);
+      YUVTexture.a(this.a).a();
+      return;
+    } while (YUVTexture.a(this.a) == null);
+    if (YUVTexture.a(this.a) == null) {
+      YUVTexture.a(this.a, new lny('=', ';'));
     }
-    catch (Exception localException) {}
-    return 15.0F;
-  }
-  
-  public boolean a()
-  {
-    return lim.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/lowlightflag", 0) == 1;
-  }
-  
-  public boolean b()
-  {
-    boolean bool = false;
-    if (lim.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/lowlightflag", 0) == -1) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public boolean c()
-  {
-    return lim.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseflag", 0) == 1;
-  }
-  
-  public boolean d()
-  {
-    boolean bool = false;
-    if (lim.a(BaseApplicationImpl.getContext()).a("sharp/lowlight_denoise/videodenoiseflag", 0) == -1) {
-      bool = true;
-    }
-    return bool;
+    paramMessage = (String)paramMessage.obj;
+    YUVTexture.a(this.a).a(paramMessage);
+    i = YUVTexture.a(this.a).a("width");
+    int j = YUVTexture.a(this.a).a("height");
+    int k = YUVTexture.a(this.a).a("angle");
+    int m = YUVTexture.a(this.a).a("rotation", -1);
+    YUVTexture.a(this.a).a(i, j, k, m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lrh
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ class AppBrandRuntime$18$1
   public void run()
   {
     if (this.this$1.val$screenshotCallback != null) {
-      this.this$1.val$screenshotCallback.onGetShareScreenshot(this.this$1.this$0.cutAndSaveShareScreenshot(this.val$bitmap));
+      this.this$1.val$screenshotCallback.onGetShareScreenshot(this.this$1.this$0.cutAndSaveShareScreenshot(this.val$rootBitmap));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.AppBrandRuntime.18.1
  * JD-Core Version:    0.7.0.1
  */

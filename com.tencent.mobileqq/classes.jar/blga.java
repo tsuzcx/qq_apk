@@ -1,12 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.io.File;
+import java.io.FileFilter;
 
-class blga
-  implements DialogInterface.OnClickListener
+final class blga
+  implements FileFilter
 {
-  blga(blfz paramblfz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean accept(File paramFile)
+  {
+    return paramFile.getName().endsWith(".cfg");
+  }
 }
 
 

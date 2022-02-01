@@ -1,4 +1,106 @@
-public abstract interface aiip {}
+import android.content.Context;
+import android.graphics.Point;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleTouchDelegateCallbackForAIO.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+
+public class aiip
+  implements aiii, aiio
+{
+  private aihw jdField_a_of_type_Aihw;
+  private aiin jdField_a_of_type_Aiin;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  
+  public aiip(Context paramContext, BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    aiif.a().b(this);
+  }
+  
+  public int a()
+  {
+    return aheh.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10);
+  }
+  
+  public int a(float paramFloat1, float paramFloat2)
+  {
+    return 0;
+  }
+  
+  public void a() {}
+  
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Aihw = aihx.b(aihy.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
+    if (this.jdField_a_of_type_Aihw == null) {}
+    String str;
+    do
+    {
+      return;
+      str = this.jdField_a_of_type_Aihw.jdField_a_of_type_JavaLangString;
+    } while (str == null);
+    aiif.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d, this.jdField_a_of_type_AndroidContentContext).a(aihy.b(new Point((int)paramFloat1, (int)paramFloat2), str, paramInt2));
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    aiif.a().d(this.jdField_a_of_type_AndroidContentContext).a();
+    aihw localaihw = this.jdField_a_of_type_Aihw;
+    if (localaihw != null)
+    {
+      aihy.a(localaihw, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c(null);
+      ThreadManager.post(new StickerBubbleTouchDelegateCallbackForAIO.1(this, localaihw, paramInt2), 10, null, false);
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X80091A5", "0X80091A5", localaihw.jdField_a_of_type_Int, 0, Integer.toString(paramInt2), "", "", "");
+    }
+  }
+  
+  public void a(aiin paramaiin)
+  {
+    this.jdField_a_of_type_Aiin = paramaiin;
+  }
+  
+  public boolean a(float paramFloat1, float paramFloat2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton == null) {}
+    do
+    {
+      return false;
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton.getLeft() > paramFloat1) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton.getRight() < paramFloat1)) {
+        return true;
+      }
+    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton.getTop() <= paramFloat2) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton.getBottom() >= paramFloat2));
+    return true;
+  }
+  
+  public void b()
+  {
+    d();
+    if (this.jdField_a_of_type_Aiin != null) {
+      this.jdField_a_of_type_Aiin.a();
+    }
+  }
+  
+  public void c()
+  {
+    aihy.b(this, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d);
+  }
+  
+  public void d()
+  {
+    aihy.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d);
+  }
+  
+  public void e() {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

@@ -1,22 +1,11 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.Leba.35.1;
-import com.tencent.qphone.base.util.QLog;
-
-public class adgg
-  extends auuq
+public abstract class adgg
+  extends adee
 {
-  public adgg(Leba paramLeba) {}
+  protected adgh a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
-    }
-    if (Leba.a(this.a) == null) {
-      return;
-    }
-    this.a.a.post(new Leba.35.1(this));
+    this.jdField_a_of_type_Adgh = new adgh(this.jdField_a_of_type_Aded.a());
   }
 }
 

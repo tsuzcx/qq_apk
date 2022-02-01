@@ -216,6 +216,19 @@ public class DomObject
     }
   }
   
+  private void parseFromTransform(Object paramObject)
+  {
+    paramObject = ViolaUtils.getString(paramObject, null);
+    if (TextUtils.isEmpty(paramObject)) {}
+    do
+    {
+      return;
+      paramObject = AnimationBean.Style.parseTransForm(paramObject, (int)getLayoutWidth(), (int)getLayoutHeight(), 750);
+    } while (paramObject == null);
+    AnimationBean.Style.resetToDefaultIfAbsent(paramObject);
+    this.mStyles.put("fromTransformParse", paramObject);
+  }
+  
   private void parseTransform(Object paramObject)
   {
     paramObject = ViolaUtils.getString(paramObject, null);
@@ -440,6 +453,14 @@ public class DomObject
     return this.mDomChildren.indexOf(paramDomObject);
   }
   
+  public int getChildPositionFromList(DomObject paramDomObject)
+  {
+    if ((getType().equals("list")) && (("refresh".equals(getChild(0).getType())) || ("kdrefresh".equals(getChild(0).getType())))) {
+      return getChildPosition(paramDomObject) - 1;
+    }
+    return getChildPosition(paramDomObject);
+  }
+  
   public int getDomChildCount()
   {
     if (this.mDomChildren != null) {
@@ -564,6 +585,9 @@ public class DomObject
     }
     if (this.mStyles.containsKey("backgroundImage")) {
       parseBackgroundImage(this.mStyles.get("backgroundImage"));
+    }
+    if (this.mStyles.containsKey("fromTransform")) {
+      parseFromTransform(this.mStyles.get("fromTransform"));
     }
     fireOnLayoutEvent();
   }
@@ -795,233 +819,240 @@ public class DomObject
           setAlignItems(localStyle.getAlignItems());
           continue;
           if (!str.equals("alignItems")) {
-            break label1526;
+            break label1565;
           }
         }
       }
       finally {}
       int i = 0;
-      break label1528;
+      break label1567;
       if (str.equals("alignSelf"))
       {
         i = 1;
-        break label1528;
+        break label1567;
         if (str.equals("flex"))
         {
           i = 2;
-          break label1528;
+          break label1567;
           if (str.equals("flexDirection"))
           {
             i = 3;
-            break label1528;
+            break label1567;
             if (str.equals("justifyContent"))
             {
               i = 4;
-              break label1528;
+              break label1567;
               if (str.equals("flexWrap"))
               {
                 i = 5;
-                break label1528;
+                break label1567;
                 if (str.equals("minWidth"))
                 {
                   i = 6;
-                  break label1528;
+                  break label1567;
                   if (str.equals("minHeight"))
                   {
                     i = 7;
-                    break label1528;
+                    break label1567;
                     if (str.equals("maxWidth"))
                     {
                       i = 8;
-                      break label1528;
+                      break label1567;
                       if (str.equals("maxHeight"))
                       {
                         i = 9;
-                        break label1528;
+                        break label1567;
                         if (str.equals("defaultHeight"))
                         {
                           i = 10;
-                          break label1528;
+                          break label1567;
                           if (str.equals("height"))
                           {
                             i = 11;
-                            break label1528;
+                            break label1567;
                             if (str.equals("width"))
                             {
                               i = 12;
-                              break label1528;
+                              break label1567;
                               if (str.equals("defaultWidth"))
                               {
                                 i = 13;
-                                break label1528;
+                                break label1567;
                                 if (str.equals("position"))
                                 {
                                   i = 14;
-                                  break label1528;
+                                  break label1567;
                                   if (str.equals("left"))
                                   {
                                     i = 15;
-                                    break label1528;
+                                    break label1567;
                                     if (str.equals("top"))
                                     {
                                       i = 16;
-                                      break label1528;
+                                      break label1567;
                                       if (str.equals("right"))
                                       {
                                         i = 17;
-                                        break label1528;
+                                        break label1567;
                                         if (str.equals("bottom"))
                                         {
                                           i = 18;
-                                          break label1528;
+                                          break label1567;
                                           if (str.equals("margin"))
                                           {
                                             i = 19;
-                                            break label1528;
+                                            break label1567;
                                             if (str.equals("marginLeft"))
                                             {
                                               i = 20;
-                                              break label1528;
+                                              break label1567;
                                               if (str.equals("marginTop"))
                                               {
                                                 i = 21;
-                                                break label1528;
+                                                break label1567;
                                                 if (str.equals("marginRight"))
                                                 {
                                                   i = 22;
-                                                  break label1528;
+                                                  break label1567;
                                                   if (str.equals("marginBottom"))
                                                   {
                                                     i = 23;
-                                                    break label1528;
+                                                    break label1567;
                                                     if (str.equals("borderWidth"))
                                                     {
                                                       i = 24;
-                                                      break label1528;
+                                                      break label1567;
                                                       if (str.equals("borderTopWidth"))
                                                       {
                                                         i = 25;
-                                                        break label1528;
+                                                        break label1567;
                                                         if (str.equals("borderRightWidth"))
                                                         {
                                                           i = 26;
-                                                          break label1528;
+                                                          break label1567;
                                                           if (str.equals("borderBottomWidth"))
                                                           {
                                                             i = 27;
-                                                            break label1528;
+                                                            break label1567;
                                                             if (str.equals("borderLeftWidth"))
                                                             {
                                                               i = 28;
-                                                              break label1528;
+                                                              break label1567;
                                                               if (str.equals("padding"))
                                                               {
                                                                 i = 29;
-                                                                break label1528;
+                                                                break label1567;
                                                                 if (str.equals("paddingLeft"))
                                                                 {
                                                                   i = 30;
-                                                                  break label1528;
+                                                                  break label1567;
                                                                   if (str.equals("paddingTop"))
                                                                   {
                                                                     i = 31;
-                                                                    break label1528;
+                                                                    break label1567;
                                                                     if (str.equals("paddingRight"))
                                                                     {
                                                                       i = 32;
-                                                                      break label1528;
+                                                                      break label1567;
                                                                       if (str.equals("paddingBottom"))
                                                                       {
                                                                         i = 33;
-                                                                        break label1528;
+                                                                        break label1567;
                                                                         if (str.equals("transform"))
                                                                         {
                                                                           i = 34;
-                                                                          break label1528;
+                                                                          break label1567;
                                                                           if (str.equals("transformOrigin"))
                                                                           {
                                                                             i = 35;
-                                                                            break label1528;
+                                                                            break label1567;
                                                                             if (str.equals("backgroundImage"))
                                                                             {
                                                                               i = 36;
-                                                                              break label1528;
-                                                                              setAlignSelf(localStyle.getAlignSelf());
-                                                                              continue;
-                                                                              setFlex(localStyle.getFlex());
-                                                                              continue;
-                                                                              setFlexDirection(localStyle.getFlexDirection());
-                                                                              continue;
-                                                                              setJustifyContent(localStyle.getJustifyContent());
-                                                                              continue;
-                                                                              setWrap(localStyle.getCSSWrap());
-                                                                              continue;
-                                                                              setMinWidth(localStyle.getMinWidth(j));
-                                                                              continue;
-                                                                              setMinHeight(localStyle.getMinHeight(j));
-                                                                              continue;
-                                                                              setMaxWidth(localStyle.getMaxWidth(j));
-                                                                              continue;
-                                                                              setMaxHeight(localStyle.getMaxHeight(j));
-                                                                              continue;
-                                                                              if (localStyle.containsKey("height")) {}
-                                                                              for (float f = localStyle.getHeight(j);; f = localStyle.getDefaultHeight(j))
+                                                                              break label1567;
+                                                                              if (str.equals("fromTransform"))
                                                                               {
-                                                                                setStyleHeight(f);
-                                                                                break;
+                                                                                i = 37;
+                                                                                break label1567;
+                                                                                setAlignSelf(localStyle.getAlignSelf());
+                                                                                continue;
+                                                                                setFlex(localStyle.getFlex());
+                                                                                continue;
+                                                                                setFlexDirection(localStyle.getFlexDirection());
+                                                                                continue;
+                                                                                setJustifyContent(localStyle.getJustifyContent());
+                                                                                continue;
+                                                                                setWrap(localStyle.getCSSWrap());
+                                                                                continue;
+                                                                                setMinWidth(localStyle.getMinWidth(j));
+                                                                                continue;
+                                                                                setMinHeight(localStyle.getMinHeight(j));
+                                                                                continue;
+                                                                                setMaxWidth(localStyle.getMaxWidth(j));
+                                                                                continue;
+                                                                                setMaxHeight(localStyle.getMaxHeight(j));
+                                                                                continue;
+                                                                                if (localStyle.containsKey("height")) {}
+                                                                                for (float f = localStyle.getHeight(j);; f = localStyle.getDefaultHeight(j))
+                                                                                {
+                                                                                  setStyleHeight(f);
+                                                                                  break;
+                                                                                }
+                                                                                if (localStyle.containsKey("width")) {}
+                                                                                for (f = localStyle.getWidth(j);; f = localStyle.getDefaultWidth(j))
+                                                                                {
+                                                                                  setStyleWidth(f);
+                                                                                  break;
+                                                                                }
+                                                                                setPositionType(localStyle.getPosition());
+                                                                                continue;
+                                                                                setPositionLeft(localStyle.getLeft(j));
+                                                                                continue;
+                                                                                setPositionTop(localStyle.getTop(j));
+                                                                                continue;
+                                                                                setPositionRight(localStyle.getRight(j));
+                                                                                continue;
+                                                                                setPositionBottom(localStyle.getBottom(j));
+                                                                                continue;
+                                                                                setMargin(8, localStyle.getMargin(j));
+                                                                                continue;
+                                                                                setMargin(0, localStyle.getMarginLeft(j));
+                                                                                continue;
+                                                                                setMargin(1, localStyle.getMarginTop(j));
+                                                                                continue;
+                                                                                setMargin(2, localStyle.getMarginRight(j));
+                                                                                continue;
+                                                                                setMargin(3, localStyle.getMarginBottom(j));
+                                                                                continue;
+                                                                                setBorder(8, localStyle.getBorderWidth(j));
+                                                                                continue;
+                                                                                setBorder(1, localStyle.getBorderTopWidth(j));
+                                                                                continue;
+                                                                                setBorder(2, localStyle.getBorderRightWidth(j));
+                                                                                continue;
+                                                                                setBorder(3, localStyle.getBorderBottomWidth(j));
+                                                                                continue;
+                                                                                setBorder(0, localStyle.getBorderLeftWidth(j));
+                                                                                continue;
+                                                                                setPadding(8, localStyle.getPadding(j));
+                                                                                continue;
+                                                                                setPadding(0, localStyle.getPaddingLeft(j));
+                                                                                continue;
+                                                                                setPadding(1, localStyle.getPaddingTop(j));
+                                                                                continue;
+                                                                                setPadding(2, localStyle.getPaddingRight(j));
+                                                                                continue;
+                                                                                setPadding(3, localStyle.getPaddingBottom(j));
+                                                                                continue;
+                                                                                parseTransform(localEntry.getValue());
+                                                                                continue;
+                                                                                parseTransformOrigin(localEntry.getValue());
+                                                                                continue;
+                                                                                parseBackgroundImage(localEntry.getValue());
+                                                                                continue;
+                                                                                parseFromTransform(localEntry.getValue());
+                                                                                continue;
                                                                               }
-                                                                              if (localStyle.containsKey("width")) {}
-                                                                              for (f = localStyle.getWidth(j);; f = localStyle.getDefaultWidth(j))
-                                                                              {
-                                                                                setStyleWidth(f);
-                                                                                break;
-                                                                              }
-                                                                              setPositionType(localStyle.getPosition());
-                                                                              continue;
-                                                                              setPositionLeft(localStyle.getLeft(j));
-                                                                              continue;
-                                                                              setPositionTop(localStyle.getTop(j));
-                                                                              continue;
-                                                                              setPositionRight(localStyle.getRight(j));
-                                                                              continue;
-                                                                              setPositionBottom(localStyle.getBottom(j));
-                                                                              continue;
-                                                                              setMargin(8, localStyle.getMargin(j));
-                                                                              continue;
-                                                                              setMargin(0, localStyle.getMarginLeft(j));
-                                                                              continue;
-                                                                              setMargin(1, localStyle.getMarginTop(j));
-                                                                              continue;
-                                                                              setMargin(2, localStyle.getMarginRight(j));
-                                                                              continue;
-                                                                              setMargin(3, localStyle.getMarginBottom(j));
-                                                                              continue;
-                                                                              setBorder(8, localStyle.getBorderWidth(j));
-                                                                              continue;
-                                                                              setBorder(1, localStyle.getBorderTopWidth(j));
-                                                                              continue;
-                                                                              setBorder(2, localStyle.getBorderRightWidth(j));
-                                                                              continue;
-                                                                              setBorder(3, localStyle.getBorderBottomWidth(j));
-                                                                              continue;
-                                                                              setBorder(0, localStyle.getBorderLeftWidth(j));
-                                                                              continue;
-                                                                              setPadding(8, localStyle.getPadding(j));
-                                                                              continue;
-                                                                              setPadding(0, localStyle.getPaddingLeft(j));
-                                                                              continue;
-                                                                              setPadding(1, localStyle.getPaddingTop(j));
-                                                                              continue;
-                                                                              setPadding(2, localStyle.getPaddingRight(j));
-                                                                              continue;
-                                                                              setPadding(3, localStyle.getPaddingBottom(j));
-                                                                              continue;
-                                                                              parseTransform(localEntry.getValue());
-                                                                              continue;
-                                                                              parseTransformOrigin(localEntry.getValue());
-                                                                              continue;
-                                                                              parseBackgroundImage(localEntry.getValue());
-                                                                              continue;
                                                                             }
                                                                           }
                                                                         }
@@ -1058,9 +1089,9 @@ public class DomObject
           }
         }
       }
-      label1526:
+      label1565:
       i = -1;
-      label1528:
+      label1567:
       switch (i)
       {
       }
@@ -1074,7 +1105,7 @@ public class DomObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.DomObject
  * JD-Core Version:    0.7.0.1
  */

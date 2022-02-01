@@ -1,16 +1,23 @@
-import android.graphics.Bitmap;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
-public abstract interface xgd
+class xgd
+  implements ViewPager.OnPageChangeListener
 {
-  public abstract void a(int paramInt);
+  xgd(xgb paramxgb) {}
   
-  public abstract void a(Bitmap paramBitmap);
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    this.a.a.setSelectedTab(paramInt, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xgd
  * JD-Core Version:    0.7.0.1
  */

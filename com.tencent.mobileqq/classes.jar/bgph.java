@@ -1,39 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bgph
+class bgph
+  implements View.OnClickListener
 {
-  public static void a(String paramString, JSONObject paramJSONObject, int paramInt)
+  bgph(bgpa parambgpa, DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    case -4: 
-    default: 
-    case -5: 
-      try
-      {
-        paramJSONObject.put("errMsg", "unknown reason");
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        QMLog.e("MiniappHttpUtil", "fillErrMsg", paramString);
-        return;
-      }
-      if (TextUtils.isEmpty(paramString)) {}
-      for (paramString = "abort";; paramString = paramString + ":fail abort")
-      {
-        paramJSONObject.put("errMsg", paramString);
-        return;
-      }
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgpa, 1);
     }
-    paramJSONObject.put("errMsg", "request protocol error");
+    try
+    {
+      if (this.jdField_a_of_type_Bgpa.isShowing()) {
+        this.jdField_a_of_type_Bgpa.dismiss();
+      }
+      label38:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label38;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgph
  * JD-Core Version:    0.7.0.1
  */

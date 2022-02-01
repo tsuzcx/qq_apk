@@ -1,45 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.search.activity.ContactSearchActivity;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-public class aynf
-  implements aynt
+class aynf
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  public List<aynu> a;
+  aynf(aymu paramaymu) {}
   
-  public aynf(List<aynu> paramList, String paramString, int paramInt)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    bglp.a(aymu.a(this.a), 2131697627, 2131697628).setOnDismissListener(new ayng(this));
   }
   
-  public int a()
+  @QQPermissionGrant(1)
+  public void grant()
   {
-    return 3;
-  }
-  
-  public String a()
-  {
-    return alud.a(2131705768);
-  }
-  
-  public List<aynu> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    ContactSearchActivity.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 197437, true);
-    ayvm.a(this.jdField_a_of_type_JavaLangString, 20, 0, paramView);
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    ((aypj)aymu.a(this.a).getManager(369)).a(9);
+    aymu.a(this.a).show();
   }
 }
 

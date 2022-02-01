@@ -1,26 +1,25 @@
 import android.view.View;
-import android.widget.SimpleAdapter.ViewBinder;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function3;
 
-public class qqf
-  implements SimpleAdapter.ViewBinder
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class qqf
+  implements View.OnClickListener
 {
-  public qqf(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  qqf(qqa paramqqa) {}
   
-  public boolean setViewValue(View paramView, Object paramObject, String paramString)
+  public final void onClick(View paramView)
   {
-    if (((paramView instanceof TextView)) && ((paramObject instanceof CharSequence)))
-    {
-      ((TextView)paramView).setText((CharSequence)paramObject);
-      return true;
-    }
-    return false;
+    qqa.a(this.a).a().invoke(Boolean.valueOf(true), Boolean.valueOf(qqa.a(this.a)), Integer.valueOf(2));
+    this.a.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qqf
  * JD-Core Version:    0.7.0.1
  */

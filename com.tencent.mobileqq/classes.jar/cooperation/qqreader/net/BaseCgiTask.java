@@ -5,11 +5,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhsp;
-import bjan;
-import bjap;
-import bjbl;
-import bjbq;
+import bkfy;
+import bloy;
+import blpa;
+import blpu;
+import blpz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -32,12 +32,12 @@ public abstract class BaseCgiTask
   public static String b = "AND";
   public static String c = "QQPLUGIN_B";
   protected Context a;
-  private bjan jdField_a_of_type_Bjan;
-  private WeakReference<bjan> jdField_a_of_type_JavaLangRefWeakReference;
+  private bloy jdField_a_of_type_Bloy;
+  private WeakReference<bloy> jdField_a_of_type_JavaLangRefWeakReference;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "8.3.5.0001";
+    jdField_a_of_type_JavaLangString = "8.4.1.0001";
   }
   
   public BaseCgiTask()
@@ -45,13 +45,13 @@ public abstract class BaseCgiTask
     this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
   }
   
-  private bjan a()
+  private bloy a()
   {
-    if (this.jdField_a_of_type_Bjan != null) {
-      return this.jdField_a_of_type_Bjan;
+    if (this.jdField_a_of_type_Bloy != null) {
+      return this.jdField_a_of_type_Bloy;
     }
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (bjan)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      return (bloy)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
     return null;
   }
@@ -69,7 +69,7 @@ public abstract class BaseCgiTask
       for (;;)
       {
         Object localObject2;
-        bjbl.a("BaseCgiTask", "getRequestContent", localIOException);
+        blpu.a("BaseCgiTask", "getRequestContent", localIOException);
         continue;
         localObject1 = a(new String((byte[])localObject1), 100);
       }
@@ -91,33 +91,33 @@ public abstract class BaseCgiTask
     return paramString.substring(0, paramInt);
   }
   
-  private void a(bjap parambjap)
+  private void a(blpa paramblpa)
   {
-    bjan localbjan = a();
-    if (localbjan != null)
+    bloy localbloy = a();
+    if (localbloy != null)
     {
-      localbjan.b(parambjap);
-      ThreadManager.getUIHandler().post(new BaseCgiTask.1(this, localbjan, parambjap));
+      localbloy.b(paramblpa);
+      ThreadManager.getUIHandler().post(new BaseCgiTask.1(this, localbloy, paramblpa));
       return;
     }
-    bjbl.c("BaseCgiTask", getClass().getName() + " request: " + a() + " onConnectionReceiveData callback null");
+    blpu.c("BaseCgiTask", getClass().getName() + " request: " + a() + " onConnectionReceiveData callback null");
   }
   
   private void a(BaseCgiTask paramBaseCgiTask, Exception paramException)
   {
-    bjan localbjan = a();
-    if (localbjan != null)
+    bloy localbloy = a();
+    if (localbloy != null)
     {
-      bjbl.a("BaseCgiTask", a("failed task:" + getClass().getName()), paramException);
-      ThreadManager.getUIHandler().post(new BaseCgiTask.2(this, localbjan, paramBaseCgiTask, paramException));
+      blpu.a("BaseCgiTask", a("failed task:" + getClass().getName()), paramException);
+      ThreadManager.getUIHandler().post(new BaseCgiTask.2(this, localbloy, paramBaseCgiTask, paramException));
       return;
     }
-    bjbl.c("BaseCgiTask", getClass().getName() + "onConnectionError callback null");
+    blpu.c("BaseCgiTask", getClass().getName() + "onConnectionError callback null");
   }
   
   public static String b()
   {
-    String str2 = bhsp.a("674ef4");
+    String str2 = bkfy.a("674ef4");
     String str1;
     if (str2 != null)
     {
@@ -163,7 +163,7 @@ public abstract class BaseCgiTask
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       localObject2 = "";
-      bjbl.a("BaseCgiTask", "skey is null");
+      blpu.a("BaseCgiTask", "skey is null");
     }
     return localObject2;
   }
@@ -207,14 +207,14 @@ public abstract class BaseCgiTask
     ThreadManagerV2.excute(this, 128, null, true);
   }
   
-  public void a(bjan parambjan, boolean paramBoolean)
+  public void a(bloy parambloy, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Bjan = parambjan;
+      this.jdField_a_of_type_Bloy = parambloy;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambjan);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambloy);
   }
   
   protected byte[] a()
@@ -225,7 +225,7 @@ public abstract class BaseCgiTask
   protected HashMap<String, String> b()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qq_version", "8.3.5");
+    localHashMap.put("qq_version", "8.4.1");
     localHashMap.put("c_platform", "mqqandroid");
     localHashMap.put("qqnum", d());
     localHashMap.put("client_version", jdField_a_of_type_JavaLangString);
@@ -236,10 +236,10 @@ public abstract class BaseCgiTask
     localHashMap.put("p_skey", f());
     localHashMap.put("imei", b());
     localHashMap.put("ua", c());
-    localHashMap.put("Referer", "http://readercentera.qq.com");
+    localHashMap.put("Referer", "https://readercentera.qq.com");
     localHashMap.put("cookie", g());
     localHashMap.put("identify", "skey");
-    localHashMap.put("resolution", bjbq.a() + "*" + bjbq.b());
+    localHashMap.put("resolution", blpz.a() + "*" + blpz.b());
     localHashMap.put("timi", d());
     return localHashMap;
   }
@@ -252,8 +252,8 @@ public abstract class BaseCgiTask
       for (Object localObject = OkHttpHelper.HttpMethodType.POST;; localObject = OkHttpHelper.HttpMethodType.GET)
       {
         localObject = OkHttpHelper.a(a(), (OkHttpHelper.HttpMethodType)localObject, a(), a(), a());
-        a(new bjap(this, (String)localObject));
-        bjbl.c("BaseCgiTask", a((String)localObject));
+        a(new blpa(this, (String)localObject));
+        blpu.c("BaseCgiTask", a((String)localObject));
         return;
       }
       return;
@@ -276,7 +276,7 @@ public abstract class BaseCgiTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.net.BaseCgiTask
  * JD-Core Version:    0.7.0.1
  */

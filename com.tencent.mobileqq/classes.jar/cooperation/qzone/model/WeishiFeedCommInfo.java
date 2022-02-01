@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjlk;
+import blzt;
 
 public class WeishiFeedCommInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiFeedCommInfo> CREATOR = new bjlk();
+  public static final Parcelable.Creator<WeishiFeedCommInfo> CREATOR = new blzt();
   public int appid;
   public String cellId;
   public String curlikekey;
@@ -93,7 +93,7 @@ public class WeishiFeedCommInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.WeishiFeedCommInfo
  * JD-Core Version:    0.7.0.1
  */

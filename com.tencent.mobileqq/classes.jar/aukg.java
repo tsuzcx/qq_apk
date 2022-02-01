@@ -1,24 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
 
 public class aukg
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aukg(MultiAIOFragment paramMultiAIOFragment) {}
+  public aukg(ForwardSendHongBaoOption paramForwardSendHongBaoOption, bgpa parambgpa) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131379081);
-    auli.a += 1;
-    paramView.setText(alud.a(2131707384) + auli.a);
-    MultiAIOFragment.c(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.c();
+    this.jdField_a_of_type_Bgpa.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aukg
  * JD-Core Version:    0.7.0.1
  */

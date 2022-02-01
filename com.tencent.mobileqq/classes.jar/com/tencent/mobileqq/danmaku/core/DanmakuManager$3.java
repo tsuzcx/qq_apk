@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import apbe;
+import areb;
 
 class DanmakuManager$3
   implements Runnable
@@ -12,7 +12,7 @@ class DanmakuManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.DanmakuManager.3
  * JD-Core Version:    0.7.0.1
  */

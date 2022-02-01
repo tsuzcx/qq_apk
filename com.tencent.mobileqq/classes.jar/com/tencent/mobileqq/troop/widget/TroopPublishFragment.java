@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.widget;
 
-import asia;
+import auop;
 import com.tencent.mobileqq.fragment.BaseFragment;
 
 public class TroopPublishFragment
   extends BaseFragment
-  implements asia
+  implements auop
 {
   public String a()
   {
@@ -16,7 +16,7 @@ public class TroopPublishFragment
   
   public void a(String paramString) {}
   
-  public void aQ_() {}
+  public void aO_() {}
   
   public String b()
   {
@@ -29,7 +29,7 @@ public class TroopPublishFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopPublishFragment
  * JD-Core Version:    0.7.0.1
  */

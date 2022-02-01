@@ -1,72 +1,155 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.AuthDevVerifyCodeActivity2;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class athu
-  extends WebViewPlugin
+  extends atht
 {
-  public athu()
-  {
-    this.mPluginNameSpace = "login";
-  }
+  private awwd jdField_a_of_type_Awwd;
+  private awws jdField_a_of_type_Awws;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageForReplyText jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText;
+  private String jdField_a_of_type_JavaLangString;
+  HashMap<String, ArrayList<MessageRecord>> jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<String, ArrayList<MessageRecord>> b;
   
-  private Activity a()
+  public athu(QQAppInterface paramQQAppInterface, awws paramawws, HashMap<String, ArrayList<MessageRecord>> paramHashMap, awwd paramawwd)
   {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity instanceof BasePluginActivity); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
-    return localActivity;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (("login".equals(paramString2)) && ("openSmsPage".equals(paramString3))) {}
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Awws = paramawws;
+    this.jdField_a_of_type_Awwd = paramawwd;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
     {
-      try
+      paramQQAppInterface = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      do
       {
-        addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString1 = paramJsBridgeListener.optString("countryCode");
-        paramString2 = paramJsBridgeListener.optString("uin");
-        paramString3 = paramJsBridgeListener.optString("phone");
-        int j = Integer.parseInt(paramJsBridgeListener.optString("verifySeq"));
-        if (paramJsBridgeListener.optInt("isFromOpenSdk", 0) == 1)
-        {
-          i = 1;
-          if (i != 0)
-          {
-            paramJsBridgeListener = new Intent(a(), AuthDevVerifyCodeActivity2.class);
-            paramJsBridgeListener.putExtra("phone_num", paramString3);
-            paramJsBridgeListener.putExtra("country_code", paramString1);
-            paramJsBridgeListener.putExtra("mobile_type", 0);
-            paramJsBridgeListener.putExtra("from_login", true);
-            paramJsBridgeListener.putExtra("uin", paramString2);
-            paramJsBridgeListener.putExtra("seq", j);
-            startActivityForResult(paramJsBridgeListener, (byte)12);
-            azqs.a(null, "dc00898", "", "", "0X800ADE1", "0X800ADE1", 0, 0, "", "", "", "");
-            return true;
-          }
-          paramJsBridgeListener = new Intent(a(), AuthDevVerifyCodeActivity.class);
-          continue;
-          return false;
+        if (!paramQQAppInterface.hasNext()) {
+          break;
         }
-      }
-      catch (Exception paramJsBridgeListener)
-      {
-        QLog.e("LoginPlugin", 1, new Object[] { "deal login jsbridge error : ", paramJsBridgeListener.getMessage() });
-      }
-      int i = 0;
+        paramawws = (String)paramQQAppInterface.next();
+        paramHashMap = ((ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramawws)).iterator();
+        while (paramHashMap.hasNext())
+        {
+          paramawwd = (MessageRecord)paramHashMap.next();
+          if ((paramawwd instanceof MessageForReplyText))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText = ((MessageForReplyText)paramawwd);
+            this.jdField_a_of_type_JavaLangString = paramawws;
+          }
+        }
+      } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText == null);
     }
   }
   
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  public int a()
   {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (this.jdField_a_of_type_Awws == null) {}
+    while (this.jdField_a_of_type_Awws.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      return -1;
+    }
+    return this.jdField_a_of_type_Awws.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Awws == null) {
+      return "";
+    }
+    if (this.jdField_a_of_type_Awws.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing == null) {
+      return "";
+    }
+    return String.valueOf(this.jdField_a_of_type_Awws.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
+  }
+  
+  public HashMap<String, ArrayList<MessageRecord>> a()
+  {
+    if (this.b == null)
+    {
+      this.b = new HashMap();
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage() != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      {
+        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage();
+        Object localObject2;
+        if ((localObject1 instanceof MessageForFile))
+        {
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject1).uniseq, ((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop);
+          if ((localObject2 != null) && (((FileManagerEntity)localObject2).getCloudType() == 0))
+          {
+            QLog.i("ReplyMsgForwardRequest<QFile>", 1, "getForwardMessageList. init UploadSourceMsgList, find online file.");
+            localObject2 = anni.a(2131712173) + ((MessageRecord)localObject1).getExtInfoFromExtStr("_m_ForwardFileName");
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a((MessageRecord)localObject1, (String)localObject2, true);
+            this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord((MessageRecord)localObject2);
+          }
+        }
+        if (atvo.a((MessageRecord)localObject1))
+        {
+          int i = a();
+          if ((i != 0) && (i != 3000) && (i != 1))
+          {
+            QLog.i("ReplyMsgForwardRequest<QFile>", 1, "getForwardMessageList. init UploadSourceMsgList, find unsupport chatType file.");
+            localObject2 = anni.a(2131712170) + ((MessageRecord)localObject1).getExtInfoFromExtStr("_m_ForwardFileName");
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a((MessageRecord)localObject1, (String)localObject2, true);
+            this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord((MessageRecord)localObject1);
+          }
+        }
+        localObject1 = new ArrayList(1);
+        ((ArrayList)localObject1).add(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage());
+        this.b.put(this.jdField_a_of_type_JavaLangString, localObject1);
+      }
+    }
+    return this.b;
+  }
+  
+  public void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2)
+  {
+    a(this.b, this.jdField_a_of_type_JavaUtilHashMap);
+    if (paramInt == 1)
+    {
+      paramList1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage();
+      paramList2 = anni.a(2131712172) + paramList1.getExtInfoFromExtStr("_m_ForwardFileName");
+      paramList1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramList1, paramList2, false);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord(paramList1);
+      this.jdField_a_of_type_Awwd.a(1, 2, this.jdField_a_of_type_Awws);
+      return;
+    }
+    paramList2 = new ArrayList();
+    if ((paramList1 != null) && (paramList1.size() > 0)) {
+      paramList2.addAll(paramList1);
+    }
+    this.jdField_a_of_type_Awwd.a(0, 2, this.jdField_a_of_type_Awws);
+  }
+  
+  public void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt)
+  {
+    paramString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFaildReason");
+    paramList = anni.a(2131712171) + paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramMessageRecord, paramList, false);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord(paramMessageRecord);
+    QLog.i("ReplyMsgForwardRequest<QFile>", 1, "replaceDropForwardMsg hint[ + " + paramList + "reason[" + paramString + "]");
+  }
+  
+  public String b()
+  {
+    if (this.jdField_a_of_type_Awws == null) {
+      return "";
+    }
+    if (this.jdField_a_of_type_Awws.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      return "";
+    }
+    return String.valueOf(this.jdField_a_of_type_Awws.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
   }
 }
 

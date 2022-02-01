@@ -1,18 +1,16 @@
-import android.view.View;
+import java.util.ArrayList;
 
-class rhb
-  implements rqe
+public class rhb
 {
-  rhb(rha paramrha) {}
-  
-  public void a(View paramView)
-  {
-    paramView.setTag(new rbq(paramView, 6));
-  }
+  public long a;
+  public String a;
+  public ArrayList<rho> a = new ArrayList();
+  public long b;
+  public long c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rhb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class nwg
-  extends Handler
+  implements bhpd
 {
-  private WeakReference<nwc> a;
+  public nwg(CustomWebView paramCustomWebView, nwh paramnwh) {}
   
-  public nwg(nwc paramnwc)
+  public void onSetCookiesFinished(String paramString, Bundle paramBundle, long paramLong)
   {
-    this.a = new WeakReference(paramnwc);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    nwc localnwc = (nwc)this.a.get();
-    if (localnwc == null) {}
-    do
+    switch (this.jdField_a_of_type_Nwh.a)
     {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 1: 
-          nwc.a(localnwc);
-          return;
-        }
-      } while (nwc.a(localnwc) == null);
-      nwc.a(localnwc).a(nwc.a(localnwc));
+    default: 
       return;
-    } while (nwc.a(localnwc) == null);
-    nwc.a(localnwc).b();
+    case 1: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
+      return;
+    case 2: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(paramString);
+      return;
+    case 3: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_Nwh.c, this.jdField_a_of_type_Nwh.d);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_Nwh.b, this.jdField_a_of_type_Nwh.c, this.jdField_a_of_type_Nwh.d, this.jdField_a_of_type_Nwh.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nwg
  * JD-Core Version:    0.7.0.1
  */

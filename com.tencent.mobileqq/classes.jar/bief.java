@@ -1,62 +1,26 @@
-import android.graphics.Canvas;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
 public class bief
-  extends biee
+  implements Animator.AnimatorListener
 {
-  private float a(RecyclerView paramRecyclerView, View paramView)
+  public bief(FloatingScreenContainer paramFloatingScreenContainer) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    float f1 = 0.0F;
-    if (i < j)
-    {
-      View localView = paramRecyclerView.getChildAt(i);
-      float f2;
-      if (localView == paramView) {
-        f2 = f1;
-      }
-      for (;;)
-      {
-        i += 1;
-        f1 = f2;
-        break;
-        float f3 = ViewCompat.getElevation(localView);
-        f2 = f1;
-        if (f3 > f1) {
-          f2 = f3;
-        }
-      }
-    }
-    return f1;
+    paramAnimator.removeAllListeners();
   }
   
-  public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (paramView.getTag(2131368578) == null))
-    {
-      float f = ViewCompat.getElevation(paramView);
-      ViewCompat.setElevation(paramView, 1.0F + a(paramRecyclerView, paramView));
-      paramView.setTag(2131368578, Float.valueOf(f));
-    }
-    super.a(paramCanvas, paramRecyclerView, paramView, paramFloat1, paramFloat2, paramInt, paramBoolean);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(View paramView)
-  {
-    Object localObject = paramView.getTag(2131368578);
-    if ((localObject != null) && ((localObject instanceof Float))) {
-      ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
-    }
-    paramView.setTag(2131368578, null);
-    super.a(paramView);
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bief
  * JD-Core Version:    0.7.0.1
  */

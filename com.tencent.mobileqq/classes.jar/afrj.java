@@ -1,17 +1,21 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-class afrj
-  extends afuf
+public class afrj
+  implements bgtg<Integer>
 {
-  afrj(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afrj(VisitorsActivity paramVisitorsActivity) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(bgta<Integer> parambgta, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    return new afwh(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.a.c.setText(paramInteger + "");
+    if (paramInteger.intValue() > 9999)
+    {
+      this.a.c.setTextSize(36.0F);
+      return;
+    }
+    this.a.c.setTextSize(44.0F);
   }
 }
 

@@ -1,11 +1,10 @@
-public class amjp
+public abstract interface amjp
 {
-  public int a;
-  public String a;
+  public abstract void a(boolean paramBoolean, amjo paramamjo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amjp
  * JD-Core Version:    0.7.0.1
  */

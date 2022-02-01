@@ -1,22 +1,11 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.ad.tangram.version.AdVersionAdapter;
 
-public final class acjz
-  implements DialogInterface.OnClickListener
+public class acjz
+  implements AdVersionAdapter
 {
-  public acjz(aclo paramaclo, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, acln paramacln) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String getAppVersion()
   {
-    this.jdField_a_of_type_Aclo.d = false;
-    this.jdField_a_of_type_Aclo.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acln, this.jdField_a_of_type_Aclo);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    return acrb.a();
   }
 }
 

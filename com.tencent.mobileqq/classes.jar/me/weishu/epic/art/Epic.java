@@ -1,9 +1,9 @@
 package me.weishu.epic.art;
 
 import android.os.Build.VERSION;
-import com.qq.android.dexposed.utility.Debug;
-import com.qq.android.dexposed.utility.Logger;
-import com.qq.android.dexposed.utility.Runtime;
+import com.taobao.android.dexposed.utility.Debug;
+import com.taobao.android.dexposed.utility.Logger;
+import com.taobao.android.dexposed.utility.Runtime;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -12,7 +12,7 @@ import java.nio.ByteOrder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import me.weishu.epic.art.arch.Arm64_2;
+import me.weishu.epic.art.arch.Arm64;
 import me.weishu.epic.art.arch.ShellCode;
 import me.weishu.epic.art.arch.Thumb2;
 import me.weishu.epic.art.method.ArtMethod;
@@ -28,21 +28,21 @@ public final class Epic
   static
   {
     int i = Build.VERSION.SDK_INT;
+    boolean bool = true;
     if (Runtime.is64Bit()) {
-      switch (i)
-      {
-      }
+      ShellCode = new Arm64();
     }
     while (ShellCode == null)
     {
-      throw new RuntimeException("Do not support this ARCH now!! API LEVEL:" + i);
-      ShellCode = new Arm64_2();
-      continue;
-      ShellCode = new Arm64_2();
-      continue;
-      if (Runtime.isThumb2()) {
+      throw new RuntimeException("Do not support this ARCH now!! API LEVEL:" + i + " thumb2 ? : " + bool);
+      if (Runtime.isThumb2())
+      {
         ShellCode = new Thumb2();
-      } else {
+      }
+      else
+      {
+        bool = false;
+        ShellCode = new Thumb2();
         Logger.w("Epic", "ARM32, not support now.");
       }
     }
@@ -158,7 +158,7 @@ public final class Epic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.weishu.epic.art.Epic
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.viola.core.ViolaInstance;
-import java.util.List;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class sny
-  implements rjw
+class sny
+  implements PopupWindow.OnDismissListener
 {
-  public sny(BridgeModule paramBridgeModule, List paramList) {}
+  sny(snh paramsnh) {}
   
-  public List<rjx> a(int paramInt, boolean paramBoolean)
+  public void onDismiss()
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return bdin.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getActivity());
+    snh.a(this.a).a(1.0F);
+    if (this.a.b)
+    {
+      this.a.a.c();
+      this.a.b = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sny
  * JD-Core Version:    0.7.0.1
  */

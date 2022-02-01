@@ -1,12 +1,13 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11;
+import cooperation.qwallet.plugin.QWalletHelper;
 
 public class akxc
-  implements AVCallback
 {
-  public akxc(CmGameAvHandler.11 param11) {}
-  
-  public void onComplete(int paramInt, String paramString) {}
+  public static final String a = ;
+  public static final String b = a + ".tmp/";
+  public static final String c = QWalletHelper.getQWalletInternalPath();
+  public static final String d = c + ".tmp/";
+  public static final String e = d + "topay_recommends";
+  public static final String f = d + "group_available_list_";
 }
 
 

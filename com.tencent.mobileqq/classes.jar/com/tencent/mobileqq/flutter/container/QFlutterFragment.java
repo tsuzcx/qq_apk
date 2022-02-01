@@ -1,25 +1,26 @@
 package com.tencent.mobileqq.flutter.container;
 
 import android.app.Activity;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LifecycleRegistry;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import arxl;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Lifecycle.Event;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LifecycleRegistry;
+import auev;
 import com.idlefish.flutterboost.FlutterBoost;
 import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
 import com.idlefish.flutterboost.containers.FlutterActivityAndFragmentDelegate;
 import com.idlefish.flutterboost.containers.FlutterActivityAndFragmentDelegate.Host;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import io.flutter.embedding.android.FlutterEngineConfigurator;
 import io.flutter.embedding.android.FlutterView.RenderMode;
 import io.flutter.embedding.android.FlutterView.TransparencyMode;
@@ -34,20 +35,22 @@ public class QFlutterFragment
   implements LifecycleOwner, FlutterActivityAndFragmentDelegate.Host
 {
   @NonNull
-  private LifecycleRegistry jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry;
+  private LifecycleRegistry jdField_a_of_type_AndroidxLifecycleLifecycleRegistry;
   private FlutterActivityAndFragmentDelegate jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate;
   private SplashScreen jdField_a_of_type_IoFlutterEmbeddingAndroidSplashScreen;
   
   public QFlutterFragment()
   {
     setArguments(new Bundle());
-    this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
+    this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = new LifecycleRegistry(this);
   }
   
   public void a(SplashScreen paramSplashScreen)
   {
     this.jdField_a_of_type_IoFlutterEmbeddingAndroidSplashScreen = paramSplashScreen;
   }
+  
+  public void cleanUpFlutterEngine(@NonNull FlutterEngine paramFlutterEngine) {}
   
   public void configureFlutterEngine(@NonNull FlutterEngine paramFlutterEngine)
   {
@@ -88,7 +91,7 @@ public class QFlutterFragment
   @NonNull
   public Lifecycle getLifecycle()
   {
-    return this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry;
+    return this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry;
   }
   
   @NonNull
@@ -119,13 +122,15 @@ public class QFlutterFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+    this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
   }
   
   @Nullable
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    return this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    paramLayoutInflater = this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroyView()
@@ -142,6 +147,17 @@ public class QFlutterFragment
     this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate = null;
   }
   
+  public void onHiddenChanged(boolean paramBoolean)
+  {
+    super.onHiddenChanged(paramBoolean);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate.onPause();
+      return;
+    }
+    this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate.onResume();
+  }
+  
   public void onLowMemory()
   {
     super.onLowMemory();
@@ -151,28 +167,36 @@ public class QFlutterFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
-    this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate.onPause();
+    this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
+    if (!isHidden()) {
+      this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate.onPause();
+    }
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
-    this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate.onResume();
+    this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+    if (!isHidden()) {
+      this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate.onResume();
+    }
   }
   
   public void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
-    this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate.onStart();
+    this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
+    if (!isHidden()) {
+      this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate.onStart();
+    }
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate.onStop();
+    if (!isHidden()) {
+      this.jdField_a_of_type_ComIdlefishFlutterboostContainersFlutterActivityAndFragmentDelegate.onStop();
+    }
   }
   
   @Nullable
@@ -196,7 +220,7 @@ public class QFlutterFragment
     if (this.jdField_a_of_type_IoFlutterEmbeddingAndroidSplashScreen != null) {
       return this.jdField_a_of_type_IoFlutterEmbeddingAndroidSplashScreen;
     }
-    return new arxl(null);
+    return new auev(null);
   }
   
   public boolean shouldAttachEngineToActivity()
@@ -206,7 +230,7 @@ public class QFlutterFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.container.QFlutterFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,43 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bavf;
-import bdhb;
-import bliu;
-import bljn;
-import blkb;
-import blmq;
+import bdwt;
+import bgmg;
+import bnyh;
+import bnzb;
+import bnzs;
+import boei;
 import java.io.File;
 import java.io.IOException;
 
 public class AEEditorCommonEditFragment$8$1$1
   implements Runnable
 {
-  public AEEditorCommonEditFragment$8$1$1(blmq paramblmq, bavf parambavf) {}
+  public AEEditorCommonEditFragment$8$1$1(boei paramboei, bdwt parambdwt) {}
   
   public void run()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Bavf != null)
+    if (this.jdField_a_of_type_Bdwt != null)
     {
-      localObject = bliu.a();
-      if (this.jdField_a_of_type_Bavf.a == 0) {
+      localObject = bnyh.a();
+      if (this.jdField_a_of_type_Bdwt.a == 0) {
         bool = true;
       }
-      ((bliu)localObject).a(bool, 2, "AEEditorFilterAIAnimation", "", this.jdField_a_of_type_Bavf.b, this.jdField_a_of_type_Bavf.h);
+      ((bnyh)localObject).a(bool, 2, "AEEditorFilterAIAnimation", "", this.jdField_a_of_type_Bdwt.b, this.jdField_a_of_type_Bdwt.g);
     }
-    Object localObject = blkb.e;
+    Object localObject = bnzs.e;
     File localFile = new File((String)localObject);
     if (localFile.exists()) {
       try
       {
-        if (!"b9f8fc550f1535b445b564bfbe0d82c5".equalsIgnoreCase(bdhb.c((String)localObject)))
+        if (!"b9f8fc550f1535b445b564bfbe0d82c5".equalsIgnoreCase(bgmg.c((String)localObject)))
         {
           localFile.delete();
-          bljn.d(AEEditorCommonEditFragment.d(), "ae editor lottie download md5 check failed.");
+          bnzb.d(AEEditorCommonEditFragment.d(), "ae editor lottie download md5 check failed.");
           return;
         }
-        bdhb.a((String)localObject, blkb.d, false);
-        bdhb.a(blkb.d + File.separator + ".nomedia");
+        bgmg.a((String)localObject, bnzs.d, false);
+        bgmg.a(bnzs.d + File.separator + ".nomedia");
         return;
       }
       catch (IOException localIOException)
@@ -49,7 +49,7 @@ public class AEEditorCommonEditFragment$8$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8.1.1
  * JD-Core Version:    0.7.0.1
  */

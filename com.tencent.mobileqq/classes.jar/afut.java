@@ -1,13 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
-class afut
-  extends aeqi
+final class afut
+  implements bhlk
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  afut(afup paramafup) {}
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
+      }
+      afuh.a();
+    }
+  }
 }
 
 

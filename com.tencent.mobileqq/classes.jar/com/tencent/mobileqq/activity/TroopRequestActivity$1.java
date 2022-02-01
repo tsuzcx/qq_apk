@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import alto;
+import anmw;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Card;
 import mqq.os.MqqHandler;
@@ -8,7 +8,7 @@ import mqq.os.MqqHandler;
 class TroopRequestActivity$1
   implements Runnable
 {
-  TroopRequestActivity$1(TroopRequestActivity paramTroopRequestActivity, alto paramalto) {}
+  TroopRequestActivity$1(TroopRequestActivity paramTroopRequestActivity, anmw paramanmw) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ class TroopRequestActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRequestActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,22 @@
-import android.widget.TextView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class afmo
-  extends aepm
+  implements View.OnTouchListener
 {
-  TextView b;
+  public afmo(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  afmo(afmn paramafmn) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
+    }
+    return false;
+  }
 }
 
 

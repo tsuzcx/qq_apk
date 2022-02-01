@@ -1,28 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.VideoCaptureFragment;
 
-class rms
-  implements Animation.AnimationListener
+public class rms
+  implements sme
 {
-  rms(rmr paramrmr, boolean paramBoolean) {}
+  public rms(VideoCaptureFragment paramVideoCaptureFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void a()
   {
-    if (rmr.a(this.jdField_a_of_type_Rmr) != null) {
-      rmr.a(this.jdField_a_of_type_Rmr).setImageDrawable(this.jdField_a_of_type_Rmr.a(rmr.a(this.jdField_a_of_type_Rmr, this.jdField_a_of_type_Boolean)));
-    }
-    paramAnimation.setInterpolator(new AnticipateInterpolator());
+    VideoCaptureFragment.a(this.a).b();
   }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(int paramInt)
+  {
+    VideoCaptureFragment.a(this.a).a(paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    VideoCaptureFragment.a(this.a).a(paramInt1, paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rms
  * JD-Core Version:    0.7.0.1
  */

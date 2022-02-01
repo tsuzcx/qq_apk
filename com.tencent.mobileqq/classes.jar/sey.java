@@ -1,142 +1,101 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import android.support.annotation.Nullable;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.VideoViewGroup;
+import java.util.Map;
 
 public class sey
+  extends ruh
 {
-  public static final String a;
-  int a;
-  public List<byte[]> a;
-  public sfa a;
-  public sfk<Bitmap> a;
-  int jdField_b_of_type_Int = 0;
-  final List<SoftReference<Bitmap>> jdField_b_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  public View a;
+  public BaseArticleInfo a;
+  public VideoViewGroup a;
+  public Map<String, Object> a;
+  public rgc a;
+  public six a;
+  boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public long c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public int e = -1;
+  public long e;
+  public String e;
+  public int f;
+  public long f;
+  public String f;
+  public int g;
+  public long g = -1L;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public String l;
+  public int m;
+  public String m;
+  public int n = 0;
+  public String n;
+  public int o;
+  public int p;
+  public int q;
+  public int r;
   
-  static
+  public sey()
   {
-    jdField_a_of_type_JavaLangString = "zimage." + sey.class.getSimpleName();
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  sey(int paramInt)
+  public VideoInfo a()
   {
-    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
-    this.jdField_a_of_type_Sfa = new sfa(2097152);
-    this.jdField_a_of_type_Int = 0;
-    while (paramInt < 5)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(new byte[16384]);
-      paramInt += 1;
-    }
-    this.jdField_a_of_type_Sfk = new sez(this);
+    return rup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
   }
   
-  public Bitmap a(BitmapFactory.Options paramOptions)
+  public String a()
   {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        this.jdField_b_of_type_Int += 1;
-        ArrayList localArrayList = new ArrayList();
-        List localList = this.jdField_b_of_type_JavaUtilList;
-        i = 0;
-        try
-        {
-          if (i < this.jdField_b_of_type_JavaUtilList.size())
-          {
-            localBitmap = (Bitmap)((SoftReference)this.jdField_b_of_type_JavaUtilList.get(i)).get();
-            if (localBitmap != null)
-            {
-              if (sfm.a(localBitmap, paramOptions))
-              {
-                localArrayList.add(this.jdField_b_of_type_JavaUtilList.get(i));
-                str = "cache";
-                if (!localArrayList.isEmpty()) {
-                  this.jdField_b_of_type_JavaUtilList.removeAll(localArrayList);
-                }
-                if (localBitmap != null) {
-                  this.jdField_a_of_type_Int += 1;
-                }
-                if (QLog.isColorLevel()) {
-                  sfm.a(jdField_a_of_type_JavaLangString, "getReuseableBitmap found:" + str + " picSize:" + paramOptions.outWidth + "x" + paramOptions.outHeight + " bitmap:" + localBitmap + " state:" + toString());
-                }
-                return localBitmap;
-              }
-            }
-            else {
-              localArrayList.add(this.jdField_b_of_type_JavaUtilList.get(i));
-            }
-          }
-        }
-        finally {}
-        String str = "notFound";
-      }
-      finally {}
-      Bitmap localBitmap = null;
-      continue;
-      i += 1;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getInnerUniqueID();
     }
+    return "";
   }
   
-  sfc a(sfg paramsfg)
+  public boolean equals(@Nullable Object paramObject)
   {
-    if (paramsfg == null) {}
-    do
-    {
-      return null;
-      paramsfg = bdfz.a(paramsfg.a());
-    } while ((paramsfg == null) || (!paramsfg.a()));
-    return paramsfg.a();
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_Sfa.a();
-      this.jdField_b_of_type_JavaUtilList.clear();
-      return;
+    if ((paramObject instanceof sey)) {
+      return a().equals(((sey)paramObject).a());
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(sfg paramsfg, sfc paramsfc)
-  {
-    if (paramsfg == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        bdfz.a(paramsfg.a(), paramsfc);
-      }
-      finally {}
-    }
+    return super.equals(paramObject);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("total:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" reuse:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("VideoPlayParam[");
+    localStringBuilder.append(" articleID:").append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", videoVid:").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(", busitype:").append(this.f);
+    localStringBuilder.append(", videoDuration:").append(this.b);
+    localStringBuilder.append(", position:").append(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
+      localStringBuilder.append(", title:").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mTitle);
+    }
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sey
  * JD-Core Version:    0.7.0.1
  */

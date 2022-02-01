@@ -1,344 +1,382 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import com.tencent.av.ui.funchat.zimu.ZimuView;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import dalvik.system.DexClassLoader;
+import java.io.File;
+import java.lang.reflect.Method;
 
 public class mqv
-  extends mqu
 {
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-  private mqw jdField_a_of_type_Mqw;
-  private final int[] jdField_a_of_type_ArrayOfInt;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_b_of_type_AndroidGraphicsCanvas = new Canvas();
-  private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-  int i = 10;
-  int j = 8;
-  int k = 4;
+  private static volatile DexClassLoader a;
   
-  public mqv(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat, mqw parammqw)
+  public static DexClassLoader a()
   {
-    super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { paramInt1 / 6, paramInt1 / 5 };
-    this.jdField_a_of_type_Mqw = parammqw;
-    e();
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = a(BaseApplicationImpl.getContext(), "libqav_utils.so");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public static DexClassLoader a(Context paramContext, String paramString)
+  {
+    if (paramContext == null) {}
+    File localFile;
+    do
+    {
+      return null;
+      paramString = a(paramContext, paramString);
+      localFile = paramContext.getDir("temp", 0);
+    } while (TextUtils.isEmpty(paramString));
+    try
+    {
+      paramContext = new DexClassLoader(paramString, localFile.getAbsolutePath(), null, paramContext.getClassLoader());
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ClassLoaderUtil", 2, "", paramContext);
+        }
+        paramContext = null;
+      }
+    }
+  }
+  
+  public static Object a(DexClassLoader paramDexClassLoader, Object paramObject, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
+  {
+    if ((paramDexClassLoader != null) && (!TextUtils.isEmpty(paramString)) && (paramObject != null)) {
+      try
+      {
+        paramDexClassLoader = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
+        paramDexClassLoader.setAccessible(true);
+        paramDexClassLoader = paramDexClassLoader.invoke(paramObject, paramArrayOfObject);
+        return paramDexClassLoader;
+      }
+      catch (Exception paramDexClassLoader)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("ClassLoaderUtil", 1, "invokeMethodInDex, Exception, methodName[" + paramString + "]", paramDexClassLoader);
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static Object a(DexClassLoader paramDexClassLoader, String paramString)
+  {
+    if ((paramDexClassLoader != null) && (!TextUtils.isEmpty(paramString))) {
+      try
+      {
+        paramDexClassLoader = paramDexClassLoader.loadClass(paramString).newInstance();
+        return paramDexClassLoader;
+      }
+      catch (Exception paramDexClassLoader)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ClassLoaderUtil", 2, "", paramDexClassLoader);
+        }
+      }
+    }
+    return null;
   }
   
   /* Error */
-  private Bitmap c()
+  public static String a(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 5
-    //   3: aload_0
-    //   4: getfield 103	mqv:jdField_a_of_type_Ljf	Lljf;
-    //   7: getfield 108	ljf:a	Ljava/lang/CharSequence;
-    //   10: checkcast 110	java/lang/String
-    //   13: astore 9
-    //   15: aload 9
-    //   17: invokevirtual 114	java/lang/String:length	()I
-    //   20: istore 6
-    //   22: aload_0
-    //   23: aload_0
-    //   24: getfield 88	mqv:jdField_a_of_type_Mqw	Lmqw;
-    //   27: getfield 118	mqw:b	I
-    //   30: iload 6
-    //   32: imul
-    //   33: iload 6
-    //   35: iconst_1
-    //   36: isub
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 4
+    //   6: new 96	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 97	java/lang/StringBuilder:<init>	()V
+    //   13: aload_0
+    //   14: invokevirtual 126	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   17: invokevirtual 129	java/io/File:getParent	()Ljava/lang/String;
+    //   20: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: ldc 131
+    //   25: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: aload_1
+    //   29: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   35: astore 6
     //   37: aload_0
-    //   38: getfield 42	mqv:j	I
-    //   41: imul
-    //   42: iadd
-    //   43: aload_0
-    //   44: getfield 88	mqv:jdField_a_of_type_Mqw	Lmqw;
-    //   47: getfield 118	mqw:b	I
-    //   50: getstatic 124	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   53: invokestatic 130	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   56: putfield 132	mqv:jdField_b_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   59: aload_0
-    //   60: getfield 38	mqv:jdField_b_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
-    //   63: aload_0
-    //   64: getfield 132	mqv:jdField_b_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   67: invokevirtual 136	android/graphics/Canvas:setBitmap	(Landroid/graphics/Bitmap;)V
-    //   70: aload_0
-    //   71: getfield 88	mqv:jdField_a_of_type_Mqw	Lmqw;
-    //   74: getfield 118	mqw:b	I
-    //   77: iconst_2
-    //   78: idiv
-    //   79: i2f
-    //   80: fstore_2
-    //   81: aload_0
-    //   82: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
-    //   85: invokevirtual 140	android/graphics/Paint:getFontMetrics	()Landroid/graphics/Paint$FontMetrics;
-    //   88: astore 10
-    //   90: aload 10
-    //   92: getfield 146	android/graphics/Paint$FontMetrics:ascent	F
-    //   95: fstore_1
-    //   96: aload 10
-    //   98: getfield 149	android/graphics/Paint$FontMetrics:descent	F
-    //   101: fload_1
-    //   102: fadd
-    //   103: fconst_2
-    //   104: fdiv
-    //   105: fstore_3
-    //   106: aload_0
-    //   107: getfield 44	mqv:k	I
-    //   110: iconst_2
-    //   111: idiv
-    //   112: i2f
-    //   113: fstore 4
-    //   115: fload_2
-    //   116: fstore_1
-    //   117: iload 5
-    //   119: iload 6
-    //   121: if_icmpge +194 -> 315
-    //   124: aload_0
-    //   125: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
-    //   128: iconst_0
-    //   129: invokevirtual 153	android/graphics/Paint:setAntiAlias	(Z)V
-    //   132: aload_0
-    //   133: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
-    //   136: getstatic 159	android/graphics/Paint$Style:FILL	Landroid/graphics/Paint$Style;
-    //   139: invokevirtual 163	android/graphics/Paint:setStyle	(Landroid/graphics/Paint$Style;)V
-    //   142: aload_0
-    //   143: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
-    //   146: iconst_m1
-    //   147: invokevirtual 167	android/graphics/Paint:setColor	(I)V
-    //   150: aload_0
-    //   151: getfield 38	mqv:jdField_b_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
-    //   154: fload_1
-    //   155: fload_2
-    //   156: fload_2
-    //   157: aload_0
-    //   158: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
-    //   161: invokevirtual 171	android/graphics/Canvas:drawCircle	(FFFLandroid/graphics/Paint;)V
-    //   164: aload_0
-    //   165: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
-    //   168: iconst_1
-    //   169: invokevirtual 153	android/graphics/Paint:setAntiAlias	(Z)V
+    //   38: invokevirtual 126	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   41: invokevirtual 52	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   44: astore_0
+    //   45: new 96	java/lang/StringBuilder
+    //   48: dup
+    //   49: invokespecial 97	java/lang/StringBuilder:<init>	()V
+    //   52: aload_0
+    //   53: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: getstatic 135	java/io/File:separator	Ljava/lang/String;
+    //   59: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: aload_1
+    //   63: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   69: astore_3
+    //   70: new 48	java/io/File
+    //   73: dup
+    //   74: aload_3
+    //   75: invokespecial 138	java/io/File:<init>	(Ljava/lang/String;)V
+    //   78: astore_0
+    //   79: aload_0
+    //   80: invokevirtual 141	java/io/File:exists	()Z
+    //   83: ifeq +8 -> 91
+    //   86: aload_0
+    //   87: invokevirtual 144	java/io/File:delete	()Z
+    //   90: pop
+    //   91: new 146	java/io/BufferedInputStream
+    //   94: dup
+    //   95: new 148	java/io/FileInputStream
+    //   98: dup
+    //   99: new 48	java/io/File
+    //   102: dup
+    //   103: aload 6
+    //   105: invokespecial 138	java/io/File:<init>	(Ljava/lang/String;)V
+    //   108: invokespecial 151	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   111: invokespecial 154	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   114: astore_1
+    //   115: aload_0
+    //   116: invokevirtual 157	java/io/File:createNewFile	()Z
+    //   119: pop
+    //   120: new 159	java/io/BufferedOutputStream
+    //   123: dup
+    //   124: new 161	java/io/FileOutputStream
+    //   127: dup
+    //   128: aload_0
+    //   129: invokespecial 162	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   132: invokespecial 165	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   135: astore_0
+    //   136: sipush 1024
+    //   139: newarray byte
+    //   141: astore 4
+    //   143: aload_1
+    //   144: aload 4
+    //   146: iconst_0
+    //   147: aload 4
+    //   149: arraylength
+    //   150: invokevirtual 169	java/io/BufferedInputStream:read	([BII)I
+    //   153: istore_2
+    //   154: iload_2
+    //   155: iconst_m1
+    //   156: if_icmpeq +63 -> 219
+    //   159: aload_0
+    //   160: aload 4
+    //   162: iconst_0
+    //   163: iload_2
+    //   164: invokevirtual 173	java/io/BufferedOutputStream:write	([BII)V
+    //   167: goto -24 -> 143
+    //   170: astore 5
     //   172: aload_0
-    //   173: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
-    //   176: getstatic 174	android/graphics/Paint$Style:STROKE	Landroid/graphics/Paint$Style;
-    //   179: invokevirtual 163	android/graphics/Paint:setStyle	(Landroid/graphics/Paint$Style;)V
-    //   182: aload_0
-    //   183: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
-    //   186: ldc 175
-    //   188: invokevirtual 167	android/graphics/Paint:setColor	(I)V
-    //   191: aload_0
-    //   192: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   173: astore 4
+    //   175: aload_1
+    //   176: astore_0
+    //   177: aload 5
+    //   179: astore_1
+    //   180: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   183: ifeq +12 -> 195
+    //   186: ldc 67
+    //   188: iconst_2
+    //   189: ldc 69
+    //   191: aload_1
+    //   192: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   195: aload_0
-    //   196: getfield 44	mqv:k	I
-    //   199: i2f
-    //   200: invokevirtual 179	android/graphics/Paint:setStrokeWidth	(F)V
-    //   203: aload_0
-    //   204: getfield 38	mqv:jdField_b_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
-    //   207: fload_1
-    //   208: fload_2
-    //   209: fload_2
-    //   210: fload 4
-    //   212: fsub
-    //   213: aload_0
-    //   214: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
-    //   217: invokevirtual 171	android/graphics/Canvas:drawCircle	(FFFLandroid/graphics/Paint;)V
-    //   220: aload_0
-    //   221: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
-    //   224: fconst_0
-    //   225: invokevirtual 179	android/graphics/Paint:setStrokeWidth	(F)V
-    //   228: aload_0
-    //   229: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
-    //   232: getstatic 159	android/graphics/Paint$Style:FILL	Landroid/graphics/Paint$Style;
-    //   235: invokevirtual 163	android/graphics/Paint:setStyle	(Landroid/graphics/Paint$Style;)V
-    //   238: aload_0
-    //   239: getfield 38	mqv:jdField_b_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
-    //   242: aload 9
-    //   244: iload 5
-    //   246: iload 5
-    //   248: iconst_1
-    //   249: iadd
-    //   250: fload_1
-    //   251: fload_2
-    //   252: fload_3
-    //   253: fsub
-    //   254: aload_0
-    //   255: getfield 74	mqv:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
-    //   258: invokevirtual 183	android/graphics/Canvas:drawText	(Ljava/lang/String;IIFFLandroid/graphics/Paint;)V
-    //   261: aload_0
-    //   262: getfield 88	mqv:jdField_a_of_type_Mqw	Lmqw;
-    //   265: getfield 118	mqw:b	I
-    //   268: istore 7
-    //   270: aload_0
-    //   271: getfield 42	mqv:j	I
-    //   274: istore 8
-    //   276: fload_1
-    //   277: iload 7
-    //   279: iload 8
-    //   281: iadd
-    //   282: i2f
-    //   283: fadd
-    //   284: fstore_1
-    //   285: iload 5
-    //   287: iconst_1
-    //   288: iadd
-    //   289: istore 5
-    //   291: goto -174 -> 117
-    //   294: astore 9
-    //   296: invokestatic 189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   299: ifeq +16 -> 315
-    //   302: aload_0
-    //   303: getfield 192	mqv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   306: iconst_2
-    //   307: aload 9
-    //   309: invokevirtual 196	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   312: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   315: aload_0
-    //   316: getfield 132	mqv:jdField_b_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   319: areturn
-    //   320: astore 9
-    //   322: invokestatic 189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   325: ifeq -10 -> 315
-    //   328: aload_0
-    //   329: getfield 192	mqv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   332: iconst_2
-    //   333: aload 9
-    //   335: invokevirtual 200	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   338: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   341: goto -26 -> 315
+    //   196: ifnull +7 -> 203
+    //   199: aload_0
+    //   200: invokevirtual 176	java/io/BufferedInputStream:close	()V
+    //   203: aload_3
+    //   204: astore_1
+    //   205: aload 4
+    //   207: ifnull +10 -> 217
+    //   210: aload 4
+    //   212: invokevirtual 177	java/io/BufferedOutputStream:close	()V
+    //   215: aload_3
+    //   216: astore_1
+    //   217: aload_1
+    //   218: areturn
+    //   219: aload_1
+    //   220: ifnull +7 -> 227
+    //   223: aload_1
+    //   224: invokevirtual 176	java/io/BufferedInputStream:close	()V
+    //   227: aload_3
+    //   228: astore_1
+    //   229: aload_0
+    //   230: ifnull -13 -> 217
+    //   233: aload_0
+    //   234: invokevirtual 177	java/io/BufferedOutputStream:close	()V
+    //   237: aload_3
+    //   238: areturn
+    //   239: astore_0
+    //   240: aload_3
+    //   241: astore_1
+    //   242: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   245: ifeq -28 -> 217
+    //   248: ldc 67
+    //   250: iconst_2
+    //   251: ldc 69
+    //   253: aload_0
+    //   254: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   257: aload_3
+    //   258: areturn
+    //   259: astore_1
+    //   260: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   263: ifeq -36 -> 227
+    //   266: ldc 67
+    //   268: iconst_2
+    //   269: ldc 69
+    //   271: aload_1
+    //   272: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   275: goto -48 -> 227
+    //   278: astore_0
+    //   279: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   282: ifeq -79 -> 203
+    //   285: ldc 67
+    //   287: iconst_2
+    //   288: ldc 69
+    //   290: aload_0
+    //   291: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   294: goto -91 -> 203
+    //   297: astore_0
+    //   298: aload_3
+    //   299: astore_1
+    //   300: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   303: ifeq -86 -> 217
+    //   306: ldc 67
+    //   308: iconst_2
+    //   309: ldc 69
+    //   311: aload_0
+    //   312: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   315: aload_3
+    //   316: areturn
+    //   317: astore_0
+    //   318: aconst_null
+    //   319: astore_1
+    //   320: aload 5
+    //   322: astore 4
+    //   324: aload_1
+    //   325: ifnull +7 -> 332
+    //   328: aload_1
+    //   329: invokevirtual 176	java/io/BufferedInputStream:close	()V
+    //   332: aload 4
+    //   334: ifnull +8 -> 342
+    //   337: aload 4
+    //   339: invokevirtual 177	java/io/BufferedOutputStream:close	()V
+    //   342: aload_0
+    //   343: athrow
+    //   344: astore_1
+    //   345: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   348: ifeq -16 -> 332
+    //   351: ldc 67
+    //   353: iconst_2
+    //   354: ldc 69
+    //   356: aload_1
+    //   357: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   360: goto -28 -> 332
+    //   363: astore_1
+    //   364: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   367: ifeq -25 -> 342
+    //   370: ldc 67
+    //   372: iconst_2
+    //   373: ldc 69
+    //   375: aload_1
+    //   376: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   379: goto -37 -> 342
+    //   382: astore_0
+    //   383: aload 5
+    //   385: astore 4
+    //   387: goto -63 -> 324
+    //   390: astore_3
+    //   391: aload_0
+    //   392: astore 4
+    //   394: aload_3
+    //   395: astore_0
+    //   396: goto -72 -> 324
+    //   399: astore_3
+    //   400: aload_0
+    //   401: astore_1
+    //   402: aload_3
+    //   403: astore_0
+    //   404: goto -80 -> 324
+    //   407: astore_1
+    //   408: aconst_null
+    //   409: astore_0
+    //   410: aconst_null
+    //   411: astore_3
+    //   412: goto -232 -> 180
+    //   415: astore_1
+    //   416: aconst_null
+    //   417: astore_0
+    //   418: goto -238 -> 180
+    //   421: astore 5
+    //   423: aload_1
+    //   424: astore_0
+    //   425: aload 5
+    //   427: astore_1
+    //   428: goto -248 -> 180
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	344	0	this	mqv
-    //   95	190	1	f1	float
-    //   80	172	2	f2	float
-    //   105	148	3	f3	float
-    //   113	98	4	f4	float
-    //   1	289	5	m	int
-    //   20	102	6	n	int
-    //   268	14	7	i1	int
-    //   274	8	8	i2	int
-    //   13	230	9	str	String
-    //   294	14	9	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   320	14	9	localException	java.lang.Exception
-    //   88	9	10	localFontMetrics	android.graphics.Paint.FontMetrics
+    //   0	431	0	paramContext	Context
+    //   0	431	1	paramString	String
+    //   153	11	2	i	int
+    //   69	247	3	str1	String
+    //   390	5	3	localObject1	Object
+    //   399	4	3	localObject2	Object
+    //   411	1	3	localObject3	Object
+    //   4	389	4	localObject4	Object
+    //   1	1	5	localObject5	Object
+    //   170	214	5	localException1	Exception
+    //   421	5	5	localException2	Exception
+    //   35	69	6	str2	String
     // Exception table:
     //   from	to	target	type
-    //   3	115	294	java/lang/OutOfMemoryError
-    //   124	276	294	java/lang/OutOfMemoryError
-    //   3	115	320	java/lang/Exception
-    //   124	276	320	java/lang/Exception
+    //   136	143	170	java/lang/Exception
+    //   143	154	170	java/lang/Exception
+    //   159	167	170	java/lang/Exception
+    //   233	237	239	java/io/IOException
+    //   223	227	259	java/io/IOException
+    //   199	203	278	java/io/IOException
+    //   210	215	297	java/io/IOException
+    //   6	70	317	finally
+    //   70	91	317	finally
+    //   91	115	317	finally
+    //   328	332	344	java/io/IOException
+    //   337	342	363	java/io/IOException
+    //   115	136	382	finally
+    //   136	143	390	finally
+    //   143	154	390	finally
+    //   159	167	390	finally
+    //   180	195	399	finally
+    //   6	70	407	java/lang/Exception
+    //   70	91	415	java/lang/Exception
+    //   91	115	415	java/lang/Exception
+    //   115	136	421	java/lang/Exception
   }
   
-  private boolean d()
+  public static boolean a(DexClassLoader paramDexClassLoader, Object paramObject, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    return this.e < this.g / 2;
-  }
-  
-  protected int a(int paramInt)
-  {
-    if (paramInt < 8) {
-      return this.jdField_a_of_type_ArrayOfInt[0];
-    }
-    return this.jdField_a_of_type_ArrayOfInt[1];
-  }
-  
-  protected int a(Paint paramPaint)
-  {
-    this.d = this.jdField_a_of_type_Mqw.jdField_a_of_type_Int;
-    this.jdField_b_of_type_AndroidGraphicsRect.right = this.d;
-    this.jdField_b_of_type_AndroidGraphicsRect.bottom = this.d;
-    return this.d;
-  }
-  
-  protected int a(Paint paramPaint, String paramString)
-  {
-    if (this.jdField_a_of_type_Ljf != null) {}
-    for (int m = this.jdField_a_of_type_Ljf.a.length();; m = 0)
+    if ((paramDexClassLoader != null) && (!TextUtils.isEmpty(paramString)) && (paramObject != null))
     {
-      int n = this.jdField_a_of_type_Mqw.jdField_a_of_type_Int;
-      int i1 = this.i;
-      int i2 = this.jdField_a_of_type_Mqw.b;
-      return (m - 1) * this.j + (n + i1 + i2 * m);
+      paramDexClassLoader = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
+      paramDexClassLoader.setAccessible(true);
+      paramArrayOfObject2[0] = paramDexClassLoader.invoke(paramObject, paramArrayOfObject1);
+      return true;
     }
-  }
-  
-  public Bitmap a()
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-    {
-      c();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = b();
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap;
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, c(), d());
-    }
-  }
-  
-  protected void a(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    long l = System.currentTimeMillis();
-    paramCanvas.drawPaint(this.jdField_b_of_type_AndroidGraphicsPaint);
-    paramCanvas.save();
-    paramCanvas.clipRect(this.jdField_a_of_type_Mqw.jdField_a_of_type_Int / 2, 0, paramInt1, paramInt2);
-    float f2 = this.jdField_a_of_type_Mqw.jdField_a_of_type_Int + this.i;
-    float f1 = f2;
-    if (d())
-    {
-      f1 = f2 - 100.0F * this.jdField_a_of_type_Float;
-      f1 = (f2 - f1) * (this.e * 2) / this.g + f1;
-    }
-    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, f1, (this.jdField_a_of_type_Mqw.jdField_a_of_type_Int - this.jdField_a_of_type_Mqw.b) / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.restore();
-    Bitmap localBitmap = this.jdField_a_of_type_Mqw.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[((int)((l - this.jdField_a_of_type_Long) / 200L % this.jdField_a_of_type_Mqw.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length))];
-    this.jdField_a_of_type_AndroidGraphicsRect.right = localBitmap.getWidth();
-    this.jdField_a_of_type_AndroidGraphicsRect.bottom = localBitmap.getHeight();
-    paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  public void a(mqw parammqw)
-  {
-    this.jdField_a_of_type_Mqw = parammqw;
-  }
-  
-  void d()
-  {
-    super.d();
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
-    {
-      if (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled()) {
-        this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
-      }
-      this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-    }
-  }
-  
-  public int e()
-  {
-    return this.jdField_a_of_type_Mqw.c;
-  }
-  
-  void e()
-  {
-    float f = 0.48F * this.jdField_a_of_type_Float;
-    this.i = ((int)(this.i * f));
-    this.j = ((int)(this.j * f));
-    this.k = ((int)(f * this.k));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mqv
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ public final class DeviceStore$Companion
         try
         {
           paramString = Environment.getExternalStorageDirectory();
-          Intrinsics.checkExpressionValueIsNotNull(paramString, "path");
+          Intrinsics.checkExpressionValueIsNotNull(paramString, "Environment.getExternalStorageDirectory()");
           int i = new StatFs(paramString.getPath()).getBlockSize();
           return i;
         }
@@ -60,7 +60,7 @@ public final class DeviceStore$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.device.DeviceStore.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -16,68 +16,54 @@ public class WebView$HitTestResult
   public static final int SRC_ANCHOR_TYPE = 7;
   public static final int SRC_IMAGE_ANCHOR_TYPE = 8;
   public static final int UNKNOWN_TYPE = 0;
-  private IX5WebViewBase.HitTestResult mHitTestResultImpl;
-  private android.webkit.WebView.HitTestResult mSysHitTestResult = null;
+  private IX5WebViewBase.HitTestResult a;
+  private android.webkit.WebView.HitTestResult b = null;
   
   public WebView$HitTestResult()
   {
-    this.mHitTestResultImpl = null;
-    this.mSysHitTestResult = null;
+    this.a = null;
+    this.b = null;
   }
   
   public WebView$HitTestResult(android.webkit.WebView.HitTestResult paramHitTestResult)
   {
-    this.mHitTestResultImpl = null;
-    this.mSysHitTestResult = paramHitTestResult;
+    this.a = null;
+    this.b = paramHitTestResult;
   }
   
   public WebView$HitTestResult(IX5WebViewBase.HitTestResult paramHitTestResult)
   {
-    this.mHitTestResultImpl = paramHitTestResult;
-    this.mSysHitTestResult = null;
+    this.a = paramHitTestResult;
+    this.b = null;
   }
   
   public String getExtra()
   {
     String str = "";
-    if (this.mHitTestResultImpl != null) {
-      str = this.mHitTestResultImpl.getExtra();
+    if (this.a != null) {
+      str = this.a.getExtra();
     }
-    while (this.mSysHitTestResult == null) {
+    while (this.b == null) {
       return str;
     }
-    return this.mSysHitTestResult.getExtra();
+    return this.b.getExtra();
   }
   
   public int getType()
   {
     int i = 0;
-    if (this.mHitTestResultImpl != null) {
-      i = this.mHitTestResultImpl.getType();
+    if (this.a != null) {
+      i = this.a.getType();
     }
-    while (this.mSysHitTestResult == null) {
+    while (this.b == null) {
       return i;
     }
-    return this.mSysHitTestResult.getType();
-  }
-  
-  public void setExtra(String paramString)
-  {
-    if (this.mHitTestResultImpl != null) {
-      this.mHitTestResultImpl.setExtra(paramString);
-    }
-  }
-  
-  public void setType(int paramInt)
-  {
-    if (this.mHitTestResultImpl != null) {
-      this.mHitTestResultImpl.setType(paramInt);
-    }
+    return this.b.getType();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebView.HitTestResult
  * JD-Core Version:    0.7.0.1
  */

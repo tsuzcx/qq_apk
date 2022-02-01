@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.text.TextUtils;
-import arby;
-import arso;
-import awge;
-import awgf;
-import awgg;
+import athj;
+import atwl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,18 +16,18 @@ import java.util.Map;
 public class FileManagerProxy$4
   implements Runnable
 {
-  public FileManagerProxy$4(arby paramarby, long paramLong, String paramString) {}
+  public FileManagerProxy$4(athj paramathj, long paramLong, String paramString) {}
   
   public void run()
   {
     Object localObject2 = "select * from ( select * from " + FileManagerEntity.tableName() + " where bDelInFM = 0  and nRelatedSessionId = " + this.jdField_a_of_type_Long + "  order by srvTime desc limit " + 2000 + ") ";
-    awgf localawgf = arby.a(this.this$0).getEntityManagerFactory().createEntityManager();
-    localObject2 = localawgf.a(FileManagerEntity.class, (String)localObject2, null);
+    EntityManager localEntityManager = athj.a(this.this$0).a().createEntityManager();
+    localObject2 = localEntityManager.rawQuery(FileManagerEntity.class, (String)localObject2, null);
     for (;;)
     {
-      synchronized (arby.a(this.this$0))
+      synchronized (athj.a(this.this$0))
       {
-        arby.a(this.this$0, new HashMap());
+        athj.a(this.this$0, new HashMap());
         if (QLog.isColorLevel())
         {
           ??? = new StringBuilder().append("find ZipList file:");
@@ -65,23 +65,23 @@ public class FileManagerProxy$4
           QLog.e("FileManagerProxy<FileAssistant>", 1, ((FileManagerEntity)???).fileName + ": serverPath is empty!");
         }
         ((FileManagerEntity)???).setStatus(1001);
-        localObject1.b((awge)???);
+        localObject1.remove((Entity)???);
       }
-      else if (!arso.b(((FileManagerEntity)???).getFilePath()))
+      else if (!atwl.b(((FileManagerEntity)???).getFilePath()))
       {
         if (QLog.isDevelopLevel()) {
           QLog.e("FileManagerProxy<FileAssistant>", 1, ((FileManagerEntity)???).fileName + ": file not exist!");
         }
         ((FileManagerEntity)???).setStatus(1001);
-        localObject1.b((awge)???);
+        localObject1.remove((Entity)???);
       }
       else
       {
         try
         {
-          synchronized (arby.a(this.this$0))
+          synchronized (athj.a(this.this$0))
           {
-            arby.a(this.this$0).put(((FileManagerEntity)???).zipInnerPath, ???);
+            athj.a(this.this$0).put(((FileManagerEntity)???).zipInnerPath, ???);
           }
         }
         catch (Exception localException)
@@ -95,7 +95,7 @@ public class FileManagerProxy$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerProxy.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,116 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.1;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.2;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.3;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.4;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.5;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.GetLiveStyleResult;
-import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
-import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
-import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.List;
 
-final class asxi
-  implements YTAGReflectLiveCheckInterface.GetLiveStyleResult
+public class asxi
+  extends asyw
 {
-  asxi(AtomicBoolean paramAtomicBoolean, String paramString1, String paramString2, String paramString3, long paramLong, asxk paramasxk) {}
+  public asxi(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  protected void a(int paramInt, long paramLong, String paramString)
   {
-    Object localObject = new WeJson();
-    LiveStyleRequester.YTLiveStyleReq localYTLiveStyleReq = new LiveStyleRequester.YTLiveStyleReq(-2.0F, String.valueOf(101810106));
-    localYTLiveStyleReq.app_id = String.valueOf(101810106);
-    localObject = ((WeJson)localObject).toJson(localYTLiveStyleReq);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    asxg.a(101810106, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, (String)localObject, this.jdField_a_of_type_Asxk);
-    QLog.d("FaceLoginHelper", 1, new Object[] { "getLightInfo Failed code=", Integer.valueOf(paramInt), " tips=", paramString1, " howtofix=", paramString2 });
+    super.a(paramInt, paramLong, paramString);
+    atvo.a(paramLong, paramInt, paramString);
+    bnaz.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramInt);
   }
   
-  public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse)
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    paramYTLiveStyleReq.app_id = String.valueOf(101810106);
-    paramYTLiveStyleReq = new WeJson().toJson(paramYTLiveStyleReq);
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, true))
+    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.G(this.a).a().a(paramLong1, paramString, paramInt, paramLong2);
+    if (localFileManagerEntity == null)
     {
-      QLog.d("FaceLoginHelper", 1, "sendPacket isLoading now");
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "OnFileCome,but query FileEntity null,uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + "], strUin[" + atvo.e(paramString) + "], peerType[" + paramInt + "]");
+      }
       return;
     }
-    asxg.a(101810106, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, paramYTLiveStyleReq, this.jdField_a_of_type_Asxk);
-    QLog.d("FaceLoginHelper", 1, "getLightInfo success");
+    this.a.b(localFileManagerEntity);
+    QfileBaseRecentFileTabView.H(this.a).a().c(localFileManagerEntity);
+    QfileBaseRecentFileTabView.d(this.a, new QfileBaseRecentFileTabView.10.3(this));
+  }
+  
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    super.a(paramLong, paramString1, paramInt, paramString2);
+    atvo.a(paramLong);
+    this.a.i();
+  }
+  
+  protected void a(athr paramathr)
+  {
+    if (paramathr == null) {}
+    FileManagerEntity localFileManagerEntity;
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramathr.a instanceof FileManagerEntity));
+      localFileManagerEntity = (FileManagerEntity)paramathr.a;
+    } while ((paramathr.b == null) || (paramathr.b.length() <= 0));
+    localFileManagerEntity.strThumbPath = paramathr.b;
+    QfileBaseRecentFileTabView.C(this.a).a().c(localFileManagerEntity);
+    this.a.i();
+  }
+  
+  protected void a(Boolean paramBoolean, List<OfflineFileInfo> paramList)
+  {
+    QfileBaseRecentFileTabView.a(this.a, paramBoolean, paramList);
+  }
+  
+  protected void a(Integer paramInteger, long paramLong, String paramString)
+  {
+    QfileBaseRecentFileTabView.e(this.a, new QfileBaseRecentFileTabView.10.4(this));
+    atvo.a(paramLong, paramInteger.intValue(), paramString);
+    bnaz.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramInteger.intValue());
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    QfileBaseRecentFileTabView.b(this.a, new QfileBaseRecentFileTabView.10.1(this));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.D(this.a).a().a(paramLong1, paramString1, paramInt1, paramLong2);
+    if (localFileManagerEntity == null)
+    {
+      QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 1, "OnFileCome,but query FileEntity null,uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + "], strUin[" + atvo.e(paramString1) + "], peerType[" + paramInt1 + "]");
+      return;
+    }
+    if (!paramBoolean)
+    {
+      localFileManagerEntity.bDelInFM = false;
+      atvo.a(paramLong2, paramInt2, paramString2);
+      bnaz.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramInt2);
+    }
+    for (;;)
+    {
+      if ((this.a.b == null) || (this.a.b.trim().length() == 0) || (localFileManagerEntity.getCloudType() != 2)) {
+        this.a.b(localFileManagerEntity);
+      }
+      QfileBaseRecentFileTabView.E(this.a).a().c(localFileManagerEntity);
+      QfileBaseRecentFileTabView.c(this.a, new QfileBaseRecentFileTabView.10.2(this, paramLong2));
+      return;
+      paramInt1 = localFileManagerEntity.nOpType;
+      if ((paramInt1 == 4) || (paramInt1 == 20) || (paramInt1 == 6)) {
+        atvo.a(paramLong2);
+      }
+    }
+  }
+  
+  protected void b()
+  {
+    super.b();
+    QfileBaseRecentFileTabView.f(this.a, new QfileBaseRecentFileTabView.10.5(this));
   }
 }
 

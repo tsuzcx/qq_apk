@@ -1,36 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
-public class soe
-  implements DialogInterface.OnClickListener
+class soe
+  extends pue
 {
-  public soe(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  soe(snh paramsnh, String paramString, List paramList)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("button", 0);
-      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("cancelBtnText", ""));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
-      return;
-    }
-    catch (JSONException paramDialogInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(BridgeModule.TAG, 2, "showDialog error" + paramDialogInterface.getMessage());
-    }
+    super(paramString);
+  }
+  
+  public void a(ptx paramptx)
+  {
+    paramptx.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     soe
  * JD-Core Version:    0.7.0.1
  */

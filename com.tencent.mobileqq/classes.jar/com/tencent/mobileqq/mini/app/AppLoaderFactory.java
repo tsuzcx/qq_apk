@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.mini.app;
 
+import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.util.MiniAppDexLoader;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class AppLoaderFactory
@@ -14,6 +16,7 @@ public class AppLoaderFactory
   public static final String TAG_PROCESSOR = "miniapp-process";
   private static volatile BaseAppLoaderManager sAppLoaderManager;
   private static volatile IAppUIProxy sAppUIProxy;
+  private static int sLaunchMode = -1;
   
   public static IAppUIProxy createAppUIProxy()
   {
@@ -58,10 +61,50 @@ public class AppLoaderFactory
   {
     return sAppUIProxy;
   }
+  
+  public static void initLaunchMode(Intent paramIntent)
+  {
+    int i = 0;
+    if (sLaunchMode >= 0) {
+      return;
+    }
+    String str = BaseApplicationImpl.getApplication().getQQProcessName();
+    if ((!"com.tencent.mobileqq:mini".equals(str)) && (!"com.tencent.mobileqq:mini1".equals(str)) && (!"com.tencent.mobileqq:mini2".equals(str)))
+    {
+      sLaunchMode = 0;
+      QLog.w("miniapp-start", 1, "initLaunchMode in process=" + str + ", sLaunchMode=" + sLaunchMode);
+      return;
+    }
+    if (paramIntent == null)
+    {
+      sLaunchMode = 0;
+      QLog.w("miniapp-start", 1, "initLaunchMode with intent is null, sLaunchMode=" + sLaunchMode);
+      return;
+    }
+    try
+    {
+      boolean bool = paramIntent.getBooleanExtra("sdk_mode", false);
+      QLog.w("miniapp-start", 1, "initLaunchMode with intent param SDKMode " + bool);
+      if (bool) {
+        i = 1;
+      }
+      sLaunchMode = i;
+      return;
+    }
+    catch (Throwable paramIntent)
+    {
+      QLog.e("miniapp-start", 1, "initLaunchMode parser exception!", paramIntent);
+    }
+  }
+  
+  public static boolean isSDKMode()
+  {
+    return sLaunchMode == 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.AppLoaderFactory
  * JD-Core Version:    0.7.0.1
  */

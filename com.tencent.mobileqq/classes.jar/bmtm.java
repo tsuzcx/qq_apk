@@ -1,23 +1,35 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.4;
 
 public class bmtm
-  extends AnimatorListenerAdapter
+  implements ModuleDownloadListener
 {
-  public bmtm(DoodleEditView paramDoodleEditView, bmyj parambmyj) {}
+  public bmtm(VipARUtils.4 param4) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDownloadCanceled(String paramString)
   {
-    wxe.b("DoodleEditView", "onAnimationEnd");
-    this.jdField_a_of_type_Bmyj.n = 1.0F;
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onDownloadFailed(String paramString)
   {
-    wxe.b("DoodleEditView", "onAnimationStart");
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("libTar.so")) {
+      return;
+    }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bmti.c(), " onDownloadSucceed = ", bmti.d() });
+    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bmti.d());
   }
 }
 

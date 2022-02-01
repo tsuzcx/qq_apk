@@ -1,23 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.gamecenter.common.util.ReportInfoManager;
 
 public class acet
-  implements CompoundButton.OnCheckedChangeListener
+  extends Handler
 {
-  public acet(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public acet(ReportInfoManager paramReportInfoManager, long paramLong) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean);
-    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
-    if (paramBoolean)
-    {
-      azqs.b(this.a.app, "dc00898", "", "", "0X8009C0C", "0X8009C0C", 0, 0, "", "", "", "");
+    super.handleMessage(paramMessage);
+    if (paramMessage == null) {
       return;
     }
-    azqs.b(this.a.app, "dc00898", "", "", "0X8009C0D", "0X8009C0D", 0, 0, "", "", "", "");
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    acfa.a("post report", this.jdField_a_of_type_Long, (short)1);
   }
 }
 

@@ -1,26 +1,37 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import android.app.Activity;
-import android.content.Intent;
-import bkpl;
-import bkuh;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.AnimatorSet.Builder;
+import android.animation.ObjectAnimator;
+import android.widget.TextView;
+import bnjl;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
 public class VideoStoryAIScenePart$19
   implements Runnable
 {
-  public VideoStoryAIScenePart$19(bkuh parambkuh) {}
+  public VideoStoryAIScenePart$19(bnjl parambnjl, AEMaterialPanel paramAEMaterialPanel, int paramInt) {}
   
   public void run()
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("ae_editor_bottom_tab_show_hide");
-    localIntent.putExtra("is_show", true);
-    bkuh.a(this.this$0).a().sendBroadcast(localIntent);
+    int i = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight();
+    int j = this.jdField_a_of_type_Int;
+    int k = bnjl.a(this.this$0).getMeasuredHeight();
+    Object localObject = new int[2];
+    bnjl.a(this.this$0).getLocationInWindow((int[])localObject);
+    i = j - i - k - 10 - localObject[1];
+    localObject = ObjectAnimator.ofFloat(bnjl.a(this.this$0), "translationY", new float[] { 0.0F, i });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bnjl.b(this.this$0), "translationY", new float[] { 0.0F, i });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bnjl.b(this.this$0), "translationY", new float[] { 0.0F, i });
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    localAnimatorSet.play((Animator)localObject).with(localObjectAnimator1).with(localObjectAnimator2);
+    localAnimatorSet.setDuration(300L).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.aiscene.VideoStoryAIScenePart.19
  * JD-Core Version:    0.7.0.1
  */

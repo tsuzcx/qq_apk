@@ -1,37 +1,18 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
 
-class bbxz
+public final class bbxz
+  implements Parcelable.Creator<FriendGroupListInfo>
 {
-  private bigh jdField_a_of_type_Bigh = new bigh();
-  
-  public bbxz(bbxy parambbxy)
+  public FriendGroupListInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Bigh.a();
+    return new FriendGroupListInfo(paramParcel);
   }
   
-  public int a(long paramLong1, long paramLong2)
+  public FriendGroupListInfo[] a(int paramInt)
   {
-    int j = this.jdField_a_of_type_Bigh.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
-    int k = bigk.a(BaseApplication.getContext());
-    int i;
-    if (k != 1)
-    {
-      i = j;
-      if (k != 2) {}
-    }
-    else
-    {
-      i = j;
-      if (j > 16384) {
-        i = 16384;
-      }
-    }
-    return i;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bigh.b();
+    return new FriendGroupListInfo[paramInt];
   }
 }
 

@@ -1,45 +1,29 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xiv
-  extends xit<xiu>
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369821);
+  public ErrorMessage a;
+  public List<xiy> a;
+  public boolean a;
+  public ErrorMessage b;
+  public boolean b;
+  public boolean c;
   
-  xiv(xiu paramxiu, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public xiv()
   {
-    super(paramContext, paramViewGroup);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public String toString()
   {
-    return LayoutInflater.from(paramContext).inflate(2131561543, paramViewGroup, false);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
-  
-  public void a(xiu paramxiu, int paramInt)
-  {
-    super.a(paramxiu, paramInt);
-    if (paramxiu != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramxiu.a());
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    return "Data{upErrorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", isUpEnd=" + this.jdField_a_of_type_Boolean + ", mGroupInfoList=" + this.jdField_a_of_type_JavaUtilList + ", isDownEnd=" + this.jdField_b_of_type_Boolean + ", isFastData=" + this.c + ", downErrorMessage=" + this.jdField_b_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xiv
  * JD-Core Version:    0.7.0.1
  */

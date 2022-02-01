@@ -13,14 +13,14 @@ class TaskManager$8
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
     paramInt = 0;
-    Task.CONFIG_ITEM[] arrayOfCONFIG_ITEM = this.this$0.getNextScript(paramJSContext, (String)paramArrayOfObject[0]);
-    if (arrayOfCONFIG_ITEM != null) {
-      while (paramInt < arrayOfCONFIG_ITEM.length)
+    Task.ConfigItem[] arrayOfConfigItem = this.this$0.getNextScript(paramJSContext, (String)paramArrayOfObject[0]);
+    if (arrayOfConfigItem != null) {
+      while (paramInt < arrayOfConfigItem.length)
       {
-        String str1 = arrayOfCONFIG_ITEM[paramInt].value;
+        String str1 = arrayOfConfigItem[paramInt].value;
         String str2 = (String)paramArrayOfObject[1];
         StringBuffer localStringBuffer = new StringBuffer();
-        str1 = str1 + "('" + str2 + "'," + TaskManager.access$600(this.this$0, arrayOfCONFIG_ITEM[paramInt].args) + ")";
+        str1 = str1 + "('" + str2 + "'," + TaskManager.access$600(this.this$0, arrayOfConfigItem[paramInt].args) + ")";
         if (paramJSContext != null)
         {
           paramJSContext.evaluteStringWithException(str1, localStringBuffer);

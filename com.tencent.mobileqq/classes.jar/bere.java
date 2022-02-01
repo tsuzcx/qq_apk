@@ -1,21 +1,21 @@
-import android.view.View;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.vas.avatar.VasFaceManager;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-
 public class bere
-  extends URLDrawableDownListener.Adapter
 {
-  public bere(NewStyleDropdownView paramNewStyleDropdownView) {}
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public long b;
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public bere()
   {
-    paramView = paramURLDrawable.getCurrDrawable();
-    if ((paramView instanceof ApngDrawable)) {
-      VasFaceManager.a(null, (ApngDrawable)paramView);
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "TroopCreateAdvanceData{resultCode=" + this.jdField_a_of_type_Int + ", groupSize=" + this.jdField_b_of_type_Int + ", troopCode=" + this.jdField_a_of_type_Long + ", troopUin=" + this.jdField_b_of_type_Long + '}';
   }
 }
 

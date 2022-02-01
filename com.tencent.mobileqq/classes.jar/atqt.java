@@ -1,25 +1,26 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.10;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atqt
-  implements DialogInterface.OnClickListener
+class atqt
+  implements View.OnClickListener
 {
-  public atqt(LocationDialogUtil.10 param10) {}
+  atqt(atqp paramatqp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (atqr.a(this.a.a))
-    {
-      this.a.a.finish();
-      atqr.a("");
+    int i = atwt.b(this.a.a.e());
+    bcst.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
+    atnd localatnd = this.a.a.a();
+    if (localatnd != null) {
+      localatnd.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqt
  * JD-Core Version:    0.7.0.1
  */

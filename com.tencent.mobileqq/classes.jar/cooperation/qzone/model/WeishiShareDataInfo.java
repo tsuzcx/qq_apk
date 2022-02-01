@@ -3,13 +3,13 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjlp;
+import blzy;
 import java.util.ArrayList;
 
 public class WeishiShareDataInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiShareDataInfo> CREATOR = new bjlp();
+  public static final Parcelable.Creator<WeishiShareDataInfo> CREATOR = new blzy();
   public String a;
   public ArrayList<WeishiPictureUrl> a;
   public String b;
@@ -43,7 +43,7 @@ public class WeishiShareDataInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.WeishiShareDataInfo
  * JD-Core Version:    0.7.0.1
  */

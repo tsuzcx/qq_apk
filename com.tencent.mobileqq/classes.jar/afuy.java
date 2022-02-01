@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class afuy
-  implements DialogInterface.OnClickListener
+final class afuy
+  implements afvp
 {
-  afuy(afuw paramafuw, MessageForLongMsg paramMessageForLongMsg) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    acjm.a(this.jdField_a_of_type_Afuw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afuw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afuw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongMsg);
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 47);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    paramQQAppInterface.e = paramSessionInfo.b;
+    return paramQQAppInterface;
   }
 }
 

@@ -1,24 +1,28 @@
 package cooperation.liveroom;
 
+import Override;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
-import begg;
-import beha;
-import bfiu;
-import biqn;
-import biqw;
+import android.view.MotionEvent;
+import bhni;
+import bhoe;
+import biqd;
+import blfh;
+import blfq;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.plugin.PluginInfo;
 
 public class LiveRoomProxyActivity
   extends PluginProxyActivity
-  implements begg, beha
+  implements bhni, bhoe
 {
   public static final String PLUGIN_ACTIVITY_NAME = "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginActivity";
   public static final String PROXY_ACTIVITY_NAME = "cooperation.liveroom.LiveRoomProxyActivity";
@@ -48,7 +52,7 @@ public class LiveRoomProxyActivity
     localIntent.putExtra("startOpenPageTime", clickTime);
     localIntent.putExtra("pluginFinished", System.currentTimeMillis());
     paramString = "";
-    if ("com.tencent.mobileqq:tool".equals(bfiu.r())) {
+    if ("com.tencent.mobileqq:tool".equals(biqd.r())) {
       paramString = LiveRoomHelper.getPluginVersionInTool();
     }
     for (;;)
@@ -70,20 +74,20 @@ public class LiveRoomProxyActivity
   private static void launchPlugin(Activity paramActivity, String paramString)
   {
     QLog.d("LiveRoomProxyActivity", 1, "launchPlugin");
-    biqw localbiqw = new biqw(1);
-    localbiqw.jdField_b_of_type_JavaLangString = "LiveRoomPlugin.apk";
-    localbiqw.d = "直播SDK";
-    localbiqw.e = "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginActivity";
-    localbiqw.jdField_a_of_type_JavaLangClass = LiveRoomProxyActivity.class;
-    localbiqw.jdField_b_of_type_Int = 1011;
-    localbiqw.jdField_a_of_type_AndroidContentIntent = getPluginIntent(paramString);
-    biqn.a(paramActivity, localbiqw);
+    blfq localblfq = new blfq(1);
+    localblfq.jdField_b_of_type_JavaLangString = "LiveRoomPlugin.apk";
+    localblfq.d = "直播SDK";
+    localblfq.e = "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginActivity";
+    localblfq.jdField_a_of_type_JavaLangClass = LiveRoomProxyActivity.class;
+    localblfq.jdField_b_of_type_Int = 1011;
+    localblfq.jdField_a_of_type_AndroidContentIntent = getPluginIntent(paramString);
+    blfh.a(paramActivity, localblfq);
   }
   
   public static void open(Activity paramActivity, String paramString1, String paramString2)
   {
     clickTime = System.currentTimeMillis();
-    boolean bool = "com.tencent.mobileqq:tool".equals(bfiu.r());
+    boolean bool = "com.tencent.mobileqq:tool".equals(biqd.r());
     if (bool)
     {
       if (!LiveRoomHelper.getPluginInstalledInTool()) {}
@@ -118,9 +122,24 @@ public class LiveRoomProxyActivity
     paramActivity.startActivity(localIntent);
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean isWrapContent()
   {
     return false;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -152,7 +171,7 @@ public class LiveRoomProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomProxyActivity
  * JD-Core Version:    0.7.0.1
  */

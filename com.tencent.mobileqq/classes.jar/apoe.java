@@ -1,31 +1,30 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.mobileqq.widget.QQToast;
+import java.util.HashMap;
 
-class apoe
-  implements Handler.Callback
+public class apoe
 {
-  apoe(apod paramapod) {}
+  private static HashMap<String, apof> a = new HashMap();
   
-  public boolean handleMessage(Message paramMessage)
+  public static Object a(int paramInt, String paramString, Object paramObject1, Object paramObject2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 1: 
-      QQToast.a(apod.a(this.a), 2131692914, 0).b(2131298914);
-      return true;
+    paramString = (apof)a.get(paramString);
+    if (paramString != null) {
+      paramObject2 = paramString.a(paramInt, paramObject1);
     }
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
-      this.a.a(paramMessage);
-      return true;
+    return paramObject2;
+  }
+  
+  public static void a(String paramString)
+  {
+    if (paramString != null) {
+      a.remove(paramString);
     }
-    QQToast.a(apod.a(this.a), 1, 2131689688, 0).b(2131298914);
-    return true;
+  }
+  
+  public static void a(String paramString, apof paramapof)
+  {
+    if (paramString != null) {
+      a.put(paramString, paramapof);
+    }
   }
 }
 

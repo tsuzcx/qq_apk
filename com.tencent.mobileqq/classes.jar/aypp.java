@@ -1,8 +1,17 @@
-import java.util.List;
+import android.os.Bundle;
 
-public abstract interface aypp<T>
+class aypp
+  extends aypr
 {
-  public abstract List<T> a(Object... paramVarArgs);
+  aypp(aypo paramaypo) {}
+  
+  public void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    super.b(paramBoolean, paramBundle);
+    if (paramBoolean) {
+      aypo.a(this.a);
+    }
+  }
 }
 
 

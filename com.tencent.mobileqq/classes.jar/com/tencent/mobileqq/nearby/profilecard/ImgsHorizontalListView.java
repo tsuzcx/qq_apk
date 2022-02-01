@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
-import bhzg;
+import bkmr;
 import com.tencent.widget.HorizontalListView;
 
 public class ImgsHorizontalListView
@@ -88,7 +88,7 @@ public class ImgsHorizontalListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.ImgsHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

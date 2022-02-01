@@ -1,31 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import java.util.ArrayList;
 
 class auux
-  extends AnimatorListenerAdapter
+  extends bgzm
 {
-  auux(auuw paramauuw, auva paramauva, URLDrawable paramURLDrawable) {}
+  auux(auuw paramauuw) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void onGetGameCenterPubAccountGetFriends(boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_Auuw.a() != null)
-    {
-      this.jdField_a_of_type_Auva.b.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_Auva.b, "alpha", new float[] { 0.2F, 1.0F });
-      paramAnimator.setInterpolator(new DecelerateInterpolator());
-      paramAnimator.setDuration(300L).start();
+    super.onGetGameCenterPubAccountGetFriends(paramBoolean, paramObject);
+    if (paramObject == null) {
       return;
     }
-    this.jdField_a_of_type_Auva.b.setAlpha(1.0F);
+    auuw.a(this.a, (ArrayList)paramObject);
+    auuw.a(this.a).a(auuw.a(this.a));
+    auuw.a(this.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auux
  * JD-Core Version:    0.7.0.1
  */

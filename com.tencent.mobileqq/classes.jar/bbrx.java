@@ -1,54 +1,88 @@
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bbrx
-  extends DefaultHandler
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  protected String e;
+  private int jdField_a_of_type_Int = 1;
+  private String jdField_a_of_type_JavaLangString = "";
+  private String b = "";
   
-  public bbrx(bbru parambbru) {}
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  public static String a(int paramInt, boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if (this.e != null)
+    int i = 1;
+    try
     {
-      paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-      if (!this.e.equals("title")) {
-        break label46;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("entry", paramInt);
+      if (paramBoolean1)
+      {
+        paramInt = 1;
+        localJSONObject.put("match", paramInt);
+        localJSONObject.put("keyword", paramString);
+        if (!paramBoolean2) {
+          break label74;
+        }
       }
-      if (bdnn.a(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = paramArrayOfChar;
+      label74:
+      for (paramInt = i;; paramInt = 0)
+      {
+        localJSONObject.put("nightmode", paramInt);
+        paramString = localJSONObject.toString();
+        return paramString;
+        paramInt = 0;
+        break;
       }
+      return null;
     }
-    label46:
-    while (!this.e.equals("summary")) {
-      return;
+    catch (JSONException paramString)
+    {
+      QLog.e("RichMetaData", 2, "setLayout101ExtraData exception:" + paramString);
     }
-    this.c = paramArrayOfChar;
   }
   
-  public void endElement(String paramString1, String paramString2, String paramString3)
+  public String a()
   {
-    this.e = null;
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    if (paramString2.equals("picture")) {
-      this.b = paramAttributes.getValue("cover");
-    }
-    for (;;)
+    JSONObject localJSONObject1 = new JSONObject();
+    try
     {
-      this.e = paramString2;
-      return;
-      if (paramString2.equals("msg")) {
-        this.d = paramAttributes.getValue("url");
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("serverdata", new JSONObject(this.jdField_a_of_type_JavaLangString));
+      localJSONObject2.put("state", this.jdField_a_of_type_Int);
+      if (!TextUtils.isEmpty(this.b)) {
+        localJSONObject2.put("extradata", new JSONObject(this.b));
+      }
+      localJSONObject1.put("data", localJSONObject2);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("RichMetaData", 2, "convertMetaData exception : " + localJSONException);
       }
     }
+    return localJSONObject1.toString();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Int = 1;
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
   }
 }
 

@@ -1,12 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import tencent.gdt.qq_ad_get.QQAdGet;
 
-public final class ackp
-  implements DialogInterface.OnClickListener
+public abstract class ackp
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public GdtHandler.Params a;
+  public qq_ad_get.QQAdGet a;
+  
+  public boolean a()
   {
-    paramDialogInterface.dismiss();
+    return this.a != null;
   }
 }
 

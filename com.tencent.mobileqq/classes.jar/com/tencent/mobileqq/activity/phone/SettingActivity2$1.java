@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.qphone.base.util.QLog;
 
 class SettingActivity2$1
@@ -10,7 +10,7 @@ class SettingActivity2$1
   
   public void run()
   {
-    boolean bool = this.this$0.a.k();
+    boolean bool = this.this$0.a.m();
     if (QLog.isColorLevel()) {
       QLog.i("SettingActivity2", 2, "doOnResume : " + bool);
     }
@@ -18,7 +18,7 @@ class SettingActivity2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.SettingActivity2.1
  * JD-Core Version:    0.7.0.1
  */

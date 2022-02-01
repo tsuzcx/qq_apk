@@ -23,7 +23,7 @@ public abstract class Feature
 {
   private static final String TAG = "AEKitFeature";
   private Object initLock = new Object();
-  protected boolean isInited = false;
+  protected volatile boolean isInited = false;
   protected boolean isSoFilesLoaded = false;
   private String pendingErrorMessage = "";
   private String resourceDirOverrideFeatureManager;
@@ -592,7 +592,7 @@ public abstract class Feature
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.Feature
  * JD-Core Version:    0.7.0.1
  */

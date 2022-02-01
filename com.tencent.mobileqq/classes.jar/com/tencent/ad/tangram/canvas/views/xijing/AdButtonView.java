@@ -8,6 +8,7 @@ import android.support.annotation.Keep;
 import android.text.TextUtils.TruncateAt;
 import android.widget.TextView;
 import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.ad.tangram.util.AdUIUtils;
 
 @Keep
 public class AdButtonView
@@ -34,7 +35,7 @@ public class AdButtonView
       setText(parama.text.text);
       setSingleLine(true);
       setEllipsize(TextUtils.TruncateAt.END);
-      int i = com.tencent.ad.tangram.canvas.views.a.dp2px(2.0F, paramContext.getResources());
+      int i = AdUIUtils.dp2px(2.0F, paramContext.getResources());
       setPadding(i, 0, i, 0);
       setTextSize(0, parama.text.size);
       setTextColor(parama.text.color);
@@ -48,7 +49,7 @@ public class AdButtonView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.xijing.AdButtonView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import aeqq;
-import android.view.ViewGroup;
-import banz;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import java.io.File;
-import mqq.os.MqqHandler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.widget.ScrollerRunnable;
 
 class BaseChatPie$27
   implements Runnable
 {
-  BaseChatPie$27(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$27(BaseChatPie paramBaseChatPie, int paramInt) {}
   
   public void run()
   {
-    if (banz.a().c()) {}
-    do
-    {
-      return;
-      if ((aeqq.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, 3, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aeqq)) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aeqq.a != this.this$0.d.getBackground())) {
-        this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(60, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aeqq.a));
-      }
-    } while (!ChatBackgroundManager.b(new File(aeqq.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))));
-    ThreadManager.getSubThreadHandler().postDelayed(new BaseChatPie.27.1(this), 2000L);
+    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
+    this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setSelectionFromTop(i + this.a, this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.a, 250L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.27
  * JD-Core Version:    0.7.0.1
  */

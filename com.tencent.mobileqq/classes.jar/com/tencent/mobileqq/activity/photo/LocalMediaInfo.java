@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aioa;
+import akeu;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjum;
-import bjvs;
+import bmiw;
+import bmkc;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class LocalMediaInfo
   implements Parcelable, Serializable, Comparable<LocalMediaInfo>
 {
-  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new aioa();
+  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new akeu();
   public static final int PHOTO_LAST_SELECTED = 3;
   public static final int PHOTO_SELECTED = 1;
   public static final int PHOTO_UNSELECTED = 2;
@@ -33,6 +33,7 @@ public class LocalMediaInfo
   public Bundle bundle;
   public String fakeVid;
   public long fileSize;
+  public String filterID = "";
   public int index;
   public boolean isMakeVideo;
   public boolean isRecord;
@@ -62,7 +63,12 @@ public class LocalMediaInfo
   public String mTransId;
   public ArrayList<Long> mTransferPosList;
   public int mVideoType;
+  public String materialID = "";
+  public String materialName = "";
   public int mediaHeight;
+  public int mediaOriginHeight;
+  public long mediaOriginSize;
+  public int mediaOriginWidth;
   public int mediaWidth;
   public String missionID;
   public long modifiedDate;
@@ -73,6 +79,7 @@ public class LocalMediaInfo
   public Integer position = Integer.valueOf(-1);
   public int redBagType;
   public int rotation;
+  public String scheme = "";
   public int selectStatus;
   public int specialVideoType;
   public int thumbHeight;
@@ -80,6 +87,7 @@ public class LocalMediaInfo
   public int thumbSize;
   public int thumbWidth;
   public String thumbnailPath;
+  public float thumbnailProgress = 0.5F;
   public long visableTime;
   
   public static String getUrl(LocalMediaInfo paramLocalMediaInfo)
@@ -147,7 +155,7 @@ public class LocalMediaInfo
   
   public boolean isPanoramaPhoto()
   {
-    if (!bjum.a().b()) {}
+    if (!bmiw.a().b()) {}
     do
     {
       return false;
@@ -160,13 +168,13 @@ public class LocalMediaInfo
   
   public void setPanoramaType()
   {
-    if ((this.panoramaPhotoType != 0) || (!bjum.a().b())) {}
+    if ((this.panoramaPhotoType != 0) || (!bmiw.a().b())) {}
     while ((this.mediaWidth == 0) || (this.mediaHeight == 0)) {
       return;
     }
     if ((this.mediaHeight >= 1000) && (this.mediaWidth / this.mediaHeight == 2.0F))
     {
-      if (bjvs.a().a(this.path))
+      if (bmkc.a().a(this.path))
       {
         this.panoramaPhotoType = 2;
         return;
@@ -184,7 +192,7 @@ public class LocalMediaInfo
   
   public String toString()
   {
-    return "LocalMediaInfo{_id=" + this._id + ", path='" + this.path + '\'' + ", fileSize=" + this.fileSize + ", addedDate=" + this.addedDate + ", modifiedDate=" + this.modifiedDate + ", orientation=" + this.orientation + ", mDuration=" + this.mDuration + ", mChecked=" + this.mChecked + ", selectStatus=" + this.selectStatus + ", rotation=" + this.rotation + ", thumbWidth=" + this.thumbWidth + ", thumbHeight=" + this.thumbHeight + ", index=" + this.index + ", position=" + this.position + ", mMimeType='" + this.mMimeType + '\'' + ", mediaWidth=" + this.mediaWidth + ", mediaHeight=" + this.mediaHeight + ", isSystemMeidaStore=" + this.isSystemMeidaStore + ", isRegionThumbUseNewDecoder=" + this.isRegionThumbUseNewDecoder + ", panoramaPhotoType=" + this.panoramaPhotoType + ", mediaType=" + this.mMediaType + ", isVideoReady=" + this.isVideoReady + ", missionID=" + this.missionID + '}';
+    return "LocalMediaInfo{_id=" + this._id + ", path='" + this.path + '\'' + ", fileSize=" + this.fileSize + ", addedDate=" + this.addedDate + ", modifiedDate=" + this.modifiedDate + ", orientation=" + this.orientation + ", mDuration=" + this.mDuration + ", mChecked=" + this.mChecked + ", selectStatus=" + this.selectStatus + ", rotation=" + this.rotation + ", thumbWidth=" + this.thumbWidth + ", thumbHeight=" + this.thumbHeight + ", index=" + this.index + ", position=" + this.position + ", mMimeType='" + this.mMimeType + '\'' + ", mediaWidth=" + this.mediaWidth + ", mediaHeight=" + this.mediaHeight + ", isSystemMeidaStore=" + this.isSystemMeidaStore + ", isRegionThumbUseNewDecoder=" + this.isRegionThumbUseNewDecoder + ", panoramaPhotoType=" + this.panoramaPhotoType + ", mediaType=" + this.mMediaType + ", isVideoReady=" + this.isVideoReady + ", videoInfo=" + this.materialID + ", materialName=" + this.materialName + ", filterID=" + this.filterID + ", scheme=" + this.scheme + ", missionID=" + this.missionID + ", thumbnailProgress=" + this.thumbnailProgress + ", mediaOriginWidth=" + this.mediaOriginWidth + ", mediaOriginHeight=" + this.mediaOriginHeight + ", mediaOriginSize=" + this.mediaOriginSize + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -212,17 +220,20 @@ public class LocalMediaInfo
       paramParcel.writeInt(this.mMediaType);
       paramParcel.writeInt(this.mediaWidth);
       paramParcel.writeInt(this.mediaHeight);
+      paramParcel.writeInt(this.mediaOriginWidth);
+      paramParcel.writeInt(this.mediaOriginHeight);
+      paramParcel.writeLong(this.mediaOriginSize);
       if (!this.isSystemMeidaStore) {
-        break label287;
+        break label351;
       }
       paramInt = 1;
-      label173:
+      label197:
       paramParcel.writeByte((byte)paramInt);
       if (!this.isRegionThumbUseNewDecoder) {
-        break label292;
+        break label356;
       }
       paramInt = 1;
-      label188:
+      label212:
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeInt(this.longitude);
       paramParcel.writeInt(this.latitude);
@@ -231,31 +242,36 @@ public class LocalMediaInfo
       paramParcel.writeString(this.mCloudPhotoOwnerAlbumId);
       paramParcel.writeString(this.mCloudPhotoId);
       if (!this.isVideoReady) {
-        break label297;
+        break label361;
       }
     }
-    label287:
-    label292:
-    label297:
+    label351:
+    label356:
+    label361:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeString(this.materialID);
+      paramParcel.writeString(this.materialName);
+      paramParcel.writeString(this.filterID);
+      paramParcel.writeString(this.scheme);
       paramParcel.writeString(this.missionID);
       paramParcel.writeList(this.mTransferPosList);
       paramParcel.writeList(this.aiTextLabel);
+      paramParcel.writeFloat(this.thumbnailProgress);
       return;
       paramInt = 0;
       break;
       paramInt = 0;
-      break label173;
+      break label197;
       paramInt = 0;
-      break label188;
+      break label212;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.LocalMediaInfo
  * JD-Core Version:    0.7.0.1
  */

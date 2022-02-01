@@ -1,18 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class amzf
-  implements Parcelable.Creator<ArEffectConfig>
+class amzf
 {
-  public ArEffectConfig a(Parcel paramParcel)
+  public int a;
+  public String a;
+  public List<amzd> a;
+  public List<amzc> b = new ArrayList();
+  
+  public amzf()
   {
-    return new ArEffectConfig(paramParcel);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public ArEffectConfig[] a(int paramInt)
+  public String toString()
   {
-    return new ArEffectConfig[paramInt];
+    StringBuffer localStringBuffer = new StringBuffer("ThunderConfig{");
+    localStringBuffer.append("mPageId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mMd5='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mCmdConfigs=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", mCGIConfigs=").append(this.b);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

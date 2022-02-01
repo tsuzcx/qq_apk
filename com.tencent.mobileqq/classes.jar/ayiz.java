@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class ayiz
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ayiz(BaseSearchActivity paramBaseSearchActivity) {}
+  public ayiz(ScanOcrView paramScanOcrView, ayja paramayja) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.finish();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_Ayja.e = i;
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
   }
 }
 

@@ -1,78 +1,184 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.fts.FTSDatabase;
+import com.tencent.mobileqq.persistence.fts.FTSDatatbase;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class aoni
-  extends aokh<aonh>
+public abstract class aoni
+  extends Observable
 {
-  public int a()
+  protected int a;
+  protected long a;
+  public aonm a;
+  protected aonp a;
+  public QQAppInterface a;
+  protected FTSDatabase a;
+  protected FTSDatatbase a;
+  protected boolean a;
+  protected int b;
+  protected boolean b;
+  protected int c;
+  private boolean c;
+  
+  public aoni(QQAppInterface paramQQAppInterface, aonm paramaonm)
   {
-    return 528;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aonm = paramaonm;
   }
   
-  @NonNull
-  public aonh a(int paramInt)
+  public String a()
   {
-    return new aonh();
-  }
-  
-  @Nullable
-  public aonh a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    StringBuilder localStringBuilder1 = new StringBuilder(50);
+    StringBuilder localStringBuilder2 = localStringBuilder1.append(" ").append(getClass().getSimpleName()).append(" transCount:").append(this.jdField_c_of_type_Int).append(" transCost:").append(this.jdField_a_of_type_Long).append(" transAvg:");
+    if (this.jdField_c_of_type_Int != 0) {}
+    for (float f = (float)this.jdField_a_of_type_Long * 1.0F / this.jdField_c_of_type_Int;; f = 0.0F)
     {
-      aonh localaonh = aonh.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceManageConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
-      }
-      return localaonh;
+      localStringBuilder2.append(f);
+      this.jdField_a_of_type_Long = 0L;
+      this.jdField_c_of_type_Int = 0;
+      return localStringBuilder1.toString();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onParsed is null");
-    }
+  }
+  
+  public ArrayList<FTSEntity> a(String paramString, Class<? extends FTSEntity> paramClass, boolean paramBoolean1, boolean paramBoolean2)
+  {
     return null;
   }
   
-  public Class<aonh> a()
+  public ArrayList<FTSEntity> a(String paramString, Class<? extends FTSEntity> paramClass, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    return aonh.class;
+    return null;
   }
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    this.jdField_b_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Aonp != null) {
+      this.jdField_a_of_type_Aonp.a();
     }
   }
   
-  public void a(aonh paramaonh)
+  public void a(Observer paramObserver)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onUpdate " + paramaonh.toString());
+    if (paramObserver != null) {
+      addObserver(paramObserver);
     }
   }
   
-  public int b()
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "migrateOldVersion");
+    if (bguq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 1) {}
+    while (this.jdField_a_of_type_Aonp == null) {
+      return false;
     }
-    return 0;
+    return this.jdField_a_of_type_Aonp.a();
+  }
+  
+  public boolean a(FTSDatatbase paramFTSDatatbase, FTSDatabase paramFTSDatabase)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSDatatbase = paramFTSDatatbase;
+    this.jdField_a_of_type_ComTencentMobileqqFtsFTSDatabase = paramFTSDatabase;
+    return true;
+  }
+  
+  public void b()
+  {
+    if (a()) {
+      b();
+    }
+  }
+  
+  public void b(Observer paramObserver)
+  {
+    if (paramObserver != null) {
+      deleteObserver(paramObserver);
+    }
   }
   
   public boolean b()
   {
-    return false;
+    if (this.jdField_a_of_type_Aonp != null) {
+      return this.jdField_a_of_type_Aonp.b();
+    }
+    return true;
+  }
+  
+  public void c()
+  {
+    setChanged();
+    notifyObservers();
   }
   
   public boolean c()
   {
     return true;
   }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Aonm.obtainMessage(2, this).sendToTarget();
+  }
+  
+  protected boolean d()
+  {
+    boolean bool3 = false;
+    int i;
+    boolean bool1;
+    if (!this.jdField_c_of_type_Boolean) {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.a();
+        if (i == 0)
+        {
+          this.jdField_c_of_type_Boolean = true;
+          bool1 = false;
+          label39:
+          bool2 = bool1;
+          if (i == 1) {
+            this.jdField_c_of_type_Boolean = true;
+          }
+        }
+      }
+    }
+    for (boolean bool2 = bool1;; bool2 = true)
+    {
+      if ((bool2) && (e()) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Stop)) {}
+      for (bool1 = bool3;; bool1 = bool2)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.fts.sync_worker", 2, "isSaveDBAtOnce unActionLoginB atOnce:" + bool1);
+        }
+        return bool1;
+      }
+      bool1 = true;
+      break label39;
+      i = 0;
+      break;
+    }
+  }
+  
+  public abstract void e();
+  
+  protected boolean e()
+  {
+    return false;
+  }
+  
+  public boolean f()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoni
  * JD-Core Version:    0.7.0.1
  */

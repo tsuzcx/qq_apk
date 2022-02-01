@@ -1,44 +1,27 @@
-import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.qzone.widget.FastAnimationDrawable;
+import java.lang.ref.WeakReference;
 
 public class bmpe
-  extends bmpw
+  extends Handler
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  public String b;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private final WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bmpe(int paramInt, Bitmap paramBitmap)
+  public bmpe(FastAnimationDrawable paramFastAnimationDrawable, Drawable paramDrawable)
   {
-    super(paramInt, paramBitmap);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+    super(Looper.getMainLooper());
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDrawable);
   }
   
-  public bmpe a(Bitmap paramBitmap)
+  public void handleMessage(Message paramMessage)
   {
-    paramBitmap = new bmpe(this.jdField_c_of_type_Int, paramBitmap);
-    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramBitmap.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    return paramBitmap;
-  }
-  
-  public String toString()
-  {
-    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_c_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + '}';
+    paramMessage = (Drawable)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramMessage != null) {
+      paramMessage.invalidateSelf();
+    }
   }
 }
 

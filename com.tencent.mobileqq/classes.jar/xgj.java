@@ -1,24 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class xgj
-  implements xon
+  extends yku
 {
-  public xgj(DoodleLayout paramDoodleLayout) {}
+  public xgj(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void a(@NonNull xou paramxou)
+  public void a(int paramInt, View paramView, Object paramObject, ynb paramynb)
   {
-    wxk.b("0X80075CD");
-    if ((this.a.a != null) && (this.a.a.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 1, 2);
+    if ((paramObject instanceof QQUserUIItem))
+    {
+      paramView = (QQUserUIItem)paramObject;
+      wjz.a(this.a.a, 10, paramView.uid);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xgj
  * JD-Core Version:    0.7.0.1
  */

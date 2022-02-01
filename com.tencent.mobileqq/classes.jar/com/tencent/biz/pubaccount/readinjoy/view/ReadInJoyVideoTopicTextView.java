@@ -10,15 +10,13 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bdaq;
+import bggq;
 
 public class ReadInJoyVideoTopicTextView
   extends TextView
 {
-  private final int jdField_a_of_type_Int = 14;
   private Context jdField_a_of_type_AndroidContentContext;
   private String jdField_a_of_type_JavaLangString;
-  private final int b = 8;
   
   public ReadInJoyVideoTopicTextView(Context paramContext)
   {
@@ -42,16 +40,16 @@ public class ReadInJoyVideoTopicTextView
   {
     SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_JavaLangString);
     Object localObject = new ForegroundColorSpan(Color.parseColor("#737373"));
-    int j = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 5.5F);
+    int j = bggq.a(this.jdField_a_of_type_AndroidContentContext, 5.5F);
     int i;
     if (paramInt == 1)
     {
-      localObject = getResources().getDrawable(2130842785);
-      paramInt = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 12.0F);
+      localObject = getResources().getDrawable(2130843127);
+      paramInt = bggq.a(this.jdField_a_of_type_AndroidContentContext, 12.0F);
       ((Drawable)localObject).setBounds(0, 0, paramInt, paramInt);
-      setCompoundDrawablePadding(bdaq.a(this.jdField_a_of_type_AndroidContentContext, 3.0F));
+      setCompoundDrawablePadding(bggq.a(this.jdField_a_of_type_AndroidContentContext, 3.0F));
       setCompoundDrawables((Drawable)localObject, null, null, null);
-      i = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 4.5F);
+      i = bggq.a(this.jdField_a_of_type_AndroidContentContext, 4.5F);
       setTextSize(2, 12.0F);
     }
     for (;;)
@@ -59,10 +57,10 @@ public class ReadInJoyVideoTopicTextView
       setTextColor(Color.parseColor("#737373"));
       setText(localSpannableString);
       setIncludeFontPadding(false);
-      setPadding(bdaq.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), i, bdaq.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), i);
+      setPadding(bggq.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), i, bggq.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), i);
       setClickable(true);
       setFocusable(true);
-      setBackgroundResource(2130842782);
+      setBackgroundResource(2130843124);
       setSingleLine(true);
       setGravity(17);
       return;
@@ -70,7 +68,7 @@ public class ReadInJoyVideoTopicTextView
       if (paramInt == 2)
       {
         localSpannableString.setSpan(localObject, 0, this.jdField_a_of_type_JavaLangString.length(), 34);
-        setHeight(bdaq.a(this.jdField_a_of_type_AndroidContentContext, 27.0F));
+        setHeight(bggq.a(this.jdField_a_of_type_AndroidContentContext, 27.0F));
         setTextSize(2, 14.0F);
         i = j;
       }
@@ -81,7 +79,7 @@ public class ReadInJoyVideoTopicTextView
   {
     Rect localRect = new Rect();
     getPaint().getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), localRect);
-    return localRect.width() + bdaq.a(this.jdField_a_of_type_AndroidContentContext, 8.0F) * 2;
+    return localRect.width() + bggq.a(this.jdField_a_of_type_AndroidContentContext, 8.0F) * 2;
   }
   
   public void setSubChannelText(String paramString)
@@ -98,7 +96,7 @@ public class ReadInJoyVideoTopicTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoTopicTextView
  * JD-Core Version:    0.7.0.1
  */

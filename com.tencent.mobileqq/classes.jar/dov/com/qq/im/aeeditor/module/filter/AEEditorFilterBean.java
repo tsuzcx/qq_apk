@@ -2,34 +2,30 @@ package dov.com.qq.im.aeeditor.module.filter;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean.AEEditorEffectItem;
 import java.io.Serializable;
+import org.jetbrains.annotations.NotNull;
 
 public class AEEditorFilterBean
   implements Serializable
 {
-  private float defaultAlpha;
-  private String lutName;
+  @NotNull
+  private AEEditorEffectGroupListBean.AEEditorEffectItem editorEffectItem = new AEEditorEffectGroupListBean.AEEditorEffectItem();
+  @NotNull
+  private AEFilterExtendBean effectExtendBean = new AEFilterExtendBean();
+  private String effectId;
   private String name;
   @SerializedName("picurl")
   private String picUrl;
-  private String sid;
+  private int progress = -1;
   @Expose(deserialize=false, serialize=false)
-  public AEEditorFilterBean.FilterID type = AEEditorFilterBean.FilterID.COLOR;
+  public AEEditorFilterBean.FilterID type = AEEditorFilterBean.FilterID.CLIENT;
   
   public static AEEditorFilterBean createAiFilterInstance()
   {
     AEEditorFilterBean localAEEditorFilterBean = new AEEditorFilterBean();
     localAEEditorFilterBean.type = AEEditorFilterBean.FilterID.AIFilter;
-    localAEEditorFilterBean.sid = "lut_aieffect";
-    return localAEEditorFilterBean;
-  }
-  
-  public static AEEditorFilterBean createComicsFilterInstance()
-  {
-    AEEditorFilterBean localAEEditorFilterBean = new AEEditorFilterBean();
-    localAEEditorFilterBean.type = AEEditorFilterBean.FilterID.Comics;
-    localAEEditorFilterBean.sid = "lut_comics";
-    localAEEditorFilterBean.picUrl = "https://down.qq.com/shadow_qqcamera/LUTFilterResource/cover/comic_cover@3x.png";
+    localAEEditorFilterBean.effectId = "effect_aieffect";
     return localAEEditorFilterBean;
   }
   
@@ -37,18 +33,24 @@ public class AEEditorFilterBean
   {
     AEEditorFilterBean localAEEditorFilterBean = new AEEditorFilterBean();
     localAEEditorFilterBean.type = AEEditorFilterBean.FilterID.NON;
-    localAEEditorFilterBean.sid = "lut_blank";
+    localAEEditorFilterBean.effectId = "effect_blank";
     return localAEEditorFilterBean;
   }
   
-  public float getDefaultAlpha()
+  public AEEditorEffectGroupListBean.AEEditorEffectItem getEditorEffectItem()
   {
-    return this.defaultAlpha;
+    return this.editorEffectItem;
   }
   
-  public String getLutName()
+  @NotNull
+  public AEFilterExtendBean getEffectExtendBean()
   {
-    return this.lutName;
+    return this.effectExtendBean;
+  }
+  
+  public String getEffectId()
+  {
+    return this.effectId;
   }
   
   public String getName()
@@ -61,19 +63,24 @@ public class AEEditorFilterBean
     return this.picUrl;
   }
   
-  public String getSid()
+  public int getProgress()
   {
-    return this.sid;
+    return this.progress;
   }
   
-  public void setDefaultAlpha(float paramFloat)
+  public void setEditorEffectItem(@NotNull AEEditorEffectGroupListBean.AEEditorEffectItem paramAEEditorEffectItem)
   {
-    this.defaultAlpha = paramFloat;
+    this.editorEffectItem = paramAEEditorEffectItem;
   }
   
-  public void setLutName(String paramString)
+  public void setEffectExtendBean(@NotNull AEFilterExtendBean paramAEFilterExtendBean)
   {
-    this.lutName = paramString;
+    this.effectExtendBean = paramAEFilterExtendBean;
+  }
+  
+  public void setEffectId(String paramString)
+  {
+    this.effectId = paramString;
   }
   
   public void setName(String paramString)
@@ -86,14 +93,14 @@ public class AEEditorFilterBean
     this.picUrl = paramString;
   }
   
-  public void setSid(String paramString)
+  public void setProgress(int paramInt)
   {
-    this.sid = paramString;
+    this.progress = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,18 @@
-import android.os.Handler;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.upload.common.UploadConfiguration.NetworkStateObserver;
 
 class blvj
-  implements bmsf
+  implements bmiv
 {
-  blvj(blvi paramblvi) {}
+  blvj(blvi paramblvi, UploadConfiguration.NetworkStateObserver paramNetworkStateObserver) {}
   
-  public void a(int paramInt, List<uxf> paramList)
+  public void onNetworkConnect(boolean paramBoolean)
   {
-    wxe.b("PasterDataManager", "onPOIPostersRequestResult callback");
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = Collections.EMPTY_LIST;
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadEnv", 2, "upload2: onNetworkConnect registerNetworkStateObserver|onNetworkConnect：" + paramBoolean);
     }
-    umc.a().dispatch(new bmsd(paramInt, (List)localObject));
+    blvi.a(this.jdField_a_of_type_Blvi, paramBoolean);
+    this.jdField_a_of_type_ComTencentUploadCommonUploadConfiguration$NetworkStateObserver.onStateChanged(paramBoolean);
   }
 }
 

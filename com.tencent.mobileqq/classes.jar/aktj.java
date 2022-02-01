@@ -1,121 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
+import Wallet.RedInfoSyncRsp;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aktj
+class aktj
+  implements BusinessObserver
 {
-  public static int a(int paramInt)
-  {
-    if (a(paramInt)) {
-      return 1;
-    }
-    return 0;
-  }
+  aktj(akti paramakti) {}
   
-  public static int a(int paramInt, long paramLong)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = paramInt * 400 / 540;
-    if (i <= paramLong * 0.7D)
-    {
-      paramInt = i;
-      if (i > 0) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "redInfoSyncReq onReceive" + paramBoolean);
     }
-    else
+    StringBuilder localStringBuilder;
+    if ((paramBoolean) && (paramBundle != null))
     {
-      paramInt = (int)(paramLong * 0.7D);
-    }
-    return paramInt;
-  }
-  
-  public static akom a(QQAppInterface paramQQAppInterface, String paramString, ApolloBaseInfo paramApolloBaseInfo, int paramInt)
-  {
-    if ((paramQQAppInterface == null) || (paramApolloBaseInfo == null) || (TextUtils.isEmpty(paramString)))
-    {
-      QLog.e("ApolloDrawerInfoManager", 1, "checkDrawerRoleDressInfo param err");
-      return null;
-    }
-    int i = 0;
-    int[] arrayOfInt = null;
-    int j = 0;
-    akom localakom = null;
-    int k = aknx.a(paramQQAppInterface, paramString);
-    int m = paramApolloBaseInfo.apolloStatus;
-    aksm localaksm = paramApolloBaseInfo.getApolloDress();
-    if (localaksm != null)
-    {
-      i = localaksm.jdField_a_of_type_Int;
-      arrayOfInt = localaksm.a();
-    }
-    localaksm = paramApolloBaseInfo.getApolloDress3D();
-    paramApolloBaseInfo = localakom;
-    if (localaksm != null)
-    {
-      j = localaksm.jdField_a_of_type_Int;
-      paramApolloBaseInfo = localaksm.a();
-    }
-    localakom = new akom();
-    localakom.jdField_a_of_type_Int = i;
-    localakom.jdField_a_of_type_ArrayOfInt = arrayOfInt;
-    localakom.jdField_b_of_type_Int = j;
-    localakom.jdField_b_of_type_ArrayOfInt = paramApolloBaseInfo;
-    localakom.c = m;
-    localakom.d = k;
-    localakom.e = albi.b(paramInt);
-    boolean bool;
-    if (m != 1)
-    {
-      bool = true;
-      QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo apollo not open from:", Integer.valueOf(paramInt), ",apolloFeatureFlag:", Integer.valueOf(m) });
-      alhp.a(localakom.e, 10, 101, new Object[] { "apollo not open, flag:", Integer.valueOf(m) });
-    }
-    for (;;)
-    {
-      localakom.jdField_a_of_type_Boolean = bool;
-      if ((!bool) && (QLog.isColorLevel())) {
-        QLog.d("ApolloDrawerInfoManager", 2, new Object[] { "checkDrawerRoleDressInfo from:", Integer.valueOf(paramInt), ",result:", localakom.toString() });
-      }
-      alhp.a(localakom.e, 10, new Object[] { localakom.toString() });
-      return localakom;
-      if ((k == 1) && ((i <= 0) || (arrayOfInt == null) || (arrayOfInt.length <= 0) || ((i > 0) && (!algj.a(paramString, i, arrayOfInt, paramQQAppInterface)))))
+      paramBundle = (RedInfoSyncRsp)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel())
       {
-        bool = true;
-        QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo basic not ready, from:", Integer.valueOf(paramInt), ",result:", localakom.toString() });
-        alhp.a(localakom.e, 10, 111, new Object[] { "basic not ready:" + localakom.toString() });
-      }
-      else
-      {
-        if ((k == 2) && ((j <= 0) || (paramApolloBaseInfo == null) || (paramApolloBaseInfo.length <= 0) || ((j > aliu.jdField_a_of_type_Int) && (!algj.a(paramString, j, paramApolloBaseInfo, paramQQAppInterface)))))
-        {
-          QLog.d("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo 3D not ready, from:", Integer.valueOf(paramInt), ",result:", localakom.toString() });
-          alhp.a(localakom.e, 10, new Object[] { "3D role/dress not ready but show basic" });
-        }
-        if (!ApolloEngine.a())
-        {
-          QLog.d("ApolloDrawerInfoManager", 1, "so is not ready");
-          alhp.a(localakom.e, 10, 102, new Object[] { "so not ready" });
-          bool = true;
-        }
-        else
-        {
-          bool = false;
+        localStringBuilder = new StringBuilder().append("RedInfoSyncRsp|");
+        if (paramBundle == null) {
+          break label97;
         }
       }
     }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return paramInt == 6;
-  }
-  
-  public static int b(int paramInt)
-  {
-    if (a(paramInt)) {
-      return 3;
+    label97:
+    for (paramBundle = Integer.valueOf(paramBundle.result);; paramBundle = "")
+    {
+      QLog.d("QWalletRedManager", 2, paramBundle);
+      return;
     }
-    return 2;
   }
 }
 

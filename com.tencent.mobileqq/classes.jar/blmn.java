@@ -1,20 +1,14 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
-import java.util.List;
+import android.os.Bundle;
 
 public class blmn
-  implements bmeo<List<AEEditorFilterBean>>
 {
-  public blmn(AEEditorCommonEditFragment paramAEEditorCommonEditFragment, boolean paramBoolean) {}
+  public int a;
+  public Bundle a;
   
-  public void a(@Nullable List<AEEditorFilterBean> paramList)
+  blmn(blml paramblml, int paramInt, Bundle paramBundle)
   {
-    bljn.b(AEEditorCommonEditFragment.d(), "mFiltersObserver-onChanged");
-    if (paramList != null) {
-      this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorCommonEditFragment.a.setFiltersData(paramList, this.jdField_a_of_type_Boolean);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
 }
 

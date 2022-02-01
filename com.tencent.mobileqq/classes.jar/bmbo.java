@@ -1,12 +1,35 @@
-public abstract interface bmbo
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+
+class bmbo
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  bmbo(bmbn parambmbn) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    float f = paramScaleGestureDetector.getScaleFactor();
+    bmbn.a(this.a, 1.0F - f + bmbn.b(this.a));
+    if (bmbn.a(this.a) == 0) {
+      bmbn.a(this.a, Math.max(bmbn.c(this.a), Math.min(1.5F, bmbn.b(this.a))));
+    }
+    for (;;)
+    {
+      bmbn.b(this.a, bmbn.b(this.a) / bmbn.d(this.a));
+      if (bmbn.a(this.a) != null) {
+        bmbn.a(this.a).a(bmbn.b(this.a));
+      }
+      return true;
+      bmbn.a(this.a, Math.max(bmbn.c(this.a), Math.min(1.0F, bmbn.b(this.a))));
+    }
+  }
   
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return true;
+  }
   
-  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

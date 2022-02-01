@@ -1,29 +1,68 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 
-class qww
-  implements URLDrawable.URLDrawableListener
+public class qww
+  extends ClickableSpan
+  implements sth
 {
-  qww(qwp paramqwp) {}
+  private int jdField_a_of_type_Int = -1;
+  protected long a;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public qww(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader, long paramLong, int paramInt)
   {
-    qwp.b(this.a);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(boolean paramBoolean)
   {
-    paramURLDrawable = bdhj.b(paramURLDrawable.getCurrDrawable());
-    qwp.a(this.a, paramURLDrawable, qwp.a(this.a).e);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = pgc.g + bgku.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
+    pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.getContext(), paramView);
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a.a.a();
+    pha.a = localArticleInfo;
+    String str = pha.a("2", localArticleInfo, this.jdField_a_of_type_Long);
+    if (ube.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a.a.e())) {}
+    for (paramView = "0X800935C";; paramView = "0X8007BA3")
+    {
+      oat.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Long), paramView, paramView, 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a.a.a().mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
+      snh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a.a.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a.a.e());
+      return;
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = Color.parseColor("#F8F8F8"))
+    {
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qww
  * JD-Core Version:    0.7.0.1
  */

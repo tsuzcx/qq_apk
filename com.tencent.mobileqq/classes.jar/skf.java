@@ -1,19 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
 class skf
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  skf(skd paramskd) {}
+  skf(ske paramske) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    }
+    if (ske.a(this.a) != null) {
+      ske.a(this.a).a(ske.a(this.a), ske.b(this.a), false, false);
+    }
+    ske.a(this.a, true);
+    ske.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     skf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
-import mqq.os.MqqHandler;
-
-public class amgk
-  extends MqqHandler
+class amgk
 {
-  public amgk(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
+  public int a;
+  public String a;
   
-  public void handleMessage(Message paramMessage)
+  amgk(amgh paramamgh)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    NewFriendVerifyBlockedListFragment.a(this.a);
+    this.jdField_a_of_type_JavaLangString = "0";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amgk
  * JD-Core Version:    0.7.0.1
  */

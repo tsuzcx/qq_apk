@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import pvy;
-import pxb;
+import qoi;
+import qpo;
 
 public class PTSEngineLoader$2
   implements Runnable
 {
-  public PTSEngineLoader$2(pvy parampvy) {}
+  public PTSEngineLoader$2(qoi paramqoi) {}
   
   public void run()
   {
-    if (!pxb.a.c()) {
+    if (!qpo.a.c()) {
       return;
     }
-    pvy.a(this.this$0);
-    pvy.b(this.this$0);
+    qoi.a(this.this$0);
+    qoi.b(this.this$0);
   }
 }
 

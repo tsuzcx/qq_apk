@@ -1,6 +1,10 @@
-class alhv
+public abstract interface alhv
 {
-  private static final alht a = new alht(null);
+  public abstract void a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
 }
 
 

@@ -1,44 +1,21 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class acwa
-  implements View.OnClickListener
+class acwa
+  implements NoColumnErrorHandler
 {
-  public acwa(EditInfoActivity paramEditInfoActivity) {}
+  acwa(acvz paramacvz) {}
   
-  public void onClick(View paramView)
+  public void handleNoColumnError(NoColumnError paramNoColumnError)
   {
-    paramView = this.a;
-    if (!this.a.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramNoColumnError != null) && (("unreadGiftCount".equals(paramNoColumnError.mColumnName)) || ("unreadMark".equals(paramNoColumnError.mColumnName))))
     {
-      paramView.jdField_a_of_type_Boolean = bool;
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.unread.Proxy", 2, paramNoColumnError.getMessage(), paramNoColumnError);
       }
-      this.a.e();
-      if (this.a.getIntent().getBooleanExtra("key_need_hide_couser_when_emoj", false)) {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837979);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131704026));
-      if ((!this.a.b) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
-        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      }
-      return;
+      acvz.a(this.a, true);
     }
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847428);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131704016));
-    this.a.a();
   }
 }
 

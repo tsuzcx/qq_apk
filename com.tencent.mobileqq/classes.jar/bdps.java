@@ -1,42 +1,96 @@
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+
 public class bdps
 {
-  public static int a;
-  public static long a;
-  public static boolean a;
-  public static int b;
-  public static long b;
-  public static int c;
-  public static long c;
-  public static int d;
-  public static long d;
-  public static int e;
-  public static long e;
-  public static int f;
-  public static long f;
-  public static int g;
-  public static int h;
-  public static int i;
-  public static int j;
+  private String a;
+  private String b;
+  private String c;
   
-  public static void a()
+  public bdps a()
   {
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-    jdField_c_of_type_Int = 0;
-    jdField_d_of_type_Int = 0;
-    jdField_e_of_type_Int = 0;
-    jdField_f_of_type_Int = 0;
-    g = 0;
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Long = 0L;
-    h = 0;
-    i = 0;
-    j = 0;
-    jdField_c_of_type_Long = 0L;
-    jdField_d_of_type_Long = 0L;
-    jdField_e_of_type_Long = 0L;
-    jdField_f_of_type_Long = 0L;
-    jdField_a_of_type_Boolean = false;
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    return a("999").a(localBaseApplication, "999_540", "999_540");
+  }
+  
+  public bdps a(Context paramContext, String paramString1, String paramString2)
+  {
+    paramContext = a(paramContext);
+    this.b = (paramContext + paramString1 + ".zip");
+    this.c = (paramContext + paramString1 + File.separator + paramString2 + File.separator);
+    return this;
+  }
+  
+  public bdps a(String paramString)
+  {
+    this.a = paramString;
+    return this;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String a(Context paramContext)
+  {
+    paramContext = paramContext.getDir("theme_810", 0).getAbsolutePath();
+    StringBuilder localStringBuilder = afur.a().append(paramContext);
+    if (!paramContext.endsWith(File.separator)) {
+      localStringBuilder.append(File.separator);
+    }
+    return this.a + File.separator;
+  }
+  
+  public boolean a()
+  {
+    return new File(this.b).exists();
+  }
+  
+  public bdps b()
+  {
+    return a(BaseApplicationImpl.getContext(), "test", "test");
+  }
+  
+  public String b()
+  {
+    return ThemeUtil.getThemeConfigID(this.a);
+  }
+  
+  public String b(Context paramContext)
+  {
+    paramContext = a(paramContext);
+    return paramContext + "3_" + b() + ".cfg";
+  }
+  
+  public boolean b()
+  {
+    return new File(this.c).exists();
+  }
+  
+  public bdps c()
+  {
+    this.b = null;
+    this.c = null;
+    return this;
+  }
+  
+  public String c()
+  {
+    return this.b;
+  }
+  
+  public String d()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    return this.b;
   }
 }
 

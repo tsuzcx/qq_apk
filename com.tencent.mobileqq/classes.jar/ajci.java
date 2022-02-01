@@ -1,25 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import java.util.Collections;
-import java.util.List;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.mobileqq.widget.FolderTextView;
+import com.tencent.widget.SingleLineTextView;
 
 public class ajci
-  implements View.OnClickListener
 {
-  public ajci(ChooseItemView paramChooseItemView) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((ChooseItemView.a(this.a) != null) && (ChooseItemView.a(this.a).size() > 1))
-    {
-      Collections.shuffle(ChooseItemView.a(this.a));
-      this.a.a(ChooseItemView.a(this.a), true);
-    }
-    if (ChooseItemView.a(this.a) != null) {
-      ChooseItemView.a(this.a).onClick(paramView);
-    }
-  }
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TroopActiveLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
+  TroopLabelLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+  FolderTextView jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
 }
 
 

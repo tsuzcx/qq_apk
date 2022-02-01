@@ -5,7 +5,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import blat;
+import bnqb;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -67,13 +67,13 @@ public class LaunchCameraPlugin
       }
       QLog.d("LaunchCameraPlugin", 1, "data: " + localJSONObject.toString());
       paramJSONObject = "";
-      i = blat.a.a();
+      i = bnqb.a.a();
       str = "";
       if (localJSONObject.has("appId")) {
         paramJSONObject = localJSONObject.getString("appId");
       }
       if (localJSONObject.has("from")) {
-        i = blat.a(localJSONObject.getString("from")).a();
+        i = bnqb.a(localJSONObject.getString("from")).a();
       }
       if (localJSONObject.has("widgetid")) {
         str = localJSONObject.getString("widgetid");
@@ -94,7 +94,7 @@ public class LaunchCameraPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.LaunchCameraPlugin
  * JD-Core Version:    0.7.0.1
  */

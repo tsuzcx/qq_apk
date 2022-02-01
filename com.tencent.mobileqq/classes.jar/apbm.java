@@ -1,14 +1,17 @@
-import java.util.List;
-
-public abstract interface apbm
+public class apbm
 {
-  public abstract void a(apbq paramapbq, apdn paramapdn, apdd paramapdd);
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(List<apbq> paramList);
-  
-  public abstract void f();
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("skuId:").append(this.c).append(",skuName:").append(this.d).append(",skuPrice:").append(this.e).append(",imageUrl:").append(this.b).append(",detailUrl:").append(this.a);
+    return localStringBuilder.toString();
+  }
 }
 
 

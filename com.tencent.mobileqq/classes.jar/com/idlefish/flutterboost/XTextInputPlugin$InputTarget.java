@@ -1,6 +1,6 @@
 package com.idlefish.flutterboost;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 class XTextInputPlugin$InputTarget
 {
@@ -16,7 +16,7 @@ class XTextInputPlugin$InputTarget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.XTextInputPlugin.InputTarget
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import alud;
 import android.content.Context;
-import aqni;
-import aqqa;
-import arso;
-import arsu;
-import arvi;
-import com.tencent.mobileqq.app.ThreadManager;
+import anni;
+import asti;
+import asxb;
+import atwl;
+import atwr;
+import atxz;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -20,38 +20,38 @@ import java.util.Set;
 public class QfileLocalFileOtherTabView
   extends QfileBaseLocalFileTabView
 {
-  public QfileLocalFileOtherTabView(Context paramContext, List<arvi> paramList, boolean paramBoolean)
+  public QfileLocalFileOtherTabView(Context paramContext, List<atxz> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     setEditbarButton(false, false, true, true, true);
   }
   
-  protected aqni a()
+  protected asti a()
   {
-    return new aqqa(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
+    return new asxb(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
   }
   
   String a(String paramString)
   {
-    paramString = arso.a(paramString);
+    paramString = atwl.a(paramString);
     if ((paramString == null) || (paramString.length() == 0)) {
-      return alud.a(2131710083);
+      return anni.a(2131708459);
     }
     paramString = paramString.toLowerCase();
     if (".rar|.zip|.7z|.iso|.tar|.gz|".indexOf(paramString) >= 0) {
-      return alud.a(2131710060);
+      return anni.a(2131708436);
     }
     if (".txt|.html|.lit|.wdl|.ceb|.pdg|.epub|.caj|.umd|.jar|.mobi|".indexOf(paramString) >= 0) {
-      return alud.a(2131710077);
+      return anni.a(2131708453);
     }
-    return alud.a(2131710065);
+    return anni.a(2131708441);
   }
   
   protected void a()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this);
     this.jdField_a_of_type_JavaLangRunnable = new QfileLocalFileOtherTabView.1(this);
-    ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
+    ThreadManagerV2.excute(this.jdField_a_of_type_JavaLangRunnable, 64, null, true);
   }
   
   public void a(Set<FileInfo> paramSet)
@@ -97,20 +97,20 @@ public class QfileLocalFileOtherTabView
       if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
         break label50;
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().U();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().S();
     }
     for (;;)
     {
-      l();
+      o();
       return;
       label50:
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().Z();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().X();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView
  * JD-Core Version:    0.7.0.1
  */

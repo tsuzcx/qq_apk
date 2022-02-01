@@ -1,63 +1,42 @@
-import android.graphics.Color;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import java.util.ArrayList;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 
-public class ajxj
-  extends Animation
+class ajxj
+  implements TextWatcher
 {
-  private int jdField_a_of_type_Int;
-  private ajxk jdField_a_of_type_Ajxk;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  ajxj(ajxi paramajxi) {}
   
-  public ajxj(ArrayList<Integer> paramArrayList)
+  public void afterTextChanged(Editable paramEditable)
   {
-    a(paramArrayList);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(ArrayList<Integer> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
-      return;
-    }
-    float f = 1.0F / (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    int i = (int)(paramFloat / f);
-    f = (paramFloat - i * f) / f;
-    if (i == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-      i = this.jdField_a_of_type_JavaUtilArrayList.size() - 2;
-    }
-    for (;;)
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (paramEditable.length() == 0)
     {
-      int k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
-      int j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i + 1)).intValue();
-      i = j;
-      if (paramFloat < 1.0F)
-      {
-        i = (int)(Color.alpha(k) + (Color.alpha(j) - Color.alpha(k)) * f);
-        int m = (int)(Color.red(k) + (Color.red(j) - Color.red(k)) * f);
-        int n = (int)(Color.green(k) + (Color.green(j) - Color.green(k)) * f);
-        paramFloat = Color.blue(k);
-        i = Color.argb(i, m, n, (int)((Color.blue(j) - Color.blue(k)) * f + paramFloat));
-      }
-      this.jdField_a_of_type_Int = i;
-      if (this.jdField_a_of_type_Ajxk == null) {
-        break;
-      }
-      this.jdField_a_of_type_Ajxk.a(i);
+      this.a.jdField_b_of_type_JavaLangString = "";
+      this.a.findViewById(2131368135).setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.jdField_a_of_type_Ajxg.a();
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    }
+    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("C2CMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
+    }
+    this.a.jdField_b_of_type_JavaLangString = paramEditable;
+    this.a.findViewById(2131368135).setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    this.a.a();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

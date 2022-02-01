@@ -28,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/reporter/proxy/QAPMUploadProxy;", "Lcom/tencent/qapmsdk/common/reporter/IReporter;", "()V", "handler", "Landroid/os/Handler;", "getHandler", "()Landroid/os/Handler;", "report", "", "baseJson", "Lcom/tencent/qapmsdk/common/reporter/BaseJsonObject;", "callback", "Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;", "reportFile", "", "resultObject", "Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;", "query", "", "filePath", "reportJson", "Companion", "qapmbase_release"}, k=1, mv={1, 1, 15})
-public class QAPMUploadProxy
+public final class QAPMUploadProxy
   implements IReporter
 {
   public static final QAPMUploadProxy.Companion Companion = new QAPMUploadProxy.Companion(null);
@@ -136,7 +136,7 @@ public class QAPMUploadProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.proxy.QAPMUploadProxy
  * JD-Core Version:    0.7.0.1
  */

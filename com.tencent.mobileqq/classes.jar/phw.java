@@ -1,19 +1,37 @@
-import android.support.annotation.Nullable;
-import java.util.ArrayList;
+import com.tencent.aladdin.config.utils.AladdinLogger;
+import com.tencent.qphone.base.util.QLog;
 
-class phw
-  implements phy<BEAN, COOKIE>
+public class phw
+  implements AladdinLogger
 {
-  phw(phu paramphu, boolean paramBoolean, php paramphp) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, ArrayList<BEAN> paramArrayList, @Nullable COOKIE paramCOOKIE, int paramInt2, String paramString)
+  public void d(String paramString1, String paramString2)
   {
-    phu.a(this.jdField_a_of_type_Phu, this.jdField_a_of_type_Boolean, paramBoolean1, paramBoolean2, paramInt1, paramArrayList, paramCOOKIE, paramInt2, paramString, this.jdField_a_of_type_Php);
+    QLog.d(paramString1, 2, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public boolean isDebugVersion()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     phw
  * JD-Core Version:    0.7.0.1
  */

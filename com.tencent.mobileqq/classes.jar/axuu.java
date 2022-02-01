@@ -1,25 +1,38 @@
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
-public class axuu
-  implements Comparator<axua>
+public abstract class axuu
+  extends axsb
 {
-  public axuu(Mp4FlowReEncoder paramMp4FlowReEncoder) {}
+  public boolean a;
   
-  public int a(axua paramaxua1, axua paramaxua2)
+  public axuu(Context paramContext)
   {
-    if (paramaxua2.a() > paramaxua1.a()) {
-      return -1;
-    }
-    if (paramaxua2.a() == paramaxua1.a()) {
-      return 0;
-    }
-    return 1;
+    super(paramContext);
   }
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(PicInfo paramPicInfo);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axuu
  * JD-Core Version:    0.7.0.1
  */

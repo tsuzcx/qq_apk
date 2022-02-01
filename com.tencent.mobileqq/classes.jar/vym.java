@@ -1,10 +1,25 @@
-public abstract interface vym
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqcircle.widgets.QCircleRocketView;
+
+public class vym
+  implements Animation.AnimationListener
 {
-  public abstract boolean a_(vyi paramvyi, int paramInt1, int paramInt2);
+  public vym(QCircleRocketView paramQCircleRocketView, View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vym
  * JD-Core Version:    0.7.0.1
  */

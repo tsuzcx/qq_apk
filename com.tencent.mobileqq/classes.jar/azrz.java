@@ -1,24 +1,44 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class azrz
-  extends azry
+  extends aupb
 {
-  public long c = 0L;
-  boolean e = false;
-  public int j = 80;
-  public int k = 70;
-  public int l = 5;
-  public int m;
+  public azrz(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public azrz(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    super(paramFloat1, paramInt1, paramInt2, paramFloat2, paramInt3, paramInt4, paramInt5, paramInt6, false);
-    this.l = (paramInt1 % 1000);
-    this.k = (paramInt1 / 1000 % 1000);
-    this.j = (paramInt1 / 1000 / 1000 % 1000);
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
+    }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
+    }
+    while (!paramBoolean) {
+      return;
+    }
+    ProfileCardMoreActivity.a(this.a);
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
+    }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
+    }
+    while (!paramBoolean1) {
+      return;
+    }
+    ProfileCardMoreActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azrz
  * JD-Core Version:    0.7.0.1
  */

@@ -36,6 +36,10 @@ public class RenderItem
     return this.filter.RenderProcess(paramFrame);
   }
   
+  public void apply() {}
+  
+  public void clear() {}
+  
   public void updatePreview(Object paramObject)
   {
     if (((this.filter instanceof NormalVideoFilter)) && (this.triggerCtrlItem != null))
@@ -85,7 +89,7 @@ public class RenderItem
       if ((this.triggerCtrlItem != null) && (!this.triggerCtrlItem.isTriggered()))
       {
         if ((this.filter instanceof NormalVideoFilter)) {
-          ((NormalVideoFilter)this.filter).stopAndResetAudio();
+          ((NormalVideoFilter)this.filter).pauseAndSeekToOrigin();
         }
         if (((this.filter instanceof TransformFilter)) && (((TransformFilter)this.filter).isNeedStop())) {
           ((TransformFilter)this.filter).stopTransform();
@@ -103,7 +107,7 @@ public class RenderItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.RenderItem
  * JD-Core Version:    0.7.0.1
  */

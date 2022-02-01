@@ -1,90 +1,97 @@
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
+
 public class amms
+  extends ammq
 {
-  public static int a;
-  public static long a;
-  public static String a;
-  public static int b;
-  public static String b;
-  public static int c;
-  public static String c;
-  public static int d;
-  public static String d;
-  public static int e;
-  public static String e;
-  public static int f;
-  public static int g;
-  public static int h;
-  public static int i;
-  public static int j;
-  public static int k;
-  public static int l;
-  public static int m;
-  public static int n;
-  public static int o;
+  public long a;
+  public String a;
+  public WeakReference<QQSettingMe> a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public int f;
+  int g = 7;
+  private int h;
+  private int i;
+  private int j;
   
-  static
+  public amms(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, QQSettingMe paramQQSettingMe)
   {
-    jdField_a_of_type_JavaLangString = "sp_msglrucache";
-    jdField_b_of_type_JavaLangString = "sp_key_msglrucache_switch";
-    jdField_c_of_type_JavaLangString = "sp_key_cacheinitadjust_switch";
-    jdField_d_of_type_JavaLangString = "sp_key_report_aio_last_time";
-    jdField_a_of_type_Int = 1600;
-    jdField_b_of_type_Int = 1400;
-    jdField_c_of_type_Int = 1;
-    jdField_d_of_type_Int = 2;
-    jdField_e_of_type_Int = 40;
-    f = 20;
-    g = 10;
-    i = 5;
-    j = -1;
-    k = 2;
-    l = 1;
-    m = 1;
-    jdField_e_of_type_JavaLangString = "msglrucacheMoniterLogin";
-    n = 100;
-    o = 10;
-    jdField_a_of_type_Long = 60000L;
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 98;
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("entry_id", 1);
+    this.jdField_a_of_type_Long = paramJSONObject.optLong("seq", 0L);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("wording");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("jump_url");
+    this.jdField_c_of_type_Int = paramJSONObject.optInt("is_red", 0);
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("icon_url");
+    this.jdField_d_of_type_Int = paramJSONObject.optInt("action_id", 0);
+    this.e = paramJSONObject.optInt("bubble_id", 0);
+    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("scheme");
+    this.f = paramJSONObject.optInt("show_sum", 1);
+    this.i = paramJSONObject.optInt("msg_id", 0);
+    this.j = paramJSONObject.optInt("cmshow_module", 1);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQSettingMe);
   }
   
-  public static int a(String paramString)
+  public void a(amux paramamux, Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if (paramString != null) {
-      try
-      {
-        if (paramString.contains("&"))
-        {
-          paramString = paramString.split("&");
-          if (paramString.length >= 2)
-          {
-            int i1 = Integer.valueOf(paramString[1]).intValue();
-            return i1;
-          }
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return 0;
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = paramString;
-    if (paramString != null)
+    QLog.d("ExploreDrawerStatus", 1, "[onBubbleClick] " + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_b_of_type_JavaLangString);
+    if (2 == this.j) {}
+    for (int k = 1;; k = 0)
     {
-      str = paramString;
-      if (paramString.contains("&")) {
-        str = paramString.split("&")[0];
+      VipUtils.a(null, "cmshow", "Apollo", "DrawerBubble_clk", 0, k, new String[] { this.e + "", String.valueOf(this.i) });
+      ((amhd)paramQQAppInterface.getManager(153)).a(paramQQAppInterface, paramContext, this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, "drawer");
+      return;
+    }
+  }
+  
+  public void a(amux paramamux, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    QLog.d("ExploreDrawerStatus", 1, "[onBubbleShow] showCount： " + this.h + ", showSum: " + this.f + ", content: " + this.jdField_a_of_type_JavaLangString);
+    if (this.h >= this.f) {
+      return;
+    }
+    this.h += 1;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      amuo.a(paramamux, this.jdField_a_of_type_JavaLangString, 9, this.e);
+      if (2 != this.j) {
+        break label202;
       }
     }
-    return str;
+    label202:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      VipUtils.a(null, "cmshow", "Apollo", "DrawerBubble_show", 0, paramInt, new String[] { this.e + "", String.valueOf(this.i) });
+      if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {
+        break;
+      }
+      paramamux = (QQSettingMe)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramamux == null) {
+        break;
+      }
+      paramamux.a(this.jdField_c_of_type_JavaLangString);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amms
  * JD-Core Version:    0.7.0.1
  */

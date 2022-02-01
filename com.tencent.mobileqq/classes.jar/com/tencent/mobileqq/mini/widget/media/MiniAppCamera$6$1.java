@@ -2,10 +2,10 @@ package com.tencent.mobileqq.mini.widget.media;
 
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.qphone.base.util.QLog;
-import xtk;
+import zmv;
 
 class MiniAppCamera$6$1
-  implements xtk
+  implements zmv
 {
   MiniAppCamera$6$1(MiniAppCamera.6 param6) {}
   
@@ -39,7 +39,7 @@ class MiniAppCamera$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppCamera.6.1
  * JD-Core Version:    0.7.0.1
  */

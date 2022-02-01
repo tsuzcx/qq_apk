@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.utils.confighandler;
 
-import alud;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bdph;
+import anni;
+import bgug;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.ParameterizedType;
-import lew;
-import lex;
+import lbp;
+import lbq;
 
 public abstract class ConfigHandler<T extends ConfigInfo>
 {
@@ -46,7 +46,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     }
     for (;;)
     {
-      if ((this.mConfigInfoClass != null) || (!AudioHelper.d())) {
+      if ((this.mConfigInfoClass != null) || (!AudioHelper.e())) {
         return;
       }
       throw new IllegalArgumentException(this.TAG + " get ConfigInfoClassType失败, " + paramString1);
@@ -63,7 +63,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
       paramString1 = "getGenericSuperclass为空";
       break;
       label257:
-      if (AudioHelper.e()) {
+      if (AudioHelper.f()) {
         QLog.w(this.TAG, 1, "ConfigHandler, get ConfigInfoClassType成功, " + this.mConfigInfoClass);
       }
     }
@@ -71,7 +71,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
   
   public static void checkUin(String paramString1, String paramString2)
   {
-    if ((AudioHelper.d()) && (TextUtils.isEmpty(paramString2))) {
+    if ((AudioHelper.e()) && (TextUtils.isEmpty(paramString2))) {
       throw new IllegalArgumentException(paramString1 + " 配置需要UIN");
     }
   }
@@ -83,7 +83,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     int j = paramInt;
     if (TextUtils.isEmpty(paramString2))
     {
-      paramString4 = bdph.a(paramString1, paramString3, paramString4);
+      paramString4 = bgug.a(paramString1, paramString3, paramString4);
       if (paramString4 == null) {
         break label172;
       }
@@ -120,7 +120,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
         paramString2.setUin(paramString3);
         paramString2.serverVer = j;
         if (!paramString2.tryParse(paramString1, str)) {
-          AudioHelper.c(paramString1 + alud.a(2131702811));
+          AudioHelper.c(paramString1 + anni.a(2131701231));
         }
         return paramString2;
       }
@@ -139,7 +139,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
   public static <T extends ConfigInfo> T getConfigInfoNew(String paramString1, String paramString2, int paramInt, Class<T> paramClass, String paramString3)
   {
     if (TextUtils.isEmpty(paramString2)) {
-      paramString2 = lex.b(paramInt).a;
+      paramString2 = lbq.b(paramInt).a;
     }
     String str;
     for (;;)
@@ -167,9 +167,9 @@ public abstract class ConfigHandler<T extends ConfigInfo>
       try
       {
         paramClass.setUin(paramString3);
-        paramClass.serverVer = lex.a(paramInt);
+        paramClass.serverVer = lbq.a(paramInt);
         if (!paramClass.tryParse(paramString1, paramString2)) {
-          AudioHelper.c(paramString1 + alud.a(2131702812));
+          AudioHelper.c(paramString1 + anni.a(2131701232));
         }
         return paramClass;
       }
@@ -237,7 +237,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.ConfigHandler
  * JD-Core Version:    0.7.0.1
  */

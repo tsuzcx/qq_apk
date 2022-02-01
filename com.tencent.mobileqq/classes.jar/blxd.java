@@ -1,31 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import cooperation.qzone.contentbox.QZoneMsgFragment;
 
-class blxd
-  implements blxj
+public class blxd
+  implements bkhe
 {
-  blxd(blxc paramblxc) {}
+  public blxd(QZoneMsgFragment paramQZoneMsgFragment) {}
   
-  public void a(float paramFloat, String paramString, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onUpdateProgress, progress is : " + paramFloat);
+    if (QZoneMsgFragment.a(this.a) != null) {
+      QZoneMsgFragment.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
-    blxc.a(this.a, paramFloat);
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onDownloadFinish, success: " + paramBoolean);
-    }
-    if (paramBoolean)
+    switch (paramInt)
     {
-      blxc.a(this.a, 3);
-      this.a.b();
-      return;
     }
-    blxc.a(this.a, 2);
-    this.a.a(4);
+    for (;;)
+    {
+      if (QZoneMsgFragment.a(this.a) != null) {
+        QZoneMsgFragment.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      return;
+      QZoneMsgFragment.a(this.a);
+    }
   }
 }
 

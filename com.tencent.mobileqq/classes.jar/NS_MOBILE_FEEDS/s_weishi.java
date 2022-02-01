@@ -13,11 +13,16 @@ public final class s_weishi
   public String cover_url = "";
   public Map<String, String> dc_report;
   public String nick_name = "";
+  public String pull_weishi_alg_id = "";
+  public int pull_weishi_mask;
+  public String weishi_clipbrd = "";
+  public String weishi_download_url = "";
   public String weishi_feedId = "";
   public String weishi_fileId = "";
   public String weishi_musicId = "";
   public String weishi_musicName = "";
   public String weishi_musicUrl = "";
+  public String weishi_pull_schema = "";
   public String weishi_schema = "";
   public String weishi_topicID = "";
   public String weishi_topicName = "";
@@ -30,7 +35,7 @@ public final class s_weishi
   
   public s_weishi() {}
   
-  public s_weishi(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, Map<String, String> paramMap)
+  public s_weishi(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, Map<String, String> paramMap, int paramInt, String paramString12, String paramString13, String paramString14, String paramString15)
   {
     this.weishi_feedId = paramString1;
     this.weishi_fileId = paramString2;
@@ -44,6 +49,11 @@ public final class s_weishi
     this.weishi_topicUrl = paramString10;
     this.weishi_schema = paramString11;
     this.dc_report = paramMap;
+    this.pull_weishi_mask = paramInt;
+    this.weishi_download_url = paramString12;
+    this.weishi_pull_schema = paramString13;
+    this.weishi_clipbrd = paramString14;
+    this.pull_weishi_alg_id = paramString15;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -60,6 +70,11 @@ public final class s_weishi
     this.weishi_topicUrl = paramJceInputStream.readString(9, false);
     this.weishi_schema = paramJceInputStream.readString(10, false);
     this.dc_report = ((Map)paramJceInputStream.read(cache_dc_report, 11, false));
+    this.pull_weishi_mask = paramJceInputStream.read(this.pull_weishi_mask, 12, false);
+    this.weishi_download_url = paramJceInputStream.readString(13, false);
+    this.weishi_pull_schema = paramJceInputStream.readString(14, false);
+    this.weishi_clipbrd = paramJceInputStream.readString(15, false);
+    this.pull_weishi_alg_id = paramJceInputStream.readString(16, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -99,6 +114,19 @@ public final class s_weishi
     }
     if (this.dc_report != null) {
       paramJceOutputStream.write(this.dc_report, 11);
+    }
+    paramJceOutputStream.write(this.pull_weishi_mask, 12);
+    if (this.weishi_download_url != null) {
+      paramJceOutputStream.write(this.weishi_download_url, 13);
+    }
+    if (this.weishi_pull_schema != null) {
+      paramJceOutputStream.write(this.weishi_pull_schema, 14);
+    }
+    if (this.weishi_clipbrd != null) {
+      paramJceOutputStream.write(this.weishi_clipbrd, 15);
+    }
+    if (this.pull_weishi_alg_id != null) {
+      paramJceOutputStream.write(this.pull_weishi_alg_id, 16);
     }
   }
 }

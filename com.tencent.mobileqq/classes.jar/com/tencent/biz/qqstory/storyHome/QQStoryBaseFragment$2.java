@@ -3,7 +3,8 @@ package com.tencent.biz.qqstory.storyHome;
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
-import wxe;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import yqp;
 
 class QQStoryBaseFragment$2
   implements Runnable
@@ -12,13 +13,13 @@ class QQStoryBaseFragment$2
   {
     if (this.this$0.a())
     {
-      wxe.d("IphoneTitleBarFragment", "Activity has been destroy.");
+      yqp.d("IphoneTitleBarFragment", "Activity has been destroy.");
       return;
     }
     if (this.this$0.jdField_a_of_type_AndroidAppDialog == null)
     {
       this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseFragment$ProgressView = new QQStoryBaseFragment.ProgressView(this.jdField_a_of_type_AndroidContentContext);
-      this.this$0.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidContentContext);
+      this.this$0.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this.jdField_a_of_type_AndroidContentContext);
       this.this$0.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
       this.this$0.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
       this.this$0.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
@@ -36,7 +37,7 @@ class QQStoryBaseFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment.2
  * JD-Core Version:    0.7.0.1
  */

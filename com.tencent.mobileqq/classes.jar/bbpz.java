@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class bbpz
+class bbpz
+  implements View.OnClickListener
 {
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo) {}
+  bbpz(bbpy parambbpy) {}
   
-  public void a(String paramString, Integer paramInteger) {}
+  public void onClick(View paramView)
+  {
+    bbpy.a(this.a).a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

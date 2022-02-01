@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StReportLogFileRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
+import bguc;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
@@ -49,7 +49,7 @@ public class MiniAppReportLogFileServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_info.ReportLogFile");
-      paramPacket.putSendData(bdpd.a((byte[])localObject1));
+      paramPacket.putSendData(bguc.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;
@@ -68,7 +68,7 @@ public class MiniAppReportLogFileServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppReportLogFileServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -5,20 +5,23 @@ import java.io.File;
 final class cr$1
   implements de
 {
-  cr$1(cr paramcr, File paramFile) {}
+  cr$1(cr paramcr, byte[] paramArrayOfByte) {}
   
   public final void a(String paramString)
   {
     if (co.e()) {
       co.a("upload succeed:".concat(String.valueOf(paramString)));
     }
-    this.a.delete();
   }
   
   public final void b(String paramString)
   {
+    String str = "utr_" + System.currentTimeMillis();
     if (co.e()) {
-      co.b("upload failed:".concat(String.valueOf(paramString)));
+      co.b("upload failed:" + paramString + ",save to file=" + str);
+    }
+    if ((cr.a(this.b) != null) && (cr.a(this.b).exists())) {
+      co.a(new File(cr.a(this.b), str), this.a);
     }
   }
 }

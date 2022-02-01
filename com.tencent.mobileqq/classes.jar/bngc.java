@@ -1,24 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import com.tencent.qphone.base.util.QLog;
 
 class bngc
-  implements View.OnClickListener
+  implements bial
 {
-  bngc(bngb parambngb) {}
+  bngc(bnfz parambnfz) {}
   
-  public void onClick(View paramView)
+  public void a(biaj parambiaj)
   {
-    wxj.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
-    if (!this.a.a().g())
-    {
-      bngb.a(this.a);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListLogicAECircle", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambiaj);
     }
-    this.a.a().f(false);
-    bngb.a(this.a).setSelected(false);
-    this.a.a().d(3003);
   }
+  
+  public void a(biaj parambiaj, int paramInt1, int paramInt2) {}
 }
 
 

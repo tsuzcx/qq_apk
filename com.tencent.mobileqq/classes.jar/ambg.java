@@ -1,94 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import mqq.manager.Manager;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.AvatarPendantAdapter.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ambg
-  implements Manager
+  implements View.OnLayoutChangeListener
 {
-  private QQAppInterface a;
+  ambg(ambe paramambe) {}
   
-  public ambg(QQAppInterface paramQQAppInterface)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramQQAppInterface == null) {
-      throw new NullPointerException("RecentManagerFor3rdPart, app is null");
+    View localView = paramView.findViewById(2131365613);
+    TextView localTextView = (TextView)paramView.findViewById(2131365612);
+    paramInt1 = ((ImageView)paramView.findViewById(2131378112)).getRight() - localView.getWidth();
+    if (paramInt1 > 0) {
+      ThreadManager.getUIHandler().post(new AvatarPendantAdapter.2.1(this, localTextView, paramInt1));
     }
-    this.a = paramQQAppInterface;
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      bool1 = bool2;
-      if (this.a.e())
-      {
-        amnz localamnz = this.a.a().a();
-        paramString = localamnz.b(paramString, paramInt);
-        bool1 = bool2;
-        if (paramString != null)
-        {
-          localamnz.b(paramString);
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean a(String paramString, int paramInt, long paramLong)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      bool1 = bool2;
-      if (this.a.e())
-      {
-        amnz localamnz = this.a.a().a();
-        paramString = localamnz.b(paramString, paramInt);
-        bool1 = bool2;
-        if (paramString != null)
-        {
-          paramString.lastmsgtime = paramLong;
-          localamnz.a(paramString);
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean a(String paramString1, int paramInt, String paramString2, long paramLong1, long paramLong2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    if ((this.a != null) && (this.a.e()))
-    {
-      amnz localamnz = this.a.a().a();
-      RecentUser localRecentUser = localamnz.a(paramString1, paramInt);
-      localRecentUser.uin = paramString1;
-      localRecentUser.setType(paramInt);
-      localRecentUser.displayName = paramString2;
-      localRecentUser.lastmsgtime = paramLong1;
-      localRecentUser.lastmsgdrafttime = paramLong2;
-      localamnz.a(localRecentUser);
-    }
-    return true;
-  }
-  
-  public void onDestroy()
-  {
-    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ambg
  * JD-Core Version:    0.7.0.1
  */

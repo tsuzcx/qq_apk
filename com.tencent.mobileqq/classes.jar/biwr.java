@@ -1,72 +1,188 @@
-import android.view.View;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener.1;
+import com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener.2;
+import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
+import java.util.Iterator;
 import java.util.List;
+import mqq.os.MqqHandler;
 
-class biwr
-  implements bhuk
+public class biwr
+  implements DownloadListener
 {
-  biwr(biwp parambiwp) {}
+  protected biwr(biwe parambiwe) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_Biws == null)) {
+    if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
+    {
+      if ((this.a.jdField_a_of_type_Biws != null) && (this.a.jdField_a_of_type_Biws.isShowing())) {
+        this.a.jdField_a_of_type_Biws.dismiss();
+      }
+      bivr.a().b(this.a.jdField_a_of_type_Biwr);
+      this.a.jdField_a_of_type_Biwr = null;
+    }
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      bisy.c("MyAppApi", "onDownloadCancel");
+      if ((this.a.jdField_a_of_type_Biws != null) && (this.a.jdField_a_of_type_Biws.isShowing()) && (this.a.c)) {
+        this.a.jdField_a_of_type_Biws.a(paramDownloadInfo.f, paramDownloadInfo.a());
+      }
+      bivr.a().b(this.a.jdField_a_of_type_Biwr);
+      this.a.jdField_a_of_type_Biwr = null;
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      bisy.c("MyAppApi", "onDownloadError");
+      if ((paramDownloadInfo.f != 100) && (paramDownloadInfo.e != 4)) {
+        break label46;
+      }
+      onDownloadFinish(paramDownloadInfo);
+    }
+    label46:
+    while ((this.a.jdField_a_of_type_Biws == null) || (!this.a.jdField_a_of_type_Biws.isShowing()) || (!this.a.c)) {
       return;
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
+    this.a.jdField_a_of_type_Biws.a(paramDownloadInfo.f, paramDownloadInfo.a());
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    label213:
+    long l2;
+    long l1;
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
     {
-      paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
-      if (paramInt == 16) {
-        this.a.jdField_a_of_type_Biws.h();
+      if (!biwe.a(this.a)) {
+        break label384;
+      }
+      UpgradeDetailWrapper localUpgradeDetailWrapper = bgdt.a().a();
+      if ((localUpgradeDetailWrapper != null) && (localUpgradeDetailWrapper.a != null))
+      {
+        bgrt.a(true);
+        bgrt.a(localUpgradeDetailWrapper.a.jdField_a_of_type_Int);
+        bgdl.b();
+        bisy.c("NewUpgradeDialog", "pre download success state saved!");
+      }
+      bisy.c("MyAppApi", "onDownloadFinish");
+      if ((this.a.jdField_a_of_type_Biws != null) && (this.a.jdField_a_of_type_Biws.isShowing()) && (this.a.c)) {
+        this.a.jdField_a_of_type_Biws.a(100, 4);
+      }
+      bisy.c("MyAppApi", "mInstallParam: " + this.a.jdField_a_of_type_Biwp);
+      if (this.a.jdField_a_of_type_Biwp != null)
+      {
+        if (!this.a.jdField_a_of_type_Biwp.jdField_b_of_type_Boolean) {
+          break label411;
+        }
+        ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.YYBDownloadListener.1(this, paramDownloadInfo), 500L);
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.jdField_b_of_type_Boolean = false;
+        l2 = 0L;
+        l1 = l2;
+        switch (this.a.jdField_a_of_type_Biwp.jdField_a_of_type_Int)
+        {
+        case 1: 
+        default: 
+          l1 = this.a.a(this.a.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_Biwp.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Biwp.jdField_b_of_type_Boolean);
+        }
       }
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Bhuf.dismiss();
+      this.a.jdField_a_of_type_Long = l1;
+      this.a.jdField_b_of_type_Long = System.currentTimeMillis();
+      bivr.a().b(this.a.jdField_a_of_type_Biwr);
+      this.a.jdField_a_of_type_Biwr = null;
+      if (("ANDROID.QQ.YYBXZGAMECENTER".equals(paramDownloadInfo.h)) || ("ANDROID.QQ.NEWYYBXZGAMECENTER".equals(paramDownloadInfo.h))) {
+        aceh.a(null, "765", "205011", paramDownloadInfo.c, "76501", "1", "156");
+      }
       return;
-      if (paramInt == 32)
-      {
-        this.a.jdField_a_of_type_Biws.a();
+      label384:
+      bcst.b(null, "dc00898", "", "", "0X8008F7E", "0X8008F7E", 0, 0, "", "", "", "");
+      break;
+      label411:
+      if ((biub.a() != 1) || (!bivk.c())) {
+        break label213;
       }
-      else if (paramInt == 1)
+      ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.YYBDownloadListener.2(this, paramDownloadInfo), 500L);
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_b_of_type_Boolean = false;
+      break label213;
+      this.a.e = true;
+      if (this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
       {
-        this.a.jdField_a_of_type_Biws.f();
-        biwp.a(this.a);
+        l1 = this.a.a().addDownloadTaskFromAuthorize(this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
       }
-      else if (paramInt == 2)
+      else
       {
-        this.a.jdField_a_of_type_Biws.i();
-      }
-      else if (paramInt == 4)
-      {
-        this.a.jdField_a_of_type_Biws.j();
-      }
-      else if (paramInt == 8)
-      {
-        this.a.jdField_a_of_type_Biws.g();
-      }
-      else if (paramInt == 64)
-      {
-        this.a.jdField_a_of_type_Biws.b();
-      }
-      else if (paramInt == 128)
-      {
-        this.a.jdField_a_of_type_Biws.c();
-      }
-      else if (paramInt == 256)
-      {
-        this.a.jdField_a_of_type_Biws.d();
+        bisy.e("MyAppApi", "CopyAndInstallTask->onPostExecute mLastAuthorizeParam = null");
+        l1 = l2;
         continue;
-        paramInt -= this.a.jdField_a_of_type_JavaUtilList.size();
-        if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
-          this.a.jdField_a_of_type_Biws.a((String)this.a.b.get(paramInt));
+        l1 = this.a.b(this.a.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_Biwp.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Biwp.jdField_b_of_type_Boolean);
+        continue;
+        l1 = this.a.b(this.a.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle);
+      }
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      bisy.c("MyAppApi", "onDownloadPause");
+      if ((this.a.jdField_a_of_type_Biws != null) && (this.a.jdField_a_of_type_Biws.isShowing()) && (this.a.c)) {
+        this.a.jdField_a_of_type_Biws.a(paramDownloadInfo.f, paramDownloadInfo.a());
+      }
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        if (localDownloadInfo.c.equals("1101070898"))
+        {
+          bisy.c("MyAppApi", "onDownloadUpdate STATE = " + localDownloadInfo.a());
+          if ((this.a.jdField_a_of_type_Biws != null) && (this.a.jdField_a_of_type_Biws.isShowing()) && (this.a.c)) {
+            this.a.jdField_a_of_type_Biws.a(localDownloadInfo.f, localDownloadInfo.a());
+          }
         }
       }
     }
   }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      bisy.c("MyAppApi", "onDownloadWait");
+      if ((this.a.jdField_a_of_type_Biws != null) && (this.a.jdField_a_of_type_Biws.isShowing()) && (this.a.c)) {
+        this.a.jdField_a_of_type_Biws.a(paramDownloadInfo.f, paramDownloadInfo.a());
+      }
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biwr
  * JD-Core Version:    0.7.0.1
  */

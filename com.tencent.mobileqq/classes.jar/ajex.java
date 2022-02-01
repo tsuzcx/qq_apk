@@ -1,19 +1,13 @@
-import Wallet.ReportHBGameRsp;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 
-final class ajex
-  implements BusinessObserver
+public class ajex
+  implements DialogInterface.OnClickListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    paramBundle = (ReportHBGameRsp)paramBundle.getSerializable("rsp");
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletTools", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
-    }
-    if ((paramBoolean) && (paramBundle != null) && (paramBundle.result == 0)) {}
-  }
+  public ajex(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

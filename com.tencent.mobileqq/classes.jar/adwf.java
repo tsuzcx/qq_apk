@@ -1,16 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class adwf
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adwf(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public adwf(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.getActivity().finish();
+    ChatSettingActivity.c(this.a);
   }
 }
 

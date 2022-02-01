@@ -1,57 +1,65 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class mmo
-  extends lhe
 {
-  public mmo(VideoInviteActivity paramVideoInviteActivity) {}
-  
-  protected void a(long paramLong, int paramInt)
+  public static int a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onDestroyInviteUI, relationId[" + paramLong + "], seq[" + l + "]");
-    }
-    boolean bool = this.a.i;
-    if ((bool) && (this.a.c != null) && (this.a.c.equals(String.valueOf(paramLong))))
-    {
-      super.a(paramLong);
-      mwk.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      this.a.a(l);
-      if ((bool) && (this.a.c.length() > 2) && (paramLong != 0L))
-      {
-        paramLong = Long.valueOf(this.a.c).longValue();
-        if (!this.a.h)
-        {
-          this.a.h = true;
-          if (paramInt != 1) {
-            break label255;
-          }
-          this.a.a().a(l, paramLong, 7);
-        }
+    int i = 0;
+    if (paramBoolean2) {
+      if (!paramBoolean1) {
+        break label67;
       }
     }
+    label67:
+    for (i = bhjt.a(paramAppRuntime, paramString, 6, paramBoolean1, null); i != 0; i = bhjt.a(paramAppRuntime, paramAppRuntime.getAccount(), 6, paramBoolean1, paramString))
+    {
+      if (AudioHelper.f()) {
+        QLog.w("QAVConfig_382", 1, "getFunVideoId, 已经有默认配置, fcId[" + i + "]");
+      }
+      return i;
+    }
+    paramString = BusinessCommonConfig.getInstance(paramAppRuntime);
+    if (paramString != null)
+    {
+      paramAppRuntime = (QAVFunCallHandler)paramString.getConfigHandler(382);
+      paramAppRuntime = paramAppRuntime.getConfigDirect();
+      if (paramAppRuntime == null) {
+        break label174;
+      }
+      i = paramAppRuntime.getActivityFCId();
+    }
+    label174:
     for (;;)
     {
-      this.a.e = true;
-      if ((!this.a.l) || (this.a.jdField_a_of_type_Mkb == null) || (this.a.f())) {
-        break;
+      if (AudioHelper.f()) {
+        QLog.w("QAVConfig_382", 1, "getFunVideoId, fcId[" + i + "]");
       }
-      this.a.jdField_a_of_type_Mkb.a(new mmp(this));
-      return;
-      label255:
-      if (paramInt == 2) {
-        this.a.a().a(l, paramLong, 2);
-      }
+      return i;
+      paramAppRuntime = new QAVFunCallHandler(paramAppRuntime.getAccount());
+      break;
     }
-    this.a.finish();
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.video.v2q.AnnimateDownloadStart");
+    localIntent.setPackage(paramVideoAppInterface.getApp().getPackageName());
+    localIntent.putExtra("callId", paramInt);
+    paramVideoAppInterface.getApp().sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mmo
  * JD-Core Version:    0.7.0.1
  */

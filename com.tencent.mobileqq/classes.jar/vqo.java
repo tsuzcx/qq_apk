@@ -1,35 +1,23 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
-public class vqo
-  extends vpa<SingleFeedPlayInfo>
+class vqo
+  implements zxa<FeedCloudRead.StGetMainPageRsp>
 {
-  public vqo(SingleFeedPlayInfo paramSingleFeedPlayInfo)
-  {
-    super(paramSingleFeedPlayInfo);
-  }
+  vqo(vqn paramvqn, QCircleGetMainPageRequest paramQCircleGetMainPageRequest, zzp paramzzp) {}
   
-  public woq a(String paramString)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    paramString = new woq(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    return paramString;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, vps paramvps)
-  {
-    ArrayList localArrayList = new ArrayList();
-    vpb localvpb = new vpb(((SingleFeedPlayInfo)this.a).mFeedFeedId, new woq(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localvpb.a.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    localArrayList.add(localvpb);
-    paramvps.a(new ErrorMessage(), localArrayList, true);
+    QLog.d("QCirclePersonalDetailPreLoaderTask", 1, "QCirclePersonalDetailPreLoaderTask->onReceive: dispatch Success:" + paramBoolean + " |CmdName:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
+    if (this.jdField_a_of_type_Zzp != null) {
+      this.jdField_a_of_type_Zzp.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetMainPageRsp });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vqo
  * JD-Core Version:    0.7.0.1
  */

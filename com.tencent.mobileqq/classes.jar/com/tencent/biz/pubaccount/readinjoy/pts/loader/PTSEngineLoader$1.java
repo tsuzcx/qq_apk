@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
 import com.tencent.qphone.base.util.QLog;
-import pvy;
+import qoi;
 
 public class PTSEngineLoader$1
   implements Runnable
 {
-  public PTSEngineLoader$1(pvy parampvy) {}
+  public PTSEngineLoader$1(qoi paramqoi) {}
   
   public void run()
   {

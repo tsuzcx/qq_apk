@@ -1,23 +1,17 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
+import kotlin.Metadata;
 
-public class acmn
-  implements Animation.AnimationListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onReceiveValue"}, k=3, mv={1, 1, 16})
+final class acmn<T>
+  implements ValueCallback<String>
 {
-  public acmn(ChatHistory paramChatHistory, View paramView1, View paramView2) {}
+  public static final acmn a = new acmn();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public final void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.show();
-    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.b.setVisibility(8);
+    QLog.i("GdtMotiveBrowsingDialog", 1, "handleMotiveBrowsingData EVENT_CALL_BACK_JS callback " + paramString);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

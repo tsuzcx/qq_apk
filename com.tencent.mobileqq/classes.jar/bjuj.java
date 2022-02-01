@@ -1,10 +1,10 @@
-public abstract interface bjuj<V>
+class bjuj
 {
-  public abstract boolean a(V paramV1, V paramV2);
+  private static bjui a = new bjui(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjuj
  * JD-Core Version:    0.7.0.1
  */

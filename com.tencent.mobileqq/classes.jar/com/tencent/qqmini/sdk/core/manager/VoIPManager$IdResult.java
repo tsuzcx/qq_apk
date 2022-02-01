@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.manager;
 
-import bgvc;
+import com.tencent.qqmini.sdk.launcher.annotation.JsonORM.Column;
 
 public class VoIPManager$IdResult
 {
-  @bgvc(a="openId")
+  @JsonORM.Column(key="openId")
   public String openId;
-  @bgvc(a="roomId")
+  @JsonORM.Column(key="roomId")
   public int roomId;
-  @bgvc(a="tinyId")
+  @JsonORM.Column(key="tinyId")
   public long tinyId;
   
   public String toString()
@@ -18,7 +18,7 @@ public class VoIPManager$IdResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.VoIPManager.IdResult
  * JD-Core Version:    0.7.0.1
  */

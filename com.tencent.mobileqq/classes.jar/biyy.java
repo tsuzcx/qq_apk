@@ -1,21 +1,12 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-
-class biyy
-  extends bjaq
+public abstract interface biyy
 {
-  biyy(biyx parambiyx) {}
+  public abstract void a();
   
-  public void a(@NonNull bjap parambjap)
-  {
-    parambjap = parambjap.a();
-    biyx.a(this.a, parambjap);
-    bjbp.a(BaseApplicationImpl.getContext(), parambjap);
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     biyy
  * JD-Core Version:    0.7.0.1
  */

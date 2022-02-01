@@ -1,22 +1,50 @@
-import android.view.animation.ScaleAnimation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
+import android.os.Build.VERSION;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acqu
-  extends ScaleAnimation
+class acqu
+  implements acqj
 {
-  public acqu(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
+  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
   {
-    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    if (paramTransformation == null) {
-      return;
+    Object localObject = null;
+    if (paramacpp != null) {}
+    for (paramVarArgs = paramacpp.a(); (paramacpp == null) || (paramVarArgs == null); paramVarArgs = null)
+    {
+      acqy.d("GdtOSVersionJsCall", "handleJsCallRequest error");
+      return true;
     }
-    super.applyTransformation(paramFloat, paramTransformation);
-    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("osVersion", Build.VERSION.RELEASE);
+    }
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramacpp.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramacpp != null) {
+            paramString = paramacpp.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getOSVersion", paramString);
+          return true;
+          localJSONException = localJSONException;
+          localJSONException.printStackTrace();
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
+    }
   }
 }
 

@@ -142,6 +142,132 @@ public class DittoArea
     this.mMainHandler.postDelayed(this.mPendingCheckForLongPress, ViewConfiguration.getLongPressTimeout());
   }
   
+  private void drawBorder(Canvas paramCanvas, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      this.mCacheBorder = getBackgroundCache(this.mBorderCacheKey);
+      if ((this.mCacheBorder == null) || (this.mCacheBorder.getBitmap() == null))
+      {
+        Object localObject = getStrokePaint();
+        ((Paint)localObject).setStrokeWidth(this.borderWidth);
+        ((Paint)localObject).setColor(this.borderColor);
+        float f = this.borderWidth / 2;
+        localObject = new RectF(this.mBound);
+        ((RectF)localObject).top += f;
+        ((RectF)localObject).left += f;
+        ((RectF)localObject).right -= f;
+        ((RectF)localObject).bottom -= f;
+        Path localPath = new Path();
+        localPath.addRoundRect((RectF)localObject, this.borderRadius, Path.Direction.CW);
+        paramCanvas.drawPath(localPath, getStrokePaint());
+      }
+    }
+    paramCanvas.restoreToCount(paramInt);
+    if (paramBoolean2) {
+      this.mHost.postInvalidateDelayed(16L);
+    }
+  }
+  
+  private void drawContent(Canvas paramCanvas)
+  {
+    int i;
+    if ((this.mBackground == null) && (this.mBgColor != 0))
+    {
+      i = 1;
+      if (i == 0) {
+        break label173;
+      }
+      if ((this.isBgDirty) || (this.mBgCacheKey == null))
+      {
+        this.mBgCacheKey = generateBackgroundCacheKey();
+        this.isBgDirty = false;
+      }
+    }
+    label173:
+    while (this.mBackground == null)
+    {
+      try
+      {
+        this.mCacheBackground = getBackgroundCache(this.mBgCacheKey);
+        if ((this.mBackground == null) && ((this.mCacheBackground == null) || (this.mCacheBackground.getBitmap() == null)))
+        {
+          this.mCacheBackground = new DittoBitmapCache();
+          Paint localPaint = getFillPaint();
+          localPaint.setColor(this.mBgColor);
+          localPaint.setAlpha((int)this.mAlpha);
+          Path localPath = new Path();
+          localPath.addRoundRect(new RectF(this.mBound), this.borderRadius, Path.Direction.CW);
+          paramCanvas.drawPath(localPath, localPaint);
+        }
+        return;
+      }
+      catch (Throwable paramCanvas)
+      {
+        DittoLog.e("DITTO_UI", "draw background exception.", paramCanvas);
+        return;
+      }
+      i = 0;
+      break;
+    }
+    this.mBackground.setBounds(this.mBound);
+    this.mBackground.setAlpha((int)this.mAlpha);
+    this.mBackground.draw(paramCanvas);
+  }
+  
+  private void drawContentB(Canvas paramCanvas, int paramInt, boolean paramBoolean)
+  {
+    setGradientBackground(paramCanvas);
+    int i = paramCanvas.save();
+    paramCanvas.translate(getPaddingLeft(), getPaddingTop());
+    if ((!hasNoRadius()) && (this.cornerPath != null)) {
+      if ((Build.VERSION.SDK_INT > 17) || (!paramCanvas.isHardwareAccelerated()))
+      {
+        paramCanvas.clipPath(this.cornerPath);
+        onDraw(paramCanvas);
+        paramCanvas.restoreToCount(i);
+        if ((this.borderWidth == 0) || (this.borderColor == 0)) {
+          break label272;
+        }
+      }
+    }
+    label272:
+    for (boolean bool = true;; bool = false)
+    {
+      if ((bool) && ((this.isBorderDirty) || (this.mBorderCacheKey == null)))
+      {
+        this.mBorderCacheKey = generateBorderCacheKey();
+        this.isBorderDirty = false;
+      }
+      if (getShadowDrawable() != null)
+      {
+        paramCanvas.translate(this.paddingLeft - this.shadowSizeLeft, this.paddingTop - this.shadowSizeTop);
+        getShadowDrawable().draw(paramCanvas);
+        paramCanvas.translate(this.shadowSizeLeft - this.paddingLeft, this.shadowSizeTop - this.paddingTop);
+      }
+      drawBorder(paramCanvas, bool, paramInt, paramBoolean);
+      return;
+      paramCanvas.clipRect(0, 0, this.width - getPaddingLeft() - getPaddingRight(), this.height - getPaddingTop() - getPaddingBottom());
+      break;
+      paramCanvas.clipRect(0, 0, this.width - getPaddingLeft() - getPaddingRight(), this.height - getPaddingTop() - getPaddingBottom());
+      break;
+    }
+  }
+  
+  private void executeCornerPath()
+  {
+    if ((!hasNoRadius()) && ((this.cornerPathHeight != getContentHeight()) || (this.cornerPathWidth != getContentWidth())))
+    {
+      this.cornerPath.reset();
+      if (needResetCornerBound()) {
+        this.cornerBound = new RectF(0.0F, 0.0F, getContentWidth(), getContentHeight());
+      }
+      this.cornerPath.addRoundRect(this.cornerBound, getBorderRadius(), Path.Direction.CW);
+      this.cornerPathHeight = getContentHeight();
+      this.cornerPathWidth = getContentWidth();
+    }
+  }
+  
   private Integer generateBackgroundCacheKey()
   {
     return Integer.valueOf(("canvasArea_background_" + this.mBgColor + "_" + getWidth() + "_" + getHeight() + "_" + this.borderRadius).hashCode());
@@ -188,9 +314,19 @@ public class DittoArea
     return true;
   }
   
+  private boolean isActionDownValid()
+  {
+    return ((!this.ignoreClick) && (clickable())) || (!TextUtils.isEmpty(this.areaIdShouldInvokeClick)) || (!TextUtils.isEmpty(getOnClickUri())) || (!TextUtils.isEmpty(getSilentUri())) || (this.clickListener != null) || (this.longClickListener != null);
+  }
+  
   private boolean isUIThread()
   {
     return Looper.myLooper() == Looper.getMainLooper();
+  }
+  
+  private boolean needResetCornerBound()
+  {
+    return (this.cornerBound == null) || (this.cornerPathHeight != getContentHeight()) || (this.cornerPathWidth != getContentWidth());
   }
   
   private void onAnimationStart() {}
@@ -224,6 +360,63 @@ public class DittoArea
     onPressedAlpha(false);
   }
   
+  private void parseAttr(LayoutAttrSet paramLayoutAttrSet)
+  {
+    if (paramLayoutAttrSet.hasAttr("gravity")) {
+      setGravity(LayoutAttrDefine.Gravity.parse(paramLayoutAttrSet.getAttr("gravity", "left")));
+    }
+    if (paramLayoutAttrSet.hasAttr("compassExposureKey")) {
+      this.compassExposureKey = paramLayoutAttrSet.getIntArrayAttr("compassExposureKey");
+    }
+    if (paramLayoutAttrSet.hasAttr("compassClickKey")) {
+      this.compassClickKey = paramLayoutAttrSet.getIntArrayAttr("compassClickKey");
+    }
+    if (paramLayoutAttrSet.hasAttr("ttt_report_area")) {
+      this.tttReportArea = paramLayoutAttrSet.getAttr("ttt_report_area", -1);
+    }
+    if (paramLayoutAttrSet.hasAttr("uri")) {
+      this.onClickUri = paramLayoutAttrSet.getAttr("uri", "");
+    }
+    if (paramLayoutAttrSet.hasAttr("silent_uri")) {
+      this.silentUri = paramLayoutAttrSet.getAttr("silent_uri", "");
+    }
+    if (paramLayoutAttrSet.hasAttr("silent_uri_sent_toast")) {
+      this.silentUriSentToast = paramLayoutAttrSet.getAttr("silent_uri_sent_toast", null);
+    }
+    if (paramLayoutAttrSet.hasAttr("cmd")) {
+      this.cmd = paramLayoutAttrSet.getAttr("cmd", null);
+    }
+    if (paramLayoutAttrSet.hasAttr("cmd_buffer")) {
+      this.cmdParamKey = paramLayoutAttrSet.getAttr("cmd_buffer", -2147483648);
+    }
+  }
+  
+  private void parseAttr2(LayoutAttrSet paramLayoutAttrSet)
+  {
+    if (paramLayoutAttrSet.hasAttr("cmd_buffer_type")) {
+      this.cmdParamType = paramLayoutAttrSet.getAttr("cmd_buffer_type", null);
+    }
+    if (paramLayoutAttrSet.hasAttr("post_click_key_path")) {
+      this.postClickKey = MustacheParser.parse(paramLayoutAttrSet.getAttr("post_click_key_path", ""));
+    }
+    if (paramLayoutAttrSet.hasAttr("invoke_area_click")) {
+      this.areaIdShouldInvokeClick = paramLayoutAttrSet.getAttr("invoke_area_click", null);
+    }
+    if (paramLayoutAttrSet.hasAttr("ignore_click")) {
+      this.ignoreClick = paramLayoutAttrSet.getAttr("ignore_click", false);
+    }
+  }
+  
+  private boolean performListenerClick(MotionEvent paramMotionEvent)
+  {
+    if (this.clickListener != null)
+    {
+      this.clickListener.onClick(this, paramMotionEvent, null);
+      return true;
+    }
+    return false;
+  }
+  
   private void performLongClick(MotionEvent paramMotionEvent)
   {
     if (this.longClickListener != null) {
@@ -245,6 +438,32 @@ public class DittoArea
     if (paramInteger != null) {
       mBackgroundCache.remove(paramInteger);
     }
+  }
+  
+  private void resetBgColorAndVisible(LayoutAttrSet paramLayoutAttrSet)
+  {
+    if ((paramLayoutAttrSet.bg_color != 0) || ((this.borderColor != 0) && (this.borderWidth != 0))) {
+      setBackgroundColor(paramLayoutAttrSet.bg_color);
+    }
+    if (paramLayoutAttrSet.mAttrs.containsKey("visibility"))
+    {
+      paramLayoutAttrSet = paramLayoutAttrSet.getAttr("visibility", "visible");
+      if (!TextUtils.equals("visible", paramLayoutAttrSet)) {
+        break label71;
+      }
+      setVisibility(0);
+    }
+    label71:
+    do
+    {
+      return;
+      if (TextUtils.equals("gone", paramLayoutAttrSet))
+      {
+        setVisibility(8);
+        return;
+      }
+    } while (!TextUtils.equals("invisible", paramLayoutAttrSet));
+    setVisibility(4);
   }
   
   private void setGradientBackground(Canvas paramCanvas)
@@ -414,38 +633,20 @@ public class DittoArea
   
   public final void draw(Canvas paramCanvas)
   {
-    if ((this.mVisibility != 0) && (!this.mDrawIgnoreVisible)) {
-      break label14;
-    }
-    label14:
+    if ((this.mVisibility != 0) && (!this.mDrawIgnoreVisible)) {}
     while ((getHeight() <= 0) || (getWidth() <= 0)) {
       return;
     }
-    int k = paramCanvas.save();
-    Object localObject1;
-    Object localObject2;
-    int i;
-    label101:
-    int j;
-    label109:
+    int i = paramCanvas.save();
+    DittoArea localDittoArea;
     boolean bool2;
     if (this.mCurrentAnimation != null) {
       if (!this.mCurrentAnimation.isInitialized())
       {
-        localObject1 = (DittoArea)this.mParent.get();
-        localObject2 = this.mCurrentAnimation;
-        int m = this.mRight;
-        int n = this.mLeft;
-        int i1 = this.mBottom;
-        int i2 = this.mTop;
-        if (localObject1 == null)
+        localDittoArea = (DittoArea)this.mParent.get();
+        if (localDittoArea == null)
         {
-          i = 0;
-          if (localObject1 != null) {
-            break label761;
-          }
-          j = 0;
-          ((Animation)localObject2).initialize(m - n, i1 - i2, i, j);
+          this.mCurrentAnimation.initialize(this.mRight - this.mLeft, this.mBottom - this.mTop, 0, 0);
           onAnimationStart();
         }
       }
@@ -464,115 +665,11 @@ public class DittoArea
     }
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      if ((this.mBackground == null) && (this.mBgColor != 0))
-      {
-        i = 1;
-        label235:
-        if (i == 0) {
-          break label792;
-        }
-        if ((this.isBgDirty) || (this.mBgCacheKey == null))
-        {
-          this.mBgCacheKey = generateBackgroundCacheKey();
-          this.isBgDirty = false;
-        }
-      }
-      try
-      {
-        this.mCacheBackground = getBackgroundCache(this.mBgCacheKey);
-        if ((this.mBackground == null) && ((this.mCacheBackground == null) || (this.mCacheBackground.getBitmap() == null)))
-        {
-          this.mCacheBackground = new DittoBitmapCache();
-          localObject1 = getFillPaint();
-          ((Paint)localObject1).setColor(this.mBgColor);
-          ((Paint)localObject1).setAlpha((int)this.mAlpha);
-          localObject2 = new Path();
-          ((Path)localObject2).addRoundRect(new RectF(this.mBound), this.borderRadius, Path.Direction.CW);
-          paramCanvas.drawPath((Path)localObject2, (Paint)localObject1);
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          label378:
-          DittoLog.e("DITTO_UI", "draw background exception.", localThrowable);
-        }
-      }
-      setGradientBackground(paramCanvas);
-      i = paramCanvas.save();
-      paramCanvas.translate(getPaddingLeft(), getPaddingTop());
-      if ((!hasNoRadius()) && (this.cornerPath != null)) {
-        if ((Build.VERSION.SDK_INT < 11) || (Build.VERSION.SDK_INT > 17) || (!paramCanvas.isHardwareAccelerated()))
-        {
-          paramCanvas.clipPath(this.cornerPath);
-          label448:
-          onDraw(paramCanvas);
-          paramCanvas.restoreToCount(i);
-          if ((this.borderWidth == 0) || (this.borderColor == 0)) {
-            break label909;
-          }
-        }
-      }
-      label909:
-      for (i = 1;; i = 0)
-      {
-        if ((i != 0) && ((this.isBorderDirty) || (this.mBorderCacheKey == null)))
-        {
-          this.mBorderCacheKey = generateBorderCacheKey();
-          this.isBorderDirty = false;
-        }
-        if (getShadowDrawable() != null)
-        {
-          paramCanvas.translate(this.paddingLeft - this.shadowSizeLeft, this.paddingTop - this.shadowSizeTop);
-          getShadowDrawable().draw(paramCanvas);
-          paramCanvas.translate(this.shadowSizeLeft - this.paddingLeft, this.shadowSizeTop - this.paddingTop);
-        }
-        if (i != 0)
-        {
-          this.mCacheBorder = getBackgroundCache(this.mBorderCacheKey);
-          if ((this.mCacheBorder == null) || (this.mCacheBorder.getBitmap() == null))
-          {
-            localObject1 = getStrokePaint();
-            ((Paint)localObject1).setStrokeWidth(this.borderWidth);
-            ((Paint)localObject1).setColor(this.borderColor);
-            float f = this.borderWidth / 2;
-            localObject1 = new RectF(this.mBound);
-            ((RectF)localObject1).top += f;
-            ((RectF)localObject1).left += f;
-            ((RectF)localObject1).right -= f;
-            ((RectF)localObject1).bottom -= f;
-            localObject2 = new Path();
-            ((Path)localObject2).addRoundRect((RectF)localObject1, this.borderRadius, Path.Direction.CW);
-            paramCanvas.drawPath((Path)localObject2, getStrokePaint());
-          }
-        }
-        paramCanvas.restoreToCount(k);
-        if (!bool1) {
-          break;
-        }
-        this.mHost.postInvalidateDelayed(16L);
-        return;
-        i = ((DittoArea)localObject1).getWidth();
-        break label101;
-        label761:
-        j = ((DittoArea)localObject1).getHeight();
-        break label109;
-        i = 0;
-        break label235;
-        label792:
-        if (this.mBackground == null) {
-          break label378;
-        }
-        this.mBackground.setBounds(this.mBound);
-        this.mBackground.setAlpha((int)this.mAlpha);
-        this.mBackground.draw(paramCanvas);
-        break label378;
-        paramCanvas.clipRect(0, 0, this.width - getPaddingLeft() - getPaddingRight(), this.height - getPaddingTop() - getPaddingBottom());
-        break label448;
-        paramCanvas.clipRect(0, 0, this.width - getPaddingLeft() - getPaddingRight(), this.height - getPaddingTop() - getPaddingBottom());
-        break label448;
-      }
+      drawContent(paramCanvas);
+      drawContentB(paramCanvas, i, bool1);
+      return;
+      this.mCurrentAnimation.initialize(this.mRight - this.mLeft, this.mBottom - this.mTop, localDittoArea.getWidth(), localDittoArea.getHeight());
+      break;
     }
   }
   
@@ -839,6 +936,11 @@ public class DittoArea
     return this.mVisibility;
   }
   
+  public int getWeight()
+  {
+    return this.mLayoutAttr.weight;
+  }
+  
   public int getWidth()
   {
     return this.mRight - this.mLeft;
@@ -881,16 +983,7 @@ public class DittoArea
           this.mShadowDrawable.setBounds(localRect);
           this.shadowBound = localRect;
         }
-        if ((!hasNoRadius()) && ((this.cornerPathHeight != getContentHeight()) || (this.cornerPathWidth != getContentWidth())))
-        {
-          this.cornerPath.reset();
-          if ((this.cornerBound == null) || (this.cornerPathHeight != getContentHeight()) || (this.cornerPathWidth != getContentWidth())) {
-            this.cornerBound = new RectF(0.0F, 0.0F, getContentWidth(), getContentHeight());
-          }
-          this.cornerPath.addRoundRect(this.cornerBound, getBorderRadius(), Path.Direction.CW);
-          this.cornerPathHeight = getContentHeight();
-          this.cornerPathWidth = getContentWidth();
-        }
+        executeCornerPath();
         onLayout(paramInt1, paramInt2, paramInt3, paramInt4);
         return;
       } while ((this.mBound.height() == this.height) && (this.mBound.width() == this.width));
@@ -949,7 +1042,7 @@ public class DittoArea
         onPressedAlpha(false);
         this.mMainHandler.removeCallbacks(this.mPendingCheckForLongPress);
         return performClick(paramMotionEvent);
-        if (((this.ignoreClick) || (!clickable())) && (TextUtils.isEmpty(this.areaIdShouldInvokeClick)) && (TextUtils.isEmpty(getOnClickUri())) && (TextUtils.isEmpty(getSilentUri())) && (this.clickListener == null) && (this.longClickListener == null)) {
+        if (!isActionDownValid()) {
           break;
         }
         this.isPressed = true;
@@ -994,12 +1087,7 @@ public class DittoArea
       getHost().handleSilentRequest(this.cmd, this.cmdParamType, this.cmdParamKey, this, paramMotionEvent);
       return true;
     }
-    if (this.clickListener != null)
-    {
-      this.clickListener.onClick(this, paramMotionEvent, null);
-      return true;
-    }
-    return false;
+    return performListenerClick(paramMotionEvent);
   }
   
   public void performLongClick(MotionEvent paramMotionEvent, Object paramObject)
@@ -1121,7 +1209,7 @@ public class DittoArea
     }
     for (;;)
     {
-      if ((this.cornerBound == null) || (this.cornerPathHeight != getContentHeight()) || (this.cornerPathWidth != getContentWidth())) {
+      if (needResetCornerBound()) {
         this.cornerBound = new RectF(0.0F, 0.0F, getContentWidth(), getContentHeight());
       }
       this.cornerPath.addRoundRect(this.cornerBound, getBorderRadius(), Path.Direction.CW);
@@ -1197,48 +1285,11 @@ public class DittoArea
     {
       this.id = paramLayoutAttrSet.id;
       setPadding(paramLayoutAttrSet.leftPadding, paramLayoutAttrSet.topPadding, paramLayoutAttrSet.rightPadding, paramLayoutAttrSet.bottomPadding);
-      if (paramLayoutAttrSet.hasAttr("gravity")) {
-        setGravity(LayoutAttrDefine.Gravity.parse(paramLayoutAttrSet.getAttr("gravity", "left")));
-      }
-      if (paramLayoutAttrSet.hasAttr("compassExposureKey")) {
-        this.compassExposureKey = paramLayoutAttrSet.getIntArrayAttr("compassExposureKey");
-      }
-      if (paramLayoutAttrSet.hasAttr("compassClickKey")) {
-        this.compassClickKey = paramLayoutAttrSet.getIntArrayAttr("compassClickKey");
-      }
-      if (paramLayoutAttrSet.hasAttr("ttt_report_area")) {
-        this.tttReportArea = paramLayoutAttrSet.getAttr("ttt_report_area", -1);
-      }
-      if (paramLayoutAttrSet.hasAttr("uri")) {
-        this.onClickUri = paramLayoutAttrSet.getAttr("uri", "");
-      }
-      if (paramLayoutAttrSet.hasAttr("silent_uri")) {
-        this.silentUri = paramLayoutAttrSet.getAttr("silent_uri", "");
-      }
-      if (paramLayoutAttrSet.hasAttr("silent_uri_sent_toast")) {
-        this.silentUriSentToast = paramLayoutAttrSet.getAttr("silent_uri_sent_toast", null);
-      }
-      if (paramLayoutAttrSet.hasAttr("cmd")) {
-        this.cmd = paramLayoutAttrSet.getAttr("cmd", null);
-      }
-      if (paramLayoutAttrSet.hasAttr("cmd_buffer")) {
-        this.cmdParamKey = paramLayoutAttrSet.getAttr("cmd_buffer", -2147483648);
-      }
-      if (paramLayoutAttrSet.hasAttr("cmd_buffer_type")) {
-        this.cmdParamType = paramLayoutAttrSet.getAttr("cmd_buffer_type", null);
-      }
-      if (paramLayoutAttrSet.hasAttr("post_click_key_path")) {
-        this.postClickKey = MustacheParser.parse(paramLayoutAttrSet.getAttr("post_click_key_path", ""));
-      }
-      if (paramLayoutAttrSet.hasAttr("invoke_area_click")) {
-        this.areaIdShouldInvokeClick = paramLayoutAttrSet.getAttr("invoke_area_click", null);
-      }
-      if (paramLayoutAttrSet.hasAttr("ignore_click")) {
-        this.ignoreClick = paramLayoutAttrSet.getAttr("ignore_click", false);
-      }
+      parseAttr(paramLayoutAttrSet);
+      parseAttr2(paramLayoutAttrSet);
       setBorderWidth(paramLayoutAttrSet.getPostFixedAttr("border_width", 0));
       if (!paramLayoutAttrSet.hasAttr("border_radii4")) {
-        break label647;
+        break label293;
       }
       setBorderRadius(new float[] { paramLayoutAttrSet.topLeftRadius, paramLayoutAttrSet.topLeftRadius, paramLayoutAttrSet.topRightRadius, paramLayoutAttrSet.topRightRadius, paramLayoutAttrSet.bottomRightRadius, paramLayoutAttrSet.bottomRightRadius, paramLayoutAttrSet.bottomLeftRadius, paramLayoutAttrSet.bottomLeftRadius });
     }
@@ -1251,51 +1302,26 @@ public class DittoArea
       try
       {
         setBorderColor(DittoResourcesUtil.parseColor(str));
-        if ((paramLayoutAttrSet.bg_color != 0) || ((this.borderColor != 0) && (this.borderWidth != 0))) {
-          setBackgroundColor(paramLayoutAttrSet.bg_color);
-        }
-        if (paramLayoutAttrSet.mAttrs.containsKey("visibility"))
-        {
-          str = paramLayoutAttrSet.getAttr("visibility", "visible");
-          if (TextUtils.equals("visible", str)) {
-            setVisibility(0);
-          }
-        }
-        else
-        {
-          setShadowSize(paramLayoutAttrSet.leftShadowSize, paramLayoutAttrSet.topShadowSize, paramLayoutAttrSet.rightShadowSize, paramLayoutAttrSet.bottomShadowSize);
-          if ((paramLayoutAttrSet.shadowResourceId == 0) || (this.mHost == null) || (this.mHost.getContext() == null) || (this.mHost.getContext().getResources() == null)) {}
-        }
+        resetBgColorAndVisible(paramLayoutAttrSet);
+        setShadowSize(paramLayoutAttrSet.leftShadowSize, paramLayoutAttrSet.topShadowSize, paramLayoutAttrSet.rightShadowSize, paramLayoutAttrSet.bottomShadowSize);
+        if ((paramLayoutAttrSet.shadowResourceId == 0) || (this.mHost == null) || (this.mHost.getContext() == null) || (this.mHost.getContext().getResources() == null)) {}
       }
       catch (Throwable localThrowable)
       {
         try
         {
-          label647:
-          label723:
-          do
-          {
-            for (;;)
-            {
-              setShadowDrawable(this.mHost.getContext().getResources().getDrawable(paramLayoutAttrSet.shadowResourceId));
-              this.mGradientDirection = paramLayoutAttrSet.gradientDirection;
-              this.mGradientStartColor = paramLayoutAttrSet.gradientStartColor;
-              this.mGradientEndColor = paramLayoutAttrSet.gradientEndColor;
-              this.mPressedAlpha = paramLayoutAttrSet.pressedAlpha;
-              return;
-              setBorderRadius(paramLayoutAttrSet.getPostFixedAttr("border_radius", 0));
-              break;
-              localThrowable = localThrowable;
-              setBorderColor(-1);
-              DittoLog.e("DITTO_UI", "the text " + str + " can't be parsed as color string", localThrowable);
-              continue;
-              if (!TextUtils.equals("gone", str)) {
-                break label723;
-              }
-              setVisibility(8);
-            }
-          } while (!TextUtils.equals("invisible", str));
-          setVisibility(4);
+          setShadowDrawable(this.mHost.getContext().getResources().getDrawable(paramLayoutAttrSet.shadowResourceId));
+          this.mGradientDirection = paramLayoutAttrSet.gradientDirection;
+          this.mGradientStartColor = paramLayoutAttrSet.gradientStartColor;
+          this.mGradientEndColor = paramLayoutAttrSet.gradientEndColor;
+          this.mPressedAlpha = paramLayoutAttrSet.pressedAlpha;
+          return;
+          label293:
+          setBorderRadius(paramLayoutAttrSet.getPostFixedAttr("border_radius", 0));
+          continue;
+          localThrowable = localThrowable;
+          setBorderColor(-1);
+          DittoLog.e("DITTO_UI", "the text " + str + " can't be parsed as color string", localThrowable);
         }
         catch (Exception localException)
         {
@@ -1394,7 +1420,7 @@ public class DittoArea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.ditto.area.DittoArea
  * JD-Core Version:    0.7.0.1
  */

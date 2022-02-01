@@ -1,31 +1,22 @@
-import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class aitp
-  extends airj
+public class aitp
+  implements aitx
 {
-  protected aitp(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
-  {
-    super(paramNewPhotoPreviewActivity);
-  }
+  public aitp(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void initData(Intent paramIntent)
+  public void a(int paramInt, String paramString)
   {
-    super.initData(paramIntent);
-    this.a.customSendBtnText = ((NewPhotoPreviewActivity)this.mActivity).getString(2131695309);
-  }
-  
-  public void initUI()
-  {
-    super.initUI();
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new aitq(this));
-  }
-  
-  public boolean needShowMultiPhoto()
-  {
-    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
+    }
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 80000001) {
+      bbup.a("add_page", "search", "clk_search_grp", this.a.d + 1, 0, new String[] { "", "", paramString, "" });
+    }
+    this.a.a(paramString, false);
   }
 }
 

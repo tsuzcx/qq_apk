@@ -1,14 +1,16 @@
-public abstract interface bcto
+import android.content.Context;
+
+class bcto
+  extends bctj
 {
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  protected bcto(Context paramContext)
+  {
+    super(paramContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcto
  * JD-Core Version:    0.7.0.1
  */

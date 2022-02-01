@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.view;
 
-import alnq;
+import anha;
 
 public class ChatApolloViewListener$3
   implements Runnable
 {
-  public ChatApolloViewListener$3(alnq paramalnq) {}
+  public ChatApolloViewListener$3(anha paramanha) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ChatApolloViewListener$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ChatApolloViewListener.3
  * JD-Core Version:    0.7.0.1
  */

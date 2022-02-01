@@ -155,6 +155,7 @@ public class BaseConstants
   public static final String CMD_UNREGISTERMSFSERVICE = "cmd_UnRegisterMsfService";
   public static final String CMD_UNREGISTER_NOTIFY = "notify.unRegister";
   public static final String CMD_UNREGISTER_PUSH = "push.unRegister";
+  public static final String CMD_UPDATE_MANAGER_CONFIG = "cmd_update_manager_config";
   public static final String CMD_USERENTER = "cmd_userEnter";
   public static final String CMD_USEREXIT = "cmd_userExit";
   public static final String CMD_VERIFY_PASSWD = "login.verifyPasswd";
@@ -239,6 +240,7 @@ public class BaseConstants
   public static final int NETINFO_NONE = 0;
   public static final int NETINFO_WIFI = 2;
   public static final int NETINFO_WIFIANDMOBILE = 3;
+  public static final long OPEN_SDK_BUFLAG_B1 = 1600001540L;
   public static String RDM_NoChangeFailCode;
   public static final int REGUIN_CAPTCHA = 4;
   public static final int REGUIN_GUARANTEE = 8;
@@ -253,6 +255,7 @@ public class BaseConstants
   public static long REPORTLOGONCEMAXSIZE = 20971520L;
   public static int REPORTLOG_WIFI_MAXPACKAGECOUNT = 0;
   public static final int RET_USER_CANCEL = -20160326;
+  public static final int ROUTING_ID = 62;
   public static final int SERVERPUSH_TYPE_MEDIASERVERLIST = 1;
   public static final int SERVERPUSH_TYPE_USERLOGLEVEL = 2;
   public static final String SIMPLEACCOUNT_TAG_IsShare = "__isShare";
@@ -283,10 +286,11 @@ public class BaseConstants
   public static final boolean isGrayVersion = false;
   public static final boolean isPublicVersion = true;
   public static final boolean isReleaseVersion = true;
+  public static final boolean isSwitchToTestEnv = false;
   public static boolean isUseDebugSso = false;
   public static long reSendIntrevTime = 0L;
-  public static final String revision = "fd2cc8f9";
-  public static String testServerAddress;
+  public static final String revision = "2703aac4";
+  public static final String testServerAddress = "socket://183.3.233.202:14000";
   
   static
   {
@@ -296,7 +300,6 @@ public class BaseConstants
     reSendIntrevTime = 5000L;
     RDM_NoChangeFailCode = "rdm_NCF";
     isUseDebugSso = false;
-    testServerAddress = "";
     XGloginMergeTSAddress = null;
     WiFiloginMergeTSAddress = null;
     MAXSENDCOUNT_INMINUTE = 150;

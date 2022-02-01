@@ -17,7 +17,7 @@ class PagerSnapHelper$OnLayoutSizeChangedListener
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       if ((paramInt1 != 0) && (!PagerSnapHelper.access$100(this.this$0)) && ((this.lastHeight != paramView.getHeight()) || (this.lastWidth != paramView.getWidth()))) {
-        this.this$0.offsetToTargetPosition(PagerSnapHelper.access$900(this.this$0));
+        this.this$0.offsetToTargetPosition(PagerSnapHelper.access$1000(this.this$0));
       }
       this.lastHeight = paramView.getHeight();
       this.lastWidth = paramView.getWidth();
@@ -27,7 +27,7 @@ class PagerSnapHelper$OnLayoutSizeChangedListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.PagerSnapHelper.OnLayoutSizeChangedListener
  * JD-Core Version:    0.7.0.1
  */

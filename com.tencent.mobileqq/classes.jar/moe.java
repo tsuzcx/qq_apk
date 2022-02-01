@@ -1,103 +1,61 @@
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.av.ui.VoiceChangeItemView1;
+import android.text.TextUtils;
+import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class moe
-  extends BaseAdapter
+public final class moe
+  extends mgm
 {
-  public static String a;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private VoiceChangeItemView1 jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1;
-  moj jdField_a_of_type_Moj;
-  private moh[] jdField_a_of_type_ArrayOfMoh;
-  private int jdField_b_of_type_Int;
-  private VoiceChangeItemView1 jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
-  private int c;
-  private int d;
+  WeakReference<ZimuToolbar> a;
   
-  static
+  public moe(AppInterface paramAppInterface, Context paramContext, ArrayList<mhm> paramArrayList, HorizontalListView paramHorizontalListView, ZimuToolbar paramZimuToolbar)
   {
-    jdField_a_of_type_JavaLangString = "VoiceChangeAdapter";
+    super(paramAppInterface, paramContext, paramArrayList, paramHorizontalListView);
+    this.a = new WeakReference(paramZimuToolbar);
   }
   
-  public void a(int paramInt)
+  public void a(String paramString1, long paramLong, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(moh[] paramArrayOfmoh)
-  {
-    this.jdField_a_of_type_ArrayOfMoh = paramArrayOfmoh;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ArrayOfMoh == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ArrayOfMoh.length;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_ArrayOfMoh == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_ArrayOfMoh[paramInt];
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    boolean bool = true;
-    lek.a(jdField_a_of_type_JavaLangString, "getView|position=" + paramInt + ", view=" + paramView);
-    if (paramView == null) {
-      paramView = new VoiceChangeItemView1(this.jdField_a_of_type_AndroidContentContext);
+    boolean bool1 = false;
+    int j;
+    int i;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      j = getCount();
+      i = 1;
+      if (i < j)
+      {
+        mhm localmhm = a(i);
+        if ((localmhm != null) && (paramString2.equals(localmhm.a))) {
+          bool1 = true;
+        }
+      }
     }
     for (;;)
     {
-      paramViewGroup = (moh)getItem(paramInt);
-      VoiceChangeItemView1 localVoiceChangeItemView1;
-      if (paramViewGroup != null)
-      {
-        if ((this.d == 0) && (paramInt == 1) && (this.jdField_b_of_type_Int == 0)) {
-          this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
-        }
-        localVoiceChangeItemView1 = (VoiceChangeItemView1)paramView;
-        if (this.c != paramViewGroup.jdField_a_of_type_Int) {
-          break label168;
-        }
+      if (QLog.isDevelopLevel()) {
+        QLog.w("QAVPtvTemplateAdapter", 1, "setSelectedItem, id[" + paramString2 + "], find[" + bool1 + "], seq[" + paramLong + "], from[" + paramString1 + "], mCurSelectedPosition[" + this.d + "]");
       }
-      for (;;)
-      {
-        localVoiceChangeItemView1.a(paramInt, paramViewGroup, bool, this.jdField_a_of_type_Int, this.jdField_a_of_type_Moj);
-        if (this.c == paramViewGroup.jdField_a_of_type_Int)
-        {
-          if (paramInt != 0) {
-            this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = localVoiceChangeItemView1;
-          }
-          this.d = paramInt;
-        }
-        this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1 = ((VoiceChangeItemView1)paramView);
-        this.jdField_b_of_type_Int = paramInt;
-        return paramView;
-        label168:
-        bool = false;
+      j = this.d;
+      boolean bool2 = a(i);
+      if (bool2) {
+        a(paramLong, this.d);
       }
+      QLog.w("QAVPtvTemplateAdapter", 1, "setSelectedItem end, from[" + paramString1 + "], seq[" + paramLong + "], id[" + paramString2 + "], find[" + bool1 + "], index[" + i + "], Pos[" + j + "->" + this.d + "], selectResult[" + bool2 + "]");
+      return;
+      i += 1;
+      break;
+      i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     moe
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app.readinjoy;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdnn;
-import bkbq;
+import bgsp;
+import bmqa;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 class ReadInJoyManager$4
@@ -20,14 +20,14 @@ class ReadInJoyManager$4
     localEditor.putLong("readinjoy_push_channel_article_content_channel_id", this.jdField_a_of_type_Long);
     localEditor.putString("readinjoy_push_channel_article_content_channel_name", this.jdField_a_of_type_JavaLangString);
     localEditor.putString("readinjoy_push_channel_article_content_wording", this.b);
-    localEditor.putString("readinjoy_push_channel_article_content_article_id_list", bdnn.a(this.jdField_a_of_type_JavaUtilList, ","));
-    bkbq.a(localEditor, true);
+    localEditor.putString("readinjoy_push_channel_article_content_article_id_list", bgsp.a(this.jdField_a_of_type_JavaUtilList, ","));
+    bmqa.a(localEditor, true);
     ReadInJoyManager.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.readinjoy.ReadInJoyManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adue
-  extends Handler
+class adue
+  implements View.OnClickListener
 {
-  public adue(RegisterBaseActivity paramRegisterBaseActivity) {}
+  adue(aduc paramaduc, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131721212);
-    }
-    this.a.a(paramMessage, 1);
+    this.jdField_a_of_type_Aduc.a.app.a(this.jdField_a_of_type_JavaLangString, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

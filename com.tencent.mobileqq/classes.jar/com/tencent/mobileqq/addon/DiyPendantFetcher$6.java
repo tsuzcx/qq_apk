@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.addon;
 
-import akmx;
-import akmy;
+import amgd;
+import amge;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class DiyPendantFetcher$6
   implements Runnable
 {
-  public DiyPendantFetcher$6(akmx paramakmx) {}
+  public DiyPendantFetcher$6(amgd paramamgd) {}
   
   public void run()
   {
@@ -18,18 +18,18 @@ public class DiyPendantFetcher$6
     Iterator localIterator = this.this$0.a.iterator();
     while (localIterator.hasNext())
     {
-      akmy localakmy = (akmy)localIterator.next();
-      if ((localakmy != null) && (localakmy.a() != null))
+      amge localamge = (amge)localIterator.next();
+      if ((localamge != null) && (localamge.a() != null))
       {
-        if (!localHashSet.contains(localakmy))
+        if (!localHashSet.contains(localamge))
         {
-          localHashSet.add(localakmy);
-          localakmy.invalidateSelf();
-          this.this$0.a.remove(localakmy);
+          localHashSet.add(localamge);
+          localamge.invalidateSelf();
+          this.this$0.a.remove(localamge);
         }
       }
       else {
-        this.this$0.a.remove(localakmy);
+        this.this$0.a.remove(localamge);
       }
     }
     if (QLog.isColorLevel()) {
@@ -39,7 +39,7 @@ public class DiyPendantFetcher$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantFetcher.6
  * JD-Core Version:    0.7.0.1
  */

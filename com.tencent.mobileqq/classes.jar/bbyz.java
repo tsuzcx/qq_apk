@@ -1,36 +1,17 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar;
-
 public class bbyz
-  implements ViewPager.OnPageChangeListener
 {
-  public bbyz(DotStyleNavBar paramDotStyleNavBar) {}
+  public byte[] a;
+  public byte[] b;
   
-  public void onPageScrollStateChanged(int paramInt)
+  public bbyz(bbyx parambbyx, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageScrollStateChanged(paramInt);
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageScrolled(paramInt1, paramFloat, paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    this.a.setCurrent(paramInt);
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageSelected(paramInt);
-    }
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+    this.b = paramArrayOfByte2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbyz
  * JD-Core Version:    0.7.0.1
  */

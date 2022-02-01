@@ -1,64 +1,16 @@
-import android.util.Log;
-import com.tencent.mobileqq.lyric.common.TimerTaskManager;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-
 public class atwi
-  extends ScheduledThreadPoolExecutor
 {
-  public atwi(TimerTaskManager paramTimerTaskManager, int paramInt)
-  {
-    super(paramInt);
-  }
+  int a;
+  int b;
   
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  public String toString()
   {
-    super.afterExecute(paramRunnable, paramThrowable);
-    Throwable localThrowable1 = paramThrowable;
-    if (paramThrowable == null)
-    {
-      localThrowable1 = paramThrowable;
-      if (!(paramRunnable instanceof Future)) {}
-    }
-    try
-    {
-      paramRunnable = (Future)paramRunnable;
-      localThrowable1 = paramThrowable;
-      if (paramRunnable.isDone())
-      {
-        paramRunnable.get();
-        localThrowable1 = paramThrowable;
-      }
-    }
-    catch (CancellationException localCancellationException)
-    {
-      break label46;
-    }
-    catch (ExecutionException paramRunnable)
-    {
-      for (;;)
-      {
-        localThrowable2 = paramRunnable.getCause();
-      }
-    }
-    catch (InterruptedException paramRunnable)
-    {
-      for (;;)
-      {
-        label46:
-        Throwable localThrowable2 = paramThrowable;
-      }
-    }
-    if (localThrowable1 != null) {
-      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
-    }
+    return "Type [type1=" + this.a + ", type2=" + this.b + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atwi
  * JD-Core Version:    0.7.0.1
  */

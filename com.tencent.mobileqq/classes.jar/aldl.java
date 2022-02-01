@@ -1,303 +1,250 @@
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.activity.recent.data.RecentSayHelloBoxItem;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.MyGridView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.widget.CustomImgView;
+import com.tencent.widget.SingleLineTextView;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONObject;
 
 public class aldl
-  implements algr
+  extends alcd
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private aled jdField_a_of_type_Aled = new aldn(this);
-  private alep jdField_a_of_type_Alep;
-  private Context jdField_a_of_type_AndroidContentContext;
-  bdul jdField_a_of_type_Bdul = new aldm(this);
-  private ApolloTextureView jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  protected alby a;
+  private List<String> a;
   
-  public aldl(alep paramalep, QQAppInterface paramQQAppInterface, Context paramContext, String paramString, ApolloTextureView paramApolloTextureView)
+  public View a(int paramInt, Object paramObject, alby paramalby, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aled paramaled)
   {
-    this.jdField_a_of_type_Alep = paramalep;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = paramApolloTextureView;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bdul);
-  }
-  
-  private int a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 1) {
-      return 1;
-    }
-    if (paramInt2 == 9) {
-      return 2;
-    }
-    return 0;
-  }
-  
-  public List<alen> a(aksm paramaksm)
-  {
-    Object localObject1 = null;
-    if (paramaksm == null) {
-      return localObject1;
-    }
-    label784:
-    for (;;)
+    this.jdField_a_of_type_Alby = paramalby;
+    paramViewGroup = null;
+    paramalby = paramViewGroup;
+    if (paramView != null)
     {
-      ArrayList localArrayList;
-      alen localalen;
-      int i;
-      aksn localaksn;
-      JSONObject localJSONObject;
-      try
+      paramalby = paramViewGroup;
+      if (paramView.getTag() != null)
       {
-        Object localObject3 = paramaksm.jdField_a_of_type_JavaUtilHashMap;
-        if (localObject3 == null) {
-          break;
-        }
-        localArrayList = new ArrayList();
-        localObject3 = ((HashMap)localObject3).entrySet().iterator();
-        if (!((Iterator)localObject3).hasNext()) {
-          break label638;
-        }
-        localalen = new alen();
-        localObject1 = (Map.Entry)((Iterator)localObject3).next();
-        if (localObject1 == null) {
-          continue;
-        }
-        i = ((Integer)((Map.Entry)localObject1).getKey()).intValue();
-        localalen.jdField_a_of_type_Int = i;
-        localaksn = (aksn)((Map.Entry)localObject1).getValue();
-        if ((localaksn == null) || (localaksn.a == null) || (localaksn.a.size() <= 0)) {
-          continue;
-        }
-        localalen.g = a(localaksn.c, localaksn.b);
-        localObject1 = new File(aliu.f + i + "/config.json");
-        if (((File)localObject1).exists()) {
-          localObject1 = bdhb.a((File)localObject1);
-        }
-      }
-      finally {}
-      try
-      {
-        localJSONObject = new JSONObject(new String((byte[])localObject1, "UTF-8"));
-        if ((localJSONObject.has("isShowInCard")) && (localJSONObject.getInt("isShowInCard") == 0)) {
-          continue;
-        }
-        localObject1 = localJSONObject.optString("name");
-        if (!localJSONObject.has("showName")) {
-          break label784;
-        }
-        if (!TextUtils.isEmpty(localJSONObject.getString("showName"))) {
-          break label581;
-        }
-      }
-      catch (Exception localException)
-      {
-        label581:
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("ApolloGuestsPresenter", 2, "initTag e=" + localException.toString());
-        continue;
-      }
-      localalen.h = ((Integer)aksm.jdField_a_of_type_JavaUtilMap.get(localaksn.a.get(0))).intValue();
-      if ((localObject1 != null) && (((String)localObject1).length() > 5))
-      {
-        localObject1 = ((String)localObject1).substring(0, 4);
-        localalen.jdField_a_of_type_JavaLangString = (aksm.jdField_a_of_type_ArrayOfJavaLangString[localalen.h] + (String)localObject1);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.onGetDressRect((String)localaksn.a.get(0));
-        if ((localObject1 != null) && ((((RectF)localObject1).bottom != ((RectF)localObject1).top) || (((RectF)localObject1).left != ((RectF)localObject1).right)))
-        {
-          localalen.d = (((int)((RectF)localObject1).top + (int)((RectF)localObject1).bottom) / 2);
-          localalen.f = ((int)((RectF)localObject1).left);
-          localalen.e = ((int)((RectF)localObject1).right);
-          localalen.i = paramaksm.e;
-          localalen.j = paramaksm.f;
-          localArrayList.add(localalen);
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ApolloGuestsPresenter", 2, "item.name =" + localalen.jdField_a_of_type_JavaLangString + " item.y = " + localalen.d + " item.left = " + localalen.f + " item.right = " + localalen.e);
-            continue;
-            localObject1 = null;
-            continue;
-            localObject1 = localJSONObject.getString("showName");
-          }
-        }
-      }
-      else
-      {
-        continue;
-        label638:
-        if (localArrayList.size() > 4)
-        {
-          Collections.sort(localArrayList, new aldo(this));
-          i = localArrayList.size() - 1;
-          while (i >= 4)
-          {
-            localArrayList.remove(i);
-            i -= 1;
-          }
-        }
-        Collections.sort(localArrayList);
-        int j = 0;
-        i = 0;
-        label702:
-        if (j < localArrayList.size())
-        {
-          ((alen)localArrayList.get(j)).b = i;
-          ((alen)localArrayList.get(j)).c = ((int)(123.0F * this.jdField_a_of_type_Float));
-          if (i == 0) {
-            i = 1;
-          }
-        }
-        for (;;)
-        {
-          j += 1;
-          break label702;
-          if (i == 1)
-          {
-            i = 0;
-            continue;
-            Object localObject2 = localArrayList;
-            break;
-          }
+        paramalby = paramViewGroup;
+        if ((paramView.getTag() instanceof aldn)) {
+          paramalby = (aldn)paramView.getTag();
         }
       }
     }
-  }
-  
-  public void a()
-  {
-    int i = 99999;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    int j = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("cmshow_zan", 0).getInt("apollo_zan_count" + this.jdField_a_of_type_JavaLangString, 0);
-    String str = String.valueOf(j);
-    if (j >= 99999) {
-      str = 99999 + "+";
+    if (paramalby == null)
+    {
+      paramViewGroup = new aldn();
+      paramaled = super.a(paramContext, 2131561275, paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramaled.findViewById(2131368163));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramaled.findViewById(2131378877));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramaled.findViewById(2131380254));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramaled.findViewById(2131371389));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView = ((MyGridView)paramaled.findViewById(2131371359));
+      paramalby = paramContext.getResources();
+      paramView = paramalby.getDisplayMetrics();
+      int m = (int)(Math.min(paramView.widthPixels, paramView.heightPixels) - paramView.density * 119.0F);
+      int i = paramalby.getDimensionPixelSize(2131298774);
+      int k = paramalby.getDimensionPixelSize(2131298773);
+      if (i <= 0)
+      {
+        i = 45;
+        int j = k;
+        if (k <= 0) {
+          j = 10;
+        }
+        m /= (i + j);
+        k = m;
+        if (m > 6) {
+          k = 6;
+        }
+        paramalby = new aldm(this, paramContext, k, i);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setColumnWidth(i);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setNumColumns(k);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setHorizontalSpacing(j);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setStretchMode(0);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.a();
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setAdapter(paramalby);
+        paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(14.0F, 1);
+        paramaled.setTag(paramViewGroup);
+        paramView = paramaled;
+        paramalby = paramViewGroup;
+        if (this.jdField_a_of_type_Albc != null)
+        {
+          paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_Albc.a());
+          paramalby = paramViewGroup;
+          paramView = paramaled;
+        }
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Alep.a(str, i, i);
-      ((bdug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_JavaLangString, 256, "myApollo");
-      return;
-      i = j;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      ((bdug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_JavaLangString, "myApollo");
-    }
-  }
-  
-  public void c()
-  {
-    int j = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    Object localObject1 = ((aknx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.jdField_a_of_type_JavaLangString);
-    int i;
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject1 = ((ApolloBaseInfo)localObject1).getApolloDress();
-      if (localObject1 != null)
-      {
-        i = ((aksm)localObject1).jdField_a_of_type_Int;
-        localObject2 = ((aksm)localObject1).a();
-        localObject1 = localObject2;
-        if (i > 0)
-        {
-          localObject1 = localObject2;
-          if (localObject2 != null)
-          {
-            localObject1 = localObject2;
-            if (localObject2.length > 0)
-            {
-              localObject1 = localObject2;
-              if (!algj.a(this.jdField_a_of_type_JavaLangString, i, (int[])localObject2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aled)) {
-                localObject1 = aldv.a(i);
-              }
-            }
-          }
-        }
-        if (i >= 0) {
-          break label206;
-        }
-        i = j;
+      paramalby.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
+      paramViewGroup = paramContext.getResources().getDrawable(2130845547);
+      if ((paramalby != null) && ((paramObject instanceof RecentBaseData))) {
+        a(paramView, (RecentBaseData)paramObject, paramContext, paramViewGroup);
       }
-    }
-    label206:
-    for (;;)
-    {
-      if (localObject1 != null)
-      {
-        localObject2 = localObject1;
-        if (localObject1.length > 0) {}
-      }
-      else
-      {
-        localObject2 = aldv.a(i);
-      }
-      if (this.jdField_a_of_type_Alep != null) {
-        this.jdField_a_of_type_Alep.a((int[])localObject2, i);
-      }
-      this.jdField_a_of_type_Int = i;
-      return;
-      ((bdug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).b(this.jdField_a_of_type_JavaLangString);
       for (;;)
       {
-        localObject2 = null;
-        i = 0;
-        break;
-        ((bdug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).b(this.jdField_a_of_type_JavaLangString);
+        super.a(paramContext, paramView, paramInt, paramObject, paramalby, paramOnClickListener);
+        paramView.setOnClickListener(paramOnClickListener);
+        paramView.setOnLongClickListener(paramOnLongClickListener);
+        paramView.setTag(-1, Integer.valueOf(paramInt));
+        if (AppSetting.c) {
+          paramView.setContentDescription(null);
+        }
+        return paramView;
+        if (paramalby != null)
+        {
+          paramalby.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewGroup);
+          paramalby.jdField_a_of_type_AndroidWidgetTextView.setText("");
+          paramalby.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText("");
+        }
       }
+      break;
     }
   }
   
-  public void d()
+  public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
   {
-    if (this.jdField_a_of_type_Boolean) {}
+    if ((paramRecentBaseData == null) || (paramContext == null)) {
+      return null;
+    }
+    paramRecentBaseData = paramContext.getResources();
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[0]));
+      return this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+  }
+  
+  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable arg4)
+  {
+    int i = 0;
+    if ((paramView == null) || (paramRecentBaseData == null) || (!(paramRecentBaseData instanceof RecentSayHelloBoxItem))) {}
     do
     {
       return;
-      localObject = ((aknx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.jdField_a_of_type_JavaLangString);
-    } while ((localObject == null) || (this.jdField_a_of_type_Alep == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null));
-    Object localObject = a(((ApolloBaseInfo)localObject).getApolloDress());
-    this.jdField_a_of_type_Alep.b((List)localObject);
+      localObject = paramView.getTag();
+    } while (!(localObject instanceof aldn));
+    Object localObject = (aldn)localObject;
+    RecentSayHelloBoxItem localRecentSayHelloBoxItem = (RecentSayHelloBoxItem)paramRecentBaseData;
+    ((aldn)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(???);
+    ((aldn)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(2131698074);
+    int k = paramRecentBaseData.mUnreadNum;
+    int j = paramRecentBaseData.mUnreadFlag;
+    if (k > 0) {
+      if (j == 3)
+      {
+        j = 2130850396;
+        ((aldn)localObject).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1);
+        i = 3;
+      }
+    }
+    for (;;)
+    {
+      label105:
+      bkjh.a(((aldn)localObject).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, k, j, 99, null);
+      i = paramRecentBaseData.mExtraInfoColor;
+      ??? = paramRecentBaseData.mMsgExtroInfo;
+      if (??? != null)
+      {
+        ??? = ???.toString();
+        label148:
+        if (!TextUtils.isEmpty(???)) {
+          ((aldn)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(ColorStateList.valueOf(i), 1);
+        }
+        ((aldn)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText(???, 1);
+      }
+      for (;;)
+      {
+        synchronized (localRecentSayHelloBoxItem.lock)
+        {
+          if (!TextUtils.isEmpty(localRecentSayHelloBoxItem.mMsgExtroInfo))
+          {
+            ((aldn)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setVisibility(8);
+            ((aldn)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setVisibility(0);
+            ((aldn)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localRecentSayHelloBoxItem.mLastMsg);
+            ((aldn)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(paramContext.getResources().getColor(2131167060));
+            if (!AppSetting.c) {
+              break;
+            }
+            paramView.setContentDescription(paramRecentBaseData.mContentDesc);
+            return;
+            j = 2130850392;
+            ((aldn)localObject).jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0);
+            i = 3;
+            break label105;
+            ??? = "";
+            break label148;
+          }
+          if ((localRecentSayHelloBoxItem.mUnreadMRList != null) && (localRecentSayHelloBoxItem.mUnreadMRList.size() > 0))
+          {
+            ((aldn)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setVisibility(8);
+            ((aldn)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setVisibility(0);
+            ((aldn)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(paramContext.getResources().getColor(2131167060));
+            if (((aldn)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getAdapter() == null) {
+              continue;
+            }
+            aldm.a((aldm)((aldn)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getAdapter(), localRecentSayHelloBoxItem.mUnreadMRList);
+          }
+        }
+        ((aldn)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setVisibility(8);
+        ((aldn)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setVisibility(0);
+        ((aldn)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localRecentSayHelloBoxItem.mLastMsg);
+        ((aldn)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(paramContext.getResources().getColor(2131167060));
+      }
+      j = 0;
+    }
   }
   
-  public void e()
+  public void a(View paramView, RecentBaseData paramRecentBaseData, MessageRecord paramMessageRecord, Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Bdul);
+    if ((paramView == null) || (paramMessageRecord == null) || (paramDrawable == null) || (!(paramRecentBaseData instanceof RecentSayHelloBoxItem))) {}
+    for (;;)
+    {
+      return;
+      paramView = paramView.getTag();
+      if ((paramView instanceof aldn))
+      {
+        paramView = (aldn)paramView;
+        int j = paramView.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getCount();
+        int i = 0;
+        while (i < j)
+        {
+          paramRecentBaseData = paramView.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.getChildAt(i);
+          if ((paramRecentBaseData != null) && ((paramRecentBaseData.getTag(-1) instanceof String)))
+          {
+            String str = (String)paramRecentBaseData.getTag(-1);
+            if (str.equals(paramMessageRecord.senderuin))
+            {
+              ((CustomImgView)paramRecentBaseData).setImageDrawable(paramDrawable);
+              return;
+            }
+            if (QLog.isDevelopLevel()) {
+              QLog.d("SAYHELL_BOX", 4, "updateMsgHeader,childView uin:" + str);
+            }
+          }
+          i += 1;
+        }
+      }
     }
-    this.jdField_a_of_type_Boolean = true;
   }
 }
 

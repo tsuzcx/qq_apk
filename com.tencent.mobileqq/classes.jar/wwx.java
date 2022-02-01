@@ -1,32 +1,25 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
-class wwx
+public class wwx
+  extends weu
 {
-  public TextView a;
+  public QQUserUIItem a;
+  public String a;
+  public List<QQUserUIItem> a;
+  public String b;
   
-  public wwx(View paramView)
+  public String toString()
   {
-    this.a = ((TextView)paramView.findViewById(2131377403));
-  }
-  
-  public void a(xof paramxof, www paramwww)
-  {
-    if (TextUtils.isEmpty(paramxof.a))
-    {
-      this.a.setVisibility(8);
-      return;
+    if (this.a == null) {
+      return "UpdateUserInfoEvent " + super.toString();
     }
-    this.a.setVisibility(0);
-    this.a.setText(wws.a(paramxof));
-    wws.a(this.a);
-    this.a.setOnClickListener(new wwy(this, paramwww, paramxof));
+    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wwx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,28 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.18.1;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
-
 public class awdf
-  extends AccountObserver
 {
-  awdf(awcx paramawcx) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public awdf()
   {
-    if ((paramBoolean1) && (awcx.a(this.a) != null)) {
-      awcx.a(this.a).a(paramStatus);
-    }
-    if (!paramBoolean2) {
-      return;
-    }
-    ThreadManager.getUIHandler().post(new AccountPanel.18.1(this, paramBoolean1, paramStatus));
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
   }
   
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong) {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ContactsGuideInfo|showWelcomepage=").append(this.jdField_a_of_type_Boolean).append(",showConvGuideEntrance=").append(this.jdField_b_of_type_Boolean).append(",friends_recomm_flag=").append(this.jdField_a_of_type_Int).append(",groups_recomm_flag=").append(this.jdField_b_of_type_Int).append(",url=").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awdf
  * JD-Core Version:    0.7.0.1
  */

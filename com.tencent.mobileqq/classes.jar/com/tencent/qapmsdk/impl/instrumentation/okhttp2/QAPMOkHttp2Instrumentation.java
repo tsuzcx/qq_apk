@@ -10,9 +10,8 @@ import com.squareup.okhttp.Response.Builder;
 import com.squareup.okhttp.ResponseBody;
 import com.squareup.okhttp.internal.Version;
 import com.tencent.qapmsdk.common.logger.Logger;
-import com.tencent.qapmsdk.impl.instrumentation.QAPMHttpURLConnectionExtension;
-import com.tencent.qapmsdk.impl.instrumentation.QAPMHttpsURLConnectionExtension;
-import com.tencent.qapmsdk.impl.instrumentation.QAPMReplaceCallSite;
+import com.tencent.qapmsdk.impl.instrumentation.c;
+import com.tencent.qapmsdk.impl.instrumentation.d;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
@@ -21,19 +20,17 @@ public class QAPMOkHttp2Instrumentation
 {
   private static final String TAG = "QAPM_Impl_QAPMOkHttp2Instrumentation";
   
-  @QAPMReplaceCallSite
   public static Response.Builder body(Response.Builder paramBuilder, ResponseBody paramResponseBody)
   {
     if (isSpecificOkhttp()) {
       return paramBuilder.body(paramResponseBody);
     }
-    return new ResponseBuilderExtension(paramBuilder).body(paramResponseBody);
+    return new g(paramBuilder).body(paramResponseBody);
   }
   
-  @QAPMReplaceCallSite
   public static Request build(Request.Builder paramBuilder)
   {
-    return new QAPMRequestBuilderExtension(paramBuilder).build();
+    return new f(paramBuilder).build();
   }
   
   public static boolean isSpecificOkhttp()
@@ -58,43 +55,40 @@ public class QAPMOkHttp2Instrumentation
     return true;
   }
   
-  @QAPMReplaceCallSite
   public static Response.Builder newBuilder(Response.Builder paramBuilder)
   {
     if (isSpecificOkhttp()) {
       return paramBuilder;
     }
-    return new ResponseBuilderExtension(paramBuilder);
+    return new g(paramBuilder);
   }
   
-  @QAPMReplaceCallSite
   public static Call newCall(OkHttpClient paramOkHttpClient, Request paramRequest)
   {
     Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMOkHttp2Instrumentation", "OkHttpInstrumentation2 - wrapping newCall" });
     if (isSpecificOkhttp()) {
       return paramOkHttpClient.newCall(paramRequest);
     }
-    return new QAPMCallExtension(paramOkHttpClient, paramRequest);
+    return new a(paramOkHttpClient, paramRequest);
   }
   
-  @QAPMReplaceCallSite
   public static HttpURLConnection open(OkUrlFactory paramOkUrlFactory, URL paramURL)
   {
     paramURL = paramOkUrlFactory.open(paramURL);
     if ((paramURL instanceof HttpsURLConnection)) {
-      paramOkUrlFactory = new QAPMHttpsURLConnectionExtension((HttpsURLConnection)paramURL);
+      paramOkUrlFactory = new d((HttpsURLConnection)paramURL);
     }
     do
     {
       return paramOkUrlFactory;
       paramOkUrlFactory = paramURL;
     } while (!(paramURL instanceof HttpURLConnection));
-    return new QAPMHttpURLConnectionExtension(paramURL);
+    return new c(paramURL);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.okhttp2.QAPMOkHttp2Instrumentation
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,33 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Handler;
-import android.os.IBinder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 class bkcm
-  implements ServiceConnection
+  implements bkcg
 {
-  bkcm(bkck parambkck) {}
+  bkcm(bkcl parambkcl) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(int paramInt1, int paramInt2)
   {
-    bkck.a(this.a).removeMessages(1);
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_Bkch = bkci.a(paramIBinder);
-    this.a.b();
-    QLog.d("SmartDeviceIPCHost", 1, "plugin service connected");
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      aagb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Host", 0, 1, 0);
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    try
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(this.a.jdField_a_of_type_AndroidContentServiceConnection);
+    if (paramInt1 == 1) {
+      synchronized (bkcl.a(this.a))
+      {
+        Object localObject2 = (List)bkcl.a(this.a).get(Integer.valueOf(paramInt2));
+        if (localObject2 != null)
+        {
+          bkcl.a(this.a).remove(Integer.valueOf(paramInt2));
+          bkcl.a(this.a);
+        }
+        if (localObject2 != null)
+        {
+          ??? = ((List)localObject2).iterator();
+          if (((Iterator)???).hasNext())
+          {
+            localObject2 = (bkcn)((Iterator)???).next();
+            bkcl.a(this.a).a(((bkcn)localObject2).jdField_a_of_type_Int, ((bkcn)localObject2).b, ((bkcn)localObject2).c, new Object[] { ((bkcn)localObject2).jdField_a_of_type_ArrayOfByte }, null);
+          }
+        }
       }
-      label30:
-      this.a.jdField_a_of_type_Bkch = null;
-      this.a.jdField_a_of_type_Boolean = false;
-      QLog.d("SmartDeviceIPCHost", 1, "plugin service disconnected");
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      break label30;
     }
   }
 }

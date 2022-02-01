@@ -27,101 +27,32 @@ import org.xmlpull.v1.XmlPullParserException;
 public class FileProvider
   extends ContentProvider
 {
-  private static final String ATTR_NAME = "name";
-  private static final String ATTR_PATH = "path";
-  private static final String[] COLUMNS = { "_display_name", "_size" };
-  private static final File DEVICE_ROOT = new File("/");
-  private static final String META_DATA_FILE_PROVIDER_PATHS = "android.support.FILE_PROVIDER_PATHS";
-  private static final String TAG_CACHE_PATH = "cache-path";
-  private static final String TAG_EXTERNAL = "external-path";
-  private static final String TAG_FILES_PATH = "files-path";
-  private static final String TAG_ROOT_PATH = "root-path";
-  private static HashMap<String, FileProvider.PathStrategy> sCache = new HashMap();
-  private FileProvider.PathStrategy mStrategy;
+  private static final String[] a = { "_display_name", "_size" };
+  private static final File b = new File("/");
+  private static HashMap<String, FileProvider.a> c = new HashMap();
+  private FileProvider.a d;
   
-  private static File buildPath(File paramFile, String... paramVarArgs)
+  private static int a(String paramString)
   {
-    int j = paramVarArgs.length;
-    int i = 0;
-    if (i < j)
-    {
-      String str = paramVarArgs[i];
-      if (str == null) {
-        break label40;
-      }
-      paramFile = new File(paramFile, str);
+    if ("r".equals(paramString)) {
+      return 268435456;
     }
-    label40:
-    for (;;)
-    {
-      i += 1;
-      break;
-      return paramFile;
+    if (("w".equals(paramString)) || ("wt".equals(paramString))) {
+      return 738197504;
     }
+    if ("wa".equals(paramString)) {
+      return 704643072;
+    }
+    if ("rw".equals(paramString)) {
+      return 939524096;
+    }
+    if ("rwt".equals(paramString)) {
+      return 1006632960;
+    }
+    throw new IllegalArgumentException("Invalid mode: " + paramString);
   }
   
-  public static Uri convertFilePathToUri(Context paramContext, String paramString)
-  {
-    Object localObject;
-    if ((paramContext != null) && (paramContext.getApplicationContext() != null) && ("com.tencent.mobileqq".equals(paramContext.getApplicationContext().getApplicationInfo().packageName))) {
-      try
-      {
-        localObject = Class.forName("com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper");
-        paramString = new File(paramString);
-        localObject = (Uri)ReflectionUtils.invokeStatic((Class)localObject, "getUriForFile", new Class[] { Context.class, File.class }, new Object[] { paramContext, paramString });
-        return localObject;
-      }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-        return null;
-      }
-    }
-    if ((paramContext != null) && (paramContext.getApplicationInfo().targetSdkVersion >= 24) && (Build.VERSION.SDK_INT >= 24))
-    {
-      localObject = getContentUri(paramContext, new File(paramString));
-      if ((localObject == null) && (QbSdk.checkContentProviderPrivilage(paramContext))) {
-        paramContext = getUriForFile(paramContext, paramContext.getApplicationInfo().packageName + ".provider", new File(paramString));
-      }
-    }
-    for (;;)
-    {
-      localObject = paramContext;
-      if (paramContext != null) {
-        break;
-      }
-      try
-      {
-        paramString = Uri.fromFile(new File(paramString));
-        return paramString;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        Log.e("FileProvider", "create uri failed,please check again");
-        return paramContext;
-      }
-      paramContext = (Context)localObject;
-      continue;
-      paramContext = null;
-    }
-  }
-  
-  private static Object[] copyOf(Object[] paramArrayOfObject, int paramInt)
-  {
-    Object[] arrayOfObject = new Object[paramInt];
-    System.arraycopy(paramArrayOfObject, 0, arrayOfObject, 0, paramInt);
-    return arrayOfObject;
-  }
-  
-  private static String[] copyOf(String[] paramArrayOfString, int paramInt)
-  {
-    String[] arrayOfString = new String[paramInt];
-    System.arraycopy(paramArrayOfString, 0, arrayOfString, 0, paramInt);
-    return arrayOfString;
-  }
-  
-  static Uri getContentUri(Context paramContext, File paramFile)
+  static Uri a(Context paramContext, File paramFile)
   {
     Object localObject3 = null;
     Object localObject1 = "";
@@ -172,20 +103,107 @@ public class FileProvider
     }
   }
   
-  private static FileProvider.PathStrategy getPathStrategy(Context paramContext, String paramString)
+  public static Uri a(Context paramContext, String paramString)
   {
-    FileProvider.PathStrategy localPathStrategy1;
-    synchronized (sCache)
+    Object localObject;
+    if ((paramContext != null) && (paramContext.getApplicationContext() != null) && ("com.tencent.mobileqq".equals(paramContext.getApplicationContext().getApplicationInfo().packageName))) {
+      try
+      {
+        localObject = Class.forName("com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper");
+        paramString = new File(paramString);
+        localObject = (Uri)i.a((Class)localObject, "getUriForFile", new Class[] { Context.class, File.class }, new Object[] { paramContext, paramString });
+        return localObject;
+      }
+      catch (Exception paramContext)
+      {
+        paramContext.printStackTrace();
+        return null;
+      }
+    }
+    if ((paramContext != null) && (paramContext.getApplicationInfo().targetSdkVersion >= 24) && (Build.VERSION.SDK_INT >= 24))
     {
-      FileProvider.PathStrategy localPathStrategy2 = (FileProvider.PathStrategy)sCache.get(paramString);
-      localPathStrategy1 = localPathStrategy2;
-      if (localPathStrategy2 != null) {}
+      localObject = a(paramContext, new File(paramString));
+      if ((localObject == null) && (QbSdk.checkContentProviderPrivilage(paramContext))) {
+        paramContext = a(paramContext, paramContext.getApplicationInfo().packageName + ".provider", new File(paramString));
+      }
+    }
+    for (;;)
+    {
+      localObject = paramContext;
+      if (paramContext != null) {
+        break;
+      }
+      try
+      {
+        paramString = Uri.fromFile(new File(paramString));
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        Log.e("FileProvider", "create uri failed,please check again");
+        return paramContext;
+      }
+      paramContext = (Context)localObject;
+      continue;
+      paramContext = null;
+    }
+  }
+  
+  public static Uri a(Context paramContext, String paramString, File paramFile)
+  {
+    return b(paramContext, paramString).a(paramFile);
+  }
+  
+  private static File a(File paramFile, String... paramVarArgs)
+  {
+    int j = paramVarArgs.length;
+    int i = 0;
+    if (i < j)
+    {
+      String str = paramVarArgs[i];
+      if (str == null) {
+        break label40;
+      }
+      paramFile = new File(paramFile, str);
+    }
+    label40:
+    for (;;)
+    {
+      i += 1;
+      break;
+      return paramFile;
+    }
+  }
+  
+  private static Object[] a(Object[] paramArrayOfObject, int paramInt)
+  {
+    Object[] arrayOfObject = new Object[paramInt];
+    System.arraycopy(paramArrayOfObject, 0, arrayOfObject, 0, paramInt);
+    return arrayOfObject;
+  }
+  
+  private static String[] a(String[] paramArrayOfString, int paramInt)
+  {
+    String[] arrayOfString = new String[paramInt];
+    System.arraycopy(paramArrayOfString, 0, arrayOfString, 0, paramInt);
+    return arrayOfString;
+  }
+  
+  private static FileProvider.a b(Context paramContext, String paramString)
+  {
+    FileProvider.a locala1;
+    synchronized (c)
+    {
+      FileProvider.a locala2 = (FileProvider.a)c.get(paramString);
+      locala1 = locala2;
+      if (locala2 != null) {}
     }
     try
     {
-      localPathStrategy1 = parsePathStrategy(paramContext, paramString);
-      sCache.put(paramString, localPathStrategy1);
-      return localPathStrategy1;
+      locala1 = c(paramContext, paramString);
+      c.put(paramString, locala1);
+      return locala1;
     }
     catch (IOException paramContext)
     {
@@ -199,34 +217,9 @@ public class FileProvider
     }
   }
   
-  public static Uri getUriForFile(Context paramContext, String paramString, File paramFile)
+  private static FileProvider.a c(Context paramContext, String paramString)
   {
-    return getPathStrategy(paramContext, paramString).getUriForFile(paramFile);
-  }
-  
-  private static int modeToMode(String paramString)
-  {
-    if ("r".equals(paramString)) {
-      return 268435456;
-    }
-    if (("w".equals(paramString)) || ("wt".equals(paramString))) {
-      return 738197504;
-    }
-    if ("wa".equals(paramString)) {
-      return 704643072;
-    }
-    if ("rw".equals(paramString)) {
-      return 939524096;
-    }
-    if ("rwt".equals(paramString)) {
-      return 1006632960;
-    }
-    throw new IllegalArgumentException("Invalid mode: " + paramString);
-  }
-  
-  private static FileProvider.PathStrategy parsePathStrategy(Context paramContext, String paramString)
-  {
-    FileProvider.SimplePathStrategy localSimplePathStrategy = new FileProvider.SimplePathStrategy(paramString);
+    FileProvider.b localb = new FileProvider.b(paramString);
     paramString = paramContext.getPackageManager().resolveContentProvider(paramString, 128);
     if (paramString == null) {
       throw new RuntimeException("Must declare com.tencent.smtt.utils.FileProvider in AndroidManifest above Android 7.0,please view document in x5.tencent.com");
@@ -235,7 +228,7 @@ public class FileProvider
     if (localXmlResourceParser == null) {
       throw new IllegalArgumentException("Missing android.support.FILE_PROVIDER_PATHS meta-data");
     }
-    label244:
+    label249:
     for (;;)
     {
       int i = localXmlResourceParser.next();
@@ -250,29 +243,29 @@ public class FileProvider
         str1 = localXmlResourceParser.getAttributeValue(null, "name");
         str2 = localXmlResourceParser.getAttributeValue(null, "path");
         if ("root-path".equals(paramString)) {
-          paramString = buildPath(DEVICE_ROOT, new String[] { str2 });
+          paramString = a(b, new String[] { str2 });
         }
       }
       for (;;)
       {
         if (paramString == null) {
-          break label244;
+          break label249;
         }
-        localSimplePathStrategy.addRoot(str1, paramString);
+        localb.a(str1, paramString);
         break;
         if ("files-path".equals(paramString))
         {
-          paramString = buildPath(paramContext.getFilesDir(), new String[] { str2 });
+          paramString = a(paramContext.getFilesDir(), new String[] { str2 });
         }
         else if ("cache-path".equals(paramString))
         {
-          paramString = buildPath(paramContext.getCacheDir(), new String[] { str2 });
+          paramString = a(paramContext.getCacheDir(), new String[] { str2 });
         }
         else if ("external-path".equals(paramString))
         {
-          paramString = buildPath(Environment.getExternalStorageDirectory(), new String[] { str2 });
+          paramString = a(Environment.getExternalStorageDirectory(), new String[] { str2 });
           continue;
-          return localSimplePathStrategy;
+          return localb;
         }
         else
         {
@@ -291,12 +284,12 @@ public class FileProvider
     if (!paramProviderInfo.grantUriPermissions) {
       throw new SecurityException("Provider must grant uri permissions");
     }
-    this.mStrategy = getPathStrategy(paramContext, paramProviderInfo.authority);
+    this.d = b(paramContext, paramProviderInfo.authority);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    if (this.mStrategy.getFileForUri(paramUri).delete()) {
+    if (this.d.a(paramUri).delete()) {
       return 1;
     }
     return 0;
@@ -304,7 +297,7 @@ public class FileProvider
   
   public String getType(Uri paramUri)
   {
-    paramUri = this.mStrategy.getFileForUri(paramUri);
+    paramUri = this.d.a(paramUri);
     int i = paramUri.getName().lastIndexOf('.');
     if (i >= 0)
     {
@@ -329,15 +322,15 @@ public class FileProvider
   
   public ParcelFileDescriptor openFile(Uri paramUri, String paramString)
   {
-    return ParcelFileDescriptor.open(this.mStrategy.getFileForUri(paramUri), modeToMode(paramString));
+    return ParcelFileDescriptor.open(this.d.a(paramUri), a(paramString));
   }
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    paramString1 = this.mStrategy.getFileForUri(paramUri);
+    paramString1 = this.d.a(paramUri);
     paramUri = paramArrayOfString1;
     if (paramArrayOfString1 == null) {
-      paramUri = COLUMNS;
+      paramUri = a;
     }
     paramArrayOfString2 = new String[paramUri.length];
     paramArrayOfString1 = new Object[paramUri.length];
@@ -367,8 +360,8 @@ public class FileProvider
         paramArrayOfString1[i] = Long.valueOf(paramString1.length());
         i = k;
         continue;
-        paramUri = copyOf(paramArrayOfString2, i);
-        paramArrayOfString1 = copyOf(paramArrayOfString1, i);
+        paramUri = a(paramArrayOfString2, i);
+        paramArrayOfString1 = a(paramArrayOfString1, i);
         paramUri = new MatrixCursor(paramUri, 1);
         paramUri.addRow(paramArrayOfString1);
         return paramUri;
@@ -383,7 +376,7 @@ public class FileProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.utils.FileProvider
  * JD-Core Version:    0.7.0.1
  */

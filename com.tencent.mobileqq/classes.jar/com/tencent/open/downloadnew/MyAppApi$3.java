@@ -1,12 +1,12 @@
 package com.tencent.open.downloadnew;
 
 import android.app.Activity;
-import bfox;
+import biwe;
 
 public class MyAppApi$3
   implements Runnable
 {
-  public MyAppApi$3(bfox parambfox, Activity paramActivity) {}
+  public MyAppApi$3(biwe parambiwe, Activity paramActivity) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class MyAppApi$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.3
  * JD-Core Version:    0.7.0.1
  */

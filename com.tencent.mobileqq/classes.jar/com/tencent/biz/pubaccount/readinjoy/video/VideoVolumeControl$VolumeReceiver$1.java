@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rlb;
-import rle;
+import sgc;
+import sgf;
 
 public class VideoVolumeControl$VolumeReceiver$1
   implements Runnable
 {
-  public VideoVolumeControl$VolumeReceiver$1(rle paramrle) {}
+  public VideoVolumeControl$VolumeReceiver$1(sgf paramsgf) {}
   
   public void run()
   {
-    rlb.d(this.a.a, false);
+    sgc.d(this.a.a, false);
   }
 }
 

@@ -28,19 +28,19 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import bdgk;
-import bdoo;
-import bduc;
-import bevv;
-import bevw;
-import bevx;
-import bevy;
-import bevz;
+import bgln;
+import bgtn;
+import bict;
+import bicu;
+import bicv;
+import bicw;
+import bicx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.AppRuntime;
@@ -48,7 +48,7 @@ import mqq.app.AppRuntime;
 public class TabDragAnimationView
   extends View
 {
-  private static final int jdField_g_of_type_Int = bdoo.b(2.0F);
+  private static final int jdField_g_of_type_Int = bgtn.b(2.0F);
   float jdField_a_of_type_Float = 0.0F;
   protected int a;
   public ValueAnimator a;
@@ -61,10 +61,10 @@ public class TabDragAnimationView
   private GestureDetector.OnDoubleTapListener jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private bevw jdField_a_of_type_Bevw;
-  private final bevx jdField_a_of_type_Bevx;
-  private final bevy jdField_a_of_type_Bevy;
-  private final bevz jdField_a_of_type_Bevz;
+  private bicu jdField_a_of_type_Bicu;
+  private final bicv jdField_a_of_type_Bicv;
+  private final bicw jdField_a_of_type_Bicw;
+  private final bicx jdField_a_of_type_Bicx;
   public URLDrawable a;
   private String jdField_a_of_type_JavaLangString = "TabDragAnimationView@" + Integer.toHexString(hashCode());
   public boolean a;
@@ -125,15 +125,15 @@ public class TabDragAnimationView
         QLog.d(this.jdField_a_of_type_JavaLangString, 2, "load xml attr, expected logo width=" + this.jdField_h_of_type_Int + ", expected logo height=" + this.jdField_i_of_type_Int);
       }
       paramAttributeSet.recycle();
-      this.jdField_a_of_type_Bevz = new bevz(this);
-      this.jdField_a_of_type_Bevy = new bevy(this);
-      this.jdField_a_of_type_Bevx = new bevx(this);
+      this.jdField_a_of_type_Bicx = new bicx(this);
+      this.jdField_a_of_type_Bicw = new bicw(this);
+      this.jdField_a_of_type_Bicv = new bicv(this);
       this.jdField_c_of_type_Boolean = ThemeUtil.isNowThemeIsAnimate();
       if ((Build.MODEL.contains("vivo")) || (Build.MANUFACTURER.contains("vivo"))) {
         bool = true;
       }
       this.jdField_g_of_type_Boolean = bool;
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bevv(this), this.jdField_a_of_type_AndroidOsHandler);
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bict(this), this.jdField_a_of_type_AndroidOsHandler);
       return;
     }
     finally
@@ -201,7 +201,7 @@ public class TabDragAnimationView
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       String str2 = "- tab-" + this.jdField_e_of_type_Int;
       String str3 = "- tab-" + this.jdField_e_of_type_Int;
-      this.jdField_a_of_type_ComTencentImageURLDrawable = bduc.a(localAppRuntime, str1, str2, localDrawable, new int[] { i1 }, str3, localBundle);
+      this.jdField_a_of_type_ComTencentImageURLDrawable = VasApngUtil.getApngDrawable(localAppRuntime, str1, str2, localDrawable, new int[] { i1 }, str3, localBundle);
       if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
       {
         this.jdField_a_of_type_ComTencentImageURLDrawable.setCallback(this);
@@ -233,27 +233,27 @@ public class TabDragAnimationView
   public void a(Bitmap paramBitmap, String paramString)
   {
     // Byte code:
-    //   0: new 336	java/io/FileOutputStream
+    //   0: new 337	java/io/FileOutputStream
     //   3: dup
     //   4: aload_2
-    //   5: invokespecial 339	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 340	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   8: astore_3
     //   9: aload_3
     //   10: astore_2
     //   11: aload_1
-    //   12: getstatic 345	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   12: getstatic 346	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   15: bipush 90
     //   17: aload_3
-    //   18: invokevirtual 351	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   18: invokevirtual 352	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   21: pop
     //   22: aload_3
     //   23: ifnull +7 -> 30
     //   26: aload_3
-    //   27: invokevirtual 354	java/io/FileOutputStream:close	()V
+    //   27: invokevirtual 355	java/io/FileOutputStream:close	()V
     //   30: return
     //   31: astore_1
     //   32: aload_1
-    //   33: invokevirtual 357	java/io/IOException:printStackTrace	()V
+    //   33: invokevirtual 358	java/io/IOException:printStackTrace	()V
     //   36: return
     //   37: astore 4
     //   39: aconst_null
@@ -261,15 +261,15 @@ public class TabDragAnimationView
     //   41: aload_1
     //   42: astore_2
     //   43: aload 4
-    //   45: invokevirtual 358	java/lang/Exception:printStackTrace	()V
+    //   45: invokevirtual 359	java/lang/Exception:printStackTrace	()V
     //   48: aload_1
     //   49: ifnull -19 -> 30
     //   52: aload_1
-    //   53: invokevirtual 354	java/io/FileOutputStream:close	()V
+    //   53: invokevirtual 355	java/io/FileOutputStream:close	()V
     //   56: return
     //   57: astore_1
     //   58: aload_1
-    //   59: invokevirtual 357	java/io/IOException:printStackTrace	()V
+    //   59: invokevirtual 358	java/io/IOException:printStackTrace	()V
     //   62: return
     //   63: astore_1
     //   64: aconst_null
@@ -277,12 +277,12 @@ public class TabDragAnimationView
     //   66: aload_2
     //   67: ifnull +7 -> 74
     //   70: aload_2
-    //   71: invokevirtual 354	java/io/FileOutputStream:close	()V
+    //   71: invokevirtual 355	java/io/FileOutputStream:close	()V
     //   74: aload_1
     //   75: athrow
     //   76: astore_2
     //   77: aload_2
-    //   78: invokevirtual 357	java/io/IOException:printStackTrace	()V
+    //   78: invokevirtual 358	java/io/IOException:printStackTrace	()V
     //   81: goto -7 -> 74
     //   84: astore_1
     //   85: goto -19 -> 66
@@ -319,7 +319,7 @@ public class TabDragAnimationView
   {
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bevz.a();
+      this.jdField_a_of_type_Bicx.a();
       f();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       return;
@@ -340,13 +340,13 @@ public class TabDragAnimationView
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bevx);
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bicv);
     }
     this.jdField_d_of_type_Int = 1;
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(200L);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bevx);
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bicv);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -376,8 +376,8 @@ public class TabDragAnimationView
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bevx);
-      this.jdField_a_of_type_Bevx.a();
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bicv);
+      this.jdField_a_of_type_Bicv.a();
       this.jdField_b_of_type_AndroidAnimationValueAnimator = null;
     }
   }
@@ -387,12 +387,12 @@ public class TabDragAnimationView
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bevz);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Bicx);
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bevz);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Bicx);
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
@@ -422,11 +422,11 @@ public class TabDragAnimationView
       if ((this.jdField_d_of_type_Int != 1) || (this.jdField_a_of_type_Boolean)) {
         break label659;
       }
-      if (((this.jdField_a_of_type_Bevx.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Bevx.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
+      if (((this.jdField_a_of_type_Bicv.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Bicv.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
       {
         localDrawable2 = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
         label208:
-        if (((!this.jdField_a_of_type_Bevx.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bevx.jdField_b_of_type_Boolean)) || (!this.jdField_d_of_type_Boolean)) {
+        if (((!this.jdField_a_of_type_Bicv.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bicv.jdField_b_of_type_Boolean)) || (!this.jdField_d_of_type_Boolean)) {
           break label650;
         }
       }
@@ -436,8 +436,8 @@ public class TabDragAnimationView
     label650:
     for (Drawable localDrawable1 = a();; localDrawable1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
     {
-      if (this.jdField_a_of_type_Bevx.jdField_a_of_type_Float != 1.0F) {
-        paramCanvas.scale(this.jdField_a_of_type_Bevx.jdField_a_of_type_Float, this.jdField_a_of_type_Bevx.jdField_a_of_type_Float, i6, i5);
+      if (this.jdField_a_of_type_Bicv.jdField_a_of_type_Float != 1.0F) {
+        paramCanvas.scale(this.jdField_a_of_type_Bicv.jdField_a_of_type_Float, this.jdField_a_of_type_Bicv.jdField_a_of_type_Float, i6, i5);
       }
       if (localDrawable1 != null)
       {
@@ -674,7 +674,7 @@ public class TabDragAnimationView
     case 3: 
       if (this.jdField_g_of_type_Boolean)
       {
-        i6 = (int)(bdgk.j() - bdoo.a(14.0F));
+        i6 = (int)(bgln.j() - bgtn.a(14.0F));
         if (this.jdField_e_of_type_Float > i6)
         {
           this.jdField_a_of_type_Float = 0.0F;
@@ -702,8 +702,8 @@ public class TabDragAnimationView
       if (((i6 >= i2) || (i7 <= i2)) && (f1 > 0.0F) && (f1 < i3) && (f2 > 0.0F) && (f2 < i4)) {}
       for (i1 = 1;; i1 = 0)
       {
-        if ((i1 == 0) && (this.jdField_a_of_type_Bevw != null)) {
-          this.jdField_a_of_type_Bevw.a();
+        if ((i1 == 0) && (this.jdField_a_of_type_Bicu != null)) {
+          this.jdField_a_of_type_Bicu.a();
         }
         if ((this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null) && (getParent() != null) && (i1 != 0))
         {
@@ -912,7 +912,7 @@ public class TabDragAnimationView
   public void setIconSize(int paramInt1, int paramInt2)
   {
     Drawable localDrawable;
-    if (((this.jdField_a_of_type_Bevx.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Bevx.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
+    if (((this.jdField_a_of_type_Bicv.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Bicv.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
     {
       localDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
       if (paramInt2 < 0) {
@@ -952,9 +952,9 @@ public class TabDragAnimationView
     this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener = paramOnDoubleTapListener;
   }
   
-  public void setOnDragListener(bevw parambevw)
+  public void setOnDragListener(bicu parambicu)
   {
-    this.jdField_a_of_type_Bevw = parambevw;
+    this.jdField_a_of_type_Bicu = parambicu;
   }
   
   public void setOnLongClickListener(@Nullable View.OnLongClickListener paramOnLongClickListener)
@@ -981,7 +981,7 @@ public class TabDragAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabDragAnimationView
  * JD-Core Version:    0.7.0.1
  */

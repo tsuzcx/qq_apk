@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.widget.OvalProgress;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class berk
+class berk
+  implements DialogInterface.OnDismissListener
 {
-  public double a;
-  public double b;
-  public double c;
-  public double d;
-  public double e;
+  berk(berf paramberf) {}
   
-  public berk(OvalProgress paramOvalProgress) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+  }
 }
 
 

@@ -1,78 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.comment.DanmuItemBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
-public class aogw
+class aogw
+  implements PermissionMonitor.Listener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  
-  public aogw(DanmuItemBean paramDanmuItemBean)
+  static
   {
-    this.jdField_a_of_type_Long = paramDanmuItemBean.jdField_b_of_type_Long;
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramDanmuItemBean.jdField_a_of_type_Long);
-    this.jdField_b_of_type_JavaLangString = paramDanmuItemBean.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_JavaLangString = paramDanmuItemBean.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_Long = paramDanmuItemBean.d;
-    this.jdField_c_of_type_Long = paramDanmuItemBean.jdField_c_of_type_Long;
-    this.jdField_a_of_type_Boolean = paramDanmuItemBean.jdField_a_of_type_Boolean;
-    this.d = paramDanmuItemBean.jdField_c_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramDanmuItemBean.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = this.d;; str = this.jdField_b_of_type_JavaLangString) {
-      return str + " : " + this.jdField_c_of_type_JavaLangString;
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof aogw))
+    if (!aogs.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramObject = (aogw)paramObject;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
-      {
-        bool1 = bool2;
-        if (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long)
-        {
-          bool1 = bool2;
-          if (this.jdField_c_of_type_Long == paramObject.jdField_c_of_type_Long)
-          {
-            bool1 = bool2;
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-            {
-              bool1 = bool2;
-              if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString))
-              {
-                bool1 = bool2;
-                if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
-                  bool1 = true;
-                }
-              }
-            }
-          }
-        }
-      }
+      jdField_a_of_type_Boolean = bool;
+      return;
     }
-    return bool1;
   }
   
-  public int hashCode()
+  aogw(aogs paramaogs) {}
+  
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
   {
-    return String.valueOf(this.jdField_a_of_type_Long).hashCode();
+    if (aogs.a(this.jdField_a_of_type_Aogs) != Thread.currentThread()) {}
+    while ((!aogs.a(this.jdField_a_of_type_Aogs)) || (paramArrayOfObject.length != 4)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aogs.a(this.jdField_a_of_type_Aogs))) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)aogs.a(this.jdField_a_of_type_Aogs), (byte[])paramArrayOfObject[1], ((Integer)paramArrayOfObject[2]).intValue(), ((Integer)paramArrayOfObject[3]).intValue());
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

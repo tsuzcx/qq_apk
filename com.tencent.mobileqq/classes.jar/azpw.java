@@ -1,9 +1,15 @@
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class azpw
+class azpw
+  implements DialogInterface.OnClickListener
 {
-  HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "socket", "pipe", "anon_inode", "/dev/null", "/dev/ashmem" };
+  azpw(azpu paramazpu) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.i();
+  }
 }
 
 

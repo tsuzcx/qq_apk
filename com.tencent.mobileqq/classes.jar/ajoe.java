@@ -1,29 +1,31 @@
-import android.widget.Filter;
-import android.widget.Filter.FilterResults;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import java.util.List;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ajoe
-  extends Filter
+  implements View.OnClickListener
 {
-  ajoe(ajod paramajod) {}
+  ajoe(ajod paramajod, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
+  public void onClick(View paramView)
   {
-    paramCharSequence = new Filter.FilterResults();
-    paramCharSequence.values = this.a.a.a;
-    paramCharSequence.count = this.a.a.a.size();
-    return paramCharSequence;
-  }
-  
-  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
-  {
-    if (paramFilterResults.count > 0)
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ajod, 0);
+    }
+    try
     {
-      this.a.notifyDataSetChanged();
+      if (this.jdField_a_of_type_Ajod.isShowing()) {
+        this.jdField_a_of_type_Ajod.dismiss();
+      }
+      label38:
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    this.a.notifyDataSetInvalidated();
+    catch (Exception localException)
+    {
+      break label38;
+    }
   }
 }
 

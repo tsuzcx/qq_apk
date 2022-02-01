@@ -173,7 +173,7 @@ public class FilamentParticleFilter
   
   private void loadMaterial()
   {
-    this.material = FilamentJavaUtil.loadMaterial(AEModule.getContext(), this.engine, "assets://materials/pointSprites.filamat");
+    this.material = FilamentUtil.loadMaterial(AEModule.getContext(), this.engine, "assets://materials/pointSprites.filamat");
   }
   
   private void resize(int paramInt1, int paramInt2, int paramInt3)
@@ -184,7 +184,7 @@ public class FilamentParticleFilter
     this.rotation = paramInt3;
     this.width = paramInt1;
     this.height = paramInt2;
-    float f = Math.min(paramInt1 / FilamentJavaUtil.getProcessWidth(), 1.0F);
+    float f = Math.min(paramInt1 / FilamentUtil.getProcessWidth(), 1.0F);
     int i = (int)(paramInt1 * f);
     paramInt1 = (int)(f * paramInt2);
     if ((paramInt3 == 90) || (paramInt3 == 270))
@@ -335,7 +335,7 @@ public class FilamentParticleFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filament.FilamentParticleFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,57 @@
-import java.net.URL;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface arkl
+public class arkl
+  extends arjk
 {
-  public abstract int a();
+  public arkm a;
+  public String b;
+  public boolean b;
   
-  public abstract String a();
+  public static arkl a(JSONObject paramJSONObject)
+  {
+    arkl localarkl = new arkl();
+    localarkl.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
+    localarkl.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
+    localarkl.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
+    localarkl.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
+    return localarkl;
+  }
   
-  public abstract URL a();
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return localJSONObject;
+  }
   
-  public abstract void a(int paramInt);
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
   
-  public abstract void a(String paramString);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract int b();
-  
-  public abstract String b();
-  
-  public abstract void b(String paramString);
-  
-  public abstract boolean b();
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Arkm == null) {
+      return this.jdField_a_of_type_Boolean;
+    }
+    return this.jdField_a_of_type_Arkm.jdField_a_of_type_Boolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkl
  * JD-Core Version:    0.7.0.1
  */

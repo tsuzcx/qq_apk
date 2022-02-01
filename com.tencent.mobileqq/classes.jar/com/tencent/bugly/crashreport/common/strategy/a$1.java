@@ -1,6 +1,5 @@
 package com.tencent.bugly.crashreport.common.strategy;
 
-import android.text.TextUtils;
 import com.tencent.bugly.proguard.p;
 import com.tencent.bugly.proguard.x;
 import com.tencent.bugly.proguard.z;
@@ -37,8 +36,8 @@ final class a$1
           if ((z.a(a.e())) || (!z.c(a.e()))) {
             continue;
           }
+          a.b(this.a).q = a.e();
           a.b(this.a).r = a.e();
-          a.b(this.a).s = a.e();
         }
       }
       catch (Throwable localThrowable)
@@ -48,26 +47,11 @@ final class a$1
         }
         localThrowable.printStackTrace();
         continue;
-        if (!TextUtils.isEmpty(a.b(this.a).r)) {
-          continue;
-        }
-        a.b(this.a).r = StrategyBean.b;
-        if (!TextUtils.isEmpty(a.b(this.a).s)) {
-          continue;
-        }
-        a.b(this.a).s = StrategyBean.c;
-        continue;
       }
       this.a.a(a.b(this.a), false);
       return;
-      if ((com.tencent.bugly.crashreport.common.info.a.b() == null) || (!"oversea".equals(com.tencent.bugly.crashreport.common.info.a.b().A))) {
-        continue;
-      }
-      if (("http://android.bugly.qq.com/rqd/async".equals(a.b(this.a).s)) || ("http://aexception.bugly.qq.com:8012/rqd/async".equals(a.b(this.a).s)) || (TextUtils.isEmpty(a.b(this.a).s)))
-      {
-        a.b(this.a).r = StrategyBean.b;
-        a.b(this.a).s = StrategyBean.c;
-      }
+      a.b(this.a).q = StrategyBean.b;
+      a.b(this.a).r = StrategyBean.c;
     }
   }
 }

@@ -1,12 +1,16 @@
 package cooperation.qqindividuality;
 
+import Override;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import biqn;
-import biqw;
+import android.content.res.Configuration;
+import android.view.MotionEvent;
+import blfh;
+import blfq;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.plugin.PluginInfo;
 import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
 
@@ -18,18 +22,18 @@ public class QQIndividualityProxyActivity
     QQIndividualityPluginProxyService.a();
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", true);
-    biqw localbiqw = new biqw(1);
-    localbiqw.jdField_b_of_type_JavaLangString = "qqindividuality_plugin.apk";
-    localbiqw.d = PluginInfo.m;
-    localbiqw.jdField_a_of_type_JavaLangString = paramString1;
-    localbiqw.e = paramString2;
-    localbiqw.jdField_a_of_type_JavaLangClass = paramClass;
-    localbiqw.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbiqw.jdField_b_of_type_Int = paramInt;
-    localbiqw.c = 30000;
-    localbiqw.f = null;
-    localbiqw.jdField_b_of_type_Boolean = false;
-    biqn.a(paramActivity, localbiqw);
+    blfq localblfq = new blfq(1);
+    localblfq.jdField_b_of_type_JavaLangString = "qqindividuality_plugin.apk";
+    localblfq.d = PluginInfo.m;
+    localblfq.jdField_a_of_type_JavaLangString = paramString1;
+    localblfq.e = paramString2;
+    localblfq.jdField_a_of_type_JavaLangClass = paramClass;
+    localblfq.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localblfq.jdField_b_of_type_Int = paramInt;
+    localblfq.c = 30000;
+    localblfq.f = null;
+    localblfq.jdField_b_of_type_Boolean = false;
+    blfh.a(paramActivity, localblfq);
     if ((paramString2.equals("com.qqindividuality.activity.QQIndividualitySignatureActivity")) && ((paramActivity instanceof QQIndividualityBridgeActivity)) && (paramDialog != null)) {
       paramActivity.finish();
     }
@@ -38,10 +42,25 @@ public class QQIndividualityProxyActivity
     }
     return true;
   }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqindividuality.QQIndividualityProxyActivity
  * JD-Core Version:    0.7.0.1
  */

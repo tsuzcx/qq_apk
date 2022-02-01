@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
 
-public class bluh
-  implements View.OnClickListener
+public final class bluh
+  implements DialogInterface.OnClickListener
 {
-  public bluh(HummingActivity paramHummingActivity) {}
-  
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (blud.b()) {
-      return;
+    if (LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false)) {
+      LocalMultiProcConfig.putBool("comboqz_protect_enable", false);
     }
-    HummingActivity.a(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

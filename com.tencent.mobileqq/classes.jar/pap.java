@@ -1,18 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
+import android.view.View;
 
-public class pap
-  implements sky
+class pap
+  implements bkhw
 {
-  public pap(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
+  pap(pan parampan, pay parampay, bkho parambkho) {}
   
-  public void a(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    ReadInJoySelectPositionFragment.a(this.a, paramString);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      this.jdField_a_of_type_Pan.a().a(this.jdField_a_of_type_Pay, this.jdField_a_of_type_Pan.c);
+      this.jdField_a_of_type_Pan.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pap
  * JD-Core Version:    0.7.0.1
  */

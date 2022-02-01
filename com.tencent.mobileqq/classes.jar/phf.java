@@ -1,28 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
-class phf
-  extends Handler
+final class phf
+  implements INetEventHandler
 {
-  phf(phd paramphd, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  phf(Context paramContext) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    default: 
+      pha.b(this.a);
       return;
     }
-    this.a.f();
+    pha.j("");
+    pha.k("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     phf
  * JD-Core Version:    0.7.0.1
  */

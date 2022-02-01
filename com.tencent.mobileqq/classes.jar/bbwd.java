@@ -1,22 +1,24 @@
-public abstract interface bbwd
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+public class bbwd
+  extends bbvn
 {
-  public abstract void a(bbwe parambbwe);
+  public LinearLayout a;
+  public TextView a;
   
-  public abstract int b();
+  public bbwd(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(paramViewGroup, paramInt);
+  }
   
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract int d();
-  
-  public abstract String d();
-  
-  public abstract String e();
+  protected void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131379957));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131362945));
+  }
 }
 
 

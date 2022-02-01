@@ -1,359 +1,681 @@
-import BOSSStrategyCenter.tAdvDesc;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Outline;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.Region;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import com.tencent.theme.SkinnableBitmapDrawable;
+import mqq.util.WeakReference;
+import org.xmlpull.v1.XmlPullParser;
 
 public class awzv
-  implements bjqk
+  extends Drawable
+  implements Handler.Callback, URLDrawable.URLDrawableListener
 {
-  private static volatile awzv a;
+  int jdField_a_of_type_Int = 42;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  String jdField_a_of_type_JavaLangString = "";
+  WeakReference<awzw> jdField_a_of_type_MqqUtilWeakReference;
+  int jdField_b_of_type_Int = 255;
+  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  int c = 0;
+  int d = 0;
+  int e = 102;
   
-  public static awzv a()
+  public awzv(Context paramContext, int paramInt)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new awzv();
-      }
-      return a;
-    }
-    finally {}
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(paramInt);
   }
   
-  private void a(MobileQbossAdvRsp paramMobileQbossAdvRsp, QQAppInterface paramQQAppInterface)
+  public awzv(Context paramContext, String paramString)
   {
-    if (paramMobileQbossAdvRsp != null) {}
-    try
-    {
-      Object localObject = paramMobileQbossAdvRsp.map_next_query_ts;
-      if (localObject != null)
-      {
-        localObject = (Long)((Map)localObject).get(Integer.valueOf(2783));
-        if (localObject != null) {
-          ajip.a().a(((Long)localObject).longValue(), 2783);
-        }
-      }
-      paramMobileQbossAdvRsp = paramMobileQbossAdvRsp.mapAdv;
-      if ((paramMobileQbossAdvRsp != null) && (paramQQAppInterface != null))
-      {
-        paramMobileQbossAdvRsp = (ArrayList)paramMobileQbossAdvRsp.get(Integer.valueOf(2783));
-        awzj.a().a(paramMobileQbossAdvRsp, paramQQAppInterface);
-      }
-      return;
-    }
-    catch (Exception paramMobileQbossAdvRsp)
-    {
-      QLog.e("QSplash@QbossSplashNetService", 1, "handleQbossPreDownloadRsp exception", paramMobileQbossAdvRsp);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    ColorDrawable localColorDrawable = new ColorDrawable(0);
+    localColorDrawable.setBounds(0, 0, 0, this.jdField_a_of_type_Int);
+    localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
+    localURLDrawableOptions.mFailedDrawable = localColorDrawable;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    int i = paramContext.getResources().getDisplayMetrics().densityDpi / 2;
+    this.jdField_a_of_type_ComTencentImageURLDrawable.setTargetDensity(i);
+    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkIconProxyDrawable", 2, "MutualMarkIconProxyDrawable density : " + i);
     }
   }
   
-  private void a(MobileQbossAdvRsp paramMobileQbossAdvRsp, String paramString, QQAppInterface paramQQAppInterface)
+  private Drawable a()
   {
-    QLog.i("QzoneQbossHelper", 1, "coversation getQbossSuccess requestType = " + paramString);
-    if (paramMobileQbossAdvRsp != null)
-    {
-      paramString = paramMobileQbossAdvRsp.map_next_query_ts;
-      if (paramString != null)
-      {
-        paramString = (Long)paramString.get(Integer.valueOf(2741));
-        if (paramString != null) {
-          ajip.a().a(paramString.longValue(), 2741);
-        }
-      }
-      paramMobileQbossAdvRsp = paramMobileQbossAdvRsp.mapAdv;
-      if (paramMobileQbossAdvRsp != null)
-      {
-        paramMobileQbossAdvRsp = (ArrayList)paramMobileQbossAdvRsp.get(Integer.valueOf(2741));
-        if ((paramMobileQbossAdvRsp != null) && (paramMobileQbossAdvRsp.size() > 0)) {
-          a(paramMobileQbossAdvRsp);
-        }
-      }
+    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
+      return this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
     }
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && (paramQQAppInterface != null))
-      {
-        paramMobileQbossAdvRsp = paramQQAppInterface.getHandler(Conversation.class);
-        if (paramMobileQbossAdvRsp != null) {
-          paramMobileQbossAdvRsp.sendEmptyMessage(1063);
-        }
-      }
-      return;
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
+      return this.jdField_a_of_type_ComTencentImageURLDrawable;
     }
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    }
+    return null;
   }
   
-  private void a(ajin paramajin)
+  public void a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localQQAppInterface == null) {}
-    do
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
-      ajin localajin;
-      do
-      {
-        return;
-        localajin = ajip.a().a(localQQAppInterface.getAccount());
-      } while ((paramajin == null) || (paramajin.a == null) || (localajin == null) || (localajin.a == null) || (paramajin.a.pattern_id == localajin.a.pattern_id));
-      paramajin = localQQAppInterface.getHandler(Conversation.class);
-    } while (paramajin == null);
-    QLog.e("QzoneQbossHelper", 1, "checkIfNeedRemoveBanner remove");
-    paramajin.sendEmptyMessage(1063);
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    }
+    setAlpha(this.e);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong)
+  public void a(String paramString)
   {
-    ArrayList localArrayList;
-    HashMap localHashMap;
-    try
-    {
-      Object localObject1 = awzq.a(BaseApplicationImpl.getContext(), paramLong);
-      localArrayList = new ArrayList();
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
-      {
-        if ((awzq.a == null) || (awzq.a.size() == 0))
-        {
-          localHashMap = awzq.a(BaseApplicationImpl.getApplication(), paramLong + "");
-          localObject1 = ((List)localObject1).iterator();
-        }
-      }
-      else {
-        while (((Iterator)localObject1).hasNext())
-        {
-          Object localObject2 = (String)((Iterator)localObject1).next();
-          if (localHashMap.containsKey(localObject2))
-          {
-            localObject2 = (awzr)localHashMap.get(localObject2);
-            if (((awzr)localObject2).b())
-            {
-              localArrayList.add(localObject2);
-              QLog.i("QSplash@QbossSplashNetService", 1, "checkNeedDowloadAndDowload aid =" + ((awzr)localObject2).jdField_b_of_type_JavaLangString + "UIN" + paramLong % 10000L);
-            }
-            if ((((awzr)localObject2).jdField_b_of_type_Int == 3) || (((awzr)localObject2).jdField_b_of_type_Int == 2))
-            {
-              MiniAppPrePullManager.getInstance().prePullAppinfoByLink(((awzr)localObject2).f, false, null);
-              continue;
-              return;
-            }
-          }
-        }
-      }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("QSplash@QbossSplashNetService", 1, paramQQAppInterface, new Object[0]);
+    if (Build.VERSION.SDK_INT < 16) {
+      a();
     }
     do
     {
-      localHashMap = awzq.a;
-      break;
-    } while ((localArrayList == null) || (localArrayList.size() <= 0));
-    awzn.a(paramQQAppInterface, localArrayList);
+      return;
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+      }
+      if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!paramString.equals(this.jdField_a_of_type_JavaLangString))) {
+        b();
+      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+    } while ((this.jdField_a_of_type_AndroidOsHandler == null) || (this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)));
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
   }
   
-  private void a(ArrayList<tAdvDesc> paramArrayList)
+  public void applyTheme(@NonNull Resources.Theme paramTheme)
   {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
+      a().applyTheme(paramTheme);
+    }
+    super.applyTheme(paramTheme);
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_Int = 255;
+    this.c = 0;
+    this.d = 0;
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
-      paramArrayList = (tAdvDesc)paramArrayList.get(0);
-      if (paramArrayList != null)
-      {
-        QLog.i("QzoneQbossHelper", 4, "handleQbossBannerData data = " + paramArrayList.res_data);
-        paramArrayList = ajin.a(paramArrayList);
-        a(paramArrayList);
-        ajip.a().a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramArrayList);
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    }
+    setAlpha(this.jdField_b_of_type_Int);
+  }
+  
+  public boolean canApplyTheme()
+  {
+    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
+      return a().canApplyTheme();
+    }
+    return super.canApplyTheme();
+  }
+  
+  public void clearColorFilter()
+  {
+    if (a() != null) {
+      a().clearColorFilter();
+    }
+    super.clearColorFilter();
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas)
+  {
+    if (a() != null) {
+      a().draw(paramCanvas);
+    }
+  }
+  
+  public int getAlpha()
+  {
+    if ((Build.VERSION.SDK_INT >= 19) && (a() != null)) {
+      return a().getAlpha();
+    }
+    return super.getAlpha();
+  }
+  
+  @Nullable
+  public Drawable.Callback getCallback()
+  {
+    if (a() != null)
+    {
+      Drawable.Callback localCallback = a().getCallback();
+      if (localCallback != null) {
+        return localCallback;
       }
     }
-    else
-    {
-      return;
-    }
-    QLog.e("QzoneQbossHelper", 1, "handleQbossBannerData data = null");
+    return super.getCallback();
   }
   
-  private void b(MobileQbossAdvRsp paramMobileQbossAdvRsp, QQAppInterface paramQQAppInterface)
+  public int getChangingConfigurations()
   {
-    if (paramMobileQbossAdvRsp != null) {}
+    if (a() != null) {
+      return a().getChangingConfigurations();
+    }
+    return super.getChangingConfigurations();
+  }
+  
+  @Nullable
+  public ColorFilter getColorFilter()
+  {
+    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
+      return a().getColorFilter();
+    }
+    return super.getColorFilter();
+  }
+  
+  @Nullable
+  public Drawable.ConstantState getConstantState()
+  {
+    if (a() != null) {
+      return a().getConstantState();
+    }
+    return super.getConstantState();
+  }
+  
+  @NonNull
+  public Drawable getCurrent()
+  {
+    if (a() != null) {
+      return a().getCurrent();
+    }
+    return super.getCurrent();
+  }
+  
+  @NonNull
+  public Rect getDirtyBounds()
+  {
+    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
+      return a().getDirtyBounds();
+    }
+    return super.getDirtyBounds();
+  }
+  
+  public void getHotspotBounds(@NonNull Rect paramRect)
+  {
+    if ((Build.VERSION.SDK_INT >= 23) && (a() != null))
+    {
+      a().getHotspotBounds(paramRect);
+      return;
+    }
+    super.getHotspotBounds(paramRect);
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    if (a() != null)
+    {
+      int i = a().getIntrinsicHeight();
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkIconProxyDrawable", 2, "getIntrinsicHeight height : " + i + " limitHeight=" + this.jdField_a_of_type_Int);
+      }
+      return this.jdField_a_of_type_Int;
+    }
+    return super.getIntrinsicHeight();
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    if (a() != null)
+    {
+      int j = a().getIntrinsicWidth();
+      int k = a().getIntrinsicHeight();
+      int i = j;
+      if (k > 0)
+      {
+        i = j;
+        if (j > 0) {
+          i = j * this.jdField_a_of_type_Int / k;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkIconProxyDrawable", 2, "getIntrinsicWidth width : " + i);
+      }
+      return i;
+    }
+    return super.getIntrinsicWidth();
+  }
+  
+  public int getLayoutDirection()
+  {
+    if ((Build.VERSION.SDK_INT >= 23) && (a() != null)) {
+      return a().getLayoutDirection();
+    }
+    return super.getLayoutDirection();
+  }
+  
+  public int getMinimumHeight()
+  {
+    if (a() != null)
+    {
+      int i = a().getMinimumHeight();
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkIconProxyDrawable", 2, "getMinimumHeight height : " + i);
+      }
+      return i;
+    }
+    return super.getMinimumHeight();
+  }
+  
+  public int getMinimumWidth()
+  {
+    if (a() != null)
+    {
+      int i = a().getMinimumWidth();
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkIconProxyDrawable", 2, "getMinimumWidth width : " + i);
+      }
+      return i;
+    }
+    return super.getMinimumWidth();
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void getOutline(@NonNull Outline paramOutline)
+  {
+    if ((Build.VERSION.SDK_INT >= 21) && (a() != null))
+    {
+      a().getOutline(paramOutline);
+      return;
+    }
+    super.getOutline(paramOutline);
+  }
+  
+  public boolean getPadding(@NonNull Rect paramRect)
+  {
+    if (a() != null) {
+      return a().getPadding(paramRect);
+    }
+    return super.getPadding(paramRect);
+  }
+  
+  @NonNull
+  public int[] getState()
+  {
+    if (a() != null) {
+      return a().getState();
+    }
+    return super.getState();
+  }
+  
+  @Nullable
+  public Region getTransparentRegion()
+  {
+    if (a() != null) {
+      return a().getTransparentRegion();
+    }
+    return super.getTransparentRegion();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    }
     for (;;)
     {
-      try
+      return true;
+      if (this.jdField_b_of_type_Int <= 0)
       {
-        Object localObject = paramMobileQbossAdvRsp.map_next_query_ts;
-        if (localObject != null)
-        {
-          localObject = (Long)((Map)localObject).get(Integer.valueOf(2742));
-          if (localObject != null) {
-            ajip.a().a(((Long)localObject).longValue(), 2742);
-          }
+        this.c = 0;
+        label50:
+        if (this.c != 0) {
+          break label170;
         }
-        paramMobileQbossAdvRsp = paramMobileQbossAdvRsp.mapAdv;
-        if ((paramMobileQbossAdvRsp != null) && (paramQQAppInterface != null))
-        {
-          paramMobileQbossAdvRsp = (ArrayList)paramMobileQbossAdvRsp.get(Integer.valueOf(2742));
-          localObject = paramQQAppInterface.getAccount();
-          if ((paramMobileQbossAdvRsp != null) && (paramMobileQbossAdvRsp.size() > 0))
-          {
-            QLog.i("QSplash@QbossSplashNetService", 1, "handleQbossSplashRsp appid =2742");
-            awzm.a(paramMobileQbossAdvRsp, paramQQAppInterface, (String)localObject);
-            i = 1;
-            if ((i == 0) && (paramQQAppInterface != null))
-            {
-              paramMobileQbossAdvRsp = paramQQAppInterface.getAccount();
-              QLog.i("QSplash@QbossSplashNetService", 1, "handleQbossSplashRsp cleardata");
-              awzq.a(BaseApplicationImpl.getContext(), awzq.a(paramMobileQbossAdvRsp), false);
-              awzq.b(BaseApplicationImpl.getContext(), awzq.a(paramMobileQbossAdvRsp));
-            }
-            return;
-          }
+        this.jdField_b_of_type_Int += 5;
+        if (this.jdField_b_of_type_Int >= 255) {
+          this.jdField_b_of_type_Int = 255;
         }
-      }
-      catch (Exception paramMobileQbossAdvRsp)
-      {
-        QLog.e("QSplash@QbossSplashNetService", 1, "handleQbossSplashRsp exception" + paramMobileQbossAdvRsp.toString());
-        return;
-      }
-      int i = 0;
-    }
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, ArrayList<Integer> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (!paramArrayList.contains(Integer.valueOf(2741)));
-        QLog.i("QzoneQbossHelper", 1, "getQbossFail msg = " + paramString1 + " requestType = " + paramString2);
-        paramString1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      } while (paramString1 == null);
-      paramString1 = paramString1.getHandler(Conversation.class);
-    } while (paramString1 == null);
-    paramString1.sendEmptyMessage(1063);
-  }
-  
-  public void a(Bundle paramBundle, String paramString, QQAppInterface paramQQAppInterface)
-  {
-    QLog.i("QSplash@QbossSplashNetService", 1, "getQbossSuccess requestType = " + paramString);
-    try
-    {
-      ArrayList localArrayList = paramBundle.getIntegerArrayList("appid");
-      if ((localArrayList != null) && (localArrayList.size() > 0))
-      {
-        paramBundle = paramBundle.getSerializable("data");
-        if ((paramBundle != null) && ((paramBundle instanceof MobileQbossAdvRsp)))
-        {
-          paramBundle = (MobileQbossAdvRsp)paramBundle;
-          if (localArrayList.contains(Integer.valueOf(2741))) {
-            a(paramBundle, paramString, paramQQAppInterface);
-          }
-          if (localArrayList.contains(Integer.valueOf(2742))) {
-            b(paramBundle, paramQQAppInterface);
-          }
-          if (localArrayList.contains(Integer.valueOf(2783))) {
-            a(paramBundle, paramQQAppInterface);
-          }
-        }
-        else
-        {
-          a(-1, "rsp is not MobileQbossAdvRsp", paramString, localArrayList);
-          return;
-        }
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.e("QzoneQbossHelper", 1, paramBundle, new Object[0]);
-    }
-  }
-  
-  public void a(String paramString, ArrayList<Integer> paramArrayList)
-  {
-    if (paramArrayList != null) {
-      QLog.i("QSplash@QbossSplashNetService", 1, "sendRequestQboss requestType = " + paramString + " contain id = " + paramArrayList.toString());
-    }
-    bjqo.a().a(paramArrayList, this, paramString);
-  }
-  
-  public void a(String paramString, MqqHandler paramMqqHandler)
-  {
-    try
-    {
-      QLog.i("QSplash@QbossSplashNetService", 1, "sendQbossRequest  minigame preload ");
-      Object localObject = new ArrayList();
-      boolean bool2 = ajip.a().a(2741);
-      if ((bool2) && (!"qboss_banner_net_change".equals(paramString))) {
-        ((ArrayList)localObject).add(Integer.valueOf(2741));
-      }
-      boolean bool1;
-      if (bkbq.l(BaseApplicationImpl.getApplication().getRuntime()))
-      {
-        bool1 = ajip.a().a(2742);
-        if (!bool1) {
-          break label274;
-        }
-        ((ArrayList)localObject).add(Integer.valueOf(2742));
       }
       for (;;)
       {
-        boolean bool3 = ajip.a().a(2783);
-        if (bool3) {
-          ((ArrayList)localObject).add(Integer.valueOf(2783));
+        setAlpha(this.jdField_b_of_type_Int);
+        invalidateSelf();
+        if (this.jdField_b_of_type_Int != 0) {
+          break label195;
         }
-        if (((ArrayList)localObject).size() != 0) {
-          a(paramString, (ArrayList)localObject);
+        this.d += 1;
+        if ((this.d < 3) || (this.jdField_b_of_type_Int < this.e)) {
+          break label195;
         }
-        if ("qboss_banner_login".equals(paramString))
-        {
-          localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          if (localObject != null)
-          {
-            if (!bool1)
-            {
-              QLog.i("QSplash@QbossSplashNetService", 1, "sendQbossRequest checkNeedDowloadAndDowload ");
-              a((QQAppInterface)localObject, awzq.a(((QQAppInterface)localObject).getAccount()));
-            }
-            if (!bool3)
-            {
-              QLog.i("QSplash@QbossSplashNetService", 1, "sendQbossRequest QbossPreDownloadManager.checkPreDownloadResStatus ");
-              awzj.a().a((QQAppInterface)localObject);
-            }
-          }
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+        break;
+        if (this.jdField_b_of_type_Int < 255) {
+          break label50;
         }
-        if ((bool2) || (!"qboss_banner_pull_refresh".equals(paramString))) {
-          break;
+        this.c = 1;
+        break label50;
+        label170:
+        this.jdField_b_of_type_Int -= 5;
+        if (this.jdField_b_of_type_Int <= 0) {
+          this.jdField_b_of_type_Int = 0;
         }
-        paramMqqHandler.sendEmptyMessage(1063);
-        return;
-        QLog.i("QSplash@QbossSplashNetService", 1, "关闭了频控");
-        ((ArrayList)localObject).add(Integer.valueOf(2742));
-        bool1 = false;
+      }
+      label195:
+      if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      }
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 20);
+      continue;
+      setAlpha(102);
+      invalidateSelf();
+    }
+  }
+  
+  public void inflate(@NonNull Resources paramResources, @NonNull XmlPullParser paramXmlPullParser, @NonNull AttributeSet paramAttributeSet)
+  {
+    if (a() != null) {
+      a().inflate(paramResources, paramXmlPullParser, paramAttributeSet);
+    }
+    super.inflate(paramResources, paramXmlPullParser, paramAttributeSet);
+  }
+  
+  public void inflate(@NonNull Resources paramResources, @NonNull XmlPullParser paramXmlPullParser, @NonNull AttributeSet paramAttributeSet, @Nullable Resources.Theme paramTheme)
+  {
+    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
+      a().inflate(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
+    }
+    super.inflate(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
+  }
+  
+  public void invalidateSelf()
+  {
+    if (a() != null) {
+      a().invalidateSelf();
+    }
+    super.invalidateSelf();
+  }
+  
+  public boolean isAutoMirrored()
+  {
+    if ((Build.VERSION.SDK_INT >= 19) && (a() != null)) {
+      return a().isAutoMirrored();
+    }
+    return super.isAutoMirrored();
+  }
+  
+  public boolean isFilterBitmap()
+  {
+    if ((Build.VERSION.SDK_INT >= 23) && (a() != null)) {
+      return a().isFilterBitmap();
+    }
+    return super.isFilterBitmap();
+  }
+  
+  public boolean isStateful()
+  {
+    if (a() != null) {
+      return a().isStateful();
+    }
+    return super.isStateful();
+  }
+  
+  public void jumpToCurrentState()
+  {
+    if (a() != null) {
+      a().jumpToCurrentState();
+    }
+    super.jumpToCurrentState();
+  }
+  
+  @NonNull
+  public Drawable mutate()
+  {
+    Drawable localDrawable = a();
+    if (localDrawable != null)
+    {
+      if ((localDrawable instanceof SkinnableBitmapDrawable)) {
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((SkinnableBitmapDrawable)a()).mutate2();
+      }
+      while (!(localDrawable instanceof URLDrawable)) {
+        return this;
+      }
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = localDrawable.mutate();
+      return this;
+    }
+    return super.mutate();
+  }
+  
+  public boolean onLayoutDirectionChanged(int paramInt)
+  {
+    if ((Build.VERSION.SDK_INT >= 23) && (a() != null)) {
+      return a().onLayoutDirectionChanged(paramInt);
+    }
+    return super.onLayoutDirectionChanged(paramInt);
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    int k = paramURLDrawable.getIntrinsicWidth();
+    int m = paramURLDrawable.getIntrinsicHeight();
+    int j = m;
+    int i = k;
+    if (m > 0)
+    {
+      j = m;
+      i = k;
+      if (k > 0)
+      {
+        i = k * this.jdField_a_of_type_Int / m;
+        j = this.jdField_a_of_type_Int;
       }
     }
-    catch (Exception paramString)
-    {
-      QLog.e("QzoneQbossHelper", 1, paramString, new Object[0]);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkIconProxyDrawable", 2, "onLoadSuccessed width : " + i + " height:" + j);
     }
-    label274:
+    if ((i > 0) && (j > 0))
+    {
+      setBounds(0, 0, i, j);
+      invalidateSelf();
+      if ((getCallback() != null) && ((getCallback() instanceof View)))
+      {
+        ((View)getCallback()).invalidate();
+        ((View)getCallback()).requestLayout();
+      }
+      if (this.jdField_a_of_type_MqqUtilWeakReference != null)
+      {
+        paramURLDrawable = (awzw)this.jdField_a_of_type_MqqUtilWeakReference.get();
+        if (paramURLDrawable != null) {
+          paramURLDrawable.a();
+        }
+      }
+    }
+  }
+  
+  public void scheduleSelf(@NonNull Runnable paramRunnable, long paramLong)
+  {
+    if (a() != null) {
+      a().scheduleSelf(paramRunnable, paramLong);
+    }
+    super.scheduleSelf(paramRunnable, paramLong);
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (a() != null) {
+      a().setAlpha(paramInt);
+    }
+  }
+  
+  public void setAutoMirrored(boolean paramBoolean)
+  {
+    if ((Build.VERSION.SDK_INT >= 19) && (a() != null)) {
+      a().setAutoMirrored(paramBoolean);
+    }
+    super.setAutoMirrored(paramBoolean);
+  }
+  
+  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkIconProxyDrawable", 2, "setBounds [left, top right, bottom] : " + new Rect(paramInt1, paramInt2, paramInt3, paramInt4));
+    }
+    if (a() != null) {
+      a().setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void setBounds(@NonNull Rect paramRect)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkIconProxyDrawable", 2, "setBounds bounds : " + paramRect);
+    }
+    if (a() != null) {
+      a().setBounds(paramRect);
+    }
+    super.setBounds(paramRect);
+  }
+  
+  public void setChangingConfigurations(int paramInt)
+  {
+    if (a() != null) {
+      a().setChangingConfigurations(paramInt);
+    }
+    super.setChangingConfigurations(paramInt);
+  }
+  
+  public void setColorFilter(int paramInt, @NonNull PorterDuff.Mode paramMode)
+  {
+    if (a() != null) {
+      a().setColorFilter(paramInt, paramMode);
+    }
+    super.setColorFilter(paramInt, paramMode);
+  }
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
+  {
+    if (a() != null) {
+      a().setColorFilter(paramColorFilter);
+    }
+  }
+  
+  public void setDither(boolean paramBoolean)
+  {
+    if (a() != null) {
+      a().setDither(paramBoolean);
+    }
+    super.setDither(paramBoolean);
+  }
+  
+  public void setFilterBitmap(boolean paramBoolean)
+  {
+    if (a() != null) {
+      a().setFilterBitmap(paramBoolean);
+    }
+    super.setFilterBitmap(paramBoolean);
+  }
+  
+  public void setHotspot(float paramFloat1, float paramFloat2)
+  {
+    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
+      a().setHotspot(paramFloat1, paramFloat2);
+    }
+    super.setHotspot(paramFloat1, paramFloat2);
+  }
+  
+  public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
+      a().setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+    super.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public boolean setState(@NonNull int[] paramArrayOfInt)
+  {
+    if (a() != null) {
+      return a().setState(paramArrayOfInt);
+    }
+    return super.setState(paramArrayOfInt);
+  }
+  
+  public void setTint(int paramInt)
+  {
+    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
+      a().setTint(paramInt);
+    }
+    super.setTint(paramInt);
+  }
+  
+  public void setTintList(@Nullable ColorStateList paramColorStateList)
+  {
+    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
+      a().setTintList(paramColorStateList);
+    }
+    super.setTintList(paramColorStateList);
+  }
+  
+  public void setTintMode(@NonNull PorterDuff.Mode paramMode)
+  {
+    if ((Build.VERSION.SDK_INT >= 21) && (a() != null)) {
+      a().setTintMode(paramMode);
+    }
+    super.setTintMode(paramMode);
+  }
+  
+  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (a() != null) {
+      return a().setVisible(paramBoolean1, paramBoolean2);
+    }
+    return super.setVisible(paramBoolean1, paramBoolean2);
+  }
+  
+  public void unscheduleSelf(@NonNull Runnable paramRunnable)
+  {
+    if (a() != null) {
+      a().unscheduleSelf(paramRunnable);
+    }
+    super.unscheduleSelf(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awzv
  * JD-Core Version:    0.7.0.1
  */

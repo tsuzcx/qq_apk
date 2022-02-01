@@ -1,29 +1,39 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.articlesummary.articlesummary.PartnerAccountInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/service/RIJAidlClient$RIJServiceConnection;", "Landroid/content/ServiceConnection;", "()V", "onServiceConnected", "", "name", "Landroid/content/ComponentName;", "service", "Landroid/os/IBinder;", "onServiceDisconnected", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-final class qhv
-  implements ServiceConnection
+public class qhv
 {
-  public void onServiceConnected(@NotNull ComponentName paramComponentName, @NotNull IBinder paramIBinder)
+  public static void a(Container paramContainer, pxk parampxk)
   {
-    Intrinsics.checkParameterIsNotNull(paramComponentName, "name");
-    Intrinsics.checkParameterIsNotNull(paramIBinder, "service");
-    qhu.a(qhu.a, qhs.a(paramIBinder));
+    a(paramContainer, parampxk, "id_nickname");
   }
   
-  public void onServiceDisconnected(@NotNull ComponentName paramComponentName)
+  public static void a(Container paramContainer, pxk parampxk, String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramComponentName, "name");
+    ArticleInfo localArticleInfo = parampxk.a();
+    paramContainer = paramContainer.getVirtualView();
+    qij localqij = (qij)paramContainer.findViewBaseByName("id_partner_info_avator");
+    if (localqij != null) {
+      localqij.a(parampxk);
+    }
+    paramContainer = (qkq)paramContainer.findViewBaseByName(paramString);
+    if (paramContainer != null)
+    {
+      long l = 0L;
+      if (localArticleInfo.mPartnerAccountInfo != null) {
+        l = localArticleInfo.mPartnerAccountInfo.uint64_uin.get();
+      }
+      paramContainer.a(l);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qhv
  * JD-Core Version:    0.7.0.1
  */

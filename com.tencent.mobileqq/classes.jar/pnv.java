@@ -1,42 +1,51 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.media.AudioManager;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyLockScreenJumpDelegate;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
-class pnv
-  extends BroadcastReceiver
+public class pnv
+  extends pnq
 {
-  pnv(pnh parampnh, VideoView paramVideoView, ViewBean paramViewBean, ViewBase paramViewBase) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public pnv(@NotNull pnr parampnr, Activity paramActivity)
   {
-    boolean bool;
-    if (((AudioManager)paramContext.getSystemService("audio")).getStreamVolume(3) <= 0)
+    super(parampnr, "RIJLockScreenPopupStep");
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  private boolean c()
+  {
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
     {
-      bool = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.setMute(bool);
-      paramIntent = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanViewBean;
-      if (!bool) {
-        break label62;
+      Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
+      if ((localIntent != null) && (localIntent.hasExtra("launch_from")) && (localIntent.hasExtra("kan_dian_lock_screen_flag")) && (localIntent.getIntExtra("launch_from", 0) == 9))
+      {
+        ReadInJoyLockScreenJumpDelegate.a(this.jdField_a_of_type_AndroidAppActivity, localIntent);
+        localIntent.removeExtra("kan_dian_lock_screen_flag");
+        QLog.i("RIJDailyPopupStep", 1, "RIJLockScreenPopupStep handleLockScreenJump!");
+        return true;
       }
     }
-    label62:
-    for (paramContext = "video_audio_mute";; paramContext = "video_audio_speak")
-    {
-      paramIntent.putMapValue("pgc_video_content_audio_icon", paramContext);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.bindDynamicValue(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanViewBean);
-      return;
-      bool = false;
-      break;
-    }
+    return false;
+  }
+  
+  protected void g()
+  {
+    a(this.jdField_a_of_type_Boolean);
+  }
+  
+  protected void h()
+  {
+    this.jdField_a_of_type_Boolean = c();
+    a(this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pnv
  * JD-Core Version:    0.7.0.1
  */

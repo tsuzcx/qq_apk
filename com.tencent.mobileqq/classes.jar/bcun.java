@@ -1,52 +1,121 @@
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class bcun
-  implements View.OnTouchListener
 {
-  public bcun(TroopGiftActionButton paramTroopGiftActionButton, TextView paramTextView) {}
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
+  private TreeMap<bcuo, String> jdField_a_of_type_JavaUtilTreeMap;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private String a()
   {
-    if (paramMotionEvent.getAction() == 0)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nBusiness\n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
+    int i = 0;
+    if (localIterator.hasNext())
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-      paramMotionEvent = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
-      paramMotionEvent.setDuration(100L);
-      paramMotionEvent.setAnimationListener(new bcuo(this));
-      this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(paramMotionEvent);
-      paramMotionEvent = new ImageView(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext());
-      Object localObject = new GradientDrawable();
-      ((GradientDrawable)localObject).setShape(1);
-      ((GradientDrawable)localObject).setCornerRadius(bdaq.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
-      ((GradientDrawable)localObject).setColor(Color.parseColor(TroopGiftActionButton.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton).optString("buttonEffectColor")));
-      ((GradientDrawable)localObject).setAlpha(192);
-      paramMotionEvent.setImageDrawable((Drawable)localObject);
-      localObject = new RelativeLayout.LayoutParams(bdaq.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F), bdaq.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
-      ((RelativeLayout.LayoutParams)localObject).addRule(13);
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.addView(paramMotionEvent, (ViewGroup.LayoutParams)localObject);
-      localObject = new ScaleAnimation(1.0F, 1.7F, 1.0F, 1.7F, 1, 0.5F, 1, 0.5F);
-      ((ScaleAnimation)localObject).setDuration(150L);
-      ((ScaleAnimation)localObject).setAnimationListener(new bcup(this, paramMotionEvent));
-      paramMotionEvent.startAnimation((Animation)localObject);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a.onClick(paramView);
+      localObject = (Map.Entry)localIterator.next();
+      if (i < 20) {}
+    }
+    else
+    {
+      return localStringBuilder.toString();
+    }
+    localStringBuilder.append("fd: ").append((String)((Map.Entry)localObject).getValue()).append(" ").append("(").append("count: ").append(((bcuo)((Map.Entry)localObject).getKey()).jdField_a_of_type_Int).append(")").append("\n");
+    Object localObject = new ArrayList(((bcuo)((Map.Entry)localObject).getKey()).jdField_a_of_type_JavaUtilHashMap.values());
+    Collections.sort((List)localObject);
+    localObject = ((List)localObject).iterator();
+    int j = 0;
+    for (;;)
+    {
+      bcuo localbcuo;
+      if (((Iterator)localObject).hasNext())
+      {
+        localbcuo = (bcuo)((Iterator)localObject).next();
+        if (j >= 5) {
+          localStringBuilder.append("\t\t").append("…").append("\n");
+        }
+      }
+      else
+      {
+        i += 1;
+        break;
+      }
+      j += 1;
+      localStringBuilder.append("\t\t").append(localbcuo.jdField_a_of_type_JavaLangString).append("(").append("count: ").append(localbcuo.jdField_a_of_type_Int).append(")").append("\n");
+    }
+  }
+  
+  private void a(bcup parambcup)
+  {
+    parambcup.a();
+    c(parambcup);
+    b(parambcup);
+  }
+  
+  private String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nSystem\n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      localStringBuilder.append("fd: ").append((String)localEntry.getKey()).append(" ").append("(").append("count: ").append(localEntry.getValue()).append(")").append("\n");
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private void b(bcup parambcup)
+  {
+    Object localObject = parambcup.a();
+    parambcup = new HashMap(20);
+    localObject = ((HashMap)localObject).entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+      String str = (String)localEntry.getValue();
+      if (bcup.a(str) == null) {
+        parambcup.put(localEntry.getKey(), str);
       }
     }
-    return true;
+    this.jdField_a_of_type_JavaUtilTreeMap = new TreeMap(parambcup);
+  }
+  
+  private void c(bcup parambcup)
+  {
+    this.jdField_a_of_type_JavaUtilMap = new HashMap(10);
+    parambcup = parambcup.b().entrySet().iterator();
+    while (parambcup.hasNext())
+    {
+      Object localObject = (Map.Entry)parambcup.next();
+      bcuo localbcuo = (bcuo)((Map.Entry)localObject).getKey();
+      localObject = (String)((Map.Entry)localObject).getValue();
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(localbcuo.jdField_a_of_type_Int));
+      }
+      else
+      {
+        Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        Map localMap = this.jdField_a_of_type_JavaUtilMap;
+        int i = localInteger.intValue();
+        localMap.put(localObject, Integer.valueOf(localbcuo.jdField_a_of_type_Int + i));
+      }
+    }
+  }
+  
+  public String a(bcup parambcup)
+  {
+    a(parambcup);
+    return a() + b();
   }
 }
 

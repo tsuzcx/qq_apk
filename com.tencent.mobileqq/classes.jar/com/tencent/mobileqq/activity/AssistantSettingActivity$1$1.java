@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aceh;
-import acfg;
-import alud;
+import adlt;
+import admr;
+import anni;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -10,14 +10,14 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class AssistantSettingActivity$1$1
   implements Runnable
 {
-  public AssistantSettingActivity$1$1(aceh paramaceh, boolean paramBoolean) {}
+  public AssistantSettingActivity$1$1(adlt paramadlt, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aceh.a.a.notifyDataSetChanged();
-    BaseApplication localBaseApplication = this.jdField_a_of_type_Aceh.a.app.getApp();
+    this.jdField_a_of_type_Adlt.a.a.notifyDataSetChanged();
+    BaseApplication localBaseApplication = this.jdField_a_of_type_Adlt.a.app.getApp();
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = alud.a(2131701157);; str = alud.a(2131701153))
+    for (String str = anni.a(2131699582);; str = anni.a(2131699578))
     {
       QQToast.a(localBaseApplication, str, 0).a();
       return;

@@ -1,40 +1,29 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import android.support.annotation.NonNull;
 
 public class yjs
-  extends yiu
+  extends wfr<yjc, wor>
 {
-  public yjs(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, Bundle paramBundle)
+  public yjs(yjc paramyjc)
   {
-    super(paramBundle);
+    super(paramyjc);
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
+  public void a(@NonNull yjc paramyjc, @NonNull wor paramwor)
   {
-    return SubscribePersonalDetailFragment.a(this.a);
+    yqp.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramwor);
+    yjc.a(paramyjc, paramwor.a);
   }
   
-  public void loadData(yii paramyii)
+  public Class acceptEventClass()
   {
-    if ((paramyii.c()) || (paramyii.d()))
-    {
-      if ((SubscribePersonalDetailFragment.a(this.a) != null) && (SubscribePersonalDetailFragment.a(this.a).a() == 1))
-      {
-        SubDraftChangeEvent localSubDraftChangeEvent = new SubDraftChangeEvent();
-        yiw.a().a(localSubDraftChangeEvent);
-      }
-      SubscribePersonalDetailFragment.a(this.a, paramyii);
-    }
+    return wor.class;
   }
   
-  public void onPrepareParams(Bundle paramBundle) {}
+  public void b(@NonNull yjc paramyjc, @NonNull wor paramwor) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yjs
  * JD-Core Version:    0.7.0.1
  */

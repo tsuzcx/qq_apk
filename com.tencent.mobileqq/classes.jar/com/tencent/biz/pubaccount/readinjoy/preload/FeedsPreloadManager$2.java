@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.preload;
 
 import com.tencent.qphone.base.util.QLog;
-import oxs;
-import piu;
+import pnc;
+import qag;
 
 public class FeedsPreloadManager$2
   implements Runnable
 {
-  public FeedsPreloadManager$2(piu parampiu) {}
+  public FeedsPreloadManager$2(qag paramqag) {}
   
   public void run()
   {
     QLog.d("FeedsPreloadManager", 1, "add foreground, background callback.");
-    oxs.a(piu.a(this.this$0));
+    pnc.a(qag.a(this.this$0));
   }
 }
 

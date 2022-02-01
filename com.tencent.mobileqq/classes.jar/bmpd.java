@@ -1,7 +1,9 @@
-public class bmpd
-  implements bnov
+import android.graphics.drawable.BitmapDrawable;
+import android.util.LruCache;
+
+public abstract interface bmpd
 {
-  bmpd(bmpc parambmpc) {}
+  public abstract void a(LruCache<Integer, BitmapDrawable> paramLruCache);
 }
 
 

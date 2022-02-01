@@ -1,61 +1,28 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.6.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqeu
-  extends RecyclerView.OnScrollListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aqeu(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  public aqeu(ColorNoteSettingFragment paramColorNoteSettingFragment, QQAppInterface paramQQAppInterface) {}
   
-  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSearchFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
+    aqcb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
+    if (!paramBoolean) {
+      new aqcc().c(null);
     }
-    if (this.a.jdField_a_of_type_Bdbb != null)
+    ((aqct)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(168)).a(paramBoolean);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      if (paramInt != 0) {
-        break label87;
-      }
-      this.a.c = false;
-      this.a.jdField_a_of_type_Bdbb.b();
-      this.a.ax_();
-    }
-    for (;;)
-    {
-      if (paramInt == 0)
-      {
-        this.a.g();
-        this.a.b(false);
-      }
+      bcst.b(null, "dc00898", "", "", "0X800A8B0", "0X800A8B0", i, 0, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      label87:
-      this.a.c = true;
-      this.a.jdField_a_of_type_Bdbb.c();
-      this.a.jdField_a_of_type_Bdbb.a();
-      synchronized (ExtendFriendBaseFragment.a)
-      {
-        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.clear();
-        }
-      }
     }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if ((!ExtendFriendSearchFragment.a(this.a)) && (!ExtendFriendSearchFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Aqfh != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Aqfh.getItemCount() - 2) != null))
-    {
-      this.a.a(true);
-      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.6.1(this));
-      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
-    }
-    this.a.a(false, 0L);
   }
 }
 

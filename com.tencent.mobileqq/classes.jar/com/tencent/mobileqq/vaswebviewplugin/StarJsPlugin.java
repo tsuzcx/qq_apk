@@ -2,12 +2,12 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import apmh;
-import apml;
-import aprh;
-import bdin;
-import bdmh;
-import begz;
+import arpd;
+import arph;
+import arui;
+import bgnt;
+import bgrj;
+import bhod;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -40,13 +40,13 @@ public class StarJsPlugin
     {
       JSONObject localJSONObject = new JSONObject();
       str = paramJSONObject.getString("nickname");
-      if (bdmh.a(this.browserApp.getApp(), new String[] { str }))
+      if (bgrj.a(this.browserApp.getApp(), new String[] { str }))
       {
         localJSONObject.put("ret", -2);
         super.callJs(paramString + "(" + localJSONObject.toString() + ");");
         return;
       }
-      if (!bdin.d(this.browserApp.getApplication().getApplicationContext()))
+      if (!bgnt.d(this.browserApp.getApplication().getApplicationContext()))
       {
         localJSONObject.put("ret", -3);
         super.callJs(paramString + "(" + localJSONObject.toString() + ");");
@@ -66,8 +66,8 @@ public class StarJsPlugin
     this.mReqBundle.putString("nickname", str);
     this.mReqBundle.putString("starhomeurl", paramJSONObject.getString("starhomeurl"));
     this.mReqBundle.putString("sid", paramJSONObject.getString("starid"));
-    paramJSONObject = apml.a("createShortcut", paramString, this.mOnRemoteResp.key, this.mReqBundle);
-    aprh.a().a(paramJSONObject);
+    paramJSONObject = arph.a("createShortcut", paramString, this.mOnRemoteResp.key, this.mReqBundle);
+    arui.a().a(paramJSONObject);
   }
   
   protected long getPluginBusiness()
@@ -170,7 +170,7 @@ public class StarJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.StarJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,23 @@
-public abstract class lxh
-  extends lwt
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo.Medal;
+
+public final class lxh
+  implements Parcelable.Creator<RecvGVideoLevelInfo.Medal>
 {
-  protected long b;
-  public lxt[] c;
-  
-  public void a(long paramLong)
+  public RecvGVideoLevelInfo.Medal a(Parcel paramParcel)
   {
-    long l = this.jdField_a_of_type_Long;
-    if (this.c != null)
-    {
-      int i = (int)((paramLong - l) % this.b * this.c.length / this.b);
-      if ((i >= 0) && (i < this.c.length)) {
-        this.jdField_a_of_type_Lxt = this.c[i];
-      }
-    }
+    return new RecvGVideoLevelInfo.Medal(paramParcel);
   }
   
-  public void b()
+  public RecvGVideoLevelInfo.Medal[] a(int paramInt)
   {
-    super.b();
-    if (this.c != null)
-    {
-      lxt[] arrayOflxt = this.c;
-      int j = arrayOflxt.length;
-      int i = 0;
-      while (i < j)
-      {
-        lxt locallxt = arrayOflxt[i];
-        if (locallxt != null) {
-          locallxt.a();
-        }
-        i += 1;
-      }
-      this.c = null;
-    }
+    return new RecvGVideoLevelInfo.Medal[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lxh
  * JD-Core Version:    0.7.0.1
  */

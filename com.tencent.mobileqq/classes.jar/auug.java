@@ -1,61 +1,58 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Handler;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.gamecenter.util.QQGameHelper.2.2;
+import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebSettings;
 
-public class auug
-  implements Manager
+public final class auug
+  extends bhqx
 {
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean = true;
-  boolean b = true;
-  
-  public auug(QQAppInterface paramQQAppInterface)
+  auug(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("NearbyGeneralConfig", 0);
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null)
+    super(paramInt);
+  }
+  
+  public int a()
+  {
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("Notify_on_like", true);
-      this.b = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_allow_nearby_like", true);
+      try
+      {
+        QLog.i("QQGameHelper", 1, "SwiftBrowserIdleTask--> do preloadsw ");
+        if (!auue.a()) {
+          return 0;
+        }
+        auue.a(NetConnInfoCenter.getServerTimeMillis());
+        QQGamePubWebView localQQGamePubWebView = new QQGamePubWebView(BaseApplicationImpl.sApplication);
+        WebSettings localWebSettings = localQQGamePubWebView.getSettings();
+        String str = localWebSettings.getUserAgentString();
+        if (localQQGamePubWebView.getX5WebViewExtension() != null)
+        {
+          bool = true;
+          localWebSettings.setUserAgentString(bhre.a(str, "", bool));
+          localWebSettings.setJavaScriptEnabled(true);
+          localQQGamePubWebView.loadUrl(auuc.d());
+          QLog.i("QQGameHelper", 1, "SwiftBrowserIdleTask--> loadUrl " + auuc.d());
+          localQQGamePubWebView.setWebChromeClient(new auuh(this));
+          ThreadManagerV2.getUIHandlerV2().postDelayed(new QQGameHelper.2.2(this, localQQGamePubWebView), 15000L);
+          return 0;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("QQGameHelper", 1, QLog.getStackTraceString(localThrowable));
+        return 0;
+      }
+      boolean bool = false;
     }
   }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("Notify_on_like", paramBoolean).commit();
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if ((this.b != paramBoolean) && (this.jdField_a_of_type_AndroidContentSharedPreferences != null))
-    {
-      this.b = paramBoolean;
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_allow_nearby_like", paramBoolean).commit();
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auug
  * JD-Core Version:    0.7.0.1
  */

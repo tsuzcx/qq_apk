@@ -1,34 +1,25 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.MessageForPLNews;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afws
+public class afws
   implements View.OnClickListener
 {
-  afws(afwr paramafwr, MessageForPLNews paramMessageForPLNews, String paramString) {}
+  public afws(BaseChatItemLayout paramBaseChatItemLayout) {}
   
   public void onClick(View paramView)
   {
-    paramView = (afwt)paramView.getTag();
-    if (paramView == null) {
-      return;
+    String str = (String)paramView.getTag();
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatItemLayout", 2, "vip_card_extension jumpUrl=" + str);
     }
-    paramView = new ProfileActivity.AllInOne(paramView.jdField_a_of_type_JavaLangString, 1);
-    Intent localIntent = new Intent(this.jdField_a_of_type_Afwr.jdField_a_of_type_AndroidContentContext, PersonalityLabelGalleryActivity.class);
-    localIntent.putExtra("personality_label_allinone", paramView);
-    localIntent.putExtra("fromType", 2);
-    localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPLNews.frienduin);
-    localIntent.putExtra("nickname", this.jdField_a_of_type_JavaLangString);
-    if (!(this.jdField_a_of_type_Afwr.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-      localIntent.addFlags(268435456);
+    if (!bgsp.a(str)) {
+      VasWebviewUtil.openQQBrowserActivity(this.a.getContext(), str, 256L, null, false, -1);
     }
-    this.jdField_a_of_type_Afwr.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    azqs.b(this.jdField_a_of_type_Afwr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "3", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

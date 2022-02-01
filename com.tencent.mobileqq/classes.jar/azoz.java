@@ -1,22 +1,33 @@
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import java.lang.ref.WeakReference;
 
-public final class azoz
-  implements TVK_IMediaPlayer.OnErrorListener
+class azoz
+  implements bhlk
 {
-  public azoz(aznp paramaznp) {}
+  private WeakReference<aval> a;
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  azoz(aval paramaval)
   {
-    QLog.i("SplashMiniGameStarter", 1, "splash_logoerro+ errotype" + paramInt1 + "errcode =" + paramInt2);
-    this.a.a(15, 1, 0L);
-    return false;
+    this.a = new WeakReference(paramaval);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      aval localaval = (aval)this.a.get();
+      if (localaval != null) {
+        localaval.a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileQZoneComponent", 2, "check friend's profile and preload web-process!");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azoz
  * JD-Core Version:    0.7.0.1
  */

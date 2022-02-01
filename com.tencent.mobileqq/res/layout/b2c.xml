@@ -7,7 +7,7 @@
             <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:id="@id/fco" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/foc" />
             <ImageView android:layout_gravity="center_vertical" android:id="@id/fck" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/afc" />
         </LinearLayout>
-        <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/mjw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="原图" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/n4_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="原图" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
     <com.tencent.widget.ScrollView android:id="@id/b_7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_above="@id/lag" android:layout_below="@id/jqb">
         <FrameLayout android:padding="@dimen/ms" android:layout_width="fill_parent" android:layout_height="fill_parent">
@@ -25,12 +25,12 @@
         </LinearLayout>
         <com.tencent.mobileqq.widget.ParticipleBottomMenuView android:id="@id/lyt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </FrameLayout>
-    <FrameLayout android:id="@id/mjv" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <FrameLayout android:id="@id/l32" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mobileqq.ocr.view.gesture.GestureFrameLayout android:id="@id/l4p" android:background="@color/bp" android:longClickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@null" app:gest_doubleTapZoom="2.0" app:gest_fitMethod="d81" app:gest_flingEnabled="true" app:gest_gravity="asr" app:gest_maxZoom="3.0">
-            <com.tencent.image.URLImageView android:id="@id/kdw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitStart" android:adjustViewBounds="true" android:contentDescription="@null" />
+    <FrameLayout android:id="@id/n49" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/mn2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.ocr.view.gesture.GestureFrameLayout android:id="@id/mn3" android:background="@color/bp" android:longClickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@null" app:gest_doubleTapZoom="2.0" app:gest_fitMethod="d81" app:gest_flingEnabled="true" app:gest_gravity="asr" app:gest_maxZoom="3.0">
+            <com.tencent.image.URLImageView android:id="@id/mj3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitStart" android:adjustViewBounds="true" android:contentDescription="@null" />
         </com.tencent.mobileqq.ocr.view.gesture.GestureFrameLayout>
-        <RelativeLayout android:id="@id/mro" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <RelativeLayout android:id="@id/nl4" android:layout_width="fill_parent" android:layout_height="50.0dip">
             <ImageView android:id="@id/fch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:src="@drawable/a39" android:layout_centerVertical="true" android:contentDescription="@string/u3" />
         </RelativeLayout>
     </FrameLayout>

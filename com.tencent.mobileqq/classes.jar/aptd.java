@@ -1,35 +1,38 @@
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-
-public abstract class aptd
+public class aptd
 {
-  public final EmoticonPanelController a;
+  public int a;
+  public apte a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public aptd(EmoticonPanelController paramEmoticonPanelController)
+  public aptd()
   {
-    this.a = paramEmoticonPanelController;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public abstract int[] a();
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("|_DownloadParam_start");
+    localStringBuilder.append("|").append(" type:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|").append(" md5:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|").append(" endFix:").append(this.c);
+    localStringBuilder.append("|").append(" retryCount:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("|").append(" needUnzip:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("|").append(" needVerify:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("|").append(" url:").append(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaLangObject != null) {
+      localStringBuilder.append("|").append(" userData:").append(this.jdField_a_of_type_JavaLangObject);
+    }
+    localStringBuilder.append("|end");
+    return localStringBuilder.toString();
+  }
 }
 
 

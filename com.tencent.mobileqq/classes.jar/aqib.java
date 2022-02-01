@@ -1,10 +1,18 @@
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aqib
+public class aqib
+  implements View.OnClickListener
 {
-  public abstract void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType);
+  public aqib(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public abstract void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType);
+  public void onClick(View paramView)
+  {
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

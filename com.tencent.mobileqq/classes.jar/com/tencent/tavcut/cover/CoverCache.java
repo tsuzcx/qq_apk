@@ -12,6 +12,7 @@ public class CoverCache
   private static final String TAG = "CoverCache";
   private CoverListener mCoverListener;
   private ConcurrentHashMap<Integer, Bitmap> mCoverMap = new ConcurrentHashMap(16);
+  private ConcurrentHashMap<Integer, Bitmap> mProgressCoverMap = new ConcurrentHashMap(16);
   
   public void addCover(int paramInt, Bitmap paramBitmap)
   {
@@ -39,6 +40,14 @@ public class CoverCache
   {
     if (this.mCoverMap != null) {
       return (Bitmap)this.mCoverMap.get(Integer.valueOf(paramInt));
+    }
+    return null;
+  }
+  
+  public Bitmap getCoverByTime(long paramLong)
+  {
+    if ((this.mProgressCoverMap != null) && (this.mProgressCoverMap.get(Long.valueOf(paramLong)) != null)) {
+      return (Bitmap)this.mProgressCoverMap.get(Long.valueOf(paramLong));
     }
     return null;
   }
@@ -74,7 +83,7 @@ public class CoverCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.cover.CoverCache
  * JD-Core Version:    0.7.0.1
  */

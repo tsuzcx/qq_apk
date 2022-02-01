@@ -1,34 +1,28 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
 
 public class adtb
-  extends alpq
 {
-  public adtb(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public adtb(ChatFragment paramChatFragment) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void a()
   {
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
-      QQSettingSettingActivity.a(this.a, (Card)paramObject);
-    }
-  }
-  
-  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
+    if ((ChatFragment.b()) && (this.a.jdField_a_of_type_Boolean))
     {
-      if (paramBoolean1) {
-        this.a.a(this.a.app.getCurrentAccountUin());
+      bgso.b("AIO_Start_cost", null);
+      SuspendThreadManager.a().d();
+      bgso.a("AIO_onDrawView", "AIO_SysMsgCost");
+      ChatFragment.a(this.a);
+      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("uintype", -1) == 1008)
+      {
+        String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
+        bgnv.a("pubAcc_aio_open", null, str);
+        bgnv.a("pubAcc_structMsg_display", null, str);
       }
-      return;
+      ChatFragment.a(false);
     }
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    QLog.e("QQSetting2Activity", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin " + str);
   }
 }
 

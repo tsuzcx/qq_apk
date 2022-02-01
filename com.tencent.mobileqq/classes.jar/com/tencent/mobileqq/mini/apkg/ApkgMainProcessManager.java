@@ -2,6 +2,7 @@ package com.tencent.mobileqq.mini.apkg;
 
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
@@ -22,6 +23,8 @@ public class ApkgMainProcessManager
   private static final String CMD_MAIN_PROCESS_LOAD_PKG = "cmd_main_process_load_pkg";
   private static final String CMD_QUEUE_MINI_PROCESS_LOAD_APKG = "cmd_queue_mini_process_load_apkg";
   private static final String CMD_REMOVE_MINI_PROCESS_LOAD_APKG = "cmd_remove_mini_process_load_apkg";
+  public static final String EXTRA_DOWNLOAD_TIME_MS = "DOWNLOAD_TIME_MS";
+  public static final String EXTRA_HAS_DOWNLOAD = "HAS_DOWNLOAD";
   public static final String EXTRA_PROGRESS = "PROGRESS";
   public static final String EXTRA_TOTAL_SIZE = "TOTAL_SIZE";
   public static final String KEY_MINI_APP_CONFIG = "key_mini_app_config";
@@ -67,20 +70,22 @@ public class ApkgMainProcessManager
   
   private void checkShouldPerformMainProcessLoadPkg(Bundle paramBundle, CmdCallback paramCmdCallback)
   {
-    MiniAppConfig localMiniAppConfig = (MiniAppConfig)paramBundle.getParcelable("key_mini_app_config");
+    Object localObject = (MiniAppConfig)paramBundle.getParcelable("key_mini_app_config");
     boolean bool = paramBundle.getBoolean("key_run_in_mainprocess", false);
-    if ((localMiniAppConfig == null) || (localMiniAppConfig.config == null)) {
+    if ((localObject == null) || (((MiniAppConfig)localObject).config == null)) {
       return;
     }
-    if (this.cmdCallbackHashMap.get(localMiniAppConfig.config.appId) != null)
+    if (this.cmdCallbackHashMap.get(((MiniAppConfig)localObject).config.appId) != null)
     {
-      ((List)this.cmdCallbackHashMap.get(localMiniAppConfig.config.appId)).add(paramCmdCallback);
+      ((List)this.cmdCallbackHashMap.get(((MiniAppConfig)localObject).config.appId)).add(paramCmdCallback);
       return;
     }
     if (!bool) {
       try
       {
-        paramCmdCallback.onCmdResult(true, new Bundle());
+        localObject = new Bundle();
+        paramBundle.putBoolean("HAS_DOWNLOAD", false);
+        paramCmdCallback.onCmdResult(true, (Bundle)localObject);
         return;
       }
       catch (RemoteException paramBundle)
@@ -89,19 +94,24 @@ public class ApkgMainProcessManager
         return;
       }
     }
-    if (this.subProcessLoadTaskSet.contains(localMiniAppConfig.config.appId))
+    if (this.subProcessLoadTaskSet.contains(((MiniAppConfig)localObject).config.appId))
     {
-      QLog.w("ApkgMainProcessManager", 2, "pkg already download in sub process! " + localMiniAppConfig);
+      QLog.w("ApkgMainProcessManager", 2, "pkg already download in sub process! " + localObject);
       return;
     }
-    this.cmdCallbackHashMap.put(localMiniAppConfig.config.appId, new CopyOnWriteArrayList(Collections.singletonList(paramCmdCallback)));
-    QLog.d("ApkgMainProcessManager", 2, "load apkg in main process start " + localMiniAppConfig);
-    if (localMiniAppConfig.isEngineTypeMiniGame())
+    this.cmdCallbackHashMap.put(((MiniAppConfig)localObject).config.appId, new CopyOnWriteArrayList(Collections.singletonList(paramCmdCallback)));
+    QLog.d("ApkgMainProcessManager", 2, "load apkg in main process start " + localObject);
+    if (((MiniAppConfig)localObject).isEngineTypeMiniGame())
     {
-      loadGpkg(localMiniAppConfig);
+      loadGpkg((MiniAppConfig)localObject);
       return;
     }
-    loadApkg(localMiniAppConfig);
+    loadApkg((MiniAppConfig)localObject);
+  }
+  
+  public static int getDownloadingPackageCount()
+  {
+    return getInstance().cmdCallbackHashMap.size();
   }
   
   static ApkgMainProcessManager getInstance()
@@ -162,7 +172,8 @@ public class ApkgMainProcessManager
   
   private void loadApkg(MiniAppConfig paramMiniAppConfig)
   {
-    ApkgManager.getInstance().getApkgInfoByConfig(paramMiniAppConfig, new ApkgMainProcessManager.7(this, paramMiniAppConfig));
+    long l = SystemClock.uptimeMillis();
+    ApkgManager.getInstance().getApkgInfoByConfig(paramMiniAppConfig, new ApkgMainProcessManager.7(this, paramMiniAppConfig, l));
     try
     {
       if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_flutter_enable_pkg_preload", 1) == 1) {}
@@ -187,7 +198,7 @@ public class ApkgMainProcessManager
   
   private void loadGpkg(MiniAppConfig paramMiniAppConfig)
   {
-    GpkgManager.performGetGpkgInfoByConfig(paramMiniAppConfig, new ApkgMainProcessManager.8(this, paramMiniAppConfig), false);
+    GpkgManager.performGetGpkgInfoByConfig(paramMiniAppConfig, new ApkgMainProcessManager.8(this, paramMiniAppConfig, SystemClock.uptimeMillis()), false);
   }
   
   private void loadSubGpkg(MiniAppConfig paramMiniAppConfig)
@@ -225,7 +236,7 @@ public class ApkgMainProcessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgMainProcessManager
  * JD-Core Version:    0.7.0.1
  */

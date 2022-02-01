@@ -1,8 +1,13 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
-public abstract interface bfah
+public class bfah
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(BaseResp paramBaseResp);
+  public bfah(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

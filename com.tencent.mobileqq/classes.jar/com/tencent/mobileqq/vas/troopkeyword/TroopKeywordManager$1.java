@@ -1,84 +1,84 @@
 package com.tencent.mobileqq.vas.troopkeyword;
 
-import bdww;
+import bhdd;
 
 public class TroopKeywordManager$1
   implements Runnable
 {
-  public TroopKeywordManager$1(bdww parambdww) {}
+  public TroopKeywordManager$1(bhdd parambhdd) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbdww;
-    //   4: invokestatic 25	bdww:a	(Lbdww;)Ljava/lang/Object;
+    //   1: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbhdd;
+    //   4: invokestatic 25	bhdd:a	(Lbhdd;)Ljava/lang/Object;
     //   7: astore_1
     //   8: aload_1
     //   9: monitorenter
     //   10: aload_0
-    //   11: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbdww;
-    //   14: invokestatic 28	bdww:a	(Lbdww;)Lawgf;
-    //   17: invokevirtual 33	awgf:a	()Lawgh;
-    //   20: invokevirtual 37	awgh:a	()V
+    //   11: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbhdd;
+    //   14: invokestatic 28	bhdd:a	(Lbhdd;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   17: invokevirtual 34	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   20: invokevirtual 39	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   23: aload_0
-    //   24: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbdww;
-    //   27: invokestatic 28	bdww:a	(Lbdww;)Lawgf;
-    //   30: ldc 39
-    //   32: invokevirtual 42	awgf:a	(Ljava/lang/Class;)Z
+    //   24: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbhdd;
+    //   27: invokestatic 28	bhdd:a	(Lbhdd;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   30: ldc 41
+    //   32: invokevirtual 45	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
     //   35: pop
     //   36: aload_0
-    //   37: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbdww;
-    //   40: invokestatic 45	bdww:a	(Lbdww;)Ljava/util/concurrent/ConcurrentHashMap;
-    //   43: invokevirtual 51	java/util/concurrent/ConcurrentHashMap:values	()Ljava/util/Collection;
-    //   46: invokeinterface 57 1 0
+    //   37: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbhdd;
+    //   40: invokestatic 48	bhdd:a	(Lbhdd;)Ljava/util/concurrent/ConcurrentHashMap;
+    //   43: invokevirtual 54	java/util/concurrent/ConcurrentHashMap:values	()Ljava/util/Collection;
+    //   46: invokeinterface 60 1 0
     //   51: astore_2
     //   52: aload_2
-    //   53: invokeinterface 63 1 0
+    //   53: invokeinterface 66 1 0
     //   58: ifeq +79 -> 137
     //   61: aload_2
-    //   62: invokeinterface 67 1 0
-    //   67: checkcast 69	java/util/List
-    //   70: invokeinterface 70 1 0
+    //   62: invokeinterface 70 1 0
+    //   67: checkcast 72	java/util/List
+    //   70: invokeinterface 73 1 0
     //   75: astore_3
     //   76: aload_3
-    //   77: invokeinterface 63 1 0
+    //   77: invokeinterface 66 1 0
     //   82: ifeq -30 -> 52
     //   85: aload_3
-    //   86: invokeinterface 67 1 0
-    //   91: checkcast 39	com/tencent/mobileqq/data/TroopKeyWord
+    //   86: invokeinterface 70 1 0
+    //   91: checkcast 41	com/tencent/mobileqq/data/TroopKeyWord
     //   94: astore 4
     //   96: aload_0
-    //   97: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbdww;
-    //   100: invokestatic 28	bdww:a	(Lbdww;)Lawgf;
+    //   97: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbhdd;
+    //   100: invokestatic 28	bhdd:a	(Lbhdd;)Lcom/tencent/mobileqq/persistence/EntityManager;
     //   103: aload 4
-    //   105: invokevirtual 74	awgf:b	(Lawge;)V
+    //   105: invokevirtual 77	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   108: goto -32 -> 76
     //   111: astore_2
-    //   112: ldc 76
+    //   112: ldc 79
     //   114: iconst_1
-    //   115: ldc 78
+    //   115: ldc 81
     //   117: aload_2
-    //   118: invokestatic 84	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   118: invokestatic 87	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   121: aload_0
-    //   122: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbdww;
-    //   125: invokestatic 28	bdww:a	(Lbdww;)Lawgf;
-    //   128: invokevirtual 33	awgf:a	()Lawgh;
-    //   131: invokevirtual 86	awgh:b	()V
+    //   122: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbhdd;
+    //   125: invokestatic 28	bhdd:a	(Lbhdd;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   128: invokevirtual 34	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   131: invokevirtual 90	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   134: aload_1
     //   135: monitorexit
     //   136: return
     //   137: aload_0
-    //   138: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbdww;
-    //   141: invokestatic 28	bdww:a	(Lbdww;)Lawgf;
-    //   144: invokevirtual 33	awgf:a	()Lawgh;
-    //   147: invokevirtual 89	awgh:c	()V
+    //   138: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbhdd;
+    //   141: invokestatic 28	bhdd:a	(Lbhdd;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   144: invokevirtual 34	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   147: invokevirtual 93	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   150: aload_0
-    //   151: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbdww;
-    //   154: invokestatic 28	bdww:a	(Lbdww;)Lawgf;
-    //   157: invokevirtual 33	awgf:a	()Lawgh;
-    //   160: invokevirtual 86	awgh:b	()V
+    //   151: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbhdd;
+    //   154: invokestatic 28	bhdd:a	(Lbhdd;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   157: invokevirtual 34	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   160: invokevirtual 90	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   163: goto -29 -> 134
     //   166: astore_2
     //   167: aload_1
@@ -87,10 +87,10 @@ public class TroopKeywordManager$1
     //   170: athrow
     //   171: astore_2
     //   172: aload_0
-    //   173: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbdww;
-    //   176: invokestatic 28	bdww:a	(Lbdww;)Lawgf;
-    //   179: invokevirtual 33	awgf:a	()Lawgh;
-    //   182: invokevirtual 86	awgh:b	()V
+    //   173: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbhdd;
+    //   176: invokestatic 28	bhdd:a	(Lbhdd;)Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   179: invokevirtual 34	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   182: invokevirtual 90	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   185: aload_2
     //   186: athrow
     // Local variable table:
@@ -124,7 +124,7 @@ public class TroopKeywordManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopkeyword.TroopKeywordManager.1
  * JD-Core Version:    0.7.0.1
  */

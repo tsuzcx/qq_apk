@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/afy" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="#ffb0b3bf" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/jha" android:background="@drawable/ggk" android:paddingLeft="20.0dip" android:layout_width="0.0dip" android:layout_height="46.0dip" android:layout_marginLeft="4.0dip" android:text="@string/wrm" android:includeFontPadding="false" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="right" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/nbv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip">
+        <com.tencent.biz.qqcircle.polylike.QCirclePolyLikeFrameLayout android:id="@id/mv3" android:layout_width="46.0dip" android:layout_height="46.0dip" />
+        <com.tencent.biz.qqcircle.widgets.QCirclePraiseTextView android:textSize="12.0dip" android:textColor="@color/bp" android:layout_gravity="center_vertical" android:id="@id/nqh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wql" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/dup" android:background="@drawable/gge" android:padding="10.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginLeft="7.0dip" android:src="@drawable/ges" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/bp" android:layout_gravity="center_vertical" android:id="@id/nn1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wql" />
+        <com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView android:id="@id/mu0" android:padding="10.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginLeft="7.0dip" android:scaleType="fitXY" />
+    </LinearLayout>
+</LinearLayout>

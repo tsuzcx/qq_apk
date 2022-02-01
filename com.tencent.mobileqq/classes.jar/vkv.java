@@ -1,19 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
 class vkv
-  implements DialogInterface.OnCancelListener
+  extends RecyclerView.OnScrollListener
 {
   vkv(vks paramvks) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a.f();
+    if (paramInt == 0)
+    {
+      adcd.a().a("qcircle_content_page", false);
+      return;
+    }
+    adcd.a().a("qcircle_content_page");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vkv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
-class asio
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class asio
+  implements DialogInterface.OnClickListener
 {
-  asio(asin paramasin) {}
+  public asio(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    ExtendFriendEditFragment.a(this.a).finish();
+  }
 }
 
 

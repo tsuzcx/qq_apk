@@ -1,39 +1,41 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agrh
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  agrh(agqq paramagqq) {}
+  agrh(agre paramagre) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_Bemq.a();
-    if (i == 0)
+    MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)paramView.getTag();
+    audn localaudn;
+    String str1;
+    if (localMessageForArkFlashChat != null)
     {
-      this.a.m.setText(alud.a(2131705530));
-      this.a.m.setTextColor(this.a.r);
-      this.a.jdField_a_of_type_Auxp.b();
-      if (paramView != null) {
-        paramView.a(true);
+      localaudn = ((FlashChatManager)this.a.a.getManager(217)).a;
+      str1 = localaudn.c;
+      String str2 = localaudn.f;
+      String str3 = localaudn.g;
+      if (QLog.isColorLevel()) {
+        QLog.d("FlashChat", 2, "mSourceOnClickListener clickAppMsg url = " + str1 + ", actionData = " + str2 + ", actionDataA = " + str3);
       }
-      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
-      bool = true;
+      if (!this.a.a(str1, str2, str3)) {
+        break label126;
+      }
     }
-    while ((i != 3) && (i != 1)) {
-      return bool;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label126:
+      if (!this.a.a(str1, localaudn.b, localMessageForArkFlashChat)) {}
     }
-    this.a.m.setText(alud.a(2131705469));
-    this.a.m.setTextColor(this.a.q);
-    this.a.jdField_a_of_type_Auxp.c();
-    if (paramView != null) {
-      paramView.a(false);
-    }
-    return true;
   }
 }
 

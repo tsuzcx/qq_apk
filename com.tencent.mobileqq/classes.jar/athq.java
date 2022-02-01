@@ -1,22 +1,28 @@
-import android.content.Intent;
-import com.tencent.mobileqq.jsp.IdentificationApiPlugin.1.1;
-import mqq.app.QQPermissionCallback;
-
 public class athq
-  implements QQPermissionCallback
+  implements Cloneable
 {
-  public athq(IdentificationApiPlugin.1.1 param1) {}
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public byte[] a = new byte[16];
+  public long b;
+  public short b;
+  public boolean b;
+  public long c = -1L;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public athq a()
   {
-    bdgm.a(atho.a(this.a.jdField_a_of_type_Athp.a), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    paramArrayOfString = new Intent();
-    paramArrayOfString.putExtra("FaceRecognition.AppConf", this.a.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager$AppConf);
-    atho.a(this.a.jdField_a_of_type_Athp.a, paramArrayOfString);
+    try
+    {
+      athq localathq = (athq)super.clone();
+      return localathq;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      localCloneNotSupportedException.printStackTrace();
+    }
+    return null;
   }
 }
 

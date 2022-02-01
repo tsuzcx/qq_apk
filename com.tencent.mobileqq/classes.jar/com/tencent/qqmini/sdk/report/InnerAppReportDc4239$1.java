@@ -1,21 +1,20 @@
 package com.tencent.qqmini.sdk.report;
 
-import bhcn;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public final class InnerAppReportDc4239$1
+final class InnerAppReportDc4239$1
   implements Runnable
 {
-  public InnerAppReportDc4239$1(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  InnerAppReportDc4239$1(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
   public void run()
   {
-    bhcn.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bhcn.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo), this.jdField_a_of_type_JavaLangString, "inner_app", "from_api", this.b, this.c, this.d, null, null, null);
+    SDKMiniProgramLpReportDC04239.report(this.val$miniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(this.val$miniAppInfo), this.val$path, "inner_app", "from_api", this.val$reservesAction, this.val$reserves2, this.val$reserves3, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.InnerAppReportDc4239.1
  * JD-Core Version:    0.7.0.1
  */

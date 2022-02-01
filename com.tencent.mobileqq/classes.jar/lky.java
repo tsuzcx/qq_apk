@@ -1,100 +1,107 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.text.TextUtils;
-import java.util.Map;
+import android.graphics.Canvas;
+import android.graphics.PointF;
+import com.tencent.av.doodle.MySurfaceView;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-final class lky
-  implements Handler.Callback
+public abstract class lky
 {
-  public boolean handleMessage(Message paramMessage)
+  public int a;
+  public long a;
+  public PointF a;
+  final String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e = -65536;
+  
+  public lky()
   {
-    Bundle localBundle = paramMessage.getData();
-    switch (paramMessage.what)
-    {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_b_of_type_JavaLangString = "unused";
+    this.jdField_b_of_type_Int = 12;
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = ("DoodleItem_" + getClass().getSimpleName() + "_" + AudioHelper.b());
+    if (AudioHelper.f()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, getClass().getSimpleName());
     }
-    do
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
+    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+  }
+  
+  public abstract void a(long paramLong);
+  
+  public void a(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
+  {
+    float f2 = 0.0F;
+    int i = paramMySurfaceView.getWidth();
+    int j = paramMySurfaceView.getHeight();
+    int k = this.d;
+    int m = this.c;
+    float f3;
+    if (i * k < j * m) {
+      f3 = i / m;
+    }
+    for (float f1 = (j - k * f3) / 2.0F;; f1 = 0.0F)
     {
-      do
+      if (paramCanvas != null)
       {
-        long l1;
-        int i;
-        long l2;
-        boolean bool;
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-            } while (lkx.a() == null);
-            lkx.c();
-            lkx.a(24, lkx.b());
-            try
-            {
-              lkx.a().sendEmptyMessageDelayed(1, 5000L);
-              return false;
-            }
-            catch (NullPointerException paramMessage)
-            {
-              paramMessage.printStackTrace();
-              return false;
-            }
-            l1 = localBundle.getLong("roomId");
-            i = localBundle.getInt("node");
-            l2 = localBundle.getLong("value");
-            bool = localBundle.getBoolean("isNode");
-            lkx.a(i, true);
-          } while (lkx.a(i, true, bool));
-          if ((bool) && (lkx.a(33, true)))
-          {
-            lek.b("VideoNodeManager", "--> TempSeesion THE node_session_close has write !!  this node  be rejected !!   node = " + lkw.a(i));
-            return false;
-          }
-          lkx.a(i + "", l2 + "", bool);
-          lkx.a(i, l2, true);
-          lek.b("VideoNodeManager", "reportToTempSeesionRecord ,roomId = " + l1 + "  node = " + lkw.a(i) + ", value = " + l2 + "   isNode = " + bool);
-          return false;
-          l1 = localBundle.getLong("roomId");
-          i = localBundle.getInt("node");
-          l2 = localBundle.getLong("value");
-          bool = localBundle.getBoolean("isNode");
-          lkx.a(i, false);
-        } while (lkx.a(i, false, bool));
-        if ((bool) && (lkx.a(33, false)))
-        {
-          lek.b("VideoNodeManager", "--> THE node_session_close has write !!  this node  be rejected !!   node = " + lkw.a(i));
-          return false;
-        }
-        if (lkx.a(i)) {
-          lek.a("VideoNodeManager", "reportToHandler  roomId = " + l1 + "  node = " + lkw.a(i) + ",  value = " + l2 + "   isNode = " + bool);
-        }
-        lkx.b(i + "", l2 + "", bool);
-        lkx.a(i, l2, false);
-        return false;
-        paramMessage = lkx.a();
-        if (!TextUtils.isEmpty(paramMessage))
-        {
-          lek.a("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TO_SERVER detail = " + paramMessage);
-          azps.a(null, "dc03209", paramMessage);
-          lkx.e();
-        }
-      } while ((lkx.a() == null) || (lkx.a().size() == 0));
-      lkx.j();
-      return false;
-      paramMessage = lkx.b();
-      lek.b("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TEMP_RECORD_TO_SERVER detail = " + paramMessage);
-    } while (TextUtils.isEmpty(paramMessage));
-    azps.a(null, "dc03209", paramMessage);
-    lkx.f();
-    return false;
+        paramCanvas.save();
+        paramCanvas.translate(f2, f1);
+        paramCanvas.scale(f3, f3);
+        b(paramCanvas, paramMySurfaceView, paramBoolean);
+      }
+      try
+      {
+        paramCanvas.restore();
+        return;
+      }
+      catch (Exception paramCanvas)
+      {
+        lbc.e(this.jdField_a_of_type_JavaLangString, paramCanvas.getMessage());
+      }
+      f3 = j / k;
+      f2 = (i - m * f3) / 2.0F;
+    }
+  }
+  
+  public boolean a(float paramFloat1, float paramFloat2)
+  {
+    float f1 = Math.abs(paramFloat1 - this.jdField_a_of_type_AndroidGraphicsPointF.x);
+    float f2 = Math.abs(paramFloat2 - this.jdField_a_of_type_AndroidGraphicsPointF.y);
+    if ((f1 >= 8.0F) || (f2 >= 8.0F)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (bool)
+      {
+        b(paramFloat1, paramFloat2);
+        this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
+        this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+      }
+      return bool;
+    }
+  }
+  
+  public abstract void b(float paramFloat1, float paramFloat2);
+  
+  public abstract void b(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean);
+  
+  public abstract void c(float paramFloat1, float paramFloat2);
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString + ", mPenType[" + this.jdField_a_of_type_Int + "], mPoint[" + this.jdField_a_of_type_AndroidGraphicsPointF.x + "," + this.jdField_a_of_type_AndroidGraphicsPointF.y + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lky
  * JD-Core Version:    0.7.0.1
  */

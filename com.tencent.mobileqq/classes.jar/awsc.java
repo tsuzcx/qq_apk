@@ -1,78 +1,37 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.mobileqq.profile.view.VipScaledViewPager;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.widget.AbsListView;
 
 public class awsc
-  implements ViewPager.OnPageChangeListener
+  implements bkhe
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  private boolean jdField_a_of_type_Boolean;
   
-  public awsc(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
+  public awsc(MultiAIOItemFragment paramMultiAIOItemFragment, bkhe parambkhe) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageScrollStateChanged state = " + paramInt);
-    }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.b();
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x);
-      this.b = true;
-    }
-    if (paramInt == 2) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    this.jdField_a_of_type_Bkhe.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.jdField_a_of_type_Bkhe.onScrollStateChanged(paramAbsListView, paramInt);
     if (paramInt == 0)
     {
-      if (this.jdField_a_of_type_Boolean)
+      paramAbsListView = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+      if ((paramAbsListView != null) && (paramAbsListView.a() == MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment)) && (!this.jdField_a_of_type_Boolean))
       {
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x);
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.a();
-      }
-      if (this.b)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.a();
-        this.b = false;
+        MultiAIOFragment.a("0X8009F80", 0);
+        this.jdField_a_of_type_Boolean = true;
       }
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageScrolled pos = " + paramInt1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.b();
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageSelected pos = " + paramInt);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.a();
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.d(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x = paramInt;
-    if (((awrb)this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).a.o == awra.h)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "report shopping template = " + paramInt);
-      }
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, "CliOper", "", "", "Shop_Malltemplate", "0X8005B93", 0, 0, "", "", "", "");
-    }
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, "CliOper", "", "", "card_mall", "0X8004C26", 0, 0, "", "", "", VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app.getCurrentAccountUin()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awsc
  * JD-Core Version:    0.7.0.1
  */

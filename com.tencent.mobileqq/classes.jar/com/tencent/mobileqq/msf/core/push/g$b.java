@@ -14,7 +14,7 @@ class g$b
       try
       {
         this.a.y.wait();
-        this.a.h();
+        this.a.f();
       }
       catch (InterruptedException localInterruptedException)
       {

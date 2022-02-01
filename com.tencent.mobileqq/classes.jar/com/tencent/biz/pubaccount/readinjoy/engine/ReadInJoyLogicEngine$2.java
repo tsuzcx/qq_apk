@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import com.tencent.qphone.base.util.QLog;
-import owy;
-import oxb;
+import pmh;
+import pmk;
 
 public class ReadInJoyLogicEngine$2
   implements Runnable
 {
-  public ReadInJoyLogicEngine$2(owy paramowy, int paramInt) {}
+  public ReadInJoyLogicEngine$2(pmh parampmh, int paramInt) {}
   
   public void run()
   {
     QLog.d("ReadInJoyLogicEngine", 1, new Object[] { "onLoadMoreArticle, channelID = ", Integer.valueOf(this.a) });
-    oxb.a().b(false, this.a, null, false);
+    pmk.a().b(false, this.a, null, false);
   }
 }
 

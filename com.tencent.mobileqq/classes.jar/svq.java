@@ -1,16 +1,22 @@
-class svq
-  implements syx
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+
+public class svq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  svq(svp paramsvp, int paramInt1, int paramInt2) {}
+  public svq(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public void a(boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    svl.a(this.jdField_a_of_type_Svp.a, this.jdField_a_of_type_Int, this.b, false, Boolean.valueOf(paramBoolean));
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    SlideActiveAnimController.a(this.a).setAlpha(paramValueAnimator.floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     svq
  * JD-Core Version:    0.7.0.1
  */

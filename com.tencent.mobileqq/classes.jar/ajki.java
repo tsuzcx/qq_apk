@@ -1,9 +1,16 @@
-class ajki
-  implements biac
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+
+public class ajki
+  extends anmu
 {
-  ajki(ajkg paramajkg) {}
+  public ajki(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void a() {}
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      this.a.i();
+    }
+  }
 }
 
 

@@ -1,16 +1,23 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
-class ojg
+public class ojg
+  implements nkl
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  BubbleImageView jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  public ojg(ReadInJoyNewFeedsActivity.2 param2) {}
+  
+  public void loaded(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
+    }
+  }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ojg
  * JD-Core Version:    0.7.0.1
  */

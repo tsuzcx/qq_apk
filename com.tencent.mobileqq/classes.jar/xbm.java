@@ -1,85 +1,45 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideoBatch;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.VideoItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xbm
-  extends SimpleObserver<xlb>
+public class xbm
+  extends wla
 {
-  xbm(xbk paramxbk, xlb paramxlb) {}
+  public List<wpd> a;
   
-  public void a(xlb paramxlb)
+  public xbm(qqstory_service.RspWatchVideoBatch paramRspWatchVideoBatch)
   {
-    super.onNext(paramxlb);
-    this.jdField_a_of_type_Xbk.a(5);
-    paramxlb = this.jdField_a_of_type_Xlb.a;
-    wxe.b("EditVideoSave", "publishParam = " + paramxlb);
-    Intent localIntent;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.getActivity() != null)
-    {
-      localIntent = this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.getActivity().getIntent();
-      if (localIntent == null) {
-        break label331;
-      }
-      j = localIntent.getIntExtra("sv_total_frame_count", 0);
-      i = localIntent.getIntExtra("sv_total_record_time", 0);
-    }
+    super(paramRspWatchVideoBatch.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspWatchVideoBatch = paramRspWatchVideoBatch.succ_video_list.get();
+    if (paramRspWatchVideoBatch == null) {}
     for (;;)
     {
-      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.a(), paramxlb.b, i, j, this.jdField_a_of_type_Xbk.jdField_a_of_type_Xan.a.a());
-      xbk.a(this.jdField_a_of_type_Xbk, paramxlb.b);
-      localIntent.putExtra("mediacodec_encode_enable", true);
-      this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.getActivity().startActivityForResult(localIntent, 111);
-      xbk.a(this.jdField_a_of_type_Xbk, SystemClock.elapsedRealtime());
-      this.jdField_a_of_type_Xbk.jdField_a_of_type_Int = 5;
-      this.jdField_a_of_type_Xbk.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Xbk.b = ((int)(7000.0D / paramxlb.a * 4.0D));
-      wxe.b("EditVideoSave", "[30s]progressIncrement Old = " + this.jdField_a_of_type_Xbk.b);
-      if (this.jdField_a_of_type_Xbk.b <= 0) {
-        this.jdField_a_of_type_Xbk.b = 2;
-      }
-      wxe.b("EditVideoSave", "[30s]progressIncrement new = " + this.jdField_a_of_type_Xbk.b);
-      this.jdField_a_of_type_Xbk.f();
-      if (azhg.a().jdField_a_of_type_Int == 1) {}
-      for (i = 1;; i = 2)
+      return;
+      paramRspWatchVideoBatch = paramRspWatchVideoBatch.iterator();
+      while (paramRspWatchVideoBatch.hasNext())
       {
-        axpl.j(i);
-        return;
+        qqstory_service.VideoItem localVideoItem = (qqstory_service.VideoItem)paramRspWatchVideoBatch.next();
+        wpd localwpd = new wpd();
+        localwpd.a = localVideoItem.vid.get().toStringUtf8();
+        this.jdField_a_of_type_JavaUtilList.add(localwpd);
       }
-      label331:
-      i = 0;
-      j = 0;
     }
   }
   
-  public void onCancel()
+  public String toString()
   {
-    super.onCancel();
-    wxe.d("EditVideoSave", "saveVideo cancel !");
-    this.jdField_a_of_type_Xbk.jdField_a_of_type_Xan.a(0);
-    this.jdField_a_of_type_Xbk.g();
-    QQToast.a(this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.a(), alud.a(2131704140), 0).a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    wxe.e("EditVideoSave", "saveVideo error ：" + paramError);
-    this.jdField_a_of_type_Xbk.jdField_a_of_type_Xan.a(0);
-    QQToast.a(this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.a(), 1, alud.a(2131704208) + paramError, 0).a();
-    this.jdField_a_of_type_Xbk.g();
+    return "WatchVideoBatchResponse{ errorCode=" + this.jdField_a_of_type_Int + " succList=" + this.jdField_a_of_type_JavaUtilList + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xbm
  * JD-Core Version:    0.7.0.1
  */

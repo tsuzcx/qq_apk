@@ -1,25 +1,35 @@
-import MWIFI.SCGet3rdCloudCheck;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 class ajho
-  implements View.OnClickListener
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  ajho(ajgb paramajgb, SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
+  ajho(ajhk paramajhk) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "updateWiFiSecurityBanner, onClick");
+    if (paramInt == 1) {
+      ajhk.a(this.a, ajhk.a(this.a).getCurrentItem());
     }
-    bezm.a(ajgb.a(this.jdField_a_of_type_Ajgb), this.jdField_a_of_type_MWIFISCGet3rdCloudCheck);
-    ajgb.a(this.jdField_a_of_type_Ajgb).removeMessages(202);
-    ajgb.a(this.jdField_a_of_type_Ajgb).obtainMessage(202).sendToTarget();
-    azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 6, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactsViewController", 2, "mViewPager onPageScrollStateChanged mOccurSwitchAccountChangeTab:" + ajhk.b(this.a) + "  mPageChangedByIndicator:" + ajhk.a(this.a));
+    }
+    if (ajhk.a(this.a)) {
+      ajhk.b(this.a, false);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    ajhk.a(this.a, paramInt);
+    if (!ajhk.a(this.a)) {
+      bcst.b(this.a.a, "dc00898", "", "", "0X8008059", "0X8008059", 0, 0, "", "", "", "");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactsViewController", 2, "mViewPager onPageSelected mOccurSwitchAccountChangeTab:" + ajhk.b(this.a) + " mPageChangedByIndicator:" + ajhk.a(this.a));
+    }
+    ajhk.a(this.a, false);
   }
 }
 

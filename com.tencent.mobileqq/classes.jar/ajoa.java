@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajoa
-  implements DialogInterface.OnClickListener
+class ajoa
+  implements bcpg
 {
-  public ajoa(LoginView paramLoginView) {}
+  ajoa(ajnz paramajnz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog grant");
+  }
+  
+  public void b()
+  {
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog denied");
+    ajnk.a(this.a.a, ajnk.b(this.a.a));
   }
 }
 

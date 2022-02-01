@@ -1,448 +1,1173 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.10;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.5;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.8;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.9;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.CardObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.CardProfile;
+import com.tencent.mobileqq.data.LikeRankingInfo;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
+import com.tencent.qidian.data.BmqqAccountType;
 import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.List;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class aniz
-  extends ankc
+  implements anil
 {
-  private anjl jdField_a_of_type_Anjl;
-  private anjm jdField_a_of_type_Anjm;
-  private anjn jdField_a_of_type_Anjn;
-  private bkik jdField_a_of_type_Bkik;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
-  private boolean b;
-  private boolean c;
-  
-  aniz(ark.Application paramApplication, long paramLong)
+  private void _onUpdate_onReqDelVoteRecord(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super(paramApplication, paramLong);
-    bkis.a().c();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Bkik = new anji(this);
-    bkis.a().a(this.jdField_a_of_type_Bkik);
-    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new anjj(this);
-    paramApplication = BaseActivity.sTopActivity;
-    if (paramApplication != null) {
-      AppNetConnInfo.registerConnectionChangeReceiver(paramApplication, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+    if (paramInt != 93) {
+      return;
     }
+    paramObject = (Object[])paramObject;
+    onReqDelVoteRecord(paramBoolean, ((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
   }
   
-  private int a(Context paramContext, double paramDouble, WadlParams paramWadlParams)
+  private void onUpdate_onCardDownLoad(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    SharedPreferences localSharedPreferences;
-    String str1;
-    if (paramContext != null)
-    {
-      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0);
-      str1 = "key_download_show_not_wifi_dialog" + paramWadlParams.jdField_a_of_type_JavaLangString;
-      if (localSharedPreferences == null) {
-        break label178;
-      }
+    if (paramInt != 1) {
+      return;
     }
-    label178:
-    for (boolean bool = localSharedPreferences.getBoolean(str1, true);; bool = true)
-    {
-      if (paramDouble > bkit.a())
-      {
-        ArkAppCenter.a().postToMainThread(new ArkAppDownloadModule.9(this, paramContext, paramWadlParams));
-        return 2;
-      }
-      if ((bool) && (bdin.g(paramContext)) && (bdin.b(paramContext) != 1))
-      {
-        String str2 = String.format(paramContext.getString(2131690279), new Object[] { bdha.a(paramDouble) });
-        String str3 = paramContext.getString(2131690278);
-        ArkAppCenter.a().postToMainThread(new ArkAppDownloadModule.10(this, paramContext, str2, paramWadlParams, localSharedPreferences, str1, str3));
-        return 2;
-      }
-      bkis.a().a(paramWadlParams);
-      this.c = true;
-      return 1;
-    }
+    onCardDownload(paramBoolean, paramObject);
   }
   
-  private String a(int paramInt)
+  private void onUpdate_onCardInBlackList(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    String str = "";
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity != null) {}
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      str = localBaseActivity.getString(2131690276);
-      return str;
-    case 1: 
-      return localBaseActivity.getString(2131690274);
+    if (paramInt != 2) {
+      return;
     }
-    return localBaseActivity.getString(2131690275);
+    onCardInBlackList(paramBoolean, ((Bundle)paramObject).getString("uin"));
   }
   
-  private JSONArray a(ArrayList<WadlResult> paramArrayList, String paramString)
+  private void onUpdate_onCardLabelUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
+    if (paramInt != 52) {
+      return;
     }
-    JSONArray localJSONArray = new JSONArray();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      Object localObject = (WadlResult)paramArrayList.next();
-      if (localObject != null)
-      {
-        localObject = a((WadlResult)localObject, paramString);
-        if (localObject != null) {
-          localJSONArray.put(localObject);
-        }
-      }
-    }
-    return localJSONArray;
+    onCardLabelUpdate(paramBoolean, paramObject);
   }
   
-  private JSONObject a(WadlParams paramWadlParams, String paramString)
+  private void onUpdate_onCoverUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      if (paramWadlParams != null)
-      {
-        localJSONObject.put("actionCode", paramWadlParams.jdField_b_of_type_Int);
-        localJSONObject.put("appId", paramWadlParams.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("apkUrl", paramWadlParams.jdField_b_of_type_JavaLangString);
-        localJSONObject.put("apkSign", paramWadlParams.jdField_c_of_type_JavaLangString);
-        localJSONObject.put("versionCode", paramWadlParams.f);
-        localJSONObject.put("packageName", paramWadlParams.j);
-        localJSONObject.put("appName", paramWadlParams.k);
-        if (!paramWadlParams.jdField_a_of_type_Boolean) {
-          break label250;
-        }
-      }
-      label250:
-      for (int i = 1;; i = 0)
-      {
-        localJSONObject.put("delayDownload", i);
-        localJSONObject.put("fromWebUrl", paramWadlParams.n);
-        localJSONObject.put("apkChannel", paramWadlParams.jdField_d_of_type_JavaLangString);
-        localJSONObject.put("via", paramWadlParams.m);
-        localJSONObject.put("yyStartTime", paramWadlParams.jdField_a_of_type_Long);
-        localJSONObject.put("yyEndTime", paramWadlParams.jdField_b_of_type_Long);
-        localJSONObject.put("adtag", paramWadlParams.o);
-        localJSONObject.put("from", paramWadlParams.jdField_d_of_type_Int);
-        localJSONObject.put("flags", paramWadlParams.jdField_c_of_type_Int);
-        localJSONObject.put("extraData", paramWadlParams.p);
-        localJSONObject.put("sourceId", paramWadlParams.q);
-        return localJSONObject;
-      }
-      return null;
+    if (paramInt != 26) {
+      return;
     }
-    catch (Exception paramWadlParams)
+    paramObject = (Card)paramObject;
+    if (paramBoolean)
     {
-      QLog.i("ark.download.module", 1, paramString + " parseWadlParams error::", paramWadlParams);
+      onCoverUpdate(paramBoolean, paramObject);
+      return;
     }
+    onCoverUpdate(paramBoolean, paramObject);
   }
   
-  private JSONObject a(WadlResult paramWadlResult, String paramString)
+  private void onUpdate_onDelQZonePhotoWall(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    try
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      if (paramWadlResult == null)
-      {
-        localJSONObject1.put("taskStatus", -1);
-        localJSONObject1.put("progress", 0);
-        return localJSONObject1;
-      }
-      if (paramWadlResult.jdField_a_of_type_CooperationWadlIpcWadlParams != null)
-      {
-        JSONObject localJSONObject2 = a(paramWadlResult.jdField_a_of_type_CooperationWadlIpcWadlParams, paramString);
-        if (localJSONObject2 != null) {
-          localJSONObject1.put("wadlParams", localJSONObject2.toString());
-        }
-      }
-      localJSONObject1.put("event", paramWadlResult.jdField_a_of_type_Int);
-      localJSONObject1.put("taskId", paramWadlResult.jdField_a_of_type_JavaLangString);
-      localJSONObject1.put("taskStatus", paramWadlResult.jdField_b_of_type_Int);
-      localJSONObject1.put("fileSize", paramWadlResult.jdField_a_of_type_Long);
-      localJSONObject1.put("downloadFileSize", paramWadlResult.jdField_b_of_type_Long);
-      localJSONObject1.put("downloadFilePath", paramWadlResult.jdField_b_of_type_JavaLangString);
-      localJSONObject1.put("createTime", paramWadlResult.jdField_c_of_type_Long);
-      localJSONObject1.put("errCode", bfsk.b(paramWadlResult.jdField_c_of_type_Int));
-      localJSONObject1.put("progress", paramWadlResult.jdField_d_of_type_Int);
-      return localJSONObject1;
+    if (paramInt != 70) {}
+    while (paramObject == null) {
+      return;
     }
-    catch (Exception paramWadlResult)
-    {
-      QLog.i("ark.download.module", 1, paramString + " parseWadlResult error::", paramWadlResult);
-    }
-    return null;
+    onDelQZonePhotoWall(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
   }
   
-  private boolean b(String paramString)
+  private void onUpdate_onDeletePortrait(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    try
-    {
-      ArkAppCenter.a().postToMainThread(new ArkAppDownloadModule.8(this, paramString));
-      return true;
+    if (paramInt != 12) {
+      return;
     }
-    catch (Exception paramString)
+    if (paramBoolean)
     {
-      QLog.i("ark.download.module", 1, " showToast error::", paramString);
+      localObject = (Object[])paramObject;
+      paramObject = (Bundle)localObject[0];
+      localObject = (Card)localObject[1];
+      paramObject.getString("uin");
+      onDeletePortrait(paramBoolean, (Card)localObject, paramObject.getInt("result", -1), paramObject.getByteArray("fileKey"));
+      return;
     }
-    return false;
+    Object localObject = (Object[])paramObject;
+    paramObject = (Bundle)localObject[0];
+    localObject = (Card)localObject[1];
+    paramObject.getString("uin");
+    onDeletePortrait(paramBoolean, (Card)localObject, paramObject.getInt("result", -1), paramObject.getByteArray("fileKey"));
   }
   
-  public void Destruct()
+  private void onUpdate_onFavoritorsList(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super.Destruct();
-    bkis.a().b(this.jdField_a_of_type_Bkik);
-    this.jdField_a_of_type_Bkik = null;
-    this.jdField_a_of_type_Anjm = null;
-    this.jdField_a_of_type_Anjn = null;
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = null;
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        a(((Long)this.jdField_a_of_type_JavaUtilArrayList.get(i)).longValue());
-        i += 1;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (paramInt != 42) {
+      return;
     }
+    if (paramBoolean)
+    {
+      Object localObject = (Object[])paramObject;
+      paramObject = (Card)localObject[0];
+      Bundle localBundle = (Bundle)localObject[1];
+      localObject = (ArrayList)localObject[2];
+      String str = localBundle.getString("uin");
+      long l = localBundle.getLong("nextMid");
+      onFavoritorsList(true, str, (ArrayList)localObject, localBundle.getLong("startMid"), l, localBundle.getByteArray("strCookie"), paramObject);
+      return;
+    }
+    onFavoritorsList(false, ((Bundle)((Object[])(Object[])paramObject)[1]).getString("uin"), null, -1L, -1L, null, null);
   }
   
-  public String GetTypeName()
+  private void onUpdate_onForceUpdateNearbyProfile(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return "QQDownload";
+    if (paramInt != 62) {
+      return;
+    }
+    onForceUpdateNearbyProfile(paramBoolean, (NearbyPeopleCard)paramObject);
   }
   
-  public boolean HasMenthod(String paramString)
+  private void onUpdate_onGetAccountType(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramString.equals("QueryPackageState")) {}
-    while ((paramString.equals("QueryPackageStateVia")) || (paramString.equals("StartDownload")) || (paramString.equals("PauseDownload")) || (paramString.equals("ContinueDownload")) || (paramString.equals("InstallPackage")) || (paramString.equals("DownloadInit"))) {
-      return true;
+    if (paramInt != 89) {
+      return;
     }
-    return paramString.equals("DeletePackage");
+    onGetAccountType(paramBoolean, (BmqqAccountType)paramObject);
   }
   
-  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  private void onUpdate_onGetAllowActivateFriend(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (!anjy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentArkArk$Application, "permission.DOWNLOAD"))
-    {
-      QLog.i("ark.download.module", 1, "ark.dctrl.ArkAppDownloadModule.invokeFunc permission denied");
-      paramString = BaseActivity.sTopActivity;
-      if (paramString != null) {
-        b(paramString.getString(2131690281));
-      }
-      return false;
+    if (paramInt != 58) {
+      return;
     }
-    QLog.i("ark.download.module", 1, String.format("ark.dctrl.ArkAppDownloadModule.invokeFunc.%s", new Object[] { paramString }));
-    long l;
-    if (paramString.equals("QueryPackageState"))
+    onGetAllowActivateFriend(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onGetAllowSeeLoginDays(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 44) {
+      return;
+    }
+    if ((paramObject instanceof Object[]))
     {
-      if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsString()))
+      paramObject = (Object[])paramObject;
+      if (paramObject.length == 2)
       {
-        paramString = paramArrayOfVariantWrapper[0].GetString();
-        l = a(paramArrayOfVariantWrapper[1].Copy());
-        paramArrayOfVariantWrapper = new ArrayList();
-        paramArrayOfVariantWrapper.add(paramString);
-        QLog.i("ark.download.module", 1, String.format("ark.dctrl.QueryPackageState.appid:%s", new Object[] { Long.valueOf(l) }));
-        this.jdField_a_of_type_Anjm = new anja(this, l);
-        if (paramArrayOfVariantWrapper.size() > 0) {
-          bkis.a().a(paramArrayOfVariantWrapper);
-        }
-        return true;
+        onGetAllowSeeLoginDays(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
+        return;
       }
-      return false;
+      onGetAllowSeeLoginDays(false, false, null);
+      return;
     }
-    if (paramString.equals("QueryPackageStateVia"))
+    onGetAllowSeeLoginDays(false, false, null);
+  }
+  
+  private void onUpdate_onGetAllowStrangerInviteToGroupSwitch(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 95) {
+      return;
+    }
+    if ((paramObject != null) && ((paramObject instanceof Object[])))
     {
-      if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsString()))
-      {
-        paramString = paramArrayOfVariantWrapper[0].GetString();
-        QLog.i("ark.download.module", 1, String.format("ark.dctrl.QueryPackageStateVia.via:%s", new Object[] { paramString }));
-        this.jdField_a_of_type_Anjn = new anjd(this, a(paramArrayOfVariantWrapper[1].Copy()));
-        if (!TextUtils.isEmpty(paramString)) {
-          bkis.a().a(paramString);
-        }
-        return true;
-      }
-      return false;
+      paramObject = (Object[])paramObject;
+      onGetAllowStrangerInviteToGroupSwitch(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
+      return;
     }
-    if (paramString.equals("DownloadInit"))
-    {
-      if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1))
-      {
-        l = a(paramArrayOfVariantWrapper[0].Copy());
-        QLog.i("ark.download.module", 1, "ark.dctrl.DownloadInit callbackid=" + l);
-        this.jdField_a_of_type_Anjl = new anje(this);
-        this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(l));
-        paramVariantWrapper.SetBool(true);
-        return true;
-      }
-      paramVariantWrapper.SetBool(false);
-      return true;
+    onGetAllowStrangerInviteToGroupSwitch(false, false, false);
+  }
+  
+  private void onUpdate_onGetAutoReplyList(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 97) {}
+    while (!(paramObject instanceof Object[])) {
+      return;
     }
-    Object localObject;
+    paramObject = (Object[])paramObject;
+    onGetAutoReplyList(paramBoolean, (List)paramObject[0], ((Integer)paramObject[1]).intValue());
+  }
+  
+  private void onUpdate_onGetBabyQSwitch(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 75) {
+      return;
+    }
+    onGetBabyQSwitch(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onGetCalReactiveDays(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 72) {
+      return;
+    }
+    onGetCalReactiveDays(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onGetCardSwitch(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    boolean bool2 = true;
+    if (paramInt != 33) {
+      return;
+    }
+    paramObject = (Bundle)paramObject;
+    String str = paramObject.getString("uin");
+    long l1 = paramObject.getLong("uCloseNeighborVote", 0L);
+    long l2 = paramObject.getLong("uColseTimeEntityManager", 0L);
     boolean bool1;
-    int i;
-    if (paramString.equals("StartDownload"))
+    if (l1 == 0L)
     {
-      if (this.jdField_a_of_type_Anjl == null)
-      {
-        QLog.e("ark.download.module", 1, "should DownloadInit first ");
-        paramVariantWrapper.SetInt(-1);
-        return true;
+      bool1 = true;
+      if (l2 != 0L) {
+        break label76;
       }
-      paramString = BaseActivity.sTopActivity;
-      double d;
-      if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsString()))
+    }
+    for (;;)
+    {
+      onGetCardSwitch(paramBoolean, str, bool1, bool2);
+      return;
+      bool1 = false;
+      break;
+      label76:
+      bool2 = false;
+    }
+  }
+  
+  private void onUpdate_onGetCareBarEnable(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 103) {
+      return;
+    }
+    paramObject = new CardObserver.1(this, paramBoolean, paramObject);
+    ThreadManager.getUIHandler().post(paramObject);
+  }
+  
+  private void onUpdate_onGetCommonSwitchFromDetailInfo(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 85) {}
+    while (!(paramObject instanceof Object[])) {
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    onGetCommonSwitchFromDetailInfo(paramBoolean, (short[])paramObject[0], (Map)paramObject[1]);
+  }
+  
+  private void onUpdate_onGetConnectionsSwitch(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 111) {}
+    do
+    {
+      do
       {
-        localObject = paramArrayOfVariantWrapper[0].GetString();
-        d = paramArrayOfVariantWrapper[1].GetDouble();
-        paramArrayOfVariantWrapper = new WadlParams((String)localObject);
-        if (paramArrayOfVariantWrapper.jdField_b_of_type_Int == 12)
-        {
-          azqs.a(null, "dc00898", "", "", "0X8009E12", "0X8009E12", 0, 0, "", "", paramArrayOfVariantWrapper.jdField_a_of_type_JavaLangString, "");
-          boolean bool2 = true;
-          localObject = aolx.b(380).a();
-          bool1 = bool2;
-          if (localObject != null)
-          {
-            bool1 = bool2;
-            if (((aolw)localObject).a() != null)
-            {
-              localObject = ((aolw)localObject).a();
-              bool1 = bool2;
-              if (((aomq)localObject).c != null)
-              {
-                bool1 = bool2;
-                if (((aomq)localObject).c.contains(this.jdField_a_of_type_JavaLangString)) {
-                  bool1 = false;
-                }
-              }
-            }
-          }
-          QLog.d("ark.download.module", 1, new Object[] { "ark.dctrl [StartDownload] mAppName:", this.jdField_a_of_type_JavaLangString, ",showDownloadCtrlDialog=", Boolean.valueOf(bool1), ",appid=", paramArrayOfVariantWrapper.jdField_a_of_type_JavaLangString, ",name=", paramArrayOfVariantWrapper.k, ",iconUrl:", paramArrayOfVariantWrapper.l });
-          if (!bool1) {
-            break label762;
-          }
-          anqk.a().a(this.jdField_a_of_type_JavaLangString, paramArrayOfVariantWrapper.jdField_a_of_type_JavaLangString, paramArrayOfVariantWrapper.k, paramArrayOfVariantWrapper.l, new anjf(this, paramArrayOfVariantWrapper, paramString, d));
-          i = 2;
-        }
-      }
-      for (;;)
+        return;
+      } while (!(paramObject instanceof Object[]));
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length < 2);
+    onGetConnectionsSwitch(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+  }
+  
+  private void onUpdate_onGetDetailInfo(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 20) {}
+    while (!paramBoolean) {
+      return;
+    }
+    paramObject = (Card)paramObject;
+    onGetDetailInfo(paramBoolean, paramObject.uin, paramObject);
+  }
+  
+  private void onUpdate_onGetEducationList(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 101) {}
+    do
+    {
+      do
       {
-        paramVariantWrapper.SetInt(i);
-        return true;
-        if (paramArrayOfVariantWrapper.jdField_b_of_type_Int != 2) {
+        return;
+      } while (!(paramObject instanceof Object[]));
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length < 2);
+    onGetEducationList(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
+  }
+  
+  private void onUpdate_onGetHelloLiveMessageState(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 88) {
+      return;
+    }
+    onGetHelloLiveMessageState(paramBoolean, Boolean.parseBoolean(paramObject.toString()));
+  }
+  
+  private void onUpdate_onGetHiddenSession(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 107) {
+      return;
+    }
+    onGetHiddenSession(paramBoolean);
+  }
+  
+  private void onUpdate_onGetKplCard(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 90) {
+      return;
+    }
+    onGetKplCard(paramBoolean, paramObject);
+  }
+  
+  private void onUpdate_onGetLocationDescription(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 43) {}
+    while ((!paramBoolean) || (paramObject == null)) {
+      return;
+    }
+    paramObject = (Card)paramObject;
+    onGetLocationDescription(true, paramObject.uin, paramObject);
+  }
+  
+  private void onUpdate_onGetMedal(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 77) {
+      return;
+    }
+    onGetMedal(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onGetNearbyMyTabCard(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 65) {
+      return;
+    }
+    if ((paramBoolean) && ((paramObject instanceof Object[])))
+    {
+      onGetNearbyMyTabCard(paramBoolean, (NearbyMyTabCard)((Object[])(Object[])paramObject)[0]);
+      return;
+    }
+    onGetNearbyMyTabCard(false, null);
+  }
+  
+  private void onUpdate_onGetNotDisturb(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 98) {}
+    do
+    {
+      return;
+      paramObject = (String[])paramObject;
+    } while ((paramObject == null) || (paramObject.length != 2));
+    onGetNotDisturb(paramBoolean, paramObject[0], paramObject[1]);
+  }
+  
+  private void onUpdate_onGetNotifyOnLikeRankingList(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 79) {
+      return;
+    }
+    onGetNotifyOnLikeRankingList(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onGetPCActiveState(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 54) {
+      return;
+    }
+    onGetPCActiveState(paramBoolean, Boolean.parseBoolean(paramObject.toString()));
+  }
+  
+  private void onUpdate_onGetPartakeLikeRankingList(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 83) {
+      return;
+    }
+    onGetPartakeLikeRankingList(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onGetPhoneNumSearchable(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 38) {
+      return;
+    }
+    onGetPhoneNumSearchable(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onGetPrettyOwnerFlag(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 110) {
+      return;
+    }
+    onGetPrettyOwnerFlag(paramBoolean, paramObject);
+  }
+  
+  private void onUpdate_onGetQZoneCover(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 40) {}
+    while (paramObject == null) {
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    onGetQZoneCover(paramBoolean, (String)paramObject[0], (mobile_sub_get_cover_rsp)paramObject[1]);
+  }
+  
+  private void onUpdate_onGetQZonePhotoWall(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 69) {}
+    while (paramObject == null) {
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    onGetQZonePhotoWall(paramBoolean, (String)paramObject[0], (mobile_sub_get_photo_wall_rsp)paramObject[1], (String)paramObject[2]);
+  }
+  
+  private void onUpdate_onGetSelfAddFriendSetting(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 106) {
+      return;
+    }
+    onGetSelfAddFriendSetting(paramBoolean, ((Integer)paramObject).intValue());
+  }
+  
+  private void onUpdate_onGetSignInInfo(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 84) {
+      return;
+    }
+    onGetSignInInfo(paramBoolean);
+  }
+  
+  private void onUpdate_onGetTroopHonorSwitch(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 113) {}
+    while ((paramObject == null) || (!(paramObject instanceof Object))) {
+      return;
+    }
+    onGetTroopHonorSwitch(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onGetWholePeopleVoteLebaSwitch(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 91) {}
+    while (!(paramObject instanceof Object[])) {
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    onGetWholePeopleVoteLebaSwitch(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
+  }
+  
+  private void onUpdate_onGreetingRecv(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 29) {
+      return;
+    }
+    onGreetingRecv(paramBoolean, ((Bundle)paramObject).getString("uin"));
+  }
+  
+  private void onUpdate_onGreetingSent(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 22) {
+      return;
+    }
+    onGreetingSent(paramBoolean, ((Bundle)paramObject).getString("uin"));
+  }
+  
+  private void onUpdate_onImpeach(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 23) {
+      return;
+    }
+    onImpeach(paramBoolean, ((Bundle)paramObject).getString("uin"));
+  }
+  
+  private void onUpdate_onIsQiDianExt(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 68) {
+      return;
+    }
+    onGetAccountType(paramBoolean, (BmqqAccountType)paramObject);
+  }
+  
+  private void onUpdate_onLabelLikeSet(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 53) {}
+    do
+    {
+      do
+      {
+        return;
+        if (!paramBoolean) {
           break;
         }
-        azqs.a(null, "dc00898", "", "", "0X8009E11", "0X8009E11", 0, 0, "", "", paramArrayOfVariantWrapper.jdField_a_of_type_JavaLangString, "");
-        break;
-        label762:
-        i = a(paramString, d, paramArrayOfVariantWrapper);
-        continue;
-        i = -2;
-      }
-    }
-    if (paramString.equals("PauseDownload"))
-    {
-      if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[1].IsString()))
-      {
-        i = paramArrayOfVariantWrapper[0].GetInt();
-        paramString = paramArrayOfVariantWrapper[1].GetString();
-        QLog.d("ark.download.module", 1, new Object[] { "ark.dctrl.pause download appid:", paramString, ",from:", Integer.valueOf(i) });
-        bkis.a().a(i, paramString);
-        paramVariantWrapper.SetBool(true);
-        azqs.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "1", "", paramString, "");
-        return true;
-      }
-      paramVariantWrapper.SetBool(false);
-      return true;
-    }
-    if (paramString.equals("ContinueDownload"))
-    {
-      if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[1].IsString()))
-      {
-        i = paramArrayOfVariantWrapper[0].GetInt();
-        paramString = paramArrayOfVariantWrapper[1].GetString();
-        QLog.d("ark.download.module", 1, new Object[] { "ark.dctrl.continue download appid:", paramString, ",from:", Integer.valueOf(i) });
-        paramArrayOfVariantWrapper = BaseActivity.sTopActivity;
-        bool1 = true;
-        localObject = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0);
-        String str1 = "key_download_show_not_wifi_dialog" + paramString;
-        if (localObject != null) {
-          bool1 = ((SharedPreferences)localObject).getBoolean(str1, true);
-        }
-        if ((bool1) && (paramArrayOfVariantWrapper != null) && (bdin.g(paramArrayOfVariantWrapper)) && (bdin.b(paramArrayOfVariantWrapper) != 1))
-        {
-          String str2 = paramArrayOfVariantWrapper.getString(2131690271);
-          String str3 = paramArrayOfVariantWrapper.getString(2131690278);
-          ArkAppCenter.a().postToMainThread(new ArkAppDownloadModule.5(this, paramArrayOfVariantWrapper, str2, i, paramString, (SharedPreferences)localObject, str1, str3));
-          paramVariantWrapper.SetBool(true);
-          return true;
-        }
-        bkis.a().b(i, paramString);
-        this.c = true;
-        azqs.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "2", "", paramString, "");
-        paramVariantWrapper.SetBool(true);
-        return true;
-      }
-      paramVariantWrapper.SetBool(false);
-      return true;
-    }
-    if (paramString.equals("InstallPackage"))
-    {
-      if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsString()))
-      {
-        paramString = paramArrayOfVariantWrapper[0].GetString();
-        QLog.d("ark.download.module", 1, new Object[] { "ark.dctrl.install package:", paramString });
-        paramString = new WadlParams(paramString);
-        bkis.a().b(paramString);
-        azqs.a(null, "dc00898", "", "", "0X8009E16", "0X8009E16", 0, 0, "", "", paramString.jdField_a_of_type_JavaLangString, "");
-        paramVariantWrapper.SetBool(true);
-        return true;
-      }
-      paramVariantWrapper.SetBool(false);
-      return true;
-    }
-    if (paramString.equals("DeletePackage"))
-    {
-      if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[1].IsString()))
-      {
-        i = paramArrayOfVariantWrapper[0].GetInt();
-        paramString = paramArrayOfVariantWrapper[1].GetString();
-        QLog.d("ark.download.module", 1, new Object[] { "ark.dctrl.delete package appId:", paramString, ",from:", Integer.valueOf(i) });
-        bkis.a().c(i, paramString);
-        paramVariantWrapper.SetBool(true);
-        return true;
-      }
-      paramVariantWrapper.SetBool(false);
-      return true;
-    }
-    return false;
+      } while (!(paramObject instanceof Object[]));
+      paramObject = (Object[])paramObject;
+      onLabelLikeSet(paramBoolean, (Card)paramObject[0], ((Long)paramObject[1]).longValue());
+      return;
+    } while (!(paramObject instanceof Card));
+    onLabelLikeSet(paramBoolean, (Card)paramObject, -1L);
   }
+  
+  private void onUpdate_onMedalChange(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 51) {
+      return;
+    }
+    onMedalChange(paramBoolean, (Card)paramObject);
+  }
+  
+  private void onUpdate_onNearByProfileSymbolGet(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 56) {
+      return;
+    }
+    onNearByProfileSymbolGet(paramBoolean, ((Integer)paramObject).intValue());
+  }
+  
+  private void onUpdate_onNewVotePush(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 28) {}
+    while (!paramBoolean) {
+      return;
+    }
+    Object localObject = (Object[])paramObject;
+    paramObject = (Card)localObject[0];
+    localObject = (Bundle)localObject[1];
+    ((Bundle)localObject).getString("uin");
+    paramInt = ((Bundle)localObject).getInt("newVoteCount");
+    onNewVotePush(paramBoolean, ((Bundle)localObject).getString("voteeUin"), paramInt, paramObject);
+  }
+  
+  private void onUpdate_onPraiseLifeAchievement(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    int i = -1;
+    if (paramInt != 114) {
+      return;
+    }
+    if ((paramObject instanceof Bundle)) {
+      i = ((Bundle)paramObject).getInt("life_achievement_praise_action_type_key", -1);
+    }
+    for (paramInt = ((Bundle)paramObject).getInt("life_achievement_praise_id_key", -1);; paramInt = -1)
+    {
+      onPraiseLifeAchievement(paramBoolean, i, paramInt);
+      return;
+    }
+  }
+  
+  private void onUpdate_onReqApplyUploadVoice(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 36) {
+      return;
+    }
+    onReqApplyUploadVoice(paramBoolean, ((Bundle)paramObject).getString("pttcenter_selfuin"));
+  }
+  
+  private void onUpdate_onReqFavoriteResult(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 32) {}
+    while (!(paramObject instanceof Bundle)) {
+      return;
+    }
+    paramObject = (Bundle)paramObject;
+    if (paramObject.getInt("favoriteSource") == 43)
+    {
+      onReqFavoriteResultRank(paramBoolean, paramObject.getString("selfUin"), paramObject.getString("targetUin"), paramObject.getInt("toplist_type"), paramObject.getInt("iCount", 0));
+      return;
+    }
+    onReqFavoriteResult(paramBoolean, paramObject.getString("selfUin"), paramObject.getString("targetUin"), paramObject.getInt("iCount", 0), paramObject.getInt("from", 0));
+  }
+  
+  private void onUpdate_onReqLikeRankingListResult(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 78) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramObject = (Object[])paramObject;
+      List localList = (List)paramObject[0];
+      paramInt = ((Integer)paramObject[1]).intValue();
+      paramBoolean = ((Boolean)paramObject[2]).booleanValue();
+      onReqLikeRankingListResult(true, (String)paramObject[3], localList, paramInt, paramBoolean);
+      return;
+    }
+    onReqLikeRankingListResult(false, (String)paramObject, null, 0, false);
+  }
+  
+  private void onUpdate_onSetAllowActivateFriend(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 57) {
+      return;
+    }
+    onSetAllowActivateFriend(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onSetAllowSeeLoginDays(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 45) {
+      return;
+    }
+    onSetAllowSeeLoginDays(paramBoolean);
+  }
+  
+  private void onUpdate_onSetAutoReplyList(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 99) {
+      return;
+    }
+    onSetAutoReplyList(paramBoolean);
+  }
+  
+  private void onUpdate_onSetBabyQSwitch(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 74) {
+      return;
+    }
+    onSetBabyQSwitch(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onSetCalReactiveDays(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 73) {
+      return;
+    }
+    onSetCalReactiveDays(paramBoolean);
+  }
+  
+  private void onUpdate_onSetCardSwitch(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 34) {
+      return;
+    }
+    paramObject = (Bundle)paramObject;
+    onSetCardSwitch(paramBoolean, paramObject.getString("uin"), paramObject.getBoolean("modify_switch_for_near_people"), paramObject.getBoolean("target_switch"));
+  }
+  
+  private void onUpdate_onSetCardTemplateReturn(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 41) {
+      return;
+    }
+    onSetCardTemplateReturn(paramBoolean, paramObject);
+  }
+  
+  private void onUpdate_onSetCareBarEnable(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 102) {
+      return;
+    }
+    onSetCareBarEnable(paramBoolean, Boolean.parseBoolean(paramObject.toString()));
+  }
+  
+  private void onUpdate_onSetCommonSwitchFromDetailInfo(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 86) {}
+    while (!(paramObject instanceof Object[])) {
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    onSetCommonSwitchFromDetailInfo(paramBoolean, ((Short)paramObject[0]).shortValue(), ((Short)paramObject[1]).shortValue());
+  }
+  
+  private void onUpdate_onSetConnectionsSwitch(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 112) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramObject instanceof Object[]));
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length < 2);
+    onSetConnectionsSwitch(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+  }
+  
+  private void onUpdate_onSetDetailInfo(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 31) {
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    onSetDetailInfo(paramBoolean, ((Integer)paramObject[0]).intValue(), (Card)paramObject[1]);
+  }
+  
+  private void onUpdate_onSetEmotionRecSwitch(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 104) {
+      return;
+    }
+    onSetEmotionRecSwitch(paramBoolean, Boolean.parseBoolean(paramObject.toString()));
+  }
+  
+  private void onUpdate_onSetHelloLiveMessageState(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 87) {}
+    while (!(paramObject instanceof Object[])) {
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    onSetHelloLiveMessageState(paramBoolean, Boolean.parseBoolean(paramObject[0].toString()), paramObject[1].toString(), paramObject[2].toString());
+  }
+  
+  private void onUpdate_onSetHiddenSession(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 108) {
+      return;
+    }
+    if (paramObject == null) {}
+    for (paramInt = 0;; paramInt = ((Integer)paramObject).intValue())
+    {
+      onSetHiddenSession(paramBoolean, paramInt);
+      return;
+    }
+  }
+  
+  private void onUpdate_onSetMedal(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 76) {
+      return;
+    }
+    onSetMedal(paramBoolean);
+  }
+  
+  private void onUpdate_onSetNick(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 94) {
+      return;
+    }
+    onSetNick(paramBoolean, (String)paramObject);
+  }
+  
+  private void onUpdate_onSetNotDisturb(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 96) {}
+    do
+    {
+      return;
+      paramObject = (String[])paramObject;
+    } while ((paramObject == null) || (paramObject.length != 2));
+    onSetNotDisturb(paramBoolean, paramObject[0], paramObject[1]);
+  }
+  
+  private void onUpdate_onSetNotifyOnLikeRankingList(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 80) {
+      return;
+    }
+    onSetNotifyOnLikeRankingList(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onSetPCActiveState(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 55) {}
+    while (!(paramObject instanceof Object[])) {
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    onSetPCActiveState(paramBoolean, Boolean.parseBoolean(paramObject[0].toString()), paramObject[1].toString(), paramObject[2].toString());
+  }
+  
+  private void onUpdate_onSetPartakeLikeRankingList(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 82) {
+      return;
+    }
+    onSetPartakeLikeRankingList(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onSetPhoneNumSearchable(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 39) {
+      return;
+    }
+    onSetPhoneNumSearchable(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onSetPrettyOwnerFlag(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 109) {
+      return;
+    }
+    onSetPrettyOwnerFlag(paramBoolean, paramObject);
+  }
+  
+  private void onUpdate_onSetPttAutoToTxtSwitch(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 105) {
+      return;
+    }
+    onSetPttAutoToTxtSwitch(paramBoolean, paramObject);
+  }
+  
+  private void onUpdate_onSetShowPushNotice(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 92) {
+      return;
+    }
+    onSetShowPushNotice(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onSetSubaccountDisplayThirdQQ(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 81) {
+      return;
+    }
+    onSetSubaccountDisplayThirdQQ(paramBoolean);
+  }
+  
+  private void onUpdate_onSingleStatus(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 24) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      onSingleStatus(paramBoolean, (Card)paramObject);
+      return;
+    }
+    onSingleStatus(paramBoolean, null);
+  }
+  
+  private void onUpdate_onTransferVoice(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 37) {
+      return;
+    }
+    paramObject = (Bundle)paramObject;
+    String str = paramObject.getString("pttcenter_selfuin");
+    paramInt = paramObject.getInt("pttcenter_voice_optype");
+    onTransferVoice(paramBoolean, str, paramObject.getString("pttcenter_filekey"), paramInt);
+  }
+  
+  private void onUpdate_onUpdateAvatar(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 8) {
+      return;
+    }
+    onUpdateAvatar(paramBoolean, ((Bundle)paramObject).getString("uin"));
+  }
+  
+  private void onUpdate_onUpdateCard(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 3) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      onUpdateCard(paramBoolean, (Card)paramObject);
+      return;
+    }
+    onUpdateCard(paramBoolean, null);
+  }
+  
+  private void onUpdate_onUpdateSetCallTabVisible(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 59) {
+      return;
+    }
+    onUpdateSetCallTabVisible(paramBoolean, ((Boolean)paramObject).booleanValue());
+  }
+  
+  private void onUpdate_onUploadQZonePhotoWall(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 71) {}
+    while (paramObject == null) {
+      return;
+    }
+    onUploadQZonePhotoWall(paramBoolean, paramObject);
+  }
+  
+  private void onUpdate_onVoiceManager(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 35) {}
+    while (!(paramObject instanceof Object[])) {
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    onVoiceManager(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (Card)paramObject[2]);
+  }
+  
+  private void onUpdate_onVoterList(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != 6) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      Object localObject = (Object[])paramObject;
+      paramObject = (Card)localObject[0];
+      Bundle localBundle = (Bundle)localObject[1];
+      ArrayList localArrayList1 = (ArrayList)localObject[2];
+      ArrayList localArrayList2 = (ArrayList)localObject[3];
+      paramInt = ((Integer)localObject[4]).intValue();
+      int i = ((Integer)localObject[5]).intValue();
+      int j = ((Integer)localObject[6]).intValue();
+      int k = ((Integer)localObject[7]).intValue();
+      int m = ((Integer)localObject[8]).intValue();
+      localObject = localBundle.getString("uin");
+      long l = localBundle.getLong("nextMid");
+      onVoterList(true, (String)localObject, localArrayList1, localArrayList2, paramInt, i, j, k, m, localBundle.getLong("startMid"), l, localBundle.getByteArray("strCookie"), paramObject);
+      return;
+    }
+    onVoterList(false, ((Bundle)((Object[])(Object[])paramObject)[1]).getString("uin"), null, null, -1, -1, -1, -1, -1, -1L, -1L, null, null);
+  }
+  
+  protected void onCardDownload(boolean paramBoolean, Object paramObject) {}
+  
+  protected void onCardInBlackList(boolean paramBoolean, String paramString) {}
+  
+  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject) {}
+  
+  protected void onCoverUpdate(boolean paramBoolean, Card paramCard) {}
+  
+  protected void onDelQZonePhotoWall(boolean paramBoolean, String paramString) {}
+  
+  protected void onDeletePortrait(boolean paramBoolean, Card paramCard, int paramInt, byte[] paramArrayOfByte) {}
+  
+  protected void onFavoritorsList(boolean paramBoolean, String paramString, ArrayList<CardProfile> paramArrayList, long paramLong1, long paramLong2, byte[] paramArrayOfByte, Card paramCard) {}
+  
+  protected void onForceUpdateNearbyProfile(boolean paramBoolean, NearbyPeopleCard paramNearbyPeopleCard) {}
+  
+  protected void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType) {}
+  
+  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString) {}
+  
+  protected void onGetAllowStrangerInviteToGroupSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
+  
+  protected void onGetAutoReplyList(boolean paramBoolean, List<AutoReplyText> paramList, int paramInt) {}
+  
+  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3) {}
+  
+  public void onGetCareBarEnable(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetCommonSwitchFromDetailInfo(boolean paramBoolean, short[] paramArrayOfShort, Map<Short, Short> paramMap) {}
+  
+  protected void onGetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2) {}
+  
+  protected void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard) {}
+  
+  protected void onGetEducationList(boolean paramBoolean, long paramLong, ArrayList<azfw> paramArrayList) {}
+  
+  protected void onGetHelloLiveMessageState(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetHiddenSession(boolean paramBoolean) {}
+  
+  protected void onGetKplCard(boolean paramBoolean, Object paramObject) {}
+  
+  protected void onGetLocationDescription(boolean paramBoolean, String paramString, Card paramCard) {}
+  
+  protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetNearbyMyTabCard(boolean paramBoolean, NearbyMyTabCard paramNearbyMyTabCard) {}
+  
+  public void onGetNotDisturb(boolean paramBoolean, String paramString1, String paramString2) {}
+  
+  protected void onGetNotifyOnLikeRankingList(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetPCActiveState(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetPhoneNumSearchable(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetPrettyOwnerFlag(boolean paramBoolean, Object paramObject) {}
+  
+  protected void onGetQZoneCover(boolean paramBoolean, String paramString, mobile_sub_get_cover_rsp parammobile_sub_get_cover_rsp) {}
+  
+  protected void onGetQZonePhotoWall(boolean paramBoolean, String paramString1, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp, String paramString2) {}
+  
+  protected void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt) {}
+  
+  protected void onGetShoppingInfo(boolean paramBoolean, String paramString, List<azfx> paramList, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  protected void onGetSignInInfo(boolean paramBoolean) {}
+  
+  protected void onGetTroopHonorSwitch(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetWholePeopleVoteLebaSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
+  
+  protected void onGreetingRecv(boolean paramBoolean, String paramString) {}
+  
+  protected void onGreetingSent(boolean paramBoolean, String paramString) {}
+  
+  protected void onImpeach(boolean paramBoolean, String paramString) {}
+  
+  protected void onLabelLikeSet(boolean paramBoolean, Card paramCard, long paramLong) {}
+  
+  protected void onMedalChange(boolean paramBoolean, Card paramCard) {}
+  
+  protected void onNearByProfileSymbolGet(boolean paramBoolean, int paramInt) {}
+  
+  protected void onNewVotePush(boolean paramBoolean, String paramString, int paramInt, Card paramCard) {}
+  
+  protected void onPraiseLifeAchievement(boolean paramBoolean, int paramInt1, int paramInt2) {}
+  
+  protected void onReqApplyUploadVoice(boolean paramBoolean, String paramString) {}
+  
+  protected void onReqDelVoteRecord(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt) {}
+  
+  protected void onReqFavoriteResult(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2) {}
+  
+  protected void onReqFavoriteResultRank(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2) {}
+  
+  protected void onReqLikeRankingListResult(boolean paramBoolean1, String paramString, List<LikeRankingInfo> paramList, int paramInt, boolean paramBoolean2) {}
+  
+  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onSetAllowSeeLoginDays(boolean paramBoolean) {}
+  
+  protected void onSetAutoReplyList(boolean paramBoolean) {}
+  
+  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onSetCalReactiveDays(boolean paramBoolean) {}
+  
+  protected void onSetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3) {}
+  
+  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject) {}
+  
+  protected void onSetCareBarEnable(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onSetCommonSwitchFromDetailInfo(boolean paramBoolean, short paramShort1, short paramShort2) {}
+  
+  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2) {}
+  
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard) {}
+  
+  protected void onSetEmotionRecSwitch(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onSetHelloLiveMessageState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2) {}
+  
+  protected void onSetHiddenSession(boolean paramBoolean, int paramInt) {}
+  
+  protected void onSetMedal(boolean paramBoolean) {}
+  
+  protected void onSetNick(boolean paramBoolean, String paramString) {}
+  
+  protected void onSetNotDisturb(boolean paramBoolean, String paramString1, String paramString2) {}
+  
+  protected void onSetNotifyOnLikeRankingList(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2) {}
+  
+  protected void onSetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onSetPhoneNumSearchable(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onSetPrettyOwnerFlag(boolean paramBoolean, Object paramObject) {}
+  
+  protected void onSetPttAutoToTxtSwitch(boolean paramBoolean, Object paramObject) {}
+  
+  protected void onSetShowPushNotice(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onSetSubaccountDisplayThirdQQ(boolean paramBoolean) {}
+  
+  protected void onSingleStatus(boolean paramBoolean, Card paramCard) {}
+  
+  protected void onTagsUpdate(boolean paramBoolean, Card paramCard) {}
+  
+  protected void onTransferVoice(boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    onUpdate_onCardDownLoad(paramInt, paramBoolean, paramObject);
+    onUpdate_onCardLabelUpdate(paramInt, paramBoolean, paramObject);
+    onUpdate_onLabelLikeSet(paramInt, paramBoolean, paramObject);
+    onUpdate_onVoiceManager(paramInt, paramBoolean, paramObject);
+    onUpdate_onCardInBlackList(paramInt, paramBoolean, paramObject);
+    onUpdate_onUpdateCard(paramInt, paramBoolean, paramObject);
+    onUpdate_onReqFavoriteResult(paramInt, paramBoolean, paramObject);
+    onUpdate_onVoterList(paramInt, paramBoolean, paramObject);
+    onUpdate_onFavoritorsList(paramInt, paramBoolean, paramObject);
+    _onUpdate_onReqDelVoteRecord(paramInt, paramBoolean, paramObject);
+    onUpdate_onReqLikeRankingListResult(paramInt, paramBoolean, paramObject);
+    onUpdate_onUpdateAvatar(paramInt, paramBoolean, paramObject);
+    onUpdate_onDeletePortrait(paramInt, paramBoolean, paramObject);
+    onUpdate_onGreetingSent(paramInt, paramBoolean, paramObject);
+    onUpdate_onGreetingRecv(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetDetailInfo(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetLocationDescription(paramInt, paramBoolean, paramObject);
+    onUpdate_onImpeach(paramInt, paramBoolean, paramObject);
+    onUpdate_onSingleStatus(paramInt, paramBoolean, paramObject);
+    onUpdate_onCoverUpdate(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetCardTemplateReturn(paramInt, paramBoolean, paramObject);
+    onUpdate_onNewVotePush(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetDetailInfo(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetCardSwitch(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetCardSwitch(paramInt, paramBoolean, paramObject);
+    onUpdate_onReqApplyUploadVoice(paramInt, paramBoolean, paramObject);
+    onUpdate_onTransferVoice(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetPhoneNumSearchable(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetPhoneNumSearchable(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetQZoneCover(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetQZonePhotoWall(paramInt, paramBoolean, paramObject);
+    onUpdate_onDelQZonePhotoWall(paramInt, paramBoolean, paramObject);
+    onUpdate_onUploadQZonePhotoWall(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetPCActiveState(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetPCActiveState(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetHelloLiveMessageState(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetHelloLiveMessageState(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetAllowSeeLoginDays(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetAllowSeeLoginDays(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetNotifyOnLikeRankingList(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetNotifyOnLikeRankingList(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetPartakeLikeRankingList(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetPartakeLikeRankingList(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetCalReactiveDays(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetCalReactiveDays(paramInt, paramBoolean, paramObject);
+    onUpdate_onNearByProfileSymbolGet(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetAllowActivateFriend(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetAllowActivateFriend(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetNotDisturb(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetNotDisturb(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetHiddenSession(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetHiddenSession(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetBabyQSwitch(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetBabyQSwitch(paramInt, paramBoolean, paramObject);
+    onUpdate_onUpdateSetCallTabVisible(paramInt, paramBoolean, paramObject);
+    onUpdate_onForceUpdateNearbyProfile(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetMedal(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetMedal(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetNearbyMyTabCard(paramInt, paramBoolean, paramObject);
+    onUpdate_onIsQiDianExt(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetSubaccountDisplayThirdQQ(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetSignInInfo(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetAccountType(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetKplCard(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetCommonSwitchFromDetailInfo(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetCommonSwitchFromDetailInfo(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetWholePeopleVoteLebaSwitch(paramInt, paramBoolean, paramObject);
+    onUpdate_onMedalChange(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetShowPushNotice(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetNick(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetAllowStrangerInviteToGroupSwitch(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetAutoReplyList(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetAutoReplyList(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetEducationList(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetCareBarEnable(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetCareBarEnable(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetEmotionRecSwitch(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetSelfAddFriendSetting(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetPttAutoToTxtSwitch(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetPrettyOwnerFlag(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetPrettyOwnerFlag(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetConnectionsSwitch(paramInt, paramBoolean, paramObject);
+    onUpdate_onSetConnectionsSwitch(paramInt, paramBoolean, paramObject);
+    onUpdate_onGetTroopHonorSwitch(paramInt, paramBoolean, paramObject);
+    onUpdate_onPraiseLifeAchievement(paramInt, paramBoolean, paramObject);
+  }
+  
+  protected void onUpdateAvatar(boolean paramBoolean, String paramString) {}
+  
+  protected void onUpdateCard(boolean paramBoolean, Card paramCard) {}
+  
+  protected void onUpdateSetCallTabVisible(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onUploadQZonePhotoWall(boolean paramBoolean, Object paramObject) {}
+  
+  protected void onVisitorList(boolean paramBoolean, String paramString, ArrayList<CardProfile> paramArrayList, long paramLong1, long paramLong2, byte[] paramArrayOfByte) {}
+  
+  protected void onVoiceManager(boolean paramBoolean, String paramString, int paramInt, Card paramCard) {}
+  
+  protected void onVoterList(boolean paramBoolean, String paramString, ArrayList<CardProfile> paramArrayList, ArrayList<Long> paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong1, long paramLong2, byte[] paramArrayOfByte, Card paramCard) {}
+  
+  protected void reqShoppingInfo(boolean paramBoolean, int paramInt, String paramString1, String paramString2) {}
+  
+  protected void simpleUpdate(boolean paramBoolean, String paramString, Card paramCard) {}
 }
 
 

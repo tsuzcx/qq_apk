@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjlq;
+import blzz;
 
 public class WeishiUserInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiUserInfo> CREATOR = new bjlq();
+  public static final Parcelable.Creator<WeishiUserInfo> CREATOR = new blzz();
   public String logo;
   public String nickName;
   public long uin;
@@ -35,7 +35,7 @@ public class WeishiUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.WeishiUserInfo
  * JD-Core Version:    0.7.0.1
  */

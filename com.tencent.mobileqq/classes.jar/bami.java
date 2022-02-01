@@ -1,18 +1,6 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
-
 class bami
-  extends bamo
 {
-  bami(@NonNull String paramString)
-  {
-    super(1, paramString);
-  }
-  
-  float a(@NonNull Paint paramPaint)
-  {
-    return paramPaint.measureText(a());
-  }
+  private static final bamd a = new bamd(null);
 }
 
 

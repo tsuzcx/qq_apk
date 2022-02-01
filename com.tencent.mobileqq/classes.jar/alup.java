@@ -1,20 +1,15 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.persistence.Entity;
 
-final class alup
-  implements DialogInterface.OnDismissListener
+public class alup
 {
-  alup(Activity paramActivity, int paramInt) {}
+  public int a;
+  public Entity a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
-  }
+  protected alup(alun paramalun) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alup
  * JD-Core Version:    0.7.0.1
  */

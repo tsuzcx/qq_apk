@@ -1,38 +1,19 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import java.util.HashMap;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class akgb
-  implements akfb
+  implements DialogInterface.OnClickListener
 {
-  akgb(akga paramakga, String paramString) {}
+  akgb(akfu paramakfu) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {}
-    try
+    if (paramInt == 0)
     {
-      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Akga.mRuntime.a().getCurrentAccountUin();
-      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
-      akga.a(this.jdField_a_of_type_Akga, this.jdField_a_of_type_JavaLangString, (List)localObject);
-      return;
+      this.a.b();
+      akfu.a(this.a).moveTaskToBack(true);
     }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
-      try
-      {
-        akga.a(this.jdField_a_of_type_Akga, this.jdField_a_of_type_JavaLangString, null);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
-    }
-    akga.a(this.jdField_a_of_type_Akga, this.jdField_a_of_type_JavaLangString, null);
-    return;
   }
 }
 

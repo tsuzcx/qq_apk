@@ -1,37 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class srh
-  extends Handler
+  implements pmb
 {
-  public srh(ViolaBaseView paramViolaBaseView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public srh(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void handleMessage(Message paramMessage)
+  public void ar_()
   {
-    switch (paramMessage.what)
-    {
-    case 1: 
-    default: 
-      return;
-    case 0: 
-      ViolaBaseView.d(this.a);
-      return;
-    case 3: 
-      ViolaBaseView.a(this.a);
-      return;
-    }
-    ViolaBaseView.a(this.a, true);
-    ViolaBaseView.d(this.a);
+    this.a.q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     srh
  * JD-Core Version:    0.7.0.1
  */

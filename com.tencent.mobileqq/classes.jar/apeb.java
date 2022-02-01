@@ -1,35 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Comic;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.ar.model.ARRelationShip;
 
 public final class apeb
-  implements Parcelable.Creator
+  implements Parcelable.Creator<ARRelationShip>
 {
-  public IPSiteModel.Comic a(Parcel paramParcel)
+  public ARRelationShip a(Parcel paramParcel)
   {
-    IPSiteModel.Comic localComic = new IPSiteModel.Comic();
-    localComic.comicType = paramParcel.readInt();
-    localComic.cover = paramParcel.readString();
-    localComic.desc = paramParcel.readString();
-    localComic.id = paramParcel.readString();
-    localComic.jumpUrl = paramParcel.readString();
-    localComic.name = paramParcel.readString();
-    localComic.recommDesc = paramParcel.readString();
-    localComic.typeName = paramParcel.readString();
-    if (localComic.comicRiches == null) {
-      localComic.comicRiches = new ArrayList();
-    }
-    localComic.comicRiches.clear();
-    paramParcel.readList(localComic.comicRiches, IPSiteModel.ComicRich.class.getClassLoader());
-    return localComic;
+    return new ARRelationShip(paramParcel);
   }
   
-  public IPSiteModel.Comic[] a(int paramInt)
+  public ARRelationShip[] a(int paramInt)
   {
-    return new IPSiteModel.Comic[paramInt];
+    return new ARRelationShip[paramInt];
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alud;
-import bdgm;
-import bdjz;
+import anni;
+import bglp;
+import bgpa;
 
 class LogJsPlugin$2
   implements Runnable
@@ -11,12 +11,12 @@ class LogJsPlugin$2
   
   public void run()
   {
-    bdgm.a(this.this$0.jsPluginEngine.getActivityContext(), 230, alud.a(2131706758), null, 2131690648, 2131694953, new LogJsPlugin.2.1(this), null).show();
+    bglp.a(this.this$0.jsPluginEngine.getActivityContext(), 230, anni.a(2131705149), null, 2131690582, 2131694081, new LogJsPlugin.2.1(this), null).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.LogJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

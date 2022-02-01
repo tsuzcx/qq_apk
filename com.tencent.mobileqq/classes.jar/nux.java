@@ -1,59 +1,69 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
 
-public class nux
-  implements View.OnTouchListener
+class nux
 {
-  public nux(ShopWebViewFragment paramShopWebViewFragment, JSONObject paramJSONObject1, JSONObject paramJSONObject2) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d = -1L;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private nux()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
-      return false;
-      int i = (int)(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c - paramMotionEvent.getY());
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
-      if ((i < 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d > 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
-      }
-      if ((i > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d < 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
-      }
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment;
-      paramView.d = (i + paramView.d);
-      return false;
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("y_offset", this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d);
-        paramView = WebViewPlugin.toJsScript("onScroll", this.jdField_a_of_type_OrgJsonJSONObject, this.b);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.a != null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.a.callJs(paramView);
-          return false;
-        }
-      }
-      catch (JSONException paramView)
-      {
-        paramView.printStackTrace();
-      }
-    }
-    return false;
+    this.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_c_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public HashMap<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("adid", this.jdField_b_of_type_JavaLangString);
+    localHashMap.put("vid", this.jdField_c_of_type_JavaLangString);
+    localHashMap.put("webPreloaded", "" + this.jdField_a_of_type_Int);
+    localHashMap.put("videoPreloaded", "" + this.jdField_b_of_type_Int);
+    localHashMap.put("webProStartCost", "" + this.jdField_b_of_type_Long);
+    localHashMap.put("webActStartCost", "" + this.jdField_a_of_type_Long);
+    localHashMap.put("actDisplayCost", "" + this.jdField_c_of_type_Long);
+    localHashMap.put("videoDisplayCost", "" + this.d);
+    localHashMap.put("isFirst", "" + this.jdField_a_of_type_Boolean);
+    return localHashMap;
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_c_of_type_Long = -1L;
+    this.d = -1L;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[name:" + this.jdField_a_of_type_JavaLangString).append(" adid:" + this.jdField_b_of_type_JavaLangString).append(" vid:" + this.jdField_c_of_type_JavaLangString).append(" webPreloaded:" + this.jdField_a_of_type_Int).append(" videoPreloaded:" + this.jdField_b_of_type_Int).append(" webProStartCost:" + this.jdField_b_of_type_Long).append(" webActStartCost:" + this.jdField_a_of_type_Long).append(" actDisplayCost:" + this.jdField_c_of_type_Long).append(" videoDisplayCost:" + this.d).append(" isFirst:" + this.jdField_a_of_type_Boolean + "]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nux
  * JD-Core Version:    0.7.0.1
  */

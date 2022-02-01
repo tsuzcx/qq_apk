@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import java.lang.ref.WeakReference;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import mqq.os.MqqHandler;
 
-class afbj
+public class afbj
+  extends MqqHandler
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  WeakReference<DoodleMsgLayout> jdField_a_of_type_JavaLangRefWeakReference;
-  long b;
+  public afbj(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public afbj(afbi paramafbi, long paramLong1, long paramLong2, int paramInt, DoodleMsgLayout paramDoodleMsgLayout)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong1;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleMsgLayout);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

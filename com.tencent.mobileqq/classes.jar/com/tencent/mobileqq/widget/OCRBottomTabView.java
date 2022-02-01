@@ -32,9 +32,9 @@ public class OCRBottomTabView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(paramContext).inflate(2131561125, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378609));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368600));
+    LayoutInflater.from(paramContext).inflate(2131561336, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379460));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368923));
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.OCRBottomTabView);
     paramAttributeSet = paramContext.getString(1);
     Drawable localDrawable = paramContext.getDrawable(0);
@@ -81,7 +81,7 @@ public class OCRBottomTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OCRBottomTabView
  * JD-Core Version:    0.7.0.1
  */

@@ -7,22 +7,22 @@ import android.widget.RelativeLayout;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.FacePagerAdapter;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.LogoIconListView;
-import xhq;
-import xhs;
-import xht;
-import xhz;
-import xic;
-import xig;
+import zbb;
+import zbd;
+import zbe;
+import zbk;
+import zbn;
+import zbr;
 
 public class FacePanel
   extends RelativeLayout
-  implements xhz
+  implements zbk
 {
   public FacePagerAdapter a;
   public FaceViewPager a;
   public LogoIconListView a;
-  public xic a;
-  public xig a;
+  public zbn a;
+  public zbr a;
   
   public FacePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,12 +32,12 @@ public class FacePanel
   
   private void b()
   {
-    LayoutInflater.from(super.getContext()).inflate(2131561443, this);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView = ((LogoIconListView)super.findViewById(2131369861));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView.setOnItemClickListener(new xhs(this));
-    this.jdField_a_of_type_Xig = new xig(super.getContext());
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView.setAdapter(this.jdField_a_of_type_Xig);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager = ((FaceViewPager)super.findViewById(2131365945));
+    LayoutInflater.from(super.getContext()).inflate(2131561679, this);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView = ((LogoIconListView)super.findViewById(2131370302));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView.setOnItemClickListener(new zbd(this));
+    this.jdField_a_of_type_Zbr = new zbr(super.getContext());
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView.setAdapter(this.jdField_a_of_type_Zbr);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager = ((FaceViewPager)super.findViewById(2131366196));
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter = new FacePagerAdapter(super.getContext());
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter);
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView);
@@ -47,26 +47,26 @@ public class FacePanel
   public void a()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a();
-    this.jdField_a_of_type_Xig.a();
+    this.jdField_a_of_type_Zbr.a();
   }
   
   public void a(int paramInt)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramInt);
-    this.jdField_a_of_type_Xig.a();
+    this.jdField_a_of_type_Zbr.a();
   }
   
-  public void setAdapter(xic paramxic)
+  public void setAdapter(zbn paramzbn)
   {
-    if (this.jdField_a_of_type_Xic != null) {
-      this.jdField_a_of_type_Xic.b(this);
+    if (this.jdField_a_of_type_Zbn != null) {
+      this.jdField_a_of_type_Zbn.b(this);
     }
-    this.jdField_a_of_type_Xic = paramxic;
-    if (this.jdField_a_of_type_Xic != null) {
-      this.jdField_a_of_type_Xic.a(this);
+    this.jdField_a_of_type_Zbn = paramzbn;
+    if (this.jdField_a_of_type_Zbn != null) {
+      this.jdField_a_of_type_Zbn.a(this);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(this.jdField_a_of_type_Xic);
-    this.jdField_a_of_type_Xig.a(this.jdField_a_of_type_Xic);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(this.jdField_a_of_type_Zbn);
+    this.jdField_a_of_type_Zbr.a(this.jdField_a_of_type_Zbn);
   }
   
   public void setCurrentItem(int paramInt)
@@ -74,19 +74,19 @@ public class FacePanel
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
   }
   
-  public void setDownloadListener(xhq paramxhq)
+  public void setDownloadListener(zbb paramzbb)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramxhq);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramzbb);
   }
   
-  public void setOnFaceSelectedListener(xht paramxht)
+  public void setOnFaceSelectedListener(zbe paramzbe)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramxht);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramzbe);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel
  * JD-Core Version:    0.7.0.1
  */

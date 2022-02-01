@@ -1,12 +1,42 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+
 public class avsf
-  extends avsg
+  extends RecyclerView.ViewHolder
 {
-  public String a;
-  public String b;
+  private TextView a;
+  
+  public avsf(Context paramContext, View paramView)
+  {
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131378776));
+    if (ThemeUtil.isNowThemeIsNight(null, false, null))
+    {
+      this.a.setTextColor(paramContext.getResources().getColor(2131165756));
+      return;
+    }
+    this.a.setTextColor(paramContext.getResources().getColor(2131165755));
+  }
+  
+  public void a(avrz paramavrz)
+  {
+    if (TextUtils.isEmpty(paramavrz.a))
+    {
+      this.a.setVisibility(8);
+      return;
+    }
+    this.a.setVisibility(0);
+    this.a.setText(paramavrz.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avsf
  * JD-Core Version:    0.7.0.1
  */

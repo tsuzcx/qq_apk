@@ -1,97 +1,74 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule.1;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule.2;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule.3;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule.4;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class pfb
-  extends pgp
 {
-  private HashMap<Long, ArticleReadInfo> jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  HashMap<String, HashSet<Object>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  pfc jdField_a_of_type_Pfc;
   
-  public pfb(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
+  public pfb(pfc parampfc)
   {
-    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
+    this.jdField_a_of_type_Pfc = parampfc;
   }
   
-  private void a(List<ArticleReadInfo> paramList)
+  private void b(String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+    HashSet localHashSet2 = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((localHashSet2 != null) && (localHashSet2.contains(paramObject))) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ArticleReadInfoModule.2(this, paramList));
+    HashSet localHashSet1 = localHashSet2;
+    if (localHashSet2 == null) {
+      localHashSet1 = new HashSet();
+    }
+    localHashSet1.add(paramObject);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localHashSet1);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      QLog.d("ArticleReadInfoModule", 1, "article read info has loaded");
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    a(paramString, paramObject, true);
+  }
+  
+  public void a(String paramString, Object paramObject, boolean paramBoolean)
+  {
+    b(paramString, paramObject);
+    if (paramBoolean) {}
+    while (this.jdField_a_of_type_Pfc == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ArticleReadInfoModule.1(this));
-  }
-  
-  public void a(long paramLong)
-  {
-    ArticleReadInfo localArticleReadInfo = (ArticleReadInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    if (localArticleReadInfo != null)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ArticleReadInfoModule.4(this, localArticleReadInfo));
-    }
-    QLog.d("ArticleInfo", 2, "DeleteArticle ReadInfo , articleID : " + paramLong);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    ArticleReadInfo localArticleReadInfo = (ArticleReadInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong1));
-    if (localArticleReadInfo == null)
-    {
-      localArticleReadInfo = new ArticleReadInfo();
-      localArticleReadInfo.mArticleID = paramLong1;
-      localArticleReadInfo.mLastReadTime = paramLong2;
-    }
-    for (localArticleReadInfo.mIsRead = true;; localArticleReadInfo.mIsRead = true)
-    {
-      a(localArticleReadInfo);
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ArticleReadInfoModule.3(this, localArticleReadInfo));
-      return;
-      localArticleReadInfo.mLastReadTime = paramLong2;
-    }
-  }
-  
-  public void a(ArticleReadInfo paramArticleReadInfo)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramArticleReadInfo.mArticleID), paramArticleReadInfo);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
-  
-  public boolean a(long paramLong)
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)) != null;
+    this.jdField_a_of_type_Pfc.a(paramString, paramObject);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    if ((this.jdField_a_of_type_Pfc != null) && (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+    {
+      Iterator localIterator1 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (localIterator1.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator1.next();
+        Iterator localIterator2 = ((HashSet)localEntry.getValue()).iterator();
+        while (localIterator2.hasNext())
+        {
+          Object localObject = localIterator2.next();
+          this.jdField_a_of_type_Pfc.a((String)localEntry.getKey(), localObject);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pfb
  * JD-Core Version:    0.7.0.1
  */

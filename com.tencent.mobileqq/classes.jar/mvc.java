@@ -1,21 +1,22 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.av.widget.shimmer.ShimmerTextView;
 
 public class mvc
+  extends AccessibilityDelegateCompat
 {
-  public static PopupDialog a;
-  public int a;
-  public DialogInterface.OnClickListener a;
-  public String a;
-  public boolean a = false;
-  public int b;
-  public DialogInterface.OnClickListener b;
-  public String b;
-  public int c;
+  public mvc(ShimmerTextView paramShimmerTextView) {}
+  
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setVisibleToUser(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mvc
  * JD-Core Version:    0.7.0.1
  */

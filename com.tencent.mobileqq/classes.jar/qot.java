@@ -1,31 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.nativemodule.IPTSLoadFeeds;
+import com.tencent.qphone.base.util.QLog;
 
 public class qot
-  implements DialogInterface.OnDismissListener
+  implements IPTSLoadFeeds
 {
-  public qot(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  private qnn a = new qou(this);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public qot()
   {
-    if (ReadInJoyDeliverUGCActivity.c(this.a))
-    {
-      ReadInJoyDeliverUGCActivity.c(this.a, false);
-      ReadInJoyDeliverUGCActivity.e(this.a);
-      if (!ReadInJoyDeliverUGCActivity.g(this.a)) {
-        ReadInJoyDeliverUGCActivity.g(this.a, 1, this.a.getString(2131718858));
-      }
-      if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
-        ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);
-      }
+    qnm.a().a(this.a);
+  }
+  
+  public void loadFeeds(long paramLong1, long paramLong2, int paramInt, long paramLong3)
+  {
+    pmm localpmm = (pmm)((QQAppInterface)pha.a()).getManager(163);
+    QLog.i("PTSLoadFeedsModule", 1, "[loadFeeds], channelID = " + paramLong1 + ", limitCount = " + paramInt);
+    if (localpmm != null) {
+      localpmm.a().a((int)paramLong1, paramInt, 9223372036854775807L, true, paramLong3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qot
  * JD-Core Version:    0.7.0.1
  */

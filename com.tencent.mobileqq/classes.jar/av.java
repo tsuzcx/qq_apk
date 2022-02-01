@@ -1,78 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
-import com.tencent.mobileqq.data.DataLineMsgSetList;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-class av
-  implements DialogInterface.OnClickListener
+public class av
+  implements bkhw
 {
-  av(au paramau) {}
+  public av(LiteActivity paramLiteActivity, DataLineMsgSet paramDataLineMsgSet, ek paramek, bkho parambkho) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    alqo localalqo = (alqo)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
-    Object localObject;
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335))
+    switch (paramInt)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause = true;
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) {
-        dl.m(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
-      }
-    }
-    else
-    {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000) && (!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle())) {
-        dl.o(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) || (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335)) {
-        break label251;
-      }
-      localalqo.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupId(), 0L, true);
-      localObject = null;
-      paramInt = 0;
     }
     for (;;)
     {
-      localalqo.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
-      if (paramInt != 0) {
-        localalqo.a((DataLineMsgSet)localObject);
-      }
-      this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_Dt.b();
-      this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_Dt.notifyDataSetChanged();
-      paramDialogInterface.dismiss();
+      this.jdField_a_of_type_Bkho.cancel();
       return;
-      dl.k(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
-      break;
-      label251:
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
-      while (((Iterator)localObject).hasNext())
+      if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -1000)
       {
-        DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
-        localalqo.a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, true);
+        paramView = this.jdField_a_of_type_Ek.a().jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramView, this.jdField_a_of_type_Ek.a().jdField_a_of_type_Long, -1);
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().size() == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2005))
+      else
       {
-        paramInt = this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.getSetIndex(((DataLineMsgRecord)this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().get(0)).sessionid) + 1;
-        if ((paramInt < this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.size()) && (((DataLineMsgRecord)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.get(paramInt).values().get(0)).msgtype == -5041) && (Long.parseLong(((DataLineMsgRecord)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.get(paramInt).values().get(0)).getExtInfoFromExtStr("tim_aio_file_msg_uiniseq")) == ((DataLineMsgRecord)this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().get(0)).sessionid))
+        DataLineMsgRecord localDataLineMsgRecord;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000)
         {
-          localObject = this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.get(paramInt);
-          paramInt = 1;
-          continue;
+          this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
+          paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+          while (paramView.hasNext())
+          {
+            localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
+            if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord)) {
+              this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(localDataLineMsgRecord.path, localDataLineMsgRecord.sessionid, 0);
+            }
+          }
+        }
+        else if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2005) || (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2009))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
+          paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+          while (paramView.hasNext())
+          {
+            localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
+            if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord)) {
+              this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(localDataLineMsgRecord.path, localDataLineMsgRecord.sessionid, 2);
+            }
+          }
         }
       }
-      localObject = null;
-      paramInt = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     av
  * JD-Core Version:    0.7.0.1
  */

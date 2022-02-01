@@ -1,36 +1,36 @@
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 
-public abstract interface ahjy
+public class ahjy
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public ahjy(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Context paramContext) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, List<ahjx> paramList);
-  
-  public abstract void a(List<String> paramList);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForStructing))
+    {
+      paramDialogInterface = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+      if ((paramDialogInterface.structingMsg != null) && (paramDialogInterface.structingMsg.mMsgServiceID == 35)) {
+        awwm.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, "", paramDialogInterface.structingMsg, paramDialogInterface.uniseq, true, 0);
+      }
+      do
+      {
+        return;
+        if ((paramDialogInterface.structingMsg != null) && (paramDialogInterface.structingMsg.mMsgServiceID == 107))
+        {
+          awwm.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, "", paramDialogInterface.structingMsg, paramDialogInterface.uniseq, true, 5);
+          return;
+        }
+      } while ((paramDialogInterface.structingMsg != null) && (paramDialogInterface.structingMsg.mMsgServiceID == 95) && (new bdjb(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)));
+    }
+    adrm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+  }
 }
 
 

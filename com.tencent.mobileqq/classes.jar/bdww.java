@@ -1,433 +1,860 @@
-import QC.GetUsrKeyWordInfoRsp;
-import QC.OneKeyWordItemClient;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.TroopKeyWord;
-import com.tencent.mobileqq.vas.troopkeyword.ExpireSet;
-import com.tencent.mobileqq.vas.troopkeyword.TroopKeywordManager.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Environment;
+import android.os.SystemClock;
+import android.util.Log;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner.1;
+import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner.2;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.RandomAccessFile;
+import java.net.URL;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import java.util.Timer;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.os.MqqHandler;
 
 public class bdww
+  implements bguz
 {
-  private static int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long;
-  private awgf jdField_a_of_type_Awgf;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ConcurrentHashMap<String, List<TroopKeyWord>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean;
+  int jdField_a_of_type_Int = 0;
+  public bdvs a;
+  public bdwt a;
+  public bgux a;
+  public OutputStream a;
+  public RandomAccessFile a;
+  String jdField_a_of_type_JavaLangString = null;
+  public AtomicBoolean a;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  boolean jdField_b_of_type_Boolean = false;
+  int c;
+  int d;
+  int e;
   
-  public bdww(QQAppInterface paramQQAppInterface)
+  public bdww(bdwv parambdwv)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Awgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_c_of_type_Int = 5;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  private long a()
+  private long a(bdwt parambdwt, long paramLong)
   {
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = beat.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "troop_keyword_last_pull_timestamp", 0L);
+    if ((parambdwt.jdField_b_of_type_Int == 9056) && (paramLong != 0L)) {
+      return 0L;
     }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public static bdww a(QQAppInterface paramQQAppInterface)
-  {
-    return ((bduj)paramQQAppInterface.getManager(235)).a;
-  }
-  
-  private void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "setPullTimestamp = " + paramLong);
+    if (paramLong != 0L) {
+      return 3000L;
     }
-    this.jdField_a_of_type_Long = paramLong;
-    beat.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "troop_keyword_last_pull_timestamp", paramLong);
+    return 6000L;
   }
   
-  private void a(HashMap<String, List<TroopKeyWord>> paramHashMap)
+  private void a(long paramLong, bdvs parambdvs)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    int i;
+    if ((QLog.isColorLevel()) && (parambdvs != null))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (!paramHashMap.containsKey(str)) {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
-        }
+      i = parambdvs.jdField_f_of_type_Int;
+      if (parambdvs.jdField_a_of_type_Int != 1) {
+        break label77;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopKeywordManager.troop.special_msg.keyword", 2, "updateKeywords: " + paramHashMap);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(paramHashMap);
-    this.jdField_a_of_type_Boolean = true;
-    d();
-  }
-  
-  private static void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "setEnable = " + paramBoolean);
-    }
-    beat.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "troop_keyword_open", paramBoolean);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    label77:
+    for (boolean bool = true;; bool = false)
     {
-      jdField_a_of_type_Int = i;
-      return;
-    }
-  }
-  
-  public static boolean a()
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if (jdField_a_of_type_Int == 0) {
-      bool1 = false;
-    }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (jdField_a_of_type_Int == 1);
-    if (beat.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "troop_keyword_open", true)) {}
-    for (int i = 1;; i = 0)
-    {
-      jdField_a_of_type_Int = i;
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "isEnable = " + jdField_a_of_type_Int);
-      }
-      bool1 = bool2;
-      if (jdField_a_of_type_Int == 1) {
+      bdxz.a(i, bool, parambdvs.jdField_e_of_type_Int, parambdvs.jdField_e_of_type_JavaLangString, "scheduleRetry", "mIsCancelled:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
         break;
       }
-      return false;
-    }
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramMessageRecord instanceof QQMessageFacade.Message))
-    {
-      bool1 = bool2;
-      if (((QQMessageFacade.Message)paramMessageRecord).bizType == 16) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  private static long b()
-  {
-    return QzoneConfig.getInstance().getConfig("K_QQ_VAS", "SK_QQ_VAS_KeywordAIORefreshFrequency", 1) * 60L * 1000L;
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    this.jdField_a_of_type_Bdwt.jdField_e_of_type_Long = System.currentTimeMillis();
+    if (bdwu.a().a() != 0)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if ((this.jdField_a_of_type_Bdwv.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (paramLong != 0L))
+      {
+        ThreadManager.getSubThreadHandler().postDelayed(new OldHttpEngine.OldHttpCommunicatorListner.1(this, parambdvs), paramLong);
+        return;
+      }
+      if ((QLog.isColorLevel()) && (parambdvs != null))
+      {
+        i = parambdvs.jdField_f_of_type_Int;
+        if (parambdvs.jdField_a_of_type_Int != 1) {
+          break label228;
+        }
+      }
+      label228:
+      for (bool = true;; bool = false)
+      {
+        bdxz.a(i, bool, parambdvs.jdField_e_of_type_Int, parambdvs.jdField_e_of_type_JavaLangString, "scheduleRetry", "mIsCancelled:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+          break;
+        }
+        this.jdField_a_of_type_Bdwv.a(this.jdField_a_of_type_Bdvs, false);
         return;
       }
     }
-    Object localObject2 = this.jdField_a_of_type_Awgf.a(TroopKeyWord.class);
-    HashMap localHashMap = new HashMap();
-    if (localObject2 != null)
+    if (this.jdField_a_of_type_Bdwv.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      Iterator localIterator = ((List)localObject2).iterator();
-      while (localIterator.hasNext())
-      {
-        TroopKeyWord localTroopKeyWord = (TroopKeyWord)localIterator.next();
-        List localList = (List)localHashMap.get(localTroopKeyWord.troopUin);
-        localObject2 = localList;
-        if (localList == null)
-        {
-          localObject2 = new ArrayList();
-          localHashMap.put(localTroopKeyWord.troopUin, localObject2);
-        }
-        ((List)localObject2).add(localTroopKeyWord);
+      ThreadManager.getTimer().schedule(new OldHttpEngine.OldHttpCommunicatorListner.2(this, parambdvs), paramLong);
+      return;
+    }
+    if ((QLog.isColorLevel()) && (parambdvs != null))
+    {
+      i = parambdvs.jdField_f_of_type_Int;
+      if (parambdvs.jdField_a_of_type_Int != 1) {
+        break label321;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopKeywordManager.troop.special_msg.keyword", 2, "syncLoad: " + localHashMap);
+    label321:
+    for (bool = true;; bool = false)
+    {
+      bdxz.a(i, bool, parambdvs.jdField_e_of_type_Int, parambdvs.jdField_e_of_type_JavaLangString, "scheduleRetry", "mWorking is false");
+      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+        break;
+      }
+      return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(localHashMap);
-    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  private void a(bdvs parambdvs)
+  {
+    int i;
+    if ((QLog.isColorLevel()) && (parambdvs != null))
+    {
+      i = parambdvs.jdField_f_of_type_Int;
+      if (parambdvs.jdField_a_of_type_Int != 1) {
+        break label94;
+      }
+    }
+    label94:
+    for (boolean bool = true;; bool = false)
+    {
+      bdxz.a(i, bool, parambdvs.jdField_e_of_type_Int, parambdvs.jdField_e_of_type_JavaLangString, "retrySync", "mIsCancelled:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+      this.jdField_a_of_type_Bdwt.jdField_e_of_type_Long = System.currentTimeMillis();
+      if (bdwu.a().a() == 0) {
+        break;
+      }
+      this.jdField_a_of_type_Bdwv.a(this.jdField_a_of_type_Bdvs, true);
+      return;
+    }
+    this.jdField_a_of_type_Bgux.a(9004, -1, "nonetwork");
+    d();
+  }
+  
+  private boolean a(bdwt parambdwt, bdvs parambdvs)
+  {
+    if (parambdwt.jdField_c_of_type_Long > 0L)
+    {
+      if (!parambdvs.c()) {
+        break label46;
+      }
+      if (parambdvs.jdField_a_of_type_Bdvv == null) {
+        break label44;
+      }
+      parambdvs.jdField_a_of_type_Bdvv.a(parambdvs, parambdwt);
+      this.jdField_a_of_type_JavaIoOutputStream = parambdvs.jdField_a_of_type_JavaIoOutputStream;
+    }
+    label44:
+    label46:
+    while (!parambdvs.b())
+    {
+      return true;
+      return false;
+    }
+    if (parambdvs.jdField_a_of_type_Bdvv != null)
+    {
+      parambdvs.jdField_a_of_type_Bdvv.a(parambdvs, parambdwt);
+      return true;
+    }
+    if (this.jdField_a_of_type_JavaIoOutputStream != null) {
+      try
+      {
+        this.jdField_a_of_type_JavaIoOutputStream.close();
+        this.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.jdField_a_of_type_JavaLangString);
+        parambdwt.jdField_c_of_type_Long = 0L;
+        return true;
+      }
+      catch (IOException parambdvs)
+      {
+        a(parambdvs, parambdwt);
+      }
+    }
+    return false;
+  }
+  
+  private boolean a(bgux parambgux, bdvs parambdvs, bdwt parambdwt)
+  {
+    return (!this.jdField_a_of_type_Boolean) && (parambgux.c()) && (parambdwt.jdField_d_of_type_Long < parambdvs.jdField_c_of_type_Long - 5000L) && (this.jdField_a_of_type_Int <= parambdvs.jdField_b_of_type_Int);
   }
   
   private void d()
   {
-    ThreadManagerV2.excute(new TroopKeywordManager.1(this), 32, null, true);
-  }
-  
-  public bdwv a(String paramString)
-  {
-    bdwv localbdwv = new bdwv();
-    if ((TextUtils.isEmpty(paramString)) || (!a()))
-    {
-      localbdwv.jdField_a_of_type_JavaLangString = "";
-      localbdwv.jdField_a_of_type_Boolean = false;
-      localbdwv.c = 1;
-      QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, new Object[] { "getTips error, troopUin=", paramString, " enable=", Boolean.valueOf(a()) });
-      return localbdwv;
-    }
-    c();
-    Object localObject1 = BaseApplicationImpl.getContext().getResources();
-    List localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    boolean bool;
-    int i;
-    if ((localList == null) || (localList.isEmpty()))
-    {
-      localObject1 = ((Resources)localObject1).getString(2131693169);
-      if ((!beat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "troop_keyword_guide_clicked", false)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()))
-      {
-        bool = true;
-        if (!bool) {
-          break label245;
-        }
-        i = 2;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopKeywordManager.troop.special_msg.keyword", 2, new Object[] { "getTips, troopUin=", paramString, " tips=", localObject1, " red=", Boolean.valueOf(bool) });
-      }
-      localbdwv.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localbdwv.jdField_a_of_type_Boolean = bool;
-      localbdwv.c = i;
-      return localbdwv;
-      bool = false;
-      break;
-      label245:
-      i = 1;
-      continue;
-      ExpireSet localExpireSet = new ExpireSet();
-      Object localObject2 = localList.iterator();
-      int j = 0;
-      i = 0;
-      if (((Iterator)localObject2).hasNext())
-      {
-        TroopKeyWord localTroopKeyWord = (TroopKeyWord)((Iterator)localObject2).next();
-        if (localTroopKeyWord.expiredFlag == 3)
-        {
-          localExpireSet.add(Long.valueOf(localTroopKeyWord.wordId));
-          j += 1;
-        }
-        for (;;)
-        {
-          break;
-          int k = i;
-          if (localTroopKeyWord.expiredFlag == 2)
-          {
-            k = i + 1;
-            localExpireSet.add(Long.valueOf(localTroopKeyWord.wordId));
-          }
-          i = k;
-        }
-      }
-      localbdwv.jdField_a_of_type_Int = j;
-      localbdwv.jdField_b_of_type_Int = i;
-      localbdwv.jdField_b_of_type_JavaLangString = localExpireSet.toJson();
-      localObject2 = beat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "troop_keyword_expire_list_" + paramString, null);
-      if (!ExpireSet.fromJson((String)localObject2).containsAll(localExpireSet))
-      {
-        bool = true;
-        label429:
-        if (!bool) {
-          break label511;
-        }
-        QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, "expireList hasNewExpiredId, last:" + (String)localObject2 + " now:" + localbdwv.jdField_b_of_type_JavaLangString);
-      }
-      for (;;)
-      {
-        if (j <= 0) {
-          break label547;
-        }
-        localObject1 = ((Resources)localObject1).getString(2131699987, new Object[] { Integer.valueOf(j) });
-        i = 5;
-        break;
-        bool = false;
-        break label429;
-        label511:
-        beat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "troop_keyword_expire_list_" + paramString, localbdwv.jdField_b_of_type_JavaLangString);
-      }
-      label547:
-      if (i > 0)
-      {
-        localObject1 = ((Resources)localObject1).getString(2131699992);
-        i = 4;
-      }
-      else
-      {
-        localObject1 = ((Resources)localObject1).getString(2131699988, new Object[] { Integer.valueOf(localList.size()) });
-        bool = false;
-        i = 3;
-      }
-    }
-  }
-  
-  public void a() {}
-  
-  public void a(GetUsrKeyWordInfoRsp paramGetUsrKeyWordInfoRsp)
-  {
-    QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "onKeyworkRsp");
-    if (paramGetUsrKeyWordInfoRsp == null)
-    {
-      QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, "rsp == null");
+    boolean bool = true;
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return;
     }
-    boolean bool;
-    HashMap localHashMap;
-    ArrayList[] arrayOfArrayList;
-    int j;
-    int i;
-    if (1 == paramGetUsrKeyWordInfoRsp.iShowEntry)
+    bdvs localbdvs = this.jdField_a_of_type_Bdvs;
+    bdwt localbdwt = this.jdField_a_of_type_Bdwt;
+    OutputStream localOutputStream;
+    RandomAccessFile localRandomAccessFile;
+    if (localbdvs != null)
     {
-      bool = true;
-      a(bool);
-      localHashMap = new HashMap();
-      arrayOfArrayList = new ArrayList[2];
-      arrayOfArrayList[0] = paramGetUsrKeyWordInfoRsp.vBaseWord;
-      arrayOfArrayList[1] = paramGetUsrKeyWordInfoRsp.vVaWord;
-      j = arrayOfArrayList.length;
+      localOutputStream = this.jdField_a_of_type_JavaIoOutputStream;
+      localRandomAccessFile = this.jdField_a_of_type_JavaIoRandomAccessFile;
+      if ((localbdvs.jdField_c_of_type_JavaLangString == null) || (localOutputStream == null)) {}
+    }
+    try
+    {
+      localOutputStream.close();
+      if (localRandomAccessFile == null) {}
+    }
+    catch (IOException localIOException2)
+    {
+      try
+      {
+        localRandomAccessFile.close();
+        if (localbdwt != null)
+        {
+          if ((localbdvs.jdField_f_of_type_JavaLangString != null) && (localbdwt.jdField_a_of_type_Int != 3)) {
+            bdwv.a(this.jdField_a_of_type_Bdwv).remove(localbdvs.jdField_f_of_type_JavaLangString);
+          }
+          new bedi(localbdvs, localbdwt).a();
+          if (localbdvs.jdField_a_of_type_Bdvw != null)
+          {
+            if (QLog.isColorLevel())
+            {
+              int i = localbdvs.jdField_f_of_type_Int;
+              if (localbdvs.jdField_a_of_type_Int != 1) {
+                break label260;
+              }
+              bdxz.a(i, bool, localbdvs.jdField_e_of_type_Int, localbdvs.jdField_e_of_type_JavaLangString, "onOutEngine", "result:" + localbdwt.jdField_a_of_type_Int + " errCode:" + localbdwt.jdField_b_of_type_Int + " desc:" + localbdwt.jdField_a_of_type_JavaLangString);
+            }
+            if ((localbdwt.jdField_b_of_type_Int == 9367) && (QLog.isColorLevel())) {
+              break label265;
+            }
+            localbdvs.jdField_a_of_type_Bdvw.onResp(localbdwt);
+          }
+        }
+        a();
+        return;
+        localIOException2 = localIOException2;
+        localIOException2.printStackTrace();
+      }
+      catch (IOException localIOException1)
+      {
+        for (;;)
+        {
+          localIOException1.printStackTrace();
+          continue;
+          label260:
+          bool = false;
+          continue;
+          label265:
+          bcsz.a("Http_Download_Queen_Full", this.jdField_a_of_type_Bdwv.jdField_a_of_type_Bgut.a());
+        }
+      }
+    }
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = bdwv.a(this.jdField_a_of_type_Bdvs, paramString1, paramString2);
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    bdvs localbdvs = this.jdField_a_of_type_Bdvs;
+    if (localbdvs != null) {
+      localbdvs.jdField_a_of_type_JavaLangObject = null;
+    }
+    this.jdField_a_of_type_Bdvs = null;
+    this.jdField_a_of_type_Bdwt = null;
+    this.jdField_a_of_type_JavaIoOutputStream = null;
+  }
+  
+  void a(bdvs parambdvs, boolean paramBoolean1, bdwt parambdwt, bgux parambgux1, bgux parambgux2, boolean paramBoolean2, long paramLong)
+  {
+    boolean bool;
+    int i;
+    label66:
+    long l;
+    if (QLog.isColorLevel())
+    {
+      int j = parambdvs.jdField_f_of_type_Int;
+      if (parambdvs.jdField_a_of_type_Int == 1)
+      {
+        bool = true;
+        int k = parambdvs.jdField_e_of_type_Int;
+        parambgux1 = parambdvs.jdField_e_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder().append("tryTime:");
+        if (this.jdField_a_of_type_Bdwt == null) {
+          break label220;
+        }
+        i = this.jdField_a_of_type_Bdwt.jdField_d_of_type_Int;
+        localStringBuilder = localStringBuilder.append(i).append(" consumeTime:");
+        if (this.jdField_a_of_type_Bdwt == null) {
+          break label226;
+        }
+        l = this.jdField_a_of_type_Bdwt.jdField_d_of_type_Long;
+        label97:
+        bdxz.a(j, bool, k, parambgux1, "retry", l + " isLastGetData:" + paramBoolean1);
+      }
+    }
+    else
+    {
+      paramBoolean1 = a(parambdwt, parambdvs);
+      if (this.jdField_e_of_type_Int >= parambdvs.jdField_c_of_type_Int) {
+        parambdvs.jdField_a_of_type_JavaUtilHashMap.put("Connection", "close");
+      }
+      if (paramBoolean1) {
+        break label237;
+      }
+      if (QLog.isColorLevel())
+      {
+        i = parambdvs.jdField_f_of_type_Int;
+        if (parambdvs.jdField_a_of_type_Int != 1) {
+          break label232;
+        }
+      }
+    }
+    label220:
+    label226:
+    label232:
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      bdxz.a(i, paramBoolean1, parambdvs.jdField_e_of_type_Int, parambdvs.jdField_e_of_type_JavaLangString, "retry", "breakDownAllowRetry is false ");
+      d();
+      return;
+      bool = false;
+      break;
       i = 0;
+      break label66;
+      l = 0L;
+      break label97;
+    }
+    label237:
+    if (parambdvs.jdField_a_of_type_Bdvt != null) {
+      parambdvs.jdField_a_of_type_Bdvt.a();
+    }
+    if ((parambdvs.jdField_a_of_type_Boolean) && (parambdvs.jdField_b_of_type_Boolean)) {
+      InnerDns.getInstance().reportBadIp(InnerDns.getHostFromUrl(parambdvs.jdField_a_of_type_JavaLangString), InnerDns.getHostFromUrl(parambgux2.a()), 1002);
+    }
+    if ((parambdvs.jdField_a_of_type_JavaUtilList != null) && (parambdvs.jdField_a_of_type_JavaUtilList.size() >= 1) && (paramBoolean2))
+    {
+      parambgux1 = (bdyf)parambdvs.jdField_a_of_type_JavaUtilList.remove(0);
+      parambdvs.jdField_a_of_type_JavaUtilList.add(parambgux1);
+      parambgux1 = (bdyf)parambdvs.jdField_a_of_type_JavaUtilList.get(0);
+      if (parambdvs.jdField_a_of_type_JavaLangString != null)
+      {
+        parambgux1 = parambgux1.a(parambdvs.jdField_a_of_type_JavaLangString);
+        parambdvs.jdField_a_of_type_JavaLangString = bdxz.a(parambdvs.jdField_a_of_type_JavaLangString, parambgux1);
+      }
+    }
+    if ((parambdwt.jdField_b_of_type_Int == 9050) && (parambdvs.jdField_a_of_type_Bdxx != null)) {
+      parambdvs.jdField_a_of_type_Bdxx.a(this.jdField_a_of_type_Int);
+    }
+    paramLong = a(parambdwt, paramLong);
+    if (this.jdField_a_of_type_Bgux.l)
+    {
+      a(parambdvs);
+      return;
+    }
+    a(paramLong, parambdvs);
+  }
+  
+  void a(bdws parambdws)
+  {
+    try
+    {
+      if ((parambdws.jdField_c_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaIoOutputStream != null)) {
+        this.jdField_a_of_type_JavaIoOutputStream.close();
+      }
+      if (this.jdField_a_of_type_JavaIoRandomAccessFile == null) {}
+    }
+    catch (IOException parambdws)
+    {
+      for (;;)
+      {
+        try
+        {
+          this.jdField_a_of_type_JavaIoRandomAccessFile.close();
+          return;
+        }
+        catch (IOException parambdws)
+        {
+          parambdws.printStackTrace();
+        }
+        parambdws = parambdws;
+        parambdws.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(bdwt parambdwt, long paramLong, boolean paramBoolean)
+  {
+    if ((parambdwt.jdField_b_of_type_Int == 9056) && (paramLong < 2000L))
+    {
+      int i = this.jdField_c_of_type_Int;
+      this.jdField_c_of_type_Int = (i - 1);
+      if (i <= 0) {}
     }
     for (;;)
     {
-      if (i >= j) {
-        break label301;
+      if ((parambdwt.jdField_b_of_type_Int == 9056) || (parambdwt.jdField_b_of_type_Int == 9051)) {
+        this.jdField_e_of_type_Int += 1;
       }
-      paramGetUsrKeyWordInfoRsp = arrayOfArrayList[i];
-      if (paramGetUsrKeyWordInfoRsp != null)
+      return;
+      if (paramBoolean) {
+        this.jdField_a_of_type_Int += 1;
+      }
+    }
+  }
+  
+  void a(bgux parambgux)
+  {
+    bdwt localbdwt = this.jdField_a_of_type_Bdwt;
+    if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (localbdwt == null)) {
+      return;
+    }
+    HashMap localHashMap1 = new HashMap();
+    HashMap localHashMap2 = localbdwt.jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap2.containsKey("firstserverip")) {
+      localHashMap1.put("firstserverip", localHashMap2.get("firstserverip"));
+    }
+    if (localHashMap2.containsKey("serverip")) {
+      localHashMap1.put("serverip", localHashMap2.get("serverip"));
+    }
+    if (localHashMap2.containsKey("param_url")) {
+      localHashMap1.put("param_url", localHashMap2.get("param_url"));
+    }
+    if (parambgux.jdField_b_of_type_JavaUtilHashMap.containsKey(bgux.jdField_f_of_type_JavaLangString)) {
+      localHashMap1.put("netresp_param_reason", parambgux.jdField_b_of_type_JavaUtilHashMap.get(bgux.jdField_f_of_type_JavaLangString));
+    }
+    localbdwt.jdField_a_of_type_JavaUtilHashMap.clear();
+    localbdwt.jdField_a_of_type_JavaUtilHashMap.putAll(localHashMap1);
+    localbdwt.jdField_a_of_type_JavaUtilHashMap.putAll(parambgux.jdField_b_of_type_JavaUtilHashMap);
+    localbdwt.jdField_a_of_type_JavaUtilHashMap.put("param_rspHeader", parambgux.jdField_d_of_type_JavaLangString);
+    localbdwt.jdField_a_of_type_JavaUtilHashMap.put("param_reqHeader", parambgux.jdField_c_of_type_JavaLangString);
+    localbdwt.jdField_c_of_type_Int = parambgux.c();
+  }
+  
+  public void a(bgux parambgux1, bgux parambgux2)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
+    label310:
+    do
+    {
+      for (;;)
       {
-        Iterator localIterator = paramGetUsrKeyWordInfoRsp.iterator();
-        label96:
-        if (localIterator.hasNext())
-        {
-          paramGetUsrKeyWordInfoRsp = (OneKeyWordItemClient)localIterator.next();
-          TroopKeyWord localTroopKeyWord = new TroopKeyWord();
-          localTroopKeyWord.wordId = paramGetUsrKeyWordInfoRsp.uWordId;
-          localTroopKeyWord.keyword = paramGetUsrKeyWordInfoRsp.sKeyWordContent.toLowerCase();
-          localTroopKeyWord.troopUin = String.valueOf(paramGetUsrKeyWordInfoRsp.uGroupNum);
-          localTroopKeyWord.expiredFlag = ((int)paramGetUsrKeyWordInfoRsp.uWordExpiredFlag);
-          if ((paramGetUsrKeyWordInfoRsp.uWordStatus == 2L) && ((paramGetUsrKeyWordInfoRsp.uWordExpiredFlag == 1L) || (paramGetUsrKeyWordInfoRsp.uWordExpiredFlag == 2L))) {}
-          for (bool = true;; bool = false)
+        return;
+        this.jdField_a_of_type_Int = 0;
+        if (this.jdField_a_of_type_Bdvs != null) {
+          try
           {
-            localTroopKeyWord.enable = bool;
-            if (QLog.isColorLevel()) {
-              QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, localTroopKeyWord.toString());
-            }
-            List localList = (List)localHashMap.get(localTroopKeyWord.troopUin);
-            paramGetUsrKeyWordInfoRsp = localList;
-            if (localList == null)
+            if ((parambgux2.c() == 206) || (parambgux2.c() == 200))
             {
-              paramGetUsrKeyWordInfoRsp = new ArrayList();
-              localHashMap.put(localTroopKeyWord.troopUin, paramGetUsrKeyWordInfoRsp);
+              arrayOfByte = parambgux2.a();
+              bdvt localbdvt = this.jdField_a_of_type_Bdvs.jdField_a_of_type_Bdvt;
+              parambgux1 = arrayOfByte;
+              if (localbdvt == null) {}
             }
-            paramGetUsrKeyWordInfoRsp.add(localTroopKeyWord);
-            break label96;
-            bool = false;
-            break;
+          }
+          catch (IOException parambgux1)
+          {
+            try
+            {
+              byte[] arrayOfByte;
+              parambgux1 = this.jdField_a_of_type_Bdvs.jdField_a_of_type_Bdvt.a(arrayOfByte);
+              if (parambgux1 == null) {
+                continue;
+              }
+              int i = parambgux1.length;
+              if (i <= 0) {
+                continue;
+              }
+              this.jdField_b_of_type_Int += parambgux1.length;
+              if (this.jdField_a_of_type_JavaIoOutputStream == null) {
+                break label310;
+              }
+              this.jdField_a_of_type_JavaIoOutputStream.write(parambgux1);
+              this.jdField_a_of_type_JavaIoOutputStream.flush();
+              this.jdField_a_of_type_Bdwt.jdField_a_of_type_Long = parambgux2.a();
+              this.jdField_a_of_type_Bdwt.jdField_b_of_type_Long = parambgux2.jdField_b_of_type_Long;
+              parambgux2 = this.jdField_a_of_type_Bdwt;
+              parambgux2.jdField_c_of_type_Long += parambgux1.length;
+              if (this.jdField_a_of_type_Bdvs.jdField_a_of_type_Bdvw == null) {
+                continue;
+              }
+              this.jdField_a_of_type_Bdvs.jdField_a_of_type_Bdvw.onUpdateProgeress(this.jdField_a_of_type_Bdvs, this.jdField_a_of_type_Bdwt.jdField_c_of_type_Long + this.jdField_a_of_type_Bdvs.jdField_a_of_type_Long, this.jdField_a_of_type_Bdwt.jdField_a_of_type_Long);
+              return;
+            }
+            catch (Throwable parambgux1)
+            {
+              parambgux1 = Log.getStackTraceString(parambgux1);
+              throw new RuntimeException("FlowDecoderExp:" + parambgux1.substring(0, Math.min(100, parambgux1.length())));
+            }
+            parambgux1 = parambgux1;
+            parambgux1.printStackTrace();
+            this.jdField_a_of_type_Boolean = true;
+            a(parambgux1, this.jdField_a_of_type_Bdwt);
+            throw new RuntimeException("io exceptionmsg:" + parambgux1.getMessage());
           }
         }
       }
-      i += 1;
-    }
-    label301:
-    a(localHashMap);
+      if (this.jdField_a_of_type_JavaIoRandomAccessFile == null) {
+        break;
+      }
+      if (this.jdField_a_of_type_JavaIoRandomAccessFile.length() == 0L) {
+        this.jdField_a_of_type_JavaIoRandomAccessFile.setLength(parambgux2.jdField_b_of_type_Long);
+      }
+      this.jdField_a_of_type_JavaIoRandomAccessFile.write(parambgux1);
+      this.jdField_a_of_type_Bdwt.jdField_a_of_type_Long = parambgux2.a();
+      this.jdField_a_of_type_Bdwt.jdField_b_of_type_Long = parambgux2.jdField_b_of_type_Long;
+      parambgux2 = this.jdField_a_of_type_Bdwt;
+      parambgux2.jdField_c_of_type_Long += parambgux1.length;
+    } while (this.jdField_a_of_type_Bdvs.jdField_a_of_type_Bdvw == null);
+    this.jdField_a_of_type_Bdvs.jdField_a_of_type_Bdvw.onUpdateProgeress(this.jdField_a_of_type_Bdvs, this.jdField_a_of_type_Bdwt.jdField_c_of_type_Long + this.jdField_a_of_type_Bdvs.jdField_a_of_type_Long, this.jdField_a_of_type_Bdwt.jdField_a_of_type_Long);
+    return;
+    this.jdField_a_of_type_Bdwt.jdField_a_of_type_Long = parambgux2.a();
+    this.jdField_a_of_type_Bdwt.jdField_b_of_type_Long = parambgux2.jdField_b_of_type_Long;
+    this.jdField_a_of_type_Bdwt.jdField_a_of_type_ArrayOfByte = parambgux2.a();
+  }
+  
+  void a(IOException paramIOException, bdwt parambdwt)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
+    do
+    {
+      return;
+      parambdwt = paramIOException.getMessage();
+      this.jdField_a_of_type_Bdwt.a(1, 9301, parambdwt + MsfSdkUtils.getStackTraceString(paramIOException), null);
+      try
+      {
+        paramIOException = Environment.getExternalStorageState();
+        if (parambdwt.contains("EACCES"))
+        {
+          this.jdField_a_of_type_Bdwt.jdField_b_of_type_Int = 9039;
+          return;
+        }
+      }
+      catch (Exception paramIOException)
+      {
+        paramIOException.printStackTrace();
+        return;
+      }
+      if ((parambdwt.contains("ENOSPC")) || (parambdwt.contains("space")))
+      {
+        long l = bgjw.b();
+        if (this.jdField_a_of_type_Bdvs != null)
+        {
+          paramIOException = this.jdField_a_of_type_Bdvs.jdField_c_of_type_JavaLangString;
+          parambdwt = new File(paramIOException).getParentFile();
+          QLog.e("Q.richmedia.OldHttpEngine", 1, "no space error, outPath:" + paramIOException + ",fileCount:" + parambdwt.listFiles().length + ",url:" + this.jdField_a_of_type_Bdvs.jdField_a_of_type_JavaLangString + ",availableSpace:" + l);
+        }
+        this.jdField_a_of_type_Bdwt.jdField_b_of_type_Int = 9040;
+        return;
+      }
+      if (parambdwt.contains("Read-only"))
+      {
+        this.jdField_a_of_type_Bdwt.jdField_b_of_type_Int = 9039;
+        return;
+      }
+    } while ("mounted".equals(paramIOException));
+    this.jdField_a_of_type_Bdwt.jdField_b_of_type_Int = 9039;
   }
   
   public void a(String paramString)
   {
-    if (a(paramString))
+    if ((this.jdField_a_of_type_Bdwt != null) && (this.jdField_a_of_type_Bgux != null))
     {
-      long l = System.currentTimeMillis();
-      if (Math.abs(l - a()) > b())
-      {
-        QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "onKeywordTimeoutCheck");
-        a(l);
-        b();
-      }
+      this.jdField_a_of_type_Bdwt.jdField_f_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Bgux.jdField_c_of_type_Long);
+      paramString = this.jdField_a_of_type_Bdwt;
+      paramString.jdField_e_of_type_Int += 1;
     }
   }
   
-  public boolean a(String paramString)
+  public boolean a(bgux parambgux1, bgux parambgux2, int paramInt)
   {
-    if (!a()) {
-      return false;
+    int i = 0;
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
+    while (paramInt != 5) {
+      return true;
     }
-    if (TextUtils.isEmpty(paramString))
+    a(parambgux2);
+    if (this.jdField_a_of_type_Bdvs.a()) {
+      c();
+    }
+    for (;;)
     {
-      QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, "hasKeyword, troopUin is empty");
-      return false;
-    }
-    paramString = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if ((paramString != null) && (paramString.size() > 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (!a()) {}
-    TroopKeyWord localTroopKeyWord;
-    do
-    {
-      Object localObject;
-      while (!((Iterator)localObject).hasNext())
-      {
-        do
-        {
-          do
-          {
-            return false;
-          } while (TextUtils.isEmpty(paramString1));
-          if (TextUtils.isEmpty(paramString2))
-          {
-            QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, "containsKeyword, troopUin is empty");
-            return false;
-          }
-          c();
-          localObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString2);
-        } while ((localObject == null) || (((List)localObject).isEmpty()));
-        paramString1 = paramString1.toLowerCase();
-        localObject = ((List)localObject).iterator();
+      if (parambgux1.jdField_d_of_type_Long != 0L) {
+        this.jdField_a_of_type_Bdwt.g = parambgux1.jdField_d_of_type_Long;
       }
-      localTroopKeyWord = (TroopKeyWord)((Iterator)localObject).next();
-    } while ((!localTroopKeyWord.enable) || (!paramString1.contains(localTroopKeyWord.keyword)));
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopKeywordManager.troop.special_msg.keyword", 2, "containsKeyword: " + localTroopKeyWord.keyword);
+      this.jdField_a_of_type_Bdwt.h = parambgux1.jdField_f_of_type_Long;
+      d();
+      return true;
+      this.jdField_a_of_type_Bdwt.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Bdwt.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_Bdwt.jdField_a_of_type_JavaLangString = "";
+      if (((this.jdField_a_of_type_Bdwt.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_Bdwt.jdField_a_of_type_ArrayOfByte.length != this.jdField_a_of_type_Bdwt.jdField_b_of_type_Long)) || ((this.jdField_a_of_type_Bdwt.jdField_a_of_type_ArrayOfByte == null) && (this.jdField_a_of_type_Bdwt.jdField_b_of_type_Long != 0L)))
+      {
+        this.jdField_a_of_type_Bdwt.a(1, -9527, null, null);
+        parambgux2 = bdsx.a("Q", -9533L);
+        this.jdField_a_of_type_Bdwt.jdField_a_of_type_JavaUtilHashMap.put("netresp_param_reason", parambgux2);
+        parambgux2 = this.jdField_a_of_type_Bdwt;
+        StringBuilder localStringBuilder = new StringBuilder().append("recvSize:");
+        paramInt = i;
+        if (this.jdField_a_of_type_Bdwt.jdField_a_of_type_ArrayOfByte != null) {
+          paramInt = this.jdField_a_of_type_Bdwt.jdField_a_of_type_ArrayOfByte.length;
+        }
+        parambgux2.jdField_a_of_type_JavaLangString = (paramInt + " totalBlockLen:" + this.jdField_a_of_type_Bdwt.jdField_b_of_type_Long);
+      }
     }
-    azqs.b(null, "dc00898", "", paramString2, "qq_vip", "0X800A8FD", 0, 1, 0, "", "", localTroopKeyWord.keyword, "");
-    return true;
   }
   
   public void b()
   {
-    QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "onKeywordChangePush");
-    ((amca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(new bdwx(this), true);
+    this.jdField_d_of_type_Int = bdwu.a().a();
+    Object localObject = this.jdField_a_of_type_Bdvs;
+    bdwt localbdwt = this.jdField_a_of_type_Bdwt;
+    if ((localObject == null) || (localbdwt == null))
+    {
+      this.jdField_b_of_type_Boolean = true;
+      return;
+    }
+    label368:
+    int i;
+    if (((bdvs)localObject).jdField_c_of_type_JavaLangString != null)
+    {
+      for (;;)
+      {
+        try
+        {
+          this.jdField_a_of_type_JavaLangString = a(((bdvs)localObject).jdField_c_of_type_JavaLangString, ((bdvs)localObject).jdField_a_of_type_JavaLangString);
+          localbdwt.jdField_a_of_type_Bdws.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+          localFile = new File(this.jdField_a_of_type_JavaLangString);
+          if (!localFile.exists()) {
+            break label368;
+          }
+          l = localFile.length();
+          if ((l <= 0L) || (((bdvs)localObject).jdField_a_of_type_Bdvv == null)) {
+            continue;
+          }
+          localbdwt.jdField_c_of_type_Long = l;
+          ((bdvs)localObject).jdField_a_of_type_Bdvv.a((bdws)localObject, localbdwt);
+          if (!((bdvs)localObject).j) {
+            continue;
+          }
+          this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(localFile, "rw");
+          this.jdField_a_of_type_JavaIoRandomAccessFile.seek(((bdvs)localObject).jdField_a_of_type_Long);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.richmedia.OldHttpEngine", 2, "append.oring Len:" + l);
+          }
+        }
+        catch (IOException localIOException)
+        {
+          File localFile;
+          long l;
+          localIOException.printStackTrace();
+          this.jdField_b_of_type_Boolean = true;
+          a(localIOException, localException);
+          continue;
+          if (!((bdvs)localObject).j) {
+            continue;
+          }
+          this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(localIOException, "rw");
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("Q.richmedia.OldHttpEngine", 2, "oring Len:" + l + " trunk");
+          continue;
+          this.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(localIOException);
+          continue;
+        }
+        try
+        {
+          localObject = new URL(((bdvs)localObject).jdField_a_of_type_JavaLangString).getHost();
+          localbdwt.jdField_a_of_type_JavaUtilHashMap.put("firstserverip", localObject);
+          return;
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          return;
+        }
+        this.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(localFile, true);
+      }
+      if (QLog.isColorLevel())
+      {
+        i = ((bdvs)localObject).jdField_f_of_type_Int;
+        if (((bdvs)localObject).jdField_a_of_type_Int != 1) {
+          break label486;
+        }
+      }
+    }
+    label486:
+    for (boolean bool = true;; bool = false)
+    {
+      bdxz.a(i, bool, ((bdvs)localObject).jdField_e_of_type_Int, ((bdvs)localObject).jdField_e_of_type_JavaLangString, "createtmp", this.jdField_a_of_type_JavaLangString);
+      bgmg.a(this.jdField_a_of_type_JavaLangString);
+      if (((bdvs)localObject).j)
+      {
+        this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(localIOException, "rw");
+        break;
+      }
+      this.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(localIOException);
+      break;
+      if (((bdvs)localObject).jdField_a_of_type_JavaIoOutputStream == null) {
+        break;
+      }
+      this.jdField_a_of_type_JavaIoOutputStream = ((bdvs)localObject).jdField_a_of_type_JavaIoOutputStream;
+      break;
+    }
+  }
+  
+  public void b(bgux parambgux1, bgux parambgux2)
+  {
+    boolean bool2 = false;
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
+    bdvs localbdvs;
+    bdwt localbdwt;
+    do
+    {
+      return;
+      localbdvs = this.jdField_a_of_type_Bdvs;
+      localbdwt = this.jdField_a_of_type_Bdwt;
+    } while ((localbdvs == null) || (localbdwt == null));
+    a(parambgux2);
+    long l1 = System.currentTimeMillis() - localbdwt.jdField_e_of_type_Long;
+    localbdwt.jdField_d_of_type_Long += l1;
+    if ((localbdvs.jdField_a_of_type_JavaUtilList != null) && (localbdvs.jdField_a_of_type_JavaUtilList.size() >= 1)) {
+      ((bdyf)localbdvs.jdField_a_of_type_JavaUtilList.get(0)).a();
+    }
+    long l2 = bdwu.a().a();
+    boolean bool1;
+    if (l2 != 0L)
+    {
+      bool1 = true;
+      a(localbdwt, l1, bool1);
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        localbdwt.jdField_b_of_type_Int = parambgux2.jdField_f_of_type_Int;
+        localbdwt.jdField_a_of_type_JavaLangString = parambgux2.jdField_b_of_type_JavaLangString;
+        localbdwt.jdField_a_of_type_Int = 1;
+        if (bool1) {
+          break label231;
+        }
+        localbdwt.jdField_b_of_type_Int = 9004;
+        localbdwt.jdField_a_of_type_JavaLangString = "no network";
+        localbdwt.jdField_a_of_type_Int = 1;
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_b_of_type_Int > 0) {
+        bool2 = true;
+      }
+      if (!a(parambgux2, localbdvs, localbdwt)) {
+        break label254;
+      }
+      a(localbdvs, bool2, localbdwt, parambgux2, parambgux1, bool1, l2);
+      return;
+      bool1 = false;
+      break;
+      label231:
+      if (localbdvs.jdField_a_of_type_Bdvx != null) {
+        localbdvs.jdField_a_of_type_Bdvx.c(localbdwt);
+      }
+    }
+    label254:
+    d();
+  }
+  
+  public void c()
+  {
+    int j = 0;
+    this.jdField_a_of_type_Bdwt.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Bdwt.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Bdwt.jdField_a_of_type_JavaLangString = "";
+    int i = j;
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      i = j;
+      if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_Bdvs.jdField_c_of_type_JavaLangString)) {
+        i = 1;
+      }
+    }
+    if (this.jdField_a_of_type_Bdvs.jdField_c_of_type_JavaLangString != null) {}
+    try
+    {
+      if ((this.jdField_a_of_type_Bdvs.k) && (i == 0) && (bgmg.a(this.jdField_a_of_type_Bdvs.jdField_c_of_type_JavaLangString))) {
+        bgmg.d(this.jdField_a_of_type_Bdvs.jdField_c_of_type_JavaLangString);
+      }
+    }
+    catch (Exception localIOException1)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_JavaIoOutputStream == null) {
+          break label130;
+        }
+        this.jdField_a_of_type_JavaIoOutputStream.close();
+        label130:
+        if (!this.jdField_a_of_type_Bdvs.j) {
+          break label154;
+        }
+      }
+      catch (IOException localIOException1)
+      {
+        try
+        {
+          for (;;)
+          {
+            if (this.jdField_a_of_type_JavaIoRandomAccessFile != null) {
+              this.jdField_a_of_type_JavaIoRandomAccessFile.close();
+            }
+            label154:
+            if (this.jdField_a_of_type_Bdvs.k) {
+              break;
+            }
+            return;
+            localException = localException;
+            localException.printStackTrace();
+          }
+          localIOException1 = localIOException1;
+          localIOException1.printStackTrace();
+        }
+        catch (IOException localIOException2)
+        {
+          do
+          {
+            for (;;)
+            {
+              localIOException2.printStackTrace();
+            }
+          } while ((i != 0) || (bgmg.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bdvs.jdField_c_of_type_JavaLangString)) || (this.jdField_a_of_type_JavaLangString == null));
+          if (!bgmg.d(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bdvs.jdField_c_of_type_JavaLangString)) {
+            break label250;
+          }
+          new File(this.jdField_a_of_type_JavaLangString).delete();
+          return;
+          label250:
+          this.jdField_a_of_type_Bdwt.a(1, 9301, "rename file failed", null);
+          new File(this.jdField_a_of_type_JavaLangString).delete();
+        }
+      }
+    }
+    if (this.jdField_a_of_type_Bdvs.jdField_c_of_type_JavaLangString != null) {}
   }
 }
 

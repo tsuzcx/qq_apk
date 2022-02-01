@@ -2,8 +2,8 @@ package com.tencent.av.redpacket.ui;
 
 import android.os.Bundle;
 import android.os.Message;
-import lxy;
-import lxz;
+import lva;
+import lvb;
 
 class RedPacketRollTextView$ContentSupplyThread
   implements Runnable
@@ -39,7 +39,7 @@ class RedPacketRollTextView$ContentSupplyThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketRollTextView.ContentSupplyThread
  * JD-Core Version:    0.7.0.1
  */

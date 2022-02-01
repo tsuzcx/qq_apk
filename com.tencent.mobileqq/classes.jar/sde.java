@@ -1,28 +1,52 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.text.style.LineBackgroundSpan;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
 
-public class sde
-  implements LineBackgroundSpan
+class sde
+  extends skd
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  sde(sce paramsce) {}
   
-  public sde(int paramInt)
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramVideoInfo != null) {}
+    try
+    {
+      sce.a(this.a).a(sce.b(this.a));
+      paramString = new Intent(sce.a(this.a), ReadInJoyDeliverBiuActivity.class);
+      if ((sce.a(this.a).jdField_a_of_type_Int == 6) && (paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)) {
+        paramString.putExtra("feedsType", sce.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType);
+      }
+      paramString.putExtra("ARG_VIDEO_ARTICLE_ID", sce.a(this.a).g);
+      paramString.putExtra("biu_src", 2);
+      paramString.putExtra("arg_from_type", 8);
+      paramString.putExtra("arg_article_info", paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      sce.a(this.a).startActivityForResult(paramString, 102);
+      sce.a(this.a).overridePendingTransition(0, 0);
+      return;
+    }
+    catch (Exception paramVideoInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("VideoFeedsShareController", 2, "innerOpenReadInJoyBiuActivity error exception = " + paramVideoInfo.getMessage());
+      }
+      sce.a(this.a).a(false);
+    }
   }
   
-  public void a(String paramString)
+  public int c()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return 0;
   }
-  
-  public void drawBackground(Canvas paramCanvas, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, CharSequence paramCharSequence, int paramInt6, int paramInt7, int paramInt8) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sde
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,8 @@ class QQIdentiferLegacy$3
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("title", this.a.getString(2131693878));
-    localIntent.putExtra("selfSet_leftViewText", this.a.getString(2131690623));
+    localIntent.putExtra("title", this.a.getString(2131693207));
+    localIntent.putExtra("selfSet_leftViewText", this.a.getString(2131690563));
     if ("setFaceData".equals(QQIdentiferLegacy.a(this.a)))
     {
       paramView = getURL() + "?appname=qq_safety";
@@ -37,7 +37,7 @@ class QQIdentiferLegacy$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacy.3
  * JD-Core Version:    0.7.0.1
  */

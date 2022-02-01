@@ -1,9 +1,13 @@
 package com.tencent.mobileqq.troop.activity;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.URLEncoder;
 
 public class TroopTagViewActivity
@@ -25,6 +29,14 @@ public class TroopTagViewActivity
   public void a(String paramString)
   {
     this.d = paramString;
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -92,10 +104,17 @@ public class TroopTagViewActivity
     }
     super.finish();
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopTagViewActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,75 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
-public abstract class ayjn<M extends ayns, V extends aywe>
-  extends BaseAdapter
+public class ayjn
+  extends ScaleGestureDetector
 {
-  private List<M> a = new ArrayList();
+  private float a;
+  private float b;
   
-  public M a(int paramInt)
+  public ayjn(Context paramContext, ScaleGestureDetector.OnScaleGestureListener paramOnScaleGestureListener)
   {
-    if (paramInt >= this.a.size()) {
-      return null;
-    }
-    return (ayns)this.a.get(paramInt);
+    super(paramContext, paramOnScaleGestureListener);
+    a();
   }
   
-  protected abstract ayqp<M, V> a(int paramInt);
-  
-  protected abstract aywe a(int paramInt, ViewGroup paramViewGroup);
-  
-  public void a(List<M> paramList)
+  private void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.BaseMvpAdapter", 2, "setDataList");
-    }
-    this.a.clear();
-    if (paramList != null)
+    long l = System.currentTimeMillis();
+    MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+    onTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+  }
+  
+  @TargetApi(19)
+  private boolean a()
+  {
+    return (Build.VERSION.SDK_INT >= 19) && (isQuickScaleEnabled()) && (getCurrentSpan() == getCurrentSpanY());
+  }
+  
+  public float getScaleFactor()
+  {
+    float f2 = 1.0F;
+    float f3 = super.getScaleFactor();
+    if (a())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.BaseMvpAdapter", 2, "setDataList， size:" + paramList.size());
-      }
-      this.a.addAll(paramList);
-    }
-    for (;;)
-    {
-      paramList = this.a.iterator();
-      while (paramList.hasNext()) {
-        if (paramList.next() == null) {
-          paramList.remove();
+      float f1;
+      if ((this.a <= this.b) || (f3 <= 1.0F))
+      {
+        f1 = f2;
+        if (this.a < this.b)
+        {
+          f1 = f2;
+          if (f3 >= 1.0F) {}
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.BaseMvpAdapter", 2, "setDataList， null");
-      }
-    }
-    super.notifyDataSetChanged();
-  }
-  
-  public void a(List<M> paramList, boolean paramBoolean)
-  {
-    a(paramList);
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.a.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ayns localayns = a(paramInt);
-    if (localayns == null)
-    {
-      QLog.e("Q.uniteSearch.BaseMvpAdapter", 1, "getView model is null. position=" + paramInt + " list size = " + this.a.size());
-      return null;
-    }
-    ayqp localayqp;
-    if (paramView == null)
-    {
-      paramViewGroup = a(paramInt, paramViewGroup);
-      paramView = paramViewGroup.a();
-      localayqp = a(paramInt);
-      paramView.setTag(2131379973, localayqp);
-      paramView.setTag(2131379976, paramViewGroup);
-    }
-    for (;;)
-    {
-      paramView.setTag(2131379971, localayns);
-      if (paramViewGroup.a() != null)
+      else
       {
-        paramViewGroup.a().setTag(2131379972, Integer.valueOf(paramInt));
-        paramViewGroup.a().setTag(2131379970, Integer.valueOf(getCount()));
+        f1 = Math.max(0.8F, Math.min(f3, 1.25F));
       }
-      localayqp.a(localayns, paramViewGroup);
-      return paramView;
-      paramViewGroup = (aywe)paramView.getTag(2131379976);
-      localayqp = (ayqp)paramView.getTag(2131379973);
+      return f1;
     }
+    return f3;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.onTouchEvent(paramMotionEvent);
+    this.b = this.a;
+    this.a = paramMotionEvent.getY();
+    if (paramMotionEvent.getActionMasked() == 0) {
+      this.b = paramMotionEvent.getY();
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayjn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,27 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class armj
-  implements SeekBar.OnSeekBarChangeListener
+  extends Handler
 {
-  armj(armi paramarmi) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  armj(armh paramarmh, Looper paramLooper)
   {
-    if ((paramBoolean) && (this.a.a != null))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.a.a.a(paramInt);
-      this.a.b(paramInt);
     }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    armi.a(this.a, false);
-    if ((this.a.a != null) && (!this.a.a.b(armi.a(this.a)))) {
-      this.a.a.d();
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    armi.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
+    do
+    {
+      return;
+    } while (armh.a(this.a));
+    QLog.e("CameraHelper", 1, "checkPermission uncertain");
+    armh.a(this.a, false, 1830004);
   }
 }
 

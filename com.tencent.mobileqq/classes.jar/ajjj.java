@@ -1,249 +1,251 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.RecentUser;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
+import com.tencent.mobileqq.app.proxy.GroupActionResp;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import friendlist.GetOnlineInfoResp;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ajjj
+  extends anmu
 {
-  private static ajjj jdField_a_of_type_Ajjj;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  public final List<RecentBaseData> a;
-  private ConcurrentHashMap<String, RecentBaseData> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(109);
-  public boolean a;
-  public List<RecentBaseData> b;
-  private boolean b;
+  private ajjj(FriendFragment paramFriendFragment) {}
   
-  private ajjj()
+  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(99);
-  }
-  
-  public static ajjj a()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Ajjj == null) {
-        jdField_a_of_type_Ajjj = new ajjj();
-      }
-      return jdField_a_of_type_Ajjj;
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
     }
   }
   
-  public static String a(String paramString, int paramInt)
+  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    return paramString + "-" + paramInt;
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
   }
   
-  private void a(QQAppInterface paramQQAppInterface, List<RecentUser> paramList)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    biby.a("splitRecents");
-    ArrayList localArrayList1 = new ArrayList(4);
-    ArrayList localArrayList2 = new ArrayList(4);
-    ArrayList localArrayList3 = new ArrayList(4);
-    localArrayList1.add(paramQQAppInterface.getCurrentAccountUin());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      switch (localRecentUser.getType())
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onGroupDataInited()
+  {
+    FriendFragment.a(this.a, 1400L, true);
+  }
+  
+  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.FriendFragment", 2, "onSetSpecialCareSwitch_global isSuccess: " + paramBoolean);
+    }
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+    if ((paramBoolean) && (this.a.isResumed())) {
+      try
       {
-      default: 
-        break;
-      case 0: 
-        localArrayList1.add(localRecentUser.uin);
-        break;
-      case 1: 
-        localArrayList2.add(localRecentUser.uin);
-        break;
-      case 3000: 
-        localArrayList3.add(localRecentUser.uin);
+        String[] arrayOfString = (String[])paramArrayOfObject[1];
+        paramArrayOfObject = (boolean[])paramArrayOfObject[2];
+        if (QLog.isColorLevel()) {
+          QLog.d("contacts.fragment.FriendFragment", 2, new Object[] { "onSetSpecialCareSwitch_global uinArray=%s stateArray=%s", Arrays.toString(arrayOfString), Arrays.toString(paramArrayOfObject) });
+        }
+        if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
+        {
+          if (paramArrayOfObject[0] != 0)
+          {
+            QQToast.a(this.a.getActivity(), 2, anni.a(2131703655), 0).a();
+            return;
+          }
+          QQToast.a(this.a.getActivity(), 2, anni.a(2131703656), 0).a();
+          return;
+        }
       }
-    }
-    biby.a();
-    if (localArrayList1.size() > 2) {
-      ((alto)paramQQAppInterface.getManager(51)).a(localArrayList1);
-    }
-    if (localArrayList3.size() > 2) {
-      ((alrk)paramQQAppInterface.getManager(53)).a(localArrayList3);
-    }
-    if (localArrayList2.size() > 2) {
-      ((TroopManager)paramQQAppInterface.getManager(52)).a(localArrayList2);
+      catch (Exception paramArrayOfObject)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("contacts.fragment.FriendFragment", 2, "onSetSpecialCareSwitch_global fail!", paramArrayOfObject);
+        }
+      }
     }
   }
   
-  public RecentBaseData a(String paramString)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    try
-    {
-      if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
-      {
-        paramString = (RecentBaseData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        return paramString;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.FriendFragment", 2, "onUpdateAddFriend isSucess= " + paramBoolean1 + ",addSuccess=" + paramBoolean2 + " addDirect=" + paramBoolean3);
     }
-    catch (Exception paramString)
+    if ((paramBoolean1) && (paramBoolean2) && (paramBoolean3)) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      FriendFragment.a(this.a, 5000L, false);
+    }
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.FriendFragment", 2, "onUpdateDelFriend isSucess= " + paramBoolean);
+    }
+    if (paramBoolean) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    FriendFragment localFriendFragment = this.a;
+    boolean bool;
+    if ((paramBoolean2) || (!paramBoolean1))
     {
+      bool = true;
+      FriendFragment.a(localFriendFragment, bool);
       if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, paramString.toString());
+        QLog.d("contacts.fragment.FriendFragment", 2, "onUpdateFriendList isSucess= " + paramBoolean1 + ",isComplete=" + paramBoolean2);
+      }
+      paramBoolean2 = FriendFragment.a(this.a);
+      if (FriendFragment.a(this.a))
+      {
+        if (FriendFragment.b(this.a))
+        {
+          FriendFragment.b(this.a, false);
+          if (FriendFragment.a(this.a) != null) {
+            FriendFragment.b(this.a).a(this.a.b(), paramBoolean1, null);
+          }
+        }
+        localFriendFragment = this.a;
+        if (!FriendFragment.b(this.a)) {
+          break label189;
+        }
       }
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    try
+    label189:
+    for (long l = 0L;; l = 1400L)
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      }
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        this.jdField_a_of_type_JavaUtilList.clear();
+      FriendFragment.a(localFriendFragment, l, true);
+      if ((!paramBoolean2) && (FriendFragment.b(this.a))) {
+        FriendFragment.a(this.a, 1400L, true);
       }
       return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      bool = false;
+      break;
     }
   }
   
-  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)) && (paramRecentBaseData != null)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramRecentBaseData);
+    if ((paramBoolean1) && (paramBoolean2) && (paramBoolean3)) {
+      FriendFragment.a(this.a, 0L, true);
     }
   }
   
-  public void a(String paramString)
+  protected void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    FriendFragment.a(this.a, 1400L, false);
+  }
+  
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      FriendFragment.a(this.a, 1400L, false);
     }
   }
   
-  public void a(List<RecentBaseData> paramList, String paramString)
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    this.jdField_b_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if ((paramString != null) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
   }
   
-  public boolean a(QQAppInterface paramQQAppInterface, Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  protected void onUpdateOlympicTorchList(boolean paramBoolean)
   {
-    boolean bool = false;
+    if (paramBoolean) {
+      FriendFragment.a(this.a, 1400L, false);
+    }
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, false);
+    }
+  }
+  
+  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("RecentDataListManager", 2, new Object[] { "preloadRecentBaseData, isPreloaded= ", Boolean.valueOf(this.jdField_b_of_type_Boolean), ", forUI=", Boolean.valueOf(paramBoolean2), ", loadMore=", Boolean.valueOf(paramBoolean1) });
+      QLog.d("contacts.fragment.FriendFragment", 2, "onUpdateSpecialCareList isSucess= " + paramBoolean1 + ",isComplete=" + paramBoolean2);
     }
-    if (this.jdField_b_of_type_Boolean) {
-      return true;
-    }
-    if (paramBoolean2) {
-      this.jdField_b_of_type_Boolean = true;
-    }
-    if (paramQQAppInterface == null)
-    {
-      localObject1 = null;
-      if (localObject1 == null) {
-        break label576;
-      }
-    }
-    label169:
-    label435:
-    label570:
-    label576:
-    for (Object localObject1 = ((amnz)localObject1).a(true);; localObject1 = null)
-    {
-      label107:
-      int k;
-      int j;
-      Object localObject2;
-      if (localObject1 == null)
-      {
-        i = 0;
-        k = Math.min(10, i);
-        if (k <= 0) {
-          break label499;
-        }
-        if (!ajkl.a(paramQQAppInterface)) {
-          a(paramQQAppInterface, (List)localObject1);
-        }
-        this.jdField_b_of_type_JavaUtilList = new ArrayList(k);
-        this.jdField_a_of_type_JavaLangString = paramQQAppInterface.c();
-        if (!ajkl.a(paramQQAppInterface)) {
-          break label435;
-        }
-        i = 0;
-        j = 0;
-        if ((i >= ((List)localObject1).size()) || (i >= 10)) {
-          break label289;
-        }
-        localObject2 = (RecentUser)((List)localObject1).get(i);
-        RecentBaseData localRecentBaseData = ajkl.a(paramQQAppInterface, paramContext, (RecentUser)localObject2);
-        if (localRecentBaseData == null) {
-          break label264;
-        }
-        this.jdField_b_of_type_JavaUtilList.add(localRecentBaseData);
-        j += 1;
-      }
-      for (;;)
-      {
-        i += 1;
-        break label169;
-        localObject1 = paramQQAppInterface.a();
-        break;
-        i = ((List)localObject1).size();
-        break label107;
-        localObject2 = ajie.a((RecentUser)localObject2, paramQQAppInterface, paramContext, true);
-        this.jdField_b_of_type_JavaUtilList.add(localObject2);
-      }
-      ajkl.a(((List)localObject1).size(), ((List)localObject1).size() - j);
-      QLog.d("RecentDataListManager", 1, new Object[] { "Recover from parcel, success size=", Integer.valueOf(j), " RU size=", Integer.valueOf(((List)localObject1).size()) });
-      for (;;)
-      {
-        paramContext = new ajjp(paramQQAppInterface);
-        if ((paramQQAppInterface.isLogin()) && (Friends.isValidUin(paramQQAppInterface.getCurrentAccountUin()))) {
-          paramContext.a(0, paramQQAppInterface.getCurrentAccountUin());
-        }
-        i = 0;
-        while (i < k)
-        {
-          paramQQAppInterface = (RecentUser)((List)localObject1).get(i);
-          if (paramQQAppInterface != null) {
-            paramContext.a(paramQQAppInterface.getType(), paramQQAppInterface.uin);
-          }
-          i += 1;
-        }
-        ajie.a((List)localObject1, paramQQAppInterface, paramContext, this.jdField_b_of_type_JavaUtilList, k);
-        QLog.d("RecentDataListManager", 1, new Object[] { "Recover from old way, success size= RU size=", Integer.valueOf(((List)localObject1).size()), " limit=", Integer.valueOf(k) });
-      }
-      this.jdField_a_of_type_Boolean = true;
-      label499:
-      paramQQAppInterface = this.jdField_b_of_type_JavaUtilList;
-      if (QLog.isColorLevel())
-      {
-        paramContext = new StringBuilder().append("preloadRecentBaseData end: ").append(this.jdField_b_of_type_Boolean);
-        if (paramQQAppInterface == null) {
-          break label570;
-        }
-      }
-      for (int i = paramQQAppInterface.size();; i = 0)
-      {
-        QLog.d("RecentDataListManager", 2, i);
-        paramBoolean1 = bool;
-        if (k > 0) {
-          paramBoolean1 = true;
-        }
-        return paramBoolean1;
-      }
+    if ((paramBoolean1) && (this.a.a != null)) {
+      this.a.a.notifyDataSetChanged();
     }
   }
 }

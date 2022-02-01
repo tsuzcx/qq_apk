@@ -1,48 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public class betj
-  implements View.OnClickListener
+class betj
+  implements DialogInterface.OnClickListener
 {
-  final WeakReference<QQAppInterface> a;
-  final WeakReference<awqt> b;
+  betj(besy parambesy, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
-  public betj(QQAppInterface paramQQAppInterface, awqt paramawqt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramawqt);
-  }
-  
-  public void onClick(View paramView)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    awqt localawqt = (awqt)this.b.get();
-    if ((localQQAppInterface == null) || (localawqt == null) || (localawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null)) {
-      return;
-    }
-    if (((bcgc)localQQAppInterface.getManager(346)).b(localawqt.jdField_a_of_type_JavaLangString)) {}
-    for (String str = bcos.a().a(localawqt.jdField_a_of_type_JavaLangString, localawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);; str = bcos.a().a(localawqt.jdField_a_of_type_JavaLangString, localawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, awrt.a(localQQAppInterface, localawqt.jdField_a_of_type_JavaLangString, localawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, localawqt.jdField_a_of_type_ComTencentMobileqqDataCard), "3", "aio"))
-    {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      paramView.getContext().startActivity(localIntent);
-      if (bbtx.a().a(localawqt.jdField_a_of_type_JavaLangString, localawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
-      {
-        paramView = paramView.findViewById(2131375551);
-        if (paramView != null) {
-          paramView.setVisibility(8);
-        }
-        bbtx.a().a(localawqt.jdField_a_of_type_JavaLangString, localawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false);
-      }
-      bbtx.a("grp_data", "clk_medal");
-      new azqx(localQQAppInterface).a("dc00899").b("Grp_mem_card").c("page").d("title_clk").a(new String[] { localawqt.jdField_a_of_type_JavaLangString }).a();
-      return;
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
     }
   }
 }

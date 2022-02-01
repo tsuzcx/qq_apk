@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class RecentEmotionData
-  extends awge
+  extends Entity
 {
   public static final int TYPE_CUSTOM_EMO = 3;
   public static final int TYPE_EMOJI_EMO = 4;
@@ -18,7 +18,7 @@ public class RecentEmotionData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecentEmotionData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,61 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.weiyun.transmission.utils.handler.ReleaseLooperHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.NegativeChildrenLayout;
 
-public class bkll
-  implements Handler.Callback
+class bkll
+  implements View.OnClickListener
 {
-  private bklg jdField_a_of_type_Bklg;
-  private final bkln jdField_a_of_type_Bkln;
-  private final ReleaseLooperHandler jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler;
+  bkll(bklj parambklj) {}
   
-  public bkll(bkln parambkln, bklg parambklg, ReleaseLooperHandler paramReleaseLooperHandler)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bkln = parambkln;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler = paramReleaseLooperHandler;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.addCallback(this);
-    this.jdField_a_of_type_Bklg = parambklg;
-  }
-  
-  private void b(bkkp parambkkp, int paramInt)
-  {
-    if (parambkkp == null) {}
-    long l;
-    String str;
-    do
+    switch (paramView.getId())
     {
-      return;
-      l = parambkkp.a();
-      str = parambkkp.a().a;
-    } while (parambkkp.d());
-    this.jdField_a_of_type_Bklg.a(parambkkp.a().a(), cooperation.weiyun.sdk.download.DownloadType.values()[paramInt], new bklm(this, str, l, parambkkp, paramInt));
-  }
-  
-  public void a(bkkp parambkkp, int paramInt)
-  {
-    if (parambkkp == null) {
-      return;
+    default: 
+      this.a.dismiss();
     }
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.sendMessage(Message.obtain(null, 21, paramInt, 0, parambkkp));
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 21)
+    for (;;)
     {
-      b((bkkp)paramMessage.obj, paramMessage.arg1);
-      return true;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_a_of_type_JavaUtilArrayList, anni.a(2131704720), this.a.jdField_a_of_type_Bklo);
+      this.a.a(true);
+      this.a.r = 1;
+      this.a.c = anni.a(2131704725);
+      bklj.a(this.a, paramView.getTag(), false);
+      continue;
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
+      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_b_of_type_JavaUtilArrayList, anni.a(2131704719), this.a.jdField_a_of_type_Bklo);
+      this.a.a(true);
+      this.a.r = 2;
+      this.a.c = anni.a(2131704728);
+      bklj.a(this.a, paramView.getTag(), false);
+      continue;
+      this.a.c(paramView);
+      this.a.c();
+      this.a.r = 3;
+      this.a.c = anni.a(2131704724);
+      bklj.a(this.a, paramView.getTag(), true);
+      continue;
+      this.a.c(paramView);
+      this.a.c();
+      this.a.r = 4;
+      this.a.c = this.a.jdField_b_of_type_JavaLangString;
+      bklj.a(this.a, paramView.getTag(), false);
+      continue;
+      this.a.c(paramView);
+      this.a.c();
+      this.a.r = 5;
+      this.a.c = BaseApplicationImpl.getContext().getString(2131717052);
+      bklj.a(this.a, paramView.getTag(), false);
+      continue;
+      this.a.a(false);
     }
-    return false;
   }
 }
 

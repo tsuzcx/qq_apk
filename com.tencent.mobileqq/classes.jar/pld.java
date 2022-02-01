@@ -1,26 +1,73 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.widget.pull2refresh.XRecyclerView;
+import java.util.List;
 
-class pld
-  implements ViewBase.OnClickListener
+public class pld
+  extends pmn
 {
-  pld(plb paramplb, pgd parampgd, Container paramContainer) {}
+  public pld(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(int paramInt, List<Long> paramList)
   {
-    paramViewBase = this.jdField_a_of_type_Pgd.a();
-    String str = paramViewBase.mSocialFeedInfo.a.f;
-    ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
-    rqj.a(paramViewBase, (int)paramViewBase.mChannelID);
-    szp.a(paramViewBase);
+    if (paramInt != ReadInJoyDynamicChannelFragment.a(this.a)) {
+      return;
+    }
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ReadInJoyDynamicChannelFragment.a(this.a).a(pmh.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.b(this.a)), paramList));
+      ReadInJoyDynamicChannelFragment.a(this.a).a(true, true);
+    }
+    for (;;)
+    {
+      paramList = pmh.a().a();
+      if (paramList == null) {
+        break;
+      }
+      ReadInJoyDynamicChannelFragment.a(this.a, paramList.a(ReadInJoyDynamicChannelFragment.c(this.a)));
+      return;
+      ReadInJoyDynamicChannelFragment.b(this.a).b();
+    }
+  }
+  
+  public void a(TopBannerInfo paramTopBannerInfo)
+  {
+    ReadInJoyDynamicChannelFragment.a(this.a, paramTopBannerInfo);
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if (paramInt != ReadInJoyDynamicChannelFragment.d(this.a)) {
+      return;
+    }
+    paramInt = pmh.a().a(Integer.valueOf(paramInt));
+    if ((paramBoolean1) && (paramInt > 0)) {}
+    for (String str = String.format(this.a.getResources().getString(2131716884), new Object[] { Integer.valueOf(paramInt) });; str = this.a.getResources().getString(2131716883))
+    {
+      ReadInJoyDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
+      if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
+        ReadInJoyDynamicChannelFragment.a(this.a).a(pmh.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.e(this.a)), paramList));
+      }
+      ReadInJoyDynamicChannelFragment.d(this.a).a(true, true);
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if (paramInt != ReadInJoyDynamicChannelFragment.f(this.a)) {
+      return;
+    }
+    if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
+      ReadInJoyDynamicChannelFragment.a(this.a).a(pmh.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.g(this.a)), paramList));
+    }
+    ReadInJoyDynamicChannelFragment.e(this.a).a(paramBoolean1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pld
  * JD-Core Version:    0.7.0.1
  */

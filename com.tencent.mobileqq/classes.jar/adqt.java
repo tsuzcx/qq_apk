@@ -1,46 +1,42 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public class adqt
-  extends alwx
+class adqt
+  implements aqiv
 {
-  public adqt(QQLSActivity paramQQLSActivity) {}
+  private adqt(adqp paramadqp) {}
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice isSuccess=" + paramBoolean1);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    this.a.a.removeMessages(267387140);
-    Object localObject1 = new ArrayList();
-    Object localObject2;
-    if ((paramList != null) && (paramList.size() > 0))
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      localObject2 = paramList.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((List)localObject1).add((ChatMessage)((Iterator)localObject2).next());
-      }
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice chatlist=" + ((List)localObject1).size());
-    }
-    if ((paramBoolean1) && (localObject1 != null) && (!((List)localObject1).isEmpty()) && (((ChatMessage)((List)localObject1).get(0) instanceof MessageForPtt)))
+    for (;;)
     {
-      localObject1 = (MessageForPtt)((List)localObject1).get(0);
-      localObject2 = MediaPlayerManager.a(QQLSActivity.a(this.a)).a();
-      if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).frienduin != null) && (((ChatMessage)localObject2).frienduin.equals(((MessageForPtt)localObject1).frienduin)) && (((ChatMessage)localObject2).uniseq == ((MessageForPtt)localObject1).uniseq))) {
-        MediaPlayerManager.a(QQLSActivity.a(this.a)).a(true);
+      adqp.a(this.a);
+      if ((adqp.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        adqp.a(this.a).a(2);
       }
+      if (this.a.a != null)
+      {
+        paramInt1 = adqp.d(this.a, adqp.a(this.a));
+        paramInt2 = adqp.e(this.a, adqp.b(this.a));
+        int i = adqp.f(this.a, adqp.c(this.a));
+        this.a.a.a(paramInt1, paramInt2, i);
+      }
+      return;
+      adqp.a(this.a, paramInt2);
+      continue;
+      adqp.b(this.a, paramInt2);
+      continue;
+      adqp.c(this.a, paramInt2);
     }
-    super.a(paramBoolean1, paramList, paramBoolean2);
   }
 }
 

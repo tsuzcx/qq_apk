@@ -1,13 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class ahbp
-  extends RecyclerView.ViewHolder
+  implements bhye
 {
-  public ahbp(ZhituPanelView paramZhituPanelView, View paramView)
+  public ahbp(LightVideoItemBuilder paramLightVideoItemBuilder, ahbr paramahbr) {}
+  
+  public void a(String paramString)
   {
-    super(paramView);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahbr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahbr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ahbr.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
+    }
   }
 }
 

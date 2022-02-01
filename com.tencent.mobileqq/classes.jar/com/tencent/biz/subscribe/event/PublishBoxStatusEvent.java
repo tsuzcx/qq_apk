@@ -1,6 +1,7 @@
 package com.tencent.biz.subscribe.event;
 
 import android.os.Bundle;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 
 public class PublishBoxStatusEvent
   extends SimpleBaseEvent
@@ -21,7 +22,7 @@ public class PublishBoxStatusEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.event.PublishBoxStatusEvent
  * JD-Core Version:    0.7.0.1
  */

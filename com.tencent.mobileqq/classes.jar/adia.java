@@ -1,20 +1,17 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class adia
-  extends MqqHandler
+  extends AccountObserver
 {
-  public adia(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
+  public adia(AccountManageActivity paramAccountManageActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDeleteAccount(boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "onDeleteAccount isSuccess " + paramBoolean);
     }
-    this.a.finish();
   }
 }
 

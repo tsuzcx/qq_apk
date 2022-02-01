@@ -1,495 +1,384 @@
-import android.support.annotation.Nullable;
-import java.util.ConcurrentModificationException;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.tofumsg.TofuItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.util.WeakReference;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xd2d.oidb_cmd0xd2d_common.EduHis;
+import tencent.im.oidb.cmd0xd2d.oidb_cmd0xd2d_common.SchoolInfo;
+import tencent.im.oidb.cmd0xe6b.beancurdcube_profile_common.BeancurdcubeProfile;
+import tencent.im.oidb.cmd0xe6b.beancurdcube_profile_common.BeancurdcubeProfileInfo;
+import tencent.im.oidb.cmd0xe6b.beancurdcube_profile_common.ProfileBirthday;
+import tencent.im.oidb.cmd0xe6b.beancurdcube_profile_common.ProfileCompany;
+import tencent.im.oidb.cmd0xe6b.beancurdcube_profile_common.ProfileEducation;
+import tencent.im.oidb.cmd0xe6b.beancurdcube_profile_common.ProfileEmail;
+import tencent.im.oidb.cmd0xe6b.beancurdcube_profile_common.ProfileHomeLand;
+import tencent.im.oidb.cmd0xe6b.beancurdcube_profile_common.ProfileIntro;
+import tencent.im.oidb.cmd0xe6b.beancurdcube_profile_common.ProfileLocation;
+import tencent.im.oidb.cmd0xe6b.beancurdcube_profile_common.ProfileNickname;
+import tencent.im.oidb.cmd0xe6b.beancurdcube_profile_common.ProfileOccupation;
+import tencent.im.oidb.cmd0xe6b.oidb_0xe6b.ReqBody;
+import tencent.im.oidb.cmd0xe6b.oidb_0xe6b.RspBody;
 
-public class bdqw<K, V>
+public class bdqw
+  extends bdqo
+  implements anjl
 {
-  static int jdField_a_of_type_Int;
-  @Nullable
-  static Object[] jdField_a_of_type_ArrayOfJavaLangObject;
-  static int jdField_b_of_type_Int;
-  @Nullable
-  static Object[] jdField_b_of_type_ArrayOfJavaLangObject;
-  int[] jdField_a_of_type_ArrayOfInt = bdqq.jdField_a_of_type_ArrayOfInt;
-  int jdField_c_of_type_Int = 0;
-  Object[] jdField_c_of_type_ArrayOfJavaLangObject = bdqq.jdField_a_of_type_ArrayOfJavaLangObject;
+  anjh jdField_a_of_type_Anjh;
+  final Object jdField_a_of_type_JavaLangObject = new Object();
+  WeakReference<bdqw> jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
+  volatile boolean jdField_a_of_type_Boolean;
   
-  private static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  public bdqw(QQAppInterface paramQQAppInterface)
   {
-    try
-    {
-      paramInt1 = bdqq.a(paramArrayOfInt, paramInt1, paramInt2);
-      return paramInt1;
-    }
-    catch (ArrayIndexOutOfBoundsException paramArrayOfInt)
-    {
-      throw new ConcurrentModificationException();
-    }
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Anjh = ((anjh)paramQQAppInterface.getManager(59));
+    this.jdField_a_of_type_Anjh.a(this.jdField_a_of_type_MqqUtilWeakReference);
+    this.jdField_a_of_type_Anjh.c(this);
   }
   
-  private void a(int paramInt)
+  private String a(StringBuilder paramStringBuilder, List<beancurdcube_profile_common.BeancurdcubeProfileInfo> paramList)
   {
-    if (paramInt == 8) {}
+    JSONArray localJSONArray = new JSONArray();
+    Iterator localIterator1 = paramList.iterator();
+    int j = 0;
+    JSONObject localJSONObject;
+    label164:
+    label317:
+    label339:
+    StringBuilder localStringBuilder;
+    label371:
+    String str;
     for (;;)
     {
-      try
+      if (localIterator1.hasNext())
       {
-        if (jdField_b_of_type_ArrayOfJavaLangObject != null)
+        paramList = (beancurdcube_profile_common.BeancurdcubeProfileInfo)localIterator1.next();
+        int k = paramList.enum_beancurdcube_profile_type.get();
+        localJSONObject = new JSONObject();
+        long l = paramList.uint32_last_modify_time.get();
+        paramStringBuilder.append("|").append(k);
+        switch (k)
         {
-          Object[] arrayOfObject1 = jdField_b_of_type_ArrayOfJavaLangObject;
-          this.jdField_c_of_type_ArrayOfJavaLangObject = arrayOfObject1;
-          jdField_b_of_type_ArrayOfJavaLangObject = (Object[])arrayOfObject1[0];
-          this.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject1[1]);
-          arrayOfObject1[1] = null;
-          arrayOfObject1[0] = null;
-          jdField_b_of_type_Int -= 1;
-          return;
-        }
-        this.jdField_a_of_type_ArrayOfInt = new int[paramInt];
-        this.jdField_c_of_type_ArrayOfJavaLangObject = new Object[paramInt << 1];
-        return;
-      }
-      finally {}
-      if (paramInt == 4) {
-        try
-        {
-          if (jdField_a_of_type_ArrayOfJavaLangObject != null)
+        default: 
+        case 20002: 
+        case 20031: 
+          for (;;)
           {
-            Object[] arrayOfObject2 = jdField_a_of_type_ArrayOfJavaLangObject;
-            this.jdField_c_of_type_ArrayOfJavaLangObject = arrayOfObject2;
-            jdField_a_of_type_ArrayOfJavaLangObject = (Object[])arrayOfObject2[0];
-            this.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject2[1]);
-            arrayOfObject2[1] = null;
-            arrayOfObject2[0] = null;
-            jdField_a_of_type_Int -= 1;
-            return;
+            localJSONObject.put("key_ts", l);
+            localJSONObject.put("key_type", k);
+            localJSONArray.put(localJSONObject);
+            j += 1;
+            break;
+            paramList = (beancurdcube_profile_common.ProfileNickname)paramList.msg_nickname.get();
+            if (paramList.bytes_nickname.has()) {}
+            for (paramList = paramList.bytes_nickname.get().toStringUtf8(); !TextUtils.isEmpty(paramList); paramList = "")
+            {
+              localJSONObject.put("key_profile_nickname", paramList);
+              break label164;
+            }
+            localJSONObject.put("key_profile_birthday", ((beancurdcube_profile_common.ProfileBirthday)paramList.msg_birthday.get()).uint32_birthday.get());
           }
-        }
-        finally {}
-      }
-    }
-  }
-  
-  private static void a(int[] paramArrayOfInt, Object[] paramArrayOfObject, int paramInt)
-  {
-    if (paramArrayOfInt.length == 8) {
-      try
-      {
-        if (jdField_b_of_type_Int < 10)
-        {
-          paramArrayOfObject[0] = jdField_b_of_type_ArrayOfJavaLangObject;
-          paramArrayOfObject[1] = paramArrayOfInt;
-          paramInt = (paramInt << 1) - 1;
-          break label117;
-          jdField_b_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-          jdField_b_of_type_Int += 1;
-        }
-        return;
-      }
-      finally {}
-    } else {
-      if (paramArrayOfInt.length != 4) {
-        break label133;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if (jdField_a_of_type_Int < 10)
-        {
-          paramArrayOfObject[0] = jdField_a_of_type_ArrayOfJavaLangObject;
-          paramArrayOfObject[1] = paramArrayOfInt;
-          paramInt = (paramInt << 1) - 1;
-          break label134;
-          jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-          jdField_a_of_type_Int += 1;
-        }
-        return;
-      }
-      finally {}
-      label117:
-      while (paramInt >= 2)
-      {
-        paramArrayOfObject[paramInt] = null;
-        paramInt -= 1;
-      }
-      break;
-      label133:
-      return;
-      label134:
-      while (paramInt >= 2)
-      {
-        paramArrayOfObject[paramInt] = null;
-        paramInt -= 1;
-      }
-    }
-  }
-  
-  int a()
-  {
-    int m = this.jdField_c_of_type_Int;
-    int i;
-    if (m == 0) {
-      i = -1;
-    }
-    int j;
-    do
-    {
-      do
-      {
-        return i;
-        j = a(this.jdField_a_of_type_ArrayOfInt, m, 0);
-        i = j;
-      } while (j < 0);
-      i = j;
-    } while (this.jdField_c_of_type_ArrayOfJavaLangObject[(j << 1)] == null);
-    int k = j + 1;
-    while ((k < m) && (this.jdField_a_of_type_ArrayOfInt[k] == 0))
-    {
-      if (this.jdField_c_of_type_ArrayOfJavaLangObject[(k << 1)] == null) {
-        return k;
-      }
-      k += 1;
-    }
-    j -= 1;
-    for (;;)
-    {
-      if ((j < 0) || (this.jdField_a_of_type_ArrayOfInt[j] != 0)) {
-        break label121;
-      }
-      i = j;
-      if (this.jdField_c_of_type_ArrayOfJavaLangObject[(j << 1)] == null) {
-        break;
-      }
-      j -= 1;
-    }
-    label121:
-    return k ^ 0xFFFFFFFF;
-  }
-  
-  public int a(@Nullable Object paramObject)
-  {
-    if (paramObject == null) {
-      return a();
-    }
-    return a(paramObject, paramObject.hashCode());
-  }
-  
-  int a(Object paramObject, int paramInt)
-  {
-    int m = this.jdField_c_of_type_Int;
-    int i;
-    if (m == 0) {
-      i = -1;
-    }
-    int j;
-    do
-    {
-      do
-      {
-        return i;
-        j = a(this.jdField_a_of_type_ArrayOfInt, m, paramInt);
-        i = j;
-      } while (j < 0);
-      i = j;
-    } while (paramObject.equals(this.jdField_c_of_type_ArrayOfJavaLangObject[(j << 1)]));
-    int k = j + 1;
-    while ((k < m) && (this.jdField_a_of_type_ArrayOfInt[k] == paramInt))
-    {
-      if (paramObject.equals(this.jdField_c_of_type_ArrayOfJavaLangObject[(k << 1)])) {
-        return k;
-      }
-      k += 1;
-    }
-    j -= 1;
-    for (;;)
-    {
-      if ((j < 0) || (this.jdField_a_of_type_ArrayOfInt[j] != paramInt)) {
-        break label156;
-      }
-      i = j;
-      if (paramObject.equals(this.jdField_c_of_type_ArrayOfJavaLangObject[(j << 1)])) {
-        break;
-      }
-      j -= 1;
-    }
-    label156:
-    return k ^ 0xFFFFFFFF;
-  }
-  
-  public K a(int paramInt)
-  {
-    return this.jdField_c_of_type_ArrayOfJavaLangObject[(paramInt << 1)];
-  }
-  
-  @Nullable
-  public V a(Object paramObject)
-  {
-    return a(paramObject, null);
-  }
-  
-  public V a(Object paramObject, V paramV)
-  {
-    int i = a(paramObject);
-    if (i >= 0) {
-      paramV = this.jdField_c_of_type_ArrayOfJavaLangObject[((i << 1) + 1)];
-    }
-    return paramV;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Int <= 0;
-  }
-  
-  public boolean a(@Nullable Object paramObject)
-  {
-    return a(paramObject) >= 0;
-  }
-  
-  public int b()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public V b(int paramInt)
-  {
-    return this.jdField_c_of_type_ArrayOfJavaLangObject[((paramInt << 1) + 1)];
-  }
-  
-  @Nullable
-  public V b(K paramK, V paramV)
-  {
-    int k = 8;
-    int m = this.jdField_c_of_type_Int;
-    int i;
-    int j;
-    if (paramK == null)
-    {
-      i = a();
-      j = 0;
-    }
-    while (i >= 0)
-    {
-      i = (i << 1) + 1;
-      paramK = this.jdField_c_of_type_ArrayOfJavaLangObject[i];
-      this.jdField_c_of_type_ArrayOfJavaLangObject[i] = paramV;
-      return paramK;
-      j = paramK.hashCode();
-      i = a(paramK, j);
-    }
-    int n = i ^ 0xFFFFFFFF;
-    if (m >= this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      if (m >= 8) {
-        i = (m >> 1) + m;
-      }
-      int[] arrayOfInt;
-      Object[] arrayOfObject;
-      for (;;)
-      {
-        arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-        arrayOfObject = this.jdField_c_of_type_ArrayOfJavaLangObject;
-        a(i);
-        if (m == this.jdField_c_of_type_Int) {
+        case 27264: 
+          paramList = (beancurdcube_profile_common.ProfileEducation)paramList.msg_education.get();
+          if (paramList.msg_edu.has())
+          {
+            paramList = (oidb_cmd0xd2d_common.EduHis)paramList.msg_edu.get();
+            if (paramList == null) {
+              continue;
+            }
+            if (!paramList.rpt_msg_school.has()) {
+              break label457;
+            }
+            paramList = paramList.rpt_msg_school.get();
+            if ((paramList == null) || (paramList.size() == 0)) {
+              continue;
+            }
+            localStringBuilder = new StringBuilder();
+            Iterator localIterator2 = paramList.iterator();
+            int i = 0;
+            if (!localIterator2.hasNext()) {
+              break label474;
+            }
+            paramList = (oidb_cmd0xd2d_common.SchoolInfo)localIterator2.next();
+            if (!paramList.str_school_name.has()) {
+              break label462;
+            }
+            paramList = paramList.str_school_name.get();
+            label410:
+            if ((TextUtils.isEmpty(paramList)) || (i >= 3)) {
+              break label827;
+            }
+            if (i <= 0) {
+              break label467;
+            }
+            str = "、";
+            label430:
+            localStringBuilder.append(str);
+            localStringBuilder.append(paramList);
+            i += 1;
+          }
           break;
         }
-        throw new ConcurrentModificationException();
-        i = k;
-        if (m < 4) {
-          i = 4;
-        }
       }
-      if (this.jdField_a_of_type_ArrayOfInt.length > 0)
-      {
-        System.arraycopy(arrayOfInt, 0, this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt.length);
-        System.arraycopy(arrayOfObject, 0, this.jdField_c_of_type_ArrayOfJavaLangObject, 0, arrayOfObject.length);
-      }
-      a(arrayOfInt, arrayOfObject, m);
     }
-    if (n < m)
-    {
-      System.arraycopy(this.jdField_a_of_type_ArrayOfInt, n, this.jdField_a_of_type_ArrayOfInt, n + 1, m - n);
-      System.arraycopy(this.jdField_c_of_type_ArrayOfJavaLangObject, n << 1, this.jdField_c_of_type_ArrayOfJavaLangObject, n + 1 << 1, this.jdField_c_of_type_Int - n << 1);
-    }
-    if ((m != this.jdField_c_of_type_Int) || (n >= this.jdField_a_of_type_ArrayOfInt.length)) {
-      throw new ConcurrentModificationException();
-    }
-    this.jdField_a_of_type_ArrayOfInt[n] = j;
-    this.jdField_c_of_type_ArrayOfJavaLangObject[(n << 1)] = paramK;
-    this.jdField_c_of_type_ArrayOfJavaLangObject[((n << 1) + 1)] = paramV;
-    this.jdField_c_of_type_Int += 1;
-    return null;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
+    label812:
+    label827:
     for (;;)
     {
-      return true;
-      int i;
-      Object localObject1;
-      Object localObject2;
-      Object localObject3;
-      boolean bool;
-      if ((paramObject instanceof bdqw))
-      {
-        paramObject = (bdqw)paramObject;
-        if (b() != paramObject.b()) {
-          return false;
-        }
-        i = 0;
-        try
-        {
-          while (i < this.jdField_c_of_type_Int)
-          {
-            localObject1 = a(i);
-            localObject2 = b(i);
-            localObject3 = paramObject.a(localObject1);
-            if (localObject2 == null)
-            {
-              if (localObject3 != null) {
-                break label227;
-              }
-              if (!paramObject.a(localObject1)) {
-                break label227;
-              }
-            }
-            else
-            {
-              bool = localObject2.equals(localObject3);
-              if (!bool) {
-                return false;
-              }
-            }
-            i += 1;
-          }
-          if (!(paramObject instanceof Map)) {
-            break;
-          }
-        }
-        catch (NullPointerException paramObject)
-        {
-          return false;
-        }
-        catch (ClassCastException paramObject)
-        {
-          return false;
-        }
-      }
-      else
-      {
-        paramObject = (Map)paramObject;
-        if (b() != paramObject.size()) {
-          return false;
-        }
-        i = 0;
-        try
-        {
-          while (i < this.jdField_c_of_type_Int)
-          {
-            localObject1 = a(i);
-            localObject2 = b(i);
-            localObject3 = paramObject.get(localObject1);
-            if (localObject2 == null)
-            {
-              if (localObject3 != null) {
-                break label229;
-              }
-              if (!paramObject.containsKey(localObject1)) {
-                break label229;
-              }
-            }
-            else
-            {
-              bool = localObject2.equals(localObject3);
-              if (!bool) {
-                return false;
-              }
-            }
-            i += 1;
-          }
-          return false;
-        }
-        catch (NullPointerException paramObject)
-        {
-          return false;
-        }
-        catch (ClassCastException paramObject)
-        {
-          return false;
-        }
-      }
-    }
-    label227:
-    return false;
-    label229:
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    Object[] arrayOfObject = this.jdField_c_of_type_ArrayOfJavaLangObject;
-    int n = this.jdField_c_of_type_Int;
-    int i = 1;
-    int j = 0;
-    int k = 0;
-    if (j < n)
-    {
-      Object localObject = arrayOfObject[i];
-      int i1 = arrayOfInt[j];
-      if (localObject == null) {}
-      for (int m = 0;; m = localObject.hashCode())
-      {
-        k += (m ^ i1);
-        j += 1;
-        i += 2;
+      break label371;
+      paramList = null;
+      break label317;
+      label457:
+      paramList = null;
+      break label339;
+      label462:
+      paramList = null;
+      break label410;
+      label467:
+      str = "";
+      break label430;
+      label474:
+      if (localStringBuilder.length() <= 0) {
         break;
       }
+      localJSONObject.put("key_profile_education", localStringBuilder.toString());
+      break label164;
+      paramList = (beancurdcube_profile_common.ProfileLocation)paramList.msg_location.get();
+      if (a(localJSONObject, paramList.uint32_nation.get(), paramList.uint32_province.get(), paramList.uint32_city.get(), paramList.uint32_district.get())) {
+        break label164;
+      }
+      break;
+      paramList = (beancurdcube_profile_common.ProfileHomeLand)paramList.msg_homeland.get();
+      if (a(localJSONObject, paramList.uint32_nation.get(), paramList.uint32_province.get(), paramList.uint32_city.get(), paramList.uint32_district.get())) {
+        break label164;
+      }
+      break;
+      paramList = (beancurdcube_profile_common.ProfileCompany)paramList.msg_company.get();
+      if (paramList.company_name.has()) {}
+      for (paramList = paramList.company_name.get().toStringUtf8(); !TextUtils.isEmpty(paramList); paramList = null)
+      {
+        localJSONObject.put("key_profile_company", paramList);
+        break label164;
+      }
+      localJSONObject.put("key_profile_occupation", ((beancurdcube_profile_common.ProfileOccupation)paramList.msg_occupation.get()).uint32_occupation_id.get());
+      break label164;
+      if (paramList.msg_email.has())
+      {
+        paramList = (beancurdcube_profile_common.ProfileEmail)paramList.msg_email.get();
+        label706:
+        if (!paramList.bytes_email.has()) {
+          break label752;
+        }
+      }
+      label752:
+      for (paramList = paramList.bytes_email.get().toStringUtf8(); !TextUtils.isEmpty(paramList); paramList = null)
+      {
+        localJSONObject.put("key_profile_email", paramList);
+        break label164;
+        paramList = null;
+        break label706;
+      }
+      paramList = (beancurdcube_profile_common.ProfileIntro)paramList.msg_intro.get();
+      if (paramList.bytes_intro.has()) {}
+      for (paramList = paramList.bytes_intro.get().toStringUtf8();; paramList = null)
+      {
+        if (TextUtils.isEmpty(paramList)) {
+          break label812;
+        }
+        localJSONObject.put("key_profile_introduction", paramList);
+        break;
+      }
+      break;
+      if (j > 0) {
+        return localJSONArray.toString();
+      }
+      return null;
     }
-    return k;
   }
   
-  public String toString()
+  private String a(oidb_0xe6b.RspBody paramRspBody, StringBuilder paramStringBuilder)
   {
-    if (a()) {
-      return "{}";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(this.jdField_c_of_type_Int * 28);
-    localStringBuilder.append('{');
-    int i = 0;
-    if (i < this.jdField_c_of_type_Int)
+    if (paramRspBody.msg_profile_info.has())
     {
-      if (i > 0) {
-        localStringBuilder.append(", ");
+      paramRspBody = (beancurdcube_profile_common.BeancurdcubeProfile)paramRspBody.msg_profile_info.get();
+      if (paramRspBody == null) {
+        break label132;
       }
-      Object localObject = a(i);
-      if (localObject != this)
+      if (!paramRspBody.rpt_beancurdcube_profile_info.has()) {
+        break label72;
+      }
+    }
+    label72:
+    for (List localList = paramRspBody.rpt_beancurdcube_profile_info.get();; localList = null)
+    {
+      if ((localList == null) || (localList.size() <= 0)) {
+        break label78;
+      }
+      return a(paramStringBuilder, localList);
+      paramRspBody = null;
+      break;
+    }
+    label78:
+    int i;
+    if (paramRspBody.rpt_beancurdcube_profile_info.has())
+    {
+      i = paramRspBody.rpt_beancurdcube_profile_info.get().size();
+      QLog.d("Tofu_BaseProfileDataHandler", 1, String.format("getBusDataFromRspBytes rpt_beancurdcube_profile_info.size=%d", new Object[] { Integer.valueOf(i) }));
+    }
+    for (;;)
+    {
+      return null;
+      i = -1;
+      break;
+      label132:
+      QLog.d("Tofu_BaseProfileDataHandler", 1, "getBusDataFromRspBytes beancurdcubeProfile is null");
+    }
+  }
+  
+  private boolean a(JSONObject paramJSONObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    String[] arrayOfString = new String[4];
+    arrayOfString[0] = anjh.a(paramInt1);
+    arrayOfString[1] = anjh.a(paramInt2);
+    arrayOfString[2] = anjh.a(paramInt3);
+    arrayOfString[3] = anjh.a(paramInt4);
+    if (!this.jdField_a_of_type_Boolean) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        localStringBuilder.append(localObject);
-        label70:
-        localStringBuilder.append('=');
-        localObject = b(i);
-        if (localObject == this) {
-          break label111;
-        }
-        localStringBuilder.append(localObject);
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (bool) {}
       }
+    }
+    try
+    {
+      this.jdField_a_of_type_JavaLangObject.wait(1000L);
+      label81:
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Tofu_BaseProfileDataHandler", 2, "parseLocation location not ready return");
+        }
+        return false;
+        paramJSONObject = finally;
+        throw paramJSONObject;
+      }
+      String str = this.jdField_a_of_type_Anjh.a(arrayOfString);
+      ??? = str;
+      if (str.equals("不限")) {
+        ??? = "";
+      }
+      paramJSONObject.put("key_profile_location_desc", ???);
+      paramJSONObject.put("key_profile_location_1", arrayOfString[0]);
+      paramJSONObject.put("key_profile_location_2", arrayOfString[1]);
+      paramJSONObject.put("key_profile_location_3", arrayOfString[2]);
+      paramJSONObject.put("key_profile_location_4", arrayOfString[3]);
+      return true;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      break label81;
+    }
+  }
+  
+  public int a()
+  {
+    return 9;
+  }
+  
+  public String a(TofuItem paramTofuItem)
+  {
+    Object localObject5 = null;
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    Object localObject1 = localObject5;
+    if (paramTofuItem.bytesFromServer != null)
+    {
+      localObject1 = localObject5;
+      if (paramTofuItem.bytesFromServer.length > 0) {
+        localObject1 = new oidb_0xe6b.RspBody();
+      }
+    }
+    try
+    {
+      ((oidb_0xe6b.RspBody)localObject1).mergeFrom(paramTofuItem.bytesFromServer);
+      localObject1 = a((oidb_0xe6b.RspBody)localObject1, localStringBuilder);
+      if (QLog.isColorLevel())
+      {
+        if (paramTofuItem.bytesFromServer == null)
+        {
+          i = -1;
+          QLog.i("Tofu_BaseProfileDataHandler", 2, String.format("getBusDataFromRspBytes [%s] size=%d types=%s", new Object[] { localObject1, Integer.valueOf(i), localStringBuilder.toString() }));
+        }
+      }
+      else {
+        return localObject1;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
       for (;;)
       {
-        i += 1;
-        break;
-        localStringBuilder.append("(this Map)");
-        break label70;
-        label111:
-        localStringBuilder.append("(this Map)");
+        QLog.d("Tofu_BaseProfileDataHandler", 1, "getBusDataFromRspBytes InvalidProtocolBufferMicroException=" + localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
+        Object localObject2 = localObject5;
       }
     }
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.d("Tofu_BaseProfileDataHandler", 1, "getBusDataFromRspBytes JSONException=" + localJSONException.getMessage(), localJSONException);
+        Object localObject3 = localObject5;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.d("Tofu_BaseProfileDataHandler", 1, "getBusDataFromRspBytes Exception=" + localException.getMessage(), localException);
+        Object localObject4 = localObject5;
+        continue;
+        int i = paramTofuItem.bytesFromServer.length;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Anjh.d(this);
+    this.jdField_a_of_type_Anjh.b(this.jdField_a_of_type_MqqUtilWeakReference);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if ((paramInt == 2) && (paramBoolean)) {}
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.i("Tofu_BaseProfileDataHandler", 2, "onGetConfig location parse ready");
+      }
+      return;
+    }
+  }
+  
+  public byte[] a(TofuItem paramTofuItem)
+  {
+    oidb_0xe6b.ReqBody localReqBody = new oidb_0xe6b.ReqBody();
+    localReqBody.uint64_frd_uin.set(paramTofuItem.frdUin);
+    localReqBody.uint32_last_query_time.set((int)paramTofuItem.lastPullTsSvr);
+    return localReqBody.toByteArray();
   }
 }
 

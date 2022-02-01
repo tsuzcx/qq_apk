@@ -1,65 +1,63 @@
-import android.graphics.Canvas;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
-import java.util.Random;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.channel_button.channel_button.Section;
 
 public class rex
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
-  public float g = 0.8F;
-  public float h = 0.4F;
+  public long a;
+  public String a;
+  public List<TabChannelCoverInfo> a;
+  public String b;
   
-  public rex(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView)
+  public rex(long paramLong, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = 360;
-    b();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  private void b()
+  public rex(JSONObject paramJSONObject)
   {
-    c();
-    a();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramJSONObject.optLong("id");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
+    this.b = paramJSONObject.optString("text");
   }
   
-  private void c()
+  public rex(channel_button.Section paramSection)
   {
-    if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) {}
-    for (int i = this.jdField_b_of_type_Int;; i = VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).nextInt() * (this.jdField_a_of_type_Int - this.jdField_b_of_type_Int) + this.jdField_b_of_type_Int)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramSection.uint64_section_id.get();
+    this.jdField_a_of_type_JavaLangString = paramSection.str_section_name.get();
+    this.b = paramSection.str_note_text.get();
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      double d1 = Math.toRadians(i);
-      this.e = ((float)(0.9F * Math.cos(d1)));
-      this.f = ((float)(0.9F * Math.sin(d1)));
-      return;
+      localJSONObject.put("id", this.jdField_a_of_type_Long);
+      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("text", this.b);
+      return localJSONObject;
     }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return localJSONObject;
   }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_Float = (VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a) - VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a).getWidth() / 2);
-    this.jdField_b_of_type_Float = (VideoFeedsLikeAnimate.b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a) - VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a).getHeight() / 2);
-    this.c = this.jdField_a_of_type_Float;
-    this.d = this.jdField_b_of_type_Float;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.c = (this.jdField_a_of_type_Float + this.e * (float)VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView) * paramFloat);
-    this.d = (this.jdField_b_of_type_Float + this.f * (float)VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView) * paramFloat);
-  }
-  
-  public void a(Canvas paramCanvas) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rex
  * JD-Core Version:    0.7.0.1
  */

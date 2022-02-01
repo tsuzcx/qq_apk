@@ -1,18 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.ContactListView;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aily
-  extends altm
+class aily
+  implements View.OnClickListener
 {
-  public aily(ContactListView paramContactListView) {}
+  aily(ailx paramailx) {}
   
-  protected void onAddFriend(String paramString) {}
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
-      this.a.j();
-    }
+    Intent localIntent = new Intent(ailx.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", ailx.a(this.a));
+    ailx.a(this.a).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

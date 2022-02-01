@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.view.View;
 
-public final class ackq
-  implements DialogInterface.OnClickListener
+public abstract interface ackq
 {
-  public ackq(acln paramacln) {}
+  public abstract View a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public abstract void a(Context paramContext);
+  
+  public abstract void b(Context paramContext);
+  
+  public abstract void c(Context paramContext);
 }
 
 

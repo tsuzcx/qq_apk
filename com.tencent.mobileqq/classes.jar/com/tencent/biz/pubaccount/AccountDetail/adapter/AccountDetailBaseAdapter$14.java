@@ -6,24 +6,24 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import ngw;
-import nhn;
-import nhq;
-import nhr;
-import nhs;
-import nht;
-import orc;
-import sff;
-import sfg;
+import npm;
+import nqe;
+import nqh;
+import nqi;
+import nqj;
+import nqk;
+import pgk;
+import tdv;
+import tdw;
 
 public class AccountDetailBaseAdapter$14
   implements Runnable
 {
-  public AccountDetailBaseAdapter$14(ngw paramngw, long paramLong1, List paramList, int paramInt1, int paramInt2, long paramLong2) {}
+  public AccountDetailBaseAdapter$14(npm paramnpm, long paramLong1, List paramList, int paramInt1, int paramInt2, long paramLong2) {}
   
   public void run()
   {
-    if (ngw.a(this.this$0) != this.jdField_a_of_type_Long) {}
+    if (npm.a(this.this$0) != this.jdField_a_of_type_Long) {}
     label25:
     LinkedList localLinkedList;
     label38:
@@ -54,56 +54,56 @@ public class AccountDetailBaseAdapter$14
           break label38;
           i = this.jdField_a_of_type_JavaUtilList.size();
           break label25;
-          if (ngw.a(this.this$0) != this.jdField_a_of_type_Long) {
+          if (npm.a(this.this$0) != this.jdField_a_of_type_Long) {
             break;
           }
           try
           {
-            nhq localnhq = (nhq)this.jdField_a_of_type_JavaUtilList.get(j);
-            if (localnhq == null) {
+            nqh localnqh = (nqh)this.jdField_a_of_type_JavaUtilList.get(j);
+            if (localnqh == null) {
               continue;
             }
-            if (localnhq.jdField_a_of_type_Nhr.jdField_a_of_type_Int != 2) {
+            if (localnqh.jdField_a_of_type_Nqi.jdField_a_of_type_Int != 2) {
               break label232;
             }
-            if (localnhq.jdField_a_of_type_Nht == null) {
+            if (localnqh.jdField_a_of_type_Nqk == null) {
               continue;
             }
-            if (localnhq.jdField_a_of_type_Nht.e != 1) {
+            if (localnqh.jdField_a_of_type_Nqk.e != 1) {
               break label201;
             }
-            localLinkedList.add(nhn.a(new URL(localnhq.jdField_a_of_type_Nht.d), orc.e()));
+            localLinkedList.add(nqe.a(new URL(localnqh.jdField_a_of_type_Nqk.d), pgk.e()));
           }
           catch (Exception localException)
           {
             localException.printStackTrace();
           }
-          if (ngw.a(this.this$0) != this.jdField_a_of_type_Long)
+          if (npm.a(this.this$0) != this.jdField_a_of_type_Long)
           {
             return;
-            localLinkedList.add(nhn.a(new URL(localException.jdField_a_of_type_Nht.jdField_a_of_type_JavaLangString), orc.a()));
+            localLinkedList.add(nqe.a(new URL(localException.jdField_a_of_type_Nqk.jdField_a_of_type_JavaLangString), pgk.a()));
             continue;
-            if (localException.jdField_a_of_type_Nhs != null) {
-              if (localException.jdField_a_of_type_Nhs.jdField_a_of_type_Int == 1) {
-                localLinkedList.add(nhn.a(new URL(localException.jdField_a_of_type_Nhs.b), orc.e()));
+            if (localException.jdField_a_of_type_Nqj != null) {
+              if (localException.jdField_a_of_type_Nqj.jdField_a_of_type_Int == 1) {
+                localLinkedList.add(nqe.a(new URL(localException.jdField_a_of_type_Nqj.b), pgk.e()));
               } else {
-                localLinkedList.add(nhn.a(new URL(localException.jdField_a_of_type_Nhs.jdField_a_of_type_JavaLangString), orc.a()));
+                localLinkedList.add(nqe.a(new URL(localException.jdField_a_of_type_Nqj.jdField_a_of_type_JavaLangString), pgk.a()));
               }
             }
           }
         }
-      } while (ngw.a(this.this$0) != this.jdField_a_of_type_Long);
+      } while (npm.a(this.this$0) != this.jdField_a_of_type_Long);
       Iterator localIterator = localLinkedList.iterator();
       while (localIterator.hasNext())
       {
-        nhn localnhn = (nhn)localIterator.next();
-        if ((localnhn != null) && (localnhn.jdField_a_of_type_JavaNetURL != null))
+        nqe localnqe = (nqe)localIterator.next();
+        if ((localnqe != null) && (localnqe.jdField_a_of_type_JavaNetURL != null))
         {
-          sfg localsfg = new sfg();
-          localsfg.jdField_a_of_type_JavaNetURL = localnhn.jdField_a_of_type_JavaNetURL;
-          localsfg.jdField_a_of_type_Int = ((Integer)localnhn.jdField_a_of_type_AndroidUtilPair.first).intValue();
-          localsfg.jdField_b_of_type_Int = ((Integer)localnhn.jdField_a_of_type_AndroidUtilPair.second).intValue();
-          sff.a().a(localsfg, null);
+          tdw localtdw = new tdw();
+          localtdw.jdField_a_of_type_JavaNetURL = localnqe.jdField_a_of_type_JavaNetURL;
+          localtdw.jdField_a_of_type_Int = ((Integer)localnqe.jdField_a_of_type_AndroidUtilPair.first).intValue();
+          localtdw.jdField_b_of_type_Int = ((Integer)localnqe.jdField_a_of_type_AndroidUtilPair.second).intValue();
+          tdv.a().a(localtdw, null);
         }
       }
     } while (!QLog.isColorLevel());
@@ -113,7 +113,7 @@ public class AccountDetailBaseAdapter$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.14
  * JD-Core Version:    0.7.0.1
  */

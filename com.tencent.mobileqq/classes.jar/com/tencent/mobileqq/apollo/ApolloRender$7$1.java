@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo;
 
-import akph;
+import amin;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloRender$7$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$7$1(akph paramakph, byte[] paramArrayOfByte, int paramInt) {}
+  public ApolloRender$7$1(amin paramamin, byte[] paramArrayOfByte, int paramInt) {}
   
   public String a()
   {
@@ -23,7 +23,7 @@ public class ApolloRender$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.7.1
  * JD-Core Version:    0.7.0.1
  */

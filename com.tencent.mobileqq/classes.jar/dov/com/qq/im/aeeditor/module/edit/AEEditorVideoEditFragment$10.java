@@ -1,20 +1,21 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bljn;
+import anni;
+import bofc;
 
-class AEEditorVideoEditFragment$10
+public class AEEditorVideoEditFragment$10
   implements Runnable
 {
   AEEditorVideoEditFragment$10(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
   public void run()
   {
-    bljn.d(AEEditorVideoEditFragment.e(), "[FrameVideoHelper.GetFrameByteArrayListener.onResult], music - extract frame failed");
+    this.this$0.a(anni.a(2131689713), true, 0L, new bofc(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment.10
  * JD-Core Version:    0.7.0.1
  */

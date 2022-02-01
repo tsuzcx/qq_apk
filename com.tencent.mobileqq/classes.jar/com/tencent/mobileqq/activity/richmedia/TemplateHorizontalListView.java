@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.richmedia;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import bhzg;
+import bkmr;
 import com.tencent.widget.HorizontalListView;
 
 public class TemplateHorizontalListView
@@ -48,7 +48,7 @@ public class TemplateHorizontalListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.TemplateHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

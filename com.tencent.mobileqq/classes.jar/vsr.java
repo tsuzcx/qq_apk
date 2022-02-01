@@ -1,75 +1,62 @@
-import android.view.View;
-import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vsr
-  implements vvr
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int = xsm.d(BaseApplication.getContext());
-  private int b = -1;
-  private int c = -1;
+  int a;
+  public String a;
+  int jdField_b_of_type_Int;
+  private final String jdField_b_of_type_JavaLangString = "image_url";
+  private final String c = "image_width";
+  private final String d = "image_height";
   
-  public vsr(vsp paramvsp) {}
+  public vsr() {}
   
-  public void a(int paramInt)
+  public vsr(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Vsp.a() != 0) {
-      return;
-    }
-    this.c = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public void a(int paramInt1, float paramFloat, int paramInt2)
+  public String a()
   {
-    if (this.jdField_a_of_type_Vsp.a() != 0) {
-      return;
-    }
-    if (this.b == -1) {
-      this.b = paramInt1;
-    }
-    if (this.b != paramInt1)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.b = paramInt1;
-      this.jdField_a_of_type_Float = paramFloat;
+      localJSONObject.put("image_url", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("image_width", this.jdField_a_of_type_Int);
+      localJSONObject.put("image_height", this.jdField_b_of_type_Int);
+      return localJSONObject.toString();
     }
-    if (this.jdField_a_of_type_Float > 0.5D)
+    catch (JSONException localJSONException)
     {
-      this.jdField_a_of_type_Vsp.a.setTranslationY(this.jdField_a_of_type_Int - paramInt2);
-      return;
-    }
-    this.jdField_a_of_type_Vsp.a.setTranslationY(-paramInt2);
-  }
-  
-  public void b(int paramInt)
-  {
-    wxe.a("Q.qqstory.playernew.LoadingMoreWidget", "onPageScrollStateChanged newState=%d visible=%d", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Vsp.a()));
-    if (this.jdField_a_of_type_Vsp.a() != 0) {}
-    do
-    {
-      do
+      for (;;)
       {
-        return;
-        if (paramInt == 1)
-        {
-          this.jdField_a_of_type_Float = -1.0F;
-          this.b = -1;
-          this.c = -1;
-          this.jdField_a_of_type_Vsp.a.clearAnimation();
-          return;
-        }
-      } while (paramInt != 0);
-      if (this.jdField_a_of_type_Float < 0.5D)
-      {
-        this.jdField_a_of_type_Vsp.a.setTranslationY(0.0F);
-        return;
+        localJSONException.printStackTrace();
       }
-    } while (this.c == -1);
-    this.jdField_a_of_type_Vsp.a.setTranslationY(this.jdField_a_of_type_Int);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_JavaLangString = paramString.getString("image_url");
+      this.jdField_a_of_type_Int = paramString.getInt("image_width");
+      this.jdField_b_of_type_Int = paramString.getInt("image_height");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vsr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,30 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
 public class augz
+  implements TextWatcher
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public augz(ForwardFileOption paramForwardFileOption, EditText paramEditText) {}
   
-  public augy a()
-  {
-    return new augy(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public augz a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public augz a(MsgBackupUserData paramMsgBackupUserData)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    return this;
-  }
-  
-  public augz a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public augz b(String paramString)
-  {
-    this.b = paramString;
-    return this;
+    if (paramCharSequence.toString().trim().length() > 36)
+    {
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.toString().substring(0, 36));
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(36);
+      ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption, -4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     augz
  * JD-Core Version:    0.7.0.1
  */

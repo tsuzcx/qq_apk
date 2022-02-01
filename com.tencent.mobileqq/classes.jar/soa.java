@@ -1,33 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class soa
-  implements DialogInterface.OnDismissListener
+class soa
+  implements sow
 {
-  public soa(BridgeModule paramBridgeModule, String paramString) {}
+  soa(snh paramsnh) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new JSONObject();
-    try
+    pum localpum = (pum)paramView.getTag();
+    BaseArticleInfo localBaseArticleInfo = this.a.b(localpum.jdField_a_of_type_Int);
+    if (localBaseArticleInfo == null)
     {
-      paramDialogInterface.put("type", -1);
-      paramDialogInterface.put("action", "close");
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseAdapter", 2, "articleInfo == null, ERROR");
       }
       return;
     }
-    catch (JSONException paramDialogInterface) {}
+    if ((this.a.a != null) && (this.a.a.b()))
+    {
+      this.a.a.a();
+      this.a.b = true;
+    }
+    snh.a(this.a).a(localpum.f, localpum.jdField_a_of_type_Int);
+    snh.a(this.a).a(this.a);
+    snh.a(this.a).a(localBaseArticleInfo, snh.a(this.a, localpum.jdField_a_of_type_Sey, localBaseArticleInfo), this.a.a, new sob(this, localBaseArticleInfo), this.a.c);
+    puf.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     soa
  * JD-Core Version:    0.7.0.1
  */

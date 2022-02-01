@@ -1,17 +1,33 @@
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class aycx
-  implements View.OnTouchListener
+  implements RecyclerView.OnItemTouchListener
 {
-  public aycx(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aycx(Context paramContext, aycz paramaycz)
   {
-    return SignatureHistoryFragment.a(this.a, paramView, false);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new aycy(this, paramaycz));
   }
+  
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  {
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    this.jdField_a_of_type_AndroidViewView = paramRecyclerView.findChildViewUnder(paramMotionEvent.getX(), paramMotionEvent.getY());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    return false;
+  }
+  
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
+  
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 

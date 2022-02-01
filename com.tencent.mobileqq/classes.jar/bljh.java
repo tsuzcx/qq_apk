@@ -1,23 +1,12 @@
-import android.content.Context;
-import android.media.AudioManager;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import android.os.IInterface;
 
-public class bljh
+public abstract interface bljh
+  extends IInterface
 {
-  private AudioManager a;
+  public abstract Bundle a(String paramString, Bundle paramBundle);
   
-  public void a()
-  {
-    this.a = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
-    this.a.requestAudioFocus(null, 3, 2);
-  }
-  
-  public void b()
-  {
-    if (this.a != null) {
-      this.a.abandonAudioFocus(null);
-    }
-  }
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 

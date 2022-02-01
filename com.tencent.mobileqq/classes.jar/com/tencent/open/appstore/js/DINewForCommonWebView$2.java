@@ -1,8 +1,8 @@
 package com.tencent.open.appstore.js;
 
 import android.os.Build.VERSION;
-import bflb;
-import bflp;
+import bisk;
+import bisy;
 import com.tencent.smtt.sdk.WebView;
 
 public class DINewForCommonWebView$2
@@ -19,18 +19,18 @@ public class DINewForCommonWebView$2
         DINewForCommonWebView.a(this.this$0).loadUrl(this.a);
         return;
       }
-      DINewForCommonWebView.a(this.this$0).evaluateJavascript(this.a, new bflb(this));
+      DINewForCommonWebView.a(this.this$0).evaluateJavascript(this.a, new bisk(this));
       return;
     }
     catch (Exception localException)
     {
-      bflp.a("DINewForCommonWebView", "[jsCallBack] e>>> ", localException);
+      bisy.a("DINewForCommonWebView", "[jsCallBack] e>>> ", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.appstore.js.DINewForCommonWebView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,33 @@
-import android.content.DialogInterface;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-class ajkk
-  extends bdgx
+public class ajkk
 {
-  ajkk(ajkg paramajkg) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajkk(PublicAccountInfo paramPublicAccountInfo)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

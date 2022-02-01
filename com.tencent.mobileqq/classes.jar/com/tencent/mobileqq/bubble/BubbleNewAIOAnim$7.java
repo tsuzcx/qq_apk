@@ -2,9 +2,9 @@ package com.tencent.mobileqq.bubble;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.MQLruCache;
-import anwi;
-import anxd;
-import anxk;
+import apwn;
+import apxi;
+import apxp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class BubbleNewAIOAnim$7
   implements Runnable
 {
-  public BubbleNewAIOAnim$7(anxd paramanxd) {}
+  public BubbleNewAIOAnim$7(apxi paramapxi) {}
   
   public void run()
   {
@@ -24,16 +24,16 @@ public class BubbleNewAIOAnim$7
       Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
       if (localIterator.hasNext())
       {
-        anxk localanxk = (anxk)localIterator.next();
-        File localFile = new File(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.this$0.jdField_b_of_type_Int, false), this.this$0.jdField_a_of_type_Anwi.a);
+        apxp localapxp = (apxp)localIterator.next();
+        File localFile = new File(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.this$0.jdField_b_of_type_Int, false), this.this$0.jdField_a_of_type_Apwn.a);
         int i = 0;
         label93:
         Object localObject1;
         String str;
-        if (i < localanxk.jdField_b_of_type_Int)
+        if (i < localapxp.jdField_b_of_type_Int)
         {
-          localObject1 = localFile.getAbsolutePath() + File.separatorChar + localanxk.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
-          str = localanxk.a + (String)localObject1;
+          localObject1 = localFile.getAbsolutePath() + File.separatorChar + localapxp.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
+          str = localapxp.a + (String)localObject1;
           if (this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
             break label310;
           }
@@ -82,7 +82,7 @@ public class BubbleNewAIOAnim$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleNewAIOAnim.7
  * JD-Core Version:    0.7.0.1
  */

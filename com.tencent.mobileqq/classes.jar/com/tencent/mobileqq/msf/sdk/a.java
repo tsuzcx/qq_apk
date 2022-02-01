@@ -54,7 +54,7 @@ public class a
   public static String k;
   static BroadcastReceiver l = new b();
   private static String m = "MSF.D.AppNetInfoImpl";
-  private static final String n = "http://3gimg.qq.com/ping.html";
+  private static final String n = "https://3gimg.qq.com/ping.html";
   private static int o = 0;
   private static AtomicBoolean p = new AtomicBoolean(false);
   private static final int q = 1;
@@ -103,7 +103,7 @@ public class a
   
   public static void a()
   {
-    Object localObject = (HttpURLConnection)new URL("http://3gimg.qq.com/ping.html").openConnection();
+    Object localObject = (HttpURLConnection)new URL("https://3gimg.qq.com/ping.html").openConnection();
     ((HttpURLConnection)localObject).setDoOutput(true);
     ((HttpURLConnection)localObject).setDoInput(true);
     ((HttpURLConnection)localObject).setRequestMethod("GET");

@@ -1,9 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import android.content.Context;
+import android.content.IntentFilter;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
 
 class KandianMergeManager$5
   implements Runnable
@@ -12,10 +10,8 @@ class KandianMergeManager$5
   
   public void run()
   {
-    BaseApplicationImpl.getApplication().unregisterReceiver(this.this$0.a);
-    if (KandianMergeManager.a(this.this$0) != null) {
-      KandianMergeManager.a(this.this$0).getApplication().getApplicationContext().unregisterReceiver(KandianMergeManager.a(this.this$0));
-    }
+    BaseApplicationImpl.getApplication().registerReceiver(this.this$0.a, new IntentFilter("com.tencent.readinjoy.kandianreport"));
+    KandianMergeManager.b(this.this$0);
   }
 }
 

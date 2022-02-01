@@ -1,64 +1,27 @@
-import android.os.Message;
-import android.support.annotation.NonNull;
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tavcut.exporter.MovieExporter;
 
-public class bngb
-  extends bmnh
+class bngb
   implements View.OnClickListener
 {
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  bngb(bnfz parambnfz) {}
   
-  public bngb(@NonNull bnfx parambnfx)
+  public void onClick(View paramView)
   {
-    super(parambnfx);
-  }
-  
-  private void d()
-  {
-    bdgm.a(a().getActivity(), 230).setMessage(2131718641).setPositiveButton(2131718149, new bnge(this)).setNegativeButton(2131691089, new bngd(this)).show();
-  }
-  
-  public bnfx a()
-  {
-    return (bnfx)this.jdField_a_of_type_Bmnj;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131374600));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131366548));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bngc(this));
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    switch (paramMessage.arg1)
+    if (bnfz.a(this.a) != null)
     {
+      if (bnfz.a(this.a) != null) {
+        bnfz.a(this.a).cancelCompress();
+      }
+      bnfz.a(this.a).dismiss();
+      bnfz.a(this.a, null);
+      bnfz.a(this.a, null);
     }
-    for (;;)
-    {
-      return super.a(paramMessage);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 

@@ -1,47 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class aoob
+class aoob
+  extends BroadcastReceiver
 {
-  public boolean a;
+  aoob(aonz paramaonz) {}
   
-  public static aoob a(aoko[] paramArrayOfaoko)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = false;
-    aoob localaoob = new aoob();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaoko != null) {
-      localObject1 = localObject2;
-    }
-    try
+    if (paramIntent != null)
     {
-      if (paramArrayOfaoko.length > 0) {
-        localObject1 = paramArrayOfaoko[0].a;
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject1))
+      paramContext = paramIntent.getAction();
+      if (paramContext != null)
       {
-        QLog.i("LebaRedTouchSwitchBean", 1, "content is empty");
-        return localaoob;
+        if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
+          break label57;
+        }
+        aonz.a(this.a);
       }
-      if (new JSONObject((String)localObject1).optInt("red_touch_all_tianshu", 0) == 1) {
-        bool = true;
-      }
-      localaoob.a = bool;
-      QLog.i("LebaRedTouchSwitchBean", 1, "parse config=" + (String)localObject1 + ",mRedTouchAllTianshu=" + localaoob.a);
-      return localaoob;
     }
-    catch (Exception paramArrayOfaoko)
-    {
-      QLog.i("LebaRedTouchSwitchBean", 1, "handleLebaConfig parse", paramArrayOfaoko);
+    label57:
+    while ((!paramContext.equals("mqq.intent.action.LOGIN")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))) {
+      return;
     }
-    return localaoob;
+    aonz.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoob
  * JD-Core Version:    0.7.0.1
  */

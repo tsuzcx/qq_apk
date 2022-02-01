@@ -1,53 +1,73 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class ayxw
-  extends ayvx
 {
-  private View a;
-  public Button a;
+  private static final Object a = "PicReporter";
   
-  public ayxw(ViewGroup paramViewGroup, int paramInt)
+  public static void a()
   {
-    super(paramViewGroup, paramInt);
+    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131694401), "qqsetting_auto_receive_pic_key", true);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_state", String.valueOf(bool));
+    ayxi.a(a, "report2G3G4GSwitchState", "param_state:" + bool);
+    bctj.a(BaseApplication.getContext()).a(null, "act2G3G4GSwitch", false, 0L, 0L, localHashMap, "");
   }
   
-  public Button a()
+  public static void a(int paramInt, long paramLong)
   {
-    return this.jdField_a_of_type_AndroidWidgetButton;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_network", String.valueOf(paramInt));
+    localHashMap.put("param_limit", String.valueOf(paramLong));
+    ayxi.a(a, "reportOverFlow", "param_network:" + paramInt + ",param_limit:" + paramLong);
+    bctj.a(BaseApplication.getContext()).a(null, "actPicPreDownOverFlow", false, 0L, 0L, localHashMap, "");
   }
   
-  protected void a()
+  public static void a(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
-    this.h = ((TextView)this.b.findViewById(2131371161));
-    this.e = ((ImageView)this.b.findViewById(2131361795));
-    this.i = ((TextView)this.b.findViewById(2131375729));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.b.findViewById(2131375716));
-    this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131689628));
-    this.k = ((TextView)this.b.findViewById(2131376899));
-    this.j = ((TextView)this.b.findViewById(2131375726));
-    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131378980);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    View localView;
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      localView = this.jdField_a_of_type_AndroidViewView;
-      if (!paramBoolean) {
-        break label24;
-      }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
+    ayxi.a(a, "reportBigPicDownCost", "uintype:" + paramInt1 + ",networktype:" + paramInt2 + ",timeCost:" + paramLong);
+    if ((paramInt1 == -1) || (paramInt2 == -1) || (paramLong < 0L)) {
       return;
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_uintype", String.valueOf(paramInt1));
+    localHashMap.put("param_networktype", String.valueOf(paramInt2));
+    localHashMap.put("param_timecost", String.valueOf(paramLong));
+    bctj.a(BaseApplication.getContext()).a(paramString, "actBigPicDownCost", false, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    if (paramHashMap == null)
+    {
+      ayxi.a(a, "reportPicDownAutoLearn", "reportInfo == null");
+      return;
+    }
+    if ((String)paramHashMap.get("xgPreDownCount") == null)
+    {
+      ayxi.a(a, "reportPicDownAutoLearn", "no xg report data");
+      return;
+    }
+    bctj.a(BaseApplication.getContext()).a(paramString, "actPicDownAutoLearn", false, 0L, 0L, paramHashMap, "");
+    ayxi.a(a, "reportPicDownAutoLearn", "");
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PicReporter", 2, "device busy " + paramBoolean);
+    }
+    bctj.a(BaseApplication.getContext()).a(null, "Pic.Mkdir.DeviceBusy", paramBoolean, 0L, 0L, null, "");
+  }
+  
+  public static void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PicReporter", 2, "Aio preview " + paramBoolean);
+    }
+    bctj.a(BaseApplication.getContext()).a(null, "Pic.AioPreview.Empty", paramBoolean, 0L, 0L, null, "");
   }
 }
 

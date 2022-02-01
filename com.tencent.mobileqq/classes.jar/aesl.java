@@ -1,30 +1,38 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aesl
-  implements URLDrawable.URLDrawableListener
+public class aesl
+  implements View.OnClickListener
 {
-  aesl(aesk paramaesk) {}
+  public aesl(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    aesk.d(this.a);
-    QQToast.a(this.a.a, 0, 2131693764, 1).a();
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    aesk.d(this.a);
-    QQToast.a(this.a.a, 0, 2131693764, 1).a();
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    aesk.d(this.a);
-    aesk.a(this.a, aesk.a(this.a));
+    Intent localIntent = new Intent(this.a, SpecailCareListActivity.class);
+    this.a.startActivity(localIntent);
+    bcst.b(this.a.app, "CliOper", "", "", "0X80050E3", "0X80050E3", 0, 0, "1", "", "", "");
+    bcst.b(this.a.app, "CliOper", "", "", "Special_remind", "Clk_special_remind", 80, 0, "", "", "", "");
+    if (this.a.app != null)
+    {
+      this.a.app.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 0).edit().putBoolean("spcial_care_qq_setting", false).commit();
+      NotifyPushSettingActivity.b(this.a).setRightIcon(null);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.d("IphoneTitleBarActivity", 1, "App is null, can't display 'new' flag for SpecialCare(onClick)");
+    }
   }
 }
 

@@ -18,7 +18,7 @@ public final class chatroom_sso$Msg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.av.chatroom.chatroom_sso.Msg
  * JD-Core Version:    0.7.0.1
  */

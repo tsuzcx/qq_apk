@@ -1,6 +1,61 @@
-public abstract interface bdvm
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+
+final class bdvm
+  implements bdvw
 {
-  public abstract void a();
+  long jdField_a_of_type_Long = 0L;
+  
+  bdvm(URLDrawableHandler paramURLDrawableHandler, String paramString, bdvo parambdvo) {}
+  
+  public void onResp(bdwt parambdwt)
+  {
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("HttpDownloader", 2, " structMsgCover download onResp result fileSize = " + this.jdField_a_of_type_Long + " file.path = " + parambdwt.jdField_a_of_type_Bdws.c + " resp.result = " + parambdwt.jdField_a_of_type_Int);
+    }
+    if (parambdwt.jdField_a_of_type_Int == 3) {
+      return;
+    }
+    boolean bool1;
+    if (parambdwt.jdField_a_of_type_Int == 0)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
+      {
+        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(this.jdField_a_of_type_Long);
+        bool1 = bool2;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        bdvl.a(bool1, new URL(this.jdField_a_of_type_JavaLangString), true, parambdwt.c, parambdwt.e, null, this.jdField_a_of_type_Bdvo);
+        return;
+      }
+      catch (Exception parambdwt)
+      {
+        return;
+      }
+      bool2 = false;
+      bool1 = bool2;
+      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
+      {
+        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(parambdwt.jdField_a_of_type_Int);
+        bool1 = bool2;
+      }
+    }
+  }
+  
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HttpDownloader", 2, " structMsgCover onUpdateProgeress totalLen = " + paramLong2 + " curOffset = " + paramLong1);
+    }
+    this.jdField_a_of_type_Long = paramLong2;
+  }
 }
 
 

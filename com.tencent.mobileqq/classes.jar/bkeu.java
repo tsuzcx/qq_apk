@@ -1,27 +1,21 @@
-import com.tencent.qg.sdk.invoke.BaseJsModule;
-import com.tencent.qg.sdk.invoke.InvokeCallback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
 
 public class bkeu
-  extends BaseJsModule
+  implements PtuFilterResource
 {
-  public bkeu(bkes parambkes) {}
-  
-  public String getModuleName()
+  public boolean checkPendantVersionOK()
   {
-    return "VipQGModel";
+    return bnpy.a(bnpt.b);
   }
   
-  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  public String getPortraitPathDir()
   {
-    if ("notifyJsInvokeFinish".equalsIgnoreCase(paramString))
-    {
-      QLog.i("VipQGModel", 1, "handleJsRequest: notifyJsInvokeFinish");
-      this.a.a("getDeviceSize", new float[] { bdoo.a(), bdoo.b() });
-      return true;
-    }
-    return false;
+    return getSoPathDir();
+  }
+  
+  public String getSoPathDir()
+  {
+    return bnpy.b();
   }
 }
 

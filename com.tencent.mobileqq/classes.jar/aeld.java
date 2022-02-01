@@ -1,25 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeld
-  implements TextWatcher
+  extends BroadcastReceiver
 {
-  public aeld(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public aeld(JumpActivity paramJumpActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramEditable.length() >= 4)
+    if (!this.a.isFinishing())
     {
-      VerifyCodeActivity.c(this.a, true);
-      return;
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
+      this.a.finish();
     }
-    VerifyCodeActivity.d(this.a, false);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

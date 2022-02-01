@@ -1,21 +1,21 @@
 package com.tencent.biz.qqcircle.events;
 
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
-import trx;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import uzk;
 
 public class QCircleFeedCommentEllipseEvent
   extends SimpleBaseEvent
 {
-  public trx mInfo;
+  public uzk mInfo;
   
-  public QCircleFeedCommentEllipseEvent(trx paramtrx)
+  public QCircleFeedCommentEllipseEvent(uzk paramuzk)
   {
-    this.mInfo = paramtrx;
+    this.mInfo = paramuzk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.events.QCircleFeedCommentEllipseEvent
  * JD-Core Version:    0.7.0.1
  */

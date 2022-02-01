@@ -1,14 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class aiho
-  implements View.OnClickListener
+  extends anun
 {
-  aiho(aihl paramaihl) {}
+  aiho(aihn paramaihn) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, int paramInt)
   {
-    this.a.dismiss();
+    super.a(paramString, paramInt);
+    aihn.a(this.a).b();
   }
 }
 

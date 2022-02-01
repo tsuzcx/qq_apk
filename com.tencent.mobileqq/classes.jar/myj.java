@@ -1,40 +1,68 @@
-import android.graphics.Matrix;
+import androidx.annotation.NonNull;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class myj
+public abstract class myj
+  implements mxq
 {
-  public float a;
-  public int a;
-  public final Matrix a;
-  public myg a;
-  public myi a;
-  public myj a;
-  public float b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "";
+  boolean jdField_a_of_type_Boolean = false;
+  String b = "";
   
-  private myj()
+  public int a()
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(myj parammyj)
+  @Nullable
+  public String a()
   {
-    this.jdField_a_of_type_Int = parammyj.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Float = parammyj.jdField_a_of_type_Float;
-    this.b = parammyj.b;
-    this.c = parammyj.c;
-    this.d = parammyj.d;
-    this.e = parammyj.e;
-    this.f = parammyj.d;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(parammyj.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_Myg = parammyj.jdField_a_of_type_Myg;
+    return this.b;
+  }
+  
+  public List<? extends mxq> a()
+  {
+    return null;
+  }
+  
+  public abstract mxq a();
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a(mxq parammxq)
+  {
+    return (parammxq != null) && (parammxq.a() == a()) && (parammxq.b() == b());
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id").append("=").append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append("isTopicBank").append("=").append(this.jdField_a_of_type_Boolean).append("|");
+    localStringBuilder.append("gameType").append("=").append(b()).append("|");
+    localStringBuilder.append("content").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append("answer").append("=").append(this.b).append("|");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     myj
  * JD-Core Version:    0.7.0.1
  */

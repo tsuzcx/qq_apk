@@ -1,39 +1,36 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.1;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.2;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.3;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import mqq.os.MqqHandler;
+import QzoneCombine.ClientOnlineNotfiyReq;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class blrc
-  implements bnpi
+  extends QzoneExternalRequest
 {
-  blrc(blra paramblra) {}
+  ClientOnlineNotfiyReq a;
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public blrc(long paramLong, byte[] paramArrayOfByte)
   {
-    ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.3(this, paramPtvTemplateInfo, paramInt));
+    this.needCompress = false;
+    this.a = new ClientOnlineNotfiyReq(paramArrayOfByte, paramLong);
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  public String getCmdString()
   {
-    if (paramPtvTemplateInfo.usable)
-    {
-      bmaz.a(paramPtvTemplateInfo).b();
-      if ((!(blra.a(this.a) instanceof blqk)) || (((blqk)blra.a(this.a)).e())) {
-        break label54;
-      }
-    }
-    label54:
-    do
-    {
-      return;
-      bmaz.a(paramPtvTemplateInfo).c();
-      break;
-      ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
-    } while (paramBoolean);
-    bnfi.a("", "0X80075BB", "", "", "", "");
-    ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.2(this));
+    return "QzoneNewService." + uniKey();
+  }
+  
+  public byte[] getEncodedUniParameter()
+  {
+    return bkze.a(this.a);
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "MqqOnlineNtf";
   }
 }
 

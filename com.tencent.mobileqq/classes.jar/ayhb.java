@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.TranslateFragment;
 
-class ayhb
-  implements Comparator<ayms>
+public class ayhb
+  implements ayjd
 {
-  ayhb(ayha paramayha) {}
+  public ayhb(TranslateFragment paramTranslateFragment, ayfk paramayfk) {}
   
-  public int a(ayms paramayms1, ayms paramayms2)
+  public void a(int paramInt, ayje paramayje)
   {
-    int i = paramayms2.a[2] - paramayms1.a[2];
-    if (i != 0) {}
-    int j;
-    do
+    if ((paramayje != null) && (!TextUtils.isEmpty(paramayje.b)))
     {
-      return i;
-      j = paramayms1.a[0] - paramayms2.a[0];
-      i = j;
-    } while (j != 0);
-    paramayms1 = paramayms1.c.substring(paramayms1.a[0] + paramayms1.a[1]);
-    paramayms2 = paramayms2.c.substring(paramayms2.a[0] + paramayms2.a[1]);
-    return ChnToSpell.a(paramayms1, 2).compareTo(ChnToSpell.a(paramayms2, 2));
+      if (!this.jdField_a_of_type_Ayfk.c.equalsIgnoreCase(paramayje.b)) {
+        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, this.jdField_a_of_type_Ayfk.b, paramayje.b);
+      }
+      ayfi.a("0X800AD31", ayfi.a(paramayje.b));
+    }
   }
 }
 

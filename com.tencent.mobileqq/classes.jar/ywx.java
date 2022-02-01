@@ -1,68 +1,50 @@
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.style.ImageSpan;
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public class ywx
-  extends ImageSpan
+public final class ywx
+  extends yxs
 {
-  private WeakReference<Drawable> a;
-  
-  public ywx(Drawable paramDrawable)
+  public ywx(DoodleView paramDoodleView)
   {
-    super(paramDrawable);
+    super(paramDoodleView);
   }
   
-  private Drawable a()
+  public String a()
   {
-    Object localObject = this.a;
-    Drawable localDrawable = null;
-    if (localObject != null) {
-      localDrawable = (Drawable)((WeakReference)localObject).get();
-    }
-    localObject = localDrawable;
-    if (localDrawable == null)
-    {
-      localObject = getDrawable();
-      this.a = new WeakReference(localObject);
-    }
-    return localObject;
+    return "EmptyLayer";
   }
   
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  public void a() {}
+  
+  protected void a(Canvas paramCanvas) {}
+  
+  public boolean a()
   {
-    paramCharSequence = a();
-    paramCanvas.save();
-    paramInt1 = paramCharSequence.getIntrinsicHeight();
-    paramInt2 = paramPaint.getFontMetricsInt().ascent;
-    paramInt3 = paramPaint.getFontMetricsInt().descent;
-    paramInt4 = paramCharSequence.getBounds().bottom;
-    paramCanvas.translate(paramFloat, ((paramInt1 - paramInt3 + paramInt2) / 2 + (paramInt5 - paramInt4)) / 5);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    return true;
   }
   
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    paramCharSequence = a().getBounds();
-    if (paramFontMetricsInt != null)
-    {
-      paramPaint = paramPaint.getFontMetricsInt();
-      paramFontMetricsInt.ascent = paramPaint.ascent;
-      paramFontMetricsInt.descent = paramPaint.descent;
-      paramFontMetricsInt.top = paramPaint.top;
-      paramFontMetricsInt.bottom = paramPaint.bottom;
-    }
-    return paramCharSequence.right;
+    return false;
+  }
+  
+  public void b(Canvas paramCanvas) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    yqp.b("EmptyLayer", "EmptyLayer handle touch event.");
+    return false;
+  }
+  
+  public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ywx
  * JD-Core Version:    0.7.0.1
  */

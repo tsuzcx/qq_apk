@@ -1,39 +1,28 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
-public class vgv
-  extends uro
+class vgv
 {
-  private final qqstory_group.RspAddGroupVideo a;
+  int jdField_a_of_type_Int;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   
-  public vgv(qqstory_group.RspAddGroupVideo paramRspAddGroupVideo)
+  public boolean equals(Object paramObject)
   {
-    super(paramRspAddGroupVideo.result);
-    this.a = paramRspAddGroupVideo;
-  }
-  
-  public List<vgw> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.group_feed_list.get().iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(new vgw((qqstory_group.GroupFeed)localIterator.next()));
-    }
-    return localArrayList;
-  }
-  
-  public String toString()
-  {
-    return "AddGroupVideoResponse{mRspAddGroupVideo=" + a() + '}';
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (!(paramObject instanceof vgv))) {
+        return false;
+      }
+    } while (this.a == ((vgv)paramObject).a);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vgv
  * JD-Core Version:    0.7.0.1
  */

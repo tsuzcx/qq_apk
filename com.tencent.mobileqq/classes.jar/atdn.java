@@ -1,13 +1,38 @@
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDns;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class atdn
-  implements CustomizedDns
+  implements atdp
 {
-  atdn(atdh paramatdh) {}
+  private bktt jdField_a_of_type_Bktt = new bktt();
   
-  public String getip(String paramString)
+  public atdn(atdm paramatdm)
   {
-    return ateg.a().a(paramString);
+    this.jdField_a_of_type_Bktt.a();
+  }
+  
+  public int a(long paramLong1, long paramLong2)
+  {
+    int j = this.jdField_a_of_type_Bktt.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
+    int k = bktw.a(BaseApplication.getContext());
+    int i;
+    if (k != 1)
+    {
+      i = j;
+      if (k != 2) {}
+    }
+    else
+    {
+      i = j;
+      if (j > 16384) {
+        i = 16384;
+      }
+    }
+    return i;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bktt.b();
   }
 }
 

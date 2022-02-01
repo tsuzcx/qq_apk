@@ -1,23 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appstore.dl.DownloadManagerV2.19;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
+import tencent.im.oidb.cmd0xea3.oidb_0xea3.BackMsg;
 
 public class bfkt
-  implements DialogInterface.OnClickListener
+  implements anil
 {
-  public bfkt(DownloadManagerV2.19 param19) {}
+  public bfkt(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(long paramLong) {}
+  
+  protected void a(long paramLong, boolean paramBoolean) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, List<oidb_0xea3.BackMsg> paramList, List<Long> paramList1) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bfoh.r, false);
-    bfkv.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
+      return;
+    case 2: 
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), paramBoolean, ((Integer)paramObject[1]).intValue());
+      return;
+    case 3: 
+      a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
+      return;
+    }
+    Object[] arrayOfObject = (Object[])paramObject;
+    if (arrayOfObject[1] != null) {}
+    for (paramObject = (List)arrayOfObject[1];; paramObject = null)
+    {
+      if (arrayOfObject[2] != null) {}
+      for (List localList = (List)arrayOfObject[2];; localList = null)
+      {
+        a(((Long)arrayOfObject[0]).longValue(), paramBoolean, paramObject, localList);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfkt
  * JD-Core Version:    0.7.0.1
  */

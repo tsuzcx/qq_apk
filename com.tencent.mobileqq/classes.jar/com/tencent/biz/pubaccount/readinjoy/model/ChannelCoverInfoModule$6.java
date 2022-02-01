@@ -2,13 +2,13 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import oxb;
-import pfg;
+import pmk;
+import pwl;
 
 public class ChannelCoverInfoModule$6
   implements Runnable
 {
-  public ChannelCoverInfoModule$6(pfg parampfg, boolean paramBoolean, List paramList) {}
+  public ChannelCoverInfoModule$6(pwl parampwl, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ChannelCoverInfoModule$6
       i = 1;
     }
     QLog.d("ChannelCoverInfoModule", 2, new Object[] { "notifyIndependentTabUIToRefresh, success = ", Integer.valueOf(i) });
-    oxb.a().e(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList);
+    pmk.a().e(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

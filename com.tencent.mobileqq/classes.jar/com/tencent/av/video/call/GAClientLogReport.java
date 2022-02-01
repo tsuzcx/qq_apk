@@ -1,6 +1,6 @@
 package com.tencent.av.video.call;
 
-import bfvp;
+import bjcq;
 
 public class GAClientLogReport
 {
@@ -16,7 +16,7 @@ public class GAClientLogReport
     }
     catch (Throwable localThrowable)
     {
-      bfvp.a("GAClientLogReport", "cacheMethodIds fail.", localThrowable);
+      bjcq.a("GAClientLogReport", "cacheMethodIds fail.", localThrowable);
     }
   }
   
@@ -29,7 +29,7 @@ public class GAClientLogReport
     }
     catch (Throwable localThrowable)
     {
-      bfvp.a("GAClientLogReport", "inti fail.", localThrowable);
+      bjcq.a("GAClientLogReport", "inti fail.", localThrowable);
     }
   }
   
@@ -52,7 +52,7 @@ public class GAClientLogReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.video.call.GAClientLogReport
  * JD-Core Version:    0.7.0.1
  */

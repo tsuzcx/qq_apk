@@ -5,8 +5,8 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.text.TextUtils;
 import android.util.Log;
-import bdfi;
-import bdgk;
+import bgkl;
+import bgln;
 import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder;
@@ -90,13 +90,13 @@ class AudioJsPlugin$AudioManager
       if (this.isRecordManagerApi)
       {
         localJSONObject.put("state", "stop");
-        AudioJsPlugin.access$1500(this.this$0, "onRecorderStateChange", localJSONObject.toString());
+        AudioJsPlugin.access$1600(this.this$0, "onRecorderStateChange", localJSONObject.toString());
         return;
       }
-      AudioJsPlugin.access$1400(this.this$0, "startRecord", this.startRecordBridge, localJSONObject);
+      AudioJsPlugin.access$900(this.this$0, "startRecord", this.startRecordBridge, localJSONObject);
       if (this.stopRecordBridge != null)
       {
-        AudioJsPlugin.access$1300(this.this$0, "stopRecord", this.stopRecordBridge);
+        AudioJsPlugin.access$1500(this.this$0, "stopRecord", this.stopRecordBridge);
         this.stopRecordBridge = null;
         return;
       }
@@ -111,10 +111,10 @@ class AudioJsPlugin$AudioManager
   {
     if (paramInt == 8)
     {
-      AudioJsPlugin.access$1200(this.this$0, "playVoice", this.playVoiceBidge);
+      AudioJsPlugin.access$1400(this.this$0, "playVoice", this.playVoiceBidge);
       return;
     }
-    AudioJsPlugin.access$1400(this.this$0, "playVoice", this.playVoiceBidge, null);
+    AudioJsPlugin.access$900(this.this$0, "playVoice", this.playVoiceBidge, null);
   }
   
   private void handleRecordFail(String paramString)
@@ -127,7 +127,7 @@ class AudioJsPlugin$AudioManager
       {
         localJSONObject.put("state", "error");
         localJSONObject.put("errMsg", "recordError:" + paramString);
-        AudioJsPlugin.access$1500(this.this$0, "onRecorderStateChange", localJSONObject.toString());
+        AudioJsPlugin.access$1600(this.this$0, "onRecorderStateChange", localJSONObject.toString());
         return;
       }
       catch (Exception paramString)
@@ -136,7 +136,7 @@ class AudioJsPlugin$AudioManager
         return;
       }
     }
-    AudioJsPlugin.access$1200(this.this$0, "startRecord", this.startRecordBridge);
+    AudioJsPlugin.access$1400(this.this$0, "startRecord", this.startRecordBridge);
   }
   
   private int parseAudioType(String paramString)
@@ -181,14 +181,14 @@ class AudioJsPlugin$AudioManager
   {
     paramString = getLameMp3Recorder().getRecordFilPath();
     QLog.e("[mini] AudioJsPlugin", 2, "AudioManager.onRecorderNotReady() is called,path is:" + paramString);
-    AudioJsPlugin.access$1200(this.this$0, "startRecord", this.startRecordBridge);
+    AudioJsPlugin.access$1400(this.this$0, "startRecord", this.startRecordBridge);
   }
   
   public void onPlayFinish()
   {
     QLog.d("[mini] AudioJsPlugin", 2, "onPlayFinish");
     releasePlayer();
-    AudioJsPlugin.access$1400(this.this$0, "playVoice", this.playVoiceBidge, null);
+    AudioJsPlugin.access$900(this.this$0, "playVoice", this.playVoiceBidge, null);
   }
   
   public void onPlayPause()
@@ -210,7 +210,7 @@ class AudioJsPlugin$AudioManager
   {
     QLog.d("[mini] AudioJsPlugin", 2, "onPlayStop");
     releasePlayer();
-    AudioJsPlugin.access$1400(this.this$0, "playVoice", this.playVoiceBidge, null);
+    AudioJsPlugin.access$900(this.this$0, "playVoice", this.playVoiceBidge, null);
   }
   
   public void onPlayUpdate(int paramInt1, int paramInt2) {}
@@ -226,7 +226,7 @@ class AudioJsPlugin$AudioManager
       localJSONObject.put("state", "frameRecorded");
       NativeBuffer.packNativeBuffer(paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "frameBuffer", localJSONObject, (ITNativeBufferPool)this.this$0.jsPluginEngine.getNativeBufferPool());
       localJSONObject.put("isLastFrame", paramBoolean);
-      AudioJsPlugin.access$1500(this.this$0, "onRecorderStateChange", localJSONObject.toString());
+      AudioJsPlugin.access$1600(this.this$0, "onRecorderStateChange", localJSONObject.toString());
       return;
     }
     catch (Throwable paramArrayOfByte)
@@ -246,7 +246,7 @@ class AudioJsPlugin$AudioManager
     try
     {
       localJSONObject.put("state", "pause");
-      AudioJsPlugin.access$1500(this.this$0, "onRecorderStateChange", localJSONObject.toString());
+      AudioJsPlugin.access$1600(this.this$0, "onRecorderStateChange", localJSONObject.toString());
       return;
     }
     catch (Exception localException)
@@ -265,7 +265,7 @@ class AudioJsPlugin$AudioManager
     try
     {
       localJSONObject.put("state", "resume");
-      AudioJsPlugin.access$1500(this.this$0, "onRecorderStateChange", localJSONObject.toString());
+      AudioJsPlugin.access$1600(this.this$0, "onRecorderStateChange", localJSONObject.toString());
       return;
     }
     catch (Exception localException)
@@ -284,7 +284,7 @@ class AudioJsPlugin$AudioManager
     try
     {
       localJSONObject.put("state", "start");
-      AudioJsPlugin.access$1500(this.this$0, "onRecorderStateChange", localJSONObject.toString());
+      AudioJsPlugin.access$1600(this.this$0, "onRecorderStateChange", localJSONObject.toString());
       return;
     }
     catch (Exception localException)
@@ -318,10 +318,10 @@ class AudioJsPlugin$AudioManager
     if (this.recorder != null)
     {
       this.recorder.playPause();
-      AudioJsPlugin.access$1400(this.this$0, "pauseVoice", paramBridgeInfo, null);
+      AudioJsPlugin.access$900(this.this$0, "pauseVoice", paramBridgeInfo, null);
       return;
     }
-    AudioJsPlugin.access$1200(this.this$0, "pauseVoice", paramBridgeInfo);
+    AudioJsPlugin.access$1400(this.this$0, "pauseVoice", paramBridgeInfo);
   }
   
   public void playVoice(String paramString, BridgeInfo paramBridgeInfo)
@@ -375,15 +375,15 @@ class AudioJsPlugin$AudioManager
     {
       if (i != 0)
       {
-        localObject = bdgk.b();
+        localObject = bgln.b();
         if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
         {
           if (AudioHelper.b(1))
           {
             if (this.this$0.isColorLevel()) {
-              this.this$0.miniLogD("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131698780));
+              this.this$0.miniLogD("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131697666));
             }
-            AudioJsPlugin.access$1200(this.this$0, "startRecord", paramBridgeInfo);
+            AudioJsPlugin.access$1400(this.this$0, "startRecord", paramBridgeInfo);
             return;
             i = 0;
             break;
@@ -397,18 +397,18 @@ class AudioJsPlugin$AudioManager
           }
           paramBridgeInfo = this.recorder.getRecordFilPath();
           QLog.i("QQRecorder", 2, "path: " + paramBridgeInfo);
-          bdfi.a(this.context, true);
+          bgkl.a(this.context, true);
           this.recorder.recordStart();
           setFateOfRecorder(0);
           return;
         }
-        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131719552));
-        AudioJsPlugin.access$1200(this.this$0, "startRecord", paramBridgeInfo);
+        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131717591));
+        AudioJsPlugin.access$1400(this.this$0, "startRecord", paramBridgeInfo);
         return;
       }
     }
-    QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131694853));
-    AudioJsPlugin.access$1200(this.this$0, "startRecord", paramBridgeInfo);
+    QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131694003));
+    AudioJsPlugin.access$1400(this.this$0, "startRecord", paramBridgeInfo);
   }
   
   public void stopRecord(int paramInt, BridgeInfo paramBridgeInfo, boolean paramBoolean)
@@ -418,10 +418,10 @@ class AudioJsPlugin$AudioManager
     if (this.recorder != null)
     {
       this.recorder.recordStop();
-      AudioJsPlugin.access$1300(this.this$0, "stopRecord", this.stopRecordBridge);
+      AudioJsPlugin.access$1500(this.this$0, "stopRecord", this.stopRecordBridge);
       return;
     }
-    AudioJsPlugin.access$1200(this.this$0, "stopRecord", this.stopRecordBridge);
+    AudioJsPlugin.access$1400(this.this$0, "stopRecord", this.stopRecordBridge);
   }
   
   public void stopVoice(BridgeInfo paramBridgeInfo)
@@ -429,15 +429,15 @@ class AudioJsPlugin$AudioManager
     if (this.recorder != null)
     {
       this.recorder.playStop();
-      AudioJsPlugin.access$1300(this.this$0, "stopVoice", paramBridgeInfo);
+      AudioJsPlugin.access$1500(this.this$0, "stopVoice", paramBridgeInfo);
       return;
     }
-    AudioJsPlugin.access$1200(this.this$0, "stopVoice", paramBridgeInfo);
+    AudioJsPlugin.access$1400(this.this$0, "stopVoice", paramBridgeInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AudioJsPlugin.AudioManager
  * JD-Core Version:    0.7.0.1
  */

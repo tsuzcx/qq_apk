@@ -1,66 +1,147 @@
-import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
+import android.text.TextUtils;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqreader.QReaderHelper.1;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import mqq.app.AppRuntime;
 
-class blnx
-  implements bljj
+public class blnx
 {
-  blnx(blnt paramblnt, blny paramblny, String paramString1, AEEditorDownloadResBean paramAEEditorDownloadResBean, String paramString2, String paramString3) {}
+  public static int a = 0;
+  public static boolean a;
   
-  public void a(int paramInt) {}
-  
-  public void a(bavf parambavf)
+  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    boolean bool3 = false;
-    if (parambavf == null)
-    {
-      if (this.jdField_a_of_type_Blny != null) {
-        this.jdField_a_of_type_Blny.a(false);
-      }
-      blnt.a(this.jdField_a_of_type_Blnt, this.jdField_a_of_type_JavaLangString, false);
-      return;
+    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
+      return null;
     }
-    boolean bool1;
-    boolean bool2;
-    if (parambavf.a == 0)
+    try
     {
-      bool1 = true;
-      bljn.b("AEEditorFiltersManager", "downLoadOneResInternal-onDownloadFinish---isSuccess=" + bool1 + ", id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
-      bool2 = bool3;
-      if (bool1)
+      paramString = Class.forName("com.qqreader.ReaderRuntime");
+      if (paramString == null)
       {
-        String str = bdhb.c(this.b);
-        if ((str == null) || (!str.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
-          break label309;
+        if (QLog.isColorLevel()) {
+          QLog.d("QReaderHelper", 2, "createReaderRuntime: load class failed");
         }
+        return null;
       }
     }
-    for (;;)
+    catch (ClassNotFoundException paramString)
     {
       try
       {
-        bool2 = blnt.a(this.jdField_a_of_type_Blnt, this.b, this.c, this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId(), this.jdField_a_of_type_JavaLangString);
-        bliu.a().a(bool1, 3, "AEEditorFilter", this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId(), parambavf.b, parambavf.h);
-        if (!bool2) {
-          bdhb.a(this.c);
-        }
-        bdhb.d(this.b);
-        bljn.b("AEEditorFiltersManager", "downLoadOneResInternal-onDownloadFinish---REAL result=" + bool2 + ", id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
-        if (this.jdField_a_of_type_Blny != null) {
-          this.jdField_a_of_type_Blny.a(bool2);
-        }
-        blnt.a(this.jdField_a_of_type_Blnt, this.jdField_a_of_type_JavaLangString, bool2);
-        return;
-        bool1 = false;
+        ClassLoader localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqreaderplugin.apk");
+        paramString = localClassLoader.loadClass("com.qqreader.ReaderRuntime");
+        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
       }
-      catch (Exception localException)
+      catch (Exception paramBaseApplicationImpl)
       {
-        bljn.a("AEEditorFiltersManager", "downLoadOneResInternal-onDownloadFinish---unZipFile failed, id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId(), localException);
-        localException.printStackTrace();
-        bool2 = bool3;
-        continue;
+        return null;
       }
-      label309:
-      bljn.d("AEEditorFiltersManager", "downLoadOneResInternal-onDownloadFinish---MD5 check failed, id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
-      bool2 = bool3;
+      paramBaseApplicationImpl = paramString.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, "Reader" });
+      if ((paramBaseApplicationImpl != null) && ((paramBaseApplicationImpl instanceof AppRuntime)))
+      {
+        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
+      }
+    }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+  }
+  
+  public static void a(int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    if (!bgnt.g(paramQQAppInterface.getApplication())) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QReaderHelper", 2, "no network. skip update offline pkg.");
+      }
+    }
+    do
+    {
+      return;
+      if (a(paramInt))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QReaderHelper", 1, "entry " + paramInt + " offline preload enabled,update offline package now!");
+        }
+        nko.a();
+        ThreadManager.post(new QReaderHelper.1(paramQQAppInterface), 5, null, true);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("QReaderHelper", 2, "entry " + paramInt + " offline preload is disabled.");
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    boolean bool = true;
+    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qr_process_config.name());
+    if ((TextUtils.isEmpty((CharSequence)localObject)) && (QLog.isColorLevel())) {
+      QLog.e("QReaderHelper", 1, "reader dpc is null.");
+    }
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.e("QReaderHelper", 2, "enableOfflinePreload,dpc=" + (String)localObject);
+      }
+      localObject = ((String)localObject).split("\\|");
+      if (localObject.length >= 7) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("QReaderHelper", 2, "offline preload switch not fount.");
+    return false;
+    if ((Integer.parseInt(localObject[6]) & paramInt) != 0) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
     }
   }
 }

@@ -1,27 +1,25 @@
-import android.widget.TextView;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class yms
-  implements ynq
+public class yms
+  implements View.OnClickListener
 {
-  yms(ymq paramymq, afkf paramafkf) {}
+  public yms(StoryListPresenter.4.1 param1) {}
   
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    Long localLong = (Long)ymq.b(this.jdField_a_of_type_Ymq).get(Integer.valueOf(this.jdField_a_of_type_Afkf.b));
-    if ((localLong != null) && (localLong.longValue() > paramLong2) && (paramLong1 != localLong.longValue()) && (Math.abs(paramLong1 - localLong.longValue()) > 100L))
-    {
-      this.jdField_a_of_type_Afkf.a.setText((CharSequence)ymq.c(this.jdField_a_of_type_Ymq).get(Integer.valueOf(this.jdField_a_of_type_Afkf.b)));
-      return;
-    }
-    ymq.b(this.jdField_a_of_type_Ymq).put(Integer.valueOf(this.jdField_a_of_type_Afkf.b), Long.valueOf(paramLong2));
-    ymq.c(this.jdField_a_of_type_Ymq).put(Integer.valueOf(this.jdField_a_of_type_Afkf.b), paramString);
-    this.jdField_a_of_type_Afkf.a.setText(paramString);
+    yqu.a("home_page", "clk_up_shoot", 0, 0, new String[0]);
+    this.a.a.this$0.jdField_a_of_type_Ync.a(false, true, 13, null);
+    this.a.a.this$0.jdField_a_of_type_Ypv.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yms
  * JD-Core Version:    0.7.0.1
  */

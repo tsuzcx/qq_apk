@@ -1,12 +1,12 @@
-public abstract interface apnk
+class apnk
+  implements apnr
 {
-  public abstract void a();
+  apnk(apni paramapni) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(apms paramapms);
-  
-  public abstract void b();
+  public void a(apnu paramapnu, boolean paramBoolean, byte[] paramArrayOfByte)
+  {
+    apni.a(this.a, (apnw)paramapnu, paramBoolean, paramArrayOfByte);
+  }
 }
 
 

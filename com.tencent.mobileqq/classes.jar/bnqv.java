@@ -1,43 +1,24 @@
-import android.os.AsyncTask;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class bnqv
-  extends AsyncTask<Void, Void, Integer>
+class bnqv
+  implements Animation.AnimationListener
 {
-  public bnqv(SVHwEncoder.HwEncode paramHwEncode) {}
+  bnqv(bnqt parambnqt, Runnable paramRunnable) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    long l = System.currentTimeMillis();
-    paramVarArgs = SVHwEncoder.HwEncode.a(this.a) + "shortvideo_thumb.jpg";
-    int j = this.a.a.a(SVHwEncoder.HwEncode.b(this.a), SVHwEncoder.f(this.a.this$0), SVHwEncoder.g(this.a.this$0), SVHwEncoder.a(this.a.this$0), SVHwEncoder.b(this.a.this$0), paramVarArgs);
-    int i = j;
-    String str;
-    if (j == 0)
-    {
-      str = ShortVideoUtils.a(this.a.a.jdField_a_of_type_JavaLangString, "jpg");
-      if (!bdhb.c(paramVarArgs, str)) {
-        break label177;
-      }
-      this.a.a.b = str;
-      i = j;
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
-    for (;;)
-    {
-      this.a.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-      this.a.a.jdField_a_of_type_Int = i;
-      SVHwEncoder.HwEncode.a(this.a, true);
-      return Integer.valueOf(i);
-      label177:
-      i = j;
-      if (!bdhb.b(str))
-      {
-        this.a.this$0.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
-        i = -3;
-      }
-    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    bnqt.a(this.jdField_a_of_type_Bnqt).setVisibility(0);
   }
 }
 

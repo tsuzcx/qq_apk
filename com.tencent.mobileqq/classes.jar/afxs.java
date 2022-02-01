@@ -1,23 +1,111 @@
-import android.app.Activity;
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.app.ThreadManager;
+import org.json.JSONObject;
 
-class afxs
-  implements bixi
+public class afxs
+  implements afxo
 {
-  afxs(afxr paramafxr, MessageForPtt paramMessageForPtt) {}
+  public akpd a;
+  public PreloadManager a;
+  private QQAppInterface a;
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public afxs(QQAppInterface paramQQAppInterface)
   {
-    bivo.a(this.jdField_a_of_type_Afxr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 0, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop);
-    biva.a(paramString1, paramInt, paramString2).b(this.jdField_a_of_type_Afxr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt).a((Activity)this.jdField_a_of_type_Afxr.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afxr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.length() > 0)) {}
-    for (paramInt = 1;; paramInt = 0)
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
+    this.jdField_a_of_type_Akpd = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      bivo.a(this.jdField_a_of_type_Afxr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_AddFav", 4, 0, 6, paramInt, "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
+      this.jdField_a_of_type_Akpd = ((akpd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
+    }
+  }
+  
+  private void a(@NonNull PreloadManager paramPreloadManager, @NonNull akpd paramakpd, @NonNull CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    String str1 = null;
+    String str2 = paramakpd.a("redPack", "https://imgcache.qq.com/channel/static/socialpay/skin/", new String[] { "prefix" });
+    switch (paramRedPacketInfo.skinType)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      JSONObject localJSONObject = paramakpd.a("redPack", new String[] { "skinMap" });
+      paramakpd = str1;
+      if (localJSONObject != null)
+      {
+        localJSONObject = localJSONObject.optJSONObject(String.valueOf(paramRedPacketInfo.skinId));
+        paramakpd = str1;
+        if (localJSONObject != null)
+        {
+          paramakpd = localJSONObject.optString("aioZipMd5", "");
+          str1 = localJSONObject.optString("popZipMd5", "");
+          if (paramRedPacketInfo.skinType != 1) {
+            break label220;
+          }
+          paramRedPacketInfo.title = localJSONObject.optString("title", "");
+          paramRedPacketInfo.isHideTitle = localJSONObject.optInt("isHideTitle", paramRedPacketInfo.a());
+        }
+      }
+      if (paramRedPacketInfo.skinType == 1) {}
+      for (str1 = "aio_";; str1 = "pop_")
+      {
+        paramPreloadManager.a(str2 + str1 + paramRedPacketInfo.skinId + ".zip", paramakpd, new afxt(this, paramRedPacketInfo));
+        return;
+        paramakpd = str1;
+        break;
+      }
+    case 3: 
+      label220:
+      paramakpd = paramakpd.a("redPack", null, new String[] { "bigAnimMap", String.valueOf(paramRedPacketInfo.bigAnimId), "zipMd5" });
+      paramPreloadManager.a(str2 + "aio_special_" + paramRedPacketInfo.bigAnimId + ".zip", paramakpd, new afxu(this, paramRedPacketInfo));
       return;
     }
+    paramakpd = paramakpd.a("redPack", null, new String[] { "popAnimMap", String.valueOf(paramRedPacketInfo.bigAnimId), "zipMd5" });
+    paramPreloadManager.a(str2 + "pop_anim_" + paramRedPacketInfo.bigAnimId + ".png", paramakpd, new afxv(this, paramRedPacketInfo));
+  }
+  
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    ThreadManager.post(new CustomizeStrategyFactory.SkinRedPacketStrategy.1(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, ahxe paramahxe)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      if (!(paramahxe instanceof ahxi)) {
+        break label74;
+      }
+      paramahxe = (ahxi)paramahxe;
+      paramRedPacketInfo.background = paramahxe.b;
+      paramRedPacketInfo.corner = paramahxe.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramRedPacketInfo.animInfo = paramahxe.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
+      paramRedPacketInfo.title = paramahxe.c;
+      paramRedPacketInfo.icon = paramahxe.a(paramRedPacketInfo);
+      paramRedPacketInfo.isHideTitle = paramahxe.jdField_a_of_type_Int;
+      paramRedPacketInfo.resPath = paramahxe.d;
+    }
+    label74:
+    do
+    {
+      return;
+      if ((paramahxe instanceof ahxf))
+      {
+        paramahxe = (ahxf)paramahxe;
+        paramRedPacketInfo.specailBackgroundAnimInfo = paramahxe.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
+        paramRedPacketInfo.specialBackground = paramahxe.jdField_a_of_type_AndroidGraphicsBitmap;
+        return;
+      }
+    } while (!(paramahxe instanceof ahxh));
+    paramRedPacketInfo.resPath = ((ahxh)paramahxe).b;
   }
 }
 

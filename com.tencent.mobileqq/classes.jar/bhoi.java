@@ -1,242 +1,317 @@
-import java.util.regex.Pattern;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
+import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.sdk.CookieSyncManager;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebSettings.PluginState;
+import com.tencent.smtt.sdk.WebViewClient;
+import java.io.File;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class bhoi
 {
-  private String a = "";
-  private String b = "";
-  private String c = "";
-  private String d = "inc";
+  public long a;
+  Intent jdField_a_of_type_AndroidContentIntent;
+  bhnj jdField_a_of_type_Bhnj;
+  TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  SonicClientImpl jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl;
+  nvu jdField_a_of_type_Nvu;
   
-  public bhoi(JSONObject paramJSONObject)
+  public bhoi(AppInterface paramAppInterface, bhnj parambhnj, Intent paramIntent, Context paramContext, boolean paramBoolean)
   {
-    if (paramJSONObject != null) {}
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = a(paramContext, paramBoolean);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Bhnj = parambhnj;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, paramAppInterface, paramIntent);
+  }
+  
+  public bhoi(AppInterface paramAppInterface, bhnj parambhnj, Intent paramIntent, TouchWebView paramTouchWebView)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Bhnj = parambhnj;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
+      a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, paramAppInterface, paramIntent);
+    }
+  }
+  
+  private void b(TouchWebView paramTouchWebView)
+  {
+    bhoj localbhoj = new bhoj(this);
+    paramTouchWebView.setWebChromeClient(localbhoj);
+    this.jdField_a_of_type_Nvu = localbhoj;
+  }
+  
+  public TouchWebView a()
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+  }
+  
+  public TouchWebView a(Context paramContext, boolean paramBoolean)
+  {
+    nmj.a("Web_qqbrowser_init_only_webview");
+    long l = System.currentTimeMillis();
+    DisplayMetrics localDisplayMetrics;
+    ViewGroup.LayoutParams localLayoutParams;
+    if (paramBoolean)
+    {
+      paramContext = SwiftReuseTouchWebView.a(paramContext);
+      localDisplayMetrics = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
+      localLayoutParams = paramContext.getLayoutParams();
+      if (localLayoutParams != null) {
+        break label88;
+      }
+      localLayoutParams = new ViewGroup.LayoutParams(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    }
+    for (;;)
+    {
+      paramContext.setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+      return paramContext;
+      paramContext = new TouchWebView(paramContext);
+      break;
+      label88:
+      localLayoutParams.width = localDisplayMetrics.widthPixels;
+      localLayoutParams.height = localDisplayMetrics.heightPixels;
+    }
+  }
+  
+  public TouchWebView a(TouchWebView paramTouchWebView, AppInterface paramAppInterface, Intent paramIntent)
+  {
+    long l1 = this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewWrapper", 2, "createWebView TouchWebView cost = " + l1);
+    }
+    paramTouchWebView.setIntent(paramIntent);
+    nmj.b("Web_qqbrowser_init_only_webview");
+    long l2 = System.currentTimeMillis();
+    a(paramTouchWebView);
+    b(paramTouchWebView);
+    long l3 = System.currentTimeMillis();
+    paramTouchWebView.setScrollBarStyle(0);
+    nmj.a("Web_AdjustSettings");
+    WebSettings localWebSettings = paramTouchWebView.getSettings();
+    nmj.a("Web_SetUserAgent");
+    Object localObject = localWebSettings.getUserAgentString();
+    String str1 = a(this.jdField_a_of_type_Bhnj);
+    boolean bool;
+    if (paramTouchWebView.getX5WebViewExtension() != null) {
+      bool = true;
+    }
+    for (;;)
+    {
+      localWebSettings.setUserAgentString(bhre.a((String)localObject, str1, bool));
+      nmj.b("Web_SetUserAgent");
+      localWebSettings.setSavePassword(false);
+      localWebSettings.setSaveFormData(false);
+      localWebSettings.setBuiltInZoomControls(true);
+      localWebSettings.setUseWideViewPort(true);
+      localWebSettings.setLoadWithOverviewMode(true);
+      localWebSettings.setPluginState(WebSettings.PluginState.ON);
+      localObject = paramAppInterface.getApplication().getPackageManager();
+      int i = 0;
+      try
+      {
+        if (!((PackageManager)localObject).hasSystemFeature("android.hardware.touchscreen.multitouch"))
+        {
+          bool = ((PackageManager)localObject).hasSystemFeature("android.hardware.faketouch.multitouch.distinct");
+          if (!bool) {
+            break label579;
+          }
+        }
+        i = 1;
+      }
+      catch (RuntimeException localRuntimeException)
+      {
+        label212:
+        label220:
+        String str2;
+        long l4;
+        break label212;
+      }
+      if (i == 0)
+      {
+        bool = true;
+        localWebSettings.setDisplayZoomControls(bool);
+        localWebSettings.setPluginsEnabled(true);
+        localWebSettings.setJavaScriptEnabled(true);
+        localWebSettings.setAllowContentAccess(true);
+        localWebSettings.setDatabaseEnabled(true);
+        localWebSettings.setDomStorageEnabled(true);
+        localWebSettings.setAppCacheEnabled(true);
+        str2 = MobileQQ.getMobileQQ().getQQProcessName();
+        str1 = "";
+        localObject = str1;
+        if (str2 != null)
+        {
+          i = str2.lastIndexOf(':');
+          localObject = str1;
+          if (i > -1) {
+            localObject = "_" + str2.substring(i + 1);
+          }
+        }
+        localWebSettings.setDatabasePath(paramAppInterface.getApplication().getApplicationContext().getDir("database" + (String)localObject, 0).getPath());
+        localWebSettings.setAppCachePath(paramAppInterface.getApplication().getApplicationContext().getDir("appcache" + (String)localObject, 0).getPath());
+        localWebSettings.setMediaPlaybackRequiresUserGesture(false);
+        if (Build.VERSION.SDK_INT >= 21) {
+          localWebSettings.setMixedContentMode(0);
+        }
+        l4 = System.currentTimeMillis();
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramTouchWebView.removeJavascriptInterface("searchBoxJavaBridge_");
+        }
+      }
+      try
+      {
+        paramTouchWebView.requestFocus();
+        label459:
+        paramTouchWebView.setFocusableInTouchMode(true);
+        CookieSyncManager.createInstance(paramAppInterface.getApplication().getApplicationContext());
+        if (paramTouchWebView.getX5WebViewExtension() != null)
+        {
+          paramTouchWebView.getX5WebViewExtension().setWebViewClientExtension(new bhom(this, paramTouchWebView, this.jdField_a_of_type_Bhnj));
+          afuh.b(paramIntent, "use_x5", "1");
+          label514:
+          nmj.b("Web_AdjustSettings");
+          if (bhqc.x) {
+            break label604;
+          }
+        }
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "sReportPerformance:", Boolean.valueOf(bhqc.x), " cost:", Long.valueOf(bhrd.jdField_a_of_type_Long) });
+          }
+          return paramTouchWebView;
+          bool = false;
+          break;
+          label579:
+          i = 0;
+          break label212;
+          bool = false;
+          break label220;
+          afuh.b(paramIntent, "use_x5", "2");
+          break label514;
+          label604:
+          paramAppInterface = new HashMap(5);
+          paramAppInterface.put("createWebview", String.valueOf(l1));
+          paramAppInterface.put("initWebClient", String.valueOf(l3 - l2));
+          paramAppInterface.put("setWebSetting", String.valueOf(l4 - l2));
+          paramAppInterface.put("coreInit", String.valueOf(bhrd.jdField_a_of_type_Long));
+          paramAppInterface.put("coldStart", String.valueOf(bhqc.s));
+          bctj.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actWebviewInit", true, 0L, 0L, paramAppInterface, null);
+        }
+      }
+      catch (Exception localException)
+      {
+        break label459;
+      }
+    }
+  }
+  
+  String a(bhnj parambhnj)
+  {
+    if (parambhnj != null) {
+      return parambhnj.getUAMark();
+    }
+    return null;
+  }
+  
+  public nvu a()
+  {
+    return this.jdField_a_of_type_Nvu;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bhnj != null) {
+      this.jdField_a_of_type_Bhnj = null;
+    }
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+    {
+      WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
+      if (localWebViewPluginEngine != null) {
+        localWebViewPluginEngine.b();
+      }
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setPluginEngine(null);
+      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent() == null) {}
+    }
     try
     {
-      this.a = paramJSONObject.getString("name");
-      this.b = paramJSONObject.getString("op");
-      this.c = paramJSONObject.getString("val");
-      this.d = paramJSONObject.getString("act");
-      return;
+      ((ViewGroup)this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent()).removeView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
     }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
-  
-  public boolean a()
-  {
-    return (!this.a.isEmpty()) && (!this.b.isEmpty()) && (!this.c.isEmpty());
-  }
-  
-  public boolean a(Object paramObject)
-  {
-    boolean bool2 = true;
-    for (;;)
+    catch (Exception localException1)
     {
       try
       {
-        paramObject = bhns.b(paramObject, this.a);
-        if (paramObject == null) {
-          break label668;
-        }
-        if ((paramObject.getClass() == Integer.TYPE) || (paramObject.getClass() == Integer.class) || (paramObject.getClass() == Long.TYPE) || (paramObject.getClass() == Long.class))
+        for (;;)
         {
-          paramObject = (Integer)paramObject;
-          if (this.b.equalsIgnoreCase("less"))
+          this.jdField_a_of_type_ComTencentBizUiTouchWebView.stopLoading();
+          label77:
+          this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrlOriginal("about:blank");
+          this.jdField_a_of_type_ComTencentBizUiTouchWebView.clearView();
+          this.jdField_a_of_type_ComTencentBizUiTouchWebView.destroy();
+          this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
+          if (this.jdField_a_of_type_Nvu != null)
           {
-            if (paramObject.intValue() >= Integer.parseInt(this.c)) {
-              break label672;
-            }
-            bool1 = true;
-            if (!this.d.equalsIgnoreCase("exc")) {
-              break label660;
-            }
-            if (!bool1)
-            {
-              bool1 = bool2;
-              break label670;
-            }
+            this.jdField_a_of_type_Nvu.a();
+            this.jdField_a_of_type_Nvu = null;
           }
-          else
-          {
-            if (this.b.equalsIgnoreCase("more"))
-            {
-              if (paramObject.intValue() <= Integer.parseInt(this.c)) {
-                break label677;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("is"))
-            {
-              if (paramObject.intValue() != Integer.parseInt(this.c)) {
-                break label682;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("not"))
-            {
-              if (paramObject.intValue() == Integer.parseInt(this.c)) {
-                break label687;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("and"))
-            {
-              if ((paramObject.intValue() & Integer.parseInt(this.c)) == 0) {
-                break label692;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("or"))
-            {
-              if ((paramObject.intValue() | Integer.parseInt(this.c)) == 0) {
-                break label697;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("xor"))
-            {
-              if ((paramObject.intValue() ^ Integer.parseInt(this.c)) == 0) {
-                break label702;
-              }
-              bool1 = true;
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("begins"))
-            {
-              bool1 = String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }).startsWith(this.c);
-              continue;
-            }
-            if (this.b.equalsIgnoreCase("ends"))
-            {
-              bool1 = String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }).endsWith(this.c);
-              continue;
-            }
-            if (!this.b.equalsIgnoreCase("rem")) {
-              break label663;
-            }
-            bool1 = Pattern.matches(this.c, String.format("%d", new Object[] { Integer.valueOf(paramObject.intValue()) }));
-            continue;
+          return;
+          localException1 = localException1;
+          if (QLog.isColorLevel()) {
+            QLog.d("WebLog_WebViewWrapper", 2, "remove webview error");
           }
         }
-        else
-        {
-          if ((paramObject.getClass() != String.class) && (paramObject.getClass() != CharSequence.class)) {
-            break label663;
-          }
-          paramObject = (String)paramObject;
-          if (this.b.equalsIgnoreCase("less"))
-          {
-            if (paramObject.compareToIgnoreCase(this.c) >= 0) {
-              break label707;
-            }
-            bool1 = true;
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("more"))
-          {
-            if (paramObject.compareToIgnoreCase(this.c) <= 0) {
-              break label712;
-            }
-            bool1 = true;
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("is"))
-          {
-            bool1 = paramObject.equalsIgnoreCase(this.c);
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("not"))
-          {
-            if (paramObject.equalsIgnoreCase(this.c)) {
-              break label717;
-            }
-            bool1 = true;
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("has"))
-          {
-            bool1 = paramObject.contains(this.c);
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("begins"))
-          {
-            bool1 = paramObject.startsWith(this.c);
-            continue;
-          }
-          if (this.b.equalsIgnoreCase("ends"))
-          {
-            bool1 = paramObject.endsWith(this.c);
-            continue;
-          }
-          if (!this.b.equalsIgnoreCase("rem")) {
-            break label663;
-          }
-          bool1 = Pattern.matches(this.c, paramObject);
-          continue;
-        }
-        bool1 = false;
       }
-      catch (Exception paramObject)
+      catch (Exception localException2)
       {
-        return false;
+        break label77;
       }
-      catch (IllegalArgumentException paramObject)
-      {
-        return false;
-      }
-      label660:
-      break label670;
-      label663:
-      boolean bool1 = false;
-      continue;
-      label668:
-      bool1 = false;
-      label670:
-      return bool1;
-      label672:
-      bool1 = false;
-      continue;
-      label677:
-      bool1 = false;
-      continue;
-      label682:
-      bool1 = false;
-      continue;
-      label687:
-      bool1 = false;
-      continue;
-      label692:
-      bool1 = false;
-      continue;
-      label697:
-      bool1 = false;
-      continue;
-      label702:
-      bool1 = false;
-      continue;
-      label707:
-      bool1 = false;
-      continue;
-      label712:
-      bool1 = false;
-      continue;
-      label717:
-      bool1 = false;
     }
+  }
+  
+  void a(TouchWebView paramTouchWebView)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {}
+    for (Object localObject = new bhok(this);; localObject = new bhol(this))
+    {
+      paramTouchWebView.setWebViewClient((WebViewClient)localObject);
+      return;
+    }
+  }
+  
+  public void a(SonicClientImpl paramSonicClientImpl)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl = paramSonicClientImpl;
+    QLog.i("WebLog_WebViewWrapper", 1, "setSonicClient sonicClient = " + paramSonicClientImpl);
+  }
+  
+  protected boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhoi
  * JD-Core Version:    0.7.0.1
  */

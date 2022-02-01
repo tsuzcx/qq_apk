@@ -8,9 +8,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class LogFileUtils
 {
-  private static final String LOG_TAG = "LOG_FILE";
-  private static final int MAX_SIZE = 2097152;
-  private static OutputStream outputStream = null;
+  private static OutputStream a = null;
   
   public static void closeOutputStream(OutputStream paramOutputStream)
   {
@@ -92,7 +90,7 @@ public class LogFileUtils
     //   5: monitorenter
     //   6: aload_1
     //   7: aload_3
-    //   8: invokestatic 130	com/tencent/smtt/utils/LogFileUtils:encrypt	(Ljava/lang/String;Ljava/lang/String;)[B
+    //   8: invokestatic 125	com/tencent/smtt/utils/LogFileUtils:encrypt	(Ljava/lang/String;Ljava/lang/String;)[B
     //   11: astore 5
     //   13: aload 6
     //   15: astore_1
@@ -103,88 +101,88 @@ public class LogFileUtils
     //   23: aload 5
     //   25: astore_1
     //   26: aload_0
-    //   27: invokevirtual 136	java/io/File:getParentFile	()Ljava/io/File;
-    //   30: invokevirtual 140	java/io/File:mkdirs	()Z
+    //   27: invokevirtual 131	java/io/File:getParentFile	()Ljava/io/File;
+    //   30: invokevirtual 135	java/io/File:mkdirs	()Z
     //   33: pop
     //   34: aload_0
-    //   35: invokevirtual 143	java/io/File:isFile	()Z
+    //   35: invokevirtual 138	java/io/File:isFile	()Z
     //   38: ifeq +31 -> 69
     //   41: aload_0
-    //   42: invokevirtual 146	java/io/File:exists	()Z
+    //   42: invokevirtual 141	java/io/File:exists	()Z
     //   45: ifeq +24 -> 69
     //   48: aload_0
-    //   49: invokevirtual 149	java/io/File:length	()J
-    //   52: ldc2_w 150
+    //   49: invokevirtual 144	java/io/File:length	()J
+    //   52: ldc2_w 145
     //   55: lcmp
     //   56: ifle +13 -> 69
     //   59: aload_0
-    //   60: invokevirtual 154	java/io/File:delete	()Z
+    //   60: invokevirtual 149	java/io/File:delete	()Z
     //   63: pop
     //   64: aload_0
-    //   65: invokevirtual 157	java/io/File:createNewFile	()Z
+    //   65: invokevirtual 152	java/io/File:createNewFile	()Z
     //   68: pop
-    //   69: getstatic 17	com/tencent/smtt/utils/LogFileUtils:outputStream	Ljava/io/OutputStream;
+    //   69: getstatic 10	com/tencent/smtt/utils/LogFileUtils:a	Ljava/io/OutputStream;
     //   72: ifnonnull +23 -> 95
-    //   75: new 159	java/io/BufferedOutputStream
+    //   75: new 154	java/io/BufferedOutputStream
     //   78: dup
-    //   79: new 161	java/io/FileOutputStream
+    //   79: new 156	java/io/FileOutputStream
     //   82: dup
     //   83: aload_0
     //   84: iload 4
-    //   86: invokespecial 164	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   89: invokespecial 166	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   92: putstatic 17	com/tencent/smtt/utils/LogFileUtils:outputStream	Ljava/io/OutputStream;
+    //   86: invokespecial 159	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   89: invokespecial 161	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   92: putstatic 10	com/tencent/smtt/utils/LogFileUtils:a	Ljava/io/OutputStream;
     //   95: aload_3
     //   96: ifnull +31 -> 127
-    //   99: getstatic 17	com/tencent/smtt/utils/LogFileUtils:outputStream	Ljava/io/OutputStream;
+    //   99: getstatic 10	com/tencent/smtt/utils/LogFileUtils:a	Ljava/io/OutputStream;
     //   102: aload_3
-    //   103: invokevirtual 169	java/lang/String:getBytes	()[B
-    //   106: invokevirtual 173	java/io/OutputStream:write	([B)V
-    //   109: getstatic 17	com/tencent/smtt/utils/LogFileUtils:outputStream	Ljava/io/OutputStream;
+    //   103: invokevirtual 164	java/lang/String:getBytes	()[B
+    //   106: invokevirtual 168	java/io/OutputStream:write	([B)V
+    //   109: getstatic 10	com/tencent/smtt/utils/LogFileUtils:a	Ljava/io/OutputStream;
     //   112: astore_0
     //   113: aload_0
     //   114: ifnull +9 -> 123
-    //   117: getstatic 17	com/tencent/smtt/utils/LogFileUtils:outputStream	Ljava/io/OutputStream;
-    //   120: invokevirtual 176	java/io/OutputStream:flush	()V
+    //   117: getstatic 10	com/tencent/smtt/utils/LogFileUtils:a	Ljava/io/OutputStream;
+    //   120: invokevirtual 171	java/io/OutputStream:flush	()V
     //   123: ldc 2
     //   125: monitorexit
     //   126: return
-    //   127: getstatic 17	com/tencent/smtt/utils/LogFileUtils:outputStream	Ljava/io/OutputStream;
+    //   127: getstatic 10	com/tencent/smtt/utils/LogFileUtils:a	Ljava/io/OutputStream;
     //   130: aload_2
-    //   131: invokevirtual 173	java/io/OutputStream:write	([B)V
-    //   134: getstatic 17	com/tencent/smtt/utils/LogFileUtils:outputStream	Ljava/io/OutputStream;
+    //   131: invokevirtual 168	java/io/OutputStream:write	([B)V
+    //   134: getstatic 10	com/tencent/smtt/utils/LogFileUtils:a	Ljava/io/OutputStream;
     //   137: aload_1
-    //   138: invokevirtual 173	java/io/OutputStream:write	([B)V
-    //   141: getstatic 17	com/tencent/smtt/utils/LogFileUtils:outputStream	Ljava/io/OutputStream;
+    //   138: invokevirtual 168	java/io/OutputStream:write	([B)V
+    //   141: getstatic 10	com/tencent/smtt/utils/LogFileUtils:a	Ljava/io/OutputStream;
     //   144: iconst_2
     //   145: newarray byte
     //   147: dup
     //   148: iconst_0
-    //   149: ldc 177
+    //   149: ldc 172
     //   151: bastore
     //   152: dup
     //   153: iconst_1
-    //   154: ldc 177
+    //   154: ldc 172
     //   156: bastore
-    //   157: invokevirtual 173	java/io/OutputStream:write	([B)V
+    //   157: invokevirtual 168	java/io/OutputStream:write	([B)V
     //   160: goto -51 -> 109
     //   163: astore_0
-    //   164: getstatic 17	com/tencent/smtt/utils/LogFileUtils:outputStream	Ljava/io/OutputStream;
+    //   164: getstatic 10	com/tencent/smtt/utils/LogFileUtils:a	Ljava/io/OutputStream;
     //   167: astore_0
     //   168: aload_0
     //   169: ifnull -46 -> 123
-    //   172: getstatic 17	com/tencent/smtt/utils/LogFileUtils:outputStream	Ljava/io/OutputStream;
-    //   175: invokevirtual 176	java/io/OutputStream:flush	()V
+    //   172: getstatic 10	com/tencent/smtt/utils/LogFileUtils:a	Ljava/io/OutputStream;
+    //   175: invokevirtual 171	java/io/OutputStream:flush	()V
     //   178: goto -55 -> 123
     //   181: astore_0
     //   182: goto -59 -> 123
     //   185: astore_0
-    //   186: getstatic 17	com/tencent/smtt/utils/LogFileUtils:outputStream	Ljava/io/OutputStream;
+    //   186: getstatic 10	com/tencent/smtt/utils/LogFileUtils:a	Ljava/io/OutputStream;
     //   189: astore_1
     //   190: aload_1
     //   191: ifnull +9 -> 200
-    //   194: getstatic 17	com/tencent/smtt/utils/LogFileUtils:outputStream	Ljava/io/OutputStream;
-    //   197: invokevirtual 176	java/io/OutputStream:flush	()V
+    //   194: getstatic 10	com/tencent/smtt/utils/LogFileUtils:a	Ljava/io/OutputStream;
+    //   197: invokevirtual 171	java/io/OutputStream:flush	()V
     //   200: aload_0
     //   201: athrow
     //   202: astore_0
@@ -230,7 +228,7 @@ public class LogFileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.utils.LogFileUtils
  * JD-Core Version:    0.7.0.1
  */

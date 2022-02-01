@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.video;
 
-import aatp;
+import acsj;
 import android.widget.TextView;
 
 class GdtVideoCommonView$4
@@ -10,12 +10,12 @@ class GdtVideoCommonView$4
   
   public void run()
   {
-    GdtVideoCommonView.a(this.this$0).setText(aatp.a(GdtVideoCommonView.a(this.this$0)));
+    GdtVideoCommonView.a(this.this$0).setText(acsj.a(GdtVideoCommonView.a(this.this$0)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,53 @@
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class sls
+  extends Handler
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final Map<Character, Float> jdField_a_of_type_JavaUtilMap = new HashMap(256);
-  private float b;
+  public sls(BaseTabbar paramBaseTabbar) {}
   
-  public sls(Paint paramPaint)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint;
-    a();
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  float a(char paramChar)
-  {
-    if (paramChar == 0) {
-      return 0.0F;
+    switch (paramMessage.what)
+    {
+    default: 
+    case 0: 
+      int i;
+      do
+      {
+        return;
+        BaseTabbar.a(this.a, 0.0F);
+        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
+        this.a.invalidate();
+        i = paramMessage.arg1;
+        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
+      } while (i == 1);
+      BaseTabbar.a(this.a, BaseTabbar.a(this.a), BaseTabbar.b(this.a));
+      return;
+    case 1: 
+      if (BaseTabbar.a(this.a) < 1.0F)
+      {
+        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
+        this.a.invalidate();
+        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(2), 10L);
+      return;
     }
-    Float localFloat = (Float)this.jdField_a_of_type_JavaUtilMap.get(Character.valueOf(paramChar));
-    if (localFloat != null) {
-      return localFloat.floatValue();
-    }
-    float f = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(Character.toString(paramChar));
-    this.jdField_a_of_type_JavaUtilMap.put(Character.valueOf(paramChar), Float.valueOf(f));
-    return f;
-  }
-  
-  int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
-    this.jdField_a_of_type_Float = (localFontMetrics.bottom - localFontMetrics.top);
-    this.b = (-localFontMetrics.top);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public float b()
-  {
-    return this.b;
+    BaseTabbar.a(this.a);
+    this.a.a(BaseTabbar.a(this.a), BaseTabbar.b(this.a));
+    BaseTabbar.a(this.a, 1.0F);
+    BaseTabbar.a(this.a, BaseTabbar.b(this.a));
+    this.a.invalidate();
+    BaseTabbar.a(this.a).set(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sls
  * JD-Core Version:    0.7.0.1
  */

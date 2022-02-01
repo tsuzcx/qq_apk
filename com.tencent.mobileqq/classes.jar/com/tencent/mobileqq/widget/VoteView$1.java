@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
 import android.view.View;
-import bewf;
-import bewh;
+import bidd;
+import bidf;
 
 public class VoteView$1
   implements Runnable
@@ -13,14 +13,14 @@ public class VoteView$1
   {
     if (VoteView.a(this.this$0))
     {
-      bewf.a(this.this$0);
-      this.this$0.findViewById(2131369150).setOnClickListener(new bewh(this));
+      bidd.a(this.this$0);
+      this.this$0.findViewById(2131369539).setOnClickListener(new bidf(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.VoteView.1
  * JD-Core Version:    0.7.0.1
  */

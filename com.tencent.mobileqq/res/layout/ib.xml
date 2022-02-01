@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/i5j" android:layout_width="fill_parent" android:layout_height="@dimen/auf">
         <LinearLayout android:orientation="vertical" android:id="@id/g5l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
@@ -11,4 +11,4 @@
             <ImageView android:layout_gravity="center" android:id="@id/i5l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/refresh_arrow" android:scaleType="fitCenter" android:contentDescription="@string/image" />
         </FrameLayout>
     </RelativeLayout>
-</com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader>
+</com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader>

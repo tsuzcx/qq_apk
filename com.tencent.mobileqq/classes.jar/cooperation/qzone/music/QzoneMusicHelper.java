@@ -1,14 +1,14 @@
 package cooperation.qzone.music;
 
-import alud;
 import android.text.TextUtils;
+import anni;
 import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class QzoneMusicHelper
 {
-  public static final String NO_NETWORK_MSG = alud.a(2131712423);
+  public static final String NO_NETWORK_MSG = anni.a(2131710802);
   
   public static SongInfo convertAudioSongInfo(JSONObject paramJSONObject)
   {
@@ -146,7 +146,7 @@ public class QzoneMusicHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.music.QzoneMusicHelper
  * JD-Core Version:    0.7.0.1
  */

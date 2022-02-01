@@ -1,24 +1,20 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.PublicAccountMenuBar;
 
 public class oas
-  implements bhuk
+  implements DialogInterface.OnDismissListener
 {
-  public oas(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo) {}
+  public oas(PublicAccountMenuBar paramPublicAccountMenuBar) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt == 0)
-    {
-      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo, false);
-      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity).dismiss();
-    }
+    PublicAccountMenuBar.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oas
  * JD-Core Version:    0.7.0.1
  */

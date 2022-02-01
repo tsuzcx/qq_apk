@@ -1,47 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class amae
-  extends BroadcastReceiver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherPreloadWebPageConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "TAG", "", "enablePreloadWebProcess", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amae
 {
-  public amae(QQAppInterface paramQQAppInterface) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public final boolean a()
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
-          {
-            assz.a();
-            return;
-          }
-        } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));
-        paramContext = paramIntent.getStringExtra("kickedUin");
-      } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals(this.a.getAccount())));
-      paramContext = this.a.getKickIntent();
-    } while (paramContext == null);
-    paramContext.putExtra("isSameDevice", false);
-    paramIntent = paramIntent.getStringExtra("msg");
-    if (!TextUtils.isEmpty(paramIntent)) {
-      paramContext.putExtra("msg", paramIntent);
-    }
-    this.a.setKickIntent(paramContext);
+    Object localObject = aqlk.a().a(638);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
+    return ((amaf)localObject).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amae
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,18 @@
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class yna
-  implements bexv
+class yna
+  implements ymj
 {
-  public yna(VideoPlayerView paramVideoPlayerView) {}
+  yna(ymo paramymo) {}
   
-  public void a()
+  public void a(ErrorMessage paramErrorMessage)
   {
-    if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a) != null))
-    {
-      VideoPlayerView.d(this.a, false);
-      VideoPlayerView.a(this.a).onOrientationChange(VideoPlayerView.d(this.a));
-      VideoPlayerView.a(this.a).onVideoSize(this.a.a().getViewWidth(), this.a.a().getViewHeight());
-    }
+    yqp.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yna
  * JD-Core Version:    0.7.0.1
  */

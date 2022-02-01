@@ -1,20 +1,10 @@
-import android.support.annotation.Nullable;
-
-public class vpb
-  extends vpm
+public abstract interface vpb
 {
-  @Nullable
-  public woq a;
-  
-  public vpb(String paramString, @Nullable woq paramwoq)
-  {
-    super(paramString);
-    this.a = paramwoq;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vpb
  * JD-Core Version:    0.7.0.1
  */

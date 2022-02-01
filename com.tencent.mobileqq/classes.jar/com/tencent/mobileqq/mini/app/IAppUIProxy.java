@@ -4,11 +4,11 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import aocf;
+import aqck;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public abstract interface IAppUIProxy
-  extends aocf
+  extends aqck
 {
   public abstract void completeLoading(BaseActivity paramBaseActivity);
   
@@ -54,7 +54,7 @@ public abstract interface IAppUIProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.IAppUIProxy
  * JD-Core Version:    0.7.0.1
  */

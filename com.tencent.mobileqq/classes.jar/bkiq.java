@@ -1,63 +1,34 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class bkiq
-  extends bkih
+  extends bkho
 {
-  private WeakReference<bkil> a;
-  
-  bkiq(bkil parambkil)
+  bkiq(Context paramContext)
   {
-    this.a = new WeakReference(parambkil);
+    super(paramContext);
+    f();
   }
   
-  public void a(String paramString, Bundle paramBundle)
+  private void f()
   {
-    bkil localbkil = (bkil)this.a.get();
-    if (localbkil == null) {
-      bfrz.c("WadlProxyServiceManager", "##@transferAsync, manager gc: " + paramString);
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          bfrz.c("WadlProxyServiceManager", "##@Call back from Service: " + paramString);
-        }
-        paramBundle.setClassLoader(getClass().getClassLoader());
-      } while (paramString == null);
-      if (paramString.equals("WADL.REVERSE_HEART_CMD"))
-      {
-        paramString = bkil.a(localbkil).obtainMessage();
-        paramString.what = 4;
-        paramString.setData(paramBundle);
-        bkil.a(localbkil).sendMessage(paramString);
-        return;
-      }
-      if (paramString.equals("WADL.REVERSE_ACTION_CMD"))
-      {
-        paramString = bkil.a(localbkil).obtainMessage();
-        paramString.what = 3;
-        paramString.setData(paramBundle);
-        bkil.a(localbkil).sendMessage(paramString);
-        return;
-      }
-      if (paramString.equals("WADL.REVERSE_STOP_MONITOR_CMD"))
-      {
-        paramString = bkil.a(localbkil).obtainMessage();
-        paramString.what = 5;
-        paramString.setData(paramBundle);
-        bkil.a(localbkil).sendMessage(paramString);
-        return;
-      }
-    } while (!paramString.equals("WADL.REVERSE_START_MONITOR_CMD"));
-    paramString = bkil.a(localbkil).obtainMessage();
-    paramString.what = 6;
-    paramString.setData(paramBundle);
-    bkil.a(localbkil).sendMessage(paramString);
+    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131559082, null);
+    localLinearLayout.findViewById(2131369045).setOnClickListener(new bkir(this));
+    String str = getContext().getString(2131690170);
+    TextView localTextView = (TextView)localLinearLayout.findViewById(2131379588);
+    SpannableString localSpannableString = new SpannableString(str);
+    localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#1B90EE")), str.length() - 3, str.length() - 1, 33);
+    localSpannableString.setSpan(new bkis(getContext(), null), str.length() - 3, str.length() - 1, 33);
+    localTextView.setText(localSpannableString);
+    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    a(localLinearLayout);
   }
 }
 

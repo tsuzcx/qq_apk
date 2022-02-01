@@ -10,9 +10,7 @@ public class VideoFeedsAlphaMaskView
   extends View
 {
   private float jdField_a_of_type_Float = 1.0F;
-  private final int jdField_a_of_type_Int = -635823590;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private final int b = 218;
   
   public VideoFeedsAlphaMaskView(Context paramContext)
   {

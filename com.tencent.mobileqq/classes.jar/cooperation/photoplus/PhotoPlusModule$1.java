@@ -1,7 +1,7 @@
 package cooperation.photoplus;
 
 import android.os.Bundle;
-import biqg;
+import blfa;
 import cooperation.photoplus.sticker.Sticker;
 import eipc.EIPCResult;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import org.json.JSONArray;
 public class PhotoPlusModule$1
   implements Runnable
 {
-  public PhotoPlusModule$1(biqg parambiqg, PhotoPlusManager paramPhotoPlusManager, int paramInt) {}
+  public PhotoPlusModule$1(blfa paramblfa, PhotoPlusManager paramPhotoPlusManager, int paramInt) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public class PhotoPlusModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.photoplus.PhotoPlusModule.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.json.JSONObject;
@@ -53,7 +54,7 @@ public class YellowTipsLayout
     //   13: new 51	java/lang/StringBuilder
     //   16: dup
     //   17: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   20: getstatic 57	ajfa:c	Ljava/lang/String;
+    //   20: getstatic 57	akxc:c	Ljava/lang/String;
     //   23: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: aload_1
     //   27: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -199,12 +200,12 @@ public class YellowTipsLayout
   
   private void init(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560386, this, true);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560541, this, true);
     paramContext.setClickable(true);
     paramContext.setOnClickListener(this);
-    this.mWariningView = ((ImageView)findViewById(2131367910));
-    this.mText = ((TextView)findViewById(2131367909));
-    this.mArrowView = ((ImageView)findViewById(2131367907));
+    this.mWariningView = ((ImageView)findViewById(2131368233));
+    this.mText = ((TextView)findViewById(2131368232));
+    this.mArrowView = ((ImageView)findViewById(2131368230));
   }
   
   public void onClick(View paramView)
@@ -212,14 +213,15 @@ public class YellowTipsLayout
     if (this.mUrl != null)
     {
       Intent localIntent = new Intent();
-      paramView = paramView.getContext();
-      localIntent.setClass(paramView, QQBrowserActivity.class);
+      Context localContext = paramView.getContext();
+      localIntent.setClass(localContext, QQBrowserActivity.class);
       localIntent.putExtra("url", this.mUrl);
       localIntent.putExtra("hide_operation_bar", true);
       localIntent.putExtra("hide_more_button", true);
       localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      paramView.startActivity(localIntent);
+      localContext.startActivity(localIntent);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setArrowVisible(boolean paramBoolean)
@@ -324,7 +326,7 @@ public class YellowTipsLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.YellowTipsLayout
  * JD-Core Version:    0.7.0.1
  */

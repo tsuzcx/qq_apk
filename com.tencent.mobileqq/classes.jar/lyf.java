@@ -1,52 +1,27 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-public class lyf
+public abstract interface lyf
 {
-  private static volatile lyf jdField_a_of_type_Lyf;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public abstract Bitmap a(long paramLong);
   
-  private lyf()
-  {
-    this.jdField_a_of_type_JavaUtilMap.put("request", new String("-1"));
-    this.jdField_a_of_type_JavaUtilMap.put("update", new String("-1"));
-    this.jdField_a_of_type_JavaUtilMap.put("load", new String("-1"));
-  }
+  public abstract TroopInfoData a();
   
-  public static lyf a()
-  {
-    if (jdField_a_of_type_Lyf == null) {}
-    try
-    {
-      if (jdField_a_of_type_Lyf == null) {
-        jdField_a_of_type_Lyf = new lyf();
-      }
-      return jdField_a_of_type_Lyf;
-    }
-    finally {}
-  }
+  public abstract String a();
   
-  public String a(String paramString)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
+  public abstract String a(int paramInt);
   
-  public void a(String paramString, int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, String.valueOf(paramInt));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
+  public abstract String a(long paramLong, int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract String b();
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lyf
  * JD-Core Version:    0.7.0.1
  */

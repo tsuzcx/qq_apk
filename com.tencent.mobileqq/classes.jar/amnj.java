@@ -1,36 +1,33 @@
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Process;
 
 public class amnj
-  extends Resources
 {
-  private amnn a;
+  public static final int a;
+  public static final long a;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public long b;
+  public long c;
   
-  public amnj(amnn paramamnn)
+  static
   {
-    super(paramamnn.b().getAssets(), paramamnn.b().getDisplayMetrics(), paramamnn.b().getConfiguration());
-    this.a = paramamnn;
+    jdField_a_of_type_JavaLangString = bgln.e();
+    jdField_b_of_type_JavaLangString = bgln.i();
+    jdField_c_of_type_JavaLangString = bgln.g();
+    jdField_a_of_type_Int = bgln.b();
+    jdField_a_of_type_Long = bgln.a();
   }
   
-  public CharSequence getText(int paramInt)
+  public amnj()
   {
-    int i = this.a.a(paramInt);
-    try
-    {
-      CharSequence localCharSequence = this.a.a().getText(i);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MultiLanguageEngine", 4, new Object[] { "getText delegate:", Integer.valueOf(paramInt), " ,langId:", Integer.valueOf(i), " ,content:" + localCharSequence });
-      }
-      return localCharSequence;
-    }
-    catch (Resources.NotFoundException localNotFoundException) {}
-    return this.a.b().getText(i);
+    this.jdField_b_of_type_Long = bgln.a(Process.myPid());
+    this.jdField_c_of_type_Long = bgln.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amnj
  * JD-Core Version:    0.7.0.1
  */

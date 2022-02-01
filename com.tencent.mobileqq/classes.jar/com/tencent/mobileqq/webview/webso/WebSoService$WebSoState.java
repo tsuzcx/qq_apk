@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.webview.webso;
 
 import android.os.Handler;
-import bekm;
+import bhrq;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class WebSoService$WebSoState
 {
   public int a;
-  public bekm a;
+  public bhrq a;
   public WebSoService.WebSoState.WebSo3 a;
   public String a;
   public WeakReference<Handler> a;
@@ -36,7 +36,7 @@ public class WebSoService$WebSoState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoService.WebSoState
  * JD-Core Version:    0.7.0.1
  */

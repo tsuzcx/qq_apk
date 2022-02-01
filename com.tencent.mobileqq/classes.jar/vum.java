@@ -1,32 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
 
-public class vum
-  extends vut<StoryVideoItem>
+class vum
+  implements zxa<FeedCloudRead.StGetBusiInfoRsp>
 {
-  public vum(VideoViewVideoHolder paramVideoViewVideoHolder)
-  {
-    super(paramVideoViewVideoHolder, null);
-  }
+  vum(vul paramvul, QCircleGetTabListRequest paramQCircleGetTabListRequest) {}
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    wxe.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d("QCircleTabViewModel", 1, "requestTabData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isCache:" + bool);
+    this.jdField_a_of_type_Vul.a(paramBoolean, paramLong, paramString, paramStGetBusiInfoRsp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vum
  * JD-Core Version:    0.7.0.1
  */

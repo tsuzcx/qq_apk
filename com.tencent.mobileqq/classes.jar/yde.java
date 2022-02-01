@@ -1,29 +1,16 @@
-import android.os.Handler;
-import com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper;
-
-public class yde
-  implements ydh
+public abstract interface yde
 {
-  public yde(PopViewAnimationDrawableHelper paramPopViewAnimationDrawableHelper) {}
+  public abstract void b(boolean paramBoolean);
   
-  public void a()
-  {
-    if (PopViewAnimationDrawableHelper.a(this.a) != null) {
-      PopViewAnimationDrawableHelper.a(this.a).b();
-    }
-    if ((PopViewAnimationDrawableHelper.a(this.a) != null) && (PopViewAnimationDrawableHelper.a(this.a) != null)) {
-      PopViewAnimationDrawableHelper.a(this.a).removeCallbacks(PopViewAnimationDrawableHelper.a(this.a));
-    }
-  }
+  public abstract boolean b();
   
-  public void b()
-  {
-    PopViewAnimationDrawableHelper.a(this.a);
-  }
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yde
  * JD-Core Version:    0.7.0.1
  */

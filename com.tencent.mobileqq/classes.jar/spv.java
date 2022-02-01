@@ -1,51 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.redpacket.VKdRedPacketProgress;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.ui.dom.DomObject;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class spv
-  extends oxe
+  implements Animation.AnimationListener
 {
-  public spv(VKdRedPacketProgress paramVKdRedPacketProgress) {}
+  public spv(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    if (paramBoolean) {}
-    try
+    ImageView localImageView = ReadInJoyFastWebBottomSocialView.a(this.a);
+    if (ReadInJoyFastWebBottomSocialView.a(this.a).a) {}
+    for (int i = 2130842813;; i = 2130842815)
     {
-      if (this.a.mAppendEvents.contains("redPacketProcessFinish"))
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("isFinish", paramBoolean);
-        localJSONObject.put("tips", paramString);
-        paramString = new JSONArray();
-        if (this.a.getDomObject() != null)
-        {
-          String str = this.a.getDomObject().getRef();
-          if (str != null) {
-            paramString.put(str);
-          }
-          paramString.put("redPacketProcessFinish");
-          VKdRedPacketProgress.access$000(this.a, "redPacketProcessFinish", paramString, localJSONObject);
-        }
-      }
-      else
-      {
-        QLog.i("VKdRedPacketProgress", QLog.getUIN_REPORTLOG_LEVEL(), " red packet task do not get Tips!");
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("VKdRedPacketProgress", QLog.getUIN_REPORTLOG_LEVEL(), " onRedPacketTaskFinish error :" + paramString.getMessage());
+      localImageView.setImageResource(i);
+      paramAnimation.setInterpolator(new AnticipateInterpolator());
+      return;
     }
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     spv
  * JD-Core Version:    0.7.0.1
  */

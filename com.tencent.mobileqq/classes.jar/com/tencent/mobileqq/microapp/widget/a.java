@@ -161,12 +161,12 @@ final class a
     //   295: ldc 128
     //   297: invokevirtual 132	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   300: astore 11
-    //   302: invokestatic 137	com/tencent/mobileqq/microapp/appbrand/utils/b:a	()Lcom/tencent/mobileqq/microapp/appbrand/utils/b;
+    //   302: invokestatic 137	com/tencent/mobileqq/microapp/appbrand/b/b:a	()Lcom/tencent/mobileqq/microapp/appbrand/b/b;
     //   305: aload 11
-    //   307: invokevirtual 139	com/tencent/mobileqq/microapp/appbrand/utils/b:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   307: invokevirtual 139	com/tencent/mobileqq/microapp/appbrand/b/b:a	(Ljava/lang/String;)Ljava/lang/String;
     //   310: astore 10
     //   312: aload 10
-    //   314: invokestatic 144	bdhb:a	(Ljava/lang/String;)Ljava/io/File;
+    //   314: invokestatic 144	bgmg:a	(Ljava/lang/String;)Ljava/io/File;
     //   317: astore 8
     //   319: new 146	java/io/FileOutputStream
     //   322: dup
@@ -197,9 +197,9 @@ final class a
     //   374: astore 7
     //   376: aload 7
     //   378: ldc 174
-    //   380: invokestatic 137	com/tencent/mobileqq/microapp/appbrand/utils/b:a	()Lcom/tencent/mobileqq/microapp/appbrand/utils/b;
+    //   380: invokestatic 137	com/tencent/mobileqq/microapp/appbrand/b/b:a	()Lcom/tencent/mobileqq/microapp/appbrand/b/b;
     //   383: aload 10
-    //   385: invokevirtual 176	com/tencent/mobileqq/microapp/appbrand/utils/b:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   385: invokevirtual 176	com/tencent/mobileqq/microapp/appbrand/b/b:b	(Ljava/lang/String;)Ljava/lang/String;
     //   388: invokevirtual 180	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   391: pop
     //   392: aload_0
@@ -339,7 +339,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.a
  * JD-Core Version:    0.7.0.1
  */

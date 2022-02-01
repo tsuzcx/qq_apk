@@ -1,59 +1,88 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import org.jetbrains.annotations.Nullable;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class qgm
-  extends qgf
+  extends qhj
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  private VafContext a;
   
-  public qgm(ViewGroup paramViewGroup, String paramString1, String paramString2, int paramInt1, int paramInt2, @Nullable String paramString3)
+  public qgm(ArticleInfo paramArticleInfo, VafContext paramVafContext)
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString3;
-    paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
-    Object localObject = new ColorDrawable(0);
-    paramViewGroup.mFailedDrawable = ((Drawable)localObject);
-    paramViewGroup.mLoadingDrawable = ((Drawable)localObject);
-    paramViewGroup = URLDrawable.getDrawable("http://pub.idqqimg.com/pc/misc/files/20200313/b37cb1e721304575af379f97ce72c115.png", paramViewGroup);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewGroup);
-    localObject = (TextView)a(2131380126);
-    paramViewGroup = (TextView)a(2131380123);
-    ((TextView)localObject).setText(paramString1);
-    paramString1 = URLDrawable.URLDrawableOptions.obtain();
-    localObject = new ColorDrawable(0);
-    paramString1.mFailedDrawable = ((Drawable)localObject);
-    paramString1.mLoadingDrawable = ((Drawable)localObject);
-    paramViewGroup.setBackgroundDrawable(URLDrawable.getDrawable("http://pub.idqqimg.com/pc/misc/readinjoy/btn_bg_2x.png", paramString1));
-    paramViewGroup.setText(paramString2);
-    paramViewGroup.setOnClickListener(new qgn(this));
-    a(paramInt1, paramInt2, paramString3);
+    super(paramArticleInfo, paramVafContext.getContext());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
   }
   
-  View a(ViewGroup paramViewGroup)
+  private void b(ArticleInfo paramArticleInfo)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562522, paramViewGroup, false);
+    if ((snh.a(paramArticleInfo)) || (snh.b(paramArticleInfo)))
+    {
+      if (!TextUtils.isEmpty(paramArticleInfo.commentJumpUrl)) {
+        pha.d(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo.commentJumpUrl);
+      }
+      while ((paramArticleInfo.isCardJumpUrlAvailable != 1) || (TextUtils.isEmpty(paramArticleInfo.getCardJumpUrl()))) {
+        return;
+      }
+      pha.d(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo.getCardJumpUrl());
+      return;
+    }
+    pha.a(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo, true);
   }
   
-  protected void c()
+  protected int a()
   {
-    a(0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    return 3;
+  }
+  
+  protected void a(ArticleInfo paramArticleInfo)
+  {
+    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
+    if (ube.a(paramArticleInfo.mChannelID)) {}
+    String str2;
+    for (String str1 = "0X8009360";; str1 = "0X8007B67")
+    {
+      str2 = pha.a(paramArticleInfo);
+      if ((!snh.i(paramArticleInfo)) && (!snh.g(paramArticleInfo)) && (!snh.j(paramArticleInfo)) && (!snh.k(paramArticleInfo))) {
+        break;
+      }
+      if (!snh.o(paramArticleInfo)) {
+        oat.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Rhs.jdField_a_of_type_Long), str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
+      }
+      if ((!pha.k(paramArticleInfo)) && (!pha.l(paramArticleInfo))) {
+        snh.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
+      }
+      return;
+    }
+    oat.a(null, paramArticleInfo.mSubscribeID, str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
+  }
+  
+  protected void a(ViewBase paramViewBase)
+  {
+    QLog.d("OnCommentClickListener", 1, "click comment");
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType == 36)
+    {
+      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+        pha.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 8);
+      }
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.d > 0) && (!ubb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
+    {
+      QLog.d("OnCommentClickListener", 1, "jumpUrl");
+      b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      return;
+    }
+    QLog.d("OnCommentClickListener", 1, "openCommentComponent");
+    paa.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, null, 9, anni.a(2131706608), null, false, null, false, null, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qgm
  * JD-Core Version:    0.7.0.1
  */

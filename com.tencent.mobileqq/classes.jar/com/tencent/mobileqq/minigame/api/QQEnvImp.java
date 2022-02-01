@@ -7,9 +7,9 @@ import android.os.Build;
 import android.os.Process;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bdgk;
-import bjdm;
-import bnle;
+import bgln;
+import blru;
+import bqcd;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -28,14 +28,12 @@ import com.tencent.mobileqq.mini.utils.FileUtils;
 import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
 import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
-import com.tencent.mobileqq.minigame.manager.GameLibVersionManager;
 import com.tencent.mobileqq.minigame.manager.GameReportManager;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.minigame.utils.DeviceUtil;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
-import com.tencent.mobileqq.minigame.utils.LogFilterUtil;
 import com.tencent.mobileqq.minigame.utils.PathUtil;
 import com.tencent.mobileqq.minigame.utils.thread.TTHandleThread;
 import com.tencent.mobileqq.triton.sdk.IQQEnv;
@@ -43,7 +41,6 @@ import com.tencent.mobileqq.triton.sdk.callback.DialogCallback;
 import com.tencent.mobileqq.triton.sdk.download.ITDownloadListener;
 import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
 import java.io.File;
-import java.util.Set;
 import org.json.JSONObject;
 
 public class QQEnvImp
@@ -138,11 +135,6 @@ public class QQEnvImp
     return this.mRuntimeLoader.getGameInfoManager().getAppId();
   }
   
-  public String getBaseEnginePath()
-  {
-    return this.mRuntimeLoader.getLibVersionManager().getGameJsLibPath();
-  }
-  
   public int getBenchmarkLevel()
   {
     return DeviceUtil.getDeviceBenchmarkLevel();
@@ -188,17 +180,7 @@ public class QQEnvImp
   @NonNull
   public String getGlobalConfig()
   {
-    return "self = GameGlobal = __TT__GLOBAL__ = global = window = this;\nself.__ttObjdec__ = {};\nself.wx = self.wx || {};\nself.WeixinNativeBuffer = Triton.WeixinNativeBuffer;\nvar __wxConfig = __wxConfig || {};\n__wxConfig.env = {};\n__wxConfig.env.USER_DATA_PATH = '" + MiniAppGlobal.STR_WXFILE + "usr';\n__wxConfig.platform = 'android';\n__wxConfig.QUA = '" + bjdm.a() + "';\nwx.env = __wxConfig.env;\nvar __qqConfig = __wxConfig || {};\n";
-  }
-  
-  public Set<String> getLogBlackList()
-  {
-    return LogFilterUtil.getLogBlackList();
-  }
-  
-  public Set<String> getLogWhiteList()
-  {
-    return LogFilterUtil.getLogWhiteList();
+    return "self = GameGlobal = __TT__GLOBAL__ = global = window = this;\nself.__ttObjdec__ = {};\nself.wx = self.wx || {};\nself.WeixinNativeBuffer = Triton.WeixinNativeBuffer;\nvar __wxConfig = __wxConfig || {};\n__wxConfig.env = {};\n__wxConfig.env.USER_DATA_PATH = '" + MiniAppGlobal.STR_WXFILE + "usr';\n__wxConfig.platform = 'android';\n__wxConfig.QUA = '" + blru.a() + "';\nwx.env = __wxConfig.env;\nvar __qqConfig = __wxConfig || {};\n";
   }
   
   public String getPlatformName()
@@ -208,7 +190,7 @@ public class QQEnvImp
   
   public String getPlatformVersion()
   {
-    return bdgk.c();
+    return bgln.c();
   }
   
   public String getResPath(String paramString1, String paramString2, MiniGameInfo paramMiniGameInfo)
@@ -239,7 +221,7 @@ public class QQEnvImp
   
   public boolean isNotchValid()
   {
-    return bnle.b();
+    return bqcd.b();
   }
   
   public int jsErrorDetectInterval()
@@ -327,7 +309,7 @@ public class QQEnvImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.api.QQEnvImp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.biz.subscribe.widget;
 
-import bdhb;
-import ynx;
+import aakt;
+import bgmg;
 
 public class SubscribeQRCodeShareHelper$10
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$10(ynx paramynx) {}
+  public SubscribeQRCodeShareHelper$10(aakt paramaakt) {}
   
   public void run()
   {
-    bdhb.a(ynx.a, true);
+    bgmg.a(aakt.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.10
  * JD-Core Version:    0.7.0.1
  */

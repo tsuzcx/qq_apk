@@ -1,23 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.KdTagItem;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-public final class nst
-  implements Parcelable.Creator<VideoInfo.KdTagItem>
+public class nst
+  implements bkhw
 {
-  public VideoInfo.KdTagItem a(Parcel paramParcel)
-  {
-    return new VideoInfo.KdTagItem(paramParcel);
-  }
+  public nst(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public VideoInfo.KdTagItem[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new VideoInfo.KdTagItem[paramInt];
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.F();
+      continue;
+      this.a.H();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nst
  * JD-Core Version:    0.7.0.1
  */

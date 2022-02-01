@@ -46,10 +46,11 @@ public final class R$integer
   public static final int seal_num_cols = 2131427369;
   public static final int seal_num_rows = 2131427370;
   public static final int selectTabTextSize = 2131427371;
-  public static final int sub_text_size = 2131427372;
-  public static final int tabTextSize = 2131427373;
-  public static final int tcw_datepicker_endyear = 2131427374;
-  public static final int tcw_datepicker_startyear = 2131427375;
+  public static final int status_bar_notification_info_maxnum = 2131427372;
+  public static final int sub_text_size = 2131427373;
+  public static final int tabTextSize = 2131427374;
+  public static final int tcw_datepicker_endyear = 2131427375;
+  public static final int tcw_datepicker_startyear = 2131427376;
 }
 
 

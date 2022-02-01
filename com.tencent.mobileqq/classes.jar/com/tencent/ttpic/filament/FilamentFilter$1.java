@@ -1,18 +1,20 @@
 package com.tencent.ttpic.filament;
 
-import com.tencent.ttpic.baseutils.gles.OffscreenSurface;
-import com.tencent.ttpic.openapi.filter.SimpleGLThread.OnSurfaceCreatedListener;
+import android.graphics.SurfaceTexture;
 
 class FilamentFilter$1
-  implements SimpleGLThread.OnSurfaceCreatedListener
+  implements Runnable
 {
   FilamentFilter$1(FilamentFilter paramFilamentFilter) {}
   
-  public void onSurfaceCreated(OffscreenSurface paramOffscreenSurface) {}
+  public void run()
+  {
+    FilamentFilter.access$002(this.this$0, new SurfaceTexture(FilamentFilter.access$100(this.this$0)[0]));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filament.FilamentFilter.1
  * JD-Core Version:    0.7.0.1
  */

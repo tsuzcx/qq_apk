@@ -1,6 +1,7 @@
 package com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel;
 
 import android.content.Context;
+import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -24,16 +25,15 @@ public class b
   private static final String TAG = "AdCanvasImagesCarouselComponentView";
   private static int WHEEL = 100;
   private static int WHEEL_WAIT = 101;
-  private static int delay = 2000;
-  private static long releaseTime = 0L;
-  public int OFF_SCREEN_PAGE_LIMIT = 2;
-  private int PAGE_MARGIN = 0;
+  private static int delay;
+  private List<com.tencent.ad.tangram.canvas.views.canvas.components.picture.b> adCanvasPictureComponentViews;
   private b.a handler = new b.a(new WeakReference(this));
   private boolean isScrolling = false;
   private c mAdapter;
   private Context mContext;
-  private int mCurrentPosition = 2;
+  private int mCurrentPosition = 0;
   private ViewPager mViewPager;
+  private long releaseTime = 0L;
   private b.b runnable = new b.b(new WeakReference(this));
   private int showPosition = 0;
   private a value;
@@ -53,38 +53,50 @@ public class b
   {
     super(paramContext, paramWeakReference);
     this.mContext = paramContext;
-    init(paramContext, parama);
+    init(paramContext, parama, null);
+  }
+  
+  public b(Context paramContext, WeakReference<AdCanvasViewListener> paramWeakReference, a parama, Handler paramHandler)
+  {
+    super(paramContext, paramWeakReference);
+    this.mContext = paramContext;
+    init(paramContext, parama, paramHandler);
   }
   
   private void autoHandleScroll(Message paramMessage)
   {
     if ((this.handler == null) || (this.runnable == null)) {}
-    while (this.viewList.size() <= 0) {
+    do
+    {
       return;
-    }
+      AdLog.i("AdCanvasImagesCarouselComponentView", "autoHandleScroll call: size=" + this.viewList.size() + " msg=" + paramMessage);
+    } while (this.viewList.size() <= 0);
     if (paramMessage.what == WHEEL)
     {
       if (!this.isScrolling)
       {
         int i = (this.mCurrentPosition + 1) % this.viewList.size();
-        AdLog.i("AdCanvasImagesCarouselComponentView", "autoHandleScroll: mCurrentPosition=" + this.mCurrentPosition + " position=" + i);
+        AdLog.i("AdCanvasImagesCarouselComponentView", "autoHandleScroll: mCurrentPosition=" + this.mCurrentPosition + " position=" + i + " size: " + this.viewList.size());
         this.mViewPager.setCurrentItem(i, true);
       }
-      releaseTime = System.currentTimeMillis();
+      this.releaseTime = System.currentTimeMillis();
     }
     this.handler.removeCallbacks(this.runnable);
     this.handler.postDelayed(this.runnable, delay);
   }
   
-  private com.tencent.ad.tangram.canvas.views.canvas.components.picture.b getImageView(Context paramContext, WeakReference<AdCanvasViewListener> paramWeakReference, com.tencent.ad.tangram.canvas.views.canvas.components.picture.a parama)
+  private com.tencent.ad.tangram.canvas.views.canvas.components.picture.b getImageView(Context paramContext, WeakReference<AdCanvasViewListener> paramWeakReference, a parama, com.tencent.ad.tangram.canvas.views.canvas.components.picture.a parama1, Handler paramHandler)
   {
-    parama.enableRoundRectBackground = true;
-    parama.radius = com.tencent.ad.tangram.canvas.views.a.dp2px(8.0F, paramContext.getResources());
-    parama.borderWidth = com.tencent.ad.tangram.canvas.views.a.dp2px(1.0F, paramContext.getResources());
-    return new com.tencent.ad.tangram.canvas.views.canvas.components.picture.b(paramContext, paramWeakReference, (com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)com.tencent.ad.tangram.canvas.views.canvas.components.picture.a.class.cast(parama), null);
+    parama1.enableRoundRectBackground = parama.enableImageRoundRectBackground;
+    parama1.radius = parama.imageRadius;
+    parama1.borderWidth = parama.imageBorderWidth;
+    parama1.borderColor = parama.imageBorderColor;
+    paramContext = new com.tencent.ad.tangram.canvas.views.canvas.components.picture.b(paramContext, paramWeakReference, parama1, null, paramHandler);
+    this.adCanvasPictureComponentViews.add(paramContext);
+    return paramContext;
   }
   
-  private void init(Context paramContext, a parama)
+  private void init(Context paramContext, a parama, Handler paramHandler)
   {
     if ((paramContext == null) || (parama == null) || (!parama.isValid())) {}
     do
@@ -92,11 +104,11 @@ public class b
       do
       {
         return;
+        this.adCanvasPictureComponentViews = new ArrayList();
         this.value = parama;
         if (parama.displaySpeed > 0) {
           delay = parama.displaySpeed * 1000;
         }
-        this.PAGE_MARGIN = com.tencent.ad.tangram.canvas.views.a.dp2px(10.0F, paramContext.getResources());
         parama = new FrameLayout(paramContext);
         parama.setBackgroundColor(-1);
         parama.setClipChildren(false);
@@ -115,33 +127,40 @@ public class b
       {
         com.tencent.ad.tangram.canvas.views.canvas.components.picture.a locala = (com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)((Iterator)localObject).next();
         if (locala != null) {
-          this.viewList.add(getImageView(paramContext, this.canvasViewListener, locala));
+          this.viewList.add(getImageView(paramContext, this.canvasViewListener, this.value, locala, paramHandler));
         }
       }
-      if (this.value.imageList.size() > this.OFF_SCREEN_PAGE_LIMIT)
+      if (this.value.imageList.size() > this.value.pageLimit)
       {
         int i = 0;
-        while (i < this.OFF_SCREEN_PAGE_LIMIT)
+        while (i < this.value.pageLimit)
         {
-          this.viewList.add(0, getImageView(paramContext, this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)com.tencent.ad.tangram.canvas.views.canvas.components.picture.a.class.cast(this.value.imageList.get(this.value.imageList.size() - 1 - i))));
-          this.viewList.add(getImageView(paramContext, this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)com.tencent.ad.tangram.canvas.views.canvas.components.picture.a.class.cast(this.value.imageList.get(i))));
+          this.viewList.add(0, getImageView(paramContext, this.canvasViewListener, this.value, (com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)this.value.imageList.get(this.value.imageList.size() - 1 - i), paramHandler));
+          this.viewList.add(getImageView(paramContext, this.canvasViewListener, this.value, (com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)this.value.imageList.get(i), paramHandler));
           i += 1;
         }
-        this.showPosition += this.OFF_SCREEN_PAGE_LIMIT;
+        this.showPosition += this.value.pageLimit;
       }
       this.mAdapter = new c();
       this.mAdapter.setViewList(this.viewList);
+      this.mAdapter.setPageLimit(this.value.pageLimit);
       this.mViewPager = new ViewPager(paramContext);
       this.mViewPager.setClipChildren(false);
-      this.mViewPager.setOffscreenPageLimit(this.OFF_SCREEN_PAGE_LIMIT * 2);
+      this.mViewPager.setOffscreenPageLimit(this.value.pageLimit * 2);
       this.mViewPager.setAdapter(this.mAdapter);
       this.mViewPager.setCurrentItem(this.showPosition);
-      this.mViewPager.setPageMargin(this.PAGE_MARGIN);
+      this.mCurrentPosition = this.showPosition;
+      this.mViewPager.setPageMargin(this.value.pageMargin);
       this.mViewPager.setOnPageChangeListener(new b.1(this));
       parama.addView(this.mViewPager);
       this.mViewPager.post(new b.2(this));
     } while ((this.handler == null) || (this.runnable == null));
     this.handler.postDelayed(this.runnable, delay);
+  }
+  
+  public List<com.tencent.ad.tangram.canvas.views.canvas.components.picture.b> getAdCanvasPictureComponentViews()
+  {
+    return this.adCanvasPictureComponentViews;
   }
   
   public AdCanvasComponentData getData()
@@ -166,10 +185,22 @@ public class b
       this.runnable = null;
     }
   }
+  
+  public void onLocationChanged()
+  {
+    super.onLocationChanged();
+    if (this.adCanvasPictureComponentViews != null)
+    {
+      Iterator localIterator = this.adCanvasPictureComponentViews.iterator();
+      while (localIterator.hasNext()) {
+        ((com.tencent.ad.tangram.canvas.views.canvas.components.picture.b)localIterator.next()).onLocationChanged();
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.b
  * JD-Core Version:    0.7.0.1
  */

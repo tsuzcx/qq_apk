@@ -1,83 +1,72 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.Iterator;
-import java.util.List;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.GestureRelativeLayout;
 
-class atst
-  implements attt
+public class atst
+  implements GestureDetector.OnGestureListener
 {
-  atst(atso paramatso, Activity paramActivity) {}
+  private atst(SimpleFileViewer.GestureRelativeLayout paramGestureRelativeLayout) {}
   
-  public void a(LocationRoom.Venue paramVenue)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (paramVenue != null)
-    {
-      atso.a(this.jdField_a_of_type_Atso);
-      return;
-    }
-    atso.b(this.jdField_a_of_type_Atso);
+    return false;
   }
   
-  public void a(LatLng paramLatLng) {}
-  
-  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramList != null)
-    {
-      paramLatLng = paramList.iterator();
-      while (paramLatLng.hasNext())
-      {
-        paramList = (String)paramLatLng.next();
-        Bitmap localBitmap = this.jdField_a_of_type_Atso.a(paramList);
-        if (localBitmap != null)
-        {
-          localBitmap = bdhj.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-          atso.a(this.jdField_a_of_type_Atso).a(paramList, localBitmap);
-        }
-      }
-    }
+    return false;
   }
   
-  public void a(boolean paramBoolean, Point paramPoint)
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramBoolean)
+    if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
     {
-      atso.a(this.jdField_a_of_type_Atso).setClickable(false);
-      if (bibv.a()) {
-        atso.a(this.jdField_a_of_type_Atso).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840355));
+      paramMotionEvent1 = this.a.a.b();
+      if (paramFloat2 <= 0.0F) {
+        break label97;
+      }
+      if (paramMotionEvent1 != null) {
+        paramMotionEvent1.setVisibility(8);
+      }
+      if (this.a.a.jdField_a_of_type_Audh != null) {
+        this.a.a.jdField_a_of_type_Audh.b(true);
+      }
+      if (this.a.a.jdField_a_of_type_Audf != null) {
+        this.a.a.jdField_a_of_type_Audf.b(true);
       }
     }
-    Rect localRect;
+    label97:
     do
     {
-      return;
-      atso.a(this.jdField_a_of_type_Atso).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840354));
-      return;
-      if (paramPoint == null) {
-        break;
+      do
+      {
+        return false;
+      } while (paramFloat2 >= 0.0F);
+      if (paramMotionEvent1 != null) {
+        paramMotionEvent1.setVisibility(0);
       }
-      localRect = new Rect();
-      atso.a(this.jdField_a_of_type_Atso).getGlobalVisibleRect(localRect);
-    } while (localRect.contains(paramPoint.x, paramPoint.y));
-    atso.a(this.jdField_a_of_type_Atso).setClickable(true);
-    atso.a(this.jdField_a_of_type_Atso).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840356));
+      if (this.a.a.jdField_a_of_type_Audh != null) {
+        this.a.a.jdField_a_of_type_Audh.a(true);
+      }
+    } while (this.a.a.jdField_a_of_type_Audf == null);
+    this.a.a.jdField_a_of_type_Audf.a(true);
+    return false;
   }
   
-  public void a(boolean paramBoolean, attu paramattu)
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    atso.a(this.jdField_a_of_type_Atso, paramBoolean, paramattu);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atst
  * JD-Core Version:    0.7.0.1
  */

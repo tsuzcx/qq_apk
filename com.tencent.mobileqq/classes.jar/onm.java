@@ -1,21 +1,35 @@
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class onm
-  extends oob
+  extends BroadcastReceiver
 {
-  onm(omz paramomz, boolean paramBoolean, List paramList)
-  {
-    super(paramomz, null);
-  }
+  onm(onl paramonl) {}
   
-  void a(ooe paramooe)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramooe.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, omz.c(this.jdField_a_of_type_Omz), 6);
+    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (onl.a(this.a) != null))
+      {
+        if (!paramContext.equals("homekey")) {
+          break label55;
+        }
+        onl.a(this.a).a();
+      }
+    }
+    label55:
+    while (!paramContext.equals("recentapps")) {
+      return;
+    }
+    onl.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     onm
  * JD-Core Version:    0.7.0.1
  */

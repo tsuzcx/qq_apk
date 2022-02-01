@@ -1,44 +1,40 @@
-import android.graphics.Rect;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aoji
+  extends aojs
 {
-  public int a;
-  public Rect a;
-  public aojp a;
-  public ArrayList<aojj> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = 0;
-  public int d = 0;
-  public int e = 1;
-  
-  public aoji(aojp paramaojp, int paramInt1, Rect paramRect, int paramInt2, boolean paramBoolean, int paramInt3)
+  public aoji(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 24;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Aojp = paramaojp;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    this.e = paramInt3;
-    if (paramaojp.jdField_a_of_type_Int > 0) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      paramaojp.jdField_a_of_type_Int += 1;
-      return;
-    }
+    super(paramQQAppInterface, paramContext);
   }
   
-  public String toString()
+  public boolean a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("text: ").append(this.jdField_a_of_type_Aojp.jdField_a_of_type_JavaLangString).append("; size: ").append(this.jdField_b_of_type_Int).append("; line_count: ").append(this.e).append("; container: ").append(this.jdField_a_of_type_AndroidGraphicsRect).append("; algin: ").append(this.c).append("; v_algin: ").append(this.d);
-    return localStringBuilder.toString();
+    for (;;)
+    {
+      try
+      {
+        if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey("mini_appid")) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("fakeUrl")))
+        {
+          i = 1;
+          if (i != 0) {
+            return com.tencent.mobileqq.microapp.sdk.MiniAppLauncher.launchMiniAppByScheme(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+          }
+          boolean bool = com.tencent.mobileqq.mini.sdk.MiniAppLauncher.launchMiniAppByScheme(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap, 2016, null, null);
+          return bool;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("HttpOpenMicroAppAction", 1, "doAction error: " + localException.getMessage());
+        a("HttpOpenMicroAppAction");
+        return false;
+      }
+      int i = 0;
+    }
   }
 }
 

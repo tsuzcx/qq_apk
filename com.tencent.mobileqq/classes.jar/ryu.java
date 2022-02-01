@@ -1,26 +1,25 @@
-import android.graphics.drawable.ColorDrawable;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.3;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
 
 public class ryu
-  implements InvocationHandler
+  extends Handler
 {
-  public ryu(FastWebActivity.3 param3) {}
+  private ryu(VideoFeedsGuideView paramVideoFeedsGuideView) {}
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.this$0.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    FastWebActivity.a(this.a.this$0).setMaskBackGroundDrawable(new ColorDrawable(0));
-    return null;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    VideoFeedsGuideView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ryu
  * JD-Core Version:    0.7.0.1
  */

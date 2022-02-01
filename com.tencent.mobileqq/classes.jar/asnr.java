@@ -1,29 +1,25 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
-import com.tencent.mobileqq.gamecenter.view.GameSessionView;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
 
 public class asnr
-  implements EIPCResultCallback
+  implements Animator.AnimatorListener
 {
-  public asnr(GameSessionView paramGameSessionView, Context paramContext, GameCenterSessionInfo paramGameCenterSessionInfo) {}
+  public asnr(ExtendFriendSearchBarView paramExtendFriendSearchBarView) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramEIPCResult.code == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data;
-      if (paramEIPCResult != null)
-      {
-        paramEIPCResult = paramEIPCResult.getString("key_get_msg_list_url");
-        QLog.i(GameSessionView.a, 1, "[onCallback] url:" + paramEIPCResult);
-        asmw.a(paramEIPCResult, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameCenterSessionInfo);
-      }
-    }
+    this.a.c();
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.c();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

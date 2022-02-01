@@ -1,35 +1,96 @@
-import Wallet.RedInfoSyncRsp;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-class ajbq
-  implements BusinessObserver
+public class ajbq
+  implements Comparator<PhoneContact>
 {
-  ajbq(ajbp paramajbp) {}
+  public ajbq(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "redInfoSyncReq onReceive" + paramBoolean);
+    int n = 0;
+    Object localObject2 = paramPhoneContact1.pinyinFirst;
+    String str = paramPhoneContact2.pinyinFirst;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).endsWith("#")) {
+      localObject1 = "Za";
     }
-    StringBuilder localStringBuilder;
-    if ((paramBoolean) && (paramBundle != null))
+    localObject2 = str;
+    if (str.endsWith("#")) {
+      localObject2 = "Za";
+    }
+    int j = ((String)localObject1).compareTo((String)localObject2);
+    int i = j;
+    int k;
+    label99:
+    label112:
+    int m;
+    if (j == 0)
     {
-      paramBundle = (RedInfoSyncRsp)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel())
+      if (TextUtils.isEmpty(paramPhoneContact1.uin)) {
+        break label176;
+      }
+      i = 1;
+      if ((i == 0) || (paramPhoneContact1.uin.equals("0"))) {
+        break label181;
+      }
+      k = 1;
+      if (TextUtils.isEmpty(paramPhoneContact2.uin)) {
+        break label187;
+      }
+      j = 1;
+      if ((j == 0) || (paramPhoneContact2.uin.equals("0"))) {
+        break label193;
+      }
+      m = 1;
+      label132:
+      if (k == 0) {
+        break label199;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      label139:
+      if (m != 0) {
+        j = n;
+      }
+      for (;;)
       {
-        localStringBuilder = new StringBuilder().append("RedInfoSyncRsp|");
-        if (paramBundle == null) {
-          break label97;
+        i -= j;
+        j = i;
+        if (i == 0) {
+          j = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+        }
+        return j;
+        label176:
+        i = 0;
+        break;
+        label181:
+        k = 0;
+        break label99;
+        label187:
+        j = 0;
+        break label112;
+        label193:
+        m = 0;
+        break label132;
+        label199:
+        if (i == 0) {
+          break label225;
+        }
+        i = 1;
+        break label139;
+        if (j != 0) {
+          j = 1;
+        } else {
+          j = 2;
         }
       }
-    }
-    label97:
-    for (paramBundle = Integer.valueOf(paramBundle.result);; paramBundle = "")
-    {
-      QLog.d("QWalletRedManager", 2, paramBundle);
-      return;
+      label225:
+      i = 2;
     }
   }
 }

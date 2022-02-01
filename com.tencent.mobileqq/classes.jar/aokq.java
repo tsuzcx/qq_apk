@@ -1,44 +1,36 @@
-final class aokq
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aokq
+  extends aojt
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  private final String c;
-  
-  public aokq(int paramInt, String paramString1, long paramLong, String paramString2)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
-    this.c = (this.jdField_a_of_type_Int + "-" + this.jdField_a_of_type_JavaLangString + "-" + this.jdField_a_of_type_Long);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (!(paramObject instanceof aokq)) {}
-    do
+    paramQQAppInterface = new aokp(paramQQAppInterface, paramContext);
+    paramQQAppInterface.b = "qqreg";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
     {
-      return false;
-      paramObject = (aokq)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return this.c.hashCode();
-  }
-  
-  public String toString()
-  {
-    return "Entry{type=" + this.jdField_a_of_type_Int + ", key='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.jdField_a_of_type_Long + ", path='" + this.b + '\'' + '}';
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aokq
  * JD-Core Version:    0.7.0.1
  */

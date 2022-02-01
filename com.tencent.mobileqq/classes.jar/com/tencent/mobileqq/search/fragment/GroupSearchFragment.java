@@ -1,10 +1,6 @@
 package com.tencent.mobileqq.search.fragment;
 
-import abvl;
-import alud;
-import alzl;
-import amfc;
-import amfe;
+import adcd;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,48 +8,52 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import ayht;
-import ayhw;
-import ayhx;
-import ayif;
-import ayig;
-import ayjn;
-import ayjq;
-import aykr;
-import ayks;
-import aymr;
-import ayms;
-import aynb;
-import aync;
-import aynd;
-import ayne;
-import aynf;
-import ayng;
-import ayni;
-import aynk;
-import aynn;
-import ayns;
-import aynt;
-import aynu;
-import ayod;
-import ayoi;
-import ayoj;
-import ayok;
-import ayot;
-import ayoy;
-import aypa;
-import aypd;
-import aypk;
-import aypl;
-import aysc;
-import ayug;
-import ayuu;
-import ayuv;
-import ayve;
-import ayvm;
-import azqs;
-import bdbb;
-import bhtv;
+import anni;
+import anrs;
+import anxs;
+import anxu;
+import aobu;
+import bbgr;
+import bbgu;
+import bbgv;
+import bbhd;
+import bbhe;
+import bbio;
+import bbir;
+import bbju;
+import bbjv;
+import bblv;
+import bblw;
+import bbmf;
+import bbmg;
+import bbmh;
+import bbmi;
+import bbmj;
+import bbmk;
+import bbmm;
+import bbmo;
+import bbmr;
+import bbmw;
+import bbmx;
+import bbmy;
+import bbnh;
+import bbnm;
+import bbnn;
+import bbno;
+import bbnx;
+import bboc;
+import bboe;
+import bboh;
+import bboo;
+import bbop;
+import bbrf;
+import bbtj;
+import bbtx;
+import bbty;
+import bbuh;
+import bbup;
+import bcst;
+import bkhe;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -71,24 +71,24 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Layns;>;
+import java.util.List<Lbbmw;>;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class GroupSearchFragment
   extends BaseSearchFragment
-  implements ayhx, bhtv
+  implements bbgv, bkhe
 {
   public static volatile String a;
   public volatile int a;
   public long a;
-  public aypd a;
+  public bboh a;
   public boolean a;
   byte[] a;
   public int b;
   public long b;
   public Handler b;
-  public aypd b;
+  public bboh b;
   public String b;
   int jdField_c_of_type_Int = 0;
   private long jdField_c_of_type_Long;
@@ -108,8 +108,8 @@ public class GroupSearchFragment
   public GroupSearchFragment()
   {
     this.jdField_i_of_type_Int = -1;
-    this.jdField_a_of_type_Aypd = new aypd("", -1, 2130840180, true);
-    this.jdField_b_of_type_AndroidOsHandler = new aykr(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Bboh = new bboh("", -1, 2130840360, true);
+    this.jdField_b_of_type_AndroidOsHandler = new bbju(this, Looper.getMainLooper());
     this.jdField_b_of_type_JavaLangString = "";
   }
   
@@ -131,7 +131,7 @@ public class GroupSearchFragment
     return 5;
   }
   
-  private int a(List<ayns> paramList)
+  private int a(List<bbmw> paramList)
   {
     int m = 0;
     if (paramList == null) {
@@ -146,10 +146,10 @@ public class GroupSearchFragment
     Object localObject2;
     if (n < paramList.size())
     {
-      localObject3 = (ayns)paramList.get(n);
-      if ((localObject3 instanceof aynb))
+      localObject3 = (bbmw)paramList.get(n);
+      if ((localObject3 instanceof bbmf))
       {
-        localObject2 = ((aynb)localObject3).a();
+        localObject2 = ((bbmf)localObject3).a();
         if (localObject2 == null)
         {
           localObject2 = localObject1;
@@ -164,11 +164,11 @@ public class GroupSearchFragment
     {
       n += 1;
       break;
-      localObject1 = ((aynt)localObject2).a();
-      localObject2 = ((aynb)localObject3).a();
-      if ((!alud.a(2131705772).equals(localObject2)) && (!alud.a(2131705769).equals(localObject2)) && (!alud.a(2131705754).equals(localObject2)) && (!aynk.jdField_a_of_type_JavaLangString.equals(localObject2)))
+      localObject1 = ((bbmx)localObject2).a();
+      localObject2 = ((bbmf)localObject3).a();
+      if ((!anni.a(2131704173).equals(localObject2)) && (!anni.a(2131704170).equals(localObject2)) && (!anni.a(2131704155).equals(localObject2)) && (!bbmo.jdField_a_of_type_JavaLangString.equals(localObject2)))
       {
-        if (alud.a(2131705750).equals(localObject2))
+        if (anni.a(2131704151).equals(localObject2))
         {
           if (localObject1 != null)
           {
@@ -185,11 +185,11 @@ public class GroupSearchFragment
         }
         else
         {
-          if (((aynb)localObject3).b) {
+          if (((bbmf)localObject3).b) {
             continue;
           }
-          localObject2 = ayhw.a();
-          if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals(((aynb)localObject3).a()))) {
+          localObject2 = bbgu.a();
+          if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals(((bbmf)localObject3).a()))) {
             m = 1;
           }
           for (;;)
@@ -206,11 +206,11 @@ public class GroupSearchFragment
                 m = 0;
                 continue;
               }
-              if ((((List)localObject1).get(0) instanceof ayms))
+              if ((((List)localObject1).get(0) instanceof bblw))
               {
-                localObject3 = (ayms)((List)localObject1).get(0);
-                localObject2 = ((ayms)localObject3).jdField_c_of_type_JavaLangString;
-                localObject3 = ((ayms)localObject3).a();
+                localObject3 = (bblw)((List)localObject1).get(0);
+                localObject2 = ((bblw)localObject3).jdField_c_of_type_JavaLangString;
+                localObject3 = ((bblw)localObject3).a();
                 if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(localObject3))) {
                   break label390;
                 }
@@ -224,20 +224,20 @@ public class GroupSearchFragment
                   label390:
                   m = 0;
                   continue;
-                  if ((localObject3 instanceof aync))
+                  if ((localObject3 instanceof bbmg))
                   {
                     localObject1 = null;
                     break;
                   }
-                  if ((localObject3 instanceof aypd))
+                  if ((localObject3 instanceof bboh))
                   {
-                    if (!((aypd)localObject3).b()) {
+                    if (!((bboh)localObject3).b()) {
                       break label574;
                     }
                     localObject1 = null;
                     break;
                   }
-                  if (((localObject3 instanceof aynk)) || ((localObject3 instanceof ayne)) || ((localObject3 instanceof ayni)) || ((localObject3 instanceof aynd)) || ((localObject3 instanceof aynf)) || ((localObject3 instanceof ayng)) || (((localObject3 instanceof ayot)) && (((ayot)localObject3).jdField_c_of_type_Boolean)) || ((localObject1 != null) && (((List)localObject1).contains(localObject3)))) {
+                  if (((localObject3 instanceof bbmo)) || ((localObject3 instanceof bbmi)) || ((localObject3 instanceof bbmm)) || ((localObject3 instanceof bbmh)) || ((localObject3 instanceof bbmj)) || ((localObject3 instanceof bbmk)) || (((localObject3 instanceof bbnx)) && (((bbnx)localObject3).jdField_c_of_type_Boolean)) || ((localObject1 != null) && (((List)localObject1).contains(localObject3)))) {
                     break;
                   }
                   if (QLog.isColorLevel()) {
@@ -279,11 +279,11 @@ public class GroupSearchFragment
   
   private List<Long> a()
   {
-    List localList = new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_i_of_type_Int).a(new ayuu(this.jdField_c_of_type_JavaLangString));
+    List localList = new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_i_of_type_Int).a(new bbtx(this.jdField_c_of_type_JavaLangString));
     if ((localList == null) || (localList.size() == 0)) {
       return null;
     }
-    ArrayList localArrayList1 = ((alzl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).a();
+    ArrayList localArrayList1 = ((anrs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).a();
     ArrayList localArrayList2 = new ArrayList();
     if ((localArrayList1 == null) || (localArrayList1.isEmpty())) {
       if (QLog.isColorLevel()) {
@@ -296,12 +296,12 @@ public class GroupSearchFragment
       int m = 0;
       while (m < localList.size())
       {
-        ayoy localayoy = (ayoy)localList.get(m);
+        bboc localbboc = (bboc)localList.get(m);
         int n = 0;
         while (n < localArrayList1.size())
         {
           PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)localArrayList1.get(n);
-          if (TextUtils.equals(String.valueOf(localPublicAccountInfo.uin), String.valueOf(localayoy.a.uin))) {
+          if (TextUtils.equals(String.valueOf(localPublicAccountInfo.uin), String.valueOf(localbboc.a.uin))) {
             localArrayList2.add(Long.valueOf(localPublicAccountInfo.uin));
           }
           n += 1;
@@ -311,7 +311,7 @@ public class GroupSearchFragment
     }
   }
   
-  private void a(int paramInt, String paramString, List<ayns> paramList)
+  private void a(int paramInt, String paramString, List<bbmw> paramList)
   {
     int m = 1;
     Object localObject1 = "";
@@ -326,57 +326,57 @@ public class GroupSearchFragment
           paramList = paramList.iterator();
           if (paramList.hasNext())
           {
-            Object localObject3 = (ayns)paramList.next();
-            if (!(localObject3 instanceof aynb)) {
+            Object localObject3 = (bbmw)paramList.next();
+            if (!(localObject3 instanceof bbmf)) {
               continue;
             }
-            localObject3 = ((aynb)localObject3).a();
-            if (alud.a(2131705770).equals(localObject3))
+            localObject3 = ((bbmf)localObject3).a();
+            if (anni.a(2131704171).equals(localObject3))
             {
               ((HashMap)localObject2).put(Integer.valueOf(1), Integer.valueOf(1));
               continue;
             }
-            if (alud.a(2131705757).equals(localObject3))
+            if (anni.a(2131704158).equals(localObject3))
             {
               ((HashMap)localObject2).put(Integer.valueOf(2), Integer.valueOf(2));
               continue;
             }
-            if (alud.a(2131705751).equals(localObject3))
+            if (anni.a(2131704152).equals(localObject3))
             {
               ((HashMap)localObject2).put(Integer.valueOf(3), Integer.valueOf(3));
               continue;
             }
-            if (alud.a(2131705749).equals(localObject3))
+            if (anni.a(2131704150).equals(localObject3))
             {
               ((HashMap)localObject2).put(Integer.valueOf(4), Integer.valueOf(4));
               continue;
             }
-            if (alud.a(2131705781).equals(localObject3))
+            if (anni.a(2131704182).equals(localObject3))
             {
               ((HashMap)localObject2).put(Integer.valueOf(5), Integer.valueOf(5));
               continue;
             }
-            if (alud.a(2131693819).equals(localObject3))
+            if (anni.a(2131693162).equals(localObject3))
             {
               ((HashMap)localObject2).put(Integer.valueOf(6), Integer.valueOf(6));
               continue;
             }
-            if (alud.a(2131705761).equals(localObject3))
+            if (anni.a(2131704162).equals(localObject3))
             {
               ((HashMap)localObject2).put(Integer.valueOf(7), Integer.valueOf(7));
               continue;
             }
-            if (alud.a(2131720579).equals(localObject3))
+            if (anni.a(2131718385).equals(localObject3))
             {
               ((HashMap)localObject2).put(Integer.valueOf(8), Integer.valueOf(8));
               continue;
             }
-            if (alud.a(2131705762).equals(localObject3))
+            if (anni.a(2131704163).equals(localObject3))
             {
               ((HashMap)localObject2).put(Integer.valueOf(9), Integer.valueOf(9));
               continue;
             }
-            if (alud.a(2131705766).equals(localObject3))
+            if (anni.a(2131704167).equals(localObject3))
             {
               ((HashMap)localObject2).put(Integer.valueOf(10), Integer.valueOf(10));
               continue;
@@ -385,7 +385,7 @@ public class GroupSearchFragment
             continue;
           }
         }
-        paramList = (List<ayns>)localObject1;
+        paramList = (List<bbmw>)localObject1;
         if (((HashMap)localObject2).size() > 0)
         {
           paramList = new StringBuilder();
@@ -410,7 +410,7 @@ public class GroupSearchFragment
           if ((localObject1 instanceof QQAppInterface))
           {
             localObject1 = (QQAppInterface)localObject1;
-            azqs.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800973C", "0X800973C", paramInt, 0, "", "", paramString, paramList);
+            bcst.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800973C", "0X800973C", paramInt, 0, "", "", paramString, paramList);
             return;
           }
           localObject1 = null;
@@ -443,13 +443,20 @@ public class GroupSearchFragment
     return 5;
   }
   
-  private void e(List<ayns> paramList)
+  private void b(List<bbmw> paramList, int paramInt)
   {
-    aypk.a(paramList, this.jdField_c_of_type_JavaLangString);
+    if ((paramList != null) && (paramInt == 1)) {
+      paramList.remove(this.jdField_a_of_type_Bboh);
+    }
+  }
+  
+  private void e(List<bbmw> paramList)
+  {
+    bboo.a(paramList, this.jdField_c_of_type_JavaLangString);
     f(paramList);
   }
   
-  private void f(List<ayns> paramList)
+  private void f(List<bbmw> paramList)
   {
     int i1 = 0;
     if ((paramList == null) || (paramList.size() == 0)) {}
@@ -464,29 +471,29 @@ public class GroupSearchFragment
       int n;
       if (m < paramList.size())
       {
-        ayns localayns1 = (ayns)paramList.get(m);
+        bbmw localbbmw1 = (bbmw)paramList.get(m);
         ArrayList localArrayList1;
-        if ((localayns1 instanceof aypa)) {
-          if (((aypa)localayns1).c())
+        if ((localbbmw1 instanceof bboe)) {
+          if (((bboe)localbbmw1).c())
           {
             localArrayList1 = localArrayList2;
             if (m > 0)
             {
-              ayns localayns2 = (ayns)paramList.get(m - 1);
-              if ((localayns2 instanceof aynb))
+              bbmw localbbmw2 = (bbmw)paramList.get(m - 1);
+              if ((localbbmw2 instanceof bbmf))
               {
-                localArrayList1.add(localayns2);
-                localArrayList4.remove(localayns2);
+                localArrayList1.add(localbbmw2);
+                localArrayList4.remove(localbbmw2);
               }
             }
-            localArrayList1.add(localayns1);
+            localArrayList1.add(localbbmw1);
             n = m;
             if (m + 1 > paramList.size())
             {
-              localayns1 = (ayns)paramList.get(m + 1);
+              localbbmw1 = (bbmw)paramList.get(m + 1);
               n = m;
-              if ((localayns1 instanceof aync)) {
-                localArrayList1.add(localayns1);
+              if ((localbbmw1 instanceof bbmg)) {
+                localArrayList1.add(localbbmw1);
               }
             }
           }
@@ -497,10 +504,10 @@ public class GroupSearchFragment
           break;
           localArrayList1 = localArrayList3;
           break label91;
-          if (((localayns1 instanceof aynn)) && (QLog.isColorLevel())) {
+          if (((localbbmw1 instanceof bbmr)) && (QLog.isColorLevel())) {
             QLog.e("Q.uniteSearch.GroupSearchFragment", 2, "adjustRichNodePosition, error, GroupSearchModelRichNode.");
           }
-          localArrayList4.add(localayns1);
+          localArrayList4.add(localbbmw1);
         }
       }
       if (QLog.isColorLevel()) {
@@ -554,19 +561,19 @@ public class GroupSearchFragment
     return 0;
   }
   
-  protected ayjn a()
+  protected bbio a()
   {
-    return new ayjq(this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb, this, this.jdField_i_of_type_Int);
+    return new bbir(this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aobu, this, this.jdField_i_of_type_Int);
   }
   
-  protected ayug a()
+  protected bbtj a()
   {
-    if (this.jdField_a_of_type_Ayug != null) {
-      return this.jdField_a_of_type_Ayug;
+    if (this.jdField_a_of_type_Bbtj != null) {
+      return this.jdField_a_of_type_Bbtj;
     }
     if (this.jdField_c_of_type_Long > 0L)
     {
-      Object localObject = ayve.a().a(this.jdField_c_of_type_Long);
+      Object localObject = bbuh.a().a(this.jdField_c_of_type_Long);
       if ((localObject != null) && ((localObject instanceof GroupSearchEngine)))
       {
         if (QLog.isColorLevel()) {
@@ -587,8 +594,8 @@ public class GroupSearchFragment
     if (paramList.size() == 0) {
       return new ArrayList(paramList);
     }
-    ArrayList localArrayList = ((aypl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(318)).a(jdField_a_of_type_JavaLangString);
-    return aypk.a(jdField_a_of_type_JavaLangString, localArrayList, paramList);
+    ArrayList localArrayList = ((bbop)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(318)).a(jdField_a_of_type_JavaLangString);
+    return bboo.a(jdField_a_of_type_JavaLangString, localArrayList, paramList);
   }
   
   public void a(String paramString)
@@ -605,14 +612,14 @@ public class GroupSearchFragment
     c();
     this.jdField_h_of_type_Boolean = false;
     this.jdField_i_of_type_Boolean = true;
-    if ((this.jdField_c_of_type_JavaUtilList.size() != 1) || (!(this.jdField_c_of_type_JavaUtilList.get(0) instanceof aypd)) || (!((aypd)this.jdField_c_of_type_JavaUtilList.get(0)).b()))
+    if ((this.jdField_c_of_type_JavaUtilList.size() != 1) || (!(this.jdField_c_of_type_JavaUtilList.get(0) instanceof bboh)) || (!((bboh)this.jdField_c_of_type_JavaUtilList.get(0)).b()))
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new ayks(this));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bbjv(this));
     }
   }
   
-  public void a(String paramString, boolean paramBoolean1, byte[] paramArrayOfByte, boolean paramBoolean2, List<ayns> paramList)
+  public void a(String paramString, boolean paramBoolean1, byte[] paramArrayOfByte, boolean paramBoolean2, List<bbmw> paramList, int paramInt)
   {
     QLog.i("Q.uniteSearch.GroupSearchFragment", 2, "log for search onResultSuc, keyword = " + paramString + ", isFirstReq = " + paramBoolean1);
     if (QLog.isColorLevel()) {
@@ -632,7 +639,7 @@ public class GroupSearchFragment
       while (m < ((List)localObject).size())
       {
         i1 = n;
-        if (!(((List)localObject).get(m) instanceof aynb)) {
+        if (!(((List)localObject).get(m) instanceof bbmf)) {
           i1 = n + 1;
         }
         m += 1;
@@ -642,11 +649,11 @@ public class GroupSearchFragment
     }
     try
     {
-      paramList.put("project", aysc.a());
+      paramList.put("project", bbrf.a());
       paramList.put("event_src", "client");
       paramList.put("web_num", n);
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      aysc.a(localQQAppInterface, new ReportModelDC02528().module("all_result").action("exp_items").ver1(paramString).ver2(aysc.a(this.jdField_i_of_type_Int)).ver7(paramList.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + ayif.jdField_a_of_type_Long));
+      bbrf.a(localQQAppInterface, new ReportModelDC02528().module("all_result").action("exp_items").ver1(paramString).ver2(bbrf.a(this.jdField_i_of_type_Int)).ver7(paramList.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + bbhd.jdField_a_of_type_Long));
       if (!paramBoolean1) {
         break label523;
       }
@@ -657,14 +664,14 @@ public class GroupSearchFragment
       {
         int i3 = n;
         int i2 = m;
-        if ((((List)localObject).get(i1) instanceof ayms))
+        if ((((List)localObject).get(i1) instanceof bblw))
         {
-          if (((ayms)((List)localObject).get(i1)).d() == 1001) {
+          if (((bblw)((List)localObject).get(i1)).d() == 1001) {
             m = 1;
           }
           i3 = n;
           i2 = m;
-          if (((ayms)((List)localObject).get(i1)).d() == 1001)
+          if (((bblw)((List)localObject).get(i1)).d() == 1001)
           {
             i3 = 1;
             i2 = m;
@@ -690,7 +697,7 @@ public class GroupSearchFragment
     {
       m = 90;
       if (m != 0) {
-        azqs.b(null, "CliOper", "", "", "0X8005ECF", "0X8005ECF", m, 0, "", "", "", "");
+        bcst.b(null, "CliOper", "", "", "0X8005ECF", "0X8005ECF", m, 0, "", "", "", "");
       }
       label523:
       this.jdField_h_of_type_Boolean = false;
@@ -704,19 +711,20 @@ public class GroupSearchFragment
       if (!paramArrayOfByte.hasNext()) {
         break label669;
       }
-      paramList = (ayns)paramArrayOfByte.next();
-      if (!(paramList instanceof aynt)) {
+      paramList = (bbmw)paramArrayOfByte.next();
+      if (!(paramList instanceof bbmx)) {
         break label660;
       }
-      if (((aynt)paramList).a() == null) {
-        break label1077;
+      if (((bbmx)paramList).a() == null) {
+        break label1089;
       }
-      m = ((aynt)paramList).a().size() + m;
+      m = ((bbmx)paramList).a().size() + m;
     }
     label660:
     label669:
     label944:
-    label1077:
+    label1083:
+    label1089:
     for (;;)
     {
       break label568;
@@ -737,7 +745,7 @@ public class GroupSearchFragment
       if (paramBoolean1)
       {
         if (m > 0) {
-          ayvm.a("all_result", "exp_net_result", new String[] { "" + paramString });
+          bbup.a("all_result", "exp_net_result", new String[] { "" + paramString });
         }
       }
       else
@@ -746,7 +754,7 @@ public class GroupSearchFragment
           QLog.i("Q.uniteSearch.GroupSearchFragment", 2, "handleTabSearchResult isFirstReq==" + paramBoolean1 + " newSearchDataCount:" + this.e + "   newSearchIndex:" + this.jdField_c_of_type_Int + " result.size():" + m);
         }
         if (this.jdField_i_of_type_Boolean) {
-          break label1071;
+          break label1083;
         }
         this.e += m;
         this.jdField_c_of_type_Int += 1;
@@ -777,7 +785,7 @@ public class GroupSearchFragment
             this.jdField_b_of_type_Int += 1;
             a(this.jdField_i_of_type_Int, paramString, this.jdField_c_of_type_JavaUtilList);
             return;
-            ayvm.a("all_result", "noresult_net", new String[] { "" + paramString });
+            bbup.a("all_result", "noresult_net", new String[] { "" + paramString });
             break;
             if (this.jdField_c_of_type_Int >= 3)
             {
@@ -791,16 +799,17 @@ public class GroupSearchFragment
             m = 1;
             h();
             break label859;
+            b(this.jdField_d_of_type_JavaUtilList, paramInt);
             this.jdField_d_of_type_JavaUtilList.addAll((Collection)localObject);
           }
         }
-        g_(true);
+        f_(true);
         if ((this.jdField_d_of_type_JavaUtilList != null) && (this.jdField_d_of_type_JavaUtilList.size() > 0)) {
           ((List)localObject).addAll(0, this.jdField_d_of_type_JavaUtilList);
         }
         for (;;)
         {
-          a((List)localObject, this.jdField_c_of_type_Boolean);
+          a((List)localObject, this.jdField_c_of_type_Boolean, paramInt);
           this.jdField_d_of_type_JavaUtilList = null;
           this.jdField_c_of_type_Boolean = false;
           break;
@@ -842,67 +851,67 @@ public class GroupSearchFragment
     }
   }
   
-  public void a(List paramList, ayuv paramayuv)
+  public void a(List paramList, bbty parambbty)
   {
-    if (paramayuv.a(this.jdField_c_of_type_JavaLangString)) {
-      a(paramList, paramayuv.jdField_a_of_type_Int);
+    if (parambbty.a(this.jdField_c_of_type_JavaLangString)) {
+      a(paramList, parambbty.jdField_a_of_type_Int);
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("Q.uniteSearch.GroupSearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramayuv.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_c_of_type_JavaLangString });
+    QLog.d("Q.uniteSearch.GroupSearchFragment", 2, new Object[] { "onFinish not match keyword1:", parambbty.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_c_of_type_JavaLangString });
   }
   
-  public void a(List<ayns> paramList, boolean paramBoolean)
+  public void a(List<bbmw> paramList, boolean paramBoolean, int paramInt)
   {
     c();
     if (paramList.size() > 0)
     {
-      m = ayif.b.size();
+      m = bbhd.b.size();
       int i1 = 0;
       long l1 = -1L;
       if (i1 < paramList.size())
       {
-        ayns localayns = (ayns)paramList.get(i1);
+        bbmw localbbmw = (bbmw)paramList.get(i1);
         Object localObject2;
         Object localObject3;
         long l2;
         Object localObject1;
-        if ((localayns instanceof aymr))
+        if ((localbbmw instanceof bblv))
         {
-          localObject2 = (aymr)localayns;
+          localObject2 = (bblv)localbbmw;
           int n = m;
-          if (((aymr)localObject2).a() != null)
+          if (((bblv)localObject2).a() != null)
           {
             n = m;
-            if (((aymr)localObject2).a().size() > 0)
+            if (((bblv)localObject2).a().size() > 0)
             {
               n = 0;
-              if (n < ((aymr)localObject2).a().size())
+              if (n < ((bblv)localObject2).a().size())
               {
-                localObject3 = (ayns)((aymr)localObject2).a().get(i1);
+                localObject3 = (bbmw)((bblv)localObject2).a().get(i1);
                 l2 = 0L;
                 localObject1 = "";
-                if ((localObject3 instanceof ayod))
+                if ((localObject3 instanceof bbnh))
                 {
-                  l2 = ((ayod)localObject3).jdField_a_of_type_Long;
-                  localObject1 = ((ayod)localObject3).d;
+                  l2 = ((bbnh)localObject3).jdField_a_of_type_Long;
+                  localObject1 = ((bbnh)localObject3).d;
                 }
                 for (;;)
                 {
-                  ayig localayig = new ayig();
+                  bbhe localbbhe = new bbhe();
                   m += 1;
-                  localayig.jdField_a_of_type_Int = m;
-                  localayig.jdField_a_of_type_Long = l2;
-                  localayig.jdField_b_of_type_JavaLangString = ((String)localObject1);
-                  localayig.jdField_a_of_type_JavaLangString = ((aymr)localayns).b();
-                  ayif.b.put((aynu)localObject3, localayig);
+                  localbbhe.jdField_a_of_type_Int = m;
+                  localbbhe.jdField_a_of_type_Long = l2;
+                  localbbhe.jdField_b_of_type_JavaLangString = ((String)localObject1);
+                  localbbhe.jdField_a_of_type_JavaLangString = ((bblv)localbbmw).b();
+                  bbhd.b.put((bbmy)localObject3, localbbhe);
                   n += 1;
                   break;
-                  if ((localObject3 instanceof ayms))
+                  if ((localObject3 instanceof bblw))
                   {
-                    l2 = ((ayms)localObject3).d();
-                    localObject1 = ((ayms)localObject3).jdField_b_of_type_JavaLangString;
+                    l2 = ((bblw)localObject3).d();
+                    localObject1 = ((bblw)localObject3).jdField_b_of_type_JavaLangString;
                   }
                 }
               }
@@ -911,7 +920,7 @@ public class GroupSearchFragment
           }
           l2 = l1;
           if (l1 == -1L) {
-            l2 = ((aymr)localObject2).jdField_a_of_type_Long;
+            l2 = ((bblv)localObject2).jdField_a_of_type_Long;
           }
           m = n;
           l1 = l2;
@@ -920,77 +929,77 @@ public class GroupSearchFragment
         {
           i1 += 1;
           break;
-          if ((localayns instanceof ayok))
+          if ((localbbmw instanceof bbno))
           {
             m += 1;
-            localObject1 = ((ayok)localayns).a;
+            localObject1 = ((bbno)localbbmw).a;
             if (localObject1 != null)
             {
               localObject1 = ((ArrayList)localObject1).iterator();
               while (((Iterator)localObject1).hasNext())
               {
-                localObject2 = (ayoj)((Iterator)localObject1).next();
-                localObject3 = new ayig();
-                ((ayig)localObject3).jdField_a_of_type_Int = m;
-                ((ayig)localObject3).jdField_a_of_type_JavaLangString = ((ayod)localayns).a();
-                ayif.b.put(localObject2, localObject3);
+                localObject2 = (bbnn)((Iterator)localObject1).next();
+                localObject3 = new bbhe();
+                ((bbhe)localObject3).jdField_a_of_type_Int = m;
+                ((bbhe)localObject3).jdField_a_of_type_JavaLangString = ((bbnh)localbbmw).a();
+                bbhd.b.put(localObject2, localObject3);
               }
             }
           }
-          else if ((localayns instanceof ayoi))
+          else if ((localbbmw instanceof bbnm))
           {
             m += 1;
-            localObject1 = ((ayoi)localayns).a;
+            localObject1 = ((bbnm)localbbmw).a;
             if (localObject1 != null)
             {
               localObject1 = ((ArrayList)localObject1).iterator();
               while (((Iterator)localObject1).hasNext())
               {
-                localObject2 = (ayoj)((Iterator)localObject1).next();
-                localObject3 = new ayig();
-                ((ayig)localObject3).jdField_a_of_type_Int = m;
-                ((ayig)localObject3).jdField_a_of_type_JavaLangString = ((ayod)localayns).a();
-                ayif.b.put(localObject2, localObject3);
+                localObject2 = (bbnn)((Iterator)localObject1).next();
+                localObject3 = new bbhe();
+                ((bbhe)localObject3).jdField_a_of_type_Int = m;
+                ((bbhe)localObject3).jdField_a_of_type_JavaLangString = ((bbnh)localbbmw).a();
+                bbhd.b.put(localObject2, localObject3);
               }
             }
           }
-          else if ((localayns instanceof ayod))
+          else if ((localbbmw instanceof bbnh))
           {
-            localObject1 = new ayig();
+            localObject1 = new bbhe();
             m += 1;
-            ((ayig)localObject1).jdField_a_of_type_Int = m;
-            ((ayig)localObject1).jdField_a_of_type_Long = ((ayod)localayns).jdField_a_of_type_Long;
-            ((ayig)localObject1).jdField_b_of_type_JavaLangString = ((ayod)localayns).d;
-            ((ayig)localObject1).jdField_a_of_type_JavaLangString = ((ayod)localayns).a();
-            ayif.b.put((aynu)localayns, localObject1);
+            ((bbhe)localObject1).jdField_a_of_type_Int = m;
+            ((bbhe)localObject1).jdField_a_of_type_Long = ((bbnh)localbbmw).jdField_a_of_type_Long;
+            ((bbhe)localObject1).jdField_b_of_type_JavaLangString = ((bbnh)localbbmw).d;
+            ((bbhe)localObject1).jdField_a_of_type_JavaLangString = ((bbnh)localbbmw).a();
+            bbhd.b.put((bbmy)localbbmw, localObject1);
           }
-          else if ((localayns instanceof ayms))
+          else if ((localbbmw instanceof bblw))
           {
-            l2 = ((ayms)localayns).d();
-            localObject1 = ((ayms)localayns).jdField_b_of_type_JavaLangString;
-            localObject2 = new ayig();
+            l2 = ((bblw)localbbmw).d();
+            localObject1 = ((bblw)localbbmw).jdField_b_of_type_JavaLangString;
+            localObject2 = new bbhe();
             m += 1;
-            ((ayig)localObject2).jdField_a_of_type_Int = m;
-            ((ayig)localObject2).jdField_a_of_type_Long = l2;
-            ((ayig)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject1);
-            ((ayig)localObject2).jdField_a_of_type_JavaLangString = ((ayms)localayns).a();
-            ayif.b.put((aynu)localayns, localObject2);
+            ((bbhe)localObject2).jdField_a_of_type_Int = m;
+            ((bbhe)localObject2).jdField_a_of_type_Long = l2;
+            ((bbhe)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject1);
+            ((bbhe)localObject2).jdField_a_of_type_JavaLangString = ((bblw)localbbmw).a();
+            bbhd.b.put((bbmy)localbbmw, localObject2);
           }
-          else if (((localayns instanceof aypd)) && (((aypd)localayns).jdField_a_of_type_Int == -4))
+          else if (((localbbmw instanceof bboh)) && (((bboh)localbbmw).jdField_a_of_type_Int == -4))
           {
-            localObject1 = new ayig();
+            localObject1 = new bbhe();
             m += 1;
-            ((ayig)localObject1).jdField_a_of_type_Int = m;
-            ((ayig)localObject1).jdField_a_of_type_Long = 2073745984L;
-            ((ayig)localObject1).jdField_a_of_type_JavaLangString = ((aypd)localayns).b().toString();
-            ayif.b.put((aynu)localayns, localObject1);
+            ((bbhe)localObject1).jdField_a_of_type_Int = m;
+            ((bbhe)localObject1).jdField_a_of_type_Long = 2073745984L;
+            ((bbhe)localObject1).jdField_a_of_type_JavaLangString = ((bboh)localbbmw).b().toString();
+            bbhd.b.put((bbmy)localbbmw, localObject1);
           }
-          else if ((localayns instanceof aync))
+          else if ((localbbmw instanceof bbmg))
           {
-            localObject1 = new ayig();
-            ((ayig)localObject1).jdField_a_of_type_Long = ((aync)localayns).jdField_a_of_type_Long;
-            ((ayig)localObject1).jdField_b_of_type_JavaLangString = ((aync)localayns).jdField_c_of_type_JavaLangString;
-            ayif.b.put(localayns, localObject1);
+            localObject1 = new bbhe();
+            ((bbhe)localObject1).jdField_a_of_type_Long = ((bbmg)localbbmw).jdField_a_of_type_Long;
+            ((bbhe)localObject1).jdField_b_of_type_JavaLangString = ((bbmg)localbbmw).jdField_c_of_type_JavaLangString;
+            bbhd.b.put(localbbmw, localObject1);
           }
         }
       }
@@ -1003,14 +1012,15 @@ public class GroupSearchFragment
       if (this.jdField_c_of_type_JavaUtilList.isEmpty()) {
         break;
       }
+      b(this.jdField_c_of_type_JavaUtilList, paramInt);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_Ayjn.a(this.jdField_c_of_type_JavaUtilList, paramBoolean);
+      this.jdField_a_of_type_Bbio.a(this.jdField_c_of_type_JavaUtilList, paramBoolean);
       if (m != 0) {
         this.jdField_a_of_type_ComTencentWidgetListView.setSelection(0);
       }
       return;
     }
-    this.jdField_a_of_type_Ayjn.a(paramList);
+    this.jdField_a_of_type_Bbio.a(paramList);
     this.jdField_c_of_type_JavaUtilList = paramList;
   }
   
@@ -1041,17 +1051,17 @@ public class GroupSearchFragment
       QLog.w("Q.uniteSearch.GroupSearchFragment", 1, "startSearchForHotWord called  isViewCreated == false!! ");
       return;
     }
-    ayif.jdField_a_of_type_Long = System.currentTimeMillis();
-    ayif.b.clear();
+    bbhd.jdField_a_of_type_Long = System.currentTimeMillis();
+    bbhd.b.clear();
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("project", aysc.a());
+      localJSONObject.put("project", bbrf.a());
       localJSONObject.put("event_src", "client");
-      aysc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ReportModelDC02528().module("all_result").action("search_request").ver1(paramString).ver2(aysc.a(this.jdField_i_of_type_Int)).ver7(localJSONObject.toString()).session_id(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + ayif.jdField_a_of_type_Long));
-      if ((this.jdField_i_of_type_Int == 21) && (ayhw.a() == 0))
+      bbrf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ReportModelDC02528().module("all_result").action("search_request").ver1(paramString).ver2(bbrf.a(this.jdField_i_of_type_Int)).ver7(localJSONObject.toString()).session_id(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + bbhd.jdField_a_of_type_Long));
+      if ((this.jdField_i_of_type_Int == 21) && (bbgu.a() == 0))
       {
-        ayvm.a("all_result", "exp_pure_net_result", new String[] { paramString });
+        bbup.a("all_result", "exp_pure_net_result", new String[] { paramString });
         this.jdField_g_of_type_Int = 6;
         b();
         a(new ArrayList(), 4);
@@ -1090,9 +1100,9 @@ public class GroupSearchFragment
     a(false);
     if (this.jdField_a_of_type_Boolean)
     {
-      g_(false);
+      f_(false);
       b();
-      this.jdField_a_of_type_Ayjn.notifyDataSetChanged();
+      this.jdField_a_of_type_Bbio.notifyDataSetChanged();
       this.jdField_c_of_type_AndroidViewView.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
@@ -1107,15 +1117,15 @@ public class GroupSearchFragment
     if (this.jdField_d_of_type_JavaUtilList != null) {
       this.jdField_d_of_type_JavaUtilList.clear();
     }
-    if (this.jdField_a_of_type_Ayjn != null) {
-      this.jdField_a_of_type_Ayjn.a(this.jdField_c_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_Bbio != null) {
+      this.jdField_a_of_type_Bbio.a(this.jdField_c_of_type_JavaUtilList);
     }
   }
   
   public void f()
   {
     c();
-    this.jdField_a_of_type_Ayjn.a(this.jdField_c_of_type_JavaUtilList);
+    this.jdField_a_of_type_Bbio.a(this.jdField_c_of_type_JavaUtilList);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
@@ -1138,14 +1148,14 @@ public class GroupSearchFragment
     boolean bool;
     if (!UniteSearchActivity.a(this.jdField_j_of_type_Int, this.jdField_i_of_type_Int))
     {
-      localObject1 = (amfe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(111);
+      localObject1 = (anxu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(111);
       localObject2 = null;
       d1 = 0.0D;
       d2 = 0.0D;
-      if ((getActivity() instanceof ayht))
+      if ((getActivity() instanceof bbgr))
       {
-        d1 = ((ayht)getActivity()).a();
-        d2 = ((ayht)getActivity()).b();
+        d1 = ((bbgr)getActivity()).a();
+        d2 = ((bbgr)getActivity()).b();
       }
       this.e = 0;
       this.jdField_c_of_type_Int = 0;
@@ -1158,7 +1168,7 @@ public class GroupSearchFragment
       if (this.jdField_g_of_type_Int == 0) {
         this.jdField_g_of_type_Int = 4;
       }
-      ayvm.a("all_result", "active_net", new String[] { "" + this.jdField_c_of_type_JavaLangString, "" + a(this.jdField_g_of_type_Int) });
+      bbup.a("all_result", "active_net", new String[] { "" + this.jdField_c_of_type_JavaLangString, "" + a(this.jdField_g_of_type_Int) });
       localBundle = new Bundle();
       localBundle.putInt("matchCount", this.jdField_h_of_type_Int);
       localBundle.putInt("source", this.jdField_j_of_type_Int);
@@ -1171,27 +1181,27 @@ public class GroupSearchFragment
       }
       localObject2 = this.jdField_c_of_type_JavaLangString;
       str = this.jdField_b_of_type_JavaLangString;
-      localList2 = ayvm.a(amfe.b);
+      localList2 = bbup.a(anxu.b);
       m = this.jdField_g_of_type_Int;
       if (this.jdField_a_of_type_Int != 2) {
         break label486;
       }
       bool = true;
       label348:
-      ((amfe)localObject1).a((String)localObject2, str, 20, localList2, localList1, m, null, d1, d2, false, bool, this.jdField_i_of_type_Int, localBundle);
+      ((anxu)localObject1).a((String)localObject2, str, 20, localList2, localList1, m, null, d1, d2, false, bool, this.jdField_i_of_type_Int, localBundle);
     }
     for (;;)
     {
       this.jdField_g_of_type_Int = 0;
       return;
-      localObject2 = (amfc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(152);
+      localObject2 = (anxs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(152);
       localObject1 = null;
       break;
       label404:
       if (this.jdField_g_of_type_Int == 0) {
         this.jdField_g_of_type_Int = 4;
       }
-      ayvm.a("all_result", "active_net", new String[] { "" + this.jdField_c_of_type_JavaLangString, "" + b(this.jdField_g_of_type_Int) });
+      bbup.a("all_result", "active_net", new String[] { "" + this.jdField_c_of_type_JavaLangString, "" + b(this.jdField_g_of_type_Int) });
       break label253;
       label486:
       bool = false;
@@ -1204,12 +1214,12 @@ public class GroupSearchFragment
         }
         localObject1 = this.jdField_c_of_type_JavaLangString;
         str = this.jdField_b_of_type_JavaLangString;
-        localList2 = ayvm.a(amfc.b);
+        localList2 = bbup.a(anxs.b);
         m = this.jdField_g_of_type_Int;
         if (this.jdField_a_of_type_Int == 2) {}
         for (bool = true;; bool = false)
         {
-          ((amfc)localObject2).a((String)localObject1, str, 20, localList2, localList1, m, null, d1, d2, false, bool, this.jdField_i_of_type_Int, localBundle);
+          ((anxs)localObject2).a((String)localObject1, str, 20, localList2, localList1, m, null, d1, d2, false, bool, this.jdField_i_of_type_Int, localBundle);
           break;
         }
       }
@@ -1222,12 +1232,12 @@ public class GroupSearchFragment
   public void h()
   {
     this.jdField_h_of_type_Boolean = true;
-    g_(false);
+    f_(false);
     Object localObject1;
     Object localObject2;
     if (!UniteSearchActivity.a(this.jdField_j_of_type_Int, this.jdField_i_of_type_Int))
     {
-      localObject1 = (amfe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(111);
+      localObject1 = (anxu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(111);
       localObject2 = null;
     }
     for (;;)
@@ -1237,10 +1247,10 @@ public class GroupSearchFragment
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       double d1 = 0.0D;
       double d2 = 0.0D;
-      if ((getActivity() instanceof ayht))
+      if ((getActivity() instanceof bbgr))
       {
-        d1 = ((ayht)getActivity()).a();
-        d2 = ((ayht)getActivity()).b();
+        d1 = ((bbgr)getActivity()).a();
+        d2 = ((bbgr)getActivity()).b();
       }
       this.jdField_b_of_type_JavaLangString = (System.currentTimeMillis() + "");
       if (QLog.isColorLevel()) {
@@ -1263,20 +1273,20 @@ public class GroupSearchFragment
         if (QLog.isColorLevel()) {
           QLog.d("Q.uniteSearch.GroupSearchFragment", 2, "startNetNewSearch use old protocol");
         }
-        ((amfe)localObject1).a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 20, ayvm.a(amfe.b), localList, this.jdField_g_of_type_Int, this.jdField_a_of_type_ArrayOfByte, d1, d2, true, this.jdField_i_of_type_Int, localBundle);
+        ((anxu)localObject1).a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 20, bbup.a(anxu.b), localList, this.jdField_g_of_type_Int, this.jdField_a_of_type_ArrayOfByte, d1, d2, true, this.jdField_i_of_type_Int, localBundle);
         label276:
         this.jdField_g_of_type_Int = 0;
         localObject1 = new JSONObject();
       }
       try
       {
-        ((JSONObject)localObject1).put("project", aysc.a());
+        ((JSONObject)localObject1).put("project", bbrf.a());
         ((JSONObject)localObject1).put("event_src", "client");
         ((JSONObject)localObject1).put("get_src", "web");
         localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        aysc.a((QQAppInterface)localObject2, new ReportModelDC02528().module("all_result").action("load_more").ver1(this.jdField_c_of_type_JavaLangString).ver2(aysc.a(UniteSearchActivity.jdField_d_of_type_Int)).ver7(((JSONObject)localObject1).toString()).session_id(((QQAppInterface)localObject2).getCurrentAccountUin() + ayif.jdField_a_of_type_Long));
+        bbrf.a((QQAppInterface)localObject2, new ReportModelDC02528().module("all_result").action("load_more").ver1(this.jdField_c_of_type_JavaLangString).ver2(bbrf.a(UniteSearchActivity.jdField_d_of_type_Int)).ver7(((JSONObject)localObject1).toString()).session_id(((QQAppInterface)localObject2).getCurrentAccountUin() + bbhd.jdField_a_of_type_Long));
         return;
-        localObject2 = (amfc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(152);
+        localObject2 = (anxs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(152);
         localObject1 = null;
         continue;
         if (this.jdField_g_of_type_Int != 0) {
@@ -1290,7 +1300,7 @@ public class GroupSearchFragment
           if (QLog.isColorLevel()) {
             QLog.d("Q.uniteSearch.GroupSearchFragment", 2, "startNetNewSearch use new protocol");
           }
-          ((amfc)localObject2).a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 20, ayvm.a(amfc.b), localList, this.jdField_g_of_type_Int, this.jdField_a_of_type_ArrayOfByte, d1, d2, true, this.jdField_i_of_type_Int, localBundle);
+          ((anxs)localObject2).a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 20, bbup.a(anxs.b), localList, this.jdField_g_of_type_Int, this.jdField_a_of_type_ArrayOfByte, d1, d2, true, this.jdField_i_of_type_Int, localBundle);
           break label276;
         }
         if (!QLog.isColorLevel()) {
@@ -1310,10 +1320,10 @@ public class GroupSearchFragment
   
   public void i()
   {
-    if (this.jdField_a_of_type_Ayug != null)
+    if (this.jdField_a_of_type_Bbtj != null)
     {
-      this.jdField_a_of_type_Ayug.b();
-      this.jdField_a_of_type_Ayug.e();
+      this.jdField_a_of_type_Bbtj.b();
+      this.jdField_a_of_type_Bbtj.e();
     }
     this.jdField_d_of_type_Boolean = false;
   }
@@ -1332,10 +1342,10 @@ public class GroupSearchFragment
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Bdbb != null) {
-      this.jdField_a_of_type_Bdbb.d();
+    if (this.jdField_a_of_type_Aobu != null) {
+      this.jdField_a_of_type_Aobu.d();
     }
-    azqs.b(null, "CliOper", "", "", "0X8005ECE", "0X8005ECE", a(), 0, String.valueOf(this.jdField_d_of_type_Int), "", this.jdField_c_of_type_JavaLangString, "");
+    bcst.b(null, "CliOper", "", "", "0X8005ECE", "0X8005ECE", a(), 0, String.valueOf(this.jdField_d_of_type_Int), "", this.jdField_c_of_type_JavaLangString, "");
     super.onDestroy();
   }
   
@@ -1348,7 +1358,7 @@ public class GroupSearchFragment
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Ayjn.notifyDataSetChanged();
+    this.jdField_a_of_type_Bbio.notifyDataSetChanged();
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
@@ -1361,7 +1371,7 @@ public class GroupSearchFragment
       if ((getActivity() instanceof UniteSearchActivity)) {
         paramAbsListView = (UniteSearchActivity)getActivity();
       }
-    } while ((this.jdField_a_of_type_Ayjn == null) || (this.jdField_a_of_type_Ayjn.getCount() == 0) || (this.jdField_a_of_type_Int == 0) || (paramInt3 - paramInt1 - paramInt2 >= 10) || (this.jdField_h_of_type_Boolean) || (this.jdField_i_of_type_Boolean));
+    } while ((this.jdField_a_of_type_Bbio == null) || (this.jdField_a_of_type_Bbio.getCount() == 0) || (this.jdField_a_of_type_Int == 0) || (paramInt3 - paramInt1 - paramInt2 >= 10) || (this.jdField_h_of_type_Boolean) || (this.jdField_i_of_type_Boolean));
     if (this.jdField_a_of_type_ArrayOfByte == null)
     {
       this.jdField_g_of_type_Int = 3;
@@ -1369,7 +1379,7 @@ public class GroupSearchFragment
         this.jdField_g_of_type_Int = 3;
       }
       g();
-      g_(false);
+      f_(false);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
     for (;;)
@@ -1387,7 +1397,7 @@ public class GroupSearchFragment
       paramAbsListView = (UniteSearchActivity)getActivity();
     }
     this.jdField_f_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_Ayjn == null) || (this.jdField_a_of_type_Ayjn.getCount() == 0)) {}
+    if ((this.jdField_a_of_type_Bbio == null) || (this.jdField_a_of_type_Bbio.getCount() == 0)) {}
     while (this.jdField_a_of_type_Int == 0) {
       return;
     }
@@ -1401,7 +1411,7 @@ public class GroupSearchFragment
         this.jdField_g_of_type_Int = 3;
       }
       g();
-      g_(false);
+      f_(false);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
     for (;;)
@@ -1410,31 +1420,31 @@ public class GroupSearchFragment
       if (paramInt != 0) {
         break;
       }
-      abvl.a().a("list_unite_search", false);
+      adcd.a().a("list_unite_search", false);
       return;
       label195:
       h();
     }
-    abvl.a().a("list_unite_search");
+    adcd.a().a("list_unite_search");
   }
   
   public void onStart()
   {
     super.onStart();
-    ((GroupSearchEngine)this.jdField_a_of_type_Ayug).f();
+    ((GroupSearchEngine)this.jdField_a_of_type_Bbtj).f();
   }
   
   public void onStop()
   {
     super.onStop();
-    ((GroupSearchEngine)this.jdField_a_of_type_Ayug).g();
+    ((GroupSearchEngine)this.jdField_a_of_type_Bbtj).g();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bdbb = new bdbb(super.getActivity(), super.getActivity().app);
-    this.jdField_a_of_type_Ayjn = a();
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Ayjn);
+    this.jdField_a_of_type_Aobu = new aobu(super.getActivity(), super.getActivity().app);
+    this.jdField_a_of_type_Bbio = a();
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bbio);
     b();
     this.jdField_c_of_type_AndroidWidgetTextView.setText("");
     f();
@@ -1449,7 +1459,7 @@ public class GroupSearchFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.GroupSearchFragment
  * JD-Core Version:    0.7.0.1
  */

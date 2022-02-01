@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.aeeditor.module.clip.image.AEEditorImageClipFragment;
-
-class blma
-  implements View.OnClickListener
+public class blma
 {
-  blma(bllz parambllz, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    AEEditorImageClipFragment.a(this.jdField_a_of_type_Bllz.a, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bllz.notifyDataSetChanged();
-  }
+  public static String a = "noticeServiceActive";
+  public static String b = "noticeSendEmoticon";
+  public static String c = "com.qqindividuality.ipc.IpcServer";
+  public static String d = "emoticonPackageId";
+  public static String e = "imagePath";
+  public static String f = "imageName";
+  public static String g = "imageWidth";
+  public static String h = "imageHeight";
+  public static String i = "requestCode";
+  public static String j = "commDiyText";
+  public static String k = "diyText";
+  public static String l = "individuality_plugin";
 }
 
 

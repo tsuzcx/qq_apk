@@ -1,23 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.TopBarInfo;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-public final class nsw
-  implements Parcelable.Creator<VideoInfo.TopBarInfo>
+public class nsw
+  implements bkhw
 {
-  public VideoInfo.TopBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.TopBarInfo(paramParcel);
-  }
+  public nsw(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public VideoInfo.TopBarInfo[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new VideoInfo.TopBarInfo[paramInt];
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.F();
+      continue;
+      AccountDetailActivity.a(this.a, this.a.e);
+      continue;
+      AccountDetailActivity.d(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nsw
  * JD-Core Version:    0.7.0.1
  */

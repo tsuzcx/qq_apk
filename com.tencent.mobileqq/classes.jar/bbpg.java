@@ -1,20 +1,16 @@
-import android.text.TextUtils.EllipsizeCallback;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bbpg
-  implements TextUtils.EllipsizeCallback
+class bbpg
+  implements View.OnClickListener
 {
-  bbpg(bbph parambbph, String paramString) {}
+  bbpg(bbpf parambbpf, bbmy parambbmy) {}
   
-  public void ellipsized(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (paramInt1 == paramInt2)
-    {
-      this.jdField_a_of_type_Bbph.c.setText(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
-    this.jdField_a_of_type_Bbph.c.setText(new bamp(ndd.b(ndd.c(str + "...")), 3, 14));
+    this.jdField_a_of_type_Bbmy.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

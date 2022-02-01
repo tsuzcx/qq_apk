@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.text.TextUtils;
-import anvz;
-import apao;
-import azri;
-import begz;
-import bkbq;
+import apwe;
+import ardl;
+import bctj;
+import bhod;
+import bmqa;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Set;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import ors;
+import pha;
 
 public class Achilles
 {
@@ -109,7 +109,7 @@ public class Achilles
     {
       try
       {
-        bkbq.f();
+        bmqa.f();
         Object localObject2 = a();
         if ((localObject2 == null) || (((Set)localObject2).isEmpty()))
         {
@@ -196,7 +196,7 @@ public class Achilles
     RockDownloadInfo localRockDownloadInfo = new RockDownloadInfo();
     localRockDownloadInfo.packageName = paramString;
     localRockDownloadInfo.businessName = "biz_src_feeds_kandian_tab";
-    paramString = anvz.a(localRockDownloadInfo);
+    paramString = apwe.a(localRockDownloadInfo);
     if ((paramString != null) && (paramString.size() > 0)) {}
     ArrayList localArrayList;
     do
@@ -205,14 +205,14 @@ public class Achilles
       {
         return paramString;
         localRockDownloadInfo.businessName = "biz_src_feeds_kandian_news";
-        localArrayList = anvz.a(localRockDownloadInfo);
+        localArrayList = apwe.a(localRockDownloadInfo);
         if (localArrayList == null) {
           break;
         }
         paramString = localArrayList;
       } while (localArrayList.size() > 0);
       localRockDownloadInfo.businessName = "biz_src_feeds_kandian_daily";
-      localArrayList = anvz.a(localRockDownloadInfo);
+      localArrayList = apwe.a(localRockDownloadInfo);
       if (localArrayList == null) {
         break;
       }
@@ -237,7 +237,7 @@ public class Achilles
   {
     try
     {
-      if (apao.a(paramString, BaseApplicationImpl.getContext()))
+      if (ardl.a(paramString, BaseApplicationImpl.getContext()))
       {
         QLog.e("Achilles", 1, "[isInstalled] true");
         return true;
@@ -252,13 +252,13 @@ public class Achilles
     return false;
   }
   
-  public static boolean a(String paramString1, String paramString2, begz parambegz, boolean paramBoolean)
+  public static boolean a(String paramString1, String paramString2, bhod parambhod, boolean paramBoolean)
   {
     for (;;)
     {
       try
       {
-        bkbq.f();
+        bmqa.f();
         localObject = a();
         if ((localObject == null) || (((Set)localObject).isEmpty()))
         {
@@ -282,7 +282,7 @@ public class Achilles
             QLog.e("Achilles", 1, "[installIfDownloaded] installIfJump is false " + paramString2);
             return false;
           }
-          paramBoolean = AchillesFragmentUtils.a(paramString1, paramString2, parambegz);
+          paramBoolean = AchillesFragmentUtils.a(paramString1, paramString2, parambhod);
           return paramBoolean;
         }
       }
@@ -315,7 +315,7 @@ public class Achilles
   {
     QLog.d("Achilles", 1, "start download " + paramAchillesParams);
     AchillesFragmentUtils.a("download", "1", paramAchillesParams.getPackageName(), paramAchillesParams);
-    anvz.a(paramRockDownloadInfo, new Achilles.AchilesRockDownloadListener(null));
+    apwe.a(paramRockDownloadInfo, new Achilles.AchilesRockDownloadListener(null));
   }
   
   private static void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
@@ -326,12 +326,12 @@ public class Achilles
     if (localObject == null)
     {
       l1 = 0L;
-      localObject = ors.a();
+      localObject = pha.a();
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_FailCode", String.valueOf(paramInt));
       localHashMap.put("param_FailMsg", paramString2);
       localHashMap.put("uin", localObject);
-      azri.a(ors.a().getApplication()).a((String)localObject, "actAchilles", paramBoolean, l2 - l1, 0L, localHashMap, null, false);
+      bctj.a(pha.a().getApplication()).a((String)localObject, "actAchilles", paramBoolean, l2 - l1, 0L, localHashMap, null, false);
       if (!paramBoolean) {
         break label130;
       }
@@ -353,7 +353,7 @@ public class Achilles
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.Achilles
  * JD-Core Version:    0.7.0.1
  */

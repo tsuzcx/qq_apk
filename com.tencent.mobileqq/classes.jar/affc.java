@@ -1,32 +1,17 @@
-import com.tencent.mobileqq.app.icebreaking.AIOIceBreakShow;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class affc
-  implements amjw
+public class affc
+  implements CompoundButton.OnCheckedChangeListener
 {
-  affc(affb paramaffb) {}
+  public affc(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void a(boolean paramBoolean, List<agxz> paramList)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetIceBreakHotPic, success: ").append(paramBoolean).append(" hotPiceList size: ");
-    int i;
-    if (paramList == null)
-    {
-      i = 0;
-      QLog.i("IceBreak.HotPic", 1, i);
-      if (paramBoolean) {
-        break label59;
-      }
-    }
-    label59:
-    while (this.a.a == null)
-    {
-      return;
-      i = paramList.size();
-      break;
-    }
-    this.a.a.a(paramList);
+    SoundAndVibrateActivity.a(this.a, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

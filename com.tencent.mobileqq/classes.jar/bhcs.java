@@ -1,59 +1,27 @@
-import NS_MINI_INTERFACE.INTERFACE.StCheckSessionReq;
-import NS_MINI_INTERFACE.INTERFACE.StCheckSessionRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.vas.qvip.view.QQVipArkHeaderView;
+import com.tencent.mobileqq.vas.qvip.view.QvipArkView;
 
 public class bhcs
-  extends bhdw
+  implements View.OnLayoutChangeListener
 {
-  private INTERFACE.StCheckSessionReq a = new INTERFACE.StCheckSessionReq();
+  public bhcs(QQVipArkHeaderView paramQQVipArkHeaderView) {}
   
-  public bhcs(String paramString)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_program_auth";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StCheckSessionRsp localStCheckSessionRsp = new INTERFACE.StCheckSessionRsp();
-    try
+    if (QQVipArkHeaderView.a(this.a).getHeight() > 0)
     {
-      localStCheckSessionRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStCheckSessionRsp != null) {
-        return new JSONObject();
-      }
-      QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
-      return null;
+      float f = (this.a.getHeight() * 1.0F - afur.a(54.0F, this.a.getContext().getResources())) / QQVipArkHeaderView.a(this.a).getHeight();
+      QQVipArkHeaderView.a(this.a).setScaleY(f);
+      QQVipArkHeaderView.a(this.a).setScaleX(f);
     }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "CheckSession";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhcs
  * JD-Core Version:    0.7.0.1
  */

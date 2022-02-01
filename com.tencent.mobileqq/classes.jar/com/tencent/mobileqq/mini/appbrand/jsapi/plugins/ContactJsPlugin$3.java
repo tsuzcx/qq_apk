@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.text.TextUtils;
-import bclg;
+import bfpx;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -20,7 +20,7 @@ class ContactJsPlugin$3
       Object localObject = paramJSONObject.opt("robotUin");
       if (((localObject instanceof String)) && (!TextUtils.isEmpty((String)localObject)))
       {
-        bclg.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, null, (String)localObject);
+        bfpx.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, null, (String)localObject);
         this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$eventName, paramJSONObject, this.val$callbackId);
         return;
       }
@@ -33,7 +33,7 @@ class ContactJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.ContactJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

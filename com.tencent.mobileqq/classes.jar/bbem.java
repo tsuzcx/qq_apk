@@ -1,8 +1,12 @@
-import java.util.ArrayList;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public abstract interface bbem
+public class bbem
 {
-  public abstract void a(int paramInt, String paramString, ArrayList<bbej> paramArrayList);
+  public ImageView a;
+  public TextView a;
+  public ShareActionSheetBuilder.ActionSheetItem a;
 }
 
 

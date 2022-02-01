@@ -1,28 +1,96 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.qg.sdk.log.IQLog;
 
-public final class bjeo
-  implements DialogInterface.OnClickListener
+public class bjeo
+  implements IQLog
 {
-  public bjeo(boolean paramBoolean, FragmentActivity paramFragmentActivity, int paramInt, String paramString1, String paramString2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private static String a(String paramString, Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      aqgz.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      aqgz.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_JavaLangString);
-    }
+    return String.format(null, paramString, paramVarArgs);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    yqp.c(paramString1, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    yqp.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    yqp.b(paramString1, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    yqp.a(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    yqp.b(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    yqp.e(paramString1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    yqp.c(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    yqp.c(paramString1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    yqp.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    yqp.c(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    yqp.a(paramString1, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    yqp.a(paramString1, paramString2, new Object[] { paramThrowable });
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    yqp.c(paramString1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    yqp.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    yqp.d(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void w(String paramString, Throwable paramThrowable)
+  {
+    yqp.b(paramString, "", paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjeo
  * JD-Core Version:    0.7.0.1
  */

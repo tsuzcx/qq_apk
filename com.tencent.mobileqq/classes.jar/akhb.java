@@ -1,16 +1,24 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.widget.Switch;
-
-public class akhb
+public abstract interface akhb
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  AppletItem jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem;
-  Switch jdField_a_of_type_ComTencentWidgetSwitch;
+  public abstract void a(akhh paramakhh);
+  
+  public abstract void a(akhh paramakhh, int paramInt);
+  
+  public abstract void a(akhh paramakhh, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(akhh paramakhh, long paramLong);
+  
+  public abstract void a(akhh paramakhh, boolean paramBoolean);
+  
+  public abstract void b(akhh paramakhh);
+  
+  public abstract void b(akhh paramakhh, int paramInt);
+  
+  public abstract void c(akhh paramakhh);
+  
+  public abstract void d(akhh paramakhh);
+  
+  public abstract void v();
 }
 
 

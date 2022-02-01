@@ -1,32 +1,16 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.InputOnGlobalLayoutListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class agwn
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnTouchListener
 {
-  private agwn(TroopChatPie paramTroopChatPie) {}
+  public agwn(HeartCombolEffectView paramHeartCombolEffectView) {}
   
-  public void onGlobalLayout()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      if (!this.a.ab)
-      {
-        this.a.ab = true;
-        ThreadManager.getSubThreadHandler().postDelayed(new TroopChatPie.InputOnGlobalLayoutListener.1(this), 1500L);
-      }
-      return;
-      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    return true;
   }
 }
 

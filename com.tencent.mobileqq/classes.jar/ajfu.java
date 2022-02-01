@@ -1,27 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ajfu
-  implements Animation.AnimationListener
+  implements ajdd
 {
-  public ajfu(AnonymousEntranceView paramAnonymousEntranceView) {}
+  public ajfu(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(4);
-    }
+    if (!(paramViewHolder instanceof ajeg)) {}
+    do
+    {
+      return;
+      paramView = (ajeg)paramViewHolder;
+    } while (paramView.a.msg_type.get() != 2);
+    TroopSuspiciousFragment.a(this.a, paramView);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(0);
-    }
+    return false;
   }
 }
 

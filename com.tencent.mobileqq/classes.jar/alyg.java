@@ -1,35 +1,25 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class alyg
-  implements Comparator<PhoneContact>
+  implements Animation.AnimationListener
 {
-  public alyg(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public alyg(SpecailCareListActivity paramSpecailCareListActivity, alyv paramalyv) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
-    }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
-    }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-    }
-    return i;
+    this.jdField_a_of_type_Alyv.c.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alyg
  * JD-Core Version:    0.7.0.1
  */

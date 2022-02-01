@@ -1,20 +1,20 @@
 package com.tencent.imcore.message;
 
-import abtg;
-import awhr;
+import acwf;
+import aywe;
 import com.tencent.qphone.base.util.QLog;
 
 public class MsgProxy$1
   implements Runnable
 {
-  public MsgProxy$1(abtg paramabtg, awhr paramawhr, String paramString, int paramInt) {}
+  public MsgProxy$1(acwf paramacwf, aywe paramaywe, String paramString, int paramInt) {}
   
   public void run()
   {
     try
     {
-      if (this.jdField_a_of_type_Awhr != null) {
-        this.jdField_a_of_type_Awhr.a(this.this$0.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int), null, null);
+      if (this.jdField_a_of_type_Aywe != null) {
+        this.jdField_a_of_type_Aywe.a(this.this$0.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int), null, null);
       }
       return;
     }
@@ -26,7 +26,7 @@ public class MsgProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.imcore.message.MsgProxy.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,84 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
 class ogs
-  implements URLDrawable.URLDrawableListener
+  extends pmn
 {
-  ogs(ogr paramogr, String paramString) {}
+  ogs(ogr paramogr) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
+    if ((ogr.a(this.a) != null) && ((ogr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ogr.a(this.a)).a(paramInt);
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(int paramInt, List<Long> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadFialed:" + this.jdField_a_of_type_JavaLangString);
+    if ((ogr.a(this.a) != null) && ((ogr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ogr.a(this.a)).a(paramInt, paramList);
     }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  public void a(TopBannerInfo paramTopBannerInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadProgressed");
+    if ((ogr.a(this.a) != null) && ((ogr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ogr.a(this.a)).a(paramTopBannerInfo);
     }
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadSuccessed:" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (paramURLDrawable != null)
+    if ((ogr.a(this.a) != null) && ((ogr.a(this.a) instanceof ReadInJoyListViewGroup)) && (paramInt == ogr.a(this.a)))
     {
-      ogr.a(this.jdField_a_of_type_Ogr, new ogp(paramURLDrawable.getCurrDrawable(), ogr.a(this.jdField_a_of_type_Ogr), ogr.b(this.jdField_a_of_type_Ogr) - (ogr.c(this.jdField_a_of_type_Ogr) + ogr.d(this.jdField_a_of_type_Ogr))));
-      ogr.a(this.jdField_a_of_type_Ogr).setImageDrawable(ogr.a(this.jdField_a_of_type_Ogr));
-      ogr.a(this.jdField_a_of_type_Ogr, this.jdField_a_of_type_JavaLangString);
+      ((ReadInJoyListViewGroup)ogr.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+      ogr.a(this.a);
+    }
+  }
+  
+  public void as_()
+  {
+    if ((ogr.a(this.a) != null) && ((ogr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ogr.a(this.a)).p();
+    }
+  }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    if ((ogr.a(this.a) != null) && ((ogr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ogr.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((ogr.a(this.a) != null) && ((ogr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ogr.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List<Long> paramList)
+  {
+    if ((ogr.a(this.a) != null) && ((ogr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ogr.a(this.a)).b(paramInt, paramList);
+    }
+  }
+  
+  public void d(int paramInt, List<owd> paramList)
+  {
+    if ((ogr.a(this.a) instanceof ReadInJoyListViewGroup))
+    {
+      ptz localptz = (ptz)((ReadInJoyListViewGroup)ogr.a(this.a)).a(2);
+      if (localptz != null) {
+        localptz.b(paramInt, paramList);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ogs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,18 @@
-class tuu
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+
+public class tuu
+  extends anqd
 {
-  public String a;
-  public boolean a;
-  public boolean b;
+  public tuu(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public String toString()
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_JavaLangString + '\'' + ", hasResponse='" + this.b + '\'' + '}';
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tuu
  * JD-Core Version:    0.7.0.1
  */

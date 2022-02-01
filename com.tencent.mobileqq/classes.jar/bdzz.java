@@ -1,234 +1,103 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.PluginBaseActivity;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import java.util.HashMap;
 
 public class bdzz
-  extends Dialog
-  implements View.OnClickListener
+  extends bdsr
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private beac jdField_a_of_type_Beac;
-  private CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int = 2;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private String jdField_b_of_type_JavaLangString;
-  
-  public bdzz(Activity paramActivity, beac parambeac, int paramInt1, String paramString, int paramInt2)
+  public bdzz(bdzi parambdzi, bdzn parambdzn)
   {
-    super(paramActivity, 2131755801);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Beac = parambeac;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    a();
+    super(parambdzi, parambdzn);
+    this.b = ((bdzq)this.jdField_a_of_type_Bdzn.jdField_a_of_type_JavaLangObject).jdField_a_of_type_Int;
   }
   
-  public bdzz(Activity paramActivity, CustomWebView paramCustomWebView, String paramString1, int paramInt1, String paramString2, int paramInt2)
+  public void aN_()
   {
-    super(paramActivity, 2131755801);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = paramCustomWebView;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    a();
+    f();
   }
   
-  private void a()
+  void d()
   {
-    setContentView(2131558910);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363072));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370224));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364948));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364805));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363909));
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4);
-    Object localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("guidePopupImgUrl_v2", "");
-    if (QLog.isColorLevel()) {
-      QLog.i("CUKingCardDialog", 2, "SP_KEY_GUIDE_POPUP_IMG_URL: " + (String)localObject1);
-    }
-    Object localObject2 = new ColorDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167186));
-    Object localObject3;
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    super.d();
+    this.jdField_a_of_type_Bdsv.a(bdzi.a(this.jdField_a_of_type_Bdzn));
+    bdzu localbdzu = this.jdField_a_of_type_Bdzn.jdField_a_of_type_Bdzu;
+    if (localbdzu != null)
     {
-      localObject3 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject2);
-      ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject2);
-      localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+      localbdzu.jdField_a_of_type_Int = -1;
+      localbdzu.jdField_a_of_type_Long = this.jdField_j_of_type_Int;
+      localbdzu.jdField_a_of_type_JavaLangString = this.jdField_j_of_type_JavaLangString;
+      localbdzu.jdField_a_of_type_Bdzn = this.jdField_a_of_type_Bdzn;
     }
-    for (;;)
-    {
-      localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("guidePopupText_v2", "");
-      localObject2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("guideJumpText_v2", "");
-      localObject3 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("guideContinueText_v2", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("CUKingCardDialog", 2, String.format("popUpType: %d, mSceneId: %d, popUpStr: %s, guideBtnStr: %s, continueBtnStr: %s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Int), localObject1, localObject2, localObject3 }));
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-      this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject2);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetButton.setText((CharSequence)localObject3);
-      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Beac != null) {
-      this.jdField_a_of_type_Beac.callback(3);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {}
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("result", 3);
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      if (this.jdField_b_of_type_Int == 2)
-      {
-        VasWebviewUtil.reportCommercialDrainage("", "wkclub", "P2-3", this.jdField_b_of_type_JavaLangString, 1, 0, 0, "", "", "");
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        for (;;)
-        {
-          QLog.e("CUKingCardDialog", 1, "onClick exception e = ", localException);
-        }
-      } while (this.jdField_b_of_type_Int != 3);
-      VasWebviewUtil.reportCommercialDrainage("", "wkclub", "P3-3", this.jdField_b_of_type_JavaLangString, 1, 0, 0, "", "", "");
-    }
-  }
-  
-  public void onBackPressed()
-  {
-    super.onBackPressed();
-    b();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131364948: 
-    case 2131364805: 
-      label114:
-      do
-      {
-        return;
-        paramView = beaa.a(this.jdField_b_of_type_JavaLangString);
-        Object localObject;
-        if (!TextUtils.isEmpty(paramView)) {
-          if ((this.jdField_a_of_type_AndroidAppActivity instanceof PluginBaseActivity))
-          {
-            localObject = (PluginBaseActivity)this.jdField_a_of_type_AndroidAppActivity;
-            Intent localIntent = new Intent(((PluginBaseActivity)localObject).getOutActivity(), QQBrowserActivity.class);
-            localIntent.putExtra("url", paramView);
-            localIntent.setFlags(268435456);
-            ((PluginBaseActivity)localObject).getOutActivity().startActivity(localIntent);
-            if (this.jdField_b_of_type_Int != 2) {
-              break label270;
-            }
-            VasWebviewUtil.reportCommercialDrainage("", "wkclub", "P2-1", this.jdField_b_of_type_JavaLangString, 1, 0, 0, "", "", "");
-          }
-        }
-        for (;;)
-        {
-          if (this.jdField_a_of_type_Beac != null) {
-            this.jdField_a_of_type_Beac.callback(4);
-          }
-          dismiss();
-          if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null) {
-            break;
-          }
-          try
-          {
-            paramView = new JSONObject();
-            paramView.put("result", 4);
-            this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramView.toString() });
-            return;
-          }
-          catch (Exception paramView)
-          {
-            QLog.e("CUKingCardDialog", 1, "onClick exception e = ", paramView);
-            return;
-          }
-          localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-          ((Intent)localObject).putExtra("url", paramView);
-          this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
-          break label114;
-          QLog.e("CUKingCardDialog", 1, "onClick cuGuideBtn url = null");
-          break label114;
-          if (this.jdField_b_of_type_Int == 3) {
-            VasWebviewUtil.reportCommercialDrainage("", "wkclub", "P3-1", this.jdField_b_of_type_JavaLangString, 1, 0, 0, "", "", "");
-          }
-        }
-        if (this.jdField_a_of_type_Beac != null) {
-          this.jdField_a_of_type_Beac.callback(1);
-        }
-        dismiss();
-        if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {}
-        try
-        {
-          paramView = new JSONObject();
-          paramView.put("result", 1);
-          this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramView.toString() });
-          if (this.jdField_b_of_type_Int == 2)
-          {
-            VasWebviewUtil.reportCommercialDrainage("", "wkclub", "P2-2", this.jdField_b_of_type_JavaLangString, 1, 0, 0, "", "", "");
-            return;
-          }
-        }
-        catch (Exception paramView)
-        {
-          for (;;)
-          {
-            QLog.e("CUKingCardDialog", 1, "onClick exception e = ", paramView);
-          }
-        }
-      } while (this.jdField_b_of_type_Int != 3);
-      label270:
-      VasWebviewUtil.reportCommercialDrainage("", "wkclub", "P3-2", this.jdField_b_of_type_JavaLangString, 1, 0, 0, "", "", "");
+      b("notify", "start");
+      notifyAll();
+      b("notify", "end");
       return;
     }
-    dismiss();
-    b();
+    finally {}
+  }
+  
+  void e()
+  {
+    super.e();
+    bdzu localbdzu = this.jdField_a_of_type_Bdzn.jdField_a_of_type_Bdzu;
+    this.jdField_a_of_type_Bdsv.a(bdzi.a(this.jdField_a_of_type_Bdzn));
+    if (localbdzu != null)
+    {
+      localbdzu.jdField_a_of_type_Int = 0;
+      localbdzu.jdField_a_of_type_Bdzn = this.jdField_a_of_type_Bdzn;
+    }
+    try
+    {
+      b("notify", "start");
+      notifyAll();
+      b("notify", "end");
+      return;
+    }
+    finally {}
+  }
+  
+  void f()
+  {
+    String str = this.jdField_a_of_type_Bdzn.jdField_e_of_type_JavaLangString;
+    bdvs localbdvs = new bdvs();
+    localbdvs.jdField_a_of_type_Bdvw = this;
+    localbdvs.jdField_a_of_type_JavaLangString = str;
+    localbdvs.jdField_a_of_type_Int = 0;
+    localbdvs.jdField_a_of_type_JavaIoOutputStream = this.jdField_a_of_type_Bdzn.jdField_a_of_type_JavaIoOutputStream;
+    localbdvs.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bdzn.h;
+    localbdvs.jdField_e_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Bdzn.jdField_a_of_type_Long);
+    localbdvs.f = this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int;
+    localbdvs.jdField_e_of_type_Int = this.jdField_a_of_type_Bdzn.b;
+    localbdvs.jdField_a_of_type_Long = this.b;
+    localbdvs.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
+    localbdvs.d = this.jdField_a_of_type_Bdzn.f;
+    if (this.jdField_a_of_type_Bdzn.d)
+    {
+      localbdvs.jdField_a_of_type_JavaUtilHashMap.put("Range", "bytes=" + localbdvs.jdField_a_of_type_Long + "-");
+      localbdvs.jdField_a_of_type_Bdvv = jdField_a_of_type_Bdvv;
+    }
+    localbdvs.b = 4;
+    localbdvs.jdField_c_of_type_Long = 90000L;
+    b("httpDown", " url:" + str + ",downOffset:" + localbdvs.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Bdvu.a(localbdvs);
+  }
+  
+  public void onResp(bdwt parambdwt)
+  {
+    super.onResp(parambdwt);
+    StringBuilder localStringBuilder = new StringBuilder().append(" result:");
+    if (parambdwt.jdField_a_of_type_Int == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      b("onHttpResp", bool);
+      this.b += parambdwt.jdField_c_of_type_Long;
+      if (parambdwt.jdField_a_of_type_Int != 0) {
+        break;
+      }
+      e();
+      return;
+    }
+    d();
   }
 }
 

@@ -1,19 +1,24 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.1;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
 
-public final class alkr
-  implements Comparator<File>
+public class alkr
+  implements bcdv
 {
-  public int a(File paramFile1, File paramFile2)
+  alkr(alko paramalko) {}
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    if ((paramFile1.exists()) && (paramFile2.exists()))
-    {
-      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
-        return 1;
-      }
-      return -1;
+    this.a.a.post(new PtvTemplateAdapter.3.2(this, paramPtvTemplateInfo, paramInt));
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    this.a.a.post(new PtvTemplateAdapter.3.1(this, paramPtvTemplateInfo, paramBoolean));
+    if (!paramBoolean) {
+      alio.a("", "0X80075BB", "", "", "", "");
     }
-    return 0;
   }
 }
 

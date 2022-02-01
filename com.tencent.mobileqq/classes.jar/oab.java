@@ -1,38 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class oab
-  implements DialogInterface.OnKeyListener
+class oab
+  extends BroadcastReceiver
 {
-  public oab(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  oab(nzz paramnzz) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = true;
-    if (paramInt == 4)
+    if (this.a.a == 1)
     {
-      ReadInJoySettingActivity.a(this.a, true);
-      paramDialogInterface = ReadInJoySettingActivity.a(this.a);
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label53;
-      }
+      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
+      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
+      this.a.a(null, 0, 13, i, paramIntent);
     }
-    for (;;)
+    try
     {
-      paramDialogInterface.setChecked(bool);
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return false;
-      label53:
-      bool = false;
+      paramContext.unregisterReceiver(this.a.b);
+      label50:
+      this.a.b = null;
+      this.a.a = 0;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label50;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oab
  * JD-Core Version:    0.7.0.1
  */

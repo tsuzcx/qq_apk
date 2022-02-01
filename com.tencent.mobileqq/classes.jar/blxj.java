@@ -1,8 +1,9 @@
-public abstract interface blxj
+public class blxj
 {
-  public abstract void a(float paramFloat, String paramString, int paramInt);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
+  public long a;
+  public String a;
+  public long b;
+  public long c;
 }
 
 

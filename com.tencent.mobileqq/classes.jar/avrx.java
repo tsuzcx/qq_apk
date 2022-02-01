@@ -1,20 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class avrx
-  extends avqj
 {
-  public ImageView e;
-  public TextView g;
+  public int a;
+  public int b;
   
-  public avrx(avrw paramavrw)
+  public avrx(int paramInt1, int paramInt2)
   {
-    super(paramavrw);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avrx
  * JD-Core Version:    0.7.0.1
  */

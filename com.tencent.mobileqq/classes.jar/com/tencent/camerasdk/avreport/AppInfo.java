@@ -101,7 +101,7 @@ public class AppInfo
       }
       catch (Throwable paramContext)
       {
-        LogUtils.e("MobileBase-AppInfo", "getAppName error", paramContext);
+        AVRLogUtils.e("MobileBase-AppInfo", "getAppName error", paramContext);
       }
     }
     return null;
@@ -133,7 +133,7 @@ public class AppInfo
         {
           for (;;)
           {
-            LogUtils.e("MobileBase-AppInfo", "Exception occurred when getting process name.", paramContext);
+            AVRLogUtils.e("MobileBase-AppInfo", "Exception occurred when getting process name.", paramContext);
             paramContext = null;
           }
         }
@@ -172,7 +172,7 @@ public class AppInfo
       }
       catch (Throwable paramContext)
       {
-        LogUtils.e("MobileBase-AppInfo", "getManifestMetaDatas error", paramContext);
+        AVRLogUtils.e("MobileBase-AppInfo", "getManifestMetaDatas error", paramContext);
       }
     }
   }
@@ -191,7 +191,7 @@ public class AppInfo
     }
     catch (Throwable paramContext)
     {
-      LogUtils.e("MobileBase-AppInfo", "getPackageInfo error", paramContext);
+      AVRLogUtils.e("MobileBase-AppInfo", "getPackageInfo error", paramContext);
     }
     return null;
   }
@@ -208,7 +208,7 @@ public class AppInfo
     }
     catch (Throwable paramContext)
     {
-      LogUtils.e("MobileBase-AppInfo", "getPackageName error", paramContext);
+      AVRLogUtils.e("MobileBase-AppInfo", "getPackageName error", paramContext);
     }
     return "fail";
   }
@@ -287,7 +287,7 @@ public class AppInfo
     //   115: ldc 8
     //   117: ldc 225
     //   119: aload 4
-    //   121: invokestatic 110	com/tencent/camerasdk/avreport/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   121: invokestatic 110	com/tencent/camerasdk/avreport/AVRLogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   124: iload_1
     //   125: invokestatic 228	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   128: astore 4
@@ -384,14 +384,14 @@ public class AppInfo
       {
         Object localObject1;
         Object localObject2;
-        LogUtils.e("MobileBase-AppInfo", "getSignature CertificateException error", paramArrayOfByte);
+        AVRLogUtils.e("MobileBase-AppInfo", "getSignature CertificateException error", paramArrayOfByte);
         continue;
         localStringBuilder.append("unknown");
         continue;
       }
       catch (Throwable paramArrayOfByte)
       {
-        LogUtils.e("MobileBase-AppInfo", "getSignature error", paramArrayOfByte);
+        AVRLogUtils.e("MobileBase-AppInfo", "getSignature error", paramArrayOfByte);
         continue;
         localStringBuilder.append("unknown");
         continue;
@@ -488,7 +488,7 @@ public class AppInfo
       }
       catch (Throwable paramContext)
       {
-        LogUtils.e("MobileBase-AppInfo", "isContainPermission error", paramContext);
+        AVRLogUtils.e("MobileBase-AppInfo", "isContainPermission error", paramContext);
       }
     }
   }
@@ -505,20 +505,20 @@ public class AppInfo
     {
       paramContext = new ActivityManager.MemoryInfo();
       activityManager.getMemoryInfo(paramContext);
-      LogUtils.d("MobileBase-AppInfo", "Memory is low.");
+      AVRLogUtils.d("MobileBase-AppInfo", "Memory is low.");
       boolean bool = paramContext.lowMemory;
       return bool;
     }
     catch (Throwable paramContext)
     {
-      LogUtils.e("MobileBase-AppInfo", "isLowMemory error", paramContext);
+      AVRLogUtils.e("MobileBase-AppInfo", "isLowMemory error", paramContext);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.AppInfo
  * JD-Core Version:    0.7.0.1
  */

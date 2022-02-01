@@ -1,37 +1,65 @@
+import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class asla
+public class asla
   extends Handler
 {
-  asla(askz paramaskz) {}
+  public static int a;
+  public static int b = 2;
+  public static int c = 3;
+  public static int d = 5200;
+  private WeakReference<ExtendFriendLimitChatMatchFragment> a;
+  
+  static
+  {
+    jdField_a_of_type_Int = 1;
+  }
+  
+  public asla(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramExtendFriendLimitChatMatchFragment);
+  }
   
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    if (paramMessage.what == jdField_a_of_type_Int)
     {
-    case 3: 
-    case 5: 
-    default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      askz.a(this.a);
-      return;
-    case 6: 
-      askz.b(this.a);
-      return;
-    case 2: 
-      askz.c(this.a);
-      return;
-    case 4: 
-      askz.d(this.a);
-      return;
+      paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramMessage != null)
+      {
+        QLog.e("ExtendFriendLimitChatMatchFragment", 1, "limitchat matching time out from ui");
+        ExtendFriendLimitChatMatchFragment.a(paramMessage, true);
+      }
     }
-    askz.e(this.a);
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (paramMessage.what != b) {
+              break;
+            }
+            paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          } while (paramMessage == null);
+          ExtendFriendLimitChatMatchFragment.b(paramMessage);
+          paramMessage = paramMessage.getActivity();
+        } while (paramMessage == null);
+        paramMessage.finish();
+        return;
+      } while (paramMessage.what != c);
+      paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (paramMessage == null);
+    ExtendFriendLimitChatMatchFragment.c(paramMessage);
+    ExtendFriendLimitChatMatchFragment.d(paramMessage);
   }
 }
 

@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aifr
-  implements DialogInterface.OnClickListener
+  implements bfwg
 {
-  aifr(aiez paramaiez) {}
+  aifr(aifq paramaifq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.finish();
+    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.a.a)) && (this.a.a.a.equals(paramString)))
+    {
+      paramString = (agnt)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
+    }
+    do
+    {
+      return;
+      paramString = (agnt)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 

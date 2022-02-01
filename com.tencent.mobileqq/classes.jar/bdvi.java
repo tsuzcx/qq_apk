@@ -1,9 +1,27 @@
-public abstract interface bdvi
-  extends bdvc
+import com.tencent.qphone.base.util.QLog;
+
+class bdvi
+  extends anqd
 {
-  public abstract String a();
+  bdvi(bdvf parambdvf) {}
   
-  public abstract boolean a();
+  public void a(boolean paramBoolean, long paramLong, anqe paramanqe)
+  {
+    if ((this.a.a.a == 1026) && (QLog.isColorLevel())) {
+      QLog.i("PttShow", 2, "onNotifyResultAfterSendRich, UIN_TYPE_HOTCHAT_TOPIC  " + paramBoolean);
+    }
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramanqe);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    if (paramanqe != null) {
+      this.a.v = paramanqe.d;
+    }
+    this.a.d();
+  }
 }
 
 

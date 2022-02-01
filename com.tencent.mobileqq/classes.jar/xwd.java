@@ -1,19 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class xwd
-  implements View.OnClickListener
+public class xwd
+  implements CompoundButton.OnCheckedChangeListener
 {
-  xwd(xwc paramxwc) {}
+  public xwd(QGSettingFragment paramQGSettingFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.b(true);
+    if (paramBoolean) {
+      QGSettingFragment.a(true);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      QGSettingFragment.a(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xwd
  * JD-Core Version:    0.7.0.1
  */

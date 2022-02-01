@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class akop
-  implements Manager
+  implements OnCompositionLoadedListener
 {
-  public static String a = "ApolloNativeSSOReqMgr";
+  public akop(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public akop(QQAppInterface paramQQAppInterface)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "[ApolloNativeSSOReqMgr]");
-    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    TroopUnAccalimedRedPacketList.a(this.a).setImageDrawable(localLottieDrawable);
   }
-  
-  public void onDestroy() {}
 }
 
 

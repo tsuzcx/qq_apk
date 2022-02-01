@@ -1,12 +1,29 @@
-public class beaf
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+
+class beaf
+  implements beai
 {
-  public int a;
-  public long a;
+  beaf(beae parambeae) {}
   
-  public beaf()
+  public Bitmap getBitmap(URL paramURL)
   {
-    this.jdField_a_of_type_Int = 1000277;
-    this.jdField_a_of_type_Long = -1L;
+    String str = paramURL.getPath();
+    try
+    {
+      Bitmap localBitmap = beae.a(this.a, str);
+      paramURL = localBitmap;
+      if (localBitmap == null) {
+        paramURL = beae.b(this.a, str);
+      }
+      return paramURL;
+    }
+    catch (Throwable paramURL)
+    {
+      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
+    }
+    return null;
   }
 }
 

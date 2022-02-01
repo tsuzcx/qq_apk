@@ -1,38 +1,50 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAd;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.MoveFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class aarh
-  implements aaru
+public abstract class aarh
+  extends niv
 {
-  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject = null;
+    b(paramInt, paramArrayOfByte, paramBundle);
+  }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt, String paramString);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
+    {
+      a(false, paramInt, null);
+      return;
+    }
+    paramBundle = new oidb_0x6d6.RspBody();
     try
     {
-      paramString = new JSONObject(paramVarArgs[0]);
-      aase.a("GdtC2SJsCallHandler", paramString.toString());
-      int i = paramString.optInt("operationType");
-      int j = paramString.optInt("businessType");
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString.getJSONObject("adInfo")));
-      aask.a(i, j, localAdInfo);
-      if (paramaarb != null) {}
-      for (paramString = paramaarb.a();; paramString = null)
-      {
-        paramVarArgs = localObject;
-        if (paramaarb != null) {
-          paramVarArgs = paramaarb.a();
-        }
-        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "c2sReport", paramVarArgs, new GdtAd(localAdInfo));
-        return true;
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.MoveFileRspBody)paramBundle.move_file_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label94;
       }
-      return true;
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, paramArrayOfByte.str_parent_folder_id.get());
+        return;
+      }
     }
-    catch (Exception paramaarb)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      aase.d("GdtC2SJsCallHandler", "handleJsCallRequest", paramaarb);
+      a(false, -1, null);
+      return;
     }
+    a(false, paramArrayOfByte.int32_ret_code.get(), null);
+    return;
+    label94:
+    a(false, -1, null);
   }
 }
 

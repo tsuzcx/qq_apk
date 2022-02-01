@@ -11,7 +11,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/config/PluginCombination$Companion;", "", "()V", "anrPlugin", "Lcom/tencent/qapmsdk/base/config/DefaultPluginConfig;", "austerityPlugins", "", "batteryPlugin", "ceilingHprofPlugin", "ceilingValuePlugin", "crashPlugin", "dbPlugin", "devicePlugin", "dropFramePlugin", "httpPlugin", "ioPlugin", "jsErrorPlugin", "leakPlugin", "loopStackPlugin", "loosePlugins", "getLoosePlugins$qapmbase_release", "()Ljava/util/List;", "modeAll", "", "getModeAll", "()I", "modeAll$delegate", "Lkotlin/Lazy;", "modeStable", "getModeStable", "modeStable$delegate", "resourcePlugin", "stablePlugins", "statisticsPlugin", "userBreadCrumbPlugin", "webViewPlugin", "each", "block", "Lkotlin/Function1;", "handle", "plugin", "isAusterityPlugin", "", "isLoosePlugin", "qapmbase_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/config/PluginCombination$Companion;", "", "()V", "anrPlugin", "Lcom/tencent/qapmsdk/base/config/DefaultPluginConfig;", "austerityPlugins", "", "batteryPlugin", "bigBitmapPlugin", "ceilingHprofPlugin", "ceilingValuePlugin", "crashPlugin", "dbPlugin", "devicePlugin", "dropFramePlugin", "httpPlugin", "ioPlugin", "jsErrorPlugin", "leakPlugin", "loopStackPlugin", "loosePlugins", "getLoosePlugins$qapmbase_release", "()Ljava/util/List;", "modeAll", "", "getModeAll", "()I", "modeAll$delegate", "Lkotlin/Lazy;", "modeStable", "getModeStable", "modeStable$delegate", "resourcePlugin", "stablePlugins", "statisticsPlugin", "userBreadCrumbPlugin", "webViewPlugin", "each", "block", "Lkotlin/Function1;", "handle", "plugin", "isAusterityPlugin", "", "isLoosePlugin", "qapmbase_release"}, k=1, mv={1, 1, 15})
 public final class PluginCombination$Companion
 {
   @Nullable
@@ -133,7 +133,7 @@ public final class PluginCombination$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.config.PluginCombination.Companion
  * JD-Core Version:    0.7.0.1
  */

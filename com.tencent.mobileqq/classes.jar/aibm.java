@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
-public class aibm
-  implements DialogInterface.OnClickListener
+class aibm
+  extends BroadcastReceiver
 {
-  public aibm(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment) {}
+  aibm(aiay paramaiay) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
-    this.a.getActivity().setResult(8001);
+    if (this.a.jdField_a_of_type_Axey != null) {
+      this.a.jdField_a_of_type_Axey.a(paramContext);
+    }
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
   }
 }
 

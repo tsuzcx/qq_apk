@@ -1,25 +1,38 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySlideAnimLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class rxs
-  implements ValueAnimator.AnimatorUpdateListener
+class rxs
+  implements Animation.AnimationListener
 {
-  public rxs(SlideActiveAnimController paramSlideActiveAnimController, float paramFloat) {}
+  rxs(rxr paramrxr) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout.a.setTranslationY(this.jdField_a_of_type_Float - paramValueAnimator.floatValue());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setTranslationY(-paramValueAnimator.floatValue());
+    if ((rwy.a(this.a.c) == rxr.a(this.a)) && (rwy.a(this.a.c) != null)) {
+      rwy.a(this.a.c).a(rxr.a(this.a));
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if ((rxr.a(this.a).a != null) && (rxr.a(this.a).a.a != null))
+    {
+      boolean bool = rxr.a(this.a).a.a.r;
+      if (rxr.a(this.a).o != null) {
+        rxr.a(this.a).o.setImageDrawable(rwy.a(this.a.c, this.a.a(bool)));
+      }
+    }
+    paramAnimation.setInterpolator(new AnticipateInterpolator());
+  }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rxs
  * JD-Core Version:    0.7.0.1
  */

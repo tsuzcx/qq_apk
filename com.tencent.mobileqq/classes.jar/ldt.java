@@ -1,39 +1,126 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import tencent.gdt.qq_ad_get.QQAdGet;
+import android.content.Intent;
+import android.os.Process;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class ldt
+class ldt
+  extends BroadcastReceiver
 {
-  private static ldt a;
+  public static String a;
+  VideoAppInterface a;
   
-  public static ldt a()
+  static
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new ldt();
-      }
-      return a;
-    }
-    finally {}
+    jdField_a_of_type_JavaLangString = "AccountReceiver";
   }
   
-  public void a(Context paramContext, AppRuntime paramAppRuntime, qq_ad_get.QQAdGet paramQQAdGet, BusinessObserver paramBusinessObserver)
+  public ldt(VideoAppInterface paramVideoAppInterface)
   {
-    paramContext = new NewIntent(BaseApplicationImpl.getApplication(), ldu.class);
-    paramContext.setObserver(paramBusinessObserver);
-    paramContext.putExtra("GdtLoadAdServletCMD", "QqAd.getAd");
-    paramContext.putExtra("sso_GdtLoadAd_rquest_bytes", paramQQAdGet.toByteArray());
-    paramAppRuntime.startServlet(paramContext);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    long l;
+    int i;
+    boolean bool;
+    int j;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              try
+              {
+                paramContext = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+                if (QLog.isColorLevel()) {
+                  QLog.d(jdField_a_of_type_JavaLangString, 2, "recv account broadcast: " + paramIntent.getAction());
+                }
+                if (!paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_KICKED")) {
+                  break;
+                }
+                this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1001);
+                if (paramContext != null) {
+                  paramContext.B();
+                }
+                Process.killProcess(Process.myPid());
+                return;
+              }
+              catch (RuntimeException paramContext) {}
+            } while (!QLog.isColorLevel());
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "RuntimeException", paramContext);
+            return;
+            if (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))
+            {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1003);
+              if (paramContext != null) {
+                paramContext.B();
+              }
+              Process.killProcess(Process.myPid());
+              return;
+            }
+            if (paramIntent.getAction().equals("mqq.intent.action.LOGOUT"))
+            {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1002);
+              if (paramContext != null) {
+                paramContext.B();
+              }
+              Process.killProcess(Process.myPid());
+              return;
+            }
+            if (paramIntent.getAction().equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName()))
+            {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1005);
+              if (paramContext != null) {
+                paramContext.B();
+              }
+              Process.killProcess(Process.myPid());
+              return;
+            }
+            if (!"mqq.intent.action.ACCOUNT_CHANGED".equals(paramIntent.getAction())) {
+              break;
+            }
+          } while (paramContext == null);
+          if (paramContext.e) {
+            paramContext.a(paramContext.c, paramContext.a, 74);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "ACTION_ACCOUNT_CHANGED, video process exit!");
+          }
+          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1004);
+          paramContext.B();
+          Process.killProcess(Process.myPid());
+          return;
+        } while (!"tencent.video.q2v.membersChange".equals(paramIntent.getAction()));
+        l = paramIntent.getLongExtra("relationId", -1L);
+        i = paramIntent.getIntExtra("relationType", 0);
+        if (l != -1L) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "can not get the right value");
+      return;
+      bool = paramIntent.getBooleanExtra("Exit", false);
+      j = paramIntent.getIntExtra("avtype", 0);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(79), Long.valueOf(l), Boolean.valueOf(bool), Integer.valueOf(j) });
+    } while ((!bool) || (j == 2));
+    paramContext.b(i, l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ldt
  * JD-Core Version:    0.7.0.1
  */

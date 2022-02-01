@@ -1,54 +1,26 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
 
 class aurq
-  extends Handler
+  implements Animation.AnimationListener
 {
-  aurq(aurm paramaurm, Looper paramLooper)
+  aurq(aurp paramaurp) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramLooper);
+    this.a.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.a();
+    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    Object localObject = paramMessage.getData();
-    if (localObject != null) {}
-    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
-    {
-      paramMessage = (Bitmap)paramMessage.obj;
-      if ((paramMessage != null) && (localObject != null))
-      {
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-      }
-      try
-      {
-        localObject = new FileOutputStream((File)localObject);
-        paramMessage.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
-        ((FileOutputStream)localObject).flush();
-        ((FileOutputStream)localObject).close();
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
-      }
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aurq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import android.os.Bundle;
 
-public class aiap
-  implements acnt
+class aiap
+  extends ayew
 {
-  public aiap(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
+  aiap(ahzy paramahzy) {}
   
-  public boolean a(boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean) {
-      bkjn.a(this.a.getActivity());
+    if ((paramInt == 0) && (paramBoolean == true))
+    {
+      paramBundle.getInt("gif_ui_show_bid");
+      long l = paramBundle.getLong("gif_ui_show_seq");
+      this.a.f(65536);
+      ahzy.a(this.a, Long.valueOf(l).longValue());
     }
-    return false;
   }
 }
 

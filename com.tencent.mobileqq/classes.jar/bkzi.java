@@ -1,10 +1,16 @@
-import android.widget.EditText;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
-public abstract interface bkzi
+class bkzi<K, V>
+  extends WeakReference<V>
 {
-  public abstract void a();
+  K a;
   
-  public abstract void a(int paramInt, String paramString, EditText paramEditText);
+  public bkzi(K paramK, V paramV, ReferenceQueue<V> paramReferenceQueue)
+  {
+    super(paramV, paramReferenceQueue);
+    this.a = paramK;
+  }
 }
 
 

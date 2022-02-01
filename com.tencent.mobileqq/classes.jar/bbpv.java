@@ -1,17 +1,17 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.URLThemeImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bbpv
+  implements View.OnClickListener
 {
-  public ViewGroup a;
-  public ImageView a;
-  public TextView a;
-  public URLThemeImageView a;
-  public TextView b;
+  bbpv(bbpu parambbpu) {}
   
-  bbpv(bbpo parambbpo) {}
+  public void onClick(View paramView)
+  {
+    this.a.a.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,40 +1,26 @@
-public class axxo
+import android.view.View;
+
+class axxo
+  implements bkhw
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public int d;
-  public int e;
+  axxo(axxm paramaxxm, axxt paramaxxt, axzq paramaxzq, bkho parambkho) {}
   
-  public axxo()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Int == 4;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_c_of_type_Int == 3;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_c_of_type_Int == 5;
-  }
-  
-  public String toString()
-  {
-    return "SegmentSendInfo{mPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMd5='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mFileLength=" + this.jdField_a_of_type_Long + ", mWidth=" + this.jdField_a_of_type_Int + ", mHeight=" + this.jdField_b_of_type_Int + ", mType=" + this.jdField_c_of_type_Int + ", mIndex=" + this.d + ", mTimestamp=" + this.jdField_b_of_type_Long + ", mStartTime=" + this.jdField_c_of_type_Long + ", mVideoDuration=" + this.e + '}';
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    axlq localaxlq = new axlq().h("data_card").i("feed_delete").d("2").a(this.jdField_a_of_type_Axxm.a(this.jdField_a_of_type_Axxt)).b(this.jdField_a_of_type_Axzq.c).c(String.valueOf(this.jdField_a_of_type_Axxm.a(this.jdField_a_of_type_Axxt)));
+    if (this.jdField_a_of_type_Axxm.jdField_a_of_type_Boolean) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      localaxlq.e(paramView).b(this.jdField_a_of_type_Axxm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      axxm.a(this.jdField_a_of_type_Axxm, this.jdField_a_of_type_Axxt);
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+    }
   }
 }
 

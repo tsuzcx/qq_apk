@@ -6,7 +6,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import java.io.IOException;
-import ndd;
+import nlw;
 
 public final class WeishiShareUtil$1
   implements Runnable
@@ -18,7 +18,7 @@ public final class WeishiShareUtil$1
     int i = 0;
     try
     {
-      Object localObject1 = ndd.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      Object localObject1 = nlw.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
       Object localObject2;
       String str1;
       String str2;
@@ -66,7 +66,7 @@ public final class WeishiShareUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WeishiShareUtil.1
  * JD-Core Version:    0.7.0.1
  */

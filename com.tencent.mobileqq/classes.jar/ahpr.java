@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahpr
-  implements View.OnClickListener
+  implements ahor
 {
-  public ahpr(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
-  
-  public void onClick(View paramView)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    bdes.a("Grp_contacts_news", "notice", "unnormal_clk", 0, 0, new String[0]);
-    TroopSuspiciousFragment.a(this.a.a);
+    paramagup.e(paramagwc.b);
   }
 }
 

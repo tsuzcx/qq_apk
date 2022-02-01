@@ -1,56 +1,50 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import android.os.Build.VERSION;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.MaxHeightRelativelayout;
 
-public class auir
-  implements bexc
+class auir
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public auir(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  auir(auiq paramauiq) {}
   
-  public void a(View paramView, int paramInt)
+  public void onGlobalLayout()
   {
-    switch (paramInt)
+    if (auiq.a(this.a) != null)
     {
-    default: 
-      return;
-    case 2: 
-      MsgBackupTransportFragment.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click cancel btn! sIsShouQiBtnClick= " + augo.jdField_a_of_type_Boolean + ", isStart = " + this.a.jdField_a_of_type_Boolean);
+      if (Build.VERSION.SDK_INT >= 16) {
+        auiq.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
       }
-      if (MsgBackupTransportFragment.a(this.a) == 2)
+      if ((auiq.a(this.a) != null) && (this.a.a != null))
       {
-        if (!this.a.jdField_d_of_type_Boolean) {
-          break label129;
+        if (auiq.a(this.a).getLineCount() <= 1) {
+          break label144;
         }
-        aujo.a("0X800A243", 2);
+        auiq.a(this.a).setGravity(19);
       }
-      while (this.a.jdField_a_of_type_Boolean)
+    }
+    for (;;)
+    {
+      if (auiq.a(this.a).getHeight() >= bgtn.a(auiq.a(this.a) + 2))
       {
-        this.a.k();
-        return;
-        label129:
-        aujo.a("0X800A243", 1);
+        this.a.a.setMaxHeight(bgtn.a(450.0F));
+        this.a.a.requestLayout();
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardPreviewTextController", 2, " reset height ");
+        }
       }
-      if (MsgBackupTransportFragment.a(this.a) == 1)
-      {
-        this.a.onBackEvent();
-        return;
-      }
-      this.a.a(this.a.getActivity());
       return;
+      label144:
+      auiq.a(this.a).setGravity(17);
     }
-    augo.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + augo.jdField_a_of_type_Boolean + ", curSpeed = " + this.a.jdField_a_of_type_Long + ", hasFinishedCount = " + this.a.jdField_d_of_type_Int);
-    }
-    augo.a().a(this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Int, 3, this.a.getActivity());
-    aujo.a("0X800A249");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auir
  * JD-Core Version:    0.7.0.1
  */

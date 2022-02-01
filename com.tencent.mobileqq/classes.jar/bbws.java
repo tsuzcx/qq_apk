@@ -1,21 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-class bbws
-  extends yuh
+public class bbws
+  implements bbvf
 {
-  bbws(bbwr parambbwr) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public bbws(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
-    do
-    {
-      return;
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId != 25));
-    bbwr.a(this.a, paramBoolean, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt1, paramViewGroup, false);
+    paramViewGroup = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368246);
+    if ((paramViewGroup != null) && (paramInt2 > 0)) {
+      paramViewGroup.setImageResource(paramInt2);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369477));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365369));
+    if (paramInt3 == 12) {
+      this.b.setText(anni.a(2131712428) + tyg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext()) + anni.a(2131712427));
+    }
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public TextView a()
+  {
+    return null;
+  }
+  
+  public List<bbvg> a()
+  {
+    return null;
+  }
+  
+  public TextView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

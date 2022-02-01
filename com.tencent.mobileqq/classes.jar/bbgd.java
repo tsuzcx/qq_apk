@@ -1,24 +1,40 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbgd
-  implements bhux
+class bbgd
+  implements View.OnClickListener
 {
-  public bbgd(MediaPreviewActivity paramMediaPreviewActivity) {}
+  bbgd(bbfs parambbfs) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null)
+    bbfs localbbfs = this.a;
+    boolean bool;
+    if (!bbfs.a(this.a))
     {
-      paramAdapterView = this.a.a.a(paramInt);
-      if ((paramAdapterView == null) || (paramAdapterView.a != 1)) {
-        return false;
+      bool = true;
+      bbfs.a(localbbfs, bool);
+      if (!bbfs.a(this.a)) {
+        break label110;
       }
+      bbfs.a(this.a);
     }
-    MediaPreviewActivity.a(this.a);
-    return true;
+    for (;;)
+    {
+      PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putBoolean(this.a.a.getCurrentAccountUin() + "QQ_SEARCH_HIDE_HOTLIST", bbfs.a(this.a)).commit();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bool = false;
+      break;
+      label110:
+      bbfs.b(this.a);
+    }
   }
 }
 

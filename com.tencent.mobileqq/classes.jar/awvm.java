@@ -1,13 +1,17 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
 
 public abstract interface awvm
 {
-  public abstract void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean);
+  public abstract void a(MultiCardRootLayout paramMultiCardRootLayout);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvm
  * JD-Core Version:    0.7.0.1
  */

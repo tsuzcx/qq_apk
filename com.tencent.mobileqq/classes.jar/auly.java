@@ -1,24 +1,26 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import mqq.app.QQPermissionCallback;
 
-public class auly
-  extends DataSetObserver
+class auly
+  implements QQPermissionCallback
 {
-  public auly(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
+  auly(aulx paramaulx, FaceDetectForThirdPartyManager.AppConf paramAppConf) {}
   
-  public void onChanged()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.b();
+    this.jdField_a_of_type_Aulx.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.b();
+    bglp.a(DeleteFaceFragment.a(this.jdField_a_of_type_Aulx.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment), paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onInvalidated()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.b();
+    DeleteFaceFragment.a(this.jdField_a_of_type_Aulx.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment, this.jdField_a_of_type_Aulx.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aulx.b, this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager$AppConf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auly
  * JD-Core Version:    0.7.0.1
  */

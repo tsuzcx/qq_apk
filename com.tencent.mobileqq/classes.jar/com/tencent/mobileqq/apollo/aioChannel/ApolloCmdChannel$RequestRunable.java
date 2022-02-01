@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.aioChannel;
 
-import akrq;
-import akrw;
+import amkw;
+import amlc;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -37,14 +37,14 @@ class ApolloCmdChannel$RequestRunable
       Iterator localIterator = ApolloCmdChannel.access$000(localApolloCmdChannel).iterator();
       while (localIterator.hasNext())
       {
-        akrw localakrw = ((akrq)localIterator.next()).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
-        if (localakrw != null)
+        amlc localamlc = ((amkw)localIterator.next()).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+        if (localamlc != null)
         {
-          if (localakrw.jdField_a_of_type_Boolean) {
+          if (localamlc.jdField_a_of_type_Boolean) {
             localIterator.remove();
           }
-          if (localakrw.b) {
-            localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, localakrw.jdField_a_of_type_JavaLangString);
+          if (localamlc.b) {
+            localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, localamlc.jdField_a_of_type_JavaLangString);
           }
         }
       }
@@ -53,7 +53,7 @@ class ApolloCmdChannel$RequestRunable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel.RequestRunable
  * JD-Core Version:    0.7.0.1
  */

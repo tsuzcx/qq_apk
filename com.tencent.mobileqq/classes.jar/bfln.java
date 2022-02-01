@@ -1,101 +1,72 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.util.Base64;
-import com.tencent.open.base.img.ImageCache;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.View;
+import com.tencent.biz.qqstory.widget.OverScrollRecyclerView;
+import java.util.ArrayList;
 
-public class bfln
+class bfln
+  extends RecyclerView.OnScrollListener
 {
-  public static Bitmap a(Drawable paramDrawable)
+  bfln(bfll parambfll) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((paramDrawable instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)paramDrawable).getBitmap();
+    int i = 0;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (bfll.a(this.a) == null) {
+      break label18;
     }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    if (paramDrawable.getOpacity() != -1) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
+    for (;;)
     {
-      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
-      paramDrawable.draw(localCanvas);
-      return localObject;
+      label18:
+      return;
+      if ((paramInt == 0) || (paramInt == 1))
+      {
+        paramRecyclerView = bfll.a(this.a).getLayoutManager();
+        if (!(paramRecyclerView instanceof LinearLayoutManager)) {
+          break;
+        }
+        paramRecyclerView = (LinearLayoutManager)paramRecyclerView;
+        int k = paramRecyclerView.findFirstVisibleItemPosition();
+        paramInt = paramRecyclerView.findLastVisibleItemPosition();
+        if (paramInt == 0) {
+          if (bfll.a(this.a) != null)
+          {
+            int j = bfll.a(this.a).size();
+            paramInt = j;
+            if (j > 6) {
+              paramInt = 6;
+            }
+          }
+        }
+        while (i < paramInt - k)
+        {
+          if (bfll.a(this.a).getChildAt(i) != null)
+          {
+            paramRecyclerView = bfll.a(this.a).getChildAt(i);
+            if ((paramRecyclerView.getTag() != null) && ((paramRecyclerView.getTag() instanceof bfkl)))
+            {
+              paramRecyclerView = (bfkl)paramRecyclerView.getTag();
+              bfll.a(this.a).c(Long.valueOf(paramRecyclerView.a()), Long.valueOf(paramRecyclerView.c()));
+            }
+          }
+          i += 1;
+          continue;
+          paramInt = 0;
+        }
+      }
     }
   }
   
-  public static Bitmap a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if ((paramDrawable instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)paramDrawable).getBitmap();
-    }
-    if (paramDrawable.getOpacity() != -1) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
-    {
-      localObject = Bitmap.createBitmap(paramInt1, paramInt2, (Bitmap.Config)localObject);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, paramInt1, paramInt2);
-      paramDrawable.draw(localCanvas);
-      return localObject;
-    }
-  }
-  
-  public static Bitmap a(String paramString)
-  {
-    String str1 = a(paramString, 100);
-    String str2 = ImageCache.a("app", str1);
-    bflp.b("ImageUtil", "100_url:" + str1 + " icon_path=" + str2);
-    if (new File(str2).exists()) {
-      return bfll.a(str2, 72, 72, false);
-    }
-    paramString = a(paramString, 75);
-    str1 = ImageCache.a("app", paramString);
-    bflp.b("ImageUtil", "75_url:" + paramString + " icon_path=" + str1);
-    if (new File(str1).exists()) {
-      return bfll.a(str1, 72, 72, false);
-    }
-    return null;
-  }
-  
-  @TargetApi(8)
-  public static String a(Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT <= 7) {
-      return "";
-    }
-    paramDrawable = a(paramDrawable);
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramDrawable.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-    return Base64.encodeToString(localByteArrayOutputStream.toByteArray(), 0);
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    if (paramString == null) {
-      return "";
-    }
-    String str = "00000000" + paramString;
-    str = str.substring(str.length() - 8);
-    paramString = String.format("http://i.gtimg.cn/open/app_icon/%s/%s/%s/%s/%s_%d_m.png", new Object[] { str.substring(0, 2), str.substring(2, 4), str.substring(4, 6), str.substring(6, 8), paramString, Integer.valueOf(paramInt) });
-    bflp.b("opensdk", ">>iconUrl=" + paramString);
-    return paramString;
-  }
-  
-  public static Bitmap b(Drawable paramDrawable)
-  {
-    return a(paramDrawable);
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfln
  * JD-Core Version:    0.7.0.1
  */

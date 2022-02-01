@@ -1,21 +1,32 @@
-public class aksq
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
+
+class aksq
+  implements EIPCOnGetConnectionListener
 {
-  public float a;
-  public float b;
-  public float c;
+  aksq(aksp paramaksp) {}
   
-  public aksq(float paramFloat1, float paramFloat2, float paramFloat3)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
+    if (paramEIPCConnection != null) {
+      aksp.a(this.a, paramEIPCConnection.procName);
+    }
+    aksp.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
+    }
   }
   
-  public String toString()
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
-    return localStringBuilder.toString();
+    if (paramEIPCConnection != null) {
+      aksp.a(this.a, paramEIPCConnection.procName);
+    }
+    aksp.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
+    }
   }
 }
 

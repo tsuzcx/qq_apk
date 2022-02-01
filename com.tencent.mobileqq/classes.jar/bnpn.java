@@ -1,52 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.Iterator;
-import java.util.List;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
-class bnpn
-  implements baug
+public class bnpn
 {
-  bnpn(bnpl parambnpl, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, bnpi parambnpi) {}
+  public int a;
+  public MetaMaterial a;
+  public int b;
   
-  public void onResp(bavf arg1)
+  public bnpn(MetaMaterial paramMetaMaterial, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + ???.c);
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Bnpl.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    synchronized (this.jdField_a_of_type_Bnpl.jdField_a_of_type_JavaLangObject)
-    {
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-      do
-      {
-        Iterator localIterator = this.jdField_a_of_type_Bnpl.jdField_a_of_type_JavaUtilList.iterator();
-        Object localObject2;
-        while (!((Iterator)localObject2).hasNext())
-        {
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localObject2 = (blsw)localIterator.next();
-          } while (((blsw)localObject2).jdField_a_of_type_JavaUtilList == null);
-          localObject2 = ((blsw)localObject2).jdField_a_of_type_JavaUtilList.iterator();
-        }
-        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject2).next();
-      } while (!localPtvTemplateInfo.name.equals(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name));
-      localPtvTemplateInfo.usable = this.jdField_a_of_type_Bnpl.a(localPtvTemplateInfo);
-    }
-    if (this.jdField_a_of_type_Bnpi != null) {
-      this.jdField_a_of_type_Bnpi.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable);
-    }
-  }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.totalLen = paramLong2;
-    if (this.jdField_a_of_type_Bnpi != null) {
-      this.jdField_a_of_type_Bnpi.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, (int)(100L * paramLong1 / paramLong2));
-    }
+    this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = paramMetaMaterial;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

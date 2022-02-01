@@ -1,31 +1,12 @@
-import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.face.FaceInfo;
 
-public class aobr
-  extends altm
+public abstract interface aobr
 {
-  public aobr(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
+  public abstract void a(AppInterface paramAppInterface, FaceInfo paramFaceInfo);
   
-  protected void onSetMessageNotification(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingFragment", 2, new Object[] { "onSetMessageNotification: invoked. ", " isSuccess: ", Boolean.valueOf(paramBoolean), " data: " + paramArrayOfObject });
-    }
-    boolean[] arrayOfBoolean;
-    if ((paramBoolean) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 3))
-    {
-      localObject = (String[])paramArrayOfObject[0];
-      arrayOfBoolean = (boolean[])paramArrayOfObject[1];
-      if ((localObject != null) && (localObject.length >= 1) && (arrayOfBoolean != null) && (arrayOfBoolean.length >= 1)) {}
-    }
-    else
-    {
-      return;
-    }
-    Object localObject = localObject[0];
-    paramBoolean = arrayOfBoolean[0];
-    ((Integer)paramArrayOfObject[2]).intValue();
-  }
+  public abstract void a(FaceInfo paramFaceInfo, Bitmap paramBitmap);
 }
 
 

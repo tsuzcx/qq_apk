@@ -1,102 +1,69 @@
-import com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadExposeReport.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
 public class pix
+  implements AladdinConfigHandler
 {
-  public static void a(List<ArticleInfo> paramList, String paramString)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("FeedsPreloadExposeReport", 1, "reportFeedsExposeRewrite.");
-    Object localObject = (oxd)((QQAppInterface)ors.a()).getManager(163);
-    if (localObject != null)
+    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    for (;;)
     {
-      localObject = ((oxd)localObject).a();
-      piu.a().a(new FeedsPreloadExposeReport.1((owy)localObject, paramList, paramString));
-      return;
-    }
-    QLog.d("FeedsPreloadExposeReport", 1, "readInJoyLogicManager is null.");
-  }
-  
-  public static void a(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    String str = ors.a();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("retCode", String.valueOf(paramInt));
-    localHashMap.put("uin", str);
-    AppRuntime localAppRuntime = ors.a();
-    if ((localAppRuntime == null) || (paramLong < 0L) || (paramLong > 30000L))
-    {
-      QLog.d("FeedsPreloadExposeReport", 1, "app is null or cost is not available, reportFeedsPreloadExposeMonitorData");
-      return;
-    }
-    azri.a(localAppRuntime.getApplication()).a(str, "actFeedsPreloadExposeReport", paramBoolean, paramLong, 0L, localHashMap, null);
-  }
-  
-  private static List<ReportInfo> b(List<ArticleInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = new ArrayList(paramList).iterator();
-      while (paramList.hasNext())
+      try
       {
-        Object localObject1 = (ArticleInfo)paramList.next();
-        Object localObject2;
-        if ((ors.t((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (((ArticleInfo)localObject1).mNewPolymericInfo.a != null))
+        Object localObject1 = phv.a(paramString);
+        Object localObject2 = ((Map)localObject1).keySet();
+        paramString = new JSONObject();
+        paramInt1 = 0;
+        localObject2 = ((Set)localObject2).iterator();
+        if (((Iterator)localObject2).hasNext())
         {
-          localObject1 = ((ArticleInfo)localObject1).mNewPolymericInfo.a.iterator();
-          while (((Iterator)localObject1).hasNext())
+          String str1 = (String)((Iterator)localObject2).next();
+          String str2 = (String)((Map)localObject1).get(str1);
+          if (!TextUtils.isEmpty(str2))
           {
-            localObject2 = (qlk)((Iterator)localObject1).next();
-            ReportInfo localReportInfo = new ReportInfo();
-            localReportInfo.mUin = ors.a();
-            localReportInfo.mOperation = 56;
-            localReportInfo.mSourceArticleId = ((qlk)localObject2).a;
-            localReportInfo.mInnerId = ((qlk)localObject2).g;
-            localReportInfo.mAlgorithmId = ((int)((qlk)localObject2).b);
-            localReportInfo.mGWCommonData = "";
-            localArrayList.add(localReportInfo);
+            paramString.put(str1, str2);
+            paramInt1 = 1;
           }
         }
         else
         {
-          localObject2 = new ReportInfo();
-          ((ReportInfo)localObject2).mUin = ors.a();
-          ((ReportInfo)localObject2).mOperation = 56;
-          ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
-          ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
-          ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
-          ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
-          localArrayList.add(localObject2);
-          if (((ArticleInfo)localObject1).hasOnlyTwoVideoFeeds())
+          if (paramInt1 != 0)
           {
-            localObject1 = (ArticleInfo)((ArticleInfo)localObject1).mSubArtilceList.get(0);
-            localObject2 = new ReportInfo();
-            ((ReportInfo)localObject2).mUin = ors.a();
-            ((ReportInfo)localObject2).mOperation = 56;
-            ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
-            ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
-            ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
-            ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
-            localArrayList.add(localObject2);
+            localObject1 = pha.a();
+            if (localObject1 != null)
+            {
+              bmqa.a((AppRuntime)localObject1, "local_kd_native_main_text_style", paramString.toString());
+              QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig],content: " + paramString.toString());
+            }
           }
+          return true;
         }
       }
+      catch (Exception paramString)
+      {
+        return true;
+      }
     }
-    return localArrayList;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    AppRuntime localAppRuntime = pha.a();
+    if (localAppRuntime != null) {
+      bmqa.a(localAppRuntime, "local_kd_native_main_text_style", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pix
  * JD-Core Version:    0.7.0.1
  */

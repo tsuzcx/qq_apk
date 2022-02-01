@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bdin;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.BaseApplication;
+import nzz;
 
 class Conversation$24
   implements Runnable
@@ -11,30 +9,12 @@ class Conversation$24
   
   public void run()
   {
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.this$0.g)
-    {
-      Conversation.a(this.this$0, 800L);
-      boolean bool = bdin.d(BaseApplication.getContext());
-      if (this.this$0.a != null)
-      {
-        localPullRefreshHeader = this.this$0.a;
-        if (!bool) {
-          break label57;
-        }
-      }
-    }
-    label57:
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      return;
-    }
+    nzz.a().a(this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.24
  * JD-Core Version:    0.7.0.1
  */

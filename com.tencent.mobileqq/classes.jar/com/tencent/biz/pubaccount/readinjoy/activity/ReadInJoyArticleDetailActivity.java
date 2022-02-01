@@ -1,18 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
+import Override;
+import aanz;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.MessageQueue;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import aobw;
-import azqs;
-import bdep;
-import biva;
+import aqcb;
+import bcst;
+import bgjq;
+import bljl;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
 import com.tencent.biz.pubaccount.util.PreloadManager;
 import com.tencent.common.app.AppInterface;
@@ -22,6 +26,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
@@ -29,23 +34,22 @@ import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import nrt;
-import nxw;
-import nxx;
-import ors;
-import szp;
-import yqz;
+import oat;
+import ohr;
+import ohs;
+import pha;
+import ube;
 
 public class ReadInJoyArticleDetailActivity
   extends QQBrowserActivity
 {
   protected int a;
   protected long a;
+  aanz jdField_a_of_type_Aanz = null;
   public volatile AppInterface a;
   public BrowserAppInterface a;
   public Object a;
   public String a;
-  yqz jdField_a_of_type_Yqz = null;
   boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte;
   protected long b;
@@ -73,7 +77,7 @@ public class ReadInJoyArticleDetailActivity
       return;
     }
     getMainLooper();
-    Looper.myQueue().addIdleHandler(new nxx(this));
+    Looper.myQueue().addIdleHandler(new ohs(this));
   }
   
   private void i() {}
@@ -83,7 +87,7 @@ public class ReadInJoyArticleDetailActivity
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyArticleDetail", 2, "请求开始时间" + System.currentTimeMillis());
     }
-    this.jdField_a_of_type_Yqz.b(this.jdField_a_of_type_JavaLangString, new nxw(this));
+    this.jdField_a_of_type_Aanz.b(this.jdField_a_of_type_JavaLangString, new ohr(this));
   }
   
   @TargetApi(23)
@@ -138,10 +142,10 @@ public class ReadInJoyArticleDetailActivity
   @TargetApi(14)
   public void b()
   {
-    WebViewFragment localWebViewFragment = b();
+    WebViewFragment localWebViewFragment = a();
     if ((localWebViewFragment instanceof ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment))
     {
-      ((ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment)localWebViewFragment).x_();
+      ((ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment)localWebViewFragment).a();
       return;
     }
     QLog.e("ReadInJoyArticleDetail", 1, "setWebViewVisibility error curFragment error");
@@ -160,7 +164,7 @@ public class ReadInJoyArticleDetailActivity
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label105;
       }
-      if ((!bdep.b()) && (!bdep.d())) {
+      if ((!bgjq.b()) && (!bgjq.d())) {
         this.mSystemBarComp.setStatusBarColor(-7829368);
       }
     }
@@ -172,19 +176,27 @@ public class ReadInJoyArticleDetailActivity
     this.mSystemBarComp.setStatusBarDarkMode(true);
     return;
     label105:
-    if ((Build.VERSION.SDK_INT >= 23) && (!bdep.b()) && (!bdep.d()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!bgjq.b()) && (!bgjq.d()))
     {
       a(true);
       this.mSystemBarComp.setStatusBarColor(-1);
       return;
     }
-    if (!bdep.d())
+    if (!bgjq.d())
     {
       this.mSystemBarComp.setStatusBarColor(-2368549);
       return;
     }
     this.mSystemBarComp.setStatusBarColor(-1);
     this.mSystemBarComp.setStatusBarDarkMode(true);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -198,8 +210,8 @@ public class ReadInJoyArticleDetailActivity
     {
       super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
       return;
-      azqs.b(null, "CliOper", "", "", "0X8005438", "0X8005438", 0, 0, "", "", "", "");
-      biva.a(this, paramIntent);
+      bcst.b(null, "CliOper", "", "", "0X8005438", "0X8005438", 0, 0, "", "", "", "");
+      bljl.a(this, paramIntent);
       return;
     }
   }
@@ -219,8 +231,8 @@ public class ReadInJoyArticleDetailActivity
   {
     super.doOnDestroy();
     ThreadManager.getSubThreadHandler().post(new ReadInJoyArticleDetailActivity.3(this));
-    if (this.jdField_a_of_type_Yqz != null) {
-      this.jdField_a_of_type_Yqz.b();
+    if (this.jdField_a_of_type_Aanz != null) {
+      this.jdField_a_of_type_Aanz.b();
     }
   }
   
@@ -232,19 +244,19 @@ public class ReadInJoyArticleDetailActivity
     if ((l > 0L) && (this.jdField_b_of_type_Long > 0L))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArticleDetail", 2, "start to report article read info:" + ors.a(this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_Long, 0));
+        QLog.d("ReadInJoyArticleDetail", 2, "start to report article read info:" + pha.a(this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_Long, 0));
       }
-      if (!szp.a(this.jdField_a_of_type_Int)) {
-        break label278;
+      if (!ube.a(this.jdField_a_of_type_Int)) {
+        break label281;
       }
     }
-    label278:
+    label281:
     for (Object localObject = "0X8009359";; localObject = "0X80066FB")
     {
-      nrt.a(null, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, Long.toString(l / 1000L), Long.toString(this.jdField_b_of_type_Long), Integer.toString(this.jdField_f_of_type_Int), ors.a(this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_Long, 0), false);
+      oat.a(null, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, Long.toString(l / 1000L), Long.toString(this.jdField_b_of_type_Long), Integer.toString(this.jdField_f_of_type_Int), pha.a(this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_Long, 0), false);
       localObject = new ArrayList();
       ReportInfo localReportInfo = new ReportInfo();
-      localReportInfo.mUin = ors.a();
+      localReportInfo.mUin = pha.a();
       localReportInfo.mSource = 0;
       localReportInfo.mSourceArticleId = this.jdField_b_of_type_Long;
       localReportInfo.mChannelId = this.jdField_a_of_type_Int;
@@ -255,8 +267,8 @@ public class ReadInJoyArticleDetailActivity
       localReportInfo.mInnerId = this.jdField_e_of_type_JavaLangString;
       ((List)localObject).add(localReportInfo);
       ThreadManager.getSubThreadHandler().post(new ReadInJoyArticleDetailActivity.2(this, (List)localObject));
-      if (this.jdField_a_of_type_Yqz != null) {
-        this.jdField_a_of_type_Yqz.j();
+      if (this.jdField_a_of_type_Aanz != null) {
+        this.jdField_a_of_type_Aanz.j();
       }
       return;
     }
@@ -269,6 +281,13 @@ public class ReadInJoyArticleDetailActivity
     c();
     d();
     i();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   @TargetApi(12)
@@ -290,10 +309,10 @@ public class ReadInJoyArticleDetailActivity
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_c_of_type_Boolean = false;
     }
-    if (this.jdField_a_of_type_Yqz == null)
+    if (this.jdField_a_of_type_Aanz == null)
     {
-      this.jdField_a_of_type_Yqz = yqz.a();
-      this.jdField_a_of_type_Yqz.a();
+      this.jdField_a_of_type_Aanz = aanz.a();
+      this.jdField_a_of_type_Aanz.a();
     }
     if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(str)) && (str.equals(this.jdField_a_of_type_JavaLangString)))
     {
@@ -325,7 +344,7 @@ public class ReadInJoyArticleDetailActivity
       this.jdField_f_of_type_Long = localBundle.getLong("algorithmid", -1L);
       this.jdField_a_of_type_Long = localBundle.getLong("recommendSeq", -1L);
       if (!localIntent.hasExtra("big_brother_source_key")) {
-        localIntent.putExtra("big_brother_source_key", ors.f(this.jdField_a_of_type_Int));
+        localIntent.putExtra("big_brother_source_key", pha.f(this.jdField_a_of_type_Int));
       }
       paramBundle = super.a();
       if (paramBundle == null) {

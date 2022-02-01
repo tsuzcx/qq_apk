@@ -1,34 +1,54 @@
-import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 public class tux
-  implements ucq
+  implements bkhe
 {
-  public tux(QCircleCommentItemView paramQCircleCommentItemView) {}
+  public tux(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    yhn localyhn;
-    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
-    if (QCircleCommentItemView.a(this.a) != null)
+    switch (paramInt)
     {
-      localyhn = QCircleCommentItemView.a(this.a);
-      localQCircleCommentPraiseLayout = QCircleCommentItemView.a(this.a);
-      if (!paramBoolean) {
-        break label58;
-      }
+    default: 
+      adcd.a().a("list_subscript");
     }
-    label58:
-    for (int i = 14;; i = 15)
+    for (;;)
     {
-      localyhn.a(localQCircleCommentPraiseLayout, i, QCircleCommentItemView.a(this.a), QCircleCommentItemView.a(this.a));
       return;
+      adcd.a().a("list_subscript", false);
+      paramInt = 0;
+      while (paramInt <= paramAbsListView.getChildCount())
+      {
+        Object localObject = paramAbsListView.getChildAt(paramInt);
+        if ((localObject != null) && ((((View)localObject).getTag() instanceof tvc)))
+        {
+          localObject = (tvc)((View)localObject).getTag();
+          Drawable localDrawable = ((tvc)localObject).b.getDrawable();
+          if ((localDrawable != null) && ((localDrawable instanceof URLDrawable)) && (!((URLDrawable)localDrawable).isDownloadStarted()))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("SubscriptFeedsActivity", 2, "list child view start download pic!  uin : " + ((tvc)localObject).a);
+            }
+            ((URLDrawable)localDrawable).startDownload();
+            ((URLDrawable)localDrawable).setAutoDownload(true);
+          }
+        }
+        paramInt += 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tux
  * JD-Core Version:    0.7.0.1
  */

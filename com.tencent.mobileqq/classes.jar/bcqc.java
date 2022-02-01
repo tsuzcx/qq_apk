@@ -1,33 +1,12 @@
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.OGEntityDaoManager.Proxy;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
-public class bcqc
+public final class bcqc
+  implements IMCoreProxyRoute.OGEntityDaoManager.Proxy
 {
-  public static <T extends bcqd> T a(Class<T> paramClass)
+  public OGAbstractDao getEntityDao(Class paramClass)
   {
-    try
-    {
-      paramClass = (bcqd)Class.forName(paramClass.getName()).newInstance();
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static <T extends Thread> T a(Class<T> paramClass)
-  {
-    try
-    {
-      paramClass = (TroopUploadingThread)Class.forName(paramClass.getName()).newInstance();
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
+    return ayvl.a().a(paramClass);
   }
 }
 

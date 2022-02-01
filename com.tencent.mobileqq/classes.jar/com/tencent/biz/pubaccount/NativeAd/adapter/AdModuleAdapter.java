@@ -4,11 +4,11 @@ import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import bfok;
+import bivr;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import java.util.ArrayList;
-import nnw;
-import noe;
+import nww;
+import nxe;
 
 public class AdModuleAdapter
   extends PagerAdapter
@@ -16,34 +16,34 @@ public class AdModuleAdapter
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<noe> jdField_a_of_type_JavaUtilArrayList;
-  private nnw jdField_a_of_type_Nnw;
+  private ArrayList<nxe> jdField_a_of_type_JavaUtilArrayList;
+  private nww jdField_a_of_type_Nww;
   private String b;
   private String c;
   
-  public AdModuleAdapter(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, nnw paramnnw, ArrayList<noe> paramArrayList)
+  public AdModuleAdapter(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, nww paramnww, ArrayList<nxe> paramArrayList)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
     this.c = paramString3;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Nnw = paramnnw;
+    this.jdField_a_of_type_Nww = paramnww;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
   public void a()
   {
-    noe localnoe = (noe)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    bfok.a().b(localnoe);
-    if (localnoe.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler != null) {
-      AppNetConnInfo.unregisterNetInfoHandler(localnoe.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+    nxe localnxe = (nxe)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    bivr.a().b(localnxe);
+    if (localnxe.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler != null) {
+      AppNetConnInfo.unregisterNetInfoHandler(localnxe.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
     }
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramObject = (noe)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramObject = (nxe)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     paramViewGroup.removeView(paramObject.jdField_a_of_type_AndroidViewView);
     paramObject.c();
   }
@@ -58,19 +58,19 @@ public class AdModuleAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    noe localnoe = (noe)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    nxe localnxe = (nxe)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     Context localContext = this.jdField_a_of_type_AndroidContentContext;
     String str1 = this.jdField_a_of_type_JavaLangString;
     String str2 = this.b;
     String str3 = this.c;
     int i = this.jdField_a_of_type_Int;
-    nnw localnnw = this.jdField_a_of_type_Nnw;
+    nww localnww = this.jdField_a_of_type_Nww;
     if (paramInt == getCount() - 1) {}
     for (boolean bool = true;; bool = false)
     {
-      localnoe.jdField_a_of_type_AndroidViewView = localnoe.a(localContext, str1, str2, str3, i, localnnw, bool);
-      paramViewGroup.addView(localnoe.jdField_a_of_type_AndroidViewView);
-      return localnoe.jdField_a_of_type_AndroidViewView;
+      localnxe.jdField_a_of_type_AndroidViewView = localnxe.a(localContext, str1, str2, str3, i, localnww, bool);
+      paramViewGroup.addView(localnxe.jdField_a_of_type_AndroidViewView);
+      return localnxe.jdField_a_of_type_AndroidViewView;
     }
   }
   

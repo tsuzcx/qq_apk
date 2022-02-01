@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageButton;
-import avyy;
+import ayiq;
 
 public class EyeButton
   extends ImageButton
 {
-  private avyy a;
+  private ayiq a;
   
   public EyeButton(Context paramContext)
   {
@@ -45,14 +45,14 @@ public class EyeButton
     }
   }
   
-  public void setLonTouchListener(avyy paramavyy)
+  public void setLonTouchListener(ayiq paramayiq)
   {
-    this.a = paramavyy;
+    this.a = paramayiq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.EyeButton
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae;
 
-import bkpl;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import bndy;
+import bnii;
 
 public class AEPituCameraUnit$9
   implements Runnable
 {
-  public AEPituCameraUnit$9(bkpl parambkpl) {}
+  public AEPituCameraUnit$9(bndy parambndy) {}
   
   public void run()
   {
-    bkpl.a(this.this$0).setCameraPermissionResult(true);
+    bndy.a(this.this$0).g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.9
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.biz.tribe;
 
+import aanm;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.TimerTask;
-import yqq;
 
 class TribeVideoPlugin$TimeCountTask
   extends TimerTask
@@ -49,7 +49,7 @@ class TribeVideoPlugin$TimeCountTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.tribe.TribeVideoPlugin.TimeCountTask
  * JD-Core Version:    0.7.0.1
  */

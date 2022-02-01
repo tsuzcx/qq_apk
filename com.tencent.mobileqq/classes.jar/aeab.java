@@ -1,54 +1,16 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import java.util.Locale;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation.54.1;
+import com.tencent.util.Pair;
 
 public class aeab
-  implements bhuk
+  implements DialogInterface.OnClickListener
 {
-  public aeab(SubLoginActivity paramSubLoginActivity) {}
+  public aeab(Conversation.54.1 param1, bddy parambddy, Pair paramPair) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_b_of_type_Boolean) {
-      return;
-    }
-    if (paramInt == 0)
-    {
-      paramView = null;
-      if (SubLoginActivity.a(this.a) != null) {
-        paramView = SubLoginActivity.a(this.a).getText().toString();
-      }
-      if (TextUtils.isEmpty(paramView)) {
-        break label193;
-      }
-    }
-    label193:
-    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
-    {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("uin", SubLoginActivity.a(this.a));
-      localIntent.putExtra("reqType", 3);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-      for (;;)
-      {
-        this.a.jdField_b_of_type_Boolean = true;
-        this.a.a.dismiss();
-        return;
-        if (paramInt == 1)
-        {
-          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-          paramView.putExtra("isSubaccount", true);
-          paramView.putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
-          this.a.startActivity(paramView);
-        }
-      }
-    }
+    this.jdField_a_of_type_Bddy.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
   }
 }
 

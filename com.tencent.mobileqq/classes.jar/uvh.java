@@ -1,107 +1,78 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Stack;
 
 public class uvh
-  implements uvi
 {
-  private awgf a()
-  {
-    return QQStoryContext.a().a().createEntityManager();
-  }
+  private static int jdField_a_of_type_Int = 3;
+  private static String jdField_a_of_type_JavaLangString = "PublicAccountImageCollectionActivityManager";
+  private static Stack<Activity> jdField_a_of_type_JavaUtilStack;
+  private static uvh jdField_a_of_type_Uvh;
   
-  public static List<? extends awge> a(awgf paramawgf, Class<? extends awge> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  public static uvh a()
   {
-    return paramawgf.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public List<HotSortVideoEntry> a(String paramString)
-  {
-    List localList = a(a(), HotSortVideoEntry.class, HotSortVideoEntry.class.getSimpleName(), "groupId=?", new String[] { paramString });
-    Object localObject = localList;
-    if (localList == null) {
-      localObject = new ArrayList();
+    if (jdField_a_of_type_Uvh == null) {
+      jdField_a_of_type_Uvh = new uvh();
     }
-    wxe.a("Q.qqstory:HotSortVideoManager", "query HotSortVideoEntry id: %s, size: %d", paramString, Integer.valueOf(((List)localObject).size()));
-    return localObject;
+    return jdField_a_of_type_Uvh;
   }
   
-  public void a() {}
-  
-  public void a(HotSortVideoEntry paramHotSortVideoEntry)
+  private void b()
   {
-    awgf localawgf = a();
-    paramHotSortVideoEntry.setStatus(1001);
-    localawgf.a(paramHotSortVideoEntry);
-  }
-  
-  public void a(List<HotSortVideoEntry> paramList)
-  {
-    awgf localawgf = QQStoryContext.a().a().createEntityManager();
-    localawgf.a().a();
-    try
+    Activity localActivity = (Activity)jdField_a_of_type_JavaUtilStack.firstElement();
+    if (localActivity != null)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      localActivity.finish();
+      jdField_a_of_type_JavaUtilStack.remove(localActivity);
+    }
+  }
+  
+  public int a()
+  {
+    if (jdField_a_of_type_JavaUtilStack != null)
+    {
+      int i = jdField_a_of_type_JavaUtilStack.size();
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "getActivityStackNum = " + i);
+      }
+      return i;
+    }
+    return 0;
+  }
+  
+  public void a()
+  {
+    if ((jdField_a_of_type_JavaUtilStack != null) && (jdField_a_of_type_JavaUtilStack.size() > jdField_a_of_type_Int))
+    {
+      int j = jdField_a_of_type_JavaUtilStack.size();
+      int k = jdField_a_of_type_Int;
+      int i = 0;
+      while (i < j - k)
       {
-        HotSortVideoEntry localHotSortVideoEntry = (HotSortVideoEntry)paramList.next();
-        localHotSortVideoEntry.setStatus(1001);
-        localawgf.a(localHotSortVideoEntry);
+        b();
+        i += 1;
       }
     }
-    finally
-    {
-      localawgf.a().b();
-    }
-    localawgf.a().b();
   }
   
-  public void a(List<HotSortVideoEntry> paramList, String paramString, boolean paramBoolean)
+  public void a(Activity paramActivity)
   {
-    awgf localawgf = QQStoryContext.a().a().createEntityManager();
-    localawgf.a().a();
-    Object localObject;
-    HotSortVideoEntry localHotSortVideoEntry;
-    if (paramBoolean) {
-      try
-      {
-        localObject = a(paramString);
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
-            localHotSortVideoEntry.setStatus(1001);
-            localawgf.b(localHotSortVideoEntry);
-          }
-        }
-        localObject = paramList.iterator();
-      }
-      finally
-      {
-        localawgf.a().b();
-      }
+    if (jdField_a_of_type_JavaUtilStack == null) {
+      jdField_a_of_type_JavaUtilStack = new Stack();
     }
-    while (((Iterator)localObject).hasNext())
-    {
-      localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
-      localHotSortVideoEntry.groupId = paramString;
-      localHotSortVideoEntry.setStatus(1000);
-      localawgf.b(localHotSortVideoEntry);
-    }
-    wxe.a("Q.qqstory:HotSortVideoManager", "insert HotSortVideoEntry list groupId is %s, size is %d", paramString, Integer.valueOf(paramList.size()));
-    localawgf.a().c();
-    localawgf.a().b();
+    jdField_a_of_type_JavaUtilStack.add(paramActivity);
   }
   
-  public void b() {}
+  public void b(Activity paramActivity)
+  {
+    if ((jdField_a_of_type_JavaUtilStack != null) && (paramActivity != null)) {
+      jdField_a_of_type_JavaUtilStack.remove(paramActivity);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uvh
  * JD-Core Version:    0.7.0.1
  */

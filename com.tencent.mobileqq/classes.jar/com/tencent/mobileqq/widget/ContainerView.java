@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.widget;
 
-import aepi;
-import ajyc;
-import ajyd;
+import afur;
+import agar;
+import agas;
+import alqs;
+import alqt;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -19,9 +21,10 @@ import android.view.View.MeasureSpec;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bdoo;
-import beoh;
-import beoi;
+import bcst;
+import bgtn;
+import bhvl;
+import bhvm;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ScrollView;
 
@@ -29,14 +32,14 @@ import com.tencent.widget.ScrollView;
 @TargetApi(11)
 public class ContainerView
   extends LinearLayout
-  implements ajyc
+  implements agas, alqs
 {
   public static float a;
-  private static final int l = bdoo.b(5.0F);
-  private static final int m = bdoo.b(2.0F);
-  private static final int n = bdoo.b(28.0F);
+  private static final int l = bgtn.b(5.0F);
+  private static final int m = bgtn.b(2.0F);
+  private static final int n = bgtn.b(28.0F);
   public int a;
-  private ajyd jdField_a_of_type_Ajyd;
+  private alqt jdField_a_of_type_Alqt;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   protected Handler a;
@@ -130,7 +133,7 @@ public class ContainerView
   
   private void a()
   {
-    if (this.jdField_a_of_type_Ajyd == null) {
+    if (this.jdField_a_of_type_Alqt == null) {
       throw new IllegalStateException("Has no bound delegate!");
     }
   }
@@ -157,131 +160,6 @@ public class ContainerView
     new Handler().post(new ContainerView.4(this, i1 * i2));
   }
   
-  private void a(int paramInt1, int paramInt2)
-  {
-    int i1;
-    int i2;
-    if (this.g == 1)
-    {
-      i1 = this.h;
-      i2 = this.jdField_a_of_type_Ajyd.a(paramInt1, paramInt2);
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseChatItemLayout", 2, "updateCursorLocation, touchIndex=" + i2 + ", type=" + this.g);
-      }
-      if (i2 != -1) {
-        break label85;
-      }
-    }
-    label85:
-    label502:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          i1 = this.i;
-          break;
-          if (i2 == i1) {
-            break label534;
-          }
-          if (this.g == 1) {
-            if (i2 < this.h)
-            {
-              i1 = this.i;
-              this.h = i2;
-            }
-          }
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("BaseChatItemLayout", 2, "update selection, s=" + i2 + ", e=" + i1);
-            }
-            this.jdField_a_of_type_Ajyd.a(i2, i1);
-            this.jdField_a_of_type_Ajyd.b(paramInt1, paramInt2);
-            if (this.g != 1) {
-              break label502;
-            }
-            if (this.j == -1) {
-              break;
-            }
-            this.jdField_a_of_type_Ajyd.a(paramInt1, this.j, true);
-            return;
-            if ((i2 > this.h) && (i2 < this.i))
-            {
-              i1 = this.i;
-              this.h = i2;
-            }
-            else if (i2 == this.h)
-            {
-              i2 = this.h;
-              i1 = this.i;
-            }
-            else if (i2 == this.i)
-            {
-              i2 = this.i - 1;
-              i1 = this.i;
-            }
-            else
-            {
-              int i3 = this.i;
-              this.h = this.i;
-              this.i = i2;
-              this.g = 2;
-              this.jdField_a_of_type_Ajyd.a(this.g);
-              i1 = i2;
-              i2 = i3;
-              continue;
-              if (i2 > this.i)
-              {
-                i3 = this.h;
-                this.i = i2;
-                i1 = i2;
-                i2 = i3;
-              }
-              else if ((i2 < this.i) && (i2 > this.h))
-              {
-                i3 = this.h;
-                this.i = i2;
-                i1 = i2;
-                i2 = i3;
-              }
-              else if (i2 == this.i)
-              {
-                i2 = this.h;
-                i1 = this.i;
-              }
-              else if (i2 == this.h)
-              {
-                i2 = this.h;
-                i1 = this.h + 1;
-              }
-              else
-              {
-                i1 = this.h;
-                this.i = this.h;
-                this.h = i2;
-                this.g = 1;
-                this.jdField_a_of_type_Ajyd.a(this.g);
-              }
-            }
-          }
-        } while ((this.g != 2) || (this.k == -1));
-        this.jdField_a_of_type_Ajyd.a(paramInt1, this.k, true);
-        return;
-        if (this.g != 1) {
-          break label566;
-        }
-      } while (this.j == -1);
-      this.jdField_a_of_type_Ajyd.a(paramInt1, this.j, false);
-      return;
-    } while ((this.g != 2) || (this.k == -1));
-    label534:
-    label566:
-    this.jdField_a_of_type_Ajyd.a(paramInt1, this.k, false);
-  }
-  
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = new AnimationTextView(paramContext);
@@ -291,11 +169,155 @@ public class ContainerView
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setHighlightColor(1722605812);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setTextSize(1, 32.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setTextColor(-16777216);
-    int i1 = aepi.a(10.0F, getResources());
+    int i1 = afur.a(10.0F, getResources());
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setPadding(i1, i1, i1, i1);
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     addView(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView, paramContext);
-    getViewTreeObserver().addOnGlobalLayoutListener(new beoh(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new bhvl(this));
+  }
+  
+  private void c(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int i2;
+    int i1;
+    if (this.g == 1)
+    {
+      i2 = this.h;
+      i1 = this.jdField_a_of_type_Alqt.a(paramInt1, paramInt2);
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseChatItemLayout", 2, "updateCursorLocation, touchIndex=" + i1 + ", type=" + this.g);
+      }
+      if (paramInt3 == -1) {
+        this.jdField_a_of_type_Alqt.a(this.g, false);
+      }
+      if (i1 != -1) {
+        break label107;
+      }
+    }
+    label107:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          i2 = this.i;
+          break;
+          if (i1 == i2) {
+            break label559;
+          }
+          if (this.g == 1) {
+            if (i1 < this.h)
+            {
+              paramInt3 = this.i;
+              this.h = i1;
+            }
+          }
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("BaseChatItemLayout", 2, "update selection, s=" + i1 + ", e=" + paramInt3);
+            }
+            this.jdField_a_of_type_Alqt.a(i1, paramInt3);
+            this.jdField_a_of_type_Alqt.b(paramInt1, paramInt2);
+            if (this.g != 1) {
+              break label527;
+            }
+            if (this.j == -1) {
+              break;
+            }
+            this.jdField_a_of_type_Alqt.a(paramInt1, this.j, true);
+            return;
+            if ((i1 > this.h) && (i1 < this.i))
+            {
+              paramInt3 = this.i;
+              this.h = i1;
+            }
+            else if (i1 == this.h)
+            {
+              i1 = this.h;
+              paramInt3 = this.i;
+            }
+            else if (i1 == this.i)
+            {
+              i1 = this.i - 1;
+              paramInt3 = this.i;
+            }
+            else
+            {
+              i2 = this.i;
+              this.h = this.i;
+              this.i = i1;
+              this.g = 2;
+              this.jdField_a_of_type_Alqt.a(this.g);
+              paramInt3 = i1;
+              i1 = i2;
+              continue;
+              if (i1 > this.i)
+              {
+                i2 = this.h;
+                this.i = i1;
+                paramInt3 = i1;
+                i1 = i2;
+              }
+              else if ((i1 < this.i) && (i1 > this.h))
+              {
+                i2 = this.h;
+                this.i = i1;
+                paramInt3 = i1;
+                i1 = i2;
+              }
+              else if (i1 == this.i)
+              {
+                i1 = this.h;
+                paramInt3 = this.i;
+              }
+              else if (i1 == this.h)
+              {
+                i1 = this.h;
+                paramInt3 = this.h + 1;
+              }
+              else
+              {
+                paramInt3 = this.h;
+                this.i = this.h;
+                this.h = i1;
+                this.g = 1;
+                this.jdField_a_of_type_Alqt.a(this.g);
+              }
+            }
+          }
+        } while ((this.g != 2) || (this.k == -1));
+        this.jdField_a_of_type_Alqt.a(paramInt1, this.k, true);
+        return;
+        if (this.g != 1) {
+          break label591;
+        }
+      } while (this.j == -1);
+      this.jdField_a_of_type_Alqt.a(paramInt1, this.j, false);
+      return;
+    } while ((this.g != 2) || (this.k == -1));
+    label527:
+    label559:
+    label591:
+    this.jdField_a_of_type_Alqt.a(paramInt1, this.k, false);
+  }
+  
+  public int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
+  {
+    if ((!this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean)) {
+      return -1;
+    }
+    return new agar(this, this.jdField_a_of_type_Alqt).a(paramFloat1, paramFloat2, paramInt1, paramInt2);
+  }
+  
+  public int a(int paramInt)
+  {
+    if (paramInt == 1) {
+      return this.jdField_b_of_type_Int;
+    }
+    return this.jdField_d_of_type_Int;
   }
   
   @NonNull
@@ -323,6 +345,52 @@ public class ContainerView
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt3 == 2)
+    {
+      this.h = (paramInt1 - paramInt2);
+      return;
+    }
+    this.i = (paramInt1 + paramInt2);
+  }
+  
+  public void a(alqt paramalqt)
+  {
+    this.jdField_a_of_type_Alqt = paramalqt;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetScrollView.isScrollFinished();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (paramInt == 1) {
+      return this.jdField_c_of_type_Boolean;
+    }
+    return this.jdField_d_of_type_Boolean;
+  }
+  
+  public boolean a(Context paramContext)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getSelectionEnd() - this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getSelectionStart() > 0;
+  }
+  
+  public int b(int paramInt)
+  {
+    if (paramInt == 1) {
+      return this.jdField_c_of_type_Int;
+    }
+    return this.jdField_e_of_type_Int;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_f_of_type_Int = paramInt;
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3)
   {
     a();
     getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
@@ -370,34 +438,6 @@ public class ContainerView
         this.k = -1;
       }
     }
-  }
-  
-  public void a(ajyd paramajyd)
-  {
-    this.jdField_a_of_type_Ajyd = paramajyd;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetScrollView.isScrollFinished();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return this.jdField_c_of_type_Boolean;
-    }
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getSelectionEnd() - this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getSelectionStart() > 0;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
@@ -451,7 +491,7 @@ public class ContainerView
     if (((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) && (a(paramMotionEvent.getX(), paramMotionEvent.getY()) != -1))
     {
       a();
-      this.jdField_a_of_type_Ajyd.c();
+      this.jdField_a_of_type_Alqt.c();
       requestDisallowInterceptTouchEvent(true);
       return true;
     }
@@ -506,61 +546,106 @@ public class ContainerView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    int i1 = 2;
     if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
     {
-      int i1 = paramMotionEvent.getAction();
-      int i2;
+      int i2 = paramMotionEvent.getAction();
       if (!this.jdField_e_of_type_Boolean)
       {
-        i2 = a(paramMotionEvent.getX(), paramMotionEvent.getY());
-        if ((i2 != -1) && (i1 == 0))
-        {
-          a();
-          this.jdField_e_of_type_Boolean = true;
-          this.g = i2;
-          this.h = this.jdField_a_of_type_Ajyd.b();
-          this.i = this.jdField_a_of_type_Ajyd.c();
-          this.jdField_a_of_type_Ajyd.a(i2, false);
-          if (this.jdField_a_of_type_Ajyd.a()) {
-            this.jdField_a_of_type_Ajyd.b();
-          }
-          return true;
+        i1 = a(paramMotionEvent.getX(), paramMotionEvent.getY());
+        if ((i1 == -1) || (i2 != 0)) {
+          break label515;
+        }
+        a();
+        this.jdField_e_of_type_Boolean = true;
+        this.g = i1;
+        this.h = this.jdField_a_of_type_Alqt.b();
+        this.i = this.jdField_a_of_type_Alqt.c();
+        if (paramMotionEvent.getSource() != -1) {
+          this.jdField_a_of_type_Alqt.a(this.g, false);
+        }
+        if (this.jdField_a_of_type_Alqt.a()) {
+          this.jdField_a_of_type_Alqt.b();
         }
       }
-      else
+      do
       {
-        a();
-        if ((i1 == 1) || (i1 == 3))
+        do
         {
+          return true;
+          a();
+          if ((i2 != 1) && (i2 != 3)) {
+            break;
+          }
           this.jdField_e_of_type_Boolean = false;
           this.j = -1;
           this.k = -1;
-          this.jdField_a_of_type_Ajyd.a(-1, true);
-          this.jdField_a_of_type_Ajyd.a();
-        }
-        while (i1 != 2) {
-          return true;
-        }
-        int i3 = (int)paramMotionEvent.getRawX();
-        i2 = (int)paramMotionEvent.getRawY();
-        int i4;
-        int i5;
-        int i6;
-        int i7;
-        int i8;
-        int i9;
-        int i10;
-        if (this.g == 1)
+          this.jdField_a_of_type_Alqt.a(-1, true);
+          this.jdField_a_of_type_Alqt.a();
+        } while (i2 != 1);
+        if (paramMotionEvent.getSource() == -1) {}
+        for (;;)
         {
-          i4 = this.jdField_b_of_type_Int;
+          bcst.b(null, "dc00898", "", "", "0X800AE7B", "0X800AE7B", i1, 0, "", "", "", "");
+          return true;
+          i1 = 1;
+        }
+      } while (i2 != 2);
+      int i3 = (int)paramMotionEvent.getRawX();
+      i2 = (int)paramMotionEvent.getRawY();
+      int i4;
+      int i5;
+      int i6;
+      int i7;
+      int i8;
+      int i9;
+      int i10;
+      if (this.g == 1)
+      {
+        i4 = this.jdField_b_of_type_Int;
+        i5 = l;
+        i6 = this.jdField_b_of_type_Int;
+        i7 = l;
+        i8 = this.jdField_c_of_type_Int;
+        i9 = n;
+        i10 = l;
+        int i11 = this.jdField_c_of_type_Int;
+        int i12 = n;
+        i1 = i2;
+        if (i3 >= i4 - i5 * 3)
+        {
+          i1 = i2;
+          if (i3 <= i6 + i7 * 3)
+          {
+            i1 = i2;
+            if (i2 >= i8 - i9 - i10 * 2)
+            {
+              i1 = i2;
+              if (i2 <= i11 - i12)
+              {
+                i1 = i2;
+                if (this.jdField_c_of_type_Boolean) {
+                  i1 = i2 + l * 2;
+                }
+              }
+            }
+          }
+        }
+      }
+      for (;;)
+      {
+        c(i3, i1, paramMotionEvent.getSource());
+        return true;
+        i1 = i2;
+        if (this.g == 2)
+        {
+          i4 = this.jdField_d_of_type_Int;
           i5 = l;
-          i6 = this.jdField_b_of_type_Int;
+          i6 = this.jdField_d_of_type_Int;
           i7 = l;
-          i8 = this.jdField_c_of_type_Int;
-          i9 = n;
+          i8 = this.jdField_e_of_type_Int;
+          i9 = this.jdField_e_of_type_Int;
           i10 = l;
-          int i11 = this.jdField_c_of_type_Int;
-          int i12 = n;
           i1 = i2;
           if (i3 >= i4 - i5 * 3)
           {
@@ -568,50 +653,14 @@ public class ContainerView
             if (i3 <= i6 + i7 * 3)
             {
               i1 = i2;
-              if (i2 >= i8 - i9 - i10 * 2)
+              if (i2 >= i8)
               {
                 i1 = i2;
-                if (i2 <= i11 - i12)
+                if (i2 <= i9 + i10 * 2)
                 {
                   i1 = i2;
-                  if (this.jdField_c_of_type_Boolean) {
-                    i1 = i2 + l * 2;
-                  }
-                }
-              }
-            }
-          }
-        }
-        for (;;)
-        {
-          a(i3, i1);
-          break;
-          i1 = i2;
-          if (this.g == 2)
-          {
-            i4 = this.jdField_d_of_type_Int;
-            i5 = l;
-            i6 = this.jdField_d_of_type_Int;
-            i7 = l;
-            i8 = this.jdField_e_of_type_Int;
-            i9 = this.jdField_e_of_type_Int;
-            i10 = l;
-            i1 = i2;
-            if (i3 >= i4 - i5 * 3)
-            {
-              i1 = i2;
-              if (i3 <= i6 + i7 * 3)
-              {
-                i1 = i2;
-                if (i2 >= i8)
-                {
-                  i1 = i2;
-                  if (i2 <= i9 + i10 * 2)
-                  {
-                    i1 = i2;
-                    if (this.jdField_d_of_type_Boolean) {
-                      i1 = i2 - l * 2;
-                    }
+                  if (this.jdField_d_of_type_Boolean) {
+                    i1 = i2 - l * 2;
                   }
                 }
               }
@@ -620,6 +669,7 @@ public class ContainerView
         }
       }
     }
+    label515:
     return super.onTouchEvent(paramMotionEvent);
   }
   
@@ -632,7 +682,7 @@ public class ContainerView
   public void setOutScrollView(ScrollView paramScrollView)
   {
     this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
-    this.jdField_a_of_type_ComTencentWidgetScrollView.setOnScrollStateChangedListener(new beoi(this));
+    this.jdField_a_of_type_ComTencentWidgetScrollView.setOnScrollStateChangedListener(new bhvm(this));
   }
   
   public void setText(CharSequence paramCharSequence)
@@ -647,7 +697,7 @@ public class ContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ContainerView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class asqx
-  implements DialogInterface.OnClickListener
+public class asqx
+  extends asqw
 {
-  asqx(asqs paramasqs) {}
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public asqx(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    asqs.a(this.a).finish();
+    super(2, paramString1);
+    this.a = paramString2;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString3;
   }
 }
 

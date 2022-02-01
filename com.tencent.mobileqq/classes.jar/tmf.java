@@ -1,303 +1,244 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.net.Uri;
+import android.os.Build;
 import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.viola.adapter.ViolaReportDelegate.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.adapter.ViolaReportDelegate.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.commons.IReportDelegate;
+import com.tencent.viola.core.ViolaEnvironment;
+import com.tencent.viola.utils.ViolaUtils;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class tmf
-  extends bieg<tmv, biej<tmv>>
+  implements IReportDelegate
 {
-  private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private thl jdField_a_of_type_Thl;
-  private tnj jdField_a_of_type_Tnj;
-  private tnj b;
+  public static String a;
+  public HashMap<String, String> a;
   
-  public tmf(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
+  static
   {
-    super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
+    jdField_a_of_type_JavaLangString = "ViolaReportDelegate";
   }
   
-  private stSimpleMetaFeed a(tmv paramtmv)
+  public tmf()
   {
-    if ((paramtmv != null) && ((paramtmv.a() instanceof stSimpleMetaFeed))) {
-      return (stSimpleMetaFeed)paramtmv.a();
-    }
-    return null;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  private String a(thl paramthl)
+  private JSONObject a(String paramString)
   {
-    if ((paramthl != null) && (paramthl.jdField_a_of_type_Thp != null)) {
-      return paramthl.jdField_a_of_type_Thp.jdField_a_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
-  private tho a(thl paramthl)
-  {
-    if (paramthl != null) {
-      return paramthl.jdField_a_of_type_Tho;
-    }
-    return null;
-  }
-  
-  private void a()
-  {
-    WSVideoPreDownloadManager localWSVideoPreDownloadManager = new WSVideoPreDownloadManager(BaseApplicationImpl.getApplication().getApplicationContext());
-    localWSVideoPreDownloadManager.a(new tmg(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(localWSVideoPreDownloadManager);
-  }
-  
-  private void a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, thl paramthl)
-  {
-    if (b())
+    JSONObject localJSONObject = new JSONObject();
+    String str1 = Uri.parse(paramString).getQueryParameter("v_bid");
+    try
     {
-      this.jdField_a_of_type_Thl = tel.a().a();
-      if ((a(paramInt, paramstSimpleMetaFeed, this.jdField_a_of_type_Thl)) && (this.jdField_a_of_type_Thl.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Thl.jdField_a_of_type_Tho != null))
+      localJSONObject.put(ViolaEnvironment.COMMON_UIN, pha.a());
+      localJSONObject.put(ViolaEnvironment.COMMON_NET, Integer.toString(pha.a(BaseApplication.getContext())));
+      localJSONObject.put(ViolaEnvironment.COMMON_OPERATION_VERSION, bgln.e());
+      localJSONObject.put(ViolaEnvironment.COMMON_QQ_VERSION, "8.4.1");
+      localJSONObject.put(ViolaEnvironment.COMMON_PHONE_TYPE, Build.MODEL);
+      String str2 = ViolaEnvironment.COMMON_BIZ;
+      if (TextUtils.isEmpty(str1)) {}
+      for (str1 = paramString;; str1 = paramString + "&offlineVersion=" + nko.a(str1))
       {
-        paramthl.jdField_a_of_type_Tho = this.jdField_a_of_type_Thl.jdField_a_of_type_Tho;
-        paramthl.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Thl.jdField_a_of_type_AndroidViewView;
-        paramthl.jdField_a_of_type_Thy = this.jdField_a_of_type_Thl.jdField_a_of_type_Thy;
-        paramthl.jdField_a_of_type_Tho.c(false);
+        localJSONObject.put(str2, URLEncoder.encode(str1));
+        localJSONObject.put(ViolaEnvironment.COMMON_PLATFORM, "0");
+        localJSONObject.put(ViolaEnvironment.COMMON_OPEN_COUNT, Integer.toString(tlg.a));
+        if (!TextUtils.isEmpty(paramString)) {
+          localJSONObject.put(ViolaEnvironment.COMMON_PAGE_NAME, ViolaUtils.getPageName(paramString));
+        }
+        localJSONObject.put(ViolaEnvironment.COMMON_RELEASE, "1");
+        return localJSONObject;
       }
+      return null;
     }
-  }
-  
-  private void a(tnj paramtnj)
-  {
-    tlo.b("WSVerticalPageAdapterLog", "switchPlayerVideoViewLayout() holder: " + paramtnj);
-    this.jdField_a_of_type_Tnj = paramtnj;
-    tjt.a(this.jdField_a_of_type_Tnj.jdField_a_of_type_Thl, false);
-    tnt.a(this.jdField_a_of_type_Tnj.jdField_a_of_type_Thl);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(this.jdField_a_of_type_Tnj.jdField_a_of_type_Thl, true);
-  }
-  
-  private void a(tnj paramtnj, tmv paramtmv, int paramInt)
-  {
-    stSimpleMetaFeed localstSimpleMetaFeed = a(paramtmv);
-    paramtmv = paramtnj.jdField_a_of_type_Thl;
-    if (paramtmv == null) {
-      paramtmv = new thl();
-    }
-    for (;;)
+    catch (Exception paramString)
     {
-      thp localthp = thn.a(localstSimpleMetaFeed);
-      paramtmv.jdField_a_of_type_Thp = localthp;
-      tnk localtnk = (tnk)paramtnj.jdField_a_of_type_Tcl;
-      paramtmv.jdField_a_of_type_AndroidViewViewGroup = localtnk.a().a();
-      thf localthf = paramtnj.jdField_a_of_type_Thf;
-      Object localObject = localthf;
-      if (localthf == null) {
-        localObject = new tmm();
+      if (QLog.isColorLevel()) {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "initCommonDataJson Exception:" + paramString.getMessage());
       }
-      ((tmm)localObject).a(localtnk);
-      paramtnj.jdField_a_of_type_Thf = ((thf)localObject);
-      paramtmv.jdField_a_of_type_Thf = paramtnj.jdField_a_of_type_Thf;
-      paramtmv.jdField_a_of_type_Int = localthp.a();
-      paramtmv.jdField_a_of_type_Long = 0L;
-      paramtmv.jdField_b_of_type_Boolean = true;
-      paramtmv.jdField_b_of_type_Int = paramInt;
-      paramtmv.jdField_a_of_type_JavaLangString = "vertical_page";
-      a(paramInt, localstSimpleMetaFeed, paramtmv);
-      paramtnj.jdField_a_of_type_Thl = paramtmv;
-      return;
     }
   }
   
-  private boolean a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, thl paramthl)
+  public void a()
   {
-    if (paramstSimpleMetaFeed != null) {}
-    for (paramstSimpleMetaFeed = paramstSimpleMetaFeed.id;; paramstSimpleMetaFeed = "")
+    ThreadManager.post(new ViolaReportDelegate.2(this), 8, null, true);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    ThreadManager.post(new ViolaReportDelegate.1(this, paramString, paramInt), 8, null, true);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1)) && (paramString2.equals(this.jdField_a_of_type_JavaUtilHashMap.get(paramString1)))) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
+    }
+  }
+  
+  public void addReportData(String paramString1, String paramString2)
+  {
+    if ((ViolaEnvironment.KEY_SO.equals(paramString1)) && (ViolaEnvironment.SO_START.equals(paramString2)))
     {
-      String str = a(paramthl);
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a() != paramInt + 1) || (TextUtils.isEmpty(str)) || (!TextUtils.equals(paramstSimpleMetaFeed, str)) || (!a(paramthl))) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean a(thl paramthl)
-  {
-    boolean bool2 = false;
-    paramthl = a(paramthl);
-    boolean bool1 = bool2;
-    if (paramthl != null) {
-      if (!paramthl.b())
+      if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 2)
       {
-        bool1 = bool2;
-        if (!paramthl.c()) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  private void b(tnj paramtnj)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.d();
-    this.jdField_a_of_type_Tnj = paramtnj;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.b(this.jdField_a_of_type_Tnj.jdField_a_of_type_Thl, false);
-  }
-  
-  private boolean b()
-  {
-    return (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), "follow_tab"));
-  }
-  
-  private void c(tnj paramtnj)
-  {
-    if ((paramtnj == null) || (paramtnj == this.jdField_a_of_type_Tnj)) {}
-    int i;
-    do
-    {
-      do
-      {
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
         return;
-        if ((this.jdField_a_of_type_Tnj != null) && (paramtnj.getLayoutPosition() < this.jdField_a_of_type_Tnj.getLayoutPosition()))
-        {
-          tlo.d("WSVerticalPageAdapterLog", "[WSVerticalPageAdapter.java][tryPrePlayVideo] prePosition: " + paramtnj.getLayoutPosition() + ", playingPosition:" + this.jdField_a_of_type_Tnj.getLayoutPosition());
-          return;
-        }
-        this.b = paramtnj;
-      } while ((this.jdField_a_of_type_Tnj == null) || (this.jdField_a_of_type_Tnj.jdField_a_of_type_Thl == null) || (this.jdField_a_of_type_Tnj.jdField_a_of_type_Thl.jdField_a_of_type_Tho == null));
-      i = this.jdField_a_of_type_Tnj.jdField_a_of_type_Thl.jdField_a_of_type_Tho.e();
-      tlo.b("WS_VIDEO_SCROLL", "WSVerticalPageAdapter tryPrePlayVideo() state:" + i + ", prePlayVideoHolder:" + paramtnj);
-    } while ((i == 0) || (i == 1) || (i == 2));
-    tlo.b("WS_VIDEO_SCROLL", "WSVerticalPageAdapter tryPrePlayVideo() prePlayVideoHolder:" + paramtnj);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(paramtnj.jdField_a_of_type_Thl);
-  }
-  
-  private void d(tnj paramtnj)
-  {
-    paramtnj = paramtnj.jdField_a_of_type_Thl;
-    if ((paramtnj != null) && ((paramtnj.jdField_a_of_type_Boolean) || ((paramtnj.jdField_a_of_type_Tho != null) && (paramtnj.jdField_a_of_type_Tho.e() != 0)))) {
-      paramtnj.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public int a(int paramInt)
-  {
-    return 0;
-  }
-  
-  public biej<tmv> a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new tnj(paramViewGroup, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
-  }
-  
-  public WSPlayerManager a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
-  }
-  
-  public tnj a()
-  {
-    return this.jdField_a_of_type_Tnj;
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    tlo.a("WS_VIDEO_SCROLL", "WSVerticalPageAdapter onPageSelected() currentPosition:" + paramInt + ", viewHolder:" + paramViewHolder);
-    if ((paramViewHolder instanceof tnj))
-    {
-      paramViewHolder = (tnj)paramViewHolder;
-      stSimpleMetaFeed localstSimpleMetaFeed = a((tmv)paramViewHolder.jdField_a_of_type_JavaLangObject);
-      if ((!b()) || (!a(paramInt, localstSimpleMetaFeed, this.jdField_a_of_type_Thl))) {
-        break label97;
       }
-      a(paramViewHolder);
-      tel.a().a(null);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Thl = null;
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
       return;
-      label97:
-      b(paramViewHolder);
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+  }
+  
+  public void dropFrameMonitor(int paramInt, String paramString)
+  {
+    if (paramInt == 0)
+    {
+      adcd.a().a(paramString, false);
+      return;
+    }
+    adcd.a().a(paramString);
+  }
+  
+  public HashMap<String, String> getBaseReportData(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    String str1 = Uri.parse(paramString).getQueryParameter("v_bid");
+    localHashMap.put(ViolaEnvironment.COMMON_UIN, pha.a());
+    localHashMap.put(ViolaEnvironment.COMMON_NET, Integer.toString(pha.a(BaseApplication.getContext())));
+    localHashMap.put(ViolaEnvironment.COMMON_OPERATION_VERSION, bgln.e());
+    localHashMap.put(ViolaEnvironment.COMMON_QQ_VERSION, "8.4.1");
+    localHashMap.put(ViolaEnvironment.COMMON_PHONE_TYPE, Build.MODEL);
+    String str2 = ViolaEnvironment.COMMON_BIZ;
+    if (TextUtils.isEmpty(str1)) {}
+    for (str1 = paramString;; str1 = paramString + "&offlineVersion=" + nko.a(str1))
+    {
+      localHashMap.put(str2, URLEncoder.encode(str1));
+      localHashMap.put(ViolaEnvironment.COMMON_PLATFORM, "0");
+      localHashMap.put(ViolaEnvironment.COMMON_OPEN_COUNT, Integer.toString(tlg.a));
+      if (!TextUtils.isEmpty(paramString)) {
+        localHashMap.put(ViolaEnvironment.COMMON_PAGE_NAME, ViolaUtils.getPageName(paramString));
+      }
+      localHashMap.put(ViolaEnvironment.COMMON_RELEASE, "1");
+      localHashMap.put(ViolaEnvironment.COMMON_APPLICATION, "1");
+      return localHashMap;
     }
   }
   
-  public void a(biej<tmv> parambiej)
+  public void reportData(String paramString)
   {
-    super.onViewDetachedFromWindow(parambiej);
-    parambiej.c();
+    if (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+    {
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(ViolaEnvironment.COMMON_UIN)) {
+        this.jdField_a_of_type_JavaUtilHashMap.putAll(getBaseReportData(paramString));
+      }
+      paramString = ViolaUtils.copyMap(this.jdField_a_of_type_JavaUtilHashMap);
+      if (!paramString.isEmpty()) {
+        pha.a(pha.a(), true, paramString);
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
   }
   
-  public void a(biej<tmv> parambiej, int paramInt)
+  public void reportHttpData(HashMap<String, String> paramHashMap, String paramString)
   {
-    tlo.b("WS_VIDEO_SCROLL", "WSVerticalPageAdapter onBindCustomViewHolder() position: " + paramInt + ", holder:" + parambiej);
-    tmv localtmv = (tmv)a(paramInt);
-    if (localtmv != null)
+    paramHashMap.putAll(getBaseReportData(paramString));
+    pha.b(pha.a(), true, paramHashMap);
+  }
+  
+  public void reportJsError(boolean paramBoolean, int paramInt, String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      parambiej.a(localtmv);
-      if ((parambiej instanceof tmw)) {
-        ((tmw)parambiej).jdField_a_of_type_Tcl.a(paramInt);
-      }
-      if ((parambiej instanceof tnj))
+      localJSONObject.put("error_code", paramInt);
+      localJSONObject.put("error_msg", paramString);
+      localJSONObject.put("is_renderJs", paramBoolean);
+      oat.a(null, null, "0X800AC69", "0X800AC69", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
       {
-        parambiej = (tnj)parambiej;
-        d(parambiej);
-        a(parambiej, localtmv, paramInt);
-        if (paramInt > 0) {
-          c(parambiej);
-        }
+        paramString.printStackTrace();
       }
     }
   }
   
-  public void a(WSPlayerManager paramWSPlayerManager)
+  public void reportNVProcess(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = paramWSPlayerManager;
-    paramWSPlayerManager = new tmd(paramWSPlayerManager);
-    paramWSPlayerManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(paramWSPlayerManager);
-    a();
-  }
-  
-  public void a(List<tmv> paramList)
-  {
-    List localList = a();
-    if ((localList != null) && (localList.addAll(paramList))) {
-      notifyItemRangeChanged(localList.size() - paramList.size(), paramList.size());
-    }
-  }
-  
-  public tnj b()
-  {
-    return this.b;
-  }
-  
-  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onDetachedFromRecyclerView(paramRecyclerView);
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < j)
+    try
     {
-      tmw localtmw = (tmw)paramRecyclerView.getChildViewHolder(paramRecyclerView.getChildAt(i));
-      if (localtmw != null) {
-        localtmw.jdField_a_of_type_Tcl.a();
+      paramString3 = a(paramString3);
+      if (paramString3 != null)
+      {
+        paramString3.put(paramString1, paramString2);
+        pha.a(pha.a(), true, paramString3);
       }
-      i += 1;
+      return;
     }
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "reportPageProcessNew Exception:" + paramString1.getMessage());
+    }
+  }
+  
+  public void reportNativeVueError(String paramString1, String paramString2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("error", paramString1);
+      localJSONObject.put("url", paramString2);
+      oat.a(null, null, "0X800B08D", "0X800B08D", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "reportNativeVueError: " + paramString1.getMessage());
+      }
+    }
+  }
+  
+  public void reportPageProcess(String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      paramString3 = a(paramString3);
+      if (paramString3 != null)
+      {
+        paramString3.put(paramString1, paramString2);
+        pha.a(pha.a(), true, paramString3);
+        a();
+      }
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "reportPageProcessNew Exception:" + paramString1.getMessage());
+    }
+  }
+  
+  public void reportRunningData(HashMap<String, String> paramHashMap, String paramString)
+  {
+    paramHashMap.putAll(getBaseReportData(paramString));
+    pha.c(pha.a(), true, paramHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tmf
  * JD-Core Version:    0.7.0.1
  */

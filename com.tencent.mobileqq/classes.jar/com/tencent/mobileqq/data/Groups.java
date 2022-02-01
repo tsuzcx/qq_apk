@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.database.Cursor;
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class Groups
-  extends awge
+  extends Entity
 {
   @Deprecated
   public long datetime;
   public int group_friend_count;
-  @awhs
+  @unique
   public int group_id;
   public String group_name;
   @Deprecated

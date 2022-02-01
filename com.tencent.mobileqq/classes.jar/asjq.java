@@ -1,35 +1,24 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MessageForFuDai;
-import com.tencent.mobileqq.widget.FilterRelativeLayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class asjq
-  extends aeqi
+  extends anmu
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private FilterRelativeLayout jdField_a_of_type_ComTencentMobileqqWidgetFilterRelativeLayout;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private ImageView c;
-  private ImageView d;
-  private int e;
+  public asjq(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  private void a(View paramView)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFilterRelativeLayout = ((FilterRelativeLayout)paramView.findViewById(2131366982));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366976));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366980));
-    this.c = ((ImageView)paramView.findViewById(2131366981));
-    this.d = ((ImageView)paramView.findViewById(2131366977));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366983));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366984));
-  }
-  
-  private void a(MessageForFuDai paramMessageForFuDai)
-  {
-    this.e = paramMessageForFuDai.themeId;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSearchFragment", 2, String.format("onUpdateAddFriend isSuccess=%s addSuccess=%s reqestUin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
+    }
+    paramString = this.a.a.a(this.a.c);
+    if ((paramString != null) && (!paramString.mAddFriendVerified))
+    {
+      paramString.mAddFriendVerified = true;
+      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.2.1(this));
+    }
   }
 }
 

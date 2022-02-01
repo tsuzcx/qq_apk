@@ -1,22 +1,24 @@
-public class abva
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+class abva
+  extends anut
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public int c;
+  abva(abux paramabux) {}
   
-  public abva(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3)
+  protected void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_b_of_type_Int = 10;
-    this.jdField_a_of_type_Float = 0.001F;
-    this.jdField_b_of_type_Float = 0.1F;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramInt3;
+    if (paramBoolean)
+    {
+      if (paramInt == 1)
+      {
+        asfr.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), true);
+        return;
+      }
+      asfr.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
+      return;
+    }
+    asfr.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
   }
 }
 

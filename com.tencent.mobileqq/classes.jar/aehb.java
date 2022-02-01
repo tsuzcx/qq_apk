@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-public final class aehb
-  implements Parcelable.Creator<TroopMemberListActivity.TroopAdmin>
+class aehb
+  implements bkhy
 {
-  public TroopMemberListActivity.TroopAdmin a(Parcel paramParcel)
-  {
-    return new TroopMemberListActivity.TroopAdmin(paramParcel, null);
-  }
+  aehb(aegy paramaegy) {}
   
-  public TroopMemberListActivity.TroopAdmin[] a(int paramInt)
+  public void onDismiss()
   {
-    return new TroopMemberListActivity.TroopAdmin[paramInt];
+    bcst.b(this.a.a.app, "CliOper", "", "", "0X8008406", "0X8008406", 0, 0, "", "", "", "");
   }
 }
 

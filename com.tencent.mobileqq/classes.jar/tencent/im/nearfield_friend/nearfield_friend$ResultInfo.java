@@ -22,7 +22,7 @@ public final class nearfield_friend$ResultInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.nearfield_friend.nearfield_friend.ResultInfo
  * JD-Core Version:    0.7.0.1
  */

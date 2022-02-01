@@ -387,7 +387,7 @@ public final class QQNotificationManager
   {
     boolean bool;
     Object localObject;
-    if ((paramInt >= 232) && (paramInt <= 527))
+    if ((paramInt >= 232) && (paramInt <= 3000536))
     {
       bool = true;
       if (QLog.isColorLevel())

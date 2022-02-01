@@ -18,14 +18,14 @@ public class Task
   public static int TYPE_EXTRACTION;
   public static int TYPE_FILTER;
   public static int TYPE_PROCESS;
-  public ArrayList<Task.CONFIG_ITEM> check = new ArrayList();
+  public ArrayList<Task.ConfigItem> check = new ArrayList();
   public JSONObject config;
-  public ArrayList<Task.CONFIG_ITEM> distribution = new ArrayList();
-  public ArrayList<Task.CONFIG_ITEM> extraction = new ArrayList();
-  public ArrayList<Task.CONFIG_ITEM> filter = new ArrayList();
+  public ArrayList<Task.ConfigItem> distribution = new ArrayList();
+  public ArrayList<Task.ConfigItem> extraction = new ArrayList();
+  public ArrayList<Task.ConfigItem> filter = new ArrayList();
   public String id;
   public JSContext jsContext;
-  public ArrayList<Task.CONFIG_ITEM> process = new ArrayList();
+  public ArrayList<Task.ConfigItem> process = new ArrayList();
   public int status = STATUS_READY;
   
   static

@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class INTERFACE$StJudgeTimingReq
   extends MessageMicro<StJudgeTimingReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 72, 82, 90, 96 }, new String[] { "extInfo", "appid", "factType", "duration", "reportTime", "afterCertify", "appType", "scene", "totalTime", "launchId", "via", "AdsTotalTime" }, new Object[] { null, "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0) }, StJudgeTimingReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 72, 82, 90, 96, 106, 114 }, new String[] { "extInfo", "appid", "factType", "duration", "reportTime", "afterCertify", "appType", "scene", "totalTime", "launchId", "via", "AdsTotalTime", "hostExtInfo", "sourceID" }, new Object[] { null, "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), "", "" }, StJudgeTimingReq.class);
   public final PBInt32Field AdsTotalTime = PBField.initInt32(0);
   public final PBInt32Field afterCertify = PBField.initInt32(0);
   public final PBInt32Field appType = PBField.initInt32(0);
@@ -19,9 +19,11 @@ public final class INTERFACE$StJudgeTimingReq
   public final PBInt32Field duration = PBField.initInt32(0);
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBInt32Field factType = PBField.initInt32(0);
+  public final PBStringField hostExtInfo = PBField.initString("");
   public final PBStringField launchId = PBField.initString("");
   public final PBInt64Field reportTime = PBField.initInt64(0L);
   public final PBInt32Field scene = PBField.initInt32(0);
+  public final PBStringField sourceID = PBField.initString("");
   public final PBInt32Field totalTime = PBField.initInt32(0);
   public final PBStringField via = PBField.initString("");
 }

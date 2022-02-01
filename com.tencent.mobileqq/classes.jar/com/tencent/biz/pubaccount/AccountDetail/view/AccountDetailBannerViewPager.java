@@ -10,21 +10,22 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bhsl;
+import bkfv;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nij;
+import nra;
 
 public class AccountDetailBannerViewPager
   extends ViewPager
   implements Handler.Callback
 {
   private final int jdField_a_of_type_Int = 2000;
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new nij(this);
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new nra(this);
   private AccountDetailBannerIndicator jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailBannerIndicator;
   private List<ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bhsl(Looper.getMainLooper(), this, true);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkfv(Looper.getMainLooper(), this, true);
   private boolean jdField_a_of_type_Boolean;
   private int b = 0;
   private final int c = 1;
@@ -39,6 +40,14 @@ public class AccountDetailBannerViewPager
   {
     super(paramContext, paramAttributeSet);
     super.setOnPageChangeListener(this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener);
+  }
+  
+  public void addOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -128,7 +137,7 @@ public class AccountDetailBannerViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewPager
  * JD-Core Version:    0.7.0.1
  */

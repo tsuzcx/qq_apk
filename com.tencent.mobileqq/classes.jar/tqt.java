@@ -1,208 +1,87 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.os.CountDownTimer;
-import android.os.Handler;
-import android.view.View;
-import android.widget.PopupWindow;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.QCirclePopupWindowHelper.1;
-import com.tencent.biz.qqcircle.widgets.QCirclePushTipView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.BubblePopupWindow;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StUser;
-import mqq.util.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.SchemaBridgeInvokeHandler.register.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import mqq.app.AppRuntime;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class tqt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/SchemaBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "jumpAction", "", "params", "Lorg/json/JSONObject;", "callBackId", "", "nameSpace", "register", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tqt
+  extends tpt
 {
-  private static volatile tqt jdField_a_of_type_Tqt;
-  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer;
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-  private WeakReference<tqy> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  public static final tqu a = new tqu(null);
   
-  public static tqt a()
+  public tqt(@NotNull BridgeModule paramBridgeModule)
   {
-    if (jdField_a_of_type_Tqt == null) {}
-    try
-    {
-      if (jdField_a_of_type_Tqt == null) {
-        jdField_a_of_type_Tqt = new tqt();
-      }
-      return jdField_a_of_type_Tqt;
-    }
-    finally {}
+    super(paramBridgeModule);
   }
   
-  public static void b()
+  private final void a(JSONObject paramJSONObject, String paramString)
   {
-    jdField_a_of_type_Tqt = null;
+    Object localObject = null;
+    if (paramJSONObject == null)
+    {
+      a(paramString, "params is null");
+      return;
+    }
+    if (!paramJSONObject.has("schema"))
+    {
+      a(paramString, "schema is null");
+      return;
+    }
+    Activity localActivity = a();
+    AppRuntime localAppRuntime = pha.a();
+    if (!(localAppRuntime instanceof QQAppInterface)) {}
+    for (;;)
+    {
+      for (;;)
+      {
+        localObject = (QQAppInterface)localObject;
+        if ((localActivity != null) && (localObject != null)) {
+          try
+          {
+            paramJSONObject = paramJSONObject.getString("schema");
+            paramJSONObject = bgng.a((QQAppInterface)localObject, (Context)localActivity, paramJSONObject);
+            if (paramJSONObject == null) {
+              break;
+            }
+            paramJSONObject.b("viola");
+            paramJSONObject.a();
+            a(paramString, null);
+            return;
+          }
+          catch (JSONException paramJSONObject)
+          {
+            paramJSONObject.printStackTrace();
+            return;
+          }
+        }
+      }
+      a(paramString, "activity or app is null");
+      return;
+      localObject = localAppRuntime;
+    }
+  }
+  
+  @NotNull
+  public String a()
+  {
+    return "schema";
   }
   
   public void a()
   {
-    QLog.d("QCirclePopupWindowHelper", 1, "release");
-    if (this.jdField_a_of_type_AndroidOsCountDownTimer != null)
-    {
-      this.jdField_a_of_type_AndroidOsCountDownTimer.cancel();
-      this.jdField_a_of_type_AndroidOsCountDownTimer = null;
-    }
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    }
-    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-    }
-    jdField_a_of_type_Tqt = null;
-  }
-  
-  public void a(Context paramContext, View paramView)
-  {
-    if ((paramContext == null) || (paramView == null)) {}
-    while (!tpz.a().c()) {
-      return;
-    }
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new QCirclePopupWindowHelper.1(this, paramContext, paramView), 1000L);
-  }
-  
-  public void a(Context paramContext, String paramString)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    try
-    {
-      a();
-      TextView localTextView = new TextView(paramContext);
-      localTextView.setTextColor(paramContext.getResources().getColor(2131167194));
-      localTextView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130843751));
-      localTextView.setPadding(xin.b(paramContext, 12.0F), xin.b(paramContext, 8.0F), xin.b(paramContext, 12.0F), xin.b(paramContext, 8.0F));
-      localTextView.setText(paramString);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localTextView, -2, -2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(localTextView, 17, 0, 0);
-      this.jdField_a_of_type_AndroidOsCountDownTimer = new tqu(this, 3000L, 3000L, paramContext);
-      this.jdField_a_of_type_AndroidOsCountDownTimer.start();
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("QCirclePopupWindowHelper", 1, "showRecommendAnimation error" + paramContext.getMessage());
-      paramContext.printStackTrace();
-    }
-  }
-  
-  public void a(View paramView, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, tqy paramtqy, bhvm parambhvm)
-  {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramtqy);
-    paramtqy = new bdpi();
-    if (tra.a(paramStFeed.poster.id.get()))
-    {
-      if (paramStComment.typeFlag.get() != 0) {
-        break label221;
-      }
-      paramtqy.a(2131373204, BaseApplicationImpl.getContext().getString(2131698347));
-    }
-    for (;;)
-    {
-      paramtqy.a(2131373201, BaseApplicationImpl.getContext().getString(2131698344));
-      if ((tra.a(paramStFeed.poster.id.get())) || (tra.a((FeedCloudMeta.StUser)paramStComment.postUser.get()))) {
-        paramtqy.a(2131373202, BaseApplicationImpl.getContext().getString(2131698345));
-      }
-      paramStFeed = new tqw(this);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bdft.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), paramtqy, paramStFeed));
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(parambhvm);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(true);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(paramView);
-      return;
-      label221:
-      if (paramStComment.typeFlag.get() == 1) {
-        paramtqy.a(2131373200, BaseApplicationImpl.getContext().getString(2131698343));
-      }
-    }
-  }
-  
-  public void a(View paramView, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StReply paramStReply, tqy paramtqy, bhvm parambhvm)
-  {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramtqy);
-    paramtqy = new bdpi();
-    paramtqy.a(2131373201, BaseApplicationImpl.getContext().getString(2131698344));
-    if ((tra.a(paramStFeed.poster.id.get())) || (tra.a((FeedCloudMeta.StUser)paramStReply.postUser.get()))) {
-      paramtqy.a(2131373202, BaseApplicationImpl.getContext().getString(2131698345));
-    }
-    paramStFeed = new tqx(this);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bdft.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), paramtqy, paramStFeed));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(parambhvm);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(true);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(paramView);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(Context paramContext, View paramView, String paramString)
-  {
-    if ((paramContext == null) || (paramView == null)) {
-      return false;
-    }
-    try
-    {
-      a();
-      paramContext = new QCirclePushTipView(paramContext);
-      paramContext.setText(paramString);
-      paramContext.measure(0, 0);
-      int i = paramContext.getMeasuredWidth();
-      int j = paramContext.getMeasuredHeight();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(paramContext, -2, -2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
-      paramContext = new int[2];
-      paramView.getLocationOnScreen(paramContext);
-      QLog.i("QCirclePopupWindowHelper", 1, "popupWidth" + i + " popupHeight" + j);
-      QLog.i("QCirclePopupWindowHelper", 1, "location x:" + paramContext[0] + "    loacation y:" + paramContext[1]);
-      int k = paramView.getWidth() / 2;
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 8388661, xin.b(paramView.getContext(), 10.0F), paramContext[1] - j);
-      QLog.i("QCirclePopupWindowHelper", 1, "x:" + (paramContext[0] + paramView.getWidth() / 2 - i / 2) + "    y:" + (paramContext[1] - j));
-      this.jdField_a_of_type_AndroidOsCountDownTimer = new tqv(this, 3000L, 3000L);
-      this.jdField_a_of_type_AndroidOsCountDownTimer.start();
-      return true;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("QCirclePopupWindowHelper", 1, "showRecommendAnimation error" + paramContext.getMessage());
-      paramContext.printStackTrace();
-    }
-    return false;
+    a("jumpAction", (Function2)new SchemaBridgeInvokeHandler.register.1((tqt)this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tqt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agrj
-  implements bemh<oidb_0x8ed.RspBody>
+  implements DialogInterface.OnClickListener
 {
-  agrj(agqq paramagqq) {}
+  agrj(agre paramagre) {}
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
-  {
-    if ((paramInt == 0) && (this.a.ac))
-    {
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, alud.a(2131705511), 0).a();
-      bdne.f(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-      this.a.jdField_a_of_type_Auxp.a(this.a.jdField_a_of_type_AndroidContentContext);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

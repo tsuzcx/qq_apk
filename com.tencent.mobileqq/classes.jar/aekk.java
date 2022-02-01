@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aekk
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public aekk(UpgradeActivity paramUpgradeActivity) {}
+  public aekk(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
+    CheckBox localCheckBox = HongbaoShowerActivity.a(this.a);
+    if (!bool) {}
+    for (bool = true;; bool = false)
+    {
+      localCheckBox.setChecked(bool);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

@@ -1,47 +1,107 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.device.AdCarrier;
+import com.tencent.ad.tangram.device.AdDeviceIdMD5Digest;
+import com.tencent.ad.tangram.device.AdMacAddressMD5Digest;
+import com.tencent.common.config.AppSetting;
+import com.tencent.gdtad.qqproxy.GdtLocationUtil;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location;
 
 public class acsa
-  extends alqv
 {
-  public acsa(Conversation paramConversation) {}
+  private static String a = "GdtDeviceUtil";
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  @Deprecated
+  public static final int a(Context paramContext)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, alof.z, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, alof.A, 6000);
+    return AdCarrier.getType(paramContext);
   }
   
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  @Deprecated
+  public static String a(Context paramContext)
   {
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
-    if (i == 0) {
-      this.a.a(9, alof.z, 6003);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, alof.A, 6003);
+    return AdDeviceIdMD5Digest.get(paramContext);
   }
   
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  @Deprecated
+  public static qq_ad_get.QQAdGet.DeviceInfo a(Context paramContext)
   {
-    super.b(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, alof.z, 6000);
+    if (paramContext == null)
+    {
+      acqy.d(a, "getDeviceInfo error");
+      paramContext = null;
     }
-    while (i != 1) {
-      return;
+    for (;;)
+    {
+      return paramContext;
+      qq_ad_get.QQAdGet.DeviceInfo localDeviceInfo = new qq_ad_get.QQAdGet.DeviceInfo();
+      Object localObject = a(paramContext);
+      String str = b(paramContext);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localDeviceInfo.muid.set((String)localObject);
+        localDeviceInfo.muid_type.set(1);
+        label58:
+        localDeviceInfo.conn.set(acra.a(paramContext));
+        localObject = c(paramContext);
+        if (TextUtils.isEmpty((CharSequence)localObject)) {}
+      }
+      try
+      {
+        int i = Integer.parseInt((String)localObject);
+        localDeviceInfo.carrier_code.set(i);
+        localDeviceInfo.os_ver.set(Build.VERSION.RELEASE);
+        localDeviceInfo.qq_ver.set(acrb.a());
+        localDeviceInfo.os_type.set(2);
+        localDeviceInfo.app_version_id.set(AppSetting.a());
+        localObject = GdtLocationUtil.INSTANCE.getLocation(paramContext);
+        paramContext = localDeviceInfo;
+        if (localObject == null) {
+          continue;
+        }
+        paramContext = localDeviceInfo;
+        if (localObject.length != 2) {
+          continue;
+        }
+        paramContext = new qq_ad_get.QQAdGet.DeviceInfo.Location();
+        paramContext.coordinates_type.set(0);
+        paramContext.latitude.set(localObject[0]);
+        paramContext.longitude.set(localObject[1]);
+        localDeviceInfo.location.set(paramContext);
+        return localDeviceInfo;
+        if (!TextUtils.isEmpty(str))
+        {
+          localDeviceInfo.muid.set(str);
+          localDeviceInfo.muid_type.set(3);
+          break label58;
+        }
+        localDeviceInfo.muid_type.set(0);
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          acqy.d(a, "initDeviceInfo", localThrowable);
+        }
+      }
     }
-    this.a.a(8, alof.A, 6003);
+  }
+  
+  @Deprecated
+  public static String b(Context paramContext)
+  {
+    return AdMacAddressMD5Digest.get(paramContext);
+  }
+  
+  @Deprecated
+  public static final String c(Context paramContext)
+  {
+    return AdCarrier.getCode(paramContext);
   }
 }
 

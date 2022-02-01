@@ -1,36 +1,114 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.view.MotionEvent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class apzr
-  implements View.OnTouchListener
+  extends BaseAdapter
 {
-  public apzr(AIOEmotionFragment paramAIOEmotionFragment, aqap paramaqap) {}
+  public apzr(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public String a(int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1)
+    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
+      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public int getCount()
+  {
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    aqab localaqab;
+    Object localObject;
+    if (paramView == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      paramView = this.jdField_a_of_type_Aqap.a();
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOEmotionFragment", 2, "updateSelfEmotionDetail id:" + paramView);
+      paramView = this.a.getLayoutInflater().inflate(2131561072, null);
+      localaqab = new aqab();
+      localaqab.a = ((URLImageView)paramView.findViewById(2131364202));
+      paramView.setTag(localaqab);
+      localObject = a(paramInt);
+      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
+        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
       }
-      bnld.b((Activity)this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, paramView);
-      paramView = (Activity)this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a;
-      if ((paramView != null) && (!paramView.isFinishing())) {
-        paramView.finish();
+      if (localObject == null) {}
+    }
+    else
+    {
+      try
+      {
+        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+          break label210;
+        }
+        localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        label139:
+        localaqab.a.setImageDrawable((Drawable)localObject);
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          URLDrawable.URLDrawableOptions localURLDrawableOptions;
+          localException1.printStackTrace();
+          continue;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+      }
+      if ((this.a.d == 1) && (!this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }
     }
     for (;;)
     {
-      return false;
-      if (paramMotionEvent.getAction() == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localaqab = (aqab)paramView.getTag();
+      break;
+      label210:
+      localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
+      break label139;
+      try
+      {
+        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+        {
+          localObject = URLDrawable.getDrawable("https://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          localException1.a.setImageDrawable((Drawable)localObject);
+        }
+        for (;;)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          break;
+          localException1.a.setImageDrawable(null);
+        }
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          localException2.printStackTrace();
+        }
       }
     }
   }

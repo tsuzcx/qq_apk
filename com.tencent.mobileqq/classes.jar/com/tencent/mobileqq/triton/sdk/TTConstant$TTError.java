@@ -4,6 +4,7 @@ public abstract interface TTConstant$TTError
 {
   public static final int ERROR_LOAD_CPP_SO = 1002;
   public static final int ERROR_LOAD_PNG_SO = 1003;
+  public static final int ERROR_LOAD_SCRIPT = 1005;
   public static final int ERROR_LOAD_SO = 1001;
   public static final int ERROR_LOAD_SO_BASE = 1000;
   public static final int ERROR_LOAD_TRITON_SO = 1004;
@@ -14,7 +15,7 @@ public abstract interface TTConstant$TTError
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.sdk.TTConstant.TTError
  * JD-Core Version:    0.7.0.1
  */

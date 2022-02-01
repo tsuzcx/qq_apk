@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vashealth;
 
-import bdys;
+import bhft;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class StepAlarmReceiver$1
@@ -13,12 +13,12 @@ class StepAlarmReceiver$1
     if (this.this$0.a == null) {
       return;
     }
-    ((bdys)this.this$0.a.getManager(260)).b();
+    ((bhft)this.this$0.a.getManager(260)).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.StepAlarmReceiver.1
  * JD-Core Version:    0.7.0.1
  */

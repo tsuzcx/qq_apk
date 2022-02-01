@@ -1,35 +1,35 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 
-public class arwe
-  implements BusinessObserver
+public abstract class arwe
 {
-  public void a() {}
+  public final EmoticonPanelController a;
   
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public arwe(EmoticonPanelController paramEmoticonPanelController)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 967: 
-      b(paramBoolean, paramBundle);
-      return;
-    case 968: 
-      a(paramBoolean, paramBundle);
-      return;
-    case 969: 
-      b();
-      return;
-    }
-    a();
+    this.a = paramEmoticonPanelController;
   }
+  
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public abstract int[] a();
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void i() {}
+  
+  public void j() {}
+  
+  public void k() {}
 }
 
 

@@ -1,6 +1,6 @@
 package cooperation.qwallet.plugin;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -74,14 +74,14 @@ public class RedPointHelper
     if ((paramInt1 & 0x8) != 0) {
       i = j + paramView.getHeight() / 2 - m / 2;
     }
-    paramInt1 = aepi.a(paramInt2, this.mContext.getResources());
-    paramInt2 = aepi.a(paramInt3, this.mContext.getResources());
+    paramInt1 = afur.a(paramInt2, this.mContext.getResources());
+    paramInt2 = afur.a(paramInt3, this.mContext.getResources());
     this.popupWindow.showAtLocation(paramView, 0, k + paramInt1, i + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qwallet.plugin.RedPointHelper
  * JD-Core Version:    0.7.0.1
  */

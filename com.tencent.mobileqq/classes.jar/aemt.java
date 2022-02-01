@@ -1,14 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aemt
-  implements View.OnClickListener
+public class aemt
+  extends anmu
 {
-  aemt(aemq paramaemq, aemn paramaemn) {}
+  public aemt(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Aemq.a.a(this.jdField_a_of_type_Aemn);
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    while ((bccv)this.a.a.getManager(10) == null) {
+      return;
+    }
+    Leba.c(this.a);
   }
 }
 

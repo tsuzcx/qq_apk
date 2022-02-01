@@ -1,39 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.ResultReceiver;
+import com.tencent.av.utils.PopupDialogQQSide;
 
 public class msk
-  extends mta
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public lip a;
-  public boolean a;
-  public boolean b;
+  public msk(PopupDialogQQSide paramPopupDialogQQSide, ResultReceiver paramResultReceiver) {}
   
-  msk(mrt parammrt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(parammrt);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Lip = new msl(this);
-    parammrt = lio.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    if (parammrt != null)
-    {
-      parammrt.a(11, this.jdField_a_of_type_Lip);
-      return;
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_ComTencentAvUtilsPopupDialogQQSide.getArguments());
     }
-    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
-  }
-  
-  void a(String paramString)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.i, 1, "resetData[" + paramString + "]");
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msk
  * JD-Core Version:    0.7.0.1
  */

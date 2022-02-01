@@ -16,32 +16,34 @@ import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
+@MiniKeep
 public class ViewUtils
 {
-  private static float DEVICE_DENSITY;
-  private static float density;
+  private static float DEVICE_DENSITY = 0.0F;
+  private static float density = -1.0F;
   private static int densityDPI;
   public static int densityDpi;
   public static float mDensity;
   private static int pixelPerCM;
-  private static float scaleDensity;
-  private static int screenHeight = -1;
+  private static float scaleDensity = -1.0F;
+  private static int screenHeight;
   private static double screenSizeCM;
   private static int screenWidth;
   
   static
   {
-    DisplayMetrics localDisplayMetrics = AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics();
-    mDensity = localDisplayMetrics.density;
-    densityDpi = localDisplayMetrics.densityDpi;
-    density = -1.0F;
-    scaleDensity = -1.0F;
     densityDPI = -1;
     screenWidth = -1;
+    screenHeight = -1;
+    screenSizeCM = 0.0D;
+    pixelPerCM = 0;
+    DisplayMetrics localDisplayMetrics = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics();
+    mDensity = localDisplayMetrics.density;
+    densityDpi = localDisplayMetrics.densityDpi;
   }
   
   public static int PxToDp(float paramFloat)
@@ -216,7 +218,7 @@ public class ViewUtils
   public static float getDensity()
   {
     if (density < 0.0F) {
-      density = AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics().density;
+      density = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().density;
     }
     return density;
   }
@@ -238,7 +240,7 @@ public class ViewUtils
   public static float getDensityDpi()
   {
     if (densityDPI < 0) {
-      densityDPI = AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics().densityDpi;
+      densityDPI = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().densityDpi;
     }
     return densityDPI;
   }
@@ -246,7 +248,7 @@ public class ViewUtils
   public static int getPixelPerCM()
   {
     if (pixelPerCM <= 0) {
-      pixelPerCM = (int)(AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics().xdpi / 2.54D);
+      pixelPerCM = (int)(AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().xdpi / 2.54D);
     }
     return pixelPerCM;
   }
@@ -254,7 +256,7 @@ public class ViewUtils
   public static float getScaleDensity()
   {
     if (scaleDensity < 0.0F) {
-      scaleDensity = AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics().scaledDensity;
+      scaleDensity = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().scaledDensity;
     }
     return scaleDensity;
   }
@@ -262,12 +264,12 @@ public class ViewUtils
   public static int getScreenHeight()
   {
     if (screenHeight < 0) {
-      if (AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getConfiguration().orientation != 2) {
-        break label57;
+      if (AppLoaderFactory.g().getContext().getResources().getConfiguration().orientation != 2) {
+        break label47;
       }
     }
-    label57:
-    for (screenHeight = AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics().widthPixels;; screenHeight = AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics().heightPixels) {
+    label47:
+    for (screenHeight = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().widthPixels;; screenHeight = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().heightPixels) {
       return screenHeight;
     }
   }
@@ -291,7 +293,7 @@ public class ViewUtils
   {
     if (screenSizeCM <= 0.0D)
     {
-      DisplayMetrics localDisplayMetrics = AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics();
+      DisplayMetrics localDisplayMetrics = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics();
       double d = Math.pow(localDisplayMetrics.widthPixels, 2.0D);
       screenSizeCM = Math.sqrt(Math.pow(localDisplayMetrics.heightPixels, 2.0D) + d) / getPixelPerCM();
     }
@@ -301,12 +303,12 @@ public class ViewUtils
   public static int getScreenWidth()
   {
     if (screenWidth < 0) {
-      if (AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getConfiguration().orientation != 2) {
-        break label57;
+      if (AppLoaderFactory.g().getContext().getResources().getConfiguration().orientation != 2) {
+        break label47;
       }
     }
-    label57:
-    for (screenWidth = AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics().heightPixels;; screenWidth = AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics().widthPixels) {
+    label47:
+    for (screenWidth = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().heightPixels;; screenWidth = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().widthPixels) {
       return screenWidth;
     }
   }
@@ -396,7 +398,7 @@ public class ViewUtils
   
   public static int pxTosp(float paramFloat)
   {
-    return (int)(paramFloat / AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics().scaledDensity + 0.5F);
+    return (int)(paramFloat / AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().scaledDensity + 0.5F);
   }
   
   public static void resetScreenSize()
@@ -547,12 +549,12 @@ public class ViewUtils
   
   public static int spToPx(float paramFloat)
   {
-    return (int)(AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+    return (int)(AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.ViewUtils
  * JD-Core Version:    0.7.0.1
  */

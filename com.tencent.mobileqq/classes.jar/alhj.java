@@ -1,14 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+
 public class alhj
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
+  public alhj(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public alhj(int paramInt, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    EditLocalVideoActivity.a(this.a).dismiss();
   }
 }
 

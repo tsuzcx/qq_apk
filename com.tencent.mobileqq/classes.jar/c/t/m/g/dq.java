@@ -1,7 +1,6 @@
 package c.t.m.g;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -32,12 +31,6 @@ public final class dq
       }
       finally {}
     }
-  }
-  
-  public static String b(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    return a(paramString).format(new Date(l));
   }
 }
 

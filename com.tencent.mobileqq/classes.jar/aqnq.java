@@ -1,12 +1,10 @@
-import android.view.View;
-
-class aqnq
+public class aqnq
 {
-  View[] a = new View[12];
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqnq
  * JD-Core Version:    0.7.0.1
  */

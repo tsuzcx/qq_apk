@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahou
-  implements View.OnClickListener
+public class ahou
+  implements ahor
 {
-  ahou(ahot paramahot) {}
-  
-  public void onClick(View paramView)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (ahot.a(this.a))
-    {
-      TroopSuspiciousFragment.a(ahot.a(this.a));
-      return;
-    }
-    this.a.b();
+    paramagup.e(paramMessageRecord, paramagwc);
   }
 }
 

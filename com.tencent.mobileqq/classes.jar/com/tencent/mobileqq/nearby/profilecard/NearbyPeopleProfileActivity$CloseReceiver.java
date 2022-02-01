@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bdeu;
+import bgjw;
 import com.tencent.qphone.base.util.QLog;
 
 public class NearbyPeopleProfileActivity$CloseReceiver
@@ -16,7 +16,7 @@ public class NearbyPeopleProfileActivity$CloseReceiver
     {
       paramContext = (NearbyPeopleProfileActivity)paramContext;
       paramIntent = paramIntent.getStringExtra("uin");
-      if ((!TextUtils.isEmpty(paramIntent)) && (bdeu.a(paramIntent, paramContext.d)))
+      if ((!TextUtils.isEmpty(paramIntent)) && (bgjw.a(paramIntent, paramContext.d)))
       {
         if (QLog.isColorLevel()) {
           QLog.i("Q.nearby_people_card.", 2, "onReceive,close on uin:" + paramIntent);
@@ -28,7 +28,7 @@ public class NearbyPeopleProfileActivity$CloseReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.CloseReceiver
  * JD-Core Version:    0.7.0.1
  */

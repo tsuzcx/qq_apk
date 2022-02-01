@@ -1,9 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import aepi;
-import ajjp;
-import alud;
+import Override;
+import afur;
+import alby;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
@@ -11,14 +12,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bdbc;
-import bdep;
-import bibb;
+import anni;
+import aobv;
+import bgjq;
+import bkom;
 import com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
@@ -26,47 +29,48 @@ import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.SwipListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.Comparator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nsb;
-import oau;
-import oav;
-import oaw;
-import oaz;
-import oba;
+import obe;
+import okt;
+import oku;
+import okv;
+import oky;
+import okz;
 
 public class ReadinjoySubscriptManagerActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, bdbc, bibb
+  implements View.OnClickListener, aobv, bkom
 {
-  private ajjp jdField_a_of_type_Ajjp;
+  private alby jdField_a_of_type_Alby;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
-  private Comparator<oaz> jdField_a_of_type_JavaUtilComparator = new oau(this);
-  private oaw jdField_a_of_type_Oaw;
+  private Comparator<oky> jdField_a_of_type_JavaUtilComparator = new okt(this);
+  private okv jdField_a_of_type_Okv;
   private boolean jdField_a_of_type_Boolean;
   private View b;
   
   private void a(String paramString)
   {
     Context localContext = getApplicationContext();
-    new nsb(this.app, paramString, localContext, new oav(this, localContext)).a();
+    new obe(this.app, paramString, localContext, new oku(this, localContext)).a();
   }
   
-  private void a(List<oaz> paramList)
+  private void a(List<oky> paramList)
   {
     if (paramList != null)
     {
-      this.jdField_a_of_type_Oaw.a(paramList);
+      this.jdField_a_of_type_Okv.a(paramList);
       this.jdField_a_of_type_ComTencentWidgetSwipListView.t();
     }
-    if (this.jdField_a_of_type_Oaw.getCount() == 0)
+    if (this.jdField_a_of_type_Okv.getCount() == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -105,28 +109,28 @@ public class ReadinjoySubscriptManagerActivity
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(new ReadInJoyNewFeedsTopGestureLayout(this));
     }
-    setTitle(alud.a(2131713136));
-    setLeftViewName(2131690382);
+    setTitle(anni.a(2131711515));
+    setLeftViewName(2131690389);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getRightTextView());
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718883);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365761);
-    ((TextView)findViewById(2131378345)).setText(alud.a(2131713208));
-    this.jdField_a_of_type_Oaw = new oaw(this, null);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131377231));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717011);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366002);
+    ((TextView)findViewById(2131379196)).setText(anni.a(2131711587));
+    this.jdField_a_of_type_Okv = new okv(this, null);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131378042));
     TextView localTextView = new TextView(this);
-    localTextView.setHeight(aepi.a(20.0F, getResources()));
-    localTextView.setBackgroundResource(2131167140);
+    localTextView.setHeight(afur.a(20.0F, getResources()));
+    localTextView.setBackgroundResource(2131167224);
     localTextView.setClickable(false);
-    localTextView.setHintTextColor(getResources().getColor(2131167140));
+    localTextView.setHintTextColor(getResources().getColor(2131167224));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.addHeaderView(localTextView, null, false);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Oaw);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Okv);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(this.jdField_a_of_type_Oaw);
-    this.jdField_a_of_type_Ajjp = new ajjp(this.app, this, false);
-    this.b = findViewById(2131371168);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(this.jdField_a_of_type_Okv);
+    this.jdField_a_of_type_Alby = new alby(this.app, this, false);
+    this.b = findViewById(2131371727);
     if (ThemeUtil.isInNightMode(this.app)) {
       this.b.setVisibility(0);
     }
@@ -149,7 +153,7 @@ public class ReadinjoySubscriptManagerActivity
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label178;
       }
-      if ((bdep.b()) || (bdep.d())) {
+      if ((bgjq.b()) || (bgjq.d())) {
         break label157;
       }
       this.mSystemBarComp.setStatusBarColor(-7829368);
@@ -158,7 +162,7 @@ public class ReadinjoySubscriptManagerActivity
     {
       this.leftView.setTextColor(-14408926);
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130848998);
+      this.leftView.setBackgroundResource(2130849526);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -172,12 +176,12 @@ public class ReadinjoySubscriptManagerActivity
       this.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label178:
-      if ((Build.VERSION.SDK_INT >= 23) && (!bdep.b()) && (!bdep.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!bgjq.b()) && (!bgjq.d()))
       {
         getWindow().getDecorView().setSystemUiVisibility(9216);
         this.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!bdep.d())
+      else if (!bgjq.d())
       {
         this.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -199,13 +203,21 @@ public class ReadinjoySubscriptManagerActivity
     a(true);
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2131560128);
+    setContentView(2131560270);
     b();
     a();
     c();
@@ -215,10 +227,10 @@ public class ReadinjoySubscriptManagerActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Ajjp != null)
+    if (this.jdField_a_of_type_Alby != null)
     {
-      this.jdField_a_of_type_Ajjp.a();
-      this.jdField_a_of_type_Ajjp = null;
+      this.jdField_a_of_type_Alby.a();
+      this.jdField_a_of_type_Alby = null;
     }
   }
   
@@ -233,28 +245,38 @@ public class ReadinjoySubscriptManagerActivity
     switch (paramView.getId())
     {
     default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
     boolean bool;
+    label41:
+    TextView localTextView;
     if (!this.jdField_a_of_type_Boolean)
     {
       bool = true;
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(this.jdField_a_of_type_Boolean);
-      paramView = this.jdField_a_of_type_AndroidWidgetTextView;
+      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
       if (!this.jdField_a_of_type_Boolean) {
-        break label84;
+        break label95;
       }
     }
-    label84:
-    for (int i = 2131718804;; i = 2131718883)
+    label95:
+    for (int i = 2131716943;; i = 2131717011)
     {
-      paramView.setText(i);
-      this.jdField_a_of_type_Oaw.notifyDataSetChanged();
-      return;
-      bool = false;
+      localTextView.setText(i);
+      this.jdField_a_of_type_Okv.notifyDataSetChanged();
       break;
+      bool = false;
+      break label41;
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
@@ -268,12 +290,12 @@ public class ReadinjoySubscriptManagerActivity
       while (paramInt1 < paramInt2)
       {
         Object localObject = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildAt(paramInt1);
-        if ((((View)localObject).getTag() instanceof oba))
+        if ((((View)localObject).getTag() instanceof okz))
         {
-          localObject = (oba)((View)localObject).getTag();
-          if (TextUtils.equals(oba.a((oba)localObject), paramString))
+          localObject = (okz)((View)localObject).getTag();
+          if (TextUtils.equals(okz.a((okz)localObject), paramString))
           {
-            new Handler(Looper.getMainLooper()).post(new ReadinjoySubscriptManagerActivity.4(this, (oba)localObject, paramBitmap));
+            new Handler(Looper.getMainLooper()).post(new ReadinjoySubscriptManagerActivity.4(this, (okz)localObject, paramBitmap));
             return;
           }
         }

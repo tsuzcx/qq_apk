@@ -3,13 +3,13 @@ package com.tencent.open.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfqz;
+import biyf;
 import java.util.ArrayList;
 
 public class GetVirtualListResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<GetVirtualListResult> CREATOR = new bfqz();
+  public static final Parcelable.Creator<GetVirtualListResult> CREATOR = new biyf();
   public int a;
   public long a;
   public ArrayList<VirtualInfo> a;
@@ -51,7 +51,7 @@ public class GetVirtualListResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.model.GetVirtualListResult
  * JD-Core Version:    0.7.0.1
  */

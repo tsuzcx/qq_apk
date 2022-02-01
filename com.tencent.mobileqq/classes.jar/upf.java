@@ -1,57 +1,130 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import UserGrowth.stLinkStragegyArgs;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.1;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.2;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import cooperation.qzone.LocalMultiProcConfig;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
-class upf
-  extends blts
+public class upf
 {
-  private long jdField_a_of_type_Long;
-  
-  upf(upd paramupd, PublishVideoEntry paramPublishVideoEntry, upj paramupj, String paramString) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString)
+  private static int a()
   {
-    this.jdField_a_of_type_Upj.a(-3);
-    this.jdField_a_of_type_Upj.a("task canceled");
-    upd.a(this.jdField_a_of_type_Upd, "needAndStartDownloadMusic");
+    if (!a(b(), c(), 0)) {
+      return 0;
+    }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", b(), 0);
   }
   
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public static stLinkStragegyArgs a()
   {
-    wxe.c(upd.jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " music onStart download");
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    stLinkStragegyArgs localstLinkStragegyArgs = new stLinkStragegyArgs();
+    localstLinkStragegyArgs.hasInstalledWeish = zmi.a(BaseApplicationImpl.getApplication().getApplicationContext());
+    localstLinkStragegyArgs.todayClickCount = b();
+    localstLinkStragegyArgs.todayEnterCount = a();
+    localstLinkStragegyArgs.todayLastLinkId = c();
+    return localstLinkStragegyArgs;
   }
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public static void a()
   {
-    wxe.c(upd.jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " music onStart download onFinish ");
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.backgroundMusicPath = paramString;
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Upj.a(paramInt);
-      this.jdField_a_of_type_Upj.a("unknown error the music download failed");
+    a(b(), c());
+  }
+  
+  public static void a(int paramInt)
+  {
+    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.1(paramInt));
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.2(paramString1, paramString2));
+  }
+  
+  private static boolean a(String paramString1, String paramString2, int paramInt)
+  {
+    long l = LocalMultiProcConfig.getLong("weishi_usergrowth", paramString2, 0L);
+    boolean bool = bmii.a(System.currentTimeMillis(), l);
+    if (!bool) {
+      ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.3(paramString1, paramInt, paramString2));
     }
-    for (;;)
-    {
-      zaj.a("edit_music_download", zaj.a(this.jdField_a_of_type_Upj.a(), l1 - l2, this.jdField_a_of_type_JavaLangString, xrg.a(paramString)));
-      upd.a(this.jdField_a_of_type_Upd, "needAndStartDownloadMusic");
-      return;
-      this.jdField_a_of_type_Upj.a(0);
-      this.jdField_a_of_type_Upj.a("music downloadSuccess");
-      continue;
-      this.jdField_a_of_type_Upj.a(-2);
-      this.jdField_a_of_type_Upj.a("none network");
+    return bool;
+  }
+  
+  private static int b()
+  {
+    if (!a(d(), e(), 0)) {
+      return 0;
     }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", d(), 0);
+  }
+  
+  private static String b()
+  {
+    return "key_open_recommend_page_count_" + h();
+  }
+  
+  public static void b()
+  {
+    a(d(), e());
+  }
+  
+  private static int c()
+  {
+    if (!a(f(), g(), -1)) {
+      return -1;
+    }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", f(), -1);
+  }
+  
+  private static String c()
+  {
+    return "key_open_recommend_page_time_" + h();
+  }
+  
+  private static String d()
+  {
+    return "key_click_recommend_card_count_" + h();
+  }
+  
+  private static String e()
+  {
+    return "key_click_recommend_card_time_" + h();
+  }
+  
+  private static String f()
+  {
+    return "key_last_link_type_" + h();
+  }
+  
+  private static String g()
+  {
+    return "key_last_link_time_" + h();
+  }
+  
+  private static String h()
+  {
+    String str2 = "";
+    String str3 = DeviceUtils.getVersionName(BaseApplicationImpl.getContext());
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    String str1 = str2;
+    if (localAppRuntime != null)
+    {
+      str1 = str2;
+      if (!TextUtils.isEmpty(localAppRuntime.getAccount())) {
+        str1 = bisz.a(localAppRuntime.getAccount());
+      }
+    }
+    return str1 + "_" + str3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     upf
  * JD-Core Version:    0.7.0.1
  */

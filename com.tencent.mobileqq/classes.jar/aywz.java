@@ -1,44 +1,123 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aywz
+public class aywz
 {
-  public int a;
-  public Context a;
-  public View a;
-  public FrameLayout a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public SquareImageView a;
-  public TextView b;
-  public SquareImageView b;
-  public TextView c;
+  public static ayxa a;
+  public static boolean a;
+  public static long c = 0L;
+  protected long a;
+  protected QQAppInterface a;
+  protected long b;
+  protected long d = 524288000L;
+  protected long e = 31457280L;
+  protected long f = 31457280L;
+  protected long g = 31457280L;
   
-  public aywz(aywy paramaywy, Context paramContext)
+  public static final void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    c();
+    jdField_a_of_type_Ayxa.a(paramLong, paramBoolean1, paramBoolean2);
+  }
+  
+  public static final void b()
+  {
+    c();
+    jdField_a_of_type_Ayxa.a();
+  }
+  
+  public static final void c()
+  {
+    if (jdField_a_of_type_Ayxa == null) {
+      try
+      {
+        if (jdField_a_of_type_Ayxa == null) {
+          jdField_a_of_type_Ayxa = new ayxa();
+        }
+        return;
+      }
+      finally {}
+    }
+  }
+  
+  public int a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    d();
+    paramBoolean = a();
+    if (QLog.isColorLevel()) {
+      ayxi.a("PIC_TAG_PRELOAD", "isOverLimit", "isInDPCWhiteList:" + paramBoolean);
+    }
+    if ((paramInt2 == 0) || ((paramBoolean) && (paramInt2 != 3)))
+    {
+      if (this.b >= this.d)
+      {
+        ayxw.a(paramInt2, this.d);
+        ayxi.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowWIFI:" + this.b);
+        return -8;
+      }
+    }
+    else if (paramInt2 == 1)
+    {
+      if (this.jdField_a_of_type_Long >= this.e)
+      {
+        ayxw.a(paramInt2, this.e);
+        ayxi.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",PreDownMax4GFlow:" + this.e);
+        return -8;
+      }
+    }
+    else if (paramInt2 == 2)
+    {
+      if (this.jdField_a_of_type_Long >= this.f)
+      {
+        ayxw.a(paramInt2, this.f);
+        ayxi.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",PreDownMax3GFlow:" + this.f);
+        return -8;
+      }
+    }
+    else if ((paramInt2 == 3) && (this.jdField_a_of_type_Long >= this.g))
+    {
+      ayxw.a(paramInt2, this.g);
+      ayxi.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",PreDownMax2GFlow:" + this.g);
+      return -8;
+    }
+    return 0;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559676, this.jdField_a_of_type_Aywy.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362994));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370977));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372225));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365129));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371984));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376795));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368018));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131369137));
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    jdField_a_of_type_Boolean = ayxu.a("PicPreDownSwitch", Boolean.valueOf(false)).booleanValue();
+    c = ayxu.a("PicAuDownTimePoint", 0L);
+    this.d = ayxu.a("MaxWifiFlow", 524288000L);
+    this.e = ayxu.a("Max4GFlow", 31457280L);
+    this.f = ayxu.a("Max3GFlow", 31457280L);
+    this.g = ayxu.a("Max2GFlow", 31457280L);
+    if (QLog.isColorLevel()) {
+      QLog.d("PIC_TAG_PRELOAD.BaseStrategy", 2, "initConfig(): PreDownUseLocalFlowSet=" + jdField_a_of_type_Boolean + " PicAuDownTimePoint=" + c + " PreDownMaxWifiFlow=" + this.d + " PreDownMax4GFlow=" + this.e + " PreDownMax3GFlow=" + this.f + " PreDownMax2GFlow=" + this.g);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a();
+  }
+  
+  public boolean a()
+  {
+    return DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name());
+  }
+  
+  public void d()
+  {
+    c();
+    long[] arrayOfLong = jdField_a_of_type_Ayxa.a();
+    this.jdField_a_of_type_Long = (arrayOfLong[0] + arrayOfLong[1]);
+    this.b = (arrayOfLong[2] + arrayOfLong[3]);
+    if (QLog.isColorLevel()) {
+      ayxi.a("PIC_TAG_PRELOAD", "", "updateTrafficData ", "picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",C2CPicDownFlowXG:" + arrayOfLong[0] + ",Group/DiscussPicDownFlowXG:" + arrayOfLong[1] + ",picTrafficFlowWIFI:" + this.b + ",C2CPicDownFlowWIFI:" + arrayOfLong[2] + ",Group/DiscussPicDownFlowWIFI:" + arrayOfLong[3]);
+    }
   }
 }
 

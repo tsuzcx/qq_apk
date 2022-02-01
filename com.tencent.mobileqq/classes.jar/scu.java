@@ -1,13 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.List;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public abstract interface scu
+class scu
+  extends skd
 {
-  public abstract void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2);
+  scu(sce paramsce) {}
+  
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    sce.a(this.a).a(sce.b(this.a));
+    if ((paramVideoInfo.m != null) && (paramVideoInfo.m.contains("kandianshare.html5.qq.com")))
+    {
+      this.a.a.b(paramVideoInfo.m);
+      return;
+    }
+    this.a.a.b(paramString + "&sourcefrom=6");
+  }
+  
+  public int c()
+  {
+    return 7;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     scu
  * JD-Core Version:    0.7.0.1
  */

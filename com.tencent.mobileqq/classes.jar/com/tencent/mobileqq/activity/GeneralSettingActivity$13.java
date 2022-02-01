@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.CompoundButton;
-import azmg;
+import bcnd;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class GeneralSettingActivity$13
@@ -11,9 +11,9 @@ class GeneralSettingActivity$13
   
   public void run()
   {
-    if (!((azmg)this.this$0.app.a(154)).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, true))
+    if (!((bcnd)this.this$0.app.a(154)).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, true))
     {
-      this.this$0.e(2131719908, 0);
+      this.this$0.e(2131717855, 0);
       GeneralSettingActivity localGeneralSettingActivity = this.this$0;
       CompoundButton localCompoundButton = this.jdField_a_of_type_AndroidWidgetCompoundButton;
       if (!this.b) {}
@@ -28,7 +28,7 @@ class GeneralSettingActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.13
  * JD-Core Version:    0.7.0.1
  */

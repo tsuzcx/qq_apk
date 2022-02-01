@@ -1,15 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.activity.JumpActivity;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aelb
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  public aelb(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public aelb(JumpActivity paramJumpActivity) {}
   
-  public void onClick(View paramView)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    this.a.b();
+    if (paramDevlockInfo != null) {
+      asfl.a().a(paramDevlockInfo.TransferInfo);
+    }
+    paramWUserSigInfo = this.a;
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      paramWUserSigInfo.a(paramDevlockInfo);
+      return;
+      paramDevlockInfo = null;
+    }
   }
 }
 

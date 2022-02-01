@@ -1,32 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.widget.FrameLayout;
 
-public class vsq
-  extends QQUIEventReceiver<vsp, vsu>
+class vsq
+  implements vsz
 {
-  public vsq(@NonNull vsp paramvsp)
-  {
-    super(paramvsp);
-  }
+  vsq(vsn paramvsn, vsz paramvsz) {}
   
-  public void a(@NonNull vsp paramvsp, @NonNull vsu paramvsu)
+  public void a()
   {
-    if (paramvsu.a.isSuccess())
-    {
-      wxe.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramvsu.toString());
-      paramvsp.e();
+    if (vsn.a(this.jdField_a_of_type_Vsn) != null) {
+      vsn.a(this.jdField_a_of_type_Vsn).a(3);
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vsu.class;
+    vsn.a(this.jdField_a_of_type_Vsn).setAlpha(0.0F);
+    vsn.a(null);
+    if (this.jdField_a_of_type_Vsz != null) {
+      this.jdField_a_of_type_Vsz.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vsq
  * JD-Core Version:    0.7.0.1
  */

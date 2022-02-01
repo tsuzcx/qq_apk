@@ -1,36 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoSlideBottomPanel;
 
-class asdl
-  implements DialogInterface.OnClickListener
+public class asdl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  asdl(asdb paramasdb) {}
+  public asdl(RelatedEmoSlideBottomPanel paramRelatedEmoSlideBottomPanel, boolean paramBoolean, float[] paramArrayOfFloat) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 1)
+    if ((RelatedEmoSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel) != null) && (this.jdField_a_of_type_Boolean))
     {
-      if (asdb.a(this.a))
-      {
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aryl.e.intValue());
-        this.a.l();
-      }
-      azri.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
+      Float localFloat = (Float)paramValueAnimator.getAnimatedValue();
+      RelatedEmoSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel).a(localFloat.floatValue() - this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel.a());
     }
-    while (paramInt != 0) {
-      return;
+    if ((RelatedEmoSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel) > 0) && (paramValueAnimator.getAnimatedFraction() == 1.0F) && (this.jdField_a_of_type_ArrayOfFloat[1] == this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel.getMeasuredHeight()) && (RelatedEmoSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel) != null)) {
+      RelatedEmoSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel).a(RelatedEmoSlideBottomPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoSlideBottomPanel));
     }
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidAppActivity;
-    Activity localActivity = this.a.jdField_a_of_type_AndroidAppActivity;
-    paramDialogInterface.setResult(0);
-    azri.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
-    this.a.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

@@ -1,32 +1,10 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-class tqk
-  extends ampn
-{
-  tqk(tqj paramtqj, String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (paramInt == 0)
-    {
-      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-      {
-        tqj.a(this.a, paramSosoLbsInfo);
-        return;
-      }
-      QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request: location is null");
-      return;
-    }
-    QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request: failed");
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/NowLiveBridgeInvokeHandler$Companion;", "", "()V", "NS_NOW_LIVE", "", "OPEN_ROOM", "PRE_LOAD", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tqk {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tqk
  * JD-Core Version:    0.7.0.1
  */

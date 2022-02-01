@@ -1,32 +1,31 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.data.CardProfile;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 public class bbyl
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  
-  public bbyl()
+  public static ArrayList<CardProfile> a(List<CardProfile> paramList1, List<CardProfile> paramList2)
   {
-    this.jdField_a_of_type_JavaLangString = "default";
-  }
-  
-  public boolean a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || ("default".equals(this.jdField_a_of_type_JavaLangString))) {}
-    while ((this.b < 0) || (this.c < 0) || (this.d <= 0) || (this.e <= 0)) {
-      return false;
+    HashSet localHashSet = new HashSet();
+    ArrayList localArrayList = new ArrayList();
+    paramList1 = paramList1.iterator();
+    paramList2 = paramList2.iterator();
+    while (paramList1.hasNext())
+    {
+      CardProfile localCardProfile = (CardProfile)paramList1.next();
+      localHashSet.add(Long.valueOf(localCardProfile.lEctID));
+      localArrayList.add(localCardProfile);
     }
-    return true;
-  }
-  
-  public String toString()
-  {
-    return "Item{subject='" + this.jdField_a_of_type_JavaLangString + '\'' + ", correct=" + this.jdField_a_of_type_Boolean + ", confidence=" + this.jdField_a_of_type_Int + ", x=" + this.b + ", y=" + this.c + ", width=" + this.d + ", height=" + this.e + '}';
+    while (paramList2.hasNext())
+    {
+      paramList1 = (CardProfile)paramList2.next();
+      if (!localHashSet.contains(Long.valueOf(paramList1.lEctID))) {
+        localArrayList.add(paramList1);
+      }
+    }
+    return localArrayList;
   }
 }
 

@@ -1,53 +1,22 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
-
-class bcum
-  implements ITransactionCallback
+public abstract class bcum
 {
-  bcum(bcul parambcul) {}
+  public int a = 0;
+  public int b;
+  public long b;
+  public int c = 1;
+  public String i = "";
+  public String j = "";
+  public String k = "";
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  bcum()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "upload onFailed errn:" + paramInt);
-    }
-    this.a.e();
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "upload onSuccess");
-    }
-    paramHashMap = new PttShortVideo.PttShortVideoUploadResp();
-    try
-    {
-      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)paramHashMap.mergeFrom(paramArrayOfByte);
-      if (paramArrayOfByte.str_fileid.has()) {
-        this.a.c = paramArrayOfByte.str_fileid.get();
-      }
-      this.a.b = true;
-      this.a.b();
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
+  public abstract String a(int paramInt);
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
+  public abstract String toString();
 }
 
 

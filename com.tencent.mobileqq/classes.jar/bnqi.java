@@ -1,16 +1,6 @@
-import java.util.ArrayList;
-
-public abstract interface bnqi
+class bnqi
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, bnqb parambnqb);
-  
-  public abstract void a(int paramInt, ArrayList<bnqb> paramArrayList);
-  
-  public abstract void a(String[] paramArrayOfString, String paramString);
-  
-  public abstract void b(int paramInt, bnqb parambnqb);
+  private static bnqg a = new bnqg(null);
 }
 
 

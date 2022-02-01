@@ -1,38 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.AdapterView;
-
-public class bctp
-  implements bhuy
+class bctp
 {
-  public bctp(WheelPickerLayout paramWheelPickerLayout) {}
+  public String a;
+  public String b;
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  bctp(String paramString1, String paramString2)
   {
-    WheelPickerLayout.a(this.a, paramView, 1);
-    WheelPickerLayout.a(this.a, paramView, true);
-    if ((paramView != null) && (paramView.getTag() != null))
-    {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt)
-        {
-          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), false);
-        }
-        paramInt += 1;
-      }
-    }
+    this.a = paramString1;
+    this.b = paramString2;
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bctp
  * JD-Core Version:    0.7.0.1
  */

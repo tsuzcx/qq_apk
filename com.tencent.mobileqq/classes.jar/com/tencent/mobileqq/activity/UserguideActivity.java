@@ -1,16 +1,20 @@
 package com.tencent.mobileqq.activity;
 
+import Override;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import azri;
+import android.view.MotionEvent;
+import bctj;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 
@@ -59,9 +63,9 @@ public class UserguideActivity
         String str1 = ((SharedPreferences)localObject).getString("qq_version", "");
         String str2 = ((SharedPreferences)localObject).getString("qq_version_full", "");
         if (QLog.isColorLevel()) {
-          QLog.e("UserGuide", 2, "pkg build num is 4555, local build num is " + str1);
+          QLog.e("UserGuide", 2, "pkg build num is 4680, local build num is " + str1);
         }
-        if (!"4555".equals(str1))
+        if (!"4680".equals(str1))
         {
           localHashMap = new HashMap();
           if (!TextUtils.isEmpty(str1)) {
@@ -71,19 +75,19 @@ public class UserguideActivity
             QLog.e("UserGuide", 2, "this is a new install");
           }
           localHashMap.put("userguide_update_type", "2");
-          azri.a(paramSplashActivity).a(null, "userguide_update2", true, 0L, 0L, localHashMap, "", false);
+          bctj.a(paramSplashActivity).a(null, "userguide_update2", true, 0L, 0L, localHashMap, "", false);
           paramSplashActivity = ((SharedPreferences)localObject).edit();
           localObject = AppSetting.a();
           paramSplashActivity.putString("qq_version_pre", str1);
           paramSplashActivity.putString("qq_version_full_pre", str2);
-          paramSplashActivity.putString("qq_version", "4555");
+          paramSplashActivity.putString("qq_version", "4680");
           paramSplashActivity.putString("qq_version_full", (String)localObject);
           paramSplashActivity.commit();
           if (QLog.isColorLevel()) {
-            QLog.i("UserGuide", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { str1, str2, "4555", localObject }));
+            QLog.i("UserGuide", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { str1, str2, "4680", localObject }));
           }
         }
-        QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str1 + ", " + "4555");
+        QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str1 + ", " + "4680");
       }
       else
       {
@@ -128,6 +132,14 @@ public class UserguideActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = false;
@@ -159,10 +171,17 @@ public class UserguideActivity
     a = false;
     super.finish();
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UserguideActivity
  * JD-Core Version:    0.7.0.1
  */

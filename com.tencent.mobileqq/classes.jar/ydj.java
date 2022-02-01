@@ -1,81 +1,36 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class ydj<T>
-  extends ydi<T>
+class ydj
+  extends wme
 {
-  protected int c = -1;
+  ydj(ydh paramydh) {}
   
-  public ydj(Context paramContext, boolean paramBoolean)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    super(paramContext, paramBoolean);
-  }
-  
-  protected abstract int a();
-  
-  protected abstract View a();
-  
-  protected View a(int paramInt)
-  {
-    if (this.b != null) {
-      return this.b.findViewById(paramInt);
-    }
-    return null;
-  }
-  
-  protected abstract void a();
-  
-  public void a(ViewStub paramViewStub)
-  {
-    if (paramViewStub == null) {
-      return;
-    }
-    if (this.c != -1)
-    {
-      a(paramViewStub, this.c);
-      return;
-    }
-    paramViewStub.setLayoutResource(a());
-    this.b = paramViewStub.inflate();
-    if (a() == 2131562276) {
-      b(a());
-    }
-    a();
-  }
-  
-  public void a(ViewStub paramViewStub, int paramInt)
-  {
-    if (paramViewStub != null)
-    {
-      paramViewStub.setLayoutResource(paramInt);
-      this.b = paramViewStub.inflate();
-      a();
+    yqp.a("Q.qqstory.detail.StoryDetailPresenter", "post comment result is %s.", Boolean.valueOf(paramBoolean));
+    if (!ydh.a(this.a).get()) {
+      ydh.a(this.a).c();
     }
   }
   
-  public void b(View paramView)
+  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
   {
-    if ((paramView != null) && (b())) {
-      ((ViewGroup)this.b).addView(paramView);
-    }
-  }
-  
-  protected boolean b()
-  {
-    return (this.b != null) && ((this.b instanceof ViewGroup));
-  }
-  
-  protected void j()
-  {
-    this.b = a();
-    a();
+    woj localwoj = (woj)wpm.a(17);
+    localwoj.a(paramCommentEntry.commentId);
+    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
+    paramCommentEntry.status = 0;
+    localwoj.a(paramCommentEntry);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ydj
  * JD-Core Version:    0.7.0.1
  */

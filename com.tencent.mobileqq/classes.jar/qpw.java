@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListView;
+import kotlin.Lazy;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class qpw
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule;", "getInstance", "()Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule;", "instance$delegate", "Lkotlin/Lazy;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qpw
 {
-  public qpw(ReadInJoyPrivacyListView paramReadInJoyPrivacyListView) {}
-  
-  public void onClick(View paramView)
+  @NotNull
+  public final qpv a()
   {
-    ReadInJoyPrivacyListView.a(this.a);
+    Lazy localLazy = qpv.a();
+    qpw localqpw = qpv.a;
+    return (qpv)localLazy.getValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qpw
  * JD-Core Version:    0.7.0.1
  */

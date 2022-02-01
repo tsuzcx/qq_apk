@@ -1,10 +1,6 @@
 public abstract interface akut
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public abstract void a(boolean paramBoolean);
 }
 
 

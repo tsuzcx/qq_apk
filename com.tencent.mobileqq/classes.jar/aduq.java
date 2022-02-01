@@ -1,32 +1,56 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class aduq
-  extends MqqHandler
+  implements bics
 {
-  public aduq(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public aduq(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
+    if (paramInt1 == paramInt2) {
+      return;
+    }
+    advt localadvt = null;
+    switch (paramInt2)
     {
     }
-    do
+    for (;;)
     {
-      return;
-      this.a.finish();
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
+      if (this.a.jdField_a_of_type_Advt != null)
       {
-        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
-        return;
+        this.a.jdField_a_of_type_Advt.c();
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_Advt.a());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
+      if (localadvt == null) {
+        break;
+      }
+      localadvt.i_(ChatHistoryFileActivity.a(this.a));
+      localadvt.b();
+      this.a.jdField_a_of_type_Advt = localadvt;
+      this.a.jdField_a_of_type_Advt.a = this.a;
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_Advt.a(), 0, new ViewGroup.LayoutParams(-1, -1));
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label326;
+      }
+      this.a.jdField_a_of_type_Advt.e();
+      return;
+      localadvt = ChatHistoryFileActivity.a(this.a, 0);
+      continue;
+      localadvt = ChatHistoryFileActivity.a(this.a, 4);
+      continue;
+      localadvt = ChatHistoryFileActivity.a(this.a, 1);
+      bcst.b(this.a.app, "dc00898", "", "", "0X8007126", "0X8007126", 0, 0, "", "", "", "");
+      continue;
+      localadvt = ChatHistoryFileActivity.a(this.a, 2);
+      bcst.b(this.a.app, "dc00898", "", "", "0X8007127", "0X8007127", 0, 0, "", "", "", "");
+      continue;
+      localadvt = ChatHistoryFileActivity.a(this.a, 3);
+      bcst.b(this.a.app, "dc00898", "", "", "0X8007128", "0X8007128", 0, 0, "", "", "", "");
+    }
+    label326:
+    this.a.jdField_a_of_type_Advt.f();
   }
 }
 

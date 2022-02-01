@@ -1,42 +1,57 @@
-import android.app.Activity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.1;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.2;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.3;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.4;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class avwp
-  extends baih
 {
-  public avwp(OCRResultFragmentNew paramOCRResultFragmentNew, Activity paramActivity)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public avwp(int paramInt, String paramString)
   {
-    super(paramActivity);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a()
+  public int a()
   {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.1(this));
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(int paramInt)
+  public String a()
   {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.4(this, paramInt));
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(String paramString1, String paramString2)
+  public boolean a(int paramInt, String paramString)
   {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.3(this));
+    return (this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_JavaLangString.equals(paramString));
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public boolean equals(@Nullable Object paramObject)
   {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.2(this, paramString));
+    if (!(paramObject instanceof avwp)) {}
+    do
+    {
+      return false;
+      paramObject = (avwp)paramObject;
+    } while ((this.jdField_a_of_type_Int != paramObject.a()) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.a())));
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "RoomKey{mHashCode='" + hashCode() + ", mSessionType=" + this.jdField_a_of_type_Int + ", mSessionUin=" + this.jdField_a_of_type_JavaLangString + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avwp
  * JD-Core Version:    0.7.0.1
  */

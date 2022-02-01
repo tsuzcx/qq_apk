@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.together.ui;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -11,9 +11,10 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bcyz;
+import bgey;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.PatchedButton;
 import com.tencent.widget.ThemeImageView;
 
@@ -38,14 +39,14 @@ public class WatchPanelView
   
   private void b()
   {
-    LayoutInflater.from(getContext()).inflate(2131560831, this, true);
-    setBackgroundResource(2130837726);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378121));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378124));
-    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131378122));
-    this.b = ((TextView)findViewById(2131378123));
+    LayoutInflater.from(getContext()).inflate(2131561035, this, true);
+    setBackgroundResource(2130837955);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378966));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378969));
+    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131378967));
+    this.b = ((TextView)findViewById(2131378968));
     this.jdField_a_of_type_ComTencentWidgetPatchedButton.setOnClickListener(this);
-    this.jdField_a_of_type_Int = aepi.a(39.0F, getResources());
+    this.jdField_a_of_type_Int = afur.a(39.0F, getResources());
   }
   
   public void a()
@@ -84,8 +85,8 @@ public class WatchPanelView
         ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-        ((URLDrawable)localObject).setTag(bcyz.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, 6));
-        ((URLDrawable)localObject).setDecodeHandler(bcyz.e);
+        ((URLDrawable)localObject).setTag(bgey.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, 6));
+        ((URLDrawable)localObject).setDecodeHandler(bgey.e);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramString);
         if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
@@ -132,11 +133,12 @@ public class WatchPanelView
     if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
       this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.WatchPanelView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.QavPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class mkm
-  implements View.OnClickListener
+class mkm
+  implements DialogInterface.OnClickListener
 {
-  public mkm(QavPanel paramQavPanel) {}
+  mkm(mkl parammkl) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a != null) && (this.a.a.a != null)) {
-      this.a.a.a.a(true);
+    mqw.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mkm
  * JD-Core Version:    0.7.0.1
  */

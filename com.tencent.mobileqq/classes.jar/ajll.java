@@ -1,8 +1,18 @@
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ajll
+public class ajll
 {
-  public abstract void a(float paramFloat1, float paramFloat2, int paramInt, View paramView);
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      axdz.a(paramQQAppInterface.getAccount(), "sp_key_card_redpoint_count", Integer.valueOf(paramInt));
+    } while (!QLog.isColorLevel());
+    QLog.i("CardUtil", 2, String.format("updateCardRedPoint count:%d", new Object[] { Integer.valueOf(paramInt) }));
+  }
 }
 
 

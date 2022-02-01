@@ -1,189 +1,98 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nti
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public static String a;
-  long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private View[] jdField_a_of_type_ArrayOfAndroidViewView = { this.jdField_a_of_type_AndroidViewView, this.b };
-  private View b;
+  public nti(AccountDetailActivity paramAccountDetailActivity) {}
   
-  static
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    jdField_a_of_type_JavaLangString = "tag_on_nearby_tips_click";
-  }
-  
-  public nti(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public View a(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (TextUtils.isEmpty(paramString))) {
-      return null;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    Object localObject = paramView.getTag();
+    if (localObject == null)
     {
-      this.jdField_a_of_type_AndroidViewView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167194));
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130846644);
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setGravity(16);
-      this.jdField_a_of_type_AndroidViewView.setTag(jdField_a_of_type_JavaLangString);
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setTextSize(this.jdField_a_of_type_AndroidContentContext.getResources().getInteger(2131427337));
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
     }
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.topMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
-    localLayoutParams.addRule(3, 2131373445);
-    localLayoutParams.addRule(11);
-    localLayoutParams.rightMargin = bdaq.b(this.jdField_a_of_type_AndroidContentContext, 20.0F);
-    ((TextView)this.jdField_a_of_type_AndroidViewView).setText(paramString);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    if (this.b != null)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.isShowing()) {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
+    }
+    int i = ((bgsa)localObject).a.action;
+    int j = oat.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+    label103:
+    String str;
+    if (i == 11)
     {
-      ViewGroup localViewGroup = (ViewGroup)this.b.getParent();
-      if (localViewGroup != null) {
-        localViewGroup.removeView(this.b);
+      this.a.F();
+      i = 7;
+      str = this.a.e;
+      if (!this.a.d()) {
+        break label479;
       }
     }
-  }
-  
-  public void a(ViewGroup paramViewGroup, View paramView)
-  {
-    if ((paramViewGroup == null) || (paramView == null)) {}
-    do
+    label479:
+    for (localObject = "02";; localObject = "01")
     {
-      return;
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfAndroidViewView.length)
+      oat.a(null, str, "0X8007CA6", "0X8007CA6", 0, 0, (String)localObject, i + "", j + "", null);
+      break;
+      if (i == 2)
       {
-        if ((this.jdField_a_of_type_ArrayOfAndroidViewView[i] != null) && (this.jdField_a_of_type_ArrayOfAndroidViewView[i] != paramView) && (paramViewGroup.indexOfChild(this.jdField_a_of_type_ArrayOfAndroidViewView[i]) != -1)) {
-          paramViewGroup.removeView(this.jdField_a_of_type_ArrayOfAndroidViewView[i]);
+        aarp.b(this.a, this.a.a(), this.a.a(), this.a.b());
+        i = 1;
+        break label103;
+      }
+      if (i == 3)
+      {
+        aarp.a(this.a, this.a.a(), this.a.a(), this.a.b());
+        i = 2;
+        break label103;
+      }
+      if ((i == 9) || (i == 10))
+      {
+        aarp.a(this.a, this.a.a(), this.a.a(), this.a.b(), i);
+        if (i == 9)
+        {
+          i = 3;
+          break label103;
         }
-        i += 1;
+        i = 4;
+        break label103;
       }
-    } while (paramViewGroup.indexOfChild(paramView) != -1);
-    paramViewGroup.addView(paramView);
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    label55:
-    do
-    {
-      return;
-      Object localObject1 = null;
-      try
+      if (i == 31)
       {
-        localObject2 = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131364139);
-        localObject1 = localObject2;
+        this.a.E();
+        i = 6;
+        break label103;
       }
-      catch (Exception localException)
+      if (i == 30)
       {
-        Object localObject2;
-        int i;
-        break label55;
+        this.a.f();
+        i = 5;
+        break label103;
       }
-    } while (localObject1 == null);
-    if (this.b == null)
-    {
-      this.b = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-      this.b.setId(2131362440);
-      i = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 62.0F);
-      localObject2 = new RelativeLayout.LayoutParams(i, i);
-      ((RelativeLayout.LayoutParams)localObject2).topMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-      ((RelativeLayout.LayoutParams)localObject2).rightMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131373445);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(11);
-      this.b.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    }
-    this.b.setTag(2131362443, paramString2);
-    this.b.setTag(2131362441, String.valueOf(paramInt1));
-    this.b.setTag(2131362442, String.valueOf(paramInt2));
-    this.b.setTag(2131362444, Integer.valueOf(paramInt3));
-    this.b.setOnClickListener(this);
-    paramString2 = URLDrawable.URLDrawableOptions.obtain();
-    paramString2.mPlayGifImage = true;
-    try
-    {
-      paramString1 = URLDrawable.getDrawable(new URL(paramString1), paramString2);
-      ((URLImageView)this.b).setImageDrawable(paramString1);
-      if (paramString1.getStatus() == 2)
+      if (i == 32)
       {
-        paramString1.restartDownload();
-        this.b.setVisibility(8);
+        this.a.H();
+        i = 8;
+        break label103;
       }
-      ((URLImageView)this.b).setURLDrawableDownListener(new ntj(this));
-    }
-    catch (MalformedURLException paramString1)
-    {
-      label298:
-      break label298;
-    }
-    a(localObject1, this.b);
-    azqs.b(null, "dc00899", "Pb_account_lifeservice", "1", "0X80075A0", "0X80075A0", 0, 0, "", "", String.valueOf(paramInt1), String.valueOf(paramInt2));
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-    } while ((paramView.getId() != 2131362440) || (this.jdField_a_of_type_AndroidContentContext == null));
-    String str1 = (String)paramView.getTag(2131362443);
-    String str2 = (String)paramView.getTag(2131362441);
-    String str3 = (String)paramView.getTag(2131362442);
-    if (((Integer)paramView.getTag(2131362444)).intValue() == 1)
-    {
-      paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", str1);
-      paramView.putExtra("fromAio", true);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    }
-    for (;;)
-    {
-      azqs.b(null, "dc00899", "Pb_account_lifeservice", "1", "0X80075A1", "0X80075A1", 0, 0, "", "", str2, str3);
-      return;
-      paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, JumpActivity.class);
-      paramView.setData(Uri.parse(str1));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      if (i == 19) {
+        bjft.a(this.a, 6, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary, this.a.i, "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, j, true);
+      }
+      i = 0;
+      break label103;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nti
  * JD-Core Version:    0.7.0.1
  */

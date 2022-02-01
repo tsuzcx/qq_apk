@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount;
 
-import nnp;
+import nwm;
 
 public class EncryptUinHandler$1
   implements Runnable
 {
   public void run()
   {
-    nnp.a(this.this$0, this.a, 0);
+    nwm.a(this.this$0, this.a, 0);
   }
 }
 

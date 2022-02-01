@@ -1,64 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class srd
-  implements smr
+  extends pue
 {
-  public srd(ViolaBaseView paramViolaBaseView, String paramString1, String paramString2, srg paramsrg) {}
-  
-  public void a()
+  public srd(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, View paramView, ArticleInfo paramArticleInfo, int paramInt)
   {
-    String str1 = ncb.a(this.jdField_a_of_type_JavaLangString);
-    str1 = str1 + this.jdField_a_of_type_JavaLangString + File.separator;
-    String str2 = nbv.d(this.b);
-    if (new File(str1 + str2).exists()) {
-      if (QLog.isColorLevel()) {
-        QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess js exists [url:" + this.b + "]");
-      }
-    }
-    do
-    {
-      for (;;)
-      {
-        str1 = smk.a(this.b);
-        if (TextUtils.isEmpty(str1)) {
-          break;
-        }
-        if (this.jdField_a_of_type_Srg != null) {
-          this.jdField_a_of_type_Srg.a(str1);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess and jsSource succ [url:" + this.b + "]");
-        }
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess js no exists [url:" + this.b + "]");
-        }
-      }
-      if (this.jdField_a_of_type_Srg != null) {
-        this.jdField_a_of_type_Srg.a();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess but js null [url:" + this.b + "]");
+    super(paramString);
   }
   
-  public void a(int paramInt) {}
-  
-  public void b()
+  public void a(ptx paramptx)
   {
-    if (this.jdField_a_of_type_Srg != null) {
-      this.jdField_a_of_type_Srg.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e(ViolaBaseView.a(), 2, "downloadOfflineFailed [url:" + this.b + "]");
-    }
+    paramptx.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     srd
  * JD-Core Version:    0.7.0.1
  */

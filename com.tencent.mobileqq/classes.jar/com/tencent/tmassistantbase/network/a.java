@@ -19,7 +19,7 @@ public abstract class a
     this.a = new b(this);
   }
   
-  public int a(JceStruct paramJceStruct)
+  protected int a(JceStruct paramJceStruct)
   {
     ab.c("BaseNetEngine", ">>sendRequest enter requestJce = " + paramJceStruct);
     if (paramJceStruct == null) {
@@ -48,7 +48,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantbase.network.a
  * JD-Core Version:    0.7.0.1
  */

@@ -175,7 +175,7 @@ public class FlutterViewContainerManager
       {
         paramMap1.put("__container_uniqueId_key__", ContainerRecord.genUniqueId(paramString));
         localObject2 = getCurrentTopRecord();
-        if (paramOnResult != null) {
+        if ((paramOnResult != null) && (localObject2 != null)) {
           this.mOnResults.put(((IContainerRecord)localObject2).uniqueId(), paramOnResult);
         }
         FlutterBoost.instance().platform().openContainer((Context)localObject1, paramString, paramMap1, i, paramMap2);
@@ -233,7 +233,7 @@ public class FlutterViewContainerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.FlutterViewContainerManager
  * JD-Core Version:    0.7.0.1
  */

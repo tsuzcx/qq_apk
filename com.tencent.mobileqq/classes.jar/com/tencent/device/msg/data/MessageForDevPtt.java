@@ -1,8 +1,8 @@
 package com.tencent.device.msg.data;
 
-import alud;
-import amrf;
 import android.text.TextUtils;
+import anni;
+import aopw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
@@ -24,7 +24,7 @@ public class MessageForDevPtt
       return;
       try
       {
-        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)amrf.a(this.msgData);
+        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)aopw.a(this.msgData);
         if (localMessageForDevPttSerial == null) {
           continue;
         }
@@ -76,18 +76,18 @@ public class MessageForDevPtt
       if (this.fileSize > 0L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131691352);
+          return ((QQAppInterface)localObject).getApp().getString(2131691134);
         }
-        return alud.a(2131706999);
+        return anni.a(2131705390);
       }
       if (this.fileSize == -1L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131691352);
+          return ((QQAppInterface)localObject).getApp().getString(2131691134);
         }
-        return alud.a(2131706970);
+        return anni.a(2131705361);
       }
-      return alud.a(2131706971);
+      return anni.a(2131705362);
     }
     return null;
   }
@@ -123,7 +123,7 @@ public class MessageForDevPtt
     localMessageForDevPttSerial.strFileKey2 = this.strFileKey2;
     try
     {
-      this.msgData = amrf.a(localMessageForDevPttSerial);
+      this.msgData = aopw.a(localMessageForDevPttSerial);
       return;
     }
     catch (Exception localException)
@@ -134,7 +134,7 @@ public class MessageForDevPtt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.device.msg.data.MessageForDevPtt
  * JD-Core Version:    0.7.0.1
  */

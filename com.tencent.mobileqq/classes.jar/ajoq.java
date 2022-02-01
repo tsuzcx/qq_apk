@@ -1,47 +1,99 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.widget.Scroller;
+import com.tencent.mobileqq.activity.fling.TopContentLayout;
+import com.tencent.mobileqq.activity.fling.TopContentLayout.OnOutScreenListener;
 
 public class ajoq
-  implements MediaPlayer.OnPreparedListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public ajoq(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  private float jdField_a_of_type_Float;
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public ajoq(TopContentLayout paramTopContentLayout, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditLocalVideoActivity", 2, "onPrepared, duration:" + paramMediaPlayer.getDuration());
-    }
-    EditLocalVideoActivity.a(this.a).removeMessages(9999);
-    EditLocalVideoActivity.h(this.a);
-    EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.a(this.a), EditLocalVideoActivity.a(this.a));
-    EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.c(this.a), EditLocalVideoActivity.d(this.a));
-    EditLocalVideoActivity.a(this.a).a(paramMediaPlayer.getDuration());
+    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, 50.0F, paramContext.getResources().getDisplayMetrics());
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
     int i;
     int j;
-    if (!EditLocalVideoActivity.a(this.a).a())
+    if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
     {
-      EditLocalVideoActivity.d(this.a, paramMediaPlayer.getDuration());
-      if ((bjtz.a(EditLocalVideoActivity.b(this.a)) / EditLocalVideoActivity.a(this.a).getDuration() * 15000L > this.a.a(EditLocalVideoActivity.a())) && (QLog.isColorLevel())) {
-        QLog.d("EditLocalVideoActivity", 2, "prepared, there is not enough space on sdcard");
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, false);
+      i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getWidth();
+      j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
+      if (paramFloat1 <= 0.0F) {
+        break label96;
       }
-      i = paramMediaPlayer.getVideoWidth();
-      j = paramMediaPlayer.getVideoHeight();
-      if ((i <= 0) || (j <= 0)) {
-        Toast.makeText(this.a.getApplicationContext(), alud.a(2131704033), 1).show();
+      i -= j;
+    }
+    for (;;)
+    {
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startScroll((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, i, 0, 350);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.invalidate();
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label96:
+      i = -j;
+    }
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    float f1;
+    if (!TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    {
+      f1 = Math.abs(paramFloat2 / paramFloat1);
+      float f2 = Math.abs(paramMotionEvent1.getX() - paramMotionEvent2.getX());
+      if ((paramFloat1 < 0.0F) && (f1 < 0.5F) && (f2 > this.jdField_a_of_type_Float))
+      {
+        TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, true);
+        if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) != null) {
+          TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startDrag();
+        }
+        return true;
+      }
+      f1 = paramFloat1;
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, f1, paramFloat2);
+    }
+    int i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewWidth();
+    int j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
+    if ((paramFloat1 < 0.0F) && (j < i)) {
+      if (Math.abs(paramFloat1) > i - j) {
+        paramFloat1 = i - j;
       }
     }
-    else
+    for (;;)
     {
-      return;
+      f1 = paramFloat1;
+      if (Math.abs(paramFloat1) <= 0.0F) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.movingViewTransBy((int)paramFloat1, 0.0F);
+      f1 = paramFloat1;
+      if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) == null) {
+        break;
+      }
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).outing((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout);
+      f1 = paramFloat1;
+      break;
+      paramFloat1 = -paramFloat1;
+      continue;
+      if ((paramFloat1 > 0.0F) && (j > 0))
+      {
+        if (Math.abs(paramFloat1) > j) {
+          paramFloat1 = -j;
+        } else {
+          paramFloat1 = -paramFloat1;
+        }
+      }
+      else {
+        paramFloat1 = 0.0F;
+      }
     }
-    EditLocalVideoActivity.e(this.a, i);
-    EditLocalVideoActivity.f(this.a, j);
-    EditLocalVideoActivity.a(this.a, i, j);
   }
 }
 

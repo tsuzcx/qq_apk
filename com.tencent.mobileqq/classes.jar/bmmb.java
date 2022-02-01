@@ -1,89 +1,73 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendShareFragment;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bmmb
-  extends bmwn
+  extends bmmk
 {
-  private final List<bmvv> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final ConcurrentLinkedQueue<bmvv> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private boolean jdField_a_of_type_Boolean = true;
+  private String a;
   
-  public int a()
+  public bmmb()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    this.jdField_a_of_type_JavaLangString = bmmb.class.getSimpleName();
   }
   
-  public bmvv a(int paramInt)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (bmvv)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public bmvv a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
-      a(((blvi)blqr.a(4)).a());
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-    while (localIterator.hasNext())
+    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {}
+    for (;;)
     {
-      bmvv localbmvv = (bmvv)localIterator.next();
-      if ((localbmvv != null) && (TextUtils.equals(paramString, localbmvv.jdField_a_of_type_JavaLangString))) {
-        return localbmvv;
+      return false;
+      if (("openUrl".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
+        if (QLog.isColorLevel()) {
+          QLog.i(this.jdField_a_of_type_JavaLangString, 2, "openUrl=" + paramVarArgs[0]);
+        }
       }
-    }
-    return null;
-  }
-  
-  public void a(bmvv parambmvv)
-  {
-    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + parambmvv);
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(parambmvv);
-    if (i >= 0)
-    {
-      this.jdField_a_of_type_JavaUtilList.set(i, parambmvv);
-      a(i);
-    }
-  }
-  
-  public void a(Collection<bmvv> paramCollection)
-  {
-    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-      this.jdField_a_of_type_JavaUtilList.clear();
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext())
+      try
       {
-        bmvv localbmvv = (bmvv)paramCollection.next();
-        if (localbmvv != null)
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]).getString("url");
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().loadUrl(paramJsBridgeListener);
+        if ((!"shareFriendMsg".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length < 1)) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i(this.jdField_a_of_type_JavaLangString, 2, "shareFriendMsg: arg=" + paramVarArgs[0]);
+        }
+        try
         {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(localbmvv);
-          if (localbmvv.jdField_a_of_type_Int == 0) {
-            this.jdField_a_of_type_JavaUtilList.add(localbmvv);
-          }
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramJsBridgeListener = paramString3.getString("content");
+          paramString1 = paramString3.getString("jumpurl");
+          paramString2 = paramString3.getString("uin");
+          long l = paramString3.getLong("timestamp");
+          paramString3 = new Intent();
+          paramString3.putExtra("friend_uin", paramString2);
+          paramString3.putExtra("content", paramJsBridgeListener);
+          paramString3.putExtra("jumpUrl", paramString1);
+          paramString3.putExtra("timestamp", l);
+          aevv.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), paramString3, PublicTransFragmentActivity.class, ActivateFriendShareFragment.class);
+          return false;
+        }
+        catch (Throwable paramJsBridgeListener)
+        {
+          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "handle shareFriendMsg", paramJsBridgeListener);
+          return false;
+        }
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        for (;;)
+        {
+          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "handle openUrl", paramJsBridgeListener);
         }
       }
     }
-    finally {}
-    a();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

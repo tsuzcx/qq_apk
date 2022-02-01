@@ -1,13 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
+import adrm;
+import anhk;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 class KandianMergeManager$28
   implements Runnable
 {
-  KandianMergeManager$28(KandianMergeManager paramKandianMergeManager) {}
+  KandianMergeManager$28(KandianMergeManager paramKandianMergeManager, String paramString, int paramInt) {}
   
   public void run()
   {
-    KandianMergeManager.a(this.this$0).trySetTopKandianMsg(KandianMergeManager.a(this.this$0));
+    SessionInfo localSessionInfo = new SessionInfo();
+    localSessionInfo.jdField_a_of_type_JavaLangString = anhk.az;
+    localSessionInfo.jdField_a_of_type_Int = 1008;
+    adrm.a(KandianMergeManager.a(this.this$0), localSessionInfo);
+    KandianMergeManager.a(this.this$0).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false, false);
   }
 }
 

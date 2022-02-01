@@ -4,18 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class MiniAppBaseInfo
-  implements Parcelable, Serializable
+  implements Parcelable
 {
   public static final int Audit = 2;
   public static final int AuditPass = 6;
   public static final int AuditReject = 7;
   public static final Parcelable.Creator<MiniAppBaseInfo> CREATOR = new MiniAppBaseInfo.1();
+  public static final int DEVICE_UNKOWN = 0;
   public static final int Deleted = 5;
   public static final int Develop = 0;
   public static final String ENV_VERSION_DEVELOP = "develop";
@@ -23,15 +23,23 @@ public class MiniAppBaseInfo
   public static final String ENV_VERSION_TRIAL = "trial";
   public static final int Experience = 1;
   public static final int GrayRelease = 8;
+  public static final int LANDSCAPE = 2;
+  public static final int LANDSCAPELEFT = 3;
+  public static final int LANDSCAPERIGHT = 4;
+  public static final int NO_SHOW = 2;
   public static final int Offline = 9;
   public static final int Online = 3;
+  public static final int PORTRAIT = 1;
   public static final int Preview = 4;
+  public static final int SHOW_STATUS = 1;
+  public static final int SHOW_UNKOWN = 0;
   public static final String TAG = "MiniAppInfo";
   public static final int TYPE_MINI_APP = 0;
   public static final int TYPE_MINI_GAME = 1;
   public ApkgBaseInfo apkgInfo;
   public String appId;
   public AppMode appMode;
+  @Deprecated
   public int appType;
   public String baselibMiniVersion;
   public List<String> blackList;
@@ -39,8 +47,10 @@ public class MiniAppBaseInfo
   public DebugInfo debugInfo;
   public String desc;
   public String developerDesc;
+  public int deviceOrientation;
   public List<String> downloadFileDomainList;
   public String downloadUrl;
+  public boolean enableLoadingAd;
   public int engineType;
   public int fileSize;
   public FirstPageInfo firstPage;
@@ -50,12 +60,14 @@ public class MiniAppBaseInfo
   public int linkType;
   public String name;
   public int noNeedRealRecommend;
+  public String prepayId;
   public ArrayList<String> qualifications;
   public RenderInfo renderInfo;
   public String reportData;
   public List<String> requestDomainList;
   public List<SecondApiRightInfo> secondApiRightInfoList;
   public String shareId;
+  public int showStatusBar;
   public int skipDomainCheck;
   public List<String> socketDomainList;
   public int startMode;
@@ -113,6 +125,15 @@ public class MiniAppBaseInfo
     this.firstPath = paramParcel.readString();
     this.link = paramParcel.readString();
     this.linkType = paramParcel.readInt();
+    this.deviceOrientation = paramParcel.readInt();
+    this.showStatusBar = paramParcel.readInt();
+    if (paramParcel.readInt() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.enableLoadingAd = bool;
+      this.prepayId = paramParcel.readString();
+      return;
+    }
   }
   
   public static boolean equalObj(Object paramObject1, Object paramObject2)
@@ -132,6 +153,15 @@ public class MiniAppBaseInfo
       return 1;
     }
     return 3;
+  }
+  
+  public static boolean isSameVersion(MiniAppBaseInfo paramMiniAppBaseInfo1, MiniAppBaseInfo paramMiniAppBaseInfo2)
+  {
+    if ((paramMiniAppBaseInfo1 == null) || (paramMiniAppBaseInfo2 == null)) {}
+    while ((!equalObj(paramMiniAppBaseInfo1.appId, paramMiniAppBaseInfo2.appId)) || (!equalObj(Integer.valueOf(paramMiniAppBaseInfo1.verType), Integer.valueOf(paramMiniAppBaseInfo2.verType))) || (!equalObj(paramMiniAppBaseInfo1.version, paramMiniAppBaseInfo2.version)) || (!equalObj(paramMiniAppBaseInfo1.versionId, paramMiniAppBaseInfo2.versionId))) {
+      return false;
+    }
+    return true;
   }
   
   public int describeContents()
@@ -177,6 +207,16 @@ public class MiniAppBaseInfo
   public boolean isInternalApp()
   {
     return (this.appMode != null) && (this.appMode.interMode);
+  }
+  
+  public boolean isLandScape()
+  {
+    return (this.deviceOrientation == 2) || (this.deviceOrientation == 3) || (this.deviceOrientation == 4);
+  }
+  
+  public boolean isShowStatusBar()
+  {
+    return this.showStatusBar == 1;
   }
   
   public String simpleInfo()
@@ -247,11 +287,20 @@ public class MiniAppBaseInfo
     paramParcel.writeString(this.firstPath);
     paramParcel.writeString(this.link);
     paramParcel.writeInt(this.linkType);
+    paramParcel.writeInt(this.deviceOrientation);
+    paramParcel.writeInt(this.showStatusBar);
+    if (this.enableLoadingAd) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramParcel.writeInt(paramInt);
+      paramParcel.writeString(this.prepayId);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo
  * JD-Core Version:    0.7.0.1
  */

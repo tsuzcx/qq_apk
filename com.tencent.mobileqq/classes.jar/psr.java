@@ -1,18 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
-
-public class psr
-  implements ViewBase.IBuilder
+public abstract interface psr
 {
-  public ViewBase build(VafContext paramVafContext)
-  {
-    return new pso(paramVafContext);
-  }
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     psr
  * JD-Core Version:    0.7.0.1
  */

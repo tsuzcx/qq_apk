@@ -1,17 +1,22 @@
+import android.view.View;
+import com.tencent.mobileqq.data.ChatMessage;
+
 class agpa
-  implements aznz
+  implements bkhw
 {
-  agpa(agoz paramagoz) {}
+  agpa(agoy paramagoy, agqe paramagqe, bkho parambkho) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    agoz.a(this.a);
-    this.a.I();
-  }
-  
-  public void b()
-  {
-    this.a.I();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.cancel();
+      return;
+      adrm.c(this.jdField_a_of_type_Agoy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agoy.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agoy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agqe.a.uniseq);
+    }
   }
 }
 

@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 
 class agjp
-  implements View.OnClickListener
+  extends anty
 {
-  agjp(agji paramagji) {}
+  agjp(agjo paramagjo) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.a(((TextView)paramView).getText().toString());
-    this.a.w();
+    agjo.a(this.a).a.c();
+    agni localagni = (agni)agjo.a(this.a).a(29);
+    if (localagni != null) {
+      localagni.f();
+    }
   }
 }
 

@@ -1,14 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-class aljz
-  extends alkf
+public class aljz
+  implements Animation.AnimationListener
 {
-  aljz(aljx paramaljx) {}
+  public aljz(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.d("ApolloGameUtil", 2, " onSuccess  the http retcode = " + paramInt);
+    if (NewFlowCameraActivity.b(this.a) != null) {
+      NewFlowCameraActivity.b(this.a).setVisibility(4);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

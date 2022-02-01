@@ -1,58 +1,25 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nth
+  implements View.OnClickListener
 {
-  private static nth a;
+  public nth(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
   
-  private nth()
+  public void onClick(View paramView)
   {
-    a = this;
-  }
-  
-  public static nth a()
-  {
-    if (a == null) {
-      a = new nth();
-    }
-    return a;
-  }
-  
-  public Drawable a(Resources paramResources, int paramInt)
-  {
-    Object localObject = BaseApplicationImpl.sImageCache.get(String.valueOf(paramInt));
-    if ((localObject != null) && ((localObject instanceof Drawable))) {
-      localObject = (Drawable)localObject;
-    }
-    for (;;)
-    {
-      return localObject;
-      localObject = null;
-      try
-      {
-        paramResources = paramResources.getDrawable(paramInt);
-        localObject = paramResources;
-        if (paramResources == null) {
-          continue;
-        }
-        BaseApplicationImpl.sImageCache.put(String.valueOf(paramInt), paramResources);
-        return paramResources;
-      }
-      catch (OutOfMemoryError paramResources)
-      {
-        for (;;)
-        {
-          paramResources = (Resources)localObject;
-        }
-      }
-    }
+    Intent localIntent = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nth
  * JD-Core Version:    0.7.0.1
  */

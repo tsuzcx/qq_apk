@@ -1,27 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aelc
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public aelc(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public aelc(JumpActivity paramJumpActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-    if ((paramView == null) || (paramView.length() == 0)) {
-      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131692139), 0).show();
+    if (!this.a.isFinishing())
+    {
+      this.a.finish();
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
     }
-    while (paramView == null) {
-      return;
-    }
-    this.a.a(paramView);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    VerifyCodeActivity.b(this.a, false);
   }
 }
 

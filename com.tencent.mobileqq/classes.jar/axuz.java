@@ -1,24 +1,23 @@
-public class axuz
+import android.text.Editable;
+import android.text.TextWatcher;
+
+class axuz
+  implements TextWatcher
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final long b;
+  axuz(axuv paramaxuv) {}
   
-  private axuz(long paramLong1, long paramLong2, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
+    axei.a(this.a.a, 30);
   }
   
-  public String toString()
-  {
-    return "VideoTimeStamp{TIME-CLOCK=" + this.jdField_a_of_type_Long + ", TIME-FRAME=" + this.b + ", CYCLE=" + this.jdField_a_of_type_Int + '}';
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axuz
  * JD-Core Version:    0.7.0.1
  */

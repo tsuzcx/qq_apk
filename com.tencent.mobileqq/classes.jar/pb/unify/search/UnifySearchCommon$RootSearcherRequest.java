@@ -18,6 +18,7 @@ public final class UnifySearchCommon$RootSearcherRequest
   public final PBBytesField json_data = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField ocean_data = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field page_size = PBField.initUInt32(0);
+  public final PBBytesField qua = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBRepeatField<ByteStringMicro> query_cate = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field query_rewrite = PBField.initUInt32(0);
   public final PBRepeatField<Long> rpt_busi_mask = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
@@ -29,12 +30,13 @@ public final class UnifySearchCommon$RootSearcherRequest
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 16, 32, 80, 90, 402, 408, 418, 424, 442 }, new String[] { "business", "page_size", "rpt_busi_mask", "cookie", "ocean_data", "use_all_mask", "query_cate", "query_rewrite", "json_data" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), localByteStringMicro4 }, RootSearcherRequest.class);
+    ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 16, 32, 80, 90, 402, 408, 418, 424, 434, 442 }, new String[] { "business", "page_size", "rpt_busi_mask", "cookie", "ocean_data", "use_all_mask", "query_cate", "query_rewrite", "qua", "json_data" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5 }, RootSearcherRequest.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pb.unify.search.UnifySearchCommon.RootSearcherRequest
  * JD-Core Version:    0.7.0.1
  */

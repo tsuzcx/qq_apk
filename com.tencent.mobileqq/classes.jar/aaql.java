@@ -1,23 +1,73 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
+import com.tencent.biz.troop.file.MoveFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aaql
-  extends BroadcastReceiver
+public class aaql
+  extends aarh
 {
-  private aaql(aaqj paramaaqj) {}
+  public aaql(MoveFileActivity paramMoveFileActivity, besl parambesl) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    int i = paramIntent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_TYPE", -1);
-    if (i == 3) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.b();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("fileId", MoveFileActivity.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
+    localIntent.putExtra("folderId", this.jdField_a_of_type_Besl.b);
+    int i = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity().getResources().getDimensionPixelSize(2131298998);
+    if (paramBoolean)
     {
-      aase.a("VolumeBroadcastReceiver", "VolumeBroadcastReceiver action type = " + paramIntent.getAction() + ", isStreamMusic = " + bool + ", streamType = " + i);
-      if (("android.media.VOLUME_CHANGED_ACTION".equals(paramIntent.getAction())) && (bool) && (aaqj.a(this.a) != null)) {
-        aaqj.a(this.a).a(new Object[0]);
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app;
+      String str = Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a);
+      if (MoveFileActivity.c(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).equals("/"))
+      {
+        paramString = "0";
+        bcst.b(localQQAppInterface, "P_CliOper", "Grp_files", "", "file", "move_suc", 0, 0, str, paramString, "", "");
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 2, anni.a(2131705686), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(-1, localIntent);
       }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.finish();
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.overridePendingTransition(0, 2130772001);
       return;
+      paramString = "1";
+      break;
+      switch (paramInt)
+      {
+      default: 
+        paramString = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getString(2131695381);
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, paramString, 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -302: 
+      case -301: 
+      case -103: 
+        bcst.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move_nofile", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anni.a(2131705679), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -136: 
+        bcst.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anni.a(2131705683), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -107: 
+      case -102: 
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anni.a(2131705682), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -406: 
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anni.a(2131705678), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -407: 
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anni.a(2131705680), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+      }
     }
   }
 }

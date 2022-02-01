@@ -1,18 +1,36 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import cooperation.qzone.LocalMultiProcConfig;
+import android.view.View;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-public final class bjgb
-  implements CompoundButton.OnCheckedChangeListener
+public class bjgb
+  implements bkhw
 {
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public bjgb(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    LocalMultiProcConfig.putBool("qz_safe_mode_no_tip", paramBoolean);
+    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
+      if (paramInt == 0) {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
+      return;
+      if (paramInt == 1)
+      {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
+        continue;
+        if (paramInt == 0) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjgb
  * JD-Core Version:    0.7.0.1
  */

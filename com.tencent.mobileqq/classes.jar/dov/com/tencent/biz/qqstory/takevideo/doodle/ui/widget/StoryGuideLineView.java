@@ -1,6 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -15,11 +14,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bmzn;
-import bnle;
+import anni;
+import bpqt;
+import bqcd;
 import com.tencent.biz.qqstory.view.PressDarkImageView;
-import xoe;
-import xof;
+import zhp;
+import zhq;
 
 public class StoryGuideLineView
   extends LinearLayout
@@ -60,18 +60,18 @@ public class StoryGuideLineView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131562669, this, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageView = ((PressDarkImageView)findViewById(2131373733));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373839));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377090));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131377428));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368214));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369505));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131373779));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131373780);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131373788);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131373785);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369513));
+    LayoutInflater.from(paramContext).inflate(2131562908, this, true);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageView = ((PressDarkImageView)findViewById(2131374436));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374541));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377893));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378257));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368541));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369900));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131374481));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131374482);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131374490);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131374487);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369908));
     setViewAlpha(this.jdField_c_of_type_AndroidWidgetLinearLayout);
   }
   
@@ -180,8 +180,8 @@ public class StoryGuideLineView
     jdField_b_of_type_Int = localDisplayMetrics.widthPixels - this.jdField_c_of_type_AndroidViewView.getMeasuredWidth();
     jdField_c_of_type_Int = 0;
     d = localDisplayMetrics.heightPixels - this.jdField_c_of_type_AndroidWidgetLinearLayout.getMeasuredHeight();
-    if (bnle.b()) {
-      d = localDisplayMetrics.heightPixels - this.jdField_c_of_type_AndroidWidgetLinearLayout.getMeasuredHeight() - bnle.e - bnle.jdField_a_of_type_Int;
+    if (bqcd.b()) {
+      d = localDisplayMetrics.heightPixels - this.jdField_c_of_type_AndroidWidgetLinearLayout.getMeasuredHeight() - bqcd.e - bqcd.jdField_a_of_type_Int;
     }
   }
   
@@ -190,28 +190,28 @@ public class StoryGuideLineView
     if ((this.jdField_c_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(alud.a(2131714829));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845980);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(anni.a(2131713130));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846419);
   }
   
-  public void setLinkerObject(bmzn parambmzn)
+  public void setLinkerObject(bpqt parambpqt)
   {
-    if ((parambmzn == null) || (this.jdField_c_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {
+    if ((parambpqt == null) || (this.jdField_c_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(parambmzn.c);
-    if (TextUtils.isEmpty(parambmzn.c)) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(parambmzn.a);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(parambpqt.c);
+    if (TextUtils.isEmpty(parambpqt.c)) {
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(parambpqt.a);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839436);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839610);
   }
   
-  public void setStoryTag(xoe paramxoe)
+  public void setStoryTag(zhp paramzhp)
   {
-    if ((paramxoe == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null)) {
+    if ((paramzhp == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null)) {
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramxoe.a.a);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramzhp.a.a);
   }
   
   public void setUserHead(Bitmap paramBitmap)
@@ -253,7 +253,7 @@ public class StoryGuideLineView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.StoryGuideLineView
  * JD-Core Version:    0.7.0.1
  */

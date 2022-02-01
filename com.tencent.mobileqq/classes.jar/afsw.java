@@ -1,17 +1,33 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.TextView;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
+import com.tencent.qphone.base.util.QLog;
 
-class afsw
-  extends afuf
+public class afsw
+  implements ArkViewImplement.LoadCallback
 {
-  afsw(afpy paramafpy)
+  public afsw(BirthdayActivatePageArkView paramBirthdayActivatePageArkView) {}
+  
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    super(paramafpy, null);
+    onLoadState(paramInt1);
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onLoadState(int paramInt)
   {
-    return new agee(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (paramInt == 1) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  SUCCESS");
+      }
+    }
+    while (paramInt != -1) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  failed");
+    }
+    this.a.a(false);
+    BirthdayActivatePageArkView.a(this.a).setText(anni.a(2131699957));
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.gdtad.jsbridge;
 
-import aamt;
-import aamu;
-import aand;
-import aaon;
-import aarp;
-import aarq;
-import aarr;
-import aars;
-import aasd;
-import aase;
-import aath;
-import aati;
-import adpn;
+import ackd;
+import acke;
+import ackn;
+import acly;
+import acqe;
+import acqf;
+import acqg;
+import acqh;
+import acqx;
+import acqy;
+import acsb;
+import acsc;
+import aevv;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -34,6 +34,7 @@ import com.tencent.gdtad.aditem.GdtHandler.Options;
 import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet;
@@ -41,10 +42,10 @@ import tencent.gdt.qq_ad_get.QQAdGet;
 public class GdtInterstitialFragmentForJS
   extends PublicBaseFragment
 {
-  private aamt jdField_a_of_type_Aamt;
-  private aamu jdField_a_of_type_Aamu = new aars(this);
-  private aand jdField_a_of_type_Aand;
-  private aaon jdField_a_of_type_Aaon;
+  private ackd jdField_a_of_type_Ackd;
+  private acke jdField_a_of_type_Acke = new acqh(this);
+  private ackn jdField_a_of_type_Ackn;
+  private acly jdField_a_of_type_Acly;
   private GdtInterstitialParams jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams = new GdtInterstitialParams();
   private qq_ad_get.QQAdGet jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
   
@@ -52,17 +53,17 @@ public class GdtInterstitialFragmentForJS
   {
     if ((paramActivity == null) || (paramJSONObject == null))
     {
-      aase.b("GdtInterstitialFragmentForJS", "start error");
+      acqy.b("GdtInterstitialFragmentForJS", "start error");
       return;
     }
-    aase.b("GdtInterstitialFragmentForJS", "start");
+    acqy.b("GdtInterstitialFragmentForJS", "start");
     Bundle localBundle = new Bundle();
     localBundle.putString("params", paramJSONObject.toString());
     paramJSONObject = new Intent();
     paramJSONObject.putExtra("public_fragment_window_feature", 1);
     paramJSONObject.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
     paramJSONObject.putExtras(localBundle);
-    adpn.a(paramActivity, paramJSONObject, paramClass, GdtInterstitialFragmentForJS.class);
+    aevv.a(paramActivity, paramJSONObject, paramClass, GdtInterstitialFragmentForJS.class);
   }
   
   private static int b(Activity paramActivity)
@@ -77,7 +78,7 @@ public class GdtInterstitialFragmentForJS
       switch (i)
       {
       default: 
-        aase.d("GdtInterstitialFragmentForJS", "Unknown screen orientation. Defaulting to portrait.");
+        acqy.d("GdtInterstitialFragmentForJS", "Unknown screen orientation. Defaulting to portrait.");
       case 0: 
         return 1;
       case 1: 
@@ -91,7 +92,7 @@ public class GdtInterstitialFragmentForJS
     {
     case 1: 
     default: 
-      aase.d("GdtInterstitialFragmentForJS", "Unknown screen orientation. Defaulting to landscape.");
+      acqy.d("GdtInterstitialFragmentForJS", "Unknown screen orientation. Defaulting to landscape.");
       return 0;
     case 0: 
       return 0;
@@ -159,11 +160,11 @@ public class GdtInterstitialFragmentForJS
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    aase.b("GdtInterstitialFragmentForJS", String.format("onActivityResult requestCode:%d resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    acqy.b("GdtInterstitialFragmentForJS", String.format("onActivityResult requestCode:%d resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     if (paramInt1 == 10001)
     {
-      if (this.jdField_a_of_type_Aaon != null) {
-        this.jdField_a_of_type_Aaon.a(getActivity(), paramInt2, paramIntent);
+      if (this.jdField_a_of_type_Acly != null) {
+        this.jdField_a_of_type_Acly.a(getActivity(), paramInt2, paramIntent);
       }
       if (paramInt2 != -1) {
         break label79;
@@ -179,51 +180,55 @@ public class GdtInterstitialFragmentForJS
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    aath.a().a(getActivity(), new aati());
+    acsb.a().a(getActivity(), new acsc());
     if (getArguments() == null) {
-      return null;
+      paramLayoutInflater = null;
     }
-    paramLayoutInflater = getArguments().getString("params");
-    try
+    for (;;)
     {
-      paramViewGroup = new JSONObject(paramLayoutInflater);
-      paramLayoutInflater = paramViewGroup.getJSONObject("requestParams");
-      paramBundle = paramViewGroup.getJSONObject("clickParams");
-      paramViewGroup = new JSONObject();
-      paramViewGroup.put("options", paramBundle);
-      this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(aasd.a(new qq_ad_get.QQAdGet(), paramLayoutInflater)));
-      paramLayoutInflater = new GdtHandler.Options();
-      GdtHandler.a(paramLayoutInflater, paramViewGroup.toString());
-      this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.a = paramLayoutInflater;
-      paramLayoutInflater = new Button(getActivity());
-      paramLayoutInflater.setText("load");
-      paramLayoutInflater.setOnClickListener(new aarp(this));
-      paramViewGroup = new Button(getActivity());
-      paramViewGroup.setText("show");
-      paramViewGroup.setOnClickListener(new aarq(this));
-      paramBundle = new Button(getActivity());
-      paramBundle.setText("show - close after 5s");
-      paramBundle.setOnClickListener(new aarr(this));
-      LinearLayout localLinearLayout = new LinearLayout(getActivity());
-      localLinearLayout.setBackgroundColor(Color.parseColor("#DBDBDB"));
-      localLinearLayout.setOrientation(1);
-      localLinearLayout.addView(paramLayoutInflater);
-      localLinearLayout.addView(paramViewGroup);
-      localLinearLayout.addView(paramBundle);
-      return localLinearLayout;
-    }
-    catch (JSONException paramLayoutInflater)
-    {
-      for (;;)
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
+      paramLayoutInflater = getArguments().getString("params");
+      try
       {
-        aase.d("GdtInterstitialFragmentForJS", "createParams error", paramLayoutInflater);
+        paramViewGroup = new JSONObject(paramLayoutInflater);
+        paramLayoutInflater = paramViewGroup.getJSONObject("requestParams");
+        paramBundle = paramViewGroup.getJSONObject("clickParams");
+        paramViewGroup = new JSONObject();
+        paramViewGroup.put("options", paramBundle);
+        this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(acqx.a(new qq_ad_get.QQAdGet(), paramLayoutInflater)));
+        paramLayoutInflater = new GdtHandler.Options();
+        GdtHandler.a(paramLayoutInflater, paramViewGroup.toString());
+        this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.a = paramLayoutInflater;
+        paramViewGroup = new Button(getActivity());
+        paramViewGroup.setText("load");
+        paramViewGroup.setOnClickListener(new acqe(this));
+        paramBundle = new Button(getActivity());
+        paramBundle.setText("show");
+        paramBundle.setOnClickListener(new acqf(this));
+        Button localButton = new Button(getActivity());
+        localButton.setText("show - close after 5s");
+        localButton.setOnClickListener(new acqg(this));
+        paramLayoutInflater = new LinearLayout(getActivity());
+        paramLayoutInflater.setBackgroundColor(Color.parseColor("#DBDBDB"));
+        paramLayoutInflater.setOrientation(1);
+        paramLayoutInflater.addView(paramViewGroup);
+        paramLayoutInflater.addView(paramBundle);
+        paramLayoutInflater.addView(localButton);
+      }
+      catch (JSONException paramLayoutInflater)
+      {
+        for (;;)
+        {
+          acqy.d("GdtInterstitialFragmentForJS", "createParams error", paramLayoutInflater);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS
  * JD-Core Version:    0.7.0.1
  */

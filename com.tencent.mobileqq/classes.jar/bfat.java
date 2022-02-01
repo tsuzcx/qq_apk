@@ -1,20 +1,27 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
 
 public class bfat
-  extends bfas
+  implements View.OnFocusChangeListener
 {
-  public bfat(Bundle paramBundle)
-  {
-    super(paramBundle);
-  }
+  public bfat(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public String a(String paramString1, String paramString2)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    paramString1 = this.a.getBundle(paramString1);
-    if (paramString1 != null) {
-      return paramString1.getString(paramString2);
+    paramView = this.a;
+    if (!paramBoolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (paramBoolean)
+      {
+        this.a.l = true;
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard.a());
+      }
+      return;
     }
-    return null;
   }
 }
 

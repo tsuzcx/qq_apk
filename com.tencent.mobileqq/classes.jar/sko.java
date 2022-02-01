@@ -1,136 +1,67 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
-public final class sko
+class sko
+  extends skd
 {
-  private int jdField_a_of_type_Int = -1;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  public TabLayoutCompat a;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private Object jdField_a_of_type_JavaLangObject;
-  public skp a;
-  private CharSequence b;
+  sko(ske paramske) {}
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return 5;
   }
   
-  @Nullable
-  public Drawable a()
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  @Nullable
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  @Nullable
-  public CharSequence a()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  @Nullable
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  @NonNull
-  public sko a(int paramInt)
-  {
-    return a(LayoutInflater.from(this.jdField_a_of_type_Skp.getContext()).inflate(paramInt, this.jdField_a_of_type_Skp, false));
-  }
-  
-  @NonNull
-  public sko a(@Nullable View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    c();
-    return this;
-  }
-  
-  @NonNull
-  public sko a(@Nullable CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    c();
-    return this;
-  }
-  
-  @NonNull
-  public sko a(@Nullable Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
-      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    ske.a(this.a, false);
+    Object localObject = null;
+    try
+    {
+      paramActionSheetItem = URLEncoder.encode(paramString, "UTF-8");
+      if (!TextUtils.isEmpty(paramBaseArticleInfo.getSubscribeUin()))
+      {
+        paramString = paramBaseArticleInfo.getSubscribeUin();
+        paramBaseArticleInfo = "https://post.mp.qq.com/jubao/index?_wv=3&puin=" + paramString + "&uin_type=0&url=" + paramActionSheetItem + "&type=4&key=" + paramBaseArticleInfo.getInnerUniqueID();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "click jubao btn, reportUrl:" + paramBaseArticleInfo);
+        }
+        paramString = new Intent(ske.a(this.a), QQBrowserActivity.class);
+        paramString.putExtra("url", paramBaseArticleInfo);
+        paramString.putExtra("hide_more_button", true);
+        ske.a(this.a).startActivity(paramString);
+        return;
+      }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.e(this);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
-      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    catch (UnsupportedEncodingException paramString)
+    {
+      for (;;)
+      {
+        paramActionSheetItem = localObject;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "encode url failed, because UTF-8 is unknown");
+          paramActionSheetItem = localObject;
+          continue;
+          if (!TextUtils.isEmpty(paramBaseArticleInfo.thirdUin)) {
+            paramString = paramBaseArticleInfo.thirdUin;
+          } else {
+            paramString = "0";
+          }
+        }
+      }
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public CharSequence b()
-  {
-    return this.b;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
-      throw new IllegalArgumentException("Tab not attached to a TabLayout");
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.c(this, true);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Skp != null) {
-      this.jdField_a_of_type_Skp.b();
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = null;
-    this.jdField_a_of_type_Skp = null;
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_JavaLangCharSequence = null;
-    this.b = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewView = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sko
  * JD-Core Version:    0.7.0.1
  */

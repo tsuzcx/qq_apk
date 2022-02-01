@@ -1,28 +1,19 @@
-import java.util.List;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import mqq.app.QQPermissionCallback;
 
 public class ayhd
+  implements QQPermissionCallback
 {
-  public int a;
-  public String a;
-  public List<String> a;
-  public String b;
-  public String c;
+  public ayhd(ScanOcrActivity paramScanOcrActivity) {}
   
-  public ayhd(int paramInt, String paramString1, String paramString2, String paramString3)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public ayhd(int paramInt, String paramString1, String paramString2, String paramString3, List<String> paramList)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a.grant();
   }
 }
 

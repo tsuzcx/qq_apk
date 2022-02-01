@@ -1,16 +1,15 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.widget.VideoView;
+import java.util.ArrayList;
 
-final class becu
-  implements MediaPlayer.OnCompletionListener
+public class becu
+  extends becx
 {
-  becu(VideoView paramVideoView) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    this.a.start();
-  }
+  public int a;
+  public ArrayList<bdyf> a = new ArrayList();
+  public byte[] a;
+  public int b;
+  public byte[] b;
+  public byte[] c;
+  public byte[] d;
 }
 
 

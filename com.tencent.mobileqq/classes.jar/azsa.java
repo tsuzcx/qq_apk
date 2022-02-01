@@ -1,108 +1,22 @@
-import android.os.SystemClock;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 public class azsa
+  implements QQPermissionCallback
 {
-  public static LinkedList<azsb> a = new LinkedList();
+  public azsa(ProfileCardMoreActivity paramProfileCardMoreActivity1, ProfileCardMoreActivity paramProfileCardMoreActivity2) {}
   
-  public static azsb a(Class paramClass, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramClass == null) {
-      return null;
-    }
-    int i = a.size() - 1;
-    while (i >= 0)
-    {
-      azsb localazsb = (azsb)a.get(i);
-      if ((paramClass == localazsb.jdField_a_of_type_JavaLangClass) && (paramInt == localazsb.jdField_a_of_type_Long))
-      {
-        a.remove(i);
-        return localazsb;
-      }
-      i -= 1;
-    }
-    return null;
+    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions denied...");
+    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public static void a(long paramLong)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext())
-    {
-      azsb localazsb = (azsb)localIterator.next();
-      localazsb.b += paramLong;
-    }
-  }
-  
-  public static void a(AppInterface paramAppInterface, Class paramClass, int paramInt1, String paramString, int paramInt2)
-  {
-    a(paramAppInterface, paramClass, paramInt1, paramString, paramInt2, "");
-  }
-  
-  public static void a(AppInterface paramAppInterface, Class paramClass, int paramInt1, String paramString1, int paramInt2, String paramString2)
-  {
-    if (paramClass == null) {
-      return;
-    }
-    int i = a.size();
-    if (i > 0)
-    {
-      i -= 1;
-      if (i >= 0)
-      {
-        azsb localazsb = (azsb)a.get(i);
-        if (localazsb.jdField_a_of_type_JavaLangClass == paramClass)
-        {
-          if (!(paramAppInterface instanceof QQAppInterface)) {
-            break label123;
-          }
-          azqs.b((QQAppInterface)paramAppInterface, "CliOper", "", "", localazsb.jdField_a_of_type_JavaLangString, localazsb.jdField_a_of_type_JavaLangString, localazsb.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localazsb.b), "", "");
-        }
-        for (;;)
-        {
-          a.remove(i);
-          i -= 1;
-          break;
-          label123:
-          if (paramAppInterface != null) {
-            paramAppInterface.reportClickEvent("CliOper", "", "", localazsb.jdField_a_of_type_JavaLangString, localazsb.jdField_a_of_type_JavaLangString, localazsb.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localazsb.b), "", "");
-          } else {
-            azqs.b(null, "CliOper", "", "", localazsb.jdField_a_of_type_JavaLangString, localazsb.jdField_a_of_type_JavaLangString, localazsb.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localazsb.b), "", "");
-          }
-        }
-      }
-    }
-    paramAppInterface = new azsb();
-    paramAppInterface.jdField_a_of_type_JavaLangClass = paramClass;
-    paramAppInterface.jdField_a_of_type_Long = paramInt1;
-    paramAppInterface.b = SystemClock.elapsedRealtime();
-    paramAppInterface.jdField_a_of_type_JavaLangString = paramString1;
-    paramAppInterface.jdField_a_of_type_Int = paramInt2;
-    a.add(paramAppInterface);
-  }
-  
-  public static void a(Class<?> paramClass, int paramInt1, int paramInt2, String paramString)
-  {
-    if ((paramClass == null) || (paramString == null)) {
-      return;
-    }
-    if (paramString.contains("/qunactivity/")) {}
-    for (String str = "0X8004EC8";; str = null)
-    {
-      if (paramString.contains("/hotchat/"))
-      {
-        str = "0X8004410";
-        paramInt2 = 2;
-      }
-      if (str == null) {
-        break;
-      }
-      a(null, paramClass, paramInt1, str, paramInt2);
-      return;
-    }
+    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions grant...");
+    this.b.g();
   }
 }
 

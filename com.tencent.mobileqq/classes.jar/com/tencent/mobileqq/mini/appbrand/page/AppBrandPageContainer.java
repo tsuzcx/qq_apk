@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -11,7 +10,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
-import bety;
+import anni;
+import biau;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.WindowInfo;
@@ -20,6 +20,7 @@ import com.tencent.mobileqq.mini.app.BaseAppLoaderManager;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
 import com.tencent.mobileqq.mini.appbrand.utils.WebviewPool;
 import com.tencent.mobileqq.mini.monitor.service.TaskMonitorManager;
 import com.tencent.mobileqq.mini.monitor.ui.MiniAppMonitorInfoView;
@@ -27,12 +28,14 @@ import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniProgramReporter;
 import com.tencent.mobileqq.mini.webview.BaseAppBrandWebview;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.TabBarView.OnTabItemClickListener;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.LinkedList;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class AppBrandPageContainer
@@ -93,11 +96,11 @@ public final class AppBrandPageContainer
       QLog.e("AppBrandPageContainer", 1, "executeDownSubPack return, activity is null or finishing.");
       return;
     }
-    bety localbety = new bety(this.appBrandRuntime.activity);
-    localbety.a(alud.a(2131700980));
-    localbety.setCancelable(false);
-    localbety.show();
-    this.appBrandRuntime.apkgInfo.downloadSubPack(paramString1, new AppBrandPageContainer.1(this, paramString1, localWeakReference, paramString2, localbety));
+    biau localbiau = new biau(this.appBrandRuntime.activity);
+    localbiau.a(anni.a(2131699405));
+    localbiau.setCancelable(false);
+    localbiau.show();
+    this.appBrandRuntime.apkgInfo.downloadSubPack(paramString1, new AppBrandPageContainer.1(this, paramString1, localWeakReference, paramString2, localbiau));
   }
   
   private AbsAppBrandPage getBrandPage()
@@ -133,6 +136,30 @@ public final class AppBrandPageContainer
   private boolean isUrlResReady(String paramString)
   {
     return (this.appBrandRuntime.apkgInfo.isUrlResReady(paramString)) && (this.appBrandRuntime.apkgInfo.isUrlFileExist(paramString));
+  }
+  
+  private void sendPageNotFoundEvent(String paramString)
+  {
+    for (boolean bool = false;; bool = true) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("path", paramString);
+        localJSONObject.put("query", AppBrandUtil.getQueryJson(paramString));
+        if ((this.pageLinkedList != null) && (this.pageLinkedList.size() > 0))
+        {
+          localJSONObject.put("isEntryPage", bool);
+          QLog.e("AppBrandPageContainer", 1, "onPageNotFound : " + localJSONObject.toString());
+          this.appBrandRuntime.serviceRuntime.evaluateSubcribeJS("onPageNotFound", localJSONObject.toString(), 0);
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("AppBrandPageContainer", 1, "onPageNotFound error", paramString);
+        return;
+      }
+    }
   }
   
   public final void cleanup(boolean paramBoolean)
@@ -334,7 +361,7 @@ public final class AppBrandPageContainer
       i = this.appBrandRuntime.activity.getRequestedOrientation();
       localObject2 = ((WebviewContainer)localObject2).getPageOrientation();
       if (!WindowInfo.ORIENTATION_AUTO.equals(localObject2)) {
-        break label443;
+        break label459;
       }
       paramInt = 4;
     }
@@ -346,6 +373,9 @@ public final class AppBrandPageContainer
       if (((AbsAppBrandPage)localObject1).getCurrentPageWebview() != null) {
         ((AbsAppBrandPage)localObject1).getCurrentPageWebview().onResume(true);
       }
+      if ((localObject1 instanceof AppBrandPage)) {
+        ((AppBrandPage)localObject1).updateNavBarWindowInfo();
+      }
       ((AbsAppBrandPage)localObject1).onPageForeground();
       ((AbsAppBrandPage)localObject1).onAppRoute("navigateBack", ((AbsAppBrandPage)localObject1).getUrl());
       return;
@@ -353,7 +383,7 @@ public final class AppBrandPageContainer
       {
         localObject2 = (AbsAppBrandPage)((Iterator)localObject1).next();
         QLog.d("AppBrandPageContainer", 4, "navigateBack clearPage=" + localObject2);
-        Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.getAppLoaderManager().getContext(), 2130772272);
+        Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.getAppLoaderManager().getContext(), 2130772281);
         localAnimation.setDuration(200L);
         localAnimation.setAnimationListener(new AppBrandPageContainer.3(this, (AbsAppBrandPage)localObject2));
         ((AbsAppBrandPage)localObject2).startAnimation(localAnimation);
@@ -361,7 +391,7 @@ public final class AppBrandPageContainer
       }
       paramInt += 1;
       break;
-      label443:
+      label459:
       if (WindowInfo.ORIENTATION_LANDSCAPE.equals(localObject2)) {
         paramInt = 0;
       } else {
@@ -375,7 +405,7 @@ public final class AppBrandPageContainer
     QLog.i("miniapp-start", 1, "navigateTo url=" + paramString + "; aliveWebViewCount : " + BaseAppBrandWebview.aliveWebViewCount);
     if (BaseAppBrandWebview.aliveWebViewCount > 11)
     {
-      Toast.makeText(getContext(), alud.a(2131700978), 0).show();
+      Toast.makeText(getContext(), anni.a(2131699403), 0).show();
       QLog.e("AppBrandPageContainer", 1, "打开WebView数量超过上限");
       return;
     }
@@ -545,7 +575,7 @@ public final class AppBrandPageContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer
  * JD-Core Version:    0.7.0.1
  */

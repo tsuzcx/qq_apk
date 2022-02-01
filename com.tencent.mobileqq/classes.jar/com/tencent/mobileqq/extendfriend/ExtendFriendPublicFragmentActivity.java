@@ -1,14 +1,18 @@
 package com.tencent.mobileqq.extendfriend;
 
+import Override;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.text.TextUtils;
-import azqs;
+import android.view.MotionEvent;
+import bcst;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ExtendFriendPublicFragmentActivity
   extends PublicFragmentActivity
@@ -30,7 +34,7 @@ public class ExtendFriendPublicFragmentActivity
     }
     for (;;)
     {
-      azqs.b(null, "dc00898", "", "", "0X800AD99", "0X800AD99", paramInt, 0, "", "", str, (String)localObject);
+      bcst.b(null, "dc00898", "", "", "0X800AD99", "0X800AD99", paramInt, 0, "", "", str, (String)localObject);
       return;
       str = "";
     }
@@ -61,10 +65,25 @@ public class ExtendFriendPublicFragmentActivity
     PublicFragmentActivity.a(paramContext, ExtendFriendFragment.class);
     a(paramInt);
   }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.ExtendFriendPublicFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

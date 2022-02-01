@@ -1,10 +1,35 @@
-import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.subtitles.EncodeRunnable;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-public abstract interface alnz
+public class alnz
 {
-  public abstract void a();
+  public int a;
+  public long a;
+  public Handler a;
+  public baqs a;
+  public EncodeRunnable a;
+  public INetInfoHandler a;
+  public Thread a;
+  public WeakReference<almt> a;
+  public HashMap<Integer, alny> a;
+  public boolean a;
+  public int b = 0;
+  public long b;
+  public boolean b;
+  public int c;
+  public long c;
+  public boolean c;
+  public int d;
+  public int e;
   
-  public abstract void a(int paramInt, Bitmap paramBitmap);
+  alnz()
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
 }
 
 

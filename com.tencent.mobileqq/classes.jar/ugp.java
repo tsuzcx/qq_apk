@@ -1,61 +1,49 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewStub;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import java.util.List;
+import UserGrowth.stFollowRsp;
 
-public class ugp
-  extends uga
+class ugp
+  implements ujj
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private List<FeedCloudMeta.StTagInfo> jdField_a_of_type_JavaUtilList;
-  private ugr jdField_a_of_type_Ugr;
+  ugp(ugn paramugn, int paramInt, String paramString) {}
   
-  public void a(ViewStub paramViewStub)
+  public void a(uju paramuju)
   {
-    if (paramViewStub != null)
+    if (!(paramuju.a instanceof stFollowRsp))
     {
-      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373178));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
-      paramViewStub = new LinearLayoutManager(this.jdField_a_of_type_AndroidViewView.getContext());
-      paramViewStub.setOrientation(0);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramViewStub);
-      this.jdField_a_of_type_Ugr = new ugr(this, null);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ugr);
-    }
-  }
-  
-  public void a(Object paramObject, int paramInt)
-  {
-    if ((paramObject instanceof FeedCloudMeta.StFeed))
-    {
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mDataPosition = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mFeed = ((FeedCloudMeta.StFeed)paramObject);
-      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mPlayScene = 1;
-      this.jdField_a_of_type_JavaLangObject = paramObject;
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_JavaUtilList = ((FeedCloudMeta.StFeed)paramObject).tagInfos.get();
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label100;
+      if (this.jdField_a_of_type_Int == 2) {
+        ugn.a(this.jdField_a_of_type_Ugn, this.jdField_a_of_type_JavaLangString, 1);
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (this.jdField_a_of_type_Ugr != null) {
-        this.jdField_a_of_type_Ugr.a(this.jdField_a_of_type_JavaUtilList);
+      for (;;)
+      {
+        upe.b("WSUserBusiness", "[getServiceListenerWrapper] data error: " + paramuju.a);
+        return;
+        ugn.a(this.jdField_a_of_type_Ugn, this.jdField_a_of_type_JavaLangString, 2);
       }
     }
-    return;
-    label100:
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    int i = ((stFollowRsp)paramuju.a).isFollow;
+    upe.b("WSUserBusiness", "[getServiceListenerWrapper] isFollow : " + i);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      if (i == 1)
+      {
+        biti.a().a(2131719186);
+        return;
+      }
+      biti.a().a(2131719184);
+      ugn.a(this.jdField_a_of_type_Ugn, this.jdField_a_of_type_JavaLangString, 2);
+      return;
+    }
+    if (i == 0)
+    {
+      biti.a().a(2131719188);
+      return;
+    }
+    biti.a().a(2131719189);
+    ugn.a(this.jdField_a_of_type_Ugn, this.jdField_a_of_type_JavaLangString, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ugp
  * JD-Core Version:    0.7.0.1
  */

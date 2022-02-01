@@ -1,16 +1,26 @@
-import android.content.Context;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class apjk
-  extends mbk
+class apjk
+  extends apjl
 {
-  public static boolean a(Context paramContext, String paramString)
+  private apjk()
   {
-    return a(paramContext, "TencentDoc_USER_" + paramString, false);
+    super(null);
   }
   
-  public static void b(Context paramContext, String paramString, boolean paramBoolean)
+  public String a()
   {
-    a(paramContext, "TencentDoc_USER_" + paramString, paramBoolean);
+    return "GetUIN";
+  }
+  
+  public void a(apih paramapih, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    paramVariantWrapper.SetString(apkf.a());
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

@@ -1,31 +1,50 @@
-import Wallet.GetPasswordReq;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qwallet.plugin.PatternLockUtils;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.widget.XListView;
 
 public class aivg
+  implements aiuw
 {
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (PatternLockUtils.getSyncPatternLockState(paramQQAppInterface.getApp(), paramQQAppInterface.c()))
-    {
-      GetPasswordReq localGetPasswordReq = new GetPasswordReq();
-      localGetPasswordReq.MQOS = "Android";
-      ((amay)paramQQAppInterface.a(42)).a(localGetPasswordReq);
-    }
-  }
+  public aivg(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramLong < 1L)) {
-      return;
+    if ((this.a.jdField_b_of_type_Boolean) && (AddContactViewPagerTroopFragment.a(this.a) != null)) {
+      AddContactViewPagerTroopFragment.b(this.a).a(this.a.b(), paramBoolean, null);
     }
-    Intent localIntent = new Intent("com.tencent.qwallet.payer.notify");
-    localIntent.putExtra("sendUin", paramLong);
-    localIntent.putExtra("tokenId", paramString);
-    paramQQAppInterface.getApp().sendBroadcast(localIntent);
+    if (paramBoolean)
+    {
+      if (paramInt <= 0) {
+        break label73;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    }
+    label73:
+    Object localObject;
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      localObject = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20191206115411_QbbYvjs7gs.png", null);
+      if ((localObject != null) && (1 != ((URLDrawable)localObject).getStatus())) {
+        ((URLDrawable)localObject).restartDownload();
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131689620);
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131689624);
+      this.a.c.setText(2131689621);
+      this.a.c.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      this.a.c.setOnClickListener(new aivh(this));
+      localObject = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
+    } while ((localObject == null) || (!(localObject instanceof ViewGroup)));
+    ((ViewGroup)localObject).setBackgroundResource(2130839394);
   }
 }
 

@@ -44,6 +44,7 @@ public class AdAppReceiver
         AdReporterForAnalysis.reportForAppInstalled(paramIntent);
       }
     } while ((!AdClickUtil.isValidForApp(paramIntent)) || (TextUtils.isEmpty(paramIntent.ad.getAppDeeplink())));
+    b.reportAsync(new WeakReference(paramIntent.activity.get()), paramIntent.ad, 297);
     AdClickUtil.handleAppWithDeeplink(paramIntent, true);
   }
   
@@ -76,12 +77,27 @@ public class AdAppReceiver
     if ((paramContext == null) || (this.registered)) {
       return;
     }
-    AdLog.i("AdAppReceiver", "register");
+    try
+    {
+      if (this.registered) {
+        return;
+      }
+    }
+    finally {}
     this.registered = true;
+    AdLog.i("AdAppReceiver", "register");
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
     localIntentFilter.addDataScheme("package");
-    paramContext.registerReceiver(this, localIntentFilter);
+    try
+    {
+      paramContext.registerReceiver(this, localIntentFilter);
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      AdLog.e("AdAppReceiver", "register", paramContext);
+    }
   }
   
   public void unregister(Context paramContext)
@@ -89,14 +105,29 @@ public class AdAppReceiver
     if ((paramContext == null) || (!this.registered)) {
       return;
     }
-    AdLog.i("AdAppReceiver", "unregister");
+    try
+    {
+      if (!this.registered) {
+        return;
+      }
+    }
+    finally {}
     this.registered = false;
-    paramContext.unregisterReceiver(this);
+    AdLog.i("AdAppReceiver", "unregister");
+    try
+    {
+      paramContext.unregisterReceiver(this);
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      AdLog.e("AdAppReceiver", "unregisterReceiver", paramContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.util.AdAppReceiver
  * JD-Core Version:    0.7.0.1
  */

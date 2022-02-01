@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
-import alud;
 import android.text.TextUtils;
 import android.widget.LinearLayout;
+import anni;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import java.util.HashMap;
@@ -53,7 +53,7 @@ public class ApkgDebugConstants
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         FormSimpleItem localFormSimpleItem = new FormSimpleItem(paramLinearLayout.getContext());
-        localFormSimpleItem.setLeftText(alud.a(2131700668) + ((ApkgConfig)localEntry.getValue()).app_name);
+        localFormSimpleItem.setLeftText(anni.a(2131699094) + ((ApkgConfig)localEntry.getValue()).app_name);
         localFormSimpleItem.setOnClickListener(new ApkgDebugConstants.1(paramLinearLayout, localEntry));
         paramLinearLayout.addView(localFormSimpleItem);
       }
@@ -62,7 +62,7 @@ public class ApkgDebugConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.ApkgDebugConstants
  * JD-Core Version:    0.7.0.1
  */

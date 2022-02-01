@@ -1,56 +1,37 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
-class ugs
-  extends RecyclerView.ViewHolder
+final class ugs
+  implements DialogInterface.OnClickListener
 {
-  public RelativeLayout a;
-  public TextView a;
-  public FeedCloudMeta.StTagInfo a;
+  ugs(Activity paramActivity, String paramString, WSDownloadParams paramWSDownloadParams, int paramInt1, int paramInt2) {}
   
-  public ugs(ugr paramugr, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369129));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369127));
-  }
-  
-  public void a(FeedCloudMeta.StTagInfo paramStTagInfo, int paramInt)
-  {
-    if (paramStTagInfo != null)
+    if (zmi.a(this.jdField_a_of_type_AndroidAppActivity))
     {
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = paramStTagInfo;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStTagInfo.tagName.get());
-      paramStTagInfo = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      if (paramInt != 0) {
-        break label93;
-      }
-      paramStTagInfo.setMargins(azkz.a(12.0F), 0, 0, 0);
+      upg.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
+      umq.a(114, this.jdField_a_of_type_Int, this.b, null);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramStTagInfo);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(azkz.a(5.0F), 0, azkz.a(5.0F), 0);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ugt(this));
+      paramDialogInterface.dismiss();
+      umw.b(112, 1, 0);
       return;
-      label93:
-      if (paramInt == this.jdField_a_of_type_Ugr.a.size() - 1) {
-        paramStTagInfo.setMargins(azkz.a(5.0F), 0, azkz.a(38.0F), 0);
-      } else {
-        paramStTagInfo.setMargins(azkz.a(5.0F), 0, 0, 0);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem == null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem = umq.a();
       }
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem.downloadscene = ugx.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem.comment_loctaion = this.b;
+      ugx.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ugs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 public abstract interface arya
 {
-  public abstract void a(aryb paramaryb);
+  public abstract void a();
 }
 
 

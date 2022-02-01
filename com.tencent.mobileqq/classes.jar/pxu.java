@@ -1,23 +1,18 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigGallery;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDianDianEntranceModule.1;
 
 public class pxu
-  extends pxv
+  implements pml
 {
-  public pxu(Context paramContext, bdbb parambdbb, rqj paramrqj)
-  {
-    super(paramContext, parambdbb, paramrqj);
-  }
+  public pxu(ReadInJoyDianDianEntranceModule.1 param1) {}
   
-  public pxl g()
+  public void a(pmn parampmn)
   {
-    this.jdField_a_of_type_Pxk = new ComponentContentBigGallery(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    parampmn.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pxu
  * JD-Core Version:    0.7.0.1
  */

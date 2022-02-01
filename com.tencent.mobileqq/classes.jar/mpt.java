@@ -1,180 +1,315 @@
-import android.content.Context;
-import android.view.SurfaceHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.FaceItem;
-import com.tencent.av.ui.funchat.magicface.MagicfaceViewForAV;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.av.ui.BaseToolbar;
+import com.tencent.av.ui.RedbagToolbar;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class mpt
-  implements ljn<FaceItem>
 {
-  protected RelativeLayout a;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  FaceItem jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem;
-  protected MagicfaceViewForAV a;
-  WeakReference<ViewGroup> jdField_a_of_type_JavaLangRefWeakReference;
-  private lju jdField_a_of_type_Lju;
-  boolean jdField_a_of_type_Boolean;
+  public static int a;
+  public static long a;
+  public static String a;
+  public static int b;
   
-  public mpt(VideoAppInterface paramVideoAppInterface, Context paramContext)
+  static
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    jdField_a_of_type_Int = 0;
   }
   
-  private void a()
+  static int a(int paramInt)
   {
-    if (this.jdField_a_of_type_Lju == null) {
-      this.jdField_a_of_type_Lju = ((lju)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3));
+    int i = 1;
+    if ((paramInt & 0x3F) != 0) {
+      i = 2;
     }
+    return i;
   }
   
-  private void a(long paramLong, ViewGroup paramViewGroup, boolean paramBoolean, FaceItem paramFaceItem, int paramInt)
+  public static void a()
   {
-    if (paramFaceItem.isSameType("face")) {
-      b(paramViewGroup);
+    a("0X8008984", null);
+  }
+  
+  public static void a(int paramInt)
+  {
+    jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static void a(long paramLong)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("RedBagReport", 1, "setCurRoomId, RoomId[" + jdField_a_of_type_JavaLangString + "->" + paramLong + "]");
     }
-    for (;;)
+    jdField_a_of_type_JavaLangString = String.valueOf(paramLong);
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, BaseToolbar paramBaseToolbar)
+  {
+    if (paramBaseToolbar != null)
     {
-      this.jdField_a_of_type_Lju.a(paramLong, paramFaceItem, paramFaceItem.getId(), paramBoolean, this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV);
-      return;
-      if ((paramFaceItem.isSameType("pendant")) || (paramFaceItem.isSameType("creativecop"))) {
-        a(paramViewGroup);
-      } else if (paramFaceItem.isSameType("voicesticker")) {
-        b(paramViewGroup);
-      }
+      paramBaseToolbar = new mim();
+      RedbagToolbar.getRedBagBtnStatus(paramVideoAppInterface, paramBaseToolbar);
     }
-  }
-  
-  private void b(ViewGroup paramViewGroup)
-  {
-    Object localObject = new StringBuilder().append("realyShowView : ");
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {}
-    for (boolean bool = true;; bool = false)
+    for (int j = paramBaseToolbar.jdField_a_of_type_Int;; j = -1)
     {
-      lek.e("MagicfaceViewProxy", bool);
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
+      int n;
+      int k;
+      int i;
+      if (j != -1)
       {
-        localObject = View.inflate(BaseApplicationImpl.getContext(), 2131559588, null);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131370000));
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV = ((MagicfaceViewForAV)((View)localObject).findViewById(2131369998));
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV.setZOrderMediaOverlay(true);
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV.getHolder().setFormat(-2);
-        localObject = paramViewGroup.findViewById(2131372917);
-        int i = -1;
-        if (localObject != null) {
-          i = paramViewGroup.indexOfChild((View)localObject);
+        n = a(j);
+        if (n != 2) {
+          break label243;
         }
-        paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, i);
+        k = 0;
+        i = 1;
+        if (k >= 32) {
+          break label243;
+        }
+        if ((j & i) != i) {}
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      for (;;)
+      {
+        k = 0;
+        int m = 1;
+        label65:
+        if (k < 32)
+        {
+          if ((j & m) == m) {
+            if ((m & 0x3F) == 0) {
+              break label130;
+            }
+          }
+          for (boolean bool = true;; bool = false)
+          {
+            ltb.a(bool, String.valueOf(m));
+            m <<= 1;
+            k += 1;
+            break label65;
+            k += 1;
+            i <<= 1;
+            break;
+          }
+        }
+        label130:
+        if (QLog.isDevelopLevel()) {
+          QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X8008977" + "], statusFixedEntrance[" + j + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], light[" + n + "], first[" + i + "]");
+        }
+        bcst.b(null, "dc00898", "", "", "0X8008977", "0X8008977", n, 0, String.valueOf(i), String.valueOf(j), jdField_a_of_type_JavaLangString, "");
+        return;
+        label243:
+        i = 0;
+      }
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    long l1 = jdField_a_of_type_Long;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    {
+      bool1 = bool2;
+      if (jdField_a_of_type_Long > 0L)
+      {
+        long l2 = System.currentTimeMillis();
+        long l3 = jdField_a_of_type_Long;
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("time", String.valueOf(l2 - l3));
+        localHashMap.put("redbagId", String.valueOf(paramString));
+        localHashMap.put("roomid", jdField_a_of_type_JavaLangString);
+        bool1 = UserAction.onUserAction("reportAVRedbagGameTime", true, -1L, -1L, localHashMap, true);
+        jdField_a_of_type_Long = 0L;
+      }
+    }
+    if (AudioHelper.e()) {
+      QLog.w("RedBagReport", 1, "reportRedbagCount, count[" + b + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], begin[" + l1 + "], ret[" + bool1 + "]");
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("RedBagReport", 1, "reportClickEvent, key[" + paramString1 + "], mFromType[" + jdField_a_of_type_Int + "], value[" + paramString2 + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
+    }
+    bcst.b(null, "dc00898", "", "", paramString1, paramString1, jdField_a_of_type_Int, 0, "", "", jdField_a_of_type_JavaLangString, paramString2);
+  }
+  
+  public static void a(mpv parammpv)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X800897F" + "], fromType[" + jdField_a_of_type_Int + "], mSucAboutGame[" + parammpv.jdField_a_of_type_Boolean + "], mExceptionType[" + parammpv.jdField_f_of_type_Int + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
+    }
+    int i = jdField_a_of_type_Int;
+    int j = parammpv.jdField_f_of_type_Int;
+    if (parammpv.jdField_a_of_type_Boolean) {}
+    for (parammpv = "1";; parammpv = "0")
+    {
+      bcst.b(null, "dc00898", "", "", "0X800897F", "0X800897F", i, 0, String.valueOf(j), parammpv, jdField_a_of_type_JavaLangString, "");
       return;
     }
   }
   
-  public void a(long paramLong, ViewGroup paramViewGroup, mez parammez)
+  public static void a(boolean paramBoolean, int paramInt)
   {
-    boolean bool2 = false;
-    Object localObject = new StringBuilder().append("showView, requestPlayMagicFace[").append(parammez).append("], mRootView[");
-    if (paramViewGroup != null) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      QLog.w("MagicfaceViewProxy", 1, bool1 + "], mItem[" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem + "], seq[" + paramLong + "]");
-      if (paramViewGroup != null) {
-        break;
-      }
-      return;
+    int i = 1;
+    int j = a(paramInt);
+    if (QLog.isDevelopLevel()) {
+      QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X8008978" + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], ret[" + paramBoolean + "], disableType[" + paramInt + "], light[" + j + "]");
     }
-    a();
-    this.jdField_a_of_type_Lju.a(paramLong, this);
-    localObject = (FaceItem)this.jdField_a_of_type_Lju.a(parammez.c);
-    bool1 = bool2;
-    if (localObject != null)
-    {
-      llc localllc = (llc)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5);
-      bool1 = localllc.a(3, "normal");
-      bool2 = localllc.a(3, "interact");
-      if ((bool1) && ((bool2) || (!((FaceItem)localObject).isInteract()))) {
-        break label253;
-      }
-      bool1 = true;
-      if (bool1) {
-        break label300;
-      }
-      if (!((FaceItem)localObject).isUsable()) {
-        break label259;
-      }
-      a(paramLong, paramViewGroup, parammez.jdField_a_of_type_Boolean, (FaceItem)localObject, parammez.jdField_a_of_type_Int);
-    }
-    label259:
-    label300:
+    if (paramBoolean) {}
     for (;;)
     {
-      QLog.w("MagicfaceViewProxy", 1, "showView, dimmed[" + bool1 + "], item[" + localObject + "]");
+      bcst.b(null, "dc00898", "", "", "0X8008978", "0X8008978", j, i, String.valueOf(paramInt), "", jdField_a_of_type_JavaLangString, String.valueOf(j));
       return;
-      label253:
-      bool1 = false;
-      break;
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramViewGroup);
-      this.jdField_a_of_type_Boolean = parammez.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem = ((FaceItem)localObject);
-      this.jdField_a_of_type_Lju.a(parammez.a(), (ljo)localObject);
+      i = 0;
     }
   }
   
-  public void a(long paramLong, FaceItem paramFaceItem) {}
-  
-  public void a(long paramLong, FaceItem paramFaceItem, boolean paramBoolean)
+  public static void b()
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (paramFaceItem != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem.getId().equalsIgnoreCase(paramFaceItem.getId())))
+    a("0X8008985", null);
+  }
+  
+  public static void b(int paramInt)
+  {
+    String str;
+    if (paramInt == 0)
     {
-      ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localViewGroup != null)
-      {
-        QLog.w("MagicfaceViewProxy", 1, "onDownloadFinish, prepareShow, seq[" + paramLong + "], FaceItem[" + paramFaceItem + "]");
-        a(paramLong, localViewGroup, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem, 6);
+      str = "0X800897B";
+      f();
+    }
+    for (;;)
+    {
+      a(str, null);
+      return;
+      if (paramInt == 4) {
+        str = "0X800897C";
+      } else {
+        str = "0X800897D";
       }
     }
   }
   
-  public void a(ViewGroup paramViewGroup)
+  public static void b(mpv parammpv)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("realyHideView : ");
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {}
-    for (boolean bool = true;; bool = false)
+    String str2 = "0X8008982";
+    String str1 = str2;
+    switch (parammpv.jdField_e_of_type_Int)
     {
-      lek.c("MagicfaceViewProxy", bool);
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-      {
-        paramViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV = null;
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+    default: 
+      str1 = str2;
+    }
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w("RedBagReport", 1, "reportClickEvent, key[" + str1 + "], fromType[" + jdField_a_of_type_Int + "], getRedbag_ResultCode[" + parammpv.jdField_e_of_type_JavaLangString + "], getRedbag_ResultState[" + parammpv.jdField_f_of_type_JavaLangString + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], hitScore[" + parammpv.jdField_a_of_type_Int + "]");
       }
+      bcst.b(null, "dc00898", "", "", str1, str1, jdField_a_of_type_Int, parammpv.jdField_a_of_type_Int, String.valueOf(parammpv.jdField_f_of_type_Int), parammpv.jdField_e_of_type_JavaLangString, jdField_a_of_type_JavaLangString, parammpv.jdField_f_of_type_JavaLangString);
       return;
+      str1 = "0X800897E";
+      continue;
+      str1 = "0X8008983";
+      continue;
+      str1 = "0X8008981";
+      continue;
+      str1 = "0X8008980";
     }
   }
   
-  public void a(ViewGroup paramViewGroup, String paramString, boolean paramBoolean)
+  public static void b(boolean paramBoolean, int paramInt)
   {
-    if (paramViewGroup == null) {}
-    while (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)) {
-      return;
+    String str = "0X8008A99";
+    if (!paramBoolean) {
+      str = "0X8008A9A";
     }
-    a();
-    this.jdField_a_of_type_Lju.b(-1048L, this);
-    this.jdField_a_of_type_Lju.a(0, paramString, paramBoolean);
-    a(paramViewGroup);
+    bcst.b(null, "dc00898", "", "", str, str, jdField_a_of_type_Int, 0, String.valueOf(paramInt), "", jdField_a_of_type_JavaLangString, null);
   }
   
-  public void a(FaceItem paramFaceItem, int paramInt) {}
+  public static void c()
+  {
+    a("0X8008986", null);
+  }
+  
+  public static void d()
+  {
+    a("0X8008987", null);
+  }
+  
+  public static void e()
+  {
+    a("0X8008988", null);
+  }
+  
+  public static void f()
+  {
+    b += 1;
+  }
+  
+  public static void g()
+  {
+    b = 0;
+  }
+  
+  public static void h()
+  {
+    if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (b > 0))
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("count", String.valueOf(b));
+      localHashMap.put("roomid", jdField_a_of_type_JavaLangString);
+      UserAction.onUserAction("reportAVRedbagCount", true, -1L, -1L, localHashMap, true);
+    }
+    if (AudioHelper.e()) {
+      QLog.w("RedBagReport", 1, "reportRedbagCount, count[" + b + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
+    }
+  }
+  
+  public static void i()
+  {
+    jdField_a_of_type_Long = System.currentTimeMillis();
+    if (AudioHelper.e()) {
+      QLog.w("RedBagReport", 1, "setGameBeginTime, mGameBeginTime[" + jdField_a_of_type_Long + "]");
+    }
+  }
+  
+  public static void j()
+  {
+    a("0X8008A98", null);
+  }
+  
+  public static void k()
+  {
+    a("0X8008CF0", null);
+  }
+  
+  public static void l()
+  {
+    a("0X8008CF1", null);
+  }
+  
+  public static void m()
+  {
+    a("0X8008A9B", null);
+  }
+  
+  public static void n()
+  {
+    a("0X8008CF2", null);
+  }
+  
+  public static void o()
+  {
+    a("0X8008CF3", null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mpt
  * JD-Core Version:    0.7.0.1
  */

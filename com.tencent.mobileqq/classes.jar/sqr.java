@@ -1,44 +1,21 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-class sqr
-  implements olx
+public class sqr
+  extends pue
 {
-  sqr(sqo paramsqo) {}
-  
-  public void a()
+  public sqr(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    if (sqo.a(this.a) != null) {
-      sqo.a(this.a).a();
-    }
+    super(paramString);
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean)
+  public void a(ptx paramptx)
   {
-    if (paramBoolean) {
-      return;
-    }
-    this.a.a(true);
-    sqo.a(this.a).c();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    sqo.a(this.a).e();
-    this.a.a(false);
-    sqo.a(this.a).c();
+    paramptx.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sqr
  * JD-Core Version:    0.7.0.1
  */

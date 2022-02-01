@@ -1,33 +1,80 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aleu
-  implements ValueAnimator.AnimatorUpdateListener
+  extends alej
 {
-  public aleu(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aleu(Context paramContext)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    this.jdField_a_of_type_JavaLangString = anni.a(2131692537);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramObject instanceof aleu))
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
-        break label42;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(aler.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+      paramObject = (aleu)paramObject;
+      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
+      return paramObject;
     }
-    label42:
-    do
+    paramObject = new aleu(BaseApplication.getContext());
+    paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
+    return paramObject;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(aler.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-        return;
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Beps == null) {
+        this.jdField_a_of_type_Beps = new beps();
       }
-    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(aler.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+      this.jdField_a_of_type_Beps.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Beps != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Beps.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,18 +1,34 @@
-import android.view.View;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.RoundImageView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
 class aoha
-  extends apdb
+  implements PermissionMonitor.Listener
 {
-  public ETTextView a;
-  public RoundImageView a;
-  
-  public aoha(aogx paramaogx, View paramView)
+  static
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131367819));
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)paramView.findViewById(2131364511));
+    if (!aogs.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  aoha(aogs paramaogs) {}
+  
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (aogs.a(this.jdField_a_of_type_Aogs) != Thread.currentThread()) {}
+    while ((!aogs.a(this.jdField_a_of_type_Aogs)) || (paramArrayOfObject.length != 2)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aogs.a(this.jdField_a_of_type_Aogs))) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)aogs.a(this.jdField_a_of_type_Aogs), (String)paramArrayOfObject[1]);
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

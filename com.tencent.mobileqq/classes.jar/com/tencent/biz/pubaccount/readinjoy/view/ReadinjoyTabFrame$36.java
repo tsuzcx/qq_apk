@@ -1,0 +1,21 @@
+package com.tencent.biz.pubaccount.readinjoy.view;
+
+import com.tencent.mobileqq.widget.QQToast;
+import rlt;
+
+class ReadinjoyTabFrame$36
+  implements Runnable
+{
+  ReadinjoyTabFrame$36(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  
+  public void run()
+  {
+    QQToast.a(this.this$0.a(), 2, rlt.d(), 0).a();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.36
+ * JD-Core Version:    0.7.0.1
+ */

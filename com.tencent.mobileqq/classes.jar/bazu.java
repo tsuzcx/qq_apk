@@ -1,47 +1,22 @@
-import android.content.res.XmlResourceParser;
-import org.xmlpull.v1.XmlPullParser;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class bazu
+  implements bazy
 {
-  private bazv jdField_a_of_type_Bazv;
-  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
+  public bazu(EditActivity paramEditActivity) {}
   
-  private void a()
+  public void a(int paramInt1, int paramInt2)
   {
-    String str1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "extension");
-    String str2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "mimetype");
-    this.jdField_a_of_type_Bazv.a(str1, str2);
-  }
-  
-  public bazv a()
-  {
-    this.jdField_a_of_type_Bazv = new bazv();
-    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
-    if (i != 1)
+    if ((paramInt1 == 102) && (EditActivity.a(this.a).actionId != 0) && (" ".equals(EditActivity.a(this.a).actionText)))
     {
-      String str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
-      if (i == 2) {
-        if (!str.equals("MimeTypes")) {}
-      }
-      for (;;)
+      bazh localbazh = EditActivity.a(this.a).a(EditActivity.a(this.a).actionId);
+      if (localbazh != null)
       {
-        i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
-        break;
-        if (str.equals("type"))
-        {
-          a();
-          continue;
-          if ((i != 3) || (!str.equals("MimeTypes"))) {}
-        }
+        EditActivity.a(this.a).actionText = localbazh.d;
+        EditActivity.a(this.a, false);
       }
     }
-    return this.jdField_a_of_type_Bazv;
-  }
-  
-  public bazv a(XmlResourceParser paramXmlResourceParser)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlResourceParser;
-    return a();
   }
 }
 

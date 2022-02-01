@@ -1,14 +1,18 @@
 package com.tencent.mobileqq.search.activity;
 
-import alud;
+import Override;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import azqs;
-import bcpx;
+import android.view.MotionEvent;
+import anni;
+import bcst;
+import bfup;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ContactSearchActivity
   extends BaseSearchActivity
@@ -48,9 +52,17 @@ public class ContactSearchActivity
     switch (this.d)
     {
     default: 
-      return alud.a(2131702947);
+      return anni.a(2131701354);
     }
-    return alud.a(2131702930);
+    return anni.a(2131701337);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -60,8 +72,8 @@ public class ContactSearchActivity
       paramIntent = paramIntent.getStringExtra("roomId");
       if (paramIntent != null)
       {
-        bcpx.a(this, paramIntent, true);
-        azqs.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
+        bfup.a(this, paramIntent, true);
+        bcst.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
       }
     }
   }
@@ -76,10 +88,17 @@ public class ContactSearchActivity
     super.doOnCreate(paramBundle);
     return true;
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchActivity
  * JD-Core Version:    0.7.0.1
  */

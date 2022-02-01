@@ -1,16 +1,10 @@
-import android.view.animation.Interpolator;
-
-public class bibc
-  implements Interpolator
+public abstract interface bibc
 {
-  public float getInterpolation(float paramFloat)
-  {
-    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
-  }
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bibc
  * JD-Core Version:    0.7.0.1
  */

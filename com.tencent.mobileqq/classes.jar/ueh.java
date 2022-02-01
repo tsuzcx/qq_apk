@@ -1,28 +1,39 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.content.Context;
 import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomView;
+import android.view.ViewStub;
 
-public class ueh
-  implements ViewPager.OnPageChangeListener
+public abstract class ueh<T>
+  extends ueg<T>
 {
-  public ueh(QCirclePersonalBottomView paramQCirclePersonalBottomView) {}
+  protected int c = 1;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public ueh(Context paramContext)
   {
-    
-    if ((QCirclePersonalBottomView.a(this.a) != null) && (QCirclePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
-      QCirclePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
-    }
+    super(paramContext);
   }
+  
+  protected View a(int paramInt)
+  {
+    if (this.a != null) {
+      return this.a.findViewById(paramInt);
+    }
+    return null;
+  }
+  
+  public void a(ViewStub paramViewStub)
+  {
+    paramViewStub.setLayoutResource(b());
+    this.a = paramViewStub.inflate();
+    e();
+  }
+  
+  protected abstract int b();
+  
+  protected abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ueh
  * JD-Core Version:    0.7.0.1
  */

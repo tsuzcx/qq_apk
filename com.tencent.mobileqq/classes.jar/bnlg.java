@@ -1,52 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
-public class bnlg
-  extends AnimatorListenerAdapter
+class bnlg
+  implements View.OnTouchListener
 {
-  public bnlg(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  bnlg(bnlc parambnlc) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
+    if ((bnlc.a(this.a) != null) && (bnlc.d(this.a) != null)) {
+      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, bnlc.d(this.a), bnlc.a(this.a));
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", mActionUpAnimator:" + this.a.b.get());
-    }
-    if (!this.a.b.get())
-    {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      this.a.d();
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
-      this.a.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCountTimeLayout.setVisibility(0);
-      return;
-      this.a.e();
-      this.a.a(1.0F);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+    return true;
   }
 }
 

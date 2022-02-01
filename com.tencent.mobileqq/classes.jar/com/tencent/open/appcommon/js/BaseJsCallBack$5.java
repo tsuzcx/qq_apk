@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
 import android.os.Bundle;
-import bisj;
+import blhd;
 import cooperation.qappcenter.remote.SendMsg;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,7 +35,7 @@ class BaseJsCallBack$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.appcommon.js.BaseJsCallBack.5
  * JD-Core Version:    0.7.0.1
  */

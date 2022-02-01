@@ -1,15 +1,21 @@
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+
 public class alwy
+  implements atve
 {
-  public int a;
-  public long a = 9223372036854775807L;
-  public String a;
-  public int b = 1000;
-  public int c;
-  public int d = -1;
+  public alwy(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  
+  public void a()
+  {
+    ShortVideoPreviewActivity.b(this.a);
+    this.a.setResult(-1);
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alwy
  * JD-Core Version:    0.7.0.1
  */

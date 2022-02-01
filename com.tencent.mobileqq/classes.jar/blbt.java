@@ -1,52 +1,28 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONObject;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class blbt
 {
-  public int a;
-  public String a;
-  public List<String> a;
-  public int b = 6;
-  
-  public blbt()
+  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = "default";
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public blbt(List<String> paramList, String paramString, JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_JavaLangString = "default";
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramJSONObject != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt2 + "|");
+    localStringBuilder.append(paramInt1 + "|");
+    localStringBuilder.append(paramLong + "|");
+    localStringBuilder.append(Build.BRAND + "|");
+    localStringBuilder.append(Build.MODEL + "|");
+    localStringBuilder.append(Build.VERSION.RELEASE);
+    if ((paramAppRuntime instanceof QQAppInterface)) {}
+    for (paramAppRuntime = (QQAppInterface)paramAppRuntime;; paramAppRuntime = null)
     {
-      a(paramJSONObject);
-      return;
-    }
-    this.jdField_a_of_type_Int = 3;
-    this.b = 6;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaLangString != null) {}
-      for (paramJSONObject = paramJSONObject.getJSONObject(this.jdField_a_of_type_JavaLangString);; paramJSONObject = paramJSONObject.getJSONObject("default"))
-      {
-        this.jdField_a_of_type_Int = paramJSONObject.getInt("wordNum");
-        this.b = paramJSONObject.getInt("pendantNum");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadSuccessRateReporter", 2, "[preloadSuccessRate]: " + localStringBuilder.toString());
       }
+      bcrt.a(paramAppRuntime, "sendtdbank|b_sng_qqvip_qqcomic|preloadSuccessRate", localStringBuilder.toString(), true);
       return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
     }
   }
 }

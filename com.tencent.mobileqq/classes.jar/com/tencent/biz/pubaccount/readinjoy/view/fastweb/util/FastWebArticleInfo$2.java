@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import owy;
-import pfo;
-import sch;
+import pmh;
+import pwt;
+import tav;
 
 public class FastWebArticleInfo$2
   implements Runnable
@@ -12,16 +12,16 @@ public class FastWebArticleInfo$2
   
   public void run()
   {
-    pfo localpfo = owy.a().a();
-    if (localpfo == null) {
+    pwt localpwt = pmh.a().a();
+    if (localpwt == null) {
       return;
     }
-    localpfo.a(this.a.mArticleContentUrl, this.a.innerUniqueID, this.a.mSubscribeID, 2, new sch(this));
+    localpwt.a(this.a.mArticleContentUrl, this.a.innerUniqueID, this.a.mSubscribeID, 2, new tav(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,22 @@
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
 public class aypr
+  implements BusinessObserver
 {
-  public static aypp a(int paramInt)
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void b(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 80000000: 
-      return new aypo();
-    case 80000001: 
-      return new aypu();
-    case 80000002: 
-      return new ayps();
+    if (paramInt == 1) {
+      b(paramBoolean, paramBundle);
     }
-    return new aypm();
+    while (paramInt != 2) {
+      return;
+    }
+    a(paramBoolean, paramBundle);
   }
 }
 

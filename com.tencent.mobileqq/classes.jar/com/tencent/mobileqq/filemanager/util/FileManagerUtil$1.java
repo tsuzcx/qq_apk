@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import arsj;
+import atwg;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public final class FileManagerUtil$1
@@ -10,12 +10,12 @@ public final class FileManagerUtil$1
   
   public void run()
   {
-    arsj.a(this.a);
+    atwg.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerUtil.1
  * JD-Core Version:    0.7.0.1
  */

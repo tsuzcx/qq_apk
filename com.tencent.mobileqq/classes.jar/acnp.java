@@ -1,32 +1,27 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
 
-public class acnp
-  implements arrh
+class acnp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public acnp(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aqsb paramaqsb) {}
+  acnp(acno paramacno, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    arri.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692914));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
+    int i = this.jdField_a_of_type_Int;
+    paramValueAnimator.topMargin = ((int)(f * this.b) + i);
+    if (((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin <= acno.a(this.jdField_a_of_type_Acno)) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin >= acno.b(this.jdField_a_of_type_Acno))) && (acno.a(this.jdField_a_of_type_Acno).a))
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        if (bdhb.b(localFileManagerEntity.getFilePath())) {
-          this.jdField_a_of_type_Aqsb.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
-        } else {
-          this.jdField_a_of_type_Aqsb.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
-        }
-      }
+      acno.a(this.jdField_a_of_type_Acno);
+      return;
     }
+    acno.a(this.jdField_a_of_type_Acno).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_Acno.a((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin - acno.a(this.jdField_a_of_type_Acno)) * 1.0F / (acno.b(this.jdField_a_of_type_Acno) - acno.a(this.jdField_a_of_type_Acno)));
   }
-  
-  public void b() {}
 }
 
 

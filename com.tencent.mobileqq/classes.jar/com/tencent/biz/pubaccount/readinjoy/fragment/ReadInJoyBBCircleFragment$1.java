@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import nrt;
-import orz;
-import osk;
+import oat;
+import phi;
+import pho;
 
 class ReadInJoyBBCircleFragment$1
   implements Runnable
@@ -12,10 +12,10 @@ class ReadInJoyBBCircleFragment$1
   
   public void run()
   {
-    orz localorz = new orz();
-    localorz.b("entry_time", "" + ReadInJoyBBCircleFragment.a(this.this$0).a() / 1000L);
-    localorz.b("postset_time", "" + NetConnInfoCenter.getServerTime());
-    nrt.a(null, null, "0X800978C", "0X800978C", 0, 0, "" + ReadInJoyBBCircleFragment.a(this.this$0).b() / 1000L, "", "", localorz.a(), false);
+    phi localphi = new phi();
+    localphi.b("entry_time", "" + ReadInJoyBBCircleFragment.a(this.this$0).a() / 1000L);
+    localphi.b("postset_time", "" + NetConnInfoCenter.getServerTime());
+    oat.a(null, null, "0X800978C", "0X800978C", 0, 0, "" + ReadInJoyBBCircleFragment.a(this.this$0).b() / 1000L, "", "", localphi.a(), false);
   }
 }
 

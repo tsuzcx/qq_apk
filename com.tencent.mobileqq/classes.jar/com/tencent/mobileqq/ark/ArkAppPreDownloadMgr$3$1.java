@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ark;
 
 import android.text.TextUtils;
-import anok;
-import anon;
+import apoq;
+import apot;
 import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,7 +21,7 @@ public class ArkAppPreDownloadMgr$3$1
       if (QLog.isColorLevel()) {
         QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp begin app = ", this.a.a.a });
       }
-      ArkAppMgr.getInstance().getAppPathByName(this.a.a.a, "", "0.0.0.1", null, new anok(this));
+      ArkAppMgr.getInstance().getAppPathByName(this.a.a.a, "", "0.0.0.1", null, new apoq(this));
     }
     label106:
     while (!QLog.isColorLevel()) {
@@ -32,7 +32,7 @@ public class ArkAppPreDownloadMgr$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3.1
  * JD-Core Version:    0.7.0.1
  */

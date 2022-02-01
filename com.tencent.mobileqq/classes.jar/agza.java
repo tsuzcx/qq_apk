@@ -1,33 +1,17 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agza
-  extends MSFServlet
+class agza
+  extends ahbl
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  agza(agwz paramagwz)
   {
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
-      agyv.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
-    }
+    super(paramagwz, null);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (paramIntent == null)
-    {
-      QLog.e("StickerRecServlet", 1, "onSend : req is null");
-      return;
-    }
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
-    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
-    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
+    return new agtk(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

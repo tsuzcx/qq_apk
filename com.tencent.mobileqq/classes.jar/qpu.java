@@ -1,16 +1,13 @@
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import kotlin.Metadata;
 
-public class qpu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager$IPushNotifyDialogCallback;", "", "resultCallback", "", "buttonId", "", "result", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface qpu
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
-  ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qpu
  * JD-Core Version:    0.7.0.1
  */

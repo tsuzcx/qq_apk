@@ -1,20 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.widget.Switch;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 class njh
-  implements DialogInterface.OnCancelListener
+  extends BroadcastReceiver
 {
-  njh(nin paramnin, npo paramnpo, Switch paramSwitch) {}
+  njh(njg paramnjg) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+    int i = paramIntent.getIntExtra("request_type", 0);
+    QLog.i(this.a.c, 2, "receive request" + paramIntent.getExtras());
+    switch (i)
+    {
+    default: 
+      return;
+    }
+    paramContext = new Intent();
+    paramContext.setAction("com.tencent.mobileqq.NearbyJsInterface");
+    paramContext.putExtra("command_type", 1);
+    paramContext.putExtra("data", njg.a(this.a));
+    this.a.a.getApp().sendBroadcast(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     njh
  * JD-Core Version:    0.7.0.1
  */

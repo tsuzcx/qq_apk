@@ -1,22 +1,39 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.1;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.2;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class agfg
-  extends aeqi
+public class agfg
+  implements INetInfoHandler
 {
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public TextView e;
+  public agfg(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  
+  public void onNetMobile2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEditPanel", 2, "onNetMobile2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
+    }
+    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.1(this));
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEditPanel", 2, "onNetWifi2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
+    }
+    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.2(this));
+  }
 }
 
 

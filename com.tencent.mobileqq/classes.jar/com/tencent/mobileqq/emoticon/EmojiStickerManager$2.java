@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticon;
 
-import bdhb;
+import bgmg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +36,7 @@ final class EmojiStickerManager$2
     localObject = str + "emojiStickerGuideZip_v2" + ".zip";
     try
     {
-      bdhb.a((String)localObject, str, false);
+      bgmg.a((String)localObject, str, false);
       return;
     }
     catch (IOException localIOException)
@@ -52,7 +52,7 @@ final class EmojiStickerManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager.2
  * JD-Core Version:    0.7.0.1
  */

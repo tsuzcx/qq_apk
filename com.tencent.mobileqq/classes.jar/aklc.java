@@ -1,58 +1,88 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
-import java.net.URLEncoder;
+import android.content.Context;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
+import com.tencent.qphone.base.util.QLog;
 
-class aklc
-  implements View.OnClickListener
+public class aklc
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public PressEffectImageView a;
-  public View b;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private AnimationView.AnimationInfo jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
+  private AnimationView jdField_a_of_type_ComTencentMobileqqWidgetAnimationView;
   
-  aklc(aklb paramaklb) {}
-  
-  public void onClick(View paramView)
+  public aklc(Context paramContext, LinearLayout paramLinearLayout, int paramInt, boolean paramBoolean, AnimationView.MyAnimationListener paramMyAnimationListener)
   {
-    String str2 = this.jdField_a_of_type_Aklb.a(this.jdField_a_of_type_Int);
-    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
-    {
-      if (this.jdField_a_of_type_Aklb.jdField_a_of_type_Amch != null) {
-        this.jdField_a_of_type_Aklb.jdField_a_of_type_Amch.a(this.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_Aklb.a();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = new AnimationView(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setmRadius(paramInt, paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setAnimationListener(paramMyAnimationListener);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView, new LinearLayout.LayoutParams(-1, -1));
+  }
+  
+  public aklc(AnimationView paramAnimationView, int paramInt, boolean paramBoolean, AnimationView.MyAnimationListener paramMyAnimationListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = paramAnimationView;
+    paramAnimationView.setmRadius(paramInt, paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setAnimationListener(paramMyAnimationListener);
+  }
+  
+  public static void a(AnimationView paramAnimationView, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameAnimHelper", 2, "anim stoped...");
     }
-    while (paramView != this.jdField_a_of_type_AndroidViewView) {
+    if (paramAnimationView == null) {}
+    do
+    {
       return;
+      paramAnimationView.stop();
+      paramAnimationView.setImageDrawable(null);
+      paramAnimationView = paramAnimationView.getAnimationFromInfo();
+    } while ((!paramBoolean) || (paramAnimationView == null));
+    paramAnimationView.destoryBitmaps();
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameAnimHelper", 2, "anim stoped...");
     }
-    String str1 = aoqz.a().c;
-    paramView = str1;
-    if (TextUtils.isEmpty(str1)) {
-      paramView = "https://sou.qq.com/kandian/kd.html?_bid=3216&_wv=3&_wwv=1293&_wvSb=0&keyword=$KEYWORD$&from=$FROM$";
-    }
-    paramView = paramView.replace("$KEYWORD$", URLEncoder.encode(str2));
-    if ((this.jdField_a_of_type_Aklb.jdField_a_of_type_Int == 25) || (this.jdField_a_of_type_Aklb.jdField_a_of_type_Int == 10)) {}
-    for (paramView = paramView.replace("$FROM$", "kandian_history");; paramView = paramView.replace("$FROM$", aysc.a(this.jdField_a_of_type_Aklb.jdField_a_of_type_Int)))
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.stop();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setImageDrawable(null);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null)
     {
-      paramView = paramView.replace("$SEARCHID$", "" + URLEncoder.encode(UniteSearchActivity.c));
-      ayvm.a(this.jdField_a_of_type_Aklb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aklb.jdField_a_of_type_AndroidContentContext, paramView);
-      this.jdField_a_of_type_Aklb.jdField_a_of_type_Amch.a(str2);
-      aysc.a(null, new ReportModelDC02528().module("all_result").action("clk_search_his").ver2(aysc.a(this.jdField_a_of_type_Aklb.jdField_a_of_type_Int)).ver4(str2).ver7("{experiment_id:" + aysc.b + "}"));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo.destoryBitmaps();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = null;
+    }
+  }
+  
+  public void a(AnimationView.AnimationInfo paramAnimationInfo)
+  {
+    AnimationView localAnimationView = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramAnimationInfo;
+    localAnimationView.setAnimationFromInfo(paramAnimationInfo);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.play();
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameAnimHelper", 2, "task in thread runs isFolder = " + paramBoolean);
+    }
+    akle localakle = new akle(this, null);
+    if (paramBoolean) {}
+    for (String str = "0";; str = "1")
+    {
+      localakle.execute(new String[] { paramString, str });
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aklc
  * JD-Core Version:    0.7.0.1
  */

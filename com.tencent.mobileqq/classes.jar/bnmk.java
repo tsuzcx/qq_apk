@@ -1,6 +1,8 @@
+import android.view.View;
+
 public abstract interface bnmk
 {
-  public abstract void a(String paramString);
+  public abstract void a(View paramView, int paramInt);
 }
 
 

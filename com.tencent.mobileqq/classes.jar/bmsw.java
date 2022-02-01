@@ -1,87 +1,22 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class bmsw
-  implements InputFilter
+class bmsw
+  implements bmtn
 {
-  protected int a;
-  private QQToast a;
+  bmsw(bmsv parambmsv) {}
   
-  public bmsw(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a(CharSequence paramCharSequence)
-  {
-    int j = 0;
-    int m = paramCharSequence.length();
-    int i = 0;
-    while (i < m)
+    bmsv.a(this.a, paramBoolean);
+    if ((bmsv.a(this.a)) && (bmsv.b(this.a)))
     {
-      int n = paramCharSequence.charAt(i);
-      int k;
-      if (n != 10)
+      bmsv.a(this.a);
+      if (bmsv.c(this.a))
       {
-        k = j;
-        if (n != 13) {}
-      }
-      else
-      {
-        k = j + 1;
-      }
-      i += 1;
-      j = k;
-    }
-    return j;
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(BaseApplicationImpl.getContext(), alud.a(2131704092), 0);
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
-    }
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    paramInt3 = this.jdField_a_of_type_Int - (paramSpanned.length() - (paramInt4 - paramInt3));
-    paramInt4 = paramInt2 - paramInt1 - a(paramCharSequence.subSequence(paramInt1, paramInt2));
-    if (paramInt3 > 0)
-    {
-      paramInt2 = paramInt3;
-      if (paramInt3 >= paramInt4) {}
-    }
-    else
-    {
-      paramInt2 = paramInt3 + a(paramSpanned);
-    }
-    if (((paramInt2 <= 0) || (paramInt2 < paramInt4)) && (!TextUtils.equals("", paramCharSequence))) {
-      a();
-    }
-    if (paramInt2 <= 0) {
-      return "";
-    }
-    if (paramInt2 >= paramInt4) {
-      return null;
-    }
-    paramInt3 = paramInt2 + paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1) {
-        return "";
+        QLog.d("VipARCameraController", 2, " init onresume");
+        bmsv.a(this.a).a();
       }
     }
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 

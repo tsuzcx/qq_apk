@@ -14,12 +14,12 @@ class GameGrowthGuardianManager$GuardInstructionDialogIncomeTips
   
   protected GameGrowthGuardianManager.DialogAction getPositiveDialogAction()
   {
-    return new GameGrowthGuardianManager.DialogAction(2131694595, new GameGrowthGuardianManager.GuardInstructionDialogIncomeTips.1(this));
+    return new GameGrowthGuardianManager.DialogAction(2131693857, new GameGrowthGuardianManager.GuardInstructionDialogIncomeTips.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameGrowthGuardianManager.GuardInstructionDialogIncomeTips
  * JD-Core Version:    0.7.0.1
  */

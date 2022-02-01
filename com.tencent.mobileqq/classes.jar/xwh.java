@@ -1,44 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class xwh
-  extends Handler
+class xwh
+  extends wfi
 {
-  public xwh(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  xwh(xwg paramxwg) {}
   
-  public void handleMessage(Message paramMessage)
+  public void c(boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    Object localObject = paramMessage.obj;
-    String str;
-    if (paramMessage.what == 8) {
-      str = "GONE";
-    }
-    for (;;)
-    {
-      wxe.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
-      this.a.setVisibility(paramMessage.what);
-      return;
-      if (paramMessage.what == 0) {
-        str = "VISIBLE";
-      } else {
-        str = "INVISIBLE";
-      }
-    }
+    wfg localwfg = (wfg)this.a.a.app.getManager(181);
+    this.a.a(2, localwfg.a());
+    this.a.a(3, localwfg.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xwh
  * JD-Core Version:    0.7.0.1
  */

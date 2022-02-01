@@ -1,9 +1,18 @@
-class afod
-  implements bhum
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class afod
+  implements View.OnClickListener
 {
-  afod(afoc paramafoc) {}
+  public afod(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onDismiss() {}
+  public void onClick(View paramView)
+  {
+    this.a.g();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

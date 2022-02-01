@@ -1,26 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.11.1;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import java.util.ArrayList;
 
-public class rwo
-  implements View.OnClickListener
+class rwo
 {
-  public rwo(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void onClick(View paramView)
-  {
-    ReadinjoyTabFrame.a(this.a).postDelayed(new ReadinjoyTabFrame.11.1(this), 300L);
-    if (!RecommendFeedsDiandianEntranceManager.a().a()) {
-      RecommendFeedsDiandianEntranceManager.a().c();
-    }
-  }
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<rww> a = new ArrayList();
+  public int b;
+  public long b;
+  public String b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rwo
  * JD-Core Version:    0.7.0.1
  */

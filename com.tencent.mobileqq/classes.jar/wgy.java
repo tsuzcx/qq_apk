@@ -1,31 +1,18 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class wgy
-  implements URLDrawable.URLDrawableListener
+public abstract interface wgy
 {
-  public wgy(ImageView paramImageView, Drawable paramDrawable) {}
+  public abstract void a();
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public abstract void a(int paramInt);
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "iconDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
-    }
-  }
+  public abstract void a(List<wgv> paramList, boolean paramBoolean);
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
+  public abstract void a(wgz paramwgz);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wgy
  * JD-Core Version:    0.7.0.1
  */

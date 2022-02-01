@@ -1,72 +1,449 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemServiceAccountFolderData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.1;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.10;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.11;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.12;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.13;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.2;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.3;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.4;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.5;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.6;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.7;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.8;
+import com.tencent.mobileqq.applets.PublicAccountEventReport.9;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aoqq
-  extends aokh<aoqo>
 {
-  public int a()
-  {
-    return 534;
-  }
+  private static ConcurrentHashMap<String, Integer> a = new ConcurrentHashMap();
+  private static ConcurrentHashMap<String, Integer> b = new ConcurrentHashMap();
   
-  @NonNull
-  public aoqo a(int paramInt)
+  public static Bundle a(String paramString)
   {
-    return new aoqo();
-  }
-  
-  @Nullable
-  public aoqo a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
     {
-      aoqo localaoqo = aoqo.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicConfProcessor", 2, "onParsed  " + paramArrayOfaoko[0].a);
-      }
-      return localaoqo;
+      Bundle localBundle = b(new JSONObject(paramString).optString("oac_triggle"));
+      return localBundle;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("PublicAccountEventReport", 1, "parse input=" + paramString, localJSONException);
     }
     return null;
   }
   
-  public Class<aoqo> a()
+  public static String a(String paramString)
   {
-    return aoqo.class;
+    String str = "";
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      str = b(new JSONObject(paramString).optString("oac_triggle")).getString("ad_id");
+      return str;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("PublicAccountEventReport", 2, "parseException error ");
+    }
+    return "";
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(aoqo paramaoqo)
+  public static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramaoqo.toString());
+    a.clear();
+  }
+  
+  public static void a(int paramInt1, int paramInt2, String paramString)
+  {
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.13(paramString, paramInt1, paramInt2));
+  }
+  
+  public static void a(int paramInt1, ChatMessage paramChatMessage, int paramInt2)
+  {
+    if (paramChatMessage == null) {}
+    String str;
+    do
+    {
+      return;
+      if (paramInt1 == 117) {
+        a(paramChatMessage.frienduin, paramChatMessage.uniseq);
+      }
+      str = "";
+      if (paramChatMessage.mExJsonObject != null) {
+        str = a(paramChatMessage.mExJsonObject.optString("report_key_bytes_oac_msg_extend"));
+      }
+    } while (TextUtils.isEmpty(str));
+    a(paramInt1, paramInt2, str);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null)
+    {
+      String str = "";
+      if (paramMessageRecord.mExJsonObject != null) {
+        str = paramMessageRecord.mExJsonObject.optString("report_key_bytes_oac_msg_extend");
+      }
+      a(paramQQAppInterface, paramMessageRecord.frienduin, paramInt1, paramInt2, paramMessageRecord.msgUid, str);
     }
   }
   
-  public boolean a()
+  public static void a(QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData)
   {
-    return false;
+    int j = 0;
+    int i = 0;
+    if ((paramQQAppInterface == null) || (paramRecentBaseData == null)) {
+      return;
+    }
+    String str1;
+    String str2;
+    int k;
+    switch (paramRecentBaseData.getRecentUserType())
+    {
+    default: 
+      return;
+    case 1008: 
+    case 3001: 
+    case 7120: 
+    case 7200: 
+    case 7210: 
+    case 7220: 
+    case 7230: 
+      str1 = "";
+      if ((paramRecentBaseData instanceof RecentItemPublicAccountChatMsgData))
+      {
+        str1 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).mReportKeyBytesOacMsgxtend;
+        str2 = paramRecentBaseData.getRecentUserUin();
+        k = paramRecentBaseData.getUnreadNum();
+        j = paramRecentBaseData.mUnreadFlag;
+        if (ahdq.a(str2)) {
+          alzs.a().b(paramQQAppInterface);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PublicAccountEventReport", 2, new Object[] { "Report from reportItemClickEventOnConversation, UIN=", str2, " unReadFlag=", Integer.valueOf(j), " unreadSum=", Integer.valueOf(k), " message=", paramRecentBaseData.mLastMsg.toString() });
+        }
+        if (k != 0) {
+          break label268;
+        }
+      }
+      break;
+    }
+    for (;;)
+    {
+      ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.6(str2, str1, i, k, paramQQAppInterface, paramRecentBaseData.mLastMsg.toString()));
+      return;
+      if (!(paramRecentBaseData instanceof RecentItemServiceAccountFolderData)) {
+        break;
+      }
+      str1 = ((RecentItemServiceAccountFolderData)paramRecentBaseData).mReportKeyBytesOacMsgxtend;
+      break;
+      label268:
+      if (j != 2)
+      {
+        i = 1;
+        continue;
+        str1 = paramRecentBaseData.getRecentUserUin();
+        paramQQAppInterface = "";
+        if ((paramRecentBaseData instanceof RecentItemPublicAccountChatMsgData)) {
+          paramQQAppInterface = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).mReportKeyBytesOacMsgxtend;
+        }
+        boolean bool;
+        if ((paramRecentBaseData.mUnreadFlag != 0) || (paramRecentBaseData.mUnreadNum > 0))
+        {
+          bool = true;
+          b(str1, 102, paramQQAppInterface, bool);
+          k = paramRecentBaseData.getUnreadNum();
+          i = paramRecentBaseData.mUnreadFlag;
+          if (k != 0) {
+            break label376;
+          }
+          i = j;
+        }
+        for (;;)
+        {
+          MiniProgramLpReportDC04239.reportByQQ("message", "message_list", "click", String.valueOf(i), String.valueOf(k), "", "");
+          return;
+          bool = false;
+          break;
+          label376:
+          if (i != 2) {
+            i = 1;
+          }
+        }
+      }
+      else
+      {
+        i = j;
+      }
+    }
   }
   
-  public int b()
+  public static void a(QQAppInterface paramQQAppInterface, AbsListView paramAbsListView, int paramInt)
   {
-    return 0;
+    if ((paramQQAppInterface == null) || (paramAbsListView == null) || (paramAbsListView.getChildCount() == 0) || (paramAbsListView.getAdapter() == null)) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        switch (paramInt)
+        {
+        case 1: 
+        default: 
+          return;
+        }
+      } while (!(paramAbsListView.getAdapter() instanceof bkky));
+      localObject = (bkky)paramAbsListView.getAdapter();
+    } while (!(((bkky)localObject).getWrappedAdapter() instanceof albc));
+    b.clear();
+    albc localalbc = (albc)((bkky)localObject).getWrappedAdapter();
+    int i = paramAbsListView.getFirstVisiblePosition();
+    paramInt = i;
+    if (i > 0) {
+      paramInt = i - 1;
+    }
+    int k = paramAbsListView.getLastVisiblePosition();
+    i = paramInt;
+    RecentBaseData localRecentBaseData;
+    label193:
+    label235:
+    boolean bool;
+    if (i < k - 1)
+    {
+      paramAbsListView = localalbc.getItem(i);
+      String str;
+      if ((paramAbsListView instanceof RecentBaseData))
+      {
+        localRecentBaseData = (RecentBaseData)paramAbsListView;
+        paramInt = localRecentBaseData.getRecentUserType();
+        str = localRecentBaseData.getRecentUserUin();
+        if (!a.containsKey(str))
+        {
+          if (!ahdq.a(str)) {
+            break label235;
+          }
+          ThreadManager.excute(new PublicAccountEventReport.1(paramQQAppInterface), 16, null, true);
+        }
+        if ((paramInt >= 1000) && (paramInt != 5000) && (paramInt != 7000) && (paramInt != 9000) && (paramInt != 9002)) {
+          break label261;
+        }
+      }
+      label261:
+      do
+      {
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (!(localRecentBaseData instanceof RecentItemServiceAccountFolderData)) {
+            break label193;
+          }
+          ThreadManager.excute(new PublicAccountEventReport.2(paramQQAppInterface), 16, null, true);
+          break label193;
+          switch (paramInt)
+          {
+          default: 
+            if (QLog.isColorLevel()) {
+              QLog.d("PublicAccountEventReport", 2, new Object[] { "uin=", str, " uinTYPE=", Integer.valueOf(paramInt) });
+            }
+            break;
+          }
+        }
+        paramAbsListView = "";
+        if ((localRecentBaseData instanceof RecentItemPublicAccountChatMsgData)) {
+          paramAbsListView = ((RecentItemPublicAccountChatMsgData)localRecentBaseData).mReportKeyBytesOacMsgxtend;
+        }
+        b.put(str, Integer.valueOf(paramInt));
+      } while (a.containsKey(str));
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountEventReport", 2, new Object[] { "Report from TAB, UIN=", str, " unReadFlag=", Integer.valueOf(localRecentBaseData.mUnreadFlag), " unreadSum=", Integer.valueOf(localRecentBaseData.mUnreadNum), " message=", localRecentBaseData.mLastMsg });
+      }
+      int j = localRecentBaseData.mUnreadFlag;
+      if (localRecentBaseData.mUnreadNum == 0) {
+        paramInt = 0;
+      }
+      for (;;)
+      {
+        localObject = "";
+        if (localRecentBaseData.mLastMsg != null) {
+          localObject = localRecentBaseData.mLastMsg.toString();
+        }
+        ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.3(str, paramAbsListView, paramInt, localRecentBaseData.mUnreadNum, paramQQAppInterface, (String)localObject));
+        break;
+        paramInt = j;
+        if (j != 2) {
+          paramInt = 1;
+        }
+      }
+      paramAbsListView = "";
+      if ((localRecentBaseData instanceof RecentItemPublicAccountChatMsgData)) {
+        paramAbsListView = ((RecentItemPublicAccountChatMsgData)localRecentBaseData).mReportKeyBytesOacMsgxtend;
+      }
+      if ((localRecentBaseData.mUnreadFlag != 0) || (localRecentBaseData.mUnreadNum > 0))
+      {
+        bool = true;
+        label617:
+        b(str, 101, paramAbsListView, bool);
+        paramInt = localRecentBaseData.mUnreadFlag;
+        if (localRecentBaseData.mUnreadNum != 0) {
+          break label678;
+        }
+        paramInt = 0;
+      }
+    }
+    for (;;)
+    {
+      MiniProgramLpReportDC04239.reportByQQ("message", "message_list", "expo", String.valueOf(paramInt), String.valueOf(localRecentBaseData.mUnreadNum), "", "");
+      break;
+      bool = false;
+      break label617;
+      label678:
+      if (paramInt != 2)
+      {
+        paramInt = 1;
+        continue;
+        a.clear();
+        a.putAll(b);
+        return;
+      }
+    }
   }
   
-  public boolean b()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountEventReport", 2, new Object[] { "report Menu Click On PublicAccount AIO, UIN=", paramString, " menuID=", Integer.valueOf(paramInt2) });
+    }
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.8(paramQQAppInterface, paramString, paramInt1, paramInt2));
   }
   
-  public boolean c()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, long paramLong)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountEventReport", 2, new Object[] { "report report Stay Time In Page, UIN=", paramString, " from=", Integer.valueOf(paramInt1), " type=", Integer.valueOf(paramInt2), " time=", Long.valueOf(paramLong) });
+    }
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.9(paramQQAppInterface, paramString, paramInt1, paramInt2, paramLong));
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountEventReport", 2, new Object[] { "report report Msg item click in aio, UIN=", paramString1, " from=", Integer.valueOf(paramInt1), " type=", Integer.valueOf(paramInt2), " msgId=", Long.valueOf(paramLong) });
+    }
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.10(paramQQAppInterface, paramString1, paramInt1, paramInt2, paramLong, paramString2));
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountEventReport", 2, new Object[] { "Report from ACCOUNT_FOLDER, UIN=", paramString1, " unReadFlag=", Integer.valueOf(paramInt1), " unreadSum=", Integer.valueOf(paramInt2), " message=", paramString2 });
+    }
+    if (paramInt2 == 0) {
+      paramInt1 = i;
+    }
+    for (;;)
+    {
+      ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.5(paramString1, paramString3, paramInt1, paramInt2, paramQQAppInterface, paramString2));
+      return;
+      if (paramInt1 != 2) {
+        paramInt1 = 1;
+      }
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountEventReport", 2, new Object[] { "report  Click On HealthBusinessPluginFollow , UIN=", paramString });
+    }
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.11(paramString));
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.12(paramString, paramLong));
+  }
+  
+  private static Bundle b(String paramString)
+  {
+    int i = 0;
+    Bundle localBundle = new Bundle();
+    paramString = paramString.split("&");
+    for (;;)
+    {
+      if ((paramString != null) && (i < paramString.length))
+      {
+        String[] arrayOfString = paramString[i].split("=");
+        if ((arrayOfString != null) && (arrayOfString.length == 2)) {}
+        try
+        {
+          localBundle.putString(arrayOfString[0], URLDecoder.decode(arrayOfString[1], "UTF-8"));
+          i += 1;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          for (;;)
+          {
+            localUnsupportedEncodingException.printStackTrace();
+          }
+        }
+      }
+    }
+    return localBundle;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountEventReport", 2, new Object[] { "Report Click from ACCOUNT_FOLDER, UIN=", paramString1, " unReadFlag=", Integer.valueOf(paramInt1), " unreadSum=", Integer.valueOf(paramInt2), " message=", paramString2 });
+    }
+    if (paramInt2 == 0) {
+      paramInt1 = i;
+    }
+    for (;;)
+    {
+      ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.7(paramString1, paramString3, paramInt1, paramInt2, paramQQAppInterface, paramString2));
+      return;
+      if (paramInt1 != 2) {
+        paramInt1 = 1;
+      }
+    }
+  }
+  
+  private static void b(String paramString1, int paramInt, String paramString2, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString2)) {
+      return;
+    }
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.4(paramString2, paramString1, paramInt, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoqq
  * JD-Core Version:    0.7.0.1
  */

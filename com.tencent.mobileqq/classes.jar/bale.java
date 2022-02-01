@@ -1,8 +1,19 @@
-public abstract interface bale
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import rx.functions.Action0;
+
+class bale
+  implements Action0
 {
-  public abstract void a();
+  bale(balb parambalb, HashSet paramHashSet) {}
   
-  public abstract void a(int paramInt);
+  public void call()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ResourceGrabViewModel", 2, "ResourceNameOnClickListener subscribe onComplete");
+    }
+    balb.a(this.jdField_a_of_type_Balb, this.jdField_a_of_type_JavaUtilHashSet);
+  }
 }
 
 

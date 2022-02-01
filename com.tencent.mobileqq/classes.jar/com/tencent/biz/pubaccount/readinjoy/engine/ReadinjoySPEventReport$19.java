@@ -5,8 +5,8 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import tzo;
 
 public final class ReadinjoySPEventReport$19
   implements Runnable
@@ -57,7 +57,7 @@ public final class ReadinjoySPEventReport$19
         localAttributeList.att_value.set(this.b + "");
         localArrayList.add(localAttributeList);
       }
-      syb.a(70, localArrayList);
+      tzo.a(70, localArrayList);
       return;
       label385:
       localAttributeList.att_value.set("1");

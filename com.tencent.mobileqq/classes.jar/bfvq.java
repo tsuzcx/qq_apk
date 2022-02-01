@@ -1,30 +1,35 @@
-import android.util.Log;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.text.TextPaint;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class bfvq
+  extends TextView
 {
-  public void a(String paramString1, String paramString2)
+  public bfvq(FollowImageTextView paramFollowImageTextView, Context paramContext)
   {
-    Log.d(paramString1, paramString2);
+    super(paramContext);
   }
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  protected void onDraw(Canvas paramCanvas)
   {
-    Log.d(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    Log.w(paramString1, paramString2);
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    Log.d(paramString1, paramString2);
+    if (FollowImageTextView.a(this.a))
+    {
+      super.onDraw(paramCanvas);
+      return;
+    }
+    Object localObject = getPaint();
+    ((TextPaint)localObject).setColor(getCurrentTextColor());
+    ((TextPaint)localObject).drawableState = getDrawableState();
+    localObject = FollowImageTextView.a(this.a);
+    ((bfvt)localObject).a(FollowImageTextView.a(this.a) - 1);
+    ((bfvt)localObject).a(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfvq
  * JD-Core Version:    0.7.0.1
  */

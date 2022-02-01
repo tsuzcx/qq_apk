@@ -6,7 +6,7 @@ import NS_MINI_INTERFACE.INTERFACE.StGetExtConfigDetailRsp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdpd;
+import bguc;
 import com.tencent.mobileqq.mini.apkg.ExtConfigInfo;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
@@ -88,7 +88,7 @@ public class MiniAppGetExtConfigDetailServlet
           localObject1 = new byte[4];
         }
         paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetExtConfigDetail");
-        paramPacket.putSendData(bdpd.a((byte[])localObject1));
+        paramPacket.putSendData(bguc.a((byte[])localObject1));
         paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
         super.onSend(paramIntent, paramPacket);
         return;
@@ -98,7 +98,7 @@ public class MiniAppGetExtConfigDetailServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetExtConfigDetailServlet
  * JD-Core Version:    0.7.0.1
  */

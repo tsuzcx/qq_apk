@@ -1,10 +1,215 @@
+import android.text.TextUtils;
+import com.tencent.ark.ark;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.ark.Container;
+import com.tencent.ark.ark.ModuleRegister;
+import com.tencent.ark.open.ArkAppConfigMgr;
+import com.tencent.ark.open.security.ArkAppUrlChecker;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppCenterEvent;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 public class bbrg
+  implements bbri, ark.ApplicationCallback
 {
-  public static String a(int paramInt)
+  private ArrayList<WeakReference<bbrr>> a = new ArrayList();
+  
+  private bbrr a(long paramLong)
   {
-    long l1 = 0x7FFFFFFF & paramInt;
-    long l2 = paramInt >> 31 & 0x1;
-    return (l2 << 31 | l1) + "";
+    ark.Container localContainer = ark.arkGetContainer(paramLong);
+    bbrr localbbrr;
+    if (localContainer == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkNodeContainer", 2, "getArkNode, arkcontainer is null");
+      }
+      localbbrr = null;
+    }
+    label150:
+    label154:
+    for (;;)
+    {
+      return localbbrr;
+      if (this.a.size() == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkNodeContainer", 2, "getArkNode, list is null");
+        }
+        return null;
+      }
+      int i = 0;
+      if (i < this.a.size())
+      {
+        localbbrr = (bbrr)((WeakReference)this.a.get(i)).get();
+        if ((localbbrr == null) || (!(localbbrr instanceof bbrp))) {
+          break label150;
+        }
+      }
+      for (bbrl localbbrl = ((bbrp)localbbrr).a();; localbbrl = null)
+      {
+        if ((localbbrl != null) && (localbbrl.getContainer() == localContainer)) {
+          break label154;
+        }
+        i += 1;
+        break;
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkNodeContainer", 2, "getArkNode, not found");
+        }
+        return null;
+      }
+    }
+  }
+  
+  public void AppCreate(ark.Application paramApplication)
+  {
+    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
+  }
+  
+  public void AppDestroy(ark.Application paramApplication)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppCenterEvent.a(1, paramApplication, null);
+    aprr.a(paramApplication);
+  }
+  
+  public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
+    boolean bool;
+    int i;
+    if (localArkAppUrlChecker != null)
+    {
+      int j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
+      if (j == 0)
+      {
+        bool = true;
+        if (bool) {
+          break label170;
+        }
+        if (ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication)) {
+          break label165;
+        }
+        QLog.e("ArkNodeContainer", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback seach appName=", paramApplication, ",url=", nmj.b(paramString, new String[0]), ", isValid set=true" });
+        i = 2;
+        bool = true;
+        label97:
+        aprr.a(paramApplication, paramString, j, i, "");
+      }
+    }
+    for (;;)
+    {
+      QLog.e("ArkNodeContainer", 1, new Object[] { "ArkSafe.EngineCallback search appName=", paramApplication, ",url=", nmj.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool) });
+      return bool;
+      bool = false;
+      break;
+      label165:
+      i = 1;
+      break label97;
+      label170:
+      i = 0;
+      break label97;
+      bool = true;
+    }
+  }
+  
+  public void OutputScriptError(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    for (;;)
+    {
+      if (paramString2 == null) {
+        paramString2 = "";
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ArkNodeContainer", 2, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
+        }
+        apok.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
+        return;
+      }
+    }
+  }
+  
+  public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
+  {
+    apio.a(paramModuleRegister, paramApplication);
+    String str = paramApplication.GetSpecific("appName");
+    bbrh localbbrh = new bbrh(paramApplication, apio.a(str));
+    localbbrh.a(this);
+    paramApplication = apkd.a();
+    if ((!TextUtils.isEmpty(str)) && (paramApplication != null))
+    {
+      paramApplication = (ArkAppCenter)paramApplication.getManager(121);
+      if (paramApplication == null) {}
+    }
+    for (paramApplication = paramApplication.a();; paramApplication = null)
+    {
+      if (paramApplication != null) {
+        localbbrh.a((List)apme.a.get(localbbrh.GetTypeName()));
+      }
+      paramModuleRegister.RegCallbackWrapper(localbbrh);
+      return;
+    }
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    bbrr localbbrr = a(paramLong);
+    if ((localbbrr != null) && ((localbbrr instanceof bbrp))) {
+      ((bbrp)localbbrr).a(paramString);
+    }
+  }
+  
+  public void a(long paramLong, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkNodeContainer", 2, "onNotify, KEY：" + paramString1 + " VALUE:" + paramString2);
+    }
+    bbrr localbbrr = a(paramLong);
+    if ((localbbrr != null) && ((localbbrr instanceof bbrp))) {
+      ((bbrp)localbbrr).a(paramString1, paramString2);
+    }
+  }
+  
+  public void a(bbrp parambbrp)
+  {
+    if (parambbrp == null) {
+      return;
+    }
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      if (((WeakReference)localIterator.next()).get() == parambbrp) {
+        return;
+      }
+    }
+    this.a.add(new WeakReference(parambbrp));
+  }
+  
+  public void b(bbrp parambbrp)
+  {
+    if (parambbrp == null) {}
+    WeakReference localWeakReference;
+    do
+    {
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext()) {
+        localIterator = this.a.iterator();
+      }
+      localWeakReference = (WeakReference)localIterator.next();
+    } while (localWeakReference.get() != parambbrp);
+    this.a.remove(localWeakReference);
   }
 }
 

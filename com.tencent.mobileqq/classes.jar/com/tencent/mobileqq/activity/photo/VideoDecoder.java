@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore.Video.Thumbnails;
-import bazg;
+import beai;
 import java.net.URL;
 
 public class VideoDecoder
-  implements bazg
+  implements beai
 {
   Context mContext;
   LocalMediaInfo mLocalMediaInfo;
@@ -29,7 +29,7 @@ public class VideoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.VideoDecoder
  * JD-Core Version:    0.7.0.1
  */

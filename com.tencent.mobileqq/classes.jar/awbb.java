@@ -1,23 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
-class awbb
-  implements View.OnClickListener
+public class awbb
+  implements Animator.AnimatorListener
 {
-  awbb(awaw paramawaw, awbl paramawbl) {}
+  public awbb(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    awaw.a(this.jdField_a_of_type_Awaw).removeMessages(101);
-    awaw.a(this.jdField_a_of_type_Awaw).obtainMessage(101).sendToTarget();
-    this.jdField_a_of_type_Awbl.a.b();
+    PoiSlideBottomPanel.c(this.a, false);
+    if (PoiSlideBottomPanel.e(this.a) != null) {
+      PoiSlideBottomPanel.f(this.a).displayPanelFinish();
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.b(this.a, false);
+    if (PoiSlideBottomPanel.c(this.a) != null) {
+      PoiSlideBottomPanel.d(this.a).displayPanelFinish();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awbb
  * JD-Core Version:    0.7.0.1
  */

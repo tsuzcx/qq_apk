@@ -1,22 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class rxt
-  implements ValueAnimator.AnimatorUpdateListener
+  extends rxo
 {
-  public rxt(SlideActiveAnimController paramSlideActiveAnimController) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)this.itemView.findViewById(2131370217);
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = (ProgressBar)this.itemView.findViewById(2131370223);
+  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.itemView.findViewById(2131370227);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public rxt(View paramView, int paramInt)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    SlideActiveAnimController.a(this.a).setAlpha(paramValueAnimator.floatValue());
+    super(paramView, paramInt);
   }
+  
+  public void a(rwy paramrwy, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rxt
  * JD-Core Version:    0.7.0.1
  */

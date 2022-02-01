@@ -1,20 +1,88 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class aqwr
-  implements aqxn
+public abstract class aqwr<T>
+  extends aqkz<T>
 {
-  aqwr(aqwp paramaqwp, FileManagerEntity paramFileManagerEntity) {}
+  @NonNull
+  public abstract T a();
   
-  public void a() {}
+  @NonNull
+  public abstract T a(@NonNull aqlg[] paramArrayOfaqlg);
   
-  public void b()
+  @NonNull
+  public abstract T b();
+  
+  public boolean isAccountRelated()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {}
-    for (Object localObject = new arja(this.jdField_a_of_type_Aqwp.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);; localObject = new arix(this.jdField_a_of_type_Aqwp.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
-    {
-      aqxi.a((arit)localObject);
-      return;
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  @NonNull
+  public T migrateOldOrDefaultContent(int paramInt)
+  {
+    Object localObject1 = null;
+    if (paramInt == 1) {
+      localObject1 = b();
     }
+    for (;;)
+    {
+      Object localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        zkb.a(getClass().getName() + ".migrateOldOrDefaultContent return null!! type=" + paramInt, new Object[0]);
+        localObject2 = a();
+      }
+      return localObject2;
+      if (paramInt == 0) {
+        localObject1 = a();
+      } else {
+        zkb.a(getClass().getName() + ".migrateOldOrDefaultContent illegal type: " + paramInt, new Object[0]);
+      }
+    }
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  @Nullable
+  public T onParsed(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0))
+    {
+      yqp.e("QVipConfigProcessor", getClass().getName() + ".onParsed error: confFiles is empty");
+      paramArrayOfaqlg = a();
+      if (paramArrayOfaqlg != null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        zkb.a(bool, getClass().getName() + ".onParsed error: confFiles is empty");
+        return paramArrayOfaqlg;
+      }
+    }
+    yqp.d("QVipConfigProcessor", getClass().getName() + ".parsed content count=" + paramArrayOfaqlg.length);
+    return a(paramArrayOfaqlg);
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    yqp.e("QVipConfigProcessor", getClass().getName() + ".onReqFailed: " + paramInt);
+  }
+  
+  public void onUpdate(T paramT)
+  {
+    yqp.d("QVipConfigProcessor", getClass().getName() + ".onUpdate: " + paramT);
   }
 }
 

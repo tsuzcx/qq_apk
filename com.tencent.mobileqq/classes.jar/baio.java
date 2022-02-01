@@ -1,20 +1,10 @@
-import android.net.Uri;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-
-class baio
-  extends bair
+public class baio
 {
-  baio(baim parambaim)
-  {
-    super(parambaim);
-  }
+  public int a;
+  public long a;
+  public String a;
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
-  }
+  public baio(baim parambaim) {}
 }
 
 

@@ -1,15 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class agqy
-  implements DialogInterface.OnClickListener
+public class agqy
+  extends afwr
 {
-  agqy(agqq paramagqq) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.b(1);
-  }
+  public String b;
 }
 
 

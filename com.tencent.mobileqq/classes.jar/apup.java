@@ -1,25 +1,33 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.qphone.base.util.QLog;
 
-class apup
-  implements View.OnClickListener
+public class apup
+  extends BroadcastReceiver
 {
-  apup(apuo paramapuo) {}
+  public apup(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    long l = System.currentTimeMillis();
-    if (l - apuo.a(this.a) > 1000L)
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-      apuo.a(this.a, l);
-      paramView = new Bundle();
-      paramView.putInt("AECAMERA_MODE", 202);
-      paramView.putInt("VIDEO_STORY_FROM_TYPE", blat.i.a());
-      blax.a((BaseActivity)this.a.a.a, 120, paramView);
-      azqs.b(((BaseActivity)this.a.a.a).app, "dc00898", "", "", "0X800A36E", "0X800A36E", 0, 0, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("DynamicAvatarRecordActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
+      }
+      paramContext = BaseActivity2.$(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366766);
+      if (paramContext != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
+      }
+      this.a.finish();
     }
   }
 }

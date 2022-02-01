@@ -1,56 +1,91 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.ProgressButton;
-import com.tencent.mobileqq.widget.QQToast;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.javahook.BadTokenHooker.2;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import mqq.os.MqqHandler;
 
-class avmy
-  extends Handler
+@TargetApi(14)
+public class avmy
 {
-  avmy(avmf paramavmf) {}
+  private static avna a = new avna(null);
   
-  public void handleMessage(Message paramMessage)
+  public static void a()
   {
-    switch (paramMessage.what)
+    try
     {
+      localClass1 = Class.forName("android.view.ViewRootImpl");
+      JavaHookBridge.findAndHookMethod(localClass1, "setView", new Object[] { View.class, WindowManager.LayoutParams.class, View.class, new avmz(localClass1) });
     }
-    do
+    catch (NoSuchMethodException localNoSuchMethodException1)
     {
-      do
+      for (;;)
       {
-        do
+        try
         {
-          do
-          {
-            do
-            {
-              return;
-            } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131699688);
-            return;
-          } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(paramMessage.arg1);
+          localClass1 = Class.forName("android.view.WindowManagerImpl");
+          if (Build.VERSION.SDK_INT > 16) {
+            break;
+          }
+        }
+        catch (ClassNotFoundException localClassNotFoundException2)
+        {
+          Class localClass1;
+          Class localClass2;
+          bgjw.a(localClassNotFoundException2);
           return;
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(100);
-        return;
-      } while ((this.a.jdField_a_of_type_Avpv == null) || (avmf.a(this.a) == null));
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131699251);
+        }
+        try
+        {
+          localClass2 = Class.forName("android.view.CompatibilityInfoHolder");
+          if (localClass2 != null) {
+            JavaHookBridge.findAndHookMethod(localClass1, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, localClass2, Boolean.class, a });
+          }
+          return;
+        }
+        catch (NoSuchMethodException localNoSuchMethodException2)
+        {
+          bgjw.a(localNoSuchMethodException2);
+          return;
+        }
+        catch (ClassNotFoundException localClassNotFoundException3)
+        {
+          bgjw.a(localClassNotFoundException3);
+          return;
+        }
+        localNoSuchMethodException1 = localNoSuchMethodException1;
+        bgjw.a(localNoSuchMethodException1);
       }
-      this.a.jdField_a_of_type_Avpv.a(avmf.a(this.a).uRoomid);
-      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, avmf.a(this.a).uin, "", "yes", "android");
+    }
+    catch (ClassNotFoundException localClassNotFoundException1)
+    {
+      for (;;)
+      {
+        bgjw.a(localClassNotFoundException1);
+      }
+    }
+    try
+    {
+      JavaHookBridge.findAndHookMethod(localClassNotFoundException3, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, a });
       return;
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 2131699685, 0).a();
-      return;
-    } while (this.a.jdField_a_of_type_Avpv == null);
-    this.a.jdField_a_of_type_Avpv.a();
+    }
+    catch (NoSuchMethodException localNoSuchMethodException3)
+    {
+      bgjw.a(localNoSuchMethodException3);
+    }
+  }
+  
+  private static void b(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new BadTokenHooker.2(paramString1, paramString2, paramInt1), paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avmy
  * JD-Core Version:    0.7.0.1
  */

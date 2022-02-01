@@ -1,56 +1,68 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-class atis
-  implements yrb
+public class atis
+  implements bbps<bbmy, bbvg>
 {
-  atis(atir paramatir, long paramLong1, long paramLong2, String paramString) {}
+  private atix a;
   
-  public void callback(Bundle paramBundle)
+  public void a(atix paramatix)
   {
-    boolean bool = true;
-    paramBundle = paramBundle.getString("videoPath");
-    Object localObject;
-    if (!TextUtils.isEmpty(paramBundle))
+    this.a = paramatix;
+  }
+  
+  public void a(bbmy parambbmy, bbvg parambbvg)
+  {
+    if ((parambbvg.a() != null) && (!TextUtils.isEmpty(parambbmy.a())))
     {
-      localObject = new File(paramBundle);
-      if ((!((File)localObject).exists()) || (!((File)localObject).isFile())) {}
+      parambbvg.a().setVisibility(0);
+      parambbvg.a().setText(parambbmy.a());
+    }
+    if ((parambbvg.b() != null) && (!TextUtils.isEmpty(parambbmy.b())))
+    {
+      parambbvg.b().setVisibility(0);
+      parambbvg.b().setText(parambbmy.b());
+    }
+    if ((parambbvg.c() != null) && (!TextUtils.isEmpty(parambbmy.c())))
+    {
+      parambbvg.c().setVisibility(0);
+      parambbvg.c().setText(parambbmy.c());
+    }
+    if ((parambbmy.d() == null) && (parambbvg.d() != null)) {
+      parambbvg.d().setVisibility(8);
+    }
+    if ((parambbvg.d() != null) && (parambbmy.d() != null))
+    {
+      parambbvg.d().setVisibility(0);
+      parambbvg.d().setText(parambbmy.d());
+    }
+    atir localatir = (atir)parambbmy;
+    View localView = parambbvg.a();
+    parambbvg = (AsyncImageView)parambbvg.b();
+    String str = localatir.c();
+    int i = localatir.e();
+    if (!TextUtils.isEmpty(str))
+    {
+      atvo.a(parambbvg, str, i);
+      parambbvg.setOnClickListener(new atit(this, parambbmy));
+      parambbvg = (CheckBox)localView.findViewById(2131366568);
+      if (localatir.d() <= 1) {
+        break label336;
+      }
+      parambbvg.setVisibility(8);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopApiPlugin", 2, "previewRewardVideo: videoPath=" + paramBundle + ", " + bool);
-      }
-      try
-      {
-        localObject = new JSONObject();
-        if (bool)
-        {
-          MediaApiPlugin.a(this.jdField_a_of_type_Atir.mRuntime.a(), paramBundle, this.jdField_a_of_type_Long, this.b);
-          ((JSONObject)localObject).put("ret", 0);
-          ((JSONObject)localObject).put("errMsg", "");
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Atir.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
-          return;
-          ((JSONObject)localObject).put("ret", -2);
-          ((JSONObject)localObject).put("errMsg", alud.a(2131715579));
-        }
-        QLog.w("TroopApiPlugin", 2, "previewRewardVideo exp", paramBundle);
-      }
-      catch (Exception paramBundle)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-      }
+      parambbvg.setChecked(localatir.b());
+      localView.setOnClickListener(new atiu(this, parambbmy));
       return;
-      bool = false;
+      parambbvg.setDefaultImage(atvo.a(i));
+      break;
+      label336:
+      parambbvg.setVisibility(0);
     }
   }
 }

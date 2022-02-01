@@ -1,28 +1,26 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
 
-class vve
-  implements vwb
+public class vve
+  implements zya
 {
-  vve(vva paramvva, StoryVideoItem paramStoryVideoItem) {}
+  public vve(QCircleCommentListView paramQCircleCommentListView) {}
   
-  public void b(vwa paramvwa)
+  public boolean a(RecyclerView paramRecyclerView)
   {
-    if (this.jdField_a_of_type_Vva.isCanceled()) {}
-    do
+    if ((QCircleCommentListView.a(this.a) != null) && (QCircleCommentListView.a(this.a) != null))
     {
-      return;
-      wxe.a(this.jdField_a_of_type_Vva.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Vva.a.c]);
-    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Vva.a, 12));
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Vva.a, 12);
-    this.jdField_a_of_type_Vva.a.d = 1;
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Vva.a).a(this.jdField_a_of_type_Vva.a, paramvwa, VideoViewVideoHolder.b(this.jdField_a_of_type_Vva.a));
-    wxj.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      paramRecyclerView = new Rect();
+      return QCircleCommentListView.a(this.a).getGlobalVisibleRect(paramRecyclerView);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vve
  * JD-Core Version:    0.7.0.1
  */

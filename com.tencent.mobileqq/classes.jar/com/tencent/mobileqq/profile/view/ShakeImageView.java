@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
-import wxe;
+import yqp;
 
 public class ShakeImageView
   extends ImageView
@@ -74,7 +74,7 @@ public class ShakeImageView
   {
     super.onAttachedToWindow();
     if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      wxe.e("ShakeImageView", "onAttachedToWindow but mSensorManager is null.");
+      yqp.e("ShakeImageView", "onAttachedToWindow but mSensorManager is null.");
     }
     if ((getVisibility() != 8) && (this.jdField_a_of_type_AndroidHardwareSensor != null) && (this.jdField_a_of_type_AndroidHardwareSensorManager != null))
     {
@@ -87,7 +87,7 @@ public class ShakeImageView
   {
     super.onDetachedFromWindow();
     if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      wxe.e("ShakeImageView", "onDetachedFromWindow but mSensorManager is null.");
+      yqp.e("ShakeImageView", "onDetachedFromWindow but mSensorManager is null.");
     }
     if ((this.jdField_a_of_type_AndroidHardwareSensor != null) && (this.jdField_a_of_type_AndroidHardwareSensorManager != null)) {
       this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
@@ -439,7 +439,7 @@ public class ShakeImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ShakeImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,23 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-public class ahgv
-  implements MessageQueue.IdleHandler
+class ahgv
+  extends ahkn
 {
-  public ahgv(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  protected ViewGroup a;
+  protected ImageView a;
+  protected TextView a;
+  protected ETTextView a;
+  protected BubbleImageView a;
+  protected TextView b;
+  protected ETTextView b;
+  protected TextView c;
+  public int e;
   
-  public boolean queueIdle()
-  {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
-  }
+  ahgv(ahgl paramahgl) {}
 }
 
 

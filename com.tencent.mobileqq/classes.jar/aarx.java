@@ -1,52 +1,9 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.qqproxy.GdtLocationUtil;
-import org.json.JSONObject;
+import java.util.List;
 
-class aarx
-  implements aaru
+public class aarx
 {
-  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
-  {
-    Object localObject = null;
-    if (paramaarb != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramVarArgs = paramaarb.a();
-        paramVarArgs = GdtLocationUtil.INSTANCE.getLocation(paramVarArgs);
-        localJSONObject = new JSONObject();
-        if (paramVarArgs == null) {
-          continue;
-        }
-        localJSONObject.put("lat", paramVarArgs[0]);
-        localJSONObject.put("lon", paramVarArgs[1]);
-        paramaarb.callJs(paramString, new String[] { localJSONObject.toString() });
-      }
-      catch (Exception paramString)
-      {
-        JSONObject localJSONObject;
-        paramString.printStackTrace();
-        continue;
-        paramString = null;
-        continue;
-      }
-      if (paramaarb == null) {
-        continue;
-      }
-      paramString = paramaarb.a();
-      paramVarArgs = localObject;
-      if (paramaarb != null) {
-        paramVarArgs = paramaarb.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getLocation", paramVarArgs);
-      return true;
-      paramVarArgs = null;
-      continue;
-      localJSONObject.put("lat", JSONObject.NULL);
-      localJSONObject.put("lon", JSONObject.NULL);
-    }
-  }
+  public String a;
+  public List<aary> a;
 }
 
 

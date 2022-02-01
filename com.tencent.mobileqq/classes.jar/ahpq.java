@@ -1,10 +1,14 @@
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public abstract interface ahpq
+public class ahpq
+  implements ahor
 {
-  public abstract void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt);
-  
-  public abstract void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2);
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramagup.a(paramagwc.b);
+  }
 }
 
 

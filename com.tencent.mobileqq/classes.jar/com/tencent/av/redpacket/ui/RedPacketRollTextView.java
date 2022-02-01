@@ -9,9 +9,9 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextSwitcher;
 import com.tencent.mobileqq.app.ThreadManager;
-import lxx;
-import lxy;
-import lxz;
+import luz;
+import lva;
+import lvb;
 
 public class RedPacketRollTextView
   extends TextSwitcher
@@ -19,8 +19,8 @@ public class RedPacketRollTextView
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private lxy jdField_a_of_type_Lxy;
-  private lxz jdField_a_of_type_Lxz = new lxz(this);
+  private lva jdField_a_of_type_Lva;
+  private lvb jdField_a_of_type_Lvb = new lvb(this);
   protected boolean a;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean = true;
@@ -114,7 +114,7 @@ public class RedPacketRollTextView
     }
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a(paramBoolean);
-    setFactory(new lxx(this, paramBoolean));
+    setFactory(new luz(this, paramBoolean));
   }
   
   public void b()
@@ -137,9 +137,9 @@ public class RedPacketRollTextView
     Log.e("RollTextView", "WL_DEBUG onAnimationStart");
   }
   
-  public void setListener(lxy paramlxy)
+  public void setListener(lva paramlva)
   {
-    this.jdField_a_of_type_Lxy = paramlxy;
+    this.jdField_a_of_type_Lva = paramlva;
   }
   
   public void setScope(int paramInt1, int paramInt2)
@@ -154,7 +154,7 @@ public class RedPacketRollTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketRollTextView
  * JD-Core Version:    0.7.0.1
  */

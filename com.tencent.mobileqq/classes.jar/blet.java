@@ -1,8 +1,26 @@
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
 public class blet
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
+  private static HashMap<String, Long> a = new HashMap();
+  
+  public static void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      a.put(paramString, Long.valueOf(System.currentTimeMillis()));
+    }
+  }
+  
+  public static void b(String paramString)
+  {
+    if ((!QLog.isColorLevel()) || (!a.containsKey(paramString))) {
+      return;
+    }
+    long l = ((Long)a.get(paramString)).longValue();
+    a.remove(paramString);
+    QLog.d("ElapseStat", 2, paramString + " elpase:" + (System.currentTimeMillis() - l));
+  }
 }
 
 

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.data;
 import aio.qq_story.feed.AIOQQStoryFeedPB.AIOQQStoryFeed;
 import aio.qq_story.feed.AIOQQStoryFeedPB.CoverItem;
 import aio.qq_story.feed.AIOQQStoryFeedPB.MsgBody;
-import alud;
 import android.text.TextUtils;
+import anni;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -56,7 +56,7 @@ public class MessageForQQStoryFeed
     AIOQQStoryFeedPB.AIOQQStoryFeed localAIOQQStoryFeed = new AIOQQStoryFeedPB.AIOQQStoryFeed();
     localAIOQQStoryFeed.msg_covers_info.set(localCoverItem);
     localAIOQQStoryFeed.uint64_time.set(System.currentTimeMillis() / 1000L);
-    localAIOQQStoryFeed.str_location.set(alud.a(2131706993));
+    localAIOQQStoryFeed.str_location.set(anni.a(2131705384));
     localAIOQQStoryFeed.str_feed_id.set("FEED-1000-2f583f987a1ffd3644b2672111f0d64b31d30c72d9598be3-20180412");
     localAIOQQStoryFeed.str_union_id.set("0_2463624242");
     localMsgBody.msg_aio_feed.set(localAIOQQStoryFeed);
@@ -131,7 +131,7 @@ public class MessageForQQStoryFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQStoryFeed
  * JD-Core Version:    0.7.0.1
  */

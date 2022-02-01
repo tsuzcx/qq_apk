@@ -1,82 +1,93 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.biz.subscribe.event.LbsDescPublishEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StPoiInfoV2;
+import java.util.ArrayList;
 
 public class vbs
-  extends vbk
+  extends uzu
+  implements zwr
 {
-  public vbs(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup);
-  }
+  private TextView a;
+  private TextView b;
   
-  protected String a(QQUserUIItem paramQQUserUIItem)
+  private String a(FeedCloudMeta.StPoiInfoV2 paramStPoiInfoV2)
   {
-    String str = super.a(paramQQUserUIItem);
-    paramQQUserUIItem = str;
-    if (str == null) {
-      paramQQUserUIItem = alud.a(2131713648);
+    Object localObject2 = paramStPoiInfoV2.defaultName.get();
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = paramStPoiInfoV2.name.get();
     }
-    return paramQQUserUIItem;
-  }
-  
-  public void a()
-  {
-    this.a.setTag(2131373850, null);
-  }
-  
-  protected void a(String paramString)
-  {
-    c(paramString);
-  }
-  
-  protected void a(String paramString, boolean paramBoolean, uyg paramuyg)
-  {
-    if ((!TextUtils.isEmpty(paramuyg.j)) && (!paramBoolean))
-    {
-      this.a.setNodeName(paramString, paramuyg.j);
-      return;
+    localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = paramStPoiInfoV2.address.get();
     }
-    super.a(paramString, paramBoolean, paramuyg);
+    return localObject2;
   }
   
-  public void a(uyg paramuyg)
+  private void a(View paramView, FeedCloudMeta.StPoiInfoV2 paramStPoiInfoV2)
   {
-    super.a(paramuyg);
-    this.a.setDisplayState(2);
-    String str;
-    if (!TextUtils.equals((String)this.a.getTag(2131373850), paramuyg.jdField_a_of_type_JavaLangString))
+    paramView = ((ViewStub)paramView.findViewById(2131381072)).inflate();
+    this.a = ((TextView)paramView.findViewById(2131379741));
+    this.b = ((TextView)paramView.findViewById(2131379740));
+    this.a.setText(a(paramStPoiInfoV2));
+  }
+  
+  public String a()
+  {
+    return "QCircleLbsHeaderPart";
+  }
+  
+  protected void a(View paramView)
+  {
+    super.a(paramView);
+    FeedCloudMeta.StPoiInfoV2 localStPoiInfoV2 = ((QCircleInitBean)a().getIntent().getSerializableExtra("key_bundle_common_init_bean")).getPoiInfo();
+    if (localStPoiInfoV2.has())
     {
-      if ((paramuyg.jdField_a_of_type_JavaUtilList == null) || (paramuyg.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break label168;
+      a(paramView, localStPoiInfoV2);
+      zwp.a().a(this);
+    }
+  }
+  
+  protected String b()
+  {
+    return "fuellist";
+  }
+  
+  public ArrayList<Class> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(LbsDescPublishEvent.class);
+    return localArrayList;
+  }
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    super.onActivityDestroyed(paramActivity);
+    zwp.a().b(this);
+  }
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((paramSimpleBaseEvent instanceof LbsDescPublishEvent))
+    {
+      paramSimpleBaseEvent = (LbsDescPublishEvent)paramSimpleBaseEvent;
+      if (!TextUtils.isEmpty(paramSimpleBaseEvent.mDesc)) {
+        this.b.setText(paramSimpleBaseEvent.mDesc);
       }
-      str = ((uyy)paramuyg.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
-      Iterator localIterator = paramuyg.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        uyy localuyy = (uyy)localIterator.next();
-        if (!localuyy.jdField_a_of_type_Boolean) {
-          str = localuyy.jdField_a_of_type_JavaLangString;
-        }
-      }
-    }
-    for (;;)
-    {
-      wxj.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramuyg.jdField_a_of_type_JavaLangString, "1", "", str });
-      this.a.setTag(2131373850, paramuyg.jdField_a_of_type_JavaLangString);
-      return;
-      continue;
-      label168:
-      str = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vbs
  * JD-Core Version:    0.7.0.1
  */

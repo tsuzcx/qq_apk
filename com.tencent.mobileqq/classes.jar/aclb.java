@@ -1,19 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class aclb
-  implements DialogInterface.OnClickListener
+public class aclb
 {
-  public aclb(acln paramacln) {}
+  private aclc a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(aclc paramaclc)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    this.a = paramaclc;
   }
 }
 

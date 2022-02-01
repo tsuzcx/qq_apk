@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Rect;
 
-class aqkb
-  implements DialogInterface.OnClickListener
+public class aqkb
 {
-  aqkb(aqjz paramaqjz) {}
+  public Rect a;
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aqkb(Rect paramRect, String paramString)
   {
-    aqjz.a(this.a).dismiss();
+    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

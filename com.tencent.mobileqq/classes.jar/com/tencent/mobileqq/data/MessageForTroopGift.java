@@ -256,7 +256,7 @@ public class MessageForTroopGift
       QLog.d(".troop.send_gift", 2, "makeGiftIconUrl--giftUrl=" + this.giftUrl, null);
     }
     if (TextUtils.isEmpty(this.giftUrl)) {
-      return "http://pub.idqqimg.com/pc/misc/groupgift/objicon_" + this.giftPicId + ".png";
+      return "https://pub.idqqimg.com/pc/misc/groupgift/objicon_" + this.giftPicId + ".png";
     }
     return this.giftUrl;
   }
@@ -437,7 +437,7 @@ public class MessageForTroopGift
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopGift
  * JD-Core Version:    0.7.0.1
  */

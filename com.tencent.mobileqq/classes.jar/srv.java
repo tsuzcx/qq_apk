@@ -1,36 +1,7 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
-
-public class srv
-  implements TextWatcher
-{
-  public srv(LimitWordCountEditText paramLimitWordCountEditText) {}
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramCharSequence == null)
-    {
-      if (LimitWordCountEditText.a(this.a) != null) {
-        LimitWordCountEditText.a(this.a).a(0);
-      }
-      LimitWordCountEditText.a(this.a).setText(LimitWordCountEditText.a(this.a));
-      return;
-    }
-    if (LimitWordCountEditText.a(this.a) != null) {
-      LimitWordCountEditText.a(this.a).a(paramCharSequence.length());
-    }
-    LimitWordCountEditText.a(this.a).setText(String.valueOf(LimitWordCountEditText.a(this.a) - paramCharSequence.length()));
-  }
-}
+class srv {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     srv
  * JD-Core Version:    0.7.0.1
  */

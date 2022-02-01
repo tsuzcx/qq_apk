@@ -1,5 +1,15 @@
 package com.tencent.biz.webviewplugin;
 
+import abaq;
+import abar;
+import abas;
+import abat;
+import abau;
+import abav;
+import abaw;
+import abax;
+import abay;
+import abaz;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,17 +23,17 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Window;
-import apmh;
-import apml;
-import aprh;
-import auwq;
-import bcpx;
-import bddf;
-import bdhj;
-import begz;
-import bety;
-import bhuf;
-import bhus;
+import arpd;
+import arph;
+import arui;
+import axdz;
+import bfup;
+import bghy;
+import bgmo;
+import bhod;
+import biau;
+import bkho;
+import bkif;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
@@ -48,25 +58,15 @@ import eipc.EIPCResult;
 import java.util.Arrays;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import zdx;
-import zdy;
-import zdz;
-import zea;
-import zeb;
-import zec;
-import zed;
-import zee;
-import zef;
-import zeg;
 
 public class NewerGuidePlugin
   extends WebViewPlugin
 {
   private int jdField_a_of_type_Int;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new zdy(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new abar(this);
   private Uri jdField_a_of_type_AndroidNetUri;
-  private apmh jdField_a_of_type_Apmh = new zdx(this);
-  private bety jdField_a_of_type_Bety;
+  private arpd jdField_a_of_type_Arpd = new abaq(this);
+  private biau jdField_a_of_type_Biau;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -82,7 +82,7 @@ public class NewerGuidePlugin
   
   public static JSONObject a(String paramString)
   {
-    paramString = auwq.a("upload_for_new_guide", paramString, 4).getString("upload_for_new_guide", "");
+    paramString = axdz.a("upload_for_new_guide", paramString, 4).getString("upload_for_new_guide", "");
     try
     {
       paramString = new JSONObject(paramString);
@@ -129,22 +129,22 @@ public class NewerGuidePlugin
       j = 1;
     }
     Object localObject1 = this.mRuntime.a();
-    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject1).getLayoutInflater().inflate(2131561005, null);
-    localIphonePickerView.a(new zeg(this, -1));
-    localObject1 = bhuf.c((Context)localObject1);
-    ((bhuf)localObject1).d(true);
-    ((bhuf)localObject1).a(localIphonePickerView, null);
-    Object localObject2 = (DispatchActionMoveScrollView)((bhuf)localObject1).findViewById(2131361924);
+    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject1).getLayoutInflater().inflate(2131561215, null);
+    localIphonePickerView.a(new abaz(this, -1));
+    localObject1 = bkho.c((Context)localObject1);
+    ((bkho)localObject1).e(true);
+    ((bkho)localObject1).a(localIphonePickerView, null);
+    Object localObject2 = (DispatchActionMoveScrollView)((bkho)localObject1).findViewById(2131361980);
     ((DispatchActionMoveScrollView)localObject2).jdField_a_of_type_Boolean = true;
     ((DispatchActionMoveScrollView)localObject2).setBackgroundResource(17170445);
     if (Build.VERSION.SDK_INT >= 11)
     {
-      localObject2 = ((bhuf)localObject1).getWindow();
+      localObject2 = ((bkho)localObject1).getWindow();
       if (localObject2 != null) {
         ((Window)localObject2).setFlags(16777216, 16777216);
       }
     }
-    localIphonePickerView.setPickListener(new zed(this, localIphonePickerView, (bhuf)localObject1));
+    localIphonePickerView.setPickListener(new abaw(this, localIphonePickerView, (bkho)localObject1));
     this.b = (k - 1897);
     this.c = (j - 1);
     this.d = (i - 1);
@@ -153,7 +153,7 @@ public class NewerGuidePlugin
     localIphonePickerView.setSelection(2, this.d);
     try
     {
-      ((bhuf)localObject1).show();
+      ((bkho)localObject1).show();
       return;
     }
     catch (Exception localException) {}
@@ -209,7 +209,7 @@ public class NewerGuidePlugin
       localObject = TroopInfoActivity.a(String.valueOf(localObject), 35);
       ((Bundle)localObject).putString("authSig", paramJSONObject.optString("authSig"));
       ((Bundle)localObject).putBoolean("from_newer_guide", true);
-      bcpx.a(this.mRuntime.a(), (Bundle)localObject, 2, 3);
+      bfup.a(this.mRuntime.a(), (Bundle)localObject, 2, 3);
       return;
       long l = Long.parseLong((String)localObject);
       paramJSONObject = new ProfileActivity.AllInOne("0", 41);
@@ -245,13 +245,13 @@ public class NewerGuidePlugin
     //   12: ifeq +30 -> 42
     //   15: ldc 38
     //   17: iconst_2
-    //   18: ldc_w 400
+    //   18: ldc_w 401
     //   21: iconst_2
     //   22: anewarray 136	java/lang/Object
     //   25: dup
     //   26: iconst_0
     //   27: iload_1
-    //   28: invokestatic 405	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   28: invokestatic 406	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   31: aastore
     //   32: dup
     //   33: iconst_1
@@ -261,58 +261,58 @@ public class NewerGuidePlugin
     //   39: invokestatic 57	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   42: new 96	org/json/JSONObject
     //   45: dup
-    //   46: invokespecial 406	org/json/JSONObject:<init>	()V
+    //   46: invokespecial 407	org/json/JSONObject:<init>	()V
     //   49: astore 7
     //   51: iload_1
     //   52: ifeq +149 -> 201
     //   55: iconst_1
     //   56: istore_3
     //   57: aload 7
-    //   59: ldc_w 408
+    //   59: ldc_w 409
     //   62: iload_3
-    //   63: invokevirtual 412	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   63: invokevirtual 413	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   66: pop
     //   67: iload_1
     //   68: ifeq +291 -> 359
     //   71: aload_2
-    //   72: invokestatic 259	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   72: invokestatic 260	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   75: ifne +284 -> 359
-    //   78: new 414	java/io/File
+    //   78: new 415	java/io/File
     //   81: dup
     //   82: aload_2
-    //   83: invokespecial 415	java/io/File:<init>	(Ljava/lang/String;)V
+    //   83: invokespecial 416	java/io/File:<init>	(Ljava/lang/String;)V
     //   86: astore 8
     //   88: aload 8
-    //   90: invokevirtual 418	java/io/File:exists	()Z
+    //   90: invokevirtual 419	java/io/File:exists	()Z
     //   93: ifeq +266 -> 359
     //   96: aload 8
-    //   98: invokevirtual 422	java/io/File:length	()J
+    //   98: invokevirtual 423	java/io/File:length	()J
     //   101: l2i
     //   102: newarray byte
     //   104: astore 6
-    //   106: new 424	java/io/FileInputStream
+    //   106: new 425	java/io/FileInputStream
     //   109: dup
     //   110: aload 8
-    //   112: invokespecial 427	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   112: invokespecial 428	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   115: astore_2
-    //   116: new 429	java/io/BufferedInputStream
+    //   116: new 430	java/io/BufferedInputStream
     //   119: dup
     //   120: aload_2
-    //   121: invokespecial 432	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   121: invokespecial 433	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   124: astore 4
     //   126: aload 4
     //   128: aload 6
-    //   130: invokevirtual 436	java/io/BufferedInputStream:read	([B)I
+    //   130: invokevirtual 437	java/io/BufferedInputStream:read	([B)I
     //   133: ifle +18 -> 151
     //   136: aload 7
-    //   138: ldc_w 438
+    //   138: ldc_w 439
     //   141: aload 6
     //   143: iconst_0
-    //   144: invokestatic 444	bdfr:encodeToString	([BI)Ljava/lang/String;
-    //   147: invokevirtual 447	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   144: invokestatic 445	bgku:encodeToString	([BI)Ljava/lang/String;
+    //   147: invokevirtual 448	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   150: pop
     //   151: aload 8
-    //   153: invokevirtual 450	java/io/File:delete	()Z
+    //   153: invokevirtual 451	java/io/File:delete	()Z
     //   156: pop
     //   157: aload_2
     //   158: astore 5
@@ -321,21 +321,21 @@ public class NewerGuidePlugin
     //   163: aload 5
     //   165: ifnull +8 -> 173
     //   168: aload 5
-    //   170: invokevirtual 453	java/io/FileInputStream:close	()V
+    //   170: invokevirtual 454	java/io/FileInputStream:close	()V
     //   173: aload_2
     //   174: ifnull +7 -> 181
     //   177: aload_2
-    //   178: invokevirtual 454	java/io/BufferedInputStream:close	()V
+    //   178: invokevirtual 455	java/io/BufferedInputStream:close	()V
     //   181: aload_0
-    //   182: ldc_w 456
+    //   182: ldc_w 457
     //   185: iconst_1
     //   186: anewarray 144	java/lang/String
     //   189: dup
     //   190: iconst_0
     //   191: aload 7
-    //   193: invokevirtual 457	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   193: invokevirtual 458	org/json/JSONObject:toString	()Ljava/lang/String;
     //   196: aastore
-    //   197: invokevirtual 461	com/tencent/biz/webviewplugin/NewerGuidePlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   197: invokevirtual 462	com/tencent/biz/webviewplugin/NewerGuidePlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   200: return
     //   201: iconst_0
     //   202: istore_3
@@ -345,17 +345,17 @@ public class NewerGuidePlugin
     //   209: astore_2
     //   210: ldc 38
     //   212: iconst_1
-    //   213: ldc_w 463
+    //   213: ldc_w 464
     //   216: aload 5
     //   218: invokestatic 467	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   221: aload 4
     //   223: ifnull +8 -> 231
     //   226: aload 4
-    //   228: invokevirtual 453	java/io/FileInputStream:close	()V
+    //   228: invokevirtual 454	java/io/FileInputStream:close	()V
     //   231: aload_2
     //   232: ifnull -51 -> 181
     //   235: aload_2
-    //   236: invokevirtual 454	java/io/BufferedInputStream:close	()V
+    //   236: invokevirtual 455	java/io/BufferedInputStream:close	()V
     //   239: goto -58 -> 181
     //   242: astore_2
     //   243: goto -62 -> 181
@@ -365,11 +365,11 @@ public class NewerGuidePlugin
     //   250: aload_2
     //   251: ifnull +7 -> 258
     //   254: aload_2
-    //   255: invokevirtual 453	java/io/FileInputStream:close	()V
+    //   255: invokevirtual 454	java/io/FileInputStream:close	()V
     //   258: aload 5
     //   260: ifnull +8 -> 268
     //   263: aload 5
-    //   265: invokevirtual 454	java/io/BufferedInputStream:close	()V
+    //   265: invokevirtual 455	java/io/BufferedInputStream:close	()V
     //   268: aload 4
     //   270: athrow
     //   271: astore 4
@@ -485,12 +485,12 @@ public class NewerGuidePlugin
       i = 0;
     }
     Object localObject = this.mRuntime.a();
-    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject).getLayoutInflater().inflate(2131561005, null);
-    localIphonePickerView.a(new zeb(this, paramArrayOfString));
-    paramArrayOfString = bhuf.c((Context)localObject);
-    paramArrayOfString.d(true);
+    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject).getLayoutInflater().inflate(2131561215, null);
+    localIphonePickerView.a(new abau(this, paramArrayOfString));
+    paramArrayOfString = bkho.c((Context)localObject);
+    paramArrayOfString.e(true);
     paramArrayOfString.a(localIphonePickerView, null);
-    localObject = (DispatchActionMoveScrollView)paramArrayOfString.findViewById(2131361924);
+    localObject = (DispatchActionMoveScrollView)paramArrayOfString.findViewById(2131361980);
     ((DispatchActionMoveScrollView)localObject).jdField_a_of_type_Boolean = true;
     ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
     if (Build.VERSION.SDK_INT >= 11)
@@ -500,7 +500,7 @@ public class NewerGuidePlugin
         ((Window)localObject).setFlags(16777216, 16777216);
       }
     }
-    localIphonePickerView.setPickListener(new zec(this, paramArrayOfString));
+    localIphonePickerView.setPickListener(new abav(this, paramArrayOfString));
     this.jdField_a_of_type_Int = i;
     localIphonePickerView.setSelection(0, i);
     try
@@ -535,7 +535,7 @@ public class NewerGuidePlugin
     else {
       return;
     }
-    ((BaseActivity)localActivity).requestPermissions(new zee(this, paramJSONObject, localActivity), 1, new String[] { "android.permission.READ_CONTACTS" });
+    ((BaseActivity)localActivity).requestPermissions(new abax(this, paramJSONObject, localActivity), 1, new String[] { "android.permission.READ_CONTACTS" });
   }
   
   private void c()
@@ -558,7 +558,7 @@ public class NewerGuidePlugin
     {
       return;
     }
-    localBaseActivity.requestPermissions(new zdz(this, localBaseActivity), 1, new String[] { "android.permission.CAMERA" });
+    localBaseActivity.requestPermissions(new abas(this, localBaseActivity), 1, new String[] { "android.permission.CAMERA" });
     return;
     label94:
     d();
@@ -571,24 +571,24 @@ public class NewerGuidePlugin
     }
     paramJSONObject = new Bundle();
     paramJSONObject.putString("key_action", "uploadContacts");
-    paramJSONObject = apml.a("ipc_newer_guide", null, this.jdField_a_of_type_Apmh.key, paramJSONObject);
-    aprh.a().a(paramJSONObject);
+    paramJSONObject = arph.a("ipc_newer_guide", null, this.jdField_a_of_type_Arpd.key, paramJSONObject);
+    arui.a().a(paramJSONObject);
   }
   
   private void d()
   {
     Activity localActivity = this.mRuntime.a();
-    String[] arrayOfString = localActivity.getResources().getStringArray(2130968634);
-    bhuf localbhuf = (bhuf)bhus.a(localActivity, null);
-    localbhuf.c(arrayOfString[22]);
-    localbhuf.c(arrayOfString[24]);
-    localbhuf.c(arrayOfString[13]);
-    localbhuf.d(arrayOfString[16]);
-    localbhuf.a(new zea(this, localActivity, localbhuf));
+    String[] arrayOfString = localActivity.getResources().getStringArray(2130968636);
+    bkho localbkho = (bkho)bkif.a(localActivity, null);
+    localbkho.c(arrayOfString[22]);
+    localbkho.c(arrayOfString[24]);
+    localbkho.c(arrayOfString[13]);
+    localbkho.d(arrayOfString[16]);
+    localbkho.a(new abat(this, localActivity, localbkho));
     if (!localActivity.isFinishing()) {}
     try
     {
-      localbhuf.show();
+      localbkho.show();
       return;
     }
     catch (Exception localException) {}
@@ -613,7 +613,7 @@ public class NewerGuidePlugin
         e(paramJSONObject);
         return;
       }
-      ((BaseActivity)localActivity).requestPermissions(new zef(this, paramJSONObject, localActivity), 1, new String[] { "android.permission.READ_CONTACTS" });
+      ((BaseActivity)localActivity).requestPermissions(new abay(this, paramJSONObject, localActivity), 1, new String[] { "android.permission.READ_CONTACTS" });
       return;
     }
   }
@@ -627,8 +627,8 @@ public class NewerGuidePlugin
     paramJSONObject = new Bundle();
     paramJSONObject.putString("key_action", "getRecommendedList");
     paramJSONObject.putInt("wantCount", i);
-    paramJSONObject = apml.a("ipc_newer_guide", null, this.jdField_a_of_type_Apmh.key, paramJSONObject);
-    aprh.a().a(paramJSONObject);
+    paramJSONObject = arph.a("ipc_newer_guide", null, this.jdField_a_of_type_Arpd.key, paramJSONObject);
+    arui.a().a(paramJSONObject);
   }
   
   private void f(JSONObject paramJSONObject)
@@ -646,8 +646,8 @@ public class NewerGuidePlugin
     localBundle.putInt("startIndex", i);
     localBundle.putInt("num", j);
     localBundle.putString("callback", paramJSONObject);
-    paramJSONObject = apml.a("ipc_newer_guide", null, this.jdField_a_of_type_Apmh.key, localBundle);
-    aprh.a().a(paramJSONObject);
+    paramJSONObject = arph.a("ipc_newer_guide", null, this.jdField_a_of_type_Arpd.key, localBundle);
+    arui.a().a(paramJSONObject);
   }
   
   public void callJs(String paramString, String... paramVarArgs)
@@ -744,8 +744,8 @@ public class NewerGuidePlugin
               paramString1 = new Bundle();
               paramString1.putString("key_action", "followPublicAccount");
               paramString1.putString("uin", paramJsBridgeListener);
-              paramJsBridgeListener = apml.a("ipc_newer_guide", null, this.jdField_a_of_type_Apmh.key, paramString1);
-              aprh.a().a(paramJsBridgeListener);
+              paramJsBridgeListener = arph.a("ipc_newer_guide", null, this.jdField_a_of_type_Arpd.key, paramString1);
+              arui.a().a(paramJsBridgeListener);
             }
             else if (paramString3.equals("joinTroop"))
             {
@@ -757,8 +757,8 @@ public class NewerGuidePlugin
               paramString3.putString("uin", paramString1);
               paramString3.putString("name", paramString2);
               paramString3.putString("authSig", paramJsBridgeListener);
-              paramJsBridgeListener = apml.a("ipc_newer_guide", null, this.jdField_a_of_type_Apmh.key, paramString3);
-              aprh.a().a(paramJsBridgeListener);
+              paramJsBridgeListener = arph.a("ipc_newer_guide", null, this.jdField_a_of_type_Arpd.key, paramString3);
+              arui.a().a(paramJsBridgeListener);
             }
             else if (paramString3.equals("joinTroopByTap"))
             {
@@ -770,8 +770,8 @@ public class NewerGuidePlugin
               paramString3.putString("uin", paramString1);
               paramString3.putString("name", paramString2);
               paramString3.putString("authSig", paramJsBridgeListener);
-              paramJsBridgeListener = apml.a("ipc_newer_guide", null, this.jdField_a_of_type_Apmh.key, paramString3);
-              aprh.a().a(paramJsBridgeListener);
+              paramJsBridgeListener = arph.a("ipc_newer_guide", null, this.jdField_a_of_type_Arpd.key, paramString3);
+              arui.a().a(paramJsBridgeListener);
             }
             else if (paramString3.equals("sayHi"))
             {
@@ -779,8 +779,8 @@ public class NewerGuidePlugin
               paramJsBridgeListener = new Bundle();
               paramJsBridgeListener.putString("key_action", "sayHi");
               paramJsBridgeListener.putLong("tinyId", l);
-              paramJsBridgeListener = apml.a("ipc_newer_guide", null, this.jdField_a_of_type_Apmh.key, paramJsBridgeListener);
-              aprh.a().a(paramJsBridgeListener);
+              paramJsBridgeListener = arph.a("ipc_newer_guide", null, this.jdField_a_of_type_Arpd.key, paramJsBridgeListener);
+              arui.a().a(paramJsBridgeListener);
             }
             else if (paramString3.equals("jumpCard"))
             {
@@ -917,9 +917,9 @@ public class NewerGuidePlugin
         if (paramInt == -1)
         {
           paramIntent = this.mRuntime.a();
-          localObject = bdhj.b(paramIntent, this.jdField_a_of_type_AndroidNetUri);
-          str = bddf.a();
-          paramInt = bddf.b(paramIntent);
+          localObject = bgmo.b(paramIntent, this.jdField_a_of_type_AndroidNetUri);
+          str = bghy.a();
+          paramInt = bghy.b(paramIntent);
           localIntent = new Intent();
           localIntent.setClass(paramIntent, PhotoCropForPortraitActivity.class);
           localIntent.putExtra("PhotoConst.DEST_BROADCAST_ACTION_NAME", "ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT");
@@ -980,7 +980,7 @@ public class NewerGuidePlugin
     if (QLog.isColorLevel()) {
       QLog.d("NewerGuidePlugin", 2, "onCreate this=" + this);
     }
-    aprh.a().a(this.jdField_a_of_type_Apmh);
+    arui.a().a(this.jdField_a_of_type_Arpd);
     a();
   }
   
@@ -990,13 +990,13 @@ public class NewerGuidePlugin
       QLog.d("NewerGuidePlugin", 2, "onDestroy this=" + this);
     }
     super.onDestroy();
-    aprh.a().b(this.jdField_a_of_type_Apmh);
+    arui.a().b(this.jdField_a_of_type_Arpd);
     b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin
  * JD-Core Version:    0.7.0.1
  */

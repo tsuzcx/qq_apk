@@ -1,15 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import org.json.JSONObject;
 
 public class adbe
-  implements View.OnClickListener
 {
-  public adbe(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public adbe(adbc paramadbc) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    FriendProfileImageActivity.a(this.a);
+    try
+    {
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("hookpoint_type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("hookpoint_lib_name").trim();
+      this.b = paramJSONObject.getString("hookpoint_func_name").trim();
+      return true;
+    }
+    catch (Exception paramJSONObject)
+    {
+      adax.a("KingKongNativePatch", "Parse HookPoint error!");
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
   }
 }
 

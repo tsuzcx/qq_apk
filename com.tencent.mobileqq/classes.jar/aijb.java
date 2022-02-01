@@ -1,87 +1,43 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
-public class aijb
+class aijb
+  implements URLDrawable.URLDrawableListener
 {
-  public Map<Integer, Boolean> a;
-  public boolean a;
+  aijb(aiiz paramaiiz) {}
   
-  public aijb()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public static aijb a(aoko[] paramArrayOfaoko)
-  {
+    aiiz.a(this.a).remove(paramURLDrawable);
     if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaoko[0].a);
-    }
-    localaijb = new aijb();
-    try
-    {
-      paramArrayOfaoko = new JSONObject(paramArrayOfaoko[0].a);
-      int i;
-      label93:
-      int k;
-      if (paramArrayOfaoko.optInt("allSwitch") == 1)
-      {
-        bool = true;
-        localaijb.jdField_a_of_type_Boolean = bool;
-        paramArrayOfaoko = paramArrayOfaoko.optJSONArray("business");
-        int j = paramArrayOfaoko.length();
-        i = 0;
-        if (i >= j) {
-          break label174;
-        }
-        JSONObject localJSONObject = (JSONObject)paramArrayOfaoko.get(i);
-        k = localJSONObject.optInt("id");
-        if (localJSONObject.optInt("switch") != 1) {
-          break label163;
-        }
-      }
-      label163:
-      for (boolean bool = true;; bool = false)
-      {
-        localaijb.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Boolean.valueOf(bool));
-        i += 1;
-        break label93;
-        bool = false;
-        break;
-      }
-      return localaijb;
-    }
-    catch (Exception paramArrayOfaoko)
-    {
-      paramArrayOfaoko.printStackTrace();
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadCanceled");
     }
   }
   
-  public String toString()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("allSwitch = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",businessSwitch: ");
-    if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Integer localInteger = (Integer)localIterator.next();
-        boolean bool = ((Boolean)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).booleanValue();
-        localStringBuilder.append(localInteger);
-        localStringBuilder.append("=");
-        localStringBuilder.append(bool);
-        localStringBuilder.append(",");
-      }
+    aiiz.a(this.a, paramURLDrawable);
+    aiiz.a(this.a).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadFialed");
     }
-    return localStringBuilder.toString();
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = aiiz.a(this.a);
+    aiiz.a(this.a, paramURLDrawable, l1 - l2);
+    aiiz.a(this.a, true);
+    aiiz.a(this.a).remove(paramURLDrawable);
+    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener downloadSuccess");
+    }
   }
 }
 

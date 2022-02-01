@@ -1,26 +1,25 @@
+import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
-public class aycy
-  implements View.OnTouchListener
+class aycy
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aycy(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  aycy(aycx paramaycx, aycz paramaycz) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      if (paramMotionEvent.getY() < paramView.findViewById(2131379004).getHeight() + aepi.a(30.0F, paramView.getResources())) {
-        SignatureHistoryFragment.a(this.a, true);
-      }
+    if ((aycx.a(this.jdField_a_of_type_Aycx) != null) && (this.jdField_a_of_type_Aycz != null)) {
+      this.jdField_a_of_type_Aycz.b(aycx.a(this.jdField_a_of_type_Aycx), aycx.a(this.jdField_a_of_type_Aycx).getChildPosition(aycx.a(this.jdField_a_of_type_Aycx)));
     }
-    else {
-      return false;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if ((aycx.a(this.jdField_a_of_type_Aycx) != null) && (this.jdField_a_of_type_Aycz != null)) {
+      this.jdField_a_of_type_Aycz.a(aycx.a(this.jdField_a_of_type_Aycx), aycx.a(this.jdField_a_of_type_Aycx).getChildPosition(aycx.a(this.jdField_a_of_type_Aycx)));
     }
-    SignatureHistoryFragment.a(this.a, false);
-    return false;
+    return true;
   }
 }
 

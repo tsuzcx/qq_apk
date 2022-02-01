@@ -1,8 +1,8 @@
 public abstract interface albj
 {
-  public abstract void a(String paramString, int paramInt);
+  public abstract void l();
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public abstract void m();
 }
 
 

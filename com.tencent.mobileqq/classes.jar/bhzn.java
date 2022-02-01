@@ -1,15 +1,25 @@
+import android.view.KeyEvent;
 import android.view.View;
-import com.tencent.widget.PinnedFooterExpandableListView;
+import android.view.View.OnKeyListener;
 
-public abstract interface bhzn
+class bhzn
+  implements View.OnKeyListener
 {
-  public abstract void a();
+  bhzn(bhzm parambhzm) {}
   
-  public abstract void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt);
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4)
+    {
+      bhzm.a(this.a);
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhzn
  * JD-Core Version:    0.7.0.1
  */

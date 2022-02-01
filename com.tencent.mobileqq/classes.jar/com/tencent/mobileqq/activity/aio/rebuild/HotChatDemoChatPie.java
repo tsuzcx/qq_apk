@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agrn;
+import aibv;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -29,11 +29,11 @@ import java.net.URLEncoder;
 import mqq.os.MqqHandler;
 
 public class HotChatDemoChatPie
-  extends agrn
+  extends aibv
 {
-  protected LinearLayout c;
+  protected LinearLayout b;
   protected String i;
-  protected ImageView p;
+  protected ImageView l;
   protected int q;
   protected int r;
   protected int s;
@@ -55,7 +55,7 @@ public class HotChatDemoChatPie
       try
       {
         paramString1 = URLEncoder.encode(str, "UTF-8");
-        paramString1 = String.format("http://play.mobile.qq.com/play/mqqplay/hotchat/jump.html?_bid=2152&hotnamecode=%s", new Object[] { paramString1 });
+        paramString1 = String.format("https://play.mobile.qq.com/play/mqqplay/hotchat/jump.html?_bid=2152&hotnamecode=%s", new Object[] { paramString1 });
         if (QLog.isDevelopLevel()) {
           QLog.i("HotChatDemoChatPie", 4, "makeUrl: " + paramString1);
         }
@@ -79,21 +79,21 @@ public class HotChatDemoChatPie
       do
       {
         return;
-        if (this.c != null) {
+        if (this.b != null) {
           break;
         }
-        this.p = new ImageView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-        this.p.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        this.l = new ImageView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+        this.l.setScaleType(ImageView.ScaleType.CENTER_CROP);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.q, this.q);
         int j = this.r;
         localLayoutParams.rightMargin = j;
         localLayoutParams.leftMargin = j;
         localLayoutParams.bottomMargin = j;
         localLayoutParams.topMargin = j;
-        this.p.setLayoutParams(localLayoutParams);
-        this.p.setImageDrawable(paramDrawable);
+        this.l.setLayoutParams(localLayoutParams);
+        this.l.setImageDrawable(paramDrawable);
         paramDrawable = new SimpleTextView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-        paramDrawable.setText(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getText(2131699424));
+        paramDrawable.setText(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getText(2131698027));
         localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
         localLayoutParams.bottomMargin = this.r;
         localLayoutParams.gravity = 1;
@@ -101,21 +101,21 @@ public class HotChatDemoChatPie
         paramDrawable.setTextColor(Color.rgb(119, 119, 119));
         paramDrawable.setTextSize(1, 14.0F);
         paramDrawable.setGravity(1);
-        this.c = new LinearLayout(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-        this.c.setOrientation(1);
-        this.c.addView(this.p);
-        this.c.addView(paramDrawable);
+        this.b = new LinearLayout(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+        this.b.setOrientation(1);
+        this.b.addView(this.l);
+        this.b.addView(paramDrawable);
         paramDrawable = new RelativeLayout.LayoutParams(-2, -2);
         paramDrawable.addRule(11);
         paramDrawable.addRule(15);
         paramDrawable.rightMargin = this.s;
-        this.c.setLayoutParams(paramDrawable);
-        this.c.setBackgroundResource(2130845055);
+        this.b.setLayoutParams(paramDrawable);
+        this.b.setBackgroundResource(2130845453);
       } while (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.c);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.b);
       return;
-    } while (this.p == null);
-    this.p.setImageDrawable(paramDrawable);
+    } while (this.l == null);
+    this.l.setImageDrawable(paramDrawable);
   }
   
   public void a()
@@ -126,7 +126,7 @@ public class HotChatDemoChatPie
   public void ai()
   {
     super.ai();
-    if (this.c == null)
+    if (this.b == null)
     {
       if (TextUtils.isEmpty(this.i)) {
         this.i = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
@@ -137,7 +137,7 @@ public class HotChatDemoChatPie
   
   public void d(Intent paramIntent)
   {
-    this.v = true;
+    this.u = true;
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b.length() == 0))
     {
       paramIntent = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
@@ -152,8 +152,8 @@ public class HotChatDemoChatPie
   {
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699423);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131699423));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698026);
+      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698026));
       this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
     }
   }
@@ -197,7 +197,7 @@ public class HotChatDemoChatPie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatDemoChatPie
  * JD-Core Version:    0.7.0.1
  */

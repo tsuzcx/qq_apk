@@ -1,39 +1,38 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
 
-class nbl
-  extends Handler
+public abstract interface nbl
 {
-  nbl(nbk paramnbk, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract String a(Context paramContext, myc parammyc);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
-      }
-      this.a.a.clear();
-    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
-    }
-    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
-  }
+  public abstract String a(Context paramContext, boolean paramBoolean);
+  
+  public abstract nbn a();
+  
+  public abstract void a(mxq parammxq);
+  
+  public abstract void a(myc parammyc);
+  
+  public abstract void a(nbn paramnbn);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean);
+  
+  public abstract void b(myc parammyc);
+  
+  public abstract void c(myc parammyc);
+  
+  public abstract void d(myc parammyc);
+  
+  public abstract void e(myc parammyc);
+  
+  public abstract void f(myc parammyc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nbl
  * JD-Core Version:    0.7.0.1
  */

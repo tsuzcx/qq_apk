@@ -1,48 +1,26 @@
-import android.net.Uri;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
-class asqq
-  implements asqy
+public class asqq
+  implements Animation.AnimationListener
 {
-  asqq(asqp paramasqp, int paramInt, String paramString) {}
+  public asqq(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
   
-  public void a(Uri paramUri)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFaild= " + paramUri);
-    this.jdField_a_of_type_Asqp.a.finish();
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong)
-  {
-    QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFinish= " + paramString1);
-    try
+    if ((Face2FaceFriendBubbleView.a(this.a) == 2) || (Face2FaceFriendBubbleView.a(this.a) == 3) || (Face2FaceFriendBubbleView.a(this.a) == 4))
     {
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        paramString2 = new ArrayList();
-        paramString2.add(paramString1);
-        this.jdField_a_of_type_Asqp.a(paramString2, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 4)
-      {
-        paramString2 = new ArrayList();
-        paramString2.add(paramString1);
-        this.jdField_a_of_type_Asqp.b(paramString2, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    }
-    catch (Throwable paramString1)
-    {
-      QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq exception=", paramString1);
+      Face2FaceFriendBubbleView.a(this.a).startAnimation(Face2FaceFriendBubbleView.a(this.a));
       return;
     }
-    if (this.jdField_a_of_type_Int == 3) {
-      this.jdField_a_of_type_Asqp.a(paramString1, this.jdField_a_of_type_JavaLangString);
-    }
+    Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

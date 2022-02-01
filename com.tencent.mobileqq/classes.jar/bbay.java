@@ -1,12 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+
 public class bbay
-  extends bbbi
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
+  public bbay(SignatureEditFragment paramSignatureEditFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.a.locationText = "";
+    this.a.a(0, 0, 0, 0, null, 1);
+    SignatureEditFragment.a(this.a);
+  }
 }
 
 

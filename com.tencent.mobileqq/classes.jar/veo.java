@@ -1,82 +1,80 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class veo
-  implements urr<vgs, vib>
 {
-  public Set<String> a = new HashSet();
+  private final List<vex> jdField_a_of_type_JavaUtilList;
+  private final BlockingQueue<vex> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  private final vfa jdField_a_of_type_Vfa;
+  private final vfd<vex> jdField_a_of_type_Vfd;
+  private final vff jdField_a_of_type_Vff;
+  private final BlockingQueue<vex> b;
   
-  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, long paramLong)
+  public veo(vfa paramvfa, vel paramvel, veu paramveu)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    vgs localvgs = new vgs();
-    localvgs.jdField_b_of_type_JavaLangString = paramString1;
-    localvgs.jdField_c_of_type_JavaLangString = paramString2;
-    localvgs.jdField_a_of_type_Boolean = paramBoolean;
-    localvgs.jdField_c_of_type_Int = paramInt;
-    localvgs.jdField_b_of_type_Long = paramLong;
-    urp.a().a(localvgs, this);
+    this.jdField_a_of_type_Vfa = paramvfa;
+    this.jdField_a_of_type_Vff = new vff(paramvel, new vey(1L), paramvfa);
+    this.jdField_a_of_type_Vff.a(paramvfa);
+    this.jdField_a_of_type_Vfd = new vfd(paramveu);
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    this.b = new LinkedBlockingQueue();
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  public void a(@NonNull vgs paramvgs, @Nullable vib paramvib, @NonNull ErrorMessage paramErrorMessage)
+  List<vex> a()
   {
-    vep localvep = new vep();
-    localvep.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    localvep.jdField_a_of_type_JavaLangString = paramvgs.jdField_b_of_type_JavaLangString;
-    if (xpq.a(localvep.jdField_a_of_type_JavaLangString)) {
-      paramvgs.jdField_c_of_type_JavaLangString = "4_10000";
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  void a()
+  {
+    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+      Thread.yield();
     }
-    localvep.jdField_b_of_type_JavaLangString = paramvgs.jdField_c_of_type_JavaLangString;
-    localvep.jdField_a_of_type_Boolean = paramvgs.jdField_a_of_type_Boolean;
-    uvx localuvx = (uvx)uwa.a(5);
-    if ((paramvgs.jdField_c_of_type_Int == 3) || (paramvgs.jdField_c_of_type_Int == 4) || (paramvgs.jdField_c_of_type_Int == 31) || (paramvgs.jdField_c_of_type_Int == 62))
+    vex localvex;
+    while (!this.b.isEmpty())
     {
-      localvep.jdField_a_of_type_Int = localuvx.a("Q.qqstory.player.WatchVideoHandler", paramvgs.jdField_c_of_type_JavaLangString, paramvgs.jdField_b_of_type_JavaLangString);
-      StoryItem localStoryItem = localuvx.a(paramvgs.jdField_c_of_type_JavaLangString, 1);
-      if (localStoryItem != null)
-      {
-        if (localStoryItem.unReadCount == 0) {
-          break label281;
-        }
-        localStoryItem.unReadCount = localvep.jdField_a_of_type_Int;
-        localuvx.a(paramvgs.jdField_c_of_type_JavaLangString, 1, localStoryItem);
-        wxe.d("Q.qqstory.player.WatchVideoHandler", String.format("read video %s ,update %s unread count , count = %d", new Object[] { paramvgs.jdField_b_of_type_JavaLangString, localStoryItem.key, Integer.valueOf(localStoryItem.unReadCount) }));
-      }
-      label210:
-      if ((paramvib == null) || (!paramErrorMessage.isSuccess())) {
-        break label294;
-      }
-      this.a.add(paramvgs.jdField_b_of_type_JavaLangString);
-      umc.a().dispatch(localvep);
+      localvex = (vex)this.b.remove();
+      this.jdField_a_of_type_Vfd.b(localvex);
     }
-    label281:
-    label294:
-    do
+    while (!this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.isEmpty())
     {
-      return;
-      localvep.jdField_a_of_type_Int = localuvx.a(paramvgs.jdField_c_of_type_JavaLangString);
-      wxe.a("Q.qqstory.player.WatchVideoHandler", "read video %s , source = %d , not effect recent story", paramvgs.jdField_b_of_type_JavaLangString, Integer.valueOf(paramvgs.jdField_c_of_type_Int));
-      break;
-      localuvx.a(paramvgs.jdField_c_of_type_JavaLangString, 1);
-      break label210;
-      umc.a().dispatch(localvep);
-      paramvib = localuvx.a(paramvgs.jdField_b_of_type_JavaLangString);
-    } while (paramvib == null);
-    ((uvq)uwa.a(13)).a(paramvgs.jdField_b_of_type_JavaLangString, paramvgs.jdField_c_of_type_JavaLangString, paramvgs.jdField_a_of_type_Boolean, paramvib.mCreateTime, paramvgs.jdField_c_of_type_Int, paramvgs.d, true);
+      localvex = (vex)this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.remove();
+      this.jdField_a_of_type_Vfd.a(localvex);
+    }
+    this.jdField_a_of_type_Vff.a(this.jdField_a_of_type_Vfa.a());
+    this.jdField_a_of_type_Vfd.a(this.jdField_a_of_type_Vff, this.jdField_a_of_type_JavaUtilList);
+    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) {
+      Thread.yield();
+    }
+  }
+  
+  public void a(List<vex> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.addAll(paramList);
+  }
+  
+  public void b()
+  {
+    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+      Thread.yield();
+    }
+    this.jdField_a_of_type_Vfd.a();
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.clear();
+    this.b.clear();
+    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) {
+      Thread.yield();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     veo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,71 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
-class awzk
-  extends bazx
+public class awzk
 {
-  awzk(awzj paramawzj, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static void a(Context paramContext, String paramString)
   {
-    super(paramQQAppInterface, paramString1);
+    long l = 0L;
+    for (;;)
+    {
+      try
+      {
+        localObject = new URL(paramString);
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        Object localObject;
+        int i;
+        QLog.e("QQMusicConst", 1, "music player activity url io MalformedURLException ", localMalformedURLException);
+        continue;
+      }
+      try
+      {
+        i = ((URL)localObject).openConnection().getContentLength();
+        l = i;
+      }
+      catch (IOException localIOException)
+      {
+        QLog.e("QQMusicConst", 1, "music player activity url IOException ", localIOException);
+      }
+    }
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("big_brother_source_key", "biz_src_qqmusic");
+    ((Bundle)localObject).putLong("_filesize_from_dlg", l);
+    ((Bundle)localObject).putString("_filename_from_dlg", paramContext.getResources().getString(2131694075));
+    ((Bundle)localObject).putString("FILE_MIME_TYPE", "application/vnd.android.package-archive");
+    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_qqmusic");
+    atzj.a().b(paramString, (Bundle)localObject);
   }
   
-  protected void realCancel()
+  public static boolean a(Context paramContext)
   {
-    QLog.i("QbossPreDownloadManager", 1, "ctrl realCancel");
+    return a(paramContext, "com.tencent.qqmusic");
   }
   
-  protected void realStart()
+  public static boolean a(Context paramContext, String paramString)
   {
-    QLog.i("QbossPreDownloadManager", 1, "downloadRes realStart packagename:" + this.jdField_a_of_type_JavaLangString + ",path" + this.b);
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("Qboss_PreDownload_PackageName", this.jdField_a_of_type_JavaLangString);
-    awzj.a("Qboss_PreDownload_Start", (HashMap)localObject);
-    localObject = new baub();
-    ((baub)localObject).jdField_a_of_type_Baug = new awzl(this.app, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
-    ((baub)localObject).jdField_a_of_type_JavaLangString = this.c;
-    ((baub)localObject).jdField_a_of_type_Int = 0;
-    ((baub)localObject).c = this.b;
-    ((bavh)this.app.getNetEngine(0)).a((bave)localObject);
+    paramContext = paramContext.getPackageManager();
+    try
+    {
+      paramContext.getPackageInfo(paramString, 1);
+      return true;
+    }
+    catch (PackageManager.NameNotFoundException paramContext) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awzk
  * JD-Core Version:    0.7.0.1
  */

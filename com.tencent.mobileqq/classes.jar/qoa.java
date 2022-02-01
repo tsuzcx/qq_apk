@@ -1,59 +1,57 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.HashMap;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class qoa
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher$Builder;", "", "()V", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "getAdapter", "()Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "setAdapter", "(Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;)V", "articleInfoMap", "Ljava/util/HashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "Lkotlin/collections/HashMap;", "getArticleInfoMap", "()Ljava/util/HashMap;", "setArticleInfoMap", "(Ljava/util/HashMap;)V", "positionMap", "", "getPositionMap", "setPositionMap", "build", "Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher;", "withArticleInfoMap", "withPositionMap", "withRIJAdapter", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qoa
 {
-  public static <T> int a(Iterable<T> paramIterable, qoc<T> paramqoc)
+  @NotNull
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  @Nullable
+  private snh jdField_a_of_type_Snh;
+  @NotNull
+  private HashMap<String, ArticleInfo> b = new HashMap();
+  
+  @NotNull
+  public final qnz a()
   {
-    if (paramIterable != null)
-    {
-      int i = 0;
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        if (paramqoc.a(paramIterable.next())) {
-          return i;
-        }
-        i += 1;
-      }
-    }
-    return -1;
+    qnz localqnz = new qnz(null);
+    qnz.a(localqnz, this.jdField_a_of_type_Snh);
+    qnz.a(localqnz, this.jdField_a_of_type_JavaUtilHashMap);
+    qnz.b(localqnz, this.b);
+    return localqnz;
   }
   
-  public static <T, E> List<E> a(Iterable<T> paramIterable, qob<T, E> paramqob)
+  @NotNull
+  public final qoa a(@NotNull HashMap<String, Integer> paramHashMap)
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramIterable != null) && (paramqob != null))
-    {
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext()) {
-        localArrayList.add(paramqob.a(paramIterable.next()));
-      }
-    }
-    return localArrayList;
+    Intrinsics.checkParameterIsNotNull(paramHashMap, "positionMap");
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    return this;
   }
   
-  public static <T> List<T> a(Iterable<T> paramIterable, qoc<T> paramqoc)
+  @NotNull
+  public final qoa a(@NotNull snh paramsnh)
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramIterable != null) && (paramqoc != null))
-    {
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        Object localObject = paramIterable.next();
-        if (paramqoc.a(localObject)) {
-          localArrayList.add(localObject);
-        }
-      }
-    }
-    return localArrayList;
+    Intrinsics.checkParameterIsNotNull(paramsnh, "adapter");
+    this.jdField_a_of_type_Snh = paramsnh;
+    return this;
+  }
+  
+  @NotNull
+  public final qoa b(@NotNull HashMap<String, ArticleInfo> paramHashMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHashMap, "articleInfoMap");
+    this.b = paramHashMap;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qoa
  * JD-Core Version:    0.7.0.1
  */

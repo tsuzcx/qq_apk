@@ -1,19 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import android.net.Uri;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
 
 public class beky
-  implements bela
+  implements bekr
 {
-  public beky(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState) {}
+  public beky(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public void a(String paramString)
+  public void a(Uri paramUri)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.a = 10004;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
+    this.a.a = paramUri;
   }
 }
 

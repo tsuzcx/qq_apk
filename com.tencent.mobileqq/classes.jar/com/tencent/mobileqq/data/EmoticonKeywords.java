@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="keyword")
 public class EmoticonKeywords
-  extends awge
+  extends Entity
 {
   public String keyword;
   public long lastReqTime;

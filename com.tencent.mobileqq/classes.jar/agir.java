@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import java.io.File;
-import java.util.Locale;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class agir
-  implements DialogInterface.OnClickListener
+final class agir
+  implements ankk
 {
-  agir(agiq paramagiq, File paramFile) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaIoFile.getParentFile().getName().toLowerCase(Locale.US) + ".mp4";
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Agiq.a.a, paramDialogInterface, true));
+    if (paramBoolean) {
+      agiq.a(true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+    }
   }
 }
 

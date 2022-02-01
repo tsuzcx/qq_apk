@@ -1,44 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.util.Pair;
 
-class bjfi
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+public class bjfi
+  extends Handler
 {
-  bjfi(bjfh parambjfh) {}
-  
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public bjfi(bjfh parambjfh, Looper paramLooper)
   {
-    paramSharedPreferences = BaseApplicationImpl.getApplication().getRuntime();
-    if (paramSharedPreferences != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged key = " + paramString);
-      }
-      if ((!bjfh.a(this.a)) && (bjfh.a(this.a) != null))
-      {
-        if (bjfh.a(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          bjfh.a(this.a, bjfh.a(this.a).getInt(paramString, 0));
-        }
-        if (bjfh.b(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          bjfh.c(this.a, bjfh.a(this.a).getString(paramString, null));
-        }
-        if (bjfh.d(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          bjfh.e(this.a, bjfh.a(this.a).getString(paramString, null));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged value = " + bjfh.a(this.a) + " personlizedYellowVipUrl = " + bjfh.a(this.a));
-        }
-      }
-      bjfh.a(this.a, false);
+    default: 
+      return;
     }
+    paramMessage = (Pair)paramMessage.obj;
+    bjfh.a(this.a, bjfh.a(this.a), (byte[])paramMessage.first, ((Integer)paramMessage.second).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjfi
  * JD-Core Version:    0.7.0.1
  */

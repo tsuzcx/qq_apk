@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.receipt;
 
-import azah;
+import bbzj;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -25,7 +25,7 @@ class ReceiptMessageDetailFragment$5
       return;
     case 0: 
       ReceiptMessageDetailFragment.a(this.this$0).addObserver(ReceiptMessageDetailFragment.b(this.this$0), false);
-      ReceiptMessageDetailFragment.b(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).a().b(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).jdField_a_of_type_JavaLangString), ReceiptMessageDetailFragment.a(this.this$0), azah.a(ReceiptMessageDetailFragment.b(this.this$0))));
+      ReceiptMessageDetailFragment.b(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).a().b(ReceiptMessageDetailFragment.a(this.this$0), ReceiptMessageDetailFragment.a(this.this$0, ReceiptMessageDetailFragment.a(this.this$0).jdField_a_of_type_JavaLangString), ReceiptMessageDetailFragment.a(this.this$0), bbzj.a(ReceiptMessageDetailFragment.b(this.this$0))));
       return;
     }
     ReceiptMessageDetailFragment.f(this.this$0);
@@ -33,7 +33,7 @@ class ReceiptMessageDetailFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.5
  * JD-Core Version:    0.7.0.1
  */

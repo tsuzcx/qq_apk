@@ -1,116 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-
-public class llh
-  extends lld
+class llh
 {
-  boolean a;
-  int c = -1;
-  int d = -1;
+  static final float[] a;
   
-  public llh(VideoAppInterface paramVideoAppInterface)
+  static
   {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public int a(String paramString)
-  {
-    int j = 0;
-    int i;
-    if ("750".equalsIgnoreCase(paramString)) {
-      i = this.c;
-    }
+    int k = 0;
+    a = new float[16384];
+    int i = 0;
+    int j;
     for (;;)
     {
-      lek.c("SupportZimu", "isSupportPeer:" + paramString + "|" + i);
-      return i;
-      if ("735".equalsIgnoreCase(paramString))
-      {
-        i = this.d;
+      j = k;
+      if (i >= 16384) {
+        break;
       }
-      else
-      {
-        i = j;
-        if ("live".equalsIgnoreCase(paramString))
-        {
-          i = j;
-          if (this.jdField_a_of_type_Boolean) {
-            i = 1;
-          }
-        }
-      }
+      a[i] = ((float)Math.sin((i + 0.5F) / 16384.0F * 6.283186F));
+      i += 1;
     }
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    lek.c("SupportZimu", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
-    if (!TextUtils.isEmpty(paramString))
+    while (j < 360)
     {
-      String[] arrayOfString = paramString.split("\\|");
-      paramString = null;
-      if (arrayOfString.length > 0) {
-        paramString = arrayOfString[0];
-      }
-      switch (paramInt)
-      {
-      }
-      while (("SUPPORT_TRUE".equalsIgnoreCase(paramString)) || ("SUPPORT_FALSE".equalsIgnoreCase(paramString)))
-      {
-        return true;
-        if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
-        {
-          this.c = 1;
-        }
-        else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
-        {
-          this.c = 0;
-          continue;
-          if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
-          {
-            this.d = 1;
-          }
-          else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
-          {
-            this.d = 0;
-            continue;
-            if ("SUPPORT_TRUE".equalsIgnoreCase(paramString)) {
-              this.jdField_a_of_type_Boolean = true;
-            } else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString)) {
-              this.jdField_a_of_type_Boolean = false;
-            }
-          }
-        }
-      }
+      a[((int)(j * 45.511112F) & 0x3FFF)] = ((float)Math.sin(j * 0.01745329F));
+      j += 90;
     }
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    localVideoController.a(12, "SUPPORT_TRUE");
-    localVideoController.a(13, "SUPPORT_TRUE");
-    lek.c("SupportZimu", "sendSupportMsg");
-  }
-  
-  public void c()
-  {
-    this.c = -1;
-    this.d = -1;
-    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     llh
  * JD-Core Version:    0.7.0.1
  */

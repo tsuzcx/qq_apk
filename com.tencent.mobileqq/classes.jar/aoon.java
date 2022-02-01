@@ -1,47 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aoon
+  implements pyu
 {
-  public int a = 1;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
-  public static aoon a(aoko[] paramArrayOfaoko)
+  public aoon(int paramInt1, int paramInt2, String paramString)
   {
-    aoon localaoon = new aoon();
-    for (;;)
-    {
-      int i;
-      try
-      {
-        int j = paramArrayOfaoko.length;
-        i = 0;
-        if (i < j)
-        {
-          JSONObject localJSONObject = new JSONObject(paramArrayOfaoko[i].a);
-          if (localJSONObject.has("cameraSwitchOnMessageTab")) {
-            localaoon.a = Integer.valueOf(localJSONObject.optString("cameraSwitchOnMessageTab")).intValue();
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgTabCameraConfBean", 2, "onParsed switch= " + localaoon.a);
-          }
-          return localaoon;
-        }
-      }
-      catch (Throwable paramArrayOfaoko)
-      {
-        QLog.e("MsgTabCameraConfBean", 1, "MsgTabCameraConfBean parse error, ", paramArrayOfaoko);
-        return localaoon;
-      }
-      i += 1;
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    paramString = new Intent("notify_main_subscribe_follow_state");
+    paramString.putExtra("follow_uin", this.jdField_a_of_type_JavaLangString);
+    paramString.putExtra("follow_uin_position", this.jdField_a_of_type_Int);
+    paramString.putExtra("follow_uin_smooth_dx", this.b);
+    paramString.putExtra("follow_uin_status", paramBoolean);
+    BaseApplication.getContext().sendBroadcast(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoon
  * JD-Core Version:    0.7.0.1
  */

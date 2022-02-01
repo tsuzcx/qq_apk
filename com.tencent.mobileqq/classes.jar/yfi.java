@@ -1,24 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetShareGroupListReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yfi
-  implements View.OnClickListener
+  extends QQUIEventReceiver<yff, ygi>
 {
-  public yfi(CommentBottomBar paramCommentBottomBar) {}
-  
-  public void onClick(View paramView)
+  public yfi(@NonNull yff paramyff)
   {
-    if (!bdin.g(this.a.getContext())) {
-      QQToast.a(this.a.getContext(), alud.a(2131694772), 0).a();
+    super(paramyff);
+  }
+  
+  public void a(@NonNull yff paramyff, @NonNull ygi paramygi)
+  {
+    if (paramygi.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      yqp.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramygi.jdField_a_of_type_Int));
+      yff.b(paramyff, paramygi.jdField_a_of_type_Int);
+      if (paramyff.a != null)
+      {
+        paramyff.a.shareGroupCount = yff.b(paramyff);
+        ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramyff), 5, null, false);
+      }
     }
-    this.a.a();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return ygi.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yfi
  * JD-Core Version:    0.7.0.1
  */

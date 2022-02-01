@@ -1,55 +1,36 @@
-import BOSSStrategyCenter.tAdvDesc;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
-public class bkgh
-  extends ajin
+public class bkgh<T>
 {
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  public String h;
+  private long jdField_a_of_type_Long;
+  private bkgi<T> jdField_a_of_type_Bkgi;
+  private long b;
   
-  public bkgh(tAdvDesc paramtAdvDesc)
+  private bkgh(bkgi<T> parambkgi)
   {
-    super(paramtAdvDesc);
+    this.jdField_a_of_type_Bkgi = parambkgi;
   }
   
-  protected void a()
+  public static <T> bkgh<T> a(bkgi<T> parambkgi)
   {
-    super.a();
-    if ((this.a == null) || (TextUtils.isEmpty(this.a.res_data)))
+    return new bkgh(parambkgi);
+  }
+  
+  public bkgh<T> a(long paramLong)
+  {
+    this.b = paramLong;
+    return this;
+  }
+  
+  public bkgh<T> a(T paramT)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > this.b)
     {
-      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
-      return;
+      this.jdField_a_of_type_Long = l;
+      if (this.jdField_a_of_type_Bkgi != null) {
+        this.jdField_a_of_type_Bkgi.a(paramT);
+      }
     }
-    String str = this.a.res_data;
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(str);
-      this.jdField_d_of_type_Int = localJSONObject.optInt("enableCountdown");
-      this.jdField_e_of_type_Int = localJSONObject.optInt("countdownMinute");
-      this.jdField_f_of_type_Int = localJSONObject.optInt("countdownSecond");
-      this.c = localJSONObject.optString("topText");
-      this.jdField_d_of_type_JavaLangString = localJSONObject.optString("bottomText");
-      this.jdField_e_of_type_JavaLangString = localJSONObject.optString("textColor");
-      this.jdField_f_of_type_JavaLangString = localJSONObject.optString("coutdownBgColor");
-      this.g = localJSONObject.optString("coutdownTextColor");
-      this.h = localJSONObject.optString("buttonTitle");
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
-      bjqm.a().a(2741, this.a.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
-    }
+    return this;
   }
 }
 

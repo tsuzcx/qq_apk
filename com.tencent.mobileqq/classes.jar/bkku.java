@@ -1,27 +1,10 @@
-import java.util.HashMap;
-
-final class bkku
-  implements bauf
+public class bkku
 {
-  public void a(bave parambave, bavf parambavf)
-  {
-    if ((parambave == null) || (parambavf == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambave instanceof baub));
-      parambave = (baub)parambave;
-      parambave.jdField_a_of_type_Long += parambavf.c;
-      parambavf.c = 0L;
-      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
-      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
-      parambavf = parambave.jdField_a_of_type_JavaLangString;
-    } while (!parambavf.contains("range="));
-    parambavf = parambavf.substring(0, parambavf.lastIndexOf("range="));
-    parambave.jdField_a_of_type_JavaLangString = (parambavf + "range=" + parambave.jdField_a_of_type_Long);
-  }
+  public float a;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
 }
 
 

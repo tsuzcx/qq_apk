@@ -1,22 +1,25 @@
-import UserGrowth.stNotificationReq;
-import UserGrowth.stNotificationRsp;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
 
 public class tki
-  extends thb<stNotificationRsp>
+  extends AnimatorListenerAdapter
 {
-  public tki(String paramString)
+  public tki(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super("Notification");
-    stNotificationReq localstNotificationReq = new stNotificationReq();
-    localstNotificationReq.linkStrategyArgs = tlp.a();
-    localstNotificationReq.push_info = paramString;
-    this.a = localstNotificationReq;
-    tlo.b("NotificationRequest", "stNotificationReq = " + localstNotificationReq.toString());
+    this.a.setClickable(true);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tki
  * JD-Core Version:    0.7.0.1
  */

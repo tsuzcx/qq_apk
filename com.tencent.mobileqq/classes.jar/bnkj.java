@@ -1,13 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public class bnkj
-  implements DialogInterface.OnClickListener
+class bnkj
+  implements Animation.AnimationListener
 {
-  public bnkj(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bnkj(bnkd parambnkd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if ((bnkd.a(this.a) != null) && (!bnkd.a(this.a)))
+    {
+      bnkd.a(this.a).setAlpha(1.0F);
+      bnkd.a(this.a).setVisibility(4);
+    }
+    if (bnkd.e(this.a) != null)
+    {
+      bnkd.f(this.a).a(327684, new Object[0]);
+      bnkd.g(this.a).a(196612, new Object[0]);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    bnkd.a(this.a).a().a(true, 150);
+  }
 }
 
 

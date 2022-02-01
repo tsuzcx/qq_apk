@@ -1,14 +1,37 @@
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
+
 class aogt
-  implements apcj
+  implements PermissionMonitor.Listener
 {
-  aogt(aogr paramaogr) {}
-  
-  public long a()
+  static
   {
-    if (aogr.a(this.a) != null) {
-      return aogr.a(this.a).a();
+    if (!aogs.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
     }
-    return 0L;
+  }
+  
+  aogt(aogs paramaogs) {}
+  
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (aogs.a(this.jdField_a_of_type_Aogs) != Thread.currentThread()) {}
+    while ((!aogs.a(this.jdField_a_of_type_Aogs)) || (paramArrayOfObject.length != 2)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aogs.a(this.jdField_a_of_type_Aogs))) {
+      throw new AssertionError();
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1].getClass() != Long.class)) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)aogs.a(this.jdField_a_of_type_Aogs), ((Long)paramArrayOfObject[1]).longValue());
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

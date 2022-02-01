@@ -1,35 +1,23 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
 
 public class nkg
-  implements bhuk
+  implements anil
 {
-  public nkg(AccountDetailActivity paramAccountDetailActivity) {}
+  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.a.o) {
-      return;
-    }
-    this.a.o = true;
     switch (paramInt)
     {
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
+    default: 
       return;
-      this.a.q();
-      continue;
-      this.a.E();
-      continue;
-      this.a.G();
     }
+    a(paramBoolean, (BmqqUserSimpleInfo)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nkg
  * JD-Core Version:    0.7.0.1
  */

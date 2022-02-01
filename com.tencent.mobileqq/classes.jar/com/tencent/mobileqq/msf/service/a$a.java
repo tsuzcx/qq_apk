@@ -5,7 +5,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.net.m;
 import com.tencent.mobileqq.msf.core.net.n;
 
@@ -42,7 +42,7 @@ public class a$a
           a.k += 5000L;
           a.l += paramLong2;
         }
-        a.p = j.d;
+        a.p = k.d;
         if (a.p)
         {
           a.e += 5000L;
@@ -86,8 +86,8 @@ public class a$a
       {
         sleep(5000L);
         long l2 = System.currentTimeMillis();
-        long l3 = j.b(l2);
-        if ((a.d == 0L) && (l3 >= j.a))
+        long l3 = k.b(l2);
+        if ((a.d == 0L) && (l3 >= k.a))
         {
           a.d = System.currentTimeMillis() - SystemClock.elapsedRealtime();
           a.b = l1;
@@ -99,7 +99,7 @@ public class a$a
         if (a.d <= 0L) {
           continue;
         }
-        if (l3 > j.b) {
+        if (l3 > k.b) {
           break label141;
         }
         a(l2, l1);

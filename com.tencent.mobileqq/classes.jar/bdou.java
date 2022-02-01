@@ -1,18 +1,17 @@
-public class bdou
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class bdou
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  bdou(bdov parambdov) {}
   
-  public bdou()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = true;
+    bdoq.a("0X800A5CA");
+    if (this.a != null) {
+      this.a.onCancel();
+    }
   }
 }
 

@@ -1,54 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.jetbrains.annotations.Nullable;
-import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.AddVideoReq;
-import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.MoveVideoReq;
-import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.ReqBody;
+import android.content.Context;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentVerticalSmallVideo;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qte
+  extends qqt
 {
-  public static void a(List<String> paramList, int paramInt, @Nullable qth paramqth)
+  public qte(Context paramContext, aobu paramaobu, snh paramsnh)
   {
-    oidb_0xe2a.MoveVideoReq localMoveVideoReq = new oidb_0xe2a.MoveVideoReq();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      String str = (String)paramList.next();
-      if (!TextUtils.isEmpty(str)) {
-        localMoveVideoReq.rpt_rowkey_list.add(ByteStringMicro.copyFromUtf8(str));
-      }
-    }
-    localMoveVideoReq.uint32_column_id.set(paramInt);
-    localMoveVideoReq.uint32_oper_type.set(1);
-    paramList = new oidb_0xe2a.ReqBody();
-    paramList.msg_move_video_req.set(localMoveVideoReq);
-    mzy.a(ors.a(), new qtg(paramqth, paramInt), paramList.toByteArray(), "OidbSvc.0xe2a", 3626, 2);
+    super(paramContext, paramaobu, paramsnh);
   }
   
-  public static void a(List<UgcVideo> paramList, @Nullable qti paramqti)
+  public qqt a()
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(((UgcVideo)paramList.next()).parseUgcVideo());
+    this.jdField_a_of_type_Boolean = true;
+    return g();
+  }
+  
+  public qqt d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    paramList = new oidb_0xe2a.ReqBody();
-    oidb_0xe2a.AddVideoReq localAddVideoReq = new oidb_0xe2a.AddVideoReq();
-    localAddVideoReq.rpt_video_list.set(localArrayList);
-    paramList.msg_add_video_req.set(localAddVideoReq);
-    mzy.a(ors.a(), new qtf(paramqti), paramList.toByteArray(), "OidbSvc.0xe2a", 3626, 1, null, 120000L);
+    ComponentContentVerticalSmallVideo localComponentContentVerticalSmallVideo = (ComponentContentVerticalSmallVideo)this.jdField_a_of_type_Qqs;
+    Pair localPair;
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pya)))
+    {
+      localPair = pgk.a(((pya)this.jdField_a_of_type_JavaLangObject).g(), ((pya)this.jdField_a_of_type_JavaLangObject).e());
+      if (!pha.s(((pya)this.jdField_a_of_type_JavaLangObject).a())) {
+        break label105;
+      }
+      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(-2, -2));
+    }
+    for (;;)
+    {
+      a(localComponentContentVerticalSmallVideo);
+      return this;
+      label105:
+      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue()));
+    }
+  }
+  
+  public qqt e()
+  {
+    return null;
+  }
+  
+  public qqt g()
+  {
+    this.jdField_a_of_type_Qqs = new ComponentContentVerticalSmallVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qte
  * JD-Core Version:    0.7.0.1
  */

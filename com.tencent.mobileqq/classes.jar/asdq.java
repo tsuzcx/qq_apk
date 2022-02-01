@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.image.URLImageView;
 
 class asdq
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  asdq(asdo paramasdo, bdjz parambdjz) {}
+  public URLImageView[] a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public asdq(@NonNull View paramView)
   {
-    this.jdField_a_of_type_Asdo.c();
-    this.jdField_a_of_type_Bdjz.dismiss();
+    super(paramView);
   }
 }
 

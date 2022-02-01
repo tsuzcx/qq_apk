@@ -1,13 +1,15 @@
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bmah
-  extends bltq
+  implements DialogInterface.OnClickListener
 {
-  public bmah(MusicProviderView paramMusicProviderView) {}
+  public bmah(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void b()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(false);
+    this.a.getPlayMode();
   }
 }
 

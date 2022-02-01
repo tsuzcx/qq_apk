@@ -17,7 +17,7 @@ public final class oidb_0x8bb$ForbidUin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8bb.oidb_0x8bb.ForbidUin
  * JD-Core Version:    0.7.0.1
  */

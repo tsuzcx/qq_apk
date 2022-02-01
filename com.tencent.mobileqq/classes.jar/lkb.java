@@ -1,270 +1,78 @@
-import android.graphics.Rect;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import com.tencent.av.business.manager.magicface.MagicfaceDataMultiResultJason;
-import com.tencent.av.business.manager.magicface.MagicfaceDataPendantJason;
-import com.tencent.av.business.manager.magicface.MagicfaceDataVideoJason;
-import java.nio.ByteBuffer;
-import java.util.BitSet;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Random;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.CmdReportClientInfoReqBody;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.MobileHardWareValue;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.PutinfoHead;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.ReqBody;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.VideoHardWareInfo;
 
 public class lkb
-  extends MagicFaceDataEntity
 {
-  Rect a;
-  protected MagicfaceDataMultiResultJason a;
-  int b;
+  private long jdField_a_of_type_Long;
+  private lkk jdField_a_of_type_Lkk;
+  private hd_video_putinfo.ReqBody jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody = new hd_video_putinfo.ReqBody();
   
-  public lkb(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
+  public lkb(lka paramlka) {}
+  
+  private void a()
   {
-    super(paramVideoAppInterface, paramString1, paramString2, paramString3, paramBoolean, paramInt);
-    this.jdField_b_of_type_Int = 0;
-    try
-    {
-      paramVideoAppInterface = new JSONObject(paramString3);
-      if (paramVideoAppInterface.has("multiresult")) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason = ((MagicfaceDataMultiResultJason)bdcs.a(paramVideoAppInterface.getJSONObject("multiresult"), MagicfaceDataMultiResultJason.class));
-      }
-      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason == null) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason = new MagicfaceDataMultiResultJason();
-      }
-      lek.e("MagicFaceDataEntityMultiResult", "multi: " + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.toString());
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_x, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_y, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_wid, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_hei);
-      if (((paramBoolean) && (this.jdField_a_of_type_JavaUtilBitSet.get(1))) || ((!paramBoolean) && (this.jdField_a_of_type_JavaUtilBitSet.get(0))))
-      {
-        paramBoolean = true;
-        this.jdField_a_of_type_Boolean = paramBoolean;
-        lek.c("MagicFaceDataEntityMultiResult", "MagicFaceDataEntityMultiResult constructor:");
-        return;
-      }
-    }
-    catch (JSONException paramVideoAppInterface)
-    {
-      for (;;)
-      {
-        paramVideoAppInterface.printStackTrace();
-        continue;
-        paramBoolean = false;
-      }
-    }
+    hd_video_putinfo.PutinfoHead localPutinfoHead = (hd_video_putinfo.PutinfoHead)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.get();
+    localPutinfoHead.enum_body_type.set(1);
+    localPutinfoHead.uint64_uin.set(this.jdField_a_of_type_Long);
+    localPutinfoHead.bytes_appid.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkk.jdField_a_of_type_JavaLangString.getBytes()));
+    localPutinfoHead.uint64_seq.set(new Random().nextLong());
+    localPutinfoHead.bytes_config_ver.set(ByteStringMicro.copyFrom(lka.jdField_a_of_type_JavaLangString.getBytes()));
+    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.set(localPutinfoHead);
   }
   
-  private String a(int paramInt1, int paramInt2)
+  private void b()
   {
-    lek.c("MagicFaceDataEntityMultiResult", " getResultString:" + paramInt2 + "|" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start);
-    switch (paramInt2)
-    {
-    default: 
-      return "";
-    case 1: 
-      return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_hit;
-    }
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_miss;
+    hd_video_putinfo.CmdReportClientInfoReqBody localCmdReportClientInfoReqBody = (hd_video_putinfo.CmdReportClientInfoReqBody)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.get();
+    localCmdReportClientInfoReqBody.uint32_mobile_type.set(this.jdField_a_of_type_Lkk.jdField_a_of_type_Int);
+    localCmdReportClientInfoReqBody.uint32_mobile_os_info.set(this.jdField_a_of_type_Lkk.jdField_b_of_type_Int);
+    localCmdReportClientInfoReqBody.uint32_instid.set(11001);
+    localCmdReportClientInfoReqBody.bytes_client_system_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkk.jdField_b_of_type_JavaLangString.getBytes()));
+    localCmdReportClientInfoReqBody.bytes_device_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkk.jdField_c_of_type_JavaLangString.getBytes()));
+    Object localObject = (hd_video_putinfo.MobileHardWareValue)localCmdReportClientInfoReqBody.msg_device_info.get();
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_struct.set(this.jdField_a_of_type_Lkk.jdField_c_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_number.set(this.jdField_a_of_type_Lkk.jdField_d_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_hertz.set(this.jdField_a_of_type_Lkk.jdField_e_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_camera_turn.set(this.jdField_a_of_type_Lkk.f);
+    localCmdReportClientInfoReqBody.msg_device_info.set((MessageMicro)localObject);
+    localObject = (hd_video_putinfo.VideoHardWareInfo)localCmdReportClientInfoReqBody.msg_video_info.get();
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_encodeframe.set(this.jdField_a_of_type_Lkk.g);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_decodeframe.set(this.jdField_a_of_type_Lkk.h);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_width.set(this.jdField_a_of_type_Lkk.i);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_height.set(this.jdField_a_of_type_Lkk.j);
+    localCmdReportClientInfoReqBody.msg_video_info.set((MessageMicro)localObject);
+    localCmdReportClientInfoReqBody.bytes_mobile_rom_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkk.jdField_d_of_type_JavaLangString.getBytes()));
+    localCmdReportClientInfoReqBody.uint32_sharp_sdk_ver.set(this.jdField_a_of_type_Lkk.m);
+    localCmdReportClientInfoReqBody.uint32_open_general_info.set(this.jdField_a_of_type_Lkk.l);
+    localCmdReportClientInfoReqBody.bytes_app_version.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkk.jdField_e_of_type_JavaLangString.getBytes()));
+    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.set(localCmdReportClientInfoReqBody);
   }
   
-  private String a(MagicfaceDataPendantJason paramMagicfaceDataPendantJason, String paramString)
+  public void a(long paramLong, lkk paramlkk)
   {
-    String str = paramString;
-    if (paramMagicfaceDataPendantJason != null)
-    {
-      str = paramString;
-      if (paramMagicfaceDataPendantJason.mirror)
-      {
-        str = paramString;
-        if (!this.jdField_b_of_type_Boolean) {
-          str = paramString + "_mirror";
-        }
-      }
-    }
-    return str;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Lkk = paramlkk;
   }
   
-  private void a(byte[] paramArrayOfByte, boolean paramBoolean)
+  public byte[] a()
   {
-    int i;
-    int j;
-    float f1;
-    if (paramBoolean)
-    {
-      i = 4;
-      j = i * 64 * 2;
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= j) || (this.jdField_a_of_type_AndroidGraphicsRect == null)) {
-        break label291;
-      }
-      lek.c("MagicFaceDataEntityMultiResult", "isShot:" + this.jdField_b_of_type_Int + "|" + this.d + "|" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start + "|" + this.jdField_a_of_type_AndroidGraphicsRect.toString() + "|" + paramArrayOfByte.length);
-      if ((this.jdField_b_of_type_Int == 0) && (this.d >= this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start - 2) && (this.d < this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start))
-      {
-        paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
-        if (!paramBoolean) {
-          break label265;
-        }
-        f1 = paramArrayOfByte.getInt(j) / 1000000;
-        label170:
-        if (!paramBoolean) {
-          break label276;
-        }
-      }
-    }
-    label265:
-    label276:
-    for (float f2 = paramArrayOfByte.getInt(j + i) / 1000000;; f2 = paramArrayOfByte.getShort(j + i))
-    {
-      lek.c("MagicFaceDataEntityMultiResult", "onReceiveFaceFeature Kill is:|" + f1 + "|" + f2 + "|" + this.jdField_a_of_type_AndroidGraphicsRect.toString());
-      if (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f2)) {
-        this.jdField_b_of_type_Int = 1;
-      }
-      return;
-      i = 2;
-      break;
-      f1 = paramArrayOfByte.getShort(j);
-      break label170;
-    }
-    label291:
-    lek.c("MagicFaceDataEntityMultiResult", "isShot ERROR");
-  }
-  
-  private int b()
-  {
-    switch (this.jdField_b_of_type_Int)
-    {
-    default: 
-      return 0;
-    case 1: 
-      return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_hit_frame;
-    }
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_miss_frame;
-  }
-  
-  private String c()
-  {
-    switch (this.jdField_b_of_type_Int)
-    {
-    default: 
-      return null;
-    case 0: 
-      return "miss";
-    }
-    return "hit";
-  }
-  
-  private boolean d()
-  {
-    return (this.jdField_a_of_type_JavaUtilBitSet.get(1)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.tips));
-  }
-  
-  public int a()
-  {
-    return super.a() + b();
-  }
-  
-  protected String a()
-  {
-    String str = "";
-    StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.hasMirrorRes)
-    {
-      str = "" + "_";
-      localStringBuilder = new StringBuilder().append(str);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label118;
-      }
-    }
-    label118:
-    for (str = "mirror";; str = "normal")
-    {
-      str = str;
-      lek.c("MagicFaceDataEntityMultiResult", "getMirrorPath:" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.hasMirrorRes + "|" + this.jdField_a_of_type_Boolean + "|" + str);
-      return str;
-    }
-  }
-  
-  public String a(int paramInt)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.common_id))
-    {
-      int i = a();
-      lek.c("MagicFaceDataEntityMultiResult", " getResPath:" + paramInt + "|" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start + "|" + i);
-      if ((paramInt >= this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start) && (paramInt < i)) {
-        return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.common_id + "_" + a(paramInt, this.jdField_b_of_type_Int) + a();
-      }
-      return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.common_id + a();
-    }
-    return super.a(paramInt);
-  }
-  
-  public String a(MagicfaceDataPendantJason paramMagicfaceDataPendantJason)
-  {
-    String str2 = super.a(paramMagicfaceDataPendantJason);
-    lek.c("MagicFaceDataEntityMultiResult", "getDecorateName :" + paramMagicfaceDataPendantJason.toString());
-    String str1 = str2;
-    if (!TextUtils.isEmpty(str2))
-    {
-      if (TextUtils.isEmpty(paramMagicfaceDataPendantJason.trigger)) {
-        break label142;
-      }
-      str1 = c();
-      lek.c("MagicFaceDataEntityMultiResult", "getDecorateName 2:" + paramMagicfaceDataPendantJason.trigger + "|" + str1);
-      if (!paramMagicfaceDataPendantJason.trigger.equals(str1)) {
-        break label137;
-      }
-      str1 = a(paramMagicfaceDataPendantJason, str2);
-    }
-    for (;;)
-    {
-      lek.c("MagicFaceDataEntityMultiResult", "getDecorateName 3:" + str1);
-      return str1;
-      label137:
-      str1 = null;
-      continue;
-      label142:
-      str1 = a(paramMagicfaceDataPendantJason, str2);
-    }
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte, short paramShort1, short paramShort2, short paramShort3, short paramShort4, boolean paramBoolean)
-  {
-    super.a(paramString, paramArrayOfByte, paramShort1, paramShort2, paramShort3, paramShort4, paramBoolean);
-    if (this.jdField_a_of_type_JavaUtilBitSet.get(0)) {
-      if (!a(paramString)) {
-        a(paramArrayOfByte, paramBoolean);
-      }
-    }
-    while (!a(paramString)) {
-      return;
-    }
-    a(paramArrayOfByte, paramBoolean);
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_JavaUtilBitSet.get(0)) {
-      a(true);
-    }
-    lek.c("MagicFaceDataEntityMultiResult", "processStart:" + this.jdField_a_of_type_JavaUtilBitSet.get(2));
-    if ((!this.jdField_a_of_type_JavaUtilBitSet.get(2)) && (d())) {
-      a(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.tips);
-    }
-  }
-  
-  public void d()
-  {
-    super.d();
-    if (this.jdField_a_of_type_JavaUtilBitSet.get(0)) {
-      a(false);
-    }
-    b(0);
-    b(1);
-    if (d()) {
-      a(null);
-    }
+    a();
+    b();
+    return this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lkb
  * JD-Core Version:    0.7.0.1
  */

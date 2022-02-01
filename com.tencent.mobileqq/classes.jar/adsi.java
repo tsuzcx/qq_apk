@@ -1,17 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-public class adsi
-  implements aybr
+public final class adsi
+  implements bhva
 {
-  public adsi(QQSettingMe paramQQSettingMe) {}
+  public adsi(Context paramContext) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
-      this.a.z();
-    }
+    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

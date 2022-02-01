@@ -9,7 +9,7 @@ import android.os.Process;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.c.k;
-import com.tencent.mobileqq.msf.core.u;
+import com.tencent.mobileqq.msf.core.x;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -265,7 +265,7 @@ public class c
           if ((this.g.getFileType() != 1) && (this.g.getFileType() != 2)) {
             break label231;
           }
-          u.b().post(new d(this));
+          x.b().post(new d(this));
           if (!QLog.isColorLevel()) {
             break label231;
           }

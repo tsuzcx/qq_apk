@@ -26,7 +26,7 @@ public final class cmd0x388$ImgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.cs.cmd0x388.cmd0x388.ImgInfo
  * JD-Core Version:    0.7.0.1
  */

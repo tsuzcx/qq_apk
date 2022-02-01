@@ -1,104 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import java.net.URLEncoder;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class aasp
 {
-  public static String a(int paramInt)
+  public String a;
+  public ArrayList<Integer> a;
+  public ArrayList<Object> b;
+  
+  public aasp(JSONObject paramJSONObject)
   {
     try
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("pp", String.valueOf(paramInt));
-      ((JSONObject)localObject).put("ps", String.valueOf(1));
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  public static String a(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt)
-  {
-    int k = 1;
-    int i;
-    if ((paramLong1 >= 0L) && (paramLong2 == 0L)) {
-      i = 4;
-    }
-    for (;;)
-    {
-      long l = paramLong1;
-      if (paramLong1 <= -1L)
-      {
-        i = 4;
-        l = 0L;
+      if (paramJSONObject.has("name")) {
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
       }
-      if (l >= paramLong2) {
-        i = 4;
-      }
-      try
+      if (paramJSONObject.has("packageIDs"))
       {
-        Object localObject = new JSONObject();
-        ((JSONObject)localObject).put("bt", l + "");
-        ((JSONObject)localObject).put("et", paramLong2 + "");
-        StringBuilder localStringBuilder = new StringBuilder();
-        if (l > 0L)
+        paramJSONObject = paramJSONObject.optJSONArray("packageIDs");
+        int j = paramJSONObject.length();
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        this.b = new ArrayList();
+        int i = 0;
+        while (i < j)
         {
-          j = 0;
-          ((JSONObject)localObject).put("bf", j + "");
-          localStringBuilder = new StringBuilder();
-          if (!paramBoolean) {
-            break label249;
-          }
+          this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramJSONObject.getInt(i)));
+          i += 1;
         }
-        label249:
-        for (int j = k;; j = 0)
-        {
-          ((JSONObject)localObject).put("ef", j + "");
-          ((JSONObject)localObject).put("pp", String.valueOf(paramInt));
-          ((JSONObject)localObject).put("pa", i + "");
-          localObject = ((JSONObject)localObject).toString();
-          return localObject;
-          j = 1;
-          break;
-        }
-        i = 0;
       }
-      catch (Exception localException)
-      {
-        return null;
-      }
-    }
-  }
-  
-  public static void a(GdtAd paramGdtAd, String paramString)
-  {
-    if ((paramGdtAd == null) || (TextUtils.isEmpty(paramGdtAd.getUrlForImpression()))) {
       return;
     }
-    a(paramGdtAd.getUrlForImpression(), paramString);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    aasq.a(paramString);
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
+    catch (Exception paramJSONObject)
     {
-      aasq.a(paramString1);
-      return;
-      paramString1 = paramString1 + "&" + "video" + "=" + URLEncoder.encode(paramString2);
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopGiftAioPanelData", 2, "PersonalTabItemInfo json:", paramJSONObject);
+      }
     }
   }
 }

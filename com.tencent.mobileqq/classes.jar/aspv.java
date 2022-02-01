@@ -1,15 +1,25 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class aspv
-  implements View.OnClickListener
+public class aspv
+  implements Animation.AnimationListener
 {
-  aspv(aspt paramaspt, aspx paramaspx) {}
+  public aspv(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    aspt.a(this.jdField_a_of_type_Aspt, this.jdField_a_of_type_Aspx.a);
+    paramAnimation = new AlphaAnimation(0.2F, 0.0F);
+    paramAnimation.setDuration(500L);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

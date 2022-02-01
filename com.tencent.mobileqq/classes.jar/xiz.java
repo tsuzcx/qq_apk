@@ -1,45 +1,16 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.support.annotation.UiThread;
 
-public class xiz
-  extends xis
+public abstract interface xiz
 {
-  protected EditVideoParams a;
-  public String c;
+  @UiThread
+  public abstract void a();
   
-  public xiz(int paramInt1, String paramString, int paramInt2)
-  {
-    super(paramInt1, paramString, paramInt2);
-  }
-  
-  public xiz(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
-  {
-    super(paramInt1, paramString, paramInt2);
-    this.a = paramEditVideoParams;
-  }
-  
-  @NonNull
-  public Class<? extends xit> a()
-  {
-    return xjb.class;
-  }
-  
-  @NonNull
-  public xit a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new xjb(this, paramContext, paramViewGroup, null);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
+  @UiThread
+  public abstract void a(xix paramxix, String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xiz
  * JD-Core Version:    0.7.0.1
  */

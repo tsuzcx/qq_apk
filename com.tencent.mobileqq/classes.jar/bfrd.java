@@ -1,623 +1,519 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.pcpush.MessageContent.MsgContent;
-import java.io.File;
+import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.manager.Manager;
 
 public class bfrd
-  implements bfoj
+  implements Manager
 {
-  protected static bfrd a;
-  protected static List<bfre> a;
-  protected int a;
-  protected Handler a;
-  protected bfrc a;
-  protected ConcurrentHashMap<String, bfrf> a;
+  private static final ArrayList<Long> a;
+  protected SharedPreferences a;
+  protected LruCache<String, Bundle> a;
+  protected QQAppInterface a;
+  protected TroopManager a;
+  protected String a;
+  protected HashMap<String, Long> a;
   
-  protected bfrd()
+  static
   {
-    this.jdField_a_of_type_Int = 111;
-    this.jdField_a_of_type_AndroidOsHandler = new bfrg(this, ThreadManager.getSubThreadLooper());
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
-    jdField_a_of_type_JavaUtilList = new ArrayList(10);
-    this.jdField_a_of_type_Bfrc = new bfrc();
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    bfok.a().a(this);
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static bfrd a()
+  public bfrd(QQAppInterface paramQQAppInterface)
   {
-    try
-    {
-      if (jdField_a_of_type_Bfrd == null) {
-        jdField_a_of_type_Bfrd = new bfrd();
-      }
-      bfrd localbfrd = jdField_a_of_type_Bfrd;
-      return localbfrd;
-    }
-    finally {}
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(10);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)paramQQAppInterface.getManager(52));
+    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_troop_bind_pb", 0);
+  }
+  
+  @Deprecated
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    return (paramMessageRecord != null) && (paramMessageRecord.msgtype == -3006);
   }
   
   public int a(String paramString)
   {
-    bflp.c("PCPushProxy", "--> open key = " + paramString);
-    Object localObject1 = (bfrf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localObject1 == null)
-    {
-      bflp.e("PCPushProxy", "open fail entry is null, error : OPEN_FAIL_KEY_NOT_EXISTS, key = " + paramString);
-      return 1;
-    }
-    if (((bfrf)localObject1).jdField_b_of_type_Int != 1)
-    {
-      localObject2 = a(paramString);
-      if ((localObject2 == null) || (((String)localObject2).trim().equals("")) || (!new File((String)localObject2).exists()))
-      {
-        bflp.e("PCPushProxy", "open fail, error : file not exist or be deleted, key = " + paramString);
-        return 2;
-      }
-    }
-    Object localObject2 = Message.obtain();
-    ((Message)localObject2).what = 4;
-    ((Message)localObject2).obj = paramString;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
-    paramString = bfbm.a().a();
-    if (paramString == null)
-    {
-      bflp.c("PCPushProxy", "open fail, error : OPEN_FAIL_OTHERS");
-      return 4;
-    }
-    localObject2 = paramString.getPackageManager();
-    if (localObject2 == null)
-    {
-      bflp.c("PCPushProxy", "open fail, error : OPEN_FAIL_OTHERS");
-      return 4;
-    }
-    if (((bfrf)localObject1).jdField_b_of_type_Int == 1) {}
-    for (;;)
-    {
-      try
-      {
-        localObject2 = ((PackageManager)localObject2).getLaunchIntentForPackage(((bfrf)localObject1).jdField_d_of_type_JavaLangString);
-        if (localObject2 == null)
-        {
-          bflp.c("PCPushProxy", "open fail, because package not found, package = " + ((bfrf)localObject1).jdField_d_of_type_JavaLangString);
-          return 4;
-        }
-        ((Intent)localObject2).addFlags(268435456);
-        paramString.startActivity((Intent)localObject2);
-        bflp.c("PCPushProxy", "open success");
-        return 0;
-      }
-      catch (Exception paramString)
-      {
-        bflp.a("PCPushProxy", "open fail, error : ", paramString);
-        return 4;
-      }
-      localObject1 = bfok.a().a(((bfrf)localObject1).jdField_b_of_type_JavaLangString);
-      if (localObject1 == null) {
-        return 4;
-      }
-      localObject1 = bfrb.a(paramString, new File(((DownloadInfo)localObject1).l));
-      if (localObject1 != null)
-      {
-        localObject2 = ((PackageManager)localObject2).queryIntentActivities((Intent)localObject1, 0);
-        if ((localObject2 == null) || (((List)localObject2).size() == 0))
-        {
-          bflp.c("PCPushProxy", "open fail, error : OPEN_FAIL_NO_RESPONSE_APP");
-          return 3;
-        }
-        paramString.startActivity((Intent)localObject1);
-      }
-    }
+    paramString = paramString + "_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_temp_follow_state";
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, -1);
   }
   
-  public bfrf a(byte[] paramArrayOfByte)
+  public Bundle a(String paramString)
   {
-    bflp.c("PCPushProxy", "--> parse");
-    Object localObject = new MessageContent.MsgContent();
+    return (Bundle)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+  }
+  
+  public String a()
+  {
     try
     {
-      ((MessageContent.MsgContent)localObject).mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = new bfrf();
-      paramArrayOfByte.jdField_b_of_type_JavaLangString = String.valueOf(((MessageContent.MsgContent)localObject).appid.get());
-      paramArrayOfByte.jdField_e_of_type_JavaLangString = ((MessageContent.MsgContent)localObject).appname.get();
-      paramArrayOfByte.h = ((MessageContent.MsgContent)localObject).appsize.get();
-      paramArrayOfByte.jdField_f_of_type_JavaLangString = ((MessageContent.MsgContent)localObject).appurl.get();
-      paramArrayOfByte.jdField_b_of_type_Int = ((MessageContent.MsgContent)localObject).filetype.get();
-      paramArrayOfByte.g = ((MessageContent.MsgContent)localObject).iconurl.get();
-      paramArrayOfByte.jdField_d_of_type_JavaLangString = ((MessageContent.MsgContent)localObject).pkgname.get();
-      paramArrayOfByte.i = ((MessageContent.MsgContent)localObject).source.get();
-      paramArrayOfByte.j = ((MessageContent.MsgContent)localObject).srciconurl.get();
-      paramArrayOfByte.jdField_a_of_type_Int = ((MessageContent.MsgContent)localObject).versioncode.get();
-      paramArrayOfByte.jdField_c_of_type_JavaLangString = ((MessageContent.MsgContent)localObject).via.get();
-      paramArrayOfByte.jdField_a_of_type_JavaLangString = b(paramArrayOfByte.jdField_f_of_type_JavaLangString);
-      if (paramArrayOfByte.jdField_b_of_type_Int != 1)
-      {
-        paramArrayOfByte.jdField_b_of_type_JavaLangString = ("unapk" + SystemClock.currentThreadTimeMillis() + "#" + paramArrayOfByte.jdField_b_of_type_JavaLangString);
-        paramArrayOfByte.jdField_d_of_type_JavaLangString = paramArrayOfByte.jdField_e_of_type_JavaLangString;
-      }
-      boolean bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramArrayOfByte.jdField_a_of_type_JavaLangString);
-      bflp.c("PCPushProxy", "add entry to mPkgEntryMap, hasKey = " + bool);
-      if (!bool)
-      {
-        bflp.c("PCPushProxy", "add entry to mPkgEntryMap, key = " + paramArrayOfByte.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramArrayOfByte.jdField_a_of_type_JavaLangString, paramArrayOfByte);
-      }
-      localObject = Message.obtain();
-      ((Message)localObject).what = 2;
-      ((Message)localObject).obj = paramArrayOfByte.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-      return paramArrayOfByte;
+      String str = this.jdField_a_of_type_JavaLangString;
+      return str;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    finally
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  protected String a()
+  public void a(long paramLong)
   {
-    Object localObject = bfbm.a().a();
-    if (localObject != null)
-    {
-      localObject = (ConnectivityManager)((Context)localObject).getSystemService("connectivity");
-      if (localObject != null)
-      {
-        localObject = ((ConnectivityManager)localObject).getNetworkInfo(1);
-        if ((localObject != null) && (((NetworkInfo)localObject).isConnected()) && (((NetworkInfo)localObject).isAvailable())) {
-          return "ANDROIDQQ.PCPUSH.AUTO";
-        }
-      }
-    }
-    if (this.jdField_a_of_type_Int == 111) {
-      return "ANDROIDQQ.PCPUSH.SINGLEDETAIL";
-    }
-    if (this.jdField_a_of_type_Int == 112) {
-      return "ANDROIDQQ.PCPUSH.MUTIDETAIL";
-    }
-    if (this.jdField_a_of_type_Int == 113) {
-      return "ANDROIDQQ.PCPUSH.UNREADPOP";
-    }
-    return "ANDROIDQQ.PCPUSH.AUTO";
-  }
-  
-  public String a(String paramString)
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      return null;
-    }
-    bfrf localbfrf = (bfrf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localbfrf == null)
-    {
-      bflp.e("PCPushProxy", "getDownloadPath error because entry = null, key = " + paramString);
-      return null;
-    }
-    paramString = bfok.a().a(localbfrf.jdField_b_of_type_JavaLangString);
-    if (paramString != null) {
-      return paramString.l;
-    }
-    return null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(bfre parambfre)
-  {
-    bflp.c("PCPushProxy", "registerDownloadLitener dataline register listeners");
-    if (!jdField_a_of_type_JavaUtilList.contains(parambfre)) {
-      jdField_a_of_type_JavaUtilList.add(parambfre);
+    if (!jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong))) {
+      jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
     }
   }
   
   public void a(String paramString)
   {
-    bflp.c("PCPushProxy", "--> pause key = " + paramString);
-    bfrf localbfrf = (bfrf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localbfrf == null)
+    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
     {
-      bflp.e("PCPushProxy", "pause error because entry = null, key = " + paramString);
-      return;
+      try
+      {
+        paramString = paramString + "_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_temp_follow_state";
+        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        localEditor.remove(paramString);
+        localEditor.commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.tempFollow", 2, "deletePubAccTempFollowState:" + paramString);
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopBindPublicAccountMgr.tempFollow", 2, "deletePubAccTempFollowState:" + paramString.toString());
+          }
+        }
+      }
     }
-    paramString = new Bundle();
-    paramString.putString(bfoh.jdField_b_of_type_JavaLangString, localbfrf.jdField_b_of_type_JavaLangString);
-    paramString.putString(bfoh.j, localbfrf.jdField_f_of_type_JavaLangString);
-    paramString.putString(bfoh.jdField_f_of_type_JavaLangString, localbfrf.jdField_d_of_type_JavaLangString);
-    paramString.putString(bfoh.i, localbfrf.jdField_c_of_type_JavaLangString);
-    paramString.putString(bfoh.l, localbfrf.jdField_e_of_type_JavaLangString);
-    String str = bfoh.y;
-    if (localbfrf.jdField_b_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false)
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
     {
-      paramString.putBoolean(str, bool);
-      paramString.putInt(bfoh.k, 3);
-      bfod.a(null, paramString, "5", null, 0);
+      try
+      {
+        paramString = paramString + "_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_temp_follow_state";
+        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        paramInt1 = paramInt1 << 4 | paramInt2;
+        localEditor.putInt(paramString, paramInt1);
+        localEditor.commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.tempFollow", 2, "saveTroopTempFollowState:" + paramString + ", " + paramInt1);
+        }
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopBindPublicAccountMgr.tempFollow", 2, "saveTroopTempFollowState:" + paramString.toString());
+          }
+        }
+      }
       return;
     }
   }
   
-  public boolean a(String paramString)
+  public void a(String paramString, long paramLong)
   {
-    boolean bool2 = true;
-    bflp.c("PCPushProxy", "--> start key = " + paramString);
-    if (!bfok.a().a().contains(this))
+    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
     {
-      bfok.a().a(this);
-      bflp.c("PCPushProxy", "PCPushProxy has not register, register download listener");
-    }
-    bfrf localbfrf = (bfrf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    boolean bool1;
-    if (localbfrf == null)
-    {
-      bflp.e("PCPushProxy", "start error because entry = null, key = " + paramString);
-      bool1 = false;
-    }
-    do
-    {
-      do
+      try
       {
-        return bool1;
-        bool1 = bool2;
-      } while (localbfrf.jdField_e_of_type_Int == 101);
-      bool1 = bool2;
-    } while (localbfrf.jdField_e_of_type_Int == 104);
-    label273:
-    int i;
-    if (localbfrf.jdField_e_of_type_Int != 105)
-    {
-      if (!localbfrf.jdField_c_of_type_JavaLangString.startsWith("ANDROIDQQ.PCPUSH.")) {
-        localbfrf.jdField_c_of_type_JavaLangString = (a() + "." + localbfrf.jdField_c_of_type_JavaLangString);
+        paramString = paramString + "_btm_pbmsg_seq";
+        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        localEditor.putLong(paramString, paramLong);
+        localEditor.commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.bottom", 2, "setTroopLastPubAccountMsgUniseq:" + paramString + ", " + paramLong);
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopBindPublicAccountMgr.bottom", 2, "setTroopLastPubAccountMsgUniseq:" + paramString.toString());
+          }
+        }
       }
     }
-    else
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, paramBundle);
+  }
+  
+  public void a(String paramString, List<ChatMessage> arg2)
+  {
+    Object localObject2;
+    boolean bool;
+    try
     {
-      paramString = new Bundle();
-      paramString.putString(bfoh.jdField_b_of_type_JavaLangString, localbfrf.jdField_b_of_type_JavaLangString);
-      paramString.putString(bfoh.j, localbfrf.jdField_f_of_type_JavaLangString);
-      paramString.putString(bfoh.jdField_f_of_type_JavaLangString, localbfrf.jdField_d_of_type_JavaLangString);
-      paramString.putString(bfoh.i, localbfrf.jdField_c_of_type_JavaLangString);
-      paramString.putString(bfoh.l, localbfrf.jdField_e_of_type_JavaLangString);
-      String str = bfoh.y;
-      if (localbfrf.jdField_b_of_type_Int != 1) {
-        break label461;
+      localObject2 = paramString + "_btm_pbmsg_seq";
+      synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+      {
+        l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong((String)localObject2, -1L);
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder().append("checkMovePubMsg2Bottom:").append(paramString).append(", hasPubMsg=");
+          if (l <= 0L) {
+            break label230;
+          }
+          bool = true;
+          QLog.d("TroopBindPublicAccountMgr.bottom", 2, bool);
+        }
+        if ((l >= 0L) && (??? != null))
+        {
+          i = ???.size();
+          if (i != 0) {
+            break label236;
+          }
+        }
+        return;
       }
-      bool1 = true;
-      paramString.putBoolean(str, bool1);
-      if (localbfrf.jdField_b_of_type_Int != 1) {
-        break label471;
+      ??? = paramString + "_unread_pbmsg_cnt";
+    }
+    catch (Exception ???)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopBindPublicAccountMgr.bottom", 2, "checkMoveLastPubMsgToBottom:" + ???.toString());
       }
-      if (localbfrf.jdField_d_of_type_Int != 2) {
-        break label466;
-      }
-      i = 12;
+      b(paramString);
     }
     for (;;)
     {
-      paramString.putInt(bfoh.k, i);
-      bfod.a(null, paramString, "5", null, 0);
-      return true;
-      if (localbfrf.jdField_c_of_type_JavaLangString.startsWith("ANDROIDQQ.PCPUSH.AUTO.")) {
-        i = "ANDROIDQQ.PCPUSH.AUTO".length();
-      }
-      for (;;)
+      synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
       {
-        localbfrf.jdField_c_of_type_JavaLangString = (a() + localbfrf.jdField_c_of_type_JavaLangString.substring(i));
-        break;
-        if (localbfrf.jdField_c_of_type_JavaLangString.startsWith("ANDROIDQQ.PCPUSH.SINGLEDETAIL.")) {
-          i = "ANDROIDQQ.PCPUSH.SINGLEDETAIL".length();
-        } else if (localbfrf.jdField_c_of_type_JavaLangString.startsWith("ANDROIDQQ.PCPUSH.MUTIDETAIL.")) {
-          i = "ANDROIDQQ.PCPUSH.MUTIDETAIL".length();
-        } else if (localbfrf.jdField_c_of_type_JavaLangString.startsWith("ANDROIDQQ.PCPUSH.UNREADPOP.")) {
-          i = "ANDROIDQQ.PCPUSH.UNREADPOP".length();
-        } else {
-          i = "ANDROIDQQ.PCPUSH".length();
+        if (this.jdField_a_of_type_AndroidContentSharedPreferences.getInt((String)???, 0) == 1) {
+          d(paramString);
+        }
+        return;
+      }
+      label230:
+      bool = false;
+      break;
+      label236:
+      j = ???.size();
+      i = 0;
+      label246:
+      if (i >= j) {
+        break label746;
+      }
+      if (((ChatMessage)???.get(i)).uniseq != l) {
+        break label754;
+      }
+      label271:
+      bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopBindPublicAccountMgr.bottom", 2, "lastPubMsgIdxInList: lastPubMsgIdx=" + i + ", listSize=" + j + ", inBottomBefore=" + bool);
+      }
+      ??? = null;
+      if (i < 0)
+      {
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString, 1, l);
+        if ((localObject2 instanceof ChatMessage)) {
+          ??? = (ChatMessage)localObject2;
+        }
+        if (!QLog.isColorLevel()) {
+          break label751;
+        }
+        QLog.d("TroopBindPublicAccountMgr.bottom", 2, "queryMsgItemByseq:" + (localObject2 instanceof ChatMessage));
+        break label751;
+      }
+      label408:
+      while (??? == null)
+      {
+        b(paramString);
+        return;
+        ??? = (ChatMessage)???.remove(i);
+      }
+      if (bool) {
+        break label537;
+      }
+      ???.add(???);
+      i = ???.size();
+      if (i > 1)
+      {
+        l = ((ChatMessage)???.get(i - 2)).shmsgseq;
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.bottom", 2, "put2InsertSeqMap:" + paramString + "," + l);
         }
       }
-      label461:
-      bool1 = false;
-      break label273;
-      label466:
-      i = 2;
-      continue;
-      label471:
-      i = 2;
+    }
+    label537:
+    long l = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).longValue();
+    int j = ???.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        if (((ChatMessage)???.get(i)).shmsgseq < l) {}
+      }
+      else
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopBindPublicAccountMgr.bottom", 2, "inBottomBefore, lastSeq=" + l + ", insertIdx=" + i);
+          }
+          if (i < 0) {
+            ???.add(???);
+          }
+          for (;;)
+          {
+            bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "bottom_one", 0, 0, paramString, "", "", "");
+            break;
+            if (((ChatMessage)???.get(i)).shmsgseq > l) {
+              ???.add(i, ???);
+            } else if (((ChatMessage)???.get(i)).shmsgseq == l) {
+              ???.add(i + 1, ???);
+            }
+          }
+          i = -1;
+        }
+        label746:
+        i = -1;
+        break label271;
+        label751:
+        break label408;
+        label754:
+        i += 1;
+        break label246;
+      }
+      i += 1;
     }
   }
   
-  protected String b(String paramString)
+  public boolean a(long paramLong)
   {
-    if ((paramString == null) || ("".equals(paramString))) {
-      return "";
-    }
-    return "p" + paramString.hashCode();
+    return jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong));
   }
   
-  public void b(int paramInt)
+  /* Error */
+  public boolean a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(paramInt);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: invokestatic 294	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6: ifne +63 -> 69
+    //   9: aload_1
+    //   10: aload_0
+    //   11: getfield 33	bfrd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   14: invokevirtual 299	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   17: ifeq +52 -> 69
+    //   20: iconst_1
+    //   21: istore_2
+    //   22: invokestatic 148	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   25: ifeq +40 -> 65
+    //   28: ldc_w 301
+    //   31: iconst_2
+    //   32: new 63	java/lang/StringBuilder
+    //   35: dup
+    //   36: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   39: ldc_w 303
+    //   42: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: aload_1
+    //   46: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: ldc_w 259
+    //   52: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: iload_2
+    //   56: invokevirtual 205	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   62: invokestatic 156	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   65: aload_0
+    //   66: monitorexit
+    //   67: iload_2
+    //   68: ireturn
+    //   69: iconst_0
+    //   70: istore_2
+    //   71: goto -49 -> 22
+    //   74: astore_1
+    //   75: aload_0
+    //   76: monitorexit
+    //   77: aload_1
+    //   78: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	79	0	this	bfrd
+    //   0	79	1	paramString	String
+    //   21	50	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   2	20	74	finally
+    //   22	65	74	finally
   }
   
-  public void b(bfre parambfre)
+  public boolean a(String arg1, long paramLong)
   {
-    if (jdField_a_of_type_JavaUtilList.contains(parambfre)) {
-      jdField_a_of_type_JavaUtilList.remove(parambfre);
+    String str = ??? + "_btm_pbmsg_seq";
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+      {
+        long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(str, -1L);
+        if ((l > 0L) && (l == paramLong))
+        {
+          bool = true;
+          return bool;
+        }
+      }
+      boolean bool = false;
     }
   }
   
   public void b(String paramString)
   {
-    bflp.c("PCPushProxy", "--> install key = " + paramString);
-    bfrf localbfrf = (bfrf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localbfrf == null)
+    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
     {
-      bflp.e("PCPushProxy", "install error because entry = null, key = " + paramString);
-      return;
+      try
+      {
+        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        String str = paramString + "_btm_pbmsg_seq";
+        localEditor.remove(str);
+        localEditor.commit();
+        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.bottom", 2, "removeTroopLastPubAccountMsgUniseq:" + str);
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopBindPublicAccountMgr.bottom", 2, "removeTroopLastPubAccountMsgUniseq:" + paramString.toString());
+          }
+        }
+      }
     }
-    if (localbfrf.jdField_b_of_type_Int != 1)
+  }
+  
+  public boolean b(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForStructing))
     {
-      bflp.e("PCPushProxy", "The file to be installing is not a apk file");
-      return;
+      MessageForStructing localMessageForStructing = (MessageForStructing)paramMessageRecord;
+      if (a(paramMessageRecord)) {
+        return (a(paramMessageRecord.frienduin, paramMessageRecord.uniseq)) && (!a(paramMessageRecord.uniseq));
+      }
     }
-    paramString = new Bundle();
-    paramString.putString(bfoh.jdField_b_of_type_JavaLangString, localbfrf.jdField_b_of_type_JavaLangString);
-    paramString.putString(bfoh.j, localbfrf.jdField_f_of_type_JavaLangString);
-    paramString.putString(bfoh.jdField_f_of_type_JavaLangString, localbfrf.jdField_d_of_type_JavaLangString);
-    paramString.putString(bfoh.i, localbfrf.jdField_c_of_type_JavaLangString);
-    paramString.putString(bfoh.l, localbfrf.jdField_e_of_type_JavaLangString);
-    String str = bfoh.y;
-    if (localbfrf.jdField_b_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramString.putBoolean(str, bool);
-      paramString.putInt(bfoh.k, 5);
-      bfod.a(null, paramString, "5", null, 0);
-      return;
-    }
+    return false;
   }
   
   public boolean b(String paramString)
   {
-    bflp.c("PCPushProxy", "--> isInstalled key = " + paramString);
-    bfrf localbfrf = (bfrf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localbfrf == null)
-    {
-      bflp.c("PCPushProxy", "--> key : " + paramString + " 's entry is not exist.");
+    if (TextUtils.isEmpty(paramString)) {}
+    while (this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString) != null) {
       return false;
     }
-    return bfms.a(localbfrf.jdField_d_of_type_JavaLangString);
+    return true;
   }
   
   public void c(String paramString)
   {
-    bflp.c("PCPushProxy", "--> delete key = " + paramString);
-    Object localObject = (bfrf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localObject == null)
+    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
     {
-      bflp.e("PCPushProxy", "delete error because entry = null, key = " + paramString);
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bfoh.jdField_b_of_type_JavaLangString, ((bfrf)localObject).jdField_b_of_type_JavaLangString);
-    localBundle.putString(bfoh.j, ((bfrf)localObject).jdField_f_of_type_JavaLangString);
-    localBundle.putString(bfoh.jdField_f_of_type_JavaLangString, ((bfrf)localObject).jdField_d_of_type_JavaLangString);
-    localBundle.putString(bfoh.i, ((bfrf)localObject).jdField_c_of_type_JavaLangString);
-    localBundle.putString(bfoh.l, ((bfrf)localObject).jdField_e_of_type_JavaLangString);
-    String str = bfoh.y;
-    if (((bfrf)localObject).jdField_b_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localBundle.putBoolean(str, bool);
-      localBundle.putInt(bfoh.k, 10);
-      bfod.a(null, localBundle, "5", null, 0);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      localObject = Message.obtain();
-      ((Message)localObject).what = 3;
-      ((Message)localObject).obj = paramString;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-      return;
-    }
-  }
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    bflp.c("PCPushProxy", "--> installSucceed packageName = " + paramString2);
-    paramString1 = null;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    if (localIterator.hasNext())
-    {
-      bfrf localbfrf = (bfrf)localIterator.next();
-      if ((!paramString2.equals(localbfrf.jdField_d_of_type_JavaLangString)) || (localbfrf.jdField_c_of_type_Int != 0)) {
-        break label136;
-      }
-      localbfrf.jdField_c_of_type_Int = 1;
-      paramString1 = localbfrf;
-    }
-    label136:
-    for (;;)
-    {
-      break;
-      if (paramString1 == null) {}
-      for (;;)
+      try
       {
-        return;
-        paramString2 = jdField_a_of_type_JavaUtilList.iterator();
-        while (paramString2.hasNext()) {
-          ((bfre)paramString2.next()).a(6, paramString1.jdField_a_of_type_JavaLangString);
+        paramString = paramString + "_unread_pbmsg_cnt";
+        int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, 0) + 1;
+        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        localEditor.putInt(paramString, i);
+        localEditor.commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.redDot", 2, "increaseTroopPubMsgUnreadCount:" + paramString + ", " + i);
         }
-      }
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    bflp.c("PCPushProxy", "--> onDownloadCancel info = " + paramDownloadInfo.toString());
-    paramDownloadInfo = b(paramDownloadInfo.jdField_d_of_type_JavaLangString);
-    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bfre)localIterator.next()).a(5, paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    Object localObject;
-    if (paramDownloadInfo != null)
-    {
-      bflp.c("PCPushProxy", "--> onDownloadError info = " + paramDownloadInfo.toString() + " errorCode = " + paramInt1 + " errorMsg = " + paramString + " state = " + paramInt2);
-      localObject = b(paramDownloadInfo.jdField_d_of_type_JavaLangString);
-      paramDownloadInfo = (bfrf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-      if (paramDownloadInfo == null)
-      {
-        bflp.e("PCPushProxy", "onDownloadError error because entry = null, key = " + (String)localObject);
         return;
       }
-      paramDownloadInfo.jdField_e_of_type_Int = 105;
-    }
-    for (;;)
-    {
-      localObject = jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((bfre)((Iterator)localObject).next()).a(paramDownloadInfo, paramInt1, paramString, paramInt2);
-      }
-      break;
-      paramDownloadInfo = null;
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    bflp.c("PCPushProxy", "--> onDownloadFinish info = " + paramDownloadInfo.toString());
-    paramDownloadInfo = b(paramDownloadInfo.jdField_d_of_type_JavaLangString);
-    Object localObject = (bfrf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramDownloadInfo);
-    if (localObject == null) {
-      bflp.e("PCPushProxy", "onDownloadPause error because entry = null, key = " + paramDownloadInfo);
-    }
-    for (;;)
-    {
-      return;
-      ((bfrf)localObject).jdField_e_of_type_Int = 102;
-      localObject = jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((bfre)((Iterator)localObject).next()).a(4, paramDownloadInfo);
-      }
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    bflp.c("PCPushProxy", "--> onDownloadPause info = " + paramDownloadInfo.toString());
-    paramDownloadInfo = b(paramDownloadInfo.jdField_d_of_type_JavaLangString);
-    Object localObject = (bfrf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramDownloadInfo);
-    if (localObject == null) {
-      bflp.e("PCPushProxy", "onDownloadPause error because entry = null, key = " + paramDownloadInfo);
-    }
-    for (;;)
-    {
-      return;
-      ((bfrf)localObject).jdField_e_of_type_Int = 105;
-      localObject = jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((bfre)((Iterator)localObject).next()).a(2, paramDownloadInfo);
-      }
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    bflp.c("PCPushProxy", "--> onDownloadUpdate infos = " + paramList.toString());
-    ArrayList localArrayList = new ArrayList(10);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject = (DownloadInfo)paramList.next();
-      String str = b(((DownloadInfo)localObject).jdField_d_of_type_JavaLangString);
-      bfrf localbfrf = (bfrf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-      if (localbfrf == null)
+      catch (Exception paramString)
       {
-        bflp.e("PCPushProxy", "onDownloadUpdate error because entry = null, key = " + str);
-      }
-      else
-      {
-        int i = localbfrf.jdField_e_of_type_Int;
-        switch (((DownloadInfo)localObject).a())
-        {
-        }
         for (;;)
         {
-          localbfrf.jdField_f_of_type_Int = ((DownloadInfo)localObject).jdField_f_of_type_Int;
-          if ((i == 101) || (localbfrf.jdField_e_of_type_Int != 101)) {
-            break;
-          }
-          localObject = jdField_a_of_type_JavaUtilList.iterator();
-          while (((Iterator)localObject).hasNext()) {
-            ((bfre)((Iterator)localObject).next()).a(1, str);
-          }
-          localbfrf.jdField_e_of_type_Int = 104;
-          continue;
-          localbfrf.jdField_e_of_type_Int = 101;
-          continue;
-          if (localbfrf.jdField_c_of_type_Int == 1)
-          {
-            localbfrf.jdField_e_of_type_Int = 103;
-          }
-          else
-          {
-            localbfrf.jdField_e_of_type_Int = 102;
-            continue;
-            localbfrf.jdField_e_of_type_Int = 105;
-            continue;
-            localbfrf.jdField_e_of_type_Int = 100;
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopBindPublicAccountMgr.redDot", 2, "increaseTroopPubMsgUnreadCount:" + paramString.toString());
           }
         }
-        localArrayList.add(localbfrf);
       }
     }
-    paramList = jdField_a_of_type_JavaUtilList.iterator();
-    while (paramList.hasNext()) {
-      ((bfre)paramList.next()).a(localArrayList);
-    }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public void d(String paramString)
   {
-    bflp.c("PCPushProxy", "--> onDownloadWait info = " + paramDownloadInfo.toString());
-    paramDownloadInfo = b(paramDownloadInfo.jdField_d_of_type_JavaLangString);
-    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bfre)localIterator.next()).a(3, paramDownloadInfo);
+    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+    {
+      try
+      {
+        paramString = paramString + "_unread_pbmsg_cnt";
+        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        localEditor.remove(paramString);
+        localEditor.commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.redDot", 2, "clearTroopPubMsgUnreadCount:" + paramString);
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopBindPublicAccountMgr.redDot", 2, "clearTroopPubMsgUnreadCount:" + paramString.toString());
+          }
+        }
+      }
     }
   }
   
-  public void packageReplaced(String paramString1, String paramString2) {}
+  public void e(String paramString)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopBindPublicAccountMgr", 2, "setCurentAIOUin:" + paramString);
+      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    finally {}
+  }
   
-  public void uninstallSucceed(String paramString1, String paramString2) {}
+  public void onDestroy()
+  {
+    jdField_a_of_type_JavaUtilArrayList.clear();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfrd
  * JD-Core Version:    0.7.0.1
  */

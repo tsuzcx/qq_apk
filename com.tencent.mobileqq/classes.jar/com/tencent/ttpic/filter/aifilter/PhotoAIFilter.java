@@ -1,11 +1,11 @@
 package com.tencent.ttpic.filter.aifilter;
 
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.text.TextUtils;
 import com.microrapid.opencv.ImageAutoProcessor;
 import com.microrapid.opencv.ImageStatisticsData;
 import com.tencent.aekit.api.standard.AEModule;
@@ -20,11 +20,11 @@ import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.config.AdjustRealConfig.TYPE;
+import com.tencent.ttpic.openapi.offlineset.utils.FileOfflineUtil;
 import com.tencent.ttpic.openapi.util.FaceDetectUtil;
 import com.tencent.ttpic.openapi.util.VideoTemplateParser;
-import com.tencent.ttpic.util.AlgoUtils;
+import com.tencent.ttpic.util.GsonUtils;
 import com.tencent.view.Photo;
-import com.tencent.view.RendererUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -97,6 +97,37 @@ public final class PhotoAIFilter
     Matrix localMatrix = new Matrix();
     localMatrix.postScale(1.0F, -1.0F, f1, f2);
     return Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), localMatrix, true);
+  }
+  
+  public static List<AIImageFilterResult> getAIFilterConfigList(AIFilterConfigBean paramAIFilterConfigBean, String paramString)
+  {
+    AIImageFilterResult localAIImageFilterResult = null;
+    Object localObject = localAIImageFilterResult;
+    if (paramAIFilterConfigBean != null)
+    {
+      localObject = localAIImageFilterResult;
+      if (paramAIFilterConfigBean.filters != null)
+      {
+        localObject = localAIImageFilterResult;
+        if (!TextUtils.isEmpty(paramString))
+        {
+          localObject = new ArrayList();
+          paramAIFilterConfigBean = paramAIFilterConfigBean.filters.iterator();
+          while (paramAIFilterConfigBean.hasNext())
+          {
+            localAIImageFilterResult = (AIImageFilterResult)paramAIFilterConfigBean.next();
+            if (paramString.equals(localAIImageFilterResult.sceneLabel))
+            {
+              if ("lookup".equals(localAIImageFilterResult.fid)) {
+                localAIImageFilterResult.lutPath = ("assets://" + localAIImageFilterResult.lutPath);
+              }
+              ((List)localObject).add(localAIImageFilterResult);
+            }
+          }
+        }
+      }
+    }
+    return localObject;
   }
   
   public static RectF getFaceRectF(List<PointF> paramList)
@@ -201,6 +232,93 @@ public final class PhotoAIFilter
     return (paramCollection == null) || (paramCollection.isEmpty());
   }
   
+  public static AIFilterConfigBean parseAIFilterConfigParam(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (paramString = FileOfflineUtil.readStringFromAssets(paramString); paramString == null; paramString = FileOfflineUtil.readJsonStringFromFile(paramString)) {
+      return null;
+    }
+    return (AIFilterConfigBean)GsonUtils.json2Obj(paramString, new PhotoAIFilter.1().getType());
+  }
+  
+  public static List<AIImageFilterResult> parseAIFilterConfigParamLabel(String paramString)
+  {
+    int i = 0;
+    Object localObject1 = NewEnhanceCategories.COMMON;
+    Object localObject3 = NewEnhanceCategories.newEnhanceTypes.iterator();
+    Object localObject2;
+    while (((Iterator)localObject3).hasNext())
+    {
+      localObject2 = (NewEnhanceCategories)((Iterator)localObject3).next();
+      if (!((NewEnhanceCategories)localObject2).serverLabel.equals(paramString)) {
+        break label465;
+      }
+      mAIImageFilterResult.setSceneLabel(((NewEnhanceCategories)localObject2).filterType);
+      localObject1 = localObject2;
+    }
+    localObject1 = VideoTemplateParser.readMaterialFile(mAIImageJsonPath, ((NewEnhanceCategories)localObject1).filterType, false, VideoTemplateParser.decryptListener);
+    paramString = new ArrayList();
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new JSONObject((String)localObject1);
+        if (i < ((JSONObject)localObject1).getJSONArray("filters").length())
+        {
+          localObject3 = (String)((JSONObject)localObject1).getJSONArray("filters").getJSONObject(i).get("fid");
+          localObject2 = new AIImageFilterResult();
+          ((AIImageFilterResult)localObject2).fid = ((String)localObject3);
+          if (!((String)localObject3).equals("adjust")) {
+            break label258;
+          }
+          localObject3 = new HashMap();
+          JSONObject localJSONObject = (JSONObject)((JSONObject)localObject1).getJSONArray("filters").getJSONObject(i).get("params");
+          Iterator localIterator = localJSONObject.keys();
+          if (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            ((HashMap)localObject3).put(str, localJSONObject.getString(str));
+            continue;
+          }
+        }
+        else
+        {
+          return paramString;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      ((AIImageFilterResult)localObject2).setAdjustParam((HashMap)localObject3);
+      paramString.add(localObject2);
+      break label468;
+      label258:
+      if (((String)localObject3).equals("lookup"))
+      {
+        localObject3 = (JSONObject)localException.getJSONArray("filters").getJSONObject(i).get("params");
+        ((AIImageFilterResult)localObject2).setLutPath(mLutImagePath + ((JSONObject)localObject3).get("lut"));
+        ((AIImageFilterResult)localObject2).setLutStrengt(Float.parseFloat(((JSONObject)localObject3).getString("strength")) / 100.0F);
+        paramString.add(localObject2);
+      }
+      else if (((String)localObject3).equals("faceBeauty"))
+      {
+        ((AIImageFilterResult)localObject2).setSmoothLevel(Float.parseFloat(((JSONObject)localException.getJSONArray("filters").getJSONObject(i).get("params")).getString("smooth")));
+        paramString.add(localObject2);
+      }
+      else if (((String)localObject3).equals("xuanlan"))
+      {
+        ((AIImageFilterResult)localObject2).setLutStrengt(Float.parseFloat(((JSONObject)localException.getJSONArray("filters").getJSONObject(i).get("params")).getString("strength")) / 100.0F);
+        paramString.add(localObject2);
+        break label468;
+        label465:
+        break;
+      }
+      label468:
+      i += 1;
+    }
+  }
+  
   public static AIImageFilterResult parseAIImageParamsBySceneLabel(String paramString)
   {
     AIImageFilterResult localAIImageFilterResult = new AIImageFilterResult();
@@ -211,12 +329,12 @@ public final class PhotoAIFilter
     {
       localObject2 = (NewEnhanceCategories)((Iterator)localObject3).next();
       if (!((NewEnhanceCategories)localObject2).serverLabel.equals(paramString)) {
-        break label413;
+        break label412;
       }
       localAIImageFilterResult.setSceneLabel(((NewEnhanceCategories)localObject2).filterType);
       localObject1 = localObject2;
     }
-    label413:
+    label412:
     for (;;)
     {
       break;
@@ -332,99 +450,9 @@ public final class PhotoAIFilter
     }
   }
   
-  private final Bitmap preProcessImage(Bitmap paramBitmap, ImageStatisticsData paramImageStatisticsData, List<List<PointF>> paramList)
-  {
-    double d1 = paramImageStatisticsData.temperature;
-    int j = 0;
-    int i = j;
-    if (paramList != null)
-    {
-      i = j;
-      if (paramList.size() > 0) {
-        i = 1;
-      }
-    }
-    if (i != 0)
-    {
-      paramImageStatisticsData = AlgoUtils.calFaceAvgColor(BitmapUtils.bitmap2RGBA(paramBitmap), paramBitmap.getWidth(), paramBitmap.getHeight(), paramList);
-      double d2 = ImageAutoProcessor.nativeTemperatureFromUIColor(getTemperatureStatisticsFilePath(), ((Integer)paramImageStatisticsData.get(0)).intValue(), ((Integer)paramImageStatisticsData.get(1)).intValue(), ((Integer)paramImageStatisticsData.get(2)).intValue());
-      if (d2 > 0.0D) {
-        d1 = d2;
-      }
-    }
-    for (;;)
-    {
-      paramImageStatisticsData = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-      this.lightnessProcessComplete = false;
-      paramList = this.stepProcessLock;
-      this.asyncThreadPool.execute(new PhotoAIFilter.1(this, paramBitmap, paramImageStatisticsData, paramList));
-      label215:
-      do
-      {
-        try
-        {
-          this.stepProcessLock.acquire();
-          if (this.lightnessProcessComplete) {
-            break label215;
-          }
-          paramImageStatisticsData = paramBitmap;
-          if (this.photoAiFilterListener != null)
-          {
-            this.photoAiFilterListener.onAIFilterProcessCancel();
-            paramImageStatisticsData = paramBitmap;
-          }
-        }
-        catch (Exception paramImageStatisticsData)
-        {
-          do
-          {
-            paramImageStatisticsData = paramBitmap;
-          } while (this.photoAiFilterListener == null);
-          this.photoAiFilterListener.onAIFilterProcessCancel();
-          return paramBitmap;
-        }
-        return paramImageStatisticsData;
-        localObject = new HashMap();
-        ((HashMap)localObject).put("highlightValue", "-8");
-        ((HashMap)localObject).put("shadowValue", "-3");
-        ((HashMap)localObject).put("saturationValue", "-4");
-        paramBitmap = new FilterChainFactory();
-        paramList = new FilterBean();
-        paramList.id = "adjust";
-        paramList.params = ((HashMap)localObject);
-        paramImageStatisticsData = paramBitmap.addFilter(paramList, paramImageStatisticsData.getWidth(), paramImageStatisticsData.getHeight()).build().process(paramImageStatisticsData);
-        paramBitmap = Bitmap.createBitmap(paramImageStatisticsData.getWidth(), paramImageStatisticsData.getHeight(), Bitmap.Config.ARGB_8888);
-        ImageAutoProcessor.nativeContrastAuto(paramImageStatisticsData, paramBitmap);
-        d1 = Math.min(d1, 10000.0D);
-        if ((0.0D < d1) && (d1 < 3500.0F))
-        {
-          i = (int)Math.round(-Math.min((3500.0F - d1) * 0.02D, 100.0D));
-          paramImageStatisticsData = new HashMap();
-          ((HashMap)localObject).put("scaleCValue", Integer.toString(i, 10));
-          localObject = new FilterChainFactory();
-          localFilterBean = new FilterBean();
-          paramList.id = "adjust";
-          paramList.params = paramImageStatisticsData;
-          ((FilterChainFactory)localObject).addFilter(localFilterBean, paramBitmap.getWidth(), paramBitmap.getHeight()).build().process(paramBitmap);
-          return paramBitmap;
-        }
-        paramImageStatisticsData = paramBitmap;
-      } while (d1 <= 7000.0F);
-      i = (int)Math.round(Math.min((d1 - 7000.0F) * 0.01D, 100.0D));
-      paramImageStatisticsData = new HashMap();
-      ((HashMap)localObject).put("scaleCValue", Integer.toString(i, 10));
-      Object localObject = new FilterChainFactory();
-      FilterBean localFilterBean = new FilterBean();
-      paramList.id = "adjust";
-      paramList.params = paramImageStatisticsData;
-      ((FilterChainFactory)localObject).addFilter(localFilterBean, paramBitmap.getWidth(), paramBitmap.getHeight()).build().process(paramBitmap);
-      return paramBitmap;
-    }
-  }
-  
   public static ImageStatisticsData preprocessImages(List<Bitmap> paramList)
   {
-    if ((paramList == null) && (paramList.size() == 0)) {
+    if ((paramList == null) || (paramList.size() == 0)) {
       return null;
     }
     String str = getTemperatureStatisticsFilePath();
@@ -482,29 +510,6 @@ public final class PhotoAIFilter
         }
       }
     }
-  }
-  
-  private final Frame processUltimateFilter(Frame paramFrame)
-  {
-    this.photo = Photo.create(this.preProcessedBmp);
-    Object localObject = this.curCategory.filterType;
-    if (this.photo != null)
-    {
-      if (this.curve == null)
-      {
-        this.curve = AlgoUtils.calBrightnessCurve(BitmapUtils.bitmap2RGBA(this.preProcessedBmp), this.photo.width(), this.photo.height(), this.facePoints);
-        LogUtils.d("PhotoAIFilter", "filterType: $filterType");
-        this.mFilterChain = new FilterChainFactory().setFacePoints(this.facePoints).setBrightnessCurve(this.curve).from("assets://enhance", (String)localObject, this.photo.width(), this.photo.height()).setAlpha(this.alpha).build();
-      }
-      localObject = this.mFilterChain.process(this.photo);
-      paramFrame = (Frame)localObject;
-      if (this.photoAiFilterListener != null)
-      {
-        this.photoAiFilterListener.onAIFilterEnd(true);
-        paramFrame = (Frame)localObject;
-      }
-    }
-    return paramFrame;
   }
   
   private final Triple<ReportInfo, Boolean, PhotoResult> requestClassify(Bitmap paramBitmap, PTFaceAttr paramPTFaceAttr)
@@ -811,92 +816,8 @@ public final class PhotoAIFilter
     return this.mIsApplied;
   }
   
-  public final boolean preprocessImage(Bitmap paramBitmap)
-  {
-    ImageStatisticsData localImageStatisticsData = ImageAutoProcessor.getImageStatistics(paramBitmap, getTemperatureStatisticsFilePath());
-    if (this.facePoints == null) {}
-    do
-    {
-      return false;
-      this.preProcessedBmp = preProcessImage(paramBitmap, localImageStatisticsData, this.facePoints);
-    } while (!this.preProcessedBmp.equals(paramBitmap));
-    return true;
-  }
-  
   public Frame render(Frame paramFrame)
   {
-    return paramFrame;
-  }
-  
-  @NotNull
-  public Frame renderAIProcess(@NotNull Frame paramFrame)
-  {
-    this.startTime = System.currentTimeMillis();
-    this.stepProcessLock = new Semaphore(0);
-    if (this.isCancel.get()) {}
-    do
-    {
-      Object localObject1;
-      Object localObject2;
-      boolean bool;
-      do
-      {
-        do
-        {
-          Bitmap localBitmap;
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return paramFrame;
-                  Thread.interrupted();
-                  if (this.photoAiFilterListener != null) {
-                    this.photoAiFilterListener.onAIFilterStart();
-                  }
-                  localBitmap = RendererUtils.saveTexture(paramFrame);
-                  localObject1 = flipVertical(localBitmap);
-                  if (!this.isCancel.get()) {
-                    break;
-                  }
-                } while (this.photoAiFilterListener == null);
-                this.photoAiFilterListener.onAIFilterProcessCancel();
-                return paramFrame;
-                localObject2 = doFaceDetect((Bitmap)localObject1);
-                if (!this.isCancel.get()) {
-                  break;
-                }
-              } while (this.photoAiFilterListener == null);
-              this.photoAiFilterListener.onAIFilterProcessCancel();
-              return paramFrame;
-              localObject2 = requestClassify((Bitmap)localObject1, (PTFaceAttr)localObject2);
-              localObject1 = (ReportInfo)((Triple)localObject2).getFirst();
-              bool = ((Boolean)((Triple)localObject2).getSecond()).booleanValue();
-              localObject2 = (PhotoResult)((Triple)localObject2).getThird();
-              if (!this.isCancel.get()) {
-                break;
-              }
-            } while (this.photoAiFilterListener == null);
-            this.photoAiFilterListener.onAIFilterProcessCancel();
-            return paramFrame;
-          } while (preprocessImage(localBitmap));
-          if (!this.isCancel.get()) {
-            break;
-          }
-        } while (this.photoAiFilterListener == null);
-        this.photoAiFilterListener.onAIFilterProcessCancel();
-        return paramFrame;
-      } while (parseClassifyResult((PhotoResult)localObject2, (ReportInfo)localObject1, bool));
-      if (!this.isCancel.get()) {
-        break;
-      }
-    } while (this.photoAiFilterListener == null);
-    this.photoAiFilterListener.onAIFilterProcessCancel();
-    return paramFrame;
-    this.isFirstTime = false;
     return paramFrame;
   }
   
@@ -1013,7 +934,7 @@ public final class PhotoAIFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.aifilter.PhotoAIFilter
  * JD-Core Version:    0.7.0.1
  */

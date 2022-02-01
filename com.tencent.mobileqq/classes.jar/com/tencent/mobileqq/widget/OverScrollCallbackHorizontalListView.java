@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.widget;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bdaq;
-import berl;
+import bggq;
+import bhys;
 import com.tencent.widget.HorizontalListView;
 
 public class OverScrollCallbackHorizontalListView
@@ -14,7 +14,7 @@ public class OverScrollCallbackHorizontalListView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private berl jdField_a_of_type_Berl;
+  private bhys jdField_a_of_type_Bhys;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private boolean jdField_b_of_type_Boolean;
@@ -33,7 +33,7 @@ public class OverScrollCallbackHorizontalListView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = aepi.a(50.0F, getResources());
+    this.jdField_a_of_type_Int = afur.a(50.0F, getResources());
     setOverScrollMode(0);
   }
   
@@ -55,7 +55,7 @@ public class OverScrollCallbackHorizontalListView
     {
       float f2 = this.jdField_a_of_type_Float;
       f3 -= this.jdField_b_of_type_Float;
-      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > bdaq.a(getContext(), 5.0F))) {
+      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > bggq.a(getContext(), 5.0F))) {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
@@ -75,21 +75,21 @@ public class OverScrollCallbackHorizontalListView
     if ((this.jdField_b_of_type_Boolean) && (paramInt3 > this.jdField_a_of_type_Int))
     {
       this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Berl != null) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Berl.a(this);
+      if ((this.jdField_a_of_type_Bhys != null) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Bhys.a(this);
       }
     }
     return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
   }
   
-  public void setListener(berl paramberl)
+  public void setListener(bhys parambhys)
   {
-    this.jdField_a_of_type_Berl = paramberl;
+    this.jdField_a_of_type_Bhys = parambhys;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OverScrollCallbackHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

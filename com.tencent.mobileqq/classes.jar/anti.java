@@ -1,79 +1,121 @@
-import android.hardware.GeomagneticField;
-import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import tencent.im.oidb.cmd0x438.oidb_0x438.ReqBody;
+import tencent.im.oidb.cmd0x438.oidb_0x438.ReqInfo;
+import tencent.im.oidb.cmd0x438.oidb_0x438.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public abstract class anti
-  implements SensorEventListener
+public class anti
+  extends anii
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  protected SensorManager a;
-  protected antb a;
-  protected List<Sensor> a;
-  private boolean jdField_a_of_type_Boolean;
-  protected float[] a;
-  private float b = -1.0F;
-  private float c = -1.0F;
-  
-  public anti(SensorManager paramSensorManager, antb paramantb)
+  public anti(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ArrayOfFloat = new float[3];
-    this.jdField_a_of_type_AndroidHardwareSensorManager = paramSensorManager;
-    this.jdField_a_of_type_Antb = paramantb;
+    super(paramQQAppInterface);
   }
   
-  private GeomagneticField a()
+  private static oidb_sso.OIDBSSOPkg a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return new GeomagneticField(this.jdField_a_of_type_Float, this.b, this.c, System.currentTimeMillis());
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
+      paramToServiceMsg = null;
     }
-    return null;
-  }
-  
-  protected float a()
-  {
-    GeomagneticField localGeomagneticField = a();
-    if (localGeomagneticField != null) {
-      return localGeomagneticField.getDeclination();
-    }
-    return 0.0F;
-  }
-  
-  public void a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, paramInt);
+      return paramToServiceMsg;
+      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
+      try
+      {
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.get() == 0))
+        {
+          paramToServiceMsg = paramFromServiceMsg;
+          if (paramFromServiceMsg.bytes_bodybuffer.get() != null) {
+            continue;
+          }
+        }
+        return null;
+      }
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QWalletHandler", 2, "parseSSOPkg: oidb_sso parseFrom byte InvalidProtocolBufferMicroException ");
+          }
+        }
+      }
     }
   }
   
-  public void b()
+  public void a(int paramInt, List<oidb_0x438.ReqInfo> paramList)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, 1);
-    }
+    Object localObject = new oidb_0x438.ReqBody();
+    ((oidb_0x438.ReqBody)localObject).stReqInfo.set(paramList);
+    paramList = new oidb_sso.OIDBSSOPkg();
+    paramList.uint32_command.set(1080);
+    paramList.uint32_result.set(0);
+    paramList.uint32_service_type.set(paramInt);
+    paramList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x438.ReqBody)localObject).toByteArray()));
+    localObject = createToServiceMsg("OidbSvc.0x438");
+    ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
   }
   
-  public void c()
+  protected Class<? extends anil> observerClass()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this, localSensor);
-    }
+    return antj.class;
   }
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QWalletHandler", 4, "onReceive");
+    }
+    String str = paramToServiceMsg.getServiceCmd();
+    if (QLog.isDevelopLevel())
+    {
+      QLog.i("QWalletHandler", 4, "cmd=" + str);
+      QLog.i("QWalletHandler", 4, "data length =" + ((byte[])paramObject).length);
+    }
+    if (TextUtils.isEmpty(str)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (str.compareTo("OidbSvc.0x438") != 0);
+      paramToServiceMsg = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      if (paramToServiceMsg != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QWalletHandler", 2, "onReceive: ssoPkg parse failed");
+    return;
+    paramFromServiceMsg = new oidb_0x438.RspBody();
+    try
+    {
+      paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+      paramFromServiceMsg = paramFromServiceMsg.PasswdRedBag.get();
+      if (paramFromServiceMsg != null)
+      {
+        notifyUI(paramToServiceMsg.uint32_service_type.get(), true, paramFromServiceMsg);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+    {
+      paramFromServiceMsg.printStackTrace();
+      notifyUI(paramToServiceMsg.uint32_service_type.get(), false, null);
+    }
+  }
 }
 
 

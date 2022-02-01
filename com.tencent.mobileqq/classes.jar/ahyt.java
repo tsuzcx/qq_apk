@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahyt
-  extends amny
+class ahyt
+  implements DialogInterface.OnClickListener
 {
-  public ahyt(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  ahyt(ahyk paramahyk) {}
   
-  public void a()
-  {
-    this.a.a.sendEmptyMessage(41);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

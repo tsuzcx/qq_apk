@@ -1,45 +1,86 @@
+import com.tencent.avgame.gameroom.video.AVGameControlUIImpl;
+import com.tencent.avgame.qav.SecurityPolicyChecker;
+import com.tencent.avgame.session.AVGameSession;
+import com.tencent.avgame.session.AVGameUserInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ncs
+  implements nel
 {
-  private static final String a = ncs.class.getName();
+  public ncs(AVGameControlUIImpl paramAVGameControlUIImpl) {}
   
-  public static String a(String paramString)
+  public void a(boolean paramBoolean)
   {
-    localStringBuffer = new StringBuffer();
-    try
+    if (this.a.a()) {}
+    Object localObject1;
+    do
     {
-      paramString = new BufferedReader(new InputStreamReader(((HttpURLConnection)new URL(paramString).openConnection()).getInputStream()));
-      for (;;)
+      do
       {
-        String str = paramString.readLine();
-        if (str == null) {
-          break;
-        }
-        localStringBuffer.append(str);
-      }
-      return localStringBuffer.toString();
-    }
-    catch (Exception paramString)
+        do
+        {
+          return;
+          localObject1 = ndt.b();
+        } while (localObject1 == null);
+        localObject1 = ((ndt)localObject1).a();
+      } while (localObject1 == null);
+      AVGameControlUIImpl.a(this.a, "CheckDisableSmallPicTask");
+    } while ((this.a.a == null) || (!paramBoolean));
+    boolean bool2 = SecurityPolicyChecker.a().b();
+    Object localObject2 = new ArrayList();
+    ((AVGameSession)localObject1).b((List)localObject2);
+    boolean bool1;
+    if (((List)localObject2).size() > 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "http error");
+      localObject1 = ((List)localObject2).iterator();
+      paramBoolean = false;
+      do
+      {
+        do
+        {
+          bool1 = paramBoolean;
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          localObject2 = (AVGameUserInfo)((Iterator)localObject1).next();
+        } while (localObject2 == null);
+        if (!((AVGameUserInfo)localObject2).hasVideo()) {
+          break label242;
+        }
+      } while (((AVGameUserInfo)localObject2).mIsSelf);
+    }
+    label242:
+    for (;;)
+    {
+      if (((AVGameUserInfo)localObject2).mBigVideo)
+      {
+        paramBoolean = true;
+      }
+      else if (!bool2)
+      {
+        paramBoolean = true;
+        continue;
+        bool1 = false;
+        if (bool1) {
+          this.a.c();
+        }
+        while (QLog.isDevelopLevel())
+        {
+          QLog.i("AVGameControlUIImpl", 4, "checkDisableSmallPic, [" + bool2 + "], needRequest[" + bool1 + "]");
+          return;
+          this.a.e();
+        }
+        break;
       }
     }
-  }
-  
-  public static void a(String paramString, ncu paramncu)
-  {
-    new nct(paramncu, paramString).execute(new Void[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ncs
  * JD-Core Version:    0.7.0.1
  */

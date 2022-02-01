@@ -1,66 +1,37 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.music.SongInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public abstract class auqr
-  extends Binder
-  implements auqq
+public class auqr
 {
-  private static final String DESCRIPTOR = "com.tencent.mobileqq.music.IQQPlayerCallback";
-  static final int TRANSACTION_onPlaySongChanged = 2;
-  static final int TRANSACTION_onPlayStateChanged = 1;
+  public int a;
+  public String a;
+  public ArrayList<auqp> a;
+  public HashMap<String, String> a;
+  public int b;
+  public String b;
+  public ArrayList<String> b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
   
   public auqr()
   {
-    attachInterface(this, "com.tencent.mobileqq.music.IQQPlayerCallback");
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static auqq asInterface(IBinder paramIBinder)
+  public String toString()
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof auqq))) {
-      return (auqq)localIInterface;
-    }
-    return new auqs(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.music.IQQPlayerCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
-      onPlayStateChanged(paramParcel1.readInt());
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SongInfo)SongInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      onPlaySongChanged(paramParcel1);
-      return true;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mMd5= ").append(this.jdField_a_of_type_JavaLangString).append("\n").append("baseWidth= ").append(this.jdField_a_of_type_Int).append("\n").append("baseHeight= ").append(this.jdField_b_of_type_Int).append("\n").append("mLanguage= ").append(this.jdField_b_of_type_JavaLangString).append("\n");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auqr
  * JD-Core Version:    0.7.0.1
  */

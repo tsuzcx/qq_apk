@@ -1,33 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adln
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public adln(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adln(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131719121), "qqsetting_lock_screen_whenexit_key", paramBoolean);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      azqs.b(localQQAppInterface, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, 0, paramCompoundButton, "", "", "");
-      if (QLog.isDevelopLevel()) {
-        QLog.i("qqls", 4, "collectPerformance qqls setting isChecked=" + paramBoolean);
-      }
-      paramCompoundButton = new HashMap();
-      paramCompoundButton.put("param_ls_setting", paramBoolean + "");
-      azri.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, paramCompoundButton, "");
-      return;
+    if (ArkFullScreenAppActivity.a(this.a) != null) {
+      apok.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, apok.b, 0, 0);
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkFullScreenAppActivity", 2, "click to close");
+    }
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

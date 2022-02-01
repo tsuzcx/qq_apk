@@ -1,42 +1,70 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyCardViewCostBall;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.readinjoy.ad.utils.ReadInJoyTelePhoneUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppActivity;
+import org.json.JSONObject;
 
 public class oqt
-  implements View.OnTouchListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  
-  private oqt(ReadInJoyCardViewCostBall paramReadInJoyCardViewCostBall) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static JSONObject a(int paramInt1, int paramInt2, String paramString, AdvertisementInfo paramAdvertisementInfo)
   {
-    switch (paramMotionEvent.getAction())
+    try
     {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("perstatus", paramInt1);
+      localJSONObject.put("callact", paramInt2);
+      localJSONObject.put("callnum", paramString);
+      if (paramAdvertisementInfo != null) {
+        localJSONObject.put("phone_cmpt_id", String.valueOf(paramAdvertisementInfo.mPhoneComponetId));
+      }
+      paramString = new JSONObject();
+      paramString.put("comp_stat_src", "");
+      paramString.put("phone_component_info", localJSONObject.toString());
+      return paramString;
     }
-    for (;;)
+    catch (Exception paramString)
     {
-      return false;
-      this.jdField_a_of_type_Int = ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).x;
-      this.jdField_b_of_type_Int = ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).y;
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
-      continue;
-      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).x = (this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float - paramMotionEvent.getRawX()));
-      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).y = (this.jdField_b_of_type_Int + (int)(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float));
-      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).updateViewLayout(paramView, ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall));
+      paramString.printStackTrace();
     }
+    return null;
+  }
+  
+  public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo)
+  {
+    if ((paramAdvertisementInfo == null) || (paramAdvertisementInfo.mAdRl == null)) {
+      return;
+    }
+    ThreadManager.excute(new ReadInJoyTelePhoneUtils.1(paramAdvertisementInfo, paramContext), 128, null, true);
+  }
+  
+  public static void a(Context paramContext, String paramString, AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (!(paramContext instanceof AppActivity)) {
+      return;
+    }
+    b(paramContext, paramString, paramAdvertisementInfo);
+  }
+  
+  public static boolean a(AdvertisementInfo paramAdvertisementInfo)
+  {
+    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mPhoneComponetId != 0) && (oqi.e(paramAdvertisementInfo));
+  }
+  
+  public static void b(Context paramContext, String paramString, AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    paramContext.startActivity(new Intent("android.intent.action.DIAL", Uri.parse("tel:" + paramString)));
+    nxw.a(new omp().a(paramContext).a(nxw.x).b(nxw.ah).a(paramAdvertisementInfo).e(a(2, 1, paramString, paramAdvertisementInfo)).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oqt
  * JD-Core Version:    0.7.0.1
  */

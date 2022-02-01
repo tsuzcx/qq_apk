@@ -1,16 +1,22 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.content.Context;
 
-public abstract interface biuw
-  extends IInterface
+public class biuw
 {
-  public abstract Bundle a(String paramString, Bundle paramBundle);
+  protected static bive a;
   
-  public abstract void a(String paramString, Bundle paramBundle);
+  public static bive a()
+  {
+    return a;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    a = bive.a(paramContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biuw
  * JD-Core Version:    0.7.0.1
  */

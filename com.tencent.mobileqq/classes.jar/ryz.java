@@ -1,19 +1,27 @@
-import android.widget.Toast;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.33;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
 
-class ryz
-  implements qfu
+final class ryz
+  extends ClickableSpan
 {
-  ryz(ryy paramryy) {}
+  ryz(TextView paramTextView) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    srt.a(this.a.a.a.this$0, paramString, 0).show();
+    this.a.performClick();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.parseColor("#FF00CAFC"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ryz
  * JD-Core Version:    0.7.0.1
  */

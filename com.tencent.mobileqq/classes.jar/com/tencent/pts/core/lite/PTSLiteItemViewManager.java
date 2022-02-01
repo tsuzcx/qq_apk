@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
+@Deprecated
 public class PTSLiteItemViewManager
 {
   public final String TAG = "PTSLiteItemViewManager";
@@ -43,7 +44,7 @@ public class PTSLiteItemViewManager
     PTSAppInstance localPTSAppInstance1 = localPTSAppInstance2;
     if (localPTSAppInstance2 == null)
     {
-      localPTSAppInstance1 = new PTSAppInstance.Builder().withContext(this.context).withRootView(paramPTSItemView).withRootNodeType(1).withItemData(paramPTSItemData).withAppName(paramPTSItemData.getAppName()).withFrameTreeJson(paramPTSItemData.getFrameTreeJson()).withLiteItemViewManager(this).build();
+      localPTSAppInstance1 = new PTSAppInstance.Builder().withContext(this.context).withRootView(paramPTSItemView).withRootNodeType(1).withItemData(paramPTSItemData).withPageName(paramPTSItemData.getPageName()).withFrameTreeJson(paramPTSItemData.getFrameTreeJson()).withLiteItemViewManager(this).build();
       this.itemIdToAppInstanceMap.put(str, localPTSAppInstance1);
     }
     paramPTSItemView.bindData(localPTSAppInstance1);
@@ -98,13 +99,22 @@ public class PTSLiteItemViewManager
     case 1: 
       this.liteEventListener.onTapEventTriggered(paramString, paramHashMap, paramView);
       return;
+    case 2: 
+      this.liteEventListener.onExposureTriggered(paramString, paramHashMap, paramView);
+      return;
+    case 3: 
+      this.liteEventListener.onSwiperItemExposureTriggered(paramString, paramHashMap, paramView);
+      return;
+    case 4: 
+      this.liteEventListener.onSwiperDragTriggered(paramString, paramHashMap, paramView);
+      return;
     }
-    this.liteEventListener.onExposureTriggered(paramString, paramHashMap, paramView);
+    this.liteEventListener.onScrollViewItemExposureTriggered(paramString, paramHashMap, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.lite.PTSLiteItemViewManager
  * JD-Core Version:    0.7.0.1
  */

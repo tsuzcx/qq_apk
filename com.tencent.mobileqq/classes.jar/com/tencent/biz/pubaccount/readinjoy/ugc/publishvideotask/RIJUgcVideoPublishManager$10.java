@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask;
 
-import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import qun;
+import com.tencent.mobileqq.persistence.EntityManager;
+import rps;
 
 public class RIJUgcVideoPublishManager$10
   implements Runnable
 {
-  public RIJUgcVideoPublishManager$10(qun paramqun, UgcVideo paramUgcVideo) {}
+  public RIJUgcVideoPublishManager$10(rps paramrps, UgcVideo paramUgcVideo) {}
   
   public void run()
   {
-    qun.a(this.this$0).a(this.a);
+    rps.a(this.this$0).update(this.a);
   }
 }
 

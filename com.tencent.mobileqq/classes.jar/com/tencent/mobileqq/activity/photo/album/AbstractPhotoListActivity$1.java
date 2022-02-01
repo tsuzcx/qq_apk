@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import bhxl;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GestureSelectGridView;
-import java.util.HashSet;
+import com.tencent.widget.PhotoGridView.OnSelectListener;
 
 class AbstractPhotoListActivity$1
-  implements bhxl
+  implements PhotoGridView.OnSelectListener
 {
+  Handler handler = new Handler();
   boolean mIsSelected;
   int mMaxIndex;
   int mMinIndex;
@@ -26,8 +26,6 @@ class AbstractPhotoListActivity$1
       if (QLog.isColorLevel()) {
         QLog.d("OnSelectListener", 2, "onSelectBegin beginIndex:" + paramInt);
       }
-      this.this$0.mPhotoListData.presendPathSet.clear();
-      this.this$0.mPhotoListData.cancelPresendPathSet.clear();
       this.this$0.mPhotoListData.hasShownMaxSelectToast = false;
       this.mIsSelected = false;
       this.mMinIndex = paramInt;
@@ -39,7 +37,7 @@ class AbstractPhotoListActivity$1
       this.mIsSelected = bool;
     } while (!this.this$0.mPhotoListLogic.addAndRemovePhotoByGesture(localLocalMediaInfo, this.mIsSelected));
     this.this$0.mPhotoListLogic.updateButton();
-    this.this$0.mGridView.invalidateViews();
+    this.this$0.photoListAdapter.notifyItemChanged(paramInt);
   }
   
   public void onSelectChanged(int paramInt1, int paramInt2)
@@ -73,7 +71,7 @@ class AbstractPhotoListActivity$1
         if ((this.mIsSelected) && (this.this$0.mPhotoListData.hasShownMaxSelectToast))
         {
           this.this$0.mPhotoListLogic.updateButton();
-          this.this$0.mGridView.invalidateViews();
+          this.this$0.photoListAdapter.notifyDataSetChanged();
           return;
         }
         i -= 1;
@@ -91,7 +89,7 @@ class AbstractPhotoListActivity$1
       if ((this.mIsSelected) && (this.this$0.mPhotoListData.hasShownMaxSelectToast))
       {
         this.this$0.mPhotoListLogic.updateButton();
-        this.this$0.mGridView.invalidateViews();
+        this.this$0.photoListAdapter.notifyDataSetChanged();
         return;
       }
       i += 1;
@@ -136,7 +134,7 @@ class AbstractPhotoListActivity$1
     for (;;)
     {
       this.this$0.mPhotoListLogic.updateButton();
-      this.this$0.mGridView.invalidateViews();
+      this.handler.post(new AbstractPhotoListActivity.1.1(this));
       return;
       this.mMaxIndex = paramInt2;
       if (this.mMinIndex < paramInt1) {
@@ -155,7 +153,7 @@ class AbstractPhotoListActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.1
  * JD-Core Version:    0.7.0.1
  */

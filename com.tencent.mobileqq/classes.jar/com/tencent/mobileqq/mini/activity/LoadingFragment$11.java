@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.activity;
 
-import alud;
 import android.os.Handler;
 import android.os.Message;
+import anni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
@@ -32,7 +32,7 @@ class LoadingFragment$11
         QQToast.a(localBaseApplication, 1, str, 1).a();
         this.this$0.uiHandler.postDelayed(new LoadingFragment.11.1(this), 1000L);
         return;
-        str = alud.a(2131706628);
+        str = anni.a(2131705039);
       }
       return;
     }
@@ -44,7 +44,7 @@ class LoadingFragment$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.LoadingFragment.11
  * JD-Core Version:    0.7.0.1
  */

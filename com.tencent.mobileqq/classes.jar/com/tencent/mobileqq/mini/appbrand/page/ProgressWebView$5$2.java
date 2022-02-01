@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import alud;
+import anni;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -19,12 +19,12 @@ class ProgressWebView$5$2
       return;
     }
     QLog.e("ProgressWebView", 1, "savaPicToAlbum failed, because of picture downloadFailed");
-    QQToast.a(ProgressWebView.access$300(this.this$1.this$0), 1, alud.a(2131708900), 0).a();
+    QQToast.a(ProgressWebView.access$300(this.this$1.this$0), 1, anni.a(2131707276), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.ProgressWebView.5.2
  * JD-Core Version:    0.7.0.1
  */

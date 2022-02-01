@@ -1,18 +1,15 @@
-public abstract interface ajwj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class ajwj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void P();
+  ajwj(ajvr paramajvr) {}
   
-  public abstract void Q();
-  
-  public abstract void a(boolean paramBoolean, int paramInt);
-  
-  public abstract void a(boolean paramBoolean, String paramString, int paramInt);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
-  
-  public abstract int c();
-  
-  public abstract void d(int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

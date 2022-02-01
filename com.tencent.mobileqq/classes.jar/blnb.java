@@ -1,6 +1,19 @@
-public abstract interface blnb
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqpim.QQPimTipsInfo;
+
+public final class blnb
+  implements Parcelable.Creator<QQPimTipsInfo>
 {
-  public abstract void a(int paramInt);
+  public QQPimTipsInfo a(Parcel paramParcel)
+  {
+    return new QQPimTipsInfo(paramParcel, null);
+  }
+  
+  public QQPimTipsInfo[] a(int paramInt)
+  {
+    return new QQPimTipsInfo[paramInt];
+  }
 }
 
 

@@ -1,35 +1,66 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import pb.unite.search.DynamicAssociationWord.SuggestUrlItem;
 
 public class bbht
-  implements bhuk
+  extends anxw
 {
-  public bbht(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, bhuf parambhuf, URLDrawable paramURLDrawable, String paramString1, String paramString2) {}
+  public bbht(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(String paramString, int paramInt, List<AssociateSearchWordsFragment.AssociateItem> paramList, List<DynamicAssociationWord.SuggestUrlItem> paramList1, DynamicAssociationWord.SuggestUrlItem paramSuggestUrlItem)
   {
-    paramView = this.jdField_a_of_type_Bhuf.a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693497).equals(paramView))
-    {
-      TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleSuggestUrlResult keyword=" + paramString + " activity keyword=" + this.a.jdField_a_of_type_JavaLangString + " size=" + paramList1.size());
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      bddf.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, Long.parseLong(this.jdField_a_of_type_JavaLangString), "0", null, 20006);
-    }
-    for (;;)
+    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString))
     {
-      azqs.b(null, "dc00899", "grp_lbs", this.jdField_a_of_type_JavaLangString, "video", "clk_rep", 0, 0, "", "", "", "");
-      break;
-      if ((TextUtils.isEmpty(this.b)) || ("0".equals(this.b))) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, 2, alud.a(2131715605), 0).a();
-      } else {
-        bddf.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, 0L, this.b, null, 20006);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment = new AssociateSearchWordsFragment();
       }
+      paramList1 = new ArrayList();
+      paramSuggestUrlItem = new AssociateSearchWordsFragment.AssociateItem();
+      paramSuggestUrlItem.jdField_a_of_type_Int = 1;
+      StringBuilder localStringBuilder = new StringBuilder("");
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        paramInt = 0;
+        if (paramInt < paramList.size())
+        {
+          String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).jdField_a_of_type_JavaLangString;
+          AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
+          localAssociateItem.jdField_a_of_type_JavaLangString = str;
+          localAssociateItem.jdField_a_of_type_Int = 3;
+          localAssociateItem.d = (paramInt + 1);
+          paramList1.add(localAssociateItem);
+          if (paramInt != paramList.size() - 1)
+          {
+            paramList1.add(paramSuggestUrlItem);
+            localStringBuilder.append(str).append("::");
+          }
+          for (;;)
+          {
+            paramInt += 1;
+            break;
+            localStringBuilder.append(str);
+          }
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramList1);
+      bbrf.a(null, new ReportModelDC02528().module("subweb_search").action("exp_thinkword_list").obj1(bbup.a(this.a.jdField_a_of_type_ArrayOfLong)).ver1(this.a.a()).ver4(localStringBuilder.toString()).ver7("{experiment_id:" + bbrf.b + "}"));
+    }
+  }
+  
+  public void a(String paramString1, Integer paramInteger, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleAssociateResultError keyword=" + paramString1 + "  resultCode=" + paramInteger + "  errorMsg=" + paramString2);
     }
   }
 }

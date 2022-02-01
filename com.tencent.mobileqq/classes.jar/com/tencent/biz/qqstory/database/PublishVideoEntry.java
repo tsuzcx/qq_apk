@@ -2,21 +2,21 @@ package com.tencent.biz.qqstory.database;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import awge;
-import awhp;
-import awhs;
 import com.tencent.biz.qqstory.utils.JsonORM;
 import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ulj;
-import uxp;
-import wxe;
+import wev;
+import wrb;
+import yqp;
 
 public class PublishVideoEntry
-  extends awge
-  implements ulj
+  extends Entity
+  implements wev
 {
   public static final String ENTRY_KEY_BACKGROUND_VOLUME = "backgroundVolume";
   public static final String ENTRY_KEY_IS_MIX_ORIGINAL = "isMixOriginal";
@@ -34,28 +34,28 @@ public class PublishVideoEntry
   public long createTime;
   public String doodlePath;
   public String doodleRawPath;
-  @awhp
+  @notColumn
   private JSONObject extraJson;
   public String extraJsonString;
-  @awhs
+  @unique
   public String fakeVid;
   @Deprecated
   public int fragmentGroupId;
   public String fragments;
   public String gpsFilterDescription;
   public boolean hasFragments;
-  @awhp
+  @notColumn
   public int hwBitrateMode = -1;
   public boolean hwEncodeRecordVideo;
-  @awhp
+  @notColumn
   public boolean isCancel;
-  @awhp
+  @notColumn
   public boolean isEdited;
   public boolean isLocalPublish;
-  @awhp
+  @notColumn
   public boolean isMixOriginal;
   public boolean isMuteRecordVoice;
-  @awhp
+  @notColumn
   public boolean isNeedHighProfile;
   public boolean isPicture;
   public String localCreateCity;
@@ -66,7 +66,7 @@ public class PublishVideoEntry
   public String mLocalRawVideoDir;
   public byte[] mMosaicMask;
   public int mMosaicSize;
-  @awhp
+  @notColumn
   public String manualSavedPath;
   public String mbgmAudioFilePath;
   public String miniThumbPath;
@@ -78,16 +78,16 @@ public class PublishVideoEntry
   public byte[] readerConfBytes;
   public int recordFrames;
   public double recordTime;
-  @awhp
+  @notColumn
   public int redBagType;
   public int saveMode;
-  @awhp
+  @notColumn
   public int specialVideoType;
   public byte[] spreadGroupBytes;
   public byte[] tagInfoBytes;
   public String thumbPath;
   public long timeZoneOffset;
-  @awhp
+  @notColumn
   public boolean useSrcFile;
   public String videoAddress;
   public String videoCreateAddress;
@@ -130,7 +130,7 @@ public class PublishVideoEntry
     {
       for (;;)
       {
-        wxe.c("PublishVideoEntry", "getExtraJson error", localJSONException);
+        yqp.c("PublishVideoEntry", "getExtraJson error", localJSONException);
         this.extraJson = new JSONObject();
       }
     }
@@ -241,7 +241,7 @@ public class PublishVideoEntry
   }
   
   @Nullable
-  public uxp getLinkInfo()
+  public wrb getLinkInfo()
   {
     Object localObject = getStringExtra("link", null);
     if (localObject == null) {
@@ -249,19 +249,19 @@ public class PublishVideoEntry
     }
     try
     {
-      localObject = (uxp)JsonORM.a(new JSONObject((String)localObject), uxp.class);
+      localObject = (wrb)JsonORM.a(new JSONObject((String)localObject), wrb.class);
       return localObject;
     }
     catch (JsonORM.JsonParseException localJsonParseException)
     {
-      wxe.c("PublishVideoEntry", "getLinkInfo error", localJsonParseException);
+      yqp.c("PublishVideoEntry", "getLinkInfo error", localJsonParseException);
       return null;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        wxe.c("PublishVideoEntry", "getLinkInfo error", localJSONException);
+        yqp.c("PublishVideoEntry", "getLinkInfo error", localJSONException);
       }
     }
   }
@@ -301,7 +301,7 @@ public class PublishVideoEntry
     }
     catch (JSONException paramString)
     {
-      wxe.c("PublishVideoEntry", "putStringExtra error", paramString);
+      yqp.c("PublishVideoEntry", "putStringExtra error", paramString);
     }
     return false;
   }
@@ -319,20 +319,20 @@ public class PublishVideoEntry
     }
     catch (JSONException paramString)
     {
-      wxe.c("PublishVideoEntry", "setGameLinkInfo error", paramString);
+      yqp.c("PublishVideoEntry", "setGameLinkInfo error", paramString);
     }
   }
   
-  public void setLinkInfo(@NonNull uxp paramuxp)
+  public void setLinkInfo(@NonNull wrb paramwrb)
   {
     try
     {
-      putExtra("link", JsonORM.a(paramuxp));
+      putExtra("link", JsonORM.a(paramwrb));
       return;
     }
-    catch (JsonORM.JsonParseException paramuxp)
+    catch (JsonORM.JsonParseException paramwrb)
     {
-      wxe.c("PublishVideoEntry", "setLinkInfo error", paramuxp);
+      yqp.c("PublishVideoEntry", "setLinkInfo error", paramwrb);
     }
   }
   
@@ -343,7 +343,7 @@ public class PublishVideoEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.PublishVideoEntry
  * JD-Core Version:    0.7.0.1
  */

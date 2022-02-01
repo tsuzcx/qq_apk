@@ -1,44 +1,42 @@
 package com.tencent.mobileqq.transfile;
 
-import bayk;
-import bdif;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
+import bctj;
+import bdyr;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.text.DecimalFormat;
+import java.util.HashMap;
 
-class ShortVideoUploadProcessor$7
+public class ShortVideoUploadProcessor$7
   implements Runnable
 {
+  public ShortVideoUploadProcessor$7(bdyr parambdyr, String paramString) {}
+  
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> submitEntireVideo");
-    }
-    bdif.a(String.valueOf(this.this$0.a.a), "submitEntireVideo", "videoPath = " + this.jdField_a_of_type_JavaLangString);
-    synchronized (this.this$0)
-    {
-      if (ShortVideoUploadProcessor.a(this.this$0) != 3)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> submitEntireVideo mSwitch != SWITCH_PRE_UPLOAD  mSwitch : " + ShortVideoUploadProcessor.a(this.this$0));
-        }
-        return;
-      }
-      this.this$0.a.i = (this.jdField_a_of_type_JavaLangString + "QQ_&_MoblieQQ_&_QQ" + this.this$0.a.j + "QQ_&_MoblieQQ_&_QQ" + this.jdField_a_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + this.this$0.a.k);
-      ShortVideoUploadProcessor.b(this.this$0, 2);
-      bdif.a(String.valueOf(this.this$0.a.a), "submitEntireVideo", "mUiRequest.mLocalPath = " + this.this$0.a.i + ",mVideoPreUpStatus = " + ShortVideoUploadProcessor.b(this.this$0) + ", mVideoRecordStatus = " + ShortVideoUploadProcessor.c(this.this$0));
-      if ((ShortVideoUploadProcessor.b(this.this$0) == 1) || (ShortVideoUploadProcessor.b(this.this$0) == 2) || (ShortVideoUploadProcessor.c(this.this$0) == 3))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> submitEntireVideo mVideoPreUpStatus = " + ShortVideoUploadProcessor.b(this.this$0) + " mVideoRecordStatus = " + ShortVideoUploadProcessor.c(this.this$0));
-        }
-        ShortVideoUploadProcessor.a(this.this$0);
-      }
+    long l1 = SystemClock.uptimeMillis();
+    File localFile = new File(this.a);
+    Object localObject = ShortVideoUtils.e(localFile);
+    if (localObject == null) {
       return;
     }
+    long l2 = Long.valueOf(localObject.split("\\|")[0]).longValue();
+    long l3 = Long.valueOf(localObject.split("\\|")[1]).longValue();
+    long l4 = SystemClock.uptimeMillis();
+    localObject = new HashMap();
+    ((HashMap)localObject).put("param_moovOffset", l2 + "");
+    ((HashMap)localObject).put("param_moovSize", l3 + "");
+    ((HashMap)localObject).put("param_videoLen", localFile.length() + "");
+    DecimalFormat localDecimalFormat = new DecimalFormat("##.000");
+    ((HashMap)localObject).put("param_moovPosition", localDecimalFormat.format(l2 * 1.0D / localFile.length()) + "");
+    bctj.a(BaseApplication.getContext()).a(null, "actShortVideoMoov", false, l4 - l1, -1L, (HashMap)localObject, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoUploadProcessor.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package dov.com.qq.im.ae.data;
 
-import bkzy;
+import bnpc;
 
 public class AEMaterialManager$1
   implements Runnable
 {
-  public AEMaterialManager$1(bkzy parambkzy) {}
+  public AEMaterialManager$1(bnpc parambnpc) {}
   
   public void run()
   {
-    bkzy.a(this.this$0);
+    bnpc.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.data.AEMaterialManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjgl
   implements View.OnClickListener
 {
-  public bjgl(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public bjgl(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
   public void onClick(View paramView)
   {
-    if (!QzoneVerticalVideoDownloadActivity.access$200(this.a))
-    {
-      QzoneVerticalVideoDownloadActivity.access$300(this.a, false, false);
-      QzoneVerticalVideoDownloadActivity.access$400(this.a);
-    }
+    bghy.a(this.a, this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_Azfe.a.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjgl
  * JD-Core Version:    0.7.0.1
  */

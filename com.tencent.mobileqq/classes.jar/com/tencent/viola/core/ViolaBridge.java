@@ -1,5 +1,6 @@
 package com.tencent.viola.core;
 
+import com.tencent.viola.adapter.ILogAdapter;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.commons.IReportDelegate;
 import com.tencent.viola.commons.JSParam;
@@ -23,7 +24,7 @@ public class ViolaBridge
     if (localObject != null)
     {
       if (!ViolaSDKManager.getInstance().isRenderJsEnd()) {
-        break label173;
+        break label191;
       }
       ViolaSDKManager.getInstance().addRunningJsErrorCount();
       ((IReportDelegate)localObject).reportJsError(ViolaSDKManager.getInstance().isRenderJsEnd(), paramInt, paramString);
@@ -48,11 +49,15 @@ public class ViolaBridge
       }
       catch (Exception localException)
       {
-        label173:
+        label191:
         ViolaLogUtils.e("ViolaBridge", "callError JSONException e:" + localException.getMessage());
         continue;
       }
       ViolaLogUtils.setLogText(paramString);
+      localObject = ViolaSDKManager.getInstance().getLogAdapter();
+      if (localObject != null) {
+        ((ILogAdapter)localObject).onJSError(paramString);
+      }
       return;
       ViolaSDKManager.getInstance().addJsErrorCount();
       ((IReportDelegate)localObject).addReportData(ViolaEnvironment.JS_ERROR_BEFORE_RENDER, Integer.toString(ViolaSDKManager.getInstance().getJsErrorCount()));
@@ -212,7 +217,7 @@ public class ViolaBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaBridge
  * JD-Core Version:    0.7.0.1
  */

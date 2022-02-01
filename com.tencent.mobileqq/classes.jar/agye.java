@@ -1,72 +1,17 @@
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract class agye
-  implements agxz
+class agye
+  extends ahbl
 {
-  public URLDrawable.URLDrawableOptions a()
+  agye(agwz paramagwz)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mExtraInfo = this;
-    return localURLDrawableOptions;
+    super(paramagwz, null);
   }
   
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (paramURL == null) {
-      return null;
-    }
-    paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-    paramURL.setTag(new int[] { 0, 0, (int)paramURLDrawableOptions.mGifRoundCorner });
-    return paramURL;
-  }
-  
-  public URL a()
-  {
-    try
-    {
-      URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((agyp)this).f());
-      if (localURL1 == null)
-      {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL url = null");
-        return null;
-      }
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      URL localURL2;
-      for (;;)
-      {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL create url exception e = " + localMalformedURLException.getMessage());
-        localURL2 = null;
-      }
-      return localURL2;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public String c()
-  {
-    return "z-";
+    return atcb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 61, paramChatMessage);
   }
 }
 

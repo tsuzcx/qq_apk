@@ -1,50 +1,160 @@
-import android.content.ClipData;
-import android.content.ClipboardManager;
+import UserGrowth.stPublisherGuide;
+import UserGrowth.stPublisherRsp;
 import android.content.Context;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StUser;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.image.URLImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class udi
-  implements tqy
+  extends aagd
+  implements View.OnClickListener
 {
-  public udi(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, FeedCloudMeta.StReply paramStReply, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment) {}
+  private int jdField_a_of_type_Int;
+  private stPublisherRsp jdField_a_of_type_UserGrowthStPublisherRsp;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private udf jdField_a_of_type_Udf;
+  private TextView b;
+  
+  public udi(Context paramContext)
+  {
+    this(paramContext, -1, -1);
+  }
+  
+  public udi(Context paramContext, int paramInt1, int paramInt2)
+  {
+    this(paramContext, 2131755939, paramInt1, paramInt2);
+  }
+  
+  protected udi(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramContext, paramInt1);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    b();
+    paramContext = getWindow();
+    if (paramContext == null)
+    {
+      upe.b("WSPublisherDialog", 2, "ScrollMoreDialog() window == null.");
+      return;
+    }
+    paramContext = paramContext.getAttributes();
+    if (paramContext == null)
+    {
+      upe.b("WSPublisherDialog", 2, "ScrollMoreDialog() params == null.");
+      return;
+    }
+    paramContext.width = paramInt2;
+    paramContext.height = paramInt3;
+  }
+  
+  private void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (this.jdField_a_of_type_Int == 0) {}
+    for (String str = "focus";; str = "feeds")
+    {
+      WSPublicAccReport.getInstance().reportPublisher(paramString1, str, paramString2, paramInt);
+      return;
+    }
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560008, null, false);
+    setContentView(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381320));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381321));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381293));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381294));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131381296));
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131381304);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    localRelativeLayout.setOnClickListener(this);
+    a("gzh_exposure", "publish_popup", 0);
+  }
+  
+  private void c()
+  {
+    if (isShowing()) {
+      dismiss();
+    }
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_UserGrowthStPublisherRsp == null) {
+      return;
+    }
+    ups.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStPublisherRsp.weishiSchema, this.jdField_a_of_type_UserGrowthStPublisherRsp.h5Url, this.jdField_a_of_type_UserGrowthStPublisherRsp.miniAppSchema, 0, new udj(this));
+  }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext() == null) {
-      QLog.e("QCircleFeedCommentWidge", 1, "onSticky mContext is null");
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(stPublisherRsp paramstPublisherRsp)
+  {
+    this.jdField_a_of_type_UserGrowthStPublisherRsp = paramstPublisherRsp;
+    paramstPublisherRsp = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841680);
+    if ((this.jdField_a_of_type_UserGrowthStPublisherRsp != null) && (this.jdField_a_of_type_UserGrowthStPublisherRsp.guide != null))
+    {
+      String str = this.jdField_a_of_type_UserGrowthStPublisherRsp.guide.imageUrl;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStPublisherRsp.guide.desc);
+      this.b.setText(this.jdField_a_of_type_UserGrowthStPublisherRsp.guide.btnText);
+      this.jdField_a_of_type_Udf = new udf();
+      this.jdField_a_of_type_Udf.a(this.jdField_a_of_type_ComTencentImageURLImageView, paramstPublisherRsp, str, true);
+      return;
     }
-    Object localObject;
-    do
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramstPublisherRsp);
+  }
+  
+  public void dismiss()
+  {
+    super.dismiss();
+    if (this.jdField_a_of_type_Udf != null)
     {
-      do
-      {
-        return;
-        if (paramInt != tqz.c) {
-          break;
-        }
-        localObject = (ClipboardManager)this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().getSystemService("clipboard");
-      } while (localObject == null);
-      ((ClipboardManager)localObject).setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.content.get()));
-      return;
-    } while (paramInt != tqz.e);
-    if (tra.a((FeedCloudMeta.StUser)this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.get())) {}
-    for (paramInt = 0;; paramInt = 2)
+      this.jdField_a_of_type_Udf.a();
+      this.jdField_a_of_type_Udf = null;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-      localObject = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().getString(2131698379);
-      bdgm.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext(), 230, (String)localObject, null, 2131690648, 2131690626, new udj(this, paramInt), new udk(this)).show();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      d();
+      c();
+      continue;
+      a("gzh_click", "publish_popup", 1000001);
+      c();
+      continue;
+      a("gzh_click", "publish_popup", 1000005);
+      c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udi
  * JD-Core Version:    0.7.0.1
  */

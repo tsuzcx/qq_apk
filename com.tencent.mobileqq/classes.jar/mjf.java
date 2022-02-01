@@ -1,59 +1,51 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.ui.VideoControlUI;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mqq.app.MobileQQ;
 
 public class mjf
-  implements AdapterView.OnItemClickListener
+  implements DialogInterface.OnClickListener
 {
-  public mjf(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  public mjf(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface arg1, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h()) {}
+    long l;
+    do
     {
-      paramAdapterView = (lfu)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      paramView = new Intent(this.a, QQBrowserActivity.class);
-      paramAdapterView = String.valueOf(paramAdapterView.a);
-      String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-      if (paramAdapterView.equals(str)) {}
-      for (paramAdapterView = "https://qvideo.qq.com/mobile/client/level/detail.html?_bid=2176&uin=" + str;; paramAdapterView = "https://qvideo.qq.com/mobile/client/level/pk.html?_bid=2176&my=" + str + "&pk=" + paramAdapterView)
+      do
       {
-        paramView.putExtra("url", paramAdapterView);
-        paramView.putExtra("uin", str);
-        paramView.putExtra("portraitOnly", true);
-        paramView.putExtra("hide_more_button", true);
-        paramView.putExtra("hide_operation_bar", true);
-        paramView.putExtra("isShowAd", false);
-        this.a.startActivity(paramView);
-        azqs.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_member", "Clk_people", 0, 0, "" + this.a.jdField_a_of_type_ComTencentAvVideoController.a, "" + this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "", "");
         return;
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
+        if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.m) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g != null)) {
+          bcst.b(null, "CliOper", "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, 0, 0, "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h, "");
+        }
+        mue.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
+      } while ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 2) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 1));
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
+      l = Long.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).longValue();
+      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().a(l, 1);
+    } while (paramInt == -1);
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c.remove(paramInt);
+    synchronized (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d)
+    {
+      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().b(l, 1);
+      if (paramInt != -1)
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d.remove(paramInt);
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c();
       }
+      return;
     }
-    paramAdapterView = (lfu)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiVideoMembersListviewAvtivity", 2, "onItemClick # mRelationUinStr = " + this.a.jdField_a_of_type_JavaLangString + " # memberUin = " + String.valueOf(paramAdapterView.a));
-    }
-    paramView = new Intent();
-    paramView.setAction("tencent.video.v2q.GaudioOpenTroopCard");
-    paramView.putExtra("troopUin", this.a.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("memberUin", String.valueOf(paramAdapterView.a));
-    paramView.putExtra("uinType", this.a.jdField_a_of_type_Int);
-    paramView.setPackage(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mjf
  * JD-Core Version:    0.7.0.1
  */

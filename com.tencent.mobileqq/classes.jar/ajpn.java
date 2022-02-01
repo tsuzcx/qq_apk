@@ -1,18 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
 public class ajpn
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ajvc
 {
-  public ajpn(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
+  public ajpn(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(MotionEvent paramMotionEvent)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
+    this.a.a.a(paramMotionEvent);
   }
 }
 

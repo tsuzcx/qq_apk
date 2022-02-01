@@ -1,49 +1,23 @@
-import android.content.Context;
-import android.content.IntentFilter;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdDownloadInfo;
 
-public class obv
+public final class obv
+  implements Parcelable.Creator<VideoInfo.GameAdDownloadInfo>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private obw jdField_a_of_type_Obw;
-  private obx jdField_a_of_type_Obx;
-  
-  public obv(Context paramContext)
+  public VideoInfo.GameAdDownloadInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+    return new VideoInfo.GameAdDownloadInfo(paramParcel);
   }
   
-  public void a()
+  public VideoInfo.GameAdDownloadInfo[] a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Obw != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))) {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Obw, this.jdField_a_of_type_AndroidContentIntentFilter);
-    }
-  }
-  
-  public void a(obx paramobx)
-  {
-    this.jdField_a_of_type_Obx = paramobx;
-    this.jdField_a_of_type_Obw = new obw(this);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Obw != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))) {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Obw);
-    }
+    return new VideoInfo.GameAdDownloadInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     obv
  * JD-Core Version:    0.7.0.1
  */

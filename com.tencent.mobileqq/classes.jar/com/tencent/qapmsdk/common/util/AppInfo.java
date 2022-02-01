@@ -33,6 +33,12 @@ public final class AppInfo
   }
   
   @JvmStatic
+  public static final boolean isApkInDebug(@NotNull Context paramContext)
+  {
+    return Companion.isApkInDebug(paramContext);
+  }
+  
+  @JvmStatic
   @NotNull
   public static final String obtainProcessName(@Nullable Context paramContext)
   {
@@ -48,7 +54,7 @@ public final class AppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.AppInfo
  * JD-Core Version:    0.7.0.1
  */

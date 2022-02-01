@@ -1,18 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-
-class arvr
-  implements DialogInterface.OnClickListener
+public class arvr
 {
-  arvr(arvp paramarvp) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a.a.a.isShowing()) {
-      this.a.a.a.dismiss();
-    }
-  }
+  int a = 0;
+  public String a;
+  public boolean a;
+  String b;
 }
 
 

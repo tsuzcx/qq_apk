@@ -1,23 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Map;
 
-class ahjk
-  extends RecyclerView.ViewHolder
+public class ahjk
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  String jdField_a_of_type_JavaLangString;
+  public ahjk(StructingMsgItemBuilder paramStructingMsgItemBuilder, BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg) {}
   
-  public ahjk(ahjh paramahjh, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376070));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370977));
+    Map localMap = ((aidp)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg);
+    ((aidp)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(localMap);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

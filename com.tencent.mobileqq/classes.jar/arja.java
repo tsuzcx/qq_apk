@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 
-public class arja
-  extends arix
+class arja
+  implements DialogInterface.OnClickListener
 {
-  private final String a;
+  arja(ariy paramariy) {}
   
-  public arja(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramQQAppInterface, paramFileManagerEntity);
-    this.jdField_a_of_type_JavaLangString = "VideoForDisc<QFile>";
-  }
-  
-  public void a(aqxm paramaqxm)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, new arjb(this, paramaqxm));
+    paramDialogInterface.cancel();
+    paramDialogInterface = new Intent("android.settings.INTERNAL_STORAGE_SETTINGS");
+    this.a.a.startActivity(paramDialogInterface);
   }
 }
 

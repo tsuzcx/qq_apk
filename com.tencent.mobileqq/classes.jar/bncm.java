@@ -1,6 +1,12 @@
-class bncm
+import android.content.DialogInterface;
+
+final class bncm
+  extends bgmc
 {
-  private static final bncl a = new bncl(null);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

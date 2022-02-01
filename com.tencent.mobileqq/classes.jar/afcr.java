@@ -1,53 +1,28 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.ListView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
 public class afcr
-  implements affa
+  implements amdu
 {
-  private afcs jdField_a_of_type_Afcs;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private boolean jdField_a_of_type_Boolean;
+  public afcr(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public afcr(BaseChatPie paramBaseChatPie)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    SearchMightKnowFragment.a(this.a).setVisibility(0);
+    SearchMightKnowFragment.a(this.a).setVisibility(8);
   }
   
-  private ListView a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agso)) {
-      return ((agso)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a();
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-  }
+  public void a(String paramString) {}
   
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-    case 2: 
-    case 6: 
-    case 17: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_Afcs = new afcs();
-        return;
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Afcs.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Afcs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Afcs = null;
-  }
+  public void a(List<MayKnowRecommend> paramList) {}
   
-  public int[] a()
+  public void b()
   {
-    return new int[] { 2, 6, 11, 17 };
+    SearchMightKnowFragment.a(this.a).setVisibility(8);
+    SearchMightKnowFragment.a(this.a).setVisibility(0);
   }
 }
 

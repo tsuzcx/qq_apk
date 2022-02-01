@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.GridListView;
+import java.util.List;
 
 public class beqb
-  implements View.OnClickListener
 {
-  public beqb(GridListView paramGridListView) {}
-  
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag(2131361808)).intValue();
-    this.a.a.onItemClick(this.a, paramView, i, 0L);
-  }
+  public int a;
+  public List<Integer> a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

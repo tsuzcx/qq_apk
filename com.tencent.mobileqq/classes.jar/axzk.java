@@ -1,6 +1,17 @@
-class axzk
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class axzk
+  extends axxt
 {
-  private static final axzi a = new axzi(null);
+  public ImageView e;
+  public ImageView f;
+  public TextView g;
+  
+  public axzk(axzj paramaxzj)
+  {
+    super(paramaxzj);
+  }
 }
 
 

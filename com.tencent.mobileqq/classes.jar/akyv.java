@@ -1,28 +1,28 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class akyv
-  implements EIPCResultCallback
+class akyv
+  implements View.OnClickListener
 {
-  akyv(String paramString, long paramLong) {}
+  akyv(akyh paramakyh, aysb paramaysb) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("type");
-    if (i == 1)
+    if (akyh.a(this.jdField_a_of_type_Akyh).app.getExtOnlineStatus() > 40001L) {
+      ayqb.a(akyh.a(this.jdField_a_of_type_Akyh).app, 40001L, false, "br_close");
+    }
+    for (;;)
     {
-      paramEIPCResult = paramEIPCResult.getString("nickName");
-      akwd.a().callbackGetNick(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
-    }
-    while (i != 2) {
+      aypy.a("0X800AF9F", (int)this.jdField_a_of_type_Aysb.a);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      this.jdField_a_of_type_Akyh.a(28, 0);
+      this.jdField_a_of_type_Akyh.a(28, null);
+      ayqb.c();
     }
-    paramEIPCResult = (Bitmap)paramEIPCResult.getParcelable("head");
-    akwd.a().callbackGetHead(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
   }
 }
 

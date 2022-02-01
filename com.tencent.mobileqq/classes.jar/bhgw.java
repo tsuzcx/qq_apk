@@ -1,80 +1,34 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
-import com.tencent.qqmini.sdk.utils.DisplayUtil;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.SystemClock;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class bhgw
-  implements bgpu
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public bhgw(MiniAppTextArea paramMiniAppTextArea) {}
+  public bhgw(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public void onSoftKeyboardClosed()
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    MiniAppTextArea.a(this.a, false);
-  }
-  
-  public void onSoftKeyboardOpened(int paramInt)
-  {
-    MiniAppTextArea localMiniAppTextArea = null;
-    try
+    if (QLog.isColorLevel())
     {
-      PageWebviewContainer localPageWebviewContainer;
-      Object localObject;
-      int i;
-      if (MiniAppTextArea.a(this.a) != null)
-      {
-        localPageWebviewContainer = MiniAppTextArea.a(this.a).a();
-        MiniAppTextArea.a(this.a).setCurInputId(MiniAppTextArea.d(this.a));
-        MiniAppTextArea.a(this.a, paramInt);
-        localObject = localMiniAppTextArea;
-        if (MiniAppTextArea.a(this.a) != null)
-        {
-          localObject = localMiniAppTextArea;
-          if (MiniAppTextArea.a(this.a).a() != null) {
-            localObject = MiniAppTextArea.a(this.a).a().a();
-          }
-        }
-        if ((DisplayUtil.hasNavBar((Context)localObject)) && (DisplayUtil.isNavigationBarExist((Activity)localObject)))
-        {
-          localMiniAppTextArea = this.a;
-          paramInt = MiniAppTextArea.b(this.a);
-          MiniAppTextArea.a(localMiniAppTextArea, DisplayUtil.getNavigationBarHeight((Context)localObject) + paramInt);
-        }
-        MiniAppTextArea.c(this.a);
-        if (this.a.isFocused())
-        {
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("inputId", MiniAppTextArea.d(this.a));
-          i = MiniAppTextArea.b(this.a);
-          if (!MiniAppTextArea.b(this.a)) {
-            break label250;
-          }
-        }
-      }
-      label250:
-      for (paramInt = MiniAppTextArea.c(this.a);; paramInt = 0)
-      {
-        ((JSONObject)localObject).put("height", (int)((paramInt + i) / DisplayUtil.getDensity(this.a.getContext()) + 0.5F));
-        localPageWebviewContainer.b("onKeyboardShow", ((JSONObject)localObject).toString());
-        return;
-        localPageWebviewContainer = null;
-        break;
-      }
-      return;
+      paramTVK_IMediaPlayer = new StringBuilder();
+      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
+      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
+      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
+      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
+      QLog.d("VipVideoPlayActivity", 2, paramTVK_IMediaPlayer.toString());
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = VipVideoPlayActivity.b(this.a);
+    this.a.a("play_error", paramInt1, paramInt2, l1 - l2, paramString);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhgw
  * JD-Core Version:    0.7.0.1
  */

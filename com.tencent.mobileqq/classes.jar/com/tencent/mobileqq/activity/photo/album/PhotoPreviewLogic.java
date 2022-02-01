@@ -1,25 +1,27 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aiqy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 
-public abstract class PhotoPreviewLogic<K extends AbstractPhotoPreviewActivity>
+public abstract class PhotoPreviewLogic<K extends AbstractPhotoPreviewActivity, O extends OtherCommonData>
 {
   public K mActivity;
-  protected PhotoPreviewLogic.IimageAdapterCallback mImageAdapterCallback = null;
+  PhotoPreviewLogic.IimageAdapterCallback mImageAdapterCallback = null;
   protected PhotoPreviewLogic.IonCheckedChangedCallback mOnCheckedChangedCallback = null;
-  public aiqy mPhotoCommonData;
+  protected O mOtherCommonData;
+  public PhotoCommonBaseData<O> mPhotoCommonData;
   protected PhotoPreviewBaseData mPhotoPreviewData;
   
   protected PhotoPreviewLogic(K paramK)
   {
     this.mActivity = paramK;
-    this.mPhotoCommonData = aiqy.getInstance(paramK.getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
+    this.mPhotoCommonData = PhotoCommonBaseData.getInstance(paramK.getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
+    this.mOtherCommonData = this.mPhotoCommonData.bindCommonData(getOtherData());
     paramK.getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
     this.mPhotoCommonData.addHoldNember();
     this.mPhotoPreviewData = new PhotoPreviewBaseData();
@@ -39,6 +41,18 @@ public abstract class PhotoPreviewLogic<K extends AbstractPhotoPreviewActivity>
   protected abstract void doOnDestroy();
   
   protected abstract void doOnResume();
+  
+  protected OtherCommonData getOtherData()
+  {
+    return new PhotoPreviewLogic.1(this);
+  }
+  
+  public PhotoPreviewBaseData getPhotoPreviewData()
+  {
+    return this.mPhotoPreviewData;
+  }
+  
+  protected abstract BasePreviewAdapter getPreviewAdapter();
   
   protected abstract void initData(Intent paramIntent);
   
@@ -62,7 +76,7 @@ public abstract class PhotoPreviewLogic<K extends AbstractPhotoPreviewActivity>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogic
  * JD-Core Version:    0.7.0.1
  */

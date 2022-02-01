@@ -1,20 +1,8 @@
-import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 
-public class bmpw
+public abstract interface bmpw
 {
-  public final int c;
-  public final Bitmap c;
-  
-  public bmpw(int paramInt, Bitmap paramBitmap)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public String toString()
-  {
-    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
-  }
+  public abstract void a(Drawable paramDrawable);
 }
 
 

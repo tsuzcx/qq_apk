@@ -1,6 +1,7 @@
 package com.tencent.qapmsdk.qapmmanager;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import com.tencent.qapmsdk.base.config.WhiteUrl;
@@ -9,10 +10,11 @@ import com.tencent.qapmsdk.base.meta.BaseInfo;
 import com.tencent.qapmsdk.base.meta.BaseInfo.Info;
 import com.tencent.qapmsdk.base.meta.UserMeta;
 import com.tencent.qapmsdk.common.logger.Logger;
+import com.tencent.qapmsdk.common.util.AppInfo;
+import com.tencent.qapmsdk.common.util.AppInfo.Companion;
 import com.tencent.qapmsdk.common.util.AsyncSPEditor;
 import com.tencent.qapmsdk.common.util.PhoneUtil;
 import com.tencent.qapmsdk.common.util.PhoneUtil.Companion;
-import java.lang.reflect.Method;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import kotlin.Metadata;
@@ -63,6 +65,7 @@ public final class QAPMConfigureWizard$Companion
   {
     Intrinsics.checkParameterIsNotNull(paramString, "host");
     BaseInfo.urlMeta.athenaDomain = paramString;
+    BaseInfo.Info.initUrl();
     WhiteUrl.Companion.addWhiteHost(paramString);
   }
   
@@ -83,45 +86,33 @@ public final class QAPMConfigureWizard$Companion
   public final boolean setUin(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    UserMeta localUserMeta;
     Object localObject;
     if ((BaseInfo.sharePreference != null) && (Intrinsics.areEqual("10000", BaseInfo.userMeta.uin)))
     {
-      UserMeta localUserMeta = BaseInfo.userMeta;
+      localUserMeta = BaseInfo.userMeta;
       localObject = BaseInfo.sharePreference;
-      if (localObject != null)
-      {
-        localObject = ((SharedPreferences)localObject).getString("config_uin", "10000");
-        if (localObject != null) {
-          localUserMeta.uin = ((String)localObject);
-        }
+      if (localObject == null) {
+        break label94;
+      }
+      localObject = ((SharedPreferences)localObject).getString("config_uin", "10000");
+      if (localObject == null) {
+        break label94;
       }
     }
-    else
+    for (;;)
     {
+      localUserMeta.uin = ((String)localObject);
       if (!(Intrinsics.areEqual(paramString, BaseInfo.userMeta.uin) ^ true)) {
-        break label202;
+        break;
       }
       BaseInfo.userMeta.uin = paramString;
       BaseInfo.editor.putString("config_uin", paramString).apply();
-    }
-    label202:
-    for (boolean bool = true;; bool = false)
-    {
-      try
-      {
-        paramString = Class.forName("com.tencent.qapmsdk.athena.BreadCrumb");
-        localObject = paramString.getDeclaredMethod("getInstance", new Class[0]);
-        paramString.getDeclaredMethod("setUserId", new Class[] { String.class }).invoke(((Method)localObject).invoke(null, new Object[0]), new Object[] { BaseInfo.userMeta.uin });
-        return bool;
-      }
-      catch (Exception paramString)
-      {
-        Logger.INSTANCE.w(new String[] { "QAPM_manager_QAPMConfigureWizard", paramString + ": Not found BreadCrumb Model" });
-        return bool;
-      }
+      return true;
+      label94:
       localObject = "10000";
-      break;
     }
+    return false;
   }
   
   @JvmStatic
@@ -137,12 +128,18 @@ public final class QAPMConfigureWizard$Companion
   public final void setVersion(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "version");
+    if (((CharSequence)paramString).length() == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      BaseInfo.userMeta.version = AppInfo.Companion.getAppVersion((Context)BaseInfo.app);
+      return;
+    }
     BaseInfo.userMeta.version = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.qapmmanager.QAPMConfigureWizard.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,17 @@
-public abstract interface axst
+class axst
+  implements axdi
 {
-  public abstract void a(long paramLong, axss paramaxss);
+  axst(axsd paramaxsd) {}
   
-  public abstract void a(boolean paramBoolean, long paramLong, axss paramaxss, axsr paramaxsr, int paramInt);
+  public void a(String paramString, boolean paramBoolean)
+  {
+    this.a.c(paramBoolean);
+    this.a.t = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axst
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,15 @@
-import android.os.Build.VERSION;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.MaxHeightRelativelayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 class asbr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements awnc<EmoticonPackage>
 {
-  asbr(asbq paramasbq) {}
+  asbr(asbq paramasbq, String paramString) {}
   
-  public void onGlobalLayout()
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if (asbq.a(this.a) != null)
-    {
-      if (Build.VERSION.SDK_INT >= 16) {
-        asbq.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      }
-      if ((asbq.a(this.a) != null) && (this.a.a != null))
-      {
-        if (asbq.a(this.a).getLineCount() <= 1) {
-          break label144;
-        }
-        asbq.a(this.a).setGravity(19);
-      }
-    }
-    for (;;)
-    {
-      if (asbq.a(this.a).getHeight() >= bdoo.a(asbq.a(this.a) + 2))
-      {
-        this.a.a.setMaxHeight(bdoo.a(450.0F));
-        this.a.a.requestLayout();
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardPreviewTextController", 2, " reset height ");
-        }
-      }
-      return;
-      label144:
-      asbq.a(this.a).setGravity(17);
+    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2)) {
+      URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

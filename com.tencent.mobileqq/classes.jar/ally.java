@@ -1,6 +1,26 @@
 public abstract interface ally
 {
-  public abstract void a(boolean paramBoolean, akyn paramakyn);
+  public abstract zdw a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(zdw paramzdw);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract boolean c();
+  
+  public abstract void d();
 }
 
 

@@ -1,14 +1,18 @@
-import android.support.annotation.NonNull;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.event.ExoticEvent;
 
-class blxp
-  implements blxl
+public final class blxp
+  implements Parcelable.Creator<ExoticEvent>
 {
-  blxp(blxo paramblxo) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public ExoticEvent a(Parcel paramParcel)
   {
-    return bcnt.b(paramString);
+    return new ExoticEvent(paramParcel, null);
+  }
+  
+  public ExoticEvent[] a(int paramInt)
+  {
+    return new ExoticEvent[paramInt];
   }
 }
 

@@ -1,14 +1,42 @@
-import android.os.IInterface;
-import cooperation.qappcenter.remote.SendMsg;
+import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
+import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract interface bisf
-  extends IInterface
+class bisf
+  implements ITMAssistantExchangeURLListenner
 {
-  public abstract void a(SendMsg paramSendMsg);
+  bisf(bise parambise) {}
+  
+  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
+  {
+    bisy.b("DownloadResolver", "onExchangedURLSucceed --- ");
+    if ((paramBoolean) && (??? != null) && (???.size() > 0))
+    {
+      ??? = ???.iterator();
+      while (???.hasNext())
+      {
+        Object localObject1 = ???.next();
+        if ((localObject1 instanceof AppSimpleDetail))
+        {
+          int i = ((AppSimpleDetail)localObject1).versionCode;
+          if (i > 0) {
+            bise.a(this.a).put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
+          }
+        }
+      }
+    }
+    synchronized (bise.a(this.a))
+    {
+      bise.a(this.a).notify();
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bisf
  * JD-Core Version:    0.7.0.1
  */

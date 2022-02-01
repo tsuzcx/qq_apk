@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.VideoInfo;
-import raw;
-import rbr;
-import rbs;
+import rwy;
+import rxu;
+import rxv;
 
 public class VideoFeedsAdapter$ShortVideoItemDelegate$2
   implements Runnable
 {
-  public VideoFeedsAdapter$ShortVideoItemDelegate$2(rbr paramrbr, VideoInfo paramVideoInfo) {}
+  public VideoFeedsAdapter$ShortVideoItemDelegate$2(rxu paramrxu, VideoInfo paramVideoInfo) {}
   
   public void run()
   {
-    rbr.a(this.jdField_a_of_type_Rbr).a.setHorizontalMargin(rbr.a(this.jdField_a_of_type_Rbr).i.getWidth());
-    rbr.a(this.jdField_a_of_type_Rbr).a.setVisibility(0);
-    rbr.a(this.jdField_a_of_type_Rbr).a.setArticleInfo(raw.a(this.jdField_a_of_type_Rbr.a), this.jdField_a_of_type_Rbr.a, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, raw.c(this.jdField_a_of_type_Rbr.a), raw.e(this.jdField_a_of_type_Rbr.a));
+    rxu.a(this.jdField_a_of_type_Rxu).a.setHorizontalMargin(rxu.a(this.jdField_a_of_type_Rxu).j.getWidth());
+    rxu.a(this.jdField_a_of_type_Rxu).a.setVisibility(0);
+    rxu.a(this.jdField_a_of_type_Rxu).a.setArticleInfo(rwy.a(this.jdField_a_of_type_Rxu.a), this.jdField_a_of_type_Rxu.a, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, rwy.c(this.jdField_a_of_type_Rxu.a), rwy.a());
   }
 }
 

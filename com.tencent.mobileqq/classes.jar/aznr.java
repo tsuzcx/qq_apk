@@ -1,21 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.startup.step.BroadcastReportRegister;
-import mqq.app.AppCallback;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader;
 
 public class aznr
-  implements AppCallback
+  implements ImageAssetDelegate
 {
-  public aznr(BroadcastReportRegister paramBroadcastReportRegister) {}
+  public aznr(ProfileColorScreenComponent.ColorScreenLoader paramColorScreenLoader) {}
   
-  public void onSendBroadcast(Context paramContext, Intent paramIntent)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    try
-    {
-      anvl.a(paramIntent);
-      return;
-    }
-    catch (Throwable paramContext) {}
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
   }
 }
 

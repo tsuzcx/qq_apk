@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
+import bguc;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -37,7 +37,7 @@ public class GetPotentialFriendListServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bdpd.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bguc.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         if (!paramFromServiceMsg.isSuccess()) {
           continue;
@@ -88,7 +88,7 @@ public class GetPotentialFriendListServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_cloudstorage.GetPotentialFriendList");
-      paramPacket.putSendData(bdpd.a((byte[])localObject1));
+      paramPacket.putSendData(bguc.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;
@@ -107,7 +107,7 @@ public class GetPotentialFriendListServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetPotentialFriendListServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bahp;
+import bdit;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -13,7 +13,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$8
   
   public void run()
   {
-    if (this.this$0.a == null) {
+    if (this.this$0.mApp == null) {
       return;
     }
     Object localObject = new JSONObject();
@@ -23,8 +23,8 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$8
         QLog.e("WebLog_WebViewFragment", 2, "saveTempPadFromQQ: prvurl " + this.a);
       }
       ((JSONObject)localObject).put("prvurl", this.a);
-      String str = String.format("https://%s.docs.qq.com/preview/imp/save_to_mylist", new Object[] { this.this$0.a.getCurrentAccountUin() });
-      localObject = bahp.b((JSONObject)localObject, this.this$0.a.getCurrentAccountUin(), str, "docs.qq.com");
+      String str = String.format("https://%s.docs.qq.com/preview/imp/save_to_mylist", new Object[] { this.this$0.mApp.getCurrentAccountUin() });
+      localObject = bdit.b((JSONObject)localObject, this.this$0.mApp.getCurrentAccountUin(), str, "docs.qq.com");
       this.this$0.c((String)localObject);
       return;
     }
@@ -36,7 +36,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.8
  * JD-Core Version:    0.7.0.1
  */

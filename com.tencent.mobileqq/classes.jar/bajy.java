@@ -1,8 +1,14 @@
 public class bajy
+  implements anil
 {
-  public baky a;
+  public void a(boolean paramBoolean, bajz parambajz) {}
   
-  public bajy(bajx parambajx) {}
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt == 1) {
+      a(paramBoolean, (bajz)paramObject);
+    }
+  }
 }
 
 

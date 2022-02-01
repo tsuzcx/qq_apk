@@ -1,64 +1,60 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
-import android.os.Bundle;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yfl
-  implements zac<CertifiedAccountWrite.StDoLikeRsp>
+  extends QQUIEventReceiver<yff, wwx>
 {
-  public yfl(CommentBottomBar paramCommentBottomBar) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
+  public yfl(@NonNull yff paramyff)
   {
-    CommentBottomBar.a(this.a, true);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null)) {
-      QQToast.a(this.a.getContext(), 1, paramString, 0).a();
-    }
-    label291:
-    label295:
-    for (;;)
+    super(paramyff);
+  }
+  
+  public void a(@NonNull yff paramyff, @NonNull wwx paramwwx)
+  {
+    if (TextUtils.equals(paramwwx.jdField_a_of_type_JavaLangString, String.valueOf(paramyff.hashCode())))
     {
-      return;
-      if (paramStDoLikeRsp.like.status.get() == 1)
+      if ((paramwwx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwwx.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null))
       {
-        i = CommentBottomBar.a(this.a).likeInfo.count.get() + 1;
-        if (CommentBottomBar.a(this.a) != null)
-        {
-          CommentBottomBar.a(this.a).likeInfo.status.set(paramStDoLikeRsp.like.status.get());
-          CommentBottomBar.a(this.a).likeInfo.count.set(i);
+        yqp.b("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", paramwwx);
+        paramyff.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramwwx.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+        paramyff.jdField_a_of_type_JavaLangString = paramwwx.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
+        if (yff.a(paramyff) != -1) {
+          paramyff.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = yff.a(paramyff);
         }
-        yiw.a().a(new PraisedUpdateEvents(CommentBottomBar.a(this.a).id.get(), paramStDoLikeRsp.like.status.get(), i));
-        if (BaseApplicationImpl.sProcessId != 1) {
-          break label291;
+        if (yff.b(paramyff) != -1) {
+          paramyff.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.shareGroupCount = yff.b(paramyff);
         }
+        ((FriendListHandler)xfe.a().a(1)).c(paramwwx.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, false);
+        ThreadManager.post(new MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1(this, paramyff), 5, null, false);
       }
-      for (int i = 1;; i = 0)
+      for (;;)
       {
-        if (i != 0) {
-          break label295;
-        }
-        paramString = new Bundle();
-        paramString.putString("feed_id", CommentBottomBar.a(this.a).id.get());
-        paramString.putInt("feed_like_status", paramStDoLikeRsp.like.status.get());
-        paramString.putInt("feed_like_num", paramStDoLikeRsp.like.count.get());
-        QIPCClientHelper.getInstance().callServer(yiw.a, yiw.b, paramString, null);
+        yff.a(paramyff).a(paramwwx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
         return;
-        i = CommentBottomBar.a(this.a).likeInfo.count.get() - 1;
-        break;
+        QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131705313) + paramwwx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.getErrorMessage(), 0);
+        yqp.e("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", new Object[] { paramwwx });
       }
     }
+    yqp.b("Q.qqstory.memories.MemoriesProfilePresenter", "ignore this update user info event: %s.", paramwwx);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wwx.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yfl
  * JD-Core Version:    0.7.0.1
  */

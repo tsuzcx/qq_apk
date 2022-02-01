@@ -1,30 +1,90 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import dov.com.qq.im.QIMCameraCaptureUnit.10;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bkmt
-  implements MediaScanner.OnMediaInfoScannerListener
+  extends BaseAdapter
 {
-  public bkmt(QIMCameraCaptureUnit.10 param10) {}
+  private int jdField_a_of_type_Int = 1;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
+  private int b;
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public bkmt(BaseAdapter paramBaseAdapter, int paramInt)
   {
-    if (!paramBoolean)
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
+    if (paramInt > 0) {}
+    for (;;)
     {
-      this.a.this$0.a(101);
+      this.jdField_a_of_type_Int = paramInt;
+      if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) {
+        this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(new bkmu(this));
+      }
+      return;
+      paramInt = 1;
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public BaseAdapter a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = b();
+    if (paramInt < 0)
+    {
+      this.b = 0;
       return;
     }
-    bkms.a(this.a.this$0, false);
-    if (!BaseApplicationImpl.getApplication().getRuntime().isBackground_Pause)
+    if (paramInt >= i)
     {
-      this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, paramLocalMediaInfo);
+      this.b = (i - 1);
       return;
     }
-    this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-    this.a.this$0.b = this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
-    this.a.this$0.e = true;
+    this.b = paramInt;
+  }
+  
+  public int b()
+  {
+    int i = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
+    int j = i / this.jdField_a_of_type_Int;
+    if (i % this.jdField_a_of_type_Int != 0) {}
+    for (i = 1;; i = 0) {
+      return i + j;
+    }
+  }
+  
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
+    if ((this.b + 1) * this.jdField_a_of_type_Int > i) {
+      return i % this.jdField_a_of_type_Int;
+    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItem(this.b * this.jdField_a_of_type_Int + paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemId(this.b * this.jdField_a_of_type_Int + paramInt);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(this.b * this.jdField_a_of_type_Int + paramInt, paramView, paramViewGroup);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 

@@ -1,27 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.colornote.anim.MusicDanceDrawable;
+import AccostSvc.MsgItem;
+import java.util.ArrayList;
 
 class aoex
-  extends RecyclerView.ViewHolder
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  MusicDanceDrawable jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable;
-  View b;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<MsgItem> a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
+  public long e;
   
-  public aoex(aoev paramaoev, View paramView)
+  public aoex(long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList<MsgItem> paramArrayList, String paramString)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramaoev = paramView.getContext().getResources();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370914));
-    this.b = paramView.findViewById(2131371263);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable = new MusicDanceDrawable();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable.a(paramView.getContext(), aepi.a(15.0F, paramaoev), aepi.a(9.5F, paramaoev), paramaoev.getColor(2131165478));
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
+    this.c = paramLong3;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public aoex(long paramLong, ArrayList<MsgItem> paramArrayList)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 

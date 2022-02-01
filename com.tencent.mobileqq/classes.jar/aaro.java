@@ -1,46 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
 
-final class aaro
-  implements aaru
+public abstract class aaro
+  extends niv
 {
-  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramaarb != null) {}
-    for (paramString = paramaarb.a(); (paramaarb == null) || (paramString == null); paramString = null)
+    b(paramInt, paramArrayOfByte, paramBundle);
+  }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
     {
-      aase.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
-      return true;
+      a(false, paramInt, null, paramBundle);
+      return;
     }
-    for (;;)
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
     {
-      try
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.UploadFileRspBody)localRspBody.upload_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
       {
-        paramVarArgs = new JSONObject(paramVarArgs[0]);
-        paramaarb = paramVarArgs.optString("process", "com.tencent.mobileqq:mini");
-        if (TextUtils.equals(paramaarb, "com.tencent.mobileqq"))
-        {
-          paramaarb = PublicFragmentActivity.class;
-          GdtInterstitialFragmentForJS.a(paramString, paramaarb, paramVarArgs);
-          return true;
-        }
-      }
-      catch (JSONException paramaarb)
-      {
-        aase.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramaarb);
-        return true;
-      }
-      if (TextUtils.equals(paramaarb, "com.tencent.mobileqq:tool")) {
-        paramaarb = PublicFragmentActivityForTool.class;
-      } else {
-        paramaarb = PublicFragmentActivityForMini.class;
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
       }
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
+      return;
+    }
+    a(false, -1, null, paramBundle);
   }
 }
 

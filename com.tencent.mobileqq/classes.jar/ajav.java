@@ -1,35 +1,9 @@
-public abstract class ajav
-  extends bead
+public class ajav
+  extends ajax
 {
-  private bead a;
-  
-  public ajav(bead parambead)
+  public boolean a()
   {
-    this.a = parambead;
-  }
-  
-  public void onDoneFile(beae parambeae)
-  {
-    super.onDoneFile(parambeae);
-    if (this.a != null) {
-      this.a.onDoneFile(parambeae);
-    }
-  }
-  
-  public void onProgress(beae parambeae)
-  {
-    super.onProgress(parambeae);
-    if (this.a != null) {
-      this.a.onProgress(parambeae);
-    }
-  }
-  
-  public boolean onStart(beae parambeae)
-  {
-    if (this.a != null) {
-      this.a.onStart(parambeae);
-    }
-    return super.onStart(parambeae);
+    return true;
   }
 }
 

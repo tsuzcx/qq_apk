@@ -1,34 +1,11 @@
-import android.os.Bundle;
-import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
 class anrh
-  implements EIPCResultCallback
+  extends anqd
 {
-  anrh(anre paramanre, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
+  anrh(anrg paramanrg) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  protected void a(int paramInt1, int paramInt2)
   {
-    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.download url=", this.jdField_a_of_type_JavaLangString, ", ipc call back code=", Integer.valueOf(paramEIPCResult.code) });
-    int j = -1;
-    int i = j;
-    if (paramEIPCResult.code == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data;
-      i = j;
-      if (paramEIPCResult != null)
-      {
-        i = j;
-        if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
-          i = paramEIPCResult.getInt("code");
-        }
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
-      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(i);
-    }
+    this.a.a();
   }
 }
 

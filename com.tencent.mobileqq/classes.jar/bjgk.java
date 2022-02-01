@@ -1,31 +1,21 @@
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class bjgk
-  implements URLDrawable.URLDrawableListener
+  implements DialogInterface.OnClickListener
 {
-  public bjgk(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public bjgk(QidianProfileCardActivity paramQidianProfileCardActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "onLoadFialed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QzoneVerticalVideoDownloadActivity.access$100(this.a).setImageDrawable(paramURLDrawable);
+    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjgk
  * JD-Core Version:    0.7.0.1
  */

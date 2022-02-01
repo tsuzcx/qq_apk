@@ -2,36 +2,36 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.view.View;
-import apuc;
-import apzb;
+import arxd;
+import ascw;
 
 public class SystemAndEmojiEmoticonPanelWithActionBar
   extends SystemAndEmojiEmoticonPanel
 {
   protected View a;
-  public apuc a;
+  public arxd a;
   
-  public SystemAndEmojiEmoticonPanelWithActionBar(Context paramContext, apuc paramapuc)
+  public SystemAndEmojiEmoticonPanelWithActionBar(Context paramContext, arxd paramarxd)
   {
-    super(paramContext, paramapuc);
+    super(paramContext, paramarxd);
   }
   
   protected int a()
   {
-    return 2131559070;
+    return 2131559139;
   }
   
-  protected void a(Context paramContext, apuc paramapuc)
+  protected void a(Context paramContext, arxd paramarxd)
   {
-    super.a(paramContext, paramapuc);
-    this.jdField_a_of_type_Apuc = paramapuc;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376395);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new apzb(this));
+    super.a(paramContext, paramarxd);
+    this.jdField_a_of_type_Arxd = paramarxd;
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131377184);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ascw(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanelWithActionBar
  * JD-Core Version:    0.7.0.1
  */

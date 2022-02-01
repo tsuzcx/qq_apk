@@ -1,33 +1,53 @@
-import android.app.Dialog;
+import android.support.v4.view.PagerAdapter;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import com.tencent.mobileqq.hiboom.RichTextPanel;
+import com.tencent.mobileqq.hiboom.RichTextPanelView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class avac
-  implements View.OnClickListener
+  extends PagerAdapter
 {
-  public avac(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public avac(RichTextPanel paramRichTextPanel) {}
   
-  public void onClick(View paramView)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (!this.a.isFinishing()))
-    {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.a.jdField_a_of_type_AndroidAppDialog = null;
-      this.a.d(alud.a(2131707574));
-      if (this.a.jdField_a_of_type_Auxh == null) {
-        this.a.jdField_a_of_type_Auxh = ((auxh)this.a.app.a(60));
-      }
-      this.a.jdField_a_of_type_Auxh.a(NearbyPeopleProfileActivity.c, 5);
-      this.a.e("0X8005909");
+    paramViewGroup.removeView((View)paramObject);
+  }
+  
+  public int getCount()
+  {
+    return RichTextPanel.a(this.a).size();
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTextPanel", 2, "instantiateItem position = " + paramInt);
     }
+    ViewParent localViewParent = ((RichTextPanelView)RichTextPanel.a(this.a).get(paramInt)).getParent();
+    if (localViewParent != null) {
+      ((ViewGroup)localViewParent).removeView((View)RichTextPanel.a(this.a).get(paramInt));
+    }
+    paramViewGroup.addView((View)RichTextPanel.a(this.a).get(paramInt));
+    return RichTextPanel.a(this.a).get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avac
  * JD-Core Version:    0.7.0.1
  */

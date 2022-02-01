@@ -1,5 +1,6 @@
 package com.tencent.ttpic.trigger;
 
+import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.ttpic.model.FaceMeshItem;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
@@ -37,6 +38,7 @@ public class TriggerConfig
   public double[] hotArea;
   public int hotAreaEndFrame;
   public int hotAreaStartFrame;
+  private int isTriggerTypeInteger = 0;
   public int lockTriggerCountUntilFail;
   public int playCount;
   public int preTriggerType;
@@ -47,7 +49,7 @@ public class TriggerConfig
   public int triggerFrameDurationTime;
   public int triggerFrameStartTime;
   public int triggerHandPoint;
-  private String triggerType;
+  public String triggerType;
   private Pattern triggerWordsPattern;
   
   public TriggerConfig()
@@ -79,24 +81,20 @@ public class TriggerConfig
   public TriggerConfig(FaceStyleItem paramFaceStyleItem)
   {
     this.triggerType = paramFaceStyleItem.getTriggerTypeString();
+    this.alwaysTriggered = paramFaceStyleItem.alwaysTriggered;
+    this.playCount = paramFaceStyleItem.playCount;
   }
   
   public TriggerConfig(NodeItemJava paramNodeItemJava)
   {
     this.preTriggerType = paramNodeItemJava.getTriggerTypeInt();
-    if (paramNodeItemJava.alwaysTriggered == 1) {}
-    for (;;)
-    {
-      this.alwaysTriggered = bool;
-      this.triggerType = paramNodeItemJava.triggerType;
-      this.countTriggerType = paramNodeItemJava.countTriggerType;
-      this.activateTriggerCount = paramNodeItemJava.activateTriggerCount;
-      this.activateTriggerTotalCount = paramNodeItemJava.activateTriggerTotalCount;
-      this.playCount = paramNodeItemJava.playCount;
-      this.externalTriggerWords = paramNodeItemJava.externalTriggerWords;
-      return;
-      bool = false;
-    }
+    this.alwaysTriggered = paramNodeItemJava.alwaysTriggered;
+    this.triggerType = paramNodeItemJava.triggerType;
+    this.countTriggerType = paramNodeItemJava.countTriggerType;
+    this.activateTriggerCount = paramNodeItemJava.activateTriggerCount;
+    this.activateTriggerTotalCount = paramNodeItemJava.activateTriggerTotalCount;
+    this.playCount = paramNodeItemJava.playCount;
+    this.externalTriggerWords = paramNodeItemJava.externalTriggerWords;
   }
   
   public TriggerConfig(StickerItem paramStickerItem)
@@ -136,6 +134,23 @@ public class TriggerConfig
   {
     this.triggerType = String.valueOf(paramCosFunItem.getTriggerType());
     this.externalTriggerWords = paramCosFunItem.externalTriggerWords;
+  }
+  
+  private boolean doIntegerCheck(String paramString)
+  {
+    Pattern localPattern = Pattern.compile("^[-\\+]?[\\d]*$");
+    return (!TextUtils.isEmpty(paramString)) && (localPattern.matcher(paramString).matches());
+  }
+  
+  public static int getTriggerTypeInt(String paramString)
+  {
+    try
+    {
+      int i = Integer.parseInt(paramString);
+      return i;
+    }
+    catch (NumberFormatException paramString) {}
+    return PTFaceAttr.PTExpression.FACE_DETECT.value;
   }
   
   public int getBodyTriggerAngle()
@@ -208,6 +223,25 @@ public class TriggerConfig
     return this.triggerWordsPattern.matcher(paramString).find();
   }
   
+  public boolean isTypeInteger()
+  {
+    if (this.isTriggerTypeInteger == 0) {
+      if (!doIntegerCheck(this.triggerType)) {
+        break label35;
+      }
+    }
+    label35:
+    for (int i = 1;; i = 2)
+    {
+      this.isTriggerTypeInteger = i;
+      if (this.isTriggerTypeInteger != 1) {
+        break;
+      }
+      return true;
+    }
+    return false;
+  }
+  
   public void setRenderForBitmap(boolean paramBoolean)
   {
     this.renderForBitmap = paramBoolean;
@@ -223,7 +257,7 @@ public class TriggerConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.trigger.TriggerConfig
  * JD-Core Version:    0.7.0.1
  */

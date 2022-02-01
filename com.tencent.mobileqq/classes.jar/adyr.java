@@ -1,15 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adyr
-  implements CompoundButton.OnCheckedChangeListener
+class adyr
+  implements View.OnClickListener
 {
-  public adyr(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  adyr(adyo paramadyo) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    SoundAndVibrateActivity.a(this.a, paramBoolean);
+    this.a.a.onClick(this.a.a.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

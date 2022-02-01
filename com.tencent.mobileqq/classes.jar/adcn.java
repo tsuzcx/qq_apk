@@ -1,10 +1,36 @@
-public abstract interface adcn
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qapmsdk.battery.BatteryMonitor;
+import com.tencent.qapmsdk.battery.IBatteryListener;
+import com.tencent.qphone.base.util.QLog.ILogCallback;
+import mqq.util.IServiceCmdCallback;
+import org.jetbrains.annotations.NotNull;
+
+class adcn
+  implements IBatteryListener, QLog.ILogCallback, IServiceCmdCallback
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  @NotNull
+  public String getSosoClassName()
+  {
+    return SosoInterface.class.getPackage().getName();
+  }
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public void onCmdRequest(String paramString)
+  {
+    BatteryMonitor.getInstance().onCmdRequest(paramString);
+  }
   
-  public abstract void b(byte[] paramArrayOfByte);
+  public void onCmdResponse(String paramString) {}
+  
+  public void onPrintLog(@NotNull String paramString) {}
+  
+  public void onUsageAlarm(int paramInt1, int paramInt2, int paramInt3, @NotNull String paramString1, @NotNull String paramString2) {}
+  
+  public void onWriteLog(String paramString1, String paramString2)
+  {
+    BatteryMonitor.getInstance().onWriteLog(paramString1, paramString2);
+  }
+  
+  public void onWriteLog(String paramString, byte[] paramArrayOfByte) {}
 }
 
 

@@ -1,88 +1,170 @@
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.view.animation.LinearInterpolator;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class xdr
-  extends xiq
+public abstract class xdr
+  extends xcu
 {
-  public final RectF a;
-  public final Drawable a;
-  public final String d;
-  public final String e;
+  protected StoryVideoItem a;
+  protected int b;
+  protected int c;
+  protected String c;
+  protected int d;
+  protected String d;
+  protected int e;
+  protected String e;
+  protected String f;
+  protected String g;
+  protected String h;
+  protected String i;
+  protected String j;
+  protected String k;
+  protected String l;
   
-  public xdr(xdn paramxdn, @NonNull Drawable paramDrawable, @NonNull xdv paramxdv, String paramString1, String paramString2)
+  public xdr()
   {
-    super(paramxdv.jdField_a_of_type_AndroidGraphicsPointF, paramxdv.jdField_a_of_type_Float, paramxdv.jdField_b_of_type_Float, paramxdv.c, paramxdv.d, paramxdv.jdField_a_of_type_Int, paramxdv.jdField_b_of_type_Int, true);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_d_of_type_JavaLangString = paramString1;
-    this.e = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramDrawable.getBounds());
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = -1;
+    this.jdField_e_of_type_Int = 1;
   }
   
-  public void a(Canvas paramCanvas)
+  protected String a()
   {
-    float f2 = this.n;
-    float f1 = this.o;
-    if (f2 * this.j < 200.0F) {
-      f2 = 200.0F / this.j;
+    if (this.a.isPollVideo()) {
+      return this.jdField_c_of_type_JavaLangString + anni.a(2131715045);
     }
-    if (this.j * f1 < 200.0F) {
-      f1 = 200.0F / this.j;
+    if (this.a.isInteractVideo()) {
+      return this.jdField_c_of_type_JavaLangString + anni.a(2131715063);
     }
-    paramCanvas.save();
-    paramCanvas.concat(this.b.a.a(this));
-    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.restore();
-    if (this.jdField_d_of_type_Boolean) {
-      xin.a(paramCanvas, this.b.a, this, 0, 2130844229, 2130844236);
-    }
-  }
-  
-  public void a(Canvas paramCanvas, boolean paramBoolean)
-  {
-    float f2 = this.n;
-    float f1 = this.o;
-    if (f2 * this.j < 200.0F) {
-      f2 = 200.0F / this.j;
-    }
-    if (this.j * f1 < 200.0F) {
-      f1 = 200.0F / this.j;
-    }
-    paramCanvas.save();
-    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+    if (this.a.isGameVideo())
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F, 1.0F });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xds(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new xdt(this));
+      wqz localwqz = this.a.getVideoGameInfo();
+      if (localwqz.a == 2) {
+        return anni.a(2131715047) + localwqz.b + anni.a(2131715027);
+      }
+      if (this.b == 0) {
+        return anni.a(2131715028) + localwqz.b + localwqz.jdField_c_of_type_JavaLangString + anni.a(2131715062);
+      }
+      return this.a.mOwnerName + anni.a(2131715037) + localwqz.b + localwqz.jdField_c_of_type_JavaLangString + anni.a(2131715033);
     }
-    if (!this.c) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    return this.jdField_c_of_type_JavaLangString + anni.a(2131715043) + wes.a;
+  }
+  
+  public final void a(xdy paramxdy)
+  {
+    super.a(paramxdy);
+    paramxdy.a = a(6);
+    a(paramxdy);
+  }
+  
+  protected void a(xdz paramxdz) {}
+  
+  public final void a(xea paramxea)
+  {
+    super.a(paramxea);
+    paramxea.b = 0;
+    paramxea.jdField_d_of_type_JavaLangString = this.k;
+    paramxea.a = this.a.mVideoThumbnailUrl;
+    paramxea.jdField_e_of_type_JavaLangString = this.a.mVid;
+    paramxea.j = this.l;
+    paramxea.h = a(1);
+    if (this.jdField_c_of_type_Int != -1) {
+      paramxea.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
+    }
+    if (this.jdField_d_of_type_Int != -1) {
+      paramxea.jdField_e_of_type_Int = this.jdField_d_of_type_Int;
+    }
+    a(paramxea);
+  }
+  
+  public final void a(xeb paramxeb)
+  {
+    super.a(paramxeb);
+    paramxeb.a = this.a.mVideoThumbnailUrl;
+    paramxeb.jdField_c_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    paramxeb.jdField_d_of_type_JavaLangString = this.i;
+    paramxeb.jdField_e_of_type_JavaLangString = a(2);
+    a(paramxeb);
+  }
+  
+  public final void a(xec paramxec)
+  {
+    super.a(paramxec);
+    paramxec.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
+    paramxec.jdField_d_of_type_JavaLangString = this.a.mVideoLocalThumbnailPath;
+    if (TextUtils.isEmpty(paramxec.jdField_d_of_type_JavaLangString)) {
+      paramxec.jdField_d_of_type_JavaLangString = xek.a(paramxec.jdField_e_of_type_JavaLangString);
+    }
+    paramxec.jdField_c_of_type_JavaLangString = a(5);
+    paramxec.a = this.j;
+    a(paramxec);
+  }
+  
+  public void a(xed paramxed)
+  {
+    super.a(paramxed);
+    paramxed.jdField_c_of_type_JavaLangString = this.i;
+    paramxed.a = this.jdField_d_of_type_JavaLangString;
+    paramxed.jdField_d_of_type_JavaLangString = a(3);
+    paramxed.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
+    paramxed.jdField_c_of_type_Boolean = true;
+    a(paramxed);
+  }
+  
+  protected void a_(xdz paramxdz)
+  {
+    yqp.b("VideoShareModeBase", "prepareCommonShareData");
+    super.a_(paramxdz);
+    if (this.a.isPollVideo()) {
+      paramxdz.a("vote", "1");
+    }
+    for (;;)
+    {
+      paramxdz.a = this.a;
+      return;
+      if (this.a.isInteractVideo()) {
+        paramxdz.a("grade", "1");
+      }
     }
   }
   
-  public void c()
+  protected String b()
   {
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.c)) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    Object localObject1 = this.a.getPollLayout();
+    Object localObject2 = this.a.getInteractLayout();
+    if ((localObject1 != null) && (((wqw)localObject1).a != null) && (((wqw)localObject1).a.length > 0))
+    {
+      localObject2 = new SimpleDateFormat("M月d日").format(Long.valueOf(new Date().getTime()));
+      return (String)localObject2 + " · " + localObject1.a[0];
     }
+    if ((localObject2 != null) && (((wqv)localObject2).a != null) && (((wqv)localObject2).a.length > 0))
+    {
+      localObject1 = new SimpleDateFormat("M月d日").format(Long.valueOf(new Date().getTime()));
+      return (String)localObject1 + " · " + localObject2.a[0];
+    }
+    localObject2 = new SimpleDateFormat("M月d日").format(Long.valueOf(new Date().getTime()));
+    if (TextUtils.isEmpty(this.g)) {}
+    for (localObject1 = "1个小视频";; localObject1 = this.g) {
+      return (String)localObject2 + " · " + (String)localObject1;
+    }
+  }
+  
+  public void b(xed paramxed)
+  {
+    super.b(paramxed);
+    paramxed.jdField_c_of_type_JavaLangString = this.i;
+    paramxed.a = this.jdField_d_of_type_JavaLangString;
+    paramxed.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
+    paramxed.jdField_d_of_type_JavaLangString = a(4);
+    paramxed.jdField_c_of_type_Boolean = true;
+    a(paramxed);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xdr
  * JD-Core Version:    0.7.0.1
  */

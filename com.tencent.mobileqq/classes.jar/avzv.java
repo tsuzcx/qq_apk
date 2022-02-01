@@ -1,75 +1,40 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class avzv
-  extends ScaleGestureDetector
+class avzv
+  extends anxg
 {
-  private float a;
-  private float b;
+  avzv(avzs paramavzs) {}
   
-  public avzv(Context paramContext, ScaleGestureDetector.OnScaleGestureListener paramOnScaleGestureListener)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    super(paramContext, paramOnScaleGestureListener);
-    a();
+    super.a(paramInt1, paramInt2, paramString);
+    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0)) {
+      avzs.a(avzs.a(this.a), 1, paramString);
+    }
   }
   
-  private void a()
+  protected void b(String paramString, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-    onTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-  }
-  
-  @TargetApi(19)
-  private boolean a()
-  {
-    return (Build.VERSION.SDK_INT >= 19) && (isQuickScaleEnabled()) && (getCurrentSpan() == getCurrentSpanY());
-  }
-  
-  public float getScaleFactor()
-  {
-    float f2 = 1.0F;
-    float f3 = super.getScaleFactor();
-    if (a())
+    super.b(paramString, paramInt);
+    if ((avzs.a(this.a).a() == 1) && (avzs.a(this.a).a().equals(paramString)))
     {
-      float f1;
-      if ((this.a <= this.b) || (f3 <= 1.0F))
-      {
-        f1 = f2;
-        if (this.a < this.b)
-        {
-          f1 = f2;
-          if (f3 >= 1.0F) {}
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareController", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
       }
-      else
+      if (avzs.a(this.a) != null)
       {
-        f1 = Math.max(0.8F, Math.min(f3, 1.25F));
+        avzs.a(this.a).finish();
+        QQToast.a(avzs.a(this.a), 2131692847, 1).a();
       }
-      return f1;
+      avzs.a(avzs.a(this.a), 1, paramString);
     }
-    return f3;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    boolean bool = super.onTouchEvent(paramMotionEvent);
-    this.b = this.a;
-    this.a = paramMotionEvent.getY();
-    if (paramMotionEvent.getActionMasked() == 0) {
-      this.b = paramMotionEvent.getY();
-    }
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avzv
  * JD-Core Version:    0.7.0.1
  */

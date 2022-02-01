@@ -1,17 +1,30 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class aftn
-  extends afuf
+public class aftn
+  extends RecyclerView.ItemDecoration
 {
-  aftn(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  private aftn(ReminderListFragment paramReminderListFragment) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    return new afjg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    paramRect.left = afur.a(16.0F, this.a.getResources());
+    paramRect.right = afur.a(16.0F, this.a.getResources());
+    int i = paramRecyclerView.getChildAdapterPosition(paramView);
+    int j = ReminderListFragment.a(this.a).getItemCount();
+    if (QLog.isColorLevel()) {
+      QLog.i(ReminderListFragment.a(), 2, "position: " + i + ", totalCnt: " + j);
+    }
+    paramRect.top = afur.a(12.0F, this.a.getResources());
+    if (i == j - 1) {
+      paramRect.bottom = afur.a(12.0F, this.a.getResources());
+    }
   }
 }
 

@@ -1,71 +1,41 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class ooy
-  extends ViewBase
+  implements qft
 {
-  private ReadInJoyCommentLikeView a;
-  
-  public ooy(VafContext paramVafContext)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    super(paramVafContext);
-    this.a = new ReadInJoyCommentLikeView(paramVafContext.getContext());
+    return null;
   }
   
-  public void a(opg paramopg)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    this.a.setOnLikeListener(paramopg);
+    return qbr.a(paramBaseArticleInfo);
   }
   
-  public int getComMeasuredHeight()
+  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
   {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.a.setVisibility(0);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
+    if (parampxk.a() == null) {}
+    do
     {
-    default: 
-      return super.setAttribute(paramInt, paramObject);
-    }
-    if (((paramObject instanceof omt)) && (((omt)paramObject).a != null)) {
-      this.a.a(((omt)paramObject).a);
-    }
-    return true;
+      return;
+      paramContainer = (qly)paramContainer.getVirtualView().findViewBaseByName("id_small_game_proteus_collection_view");
+    } while (paramContainer == null);
+    paramContainer.a(parampxk);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ooy
  * JD-Core Version:    0.7.0.1
  */

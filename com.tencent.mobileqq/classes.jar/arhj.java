@@ -1,7 +1,4 @@
-public abstract interface arhj
-{
-  public abstract void a(int paramInt1, int paramInt2);
-}
+public class arhj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

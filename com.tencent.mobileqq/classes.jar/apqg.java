@@ -1,30 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class apqg
-  extends altm
+class apqg
+  implements DialogInterface.OnDismissListener
 {
-  public apqg(MessengerService paramMessengerService) {}
+  apqg(apqf paramapqf, bkho parambkho) {}
   
-  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.b != null)
-    {
-      this.a.b.putString("cmd", "ipc_signature_setlike");
-      paramObject = new Bundle();
-      if (!paramBoolean) {
-        break label81;
-      }
-    }
-    label81:
-    for (int i = 0;; i = 101)
-    {
-      paramObject.putInt("result", i);
-      this.a.b.putBundle("response", paramObject);
-      this.a.a(this.a.b);
-      this.a.b = null;
-      return;
-    }
+    this.jdField_a_of_type_Bkho.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
   }
 }
 

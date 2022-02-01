@@ -1,17 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.MessageForFile;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afly
-  implements arrh
+public class afly
+  implements View.OnClickListener
 {
-  afly(aflw paramaflw, MessageForFile paramMessageForFile, Context paramContext) {}
+  public afly(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    arrr.a(this.jdField_a_of_type_Aflw.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void b() {}
 }
 
 

@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.studyroom.pluginimpl;
 
+import aanz;
 import android.content.Context;
 import android.os.Bundle;
-import ateg;
-import babr;
-import babs;
+import avkt;
+import bdcv;
+import bdcw;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqinterface.CommonCallback;
 import com.tencent.qqinterface.DownloadCallback;
@@ -13,19 +14,18 @@ import com.tencent.qqinterface.QQConfigAbilityInterface;
 import com.tencent.qqinterface.QQConfigAbilityInterface.Callback;
 import java.util.concurrent.Future;
 import org.json.JSONObject;
-import yqz;
 
 public class QQBaseAbilityInterfaceImpl
   implements QQBaseAbilityInterface, QQConfigAbilityInterface
 {
   private static final String TAG = "studyroom.QQBaseAbilityInterface";
-  private final ateg impl = ateg.a();
-  private final yqz mClient;
+  private final avkt impl = avkt.a();
+  private final aanz mClient;
   
   public QQBaseAbilityInterfaceImpl()
   {
     QLog.d("studyroom.QQBaseAbilityInterface", 4, "init");
-    this.mClient = yqz.a();
+    this.mClient = aanz.a();
     this.mClient.a();
   }
   
@@ -51,9 +51,9 @@ public class QQBaseAbilityInterfaceImpl
   
   public JSONObject getConfigFromQQ()
   {
-    babr localbabr = babs.a();
-    if (localbabr != null) {
-      return localbabr.a;
+    bdcv localbdcv = bdcw.a();
+    if (localbdcv != null) {
+      return localbdcv.a;
     }
     return new JSONObject();
   }
@@ -102,7 +102,7 @@ public class QQBaseAbilityInterfaceImpl
     if (paramCallback != null) {
       paramCallback.onResult(getConfigFromQQ());
     }
-    babs.b();
+    bdcw.a();
   }
   
   public void sendSSOTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback) {}
@@ -116,7 +116,7 @@ public class QQBaseAbilityInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.pluginimpl.QQBaseAbilityInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

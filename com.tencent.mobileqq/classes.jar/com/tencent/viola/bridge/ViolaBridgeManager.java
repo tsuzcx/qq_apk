@@ -40,7 +40,7 @@ public class ViolaBridgeManager
   private static final Object mLock = new Object();
   static volatile ViolaBridgeManager mViolaBridgeManager;
   private ViolaBridge mBridge = new ViolaBridge();
-  private boolean mInit = false;
+  private volatile boolean mInit = false;
   Handler mJSHandler = this.mJSThread.getHandler();
   private ViolaThread mJSThread = new ViolaThread("ViolaJSBridgeThread", this);
   StringBuilder mLogBuilder = new StringBuilder(50);
@@ -130,8 +130,8 @@ public class ViolaBridgeManager
         if (1 == this.mBridge.initJsFramework(paramString1.getBytes(), paramString1.getBytes().length, paramString2))
         {
           ViolaSDKEngine.registerBase();
-          paramInitCallback.onFinish(0, System.currentTimeMillis() - l, "");
           setJSFrameworkInit(true);
+          paramInitCallback.onFinish(0, System.currentTimeMillis() - l, "");
         }
       }
     }
@@ -355,9 +355,12 @@ public class ViolaBridgeManager
   
   public void createInstanceBySource(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (isJSFrameworkInit()) {
+    if (isJSFrameworkInit())
+    {
       createInstanceImpl(paramString1, paramString2, paramString4, paramString3);
+      return;
     }
+    ViolaLogUtils.e(TAG, "violaInstance createInstance init false!");
   }
   
   public String createParamForCallJS(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
@@ -588,7 +591,7 @@ public class ViolaBridgeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.bridge.ViolaBridgeManager
  * JD-Core Version:    0.7.0.1
  */

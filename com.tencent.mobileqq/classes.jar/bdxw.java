@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 
-public class bdxw
-  implements TVK_IMediaPlayer.OnCompletionListener
+class bdxw
+  implements ankk
 {
-  public bdxw(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  bdxw(bdxv parambdxv) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "Completion video000");
-    }
-    paramTVK_IMediaPlayer.seekTo(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "Completion video");
+    if (paramBoolean)
+    {
+      String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name());
+      this.a.a(str);
     }
   }
 }

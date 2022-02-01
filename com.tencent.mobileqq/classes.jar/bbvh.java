@@ -1,8 +1,8 @@
+import android.view.View;
+
 public abstract interface bbvh
 {
-  public abstract long b();
-  
-  public abstract void b(String paramString);
+  public abstract View a();
 }
 
 

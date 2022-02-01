@@ -1,75 +1,25 @@
-import android.os.IInterface;
-import android.telephony.SubscriptionInfo;
-import java.util.List;
+import android.text.style.CharacterStyle;
 
-public abstract interface w
-  extends IInterface
+class w
 {
-  public abstract int a();
+  char jdField_a_of_type_Char;
+  int jdField_a_of_type_Int;
+  CharacterStyle jdField_a_of_type_AndroidTextStyleCharacterStyle;
+  boolean jdField_a_of_type_Boolean;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
   
-  public abstract int a(int paramInt);
-  
-  public abstract int a(int paramInt1, int paramInt2);
-  
-  public abstract int a(String paramString);
-  
-  public abstract int a(String paramString, int paramInt);
-  
-  public abstract int a(String paramString, int paramInt, long paramLong);
-  
-  public abstract SubscriptionInfo a(int paramInt, String paramString);
-  
-  public abstract SubscriptionInfo a(String paramString1, String paramString2);
-  
-  public abstract String a(int paramInt, String paramString1, String paramString2);
-  
-  public abstract List<SubscriptionInfo> a(String paramString);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, String paramString1, String paramString2);
-  
-  public abstract boolean a(int paramInt);
-  
-  public abstract int[] a();
-  
-  public abstract int[] a(int paramInt);
-  
-  public abstract int b();
-  
-  public abstract int b(int paramInt);
-  
-  public abstract int b(int paramInt1, int paramInt2);
-  
-  public abstract int b(String paramString);
-  
-  public abstract int b(String paramString, int paramInt);
-  
-  public abstract SubscriptionInfo b(int paramInt, String paramString);
-  
-  public abstract List<SubscriptionInfo> b(String paramString);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract int c();
-  
-  public abstract int c(int paramInt);
-  
-  public abstract int c(String paramString, int paramInt);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract int d();
-  
-  public abstract int e();
-  
-  public abstract int f();
+  public String toString()
+  {
+    return "FounderColorModel{type=" + this.jdField_a_of_type_Int + ", charAt=" + this.jdField_a_of_type_Char + ", width=" + this.b + ", height=" + this.c + ", left=" + this.d + ", top=" + this.e + ", lineIndex=" + this.f + ", isMissingWord=" + this.jdField_a_of_type_Boolean + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     w
  * JD-Core Version:    0.7.0.1
  */

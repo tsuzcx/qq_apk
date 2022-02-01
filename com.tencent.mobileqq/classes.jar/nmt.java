@@ -1,35 +1,92 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nmt
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  extends WebViewPlugin
 {
-  public nmt(VideoCoverView paramVideoCoverView) {}
+  protected Activity a;
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public nmt()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "is prepare");
+    this.mPluginNameSpace = "eqq";
+  }
+  
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
-    if (VideoCoverView.a(this.a) == 1) {
-      com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.jdField_a_of_type_Long = System.currentTimeMillis();
-    }
-    azqs.a(null, "dc00898", "", VideoCoverView.a(this.a).a.jdField_a_of_type_JavaLangString, "0X8008F64", "0X8008F64", 0, 0, VideoCoverView.a(this.a).a.c, "", this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a).a.b);
-    nly.a().b(this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a));
-    this.a.jdField_a_of_type_Long = VideoCoverView.a(this.a).getDuration();
-    if ((this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4))
+    try
     {
-      VideoCoverView.a(this.a).start();
-      this.a.jdField_a_of_type_Int = 4;
-      this.a.g();
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).getString("uin");
+      localObject = ((JSONObject)localObject).getString("name");
+      Intent localIntent = afur.a(new Intent(this.a, ChatActivity.class), null);
+      localIntent.putExtra("uin", paramString);
+      localIntent.putExtra("uintype", 1024);
+      localIntent.putExtra("uinname", (String)localObject);
+      localIntent.putExtra("entrance", 0);
+      localIntent.putExtra("aio_msg_source", 999);
+      this.a.startActivity(localIntent);
+      return;
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      try
+      {
+        paramString = new JSONObject(paramString).getString("uin");
+        nmp.a(this.a, null, paramString, false, -1, true, -1);
+        return;
+      }
+      catch (JSONException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("EqqWebviewPlugin", 2, "showEqq json error!");
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"eqq".equals(paramString2)) {}
+    do
+    {
+      return false;
+      if ("showEQQ".equals(paramString3))
+      {
+        if (paramVarArgs.length > 0) {
+          a(paramVarArgs[0]);
+        }
+        return true;
+      }
+    } while ((!"showEQQAio".equals(paramString3)) || (paramVarArgs.length != 1));
+    b(paramVarArgs[0]);
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.a = this.mRuntime.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nmt
  * JD-Core Version:    0.7.0.1
  */

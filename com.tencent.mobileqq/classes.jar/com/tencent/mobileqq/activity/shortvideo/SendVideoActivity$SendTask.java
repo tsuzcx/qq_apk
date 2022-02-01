@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity.shortvideo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import azib;
-import baxl;
-import bdhb;
+import bcjb;
+import bdyq;
+import bgmg;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -35,19 +35,19 @@ class SendVideoActivity$SendTask
       QLog.d("SendVideoActivity", 2, "#SendTask# run(): start");
     }
     SendVideoActivity.a(this.jdField_a_of_type_AndroidContentIntent);
-    azib.z = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
-    azib.y = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
+    bcjb.z = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
+    bcjb.y = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
     long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("ab_test_send_btn_click_time", 0L);
     long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("ab_test_generate_thumb_cost_time", 0L);
-    if (baxl.a())
+    if (bdyq.a())
     {
-      baxl.b = l1;
-      baxl.c = azib.y;
-      baxl.d = l2;
+      bdyq.a = l1;
+      bdyq.b = bcjb.y;
+      bdyq.c = l2;
     }
-    baxi.b = l1;
+    bdyo.b = l1;
     String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_send_path");
-    if (bdhb.b(str))
+    if (bgmg.b(str))
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       localObject = URLDrawable.getDrawable(new File(str), (URLDrawable.URLDrawableOptions)localObject);
@@ -76,7 +76,7 @@ class SendVideoActivity$SendTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendTask
  * JD-Core Version:    0.7.0.1
  */

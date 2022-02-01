@@ -1,67 +1,87 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.ApngImage;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.util.WeakReference;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
 
-class blxi
-  implements baug
+public class blxi
+  extends bdsh
 {
-  blxi(blxh paramblxh) {}
-  
-  public void onResp(bavf arg1)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    blxg localblxg = (blxg)???.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "onResp, url is: " + localblxg.jdField_a_of_type_JavaLangString + " http status: " + ???.c);
+    if (paramDownloadParams == null) {
+      return null;
     }
-    blxh.a(this.a, localblxg);
-    if ((blxh.a(this.a).b(localblxg)) && (blxh.a(this.a).a(localblxg))) {}
-    for (boolean bool = true;; bool = false) {
-      for (;;)
+    String str = paramDownloadParams.url.getHost();
+    paramOutputStream = new File(str);
+    if (paramOutputStream.exists()) {}
+    for (;;)
+    {
+      return paramOutputStream;
+      paramURLDrawableHandler = paramDownloadParams.url.getFile();
+      if (TextUtils.isEmpty(paramURLDrawableHandler))
       {
-        int i;
-        synchronized (blxh.a(this.a))
-        {
-          ArrayList localArrayList = (ArrayList)blxh.a(this.a).remove(localblxg.jdField_a_of_type_JavaLangString);
-          i = localArrayList.size() - 1;
-          if (i >= 0)
-          {
-            WeakReference localWeakReference = (WeakReference)localArrayList.get(i);
-            if (localWeakReference.get() != null) {
-              ((blxj)localWeakReference.get()).a(bool, localblxg.jdField_a_of_type_JavaLangString);
-            }
-          }
-          else
-          {
-            return;
-          }
+        QLog.e("qzonecontentboxdownloader", 2, "downloadImage url err, url=" + paramURLDrawableHandler + ", path=" + str);
+        return null;
+      }
+      paramDownloadParams = paramURLDrawableHandler;
+      if (paramURLDrawableHandler.startsWith(File.separator)) {
+        paramDownloadParams = paramURLDrawableHandler.substring(1);
+      }
+      if (!paramDownloadParams.startsWith("http"))
+      {
+        if (!QLog.isColorLevel()) {
+          break;
         }
-        i -= 1;
+        QLog.e("qzonecontentboxdownloader", 2, "downloadImage url has no http err, url=" + paramDownloadParams + ", path=" + str);
+        return null;
+      }
+      int i = bhhh.a(new bhhf(paramDownloadParams, paramOutputStream), BaseApplicationImpl.sApplication.getRuntime());
+      if (i == 0)
+      {
+        if (!paramOutputStream.exists())
+        {
+          QLog.e("qzonecontentboxdownloader", 1, "downloadImage file not exists, url=" + paramDownloadParams + ", path=" + str + ", ret:" + i);
+          paramOutputStream = null;
+        }
+      }
+      else
+      {
+        QLog.e("qzonecontentboxdownloader", 1, "downloadImage Error url=" + paramDownloadParams + ", path=" + str + ", ret:" + i);
+        paramOutputStream = null;
       }
     }
   }
   
-  public void onUpdateProgeress(bave arg1, long paramLong1, long paramLong2)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    blxg localblxg = (blxg)???.a();
-    synchronized (blxh.a(this.a))
+    Object localObject = null;
+    paramURLDrawableHandler = null;
+    if ((paramFile != null) && (paramFile.exists()) && (paramDownloadParams != null) && (paramDownloadParams.useApngImage) && (ApngDrawable.isApngFile(paramFile)))
     {
-      Iterator localIterator = ((ArrayList)blxh.a(this.a).get(localblxg.jdField_a_of_type_JavaLangString)).iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference.get() != null) {
-          ((blxj)localWeakReference.get()).a((float)(100L * paramLong1 / paramLong2), localblxg.jdField_a_of_type_JavaLangString, localblxg.jdField_a_of_type_Int);
-        }
+      if ((paramDownloadParams.mExtraInfo instanceof Bundle)) {
+        paramURLDrawableHandler = (Bundle)paramDownloadParams.mExtraInfo;
       }
+      paramDownloadParams = new ApngImage(paramFile, true, paramURLDrawableHandler);
+      if (paramDownloadParams.firstFrame == null) {
+        ChatBackgroundManager.a(paramFile.getAbsolutePath());
+      }
+      paramFile = paramDownloadParams;
     }
-    float f = (float)paramLong1 * 100.0F / (float)paramLong2;
-    localObject.b = ((int)f);
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "onResDownloadProgressUpdate url: " + localObject.jdField_a_of_type_JavaLangString + " progress: " + f + " curOffset: " + paramLong1 + " totalLen: " + paramLong2);
-    }
+    do
+    {
+      return paramFile;
+      paramFile = localObject;
+    } while (paramDownloadParams == null);
+    paramDownloadParams.useApngImage = false;
+    return null;
   }
 }
 

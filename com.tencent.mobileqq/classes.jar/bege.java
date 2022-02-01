@@ -1,24 +1,28 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.ui.WebViewTopTabView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class bege
-  implements RadioGroup.OnCheckedChangeListener
+public class bege
+  extends aopa
 {
-  bege(begd parambegd) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public bege(AbsPublishActivity paramAbsPublishActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, BaseActivity paramBaseActivity, bfpo parambfpo)
   {
-    paramInt = this.a.a(paramRadioGroup);
-    if (((QQBrowserActivity)this.a.a.a).b != paramInt)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "onLocationFinish() errCode=" + paramInt);
+    }
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      paramRadioGroup = QQBrowserActivity.a(paramInt, (QQBrowserActivity)this.a.a.a);
-      ((QQBrowserActivity)this.a.a.a).b = paramInt;
-      if ((paramRadioGroup.a != null) && (paramRadioGroup.a.a != null)) {
-        paramRadioGroup.a.a.setSelectedTab(paramInt);
-      }
+      double d1 = paramSosoLbsInfo.a.a;
+      double d2 = paramSosoLbsInfo.a.b;
+      TroopBarPublishLocationSelectActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.jdField_a_of_type_Bfpo);
     }
   }
 }

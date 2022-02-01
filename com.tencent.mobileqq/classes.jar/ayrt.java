@@ -1,42 +1,50 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.lbssearch.httpresponse.BaseObject;
+import com.tencent.lbssearch.httpresponse.Poi;
+import com.tencent.lbssearch.object.result.Geo2AddressResultObject;
+import com.tencent.lbssearch.object.result.Geo2AddressResultObject.ReverseAddressResult;
+import com.tencent.map.tools.net.http.HttpResponseListener;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import java.util.List;
 
-class ayrt
-  implements View.OnClickListener
+public class ayrt
+  implements HttpResponseListener<BaseObject>
 {
-  ayrt(ayro paramayro, ayon paramayon, Context paramContext) {}
+  private final ayry jdField_a_of_type_Ayry;
+  private final LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
   
-  public void onClick(View paramView)
+  public ayrt(ayrs paramayrs, LatLng paramLatLng, ayry paramayry)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Ayon.m))
-    {
-      paramView = ayvj.a(this.jdField_a_of_type_Ayon.a(), 0, aysc.a(this.jdField_a_of_type_Ayon.c));
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      paramView = new StringBuilder();
-      int i = 0;
-      if (i < this.jdField_a_of_type_Ayon.a.size())
-      {
-        if (i != this.jdField_a_of_type_Ayon.a.size() - 1) {
-          paramView.append(((ayoa)this.jdField_a_of_type_Ayon.a.get(i)).b).append("::");
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          paramView.append(((ayoa)this.jdField_a_of_type_Ayon.a.get(i)).b);
-        }
-      }
-      aysc.a(null, new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_Ayon.g).ver2(aysc.a(UniteSearchActivity.d)).ver4(paramView.toString()).ver5("1").ver6("2").ver7("{experiment_id:" + aysc.b + "}"));
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    this.jdField_a_of_type_Ayry = paramayry;
+  }
+  
+  public void a(int paramInt, BaseObject paramBaseObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ayrp.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Ayrs.b + "] netGet onSuccess. resultCode : " + paramInt + " result : " + paramBaseObject);
     }
+    if ((paramBaseObject instanceof Geo2AddressResultObject))
+    {
+      paramBaseObject = (Geo2AddressResultObject)paramBaseObject;
+      if ((paramBaseObject.result != null) && (paramBaseObject.result.pois != null) && (paramBaseObject.result.pois.size() > 0))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(ayrp.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Ayrs.b + "]  netGet invoked success. latLng : " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " poi_size : " + paramBaseObject.result.pois.size());
+        }
+        Poi[] arrayOfPoi = new Poi[paramBaseObject.result.pois.size()];
+        paramBaseObject = new PoiBean(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, paramBaseObject.result.ad_info, (Poi[])paramBaseObject.result.pois.toArray(arrayOfPoi));
+        this.jdField_a_of_type_Ayrs.a("netGet", paramBaseObject);
+        this.jdField_a_of_type_Ayry.a(paramBaseObject);
+      }
+    }
+  }
+  
+  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
+  {
+    QLog.e(ayrp.a, 1, paramThrowable, new Object[] { "[status][poiLoader][" + this.jdField_a_of_type_Ayrs.b + "] netGet invoked fail. latLng : " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " errorCode : " + paramInt + " errorMsg : " + paramString });
+    this.jdField_a_of_type_Ayry.a(null);
   }
 }
 

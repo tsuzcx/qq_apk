@@ -1,29 +1,13 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.FriendListHandler;
-import mqq.os.MqqHandler;
-
-public class alti
-  extends MqqHandler
+class alti
+  implements bkiz
 {
-  public alti(FriendListHandler paramFriendListHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  alti(alth paramalth) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    FriendListHandler.a(this.a);
-  }
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alti
  * JD-Core Version:    0.7.0.1
  */

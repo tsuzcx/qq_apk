@@ -1,69 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicJumpActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.open.agent.OpenCardContainer;
 
 public class bimy
-  extends BroadcastReceiver
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public bimy(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
   
-  public bimy(VipComicJumpActivity paramVipComicJumpActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("pluginsdk_pluginLocation");
-    paramContext = paramIntent.getStringExtra("pluginsdk_launchReceiver");
-    String str = paramIntent.getAction();
-    if (((!TextUtils.isEmpty(str)) && ("com.tencent.mobileqq.PreLoadComicProcess".equals(str))) || ((paramContext != null) && (paramContext.equals("com.qqcomic.app.VipPreloadComicProcess")))) {
-      if (!this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQComicDebug", 2, "do handle launch activity in receiver.");
-        }
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bhtd.removeMessages(1000);
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b = true;
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.c = false;
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.c(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bimw);
-      }
-    }
-    while ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("comic_plugin.apk")))
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QQComicDebug", 2, "skip handle launch activity in receiver.");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VipComicJumpActivity", 2, "LaunchCompletedObserver.onReceive: " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.b = paramIntent.getStringExtra("pluginsdk_extraInfo");
-    if ((this.b != null) && ("success".equals(this.b))) {
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bimw, 0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.finish();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQComicDebug", 2, "launch activity finish, leave jump activity.");
-      return;
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bimw, -2);
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicJumpActivity", 2, "LaunchCompletedObserver.onReceive mExtraInfo: " + this.b);
-      }
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bimy
  * JD-Core Version:    0.7.0.1
  */

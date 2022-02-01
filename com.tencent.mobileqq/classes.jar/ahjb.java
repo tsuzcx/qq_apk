@@ -1,38 +1,26 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class ahjb
-  implements ahvi
+  implements Animator.AnimatorListener
 {
-  public ahjb(TroopView paramTroopView) {}
+  public ahjb(SixCombolEffectView paramSixCombolEffectView, ahje paramahje) {}
   
-  public void a(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onRepeatClick. position:" + paramInt);
+    if (!SixCombolEffectView.a) {
+      return;
     }
-    if (paramInt != -1)
-    {
-      TroopView.a(this.a).setCurrentPosition(-1, false);
-      int i = TroopView.a(this.a).getCurrentItem();
-      if (QLog.isColorLevel()) {
-        QLog.i("addContacts.TroopView", 2, "onCurrentTabClick. position:" + paramInt + " currentClassifyPos:" + i);
-      }
-      Object localObject = TroopView.a(this.a).a(i, false);
-      if (localObject != null)
-      {
-        localObject = (AddContactViewPagerTroopFragment)localObject;
-        ahfc localahfc = (ahfc)this.a.a.get(i);
-        localahfc.b = -1;
-        ((AddContactViewPagerTroopFragment)localObject).a(localahfc.d, "");
-      }
-    }
+    this.jdField_a_of_type_Ahje.b.start();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,164 +1,259 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PrecoverConfig;
+import com.tencent.mobileqq.data.PrecoverResource;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class azch
-  extends MSFServlet
 {
-  private byte[] a()
+  private azcg a;
+  
+  public azch(azcg paramazcg)
   {
-    Object localObject = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(1231);
-    ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(1);
-    localObject = ((oidb_sso.OIDBSSOPkg)localObject).toByteArray();
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(localObject.length + 4);
-    localByteBuffer.putInt(localObject.length + 4);
-    localByteBuffer.put((byte[])localObject);
-    return localByteBuffer.array();
+    this.a = paramazcg;
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void a()
   {
-    boolean bool1 = paramFromServiceMsg.isSuccess();
     if (QLog.isColorLevel()) {
-      QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive() is called, isSuccess is:" + bool1);
+      QLog.d("PrecoverReporter", 2, "reportResourceCover");
     }
-    Bundle localBundle = new Bundle();
-    Object localObject1;
-    if (bool1) {
-      localObject1 = new ArrayList();
+    if (this.a == null) {}
+    Object localObject3;
+    do
+    {
+      return;
+      localObject3 = this.a.a();
+    } while ((localObject3 == null) || (((HashMap)localObject3).size() == 0));
+    Object localObject2 = new HashSet();
+    Object localObject4 = (String[])((HashMap)localObject3).keySet().toArray(new String[((HashMap)localObject3).keySet().size()]);
+    int i = 0;
+    Object localObject5;
+    label120:
+    Object localObject6;
+    boolean bool1;
+    if (i < localObject4.length)
+    {
+      localObject1 = localObject4[i];
+      localObject5 = (List)((HashMap)localObject3).get(localObject1);
+      if (localObject5 == null) {
+        ((HashSet)localObject2).add(localObject1);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localObject5 = ((List)localObject5).iterator();
+        if (((Iterator)localObject5).hasNext())
+        {
+          localObject6 = (PrecoverResource)((Iterator)localObject5).next();
+          bool1 = azcm.a(((PrecoverResource)localObject6).businessId, ((PrecoverResource)localObject6).md5);
+          if (QLog.isColorLevel()) {
+            QLog.d("PrecoverReporter", 2, new Object[] { "reportResourceCover: exist=", Boolean.valueOf(bool1), ", res=", localObject6 });
+          }
+          if (bool1) {
+            break label120;
+          }
+          ((HashSet)localObject2).add(localObject1);
+        }
+      }
     }
-    label539:
-    label689:
-    label694:
+    int j;
+    if (((HashSet)localObject2).size() == 0)
+    {
+      bool1 = true;
+      j = azcm.a(this.a.a().getApp(), this.a.a().getCurrentAccountUin());
+      localObject5 = new HashMap();
+      ((HashMap)localObject5).put("config_version", String.valueOf(j));
+      if (!bool1) {
+        break label372;
+      }
+      localObject1 = "1";
+      label289:
+      ((HashMap)localObject5).put("id_all", localObject1);
+      i = 0;
+      label301:
+      if (i >= localObject4.length) {
+        break label386;
+      }
+      localObject1 = localObject4[i];
+      localObject6 = "id_" + (String)localObject1;
+      if (!((HashSet)localObject2).contains(localObject1)) {
+        break label379;
+      }
+    }
+    label372:
+    label379:
+    for (Object localObject1 = "0";; localObject1 = "1")
+    {
+      ((HashMap)localObject5).put(localObject6, localObject1);
+      i += 1;
+      break label301;
+      bool1 = false;
+      break;
+      localObject1 = "0";
+      break label289;
+    }
+    label386:
+    bctj.a(BaseApplicationImpl.getContext()).a(this.a.a().getCurrentAccountUin(), "precover_res_cover", bool1, 0L, 0L, (HashMap)localObject5, "", false);
+    localObject4 = this.a.a();
+    if (bool1)
+    {
+      localObject1 = "1";
+      bcst.b((QQAppInterface)localObject4, "CliOper", "", "", "0X8007134", "0X8007134", 0, 0, String.valueOf(j), (String)localObject1, "id_all", "");
+      localObject3 = ((HashMap)localObject3).keySet().iterator();
+      label471:
+      if (!((Iterator)localObject3).hasNext()) {
+        break label578;
+      }
+      localObject4 = (String)((Iterator)localObject3).next();
+      localObject5 = this.a.a();
+      if (!((HashSet)localObject2).contains(localObject4)) {
+        break label571;
+      }
+    }
+    label571:
+    for (localObject1 = "0";; localObject1 = "1")
+    {
+      bcst.b((QQAppInterface)localObject5, "CliOper", "", "", "0X8007134", "0X8007134", 0, 0, String.valueOf(j), (String)localObject1, "id_" + (String)localObject4, "");
+      break label471;
+      localObject1 = "0";
+      break;
+    }
     for (;;)
     {
-      int j;
-      Object localObject2;
-      int k;
       try
       {
-        i = paramFromServiceMsg.getResultCode();
-        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        j = paramFromServiceMsg.getInt();
-        localObject2 = new byte[j - 4];
-        paramFromServiceMsg.get((byte[])localObject2);
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject2);
-        k = paramFromServiceMsg.uint32_result.get();
-        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-        int m = paramFromServiceMsg.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,result is:" + k + ",response.lenth is:" + j + ",sso.RespResult is:" + i + ",cCount is:" + m);
+        label578:
+        localObject1 = (arno)this.a.a().getManager(77);
+        if (localObject1 == null) {
+          break;
         }
-        if (k == 0) {
-          continue;
+        localObject1 = (aroi)((arno)localObject1).a("qq.android.early.precover");
+        if (localObject1 == null) {
+          break;
         }
-        bool1 = false;
+        bool1 = ((aroi)localObject1).i();
+        boolean bool2 = ((aroi)localObject1).j();
+        localObject2 = new HashMap();
+        if (!bool1) {
+          break label762;
+        }
+        localObject1 = "1";
+        ((HashMap)localObject2).put("storage_exist", localObject1);
+        if (!bool2) {
+          break label781;
+        }
+        localObject1 = "1";
+        ((HashMap)localObject2).put("backup_exist", localObject1);
+        if ((!bool1) || (!bool2)) {
+          break label769;
+        }
+        localObject1 = "1";
+        ((HashMap)localObject2).put("all_exist", localObject1);
+        localObject1 = bctj.a(BaseApplicationImpl.getContext());
+        localObject3 = this.a.a().getCurrentAccountUin();
+        if ((!bool1) || (!bool2)) {
+          break label776;
+        }
+        bool1 = true;
+        ((bctj)localObject1).a((String)localObject3, "precover_handler", bool1, 0L, 0L, (HashMap)localObject2, "", false);
+        return;
       }
-      catch (Exception paramFromServiceMsg)
-      {
-        boolean bool2 = false;
-        bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive occurs exception,error msg is:" + paramFromServiceMsg.getMessage(), paramFromServiceMsg);
-        bool1 = bool2;
-        continue;
-        localBundle.putStringArrayList("redu_list", (ArrayList)localObject1);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,reduList is:" + localObject1);
-        if (paramIntent == null) {
-          break label539;
-        }
+      catch (Throwable localThrowable) {}
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      int i = 0;
-      if (paramIntent != null) {
-        i = paramIntent.getIntExtra("action", 0);
-      }
-      notifyObserver(paramIntent, i, bool1, localBundle, azcg.class);
+      localThrowable.printStackTrace();
       return;
-      long l;
-      if (paramFromServiceMsg.position() < paramFromServiceMsg.capacity())
-      {
-        localObject2 = new byte[4];
-        paramFromServiceMsg.get((byte[])localObject2, 0, localObject2.length);
-        l = bdqa.a((byte[])localObject2, 0);
-        i = paramFromServiceMsg.getShort();
-        if (QLog.isColorLevel()) {
-          QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,uin is:" + l + ",redu is:" + i);
-        }
-        ((ArrayList)localObject1).add(String.valueOf(l));
-      }
-      else
-      {
-        for (paramFromServiceMsg = paramIntent.getStringExtra("k_uin");; paramFromServiceMsg = null)
-        {
-          if (paramFromServiceMsg != null)
-          {
-            l = ayzl.a();
-            SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("free_call", 0).edit();
-            localEditor.putString(agzo.b(paramFromServiceMsg), String.valueOf(l));
-            j = ((ArrayList)localObject1).size();
-            localObject2 = new StringBuilder();
-            k = Math.min(j, 100);
-            i = 0;
-            while (i < k)
-            {
-              ((StringBuilder)localObject2).append((String)((ArrayList)localObject1).get(i));
-              ((StringBuilder)localObject2).append("|");
-              i += 1;
-              continue;
-              if (!QLog.isColorLevel()) {
-                break label689;
-              }
-              QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,qq has exception,request is null");
-              break label689;
-            }
-            localObject2 = ((StringBuilder)localObject2).toString();
-            localObject1 = localObject2;
-            if (j > 0) {
-              localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
-            }
-            localEditor.putString(agzo.c(paramFromServiceMsg), (String)localObject1);
-            localEditor.commit();
-            if (!QLog.isColorLevel()) {
-              break label694;
-            }
-            QLog.d("ReduFriendServlet", 2, "reduSize is:" + j + ",curTime is:" + l + ",allReduFriend is:" + (String)localObject1);
-            break label694;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,please pass uin,uin is empty");
-          }
-          break;
-          break;
-        }
-      }
+      label762:
+      String str = "0";
+      continue;
+      label769:
+      str = "0";
+      continue;
+      label776:
+      bool1 = false;
+      continue;
+      label781:
+      str = "0";
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(PrecoverResource paramPrecoverResource, int paramInt, String paramString1, String paramString2, long paramLong)
+  {
+    if (paramPrecoverResource == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverReporter", 2, "reportDownloadResult, res == null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverReporter", 2, new Object[] { "reportDownloadResult, res=", paramPrecoverResource, ", errCode=", Integer.valueOf(paramInt), ", errDesc=", paramString1, ", keyReason=", paramString2, ", size=", Long.valueOf(paramLong) });
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(paramInt));
+    localHashMap.put("url", azcm.b(paramPrecoverResource.url));
+    localHashMap.put("md5", paramPrecoverResource.md5);
+    localHashMap.put("err_desc", paramString1);
+    localHashMap.put("business_id", "id_" + paramPrecoverResource.businessId);
+    localHashMap.put("netresp_param_reason", paramString2);
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (bool) {
+        localHashMap.put("file_size", String.format("%.3f", new Object[] { Float.valueOf((float)paramLong * 1.0F / 1048576.0F) }));
+      }
+      bctj.a(BaseApplicationImpl.getContext()).a(this.a.a().getCurrentAccountUin(), "precover_download_result", bool, 0L, paramLong, localHashMap, "", false);
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onSend() is called");
+      QLog.d("PrecoverReporter", 2, "reportConfigCover");
     }
-    paramPacket.putSendData(a());
-    paramPacket.setSSOCommand("OidbSvc.0x4cf_1");
+    if (this.a == null) {}
+    for (;;)
+    {
+      return;
+      int i = azcm.a(this.a.a().getApp(), this.a.a().getCurrentAccountUin());
+      Object localObject2 = this.a.a(null, null, PrecoverConfig.class);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("config_version", String.valueOf(i));
+      if ((localObject2 != null) && (((List)localObject2).size() > 0)) {}
+      for (Object localObject1 = "1";; localObject1 = "0")
+      {
+        localHashMap.put("id_all", localObject1);
+        if (localObject2 == null) {
+          break;
+        }
+        localObject1 = ((List)localObject2).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          PrecoverConfig localPrecoverConfig = (PrecoverConfig)((Iterator)localObject1).next();
+          localHashMap.put("id_" + localPrecoverConfig.businessId, "1");
+        }
+      }
+      bctj.a(BaseApplicationImpl.getContext()).a(this.a.a().getCurrentAccountUin(), "precover_config_cover", paramBoolean, 0L, 0L, localHashMap, "", false);
+      bcst.b(this.a.a(), "CliOper", "", "", "0X8007133 ", "0X8007133 ", 0, 0, String.valueOf(i), "", "id_all", "");
+      if (localObject2 != null)
+      {
+        localObject1 = ((List)localObject2).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (PrecoverConfig)((Iterator)localObject1).next();
+          bcst.b(this.a.a(), "CliOper", "", "", "0X8007133 ", "0X8007133 ", 0, 0, String.valueOf(i), "", "id_" + ((PrecoverConfig)localObject2).businessId, "");
+        }
+      }
+    }
   }
 }
 

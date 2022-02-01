@@ -14,14 +14,14 @@ public class NativeGifView
     super(paramContext);
   }
   
-  private void c()
+  private void a()
   {
-    if (!TextUtils.isEmpty(this.a))
+    if (!TextUtils.isEmpty(this.mCoverUrl))
     {
-      setCoverUrl(this.a);
-      b();
+      setCoverUrl(this.mCoverUrl);
+      displayCover();
     }
-    a();
+    displayGif();
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -47,7 +47,7 @@ public class NativeGifView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    c();
+    a();
   }
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -68,7 +68,7 @@ public class NativeGifView
   public void onFinishTemporaryDetach()
   {
     super.onFinishTemporaryDetach();
-    c();
+    a();
   }
 }
 

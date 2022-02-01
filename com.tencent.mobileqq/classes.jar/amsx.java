@@ -1,18 +1,16 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class amsx
-  implements MediaPlayer.OnErrorListener
+  implements DialogInterface.OnClickListener
 {
-  amsx(amsu paramamsu) {}
+  amsx(amsv paramamsv, amtd paramamtd) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
+    if (this.jdField_a_of_type_Amtd != null) {
+      this.jdField_a_of_type_Amtd.a(this.jdField_a_of_type_Amsv.a(), "sc.xy_alert_show_success.local", "{\"confirm\":1}");
     }
-    return false;
   }
 }
 

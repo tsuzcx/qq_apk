@@ -1,14 +1,12 @@
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 
-class agod
-  implements View.OnClickListener
+public class agod
 {
-  agod(agnn paramagnn) {}
-  
-  public void onClick(View paramView)
+  public static View a(Context paramContext)
   {
-    paramView.setVisibility(8);
+    return LayoutInflater.from(paramContext).inflate(2131559271, null);
   }
 }
 

@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
 class ajhm
-  implements View.OnClickListener
+  implements ajlb
 {
-  ajhm(ajgb paramajgb) {}
+  ajhm(ajhk paramajhk) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a(22, 0);
-    this.a.a(-1, null);
-    azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "QQWIFI", "clk_buleClose", 0, 0, "", "", "", "");
+    this.a.a.sendEmptyMessageDelayed(7, 100L);
   }
 }
 

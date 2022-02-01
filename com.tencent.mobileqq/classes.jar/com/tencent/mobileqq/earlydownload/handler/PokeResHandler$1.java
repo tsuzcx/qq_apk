@@ -1,25 +1,27 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import afxl;
+import aheh;
 import android.text.TextUtils;
-import apll;
-import bdhb;
+import aroh;
+import bgmg;
+import bqfh;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 
 public class PokeResHandler$1
   implements Runnable
 {
-  public PokeResHandler$1(apll paramapll, String paramString1, String paramString2) {}
+  public PokeResHandler$1(aroh paramaroh, String paramString1, String paramString2) {}
   
   public void run()
   {
     if (!TextUtils.isEmpty(this.a)) {}
     try
     {
-      bdhb.a(this.a, false);
-      bdhb.a(this.b, this.a, false);
-      afxl.b(this.a);
+      bgmg.a(this.a, false);
+      bgmg.a(this.b, this.a, false);
+      bqfh.a(this.a);
+      aheh.b(this.a);
       return;
     }
     catch (IOException localIOException)
@@ -35,7 +37,7 @@ public class PokeResHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.PokeResHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class adwv
-  implements DialogInterface.OnClickListener
+public class adwv
+  implements nns
 {
-  adwv(adws paramadws) {}
+  public adwv(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void a(ArrayList<TroopAppInfo> paramArrayList)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
+    if ((this.a.isFinishing()) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
+    do
     {
-      this.a.jdField_a_of_type_Bdjz.cancel();
-      this.a.b = true;
-      adws.a(this.a);
-      this.a.b();
-    }
+      return;
+      ArrayList localArrayList = new ArrayList();
+      awne localawne = (awne)this.a.app.getManager(37);
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        TroopAppInfo localTroopAppInfo = (TroopAppInfo)paramArrayList.next();
+        localawne.a(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
+        localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
+      }
+      localawne.a(this.a.a.troopUin, localArrayList);
+    } while (this.a.i);
   }
 }
 

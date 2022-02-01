@@ -1,7 +1,7 @@
 package com.tencent.biz.qqcircle.events;
 
 import android.os.Bundle;
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 
 public class QCirclePublishBoxStatusEvent
   extends SimpleBaseEvent
@@ -22,7 +22,7 @@ public class QCirclePublishBoxStatusEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.events.QCirclePublishBoxStatusEvent
  * JD-Core Version:    0.7.0.1
  */

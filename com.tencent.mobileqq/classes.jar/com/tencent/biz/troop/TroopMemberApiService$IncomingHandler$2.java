@@ -1,20 +1,20 @@
 package com.tencent.biz.troop;
 
+import aaor;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
-import yrr;
 
 public class TroopMemberApiService$IncomingHandler$2
   implements Runnable
 {
-  public TroopMemberApiService$IncomingHandler$2(yrr paramyrr, int paramInt) {}
+  public TroopMemberApiService$IncomingHandler$2(aaor paramaaor, int paramInt) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Yrr.a.getBaseContext().getSharedPreferences("sp_public_account_with_cuin_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+    Object localObject = this.jdField_a_of_type_Aaor.a.getBaseContext().getSharedPreferences("sp_public_account_with_cuin_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -25,7 +25,7 @@ public class TroopMemberApiService$IncomingHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.2
  * JD-Core Version:    0.7.0.1
  */

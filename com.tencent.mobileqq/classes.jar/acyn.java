@@ -1,51 +1,37 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Iterator;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acyn
-  implements adwr
+  extends aczg
 {
-  public acyn(ForwardTroopListFragment paramForwardTroopListFragment) {}
-  
-  public void a(Editable paramEditable)
+  public int a()
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable)) {
-      ForwardTroopListFragment.a(this.a).setVisibility(8);
-    }
-    for (;;)
+    return -1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      if (ForwardTroopListFragment.a(this.a) != null) {
-        ForwardTroopListFragment.a(this.a).a(paramEditable);
+      paramStringBuilder = (im_msg_body.Elem)paramList.next();
+      if (a(paramStringBuilder)) {
+        autm.a(paramMsg, paramStringBuilder, paramList1, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), parambbyn);
       }
-      return;
-      ForwardTroopListFragment.a(this.a).setVisibility(0);
     }
+    return false;
   }
   
-  public void a(ResultRecord paramResultRecord)
+  public boolean a(im_msg_body.Elem paramElem)
   {
-    if (paramResultRecord != null) {
-      ForwardTroopListFragment.a(this.a, paramResultRecord.a, paramResultRecord.a());
-    }
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (ForwardTroopListFragment.a(this.a) == null))
-    {
-      ForwardTroopListFragment.a(this.a, ContactSearchFragment.a(8, 2097176, null, null, ForwardTroopListFragment.a(this.a)));
-      FragmentTransaction localFragmentTransaction = this.a.getActivity().getSupportFragmentManager().beginTransaction();
-      localFragmentTransaction.add(2131375722, ForwardTroopListFragment.a(this.a));
-      localFragmentTransaction.commitAllowingStateLoss();
-    }
+    return (paramElem.common_elem.has()) && (34 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

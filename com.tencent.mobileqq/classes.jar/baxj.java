@@ -1,9 +1,10 @@
-public class baxj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class baxj
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public long b;
-  public long c;
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,38 +1,46 @@
-import android.content.DialogInterface.OnClickListener;
-import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 
 class asbc
-  implements View.OnClickListener
+  implements URLDrawableDownListener
 {
-  asbc(asau paramasau, DialogInterface.OnClickListener paramOnClickListener) {}
+  asbc(asba paramasba, arxg paramarxg, URLImageView paramURLImageView1, URLImageView paramURLImageView2) {}
   
-  public void onClick(View paramView)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Asau.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Asau, 0);
+    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Arxg.toString());
+    asba.a(this.jdField_a_of_type_Asba, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Arxg.toString());
+    asba.a(this.jdField_a_of_type_Asba, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    QLog.e("FavoriteEmotionAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Arxg.toString());
+    asba.a(this.jdField_a_of_type_Asba, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FavoriteEmotionAdapter", 2, "onLoadProgressed: " + this.jdField_a_of_type_Arxg.toString());
     }
-    if (asau.a(this.jdField_a_of_type_Asau))
-    {
-      asau.a(this.jdField_a_of_type_Asau).removeView(asau.a(this.jdField_a_of_type_Asau));
-      asau.a(this.jdField_a_of_type_Asau, false);
+    asba.a(this.jdField_a_of_type_Asba, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FavoriteEmotionAdapter", 2, "onLoadSuccess: " + this.jdField_a_of_type_Arxg.toString());
     }
-    try
-    {
-      if (this.jdField_a_of_type_Asau.isShowing()) {
-        this.jdField_a_of_type_Asau.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(paramView));
-    }
+    asba.a(this.jdField_a_of_type_Asba, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
   }
 }
 

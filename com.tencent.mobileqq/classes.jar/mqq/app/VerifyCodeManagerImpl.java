@@ -33,17 +33,29 @@ public class VerifyCodeManagerImpl
     this.app = paramAppRuntime;
   }
   
+  public static void addConnectData(ToServiceMsg paramToServiceMsg1, ToServiceMsg paramToServiceMsg2)
+  {
+    if ((paramToServiceMsg1 == null) || (paramToServiceMsg2 == null)) {
+      QLog.d("VerifyCodeManager", 1, "addConnectData null == src || null == to");
+    }
+    do
+    {
+      return;
+      Object localObject = paramToServiceMsg1.getAttribute("process");
+      if (localObject != null) {
+        paramToServiceMsg2.addAttribute("process", localObject);
+      }
+      paramToServiceMsg1 = paramToServiceMsg1.getAttribute("connect_data");
+    } while (paramToServiceMsg1 == null);
+    paramToServiceMsg2.addAttribute("connect_data", paramToServiceMsg1);
+  }
+  
   private FromServiceMsg createVerifyCodeCancelResp(ToServiceMsg paramToServiceMsg)
   {
     FromServiceMsg localFromServiceMsg = new FromServiceMsg(paramToServiceMsg.getAppId(), paramToServiceMsg.getAppSeq(), paramToServiceMsg.getUin(), paramToServiceMsg.getServiceCmd());
     localFromServiceMsg.setMsfCommand(paramToServiceMsg.getMsfCommand());
     localFromServiceMsg.setBusinessFail(2006, "");
     return localFromServiceMsg;
-  }
-  
-  private void notifyApp(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    this.app.getService().onRecvVerifyManagerCallback(paramToServiceMsg, paramFromServiceMsg);
   }
   
   private void notifyHttpVerifyCodeActivity(String paramString1, String paramString2, byte[] paramArrayOfByte)
@@ -65,66 +77,6 @@ public class VerifyCodeManagerImpl
     ((Intent)localObject).putExtra("image", paramArrayOfByte);
     ((Intent)localObject).setData(Uri.parse("mqqverifycode://puzzle_verify_code/VERIFYCODE?"));
     this.app.getApplication().startActivity((Intent)localObject);
-  }
-  
-  private void notifyVerifyCodeActivity(ToServiceMsg paramToServiceMsg, String paramString1, byte[] paramArrayOfByte, String paramString2)
-  {
-    int i = paramToServiceMsg.getRequestSsoSeq();
-    String str = String.valueOf(paramToServiceMsg.getAttribute("process"));
-    paramToServiceMsg = (VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(i));
-    if (paramToServiceMsg.serverNotifyObserver != null)
-    {
-      localMessage = this.mHandler.obtainMessage();
-      localMessage.obj = new Object[] { paramToServiceMsg.serverNotifyObserver, "", Integer.valueOf(i), paramString1, paramArrayOfByte, paramString2 };
-      localMessage.what = 0;
-      localMessage.sendToTarget();
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.setFlags(268435456);
-    paramToServiceMsg = "android.intent.action.VIEW";
-    Message localMessage = null;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1 = "PUZZLEVERIFYCODE";
-      localIntent.putExtra("seq", i);
-      localIntent.putExtra("url", paramString2);
-      localIntent.putExtra("business", 2097152L);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("isSubaccount", true);
-      localIntent.putExtra("isShowAd", false);
-      paramString2 = paramString1;
-      localIntent.setAction(paramToServiceMsg);
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        paramToServiceMsg = new StringBuilder();
-        paramToServiceMsg.append("mqqverifycode://puzzle_verify_code/");
-        paramToServiceMsg.append(paramString2);
-        paramToServiceMsg.append("?");
-        localIntent.setData(Uri.parse(paramToServiceMsg.toString()));
-      }
-      this.app.getApplication().startActivity(localIntent);
-      return;
-    }
-    if ("com.tencent.mobileqq:openSdk".equals(str)) {
-      paramToServiceMsg = "mqq.opensdk.intent.action.VERIFYCODE";
-    }
-    for (paramString2 = localMessage;; paramString2 = "VERIFYCODE")
-    {
-      localIntent.putExtra("seq", i);
-      localIntent.putExtra("note", paramString1);
-      localIntent.putExtra("image", paramArrayOfByte);
-      break;
-    }
-  }
-  
-  private void notifyVerifyCodeActivityClose(ServerNotifyObserver paramServerNotifyObserver, String paramString)
-  {
-    Message localMessage = this.mHandler.obtainMessage();
-    localMessage.obj = new Object[] { paramServerNotifyObserver, paramString };
-    localMessage.what = 1;
-    localMessage.sendToTarget();
   }
   
   public void cancelVerifyCode(ServerNotifyObserver paramServerNotifyObserver)
@@ -179,6 +131,71 @@ public class VerifyCodeManagerImpl
       return false;
     }
     return true;
+  }
+  
+  void notifyApp(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    this.app.getService().onRecvVerifyManagerCallback(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  void notifyVerifyCodeActivity(ToServiceMsg paramToServiceMsg, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  {
+    int i = paramToServiceMsg.getRequestSsoSeq();
+    String str = String.valueOf(paramToServiceMsg.getAttribute("process"));
+    paramToServiceMsg = (VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(i));
+    if (paramToServiceMsg.serverNotifyObserver != null)
+    {
+      localMessage = this.mHandler.obtainMessage();
+      localMessage.obj = new Object[] { paramToServiceMsg.serverNotifyObserver, "", Integer.valueOf(i), paramString1, paramArrayOfByte, paramString2 };
+      localMessage.what = 0;
+      localMessage.sendToTarget();
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.setFlags(268435456);
+    paramToServiceMsg = "android.intent.action.VIEW";
+    Message localMessage = null;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = "PUZZLEVERIFYCODE";
+      localIntent.putExtra("seq", i);
+      localIntent.putExtra("url", paramString2);
+      localIntent.putExtra("business", 2097152L);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("hide_more_button", true);
+      localIntent.putExtra("isSubaccount", true);
+      localIntent.putExtra("isShowAd", false);
+      paramString2 = paramString1;
+      localIntent.setAction(paramToServiceMsg);
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("mqqverifycode://puzzle_verify_code/");
+        paramToServiceMsg.append(paramString2);
+        paramToServiceMsg.append("?");
+        localIntent.setData(Uri.parse(paramToServiceMsg.toString()));
+      }
+      this.app.getApplication().startActivity(localIntent);
+      return;
+    }
+    if ("com.tencent.mobileqq:openSdk".equals(str)) {
+      paramToServiceMsg = "mqq.opensdk.intent.action.VERIFYCODE";
+    }
+    for (paramString2 = localMessage;; paramString2 = "VERIFYCODE")
+    {
+      localIntent.putExtra("seq", i);
+      localIntent.putExtra("note", paramString1);
+      localIntent.putExtra("image", paramArrayOfByte);
+      break;
+    }
+  }
+  
+  void notifyVerifyCodeActivityClose(ServerNotifyObserver paramServerNotifyObserver, String paramString)
+  {
+    Message localMessage = this.mHandler.obtainMessage();
+    localMessage.obj = new Object[] { paramServerNotifyObserver, paramString };
+    localMessage.what = 1;
+    localMessage.sendToTarget();
   }
   
   public void onDestroy() {}
@@ -237,6 +254,7 @@ public class VerifyCodeManagerImpl
         ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).serverNotifyObserver = paramServerNotifyObserver;
         paramServerNotifyObserver = this.app.getService().msfSub.getRefreVerifyCodeMsg(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo);
         paramServerNotifyObserver.setAppSeq(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo.appSeq);
+        addConnectData(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).srcTo, paramServerNotifyObserver);
         this.app.getService().msfSub.sendMsg(paramServerNotifyObserver);
         return;
       }
@@ -246,52 +264,55 @@ public class VerifyCodeManagerImpl
   
   public void submitPuzzleVerifyCodeTicket(int paramInt, String paramString)
   {
-    Object localObject2 = (VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(paramInt));
-    if (localObject2 != null)
+    Object localObject = (VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(paramInt));
+    if (localObject != null)
     {
-      Object localObject1 = ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject2).srcTo;
-      paramString = this.app.getService().msfSub.getSubmitPuzzleVerifyCodeTicketMsg(paramString, ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject2).verifyCodeInfo);
-      paramString.setAppSeq(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject2).verifyCodeInfo.appSeq);
-      if (((ToServiceMsg)localObject1).getAttribute("from_where") != null)
+      ToServiceMsg localToServiceMsg = ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).srcTo;
+      paramString = this.app.getService().msfSub.getSubmitPuzzleVerifyCodeTicketMsg(paramString, ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo);
+      paramString.setAppSeq(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo.appSeq);
+      if (localToServiceMsg.getAttribute("from_where") != null)
       {
-        localObject2 = (String)((ToServiceMsg)localObject1).getAttribute("from_where");
-        localObject1 = (String)((ToServiceMsg)localObject1).getAttribute("mainaccount");
-        paramString.addAttribute("from_where", localObject2);
-        paramString.addAttribute("mainaccount", localObject1);
+        localObject = (String)localToServiceMsg.getAttribute("from_where");
+        String str = (String)localToServiceMsg.getAttribute("mainaccount");
+        paramString.addAttribute("from_where", localObject);
+        paramString.addAttribute("mainaccount", str);
       }
+      addConnectData(localToServiceMsg, paramString);
       this.app.getService().msfSub.sendMsg(paramString);
     }
   }
   
   public void submitVerifyCode(ServerNotifyObserver paramServerNotifyObserver, String paramString)
   {
-    Object localObject;
+    Object localObject1;
+    Object localObject2;
     if (paramServerNotifyObserver.getSeq() == 0)
     {
-      localObject = (VerifyCodeManagerImpl.HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.get(paramServerNotifyObserver.getKey());
-      if (localObject != null)
+      localObject1 = (VerifyCodeManagerImpl.HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.get(paramServerNotifyObserver.getKey());
+      if (localObject1 != null)
       {
-        HashMap localHashMap = ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).attr;
-        ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).serverNotifyObserver = paramServerNotifyObserver;
-        ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).httpVerifyHandler.submitVerifyCode(paramServerNotifyObserver.getKey(), localHashMap, paramString);
+        localObject2 = ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject1).attr;
+        ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject1).serverNotifyObserver = paramServerNotifyObserver;
+        ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject1).httpVerifyHandler.submitVerifyCode(paramServerNotifyObserver.getKey(), (HashMap)localObject2, paramString);
       }
     }
     do
     {
       return;
-      localObject = (VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(paramServerNotifyObserver.getSeq()));
-    } while (localObject == null);
-    ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).serverNotifyObserver = paramServerNotifyObserver;
-    paramServerNotifyObserver = ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).srcTo;
-    paramString = this.app.getService().msfSub.getSubmitVerifyCodeMsg(paramString, ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo);
-    paramString.setAppSeq(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo.appSeq);
+      localObject1 = (VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(paramServerNotifyObserver.getSeq()));
+    } while (localObject1 == null);
+    ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject1).serverNotifyObserver = paramServerNotifyObserver;
+    paramServerNotifyObserver = ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject1).srcTo;
+    paramString = this.app.getService().msfSub.getSubmitVerifyCodeMsg(paramString, ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject1).verifyCodeInfo);
+    paramString.setAppSeq(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject1).verifyCodeInfo.appSeq);
     if (paramServerNotifyObserver.getAttribute("from_where") != null)
     {
-      localObject = (String)paramServerNotifyObserver.getAttribute("from_where");
-      paramServerNotifyObserver = (String)paramServerNotifyObserver.getAttribute("mainaccount");
-      paramString.addAttribute("from_where", localObject);
-      paramString.addAttribute("mainaccount", paramServerNotifyObserver);
+      localObject1 = (String)paramServerNotifyObserver.getAttribute("from_where");
+      localObject2 = (String)paramServerNotifyObserver.getAttribute("mainaccount");
+      paramString.addAttribute("from_where", localObject1);
+      paramString.addAttribute("mainaccount", localObject2);
     }
+    addConnectData(paramServerNotifyObserver, paramString);
     this.app.getService().msfSub.sendMsg(paramString);
   }
 }

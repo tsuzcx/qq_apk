@@ -1,13 +1,13 @@
-import android.support.v7.widget.RecyclerView;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
 class blbk
-  implements yyh
+  implements aqck
 {
-  blbk(blbe paramblbe) {}
+  blbk(blbj paramblbj, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
   
-  public void a()
+  public ColorNote getColorNote()
   {
-    blbe.a(this.a).setVisibility(0);
+    return new aqcs().a(16908292).a(this.jdField_a_of_type_JavaLangString).b(this.b).c(this.c).d("resdrawable://2130838893").a(this.jdField_a_of_type_ArrayOfByte).a();
   }
 }
 

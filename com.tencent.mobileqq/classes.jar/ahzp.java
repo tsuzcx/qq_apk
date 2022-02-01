@@ -1,24 +1,17 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahzp
-  implements bhuk
+class ahzp
+  implements View.OnClickListener
 {
-  public ahzp(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment, bhuf parambhuf) {}
+  ahzp(ahzo paramahzo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    paramView = new ArrayList();
-    paramView.addAll(ChatHistoryC2CFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment));
-    ChatHistoryC2CFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment).a(paramView, 3, new ahzq(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment.h();
-    ChatHistoryC2CFileFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment, false);
-    ChatHistoryC2CFileFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment);
-    if (this.jdField_a_of_type_Bhuf.isShowing()) {
-      this.jdField_a_of_type_Bhuf.dismiss();
-    }
+    ahny.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, false, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,77 +1,44 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
 
-public class azkx
+class azkx
+  implements bkhw
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private azky jdField_a_of_type_Azky = new azky(0);
-  private azky b = new azky(1);
+  azkx(azks paramazks, String paramString1, String paramString2, int paramInt, boolean paramBoolean, bkho parambkho) {}
   
-  public azky a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (azky.a(this.jdField_a_of_type_Azky).getAndSet(1) == 0) {
-      return this.jdField_a_of_type_Azky;
-    }
-    if (azky.a(this.b).getAndSet(1) == 0) {
-      return this.b;
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    azky.a(this.jdField_a_of_type_Azky).getAndSet(0);
-    azky.a(this.b).getAndSet(0);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (azky.a(this.jdField_a_of_type_Azky).getAndAdd(0) == 0)
+    if ((paramInt == 0) && (azks.b(this.jdField_a_of_type_Azks) != null))
     {
-      bool1 = bool2;
-      if (azky.a(this.b).getAndAdd(0) == 0) {
-        bool1 = true;
+      paramView = new Intent(azks.c(this.jdField_a_of_type_Azks), EditInfoActivity.class);
+      paramView.putExtra("title", this.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("default_text", this.b);
+      paramView.putExtra("uin", ((azfe)azks.a(this.jdField_a_of_type_Azks)).jdField_a_of_type_ComTencentMobileqqDataCard.uin);
+      paramView.putExtra("edit_action", this.jdField_a_of_type_Int);
+      paramView.putExtra("max_limit_mode", 1);
+      paramView.putExtra("edit_type", 2);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label169;
       }
+      paramView.putExtra("max_num", 60);
+      paramView.putExtra("isTroopNick", true);
+      paramView.putExtra("troopUin", ((azfe)azks.b(this.jdField_a_of_type_Azks)).jdField_a_of_type_JavaLangString);
     }
-    return bool1;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("SharedMemoryCacheProcessor");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
-    {
-      PtvFilterUtils.a(this.jdField_a_of_type_AndroidOsHandlerThread);
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      azks.d(this.jdField_a_of_type_Azks).startActivityForResult(paramView, 1034);
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      label169:
+      paramInt = 36;
+      if (this.jdField_a_of_type_Int == 2) {
+        paramInt = 60;
+      }
+      paramView.putExtra("max_num", paramInt);
+      paramView.putExtra("support_emotion", true);
     }
   }
 }

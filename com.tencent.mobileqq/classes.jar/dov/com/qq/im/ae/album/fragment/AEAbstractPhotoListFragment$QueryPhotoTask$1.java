@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.album.fragment;
 
-import bkql;
-import bkqq;
+import bnff;
+import bnfl;
 
 public class AEAbstractPhotoListFragment$QueryPhotoTask$1
   implements Runnable
 {
-  public AEAbstractPhotoListFragment$QueryPhotoTask$1(bkqq parambkqq) {}
+  public AEAbstractPhotoListFragment$QueryPhotoTask$1(bnfl parambnfl) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class AEAbstractPhotoListFragment$QueryPhotoTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.album.fragment.AEAbstractPhotoListFragment.QueryPhotoTask.1
  * JD-Core Version:    0.7.0.1
  */

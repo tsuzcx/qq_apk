@@ -1,59 +1,24 @@
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class adzt
-  extends amdg
+  extends BroadcastReceiver
 {
-  public adzt(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public adzt(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean, bade parambade)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramBoolean) && (parambade != null) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.length() >= 5))
+    if ("login".equals(paramIntent.getStringExtra("status")))
     {
-      parambade = parambade.c();
-      if ((parambade != null) && (!parambade.contains(this.a.jdField_a_of_type_JavaLangString))) {}
-    }
-    else
-    {
+      this.a.a.a(29, 2);
+      this.a.a.b = paramIntent.getStringExtra("loginInfo");
+      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
+      this.a.a.a(-1, null);
       return;
     }
-    parambade = (bacu)this.a.app.getManager(62);
-    SubAccountUgActivity.a(this.a, parambade, this.a.jdField_a_of_type_JavaLangString);
-  }
-  
-  protected void c(boolean paramBoolean, bade parambade)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() isSucc=" + paramBoolean + " currentActivity subUin=" + this.a.jdField_a_of_type_JavaLangString);
-      if (parambade != null) {
-        QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() mainAccount=" + parambade.b + " subAccount=" + parambade.c + " errType=" + parambade.jdField_a_of_type_Int + " errMsg=" + parambade.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if ((parambade == null) || (this.a.jdField_a_of_type_JavaLangString == null) || ((this.a.jdField_a_of_type_JavaLangString != null) && (!this.a.jdField_a_of_type_JavaLangString.equals(parambade.c)))) {}
-    do
-    {
-      return;
-      this.a.e();
-      if (this.a.b)
-      {
-        this.a.b = false;
-        if (paramBoolean)
-        {
-          this.a.a();
-          this.a.c(this.a.getString(2131720472));
-          return;
-        }
-        this.a.b(this.a.getString(2131720468));
-        return;
-      }
-    } while (!paramBoolean);
-    parambade = (bacu)this.a.app.getManager(62);
-    Pair localPair = parambade.a(this.a.jdField_a_of_type_JavaLangString, 1);
-    parambade.a(this.a.app, this.a, localPair, new adzu(this, parambade, localPair));
+    this.a.a.k();
   }
 }
 

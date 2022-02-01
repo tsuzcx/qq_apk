@@ -1,17 +1,21 @@
 package cooperation.qqdataline;
 
+import Override;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bety;
-import biqn;
-import biqw;
+import android.view.MotionEvent;
+import biau;
+import blfh;
+import blfq;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.plugin.PluginInfo;
 import java.util.Iterator;
 import java.util.List;
@@ -30,21 +34,21 @@ public class DatalinePluginProxyActivity
     return DatalinePluginProxyActivity.class;
   }
   
-  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, String paramString2, int paramInt, bety parambety)
+  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, String paramString2, int paramInt, biau parambiau)
   {
     paramIntent.putExtra("userQqResources", 2);
-    biqw localbiqw = new biqw(0);
-    localbiqw.jdField_b_of_type_JavaLangString = "qqdataline.apk";
-    localbiqw.d = PluginInfo.d;
-    localbiqw.jdField_a_of_type_JavaLangString = paramString1;
-    localbiqw.e = paramString2;
-    localbiqw.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
-    localbiqw.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbiqw.jdField_b_of_type_Int = paramInt;
-    localbiqw.jdField_a_of_type_AndroidAppDialog = parambety;
-    localbiqw.c = 10000;
-    localbiqw.f = null;
-    biqn.a(paramActivity, localbiqw);
+    blfq localblfq = new blfq(0);
+    localblfq.jdField_b_of_type_JavaLangString = "qqdataline.apk";
+    localblfq.d = PluginInfo.d;
+    localblfq.jdField_a_of_type_JavaLangString = paramString1;
+    localblfq.e = paramString2;
+    localblfq.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
+    localblfq.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localblfq.jdField_b_of_type_Int = paramInt;
+    localblfq.jdField_a_of_type_AndroidAppDialog = parambiau;
+    localblfq.c = 10000;
+    localblfq.f = null;
+    blfh.a(paramActivity, localblfq);
   }
   
   public static boolean a(Context paramContext)
@@ -65,6 +69,14 @@ public class DatalinePluginProxyActivity
     return false;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public String getPluginID()
   {
     return "qqdataline.apk";
@@ -76,6 +88,13 @@ public class DatalinePluginProxyActivity
       return DatalinePluginProxyActivity.SingleTop.class;
     }
     return super.getProxyActivity(paramString);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -100,7 +119,7 @@ public class DatalinePluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqdataline.DatalinePluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,14 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class acvw
-  implements InputFilter
+class acvw
+  implements Comparator<MessageRecord>
 {
-  public acvw(EditInfoActivity paramEditInfoActivity) {}
+  acvw(acvt paramacvt) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (paramCharSequence.toString().contains("\n")) {
-      return paramCharSequence.toString().replace("\n", "");
-    }
-    return null;
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

@@ -8,34 +8,34 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ViewConfiguration;
 import android.widget.ListView;
-import apkp;
+import arnj;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import uvx;
-import uwa;
-import voq;
-import vor;
-import vos;
-import vov;
-import wxe;
-import wxj;
-import xsm;
+import wpj;
+import wpm;
+import xib;
+import xic;
+import xid;
+import xig;
+import yqp;
+import yqu;
+import zlx;
 
 public class VideoCoverListBar
   extends ListView
 {
   private int jdField_a_of_type_Int;
-  private apkp jdField_a_of_type_Apkp;
+  private arnj jdField_a_of_type_Arnj;
   private String jdField_a_of_type_JavaLangString;
   private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private uvx jdField_a_of_type_Uvx;
-  private vor jdField_a_of_type_Vor;
-  private vos jdField_a_of_type_Vos;
-  private vov jdField_a_of_type_Vov;
+  private wpj jdField_a_of_type_Wpj;
+  private xic jdField_a_of_type_Xic;
+  private xid jdField_a_of_type_Xid;
+  private xig jdField_a_of_type_Xig;
   private int jdField_b_of_type_Int;
-  private apkp jdField_b_of_type_Apkp;
+  private arnj jdField_b_of_type_Arnj;
   private int c;
   private int d;
   
@@ -62,12 +62,12 @@ public class VideoCoverListBar
       if (paramList == null) {}
       for (this.jdField_a_of_type_JavaUtilList = new ArrayList();; this.jdField_a_of_type_JavaUtilList = paramList)
       {
-        this.jdField_a_of_type_Vos.notifyDataSetChanged();
+        this.jdField_a_of_type_Xid.notifyDataSetChanged();
         if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
           break;
         }
         setVisibility(8);
-        wxe.b("Q.qqstory.player:VideoCoverListBar", "video list too small, hide");
+        yqp.b("Q.qqstory.player:VideoCoverListBar", "video list too small, hide");
         return;
       }
       setVisibility(0);
@@ -75,28 +75,28 @@ public class VideoCoverListBar
         ThreadManager.getUIHandler().postDelayed(new VideoCoverListBar.3(this, paramInt), 30L);
       }
     } while ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()));
-    wxj.a("play_video", "exp_mini", 0, 0, new String[] { "2", "", "", (String)this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+    yqu.a("play_video", "exp_mini", 0, 0, new String[] { "2", "", "", (String)this.jdField_a_of_type_JavaUtilList.get(paramInt) });
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Uvx = ((uvx)uwa.a(5));
+    this.jdField_a_of_type_Wpj = ((wpj)wpm.a(5));
     int i = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.jdField_a_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131298808);
-    this.jdField_b_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131298807);
-    this.c = getContext().getResources().getDimensionPixelOffset(2131298805);
-    this.d = xsm.a(paramContext, 11.0F);
-    this.jdField_a_of_type_Apkp = new apkp(-2631721, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_b_of_type_Apkp = new apkp(0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Vos = new vos(this, null);
+    this.jdField_a_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131298891);
+    this.jdField_b_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131298890);
+    this.c = getContext().getResources().getDimensionPixelOffset(2131298888);
+    this.d = zlx.a(paramContext, 11.0F);
+    this.jdField_a_of_type_Arnj = new arnj(-2631721, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_b_of_type_Arnj = new arnj(0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Xid = new xid(this, null);
     setOverScrollMode(2);
     setDivider(new ColorDrawable(0));
     setDividerHeight(this.d);
     setHeaderDividersEnabled(false);
     setFooterDividersEnabled(false);
     setVerticalScrollBarEnabled(false);
-    setAdapter(this.jdField_a_of_type_Vos);
-    setOnTouchListener(new voq(this, i));
+    setAdapter(this.jdField_a_of_type_Xid);
+    setOnTouchListener(new xib(this, i));
   }
   
   public void a()
@@ -106,7 +106,7 @@ public class VideoCoverListBar
   
   public void a(String paramString)
   {
-    List localList = this.jdField_a_of_type_Vov.a();
+    List localList = this.jdField_a_of_type_Xig.a();
     if (localList != null)
     {
       int i = 0;
@@ -115,7 +115,7 @@ public class VideoCoverListBar
         if (TextUtils.equals((CharSequence)localList.get(i), paramString))
         {
           this.jdField_a_of_type_JavaLangString = paramString;
-          wxe.a("Q.qqstory.player:VideoCoverListBar", "notify ! vid = %s , index = %d", paramString, Integer.valueOf(i));
+          yqp.a("Q.qqstory.player:VideoCoverListBar", "notify ! vid = %s , index = %d", paramString, Integer.valueOf(i));
           a(i, localList);
           return;
         }
@@ -123,27 +123,27 @@ public class VideoCoverListBar
       }
     }
     a(-1, localList);
-    wxe.d("Q.qqstory.player:VideoCoverListBar", "vid not found ! vid = %s", new Object[] { paramString });
+    yqp.d("Q.qqstory.player:VideoCoverListBar", "vid not found ! vid = %s", new Object[] { paramString });
   }
   
-  public void a(vov paramvov)
+  public void a(xig paramxig)
   {
-    this.jdField_a_of_type_Vov = paramvov;
+    this.jdField_a_of_type_Xig = paramxig;
   }
   
   public void b()
   {
-    a(-1, this.jdField_a_of_type_Vov.a());
+    a(-1, this.jdField_a_of_type_Xig.a());
   }
   
-  public void setOnVideoClickListener(vor paramvor)
+  public void setOnVideoClickListener(xic paramxic)
   {
-    this.jdField_a_of_type_Vor = paramvor;
+    this.jdField_a_of_type_Xic = paramxic;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.VideoCoverListBar
  * JD-Core Version:    0.7.0.1
  */

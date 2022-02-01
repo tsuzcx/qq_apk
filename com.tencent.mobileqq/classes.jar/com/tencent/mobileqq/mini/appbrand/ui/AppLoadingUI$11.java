@@ -21,7 +21,7 @@ class AppLoadingUI$11
   {
     if (paramBoolean)
     {
-      paramBundle = StorageUtil.getPreference().getString("version", "1.14.0.00225");
+      paramBundle = StorageUtil.getPreference().getString("version", "1.17.0.00206");
       if ((AppLoadingUI.access$000(this.this$0) != null) && (AppLoadingUI.access$000(this.this$0).config != null) && ((TextUtils.isEmpty(paramBundle)) || (BaseLibInfo.needUpdateVersion(AppLoadingUI.access$000(this.this$0).config.baselibMiniVersion, paramBundle))))
       {
         AppBrandTask.runTaskOnUiThread(new AppLoadingUI.11.1(this));
@@ -37,7 +37,7 @@ class AppLoadingUI$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppLoadingUI.11
  * JD-Core Version:    0.7.0.1
  */

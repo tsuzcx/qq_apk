@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.widget.Button;
-import augd;
-import augo;
-import auik;
-import auil;
-import auim;
-import aujq;
-import bdgm;
-import bdjz;
+import anni;
+import awng;
+import awnr;
+import awpn;
+import awpo;
+import awpp;
+import awqu;
+import bglp;
+import bgpa;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
@@ -35,15 +35,15 @@ public class MsgBackupPcBaseFragment
   
   private void n()
   {
-    if ((getActivity() != null) && (this.jdField_a_of_type_Auge != null)) {
-      getActivity().addObserver(this.jdField_a_of_type_Auge);
+    if ((getActivity() != null) && (this.jdField_a_of_type_Awnh != null)) {
+      getActivity().addObserver(this.jdField_a_of_type_Awnh);
     }
   }
   
   private void o()
   {
-    if ((getActivity() != null) && (this.jdField_a_of_type_Auge != null)) {
-      getActivity().removeObserver(this.jdField_a_of_type_Auge);
+    if ((getActivity() != null) && (this.jdField_a_of_type_Awnh != null)) {
+      getActivity().removeObserver(this.jdField_a_of_type_Awnh);
     }
   }
   
@@ -53,7 +53,7 @@ public class MsgBackupPcBaseFragment
     n();
   }
   
-  public void aI_()
+  public void aG_()
   {
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing())) {}
@@ -61,37 +61,37 @@ public class MsgBackupPcBaseFragment
     do
     {
       return;
-      localObject = alud.a(2131707321);
-      String str1 = alud.a(2131707307);
-      this.jdField_b_of_type_Int = augd.a().a();
+      localObject = anni.a(2131705712);
+      String str1 = anni.a(2131705698);
+      this.jdField_b_of_type_Int = awng.a().a();
       if (this.jdField_b_of_type_Int == 2) {
-        localObject = alud.a(2131707303);
+        localObject = anni.a(2131705694);
       }
       if (this.jdField_b_of_type_Int == 2) {
-        str1 = alud.a(2131707309);
+        str1 = anni.a(2131705700);
       }
-      String str2 = alud.a(2131707317);
+      String str2 = anni.a(2131705708);
       if (this.jdField_b_of_type_Int == 1) {
-        str2 = alud.a(2131707304);
+        str2 = anni.a(2131705695);
       }
-      localObject = bdgm.a(localFragmentActivity, 0, (String)localObject, str2, localFragmentActivity.getString(2131690398), str1, new auil(this), new auim(this));
+      localObject = bglp.a(localFragmentActivity, 0, (String)localObject, str2, localFragmentActivity.getString(2131690403), str1, new awpo(this), new awpp(this));
     } while (localFragmentActivity.isFinishing());
-    ((bdjz)localObject).show();
+    ((bgpa)localObject).show();
   }
   
   protected void b()
   {
     super.b();
-    setTitle(getActivity().getString(2131690388));
-    if (augd.a().a() == 2) {
-      setTitle(getActivity().getString(2131690385));
+    setTitle(getActivity().getString(2131690393));
+    if (awng.a().a() == 2) {
+      setTitle(getActivity().getString(2131690390));
     }
   }
   
   protected void c()
   {
     super.c();
-    aujq.a("MsgBackup_MsgBackupPcBaseFragment", "MsgBackupPcBaseFragment bindview is called! biztype = %d, isFromPcHandle = %b", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(this.e) });
+    awqu.a("MsgBackup_MsgBackupPcBaseFragment", "MsgBackupPcBaseFragment bindview is called! biztype = %d, isFromPcHandle = %b", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(this.e) });
   }
   
   protected void d()
@@ -119,7 +119,7 @@ public class MsgBackupPcBaseFragment
       }
       bool1 = bool2;
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        if (!augo.c) {
+        if (!awnr.c) {
           break label124;
         }
       }
@@ -138,13 +138,13 @@ public class MsgBackupPcBaseFragment
     if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing())) {
       return;
     }
-    String str2 = alud.a(2131707302);
-    this.jdField_b_of_type_Int = augd.a().a();
-    String str1 = alud.a(2131707318);
+    String str2 = anni.a(2131705693);
+    this.jdField_b_of_type_Int = awng.a().a();
+    String str1 = anni.a(2131705709);
     if (this.jdField_b_of_type_Int == 1) {
-      str1 = alud.a(2131707308);
+      str1 = anni.a(2131705699);
     }
-    bdgm.a(localFragmentActivity, 0, null, str1, null, str2, new auik(this), null).show();
+    bglp.a(localFragmentActivity, 0, null, str1, null, str2, new awpn(this), null).show();
   }
   
   public void m()
@@ -162,14 +162,14 @@ public class MsgBackupPcBaseFragment
   {
     super.onDestroyView();
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupPcBaseFragment", 2, "onDestroyView topage = " + this.jdField_a_of_type_Int + ", bizType = " + augd.a().a() + ", sIsShouQiBtnClick = " + augo.a);
+      QLog.d("MsgBackup_MsgBackupPcBaseFragment", 2, "onDestroyView topage = " + this.jdField_a_of_type_Int + ", bizType = " + awng.a().a() + ", sIsShouQiBtnClick = " + awnr.a);
     }
     o();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment
  * JD-Core Version:    0.7.0.1
  */

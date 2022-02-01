@@ -5,13 +5,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONObject;
-import ovz;
-import owb;
+import plh;
+import plj;
 
 public class DynamicChannelDataModule$6$1
   implements Runnable
 {
-  public DynamicChannelDataModule$6$1(owb paramowb, Bundle paramBundle, JSONObject paramJSONObject) {}
+  public DynamicChannelDataModule$6$1(plj paramplj, Bundle paramBundle, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -23,12 +23,12 @@ public class DynamicChannelDataModule$6$1
       if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
         break label97;
       }
-      localObject = ovz.a(this.jdField_a_of_type_Owb.jdField_a_of_type_Ovz, this.jdField_a_of_type_Owb.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle);
+      localObject = plh.a(this.jdField_a_of_type_Plj.jdField_a_of_type_Plh, this.jdField_a_of_type_Plj.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle);
     }
     for (;;)
     {
       if ((localObject == null) || (((List)localObject).size() == 0)) {
-        ovz.a(this.jdField_a_of_type_Owb.jdField_a_of_type_Ovz, bool, this.jdField_a_of_type_Owb.jdField_a_of_type_Int, false, false, null);
+        plh.a(this.jdField_a_of_type_Plj.jdField_a_of_type_Plh, bool, this.jdField_a_of_type_Plj.jdField_a_of_type_Int, false, false, null);
       }
       return;
       bool = false;

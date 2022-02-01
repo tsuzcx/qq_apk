@@ -1,20 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.qapmsdk.QAPM;
+import com.tencent.qapmsdk.base.meta.DropFrameResultMeta;
+import com.tencent.qapmsdk.dropframe.DropFrameMonitor;
+import com.tencent.qapmsdk.dropframe.IDropFrameListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 
 public class adcq
-  implements DialogInterface.OnClickListener
+  extends adcg
+  implements adbv, IDropFrameListener
 {
-  public adcq(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bdjz parambdjz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Bdjz.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
-    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
+    if (e()) {
+      QAPM.beginScene(paramString, QAPM.ModeDropFrame);
+    }
+  }
+  
+  protected void b()
+  {
+    DropFrameMonitor.setDropFrameListener(this);
+  }
+  
+  public void b(String paramString)
+  {
+    if (e()) {
+      QAPM.endScene(paramString, QAPM.ModeDropFrame);
+    }
+  }
+  
+  public String c()
+  {
+    return "dropframe";
+  }
+  
+  public void onMetaGet(DropFrameResultMeta paramDropFrameResultMeta)
+  {
+    adcd.a(paramDropFrameResultMeta.scene, (paramDropFrameResultMeta.duration / 1000000.0F), paramDropFrameResultMeta.dropCount, paramDropFrameResultMeta.dropIntervals);
+    if (QLog.isColorLevel())
+    {
+      double d1 = paramDropFrameResultMeta.dropIntervals[0];
+      double d2 = paramDropFrameResultMeta.dropIntervals[1];
+      double d3 = paramDropFrameResultMeta.dropIntervals[2];
+      double d4 = paramDropFrameResultMeta.dropIntervals[3];
+      long l = (paramDropFrameResultMeta.duration / 1000000.0F);
+      d1 = (16.699999999999999D * d1 + 25.049999999999997D * d2 + 50.099999999999994D * d3 + 100.19999999999999D * d4) / l;
+      QLog.i("MagnifierSDK.QAPM", 2, "DropFrameQAPM " + d1 + " 时间 " + l + " 分布 " + Arrays.toString(paramDropFrameResultMeta.dropIntervals));
+    }
   }
 }
 

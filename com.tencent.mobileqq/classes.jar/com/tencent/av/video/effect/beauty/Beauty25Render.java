@@ -91,7 +91,7 @@ public class Beauty25Render
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.video.effect.beauty.Beauty25Render
  * JD-Core Version:    0.7.0.1
  */

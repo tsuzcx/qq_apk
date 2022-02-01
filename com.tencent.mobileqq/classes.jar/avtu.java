@@ -1,12 +1,23 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
 
-public abstract interface avtu
+public final class avtu
+  implements Parcelable.Creator<MusicInfo>
 {
-  public abstract void onClick(View paramView);
+  public MusicInfo a(Parcel paramParcel)
+  {
+    return new MusicInfo(paramParcel, null);
+  }
+  
+  public MusicInfo[] a(int paramInt)
+  {
+    return new MusicInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avtu
  * JD-Core Version:    0.7.0.1
  */

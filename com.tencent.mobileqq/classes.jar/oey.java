@@ -1,26 +1,21 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
 
-class oey
-  implements ofd
+public class oey
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  oey(oev paramoev) {}
+  public oey(CustomTabView paramCustomTabView) {}
   
-  public void a(GiftServiceBean paramGiftServiceBean)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    String str = oev.c(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
-    {
-      oev.c(this.a, paramGiftServiceBean);
-      oev.c(this.a).setText(paramGiftServiceBean.t);
-    }
-    oev.a(this.a);
+    QLog.i("EcshopCustomTabView", 2, "onLaunchResult" + paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oey
  * JD-Core Version:    0.7.0.1
  */

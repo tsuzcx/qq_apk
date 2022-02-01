@@ -1,18 +1,20 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface axue
+class axue
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  axue(axtp paramaxtp) {}
   
-  public abstract int a(List<axua> paramList);
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.d(true);
+    bcst.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axue
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,10 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.theme.diy.ResData;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
 
 public abstract interface bapb
 {
-  public abstract int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData);
+  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

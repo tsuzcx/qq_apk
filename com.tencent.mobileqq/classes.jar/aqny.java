@@ -1,28 +1,10 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-
-public class aqny
-  implements View.OnLongClickListener
+public abstract interface aqny
 {
-  public aqny(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
-  
-  public boolean onLongClick(View paramView)
-  {
-    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
-      return false;
-    }
-    paramView.setSelected(true);
-    bdpi localbdpi = new bdpi();
-    localbdpi.a(2131365065, paramView.getContext().getString(2131691562));
-    this.a.a = bdft.a(paramView, localbdpi, new aqnz(this, paramView), new aqoa(this, paramView));
-    return true;
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqny
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,12 @@
 public abstract interface qyz
 {
-  public abstract void a(rfs paramrfs);
+  public abstract void a();
   
-  public abstract void a(rfs paramrfs, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(rfs paramrfs, int paramInt, boolean paramBoolean);
-  
-  public abstract void a(rfs paramrfs, long paramLong1, long paramLong2);
-  
-  public abstract void a(rfs paramrfs, boolean paramBoolean);
-  
-  public abstract boolean a(rfs paramrfs);
-  
-  public abstract void b(rfs paramrfs);
-  
-  public abstract void b(rfs paramrfs, boolean paramBoolean);
-  
-  public abstract void c(rfs paramrfs);
-  
-  public abstract void d(rfs paramrfs);
-  
-  public abstract void e(rfs paramrfs);
-  
-  public abstract void f(rfs paramrfs);
-  
-  public abstract void g(rfs paramrfs);
-  
-  public abstract void h(rfs paramrfs);
-  
-  public abstract void i(rfs paramrfs);
-  
-  public abstract void j(rfs paramrfs);
+  public abstract void a(int paramInt, long paramLong, String paramString1, qzh paramqzh, String paramString2, String paramString3, String paramString4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qyz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,14 @@
 import android.view.View;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
 
-public class axmx
-  implements bicg
+public abstract interface axmx
 {
-  public axmx(IosTimepicker paramIosTimepicker) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(View paramView, int paramInt)
-  {
-    IosTimepicker.a(this.a, paramView, 1);
-  }
+  public abstract void a(String paramString, View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axmx
  * JD-Core Version:    0.7.0.1
  */

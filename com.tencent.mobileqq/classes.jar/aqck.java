@@ -1,13 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class aqck
-  extends aqcx
+public abstract interface aqck
 {
-  public int a;
-  public List<String> a = new ArrayList();
-  public int b;
-  public int c = -1;
+  public abstract ColorNote getColorNote();
 }
 
 

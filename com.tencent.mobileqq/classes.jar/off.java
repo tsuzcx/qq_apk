@@ -1,16 +1,31 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.ecshopassit.view.MinusViewBotomView;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class off
+public class off
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public off(MinusViewBotomView paramMinusViewBotomView, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
-  off(ofb paramofb) {}
+  public void onClick(View paramView)
+  {
+    oes.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext(), "jumpPreview", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, "fypbtn");
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext() instanceof ChatActivity)) {
+      ((ChatActivity)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewMinusViewBotomView.getContext()).finish();
+    }
+    oev.a(null, "gouwu_fypbtn_click", "", NetConnInfoCenter.getServerTimeMillis() + "", "");
+    oev.b(null, "gouwu_fypbtn_click", "", NetConnInfoCenter.getServerTimeMillis() + "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     off
  * JD-Core Version:    0.7.0.1
  */

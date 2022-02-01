@@ -1,56 +1,19 @@
-public class bmgz
+class bmgz
+  extends bmhc
 {
-  public int a;
-  private bmha jdField_a_of_type_Bmha;
-  private bmhd jdField_a_of_type_Bmhd;
-  public int b = 100;
-  public int c = 2;
-  private int d;
-  
-  public bmgz(int paramInt1, int paramInt2, int paramInt3)
+  bmgz(bmgy parambmgy, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = 10000;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    super(paramString, paramBoolean);
   }
   
-  public int a()
+  public String a()
   {
-    return this.jdField_a_of_type_Int;
+    return null;
   }
   
-  public bmha a()
+  public String b()
   {
-    return this.jdField_a_of_type_Bmha;
-  }
-  
-  public bmhd a()
-  {
-    return this.jdField_a_of_type_Bmhd;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public void a(bmha parambmha)
-  {
-    this.jdField_a_of_type_Bmha = parambmha;
-    if (parambmha.a() != null) {
-      this.b = parambmha.b();
-    }
-  }
-  
-  public void a(bmhd parambmhd)
-  {
-    this.jdField_a_of_type_Bmhd = parambmhd;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    return "wspeed.qq.com";
   }
 }
 

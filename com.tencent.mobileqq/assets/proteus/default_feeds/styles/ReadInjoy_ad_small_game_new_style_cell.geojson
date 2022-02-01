@@ -1,0 +1,213 @@
+{
+    "ReadInjoy_ad_small_game_new_style_cell": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "data_attributes": {
+            "setRemoteInfo:": {
+                "jump_src": "$jump_src_fg_button",
+                "jump_page": "$jump_page_fg_button",
+                "account_expose_card": "$account_expose_card",
+                "novel_corner_mark": "$novel_corner_mark"
+            }
+        },
+        "subviews": [
+            {
+                "view_type": "container",
+                "layout_type": "layout_relative",
+                "margin_top": "12",
+                "margin_left": "6",
+                "height": {
+                    "type": "relative",
+                    "value": "84"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "363"
+                },
+                "subviews": [
+                    {
+                        "view_type": "container",
+                        "view_id": "id_content_container",
+                        "layout_type": "layout_relative",
+                        "margin_left": "0",
+                        "margin_top": "14",
+                        "height": {
+                            "type": "relative",
+                            "value": "70"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "363"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "ReadInjoyAsynImageView",
+                                "view_id": "id_background_img",
+                                "margin_left": "0",
+                                "margin_top": "0",
+                                "height": {
+                                    "type": "match_parent"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "event_type": "cmd_large_img_click",
+                                "attributes": {
+                                    "setFrameString:": "-1",
+                                    "setImageWithURLString:lineup:": [
+                                        "$background_img_url",
+                                        "-1"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_left_big_img",
+                        "align_parent_left": "YES",
+                        "margin_left": "8",
+                        "height": {
+                            "type": "relative",
+                            "value": "84"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "90"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setImageWithURLString:lineup:": [
+                                "$left_big_img_url",
+                                "-1"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_game_title",
+                        "margin_left": "12",
+                        "margin_top": "28",
+                        "right_of_view": "id_left_big_img",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "160"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "$game_title",
+                            "setTextColorString:": "#242424",
+                            "setBoldFontSizeString:": "17",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_game_desc",
+                        "margin_left": "12",
+                        "margin_top": "6",
+                        "below_of_view": "id_game_title",
+                        "right_of_view": "id_left_big_img",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "168"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "$game_desc",
+                            "setTextColorString:": "#8F8F8F",
+                            "setFontSizeString:": "12",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_game_btn",
+                        "align_parent_right": "YES",
+                        "default_visible": "YES",
+                        "margin_right": "12",
+                        "margin_top": "35",
+                        "padding_left": "14",
+                        "padding_right": "14",
+                        "height": {
+                            "type": "relative",
+                            "value": "28"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "$game_btn_text",
+                            "setTextAlignmentString:": "1",
+                            "setTextColorString:": "#FFFFFF",
+                            "setBoldFontSizeString:": "14",
+                            "setNumberOfLinesString:": "1",
+                            "setCornerRadiusString:": "14",
+                            "setBackgroundColorString:": "#00CAFC"
+                        }
+                    }
+                ]
+            },
+            {
+                "$includeComponet": "componet/article_main_body.geojson"
+            },
+            {
+                "$includeComponet": "componet/column_bar.geojson"
+            },
+            {
+                "$includeComponet": "componet/large_image_info_bar.geojson"
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_separator",
+                "margin_left": "6",
+                "margin_top": "7",
+                "height": {
+                    "type": "absolutely",
+                    "value": "0.5"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "359"
+                },
+                "attributes": {
+                    "setFrameString:": "-1",
+                    "setBackgroundColorString:": "#E5E5E5"
+                }
+            },
+            {
+                "view_type": "UIButton",
+                "view_id": "id_ad_dislike_button",
+                "align_parent_right": "YES",
+                "align_parent_bottom": "YES",
+                "margin_right": "7",
+                "event_type": "cmd_dislike_click",
+                "height": {
+                    "type": "relative",
+                    "value": "8"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "8"
+                },
+                "attributes": {
+                    "setImage:": "feeds_dislike"
+                }
+            }
+        ]
+    }
+}

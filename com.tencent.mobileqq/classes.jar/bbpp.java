@@ -1,44 +1,70 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.1.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.widget.TextView;
 
 public class bbpp
-  extends alwx
+  extends bbqp
 {
-  bbpp(bbpo parambbpo) {}
-  
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public bbpp(aobu paramaobu)
   {
-    if ((!bbpo.a(this.a)) || (bbpo.a(this.a) == null)) {}
-    for (;;)
+    super(paramaobu);
+  }
+  
+  public void b(bbmy parambbmy, bbvg parambbvg)
+  {
+    super.b(parambbmy, parambbvg);
+    TextView localTextView;
+    CharSequence localCharSequence;
+    if ((parambbmy instanceof bbkn))
     {
-      return;
-      if (paramList == null)
+      bbkn localbbkn = (bbkn)parambbmy;
+      localTextView = ((bbvc)parambbvg).e();
+      parambbmy = ((bbvc)parambbvg).f();
+      parambbvg = ((bbvc)parambbvg).g();
+      if (localTextView != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopAioKeywordTipBar", 2, "msgList == null is true");
+        localCharSequence = localbbkn.e();
+        if (localCharSequence != null) {
+          break label96;
+        }
+        localTextView.setText("");
+        if (parambbvg != null) {
+          parambbvg.setVisibility(8);
         }
       }
-      else
+      if (parambbmy != null)
       {
-        paramList = paramList.iterator();
-        do
-        {
-          if (!paramList.hasNext()) {
-            break;
-          }
-        } while (((MessageRecord)paramList.next()).uniseq != bbpo.a(this.a).uniseq);
-        for (int i = 1; i != 0; i = 0)
-        {
-          ThreadManager.getUIHandler().post(new TroopAioKeywordTipBar.1.1(this));
-          return;
+        parambbvg = localbbkn.f();
+        if (parambbvg != null) {
+          break label115;
         }
+        parambbmy.setText("");
       }
     }
+    label96:
+    label115:
+    do
+    {
+      do
+      {
+        return;
+        localTextView.setText(localCharSequence);
+        if (parambbvg == null) {
+          break;
+        }
+        parambbvg.setVisibility(0);
+        break;
+        parambbmy.setText(parambbvg);
+        return;
+      } while (!(parambbmy instanceof bbkm));
+      parambbmy = (bbkm)parambbmy;
+      parambbvg = ((bbvc)parambbvg).h();
+    } while (parambbvg == null);
+    parambbmy = parambbmy.e();
+    if (parambbmy == null)
+    {
+      parambbvg.setText("");
+      return;
+    }
+    parambbvg.setText(parambbmy);
   }
 }
 

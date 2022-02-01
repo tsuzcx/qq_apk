@@ -1,18 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForStructing;
 
-public class aiko
-  implements DialogInterface.OnClickListener
+public abstract interface aiko
 {
-  public aiko(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD9", "0X8005FD9", 0, 0, "", "", "", "");
-  }
+  public abstract void a(MessageForStructing paramMessageForStructing, afwr paramafwr, View paramView, boolean paramBoolean);
 }
 
 

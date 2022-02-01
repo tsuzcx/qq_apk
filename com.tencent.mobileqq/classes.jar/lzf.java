@@ -1,202 +1,64 @@
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class lzf
-  implements lzd
+public class lzf
 {
-  private IBinder a;
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public int a;
+  @Deprecated
+  ljz a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  lzf(IBinder paramIBinder)
+  static
   {
-    this.a = paramIBinder;
+    jdField_b_of_type_JavaLangString = "sharp/small_window/" + "close_flag";
+    jdField_a_of_type_JavaLangString = "sharp/small_window/" + "version";
+    jdField_c_of_type_JavaLangString = "sharp/small_window/" + "use_textureview";
+    jdField_d_of_type_JavaLangString = "sharp/small_window/" + "close_video";
+    jdField_e_of_type_JavaLangString = "sharp/small_window/" + "close_audio";
+    if (QLog.isColorLevel()) {
+      QLog.d("SmallScreenConfigParser", 2, " SmallScreenConfigParser --> key_open_flag = " + jdField_b_of_type_JavaLangString + " , key_version = " + jdField_a_of_type_JavaLangString + " , key_textureview = " + jdField_c_of_type_JavaLangString + " , key_close_video_flag = " + jdField_d_of_type_JavaLangString + " , key_close_audio_flag = " + jdField_e_of_type_JavaLangString);
+    }
   }
   
-  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public lzf()
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_Ljz = null;
+  }
+  
+  public boolean a(ljz paramljz)
+  {
+    try
     {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-        localParcel1.writeString(paramString);
-        localParcel1.writeInt(paramInt1);
-        localParcel1.writeInt(paramInt2);
-        if (paramBundle != null)
-        {
-          localParcel1.writeInt(1);
-          paramBundle.writeToParcel(localParcel1, 0);
-          this.a.transact(5, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramString = (Bundle)Bundle.CREATOR.createFromParcel(localParcel2);
-            return paramString;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramString = null;
+      this.jdField_a_of_type_Int = paramljz.a(jdField_a_of_type_JavaLangString, 0);
+      this.jdField_b_of_type_Int = paramljz.a(jdField_b_of_type_JavaLangString, 0);
+      this.jdField_c_of_type_Int = paramljz.a(jdField_c_of_type_JavaLangString, -1);
+      this.jdField_d_of_type_Int = paramljz.a(jdField_d_of_type_JavaLangString, 0);
+      this.jdField_e_of_type_Int = paramljz.a(jdField_e_of_type_JavaLangString, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("SmallScreenConfigParser", 2, "value_version = " + this.jdField_a_of_type_Int + " , value_close_flag = " + this.jdField_b_of_type_Int + " , value_use_textureview = " + this.jdField_c_of_type_Int + " ,value_close_video = " + this.jdField_d_of_type_Int + " , value_close_audio = " + this.jdField_e_of_type_Int);
       }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
+      return true;
+    }
+    catch (Exception paramljz)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SmallScreenConfigParser", 2, "parseConfig --> Error");
       }
     }
-  }
-  
-  /* Error */
-  public void a(com.tencent.av.service.RecvMsg paramRecvMsg)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_1
-    //   11: ifnull +33 -> 44
-    //   14: aload_2
-    //   15: iconst_1
-    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   19: aload_1
-    //   20: aload_2
-    //   21: iconst_0
-    //   22: invokevirtual 72	com/tencent/av/service/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
-    //   25: aload_0
-    //   26: getfield 15	lzf:a	Landroid/os/IBinder;
-    //   29: iconst_1
-    //   30: aload_2
-    //   31: aconst_null
-    //   32: iconst_1
-    //   33: invokeinterface 48 5 0
-    //   38: pop
-    //   39: aload_2
-    //   40: invokevirtual 68	android/os/Parcel:recycle	()V
-    //   43: return
-    //   44: aload_2
-    //   45: iconst_0
-    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   49: goto -24 -> 25
-    //   52: astore_1
-    //   53: aload_2
-    //   54: invokevirtual 68	android/os/Parcel:recycle	()V
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	lzf
-    //   0	59	1	paramRecvMsg	com.tencent.av.service.RecvMsg
-    //   3	51	2	localParcel	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	52	finally
-    //   14	25	52	finally
-    //   25	39	52	finally
-    //   44	49	52	finally
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(String paramString, int paramInt, byte[] paramArrayOfByte)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt);
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(6, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
-  {
-    int i = 0;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      if (paramBoolean) {
-        i = 1;
-      }
-      localParcel1.writeInt(i);
-      localParcel1.writeString(paramString1);
-      localParcel1.writeString(paramString2);
-      localParcel1.writeString(paramString3);
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      localParcel.writeTypedArray(paramArrayOfRecvGVideoLevelInfo, 0);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lzf
  * JD-Core Version:    0.7.0.1
  */

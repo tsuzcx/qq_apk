@@ -1,10 +1,35 @@
-public abstract interface bhot
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.smtt.sdk.WebView;
+
+class bhot
+  implements bhov
 {
-  public abstract int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2);
+  bhot(bhos parambhos) {}
+  
+  public Activity a()
+  {
+    return this.a.a.getHostActivity();
+  }
+  
+  public bhos a()
+  {
+    return this.a;
+  }
+  
+  public WebViewFragment a()
+  {
+    return this.a.a.getHostFragment();
+  }
+  
+  public WebView a()
+  {
+    return this.a.a.getHostWebView();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhot
  * JD-Core Version:    0.7.0.1
  */

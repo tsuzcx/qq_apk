@@ -7,7 +7,7 @@ import NS_MINI_REPORT.REPORT.StDcReportReq;
 import NS_MINI_REPORT.REPORT.StThirdDcReportReq;
 import android.os.Handler;
 import android.os.HandlerThread;
-import bdcs;
+import bghp;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -409,7 +409,7 @@ public class MiniProgramReporter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramSingleDcData != null) {
-      localStringBuilder.append(bdcs.a(paramSingleDcData));
+      localStringBuilder.append(bghp.a(paramSingleDcData));
     }
     return localStringBuilder.toString();
   }
@@ -418,7 +418,7 @@ public class MiniProgramReporter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramSingleDcData != null) {
-      localStringBuilder.append(bdcs.a(paramSingleDcData));
+      localStringBuilder.append(bghp.a(paramSingleDcData));
     }
     return localStringBuilder.toString();
   }
@@ -528,7 +528,7 @@ public class MiniProgramReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramReporter
  * JD-Core Version:    0.7.0.1
  */

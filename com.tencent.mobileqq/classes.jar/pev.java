@@ -1,77 +1,37 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Ref.BooleanRef;
+import kotlin.jvm.internal.Ref.ObjectRef;
 
-class pev
-  implements BusinessObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "clickedView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "which", "", "OnClick"}, k=3, mv={1, 1, 16})
+final class pev
+  implements bkhw
 {
-  pev(pes parampes, AdvertisementInfo paramAdvertisementInfo) {}
+  pev(peq parampeq, Ref.ObjectRef paramObjectRef, Ref.BooleanRef paramBooleanRef, bkho parambkho) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public final void OnClick(View paramView, int paramInt)
   {
-    int i = -1;
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "type = " + paramInt + " is success:" + paramBoolean);
-    }
-    if (paramBoolean) {}
-    try
+    switch (paramInt)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      WebSsoBody.WebSsoResponseBody localWebSsoResponseBody;
-      if (paramBundle != null)
-      {
-        localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if (!localWebSsoResponseBody.ret.has()) {
-          break label253;
-        }
-      }
-      label253:
-      for (paramInt = localWebSsoResponseBody.ret.get();; paramInt = -1)
-      {
-        if (paramInt == 0)
-        {
-          paramBundle = localWebSsoResponseBody.data.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("AdvertisementInfoModule", 2, "back json " + paramBundle);
-          }
-          paramBundle = new JSONObject(paramBundle);
-          paramInt = i;
-          if (paramBundle.has("ret")) {
-            paramInt = paramBundle.getInt("ret");
-          }
-          if (paramInt == 0)
-          {
-            paramBundle = paramBundle.optJSONArray("data");
-            if ((paramBundle != null) && (paramBundle.length() > 0))
-            {
-              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAppJson = paramBundle.getJSONObject(0).toString();
-              if (QLog.isColorLevel()) {
-                QLog.d("AdvertisementInfoModule", 2, "back  data json " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAppJson);
-              }
-              this.jdField_a_of_type_Pes.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
-            }
-          }
-        }
-        return;
-      }
+    default: 
+      this.jdField_a_of_type_Bkho.dismiss();
       return;
     }
-    catch (Exception paramBundle)
+    pbe localpbe = (pbe)this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element;
+    paramView = peq.a(this.jdField_a_of_type_Peq).a;
+    if (paramView != null) {}
+    for (paramView = paramView.commentId;; paramView = null)
     {
-      paramBundle.printStackTrace();
+      localpbe.a(paramView, this.jdField_a_of_type_KotlinJvmInternalRef$BooleanRef.element);
+      peq.a(this.jdField_a_of_type_Peq, 6);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pev
  * JD-Core Version:    0.7.0.1
  */

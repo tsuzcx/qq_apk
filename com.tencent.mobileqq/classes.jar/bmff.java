@@ -1,16 +1,17 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.remote.RemoteServiceProxy;
+import cooperation.qzone.remote.SendMsg;
 
-public abstract interface bmff
+class bmff
+  implements blvx
 {
-  public abstract Activity a();
+  bmff(bmfd parambmfd, SendMsg paramSendMsg) {}
   
-  public abstract SessionInfo a();
-  
-  public abstract QQAppInterface a();
-  
-  public abstract boolean a();
+  public void onLoadOver(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Bmfd.a() != null) {
+      this.jdField_a_of_type_Bmfd.a().sendMsg(this.jdField_a_of_type_CooperationQzoneRemoteSendMsg);
+    }
+  }
 }
 
 

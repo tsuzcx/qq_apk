@@ -56,58 +56,58 @@ public class FormMutiItem
     //   28: astore_3
     //   29: aload_0
     //   30: aload_1
-    //   31: bipush 6
-    //   33: invokevirtual 49	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
-    //   36: putfield 51	com/tencent/mobileqq/widget/FormMutiItem:jdField_a_of_type_JavaLangCharSequence	Ljava/lang/CharSequence;
-    //   39: aload_1
-    //   40: astore_3
-    //   41: aload_0
-    //   42: aload_1
-    //   43: bipush 19
-    //   45: invokevirtual 49	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
-    //   48: putfield 53	com/tencent/mobileqq/widget/FormMutiItem:jdField_b_of_type_JavaLangCharSequence	Ljava/lang/CharSequence;
-    //   51: aload_1
-    //   52: ifnull +7 -> 59
-    //   55: aload_1
-    //   56: invokevirtual 56	android/content/res/TypedArray:recycle	()V
-    //   59: aload_0
-    //   60: invokespecial 25	com/tencent/mobileqq/widget/FormMutiItem:d	()V
-    //   63: return
-    //   64: astore_1
-    //   65: aload_3
-    //   66: ifnull -7 -> 59
-    //   69: aload_3
-    //   70: invokevirtual 56	android/content/res/TypedArray:recycle	()V
-    //   73: goto -14 -> 59
-    //   76: astore_1
-    //   77: aconst_null
-    //   78: astore_3
-    //   79: aload_1
-    //   80: astore_2
-    //   81: aload_3
-    //   82: ifnull +7 -> 89
-    //   85: aload_3
-    //   86: invokevirtual 56	android/content/res/TypedArray:recycle	()V
-    //   89: aload_2
-    //   90: athrow
-    //   91: astore_2
-    //   92: aload_1
-    //   93: astore_3
-    //   94: goto -13 -> 81
+    //   31: iconst_5
+    //   32: invokevirtual 49	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
+    //   35: putfield 51	com/tencent/mobileqq/widget/FormMutiItem:jdField_a_of_type_JavaLangCharSequence	Ljava/lang/CharSequence;
+    //   38: aload_1
+    //   39: astore_3
+    //   40: aload_0
+    //   41: aload_1
+    //   42: bipush 18
+    //   44: invokevirtual 49	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
+    //   47: putfield 53	com/tencent/mobileqq/widget/FormMutiItem:jdField_b_of_type_JavaLangCharSequence	Ljava/lang/CharSequence;
+    //   50: aload_1
+    //   51: ifnull +7 -> 58
+    //   54: aload_1
+    //   55: invokevirtual 56	android/content/res/TypedArray:recycle	()V
+    //   58: aload_0
+    //   59: invokespecial 25	com/tencent/mobileqq/widget/FormMutiItem:d	()V
+    //   62: return
+    //   63: astore_1
+    //   64: aload_3
+    //   65: ifnull -7 -> 58
+    //   68: aload_3
+    //   69: invokevirtual 56	android/content/res/TypedArray:recycle	()V
+    //   72: goto -14 -> 58
+    //   75: astore_1
+    //   76: aconst_null
+    //   77: astore_3
+    //   78: aload_1
+    //   79: astore_2
+    //   80: aload_3
+    //   81: ifnull +7 -> 88
+    //   84: aload_3
+    //   85: invokevirtual 56	android/content/res/TypedArray:recycle	()V
+    //   88: aload_2
+    //   89: athrow
+    //   90: astore_2
+    //   91: aload_1
+    //   92: astore_3
+    //   93: goto -13 -> 80
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	97	0	this	FormMutiItem
-    //   0	97	1	paramContext	Context
-    //   0	97	2	paramAttributeSet	android.util.AttributeSet
-    //   17	77	3	localContext	Context
+    //   0	96	0	this	FormMutiItem
+    //   0	96	1	paramContext	Context
+    //   0	96	2	paramAttributeSet	android.util.AttributeSet
+    //   17	76	3	localContext	Context
     // Exception table:
     //   from	to	target	type
-    //   18	27	64	java/lang/Throwable
-    //   29	39	64	java/lang/Throwable
-    //   41	51	64	java/lang/Throwable
-    //   18	27	76	finally
-    //   29	39	91	finally
-    //   41	51	91	finally
+    //   18	27	63	java/lang/Throwable
+    //   29	38	63	java/lang/Throwable
+    //   40	50	63	java/lang/Throwable
+    //   18	27	75	finally
+    //   29	38	90	finally
+    //   40	50	90	finally
   }
   
   private void d()
@@ -117,7 +117,7 @@ public class FormMutiItem
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(b(getResources(), this.jdField_a_of_type_Int));
-    int j = getResources().getDimensionPixelSize(2131296653);
+    int j = getResources().getDimensionPixelSize(2131296696);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, j);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -135,7 +135,7 @@ public class FormMutiItem
     }
     for (;;)
     {
-      j = getResources().getDimensionPixelSize(2131296662);
+      j = getResources().getDimensionPixelSize(2131296705);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(b(getResources(), this.g));
       this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, j);
       this.jdField_b_of_type_AndroidWidgetTextView.setGravity(19);
@@ -144,20 +144,20 @@ public class FormMutiItem
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
       localObject = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelOffset(2131296637);
+      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelOffset(2131296680);
       if (!this.c) {
-        ((LinearLayout.LayoutParams)localObject).bottomMargin = getResources().getDimensionPixelOffset(2131296643);
+        ((LinearLayout.LayoutParams)localObject).bottomMargin = getResources().getDimensionPixelOffset(2131296686);
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131366753);
-      ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131366755);
+      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131367019);
+      ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131367021);
       ((RelativeLayout.LayoutParams)localObject).addRule(15);
       addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
-      setCustomHeight(getResources().getDimensionPixelSize(2131298119));
+      setCustomHeight(getResources().getDimensionPixelSize(2131298201));
       return;
       this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(false);
-      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelSize(2131296647);
+      ((LinearLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelSize(2131296690);
     }
   }
   
@@ -239,7 +239,7 @@ public class FormMutiItem
     }
     label63:
     label69:
-    for (int j = getResources().getDimensionPixelSize(2131298119);; j = getResources().getDimensionPixelSize(2131298036))
+    for (int j = getResources().getDimensionPixelSize(2131298201);; j = getResources().getDimensionPixelSize(2131298118))
     {
       setCustomHeight(j);
       return;
@@ -252,7 +252,7 @@ public class FormMutiItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormMutiItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo.artfilter;
 
-import alud;
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.MotionEvent;
+import anni;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
 import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
 import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
@@ -48,7 +52,7 @@ public class ArtFilterBridgeActivity
         localBundle.putInt("pic_entrance_type", localIntent.getIntExtra("pic_entrance_type", 0));
         boolean bool2 = localIntent.getBooleanExtra("go_publish_activity", false);
         if (bool2) {
-          localBundle.putString("extra_publish_text", alud.a(2131701135));
+          localBundle.putString("extra_publish_text", anni.a(2131699560));
         }
         if (localIntent.hasExtra("troop_uin")) {
           localBundle.putString("troop_uin", localIntent.getStringExtra("troop_uin"));
@@ -116,6 +120,14 @@ public class ArtFilterBridgeActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
@@ -139,10 +151,17 @@ public class ArtFilterBridgeActivity
     super.setResult(paramInt2, localIntent);
     finish();
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

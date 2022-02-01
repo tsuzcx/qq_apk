@@ -1,32 +1,32 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
 
 public class stm
-  implements nbs
+  implements Animator.AnimatorListener
 {
-  public stm(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public stm(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptFeedsActivity", 2, "HtmlOffline.checkUpByBusinessId businessId=2278, code=" + paramInt);
+    this.a.setScaleX(1.0F);
+    this.a.setScaleY(1.0F);
+    this.a.setRotation(0.0F);
+    this.a.setAlpha(1.0F);
+    if (ReadInjoyTabDragAnimationView.a(this.a) != 0) {
+      this.a.a(0);
     }
-    this.a.app.getApplication();
-    int i = bdin.a(MobileQQ.getContext());
-    paramString = new HashMap();
-    paramString.put("network", "" + i);
-    paramString.put("status_code", "" + paramInt);
-    azri.a(this.a).a(null, "subscription_htmloffline", true, 0L, 0L, paramString, "", false);
   }
   
-  public void progress(int paramInt) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     stm
  * JD-Core Version:    0.7.0.1
  */

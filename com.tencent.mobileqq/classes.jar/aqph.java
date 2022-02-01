@@ -1,29 +1,66 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqph
-  extends Handler
+  extends aqkz<aqpg>
 {
-  public aqph(FileAssistantActivity paramFileAssistantActivity, Looper paramLooper)
+  @NonNull
+  public aqpg a(int paramInt)
   {
-    super(paramLooper);
+    return new aqpg();
   }
   
-  public void handleMessage(Message paramMessage)
+  @Nullable
+  public aqpg a(aqlg[] paramArrayOfaqlg)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    FileAssistantActivity.f(this.a);
+    QLog.i("LebaQzoneStyleProcessor", 1, "[onParsed] config");
+    return aqpg.a(paramArrayOfaqlg);
+  }
+  
+  public void a(aqpg paramaqpg)
+  {
+    QLog.i("LebaQzoneStyleProcessor", 1, "[onUpdate]");
+  }
+  
+  public Class<aqpg> clazz()
+  {
+    return aqpg.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.i("LebaQzoneStyleProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 614;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqph
  * JD-Core Version:    0.7.0.1
  */

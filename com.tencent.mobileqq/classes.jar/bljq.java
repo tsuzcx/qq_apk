@@ -1,19 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class bljq
-  implements DialogInterface.OnClickListener
+  extends OnPluginInstallListener.Stub
 {
-  bljq(bljp parambljp, Runnable paramRunnable) {}
+  bljq(bljp parambljp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "install plugin " + paramString + " error! " + paramInt);
+    }
+    try
+    {
+      ThreadManager.post(this.a.a, 5, null, false);
+      return;
+    }
+    catch (Exception paramString) {}
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "install plugin " + paramString + " OK.");
+    }
+    bljn.a().set(true);
+    try
+    {
+      ThreadManager.post(this.a.a, 5, null, false);
+      return;
+    }
+    catch (Exception paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bljq
  * JD-Core Version:    0.7.0.1
  */

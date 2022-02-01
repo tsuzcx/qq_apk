@@ -1,23 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInjoySkinAndRefreshFacade.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
-final class rds
-  implements ValueAnimator.AnimatorUpdateListener
+public class rds
+  extends rdc
 {
-  rds(int paramInt1, ViewGroup.MarginLayoutParams paramMarginLayoutParams, int paramInt2, View paramView) {}
+  rds(rdr paramrdr) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt)
   {
-    int i = (int)(paramValueAnimator.getAnimatedFraction() * this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.bottomMargin = (i + this.b);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams);
+    if ((paramBoolean) && (paramInt == rdr.a(this.a))) {
+      ThreadManager.post(new ReadInjoySkinAndRefreshFacade.2.1(this, paramGuideInfo2, paramInt, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 5, null, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rds
  * JD-Core Version:    0.7.0.1
  */

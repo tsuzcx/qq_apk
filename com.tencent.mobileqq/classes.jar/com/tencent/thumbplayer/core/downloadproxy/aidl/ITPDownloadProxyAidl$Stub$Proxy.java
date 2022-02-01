@@ -166,6 +166,29 @@ class ITPDownloadProxyAidl$Stub$Proxy
     }
   }
   
+  public void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      localParcel1.writeInt(paramInt3);
+      localParcel1.writeInt(paramInt4);
+      localParcel1.writeInt(paramInt5);
+      this.mRemote.transact(17, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
   public boolean setClipInfo(int paramInt1, int paramInt2, String paramString, TPDownloadParamAidl paramTPDownloadParamAidl)
   {
     boolean bool = true;
@@ -283,11 +306,11 @@ class ITPDownloadProxyAidl$Stub$Proxy
     //   29: aload_3
     //   30: ifnull +55 -> 85
     //   33: aload_3
-    //   34: invokeinterface 96 1 0
+    //   34: invokeinterface 98 1 0
     //   39: astore_1
     //   40: aload 4
     //   42: aload_1
-    //   43: invokevirtual 99	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+    //   43: invokevirtual 101	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
     //   46: aload_0
     //   47: getfield 15	com/tencent/thumbplayer/core/downloadproxy/aidl/ITPDownloadProxyAidl$Stub$Proxy:mRemote	Landroid/os/IBinder;
     //   50: iconst_3
@@ -450,7 +473,7 @@ class ITPDownloadProxyAidl$Stub$Proxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,6 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
-class bnew
+public abstract interface bnew
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
-  
-  bnew(bnev parambnev) {}
+  public abstract void a();
 }
 
 

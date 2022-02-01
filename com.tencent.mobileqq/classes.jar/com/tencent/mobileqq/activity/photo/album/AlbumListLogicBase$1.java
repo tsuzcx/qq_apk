@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import bdif;
+import bgnl;
 
 class AlbumListLogicBase$1
   implements Runnable
@@ -9,14 +9,14 @@ class AlbumListLogicBase$1
   
   public void run()
   {
-    bdif.a();
-    this.this$0.mAlbumListAdapterCallBack.queryAlbumList(100);
-    bdif.a("PEAK", "queryAlbumList");
+    bgnl.a();
+    this.this$0.mAlbumListAdapterCallBack.queryAlbumList(-1);
+    bgnl.a("PEAK", "queryAlbumList");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AlbumListLogicBase.1
  * JD-Core Version:    0.7.0.1
  */

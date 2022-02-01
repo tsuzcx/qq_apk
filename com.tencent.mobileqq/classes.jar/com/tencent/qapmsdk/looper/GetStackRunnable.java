@@ -22,6 +22,7 @@ class GetStackRunnable
   private static final int MAX_TIME_SPAN = 100000;
   private static final String TAG = "QAPM_looper_GetStackRunnable";
   private static final int TIME_TOLERANCE = 10;
+  private static final int TIME_TO_REPORT_DELAY = 3000;
   private static final int WAIT_MORE_BEFORE_STACK = 200;
   private static final String WHITE_LIST = "android.support.v4.";
   @Nullable
@@ -177,7 +178,7 @@ class GetStackRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.GetStackRunnable
  * JD-Core Version:    0.7.0.1
  */

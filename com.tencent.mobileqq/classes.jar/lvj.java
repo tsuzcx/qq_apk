@@ -1,82 +1,124 @@
-import com.tencent.av.random.RandomWebProtocol;
-import java.util.Random;
-import org.json.JSONObject;
-
 public class lvj
-  extends lvi
 {
-  int c;
-  int d;
-  int e;
-  String f;
+  public int a;
+  public long a;
+  public int b;
+  public int c;
   
-  public lvj(RandomWebProtocol paramRandomWebProtocol, lvi paramlvi, String paramString, int paramInt1, int paramInt2, int paramInt3, String... paramVarArgs)
+  public lvj()
   {
-    super(paramRandomWebProtocol, paramlvi);
-    this.a = 1;
-    this.c = paramString;
-    this.d = paramInt1;
-    this.c = paramInt2;
-    this.e = paramInt3;
-    if ((this.e == 2) && (paramVarArgs != null) && (paramVarArgs.length == 1)) {
-      this.f = paramVarArgs[0];
-    }
-    this.d = "[d] RequestDouble";
+    this.jdField_a_of_type_Long = 67L;
   }
   
-  String a()
+  public boolean a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = localJSONObject1;
+    return (this.jdField_a_of_type_Int != 0) && (this.b != 0) && (this.c != 0);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    boolean bool2 = true;
+    boolean bool1 = false;
+    if (this.jdField_a_of_type_Int != paramInt1)
+    {
+      this.jdField_a_of_type_Int = paramInt1;
+      bool1 = true;
+    }
+    if (this.b != paramInt2)
+    {
+      this.b = paramInt2;
+      bool1 = bool2;
+    }
     for (;;)
     {
-      try
+      if (this.c != paramInt3)
       {
-        this.a = new JSONObject().put("peer_gender", this.c).put("session_type", this.d).put("reqtype", this.e);
-        localObject = localJSONObject1;
-        if (this.e == 2)
-        {
-          localObject = localJSONObject1;
-          if (this.f != null)
-          {
-            localObject = localJSONObject1;
-            this.a.put("uniqkey", this.f);
-            localObject = localJSONObject1;
-            JSONObject localJSONObject2 = new JSONObject(super.a());
-            localObject = localJSONObject1;
-            if (this.e != 1) {
-              break label178;
-            }
-            localObject = localJSONObject1;
-            i = this.b.a;
-            localObject = localJSONObject1;
-            localJSONObject1 = localJSONObject2.put("rand", i);
-            localObject = localJSONObject1;
-            return localJSONObject1.toString();
-          }
+        this.c = paramInt3;
+        if (this.c == 0) {
+          this.c = 15;
         }
-        localObject = localJSONObject1;
-        if (this.e != 1) {
-          continue;
-        }
-        localObject = localJSONObject1;
-        this.b.a = new Random().nextInt();
-        continue;
-        localObject = localException;
+        this.jdField_a_of_type_Long = (1000 / this.c);
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return ((JSONObject)localObject).toString();
-      }
-      label178:
-      int i = new Random().nextInt();
+      return bool1;
     }
+  }
+  
+  public boolean a(lvj paramlvj)
+  {
+    boolean bool2 = true;
+    boolean bool1 = false;
+    if ((paramlvj == null) || (!paramlvj.a()))
+    {
+      bool2 = false;
+      return bool2;
+    }
+    if (this.jdField_a_of_type_Int != paramlvj.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_Int = paramlvj.jdField_a_of_type_Int;
+      bool1 = true;
+    }
+    if (this.b != paramlvj.b)
+    {
+      this.b = paramlvj.b;
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      bool2 = bool1;
+      if (this.c == paramlvj.c) {
+        break;
+      }
+      this.c = paramlvj.c;
+      if (this.c == 0) {
+        this.c = 15;
+      }
+      this.jdField_a_of_type_Long = (1000 / this.c);
+      return bool1;
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    label71:
+    label74:
+    for (;;)
+    {
+      return true;
+      if (!(paramObject instanceof lvj)) {
+        break;
+      }
+      paramObject = (lvj)paramObject;
+      if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
+      {
+        i = 1;
+        if ((i == 0) || (this.b != paramObject.b)) {
+          break label71;
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if ((i != 0) && (this.c == paramObject.c)) {
+          break label74;
+        }
+        return false;
+        i = 0;
+        break;
+      }
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RecordParam{").append("width: ").append(this.jdField_a_of_type_Int).append(", height: ").append(this.b).append(", fps: ").append(this.c).append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lvj
  * JD-Core Version:    0.7.0.1
  */

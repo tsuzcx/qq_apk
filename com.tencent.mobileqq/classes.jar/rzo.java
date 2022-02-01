@@ -1,30 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.qipc.QIPCModule;
 
 public class rzo
-  implements aofw
 {
-  public rzo(FastWebActivity paramFastWebActivity) {}
+  private static rzo a;
   
-  public void a()
+  public static rzo a()
   {
-    FastWebActivity.b(this.a, true);
-    QLog.d(FastWebActivity.a(this.a), 1, "onPageSwipeClose");
+    if (a == null) {}
+    try
+    {
+      a = new rzo();
+      return a;
+    }
+    finally {}
   }
   
-  public void b()
+  public QIPCModule a()
   {
-    if (FastWebActivity.a(this.a) == 0L)
-    {
-      FastWebActivity.a(this.a, NetConnInfoCenter.getServerTime());
-      QLog.d(FastWebActivity.a(this.a), 1, "onPageSwipeNotClose time :" + FastWebActivity.a(this.a));
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rzo
  * JD-Core Version:    0.7.0.1
  */

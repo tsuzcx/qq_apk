@@ -1,23 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-final class szr
-  implements Comparator<ArticleInfo>
+public class szr
+  implements syk
 {
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  public int a(BaseData paramBaseData)
   {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
-    }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
+    return 5;
+  }
+  
+  public syj a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    return new szs(LayoutInflater.from(paramContext).inflate(2131560173, null), paramBaseData);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.t == 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     szr
  * JD-Core Version:    0.7.0.1
  */

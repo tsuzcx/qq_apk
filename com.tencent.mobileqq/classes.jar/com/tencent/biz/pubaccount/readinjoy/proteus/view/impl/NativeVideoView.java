@@ -43,7 +43,7 @@ public class NativeVideoView
     measure(paramInt1, paramInt2);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
   }

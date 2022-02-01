@@ -1,14 +1,18 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
 public class qkt
+  implements ViewBase.IBuilder
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public long c = -1L;
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new qkq(paramVafContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qkt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ajeu;
+import akww;
 
 class PreloadFlowControlConfig$1
   implements Runnable
@@ -9,12 +9,12 @@ class PreloadFlowControlConfig$1
   
   public void run()
   {
-    ajeu.a(this.this$0, PreloadFlowControlConfig.access$000(this.this$0));
+    akww.a(this.this$0, PreloadFlowControlConfig.access$000(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadFlowControlConfig.1
  * JD-Core Version:    0.7.0.1
  */

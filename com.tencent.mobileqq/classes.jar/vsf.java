@@ -1,30 +1,78 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
+import feedcloud.FeedCloudMeta.StFeed;
 
-class vsf
-  extends AnimatorListenerAdapter
+public class vsf
 {
-  vsf(vsd paramvsd) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private QCircleInsFeedItemView jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView;
+  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+  private long b;
+  private long c;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a()
   {
-    super.onAnimationEnd(paramAnimator);
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.a.a.setImageAlpha(255);
-    }
-    for (;;)
-    {
-      this.a.a.setVisibility(8);
-      return;
-      this.a.a.setImageResource(2130850072);
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public QCircleInsFeedItemView a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView;
+  }
+  
+  public FeedCloudMeta.StFeed a()
+  {
+    return this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(QCircleInsFeedItemView paramQCircleInsFeedItemView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView = paramQCircleInsFeedItemView;
+  }
+  
+  public void a(FeedCloudMeta.StFeed paramStFeed)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+  }
+  
+  public long b()
+  {
+    return this.b;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.b = paramLong;
+  }
+  
+  public long c()
+  {
+    return this.c;
+  }
+  
+  public void c(long paramLong)
+  {
+    this.c = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vsf
  * JD-Core Version:    0.7.0.1
  */

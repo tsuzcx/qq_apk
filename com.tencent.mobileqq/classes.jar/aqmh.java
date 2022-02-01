@@ -1,32 +1,76 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqmh
-  implements View.OnClickListener
+public class aqmh
+  extends aqkz<aqmi>
 {
-  aqmh(aqmg paramaqmg, View paramView) {}
-  
-  public void onClick(View paramView)
+  @NonNull
+  public aqmi a(int paramInt)
   {
-    paramView = (arcd)this.jdField_a_of_type_AndroidViewView.getTag();
-    this.jdField_a_of_type_Aqmg.a.e = paramView.a;
-    paramView = (FileInfo)this.jdField_a_of_type_Aqmg.a.b.get(this.jdField_a_of_type_Aqmg.a.e);
-    if ((!arso.a(paramView.c())) || (arso.c(paramView.c())))
-    {
-      arrr.d(paramView.c());
-      this.jdField_a_of_type_Aqmg.a.b.remove(this.jdField_a_of_type_Aqmg.a.e);
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_Aqmg.a);
-      return;
+    return new aqmi();
+  }
+  
+  @Nullable
+  public aqmi a(aqlg[] paramArrayOfaqlg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed");
     }
-    arri.a(2131692487);
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    {
+      paramArrayOfaqlg = paramArrayOfaqlg[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed, content:" + paramArrayOfaqlg);
+      }
+      return aqmi.a(paramArrayOfaqlg);
+    }
+    return new aqmi();
+  }
+  
+  public void a(aqmi paramaqmi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOVideoPlayConfigProcessor", 2, "onUpdate");
+    }
+    bcvn.a().a(paramaqmi);
+  }
+  
+  public Class clazz()
+  {
+    return aqmi.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOVideoPlayConfigProcessor", 2, "onReqFailed");
+    }
+  }
+  
+  public int type()
+  {
+    return 537;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmh
  * JD-Core Version:    0.7.0.1
  */

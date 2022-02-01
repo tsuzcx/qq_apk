@@ -1,28 +1,48 @@
-import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileCountRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-public class aarc
-  implements aaru
+public abstract class aarc
+  extends niv
 {
-  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramaarb != null) {}
-    for (paramString = paramaarb.a(); (paramaarb == null) || (paramString == null); paramString = null)
+    b(paramInt, paramArrayOfByte, paramBundle);
+  }
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      aase.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
-      return true;
+      a(false, false, 0, 0, 0);
+      return;
     }
+    paramBundle = new oidb_0x6d8.RspBody();
     try
     {
-      GdtBannerFragmentForJS.a(paramString, new JSONObject(paramVarArgs[0]), GdtBannerFragmentForJS.class);
-      return true;
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (!paramBundle.group_file_cnt_rsp.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFileProtocol", 2, "no group_file_cnt_rsp rsp.");
+        }
+        a(false, false, 0, 0, 0);
+        return;
+      }
     }
-    catch (JSONException paramaarb)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      aase.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramaarb);
+      a(false, false, 0, 0, 0);
+      return;
     }
-    return true;
+    paramArrayOfByte = (oidb_0x6d8.GetFileCountRspBody)paramBundle.group_file_cnt_rsp.get();
+    a(true, paramArrayOfByte.bool_file_too_many.get(), paramArrayOfByte.uint32_all_file_count.get(), paramArrayOfByte.uint32_limit_count.get(), paramInt);
   }
 }
 

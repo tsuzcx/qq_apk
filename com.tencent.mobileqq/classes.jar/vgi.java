@@ -1,50 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFeedVisitor;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import java.util.LinkedList;
 
 public class vgi
-  extends urt
 {
-  public static final String a = uqn.a("StorySvc.feed_visitor_list");
-  public String b;
+  public static final int a;
+  private static final LinkedList<vgk> a;
   
-  public String a()
+  static
   {
-    return a;
-  }
-  
-  public uro a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetFeedVisitor localRspGetFeedVisitor = new qqstory_service.RspGetFeedVisitor();
-    try
+    jdField_a_of_type_Int = (int)(20.0F * bgtn.a());
+    jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    int i = 10 - jdField_a_of_type_JavaUtilLinkedList.size();
+    while (i > 0)
     {
-      localRspGetFeedVisitor.mergeFrom(paramArrayOfByte);
-      return new vht(this.b, localRspGetFeedVisitor);
+      vgk localvgk = new vgk(null);
+      jdField_a_of_type_JavaUtilLinkedList.add(localvgk);
+      i -= 1;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wxe.d("Q.qqstory:GetVideoWatcherListRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetFeedVisitor localReqGetFeedVisitor = new qqstory_service.ReqGetFeedVisitor();
-    localReqGetFeedVisitor.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localReqGetFeedVisitor.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetVideoWatcherListRequest{, feedId='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vgi
  * JD-Core Version:    0.7.0.1
  */

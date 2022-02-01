@@ -1,10 +1,10 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.graphics.Bitmap;
-import axqw;
-import bdhb;
-import bdhj;
-import bksf;
+import baox;
+import bgmg;
+import bgmo;
+import bnhe;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
 import java.io.IOException;
@@ -17,13 +17,13 @@ class AECameraGLSurfaceView$7
   public void run()
   {
     String str = AECameraGLSurfaceView.a(this.this$0).a + "/" + System.currentTimeMillis() + ".jpg";
-    bdhb.c(str);
+    bgmg.c(str);
     File localFile = new File(str);
     try
     {
-      bdhj.a(this.a, localFile);
-      bdhj.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
-      AECameraGLSurfaceView.a(this.this$0, new axqw(0, 0, str, null, AECameraGLSurfaceView.a(this.this$0)));
+      bgmo.a(this.a, localFile);
+      bgmo.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
+      AECameraGLSurfaceView.a(this.this$0, new baox(0, 0, str, null, AECameraGLSurfaceView.a(this.this$0)));
       this.a.recycle();
       return;
     }
@@ -32,14 +32,14 @@ class AECameraGLSurfaceView$7
       for (;;)
       {
         localIOException.printStackTrace();
-        AECameraGLSurfaceView.a(this.this$0, new axqw(0, -1, str, null, AECameraGLSurfaceView.a(this.this$0)));
+        AECameraGLSurfaceView.a(this.this$0, new baox(0, -1, str, null, AECameraGLSurfaceView.a(this.this$0)));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.7
  * JD-Core Version:    0.7.0.1
  */

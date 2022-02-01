@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 import me.ele.uetool.util.JarResource;
@@ -129,6 +130,7 @@ public class HierarchyItem
     if (this.childClickListener != null) {
       this.childClickListener.onClick(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void toggleIcon()
@@ -159,7 +161,7 @@ public class HierarchyItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.recyclerview.HierarchyItem
  * JD-Core Version:    0.7.0.1
  */

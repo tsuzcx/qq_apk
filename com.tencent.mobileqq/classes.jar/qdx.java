@@ -1,34 +1,42 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class qdx
-  implements phj
+  implements qft
 {
-  public qdx(ComponentHeaderPolymeric paramComponentHeaderPolymeric, ArticleInfo paramArticleInfo) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderPolymeric", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean + " followStatus = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e);
-    }
-    if (!paramString.equals(ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric).getTag())) {
-      return;
-    }
-    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, true);
-    if (paramBoolean)
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    paramBaseArticleInfo = new qba().L(paramBaseArticleInfo).B(paramBaseArticleInfo);
+    switch (paramInt)
     {
-      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, false);
-      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1);
-      return;
+    default: 
+      paramBaseArticleInfo.a("ReadInjoy_small_cell");
     }
-    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, 2);
+    for (;;)
+    {
+      return paramBaseArticleInfo.a();
+      paramBaseArticleInfo.a("ReadInjoy_large_cell");
+    }
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qdx
  * JD-Core Version:    0.7.0.1
  */

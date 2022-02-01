@@ -1,18 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.InviteToGroupInfo.UinInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bbpa
-  implements Parcelable.Creator<InviteToGroupInfo.UinInfo>
+class bbpa
+  implements View.OnClickListener
 {
-  public InviteToGroupInfo.UinInfo a(Parcel paramParcel)
-  {
-    return new InviteToGroupInfo.UinInfo(paramParcel);
-  }
+  bbpa(bboz parambboz, bblw parambblw) {}
   
-  public InviteToGroupInfo.UinInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new InviteToGroupInfo.UinInfo[paramInt];
+    if ("ActiveEntitySearchResultPresenter_add_troop".equals(paramView.getTag())) {
+      bboz.a(this.jdField_a_of_type_Bboz, paramView.getContext(), this.jdField_a_of_type_Bblw);
+    }
+    try
+    {
+      bcst.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "P_CliOper", "Grp_find", "", "grptab", "Clk_join", 0, 0, this.jdField_a_of_type_Bblw.b, "", "", "");
+      label64:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label64;
+    }
   }
 }
 

@@ -1,33 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
-final class atxs
-  extends Handler
+public class atxs
+  implements bigw
 {
-  java.lang.ref.WeakReference<atxi> a;
+  public atxs(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public atxs(atxi paramatxi)
+  public void a(int paramInt)
   {
-    super(Looper.getMainLooper());
-    this.a = new mqq.util.WeakReference(paramatxi);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a == null) {}
-    atxi localatxi;
-    do
-    {
-      return;
-      localatxi = (atxi)this.a.get();
-    } while (localatxi == null);
-    localatxi.a(paramMessage);
+    QfileEditBottomBar.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atxs
  * JD-Core Version:    0.7.0.1
  */

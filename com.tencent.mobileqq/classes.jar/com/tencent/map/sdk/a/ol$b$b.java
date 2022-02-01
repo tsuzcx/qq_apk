@@ -36,9 +36,9 @@ final class ol$b$b<T>
     {
       if (this.a.e.isDone())
       {
-        os.a locala = os.a("DispatchUtil");
+        os.a locala1 = os.a("DispatchUtil");
         new StringBuilder("future:").append(this.a.e).toString();
-        locala.a();
+        locala1.a();
         try
         {
           if (this.a.f != null)
@@ -51,11 +51,13 @@ final class ol$b$b<T>
         }
         catch (ExecutionException localExecutionException)
         {
+          this.a.g.removeCallbacks(this);
           Log.wtf("DispatchUtil", localExecutionException);
           return;
         }
         catch (InterruptedException localInterruptedException)
         {
+          this.a.g.removeCallbacks(this);
           Log.wtf("DispatchUtil", localInterruptedException);
           Thread.currentThread().interrupt();
           return;
@@ -69,7 +71,11 @@ final class ol$b$b<T>
       }
       os.a("DispatchUtil").a();
       this.a.a(this.a.i, this.a.g, this.a.k);
+      return;
     }
+    os.a locala2 = os.a("DispatchUtil");
+    new StringBuilder("future:").append(this.a.e).toString();
+    locala2.a();
   }
 }
 

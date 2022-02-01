@@ -1,151 +1,583 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.Path.FillType;
-import android.graphics.PathMeasure;
-import android.graphics.PointF;
 import android.os.SystemClock;
-import com.tencent.av.doodle.MySurfaceView;
+import android.text.TextUtils;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
+import com.tencent.aekit.plugin.core.AIAttr;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.av.opengl.effects.AEFilterSupport;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.shortvideo.filter.QQPtColorFilter;
+import com.tencent.mobileqq.shortvideo.filter.QQPtColorFilterInfo;
+import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.sveffects.SdkContext;
+import com.tencent.ttpic.openapi.PTFaceAttr;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
 
 public class loh
-  extends lol
+  implements log
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Queue<loi> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private volatile int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private AEFilterManager jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager;
+  private PendantItem jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem;
+  private FilterDesc jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
+  private VideoMaterial jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial;
+  private final List<loo> jdField_a_of_type_JavaUtilList = new ArrayList(11);
+  private final lon jdField_a_of_type_Lon = new lon();
+  private final lps jdField_a_of_type_Lps;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private int jdField_e_of_type_Int;
+  private boolean jdField_e_of_type_Boolean;
+  private int f;
+  private int g = 0;
   
-  public loh()
+  public loh(lps paramlps, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
+    if (QLog.isColorLevel()) {
+      QLog.i("AEFilterAVWrapperImpl", 2, "AEFilterAVWrapperImpl, mode[" + paramInt + "]");
+    }
+    this.jdField_a_of_type_Lps = paramlps;
+    this.jdField_a_of_type_Int = 0;
+    this.g = paramInt;
+    if (this.g == 1)
+    {
+      this.jdField_e_of_type_Boolean = false;
+      this.jdField_d_of_type_Boolean = false;
+      this.jdField_c_of_type_Boolean = false;
+    }
+    a(1);
+  }
+  
+  private double a()
+  {
+    double d1 = 0.16666667163372D;
+    PTFaceAttr localPTFaceAttr = a();
+    if (localPTFaceAttr != null) {
+      d1 = localPTFaceAttr.getFaceDetectScale();
+    }
+    return d1;
+  }
+  
+  private PTFaceAttr a()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null)
+    {
+      AIAttr localAIAttr = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.getAIAttr();
+      localObject1 = localObject2;
+      if (localAIAttr != null) {
+        localObject1 = (PTFaceAttr)localAIAttr.getFaceAttr();
+      }
+    }
+    return localObject1;
+  }
+  
+  private String a(FilterDesc paramFilterDesc)
+  {
+    Object localObject2;
+    if (paramFilterDesc == null) {
+      localObject2 = null;
+    }
+    Object localObject1;
+    do
+    {
+      return localObject2;
+      localObject1 = SdkContext.getInstance().getResources().getAvFilterResource().getFilterResPath();
+      if (!TextUtils.isEmpty(paramFilterDesc.resRootPath)) {
+        localObject1 = paramFilterDesc.resRootPath;
+      }
+      localObject2 = paramFilterDesc.getResFold((String)localObject1);
+      QQPtColorFilterInfo localQQPtColorFilterInfo = QQPtColorFilter.getColorFilterInfo((String)localObject2);
+      localObject1 = localObject2;
+      if (localQQPtColorFilterInfo != null) {
+        localObject1 = (String)localObject2 + localQQPtColorFilterInfo.getColorPng();
+      }
+      localObject2 = localObject1;
+    } while (!QLog.isColorLevel());
+    QLog.i("AEFilterAVWrapperImpl", 2, "getLutPath, name[" + paramFilterDesc.name + "], out[" + (String)localObject1 + "]");
+    return localObject1;
+  }
+  
+  private void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Int >= 1) {}
+    boolean bool;
+    do
+    {
+      return;
+      bool = AEFilterSupport.a(paramInt);
+      if ((bool) && (this.jdField_a_of_type_Int < 1)) {
+        this.jdField_a_of_type_Int = 1;
+      }
+    } while ((paramInt == 0) || (!QLog.isColorLevel()));
+    QLog.i("AEFilterAVWrapperImpl", 2, "prepare ret[" + bool + "], state[" + this.jdField_a_of_type_Int + "], flag[" + paramInt + "]");
+  }
+  
+  private void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool2 = true;
+    if (this.g == 1) {}
+    label233:
+    label236:
+    for (;;)
+    {
+      return;
+      if (this.jdField_c_of_type_Boolean != paramBoolean1)
+      {
+        this.jdField_c_of_type_Boolean = paramBoolean1;
+        a(104, paramBoolean1);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("AEFilterAVWrapperImpl", 4, "updateBeautyFilter, isBeautyActive[" + paramBoolean1 + "]");
+        }
+      }
+      if (this.jdField_d_of_type_Boolean != paramBoolean2)
+      {
+        this.jdField_d_of_type_Boolean = paramBoolean2;
+        a(105, paramBoolean2);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("AEFilterAVWrapperImpl", 4, "updateBeautyFilter, isTransformActive[" + paramBoolean2 + "]");
+        }
+      }
+      boolean bool1 = bool2;
+      if (!paramBoolean1)
+      {
+        bool1 = bool2;
+        if (!paramBoolean2)
+        {
+          bool1 = bool2;
+          if (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem == null)
+          {
+            bool1 = bool2;
+            if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc == null) {
+              if (this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial == null) {
+                break label233;
+              }
+            }
+          }
+        }
+      }
+      for (bool1 = bool2;; bool1 = false)
+      {
+        if ((this.jdField_e_of_type_Boolean == bool1) || (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager == null)) {
+          break label236;
+        }
+        this.jdField_e_of_type_Boolean = bool1;
+        this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.enableAIDetect(bool1);
+        if (!QLog.isDevelopLevel()) {
+          break;
+        }
+        QLog.i("AEFilterAVWrapperImpl", 4, "updateBeautyFilter, enableAIDetect[" + bool1 + "]");
+        return;
+      }
+    }
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Int >= 2) {
+      return;
+    }
+    String str;
+    label130:
+    boolean bool;
+    if (this.jdField_a_of_type_Int < 3)
+    {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager = new AEFilterManager();
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.initInGL(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.switchFilterOn(108, false);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.setBeautyNormalAlpha(0.8F);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.switchFilterOn(104, this.jdField_c_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.switchFilterOn(105, this.jdField_d_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.enableAIDetect(this.jdField_e_of_type_Boolean);
+      str = a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc);
+      if ((!TextUtils.isEmpty(str)) && (!bgmg.a(str))) {
+        break label267;
+      }
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateLutGL(str);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateMaterialGL(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.setForceFaceDetect(this.jdField_a_of_type_Boolean);
+      bool = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.isInited();
+      if (!bool) {
+        break label327;
+      }
+      this.jdField_a_of_type_Int = 2;
+      if (this.g != 0) {
+        break label301;
+      }
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.defineFiltersAndOrder(new int[] { 101, 108, 106, 102, 104, 105, 103 });
+    }
+    for (;;)
+    {
+      lpr.a(bool);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("AEFilterAVWrapperImpl", 2, "initAEFilterInGL, state[" + this.jdField_a_of_type_Int + "]");
+      return;
+      label267:
+      QLog.i("AEFilterAVWrapperImpl", 1, "initAEFilterInGL, fail path[" + str + "]");
+      break label130;
+      label301:
+      if (this.g == 1)
+      {
+        this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.defineFiltersAndOrder(new int[] { 101 });
+        continue;
+        label327:
+        this.jdField_a_of_type_Int = 3;
+      }
+    }
+  }
+  
+  private void e()
+  {
+    AEFilterManager localAEFilterManager = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager;
+    if (localAEFilterManager == null) {}
+    label116:
+    do
+    {
+      return;
+      localAEFilterManager.setSmoothSharpenSize(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int);
+      localAEFilterManager.setSmoothSharpenStrength(0.0F);
+      this.jdField_a_of_type_Lon.a(0, this.jdField_a_of_type_JavaUtilList);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      boolean bool2 = false;
+      boolean bool1 = false;
+      while (localIterator.hasNext())
+      {
+        loo localloo = (loo)localIterator.next();
+        if (localloo != null)
+        {
+          boolean bool3;
+          switch (localloo.jdField_a_of_type_Int)
+          {
+          default: 
+            bool3 = bool2;
+            bool2 = bool1;
+            bool1 = bool3;
+          }
+          for (;;)
+          {
+            bool3 = bool2;
+            bool2 = bool1;
+            bool1 = bool3;
+            break;
+            localAEFilterManager.setSmoothLevel(localloo.jdField_d_of_type_Int);
+            bool3 = bool1;
+            bool1 = bool2;
+            bool2 = bool3;
+            continue;
+            localAEFilterManager.setBeautyOrTransformLevel(localloo.jdField_a_of_type_ComTencentTtpicOpenapiConfigBeautyRealConfig$TYPE, localloo.jdField_d_of_type_Int);
+            if (localloo.jdField_d_of_type_Int == localloo.jdField_c_of_type_Int) {
+              break label116;
+            }
+            bool1 = bool2;
+            bool2 = true;
+            continue;
+            localAEFilterManager.setBeautyOrTransformLevel(localloo.jdField_a_of_type_ComTencentTtpicOpenapiConfigBeautyRealConfig$TYPE, localloo.jdField_d_of_type_Int);
+            if (localloo.jdField_d_of_type_Int == localloo.jdField_c_of_type_Int) {
+              break label116;
+            }
+            bool3 = true;
+            bool2 = bool1;
+            bool1 = bool3;
+          }
+        }
+      }
+      a(bool1, bool2);
+    } while ((this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem == null) || (!PendantItem.isBeautyMakeup(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getCategory())));
+    if ((this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.extraParam instanceof Integer)) {
+      this.f = ((Integer)this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.extraParam).intValue();
+    }
+    localAEFilterManager.setCosmeticsAlpha(this.f);
+  }
+  
+  public int a(int paramInt, boolean paramBoolean1, lpa paramlpa, boolean paramBoolean2)
+  {
+    int i;
+    if (this.jdField_a_of_type_Int < 1)
+    {
+      a(0);
+      i = paramInt;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return i;
+          if (this.jdField_a_of_type_Int < 2) {
+            d();
+          }
+          i = paramInt;
+        } while (this.jdField_a_of_type_Int >= 3);
+        i = paramInt;
+      } while (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager == null);
+      e();
+      paramInt = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.drawFrame(paramInt, paramBoolean1, System.currentTimeMillis() * 1000000L);
+      i = paramInt;
+    } while (paramlpa == null);
+    paramlpa.a(a(), (float)a(), paramBoolean2);
+    return paramInt;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilQueue.offer(new loi(this, this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength()));
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateMaterialGL(null);
+    }
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateLutGL(null);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = null;
+    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("AEFilterAVWrapperImpl", 2, "uninitInGL");
+    }
   }
   
-  public void a(long paramLong) {}
-  
-  public void b(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-    float f4 = 0.01111111F * this.c;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f4);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    int i;
-    if ((this.jdField_a_of_type_Long != -1L) && (paramMySurfaceView.jdField_a_of_type_Long - this.jdField_a_of_type_Long > 1200L))
-    {
-      i = (int)(255L - (paramMySurfaceView.jdField_a_of_type_Long - this.jdField_a_of_type_Long - 1200L) * 255L / 800L);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(null);
-      if (this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength() <= 0.0F) {
-        break label259;
-      }
-      i = 1;
-      label128:
-      if (i == 0) {
-        break label265;
-      }
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.jdField_d_of_type_Int = ((int)(paramInt1 * 1.0F));
+    this.jdField_e_of_type_Int = ((int)(paramInt2 * 1.0F));
+    if (QLog.isColorLevel()) {
+      QLog.i("AEFilterAVWrapperImpl", 2, "initInGL");
     }
-    long l;
-    Object localObject1;
-    loi localloi;
-    Object localObject2;
-    label259:
-    label265:
-    float f2;
-    float f1;
-    for (;;)
-    {
-      if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilQueue.size() > 0))
-      {
-        l = SystemClock.elapsedRealtime() - 500L;
-        localObject1 = null;
-        paramMySurfaceView = null;
-        localloi = (loi)((LinkedList)this.jdField_a_of_type_JavaUtilQueue).getLast();
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilQueue.iterator();
-        for (;;)
-        {
-          localObject2 = paramMySurfaceView;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          paramMySurfaceView = (loi)localIterator.next();
-          localObject2 = paramMySurfaceView;
-          if (paramMySurfaceView.jdField_a_of_type_Long - l >= 0L) {
-            break;
-          }
-          localObject1 = paramMySurfaceView;
-        }
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
-        break;
-        i = 0;
-        break label128;
-        paramCanvas.drawPoint(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, this.jdField_a_of_type_AndroidGraphicsPaint);
-        continue;
-        f2 = localloi.jdField_a_of_type_Float;
-        if (localObject2 == null) {
-          break label683;
-        }
-        if ((localObject1 != null) && (localObject1 != localObject2)) {
-          f1 = (((loi)localObject1).jdField_a_of_type_Float * (float)(((loi)localObject2).jdField_a_of_type_Long - l) + ((loi)localObject2).jdField_a_of_type_Float * (float)(l - ((loi)localObject1).jdField_a_of_type_Long)) / (float)(((loi)localObject2).jdField_a_of_type_Long - ((loi)localObject1).jdField_a_of_type_Long);
-        }
-      }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.switchFilterOn(paramInt, paramBoolean);
     }
-    for (;;)
+  }
+  
+  public void a(long paramLong)
+  {
+    QLog.w("AEFilterAVWrapperImpl", 1, "clearState, seq[" + paramLong + "]");
+    if (this.jdField_a_of_type_Lps != null) {
+      this.jdField_a_of_type_Lps.a(paramLong);
+    }
+  }
+  
+  public void a(PendantItem paramPendantItem, VideoMaterial paramVideoMaterial)
+  {
+    boolean bool;
+    if ((!lpr.a(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem, paramPendantItem)) || (this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial != paramVideoMaterial))
     {
-      float f3 = 0.01481482F * this.c * (float)(localloi.jdField_a_of_type_Long - l) / 500.0F;
-      f4 /= 2.0F;
-      paramMySurfaceView = new float[2];
-      localObject1 = new float[2];
-      localObject2 = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      ((Path)localObject2).setFillType(Path.FillType.WINDING);
-      float f5 = f2 - f1;
-      float f6 = (f3 - f4) / f5;
-      i = this.e;
-      i = this.e;
-      float f7 = 0.005555556F * this.c;
-      for (;;)
-      {
-        if (f1 <= localloi.jdField_a_of_type_Float)
-        {
-          this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f1, paramMySurfaceView, (float[])localObject1);
-          float f8 = (f2 - f1) / f5;
-          int j = log.a(new int[] { i, -1 }, 1.0F - f8);
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(j);
-          paramCanvas.drawCircle(paramMySurfaceView[0], paramMySurfaceView[1], f3 - (f2 - f1) * f6, this.jdField_a_of_type_AndroidGraphicsPaint);
-          f1 += f7;
-          continue;
-          f1 = ((loi)localObject2).jdField_a_of_type_Float;
-          break;
-        }
+      if ((paramPendantItem == null) || (!paramPendantItem.hasGesture())) {
+        break label228;
       }
+      bool = true;
       if (QLog.isColorLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "doDrawDoodle, mScreenWidth[" + this.c + "], maxRadius[" + f3 + "], minRadius[" + f4 + "], mPoint[" + this.jdField_a_of_type_AndroidGraphicsPointF.x + ", " + this.jdField_a_of_type_AndroidGraphicsPointF.y + "], startAnimationPathPointDistance[" + f7 + "]");
+        QLog.d("AEFilterAVWrapperImpl", 2, "setPendant, pendantItem[" + paramPendantItem + "], isPendantHasGesture[" + bool + "]");
+      }
+      if ((this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) && (!this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.isInited())) {
+        break label250;
+      }
+      this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = paramPendantItem;
+      this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = paramVideoMaterial;
+      if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) {
+        this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateMaterialGL(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
+      }
+      this.jdField_b_of_type_Boolean = bool;
+      if (!this.jdField_b_of_type_Boolean) {
+        break label233;
+      }
+      if (this.jdField_a_of_type_Lps != null) {
+        this.jdField_a_of_type_Lps.a(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getGestureType());
+      }
+      label157:
+      if (this.jdField_a_of_type_Lps != null) {
+        this.jdField_a_of_type_Lps.a(false);
+      }
+      this.jdField_a_of_type_Long = 0L;
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (PendantItem.isBeautyMakeup(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getCategory())) && ((this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.extraParam instanceof Integer))) {
+        this.f = ((Integer)this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.extraParam).intValue();
       }
       return;
-      label683:
-      f1 = 0.0F;
+      label228:
+      bool = false;
+      break;
+      label233:
+      if (this.jdField_a_of_type_Lps == null) {
+        break label157;
+      }
+      this.jdField_a_of_type_Lps.a();
+      break label157;
+      label250:
+      QLog.i("AEFilterAVWrapperImpl", 1, "initAEDetector failed!");
     }
+  }
+  
+  public void a(FilterDesc paramFilterDesc)
+  {
+    String str;
+    StringBuilder localStringBuilder;
+    if (!lpr.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc, paramFilterDesc))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = paramFilterDesc;
+      str = a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc);
+      if ((this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager == null) || ((!TextUtils.isEmpty(str)) && (!bgmg.a(str)))) {
+        break label112;
+      }
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateLutGL(str);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("setFilterDesc, name[");
+        if (paramFilterDesc != null) {
+          break label146;
+        }
+      }
+    }
+    label146:
+    for (paramFilterDesc = "null";; paramFilterDesc = paramFilterDesc.name)
+    {
+      QLog.i("AEFilterAVWrapperImpl", 2, paramFilterDesc + "], path[" + str + "]");
+      return;
+      label112:
+      QLog.i("AEFilterAVWrapperImpl", 1, "setFilterDesc, fail path[" + str + "]");
+      break;
+    }
+  }
+  
+  public void a(low paramlow, lpa paramlpa)
+  {
+    String str2 = "";
+    String str1 = "";
+    VideoMaterial localVideoMaterial = this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial;
+    PendantItem localPendantItem = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem;
+    if (localPendantItem != null)
+    {
+      str2 = localPendantItem.getGestureType();
+      str1 = localPendantItem.getGestureWording();
+    }
+    for (boolean bool1 = localPendantItem.hasFace();; bool1 = false)
+    {
+      boolean bool2 = lhi.a().b();
+      if ((lhp.a(localVideoMaterial)) && (!bool2)) {
+        bool1 = false;
+      }
+      for (;;)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("AEFilterAVWrapperImpl", 4, "processTip, cnt[" + paramlpa.jdField_a_of_type_Int + "], bIsPendantHasFace[" + bool1 + "], gesture[" + this.jdField_b_of_type_Boolean + "], gestureType[" + str2 + "], gestureWording[" + str1);
+        }
+        if (this.jdField_a_of_type_Lps != null)
+        {
+          int i = this.jdField_a_of_type_Lps.a(paramlow, paramlpa.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, bool1, str1, str2);
+          if ((this.jdField_b_of_type_Boolean) && (i == 2))
+          {
+            if (this.jdField_a_of_type_Long != 0L) {
+              break label212;
+            }
+            this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+          }
+        }
+        label212:
+        while (Math.abs(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long) <= 3000L) {
+          return;
+        }
+        this.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_Lps.a(true);
+        return;
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.setForceFaceDetect(this.jdField_a_of_type_Boolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.hasGesture());
+  }
+  
+  public boolean a(lon paramlon)
+  {
+    if (paramlon == null) {
+      this.jdField_a_of_type_Lon.c();
+    }
+    for (;;)
+    {
+      return this.jdField_a_of_type_Lon.b();
+      this.jdField_a_of_type_Lon.a(paramlon);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null)
+    {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateLutGL(null);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateMaterialGL(null);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.destroy();
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager = null;
+    }
+    this.jdField_a_of_type_Int = 4;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = null;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
+    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("AEFilterAVWrapperImpl", 2, "destroyInGL");
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.jdField_d_of_type_Int = ((int)(paramInt1 * 1.0F));
+    this.jdField_e_of_type_Int = ((int)(paramInt2 * 1.0F));
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateWidthHeight(paramInt1, paramInt2);
+    }
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null);
+  }
+  
+  public void c() {}
+  
+  public void c(int paramInt1, int paramInt2) {}
+  
+  public boolean c()
+  {
+    return false;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_e_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     loh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,29 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeCustomizeStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aern
-  implements aerd
+  implements View.OnClickListener
 {
-  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public aern(NotificationActivity paramNotificationActivity) {}
   
-  public aern(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
+    switch (paramView.getId())
+    {
     }
-  }
-  
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo == null) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    ThreadManager.post(new CustomizeStrategyFactory.ThemeCustomizeStrategy.1(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, agmy paramagmy)
-  {
-    if ((paramRedPacketInfo != null) && ((paramagmy instanceof agnd))) {
-      paramRedPacketInfo.background = ((agnd)paramagmy).b;
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aern
  * JD-Core Version:    0.7.0.1
  */

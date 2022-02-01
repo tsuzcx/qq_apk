@@ -1,8 +1,8 @@
 package cooperation.qwallet.plugin.pay;
 
-import aepi;
-import aivm;
-import aivn;
+import afur;
+import akmq;
+import akmr;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -19,10 +19,10 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import apmm;
-import apmn;
-import bdgm;
-import bdjz;
+import arpi;
+import arpj;
+import bglp;
+import bgpa;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
@@ -40,6 +40,7 @@ import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import cooperation.qwallet.plugin.QWalletPayBridge;
 import java.util.HashSet;
 import org.json.JSONException;
@@ -62,7 +63,7 @@ public class PayLogic
   protected boolean isLockWithdraw;
   protected boolean isPCPushDesc;
   private BaseActivity mActivity;
-  private apmm mEmojiPayReqData;
+  private arpi mEmojiPayReqData;
   public boolean mIsStartReport;
   private String mMidasAid;
   private String mMidasOfferid;
@@ -118,6 +119,7 @@ public class PayLogic
     allowView.add("goldmsg_open");
     allowView.add("goldmsg_close");
     allowView.add("openEmbelUrl");
+    allowView.add("showHbDetail");
   }
   
   public PayLogic(Intent paramIntent, QQAppInterface paramQQAppInterface, PayBridgeActivity paramPayBridgeActivity)
@@ -128,16 +130,16 @@ public class PayLogic
     add(this);
   }
   
-  private void OnEmojimallPayResult(apmm paramapmm, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
+  private void OnEmojimallPayResult(arpi paramarpi, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
   {
-    if (paramapmm == null)
+    if (paramarpi == null)
     {
       end();
       return;
     }
     Intent localIntent = new Intent();
-    paramString = new apmn(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramString);
-    localIntent.putExtras(paramapmm.a());
+    paramString = new arpj(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramString);
+    localIntent.putExtras(paramarpi.a());
     localIntent.putExtras(paramString.a());
     this.mActivity.setResult(-1, localIntent);
     saveNonePCPayResultData(-1, localIntent);
@@ -166,27 +168,27 @@ public class PayLogic
         {
           str1 = ((JSONObject)localObject).getString("zoneId");
           if (!((JSONObject)localObject).has("numberVisible")) {
-            break label827;
+            break label830;
           }
           bool = ((JSONObject)localObject).getBoolean("numberVisible");
           if (!((JSONObject)localObject).has("unit")) {
-            break label833;
+            break label836;
           }
           str2 = ((JSONObject)localObject).getString("unit");
           if (!((JSONObject)localObject).has("aid")) {
-            break label839;
+            break label842;
           }
           str3 = ((JSONObject)localObject).getString("aid");
           if (!((JSONObject)localObject).has("discountId")) {
-            break label847;
+            break label850;
           }
           str4 = ((JSONObject)localObject).getString("discountId");
           if (!((JSONObject)localObject).has("other")) {
-            break label855;
+            break label858;
           }
           str5 = ((JSONObject)localObject).getString("other");
           if (!((JSONObject)localObject).has("payload")) {
-            break label863;
+            break label866;
           }
           str6 = ((JSONObject)localObject).getString("payload");
           String str7;
@@ -277,29 +279,29 @@ public class PayLogic
         return localBundle;
       }
       continue;
-      label827:
+      label830:
       boolean bool = true;
       continue;
-      label833:
+      label836:
       String str2 = null;
       continue;
-      label839:
+      label842:
       String str3 = "";
       continue;
-      label847:
+      label850:
       String str4 = "";
       continue;
-      label855:
+      label858:
       String str5 = "";
       continue;
-      label863:
+      label866:
       String str6 = "";
     }
   }
   
-  private boolean checkEmojiPayParam(apmm paramapmm)
+  private boolean checkEmojiPayParam(arpi paramarpi)
   {
-    return (paramapmm != null) && (!TextUtils.isEmpty(paramapmm.b)) && (!TextUtils.isEmpty(paramapmm.a)) && (!TextUtils.isEmpty(paramapmm.c)) && (!TextUtils.isEmpty(paramapmm.d)) && (!TextUtils.isEmpty(paramapmm.j));
+    return (paramarpi != null) && (!TextUtils.isEmpty(paramarpi.b)) && (!TextUtils.isEmpty(paramarpi.a)) && (!TextUtils.isEmpty(paramarpi.c)) && (!TextUtils.isEmpty(paramarpi.d)) && (!TextUtils.isEmpty(paramarpi.j));
   }
   
   public static void clearCache()
@@ -311,51 +313,51 @@ public class PayLogic
   
   private Dialog createCustomDialog(String paramString1, String paramString2, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    Dialog localDialog = new Dialog(this.mActivity, 2131755801);
-    localDialog.setContentView(2131558919);
-    TextView localTextView = (TextView)localDialog.findViewById(2131365237);
+    ReportDialog localReportDialog = new ReportDialog(this.mActivity, 2131755823);
+    localReportDialog.setContentView(2131558985);
+    TextView localTextView = (TextView)localReportDialog.findViewById(2131365479);
     if (localTextView != null) {
       localTextView.setText(paramString1);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131365233);
+    paramString1 = (TextView)localReportDialog.findViewById(2131365475);
     if (paramString1 != null) {
       paramString1.setText(paramString2);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131365222);
+    paramString1 = (TextView)localReportDialog.findViewById(2131365464);
     if (paramString1 != null) {
       paramString1.setText(17039360);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131365228);
+    paramString1 = (TextView)localReportDialog.findViewById(2131365470);
     if (paramString1 != null) {
-      paramString1.setText(2131717782);
+      paramString1.setText(2131715996);
     }
-    localDialog.setOnDismissListener(paramOnDismissListener);
-    return localDialog;
+    localReportDialog.setOnDismissListener(paramOnDismissListener);
+    return localReportDialog;
   }
   
-  private void doEmojimallPay(apmm paramapmm)
+  private void doEmojimallPay(arpi paramarpi)
   {
-    this.mEmojiPayReqData = paramapmm;
-    this.mMidasOfferid = paramapmm.b;
-    this.mMidasAid = getAidFromPf(paramapmm.h);
+    this.mEmojiPayReqData = paramarpi;
+    this.mMidasOfferid = paramarpi.b;
+    this.mMidasAid = getAidFromPf(paramarpi.h);
     Bundle localBundle = new Bundle();
     localBundle.putString("setEnv", "release");
     localBundle.putBoolean("setLogEnable", false);
-    localBundle.putString("offerId", paramapmm.b);
+    localBundle.putString("offerId", paramarpi.b);
     localBundle.putBoolean("isShowNum", false);
-    localBundle.putString("userId", paramapmm.c);
-    localBundle.putString("userKey", paramapmm.d);
-    localBundle.putString("sessionId", paramapmm.e);
-    localBundle.putString("sessionType", paramapmm.f);
-    localBundle.putString("zoneId", paramapmm.g);
-    localBundle.putString("pf", paramapmm.h);
-    localBundle.putString("pfKey", paramapmm.i);
-    localBundle.putString("tokenUrl", paramapmm.j);
-    localBundle.putInt("resId", 2130839464);
-    localBundle.putString("discountId", paramapmm.k);
-    localBundle.putString("other", paramapmm.l);
-    localBundle.putString("payload", paramapmm.m);
-    localBundle.putString("drmInfo", paramapmm.n);
+    localBundle.putString("userId", paramarpi.c);
+    localBundle.putString("userKey", paramarpi.d);
+    localBundle.putString("sessionId", paramarpi.e);
+    localBundle.putString("sessionType", paramarpi.f);
+    localBundle.putString("zoneId", paramarpi.g);
+    localBundle.putString("pf", paramarpi.h);
+    localBundle.putString("pfKey", paramarpi.i);
+    localBundle.putString("tokenUrl", paramarpi.j);
+    localBundle.putInt("resId", 2130839638);
+    localBundle.putString("discountId", paramarpi.k);
+    localBundle.putString("other", paramarpi.l);
+    localBundle.putString("payload", paramarpi.m);
+    localBundle.putString("drmInfo", paramarpi.n);
     localBundle.putInt("PayInvokerId", 1);
     localBundle.putInt("payparmas_paytype", this.mPayType);
     QWalletPayBridge.launchForeground(this.mActivity, this.app, localBundle);
@@ -385,7 +387,7 @@ public class PayLogic
     paramBundle.putString("pf", str3);
     paramBundle.putString("pfKey", "pfKey");
     paramBundle.putString("acctType", "common");
-    paramBundle.putInt("resId", 2130846504);
+    paramBundle.putInt("resId", 2130846945);
     paramBundle.putString("discountId", str4);
     paramBundle.putString("other", str5);
     paramBundle.putString("payload", str6);
@@ -424,7 +426,7 @@ public class PayLogic
     localBundle.putString("pfKey", "pfKey");
     localBundle.putString("serviceCode", "QQYFSC");
     localBundle.putString("serviceName", "腾讯文学包月VIP");
-    localBundle.putInt("resId", 2130846504);
+    localBundle.putInt("resId", 2130846945);
     localBundle.putString("saveValue", "3");
     localBundle.putBoolean("isCanChange", true);
     localBundle.putString("remark", "");
@@ -1009,9 +1011,9 @@ public class PayLogic
   private void onF2FRedpackCheckError()
   {
     Object localObject = this.mActivity;
-    localObject = bdgm.a((Context)localObject, 231, null, ((BaseActivity)localObject).getResources().getString(2131692323), ((BaseActivity)localObject).getResources().getString(2131692322), null, null, new PayLogic.1(this));
-    ((bdjz)localObject).setCancelable(false);
-    ((bdjz)localObject).show();
+    localObject = bglp.a((Context)localObject, 231, null, ((BaseActivity)localObject).getResources().getString(2131691926), ((BaseActivity)localObject).getResources().getString(2131691925), null, null, new PayLogic.1(this));
+    ((bgpa)localObject).setCancelable(false);
+    ((bgpa)localObject).show();
   }
   
   private void onGoldChargeResult(int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2)
@@ -1183,7 +1185,7 @@ public class PayLogic
               if (i != -1)
               {
                 localObject2 = this.mActivity;
-                localIntent = aepi.a(new Intent((Context)localObject2, SplashActivity.class), null);
+                localIntent = afur.a(new Intent((Context)localObject2, SplashActivity.class), null);
                 localIntent.putExtra("uin", (String)localObject1);
                 localIntent.putExtra("uintype", i);
                 localIntent.putExtra("isBack2Root", true);
@@ -1246,17 +1248,17 @@ public class PayLogic
     Object localObject2 = this.intent.getStringExtra("content");
     String str1 = this.intent.getStringExtra("btn");
     String str2 = this.intent.getStringExtra("url");
-    bdjz localbdjz = bdgm.a(localBaseActivity, 0);
-    localbdjz.setTitle((String)localObject1);
-    localbdjz.setMessage((CharSequence)localObject2);
-    localbdjz.setCancelable(false);
+    bgpa localbgpa = bglp.a(localBaseActivity, 0);
+    localbgpa.setTitle((String)localObject1);
+    localbgpa.setMessage((CharSequence)localObject2);
+    localbgpa.setCancelable(false);
     localObject2 = new PayLogic.2(this, str2);
     localObject1 = str1;
     if (TextUtils.isEmpty(str1)) {
-      localObject1 = localBaseActivity.getResources().getString(2131694953);
+      localObject1 = localBaseActivity.getResources().getString(2131694081);
     }
-    localbdjz.setPositiveButton((String)localObject1, (DialogInterface.OnClickListener)localObject2);
-    localbdjz.show();
+    localbgpa.setPositiveButton((String)localObject1, (DialogInterface.OnClickListener)localObject2);
+    localbgpa.show();
   }
   
   private void openQzoneVipService(Bundle paramBundle)
@@ -1361,83 +1363,83 @@ public class PayLogic
         {
           str1 = ((JSONObject)localObject).getString("channel");
           if (!((JSONObject)localObject).has("unit")) {
-            break label1406;
+            break label1409;
           }
           str2 = ((JSONObject)localObject).getString("unit");
           if (!((JSONObject)localObject).has("openMonth")) {
-            break label1412;
+            break label1415;
           }
           str3 = ((JSONObject)localObject).getString("openMonth");
           if (!((JSONObject)localObject).has("isCanChange")) {
-            break label1418;
+            break label1421;
           }
           bool1 = ((JSONObject)localObject).getBoolean("isCanChange");
           if (!((JSONObject)localObject).has("isAutoPay")) {
-            break label1424;
+            break label1427;
           }
           bool2 = ((JSONObject)localObject).getBoolean("isAutoPay");
           if (!((JSONObject)localObject).has("remark")) {
-            break label1430;
+            break label1433;
           }
           str4 = ((JSONObject)localObject).getString("remark");
           if (!((JSONObject)localObject).has("aid")) {
-            break label1438;
+            break label1441;
           }
           str5 = ((JSONObject)localObject).getString("aid");
           if (!((JSONObject)localObject).has("actTitle")) {
-            break label1446;
+            break label1449;
           }
           str6 = ((JSONObject)localObject).getString("actTitle");
           if (!((JSONObject)localObject).has("openType")) {
-            break label1454;
+            break label1457;
           }
           i = ((JSONObject)localObject).getInt("openType");
           if (!((JSONObject)localObject).has("actHint")) {
-            break label1459;
+            break label1462;
           }
           str7 = ((JSONObject)localObject).getString("actHint");
           if (!((JSONObject)localObject).has("actPayTotal")) {
-            break label1465;
+            break label1468;
           }
           str8 = ((JSONObject)localObject).getString("actPayTotal");
           if (!((JSONObject)localObject).has("actPayDiscount")) {
-            break label1471;
+            break label1474;
           }
           str9 = ((JSONObject)localObject).getString("actPayDiscount");
           if (!((JSONObject)localObject).has("actBtnTitle")) {
-            break label1477;
+            break label1480;
           }
           str10 = ((JSONObject)localObject).getString("actBtnTitle");
           if (!((JSONObject)localObject).has("openServicePrice")) {
-            break label1483;
+            break label1486;
           }
           str11 = ((JSONObject)localObject).getString("openServicePrice");
           if (!((JSONObject)localObject).has("upgradeServicePrice")) {
-            break label1489;
+            break label1492;
           }
           str12 = ((JSONObject)localObject).getString("upgradeServicePrice");
           if (!((JSONObject)localObject).has("maxUpgradeMonth")) {
-            break label1495;
+            break label1498;
           }
           j = ((JSONObject)localObject).getInt("maxUpgradeMonth");
           if (!((JSONObject)localObject).has("openTitle")) {
-            break label1500;
+            break label1503;
           }
           str13 = ((JSONObject)localObject).getString("openTitle");
           if (!((JSONObject)localObject).has("upgradeTitle")) {
-            break label1508;
+            break label1511;
           }
           str14 = ((JSONObject)localObject).getString("upgradeTitle");
           if (!((JSONObject)localObject).has("discountId")) {
-            break label1516;
+            break label1519;
           }
           str15 = ((JSONObject)localObject).getString("discountId");
           if (!((JSONObject)localObject).has("other")) {
-            break label1524;
+            break label1527;
           }
           str16 = ((JSONObject)localObject).getString("other");
           if (!((JSONObject)localObject).has("payload")) {
-            break label1532;
+            break label1535;
           }
           str17 = ((JSONObject)localObject).getString("payload");
           if (((JSONObject)localObject).has("couponId"))
@@ -1537,64 +1539,64 @@ public class PayLogic
         return;
       }
       continue;
-      label1406:
+      label1409:
       String str2 = null;
       continue;
-      label1412:
+      label1415:
       String str3 = null;
       continue;
-      label1418:
+      label1421:
       boolean bool1 = true;
       continue;
-      label1424:
+      label1427:
       boolean bool2 = true;
       continue;
-      label1430:
+      label1433:
       String str4 = "";
       continue;
-      label1438:
+      label1441:
       String str5 = "";
       continue;
-      label1446:
+      label1449:
       String str6 = "";
       continue;
-      label1454:
+      label1457:
       int i = 0;
       continue;
-      label1459:
+      label1462:
       String str7 = null;
       continue;
-      label1465:
+      label1468:
       String str8 = null;
       continue;
-      label1471:
+      label1474:
       String str9 = null;
       continue;
-      label1477:
+      label1480:
       String str10 = null;
       continue;
-      label1483:
+      label1486:
       String str11 = null;
       continue;
-      label1489:
+      label1492:
       String str12 = null;
       continue;
-      label1495:
+      label1498:
       int j = 0;
       continue;
-      label1500:
+      label1503:
       String str13 = "";
       continue;
-      label1508:
+      label1511:
       String str14 = "";
       continue;
-      label1516:
+      label1519:
       String str15 = "";
       continue;
-      label1524:
+      label1527:
       String str16 = "";
       continue;
-      label1532:
+      label1535:
       String str17 = "";
     }
   }
@@ -1612,55 +1614,55 @@ public class PayLogic
         String str17 = ((JSONObject)localObject).getString("serviceCode");
         String str18 = ((JSONObject)localObject).getString("serviceName");
         if (!((JSONObject)localObject).has("channel")) {
-          break label1114;
+          break label1117;
         }
         str1 = ((JSONObject)localObject).getString("channel");
         if (!((JSONObject)localObject).has("unit")) {
-          break label1120;
+          break label1123;
         }
         str2 = ((JSONObject)localObject).getString("unit");
         if (!((JSONObject)localObject).has("openMonth")) {
-          break label1126;
+          break label1129;
         }
         str3 = ((JSONObject)localObject).getString("openMonth");
         if (!((JSONObject)localObject).has("isCanChange")) {
-          break label1132;
+          break label1135;
         }
         bool1 = ((JSONObject)localObject).getBoolean("isCanChange");
         if (!((JSONObject)localObject).has("remark")) {
-          break label1138;
+          break label1141;
         }
         str4 = ((JSONObject)localObject).getString("remark");
         if (!((JSONObject)localObject).has("provideUin")) {
-          break label1146;
+          break label1149;
         }
         str5 = ((JSONObject)localObject).getString("provideUin");
         if (!((JSONObject)localObject).has("provideType")) {
-          break label1152;
+          break label1155;
         }
         str6 = ((JSONObject)localObject).getString("provideType");
         if (!((JSONObject)localObject).has("discountId")) {
-          break label1158;
+          break label1161;
         }
         str7 = ((JSONObject)localObject).getString("discountId");
         if (!((JSONObject)localObject).has("other")) {
-          break label1166;
+          break label1169;
         }
         str8 = ((JSONObject)localObject).getString("other");
         if (!((JSONObject)localObject).has("payload")) {
-          break label1174;
+          break label1177;
         }
         str9 = ((JSONObject)localObject).getString("payload");
         if (!((JSONObject)localObject).has("autoPay")) {
-          break label1182;
+          break label1185;
         }
         bool2 = ((JSONObject)localObject).getBoolean("autoPay");
         if (!((JSONObject)localObject).has("aid")) {
-          break label1188;
+          break label1191;
         }
         str10 = ((JSONObject)localObject).getString("aid");
         if (!((JSONObject)localObject).has("couponId")) {
-          break label1196;
+          break label1199;
         }
         str11 = ((JSONObject)localObject).getString("couponId");
         if ((((JSONObject)localObject).has("ticketName")) && (((JSONObject)localObject).has("ticketValue")))
@@ -1769,43 +1771,43 @@ public class PayLogic
       }
       String str13 = null;
       continue;
-      label1114:
+      label1117:
       String str1 = null;
       continue;
-      label1120:
+      label1123:
       String str2 = null;
       continue;
-      label1126:
+      label1129:
       String str3 = null;
       continue;
-      label1132:
+      label1135:
       boolean bool1 = true;
       continue;
-      label1138:
+      label1141:
       String str4 = "";
       continue;
-      label1146:
+      label1149:
       String str5 = null;
       continue;
-      label1152:
+      label1155:
       String str6 = null;
       continue;
-      label1158:
+      label1161:
       String str7 = "";
       continue;
-      label1166:
+      label1169:
       String str8 = "";
       continue;
-      label1174:
+      label1177:
       String str9 = "";
       continue;
-      label1182:
+      label1185:
       boolean bool2 = true;
       continue;
-      label1188:
+      label1191:
       String str10 = "";
       continue;
-      label1196:
+      label1199:
       String str11 = "";
     }
   }
@@ -2194,209 +2196,209 @@ public class PayLogic
   protected static Bundle pay(AppInterface paramAppInterface, Activity paramActivity, ResultReceiver paramResultReceiver, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong1, long paramLong2, String paramString4)
   {
     // Byte code:
-    //   0: new 221	android/os/Bundle
+    //   0: new 223	android/os/Bundle
     //   3: dup
-    //   4: invokespecial 222	android/os/Bundle:<init>	()V
+    //   4: invokespecial 224	android/os/Bundle:<init>	()V
     //   7: astore 24
     //   9: aload 5
     //   11: astore 16
     //   13: aload 5
-    //   15: invokestatic 280	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   15: invokestatic 282	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   18: ifne +13 -> 31
     //   21: aload 5
-    //   23: ldc_w 1223
-    //   26: invokestatic 1228	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   23: ldc_w 1227
+    //   26: invokestatic 1232	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   29: astore 16
-    //   31: invokestatic 406	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   31: invokestatic 408	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   34: ifeq +43 -> 77
     //   37: ldc 20
     //   39: iconst_2
-    //   40: new 268	java/lang/StringBuilder
+    //   40: new 270	java/lang/StringBuilder
     //   43: dup
-    //   44: invokespecial 269	java/lang/StringBuilder:<init>	()V
-    //   47: ldc_w 1230
-    //   50: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: invokespecial 271	java/lang/StringBuilder:<init>	()V
+    //   47: ldc_w 1234
+    //   50: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   53: aload 4
-    //   55: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: ldc_w 750
-    //   61: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: ldc_w 754
+    //   61: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: aload_3
-    //   65: invokestatic 1036	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   68: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   74: invokestatic 752	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   77: new 224	org/json/JSONObject
+    //   65: invokestatic 1040	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   68: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   74: invokestatic 756	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   77: new 226	org/json/JSONObject
     //   80: dup
     //   81: aload 4
-    //   83: invokespecial 227	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   83: invokespecial 229	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   86: astore 25
     //   88: aload_0
-    //   89: invokevirtual 1233	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   89: invokevirtual 1237	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   92: astore 26
     //   94: aload_0
-    //   95: invokevirtual 1237	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   98: new 268	java/lang/StringBuilder
+    //   95: invokevirtual 1241	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   98: new 270	java/lang/StringBuilder
     //   101: dup
-    //   102: invokespecial 269	java/lang/StringBuilder:<init>	()V
-    //   105: getstatic 1243	mqq/app/Constants$PropertiesKey:nickName	Lmqq/app/Constants$PropertiesKey;
-    //   108: invokevirtual 1244	mqq/app/Constants$PropertiesKey:toString	()Ljava/lang/String;
-    //   111: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: invokespecial 271	java/lang/StringBuilder:<init>	()V
+    //   105: getstatic 1247	mqq/app/Constants$PropertiesKey:nickName	Lmqq/app/Constants$PropertiesKey;
+    //   108: invokevirtual 1248	mqq/app/Constants$PropertiesKey:toString	()Ljava/lang/String;
+    //   111: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   114: aload 26
-    //   116: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   122: invokevirtual 1249	mqq/app/MobileQQ:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   116: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   122: invokevirtual 1253	mqq/app/MobileQQ:getProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   125: astore 27
     //   127: aload 25
-    //   129: ldc_w 684
-    //   132: invokevirtual 233	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   129: ldc_w 688
+    //   132: invokevirtual 235	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   135: astore 28
     //   137: aload 25
-    //   139: ldc_w 262
-    //   142: invokevirtual 243	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   139: ldc_w 264
+    //   142: invokevirtual 245	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   145: ifeq +571 -> 716
     //   148: aload 25
-    //   150: ldc_w 262
-    //   153: invokevirtual 266	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   150: ldc_w 264
+    //   153: invokevirtual 268	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   156: istore 12
     //   158: aload 25
-    //   160: ldc_w 1115
-    //   163: invokevirtual 243	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   160: ldc_w 1119
+    //   163: invokevirtual 245	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   166: ifeq +556 -> 722
     //   169: aload 25
-    //   171: ldc_w 1115
-    //   174: invokevirtual 233	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   171: ldc_w 1119
+    //   174: invokevirtual 235	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   177: astore 18
     //   179: aload 25
-    //   181: ldc_w 1251
-    //   184: invokevirtual 243	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   181: ldc_w 1255
+    //   184: invokevirtual 245	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   187: ifeq +1044 -> 1231
     //   190: aload 25
-    //   192: ldc_w 1251
-    //   195: invokevirtual 233	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   192: ldc_w 1255
+    //   195: invokevirtual 235	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   198: astore 5
     //   200: aload 25
-    //   202: ldc_w 1253
-    //   205: invokevirtual 243	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   202: ldc_w 1257
+    //   205: invokevirtual 245	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   208: ifeq +1031 -> 1239
     //   211: aload 25
-    //   213: ldc_w 1253
-    //   216: invokevirtual 233	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   213: ldc_w 1257
+    //   216: invokevirtual 235	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   219: astore 17
     //   221: aload 18
     //   223: aload 16
-    //   225: invokestatic 1258	cooperation/qwallet/plugin/QWalletHelper:getCorrectAppInfo	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   225: invokestatic 1262	cooperation/qwallet/plugin/QWalletHelper:getCorrectAppInfo	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   228: astore 29
     //   230: aload 25
-    //   232: ldc_w 642
-    //   235: invokevirtual 243	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   232: ldc_w 646
+    //   235: invokevirtual 245	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   238: ifeq +1009 -> 1247
     //   241: aload 25
-    //   243: ldc_w 642
-    //   246: invokevirtual 233	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   243: ldc_w 646
+    //   246: invokevirtual 235	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   249: astore 16
     //   251: iconst_1
     //   252: iload 6
     //   254: if_icmpne +1001 -> 1255
     //   257: aload 25
-    //   259: ldc_w 651
-    //   262: invokevirtual 243	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   259: ldc_w 655
+    //   262: invokevirtual 245	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   265: ifne +14 -> 279
     //   268: aload 25
-    //   270: ldc_w 653
-    //   273: invokevirtual 243	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   270: ldc_w 657
+    //   273: invokevirtual 245	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   276: ifeq +979 -> 1255
     //   279: aload 25
-    //   281: ldc_w 655
-    //   284: invokevirtual 243	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   281: ldc_w 659
+    //   284: invokevirtual 245	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   287: istore 15
     //   289: iload 15
     //   291: ifeq +964 -> 1255
     //   294: iconst_1
     //   295: istore 15
-    //   297: new 268	java/lang/StringBuilder
+    //   297: new 270	java/lang/StringBuilder
     //   300: dup
-    //   301: invokespecial 269	java/lang/StringBuilder:<init>	()V
+    //   301: invokespecial 271	java/lang/StringBuilder:<init>	()V
     //   304: astore 18
     //   306: aload 18
-    //   308: ldc_w 706
-    //   311: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: ldc_w 710
+    //   311: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   314: aload 28
-    //   316: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   316: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   319: pop
     //   320: aload 18
-    //   322: ldc_w 1260
-    //   325: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: ldc_w 1264
+    //   325: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   328: iload 12
-    //   330: invokevirtual 335	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   330: invokevirtual 337	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   333: pop
     //   334: aload 18
-    //   336: ldc_w 696
-    //   339: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   336: ldc_w 700
+    //   339: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   342: aload 29
-    //   344: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   344: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   347: pop
     //   348: aload 18
-    //   350: ldc_w 1262
-    //   353: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   350: ldc_w 1266
+    //   353: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   356: aload 5
-    //   358: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   358: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   361: pop
     //   362: aload 18
-    //   364: ldc_w 1264
-    //   367: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   364: ldc_w 1268
+    //   367: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   370: aload 17
-    //   372: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   375: pop
     //   376: aload 18
-    //   378: ldc_w 1266
-    //   381: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   378: ldc_w 1270
+    //   381: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   384: aload 25
-    //   386: ldc_w 1268
-    //   389: invokevirtual 1271	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
-    //   392: invokevirtual 1274	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   386: ldc_w 1272
+    //   389: invokevirtual 1275	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
+    //   392: invokevirtual 1278	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   395: pop
     //   396: aload 11
-    //   398: invokestatic 280	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   398: invokestatic 282	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   401: ifne +17 -> 418
     //   404: aload 18
-    //   406: ldc_w 282
-    //   409: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   406: ldc_w 284
+    //   409: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   412: aload 11
-    //   414: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   414: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   417: pop
-    //   418: new 224	org/json/JSONObject
+    //   418: new 226	org/json/JSONObject
     //   421: dup
     //   422: aload 16
-    //   424: invokespecial 227	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   424: invokespecial 229	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   427: astore 5
     //   429: aload 5
-    //   431: ldc_w 1276
-    //   434: invokevirtual 1152	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
+    //   431: ldc_w 1280
+    //   434: invokevirtual 1156	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
     //   437: pop
     //   438: aload 11
-    //   440: invokestatic 280	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   440: invokestatic 282	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   443: ifne +14 -> 457
     //   446: aload 5
-    //   448: ldc_w 1276
+    //   448: ldc_w 1280
     //   451: aload 11
-    //   453: invokevirtual 1279	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   453: invokevirtual 1283	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   456: pop
     //   457: aload 5
-    //   459: invokevirtual 583	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   459: invokevirtual 587	org/json/JSONObject:toString	()Ljava/lang/String;
     //   462: astore 23
     //   464: lload 9
     //   466: aload 28
-    //   468: ldc_w 284
+    //   468: ldc_w 286
     //   471: aload 18
-    //   473: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   473: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   476: iconst_0
     //   477: aconst_null
-    //   478: invokestatic 293	com/tencent/mobileqq/activity/qwallet/report/VACDReportUtil:a	(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
-    //   481: ldc_w 1085
+    //   478: invokestatic 295	com/tencent/mobileqq/activity/qwallet/report/VACDReportUtil:a	(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
+    //   481: ldc_w 1089
     //   484: astore 5
-    //   486: ldc_w 1085
+    //   486: ldc_w 1089
     //   489: astore 11
-    //   491: ldc_w 1085
+    //   491: ldc_w 1089
     //   494: astore 16
     //   496: aload 16
     //   498: astore 20
@@ -2411,7 +2413,7 @@ public class PayLogic
     //   516: aload 5
     //   518: astore 21
     //   520: aload 29
-    //   522: invokestatic 280	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   522: invokestatic 282	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   525: ifne +778 -> 1303
     //   528: aload 16
     //   530: astore 20
@@ -2420,8 +2422,8 @@ public class PayLogic
     //   536: aload 5
     //   538: astore 19
     //   540: aload 29
-    //   542: ldc_w 1281
-    //   545: invokevirtual 1285	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   542: ldc_w 1285
+    //   545: invokevirtual 1289	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   548: astore 30
     //   550: iconst_0
     //   551: istore 13
@@ -2450,7 +2452,7 @@ public class PayLogic
     //   597: aload 30
     //   599: iload 13
     //   601: aaload
-    //   602: invokestatic 280	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   602: invokestatic 282	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   605: ifne +611 -> 1216
     //   608: aload 16
     //   610: astore 20
@@ -2462,7 +2464,7 @@ public class PayLogic
     //   622: iload 13
     //   624: aaload
     //   625: bipush 35
-    //   627: invokevirtual 1288	java/lang/String:indexOf	(I)I
+    //   627: invokevirtual 1292	java/lang/String:indexOf	(I)I
     //   630: istore 14
     //   632: iload 14
     //   634: iconst_m1
@@ -2479,7 +2481,7 @@ public class PayLogic
     //   655: iload 14
     //   657: iconst_1
     //   658: iadd
-    //   659: invokevirtual 598	java/lang/String:substring	(I)Ljava/lang/String;
+    //   659: invokevirtual 602	java/lang/String:substring	(I)Ljava/lang/String;
     //   662: astore 18
     //   664: aload 18
     //   666: astore 17
@@ -2502,219 +2504,219 @@ public class PayLogic
     //   699: goto -146 -> 553
     //   702: astore 16
     //   704: aload 16
-    //   706: invokevirtual 1289	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   706: invokevirtual 1293	java/io/UnsupportedEncodingException:printStackTrace	()V
     //   709: aload 5
     //   711: astore 16
     //   713: goto -682 -> 31
     //   716: iconst_1
     //   717: istore 12
     //   719: goto -561 -> 158
-    //   722: ldc_w 403
+    //   722: ldc_w 405
     //   725: astore 18
     //   727: goto -548 -> 179
     //   730: astore 18
     //   732: aload 18
-    //   734: invokevirtual 425	java/lang/Exception:printStackTrace	()V
+    //   734: invokevirtual 427	java/lang/Exception:printStackTrace	()V
     //   737: iconst_0
     //   738: istore 15
     //   740: goto -443 -> 297
     //   743: astore 5
-    //   745: new 224	org/json/JSONObject
+    //   745: new 226	org/json/JSONObject
     //   748: dup
-    //   749: invokespecial 567	org/json/JSONObject:<init>	()V
+    //   749: invokespecial 571	org/json/JSONObject:<init>	()V
     //   752: astore 5
     //   754: aload 11
-    //   756: invokestatic 280	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   756: invokestatic 282	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   759: ifne +14 -> 773
     //   762: aload 5
-    //   764: ldc_w 1276
+    //   764: ldc_w 1280
     //   767: aload 11
-    //   769: invokevirtual 1279	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   769: invokevirtual 1283	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   772: pop
     //   773: aload 5
-    //   775: invokevirtual 583	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   775: invokevirtual 587	org/json/JSONObject:toString	()Ljava/lang/String;
     //   778: astore 23
     //   780: goto -316 -> 464
-    //   783: new 221	android/os/Bundle
+    //   783: new 223	android/os/Bundle
     //   786: dup
-    //   787: invokespecial 222	android/os/Bundle:<init>	()V
+    //   787: invokespecial 224	android/os/Bundle:<init>	()V
     //   790: astore 16
     //   792: aload 16
-    //   794: ldc_w 326
+    //   794: ldc_w 328
     //   797: aload_3
-    //   798: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   798: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   801: aload 16
-    //   803: ldc_w 684
+    //   803: ldc_w 688
     //   806: aload 28
-    //   808: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   808: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   811: aload 16
-    //   813: ldc 235
+    //   813: ldc 237
     //   815: aload 26
-    //   817: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   817: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   820: aload 16
-    //   822: ldc_w 1291
+    //   822: ldc_w 1295
     //   825: aload 27
-    //   827: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   827: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   830: aload 16
-    //   832: ldc_w 262
+    //   832: ldc_w 264
     //   835: iload 12
-    //   837: invokevirtual 351	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   837: invokevirtual 353	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   840: aload 16
-    //   842: ldc_w 1115
+    //   842: ldc_w 1119
     //   845: aload 29
-    //   847: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   847: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   850: aload 16
-    //   852: ldc_w 642
+    //   852: ldc_w 646
     //   855: aload 23
-    //   857: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   857: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   860: aload 16
-    //   862: ldc_w 1268
+    //   862: ldc_w 1272
     //   865: aload 25
-    //   867: ldc_w 1268
-    //   870: invokevirtual 1271	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
-    //   873: invokevirtual 307	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   867: ldc_w 1272
+    //   870: invokevirtual 1275	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
+    //   873: invokevirtual 309	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   876: aload 16
-    //   878: ldc_w 353
+    //   878: ldc_w 355
     //   881: bipush 9
-    //   883: invokevirtual 351	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   883: invokevirtual 353	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   886: aload 16
-    //   888: ldc_w 355
+    //   888: ldc_w 357
     //   891: iload 6
-    //   893: invokevirtual 351	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   893: invokevirtual 353	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   896: aload 16
-    //   898: ldc_w 357
+    //   898: ldc_w 359
     //   901: lload 7
-    //   903: invokevirtual 361	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   903: invokevirtual 363	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   906: aload 16
-    //   908: ldc_w 363
+    //   908: ldc_w 365
     //   911: lload 9
-    //   913: invokevirtual 361	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   913: invokevirtual 363	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   916: aload 16
-    //   918: ldc_w 1211
+    //   918: ldc_w 1215
     //   921: iload 15
-    //   923: invokevirtual 307	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   923: invokevirtual 309	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   926: iload 15
     //   928: ifeq +13 -> 941
     //   931: aload 16
-    //   933: ldc_w 1293
+    //   933: ldc_w 1297
     //   936: aload 4
-    //   938: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   938: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   941: aload_2
     //   942: aload 16
-    //   944: invokestatic 367	cooperation/qwallet/plugin/pay/PayLogic:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
+    //   944: invokestatic 369	cooperation/qwallet/plugin/pay/PayLogic:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
     //   947: lload 9
     //   949: aconst_null
-    //   950: ldc_w 369
+    //   950: ldc_w 371
     //   953: aconst_null
     //   954: iconst_0
     //   955: aconst_null
-    //   956: invokestatic 293	com/tencent/mobileqq/activity/qwallet/report/VACDReportUtil:a	(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
-    //   959: invokestatic 374	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   956: invokestatic 295	com/tencent/mobileqq/activity/qwallet/report/VACDReportUtil:a	(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
+    //   959: invokestatic 376	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   962: ifeq +32 -> 994
-    //   965: ldc_w 376
+    //   965: ldc_w 378
     //   968: iconst_4
-    //   969: new 268	java/lang/StringBuilder
+    //   969: new 270	java/lang/StringBuilder
     //   972: dup
-    //   973: invokespecial 269	java/lang/StringBuilder:<init>	()V
-    //   976: ldc_w 378
-    //   979: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   982: invokestatic 384	java/lang/System:currentTimeMillis	()J
-    //   985: invokevirtual 387	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   988: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   991: invokestatic 391	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   973: invokespecial 271	java/lang/StringBuilder:<init>	()V
+    //   976: ldc_w 380
+    //   979: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   982: invokestatic 386	java/lang/System:currentTimeMillis	()J
+    //   985: invokevirtual 389	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   988: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   991: invokestatic 393	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   994: aload_1
     //   995: aload_0
     //   996: aload 16
-    //   998: invokestatic 397	cooperation/qwallet/plugin/QWalletPayBridge:launchForeground	(Landroid/app/Activity;Lcom/tencent/common/app/AppInterface;Landroid/os/Bundle;)Z
+    //   998: invokestatic 399	cooperation/qwallet/plugin/QWalletPayBridge:launchForeground	(Landroid/app/Activity;Lcom/tencent/common/app/AppInterface;Landroid/os/Bundle;)Z
     //   1001: pop
     //   1002: aload 24
-    //   1004: ldc_w 399
+    //   1004: ldc_w 401
     //   1007: iconst_0
-    //   1008: invokevirtual 351	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1008: invokevirtual 353	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1011: aload 24
-    //   1013: ldc_w 817
+    //   1013: ldc_w 821
     //   1016: aload 28
-    //   1018: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1018: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1021: aload 24
-    //   1023: ldc_w 821
+    //   1023: ldc_w 825
     //   1026: aload 5
-    //   1028: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1028: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1031: aload 24
-    //   1033: ldc_w 825
+    //   1033: ldc_w 829
     //   1036: aload 17
-    //   1038: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1038: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1041: aload 24
-    //   1043: ldc_w 829
+    //   1043: ldc_w 833
     //   1046: aload 11
-    //   1048: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1048: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1051: aload 24
     //   1053: areturn
     //   1054: astore 5
     //   1056: aload 20
     //   1058: astore 11
-    //   1060: invokestatic 406	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1060: invokestatic 408	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1063: ifeq +8 -> 1071
     //   1066: aload 5
-    //   1068: invokevirtual 425	java/lang/Exception:printStackTrace	()V
+    //   1068: invokevirtual 427	java/lang/Exception:printStackTrace	()V
     //   1071: aload 19
     //   1073: astore 5
     //   1075: goto -292 -> 783
     //   1078: astore_0
-    //   1079: invokestatic 406	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1079: invokestatic 408	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1082: ifeq +32 -> 1114
     //   1085: ldc 20
     //   1087: iconst_2
-    //   1088: new 268	java/lang/StringBuilder
+    //   1088: new 270	java/lang/StringBuilder
     //   1091: dup
-    //   1092: invokespecial 269	java/lang/StringBuilder:<init>	()V
-    //   1095: ldc_w 1295
-    //   1098: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1092: invokespecial 271	java/lang/StringBuilder:<init>	()V
+    //   1095: ldc_w 1299
+    //   1098: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1101: aload_0
-    //   1102: invokevirtual 411	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   1105: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1108: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1111: invokestatic 414	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1114: invokestatic 374	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1102: invokevirtual 413	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   1105: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1108: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1111: invokestatic 416	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1114: invokestatic 376	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1117: ifeq +7 -> 1124
     //   1120: aload_0
-    //   1121: invokevirtual 417	org/json/JSONException:printStackTrace	()V
+    //   1121: invokevirtual 419	org/json/JSONException:printStackTrace	()V
     //   1124: aload 24
-    //   1126: ldc_w 399
+    //   1126: ldc_w 401
     //   1129: iconst_m1
-    //   1130: invokevirtual 351	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1130: invokevirtual 353	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1133: aload 24
-    //   1135: ldc_w 419
-    //   1138: ldc_w 1297
-    //   1141: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1135: ldc_w 421
+    //   1138: ldc_w 1301
+    //   1141: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1144: aload 24
     //   1146: areturn
     //   1147: astore_0
-    //   1148: invokestatic 406	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1148: invokestatic 408	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1151: ifeq +32 -> 1183
     //   1154: ldc 20
     //   1156: iconst_2
-    //   1157: new 268	java/lang/StringBuilder
+    //   1157: new 270	java/lang/StringBuilder
     //   1160: dup
-    //   1161: invokespecial 269	java/lang/StringBuilder:<init>	()V
-    //   1164: ldc_w 1299
-    //   1167: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1161: invokespecial 271	java/lang/StringBuilder:<init>	()V
+    //   1164: ldc_w 1303
+    //   1167: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1170: aload_0
-    //   1171: invokevirtual 424	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1174: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1177: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1180: invokestatic 414	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1183: invokestatic 374	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1171: invokevirtual 426	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1174: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1177: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1180: invokestatic 416	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1183: invokestatic 376	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1186: ifeq +7 -> 1193
     //   1189: aload_0
-    //   1190: invokevirtual 425	java/lang/Exception:printStackTrace	()V
+    //   1190: invokevirtual 427	java/lang/Exception:printStackTrace	()V
     //   1193: aload 24
-    //   1195: ldc_w 399
+    //   1195: ldc_w 401
     //   1198: iconst_m1
-    //   1199: invokevirtual 351	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1199: invokevirtual 353	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1202: aload 24
-    //   1204: ldc_w 419
-    //   1207: ldc_w 1301
-    //   1210: invokevirtual 297	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1204: ldc_w 421
+    //   1207: ldc_w 1305
+    //   1210: invokevirtual 299	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1213: aload 24
     //   1215: areturn
     //   1216: aload 5
@@ -2724,13 +2726,13 @@ public class PayLogic
     //   1224: aload 17
     //   1226: astore 11
     //   1228: goto -547 -> 681
-    //   1231: ldc_w 403
+    //   1231: ldc_w 405
     //   1234: astore 5
     //   1236: goto -1036 -> 200
-    //   1239: ldc_w 403
+    //   1239: ldc_w 405
     //   1242: astore 17
     //   1244: goto -1023 -> 221
-    //   1247: ldc_w 403
+    //   1247: ldc_w 405
     //   1250: astore 16
     //   1252: goto -1001 -> 251
     //   1255: iconst_0
@@ -2871,43 +2873,43 @@ public class PayLogic
         {
           str1 = localJSONObject.getString("zoneId");
           if (!localJSONObject.has("acctType")) {
-            break label886;
+            break label889;
           }
           str2 = localJSONObject.getString("acctType");
           if (!localJSONObject.has("numberVisible")) {
-            break label894;
+            break label897;
           }
           bool1 = localJSONObject.getBoolean("numberVisible");
           if (!localJSONObject.has("saveValue")) {
-            break label900;
+            break label903;
           }
           str3 = localJSONObject.getString("saveValue");
           if (!localJSONObject.has("isCanChange")) {
-            break label906;
+            break label909;
           }
           bool2 = localJSONObject.getBoolean("isCanChange");
           if (!localJSONObject.has("aid")) {
-            break label912;
+            break label915;
           }
           str4 = localJSONObject.getString("aid");
           if (!localJSONObject.has("discountId")) {
-            break label920;
+            break label923;
           }
           str5 = localJSONObject.getString("discountId");
           if (!localJSONObject.has("other")) {
-            break label928;
+            break label931;
           }
           str6 = localJSONObject.getString("other");
           if (!localJSONObject.has("payload")) {
-            break label936;
+            break label939;
           }
           str7 = localJSONObject.getString("payload");
           if (!localJSONObject.has("drmInfo")) {
-            break label944;
+            break label947;
           }
           str8 = localJSONObject.getString("drmInfo");
           if (!localJSONObject.has("comeForm")) {
-            break label952;
+            break label955;
           }
           i = localJSONObject.getInt("comeForm");
           StringBuilder localStringBuilder = new StringBuilder();
@@ -2988,34 +2990,34 @@ public class PayLogic
         return localBundle;
       }
       continue;
-      label886:
+      label889:
       String str2 = "common";
       continue;
-      label894:
+      label897:
       boolean bool1 = true;
       continue;
-      label900:
+      label903:
       String str3 = null;
       continue;
-      label906:
+      label909:
       boolean bool2 = true;
       continue;
-      label912:
+      label915:
       String str4 = "";
       continue;
-      label920:
+      label923:
       String str5 = "";
       continue;
-      label928:
+      label931:
       String str6 = "";
       continue;
-      label936:
+      label939:
       String str7 = "";
       continue;
-      label944:
+      label947:
       String str8 = "";
       continue;
-      label952:
+      label955:
       int i = 1;
     }
   }
@@ -3034,31 +3036,31 @@ public class PayLogic
         {
           str1 = ((JSONObject)localObject).getString("channel");
           if (!((JSONObject)localObject).has("unit")) {
-            break label790;
+            break label793;
           }
           str2 = ((JSONObject)localObject).getString("unit");
           if (!((JSONObject)localObject).has("saveValue")) {
-            break label796;
+            break label799;
           }
           str3 = ((JSONObject)localObject).getString("saveValue");
           if (!((JSONObject)localObject).has("aid")) {
-            break label802;
+            break label805;
           }
           str4 = ((JSONObject)localObject).getString("aid");
           if (!((JSONObject)localObject).has("provideUin")) {
-            break label810;
+            break label813;
           }
           str5 = ((JSONObject)localObject).getString("provideUin");
           if (!((JSONObject)localObject).has("provideType")) {
-            break label816;
+            break label819;
           }
           str6 = ((JSONObject)localObject).getString("provideType");
           if (!((JSONObject)localObject).has("discountId")) {
-            break label822;
+            break label825;
           }
           str7 = ((JSONObject)localObject).getString("discountId");
           if (!((JSONObject)localObject).has("other")) {
-            break label830;
+            break label833;
           }
           str8 = ((JSONObject)localObject).getString("other");
           if (((JSONObject)localObject).has("payload"))
@@ -3137,25 +3139,25 @@ public class PayLogic
         return localBundle;
       }
       continue;
-      label790:
+      label793:
       String str2 = null;
       continue;
-      label796:
+      label799:
       String str3 = null;
       continue;
-      label802:
+      label805:
       String str4 = "";
       continue;
-      label810:
+      label813:
       String str5 = null;
       continue;
-      label816:
+      label819:
       String str6 = null;
       continue;
-      label822:
+      label825:
       String str7 = "";
       continue;
-      label830:
+      label833:
       String str8 = "";
     }
   }
@@ -3542,8 +3544,8 @@ public class PayLogic
     if (QLog.isColorLevel()) {
       QLog.i("Q.qwallet.pay.PayLogic", 2, "end()");
     }
-    aivm.a();
-    int i = aivm.a();
+    akmq.a();
+    int i = akmq.a();
     if (QLog.isColorLevel()) {
       QLog.i("Q.qwallet.pay.PayLogic", 2, "finish idlePayCount=" + i);
     }
@@ -3558,12 +3560,12 @@ public class PayLogic
     Object localObject2 = new Intent((Context)localObject1, PayBridgeActivity.class);
     ((Intent)localObject2).addFlags(536870912);
     ((BaseActivity)localObject1).startActivity((Intent)localObject2);
-    localObject2 = String.format(((BaseActivity)localObject1).getString(2131717783), new Object[] { Integer.valueOf(i) });
-    localObject1 = createCustomDialog(((BaseActivity)localObject1).getString(2131699802), (String)localObject2, null);
+    localObject2 = String.format(((BaseActivity)localObject1).getString(2131715997), new Object[] { Integer.valueOf(i) });
+    localObject1 = createCustomDialog(((BaseActivity)localObject1).getString(2131698272), (String)localObject2, null);
     ((Dialog)localObject1).setCancelable(false);
     localObject2 = new PayLogic.3(this, (Dialog)localObject1);
-    ((Dialog)localObject1).findViewById(2131365228).setOnClickListener((View.OnClickListener)localObject2);
-    ((Dialog)localObject1).findViewById(2131365222).setOnClickListener((View.OnClickListener)localObject2);
+    ((Dialog)localObject1).findViewById(2131365470).setOnClickListener((View.OnClickListener)localObject2);
+    ((Dialog)localObject1).findViewById(2131365464).setOnClickListener((View.OnClickListener)localObject2);
     ((Dialog)localObject1).setOnDismissListener(new PayLogic.4(this));
     try
     {
@@ -3601,7 +3603,7 @@ public class PayLogic
       isPaying = true;
       this.isFromPCPush = true;
       this.isPCPushDesc = true;
-      startPCPushPay(aivm.a(this.isPCPushDesc));
+      startPCPushPay(akmq.a(this.isPCPushDesc));
       return;
     }
     isPaying = true;
@@ -3611,10 +3613,10 @@ public class PayLogic
       end();
       return;
     case 1: 
-      localObject = apmm.a(this.intentData);
-      if ((localObject == null) || (!checkEmojiPayParam((apmm)localObject)))
+      localObject = arpi.a(this.intentData);
+      if ((localObject == null) || (!checkEmojiPayParam((arpi)localObject)))
       {
-        OnEmojimallPayResult((apmm)localObject, -1, 0, -1, -1, -1, "param error");
+        OnEmojimallPayResult((arpi)localObject, -1, 0, -1, -1, -1, "param error");
         if (localObject == null) {
           if (QLog.isColorLevel()) {
             QLog.i("Q.qwallet.pay.PayLogic", 2, "emojimall pay paramerror: reqData:null");
@@ -3626,11 +3628,11 @@ public class PayLogic
           end();
           return;
           if (QLog.isColorLevel()) {
-            QLog.i("Q.qwallet.pay.PayLogic", 2, "emojimall pay paramerror:userid:" + ((apmm)localObject).c + "userkey:" + ((apmm)localObject).d + "sessionid:" + ((apmm)localObject).e + "sessionType:" + ((apmm)localObject).f + "zoneId:" + ((apmm)localObject).g + "pf:" + ((apmm)localObject).h + "pfKey:" + ((apmm)localObject).i + "tokenUrl:" + ((apmm)localObject).j + "discountId:" + ((apmm)localObject).k + "other:" + ((apmm)localObject).l + "payload:" + ((apmm)localObject).m);
+            QLog.i("Q.qwallet.pay.PayLogic", 2, "emojimall pay paramerror:userid:" + ((arpi)localObject).c + "userkey:" + ((arpi)localObject).d + "sessionid:" + ((arpi)localObject).e + "sessionType:" + ((arpi)localObject).f + "zoneId:" + ((arpi)localObject).g + "pf:" + ((arpi)localObject).h + "pfKey:" + ((arpi)localObject).i + "tokenUrl:" + ((arpi)localObject).j + "discountId:" + ((arpi)localObject).k + "other:" + ((arpi)localObject).l + "payload:" + ((arpi)localObject).m);
           }
         }
       }
-      doEmojimallPay((apmm)localObject);
+      doEmojimallPay((arpi)localObject);
       return;
     case 2: 
       doGoldCharge(this.intentData);
@@ -3791,18 +3793,18 @@ public class PayLogic
     remove(this);
   }
   
-  public void startPCPushPay(aivn paramaivn)
+  public void startPCPushPay(akmr paramakmr)
   {
-    if (paramaivn == null)
+    if (paramakmr == null)
     {
       end();
       return;
     }
-    paramaivn.c = 1;
+    paramakmr.c = 1;
     Bundle localBundle = new Bundle();
-    localBundle.putString("json", paramaivn.a);
+    localBundle.putString("json", paramakmr.a);
     localBundle.putString("callbackSn", "0");
-    int i = aivm.a(paramaivn.b);
+    int i = akmq.a(paramakmr.b);
     switch (i)
     {
     case 10: 
@@ -3824,7 +3826,7 @@ public class PayLogic
       return;
     }
     localBundle = this.intent.getExtras();
-    localBundle.putString("json", paramaivn.a);
+    localBundle.putString("json", paramakmr.a);
     localBundle.putString("callbackSn", "0");
     openTenpayView(localBundle);
   }
@@ -3849,7 +3851,7 @@ public class PayLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qwallet.plugin.pay.PayLogic
  * JD-Core Version:    0.7.0.1
  */

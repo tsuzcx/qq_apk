@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
 class agqh
-  implements View.OnClickListener
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  agqh(agps paramagps) {}
+  agqh(agqg paramagqg) {}
   
-  public void onClick(View paramView)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if (!awfa.a().a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
-      bdsr.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "aio");
+    if (paramBitmap != null)
+    {
+      this.a.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
     }
   }
 }

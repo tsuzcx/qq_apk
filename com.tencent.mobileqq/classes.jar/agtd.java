@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class agtd
-  implements ywq
+  extends afuv
 {
-  agtd(agsy paramagsy) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
+  TextView e;
   
-  public void a()
-  {
-    auzw localauzw = this.a.jdField_a_of_type_Auzw;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002) {}
-    for (int i = 8;; i = 6)
-    {
-      localauzw.a(false, true, i);
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    this.a.jdField_a_of_type_Auzw.a();
-  }
+  agtd(agta paramagta) {}
 }
 
 

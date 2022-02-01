@@ -1,69 +1,106 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class aoyr
-  extends aokh<aoyo>
+class aoyr
+  implements ITransactionCallback
 {
-  public static aoyo a()
-  {
-    return (aoyo)aoks.a().a(346);
-  }
+  aoyr(aoyp paramaoyp, apai paramapai, long paramLong) {}
   
-  public int a()
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    return 346;
-  }
-  
-  @NonNull
-  public aoyo a(int paramInt)
-  {
-    return new aoyo();
-  }
-  
-  @Nullable
-  public aoyo a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoyo.a(paramArrayOfaoko);
-    }
-    return null;
-  }
-  
-  public Class<aoyo> a()
-  {
-    return aoyo.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoyo paramaoyo)
-  {
-    if ((paramaoyo != null) && (!TextUtils.isEmpty(paramaoyo.d()))) {
-      ((bajc)BaseApplicationImpl.getApplication().getRuntime().getManager(272)).a(paramaoyo);
+    String str = "";
+    for (;;)
+    {
+      synchronized (aoyp.a(this.jdField_a_of_type_Aoyp))
+      {
+        if (aoyp.a(this.jdField_a_of_type_Aoyp) != null)
+        {
+          int i = 0;
+          if (i < aoyp.a(this.jdField_a_of_type_Aoyp).size())
+          {
+            if (((aoyu)aoyp.a(this.jdField_a_of_type_Aoyp).get(i)).jdField_a_of_type_Apai.a.equals(this.jdField_a_of_type_Apai.a))
+            {
+              paramArrayOfByte = ((aoyu)aoyp.a(this.jdField_a_of_type_Aoyp).get(i)).jdField_a_of_type_Aoys;
+              str = ((aoyu)aoyp.a(this.jdField_a_of_type_Aoyp).get(i)).jdField_a_of_type_Apai.a;
+              aoyp.a(this.jdField_a_of_type_Aoyp).remove(i);
+              QLog.i("AREngine_ARCloudFileUpload", 1, "Upload failed. retCode = " + paramInt + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str);
+              if (paramArrayOfByte != null) {
+                paramArrayOfByte.a(paramInt, str, null);
+              }
+              return;
+            }
+            i += 1;
+          }
+        }
+      }
+      paramArrayOfByte = null;
     }
   }
   
-  public int b()
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    return 0;
+    Object localObject2 = null;
+    String str2 = "";
+    Object localObject3 = aoyp.a(this.jdField_a_of_type_Aoyp);
+    String str1 = str2;
+    Object localObject1 = localObject2;
+    for (;;)
+    {
+      try
+      {
+        if (aoyp.a(this.jdField_a_of_type_Aoyp) != null)
+        {
+          i = 0;
+          str1 = str2;
+          localObject1 = localObject2;
+          if (i < aoyp.a(this.jdField_a_of_type_Aoyp).size())
+          {
+            if (!((aoyu)aoyp.a(this.jdField_a_of_type_Aoyp).get(i)).jdField_a_of_type_Apai.a.equals(this.jdField_a_of_type_Apai.a)) {
+              continue;
+            }
+            localObject1 = ((aoyu)aoyp.a(this.jdField_a_of_type_Aoyp).get(i)).jdField_a_of_type_Aoys;
+            str1 = ((aoyu)aoyp.a(this.jdField_a_of_type_Aoyp).get(i)).jdField_a_of_type_Apai.a;
+            aoyp.a(this.jdField_a_of_type_Aoyp).remove(i);
+          }
+        }
+        paramArrayOfByte = aoyp.a(this.jdField_a_of_type_Aoyp, paramArrayOfByte, this.jdField_a_of_type_Apai);
+        if (paramArrayOfByte == null)
+        {
+          QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 9058 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1 + ". deserialize pb failed.");
+          i = 9058;
+          if (localObject1 != null) {
+            ((aoys)localObject1).a(i, str1, paramArrayOfByte);
+          }
+          return;
+          i += 1;
+          continue;
+        }
+        QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 0 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1);
+      }
+      finally {}
+      int i = 0;
+    }
   }
   
-  public boolean b()
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
   {
-    return false;
+    QLog.i("AREngine_ARCloudFileUpload", 1, "Upload start. sessionId = " + this.jdField_a_of_type_Apai.a);
   }
   
-  public boolean c()
+  public void onUpdateProgress(int paramInt)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARCloudFileUpload", 2, "onUpdateProgress. sessionId = " + this.jdField_a_of_type_Apai.a + ". total size = " + this.jdField_a_of_type_Long + ", transfered size = " + paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyr
  * JD-Core Version:    0.7.0.1
  */

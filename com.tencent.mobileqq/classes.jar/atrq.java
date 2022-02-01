@@ -1,43 +1,70 @@
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.media.AudioManager;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 class atrq
-  implements bhtv
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  
   atrq(atro paramatro) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    paramInt = paramAbsListView.getFirstVisiblePosition();
-    if (paramInt > this.jdField_a_of_type_Int)
+    boolean bool1 = true;
+    switch (paramView.getId())
     {
-      if (!atro.a(this.jdField_a_of_type_Atro).b()) {
-        atro.a(this.jdField_a_of_type_Atro).a();
-      }
-      if (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("LocationShareController", 4, "onScrollStateChanged");
-        }
-        atro.a(this.jdField_a_of_type_Atro).a();
-      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Int = paramInt;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramInt >= this.jdField_a_of_type_Int) {}
+      if (atro.a(this.a) != null)
+      {
+        boolean bool2 = atro.a(this.a).isPlaying();
+        if (bool2)
+        {
+          atro.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+          atvm.a("0X8004BE5");
+          this.a.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(atro.a(this.a));
+          atro.a(this.a);
+          label130:
+          localObject = this.a.jdField_a_of_type_Atsu;
+          if (bool2) {
+            break label171;
+          }
+        }
+        for (;;)
+        {
+          ((atsu)localObject).d(bool1);
+          break;
+          atro.b(this.a);
+          atro.c(this.a);
+          break label130;
+          label171:
+          bool1 = false;
+        }
+        Object localObject = this.a.jdField_a_of_type_Atoo.b();
+        atro.a(this.a, (ArrayList[])localObject);
+        String str = this.a.a() + "(" + atwl.a(this.a.jdField_a_of_type_Atoo.c()) + ")";
+        this.a.a((ArrayList[])localObject, str);
+        continue;
+        this.a.n();
+        continue;
+        int i = this.a.jdField_a_of_type_Atoo.i();
+        int j = this.a.jdField_a_of_type_Atoo.h();
+        if ((i == 6) && (j == 1) && (this.a.jdField_a_of_type_Atoo.a() != null)) {
+          this.a.jdField_a_of_type_Atoo.a().a();
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atrq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,21 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akie
+class akie
+  implements View.OnClickListener
 {
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public Object a;
-  public String a;
-  public TextView b;
+  akie(akid paramakid) {}
   
-  public akie(akid paramakid) {}
+  public void onClick(View paramView)
+  {
+    akid.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akie
  * JD-Core Version:    0.7.0.1
  */

@@ -33,17 +33,27 @@ public abstract interface Ad
   
   public abstract String getAppPackageUrl();
   
+  public abstract String getBusinessIdForXiJingOffline();
+  
   public abstract String getCanvas();
+  
+  public abstract String getCanvasForXiJingOffline();
   
   public abstract int getCreativeSize();
   
   public abstract int getDestType();
+  
+  public abstract String getJSONKeyForXiJingOffline();
+  
+  public abstract String getJSONUrlForXiJingOffline();
   
   public abstract String getPosId();
   
   public abstract String getProductId();
   
   public abstract int getProductType();
+  
+  public abstract int getRelationTarget();
   
   public abstract String getTencent_video_id();
   
@@ -55,9 +65,13 @@ public abstract interface Ad
   
   public abstract String getUrlForEffect();
   
+  public abstract String getUrlForFeedBack();
+  
   public abstract String getUrlForImpression();
   
   public abstract String getUrlForLandingPage();
+  
+  public abstract String getUrlForXiJingOffline();
   
   public abstract String getVia();
   
@@ -71,11 +85,17 @@ public abstract interface Ad
   
   public abstract boolean isAppXiJingDefault();
   
+  public abstract boolean isAppXiJingOffline();
+  
   public abstract boolean isCanvas();
   
   public abstract boolean isHitCanvasVideoCeilingExp();
   
-  public abstract boolean isHitJumpExperiment();
+  public abstract boolean isHitFirstLoadImageExp();
+  
+  public abstract boolean isHitRelationTargetInstallExp();
+  
+  public abstract boolean isJDProductType();
   
   public abstract boolean isQQMINIProgram();
   
@@ -83,11 +103,17 @@ public abstract interface Ad
   
   public abstract boolean isVideoSplice();
   
+  public abstract boolean isWebXiJing();
+  
+  public abstract boolean isWebXiJingOffline();
+  
   public abstract void setActionSetId(long paramLong);
+  
+  public abstract void setCanvasForXiJingOffline(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.Ad
  * JD-Core Version:    0.7.0.1
  */

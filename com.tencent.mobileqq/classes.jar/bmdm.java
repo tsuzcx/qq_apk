@@ -1,4 +1,4 @@
-public abstract interface bmdm {}
+class bmdm {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import alud;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -10,6 +9,7 @@ import android.text.style.StyleSpan;
 import android.text.style.SuperscriptSpan;
 import android.util.SparseArray;
 import android.widget.TextView;
+import anni;
 import com.tencent.qphone.base.util.QLog;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -24,7 +24,7 @@ public class NumAnim
   public static final int REGION_PREFFIX = 1;
   public static final int REGION_SUFFIX = 3;
   private static final String TAG = "NumAnim";
-  public static final String WAN = alud.a(2131708074);
+  public static final String WAN = anni.a(2131706451);
   static DecimalFormat decimalFormatTo1;
   static DecimalFormat decimalFormatTo2 = new DecimalFormat("0.00");
   final boolean changeDip;
@@ -377,7 +377,7 @@ public class NumAnim
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.NumAnim
  * JD-Core Version:    0.7.0.1
  */

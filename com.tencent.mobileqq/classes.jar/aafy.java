@@ -1,174 +1,169 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
-import com.tencent.device.bind.DevicePluginDownloadActivity;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.net.URLDecoder;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.MD5;
 
 public class aafy
-  extends WebViewPlugin
 {
-  public aafy()
+  public static Pair<Boolean, Setting> a(int paramInt1, String paramString, int paramInt2)
   {
-    this.mPluginNameSpace = "QQConnect";
-  }
-  
-  private HashMap<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    String str = QQAppInterface.b(paramInt1, paramString, paramInt2);
+    paramString = new QQEntityManagerFactory(paramString).createEntityManager();
+    if ((0 == 0) && (!TextUtils.isEmpty(str)) && (paramString != null)) {}
+    for (paramString = (Setting)paramString.find(Setting.class, str);; paramString = null)
     {
-      return localHashMap;
-      paramString = URLDecoder.decode(paramString).split("&");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String[] arrayOfString = paramString[i].split("=");
-        if (arrayOfString.length > 1) {
-          localHashMap.put(arrayOfString[0], arrayOfString[1]);
-        }
-        i += 1;
+      if (paramString == null) {
+        return new Pair(Boolean.valueOf(true), paramString);
       }
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    paramJsBridgeListener = null;
-    if (!"QQConnect".equals(paramString2)) {
-      return false;
-    }
-    if ("goShare".equals(paramString3))
-    {
-      bflp.c(this.TAG, "goshare");
-      String str1;
-      String str2;
-      int i;
-      try
+      boolean bool;
+      switch (paramInt1)
       {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString3 = paramJsBridgeListener.getString("din");
-        paramString2 = a(paramJsBridgeListener.getString("args"));
-        paramVarArgs = (String)paramString2.get("uin");
-        str1 = (String)paramString2.get("sn");
-        str2 = (String)paramString2.get("pid");
-        i = paramJsBridgeListener.optInt("public_device", 0);
-        if ((i != 0) && ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))))
-        {
-          bflz.a().a(this.mRuntime.a().getString(2131721279));
-          return true;
-        }
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        bflz.a().a(this.mRuntime.a().getString(2131690337));
-        return true;
-      }
-      paramString2 = this.mRuntime.a();
-      paramJsBridgeListener = paramString2;
-      if ((paramString2 instanceof BasePluginActivity)) {
-        paramJsBridgeListener = ((BasePluginActivity)paramString2).getOutActivity();
-      }
-      paramJsBridgeListener = new Intent(paramJsBridgeListener, DevicePluginDownloadActivity.class);
-      if (i != 0)
-      {
-        paramJsBridgeListener.putExtra("DevicePID", str2);
-        paramJsBridgeListener.putExtra("DeviceSN", str1);
-        paramJsBridgeListener.putExtra("DeviceToken", "");
-        paramJsBridgeListener.putExtra("public_device", i);
+      default: 
+        bool = false;
       }
       for (;;)
       {
-        paramJsBridgeListener.putExtra("from", "share");
-        this.mRuntime.a().startActivity(paramJsBridgeListener);
-        this.mRuntime.a().finish();
-        return true;
-        paramJsBridgeListener.putExtra("troop_uin", paramString3);
-        paramJsBridgeListener.putExtra("uin", paramVarArgs);
-        paramJsBridgeListener.putExtra("url", paramString1);
+        return new Pair(Boolean.valueOf(bool), paramString);
+        if ((paramString == null) || (System.currentTimeMillis() - paramString.updateTimestamp > 86400000L)) {
+          bool = true;
+        } else {
+          bool = false;
+        }
       }
     }
-    if ("doReport".equals(paramString3)) {}
-    try
+  }
+  
+  public static bggm a(String paramString)
+  {
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inPreferredConfig = aobp.a;
+    bggm localbggm = new bggm();
+    int i = 0;
+    do
     {
-      bflp.c(this.TAG, "doReport");
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-      aagb.a(null, paramJsBridgeListener.optString("actionName"), paramJsBridgeListener.optInt("fromType"), paramJsBridgeListener.optInt("actionResult"), paramJsBridgeListener.optInt("ext2"));
-      return true;
-    }
-    catch (JSONException paramJsBridgeListener)
-    {
-      break label649;
-    }
-    if ("goBind".equals(paramString3)) {}
-    label649:
-    try
-    {
-      bflp.c(this.TAG, "qrUrl");
-      paramString1 = new JSONObject(paramVarArgs[0]).optString("url");
-      boolean bool = TextUtils.isEmpty(paramString1);
-      if (bool) {}
-    }
-    catch (JSONException paramJsBridgeListener)
-    {
-      label428:
-      break label649;
-    }
-    try
-    {
-      paramString1 = new String(bdfr.decode(paramString1, 0));
-      paramJsBridgeListener = paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      break label428;
-    }
-    if (!TextUtils.isEmpty(paramJsBridgeListener))
-    {
-      paramString2 = this.mRuntime.a();
-      paramString1 = paramString2;
-      if ((paramString2 instanceof BasePluginActivity)) {
-        paramString1 = ((BasePluginActivity)paramString2).getOutActivity();
+      bggl.a(paramString, localOptions, localbggm);
+      if (localbggm.a == 1) {
+        NearbyAppInterface.b();
       }
-      paramString1 = new Intent(paramString1, DevicePluginDownloadActivity.class);
-      paramString1.putExtra("qrurl", paramJsBridgeListener);
-      paramString1.putExtra("entrance", 1);
-      paramString1.putExtra("from", "connect");
-      this.mRuntime.a().startActivity(paramString1);
-    }
-    this.mRuntime.a().finish();
-    return true;
-    if ("jumpPublicDevice".equals(paramString3)) {
-      try
+      i += 1;
+    } while ((i < 2) && (localbggm.a == 1));
+    return localbggm;
+  }
+  
+  public static String a(Setting paramSetting, int paramInt1, String paramString, int paramInt2)
+  {
+    Object localObject = paramSetting;
+    if (paramSetting == null)
+    {
+      localObject = paramSetting;
+      if (paramString != null)
       {
-        bflp.c(this.TAG, "METHOD_JUMP_PUBLICDEVICE");
-        paramString2 = new JSONObject(paramVarArgs[0]).optString("actionUrl");
-        if (TextUtils.isEmpty(paramString2)) {
-          return true;
+        localObject = paramSetting;
+        if (paramInt1 != 101)
+        {
+          localObject = paramSetting;
+          if (paramInt1 != 1001) {
+            localObject = (Setting)a(paramInt1, paramString, paramInt2).second;
+          }
         }
-        paramString1 = this.mRuntime.a();
-        paramJsBridgeListener = paramString1;
-        if ((paramString1 instanceof BasePluginActivity)) {
-          paramJsBridgeListener = ((BasePluginActivity)paramString1).getOutActivity();
-        }
-        paramJsBridgeListener = new Intent(paramJsBridgeListener, DevicePluginDownloadActivity.class);
-        paramJsBridgeListener.putExtra("url", paramString2);
-        paramJsBridgeListener.putExtra("jumpPublicDevice", true);
-        paramJsBridgeListener.putExtra("from", "share");
-        this.mRuntime.a().startActivity(paramJsBridgeListener);
-        this.mRuntime.a().finish();
-        return true;
       }
-      catch (JSONException paramJsBridgeListener) {}
     }
-    return false;
+    paramSetting = new StringBuilder(256);
+    if (paramInt1 == 32) {
+      if (bgjq.a())
+      {
+        paramSetting.append(anhk.bO);
+        localObject = a((Setting)localObject, paramString, paramInt1);
+        switch (((Integer)localObject[0]).intValue())
+        {
+        }
+      }
+    }
+    for (;;)
+    {
+      localObject = MD5.toMD5(paramString);
+      localObject = MD5.toMD5((String)localObject + paramString);
+      paramSetting.append(MD5.toMD5((String)localObject + paramString));
+      paramSetting.append(".jpg_");
+      return paramSetting.toString();
+      paramSetting.append("/data/data/com.tencent.mobileqq/files/head/_stranger/");
+      break;
+      if (bgjq.a())
+      {
+        paramSetting.append(anhk.bM);
+        break;
+      }
+      paramSetting.append("/data/data/com.tencent.mobileqq/files/head/_hd/");
+      break;
+      paramSetting.append("troop_sys_b_");
+      paramString = (String)localObject[1];
+      continue;
+      paramSetting.append("sys_");
+      paramString = (String)localObject[1];
+      continue;
+      paramSetting.append("dis_g_");
+      paramString = paramString + paramString;
+      continue;
+      paramSetting.append("dis_pstn_g_");
+      paramString = paramString + paramString;
+      continue;
+      paramSetting.append("troop_");
+      continue;
+      paramSetting.append("new_troop_b_");
+      continue;
+      paramSetting.append("stranger_").append(Integer.toString(paramInt2)).append("_");
+      continue;
+      paramSetting.append("qcall_").append(Integer.toString(paramInt2)).append("_");
+    }
+  }
+  
+  private static Object[] a(Setting paramSetting, String paramString, int paramInt)
+  {
+    String str = paramString;
+    int i = paramInt;
+    if (paramSetting != null)
+    {
+      str = paramString;
+      i = paramInt;
+      if (paramInt != 101)
+      {
+        str = paramString;
+        i = paramInt;
+        if (paramInt != 1001)
+        {
+          str = paramString;
+          i = paramInt;
+          if (paramString != null)
+          {
+            str = paramString;
+            i = paramInt;
+            if (paramSetting.bHeadType == 0)
+            {
+              str = String.valueOf(paramSetting.systemHeadID);
+              if (paramInt != 4) {
+                break label87;
+              }
+              i = -56;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      return new Object[] { Integer.valueOf(i), str };
+      label87:
+      if (paramInt == 16) {
+        i = 16;
+      } else {
+        i = -55;
+      }
+    }
   }
 }
 

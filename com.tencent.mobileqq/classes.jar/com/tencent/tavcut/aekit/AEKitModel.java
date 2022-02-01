@@ -1,20 +1,30 @@
 package com.tencent.tavcut.aekit;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class AEKitModel
 {
-  private HashMap<String, String> adjustParams;
-  private boolean enableAIFilter = true;
+  public static final int MEDIA_TYPE_IMAGE = 1;
+  public static final int MEDIA_TYPE_VIDEO = 2;
+  private Map<String, String> adjustParams;
+  private boolean disable;
+  private float effectStrength = 1.0F;
   private float glowAlpha = 0.0F;
   private float lutAlpha = 1.0F;
   private String lutPath;
   private long mDuration = 2147483647L;
   private long mStartTime = 0L;
+  private String material;
+  private final int mediaType;
   private String overlayImgPath;
   private int smoothLevel = 0;
   
-  public HashMap<String, String> getAdjustParams()
+  public AEKitModel(int paramInt)
+  {
+    this.mediaType = paramInt;
+  }
+  
+  public Map<String, String> getAdjustParams()
   {
     return this.adjustParams;
   }
@@ -22,6 +32,11 @@ public class AEKitModel
   public long getDuration()
   {
     return this.mDuration;
+  }
+  
+  public float getEffectStrength()
+  {
+    return this.effectStrength;
   }
   
   public float getGlowAlpha()
@@ -39,6 +54,16 @@ public class AEKitModel
     return this.lutPath;
   }
   
+  public String getMaterial()
+  {
+    return this.material;
+  }
+  
+  public int getMediaType()
+  {
+    return this.mediaType;
+  }
+  
   public String getOverlayImgPath()
   {
     return this.overlayImgPath;
@@ -54,14 +79,19 @@ public class AEKitModel
     return this.mStartTime;
   }
   
-  public boolean isEnableAIFilter()
+  public boolean isDisable()
   {
-    return this.enableAIFilter;
+    return this.disable;
   }
   
-  public void setAdjustParams(HashMap<String, String> paramHashMap)
+  public void setAdjustParams(Map<String, String> paramMap)
   {
-    this.adjustParams = paramHashMap;
+    this.adjustParams = paramMap;
+  }
+  
+  public void setDisable(boolean paramBoolean)
+  {
+    this.disable = paramBoolean;
   }
   
   public void setDuration(long paramLong)
@@ -69,9 +99,9 @@ public class AEKitModel
     this.mDuration = paramLong;
   }
   
-  public void setEnableAIFilter(boolean paramBoolean)
+  public void setEffectStrength(float paramFloat)
   {
-    this.enableAIFilter = paramBoolean;
+    this.effectStrength = paramFloat;
   }
   
   public void setGlowAlpha(float paramFloat)
@@ -87,6 +117,11 @@ public class AEKitModel
   public void setLutPath(String paramString)
   {
     this.lutPath = paramString;
+  }
+  
+  public void setMaterial(String paramString)
+  {
+    this.material = paramString;
   }
   
   public void setOverlayImagePath(String paramString)
@@ -106,7 +141,7 @@ public class AEKitModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.aekit.AEKitModel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,69 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.8.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qidian.data.QidianExternalInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aify
-  implements alxe
+class aify
+  extends bjha
 {
-  aify(aiez paramaiez) {}
+  aify(aift paramaift) {}
   
-  public void a(int paramInt)
+  protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if ((this.a.a == null) || (this.a.a.app == null)) {
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_Afwy.notifyDataSetChanged();
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131697473), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
       return;
     }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    this.a.a(32, 16, Integer.valueOf(paramInt));
-    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
-    localQQAppInterface.getApp().sendBroadcast(localIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver消息tab, nUnreadCount[%s]", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    oxp.a().a(paramInt);
+    QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131697472), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
   }
   
-  public void a(boolean paramBoolean, int paramInt)
+  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SplashActivity", 4, String.format("onRefresh, needReGetUnread[%s], nUnReadCount[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    if ((!paramBoolean) && (paramInt >= 0))
+    if (((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1025) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024)) && (paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
-      a(paramInt);
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramHashMap.uin)))
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1025;
+        }
+        paramHashMap = this.a.jdField_a_of_type_Bjft.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        if (paramHashMap != null)
+        {
+          aift.a(this.a, true);
+          this.a.f.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+          aift.a(this.a).setOnClickListener(null);
+          aift.b(this.a).setOnClickListener(null);
+          this.a.f.setText(paramHashMap);
+          if (adrl.R) {
+            this.a.f.setContentDescription(paramHashMap);
+          }
+          aift.a(this.a, true);
+          this.a.m();
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          aift.b(this.a, false);
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo not current curFriendUin");
       return;
     }
-    ThreadManager.executeOnSubThread(new MainAssistObserver.8.1(this));
+    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo fail");
   }
 }
 

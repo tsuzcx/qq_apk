@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-class apgl
-  implements DialogInterface.OnClickListener
+public abstract interface apgl
 {
-  apgl(apgd paramapgd) {}
+  public abstract aper a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.cancel();
-  }
+  public abstract apev a();
+  
+  public abstract aylq a();
+  
+  public abstract ARCommonConfigInfo a();
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

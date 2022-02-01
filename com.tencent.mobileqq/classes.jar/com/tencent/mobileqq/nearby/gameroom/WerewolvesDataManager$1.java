@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import auzt;
-import awgf;
-import awgg;
+import axhc;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -11,12 +11,12 @@ import java.util.Map;
 public class WerewolvesDataManager$1
   implements Runnable
 {
-  public WerewolvesDataManager$1(auzt paramauzt, QQAppInterface paramQQAppInterface) {}
+  public WerewolvesDataManager$1(axhc paramaxhc, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Awgf = this.a.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = this.this$0.jdField_a_of_type_Awgf.a(RecentInviteUser.class);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.a.a().createEntityManager();
+    Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(RecentInviteUser.class);
     Object localObject1 = this.this$0.jdField_a_of_type_JavaLangObject;
     if (localObject2 != null) {
       try
@@ -34,7 +34,7 @@ public class WerewolvesDataManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.1
  * JD-Core Version:    0.7.0.1
  */

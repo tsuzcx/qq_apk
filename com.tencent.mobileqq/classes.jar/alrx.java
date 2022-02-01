@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.app.FaceDownloader;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alrx
+  implements View.OnClickListener
 {
-  public int a;
-  public int b = -2147483648;
+  public alrx(FriendTabView paramFriendTabView) {}
   
-  public alrx(FaceDownloader paramFaceDownloader)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -2147483648;
+    this.a.a.a(1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alrx
  * JD-Core Version:    0.7.0.1
  */

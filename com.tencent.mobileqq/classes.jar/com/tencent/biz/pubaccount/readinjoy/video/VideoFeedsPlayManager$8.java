@@ -1,13 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.app.BaseApplicationImpl;
+import obh;
+import pha;
+import rgc;
 
 class VideoFeedsPlayManager$8
   implements Runnable
 {
+  VideoFeedsPlayManager$8(VideoFeedsPlayManager paramVideoFeedsPlayManager, rgc paramrgc) {}
+  
   public void run()
   {
-    QQToast.a(VideoFeedsPlayManager.a(this.this$0), this.a, 0).a();
+    pha.a(BaseApplicationImpl.getContext(), pha.a(), true, this.a.a());
+    obh.a(this.a);
+    pha.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_d_of_type_Boolean, this.a.g, this.a.jdField_a_of_type_Int, this.a.jdField_d_of_type_Long, 409409, this.a.c, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

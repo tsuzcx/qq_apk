@@ -1,14 +1,31 @@
-import android.support.annotation.NonNull;
+import NS_USER_ACTION_REPORT.ActionInfo;
 
-class blyn
-  implements blxl
+public class blyn
 {
-  blyn(blym paramblym) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private long b;
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public blyn(long paramLong, int paramInt)
   {
-    return bcnt.b(paramString);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public blyn(long paramLong1, int paramInt, long paramLong2)
+  {
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
+  }
+  
+  public ActionInfo a()
+  {
+    ActionInfo localActionInfo = new ActionInfo();
+    localActionInfo.oper_time = this.jdField_a_of_type_Long;
+    localActionInfo.action_id = this.jdField_a_of_type_Int;
+    localActionInfo.action_value = this.b;
+    return localActionInfo;
   }
 }
 

@@ -1,40 +1,34 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class ldv
-  implements BusinessObserver
+class ldv
+  extends BroadcastReceiver
 {
-  public ldw a;
+  ldv(ldu paramldu) {}
   
-  public ldv(ldw paramldw)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = paramldw;
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    aase.b("GdtSSOLoadAD", "onReceive i " + paramInt + " success " + paramBoolean + " bundle " + paramBundle);
-    switch (paramInt)
+    if ((paramIntent != null) && ("com.tencent.av.EXIT_VIDEO_PROCESS".equals(paramIntent.getAction())))
     {
-    }
-    do
-    {
-      do
+      long l = mtl.a(paramIntent);
+      QLog.w("GAudioExitMonitor", 1, "onReceive.EXIT_VIDEO_ACTION, seq[" + l + "]");
+      paramContext = ldu.a(this.a).a();
+      if (paramContext != null)
       {
-        return;
-        if (!paramBoolean) {
-          break;
-        }
-      } while (this.a == null);
-      this.a.a(paramBundle);
-      return;
-    } while (this.a == null);
-    this.a.a();
+        paramContext.a(false, 202, new int[] { paramContext.a().D });
+        paramContext.b(202);
+        paramContext.d(1011);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ldv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,129 +1,43 @@
-import android.app.Activity;
 import android.content.Context;
-import android.os.Handler;
+import android.content.res.Resources;
+import android.util.TypedValue;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.PadInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.VerticalGallery.LayoutParams;
 
 public class bakd
   extends BaseAdapter
-  implements bajw
 {
-  protected int a;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
+  private int jdField_a_of_type_Int = 25;
   private Context jdField_a_of_type_AndroidContentContext;
-  protected Handler a;
-  protected View.OnClickListener a;
-  protected View.OnLongClickListener a;
-  private bagc jdField_a_of_type_Bagc;
-  private bajz jdField_a_of_type_Bajz = new bajz();
-  private balf jdField_a_of_type_Balf;
-  private balj jdField_a_of_type_Balj;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected List<Object> a;
-  protected boolean a;
-  public int b;
-  protected View.OnClickListener b;
-  protected boolean b;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int b;
+  private int c;
   
-  public bakd(QQAppInterface paramQQAppInterface, Activity paramActivity, bagc parambagc, Handler paramHandler)
+  public bakd(Context paramContext, String[] paramArrayOfString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new bake(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramActivity;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Bagc = parambagc;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Long = (ayzl.a() * 1000L);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
+    this.b = paramContext.getColor(2131167070);
+    this.c = paramContext.getColor(2131167044);
   }
   
-  public void a()
+  public View a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
-  }
-  
-  public void a(int paramInt, baky parambaky)
-  {
-    parambaky = (PadInfo)parambaky;
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Bagc == null);
-      this.jdField_a_of_type_Bagc.b(parambaky);
-      return;
-    } while (this.jdField_a_of_type_Bagc == null);
-    this.jdField_a_of_type_Bagc.a(parambaky);
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  protected void a(bajx parambajx)
-  {
-    if ((parambajx instanceof bajs)) {
-      ((bajs)parambajx).a(this);
-    }
-  }
-  
-  public void a(List<? extends Object> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      }
-      notifyDataSetChanged();
-    }
-    do
-    {
-      return;
-      a();
-    } while (this.jdField_a_of_type_AndroidOsHandler == null);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-  }
-  
-  public void b(List<? extends Object> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    for (;;)
-    {
-      notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Bajz);
-    }
+    return getView(paramInt, null, null);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    }
+    return 0;
   }
   
   public long getItemId(int paramInt)
@@ -131,43 +45,31 @@ public class bakd
     return paramInt;
   }
   
-  public int getItemViewType(int paramInt)
-  {
-    return ((baky)this.jdField_a_of_type_JavaUtilList.get(paramInt)).getCloudFileType();
-  }
-  
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    baky localbaky = (baky)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject2;
+    Object localObject2 = null;
     Object localObject1;
-    if (localbaky.getCloudFileType() == 10)
+    if (paramView == null)
     {
-      localObject2 = this.jdField_a_of_type_Balj;
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new balj(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Balj = ((balj)localObject1);
-      }
+      localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
+      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
     }
-    for (;;)
+    for (paramView = (WheelTextView)localObject1;; paramView = (View)localObject2)
     {
-      a((bajx)localObject1);
-      return ((bajx)localObject1).a(paramInt, localbaky, paramView, paramViewGroup, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int);
-      localObject2 = this.jdField_a_of_type_Balf;
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new balf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Balf = ((balf)localObject1);
+      String str = this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      localObject2 = paramView;
+      if (paramView == null) {
+        localObject2 = (WheelTextView)localObject1;
       }
+      ((WheelTextView)localObject2).setTextSize(20.0F);
+      ((WheelTextView)localObject2).setTextColor(this.b);
+      ((WheelTextView)localObject2).setGravity(17);
+      ((WheelTextView)localObject2).setText(str);
+      ((WheelTextView)localObject2).setBackgroundColor(this.c);
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return localObject1;
+      localObject1 = paramView;
     }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 12;
   }
 }
 

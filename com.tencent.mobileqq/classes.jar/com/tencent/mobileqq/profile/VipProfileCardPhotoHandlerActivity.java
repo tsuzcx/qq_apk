@@ -1,17 +1,21 @@
 package com.tencent.mobileqq.profile;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import awsb;
-import bddf;
-import bdhj;
+import android.view.MotionEvent;
+import azgk;
+import bghy;
+import bgmo;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class VipProfileCardPhotoHandlerActivity
   extends BaseActivity
@@ -27,7 +31,7 @@ public class VipProfileCardPhotoHandlerActivity
     localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bddf.b(this), bddf.a(this), bddf.b(this), bddf.a(this), bddf.c());
+    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bghy.b(this), bghy.a(this), bghy.b(this), bghy.a(this), bghy.c());
   }
   
   private void b()
@@ -36,7 +40,7 @@ public class VipProfileCardPhotoHandlerActivity
     {
       if (checkSelfPermission("android.permission.CAMERA") != 0)
       {
-        requestPermissions(new awsb(this), 1, new String[] { "android.permission.CAMERA" });
+        requestPermissions(new azgk(this), 1, new String[] { "android.permission.CAMERA" });
         return;
       }
       this.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this, 5);
@@ -47,11 +51,11 @@ public class VipProfileCardPhotoHandlerActivity
   
   protected void a(Uri paramUri)
   {
-    paramUri = bdhj.b(this, paramUri);
+    paramUri = bgmo.b(this, paramUri);
     Intent localIntent = new Intent();
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bddf.b(this), bddf.a(this), bddf.b(this), bddf.a(this), paramUri, bddf.c());
+    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bghy.b(this), bghy.a(this), bghy.b(this), bghy.a(this), paramUri, bghy.c());
   }
   
   protected void a(String paramString)
@@ -73,6 +77,14 @@ public class VipProfileCardPhotoHandlerActivity
     Intent localIntent = new Intent(this, VipProfileCardPreviewActivity.class);
     localIntent.putExtra("custom_card_background", paramString);
     startActivity(localIntent);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -139,10 +151,17 @@ public class VipProfileCardPhotoHandlerActivity
     super.doOnStop();
     this.b = true;
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity
  * JD-Core Version:    0.7.0.1
  */

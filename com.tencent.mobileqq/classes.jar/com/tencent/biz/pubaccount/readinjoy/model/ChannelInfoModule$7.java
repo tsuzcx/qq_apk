@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import pfi;
+import pwn;
 
 public class ChannelInfoModule$7
   implements Runnable
 {
-  public ChannelInfoModule$7(pfi parampfi, ChannelInfo paramChannelInfo) {}
+  public ChannelInfoModule$7(pwn parampwn, ChannelInfo paramChannelInfo) {}
   
   public void run()
   {

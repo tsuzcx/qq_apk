@@ -1,11 +1,18 @@
-class anne
-  implements annl
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class anne
+  implements anil
 {
-  anne(annc paramannc) {}
+  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1) {}
   
-  public void a(anno paramanno, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    annc.a(this.a, (annq)paramanno, paramBoolean, paramArrayOfByte);
+    if (paramInt == 1)
+    {
+      paramObject = (HashMap)paramObject;
+      a(paramBoolean, (ArrayList)paramObject.get("mq_kandian_svc_results"), (ArrayList)paramObject.get("mq_kandian_svc_sentences"));
+    }
   }
 }
 

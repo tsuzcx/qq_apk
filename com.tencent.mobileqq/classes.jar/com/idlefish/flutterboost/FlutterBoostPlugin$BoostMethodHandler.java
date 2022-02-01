@@ -1,5 +1,6 @@
 package com.idlefish.flutterboost;
 
+import android.util.Log;
 import com.idlefish.flutterboost.interfaces.IContainerRecord;
 import com.idlefish.flutterboost.interfaces.IFlutterViewContainer;
 import io.flutter.plugin.common.MethodCall;
@@ -65,7 +66,7 @@ class FlutterBoostPlugin$BoostMethodHandler
     }
     catch (Throwable paramMethodCall)
     {
-      paramResult.error("onShownContainerChanged", paramMethodCall.getMessage(), paramMethodCall);
+      paramResult.error("onShownContainerChanged", paramMethodCall.getMessage(), Log.getStackTraceString(paramMethodCall));
       return;
     }
     try
@@ -76,7 +77,7 @@ class FlutterBoostPlugin$BoostMethodHandler
     }
     catch (Throwable paramMethodCall)
     {
-      paramResult.error("close page error", paramMethodCall.getMessage(), paramMethodCall);
+      paramResult.error("close page error", paramMethodCall.getMessage(), Log.getStackTraceString(paramMethodCall));
       return;
     }
     try
@@ -88,7 +89,7 @@ class FlutterBoostPlugin$BoostMethodHandler
     }
     catch (Throwable paramMethodCall)
     {
-      paramResult.error("open page error", paramMethodCall.getMessage(), paramMethodCall);
+      paramResult.error("open page error", paramMethodCall.getMessage(), Log.getStackTraceString(paramMethodCall));
       return;
     }
     localObject = new HashMap();
@@ -113,7 +114,7 @@ class FlutterBoostPlugin$BoostMethodHandler
       }
       catch (Throwable paramMethodCall)
       {
-        paramResult.error("no flutter page found!", paramMethodCall.getMessage(), paramMethodCall);
+        paramResult.error("no flutter page found!", paramMethodCall.getMessage(), Log.getStackTraceString(paramMethodCall));
         return;
       }
     }
@@ -121,7 +122,7 @@ class FlutterBoostPlugin$BoostMethodHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.FlutterBoostPlugin.BoostMethodHandler
  * JD-Core Version:    0.7.0.1
  */

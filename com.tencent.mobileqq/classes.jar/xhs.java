@@ -1,43 +1,71 @@
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.view.TextureView;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import android.view.ViewGroup;
 
 public class xhs
-  implements AdapterView.OnItemClickListener
 {
-  public xhs(FacePanel paramFacePanel) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static TextureView a(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
-    if (DoodleLayout.a) {}
-    for (paramAdapterView = "2";; paramAdapterView = "1")
+    if ((paramView instanceof ViewGroup))
     {
-      DoodleLayout.a("change_face", 0, 0, new String[] { paramAdapterView });
-      if (this.a.jdField_a_of_type_Xic != null)
+      paramView = (ViewGroup)paramView;
+      int i = 0;
+      while (i < paramView.getChildCount())
       {
-        paramAdapterView = this.a.jdField_a_of_type_Xic.a(paramInt);
-        if ((paramAdapterView != null) && ((paramAdapterView instanceof xhr)))
-        {
-          wxk.a("0X80076C7", "", "", ((xhr)paramAdapterView).a, "");
-          wxk.a("0X80075DC", ((xhr)paramAdapterView).a);
+        TextureView localTextureView = a(paramView.getChildAt(i));
+        if (localTextureView != null) {
+          return localTextureView;
         }
+        i += 1;
       }
-      if (paramInt == 1)
-      {
-        wxk.a("0X80076CC");
-        wxk.b("0X80075E1");
-      }
-      return;
     }
+    if ((paramView instanceof TextureView)) {
+      return (TextureView)paramView;
+    }
+    return null;
+  }
+  
+  public static boolean a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    if (paramBitmap.getConfig() != Bitmap.Config.ARGB_8888)
+    {
+      zkb.a(false, "bitmap is not ARGB_8888");
+      return false;
+    }
+    int j = paramBitmap.getWidth();
+    int k = paramBitmap.getHeight();
+    int m = j / paramInt1;
+    int n = k / paramInt1;
+    paramInt1 = 0;
+    for (;;)
+    {
+      if (paramInt1 >= j) {
+        break label118;
+      }
+      int i = 0;
+      for (;;)
+      {
+        if (i >= k) {
+          break label110;
+        }
+        int i1 = paramBitmap.getPixel(paramInt1, i);
+        if (((i1 & 0xFF) > paramInt2) || ((i1 >> 8 & 0xFF) > paramInt2) || ((i1 >> 16 & 0xFF) > paramInt2)) {
+          break;
+        }
+        i += n;
+      }
+      label110:
+      paramInt1 += m;
+    }
+    label118:
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xhs
  * JD-Core Version:    0.7.0.1
  */

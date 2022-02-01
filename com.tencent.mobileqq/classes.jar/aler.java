@@ -1,101 +1,49 @@
+import android.content.Context;
 import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aler
+  extends aleq
 {
-  public int a;
-  public long a;
-  public String a;
-  public final HashMap<Integer, alet> a;
-  public final List<alet> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public List<ales> b;
-  public long c;
-  public String c;
-  public List<ales> c;
-  public String d;
-  public String e;
-  
-  public aler()
+  public aler(Context paramContext)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = ("[" + anni.a(2131696556) + "]");
   }
   
-  public static String a(int paramInt)
+  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    if (paramInt > 999999) {
-      return String.valueOf(999999) + "+";
+    if ((StructMsgForGeneralShare)bcwd.a(paramMessageRecord.msgData) == null)
+    {
+      if (!QLog.isColorLevel()) {
+        break label136;
+      }
+      QLog.d("Navigate.UpdateMsgInfoUtil", 2, "updateMsgInfo():calendarMsg getStructMsg is null");
+      paramMessageRecord = "";
     }
-    return String.valueOf(paramInt);
-  }
-  
-  public static String b(int paramInt)
-  {
-    if (paramInt > 99999) {
-      return String.valueOf(99999) + "+";
-    }
-    return String.valueOf(paramInt);
-  }
-  
-  public static String c(int paramInt)
-  {
-    if (paramInt > 9999) {
-      return String.valueOf(9999) + "+";
-    }
-    return String.valueOf(paramInt);
-  }
-  
-  public void a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.isEmpty())) {
-      return;
-    }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    label40:
-    ales localales;
-    alet localalet;
     for (;;)
     {
-      if (localIterator.hasNext())
+      if ((paramObject instanceof aler))
       {
-        localales = (ales)localIterator.next();
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(localales.jdField_a_of_type_Long))))
-        {
-          if (localales.jdField_a_of_type_Short > 4) {
-            break label165;
-          }
-          localalet = (alet)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
-          if (localalet != null)
-          {
-            localalet.c += 1;
-            this.jdField_b_of_type_Int += 1;
-          }
+        paramObject = (aler)paramObject;
+        paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
+      }
+      for (parambepr = paramObject;; parambepr = paramObject)
+      {
+        if (!TextUtils.isEmpty(paramMessageRecord)) {
+          parambepr.jdField_a_of_type_JavaLangString = ("[" + paramMessageRecord + "]");
         }
+        return parambepr;
+        paramMessageRecord = StructMsgForGeneralShare.remindBrief;
+        break;
+        paramObject = new aler(BaseApplication.getContext());
+        paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
       }
-    }
-    for (;;)
-    {
-      if (this.c == null) {
-        this.c = new ArrayList();
-      }
-      this.c.add(localales);
-      break label40;
-      break;
-      label165:
-      localalet = (alet)this.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(localales.jdField_a_of_type_Short));
-      if (localalet != null)
-      {
-        localalet.c += localales.f;
-        this.jdField_b_of_type_Int += localales.f;
-      }
+      label136:
+      paramMessageRecord = "";
     }
   }
 }

@@ -1,19 +1,15 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
-import com.tencent.viola.ui.view.lottie.IVLottieViewProxy;
-import com.tencent.viola.ui.view.lottie.IVlottieViewCreater;
+import android.view.View;
 
-public class snt
-  implements IVlottieViewCreater
+class snt
+  implements sow
 {
-  public IVLottieViewProxy createLottieView(Context paramContext)
-  {
-    return new KdLottieView(paramContext);
-  }
+  snt(snh paramsnh) {}
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     snt
  * JD-Core Version:    0.7.0.1
  */

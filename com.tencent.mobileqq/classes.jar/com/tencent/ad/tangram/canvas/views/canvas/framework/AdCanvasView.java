@@ -20,7 +20,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import android.widget.ScrollView;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.ark.AdArkAdapter.ArkNotifyCallback;
 import com.tencent.ad.tangram.ark.AdArkAdapter.Params;
@@ -42,6 +41,7 @@ import com.tencent.ad.tangram.protocol.landing_page_collect_data.LandingPageColl
 import com.tencent.ad.tangram.statistics.a.a;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.ad.tangram.toast.AdToast;
+import com.tencent.ad.tangram.util.AdUIUtils;
 import com.tencent.ad.tangram.web.AdBrowser;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class AdCanvasView
   implements AdArkAdapter.ArkNotifyCallback, AdCanvasViewListener
 {
   private static final int BOTTOM_FIXED_BTN_ID = 819;
-  private static final String CANVAS_BAR = "iVBORw0KGgoAAAANSUhEUgAAABQAAAB4CAYAAADyv9IsAAABZ0lEQVR4AWIAAkC7Y8DZMBRFYaMQBAqBYhAMhkCgEJTS//9/Bnd8Hme77zmVRh++nbPem+/dh5l3Fd6DB7KEM72PoYt3FN4quP+m4AahjQMItygtbMgNQrFQCYR6QXcmQLHgF3bhFYmOHbUP4dVJXqgvL2f7XajpwjW7jN1VEMJGxCMY6kXdS1BcdKFBuOCfBcm+ErVPoY0mobgMQgPHE34HC5I9P4+SJS1ckpkhvdiFOwu/6jNA8SBeE10lu//CAwhnNcRsZk8JhaAFPaRcX6qFLrrwScJPdDEXv8cfH3hNp+6zEjo5gPCihphd2BNC+UEpTJBfVJcyKbTRhU8WTkj2f4WTEb7Onk8ldNGFBuFZDTE7syeE8oNCmAClhkkkhTa6sI2xFI5BORzz8wDFhBiIy0QaLzy+cECyVwkHJ3mhvryc7XehpgtPwVCTAgqrUQ9wQS5rQQlKO1348QcnJLvej+LkxYU/s5xl0uh1oCUAAAAASUVORK5CYII=";
+  private static final String CANVAS_BAR = "iVBORw0KGgoAAAANSUhEUgAAAAIAAACgCAYAAAAmYr3BAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAqADAAQAAAABAAAAoAAAAADn/3BcAAAAe0lEQVQ4Ec1SWwoAIQi03b3R3v9s5QQN+KFCQRUU5iNncoqI/LrlwYFF49NLNZ4jITQ1MCphJCFgl50sEjwBCyDtvEzOmVmM73XwGIR2FgkL50FUbR3TnCTGt9wCdU1sN7EIZJOIzWExV7Wgw1drC+opEhpByOT07vTQaJMEPn19hHfNAAAAAElFTkSuQmCC";
   private static final String CLOSE_ICON = "iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAt0lEQVR4AWL4//9/AhBfA+J6AO11gMFADERheNnDBxQFIEAg9E4FCsgdOo+GUPzgfzxiBh/sYC83sVr1E/P6PXYeIvo8nJVBz+vEZTQZGd7V1z+uoTNmdhIOaMK4hDIuooyLKOMiyriIMi6ijIso4R4KuIAC7qF8MvDBeSjgKjrh1DT0TiWc7xRwByVcQQWcUQFnVMAZFXBGBZxRA8+yAWrgLYs3oAa+9k/bqvYTlfBR/e47EBcBAMrZsFl4ehiPAAAAAElFTkSuQmCC";
   private static final int FLOADTING_PROGRESS_BTN_ID = 273;
   private static final String TAG = "AdCanvasView";
@@ -66,10 +66,12 @@ public class AdCanvasView
   private com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.b bottomFixedButtonView;
   private RelativeLayout bottomFixedWebAppCommonButtonContainer;
   private RelativeLayout canvasViewContainer;
+  private RelativeLayout closeIcon;
   private FrameLayout contentView;
   private AdCanvasData data;
   private d floatingAppBtnComponentView;
   private FrameLayout floatingProgressBar;
+  private ImageView gradientLayerBg;
   public String lastTouchFormModuleId = null;
   private boolean loadReportedForAction = false;
   private boolean loadReportedForDMP = false;
@@ -119,7 +121,7 @@ public class AdCanvasView
       if ("show".equals(paramString))
       {
         if ((getContext() != null) && (getResources() != null)) {
-          AdProgressDialog.show(getContext(), com.tencent.ad.tangram.canvas.views.a.dp2px(60.0F, getResources()));
+          AdProgressDialog.show(getContext(), AdUIUtils.dp2px(60.0F, getResources()));
         }
       }
       else if ("hide".equals(paramString))
@@ -304,7 +306,7 @@ public class AdCanvasView
   private void initFloatingProgressBarContainer()
   {
     this.floatingProgressBar = new FrameLayout(getContext());
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, com.tencent.ad.tangram.canvas.views.a.dp2px(40.0F, getResources()));
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, AdUIUtils.dp2px(40.0F, getResources()));
     this.floatingProgressBar.setId(273);
     this.floatingProgressBar.setLayoutParams(localLayoutParams);
     this.floatingProgressBar.setVisibility(8);
@@ -313,27 +315,27 @@ public class AdCanvasView
   private void initTopBar()
   {
     this.topBar = new RelativeLayout(getContext());
-    Object localObject1 = new RelativeLayout.LayoutParams(-1, com.tencent.ad.tangram.canvas.views.a.dp2px(60.0F, getResources()));
-    this.topBar.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = new ImageView(getContext());
-    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
-    ((ImageView)localObject1).setLayoutParams(localLayoutParams1);
-    Object localObject2 = com.tencent.ad.tangram.canvas.views.a.getBitmapFromString("iVBORw0KGgoAAAANSUhEUgAAABQAAAB4CAYAAADyv9IsAAABZ0lEQVR4AWIAAkC7Y8DZMBRFYaMQBAqBYhAMhkCgEJTS//9/Bnd8Hme77zmVRh++nbPem+/dh5l3Fd6DB7KEM72PoYt3FN4quP+m4AahjQMItygtbMgNQrFQCYR6QXcmQLHgF3bhFYmOHbUP4dVJXqgvL2f7XajpwjW7jN1VEMJGxCMY6kXdS1BcdKFBuOCfBcm+ErVPoY0mobgMQgPHE34HC5I9P4+SJS1ckpkhvdiFOwu/6jNA8SBeE10lu//CAwhnNcRsZk8JhaAFPaRcX6qFLrrwScJPdDEXv8cfH3hNp+6zEjo5gPCihphd2BNC+UEpTJBfVJcyKbTRhU8WTkj2f4WTEb7Onk8ldNGFBuFZDTE7syeE8oNCmAClhkkkhTa6sI2xFI5BORzz8wDFhBiIy0QaLzy+cECyVwkHJ3mhvryc7XehpgtPwVCTAgqrUQ9wQS5rQQlKO1348QcnJLvej+LkxYU/s5xl0uh1oCUAAAAASUVORK5CYII=");
-    if (localObject2 != null) {
-      ((ImageView)localObject1).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject2));
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, AdUIUtils.dp2px(40.0F, getResources()));
+    this.topBar.setLayoutParams(localLayoutParams1);
+    this.gradientLayerBg = new ImageView(getContext());
+    localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
+    this.gradientLayerBg.setLayoutParams(localLayoutParams1);
+    Object localObject = AdUIUtils.getBitmapFromString("iVBORw0KGgoAAAANSUhEUgAAAAIAAACgCAYAAAAmYr3BAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAqADAAQAAAABAAAAoAAAAADn/3BcAAAAe0lEQVQ4Ec1SWwoAIQi03b3R3v9s5QQN+KFCQRUU5iNncoqI/LrlwYFF49NLNZ4jITQ1MCphJCFgl50sEjwBCyDtvEzOmVmM73XwGIR2FgkL50FUbR3TnCTGt9wCdU1sN7EIZJOIzWExV7Wgw1drC+opEhpByOT07vTQaJMEPn19hHfNAAAAAElFTkSuQmCC");
+    if (localObject != null) {
+      this.gradientLayerBg.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    localObject2 = new RelativeLayout(getContext());
-    RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(com.tencent.ad.tangram.canvas.views.a.dp2px(60.0F, getResources()), com.tencent.ad.tangram.canvas.views.a.dp2px(60.0F, getResources()));
-    ((RelativeLayout)localObject2).setLayoutParams(localLayoutParams2);
+    this.closeIcon = new RelativeLayout(getContext());
+    localObject = new RelativeLayout.LayoutParams(AdUIUtils.dp2px(60.0F, getResources()), AdUIUtils.dp2px(60.0F, getResources()));
+    this.closeIcon.setLayoutParams((ViewGroup.LayoutParams)localObject);
     ImageView localImageView = new ImageView(getContext());
-    RelativeLayout.LayoutParams localLayoutParams3 = new RelativeLayout.LayoutParams(com.tencent.ad.tangram.canvas.views.a.dp2px(15.0F, getResources()), com.tencent.ad.tangram.canvas.views.a.dp2px(15.0F, getResources()));
-    localLayoutParams3.leftMargin = com.tencent.ad.tangram.canvas.views.a.dp2px(12.0F, getResources());
-    localLayoutParams3.topMargin = com.tencent.ad.tangram.canvas.views.a.dp2px(12.0F, getResources());
-    localImageView.setImageBitmap(com.tencent.ad.tangram.canvas.views.a.getBitmapFromString("iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAt0lEQVR4AWL4//9/AhBfA+J6AO11gMFADERheNnDBxQFIEAg9E4FCsgdOo+GUPzgfzxiBh/sYC83sVr1E/P6PXYeIvo8nJVBz+vEZTQZGd7V1z+uoTNmdhIOaMK4hDIuooyLKOMiyriIMi6ijIso4R4KuIAC7qF8MvDBeSjgKjrh1DT0TiWc7xRwByVcQQWcUQFnVMAZFXBGBZxRA8+yAWrgLYs3oAa+9k/bqvYTlfBR/e47EBcBAMrZsFl4ehiPAAAAAElFTkSuQmCC"));
-    ((RelativeLayout)localObject2).addView(localImageView, localLayoutParams3);
-    ((RelativeLayout)localObject2).setOnClickListener(new AdCanvasView.2(this));
-    this.topBar.addView((View)localObject1, localLayoutParams1);
-    this.topBar.addView((View)localObject2, localLayoutParams2);
+    RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(AdUIUtils.dp2px(15.0F, getResources()), AdUIUtils.dp2px(15.0F, getResources()));
+    localLayoutParams2.leftMargin = AdUIUtils.dp2px(12.0F, getResources());
+    localLayoutParams2.topMargin = AdUIUtils.dp2px(12.0F, getResources());
+    localImageView.setImageBitmap(AdUIUtils.getBitmapFromString("iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAt0lEQVR4AWL4//9/AhBfA+J6AO11gMFADERheNnDBxQFIEAg9E4FCsgdOo+GUPzgfzxiBh/sYC83sVr1E/P6PXYeIvo8nJVBz+vEZTQZGd7V1z+uoTNmdhIOaMK4hDIuooyLKOMiyriIMi6ijIso4R4KuIAC7qF8MvDBeSjgKjrh1DT0TiWc7xRwByVcQQWcUQFnVMAZFXBGBZxRA8+yAWrgLYs3oAa+9k/bqvYTlfBR/e47EBcBAMrZsFl4ehiPAAAAAElFTkSuQmCC"));
+    this.closeIcon.addView(localImageView, localLayoutParams2);
+    this.closeIcon.setOnClickListener(new AdCanvasView.2(this));
+    this.topBar.addView(this.gradientLayerBg, localLayoutParams1);
+    this.topBar.addView(this.closeIcon, (ViewGroup.LayoutParams)localObject);
   }
   
   private void reportLoadTimeForAction(long paramLong, boolean paramBoolean)
@@ -443,8 +445,8 @@ public class AdCanvasView
     int i2 = 0;
     Object localObject1;
     int j;
-    int i;
     int k;
+    int i;
     Object localObject2;
     int n;
     int m;
@@ -452,106 +454,100 @@ public class AdCanvasView
     {
       localObject1 = this.data.fixedButtonComponentDataList;
       if ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0)) {
-        break label484;
+        break label478;
       }
       localObject1 = ((ArrayList)localObject1).iterator();
       j = 0;
-      i = 0;
       k = 0;
+      i = 0;
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a)((Iterator)localObject1).next();
-        k += ((com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a)localObject2).topWhiteSpace;
-        i = ((com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a)localObject2).bottomWhiteSpace + i;
+        i += ((com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a)localObject2).topWhiteSpace;
+        k = ((com.tencent.ad.tangram.canvas.views.canvas.components.fixedbutton.a)localObject2).bottomWhiteSpace + k;
         j = 1;
       }
       n = k;
-      m = j;
+      m = i;
+      k = j;
+      i = n;
     }
     for (;;)
     {
       localObject1 = this.data.webFixedButtonComponentDataList;
-      int i1;
       if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
       {
         localObject1 = ((ArrayList)localObject1).iterator();
-        k = 0;
+        n = 0;
         j = i;
-        i1 = k;
+        for (i = n; ((Iterator)localObject1).hasNext(); i = 1)
+        {
+          localObject2 = (com.tencent.ad.tangram.canvas.views.canvas.components.button.a)((Iterator)localObject1).next();
+          if (!((com.tencent.ad.tangram.canvas.views.canvas.components.button.a)localObject2).isFixed) {
+            break label469;
+          }
+          com.tencent.ad.tangram.canvas.views.canvas.components.button.b localb = new com.tencent.ad.tangram.canvas.views.canvas.components.button.b(getContext(), new WeakReference(this), (com.tencent.ad.tangram.canvas.views.canvas.components.button.a)localObject2);
+          this.bottomFixedWebAppCommonButtonContainer.addView(localb);
+          this.bottomFixedWebAppCommonButtonContainer.setVisibility(0);
+          j += ((com.tencent.ad.tangram.canvas.views.canvas.components.button.a)localObject2).whiteSpace;
+        }
+        n = i;
         i = j;
-        if (!((Iterator)localObject1).hasNext()) {
-          break label229;
-        }
-        localObject2 = (com.tencent.ad.tangram.canvas.views.canvas.components.button.a)((Iterator)localObject1).next();
-        if (!((com.tencent.ad.tangram.canvas.views.canvas.components.button.a)localObject2).isFixed) {
-          break label479;
-        }
-        com.tencent.ad.tangram.canvas.views.canvas.components.button.b localb = new com.tencent.ad.tangram.canvas.views.canvas.components.button.b(getContext(), new WeakReference(this), (com.tencent.ad.tangram.canvas.views.canvas.components.button.a)com.tencent.ad.tangram.canvas.views.canvas.components.button.a.class.cast(localObject2));
-        this.bottomFixedWebAppCommonButtonContainer.addView(localb);
-        this.bottomFixedWebAppCommonButtonContainer.setVisibility(0);
-        j += ((com.tencent.ad.tangram.canvas.views.canvas.components.button.a)localObject2).whiteSpace;
       }
-      label468:
-      label479:
-      for (i = 1;; i = k)
+      for (;;)
       {
-        k = i;
-        break;
-        i1 = 0;
-        label229:
         localObject1 = this.data.appFixedButtonComponentDataList;
-        k = i2;
-        j = i;
+        int i1 = i;
+        j = i2;
         if (localObject1 != null)
         {
-          k = i2;
-          j = i;
+          i1 = i;
+          j = i2;
           if (((ArrayList)localObject1).size() > 0)
           {
-            i2 = 0;
-            k = 0;
-            j = i;
-            i = i2;
-            if (k < ((ArrayList)localObject1).size())
+            i1 = 0;
+            j = 0;
+            while (i1 < ((ArrayList)localObject1).size())
             {
-              if ((((ArrayList)localObject1).get(k) == null) || (c.class.cast(((ArrayList)localObject1).get(k)) == null)) {
-                break label468;
+              int i3 = j;
+              i2 = i;
+              if (((ArrayList)localObject1).get(i1) != null)
+              {
+                i3 = j;
+                i2 = i;
+                if ((c)((ArrayList)localObject1).get(i1) != null)
+                {
+                  localObject2 = (c)((ArrayList)localObject1).get(i1);
+                  localObject2 = new d(getContext(), new WeakReference(this), (c)localObject2, ((c)localObject2).canShowProgress);
+                  this.bottomFixedWebAppCommonButtonContainer.addView((View)localObject2);
+                  this.bottomFixedWebAppCommonButtonContainer.setVisibility(0);
+                  i2 = i + ((c)((ArrayList)localObject1).get(i1)).whiteSpace;
+                  i3 = 1;
+                }
               }
-              localObject2 = (c)c.class.cast(((ArrayList)localObject1).get(k));
-              localObject2 = new d(getContext(), new WeakReference(this), (c)localObject2, ((c)localObject2).canShowProgress);
-              this.bottomFixedWebAppCommonButtonContainer.addView((View)localObject2);
-              this.bottomFixedWebAppCommonButtonContainer.setVisibility(0);
-              i = j + ((c)((ArrayList)localObject1).get(k)).whiteSpace;
-              j = 1;
+              i1 += 1;
+              j = i3;
+              i = i2;
             }
+            i1 = i;
           }
         }
-        for (;;)
+        if (((n != 0) || (k != 0) || (j != 0)) && (this.pageView != null))
         {
-          i2 = k + 1;
-          k = j;
-          j = i;
-          i = k;
-          k = i2;
-          break;
-          k = i;
-          if (((i1 != 0) || (m != 0) || (k != 0)) && (this.pageView != null))
-          {
-            localObject1 = this.pageView.getContainer();
-            if (localObject1 != null) {
-              ((LinearLayout)localObject1).setPadding(((LinearLayout)localObject1).getPaddingLeft(), ((LinearLayout)localObject1).getPaddingTop() + n, ((LinearLayout)localObject1).getPaddingRight(), ((LinearLayout)localObject1).getPaddingBottom() + j);
-            }
+          localObject1 = this.pageView.getContainer();
+          if (localObject1 != null) {
+            ((LinearLayout)localObject1).setPadding(((LinearLayout)localObject1).getPaddingLeft(), ((LinearLayout)localObject1).getPaddingTop() + m, ((LinearLayout)localObject1).getPaddingRight(), i1 + ((LinearLayout)localObject1).getPaddingBottom());
           }
-          return;
-          i2 = j;
-          j = i;
-          i = i2;
         }
+        return;
+        label469:
+        break;
+        n = 0;
       }
-      label484:
-      m = 0;
+      label478:
+      k = 0;
       i = 0;
-      n = 0;
+      m = 0;
     }
   }
   
@@ -600,9 +596,9 @@ public class AdCanvasView
         ((c)localObject3).button.text.text = "下载";
         ((c)localObject3).button.text.color = locala.floatingBarTextColor;
         ((c)localObject3).button.backgroundColor = locala.floatingBarBackgroundColor;
-        ((c)localObject3).button.text.size = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(getContext(), 1080, 54);
+        ((c)localObject3).button.text.size = AdUIUtils.getValueDependsOnScreenWidth(getContext(), 1080, 54);
         ((c)localObject3).button.borderWidth = 0;
-        i = com.tencent.ad.tangram.canvas.views.a.getPhysicalScreenWidth(getContext());
+        i = AdUIUtils.getPhysicalScreenWidth(getContext());
         if (i <= 0) {
           break label374;
         }
@@ -611,7 +607,7 @@ public class AdCanvasView
     for (;;)
     {
       ((c)localObject3).width = i;
-      ((c)localObject3).height = com.tencent.ad.tangram.canvas.views.a.dp2px(50.0F, getContext().getResources());
+      ((c)localObject3).height = AdUIUtils.dp2px(50.0F, getContext().getResources());
       ((c)localObject3).gravity = 17;
       ((c)localObject3).canShowProgress = true;
       this.floatingAppBtnComponentView = new d(getContext(), new WeakReference(this), (c)localObject3, true);
@@ -644,7 +640,7 @@ public class AdCanvasView
   
   public boolean back()
   {
-    if (this.pageView.back()) {
+    if ((this.pageView != null) && (this.pageView.back())) {
       return true;
     }
     if (getActivity() != null)
@@ -707,6 +703,16 @@ public class AdCanvasView
       return this.pageView.getScrollY();
     }
     return 0;
+  }
+  
+  public void hideBar()
+  {
+    if (this.closeIcon != null) {
+      this.closeIcon.setVisibility(8);
+    }
+    if (this.gradientLayerBg != null) {
+      this.gradientLayerBg.setVisibility(8);
+    }
   }
   
   public void hotAreaClick(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -888,7 +894,7 @@ public class AdCanvasView
   
   public void showFloatingProgressButton()
   {
-    if ((this.topFixedButtonView.getVisibility() == 0) || (this.bottomFixedButtonView.getVisibility() == 0) || (this.bottomFixedWebAppCommonButtonContainer.getChildCount() > 0) || (this.floatingProgressBar == null) || (this.floatingProgressBar.getVisibility() == 0)) {}
+    if ((this.topFixedButtonView.getVisibility() == 0) || (this.bottomFixedButtonView.getVisibility() == 0) || (this.bottomFixedWebAppCommonButtonContainer.getChildCount() > 0) || (this.floatingProgressBar == null) || (this.floatingProgressBar.getVisibility() == 0) || (!this.data.hasMultiPictureData)) {}
     RelativeLayout.LayoutParams localLayoutParams;
     do
     {
@@ -967,7 +973,7 @@ public class AdCanvasView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasView
  * JD-Core Version:    0.7.0.1
  */

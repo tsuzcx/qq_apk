@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
-import alud;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import anni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -19,41 +19,42 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
-import thf;
-import thg;
-import thj;
-import thk;
-import thl;
-import thm;
-import tho;
-import thp;
-import thq;
-import ths;
-import thy;
-import tia;
-import tlo;
+import ujv;
+import ujw;
+import ujz;
+import uka;
+import ukb;
+import ukc;
+import uke;
+import ukf;
+import ukg;
+import uki;
+import uko;
+import ukq;
+import upe;
 
 public class WSPlayerManager
-  implements ths
+  implements uki
 {
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication().getApplicationContext();
-  private Handler jdField_a_of_type_AndroidOsHandler = new thk(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new uka(this, Looper.getMainLooper());
   private WSVideoPreDownloadManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private TVK_NetVideoInfo jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<thm> jdField_a_of_type_JavaUtilArrayList;
-  private ConcurrentHashMap<tho, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private thg jdField_a_of_type_Thg;
-  private thj jdField_a_of_type_Thj = new thj(this, null);
-  private thl jdField_a_of_type_Thl;
-  private thq jdField_a_of_type_Thq;
+  private ArrayList<ukc> jdField_a_of_type_JavaUtilArrayList;
+  private ConcurrentHashMap<uke, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ujw jdField_a_of_type_Ujw;
+  private ujz jdField_a_of_type_Ujz = new ujz(this, null);
+  private ukb jdField_a_of_type_Ukb;
+  private ukg jdField_a_of_type_Ukg;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private thl jdField_b_of_type_Thl;
+  private ukb jdField_b_of_type_Ukb;
   private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private int jdField_c_of_type_Int = -1;
+  private boolean jdField_c_of_type_Boolean;
   private boolean d;
   private boolean e;
   private boolean f = true;
@@ -70,11 +71,11 @@ public class WSPlayerManager
   public WSPlayerManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Thq = new thq();
-    this.jdField_a_of_type_Thq.a(this);
+    this.jdField_a_of_type_Ukg = new ukg();
+    this.jdField_a_of_type_Ukg.a(this);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Thg = new thg(this);
-    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Thg);
+    this.jdField_a_of_type_Ujw = new ujw(this);
+    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ujw);
     this.h = true;
   }
   
@@ -83,226 +84,237 @@ public class WSPlayerManager
     if (paramInt1 == 123)
     {
       if (paramInt2 == 103) {
-        return alud.a(2131716630) + paramInt1 + "-" + paramInt2 + ")";
+        return anni.a(2131714907) + paramInt1 + "-" + paramInt2 + ")";
       }
-      return alud.a(2131716617) + paramInt1 + "-" + paramInt2 + ")";
+      return anni.a(2131714894) + paramInt1 + "-" + paramInt2 + ")";
     }
     if (paramInt1 == 122)
     {
       if (paramInt2 == 204) {
-        return alud.a(2131716594) + paramInt1 + "-" + paramInt2 + ")";
+        return anni.a(2131714871) + paramInt1 + "-" + paramInt2 + ")";
       }
       if (paramInt2 == 202) {
-        return alud.a(2131716534) + paramInt1 + "-" + paramInt2 + ")";
+        return anni.a(2131714811) + paramInt1 + "-" + paramInt2 + ")";
       }
-      return alud.a(2131716632) + paramInt1 + "-" + paramInt2 + ")";
+      return anni.a(2131714909) + paramInt1 + "-" + paramInt2 + ")";
     }
     if (paramInt1 == 101)
     {
       if (paramInt2 == 80) {
-        return alud.a(2131716561) + paramInt1 + "-" + paramInt2 + ")";
+        return anni.a(2131714838) + paramInt1 + "-" + paramInt2 + ")";
       }
-      return alud.a(2131716563) + paramInt1 + "-" + paramInt2 + ")";
+      return anni.a(2131714840) + paramInt1 + "-" + paramInt2 + ")";
     }
-    return alud.a(2131716587) + paramInt1 + "-" + paramInt2 + ")";
+    return anni.a(2131714864) + paramInt1 + "-" + paramInt2 + ")";
   }
   
-  private String a(thl paramthl)
+  private String a(ukb paramukb)
   {
-    if (paramthl == null) {
-      return "WSPlayerParam is null.";
+    if (paramukb == null) {
+      return "WSPlayerParam is null!";
     }
-    if (paramthl.jdField_a_of_type_Thp == null) {
-      return "VideoInfo is null.";
+    if (paramukb.jdField_a_of_type_Ukf == null) {
+      return "VideoInfo is null!";
     }
-    return paramthl.jdField_a_of_type_Thp.d;
+    return paramukb.jdField_a_of_type_Ukf.jdField_b_of_type_JavaLangString;
   }
   
-  private thl a(thl paramthl)
+  private ukb a(ukb paramukb)
   {
-    if (paramthl == this.jdField_a_of_type_Thl) {
-      return paramthl;
+    if (paramukb == this.jdField_a_of_type_Ukb) {
+      return paramukb;
     }
     return null;
   }
   
-  private tho a()
+  private uke a()
   {
     if (this.jdField_a_of_type_AndroidContentContext == null) {
       return null;
     }
-    tho localtho = new tho(this.jdField_a_of_type_AndroidContentContext);
-    localtho.a(this.jdField_a_of_type_Thj);
-    return localtho;
+    uke localuke = new uke(this.jdField_a_of_type_AndroidContentContext);
+    localuke.a(this.jdField_a_of_type_Ujz);
+    return localuke;
   }
   
-  private tho a(thl paramthl)
+  private uke a(ukb paramukb)
   {
-    if (paramthl != null) {
-      return paramthl.jdField_a_of_type_Tho;
+    if (paramukb != null) {
+      return paramukb.jdField_a_of_type_Uke;
     }
     return null;
   }
   
-  private tho a(tho paramtho)
+  private uke a(uke paramuke)
   {
-    if (paramtho == b()) {
-      return paramtho;
+    if (paramuke == b()) {
+      return paramuke;
     }
     return null;
   }
   
-  private thy a(thl paramthl)
+  private uko a(ukb paramukb)
   {
-    if (paramthl != null) {
-      return paramthl.jdField_a_of_type_Thy;
+    if (paramukb != null) {
+      return paramukb.jdField_a_of_type_Uko;
     }
     return null;
   }
   
-  private void a(tho paramtho)
+  private void a(uke paramuke)
   {
-    if (paramtho == null) {}
+    if (paramuke == null) {}
     int i1;
     do
     {
       return;
-      paramtho.k();
-      i1 = paramtho.e();
+      paramuke.k();
+      i1 = paramuke.e();
     } while ((i1 == 7) || (i1 == 8) || (i1 == 0) || (i1 == 6));
-    paramtho.e();
-    ThreadManager.excute(new WSPlayerManager.6(this, paramtho), 16, null, true);
+    paramuke.e();
+    ThreadManager.excute(new WSPlayerManager.6(this, paramuke), 16, null, true);
   }
   
-  private boolean a(thl paramthl)
+  private boolean a(ukb paramukb)
   {
-    return a(paramthl) != null;
+    return a(paramukb) != null;
   }
   
-  private boolean a(tho paramtho)
+  private boolean a(uke paramuke)
   {
-    return a(paramtho) != null;
+    return a(paramuke) != null;
   }
   
-  private tho b()
+  private String b(ukb paramukb)
   {
-    return a(this.jdField_a_of_type_Thl);
+    if (paramukb == null) {
+      return "WSPlayerParam is null.";
+    }
+    if (paramukb.jdField_a_of_type_Ukf == null) {
+      return "VideoInfo is null.";
+    }
+    return paramukb.jdField_a_of_type_Ukf.d;
   }
   
-  private void b(thl paramthl)
+  private uke b()
   {
-    if (paramthl != null) {
-      a(paramthl.jdField_a_of_type_Tho);
+    return a(this.jdField_a_of_type_Ukb);
+  }
+  
+  private void b(ukb paramukb)
+  {
+    if (paramukb != null) {
+      a(paramukb.jdField_a_of_type_Uke);
     }
   }
   
-  private void c(thl paramthl, boolean paramBoolean)
+  private void c(ukb paramukb, boolean paramBoolean)
   {
     boolean bool2 = false;
-    if (paramthl == null) {
+    if (paramukb == null) {
       return;
     }
-    if ((paramthl.jdField_a_of_type_AndroidViewView != null) && (paramthl.jdField_a_of_type_AndroidViewView.getParent() != paramthl.jdField_a_of_type_AndroidViewViewGroup))
+    if ((paramukb.jdField_a_of_type_AndroidViewView != null) && (paramukb.jdField_a_of_type_AndroidViewView.getParent() != paramukb.jdField_a_of_type_AndroidViewViewGroup))
     {
-      tlo.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][createVideoPlayerAndPlay] playerParam.mVideoView.getParent:" + paramthl.jdField_a_of_type_AndroidViewView.getParent() + ", playerParam.mVideoLayout:" + paramthl.jdField_a_of_type_AndroidViewViewGroup);
-      paramthl.jdField_a_of_type_Tho = null;
-      paramthl.jdField_a_of_type_AndroidViewView = null;
+      upe.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][createVideoPlayerAndPlay] playerParam.mVideoView.getParent:" + paramukb.jdField_a_of_type_AndroidViewView.getParent() + ", playerParam.mVideoLayout:" + paramukb.jdField_a_of_type_AndroidViewViewGroup);
+      paramukb.jdField_a_of_type_Uke = null;
+      paramukb.jdField_a_of_type_AndroidViewView = null;
     }
-    if ((a(paramthl) == null) || (a(paramthl).a() != null))
+    uke localuke = a(paramukb);
+    if ((localuke == null) || (localuke.a() != null))
     {
       boolean bool1 = bool2;
-      if (a(paramthl) != null)
+      if (localuke != null)
       {
         bool1 = bool2;
-        if (a(paramthl).a() != null)
+        if (localuke.a() != null)
         {
-          a(paramthl).b(false);
-          tlo.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][createVideoPlayerAndPlay] videoPlayer.tag isn't null!");
+          localuke.b(false);
+          upe.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][createVideoPlayerAndPlay] videoPlayer.tag isn't null!");
           bool1 = true;
         }
       }
-      ThreadManager.post(new WSPlayerManager.2(this, paramthl, bool1, paramBoolean), 5, null, true);
+      ThreadManager.post(new WSPlayerManager.2(this, paramukb, bool1, paramBoolean), 5, null, true);
       return;
     }
-    tlo.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][createVideoPlayerAndPlay] hit getVideoPlayerFromParam. goto innerPlayVideo!");
-    paramthl.jdField_a_of_type_Tho.a(paramthl.jdField_a_of_type_Thp);
-    d(paramthl, paramBoolean);
+    upe.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][createVideoPlayerAndPlay] hit getVideoPlayerFromParam. goto innerPlayVideo!");
+    paramukb.jdField_a_of_type_Uke.a(paramukb.jdField_a_of_type_Ukf);
+    d(paramukb, paramBoolean);
   }
   
-  private void d(thl paramthl, boolean paramBoolean)
+  private void d(ukb paramukb, boolean paramBoolean)
   {
-    if ((paramthl == null) || (a(paramthl) == null))
+    uke localuke = a(paramukb);
+    if ((paramukb == null) || (localuke == null) || (paramukb.jdField_a_of_type_AndroidViewViewGroup == null))
     {
-      tlo.d("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][innerPlayVideo] playParam:" + paramthl);
+      upe.d("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][innerPlayVideo] playParam:" + paramukb);
       return;
     }
-    paramthl.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(true);
-    Object localObject;
-    if (paramthl.jdField_a_of_type_AndroidViewView == null)
+    paramukb.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(true);
+    if (paramukb.jdField_a_of_type_AndroidViewView == null)
     {
-      tlo.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][innerPlayVideo] videoView null. goto getVideoViewScroll.");
-      localObject = a(paramthl).a();
-      if (localObject == null)
+      upe.e("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][innerPlayVideo] videoView null. goto getVideoViewScroll.");
+      View localView = localuke.a();
+      if (localView == null)
       {
-        if (paramthl.jdField_a_of_type_Thf != null) {
-          paramthl.jdField_a_of_type_Thf.a(paramthl, 999, 999, null);
+        if (paramukb.jdField_a_of_type_Ujv != null) {
+          paramukb.jdField_a_of_type_Ujv.a(paramukb, 999, 999, null);
         }
-        paramthl.jdField_a_of_type_Tho = null;
+        paramukb.jdField_a_of_type_Uke = null;
         return;
       }
-      paramthl.jdField_a_of_type_AndroidViewView = ((View)localObject);
-      paramthl.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
-      a(paramthl).a((IVideoViewBase)localObject);
-      if (paramthl.jdField_a_of_type_Thf != null) {
-        paramthl.jdField_a_of_type_Thf.b(paramthl);
+      paramukb.jdField_a_of_type_AndroidViewView = localView;
+      paramukb.jdField_a_of_type_AndroidViewViewGroup.addView(localView, new ViewGroup.LayoutParams(-1, -1));
+      localuke.a((IVideoViewBase)localView);
+      if (paramukb.jdField_a_of_type_Ujv != null) {
+        paramukb.jdField_a_of_type_Ujv.b(paramukb);
       }
-      if ((paramthl.jdField_a_of_type_Thp != null) && (paramthl.jdField_a_of_type_Thp.jdField_a_of_type_Int > 0) && (paramthl.jdField_a_of_type_Thp.jdField_b_of_type_Int > 0) && (paramthl.jdField_a_of_type_Thp.jdField_b_of_type_Int < 10000) && (paramthl.jdField_a_of_type_Thp.jdField_a_of_type_Int < 10000)) {
-        ((IVideoViewBase)localObject).setFixedSize(paramthl.jdField_a_of_type_Thp.jdField_a_of_type_Int, paramthl.jdField_a_of_type_Thp.jdField_b_of_type_Int);
+      if ((paramukb.jdField_a_of_type_Ukf != null) && (paramukb.jdField_a_of_type_Ukf.jdField_a_of_type_Int > 0) && (paramukb.jdField_a_of_type_Ukf.jdField_b_of_type_Int > 0) && (paramukb.jdField_a_of_type_Ukf.jdField_b_of_type_Int < 10000) && (paramukb.jdField_a_of_type_Ukf.jdField_a_of_type_Int < 10000)) {
+        ((IVideoViewBase)localView).setFixedSize(paramukb.jdField_a_of_type_Ukf.jdField_a_of_type_Int, paramukb.jdField_a_of_type_Ukf.jdField_b_of_type_Int);
       }
     }
     int i1;
     if (this.jdField_a_of_type_Boolean)
     {
       i1 = 2;
-      a(paramthl).b(i1);
-      localObject = a(paramthl);
+      localuke.b(i1);
       if ((!this.k) && (!this.g)) {
-        break label421;
+        break label404;
       }
     }
-    label421:
+    label404:
     for (boolean bool = true;; bool = false)
     {
-      ((tho)localObject).c(bool);
-      a(paramthl).a(this.h);
-      a(paramthl).d(paramthl.jdField_b_of_type_Boolean);
-      a(paramthl).a().setOutputMute(this.i);
-      tlo.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][innerPlayVideo] xyAxis:" + i1 + ", isMuted:" + this.i + ", mPreOutputFirstFrame:" + this.h);
-      paramthl.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ThreadManager.excute(new WSPlayerManager.PlayStartVideoRunnable(this, paramthl, a(paramthl), paramBoolean), 16, null, true);
+      localuke.c(bool);
+      localuke.a(this.h);
+      localuke.d(paramukb.jdField_b_of_type_Boolean);
+      localuke.a().setOutputMute(this.i);
+      upe.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][innerPlayVideo] xyAxis:" + i1 + ", isMuted:" + this.i + ", mPreOutputFirstFrame:" + this.h);
+      paramukb.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      ThreadManager.excute(new WSPlayerManager.PlayStartVideoRunnable(this, paramukb, localuke, paramBoolean), 16, null, true);
       return;
-      i1 = paramthl.jdField_a_of_type_Int;
+      i1 = paramukb.jdField_a_of_type_Int;
       break;
     }
   }
   
-  private void e(thl paramthl, boolean paramBoolean)
+  private void e(ukb paramukb, boolean paramBoolean)
   {
-    thy localthy;
-    if (paramthl != null)
+    uko localuko;
+    if (paramukb != null)
     {
-      if (paramthl.jdField_a_of_type_Thy == null) {
-        paramthl.jdField_a_of_type_Thy = new tia();
+      if (paramukb.jdField_a_of_type_Uko == null) {
+        paramukb.jdField_a_of_type_Uko = new ukq();
       }
-      localthy = paramthl.jdField_a_of_type_Thy;
-      if (paramthl.jdField_a_of_type_Thp == null) {
+      localuko = paramukb.jdField_a_of_type_Uko;
+      if (paramukb.jdField_a_of_type_Ukf == null) {
         break label57;
       }
     }
     label57:
-    for (String str = paramthl.jdField_a_of_type_Thp.jdField_a_of_type_JavaLangString;; str = "")
+    for (String str = paramukb.jdField_a_of_type_Ukf.jdField_a_of_type_JavaLangString;; str = "")
     {
-      localthy.a(str, paramBoolean, paramthl.jdField_a_of_type_JavaLangString);
+      localuko.a(str, paramBoolean, paramukb.jdField_a_of_type_JavaLangString);
       return;
     }
   }
@@ -312,20 +324,21 @@ public class WSPlayerManager
     if (b()) {
       c();
     }
-    while ((!a()) && (!e()) && (!d())) {
+    while ((!a()) && (!e()) && (!d()) && (!h())) {
       return;
     }
-    b(this.jdField_a_of_type_Thl, false);
+    b(this.jdField_a_of_type_Ukb, false);
   }
   
   private void h()
   {
-    tlo.g("WS_VIDEO_PLAYER", "<------------------------------- [WSPlayerManager.java][onVideoStart] title:" + a(this.jdField_a_of_type_Thl));
+    upe.g("WS_VIDEO_PLAYER", "<------------------------------- [WSPlayerManager.java][onVideoStart] title:" + b(this.jdField_a_of_type_Ukb));
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(-2);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(-2);
     this.jdField_a_of_type_AndroidOsHandler.post(new WSPlayerManager.4(this));
-    if (a(this.jdField_a_of_type_Thl) != null) {
-      a(this.jdField_a_of_type_Thl).b(a(this.jdField_a_of_type_Thl));
+    uko localuko = a(this.jdField_a_of_type_Ukb);
+    if (localuko != null) {
+      localuko.b(a(this.jdField_a_of_type_Ukb));
     }
   }
   
@@ -337,9 +350,9 @@ public class WSPlayerManager
     return 0;
   }
   
-  public thl a()
+  public ukb a()
   {
-    return this.jdField_a_of_type_Thl;
+    return this.jdField_a_of_type_Ukb;
   }
   
   public void a()
@@ -353,21 +366,21 @@ public class WSPlayerManager
     else {
       return;
     }
-    tlo.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][start] videoPlayer.start!");
+    upe.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][start] videoPlayer.start!");
     b().b();
     h();
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Thl != null) && (b() != null))
+    if ((this.jdField_a_of_type_Ukb != null) && (b() != null))
     {
       this.j = true;
       b().a(paramInt);
-      if ((paramBoolean) && (this.jdField_a_of_type_Thl != null) && (this.jdField_a_of_type_Thl.jdField_a_of_type_Thf != null))
+      if ((paramBoolean) && (this.jdField_a_of_type_Ukb != null) && (this.jdField_a_of_type_Ukb.jdField_a_of_type_Ujv != null))
       {
         long l1 = b().b();
-        this.jdField_a_of_type_Thl.jdField_a_of_type_Thf.a(this.jdField_a_of_type_Thl, paramInt, l1);
+        this.jdField_a_of_type_Ukb.jdField_a_of_type_Ujv.a(this.jdField_a_of_type_Ukb, paramInt, l1);
       }
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(-2);
     }
@@ -378,76 +391,76 @@ public class WSPlayerManager
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager = paramWSVideoPreDownloadManager;
   }
   
-  public void a(thl paramthl)
+  public void a(ukb paramukb)
   {
-    tlo.g("WS_VIDEO_PRE_PLAY", "===============================> [WSPlayerManager.java][prePlayVideo] title:" + a(paramthl));
-    if (paramthl == null) {
-      tlo.d("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][prePlayVideo] playerParam is null.");
+    upe.g("WS_VIDEO_PRE_PLAY", "===============================> [WSPlayerManager.java][prePlayVideo] title:" + b(paramukb));
+    if (paramukb == null) {
+      upe.d("WS_VIDEO_PRE_PLAY", "[WSPlayerManager.java][prePlayVideo] playerParam is null.");
     }
-    tho localtho;
+    uke localuke;
     do
     {
       do
       {
         return;
-        localtho = a(paramthl);
-      } while ((localtho != null) && (paramthl.jdField_a_of_type_Boolean) && (localtho.a() == paramthl.jdField_a_of_type_Thp));
+        localuke = a(paramukb);
+      } while ((localuke != null) && (paramukb.jdField_a_of_type_Boolean) && (localuke.a() == paramukb.jdField_a_of_type_Ukf));
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo = null;
-      if ((this.jdField_a_of_type_Thq != null) && (!this.jdField_a_of_type_Thq.a()))
+      if ((this.jdField_a_of_type_Ukg != null) && (!this.jdField_a_of_type_Ukg.a()))
       {
-        this.jdField_a_of_type_Thq.a();
+        this.jdField_a_of_type_Ukg.a();
         return;
       }
-    } while ((localtho != null) && (!localtho.a()) && (localtho.e() != 6) && (localtho.e() != 7));
-    paramthl.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Thl = paramthl;
-    e(paramthl, true);
-    if (this.jdField_b_of_type_Thl.jdField_a_of_type_Thf != null) {
-      this.jdField_b_of_type_Thl.jdField_a_of_type_Thf.a(this.jdField_b_of_type_Thl);
+    } while ((localuke != null) && (!localuke.a()) && (localuke.e() != 6) && (localuke.e() != 7));
+    paramukb.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Ukb = paramukb;
+    e(paramukb, true);
+    if (this.jdField_b_of_type_Ukb.jdField_a_of_type_Ujv != null) {
+      this.jdField_b_of_type_Ukb.jdField_a_of_type_Ujv.a(this.jdField_b_of_type_Ukb);
     }
-    c(paramthl, true);
+    c(paramukb, true);
   }
   
-  public void a(thl paramthl, boolean paramBoolean)
+  public void a(ukb paramukb, boolean paramBoolean)
   {
-    tlo.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout]");
-    if (paramthl == null)
+    upe.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout]");
+    if (paramukb == null)
     {
-      tlo.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] playerParam null.");
+      upe.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] playerParam null.");
       return;
     }
-    if ((paramthl.jdField_a_of_type_AndroidViewView == null) || (paramthl.jdField_a_of_type_AndroidViewViewGroup == null))
+    if ((paramukb.jdField_a_of_type_AndroidViewView == null) || (paramukb.jdField_a_of_type_AndroidViewViewGroup == null))
     {
-      tlo.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] videoView:" + paramthl.jdField_a_of_type_AndroidViewView + ", videoLayout:" + paramthl.jdField_a_of_type_AndroidViewViewGroup);
+      upe.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] videoView:" + paramukb.jdField_a_of_type_AndroidViewView + ", videoLayout:" + paramukb.jdField_a_of_type_AndroidViewViewGroup);
       return;
     }
-    tho localtho = a(paramthl);
-    if (localtho == null)
+    uke localuke = a(paramukb);
+    if (localuke == null)
     {
-      tlo.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] videoPlayer null.");
+      upe.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][switchPlayerVideoViewLayout] videoPlayer null.");
       return;
     }
-    this.jdField_a_of_type_Thl = paramthl;
-    View localView = paramthl.jdField_a_of_type_AndroidViewView;
-    localtho.b(paramthl.jdField_a_of_type_Int);
-    localtho.a(localView);
-    paramthl.jdField_a_of_type_AndroidViewViewGroup.addView(localView, new ViewGroup.LayoutParams(-1, -1));
-    localtho.a((IVideoViewBase)localView);
-    localtho.a(this.jdField_a_of_type_Thj);
+    this.jdField_a_of_type_Ukb = paramukb;
+    View localView = paramukb.jdField_a_of_type_AndroidViewView;
+    localuke.b(paramukb.jdField_a_of_type_Int);
+    localuke.a(localView);
+    paramukb.jdField_a_of_type_AndroidViewViewGroup.addView(localView, new ViewGroup.LayoutParams(-1, -1));
+    localuke.a((IVideoViewBase)localView);
+    localuke.a(this.jdField_a_of_type_Ujz);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(-2);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(-2);
     if (paramBoolean) {
       g();
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localtho, this.jdField_a_of_type_JavaLangObject);
-    localtho.h();
-    this.jdField_a_of_type_AndroidOsHandler.post(new WSPlayerManager.1(this, paramthl));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localuke, jdField_a_of_type_JavaLangObject);
+    localuke.h();
+    this.jdField_a_of_type_AndroidOsHandler.post(new WSPlayerManager.1(this, paramukb));
   }
   
-  public void a(thm paramthm)
+  public void a(ukc paramukc)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramthm))) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramthm);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramukc))) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramukc);
     }
   }
   
@@ -455,12 +468,12 @@ public class WSPlayerManager
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_Thl != null) {
-        b(this.jdField_a_of_type_Thl, false);
+      if (this.jdField_a_of_type_Ukb != null) {
+        b(this.jdField_a_of_type_Ukb, false);
       }
       return;
     }
-    this.jdField_a_of_type_Thl = null;
+    this.jdField_a_of_type_Ukb = null;
   }
   
   public boolean a()
@@ -470,100 +483,104 @@ public class WSPlayerManager
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Thl != null) && (b() != null) && ((b().e() == 3) || (b().e() == 4)))
+    if ((this.jdField_a_of_type_Ukb != null) && (b() != null) && ((b().e() == 3) || (b().e() == 4)))
     {
       b().c();
-      if (this.jdField_a_of_type_Thl.jdField_a_of_type_Thf != null) {
-        this.jdField_a_of_type_Thl.jdField_a_of_type_Thf.e(this.jdField_a_of_type_Thl);
+      if (this.jdField_a_of_type_Ukb.jdField_a_of_type_Ujv != null) {
+        this.jdField_a_of_type_Ukb.jdField_a_of_type_Ujv.e(this.jdField_a_of_type_Ukb);
       }
       if (this.jdField_a_of_type_JavaUtilArrayList != null)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext()) {
-          ((thm)localIterator.next()).d(this.jdField_a_of_type_Thl);
+          ((ukc)localIterator.next()).d(this.jdField_a_of_type_Ukb);
         }
       }
     }
   }
   
-  public void b(thl paramthl, boolean paramBoolean)
+  public void b(ukb paramukb, boolean paramBoolean)
   {
-    tlo.g("WS_VIDEO_PLAYER", "-------------------------------> [WSPlayerManager.java][playVideo] title:" + a(paramthl));
-    Object localObject;
-    if ((paramthl != null) && (paramthl.jdField_a_of_type_Thp != null))
+    upe.g("WS_VIDEO_PLAYER", "-------------------------------> [WSPlayerManager.java][playVideo] title:" + b(paramukb));
+    if ((paramukb != null) && (paramukb.jdField_a_of_type_Ukf != null))
     {
-      tlo.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][playVideo] videoUrl:" + paramthl.jdField_a_of_type_Thp.jdField_b_of_type_JavaLangString);
-      this.c = false;
+      upe.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][playVideo] videoUrl:" + paramukb.jdField_a_of_type_Ukf.jdField_b_of_type_JavaLangString);
+      this.jdField_c_of_type_Boolean = false;
       this.jdField_a_of_type_Int = 0;
       this.d = false;
       this.e = false;
       this.j = false;
-      this.jdField_a_of_type_Thl = paramthl;
+      this.jdField_a_of_type_Ukb = paramukb;
       this.jdField_b_of_type_Int = 0;
       if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       }
     }
     else
     {
-      while (((Iterator)localObject).hasNext())
+      while (((Iterator)localObject1).hasNext())
       {
-        ((thm)((Iterator)localObject).next()).a(this.jdField_a_of_type_Thl);
+        ((ukc)((Iterator)localObject1).next()).a(this.jdField_a_of_type_Ukb);
         continue;
-        tlo.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][playVideo] error, playerParam or videoInfo is null.");
+        upe.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][playVideo] error, playerParam or videoInfo is null.");
         return;
       }
     }
-    if (this.jdField_a_of_type_Thl.jdField_a_of_type_Thf != null) {
-      this.jdField_a_of_type_Thl.jdField_a_of_type_Thf.a(this.jdField_a_of_type_Thl, paramBoolean);
+    if (this.jdField_a_of_type_Ukb.jdField_a_of_type_Ujv != null) {
+      this.jdField_a_of_type_Ukb.jdField_a_of_type_Ujv.a(this.jdField_a_of_type_Ukb, paramBoolean);
     }
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(-3);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(-4);
-    if ((a(paramthl) != null) && (a(paramthl).d()) && (a(paramthl).a() == paramthl.jdField_a_of_type_Thp))
+    Object localObject1 = a(paramukb);
+    Object localObject2 = a(paramukb);
+    if ((localObject1 != null) && (((uke)localObject1).d()) && (((uke)localObject1).a() == paramukb.jdField_a_of_type_Ukf))
     {
-      paramthl.jdField_a_of_type_Boolean = false;
+      paramukb.jdField_a_of_type_Boolean = false;
       this.o = false;
-      this.jdField_b_of_type_Thl = null;
-      paramthl.jdField_a_of_type_Tho.f();
+      this.jdField_b_of_type_Ukb = null;
+      paramukb.jdField_a_of_type_Uke.f();
       if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo != null) {
-        this.jdField_a_of_type_Thj.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo, paramthl.jdField_a_of_type_Tho);
+        this.jdField_a_of_type_Ujz.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo, paramukb.jdField_a_of_type_Uke);
       }
-      if (a(paramthl) != null)
+      if (localObject2 != null)
       {
-        a(paramthl).a(true);
-        a(paramthl).a(a(paramthl));
+        ((uko)localObject2).a(true);
+        ((uko)localObject2).a(2);
+        ((uko)localObject2).a(a(paramukb));
       }
-      tlo.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][playVideo] hasPrePlay, just go startVideoAfterPrepared! title:" + a(paramthl));
-      this.jdField_a_of_type_Thj.a();
+      upe.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][playVideo] hasPrePlay, just go startVideoAfterPrepared! title:" + b(paramukb));
+      this.jdField_a_of_type_Ujz.a();
       return;
     }
-    if ((paramthl.jdField_a_of_type_Boolean) && ((a(paramthl) == null) || (a(paramthl).a() == paramthl.jdField_a_of_type_Thp)))
+    if ((paramukb.jdField_a_of_type_Boolean) && ((localObject1 == null) || (((uke)localObject1).a() == paramukb.jdField_a_of_type_Ukf)))
     {
-      if (a(paramthl) != null) {
-        a(paramthl).f();
+      if (localObject1 != null) {
+        ((uke)localObject1).f();
       }
       this.m = true;
-      if (a(paramthl) != null) {
-        a(paramthl).a(false);
-      }
-      StringBuilder localStringBuilder = new StringBuilder().append("[WSPlayerManager.java][playVideo] prePlaying, just do nothing! playerStatus:");
-      if (a(paramthl) != null) {}
-      for (localObject = Integer.valueOf(a(paramthl).e());; localObject = " ")
+      if (localObject2 != null)
       {
-        tlo.d("WS_VIDEO_PRE_PLAY", localObject + ", title:" + a(paramthl));
+        ((uko)localObject2).a(false);
+        ((uko)localObject2).a(1);
+      }
+      localObject2 = new StringBuilder().append("[WSPlayerManager.java][playVideo] prePlaying, just do nothing! playerStatus:");
+      if (localObject1 != null) {}
+      for (localObject1 = Integer.valueOf(((uke)localObject1).e());; localObject1 = " ")
+      {
+        upe.d("WS_VIDEO_PRE_PLAY", localObject1 + ", title:" + b(paramukb));
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(-3, 150L);
         return;
       }
     }
     this.o = false;
-    this.jdField_b_of_type_Thl = null;
-    e(this.jdField_a_of_type_Thl, false);
-    if ((this.jdField_a_of_type_Thq != null) && (!this.jdField_a_of_type_Thq.a()))
+    this.jdField_b_of_type_Ukb = null;
+    e(this.jdField_a_of_type_Ukb, false);
+    if ((this.jdField_a_of_type_Ukg != null) && (!this.jdField_a_of_type_Ukg.a()))
     {
-      this.jdField_a_of_type_Thq.a();
+      this.jdField_a_of_type_Ukg.a();
       return;
     }
-    c(paramthl, false);
+    c(paramukb, false);
   }
   
   public void b(boolean paramBoolean)
@@ -571,14 +588,14 @@ public class WSPlayerManager
     if (this.jdField_a_of_type_Boolean != paramBoolean)
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
-      if ((b() != null) && (this.jdField_a_of_type_Thl != null)) {
+      if ((b() != null) && (this.jdField_a_of_type_Ukb != null)) {
         if (!this.jdField_a_of_type_Boolean) {
           break label45;
         }
       }
     }
     label45:
-    for (int i1 = 2;; i1 = this.jdField_a_of_type_Thl.jdField_a_of_type_Int)
+    for (int i1 = 2;; i1 = this.jdField_a_of_type_Ukb.jdField_a_of_type_Int)
     {
       b().b(i1);
       return;
@@ -597,7 +614,7 @@ public class WSPlayerManager
   
   public void c(boolean paramBoolean)
   {
-    tlo.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][doOnDestroy] isStopVideo:" + paramBoolean);
+    upe.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][doOnDestroy] isStopVideo:" + paramBoolean);
     this.jdField_b_of_type_Boolean = true;
     if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager != null)
     {
@@ -607,43 +624,45 @@ public class WSPlayerManager
     if (paramBoolean) {
       d();
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_a_of_type_Thl);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_b_of_type_Thl);
-    if ((this.jdField_a_of_type_Thl != null) && (paramBoolean))
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_a_of_type_Ukb);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_b_of_type_Ukb);
+    if ((this.jdField_a_of_type_Ukb != null) && (paramBoolean))
     {
       if (b() != null)
       {
         b().g();
-        this.jdField_a_of_type_Thl.jdField_a_of_type_Tho = null;
+        this.jdField_a_of_type_Ukb.jdField_a_of_type_Uke = null;
       }
-      this.jdField_a_of_type_Thl = null;
+      this.jdField_a_of_type_Ukb = null;
     }
-    if (this.jdField_b_of_type_Thl != null)
+    Object localObject;
+    if (this.jdField_b_of_type_Ukb != null)
     {
-      if (a(this.jdField_b_of_type_Thl) != null)
+      localObject = a(this.jdField_b_of_type_Ukb);
+      if (localObject != null)
       {
-        a(this.jdField_b_of_type_Thl).g();
-        this.jdField_b_of_type_Thl.jdField_a_of_type_Tho = null;
+        ((uke)localObject).g();
+        this.jdField_b_of_type_Ukb.jdField_a_of_type_Uke = null;
       }
       this.o = false;
-      this.jdField_b_of_type_Thl = null;
+      this.jdField_b_of_type_Ukb = null;
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        tho localtho = (tho)localIterator.next();
-        if ((localtho != null) && (localtho.e() != 8) && ((localtho != b()) || (paramBoolean))) {
-          localtho.g();
+        uke localuke = (uke)((Iterator)localObject).next();
+        if ((localuke != null) && (localuke.e() != 8) && ((localuke != b()) || (paramBoolean))) {
+          localuke.g();
         }
       }
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
-    if (this.jdField_a_of_type_Thq != null)
+    if (this.jdField_a_of_type_Ukg != null)
     {
-      this.jdField_a_of_type_Thq.b();
-      this.jdField_a_of_type_Thq = null;
+      this.jdField_a_of_type_Ukg.b();
+      this.jdField_a_of_type_Ukg = null;
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
@@ -651,10 +670,10 @@ public class WSPlayerManager
       this.jdField_a_of_type_JavaUtilArrayList.clear();
       this.jdField_a_of_type_JavaUtilArrayList = null;
     }
-    if (this.jdField_a_of_type_Thg != null)
+    if (this.jdField_a_of_type_Ujw != null)
     {
-      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Thg);
-      this.jdField_a_of_type_Thg = null;
+      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Ujw);
+      this.jdField_a_of_type_Ujw = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     this.jdField_a_of_type_AndroidContentContext = null;
@@ -667,27 +686,28 @@ public class WSPlayerManager
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Thl != null) && (b() != null))
+    if ((this.jdField_a_of_type_Ukb != null) && (b() != null))
     {
-      if (a(this.jdField_a_of_type_Thl) != null) {
-        a(this.jdField_a_of_type_Thl).a(this.jdField_a_of_type_Thl.jdField_a_of_type_Tho, this.c);
+      Object localObject = a(this.jdField_a_of_type_Ukb);
+      if (localObject != null) {
+        ((uko)localObject).a(this.jdField_a_of_type_Ukb.jdField_a_of_type_Uke, this.jdField_c_of_type_Boolean);
       }
-      this.jdField_a_of_type_Thl.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Thl.jdField_a_of_type_Thf != null) {
-        this.jdField_a_of_type_Thl.jdField_a_of_type_Thf.g(this.jdField_a_of_type_Thl);
+      this.jdField_a_of_type_Ukb.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Ukb.jdField_a_of_type_Ujv != null) {
+        this.jdField_a_of_type_Ukb.jdField_a_of_type_Ujv.g(this.jdField_a_of_type_Ukb);
       }
       if (this.jdField_a_of_type_JavaUtilArrayList != null)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext()) {
-          ((thm)localIterator.next()).a(this.jdField_a_of_type_Thl, this.c);
+        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((ukc)((Iterator)localObject).next()).a(this.jdField_a_of_type_Ukb, this.jdField_c_of_type_Boolean);
         }
       }
-      tlo.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][stop] title:" + a(this.jdField_a_of_type_Thl));
-      b(this.jdField_a_of_type_Thl);
+      upe.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][stop] title:" + b(this.jdField_a_of_type_Ukb));
+      b(this.jdField_a_of_type_Ukb);
     }
-    if (this.jdField_a_of_type_Thl != null) {
-      this.jdField_a_of_type_Thl = null;
+    if (this.jdField_a_of_type_Ukb != null) {
+      this.jdField_a_of_type_Ukb = null;
     }
     this.jdField_a_of_type_Int = 0;
     this.d = false;
@@ -697,11 +717,13 @@ public class WSPlayerManager
   public void d(boolean paramBoolean)
   {
     this.g = paramBoolean;
-    if (b() != null) {
-      b().c(paramBoolean);
+    uke localuke = b();
+    if (localuke != null) {
+      localuke.c(paramBoolean);
     }
-    if (a(this.jdField_b_of_type_Thl) != null) {
-      a(this.jdField_b_of_type_Thl).c(paramBoolean);
+    localuke = a(this.jdField_b_of_type_Ukb);
+    if (localuke != null) {
+      localuke.c(paramBoolean);
     }
   }
   
@@ -725,7 +747,7 @@ public class WSPlayerManager
       if (this.l)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
-        for (boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();; bool = false)
+        for (boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.d();; bool = false)
         {
           if (bool) {
             break label85;
@@ -742,21 +764,19 @@ public class WSPlayerManager
   {
     boolean bool2 = false;
     this.k = paramBoolean;
-    tho localtho;
-    if (b() != null)
-    {
-      localtho = b();
+    uke localuke = b();
+    if (localuke != null) {
       if ((!paramBoolean) && (!this.g)) {
-        break label82;
+        break label74;
       }
     }
-    label82:
+    label74:
     for (boolean bool1 = true;; bool1 = false)
     {
-      localtho.c(bool1);
-      if (a(this.jdField_b_of_type_Thl) != null)
+      localuke.c(bool1);
+      localuke = a(this.jdField_b_of_type_Ukb);
+      if (localuke != null)
       {
-        localtho = a(this.jdField_b_of_type_Thl);
         if (!paramBoolean)
         {
           paramBoolean = bool2;
@@ -766,7 +786,7 @@ public class WSPlayerManager
         {
           paramBoolean = true;
         }
-        localtho.c(paramBoolean);
+        localuke.c(paramBoolean);
       }
       return;
     }
@@ -780,7 +800,7 @@ public class WSPlayerManager
   public void f()
   {
     this.f = false;
-    tlo.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][doOnPause] isPlaying:" + c());
+    upe.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][doOnPause] isPlaying:" + c());
     if (c())
     {
       this.l = true;
@@ -798,10 +818,20 @@ public class WSPlayerManager
   {
     return a() == 4;
   }
+  
+  public boolean h()
+  {
+    return a() == 0;
+  }
+  
+  public boolean i()
+  {
+    return this.g;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager
  * JD-Core Version:    0.7.0.1
  */

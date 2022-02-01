@@ -1,6 +1,25 @@
-public abstract interface anmy
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import java.util.Comparator;
+
+class anmy
+  implements Comparator<SpecialCareInfo>
 {
-  public abstract void a(boolean paramBoolean);
+  anmy(anmw paramanmw) {}
+  
+  private String a(SpecialCareInfo paramSpecialCareInfo)
+  {
+    Friends localFriends = this.a.b(paramSpecialCareInfo.uin);
+    if (localFriends == null) {
+      return paramSpecialCareInfo.uin;
+    }
+    return bglf.a(localFriends) + localFriends.uin;
+  }
+  
+  public int a(SpecialCareInfo paramSpecialCareInfo1, SpecialCareInfo paramSpecialCareInfo2)
+  {
+    return anjs.a(a(paramSpecialCareInfo1), a(paramSpecialCareInfo2));
+  }
 }
 
 

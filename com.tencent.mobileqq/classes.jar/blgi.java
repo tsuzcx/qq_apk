@@ -1,26 +1,15 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import dov.com.qq.im.ae.play.AEPlayShowPageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class blgi
-  extends RecyclerView.ItemDecoration
+final class blgi
+  implements DialogInterface.OnClickListener
 {
-  public blgi(AEPlayShowPageView paramAEPlayShowPageView, blgc paramblgc) {}
+  blgi(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (AEPlayShowPageView.a(this.jdField_a_of_type_DovComQqImAePlayAEPlayShowPageView) != 1)
-    {
-      paramRect.left = this.jdField_a_of_type_Blgc.c;
-      paramRect.right = this.jdField_a_of_type_Blgc.c;
-      paramRect.top = this.jdField_a_of_type_Blgc.d;
-      paramRect.bottom = this.jdField_a_of_type_Blgc.d;
-      return;
-    }
-    paramRect.bottom = this.jdField_a_of_type_Blgc.d;
+    this.a.onClick(paramDialogInterface, paramInt);
+    paramDialogInterface.dismiss();
   }
 }
 

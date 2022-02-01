@@ -1,122 +1,101 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.Context;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qua
-  implements qtv
+  extends qqt
 {
-  private qtu jdField_a_of_type_Qtu;
-  private qtw jdField_a_of_type_Qtw;
-  
-  public qua(qtu paramqtu)
+  public qua(Context paramContext, aobu paramaobu, snh paramsnh)
   {
-    this.jdField_a_of_type_Qtu = paramqtu;
+    super(paramContext, paramaobu, paramsnh);
   }
   
-  public int a()
+  public qqt a()
   {
-    return qok.a();
+    this.jdField_a_of_type_Boolean = true;
+    return f(this.jdField_a_of_type_Snh, this.jdField_a_of_type_Aobu).q().l().n().h().g();
   }
   
-  public void a()
+  public qqt d()
   {
-    this.jdField_a_of_type_Qtw = null;
-  }
-  
-  public void a(@Nullable ColumnInfo paramColumnInfo, @NotNull qtm paramqtm)
-  {
-    if (QLog.isColorLevel())
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout1.setOrientation(1);
+    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend);
+    }
+    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentBig)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
     {
-      if (paramColumnInfo != null) {
-        QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: editTopic srcColumnInfo : " + paramColumnInfo.toString());
-      }
-      QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: editTopic columnPublishInfo : " + paramqtm.toString());
+      RelativeLayout localRelativeLayout1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      localRelativeLayout1.setPadding(afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLinearLayout2.setOrientation(1);
+      localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+      localLinearLayout2.addView((ComponentContentBig)this.jdField_a_of_type_Qqs);
+      RelativeLayout localRelativeLayout2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      Object localObject = new LinearLayout.LayoutParams(-1, -2);
+      ((LinearLayout.LayoutParams)localObject).setMargins(0, afur.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, afur.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localRelativeLayout2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localLinearLayout2.addView(localRelativeLayout2);
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject).addRule(15);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localRelativeLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      localLinearLayout2.setBackgroundResource(2130842837);
+      localLinearLayout2.setOnClickListener(new qub(this));
+      localRelativeLayout1.addView(localLinearLayout2);
+      localLinearLayout1.addView(localRelativeLayout1);
     }
-    paramColumnInfo = new ColumnInfo(paramqtm);
-    paramColumnInfo.source = 5;
-    if (this.jdField_a_of_type_Qtw == null)
-    {
-      QLog.i("RIJUGC.ManageColumnPresenter", 1, "ManageColumnPresenter: editColumn view is null!");
-      return;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
     }
-    this.jdField_a_of_type_Qtw.c();
-    this.jdField_a_of_type_Qtu.b(paramColumnInfo, new qud(this, paramColumnInfo));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout1);
+    return this;
   }
   
-  public void a(@NotNull qtm paramqtm)
+  public qqt e()
   {
-    ColumnInfo localColumnInfo = new ColumnInfo(paramqtm);
-    this.jdField_a_of_type_Qtu.a(localColumnInfo);
-    if (QLog.isColorLevel()) {
-      QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: saveColumnSketch column = " + paramqtm.toString());
-    }
+    return null;
   }
   
-  public void a(qtw paramqtw)
+  public qqt g()
   {
-    this.jdField_a_of_type_Qtw = paramqtw;
+    this.jdField_a_of_type_Qqs = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
   
-  public void a(@NotNull qxd paramqxd, @NotNull String paramString)
+  public qqt o()
   {
-    if (this.jdField_a_of_type_Qtw != null) {
-      this.jdField_a_of_type_Qtw.a();
+    super.o();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.a(this.jdField_a_of_type_JavaLangObject);
     }
-    paramqxd.a(new qub(this, paramString));
-    paramqxd.a();
-  }
-  
-  public int b()
-  {
-    return qok.b();
-  }
-  
-  public void b()
-  {
-    ColumnInfo localColumnInfo = this.jdField_a_of_type_Qtu.a();
-    if ((localColumnInfo != null) && (this.jdField_a_of_type_Qtw != null)) {
-      this.jdField_a_of_type_Qtw.a(localColumnInfo);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
     }
-    if (QLog.isColorLevel())
-    {
-      if (localColumnInfo != null) {
-        QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: initFromSketch bindTopicData column = " + localColumnInfo.toString());
-      }
-    }
-    else {
-      return;
-    }
-    QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: initFromSketch bindTopicData column is null.");
-  }
-  
-  public void b(@NotNull qtm paramqtm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: createColumn columnPublishInfo : " + paramqtm.toString());
-    }
-    if (this.jdField_a_of_type_Qtw == null)
-    {
-      QLog.i("RIJUGC.ManageColumnPresenter", 1, "ManageColumnPresenter: createColumn view is null!");
-      return;
-    }
-    paramqtm = new ColumnInfo(paramqtm);
-    paramqtm.source = 5;
-    this.jdField_a_of_type_Qtw.c();
-    this.jdField_a_of_type_Qtu.a(paramqtm, new quc(this, paramqtm));
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: clearColumnSketch.");
-    }
-    this.jdField_a_of_type_Qtu.a();
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qua
  * JD-Core Version:    0.7.0.1
  */

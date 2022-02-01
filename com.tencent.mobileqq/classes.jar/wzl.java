@@ -1,62 +1,60 @@
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSimpleInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-class wzl
-  extends xic
+public class wzl
+  extends wlf
 {
-  private final List<xhr> a = new ArrayList();
+  public List<String> a = new ArrayList();
   
-  public int a()
+  public String a()
   {
-    return this.a.size();
+    return wjz.a("StorySvc.get_date_video_list");
   }
   
-  public xhr a(int paramInt)
+  public wla a(byte[] paramArrayOfByte)
   {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return (xhr)this.a.get(paramInt);
+    qqstory_service.RspSimpleInfoList localRspSimpleInfoList = new qqstory_service.RspSimpleInfoList();
+    try
+    {
+      localRspSimpleInfoList.mergeFrom(paramArrayOfByte);
+      return new xbb(localRspSimpleInfoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.b("Q.qqstory.net:GetSimpleInfoListResponse", a(), paramArrayOfByte);
     }
     return null;
   }
   
-  public xhr a(String paramString)
+  protected byte[] a()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    qqstory_service.ReqSimpleInfoList localReqSimpleInfoList = new qqstory_service.ReqSimpleInfoList();
+    ArrayList localArrayList = new ArrayList();
+    if (this.a != null)
     {
-      xhr localxhr = (xhr)localIterator.next();
-      if (TextUtils.equals(paramString, localxhr.a)) {
-        return localxhr;
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(ByteStringMicro.copyFromUtf8((String)localIterator.next()));
       }
     }
-    return null;
+    localReqSimpleInfoList.vid_list.addAll(localArrayList);
+    return localReqSimpleInfoList.toByteArray();
   }
   
-  public void a(Collection<xhr> paramCollection)
+  public String toString()
   {
-    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
-    this.a.clear();
-    this.a.addAll(paramCollection);
-    a();
-  }
-  
-  public void a(xhr paramxhr)
-  {
-    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramxhr);
-    int i = this.a.indexOf(paramxhr);
-    if (i >= 0)
-    {
-      this.a.set(i, paramxhr);
-      a(i);
-    }
+    return "GetSimpleInfoListResponse{vidList='" + this.a + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wzl
  * JD-Core Version:    0.7.0.1
  */

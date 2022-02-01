@@ -14,12 +14,14 @@ import com.tencent.viola.ui.component.VRecyclerList;
 import com.tencent.viola.ui.component.VSlider;
 import com.tencent.viola.ui.context.DOMActionContext;
 import com.tencent.viola.ui.context.RenderActionContext;
+import com.tencent.viola.ui.dom.Attr;
 import com.tencent.viola.ui.dom.DomObject;
 import com.tencent.viola.ui.dom.DomObjectCell;
 import com.tencent.viola.ui.view.VScrollView;
 import com.tencent.viola.ui.view.list.VRecyclerView;
 import com.tencent.viola.ui.view.refresh.VRefreshViewGroup;
 import com.tencent.viola.utils.ViolaLogUtils;
+import com.tencent.viola.utils.ViolaUtils;
 import java.util.ArrayList;
 import org.json.JSONObject;
 
@@ -85,6 +87,15 @@ public class MethodAddElement
     }
   }
   
+  private void tryHidePreCreateBody(ViolaInstance paramViolaInstance, DomObject paramDomObject)
+  {
+    if ((paramViolaInstance == null) || (paramDomObject == null)) {}
+    while (!ViolaUtils.getBoolean(paramDomObject.getAttributes().get("hidePreCreateBodyWhenMounted"))) {
+      return;
+    }
+    paramViolaInstance.hidePreCreateBody();
+  }
+  
   protected void appendDomToTree(DOMActionContext paramDOMActionContext, DomObject paramDomObject)
   {
     this.mRef = paramDomObject.getRef();
@@ -145,7 +156,7 @@ public class MethodAddElement
   public void executeRender(RenderActionContext paramRenderActionContext)
   {
     if (paramRenderActionContext == null) {}
-    Object localObject;
+    ViolaInstance localViolaInstance;
     VComponentContainer localVComponentContainer;
     VComponent localVComponent;
     do
@@ -153,8 +164,8 @@ public class MethodAddElement
       do
       {
         return;
-        localObject = paramRenderActionContext.getInstance();
-      } while ((localObject == null) || (TextUtils.isEmpty(this.mRootRef)) || (!(paramRenderActionContext.getComponent(this.mParentRef) instanceof VComponentContainer)) || (!(paramRenderActionContext.getComponent(this.mRootRef) instanceof VComponentContainer)));
+        localViolaInstance = paramRenderActionContext.getInstance();
+      } while ((localViolaInstance == null) || (TextUtils.isEmpty(this.mRootRef)) || (!(paramRenderActionContext.getComponent(this.mParentRef) instanceof VComponentContainer)) || (!(paramRenderActionContext.getComponent(this.mRootRef) instanceof VComponentContainer)));
       localVComponentContainer = (VComponentContainer)paramRenderActionContext.getComponent(this.mParentRef);
       localVComponent = paramRenderActionContext.getComponent(this.mRef);
       paramRenderActionContext = (VComponentContainer)paramRenderActionContext.getComponent(this.mRootRef);
@@ -185,15 +196,16 @@ public class MethodAddElement
         return;
       }
       localVComponentContainer.addChild(localVComponent, this.mAddIndex);
-    } while (((ViolaInstance)localObject).getContext() == null);
+    } while ((localViolaInstance.getContext() == null) && (!localViolaInstance.isGlobalMode()));
     localVComponent.createView();
+    Object localObject;
     if (!(localVComponentContainer.getRealView() instanceof AdapterView))
     {
       if (!(localVComponent.getRealView() instanceof VScrollView)) {
-        break label325;
+        break label353;
       }
       if (localVComponent.getRealView().getParent() == null) {
-        break label316;
+        break label343;
       }
       localObject = (View)localVComponent.getRealView().getParent();
       localVComponentContainer.getRealView().addView((View)localObject);
@@ -206,11 +218,12 @@ public class MethodAddElement
       localVComponent.bindData();
       localVComponent.notifyChange();
       localVComponent.notifyWhenChange("add", this.mAddDom);
+      tryHidePreCreateBody(localViolaInstance, this.mAddDom);
       return;
-      label316:
+      label343:
       dealAddView(localVComponentContainer, localVComponent);
       continue;
-      label325:
+      label353:
       if ((localVComponent.getHostView() instanceof VRecyclerView))
       {
         localObject = (VRecyclerList)localVComponent;
@@ -246,7 +259,7 @@ public class MethodAddElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodAddElement
  * JD-Core Version:    0.7.0.1
  */

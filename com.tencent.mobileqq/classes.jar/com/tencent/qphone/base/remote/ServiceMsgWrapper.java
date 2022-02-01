@@ -26,7 +26,7 @@ public class ServiceMsgWrapper
     }
   }
   
-  public boolean buildFromMsgWupBuffer(byte[] paramArrayOfByte, int paramInt)
+  public boolean buildFromMsgWupBuffer(int paramInt, byte[] paramArrayOfByte)
   {
     boolean bool2 = false;
     for (;;)

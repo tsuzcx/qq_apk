@@ -1,42 +1,41 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class apcb
+class apcb
+  extends beau
 {
-  private int jdField_a_of_type_Int;
-  private apcd jdField_a_of_type_Apcd;
-  public apce a;
-  private apcg jdField_a_of_type_Apcg;
-  private apch jdField_a_of_type_Apch;
-  public apci a;
-  private apcj jdField_a_of_type_Apcj;
-  private apcl jdField_a_of_type_Apcl;
-  private apcm jdField_a_of_type_Apcm;
-  private List<apcq> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public apbz a()
+  apcb(apby paramapby, QQAppInterface paramQQAppInterface, String paramString, beav parambeav, bdvs parambdvs, apce paramapce, apcd paramapcd)
   {
-    return new apbz(this, null);
+    super(paramQQAppInterface, paramString, parambeav, parambdvs);
   }
   
-  public apcb a(int paramInt)
+  protected void realCancel()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask realCancel");
+    synchronized (apby.a(this.jdField_a_of_type_Apby))
+    {
+      apcd localapcd = (apcd)apby.a(this.jdField_a_of_type_Apby).get(this.jdField_a_of_type_Apce.b);
+      if (localapcd != null) {
+        localapcd.b();
+      }
+      super.realCancel();
+      return;
+    }
   }
   
-  public apcb a(apcj paramapcj)
+  protected void realStart()
   {
-    this.jdField_a_of_type_Apcj = paramapcj;
-    return this;
-  }
-  
-  public apcb a(apcq paramapcq)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramapcq);
-    return this;
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask  realStart");
+    synchronized (apby.a(this.jdField_a_of_type_Apby))
+    {
+      apcd localapcd = (apcd)apby.a(this.jdField_a_of_type_Apby).get(this.jdField_a_of_type_Apce.b);
+      if (localapcd != null) {
+        this.jdField_a_of_type_Apcd.a();
+      }
+      super.realStart();
+      return;
+    }
   }
 }
 

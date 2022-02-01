@@ -1,130 +1,72 @@
-import java.io.File;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
-public class bksf
+class bksf
+  extends RecyclerView.AdapterDataObserver
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = 960;
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  public String a;
-  private int b = 720;
-  private int c = 960;
-  private int d = 720;
-  private int e;
-  private int f;
-  private int g = 2000000;
-  private int h = 1;
-  private int i = 1;
-  private int j = -1;
-  private int k = -1;
+  bksf(bkse parambkse) {}
   
-  public bksf()
+  private void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = (bkoz.c + File.separator + this.jdField_a_of_type_Long);
+    View localView = this.a.a(bkse.a(this.a));
+    if (localView != null) {}
+    for (int i = bkse.a(this.a).getPosition(localView);; i = -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PagerSnapHelper", 2, "onPagerDataChanged: positionStart=" + paramInt1 + ", itemCount=" + paramInt2 + ", centerPosition=" + bkse.b(this.a) + ", currentPosition=" + i);
+      }
+      if ((paramInt1 <= i) && (paramInt1 + paramInt2 - 1 >= i))
+      {
+        bksh.a(bkse.a(this.a), true);
+        bkse.a(this.a).addOnLayoutChangeListener(bkse.a(this.a));
+        bkse.a(this.a).requestLayout();
+      }
+      return;
+    }
   }
   
-  public float a()
+  public void onChanged()
   {
-    return this.jdField_a_of_type_Float;
+    a(0, bkse.a(this.a).getItemCount());
   }
   
-  public int a()
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
   {
-    return this.g;
+    a(paramInt1, paramInt2);
   }
   
-  public void a(float paramFloat)
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    if (paramObject == null) {
+      onItemRangeChanged(paramInt1, paramInt2);
+    }
   }
   
-  public void a(int paramInt)
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt1 <= bkse.b(this.a)) {
+      bkse.b(this.a, bkse.b(this.a) + paramInt2);
+    }
+    a(paramInt1, paramInt2);
   }
   
-  public int b()
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.jdField_a_of_type_Int;
+    if (paramInt1 == bkse.b(this.a)) {
+      bkse.b(this.a, paramInt2);
+    }
+    a(paramInt1, paramInt3);
   }
   
-  public void b(int paramInt)
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
   {
-    this.b = paramInt;
-  }
-  
-  public int c()
-  {
-    return this.b;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public int d()
-  {
-    return this.e;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public int e()
-  {
-    return this.f;
-  }
-  
-  public void e(int paramInt)
-  {
-    this.g = paramInt;
-  }
-  
-  public int f()
-  {
-    return this.h;
-  }
-  
-  public void f(int paramInt)
-  {
-    this.h = paramInt;
-  }
-  
-  public int g()
-  {
-    return this.i;
-  }
-  
-  public void g(int paramInt)
-  {
-    this.i = paramInt;
-  }
-  
-  public int h()
-  {
-    return this.j;
-  }
-  
-  public void h(int paramInt)
-  {
-    this.j = paramInt;
-  }
-  
-  public int i()
-  {
-    return this.k;
-  }
-  
-  public void i(int paramInt)
-  {
-    this.e = paramInt;
-  }
-  
-  public void j(int paramInt)
-  {
-    this.f = paramInt;
+    if (paramInt1 <= bkse.b(this.a)) {
+      bkse.b(this.a, bkse.b(this.a) - paramInt2);
+    }
+    a(paramInt1, paramInt2);
   }
 }
 

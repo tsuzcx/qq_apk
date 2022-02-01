@@ -2,8 +2,8 @@ package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import lid;
-import mdd;
+import ley;
+import maf;
 
 class DoubleVideoMeetingCtrlUI$RequestVideoTimeoutRunnale
   implements Runnable
@@ -21,14 +21,14 @@ class DoubleVideoMeetingCtrlUI$RequestVideoTimeoutRunnale
     }
     this.this$0.jdField_a_of_type_ComTencentAvVideoController.a("Meeting_RequestVideoTimeoutRunnale");
     this.this$0.d(true);
-    mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
-    mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
+    maf.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
+    maf.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
     this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().a(this.this$0.b, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoMeetingCtrlUI.RequestVideoTimeoutRunnale
  * JD-Core Version:    0.7.0.1
  */

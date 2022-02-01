@@ -1,11 +1,19 @@
-import java.util.List;
-import javax.annotation.Nonnull;
-
-public abstract interface bnej
+class bnej
+  implements bnhs
 {
-  public abstract void a(int paramInt, @Nonnull List<xoe> paramList, boolean paramBoolean);
+  bnej(bneh parambneh) {}
   
-  public abstract void b(int paramInt, @Nonnull List<xoe> paramList, boolean paramBoolean);
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (bndy.d(this.a.a)) {
+        bani.a(paramInt);
+      }
+      bndy.j(this.a.a);
+      bndy.g(this.a.a);
+    }
+  }
 }
 
 

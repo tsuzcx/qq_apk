@@ -1,19 +1,22 @@
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface binr
+class binr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract HashMap<String, String> a();
+  binr(binq parambinq, bikw parambikw) {}
   
-  public abstract void a();
-  
-  public abstract boolean a(String paramString, JSONObject paramJSONObject);
-  
-  public abstract void b();
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Bikw.b = paramBoolean;
+    this.jdField_a_of_type_Binq.notifyDataSetChanged();
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     binr
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,6 @@ import java.util.concurrent.BlockingQueue;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.io.CloseableKt;
-import kotlin.jvm.internal.Intrinsics;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 15})
 final class Logger$DefaultLogProxy$writeLogFile$1
@@ -69,12 +68,12 @@ final class Logger$DefaultLogProxy$writeLogFile$1
         {
           localObject1 = localException.getMessage();
           if (localObject1 == null) {
-            break label578;
+            break label591;
           }
         }
         int i = 0;
         continue;
-        localObject1 = new File(Intrinsics.stringPlus(FileUtil.Companion.getRootPath(), "/Log"));
+        localObject1 = new File(FileUtil.Companion.getRootPath() + "/Log");
         if (!((File)localObject1).exists()) {
           ((File)localObject1).mkdirs();
         }
@@ -148,14 +147,14 @@ final class Logger$DefaultLogProxy$writeLogFile$1
         i = 0;
       }
       continue;
-      label578:
+      label591:
       String str2 = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.logger.Logger.DefaultLogProxy.writeLogFile.1
  * JD-Core Version:    0.7.0.1
  */

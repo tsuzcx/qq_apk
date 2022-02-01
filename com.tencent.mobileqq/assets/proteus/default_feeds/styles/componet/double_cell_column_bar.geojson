@@ -18,6 +18,11 @@
         "setCornerRadiusString:": "4",
         "setBackgroundColorString:": "#F5F6FA"
     },
+    "data_attributes": {
+        "setLocalInfo:": {
+            "click_column": "1"
+        }
+    },
     "subviews": [
         {
             "view_type":"UILabel",

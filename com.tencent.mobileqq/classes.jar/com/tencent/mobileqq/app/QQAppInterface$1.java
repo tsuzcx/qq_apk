@@ -15,7 +15,7 @@ class QQAppInterface$1
     localIntentFilter.addAction("com.tecent.qzone.clearAlbumRedTouch");
     QQAppInterface.c(this.this$0).registerReceiver(QQAppInterface.a(this.this$0), localIntentFilter);
     VideoBroadcastReceiver.a(this.this$0);
-    if (this.this$0.e()) {}
+    if (this.this$0.f()) {}
   }
 }
 

@@ -1,43 +1,51 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
+import com.tencent.mobileqq.dating.FansEntity;
+import com.tencent.mobileqq.dating.SayHelloMsgListActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class arlr
-  extends arlv
+  extends axdw
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private boolean d;
+  public arlr(SayHelloMsgListActivity paramSayHelloMsgListActivity) {}
   
-  public arlr(Context paramContext, FileManagerEntity paramFileManagerEntity)
+  public void a(boolean paramBoolean, List<FansEntity> paramList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
-    this.d = false;
-  }
-  
-  public Intent a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-      return null;
+    int i = 0;
+    if (paramBoolean)
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        FansEntity localFansEntity = (FansEntity)localIterator.next();
+        RecentBaseData localRecentBaseData = (RecentBaseData)this.a.jdField_a_of_type_JavaUtilMap.get(String.valueOf(localFansEntity.uin));
+        if ((localRecentBaseData != null) && ((localRecentBaseData instanceof RecentSayHelloListItem))) {
+          ((RecentSayHelloListItem)localRecentBaseData).a(localFansEntity);
+        }
+      }
+      bcst.b(this.a.app, "dc00899", "grp_lbs", "", "c2c_tmp", "exp_hi_list", 0, 0, "", "", "", "");
     }
-    ForwardFileInfo localForwardFileInfo = arzx.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    localForwardFileInfo.b(10009);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("fileinfo", localForwardFileInfo);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      localIntent.putStringArrayListExtra("Aio_SessionId_ImageList", this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null)
+    {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(0);
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(0);
     }
-    localIntent.putExtra("_from_aio_", this.d);
-    return localIntent;
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    if (QLog.isDevelopLevel()) {
+      if (paramList != null) {
+        break label187;
+      }
+    }
+    for (;;)
+    {
+      QLog.d("Q.msg_box", 4, "get tags, size is " + i);
+      return;
+      label187:
+      i = paramList.size();
+    }
   }
 }
 

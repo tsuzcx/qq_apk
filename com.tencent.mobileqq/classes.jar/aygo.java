@@ -1,53 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.view.OrientationEventListener;
 
-public class aygo
-  extends Handler
+class aygo
+  extends OrientationEventListener
 {
-  public aygo(ScribbleResMgr paramScribbleResMgr, Looper paramLooper)
+  aygo(aygn paramaygn, Context paramContext)
   {
-    super(paramLooper);
+    super(paramContext);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onOrientationChanged(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScribbleResMgr", 2, "handleMessage  status: " + paramMessage.what + " type: " + paramMessage.arg1);
+    if (paramInt == -1) {
+      this.a.b = 0;
     }
-    if (paramMessage.what == 1001) {
-      ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, true);
-    }
-    for (;;)
+    do
     {
       return;
-      if (paramMessage.what == 1002)
-      {
-        ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, false);
-        return;
-      }
-      Iterator localIterator = ScribbleResMgr.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (aygs)localIterator.next();
-        if (localObject != null)
-        {
-          View localView = ((aygs)localObject).a();
-          localObject = ((aygs)localObject).a();
-          if ((localView != null) && (localObject != null)) {
-            ((aygt)localObject).a(localView, paramMessage.arg1, (ScribbleResMgr.ResInfo)paramMessage.obj, paramMessage.what);
-          } else {
-            localIterator.remove();
-          }
-        }
-      }
-    }
+      this.a.b = ((paramInt + 45) / 90 * 90);
+    } while (this.a.b >= 0);
+    this.a.b = 0;
   }
 }
 

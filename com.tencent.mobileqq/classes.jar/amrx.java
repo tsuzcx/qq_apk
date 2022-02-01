@@ -1,14 +1,85 @@
-public abstract class amrx
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+public class amrx
+  implements INetInfoHandler
 {
-  public abstract int a();
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
   
-  public abstract void a(Object paramObject);
+  public amrx(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract void a(boolean paramBoolean, Object paramObject);
+  private void a(int paramInt)
+  {
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameNetInfoHandler", 2, "[notifyEngineNetChange], type:" + paramInt);
+      }
+      try
+      {
+        ApolloCmdChannel localApolloCmdChannel = ampj.a();
+        if (localApolloCmdChannel != null)
+        {
+          Object localObject = ampj.a(this.jdField_a_of_type_Int);
+          if (localObject != null)
+          {
+            localObject = ((amrk)localObject).a();
+            if (localObject != null)
+            {
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.put("type", paramInt);
+              localApolloCmdChannel.callbackFromRequest(((ApolloSurfaceView)localObject).getLuaState(), 0, "sc.network_change.local", localJSONObject.toString());
+              return;
+            }
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("cmgame_process.CmGameNetInfoHandler", 1, "errInfo->" + localException.getMessage());
+      }
+    }
+  }
   
-  public abstract void b(Object paramObject);
+  public void onNetMobile2None()
+  {
+    a(4);
+  }
   
-  public abstract void b(boolean paramBoolean, Object paramObject);
+  public void onNetMobile2Wifi(String paramString)
+  {
+    a(3);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    a(1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    a(2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    a(6);
+  }
+  
+  public void onNetWifi2None()
+  {
+    a(5);
+  }
 }
 
 

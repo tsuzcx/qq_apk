@@ -1,19 +1,33 @@
+import android.telephony.PhoneStateListener;
+import com.tencent.qphone.base.util.QLog;
+
 public class sgd
+  extends PhoneStateListener
 {
-  public final String a;
-  public final sge a;
-  public final String b;
+  sgd(sgc paramsgc) {}
   
-  public sgd(String paramString1, String paramString2)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Sge = new sge(paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.c(true);
+      return;
+    case 2: 
+      this.a.c(true);
+      return;
+    }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sgd
  * JD-Core Version:    0.7.0.1
  */

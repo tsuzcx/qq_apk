@@ -1,26 +1,21 @@
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
-import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback.Stub;
-import com.tencent.qqmini.sdk.log.QMLog;
-
-final class bgyf
-  extends MiniCmdCallback.Stub
+public class bgyf
 {
-  bgyf(MiniCmdCallback paramMiniCmdCallback, boolean paramBoolean) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public int c;
   
-  public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
+  public bgyf(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherIpcMiniCmdCallback != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherIpcMiniCmdCallback.onCmdResult(paramBoolean, paramBundle);
-    }
-    if ((this.jdField_a_of_type_Boolean) || (paramBoolean)) {
-      QMLog.d("ApkgMainProcessManager", "onCmdResult() called with: succ = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
-    }
+    this.b = paramInt1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Int = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgyf
  * JD-Core Version:    0.7.0.1
  */

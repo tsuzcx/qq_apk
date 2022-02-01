@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 public class ThemeDiyBgAdapter
@@ -53,35 +54,39 @@ public class ThemeDiyBgAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null) {
-      paramView = this.mInflater.inflate(2131561868, paramViewGroup, false);
+      paramView = this.mInflater.inflate(2131562100, paramViewGroup, false);
     }
     for (;;)
     {
       ItemView localItemView = (ItemView)paramView;
-      paramViewGroup = getItem(paramInt);
-      if (localItemView == null)
-      {
+      Object localObject = getItem(paramInt);
+      if (localItemView == null) {
         QLog.e(TAG, 1, "getVie error itemView null");
-        return paramView;
       }
-      if (paramViewGroup == null)
+      for (;;)
       {
-        QLog.e(TAG, 1, "getVie error obj null");
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
         return paramView;
-      }
-      if ((paramViewGroup instanceof ResSuitData.BgSuit))
-      {
-        ResSuitData localResSuitData1 = (ResSuitData)paramViewGroup;
-        ResSuitData localResSuitData2 = this.themeDIYData.tryOnBgRSD;
-        if (this.isDIYThemeBefore) {}
-        for (paramViewGroup = this.themeDIYData.usedBgRSD;; paramViewGroup = null)
+        if (localObject == null)
         {
-          localItemView.init(localResSuitData1, localResSuitData2, paramViewGroup, false);
-          return paramView;
+          QLog.e(TAG, 1, "getVie error obj null");
+        }
+        else
+        {
+          if ((localObject instanceof ResSuitData.BgSuit))
+          {
+            ResSuitData localResSuitData1 = (ResSuitData)localObject;
+            ResSuitData localResSuitData2 = this.themeDIYData.tryOnBgRSD;
+            if (this.isDIYThemeBefore) {}
+            for (localObject = this.themeDIYData.usedBgRSD;; localObject = null)
+            {
+              localItemView.init(localResSuitData1, localResSuitData2, (ResSuitData)localObject, false);
+              break;
+            }
+          }
+          localItemView.init((ResSuitData)localObject, this.tryOnStyleRSD, this.usedStyleRSD, false);
         }
       }
-      localItemView.init((ResSuitData)paramViewGroup, this.tryOnStyleRSD, this.usedStyleRSD, false);
-      return paramView;
     }
   }
   
@@ -92,7 +97,7 @@ public class ThemeDiyBgAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDiyBgAdapter
  * JD-Core Version:    0.7.0.1
  */

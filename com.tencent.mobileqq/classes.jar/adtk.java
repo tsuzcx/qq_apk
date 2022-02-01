@@ -1,19 +1,4 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-
-public class adtk
-  implements BusinessObserver
-{
-  protected void a() {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramInt == 10000) {
-      a();
-    }
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adtk

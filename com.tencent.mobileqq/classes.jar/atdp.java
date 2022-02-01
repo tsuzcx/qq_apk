@@ -1,32 +1,8 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.NowLive;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-
-class atdp
-  implements atff
+public abstract interface atdp
 {
-  atdp(atdh paramatdh) {}
+  public abstract int a(long paramLong1, long paramLong2);
   
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 101);
-    NowLive.sendServerPushMessage(atdh.a(this.a, localBundle, paramNewTogetherRoomMessageData));
-  }
-  
-  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 102);
-    NowLive.sendServerPushMessage(atdh.a(this.a, localBundle, paramNewTogetherRoomMessageData));
-  }
-  
-  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 103);
-    NowLive.sendServerPushMessage(atdh.a(this.a, localBundle, paramNewTogetherRoomMessageData));
-  }
+  public abstract void a();
 }
 
 

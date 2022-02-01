@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import bnpo;
-import vmk;
+import bqgf;
+import xfw;
 
 public class FollowCaptureLauncher$1
   implements Runnable
@@ -10,12 +10,12 @@ public class FollowCaptureLauncher$1
   
   public void run()
   {
-    bnpo.a(this.a, new vmk(this));
+    bqgf.a(this.a, new xfw(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher.1
  * JD-Core Version:    0.7.0.1
  */

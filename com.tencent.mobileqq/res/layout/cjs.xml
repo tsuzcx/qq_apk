@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/neq" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/yu" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.app.qqdaily.WrappedArkView android:id="@id/y_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/yf" android:background="@drawable/dl2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginTop="7.0dip" android:layout_below="@id/y_">
-            <ImageView android:id="@id/ye" android:visibility="gone" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="5.0dip" android:scaleType="centerCrop" />
-            <TextView android:textSize="@dimen/ayk" android:textColor="@color/gg" android:gravity="center_vertical" android:id="@id/yg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-    <com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout android:id="@id/eet" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="170.0dip">
-        <LinearLayout android:orientation="vertical" android:id="@id/loading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <ProgressBar android:layout_gravity="center" android:id="@id/g1f" android:layout_width="16.0dip" android:layout_height="16.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/jt" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
-            <TextView android:textSize="15.0sp" android:textColor="@color/bh" android:id="@id/efo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/s3" />
-        </LinearLayout>
-    </com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout>
-    <View android:id="@id/yc" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_below="@id/eet" />
-</merge>
+    <ProgressBar android:layout_gravity="center_vertical" android:id="@id/g1f" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray3" android:id="@id/txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/fbu" />
+</LinearLayout>

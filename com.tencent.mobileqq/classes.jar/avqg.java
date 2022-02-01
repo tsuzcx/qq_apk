@@ -1,26 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
-class avqg
-  implements DialogInterface.OnClickListener
+public class avqg
+  extends bhhe
 {
-  avqg(avqc paramavqc, avsg paramavsg, avqj paramavqj) {}
+  public avqg(UiApiPlugin paramUiApiPlugin, String paramString, JSONObject paramJSONObject) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDone(bhhf parambhhf)
   {
-    if (!bdin.g(this.jdField_a_of_type_Avqc.jdField_a_of_type_AndroidContentContext))
-    {
-      QQToast.a(this.jdField_a_of_type_Avqc.jdField_a_of_type_AndroidContentContext, 1, alud.a(2131701410), 0).a();
+    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
+    if ((localActivity == null) || (localActivity.isFinishing())) {
       return;
     }
-    ((avrb)this.jdField_a_of_type_Avqc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.jdField_a_of_type_Avsg.c, this.jdField_a_of_type_Avsg.a, this.jdField_a_of_type_Avsg.d, new avqh(this));
+    if (parambhhf.a == 0)
+    {
+      parambhhf = bdsh.d(this.jdField_a_of_type_JavaLangString);
+      if (new File(parambhhf).exists())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, parambhhf, 0);
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, null, -2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avqg
  * JD-Core Version:    0.7.0.1
  */

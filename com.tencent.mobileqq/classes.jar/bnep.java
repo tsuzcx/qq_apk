@@ -1,33 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bnep
-  extends RecyclerView.ViewHolder
+class bnep
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public RoundCornerImageView a;
-  public boolean a;
-  public RelativeLayout b;
-  public TextView b;
+  private bnep(bndy parambndy) {}
   
-  public bnep(View paramView)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376838));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131376834));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363120));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376835));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376837));
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376836));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    if ((bndy.b(this.a) != AECaptureMode.GIF) && (System.currentTimeMillis() - bndy.a(this.a) > 5000L))
+    {
+      bndy.a(this.a).a(196614, new Object[0]);
+      bndy.a(this.a, System.currentTimeMillis());
+      this.a.d(0);
+    }
   }
 }
 

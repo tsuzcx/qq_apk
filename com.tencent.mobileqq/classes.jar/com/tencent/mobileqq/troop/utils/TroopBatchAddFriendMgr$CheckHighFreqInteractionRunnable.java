@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import amdu;
-import amqt;
+import anwd;
+import bajc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
@@ -53,12 +53,13 @@ public class TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable
       int i = ((TroopChatPie)localObject).a.jdField_a_of_type_Int;
       l1 = ((TroopManager)localQQAppInterface.getManager(52)).a().i * 60;
       long l2 = NetConnInfoCenter.getServerTime();
-      localObject = TroopBatchAddFriendMgr.a(localQQAppInterface.a().a(str, i, ((TroopChatPie)localObject).h, 250, String.format("time>=%d", new Object[] { Long.valueOf(l2 - l1) })), localQQAppInterface);
+      localObject = localQQAppInterface.a().a(str, i, ((TroopChatPie)localObject).f, 250, String.format("time>=%d and (extLong & 2)=%d", new Object[] { Long.valueOf(l2 - l1), Integer.valueOf(0) }));
+      ArrayList localArrayList = TroopBatchAddFriendMgr.a((List)localObject, localQQAppInterface);
       if (QLog.isColorLevel()) {
-        QLog.d("CheckHighFreqInteractionRunnable", 2, "checkHighFreqInteractionUinTask uins = " + Arrays.toString(((ArrayList)localObject).toArray()));
+        QLog.d("CheckHighFreqInteractionRunnable", 2, String.format("checkHighFreqInteractionUinTask msgSize=%d uins = ", new Object[] { Integer.valueOf(((List)localObject).size()), Arrays.toString(localArrayList.toArray()) }));
       }
-      if ((((ArrayList)localObject).size() > 0) && (!this.jdField_a_of_type_Boolean)) {
-        ((amdu)localQQAppInterface.a(20)).a().a(str, (List)localObject, 3);
+      if ((localArrayList.size() > 0) && (!this.jdField_a_of_type_Boolean)) {
+        ((anwd)localQQAppInterface.a(20)).a().a(str, localArrayList, 3);
       }
     } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) || (this.b.get() == null));
     ThreadManager.getSubThreadHandler().postDelayed(this, 1000L * l1);
@@ -66,7 +67,7 @@ public class TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr.CheckHighFreqInteractionRunnable
  * JD-Core Version:    0.7.0.1
  */

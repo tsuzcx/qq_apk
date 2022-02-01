@@ -1,19 +1,18 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acyp
-  implements View.OnClickListener
+  extends aczg
 {
-  public acyp(ForwardTroopListFragment paramForwardTroopListFragment) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (!this.a.getActivity().isFinishing()) {
-      ForwardTroopListFragment.a(this.a).dismiss();
-    }
+    return -1000;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (18 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

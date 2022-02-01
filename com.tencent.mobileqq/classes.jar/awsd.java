@@ -1,37 +1,43 @@
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.4;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.widget.ListView;
 
 public class awsd
-  extends bead
+  extends awte
 {
-  public awsd(VipProfileCardPreviewActivity.4 param4) {}
+  public awsd(MultiAIOItemFragment paramMultiAIOItemFragment, bkhe parambkhe, ListView paramListView) {}
   
-  public void onDone(beae parambeae)
+  public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style end download, url : %s, resultCode : %d ", new Object[] { parambeae.jdField_a_of_type_JavaLangString, Integer.valueOf(parambeae.jdField_a_of_type_Int) }));
+    super.b(paramInt);
+    boolean bool;
+    switch (paramInt)
+    {
+    default: 
+      bool = false;
+      paramInt = 0;
     }
-  }
-  
-  public void onProgress(beae parambeae)
-  {
-    int i = (int)parambeae.jdField_a_of_type_Float;
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style progress, url : %s, progress : %d", new Object[] { parambeae.jdField_a_of_type_JavaLangString, Integer.valueOf(i) }));
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkhe.onScrollStateChanged(this.jdField_a_of_type_ComTencentWidgetListView, paramInt);
+      if ((this.jdField_a_of_type_ComTencentWidgetListView instanceof ChatXListView))
+      {
+        ChatXListView localChatXListView = (ChatXListView)this.jdField_a_of_type_ComTencentWidgetListView;
+        int[] arrayOfInt = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+        localChatXListView.setDisableLayout(bool, arrayOfInt[0], arrayOfInt[1]);
+      }
+      return;
+      bool = false;
+      paramInt = 1;
+      continue;
+      paramInt = 2;
+      bool = true;
     }
-  }
-  
-  public boolean onStart(beae parambeae)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style start download, url : %s, position : %s ", new Object[] { parambeae.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int) }));
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awsd
  * JD-Core Version:    0.7.0.1
  */

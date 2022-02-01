@@ -1,58 +1,58 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForTroopFee;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class arid
+  extends DefaultHandler
 {
-  public static int a(int paramInt)
+  MessageForTroopFee a;
+  public String a;
+  
+  public arid()
   {
-    int j = 9;
-    int i = j;
-    switch (paramInt)
-    {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFileBrowserUtils", 1, "getVideoQRReportFromType: reportFromType[" + i + "]");
-      }
-      return i;
-      i = 8;
-      continue;
-      i = 7;
-      continue;
-      i = 6;
-      continue;
-      i = 5;
-      continue;
-      i = 4;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee = new MessageForTroopFee();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public static void a(long paramLong)
+  public MessageForTroopFee a()
   {
-    int i;
-    if (paramLong < 51200L) {
-      i = 1;
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_JavaLangString.equals("title")) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.title = paramArrayOfChar;
     }
-    for (;;)
-    {
-      azqs.b(null, "dc00898", "", "", "0X800ADC0", "0X800ADC0", i, 0, "", "", "", "");
+    while (!this.jdField_a_of_type_JavaLangString.equals("summary")) {
       return;
-      if (paramLong < 102400L) {
-        i = 2;
-      } else if (paramLong < 512000L) {
-        i = 3;
-      } else if (paramLong < 1024000L) {
-        i = 4;
-      } else if (paramLong < 3072000L) {
-        i = 5;
-      } else if (paramLong < 10240000L) {
-        i = 6;
-      } else {
-        i = 7;
-      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.summary = paramArrayOfChar;
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    if (paramString3.equals("msg"))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.actionUrl = paramAttributes.getValue("url");
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.brief = paramAttributes.getValue("brief");
+    }
+    do
+    {
+      return;
+      if (paramString3.equals("title"))
+      {
+        this.jdField_a_of_type_JavaLangString = "title";
+        return;
+      }
+      if (paramString3.equals("summary"))
+      {
+        this.jdField_a_of_type_JavaLangString = "summary";
+        return;
+      }
+    } while (!paramString3.equals("source"));
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.source = paramAttributes.getValue("name");
   }
 }
 

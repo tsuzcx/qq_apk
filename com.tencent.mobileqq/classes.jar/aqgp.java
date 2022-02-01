@@ -1,11 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.State;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public abstract interface aqgp<V extends View>
+class aqgp
+  implements EIPCResultCallback
 {
-  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase, PullToRefreshBase.State paramState, PullToRefreshBase.Mode paramMode);
+  aqgp(aqgo paramaqgo) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    QLog.d("DanmuDataIPCClient", 1, new Object[] { "get barrage list, IPC success, msgSeq:", Long.valueOf(paramEIPCResult.data.getLong("key_barrage_msg_seq")) });
+  }
 }
 
 

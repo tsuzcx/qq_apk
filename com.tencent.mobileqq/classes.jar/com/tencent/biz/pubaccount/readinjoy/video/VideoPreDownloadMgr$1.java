@@ -7,7 +7,7 @@ class VideoPreDownloadMgr$1
   
   public void run()
   {
-    this.this$0.e();
+    this.this$0.d();
     VideoPreDownloadMgr.a(this.this$0);
     VideoPreDownloadMgr.a(this.this$0, null);
     VideoPreDownloadMgr.a(this.this$0, null);

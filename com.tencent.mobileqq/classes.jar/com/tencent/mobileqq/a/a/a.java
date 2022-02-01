@@ -5,9 +5,10 @@ import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.g;
 import com.tencent.mobileqq.msf.core.a.g.a;
-import com.tencent.mobileqq.msf.core.ag;
-import com.tencent.mobileqq.msf.core.am;
-import com.tencent.mobileqq.msf.core.am.f;
+import com.tencent.mobileqq.msf.core.aj;
+import com.tencent.mobileqq.msf.core.ap;
+import com.tencent.mobileqq.msf.core.ap.f;
+import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.net.x;
 import com.tencent.mobileqq.msf.core.quicksend.f;
 import com.tencent.mobileqq.msf.service.MsfService;
@@ -19,7 +20,7 @@ import java.util.HashMap;
 
 public class a
   extends c
-  implements am.f
+  implements ap.f
 {
   public static final boolean a = ;
   public static boolean b = false;
@@ -32,10 +33,10 @@ public class a
   {
     if (a)
     {
-      if (am.a().b() != null)
+      if (ap.a().b() != null)
       {
-        am.a().a(this);
-        QLog.i("ConnQualityStat", 1, am.a().b().toString());
+        ap.a().a(this);
+        QLog.i("ConnQualityStat", 1, ap.a().b().toString());
       }
       return;
     }
@@ -49,7 +50,7 @@ public class a
   
   public static boolean b()
   {
-    return (a) && (am.a().c());
+    return (a) && (ap.a().c());
   }
   
   public void a(int paramInt) {}
@@ -59,7 +60,7 @@ public class a
     if (a) {}
     try
     {
-      am.a().a(paramInt, paramLong, paramx);
+      ap.a().a(paramInt, paramLong, paramx);
       a.c.a().a(false);
       return;
     }
@@ -77,7 +78,7 @@ public class a
     if (a) {}
     try
     {
-      am.a().a(paramLong1, paramLong2);
+      ap.a().a(paramLong1, paramLong2);
       return;
     }
     catch (Exception localException)
@@ -91,7 +92,7 @@ public class a
     if (a) {}
     try
     {
-      am.a().a(parama);
+      ap.a().a(parama);
       a.c.a().a(false);
       return;
     }
@@ -109,7 +110,7 @@ public class a
     if (a) {}
     try
     {
-      am.a().a(paramToServiceMsg);
+      ap.a().a(paramToServiceMsg);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -123,7 +124,7 @@ public class a
     if (a) {}
     try
     {
-      am.a().a(paramToServiceMsg, paramFromServiceMsg);
+      ap.a().a(paramToServiceMsg, paramFromServiceMsg);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -137,7 +138,7 @@ public class a
     if (a) {}
     try
     {
-      am.a().a(paramToServiceMsg, paramFromServiceMsg, paramf);
+      ap.a().a(paramToServiceMsg, paramFromServiceMsg, paramf);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -156,12 +157,19 @@ public class a
       boolean bool = ((Boolean)paramFromServiceMsg.getAttribute("attr_quick_send_by_xg", Boolean.valueOf(false))).booleanValue();
       QLog.d("ConnQualityStat", 2, "onRecvSendChatMsgResp ssoReq=" + paramFromServiceMsg.getRequestSsoSeq() + " weaknet=" + b() + " cross=" + b + " xgSent=" + bool);
     }
+    if (paramToServiceMsg.getAttributes().containsKey("__timestamp_msf2net_boot"))
+    {
+      long l = SystemClock.elapsedRealtime() - ((Long)paramToServiceMsg.getAttribute("__timestamp_msf2net_boot", Long.valueOf(0L))).longValue();
+      if (l > 0L) {
+        MsfCore.sCore.getStatReporter().a(l);
+      }
+    }
     if (a) {
       try
       {
         try
         {
-          am.a().a(paramToServiceMsg, paramFromServiceMsg, paramBoolean, 0);
+          ap.a().a(paramToServiceMsg, paramFromServiceMsg, paramBoolean, 0);
           return;
         }
         finally {}
@@ -182,7 +190,7 @@ public class a
     if (a) {}
     try
     {
-      am.a().a(paramToServiceMsg, paramBoolean);
+      ap.a().a(paramToServiceMsg, paramBoolean);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -197,7 +205,7 @@ public class a
     try
     {
       if (NetConnInfoCenter.isWifiConn()) {
-        am.a().a(paramSocket, paramInt2);
+        ap.a().a(paramSocket, paramInt2);
       }
       for (;;)
       {
@@ -216,7 +224,7 @@ public class a
           MsfService.serviceInitStart = 0L;
         }
         return;
-        am.a().b(paramSocket, paramInt2);
+        ap.a().b(paramSocket, paramInt2);
       }
     }
     catch (Exception paramSocket)
@@ -233,7 +241,7 @@ public class a
     if (a) {}
     try
     {
-      am.a().a(paramBoolean);
+      ap.a().a(paramBoolean);
       if (paramBoolean)
       {
         long l = SystemClock.uptimeMillis();
@@ -266,7 +274,7 @@ public class a
     if (a) {}
     try
     {
-      am.a().b(paramToServiceMsg);
+      ap.a().b(paramToServiceMsg);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -278,7 +286,7 @@ public class a
   public void c()
   {
     if (a) {
-      am.a().d();
+      ap.a().d();
     }
     a.c.a().a(false);
   }
@@ -288,7 +296,7 @@ public class a
     if (a) {}
     try
     {
-      am.a().c(paramToServiceMsg);
+      ap.a().c(paramToServiceMsg);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -302,7 +310,7 @@ public class a
     if (a) {}
     try
     {
-      am.a().e();
+      ap.a().e();
       return;
     }
     catch (Exception localException)

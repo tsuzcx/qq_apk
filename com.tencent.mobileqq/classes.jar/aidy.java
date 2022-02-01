@@ -1,40 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aidy
+class aidy
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  final List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(5);
+  aidy(aidp paramaidp) {}
   
-  public aidy(String paramString)
+  public void onClick(View paramView)
   {
-    try
-    {
-      paramString = aojx.a(paramString, "troop_member_list_config");
-      if (paramString != null)
-      {
-        Object localObject = new JSONObject(paramString);
-        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
-        localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
-        while ((localObject != null) && (i < ((JSONArray)localObject).length()))
-        {
-          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
-          i += 1;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopMemberAddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
-      }
-      return;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8004EFC", "0X8004EFC", 0, 0, "", "", "" + this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId, "");
     }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
+    this.a.x();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

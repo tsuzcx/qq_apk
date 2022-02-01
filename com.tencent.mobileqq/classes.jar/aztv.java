@@ -1,10 +1,11 @@
-public abstract class aztv
+import com.tencent.mobileqq.data.MessageForPtt;
+import java.util.ArrayList;
+
+class aztv
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public abstract String a();
+  public int a;
+  public final ArrayList<MessageForPtt> a = new ArrayList(100);
+  public final int b = 99;
 }
 
 

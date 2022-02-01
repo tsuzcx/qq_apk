@@ -1,47 +1,24 @@
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.net.ssl.SSLSocket;
 
 class bagb
-  extends baga
+  implements Downloader.DownloadListener
 {
-  private bagb(bafy parambafy, SSLSocket paramSSLSocket)
+  bagb(baga parambaga) {}
+  
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    super(parambafy, paramSSLSocket);
+    QLog.i("QzoneGiftManager", 1, " preloadLottieZip fail error");
   }
   
-  public void setEnabledProtocols(String[] paramArrayOfString)
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    String[] arrayOfString = paramArrayOfString;
-    if (paramArrayOfString != null)
-    {
-      arrayOfString = paramArrayOfString;
-      if (paramArrayOfString.length == 1)
-      {
-        arrayOfString = paramArrayOfString;
-        if ("SSLv3".equals(paramArrayOfString[0]))
-        {
-          paramArrayOfString = new ArrayList(Arrays.asList(this.a.getEnabledProtocols()));
-          if (paramArrayOfString.size() <= 1) {
-            break label101;
-          }
-          paramArrayOfString.remove("SSLv3");
-          QLog.i("setEnabledProtocols", 1, "Removed SSLv3 from enabled protocols");
-        }
-      }
-    }
-    for (;;)
-    {
-      arrayOfString = (String[])paramArrayOfString.toArray(new String[paramArrayOfString.size()]);
-      if (arrayOfString != null) {
-        super.setEnabledProtocols(arrayOfString);
-      }
-      return;
-      label101:
-      QLog.i("setEnabledProtocols", 1, "SSL stuck with protocol available for " + String.valueOf(paramArrayOfString));
-    }
+    QLog.i("QzoneGiftManager", 1, " preloadLottieZip success");
   }
 }
 

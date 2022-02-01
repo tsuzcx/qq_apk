@@ -1,45 +1,37 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
+import android.app.Dialog;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.DocExportFilePresenter.3.1;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class armc
-  implements argp
+  extends ReportDialog
+  implements View.OnClickListener
 {
-  armc(arma paramarma) {}
+  private armd a;
   
-  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
-  
-  public void a(boolean paramBoolean)
+  public armc(@NonNull Context paramContext)
   {
-    if (this.a.jdField_a_of_type_Arhx != null) {
-      this.a.jdField_a_of_type_Arhx.a(paramBoolean);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a()) && (paramBoolean)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c();
-    }
-    while ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b() == null) || (paramBoolean)) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.a.jdField_a_of_type_Arki.a());
+    super(paramContext, 2131755989);
+    super.setContentView(2131558758);
+    super.setCanceledOnTouchOutside(false);
+    super.setCancelable(false);
+    super.findViewById(2131364004).setOnClickListener(this);
   }
   
-  public void b(boolean paramBoolean)
+  public void a(armd paramarmd)
   {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Arhx != null)) {
-      this.a.jdField_a_of_type_Arhx.a();
+    this.a = paramarmd;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.a != null) {
+      this.a.a(this);
     }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Arki.d(), this);
-      this.a.jdField_a_of_type_Boolean = false;
-      QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, 2, 2131692493, 1).a();
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new DocExportFilePresenter.3.1(this), 800L);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,43 +1,19 @@
-import NS_USER_ACTION_REPORT.UserActionReport;
-import NS_USER_ACTION_REPORT.UserCommReport;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
+import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
+import java.util.Comparator;
 
-public class azbs
-  extends MSFServlet
+public final class azbs
+  implements Comparator<PortalManager.TimerConfig>
 {
-  public static void a(AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
+  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
   {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), azbs.class);
-    localNewIntent.putExtra("userCommReport", paramUserCommReport);
-    localNewIntent.putExtra("reportInfos", paramArrayList);
-    paramAppRuntime.startServlet(localNewIntent);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MobileReport.Servlet", 2, "servlet result code is " + i);
-      }
-      return;
+    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
+    if (l > 0L) {
+      return 1;
     }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    paramIntent = new bjkn((UserCommReport)paramIntent.getSerializableExtra("userCommReport"), (ArrayList)paramIntent.getSerializableExtra("reportInfos"));
-    paramPacket.setTimeout(10000L);
-    paramPacket.setSSOCommand(paramIntent.getCmdString());
-    paramPacket.putSendData(paramIntent.encode());
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 

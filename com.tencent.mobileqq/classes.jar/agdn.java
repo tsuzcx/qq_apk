@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.RotateableView;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class agdn
-  extends agdh
+class agdn
+  implements bdet
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  RotateableView jdField_a_of_type_ComTencentMobileqqWidgetRotateableView;
-  boolean jdField_a_of_type_Boolean = false;
-  public long b;
-  String b;
-  long jdField_c_of_type_Long;
-  View jdField_c_of_type_AndroidViewView;
-  String jdField_c_of_type_JavaLangString;
-  int e;
-  int f;
-  int g;
+  agdn(agdj paramagdj) {}
   
-  public agdn(agdj paramagdj) {}
+  public void a()
+  {
+    bdez localbdez = new bdez(3000, 360, 0);
+    localbdez.a = true;
+    this.a.a.g.a(new bdes[] { localbdez });
+  }
 }
 
 

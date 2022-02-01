@@ -1,25 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
 
 public class asop
-  extends Handler
+  extends AnimatorListenerAdapter
 {
-  public asop(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  public asop(MatchingView paramMatchingView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      this.a.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2, (String)paramMessage.obj);
-      return;
+    if (MatchingView.a(this.a)) {
+      MatchingView.a(this.a).start();
     }
-    QQGameFeedWebFragment.a(this.a).setVisibility(8);
   }
 }
 

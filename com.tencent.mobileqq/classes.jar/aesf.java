@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aesf
-  implements Parcelable.Creator<ForwardUtils.Section_Text>
+public class aesf
+  implements View.OnClickListener
 {
-  public ForwardUtils.Section_Text a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Text(paramParcel);
-  }
+  public aesf(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public ForwardUtils.Section_Text[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ForwardUtils.Section_Text[paramInt];
+    Intent localIntent = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
+    this.a.startActivity(localIntent);
+    bcst.b(this.a.app, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

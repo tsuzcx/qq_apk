@@ -1,83 +1,96 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.11.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.app.Application;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.ProtocolDownloader.Adapter;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class bdxq
-  implements View.OnClickListener
+  extends ProtocolDownloader.Adapter
 {
-  public bdxq(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString, bdyb parambdyb) {}
+  public bdxq(Application paramApplication) {}
   
-  public void onClick(View paramView)
+  public static URL a(String paramString, int paramInt1, int paramInt2)
   {
-    Object localObject2 = (FrameLayout)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.e.get(this.jdField_a_of_type_JavaLangString);
-    paramView = (SeekBar)((FrameLayout)localObject2).findViewById(2131376325);
-    Object localObject1 = (TextView)((FrameLayout)localObject2).findViewById(2131373613);
-    TextView localTextView1 = (TextView)((FrameLayout)localObject2).findViewById(2131373612);
-    ImageView localImageView1 = (ImageView)((FrameLayout)localObject2).findViewById(2131373611);
-    ImageView localImageView2 = (ImageView)((FrameLayout)localObject2).findViewById(2131373610);
-    TextView localTextView2 = (TextView)((FrameLayout)localObject2).findViewById(2131373609);
-    localObject2 = new HealthBusinessPlugin.11.1(this, paramView, (TextView)localObject1, localTextView1, localImageView1, localImageView2, localTextView2);
-    int i;
-    if (!this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.f) {
-      if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).isPlaying())
+    return a(paramString, paramInt1, paramInt2, true);
+  }
+  
+  public static URL a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo.path = paramString;
+    paramString = new File(paramString);
+    if (paramString.exists()) {
+      localLocalMediaInfo.modifiedDate = paramString.lastModified();
+    }
+    localLocalMediaInfo.thumbWidth = paramInt1;
+    localLocalMediaInfo.thumbHeight = paramInt2;
+    localLocalMediaInfo.isRegionThumbUseNewDecoder = paramBoolean;
+    try
+    {
+      paramString = new URL("regionalthumb", null, LocalMediaInfo.getUrl(localLocalMediaInfo));
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
+      for (;;)
       {
-        i = 2130848136;
-        localImageView1.setImageResource(i);
-        localImageView1.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.f = true;
-        paramView.setVisibility(0);
-        ((TextView)localObject1).setVisibility(0);
-        localTextView1.setVisibility(0);
-        localImageView2.setVisibility(4);
-        localTextView2.setVisibility(4);
-        if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).isPlaying())
-        {
-          this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.postDelayed((Runnable)localObject2, 3000L);
-        }
+        paramString = null;
       }
     }
-    do
-    {
-      return;
-      i = 2130848685;
-      break;
-      if (!((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).isPlaying()) {
-        break label348;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramFile = null;
+    paramURLDrawableHandler = LocalMediaInfo.parseUrl(paramDownloadParams.url);
+    if (paramURLDrawableHandler != null) {
+      if (!paramURLDrawableHandler.isRegionThumbUseNewDecoder) {
+        break label58;
       }
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).pause();
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_Boolean = true;
-      localImageView1.setImageResource(2130848685);
-      localImageView1.setVisibility(0);
-    } while (!QLog.isColorLevel());
-    QLog.d("HealthBusinessPlugin", 2, "play onclick in video ");
-    return;
-    label348:
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_Boolean = false;
-    paramView = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_c_of_type_AndroidOsHandler.postDelayed((Runnable)localObject2, 3000L);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
-    while (paramView.hasNext())
-    {
-      localObject1 = (String)paramView.next();
-      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject1)).pause();
     }
-    ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).start();
-    this.jdField_a_of_type_Bdyb.a.setImageResource(2130848136);
-    this.jdField_a_of_type_Bdyb.a.setVisibility(0);
+    label58:
+    for (paramFile = new akex();; paramFile = new akfs())
+    {
+      paramFile = paramFile.getBitmap(paramDownloadParams.url);
+      paramDownloadParams.outWidth = paramFile.getWidth();
+      paramDownloadParams.outHeight = paramFile.getHeight();
+      return paramFile;
+    }
+  }
+  
+  public boolean hasDiskFile(DownloadParams paramDownloadParams)
+  {
+    boolean bool2 = false;
+    paramDownloadParams = LocalMediaInfo.parseUrl(paramDownloadParams.url);
+    boolean bool1 = bool2;
+    if (paramDownloadParams != null)
+    {
+      bool1 = bool2;
+      if (new File(paramDownloadParams.path).exists()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramDownloadParams = LocalMediaInfo.parseUrl(paramDownloadParams.url);
+    if (paramDownloadParams != null)
+    {
+      paramDownloadParams = new File(paramDownloadParams.path);
+      if (paramDownloadParams.exists()) {
+        return paramDownloadParams;
+      }
+    }
+    return null;
   }
 }
 

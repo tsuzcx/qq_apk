@@ -1,18 +1,16 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bmpi
-  implements vyn
+class bmpi
+  implements View.OnTouchListener
 {
-  public bmpi(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  bmpi(bmph parambmph) {}
   
-  public void a_(vyi paramvyi)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    wxe.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
+    this.a.a();
+    return false;
   }
 }
 

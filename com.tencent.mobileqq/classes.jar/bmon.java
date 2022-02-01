@@ -1,34 +1,19 @@
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+
 public class bmon
 {
-  public int a;
-  public long a;
-  public boolean a;
-  
-  public boolean equals(Object paramObject)
+  public static void a(bhod parambhod, String... paramVarArgs)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (bmon)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
-  }
-  
-  public String toString()
-  {
-    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
+    paramVarArgs = new Intent("action_js2qzone");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("cmd", "CleanZebraNum");
+    paramVarArgs.putExtras(localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneZebraAlbumJsHandleLogicQZonePersonalizePlugin", 2, "actionString: " + paramVarArgs.getAction());
+    }
+    blsb.a(parambhod.a(), blsi.a(), paramVarArgs);
   }
 }
 

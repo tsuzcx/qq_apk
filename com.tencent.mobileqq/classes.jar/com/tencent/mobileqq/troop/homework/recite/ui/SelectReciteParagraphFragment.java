@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,13 +8,14 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
-import bcdb;
-import bcdc;
-import bcdd;
-import bcde;
-import bcdo;
-import bckx;
-import bcky;
+import anni;
+import bfdp;
+import bfdq;
+import bfdr;
+import bfds;
+import bfec;
+import bfpo;
+import bfpp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.homework.entry.ui.api.AbsHomeWorkFragment;
 import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
@@ -30,14 +30,14 @@ import org.json.JSONObject;
 
 public class SelectReciteParagraphFragment
   extends AbsHomeWorkFragment
-  implements bckx
+  implements bfpo
 {
   protected static final String a;
-  public static final String b = alud.a(2131714162);
+  public static final String b = anni.a(2131712534);
   protected Button a;
-  public bcdd a;
-  protected bcdo a;
-  protected bcky a;
+  public bfdr a;
+  protected bfec a;
+  protected bfpp a;
   public ArticleInfo a;
   protected XListView a;
   public Set<Integer> a;
@@ -47,7 +47,7 @@ public class SelectReciteParagraphFragment
   
   static
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131714161);
+    jdField_a_of_type_JavaLangString = anni.a(2131712533);
   }
   
   public SelectReciteParagraphFragment()
@@ -96,22 +96,22 @@ public class SelectReciteParagraphFragment
       f();
       return;
     }
-    this.jdField_a_of_type_Bcdd = new bcdd(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_JavaUtilSet);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bcdd);
+    this.jdField_a_of_type_Bfdr = new bfdr(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_JavaUtilSet);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bfdr);
     e();
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131371578));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131363679));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131372152));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131363882));
   }
   
   protected void c()
   {
-    setTitle(alud.a(2131714157));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new bcdb(this));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bcdc(this));
+    setTitle(anni.a(2131712529));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new bfdp(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bfdq(this));
     e();
   }
   
@@ -119,7 +119,7 @@ public class SelectReciteParagraphFragment
   {
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface != null) {
-      this.jdField_a_of_type_Bcky = this.jdField_a_of_type_Bcdo.a(localQQAppInterface, this, this.d, null, 10003);
+      this.jdField_a_of_type_Bfpp = this.jdField_a_of_type_Bfec.a(localQQAppInterface, this, this.d, null, 10003);
     }
   }
   
@@ -127,10 +127,10 @@ public class SelectReciteParagraphFragment
   {
     if (this.jdField_a_of_type_JavaUtilSet.isEmpty())
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131714159));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(anni.a(2131712531));
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     }
-    while (this.jdField_a_of_type_Bcdd == null) {
+    while (this.jdField_a_of_type_Bfdr == null) {
       return;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
@@ -139,7 +139,7 @@ public class SelectReciteParagraphFragment
     if (localIterator.hasNext())
     {
       int j = ((Integer)localIterator.next()).intValue();
-      String str = this.jdField_a_of_type_Bcdd.a(j).content_html;
+      String str = this.jdField_a_of_type_Bfdr.a(j).content_html;
       if (str == null) {
         break label199;
       }
@@ -149,24 +149,24 @@ public class SelectReciteParagraphFragment
     for (;;)
     {
       break;
-      if (this.jdField_a_of_type_JavaUtilSet.size() == this.jdField_a_of_type_Bcdd.getCount())
+      if (this.jdField_a_of_type_JavaUtilSet.size() == this.jdField_a_of_type_Bfdr.getCount())
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(alud.a(2131714160), new Object[] { Integer.valueOf(i) }));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(anni.a(2131712532), new Object[] { Integer.valueOf(i) }));
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(jdField_a_of_type_JavaLangString, new Object[] { bcde.a(new ArrayList(this.jdField_a_of_type_JavaUtilSet)), Integer.valueOf(i) }));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(jdField_a_of_type_JavaLangString, new Object[] { bfds.a(new ArrayList(this.jdField_a_of_type_JavaUtilSet)), Integer.valueOf(i) }));
       return;
     }
   }
   
   protected void f()
   {
-    QQToast.a(getActivity(), alud.a(2131714158), 0).a();
+    QQToast.a(getActivity(), anni.a(2131712530), 0).a();
   }
   
   public int getContentLayoutId()
   {
-    return 2131560461;
+    return 2131560616;
   }
   
   public void init(Bundle paramBundle)
@@ -178,21 +178,21 @@ public class SelectReciteParagraphFragment
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
       this.jdField_a_of_type_JavaUtilSet.addAll(paramBundle);
     }
-    this.jdField_a_of_type_Bcdo = new bcdo();
+    this.jdField_a_of_type_Bfec = new bfec();
   }
   
   public void onDestroy()
   {
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Bcky != null) {
-      this.jdField_a_of_type_Bcky.cancel(true);
+    if (this.jdField_a_of_type_Bfpp != null) {
+      this.jdField_a_of_type_Bfpp.cancel(true);
     }
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment
  * JD-Core Version:    0.7.0.1
  */

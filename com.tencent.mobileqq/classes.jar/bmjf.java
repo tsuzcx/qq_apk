@@ -1,21 +1,13 @@
-import java.util.List;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper.LogFile;
+import java.util.Comparator;
 
-public abstract interface bmjf
-  extends bmni
+final class bmjf
+  implements Comparator<ShareAppLogHelper.LogFile>
 {
-  public abstract int a();
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void a(List<Long> paramList);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract boolean h_();
+  public int a(ShareAppLogHelper.LogFile paramLogFile1, ShareAppLogHelper.LogFile paramLogFile2)
+  {
+    return (int)(paramLogFile1.lastModified() - paramLogFile2.lastModified()) / 1000;
+  }
 }
 
 

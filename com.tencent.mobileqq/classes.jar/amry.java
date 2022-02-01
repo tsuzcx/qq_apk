@@ -1,312 +1,486 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.applets.PublicAccountIntent;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.FollowExt;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.FollowReq;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.ReqBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class amry
-  extends MSFServlet
 {
-  private String a = "com.tencent.mobileqq.applets.NewPublicAccountServlet";
+  private int jdField_a_of_type_Int;
+  public SparseArray<WeakReference<amsa>> a;
+  private ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<Long, String> b = new ConcurrentHashMap();
   
-  protected byte[] a(FromServiceMsg paramFromServiceMsg)
+  public amry(int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramFromServiceMsg != null)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static String a(long paramLong, String paramString1, String paramString2)
+  {
+    if (!a(paramString1)) {}
+    for (;;)
     {
-      localObject1 = localObject2;
-      if (paramFromServiceMsg.isSuccess()) {
-        localObject1 = bdpd.b(paramFromServiceMsg.getWupBuffer());
-      }
-    }
-    return localObject1;
-  }
-  
-  /* Error */
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    // Byte code:
-    //   0: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +13 -> 16
-    //   6: aload_0
-    //   7: getfield 14	amry:a	Ljava/lang/String;
-    //   10: iconst_2
-    //   11: ldc 44
-    //   13: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   16: aload_1
-    //   17: ldc 50
-    //   19: invokevirtual 56	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   22: astore 6
-    //   24: aload_0
-    //   25: aload_2
-    //   26: invokevirtual 58	amry:a	(Lcom/tencent/qphone/base/remote/FromServiceMsg;)[B
-    //   29: astore 5
-    //   31: new 60	android/os/Bundle
-    //   34: dup
-    //   35: invokespecial 61	android/os/Bundle:<init>	()V
-    //   38: astore 7
-    //   40: aload 7
-    //   42: ldc 63
-    //   44: aload 5
-    //   46: invokevirtual 67	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-    //   49: aload 7
-    //   51: ldc 69
-    //   53: aload_2
-    //   54: invokevirtual 73	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailCode	()I
-    //   57: invokevirtual 77	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   60: ldc 79
-    //   62: aload 6
-    //   64: invokevirtual 85	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   67: ifeq +171 -> 238
-    //   70: aload_1
-    //   71: checkcast 87	com/tencent/mobileqq/applets/PublicAccountIntent
-    //   74: invokevirtual 90	com/tencent/mobileqq/applets/PublicAccountIntent:a	()Lalpg;
-    //   77: checkcast 92	amrw
-    //   80: astore 6
-    //   82: aload_2
-    //   83: invokevirtual 22	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   86: ifeq +273 -> 359
-    //   89: new 94	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   92: dup
-    //   93: invokespecial 95	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   96: astore_1
-    //   97: aload_1
-    //   98: aload 5
-    //   100: checkcast 97	[B
-    //   103: invokevirtual 101	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   106: checkcast 94	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   109: astore_2
-    //   110: aload_2
-    //   111: astore_1
-    //   112: iconst_m1
-    //   113: istore 4
-    //   115: iload 4
-    //   117: istore_3
-    //   118: aload_1
-    //   119: ifnull +65 -> 184
-    //   122: iload 4
-    //   124: istore_3
-    //   125: aload_1
-    //   126: getfield 105	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   129: invokevirtual 110	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   132: ifeq +52 -> 184
-    //   135: aload_1
-    //   136: getfield 105	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   139: invokevirtual 113	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   142: istore 4
-    //   144: iload 4
-    //   146: istore_3
-    //   147: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   150: ifeq +34 -> 184
-    //   153: aload_0
-    //   154: getfield 14	amry:a	Ljava/lang/String;
-    //   157: iconst_2
-    //   158: new 115	java/lang/StringBuilder
-    //   161: dup
-    //   162: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   165: ldc 118
-    //   167: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: iload 4
-    //   172: invokevirtual 125	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   175: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokestatic 132	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   181: iload 4
-    //   183: istore_3
-    //   184: iload_3
-    //   185: ifne +138 -> 323
-    //   188: aload_1
-    //   189: getfield 136	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   192: invokevirtual 139	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   195: ifeq +128 -> 323
-    //   198: aload_1
-    //   199: getfield 136	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   202: invokevirtual 142	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   205: ifnull +118 -> 323
-    //   208: aload_1
-    //   209: getfield 136	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   212: invokevirtual 142	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   215: invokevirtual 147	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   218: pop
-    //   219: aload_0
-    //   220: invokespecial 151	mqq/app/MSFServlet:getAppRuntime	()Lmqq/app/AppRuntime;
-    //   223: new 153	com/tencent/mobileqq/applets/NewPublicAccountServlet$1
-    //   226: dup
-    //   227: aload_0
-    //   228: aload 6
-    //   230: aload 5
-    //   232: invokespecial 156	com/tencent/mobileqq/applets/NewPublicAccountServlet$1:<init>	(Lamry;Lamrw;[B)V
-    //   235: invokevirtual 162	mqq/app/AppRuntime:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   238: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   241: ifeq +13 -> 254
-    //   244: aload_0
-    //   245: getfield 14	amry:a	Ljava/lang/String;
-    //   248: iconst_2
-    //   249: ldc 164
-    //   251: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   254: return
-    //   255: astore_2
-    //   256: aload_0
-    //   257: getfield 14	amry:a	Ljava/lang/String;
-    //   260: iconst_4
-    //   261: aload_2
-    //   262: invokevirtual 167	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
-    //   265: aload_2
-    //   266: invokestatic 171	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   269: goto -157 -> 112
-    //   272: astore_1
-    //   273: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   276: ifeq -38 -> 238
-    //   279: aload_0
-    //   280: getfield 14	amry:a	Ljava/lang/String;
-    //   283: iconst_2
-    //   284: iconst_2
-    //   285: anewarray 173	java/lang/Object
-    //   288: dup
-    //   289: iconst_0
-    //   290: ldc 175
-    //   292: aastore
-    //   293: dup
-    //   294: iconst_1
-    //   295: aload_1
-    //   296: invokevirtual 176	java/lang/Exception:toString	()Ljava/lang/String;
-    //   299: aastore
-    //   300: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   303: goto -65 -> 238
-    //   306: astore_2
-    //   307: aload_0
-    //   308: getfield 14	amry:a	Ljava/lang/String;
-    //   311: iconst_4
-    //   312: aload_2
-    //   313: invokevirtual 180	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   316: aload_2
-    //   317: invokestatic 171	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   320: goto -208 -> 112
-    //   323: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   326: ifeq +13 -> 339
-    //   329: aload_0
-    //   330: getfield 14	amry:a	Ljava/lang/String;
-    //   333: iconst_2
-    //   334: ldc 182
-    //   336: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   339: aload_0
-    //   340: invokespecial 151	mqq/app/MSFServlet:getAppRuntime	()Lmqq/app/AppRuntime;
-    //   343: new 184	com/tencent/mobileqq/applets/NewPublicAccountServlet$2
-    //   346: dup
-    //   347: aload_0
-    //   348: aload 6
-    //   350: invokespecial 187	com/tencent/mobileqq/applets/NewPublicAccountServlet$2:<init>	(Lamry;Lamrw;)V
-    //   353: invokevirtual 162	mqq/app/AppRuntime:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   356: goto -118 -> 238
-    //   359: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   362: ifeq +33 -> 395
-    //   365: aload_0
-    //   366: getfield 14	amry:a	Ljava/lang/String;
-    //   369: iconst_2
-    //   370: new 115	java/lang/StringBuilder
-    //   373: dup
-    //   374: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   377: ldc 189
-    //   379: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   382: aload_2
-    //   383: invokevirtual 73	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailCode	()I
-    //   386: invokevirtual 125	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   389: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   392: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   395: aload_0
-    //   396: invokespecial 151	mqq/app/MSFServlet:getAppRuntime	()Lmqq/app/AppRuntime;
-    //   399: new 191	com/tencent/mobileqq/applets/NewPublicAccountServlet$3
-    //   402: dup
-    //   403: aload_0
-    //   404: aload 6
-    //   406: invokespecial 192	com/tencent/mobileqq/applets/NewPublicAccountServlet$3:<init>	(Lamry;Lamrw;)V
-    //   409: invokevirtual 162	mqq/app/AppRuntime:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   412: goto -174 -> 238
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	415	0	this	amry
-    //   0	415	1	paramIntent	Intent
-    //   0	415	2	paramFromServiceMsg	FromServiceMsg
-    //   117	68	3	i	int
-    //   113	69	4	j	int
-    //   29	202	5	arrayOfByte	byte[]
-    //   22	383	6	localObject	Object
-    //   38	12	7	localBundle	android.os.Bundle
-    // Exception table:
-    //   from	to	target	type
-    //   97	110	255	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   70	97	272	java/lang/Exception
-    //   125	144	272	java/lang/Exception
-    //   147	181	272	java/lang/Exception
-    //   188	238	272	java/lang/Exception
-    //   256	269	272	java/lang/Exception
-    //   307	320	272	java/lang/Exception
-    //   323	339	272	java/lang/Exception
-    //   339	356	272	java/lang/Exception
-    //   359	395	272	java/lang/Exception
-    //   395	412	272	java/lang/Exception
-    //   97	110	306	java/lang/Exception
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "onSend");
-    }
-    paramIntent.getByteArrayExtra("data");
-    Object localObject1 = paramIntent.getStringExtra("BUNDLE_PUBLIC_ACCOUNT_CMD");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, new Object[] { "cmd=", localObject1 });
-    }
-    if ("newFollow".equals(localObject1)) {
-      paramIntent = (PublicAccountIntent)paramIntent;
-    }
-    while (!QLog.isColorLevel()) {
+      return paramString2;
       try
       {
-        localObject1 = (QQAppInterface)super.getAppRuntime();
-        localObject2 = (amrw)paramIntent.a();
-        ((amrw)localObject2).a((QQAppInterface)localObject1);
-        ((QQAppInterface)localObject1).addObserver((alpg)localObject2);
-        amsb.a((QQAppInterface)localObject1, paramIntent.getBooleanExtra("BUNDLE_PUBLIC_ACCOUNT_IS_FOLLOW", false), paramIntent.getStringExtra("BUNDLE_PUBLIC_ACCOUNT_UIN"), paramIntent.getIntExtra("BUNDLE_PUBLIC_ACCOUNT_SOURCE", 0));
-        paramPacket.setSSOCommand(null);
-        return;
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a, 2, new Object[] { "ClassCastException e", localClassCastException.toString() });
+        if (ampj.a() != null)
+        {
+          paramString1 = new JSONObject(paramString2);
+          String str = paramString1.optString("openId");
+          paramString1.optInt("gameId");
+          amry localamry = ampj.a(paramLong);
+          if (localamry != null)
+          {
+            str = localamry.c(str);
+            if (!TextUtils.isEmpty(str))
+            {
+              paramString1.put("uin", str);
+              return paramString1.toString();
+            }
+            QLog.w("cmgame_process.CmGameOpenIdFinder", 1, "logic error happens.");
+            return paramString2;
+          }
         }
-        oidb_cmd0xc96.ReqBody localReqBody = new oidb_cmd0xc96.ReqBody();
-        localReqBody.puin.set(Long.parseLong(paramIntent.getStringExtra("BUNDLE_PUBLIC_ACCOUNT_UIN")));
-        Object localObject2 = new oidb_cmd0xc96.FollowExt();
-        ((oidb_cmd0xc96.FollowExt)localObject2).source_from.set(paramIntent.getIntExtra("BUNDLE_PUBLIC_ACCOUNT_SOURCE", 0));
-        paramIntent = new oidb_cmd0xc96.FollowReq();
-        paramIntent.ext.set((MessageMicro)localObject2);
-        localReqBody.follow_req.set(paramIntent);
-        localReqBody.cmd_type.set(1);
-        paramIntent = new oidb_sso.OIDBSSOPkg();
-        paramIntent.uint32_command.set(3222);
-        paramIntent.uint32_result.set(0);
-        paramIntent.uint32_service_type.set(0);
-        paramIntent.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-        paramIntent = paramIntent.toByteArray();
-        paramPacket.setSSOCommand("OidbSvc.0xc96");
-        paramPacket.putSendData(bdpd.a(paramIntent));
+      }
+      catch (Throwable paramString1)
+      {
+        QLog.e("cmgame_process.CmGameOpenIdFinder", 1, paramString1, new Object[0]);
       }
     }
-    QLog.d(this.a, 2, "onSend exit");
+    return paramString2;
+  }
+  
+  public static void a(long paramLong, int paramInt, String paramString)
+  {
+    Object localObject;
+    try
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      amry localamry = ampj.a(paramLong);
+      if (localamry == null) {
+        return;
+      }
+      localObject = localamry.c(paramString);
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("type", paramInt);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(paramString);
+        localamry.a(2, localArrayList, null, 3, paramLong, true, ((JSONObject)localObject).toString(), "");
+        return;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmgame_process.CmGameOpenIdFinder", 1, paramString, new Object[0]);
+      return;
+    }
+    a(paramLong, paramInt, (String)localObject, paramString);
+  }
+  
+  public static void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", paramInt);
+    localBundle.putString("uin", paramString1);
+    paramString1 = new amrz(paramString2, paramLong);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", localBundle, paramString1);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return ("cs.join_room.local".equals(paramString)) || ("cs.get_dress_path.local".equals(paramString));
+  }
+  
+  public String a(long paramLong)
+  {
+    if (this.b == null) {
+      return null;
+    }
+    return (String)this.b.get(Long.valueOf(paramLong));
+  }
+  
+  public String a(String paramString)
+  {
+    if (this.b == null) {
+      return "";
+    }
+    Iterator localIterator = this.b.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      String str = ((String)localEntry.getValue()).trim();
+      if ((!TextUtils.isEmpty(paramString)) && (str.equals(paramString))) {
+        return "" + localEntry.getKey();
+      }
+    }
+    return "";
+  }
+  
+  public void a(int paramInt1, ArrayList<String> paramArrayList, ArrayList<Long> paramArrayList1, int paramInt2, long paramLong, boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameOpenIdFinder", 2, new Object[] { "[getOpenIdOrUinInfo], type:", Integer.valueOf(paramInt1), ",from:", Integer.valueOf(paramInt2), ",param:", paramString1 });
+    }
+    amst localamst = ampj.a();
+    if (localamst == null) {
+      QLog.e("cmgame_process.CmGameOpenIdFinder", 1, "sSoHandler is null.");
+    }
+    JSONObject localJSONObject;
+    for (;;)
+    {
+      return;
+      localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("from", "cmGame_" + paramInt2);
+        localJSONObject.put("gameId", this.jdField_a_of_type_Int);
+        localJSONObject.put("opType", paramInt1);
+        if (2 != paramInt1) {
+          break label312;
+        }
+        if ((paramArrayList != null) && (paramArrayList.size() != 0))
+        {
+          paramArrayList1 = new JSONArray();
+          paramArrayList = paramArrayList.iterator();
+          while (paramArrayList.hasNext()) {
+            paramArrayList1.put((String)paramArrayList.next());
+          }
+          localamst.a("apollo_aio_game.get_user_uin_or_openid", localJSONObject.toString(), -1L, paramInt2, false, null);
+        }
+      }
+      catch (Exception paramArrayList)
+      {
+        paramArrayList.printStackTrace();
+        QLog.w("cmgame_process.CmGameOpenIdFinder", 1, "[getOpenIdOrUinInfo], errInfo->" + paramArrayList.getMessage());
+      }
+    }
+    label218:
+    return;
+    localJSONObject.put("openIdList", paramArrayList1);
+    for (;;)
+    {
+      localJSONObject.put("async", paramBoolean);
+      localJSONObject.put("jsState", paramLong);
+      if (!TextUtils.isEmpty(paramString1)) {
+        localJSONObject.put("extraParam", paramString1);
+      }
+      if (TextUtils.isEmpty(paramString2)) {
+        break label218;
+      }
+      localJSONObject.put("bidCmd", paramString2);
+      break label218;
+      label312:
+      if (1 == paramInt1)
+      {
+        if ((paramArrayList1 == null) || (paramArrayList1.size() == 0)) {
+          break;
+        }
+        paramArrayList = new JSONArray();
+        paramArrayList1 = paramArrayList1.iterator();
+        while (paramArrayList1.hasNext()) {
+          paramArrayList.put((Long)paramArrayList1.next());
+        }
+        localJSONObject.put("uinList", paramArrayList);
+      }
+    }
+  }
+  
+  public void a(int paramInt1, ArrayList<String> paramArrayList, ArrayList<Long> paramArrayList1, int paramInt2, long paramLong, boolean paramBoolean, String paramString1, String paramString2, amsa paramamsa)
+  {
+    a(paramInt1, paramArrayList, paramArrayList1, paramInt2, paramLong, paramBoolean, paramString1, paramString2);
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    }
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt2, new WeakReference(paramamsa));
+  }
+  
+  public void a(String arg1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(???)) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)) {
+      return;
+    }
+    String str = ??? + "_" + this.jdField_a_of_type_Int;
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramString2);
+      return;
+    }
+  }
+  
+  public void a(ArrayList<Long> paramArrayList, ArrayList<String> paramArrayList1, int paramInt, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameOpenIdFinder", 2, new Object[] { "[onIdentifierResp], tinyids=" + paramArrayList.toString() + ",identifiers:", paramArrayList1.toString() });
+    }
+    if ((paramArrayList == null) || (paramArrayList1 == null) || (paramArrayList.size() <= 0) || (paramArrayList1.size() <= 0) || (this.b == null)) {
+      return;
+    }
+    if (paramArrayList.size() != paramArrayList1.size()) {
+      QLog.e("cmgame_process.CmGameOpenIdFinder", 2, "onIdentifierResp size is error");
+    }
+    JSONArray localJSONArray = new JSONArray();
+    JSONObject localJSONObject1 = new JSONObject();
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramArrayList.size())
+      {
+        this.b.put(paramArrayList.get(i), paramArrayList1.get(i));
+        try
+        {
+          JSONObject localJSONObject2 = new JSONObject();
+          localJSONObject2.put("identifier", paramArrayList1.get(i));
+          localJSONArray.put(localJSONObject2);
+          i += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.e("cmgame_process.CmGameOpenIdFinder", 2, "tinyId json error" + localException.toString());
+          }
+        }
+      }
+    }
+    try
+    {
+      localJSONObject1.put("eventId", paramInt);
+      localJSONObject1.put("userInfo", localJSONArray);
+      label252:
+      ampj.a().callbackFromRequest(paramLong, 0, "cs.audioRoom_update_userinfo.local", localJSONObject1.toString());
+      return;
+    }
+    catch (Exception paramArrayList)
+    {
+      break label252;
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameOpenIdFinder", 2, new Object[] { "[onOpenIdResp], callFrom:", Integer.valueOf(paramInt), ",reqData:", paramString });
+    }
+    if (paramJSONObject == null) {}
+    for (;;)
+    {
+      return;
+      int i;
+      Object localObject2;
+      Object localObject1;
+      Object localObject3;
+      long l;
+      try
+      {
+        paramJSONObject = paramJSONObject.getJSONObject("data").getJSONArray("list");
+        int j = paramJSONObject.length();
+        i = 0;
+        if (i < j)
+        {
+          localObject2 = paramJSONObject.getJSONObject(i);
+          if ((!((JSONObject)localObject2).has("uin")) || (!((JSONObject)localObject2).has("openId"))) {
+            break label741;
+          }
+          localObject1 = ((JSONObject)localObject2).getString("uin");
+          localObject2 = ((JSONObject)localObject2).getString("openId");
+          if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty((CharSequence)localObject1)))
+          {
+            QLog.w("cmgame_process.CmGameOpenIdFinder", 1, "[onOpenIdResp], openId or uin is empty");
+          }
+          else
+          {
+            a((String)localObject2, (String)localObject1);
+            localObject3 = new JSONObject(paramString);
+            if (paramInt == 9)
+            {
+              localObject2 = new JSONObject(((JSONObject)localObject3).optString("extraParam"));
+              boolean bool = ((JSONObject)localObject3).optBoolean("async");
+              l = ((JSONObject)localObject3).optLong("jsState");
+              localObject3 = ((JSONObject)localObject3).optString("bidCmd");
+              ((JSONObject)localObject2).put("uin", localObject1);
+              localObject1 = ampj.a();
+              ((JSONObject)localObject2).put("gameId", this.jdField_a_of_type_Int);
+              if (localObject1 == null) {
+                break label741;
+              }
+              ((ApolloCmdChannel)localObject1).requestData(l, (String)localObject3, ((JSONObject)localObject2).toString(), bool, true);
+            }
+          }
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        QLog.w("cmgame_process.CmGameOpenIdFinder", 1, "errInfo->" + paramJSONObject.getMessage());
+      }
+      if (paramInt == 8) {
+        try
+        {
+          if (!TextUtils.isEmpty(paramString))
+          {
+            paramString = new JSONObject(new JSONObject(paramString).optString("extraParam"));
+            paramInt = 0;
+            if (paramString.has("eventId")) {
+              paramInt = paramString.optInt("eventId");
+            }
+            paramJSONObject = "";
+            if (paramString.has("identifierList")) {
+              paramJSONObject = paramString.optString("identifierList");
+            }
+            localObject1 = new JSONArray(paramJSONObject);
+            if (((JSONArray)localObject1).length() > 0)
+            {
+              localObject2 = new JSONObject();
+              ((JSONObject)localObject2).put("eventId", paramInt);
+              new JSONObject();
+              localObject3 = new JSONArray();
+              paramJSONObject = new ArrayList();
+              i = 0;
+              if (i < ((JSONArray)localObject1).length())
+              {
+                JSONObject localJSONObject = new JSONObject();
+                String str1 = ((JSONArray)localObject1).get(i).toString();
+                String str2 = b(str1);
+                if (TextUtils.isEmpty(str2)) {
+                  paramJSONObject.add(Long.valueOf(Long.parseLong(str1)));
+                }
+                for (;;)
+                {
+                  i += 1;
+                  break;
+                  if (paramInt == 3)
+                  {
+                    int k = new JSONObject(((JSONObject)localObject3).optString("extraParam")).optInt("type");
+                    a(((JSONObject)localObject3).optLong("jsState"), k, (String)localObject1, (String)localObject2);
+                    break label741;
+                  }
+                  if ((paramInt != 10) || (this.jdField_a_of_type_AndroidUtilSparseArray == null)) {
+                    break label741;
+                  }
+                  localObject2 = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+                  if (localObject2 == null) {
+                    break label741;
+                  }
+                  localObject2 = (amsa)((WeakReference)localObject2).get();
+                  if (localObject2 == null) {
+                    break label741;
+                  }
+                  ((amsa)localObject2).a(0, "", (String)localObject1);
+                  this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+                  break label741;
+                  localJSONObject.put("openId", str2);
+                  ((JSONArray)localObject3).put(localJSONObject);
+                }
+              }
+              ((JSONObject)localObject2).put("userInfo", localObject3);
+              if (paramString.has("lState"))
+              {
+                l = paramString.getLong("lState");
+                if (((JSONArray)localObject3).length() > 0) {
+                  ampj.a().callbackFromRequest(l, 0, "cs.audioRoom_update_userinfo.local", ((JSONObject)localObject2).toString());
+                }
+                if ((paramJSONObject.size() > 0) && (paramInt == 3))
+                {
+                  paramString = ampj.a();
+                  if (paramString != null)
+                  {
+                    paramString.a(paramJSONObject, paramInt, l, this.jdField_a_of_type_Int);
+                    return;
+                    label741:
+                    i += 1;
+                  }
+                }
+              }
+            }
+          }
+        }
+        catch (Exception paramJSONObject) {}
+      }
+    }
+  }
+  
+  public boolean a(long paramLong, boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (!a(paramString1)) {
+      return false;
+    }
+    try
+    {
+      Object localObject = new JSONObject(paramString2);
+      String str1 = ((JSONObject)localObject).optString("openId");
+      if (TextUtils.isEmpty(str1)) {
+        return false;
+      }
+      String str2 = c(str1);
+      if (TextUtils.isEmpty(str2))
+      {
+        localObject = new ArrayList();
+        ((ArrayList)localObject).add(str1);
+        a(2, (ArrayList)localObject, null, 9, paramLong, paramBoolean, paramString2, paramString1);
+        return true;
+      }
+      ((JSONObject)localObject).put("uin", str2);
+      return false;
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("cmgame_process.CmGameOpenIdFinder", 1, paramString1, new Object[0]);
+    }
+    return false;
+  }
+  
+  public String b(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)) {
+      return "";
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (Map.Entry)localIterator.next();
+        String str = ((String)((Map.Entry)localObject).getValue()).trim();
+        if ((!TextUtils.isEmpty(str)) && (str.equals(paramString)))
+        {
+          localObject = (String)((Map.Entry)localObject).getKey();
+          int i = ((String)localObject).indexOf("_");
+          if ((i != -1) && (i + 1 < ((String)localObject).length()))
+          {
+            str = ((String)localObject).substring(i + 1);
+            if (String.valueOf(this.jdField_a_of_type_Int).equals(str))
+            {
+              paramString = ((String)localObject).substring(0, i);
+              return paramString;
+            }
+          }
+        }
+      }
+    }
+    return "";
+  }
+  
+  public String c(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)) {
+      return "";
+    }
+    paramString = paramString + "_" + this.jdField_a_of_type_Int;
+    return (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
   }
 }
 

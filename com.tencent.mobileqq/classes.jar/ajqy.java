@@ -1,17 +1,24 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
 
 public class ajqy
-  implements aivf
+  extends ajqq
 {
-  public ajqy(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public static final int[] a = { 2131690664 };
+  public static final int[] b = { 2131364364 };
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList)
+  public ajqy(FragmentActivity paramFragmentActivity)
   {
-    if ((this.a.E) && (paramInt1 > 0)) {
-      NewFlowCameraActivity.c = true;
-    }
+    super(paramFragmentActivity);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 

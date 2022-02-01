@@ -1,19 +1,19 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
-class tso
-  implements MediaPlayer.OnCompletionListener
+public class tso
+  implements tln
 {
-  tso(tsk paramtsk) {}
+  public tso(ViolaBaseView paramViolaBaseView) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    tsk.b(this.a);
-  }
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tso
  * JD-Core Version:    0.7.0.1
  */

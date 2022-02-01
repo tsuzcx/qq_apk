@@ -1,19 +1,25 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import mqq.os.MqqHandler;
+
 public class ajfr
+  implements bkhw
 {
-  float a;
-  public String a;
-  public boolean a;
+  public ajfr(TroopSuspiciousFragment paramTroopSuspiciousFragment, bkho parambkho) {}
   
-  public ajfr()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    return "RecogResult{isRecog=" + this.jdField_a_of_type_Boolean + ", cfd=" + this.jdField_a_of_type_Float + ", scoreId='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a.sendEmptyMessage(1014);
+      }
+    }
   }
 }
 

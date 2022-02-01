@@ -1,32 +1,46 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import android.content.Context;
+import android.support.annotation.IdRes;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class bkrv
-  implements Animator.AnimatorListener
+public class bkrv<M>
+  extends RecyclerView.ViewHolder
 {
-  public bkrv(AECropperImageView paramAECropperImageView) {}
+  private SparseArray<View> a = new SparseArray();
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bkrv(View paramView)
   {
-    AECropperImageView.a(this.a, false);
+    super(paramView);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public bkrv(ViewGroup paramViewGroup, int paramInt)
   {
-    AECropperImageView.a(this.a, false);
-    AECropperImageView.c(this.a);
+    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
   }
   
-  public void onAnimationRepeat(Animator paramAnimator)
+  protected Context a()
   {
-    AECropperImageView.a(this.a, true);
+    return this.itemView.getContext();
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  protected <T extends View> T a(@IdRes int paramInt)
   {
-    AECropperImageView.a(this.a, true);
+    View localView2 = (View)this.a.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = this.itemView.findViewById(paramInt);
+      this.a.put(paramInt, localView1);
+    }
+    return localView1;
   }
+  
+  public void a(M paramM) {}
+  
+  public void c() {}
 }
 
 

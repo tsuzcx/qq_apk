@@ -1,131 +1,226 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie.12.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import java.lang.ref.WeakReference;
+import java.util.LinkedList;
+import java.util.Locale;
 
 public class agpv
-  extends alwx
 {
-  agpv(agps paramagps) {}
+  private static Handler jdField_a_of_type_AndroidOsHandler;
+  private static boolean jdField_a_of_type_Boolean;
+  WeakReference<agpp> jdField_a_of_type_JavaLangRefWeakReference;
+  LinkedList<WeakReference<agpp>> jdField_a_of_type_JavaUtilLinkedList;
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public agpv()
   {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-      }
-      paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramInt1, paramLong2);
-      if ((paramString1 != null) && (paramString1.msgtype == -2058) && ((paramString1.extraflag == 32768) || (paramString1.sendFailCode == 41)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError, sticker msg is failed!, now remove!");
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, false);
-      }
+    jdField_a_of_type_Boolean = a();
+    if (!jdField_a_of_type_Boolean) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    jdField_a_of_type_AndroidOsHandler = new agpw(this, Looper.getMainLooper());
+    MagnifierSDK.a().a().a(new agpx(this));
+  }
+  
+  public static agpv a()
+  {
+    return agpy.a;
+  }
+  
+  public static void a()
+  {
+    if (!jdField_a_of_type_Boolean) {
+      return;
     }
-    boolean bool;
-    if (paramInt1 == 0)
+    jdField_a_of_type_AndroidOsHandler.sendMessage(jdField_a_of_type_AndroidOsHandler.obtainMessage(4));
+  }
+  
+  public static void a(WeakReference<agpp> paramWeakReference)
+  {
+    if (!jdField_a_of_type_Boolean) {
+      return;
+    }
+    jdField_a_of_type_AndroidOsHandler.sendMessage(jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramWeakReference));
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    int j = 0;
+    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
     {
-      paramSendMessageHandler = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramInt1, paramLong2);
-      if ((paramSendMessageHandler != null) && (paramSendMessageHandler.msgtype == -2058) && ((paramSendMessageHandler.extraflag == 32768) || (paramSendMessageHandler.sendFailCode == 41)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError, sticker msg is failed!");
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramSendMessageHandler, false);
-        paramString1 = abti.a(paramString1, paramInt1);
-        if (!EmojiStickerManager.a().b.containsKey(paramString1)) {
-          break label463;
-        }
-        paramLong1 = ((Long)EmojiStickerManager.a().b.get(paramString1)).longValue();
-        if (System.currentTimeMillis() - paramLong1 <= 300000L) {
-          break label469;
-        }
-        bool = true;
+      b("removeLast, list is empty");
+      return;
+    }
+    int m = this.jdField_a_of_type_JavaUtilLinkedList.size();
+    int i;
+    label38:
+    int k;
+    if (paramBoolean)
+    {
+      i = m;
+      if (i <= 0) {
+        break label151;
       }
+      k = this.jdField_a_of_type_JavaUtilLinkedList.indexOf(this.jdField_a_of_type_JavaLangRefWeakReference);
+      if (k > 0) {
+        j = m - k;
+      }
+      k = i;
+      if (i > j) {
+        k = j;
+      }
+      b("removeLast, size = " + m + ", toBeRemovedCount = " + k + " , numOfInactive = " + j);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "send sticker msg fail, is need send Toast " + bool);
-      }
-      if (bool)
+      WeakReference localWeakReference;
+      if (k > 0)
       {
-        EmojiStickerManager.a().b.put(paramString1, Long.valueOf(System.currentTimeMillis()));
-        ThreadManager.getUIHandler().post(new FriendChatPie.12.1(this, paramSendMessageHandler));
+        localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilLinkedList.peekLast();
+        if (localWeakReference != null) {}
       }
-      this.a.e(196608);
-      return;
-      label463:
-      bool = true;
-      continue;
-      label469:
-      bool = false;
+      else
+      {
+        b();
+        return;
+        i = m - 10;
+        break;
+        label151:
+        i = 0;
+        break label38;
+      }
+      agpp localagpp = (agpp)localWeakReference.get();
+      if (localagpp != null)
+      {
+        localagpp.doOnEvent(2);
+        agpp.a(localagpp);
+        agpp.b(localagpp);
+      }
+      g(localWeakReference);
+      k -= 1;
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  private boolean a()
   {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    aqmu localaqmu = aqmv.b(380).a();
+    if ((localaqmu == null) || (localaqmu.a() == null))
     {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.m();
-      }
+      QLog.i("ArkApp.ArkAppContainerMRUUpdater", 1, "confBean.getConfig() get fail");
+      return false;
     }
+    return localaqmu.a().b;
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    a(paramBoolean, paramString, paramLong, null);
-  }
+  private void b() {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong, alwu paramalwu)
+  private static void b(String paramString) {}
+  
+  public static void b(WeakReference<agpp> paramWeakReference)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+    if (!jdField_a_of_type_Boolean) {
       return;
     }
-    this.a.u = true;
-    this.a.a(262144, paramalwu, paramLong);
-    ((auaa)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(308)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, auaa.jdField_a_of_type_Int);
+    jdField_a_of_type_AndroidOsHandler.sendMessage(jdField_a_of_type_AndroidOsHandler.obtainMessage(2, paramWeakReference));
   }
   
-  public void b(String paramString)
+  private void c()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
+    b("do clear");
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+  }
+  
+  private static void c(String paramString)
+  {
+    QLog.i("ArkApp.ArkAppContainerMRUUpdater", 1, String.format(Locale.CHINA, paramString, new Object[0]));
+  }
+  
+  public static void c(WeakReference<agpp> paramWeakReference)
+  {
+    if (!jdField_a_of_type_Boolean) {
+      return;
     }
-    this.a.e(131072);
+    jdField_a_of_type_AndroidOsHandler.sendMessage(jdField_a_of_type_AndroidOsHandler.obtainMessage(3, paramWeakReference));
   }
   
-  protected void b(boolean paramBoolean, String paramString)
+  private void d(WeakReference<agpp> paramWeakReference)
   {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    if (paramWeakReference == null) {}
+    while (this.jdField_a_of_type_JavaLangRefWeakReference != paramWeakReference) {
+      return;
+    }
+    int i = this.jdField_a_of_type_JavaUtilLinkedList.indexOf(this.jdField_a_of_type_JavaLangRefWeakReference);
+    int j = this.jdField_a_of_type_JavaUtilLinkedList.size();
+    if ((i == -1) || (i == j - 1) || (j == 0))
     {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.m();
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      return;
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = ((WeakReference)this.jdField_a_of_type_JavaUtilLinkedList.get(i + 1));
+  }
+  
+  private void e(WeakReference<agpp> paramWeakReference)
+  {
+    if (paramWeakReference == null)
+    {
+      b("doMoveToFirst node is null");
+      return;
+    }
+    d(paramWeakReference);
+    b(String.format("doMoveToFirst: %h", new Object[] { paramWeakReference.get() }));
+    if ((!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) && (this.jdField_a_of_type_JavaUtilLinkedList.getFirst() == paramWeakReference))
+    {
+      b("doMoveToFirst node already in the first position");
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilLinkedList.contains(paramWeakReference)) {
+      this.jdField_a_of_type_JavaUtilLinkedList.remove(paramWeakReference);
+    }
+    this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramWeakReference);
+    a(false);
+  }
+  
+  private void f(WeakReference<agpp> paramWeakReference)
+  {
+    if (paramWeakReference == null)
+    {
+      b("doMoveToFirstInActive node is null");
+      return;
+    }
+    b(String.format("doMoveToFirstInActive: %h", new Object[] { paramWeakReference.get() }));
+    if ((this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) || (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramWeakReference)))
+    {
+      b("doMoveToFirstInActive node not in the list");
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilLinkedList.remove(paramWeakReference);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramWeakReference);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+      a(false);
+      return;
+      int i = this.jdField_a_of_type_JavaUtilLinkedList.indexOf(this.jdField_a_of_type_JavaLangRefWeakReference);
+      if (i > 0) {
+        this.jdField_a_of_type_JavaUtilLinkedList.add(i, paramWeakReference);
       }
     }
   }
   
-  protected void c(boolean paramBoolean, String paramString)
+  private void g(WeakReference<agpp> paramWeakReference)
   {
-    this.a.e(65536);
+    if (paramWeakReference == null)
+    {
+      b("doRemove node is null");
+      return;
+    }
+    b(String.format("doRemove %h", new Object[] { paramWeakReference.get() }));
+    d(paramWeakReference);
+    this.jdField_a_of_type_JavaUtilLinkedList.remove(paramWeakReference);
   }
 }
 

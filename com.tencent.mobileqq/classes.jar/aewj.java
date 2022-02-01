@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 class aewj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   aewj(aewi paramaewi) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
+    paramDialogInterface.dismiss();
+    QQIdentiferActivity.a(this.a.a, 205, anni.a(2131709131));
+    this.a.a.finish();
   }
 }
 

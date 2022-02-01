@@ -1,14 +1,29 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class bdkt
+public class bdkt
+  extends bdki
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public bdkt(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bdko parambdko)
+  {
+    super(paramQQAppInterface, paramChatMessage, parambdko);
+  }
   
-  private bdkt(bdkn parambdkn) {}
+  protected String a()
+  {
+    return this.a.msg;
+  }
+  
+  protected void a(bdkj parambdkj) {}
+  
+  protected boolean a()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkt
  * JD-Core Version:    0.7.0.1
  */

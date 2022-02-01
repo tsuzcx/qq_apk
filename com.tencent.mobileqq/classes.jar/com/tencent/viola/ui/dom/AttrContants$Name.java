@@ -19,6 +19,8 @@ public abstract interface AttrContants$Name
   public static final String ITEM_SPACING = "itemSpacing";
   public static final String LINE_SPACING = "lineSpacing";
   public static final String LIST_APPEAR_SCOPE_BOTTOM = "appearScopeBottom";
+  public static final String LIST_APPEAR_SCOPE_Left = "appearScopeLeft";
+  public static final String LIST_APPEAR_SCOPE_Right = "appearScopeRight";
   public static final String LIST_APPEAR_SCOPE_TOP = "appearScopeTop";
   public static final String LIST_BOUNCE_DISTANCE = "bounceDistance";
   public static final String LIST_BOUNCE_ENABLE = "bouncesEnable";
@@ -29,6 +31,7 @@ public abstract interface AttrContants$Name
   public static final String LIST_REVERSE_LAYOUT = "reverse";
   public static final String LIST_SCROLL_MINOFFSET = "scrollMinOffset";
   public static final String LIST_STICKY_ITEM_SPEED = "stickyItemSpeed";
+  public static final String LIST_STICKY_LAST_POSITION = "stickLastPosition";
   public static final String LIST_STICKY_OFFSET = "stickyOffset";
   public static final String LIST_STICKY_OFFSETUSABLE = "stickyOffsetUsable";
   public static final String LIST_STICKY_REBOUND = "stickyRebound";
@@ -69,7 +72,7 @@ public abstract interface AttrContants$Name
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.AttrContants.Name
  * JD-Core Version:    0.7.0.1
  */

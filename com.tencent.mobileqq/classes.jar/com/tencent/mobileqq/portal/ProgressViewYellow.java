@@ -17,7 +17,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import bdhj;
+import bgmo;
 
 public class ProgressViewYellow
   extends View
@@ -57,9 +57,9 @@ public class ProgressViewYellow
   private void a()
   {
     int i = 0;
-    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131298045));
-    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131298047));
-    this.c = ((int)getResources().getDimension(2131298046));
+    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131298127));
+    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131298129));
+    this.c = ((int)getResources().getDimension(2131298128));
     this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int }, null, null));
     this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setColor(Color.parseColor("#FC9100"));
@@ -142,7 +142,7 @@ public class ProgressViewYellow
       this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, m, k, n);
       if ((Build.VERSION.SDK_INT >= 11) && (Build.VERSION.SDK_INT < 18))
       {
-        localBitmap = bdhj.b(localBitmap, this.jdField_b_of_type_Int, k - i1, i2);
+        localBitmap = bgmo.b(localBitmap, this.jdField_b_of_type_Int, k - i1, i2);
         this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, m, k, n);
         paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, null);
       }
@@ -157,7 +157,7 @@ public class ProgressViewYellow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ProgressViewYellow
  * JD-Core Version:    0.7.0.1
  */

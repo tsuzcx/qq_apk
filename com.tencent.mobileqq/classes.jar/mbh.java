@@ -1,27 +1,87 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.view.Display;
+import android.view.OrientationEventListener;
+import android.view.WindowManager;
 
-public abstract interface mbh
+public abstract class mbh
+  extends OrientationEventListener
 {
-  public abstract Bitmap a(long paramLong);
+  int jdField_a_of_type_Int = -25;
+  protected Context a;
+  Configuration jdField_a_of_type_AndroidContentResConfiguration;
+  Display jdField_a_of_type_AndroidViewDisplay;
+  boolean jdField_a_of_type_Boolean = false;
+  public boolean b;
   
-  public abstract TroopInfoData a();
+  public mbh(Context paramContext, int paramInt)
+  {
+    super(paramContext, paramInt);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentResConfiguration = this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration();
+    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    this.jdField_a_of_type_Boolean = msf.f(paramContext);
+  }
   
-  public abstract String a();
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public abstract String a(int paramInt);
-  
-  public abstract String a(long paramLong, int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract String b();
-  
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  public void onOrientationChanged(int paramInt)
+  {
+    if (paramInt == -1) {
+      this.jdField_a_of_type_Int = paramInt;
+    }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int < 0) {
+        this.jdField_a_of_type_Int = 0;
+      }
+    } while ((paramInt - this.jdField_a_of_type_Int < 20) && (paramInt - this.jdField_a_of_type_Int > -20) && (!this.b));
+    int i = paramInt;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramInt -= 90;
+      i = paramInt;
+      if (paramInt < 0) {
+        i = paramInt + 360;
+      }
+    }
+    if (this.b) {}
+    for (paramInt = lkl.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90;; paramInt = lkl.b(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90)
+    {
+      int j = paramInt;
+      if (paramInt > 360) {
+        j = paramInt % 360;
+      }
+      i -= j;
+      paramInt = i;
+      if (i < 0) {
+        paramInt = i + 360;
+      }
+      this.jdField_a_of_type_Int = paramInt;
+      if ((paramInt <= 314) && (paramInt >= 45)) {
+        break;
+      }
+      a(0, this.b);
+      return;
+    }
+    if ((paramInt > 44) && (paramInt < 135))
+    {
+      a(90, this.b);
+      return;
+    }
+    if ((paramInt > 134) && (paramInt < 225))
+    {
+      a(180, this.b);
+      return;
+    }
+    a(270, this.b);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mbh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.open.filedownload.ui;
 
-import alud;
 import android.content.Context;
 import android.util.AttributeSet;
+import anni;
 
 public class NormalDownloadButton
   extends ApkFileDownloadButton
@@ -24,20 +24,20 @@ public class NormalDownloadButton
   
   protected String a(int paramInt)
   {
-    return alud.a(2131707990);
+    return anni.a(2131706367);
   }
   
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return alud.a(2131707991);
+      return anni.a(2131706368);
     }
-    return alud.a(2131707989);
+    return anni.a(2131706366);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.filedownload.ui.NormalDownloadButton
  * JD-Core Version:    0.7.0.1
  */

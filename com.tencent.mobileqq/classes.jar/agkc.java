@@ -1,14 +1,18 @@
-import android.os.Environment;
-import android.os.StatFs;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class agkc
+  implements View.OnClickListener
 {
-  public static long a()
+  public agkc(AIOLongShotHelper paramAIOLongShotHelper) {}
+  
+  public void onClick(View paramView)
   {
-    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-    long l = localStatFs.getBlockSize();
-    return localStatFs.getAvailableBlocks() * l / 1024L;
+    AIOLongShotHelper.a(this.a, paramView);
+    AIOLongShotHelper.a("0X8009DE6");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

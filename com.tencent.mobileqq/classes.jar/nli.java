@@ -1,77 +1,87 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.ToolAppRuntime;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bnr.BnrReport.BNRConfigMsg;
+import com.tencent.mobileqq.bnr.BnrReport.BNReportConfigRsp;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
 
 public class nli
-  implements nmo
+  implements bcbk
 {
-  public nli(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  private QQAppInterface a;
   
-  public void a(VerticalPagerView paramVerticalPagerView, View paramView, int paramInt)
+  public nli(QQAppInterface paramQQAppInterface)
   {
-    paramVerticalPagerView = this.a;
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.c(paramVerticalPagerView, bool);
-      if (!PublicAccountAdvertisementActivity.c(this.a)) {
-        break;
-      }
-      PublicAccountAdvertisementActivity.a(this.a).b(true);
-      PublicAccountAdvertisementActivity.a(this.a).onResume();
-      PublicAccountAdvertisementActivity.e(this.a);
-      PublicAccountAdvertisementActivity.a(this.a, System.currentTimeMillis());
-      if (PublicAccountAdvertisementActivity.a(this.a) > PublicAccountAdvertisementActivity.b(this.a)) {
-        PublicAccountAdvertisementActivity.b(this.a, PublicAccountAdvertisementActivity.c(this.a) + (PublicAccountAdvertisementActivity.a(this.a) - PublicAccountAdvertisementActivity.b(this.a)));
-      }
-      paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.a(this.a);
-      paramVerticalPagerView.setMode(1);
-      if (!PublicAccountAdvertisementActivity.a(this.a).a())
-      {
-        PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
-        PublicAccountAdvertisementActivity.a(this.a).a(false);
-      }
-      return;
-    }
-    if (PublicAccountAdvertisementActivity.d(this.a))
-    {
-      PublicAccountAdvertisementActivity.d(this.a, false);
-      if (this.a.a()) {
-        this.a.a.sendEmptyMessage(5);
-      }
-    }
-    PublicAccountAdvertisementActivity.c(this.a);
-    PublicAccountAdvertisementActivity.a(this.a).b(false);
-    PublicAccountAdvertisementActivity.a(this.a).onPause();
-    PublicAccountAdvertisementActivity.a(this.a).b();
-    paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a);
-    PublicAccountAdvertisementActivity.a(this.a);
-    paramVerticalPagerView.setMode(2);
-    PublicAccountAdvertisementActivity.a(this.a).setVisibility(0);
-    PublicAccountAdvertisementActivity.c(this.a, System.currentTimeMillis());
-    azqs.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8008F68", "0X8008F68", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, PublicAccountAdvertisementActivity.a(this.a) + "", "" + PublicAccountAdvertisementActivity.a(this.a).a.d, PublicAccountAdvertisementActivity.a(this.a).a.b);
-    paramVerticalPagerView = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramVerticalPagerView instanceof ToolAppRuntime)) {
-      asya.a().a(PublicAccountAdvertisementActivity.a(this.a), this.a, (AppInterface)((ToolAppRuntime)paramVerticalPagerView).onGetSubRuntime("imax"));
-    }
-    PublicAccountAdvertisementActivity.b(this.a, 0);
+    this.a = paramQQAppInterface;
+    nlh.a();
   }
   
-  public void a(boolean paramBoolean, int paramInt)
+  public int a()
   {
-    PublicAccountAdvertisementActivity.b(this.a, paramBoolean);
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BnrReport", 2, "getCheckUpdateItemData");
+    }
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.cOperType = 1;
+    localReqItem.eServiceID = 118;
+    BnrReport.BNRConfigMsg localBNRConfigMsg = nlh.a(this.a.getCurrentAccountUin());
+    if (localBNRConfigMsg != null) {
+      localReqItem.vecParam = bguc.a(localBNRConfigMsg.toByteArray());
+    }
+    nlh.a = true;
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BnrReport", 2, "handleCheckUpdateItemData");
+    }
+    BnrReport.BNRConfigMsg localBNRConfigMsg;
+    if (paramRespItem.cResult == 2) {
+      if (paramRespItem.eServiceID == 118)
+      {
+        paramRespItem = bguc.b(paramRespItem.vecUpdate);
+        if (paramRespItem != null) {
+          localBNRConfigMsg = new BnrReport.BNRConfigMsg();
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localBNRConfigMsg.mergeFrom(paramRespItem);
+        nlh.a((BnrReport.BNReportConfigRsp)localBNRConfigMsg.msg_rsp_body.get());
+        nlh.a(this.a, 74);
+        nlh.a = false;
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramRespItem)
+      {
+        paramRespItem.printStackTrace();
+        continue;
+      }
+      catch (Exception paramRespItem)
+      {
+        paramRespItem.printStackTrace();
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BnrReport", 2, "***handleCheckUpdateItemData fail respitem.cResult:" + paramRespItem.cResult);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nli
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,64 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.util.CustomLruCache;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
-public class bdck
+public final class bdck
 {
-  private CustomLruCache<String, Drawable> jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache;
-  private final HashMap<String, WeakReference<Drawable>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public String a;
+  public ArrayList<Integer> a;
   
-  public bdck(int paramInt)
+  public bdck()
   {
-    paramInt = Math.max(paramInt, 5);
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageCache", 2, "Memory cache size = " + paramInt + "MB");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new bdcl(this, paramInt * 1024 * 1024);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void a()
+  public static bdck a(aqlg[] paramArrayOfaqlg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.evictAll();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(String paramString, Drawable paramDrawable)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.get(paramString) == null))
+    bdck localbdck = new bdck();
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.put(paramString, paramDrawable);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramDrawable));
+      int i = 0;
+      for (;;)
+      {
+        if (i >= paramArrayOfaqlg.length) {
+          break label187;
+        }
+        String str = paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString;
+        try
+        {
+          str = new JSONObject(str).optString("black_ids");
+          ArrayList localArrayList = new ArrayList();
+          if (!TextUtils.isEmpty(str))
+          {
+            String[] arrayOfString = str.split(",");
+            int k = arrayOfString.length;
+            int j = 0;
+            while (j < k)
+            {
+              localArrayList.add(Integer.valueOf(Integer.parseInt(arrayOfString[j].trim())));
+              j += 1;
+            }
+            localbdck.jdField_a_of_type_JavaLangString = str;
+            localbdck.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("StudyModePushConfigProcessor", 2, "[study mode push config], :" + str);
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            QLog.e("StudyModePushConfigProcessor", 1, localThrowable, new Object[0]);
+          }
+        }
+        i += 1;
+      }
     }
+    label187:
+    return localbdck;
   }
 }
 

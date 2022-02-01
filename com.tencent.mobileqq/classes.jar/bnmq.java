@@ -1,17 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
 public class bnmq
-  implements View.OnTouchListener
+  implements Animator.AnimatorListener
 {
-  public bnmq(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  public bnmq(AEMaterialPanel paramAEMaterialPanel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return this.a.a(paramView, paramMotionEvent);
+    bnzb.d("AEMaterialPanel", "[openWithAnimation] translationY - onAnimationCancel");
   }
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

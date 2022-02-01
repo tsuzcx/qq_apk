@@ -1,29 +1,24 @@
-public class avyw
+import android.view.View;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.widget.AdapterView;
+
+class avyw
+  implements bkij
 {
-  avyn[] a = new avyn[3];
+  avyw(avys paramavys, PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  public avyn a(int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject = this.a[paramInt];
-    if (localObject != null) {
-      return localObject;
-    }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a[paramInt] = localObject;
-      return localObject;
-      localObject = new avyt();
-      continue;
-      localObject = new avyq();
+    avys.a(this.jdField_a_of_type_Avys, true);
+    avys.a(this.jdField_a_of_type_Avys).a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.b()) {
+      bcst.b(null, "CliOper", "", "", "0X800A960", "0X800A960", 0, 0, "0", "0", "0", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avyw
  * JD-Core Version:    0.7.0.1
  */

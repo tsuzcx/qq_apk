@@ -1,32 +1,23 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.image.URLImageView;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout;
 
 public class ozy
-  extends RecyclerView.ViewHolder
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  URLImageView jdField_b_of_type_ComTencentImageURLImageView;
+  public ozy(ReadInJoyCommentTopGestureLayout paramReadInJoyCommentTopGestureLayout, ViewGroup.LayoutParams paramLayoutParams, View paramView) {}
   
-  ozy(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramView);
-  }
-  
-  protected int a()
-  {
-    return getAdapterPosition() - 1;
+    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ozy
  * JD-Core Version:    0.7.0.1
  */

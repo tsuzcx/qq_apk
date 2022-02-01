@@ -1,21 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class prs
-  implements ViewBase.OnClickListener
+public class prs
+  implements View.OnClickListener
 {
-  prs(prr paramprr) {}
+  public prs(ReadInJoySelfFragment paramReadInJoySelfFragment, String paramString1, int paramInt, String paramString2) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    prr.a(this.a, false);
-    prr.a(this.a);
-    nrt.a(null, ors.a() + "", "0X800984B", "0X800984B", 0, 0, "1", "", "", "", false);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity(), QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity().startActivity(localIntent);
+      oat.a(null, "CliOper", "", "", "0X80092FF", "0X80092FF", 0, 0, ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment, this.jdField_a_of_type_Int) + "", this.jdField_a_of_type_Int + "", "", pha.b(this.b), false);
+      ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment, this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     prs
  * JD-Core Version:    0.7.0.1
  */

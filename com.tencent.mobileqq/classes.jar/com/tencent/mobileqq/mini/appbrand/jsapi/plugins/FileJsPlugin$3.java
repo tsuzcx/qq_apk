@@ -7,7 +7,6 @@ import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
 import com.tencent.component.network.downloader.DownloadResult.Status;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
@@ -17,7 +16,9 @@ import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05116;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05325;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.minigame.manager.GamePreConnectManager;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
 import org.apache.http.Header;
 import org.apache.http.HeaderIterator;
@@ -28,7 +29,7 @@ import org.json.JSONObject;
 class FileJsPlugin$3
   implements Downloader.DownloadListener
 {
-  FileJsPlugin$3(FileJsPlugin paramFileJsPlugin, long paramLong, String paramString1, JsRuntime paramJsRuntime, String paramString2, JSONObject paramJSONObject) {}
+  FileJsPlugin$3(FileJsPlugin paramFileJsPlugin, long paramLong, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, JSONObject paramJSONObject) {}
   
   private void reportDownloadFileResult(long paramLong, int paramInt)
   {
@@ -42,7 +43,7 @@ class FileJsPlugin$3
   
   public void onDownloadCanceled(String paramString)
   {
-    QLog.d("[mini] FileJsPlugin", 1, "download canceled! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], url:" + paramString);
+    QLog.w("[mini] FileJsPlugin", 1, "download canceled! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], downloadTaskId:" + this.val$downloadId + ", url:" + paramString);
     try
     {
       FileJsPlugin.access$000(this.this$0).remove(this.val$downloadId);
@@ -65,7 +66,7 @@ class FileJsPlugin$3
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    QLog.d("[mini] FileJsPlugin", 1, "download failed! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], url:" + paramString);
+    QLog.e("[mini] FileJsPlugin", 1, new Object[] { "download failed! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], downloadTaskId:", this.val$downloadId, ", url:", paramString });
     try
     {
       FileJsPlugin.access$000(this.this$0).remove(this.val$downloadId);
@@ -120,16 +121,19 @@ class FileJsPlugin$3
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    QLog.d("[mini] FileJsPlugin", 1, "download Succeed! [minigame downloadTaskId:" + this.val$downloadId + ", timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], url:" + paramString);
+    QLog.i("[mini] FileJsPlugin", 1, "download Succeed! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], downloadTaskId:" + this.val$downloadId + ", url:" + paramString);
+    if (this.this$0.isMiniGameRuntime()) {
+      GamePreConnectManager.onUrlConnect(paramString, paramDownloadResult.getReport().httpStatus);
+    }
     for (;;)
     {
       try
       {
         if (!TextUtils.isEmpty(this.val$filePath))
         {
-          localObject1 = new VFSFile(this.val$filePath);
+          localObject1 = new File(this.val$filePath);
           localObject7 = paramDownloadResult.getPath();
-          if (((VFSFile)localObject1).exists()) {
+          if (((File)localObject1).exists()) {
             continue;
           }
           boolean bool = TextUtils.isEmpty((CharSequence)localObject7);
@@ -161,7 +165,7 @@ class FileJsPlugin$3
         continue;
         localJSONException.put("filePath", this.val$params.optString("filePath"));
         continue;
-        QLog.d("[mini] FileJsPlugin", 1, "download failed, filepath not exists, tmpFile:" + paramDownloadResult.getPath());
+        QLog.e("[mini] FileJsPlugin", 1, "download failed, filepath not exists, tmpFile:" + paramDownloadResult.getPath() + ", downloadTaskId:" + this.val$downloadId + ", url:" + paramString);
         FileJsPlugin.access$000(this.this$0).remove(this.val$downloadId);
         Object localObject2 = new JSONObject();
         ((JSONObject)localObject2).put("downloadTaskId", this.val$downloadId);
@@ -174,17 +178,17 @@ class FileJsPlugin$3
       }
       try
       {
-        localObject8 = new VFSFile((String)localObject7);
+        localObject8 = new File((String)localObject7);
         localObject3 = localObject1;
-        if (((VFSFile)localObject8).exists())
+        if (((File)localObject8).exists())
         {
           localObject3 = localObject1;
-          if (((VFSFile)localObject8).isFile())
+          if (((File)localObject8).isFile())
           {
             localObject3 = localObject1;
-            if (((VFSFile)localObject8).length() > 0L)
+            if (((File)localObject8).length() > 0L)
             {
-              QLog.w("[mini] FileJsPlugin", 1, "download Succeed but target file not exists, try copy from download tmp file:" + (String)localObject7 + ", length:" + ((VFSFile)localObject8).length() + ", to:" + this.val$filePath);
+              QLog.w("[mini] FileJsPlugin", 1, "download Succeed but target file not exists, try copy from download tmp file:" + (String)localObject7 + ", length:" + ((File)localObject8).length() + ", to:" + this.val$filePath);
               localObject3 = FileUtils.createFile(this.val$filePath);
               localObject1 = localObject3;
             }
@@ -199,7 +203,7 @@ class FileJsPlugin$3
       }
       try
       {
-        if ((!FileUtils.copyFile((VFSFile)localObject8, (VFSFile)localObject1)) || (!((VFSFile)localObject1).exists()) || (((VFSFile)localObject1).length() != ((VFSFile)localObject8).length())) {
+        if ((!FileUtils.copyFile((File)localObject8, (File)localObject1)) || (!((File)localObject1).exists()) || (((File)localObject1).length() != ((File)localObject8).length())) {
           continue;
         }
         QLog.i("[mini] FileJsPlugin", 1, "copy from download tmp file:" + (String)localObject7 + " success");
@@ -231,7 +235,7 @@ class FileJsPlugin$3
         localObject1 = "webp";
         continue;
       }
-      if ((!((VFSFile)localObject3).exists()) || (!((VFSFile)localObject3).canRead())) {
+      if ((!((File)localObject3).exists()) || (!((File)localObject3).canRead())) {
         continue;
       }
       localObject7 = this.val$filePath;
@@ -271,11 +275,12 @@ class FileJsPlugin$3
         QLog.e("[mini] FileJsPlugin", 1, "create file extension failed! " + localThrowable1);
         continue;
       }
+      MiniAppFileManager.getInstance().updateFolderSize(this.val$fileType, ((File)localObject3).length());
       localObject1 = new JSONObject();
       ((JSONObject)localObject1).put("downloadTaskId", this.val$downloadId);
       ((JSONObject)localObject1).put("progress", 100);
-      ((JSONObject)localObject1).put("totalBytesWritten", ((VFSFile)localObject3).length());
-      ((JSONObject)localObject1).put("totalBytesExpectedToWrite", ((VFSFile)localObject3).length());
+      ((JSONObject)localObject1).put("totalBytesWritten", ((File)localObject3).length());
+      ((JSONObject)localObject1).put("totalBytesExpectedToWrite", ((File)localObject3).length());
       ((JSONObject)localObject1).put("state", "progressUpdate");
       this.val$webview1.evaluateSubcribeJS("onDownloadTaskStateChange", ((JSONObject)localObject1).toString(), 0);
       QLog.d("[mini] FileJsPlugin", 1, "download success.");
@@ -328,9 +333,9 @@ class FileJsPlugin$3
       MiniProgramLpReportDC05116.reportOneHttpOrDownloadRequest(this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, paramString, 0L, System.currentTimeMillis() - this.val$startMS, i, paramDownloadResult);
       return;
       localObject4 = localObject1;
-      if (((VFSFile)localObject1).exists())
+      if (((File)localObject1).exists())
       {
-        ((VFSFile)localObject1).delete();
+        ((File)localObject1).delete();
         localObject4 = localObject1;
       }
     }
@@ -338,7 +343,7 @@ class FileJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.FileJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

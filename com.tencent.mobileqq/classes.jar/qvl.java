@@ -1,37 +1,44 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
+import android.view.View;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
 public class qvl
-  implements TextWatcher
+  implements bkij
 {
-  public qvl(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
+  public qvl(ComponentContentGridImage paramComponentContentGridImage) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramEditable.length() > 0)
+    if ((ComponentContentGridImage.a(this.a) == 62) || (ComponentContentGridImage.a(this.a) == 63) || (ComponentContentGridImage.a(this.a) == 64) || (ComponentContentGridImage.a(this.a) == 65))
     {
-      if (!ReadInJoySelectMemberFragment.a(this.a).isVisible()) {
-        this.a.getChildFragmentManager().beginTransaction().add(2131366799, ReadInJoySelectMemberFragment.a(this.a)).addToBackStack(null).commit();
+      if (ComponentContentGridImage.a(this.a) != null) {
+        ComponentContentGridImage.a(this.a).a(paramInt);
       }
-      ReadInJoySelectMemberFragment.a(this.a).a(paramEditable.toString());
-    }
-    while (ReadInJoySelectMemberFragment.a(this.a).isDetached()) {
       return;
     }
-    this.a.getChildFragmentManager().popBackStackImmediate();
+    if ((Aladdin.getConfig(192).getIntegerFromString("picture_click_jumptype", 0) == 1) && (((pya)this.a.a).a().mSocialFeedInfo != null) && (((pya)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Rhn != null) && (((pya)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Rhn.a) && (((pya)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Rhg != null)) {
+      try
+      {
+        pha.a(this.a.getContext(), ((pya)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Rhg.a.c, null);
+        return;
+      }
+      catch (Exception paramAdapterView)
+      {
+        QLog.e("ComponentContentGridImage", 1, paramAdapterView.getLocalizedMessage());
+        return;
+      }
+    }
+    ComponentContentGridImage.a(this.a, paramInt, ComponentContentGridImage.a(this.a).a());
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qvl
  * JD-Core Version:    0.7.0.1
  */

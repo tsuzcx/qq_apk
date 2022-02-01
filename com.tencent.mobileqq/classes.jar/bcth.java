@@ -1,100 +1,124 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class bcth
+class bcth
 {
-  private int a;
-  private int b;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
+  public String e;
+  public long f;
+  public String f;
+  public long g;
+  public long h;
+  public long i = 0L;
+  public long j = 4L;
+  public long k = a();
+  public long l = Build.VERSION.SDK_INT;
+  public long m;
+  public long n = 0L;
+  public long o = 0L;
+  public long p = 0L;
+  public long q = 0L;
   
-  private int a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  public bcth()
   {
-    int i = bdgg.a(paramQQAppInterface.getCurrentAccountUin(), "troop_game_feed", paramSessionInfo.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSettingRedInfo", 2, "read game feed red dot, num=" + i);
-    }
-    if (i > 0) {
-      return 1;
-    }
-    i = bdgg.a(paramQQAppInterface.getCurrentAccountUin(), "troop_album_feed", paramSessionInfo.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSettingRedInfo", 2, "read album feed red dot, num=" + i);
-    }
-    if (i > 0) {
-      return 6;
-    }
-    boolean bool = bclg.c(paramQQAppInterface, paramSessionInfo.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSettingRedInfo", 2, "needShowRobotRedDot:" + bool);
-    }
-    if (bool) {
-      return 2;
-    }
-    if (bapu.a(paramQQAppInterface, "SP_KEY_WATCH_TOGETHER_TROOP_SETTING_RED_DOT_SHOW", true, false))
-    {
-      Object localObject = (aorx)aoks.a().a(535);
-      if ((localObject != null) && (((aorx)localObject).a)) {
-        return 3;
-      }
-      localObject = ((aorn)aoks.a().a(551)).a(4);
-      if ((localObject != null) && (((aoro)localObject).b)) {
-        return 4;
-      }
-    }
-    paramQQAppInterface = bdww.a(paramQQAppInterface).a(paramSessionInfo.a);
-    if (paramQQAppInterface.a)
-    {
-      if (paramQQAppInterface.c == 2) {}
-      for (i = 1;; i = 2)
-      {
-        this.b = i;
-        azqs.b(null, "dc00898", "", paramSessionInfo.a, "qq_vip", "0X800A8F4", this.b, 1, 0, "", "", "", "");
-        return 5;
-      }
-    }
-    return 0;
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "8.4.1";
+    this.jdField_c_of_type_JavaLangString = Build.MODEL;
   }
   
-  public static bcth a(View paramView)
+  public int a()
   {
-    bcth localbcth2 = (bcth)paramView.getTag();
-    bcth localbcth1 = localbcth2;
-    if (localbcth2 == null)
-    {
-      localbcth1 = new bcth();
-      paramView.setTag(localbcth1);
+    int i2 = 0;
+    int i1;
+    if (AppNetConnInfo.isWifiConn()) {
+      i1 = 2;
     }
-    return localbcth1;
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreReportController", 2, "getNetType: " + i1);
+      }
+      return i1;
+      i1 = i2;
+      if (AppNetConnInfo.isMobileConn()) {
+        switch (AppNetConnInfo.getMobileInfo())
+        {
+        default: 
+          i1 = i2;
+          break;
+        case 1: 
+          i1 = 3;
+          break;
+        case 2: 
+          i1 = 4;
+          break;
+        case 3: 
+          i1 = 5;
+        }
+      }
+    }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  public String a()
   {
-    this.a = a(paramQQAppInterface, paramSessionInfo);
-    switch (this.a)
-    {
-    default: 
-      return;
-    case 2: 
-      bclg.c(paramQQAppInterface, false);
-      return;
-    case 3: 
-    case 4: 
-      bapu.a(paramQQAppInterface, "SP_KEY_WATCH_TOGETHER_TROOP_SETTING_RED_DOT_SHOW", false, false);
-      return;
-    case 5: 
-      azqs.b(null, "dc00898", "", paramSessionInfo.a, "qq_vip", "0X800A8F5", this.b, 1, 0, "", "", "", "");
-    }
-    bdgg.a(paramQQAppInterface.getCurrentAccountUin(), "troop_album_feed", paramSessionInfo.b, 0);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    this.a = a(paramQQAppInterface, paramSessionInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSettingRedInfo", 2, "needShow: " + this.a);
-    }
-    return this.a != 0;
+    StringBuilder localStringBuilder = new StringBuilder(256);
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_f_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.h);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.i);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.j);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.k);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.l);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.m);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.n);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.o);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.p);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.q);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    return localStringBuilder.toString();
   }
 }
 

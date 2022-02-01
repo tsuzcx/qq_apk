@@ -1,28 +1,57 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aeho
-  extends amdd
+  implements bkhw
 {
-  public aeho(TroopRequestActivity paramTroopRequestActivity) {}
+  public aeho(FriendProfileImageActivity paramFriendProfileImageActivity, aehv paramaehv, boolean paramBoolean, bkho parambkho) {}
   
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramBoolean)
+    switch (paramInt)
     {
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131720220), 0).a();
-      this.a.c.setVisibility(8);
-      return;
     }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131720217), 0).a();
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      bghy.a(this.jdField_a_of_type_Aehv.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, paramView, "", "", "");
+        break;
+      }
+      bghy.a(this.jdField_a_of_type_Aehv.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, paramView, "", "", "");
+        break;
+      }
+      FriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_Aehv.c);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, paramView, "", "", "");
+        break;
+      }
+      bghy.b(this.jdField_a_of_type_Aehv.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, paramView, "", "", "");
+        break;
+      }
+      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_Aehv);
+      }
+    }
   }
 }
 

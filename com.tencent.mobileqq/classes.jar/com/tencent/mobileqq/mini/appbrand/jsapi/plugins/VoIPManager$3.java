@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alud;
-import bfvc;
-import bfvd;
-import bfvl;
-import bfvo;
+import anni;
+import bjce;
+import bjcm;
+import bjcp;
+import com.tencent.qav.QavDef.MultiUserInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONArray;
 
 class VoIPManager$3
-  extends bfvo
+  extends bjcp
 {
   VoIPManager$3(VoIPManager paramVoIPManager) {}
   
@@ -20,12 +20,12 @@ class VoIPManager$3
   {
     QLog.d("VoIPManager", 1, "onEnterRoom");
     VoIPManager.access$200(this.this$0).set(true);
-    bfvl localbfvl = bfvd.a().a();
+    bjcm localbjcm = bjce.a().a();
     if (VoIPManager.access$300(this.this$0) != null) {
       this.this$0.updateMuteConfig(VoIPManager.access$300(this.this$0), null);
     }
-    if (localbfvl != null) {
-      localbfvl.b();
+    if (localbjcm != null) {
+      localbjcm.f();
     }
     VoIPManager.access$000(this.this$0);
   }
@@ -49,25 +49,25 @@ class VoIPManager$3
           break;
         }
       } while (VoIPManager.access$500(this.this$0) == null);
-      VoIPManager.access$500(this.this$0).onInterrupt(4, alud.a(2131717256));
+      VoIPManager.access$500(this.this$0).onInterrupt(4, anni.a(2131715533));
       return;
     } while ((paramInt != 3) || (VoIPManager.access$500(this.this$0) == null));
-    VoIPManager.access$500(this.this$0).onInterrupt(3, alud.a(2131717255));
+    VoIPManager.access$500(this.this$0).onInterrupt(3, anni.a(2131715532));
   }
   
-  public void onUserAudioAvailable(bfvc parambfvc, boolean paramBoolean)
+  public void onUserAudioAvailable(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
   {
-    QLog.d("VoIPManager", 1, String.format("onUserAudioAvailable userInfo=%s available=%s", new Object[] { parambfvc, Boolean.valueOf(paramBoolean) }));
+    QLog.d("VoIPManager", 1, String.format("onUserAudioAvailable userInfo=%s available=%s", new Object[] { paramMultiUserInfo, Boolean.valueOf(paramBoolean) }));
   }
   
-  public void onUserEnter(bfvc parambfvc)
+  public void onUserEnter(QavDef.MultiUserInfo paramMultiUserInfo)
   {
-    QLog.d("VoIPManager", 1, String.format("onUserEnter userInfo=%s", new Object[] { parambfvc }));
-    if ((VoIPManager.access$400(this.this$0) == null) && (VoIPManager.access$600(this.this$0, parambfvc.jdField_a_of_type_Long) == null))
+    QLog.d("VoIPManager", 1, String.format("onUserEnter userInfo=%s", new Object[] { paramMultiUserInfo }));
+    if ((VoIPManager.access$400(this.this$0) == null) && (VoIPManager.access$600(this.this$0, paramMultiUserInfo.mUin) == null))
     {
       VoIPManager.UserModel localUserModel = new VoIPManager.UserModel(this.this$0, null);
-      localUserModel.mUin = parambfvc.jdField_a_of_type_Long;
-      localUserModel.mOpenId = parambfvc.jdField_a_of_type_JavaLangString;
+      localUserModel.mUin = paramMultiUserInfo.mUin;
+      localUserModel.mOpenId = paramMultiUserInfo.mOpenId;
       localUserModel.mMicStat = 1;
       VoIPManager.access$800(this.this$0, localUserModel);
       if (VoIPManager.access$500(this.this$0) != null) {
@@ -76,25 +76,25 @@ class VoIPManager$3
     }
   }
   
-  public void onUserExit(bfvc parambfvc)
+  public void onUserExit(QavDef.MultiUserInfo paramMultiUserInfo)
   {
-    QLog.d("VoIPManager", 1, String.format("onUserExit userInfo=%s", new Object[] { parambfvc }));
+    QLog.d("VoIPManager", 1, String.format("onUserExit userInfo=%s", new Object[] { paramMultiUserInfo }));
     if (VoIPManager.access$400(this.this$0) == null)
     {
-      VoIPManager.access$1000(this.this$0, parambfvc.jdField_a_of_type_Long);
+      VoIPManager.access$1000(this.this$0, paramMultiUserInfo.mUin);
       if (VoIPManager.access$500(this.this$0) != null) {
         VoIPManager.access$500(this.this$0).onRoomMemberChange(VoIPManager.access$900(this.this$0));
       }
     }
   }
   
-  public void onUserSpeaking(bfvc parambfvc, boolean paramBoolean)
+  public void onUserSpeaking(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
   {
-    QLog.d("VoIPManager", 1, String.format("onUserSpeaking userInfo=%s speaking=%s", new Object[] { parambfvc, Boolean.valueOf(paramBoolean) }));
-    parambfvc = VoIPManager.access$600(this.this$0, parambfvc.jdField_a_of_type_Long);
-    if (parambfvc != null)
+    QLog.d("VoIPManager", 1, String.format("onUserSpeaking userInfo=%s speaking=%s", new Object[] { paramMultiUserInfo, Boolean.valueOf(paramBoolean) }));
+    paramMultiUserInfo = VoIPManager.access$600(this.this$0, paramMultiUserInfo.mUin);
+    if (paramMultiUserInfo != null)
     {
-      parambfvc.mSpeaking = paramBoolean;
+      paramMultiUserInfo.mSpeaking = paramBoolean;
       if (VoIPManager.access$500(this.this$0) != null) {
         VoIPManager.access$500(this.this$0).onRoomMemberSpeaking(VoIPManager.access$1100(this.this$0));
       }
@@ -103,7 +103,7 @@ class VoIPManager$3
     QLog.e("VoIPManager", 1, "onUserSpeaking userModel==null");
   }
   
-  public void onUserUpdate(List<bfvc> paramList)
+  public void onUserUpdate(List<QavDef.MultiUserInfo> paramList)
   {
     if ((VoIPManager.access$400(this.this$0) != null) && (paramList != null))
     {
@@ -111,9 +111,9 @@ class VoIPManager$3
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
       {
-        bfvc localbfvc = (bfvc)localIterator.next();
-        if (localbfvc.jdField_a_of_type_Long != 0L) {
-          localJSONArray.put(localbfvc.jdField_a_of_type_JavaLangString);
+        QavDef.MultiUserInfo localMultiUserInfo = (QavDef.MultiUserInfo)localIterator.next();
+        if (localMultiUserInfo.mUin != 0L) {
+          localJSONArray.put(localMultiUserInfo.mOpenId);
         }
       }
       VoIPManager.access$400(this.this$0).onJoinRoom(localJSONArray);
@@ -124,7 +124,7 @@ class VoIPManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.VoIPManager.3
  * JD-Core Version:    0.7.0.1
  */

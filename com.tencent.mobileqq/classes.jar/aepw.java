@@ -1,11 +1,17 @@
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class aepw
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
+  public aepw(NearbyActivity paramNearbyActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+  }
 }
 
 

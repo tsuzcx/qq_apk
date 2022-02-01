@@ -1,14 +1,15 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
 
 public class aiyg
-  extends aiym
+  implements DialogInterface.OnDismissListener
 {
-  public aiyg(QzoneHbFragment paramQzoneHbFragment) {}
+  public aiyg(NewFriendActivity paramNewFriendActivity) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QzoneHbFragment.a(this.a).setEnabled(QzoneHbFragment.a(this.a));
+    this.a.a = null;
   }
 }
 

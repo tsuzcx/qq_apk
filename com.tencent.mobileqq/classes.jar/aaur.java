@@ -1,52 +1,20 @@
 import android.os.Handler;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.os.Message;
+import com.tencent.biz.ui.RefreshView;
 
 public class aaur
-  implements INetInfoHandler
+  extends Handler
 {
-  public aaur(GdtVideoCommonView paramGdtVideoCommonView) {}
+  public aaur(RefreshView paramRefreshView) {}
   
-  public void onNetMobile2None()
+  public void handleMessage(Message paramMessage)
   {
-    aase.b("GdtVideoCommonView", "INetInfoHandler onNetMobile2None()");
-    GdtVideoCommonView.a(this.a, 0);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    aase.b("GdtVideoCommonView", "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
-    GdtVideoCommonView.a(this.a, 1);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    aase.b("GdtVideoCommonView", "INetInfoHandler onNetNone2Mobile() apn=" + paramString + " onNetWifi2None " + GdtVideoCommonView.c(this.a));
-    GdtVideoCommonView.a(this.a, 2);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    aase.b("GdtVideoCommonView", "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
-    GdtVideoCommonView.a(this.a, 1);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    aase.b("GdtVideoCommonView", "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
-    GdtVideoCommonView.a(this.a, 2);
-    if ((this.a.a) && (this.a.a()))
+    switch (paramMessage.what)
     {
-      GdtVideoCommonView.d(this.a);
-      GdtVideoCommonView.a(this.a).post(GdtVideoCommonView.a(this.a));
+    default: 
+      return;
     }
-  }
-  
-  public void onNetWifi2None()
-  {
-    aase.b("GdtVideoCommonView", "INetInfoHandler onNetWifi2None()");
-    GdtVideoCommonView.b(this.a, true);
-    GdtVideoCommonView.a(this.a, 0);
+    this.a.a();
   }
 }
 

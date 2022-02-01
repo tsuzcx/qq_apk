@@ -1,27 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
-class oka
-  implements ViewBase.OnClickListener
+public class oka
+  implements biaw
 {
-  oka(ojn paramojn) {}
+  public oka(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_Omt.a != null)
+    boolean bool2 = true;
+    Object localObject;
+    if (this.a.a)
     {
-      ors.a(this.a.jdField_a_of_type_Omg.a().getContext(), this.a.jdField_a_of_type_Omt.a.activityJumpUrl);
-      if (this.a.jdField_a_of_type_Omg.a() != null) {
-        this.a.jdField_a_of_type_Omg.a().e(this.a.jdField_a_of_type_Omt);
+      localObject = this.a;
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label61;
       }
+      bool1 = true;
+      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
+      localObject = ReadInJoySettingActivity.a(this.a);
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label66;
+      }
+    }
+    label61:
+    label66:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      ((Switch)localObject).setChecked(bool1);
+      return;
+      bool1 = false;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oka
  * JD-Core Version:    0.7.0.1
  */

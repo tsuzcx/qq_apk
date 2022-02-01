@@ -3,12 +3,12 @@ package dov.com.qq.im.setting;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmhj;
+import boyp;
 
 public class QIMSelectEffectParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<QIMSelectEffectParams> CREATOR = new bmhj();
+  public static final Parcelable.Creator<QIMSelectEffectParams> CREATOR = new boyp();
   public int a;
   public String a;
   public int b;
@@ -37,7 +37,7 @@ public class QIMSelectEffectParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.setting.QIMSelectEffectParams
  * JD-Core Version:    0.7.0.1
  */

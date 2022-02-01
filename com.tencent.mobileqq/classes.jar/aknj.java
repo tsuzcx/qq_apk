@@ -1,78 +1,44 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 
-class aknj
-  extends DefaultHandler
+public class aknj
+  implements TextWatcher
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  public aknj(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
   
-  public int a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public ArrayList<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = paramArrayOfChar.toString();
-    QLog.d("SAXForHandler", 4, "characters: " + paramArrayOfChar);
-  }
-  
-  public void endDocument()
-  {
-    QLog.d("SAXForHandler", 4, "endDocument");
-    super.endDocument();
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    QLog.d("SAXForHandler", 4, "endElement uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
-  }
-  
-  public void startDocument()
-  {
-    QLog.d("SAXForHandler", 4, "startDocument");
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    int j = 0;
-    int i = 0;
-    QLog.d("SAXForHandler", 4, "startElement: uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
-    if ("config".equals(paramString2)) {
-      while (i < paramAttributes.getLength())
-      {
-        this.jdField_a_of_type_Int = Integer.valueOf(paramAttributes.getValue(i)).intValue();
-        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + " value: " + this.jdField_a_of_type_Int);
-        i += 1;
-      }
+    if (this.a.jdField_c_of_type_Int > 0) {
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(paramEditable.length() + "/" + this.a.jdField_c_of_type_Int);
     }
-    if ("Elem".equals(paramString2))
+    if (paramEditable.length() > 0)
     {
-      i = j;
-      while (i < paramAttributes.getLength())
-      {
-        paramString1 = paramAttributes.getValue(i);
-        paramString3 = paramAttributes.getLocalName(i);
-        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + "name: " + paramString3 + " url: " + paramString1);
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
-        i += 1;
-      }
+      this.a.a(anni.a(2131704759));
+      RedPacketKuaKuaFragment.a(this.a).removeCallbacks(RedPacketKuaKuaFragment.a(this.a));
+      RedPacketKuaKuaFragment.a(this.a).postDelayed(RedPacketKuaKuaFragment.a(this.a), this.a.jdField_a_of_type_Long * 1000L);
+      return;
+    }
+    this.a.a(anni.a(2131704761));
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt1 == 0) && (paramInt3 > paramInt1)) {
+      bcst.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.begin", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title, "", "", "");
     }
   }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aknj
  * JD-Core Version:    0.7.0.1
  */

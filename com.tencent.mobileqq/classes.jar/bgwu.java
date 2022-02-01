@@ -1,23 +1,25 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
-class bgwu
-  extends bgwp
+public class bgwu
+  extends RecyclerView.ViewHolder
 {
-  bgwu(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
-  {
-    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
-  }
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  protected bgwo a()
+  public bgwu(View paramView, int paramInt)
   {
-    return new bgwo(2131694350, new bgwv(this));
+    super(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 1) {
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364666));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgwu
  * JD-Core Version:    0.7.0.1
  */

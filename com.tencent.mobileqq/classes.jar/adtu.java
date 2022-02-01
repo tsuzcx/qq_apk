@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class adtu
-  implements DialogInterface.OnClickListener
+  implements bkhw
 {
-  public adtu(RegisterActivity paramRegisterActivity) {}
+  public adtu(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, bkho parambkho) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a = 0;
-    this.a.finish();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.obtainMessage(1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.sendMessageDelayed(paramView, 800L);
+      Utils.executeAsyncTaskOnThreadPool(new adtv(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
+    }
   }
 }
 

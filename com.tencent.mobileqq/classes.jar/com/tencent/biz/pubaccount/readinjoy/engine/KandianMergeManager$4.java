@@ -1,18 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
 
 class KandianMergeManager$4
   implements Runnable
 {
   KandianMergeManager$4(KandianMergeManager paramKandianMergeManager) {}
   
-  public void run()
-  {
-    BaseApplicationImpl.getApplication().registerReceiver(this.this$0.a, new IntentFilter("com.tencent.readinjoy.kandianreport"));
-    KandianMergeManager.b(this.this$0);
-  }
+  public void run() {}
 }
 
 

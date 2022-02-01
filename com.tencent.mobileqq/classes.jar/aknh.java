@@ -1,30 +1,27 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.9.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+
 public class aknh
+  implements akse
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d = -1;
+  public aknh(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public aknh()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Boolean = false;
+    if ((!this.a.c()) && (paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    {
+      paramPathResult = AnimationView.AnimationInfo.loadFromFolder(paramPathResult.folderPath);
+      this.a.a.post(new RedPacketKSongFragment.9.1(this, paramPathResult));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aknh
  * JD-Core Version:    0.7.0.1
  */

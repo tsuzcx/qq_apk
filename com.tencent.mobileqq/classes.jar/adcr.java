@@ -1,32 +1,93 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mfsdk.config.APMModuleConfig;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.qapmsdk.base.meta.LooperMeta;
+import com.tencent.qapmsdk.looper.ILooperListener;
+import com.tencent.qapmsdk.looper.LooperMonitor;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public class adcr
-  extends zje
+  extends adcg
+  implements ILooperListener
 {
-  public adcr(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
-  
-  public zil a(Activity paramActivity, zir paramzir)
+  protected void a(APMModuleConfig paramAPMModuleConfig)
   {
-    return super.a(paramActivity, paramzir);
+    String str2;
+    String str1;
+    if (BaseApplicationImpl.sProcessId == 2)
+    {
+      paramAPMModuleConfig.threshold = QzoneConfig.getInstance().getConfig("QzoneHomepage", "DropFrame_Stack_Threshold", paramAPMModuleConfig.threshold);
+      str2 = QzoneConfig.getInstance().getConfig("QzoneHomepage", "DropFrame_Stack_UserSampleRatio");
+      str1 = QzoneConfig.getInstance().getConfig("QzoneHomepage", "Dropframe_Stack_EventSampleRatio");
+      if (TextUtils.isEmpty(str2)) {}
+    }
+    try
+    {
+      f = Float.valueOf(str2).floatValue();
+      if (f >= 0.0F) {
+        paramAPMModuleConfig.userRatio = f;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        try
+        {
+          float f = Float.valueOf(str1).floatValue();
+          if (f >= 0.0F) {
+            paramAPMModuleConfig.evenRatio = f;
+          }
+          return;
+        }
+        catch (Exception paramAPMModuleConfig)
+        {
+          paramAPMModuleConfig.printStackTrace();
+        }
+        localException = localException;
+        localException.printStackTrace();
+      }
+    }
+    if (!TextUtils.isEmpty(str1)) {}
   }
   
-  public zin a(Activity paramActivity, zir paramzir)
+  protected void b()
   {
-    this.a.a = new awos((FriendProfilePicBrowserActivity)paramActivity, paramzir);
-    return this.a.a;
+    LooperMonitor.setLooperListener(this);
   }
   
-  public zir a(Activity paramActivity)
+  public String c()
   {
-    paramActivity = new avjp(this.a, FriendProfilePicBrowserActivity.a(this.a));
-    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
-    return paramActivity;
+    return "looper";
   }
   
-  public zis a(Activity paramActivity, zir paramzir)
+  public void onMetaGet(LooperMeta paramLooperMeta)
   {
-    return null;
+    HashMap localHashMap = new HashMap();
+    paramLooperMeta = paramLooperMeta.getLooperParams();
+    try
+    {
+      Iterator localIterator = paramLooperMeta.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localHashMap.put(str, paramLooperMeta.getString(str));
+      }
+      i = adch.a();
+    }
+    catch (Exception paramLooperMeta)
+    {
+      QLog.e("MagnifierSDK.QAPM", 1, "onMetaGet looper", paramLooperMeta);
+      return;
+    }
+    int i;
+    int j = paramLooperMeta.getInt("cost_time");
+    UnifiedMonitor.a().addEvent(i, "LooperSingle", j, 0, localHashMap);
   }
 }
 

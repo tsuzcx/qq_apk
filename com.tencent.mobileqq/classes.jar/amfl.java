@@ -1,10 +1,6 @@
-public abstract interface amfl
-{
-  public abstract void q(int paramInt);
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amfl
  * JD-Core Version:    0.7.0.1
  */

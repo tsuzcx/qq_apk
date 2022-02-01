@@ -1,35 +1,32 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
-final class tpq
-  implements bfah
+public class tpq
+  extends tpg
 {
-  tpq(String paramString) {}
-  
-  public void a(BaseResp paramBaseResp)
+  tpq(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
   {
-    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
+    super(paramtpd1, paramActivity, paramtpd2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString3))
     {
-    case -1: 
-    default: 
-      ybk.a(1, 2131720031);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      ybk.a(2, 2131720050);
+      paramString1 = new Intent(this.jdField_a_of_type_AndroidAppActivity, AccountDetailActivity.class);
+      paramString1.putExtra("uin", paramString3);
+      paramString1.putExtra("from_js", true);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tpq
  * JD-Core Version:    0.7.0.1
  */

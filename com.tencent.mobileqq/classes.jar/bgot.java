@@ -1,78 +1,40 @@
-import android.text.TextUtils;
-import android.widget.TextView;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.2.1;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.2.2;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bgot
+  implements ArkViewImplement.LoadCallback
 {
-  public static void a(TextView paramTextView, int paramInt1, int paramInt2, int paramInt3)
+  bgot(bgor parambgor) {}
+  
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    a(paramTextView, paramInt1, paramInt2, paramInt3, 99, null);
+    onLoadState(paramInt1);
   }
   
-  public static void a(TextView paramTextView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  public void onLoadState(int paramInt)
   {
-    if (paramTextView == null) {
+    WeakReference localWeakReference = new WeakReference(this.a);
+    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.1(this, localWeakReference, paramInt));
+    if (paramInt == 0) {}
+    do
+    {
       return;
-    }
-    paramString = "";
-    switch (paramInt1)
-    {
-    default: 
-      paramInt1 = 0;
-      if (paramString == null) {
-        paramString = "";
+      bgor.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(bgor.a(this.a)), ";alreadyShowDialog:", Boolean.valueOf(bgor.b(this.a)) });
       }
-      break;
-    }
-    for (;;)
-    {
-      if ((TextUtils.isEmpty(paramString)) && (paramInt1 == 0))
-      {
-        paramTextView.setVisibility(8);
-        return;
-        if (paramInt3 > 0) {}
-        for (paramInt1 = paramInt3;; paramInt1 = 2130840947)
-        {
-          if (paramInt2 <= paramInt4) {
-            break label104;
-          }
-          paramString = String.valueOf(paramInt4) + "+";
-          break;
-        }
-        label104:
-        paramString = String.valueOf(paramInt2);
-        break;
-      }
-      Object localObject = paramTextView.getTag(2131370613);
-      if (localObject == null) {}
-      for (;;)
-      {
-        paramTextView.setBackgroundResource(paramInt1);
-        if (!a(paramTextView.getText().toString(), paramString))
-        {
-          paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-          paramTextView.setText(paramString);
-        }
-        paramTextView.setVisibility(0);
-        return;
-        if ((!(localObject instanceof Integer)) || (((Integer)localObject).intValue() != 0))
-        {
-          paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-          paramTextView.setTag(2131370613, Integer.valueOf(0));
-          paramTextView.setText(paramString);
-          paramTextView.setPadding(0, 0, 0, 0);
-        }
-      }
-    }
-  }
-  
-  public static boolean a(Object paramObject1, Object paramObject2)
-  {
-    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
+    } while (!bgor.a(this.a));
+    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgot
  * JD-Core Version:    0.7.0.1
  */

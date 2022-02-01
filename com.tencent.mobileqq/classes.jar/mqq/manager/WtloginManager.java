@@ -79,6 +79,8 @@ public abstract interface WtloginManager
   
   public abstract void cancelCode(String paramString, long paramLong, byte[] paramArrayOfByte);
   
+  public abstract int checkSMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte, WtloginObserver paramWtloginObserver);
+  
   public abstract byte[] getGUID();
   
   public abstract boolean getHasPwd(String paramString);

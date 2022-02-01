@@ -410,7 +410,7 @@ public class c
       util.LOGI("loadTKTreeMap len:" + localObject1.length + " at " + t.m(), "");
       try
       {
-        localObject2 = cryptor.decrypt((byte[])localObject1, 0, localObject1.length, t.B);
+        localObject2 = cryptor.decrypt((byte[])localObject1, 0, localObject1.length, t.C);
         if (localObject2 != null)
         {
           localObject2 = new ByteArrayInputStream((byte[])localObject2);
@@ -464,7 +464,7 @@ public class c
       }
       util.LOGI("tree is null", "");
       return null;
-      localObject3 = new SecretKeySpec(t.B, "DESede");
+      localObject3 = new SecretKeySpec(t.C, "DESede");
       localObject2 = Cipher.getInstance("DESede");
       ((Cipher)localObject2).init(2, (Key)localObject3);
       localByteArrayInputStream = new ByteArrayInputStream(localThrowable);
@@ -868,7 +868,7 @@ public class c
   {
     try
     {
-      localObject1 = new SecretKeySpec(t.B, "DESede");
+      localObject1 = new SecretKeySpec(t.C, "DESede");
       Object localObject3 = Cipher.getInstance("DESede");
       ((Cipher)localObject3).init(2, (Key)localObject1);
       localObject1 = new ObjectInputStream(new CipherInputStream(paramContext.openFileInput(paramString), (Cipher)localObject3));
@@ -2325,7 +2325,7 @@ public class c
   
   public int b(TreeMap paramTreeMap, String paramString)
   {
-    return a(this.a, paramTreeMap, paramString, t.B);
+    return a(this.a, paramTreeMap, paramString, t.C);
   }
   
   /* Error */

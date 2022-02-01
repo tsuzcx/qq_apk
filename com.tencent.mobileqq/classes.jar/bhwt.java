@@ -1,101 +1,49 @@
-import com.tencent.widget.ExpandableListView;
-import java.util.ArrayList;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.support.annotation.NonNull;
 
 public class bhwt
+  extends bhxv
 {
-  private static ArrayList<bhwt> a;
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  private float jdField_a_of_type_Float;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+  private int d = -872415232;
+  private int e = 0;
+  private int f;
   
-  static
+  public void a(float paramFloat)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  private static bhwt a()
+  public void a(int paramInt)
   {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        localbhwt = (bhwt)jdField_a_of_type_JavaUtilArrayList.remove(0);
-        localbhwt.b();
-        return localbhwt;
-      }
-      bhwt localbhwt = new bhwt();
-      return localbhwt;
-    }
+    this.f = paramInt;
   }
   
-  public static bhwt a(int paramInt)
+  public void draw(@NonNull Canvas paramCanvas)
   {
-    return a(2, paramInt, 0, 0);
-  }
-  
-  public static bhwt a(int paramInt1, int paramInt2)
-  {
-    return a(1, paramInt1, paramInt2, 0);
-  }
-  
-  public static bhwt a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    bhwt localbhwt = a();
-    localbhwt.d = paramInt1;
-    localbhwt.jdField_a_of_type_Int = paramInt2;
-    localbhwt.b = paramInt3;
-    localbhwt.c = paramInt4;
-    return localbhwt;
-  }
-  
-  public static bhwt a(long paramLong)
-  {
-    if (paramLong == 4294967295L) {
-      return null;
-    }
-    bhwt localbhwt = a();
-    localbhwt.jdField_a_of_type_Int = ExpandableListView.c(paramLong);
-    if (ExpandableListView.b(paramLong) == 1)
-    {
-      localbhwt.d = 1;
-      localbhwt.b = ExpandableListView.d(paramLong);
-      return localbhwt;
-    }
-    localbhwt.d = 2;
-    return localbhwt;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
-  }
-  
-  public long a()
-  {
-    if (this.d == 1) {
-      return ExpandableListView.a(this.jdField_a_of_type_Int, this.b);
-    }
-    return ExpandableListView.b(this.jdField_a_of_type_Int);
-  }
-  
-  public void a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
-        jdField_a_of_type_JavaUtilArrayList.add(this);
-      }
-      return;
-    }
+    Rect localRect = getBounds();
+    paramCanvas.save();
+    int i = localRect.centerX();
+    int j = this.f;
+    paramCanvas.clipRect(localRect);
+    paramCanvas.drawColor(this.d);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
+    paramCanvas.drawCircle(i, this.jdField_a_of_type_Float, j, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restore();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhwt
  * JD-Core Version:    0.7.0.1
  */

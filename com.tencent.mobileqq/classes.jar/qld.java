@@ -1,38 +1,29 @@
-import android.content.SharedPreferences;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
 
 public class qld
+  implements Drawable.Callback
 {
-  public int a;
-  public long a;
-  public long b = -1L;
+  public qld(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
   
-  public qld()
+  public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
+    paramDrawable = new aaua(paramDrawable);
+    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramDrawable, 0, 1, 17);
+    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
   }
   
-  public static qld a()
-  {
-    qld localqld = new qld();
-    SharedPreferences localSharedPreferences = bkbq.a(ors.a(), true, false);
-    localqld.jdField_a_of_type_Long = localSharedPreferences.getLong("kandian_biu_0x210_seq", -1L);
-    localqld.b = localSharedPreferences.getLong("kandian_biu_0x210_uin", -1L);
-    localqld.jdField_a_of_type_Int = localSharedPreferences.getInt("kandian_biu_0x210_status", -1);
-    return localqld;
-  }
+  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
   
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.post(new KandianOx210MsgInfo.Biu0x210Msg.1(this, paramQQAppInterface), 8, null, false);
-  }
+  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qld
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,108 @@
+import UserGrowth.stCollection;
+import UserGrowth.stSimpleMetaFeed;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class usx
-  extends xvy<CommentEntry>
+  extends ueh<uru>
 {
-  boolean jdField_a_of_type_Boolean;
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private View b;
   
-  public usx(int paramInt, List<CommentEntry> paramList, boolean paramBoolean)
+  public usx(Context paramContext, utw paramutw)
   {
-    super(paramList, paramBoolean);
-    boolean bool;
-    this.jdField_a_of_type_Boolean = bool;
+    super(paramContext);
+    if (paramutw != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramutw.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+    }
   }
   
-  public void a(int paramInt, CommentEntry paramCommentEntry, wtq paramwtq)
+  private boolean b()
   {
-    if (paramCommentEntry == null) {
-      wxe.e("FeedCommentLego", "FeedComment getView. data is null.");
+    return (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection.cid));
+  }
+  
+  private boolean c()
+  {
+    return (this.b != null) && (this.b.getVisibility() == 0) && (!a());
+  }
+  
+  private void g()
+  {
+    uqd.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+  }
+  
+  protected void a()
+  {
+    uru localuru = (uru)a();
+    if ((localuru != null) && ((localuru.a() instanceof stSimpleMetaFeed))) {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)localuru.a());
     }
-    Object localObject2;
-    Object localObject1;
-    do
+  }
+  
+  public boolean a()
+  {
+    return (a() != null) && (((uru)a()).a());
+  }
+  
+  protected int b()
+  {
+    return 2131560014;
+  }
+  
+  protected void b()
+  {
+    if (b())
     {
-      do
+      this.b.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.collection.name);
+      if (a())
       {
+        this.b.setBackgroundColor(uov.a(2131165732));
         return;
-        localObject2 = (TextView)paramwtq.a(2131364542);
-        paramwtq = paramCommentEntry.commentId + paramCommentEntry.feedId + paramCommentEntry.status;
-        localObject1 = utv.a().a(paramwtq);
-        if ((localObject1 != null) && (this.jdField_a_of_type_Boolean))
-        {
-          ((TextView)localObject2).setText((CharSequence)localObject1);
-          ((TextView)localObject2).setSpannableFactory(bamp.a);
-          ((TextView)localObject2).setOnTouchListener(ust.a(this.jdField_a_of_type_Ust));
-          return;
-        }
-        localObject1 = wix.a(this.jdField_a_of_type_Ust.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ust.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, paramCommentEntry, ust.a(this.jdField_a_of_type_Ust));
-        if (QQStoryContext.a()) {
-          ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(this.jdField_a_of_type_Ust.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166400)), 0, ((SpannableStringBuilder)localObject1).length(), 33);
-        }
-        ((TextView)localObject2).setText((CharSequence)localObject1);
-        ((TextView)localObject2).setSpannableFactory(bamp.a);
-        ((TextView)localObject2).setOnTouchListener(ust.a(this.jdField_a_of_type_Ust));
-        uwm localuwm = (uwm)uwa.a(2);
-        localObject2 = localuwm.b(paramCommentEntry.authorUnionId);
-        if (!paramCommentEntry.isReply()) {
-          break;
-        }
-        paramCommentEntry = localuwm.b(paramCommentEntry.replierUnionId);
-      } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()) || (paramCommentEntry == null) || (!paramCommentEntry.isAvailable()));
-      utv.a().a(paramwtq, (CharSequence)localObject1);
+      }
+      this.b.setBackgroundColor(uov.a(2131165354));
       return;
-    } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()));
-    utv.a().a(paramwtq, (CharSequence)localObject1);
+    }
+    this.b.setVisibility(8);
+  }
+  
+  protected void c() {}
+  
+  protected void e()
+  {
+    this.b = a(2131380495);
+    this.b.setOnClickListener(new usy(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380496));
+  }
+  
+  public void f()
+  {
+    if (!c())
+    {
+      upe.d("AbsWsUIGroup", "fail to meet the requirement of playing collection animation");
+      return;
+    }
+    if (a() != null) {
+      ((uru)a()).a(true);
+    }
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofInt(this.b, "backgroundColor", new int[] { -2147483648, -2139470081 });
+    localObjectAnimator.addListener(new usz(this));
+    localObjectAnimator.setDuration(500L);
+    localObjectAnimator.setEvaluator(new ArgbEvaluator());
+    localObjectAnimator.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     usx
  * JD-Core Version:    0.7.0.1
  */

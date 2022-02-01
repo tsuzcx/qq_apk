@@ -1,31 +1,22 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class tos
-  implements TextWatcher
+  extends tou
 {
-  public tos(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public tos(BridgeModule paramBridgeModule)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
+    super(paramBridgeModule);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
-      QQToast.a(this.a, 0, this.a.getString(2131695714), 0).b(this.a.getTitleBarHeight());
-    }
+    BridgeModule.access$1000(this.a, paramInt2, paramIntent);
   }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tos
  * JD-Core Version:    0.7.0.1
  */

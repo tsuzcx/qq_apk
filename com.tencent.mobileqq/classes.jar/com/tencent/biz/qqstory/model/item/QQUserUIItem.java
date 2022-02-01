@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.model.item;
 
-import alto;
 import android.text.TextUtils;
+import anmw;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.OfficialRecommendEntry;
 import com.tencent.biz.qqstory.database.UserEntry;
@@ -17,24 +17,24 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import ulj;
-import uwa;
-import uwm;
-import uxe;
-import vde;
-import wrm;
-import wxe;
-import xre;
+import wev;
+import wpm;
+import wpy;
+import wqq;
+import wwq;
+import ykx;
+import yqp;
+import zkp;
 
 public class QQUserUIItem
   extends BaseUIItem
-  implements ulj, uxe
+  implements wev, wqq
 {
   public static final int RELATION_TYPE_FOLLOWER = 1;
   public static final int RELATION_TYPE_QQ_FRIEND = 0;
   public static final int RELATION_TYPE_TROOP = 2;
   public static final String USERICON_JUMP_PREFIX = "https://story.now.qq.com/mobile/pages/medal.html?_bid=2473&_wv=1031";
-  public static final String USERICON_PREFIX = "http://pub.idqqimg.com/pc/misc/qqstory_icon/";
+  public static final String USERICON_PREFIX = "https://pub.idqqimg.com/pc/misc/qqstory_icon/";
   public String backgroundUrl;
   public int fansCount = -1;
   public int fansCountExtra = -1;
@@ -161,7 +161,7 @@ public class QQUserUIItem
     int i = 1;
     this.uid = paramUserInfo.union_id.get().toStringUtf8();
     this.qq = String.valueOf(paramUserInfo.uid.get());
-    ((uwm)uwa.a(2)).a(this.uid, this.qq);
+    ((wpy)wpm.a(2)).a(this.uid, this.qq);
     this.nickName = paramUserInfo.nick.get().toStringUtf8();
     this.headUrl = paramUserInfo.head_url.get().toStringUtf8();
     boolean bool;
@@ -215,7 +215,7 @@ public class QQUserUIItem
         this.iconUrl = localUsrIcon.icon_postfix.get().toStringUtf8();
         this.iconJumpUrl = localUsrIcon.jmp_postfix.get().toStringUtf8();
         if (!TextUtils.isEmpty(this.iconUrl)) {
-          this.iconUrl = ("http://pub.idqqimg.com/pc/misc/qqstory_icon/" + this.iconUrl);
+          this.iconUrl = ("https://pub.idqqimg.com/pc/misc/qqstory_icon/" + this.iconUrl);
         }
         if (!TextUtils.isEmpty(this.iconJumpUrl)) {
           this.iconJumpUrl = ("https://story.now.qq.com/mobile/pages/medal.html?_bid=2473&_wv=1031" + this.iconJumpUrl);
@@ -239,7 +239,7 @@ public class QQUserUIItem
     for (this.sourceTagType = paramUserInfo.video_source_tag_type.get();; this.sourceTagType = 0)
     {
       if (QLog.isColorLevel()) {
-        wxe.a("UserManager", "convert %s", this.uid);
+        yqp.a("UserManager", "convert %s", this.uid);
       }
       return;
       bool = false;
@@ -266,7 +266,7 @@ public class QQUserUIItem
       if (!TextUtils.isEmpty(paramObject.headUrl))
       {
         if ((isMe()) && (!TextUtils.isEmpty(this.headUrl)) && (!TextUtils.equals(this.headUrl, paramObject.headUrl))) {
-          wxe.b("UserManager", "urlchange: %s -> %s  hashCode = %d -> %d %s", new Object[] { this.headUrl, paramObject.headUrl, Integer.valueOf(hashCode()), Integer.valueOf(paramObject.hashCode()), xre.a(8) });
+          yqp.b("UserManager", "urlchange: %s -> %s  hashCode = %d -> %d %s", new Object[] { this.headUrl, paramObject.headUrl, Integer.valueOf(hashCode()), Integer.valueOf(paramObject.hashCode()), zkp.a(8) });
         }
         this.headUrl = paramObject.headUrl;
       }
@@ -399,8 +399,8 @@ public class QQUserUIItem
     }
     if ((this.iconUrlCacheTime == -1L) || (l - this.iconUrlCacheTime > 3600000L))
     {
-      new vde();
-      vde.a(this.uid);
+      new wwq();
+      wwq.a(this.uid);
     }
     return this.iconUrl;
   }
@@ -410,7 +410,7 @@ public class QQUserUIItem
     if (TextUtils.isEmpty(this.iconUrl)) {
       return "";
     }
-    return this.iconUrl.substring("http://pub.idqqimg.com/pc/misc/qqstory_icon/".length());
+    return this.iconUrl.substring("https://pub.idqqimg.com/pc/misc/qqstory_icon/".length());
   }
   
   public int hashCode()
@@ -437,7 +437,7 @@ public class QQUserUIItem
       bool2 = bool1;
     } while (bool1);
     QQStoryContext.a();
-    return ((alto)QQStoryContext.a().getManager(51)).b(this.qq);
+    return ((anmw)QQStoryContext.a().getManager(51)).b(this.qq);
   }
   
   public boolean isMe()
@@ -497,12 +497,12 @@ public class QQUserUIItem
   
   public String toString()
   {
-    return wrm.a(new Object[] { "QQUserUIItem{nickName=", this.nickName, ", uid=", this.uid, ", isVip=", Boolean.valueOf(this.isVip), ",qq=", this.qq, ",isSubscribe=", Integer.valueOf(this.isSubscribe), ", headUrl=", this.headUrl, ", sourceTagType=", Integer.valueOf(this.sourceTagType) });
+    return ykx.a(new Object[] { "QQUserUIItem{nickName=", this.nickName, ", uid=", this.uid, ", isVip=", Boolean.valueOf(this.isVip), ",qq=", this.qq, ",isSubscribe=", Integer.valueOf(this.isSubscribe), ", headUrl=", this.headUrl, ", sourceTagType=", Integer.valueOf(this.sourceTagType) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.QQUserUIItem
  * JD-Core Version:    0.7.0.1
  */

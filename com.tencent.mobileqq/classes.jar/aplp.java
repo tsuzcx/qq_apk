@@ -1,79 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QQDingdongSoundData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-public class aplp
-  extends apld
+public abstract class aplp
+  implements aple
 {
-  public aplp(QQAppInterface paramQQAppInterface)
+  private final String a;
+  
+  public aplp(String paramString)
   {
-    super("qq.android.dingdong.ring", paramQQAppInterface);
+    this.a = paramString;
   }
   
-  public int a()
+  public Bundle a()
   {
-    return 10050;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QQDingdongSoundData.class;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("domain", this.a);
+    return localBundle;
   }
   
   public String a()
   {
-    return "dingdongDownloadAudioSoundDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQDingdongSoundHandler", 2, "download success: " + paramString);
-    }
-    try
-    {
-      bdhb.a(paramString, mtu.a(), false);
-      super.a(paramString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
-    if ((localQQDingdongSoundData != null) && (!localQQDingdongSoundData.autoDownload))
-    {
-      localQQDingdongSoundData.autoDownload = true;
-      apkr.a(localQQDingdongSoundData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
-    if (localQQDingdongSoundData == null) {
-      return super.h();
-    }
-    return localQQDingdongSoundData.autoDownload;
+    return "QQ.GetPSKeyAsync";
   }
 }
 

@@ -1,54 +1,29 @@
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.studyroom.utils.PluginUtils.1;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class bddr
 {
-  public static URLDrawable a(ImageView paramImageView, String paramString)
+  public static Future<?> a(Context paramContext, Bundle paramBundle, boolean paramBoolean, bdds parambdds)
   {
-    return a(paramImageView, paramString, bdee.a);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, Drawable paramDrawable)
-  {
-    return a(paramImageView, paramString, bdee.a, paramDrawable, paramDrawable);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
-  {
-    return a(paramImageView, paramString, paramDecodeHandler, null);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable)
-  {
-    return a(paramImageView, paramString, paramDecodeHandler, paramDrawable, paramDrawable);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if (paramImageView.getLayoutParams() != null)
-    {
-      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
-    }
-    if ((localURLDrawableOptions.mRequestWidth <= 0) || (localURLDrawableOptions.mRequestHeight <= 0))
-    {
-      localURLDrawableOptions.mRequestWidth = Math.max(paramImageView.getWidth(), 0);
-      localURLDrawableOptions.mRequestHeight = Math.max(paramImageView.getHeight(), 0);
-    }
-    localURLDrawableOptions.mFailedDrawable = paramDrawable2;
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
-    if (paramDecodeHandler != null) {
-      localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
-    }
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramString.setDecodeHandler(paramDecodeHandler);
-    paramImageView.setImageDrawable(paramString);
-    return paramString;
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramBundle.putString("qqVersion", "8.4.1");
+    paramBundle.putString("bizType", "StudyRoom");
+    paramBundle.putString("plugin_id", "StudyRoom");
+    paramBundle.putString("appid", "101854111");
+    paramBundle.putInt("authtype", 1);
+    paramBundle.putInt("isGroupCode", 1);
+    paramBundle.putInt("roomCodeType", 1);
+    paramBundle.putString("uin", localQQAppInterface.c());
+    paramBundle.putBoolean("preload", paramBoolean);
+    paramBundle.putString("fromId", "1");
+    paramBundle.putLong("ts_click_millisecond", System.currentTimeMillis());
+    paramBundle.putBoolean("show_status_bar", true);
+    return anvy.a(192).submit(new PluginUtils.1(paramContext, paramBundle, parambdds));
   }
 }
 

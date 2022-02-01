@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aqru;
-import arcg;
+import asyw;
+import athr;
 
 public class FMObserver$2
   implements Runnable
 {
-  public FMObserver$2(aqru paramaqru, arcg paramarcg) {}
+  public FMObserver$2(asyw paramasyw, athr paramathr) {}
   
   public void run()
   {

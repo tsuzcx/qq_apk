@@ -1,6 +1,6 @@
 package com.tencent.open.downloadnew;
 
-import bfok;
+import bivr;
 
 public final class DownloadApi$10
   implements Runnable
@@ -9,12 +9,12 @@ public final class DownloadApi$10
   
   public void run()
   {
-    bfok.a().a(this.a);
+    bivr.a().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.10
  * JD-Core Version:    0.7.0.1
  */

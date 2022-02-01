@@ -1,44 +1,23 @@
-import android.view.View;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.AppRuntime.Status;
 
-public class aynk
-  implements aynt
+class aynk
+  implements DialogInterface.OnClickListener
 {
-  public static final String a;
-  private final List<aynu> a;
-  private final String b;
+  aynk(aymu paramaymu, AppRuntime.Status paramStatus, long paramLong) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131705777);
-  }
-  
-  public aynk(List<aynu> paramList, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-  }
-  
-  public int a()
-  {
-    return 2147483647;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<aynu> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView) {}
-  
-  public String b()
-  {
-    return this.b;
+    if (!bgnt.g(aymu.a(this.jdField_a_of_type_Aymu)))
+    {
+      this.jdField_a_of_type_Aymu.c();
+      QQToast.a(aymu.a(this.jdField_a_of_type_Aymu), 1, 2131718205, 1).a();
+      return;
+    }
+    aymu.a(this.jdField_a_of_type_Aymu, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long, true);
+    bcst.b(aymu.a(this.jdField_a_of_type_Aymu), "dc00898", "", "", "0X8009DE1", "0X8009DE1", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,23 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
 
-class aexi
-  implements ValueAnimator.AnimatorUpdateListener
+public class aexi
+  extends afwr
 {
-  aexi(aexh paramaexh) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
-    if (aexh.a(this.a) != null) {
-      aexh.a(this.a).setAlpha((float)d);
-    }
-    if (aexh.a(this.a) != null) {
-      aexh.a(this.a).setAlpha((float)d * 2.0F);
-    }
-  }
+  public ImageView a;
+  public BreathAnimationLayout a;
+  public StringBuilder a;
+  public TextView c;
 }
 
 

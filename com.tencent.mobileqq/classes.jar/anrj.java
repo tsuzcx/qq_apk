@@ -1,107 +1,183 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.ApplicationCallback;
-import com.tencent.ark.ark.ModuleRegister;
-import com.tencent.ark.open.ArkAppConfigMgr;
-import com.tencent.ark.open.security.ArkAppUrlChecker;
-import com.tencent.mobileqq.ark.ArkAppCenterEvent;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.method.MovementMethod;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-final class anrj
-  implements ark.ApplicationCallback
+public class anrj
 {
-  public void AppCreate(ark.Application paramApplication)
+  private static anrn jdField_a_of_type_Anrn;
+  private static boolean jdField_a_of_type_Boolean;
+  
+  public static MovementMethod a()
   {
-    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
+    if (jdField_a_of_type_Anrn == null) {
+      jdField_a_of_type_Anrn = new anrn();
+    }
+    return jdField_a_of_type_Anrn;
   }
   
-  public void AppDestroy(ark.Application paramApplication)
+  public static bgpa a(Context paramContext, String paramString)
   {
-    paramApplication = paramApplication.GetSpecific("appName");
-    ArkAppCenterEvent.a(1, paramApplication, null);
-    anrm.a(paramApplication);
+    return a(paramContext, paramString, null, null);
   }
   
-  public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
+  public static bgpa a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramApplication = paramApplication.GetSpecific("appName");
-    ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
-    boolean bool1 = true;
-    int j;
-    int i;
-    boolean bool2;
-    if (localArkAppUrlChecker != null)
-    {
-      j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
-      i = 0;
-      if (j != 0) {
-        break label279;
-      }
-      bool1 = true;
-      boolean bool3 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication);
-      boolean bool4 = anob.a();
-      if ((!bool3) || (bool4)) {
-        break label285;
-      }
-      bool2 = true;
-      label69:
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkMultiProcUtil", 2, new Object[] { "ArkSafe.UrlCheck.CheckUrlLegalityCallback,appname=", paramApplication, ", enableCheck=", Boolean.valueOf(bool2), ", appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4) });
-      }
-      if (bool1) {
-        break label291;
-      }
-      i = 1;
-      if (bool2) {
-        break label291;
-      }
-      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback , isValid set=true, appName=", paramApplication, ",appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4), ",url=", ndq.b(paramString, new String[0]) });
-      bool1 = true;
-      i = 2;
+    SpannableString localSpannableString = new SpannableString(paramContext.getString(2131698167));
+    localSpannableString.setSpan(new anrm(paramContext, paramString, "https://ti.qq.com/agreement/index.html"), 114, 120, 33);
+    localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 114, 120, 17);
+    localSpannableString.setSpan(new anrm(paramContext, paramString, "https://ti.qq.com/agreement/privacy/index.html"), 121, 127, 33);
+    localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 121, 127, 17);
+    localSpannableString.setSpan(new anrm(paramContext, paramString, "https://ti.qq.com/agreement/privateProtocal.html"), 128, 136, 33);
+    localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 128, 136, 17);
+    paramString = new anrk(paramOnClickListener1);
+    paramOnClickListener1 = new anrl(paramOnClickListener2);
+    paramContext = bglp.a(paramContext, 0, paramContext.getString(2131698169), localSpannableString.toString(), 2131698168, 2131698166, paramOnClickListener1, paramString);
+    paramContext.setCanceledOnTouchOutside(false);
+    paramContext.setCancelable(true);
+    paramString = (TextView)paramContext.findViewById(2131365475);
+    paramString.setText(localSpannableString);
+    paramString.setTextSize(1, 13.0F);
+    paramString.setHighlightColor(0);
+    paramString.setMovementMethod(a());
+    ((TextView)paramContext.findViewById(2131365470)).setTextColor(Color.parseColor("#40A0FF"));
+    paramContext.show();
+    return paramContext;
+  }
+  
+  public static String a()
+  {
+    String str2 = bgjb.a(BaseApplication.getContext(), "privacypolicy_state");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "0";
     }
-    label279:
-    label285:
-    label291:
-    for (;;)
-    {
-      anrm.a(paramApplication, paramString, j, i, "");
-      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.EngineCallback appName=", paramApplication, ",url=", ndq.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool1) });
-      return bool1;
-      bool1 = false;
-      break;
-      bool2 = false;
-      break label69;
+    return str1;
+  }
+  
+  public static void a()
+  {
+    a();
+  }
+  
+  public static void a(RedTouch paramRedTouch)
+  {
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
+    localRedTypeInfo.red_type.set(0);
+    localRedTypeInfo.red_desc.set("");
+    localRedTypeInfo.red_content.set("");
+    localAppInfo.red_display_info.red_type_info.add(localRedTypeInfo);
+    localAppInfo.iNewFlag.set(1);
+    paramRedTouch.a(localRedTypeInfo);
+  }
+  
+  public static void a(String paramString)
+  {
+    bgjb.a(BaseApplication.getContext(), "privacypolicy_state", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("PrivacyPolicyHelper", 2, "setPrivacyPolicyStatus, state=" + paramString);
     }
   }
   
-  public void OutputScriptError(String paramString1, String paramString2)
+  public static boolean a()
   {
-    if (paramString1 == null) {
-      paramString1 = "";
+    if ((!jdField_a_of_type_Boolean) && (a().equals("1"))) {
+      jdField_a_of_type_Boolean = true;
     }
-    for (;;)
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    boolean bool3 = false;
+    if (a().equals("0")) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      if (paramString2 == null) {
-        paramString2 = "";
+      boolean bool2;
+      if (paramInt == 0)
+      {
+        bool2 = bool1;
+        if (bool1)
+        {
+          if (!b()) {
+            break label100;
+          }
+          bool1 = bool3;
+        }
       }
+      label100:
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("ArkApp.ArkMultiProcUtil", 1, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
+        bool2 = bool1;
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PrivacyPolicyHelper", 2, "needShowPrivacyPolicy, needShow=" + bool2 + ", from=" + paramInt);
+          }
+          return bool2;
+          bool2 = bool1;
+          if (paramInt == 1)
+          {
+            bool2 = bool1;
+            if (bool1)
+            {
+              b("1");
+              bool2 = bool1;
+            }
+          }
         }
-        anoe.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
-        return;
       }
     }
   }
   
-  public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
+  public static String b()
   {
-    anjy.a(paramModuleRegister, paramApplication);
+    String str2 = bgjb.a(BaseApplication.getContext(), "privacypolicy_show_reddot");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "0";
+    }
+    return str1;
+  }
+  
+  public static void b(String paramString)
+  {
+    bgjb.a(BaseApplication.getContext(), "privacypolicy_show_reddot", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("PrivacyPolicyHelper", 2, "setHasShowRedDotState, state=" + paramString);
+    }
+  }
+  
+  public static boolean b()
+  {
+    boolean bool = false;
+    if (b().equals("1")) {
+      bool = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PrivacyPolicyHelper", 2, "hasShowRedDotState, hasShow=" + bool);
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anrj
  * JD-Core Version:    0.7.0.1
  */

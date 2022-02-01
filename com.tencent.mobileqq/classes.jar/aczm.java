@@ -1,36 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class aczm
-  extends BroadcastReceiver
+  extends aczg
 {
-  public aczm(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a()
   {
-    if ((this.a.jdField_a_of_type_Awqt.a.a.equals(this.a.app.getCurrentAccountUin())) && (this.a.jdField_a_of_type_Bhtd != null))
-    {
-      if ((paramIntent == null) || (!paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label"))) {
-        break label107;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "receive broadcast modify pl info");
-      }
-      paramContext = paramIntent.getBundleExtra("key_bundle_data");
-      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged"))) {
-        this.a.jdField_a_of_type_Bhtd.obtainMessage(16, 0, 0).sendToTarget();
-      }
-    }
-    return;
-    label107:
-    this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(4);
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    new bbzc().d(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (15 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

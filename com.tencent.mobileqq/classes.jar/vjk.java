@@ -1,17 +1,27 @@
-class vjk
-  extends viw
+import android.support.v7.widget.RecyclerView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
+
+public class vjk
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  vjk(vji paramvji, vkp paramvkp) {}
+  public vjk(QCircleBaseTabFragment paramQCircleBaseTabFragment, RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
   
-  public boolean b()
+  public boolean onPreDraw()
   {
-    this.jdField_a_of_type_Vkp.a = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount() > 0)
+    {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBaseTabFragment.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_Int, this.b);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vjk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class yba
   implements View.OnClickListener
 {
-  yba(yay paramyay, ybe paramybe) {}
+  yba(yay paramyay) {}
   
   public void onClick(View paramView)
   {
-    if (yay.a(this.jdField_a_of_type_Yay) != null) {
-      yay.a(this.jdField_a_of_type_Yay).b(this.jdField_a_of_type_Ybe);
-    }
+    this.a.b();
+    this.a.a.i();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yba
  * JD-Core Version:    0.7.0.1
  */

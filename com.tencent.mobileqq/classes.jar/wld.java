@@ -1,20 +1,14 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class wld
-  implements beqw
+public abstract interface wld<Request extends wlf, Respond extends wla>
 {
-  wld(wlc paramwlc, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
-  
-  public void a(String paramString)
-  {
-    wxe.a("Q.qqstory.detail.FeedItemThumbAdapter", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
-    uoy.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
-  }
+  public abstract void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wld
  * JD-Core Version:    0.7.0.1
  */

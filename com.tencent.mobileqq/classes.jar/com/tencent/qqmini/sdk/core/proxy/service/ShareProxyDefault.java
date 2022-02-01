@@ -3,15 +3,16 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.qqmini.sdk.core.proxy.ShareProxy;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ShareProxy;
 import com.tencent.qqmini.sdk.launcher.model.ShareData;
-import java.util.HashMap;
+import com.tencent.qqmini.sdk.ui.MorePanel;
 
+@ProxyService(proxy=ShareProxy.class)
 public class ShareProxyDefault
   implements ShareProxy
 {
-  private static final String TAG = "ShareProxy";
-  
   public int getDefaultShareTarget()
   {
     return -1;
@@ -30,11 +31,16 @@ public class ShareProxyDefault
   
   public void share(Activity paramActivity, ShareData paramShareData) {}
   
-  public void showShareMenuForInnerShareButton(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, HashMap<String, Integer> paramHashMap, int paramInt) {}
+  public void sharePic(Activity paramActivity, ShareData paramShareData) {}
+  
+  public void showSharePanel(IMiniAppContext paramIMiniAppContext)
+  {
+    MorePanel.show(paramIMiniAppContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ShareProxyDefault
  * JD-Core Version:    0.7.0.1
  */

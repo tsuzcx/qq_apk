@@ -1,59 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class bcmj
-  extends nac
+public class bcmj
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private static boolean a;
+  
+  public static boolean a()
   {
-    boolean bool2 = false;
-    mobileqq_mp.FollowResponse localFollowResponse;
-    if (paramInt == 0) {
-      localFollowResponse = new mobileqq_mp.FollowResponse();
+    boolean bool = false;
+    if (a) {
+      return true;
     }
+    String str = bcls.c();
+    if (str == null) {
+      return false;
+    }
+    if (!bgmg.a(str + "libObjectTracker.so")) {}
     for (;;)
     {
-      try
-      {
-        localFollowResponse.mergeFrom(paramArrayOfByte);
-        if (!((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.has()) {
-          break label146;
-        }
-        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-        if (paramInt != 0) {
-          break label146;
-        }
-        bool1 = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("TrackerSoLoader", 2, " isTrackingSoExist =" + bool);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("TroopBindPubAccountProtocol", 2, paramArrayOfByte.toString());
-        bool1 = bool2;
-        continue;
-      }
-      a(bool1, paramBundle);
-      return;
-      boolean bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("TroopBindPubAccountProtocol", 2, "follow pubAccount failed, errorCode=" + paramInt);
-        bool1 = bool2;
-        continue;
-        label146:
-        bool1 = false;
-      }
+      a = bool;
+      return a;
+      bool = true;
     }
   }
-  
-  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 

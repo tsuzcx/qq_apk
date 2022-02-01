@@ -5,6 +5,7 @@ public class SubCommentData
 {
   public int hasTarget;
   public String parentCommentId;
+  public String repliedCommentId;
   public String repliedUserHomePage;
   public String repliedUserNickname;
   public String repliedUserUin;
@@ -16,7 +17,7 @@ public class SubCommentData
   
   public String toString()
   {
-    return "SubCommentData{parentCommentId='" + this.parentCommentId + '\'' + ", repliedUserUin='" + this.repliedUserUin + '\'' + ", repliedUserNickname='" + this.repliedUserNickname + '\'' + ", repliedUserHomePage='" + this.repliedUserHomePage + '\'' + ", hasTarget=" + this.hasTarget + '\'' + super.toString() + '}';
+    return "SubCommentData{parentCommentId='" + this.parentCommentId + '\'' + "，repliedCommentId='" + this.repliedCommentId + '\'' + ", repliedUserUin='" + this.repliedUserUin + '\'' + ", repliedUserNickname='" + this.repliedUserNickname + '\'' + ", repliedUserHomePage='" + this.repliedUserHomePage + '\'' + ", hasTarget=" + this.hasTarget + '\'' + super.toString() + '}';
   }
 }
 

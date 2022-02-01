@@ -1,31 +1,57 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class afnm
-  implements afkw
+public class afnm
+  extends anqd
 {
-  afnm(afnl paramafnl, afnk paramafnk, MessageForPoke paramMessageForPoke) {}
+  public afnm(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void a()
+  protected void a(String paramString)
   {
-    this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_Afnk.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Afnk.b == afmy.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Afnl.a.a instanceof ChatHistoryActivity)) && (!afmy.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Afnk.c.setVisibility(0);
-    }
-    for (;;)
+    this.a.i();
+    paramString = this.a.getString(2131718381);
+    QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    this.a.a(2130839584, this.a.getString(2131718056));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    long l2 = bdgn.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
     {
-      this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Afnk.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      l1 = Long.parseLong(paramString1);
+      if (!paramBoolean)
+      {
+        this.a.i();
+        if (bdgo.a(bdgn.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4)) {
+          this.a.finish();
+        }
+        return;
+      }
+      this.a.i();
+      this.a.finish();
+      bdgo.a(bdgn.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
       return;
-      this.jdField_a_of_type_Afnk.c.setVisibility(8);
     }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        l1 = l2;
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    this.a.a(2130839584, this.a.getString(2131718042));
   }
 }
 

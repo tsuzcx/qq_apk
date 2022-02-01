@@ -114,18 +114,34 @@ public class AEFilterChain
       Iterator localIterator = this.filterList.iterator();
       while (localIterator.hasNext())
       {
-        Object localObject2 = (AEChainI)localIterator.next();
-        if ((localObject2 != null) && (((AEChainI)localObject2).isApplied()))
+        Object localObject3 = (AEChainI)localIterator.next();
+        if ((localObject3 != null) && (((AEChainI)localObject3).isApplied()))
         {
-          String str = localObject2.getClass().getSimpleName() + "@" + localObject2.hashCode();
-          AEProfiler.getInstance().start(str, true);
-          localObject2 = ((AEChainI)localObject2).render((Frame)localObject1);
-          long l = AEProfiler.getInstance().end(str, true);
-          AEProfiler.getInstance().add(2, str, l);
-          if ((localObject2 != localObject1) && (!((Frame)localObject1).unlock())) {
-            ((Frame)localObject1).clear();
+          Object localObject2 = localObject3.getClass().getSimpleName() + "@" + localObject3.hashCode();
+          AEProfiler.getInstance().start((String)localObject2, true);
+          Frame localFrame1 = ((AEChainI)localObject3).render((Frame)localObject1);
+          long l = AEProfiler.getInstance().end((String)localObject2, true);
+          AEProfiler.getInstance().add(2, (String)localObject2, l);
+          if (localFrame1 != localObject1)
+          {
+            localObject2 = ((Frame)localObject1).nextFrame;
+            localObject3 = localObject1;
+            while (localObject2 != null)
+            {
+              if (localFrame1 == localObject2)
+              {
+                ((Frame)localObject3).nextFrame = localFrame1.nextFrame;
+                localFrame1.nextFrame = null;
+              }
+              Frame localFrame2 = ((Frame)localObject2).nextFrame;
+              localObject3 = localObject2;
+              localObject2 = localFrame2;
+            }
+            if (!((Frame)localObject1).unlock()) {
+              ((Frame)localObject1).clear();
+            }
           }
-          localObject1 = localObject2;
+          localObject1 = localFrame1;
         }
       }
       copy((Frame)localObject1, paramInt2);
@@ -198,7 +214,7 @@ public class AEFilterChain
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.openrender.AEFilterChain
  * JD-Core Version:    0.7.0.1
  */

@@ -1,222 +1,160 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.os.Vibrator;
-import android.support.v4.app.FragmentActivity;
-import android.util.DisplayMetrics;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.MultiAIOStarter.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.forward.ForwardTroopMemberControllerForMiniPie.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
 public class aulb
 {
-  public static boolean a;
+  public static int a;
+  public static int b = 1;
+  private float jdField_a_of_type_Float = 1.0F;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new aule(this);
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private anxg jdField_a_of_type_Anxg = new aulc(this);
+  private aobu jdField_a_of_type_Aobu;
+  private aobv jdField_a_of_type_Aobv = new auld(this);
+  private aulf jdField_a_of_type_Aulf;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  private static int a(Context paramContext)
+  public aulb(Context paramContext)
   {
-    if ((paramContext instanceof Activity))
-    {
-      paramContext = ((Activity)paramContext).findViewById(16908290);
-      if (paramContext != null) {
-        return paramContext.getHeight();
-      }
-    }
-    return 0;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    d();
   }
   
-  private static Bitmap a(Context paramContext)
+  private void a(String paramString)
   {
-    View localView;
-    int i;
-    int j;
-    if ((paramContext instanceof BaseActivity))
-    {
-      localView = ((BaseActivity)paramContext).getWindow().getDecorView();
-      i = localView.getWidth();
-      j = localView.getHeight();
+    ThreadManager.getFileThreadHandler().post(new ForwardTroopMemberControllerForMiniPie.1(this, paramString));
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
-    for (;;)
-    {
-      try
-      {
-        localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        Canvas localCanvas;
-        QLog.e("MultiAIOStarter", 1, "getDecorViewBitmap: ", localThrowable1);
-      }
-      catch (Throwable localThrowable1)
-      {
-        try
-        {
-          localBitmap.setDensity(paramContext.getResources().getDisplayMetrics().densityDpi);
-          localCanvas = new Canvas(localBitmap);
-          localView.draw(localCanvas);
-          localCanvas.setBitmap(null);
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiAIOStarter", 2, "getDecorViewBitmap() called with: context = [" + paramContext + "], bitmap = " + localBitmap);
-          }
-          return localBitmap;
-        }
-        catch (Throwable localThrowable2)
-        {
-          break label123;
-        }
-        localThrowable1 = localThrowable1;
-        localBitmap = null;
-      }
-      label123:
-      aulh.a();
-      continue;
-      Bitmap localBitmap = null;
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(4);
     }
   }
   
-  public static void a()
+  private void c()
   {
-    try
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    }
+  }
+  
+  private void d()
+  {
+    int i = 5;
+    RelativeLayout.LayoutParams localLayoutParams;
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
     {
-      ((Vibrator)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("vibrator")).vibrate(20L);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.addRule(14);
+      localLayoutParams.addRule(15);
+      this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131703640));
+      int j = (int)(16.0D / this.jdField_a_of_type_Float);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, j);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167076));
+    }
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null)
+    {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(this.jdField_a_of_type_AndroidContentContext, 5);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      if (this.jdField_a_of_type_Float != 0.0F) {
+        i = (int)(5 / this.jdField_a_of_type_Float);
+      }
+      i = afur.a(i, this.jdField_a_of_type_AndroidContentContext.getResources());
+      localLayoutParams.rightMargin = i;
+      localLayoutParams.leftMargin = i;
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
+    }
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  public void a()
+  {
+    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "destroy.");
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anxg);
+    }
+    if (this.jdField_a_of_type_Aobu != null) {
+      this.jdField_a_of_type_Aobu.d();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, float paramFloat)
+  {
+    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "setTroopInfo  uin: " + paramString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramQQAppInterface = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      paramQQAppInterface = "";
+    }
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anxg);
+    }
+    this.jdField_a_of_type_Aobu = new aobu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Aobu.a(this.jdField_a_of_type_Aobv);
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Aulf = new aulf(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aobu, this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aulf);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
+    b();
+    if (paramInt == 1) {
+      ((anwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).o(this.jdField_a_of_type_JavaLangString);
+    }
+    while (paramInt != 3000) {
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.e("MultiAIOStarter", 2, "asynViratorExecute Vibrator exception.");
-      localException.printStackTrace();
-    }
-  }
-  
-  private static void a(BaseActivity paramBaseActivity, aulg paramaulg)
-  {
-    ThreadManagerV2.postImmediately(new MultiAIOStarter.2(paramBaseActivity, paramaulg), null, false);
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start curType = " + paramInt + " from = " + paramString3 + ", hasOpened = " + a);
-    }
-    if (!auku.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start is forbid: local switch is closed! do not start multiAIO!");
-      }
-      return false;
-    }
-    if (!((aulf)BaseApplicationImpl.getApplication().getRuntime().getManager(325)).a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start error: 配置下发限制 do not start multiAIO!");
-      }
-      return false;
-    }
-    if (AppSetting.c)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start error: 无障碍 mode do not start multiAIO!");
-      }
-      return false;
-    }
-    if (((paramContext instanceof BaseActivity)) && (((BaseActivity)paramContext).isInMultiWindow()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start error: 分屏 mode do not start multiAIO!");
-      }
-      return false;
-    }
-    if (a) {
-      return true;
-    }
-    if (auku.a(paramInt))
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("uin", paramString1);
-      localIntent.putExtra("uintype", paramInt);
-      localIntent.putExtra("uinname", paramString2);
-      localIntent.putExtra("conversation_tab_flag", paramString3);
-      localIntent.putExtra("public_fragment_window_feature", 1);
-      localIntent.putExtra("OPEN_MULTI_FROM_ACTIVITY", paramContext.getClass().getSimpleName());
-      auku.a();
-      QQAppInterface localQQAppInterface = ((BaseActivity)paramContext).app;
-      aulg localaulg = aulg.a(localQQAppInterface);
-      Bitmap localBitmap = a(paramContext);
-      int i = a(paramContext);
-      a = true;
-      localaulg.a(localBitmap);
-      localaulg.a(i);
-      a((BaseActivity)paramContext, localaulg);
-      localaulg.a((QQAppInterface)localQQAppInterface, (FragmentActivity)paramContext, paramString3, paramInt, paramString1, paramString2);
-      localaulg.a(new aulc(paramContext));
-      localIntent.putExtra("OPEN_MULTI_AIO_CONTEXT", localaulg.a());
-      if ("open_from_aio".equals(paramString3)) {
-        localIntent.putExtra("OPEN_MULTI_AIO_LIST_VIEW_SPECIFY_BOTTOM", a(paramContext));
-      }
-      adpn.a(paramContext, localIntent, PublicTransFragmentActivity.class, MultiAIOFragment.class);
-      return true;
-    }
-    return false;
-  }
-  
-  private static int[] a(Context paramContext)
-  {
-    int[] arrayOfInt = new int[2];
-    int j;
-    int i;
-    View localView;
-    if ((paramContext instanceof BaseActivity))
-    {
-      paramContext = (ListView)((BaseActivity)paramContext).findViewById(2131369527);
-      if (paramContext != null)
-      {
-        j = paramContext.getBottom() - paramContext.getPaddingBottom();
-        i = paramContext.getChildCount();
-        if (i < 0) {
-          break label145;
-        }
-        localView = paramContext.getChildAt(i);
-        if ((localView == null) || (j <= localView.getTop()) || (j > localView.getBottom())) {
-          break label138;
-        }
-      }
-    }
-    for (;;)
-    {
-      j = i;
-      if (i == -1) {
-        j = paramContext.getChildCount() - 1;
-      }
-      if (j != -1)
-      {
-        arrayOfInt[0] = (paramContext.getFirstVisiblePosition() + j);
-        localView = paramContext.getChildAt(j);
-        if (localView != null) {
-          arrayOfInt[1] = (paramContext.getBottom() - paramContext.getPaddingBottom() - localView.getBottom());
-        }
-      }
-      return arrayOfInt;
-      label138:
-      i -= 1;
-      break;
-      label145:
-      i = -1;
-    }
+    a(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aulb
  * JD-Core Version:    0.7.0.1
  */

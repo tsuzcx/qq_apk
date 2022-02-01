@@ -1,25 +1,9 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class afww
-  extends awkf
+public abstract interface afww
 {
-  afww(afwu paramafwu, BaseChatItemLayout paramBaseChatItemLayout) {}
-  
-  public void a(int paramInt, awjm paramawjm)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
-    }
-  }
-  
-  public void a_(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
-    }
-  }
+  public abstract void a(ChatMessage paramChatMessage, CompoundButton paramCompoundButton, boolean paramBoolean);
 }
 
 

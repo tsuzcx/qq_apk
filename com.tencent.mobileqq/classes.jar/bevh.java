@@ -1,45 +1,304 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class bevh
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public bevh(SlideDetectListView paramSlideDetectListView) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public static int a(int paramInt1, int paramInt2)
   {
-    if (!this.a.jdField_c_of_type_Boolean) {}
+    if (paramInt2 == 404) {
+      paramInt2 = 303;
+    }
     do
     {
-      return false;
-      if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2) * 2.0F) && ((this.a.jdField_c_of_type_Int == 0) || (this.a.d)) && (!this.a.jdField_a_of_type_Boolean) && (Math.abs(paramFloat1) > this.a.f))
-      {
-        this.a.jdField_b_of_type_Int = this.a.a(this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_AndroidViewView = this.a.a(this.a.jdField_b_of_type_Int);
-        if (this.a.jdField_a_of_type_AndroidViewView != null)
-        {
-          this.a.jdField_a_of_type_Boolean = true;
-          this.a.setPressed(false);
-          this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
-          if (SlideDetectListView.a(this.a) != null)
-          {
-            int i = this.a.jdField_b_of_type_Int;
-            int j = this.a.getHeaderViewsCount();
-            SlideDetectListView.a(this.a).a(this.a, this.a.jdField_a_of_type_AndroidViewView, i - j);
-          }
-          this.a.jdField_a_of_type_Int = 0;
-        }
-        for (;;)
-        {
-          return true;
-          this.a.jdField_b_of_type_Boolean = true;
-        }
+      return paramInt2;
+      if ((paramInt2 - 400 >= 0) && (paramInt2 - 400 < 100)) {
+        return 304;
       }
-    } while (Math.abs(paramFloat1) <= Math.abs(paramFloat2) * 2.0F);
-    this.a.jdField_b_of_type_Boolean = true;
-    return false;
+      if ((paramInt2 - 500 >= 0) && (paramInt2 - 500 < 100)) {
+        return 305;
+      }
+      if (paramInt1 == 9024) {
+        return 303;
+      }
+      if (paramInt1 == 9060) {
+        return 304;
+      }
+      if (paramInt1 == 9061) {
+        return 305;
+      }
+      if ((paramInt1 == 9052) || (paramInt1 == 9055) || (paramInt1 == 9053)) {
+        break;
+      }
+      paramInt2 = paramInt1;
+    } while (paramInt1 != 9054);
+    return 307;
+  }
+  
+  @Deprecated
+  public static void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt1, int paramInt2)
+  {
+    if (paramItem == null) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = bevv.a();
+    switch (paramInt1)
+    {
+    case 4: 
+    case 5: 
+    case 7: 
+    case 8: 
+    default: 
+      return;
+    case 2: 
+    case 6: 
+      bfsj.a(localQQAppInterface, "upload", true, paramItem.transferBeginTime, paramItem.UploadIp, paramLong + "", atwl.a(paramItem.FileName), paramItem.FilePath, paramInt2, paramItem.transferedSize, paramItem.ProgressTotal, paramItem.uploadUrl, paramItem.rspHeadStr, paramItem.retryTimes);
+      return;
+    case 10: 
+      bfsj.a(localQQAppInterface, "download", false, paramItem.transferBeginTime, paramItem.DownloadIp, paramLong + "", atwl.a(paramItem.FileName), paramItem.FilePath, paramInt2, paramItem.transferedSize, paramItem.ProgressTotal, paramItem.downUrlStr4Report, paramItem.rspHeadStr, paramItem.retryTimes);
+      return;
+    case 9: 
+    case 11: 
+      bfsj.a(localQQAppInterface, "download", true, paramItem.transferBeginTime, paramItem.DownloadIp, paramLong + "", atwl.a(paramItem.FileName), paramItem.FilePath, paramInt2, paramItem.transferedSize, paramItem.ProgressTotal, paramItem.downUrlStr4Report, paramItem.rspHeadStr, paramItem.retryTimes);
+      return;
+    }
+    bfsj.a(localQQAppInterface, "upload", false, paramItem.transferBeginTime, paramItem.UploadIp, paramLong + "", atwl.a(paramItem.FileName), paramItem.FilePath, paramInt2, paramItem.transferedSize, paramItem.ProgressTotal, paramItem.uploadUrl, paramItem.rspHeadStr, paramItem.retryTimes);
+  }
+  
+  public static void a(long paramLong, TroopFileTransferManager.Item paramItem, bevi parambevi, String paramString)
+  {
+    if ((paramItem == null) || (parambevi == null)) {}
+    do
+    {
+      return;
+      localObject = bevv.a();
+    } while (localObject == null);
+    Object localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
+    String str = bevv.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_group_code", String.valueOf(paramLong));
+    localHashMap.put("param_self_uin", localObject);
+    localHashMap.put("param_file_name", paramItem.FileName);
+    localHashMap.put("param_suffix", atwl.a(paramItem.FileName));
+    localHashMap.put("param_file_size", String.valueOf(paramItem.ProgressTotal));
+    localHashMap.put("param_uuid", paramItem.FilePath);
+    localHashMap.put("param_store_type", String.valueOf(paramItem.BusId));
+    localHashMap.put("param_result", String.valueOf(0));
+    localHashMap.put("param_sub_reason", String.valueOf(0));
+    localHashMap.put("param_http_status_code", String.valueOf(parambevi.jdField_e_of_type_Int));
+    localHashMap.put("param_err_msg", "");
+    localHashMap.put("param_flash_transfer", String.valueOf(parambevi.jdField_a_of_type_Boolean));
+    localHashMap.put("param_retry_count", String.valueOf(paramItem.retryTimes));
+    localHashMap.put("param_proxy_type", String.valueOf(parambevi.jdField_b_of_type_Int));
+    localHashMap.put("param_net_type", str);
+    localHashMap.put("param_security_time", String.valueOf(parambevi.jdField_f_of_type_Long));
+    localHashMap.put("param_check_time", String.valueOf(parambevi.jdField_g_of_type_Long));
+    localHashMap.put("param_server_ip", String.valueOf(parambevi.jdField_b_of_type_JavaLangString));
+    localHashMap.put("param_server_port", String.valueOf(parambevi.jdField_a_of_type_Int));
+    localHashMap.put("param_file_url", parambevi.jdField_a_of_type_JavaLangString);
+    localHashMap.put("param_start_size", String.valueOf(parambevi.jdField_a_of_type_Long));
+    localHashMap.put("param_transfer_size", String.valueOf(parambevi.jdField_b_of_type_Long));
+    localHashMap.put("param_transfer_time", String.valueOf(parambevi.jdField_c_of_type_Long));
+    localHashMap.put("param_transfer_speed", String.valueOf(parambevi.jdField_e_of_type_Long));
+    localHashMap.put("param_fromType", String.valueOf(parambevi.jdField_g_of_type_Int));
+    localHashMap.put("param_V6SelectType", String.valueOf(parambevi.jdField_h_of_type_Int));
+    localHashMap.put("param_ipAddrType", String.valueOf(parambevi.i));
+    localHashMap.put("param_stackType", String.valueOf(atwt.b()));
+    localHashMap.put("param_loginType", String.valueOf(atwt.c()));
+    localHashMap.put("param_ishttps", String.valueOf(parambevi.j));
+    paramLong = parambevi.jdField_d_of_type_Long;
+    long l = System.currentTimeMillis();
+    if (parambevi.jdField_d_of_type_Long == 0L) {
+      paramLong = l;
+    }
+    if (paramLong < 1L) {}
+    for (paramLong = 0L;; paramLong = l - paramLong)
+    {
+      l = paramLong;
+      if (paramLong < 0L) {
+        l = 0L;
+      }
+      bevx.c("TroopFileDataReporter", bevx.jdField_a_of_type_Int, "[GroupSend]reportUploadSucInfo. reportType:" + paramString + " params:" + localHashMap.toString());
+      bctj.a(BaseApplication.getContext()).a((String)localObject, paramString, true, l, 1, localHashMap, "");
+      return;
+    }
+  }
+  
+  public static void a(long paramLong, TroopFileTransferManager.Item paramItem, String paramString, bevi parambevi)
+  {
+    if ((paramItem == null) || (parambevi == null)) {}
+    do
+    {
+      return;
+      localObject = bevv.a();
+    } while (localObject == null);
+    Object localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
+    String str = bevv.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_group_code", String.valueOf(paramLong));
+    localHashMap.put("param_self_uin", localObject);
+    localHashMap.put("param_file_name", paramItem.FileName);
+    localHashMap.put("param_suffix", atwl.a(paramItem.FileName));
+    localHashMap.put("param_file_size", String.valueOf(paramItem.ProgressTotal));
+    localHashMap.put("param_uuid", paramItem.FilePath);
+    localHashMap.put("param_store_type", String.valueOf(paramItem.BusId));
+    localHashMap.put("param_result", String.valueOf(parambevi.jdField_c_of_type_Int));
+    localHashMap.put("param_sub_reason", String.valueOf(parambevi.jdField_d_of_type_Int));
+    localHashMap.put("param_http_status_code", String.valueOf(parambevi.jdField_e_of_type_Int));
+    localHashMap.put("param_server_return_code", String.valueOf(parambevi.jdField_f_of_type_Int));
+    localHashMap.put("param_err_msg", parambevi.jdField_c_of_type_JavaLangString);
+    localHashMap.put("param_retry_count", String.valueOf(paramItem.retryTimes));
+    localHashMap.put("param_proxy_type", String.valueOf(parambevi.jdField_b_of_type_Int));
+    localHashMap.put("param_net_type", str);
+    localHashMap.put("param_security_time", String.valueOf(parambevi.jdField_f_of_type_Long));
+    localHashMap.put("param_check_time", String.valueOf(parambevi.jdField_g_of_type_Long));
+    localHashMap.put("param_server_ip", String.valueOf(parambevi.jdField_b_of_type_JavaLangString));
+    localHashMap.put("param_server_port", String.valueOf(parambevi.jdField_a_of_type_Int));
+    localHashMap.put("param_file_url", parambevi.jdField_a_of_type_JavaLangString);
+    localHashMap.put("param_start_size", String.valueOf(parambevi.jdField_a_of_type_Long));
+    localHashMap.put("param_transfer_size", String.valueOf(parambevi.jdField_b_of_type_Long));
+    localHashMap.put("param_transfer_time", String.valueOf(parambevi.jdField_c_of_type_Long));
+    localHashMap.put("param_transfer_speed", String.valueOf(parambevi.jdField_e_of_type_Long));
+    localHashMap.put("param_fromType", String.valueOf(parambevi.jdField_g_of_type_Int));
+    localHashMap.put("param_V6SelectType", String.valueOf(parambevi.jdField_h_of_type_Int));
+    localHashMap.put("param_ipAddrType", String.valueOf(parambevi.i));
+    localHashMap.put("param_stackType", String.valueOf(atwt.b()));
+    localHashMap.put("param_loginType", String.valueOf(atwt.c()));
+    localHashMap.put("param_ishttps", String.valueOf(parambevi.j));
+    paramLong = parambevi.jdField_d_of_type_Long;
+    long l = System.currentTimeMillis();
+    if (parambevi.jdField_d_of_type_Long == 0L) {
+      paramLong = l;
+    }
+    if (paramLong < 1L) {}
+    for (paramLong = 0L;; paramLong = l - paramLong)
+    {
+      l = paramLong;
+      if (paramLong < 0L) {
+        l = 0L;
+      }
+      bevx.c("TroopFileDataReporter", bevx.jdField_a_of_type_Int, "[GroupSend]reportUploadFailInfo. reportType:" + paramString + " params:" + localHashMap.toString());
+      bctj.a(BaseApplication.getContext()).a((String)localObject, paramString, false, l, 1, localHashMap, "");
+      return;
+    }
+  }
+  
+  public static void b(long paramLong, TroopFileTransferManager.Item paramItem, bevi parambevi, String paramString)
+  {
+    if ((paramItem == null) || (parambevi == null)) {}
+    do
+    {
+      return;
+      localObject = bevv.a();
+    } while (localObject == null);
+    Object localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
+    String str = bevv.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_group_code", String.valueOf(paramLong));
+    localHashMap.put("param_self_uin", localObject);
+    localHashMap.put("param_file_name", paramItem.FileName);
+    localHashMap.put("param_suffix", atwl.a(paramItem.FileName));
+    localHashMap.put("param_file_size", String.valueOf(paramItem.ProgressTotal));
+    localHashMap.put("param_uuid", paramItem.FilePath);
+    localHashMap.put("param_store_type", String.valueOf(paramItem.BusId));
+    localHashMap.put("param_life_left_second", String.valueOf(parambevi.jdField_h_of_type_Long));
+    localHashMap.put("param_result", String.valueOf(0));
+    localHashMap.put("param_sub_reason", String.valueOf(0));
+    localHashMap.put("param_http_status_code", String.valueOf(parambevi.jdField_e_of_type_Int));
+    localHashMap.put("param_err_msg", "");
+    localHashMap.put("param_retry_count", String.valueOf(paramItem.retryTimes));
+    localHashMap.put("param_proxy_type", String.valueOf(parambevi.jdField_b_of_type_Int));
+    localHashMap.put("param_net_type", str);
+    localHashMap.put("param_security_time", String.valueOf(parambevi.jdField_f_of_type_Long));
+    localHashMap.put("param_server_ip", String.valueOf(parambevi.jdField_b_of_type_JavaLangString));
+    localHashMap.put("param_server_port", String.valueOf(parambevi.jdField_a_of_type_Int));
+    localHashMap.put("param_file_url", parambevi.jdField_a_of_type_JavaLangString);
+    localHashMap.put("param_start_size", String.valueOf(parambevi.jdField_a_of_type_Long));
+    localHashMap.put("param_transfer_size", String.valueOf(parambevi.jdField_b_of_type_Long));
+    localHashMap.put("param_transfer_time", String.valueOf(parambevi.jdField_c_of_type_Long));
+    localHashMap.put("param_transfer_speed", String.valueOf(parambevi.jdField_e_of_type_Long));
+    localHashMap.put("param_fromType", String.valueOf(parambevi.jdField_g_of_type_Int));
+    localHashMap.put("param_V6SelectType", String.valueOf(parambevi.jdField_h_of_type_Int));
+    localHashMap.put("param_ipAddrType", String.valueOf(parambevi.i));
+    localHashMap.put("param_stackType", String.valueOf(atwt.b()));
+    localHashMap.put("param_loginType", String.valueOf(atwt.c()));
+    localHashMap.put("param_ishttps", String.valueOf(parambevi.j));
+    paramLong = parambevi.jdField_d_of_type_Long;
+    long l = System.currentTimeMillis();
+    if (parambevi.jdField_d_of_type_Long == 0L) {
+      paramLong = l;
+    }
+    if (paramLong < 1L) {}
+    for (paramLong = 0L;; paramLong = l - paramLong)
+    {
+      l = paramLong;
+      if (paramLong < 0L) {
+        l = 0L;
+      }
+      bevx.c("TroopFileDataReporter", bevx.jdField_a_of_type_Int, "[GroupDownload]reportDownloadSucInfo. reportType:" + paramString + " params:" + localHashMap.toString());
+      bctj.a(BaseApplication.getContext()).a((String)localObject, paramString, true, l, 1, localHashMap, "");
+      return;
+    }
+  }
+  
+  public static void b(long paramLong, TroopFileTransferManager.Item paramItem, String paramString, bevi parambevi)
+  {
+    if ((paramItem == null) || (parambevi == null)) {}
+    do
+    {
+      return;
+      localObject = bevv.a();
+    } while (localObject == null);
+    Object localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
+    String str = bevv.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_group_code", String.valueOf(paramLong));
+    localHashMap.put("param_self_uin", localObject);
+    localHashMap.put("param_file_name", paramItem.FileName);
+    localHashMap.put("param_suffix", atwl.a(paramItem.FileName));
+    localHashMap.put("param_file_size", String.valueOf(paramItem.ProgressTotal));
+    localHashMap.put("param_uuid", paramItem.FilePath);
+    localHashMap.put("param_store_type", String.valueOf(paramItem.BusId));
+    localHashMap.put("param_life_left_second", String.valueOf(parambevi.jdField_h_of_type_Long));
+    localHashMap.put("param_result", String.valueOf(parambevi.jdField_c_of_type_Int));
+    localHashMap.put("param_sub_reason", String.valueOf(parambevi.jdField_d_of_type_Int));
+    localHashMap.put("param_http_status_code", String.valueOf(parambevi.jdField_e_of_type_Int));
+    localHashMap.put("param_server_return_code", String.valueOf(parambevi.jdField_f_of_type_Int));
+    localHashMap.put("param_err_msg", parambevi.jdField_c_of_type_JavaLangString);
+    localHashMap.put("param_retry_count", String.valueOf(paramItem.retryTimes));
+    localHashMap.put("param_proxy_type", String.valueOf(parambevi.jdField_b_of_type_Int));
+    localHashMap.put("param_net_type", str);
+    localHashMap.put("param_security_time", String.valueOf(parambevi.jdField_f_of_type_Long));
+    localHashMap.put("param_server_ip", String.valueOf(parambevi.jdField_b_of_type_JavaLangString));
+    localHashMap.put("param_server_port", String.valueOf(parambevi.jdField_a_of_type_Int));
+    localHashMap.put("param_file_url", parambevi.jdField_a_of_type_JavaLangString);
+    localHashMap.put("param_start_size", String.valueOf(parambevi.jdField_a_of_type_Long));
+    localHashMap.put("param_transfer_size", String.valueOf(parambevi.jdField_b_of_type_Long));
+    localHashMap.put("param_transfer_time", String.valueOf(parambevi.jdField_c_of_type_Long));
+    localHashMap.put("param_transfer_speed", String.valueOf(parambevi.jdField_e_of_type_Long));
+    localHashMap.put("param_fromType", String.valueOf(parambevi.jdField_g_of_type_Int));
+    localHashMap.put("param_V6SelectType", String.valueOf(parambevi.jdField_h_of_type_Int));
+    localHashMap.put("param_ipAddrType", String.valueOf(parambevi.i));
+    localHashMap.put("param_stackType", String.valueOf(atwt.b()));
+    localHashMap.put("param_loginType", String.valueOf(atwt.c()));
+    localHashMap.put("param_ishttps", String.valueOf(parambevi.j));
+    paramLong = parambevi.jdField_d_of_type_Long;
+    long l = System.currentTimeMillis();
+    if (parambevi.jdField_d_of_type_Long == 0L) {
+      paramLong = l;
+    }
+    if (paramLong < 1L) {}
+    for (paramLong = 0L;; paramLong = l - paramLong)
+    {
+      l = paramLong;
+      if (paramLong < 0L) {
+        l = 0L;
+      }
+      bevx.c("TroopFileDataReporter", bevx.jdField_a_of_type_Int, "[GroupDownload]reportDownloadFailInfo. reportType:" + paramString + " params:" + localHashMap.toString());
+      bctj.a(BaseApplication.getContext()).a((String)localObject, paramString, false, l, 1, localHashMap, "");
+      return;
+    }
   }
 }
 

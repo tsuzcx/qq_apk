@@ -1,25 +1,25 @@
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.ReqBody;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arhh
+  implements View.OnClickListener
 {
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    return "http://" + paramString1 + "/ftn_handler/" + paramString2 + "/?fname=" + bdhe.b(paramString3) + paramString5;
-  }
+  public arhh(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface, Context paramContext) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, arhj paramarhj)
+  public void onClick(View paramView)
   {
-    if (paramLong < 0L) {
-      return;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appId))
+    {
+      MessageForArkApp.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
+      apok.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName, "AIOArkSdkTailClick", 1, 0, 0L, 0L, 0L, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appView, "");
     }
-    oidb_0x6e7.ReqBody localReqBody = new oidb_0x6e7.ReqBody();
-    localReqBody.uint64_group_code.set(paramLong);
-    localReqBody.str_app_src.set("android");
-    localReqBody.str_version.set("8.3.5");
-    mzy.b(paramQQAppInterface, new arhi(paramarhj), localReqBody.toByteArray(), "OidbSvc.oidb_0x6e7", 1767, 0, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

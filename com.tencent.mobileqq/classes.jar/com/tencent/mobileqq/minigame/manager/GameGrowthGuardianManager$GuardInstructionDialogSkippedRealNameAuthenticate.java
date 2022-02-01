@@ -16,7 +16,7 @@ class GameGrowthGuardianManager$GuardInstructionDialogSkippedRealNameAuthenticat
   protected GameGrowthGuardianManager.DialogAction getNegativeDialogAction()
   {
     QLog.d("GameGrowthGuardianManag", 1, "getNegativeDialogAction() called skipped real name authentication");
-    return new GameGrowthGuardianManager.DialogAction(2131695489, new GameGrowthGuardianManager.GuardInstructionDialogSkippedRealNameAuthenticate.1(this));
+    return new GameGrowthGuardianManager.DialogAction(2131694404, new GameGrowthGuardianManager.GuardInstructionDialogSkippedRealNameAuthenticate.1(this));
   }
   
   protected String getReportSubActionType()
@@ -26,7 +26,7 @@ class GameGrowthGuardianManager$GuardInstructionDialogSkippedRealNameAuthenticat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameGrowthGuardianManager.GuardInstructionDialogSkippedRealNameAuthenticate
  * JD-Core Version:    0.7.0.1
  */

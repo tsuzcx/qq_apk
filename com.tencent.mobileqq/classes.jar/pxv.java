@@ -1,75 +1,23 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
 
-public class pxv
-  extends pxl
+public final class pxv
+  implements Parcelable.Creator<ReadInJoyDraftboxItem>
 {
-  public pxv(Context paramContext, bdbb parambdbb, rqj paramrqj)
+  public ReadInJoyDraftboxItem a(Parcel paramParcel)
   {
-    super(paramContext, parambdbb, paramrqj);
+    return new ReadInJoyDraftboxItem(paramParcel);
   }
   
-  public pxl a()
+  public ReadInJoyDraftboxItem[] a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return b();
-  }
-  
-  public pxl d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend);
-    }
-    if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentBig))) {
-      localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pxk);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
-  }
-  
-  public pxl e()
-  {
-    return null;
-  }
-  
-  public pxl g()
-  {
-    this.jdField_a_of_type_Pxk = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    return new ReadInJoyDraftboxItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pxv
  * JD-Core Version:    0.7.0.1
  */

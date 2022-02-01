@@ -1,206 +1,117 @@
-import android.app.Activity;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import java.net.URL;
-import java.util.Random;
-import mqq.app.AppRuntime;
 
 public class rez
+  implements rfm
 {
-  private static int jdField_a_of_type_Int;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private LikeAnimationInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoLikeAnimationInfo;
-  private Random jdField_a_of_type_JavaUtilRandom;
-  private rey jdField_a_of_type_Rey;
-  private rfa jdField_a_of_type_Rfa;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private URLDrawable[] jdField_a_of_type_ArrayOfComTencentImageURLDrawable;
+  protected BaseArticleInfo a;
+  protected URL a;
   
-  public rez(Activity paramActivity, int paramInt)
+  public rez(BaseArticleInfo paramBaseArticleInfo)
   {
-    if ((paramActivity == null) || (paramActivity.getWindow() == null) || (paramActivity.getWindow().getDecorView() == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsLikeAnimateManager", 2, "activity in a invalid state");
-      }
-    }
-    label236:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramActivity.getWindow().getDecorView().findViewById(16908290));
-          } while (this.jdField_a_of_type_AndroidViewViewGroup == null);
-          this.jdField_a_of_type_ArrayOfInt = new int[2];
-          jdField_a_of_type_Int = aepi.a(28.0F, paramActivity.getResources());
-          this.jdField_a_of_type_AndroidViewViewGroup.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-          this.jdField_a_of_type_JavaUtilRandom = new Random();
-          paramActivity = a();
-          if (paramActivity != null)
-          {
-            this.jdField_a_of_type_Rey = ((rey)paramActivity.a(138));
-            this.jdField_a_of_type_Rfa = new rfa(this);
-            paramActivity.addObserver(this.jdField_a_of_type_Rfa);
-          }
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoLikeAnimationInfo = bkbq.a();
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoLikeAnimationInfo == null) {
-            break label236;
-          }
-          if ((this.jdField_a_of_type_Rey == null) || (!bkbq.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoLikeAnimationInfo.jdField_a_of_type_Int))) {
-            break;
-          }
-          this.jdField_a_of_type_Rey.a(paramInt);
-          bkbq.a(System.currentTimeMillis());
-        } while (!QLog.isColorLevel());
-        QLog.d("VideoFeedsLikeAnimateManager", 2, "fetch icon list");
-        return;
-        a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoLikeAnimationInfo);
-      } while (!QLog.isColorLevel());
-      QLog.d("VideoFeedsLikeAnimateManager", 2, "use local icon list");
-      return;
-    } while (this.jdField_a_of_type_Rey == null);
-    this.jdField_a_of_type_Rey.a(paramInt);
-    bkbq.a(System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
   }
   
-  private QQAppInterface a()
+  protected Pair<Integer, Integer> a(boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = ors.a();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
+    if (paramBoolean) {
+      return pgk.g();
     }
-    return null;
+    return pgk.f();
   }
   
-  private void a(LikeAnimationInfo paramLikeAnimationInfo)
+  public int getCommentCount()
   {
-    if ((paramLikeAnimationInfo == null) || (paramLikeAnimationInfo.jdField_a_of_type_ArrayOfJavaLangString == null) || (paramLikeAnimationInfo.jdField_a_of_type_ArrayOfJavaLangString.length == 0)) {
-      return;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCommentCount;
+  }
+  
+  public String getInnerUniqueID()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID;
+  }
+  
+  public String getShareUrl()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleContentUrl;
+  }
+  
+  public String getSubscribeName()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeName;
+  }
+  
+  public String getSubscribeUin()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID;
+  }
+  
+  public URL getVideoCoverURL()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
     }
-    if (this.jdField_a_of_type_ArrayOfComTencentImageURLDrawable != null) {
-      this.jdField_a_of_type_ArrayOfComTencentImageURLDrawable = null;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSinglePicture != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSinglePicture;
     }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = jdField_a_of_type_Int;
-    localURLDrawableOptions.mRequestHeight = jdField_a_of_type_Int;
-    this.jdField_a_of_type_ArrayOfComTencentImageURLDrawable = new URLDrawable[paramLikeAnimationInfo.jdField_a_of_type_ArrayOfJavaLangString.length];
-    int i = 0;
-    while (i < paramLikeAnimationInfo.jdField_a_of_type_ArrayOfJavaLangString.length)
+    return pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mFirstPagePicUrl);
+  }
+  
+  public URL getVideoCoverUrlWithSmartCut(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaNetURL == null)
     {
-      String str = paramLikeAnimationInfo.jdField_a_of_type_ArrayOfJavaLangString[i];
-      if (!TextUtils.isEmpty(str)) {}
-      try
+      Pair localPair = a(paramBoolean);
+      this.jdField_a_of_type_JavaNetURL = getVideoCoverWithSmartCut(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue());
+    }
+    return this.jdField_a_of_type_JavaNetURL;
+  }
+  
+  public URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2)
+  {
+    if (getVideoCoverURL() != null)
+    {
+      String str2 = getVideoCoverURL().toString();
+      String str1 = str2;
+      if (!TextUtils.isEmpty(str2))
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(new URL(str), localURLDrawableOptions);
-        localURLDrawable.startDownload();
-        this.jdField_a_of_type_ArrayOfComTencentImageURLDrawable[i] = localURLDrawable;
-        i += 1;
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VideoFeedsLikeAnimateManager", 2, "illegal url format: " + str);
-          }
+        str1 = str2;
+        if (str2.startsWith("pubaccountimage:")) {
+          str1 = str2.replaceFirst("pubaccountimage:", "");
         }
       }
+      return pha.a(pha.a(str1, paramInt1, paramInt2));
     }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
   }
   
-  private boolean a()
+  public int getVideoDuration()
   {
-    boolean bool2;
-    if ((this.jdField_a_of_type_ArrayOfComTencentImageURLDrawable == null) || (this.jdField_a_of_type_ArrayOfComTencentImageURLDrawable.length == 0))
-    {
-      bool2 = false;
-      return bool2;
-    }
-    URLDrawable[] arrayOfURLDrawable = this.jdField_a_of_type_ArrayOfComTencentImageURLDrawable;
-    int m = arrayOfURLDrawable.length;
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
-    {
-      URLDrawable localURLDrawable = arrayOfURLDrawable[i];
-      k = j;
-      if (localURLDrawable != null)
-      {
-        k = j;
-        if (localURLDrawable.getStatus() == 1) {
-          k = j + 1;
-        }
-      }
-      i += 1;
-    }
-    if (j == this.jdField_a_of_type_ArrayOfComTencentImageURLDrawable.length) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("VideoFeedsLikeAnimateManager", 2, "isHit: " + bool1);
-      return bool1;
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return 1;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoDuration;
     }
     return 0;
   }
   
-  public void a()
+  public int getVideoHeight()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
-    this.jdField_a_of_type_ArrayOfComTencentImageURLDrawable = null;
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null) {
-      localQQAppInterface.removeObserver(this.jdField_a_of_type_Rfa);
-    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoJsonHeight;
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  public String getVideoVid()
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsLikeAnimateManager", 2, "parent view is null");
-      }
-      return;
-    }
-    VideoFeedsLikeAnimate localVideoFeedsLikeAnimate = new VideoFeedsLikeAnimate(this.jdField_a_of_type_AndroidViewViewGroup, paramFloat1 - this.jdField_a_of_type_ArrayOfInt[0], paramFloat2 - this.jdField_a_of_type_ArrayOfInt[1], this.jdField_a_of_type_JavaUtilRandom);
-    if (a()) {
-      localVideoFeedsLikeAnimate.a(this.jdField_a_of_type_ArrayOfComTencentImageURLDrawable, 4, jdField_a_of_type_Int);
-    }
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
-    {
-      localVideoFeedsLikeAnimate.a();
-      return;
-      localVideoFeedsLikeAnimate.a(5);
-    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoVid;
+  }
+  
+  public int getVideoWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoJsonWidth;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rez
  * JD-Core Version:    0.7.0.1
  */

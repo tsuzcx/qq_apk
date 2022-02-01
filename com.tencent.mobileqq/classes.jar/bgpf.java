@@ -1,26 +1,29 @@
-import org.json.JSONObject;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bgpf
-  extends JSONObject
+class bgpf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bgpf() {}
+  bgpf(bgpa parambgpa, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public bgpf(String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramString);
-  }
-  
-  public String optString(String paramString1, String paramString2)
-  {
-    if (isNull(paramString1)) {
-      return paramString2;
+    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    bgpa localbgpa = this.jdField_a_of_type_Bgpa;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localOnClickListener.onClick(localbgpa, i);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
-    return super.optString(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgpf
  * JD-Core Version:    0.7.0.1
  */

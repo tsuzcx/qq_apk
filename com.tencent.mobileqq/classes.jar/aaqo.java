@@ -1,8 +1,16 @@
-import com.tencent.gdtad.ipc.AppInstallerReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.file.MoveFileActivity;
 
-public final class aaqo
+public class aaqo
+  implements DialogInterface.OnClickListener
 {
-  public static AppInstallerReceiver a = new AppInstallerReceiver(null);
+  public aaqo(MoveFileActivity paramMoveFileActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

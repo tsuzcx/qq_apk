@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlFragment;
-import java.util.List;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bfcs
   implements DialogInterface.OnClickListener
 {
-  public bfcs(AuthorityControlFragment paramAuthorityControlFragment, List paramList) {}
+  public bfcs(ReciteRecordLayout paramReciteRecordLayout) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AuthorityControlFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlFragment).a(this.jdField_a_of_type_JavaUtilList);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,38 +1,30 @@
-import android.text.InputFilter;
-import android.text.Spanned;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.FrameLayout.LayoutParams;
 import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XEditTextEx;
+import mqq.app.MobileQQ;
 
 public class by
-  implements InputFilter
+  implements Animator.AnimatorListener
 {
   public by(LiteActivity paramLiteActivity) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
-    if (paramInt3 <= 0)
-    {
-      LiteActivity.a(this.a);
-      return "";
-    }
-    if (paramInt3 >= paramInt2 - paramInt1) {
-      return null;
-    }
-    paramInt3 += paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1)
-      {
-        LiteActivity.a(this.a);
-        return "";
-      }
-    }
-    LiteActivity.a(this.a);
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    LiteActivity.a(this.a).setPadding(0, 0, 0, 0);
+    ((FrameLayout.LayoutParams)this.a.a.getLayoutParams()).setMargins(0, 0, 0, 0);
+    this.a.a.setPadding(afur.a(24.0F, this.a.app.getApplication().getResources()), afur.a(10.0F, this.a.app.getApplication().getResources()), afur.a(24.0F, this.a.app.getApplication().getResources()), 0);
+    LiteActivity.a(this.a).getLayoutParams().height = -1;
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

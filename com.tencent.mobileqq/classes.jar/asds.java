@@ -1,17 +1,20 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class asds
-  implements DialogInterface.OnClickListener
+  extends anuc
 {
-  asds(asdo paramasdo, bdjz parambdjz) {}
+  asds(asdr paramasdr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(int paramInt)
   {
-    this.jdField_a_of_type_Bdjz.dismiss();
-    this.jdField_a_of_type_Asdo.a.setResult(-1);
-    this.jdField_a_of_type_Asdo.a.finish();
+    if (asdr.a(this.a) != null) {
+      asdr.a(this.a).a(paramInt);
+    }
+  }
+  
+  protected void a(asdu paramasdu)
+  {
+    if (asdr.a(this.a) != null) {
+      asdr.a(this.a).a(paramasdu);
+    }
   }
 }
 

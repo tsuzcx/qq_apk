@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
-import phk;
+import pyv;
 
 public class VideoArticleModule$4
   implements Runnable
 {
-  public VideoArticleModule$4(phk paramphk, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo) {}
+  public VideoArticleModule$4(pyv parampyv, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo) {}
   
   public void run()
   {

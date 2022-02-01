@@ -1,13 +1,31 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable;
+import cooperation.qqpim.QQPimTipsInfo;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class blmu
-  implements blnz
+  implements EIPCResultCallback
 {
-  public blmu(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  public blmu(QQPimGetTipsInfoIPC.GetContactTipsRunnable paramGetContactTipsRunnable) {}
   
-  public boolean a(int paramInt1, int paramInt2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return AEEditorImageEditFragment.a(this.a).b(AEEditorImageEditFragment.a(this.a)) != paramInt2;
+    if (QLog.isColorLevel()) {
+      QLog.i(blmr.a, 2, "QQPimGetTipsInfoIPC.onCallback() " + QQPimGetTipsInfoIPC.a(this.a.this$0).hashCode());
+    }
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
+    {
+      paramEIPCResult = paramEIPCResult.data.getParcelable(blmr.n);
+      if (paramEIPCResult != null)
+      {
+        paramEIPCResult = (QQPimTipsInfo)paramEIPCResult;
+        this.a.this$0.a = paramEIPCResult;
+        QQPimGetTipsInfoIPC.a(this.a.this$0).a(paramEIPCResult);
+      }
+    }
   }
 }
 

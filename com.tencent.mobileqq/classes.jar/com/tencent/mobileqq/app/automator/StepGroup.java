@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator;
 
-import amhg;
+import anze;
 
 public class StepGroup
   extends AsyncStep
@@ -90,7 +90,7 @@ public class StepGroup
   {
     if (this.e < this.jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.e] = amhg.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator, this.jdField_a_of_type_ArrayOfJavaLangString[this.e]);
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.e] = anze.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator, this.jdField_a_of_type_ArrayOfJavaLangString[this.e]);
       this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.e].jdField_a_of_type_ArrayOfJavaLangObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
       AsyncStep[] arrayOfAsyncStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep;
       int i = this.e;
@@ -98,14 +98,6 @@ public class StepGroup
       return arrayOfAsyncStep[i];
     }
     return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Long = 2147483647L;
-    this.jdField_a_of_type_ArrayOfJavaLangString = a(this.jdField_b_of_type_JavaLangString);
-    this.e = 0;
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep = new AsyncStep[this.jdField_a_of_type_ArrayOfJavaLangString.length];
   }
   
   public void a(int paramInt)
@@ -136,6 +128,14 @@ public class StepGroup
       localAsyncStep.a(paramInt);
       i += 1;
     }
+  }
+  
+  public void c()
+  {
+    this.jdField_b_of_type_Long = 2147483647L;
+    this.jdField_a_of_type_ArrayOfJavaLangString = a(this.jdField_b_of_type_JavaLangString);
+    this.e = 0;
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep = new AsyncStep[this.jdField_a_of_type_ArrayOfJavaLangString.length];
   }
 }
 

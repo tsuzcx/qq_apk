@@ -1,33 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class xzl
-  implements BusinessObserver
+  implements zpp
 {
-  public xzl(QRDisplayActivity paramQRDisplayActivity) {}
+  public xzl(StoryPickerFragment paramStoryPickerFragment) {}
   
-  protected void a(boolean paramBoolean, List<String> paramList1, List<String> paramList2) {}
+  public void a() {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean a(boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (this.a.jdField_a_of_type_Yfq != null) {
+      this.a.jdField_a_of_type_Yfq.a(this.a.jdField_a_of_type_Xzz.a());
     }
-    if (paramBoolean)
-    {
-      a(paramBoolean, paramBundle.getStringArrayList("nickname_list"), paramBundle.getStringArrayList("uin_list"));
-      return;
-    }
-    this.b.g();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xzl
  * JD-Core Version:    0.7.0.1
  */

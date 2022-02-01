@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
 import android.text.TextUtils;
-import bflp;
+import bisy;
 import com.tencent.smtt.sdk.WebView;
 
 class DownloadInterface$3
@@ -20,13 +20,13 @@ class DownloadInterface$3
     }
     catch (Exception localException)
     {
-      bflp.a("DownloadInterface", "webview loadUrl>>> ", localException);
+      bisy.a("DownloadInterface", "webview loadUrl>>> ", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.appcommon.js.DownloadInterface.3
  * JD-Core Version:    0.7.0.1
  */

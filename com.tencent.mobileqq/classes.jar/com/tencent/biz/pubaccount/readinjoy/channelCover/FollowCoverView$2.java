@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.channelCover;
 
-import ojh;
+import ovy;
 
 public class FollowCoverView$2
   implements Runnable
 {
   public void run()
   {
-    ojh.a(this.this$0);
+    ovy.a(this.this$0);
   }
 }
 

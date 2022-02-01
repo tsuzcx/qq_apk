@@ -1,40 +1,33 @@
-import android.graphics.Rect;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewPropertyAnimator;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import java.util.Iterator;
+import java.util.List;
 
 public class aqfi
-  extends RecyclerView.ItemDecoration
+  implements Animator.AnimatorListener
 {
-  private int a;
-  private int b;
-  private int c;
-  private int d;
+  public aqfi(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, LinearLayout paramLinearLayout) {}
   
-  public aqfi(Fragment paramFragment)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = aepi.a(11.0F, paramFragment.getResources());
-    this.b = aepi.a(11.0F, paramFragment.getResources());
-    this.c = aepi.a(8.0F, paramFragment.getResources());
-    this.d = aepi.a(8.0F, paramFragment.getResources());
+    ColorNoteSmallScreenRelativeLayout.c(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, false);
+    paramAnimator = ColorNoteSmallScreenRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout).iterator();
+    while (paramAnimator.hasNext()) {
+      ((ColorNote)paramAnimator.next()).animate = false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.f();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.animate().setListener(null).translationX(0.0F).setDuration(200L).start();
   }
   
-  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
-  {
-    int i = paramRecyclerView.getAdapter().getItemCount();
-    if (paramRecyclerView.getAdapter().getItemViewType(paramInt) == 6)
-    {
-      paramRect.set(0, this.a, 0, 0);
-      return;
-    }
-    if (paramInt == i - 1)
-    {
-      paramRect.set(this.c, this.a, this.d, this.b);
-      return;
-    }
-    paramRect.set(this.c, this.a, this.d, 0);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

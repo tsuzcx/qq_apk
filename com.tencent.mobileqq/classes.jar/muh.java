@@ -1,24 +1,69 @@
+import android.content.Context;
+import android.view.Window;
+
 public class muh
+  extends bkho
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  public static boolean a;
+  boolean b = false;
   
-  public muh(long paramLong, int paramInt, String paramString1, String paramString2, String paramString3)
+  protected muh(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    super(paramContext, paramBoolean1, paramBoolean2);
+  }
+  
+  public static muh a(Context paramContext)
+  {
+    paramContext = new muh(paramContext, false, false);
+    paramContext.getWindow().setWindowAnimations(2131755226);
+    return paramContext;
+  }
+  
+  public static boolean a()
+  {
+    return a;
+  }
+  
+  public void dismiss()
+  {
+    a = false;
+    this.b = false;
+    super.dismiss();
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    if (this.b)
+    {
+      a = false;
+      this.b = false;
+    }
+    super.onDetachedFromWindow();
+  }
+  
+  public void onStop()
+  {
+    if (this.b)
+    {
+      a = false;
+      this.b = false;
+    }
+    super.onStop();
+  }
+  
+  public void show()
+  {
+    if (a == true) {
+      return;
+    }
+    a = true;
+    this.b = true;
+    super.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     muh
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,7 @@ package com.tencent.mobileqq.msf.service;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ag;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.net.m;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -43,7 +42,7 @@ class a
   public static a.a r;
   public static volatile boolean s = true;
   public static final long t = 39600000L;
-  private static k u;
+  private static com.tencent.mobileqq.msf.core.c.k u;
   private static String v = "k_begin_time";
   private static String w = "k_end_time";
   private static String x = "k_boot_time";
@@ -52,7 +51,7 @@ class a
   
   public static void a()
   {
-    J = BaseApplication.getContext().getSharedPreferences(j.c, 0);
+    J = BaseApplication.getContext().getSharedPreferences(k.c, 0);
     b = J.getLong(v, 0L);
     c = J.getLong(w, 0L);
     d = J.getLong(x, 0L);
@@ -71,7 +70,7 @@ class a
     a("initSavedData");
   }
   
-  static void a(k paramk)
+  static void a(com.tencent.mobileqq.msf.core.c.k paramk)
   {
     if (r == null)
     {
@@ -103,7 +102,7 @@ class a
     p = false;
   }
   
-  public static void b(k paramk)
+  public static void b(com.tencent.mobileqq.msf.core.c.k paramk)
   {
     boolean bool = true;
     a("reportAndClear");
@@ -121,7 +120,7 @@ class a
     localHashMap.put("existTimeOff", "" + n);
     localHashMap.put("notExitTimeOff", "" + o);
     localHashMap.put("lastAliveOf", "" + p);
-    localHashMap.put("jobschedulerAB", "" + j.g);
+    localHashMap.put("jobschedulerAB", "" + k.g);
     if ((d > 0L) && (b > 0L) && (c > 0L) && (e >= 0L) && (m >= 0L) && (c > b)) {
       if (paramk != null)
       {
@@ -149,7 +148,7 @@ class a
         continue;
       }
       if (QLog.isColorLevel()) {
-        QLog.d(j.c, 1, "report failed");
+        QLog.d(k.c, 1, "report failed");
       }
     }
   }

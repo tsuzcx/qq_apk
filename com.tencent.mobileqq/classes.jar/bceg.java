@@ -1,93 +1,49 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.1;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.HashMap;
 
 public class bceg
-  implements bkda
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  
-  public bceg(bcef parambcef)
+  public static void a(int paramInt)
   {
-    switch (bcef.a(parambcef))
-    {
-    default: 
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Float = 1.0F;
-      return;
-    case 1: 
-      this.jdField_a_of_type_Int = 10;
-      this.jdField_a_of_type_Float = 0.85F;
-      return;
-    }
-    this.jdField_a_of_type_Int = 95;
-    this.jdField_a_of_type_Float = 0.05F;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("waite", "" + paramInt);
+    bctj.a(VideoEnvironment.a()).a(null, "sv_waite_record_count", true, 0L, 0L, localHashMap, "");
   }
   
-  public void a(int paramInt)
+  public static void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Bcef.isCanceled())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress cancel. progress=", Integer.valueOf(paramInt) });
-      }
-      this.jdField_a_of_type_Bcef.onCancel();
-    }
-    long l;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress. mediaType=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef)), ", info hash=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef).hashCode()), ", info status=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef).g), ", progress=", Integer.valueOf(paramInt) });
-      }
-      l = System.currentTimeMillis();
-      paramInt = this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float * paramInt);
-    } while ((paramInt >= 100) || (l - this.jdField_a_of_type_Long <= 500L));
-    this.jdField_a_of_type_Long = l;
-    ThreadManager.getUIHandler().post(new ImageInfo.UploadMediaSegment.MediaUploadCallback.2(this, paramInt));
+    a("sv_resource_download_base", paramInt1, paramInt2);
   }
   
-  public void a(String paramString)
+  private static void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Bcef.isCanceled())
-    {
-      this.jdField_a_of_type_Bcef.onCancel();
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onComplete. mediaType=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef)), ", info hash=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef).hashCode()), ", info status=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef).g) });
-    }
-    switch (bcef.a(this.jdField_a_of_type_Bcef))
-    {
-    }
-    while (!this.jdField_a_of_type_Bcef.isCanceled())
-    {
-      bcef.a(this.jdField_a_of_type_Bcef, bcef.a(this.jdField_a_of_type_Bcef));
-      return;
-      bcej localbcej = (bcej)bcef.a(this.jdField_a_of_type_Bcef);
-      localbcej.e = paramString;
-      ThreadManager.getUIHandler().post(new ImageInfo.UploadMediaSegment.MediaUploadCallback.1(this, localbcej));
-      continue;
-      bcef.a(this.jdField_a_of_type_Bcef).b = paramString;
-    }
-    this.jdField_a_of_type_Bcef.onCancel();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("type", "" + paramInt1);
+    localHashMap.put("error", "" + paramInt2);
+    bctj.a(VideoEnvironment.a()).a(null, paramString, true, 0L, 0L, localHashMap, "");
   }
   
-  public void b(int paramInt)
+  public static void a(String paramString, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(getClass().getSimpleName(), 2, new Object[] { "upload onError. errorCode=", Integer.valueOf(paramInt), ", info type=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef).b()), ", mediaType=", Integer.valueOf(bcef.a(this.jdField_a_of_type_Bcef)) });
-    }
-    if (bcef.a(this.jdField_a_of_type_Bcef) == 2)
-    {
-      bcef.b(this.jdField_a_of_type_Bcef, bcef.a(this.jdField_a_of_type_Bcef));
-      return;
-    }
-    bcef.a(this.jdField_a_of_type_Bcef, new Error("-3"));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("cost", "" + paramLong);
+    bctj.a(VideoEnvironment.a()).a(null, paramString, true, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void b(int paramInt1, int paramInt2)
+  {
+    a("sv_resource_download_qzone", paramInt1, paramInt2);
   }
 }
 

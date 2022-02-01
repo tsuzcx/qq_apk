@@ -1,39 +1,12 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class blsd
-  implements BusinessObserver
+final class blsd
+  implements DialogInterface.OnClickListener
 {
-  public void a() {}
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 967: 
-      b();
-      return;
-    case 968: 
-      a(paramBoolean, paramBundle);
-      return;
-    case 969: 
-      c();
-      return;
-    case 970: 
-      a(paramBundle);
-      return;
-    }
-    a();
+    paramDialogInterface.dismiss();
   }
 }
 

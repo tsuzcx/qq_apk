@@ -1,20 +1,46 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.QQQueryBusinessTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adao
-  implements aelt
+  implements acxp
 {
-  public adao(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public int a()
   {
-    this.a.a.setActualViewSize(paramInt1, paramInt2);
-    this.a.a.invalidate();
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "updateDiyText: x=" + this.a.a.a().x + ", y=" + this.a.a.a().y + ", width=" + paramInt1 + ", height=" + paramInt2);
+    return 1023;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.a().c(paramMessageRecord.frienduin);
+    msg_svc.QQQueryBusinessTmp localQQQueryBusinessTmp = new msg_svc.QQQueryBusinessTmp();
+    localQQQueryBusinessTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    if (paramQQAppInterface != null)
+    {
+      paramMessageRecord = new byte[paramQQAppInterface.length - 2];
+      bgva.a(paramMessageRecord, 0, paramQQAppInterface, 2, paramQQAppInterface.length - 2);
+      if (QLog.isColorLevel()) {
+        QLog.d("PcQQSearchTmpRoutingType", 2, "wpa------>" + bgmj.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      }
+      localQQQueryBusinessTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
+    paramRoutingHead.qq_querybusiness_tmp.set(localQQQueryBusinessTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
 }
 

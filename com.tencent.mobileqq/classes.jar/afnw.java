@@ -1,21 +1,37 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.smartdevice.SmartDevicePluginProxyActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class afnw
-  implements arsg
+public class afnw
+  extends bfrb
 {
-  afnw(afnq paramafnq) {}
+  public afnw(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    paramView = new Intent();
-    paramView.putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramView.putExtra("uinname", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    bkce.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceGroupChatConfirmActivity", -1, null, SmartDevicePluginProxyActivity.class);
+    if ((paramBoolean) && (paramBundle != null)) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("structMsg");
+        new structmsg.StructMsg().mergeFrom(paramBundle);
+        TroopRequestActivity.a(this.a, 1);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.systemmsg.TroopRequestActivity", 2, "structMsg merge error");
+        }
+        this.a.i();
+        QQToast.a(this.a, this.a.getString(2131696653), 0).b(this.a.getTitleBarHeight());
+        return;
+      }
+    }
+    this.a.i();
+    QQToast.a(this.a, this.a.getString(2131696653), 0).b(this.a.getTitleBarHeight());
   }
 }
 

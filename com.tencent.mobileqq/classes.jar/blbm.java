@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import cooperation.comic.ui.QQComicTabBarView;
 
-class blbm
-  implements Animation.AnimationListener
+public class blbm
+  extends blca
 {
-  blbm(blbl paramblbl) {}
+  public blbm(QQComicTabBarView paramQQComicTabBarView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    blbl.a(this.a).setVisibility(4);
+    this.a.a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -3,16 +3,17 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import arcb;
+import athm;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import java.util.ArrayList;
 
 public class ForwardFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ForwardFileInfo> CREATOR = new arcb();
+  public static final Parcelable.Creator<ForwardFileInfo> CREATOR = new athm();
   public int a;
   private long jdField_a_of_type_Long;
-  private WeiYunFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo;
+  private WeiYunFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
   private int jdField_b_of_type_Int;
@@ -76,7 +77,7 @@ public class ForwardFileInfo
   
   public WeiYunFileInfo a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo;
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo;
   }
   
   public String a()
@@ -104,7 +105,7 @@ public class ForwardFileInfo
   
   public void a(WeiYunFileInfo paramWeiYunFileInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo = paramWeiYunFileInfo;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo = paramWeiYunFileInfo;
   }
   
   public void a(String paramString)
@@ -279,7 +280,7 @@ public class ForwardFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.ForwardFileInfo
  * JD-Core Version:    0.7.0.1
  */

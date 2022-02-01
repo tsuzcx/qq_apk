@@ -1,6 +1,5 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import android.os.ResultReceiver;
 import java.io.Serializable;
 
 public class GdtMotiveVideoPageData
@@ -8,28 +7,38 @@ public class GdtMotiveVideoPageData
 {
   public static final int CONTAINER_ACTIVITY = 0;
   public static final int CONTAINER_WINDOW = 1;
+  public static final int DEFAULT_ENDCARD_LOADTIME = 5;
   public static String TAG = "GdtMotiveVideoAd";
   public long adId;
   public String adsContent;
+  public String antiSpamParams;
   public double appScore = 0.0D;
   public String bannerBaseInfoText;
   public String bannerImgName;
   public String bannerLogo;
   public int containerType = 0;
   public long downloadNum;
+  public int endcardLoadTime = 5;
+  public String endcardUrl;
   public String exposureUrl;
   public long jsState;
+  public String motiveBrowsingKey;
   public String previewImgUrl;
   public int processId;
   public int productType;
   public String refId;
-  public ResultReceiver resultReceiver;
+  private String rewardText;
   public int screenOrientation = 0;
   public int style;
   public String url;
   public int vSize;
   public String vid;
   private int videoCountDown = 15;
+  
+  public String getRewardText()
+  {
+    return this.rewardText;
+  }
   
   public int getVideoCountDown()
   {
@@ -51,6 +60,11 @@ public class GdtMotiveVideoPageData
     return this.style == 2;
   }
   
+  public void setRewardText(String paramString)
+  {
+    this.rewardText = paramString;
+  }
+  
   public void setVideoCountDown(int paramInt)
   {
     this.videoCountDown = paramInt;
@@ -63,7 +77,7 @@ public class GdtMotiveVideoPageData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData
  * JD-Core Version:    0.7.0.1
  */

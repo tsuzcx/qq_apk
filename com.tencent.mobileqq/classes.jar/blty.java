@@ -1,10 +1,19 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneIPCModule;
+import feedcloud.FeedCloudWrite.StDoFollowRsp;
+import java.util.concurrent.CountDownLatch;
 
-public abstract interface blty
+public class blty
+  implements zxa<FeedCloudWrite.StDoFollowRsp>
 {
-  public abstract void a(int paramInt, boolean paramBoolean, Object paramObject);
+  public blty(QzoneIPCModule paramQzoneIPCModule, boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
   
-  public abstract void a(MusicItemInfo paramMusicItemInfo);
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
+  {
+    QLog.i("QzoneIPCModule", 1, "flow qq circle resp " + paramBoolean + " " + paramLong + " " + paramString);
+    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
 }
 
 

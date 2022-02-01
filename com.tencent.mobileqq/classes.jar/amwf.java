@@ -1,19 +1,21 @@
-import android.opengl.GLES20;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
-class amwf
-  implements anfd
+public class amwf
+  implements DialogInterface.OnClickListener
 {
-  amwf(amwe paramamwe) {}
+  public amwf(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GLES20.glUniform1i(amwe.a(this.a), amwe.b(this.a));
-  }
-  
-  public void a(int paramInt)
-  {
-    amwe.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
-    amwp.a("glGetUniformLocation uDisplayType");
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putBoolean("key_open_voice", true);
+    paramDialogInterface.putString("key_game_friUin", ApolloGameActivity.a(this.a).mTempAIOUin);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_aduio_enter_room", paramDialogInterface, null);
   }
 }
 

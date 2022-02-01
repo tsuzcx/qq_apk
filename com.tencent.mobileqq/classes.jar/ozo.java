@@ -1,21 +1,21 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFragmentWithSubChannel;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
 public class ozo
-  implements AdapterView.OnItemClickListener
+  implements pde
 {
-  public ozo(ReadInJoyFragmentWithSubChannel paramReadInJoyFragmentWithSubChannel) {}
+  public ozo(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, pde parampde) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt)
   {
-    this.a.a(paramView, paramInt);
+    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).c();
+    if (this.jdField_a_of_type_Pde != null) {
+      this.jdField_a_of_type_Pde.a(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ozo
  * JD-Core Version:    0.7.0.1
  */

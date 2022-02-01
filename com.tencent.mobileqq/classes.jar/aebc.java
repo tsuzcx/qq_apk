@@ -1,26 +1,17 @@
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class aebc
-  implements TextView.OnEditorActionListener
+class aebc
+  implements DialogInterface.OnClickListener
 {
-  public aebc(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  aebc(aeba paramaeba) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 6) && (TextPreviewTranslateActivity.a(this.a) != null))
-    {
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a).getText().toString());
-      TextPreviewTranslateActivity.a(this.a);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a));
-      TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.b(this.a));
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
-      return true;
-    }
-    return false;
+    this.a.a.a();
+    DevlockQuickLoginActivity.c(this.a.a);
+    DevlockQuickLoginActivity.c(this.a.a, 0, 2130772001);
   }
 }
 

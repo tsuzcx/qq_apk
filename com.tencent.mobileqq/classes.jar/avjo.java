@@ -1,16 +1,53 @@
-public abstract interface avjo
+import android.os.Bundle;
+import android.text.TextUtils;
+
+public class avjo
 {
-  public abstract void a(int paramInt);
+  public static long a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    do
+    {
+      return 0L;
+      paramBundle = paramBundle.getString("roomid", "");
+    } while (TextUtils.isEmpty(paramBundle));
+    return Long.parseLong(paramBundle);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public static String a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      paramBundle = "";
+    }
+    String str;
+    do
+    {
+      return paramBundle;
+      str = paramBundle.getString("roomtype");
+      paramBundle = str;
+    } while (!TextUtils.isEmpty(str));
+    return "0";
+  }
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public static String b(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return "";
+    }
+    return paramBundle.getString("fromid", "");
+  }
   
-  public abstract void b(int paramInt1, int paramInt2);
+  public static String c(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return "";
+    }
+    return paramBundle.getString("shakespearetime", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avjo
  * JD-Core Version:    0.7.0.1
  */

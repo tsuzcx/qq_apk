@@ -1,21 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class sej
-  extends oxe
+public class sej
+  implements View.OnClickListener
 {
-  sej(sei paramsei) {}
+  public sej(VideoFeedsUGView paramVideoFeedsUGView) {}
   
-  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      sei.a(this.a, sei.a(this.a, paramList));
-    }
+    bgsg.a("ug_prefix_ug_1get3_ug_close_time", System.currentTimeMillis());
+    this.a.setVisibility(8);
+    ogc.a(ogc.b(this.a.jdField_a_of_type_Ocb.i, "101", this.a.jdField_a_of_type_JavaLangString));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sej
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,38 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import java.io.File;
+import java.io.RandomAccessFile;
 
-class arpk
-  implements bezx
+public class arpk
+  extends RandomAccessFile
 {
-  arpk(arph paramarph, List paramList, aqsb paramaqsb, arpm paramarpm) {}
+  private final byte[] a = new byte[8];
   
-  public void a(int paramInt)
+  public arpk(String paramString1, String paramString2)
   {
-    if (paramInt == 2)
-    {
-      arri.d(arph.a(this.jdField_a_of_type_Arph).getString(2131692914));
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        localFileManagerEntity = (FileManagerEntity)localIterator.next();
-        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-          if (bdhb.b(localFileManagerEntity.getFilePath())) {
-            this.jdField_a_of_type_Aqsb.a(localFileManagerEntity.getFilePath(), "", arph.a(this.jdField_a_of_type_Arph).getCurrentAccountUin(), 0, false);
-          } else {
-            this.jdField_a_of_type_Aqsb.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
-          }
-        }
-      }
-      if (this.jdField_a_of_type_Arpm != null) {
-        this.jdField_a_of_type_Arpm.a(4, 0);
-      }
+    super(new File(paramString1), paramString2);
+  }
+  
+  public int read()
+  {
+    int i = -1;
+    if (read(this.a, 0, 1) != -1) {
+      i = this.a[0] & 0xFF;
     }
-    while (this.jdField_a_of_type_Arpm == null)
-    {
-      Iterator localIterator;
-      FileManagerEntity localFileManagerEntity;
-      return;
+    return i;
+  }
+  
+  public int read(byte[] paramArrayOfByte)
+  {
+    return read(paramArrayOfByte, 0, paramArrayOfByte.length);
+  }
+  
+  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    long l = super.getFilePointer();
+    paramInt2 = super.read(paramArrayOfByte, paramInt1, paramInt2);
+    if (paramInt2 > -1) {
+      arpm.a(paramArrayOfByte, paramInt1, paramInt2, l);
     }
-    this.jdField_a_of_type_Arpm.a(4, 1);
+    return paramInt2;
   }
 }
 

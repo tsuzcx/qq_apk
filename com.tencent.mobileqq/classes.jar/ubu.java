@@ -1,23 +1,26 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetLightInteractRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetLightInteractListRsp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ubu
-  implements zac<FeedCloudRead.StGetLightInteractListRsp>
+final class ubu
+  implements bihh
 {
-  ubu(ubt paramubt, QCircleGetLightInteractRequest paramQCircleGetLightInteractRequest, boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetLightInteractListRsp paramStGetLightInteractListRsp)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    QLog.d(ubt.a, 1, "requestPolyList onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetLightInteractRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetLightInteractRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isCache:" + bool);
-    this.jdField_a_of_type_Ubt.a(paramBoolean, paramLong, this.jdField_a_of_type_Boolean, paramString, paramStGetLightInteractListRsp);
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718007, 1).a();
+    case -2: 
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718025, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ubu
  * JD-Core Version:    0.7.0.1
  */

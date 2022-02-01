@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry;
 
 import android.util.Log;
-import awgf;
-import awgg;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppUserAppInfoListManager$14
@@ -27,7 +27,7 @@ class MiniAppUserAppInfoListManager$14
     try
     {
       localMiniAppRedDotEntity.setStatus(1001);
-      if (((awgf)localObject).a(localMiniAppRedDotEntity, "appId=?", new String[] { localMiniAppRedDotEntity.appId }))
+      if (((EntityManager)localObject).remove(localMiniAppRedDotEntity, "appId=?", new String[] { localMiniAppRedDotEntity.appId }))
       {
         QLog.d("MiniAppUserAppInfoListManager", 2, "deleteRedDotDataFromDB, delete " + localMiniAppRedDotEntity.appId + " success from db");
         return;
@@ -43,7 +43,7 @@ class MiniAppUserAppInfoListManager$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.14
  * JD-Core Version:    0.7.0.1
  */

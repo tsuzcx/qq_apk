@@ -13,14 +13,14 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import uwa;
-import uwm;
-import wog;
-import woh;
-import xqq;
+import wpm;
+import wpy;
+import yhr;
+import yhs;
+import zkb;
 
 public class BannerFeedItem
-  extends CommentLikeFeedItem<woh, QQUserUIItem>
+  extends CommentLikeFeedItem<yhs, QQUserUIItem>
 {
   public String blurb;
   public String content;
@@ -31,7 +31,7 @@ public class BannerFeedItem
   public long recommendId = -1L;
   public String recommendTitle = "";
   public String schema;
-  public wog shareInfo = new wog();
+  public yhr shareInfo = new yhr();
   
   protected int assignType()
   {
@@ -75,8 +75,8 @@ public class BannerFeedItem
     this.feedId = paramString;
     paramString = new QQUserUIItem();
     paramString.convertFrom((qqstory_struct.UserInfo)paramBannerFeed.user.get());
-    this.mOwner = ((uwm)uwa.a(2)).a(paramString);
-    xqq.a(this.mOwner);
+    this.mOwner = ((wpy)wpm.a(2)).a(paramString);
+    zkb.a(this.mOwner);
     this.ownerId = this.mOwner.getUnionId();
     this.date = String.valueOf(paramBannerFeed.date.get());
     super.setDate(this.date);
@@ -186,9 +186,9 @@ public class BannerFeedItem
   }
   
   @NonNull
-  public woh generateHomeFeed()
+  public yhs generateHomeFeed()
   {
-    return new woh(this);
+    return new yhs(this);
   }
   
   public int getCommentLikeType()
@@ -208,7 +208,7 @@ public class BannerFeedItem
   protected void onCovertFromEntry()
   {
     super.onCovertFromEntry();
-    this.mOwner = ((uwm)uwa.a(2)).a(this.ownerId);
+    this.mOwner = ((wpy)wpm.a(2)).a(this.ownerId);
   }
   
   public void readFromLocalByte(byte[] paramArrayOfByte)
@@ -232,7 +232,7 @@ public class BannerFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.BannerFeedItem
  * JD-Core Version:    0.7.0.1
  */

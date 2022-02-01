@@ -1,58 +1,42 @@
 import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aukd
-  extends WebViewPlugin
+  implements DialogInterface.OnClickListener
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public aukd(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    if ((paramString2 == null) || (!"msgForward".equalsIgnoreCase(paramString2)) || (paramString3 == null)) {}
-    while ((this.mRuntime == null) || (this.mRuntime.a() == null) || (!"showForwardToWXMsg".equalsIgnoreCase(paramString3)) || (paramVarArgs == null)) {
-      return false;
-    }
-    if (paramVarArgs.length > 0) {
-      while (i < paramVarArgs.length)
-      {
-        QLog.d("MsgforwardWXWebViewPlugin", 1, paramVarArgs[i]);
-        i += 1;
-      }
-    }
-    paramJsBridgeListener = "0";
-    try
+    if (paramInt == 1)
     {
-      paramString1 = new JSONObject(paramVarArgs[0]).optString("rId");
-      paramJsBridgeListener = paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
+      if (ForwardSdkShareOption.a(this.a))
       {
-        long l;
-        QLog.e("MsgforwardWXWebViewPlugin", 1, "MsgforwardWXWebViewPlugin get resid exception!");
+        this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aufw.e.intValue());
+        this.a.l();
       }
+      bctj.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
     }
-    paramString1 = this.mRuntime.a();
-    l = paramJsBridgeListener.hashCode();
-    paramString2 = new Intent(paramString1, MultiForwardActivity.class);
-    paramString2.putExtra("chat_subType", 3);
-    paramString2.putExtra("uin", "0");
-    paramString2.putExtra("uintype", 1040);
-    paramString2.putExtra("multi_url", paramJsBridgeListener);
-    paramString2.putExtra("multi_uniseq", l);
-    paramString1.startActivity(paramString2);
-    paramString1.finish();
-    return true;
+    while (paramInt != 0) {
+      return;
+    }
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.a.jdField_a_of_type_AndroidAppActivity;
+    paramDialogInterface.setResult(0);
+    bctj.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
+    this.a.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aukd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.sdk;
 
-import ajem;
+import akwm;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class MiniAppLauncher
 {
   private static final String TAG = "MiniAppLauncher";
-  private static final String URL_PREFIX_MINIAPP_HTTP = "http://imgcache.qq.com/channel/mini_app/upgrade.html";
+  private static final String URL_PREFIX_MINIAPP_HTTP = "https://imgcache.qq.com/channel/mini_app/upgrade.html";
   private static final String URL_PREFIX_MINIAPP_HTTPS = "https://imgcache.qq.com/channel/mini_app/upgrade.html";
   private static final String URL_PREFIX_WX_MINIAPP_HTTPS = "https://mp.weixin.qq.com/a/";
   static long mLastGameTime;
@@ -35,7 +35,7 @@ public class MiniAppLauncher
   public static boolean isMiniAppUrl(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html")) && (!paramString.startsWith("http://imgcache.qq.com/channel/mini_app/upgrade.html")) && (!paramString.startsWith("https://mp.weixin.qq.com/a/"))) {
+    while ((!paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html")) && (!paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html")) && (!paramString.startsWith("https://mp.weixin.qq.com/a/"))) {
       return false;
     }
     return true;
@@ -59,7 +59,7 @@ public class MiniAppLauncher
         if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
           return openMiniApp(paramContext, paramLaunchParam);
         }
-        ajem.a(paramLaunchParam, null);
+        akwm.a(paramLaunchParam, null);
         return true;
       }
     }
@@ -109,7 +109,7 @@ public class MiniAppLauncher
     int i = j;
     if (!paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html"))
     {
-      if (!paramString.startsWith("http://imgcache.qq.com/channel/mini_app/upgrade.html")) {
+      if (!paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html")) {
         break label67;
       }
       i = j;
@@ -255,7 +255,7 @@ public class MiniAppLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppLauncher
  * JD-Core Version:    0.7.0.1
  */

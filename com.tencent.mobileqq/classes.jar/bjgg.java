@@ -1,64 +1,20 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.Vector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-class bjgg
-  implements Downloader.DownloadListener
+public class bjgg
+  implements DialogInterface.OnClickListener
 {
-  bjgg(bjgf parambjgf, bjgh parambjgh) {}
+  public bjgg(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bjgf.a(this.jdField_a_of_type_Bjgf, false);
-    if (bjgf.a(this.jdField_a_of_type_Bjgf).size() > 0)
-    {
-      bjgh localbjgh = (bjgh)bjgf.a(this.jdField_a_of_type_Bjgf).get(0);
-      bjgf.a(this.jdField_a_of_type_Bjgf).remove(0);
-      bjgf.a(this.jdField_a_of_type_Bjgf, localbjgh);
-    }
-    if (this.jdField_a_of_type_Bjgh.a != null) {
-      this.jdField_a_of_type_Bjgh.a.onDownloadCanceled(paramString);
-    }
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    bjgf.a(this.jdField_a_of_type_Bjgf, false);
-    if (bjgf.a(this.jdField_a_of_type_Bjgf).size() > 0)
-    {
-      bjgh localbjgh = (bjgh)bjgf.a(this.jdField_a_of_type_Bjgf).get(0);
-      bjgf.a(this.jdField_a_of_type_Bjgf).remove(0);
-      bjgf.a(this.jdField_a_of_type_Bjgf, localbjgh);
-    }
-    if (this.jdField_a_of_type_Bjgh.a != null) {
-      this.jdField_a_of_type_Bjgh.a.onDownloadFailed(paramString, paramDownloadResult);
-    }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
-  {
-    if (this.jdField_a_of_type_Bjgh.a != null) {
-      this.jdField_a_of_type_Bjgh.a.onDownloadProgress(paramString, paramLong, paramFloat);
-    }
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    bjgf.a(this.jdField_a_of_type_Bjgf, false);
-    if (bjgf.a(this.jdField_a_of_type_Bjgf).size() > 0)
-    {
-      bjgh localbjgh = (bjgh)bjgf.a(this.jdField_a_of_type_Bjgf).get(0);
-      bjgf.a(this.jdField_a_of_type_Bjgf).remove(0);
-      bjgf.a(this.jdField_a_of_type_Bjgf, localbjgh);
-    }
-    if (this.jdField_a_of_type_Bjgh.a != null) {
-      this.jdField_a_of_type_Bjgh.a.onDownloadSucceed(paramString, paramDownloadResult);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjgg
  * JD-Core Version:    0.7.0.1
  */

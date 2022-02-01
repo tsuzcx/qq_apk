@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import java.lang.ref.WeakReference;
 
 class bfcg
-  implements DialogInterface.OnClickListener
+  implements bdfn
 {
-  bfcg(bfcf parambfcf) {}
+  final WeakReference<SpriteVideoView> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private bfcg(SpriteVideoView paramSpriteVideoView)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.b(110405, "", "", "");
+    this.a = new WeakReference(paramSpriteVideoView);
+  }
+  
+  public void a()
+  {
+    SpriteVideoView localSpriteVideoView = (SpriteVideoView)this.a.get();
+    if (localSpriteVideoView != null) {
+      localSpriteVideoView.setVisibility(8);
+    }
   }
 }
 

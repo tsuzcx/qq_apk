@@ -1,43 +1,76 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
+import android.annotation.TargetApi;
+import android.graphics.Matrix;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
+import android.view.animation.Animation;
+import android.view.animation.Interpolator;
+import android.view.animation.Transformation;
 
-public class avas
-  implements View.OnKeyListener
+class avas
+  extends Animation
 {
-  public avas(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public float a;
+  public int a;
+  public PathMeasure a;
+  public View a;
+  public Interpolator a;
+  public avar a;
+  public avat a;
+  public float b;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  @TargetApi(11)
+  public avas(Path paramPath, float paramFloat, View paramView1, View paramView2, avar paramavar)
   {
-    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0)) {
-      if (ChooseInterestTagActivity.a(this.a).getText() == null)
-      {
-        paramView = "";
-        if (TextUtils.isEmpty(paramView))
-        {
-          ChooseInterestTagActivity.a(this.a).fullScroll(66);
-          ChooseInterestTagActivity.a(this.a, ChooseInterestTagActivity.d(this.a) + 1);
-        }
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(paramPath, false);
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
+    this.jdField_a_of_type_AndroidViewView = paramView2;
+    this.jdField_b_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Avar = paramavar;
+    paramView1.setLayerType(2, null);
+  }
+  
+  private static float a(int paramInt, float paramFloat)
+  {
+    switch (paramInt)
     {
-      return false;
-      paramView = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break;
-      if ((paramInt == 66) && (paramKeyEvent.getAction() == 0)) {
-        bhsj.b(ChooseInterestTagActivity.a(this.a));
+    default: 
+      return (float)Math.pow(paramFloat, 2.0D);
+    case 1: 
+      if (paramFloat < 0.8D) {
+        return 0.0F;
       }
+      return 5.0F * paramFloat - 4.0F;
     }
+    return 0.5F * paramFloat + 0.5F;
+  }
+  
+  @TargetApi(11)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    Object localObject = paramTransformation.getMatrix();
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getMatrix(this.jdField_a_of_type_Float * paramFloat, (Matrix)localObject, 1);
+    float f;
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      localObject = this.jdField_a_of_type_AndroidViewView;
+      f = this.jdField_b_of_type_Float;
+      avar localavar = this.jdField_a_of_type_Avar;
+      ((View)localObject).setRotation(f * paramFloat * avar.jdField_b_of_type_Float);
+    }
+    if (this.jdField_a_of_type_Avar.jdField_b_of_type_Boolean)
+    {
+      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
+      this.jdField_a_of_type_AndroidViewView.setScaleX(this.jdField_a_of_type_Avar.c * f);
+      this.jdField_a_of_type_AndroidViewView.setScaleY(f * this.jdField_a_of_type_Avar.c);
+    }
+    paramTransformation.setAlpha(1.0F - a(this.jdField_a_of_type_Int, paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avas
  * JD-Core Version:    0.7.0.1
  */

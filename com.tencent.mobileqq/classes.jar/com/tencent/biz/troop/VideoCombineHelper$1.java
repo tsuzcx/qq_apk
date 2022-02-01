@@ -1,22 +1,22 @@
 package com.tencent.biz.troop;
 
-import ysb;
-import ysj;
-import ysl;
+import aapa;
+import aapi;
+import aapk;
 
 public class VideoCombineHelper$1
   implements Runnable
 {
-  public VideoCombineHelper$1(ysb paramysb, ysl paramysl, ysj paramysj) {}
+  public VideoCombineHelper$1(aapa paramaapa, aapk paramaapk, aapi paramaapi) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Ysl, this.jdField_a_of_type_Ysj);
+    this.this$0.a(this.jdField_a_of_type_Aapk, this.jdField_a_of_type_Aapi);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.1
  * JD-Core Version:    0.7.0.1
  */

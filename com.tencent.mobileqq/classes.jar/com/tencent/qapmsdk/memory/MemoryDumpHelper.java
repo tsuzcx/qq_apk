@@ -7,8 +7,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 import com.tencent.qapmsdk.base.config.PluginCombination;
-import com.tencent.qapmsdk.base.listener.IMemoryCellingListener;
+import com.tencent.qapmsdk.base.listener.IMemoryDumpListener;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
+import com.tencent.qapmsdk.base.meta.DumpResult;
 import com.tencent.qapmsdk.base.meta.UserMeta;
 import com.tencent.qapmsdk.base.monitorplugin.PluginController;
 import com.tencent.qapmsdk.base.reporter.ReporterMachine;
@@ -18,8 +19,8 @@ import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.network.NetworkWatcher;
 import com.tencent.qapmsdk.common.util.AppInfo;
 import com.tencent.qapmsdk.common.util.AsyncSPEditor;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -46,7 +47,7 @@ public class MemoryDumpHelper
     if ((BaseInfo.sharePreference != null) && (BaseInfo.editor != null))
     {
       int i = BaseInfo.sharePreference.getInt(BaseInfo.userMeta.version, 0);
-      if ((i < 1) || (MemoryCeilingMonitor.sDebug))
+      if ((i < 1) || (MemoryCeilingMonitor.debug))
       {
         BaseInfo.editor.putInt(BaseInfo.userMeta.version, i + 1).apply();
         Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryDumpHelper", "this user don't have dumped" });
@@ -57,46 +58,43 @@ public class MemoryDumpHelper
     return false;
   }
   
-  private void dump(String paramString)
+  public static DumpResult dump(String paramString, IMemoryDumpListener paramIMemoryDumpListener)
   {
-    Object localObject1 = new ArrayList();
-    Object localObject2 = MemoryCeilingMonitor.getInstance().memoryCellingListener.onBeforeDump(paramString);
-    if ((localObject2 != null) && (((List)localObject2).size() > 0))
+    Object localObject1 = null;
+    if (paramIMemoryDumpListener != null) {
+      localObject1 = paramIMemoryDumpListener.onPrepareDump(paramString);
+    }
+    if (localObject1 == null) {
+      localObject1 = new ArrayList();
+    }
+    for (;;)
     {
-      ((List)localObject1).addAll((Collection)localObject2);
-      paramString = DumpMemInfoHandler.zipFiles((List)localObject1, paramString);
-      localObject1 = ActivityInfo.getCurrentActivityName();
-      if (((Boolean)paramString[0]).booleanValue()) {
-        break label106;
+      Object localObject2 = DumpMemInfoHandler.generateHprof(paramString);
+      if (paramIMemoryDumpListener != null) {
+        paramIMemoryDumpListener.onHprofDumped(paramString);
       }
-      Logger.INSTANCE.e(new String[] { "QAPM_memory_MemoryDumpHelper", "dump other file failed!" });
-    }
-    label106:
-    do
-    {
-      return;
-      Logger.INSTANCE.e(new String[] { "QAPM_memory_MemoryDumpHelper", "prepareFiles is none" });
-      return;
-      MemoryCeilingMonitor.getInstance().memoryCellingListener.onAfterDump();
-    } while (!PluginController.INSTANCE.canCollect(PluginCombination.ceilingHprofPlugin.plugin));
-    try
-    {
-      localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("fileObj", paramString[1]);
-      ((JSONObject)localObject2).put("stage", localObject1);
-      ((JSONObject)localObject2).put("Activity", localObject1);
-      ((JSONObject)localObject2).put("UIN", BaseInfo.userMeta.uin);
-      ((JSONObject)localObject2).put("Model", Build.MODEL);
-      ((JSONObject)localObject2).put("OS", Build.VERSION.RELEASE);
-      ((JSONObject)localObject2).put("Threshold", PluginCombination.ceilingHprofPlugin.threshold * Runtime.getRuntime().maxMemory() / 100L);
-      ((JSONObject)localObject2).put("plugin", PluginCombination.ceilingHprofPlugin.plugin);
-      paramString = new ResultObject(0, "MemoryCelling single", true, 1L, 1L, (JSONObject)localObject2, true, true, BaseInfo.userMeta.uin);
-      ReporterMachine.INSTANCE.addResultObj(paramString);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      Logger.INSTANCE.exception("QAPM_memory_MemoryDumpHelper", paramString);
+      DumpResult localDumpResult = new DumpResult();
+      localDumpResult.success = ((Boolean)localObject2[0]).booleanValue();
+      if ((localDumpResult.success) && (localObject2[1] != null))
+      {
+        localObject2 = (String)localObject2[1];
+        if (((List)localObject1).isEmpty()) {
+          Logger.INSTANCE.e(new String[] { "QAPM_memory_MemoryDumpHelper", "prepareFiles is none" });
+        }
+        ((List)localObject1).add(localObject2);
+        localDumpResult.hprofFileSize = new File((String)localObject2).length();
+      }
+      for (;;)
+      {
+        localObject1 = DumpMemInfoHandler.zipFiles((List)localObject1, paramString);
+        localDumpResult.zipFilePath = ((String)localObject1[1]);
+        localDumpResult.success = ((Boolean)localObject1[0]).booleanValue();
+        if (paramIMemoryDumpListener != null) {
+          paramIMemoryDumpListener.onFinishDump(localDumpResult.success, paramString, localDumpResult.zipFilePath);
+        }
+        return localDumpResult;
+        Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryDumpHelper", "failed dump memory" });
+      }
     }
   }
   
@@ -112,6 +110,35 @@ public class MemoryDumpHelper
       return sInstance;
     }
     finally {}
+  }
+  
+  public static void reportHprofFile(DumpResult paramDumpResult)
+  {
+    String str = ActivityInfo.getCurrentActivityName();
+    if (!paramDumpResult.success)
+    {
+      Logger.INSTANCE.e(new String[] { "QAPM_memory_MemoryDumpHelper", "dump other file failed!" });
+      return;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("fileObj", paramDumpResult.zipFilePath);
+      localJSONObject.put("stage", str);
+      localJSONObject.put("Activity", str);
+      localJSONObject.put("UIN", BaseInfo.userMeta.uin);
+      localJSONObject.put("Model", Build.MODEL);
+      localJSONObject.put("OS", Build.VERSION.RELEASE);
+      localJSONObject.put("Threshold", PluginCombination.ceilingHprofPlugin.threshold * Runtime.getRuntime().maxMemory() / 100L);
+      localJSONObject.put("plugin", PluginCombination.ceilingHprofPlugin.plugin);
+      paramDumpResult = new ResultObject(0, "MemoryCelling single", true, 1L, 1L, localJSONObject, true, true, BaseInfo.userMeta.uin);
+      ReporterMachine.INSTANCE.addResultObj(paramDumpResult);
+      return;
+    }
+    catch (JSONException paramDumpResult)
+    {
+      Logger.INSTANCE.exception("QAPM_memory_MemoryDumpHelper", paramDumpResult);
+    }
   }
   
   public void onReport(long paramLong1, long paramLong2, String paramString)
@@ -163,25 +190,30 @@ public class MemoryDumpHelper
     extraInfoMap.put(paramString1, paramString2);
   }
   
-  public void startDumpingMemory(String paramString)
+  public void startDumpingMemory(String paramString, IMemoryDumpListener paramIMemoryDumpListener)
   {
     try
     {
       if (!canDumpMemory()) {
         return;
       }
-      dump(paramString);
-      return;
+      if (!PluginController.INSTANCE.canCollect(PluginCombination.ceilingHprofPlugin.plugin))
+      {
+        Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryDumpHelper", "startDumpingMemory abort canCollect=false" });
+        return;
+      }
     }
     catch (Exception paramString)
     {
       Logger.INSTANCE.exception("QAPM_memory_MemoryDumpHelper", paramString);
+      return;
     }
+    reportHprofFile(dump(paramString, paramIMemoryDumpListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.memory.MemoryDumpHelper
  * JD-Core Version:    0.7.0.1
  */

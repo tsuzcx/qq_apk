@@ -1,23 +1,52 @@
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
-public class nbn
-  implements alpg
+public abstract interface nbn
 {
-  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
+  public abstract RectF a();
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, (BmqqUserSimpleInfo)paramObject);
-  }
+  public abstract Drawable a();
+  
+  public abstract nal a();
+  
+  public abstract void a();
+  
+  public abstract void a(ImageView paramImageView, long paramLong1, long paramLong2);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, myc parammyc);
+  
+  public abstract void a(myc parammyc);
+  
+  public abstract void a(nal paramnal);
+  
+  public abstract void a(nbl paramnbl);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract Drawable b();
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString, myc parammyc);
+  
+  public abstract void b(myc parammyc);
+  
+  public abstract void b(nbl paramnbl);
+  
+  public abstract void c();
+  
+  public abstract void c(nbl paramnbl);
+  
+  public abstract void d(nbl paramnbl);
+  
+  public abstract void e(nbl paramnbl);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nbn
  * JD-Core Version:    0.7.0.1
  */

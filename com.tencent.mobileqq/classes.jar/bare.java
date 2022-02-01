@@ -1,45 +1,38 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
 public class bare
-  extends Handler
+  extends barg
 {
-  public bare(bard parambard, Looper paramLooper)
+  public long a = 0L;
+  public long b;
+  
+  public bare()
   {
-    super(paramLooper);
+    this.jdField_b_of_type_Long = -1L;
   }
   
-  public void a(barf parambarf)
+  public HashMap<String, String> a(String paramString)
   {
-    sendMessage(obtainMessage(0, parambarf));
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((paramMessage.what == 0) && (paramMessage.obj != null) && ((paramMessage.obj instanceof barf))) {
-      paramMessage = (barf)paramMessage.obj;
-    }
-    try
+    if ("ShortVideo.FullscreenPreview".equals(paramString))
     {
-      bayk localbayk = paramMessage.a();
-      if ((localbayk != null) && (localbayk.jdField_a_of_type_Long != 0L) && (localbayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) && ((paramMessage.a instanceof QQAppInterface))) {
-        localbayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((QQAppInterface)paramMessage.a).a().b(localbayk.c, localbayk.jdField_a_of_type_Int, localbayk.jdField_a_of_type_Long);
-      }
+      paramString = new HashMap();
+      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_duration", this.a + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_netType", this.h + "");
+      paramString.put("param_playTimeCost", this.jdField_b_of_type_Long + "");
+      return paramString;
     }
-    catch (Exception localException)
-    {
-      label96:
-      break label96;
-    }
-    paramMessage.aP_();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bare
  * JD-Core Version:    0.7.0.1
  */

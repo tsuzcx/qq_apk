@@ -1,43 +1,70 @@
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class aosk
 {
-  public int a;
+  public final int a;
+  long jdField_a_of_type_Long = 0L;
+  apte jdField_a_of_type_Apte = null;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  public String a;
+  boolean jdField_a_of_type_Boolean = true;
   public int b;
+  long b;
+  public String b;
+  int jdField_c_of_type_Int = 0;
+  long jdField_c_of_type_Long = 0L;
+  public String c;
+  int d;
+  public String d;
+  public final String e;
   
-  public static aosk a(String paramString)
+  public aosk(String paramString, int paramInt)
   {
-    if (paramString == null) {}
-    do
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_d_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_d_of_type_Int = -1;
+    this.e = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  void a()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      return null;
-      try
-      {
-        aosk localaosk = new aosk();
-        paramString = new JSONObject(paramString);
-        localaosk.a = paramString.optInt("switch", 0);
-        localaosk.b = paramString.optInt("stoppreload", 0);
-        QLog.d("ConfBean", 2, "confBean = " + localaosk.a);
-        return localaosk;
+      if (this.jdField_c_of_type_Int == 1) {
+        return;
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+      if (this.jdField_c_of_type_Int == -1) {
+        QLog.w(PromotionConfigInfo.TAG, 1, "clearDownladFlag, ZipItem[" + this + "]");
+      }
+      a(0);
+      this.jdField_a_of_type_Long = 0L;
+      this.jdField_b_of_type_Long = 0L;
+      this.jdField_c_of_type_Long = 0L;
+      return;
+    }
+  }
+  
+  void a(int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_c_of_type_Int = paramInt;
+      return;
+    }
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("result:").append(this.a);
-    localStringBuilder.append(" stoppreload:").append(this.b);
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_Int + ", id[" + this.e + "], index[" + this.jdField_a_of_type_Int + "], net_type[" + this.jdField_b_of_type_Int + "], url[" + this.jdField_a_of_type_JavaLangString + "], md5[" + this.jdField_b_of_type_JavaLangString + "], zipFilePath[" + this.jdField_c_of_type_JavaLangString + "], unzipDirPath[" + this.jdField_d_of_type_JavaLangString + "], callByPreDownload[" + this.jdField_a_of_type_Boolean + "], downloadType[" + this.jdField_c_of_type_Int + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aosk
  * JD-Core Version:    0.7.0.1
  */

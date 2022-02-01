@@ -1,22 +1,10 @@
-import android.view.View;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
+import kotlin.Metadata;
 
-class rci
-  extends URLDrawableDownListener.Adapter
-{
-  rci(rch paramrch) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordPresenter$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rci {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rci
  * JD-Core Version:    0.7.0.1
  */

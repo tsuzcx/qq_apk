@@ -1,16 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
 public class ajos
   implements DialogInterface.OnClickListener
 {
-  public ajos(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public ajos(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

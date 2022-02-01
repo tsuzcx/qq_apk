@@ -1,28 +1,35 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class asvq
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public asvq(QfileFavFileTabView paramQfileFavFileTabView) {}
   
-  public asvq(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt1, int paramInt2, long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
-    this.g = paramString7;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Long = paramLong;
+    if ((paramView.getTag() instanceof asvg)) {}
+    for (FavFileInfo localFavFileInfo = (FavFileInfo)((asvg)paramView.getTag()).a;; localFavFileInfo = null)
+    {
+      QfileFavFileTabView localQfileFavFileTabView;
+      if (localFavFileInfo != null)
+      {
+        localQfileFavFileTabView = this.a;
+        if (paramView.getId() != 2131366555) {
+          break label60;
+        }
+      }
+      label60:
+      for (boolean bool = true;; bool = false)
+      {
+        localQfileFavFileTabView.a(localFavFileInfo, bool);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
+    }
   }
 }
 

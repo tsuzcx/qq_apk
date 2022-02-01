@@ -1,128 +1,56 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.1;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.2;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.3;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.4;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.5;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspBody;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspChannelArticle;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspGetFollowTabData;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspTrace;
 
-public class pvy
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/model/AritcleInfoModuleUtils;", "", "()V", "handleRealStyle", "", "serviceKey", "stylePbData", "Lcom/tencent/mobileqq/pb/PBBytesField;", "isChannelDataExcludeFollowChannel", "", "clientSwitch", "", "resp", "Ltencent/im/oidb/cmd0x68b/oidb_cmd0x68b$RspBody;", "isFollowChannelClientSwitch", "isVideoRealtimeReplaceReq", "report68BTrace", "rspTrace", "Ltencent/im/oidb/cmd0x68b/oidb_cmd0x68b$RspTrace;", "CommonChannelDataHandle", "FollowChannelDataHandler", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pvy
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static volatile pvy jdField_a_of_type_Pvy;
-  public final boolean a;
-  private final String jdField_b_of_type_JavaLangString = "3980";
-  private volatile boolean jdField_b_of_type_Boolean;
-  private final String c = "readinjoy_pts_engine";
-  private final String d = "libpts.so";
-  private final String e = "pts_config.json";
-  private final String f = ncb.a("3980") + "3980";
-  private final String g = BaseApplicationImpl.getApplication().getFilesDir().getParent() + "/txlib/" + "readinjoy_pts_engine";
+  public static final pvy a = new pvy();
   
-  private pvy()
+  public final void a(@Nullable Object paramObject, @NotNull PBBytesField paramPBBytesField)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public static pvy a()
-  {
-    if (jdField_a_of_type_Pvy == null) {}
-    try
-    {
-      if (jdField_a_of_type_Pvy == null) {
-        jdField_a_of_type_Pvy = new pvy();
-      }
-      return jdField_a_of_type_Pvy;
+    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "stylePbData");
+    paramPBBytesField = qnb.a(paramPBBytesField);
+    if ((paramPBBytesField != null) && ((paramObject instanceof String))) {
+      tet.a((String)paramObject, paramPBBytesField);
     }
-    finally {}
   }
   
-  private boolean b()
+  public final void a(@NotNull oidb_cmd0x68b.RspTrace paramRspTrace)
   {
-    Object localObject = this.g + "/" + "libpts.so";
-    String str = this.g + "/" + "pts_config.json";
-    boolean bool1 = bdhb.a((String)localObject);
-    boolean bool2 = pwc.a(str);
-    jdField_a_of_type_JavaLangString = pwc.b(str);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[checkInnerPTSEngineIsValid]").append("\n").append(", ptsEngineVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isSoExists = ").append(bool1).append("\n").append(", isVersionSupport = ").append(bool2).append("\n");
-    QLog.i("PTSEngineLoader", 1, ((StringBuilder)localObject).toString());
-    return (bool1) && (bool2);
-  }
-  
-  private void c()
-  {
-    ThreadManager.excute(new PTSEngineLoader.3(this), 128, null, true);
-  }
-  
-  private boolean c()
-  {
-    return false;
-  }
-  
-  private void d()
-  {
-    ThreadManager.excute(new PTSEngineLoader.4(this), 64, null, false);
-  }
-  
-  private void e()
-  {
-    if (c()) {
-      return;
+    Intrinsics.checkParameterIsNotNull(paramRspTrace, "rspTrace");
+    if (paramRspTrace.has()) {
+      pha.a(pha.a(), paramRspTrace.rpt_trace_record_list.get());
     }
-    if (a())
-    {
-      QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], pts engine is ready, do not load again.");
-      return;
-    }
-    if (b())
-    {
-      PTSEngineLoader.5 local5 = new PTSEngineLoader.5(this);
-      pwa.a().a(local5);
-      return;
-    }
-    QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], inner dir is not valid, load pts engine failed.");
-    d();
   }
   
-  public String a()
+  public final boolean a(long paramLong)
   {
-    return jdField_a_of_type_JavaLangString;
+    return (paramLong >> 13 & 1L) == 1L;
   }
   
-  public void a()
+  public final boolean a(long paramLong, @NotNull oidb_cmd0x68b.RspBody paramRspBody)
   {
-    PTSEngineLoader.1 local1 = new PTSEngineLoader.1(this);
-    ThreadManager.getSubThreadHandler().postDelayed(local1, 10000L);
+    Intrinsics.checkParameterIsNotNull(paramRspBody, "resp");
+    return ((paramLong >> 9 & 1L) == 1L) && (paramRspBody.msg_rsp_get_follow_tab_data.has());
   }
   
-  public boolean a()
+  public final boolean b(long paramLong, @NotNull oidb_cmd0x68b.RspBody paramRspBody)
   {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_b_of_type_Boolean = false;
-      PTSEngineLoader.2 local2 = new PTSEngineLoader.2(this);
-      ThreadManager.getFileThreadHandler().post(local2);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    Intrinsics.checkParameterIsNotNull(paramRspBody, "resp");
+    return (!a(paramLong, paramRspBody)) && (paramRspBody.rspChannelArticle.has()) && (paramRspBody.rspChannelArticle.get() != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pvy
  * JD-Core Version:    0.7.0.1
  */

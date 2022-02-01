@@ -1,29 +1,13 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahol
-  extends MqqHandler
+  implements ahor
 {
-  public ahol(NotificationView paramNotificationView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_Ahoi == null);
-      this.a.i();
-      this.a.jdField_a_of_type_Ahoi.a = bafj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.a.jdField_a_of_type_Ahoi.notifyDataSetChanged();
-      return;
-    }
-    this.a.j();
+    paramagup.b(paramagwc.b, paramMessageRecord.extStr);
   }
 }
 

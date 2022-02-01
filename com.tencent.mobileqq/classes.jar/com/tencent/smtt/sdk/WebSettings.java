@@ -9,7 +9,7 @@ import com.tencent.smtt.export.external.interfaces.IX5WebSettings.LayoutAlgorith
 import com.tencent.smtt.export.external.interfaces.IX5WebSettings.RenderPriority;
 import com.tencent.smtt.export.external.interfaces.IX5WebSettings.TextSize;
 import com.tencent.smtt.export.external.interfaces.IX5WebSettings.ZoomDensity;
-import com.tencent.smtt.utils.ReflectionUtils;
+import com.tencent.smtt.utils.i;
 
 public class WebSettings
 {
@@ -18,36 +18,35 @@ public class WebSettings
   public static final int LOAD_DEFAULT = -1;
   public static final int LOAD_NORMAL = 0;
   public static final int LOAD_NO_CACHE = 2;
-  private static final String LOGTAG = "WebSettings";
-  private boolean isUseX5 = false;
-  private android.webkit.WebSettings mSystemWebSettings = null;
-  private IX5WebSettings mWebSettingsImpl = null;
+  private IX5WebSettings a = null;
+  private android.webkit.WebSettings b = null;
+  private boolean c = false;
   
   WebSettings(android.webkit.WebSettings paramWebSettings)
   {
-    this.mWebSettingsImpl = null;
-    this.mSystemWebSettings = paramWebSettings;
-    this.isUseX5 = false;
+    this.a = null;
+    this.b = paramWebSettings;
+    this.c = false;
   }
   
   WebSettings(IX5WebSettings paramIX5WebSettings)
   {
-    this.mWebSettingsImpl = paramIX5WebSettings;
-    this.mSystemWebSettings = null;
-    this.isUseX5 = true;
+    this.a = paramIX5WebSettings;
+    this.b = null;
+    this.c = true;
   }
   
   @TargetApi(17)
   public static String getDefaultUserAgent(Context paramContext)
   {
     String str = null;
-    if (X5CoreEngine.getInstance().isX5Core()) {
-      str = X5CoreEngine.getInstance().wizard().getDefaultUserAgent(paramContext);
+    if (v.a().b()) {
+      str = v.a().c().i(paramContext);
     }
     while (Build.VERSION.SDK_INT < 17) {
       return str;
     }
-    paramContext = ReflectionUtils.invokeStatic(android.webkit.WebSettings.class, "getDefaultUserAgent", new Class[] { Context.class }, new Object[] { paramContext });
+    paramContext = i.a(android.webkit.WebSettings.class, "getDefaultUserAgent", new Class[] { Context.class }, new Object[] { paramContext });
     if (paramContext == null) {}
     for (paramContext = null;; paramContext = (String)paramContext) {
       return paramContext;
@@ -58,8 +57,8 @@ public class WebSettings
   public boolean enableSmoothTransition()
   {
     boolean bool2 = false;
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      bool1 = this.mWebSettingsImpl.enableSmoothTransition();
+    if ((this.c) && (this.a != null)) {
+      bool1 = this.a.enableSmoothTransition();
     }
     do
     {
@@ -69,12 +68,12 @@ public class WebSettings
         {
           return bool1;
           bool1 = bool2;
-        } while (this.isUseX5);
+        } while (this.c);
         bool1 = bool2;
-      } while (this.mSystemWebSettings == null);
+      } while (this.b == null);
       bool1 = bool2;
     } while (Build.VERSION.SDK_INT < 11);
-    Object localObject = ReflectionUtils.invokeInstance(this.mSystemWebSettings, "enableSmoothTransition");
+    Object localObject = i.a(this.b, "enableSmoothTransition");
     if (localObject == null) {}
     for (boolean bool1 = false;; bool1 = ((Boolean)localObject).booleanValue()) {
       return bool1;
@@ -85,8 +84,8 @@ public class WebSettings
   public boolean getAllowContentAccess()
   {
     boolean bool2 = false;
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      bool1 = this.mWebSettingsImpl.getAllowContentAccess();
+    if ((this.c) && (this.a != null)) {
+      bool1 = this.a.getAllowContentAccess();
     }
     do
     {
@@ -96,12 +95,12 @@ public class WebSettings
         {
           return bool1;
           bool1 = bool2;
-        } while (this.isUseX5);
+        } while (this.c);
         bool1 = bool2;
-      } while (this.mSystemWebSettings == null);
+      } while (this.b == null);
       bool1 = bool2;
     } while (Build.VERSION.SDK_INT < 11);
-    Object localObject = ReflectionUtils.invokeInstance(this.mSystemWebSettings, "getAllowContentAccess");
+    Object localObject = i.a(this.b, "getAllowContentAccess");
     if (localObject == null) {}
     for (boolean bool1 = false;; bool1 = ((Boolean)localObject).booleanValue()) {
       return bool1;
@@ -111,11 +110,11 @@ public class WebSettings
   @TargetApi(3)
   public boolean getAllowFileAccess()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return this.mWebSettingsImpl.getAllowFileAccess();
+    if ((this.c) && (this.a != null)) {
+      return this.a.getAllowFileAccess();
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null)) {
-      return this.mSystemWebSettings.getAllowFileAccess();
+    if ((!this.c) && (this.b != null)) {
+      return this.b.getAllowFileAccess();
     }
     return false;
   }
@@ -127,28 +126,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 111 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 103 1 0
     //   25: istore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: iload_1
     //   29: ireturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 112	android/webkit/WebSettings:getBlockNetworkImage	()Z
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 104	android/webkit/WebSettings:getBlockNetworkImage	()Z
     //   51: istore_1
     //   52: goto -26 -> 26
     //   55: iconst_0
@@ -180,14 +179,14 @@ public class WebSettings
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   5: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   8: ifeq +24 -> 32
     //   11: aload_0
-    //   12: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   12: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   15: ifnull +17 -> 32
     //   18: aload_0
-    //   19: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   22: invokeinterface 116 1 0
+    //   19: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   22: invokeinterface 108 1 0
     //   27: istore_1
     //   28: aload_0
     //   29: monitorexit
@@ -196,21 +195,21 @@ public class WebSettings
     //   32: iload_2
     //   33: istore_1
     //   34: aload_0
-    //   35: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   35: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   38: ifne -10 -> 28
     //   41: iload_2
     //   42: istore_1
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: ifnull -19 -> 28
     //   50: iload_2
     //   51: istore_1
-    //   52: getstatic 66	android/os/Build$VERSION:SDK_INT	I
+    //   52: getstatic 60	android/os/Build$VERSION:SDK_INT	I
     //   55: bipush 8
     //   57: if_icmplt -29 -> 28
     //   60: aload_0
-    //   61: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   64: invokevirtual 117	android/webkit/WebSettings:getBlockNetworkLoads	()Z
+    //   61: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   64: invokevirtual 109	android/webkit/WebSettings:getBlockNetworkLoads	()Z
     //   67: istore_1
     //   68: goto -40 -> 28
     //   71: astore_3
@@ -235,22 +234,22 @@ public class WebSettings
   @TargetApi(3)
   public boolean getBuiltInZoomControls()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return this.mWebSettingsImpl.getBuiltInZoomControls();
+    if ((this.c) && (this.a != null)) {
+      return this.a.getBuiltInZoomControls();
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null)) {
-      return this.mSystemWebSettings.getBuiltInZoomControls();
+    if ((!this.c) && (this.b != null)) {
+      return this.b.getBuiltInZoomControls();
     }
     return false;
   }
   
   public int getCacheMode()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return this.mWebSettingsImpl.getCacheMode();
+    if ((this.c) && (this.a != null)) {
+      return this.a.getCacheMode();
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null)) {
-      return this.mSystemWebSettings.getCacheMode();
+    if ((!this.c) && (this.b != null)) {
+      return this.b.getCacheMode();
     }
     return 0;
   }
@@ -262,31 +261,31 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 130 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 122 1 0
     //   25: astore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: aload_1
     //   29: areturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 131	android/webkit/WebSettings:getCursiveFontFamily	()Ljava/lang/String;
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 123	android/webkit/WebSettings:getCursiveFontFamily	()Ljava/lang/String;
     //   51: astore_1
     //   52: goto -26 -> 26
-    //   55: ldc 133
+    //   55: ldc 125
     //   57: astore_1
     //   58: goto -32 -> 26
     //   61: astore_1
@@ -313,28 +312,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 137 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 129 1 0
     //   25: istore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: iload_1
     //   29: ireturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 138	android/webkit/WebSettings:getDatabaseEnabled	()Z
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 130	android/webkit/WebSettings:getDatabaseEnabled	()Z
     //   51: istore_1
     //   52: goto -26 -> 26
     //   55: iconst_0
@@ -364,31 +363,31 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 141 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 133 1 0
     //   25: astore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: aload_1
     //   29: areturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 142	android/webkit/WebSettings:getDatabasePath	()Ljava/lang/String;
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 134	android/webkit/WebSettings:getDatabasePath	()Ljava/lang/String;
     //   51: astore_1
     //   52: goto -26 -> 26
-    //   55: ldc 133
+    //   55: ldc 125
     //   57: astore_1
     //   58: goto -32 -> 26
     //   61: astore_1
@@ -414,28 +413,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 145 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 137 1 0
     //   25: istore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: iload_1
     //   29: ireturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 146	android/webkit/WebSettings:getDefaultFixedFontSize	()I
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 138	android/webkit/WebSettings:getDefaultFixedFontSize	()I
     //   51: istore_1
     //   52: goto -26 -> 26
     //   55: iconst_0
@@ -464,28 +463,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 149 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 141 1 0
     //   25: istore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: iload_1
     //   29: ireturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 150	android/webkit/WebSettings:getDefaultFontSize	()I
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 142	android/webkit/WebSettings:getDefaultFontSize	()I
     //   51: istore_1
     //   52: goto -26 -> 26
     //   55: iconst_0
@@ -514,31 +513,31 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 153 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 145 1 0
     //   25: astore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: aload_1
     //   29: areturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 154	android/webkit/WebSettings:getDefaultTextEncodingName	()Ljava/lang/String;
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 146	android/webkit/WebSettings:getDefaultTextEncodingName	()Ljava/lang/String;
     //   51: astore_1
     //   52: goto -26 -> 26
-    //   55: ldc 133
+    //   55: ldc 125
     //   57: astore_1
     //   58: goto -32 -> 26
     //   61: astore_1
@@ -560,11 +559,11 @@ public class WebSettings
   @TargetApi(7)
   public WebSettings.ZoomDensity getDefaultZoom()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return WebSettings.ZoomDensity.valueOf(this.mWebSettingsImpl.getDefaultZoom().name());
+    if ((this.c) && (this.a != null)) {
+      return WebSettings.ZoomDensity.valueOf(this.a.getDefaultZoom().name());
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null)) {
-      return WebSettings.ZoomDensity.valueOf(this.mSystemWebSettings.getDefaultZoom().name());
+    if ((!this.c) && (this.b != null)) {
+      return WebSettings.ZoomDensity.valueOf(this.b.getDefaultZoom().name());
     }
     return null;
   }
@@ -573,8 +572,8 @@ public class WebSettings
   public boolean getDisplayZoomControls()
   {
     boolean bool2 = false;
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      bool1 = this.mWebSettingsImpl.getDisplayZoomControls();
+    if ((this.c) && (this.a != null)) {
+      bool1 = this.a.getDisplayZoomControls();
     }
     do
     {
@@ -584,12 +583,12 @@ public class WebSettings
         {
           return bool1;
           bool1 = bool2;
-        } while (this.isUseX5);
+        } while (this.c);
         bool1 = bool2;
-      } while (this.mSystemWebSettings == null);
+      } while (this.b == null);
       bool1 = bool2;
     } while (Build.VERSION.SDK_INT < 11);
-    Object localObject = ReflectionUtils.invokeInstance(this.mSystemWebSettings, "getDisplayZoomControls");
+    Object localObject = i.a(this.b, "getDisplayZoomControls");
     if (localObject == null) {}
     for (boolean bool1 = false;; bool1 = ((Boolean)localObject).booleanValue()) {
       return bool1;
@@ -604,28 +603,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 184 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 176 1 0
     //   25: istore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: iload_1
     //   29: ireturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 185	android/webkit/WebSettings:getDomStorageEnabled	()Z
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 177	android/webkit/WebSettings:getDomStorageEnabled	()Z
     //   51: istore_1
     //   52: goto -26 -> 26
     //   55: iconst_0
@@ -654,31 +653,31 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 188 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 180 1 0
     //   25: astore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: aload_1
     //   29: areturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 189	android/webkit/WebSettings:getFantasyFontFamily	()Ljava/lang/String;
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 181	android/webkit/WebSettings:getFantasyFontFamily	()Ljava/lang/String;
     //   51: astore_1
     //   52: goto -26 -> 26
-    //   55: ldc 133
+    //   55: ldc 125
     //   57: astore_1
     //   58: goto -32 -> 26
     //   61: astore_1
@@ -704,31 +703,31 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 192 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 184 1 0
     //   25: astore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: aload_1
     //   29: areturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 193	android/webkit/WebSettings:getFixedFontFamily	()Ljava/lang/String;
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 185	android/webkit/WebSettings:getFixedFontFamily	()Ljava/lang/String;
     //   51: astore_1
     //   52: goto -26 -> 26
-    //   55: ldc 133
+    //   55: ldc 125
     //   57: astore_1
     //   58: goto -32 -> 26
     //   61: astore_1
@@ -754,28 +753,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 196 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 188 1 0
     //   25: istore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: iload_1
     //   29: ireturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 197	android/webkit/WebSettings:getJavaScriptCanOpenWindowsAutomatically	()Z
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 189	android/webkit/WebSettings:getJavaScriptCanOpenWindowsAutomatically	()Z
     //   51: istore_1
     //   52: goto -26 -> 26
     //   55: iconst_0
@@ -804,28 +803,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 200 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 192 1 0
     //   25: istore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: iload_1
     //   29: ireturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 201	android/webkit/WebSettings:getJavaScriptEnabled	()Z
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 193	android/webkit/WebSettings:getJavaScriptEnabled	()Z
     //   51: istore_1
     //   52: goto -26 -> 26
     //   55: iconst_0
@@ -854,32 +853,32 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +30 -> 36
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +23 -> 36
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 206 1 0
-    //   25: invokevirtual 209	com/tencent/smtt/export/external/interfaces/IX5WebSettings$LayoutAlgorithm:name	()Ljava/lang/String;
-    //   28: invokestatic 214	com/tencent/smtt/sdk/WebSettings$LayoutAlgorithm:valueOf	(Ljava/lang/String;)Lcom/tencent/smtt/sdk/WebSettings$LayoutAlgorithm;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 198 1 0
+    //   25: invokevirtual 201	com/tencent/smtt/export/external/interfaces/IX5WebSettings$LayoutAlgorithm:name	()Ljava/lang/String;
+    //   28: invokestatic 206	com/tencent/smtt/sdk/WebSettings$LayoutAlgorithm:valueOf	(Ljava/lang/String;)Lcom/tencent/smtt/sdk/WebSettings$LayoutAlgorithm;
     //   31: astore_1
     //   32: aload_0
     //   33: monitorexit
     //   34: aload_1
     //   35: areturn
     //   36: aload_0
-    //   37: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   37: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   40: ifne +27 -> 67
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: ifnull +20 -> 67
     //   50: aload_0
-    //   51: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   54: invokevirtual 217	android/webkit/WebSettings:getLayoutAlgorithm	()Landroid/webkit/WebSettings$LayoutAlgorithm;
-    //   57: invokevirtual 220	android/webkit/WebSettings$LayoutAlgorithm:name	()Ljava/lang/String;
-    //   60: invokestatic 214	com/tencent/smtt/sdk/WebSettings$LayoutAlgorithm:valueOf	(Ljava/lang/String;)Lcom/tencent/smtt/sdk/WebSettings$LayoutAlgorithm;
+    //   51: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   54: invokevirtual 209	android/webkit/WebSettings:getLayoutAlgorithm	()Landroid/webkit/WebSettings$LayoutAlgorithm;
+    //   57: invokevirtual 212	android/webkit/WebSettings$LayoutAlgorithm:name	()Ljava/lang/String;
+    //   60: invokestatic 206	com/tencent/smtt/sdk/WebSettings$LayoutAlgorithm:valueOf	(Ljava/lang/String;)Lcom/tencent/smtt/sdk/WebSettings$LayoutAlgorithm;
     //   63: astore_1
     //   64: goto -32 -> 32
     //   67: aconst_null
@@ -903,11 +902,11 @@ public class WebSettings
   
   public boolean getLightTouchEnabled()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return this.mWebSettingsImpl.getLightTouchEnabled();
+    if ((this.c) && (this.a != null)) {
+      return this.a.getLightTouchEnabled();
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null)) {
-      return this.mSystemWebSettings.getLightTouchEnabled();
+    if ((!this.c) && (this.b != null)) {
+      return this.b.getLightTouchEnabled();
     }
     return false;
   }
@@ -915,11 +914,11 @@ public class WebSettings
   @TargetApi(7)
   public boolean getLoadWithOverviewMode()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return this.mWebSettingsImpl.getLoadWithOverviewMode();
+    if ((this.c) && (this.a != null)) {
+      return this.a.getLoadWithOverviewMode();
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null)) {
-      return this.mSystemWebSettings.getLoadWithOverviewMode();
+    if ((!this.c) && (this.b != null)) {
+      return this.b.getLoadWithOverviewMode();
     }
     return false;
   }
@@ -931,28 +930,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 231 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 223 1 0
     //   25: istore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: iload_1
     //   29: ireturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 232	android/webkit/WebSettings:getLoadsImagesAutomatically	()Z
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 224	android/webkit/WebSettings:getLoadsImagesAutomatically	()Z
     //   51: istore_1
     //   52: goto -26 -> 26
     //   55: iconst_0
@@ -978,8 +977,8 @@ public class WebSettings
   public boolean getMediaPlaybackRequiresUserGesture()
   {
     boolean bool2 = false;
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      bool1 = this.mWebSettingsImpl.getMediaPlaybackRequiresUserGesture();
+    if ((this.c) && (this.a != null)) {
+      bool1 = this.a.getMediaPlaybackRequiresUserGesture();
     }
     do
     {
@@ -989,12 +988,12 @@ public class WebSettings
         {
           return bool1;
           bool1 = bool2;
-        } while (this.isUseX5);
+        } while (this.c);
         bool1 = bool2;
-      } while (this.mSystemWebSettings == null);
+      } while (this.b == null);
       bool1 = bool2;
     } while (Build.VERSION.SDK_INT < 17);
-    Object localObject = ReflectionUtils.invokeInstance(this.mSystemWebSettings, "getMediaPlaybackRequiresUserGesture");
+    Object localObject = i.a(this.b, "getMediaPlaybackRequiresUserGesture");
     if (localObject == null) {}
     for (boolean bool1 = false;; bool1 = ((Boolean)localObject).booleanValue()) {
       return bool1;
@@ -1008,28 +1007,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 239 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 231 1 0
     //   25: istore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: iload_1
     //   29: ireturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 240	android/webkit/WebSettings:getMinimumFontSize	()I
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 232	android/webkit/WebSettings:getMinimumFontSize	()I
     //   51: istore_1
     //   52: goto -26 -> 26
     //   55: iconst_0
@@ -1058,28 +1057,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 243 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 235 1 0
     //   25: istore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: iload_1
     //   29: ireturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 244	android/webkit/WebSettings:getMinimumLogicalFontSize	()I
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 236	android/webkit/WebSettings:getMinimumLogicalFontSize	()I
     //   51: istore_1
     //   52: goto -26 -> 26
     //   55: iconst_0
@@ -1108,14 +1107,14 @@ public class WebSettings
     {
       try
       {
-        if (this.isUseX5)
+        if (this.c)
         {
-          IX5WebSettings localIX5WebSettings = this.mWebSettingsImpl;
+          IX5WebSettings localIX5WebSettings = this.a;
           if (localIX5WebSettings != null)
           {
             try
             {
-              int j = this.mWebSettingsImpl.getMixedContentMode();
+              int j = this.a.getMixedContentMode();
               i = j;
             }
             catch (Throwable localThrowable)
@@ -1130,7 +1129,7 @@ public class WebSettings
       finally {}
       if (Build.VERSION.SDK_INT >= 21)
       {
-        Object localObject2 = ReflectionUtils.invokeInstance(this.mSystemWebSettings, "getMixedContentMode", new Class[0], new Object[0]);
+        Object localObject2 = i.a(this.b, "getMixedContentMode", new Class[0], new Object[0]);
         if (localObject2 == null) {
           i = -1;
         } else {
@@ -1142,12 +1141,12 @@ public class WebSettings
   
   public boolean getNavDump()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return this.mWebSettingsImpl.getNavDump();
+    if ((this.c) && (this.a != null)) {
+      return this.a.getNavDump();
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null))
+    if ((!this.c) && (this.b != null))
     {
-      Object localObject = ReflectionUtils.invokeInstance(this.mSystemWebSettings, "getNavDump");
+      Object localObject = i.a(this.b, "getNavDump");
       if (localObject == null) {
         return false;
       }
@@ -1165,34 +1164,34 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +30 -> 36
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +23 -> 36
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 270 1 0
-    //   25: invokevirtual 273	com/tencent/smtt/export/external/interfaces/IX5WebSettings$PluginState:name	()Ljava/lang/String;
-    //   28: invokestatic 278	com/tencent/smtt/sdk/WebSettings$PluginState:valueOf	(Ljava/lang/String;)Lcom/tencent/smtt/sdk/WebSettings$PluginState;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 262 1 0
+    //   25: invokevirtual 265	com/tencent/smtt/export/external/interfaces/IX5WebSettings$PluginState:name	()Ljava/lang/String;
+    //   28: invokestatic 270	com/tencent/smtt/sdk/WebSettings$PluginState:valueOf	(Ljava/lang/String;)Lcom/tencent/smtt/sdk/WebSettings$PluginState;
     //   31: astore_1
     //   32: aload_0
     //   33: monitorexit
     //   34: aload_1
     //   35: areturn
     //   36: aload_0
-    //   37: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   37: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   40: ifne +57 -> 97
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: ifnull +50 -> 97
-    //   50: getstatic 66	android/os/Build$VERSION:SDK_INT	I
+    //   50: getstatic 60	android/os/Build$VERSION:SDK_INT	I
     //   53: bipush 8
     //   55: if_icmplt +37 -> 92
     //   58: aload_0
-    //   59: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   62: ldc_w 279
-    //   65: invokestatic 93	com/tencent/smtt/utils/ReflectionUtils:invokeInstance	(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+    //   59: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   62: ldc_w 271
+    //   65: invokestatic 85	com/tencent/smtt/utils/i:a	(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
     //   68: astore_1
     //   69: aload_1
     //   70: ifnonnull +8 -> 78
@@ -1200,9 +1199,9 @@ public class WebSettings
     //   74: astore_1
     //   75: goto -43 -> 32
     //   78: aload_1
-    //   79: checkcast 281	android/webkit/WebSettings$PluginState
-    //   82: invokevirtual 282	android/webkit/WebSettings$PluginState:name	()Ljava/lang/String;
-    //   85: invokestatic 278	com/tencent/smtt/sdk/WebSettings$PluginState:valueOf	(Ljava/lang/String;)Lcom/tencent/smtt/sdk/WebSettings$PluginState;
+    //   79: checkcast 273	android/webkit/WebSettings$PluginState
+    //   82: invokevirtual 274	android/webkit/WebSettings$PluginState:name	()Ljava/lang/String;
+    //   85: invokestatic 270	com/tencent/smtt/sdk/WebSettings$PluginState:valueOf	(Ljava/lang/String;)Lcom/tencent/smtt/sdk/WebSettings$PluginState;
     //   88: astore_1
     //   89: goto -57 -> 32
     //   92: aconst_null
@@ -1236,22 +1235,22 @@ public class WebSettings
     try
     {
       boolean bool1;
-      if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-        bool1 = this.mWebSettingsImpl.getPluginsEnabled();
+      if ((this.c) && (this.a != null)) {
+        bool1 = this.a.getPluginsEnabled();
       }
       for (;;)
       {
         return bool1;
         bool1 = bool2;
-        if (!this.isUseX5)
+        if (!this.c)
         {
           bool1 = bool2;
-          if (this.mSystemWebSettings != null)
+          if (this.b != null)
           {
             Object localObject1;
             if (Build.VERSION.SDK_INT <= 17)
             {
-              localObject1 = ReflectionUtils.invokeInstance(this.mSystemWebSettings, "getPluginsEnabled");
+              localObject1 = i.a(this.b, "getPluginsEnabled");
               if (localObject1 == null) {
                 bool1 = false;
               } else {
@@ -1263,7 +1262,7 @@ public class WebSettings
               bool1 = bool2;
               if (Build.VERSION.SDK_INT == 18)
               {
-                localObject1 = this.mSystemWebSettings.getPluginState();
+                localObject1 = this.b.getPluginState();
                 WebSettings.PluginState localPluginState = WebSettings.PluginState.ON;
                 bool1 = bool2;
                 if (localPluginState == localObject1) {
@@ -1286,16 +1285,16 @@ public class WebSettings
       try
       {
         Object localObject1;
-        if ((this.isUseX5) && (this.mWebSettingsImpl != null))
+        if ((this.c) && (this.a != null))
         {
-          localObject1 = this.mWebSettingsImpl.getPluginsPath();
+          localObject1 = this.a.getPluginsPath();
           return localObject1;
         }
-        if ((!this.isUseX5) && (this.mSystemWebSettings != null))
+        if ((!this.c) && (this.b != null))
         {
           if (Build.VERSION.SDK_INT <= 17)
           {
-            localObject1 = ReflectionUtils.invokeInstance(this.mSystemWebSettings, "getPluginsPath");
+            localObject1 = i.a(this.b, "getPluginsPath");
             if (localObject1 == null)
             {
               localObject1 = null;
@@ -1322,31 +1321,31 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 300 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 292 1 0
     //   25: astore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: aload_1
     //   29: areturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 301	android/webkit/WebSettings:getSansSerifFontFamily	()Ljava/lang/String;
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 293	android/webkit/WebSettings:getSansSerifFontFamily	()Ljava/lang/String;
     //   51: astore_1
     //   52: goto -26 -> 26
-    //   55: ldc 133
+    //   55: ldc 125
     //   57: astore_1
     //   58: goto -32 -> 26
     //   61: astore_1
@@ -1367,22 +1366,22 @@ public class WebSettings
   
   public boolean getSaveFormData()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return this.mWebSettingsImpl.getSaveFormData();
+    if ((this.c) && (this.a != null)) {
+      return this.a.getSaveFormData();
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null)) {
-      return this.mSystemWebSettings.getSaveFormData();
+    if ((!this.c) && (this.b != null)) {
+      return this.b.getSaveFormData();
     }
     return false;
   }
   
   public boolean getSavePassword()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return this.mWebSettingsImpl.getSavePassword();
+    if ((this.c) && (this.a != null)) {
+      return this.a.getSavePassword();
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null)) {
-      return this.mSystemWebSettings.getSavePassword();
+    if ((!this.c) && (this.b != null)) {
+      return this.b.getSavePassword();
     }
     return false;
   }
@@ -1394,31 +1393,31 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 312 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 304 1 0
     //   25: astore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: aload_1
     //   29: areturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 313	android/webkit/WebSettings:getSerifFontFamily	()Ljava/lang/String;
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 305	android/webkit/WebSettings:getSerifFontFamily	()Ljava/lang/String;
     //   51: astore_1
     //   52: goto -26 -> 26
-    //   55: ldc 133
+    //   55: ldc 125
     //   57: astore_1
     //   58: goto -32 -> 26
     //   61: astore_1
@@ -1444,31 +1443,31 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 316 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 308 1 0
     //   25: astore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: aload_1
     //   29: areturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 317	android/webkit/WebSettings:getStandardFontFamily	()Ljava/lang/String;
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 309	android/webkit/WebSettings:getStandardFontFamily	()Ljava/lang/String;
     //   51: astore_1
     //   52: goto -26 -> 26
-    //   55: ldc 133
+    //   55: ldc 125
     //   57: astore_1
     //   58: goto -32 -> 26
     //   61: astore_1
@@ -1489,11 +1488,11 @@ public class WebSettings
   
   public WebSettings.TextSize getTextSize()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return WebSettings.TextSize.valueOf(this.mWebSettingsImpl.getTextSize().name());
+    if ((this.c) && (this.a != null)) {
+      return WebSettings.TextSize.valueOf(this.a.getTextSize().name());
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null)) {
-      return WebSettings.TextSize.valueOf(this.mSystemWebSettings.getTextSize().name());
+    if ((!this.c) && (this.b != null)) {
+      return WebSettings.TextSize.valueOf(this.b.getTextSize().name());
     }
     return null;
   }
@@ -1505,28 +1504,28 @@ public class WebSettings
     try
     {
       int i;
-      if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-        i = this.mWebSettingsImpl.getTextZoom();
+      if ((this.c) && (this.a != null)) {
+        i = this.a.getTextZoom();
       }
       for (;;)
       {
         return i;
         i = j;
-        if (!this.isUseX5)
+        if (!this.c)
         {
           i = j;
-          if (this.mSystemWebSettings != null)
+          if (this.b != null)
           {
             int k = Build.VERSION.SDK_INT;
             i = j;
             if (k >= 14) {
               try
               {
-                i = this.mSystemWebSettings.getTextZoom();
+                i = this.b.getTextZoom();
               }
               catch (Exception localException)
               {
-                Object localObject1 = ReflectionUtils.invokeInstance(this.mSystemWebSettings, "getTextZoom");
+                Object localObject1 = i.a(this.b, "getTextZoom");
                 if (localObject1 == null) {
                   i = 0;
                 } else {
@@ -1544,12 +1543,12 @@ public class WebSettings
   @Deprecated
   public boolean getUseWebViewBackgroundForOverscrollBackground()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return this.mWebSettingsImpl.getUseWebViewBackgroundForOverscrollBackground();
+    if ((this.c) && (this.a != null)) {
+      return this.a.getUseWebViewBackgroundForOverscrollBackground();
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null))
+    if ((!this.c) && (this.b != null))
     {
-      Object localObject = ReflectionUtils.invokeInstance(this.mSystemWebSettings, "getUseWebViewBackgroundForOverscrollBackground");
+      Object localObject = i.a(this.b, "getUseWebViewBackgroundForOverscrollBackground");
       if (localObject == null) {
         return false;
       }
@@ -1565,28 +1564,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 351 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 343 1 0
     //   25: istore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: iload_1
     //   29: ireturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 352	android/webkit/WebSettings:getUseWideViewPort	()Z
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 344	android/webkit/WebSettings:getUseWideViewPort	()Z
     //   51: istore_1
     //   52: goto -26 -> 26
     //   55: iconst_0
@@ -1611,11 +1610,11 @@ public class WebSettings
   @TargetApi(3)
   public String getUserAgentString()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return this.mWebSettingsImpl.getUserAgentString();
+    if ((this.c) && (this.a != null)) {
+      return this.a.getUserAgentString();
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null)) {
-      return this.mSystemWebSettings.getUserAgentString();
+    if ((!this.c) && (this.b != null)) {
+      return this.b.getUserAgentString();
     }
     return "";
   }
@@ -1623,96 +1622,96 @@ public class WebSettings
   @TargetApi(11)
   public void setAllowContentAccess(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setAllowContentAccess(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setAllowContentAccess(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null) || (Build.VERSION.SDK_INT < 11)) {
+    while ((this.c) || (this.b == null) || (Build.VERSION.SDK_INT < 11)) {
       return;
     }
-    ReflectionUtils.invokeInstance(this.mSystemWebSettings, "setAllowContentAccess", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+    i.a(this.b, "setAllowContentAccess", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   @TargetApi(3)
   public void setAllowFileAccess(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setAllowFileAccess(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setAllowFileAccess(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setAllowFileAccess(paramBoolean);
+    this.b.setAllowFileAccess(paramBoolean);
   }
   
   @TargetApi(16)
   public void setAllowFileAccessFromFileURLs(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setAllowFileAccessFromFileURLs(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setAllowFileAccessFromFileURLs(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    ReflectionUtils.invokeInstance(this.mSystemWebSettings, "setAllowFileAccessFromFileURLs", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+    i.a(this.b, "setAllowFileAccessFromFileURLs", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   @TargetApi(16)
   public void setAllowUniversalAccessFromFileURLs(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setAllowUniversalAccessFromFileURLs(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setAllowUniversalAccessFromFileURLs(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    ReflectionUtils.invokeInstance(this.mSystemWebSettings, "setAllowUniversalAccessFromFileURLs", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+    i.a(this.b, "setAllowUniversalAccessFromFileURLs", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   @TargetApi(7)
   public void setAppCacheEnabled(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setAppCacheEnabled(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setAppCacheEnabled(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setAppCacheEnabled(paramBoolean);
+    this.b.setAppCacheEnabled(paramBoolean);
   }
   
   @TargetApi(7)
   public void setAppCacheMaxSize(long paramLong)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setAppCacheMaxSize(paramLong);
+    if ((this.c) && (this.a != null)) {
+      this.a.setAppCacheMaxSize(paramLong);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setAppCacheMaxSize(paramLong);
+    this.b.setAppCacheMaxSize(paramLong);
   }
   
   @TargetApi(7)
   public void setAppCachePath(String paramString)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setAppCachePath(paramString);
+    if ((this.c) && (this.a != null)) {
+      this.a.setAppCachePath(paramString);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setAppCachePath(paramString);
+    this.b.setAppCachePath(paramString);
   }
   
   public void setBlockNetworkImage(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setBlockNetworkImage(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setBlockNetworkImage(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setBlockNetworkImage(paramBoolean);
+    this.b.setBlockNetworkImage(paramBoolean);
   }
   
   /* Error */
@@ -1723,31 +1722,31 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: iload_1
-    //   21: invokeinterface 402 2 0
+    //   21: invokeinterface 394 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
-    //   43: getstatic 66	android/os/Build$VERSION:SDK_INT	I
+    //   43: getstatic 60	android/os/Build$VERSION:SDK_INT	I
     //   46: bipush 8
     //   48: if_icmplt -22 -> 26
     //   51: aload_0
-    //   52: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   52: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   55: iload_1
-    //   56: invokevirtual 403	android/webkit/WebSettings:setBlockNetworkLoads	(Z)V
+    //   56: invokevirtual 395	android/webkit/WebSettings:setBlockNetworkLoads	(Z)V
     //   59: goto -33 -> 26
     //   62: astore_2
     //   63: aload_0
@@ -1768,24 +1767,24 @@ public class WebSettings
   @TargetApi(3)
   public void setBuiltInZoomControls(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setBuiltInZoomControls(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setBuiltInZoomControls(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setBuiltInZoomControls(paramBoolean);
+    this.b.setBuiltInZoomControls(paramBoolean);
   }
   
   public void setCacheMode(int paramInt)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setCacheMode(paramInt);
+    if ((this.c) && (this.a != null)) {
+      this.a.setCacheMode(paramInt);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setCacheMode(paramInt);
+    this.b.setCacheMode(paramInt);
   }
   
   /* Error */
@@ -1795,28 +1794,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: aload_1
-    //   21: invokeinterface 415 2 0
+    //   21: invokeinterface 407 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: aload_1
-    //   48: invokevirtual 416	android/webkit/WebSettings:setCursiveFontFamily	(Ljava/lang/String;)V
+    //   48: invokevirtual 408	android/webkit/WebSettings:setCursiveFontFamily	(Ljava/lang/String;)V
     //   51: goto -25 -> 26
     //   54: astore_1
     //   55: aload_0
@@ -1836,26 +1835,26 @@ public class WebSettings
   @TargetApi(5)
   public void setDatabaseEnabled(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setDatabaseEnabled(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setDatabaseEnabled(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setDatabaseEnabled(paramBoolean);
+    this.b.setDatabaseEnabled(paramBoolean);
   }
   
   @Deprecated
   @TargetApi(5)
   public void setDatabasePath(String paramString)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setDatabasePath(paramString);
+    if ((this.c) && (this.a != null)) {
+      this.a.setDatabasePath(paramString);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    ReflectionUtils.invokeInstance(this.mSystemWebSettings, "setDatabasePath", new Class[] { String.class }, new Object[] { paramString });
+    i.a(this.b, "setDatabasePath", new Class[] { String.class }, new Object[] { paramString });
   }
   
   /* Error */
@@ -1865,28 +1864,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: iload_1
-    //   21: invokeinterface 427 2 0
+    //   21: invokeinterface 419 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: iload_1
-    //   48: invokevirtual 428	android/webkit/WebSettings:setDefaultFixedFontSize	(I)V
+    //   48: invokevirtual 420	android/webkit/WebSettings:setDefaultFixedFontSize	(I)V
     //   51: goto -25 -> 26
     //   54: astore_2
     //   55: aload_0
@@ -1911,28 +1910,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: iload_1
-    //   21: invokeinterface 431 2 0
+    //   21: invokeinterface 423 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: iload_1
-    //   48: invokevirtual 432	android/webkit/WebSettings:setDefaultFontSize	(I)V
+    //   48: invokevirtual 424	android/webkit/WebSettings:setDefaultFontSize	(I)V
     //   51: goto -25 -> 26
     //   54: astore_2
     //   55: aload_0
@@ -1957,28 +1956,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: aload_1
-    //   21: invokeinterface 435 2 0
+    //   21: invokeinterface 427 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: aload_1
-    //   48: invokevirtual 436	android/webkit/WebSettings:setDefaultTextEncodingName	(Ljava/lang/String;)V
+    //   48: invokevirtual 428	android/webkit/WebSettings:setDefaultTextEncodingName	(Ljava/lang/String;)V
     //   51: goto -25 -> 26
     //   54: astore_1
     //   55: aload_0
@@ -1998,50 +1997,50 @@ public class WebSettings
   @TargetApi(7)
   public void setDefaultZoom(WebSettings.ZoomDensity paramZoomDensity)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setDefaultZoom(IX5WebSettings.ZoomDensity.valueOf(paramZoomDensity.name()));
+    if ((this.c) && (this.a != null)) {
+      this.a.setDefaultZoom(IX5WebSettings.ZoomDensity.valueOf(paramZoomDensity.name()));
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setDefaultZoom(android.webkit.WebSettings.ZoomDensity.valueOf(paramZoomDensity.name()));
+    this.b.setDefaultZoom(android.webkit.WebSettings.ZoomDensity.valueOf(paramZoomDensity.name()));
   }
   
   @TargetApi(11)
   public void setDisplayZoomControls(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setDisplayZoomControls(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setDisplayZoomControls(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null) || (Build.VERSION.SDK_INT < 11)) {
+    while ((this.c) || (this.b == null) || (Build.VERSION.SDK_INT < 11)) {
       return;
     }
-    ReflectionUtils.invokeInstance(this.mSystemWebSettings, "setDisplayZoomControls", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+    i.a(this.b, "setDisplayZoomControls", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   @TargetApi(7)
   public void setDomStorageEnabled(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setDomStorageEnabled(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setDomStorageEnabled(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setDomStorageEnabled(paramBoolean);
+    this.b.setDomStorageEnabled(paramBoolean);
   }
   
   @Deprecated
   @TargetApi(11)
   public void setEnableSmoothTransition(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setEnableSmoothTransition(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setEnableSmoothTransition(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null) || (Build.VERSION.SDK_INT < 11)) {
+    while ((this.c) || (this.b == null) || (Build.VERSION.SDK_INT < 11)) {
       return;
     }
-    ReflectionUtils.invokeInstance(this.mSystemWebSettings, "setEnableSmoothTransition", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+    i.a(this.b, "setEnableSmoothTransition", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   /* Error */
@@ -2051,28 +2050,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: aload_1
-    //   21: invokeinterface 466 2 0
+    //   21: invokeinterface 458 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: aload_1
-    //   48: invokevirtual 467	android/webkit/WebSettings:setFantasyFontFamily	(Ljava/lang/String;)V
+    //   48: invokevirtual 459	android/webkit/WebSettings:setFantasyFontFamily	(Ljava/lang/String;)V
     //   51: goto -25 -> 26
     //   54: astore_1
     //   55: aload_0
@@ -2096,28 +2095,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: aload_1
-    //   21: invokeinterface 470 2 0
+    //   21: invokeinterface 462 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: aload_1
-    //   48: invokevirtual 471	android/webkit/WebSettings:setFixedFontFamily	(Ljava/lang/String;)V
+    //   48: invokevirtual 463	android/webkit/WebSettings:setFixedFontFamily	(Ljava/lang/String;)V
     //   51: goto -25 -> 26
     //   54: astore_1
     //   55: aload_0
@@ -2137,25 +2136,25 @@ public class WebSettings
   @TargetApi(5)
   public void setGeolocationDatabasePath(String paramString)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setGeolocationDatabasePath(paramString);
+    if ((this.c) && (this.a != null)) {
+      this.a.setGeolocationDatabasePath(paramString);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setGeolocationDatabasePath(paramString);
+    this.b.setGeolocationDatabasePath(paramString);
   }
   
   @TargetApi(5)
   public void setGeolocationEnabled(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setGeolocationEnabled(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setGeolocationEnabled(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setGeolocationEnabled(paramBoolean);
+    this.b.setGeolocationEnabled(paramBoolean);
   }
   
   /* Error */
@@ -2165,28 +2164,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: iload_1
-    //   21: invokeinterface 482 2 0
+    //   21: invokeinterface 474 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: iload_1
-    //   48: invokevirtual 483	android/webkit/WebSettings:setJavaScriptCanOpenWindowsAutomatically	(Z)V
+    //   48: invokevirtual 475	android/webkit/WebSettings:setJavaScriptCanOpenWindowsAutomatically	(Z)V
     //   51: goto -25 -> 26
     //   54: astore_2
     //   55: aload_0
@@ -2209,14 +2208,14 @@ public class WebSettings
   {
     try
     {
-      if ((this.isUseX5) && (this.mWebSettingsImpl != null))
+      if ((this.c) && (this.a != null))
       {
-        this.mWebSettingsImpl.setJavaScriptEnabled(paramBoolean);
+        this.a.setJavaScriptEnabled(paramBoolean);
         return;
       }
-      if ((!this.isUseX5) && (this.mSystemWebSettings != null))
+      if ((!this.c) && (this.b != null))
       {
-        this.mSystemWebSettings.setJavaScriptEnabled(paramBoolean);
+        this.b.setJavaScriptEnabled(paramBoolean);
         return;
       }
     }
@@ -2228,59 +2227,59 @@ public class WebSettings
   
   public void setLayoutAlgorithm(WebSettings.LayoutAlgorithm paramLayoutAlgorithm)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setLayoutAlgorithm(IX5WebSettings.LayoutAlgorithm.valueOf(paramLayoutAlgorithm.name()));
+    if ((this.c) && (this.a != null)) {
+      this.a.setLayoutAlgorithm(IX5WebSettings.LayoutAlgorithm.valueOf(paramLayoutAlgorithm.name()));
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setLayoutAlgorithm(android.webkit.WebSettings.LayoutAlgorithm.valueOf(paramLayoutAlgorithm.name()));
+    this.b.setLayoutAlgorithm(android.webkit.WebSettings.LayoutAlgorithm.valueOf(paramLayoutAlgorithm.name()));
   }
   
   public void setLightTouchEnabled(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setLightTouchEnabled(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setLightTouchEnabled(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setLightTouchEnabled(paramBoolean);
+    this.b.setLightTouchEnabled(paramBoolean);
   }
   
   @TargetApi(7)
   public void setLoadWithOverviewMode(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setLoadWithOverviewMode(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setLoadWithOverviewMode(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setLoadWithOverviewMode(paramBoolean);
+    this.b.setLoadWithOverviewMode(paramBoolean);
   }
   
   public void setLoadsImagesAutomatically(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setLoadsImagesAutomatically(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setLoadsImagesAutomatically(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setLoadsImagesAutomatically(paramBoolean);
+    this.b.setLoadsImagesAutomatically(paramBoolean);
   }
   
   @TargetApi(17)
   public void setMediaPlaybackRequiresUserGesture(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setMediaPlaybackRequiresUserGesture(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setMediaPlaybackRequiresUserGesture(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null) || (Build.VERSION.SDK_INT < 17)) {
+    while ((this.c) || (this.b == null) || (Build.VERSION.SDK_INT < 17)) {
       return;
     }
-    ReflectionUtils.invokeInstance(this.mSystemWebSettings, "setMediaPlaybackRequiresUserGesture", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+    i.a(this.b, "setMediaPlaybackRequiresUserGesture", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   /* Error */
@@ -2290,28 +2289,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: iload_1
-    //   21: invokeinterface 521 2 0
+    //   21: invokeinterface 513 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: iload_1
-    //   48: invokevirtual 522	android/webkit/WebSettings:setMinimumFontSize	(I)V
+    //   48: invokevirtual 514	android/webkit/WebSettings:setMinimumFontSize	(I)V
     //   51: goto -25 -> 26
     //   54: astore_2
     //   55: aload_0
@@ -2336,28 +2335,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: iload_1
-    //   21: invokeinterface 525 2 0
+    //   21: invokeinterface 517 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: iload_1
-    //   48: invokevirtual 526	android/webkit/WebSettings:setMinimumLogicalFontSize	(I)V
+    //   48: invokevirtual 518	android/webkit/WebSettings:setMinimumLogicalFontSize	(I)V
     //   51: goto -25 -> 26
     //   54: astore_2
     //   55: aload_0
@@ -2378,33 +2377,33 @@ public class WebSettings
   @TargetApi(21)
   public void setMixedContentMode(int paramInt)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {}
-    while ((this.isUseX5) || (this.mSystemWebSettings == null) || (Build.VERSION.SDK_INT < 21)) {
+    if ((this.c) && (this.a != null)) {}
+    while ((this.c) || (this.b == null) || (Build.VERSION.SDK_INT < 21)) {
       return;
     }
-    ReflectionUtils.invokeInstance(this.mSystemWebSettings, "setMixedContentMode", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
+    i.a(this.b, "setMixedContentMode", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
   }
   
   public void setNavDump(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setNavDump(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setNavDump(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    ReflectionUtils.invokeInstance(this.mSystemWebSettings, "setNavDump", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+    i.a(this.b, "setNavDump", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public void setNeedInitialFocus(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setNeedInitialFocus(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setNeedInitialFocus(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setNeedInitialFocus(paramBoolean);
+    this.b.setNeedInitialFocus(paramBoolean);
   }
   
   /* Error */
@@ -2416,41 +2415,41 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +29 -> 35
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +22 -> 35
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: aload_1
-    //   21: invokevirtual 544	com/tencent/smtt/sdk/WebSettings$PluginState:name	()Ljava/lang/String;
-    //   24: invokestatic 547	com/tencent/smtt/export/external/interfaces/IX5WebSettings$PluginState:valueOf	(Ljava/lang/String;)Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings$PluginState;
-    //   27: invokeinterface 550 2 0
+    //   21: invokevirtual 536	com/tencent/smtt/sdk/WebSettings$PluginState:name	()Ljava/lang/String;
+    //   24: invokestatic 539	com/tencent/smtt/export/external/interfaces/IX5WebSettings$PluginState:valueOf	(Ljava/lang/String;)Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings$PluginState;
+    //   27: invokeinterface 542 2 0
     //   32: aload_0
     //   33: monitorexit
     //   34: return
     //   35: aload_0
-    //   36: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   36: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   39: ifne -7 -> 32
     //   42: aload_0
-    //   43: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   43: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   46: ifnull -14 -> 32
-    //   49: getstatic 66	android/os/Build$VERSION:SDK_INT	I
+    //   49: getstatic 60	android/os/Build$VERSION:SDK_INT	I
     //   52: bipush 8
     //   54: if_icmplt -22 -> 32
     //   57: aload_1
-    //   58: invokevirtual 544	com/tencent/smtt/sdk/WebSettings$PluginState:name	()Ljava/lang/String;
-    //   61: invokestatic 553	android/webkit/WebSettings$PluginState:valueOf	(Ljava/lang/String;)Landroid/webkit/WebSettings$PluginState;
+    //   58: invokevirtual 536	com/tencent/smtt/sdk/WebSettings$PluginState:name	()Ljava/lang/String;
+    //   61: invokestatic 545	android/webkit/WebSettings$PluginState:valueOf	(Ljava/lang/String;)Landroid/webkit/WebSettings$PluginState;
     //   64: astore_1
     //   65: aload_0
-    //   66: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   69: ldc_w 554
+    //   66: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   69: ldc_w 546
     //   72: iconst_1
-    //   73: anewarray 71	java/lang/Class
+    //   73: anewarray 65	java/lang/Class
     //   76: dup
     //   77: iconst_0
-    //   78: ldc_w 281
+    //   78: ldc_w 273
     //   81: aastore
     //   82: iconst_1
     //   83: anewarray 4	java/lang/Object
@@ -2458,7 +2457,7 @@ public class WebSettings
     //   87: iconst_0
     //   88: aload_1
     //   89: aastore
-    //   90: invokestatic 256	com/tencent/smtt/utils/ReflectionUtils:invokeInstance	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   90: invokestatic 248	com/tencent/smtt/utils/i:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   93: pop
     //   94: goto -62 -> 32
     //   97: astore_1
@@ -2479,13 +2478,13 @@ public class WebSettings
   @Deprecated
   public void setPluginsEnabled(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setPluginsEnabled(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setPluginsEnabled(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    ReflectionUtils.invokeInstance(this.mSystemWebSettings, "setPluginsEnabled", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+    i.a(this.b, "setPluginsEnabled", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   /* Error */
@@ -2496,32 +2495,32 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: aload_1
-    //   21: invokeinterface 561 2 0
+    //   21: invokeinterface 553 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   47: ldc_w 562
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   47: ldc_w 554
     //   50: iconst_1
-    //   51: anewarray 71	java/lang/Class
+    //   51: anewarray 65	java/lang/Class
     //   54: dup
     //   55: iconst_0
-    //   56: ldc 81
+    //   56: ldc 74
     //   58: aastore
     //   59: iconst_1
     //   60: anewarray 4	java/lang/Object
@@ -2529,7 +2528,7 @@ public class WebSettings
     //   64: iconst_0
     //   65: aload_1
     //   66: aastore
-    //   67: invokestatic 256	com/tencent/smtt/utils/ReflectionUtils:invokeInstance	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   67: invokestatic 248	com/tencent/smtt/utils/i:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   70: pop
     //   71: goto -45 -> 26
     //   74: astore_1
@@ -2549,13 +2548,13 @@ public class WebSettings
   
   public void setRenderPriority(WebSettings.RenderPriority paramRenderPriority)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setRenderPriority(IX5WebSettings.RenderPriority.valueOf(paramRenderPriority.name()));
+    if ((this.c) && (this.a != null)) {
+      this.a.setRenderPriority(IX5WebSettings.RenderPriority.valueOf(paramRenderPriority.name()));
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setRenderPriority(android.webkit.WebSettings.RenderPriority.valueOf(paramRenderPriority.name()));
+    this.b.setRenderPriority(android.webkit.WebSettings.RenderPriority.valueOf(paramRenderPriority.name()));
   }
   
   /* Error */
@@ -2565,28 +2564,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: aload_1
-    //   21: invokeinterface 586 2 0
+    //   21: invokeinterface 578 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: aload_1
-    //   48: invokevirtual 587	android/webkit/WebSettings:setSansSerifFontFamily	(Ljava/lang/String;)V
+    //   48: invokevirtual 579	android/webkit/WebSettings:setSansSerifFontFamily	(Ljava/lang/String;)V
     //   51: goto -25 -> 26
     //   54: astore_1
     //   55: aload_0
@@ -2605,24 +2604,24 @@ public class WebSettings
   
   public void setSaveFormData(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setSaveFormData(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setSaveFormData(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setSaveFormData(paramBoolean);
+    this.b.setSaveFormData(paramBoolean);
   }
   
   public void setSavePassword(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setSavePassword(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setSavePassword(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setSavePassword(paramBoolean);
+    this.b.setSavePassword(paramBoolean);
   }
   
   /* Error */
@@ -2632,28 +2631,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: aload_1
-    //   21: invokeinterface 598 2 0
+    //   21: invokeinterface 590 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: aload_1
-    //   48: invokevirtual 599	android/webkit/WebSettings:setSerifFontFamily	(Ljava/lang/String;)V
+    //   48: invokevirtual 591	android/webkit/WebSettings:setSerifFontFamily	(Ljava/lang/String;)V
     //   51: goto -25 -> 26
     //   54: astore_1
     //   55: aload_0
@@ -2677,28 +2676,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: aload_1
-    //   21: invokeinterface 602 2 0
+    //   21: invokeinterface 594 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
     //   43: aload_0
-    //   44: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   44: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   47: aload_1
-    //   48: invokevirtual 603	android/webkit/WebSettings:setStandardFontFamily	(Ljava/lang/String;)V
+    //   48: invokevirtual 595	android/webkit/WebSettings:setStandardFontFamily	(Ljava/lang/String;)V
     //   51: goto -25 -> 26
     //   54: astore_1
     //   55: aload_0
@@ -2717,35 +2716,35 @@ public class WebSettings
   
   public void setSupportMultipleWindows(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setSupportMultipleWindows(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setSupportMultipleWindows(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setSupportMultipleWindows(paramBoolean);
+    this.b.setSupportMultipleWindows(paramBoolean);
   }
   
   public void setSupportZoom(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setSupportZoom(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setSupportZoom(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setSupportZoom(paramBoolean);
+    this.b.setSupportZoom(paramBoolean);
   }
   
   public void setTextSize(WebSettings.TextSize paramTextSize)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setTextSize(IX5WebSettings.TextSize.valueOf(paramTextSize.name()));
+    if ((this.c) && (this.a != null)) {
+      this.a.setTextSize(IX5WebSettings.TextSize.valueOf(paramTextSize.name()));
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setTextSize(android.webkit.WebSettings.TextSize.valueOf(paramTextSize.name()));
+    this.b.setTextSize(android.webkit.WebSettings.TextSize.valueOf(paramTextSize.name()));
   }
   
   /* Error */
@@ -2756,52 +2755,52 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +23 -> 29
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +16 -> 29
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   20: iload_1
-    //   21: invokeinterface 629 2 0
+    //   21: invokeinterface 621 2 0
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
-    //   30: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   30: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   33: ifne -7 -> 26
     //   36: aload_0
-    //   37: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   37: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   40: ifnull -14 -> 26
-    //   43: getstatic 66	android/os/Build$VERSION:SDK_INT	I
+    //   43: getstatic 60	android/os/Build$VERSION:SDK_INT	I
     //   46: istore_2
     //   47: iload_2
     //   48: bipush 14
     //   50: if_icmplt -24 -> 26
     //   53: aload_0
-    //   54: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   54: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   57: iload_1
-    //   58: invokevirtual 630	android/webkit/WebSettings:setTextZoom	(I)V
+    //   58: invokevirtual 622	android/webkit/WebSettings:setTextZoom	(I)V
     //   61: goto -35 -> 26
     //   64: astore_3
     //   65: aload_0
-    //   66: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   69: ldc_w 631
+    //   66: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   69: ldc_w 623
     //   72: iconst_1
-    //   73: anewarray 71	java/lang/Class
+    //   73: anewarray 65	java/lang/Class
     //   76: dup
     //   77: iconst_0
-    //   78: getstatic 530	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   78: getstatic 522	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   81: aastore
     //   82: iconst_1
     //   83: anewarray 4	java/lang/Object
     //   86: dup
     //   87: iconst_0
     //   88: iload_1
-    //   89: invokestatic 533	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   89: invokestatic 525	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   92: aastore
-    //   93: invokestatic 256	com/tencent/smtt/utils/ReflectionUtils:invokeInstance	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   93: invokestatic 248	com/tencent/smtt/utils/i:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   96: pop
     //   97: goto -71 -> 26
     //   100: astore_3
@@ -2828,47 +2827,47 @@ public class WebSettings
   @Deprecated
   public void setUseWebViewBackgroundForOverscrollBackground(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setUseWebViewBackgroundForOverscrollBackground(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setUseWebViewBackgroundForOverscrollBackground(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    ReflectionUtils.invokeInstance(this.mSystemWebSettings, "setUseWebViewBackgroundForOverscrollBackground", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+    i.a(this.b, "setUseWebViewBackgroundForOverscrollBackground", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public void setUseWideViewPort(boolean paramBoolean)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setUseWideViewPort(paramBoolean);
+    if ((this.c) && (this.a != null)) {
+      this.a.setUseWideViewPort(paramBoolean);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setUseWideViewPort(paramBoolean);
+    this.b.setUseWideViewPort(paramBoolean);
   }
   
   public void setUserAgent(String paramString)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setUserAgent(paramString);
+    if ((this.c) && (this.a != null)) {
+      this.a.setUserAgent(paramString);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setUserAgentString(paramString);
+    this.b.setUserAgentString(paramString);
   }
   
   @TargetApi(3)
   public void setUserAgentString(String paramString)
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      this.mWebSettingsImpl.setUserAgentString(paramString);
+    if ((this.c) && (this.a != null)) {
+      this.a.setUserAgentString(paramString);
     }
-    while ((this.isUseX5) || (this.mSystemWebSettings == null)) {
+    while ((this.c) || (this.b == null)) {
       return;
     }
-    this.mSystemWebSettings.setUserAgentString(paramString);
+    this.b.setUserAgentString(paramString);
   }
   
   /* Error */
@@ -2878,28 +2877,28 @@ public class WebSettings
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   3: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   10: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   13: ifnull +17 -> 30
     //   16: aload_0
-    //   17: getfield 32	com/tencent/smtt/sdk/WebSettings:mWebSettingsImpl	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   20: invokeinterface 649 1 0
+    //   17: getfield 28	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   20: invokeinterface 641 1 0
     //   25: istore_1
     //   26: aload_0
     //   27: monitorexit
     //   28: iload_1
     //   29: ireturn
     //   30: aload_0
-    //   31: getfield 36	com/tencent/smtt/sdk/WebSettings:isUseX5	Z
+    //   31: getfield 32	com/tencent/smtt/sdk/WebSettings:c	Z
     //   34: ifne +21 -> 55
     //   37: aload_0
-    //   38: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
+    //   38: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   41: ifnull +14 -> 55
     //   44: aload_0
-    //   45: getfield 34	com/tencent/smtt/sdk/WebSettings:mSystemWebSettings	Landroid/webkit/WebSettings;
-    //   48: invokevirtual 650	android/webkit/WebSettings:supportMultipleWindows	()Z
+    //   45: getfield 30	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   48: invokevirtual 642	android/webkit/WebSettings:supportMultipleWindows	()Z
     //   51: istore_1
     //   52: goto -26 -> 26
     //   55: iconst_0
@@ -2923,18 +2922,18 @@ public class WebSettings
   
   public boolean supportZoom()
   {
-    if ((this.isUseX5) && (this.mWebSettingsImpl != null)) {
-      return this.mWebSettingsImpl.supportZoom();
+    if ((this.c) && (this.a != null)) {
+      return this.a.supportZoom();
     }
-    if ((!this.isUseX5) && (this.mSystemWebSettings != null)) {
-      return this.mSystemWebSettings.supportZoom();
+    if ((!this.c) && (this.b != null)) {
+      return this.b.supportZoom();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebSettings
  * JD-Core Version:    0.7.0.1
  */

@@ -1,144 +1,74 @@
-import com.tencent.mobileqq.location.data.LocationRoom;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 
-public class atpu
+class atpu
+  implements atnd
 {
-  private static String b = "LocationDataHandler";
-  private String jdField_a_of_type_JavaLangString;
-  private final List<atpv> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final Map<atpq, LocationRoom> jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
-  
-  atpu(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public LocationRoom a(atpq paramatpq)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      LocationRoom localLocationRoom2 = (LocationRoom)this.jdField_a_of_type_JavaUtilMap.get(paramatpq);
-      LocationRoom localLocationRoom1 = localLocationRoom2;
-      if (localLocationRoom2 == null)
-      {
-        localLocationRoom1 = new LocationRoom(paramatpq, this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_JavaUtilMap.put(paramatpq, localLocationRoom1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(b, 2, "getLocationRoom: invoked. mLocationRoomMap size: " + this.jdField_a_of_type_JavaUtilMap.size() + " locationRoom: " + localLocationRoom1);
-      }
-      return localLocationRoom1;
-    }
-  }
+  atpu(atpf paramatpf) {}
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      return;
+    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Atmn.a();
+    bety localbety = this.a.a(localFileManagerEntity);
+    if ((TextUtils.isEmpty(atpf.a(this.a))) && (localbety.a != null)) {
+      atpf.a(this.a, localbety.a.toString());
     }
-  }
-  
-  void a(int paramInt, String paramString)
-  {
-    paramString = new atpq(paramInt, paramString);
-    LocationRoom localLocationRoom = a(paramString);
-    if (localLocationRoom != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((atpv)localIterator.next()).a(paramString, localLocationRoom.a(), localLocationRoom.c());
-      }
-    }
-  }
-  
-  void a(atpq paramatpq)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      paramatpq = (LocationRoom)this.jdField_a_of_type_JavaUtilMap.get(paramatpq);
-      if ((paramatpq != null) && (paramatpq.a() != null)) {
-        paramatpq.a().a();
-      }
-      return;
-    }
-  }
-  
-  void a(atpq paramatpq, int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramatpq)) {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+    besy localbesy = new besy(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
+    if ((localbety.b == 10) || (localbety.b == 9)) {
+      if (localbety.a != null)
       {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramatpq);
-        ??? = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (((Iterator)???).hasNext()) {
-          ((atpv)((Iterator)???).next()).b(paramatpq, paramInt);
+        localbesy.b(localbety.a);
+        localFileManagerEntity.status = 2;
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i("TroopFileModel<FileAssistant>", 2, "TroopFileModel doStartDownload : resumeDownload error, infoId is null");
+      return;
+      if (localbety.b == 7)
+      {
+        if (localFileManagerEntity.isZipInnerFile) {
+          localbesy.a(localFileManagerEntity);
+        }
+        for (;;)
+        {
+          localFileManagerEntity.status = 2;
+          return;
+          localbesy.a(localFileManagerEntity.strTroopFilePath, localbety.g, localbety.c, localbety.h);
         }
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopFileModel<FileAssistant>", 2, "TroopFileModel doStartDownload : can not handle file info status,download error");
   }
   
-  void a(atpq paramatpq, int paramInt1, int paramInt2)
+  public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((atpv)localIterator.next()).a(paramatpq, paramInt1, paramInt2);
+    Object localObject = this.a.jdField_a_of_type_Atmn.a();
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
+    localObject = this.a.a((FileManagerEntity)localObject);
+    if ((TextUtils.isEmpty(atpf.a(this.a))) && (((bety)localObject).a != null)) {
+      atpf.a(this.a, ((bety)localObject).a.toString());
     }
-  }
-  
-  void a(atpq paramatpq, LocationRoom.Venue paramVenue, List<atpo> paramList)
-  {
-    LocationRoom localLocationRoom = a(paramatpq);
-    localLocationRoom.a(paramVenue);
-    localLocationRoom.a(paramList);
-    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramList.hasNext()) {
-      ((atpv)paramList.next()).a(paramatpq, paramVenue, localLocationRoom.c());
-    }
-  }
-  
-  public void a(atpv paramatpv)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    if (!TextUtils.isEmpty(atpf.a(this.a)))
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramatpv);
-      return;
-    }
-  }
-  
-  void b(atpq paramatpq, int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramatpq);
-      ??? = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (((Iterator)???).hasNext()) {
-        ((atpv)((Iterator)???).next()).a(paramatpq, paramInt);
+      localTroopFileTransferManager.d(UUID.fromString(atpf.a(this.a)));
+      if (atwt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+        this.a.a("0x8009D61", null);
       }
     }
-  }
-  
-  public void b(atpv paramatpv)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramatpv)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramatpv);
-      }
-      return;
-    }
+    atpf.a(this.a, (bety)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atpu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,25 @@
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadTaskCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awuj
-  implements IUploadTaskCallback
+public class awuj
+  implements View.OnClickListener
 {
-  awuj(awui paramawui) {}
+  public awuj(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    this.a.f = 1002;
-    this.a.jdField_a_of_type_Int = paramInt;
-    this.a.c = paramString;
-    this.a.a(1002, new Object[0]);
-  }
-  
-  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2) {}
-  
-  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
-  {
-    if (this.a.f != paramInt)
-    {
-      this.a.f = paramInt;
-      this.a.a(this.a.f, new Object[0]);
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "onClick() called with: v = [" + paramView + "]");
     }
-  }
-  
-  public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
-  {
-    this.a.f = 1001;
-    this.a.jdField_a_of_type_JavaLangObject = paramObject;
-    this.a.a(1001, new Object[0]);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awuj
  * JD-Core Version:    0.7.0.1
  */

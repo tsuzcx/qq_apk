@@ -2,10 +2,10 @@ package com.tencent.mobileqq.ocr.view.gesture;
 
 import android.view.MotionEvent;
 import android.view.View;
-import avzo;
-import avzt;
-import awac;
-import awad;
+import ayjg;
+import ayjl;
+import ayju;
+import ayjv;
 import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
 import java.util.List;
 
@@ -17,12 +17,12 @@ public class GestureProxy
     super(paramView);
   }
   
-  public avzt a()
+  public ayjl a()
   {
-    return this.jdField_a_of_type_Avzt;
+    return this.jdField_a_of_type_Ayjl;
   }
   
-  public awac a()
+  public ayju a()
   {
     return this.c;
   }
@@ -34,11 +34,11 @@ public class GestureProxy
   
   public void a()
   {
-    this.jdField_a_of_type_Awad.a(this.c);
-    this.jdField_a_of_type_Awad.a(this.d);
-    this.jdField_a_of_type_Awad.a(this.jdField_a_of_type_Awac);
-    this.jdField_a_of_type_Awad.a(this.b);
-    if (this.jdField_a_of_type_Awad.b(this.c))
+    this.jdField_a_of_type_Ayjv.a(this.c);
+    this.jdField_a_of_type_Ayjv.a(this.d);
+    this.jdField_a_of_type_Ayjv.a(this.jdField_a_of_type_Ayju);
+    this.jdField_a_of_type_Ayjv.a(this.b);
+    if (this.jdField_a_of_type_Ayjv.b(this.c))
     {
       g();
       return;
@@ -46,14 +46,14 @@ public class GestureProxy
     f();
   }
   
-  public void a(avzo paramavzo)
+  public void a(ayjg paramayjg)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramavzo);
+    this.jdField_a_of_type_JavaUtilList.add(paramayjg);
   }
   
-  public void a(avzt paramavzt)
+  public void a(ayjl paramayjl)
   {
-    this.jdField_a_of_type_Avzt = paramavzt;
+    this.jdField_a_of_type_Ayjl = paramayjl;
   }
   
   public boolean a(View paramView, MotionEvent paramMotionEvent)
@@ -64,7 +64,7 @@ public class GestureProxy
   public void b()
   {
     e();
-    if (this.jdField_a_of_type_Awad.a(this.c))
+    if (this.jdField_a_of_type_Ayjv.a(this.c))
     {
       g();
       return;
@@ -79,7 +79,7 @@ public class GestureProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.GestureProxy
  * JD-Core Version:    0.7.0.1
  */

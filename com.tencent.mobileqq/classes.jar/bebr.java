@@ -1,64 +1,109 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.app.AppRuntime;
-import mqq.manager.AccountManager;
-import mqq.manager.WtloginManager;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.mp.mobileqq_mp.LongMsgUrlRequest;
+import com.tencent.mobileqq.mp.mobileqq_mp.LongMsgUrlResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import java.util.List;
 
 public class bebr
+  extends bebf
 {
-  private AppRuntime a;
-  
-  public bebr(AppRuntime paramAppRuntime)
+  private byte[] a(List<becg> paramList)
   {
-    this.a = paramAppRuntime;
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return new byte[0];
+    }
+    paramList = (beca)paramList.get(0);
+    mobileqq_mp.LongMsgUrlRequest localLongMsgUrlRequest = new mobileqq_mp.LongMsgUrlRequest();
+    try
+    {
+      l = Long.parseLong(paramList.d);
+      localLongMsgUrlRequest.puin.set(l);
+      localLongMsgUrlRequest.str_fileid.set(paramList.jdField_a_of_type_JavaLangString);
+      return localLongMsgUrlRequest.toByteArray();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        long l = 0L;
+      }
+    }
   }
   
-  public void a(Intent paramIntent, String paramString, bebu parambebu)
+  public void a(bdxf parambdxf, bdxe parambdxe)
   {
-    if ((paramIntent == null) || (TextUtils.isEmpty(paramString))) {
-      if (parambebu != null) {
-        parambebu.a(paramIntent, false, paramString, null, null);
-      }
-    }
-    for (;;)
+    bebv localbebv = (bebv)parambdxe.jdField_a_of_type_JavaLangObject;
+    beck localbeck = localbebv.jdField_a_of_type_Beck;
+    parambdxe = parambdxf.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+    Object localObject = parambdxf.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
+    anqe localanqe = parambdxf.jdField_a_of_type_Anqe;
+    if (parambdxe.getResultCode() == 1000) {}
+    try
     {
-      return;
-      if (QLog.isDevelopLevel()) {
-        bebv.a("LHLoginMng -- lockLH", paramIntent);
-      }
-      Object localObject2 = paramIntent.getStringExtra("key_register_smscode");
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "";
-      }
-      Object localObject3 = paramIntent.getStringExtra("key_register_nick");
-      localObject2 = localObject3;
-      if (localObject3 == null) {
-        localObject2 = "";
-      }
-      String str = paramIntent.getStringExtra("key_register_password");
-      localObject3 = str;
-      if (str == null) {
-        localObject3 = "";
-      }
-      boolean bool = paramIntent.getBooleanExtra("key_register_chose_bind_phone", false);
-      if (bool)
+      if (localbeck.jdField_a_of_type_JavaUtilList.size() > 0)
       {
-        paramIntent = new bebt(paramIntent, paramString, parambebu);
-        ((WtloginManager)this.a.getManager(1)).RegGetSMSVerifyLoginAccountWithLH(((String)localObject1).getBytes(), ((String)localObject2).getBytes(), paramString, "8.3.5", paramIntent);
+        parambdxf = (mobileqq_mp.LongMsgUrlResponse)new mobileqq_mp.LongMsgUrlResponse().mergeFrom((byte[])localObject);
+        parambdxe = (becs)localbeck.jdField_a_of_type_JavaUtilList.get(0);
+        parambdxe.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$RetInfo = ((mobileqq_mp.RetInfo)parambdxf.ret_info.get());
+        parambdxe.jdField_a_of_type_JavaLangString = parambdxf.str_url.get();
+        parambdxe.b = parambdxf.str_file_md5.get();
       }
-      while (QLog.isColorLevel())
+      for (;;)
       {
-        QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "lockLH, lhUin: %s, isBindPhoneNum: %s", new Object[] { paramString, Boolean.valueOf(bool) }));
+        label126:
+        bedb.a(localbebv, localbeck);
         return;
-        paramIntent = new bebs(paramIntent, paramString, parambebu);
-        parambebu = (AccountManager)this.a.getManager(0);
-        awia.a().a(this.a, false);
-        parambebu.sendRegisterBySetPassWithLH((String)localObject3, (String)localObject2, (String)localObject1, paramString, false, "8.3.5", paramIntent);
+        int i = parambdxe.getResultCode();
+        if ((i == 1002) || (i == 1013))
+        {
+          localObject = MessageHandler.a(parambdxe);
+          parambdxe = parambdxe.getBusinessFailMsg();
+          parambdxf = parambdxe;
+          if (parambdxe == null) {
+            parambdxf = "";
+          }
+          a(-1, 9311, (String)localObject, parambdxf, localanqe, localbeck.jdField_a_of_type_JavaUtilList);
+        }
+        else
+        {
+          localObject = MessageHandler.a(parambdxe);
+          parambdxe = parambdxe.getBusinessFailMsg();
+          parambdxf = parambdxe;
+          if (parambdxe == null) {
+            parambdxf = "";
+          }
+          a(-1, 9044, (String)localObject, parambdxf, localanqe, localbeck.jdField_a_of_type_JavaUtilList);
+        }
       }
     }
+    catch (Exception parambdxf)
+    {
+      break label126;
+    }
+  }
+  
+  public void a(bebv parambebv)
+  {
+    if ((parambebv != null) && (parambebv.jdField_a_of_type_JavaUtilList != null) && (parambebv.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
+    {
+      bdxe localbdxe = new bdxe();
+      localbdxe.jdField_a_of_type_JavaLangString = "PubAccountSvc.pull_long_msg_url";
+      localbdxe.jdField_a_of_type_ArrayOfByte = a(parambebv.jdField_a_of_type_JavaUtilList);
+      localbdxe.jdField_a_of_type_JavaLangObject = parambebv;
+      localbdxe.jdField_a_of_type_Bdxd = this;
+      a(parambebv, localbdxe);
+    }
+  }
+  
+  void b(bebv parambebv)
+  {
+    parambebv = parambebv.jdField_a_of_type_Beck;
+    parambebv.jdField_a_of_type_JavaUtilList.clear();
+    becs localbecs = new becs();
+    parambebv.jdField_a_of_type_JavaUtilList.add(localbecs);
   }
 }
 

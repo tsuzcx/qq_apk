@@ -1,50 +1,43 @@
-import android.os.Handler;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.1;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.2;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.3;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.4;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.5;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.6;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.List;
 
-public class yhz
-  extends RecyclerView.AdapterDataObserver
+class yhz
+  implements ybj
 {
-  yhz(yhy paramyhy) {}
+  yhz(yhy paramyhy, JobContext paramJobContext, yia paramyia) {}
   
-  public void onChanged()
+  public void a(ybk paramybk)
   {
-    yhy.access$000(this.a).post(new ComponentAdapter.1.1(this));
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    yhy.access$000(this.a).post(new ComponentAdapter.1.2(this, paramInt1, paramInt2));
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
-  {
-    yhy.access$000(this.a).post(new ComponentAdapter.1.3(this, paramInt1, paramInt2, paramObject));
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    yhy.access$000(this.a).post(new ComponentAdapter.1.4(this, paramInt1, paramInt2));
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    yhy.access$000(this.a).post(new ComponentAdapter.1.6(this, paramInt1, paramInt2));
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    yhy.access$000(this.a).post(new ComponentAdapter.1.5(this, paramInt1, paramInt2));
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      yqp.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.jdField_a_of_type_Yia });
+      return;
+    }
+    yhy.a(this.jdField_a_of_type_Yhy);
+    yqp.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(yhy.b(this.jdField_a_of_type_Yhy)), paramybk);
+    if (paramybk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      yhy.a(this.jdField_a_of_type_Yhy).addAll(paramybk.jdField_a_of_type_JavaUtilList);
+      if ((!paramybk.jdField_a_of_type_Boolean) && (yhy.b(this.jdField_a_of_type_Yhy) < 10))
+      {
+        yqp.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(yhy.b(this.jdField_a_of_type_Yhy)));
+        yhy.a(this.jdField_a_of_type_Yhy).c();
+        return;
+      }
+      paramybk.jdField_a_of_type_JavaUtilList = yhy.a(this.jdField_a_of_type_Yhy);
+      yqp.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(yhy.a(this.jdField_a_of_type_Yhy).size()));
+      yhy.a(this.jdField_a_of_type_Yhy, paramybk);
+      return;
+    }
+    paramybk.jdField_a_of_type_JavaUtilList = yhy.a(this.jdField_a_of_type_Yhy);
+    yqp.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(yhy.a(this.jdField_a_of_type_Yhy).size()));
+    yhy.b(this.jdField_a_of_type_Yhy, paramybk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yhz
  * JD-Core Version:    0.7.0.1
  */

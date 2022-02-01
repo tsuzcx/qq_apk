@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.app.TroopManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 
-public class amem
+class amem
+  extends amcl
 {
-  public long a;
-  public String a;
-  
-  public amem(TroopManager paramTroopManager, String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public TextView a;
+  public MayKnowRecommend a;
+  public TroopLabelLayout a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amem
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bfbm;
+import biip;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -64,7 +64,7 @@ class AppLoadingUI$8
         {
           if (localMiniAppInfo.clearAuths == 1)
           {
-            l = bfbm.a().a();
+            l = biip.a().a();
             if (l > 0L)
             {
               AuthorizeCenter.clearAuth(localMiniAppInfo.appId, String.valueOf(l));
@@ -108,7 +108,7 @@ class AppLoadingUI$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppLoadingUI.8
  * JD-Core Version:    0.7.0.1
  */

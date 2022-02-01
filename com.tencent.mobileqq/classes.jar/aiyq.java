@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class aiyq
 {
-  public int a;
-  public BaseHbFragment a;
-  public String a;
-  
-  public aiyq(int paramInt, String paramString, BaseHbFragment paramBaseHbFragment)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment = paramBaseHbFragment;
-  }
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

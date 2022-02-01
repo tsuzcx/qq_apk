@@ -1,116 +1,95 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class aqrs
-  extends aqrp
 {
-  public aqrs(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
+  private String b = "";
+  private String c = "";
+  private String d = "";
   
-  protected ImageView a(aeqi paramaeqi)
+  public static aqrs a(String paramString)
   {
-    if (paramaeqi == null) {}
-    while (!(paramaeqi instanceof afya)) {
+    boolean bool = true;
+    if (paramString == null) {
       return null;
     }
-    return ((afya)paramaeqi).a;
-  }
-  
-  protected void a(aeqi paramaeqi, ImageView paramImageView)
-  {
-    if (paramaeqi == null) {}
-    while (!(paramaeqi instanceof afya)) {
-      return;
+    try
+    {
+      aqrs localaqrs = new aqrs();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("enable", 0) == 1) {}
+      for (;;)
+      {
+        localaqrs.jdField_a_of_type_Boolean = bool;
+        localaqrs.jdField_a_of_type_Int = paramString.optInt("showCount", 0);
+        localaqrs.jdField_a_of_type_JavaLangString = paramString.optString("c2cTipsContent", "");
+        localaqrs.b = paramString.optString("c2cHighlightContent", "");
+        localaqrs.c = paramString.optString("groupTipsContent", "");
+        localaqrs.d = paramString.optString("groupHighlightContent", "");
+        return localaqrs;
+        bool = false;
+      }
+      return null;
     }
-    ((afya)paramaeqi).a = paramImageView;
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  protected void a(View paramView, aeqi paramaeqi, ChatMessage paramChatMessage, int paramInt)
+  public int a()
   {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              QLog.i("TroopFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
-            } while (paramInt == -1);
-            paramaeqi = (MessageForTroopFile)paramChatMessage;
-            paramView = TroopFileTransferManager.a(this.a, Long.parseLong(paramChatMessage.frienduin));
-          } while (paramView == null);
-          paramaeqi = bcnt.a(this.a, paramaeqi);
-        } while (paramaeqi == null);
-        if (paramInt != 0) {
-          break;
-        }
-      } while ((paramaeqi.b != 0) && (paramaeqi.b != 1));
-      azqs.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", 2, 0, "", "", "", "");
-      paramView.a(paramaeqi.a);
-      return;
-    } while ((paramInt != 1) || (paramaeqi.b != 2));
-    azqs.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", 2, 0, "", "", "", "");
-    a(new aqrt(this, paramChatMessage.frienduin, paramaeqi));
+    return this.jdField_a_of_type_Int;
   }
   
-  protected boolean a(ChatMessage paramChatMessage)
+  public String a()
   {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!(paramChatMessage instanceof MessageForTroopFile));
-        paramChatMessage = (MessageForTroopFile)paramChatMessage;
-        paramChatMessage = bcnt.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileBubblePauseHandler", 1, "needShowPauseIcon: current file status[" + paramChatMessage.b + "]");
-      }
-    } while ((paramChatMessage.b != 0) && (paramChatMessage.b != 1));
-    return true;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return "想及时收到对方的回复，快去打开消息推送设置吧。";
+    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  protected boolean b(ChatMessage paramChatMessage)
+  public void a(boolean paramBoolean)
   {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!(paramChatMessage instanceof MessageForTroopFile));
-        paramChatMessage = (MessageForTroopFile)paramChatMessage;
-        paramChatMessage = bcnt.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileBubblePauseHandler", 1, "needShowResumeIcon: current file status[" + paramChatMessage.b + "]");
-      }
-    } while ((paramChatMessage.b != 3) && (paramChatMessage.b != 2));
-    return true;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    if (TextUtils.isEmpty(this.b)) {
+      return "打开消息推送";
+    }
+    return this.b;
+  }
+  
+  public String c()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return "想及时收到对方的回复，快去打开消息推送设置吧。";
+    }
+    return this.c;
+  }
+  
+  public String d()
+  {
+    if (TextUtils.isEmpty(this.d)) {
+      return "打开消息推送";
+    }
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqrs
  * JD-Core Version:    0.7.0.1
  */

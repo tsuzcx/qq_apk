@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import java.util.List;
-
-final class bcfc
-  implements DialogInterface.OnClickListener
+public class bcfc
 {
-  bcfc(XMediaEditor paramXMediaEditor, List paramList) {}
+  public volatile int a = 0;
+  public int b;
+  public int c = 0;
+  public int d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(this.jdField_a_of_type_JavaUtilList);
-    paramDialogInterface.dismiss();
+    switch (this.a)
+    {
+    default: 
+      return "UNKNOWN_STATUS";
+    case 0: 
+      return "CONFIG_REQUEST_OK";
+    case 1: 
+      return "CONFIG_START_SERVLET";
+    }
+    return "CONFIG_SEND_REQ";
   }
 }
 

@@ -1,10 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class acla
-  implements DialogInterface.OnClickListener
+public abstract interface acla
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void onDismiss();
 }
 
 

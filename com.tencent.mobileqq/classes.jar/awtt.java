@@ -1,6 +1,10 @@
-// INTERNAL ERROR //
+public abstract interface awtt
+{
+  public abstract void a(int paramInt);
+}
+
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtt
  * JD-Core Version:    0.7.0.1
  */

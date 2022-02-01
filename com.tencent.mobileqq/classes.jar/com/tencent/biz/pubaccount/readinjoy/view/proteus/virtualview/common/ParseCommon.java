@@ -13,6 +13,7 @@ public class ParseCommon
   public static final String GONE = "GONE";
   public static final String HEIGHT = "height";
   public static final String INCLUDE_COMPONENT = "$includeComponet";
+  public static final String INCLUDE_GLOBAL_VAR_FILE = "$includeGlobalVariable";
   public static final String LAYOUT_PARAMS_ABSOLUTELY = "absolutely";
   public static final String LAYOUT_PARAMS_MATCH_PARENT = "match_parent";
   public static final String LAYOUT_PARAMS_RELATIVE = "relative";
@@ -42,7 +43,7 @@ public class ParseCommon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.ParseCommon
  * JD-Core Version:    0.7.0.1
  */

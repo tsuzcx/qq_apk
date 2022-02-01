@@ -1,54 +1,25 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.6.1;
-import com.tencent.mobileqq.ar.ArConfigService.6.2;
-import com.tencent.mobileqq.ar.ArConfigService.6.3;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class amww
-  implements andm
+  implements Animator.AnimatorListener
 {
-  public amww(ArConfigService paramArConfigService) {}
+  public amww(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "mARCloudResourceDownloadCallback");
-    }
+    ThreadManager.getUIHandler().postDelayed(new ApolloGuestsStateActivity.3.1(this), 200L);
   }
   
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    ArConfigService.c(this.a, (int)(100L * paramLong1 / paramLong2));
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.6.1(this, i));
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(boolean paramBoolean, andn paramandn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete mARCloudResourceDownloadCallback result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
-    {
-      ArConfigService.d(this.a, true);
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.6.2(this));
-      }
-    }
-    while (ArConfigService.e(this.a)) {
-      return;
-    }
-    ArConfigService.a(this.a).post(new ArConfigService.6.3(this));
-    ArConfigService.a(this.a, true);
-  }
-  
-  public void b() {}
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

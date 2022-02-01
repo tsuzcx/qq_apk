@@ -1,24 +1,31 @@
-import java.util.Arrays;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class bfvb
+class bfvb
+  extends RecyclerView.ViewHolder
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  protected ImageView a;
+  protected TextView a;
+  protected String a;
+  protected ImageView b;
+  protected TextView b;
+  protected ImageView c;
   
-  public String toString()
+  public bfvb(bfva parambfva, View paramView)
   {
-    return "MultiParams{mRelationType=" + this.jdField_a_of_type_Int + ", mMultiAVType=" + this.b + ", mMultiAVSubType=" + this.c + ", mRoomId=" + this.d + ", mUin=" + this.jdField_a_of_type_Long + ", mOpenId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mSourceId=" + this.e + ", mSig=" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte) + '}';
+    super(paramView);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365262));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367826));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371539));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367844));
+    this.c = ((ImageView)paramView.findViewById(2131376278));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfvb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,134 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-class aije
-  implements Comparator<RecentBaseData>
+public class aije
+  extends aiir
 {
-  aije(aijd paramaijd) {}
+  private CameraEmotionData jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
+  public aije(QQAppInterface paramQQAppInterface, CameraEmotionData paramCameraEmotionData)
   {
-    int j = 0;
-    int i = j;
-    long l1;
-    long l2;
-    if ((paramRecentBaseData1 instanceof RecentUserBaseData))
+    this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData = paramCameraEmotionData;
+    paramQQAppInterface = (arqr)paramQQAppInterface.getManager(333);
+    if (paramQQAppInterface != null) {
+      this.jdField_a_of_type_JavaLangString = paramQQAppInterface.a(paramCameraEmotionData);
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.exposeNum;
+  }
+  
+  public URLDrawable.URLDrawableOptions a()
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.url;
+    return localURLDrawableOptions;
+  }
+  
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  {
+    if (paramURL == null) {
+      return null;
+    }
+    return super.a(paramURL, paramURLDrawableOptions);
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public URL a()
+  {
+    try
     {
-      i = j;
-      if ((paramRecentBaseData2 instanceof RecentUserBaseData))
+      URL localURL1 = new URL("protocol_vas_extension_image", "BUSINESS_CAMERA_EMO_PANEL_DYNAMIC", this.jdField_a_of_type_JavaLangString);
+      if (localURL1 == null)
       {
-        paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
-        paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
-        l1 = Math.max(paramRecentBaseData1.mUser.lastmsgtime, paramRecentBaseData1.mUser.lastmsgdrafttime);
-        l2 = Math.max(paramRecentBaseData2.mUser.lastmsgtime, paramRecentBaseData2.mUser.lastmsgdrafttime);
-        if (l1 <= l2) {
-          break label83;
-        }
-        i = -1;
+        QLog.e("StickerRecCameraData", 1, "StickerLocalRecData getURL url = null");
+        return null;
       }
     }
-    label83:
-    do
+    catch (MalformedURLException localMalformedURLException)
     {
-      return i;
-      i = j;
-    } while (l1 >= l2);
-    return 1;
+      URL localURL2;
+      for (;;)
+      {
+        QLog.e("StickerRecCameraData", 1, "StickerLocalRecData getURL url exception e = " + localMalformedURLException.getMessage());
+        localURL2 = null;
+      }
+      return localURL2;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    ((arqk)paramQQAppInterface.getManager(334)).c(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  {
+    if (((paramContext instanceof BaseActivity)) && (axbp.a(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      paramContext = (BaseActivity)paramContext;
+      QQToast.a(paramQQAppInterface.getApp(), anni.a(2131713085), 0).b(paramContext.getTitleBarHeight());
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    adrm.a(paramQQAppInterface, paramContext, paramSessionInfo, this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.strContext, null);
+    ((arqk)paramQQAppInterface.getManager(334)).b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.clickNum;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int c()
+  {
+    return 3;
+  }
+  
+  public String c()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.md5;
+    if (str != null) {
+      return str.toLowerCase();
+    }
+    return null;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
+  
+  public String d()
+  {
+    return "a-";
   }
 }
 

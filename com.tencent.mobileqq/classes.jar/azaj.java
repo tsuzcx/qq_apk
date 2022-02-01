@@ -1,15 +1,9 @@
-public class azaj
+public final class azaj
+  extends ayzn
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  
-  public String toString()
+  protected int a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("----dump tempSession info----");
-    localStringBuilder.append("friendType:").append(this.jdField_a_of_type_Int).append(" groupCode:").append(this.jdField_a_of_type_Long).append(" groupUin:").append(this.b);
-    return localStringBuilder.toString();
+    return 515;
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo.rmw;
 
-import azgp;
-import azkt;
+import bchp;
+import bnpy;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import lnz;
-import uwa;
-import xet;
-import xlv;
+import lkw;
+import wpm;
+import yye;
+import zfg;
 
 class RMWService$2
   extends Thread
@@ -15,26 +15,26 @@ class RMWService$2
   
   public void run()
   {
-    xlv.b("RMWService", "preload AVCodec - start -");
+    zfg.b("RMWService", "preload AVCodec - start -");
     VideoEnvironment.a("AVCodec", null, true);
-    xlv.b("RMWService", "preload AVCodec - end -");
-    xlv.b("RMWService", "preload PtvFilterSoLoad - start -");
-    azkt.a();
-    xlv.b("RMWService", "preload PtvFilterSoLoad - end -");
-    xlv.b("RMWService", "preInit DoodleEmojiManager - start -");
-    ((xet)uwa.a(8)).a(this.this$0);
-    xlv.b("RMWService", "preInit DoodleEmojiManager - end -");
-    xlv.b("RMWService", "preInit HwEnvData.supportHardWareCodec - start -");
-    azgp.a();
-    xlv.b("RMWService", "preInit HwEnvData.supportHardWareCodec - end -");
-    xlv.b("RMWService", "preInit VcSystemInfo.getCpuInfo - start -");
-    lnz.a();
-    xlv.b("RMWService", "preInit VcSystemInfo.getCpuInfo - end -");
+    zfg.b("RMWService", "preload AVCodec - end -");
+    zfg.b("RMWService", "preload PtvFilterSoLoad - start -");
+    bnpy.c();
+    zfg.b("RMWService", "preload PtvFilterSoLoad - end -");
+    zfg.b("RMWService", "preInit DoodleEmojiManager - start -");
+    ((yye)wpm.a(8)).a(this.this$0);
+    zfg.b("RMWService", "preInit DoodleEmojiManager - end -");
+    zfg.b("RMWService", "preInit HwEnvData.supportHardWareCodec - start -");
+    bchp.a();
+    zfg.b("RMWService", "preInit HwEnvData.supportHardWareCodec - end -");
+    zfg.b("RMWService", "preInit VcSystemInfo.getCpuInfo - start -");
+    lkw.a();
+    zfg.b("RMWService", "preInit VcSystemInfo.getCpuInfo - end -");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.rmw.RMWService.2
  * JD-Core Version:    0.7.0.1
  */

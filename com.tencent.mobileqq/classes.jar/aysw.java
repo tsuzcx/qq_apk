@@ -1,301 +1,64 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.search.rich.RichNodeController.1;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
+import mqq.util.WeakReference;
 
 public class aysw
+  extends aopa
 {
-  private static String jdField_a_of_type_JavaLangString = "RichNodeController";
-  private static final Set<WeakReference<ayso>> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private Map<Integer, aysx> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private int b;
-  private int c;
+  private int jdField_a_of_type_Int;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private WeakReference<aysy> jdField_a_of_type_MqqUtilWeakReference;
   
-  public static void a()
+  public aysw(int paramInt, Intent paramIntent, aysy paramaysy)
   {
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaUtilSet)
-      {
-        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject2 = (WeakReference)localIterator.next();
-        if (localObject2 == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "onDestroy.(item == null");
-          }
-          localIterator.remove();
-        }
-      }
-      Object localObject2 = (ayso)((WeakReference)localObject2).get();
-      if (localObject2 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "onDestroy.(node == null");
-        }
-        localObject1.remove();
-      }
-      else
-      {
-        a((ayso)localObject2);
-        ((ayso)localObject2).d();
-      }
-    }
-    jdField_a_of_type_JavaUtilSet.clear();
-  }
-  
-  private static void a(ayso paramayso) {}
-  
-  private void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "pauseAll, puase:" + paramBoolean + " startPos:" + this.b + " endPos:" + this.c);
-    }
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "pauseAll, map is empty");
-      }
-    }
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (aysx)localIterator.next();
-        if (localObject != null)
-        {
-          localObject = ((aysx)localObject).a;
-          if (localObject != null)
-          {
-            localObject = (ayso)((WeakReference)localObject).get();
-            if (localObject != null) {
-              if (paramBoolean) {
-                ((ayso)localObject).b();
-              } else {
-                ((ayso)localObject).c();
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public static void b()
-  {
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaUtilSet)
-      {
-        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject2 = (WeakReference)localIterator.next();
-        if (localObject2 == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause item == null");
-          }
-          localIterator.remove();
-        }
-      }
-      Object localObject2 = (ayso)((WeakReference)localObject2).get();
-      if (localObject2 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause node == null");
-        }
-        localObject1.remove();
-      }
-      else
-      {
-        ((ayso)localObject2).b();
-      }
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "restartPlayTimer:" + paramInt);
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    if (paramInt < 0) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new RichNodeController.1(this);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt);
-  }
-  
-  public static void c() {}
-  
-  public static void d() {}
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject1 = (Map.Entry)localIterator.next();
-        Object localObject2 = (aysx)((Map.Entry)localObject1).getValue();
-        if (localObject2 == null)
-        {
-          localIterator.remove();
-        }
-        else if (((aysx)localObject2).a == null)
-        {
-          localIterator.remove();
-        }
-        else
-        {
-          localObject2 = (ayso)((aysx)localObject2).a.get();
-          if (localObject2 == null)
-          {
-            localIterator.remove();
-          }
-          else
-          {
-            localObject1 = (Integer)((Map.Entry)localObject1).getKey();
-            if (localObject1 == null)
-            {
-              ((ayso)localObject2).b();
-              localIterator.remove();
-            }
-            else if ((((Integer)localObject1).intValue() < this.b) || (((Integer)localObject1).intValue() > this.c))
-            {
-              ((ayso)localObject2).b();
-              localIterator.remove();
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  private static void f()
-  {
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaUtilSet)
-      {
-        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject2 = (WeakReference)localIterator.next();
-        if (localObject2 == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause item == null");
-          }
-          localIterator.remove();
-        }
-      }
-      Object localObject2 = (ayso)((WeakReference)localObject2).get();
-      if (localObject2 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause node == null");
-        }
-        localObject1.remove();
-      }
-      else
-      {
-        ((ayso)localObject2).c();
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
+    super(4, true, true, 60000L, false, false, "QQSettingRedesign");
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      b(100);
-      return;
-    }
-    b(-1);
-    b();
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaysy);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if ((paramInt1 == this.b) && (this.c == paramInt1 + paramInt2)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "setScorllData, mStartPos:" + this.b + " endPos:" + this.c);
-    }
-    this.b = paramInt1;
-    this.c = (paramInt1 + paramInt2);
-    e();
-  }
-  
-  public void a(int paramInt, ayso paramayso)
-  {
-    if (paramayso == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "registerNode, nPos:" + paramInt);
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), new aysx(paramInt, paramayso));
-    if (this.jdField_a_of_type_Int != 0) {
-      paramayso.b();
-    }
-    for (;;)
+    double d3 = 0.0D;
+    long l = System.currentTimeMillis();
+    Object localObject;
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null))
     {
-      synchronized (jdField_a_of_type_JavaUtilSet)
-      {
-        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-        if (!localIterator.hasNext()) {
-          break label201;
-        }
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference == null) || (localWeakReference.get() != paramayso)) {
-          continue;
-        }
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "find in list:" + bool);
-        }
-        if (!bool) {
-          jdField_a_of_type_JavaUtilSet.add(new WeakReference(paramayso));
-        }
-        return;
+      localObject = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
+      if ((paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
+        break label301;
       }
-      paramayso.c();
-      continue;
-      label201:
-      boolean bool = false;
+    }
+    label301:
+    for (double d1 = paramSosoLbsInfo.a.a;; d1 = 0.0D)
+    {
+      double d2 = d3;
+      if (paramSosoLbsInfo != null)
+      {
+        d2 = d3;
+        if (paramSosoLbsInfo.a != null) {
+          d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineStatus", 2, "onLocationFinish() latitude=" + d1 + " longitude=" + d2 + ", address=" + (String)localObject);
+      }
+      paramSosoLbsInfo = String.format("/ws/geocoder/v1/?get_poi=0&key=%s&location=%s,%s", new Object[] { "7B5BZ-MNDHR-SKFWQ-WAXND-2P45Z-4FFNM", String.valueOf(d1), String.valueOf(d2) });
+      localObject = MD5.toMD5(paramSosoLbsInfo + "MaZnPqbKJxWQLLVDEGMXiYarddkxX2Wl").toLowerCase();
+      paramSosoLbsInfo = "https://apis.map.qq.com" + paramSosoLbsInfo + "&sig=" + (String)localObject;
+      localObject = new HashMap();
+      ((HashMap)localObject).put("BUNDLE", new Bundle());
+      ((HashMap)localObject).put("CONTEXT", BaseApplicationImpl.getApplication().getApplicationContext());
+      new bfpp(paramSosoLbsInfo, "GET", new aysx(this, d1, d2, l), 1000, null).a((HashMap)localObject);
+      return;
+      localObject = "";
+      break;
     }
   }
 }

@@ -1,15 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.util.WeakReference;
+import android.view.animation.Interpolator;
 
-class bkrj
-  implements View.OnClickListener
+final class bkrj
+  implements Interpolator
 {
-  bkrj(bkrh parambkrh, bkqp parambkqp, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public float getInterpolation(float paramFloat)
   {
-    ((bkql)this.jdField_a_of_type_Bkrh.a.get()).a(this.jdField_a_of_type_Bkqp.itemView, this.jdField_a_of_type_Int);
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

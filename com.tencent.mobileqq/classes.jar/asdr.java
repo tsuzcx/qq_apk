@@ -1,14 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class asdr
-  implements DialogInterface.OnClickListener
+public class asdr
 {
-  asdr(asdo paramasdo, bdjz parambdjz) {}
+  private anuc jdField_a_of_type_Anuc = new asds(this);
+  private asdt jdField_a_of_type_Asdt;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public asdr(QQAppInterface paramQQAppInterface, asdt paramasdt)
   {
-    this.jdField_a_of_type_Bdjz.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Asdt = paramasdt;
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Anuc);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anuc);
+  }
+  
+  public void a(ChatMessage paramChatMessage, int paramInt)
+  {
+    ((anud)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(180)).a(paramChatMessage, paramInt);
   }
 }
 

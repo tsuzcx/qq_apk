@@ -1,16 +1,8 @@
-import android.os.Bundle;
-
-class agpt
-  extends azcg
+public abstract interface agpt
 {
-  agpt(agps paramagps) {}
+  public abstract boolean a(agpq paramagpq);
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a();
-    }
-  }
+  public abstract boolean a(agpq paramagpq, String paramString1, String paramString2);
 }
 
 

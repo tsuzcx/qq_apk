@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.book;
 
-import ahdq;
+import aiqd;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,7 +11,7 @@ import android.widget.ScrollView;
 public class ResizeLayout
   extends ScrollView
 {
-  private ahdq jdField_a_of_type_Ahdq;
+  private aiqd jdField_a_of_type_Aiqd;
   private boolean jdField_a_of_type_Boolean = true;
   
   public ResizeLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -35,7 +35,7 @@ public class ResizeLayout
       return;
       super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
       if (paramInt2 > paramInt4) {}
-      for (this.jdField_a_of_type_Boolean = false; this.jdField_a_of_type_Ahdq != null; this.jdField_a_of_type_Boolean = true)
+      for (this.jdField_a_of_type_Boolean = false; this.jdField_a_of_type_Aiqd != null; this.jdField_a_of_type_Boolean = true)
       {
         new Handler(Looper.getMainLooper()).postDelayed(new ResizeLayout.1(this, paramInt1, paramInt2, paramInt3, paramInt4), 50L);
         return;
@@ -51,14 +51,14 @@ public class ResizeLayout
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnResizeListener(ahdq paramahdq)
+  public void setOnResizeListener(aiqd paramaiqd)
   {
-    this.jdField_a_of_type_Ahdq = paramahdq;
+    this.jdField_a_of_type_Aiqd = paramaiqd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.book.ResizeLayout
  * JD-Core Version:    0.7.0.1
  */

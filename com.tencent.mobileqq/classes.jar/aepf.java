@@ -1,67 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aepf
-  extends QIPCModule
+  extends aepn
 {
-  private List<aepe> a = new ArrayList();
-  
-  private aepf(String paramString)
+  public aepf(MainFragment paramMainFragment)
   {
-    super(paramString);
+    super(null);
   }
   
-  public static aepf a()
+  public void onClick(View paramView)
   {
-    return aeph.a();
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      QIPCClientHelper.getInstance().register(a());
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOUnreadQIPCClient", 2, "register AIOUnreadQIPCClient");
-      }
-      return;
+    anlv localanlv = this.a.b();
+    if ((localanlv instanceof ReadinjoyTabFrame)) {
+      ((ReadinjoyTabFrame)localanlv).l();
     }
-    catch (Exception localException)
-    {
-      QLog.e("AIOUnreadQIPCClient", 1, "register ipc module error.", localException);
-    }
-  }
-  
-  private void a(int paramInt1, String paramString, int paramInt2)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((aepe)localIterator.next()).a(paramInt1, paramString, paramInt2);
-    }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOUnreadQIPCClient", 2, "onCall main server action=" + paramString);
-    }
-    if (("action_sync_single_con_unread_count".equals(paramString)) && (paramBundle != null))
-    {
-      paramString = paramBundle.getString("param_proc_uin");
-      paramInt = paramBundle.getInt("param_proc_uin_type");
-      int i = paramBundle.getInt("param_proc_single_con_badge_count");
-      a(paramInt, paramString, i);
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOUnreadQIPCClient", 2, "AIOUnreadQIPCClient, uin = " + paramString + "; type= " + paramInt + "; num= " + i);
-      }
-    }
-    return null;
+    pmh.a().l();
+    MainFragment.a(MainFragment.a(this.a), MainFragment.a(this.a));
+    super.onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

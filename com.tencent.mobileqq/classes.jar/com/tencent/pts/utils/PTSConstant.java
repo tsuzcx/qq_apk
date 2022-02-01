@@ -2,7 +2,9 @@ package com.tencent.pts.utils;
 
 public class PTSConstant
 {
+  public static final String CUSTOM_VIEW_TYPE_SCROLL_VIEW = "scroll-view";
   public static final String VNT_BLOCK = "block";
+  public static final String VNT_BORING = "boring";
   public static final String VNT_BUTTON = "button";
   public static final String VNT_CONTAINER = "view";
   public static final String VNT_IMAGE = "img";
@@ -14,7 +16,7 @@ public class PTSConstant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.utils.PTSConstant
  * JD-Core Version:    0.7.0.1
  */

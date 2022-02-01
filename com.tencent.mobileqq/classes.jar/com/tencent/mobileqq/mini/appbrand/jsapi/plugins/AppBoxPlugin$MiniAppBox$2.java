@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import aanh;
-import aani;
+import ackr;
+import acks;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.gdtad.api.adbox.GdtAdBoxData;
@@ -86,7 +86,7 @@ class AppBoxPlugin$MiniAppBox$2
         }
       }
       this.this$0.destroy();
-      AppBoxPlugin.MiniAppBox.access$002(this.this$0, aanh.a(this.val$activity).a(new GdtAdBoxData(str1)).a(new AppBoxPlugin.MiniAppBox.2.1(this)).a());
+      AppBoxPlugin.MiniAppBox.access$002(this.this$0, ackr.a(this.val$activity).a(new GdtAdBoxData(str1)).a(new AppBoxPlugin.MiniAppBox.2.1(this)).a());
       AppBoxPlugin.MiniAppBox.access$100(this.this$0, true, "operateAppBox", this.val$compId, i, this.val$callbackId);
       AppBoxPlugin.MiniAppBox.access$500(this.this$0, localStGetAdRsp.strAdsJson.get(), this.val$adReq.ad_type.get());
       if (localStGetAdRsp != null) {
@@ -123,7 +123,7 @@ class AppBoxPlugin$MiniAppBox$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AppBoxPlugin.MiniAppBox.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import bagf;
-import bahm;
+import abcr;
+import bdhj;
+import bdiq;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
-import zfy;
 
 class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
   implements Runnable
@@ -17,7 +17,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
   {
     List localList3 = null;
     int i = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.this$0).a().jdField_a_of_type_Int;
-    String str1 = this.this$0.a.getCurrentAccountUin();
+    String str1 = this.this$0.browserApp.getCurrentAccountUin();
     String str2 = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.this$0).a().i;
     String str3 = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.this$0).a().h;
     boolean bool;
@@ -41,7 +41,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
       if (this.jdField_a_of_type_Int == 3000) {
         localList3 = this.jdField_a_of_type_JavaUtilList;
       }
-      bool = bahm.a(str1, str2, str3, bool, false, 1, localList1, localList2, localList3);
+      bool = bdiq.a(str1, str2, str3, bool, false, 1, localList1, localList2, localList3);
       ThreadManager.getUIHandler().postDelayed(new TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.13.1(this, i, bool), 3000L);
       return;
       bool = false;
@@ -53,7 +53,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.13
  * JD-Core Version:    0.7.0.1
  */

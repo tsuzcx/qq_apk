@@ -46,9 +46,8 @@
         "type": "wrap_content"
       },
       "attributes": {
-        "setFrameString": "-1",
         "setText:": "-1",
-        "setTextColorString:": "#4799DF",
+        "setTextColorString:": "#136CE9",
         "setFontSizeString:": "14",
         "setNumberOfLinesString:": "1"
       }

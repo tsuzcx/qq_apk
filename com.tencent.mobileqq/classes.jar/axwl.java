@@ -1,79 +1,42 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.opengl.GLES20;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.ClipData.Item;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
-public class axwl
-  extends axwg
+class axwl
+  implements View.OnLongClickListener
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230754);
-  private int jdField_a_of_type_Int = -1;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private int b;
+  axwl(axvz paramaxvz) {}
   
-  public axwl()
+  @TargetApi(11)
+  public boolean onLongClick(View paramView)
   {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
-    this.mFilterType = 6;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Int != -1) {
-      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
+    if (this.a.a.getChildCount() <= 1) {
+      return true;
     }
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    Object localObject = new ClipData.Item("");
+    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new axws(this.a, paramView), paramView, 0);
+    localObject = axvz.a(this.a, (PicInfo)paramView.getTag(), null);
+    ((RelativeLayout)localObject).setVisibility(4);
+    axvz.a(this.a, (RelativeLayout)localObject);
+    int i = this.a.a.indexOfChild(paramView);
+    if (i != -1)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      wxe.b("Q.qqstory.publish.edit GPUNashvilleFilter", "mosaic bitmap recycle");
+      this.a.a.removeView(paramView);
+      this.a.a.addView(axvz.a(this.a), i);
+      return true;
     }
-  }
-  
-  public void onDrawTexture()
-  {
-    super.onDrawTexture();
-    GLES20.glActiveTexture(33985);
-    if (this.jdField_a_of_type_Int == -1)
-    {
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-      {
-        QLog.w("Q.qqstory.publish.edit GPUNashvilleFilter", 1, "bitmap error");
-        return;
-      }
-      this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
-    GLES20.glBindTexture(3553, this.jdField_a_of_type_Int);
-    GLES20.glUniform1i(this.b, 1);
-  }
-  
-  public void onInitialized()
-  {
-    super.onInitialized();
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(BaseApplicationImpl.getContext().getResources().openRawResource(2130845705));
-      this.b = GLES20.glGetUniformLocation(getProgram(), "sTexture2");
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        wxe.e("Q.qqstory.publish.edit GPUNashvilleFilter", "OutOfMemoryError:%s", new Object[] { localOutOfMemoryError.getMessage() });
-      }
-    }
+    paramView.setVisibility(4);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axwl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,8 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+import android.os.Bundle;
 
-final class aaob
-  implements View.OnClickListener
+public abstract interface aaob
 {
-  aaob(aany paramaany, aanx paramaanx) {}
-  
-  public void onClick(View paramView)
-  {
-    aany localaany = this.jdField_a_of_type_Aany;
-    paramView = aany.a.onClick(paramView);
-    if (!TextUtils.isEmpty(paramView))
-    {
-      this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a = paramView;
-      aase.d("GdtBannerViewBuilder", "onclick:" + this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a);
-    }
-    if (this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick != null) {
-      this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick.a();
-    }
-    GdtHandler.a(this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
-  }
+  public abstract void callback(Bundle paramBundle);
 }
 
 

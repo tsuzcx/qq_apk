@@ -1,78 +1,30 @@
-import android.content.Context;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class yau
-  implements Manager
+class yau
+  extends SimpleObserver<Void>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private yaw jdField_a_of_type_Yaw;
+  yau(yas paramyas, yaw paramyaw) {}
   
-  public yau(QQAppInterface paramQQAppInterface)
+  public void a(Void paramVoid)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super.onNext(paramVoid);
+    yqp.b("QQStoryTakeVideoHelper", "generate video manifest success.");
+    this.jdField_a_of_type_Yas.a = 2;
+    this.jdField_a_of_type_Yaw.a();
   }
   
-  private void b()
+  public void onError(@NonNull Error paramError)
   {
-    if (this.jdField_a_of_type_Yaw != null) {
-      this.jdField_a_of_type_Yaw.a();
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Yaw != null) {
-      this.jdField_a_of_type_Yaw.b();
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Yaw != null)
-    {
-      this.jdField_a_of_type_Yaw.c();
-      this.jdField_a_of_type_Yaw = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      b();
-      return;
-    case 3: 
-      c();
-      return;
-    }
-    a();
-  }
-  
-  public void a(Context paramContext, ScannerParams paramScannerParams)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if ((paramScannerParams.f) && (!paramScannerParams.d) && (this.jdField_a_of_type_Yaw == null)) {
-      this.jdField_a_of_type_Yaw = new yaw(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-  }
-  
-  public void onDestroy()
-  {
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    super.onError(paramError);
+    yqp.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
+    this.jdField_a_of_type_Yas.a = -1;
+    this.jdField_a_of_type_Yaw.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yau
  * JD-Core Version:    0.7.0.1
  */

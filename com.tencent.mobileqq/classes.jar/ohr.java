@@ -1,40 +1,31 @@
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class ohr
-  extends bamz
+  implements aaob
 {
-  public ohr(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    super(paramCharSequence, paramInt1, paramInt2);
-  }
+  public ohr(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
-  public int a()
+  public void callback(Bundle paramBundle)
   {
-    int j = 0;
-    bamw[] arrayOfbamw = (bamw[])getSpans(0, super.length(), bamw.class);
-    if ((arrayOfbamw == null) || (arrayOfbamw.length <= 0)) {
-      return super.length();
-    }
-    int k = arrayOfbamw.length;
-    int i = 0;
-    if (i < k)
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
     {
-      bamw localbamw = arrayOfbamw[i];
-      switch (localbamw.c)
-      {
+      ReadInJoyArticleDetailActivity.a(this.a, paramBundle.getByteArray("decryptResult"));
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyArticleDetail", 2, "请求返回时间" + System.currentTimeMillis());
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        int m = getSpanStart(localbamw);
-        j += getSpanEnd(localbamw) - m - 1;
+      if (ReadInJoyArticleDetailActivity.a(this.a) == null) {
+        this.a.jdField_a_of_type_JavaLangString = null;
       }
+      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
     }
-    return super.length() - j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohr
  * JD-Core Version:    0.7.0.1
  */

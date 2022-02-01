@@ -1,60 +1,37 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-
 public class wiv
-  extends urt<vhh>
 {
-  public String a;
-  public boolean a;
-  public int c = -1;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  
+  public wiv(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
   
   public String a()
   {
-    return uqn.a("StorySvc.feed_like_list_715");
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public uro a(byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
-    try
-    {
-      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
-      return new wiw(localRspFeedLikeList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wxe.d("Q.qqstory:GetLikeListRequest", "" + paramArrayOfByte);
-    }
-    return null;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected byte[] a()
+  public void a(String paramString)
   {
-    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
-    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2;; i = 1)
-    {
-      localReqFeedLikeList.source.set(i);
-      if (this.c != -1) {
-        localReqFeedLikeList.type.set(this.c);
-      }
-      return localReqFeedLikeList.toByteArray();
-    }
-  }
-  
-  public String toString()
-  {
-    return "GetLikeListRequest{, feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isOpen=" + this.jdField_a_of_type_Boolean + ", type=" + this.c + '}';
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wiv
  * JD-Core Version:    0.7.0.1
  */

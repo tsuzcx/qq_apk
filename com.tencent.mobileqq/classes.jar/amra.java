@@ -1,26 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-abstract class amra
+final class amra
+  implements EIPCResultCallback
 {
-  protected final SharedPreferences a = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 0);
+  amra(long paramLong) {}
   
-  protected abstract String a();
-  
-  protected void a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.edit().putBoolean(a(), true).commit();
-  }
-  
-  protected boolean a()
-  {
-    return !this.a.contains(a());
+    paramEIPCResult = paramEIPCResult.data.getString("respData");
+    ampj.a().callbackFromRequest(this.a, 0, "cs.check_pubAccount_state.local", paramEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amra
  * JD-Core Version:    0.7.0.1
  */

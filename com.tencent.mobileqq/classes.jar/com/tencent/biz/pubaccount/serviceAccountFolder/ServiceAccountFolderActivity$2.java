@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import mqq.os.MqqHandler;
-import ssp;
+import tue;
 
 class ServiceAccountFolderActivity$2
   implements Runnable
 {
-  ServiceAccountFolderActivity$2(ServiceAccountFolderActivity paramServiceAccountFolderActivity, ssp paramssp) {}
+  ServiceAccountFolderActivity$2(ServiceAccountFolderActivity paramServiceAccountFolderActivity, tue paramtue) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ class ServiceAccountFolderActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity.2
  * JD-Core Version:    0.7.0.1
  */

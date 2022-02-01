@@ -1,45 +1,83 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
 public class ahqe
-  extends ahkp<MessageRecord>
 {
-  public ahqe(TroopSuspiciousFragment paramTroopSuspiciousFragment, Context paramContext, int paramInt)
+  private int jdField_a_of_type_Int = -1;
+  private ahqg[] jdField_a_of_type_ArrayOfAhqg = { new agjd(), new ahqf() };
+  private int b = -1;
+  
+  private void a(QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt)
   {
-    super(paramContext, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOMessageRecordExposeLogic", 2, "reportListItemMessage : exposeItemIndex -> " + paramInt);
+    }
+    if (paramInt >= 0)
+    {
+      paramListView = paramListView.getAdapter();
+      if ((paramListView != null) && (paramInt < paramListView.getCount()))
+      {
+        paramListView = paramListView.getItem(paramInt);
+        if ((paramListView instanceof MessageRecord))
+        {
+          paramListView = (MessageRecord)paramListView;
+          ahqg[] arrayOfahqg = this.jdField_a_of_type_ArrayOfAhqg;
+          int i = arrayOfahqg.length;
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            arrayOfahqg[paramInt].a(paramQQAppInterface, paramListView);
+            paramInt += 1;
+          }
+        }
+      }
+    }
   }
   
-  protected void a(ahkz paramahkz, MessageRecord paramMessageRecord, int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, ListView paramListView)
   {
-    TroopSuspiciousFragment.a(this.a, paramahkz, paramMessageRecord, paramInt);
+    int j = paramListView.mFirstPosition;
+    int k = paramListView.getChildCount();
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOMessageRecordExposeLogic", 2, "reportExposeOnShowFirst : curFirstPosition -> " + j + ", childCount -> " + k);
+    }
+    int i = j;
+    while (i < j + k)
+    {
+      a(paramQQAppInterface, paramListView, i);
+      i += 1;
+    }
+    this.jdField_a_of_type_Int = paramListView.mFirstPosition;
+    this.b = paramListView.getChildCount();
   }
   
-  protected ahkz b(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  public void b(QQAppInterface paramQQAppInterface, ListView paramListView)
   {
-    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
-    paramContext = new ahpe(paramContext, paramViewGroup);
-    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131372936));
-    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131372926));
-    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131372933));
-    paramContext.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131372940));
-    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372931));
-    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372937));
-    paramContext.c = ((TextView)paramViewGroup.findViewById(2131372939));
-    paramContext.d = ((TextView)paramViewGroup.findViewById(2131372932));
-    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131372935));
-    paramContext.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramViewGroup.findViewById(2131378473));
-    paramViewGroup = (Button)paramViewGroup.findViewById(2131378472);
-    ahql.a(paramContext.a(), false);
-    return paramContext;
+    int j = paramListView.mFirstPosition;
+    int k = paramListView.getChildCount();
+    if ((j == this.jdField_a_of_type_Int) && (this.b == k)) {
+      return;
+    }
+    int i = -1;
+    if (j < this.jdField_a_of_type_Int) {
+      i = j;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOMessageRecordExposeLogic", 2, "handleListViewScroll : curExposeItemIndex -> " + i + ", curFirstPosition -> " + j + ", childCount -> " + k);
+      }
+      this.jdField_a_of_type_Int = j;
+      this.b = k;
+      a(paramQQAppInterface, paramListView, i);
+      return;
+      if (j + k > this.jdField_a_of_type_Int + this.b) {
+        i = j + k - 1;
+      }
+    }
   }
 }
 

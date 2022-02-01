@@ -1,16 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 
-public abstract interface bell
-  extends begg
+public class bell
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract View a(int paramInt);
+  public bell(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, beln parambeln) {}
   
-  public abstract void a(String paramString, int paramInt);
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_Beln.a(null);
+  }
   
-  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, int paramInt3);
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.jdField_a_of_type_Beln.a(null);
+  }
   
-  public abstract void a(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, int paramInt4);
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = bisw.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
+    this.jdField_a_of_type_Beln.a(paramURLDrawable);
+  }
 }
 
 

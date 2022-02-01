@@ -2,12 +2,12 @@ package com.tencent.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import bibm;
+import bkox;
 
 public class SwitchExtend
   extends Switch
 {
-  private bibm a;
+  private bkox a;
   
   public SwitchExtend(Context paramContext)
   {
@@ -16,7 +16,7 @@ public class SwitchExtend
   
   public SwitchExtend(Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(paramContext, paramAttributeSet, 2131034963);
+    super(paramContext, paramAttributeSet, 2131035060);
   }
   
   public SwitchExtend(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -32,9 +32,9 @@ public class SwitchExtend
     return false;
   }
   
-  public void setOnSwitchListener(bibm parambibm)
+  public void setOnSwitchListener(bkox parambkox)
   {
-    this.a = parambibm;
+    this.a = parambkox;
   }
 }
 

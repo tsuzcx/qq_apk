@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.leba.core.redtouch;
 
-import atlh;
-import auau;
+import avrv;
+import awie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.redtouch.RedTouch;
@@ -11,11 +11,11 @@ import mqq.os.MqqHandler;
 public class LebaSpecificRedTouch$2
   implements Runnable
 {
-  public LebaSpecificRedTouch$2(atlh paramatlh, QQAppInterface paramQQAppInterface, RedTouch paramRedTouch, String paramString1, String paramString2, long paramLong) {}
+  public LebaSpecificRedTouch$2(avrv paramavrv, QQAppInterface paramQQAppInterface, RedTouch paramRedTouch, String paramString1, String paramString2, long paramLong) {}
   
   public void run()
   {
-    int i = auau.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    int i = awie.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (QLog.isColorLevel()) {
       QLog.d("Q.lebatab.LebaSpecificRedTouch", 2, "updateExtendFriendRedTouch() : " + i);
     }
@@ -26,7 +26,7 @@ public class LebaSpecificRedTouch$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.core.redtouch.LebaSpecificRedTouch.2
  * JD-Core Version:    0.7.0.1
  */

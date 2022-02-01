@@ -1,59 +1,80 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import android.support.annotation.Nullable;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import org.jetbrains.annotations.NotNull;
 
 public class avwn
-  implements View.OnTouchListener
 {
-  public avwn(OCRResultFragmentNew paramOCRResultFragmentNew) {}
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int = -1;
+  private LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  private String jdField_a_of_type_JavaLangString;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public avwn(String paramString, LatLng paramLatLng, double paramDouble)
   {
-    paramView = (EditText)paramView;
-    int j = paramMotionEvent.getAction();
-    if (j == 1)
-    {
-      Object localObject = paramView.getText();
-      int m = (int)paramMotionEvent.getX();
-      i = (int)paramMotionEvent.getY();
-      int n = paramView.getTotalPaddingLeft();
-      int k = paramView.getTotalPaddingTop();
-      m = m - n + paramView.getScrollX();
-      n = paramView.getScrollY();
-      Layout localLayout = paramView.getLayout();
-      i = localLayout.getLineForVertical(i - k + n);
-      float f = localLayout.getLineWidth(i);
-      if (m <= f)
-      {
-        i = localLayout.getOffsetForHorizontal(i, m);
-        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
-        if (localObject.length != 0)
-        {
-          localObject[0].onClick(paramView);
-          azqs.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
-        }
-      }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    this.jdField_a_of_type_Double = paramDouble;
+  }
+  
+  public double a()
+  {
+    return this.jdField_a_of_type_Double;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public LatLng a()
+  {
+    return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(LatLng paramLatLng, Double paramDouble)
+  {
+    if (paramLatLng != null) {
+      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
     }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        return true;
-      }
-      if ((j == 1) && (!paramView.isFocused())) {
-        azqs.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
-      }
-      return paramView.onTouchEvent(paramMotionEvent);
+    if (paramDouble != null) {
+      this.jdField_a_of_type_Double = paramDouble.doubleValue();
     }
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof avwn))
+    {
+      paramObject = (avwn)paramObject;
+      return this.jdField_a_of_type_JavaLangString.equals(paramObject.a());
+    }
+    return super.equals(paramObject);
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "LocationItem{mUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLatLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", mRotation=" + this.jdField_a_of_type_Double + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avwn
  * JD-Core Version:    0.7.0.1
  */

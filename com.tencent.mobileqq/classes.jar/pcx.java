@@ -1,24 +1,104 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaGifView;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class pcx
+class pcx
+  implements BusinessObserver
 {
-  public static pcw a(int paramInt, Context paramContext)
+  pcx(pcu parampcu, BaseCommentData paramBaseCommentData) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
+    int i = 1;
+    String str = "";
+    if (paramBoolean) {}
+    for (;;)
     {
-    default: 
-      return new MediaGifView(paramContext);
-    case 0: 
-      return new MediaGifView(paramContext);
+      try
+      {
+        byte[] arrayOfByte = paramBundle.getByteArray("data");
+        if (arrayOfByte == null) {
+          break label229;
+        }
+        paramBundle = new WebSsoBody.WebSsoResponseBody();
+        try
+        {
+          paramBundle.mergeFrom(arrayOfByte);
+          paramInt = paramBundle.ret.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("ReadInJoyCommentSSOModule", 2, "commentReport ret=" + paramBundle.data.get());
+          }
+          if (paramInt == 0) {
+            break label179;
+          }
+          try
+          {
+            paramBundle = new JSONObject(paramBundle.data.get()).optString("msg");
+            paramInt = 0;
+          }
+          catch (JSONException paramBundle)
+          {
+            paramBundle.printStackTrace();
+            paramInt = 0;
+            paramBundle = str;
+            continue;
+          }
+          if ((paramInt == 0) && (pcu.a(this.jdField_a_of_type_Pcu) != null)) {
+            pcu.a(this.jdField_a_of_type_Pcu).b(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, paramBundle);
+          }
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
+          continue;
+        }
+        paramBundle.printStackTrace();
+      }
+      catch (Exception paramBundle)
+      {
+        paramInt = 0;
+      }
+      for (;;)
+      {
+        for (;;)
+        {
+          paramBundle = str;
+          break;
+          label179:
+          paramBundle = str;
+          paramInt = i;
+          try
+          {
+            if (pcu.a(this.jdField_a_of_type_Pcu) == null) {
+              break;
+            }
+            pcu.a(this.jdField_a_of_type_Pcu).b(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
+            paramBundle = str;
+            paramInt = i;
+          }
+          catch (Exception paramBundle)
+          {
+            paramInt = 1;
+          }
+        }
+      }
+      label229:
+      paramInt = 0;
+      paramBundle = str;
     }
-    return new MediaVideoView(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pcx
  * JD-Core Version:    0.7.0.1
  */

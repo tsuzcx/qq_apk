@@ -4,14 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import nsq;
+import obu;
 import org.json.JSONObject;
 
 public class VideoInfo$GameAdComData
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameAdComData> CREATOR = new nsq();
+  public static final Parcelable.Creator<GameAdComData> CREATOR = new obu();
   public String A;
+  public String B;
   public int a;
   public VideoInfo.GameAdDownloadInfo a;
   public String a;
@@ -58,7 +59,6 @@ public class VideoInfo$GameAdComData
     this.j = paramParcel.readString();
     this.k = paramParcel.readString();
     this.l = paramParcel.readString();
-    this.m = paramParcel.readString();
     this.n = paramParcel.readString();
     this.o = paramParcel.readString();
     this.p = paramParcel.readString();
@@ -73,6 +73,7 @@ public class VideoInfo$GameAdComData
     this.y = paramParcel.readString();
     this.z = paramParcel.readString();
     this.A = paramParcel.readString();
+    this.B = paramParcel.readString();
   }
   
   public VideoInfo$GameAdComData(String paramString, JSONObject paramJSONObject)
@@ -94,29 +95,30 @@ public class VideoInfo$GameAdComData
       this.j = paramJSONObject.optString("sGameIcon", "");
       this.k = paramJSONObject.optString("sOperType", "");
       this.l = paramJSONObject.optString("sGameStage", "");
-      this.m = paramJSONObject.optString("sGameKind", "");
-      this.n = paramJSONObject.optString("sGameSubKind", "");
-      this.o = paramJSONObject.optString("sDetailUrl", "");
-      this.p = paramJSONObject.optString("sActivityUrl", "");
-      this.q = paramJSONObject.optString("sGameStatus", "");
-      this.r = paramJSONObject.optString("sComponentType", "");
-      this.s = paramJSONObject.optString("stDownloadInfo", "");
-      if (TextUtils.isEmpty(this.s)) {
-        this.s = new JSONObject().toString();
-      }
-      this.t = paramJSONObject.optString("sGiftInfo", "");
+      this.m = paramJSONObject.optString("sGameSize", "");
+      this.n = paramJSONObject.optString("sGameKind", "");
+      this.o = paramJSONObject.optString("sGameSubKind", "");
+      this.p = paramJSONObject.optString("sDetailUrl", "");
+      this.q = paramJSONObject.optString("sActivityUrl", "");
+      this.r = paramJSONObject.optString("sGameStatus", "");
+      this.s = paramJSONObject.optString("sComponentType", "");
+      this.t = paramJSONObject.optString("stDownloadInfo", "");
       if (TextUtils.isEmpty(this.t)) {
         this.t = new JSONObject().toString();
       }
-      this.u = paramJSONObject.optString("sButtonDesc", "");
-      this.v = paramJSONObject.optString("sWordTitle", "");
-      this.w = paramJSONObject.optString("sWordContentWifi", "");
-      this.x = paramJSONObject.optString("sWordContentNoWifi", "");
-      this.y = paramJSONObject.optString("sWordHighlight", "");
-      this.z = paramJSONObject.optString("sWordHighlightColor", "");
-      this.A = paramJSONObject.optString("mExtendGameInfo", "");
-    } while (!TextUtils.isEmpty(this.A));
-    this.A = new JSONObject().toString();
+      this.u = paramJSONObject.optString("sGiftInfo", "");
+      if (TextUtils.isEmpty(this.u)) {
+        this.u = new JSONObject().toString();
+      }
+      this.v = paramJSONObject.optString("sButtonDesc", "");
+      this.w = paramJSONObject.optString("sWordTitle", "");
+      this.x = paramJSONObject.optString("sWordContentWifi", "");
+      this.y = paramJSONObject.optString("sWordContentNoWifi", "");
+      this.z = paramJSONObject.optString("sWordHighlight", "");
+      this.A = paramJSONObject.optString("sWordHighlightColor", "");
+      this.B = paramJSONObject.optString("mExtendGameInfo", "");
+    } while (!TextUtils.isEmpty(this.B));
+    this.B = new JSONObject().toString();
   }
   
   public int describeContents()
@@ -139,7 +141,6 @@ public class VideoInfo$GameAdComData
     paramParcel.writeString(this.j);
     paramParcel.writeString(this.k);
     paramParcel.writeString(this.l);
-    paramParcel.writeString(this.m);
     paramParcel.writeString(this.n);
     paramParcel.writeString(this.o);
     paramParcel.writeString(this.p);
@@ -154,6 +155,7 @@ public class VideoInfo$GameAdComData
     paramParcel.writeString(this.y);
     paramParcel.writeString(this.z);
     paramParcel.writeString(this.A);
+    paramParcel.writeString(this.B);
   }
 }
 

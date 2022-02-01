@@ -1,32 +1,70 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.WebpSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.util.WebpSoLoader;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface arou
+public class arou
+  extends arnz
 {
-  public abstract int a();
+  QQAppInterface b = null;
   
-  public abstract long a();
+  public arou(QQAppInterface paramQQAppInterface)
+  {
+    super("qq.android.pic.webp.so", paramQQAppInterface);
+    this.b = paramQQAppInterface;
+  }
   
-  public abstract arov a();
+  public int a()
+  {
+    return 10056;
+  }
   
-  public abstract BaseActivity a();
+  public Class<? extends XmlData> a()
+  {
+    return WebpSoData.class;
+  }
   
-  public abstract FileManagerEntity a();
+  public String a()
+  {
+    return "QWebpSoDownloadDuration";
+  }
   
-  public abstract String a();
+  public void a(String paramString)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QWebpSoDownloadHandler", 2, "onDownload success: " + paramString);
+      }
+      String str = WebpSoLoader.a(BaseApplicationImpl.getContext());
+      if (!TextUtils.isEmpty(str)) {
+        bgmg.a(paramString, str, false);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QWebpSoDownloadHandler", 2, localException.getMessage());
+        }
+      }
+    }
+    super.a(paramString);
+  }
   
-  public abstract void a();
+  public boolean a()
+  {
+    return true;
+  }
   
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract boolean a(Bitmap paramBitmap, int paramInt, String paramString);
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract String c();
+  public String b()
+  {
+    return null;
+  }
 }
 
 

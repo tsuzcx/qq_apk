@@ -1,60 +1,89 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogReq;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bcyr
+  extends bcvt
 {
-  public QQAppInterface a;
-  public BusinessObserver a;
-  
-  public bcyr(QQAppInterface paramQQAppInterface)
+  private LinearLayout a(Context paramContext)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new bcys(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramContext = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    localLayoutParams.gravity = 17;
+    paramContext.setLayoutParams(localLayoutParams);
+    return paramContext;
   }
   
-  public String a(int paramInt, JSONObject paramJSONObject)
+  protected int b()
   {
-    JSONObject localJSONObject2 = new JSONObject();
-    try
+    return 23;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Object localObject2;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)) && ((paramView.getTag() instanceof bcys)))
     {
-      localJSONObject2.put("status", paramInt);
-      JSONObject localJSONObject1 = paramJSONObject;
-      if (paramJSONObject == null) {
-        localJSONObject1 = new JSONObject();
-      }
-      localJSONObject2.put("data", localJSONObject1);
-    }
-    catch (JSONException paramJSONObject)
-    {
+      localbcys = (bcys)paramView.getTag();
+      localIterator = this.a.iterator();
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("UnifiedDebugReporter", 2, "reportStatus: exception=" + paramJSONObject.getMessage());
+        localObject1 = paramView;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (bcvs)localIterator.next();
+        if ("button".equals(((bcvs)localObject1).a))
+        {
+          localObject2 = (TextView)((bcvs)localObject1).a(paramContext, localbcys.a, paramBundle);
+          if (TextUtils.isEmpty(((bcxp)localObject1).c())) {
+            ((TextView)localObject2).setTextSize(16.0F);
+          }
+          if (TextUtils.isEmpty(((bcxp)localObject1).d())) {
+            ((TextView)localObject2).setTextColor(Color.parseColor("#12b7f5"));
+          }
         }
       }
     }
-    return localJSONObject2.toString();
+    Object localObject1 = a(paramContext);
+    bcys localbcys = new bcys();
+    Iterator localIterator = this.a.iterator();
+    paramView = null;
+    while (localIterator.hasNext())
+    {
+      localObject2 = (bcvs)localIterator.next();
+      if ("button".equals(((bcvs)localObject2).a))
+      {
+        paramView = (TextView)((bcvs)localObject2).a(paramContext, null, paramBundle);
+        if (TextUtils.isEmpty(((bcxp)localObject2).c())) {
+          paramView.setTextSize(16.0F);
+        }
+        if (TextUtils.isEmpty(((bcxp)localObject2).d())) {
+          paramView.setTextColor(Color.parseColor("#12b7f5"));
+        }
+        localObject2 = new LinearLayout.LayoutParams(-1, afur.a(41.0F, paramContext.getResources()));
+        ((LinearLayout.LayoutParams)localObject2).gravity = 17;
+        ((LinearLayout)localObject1).addView(paramView, (ViewGroup.LayoutParams)localObject2);
+      }
+    }
+    if (paramView != null) {
+      localbcys.a = paramView;
+    }
+    ((LinearLayout)localObject1).setTag(localbcys);
+    return localObject1;
   }
   
-  public void a(long paramLong, int paramInt, JSONObject paramJSONObject)
+  public String b()
   {
-    RemoteDebugReportMsg.RemoteLogReq localRemoteLogReq = new RemoteDebugReportMsg.RemoteLogReq();
-    localRemoteLogReq.str_seq.set(String.valueOf(paramLong));
-    localRemoteLogReq.str_data.set(a(paramInt, paramJSONObject));
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), bcyq.class);
-    localNewIntent.putExtra("extra_cmd", "ClubDebugging.report");
-    localNewIntent.putExtra("extra_data", localRemoteLogReq.toByteArray());
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReporter", 2, "reportStatus: seq=" + paramLong + ", statusCode=" + paramInt + ", data=" + paramJSONObject);
-    }
+    return "layout23";
   }
 }
 

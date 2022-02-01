@@ -1,203 +1,364 @@
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.support.v4.view.ViewCompat;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Bundle;
+import android.text.Html;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.view.accessibility.AccessibilityEvent;
-import android.view.accessibility.AccessibilityManager;
-import android.widget.EditText;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.AccessibilityUtil.3;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.mobileqq.widget.BubbleViewLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
+import com.tencent.widget.SingleLineTextView;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class bczz
+  extends bcyl
 {
-  @TargetApi(14)
-  public static void a(Context paramContext)
+  private URLDrawableDownListener.Adapter a;
+  String aa = "StructMsgItemLayoutNew2";
+  String ab = "";
+  String ac = "";
+  String ad = "";
+  
+  public bczz()
   {
-    try
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bdaa(this);
+  }
+  
+  public static String a(AbsShareMsg paramAbsShareMsg, String paramString)
+  {
+    Object localObject2 = "";
+    if (paramString.equals("cover"))
     {
-      paramContext = (AccessibilityManager)paramContext.getSystemService("accessibility");
-      boolean bool1 = paramContext.isEnabled();
-      boolean bool2 = paramContext.isTouchExplorationEnabled();
-      if ((bool1) && (bool2)) {}
-      for (bool1 = true;; bool1 = false)
+      if (TextUtils.isEmpty(paramAbsShareMsg.mContentCover)) {
+        break label77;
+      }
+      localObject1 = paramAbsShareMsg.mContentCover;
+    }
+    label77:
+    do
+    {
+      do
       {
-        AppSetting.c = bool1;
-        if (QLog.isColorLevel()) {
-          QLog.d("AccessibilityUtil", 2, "setTalkbackSwitch: " + AppSetting.c);
+        do
+        {
+          return localObject1;
+          if (paramString.equals("title"))
+          {
+            if (!TextUtils.isEmpty(paramAbsShareMsg.mContentTitle)) {
+              return paramAbsShareMsg.mContentTitle;
+            }
+          }
+          else if ((paramString.equals("summary")) && (!TextUtils.isEmpty(paramAbsShareMsg.mContentSummary))) {
+            return paramAbsShareMsg.mContentSummary;
+          }
+          localObject1 = localObject2;
+        } while (!(paramAbsShareMsg instanceof StructMsgForGeneralShare));
+        paramAbsShareMsg = (StructMsgForGeneralShare)paramAbsShareMsg;
+        localObject1 = localObject2;
+      } while (paramAbsShareMsg.mStructMsgItemLists == null);
+      localObject1 = localObject2;
+    } while (paramAbsShareMsg.mStructMsgItemLists.isEmpty());
+    Iterator localIterator = paramAbsShareMsg.mStructMsgItemLists.iterator();
+    paramAbsShareMsg = (AbsShareMsg)localObject2;
+    do
+    {
+      localObject1 = paramAbsShareMsg;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localObject1 = (bcvs)localIterator.next();
+    } while ((!(localObject1 instanceof bcvt)) || (((bcvt)localObject1).a == null) || (((bcvt)localObject1).a.isEmpty()));
+    Object localObject1 = ((bcvt)localObject1).a.iterator();
+    label191:
+    if (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (bcvs)((Iterator)localObject1).next();
+      if ((paramString.equals("cover")) && ((localObject2 instanceof bcxv)))
+      {
+        paramAbsShareMsg = StructMsgForGeneralShare.getCoverForChatHistory((bcvs)localObject2);
+        label231:
+        if (TextUtils.isEmpty(paramAbsShareMsg)) {
+          break label295;
         }
-        return;
       }
-      return;
-    }
-    catch (Throwable paramContext) {}
-  }
-  
-  @TargetApi(14)
-  public static void a(View paramView)
-  {
-    if (paramView == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("AccessibilityUtil", 2, "requestFocus view can't be null");
-      }
-      return;
-    }
-    paramView.postDelayed(new AccessibilityUtil.3(paramView), 200L);
-  }
-  
-  public static void a(View paramView, bdae parambdae)
-  {
-    paramView.setAccessibilityDelegate(new bdac(parambdae));
-  }
-  
-  @TargetApi(14)
-  public static void a(View paramView, CharSequence paramCharSequence, String paramString)
-  {
-    if (Build.VERSION.SDK_INT >= 14) {
-      paramView.setAccessibilityDelegate(new bdad(paramCharSequence, paramString));
-    }
-  }
-  
-  public static void a(View paramView, String paramString)
-  {
-    if (AppSetting.c) {
-      paramView.setContentDescription(paramString);
-    }
-  }
-  
-  public static void a(View paramView, boolean paramBoolean)
-  {
-    if ((AppSetting.c) && (Build.VERSION.SDK_INT >= 16))
-    {
-      if (paramBoolean) {
-        ViewCompat.setImportantForAccessibility(paramView, 1);
-      }
-    }
-    else {
-      return;
-    }
-    ViewCompat.setImportantForAccessibility(paramView, 2);
-  }
-  
-  @TargetApi(14)
-  public static void a(EditText paramEditText, String paramString)
-  {
-    if ((AppSetting.c) && (Build.VERSION.SDK_INT >= 14))
-    {
-      paramEditText.setContentDescription(paramString);
-      paramEditText.setAccessibilityDelegate(new bdaa());
-    }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return ((AccessibilityManager)paramContext.getSystemService("accessibility")).isEnabled();
-  }
-  
-  @TargetApi(16)
-  public static boolean a(View paramView, String paramString)
-  {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      AccessibilityEvent localAccessibilityEvent = AccessibilityEvent.obtain(16384);
-      localAccessibilityEvent.setPackageName(paramView.getContext().getPackageName());
-      localAccessibilityEvent.setClassName(paramView.getClass().getName());
-      localAccessibilityEvent.setSource(paramView);
-      localAccessibilityEvent.getText().add(paramString);
-      paramView.getParent().requestSendAccessibilityEvent(paramView, localAccessibilityEvent);
     }
     for (;;)
     {
-      return true;
-      QQAppInterface.f(paramString);
-    }
-  }
-  
-  @TargetApi(16)
-  public static void b(View paramView)
-  {
-    AccessibilityManager localAccessibilityManager = (AccessibilityManager)paramView.getContext().getSystemService("accessibility");
-    if ((localAccessibilityManager != null) && (Build.VERSION.SDK_INT >= 14) && (localAccessibilityManager.isEnabled()))
-    {
-      paramView.setFocusable(true);
-      paramView.setAccessibilityDelegate(new bdab());
-    }
-  }
-  
-  public static void b(View paramView, String paramString)
-  {
-    a(paramView, null, paramString);
-  }
-  
-  public static void b(View paramView, boolean paramBoolean)
-  {
-    if ((paramView instanceof ViewGroup))
-    {
-      ViewGroup localViewGroup = (ViewGroup)paramView;
-      int j = localViewGroup.getChildCount();
-      int i = 0;
-      while (i < j)
+      if (!TextUtils.isEmpty(paramAbsShareMsg))
       {
-        b(localViewGroup.getChildAt(i), paramBoolean);
-        i += 1;
+        return paramAbsShareMsg;
+        if ((paramString.equals("title")) && ((localObject2 instanceof StructMsgItemTitle)))
+        {
+          paramAbsShareMsg = StructMsgForGeneralShare.getTitleForChatHistory((bcvs)localObject2);
+          break label231;
+        }
+        if ((!paramString.equals("summary")) || (!(localObject2 instanceof bdaq))) {
+          break label301;
+        }
+        paramAbsShareMsg = StructMsgForGeneralShare.getSummary((bcvs)localObject2);
+        break label231;
+        label295:
+        break label191;
       }
+      break;
+      label301:
+      break label231;
     }
-    if (paramBoolean)
-    {
-      ViewCompat.setImportantForAccessibility(paramView, 1);
-      return;
-    }
-    ViewCompat.setImportantForAccessibility(paramView, 2);
   }
   
-  @TargetApi(16)
-  public static void c(View paramView)
+  private String a(String paramString, int paramInt)
   {
     int i = 0;
-    if (paramView == null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("AccessibilityUtil", 2, "clearFocus view can't be null");
-      }
-    }
-    label122:
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str = "";
+    int n = paramString.length();
+    int k = 0;
+    if ((i < n) && (k < paramInt))
     {
-      return;
-      if ((AppSetting.c) && (Build.VERSION.SDK_INT > 15))
+      int j = paramString.codePointAt(i);
+      int m;
+      if ((j > 65535) || (j == 20))
       {
-        Method[] arrayOfMethod = paramView.getClass().getMethods();
-        int j = arrayOfMethod.length;
-        for (;;)
+        m = i;
+        j = k;
+        if (i + 1 < n)
         {
-          if (i >= j) {
-            break label122;
+          str = paramString.substring(i, i + 2);
+          if (k < paramInt - 1) {
+            localStringBuilder.append(str);
           }
-          Method localMethod = arrayOfMethod[i];
-          if (localMethod.getName().equals("clearAccessibilityFocus"))
-          {
-            try
-            {
-              localMethod.invoke(paramView, new Object[0]);
-              return;
-            }
-            catch (Exception paramView) {}
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.w("AccessibilityUtil", 2, "clearFocus: " + paramView.toString());
-            return;
-          }
-          i += 1;
+          m = i + 1;
+          j = k + 1;
         }
       }
+      for (;;)
+      {
+        i = m + 1;
+        k = j;
+        break;
+        str = paramString.substring(i, i + 1);
+        if (k < paramInt - 1) {
+          localStringBuilder.append(str);
+        }
+        j = k + 1;
+        m = i;
+      }
     }
+    if (k == paramInt)
+    {
+      if (i >= n) {
+        break label188;
+      }
+      localStringBuilder.append(Html.fromHtml("&hellip;"));
+    }
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      label188:
+      localStringBuilder.append(str);
+    }
+  }
+  
+  void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message != null))
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message;
+      if ((localObject instanceof MessageForStructing))
+      {
+        localObject = (AbsShareMsg)bcwd.a(((MessageRecord)localObject).msgData);
+        this.ac = a((AbsShareMsg)localObject, "title");
+        this.ab = a((AbsShareMsg)localObject, "cover");
+        this.ad = a((AbsShareMsg)localObject, "summary");
+      }
+    }
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Object localObject = new bdac(this);
+    Resources localResources = paramContext.getResources();
+    View localView;
+    int i;
+    label122:
+    int j;
+    if ((paramView != null) && ((paramView instanceof RelativeLayout)) && (paramView.findViewById(2131363972) != null) && ((paramView.getTag() instanceof bdac)))
+    {
+      localObject = (bdac)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      a();
+      boolean bool = paramBundle.getBoolean("isSend", true);
+      paramBundle = (BubbleViewLayout)localView.findViewById(2131363972);
+      i = 19;
+      if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgServiceID != 114) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgServiceID != 116)) {
+        break label911;
+      }
+      paramBundle.a(false);
+      i = 9;
+      paramBundle.a = bool;
+      if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg == null) || (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgServiceID == 151) || (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgServiceID == 156) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgActionData))) {
+        break label919;
+      }
+      j = 1;
+      label177:
+      if (!bool) {
+        break label936;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setPadding(afur.a(9.0F, localResources), 0, afur.a(i, localResources), 0);
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setPadding(afur.a(9.0F, localResources), afur.a(3.0F, localResources), afur.a(i, localResources), 0);
+      paramBundle = (ViewGroup.MarginLayoutParams)paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      if (j == 0) {
+        break label925;
+      }
+      paramBundle.setMargins(afur.a(18.0F, localResources), 0, 0, 0);
+      ((RelativeLayout.LayoutParams)paramView.c.getLayoutParams()).addRule(9);
+      paramBundle = (RelativeLayout.LayoutParams)paramView.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+      paramBundle.addRule(9);
+      paramBundle.setMargins(afur.a(18.0F, localResources), 0, 0, 0);
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(afur.a(19.5F, localResources), 0, afur.a(10.0F, localResources), 0);
+      label339:
+      paramBundle = localResources.getDrawable(2130850447);
+      if (TextUtils.isEmpty(this.ab)) {
+        break label1192;
+      }
+    }
+    try
+    {
+      localObject = URLDrawable.getDrawable(new URL(this.ab), afur.a(249.0F, localResources), afur.a(139.0F, localResources), paramBundle, paramBundle, true);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+      if ((localObject != null) && (((URLDrawable)localObject).getStatus() == 2)) {
+        ((URLDrawable)localObject).restartDownload();
+      }
+      if ((localObject == null) || (((URLDrawable)localObject).getStatus() != 1)) {
+        break label1107;
+      }
+      paramView.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(null);
+      label454:
+      paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      for (;;)
+      {
+        label463:
+        label1107:
+        if (QLog.isColorLevel()) {
+          QLog.e(this.aa, 2, "getView, error: " + localMalformedURLException.getMessage());
+        }
+        label516:
+        label911:
+        label919:
+        label925:
+        label936:
+        paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBundle);
+        paramView.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+      }
+    }
+    if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi"))
+    {
+      this.ac += "  ";
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(Html.fromHtml(this.ac));
+      if ((this.ad == null) || (TextUtils.isEmpty(this.ad.trim())) || (this.ad.trim().equals(""))) {
+        break label1227;
+      }
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setVisibility(0);
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(this.ad);
+    }
+    for (;;)
+    {
+      if (j == 0) {
+        break label1239;
+      }
+      i = (int)(BaseChatItemLayout.B * 0.8F) - afur.a(19.5F, localResources) - afur.a(10.0F, localResources) - afur.a(13.0F, localResources);
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setMaxWidth(i);
+      i /= afur.a(14.0F, localResources);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgActionData;
+      paramBundle = (Bundle)localObject;
+      if (((String)localObject).length() > i) {
+        paramBundle = a((String)localObject, i);
+      }
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setText(new bdod(paramBundle, 3, 15));
+      paramView.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      paramContext = new bdab(this, paramContext, new String(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgActionData), this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgUrl);
+      paramView.c.setOnClickListener(paramContext);
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramContext);
+      return localView;
+      localView = LayoutInflater.from(paramContext).inflate(2131559627, null);
+      ((bdac)localObject).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131365114));
+      ((bdac)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378776));
+      ((bdac)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131378086));
+      ((bdac)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131363972));
+      ((bdac)localObject).jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131362307));
+      ((bdac)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131364757));
+      ((bdac)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362306));
+      ((bdac)localObject).c = ((RelativeLayout)localView.findViewById(2131364020));
+      ((bdac)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364013));
+      localView.setTag(localObject);
+      paramView = (View)localObject;
+      break;
+      paramBundle.a(true);
+      break label122;
+      j = 0;
+      break label177;
+      paramBundle.setMargins(0, 0, 0, 0);
+      break label339;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setPadding(afur.a(i, localResources), 0, afur.a(9.0F, localResources), 0);
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setPadding(afur.a(i, localResources), afur.a(3.0F, localResources), afur.a(9.0F, localResources), 0);
+      paramBundle = (ViewGroup.MarginLayoutParams)paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      if (j != 0)
+      {
+        paramBundle.setMargins(0, 0, afur.a(18.0F, localResources), 0);
+        ((RelativeLayout.LayoutParams)paramView.c.getLayoutParams()).addRule(11);
+        paramBundle = (RelativeLayout.LayoutParams)paramView.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+        paramBundle.addRule(11);
+        paramBundle.setMargins(0, 0, afur.a(18.0F, localResources), 0);
+        paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(afur.a(10.0F, localResources), 0, afur.a(19.5F, localResources), 0);
+        break label339;
+      }
+      paramBundle.setMargins(0, 0, 0, 0);
+      break label339;
+      paramView.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
+      break label454;
+      label1192:
+      paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBundle);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+      break label463;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.ac);
+      break label516;
+      label1227:
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setVisibility(8);
+    }
+    label1239:
+    paramView.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    paramView.c.setOnClickListener(null);
+    paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+    return localView;
   }
 }
 

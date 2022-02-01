@@ -1,94 +1,73 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class amjn
+class amjn
+  extends bhhe
 {
-  public static SharedPreferences a(Context paramContext, String paramString)
-  {
-    return paramContext.getSharedPreferences("PrefHiddenChat" + paramString, 4);
-  }
+  amjn(amjl paramamjl, File paramFile, amjo paramamjo) {}
   
-  public static void a(String paramString, Context paramContext, boolean paramBoolean)
+  public void onDone(bhhf parambhhf)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      return;
-      paramContext = a(paramContext, paramString).edit();
-      paramContext.putBoolean("show_unread_msg", paramBoolean);
-      paramContext.commit();
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, "setHiddenSession ac[" + paramString + "], open[" + paramBoolean + "]");
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, String paramString2, int paramInt)
-  {
-    boolean bool2;
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
-      bool2 = true;
+    super.onDone(parambhhf);
+    if (QLog.isColorLevel()) {
+      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip task.getStatus:" + parambhhf.a());
     }
-    boolean bool1;
-    do
+    if (3 == parambhhf.a())
     {
-      return bool2;
-      paramContext = a(paramContext, paramString1);
-      bool2 = paramContext.getBoolean("show_video_msg", false);
-      bool1 = bool2;
-      if (!bool2)
-      {
-        paramContext = paramContext.getString("KeyHiddenChatList", "");
-        String str = paramString2 + "|" + paramInt + ";";
-        if ((TextUtils.isEmpty(paramContext)) || (!paramContext.contains(str))) {
-          bool2 = true;
-        }
-        bool1 = bool2;
-        if (QLog.isColorLevel())
+      if (this.jdField_a_of_type_JavaIoFile.exists()) {
+        try
         {
-          QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s], cur[%s], list[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool2), str, paramContext }));
-          bool1 = bool2;
+          parambhhf = bita.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+          if (QLog.isColorLevel()) {
+            QLog.d("rscContent_CmShowRscUpdateHandler", 2, " downloadAllZip onDone dstMd5:" + parambhhf + " result.mMd5:" + this.jdField_a_of_type_Amjo.d);
+          }
+          if (amjl.a(this.jdField_a_of_type_Amjo, parambhhf))
+          {
+            if (amjl.a(this.jdField_a_of_type_Amjo))
+            {
+              nmk.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+              if (QLog.isColorLevel()) {
+                QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile ok file path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+              }
+            }
+            for (;;)
+            {
+              amjl.a(this.jdField_a_of_type_Amjl, this.jdField_a_of_type_Amjo.jdField_e_of_type_Int, this.jdField_a_of_type_Amjo);
+              return;
+              boolean bool = bgmg.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Amjo.b() + this.jdField_a_of_type_Amjo.jdField_e_of_type_JavaLangString);
+              QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip no need unzip copy:" + bool);
+            }
+          }
+          QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip  file error path- no exist:" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        }
+        catch (Exception parambhhf)
+        {
+          amjl.a(this.jdField_a_of_type_Amjl, this.jdField_a_of_type_Amjo.jdField_e_of_type_Int);
+          this.jdField_a_of_type_JavaIoFile.delete();
+          QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambhhf.getMessage());
+          return;
+          QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
+          amjl.a(this.jdField_a_of_type_Amjl, this.jdField_a_of_type_Amjo.jdField_e_of_type_Int);
+          return;
+        }
+        catch (OutOfMemoryError parambhhf)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambhhf.getMessage());
+          }
+          this.jdField_a_of_type_JavaIoFile.delete();
+          return;
         }
       }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool1) }));
-    return bool1;
-  }
-  
-  public static boolean a(String paramString, Context paramContext)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return true;
-    }
-    return a(paramContext, paramString).getBoolean("show_unread_msg", true);
-  }
-  
-  public static void b(String paramString, Context paramContext, boolean paramBoolean)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
+      amjl.a(this.jdField_a_of_type_Amjl, this.jdField_a_of_type_Amjo.jdField_e_of_type_Int);
       return;
-      paramContext = a(paramContext, paramString).edit();
-      paramContext.putBoolean("show_video_msg", paramBoolean);
-      paramContext.commit();
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, "setVideoMsg ac[" + paramString + "], open[" + paramBoolean + "]");
-  }
-  
-  public static boolean b(String paramString, Context paramContext)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return true;
     }
-    return a(paramContext, paramString).getBoolean("show_video_msg", false);
+    QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip  file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambhhf.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amjn
  * JD-Core Version:    0.7.0.1
  */

@@ -157,7 +157,7 @@ class MediaScanner$2
     //   314: aload 6
     //   316: iconst_1
     //   317: invokeinterface 161 3 0
-    //   322: invokestatic 167	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   322: invokestatic 167	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   325: invokestatic 173	com/tencent/mobileqq/activity/photo/MediaScanner:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/activity/photo/MediaScanner;
     //   328: invokestatic 177	com/tencent/mobileqq/activity/photo/MediaScanner:access$000	(Lcom/tencent/mobileqq/activity/photo/MediaScanner;)Lcom/tencent/mobileqq/activity/photo/MediaDatabaseHelper;
     //   331: aload 6
@@ -470,7 +470,7 @@ class MediaScanner$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaScanner.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
 
-public abstract interface ajij
+public class ajij
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract boolean interceptDrawer(View paramView, MotionEvent paramMotionEvent);
+  public ajij(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.invalidate();
+  }
 }
 
 

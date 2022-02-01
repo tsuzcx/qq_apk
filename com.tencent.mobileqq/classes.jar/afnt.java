@@ -1,18 +1,39 @@
+import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-class afnt
-  implements arsg
+public class afnt
+  implements View.OnClickListener
 {
-  afnt(afnq paramafnq) {}
+  public afnt(TroopRequestActivity paramTroopRequestActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = bdgm.a(this.a.a, 230);
-    paramView.setTitle(2131691611);
-    paramView.setMessage(2131691612);
-    paramView.setNegativeButton(2131690648, new afnu(this, paramView));
-    paramView.setPositiveButton(2131694953, new afnv(this));
-    paramView.show();
+    anvl localanvl = (anvl)this.a.app.a(26);
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      if (!TextUtils.isEmpty(this.a.b)) {
+        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
+      }
+      localanvl.a(localArrayList);
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.systemmsg.TroopRequestActivity", 2, "delete Stranger parseLong() error", localNumberFormatException);
+        }
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-
-public class alkv
+public abstract interface alkv
 {
-  public void a() {}
-  
-  public void a(ApolloActionData paramApolloActionData) {}
-  
-  public void a(Boolean paramBoolean) {}
-  
-  public void b(ApolloActionData paramApolloActionData) {}
+  public abstract void j();
 }
 
 

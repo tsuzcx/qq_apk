@@ -1,31 +1,44 @@
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class xvk
-  extends SimpleJob
+  extends BroadcastReceiver
 {
-  public xvk(SegmentList paramSegmentList, String paramString)
-  {
-    super(paramString);
-  }
+  public xvk(StoryPlayerWebFragment paramStoryPlayerWebFragment) {}
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.f();
-    if (SegmentList.a(this.a)) {
-      return null;
+    yqp.a("StoryPlayerWebFragment", "onReceive() Action: %s", paramIntent.getAction());
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
+    {
+      paramContext = paramIntent.getStringExtra("event");
+      yqp.a("StoryPlayerWebFragment", "onReceive() Event: %s", paramContext);
+      if (!"closeMeEvent".equals(paramContext)) {
+        break label70;
+      }
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
     }
-    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
-    return null;
+    label70:
+    do
+    {
+      return;
+      if (!"readyEvent".equals(paramContext)) {
+        break;
+      }
+    } while (this.a.a == null);
+    this.a.a.b();
+    return;
+    QQToast.a(this.a.getActivity(), 1, "unknown event: " + paramContext, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xvk
  * JD-Core Version:    0.7.0.1
  */

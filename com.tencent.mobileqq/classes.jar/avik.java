@@ -1,13 +1,14 @@
-class avik
+public class avik
 {
-  public String a;
-  public String b;
-  
-  private avik(avhf paramavhf) {}
+  public static void a(Throwable paramThrowable)
+  {
+    avjb.a("2490056");
+    bcrp.a(paramThrowable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avik
  * JD-Core Version:    0.7.0.1
  */

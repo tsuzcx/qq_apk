@@ -1,47 +1,38 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atpj
-  extends atpc
+class atpj
+  implements View.OnClickListener
 {
-  public atpj(BaseChatPie paramBaseChatPie)
-  {
-    super(paramBaseChatPie);
-  }
+  atpj(atpf paramatpf, int paramInt) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agps)) {
-      ((agps)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).bC();
+    if (this.jdField_a_of_type_Atpf.a != null)
+    {
+      if (this.jdField_a_of_type_Int != 1) {
+        break label86;
+      }
+      bcst.b(null, "dc00898", "", "", "0X800A745", "0X800A745", atwt.c(this.jdField_a_of_type_Atpf.e()), 0, "", "", "", "");
+      if (this.jdField_a_of_type_Atpf.a.d()) {
+        this.jdField_a_of_type_Atpf.a.b();
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void c()
-  {
-    super.c();
-    this.jdField_a_of_type_Atpi.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Atpi.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    if (this.jdField_a_of_type_Atpi.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_Atpi.jdField_a_of_type_JavaLangString = "";
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label86:
+      if (this.jdField_a_of_type_Int == 2) {
+        this.jdField_a_of_type_Atpf.a.g();
+      }
     }
-    this.jdField_a_of_type_Atph = new atph();
-    this.jdField_a_of_type_Atph.jdField_a_of_type_JavaLangString = "c2c_AIO";
-    this.jdField_a_of_type_Atph.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Atph.b = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atpj
  * JD-Core Version:    0.7.0.1
  */

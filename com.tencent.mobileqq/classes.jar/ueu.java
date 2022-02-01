@@ -1,31 +1,30 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
+import NS_KING_SOCIALIZE_META.stMetaPerson;
+import UserGrowth.stSimpleComment;
+import UserGrowth.stSimpleMetaComment;
+import UserGrowth.stSimpleMetaPerson;
+import android.text.TextUtils;
 
 public class ueu
-  extends ClickableSpan
 {
-  public ueu(QCirclePushAsyncTextView paramQCirclePushAsyncTextView) {}
-  
-  public void onClick(@NonNull View paramView)
+  public static stMetaPerson a(stSimpleMetaPerson paramstSimpleMetaPerson)
   {
-    if (QCirclePushAsyncTextView.a(this.a) != null) {
-      QCirclePushAsyncTextView.a(this.a).a();
-    }
+    return new stMetaPerson(paramstSimpleMetaPerson.id, paramstSimpleMetaPerson.type, paramstSimpleMetaPerson.uid, paramstSimpleMetaPerson.createtime, paramstSimpleMetaPerson.nick, paramstSimpleMetaPerson.avatar, paramstSimpleMetaPerson.sex, "", "", "", "", "", "", -1, 0, "");
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  public static stSimpleComment a(stSimpleMetaComment paramstSimpleMetaComment, stSimpleMetaPerson paramstSimpleMetaPerson)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
+    stSimpleMetaPerson localstSimpleMetaPerson = paramstSimpleMetaComment.poster;
+    if (TextUtils.isEmpty(localstSimpleMetaPerson.nick)) {}
+    for (;;)
+    {
+      return new stSimpleComment(paramstSimpleMetaComment.id, paramstSimpleMetaComment.wording, paramstSimpleMetaComment.poster_id, a(paramstSimpleMetaPerson), paramstSimpleMetaComment.dingNum, paramstSimpleMetaComment.isDing, paramstSimpleMetaComment.feedId, null);
+      paramstSimpleMetaPerson = localstSimpleMetaPerson;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ueu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
 
-public class ainr
-  implements View.OnClickListener
+public final class ainr
+  implements Parcelable.Creator<ZhituImgResponse>
 {
-  public ainr(CameraPreviewActivity paramCameraPreviewActivity) {}
-  
-  public void onClick(View paramView)
+  public ZhituImgResponse a(Parcel paramParcel)
   {
-    if (this.a.b) {
-      azqs.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
-    }
-    this.a.finish();
-    bdfa.anim(this.a, true, false);
+    return new ZhituImgResponse(paramParcel);
+  }
+  
+  public ZhituImgResponse[] a(int paramInt)
+  {
+    return new ZhituImgResponse[paramInt];
   }
 }
 

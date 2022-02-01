@@ -1,20 +1,21 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
 
 public class aemb
-  extends bhry
+  implements View.OnTouchListener
 {
-  public aemb(VisitorsActivity paramVisitorsActivity) {}
+  public aemb(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.f = false;
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.c.setVisibility(0);
+    if (!this.a.a)
+    {
+      bcst.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
+      this.a.a = true;
+    }
+    return false;
   }
 }
 

@@ -1,17 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.LoadingAvatarProgressView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class ahjz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public ahjz(LoadingAvatarProgressView paramLoadingAvatarProgressView) {}
+  public ahjz(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    LoadingAvatarProgressView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue() * LoadingAvatarProgressView.a(this.a));
-    this.a.invalidate();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

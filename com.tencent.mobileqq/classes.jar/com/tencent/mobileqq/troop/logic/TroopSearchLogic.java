@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.logic;
 
-import bcha;
+import bfho;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,14 +13,14 @@ public class TroopSearchLogic
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
   TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
   
-  public void a(ArrayList<ResultRecord> paramArrayList, bcha parambcha)
+  public void a(ArrayList<ResultRecord> paramArrayList, bfho parambfho)
   {
-    ThreadManager.postImmediately(new TroopSearchLogic.TroopSearchTask(this, parambcha, paramArrayList), null, false);
+    ThreadManager.postImmediately(new TroopSearchLogic.TroopSearchTask(this, parambfho, paramArrayList), null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.logic.TroopSearchLogic
  * JD-Core Version:    0.7.0.1
  */

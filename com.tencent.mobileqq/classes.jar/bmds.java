@@ -1,34 +1,14 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import cooperation.qzone.plugin.PluginRecord;
+import java.io.File;
 
 class bmds
+  implements bmdw
 {
-  final Map<bmdk, List<bmdt>> a;
-  final Map<bmdt, bmdk> b;
+  bmds(bmdr parambmdr) {}
   
-  bmds(Map<bmdt, bmdk> paramMap)
+  public boolean a(PluginRecord paramPluginRecord, File paramFile)
   {
-    this.b = paramMap;
-    this.a = new HashMap();
-    Iterator localIterator = paramMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      bmdk localbmdk = (bmdk)localEntry.getValue();
-      List localList = (List)this.a.get(localbmdk);
-      paramMap = localList;
-      if (localList == null)
-      {
-        paramMap = new ArrayList();
-        this.a.put(localbmdk, paramMap);
-      }
-      paramMap.add(localEntry.getKey());
-    }
+    return bmdr.a(this.a, paramPluginRecord);
   }
 }
 

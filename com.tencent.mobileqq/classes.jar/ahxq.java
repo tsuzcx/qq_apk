@@ -1,25 +1,22 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class ahxq
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ahxq(ahxp paramahxp, DialogInterface.OnClickListener paramOnClickListener) {}
+  ahxq(ahxp paramahxp) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ahxp, 0);
-    }
-    try
+    if (this.a.S)
     {
-      if (this.jdField_a_of_type_Ahxp.isShowing()) {
-        this.jdField_a_of_type_Ahxp.dismiss();
+      this.a.S = false;
+      ahxp.a(this.a).sendEmptyMessageDelayed(23, 100L);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, " doOnCreate_initUI onGlobalLayout");
       }
-      return;
     }
-    catch (Exception paramView) {}
   }
 }
 

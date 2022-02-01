@@ -1,17 +1,19 @@
-class wnp
-  extends xwf
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
+
+public abstract interface wnp
 {
-  wnp(wno paramwno) {}
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public boolean a(boolean paramBoolean)
-  {
-    this.a.b();
-    return true;
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(MessageMicro paramMessageMicro);
+  
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wnp
  * JD-Core Version:    0.7.0.1
  */

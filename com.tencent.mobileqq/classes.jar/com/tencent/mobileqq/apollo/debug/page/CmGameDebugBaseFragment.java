@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.apollo.debug.page;
 
-import aktf;
+import amml;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 
 public abstract class CmGameDebugBaseFragment
-  extends Fragment
+  extends ReportV4Fragment
 {
-  public aktf a;
+  public amml a;
   
   public void a()
   {
@@ -17,9 +18,9 @@ public abstract class CmGameDebugBaseFragment
     }
   }
   
-  public void a(aktf paramaktf)
+  public void a(amml paramamml)
   {
-    this.a = paramaktf;
+    this.a = paramamml;
   }
   
   public void onDestroy()
@@ -35,7 +36,7 @@ public abstract class CmGameDebugBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.debug.page.CmGameDebugBaseFragment
  * JD-Core Version:    0.7.0.1
  */

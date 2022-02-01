@@ -1,48 +1,30 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.util.VADHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class aytp
-  extends ayuf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/onlinestatus/view/ConstellationView$initData$1", "Lcom/tencent/mobileqq/onlinestatus/constellation/StatusExtInfoObserver;", "onGetConstellationTrend", "", "success", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class aytp
+  extends aysj
 {
-  public aytp(GroupSearchEngine paramGroupSearchEngine, ayug paramayug, String paramString, int paramInt)
+  public void a(boolean paramBoolean, @Nullable Bundle paramBundle)
   {
-    super(paramGroupSearchEngine, paramayug, paramString, paramInt);
-  }
-  
-  public aynt a(List<aynu> paramList, String paramString)
-  {
-    return new aynf(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
-  
-  public List<aynt> a(ayuu paramayuu)
-  {
-    if (!GroupSearchEngine.a(this.a)) {
-      return null;
+    super.a(paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConstellationView", 2, new Object[] { "onGetConstellationTrend: called. ", "bundle: " + paramBundle });
     }
-    VADHelper.a("voice_search_approximate_cost");
-    List localList = super.a(paramayuu);
-    VADHelper.b("voice_search_approximate_cost");
-    if ((localList != null) && (!localList.isEmpty()))
+    aytj localaytj = this.a;
+    if (paramBundle != null)
     {
-      if (paramayuu.a == null) {
-        paramayuu.a = new Bundle();
-      }
-      paramayuu.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
-      if (localList.size() >= 2)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((aynt)localList.get(1)).a().size());
-        }
-        paramayuu.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((aynt)localList.get(1)).a().size());
-      }
+      paramBundle = paramBundle.getString("key_today_constellation_trend");
+      if (paramBundle == null) {}
     }
     for (;;)
     {
-      return localList;
-      paramayuu.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
+      aytj.a(localaytj, paramBundle);
+      this.a.a();
+      return;
+      paramBundle = "";
     }
   }
 }

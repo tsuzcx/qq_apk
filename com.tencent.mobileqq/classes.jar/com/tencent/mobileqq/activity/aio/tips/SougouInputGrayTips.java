@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import agzt;
-import ahao;
-import ahap;
-import alud;
+import ailn;
+import aimi;
+import aimj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,9 +10,10 @@ import android.text.TextUtils;
 import android.text.format.Time;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
-import ayzl;
-import azaf;
-import azqs;
+import anni;
+import bbyp;
+import bbzh;
+import bcst;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,10 +26,10 @@ import java.util.List;
 import mqq.os.MqqHandler;
 
 public class SougouInputGrayTips
-  implements agzt, Runnable
+  implements ailn, Runnable
 {
   private final long jdField_a_of_type_Long = 604800000L;
-  private ahap jdField_a_of_type_Ahap;
+  private aimj jdField_a_of_type_Aimj;
   private Context jdField_a_of_type_AndroidContentContext;
   private Time jdField_a_of_type_AndroidTextFormatTime;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
@@ -38,10 +38,10 @@ public class SougouInputGrayTips
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
-  public SougouInputGrayTips(QQAppInterface paramQQAppInterface, ahap paramahap, Context paramContext, SessionInfo paramSessionInfo)
+  public SougouInputGrayTips(QQAppInterface paramQQAppInterface, aimj paramaimj, Context paramContext, SessionInfo paramSessionInfo)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ahap = paramahap;
+    this.jdField_a_of_type_Aimj = paramaimj;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
   }
@@ -85,7 +85,7 @@ public class SougouInputGrayTips
   {
     long l1 = System.currentTimeMillis();
     paramContext = a(paramContext);
-    if ((paramContext.contains(alud.a(2131714614))) || (paramContext.contains("QQ输入法"))) {}
+    if ((paramContext.contains(anni.a(2131712981))) || (paramContext.contains("QQ输入法"))) {}
     for (boolean bool = true;; bool = false)
     {
       long l2 = System.currentTimeMillis();
@@ -98,8 +98,8 @@ public class SougouInputGrayTips
   
   public MessageRecord a(Object... paramVarArgs)
   {
-    paramVarArgs = azaf.a(-1014);
-    long l = ayzl.a();
+    paramVarArgs = bbzh.a(-1014);
+    long l = bbyp.a();
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str, "", l, -1043, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l);
     paramVarArgs.isread = true;
@@ -122,7 +122,7 @@ public class SougouInputGrayTips
   
   public int[] a()
   {
-    return ahao.a;
+    return aimi.a;
   }
   
   public int b()
@@ -211,7 +211,7 @@ public class SougouInputGrayTips
       }
       i = 0;
       label483:
-      l1 = ayzl.a() * 1000L;
+      l1 = bbyp.a() * 1000L;
       if (!TextUtils.isEmpty(str1))
       {
         if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
@@ -247,11 +247,11 @@ public class SougouInputGrayTips
         QLog.d("SougouInputGrayTips", 2, "has never shown sougouInput Gray Tips");
       }
       label782:
-      if (!this.jdField_a_of_type_Ahap.a(this, new Object[0])) {
+      if (!this.jdField_a_of_type_Aimj.a(this, new Object[0])) {
         break;
       }
       localSharedPreferences.edit().putString((String)localObject1, String.valueOf(l1)).putString((String)localObject2, String.valueOf(i + 1)).commit();
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80047CE", "0X80047CE", 0, 0, "", "", "", "");
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80047CE", "0X80047CE", 0, 0, "", "", "", "");
       return;
       bool = false;
     }
@@ -259,7 +259,7 @@ public class SougouInputGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.SougouInputGrayTips
  * JD-Core Version:    0.7.0.1
  */

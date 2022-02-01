@@ -1,49 +1,16 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-class afph
-  extends ClickableSpan
+public class afph
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Context> b;
+  public afph(TroopTransferActivity paramTroopTransferActivity, bgpa parambgpa) {}
   
-  afph(afnq paramafnq, QQAppInterface paramQQAppInterface, Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
+    this.jdField_a_of_type_Bgpa.cancel();
   }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Context localContext = (Context)this.b.get();
-    if ((paramView == null) || (localContext == null)) {}
-    while (!(localContext instanceof Activity)) {
-      return;
-    }
-    if (!bdin.d(localContext))
-    {
-      QQToast.a(localContext, 2131692398, 0).b(localContext.getResources().getDimensionPixelSize(2131298914));
-      return;
-    }
-    Intent localIntent = new Intent(localContext, QQSpecialCareSettingActivity.class);
-    localIntent.putExtra("key_friend_uin", this.jdField_a_of_type_Afnq.a.a);
-    localContext.startActivity(localIntent);
-    VipUtils.a(paramView, "Vip_SpecialRemind", "0X8005057", "0X8005057", 0, 1, new String[0]);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint) {}
 }
 
 

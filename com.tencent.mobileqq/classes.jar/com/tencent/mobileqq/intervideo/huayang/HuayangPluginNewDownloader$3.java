@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import atbe;
-import atbh;
+import aviy;
+import avjb;
 
 public class HuayangPluginNewDownloader$3
   implements Runnable
 {
-  public HuayangPluginNewDownloader$3(atbe paramatbe) {}
+  public HuayangPluginNewDownloader$3(aviy paramaviy) {}
   
   public void run()
   {
-    atbh.a("3228167");
-    atbe.a(this.this$0, false);
+    avjb.a("3228167");
+    aviy.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangPluginNewDownloader.3
  * JD-Core Version:    0.7.0.1
  */

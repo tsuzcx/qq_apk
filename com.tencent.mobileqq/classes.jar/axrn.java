@@ -1,19 +1,28 @@
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class axrn
+  extends annz
 {
-  public int a;
-  public boolean a;
-  public boolean b = true;
+  public axrn(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a()
+  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Int = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "onDismissHotChat.isSuccess=" + paramBoolean + ",groupcode=" + paramString1 + ",result=" + paramInt + ",strError=" + paramString2);
+    }
+    if ((paramBoolean) && (paramInt == 0) && (NearbyPeopleProfileActivity.a(this.a) != null) && (NearbyPeopleProfileActivity.a(this.a).hotInfo != null) && (paramString1 != null) && (paramString1.equals(NearbyPeopleProfileActivity.a(this.a).hotInfo.troopUin)) && (NearbyPeopleProfileActivity.a(this.a) != null))
+    {
+      NearbyPeopleProfileActivity.a(this.a).strHotChatInfo = "";
+      NearbyPeopleProfileActivity.a(this.a).hotInfo = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axrn
  * JD-Core Version:    0.7.0.1
  */

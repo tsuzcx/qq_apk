@@ -1,22 +1,33 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class awuq
-  implements bdoh<Rect>
+  implements awtq
 {
-  public awuq(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  public awuq(MultiCardFragment paramMultiCardFragment) {}
   
-  public void a(bdob<Rect> parambdob, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
+    }
+    if (MultiCardFragment.a(this.a) != null) {
+      MultiCardFragment.a(this.a).setViewPagerBusy(true);
+    }
+    if (MultiCardFragment.a(this.a) != null)
+    {
+      MultiCardFragment.a(this.a).c(paramInt);
+      if ((MultiCardFragment.a(this.a).c() == 0) && (MultiCardFragment.a(this.a) != null)) {
+        MultiCardFragment.a(this.a).setViewPagerBusy(false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awuq
  * JD-Core Version:    0.7.0.1
  */

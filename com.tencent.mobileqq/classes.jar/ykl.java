@@ -1,20 +1,35 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
 
 class ykl
-  implements zac<CertifiedAccountRead.StGetMainPageRsp>
+  extends LruCache<ykm, Drawable>
 {
-  ykl(ykk paramykk, ykg paramykg) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  ykl(ykj paramykj, int paramInt)
   {
-    if (this.jdField_a_of_type_Ykg != null) {
-      this.jdField_a_of_type_Ykg.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetMainPageRsp });
+    super(paramInt);
+  }
+  
+  protected int a(ykm paramykm, Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        ykv.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramykm, " size=", Integer.valueOf(i) });
+        return i;
+      }
     }
+    return 524288;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ykl
  * JD-Core Version:    0.7.0.1
  */

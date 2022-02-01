@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import pgu;
+import pye;
 
 public class ReadInJoyUserInfoRepository$2
   implements Runnable
 {
-  public ReadInJoyUserInfoRepository$2(pgu parampgu, int paramInt) {}
+  public ReadInJoyUserInfoRepository$2(pye parampye, int paramInt) {}
   
   public void run()
   {
-    Object localObject = pgu.a(this.this$0);
+    Object localObject = pye.a(this.this$0);
     int i = this.a;
-    localObject = ((awgf)localObject).a(ReadInJoyUserInfo.class, true, "uin IS NOT NULL AND uin != ?", new String[] { "" }, null, null, null, String.valueOf(i));
+    localObject = ((EntityManager)localObject).query(ReadInJoyUserInfo.class, true, "uin IS NOT NULL AND uin != ?", new String[] { "" }, null, null, null, String.valueOf(i));
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       Iterator localIterator = ((List)localObject).iterator();

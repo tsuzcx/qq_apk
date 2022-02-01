@@ -1,61 +1,53 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.io.File;
+import org.json.JSONObject;
 
-public class nvc
-  extends aokh<nva>
+class nvc
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public static nva a()
-  {
-    return (nva)aoks.a().a(593);
-  }
+  private nvc(nuy paramnuy) {}
   
-  public int a()
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    return 593;
-  }
-  
-  public Class<nva> a()
-  {
-    return nva.class;
-  }
-  
-  @NonNull
-  public nva a(int paramInt)
-  {
-    return new nva();
-  }
-  
-  @Nullable
-  public nva a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
-      return new nva();
+    synchronized (nuy.a(this.a))
+    {
+      nuy.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
+      nuy.a(this.a, nuy.a(this.a));
+      return;
     }
-    return nva.a(paramArrayOfaoko[0].a);
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(nva paramnva) {}
-  
-  public int b()
+  public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    synchronized (nuy.a(this.a))
+    {
+      nuy.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
+      try
+      {
+        paramString2 = new JSONObject(paramString2);
+        long l1 = paramString2.optLong("fileSize");
+        long l2 = paramString2.optLong("offset");
+        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
+        {
+          paramString2 = new File(nuy.b(paramString1));
+          if (paramString2.exists()) {
+            paramString2.renameTo(new File(nuy.a(paramString1)));
+          }
+          nuy.a(this.a, nuy.a(this.a));
+        }
+      }
+      catch (Exception paramString1)
+      {
+        label136:
+        break label136;
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvc
  * JD-Core Version:    0.7.0.1
  */

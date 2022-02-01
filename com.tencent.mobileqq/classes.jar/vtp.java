@@ -1,76 +1,37 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.app.Activity;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
 public class vtp
-  implements vvr
+  implements Animator.AnimatorListener
 {
-  public vtp(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
+  public vtp(QCircleSlidBottomView paramQCircleSlidBottomView) {}
   
-  public void a(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    wxe.a(this.a.jdField_a_of_type_JavaLangString, "onPageSelected : position = %d", Integer.valueOf(paramInt));
-    int i = this.a.b;
-    this.a.b = paramInt;
-    Object localObject = this.a.a();
-    if (localObject != null)
-    {
-      localObject = (vuc)((vua)localObject).a(vuc.class);
-      if ((localObject != null) && (((vuc)localObject).b.getVisibility() != 0)) {
-        this.a.a(true, true);
-      }
+    if (this.a.getContext() != null) {
+      uxx.a((Activity)this.a.getContext());
     }
-    localObject = (vsp)this.a.b(vsp.class);
-    if (localObject != null) {
-      ((vsp)localObject).a().a(paramInt);
+    if (QCircleSlidBottomView.a(this.a) != null) {
+      QCircleSlidBottomView.a(this.a).b();
     }
-    c(paramInt);
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, i, paramInt);
-    }
+    this.a.setVisibility(8);
+    QCircleSlidBottomView.a(this.a, false);
   }
   
-  public void a(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt1, paramFloat, paramInt2);
-    }
-    vsp localvsp = (vsp)this.a.b(vsp.class);
-    if (localvsp != null) {
-      localvsp.a().a(paramInt1, paramFloat, paramInt2);
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void b(int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if ((paramInt == 1) && (this.a.d()) && (this.a.c()))
-    {
-      ((vsp)this.a.b(vsp.class)).d();
-      wxe.a(this.a.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onPageScrolled, showLoadingMoreWidget position=%d", Integer.valueOf(this.a.b));
-    }
-    vsp localvsp = (vsp)this.a.b(vsp.class);
-    if (localvsp != null) {
-      localvsp.a().b(paramInt);
-    }
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt);
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    wxe.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected : position = %d", Integer.valueOf(paramInt));
-    vua localvua = this.a.a();
-    if ((localvua != null) && (TextUtils.equals(StoryPlayerGroupHolder.a(this.a).a().jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Vpm.jdField_a_of_type_JavaLangString)) && (!localvua.c()))
-    {
-      wxe.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected, setSelected => %s", localvua);
-      this.a.a(localvua);
-    }
+    QCircleSlidBottomView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vtp
  * JD-Core Version:    0.7.0.1
  */

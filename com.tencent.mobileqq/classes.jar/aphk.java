@@ -1,22 +1,39 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.10;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.wadl.ipc.WadlParams;
 
-class aphk
-  implements Animation.AnimationListener
+public class aphk
+  implements DialogInterface.OnClickListener
 {
-  aphk(aphj paramaphj) {}
+  public aphk(ArkAppDownloadModule.10 param10) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a.setVisibility(8);
-    this.a.a.d();
+    boolean bool = false;
+    bmxh.a().a(this.a.jdField_a_of_type_CooperationWadlIpcWadlParams);
+    aphi.a(this.a.this$0, true);
+    bcst.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.jdField_a_of_type_CooperationWadlIpcWadlParams.a, "");
+    if ((paramDialogInterface instanceof bgpa))
+    {
+      if (!((bgpa)paramDialogInterface).getCheckBoxState()) {
+        bool = true;
+      }
+      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
+    }
+    try
+    {
+      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.b, bool).apply();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.e("ark.download.module", 1, "start download sp error : ", paramDialogInterface);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

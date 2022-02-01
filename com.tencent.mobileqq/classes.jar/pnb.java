@@ -1,24 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
-class pnb
-  implements View.OnClickListener
+public class pnb
 {
-  pnb(pna parampna, Container paramContainer, pgd parampgd, int paramInt) {}
+  public oidb_cmd0x80a.AttributeList a;
+  public oidb_cmd0x80a.AttributeList b;
+  public oidb_cmd0x80a.AttributeList c;
+  public oidb_cmd0x80a.AttributeList d;
   
-  public void onClick(View paramView)
-  {
-    pna.a(this.jdField_a_of_type_Pna, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pgd, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("PgcProteusItem", 2, "click bottom bar for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pgd.a() + " position = " + this.jdField_a_of_type_Int);
-    }
-  }
+  public pnb(pmy parampmy) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pnb
  * JD-Core Version:    0.7.0.1
  */

@@ -4,23 +4,23 @@ import NS_MOBILE_MAIN_PAGE.PhotoWall;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
 import android.os.Parcel;
 import android.text.TextUtils;
-import awge;
-import awhp;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class QZonePhotoWall
-  extends awge
+  extends Entity
 {
   public String attachInfo;
-  @awhp
+  @notColumn
   public int curListSize;
   public int hasMore;
   public int totalPic;
-  @awhs
+  @unique
   public String uin;
   public byte[] vPhotoIds;
   public byte[] vPhotoTimes;
@@ -388,7 +388,7 @@ public class QZonePhotoWall
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.QZonePhotoWall
  * JD-Core Version:    0.7.0.1
  */

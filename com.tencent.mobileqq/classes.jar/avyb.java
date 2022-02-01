@@ -1,17 +1,20 @@
-import android.app.Activity;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
 
-public abstract interface avyb
+public class avyb
+  implements DialogInterface.OnClickListener
 {
-  public abstract Activity a();
+  public avyb(LocationDialogUtil.4 param4) {}
   
-  public abstract void a(View paramView);
-  
-  public abstract void a(boolean paramBoolean);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bcst.b(null, "CliOper", "", "", "0X800A968", "0X800A968", 0, 0, "0", "0", "0", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avyb
  * JD-Core Version:    0.7.0.1
  */

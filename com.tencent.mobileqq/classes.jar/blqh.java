@@ -1,32 +1,16 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.PeakAppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class blqh
+class blqh
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public static AppInterface a()
+  blqh(blqf paramblqf) {}
+  
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    try
-    {
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface)) {
-        return (QQAppInterface)localObject;
-      }
-      localObject = BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak");
-      if ((localObject instanceof PeakAppInterface))
-      {
-        localObject = (PeakAppInterface)localObject;
-        return localObject;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("CaptureContext", 1, "getAppRuntime fail, ", localException);
-    }
-    return null;
+    blqf.a(this.a, paramInt);
+    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 

@@ -1,22 +1,15 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
 public class angx
-  implements DialogInterface.OnClickListener
 {
-  public angx(ARScanEntryView paramARScanEntryView) {}
+  View jdField_a_of_type_AndroidViewView;
+  public ImageView a;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  View b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    Activity localActivity = (Activity)this.a.a;
-    Intent localIntent = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
-    localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
-    localActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
-  }
+  public angx(angw paramangw) {}
 }
 
 

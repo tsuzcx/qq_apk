@@ -6,12 +6,12 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
-import wya;
+import yrl;
 
 public class EditLocalPhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new wya();
+  public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new yrl();
   public final LocalMediaInfo a;
   public final String a;
   
@@ -74,7 +74,7 @@ public class EditLocalPhotoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource
  * JD-Core Version:    0.7.0.1
  */

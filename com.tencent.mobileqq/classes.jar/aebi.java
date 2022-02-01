@@ -1,22 +1,18 @@
-import android.view.MotionEvent;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aebi
-  implements aieo
+public class aebi
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<ajyl> a;
+  public aebi(DialogActivity paramDialogActivity) {}
   
-  public aebi(ajyl paramajyl)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramajyl);
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    ajyl localajyl = (ajyl)this.a.get();
-    if (localajyl != null) {
-      localajyl.a(paramMotionEvent);
-    }
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList cancel.");
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

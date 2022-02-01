@@ -1,53 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class axph
+class axph
+  implements View.OnTouchListener
 {
-  public static int a()
+  axph(axop paramaxop) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int j = 2;
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4);
-    long l = localSharedPreferences.getLong("key_open_camera_time", 0L);
-    int i = j;
-    if (l != 0L)
-    {
-      i = j;
-      if (System.currentTimeMillis() - l < 300000L) {
-        i = localSharedPreferences.getInt("camera", 2);
-      }
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131369823).setAlpha(0.5F);
     }
-    return i;
-  }
-  
-  public static void a()
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
-    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
-    localEditor.apply();
-  }
-  
-  public static void a(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
-    localEditor.putInt("camera", paramInt);
-    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
-    localEditor.apply();
-  }
-  
-  public static boolean a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).contains("camera");
-  }
-  
-  public static int b()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).getInt("camera", 1);
+    for (;;)
+    {
+      return false;
+      this.a.a.findViewById(2131369823).setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axph
  * JD-Core Version:    0.7.0.1
  */

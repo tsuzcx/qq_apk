@@ -1,34 +1,48 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-
-class bmqj
-  implements Animator.AnimatorListener
+public class bmqj
 {
-  bmqj(bmqh parambmqh) {}
+  private static bmqj jdField_a_of_type_Bmqj = new bmqj();
+  private bmqk jdField_a_of_type_Bmqk;
+  bmql jdField_a_of_type_Bmql;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public static bmqj a()
   {
-    this.a.a = false;
+    return jdField_a_of_type_Bmqj;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    this.a.a = false;
+    this.jdField_a_of_type_Bmqk = null;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator)
+  public void a(bmqk parambmqk)
   {
-    this.a.a = true;
+    this.jdField_a_of_type_Bmqk = parambmqk;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(bmql parambmql)
   {
-    this.a.a = true;
+    this.jdField_a_of_type_Bmql = parambmql;
+  }
+  
+  public void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Bmqk == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bmqk.a(paramString, paramLong1, paramArrayOfLong, paramLong2);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    bmql localbmql = this.jdField_a_of_type_Bmql;
+    if ((localbmql != null) && (!"0X8009831".equals(paramString1)) && (!"0X8009830".equals(paramString1)) && (!"0X800982E".equals(paramString1)) && (!"0X800982F".equals(paramString1))) {
+      localbmql.a(paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmqj
  * JD-Core Version:    0.7.0.1
  */

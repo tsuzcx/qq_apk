@@ -1,17 +1,44 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
-class afsx
-  extends afuf
+public class afsx
 {
-  afsx(afpy paramafpy)
+  public static long a(long paramLong)
   {
-    super(paramafpy, null);
+    Calendar localCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
+    localCalendar.setTimeInMillis(paramLong);
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    return localCalendar.getTimeInMillis();
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public static String a(long paramLong, String paramString)
   {
-    return new agev(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, afpy.a(this.a));
+    try
+    {
+      paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE).format(new Date(paramLong));
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return "";
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return a(paramLong, "yyyy-MM-dd");
+  }
+  
+  private static boolean a(long paramLong, String paramString)
+  {
+    Date localDate = new Date(paramLong);
+    paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE);
+    return paramString.format(localDate).equals(paramString.format(new Date(NetConnInfoCenter.getServerTimeMillis())));
   }
 }
 

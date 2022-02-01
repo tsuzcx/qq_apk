@@ -1,27 +1,49 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.fragment.ShieldFriendsListFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aunw
-  extends GestureDetector.SimpleOnGestureListener
+  extends anmu
 {
-  public aunw(MultiCardPageIndicator paramMultiCardPageIndicator) {}
+  public aunw(ShieldFriendsListFragment paramShieldFriendsListFragment) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    super.onUpdateFriendShieldFlag(paramLong, paramBoolean1, paramBoolean2, paramBoolean3, paramString);
+    if (!paramBoolean2)
+    {
+      paramString = this.a;
+      if (!paramBoolean1)
+      {
+        paramBoolean1 = true;
+        if (ShieldFriendsListFragment.a(paramString, paramLong, paramBoolean1)) {
+          QQToast.a(BaseApplication.getContext(), anni.a(2131712757), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298998));
+        }
+      }
     }
-    if (MultiCardPageIndicator.a(this.a) != null) {
-      this.a.performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    do
+    {
+      return;
+      paramBoolean1 = false;
+      break;
+      if (ShieldFriendsListFragment.a(this.a).a(String.valueOf(paramLong)))
+      {
+        ShieldFriendsListFragment.a(this.a, paramLong, paramBoolean1);
+        return;
+      }
+      paramString = ((anmw)this.a.getActivity().app.getManager(51)).e(String.valueOf(paramLong));
+    } while ((paramString == null) || (paramString.isShield()));
+    ShieldFriendsListFragment.a(this.a).a(paramString);
+    ShieldFriendsListFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aunw
  * JD-Core Version:    0.7.0.1
  */

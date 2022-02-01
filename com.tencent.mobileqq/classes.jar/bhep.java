@@ -1,22 +1,23 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Handler;
-import com.tencent.qqmini.sdk.runtime.audiorecorder.LameMp3EncodeThread;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
 
 public class bhep
-  implements MediaPlayer.OnPreparedListener
+  implements TouchWebView.OnScrollChangedListener
 {
-  public bhep(LameMp3EncodeThread paramLameMp3EncodeThread) {}
+  public bhep(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    LameMp3EncodeThread.a(this.a).sendEmptyMessage(101);
-    LameMp3EncodeThread.a(this.a).start();
+    if (this.a.a != null) {
+      this.a.a.scrollBy(0, paramInt2 - paramInt4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhep
  * JD-Core Version:    0.7.0.1
  */

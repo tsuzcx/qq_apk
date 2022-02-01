@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
-import biby;
+import bkpj;
 import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
 
 public class FlowLayout
@@ -27,7 +27,7 @@ public class FlowLayout
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    biby.a("FlowLayout.onLayout");
+    bkpj.a("FlowLayout.onLayout");
     int k = getWidth();
     paramInt3 = 0;
     paramInt2 = 0;
@@ -66,12 +66,12 @@ public class FlowLayout
         paramInt3 = j + (localMarginLayoutParams.rightMargin + (paramInt3 + i1));
       }
     }
-    biby.a();
+    bkpj.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.FlowLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.aekit.plugin.core.AIInput;
 import com.tencent.aekit.plugin.core.AIParam;
 import com.tencent.aekit.plugin.core.IDetect;
 import com.tencent.aekit.plugin.core.PTHandAttr;
-import com.tencent.ttpic.openapi.initializer.RapidNetGestureInitializer;
+import com.tencent.ttpic.openapi.initializer.TNNGestureInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -133,11 +133,6 @@ public class AEHandDetector
     HAND_DETECTOR.destroy();
   }
   
-  public boolean reInit()
-  {
-    return HAND_DETECTOR.init();
-  }
-  
   public boolean reloadModel()
   {
     return HAND_DETECTOR.reloadModel();
@@ -147,7 +142,7 @@ public class AEHandDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openai.ttpicmodule.AEHandDetector
  * JD-Core Version:    0.7.0.1
  */

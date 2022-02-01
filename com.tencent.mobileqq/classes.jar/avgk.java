@@ -1,18 +1,61 @@
-import java.io.File;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBSInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.cmd0xcd4.cmd0xcd4.InputNotifyRsp;
 
-public abstract interface avgk
+final class avgk
+  extends avgl
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt);
+  private WeakReference<avgi> a;
   
-  public abstract void a(String paramString1, String paramString2, long paramLong);
+  private avgk(avgi paramavgi)
+  {
+    this.a = new WeakReference(paramavgi);
+  }
   
-  public abstract void a(String paramString1, String paramString2, long paramLong1, long paramLong2);
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (((paramObject instanceof cmd0xcd4.InputNotifyRsp)) && (paramBoolean))
+    {
+      paramObject = (cmd0xcd4.InputNotifyRsp)paramObject;
+      int i = paramObject.sint32_result.get();
+      int j = paramObject.uint32_interval.get();
+      paramObject = paramObject.bytes_err_msg.get().toStringUtf8();
+      if (i != 0) {
+        break label84;
+      }
+      if ((j > 0) && (this.a.get() != null)) {
+        ((avgi)this.a.get()).a = (j * 1000);
+      }
+    }
+    return;
+    label84:
+    QLog.d(avgi.a(), 1, "send input status fail : " + paramObject);
+  }
   
-  public abstract void a(String paramString1, String paramString2, File paramFile);
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (this.a.get() != null))
+    {
+      if ((!avgi.a((avgi)this.a.get())) && (paramBoolean2))
+      {
+        if (avgi.a((avgi)this.a.get()) != null) {
+          avgi.a((avgi)this.a.get()).a(avgi.a((avgi)this.a.get()));
+        }
+        avgi.a((avgi)this.a.get()).a.addTextChangedListener(avgi.a((avgi)this.a.get()));
+      }
+      avgi.a((avgi)this.a.get(), paramBoolean2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avgk
  * JD-Core Version:    0.7.0.1
  */

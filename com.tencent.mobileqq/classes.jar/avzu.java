@@ -1,58 +1,26 @@
-import android.graphics.Matrix;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class avzu
-  implements avzt
+class avzu
+  extends anmu
 {
-  public void a(Matrix paramMatrix) {}
+  avzu(avzs paramavzs) {}
   
-  public void a(MotionEvent paramMotionEvent) {}
-  
-  public void a(ScaleGestureDetector paramScaleGestureDetector) {}
-  
-  public boolean a(MotionEvent paramMotionEvent)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    return false;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean a(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
-  
-  public void b(MotionEvent paramMotionEvent) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean b(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
-  
-  public void c(MotionEvent paramMotionEvent) {}
-  
-  public boolean c(MotionEvent paramMotionEvent)
-  {
-    return false;
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    paramObject = String.valueOf(paramObject);
+    if ((paramBoolean) && (paramObject.equals(avzs.a(this.a).a())))
+    {
+      avzs.a(avzs.a(this.a), 0, String.valueOf(paramObject));
+      if (avzs.a(this.a) != null) {
+        avzs.a(this.a).finish();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avzu
  * JD-Core Version:    0.7.0.1
  */

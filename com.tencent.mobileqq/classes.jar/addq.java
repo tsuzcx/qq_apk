@@ -1,21 +1,13 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mfsdk.MagnifierSDK;
 
-public class addq
-  extends altm
+public final class addq
+  implements addo
 {
-  public addq(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(int paramInt)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
-    while (this.a.a == null) {
-      return;
+    if (MagnifierSDK.a != null) {
+      MagnifierSDK.a.a("result_objects", paramInt, 2);
     }
-    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
-    this.a.a.setImageBitmap(paramString);
   }
 }
 

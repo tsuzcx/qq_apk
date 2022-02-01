@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import alud;
 import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class SQLiteDatabase$2
   implements Runnable
 {
+  SQLiteDatabase$2(SQLiteDatabase paramSQLiteDatabase) {}
+  
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), alud.a(2131714723) + BaseApplicationImpl.processName + alud.a(2131714724), 1).show();
+    Toast.makeText(BaseApplication.getContext(), BaseApplication.getContext().getString(2131692963) + BaseApplication.processName + BaseApplication.getContext().getString(2131692964), 1).show();
   }
 }
 

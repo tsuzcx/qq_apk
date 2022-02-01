@@ -1,77 +1,56 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.LRULinkedHashMap;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 class amzl
-  implements amzj
 {
-  private IBinder a;
+  public String a;
+  public WeakReference<WebViewPlugin> a;
+  private WeakReference<amzk> b;
   
-  amzl(IBinder paramIBinder)
+  public amzl(amzk paramamzk, String paramString, WebViewPlugin paramWebViewPlugin)
   {
-    this.a = paramIBinder;
+    this.b = new WeakReference(paramamzk);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebViewPlugin);
   }
   
-  public void a(int paramInt)
+  public void a(amzm paramamzm, amzn paramamzn)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
+    amzk localamzk = (amzk)this.b.get();
+    WebViewPlugin localWebViewPlugin;
+    if ((localamzk != null) && (paramamzm != null))
     {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
+      localWebViewPlugin = (WebViewPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localWebViewPlugin != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      {
+        if (paramamzn != null) {
+          paramamzn.d = System.currentTimeMillis();
+        }
+        if (amzm.a(paramamzm) == null) {
+          break label175;
+        }
+        localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { amzm.a(paramamzm).toString() });
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, plugin.callJs.mResultJson:" + amzm.a(paramamzm));
+      }
+      if (amzk.a(localamzk) != null)
+      {
+        amzk.a(localamzk).remove(amzm.a(paramamzm));
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, remove sso from mPreloadSSODatas:" + amzm.a(paramamzm));
+        }
+      }
       return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      label175:
+      localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
     }
   }
 }

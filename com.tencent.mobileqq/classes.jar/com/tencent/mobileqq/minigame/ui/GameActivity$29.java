@@ -1,42 +1,25 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import alud;
-import com.tencent.mobileqq.minigame.debug.DebugWebSocket.DebuggerStateListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.minigame.report.MiniGameBeaconReport;
+import com.tencent.mobileqq.triton.sdk.ITTEngine.OnGetTraceRecordCallback;
+import com.tencent.mobileqq.triton.sdk.statics.TraceStatistics;
 
 class GameActivity$29
-  implements DebugWebSocket.DebuggerStateListener
+  implements ITTEngine.OnGetTraceRecordCallback
 {
-  GameActivity$29(GameActivity paramGameActivity) {}
+  GameActivity$29(GameActivity paramGameActivity, boolean paramBoolean) {}
   
-  public void onDebuggerBreakPointPaused()
+  public void onGetTraceRecord(@NonNull TraceStatistics paramTraceStatistics)
   {
-    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger BreakPointPaused");
-    GameActivity.access$5000(this.this$0, alud.a(2131705401), null, true);
-  }
-  
-  public void onDebuggerConnectedNormal()
-  {
-    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger connected ");
-    GameActivity.access$5000(this.this$0, alud.a(2131705395), null, false);
-    GameActivity.access$5100(this.this$0);
-  }
-  
-  public void onDebuggerDisconnect(String paramString)
-  {
-    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger Disconnect");
-    GameActivity.access$5000(this.this$0, alud.a(2131705400), alud.a(2131705405), false);
-  }
-  
-  public void onDebuggerReconnecting(String paramString)
-  {
-    QLog.e("[minigame] GameActivity DebugSocket", 1, "launchGame debugger Reconnecting");
-    GameActivity.access$5000(this.this$0, alud.a(2131705397), alud.a(2131705396), false);
+    MiniGameBeaconReport.reportJankTraceRecords(paramTraceStatistics, this.this$0.mGameAppConfig.config.appId, false, this.val$isFirstFrame);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.29
  * JD-Core Version:    0.7.0.1
  */

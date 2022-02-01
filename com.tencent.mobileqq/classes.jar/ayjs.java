@@ -1,62 +1,140 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.util.HashMap;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import com.tencent.mobileqq.ocr.view.gesture.Settings;
+import com.tencent.mobileqq.ocr.view.gesture.Settings.Fit;
 
-class ayjs
-  implements bhxr
+public class ayjs
 {
-  ayjs(ayjr paramayjr, HorizontalListView paramHorizontalListView) {}
+  private static final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private float jdField_a_of_type_Float;
+  private final Settings jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings;
+  private float b;
+  private float c;
   
-  public void a()
+  public ayjs(Settings paramSettings)
   {
-    int i = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getCurrentX();
-    long l1 = bdgk.k();
-    long l2 = bdaq.a(this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getContext(), 13.5F);
-    float f = Math.round((float)(i + (l1 - l2)) / this.jdField_a_of_type_Ayjr.jdField_a_of_type_Float);
-    i = 0;
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings = paramSettings;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public float a(float paramFloat1, float paramFloat2)
+  {
+    return ayjx.a(paramFloat1, this.jdField_a_of_type_Float / paramFloat2, this.b * paramFloat2);
+  }
+  
+  public ayjs a(ayju paramayju)
+  {
+    float f5 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e();
+    float f6 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.f();
+    float f7 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.c();
+    float f8 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d();
+    if ((f5 == 0.0F) || (f6 == 0.0F) || (f7 == 0.0F) || (f8 == 0.0F))
     {
-      if ((i < f) && (i < this.jdField_a_of_type_Ayjr.jdField_a_of_type_JavaUtilList.size()))
+      this.c = 1.0F;
+      this.b = 1.0F;
+      this.jdField_a_of_type_Float = 1.0F;
+      return this;
+    }
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a();
+    this.b = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.b();
+    float f9 = paramayju.d();
+    float f3 = f8;
+    float f1 = f7;
+    float f2 = f6;
+    float f4 = f5;
+    label262:
+    label267:
+    if (!ayju.a(f9, 0.0F))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a() == Settings.Fit.OUTSIDE)
       {
-        ayol localayol = (ayol)this.jdField_a_of_type_Ayjr.jdField_a_of_type_JavaUtilList.get(i);
-        ayig localayig;
-        JSONObject localJSONObject;
-        if (ayif.b.containsKey(localayol))
-        {
-          localayig = (ayig)ayif.b.get(localayol);
-          if (!localayig.jdField_a_of_type_Boolean)
-          {
-            localayig.jdField_a_of_type_Boolean = true;
-            localJSONObject = new JSONObject();
-          }
-        }
-        try
-        {
-          localJSONObject.put("project", aysc.a());
-          localJSONObject.put("event_src", "client");
-          localJSONObject.put("get_src", "web");
-          localJSONObject.put("obj_lct", localayig.jdField_a_of_type_Int);
-          localJSONObject.put("extra_info", localayol.b);
-          localJSONObject.put("tepl", localayol.f);
-          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          aysc.a(localQQAppInterface, new ReportModelDC02528().module("all_result").action("exp_item").obj1(localayol.a + "").obj2(localayol.j).ver1(localayig.jdField_a_of_type_JavaLangString).ver2(aysc.a(this.jdField_a_of_type_Ayjr.jdField_a_of_type_Int)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + ayif.a));
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            QLog.e(ayjr.jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
-          }
-        }
+        jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-f9);
+        jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, f7, f8);
+        jdField_a_of_type_AndroidGraphicsMatrix.mapRect(jdField_a_of_type_AndroidGraphicsRectF);
+        f1 = jdField_a_of_type_AndroidGraphicsRectF.width();
+        f3 = jdField_a_of_type_AndroidGraphicsRectF.height();
+        f4 = f5;
+        f2 = f6;
       }
     }
+    else {
+      label202:
+      switch (ayjt.a[this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a().ordinal()])
+      {
+      default: 
+        if (this.jdField_a_of_type_Float > 0.0F)
+        {
+          f1 = this.jdField_a_of_type_Float;
+          this.c = f1;
+          if (this.jdField_a_of_type_Float <= 0.0F) {
+            this.jdField_a_of_type_Float = this.c;
+          }
+          if (this.b <= 0.0F) {
+            this.b = this.c;
+          }
+          if (this.c > this.b)
+          {
+            if (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a()) {
+              break label501;
+            }
+            this.b = this.c;
+          }
+        }
+        break;
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Float > this.b) {
+        this.jdField_a_of_type_Float = this.b;
+      }
+      if (this.c >= this.jdField_a_of_type_Float) {
+        break;
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a()) {
+        break label512;
+      }
+      this.jdField_a_of_type_Float = this.c;
+      return this;
+      jdField_a_of_type_AndroidGraphicsMatrix.setRotate(f9);
+      jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, f5, f6);
+      jdField_a_of_type_AndroidGraphicsMatrix.mapRect(jdField_a_of_type_AndroidGraphicsRectF);
+      f4 = jdField_a_of_type_AndroidGraphicsRectF.width();
+      f2 = jdField_a_of_type_AndroidGraphicsRectF.height();
+      f3 = f8;
+      f1 = f7;
+      break label202;
+      this.c = (f1 / f4);
+      break label267;
+      this.c = (f3 / f2);
+      break label267;
+      this.c = Math.min(f1 / f4, f3 / f2);
+      break label267;
+      this.c = Math.max(f1 / f4, f3 / f2);
+      break label267;
+      f1 = 1.0F;
+      break label262;
+      label501:
+      this.c = this.b;
+    }
+    label512:
+    this.c = this.jdField_a_of_type_Float;
+    return this;
+  }
+  
+  public float b()
+  {
+    return this.b;
+  }
+  
+  public float c()
+  {
+    return this.c;
   }
 }
 

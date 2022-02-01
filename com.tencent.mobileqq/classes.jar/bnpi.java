@@ -1,10 +1,12 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
 public abstract interface bnpi
 {
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt);
+  public abstract void a(MetaMaterial paramMetaMaterial);
   
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean);
+  public abstract void a(MetaMaterial paramMetaMaterial, int paramInt);
+  
+  public abstract void b(MetaMaterial paramMetaMaterial);
 }
 
 

@@ -1,32 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StUser;
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.MediaBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.MediaBridgeInvokeHandler.register.2;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
 
-final class tqh
-  implements zac<FeedCloudRead.StGetMainPageRsp>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/MediaBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tqh
+  extends tpt
 {
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public static final tqi a = new tqi(null);
+  
+  public tqh(@NotNull BridgeModule paramBridgeModule)
   {
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      if (paramStGetMainPageRsp == null) {
-        break label54;
-      }
-      tqg.a((FeedCloudMeta.StUser)paramStGetMainPageRsp.user.get());
-      if (TextUtils.isEmpty(tqg.c().nick.get())) {
-        QLog.w("QCircleGlobalInfo", 1, "qCircle get nick empty");
-      }
-    }
-    return;
-    label54:
-    QLog.w("QCircleGlobalInfo", 1, "getPuinUser empty");
+    super(paramBridgeModule);
+  }
+  
+  @NotNull
+  public String a()
+  {
+    return "media";
+  }
+  
+  public void a()
+  {
+    a("showPicture", (Function2)new MediaBridgeInvokeHandler.register.1(this));
+    a("saveImage", (Function2)new MediaBridgeInvokeHandler.register.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tqh
  * JD-Core Version:    0.7.0.1
  */

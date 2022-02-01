@@ -1,170 +1,129 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.NumberPicker;
-import android.widget.TextView;
-import com.tencent.qqmini.sdk.utils.ColorUtils;
-import java.lang.reflect.Field;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhjy
-  extends Dialog
-  implements DialogInterface.OnCancelListener, View.OnClickListener
+class bhjy
+  extends bhhe
 {
-  private int jdField_a_of_type_Int;
-  private NumberPicker jdField_a_of_type_AndroidWidgetNumberPicker;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhka jdField_a_of_type_Bhka;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private TextView b;
-  
-  public bhjy(@NonNull Context paramContext)
+  bhjy(bhjt parambhjt, String paramString1, String paramString2)
   {
-    super(paramContext, 2131755367);
-    a(paramContext);
+    super(paramString1, paramString2);
   }
   
-  private void a(Context paramContext)
+  public void onDone(bhhf parambhhf)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559343, null);
-    setContentView(paramContext);
-    Window localWindow = getWindow();
-    if (localWindow != null)
-    {
-      localWindow.getDecorView().setPadding(0, 0, 0, 0);
-      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-      localLayoutParams.width = -1;
-      localLayoutParams.height = -2;
-      localWindow.setAttributes(localLayoutParams);
-      localWindow.setGravity(80);
+    super.onDone(parambhhf);
+    if (QLog.isColorLevel()) {
+      QLog.d("VipFunCallManager", 2, "onDone, status=" + parambhhf.a() + ", task.errCode:" + parambhhf.jdField_a_of_type_Int + ", key=" + parambhhf.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_AndroidWidgetNumberPicker = ((NumberPicker)paramContext.findViewById(2131371317));
-    this.b = ((TextView)paramContext.findViewById(2131378686));
-    this.b.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378721));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    a(this.jdField_a_of_type_AndroidWidgetNumberPicker);
-    setOnCancelListener(this);
-  }
-  
-  private void a(NumberPicker paramNumberPicker)
-  {
-    Field[] arrayOfField = NumberPicker.class.getDeclaredFields();
-    int j = arrayOfField.length;
-    int i = 0;
+    Bundle localBundle = parambhhf.a();
+    if (localBundle == null) {
+      QLog.e("VipFunCallManager", 1, "mDownloadListener onDone Err0, key:" + parambhhf.jdField_a_of_type_JavaLangString);
+    }
+    boolean bool;
+    label121:
+    do
+    {
+      return;
+      if ((parambhhf.a() != 3) || (parambhhf.jdField_a_of_type_Int != 0)) {
+        break;
+      }
+      bool = true;
+      if (!bool) {
+        QLog.e("VipFunCallManager", 1, "mDownloadListener onDone fail, task.getStatus():" + parambhhf.a() + ", task.errCode:" + parambhhf.jdField_a_of_type_Int);
+      }
+    } while (localBundle.getInt("dealType") == 0);
+    int i = localBundle.getInt("callId");
+    int j = localBundle.getInt("resourceType");
+    Object localObject = localBundle.getString("path");
+    if (localBundle.getBoolean("isExists", false)) {}
     for (;;)
     {
-      Field localField;
-      if (i < j)
-      {
-        localField = arrayOfField[i];
-        if (localField.getName().equals("mSelectionDivider")) {
-          localField.setAccessible(true);
-        }
+      if (!bool) {
+        QLog.e("VipFunCallManager", 1, "mDownloadListener onDone rename failure. path:" + (String)localObject);
       }
-      else
+      if ((localBundle.getBoolean("isIPC")) && (this.a.jdField_a_of_type_Bhhl != null))
       {
-        try
-        {
-          localField.set(paramNumberPicker, new ColorDrawable(ColorUtils.parseColor("#3CB371")));
-          return;
-        }
-        catch (IllegalArgumentException paramNumberPicker)
-        {
-          paramNumberPicker.printStackTrace();
-          return;
-        }
-        catch (Resources.NotFoundException paramNumberPicker)
-        {
-          paramNumberPicker.printStackTrace();
-          return;
-        }
-        catch (IllegalAccessException paramNumberPicker)
-        {
-          paramNumberPicker.printStackTrace();
-          return;
-        }
+        localObject = new Bundle();
+        ((Bundle)localObject).putInt("fcStatus", 3);
+        ((Bundle)localObject).putInt("callId", i);
+        ((Bundle)localObject).putInt("srcType", localBundle.getInt("srcType"));
+        ((Bundle)localObject).putBoolean("result_boo", bool);
+        ((Bundle)localObject).putInt("resourceType", j);
+        this.a.jdField_a_of_type_Bhhl.a(i, parambhhf.a(), (Bundle)localObject);
       }
-      i += 1;
+      if (9 != bhjt.a()) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VipFunCallManager", 2, "sendBroadcast :tencent.video.q2v.AnnimateDownloadFinish");
+      }
+      parambhhf = new Intent("tencent.video.q2v.AnnimateDownloadFinish");
+      parambhhf.putExtra("fun_call_id", i);
+      parambhhf.setPackage(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName());
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(parambhhf);
+      return;
+      bool = false;
+      break label121;
+      bool = bgmg.c((String)localObject + ".tmp", (String)localObject);
     }
   }
   
-  public void a()
+  public void onProgress(bhhf parambhhf)
   {
-    try
-    {
-      if (isShowing()) {
-        dismiss();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("VipFunCallManager", 2, "onProgress, loaded=" + parambhhf.b + "percent=" + parambhhf.jdField_a_of_type_Float + ", key=" + parambhhf.jdField_a_of_type_JavaLangString);
+    }
+    Bundle localBundle1 = parambhhf.a();
+    if (localBundle1 == null) {
+      QLog.e("VipFunCallManager", 1, "mDownloadListener onProgress Err0, key:" + parambhhf.jdField_a_of_type_JavaLangString);
+    }
+    while ((localBundle1.getInt("dealType") == 0) || (!parambhhf.a().getBoolean("isIPC")) || (this.a.jdField_a_of_type_Bhhl == null)) {
       return;
     }
-    catch (Exception localException) {}
+    Bundle localBundle2 = new Bundle();
+    localBundle2.putInt("fcStatus", 2);
+    localBundle2.putInt("callId", localBundle1.getInt("callId"));
+    localBundle2.putInt("srcType", localBundle1.getInt("srcType"));
+    localBundle2.putInt("progress", (int)parambhhf.jdField_a_of_type_Float);
+    localBundle2.putInt("resourceType", localBundle1.getInt("resourceType"));
+    this.a.jdField_a_of_type_Bhhl.a(localBundle2);
   }
   
-  public void a(int paramInt)
+  public boolean onStart(bhhf parambhhf)
   {
-    this.jdField_a_of_type_AndroidWidgetNumberPicker.setMaxValue(paramInt);
-  }
-  
-  public void a(int paramInt, bhka parambhka)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetNumberPicker.setOnValueChangedListener(new bhjz(this));
-    this.jdField_a_of_type_Bhka = parambhka;
-  }
-  
-  public void a(String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_AndroidWidgetNumberPicker.setDisplayedValues(paramArrayOfString);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetNumberPicker.setMinValue(paramInt);
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetNumberPicker.setValue(paramInt);
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_Bhka != null) {
-      this.jdField_a_of_type_Bhka.onValCancel();
+    Bundle localBundle = parambhhf.a();
+    if (localBundle == null) {
+      QLog.e("VipFunCallManager", 1, "mDownloadListener onStart Err0, key:" + parambhhf.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131378686)
+    int i;
+    boolean bool;
+    do
     {
-      if (this.jdField_a_of_type_Bhka != null) {
-        this.jdField_a_of_type_Bhka.onValCancel();
+      do
+      {
+        return true;
+      } while (localBundle.getInt("dealType") == 0);
+      i = localBundle.getInt("resourceType");
+      bool = localBundle.getBoolean("isIPC");
+      if (QLog.isColorLevel()) {
+        QLog.d("VipFunCallManager", 2, "onStart, loaded=" + parambhhf.b + ", percent=" + parambhhf.jdField_a_of_type_Float + ", resType=" + i + ", isIPC=" + bool);
       }
-      a();
-    }
-    while (paramView.getId() != 2131378721) {
-      return;
-    }
-    if (this.jdField_a_of_type_Bhka != null) {
-      this.jdField_a_of_type_Bhka.onValConfirm(this.jdField_a_of_type_Int);
-    }
-    a();
+    } while ((!bool) || (this.a.jdField_a_of_type_Bhhl == null));
+    parambhhf = new Bundle();
+    parambhhf.putInt("fcStatus", 1);
+    parambhhf.putInt("callId", localBundle.getInt("callId"));
+    parambhhf.putInt("srcType", localBundle.getInt("srcType"));
+    parambhhf.putInt("resourceType", i);
+    this.a.jdField_a_of_type_Bhhl.a(parambhhf);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjy
  * JD-Core Version:    0.7.0.1
  */

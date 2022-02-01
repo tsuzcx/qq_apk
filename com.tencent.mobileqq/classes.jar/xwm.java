@@ -1,44 +1,77 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
-import com.tencent.biz.qqstory.view.widget.ViewPagerTapBlockView;
+import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
+import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.Switch;
 
 public class xwm
-  implements ViewPager.OnPageChangeListener
+  extends wfi
 {
-  public xwm(SlideTabViewPager paramSlideTabViewPager) {}
+  public xwm(QQStoryShieldActivity paramQQStoryShieldActivity) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
   {
-    if (SlideTabViewPager.a(this.a) == 0)
+    boolean bool = true;
+    QQStoryShieldActivity.a(this.a);
+    Switch localSwitch;
+    if ((paramBoolean) && (paramQQStoryUserInfo != null))
     {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)SlideTabViewPager.a(this.a).getLayoutParams();
-      SlideTabViewPager localSlideTabViewPager = this.a;
-      paramInt2 = SlideTabViewPager.b(this.a).getWidth();
-      SlideTabViewPager.a(localSlideTabViewPager, localLayoutParams.leftMargin + paramInt2);
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+      this.a.b.setOnCheckedChangeListener(null);
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (paramQQStoryUserInfo.isAllowed != 1) {
+        break label119;
+      }
+      paramBoolean = true;
+      localSwitch.setChecked(paramBoolean);
+      localSwitch = this.a.b;
+      if (paramQQStoryUserInfo.isInterested != 1) {
+        break label124;
+      }
     }
-    paramInt2 = (int)(SlideTabViewPager.a(this.a, 12.5F) + SlideTabViewPager.a(this.a) * (paramInt1 + paramFloat));
-    SlideTabViewPager.a(this.a).setOffset(paramInt2);
-    paramInt2 = SlideTabViewPager.b(this.a).getWidth();
-    int i = SlideTabViewPager.a(this.a).getWidth();
-    paramInt1 = (int)(paramInt2 + (i - paramInt2) * (paramInt1 + paramFloat));
-    SlideTabViewPager.a(this.a).setBlockWidth(paramInt1);
+    label119:
+    label124:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      localSwitch.setChecked(paramBoolean);
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
+      this.a.b.setOnCheckedChangeListener(this.a);
+      return;
+      paramBoolean = false;
+      break;
+    }
   }
   
-  public void onPageSelected(int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.a.a(paramInt);
-    if (SlideTabViewPager.a(this.a) != null) {
-      onPageSelected(paramInt);
+    boolean bool = true;
+    paramBoolean2 = true;
+    this.a.jdField_a_of_type_Biax.b();
+    if (paramBoolean1) {
+      return;
+    }
+    QQToast.a(this.a, 2131694182, 0).b(this.a.getTitleBarHeight());
+    if (paramBoolean3)
+    {
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
+      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
+      {
+        localSwitch.setChecked(paramBoolean1);
+        return;
+      }
+    }
+    Switch localSwitch = this.a.b;
+    if (!this.a.b.isChecked()) {}
+    for (paramBoolean1 = bool;; paramBoolean1 = false)
+    {
+      localSwitch.setChecked(paramBoolean1);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xwm
  * JD-Core Version:    0.7.0.1
  */

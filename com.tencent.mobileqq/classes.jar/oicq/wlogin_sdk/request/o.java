@@ -1,6 +1,9 @@
 package oicq.wlogin_sdk.request;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tlv_type.tlv_t104;
 import oicq.wlogin_sdk.tlv_type.tlv_t116;
@@ -27,7 +30,7 @@ public class o
   
   public int a(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2)
   {
-    int j = t.w;
+    int j = t.x;
     async_context localasync_context = t.b(this.x.h);
     tlv_t104 localtlv_t104 = localasync_context._t104;
     if (localtlv_t104 == null) {
@@ -52,14 +55,14 @@ public class o
           localObject2 = new tlv_t403();
         }
         localasync_context._dpwd = util.get_mpasswd().getBytes();
-        localasync_context._G = c(t.A, localasync_context._dpwd, ((tlv_t402)localObject1).get_data());
+        localasync_context._G = c(t.B, localasync_context._dpwd, ((tlv_t402)localObject1).get_data());
         if ((((tlv_t402)localObject1).get_data_len() > 0) && (((tlv_t403)localObject2).get_data_len() > 0)) {
           localasync_context._sec_guid_flag = true;
         }
         int i = 0;
         for (;;)
         {
-          localObject1 = a(localtlv_t104.get_data(), paramArrayOfByte1, localtlv_t174.get_data(), paramInt1, paramInt2, paramArrayOfLong, localasync_context._G, paramArrayOfByte2);
+          localObject1 = a(localtlv_t104.get_data(), paramArrayOfByte1, localtlv_t174.get_data(), paramInt1, paramInt2, paramArrayOfLong, localasync_context._G, paramArrayOfByte2, paramWUserSigInfo);
           a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject1);
           int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
           if (k != 0) {
@@ -79,7 +82,7 @@ public class o
     }
   }
   
-  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, long[] paramArrayOfLong, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5)
+  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, long[] paramArrayOfLong, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, WUserSigInfo paramWUserSigInfo)
   {
     int[] arrayOfInt = new int[8];
     int[] tmp8_6 = arrayOfInt;
@@ -126,7 +129,7 @@ public class o
           j += 1;
           i = k;
           break;
-          localObject = new tlv_t8().get_tlv_8(0, t.u, 0);
+          localObject = new tlv_t8().get_tlv_8(0, t.v, 0);
           continue;
           localObject = new tlv_t104().get_tlv_104(paramArrayOfByte1);
           continue;
@@ -152,18 +155,27 @@ public class o
         break;
       }
     }
-    j = localArrayList.size();
-    paramArrayOfByte1 = new byte[i];
+    paramArrayOfByte1 = paramWUserSigInfo.extraLoginTLVMap.keySet().iterator();
+    for (paramInt1 = i; paramArrayOfByte1.hasNext(); paramInt1 = paramInt2 + paramInt1)
+    {
+      paramArrayOfByte2 = (Integer)paramArrayOfByte1.next();
+      paramArrayOfByte3 = ((tlv_t)paramWUserSigInfo.extraLoginTLVMap.get(paramArrayOfByte2)).get_buf();
+      localArrayList.add(paramArrayOfByte3);
+      paramInt2 = paramArrayOfByte3.length;
+      util.LOGI("Extra Tlv from user：0x" + paramArrayOfByte2);
+    }
+    i = localArrayList.size();
+    paramArrayOfByte1 = new byte[paramInt1];
     paramInt2 = 0;
     paramInt1 = 0;
-    while (paramInt1 < j)
+    while (paramInt1 < i)
     {
       paramArrayOfByte2 = (byte[])localArrayList.get(paramInt1);
       System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte1, paramInt2, paramArrayOfByte2.length);
       paramInt2 += paramArrayOfByte2.length;
       paramInt1 += 1;
     }
-    return b(paramArrayOfByte1, this.u, j);
+    return b(paramArrayOfByte1, this.u, i);
   }
 }
 

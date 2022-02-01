@@ -1,22 +1,45 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import java.util.List;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.viola.ui.component.image.ImageAction;
+import java.util.Set;
 
-public abstract interface tmj
-  extends tiv<List<tmv>>
+class tmj
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract VideoFeedsRecyclerView a();
+  private ImageAction jdField_a_of_type_ComTencentViolaUiComponentImageImageAction;
+  private boolean jdField_a_of_type_Boolean;
   
-  public abstract WSPlayerManager a();
+  public tmj(tmh paramtmh, boolean paramBoolean, ImageAction paramImageAction)
+  {
+    this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction = paramImageAction;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public abstract tmf a();
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  {
+    if (this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction.onCancel();
+    tmh.a(this.jdField_a_of_type_Tmh).remove(paramURLDrawable);
+  }
   
-  public abstract void a(int paramInt, Intent paramIntent);
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    tmh.a(this.jdField_a_of_type_Tmh, this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction, paramURLDrawable, paramThrowable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    tmh.a(this.jdField_a_of_type_Tmh, this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction, paramURLDrawable, this.jdField_a_of_type_Boolean);
+    tmh.a(this.jdField_a_of_type_Tmh).remove(paramURLDrawable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tmj
  * JD-Core Version:    0.7.0.1
  */

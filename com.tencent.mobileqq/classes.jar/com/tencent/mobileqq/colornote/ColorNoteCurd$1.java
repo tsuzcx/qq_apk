@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.colornote;
 
 import android.os.Bundle;
-import aobx;
+import aqcc;
 
 public class ColorNoteCurd$1
   implements Runnable
 {
-  public ColorNoteCurd$1(aobx paramaobx, Bundle paramBundle) {}
+  public ColorNoteCurd$1(aqcc paramaqcc, Bundle paramBundle) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ColorNoteCurd$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.ColorNoteCurd.1
  * JD-Core Version:    0.7.0.1
  */

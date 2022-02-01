@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget.ksong;
 
-import aepi;
+import afur;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -13,7 +13,7 @@ import android.graphics.RectF;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import beww;
+import bidu;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,7 +24,7 @@ public class KSongProsBar
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private beww jdField_a_of_type_Beww;
+  private bidu jdField_a_of_type_Bidu;
   private String jdField_a_of_type_JavaLangString;
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
@@ -138,28 +138,28 @@ public class KSongProsBar
   
   protected final int a(float paramFloat)
   {
-    return aepi.a(paramFloat, getResources());
+    return afur.a(paramFloat, getResources());
   }
   
   public void a(long paramLong)
   {
-    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_a_of_type_Beww == null))
+    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_a_of_type_Bidu == null))
     {
       QLog.i("KSongProsBar", 2, "error call, not initialized...");
       return;
     }
     this.jdField_a_of_type_JavaLangString = a(paramLong);
-    this.jdField_c_of_type_Int = ((int)((float)paramLong / (float)this.jdField_a_of_type_Beww.e * this.jdField_a_of_type_Int));
+    this.jdField_c_of_type_Int = ((int)((float)paramLong / (float)this.jdField_a_of_type_Bidu.e * this.jdField_a_of_type_Int));
     postInvalidate();
   }
   
-  public void a(beww parambeww)
+  public void a(bidu parambidu)
   {
-    if (parambeww == null) {
+    if (parambidu == null) {
       return;
     }
-    this.jdField_a_of_type_Beww = parambeww;
-    this.jdField_b_of_type_JavaLangString = a(parambeww.e);
+    this.jdField_a_of_type_Bidu = parambidu;
+    this.jdField_b_of_type_JavaLangString = a(parambidu.e);
     this.jdField_a_of_type_JavaLangString = a(0L);
     postInvalidate();
   }
@@ -197,7 +197,7 @@ public class KSongProsBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ksong.KSongProsBar
  * JD-Core Version:    0.7.0.1
  */

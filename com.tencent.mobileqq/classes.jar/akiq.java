@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
 
-public abstract interface akiq
+public class akiq
+  extends akhj
 {
-  public abstract void a(DiscussionInfo paramDiscussionInfo);
+  protected akiq(AlbumListFragment paramAlbumListFragment)
+  {
+    super(paramAlbumListFragment);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akiq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,17 @@
-public abstract interface belk
-  extends begg
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+
+public class belk
+  implements beln
 {
-  public abstract long b();
+  public belk(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
   
-  public abstract boolean c(String paramString);
+  public void a(Bitmap paramBitmap)
+  {
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bihh);
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
+  }
 }
 
 

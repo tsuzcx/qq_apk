@@ -46,7 +46,7 @@ public class TriggerExpression
       localObject2 = ((PTDetectInfo)localObject1).triggeredExpression;
       localList = ((PTDetectInfo)localObject1).bodyPoints;
       localAIAttr = ((PTDetectInfo)localObject1).aiAttr;
-      if (!VideoMaterialUtil.isFaceTriggerType(this.mTriggerType)) {
+      if ((!VideoMaterialUtil.isFaceTriggerType(this.mTriggerType)) && (!VideoMaterialUtil.isCatTriggerType(this.mTriggerType))) {
         break;
       }
     } while (localObject2 == null);
@@ -55,10 +55,10 @@ public class TriggerExpression
     {
       localObject2 = (PTHandAttr)localAIAttr.getAvailableData(AEDetectorType.HAND.value);
       if (localObject2 == null) {
-        break label327;
+        break label337;
       }
     }
-    label327:
+    label337:
     for (bool = TriggerUtil.isGestureTriggered((PTHandAttr)localObject2, this.mTriggerType, this.triggerHandPoint, this.triggerFingerIndex, this.triggerArea, localAIAttr);; bool = false)
     {
       if (((PTDetectInfo)localObject1).isFreezeInfo)
@@ -107,7 +107,7 @@ public class TriggerExpression
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.TriggerExpression
  * JD-Core Version:    0.7.0.1
  */

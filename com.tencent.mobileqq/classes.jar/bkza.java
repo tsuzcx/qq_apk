@@ -1,28 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.ttpic.openapi.model.WMElement;
-import com.tencent.ttpic.openapi.watermark.LogicDataManager;
-import java.util.List;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import common.config.service.QzoneConfig;
+import common.config.service.QzoneConfig.2.1;
 
-class bkza
-  implements View.OnClickListener
+public class bkza
+  extends ContentObserver
 {
-  bkza(bkyz parambkyz, int paramInt, bkzh parambkzh) {}
-  
-  public void onClick(View paramView)
+  public bkza(QzoneConfig paramQzoneConfig, Handler paramHandler)
   {
-    paramView = (WMElement)LogicDataManager.getInstance().getEditableWMElement().get(this.jdField_a_of_type_Int);
-    if (paramView != null)
-    {
-      if (paramView.ischeckin) {
-        bkyz.a(this.jdField_a_of_type_Bkyz, paramView, this.jdField_a_of_type_Bkzh);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Bkzh.a.setText("");
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    ThreadManager.post(new QzoneConfig.2.1(this, paramBoolean), 5, null, false);
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.soso;
 
-import ampy;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aopf;
 
 public final class SosoInterface$SosoWifi
   implements Parcelable
 {
-  public static final Parcelable.Creator<SosoWifi> CREATOR = new ampy();
+  public static final Parcelable.Creator<SosoWifi> CREATOR = new aopf();
   public int a;
   public long a;
   public String a;
@@ -72,7 +72,7 @@ public final class SosoInterface$SosoWifi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi
  * JD-Core Version:    0.7.0.1
  */

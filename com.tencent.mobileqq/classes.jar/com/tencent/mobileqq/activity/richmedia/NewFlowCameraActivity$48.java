@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajpx;
+import alin;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azir;
-import aziv;
+import bcjr;
+import bcjv;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
 import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
@@ -35,7 +35,7 @@ class NewFlowCameraActivity$48
       if ((NewFlowCameraActivity.b(this.this$0) != null) && ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.a instanceof CameraFilterGLView)))
       {
         CameraFilterGLView localCameraFilterGLView = (CameraFilterGLView)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.a;
-        if ((NewFlowCameraActivity.e(this.this$0) != 0) || ((localCameraFilterGLView.a.c) && (ajpx.jdField_a_of_type_Int != 2))) {
+        if ((NewFlowCameraActivity.e(this.this$0) != 0) || ((localCameraFilterGLView.a.c) && (alin.jdField_a_of_type_Int != 2))) {
           this.this$0.a(true, NewFlowCameraActivity.b(this.this$0), NewFlowCameraActivity.e(this.this$0));
         }
       }
@@ -55,7 +55,7 @@ class NewFlowCameraActivity$48
       }
       if ((this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (!this.this$0.jdField_a_of_type_JavaLangString.equalsIgnoreCase(GestureFilterManager.sGestureType)))
       {
-        this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = aziv.a(this.this$0, GestureFilterManager.sGestureType);
+        this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bcjv.a(this.this$0, GestureFilterManager.sGestureType);
         this.this$0.jdField_a_of_type_JavaLangString = GestureFilterManager.sGestureType;
       }
       this.this$0.jdField_d_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
@@ -72,7 +72,7 @@ class NewFlowCameraActivity$48
     label411:
     if ((this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (!this.this$0.jdField_a_of_type_JavaLangString.equalsIgnoreCase(GestureFilterManager.sGestureType)))
     {
-      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = aziv.a(this.this$0, GestureFilterManager.sGestureType);
+      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bcjv.a(this.this$0, GestureFilterManager.sGestureType);
       this.this$0.jdField_a_of_type_JavaLangString = GestureFilterManager.sGestureType;
     }
     this.this$0.jdField_d_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
@@ -82,7 +82,7 @@ class NewFlowCameraActivity$48
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.48
  * JD-Core Version:    0.7.0.1
  */

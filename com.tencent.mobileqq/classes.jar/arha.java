@@ -1,44 +1,33 @@
-import android.content.Context;
-import com.tencent.kwstudio.office.base.IGlobal;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsReaderGlobal;
-import java.io.File;
-import java.io.InputStream;
-import java.util.concurrent.Executor;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Game;
+import com.tencent.mobileqq.data.IPSiteModel.GameRich;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class arha
-  implements IGlobal
+  implements Parcelable.Creator
 {
-  private final TdsReaderGlobal a;
-  
-  private arha(TdsReaderGlobal paramTdsReaderGlobal)
+  public IPSiteModel.Game a(Parcel paramParcel)
   {
-    this.a = paramTdsReaderGlobal;
-  }
-  
-  public Context getApplicationContext()
-  {
-    return TdsReaderGlobal.a(this.a);
-  }
-  
-  public Executor getExecutor()
-  {
-    return TdsReaderGlobal.a(this.a);
-  }
-  
-  public String getFileDir()
-  {
-    Context localContext = getApplicationContext();
-    File localFile2 = localContext.getExternalFilesDir(null);
-    File localFile1 = localFile2;
-    if (localFile2 == null) {
-      localFile1 = localContext.getFilesDir();
+    IPSiteModel.Game localGame = new IPSiteModel.Game();
+    localGame.cover = paramParcel.readString();
+    localGame.desc = paramParcel.readString();
+    localGame.id = paramParcel.readString();
+    localGame.jumpUrl = paramParcel.readString();
+    localGame.name = paramParcel.readString();
+    localGame.recommDesc = paramParcel.readString();
+    if (localGame.gameRiches == null) {
+      localGame.gameRiches = new ArrayList();
     }
-    return localFile1.getAbsolutePath();
+    localGame.gameRiches.clear();
+    paramParcel.readList(localGame.gameRiches, IPSiteModel.GameRich.class.getClassLoader());
+    return localGame;
   }
   
-  public InputStream getResourceAsStream(String paramString)
+  public IPSiteModel.Game[] a(int paramInt)
   {
-    return null;
+    return new IPSiteModel.Game[paramInt];
   }
 }
 

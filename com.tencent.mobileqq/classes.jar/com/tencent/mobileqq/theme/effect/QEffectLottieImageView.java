@@ -5,8 +5,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import bape;
-import bapf;
+import bdqi;
+import bdqj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
@@ -27,10 +27,9 @@ public class QEffectLottieImageView
   extends DiniFlyAnimationView
   implements IQEffect<QEffectData, Drawable>, GravitySensor.GravitySensorListener
 {
-  private OnCompositionLoadedListener jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new bape(this);
+  private OnCompositionLoadedListener jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new bdqi(this);
   private QEffectData jdField_a_of_type_ComTencentQqEffectEngineQEffectData;
   protected SensorParams a;
-  private String jdField_a_of_type_JavaLangString = "QEffectLottieImageView";
   private boolean jdField_a_of_type_Boolean;
   
   public QEffectLottieImageView(Context paramContext)
@@ -81,14 +80,14 @@ public class QEffectLottieImageView
       paramQEffectView.putString("key", paramQEffectData.images + paramQEffectData.effectId);
       paramQEffectView.putString("path", paramQEffectData.images);
       LottieComposition.Factory.fromInputStreamWithCacheBitmap(getContext(), paramContext, getLottieDrawable(), this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener, paramQEffectView, BaseApplicationImpl.sImageCache);
-      setImageAssetDelegate(new bapf());
+      setImageAssetDelegate(new bdqj());
       return;
     }
     catch (FileNotFoundException paramContext)
     {
       for (;;)
       {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "QEffectLottieImageView", paramContext);
+        QLog.e("QEffectLottieImageView", 1, "QEffectLottieImageView", paramContext);
       }
     }
   }
@@ -111,7 +110,7 @@ public class QEffectLottieImageView
   public void stop()
   {
     if ((QLog.isColorLevel()) && (!this.jdField_a_of_type_Boolean)) {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 1, "lottie stop");
+      QLog.i("QEffectLottieImageView", 1, "lottie stop");
     }
     this.jdField_a_of_type_Boolean = true;
     endAnimation();
@@ -124,7 +123,7 @@ public class QEffectLottieImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.theme.effect.QEffectLottieImageView
  * JD-Core Version:    0.7.0.1
  */

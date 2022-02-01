@@ -1,5 +1,7 @@
 package com.tencent.biz.troopgift;
 
+import aasd;
+import aatu;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.support.v4.view.ViewCompat;
@@ -11,12 +13,11 @@ import android.view.View.OnClickListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import com.tencent.common.config.AppSetting;
-import yve;
-import ywr;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class RadioButtonIndicator
   extends RadioGroup
-  implements ViewPager.OnPageChangeListener, View.OnClickListener, ywr
+  implements aatu, ViewPager.OnPageChangeListener, View.OnClickListener
 {
   protected int a;
   protected ViewPager a;
@@ -30,19 +31,19 @@ public class RadioButtonIndicator
   public RadioButtonIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130839459;
+    this.jdField_a_of_type_Int = 2130839633;
   }
   
   public RadioButton a(int paramInt)
   {
-    yve localyve = new yve(this, getContext());
-    localyve.setButtonDrawable(this.jdField_a_of_type_Int);
-    localyve.setPadding(10, 0, 10, 0);
-    localyve.setClickable(true);
+    aasd localaasd = new aasd(this, getContext());
+    localaasd.setButtonDrawable(this.jdField_a_of_type_Int);
+    localaasd.setPadding(10, 0, 10, 0);
+    localaasd.setClickable(true);
     if ((AppSetting.c) && (Build.VERSION.SDK_INT > 16)) {
-      ViewCompat.setImportantForAccessibility(localyve, 2);
+      ViewCompat.setImportantForAccessibility(localaasd, 2);
     }
-    return localyve;
+    return localaasd;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -56,6 +57,7 @@ public class RadioButtonIndicator
     if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) {
       this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(i);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
@@ -101,7 +103,7 @@ public class RadioButtonIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.troopgift.RadioButtonIndicator
  * JD-Core Version:    0.7.0.1
  */

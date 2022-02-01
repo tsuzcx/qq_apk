@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.view;
 
 import android.widget.LinearLayout;
-import blzr;
-import bnhb;
+import bosv;
+import bpye;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.troop.widget.RedDotImageView;
 import mqq.os.MqqHandler;
@@ -16,7 +16,7 @@ class QIMProviderContainerView$6
   {
     boolean bool2 = false;
     int j = this.this$0.a.getChildCount();
-    bnhb.a();
+    bpye.a();
     int i = 0;
     for (;;)
     {
@@ -38,7 +38,7 @@ class QIMProviderContainerView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QIMProviderContainerView.6
  * JD-Core Version:    0.7.0.1
  */

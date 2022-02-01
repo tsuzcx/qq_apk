@@ -1,17 +1,33 @@
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.C2C;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-class aczt
-  implements bhvm
+public class aczt
+  implements acxp
 {
-  aczt(aczr paramaczr, View paramView) {}
-  
-  public void a()
+  public int a()
   {
-    this.jdField_a_of_type_Aczr.a = false;
-    if ((this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
-      this.jdField_a_of_type_Aczr.a((TextView)this.jdField_a_of_type_AndroidViewView);
-    }
+    return 0;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.C2C();
+    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.c2c.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
 }
 

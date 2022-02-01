@@ -1,76 +1,29 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import android.content.Context;
+import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class beus
+class beus
+  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  beus(beuq parambeuq, String paramString, beuz parambeuz) {}
   
-  public beus(Bitmap paramBitmap)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public beus(Bitmap paramBitmap, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = (paramInt % 360);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public Matrix a()
-  {
-    Matrix localMatrix = new Matrix();
-    if (this.jdField_a_of_type_Int != 0)
+    if (paramMotionEvent.getAction() == 1)
     {
-      int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      localMatrix.preTranslate(-i, -j);
-      localMatrix.postRotate(this.jdField_a_of_type_Int);
-      localMatrix.postTranslate(c() / 2, b() / 2);
+      paramView = new Intent(this.jdField_a_of_type_Beuq.a.getContext(), QQBrowserActivity.class);
+      paramMotionEvent = bgyg.a("troopEnterEffect");
+      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_Beuq.b);
+      this.jdField_a_of_type_Beuq.a.getContext().startActivity(paramView);
+      bevb.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_Beuq.b });
+      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Beuz.a), "");
     }
-    return localMatrix;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int / 90 % 2 != 0;
-  }
-  
-  public int b()
-  {
-    if (a()) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-  }
-  
-  public int c()
-  {
-    if (a()) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    return true;
   }
 }
 

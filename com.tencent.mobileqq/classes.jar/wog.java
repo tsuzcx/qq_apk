@@ -1,37 +1,41 @@
-public class wog
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+class wog
+  implements wld<wza, xau>
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  wog(woe paramwoe) {}
   
-  public void a()
+  public void a(@NonNull wza paramwza, @Nullable xau paramxau, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a = null;
-    this.b = null;
-    this.c = null;
-    this.d = null;
-  }
-  
-  public void a(wog paramwog)
-  {
-    if (paramwog.a != null) {
-      this.a = paramwog.a;
+    yqp.b("AddressDataProvider", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramxau != null))
+    {
+      yqp.a("AddressDataProvider", "requestAddress onCmdRespond success : %s .", paramxau.toString());
+      this.a.jdField_a_of_type_JavaLangObject = new woh(paramxau.a, paramxau.c, paramxau.d, paramxau.e, paramxau.f, paramwza.d, paramwza.e);
+      this.a.a("country", paramxau.a);
+      this.a.a("province", paramxau.c);
+      this.a.a("city", paramxau.d);
+      this.a.a("district", paramxau.e);
+      this.a.a("street", paramxau.f);
+      this.a.a("longitude", paramwza.d);
+      this.a.a("latitude", paramwza.e);
+      this.a.a("time", System.currentTimeMillis());
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
     }
-    if (paramwog.b != null) {
-      this.b = paramwog.b;
-    }
-    if (paramwog.c != null) {
-      this.c = paramwog.c;
-    }
-    if (paramwog.d != null) {
-      this.d = paramwog.d;
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      yqp.d("AddressDataProvider", "requestAddress onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramwza });
+      this.a.a(false, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wog
  * JD-Core Version:    0.7.0.1
  */

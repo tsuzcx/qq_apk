@@ -293,7 +293,7 @@ public class StandardMessageCodec
     int j = 0;
     int k = 0;
     int i = 0;
-    if (paramObject == null) {
+    if ((paramObject == null) || (paramObject.equals(null))) {
       paramByteArrayOutputStream.write(0);
     }
     for (;;)
@@ -435,7 +435,7 @@ public class StandardMessageCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.StandardMessageCodec
  * JD-Core Version:    0.7.0.1
  */

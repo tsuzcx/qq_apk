@@ -1,55 +1,21 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.data.Card;
 
 public class aebs
-  extends altm
+  extends aniz
 {
-  public aebs(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public aebs(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (this.a.jdField_a_of_type_Akmb == null) {}
-    do
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-      do
-      {
-        return;
-      } while (!paramBoolean1);
-      this.a.jdField_a_of_type_JavaUtilMap = auam.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
-    this.a.jdField_a_of_type_Akmb.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_Akmb.notifyDataSetChanged();
-    this.a.b();
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    if (this.a.jdField_a_of_type_Akmb == null) {
-      return;
-    }
-    if ((paramBoolean) && (paramMap != null))
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Integer localInteger = (Integer)paramMap.get(str);
-        if (localInteger != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, localInteger);
-        }
+      if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.a(this.a) != null)) {
+        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
       }
-      this.a.jdField_a_of_type_Akmb.a(this.a.jdField_a_of_type_JavaUtilMap);
-      this.a.jdField_a_of_type_Akmb.notifyDataSetChanged();
-      this.a.b();
       return;
     }
-    this.a.jdField_a_of_type_Akmb.notifyDataSetChanged();
-    this.a.b();
-    QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131721101), 0).b(this.a.getTitleBarHeight());
   }
 }
 

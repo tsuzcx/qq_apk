@@ -1,164 +1,119 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QPayReminderActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import tencent.im.s2c.msgtype0x210.submsgtype0x72.SubMsgType0x72.MsgBody;
-import tencent.mobileim.structmsg.QPayReminderMsg.GetInfoReq;
-import tencent.mobileim.structmsg.QPayReminderMsg.GetInfoRsp;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class alzy
-  extends alpd
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WaterfallArk;", "", "appName", "", "appMeta", "appVersion", "appView", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAppMeta", "()Ljava/lang/String;", "setAppMeta", "(Ljava/lang/String;)V", "getAppName", "getAppVersion", "getAppView", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class alzy
 {
-  private String a;
+  @NotNull
+  private final String a;
+  @NotNull
+  private String b;
+  @NotNull
+  private final String c;
+  @NotNull
+  private final String d;
   
-  public alzy(QQAppInterface paramQQAppInterface)
+  public alzy(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4)
   {
-    super(paramQQAppInterface);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
   }
   
-  private void a(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  @NotNull
+  public final String a()
   {
-    Intent localIntent = new Intent(BaseActivity.sTopActivity, QPayReminderActivity.class);
-    localIntent.putExtra("URGENCY", paramInt1);
-    localIntent.putExtra("TEMPLATE", paramInt2);
-    localIntent.putExtra("CONTENT", paramString1);
-    BaseActivity.sTopActivity.startActivity(localIntent);
-    BaseActivity.sTopActivity.overridePendingTransition(2130772293, 2130771990);
-    if (QLog.isColorLevel()) {
-      QLog.d("QPayHandler", 2, "QPayReminder: lauching popup QPayReminderActivity");
-    }
-    a(paramString2);
+    return this.a;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public final void a(@NotNull String paramString)
   {
-    if (!((Boolean)paramToServiceMsg.getAttribute("is_query", Boolean.valueOf(false))).booleanValue()) {}
-    do
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.b = paramString;
+  }
+  
+  @NotNull
+  public final String b()
+  {
+    return this.b;
+  }
+  
+  @NotNull
+  public final String c()
+  {
+    return this.c;
+  }
+  
+  @NotNull
+  public final String d()
+  {
+    return this.d;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      for (;;)
+      if ((paramObject instanceof alzy))
       {
-        return;
-        paramToServiceMsg = new QPayReminderMsg.GetInfoRsp();
-        try
-        {
-          paramFromServiceMsg = (QPayReminderMsg.GetInfoRsp)paramToServiceMsg.mergeFrom((byte[])paramObject);
-          if (paramFromServiceMsg.result_code.get() == 0) {
-            break label107;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("QPayHandler", 2, "QPayReminder: receive pull response, but result_code = " + paramFromServiceMsg.result_code.get());
-            return;
-          }
-        }
-        catch (Exception paramToServiceMsg) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QPayHandler", 2, "QPayReminder: receive pull response, parse error");
-    return;
-    label107:
-    int i = paramFromServiceMsg.urgency.get();
-    int j = paramFromServiceMsg.template_no.get();
-    paramToServiceMsg = paramFromServiceMsg.content.get();
-    paramFromServiceMsg = paramFromServiceMsg.info_date.get();
-    if (QLog.isColorLevel()) {
-      QLog.d("QPayHandler", 2, "QPayReminder: receive pull response, message content: " + paramToServiceMsg);
-    }
-    a(i, j, paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public void a(String paramString)
-  {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("QPayReminderSvc.query_over_due_info");
-    QPayReminderMsg.GetInfoReq localGetInfoReq = new QPayReminderMsg.GetInfoReq();
-    localGetInfoReq.scene.set("qpay");
-    localGetInfoReq.sub_cmd.set("feedback_overdue");
-    localGetInfoReq.info_date.set(paramString);
-    localToServiceMsg.putWupBuffer(localGetInfoReq.toByteArray());
-    localToServiceMsg.setNeedCallback(false);
-    sendPbReq(localToServiceMsg);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Object localObject;
-    if (paramBoolean)
-    {
-      localObject = this.app.getCurrentAccountUin() + ":" + SimpleDateFormat.getDateInstance().format(new Date());
-      if ((this.a != null) && (this.a.equals(localObject))) {
-        if (QLog.isColorLevel()) {
-          QLog.d("QPayHandler", 2, "QPayReminder: only one offline msg is processed everyday");
-        }
+        paramObject = (alzy)paramObject;
+        if ((!Intrinsics.areEqual(this.a, paramObject.a)) || (!Intrinsics.areEqual(this.b, paramObject.b)) || (!Intrinsics.areEqual(this.c, paramObject.c)) || (!Intrinsics.areEqual(this.d, paramObject.d))) {}
       }
     }
-    do
-    {
-      return;
-      this.a = ((String)localObject);
-      localObject = createToServiceMsg("QPayReminderSvc.query_over_due_info");
-      QPayReminderMsg.GetInfoReq localGetInfoReq = new QPayReminderMsg.GetInfoReq();
-      localGetInfoReq.scene.set("qpay");
-      localGetInfoReq.sub_cmd.set("query_overdue");
-      ((ToServiceMsg)localObject).putWupBuffer(localGetInfoReq.toByteArray());
-      ((ToServiceMsg)localObject).addAttribute("is_query", Boolean.valueOf(true));
-      sendPbReq((ToServiceMsg)localObject);
-    } while (!QLog.isColorLevel());
-    QLog.d("QPayHandler", 2, "QPayReminder: send pull request");
+    else {
+      return true;
+    }
+    return false;
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public int hashCode()
   {
-    if (paramArrayOfByte == null) {}
-    do
+    int m = 0;
+    String str = this.a;
+    int i;
+    int j;
+    if (str != null)
     {
-      return;
-      localObject = new SubMsgType0x72.MsgBody();
-      try
-      {
-        localObject = (SubMsgType0x72.MsgBody)((SubMsgType0x72.MsgBody)localObject).mergeFrom(paramArrayOfByte);
-        if (((SubMsgType0x72.MsgBody)localObject).uint32_sub_cmd.get() == 2) {
-          break;
-        }
-        a(false);
-        return;
+      i = str.hashCode();
+      str = this.b;
+      if (str == null) {
+        break label95;
       }
-      catch (Exception paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QPayHandler", 2, "QPayReminder: receive online push message, parse error");
-    return;
-    int i = ((SubMsgType0x72.MsgBody)localObject).uint32_urgency.get();
-    int j = ((SubMsgType0x72.MsgBody)localObject).uint32_template_no.get();
-    paramArrayOfByte = ((SubMsgType0x72.MsgBody)localObject).str_content.get();
-    Object localObject = ((SubMsgType0x72.MsgBody)localObject).str_info_date.get();
-    if (QLog.isColorLevel()) {
-      QLog.d("QPayHandler", 2, "QPayReminder: receive online push message, message content: " + paramArrayOfByte);
+      j = str.hashCode();
+      label37:
+      str = this.c;
+      if (str == null) {
+        break label100;
+      }
     }
-    a(i, j, paramArrayOfByte, (String)localObject);
+    label95:
+    label100:
+    for (int k = str.hashCode();; k = 0)
+    {
+      str = this.d;
+      if (str != null) {
+        m = str.hashCode();
+      }
+      return (k + (j + i * 31) * 31) * 31 + m;
+      i = 0;
+      break;
+      j = 0;
+      break label37;
+    }
   }
   
-  protected Class<? extends alpg> observerClass()
+  @NotNull
+  public String toString()
   {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("QPayReminderSvc.query_over_due_info".equals(paramFromServiceMsg.getServiceCmd())) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
+    return "WaterfallArk(appName=" + this.a + ", appMeta=" + this.b + ", appVersion=" + this.c + ", appView=" + this.d + ")";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alzy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.os.Handler;
+import com.tencent.av.opengl.ui.GLRootView;
 
 class nhc
-  implements View.OnClickListener
+  implements nea
 {
-  nhc(ngw paramngw) {}
+  nhc(nha paramnha) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).D();
-    String str = this.a.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
-    for (paramView = "02";; paramView = "01")
+    bjcq.c(this.a.a, "notifyCameraNoData ");
+  }
+  
+  public void a(long paramLong)
+  {
+    bjcq.c(this.a.a, "onBeforeCloseCamera ");
+    if (this.a.d()) {
+      this.a.a(true);
+    }
+  }
+  
+  public void a(long paramLong, boolean paramBoolean)
+  {
+    bjcq.c(this.a.a, "onBeforeOpenCamera ");
+  }
+  
+  public void b(long paramLong) {}
+  
+  public void b(long paramLong, boolean paramBoolean)
+  {
+    bjcq.c(this.a.a, "onAfterOpenCamera ");
+    nha.a(this.a, true);
+    if (this.a.d()) {
+      nha.a(this.a).sendEmptyMessageDelayed(6, 200L);
+    }
+  }
+  
+  public void c(long paramLong, boolean paramBoolean)
+  {
+    bjcq.c(this.a.a, "onAfterCloseCamera ");
+    nha.a(this.a, false);
+    if ((this.a.d()) && (nha.a(this.a) != null) && (nha.a(this.a).a() != null))
     {
-      nrt.a(null, str, "0X8007CA4", "0X8007CA4", 0, 0, paramView, String.valueOf(ngw.a(this.a)), "", "", false);
-      return;
+      nha.a(this.a).a().requestRender();
+      nha.a(this.a).sendEmptyMessageDelayed(3, 50L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nhc
  * JD-Core Version:    0.7.0.1
  */

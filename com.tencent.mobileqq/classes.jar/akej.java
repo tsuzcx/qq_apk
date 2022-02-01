@@ -1,26 +1,27 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class akej
-  implements bdzm
+  implements View.OnClickListener
 {
-  public akej(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public akej(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.setVisibility(8);
-      this.a.b.setImageResource(2130845707);
-    }
+    if (CameraPreviewActivity.a(this.a, (String)CameraPreviewActivity.a(this.a).get(0))) {}
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.b.setImageResource(2130845706);
+      if (this.a.b) {
+        bcst.b(this.a.app, "CliOper", "", "", "0X8004D96", "0X8004D96", 0, 0, "", "", "", "");
+      }
+      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
+      paramView.setClickable(false);
     }
   }
 }

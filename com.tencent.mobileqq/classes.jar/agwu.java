@@ -1,13 +1,12 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class agwu
-  extends amcd
+  implements DialogInterface.OnClickListener
 {
-  agwu(agwt paramagwt) {}
+  agwu(agwr paramagwr) {}
   
-  public void a(String paramString, int paramInt)
-  {
-    super.a(paramString, paramInt);
-    agwt.a(this.a).b();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

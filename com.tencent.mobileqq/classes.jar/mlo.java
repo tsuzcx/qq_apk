@@ -1,203 +1,286 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import com.tencent.av.app.VideoAppInterface;
+import android.graphics.Bitmap;
+import android.os.Message;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Vector;
 
 public class mlo
-  extends mll
 {
-  private int a;
-  
-  public mlo(Context paramContext, VideoAppInterface paramVideoAppInterface)
+  public static Bitmap a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    super(paramContext, paramVideoAppInterface);
-    this.jdField_a_of_type_Int = ((int)bdgz.a(paramContext, 100.0F));
+    paramQQAppInterface = aoch.a(paramQQAppInterface, paramString, (byte)2).b();
+    paramString = paramQQAppInterface;
+    if (paramQQAppInterface == null) {
+      paramString = bgmo.a();
+    }
+    return paramString;
   }
   
-  public int a()
+  public static void a(QQAppInterface paramQQAppInterface, View paramView, Message paramMessage, boolean paramBoolean)
   {
-    return 1;
-  }
-  
-  public void a(lid paramlid, mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)
-  {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
+    if (paramQQAppInterface == null) {
       return;
     }
-    paramArrayOfmgp[0].a(0, 0, 0, 0);
-    paramArrayOfmgp[0].b(0, 0, paramInt1, paramInt2);
-    paramArrayOfmgp[0].d(-15197410);
+    View localView = paramView.findViewById(2131371424);
+    TextView localTextView = (TextView)paramView.findViewById(2131371404);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131371403);
     int i;
-    if (paramlid.C == 2)
+    int j;
+    boolean bool;
+    if ((paramMessage != null) && (paramMessage.obj != null))
     {
-      paramArrayOfmgp[0].a(Boolean.valueOf(false));
-      paramArrayOfmgp[1].a(Boolean.valueOf(true));
-      paramArrayOfmgp[2].a(Boolean.valueOf(true));
-      paramArrayOfmgp[3].a(Boolean.valueOf(true));
-      paramArrayOfmgp[4].a(Boolean.valueOf(true));
-      if ((!paramArrayOfmgp[0].f()) || ((paramInt3 != 0) && (paramInt3 != 180)) || (paramArrayOfmgp[0].k())) {
-        break label471;
-      }
-      if (paramInt3 == 0) {
-        paramArrayOfmgp[0].a(0, 0, 0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297630));
+      l = ((Long)paramMessage.obj).longValue();
+      i = paramQQAppInterface.a().b(l);
+      localObject = (LinearLayout)paramView.findViewById(2131371400);
+      if (i == 2)
+      {
+        paramMessage = paramQQAppInterface.a().a(l);
+        ((LinearLayout)localObject).setVisibility(0);
+        localObject = new ImageView[3];
+        localObject[0] = ((ImageView)paramView.findViewById(2131363090));
+        localObject[1] = ((ImageView)paramView.findViewById(2131363092));
+        localObject[2] = ((ImageView)paramView.findViewById(2131363094));
+        if ((paramMessage == null) || (paramMessage.size() == 0))
+        {
+          j = localObject.length;
+          i = 0;
+        }
+        while (i < j)
+        {
+          localObject[i].setVisibility(8);
+          i += 1;
+          continue;
+          if (paramMessage.size() != 1) {
+            break label426;
+          }
+          localObject[0].setVisibility(0);
+          localObject[1].setVisibility(8);
+          localObject[2].setVisibility(8);
+          localObject[0].setImageBitmap(a(String.valueOf(((lml)paramMessage.get(0)).a), paramQQAppInterface));
+        }
       }
     }
     else
     {
-      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299005);
-      if (paramInt4 == 0) {
-        break label528;
+      i = paramQQAppInterface.a().e();
+      j = paramQQAppInterface.a().b();
+      l = paramQQAppInterface.a().c();
+      if (paramQQAppInterface.a().g() != 2) {
+        break label577;
       }
-    }
-    label519:
-    label528:
-    for (paramInt3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299006);; paramInt3 = i)
-    {
-      int k = (paramInt1 - i * 2) / 4;
-      int j = paramInt2 - k - paramInt3 - paramInt4;
-      paramInt3 = paramInt2 - paramInt3 - paramInt4;
-      if (paramBoolean)
-      {
-        paramInt1 = paramArrayOfmgp[1].b().left;
-        paramInt2 = paramArrayOfmgp[1].b().right;
-        label244:
-        paramArrayOfmgp[1].b(paramInt1, j, paramInt2, paramInt3);
-        if (!paramBoolean) {
-          break label501;
-        }
-        paramInt2 = paramArrayOfmgp[2].b().left;
-        paramInt1 = paramArrayOfmgp[2].b().right;
-        label283:
-        paramArrayOfmgp[2].b(paramInt2, j, paramInt1, paramInt3);
-        if (!paramBoolean) {
-          break label510;
-        }
-        paramInt1 = paramArrayOfmgp[3].b().left;
-        paramInt2 = paramArrayOfmgp[3].b().right;
-        label322:
-        paramArrayOfmgp[3].b(paramInt1, j, paramInt2, paramInt3);
-        if (!paramBoolean) {
-          break label519;
-        }
-        paramInt2 = paramArrayOfmgp[4].b().left;
-        paramInt1 = paramArrayOfmgp[4].b().right;
+      bool = true;
+      label292:
+      if (QLog.isColorLevel()) {
+        QLog.w("MultiVideoBarHelper", 1, "updateMultiVideoBar, randomStatus[" + j + "], sessionType[" + i + "], guildGroupId[" + l + "], getSmallScreenState[" + paramQQAppInterface.a().g() + "]");
       }
-      for (;;)
-      {
-        paramArrayOfmgp[4].b(paramInt2, j, paramInt1, paramInt3);
-        paramArrayOfmgp[1].d(-15197410);
-        paramArrayOfmgp[2].d(-15197410);
-        paramArrayOfmgp[3].d(-15197410);
-        paramArrayOfmgp[4].d(-15197410);
-        paramArrayOfmgp[1].a(2, 3, 3, 3);
-        paramArrayOfmgp[2].a(2, 3, 2, 3);
-        paramArrayOfmgp[3].a(2, 3, 2, 3);
-        paramArrayOfmgp[4].a(3, 3, 2, 3);
-        return;
-        paramArrayOfmgp[0].a(0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297630), 0, 0);
-        break;
-        label471:
-        paramArrayOfmgp[0].a(0, 0, 0, 0);
-        break;
-        paramInt2 = paramInt1 - i;
-        paramInt1 = paramInt1 - k - i;
-        break label244;
-        label501:
-        paramInt2 = paramInt1 - k;
-        break label283;
-        label510:
-        paramInt1 = paramInt2 - k;
-        break label322;
-        paramInt2 = paramInt1 - k;
+      if (l <= 0L) {
+        break label695;
       }
+      j = paramQQAppInterface.a().d();
+      if (j >= 2) {
+        break label583;
+      }
+      localTextView.setText(2131689906);
+      lyu.a(localView, bool, paramBoolean);
     }
-  }
-  
-  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    int n = 0;
-    if (this.jdField_a_of_type_AndroidContentContext == null) {}
-    while (paramArrayOfmgp == null) {
-      return;
-    }
-    int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299007);
-    int i2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299004);
-    int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299005);
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299006);
-    if (paramInt5 == 0) {
-      i = m;
-    }
+    label401:
+    label925:
     for (;;)
     {
-      int j;
-      int k;
-      switch (paramInt1)
+      bcst.a(paramQQAppInterface, "dc00898", "", "", "0X8009EE1", "0X8009EE1", 1, 0, "", "", "", "");
+      return;
+      label426:
+      if (paramMessage.size() == 2)
       {
-      default: 
-        j = 0;
-        k = 0;
-        m = 0;
-        i = n;
+        localObject[0].setVisibility(0);
+        localObject[1].setVisibility(0);
+        localObject[2].setVisibility(8);
+        localObject[0].setImageBitmap(a(String.valueOf(((lml)paramMessage.get(0)).a), paramQQAppInterface));
+        localObject[1].setImageBitmap(a(String.valueOf(((lml)paramMessage.get(1)).a), paramQQAppInterface));
+        break;
       }
-      for (;;)
+      i = 0;
+      while (i < localObject.length)
       {
-        paramArrayOfmgp[1].b(m, k, j, i);
-        llm.b(i2, i1);
-        llm.a(m, k);
-        llm.a(paramInt1);
+        localObject[i].setVisibility(0);
+        localObject[i].setImageBitmap(a(String.valueOf(((lml)paramMessage.get(i)).a), paramQQAppInterface));
+        i += 1;
+      }
+      break;
+      ((LinearLayout)localObject).setVisibility(0);
+      break;
+      label577:
+      bool = false;
+      break label292;
+      label583:
+      paramView = paramQQAppInterface.a().b();
+      if ((paramView != null) && (paramView.equals("1")))
+      {
+        i = 1;
+        label607:
+        if (i == 0) {
+          break label688;
+        }
+      }
+      label688:
+      for (i = 2131695042;; i = 2131695041)
+      {
+        paramMessage = paramQQAppInterface.getApp().getString(i);
+        paramView = paramQQAppInterface.a().e();
+        paramMessage = String.format(paramMessage, new Object[] { Integer.valueOf(j) });
+        localTextView.setText(paramMessage + " " + paramView);
+        break;
+        i = 0;
+        break label607;
+      }
+      label695:
+      if (j == 6)
+      {
+        localTextView.setText(paramQQAppInterface.getApp().getString(2131695043));
+        lyu.a(localView, bool, paramBoolean);
+      }
+      else if (j >= 5)
+      {
+        paramView = paramQQAppInterface.getApp().getString(2131695041);
+        paramView = paramView + " ";
+        localTextView.setText(paramView + paramQQAppInterface.a().e());
+        lyu.a(localView, bool, paramBoolean);
+      }
+      else if ((j >= 1) && (j < 5))
+      {
+        localTextView.setText(paramQQAppInterface.getApp().getString(2131694731));
+        lyu.a(localView, bool, paramBoolean);
+      }
+      else
+      {
+        if ((i != 3) && (i != 4)) {
+          break label1313;
+        }
+        l = paramQQAppInterface.a().b();
+        i = paramQQAppInterface.a().b(l);
+        j = paramQQAppInterface.a().f();
+        if (!paramQQAppInterface.a().f()) {
+          break label989;
+        }
+        localTextView.setText(2131689906);
+        if ((i == 2) && (!paramQQAppInterface.a().a(String.valueOf(l)))) {
+          localImageView.setImageDrawable(null);
+        }
+        if (j != 1) {
+          break label1254;
+        }
+        paramMessage = paramQQAppInterface.getApp().getString(2131692585);
+        paramView = paramMessage;
+        if (i == 2) {
+          paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131718649), paramQQAppInterface.getApp().getString(2131718650));
+        }
+        mue.a(localView, paramView);
+        label978:
+        lyu.a(localView, bool, paramBoolean);
+      }
+    }
+    label989:
+    long l = paramQQAppInterface.a().b();
+    int k = paramQQAppInterface.a().a();
+    Object localObject = paramQQAppInterface.a().e();
+    if (j == 3000)
+    {
+      paramMessage = paramQQAppInterface.getApp().getString(2131689898);
+      paramView = paramMessage;
+      if (i == 2) {
+        paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131718649), paramQQAppInterface.getApp().getString(2131718650));
+      }
+    }
+    label1254:
+    label1533:
+    for (;;)
+    {
+      l = paramQQAppInterface.a().a(k, l);
+      if ((localView != null) && (l == 0L))
+      {
+        lyu.a(localView, false, paramBoolean);
+        return;
+        if (j == 1)
+        {
+          paramView = paramQQAppInterface.getApp().getString(2131689892);
+          if (i != 2) {
+            break label1533;
+          }
+          paramView = paramView.replace(paramQQAppInterface.getApp().getString(2131718649), paramQQAppInterface.getApp().getString(2131718650));
+          localImageView.setImageDrawable(null);
+          continue;
+        }
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.w("OriginScreenLayout", 1, "setSmallVideoViewLayout, position[" + paramInt1 + "], width[" + paramInt2 + "], height[" + paramInt3 + "], layout[" + m + ", " + k + ", " + j + ", " + i + "], topOffset[" + paramInt4 + "], bottomOffset[" + paramInt5 + "], mGlSmallViewTopOffset[" + this.jdField_a_of_type_Int + "]");
+        QLog.e("MultiVideoBarHelper", 2, "updateMultiVideoBar-->wrong type of UinType.uintype=" + j);
         return;
-        j = m + i1;
-        k = i + paramInt4;
-        i = k + i2;
-        continue;
-        m = paramInt2 - i1 - m;
-        j = m + i1;
-        k = i + paramInt4;
-        i = k + i2;
-        continue;
-        j = m + i1;
-        k = paramInt3 - i2 - i - paramInt5;
-        i = k + i2;
-        continue;
-        m = paramInt2 - i1 - m;
-        j = m + i1;
-        k = paramInt3 - i2 - i - paramInt5;
-        i = k + i2;
       }
-    }
-  }
-  
-  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
-  {
-    paramArrayOfmgp[0].a(0, 0, 0, 0);
-    paramArrayOfmgp[0].b(0, 0, paramInt1, paramInt2);
-    paramArrayOfmgp[0].d(-15197410);
-    paramArrayOfmgp[1].a(3, 3, 3, 3);
-    paramArrayOfmgp[1].d(-15197410);
-    a(paramArrayOfmgp, paramInt3, paramInt1, paramInt2, paramInt4, paramInt5);
-  }
-  
-  public boolean a()
-  {
-    mey localmey = new mey(null);
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-    {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(8004), localmey });
-      if (QLog.isDevelopLevel()) {
-        QLog.w("OriginScreenLayout", 1, "canSwitchView, mCanSwitch[" + localmey.jdField_b_of_type_Boolean + "], mBlockName[" + localmey.jdField_b_of_type_JavaLangString + "]");
+      if (localView == null)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("MultiVideoBarHelper", 2, "updateMultiVideoBar-->multiVideoBar is null");
+        return;
       }
+      paramView = String.format(paramView, new Object[] { Long.valueOf(l) });
+      localTextView.setText(paramView + " " + (String)localObject);
+      break label925;
+      if (j != 3000) {
+        break label978;
+      }
+      paramMessage = paramQQAppInterface.getApp().getString(2131692584);
+      paramView = paramMessage;
+      if (i == 2) {
+        paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131718649), paramQQAppInterface.getApp().getString(2131718650));
+      }
+      mue.a(localView, paramView);
+      break label978;
+      if (i == 1)
+      {
+        if (paramQQAppInterface.a().f()) {
+          localTextView.setText(2131695323);
+        }
+        for (;;)
+        {
+          mue.a(localView, paramQQAppInterface.getApp().getString(2131690154));
+          lyu.a(localView, bool, paramBoolean);
+          break;
+          paramView = paramQQAppInterface.a().e();
+          paramMessage = paramQQAppInterface.getApp().getString(2131694722);
+          localTextView.setText(paramMessage + " " + paramView);
+        }
+      }
+      if ((i == 2) && (!paramQQAppInterface.a().k()))
+      {
+        if (paramQQAppInterface.a().f()) {
+          localTextView.setText(2131695323);
+        }
+        for (;;)
+        {
+          mue.a(localView, paramQQAppInterface.getApp().getString(2131690154));
+          lyu.a(localView, bool, paramBoolean);
+          break;
+          paramView = paramQQAppInterface.a().e();
+          paramMessage = paramQQAppInterface.getApp().getString(2131695297);
+          localTextView.setText(paramMessage + " " + paramView);
+        }
+      }
+      lyu.a(localView, false, paramBoolean);
+      break label401;
     }
-    return !localmey.jdField_b_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mlo
  * JD-Core Version:    0.7.0.1
  */

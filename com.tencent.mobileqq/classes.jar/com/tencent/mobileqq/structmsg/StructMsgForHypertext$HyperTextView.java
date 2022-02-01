@@ -8,8 +8,9 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Field;
-import syb;
+import tzo;
 
 public final class StructMsgForHypertext$HyperTextView
   extends TextView
@@ -64,26 +65,31 @@ public final class StructMsgForHypertext$HyperTextView
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag(2131377139);
+    Object localObject = paramView.getTag(2131377946);
     if ((localObject != null) && ((localObject instanceof StructMsgForHypertext)))
     {
       localObject = (StructMsgForHypertext)localObject;
       if (!((StructMsgForHypertext)localObject).mHyperClick) {
-        break label36;
+        break label43;
       }
       ((StructMsgForHypertext)localObject).mHyperClick = false;
     }
-    label36:
-    while (!"web".equals(((StructMsgForHypertext)localObject).mMsgAction)) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label43:
+      if ("web".equals(((StructMsgForHypertext)localObject).mMsgAction))
+      {
+        Context localContext = paramView.getContext();
+        Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
+        localIntent.putExtra("big_brother_source_key", "biz_src_jc_aio");
+        localIntent.putExtra("url", ((StructMsgForHypertext)localObject).mMsgUrl);
+        tzo.a(((StructMsgForHypertext)localObject).message, localIntent, ((StructMsgForHypertext)localObject).mMsgUrl);
+        localContext.startActivity(localIntent);
+        this.jdField_a_of_type_Boolean = true;
+      }
     }
-    paramView = paramView.getContext();
-    Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-    localIntent.putExtra("big_brother_source_key", "biz_src_jc_aio");
-    localIntent.putExtra("url", ((StructMsgForHypertext)localObject).mMsgUrl);
-    syb.a(((StructMsgForHypertext)localObject).message, localIntent, ((StructMsgForHypertext)localObject).mMsgUrl);
-    paramView.startActivity(localIntent);
-    this.jdField_a_of_type_Boolean = true;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -96,7 +102,7 @@ public final class StructMsgForHypertext$HyperTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForHypertext.HyperTextView
  * JD-Core Version:    0.7.0.1
  */

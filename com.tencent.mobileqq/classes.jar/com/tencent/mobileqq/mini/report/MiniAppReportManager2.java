@@ -267,10 +267,10 @@ public class MiniAppReportManager2
       QLog.d("MiniAppReportManager2", 2, "new report (launchState is not exist): [subActionType = " + paramString1 + "], [reserves = " + paramString2 + "], [path = " + paramString3 + "]");
     }
     long l1;
+    long l3;
     long l4;
     long l5;
     long l6;
-    long l7;
     do
     {
       do
@@ -280,12 +280,11 @@ public class MiniAppReportManager2
           QLog.d("MiniAppReportManager2", 2, "reportPageViewInMainProcess called with: launchId = [" + localAppLaunchState.launchId + "], subActionType = [" + paramString1 + "], reserves = [" + paramString2 + "], path = [" + paramString3 + "]");
         }
         l1 = localAppLaunchState.launchTime - localAppLaunchState.clickTime;
-        long l2 = localAppLaunchState.hideTime;
-        long l3 = localAppLaunchState.showTime;
-        l4 = localAppLaunchState.loadTime;
-        l5 = localAppLaunchState.clickTime;
-        l6 = localAppLaunchState.loadEndTime;
-        l7 = localAppLaunchState.clickTime;
+        long l2 = localAppLaunchState.hideTime - localAppLaunchState.showTime;
+        l3 = localAppLaunchState.loadTime;
+        l4 = localAppLaunchState.clickTime;
+        l5 = localAppLaunchState.loadEndTime;
+        l6 = localAppLaunchState.clickTime;
         if (("2back_key".equals(paramString1)) && (localAppLaunchState.needReportLaunchResult))
         {
           report("page_view", "2show_fail", localAppLaunchState.launchId, null, "back_cancel", String.valueOf(l1), localAppLaunchState.hasPkgAndX5(), paramMiniAppConfig);
@@ -303,7 +302,8 @@ public class MiniAppReportManager2
             report("page_view", "2show_fail", localAppLaunchState.launchId, null, "home_cancel", String.valueOf(l1), localAppLaunchState.hasPkgAndX5(), paramMiniAppConfig);
             localAppLaunchState.needReportLaunchResult = false;
           }
-          report("page_view", paramString1, localAppLaunchState.launchId, paramString3, paramString2, String.valueOf(l2 - l3), null, paramMiniAppConfig);
+          report("page_view", paramString1, localAppLaunchState.launchId, paramString3, null, paramString2, String.valueOf(l2), paramMiniAppConfig);
+          QLog.e("MiniAppReportManager2", 1, "2hide: cost:" + paramString2 + "  duration:" + l2);
           return;
         }
         if (!"2launch_fail".equals(paramString1)) {
@@ -326,12 +326,12 @@ public class MiniAppReportManager2
     return;
     if ("2load".equals(paramString1))
     {
-      report("page_view", paramString1, localAppLaunchState.launchId, paramString3, paramString2, String.valueOf(l4 - l5), localAppLaunchState.hasPkgAndX5(), paramMiniAppConfig);
+      report("page_view", paramString1, localAppLaunchState.launchId, paramString3, paramString2, String.valueOf(l3 - l4), localAppLaunchState.hasPkgAndX5(), paramMiniAppConfig);
       return;
     }
     if ("2load_end".equals(paramString1))
     {
-      report("page_view", paramString1, localAppLaunchState.launchId, paramString3, paramString2, String.valueOf(l6 - l7), localAppLaunchState.hasPkgAndX5(), paramMiniAppConfig);
+      report("page_view", paramString1, localAppLaunchState.launchId, paramString3, paramString2, String.valueOf(l5 - l6), localAppLaunchState.hasPkgAndX5(), paramMiniAppConfig);
       return;
     }
     report("page_view", paramString1, localAppLaunchState.launchId, paramString3, paramString2, null, localAppLaunchState.hasPkgAndX5(), paramMiniAppConfig);
@@ -527,7 +527,7 @@ public class MiniAppReportManager2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportManager2
  * JD-Core Version:    0.7.0.1
  */

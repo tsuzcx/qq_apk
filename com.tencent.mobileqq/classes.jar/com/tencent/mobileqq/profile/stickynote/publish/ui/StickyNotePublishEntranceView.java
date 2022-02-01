@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.profile.stickynote.publish.ui;
 
+import aavz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -7,26 +8,30 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.RelativeLayout;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
-import azqs;
+import bcst;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
 import org.json.JSONObject;
-import yyw;
 
 public class StickyNotePublishEntranceView
-  extends RelativeLayout
+  extends FrameLayout
 {
   private int jdField_a_of_type_Int = 1;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private Card jdField_a_of_type_ComTencentMobileqqDataCard;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
+  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
   private String jdField_b_of_type_JavaLangString;
   
@@ -55,7 +60,7 @@ public class StickyNotePublishEntranceView
         if (localCard.shGender != 0) {
           break label52;
         }
-        localObject = ((Resources)localObject).getString(2131693366);
+        localObject = ((Resources)localObject).getString(2131692857);
       }
     }
     for (;;)
@@ -64,16 +69,16 @@ public class StickyNotePublishEntranceView
       return localObject;
       label52:
       if (localCard.shGender == 1) {
-        localObject = ((Resources)localObject).getString(2131720071);
+        localObject = ((Resources)localObject).getString(2131718041);
       } else {
-        localObject = ((Resources)localObject).getString(2131720572);
+        localObject = ((Resources)localObject).getString(2131718383);
       }
     }
   }
   
   public void a()
   {
-    Object localObject = (String)yyw.a().a("sticky_note_publish_entrance_config", "");
+    Object localObject = (String)aavz.a().a("sticky_note_publish_entrance_config", "");
     int i;
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -85,7 +90,7 @@ public class StickyNotePublishEntranceView
       this.jdField_a_of_type_Int = i;
       if (this.jdField_a_of_type_Boolean)
       {
-        azqs.b(null, "dc00898", "", "", "0X800AB1D", "0X800AB1D", i, 0, "0", "0", "", "");
+        bcst.b(null, "dc00898", "", "", "0X800AB1D", "0X800AB1D", i, 0, "0", "0", "", "");
         return;
       }
       for (;;)
@@ -172,7 +177,7 @@ public class StickyNotePublishEntranceView
           i = 1;
         }
         break;
-        azqs.b(null, "dc00898", "", "", "0X800AB1E", "0X800AB1E", i, 0, "0", "0", "", "");
+        bcst.b(null, "dc00898", "", "", "0X800AB1E", "0X800AB1E", i, 0, "0", "0", "", "");
         return;
         label421:
         i = 1;
@@ -183,14 +188,16 @@ public class StickyNotePublishEntranceView
   
   protected void a(Context paramContext)
   {
-    inflate(paramContext, 2131561227, this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369345));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131363035));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377277));
+    inflate(paramContext, 2131561450, this);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365016));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369736));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131363220));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378087));
     paramContext = paramContext.getResources();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(paramContext.getColor(2131166359));
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131691237);
-    this.jdField_b_of_type_JavaLangString = paramContext.getString(2131691236);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(paramContext.getColor(2131166431));
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(paramContext.getColor(2131166432));
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131691042);
+    this.jdField_b_of_type_JavaLangString = paramContext.getString(2131691041);
     a();
   }
   
@@ -249,13 +256,19 @@ public class StickyNotePublishEntranceView
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130845454);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130845851);
     if (this.jdField_a_of_type_Boolean) {}
     for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_b_of_type_JavaLangString)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(a(str));
+      if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentImageURLImageView.setColorFilter(1996488704);
+      this.jdField_b_of_type_ComTencentImageURLImageView.setBackgroundDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
       return;
     }
+    this.jdField_b_of_type_ComTencentImageURLImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -266,18 +279,18 @@ public class StickyNotePublishEntranceView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      setAlpha(0.5F);
+      this.jdField_a_of_type_AndroidViewViewGroup.setAlpha(0.5F);
       continue;
-      setAlpha(1.0F);
+      this.jdField_a_of_type_AndroidViewViewGroup.setAlpha(1.0F);
       if (this.jdField_a_of_type_Boolean)
       {
-        azqs.b(null, "dc00898", "", "", "0X800AB1F", "0X800AB1F", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
+        bcst.b(null, "dc00898", "", "", "0X800AB1F", "0X800AB1F", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
       }
       else
       {
-        azqs.b(null, "dc00898", "", "", "0X800AB20", "0X800AB20", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
+        bcst.b(null, "dc00898", "", "", "0X800AB20", "0X800AB20", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
         continue;
-        setAlpha(1.0F);
+        this.jdField_a_of_type_AndroidViewViewGroup.setAlpha(1.0F);
       }
     }
   }
@@ -289,7 +302,7 @@ public class StickyNotePublishEntranceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishEntranceView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import auqt;
+import awxz;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.sdk.BridgeInfo;
@@ -23,7 +23,7 @@ class AudioJsPlugin$BgMusicManager
   
   private AudioJsPlugin$BgMusicManager(AudioJsPlugin paramAudioJsPlugin)
   {
-    AudioJsPlugin.access$1800(paramAudioJsPlugin);
+    AudioJsPlugin.access$1900(paramAudioJsPlugin);
   }
   
   private int convertState(int paramInt)
@@ -42,42 +42,42 @@ class AudioJsPlugin$BgMusicManager
   {
     try
     {
-      if ((AudioJsPlugin.access$2100(this.this$0) == null) || (AudioJsPlugin.access$2100(this.this$0).a() == null)) {
+      if ((AudioJsPlugin.access$2200(this.this$0) == null) || (AudioJsPlugin.access$2200(this.this$0).a() == null)) {
         return;
       }
-      if (!AudioJsPlugin.access$2100(this.this$0).a().equals(AudioJsPlugin.access$2400(this.this$0))) {
+      if (!AudioJsPlugin.access$2200(this.this$0).a().equals(AudioJsPlugin.access$2500(this.this$0))) {
         return;
       }
       JSONObject localJSONObject = new JSONObject();
-      if (AudioJsPlugin.access$2500(this.this$0) != null)
+      if (AudioJsPlugin.access$2600(this.this$0) != null)
       {
-        localJSONObject.put("currentPosition", AudioJsPlugin.access$2700(this.this$0, AudioJsPlugin.access$2600(this.this$0)));
-        localJSONObject.put("duration", AudioJsPlugin.access$2700(this.this$0, AudioJsPlugin.access$2800(this.this$0)));
-        localJSONObject.put("status", convertState(AudioJsPlugin.access$2900(this.this$0)));
-        localJSONObject.put("dataUrl", AudioJsPlugin.access$2500(this.this$0).jdField_b_of_type_JavaLangString);
-        AudioJsPlugin.access$1400(this.this$0, "getMusicPlayerState", paramBridgeInfo, localJSONObject);
+        localJSONObject.put("currentPosition", AudioJsPlugin.access$2800(this.this$0, AudioJsPlugin.access$2700(this.this$0)));
+        localJSONObject.put("duration", AudioJsPlugin.access$2800(this.this$0, AudioJsPlugin.access$2900(this.this$0)));
+        localJSONObject.put("status", convertState(AudioJsPlugin.access$3000(this.this$0)));
+        localJSONObject.put("dataUrl", AudioJsPlugin.access$2600(this.this$0).jdField_b_of_type_JavaLangString);
+        AudioJsPlugin.access$900(this.this$0, "getMusicPlayerState", paramBridgeInfo, localJSONObject);
         return;
       }
     }
     catch (Exception localException)
     {
-      AudioJsPlugin.access$1200(this.this$0, "getMusicPlayerState", paramBridgeInfo);
+      AudioJsPlugin.access$1400(this.this$0, "getMusicPlayerState", paramBridgeInfo);
       return;
     }
-    AudioJsPlugin.access$1200(this.this$0, "getMusicPlayerState", paramBridgeInfo);
+    AudioJsPlugin.access$1400(this.this$0, "getMusicPlayerState", paramBridgeInfo);
   }
   
   private void pauseQQMusic(BridgeInfo paramBridgeInfo)
   {
-    AudioJsPlugin.access$3002(this.this$0, paramBridgeInfo);
+    AudioJsPlugin.access$3102(this.this$0, paramBridgeInfo);
     try
     {
-      AudioJsPlugin.access$2100(this.this$0).a();
+      AudioJsPlugin.access$2200(this.this$0).a();
       return;
     }
     catch (Exception localException)
     {
-      AudioJsPlugin.access$2300(this.this$0, false, paramBridgeInfo);
+      AudioJsPlugin.access$2400(this.this$0, false, paramBridgeInfo);
     }
   }
   
@@ -94,48 +94,48 @@ class AudioJsPlugin$BgMusicManager
     localSongInfo.jdField_b_of_type_Int = 9;
     localSongInfo.jdField_a_of_type_Int = (paramJSONObject.optInt("startTime", 0) * 1000);
     localSongInfo.jdField_a_of_type_Boolean = true;
-    AudioJsPlugin.access$2100(this.this$0).a(new Intent(BaseApplication.getContext(), MusicPlayerActivity.class));
-    Bundle localBundle = AudioJsPlugin.access$2100(this.this$0).a();
+    AudioJsPlugin.access$2200(this.this$0).a(new Intent(BaseApplication.getContext(), MusicPlayerActivity.class));
+    Bundle localBundle = AudioJsPlugin.access$2200(this.this$0).a();
     paramJSONObject = localBundle;
     if (localBundle == null)
     {
       paramJSONObject = new Bundle();
-      AudioJsPlugin.access$2100(this.this$0).a(paramJSONObject);
+      AudioJsPlugin.access$2200(this.this$0).a(paramJSONObject);
     }
     paramJSONObject.putString("KEY_SOURCE_NAME", this.this$0.jsPluginEngine.appBrandRuntime.getApkgInfo().apkgName);
-    AudioJsPlugin.access$2100(this.this$0).a(paramJSONObject);
-    AudioJsPlugin.access$2100(this.this$0).a(100);
-    AudioJsPlugin.access$2100(this.this$0).a(AudioJsPlugin.access$2400(this.this$0), new SongInfo[] { localSongInfo }, 0);
+    AudioJsPlugin.access$2200(this.this$0).a(paramJSONObject);
+    AudioJsPlugin.access$2200(this.this$0).a(100);
+    AudioJsPlugin.access$2200(this.this$0).a(AudioJsPlugin.access$2500(this.this$0), new SongInfo[] { localSongInfo }, 0);
   }
   
   private void playQQMusic(JSONObject paramJSONObject, BridgeInfo paramBridgeInfo)
   {
-    if ((AudioJsPlugin.access$2100(this.this$0) == null) || (paramJSONObject == null)) {
-      AudioJsPlugin.access$2300(this.this$0, false, paramBridgeInfo);
+    if ((AudioJsPlugin.access$2200(this.this$0) == null) || (paramJSONObject == null)) {
+      AudioJsPlugin.access$2400(this.this$0, false, paramBridgeInfo);
     }
     do
     {
       return;
-      AudioJsPlugin.access$3002(this.this$0, paramBridgeInfo);
+      AudioJsPlugin.access$3102(this.this$0, paramBridgeInfo);
       try
       {
-        SongInfo localSongInfo = AudioJsPlugin.access$2100(this.this$0).a();
+        SongInfo localSongInfo = AudioJsPlugin.access$2200(this.this$0).a();
         String str = paramJSONObject.optString("dataUrl", paramJSONObject.optString("src"));
         if ((localSongInfo == null) || (!str.equals(localSongInfo.jdField_b_of_type_JavaLangString))) {
           break;
         }
-        if ((AudioJsPlugin.access$2900(this.this$0) == 3) || (AudioJsPlugin.access$2900(this.this$0) == 1))
+        if ((AudioJsPlugin.access$3000(this.this$0) == 3) || (AudioJsPlugin.access$3000(this.this$0) == 1))
         {
-          AudioJsPlugin.access$2100(this.this$0).b();
+          AudioJsPlugin.access$2200(this.this$0).b();
           return;
         }
       }
       catch (Exception paramJSONObject)
       {
-        AudioJsPlugin.access$2300(this.this$0, false, paramBridgeInfo);
+        AudioJsPlugin.access$2400(this.this$0, false, paramBridgeInfo);
         return;
       }
-    } while ((AudioJsPlugin.access$2900(this.this$0) != 4) && (AudioJsPlugin.access$2900(this.this$0) != 0) && (AudioJsPlugin.access$2900(this.this$0) != 8));
+    } while ((AudioJsPlugin.access$3000(this.this$0) != 4) && (AudioJsPlugin.access$3000(this.this$0) != 0) && (AudioJsPlugin.access$3000(this.this$0) != 8));
     playNew(paramJSONObject);
     return;
     playNew(paramJSONObject);
@@ -144,7 +144,7 @@ class AudioJsPlugin$BgMusicManager
   private void seekMusic(JSONObject paramJSONObject, BridgeInfo paramBridgeInfo)
   {
     float f2 = 0.0F;
-    if ((AudioJsPlugin.access$2100(this.this$0) != null) && (paramJSONObject != null)) {
+    if ((AudioJsPlugin.access$2200(this.this$0) != null) && (paramJSONObject != null)) {
       try
       {
         String str = paramJSONObject.optString("position");
@@ -163,12 +163,12 @@ class AudioJsPlugin$BgMusicManager
           if (i < 0) {
             break label157;
           }
-          AudioJsPlugin.access$2200(this.this$0, "waiting");
-          AudioJsPlugin.access$2200(this.this$0, "seeking");
-          AudioJsPlugin.access$2100(this.this$0).b(i);
-          AudioJsPlugin.access$2300(this.this$0, true, paramBridgeInfo);
-          AudioJsPlugin.access$2200(this.this$0, "seeked");
-          AudioJsPlugin.access$2200(this.this$0, "play");
+          AudioJsPlugin.access$2300(this.this$0, "waiting");
+          AudioJsPlugin.access$2300(this.this$0, "seeking");
+          AudioJsPlugin.access$2200(this.this$0).b(i);
+          AudioJsPlugin.access$2400(this.this$0, true, paramBridgeInfo);
+          AudioJsPlugin.access$2300(this.this$0, "seeked");
+          AudioJsPlugin.access$2300(this.this$0, "play");
           return;
           f1 = Float.valueOf(str).floatValue();
           break;
@@ -176,29 +176,29 @@ class AudioJsPlugin$BgMusicManager
           f2 = Float.valueOf(paramJSONObject).floatValue();
         }
         label157:
-        AudioJsPlugin.access$2300(this.this$0, false, paramBridgeInfo);
+        AudioJsPlugin.access$2400(this.this$0, false, paramBridgeInfo);
         return;
       }
       catch (Exception paramJSONObject)
       {
         paramJSONObject.printStackTrace();
         QLog.e("[mini] AudioJsPlugin", 1, "seekMusic error. " + paramJSONObject);
-        AudioJsPlugin.access$2300(this.this$0, false, paramBridgeInfo);
+        AudioJsPlugin.access$2400(this.this$0, false, paramBridgeInfo);
       }
     }
   }
   
   private void stopQQmMusic(BridgeInfo paramBridgeInfo)
   {
-    AudioJsPlugin.access$3002(this.this$0, paramBridgeInfo);
+    AudioJsPlugin.access$3102(this.this$0, paramBridgeInfo);
     try
     {
-      AudioJsPlugin.access$2100(this.this$0).c();
+      AudioJsPlugin.access$2200(this.this$0).c();
       return;
     }
     catch (Exception localException)
     {
-      AudioJsPlugin.access$2300(this.this$0, false, paramBridgeInfo);
+      AudioJsPlugin.access$2400(this.this$0, false, paramBridgeInfo);
     }
   }
   
@@ -215,15 +215,15 @@ class AudioJsPlugin$BgMusicManager
       return;
     case 1: 
       playQQMusic(paramJSONObject, paramBridgeInfo);
-      AudioJsPlugin.access$1902(this.this$0, new AudioJsPlugin.BgMusicData(paramJSONObject, paramBridgeInfo, null));
+      AudioJsPlugin.access$2002(this.this$0, new AudioJsPlugin.BgMusicData(paramJSONObject, paramBridgeInfo, null));
       return;
     case 2: 
       pauseQQMusic(paramBridgeInfo);
-      AudioJsPlugin.access$1902(this.this$0, null);
+      AudioJsPlugin.access$2002(this.this$0, null);
       return;
     case 3: 
       stopQQmMusic(paramBridgeInfo);
-      AudioJsPlugin.access$1902(this.this$0, null);
+      AudioJsPlugin.access$2002(this.this$0, null);
       return;
     case 4: 
       seekMusic(paramJSONObject, paramBridgeInfo);
@@ -234,7 +234,7 @@ class AudioJsPlugin$BgMusicManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AudioJsPlugin.BgMusicManager
  * JD-Core Version:    0.7.0.1
  */

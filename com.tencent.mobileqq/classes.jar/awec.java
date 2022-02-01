@@ -1,17 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.util.Log;
+import java.util.ArrayList;
 
 public class awec
-  implements DialogInterface.OnClickListener
 {
-  public awec(AutoReplyEditActivity paramAutoReplyEditActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public static awdu a(String paramString, boolean paramBoolean)
+  {
+    if ((paramString != null) && (paramString.length() >= 0))
+    {
+      if (paramBoolean) {}
+      for (;;)
+      {
+        try
+        {
+          paramString = new aweg(paramString).a();
+          if ((paramString == null) || (paramString.a.size() <= 0)) {
+            break;
+          }
+          return paramString;
+        }
+        catch (Exception paramString)
+        {
+          Log.e("LyricParseHelper", "parse exception:", paramString);
+        }
+        paramString = new awed(paramString).a();
+      }
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awec
  * JD-Core Version:    0.7.0.1
  */

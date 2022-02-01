@@ -1,79 +1,81 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.AudioDeviceInterface;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class bkdw
+  implements bkeg
 {
-  public static ArrayList<Object> a(JSONArray paramJSONArray)
-  {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramJSONArray.length())
-    {
-      Object localObject = paramJSONArray.opt(i);
-      if (localObject == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (localObject.getClass() == JSONObject.class) {
-          localArrayList.add(a((JSONObject)localObject));
-        } else if (localObject.getClass() == JSONArray.class) {
-          localArrayList.add(a((JSONArray)localObject));
-        }
-      }
-    }
-    return localArrayList;
-  }
+  public bkdw(AudioDeviceInterface paramAudioDeviceInterface) {}
   
-  public static Map<String, Object> a(String paramString)
+  public void a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     try
     {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
+      AudioDeviceInterface.access$000(this.a).lock();
+      AudioDeviceInterface.access$102(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
+      }
+      AudioDeviceInterface.access$200(this.a).signalAll();
+      AudioDeviceInterface.access$000(this.a).unlock();
+      return;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localLinkedHashMap;
+    catch (Exception localException) {}
   }
   
-  public static Map<String, Object> a(JSONObject paramJSONObject)
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    if (paramJSONObject == null) {
-      return null;
+    if (paramInt == 0) {
+      AudioDeviceInterface.access$400(this.a, paramString);
     }
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
-    {
-      String str = localIterator.next() + "";
-      Object localObject = paramJSONObject.get(str);
-      if (localObject != null) {
-        if (localObject.getClass() == JSONObject.class) {
-          localLinkedHashMap.put(str, a((JSONObject)localObject));
-        } else if (localObject.getClass() == JSONArray.class) {
-          localLinkedHashMap.put(str, a((JSONArray)localObject));
-        } else {
-          localLinkedHashMap.put(str, localObject);
-        }
-      }
-    }
-    return localLinkedHashMap;
   }
+  
+  public void a(int paramInt, String paramString, boolean paramBoolean) {}
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
+  
+  public void a(long paramLong, int paramInt) {}
+  
+  public void a(long paramLong, int paramInt, String paramString) {}
+  
+  public void a(long paramLong, boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    try
+    {
+      AudioDeviceInterface.access$000(this.a).lock();
+      AudioDeviceInterface.access$102(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
+      }
+      AudioDeviceInterface.access$200(this.a).signalAll();
+      AudioDeviceInterface.access$000(this.a).unlock();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
+  {
+    if (AudioDeviceInterface.access$300(this.a)) {
+      AudioDeviceInterface.access$400(this.a, paramString1);
+    }
+  }
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, long paramLong) {}
+  
+  public void a(String paramString1, String paramString2) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b(int paramInt, String paramString) {}
 }
 
 

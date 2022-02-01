@@ -1,37 +1,15 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
 
-public class blsw
-  implements Cloneable
+public final class blsw
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public String a;
-  public List<PtvTemplateManager.PtvTemplateInfo> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
+  public blsw(FragmentActivity paramFragmentActivity) {}
   
-  public blsw() {}
-  
-  public blsw(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public blsw a()
-  {
-    blsw localblsw = new blsw();
-    localblsw.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localblsw.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localblsw.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localblsw.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localblsw.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localblsw.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
-    localblsw.jdField_a_of_type_JavaUtilList = new ArrayList();
-    localblsw.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    return localblsw;
+    this.a.finish();
   }
 }
 

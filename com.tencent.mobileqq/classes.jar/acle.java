@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import com.tencent.gdtad.api.banner.GdtBannerAd;
 
-public final class acle
-  implements DialogInterface.OnCancelListener
+public class acle
+  implements View.OnTouchListener
 {
-  public acle(DialogInterface.OnClickListener paramOnClickListener) {}
+  public acle(GdtBannerAd paramGdtBannerAd, acli paramacli) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, 0);
-    }
+    acli localacli = this.jdField_a_of_type_Acli;
+    acli.a.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

@@ -1,22 +1,47 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.observer.ServerNotifyObserver;
 
-class afqj
-  extends afuf
+public class afqj
+  extends ServerNotifyObserver
 {
-  afqj(afpy paramafpy)
+  public afqj(VerifyCodeActivity paramVerifyCodeActivity) {}
+  
+  public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
   {
-    super(paramafpy, null);
+    this.a.b = false;
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
+      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131718992), 0).a();
+    }
+    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
+    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString().length() > 4)) {
+      VerifyCodeActivity.a(this.a, true);
+    }
+    if (paramArrayOfByte != null)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bggl.a(paramArrayOfByte, 0, paramArrayOfByte.length));
+      this.a.a(false);
+      return;
+    }
+    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131718989), 1).show();
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onVerifyClose()
   {
-    return new afve(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afqj
  * JD-Core Version:    0.7.0.1
  */

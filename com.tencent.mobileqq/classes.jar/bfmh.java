@@ -1,57 +1,43 @@
-import android.content.ContentValues;
-import android.os.Parcel;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-public class bfmh
-  extends bfnp
+public abstract interface bfmh
 {
-  public static final bfnq<bfmh> a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
+  public abstract void a();
   
-  static
-  {
-    jdField_a_of_type_Bfnq = new bfmi();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  protected bfmh(String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.c = paramString3;
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  bfmh(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
-  {
-    this.jdField_a_of_type_JavaLangString = bflr.b(paramString1);
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.c = paramString3;
-    this.d = paramString4;
-  }
+  public abstract void a(long paramLong, List<oidb_0x899.memberlist> paramList);
   
-  public void a(ContentValues paramContentValues)
-  {
-    paramContentValues.put("urlKey", this.jdField_a_of_type_JavaLangString);
-    paramContentValues.put("ETag", this.jdField_b_of_type_JavaLangString);
-    paramContentValues.put("lastModify", Long.valueOf(this.jdField_a_of_type_Long));
-    paramContentValues.put("cacheTime", Long.valueOf(this.jdField_b_of_type_Long));
-    Parcel localParcel = Parcel.obtain();
-    localParcel.writeString(this.c);
-    byte[] arrayOfByte = localParcel.marshall();
-    localParcel.recycle();
-    paramContentValues.put("response", arrayOfByte);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(oidb_0x88d.GroupInfo paramGroupInfo);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, TroopInfo paramTroopInfo);
+  
+  public abstract void a(boolean paramBoolean, List<akeh> paramList);
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d();
+  
+  public abstract void d(String paramString);
+  
+  public abstract void e(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfmh
  * JD-Core Version:    0.7.0.1
  */

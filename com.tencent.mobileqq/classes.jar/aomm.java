@@ -1,23 +1,21 @@
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aomm
+  extends aojt
 {
-  public int a;
-  public String a;
-  public ArrayList<aomw> a;
-  public int b;
-  
-  public aomm(int paramInt1, int paramInt2, String paramString, ArrayList<aomw> paramArrayList)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    paramQQAppInterface = new aoml(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "teamwork";
+    paramQQAppInterface.c = "opendoclist";
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomm
  * JD-Core Version:    0.7.0.1
  */

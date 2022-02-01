@@ -1,54 +1,34 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adhd
-  implements CompoundButton.OnCheckedChangeListener
+class adhd
+  implements View.OnClickListener
 {
-  public adhd(LikeSettingActivity paramLikeSettingActivity) {}
+  adhd(adhc paramadhc, View.OnClickListener paramOnClickListener) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
-    {
-      ((auwm)this.a.app.a(66)).a(paramBoolean);
-      this.a.app.reportClickEvent("CliOper", "0X8006729");
+    if (!bgnt.d(adhc.a(this.jdField_a_of_type_Adhc))) {
+      QQToast.a(adhc.a(this.jdField_a_of_type_Adhc), adhc.a(this.jdField_a_of_type_Adhc).getString(2131693946), 0).a();
     }
-    do
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramCompoundButton == this.a.c.a())
+      if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
       {
-        this.a.app.e(true, paramBoolean);
-        return;
+        QLog.e("SdkAuthDialog", 1, "positiveListener is null");
       }
-      if (paramCompoundButton == this.a.b.a())
+      else
       {
-        localQQAppInterface = this.a.app;
-        if (paramBoolean) {}
-        for (paramCompoundButton = "1";; paramCompoundButton = "0")
-        {
-          azqs.b(localQQAppInterface, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, paramCompoundButton, "", "", "");
-          this.a.jdField_a_of_type_Alpk.h(paramBoolean);
-          return;
-        }
+        this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+        bcst.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "0", "", "", "");
       }
-    } while (paramCompoundButton != this.a.d.a());
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "2")
-    {
-      azqs.b(localQQAppInterface, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, paramCompoundButton, "", "", "");
-      this.a.jdField_a_of_type_Alpk.f(paramBoolean);
-      if (paramBoolean) {
-        break;
-      }
-      this.a.b.setVisibility(8);
-      return;
     }
-    this.a.b.setVisibility(0);
   }
 }
 

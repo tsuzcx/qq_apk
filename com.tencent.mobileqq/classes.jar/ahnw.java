@@ -1,48 +1,38 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectsExplorationBanner;
-import com.tencent.widget.SimpleTextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForVIPDonate;
+import com.tencent.mobileqq.data.VIPDonateMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahnw
-  extends bibk
+  implements View.OnClickListener
 {
-  ahnw(ahns paramahns, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  ahnw(ahnv paramahnv) {}
   
-  public View a(int paramInt, Object paramObject, bibj parambibj, View.OnClickListener paramOnClickListener)
+  public void onClick(View paramView)
   {
-    parambibj = super.a(paramInt, paramObject, parambibj, paramOnClickListener);
-    if ((parambibj instanceof SimpleTextView)) {
-      parambibj.setTag(paramObject);
-    }
-    return parambibj;
-  }
-  
-  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
-  {
-    int i = 0;
-    if ((paramArrayOfbibj == null) || (paramArrayOfbibj.length <= 0)) {}
+    if (this.a.a()) {}
     for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      paramInt = i;
-      if (paramArrayOfbibj.length < 0)
+      Object localObject1 = (MessageForVIPDonate)((ahnx)afur.a(paramView)).a;
+      Object localObject2 = ((MessageForVIPDonate)localObject1).donateMsg;
+      if ((localObject2 != null) && (!TextUtils.isEmpty(((VIPDonateMsg)localObject2).jumpUrl)))
       {
-        paramInt = i;
-        if (!(paramObject instanceof ConnectsExplorationBanner))
-        {
-          paramArrayOfbibj[0].b = 0;
-          paramArrayOfbibj[0].a = 0;
-          paramInt = 1;
-        }
+        localObject1 = ((MessageForVIPDonate)localObject1).donateMsg.jumpUrl;
+        localObject2 = new Intent(ahnv.a(this.a), QQBrowserActivity.class);
+        ((Intent)localObject2).putExtra("url", (String)localObject1);
+        ahnv.a(this.a).startActivity((Intent)localObject2);
       }
-      while (paramInt < paramArrayOfbibj.length)
+      else
       {
-        paramArrayOfbibj[paramInt].b = -1;
-        paramArrayOfbibj[paramInt].a = -1;
-        paramInt += 1;
+        QLog.e("VIPDonateMsgItemBuilder", 1, "donatemsg jumpurl empty");
       }
     }
   }

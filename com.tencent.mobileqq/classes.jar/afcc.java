@@ -1,13 +1,18 @@
-public class afcc
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.RiskInfoItem;
+
+public final class afcc
+  implements Parcelable.Creator<RiskInfoItem>
 {
-  public int a;
-  TItemViewHolder jdField_a_of_type_JavaLangObject;
-  
-  public afcc(int paramInt, TItemViewHolder paramTItemViewHolder)
+  public RiskInfoItem a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramTItemViewHolder;
-    Object localObject;
-    this.jdField_a_of_type_JavaLangObject = localObject;
+    return new RiskInfoItem(paramParcel, null);
+  }
+  
+  public RiskInfoItem[] a(int paramInt)
+  {
+    return new RiskInfoItem[paramInt];
   }
 }
 

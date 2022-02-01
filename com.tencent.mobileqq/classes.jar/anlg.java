@@ -1,38 +1,95 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.TranslucentActivity;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class anlg
-  implements anld
+  extends QIPCModule
 {
-  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  private static volatile anlg a;
+  
+  public anlg(String paramString)
   {
-    if (paramLong != 0L) {}
-    do
+    super(paramString);
+  }
+  
+  public static anlg a()
+  {
+    if (a == null) {}
+    try
     {
-      return false;
-      paramJSONObject = BaseActivity.sTopActivity;
-    } while (paramJSONObject == null);
-    paramString3 = new Intent(paramJSONObject, TranslucentActivity.class);
-    paramString3.addFlags(268435456);
-    QzonePluginProxyActivity.a(paramString3, "com.qzone.misc.web.QZoneTranslucentActivity");
-    paramString3.setAction("action_js2qzone");
-    paramString3.putExtra("cmd", "Schema");
-    paramString2 = paramString1;
-    if (paramString1.startsWith("arouse/detailbyurl?base64url"))
+      if (a == null) {
+        a = new anlg("ExtendFriendQIPCModule");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface)) {
+      return null;
+    }
+    localObject = (QQAppInterface)localObject;
+    boolean bool;
+    if ("notifyCampusFriendCertificateResult".equals(paramString))
     {
-      paramString2 = paramString1;
-      if (!paramString1.contains("from")) {
-        paramString2 = paramString1 + "&from=aio";
+      bool = paramBundle.getBoolean("key_result");
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_CAMPUS_FRIEND_CERTIFICATE_RESULT ,result = " + bool);
+      }
+      paramString = (asfu)((QQAppInterface)localObject).getManager(264);
+      if (paramString != null)
+      {
+        if (!bool) {
+          break label132;
+        }
+        paramInt = 2;
+        paramString.a(paramInt, 1);
+        ((asfs)((QQAppInterface)localObject).a(127)).notifyUI(20, true, new Object[] { Integer.valueOf(2) });
       }
     }
-    paramString3.putExtra("schema", "mqzone://" + paramString2);
-    paramString3.putExtra("from", 2);
-    paramJSONObject.startActivity(paramString3);
-    return true;
+    for (;;)
+    {
+      return null;
+      label132:
+      paramInt = 3;
+      break;
+      if ("notifyUploadSutudentIDResult".equals(paramString))
+      {
+        bool = paramBundle.getBoolean("key_result");
+        paramString = (asfu)((QQAppInterface)localObject).getManager(264);
+        if (bool)
+        {
+          paramString.a(1, 2);
+          ((asfs)((QQAppInterface)localObject).a(127)).notifyUI(20, true, new Object[] { Integer.valueOf(2) });
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_STUDENTID_UPLOAD_RESULT ,result = " + bool);
+        }
+      }
+      else if ("notifyUpdateSchoolInfo".equals(paramString))
+      {
+        paramString = paramBundle.getString("name", "");
+        paramInt = paramBundle.getInt("category", 0);
+        String str1 = paramBundle.getString("schoolid", "");
+        int i = paramBundle.getInt("idx", 0);
+        asfu localasfu = (asfu)((QQAppInterface)localObject).getManager(264);
+        String str2 = localasfu.g();
+        if (QLog.isColorLevel()) {
+          QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_SCHOOL_INFO_UPDATE ，schoolName = " + paramString + "，oldSchoolName = " + str2);
+        }
+        if (!paramString.equals(str2)) {
+          localasfu.a(0, -1);
+        }
+        localasfu.a(i, paramString, str1, paramInt);
+        ((asfs)((QQAppInterface)localObject).a(127)).notifyUI(22, true, paramBundle);
+      }
+    }
   }
 }
 

@@ -1,63 +1,176 @@
+import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.view.LayoutInflater;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AppGuideTipsConfig;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTimDouFuGuide;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.base.FriendShipLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class agdt
-  extends aepl
 {
-  public agdt(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  
+  public agdt(Context paramContext)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  protected aepm a()
+  public void a()
   {
-    return new agdv(this);
-  }
-  
-  protected View a(MessageRecord paramMessageRecord, aepm paramaepm, View paramView, LinearLayout paramLinearLayout, aetk paramaetk)
-  {
-    paramLinearLayout = (agdv)paramaepm;
-    paramaepm = paramView;
-    if (paramView == null)
-    {
-      paramaepm = LayoutInflater.from(this.a).inflate(2131558819, null);
-      paramLinearLayout.b = ((TextView)paramaepm.findViewById(2131377938));
-      paramLinearLayout.c = ((TextView)paramaepm.findViewById(2131364771));
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "playAnimation");
     }
-    if ((paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForTimDouFuGuide)))
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
-      paramMessageRecord = ((MessageForTimDouFuGuide)paramMessageRecord).config;
-      if (paramMessageRecord != null)
-      {
-        paramLinearLayout.b.setText(paramMessageRecord.tipsHighLight);
-        paramView = new SpannableString(paramMessageRecord.tipsMsg + alud.a(2131715328));
-        int i = paramView.length();
-        paramView.setSpan(new ForegroundColorSpan(paramaepm.getResources().getColor(2131166915)), i - 4, i, 33);
-        paramLinearLayout.c.setText(paramView);
-        paramaepm.setOnClickListener(new agdu(this, paramMessageRecord));
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    }
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "setOnCloseClickListener");
+    }
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    if ((this.jdField_a_of_type_AndroidViewView$OnClickListener != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null)) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "setBackgroundView");
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofObject(new agdv(null), new Object[] { Integer.valueOf(0), Integer.valueOf(0) });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(3350L);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new agdu(this));
+  }
+  
+  public void a(FriendShipLayout paramFriendShipLayout)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "setRootContainer");
+    }
+    if (paramFriendShipLayout != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+      localLayoutParams.gravity = 53;
+      localLayoutParams.topMargin = bclx.a(30.0F);
+      localLayoutParams.rightMargin = bclx.a(30.0F);
+      paramFriendShipLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
     }
-    return paramaepm;
   }
   
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bdpk[] a(View paramView)
+  public void a(String paramString)
   {
-    return new bdpi().a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "setCloseBtnBitmapPath: " + paramString);
+    }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
+    try
+    {
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+      {
+        if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+        }
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = bgmo.a(paramString, localOptions);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("LottieAnimController", 1, "Decode bitmap error");
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      return;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      QLog.e("LottieAnimController", 1, "Decode bitmap OOM");
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  public boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "isAnimating");
+    }
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning();
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "cancelAnimation");
+    }
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      }
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "recycleBitmaps");
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "pauseAnimation");
+    }
+    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (Build.VERSION.SDK_INT >= 19)) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.pause();
+    }
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "resumeAnimation");
+    }
+    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (Build.VERSION.SDK_INT >= 19)) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.resume();
+    }
   }
 }
 

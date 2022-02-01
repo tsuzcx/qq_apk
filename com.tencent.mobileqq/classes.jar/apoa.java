@@ -1,6 +1,14 @@
-public abstract interface apoa
+import android.os.HandlerThread;
+import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
+import com.tencent.mobileqq.app.ThreadManager;
+
+public final class apoa
+  implements ArkEnvironmentManager.ThreadCreater
 {
-  public abstract void a(int paramInt, String paramString);
+  public HandlerThread createHanderThread(String paramString)
+  {
+    return ThreadManager.newFreeHandlerThread(paramString, -1);
+  }
 }
 
 

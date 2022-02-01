@@ -1,97 +1,92 @@
-public class bipy
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.SparseArray;
+import com.tencent.tmassistant.common.jce.StatItem;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+class bipy
+  extends Handler
 {
-  public static final byte[] a;
-  private static final char[] a;
-  public static final byte[] b;
-  public static final byte[] c;
-  public static final byte[] d;
-  
-  static
+  bipy(bipx parambipx, Looper paramLooper)
   {
-    jdField_a_of_type_ArrayOfByte = b("00A40400");
-    b = b("6A82");
-    c = b("9000");
-    d = b("0000");
-    jdField_a_of_type_ArrayOfChar = "0123456789ABCDEF".toCharArray();
+    super(paramLooper);
   }
   
-  public static String a(byte[] paramArrayOfByte)
+  public void handleMessage(Message paramMessage)
   {
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    int i;
+    Object localObject2;
+    if (paramMessage.what == 1)
     {
-      int j = paramArrayOfByte[i] & 0xFF;
-      arrayOfChar[(i * 2)] = jdField_a_of_type_ArrayOfChar[(j >>> 4)];
-      arrayOfChar[(i * 2 + 1)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
-      i += 1;
+      localObject1 = bipx.a(this.a).keySet();
+      if ((localObject1 != null) && (((Set)localObject1).size() > 0))
+      {
+        paramMessage = new ArrayList();
+        localObject1 = ((Set)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          i = ((Integer)((Iterator)localObject1).next()).intValue();
+          localObject2 = new StatItem();
+          ((StatItem)localObject2).type = i;
+          ((StatItem)localObject2).records = ((ArrayList)bipx.a(this.a).get(Integer.valueOf(i)));
+          paramMessage.add(localObject2);
+        }
+        bipx.a(this.a).clear();
+        if (paramMessage.size() > 0)
+        {
+          i = bipx.a(this.a).a(paramMessage);
+          bipx.a(this.a).put(i, paramMessage);
+        }
+      }
     }
-    return new String(arrayOfChar);
-  }
-  
-  public static byte[] a(String paramString)
-  {
-    byte[] arrayOfByte = b(String.format("%02X", new Object[] { Integer.valueOf(paramString.length() / 2) }));
-    paramString = b(paramString);
-    return a(jdField_a_of_type_ArrayOfByte, new byte[][] { arrayOfByte, paramString });
-  }
-  
-  private static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 > paramInt2) {
-      throw new IllegalArgumentException();
+    while (paramMessage.what != 2) {
+      return;
     }
-    int i = paramArrayOfByte.length;
-    if ((paramInt1 < 0) || (paramInt1 > i)) {
-      throw new ArrayIndexOutOfBoundsException();
-    }
-    paramInt2 -= paramInt1;
-    i = Math.min(paramInt2, i - paramInt1);
-    byte[] arrayOfByte = new byte[paramInt2];
-    System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, i);
-    return arrayOfByte;
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, byte[]... paramVarArgs)
-  {
-    int j = paramArrayOfByte.length;
-    int k = paramVarArgs.length;
-    int i = 0;
-    while (i < k)
+    Object localObject1 = bipk.a().a();
+    paramMessage = new ArrayList();
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      j += paramVarArgs[i].length;
-      i += 1;
+      i = ((Integer)((Iterator)localObject1).next()).intValue();
+      Object localObject3 = bipk.a().a(String.valueOf(i));
+      localObject2 = new ArrayList();
+      if (localObject3 != null)
+      {
+        localObject3 = ((List)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          Serializable localSerializable = (Serializable)((Iterator)localObject3).next();
+          try
+          {
+            ((ArrayList)localObject2).add((String)localSerializable);
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+        }
+      }
+      if (((ArrayList)localObject2).size() > 0) {
+        paramMessage.add(new StatItem(i, (ArrayList)localObject2));
+      }
     }
-    byte[] arrayOfByte = a(paramArrayOfByte, 0, j);
-    j = paramArrayOfByte.length;
-    k = paramVarArgs.length;
-    i = 0;
-    while (i < k)
+    if (paramMessage.size() > 0)
     {
-      paramArrayOfByte = paramVarArgs[i];
-      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, j, paramArrayOfByte.length);
-      j += paramArrayOfByte.length;
-      i += 1;
+      i = bipx.a(this.a).a(paramMessage);
+      bipx.b(this.a).put(i, paramMessage);
     }
-    return arrayOfByte;
-  }
-  
-  public static byte[] b(String paramString)
-  {
-    int j = paramString.length();
-    byte[] arrayOfByte = new byte[j / 2];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
-      i += 2;
-    }
-    return arrayOfByte;
+    bipx.a(this.a).sendEmptyMessageDelayed(2, bipx.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bipy
  * JD-Core Version:    0.7.0.1
  */

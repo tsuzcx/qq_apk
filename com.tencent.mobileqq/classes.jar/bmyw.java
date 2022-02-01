@@ -1,23 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-
-class bmyw
-  implements DialogInterface.OnShowListener
+public abstract interface bmyw<T>
 {
-  bmyw(bmyu parambmyu, boolean paramBoolean) {}
+  public abstract void a(int paramInt, String paramString, T paramT);
   
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    if (bmyu.a(this.jdField_a_of_type_Bmyu) != null) {
-      bmyu.a(this.jdField_a_of_type_Bmyu).onShow(paramDialogInterface);
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      bmyu.a(this.jdField_a_of_type_Bmyu).b();
-      return;
-    }
-    bmyu.a(this.jdField_a_of_type_Bmyu).a(true);
-  }
+  public abstract void a(T paramT);
 }
 
 

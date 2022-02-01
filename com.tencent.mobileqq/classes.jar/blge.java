@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class blge
-  implements View.OnClickListener
+public abstract interface blge
+  extends blgf
 {
-  blge(blgd paramblgd) {}
+  public abstract void b(boolean paramBoolean, String paramString);
   
-  public void onClick(View paramView)
-  {
-    if ((this.a.a != null) && (blgd.a(this.a) != null)) {
-      blgd.a(this.a).a(paramView, this.a.a, blgd.a(this.a));
-    }
-  }
+  public abstract void e(String paramString);
+  
+  public abstract void f(String paramString);
 }
 
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import amru;
 import android.text.TextUtils;
-import aoom;
-import awgf;
-import awgg;
+import aoql;
+import aqpv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -34,7 +34,7 @@ class DesktopDataManager$16
     {
       Object localObject2 = new DesktopDataManager.16.1(this, DesktopDataManager.access$2600(this.this$0, localAppInterface));
       this.this$0.runOnMainThread((Runnable)localObject2);
-      localObject2 = localAppInterface.getEntityManagerFactory().createEntityManager().a(MiniAppRedDotEntity.class, MiniAppRedDotEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+      localObject2 = localAppInterface.getEntityManagerFactory().createEntityManager().query(MiniAppRedDotEntity.class, MiniAppRedDotEntity.class.getSimpleName(), false, null, null, null, null, null, null);
       if ((localObject2 != null) && (((List)localObject2).size() > 0))
       {
         localObject2 = ((List)localObject2).iterator();
@@ -42,22 +42,22 @@ class DesktopDataManager$16
         {
           MiniAppRedDotEntity localMiniAppRedDotEntity = (MiniAppRedDotEntity)((Iterator)localObject2).next();
           if ((localMiniAppRedDotEntity != null) && (!TextUtils.isEmpty(localMiniAppRedDotEntity.appId))) {
-            DesktopDataManager.access$2900(this.this$0).put(localMiniAppRedDotEntity.appId, Integer.valueOf(localMiniAppRedDotEntity.wnsPushRedDotNum));
+            DesktopDataManager.access$2800(this.this$0).put(localMiniAppRedDotEntity.appId, Integer.valueOf(localMiniAppRedDotEntity.wnsPushRedDotNum));
           }
         }
       }
-      DesktopDataManager.access$3000(this.this$0);
+      DesktopDataManager.access$2900(this.this$0);
     }
     catch (Throwable localThrowable)
     {
       QLog.e("DesktopDataManager", 1, "initLocalDataRunnable error,", localThrowable);
       return;
     }
-    Object localObject1 = (amru)localThrowable.getBusinessHandler(148);
+    Object localObject1 = (aoql)localThrowable.getBusinessHandler(148);
     if (localObject1 != null) {
-      ((amru)localObject1).c();
+      ((aoql)localObject1).c();
     }
-    localObject1 = aoom.a("miniappgetpskeydomain", "qzone.qq.com");
+    localObject1 = aqpv.a("miniappgetpskeydomain", "qzone.qq.com");
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       QLog.d("DesktopDataManager", 1, "getPskeyDomain : " + (String)localObject1);
@@ -70,12 +70,12 @@ class DesktopDataManager$16
         }
       }
     }
-    DesktopDataManager.access$3102(this.this$0, true);
+    DesktopDataManager.access$3002(this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.16
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aybl
-  implements aybp
+class aybl
+  implements View.OnClickListener
 {
-  public aybl(EditActivity paramEditActivity) {}
+  aybl(aybk paramaybk) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if ((paramInt1 == 102) && (EditActivity.a(this.a).actionId != 0) && (" ".equals(EditActivity.a(this.a).actionText)))
+    if (((paramView.getTag() instanceof aybm)) && (this.a.a != null))
     {
-      ayay localayay = EditActivity.a(this.a).a(EditActivity.a(this.a).actionId);
-      if (localayay != null)
-      {
-        EditActivity.a(this.a).actionText = localayay.d;
-        EditActivity.a(this.a, false);
-      }
+      aybm localaybm = (aybm)paramView.getTag();
+      this.a.a.a(this.a, paramView, localaybm);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

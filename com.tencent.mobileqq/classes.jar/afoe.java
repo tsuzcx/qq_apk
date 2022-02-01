@@ -1,40 +1,29 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class afoe
-  implements bhuk
+public class afoe
+  implements bkhw
 {
-  afoe(afoc paramafoc, bhuf parambhuf) {}
+  public afoe(TroopRequestActivity paramTroopRequestActivity, bkho parambkho) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Bhuf.dismiss();
     switch (paramInt)
     {
     default: 
+      this.jdField_a_of_type_Bkho.dismiss();
       return;
     }
-    String str;
-    if (this.jdField_a_of_type_Afoc.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006)
-    {
-      str = this.jdField_a_of_type_Afoc.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      paramView = null;
+    if (bgnt.d(BaseApplication.getContext())) {
+      TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity);
     }
     for (;;)
     {
-      ChatActivityUtils.a(this.jdField_a_of_type_Afoc.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Afoc.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afoc.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Afoc.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, str, true, this.jdField_a_of_type_Afoc.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, "from_internal");
-      str = ChatActivityUtils.a(this.jdField_a_of_type_Afoc.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      paramView = str;
-      if (str == null) {
-        paramView = "";
-      }
-      azqs.b(this.jdField_a_of_type_Afoc.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "13", paramView, "", "");
-      azqs.b(this.jdField_a_of_type_Afoc.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
-      return;
-      paramView = this.jdField_a_of_type_Afoc.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      str = null;
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.t, "", "");
+      break;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131693948, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getTitleBarHeight());
     }
   }
 }

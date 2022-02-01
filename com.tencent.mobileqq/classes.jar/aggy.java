@@ -1,28 +1,14 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.widget.ListView;
-import com.tencent.widget.XPanelContainer;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
-public class aggy
-  implements Handler.Callback
+class aggy
 {
-  public aggy(PEPanel paramPEPanel) {}
+  int jdField_a_of_type_Int;
+  WeakReference<Bitmap> jdField_a_of_type_JavaLangRefWeakReference;
+  boolean jdField_a_of_type_Boolean;
+  int b;
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    PEPanel.a(this.a).setVisibility(0);
-    paramMessage = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
-    paramMessage.setDuration(200L);
-    PEPanel.a(this.a).startAnimation(paramMessage);
-    return true;
-  }
+  aggy(aggx paramaggx) {}
 }
 
 

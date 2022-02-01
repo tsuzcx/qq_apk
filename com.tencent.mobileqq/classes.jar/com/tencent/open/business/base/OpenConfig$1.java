@@ -1,13 +1,13 @@
 package com.tencent.open.business.base;
 
-import bfmx;
+import biug;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class OpenConfig$1
   implements Runnable
 {
-  public OpenConfig$1(bfmx parambfmx) {}
+  public OpenConfig$1(biug parambiug) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class OpenConfig$1
     try
     {
       this.this$0.a = new JSONObject(str);
-      bfmx.a(this.this$0, true);
+      biug.a(this.this$0, true);
       return;
     }
     catch (JSONException localJSONException) {}
@@ -23,7 +23,7 @@ public class OpenConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.business.base.OpenConfig.1
  * JD-Core Version:    0.7.0.1
  */

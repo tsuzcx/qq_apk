@@ -11,12 +11,12 @@ final class ShareUtils$3
   
   public void run()
   {
-    QQToast.a(this.val$activity, 0, 2131721492, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131298914));
+    QQToast.a(this.val$activity, 0, 2131719199, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131298998));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.ShareUtils.3
  * JD-Core Version:    0.7.0.1
  */

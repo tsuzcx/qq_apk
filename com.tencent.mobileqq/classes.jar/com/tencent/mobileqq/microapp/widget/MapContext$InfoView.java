@@ -48,7 +48,7 @@ class MapContext$InfoView
       try
       {
         i = Color.parseColor(paramString3);
-        paramString1 = new i(i, Paint.Style.FILL, 0.0F, 255, k);
+        paramString1 = new e(i, Paint.Style.FILL, 0.0F, 255, k);
         if (Build.VERSION.SDK_INT >= 16)
         {
           this.a.setBackground(paramString1);
@@ -90,7 +90,7 @@ class MapContext$InfoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.MapContext.InfoView
  * JD-Core Version:    0.7.0.1
  */

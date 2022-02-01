@@ -1,207 +1,112 @@
-import android.text.TextUtils;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.view.Gravity;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class bhbu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/IBaseDrawable;", "Landroid/graphics/drawable/Drawable;", "()V", "clipArea", "Landroid/graphics/RectF;", "forceLockWH", "", "tmpDrawRect", "Landroid/graphics/Rect;", "tmpViewRect", "calculateClipArea", "dstBounds", "calculateLockWH", "width", "", "height", "draw", "", "canvas", "Landroid/graphics/Canvas;", "getResID", "", "isRecyclyed", "onDraw", "left", "top", "right", "bottom", "recycle", "setDrawArea", "x0", "", "y0", "x1", "y1", "setLockWH", "b", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract class bhbu
+  extends Drawable
 {
-  public static ConcurrentHashMap<String, bhbv> a = new ConcurrentHashMap();
-  public static boolean a;
+  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private boolean jdField_a_of_type_Boolean;
+  private final Rect b = new Rect();
   
-  public static int a(String paramString)
+  private final Rect a(int paramInt1, int paramInt2, Rect paramRect)
   {
-    return a(paramString).a;
-  }
-  
-  public static bhbv a(String paramString)
-  {
-    if (a.containsKey(paramString)) {
-      return (bhbv)a.get(paramString);
-    }
-    bhbv localbhbv = new bhbv();
-    a.put(paramString, localbhbv);
-    return localbhbv;
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "unknown";
-    }
-    int i = a(paramString);
-    if (i == 0) {
-      return "baselib_not_download";
-    }
-    if (i == 1) {
-      return "baselib_download";
-    }
-    return "unknown";
-  }
-  
-  public static void a(String paramString)
-  {
-    paramString = a(paramString);
-    paramString.a = -1;
-    paramString.b = -1;
-    paramString.c = -1;
-    paramString.d = -1;
-    paramString.e = -1;
-  }
-  
-  public static void a(String paramString, boolean paramBoolean)
-  {
-    paramString = a(paramString);
-    if (paramBoolean)
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+    float f1 = paramRect.width() / this.jdField_a_of_type_AndroidGraphicsRect.width();
+    float f2 = paramRect.height() / this.jdField_a_of_type_AndroidGraphicsRect.height();
+    if (f1 > f2)
     {
-      paramString.a = 1;
-      paramString.b = 1;
-      paramString.c = 1;
+      this.jdField_a_of_type_AndroidGraphicsRect.right = paramRect.width();
+      this.jdField_a_of_type_AndroidGraphicsRect.bottom = ((int)(f1 * this.jdField_a_of_type_AndroidGraphicsRect.bottom));
     }
-    for (paramString.e = 1;; paramString.e = 0)
+    for (;;)
     {
-      if (paramString.d == -1) {
-        paramString.d = 0;
-      }
+      Gravity.apply(17, this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height(), paramRect, this.jdField_a_of_type_AndroidGraphicsRect);
+      return this.jdField_a_of_type_AndroidGraphicsRect;
+      this.jdField_a_of_type_AndroidGraphicsRect.bottom = paramRect.height();
+      this.jdField_a_of_type_AndroidGraphicsRect.right = ((int)(f2 * this.jdField_a_of_type_AndroidGraphicsRect.right));
+    }
+  }
+  
+  private final Rect a(Rect paramRect)
+  {
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    if (localRectF != null)
+    {
+      float f1 = localRectF.width();
+      float f2 = localRectF.height();
+      f1 = paramRect.width() / f1;
+      f2 = paramRect.height() / f2;
+      this.jdField_a_of_type_AndroidGraphicsRect.left = ((int)(paramRect.left - localRectF.left * f1));
+      Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      float f3 = paramRect.right;
+      localRect.right = ((int)(f1 * (1.0F - localRectF.right) + f3));
+      this.jdField_a_of_type_AndroidGraphicsRect.top = ((int)(paramRect.top - localRectF.top * f2));
+      localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      f1 = paramRect.bottom;
+      localRect.bottom = ((int)((1.0F - localRectF.bottom) * f2 + f1));
+    }
+    return this.jdField_a_of_type_AndroidGraphicsRect;
+  }
+  
+  public final void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    if ((paramFloat1 < 0.0F) || (paramFloat2 < 0.0F) || (paramFloat3 < 0.0F) || (paramFloat4 < 0.0F) || (paramFloat1 > 1.0F) || (paramFloat2 > 1.0F) || (paramFloat3 > 1.0F) || (paramFloat4 > 1.0F)) {
+      this.jdField_a_of_type_AndroidGraphicsRectF = ((RectF)null);
+    }
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+  }
+  
+  public abstract void a(@NotNull Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public final void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public final void draw(@NotNull Canvas paramCanvas)
+  {
+    Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
+    Rect localRect = getBounds();
+    Intrinsics.checkExpressionValueIsNotNull(localRect, "bounds");
+    if (localRect.isEmpty()) {
+      this.b.set(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight());
+    }
+    while (this.b.isEmpty())
+    {
       return;
-      paramString.a = 0;
-      paramString.b = 0;
-      paramString.c = 0;
+      this.b.set(localRect);
     }
-  }
-  
-  public static int b(String paramString)
-  {
-    return a(paramString).b;
-  }
-  
-  public static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "unknown";
-    }
-    int i = b(paramString);
-    if (i == 0) {
-      return "service_not_preload";
-    }
-    if (i == 1) {
-      return "service_preload";
-    }
-    return "unknown";
-  }
-  
-  public static void b(String paramString)
-  {
-    a.remove(paramString);
-  }
-  
-  public static void b(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if ((getIntrinsicHeight() > 0) && (getIntrinsicWidth() > 0))
     {
-      a(paramString).b = 1;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localRect = a(getIntrinsicWidth(), getIntrinsicHeight(), this.b);
+        a(paramCanvas, localRect.left, localRect.top, localRect.right, localRect.bottom);
+        return;
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsRectF != null)
+      {
+        localRect = a(this.b);
+        a(paramCanvas, localRect.left, localRect.top, localRect.right, localRect.bottom);
+        return;
+      }
+      a(paramCanvas, this.b.left, this.b.top, this.b.right, this.b.bottom);
       return;
     }
-    a(paramString).b = 0;
-  }
-  
-  public static int c(String paramString)
-  {
-    return a(paramString).c;
-  }
-  
-  public static String c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "unknown";
-    }
-    int i = c(paramString);
-    if (i == 0) {
-      return "apkg_not_download";
-    }
-    if (i == 1) {
-      return "apkg_download";
-    }
-    return "unknown";
-  }
-  
-  public static void c(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a(paramString).c = 1;
-      return;
-    }
-    a(paramString).c = 0;
-  }
-  
-  public static int d(String paramString)
-  {
-    return a(paramString).d;
-  }
-  
-  public static String d(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "unknown";
-    }
-    int i = d(paramString);
-    if (i == 0) {
-      return "hot_start";
-    }
-    if (i == 1) {
-      return "page_switch";
-    }
-    return "unknown";
-  }
-  
-  public static void d(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a(paramString).e = 1;
-      return;
-    }
-    a(paramString).e = 0;
-  }
-  
-  public static int e(String paramString)
-  {
-    return a(paramString).e;
-  }
-  
-  public static String e(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "unknown";
-    }
-    int i = e(paramString);
-    if (i == 0) {
-      return "service_not_preload";
-    }
-    if (i == 1) {
-      return "service_preload";
-    }
-    return "unknown";
-  }
-  
-  public static void e(String paramString, boolean paramBoolean)
-  {
-    paramString = a(paramString);
-    if ((paramString != null) && (paramBoolean))
-    {
-      if (paramString.c == -1) {
-        paramString.c = 1;
-      }
-      if (paramString.a == -1) {
-        paramString.a = 1;
-      }
-      if (paramString.b == -1) {
-        paramString.b = 1;
-      }
-    }
+    a(paramCanvas, this.b.left, this.b.top, this.b.right, this.b.bottom);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhbu
  * JD-Core Version:    0.7.0.1
  */

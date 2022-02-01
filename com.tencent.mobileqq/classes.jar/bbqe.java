@@ -1,16 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bbqe
-  extends Handler
+  implements View.OnClickListener
 {
   bbqe(bbqd parambbqd) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if ((paramMessage.what == bbqd.j) && (bbqd.e == this.a.k)) {
-      bbqd.a(this.a);
-    }
+    bbqd.a(this.a).a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

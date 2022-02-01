@@ -1,81 +1,70 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.util.MQLruCache;
-import android.util.Pair;
-import com.tencent.commonsdk.cache.Sizeable;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class azof
-  extends MQLruCache<String, Object>
 {
-  public azof(Integer paramInteger)
+  public static azoc a(QQAppInterface paramQQAppInterface, azfe paramazfe)
   {
-    super(paramInteger.intValue());
-  }
-  
-  protected int a(String paramString, Object paramObject)
-  {
-    if ((paramObject instanceof Pair)) {
-      return ((Integer)((Pair)paramObject).second).intValue();
-    }
-    if ((paramObject instanceof Bitmap))
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramQQAppInterface != null)
     {
-      paramString = (Bitmap)paramObject;
-      return paramString.getRowBytes() * paramString.getHeight();
-    }
-    if ((paramObject instanceof BitmapDrawable))
-    {
-      paramObject = ((BitmapDrawable)paramObject).getBitmap();
-      if (paramObject != null)
+      localObject1 = localObject2;
+      if (paramazfe != null)
       {
-        int i = paramObject.getRowBytes();
-        return paramObject.getHeight() * i;
+        localObject1 = new azoc();
+        ((azoc)localObject1).jdField_a_of_type_Boolean = a(paramQQAppInterface, paramazfe);
+        if (paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
+          break label84;
+        }
+        i = 1;
       }
     }
-    else if ((paramObject instanceof sfc))
+    while ((i != 0) && (paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard != null))
     {
-      paramObject = ((sfc)paramObject).a();
-      if (paramObject != null) {
-        return sfm.a(paramObject);
+      paramazfe = paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard;
+      if (paramazfe.iNewCount > 0)
+      {
+        ((azoc)localObject1).b = true;
+        ((azoc)localObject1).jdField_a_of_type_Int = paramazfe.iNewCount;
+        return localObject1;
+        label84:
+        i = 0;
+      }
+      else
+      {
+        paramQQAppInterface = (axzw)paramQQAppInterface.getManager(160);
+        if (!paramQQAppInterface.a(paramQQAppInterface.a(10016), false)) {
+          break label140;
+        }
       }
     }
-    else if ((paramObject instanceof Sizeable))
+    label140:
+    for (int i = 1;; i = 0)
     {
-      return ((Sizeable)paramObject).getByteSize();
+      if ((paramazfe.iUpgradeCount > 0) || (i != 0))
+      {
+        ((azoc)localObject1).b = true;
+        ((azoc)localObject1).jdField_a_of_type_Int = 0;
+      }
+      return localObject1;
     }
-    zie.a(paramString, zie.m);
-    return 204800;
   }
   
-  public Object a(String paramString, Object paramObject)
+  private static boolean a(QQAppInterface paramQQAppInterface, azfe paramazfe)
   {
-    Object localObject = paramObject;
-    if ((paramObject instanceof sfc)) {
-      localObject = ((sfc)paramObject).a();
+    if ((paramQQAppInterface == null) || (paramazfe == null) || (paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard == null) || ((paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) && (!ProfileActivity.AllInOne.b(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))) {}
+    while (((paramazfe.b) && (TroopInfo.isQidianPrivateTroop(paramQQAppInterface, paramazfe.jdField_a_of_type_JavaLangString))) || (bgsg.W(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) || (paramazfe.jdField_a_of_type_ComTencentMobileqqDataCard.medalSwitchDisable) || (bgjw.b(paramazfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+      return false;
     }
-    return super.put(paramString, localObject);
-  }
-  
-  public Object a(String paramString, Object paramObject, byte paramByte)
-  {
-    Object localObject = paramObject;
-    if ((paramObject instanceof sfc)) {
-      localObject = ((sfc)paramObject).a();
-    }
-    return super.put(paramString, localObject, paramByte);
-  }
-  
-  public void a(String paramString, int paramInt) {}
-  
-  protected void a(boolean paramBoolean, String paramString, Object paramObject1, Object paramObject2)
-  {
-    if ((paramObject1 instanceof sfc)) {
-      ((sfc)paramObject1).a();
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azof
  * JD-Core Version:    0.7.0.1
  */

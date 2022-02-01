@@ -6,7 +6,6 @@ import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
-import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
 import com.tencent.ttpic.openapi.filter.ReshapeType;
 import com.tencent.ttpic.openapi.model.CameraBeautyParams;
@@ -25,7 +24,6 @@ import java.util.Map;
 
 public class RemodelFilter_new
 {
-  private static final String PERF_LOG = "[showPreview]";
   private String[] GPU_LIST = { "Mali", "PowerVR Rogue G6200" };
   private CameraBeautyParams cameraBeautyParams = new CameraBeautyParams();
   private BaseFilter copyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
@@ -467,7 +465,6 @@ public class RemodelFilter_new
           localFrame.unlock();
           return paramFrame;
         }
-        BenchUtil.benchStart("[showPreview]processReshape4 prepare");
         Object localObject1 = FrameBufferCache.getInstance().get(65, 65);
         FrameUtil.clearFrame((Frame)localObject1, 0.0F, 0.0F, 0.0F, 0.0F, 65, 65);
         HashMap localHashMap = new HashMap();
@@ -479,7 +476,6 @@ public class RemodelFilter_new
         localHashMap.put("cropSize", new float[] { k, k });
         localHashMap.put("texMapSize", new float[] { 67.0F, 67.0F });
         this.reshapeCombineFilter_new.updateSize(m / paramFrame.width, (m + k) / paramFrame.width, n / paramFrame.height, (n + k) / paramFrame.height);
-        BenchUtil.benchEnd("[showPreview]processReshape4 prepare");
         Object localObject2;
         Object localObject3;
         Object localObject4;
@@ -492,7 +488,6 @@ public class RemodelFilter_new
           int j = 0;
           while (j < paramList.size())
           {
-            BenchUtil.benchStart("[showPreview]processReshape4 initFilter 0");
             this.facePoints = VideoMaterialUtil.copyList((List)paramList.get(j));
             localObject2 = FaceDetectUtil.facePointf83to90(this.facePoints);
             localObject3 = ((List)localObject2).iterator();
@@ -502,33 +497,24 @@ public class RemodelFilter_new
               ((PointF)localObject4).x = ((float)(((PointF)localObject4).x / paramDouble));
               ((PointF)localObject4).y = ((float)(((PointF)localObject4).y / paramDouble));
             }
-            BenchUtil.benchEnd("[showPreview]processReshape4 initFilter 0");
-            BenchUtil.benchStart("[showPreview]processReshape4 initFilter4");
             initFilter4((List)localObject2, (float[])paramList1.get(j), m, n, k);
-            BenchUtil.benchEnd("[showPreview]processReshape4 initFilter4");
             localObject2 = localObject1;
             if (this.cameraBeautyParams.needRenderEyeNoseLips())
             {
-              BenchUtil.benchStart("[showPreview]processReshape4 reshapeEyeNoseLipsFilter");
               localObject2 = this.reshapeEyeNoseLipsFilter_new.RenderProcess(((Frame)localObject1).getTextureId(), 65, 65);
               ((Frame)localObject1).unlock();
-              BenchUtil.benchEnd("[showPreview]processReshape4 reshapeEyeNoseLipsFilter");
             }
             if (!this.cameraBeautyParams.needRenderWholeFace()) {
-              break label969;
+              break label878;
             }
-            BenchUtil.benchStart("[showPreview]processReshape4 reshapeWholeFaceFilter");
             localObject1 = this.reshapeWholeFaceFilter_new.RenderProcess(((Frame)localObject2).getTextureId(), 65, 65);
             ((Frame)localObject2).unlock();
-            BenchUtil.benchEnd("[showPreview]processReshape4 reshapeWholeFaceFilter");
             j += 1;
           }
         }
         for (paramList = (List<List<PointF>>)localObject1;; paramList = (List<List<PointF>>)localObject1)
         {
-          BenchUtil.benchStart("[showPreview]processReshape4 copyFilter 0");
           paramList1 = this.copyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
-          BenchUtil.benchEnd("[showPreview]processReshape4 copyFilter 0");
           localObject1 = FrameBufferCache.getInstance().get(67, 67);
           FrameUtil.clearFrame((Frame)localObject1, 0.0F, 0.0F, 0.0F, 0.0F, 67, 67);
           this.transformCopyFilter.setPositions(AlgoUtils.calPositions(1.0F, 66.0F, 66.0F, 1.0F, 67, 67));
@@ -538,7 +524,6 @@ public class RemodelFilter_new
           FrameUtil.clearFrame((Frame)localObject2, 0.0F, 0.0F, 0.0F, 0.0F, 67, 67);
           this.transformCopyFilter.OnDrawFrameGLSL();
           this.transformCopyFilter.renderTexture(localFrame.getTextureId(), 67, 67);
-          BenchUtil.benchStart("[showPreview]processReshape4 reshapeCombineFilter");
           localHashMap.put("vType", Integer.valueOf(i));
           GlUtil.saveTextureToRgbaBuffer(paramList.getTextureId(), 0, 0, paramList.width, paramList.height, this.mData, paramList.getFBO());
           localObject3 = VideoMaterialUtil.toFlatArray(getImage(66, 66));
@@ -548,13 +533,12 @@ public class RemodelFilter_new
           this.reshapeCombineFilter_new.setParam(localHashMap);
           this.reshapeCombineFilter_new.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, paramList1);
           paramFrame.unlock();
-          BenchUtil.benchEnd("[showPreview]processReshape4 reshapeCombineFilter");
           paramList.unlock();
           localFrame.unlock();
           ((Frame)localObject1).unlock();
           ((Frame)localObject2).unlock();
           return paramList1;
-          label969:
+          label878:
           localObject1 = localObject2;
           break;
         }
@@ -585,7 +569,6 @@ public class RemodelFilter_new
           localFrame.unlock();
           return paramFrame;
         }
-        BenchUtil.benchStart("[showPreview]processReshape4 prepare");
         Object localObject1 = FrameBufferCache.getInstance().get(65, 65);
         FrameUtil.clearFrame((Frame)localObject1, 0.0F, 0.0F, 0.0F, 0.0F, 65, 65);
         HashMap localHashMap = new HashMap();
@@ -597,7 +580,6 @@ public class RemodelFilter_new
         localHashMap.put("cropSize", new float[] { k, k });
         localHashMap.put("texMapSize", new float[] { 67.0F, 67.0F });
         this.reshapeCombineFilter_new.updateSize(m / paramFrame.width, (m + k) / paramFrame.width, n / paramFrame.height, (n + k) / paramFrame.height);
-        BenchUtil.benchEnd("[showPreview]processReshape4 prepare");
         Object localObject2;
         if ((i == 1) || (i == 3))
         {
@@ -608,7 +590,6 @@ public class RemodelFilter_new
           int j = 0;
           while (j < paramList.size())
           {
-            BenchUtil.benchStart("[showPreview]processReshape4 initFilter 0");
             this.facePoints = VideoMaterialUtil.copyList((List)paramList.get(j));
             localObject2 = FaceDetectUtil.facePointf83to90(this.facePoints);
             Iterator localIterator = ((List)localObject2).iterator();
@@ -618,33 +599,24 @@ public class RemodelFilter_new
               localPointF.x = ((float)(localPointF.x / paramDouble));
               localPointF.y = ((float)(localPointF.y / paramDouble));
             }
-            BenchUtil.benchEnd("[showPreview]processReshape4 initFilter 0");
-            BenchUtil.benchStart("[showPreview]processReshape4 initFilter4");
             initFilter4((List)localObject2, (float[])paramList1.get(j), m, n, k);
-            BenchUtil.benchEnd("[showPreview]processReshape4 initFilter4");
             localObject2 = localObject1;
             if (this.cameraBeautyParams.needRenderEyeNoseLips())
             {
-              BenchUtil.benchStart("[showPreview]processReshape4 reshapeEyeNoseLipsFilter");
               localObject2 = this.reshapeEyeNoseLipsFilter_new.RenderProcess(((Frame)localObject1).getTextureId(), 65, 65);
               ((Frame)localObject1).unlock();
-              BenchUtil.benchEnd("[showPreview]processReshape4 reshapeEyeNoseLipsFilter");
             }
             if (!this.cameraBeautyParams.needRenderWholeFace()) {
-              break label915;
+              break label824;
             }
-            BenchUtil.benchStart("[showPreview]processReshape4 reshapeWholeFaceFilter");
             localObject1 = this.reshapeWholeFaceFilter_new.RenderProcess(((Frame)localObject2).getTextureId(), 65, 65);
             ((Frame)localObject2).unlock();
-            BenchUtil.benchEnd("[showPreview]processReshape4 reshapeWholeFaceFilter");
             j += 1;
           }
         }
         for (paramList = (List<List<PointF>>)localObject1;; paramList = (List<List<PointF>>)localObject1)
         {
-          BenchUtil.benchStart("[showPreview]processReshape4 copyFilter 0");
           paramList1 = this.copyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
-          BenchUtil.benchEnd("[showPreview]processReshape4 copyFilter 0");
           localObject1 = FrameBufferCache.getInstance().get(67, 67);
           FrameUtil.clearFrame((Frame)localObject1, 0.0F, 0.0F, 0.0F, 0.0F, 67, 67);
           this.transformCopyFilter.setPositions(AlgoUtils.calPositions(1.0F, 66.0F, 66.0F, 1.0F, 67, 67));
@@ -654,20 +626,18 @@ public class RemodelFilter_new
           FrameUtil.clearFrame((Frame)localObject2, 0.0F, 0.0F, 0.0F, 0.0F, 67, 67);
           this.transformCopyFilter.OnDrawFrameGLSL();
           this.transformCopyFilter.renderTexture(localFrame.getTextureId(), 67, 67);
-          BenchUtil.benchStart("[showPreview]processReshape4 reshapeCombineFilter");
           localHashMap.put("vType", Integer.valueOf(i));
           localHashMap.put("inputImageTexture2", Integer.valueOf(paramList.getTextureId()));
           localHashMap.put("inputImageTexture3", Integer.valueOf(localFrame.getTextureId()));
           this.reshapeCombineFilter_new.setParam(localHashMap);
           this.reshapeCombineFilter_new.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, paramList1);
           paramFrame.unlock();
-          BenchUtil.benchEnd("[showPreview]processReshape4 reshapeCombineFilter");
           paramList.unlock();
           localFrame.unlock();
           ((Frame)localObject1).unlock();
           ((Frame)localObject2).unlock();
           return paramList1;
-          label915:
+          label824:
           localObject1 = localObject2;
           break;
         }
@@ -874,7 +844,7 @@ public class RemodelFilter_new
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.RemodelFilter_new
  * JD-Core Version:    0.7.0.1
  */

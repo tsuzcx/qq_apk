@@ -1,50 +1,469 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.vas.FriendCloneSettingFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.graphics.BitmapFactory.Options;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.highway.config.ConfigManager;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.FileNotFoundException;
+import java.io.RandomAccessFile;
+import java.net.URL;
+import java.util.HashMap;
+import msf.msgsvc.msg_ctrl.MsgCtrl;
 
 public class bdst
-  extends amcd
+  extends bdtc
+  implements Handler.Callback, bava
 {
-  public bdst(FriendCloneSettingFragment paramFriendCloneSettingFragment) {}
+  Handler a;
+  protected aywr a;
   
-  public void d(boolean paramBoolean, Object paramObject)
+  public bdst(bdsv parambdsv, bdzn parambdzn)
   {
-    int i;
-    if ((paramBoolean) && ((paramObject instanceof ArrayList)))
+    super(parambdsv, parambdzn);
+    this.jdField_a_of_type_AndroidOsHandler = new bkgm(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Aywr = aywq.a(parambdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, parambdzn);
+  }
+  
+  private void r()
+  {
+    if (b())
     {
-      paramObject = (ArrayList)paramObject;
-      i = ((Integer)paramObject.get(1)).intValue();
-      if (i == 257) {
-        if (((Boolean)paramObject.get(2)).booleanValue())
-        {
-          this.a.a(1);
-          this.a.jdField_a_of_type_Int = 1;
-        }
+      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+        com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 2, "handleQuickSendFailed:" + a());
       }
+      bdzx.a(a(), 65537, null, null).downloadImediatly();
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Aywr != null) {
+      r();
+    }
+    return super.a();
+  }
+  
+  protected int a(MessageForPic paramMessageForPic)
+  {
+    int i = 6;
+    if (ahdu.a(paramMessageForPic)) {
+      i = 5;
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if (this.a.jdField_a_of_type_Beub != null) {
-        this.a.jdField_a_of_type_Beub.b();
+      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+        com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 2, "getPicSourceReport:" + this.jdField_a_of_type_Bdzn.e + " source:" + i);
       }
-      return;
-      this.a.a(0);
-      this.a.jdField_a_of_type_Int = 0;
-      continue;
-      if (i == 258)
+      return i;
+      switch (this.jdField_a_of_type_Bdzn.e)
       {
-        this.a.jdField_a_of_type_Int = this.a.b;
-        continue;
-        this.a.a(this.a.jdField_a_of_type_Int);
-        if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) {
-          QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, alud.a(2131705258), 0).a();
-        }
-        QLog.e("IphoneTitleBarFragment", 0, "onFriendCloneAuth: failed. ");
+      default: 
+        break;
+      case 1009: 
+      case 1031: 
+      case 1048: 
+        i = 4;
+        break;
+      case 1052: 
+        i = 2;
+        break;
+      case 1050: 
+        i = 1;
+        break;
+      case 1051: 
+        i = 3;
+        break;
+      case 1053: 
+        i = 7;
       }
     }
+  }
+  
+  protected MessageForPic a()
+  {
+    Object localObject = this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if ((localObject instanceof MessageForPic)) {
+      localObject = (MessageForPic)localObject;
+    }
+    MessageForPic localMessageForPic;
+    do
+    {
+      return localObject;
+      if (!(localObject instanceof MessageForStructing)) {
+        break;
+      }
+      localObject = (MessageForStructing)localObject;
+      if ((((MessageForStructing)localObject).structingMsg == null) || (!(((MessageForStructing)localObject).structingMsg instanceof StructMsgForImageShare))) {
+        break;
+      }
+      localObject = ((StructMsgForImageShare)((MessageForStructing)localObject).structingMsg).getFirstImageElement();
+      if (localObject == null) {
+        break;
+      }
+      localMessageForPic = ((bcxy)localObject).a;
+      localObject = localMessageForPic;
+    } while (localMessageForPic != null);
+    return null;
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, bdsz parambdsz)
+  {
+    super.a(paramInt, paramString1, paramString2, parambdsz);
+    bean.a(this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramInt, paramString1, paramString2);
+  }
+  
+  public void a(bebv parambebv, beck parambeck)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(-255);
+  }
+  
+  protected void a(bece parambece)
+  {
+    if ((this.jdField_a_of_type_Aywr != null) && (!this.jdField_a_of_type_Aywr.jdField_a_of_type_Boolean))
+    {
+      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+        com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 2, "changeRequest,file Size:" + parambece.jdField_a_of_type_Long + " md5:" + parambece.jdField_a_of_type_ArrayOfByte + " busiType:" + this.jdField_a_of_type_Bdzn.e + " quickSendObject:" + this.jdField_a_of_type_Aywr);
+      }
+      parambece.jdField_a_of_type_Long = this.jdField_a_of_type_Aywr.jdField_a_of_type_Long;
+      parambece.jdField_a_of_type_ArrayOfByte = bgmj.a(this.jdField_a_of_type_Aywr.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Bdzn.e == 1042) {
+        parambece.e = 1;
+      }
+    }
+  }
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    d(1003);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    if (!com.tencent.qphone.base.util.QLog.isColorLevel()) {}
+    while (ConfigManager.mUseHardCodeIp != 1) {
+      return;
+    }
+    bcsz.a("BDH_UPLOAD_USE_HARDCORD_IP", (String)this.jdField_a_of_type_JavaUtilHashMap.get("serverip"));
+    ConfigManager.mUseHardCodeIp = 0;
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  {
+    String str2 = this.d;
+    if (this.f == null) {}
+    for (String str1 = this.l;; str1 = this.f)
+    {
+      a("actRichMediaNetMonitor_picUp", paramBoolean, paramInt, paramString1, paramString2, str2, str1, null);
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean, long paramLong) {}
+  
+  protected boolean a()
+  {
+    if (this.jdField_a_of_type_Bdzn.h)
+    {
+      b(9333, "Server MD5 fast forward missed");
+      d();
+      return false;
+    }
+    if ((this.jdField_a_of_type_Aywr != null) && (!this.jdField_a_of_type_Aywr.jdField_a_of_type_Boolean))
+    {
+      this.jdField_a_of_type_Aywr.jdField_a_of_type_Boolean = true;
+      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+        com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 2, "QuickSendFail");
+      }
+      f();
+      return false;
+    }
+    return true;
+  }
+  
+  protected boolean a(boolean paramBoolean)
+  {
+    if ((this.jdField_b_of_type_ArrayOfByte == null) && (!h()))
+    {
+      b(9041, "No Local MD5");
+      d();
+      return false;
+    }
+    if ((paramBoolean) && ((this.jdField_q_of_type_Int == 0) || (this.p == 0)))
+    {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      localOptions.inSampleSize = 1;
+      bgmo.a(this.jdField_a_of_type_Bdzn.i, localOptions);
+      this.jdField_q_of_type_Int = localOptions.outHeight;
+      this.p = localOptions.outWidth;
+      Object localObject = this.jdField_a_of_type_Bdzn.jdField_a_of_type_JavaLangObject;
+      if ((localObject != null) && ((localObject instanceof bdzr)) && (((bdzr)localObject).jdField_a_of_type_Boolean) && (bdxz.a(this.jdField_a_of_type_Bdzn.i)))
+      {
+        this.jdField_q_of_type_Int = localOptions.outWidth;
+        this.p = localOptions.outHeight;
+        if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+          b("doStart", "raw pic is Landscape,swap w,h; options.outWidth = " + localOptions.outWidth + ",options.outHeight = " + localOptions.outHeight + ",mWidth = " + this.p + ",mHeight = " + this.jdField_q_of_type_Int);
+        }
+      }
+    }
+    if (this.jdField_b_of_type_JavaIoRandomAccessFile == null) {
+      try
+      {
+        this.jdField_b_of_type_JavaIoRandomAccessFile = new RandomAccessFile(this.jdField_a_of_type_Bdzn.i, "r");
+        if (this.jdField_b_of_type_JavaIoRandomAccessFile == null)
+        {
+          b(9303, "read file error");
+          d();
+          return false;
+        }
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        for (;;)
+        {
+          localFileNotFoundException.printStackTrace();
+          this.jdField_b_of_type_JavaIoRandomAccessFile = null;
+        }
+      }
+    }
+    if (((this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) && ((this.jdField_q_of_type_Int > 30000) || (this.p > 30000) || (this.p * this.jdField_q_of_type_Int > 200000000)))
+    {
+      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+        com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 2, "checkFileStandard fail，mHeight:" + this.jdField_q_of_type_Int + " mWidth:" + this.p);
+      }
+      b(90632, "PicOverStandard");
+      d();
+      return false;
+    }
+    return true;
+  }
+  
+  public int[] a()
+  {
+    int[] arrayOfInt = new int[5];
+    arrayOfInt[0] = ((int)this.jdField_q_of_type_Long);
+    arrayOfInt[1] = bley.a(this.jdField_a_of_type_Bdzn.i);
+    arrayOfInt[2] = this.p;
+    arrayOfInt[3] = this.jdField_q_of_type_Int;
+    arrayOfInt[4] = 0;
+    int i = bgmo.a(this.jdField_a_of_type_Bdzn.i);
+    if ((i == 90) || (270 == i))
+    {
+      arrayOfInt[2] = this.jdField_q_of_type_Int;
+      arrayOfInt[3] = this.p;
+    }
+    com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 1, "rotateDegree : " + i + ", params[2] : " + arrayOfInt[2] + " params[3] : " + arrayOfInt[3]);
+    return arrayOfInt;
+  }
+  
+  public void aN_()
+  {
+    super.aN_();
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(-255, 2000L);
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    HashMap localHashMap;
+    if ((this.jdField_a_of_type_Aywr != null) && (!this.jdField_a_of_type_Aywr.jdField_a_of_type_Boolean))
+    {
+      localHashMap = new HashMap();
+      if (!paramBoolean) {
+        break label96;
+      }
+    }
+    label96:
+    for (String str = "1";; str = "0")
+    {
+      localHashMap.put("param_succ_flag", str);
+      if (this.jdField_a_of_type_Bdzn.e == 1042) {
+        bctj.a(BaseApplication.getContext()).a(null, "HotPicQuickSend", paramBoolean, 0L, 0L, localHashMap, "");
+      }
+      bctj.a(BaseApplication.getContext()).a(null, "PicQuickSend", paramBoolean, 0L, 0L, localHashMap, "");
+      return;
+    }
+  }
+  
+  protected boolean b()
+  {
+    MessageForPic localMessageForPic = a();
+    return (localMessageForPic != null) && (localMessageForPic.imageType == 2000);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(-255);
+  }
+  
+  protected int d()
+  {
+    switch (this.jdField_a_of_type_Bdzn.e)
+    {
+    default: 
+      return 0;
+    case 1008: 
+      return 2;
+    case 1007: 
+      return 3;
+    case 1009: 
+    case 1031: 
+      return 4;
+    case 1006: 
+      return 5;
+    case 1027: 
+      return 6;
+    case 1034: 
+      return 7;
+    case 1037: 
+      return 8;
+    }
+    return 9;
+  }
+  
+  void d()
+  {
+    super.d();
+    if ((this.jdField_a_of_type_Aywr != null) && (this.jdField_a_of_type_Aywr.jdField_a_of_type_Boolean)) {
+      r();
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(-255);
+    if (this.jdField_a_of_type_Bdzn != null)
+    {
+      if (!awmr.b(this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
+        break label67;
+      }
+      awmr.b(String.valueOf(this.j), 3);
+    }
+    label67:
+    while (!awmr.a(this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
+      return;
+    }
+    awmr.b(String.valueOf(this.j), 2);
+  }
+  
+  void e()
+  {
+    Object localObject2 = null;
+    super.e();
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(-255);
+    if (this.jdField_a_of_type_Aywr != null)
+    {
+      localObject1 = this.jdField_a_of_type_Aywr.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_Aywr.jdField_a_of_type_Boolean) {
+        break label236;
+      }
+      if (localObject1 != null)
+      {
+        localObject1 = bdzx.a((String)localObject1, 65537);
+        if (localObject1 == null) {
+          break label264;
+        }
+      }
+    }
+    label264:
+    for (Object localObject1 = ((URL)localObject1).toString();; localObject1 = null)
+    {
+      if (!bdsh.b((String)localObject1))
+      {
+        String str = bdsh.d((String)localObject1);
+        if (!b()) {
+          break label183;
+        }
+        localObject1 = this.jdField_a_of_type_Bdzn.i;
+        boolean bool = bgmg.d((String)localObject1, str);
+        if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+          com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 2, "quick send copy file:" + this.jdField_a_of_type_Bdzn.i + " to:" + str + " ret:" + bool);
+        }
+      }
+      label155:
+      if (this.jdField_a_of_type_Bdzn != null)
+      {
+        if (!awmr.b(this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
+          break label243;
+        }
+        awmr.b("0", 3);
+      }
+      label183:
+      label236:
+      label243:
+      while (!awmr.a(this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))
+      {
+        return;
+        URL localURL = bdzx.a(this.jdField_a_of_type_Aywr.jdField_a_of_type_JavaLangString, 65537);
+        localObject1 = localObject2;
+        if (localURL != null) {
+          localObject1 = localURL.toString();
+        }
+        if (bdsh.b((String)localObject1))
+        {
+          localObject1 = bdsh.d((String)localObject1);
+          break;
+        }
+        localObject1 = this.jdField_a_of_type_Bdzn.i;
+        break;
+        r();
+        break label155;
+      }
+      awmr.b("0", 2);
+      return;
+    }
+  }
+  
+  protected void f() {}
+  
+  protected void g()
+  {
+    if ((this.jdField_a_of_type_Aywr != null) && (!this.jdField_a_of_type_Aywr.jdField_a_of_type_Boolean))
+    {
+      this.jdField_q_of_type_Long = this.jdField_a_of_type_Aywr.jdField_a_of_type_Long;
+      this.c = this.jdField_a_of_type_Aywr.jdField_a_of_type_JavaLangString;
+      this.jdField_b_of_type_ArrayOfByte = bgmj.a(this.c);
+      if (getClass().equals(bdvb.class)) {
+        this.d = (this.c + "." + this.e);
+      }
+    }
+  }
+  
+  protected void h()
+  {
+    try
+    {
+      if ((!auyg.a().f()) && (!auyg.a().h()) && (!auyg.a().g()))
+      {
+        if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+          com.tencent.TMG.utils.QLog.d("BasePicUploadProcessor", 0, "a , s close !");
+        }
+      }
+      else if ((this.jdField_a_of_type_Bdzn != null) && (this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)))
+      {
+        msg_ctrl.MsgCtrl localMsgCtrl = auxv.a(this.jdField_a_of_type_Bdzn.i);
+        if (localMsgCtrl != null)
+        {
+          ((MessageForPic)this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgCtrl = localMsgCtrl;
+          this.jdField_a_of_type_JavaUtilHashMap.put("param_amc", "1");
+          return;
+        }
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_Bduk.d < 1002) {
+      d(1002);
+    }
+    return true;
   }
 }
 

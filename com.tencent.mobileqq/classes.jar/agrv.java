@@ -1,25 +1,61 @@
-class agrv
-  implements bcro
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.widget.BubbleImageView;
+
+public class agrv
+  extends afwr
 {
-  agrv(agrn paramagrn) {}
+  public agru a;
+  public ImageView a;
+  public URLDrawable a;
+  public PicProgressView a;
+  public BubbleImageView a;
+  final int e = 0;
+  final int f = 1;
+  final int g = 2;
+  final int h = 3;
+  final int i = 4;
+  final int j = 5;
   
-  public void a(boolean paramBoolean, String paramString)
+  public agrv(agrq paramagrq) {}
+  
+  int a(MessageForPic paramMessageForPic)
   {
-    if ((paramBoolean) && (this.a.g.equals(paramString)))
+    if (!paramMessageForPic.isSendFromLocal())
     {
-      this.a.X = true;
-      paramString = (afgn)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
+      if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)) {
+        return 1;
       }
     }
-    do
+    else
     {
-      return;
-      this.a.X = false;
-      paramString = (afgn)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
+      if (paramMessageForPic.size > 0L) {
+        return 2;
+      }
+      paramMessageForPic = this.jdField_a_of_type_Agrq.a.a().a(paramMessageForPic.frienduin, paramMessageForPic.uniseq);
+      if ((paramMessageForPic instanceof bdsx))
+      {
+        paramMessageForPic = (bdsx)paramMessageForPic;
+        long l = paramMessageForPic.c();
+        if ((l == 1005L) || (l == 1006L) || (l == 1004L) || (paramMessageForPic.d() == 1003L)) {
+          return 4;
+        }
+        return 3;
+      }
+      return 5;
+    }
+    return 0;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Agru != null) {
+      return this.jdField_a_of_type_Agru.b;
+    }
+    return false;
   }
 }
 

@@ -1,50 +1,74 @@
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
-import android.view.ViewStub;
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
+import android.widget.RadioGroup;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderBaseTabFragment;
+import java.util.ArrayList;
 
-class ttx
-  extends trw
+public class ttx
+  implements ViewPager.OnPageChangeListener
 {
-  ttx(ttr paramttr) {}
+  public ttx(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public QCircleInitBean a()
+  private void a(int paramInt)
   {
-    return ttr.a(this.a);
-  }
-  
-  public QCirclePolymorphicAniView a()
-  {
-    if (ttr.a(this.a) != null) {
-      return (QCirclePolymorphicAniView)ttr.a(this.a).findViewById(2131373208);
-    }
-    return null;
-  }
-  
-  public tuz a()
-  {
-    if ((ttr.a(this.a) == null) && (ttr.a(this.a) != null))
+    if (paramInt == FolderBaseTabFragment.a)
     {
-      ViewStub localViewStub = (ViewStub)ttr.a(this.a).findViewById(2131373151);
-      ttr.a(this.a, new tuz(this.a.a()));
-      ttr.a(this.a).a(this.a.a(), localViewStub);
+      if (ServiceAccountFolderActivityNew.a(this.a)) {}
+      for (str = "1";; str = "2")
+      {
+        aaxb.b("auth_discover", "tofollow", 0, 0, new String[] { str });
+        blyl.a().a("", "", "qq_live", "tab_page", "", 100, 1, System.currentTimeMillis(), "");
+        return;
+      }
     }
-    return ttr.a(this.a);
+    if (ServiceAccountFolderActivityNew.a(this.a)) {}
+    for (String str = "1";; str = "2")
+    {
+      aaxb.b("auth_follow", "todiscover", 0, 0, new String[] { str });
+      blyl.a().a("", "", "qq_live", "find_page", "", 100, 1, System.currentTimeMillis(), "");
+      return;
+    }
   }
   
-  public void a(Object paramObject)
-  {
-    this.a.b("share_action_show_share_sheet", paramObject);
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void a(ttf paramttf)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    this.a.a().a("poly_zan_list_show", paramttf);
+    zzx.a();
+    a(paramInt);
+    if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).getChildCount() > paramInt))
+    {
+      ServiceAccountFolderActivityNew.a(this.a).getChildAt(paramInt).performClick();
+      ServiceAccountFolderActivityNew.a(this.a, false);
+    }
+    ((FolderBaseTabFragment)ServiceAccountFolderActivityNew.a(this.a).get(paramInt)).a(this.a, paramInt);
+    long l1;
+    long l2;
+    if (ServiceAccountFolderActivityNew.a(this.a) > 0L)
+    {
+      l1 = System.currentTimeMillis();
+      l2 = ServiceAccountFolderActivityNew.a(this.a);
+      if (ServiceAccountFolderActivityNew.a(this.a) != FolderBaseTabFragment.a) {
+        break label173;
+      }
+    }
+    label173:
+    for (String str = "auth_follow";; str = "auth_discover")
+    {
+      aaxb.a(str, "exp", 0, 0, new String[] { String.valueOf(l1 - l2) });
+      ServiceAccountFolderActivityNew.a(this.a, 0L);
+      ServiceAccountFolderActivityNew.a(this.a, System.currentTimeMillis());
+      ServiceAccountFolderActivityNew.a(this.a, paramInt);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ttx
  * JD-Core Version:    0.7.0.1
  */

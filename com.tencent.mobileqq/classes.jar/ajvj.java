@@ -1,34 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.subtitles.EncodeRunnable;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
 
 public class ajvj
+  extends BroadcastReceiver
 {
-  public int a;
-  public long a;
-  public Handler a;
-  public axsr a;
-  public EncodeRunnable a;
-  public INetInfoHandler a;
-  public Thread a;
-  public WeakReference<ajud> a;
-  public HashMap<Integer, ajvi> a;
-  public boolean a;
-  public int b = 0;
-  public long b;
-  public boolean b;
-  public int c;
-  public long c;
-  public boolean c;
-  public int d;
-  public int e;
+  public ajvj(QzoneFrame paramQzoneFrame) {}
   
-  ajvj()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (QzoneFrame.a(this.a) != null) {
+      ((blwb)QzoneFrame.a(this.a)).updatePublishBox(paramIntent);
+    }
   }
 }
 

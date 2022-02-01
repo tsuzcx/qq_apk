@@ -1,67 +1,52 @@
-import android.support.v4.util.LruCache;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.HashMap;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewStub;
 
 public class utv
+  extends uuc
 {
-  private static LruCache<String, CharSequence> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private static utv jdField_a_of_type_Utv;
-  public String a;
+  private ueh<uru> a;
   
-  public utv()
+  public utv(Context paramContext, utw paramutw)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    super(paramContext, paramutw);
   }
   
-  public static utv a()
+  private void f()
   {
-    if (jdField_a_of_type_Utv == null)
+    if ((a() != null) && (a().poster != null) && (!uov.a(a().poster.followStatus))) {
+      ((usw)this.jdField_a_of_type_Ueh).a(a().poster);
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void c(int paramInt)
+  {
+    if ((paramInt == 1) && ((this.jdField_a_of_type_Ueh instanceof usw)))
     {
-      jdField_a_of_type_Utv = new utv();
-      jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(150);
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    return jdField_a_of_type_Utv;
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_AndroidSupportV4UtilLruCache != null) {
-      jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
-    }
-  }
-  
-  public CharSequence a(String paramString)
-  {
-    return (CharSequence)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
-  }
-  
-  public void a(CommentEntry paramCommentEntry)
-  {
-    if (paramCommentEntry == null) {
+      f();
       return;
     }
-    paramCommentEntry = paramCommentEntry.feedId + paramCommentEntry.replyTime;
-    if (jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry) == null)
-    {
-      jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(1));
-      return;
-    }
-    int i = ((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry)).intValue();
-    jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(i + 1));
+    super.c(paramInt);
   }
   
-  public void a(String paramString, CharSequence paramCharSequence)
+  public void e()
   {
-    if (a(paramString) == null) {
-      jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, paramCharSequence);
-    }
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380819);
+    this.jdField_a_of_type_Ueh = new usw(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Utw);
+    this.jdField_a_of_type_Ueh.a(localViewStub);
+    a(this.jdField_a_of_type_Ueh);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     utv
  * JD-Core Version:    0.7.0.1
  */

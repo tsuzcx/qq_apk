@@ -1,58 +1,19 @@
 import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aian
-  implements auqa
+class aian
+  implements View.OnClickListener
 {
-  public aian(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, aupt paramaupt, auqc paramauqc, List paramList) {}
+  aian(ahzy paramahzy) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aupt.a(new aiao(this));
-    this.jdField_a_of_type_Aupt.show();
-  }
-  
-  public void a(aupy paramaupy)
-  {
-    if ((paramaupy != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity().isFinishing())) {
-      switch (paramaupy.a)
-      {
-      }
+    if (!ayox.a().a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramView)) {
+      bgxr.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "aio");
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Aupt.isShowing()) {
-        this.jdField_a_of_type_Aupt.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
-      this.jdField_a_of_type_Auqc.b();
-      return;
-      aupz.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
-      continue;
-      aupz.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
-      continue;
-      aupz.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
-    }
-  }
-  
-  public void a(aupy paramaupy, int paramInt)
-  {
-    this.jdField_a_of_type_Aupt.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aupt.isShowing()) {
-      this.jdField_a_of_type_Aupt.dismiss();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
-    this.jdField_a_of_type_Auqc.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity(), this.jdField_a_of_type_JavaUtilList);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -7,9 +7,9 @@ import android.text.SpannableString;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.TextView.BufferType;
-import bhyz;
-import bhzb;
-import biba;
+import bkmk;
+import bkmm;
+import bkol;
 import com.tencent.mobileqq.widget.ColorNickTextView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ public class MultiImageTextView
   extends ColorNickTextView
 {
   private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  private ArrayList<biba> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<bkol> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean b;
   
   public MultiImageTextView(Context paramContext)
@@ -38,10 +38,10 @@ public class MultiImageTextView
   
   public MultiImageTextView a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    bhyz localbhyz = new bhyz(null);
-    localbhyz.a = paramDrawable;
-    localbhyz.a.setBounds(0, 0, paramInt1, paramInt2);
-    a(localbhyz);
+    bkmk localbkmk = new bkmk(null);
+    localbkmk.a = paramDrawable;
+    localbkmk.a.setBounds(0, 0, paramInt1, paramInt2);
+    a(localbkmk);
     return this;
   }
   
@@ -52,18 +52,18 @@ public class MultiImageTextView
   
   public void a(int paramInt)
   {
-    bhzb localbhzb = new bhzb(null);
-    localbhzb.a = paramInt;
-    a(localbhzb);
+    bkmm localbkmm = new bkmm(null);
+    localbkmm.a = paramInt;
+    a(localbkmm);
   }
   
-  public void a(biba parambiba)
+  public void a(bkol parambkol)
   {
-    parambiba.a = ("[" + this.jdField_a_of_type_JavaUtilArrayList.size() + "]");
-    parambiba.b = this.jdField_a_of_type_JavaLangStringBuilder.length();
-    parambiba.c = (parambiba.b + parambiba.a.length());
-    this.jdField_a_of_type_JavaLangStringBuilder.append(parambiba.a);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambiba);
+    parambkol.a = ("[" + this.jdField_a_of_type_JavaUtilArrayList.size() + "]");
+    parambkol.b = this.jdField_a_of_type_JavaLangStringBuilder.length();
+    parambkol.c = (parambkol.b + parambkol.a.length());
+    this.jdField_a_of_type_JavaLangStringBuilder.append(parambkol.a);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambkol);
   }
   
   public void append(CharSequence paramCharSequence, int paramInt1, int paramInt2)
@@ -78,7 +78,7 @@ public class MultiImageTextView
     SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_JavaLangStringBuilder);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((biba)localIterator.next()).a(localSpannableString);
+      ((bkol)localIterator.next()).a(localSpannableString);
     }
     setText(localSpannableString);
   }
@@ -102,7 +102,7 @@ public class MultiImageTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.MultiImageTextView
  * JD-Core Version:    0.7.0.1
  */

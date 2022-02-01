@@ -1,22 +1,25 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.VideoInfo.VideoRemark;
 
-public class blzp
+public final class blzp
+  implements Parcelable.Creator<VideoInfo.VideoRemark>
 {
-  public float a;
-  public long a;
-  public View a;
-  public String a;
-  public float b;
-  public long b;
-  
-  public blzp(View paramView, String paramString, float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
+  public VideoInfo.VideoRemark a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    VideoInfo.VideoRemark localVideoRemark = new VideoInfo.VideoRemark();
+    localVideoRemark.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.c = paramParcel.readString();
+    localVideoRemark.jdField_a_of_type_Int = paramParcel.readInt();
+    localVideoRemark.d = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_Int = paramParcel.readInt();
+    return localVideoRemark;
+  }
+  
+  public VideoInfo.VideoRemark[] a(int paramInt)
+  {
+    return new VideoInfo.VideoRemark[paramInt];
   }
 }
 

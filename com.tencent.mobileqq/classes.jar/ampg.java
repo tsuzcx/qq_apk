@@ -1,33 +1,26 @@
-import android.content.Intent;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import eipc.EIPCResult;
 
-public class ampg
-  implements phj
+class ampg
+  implements bgzi
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  ampg(ampb paramampb, VasExtensionHandler paramVasExtensionHandler, int paramInt) {}
   
-  public ampg(int paramInt1, int paramInt2, String paramString)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    paramString = new Intent("notify_main_subscribe_follow_state");
-    paramString.putExtra("follow_uin", this.jdField_a_of_type_JavaLangString);
-    paramString.putExtra("follow_uin_position", this.jdField_a_of_type_Int);
-    paramString.putExtra("follow_uin_smooth_dx", this.b);
-    paramString.putExtra("follow_uin_status", paramBoolean);
-    BaseApplication.getContext().sendBroadcast(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasExtensionHandler.a(null);
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      EIPCResult localEIPCResult = EIPCResult.createResult(i, null);
+      this.jdField_a_of_type_Ampb.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampg
  * JD-Core Version:    0.7.0.1
  */

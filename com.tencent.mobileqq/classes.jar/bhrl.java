@@ -1,23 +1,61 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.sveffects.Reporter;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import org.json.JSONObject;
 
 public class bhrl
-  implements Reporter
 {
-  public void reportToBeacon(String paramString, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap)
+  private final bhql a;
+  public String a;
+  
+  public bhrl(bhql parambhql)
   {
-    azri.a(BaseApplication.getContext()).a(null, paramString, paramBoolean, paramLong1, paramLong2, paramHashMap, "");
+    this.jdField_a_of_type_Bhql = parambhql;
   }
   
-  public void reportToCompass(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8)
+  public void a(int paramInt)
   {
-    azqs.b(null, paramString1, paramString2, "", paramString3, paramString4, paramInt1, paramInt2, paramString5, paramString6, paramString7, paramString8);
+    TouchWebView localTouchWebView = this.jdField_a_of_type_Bhql.a();
+    JSONObject localJSONObject1;
+    JSONObject localJSONObject2;
+    if ((localTouchWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      localJSONObject1 = new JSONObject();
+      localJSONObject2 = new JSONObject();
+    }
+    try
+    {
+      localJSONObject1.put("code", 0);
+      localJSONObject1.put("message", "ok");
+      localJSONObject2.put("subIndex", paramInt);
+      localJSONObject1.put("data", localJSONObject2);
+      localTouchWebView.callJs(WebViewPlugin.toJsScript(this.jdField_a_of_type_JavaLangString, localJSONObject1, null));
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        this.jdField_a_of_type_JavaLangString = paramString;
+      }
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhrl
  * JD-Core Version:    0.7.0.1
  */

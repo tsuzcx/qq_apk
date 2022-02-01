@@ -1,40 +1,15 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.Window;
-import android.widget.FrameLayout;
-
-public class mtk
-  extends Dialog
+class mtk
 {
-  public mtk(Context paramContext, boolean paramBoolean) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  long b = 0L;
+  long c = this.jdField_a_of_type_Mti.jdField_a_of_type_Int;
   
-  void a()
-  {
-    super.getWindow().setGravity(17);
-    super.setContentView(2131559645);
-  }
-  
-  public void a(View paramView, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      b();
-    }
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131372913);
-    localFrameLayout.setOnClickListener(new mtl(this));
-    if (paramView != null) {
-      localFrameLayout.addView(paramView);
-    }
-  }
-  
-  void b()
-  {
-    findViewById(2131372912).setOnClickListener(new mtm(this));
-  }
+  mtk(mti parammti) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mtk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.triton.bridge;
 
+import android.os.Trace;
 import android.text.TextUtils;
 import com.tencent.mobileqq.triton.annotation.JNIModule;
 import com.tencent.mobileqq.triton.engine.TTEngine;
 import com.tencent.mobileqq.triton.engine.TTLog;
-import com.tencent.mobileqq.triton.jni.JNICaller.TTJSBridge;
+import com.tencent.mobileqq.triton.sdk.LogConfig;
 import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
 import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
@@ -18,26 +19,27 @@ import org.json.JSONObject;
 public class TTJSBridge
   implements ITNativeBufferPool
 {
-  public static final String TAG = "<API>";
-  private BridgeLoger mBridgeLoger;
-  private TTEngine mTritonEngine;
-  private Map<Integer, ITTJSRuntime> runtimeMap = new HashMap();
+  private Map<Integer, ITTJSRuntime> a = new HashMap();
+  private TTEngine b;
+  private a c;
   
   public TTJSBridge(TTEngine paramTTEngine)
   {
-    if (paramTTEngine == null) {
-      throw new IllegalArgumentException("can't constructor TTJSBridge with null TritonEngine");
+    if (paramTTEngine != null)
+    {
+      this.b = paramTTEngine;
+      this.c = new a();
+      return;
     }
-    this.mTritonEngine = paramTTEngine;
-    this.mBridgeLoger = new BridgeLoger(paramTTEngine);
+    throw new IllegalArgumentException("can't constructor TTJSBridge with null TritonEngine");
   }
   
-  private IJSEngine getJsEngine(String paramString)
+  private IJSEngine a(String paramString)
   {
     Object localObject2 = null;
     Object localObject1;
-    if ((this.mTritonEngine.getInnerJsEngine() != null) && (this.mTritonEngine.getInnerJsEngine().canHandleEvent(paramString))) {
-      localObject1 = this.mTritonEngine.getInnerJsEngine();
+    if ((this.b.g() != null) && (this.b.g().canHandleEvent(paramString))) {
+      localObject1 = this.b.g();
     }
     do
     {
@@ -45,51 +47,146 @@ public class TTJSBridge
       {
         return localObject1;
         localObject1 = localObject2;
-      } while (this.mTritonEngine.getJsEngine() == null);
+      } while (this.b.getJsEngine() == null);
       localObject1 = localObject2;
-    } while (!this.mTritonEngine.getJsEngine().canHandleEvent(paramString));
-    return this.mTritonEngine.getJsEngine();
+    } while (!this.b.getJsEngine().canHandleEvent(paramString));
+    return this.b.getJsEngine();
   }
   
-  public void evaluateCallbackJs(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public ITTJSRuntime a(int paramInt)
   {
-    paramInt2 = this.mBridgeLoger.printEndLog(paramInt1, paramInt2, paramString2);
-    this.mTritonEngine.postRunnable(new TTJSBridge.1(this, paramInt1, paramString1, paramInt2, paramString2));
+    if (this.a.get(Integer.valueOf(paramInt)) != null) {
+      return (ITTJSRuntime)this.a.get(Integer.valueOf(paramInt));
+    }
+    c localc = new c(this, paramInt);
+    this.a.put(Integer.valueOf(paramInt), localc);
+    return localc;
   }
   
-  public void evaluateJs(int paramInt, String paramString)
+  public String a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this.mBridgeLoger.printEndLog(paramInt, paramString);
+    String str = "{}";
+    paramInt1 = this.c.a(paramInt1);
+    IJSEngine localIJSEngine = a(paramString1);
+    if (localIJSEngine != null)
+    {
+      Trace.beginSection("java:" + paramString1);
+      str = localIJSEngine.onScriptCall(paramString1, paramString2, paramInt1, paramInt2);
+      Trace.endSection();
+    }
+    for (;;)
+    {
+      this.c.a(paramInt2, paramString1, paramString2, paramInt1, str);
+      return str;
+      TTLog.b("<API>", "!!! API [" + paramString1 + "] 未实现  - (invoke) !!!");
+    }
+  }
+  
+  public String a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    try
+    {
+      paramString3 = new JSONArray(paramString3);
+      if (paramString3.length() > 0)
+      {
+        IJSEngine localIJSEngine = a(paramString1);
+        if (localIJSEngine != null)
+        {
+          paramInt = 0;
+          while (paramInt < paramString3.length())
+          {
+            localIJSEngine.onScriptCall(paramString1, paramString2, -1, paramString3.optInt(paramInt));
+            paramInt += 1;
+          }
+        }
+        TTLog.b("<API>", "!!! API [" + paramString1 + "] 未实现 - (publish) !!!");
+        paramString2 = new JSONObject();
+        paramString2.put("state", "fail");
+        return ApiUtil.wrapCallbackFail(paramString1, paramString2, "接口未实现").toString();
+      }
+      paramString2 = new JSONObject();
+      paramString2.put("state", "success");
+      paramString2 = ApiUtil.wrapCallbackOk(paramString1, paramString2).toString();
+      return paramString2;
+    }
+    finally
+    {
+      TTLog.b("<API>", "!!! publish event [" + paramString1 + "] exception !!!", paramString2);
+      try
+      {
+        paramString2 = new JSONObject();
+        paramString2.put("state", "fail");
+        paramString2 = ApiUtil.wrapCallbackFail(paramString1, paramString2).toString();
+        return paramString2;
+      }
+      finally
+      {
+        TTLog.b("<API>", "!!! publish event [" + paramString1 + "] exception on callbackFail !!!", paramString2);
+      }
+    }
+    return "{}";
+  }
+  
+  public void a()
+  {
+    a locala = this.c;
+    if (locala != null) {
+      locala.a();
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (this.mTritonEngine.isGLThread())
+    if (this.b.o())
     {
-      JNICaller.TTJSBridge.nativeEvaluateJs(this, this.mTritonEngine.getNativeTTAppHandle(), paramInt, paramString);
+      com.tencent.mobileqq.triton.jni.c.a(this, this.b.k(), paramInt, paramString);
       return;
     }
-    this.mTritonEngine.postRunnable(new TTJSBridge.3(this, paramInt, paramString));
+    this.b.a(new TTJSBridge.c(this, paramInt, paramString));
   }
   
-  public void evaluateSubscribeJs(String paramString1, int paramInt, String paramString2, String paramString3)
+  public void a(LogConfig paramLogConfig)
   {
-    this.mBridgeLoger.printEndLog(paramInt, paramString2, paramString3);
-    this.mTritonEngine.postRunnable(new TTJSBridge.2(this, paramInt, paramString1, paramString2, paramString3));
-  }
-  
-  public ITTJSRuntime getJsRuntime(int paramInt)
-  {
-    if (this.runtimeMap.get(Integer.valueOf(paramInt)) != null) {
-      return (ITTJSRuntime)this.runtimeMap.get(Integer.valueOf(paramInt));
+    a locala = this.c;
+    if (locala != null) {
+      locala.a(paramLogConfig);
     }
-    TTJSRuntime localTTJSRuntime = new TTJSRuntime(this, paramInt);
-    this.runtimeMap.put(Integer.valueOf(paramInt), localTTJSRuntime);
-    return localTTJSRuntime;
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if (paramRunnable == null) {
+      return;
+    }
+    this.b.a(paramRunnable);
+  }
+  
+  public void a(Runnable paramRunnable, long paramLong)
+  {
+    if (paramRunnable == null) {
+      return;
+    }
+    this.b.a(paramRunnable, paramLong);
+  }
+  
+  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    paramInt2 = this.c.a(paramInt2, paramString2);
+    this.b.a(new TTJSBridge.a(this, paramInt1, paramString1, paramInt2, paramString2));
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    this.c.a(paramString2, paramString3);
+    this.b.a(new TTJSBridge.b(this, paramInt, paramString1, paramString2, paramString3));
   }
   
   public byte[] getNativeBuffer(int paramInt)
   {
-    return JNICaller.TTJSBridge.nativeGetNativeBuffer(this, this.mTritonEngine.getNativeTTAppHandle(), paramInt);
+    return com.tencent.mobileqq.triton.jni.c.a(this, this.b.k(), paramInt);
   }
   
   public native boolean nativeEvaluateCallbackJs(long paramLong, int paramInt1, String paramString1, int paramInt2, String paramString2);
@@ -104,89 +201,12 @@ public class TTJSBridge
   
   public int newNativeBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    return JNICaller.TTJSBridge.nativeNewNativeBuffer(this, this.mTritonEngine.getNativeTTAppHandle(), paramArrayOfByte, paramInt1, paramInt2);
-  }
-  
-  public String onScriptCall(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    String str = "{}";
-    paramInt1 = this.mBridgeLoger.changeCallbackId(paramInt1);
-    IJSEngine localIJSEngine = getJsEngine(paramString1);
-    if (localIJSEngine != null) {
-      str = localIJSEngine.onScriptCall(paramString1, paramString2, paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      this.mBridgeLoger.printStartLog(paramInt2, paramString1, paramString2, paramInt1, str);
-      return str;
-      TTLog.e("<API>", "!!! API [" + paramString1 + "] 未实现  - (invoke) !!!");
-    }
-  }
-  
-  public String onScriptPublish(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    try
-    {
-      paramString3 = new JSONArray(paramString3);
-      if ((paramString3 != null) && (paramString3.length() > 0))
-      {
-        IJSEngine localIJSEngine = getJsEngine(paramString1);
-        if (localIJSEngine != null)
-        {
-          paramInt = 0;
-          while (paramInt < paramString3.length())
-          {
-            localIJSEngine.onScriptCall(paramString1, paramString2, -1, paramString3.optInt(paramInt));
-            paramInt += 1;
-          }
-        }
-        TTLog.e("<API>", "!!! API [" + paramString1 + "] 未实现 - (publish) !!!");
-        paramString2 = new JSONObject();
-        paramString2.put("state", "fail");
-        return ApiUtil.wrapCallbackFail(paramString1, paramString2, "接口未实现").toString();
-      }
-      paramString2 = new JSONObject();
-      paramString2.put("state", "success");
-      paramString2 = ApiUtil.wrapCallbackOk(paramString1, paramString2).toString();
-      return paramString2;
-    }
-    catch (Throwable paramString2)
-    {
-      TTLog.e("<API>", "!!! publish event [" + paramString1 + "] exception !!!", paramString2);
-      try
-      {
-        paramString2 = new JSONObject();
-        paramString2.put("state", "fail");
-        paramString2 = ApiUtil.wrapCallbackFail(paramString1, paramString2).toString();
-        return paramString2;
-      }
-      catch (Throwable paramString2)
-      {
-        TTLog.e("<API>", "!!! publish event [" + paramString1 + "] exception on callbackFail !!!", paramString2);
-      }
-    }
-    return "{}";
-  }
-  
-  public void runOnJsThread(Runnable paramRunnable)
-  {
-    if (paramRunnable == null) {
-      return;
-    }
-    this.mTritonEngine.postRunnable(paramRunnable);
-  }
-  
-  public void runOnJsThreadDelayed(Runnable paramRunnable, long paramLong)
-  {
-    if (paramRunnable == null) {
-      return;
-    }
-    this.mTritonEngine.postRunnableDelayed(paramRunnable, paramLong);
+    return com.tencent.mobileqq.triton.jni.c.a(this, this.b.k(), paramArrayOfByte, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.bridge.TTJSBridge
  * JD-Core Version:    0.7.0.1
  */

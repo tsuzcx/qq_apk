@@ -1,35 +1,30 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class bdrq
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+public abstract interface bdrq
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bdrm jdField_a_of_type_Bdrm;
-  bdrr jdField_a_of_type_Bdrr;
-  ImageView b;
+  public abstract int a();
   
-  public bdrq(View paramView, bdrm parambdrm, bdrr parambdrr)
-  {
-    super(paramView);
-    this.jdField_a_of_type_Bdrm = parambdrm;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364444));
-    this.b = ((ImageView)paramView.findViewById(2131364445));
-    paramView.setOnClickListener(this);
-    this.jdField_a_of_type_Bdrr = parambdrr;
-  }
+  public abstract bgpa a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Bdrm.a(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Bdrr != null) {
-      this.jdField_a_of_type_Bdrr.a(this.jdField_a_of_type_Bdrm.a(this.jdField_a_of_type_Int));
-    }
-  }
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, bdrn> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt);
+  
+  public abstract void a(bdrn parambdrn, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject);
+  
+  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, bdrn> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, bdrn> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, bdrn> paramMap, @Nullable Bundle paramBundle);
 }
 
 

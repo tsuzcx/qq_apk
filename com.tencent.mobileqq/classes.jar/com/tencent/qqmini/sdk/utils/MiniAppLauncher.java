@@ -1,7 +1,9 @@
 package com.tencent.qqmini.sdk.utils;
 
 import android.text.TextUtils;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
 
+@MiniKeep
 public class MiniAppLauncher
 {
   private static final String TAG = "MiniAppLauncher";
@@ -64,7 +66,7 @@ public class MiniAppLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniAppLauncher
  * JD-Core Version:    0.7.0.1
  */

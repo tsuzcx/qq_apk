@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apvi;
-import apwv;
+import aryo;
+import asaf;
 import java.util.List;
 
 public class EmoticonPanelMallHelper$5
   implements Runnable
 {
-  public EmoticonPanelMallHelper$5(apvi paramapvi) {}
+  public EmoticonPanelMallHelper$5(aryo paramaryo) {}
   
   public void run()
   {
     List localList = this.this$0.a.jdField_b_of_type_JavaUtilList;
-    apwv localapwv;
+    asaf localasaf;
     int i;
     if (localList != null)
     {
-      localapwv = null;
+      localasaf = null;
       i = 0;
       int j = localList.size();
       if (i >= j) {
         break label107;
       }
-      localapwv = (apwv)localList.get(i);
-      if ((localapwv == null) || (localapwv.a != 9)) {
+      localasaf = (asaf)localList.get(i);
+      if ((localasaf == null) || (localasaf.a != 9)) {
         break label65;
       }
     }
@@ -37,7 +37,7 @@ public class EmoticonPanelMallHelper$5
         i += 1;
         break;
       }
-      this.this$0.a.a.a(localapwv);
+      this.this$0.a.a.a(localasaf);
       return;
       label107:
       i = -1;
@@ -46,7 +46,7 @@ public class EmoticonPanelMallHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.5
  * JD-Core Version:    0.7.0.1
  */

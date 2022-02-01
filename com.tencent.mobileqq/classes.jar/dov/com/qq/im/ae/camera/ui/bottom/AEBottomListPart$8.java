@@ -3,14 +3,13 @@ package dov.com.qq.im.ae.camera.ui.bottom;
 import android.app.Activity;
 import android.content.Intent;
 import android.widget.Toast;
-import bkpl;
-import bkur;
-import bkuy;
-import bkzy;
-import blab;
-import bliu;
-import bliy;
-import bljn;
+import bndy;
+import bnjw;
+import bnkd;
+import bnpc;
+import bnpf;
+import bnyh;
+import bnyl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.ae.mode.AECaptureMode;
@@ -21,53 +20,54 @@ import java.util.List;
 public class AEBottomListPart$8
   implements Runnable
 {
-  public AEBottomListPart$8(bkuy parambkuy, List paramList, long paramLong) {}
+  public AEBottomListPart$8(bnkd parambnkd, List paramList, long paramLong) {}
   
   public void run()
   {
-    Object localObject2 = null;
-    int j = 0;
-    blab localblab2;
-    Object localObject1;
-    String str;
-    if ((bkuy.a(this.this$0) != null) && (!bkuy.b(this.this$0).isFinishing()))
+    String str1 = null;
+    int k = 0;
+    int j = 1;
+    bnpf localbnpf;
+    Object localObject2;
+    String str2;
+    if ((bnkd.a(this.this$0) != null) && (!bnkd.b(this.this$0).isFinishing()))
     {
-      if (bkuy.b(this.this$0)) {
-        bkuy.a(this.this$0).setVisibility(0);
+      if (bnkd.b(this.this$0)) {
+        bnkd.a(this.this$0).setVisibility(0);
       }
-      bkuy.a(this.this$0).a(this.jdField_a_of_type_JavaUtilList);
-      localblab2 = bkzy.a();
-      if ((bkuy.c(this.this$0) == null) || (bkuy.d(this.this$0).isFinishing())) {
-        break label690;
+      bnkd.a(this.this$0).a(this.jdField_a_of_type_JavaUtilList);
+      localbnpf = bnpc.a();
+      if ((bnkd.c(this.this$0) == null) || (bnkd.d(this.this$0).isFinishing())) {
+        break label653;
       }
-      localObject1 = bkuy.e(this.this$0).getIntent();
-      str = ((Intent)localObject1).getStringExtra("KEY_CURRENT_SELECT_ID");
-      localObject1 = ((Intent)localObject1).getStringExtra("KEY_CURRENT_TAB");
-      if (!"null".equalsIgnoreCase(str)) {
-        break label683;
+      localObject2 = bnkd.e(this.this$0).getIntent();
+      str2 = ((Intent)localObject2).getStringExtra("KEY_CURRENT_SELECT_ID");
+      localObject2 = ((Intent)localObject2).getStringExtra("KEY_CURRENT_TAB");
+      if (!"null".equalsIgnoreCase(str2)) {
+        break label646;
       }
     }
     for (;;)
     {
       int i;
-      if (localObject1 != null)
+      if (localObject2 != null)
       {
-        i = j;
-        if (!((String)localObject1).equals(AECaptureMode.NORMAL.name)) {}
+        i = k;
+        if (!((String)localObject2).equals(AECaptureMode.NORMAL.name)) {}
       }
       else
       {
-        if (localObject2 == null) {
-          break label639;
+        if (str1 == null) {
+          break label602;
         }
-        if (((String)localObject2).startsWith("http")) {
+        if (str1.startsWith("http")) {
           try
           {
-            localObject1 = new Intent(bkuy.a(this.this$0).a(), QQBrowserActivity.class);
-            ((Intent)localObject1).putExtra("url", URLDecoder.decode((String)localObject2, "UTF-8"));
-            ((Intent)localObject1).putExtra("loc_play_show_material_id", (String)localObject2);
-            bkuy.a(this.this$0).a().startActivity((Intent)localObject1);
-            bkuy.f(this.this$0).getIntent().removeExtra("KEY_CURRENT_SELECT_ID");
+            localObject2 = new Intent(bnkd.a(this.this$0).a(), QQBrowserActivity.class);
+            ((Intent)localObject2).putExtra("url", URLDecoder.decode(str1, "UTF-8"));
+            ((Intent)localObject2).putExtra("loc_play_show_material_id", str1);
+            bnkd.a(this.this$0).a().startActivity((Intent)localObject2);
+            bnkd.f(this.this$0).getIntent().removeExtra("KEY_CURRENT_SELECT_ID");
             return;
           }
           catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -76,20 +76,18 @@ public class AEBottomListPart$8
             return;
           }
         }
-        bliy.a().f("-1");
-        j = bkuy.a(this.this$0, (String)localObject2);
-        if (j == -1) {
-          break label471;
+        bnyl.a().f("-1");
+        i = bnkd.a(this.this$0, localUnsupportedEncodingException);
+        if (i == -1) {
+          break label473;
         }
-        bkuy.g(this.this$0).getIntent().putExtra("widgetinfo", "camera^" + (String)localObject2);
-        localblab1 = bkuy.a(this.this$0, j);
-        i = j;
-        if (localblab1 != null)
+        bnkd.g(this.this$0).getIntent().putExtra("widgetinfo", "camera^" + localUnsupportedEncodingException);
+        localObject1 = bnkd.a(this.this$0, i);
+        if (localObject1 != null)
         {
-          bliu.a().c(localblab1.a);
-          localblab1.b = true;
-          bkuy.h(this.this$0).getIntent().putExtra("key_camera_material_name", localblab1.i);
-          i = j;
+          bnyh.a().d(((bnpf)localObject1).a);
+          ((bnpf)localObject1).b = true;
+          bnkd.h(this.this$0).getIntent().putExtra("key_camera_material_name", ((bnpf)localObject1).i);
         }
       }
       for (;;)
@@ -100,57 +98,59 @@ public class AEBottomListPart$8
           l = System.currentTimeMillis();
           QLog.d("AEWaterMarkListPart", 4, "foundInitPosition cost=" + (l - this.jdField_a_of_type_Long));
         }
-        if (i < bkuy.a(this.this$0).getItemCount()) {
-          bkuy.a(this.this$0).scrollToPosition(i);
+        if (i < bnkd.a(this.this$0).getItemCount()) {
+          bnkd.a(this.this$0).scrollToPosition(i);
         }
         if (!QLog.isDevelopLevel()) {
           break;
         }
         QLog.d("AEWaterMarkListPart", 4, "hot data is real, updatePackage, cost=" + (System.currentTimeMillis() - l));
         return;
-        label471:
-        localblab1 = bkuy.a(this.this$0).a((String)localObject2);
-        if (localblab1 != null)
+        label473:
+        localObject2 = bnkd.a(this.this$0);
+        if ((bnkd.a(this.this$0) != null) && (bnkd.a(this.this$0).c())) {}
+        for (boolean bool = true;; bool = false)
         {
-          bkuy.a(this.this$0).a(localblab1);
-          bkuy.i(this.this$0).getIntent().putExtra("widgetinfo", "camera^" + localblab1.a);
-          localObject2 = localblab1.i;
-          bljn.b("AEWaterMarkListPart", "dataNotify---塞拍同款名 takeSameName=" + (String)localObject2);
-          bkuy.j(this.this$0).getIntent().putExtra("key_camera_material_name", (String)localObject2);
-          bliu.a().c(localblab1.a);
-          localblab1.b = true;
-          i = 1;
-        }
-        else
-        {
-          Toast.makeText(bkuy.a(this.this$0).a(), 2131689784, 1).show();
-          i = 0;
-          continue;
-          label639:
+          localObject1 = ((bnpc)localObject2).a((String)localObject1, bool);
+          if (localObject1 == null) {
+            break label564;
+          }
+          bnkd.a(this.this$0).a((bnpf)localObject1);
+          bnyh.a().d(((bnpf)localObject1).a);
+          ((bnpf)localObject1).b = true;
           i = j;
-          if (localblab2 != null)
+          break;
+        }
+        label564:
+        if (bnkd.a(this.this$0) == AECaptureMode.NORMAL) {
+          Toast.makeText(bnkd.a(this.this$0).a(), 2131689671, 1).show();
+        }
+        i = 0;
+        continue;
+        label602:
+        i = k;
+        if (localbnpf != null)
+        {
+          j = bnkd.a(this.this$0, localbnpf.a);
+          i = j;
+          if (j == -1)
           {
-            j = bkuy.a(this.this$0, localblab2.a);
-            i = j;
-            if (j == -1)
-            {
-              bkuy.a(this.this$0).a(localblab2);
-              i = 1;
-            }
+            bnkd.a(this.this$0).a(localbnpf);
+            i = 1;
           }
         }
       }
-      label683:
-      localObject2 = str;
+      label646:
+      Object localObject1 = str2;
       continue;
-      label690:
-      blab localblab1 = null;
+      label653:
+      localObject2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.8
  * JD-Core Version:    0.7.0.1
  */

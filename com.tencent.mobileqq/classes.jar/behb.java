@@ -1,17 +1,24 @@
-import android.util.LruCache;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.tencent.widget.AdapterView;
 
-public final class behb
-  extends LruCache<String, abyx>
+public class behb
+  implements bkik
 {
-  public behb(int paramInt)
-  {
-    super(paramInt);
-  }
+  public behb(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString, abyx paramabyx1, abyx paramabyx2)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.entryRemoved(paramBoolean, paramString, paramabyx1, paramabyx2);
-    paramabyx1.b();
+    if (this.a.a != null)
+    {
+      paramAdapterView = this.a.a.a(paramInt);
+      if ((paramAdapterView == null) || (paramAdapterView.a != 1)) {
+        return false;
+      }
+    }
+    MediaPreviewActivity.a(this.a);
+    return true;
   }
 }
 

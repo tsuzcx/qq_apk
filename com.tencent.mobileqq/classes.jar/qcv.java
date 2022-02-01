@@ -1,32 +1,24 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qcv
-  implements phj
+class qcv
+  implements View.OnClickListener
 {
-  public qcv(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
+  qcv(qco paramqco, snh paramsnh, pxk parampxk) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ComponentContentRecommend.a, 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    spb localspb = this.jdField_a_of_type_Snh.a();
+    if (localspb != null) {
+      localspb.a(null, this.jdField_a_of_type_Pxk.a(), 1);
     }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131718961, 0).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qcv
  * JD-Core Version:    0.7.0.1
  */

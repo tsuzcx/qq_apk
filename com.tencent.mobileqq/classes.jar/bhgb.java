@@ -1,21 +1,29 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnScrollChangedListener;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebview;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin;
 
 public class bhgb
-  implements ViewTreeObserver.OnScrollChangedListener
+  extends EmojiUiPlugin
 {
-  public bhgb(PageWebviewContainer paramPageWebviewContainer) {}
-  
-  public void onScrollChanged()
+  public void OnActivityCreate()
   {
-    PageWebviewContainer.a(this.a).a().getView().scrollTo(0, 0);
+    this.mActivityType = 2;
+    super.OnActivityCreate();
+  }
+  
+  public void OnActivityPause()
+  {
+    super.OnActivityPause();
+    this.mRuntime.a().loadUrl("javascript:var webviewEvent = document.createEvent('Events');webviewEvent.initEvent('webviewobserve');webviewEvent.name = 'stopAudio';document.dispatchEvent(webviewEvent);");
+  }
+  
+  public long getPluginBusiness()
+  {
+    return 8L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhgb
  * JD-Core Version:    0.7.0.1
  */

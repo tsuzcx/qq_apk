@@ -1,39 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.UiSettings;
-
-public class mzc
-  implements Animation.AnimationListener
+public abstract interface mzc
 {
-  public mzc(PoiMapActivity paramPoiMapActivity) {}
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (PoiMapActivity.g(this.a) != null) {
-      PoiMapActivity.h(this.a).getMap().getUiSettings().setLogoPositionWithMargin(0, 0, 0, 0, 0);
-    }
-    paramAnimation = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
-    paramAnimation.bottomMargin = (-this.a.p);
-    this.a.b.setLayoutParams(paramAnimation);
-    if ((this.a.e != null) && (this.a.e.getVisibility() != 0)) {
-      this.a.e.setVisibility(0);
-    }
-    PoiMapActivity.e(this.a).clearAnimation();
-    this.a.a = false;
-  }
+  public abstract void a(String paramString, int paramInt, myc parammyc);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void a(String paramString1, String paramString2, String paramString3);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(myc parammyc, int paramInt);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
+  
+  public abstract void i(myc parammyc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mzc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.richstatus.topic.TopicEditTextView;
 
 public class bbds
-  extends bbdr
+  implements ActionMode.Callback
 {
-  public bbds(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
+  public bbds(TopicEditTextView paramTopicEditTextView) {}
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    super(paramTribeVideoListPlayerFragment, paramView);
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return TopicEditTextView.a(this.a);
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

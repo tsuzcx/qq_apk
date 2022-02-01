@@ -1,18 +1,10 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-
-class yaf
-  extends yaj
+public abstract interface yaf
 {
-  yaf(yae paramyae) {}
-  
-  public void a()
-  {
-    ScannerActivity.a(this.a.a).b();
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yaf
  * JD-Core Version:    0.7.0.1
  */

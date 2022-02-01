@@ -1,39 +1,16 @@
-import Wallet.IdiomRedPackMatchReq;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.LoadingAvatarProgressView;
 
-class aiuq
-  implements ajfp
+public class aiuq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aiuq(aiul paramaiul, aiuk paramaiuk, String paramString, SessionInfo paramSessionInfo, long paramLong, int paramInt) {}
+  public aiuq(LoadingAvatarProgressView paramLoadingAvatarProgressView) {}
   
-  public void a(String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = 1;
-    IdiomRedPackMatchReq localIdiomRedPackMatchReq = new IdiomRedPackMatchReq();
-    localIdiomRedPackMatchReq.grabUin = aiul.a(this.jdField_a_of_type_Aiul).getLongAccountUin();
-    localIdiomRedPackMatchReq.billno = this.jdField_a_of_type_Aiuk.jdField_a_of_type_JavaLangString;
-    localIdiomRedPackMatchReq.inputIdiom = this.jdField_a_of_type_JavaLangString;
-    localIdiomRedPackMatchReq.hbIdiom = aiul.a(this.jdField_a_of_type_Aiul, this.jdField_a_of_type_Aiuk);
-    localIdiomRedPackMatchReq.makeUin = Long.parseLong(this.jdField_a_of_type_Aiuk.c);
-    localIdiomRedPackMatchReq.sKey = paramString;
-    localIdiomRedPackMatchReq.appid = AppSetting.a();
-    localIdiomRedPackMatchReq.subchannel = this.jdField_a_of_type_Aiuk.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      localIdiomRedPackMatchReq.fromType = i;
-      localIdiomRedPackMatchReq.platform = 0;
-      localIdiomRedPackMatchReq.qqVersion = "8.3.5";
-      aivh.a(localIdiomRedPackMatchReq, new aiur(this));
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {
-        i = 2;
-      } else {
-        i = 0;
-      }
-    }
+    LoadingAvatarProgressView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue() * LoadingAvatarProgressView.a(this.a));
+    this.a.invalidate();
   }
 }
 

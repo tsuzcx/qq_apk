@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajoh;
+import algx;
 import android.content.Context;
 import android.view.WindowManager.BadTokenException;
-import bdgm;
-import bdjz;
+import bglp;
+import bgpa;
 import com.tencent.qphone.base.util.QLog;
 
 public class CameraPreviewNew$1
@@ -16,13 +16,13 @@ public class CameraPreviewNew$1
   {
     Object localObject = this.jdField_a_of_type_JavaLangString;
     if (this.jdField_a_of_type_Int == 2002) {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131699726);
+      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131698216);
     }
-    localObject = bdgm.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131694207), new ajoh(this));
+    localObject = bglp.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131693473), new algx(this));
     try
     {
-      ((bdjz)localObject).setCancelable(false);
-      ((bdjz)localObject).show();
+      ((bgpa)localObject).setCancelable(false);
+      ((bgpa)localObject).show();
       return;
     }
     catch (WindowManager.BadTokenException localBadTokenException)
@@ -34,7 +34,7 @@ public class CameraPreviewNew$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.CameraPreviewNew.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,307 @@
+{
+    "tag": "page",
+    "content": "",
+    "attributes": {
+        "viewID": "0",
+        "pts:on-exposure": "{{book_id}}",
+        "data-exposure-report-name": "0X800AF09",
+        "data-recommend_book_id": "{{book_id}}"
+    },
+    "styles": {
+        "flex-direction": "column",
+        "display": "flex",
+        "box-sizing": "border-box"
+    },
+    "children": [
+        {
+            "tag": "view",
+            "content": "\n  \n",
+            "attributes": {
+                "viewID": "1",
+                "class": "card-wrp",
+                "data-exposure-report-name": "0X800AF09",
+                "data-recommend_book_id": "{{book_id}}"
+            },
+            "styles": {
+                "display": "flex",
+                "box-sizing": "border-box",
+                "width": "750rpx",
+                "padding": "32rpx 32rpx 28rpx 32rpx",
+                "padding-top": "32rpx",
+                "padding-right": "32rpx",
+                "padding-bottom": "28rpx",
+                "padding-left": "32rpx"
+            },
+            "children": [
+                {
+                    "tag": "view",
+                    "content": "\n\n    \n    \n\n    \n    \n\n    \n    \n  ",
+                    "attributes": {
+                        "viewID": "2",
+                        "id": "content",
+                        "pts:on-tap": "{{book_id}}",
+                        "data-click-report-name": "0X800AF0A",
+                        "data-jump-url": "{{jumpUrl}}",
+                        "data-recommend_book_id": "{{book_id}}",
+                        "data-recommend_book_click_area": "4"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "width": "100%",
+                        "height": "216rpx",
+                        "border-radius": "12rpx",
+                        "border-color": "rgba(0, 0, 0, 0.07)",
+                        "border-width": "1rpx",
+                        "border-top-width": "1rpx",
+                        "border-right-width": "1rpx",
+                        "border-bottom-width": "1rpx",
+                        "border-left-width": "1rpx",
+                        "border-style": "solid",
+                        "border-top-style": "solid",
+                        "border-right-style": "solid",
+                        "border-bottom-style": "solid",
+                        "border-left-style": "solid",
+                        "flex-direction": "row"
+                    },
+                    "children": [
+                        {
+                            "tag": "view",
+                            "content": "\n      \n      \n    ",
+                            "attributes": {
+                                "viewID": "3",
+                                "id": "left"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "position": "relative"
+                            },
+                            "children": [
+                                {
+                                    "tag": "img",
+                                    "content": "",
+                                    "attributes": {
+                                        "viewID": "6",
+                                        "id": "image",
+                                        "src": "{{image_url}}"
+                                    },
+                                    "styles": {
+                                        "width": "126rpx",
+                                        "height": "168rpx",
+                                        "margin": "24rpx",
+                                        "margin-top": "24rpx",
+                                        "margin-right": "24rpx",
+                                        "margin-bottom": "24rpx",
+                                        "margin-left": "24rpx",
+                                        "border-radius": "6rpx"
+                                    },
+                                    "children": []
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "\n        \n      ",
+                                    "attributes": {
+                                        "viewID": "7",
+                                        "id": "image-tag",
+                                        "wx:if": "{{is_free}}"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "position": "absolute",
+                                        "left": "24rpx",
+                                        "top": "24rpx",
+                                        "background-color": "rgb(255, 114, 39)",
+                                        "border-radius": "6rpx 0 6rpx 0",
+                                        "padding": "2rpx 8rpx 2rpx 8rpx",
+                                        "padding-top": "2rpx",
+                                        "padding-right": "8rpx",
+                                        "padding-bottom": "2rpx",
+                                        "padding-left": "8rpx",
+                                        "justify-content": "center",
+                                        "align-items": "center"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "text",
+                                            "content": "永久免费",
+                                            "attributes": {
+                                                "viewID": "13",
+                                                "id": "image-tag-text"
+                                            },
+                                            "styles": {
+                                                "box-sizing": "border-box",
+                                                "display": "-webkit-box",
+                                                "overflow": "hidden",
+                                                "font-size": "9px",
+                                                "color": "white"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "tag": "view",
+                            "content": "\n      \n      \n      \n      \n      \n    ",
+                            "attributes": {
+                                "viewID": "4",
+                                "id": "middle"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "width": "314rpx",
+                                "height": "168rpx",
+                                "margin-top": "24rpx",
+                                "padding-right": "24rpx",
+                                "flex-direction": "column"
+                            },
+                            "children": [
+                                {
+                                    "tag": "text",
+                                    "content": "{{title}}",
+                                    "attributes": {
+                                        "viewID": "8",
+                                        "wx:if": "{{$RIJArticle.fontScale}}",
+                                        "id": "title"
+                                    },
+                                    "styles": {
+                                        "box-sizing": "border-box",
+                                        "display": "-webkit-box",
+                                        "overflow": "hidden",
+                                        "color": "black",
+                                        "font-size": " {{15*$RIJArticle.fontScale}}px",
+                                        "margin-bottom": "3rpx",
+                                        "line-height": "46rpx",
+                                        "-webkit-line-clamp": "2"
+                                    },
+                                    "children": []
+                                },
+                                {
+                                    "tag": "text",
+                                    "content": "{{title}}",
+                                    "attributes": {
+                                        "viewID": "9",
+                                        "wx:else": "",
+                                        "id": "title"
+                                    },
+                                    "styles": {
+                                        "box-sizing": "border-box",
+                                        "display": "-webkit-box",
+                                        "overflow": "hidden",
+                                        "color": "black",
+                                        "font-size": "16px",
+                                        "margin-bottom": "3rpx",
+                                        "line-height": "46rpx",
+                                        "-webkit-line-clamp": "2"
+                                    },
+                                    "children": []
+                                },
+                                {
+                                    "tag": "text",
+                                    "content": "作者：{{author}}",
+                                    "attributes": {
+                                        "viewID": "10",
+                                        "class": "brief",
+                                        "id": "author"
+                                    },
+                                    "styles": {
+                                        "box-sizing": "border-box",
+                                        "display": "-webkit-box",
+                                        "overflow": "hidden",
+                                        "color": "rgb(153, 153, 153)",
+                                        "font-size": "12px",
+                                        "-webkit-line-clamp": "1",
+                                        "line-height": "37rpx"
+                                    },
+                                    "children": []
+                                },
+                                {
+                                    "tag": "text",
+                                    "content": "分类：{{category}}",
+                                    "attributes": {
+                                        "viewID": "11",
+                                        "class": "brief",
+                                        "id": "category"
+                                    },
+                                    "styles": {
+                                        "box-sizing": "border-box",
+                                        "display": "-webkit-box",
+                                        "overflow": "hidden",
+                                        "color": "rgb(153, 153, 153)",
+                                        "font-size": "12px",
+                                        "-webkit-line-clamp": "1",
+                                        "line-height": "37rpx"
+                                    },
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "tag": "view",
+                            "content": "\n      \n    ",
+                            "attributes": {
+                                "viewID": "5",
+                                "id": "right"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "flex-direction": "column",
+                                "justify-content": "center"
+                            },
+                            "children": [
+                                {
+                                    "tag": "view",
+                                    "content": "\n        \n      ",
+                                    "attributes": {
+                                        "viewID": "12",
+                                        "id": "read",
+                                        "pts:on-tap": "{{book_id}}",
+                                        "data-click-report-name": "0X800AF0A",
+                                        "data-jump-url": "{{jumpUrl}}",
+                                        "data-recommend_book_id": "{{book_id}}",
+                                        "data-recommend_book_click_area": "{{is_free ? '1' : '2'}}"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "width": "174rpx",
+                                        "height": "56rpx",
+                                        "background-color": "rgb(255, 125, 56)",
+                                        "color": "white",
+                                        "font-size": "13px",
+                                        "border-radius": "28rpx",
+                                        "justify-content": "center",
+                                        "align-items": "center"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "text",
+                                            "content": "{{is_free ? \"免费阅读\" : \"马上阅读\"}}",
+                                            "attributes": {
+                                                "viewID": "14",
+                                                "id": "read-text"
+                                            },
+                                            "styles": {
+                                                "box-sizing": "border-box",
+                                                "display": "-webkit-box",
+                                                "overflow": "hidden",
+                                                "color": "white",
+                                                "font-size": "13px"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

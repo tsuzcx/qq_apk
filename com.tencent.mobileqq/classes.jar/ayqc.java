@@ -1,49 +1,17 @@
-import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.TextView;
-
-public class ayqc
-  extends ayqe
+class ayqc
+  implements ayqg
 {
-  public ayqc(bdbb parambdbb, ayqi paramayqi)
+  ayqc(ayqb paramayqb) {}
+  
+  public int a()
   {
-    super(parambdbb, paramayqi);
+    return this.a.a();
   }
   
-  public void b(aynu paramaynu, aywd paramaywd)
+  public void a()
   {
-    super.b(paramaynu, paramaywd);
-    if (TextUtils.isEmpty(paramaynu.c()))
-    {
-      paramaywd.c().setVisibility(8);
-      ((ayvw)paramaywd).a().setVisibility(0);
-    }
-    for (;;)
-    {
-      if (paramaywd.d() != null)
-      {
-        paramaynu = paramaynu.d();
-        if (!TextUtils.isEmpty(paramaynu)) {
-          break;
-        }
-        paramaywd.d().setVisibility(8);
-      }
-      return;
-      paramaywd.c().setVisibility(0);
-      paramaywd.c().setText(paramaynu.c());
-      ((ayvw)paramaywd).a().setVisibility(8);
-    }
-    paramaywd.d().setVisibility(0);
-    paramaywd.d().setText(paramaynu);
+    this.a.b();
   }
-  
-  protected void c(aynu paramaynu, aywd paramaywd)
-  {
-    super.c(paramaynu, paramaywd);
-    ((ayvw)paramaywd).a().setOnClickListener(new ayqd(this, paramaynu));
-  }
-  
-  public void d(aynu paramaynu, aywd paramaywd) {}
 }
 
 

@@ -1,21 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Method;
 
 public class bcri
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bcri(RedDotAnimateView paramRedDotAnimateView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static void a()
   {
-    this.a.b = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.a / 2.0F);
-    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIPCEnvironmentInit", 2, "tryConnect");
+    }
+    try
+    {
+      Method localMethod = BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.qipc.QIPCEnvironmentInit").getDeclaredMethod("initEnvironment", new Class[0]);
+      localMethod.setAccessible(true);
+      localMethod.invoke(null, new Object[0]);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QIPCEnvironmentInit", 2, "tryConnect", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcri
  * JD-Core Version:    0.7.0.1
  */

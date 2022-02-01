@@ -1,23 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-
-class avnp
-  implements TextWatcher
+public final class avnp
+  implements bdvw
 {
-  avnp(avnl paramavnl) {}
+  public avnp(bdvw parambdvw) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onResp(bdwt parambdwt)
   {
-    auwz.a(this.a.a, 30);
+    if (this.a != null) {
+      this.a.onResp(parambdwt);
+    }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
+  {
+    if (this.a != null) {
+      this.a.onUpdateProgeress(parambdws, paramLong1, paramLong2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avnp
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ import org.json.JSONObject;
 @Keep
 public class AdDMPReportUtil
 {
-  public static final String DEST_URL = "http://fv.gdt.qq.com";
+  public static final String DEST_URL = "https://fv.gdt.qq.com";
   public static final String DMP_ACTION_DOWNLOAD_CLICK = "DOWNLOAD_CLICK";
   public static final String DMP_ACTION_VIEW_CONTENT = "VIEW_CONTENT";
   public static final String DMP_REQUEST_CGI = "https://h5.gdt.qq.com/player/actionset/report?type=XJ_CANVAS";
@@ -113,7 +113,7 @@ public class AdDMPReportUtil
   
   public static byte[] getRequestData(JSONObject paramJSONObject)
   {
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL)) {
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject))) {
       return null;
     }
     try
@@ -146,7 +146,7 @@ public class AdDMPReportUtil
       if (!TextUtils.isEmpty(paramString2)) {
         localJSONObject1.put("custom_action", paramString2);
       }
-      if ((paramJSONObject != null) && (paramJSONObject != JSONObject.NULL)) {
+      if ((paramJSONObject != null) && (!JSONObject.NULL.equals(paramJSONObject))) {
         localJSONObject1.put("action_param", paramJSONObject);
       }
       localJSONObject1.put("user_action_set_id", paramAd.getActionSetId());
@@ -173,7 +173,7 @@ public class AdDMPReportUtil
     localParams.setUrl("https://h5.gdt.qq.com/player/actionset/report?type=XJ_CANVAS");
     localParams.method = "POST";
     localParams.contentType = "application/json";
-    localParams.referer = "http://fv.gdt.qq.com";
+    localParams.referer = "https://fv.gdt.qq.com";
     localParams.connectTimeoutMillis = 5000;
     localParams.readTimeoutMillis = 5000;
     localParams.requestData = paramArrayOfByte;
@@ -182,7 +182,7 @@ public class AdDMPReportUtil
   
   private static boolean reportAppBtnClick(Ad paramAd)
   {
-    paramAd = getRequestData(getRequestJson(paramAd, getActionParamsForDownload(paramAd), "CUSTOM", "DOWNLOAD_CLICK", "http://fv.gdt.qq.com"));
+    paramAd = getRequestData(getRequestJson(paramAd, getActionParamsForDownload(paramAd), "CUSTOM", "DOWNLOAD_CLICK", "https://fv.gdt.qq.com"));
     if ((paramAd == null) || (paramAd.length <= 0)) {
       AdLog.e("AdDMPReportUtil", "reportAppBtnClick error");
     }
@@ -219,7 +219,7 @@ public class AdDMPReportUtil
       try
       {
         ((JSONObject)localObject).put("auto_download", paramBoolean);
-        paramAd = getRequestData(getRequestJson(paramAd, (JSONObject)localObject, "VIEW_CONTENT", null, "http://fv.gdt.qq.com"));
+        paramAd = getRequestData(getRequestJson(paramAd, (JSONObject)localObject, "VIEW_CONTENT", null, "https://fv.gdt.qq.com"));
         if ((paramAd == null) || (paramAd.length <= 0))
         {
           AdLog.e("AdDMPReportUtil", "reportLoad error");
@@ -305,8 +305,8 @@ public class AdDMPReportUtil
   public static AdFormError reportUpload(Context paramContext, Ad paramAd, AdFormData paramAdFormData)
   {
     paramContext = getActionParamsForUpload(paramContext, paramAd, paramAdFormData);
-    paramAd = getRequestData(getRequestJson(paramAd, paramContext, "RESERVATION", null, "http://fv.gdt.qq.com"));
-    if ((paramContext == null) || (paramContext == JSONObject.NULL) || (paramAd == null) || (paramAd.length <= 0))
+    paramAd = getRequestData(getRequestJson(paramAd, paramContext, "RESERVATION", null, "https://fv.gdt.qq.com"));
+    if ((paramContext == null) || (JSONObject.NULL.equals(paramContext)) || (paramAd == null) || (paramAd.length <= 0))
     {
       AdLog.e("AdDMPReportUtil", "reportUpload error");
       return new AdFormError(4, -1, null);
@@ -334,7 +334,7 @@ public class AdDMPReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.report.AdDMPReportUtil
  * JD-Core Version:    0.7.0.1
  */

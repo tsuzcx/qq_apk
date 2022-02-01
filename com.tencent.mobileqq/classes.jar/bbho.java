@@ -1,15 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bbho
-  implements bhuw
+class bbho
+  implements bkhy
 {
-  public bbho(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  bbho(bbhm parambbhm, QQAppInterface paramQQAppInterface) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss()
   {
-    this.a.finish();
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", bbhl.b(this.jdField_a_of_type_Bbhm.a), 0, "", "", "", "");
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import acdo;
+import adkx;
 import android.widget.TextView;
 
 public class AddRequestActivity$13$2
   implements Runnable
 {
-  public AddRequestActivity$13$2(acdo paramacdo) {}
+  public AddRequestActivity$13$2(adkx paramadkx) {}
   
   public void run()
   {
-    this.a.a.a((TextView)this.a.a.findViewById(2131370821));
+    this.a.a.a((TextView)this.a.a.findViewById(2131371383));
   }
 }
 

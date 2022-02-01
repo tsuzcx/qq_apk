@@ -1,43 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.media.AudioManager;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
 class aaqh
-  extends BroadcastReceiver
+  implements URLDrawableDownListener
 {
-  private aaqh(aaqa paramaaqa) {}
+  aaqh(aaqa paramaaqa) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (aaqa.a(this.a))
-    {
-      aaqa.b(this.a, false);
-      aase.a("GdtMvViewController", "SilentModeReceiver first auto called! so skip!");
-    }
-    while ((aaqa.a(this.a) == null) || (!"android.media.RINGER_MODE_CHANGED".equalsIgnoreCase(paramIntent.getAction()))) {
-      return;
-    }
-    int i = aaqa.a(this.a).getRingerMode();
-    int j = aaqa.a(this.a).getStreamVolume(3);
-    aase.a("GdtMvViewController", "system context mode: " + i + ", streamVolume = " + j);
-    switch (i)
-    {
-    default: 
-      aaqa.c(this.a, true);
-      this.a.a = true;
-      aaqa.a(this.a).a(true);
-    }
-    for (;;)
-    {
-      aaqa.a(this.a, j, aaqa.b(this.a), false);
-      return;
-      aaqa.c(this.a, false);
-      if (j > 0) {
-        this.a.a = false;
-      }
-      aaqa.a(this.a).a(this.a.a);
-    }
+    this.a.a(false, "onLoadCancelled");
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.a.a(false, "onLoadFailed");
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    this.a.a(false, "onLoadInterrupted");
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.a.a(true, "onLoadSuccessed");
+    this.a.b = true;
   }
 }
 

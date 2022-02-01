@@ -1,16 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.qzone.share.QZoneShareActivity.22.1;
 
 public class bmgb
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
-  public bmgb(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bmgb(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return this.a.a(paramView, paramMotionEvent);
+    if ("com.tencent.qq.shareupdate".equals(paramIntent.getAction())) {
+      ThreadManager.postImmediately(new QZoneShareActivity.22.1(this), null, true);
+    }
   }
 }
 

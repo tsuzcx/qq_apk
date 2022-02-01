@@ -1,14 +1,23 @@
-public abstract interface rlg
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class rlg
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public rlg(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void g();
+  public void onClick(View paramView)
+  {
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rlg
  * JD-Core Version:    0.7.0.1
  */

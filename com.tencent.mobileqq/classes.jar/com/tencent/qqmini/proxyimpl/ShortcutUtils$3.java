@@ -1,6 +1,5 @@
 package com.tencent.qqmini.proxyimpl;
 
-import alud;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -11,108 +10,116 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Icon;
 import android.os.Build.VERSION;
 import android.os.PersistableBundle;
-import bdng;
-import bflz;
+import anni;
+import bgsi;
+import biti;
+import bjyw;
+import bjzb;
+import com.tencent.mobileqq.mini.MiniAppInterface;
+import com.tencent.mobileqq.mini.app.AppLoaderFactory;
+import com.tencent.mobileqq.mini.app.BaseAppLoaderManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-final class ShortcutUtils$3
+public final class ShortcutUtils$3
   implements Runnable
 {
-  ShortcutUtils$3(Activity paramActivity, MiniAppInfo paramMiniAppInfo, ShortcutUtils.AddShortcutCallback paramAddShortcutCallback) {}
+  public ShortcutUtils$3(Activity paramActivity, MiniAppInfo paramMiniAppInfo, bjzb parambjzb) {}
   
   public void run()
   {
-    for (;;)
+    boolean bool = false;
+    try
     {
-      try
-      {
-        if (Build.VERSION.SDK_INT < 26) {
-          break label302;
-        }
-        ShortcutManager localShortcutManager = (ShortcutManager)this.val$activity.getSystemService("shortcut");
-        if (ShortcutUtils.isShortcutCreated_O(this.val$miniAppInfo.appId, localShortcutManager))
-        {
-          QLog.i("Shortcut", 1, "Shortcut has created before!");
-          bflz.a().a(this.val$miniAppInfo.name + "\"快捷方式已存在");
-          if (this.val$callback == null) {
-            break;
-          }
-          this.val$callback.onAddResult(0, alud.a(2131714409));
-          return;
-        }
-        if (!localShortcutManager.isRequestPinShortcutSupported()) {
-          break label587;
-        }
-        Object localObject1 = ShortcutUtils.access$000(this.val$activity, this.val$miniAppInfo);
-        Object localObject2 = ShortcutUtils.access$100(this.val$activity, this.val$miniAppInfo);
-        PersistableBundle localPersistableBundle = new PersistableBundle();
-        localObject1 = new ShortcutInfo.Builder(this.val$activity, this.val$miniAppInfo.appId).setIcon(Icon.createWithBitmap((Bitmap)localObject2)).setShortLabel(this.val$miniAppInfo.name).setIntent((Intent)localObject1).setExtras(localPersistableBundle).build();
-        localObject2 = new Intent("com.tencent.mini.CreateShortcutSucceedReceiver");
-        ((Intent)localObject2).putExtra("CONFIG_APPNAME", this.val$miniAppInfo.name);
-        bool = localShortcutManager.requestPinShortcut((ShortcutInfo)localObject1, PendingIntent.getBroadcast(this.val$activity, 0, (Intent)localObject2, 134217728).getIntentSender());
-        if (!bool)
-        {
-          ShortcutUtils.access$200(this.val$activity);
-          if (this.val$callback == null) {
-            break;
-          }
-          this.val$callback.onAddResult(1, alud.a(2131714405));
-          return;
-        }
+      if (Build.VERSION.SDK_INT < 26) {
+        break label347;
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("Shortcut", 1, "doAddShortcut exception!", localThrowable);
-        return;
-      }
-      if (this.val$callback == null) {
-        break;
-      }
-      this.val$callback.onAddResult(0, alud.a(2131714400));
-      return;
-      label302:
-      if (bdng.a(MiniAppEnv.g().getContext(), new String[] { this.val$miniAppInfo.name }))
+      ShortcutManager localShortcutManager = (ShortcutManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("shortcut");
+      if (bjyw.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId, localShortcutManager))
       {
         QLog.i("Shortcut", 1, "Shortcut has created before!");
-        bflz.a().a(this.val$miniAppInfo.name + "\"快捷方式已存在");
-        if (this.val$callback == null) {
-          break;
+        biti.a().a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name + "\"快捷方式已存在");
+        if (this.jdField_a_of_type_Bjzb == null) {
+          return;
         }
-        this.val$callback.onAddResult(0, alud.a(2131714397));
+        this.jdField_a_of_type_Bjzb.a(0, anni.a(2131712779));
         return;
       }
-      Intent localIntent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
-      localIntent.putExtra("android.intent.extra.shortcut.NAME", this.val$miniAppInfo.name);
-      localIntent.putExtra("duplicate", false);
-      localIntent.putExtra("android.intent.extra.shortcut.ICON", ShortcutUtils.access$100(this.val$activity, this.val$miniAppInfo));
-      localIntent.putExtra("android.intent.extra.shortcut.INTENT", ShortcutUtils.access$000(this.val$activity, this.val$miniAppInfo));
-      this.val$activity.sendBroadcast(localIntent);
-      Thread.sleep(1000L);
-      if (bdng.a(MiniAppEnv.g().getContext(), new String[] { this.val$miniAppInfo.name }))
+      if (localShortcutManager.isRequestPinShortcutSupported())
       {
-        bflz.a().a("已创建\"" + this.val$miniAppInfo.name + "\"快捷方式到桌面");
-        if (this.val$callback == null) {
-          break;
+        Object localObject1 = bjyw.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+        Object localObject2 = bjyw.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+        PersistableBundle localPersistableBundle = new PersistableBundle();
+        localObject1 = new ShortcutInfo.Builder(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId).setIcon(Icon.createWithBitmap((Bitmap)localObject2)).setShortLabel(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name).setIntent((Intent)localObject1).setExtras(localPersistableBundle).build();
+        localObject2 = new Intent("com.tencent.mini.CreateShortcutSucceedReceiver");
+        ((Intent)localObject2).putExtra("CONFIG_APPNAME", this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name);
+        bool = localShortcutManager.requestPinShortcut((ShortcutInfo)localObject1, PendingIntent.getBroadcast(this.jdField_a_of_type_AndroidAppActivity, 0, (Intent)localObject2, 134217728).getIntentSender());
+      }
+      if (!bool)
+      {
+        bjyw.b(this.jdField_a_of_type_AndroidAppActivity);
+        if (this.jdField_a_of_type_Bjzb == null) {
+          return;
         }
-        this.val$callback.onAddResult(0, alud.a(2131714399));
+        this.jdField_a_of_type_Bjzb.a(1, anni.a(2131712775));
         return;
       }
-      ShortcutUtils.access$200(this.val$activity);
-      if (this.val$callback == null) {
-        break;
-      }
-      this.val$callback.onAddResult(1, alud.a(2131714408));
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("Shortcut", 1, "doAddShortcut exception!", localThrowable);
       return;
-      label587:
-      boolean bool = false;
+    }
+    Thread.sleep(1000L);
+    if (bjyw.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId, localThrowable))
+    {
+      if (this.jdField_a_of_type_Bjzb != null) {
+        this.jdField_a_of_type_Bjzb.a(0, anni.a(2131712770));
+      }
+    }
+    else if (this.jdField_a_of_type_Bjzb != null)
+    {
+      this.jdField_a_of_type_Bjzb.a(1, anni.a(2131712775));
+      return;
+      label347:
+      if (bgsi.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name }))
+      {
+        QLog.i("Shortcut", 1, "Shortcut has created before!");
+        biti.a().a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name + "\"快捷方式已存在");
+        if (this.jdField_a_of_type_Bjzb != null) {
+          this.jdField_a_of_type_Bjzb.a(0, anni.a(2131712767));
+        }
+      }
+      else
+      {
+        Intent localIntent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+        localIntent.putExtra("android.intent.extra.shortcut.NAME", this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name);
+        localIntent.putExtra("duplicate", false);
+        localIntent.putExtra("android.intent.extra.shortcut.ICON", bjyw.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo));
+        localIntent.putExtra("android.intent.extra.shortcut.INTENT", bjyw.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo));
+        this.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
+        Thread.sleep(1000L);
+        if (bgsi.a(AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApplication(), new String[] { this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name }))
+        {
+          biti.a().a("已创建\"" + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name + "\"快捷方式到桌面");
+          if (this.jdField_a_of_type_Bjzb != null) {
+            this.jdField_a_of_type_Bjzb.a(0, anni.a(2131712769));
+          }
+        }
+        else
+        {
+          bjyw.b(this.jdField_a_of_type_AndroidAppActivity);
+          if (this.jdField_a_of_type_Bjzb != null) {
+            this.jdField_a_of_type_Bjzb.a(1, anni.a(2131712778));
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShortcutUtils.3
  * JD-Core Version:    0.7.0.1
  */

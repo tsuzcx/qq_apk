@@ -1,41 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload.IHotReloadChangedObserver;
 
-public class soq
-  implements qft
+class soq
+  implements ProteusParserWithHotReload.IHotReloadChangedObserver
 {
-  public soq(BridgeModule paramBridgeModule, String paramString) {}
+  soq(snh paramsnh) {}
   
-  public void a(boolean paramBoolean)
+  public void onHotReloadChanged(Context paramContext, String paramString1, String paramString2)
   {
-    JSONObject localJSONObject = new JSONObject();
-    int i;
-    if (paramBoolean) {
-      i = 1;
-    }
-    try
-    {
-      for (;;)
-      {
-        localJSONObject.put("result", i);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
-        return;
-        i = 0;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    this.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     soq
  * JD-Core Version:    0.7.0.1
  */

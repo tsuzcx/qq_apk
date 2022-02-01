@@ -1,16 +1,10 @@
-import android.graphics.Bitmap;
-
-public abstract interface bmuq
+final class bmuq
+  extends bmgv<bmup, Void>
 {
-  public abstract int a();
-  
-  public abstract void a();
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(bmur parambmur);
-  
-  public abstract void a(Runnable paramRunnable);
+  protected bmup a(Void paramVoid)
+  {
+    return new bmup();
+  }
 }
 
 

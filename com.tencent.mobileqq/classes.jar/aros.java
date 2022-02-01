@@ -1,61 +1,110 @@
-import android.app.Activity;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.ViolaBizLibData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class aros
-  implements bhvx
+public class aros
+  extends arnz
 {
-  aros(aron paramaron) {}
+  public static final String[] a = { "libviola.so" };
   
-  public void F()
+  public aros(QQAppInterface paramQQAppInterface)
   {
-    aron.a(this.a, false);
-    this.a.jdField_a_of_type_Aroe.o();
-    this.a.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+    super("android.qq.readinjoy.viola_biz_810", paramQQAppInterface);
   }
   
-  public void G()
+  public static void a()
   {
-    aron.a(this.a, false);
-    if (aron.a(this.a)) {
-      this.a.f(true);
-    }
-    if (aron.b(this.a)) {
-      this.a.g(true);
-    }
-    if (aron.c(this.a)) {
-      this.a.b(true);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (arno)((QQAppInterface)localObject).getManager(77);
+      if (localObject != null)
+      {
+        localObject = (aros)((arno)localObject).a("android.qq.readinjoy.viola_biz_810");
+        if (localObject != null)
+        {
+          ((aros)localObject).a(true);
+          QLog.i("viola.ViolaBizLibHandler", 1, "restartDownloadLib");
+        }
+      }
     }
   }
   
-  public void H() {}
-  
-  public void a(float paramFloat)
+  public static boolean i()
   {
-    aron.a(this.a, true);
-    Drawable localDrawable;
-    if (aron.a(this.a) != null)
+    String str = pmx.a();
+    int i = 0;
+    while (i < a.length)
     {
-      localDrawable = aron.a(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha(0);
+      File localFile = new File(str, a[i]);
+      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
+        return false;
       }
+      i += 1;
     }
-    if (aron.b(this.a) != null)
+    return true;
+  }
+  
+  public int a()
+  {
+    return 10079;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return ViolaBizLibData.class;
+  }
+  
+  public String a()
+  {
+    return "viola.ViolaBizLibHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
+    XmlData localXmlData = a();
+    if (localXmlData != null) {
+      QLog.i("viola.ViolaBizLibHandler", 1, "version:" + localXmlData.Version);
+    }
+    if (new File(paramString).exists())
     {
-      localDrawable = aron.b(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
+      if (pmx.a(paramString)) {
+        break label124;
       }
+      if (localXmlData != null)
+      {
+        localXmlData.loadState = 0;
+        localXmlData.Version = 0;
+        arnn.a(localXmlData, new String[] { "loadState", "Version" });
+      }
+      QLog.e("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess],unzip android.qq.readinjoy.viola_biz_810 lib failed!");
     }
-    if (paramFloat < 0.8F)
+    label124:
+    do
     {
-      aron.a(this.a).setVisibility(8);
-      aron.c(this.a).setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    }
+      return;
+      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
+      if (paramString != null) {
+        paramString.edit().putString("res_name", "android.qq.readinjoy.viola_biz_810").commit();
+      }
+    } while (!arot.i());
+    pmr.a("biz doOnDownloadSuccess");
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 

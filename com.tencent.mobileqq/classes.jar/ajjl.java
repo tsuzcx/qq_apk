@@ -1,20 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.ThemeImageView;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
 
 public class ajjl
-  extends ajjw
+  implements bbaa
 {
-  public ImageView a;
-  public TextView a;
-  public DragTextView a;
-  public ThemeImageView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  private ajjl(FriendFragment paramFriendFragment) {}
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
+      FriendFragment.a(this.a, 1400L, false);
+    }
+  }
 }
 
 

@@ -1,99 +1,177 @@
-import android.util.Log;
-import com.tencent.aekit.openrender.AEOpenRenderConfig;
-import com.tencent.aekit.openrender.UniformParam.Float4fParam;
-import com.tencent.aekit.openrender.UniformParam.TextureParam;
-import com.tencent.aekit.openrender.internal.Frame;
+import android.content.SharedPreferences;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import java.util.HashMap;
 
 public class ltb
-  extends ltj
 {
-  private static String jdField_b_of_type_JavaLangString = "attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\nvoid main() {\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n}";
-  private static String c = "precision mediump float;\nvarying vec2 textureCoordinate;\nuniform vec4 offset;\nuniform vec4 offset1;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture1;\nvoid main() {\n    vec2 newCoordinate;\n    if (textureCoordinate.x <= 0.5) {\n        newCoordinate.x = offset.x + textureCoordinate.x * 2.0 * (1.0 - offset.y - offset.x);\n        newCoordinate.y = offset.y + textureCoordinate.y * (1.0 - offset.w - offset.z);\n        gl_FragColor = texture2D(inputImageTexture, newCoordinate);\n    } else {\n        newCoordinate.x = offset1.x + (textureCoordinate.x - 0.5) * 2.0 * (1.0 - offset1.y - offset1.x);\n        newCoordinate.y = offset1.z + textureCoordinate.y * (1.0 - offset1.w - offset1.z);\n        gl_FragColor = texture2D(inputImageTexture1, newCoordinate);\n    }\n}";
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "CompositeFilter2-" + Integer.toHexString(hashCode());
-  private ltc jdField_a_of_type_Ltc;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[4];
-  private int jdField_b_of_type_Int;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[4];
-  
-  public ltb(int paramInt1, int paramInt2)
+  public static void a()
   {
-    super(2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "CompositeFilter2: width=" + paramInt1 + ", height=" + paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportNoEntranceByPtuSoFail");
+    }
+    bctj.a(BaseApplicationImpl.getApplication()).a(null, "actAVRPPtuSoFail", true, 0L, 0L, null, "", true);
   }
   
-  private void a(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
+  public static void a(int paramInt)
   {
-    float f = this.jdField_b_of_type_Int / this.jdField_a_of_type_Int * 2.0F;
-    if (paramInt2 / paramInt1 > f)
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportDetectInvalidExpression,invalidType  = " + paramInt);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("invalidType", String.valueOf(paramInt));
+    bctj.a(BaseApplicationImpl.getApplication()).a(null, "actAVRPDetectInvalidExp", true, 0L, 0L, localHashMap, "", true);
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramArrayOfFloat[1] = 0.0F;
-      paramArrayOfFloat[0] = 0.0F;
-      paramArrayOfFloat[2] = ((paramInt2 - f * paramInt1) / paramInt2 / 2.0F);
-      paramArrayOfFloat[3] = paramArrayOfFloat[2];
+      if (QLog.isColorLevel()) {
+        QLog.d("AV_rp_dc", 2, "reportResDownloadResult  resType = " + paramInt1 + ",success = " + bool);
+      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("resType", String.valueOf(paramInt1));
+      localHashMap.put("downResult", String.valueOf(bool));
+      localHashMap.put("errorCode", String.valueOf(paramInt2));
+      bctj.a(BaseApplicationImpl.getApplication()).a(null, "actResDownResult", bool, 0L, 0L, localHashMap, "", true);
       return;
     }
-    paramArrayOfFloat[0] = ((paramInt1 - paramInt2 / f) / paramInt1 / 2.0F);
-    paramArrayOfFloat[1] = paramArrayOfFloat[0];
-    paramArrayOfFloat[3] = 0.0F;
-    paramArrayOfFloat[2] = 0.0F;
   }
   
-  @NotNull
-  protected Frame a(List<ltn> paramList, long paramLong)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, float paramFloat, int paramInt4, int paramInt5)
   {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int == 0))
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportEmojiHitResult,emojiID  = " + paramInt1 + ",emojiType = " + paramInt2 + ",hitType = " + paramInt3 + ",missCount1 = " + paramInt4 + ",missCount2 = " + paramInt5 + ",score = " + paramFloat);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("id", String.valueOf(paramInt1));
+    localHashMap.put("etype", String.valueOf(paramInt2));
+    localHashMap.put("htype", String.valueOf(paramInt3));
+    localHashMap.put("score", String.valueOf(paramFloat));
+    localHashMap.put("mcount1", String.valueOf(paramInt4));
+    localHashMap.put("mcount2", String.valueOf(paramInt5));
+    bctj.a(BaseApplicationImpl.getApplication()).a(null, "actAVEmojiHit", true, 0L, 0L, localHashMap, "", true);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    int i;
+    do
     {
-      Log.e(this.jdField_a_of_type_JavaLangString, "onRender: invalidate composite size");
-      return null;
+      return;
+      i = ((ltr)paramQQAppInterface.getManager(254)).a();
+      if (i > 0)
+      {
+        paramQQAppInterface = new HashMap();
+        paramQQAppInterface.put("configVersion", String.valueOf(i));
+        bctj.a(BaseApplicationImpl.getApplication()).a(null, "actConfigExistStatus", true, 0L, 0L, paramQQAppInterface, "", true);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AV_rp_dc", 2, "reportConfigExistStatus localVersion = " + i);
+  }
+  
+  public static void a(String paramString)
+  {
+    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getBoolean("res_exist", false);
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "checkAndReportIllegalAVRedPacketRequest exist = " + bool);
     }
-    if (paramList.size() > 2) {
-      Log.w(this.jdField_a_of_type_JavaLangString, "onRender: expect 2 inputs, but got " + paramList.size());
-    }
-    Frame localFrame = ((ltn)paramList.get(0)).a;
-    a(this.jdField_a_of_type_ArrayOfFloat, localFrame.width, localFrame.height);
-    this.jdField_a_of_type_Ltc.addParam(new UniformParam.Float4fParam("offset", this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3]));
-    if (paramList.size() > 1)
+    if (bool)
     {
-      paramList = ((ltn)paramList.get(1)).a;
-      a(this.jdField_b_of_type_ArrayOfFloat, paramList.width, paramList.height);
-      this.jdField_a_of_type_Ltc.addParam(new UniformParam.TextureParam("inputImageTexture1", paramList.getTextureId(), 33985));
-      this.jdField_a_of_type_Ltc.addParam(new UniformParam.Float4fParam("offset1", this.jdField_b_of_type_ArrayOfFloat[0], this.jdField_b_of_type_ArrayOfFloat[1], this.jdField_b_of_type_ArrayOfFloat[2], this.jdField_b_of_type_ArrayOfFloat[3]));
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("md5", paramString);
+      localHashMap.put("model", Build.MODEL);
+      localHashMap.put("version", String.valueOf(Build.VERSION.SDK_INT));
+      bctj.a(BaseApplicationImpl.getApplication()).a(null, "actIllegalAVRPRequest", true, 0L, 0L, localHashMap, "", true);
     }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportConfigReqResult success = " + paramBoolean);
+    }
+    bctj.a(BaseApplicationImpl.getApplication()).a(null, "actAVConfigReqResult", paramBoolean, 0L, 0L, null, "", true);
+  }
+  
+  public static void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportRedPacketBtnGrayWhenSessionFinish,isGray  = " + paramBoolean + ",grayType = " + paramString);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("grayType", paramString);
+    bctj.a(BaseApplicationImpl.getApplication()).a(null, "actAVRPBtnGrayOrNot", paramBoolean, 0L, 0L, localHashMap, "", true);
+  }
+  
+  public static void a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportSendRedPacketResult success = " + paramBoolean + ",errorCode1 = " + paramString1 + ",errorCode2 = " + paramString2);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errorCode1", paramString1);
+    localHashMap.put("errorCode2", paramString2);
+    bctj.a(BaseApplicationImpl.getApplication()).a(null, "actAVSendRPResult", paramBoolean, 0L, 0L, localHashMap, "", true);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
     for (;;)
     {
-      return this.jdField_a_of_type_Ltc.RenderProcess(localFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Ltc.addParam(new UniformParam.TextureParam("inputImageTexture1", -1, 33985));
+      return;
+      int i = ((ltr)paramQQAppInterface.getManager(254)).a();
+      boolean bool;
+      if (i > 0)
+      {
+        bool = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getBoolean("res_exist", false);
+        if (bool)
+        {
+          paramQQAppInterface = new HashMap();
+          paramQQAppInterface.put("configVersion", String.valueOf(i));
+          bctj.a(BaseApplicationImpl.getApplication()).a(null, "actResExistStatus", true, 0L, 0L, paramQQAppInterface, "", true);
+        }
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("AV_rp_dc", 2, "reportResourceExistStaus localVersion = " + i + ",exist = " + bool);
+        return;
+        bool = false;
+      }
     }
   }
   
-  protected void a()
+  public static void b(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Ltc = new ltc(this);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create filter#" + Integer.toHexString(this.jdField_a_of_type_Ltc.hashCode()));
-    this.jdField_a_of_type_Ltc.setPositions(AEOpenRenderConfig.ORIGIN_POSITION_COORDS, true);
-    this.jdField_a_of_type_Ltc.setTexCords(AEOpenRenderConfig.ORIGIN_TEX_COORDS, true);
-    this.jdField_a_of_type_Ltc.ApplyGLSLFilter();
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportClickRedPacketBtnResult success = " + paramBoolean + ",errorCode = " + paramString);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errorCode", paramString);
+    bctj.a(BaseApplicationImpl.getApplication()).a(null, "actAVClickRPBtnResult", paramBoolean, 0L, 0L, localHashMap, "", true);
   }
   
-  protected void b()
+  public static void b(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Ltc != null)
-    {
-      this.jdField_a_of_type_Ltc.clearGLSLSelf();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: filter#" + Integer.toHexString(this.jdField_a_of_type_Ltc.hashCode()));
-      this.jdField_a_of_type_Ltc = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "reportGrabRedPacketResult success = " + paramBoolean + ",errorCode1 = " + paramString1 + ",errorCode2 = " + paramString2);
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errorCode1", paramString1);
+    localHashMap.put("errorCode2", paramString2);
+    bctj.a(BaseApplicationImpl.getApplication()).a(null, "actAVGrabRPResult", paramBoolean, 0L, 0L, localHashMap, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ltb
  * JD-Core Version:    0.7.0.1
  */

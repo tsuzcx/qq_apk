@@ -21,7 +21,8 @@ class WtloginHelper$HelperThread$2
       util.LOGW("login helper listener is null", this.this$1.mUserAccount);
       return;
     }
-    WtloginHelper.HelperThread.access$600(this.this$1, localasync_context, this.val$ret);
+    WtloginHelper.HelperThread.access$600(this.this$1, localasync_context);
+    WtloginHelper.HelperThread.access$700(this.this$1, localasync_context, this.val$ret);
     if (this.this$1.mDwSubAppidList == null)
     {
       if (this.this$1.mIsSmslogin)

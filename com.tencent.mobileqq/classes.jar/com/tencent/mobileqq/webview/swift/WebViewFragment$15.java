@@ -3,7 +3,7 @@ package com.tencent.mobileqq.webview.swift;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import azqs;
+import bcst;
 import com.tencent.mobileqq.bigbrother.TeleScreenRunnable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -18,12 +18,12 @@ class WebViewFragment$15
     {
       try
       {
-        WebViewFragment.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent);
+        WebViewFragment.access$001(this.this$0, this.jdField_a_of_type_AndroidContentIntent);
         if ((!this.jdField_a_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
           break;
         }
         boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("keyIsDownLoad", false);
-        WebViewFragment.a(this.this$0).finish();
+        WebViewFragment.access$101(this.this$0).finish();
         if (QLog.isColorLevel()) {
           QLog.d("WebLog_WebViewFragment", 2, "forcedClosedAfterJump appName=" + this.jdField_a_of_type_JavaLangString);
         }
@@ -33,7 +33,7 @@ class WebViewFragment$15
           if (this.jdField_a_of_type_Long == -1L)
           {
             str1 = "";
-            azqs.b(null, "dc00898", "", "", "0X800A86A", "0X800A86A", 0, 0, str1, "", "", "");
+            bcst.b(null, "dc00898", "", "", "0X800A86A", "0X800A86A", 0, 0, str1, "", "", "");
             return;
           }
           str1 = String.valueOf(this.jdField_a_of_type_Long);
@@ -45,7 +45,7 @@ class WebViewFragment$15
         if (this.jdField_a_of_type_Long == -1L)
         {
           str1 = "";
-          azqs.b(null, "dc00898", "", "", "0X800A86B", "0X800A86B", 0, 0, str1, "", "", "");
+          bcst.b(null, "dc00898", "", "", "0X800A86B", "0X800A86B", 0, 0, str1, "", "", "");
           return;
         }
       }
@@ -61,7 +61,7 @@ class WebViewFragment$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragment.15
  * JD-Core Version:    0.7.0.1
  */

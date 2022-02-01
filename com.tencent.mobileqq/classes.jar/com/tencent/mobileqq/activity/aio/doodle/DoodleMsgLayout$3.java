@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import afal;
+import aggx;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,14 +15,14 @@ class DoodleMsgLayout$3
   public void run()
   {
     QLog.d("DoodleMsgLayout", 2, "setDoodleContent start create drawable:" + this.a);
-    if (!afal.a().b(1, this.a)) {
-      afal.a().b(1, this.a, this.this$0, this.this$0);
+    if (!aggx.a().b(1, this.a)) {
+      aggx.a().b(1, this.a, this.this$0, this.this$0);
     }
     Drawable localDrawable;
     do
     {
       return;
-      localDrawable = afal.a().a(2, this.a, true);
+      localDrawable = aggx.a().a(2, this.a, true);
       if (localDrawable != null) {
         ((URLDrawable)localDrawable).startDownload();
       }
@@ -33,7 +33,7 @@ class DoodleMsgLayout$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout.3
  * JD-Core Version:    0.7.0.1
  */

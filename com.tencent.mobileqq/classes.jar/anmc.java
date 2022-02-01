@@ -1,21 +1,18 @@
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-class anmc
-  implements afjs
+public class anmc
+  implements ansd
 {
-  anmc(anma paramanma) {}
+  public anmc(FrameHelperActivity paramFrameHelperActivity) {}
   
   public void a()
   {
-    boolean bool = ((afih)anma.a(this.a).get(anma.a(this.a))).checkShare();
-    if (bool != anma.a(this.a))
-    {
-      anma.a(this.a, bool);
-      anma.a(this.a, anma.a(this.a));
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
     }
+    this.a.a.sendEmptyMessage(17);
   }
-  
-  public void b() {}
 }
 
 

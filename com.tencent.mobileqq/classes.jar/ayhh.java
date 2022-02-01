@@ -1,20 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.view.MaskView;
 
-class ayhh
-  implements View.OnTouchListener
+public class ayhh
+  implements SurfaceHolder.Callback
 {
-  ayhh(ayhe paramayhe) {}
+  public ayhh(ScanOcrActivity paramScanOcrActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    ScanOcrActivity.a(this.a, paramSurfaceHolder);
+    if (ScanOcrActivity.a(this.a) == null)
+    {
+      ScanOcrActivity.a(this.a, new aygn(this.a, this.a.jdField_a_of_type_Aygs, ScanOcrActivity.a(this.a)));
+      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
+      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
+      if (ScanOcrActivity.a(this.a)) {
+        ScanOcrActivity.a(this.a).a();
+      }
+    }
   }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
 }
 
 

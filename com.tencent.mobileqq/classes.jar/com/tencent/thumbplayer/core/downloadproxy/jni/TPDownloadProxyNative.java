@@ -20,22 +20,22 @@ public class TPDownloadProxyNative
   
   private static void nativeLogCallback(int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    if (paramInt1 == 10)
+    if (paramInt1 == 6)
     {
       TPDLProxyLog.e(TPDLProxyUtils.byteArrayToString(paramArrayOfByte1), paramInt2, TPDLProxyUtils.byteArrayToString(paramArrayOfByte2), TPDLProxyUtils.byteArrayToString(paramArrayOfByte3));
       return;
     }
-    if (paramInt1 == 20)
+    if (paramInt1 == 5)
     {
       TPDLProxyLog.w(TPDLProxyUtils.byteArrayToString(paramArrayOfByte1), paramInt2, TPDLProxyUtils.byteArrayToString(paramArrayOfByte2), TPDLProxyUtils.byteArrayToString(paramArrayOfByte3));
       return;
     }
-    if (paramInt1 == 40)
+    if (paramInt1 == 4)
     {
       TPDLProxyLog.i(TPDLProxyUtils.byteArrayToString(paramArrayOfByte1), paramInt2, TPDLProxyUtils.byteArrayToString(paramArrayOfByte2), TPDLProxyUtils.byteArrayToString(paramArrayOfByte3));
       return;
     }
-    if (paramInt1 == 50)
+    if (paramInt1 == 3)
     {
       TPDLProxyLog.d(TPDLProxyUtils.byteArrayToString(paramArrayOfByte1), paramInt2, TPDLProxyUtils.byteArrayToString(paramArrayOfByte2), TPDLProxyUtils.byteArrayToString(paramArrayOfByte3));
       return;
@@ -62,7 +62,7 @@ public class TPDownloadProxyNative
   
   public String getNativeVersion()
   {
-    String str = "1.3.0.00016";
+    String str = "1.7.0.00016";
     if (isLoadDownloadProxySucceed) {
       str = TPDLProxyUtils.byteArrayToString(getVersion());
     }
@@ -143,6 +143,8 @@ public class TPDownloadProxyNative
     appContext = paramContext;
   }
   
+  public native void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  
   public native int setClipInfo(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, String paramString3, String paramString4);
   
   public void setLibLoader(ITPDLProxyNativeLibLoader paramITPDLProxyNativeLibLoader)
@@ -171,7 +173,7 @@ public class TPDownloadProxyNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,155 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.ProgressButton;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
-public class ascb
-  extends asbj
+class ascb
+  implements awnc<EmoticonPackage>
 {
-  public ascb(Intent paramIntent)
-  {
-    super(paramIntent);
-    this.e = true;
-  }
+  ascb(asca paramasca, bgwk parambgwk, boolean paramBoolean, arup paramarup, ProgressButton paramProgressButton, int paramInt) {}
   
-  public List<RecentUser> a(List<RecentUser> paramList)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    boolean bool = false;
+    int i = ((anuk)this.jdField_a_of_type_Asca.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).g();
+    Object localObject2 = "vip";
+    Object localObject1 = "";
+    Object localObject3;
+    if (this.jdField_a_of_type_Bgwk.n == 4)
     {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bdeu.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && ((localRecentUser.getType() != 1006) || (a(aryl.h))) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 0) || (!ndv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
-        localArrayList.add(localRecentUser);
+      localObject1 = "mvip.g.a.bq_" + this.jdField_a_of_type_Bgwk.a;
+      if (this.jdField_a_of_type_Bgwk.o != 4) {
+        break label376;
+      }
+      localObject3 = "!vip";
+      if (i != 1)
+      {
+        localObject2 = localObject3;
+        if (i != 3) {}
+      }
+      else
+      {
+        bool = true;
+        localObject2 = localObject3;
+      }
+      label104:
+      localObject3 = new EmoticonPackage();
+      ((EmoticonPackage)localObject3).jobType = this.jdField_a_of_type_Bgwk.n;
+      ((EmoticonPackage)localObject3).epId = this.jdField_a_of_type_Bgwk.a;
+      if (paramEmoticonPackage == null) {
+        break label1002;
       }
     }
-    return localArrayList;
-  }
-  
-  protected void d()
-  {
-    e();
-    super.d();
-  }
-  
-  public void e()
-  {
-    Object localObject1 = azvd.a(this.jdField_a_of_type_AndroidOsBundle);
-    if ((localObject1 == null) || (TextUtils.isEmpty(((AbsStructMsg)localObject1).mMsg_A_ActionData))) {}
     for (;;)
     {
-      return;
-      Object localObject2 = bdib.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, ((AbsStructMsg)localObject1).mMsg_A_ActionData);
-      if (localObject2 == null) {
-        continue;
+      if (QLog.isColorLevel()) {
+        QLog.d("RecommendEmotionAdapter", 2, "canDownload:" + bool + ",vipType:" + i + ",isPayBack:" + this.jdField_a_of_type_Boolean);
       }
-      localObject1 = ((bdhk)localObject2).b("usertype");
-      localObject2 = ((bdhk)localObject2).b("unionid");
-      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
-        continue;
-      }
-      try
+      if (asca.a(this.jdField_a_of_type_Asca, this.jdField_a_of_type_Bgwk))
       {
-        i = Integer.parseInt((String)localObject1);
-        wxj.a("share_uin", "qq_suc", bcpx.b(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype")), i, new String[] { localObject2 });
-        if (!QLog.isColorLevel()) {
-          continue;
+        this.jdField_a_of_type_Arup.a(paramEmoticonPackage.epId);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(this.jdField_a_of_type_Bgwk.d);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
+        if (this.jdField_a_of_type_Boolean) {
+          bcst.b(this.jdField_a_of_type_Asca.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800581D", 0, 0, this.jdField_a_of_type_Bgwk.a, "", "", "");
         }
-        QLog.d("Q.qqstory.shareAccount", 2, "shareToQQ success userType:" + i + ",userUnionId:" + (String)localObject2);
-        return;
       }
-      catch (NumberFormatException localNumberFormatException)
+      label376:
+      do
       {
-        for (;;)
+        do
         {
-          int i = 0;
-        }
+          return;
+          if (this.jdField_a_of_type_Bgwk.n == 0)
+          {
+            localObject1 = "mvip.g.a.bq_" + this.jdField_a_of_type_Bgwk.a;
+            break;
+          }
+          if ((this.jdField_a_of_type_Bgwk.n != 3) && (this.jdField_a_of_type_Bgwk.n != 5)) {
+            break;
+          }
+          localObject1 = "mvip.g.a.bq_mg_" + this.jdField_a_of_type_Bgwk.a;
+          break;
+          if (this.jdField_a_of_type_Bgwk.o == 5)
+          {
+            localObject3 = "!svip";
+            localObject2 = localObject3;
+            if (i != 3) {
+              break label104;
+            }
+            bool = true;
+            localObject2 = localObject3;
+            break label104;
+          }
+          bool = true;
+          break label104;
+          bcst.b(this.jdField_a_of_type_Asca.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005817", 0, 0, this.jdField_a_of_type_Bgwk.a, "", "", "");
+          return;
+          if (bool)
+          {
+            localObject1 = (anlb)this.jdField_a_of_type_Asca.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(12);
+            if (this.jdField_a_of_type_Int == 1)
+            {
+              ((anlb)localObject1).a(paramEmoticonPackage.epId, this.jdField_a_of_type_Int);
+              this.jdField_a_of_type_Arup.a(paramEmoticonPackage, true, this.jdField_a_of_type_Int);
+              this.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(anni.a(2131712035));
+              this.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgressDrawable(this.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.a(-16745986));
+              if (!this.jdField_a_of_type_Boolean) {
+                bcst.b(this.jdField_a_of_type_Asca.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005814", 0, 0, this.jdField_a_of_type_Bgwk.a, "", "", "");
+              }
+              localObject1 = this.jdField_a_of_type_Asca.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+              localObject2 = this.jdField_a_of_type_Bgwk.a;
+              if (!this.jdField_a_of_type_Asca.jdField_a_of_type_Boolean) {
+                break label805;
+              }
+              paramEmoticonPackage = "1";
+              bcst.b((QQAppInterface)localObject1, "CliOper", "", "", "ep_mall", "0X8006139", 0, 0, (String)localObject2, paramEmoticonPackage, "", "");
+              i = this.jdField_a_of_type_Asca.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0).getInt("recommendRuleId", -1);
+              int j = this.jdField_a_of_type_Asca.jdField_a_of_type_JavaUtilList.indexOf(this.jdField_a_of_type_Bgwk);
+              localObject1 = this.jdField_a_of_type_Asca.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+              localObject2 = this.jdField_a_of_type_Bgwk.a;
+              localObject3 = j + 1 + "";
+              if (!this.jdField_a_of_type_Asca.jdField_a_of_type_Boolean) {
+                break label811;
+              }
+            }
+            for (paramEmoticonPackage = "1";; paramEmoticonPackage = "")
+            {
+              VasWebviewUtil.reportCommercialDrainage((String)localObject1, "ep_mall", "0X8005814", "", 0, 0, 0, "", (String)localObject2, (String)localObject3, paramEmoticonPackage, "", i + "", "", 0, 0, 0, 0);
+              return;
+              if (paramEmoticonPackage.type == 4) {
+                break;
+              }
+              ((anlb)localObject1).a(paramEmoticonPackage.epId, this.jdField_a_of_type_Int);
+              break;
+              paramEmoticonPackage = "";
+              break label609;
+            }
+          }
+        } while (this.jdField_a_of_type_Boolean);
+        this.jdField_a_of_type_Asca.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = this.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton;
+        paramEmoticonPackage = "https://mc.vip.qq.com/qqwallet/index?aid=" + (String)localObject1 + "&type=" + (String)localObject2 + "&send=0&return_url=jsbridge://qw_charge/emojiPayResultOk&debug=1";
+        localObject1 = new Intent(this.jdField_a_of_type_Asca.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject1).putExtra("url", paramEmoticonPackage);
+      } while (!(this.jdField_a_of_type_Asca.jdField_a_of_type_AndroidContentContext instanceof Activity));
+      label609:
+      ((Activity)this.jdField_a_of_type_Asca.jdField_a_of_type_AndroidContentContext).startActivityForResult((Intent)localObject1, 4779);
+      label805:
+      label811:
+      if (QLog.isColorLevel()) {
+        QLog.d("RecommendEmotionAdapter", 2, "func downloadOrPay. mCurPageIndex: epid = " + this.jdField_a_of_type_Bgwk.a);
       }
+      bcst.b(this.jdField_a_of_type_Asca.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005815", 0, 0, this.jdField_a_of_type_Bgwk.a, "", "", "");
+      return;
+      label1002:
+      paramEmoticonPackage = (EmoticonPackage)localObject3;
     }
   }
 }

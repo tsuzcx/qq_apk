@@ -1,38 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-class mjy
-  implements DialogInterface.OnClickListener
+public class mjy
+  implements mhj
 {
-  mjy(mjs parammjs) {}
+  public mjy(VideoInviteActivity paramVideoInviteActivity, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    mjs.a(this.a, false);
-    if (paramInt == 1)
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null)
     {
-      azqs.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
-      this.a.c();
-      if (!mww.a(mjs.a(this.a))) {
-        mjs.a(this.a).a(mjs.a(this.a));
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131373371, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363071, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363083, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363082, false);
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d = false;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i)
+    {
+      long l = mqu.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, 3, l);
+      if (!this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h)
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h = true;
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, l, 2);
       }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e = true;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
     }
-    while (paramInt != 0)
+    for (;;)
     {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.overridePendingTransition(0, 2130772169);
       return;
-      mjs.a(this.a).b(mjs.a(this.a));
-      return;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 246);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(246);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 0);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
     }
-    mjs.a(this.a, mjs.a(this.a).a().v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mjy
  * JD-Core Version:    0.7.0.1
  */

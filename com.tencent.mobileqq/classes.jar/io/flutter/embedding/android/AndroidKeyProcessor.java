@@ -1,11 +1,11 @@
 package io.flutter.embedding.android;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.flutter.embedding.engine.systemchannels.KeyEventChannel;
 import io.flutter.embedding.engine.systemchannels.KeyEventChannel.FlutterKeyEvent;
 import io.flutter.plugin.editing.TextInputPlugin;
@@ -82,7 +82,7 @@ public class AndroidKeyProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.AndroidKeyProcessor
  * JD-Core Version:    0.7.0.1
  */

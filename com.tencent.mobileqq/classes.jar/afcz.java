@@ -1,49 +1,24 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
-class afcz
-  extends alwx
+public class afcz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  public afcz(SelectedAndSearchBar paramSelectedAndSearchBar, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  private afcz(afcw paramafcw, BaseActivity paramBaseActivity)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
-  }
-  
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
-  {
-    super.a(paramBoolean1, paramList, paramBoolean2);
-    if ((afcw.a(this.jdField_a_of_type_Afcw, paramList)) && (paramBoolean1)) {}
-    for (paramBoolean2 = true;; paramBoolean2 = false)
-    {
-      paramList = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("MergeForwardRevokeHelper", 2, "onMsgRevokeNotice  hasMsgRevoked:" + paramBoolean2 + "; isSuccess:" + paramBoolean1);
-      }
-      if ((paramBoolean2) && (paramList != null))
-      {
-        if (!this.jdField_a_of_type_Afcw.a) {
-          break;
-        }
-        paramList.finish();
-      }
-      return;
-    }
-    if (afcw.a() == paramList)
-    {
-      afcw.a(this.jdField_a_of_type_Afcw, paramList);
-      return;
-    }
-    paramList.finish();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+    SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afcz
  * JD-Core Version:    0.7.0.1
  */

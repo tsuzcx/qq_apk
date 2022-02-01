@@ -1,63 +1,48 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
 
-public class ogi
-  implements INetInfoHandler
+class ogi
+  implements View.OnClickListener
 {
-  protected WeakReference<oby> a;
+  ogi(ogh paramogh) {}
   
-  public ogi(oby paramoby)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramoby);
-  }
-  
-  public void onNetMobile2None()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((oby)this.a.get()).c();
-    }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((oby)this.a.get()).i();
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null))
+    if (pih.a()) {}
+    for (;;)
     {
-      ((oby)this.a.get()).g();
-      ((oby)this.a.get()).i();
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((oby)this.a.get()).i();
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((oby)this.a.get()).h();
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((oby)this.a.get()).f();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Intent localIntent = new Intent();
+      localIntent.putExtra("currentIndex", ogh.a(this.a).getCurrentItem());
+      PublicTransFragmentActivity.b(ogh.a(this.a), localIntent, ReadInJoyChannelPanelFragment.class);
+      try
+      {
+        ReadInJoyChannelPanelFragment.a("0X8009497", new phi().b().c(this.a.a()).a());
+        ogh.a(this.a, false);
+        ogh.a(this.a).setVisibility(8);
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          QLog.e("ReadInJoyChannelViewPagerController", 1, QLog.getStackTraceString(localJSONException));
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ogi
  * JD-Core Version:    0.7.0.1
  */

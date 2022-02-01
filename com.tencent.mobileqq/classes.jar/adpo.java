@@ -1,6 +1,16 @@
-public abstract interface adpo
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+
+public class adpo
+  implements DialogInterface.OnClickListener
 {
-  public abstract void onBackPressed();
+  public adpo(BaseChatPie paramBaseChatPie) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

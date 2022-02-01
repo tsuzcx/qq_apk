@@ -1,65 +1,142 @@
 import android.content.Context;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.PtsData;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.itemview.PTSItemView;
+import com.tencent.pts.core.lite.IPTSLiteEventListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-final class syl
-  extends amrx
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/NewPtsViewCreator;", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/ItemCreator;", "()V", "eventListener", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/PtsItemViewEventListener;", "exposureItemData", "Ljava/util/ArrayList;", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/data/PtsData;", "pageNameToViewTypeMap", "Ljava/util/HashMap;", "", "", "buildViewTypeMap", "", "createViewHolder", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/BaseItemViewHolder;", "context", "Landroid/content/Context;", "data", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/data/BaseData;", "parent", "Landroid/view/ViewGroup;", "getRatio2Json", "getViewType", "isSuitable", "", "triggerItemViewExposure", "allowRepeatReport", "Companion", "PTSLiteItemViewHolder", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class syl
+  implements syk
 {
-  syl(Object paramObject, QQAppInterface paramQQAppInterface, String paramString, alzr paramalzr, boolean paramBoolean, Context paramContext) {}
+  public static final sym a;
+  private final ArrayList<PtsData> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final syq jdField_a_of_type_Syq = new syq();
   
-  public int a()
+  static
   {
-    return 5;
+    jdField_a_of_type_Sym = new sym(null);
   }
   
-  public void a(Object paramObject)
+  private final String a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangObject != null)
+    Object localObject = paramString;
+    if (paramString != null)
     {
-      paramObject = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-      if (paramObject != null) {
-        paramObject.a(this.jdField_a_of_type_JavaLangObject);
-      }
+      paramString = new JSONObject(paramString);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("fontScale", tbb.a());
+      paramString.put("$RIJArticle", localObject);
+      localObject = paramString.toString();
     }
-    for (;;)
+    return localObject;
+  }
+  
+  public int a(@NotNull BaseData paramBaseData)
+  {
+    Intrinsics.checkParameterIsNotNull(paramBaseData, "data");
+    paramBaseData = (PtsData)paramBaseData;
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramBaseData.b);
+    if (localInteger != null) {
+      return localInteger.intValue();
+    }
+    QLog.e("NewPtsViewCreator", 1, "[getViewType] error, pageName = " + paramBaseData.b);
+    return -1;
+  }
+  
+  @NotNull
+  public syj a(@NotNull Context paramContext, @NotNull BaseData paramBaseData, @NotNull ViewGroup paramViewGroup)
+  {
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Intrinsics.checkParameterIsNotNull(paramBaseData, "data");
+    Intrinsics.checkParameterIsNotNull(paramViewGroup, "parent");
+    paramViewGroup = (PtsData)paramBaseData;
+    if (paramViewGroup.a == null) {
+      PtsData.a(paramViewGroup, null, 1, null);
+    }
+    paramContext = new PTSItemView(paramContext);
+    paramViewGroup = paramViewGroup.a;
+    if (paramViewGroup != null) {
+      paramViewGroup.layoutToView(paramContext, (IPTSLiteEventListener)this.jdField_a_of_type_Syq, true);
+    }
+    paramViewGroup = paramContext.getLayoutParams();
+    if (paramViewGroup != null) {
+      paramContext.setLayoutParams((ViewGroup.LayoutParams)new AbsListView.LayoutParams(paramViewGroup));
+    }
+    return (syj)new syn(this, (View)paramContext, paramBaseData);
+  }
+  
+  public final void a()
+  {
+    Object localObject = qpn.a().a("native_article");
+    if (localObject == null)
     {
-      if (this.jdField_a_of_type_Alzr != null) {
-        this.jdField_a_of_type_Alzr.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
-      }
+      QLog.i("NewPtsViewCreator", 1, "[initPtsLiteTypeCount], pageNameList is null");
       return;
-      paramObject = (alzl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-      paramObject.b(this.jdField_a_of_type_JavaLangString);
-      paramObject.a(this.jdField_a_of_type_JavaLangString);
-      StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1008);
-      suv.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject.a());
-      ssp.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      paramObject = (ntw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88);
-      if (paramObject != null) {
-        paramObject.a(this.jdField_a_of_type_JavaLangString, "unfollow");
+    }
+    int i = syj.a;
+    localObject = ((List)localObject).iterator();
+    i += 1;
+    while (((Iterator)localObject).hasNext())
+    {
+      String str = (String)((Iterator)localObject).next();
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))
+      {
+        Map localMap = (Map)this.jdField_a_of_type_JavaUtilHashMap;
+        Intrinsics.checkExpressionValueIsNotNull(str, "pageName");
+        localMap.put(str, Integer.valueOf(i));
+        QLog.i("NewPtsViewCreator", 1, "[initPtsLiteTypeCount], pageName = " + str + ", viewType = " + i);
+      }
+      i += 1;
+    }
+    syj.a += this.jdField_a_of_type_JavaUtilHashMap.size() + 1;
+    QLog.i("NewPtsViewCreator", 1, "[initPtsLiteTypeCount], view type count = " + syj.a);
+  }
+  
+  public final void a(boolean paramBoolean, @NotNull PtsData paramPtsData)
+  {
+    Intrinsics.checkParameterIsNotNull(paramPtsData, "data");
+    if (paramBoolean)
+    {
+      paramPtsData = paramPtsData.a;
+      if (paramPtsData != null) {
+        paramPtsData.triggerExposureEvent();
       }
     }
+    while (this.jdField_a_of_type_JavaUtilArrayList.contains(paramPtsData)) {
+      return;
+    }
+    PTSComposer localPTSComposer = paramPtsData.a;
+    if (localPTSComposer != null) {
+      localPTSComposer.triggerExposureEvent();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramPtsData);
   }
   
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
+  public boolean a(@NotNull BaseData paramBaseData)
   {
-    if (this.jdField_a_of_type_Alzr != null) {
-      this.jdField_a_of_type_Alzr.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
-    }
+    Intrinsics.checkParameterIsNotNull(paramBaseData, "data");
+    return paramBaseData instanceof PtsData;
   }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     syl
  * JD-Core Version:    0.7.0.1
  */

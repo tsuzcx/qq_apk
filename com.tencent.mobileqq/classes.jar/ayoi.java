@@ -1,118 +1,20 @@
-import android.view.View;
-import com.tencent.TMG.utils.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.EditText;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
 public class ayoi
-  extends ayod
+  extends Editable.Factory
 {
-  public static final String a;
-  public int a;
-  public CharSequence a;
-  public ArrayList<ayoj> a;
-  public int b;
-  protected final String b;
-  protected final String j = "showType";
-  protected final String k = "moreText";
-  protected final String l = "moreUrl";
-  public String m;
+  public ayoi(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  static
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    jdField_a_of_type_JavaLangString = ayoi.class.getSimpleName();
-  }
-  
-  public ayoi(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_b_of_type_JavaLangString = "itemList";
-  }
-  
-  public ayoi(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_b_of_type_JavaLangString = "itemList";
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public void a(View paramView) {}
-  
-  public void a(String paramString)
-  {
-    for (;;)
-    {
-      int i;
-      JSONObject localJSONObject;
-      int n;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_Int = paramString.optInt("showType");
-        this.jdField_a_of_type_JavaLangCharSequence = paramString.optString("moreText");
-        this.m = paramString.optString("moreUrl");
-        JSONArray localJSONArray = paramString.optJSONArray("itemList");
-        if (this.jdField_a_of_type_JavaUtilArrayList == null)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          break label273;
-          if (i < localJSONArray.length())
-          {
-            localJSONObject = localJSONArray.optJSONObject(i);
-            paramString = null;
-            n = localJSONObject.optInt("type");
-          }
-        }
-        else
-        {
-          switch (n)
-          {
-          case 1: 
-            if (paramString == null) {
-              break label281;
-            }
-            this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-            break label281;
-            this.jdField_a_of_type_JavaUtilArrayList.clear();
-          }
-        }
-      }
-      catch (JSONException paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 0, "layout 13 parse layout error :" + paramString.toString());
-        }
-      }
-      return;
-      if ((a() instanceof DynamicSearch.ResultItem))
-      {
-        paramString = new ayol(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, localJSONObject, n, (DynamicSearch.ResultItem)a());
-      }
-      else if ((a() instanceof UnifySearchCommon.ResultItem))
-      {
-        paramString = new ayol(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, localJSONObject, n, (UnifySearchCommon.ResultItem)a());
-        continue;
-        label273:
-        i = 0;
-        continue;
-        continue;
-        label281:
-        i += 1;
-      }
+    if ((paramCharSequence instanceof bdod)) {
+      return (Editable)paramCharSequence;
     }
-  }
-  
-  public int b()
-  {
-    return 1;
+    return new bdod(paramCharSequence, 3, (int)(AutoReplyEditActivity.a(this.a).getTextSize() / AutoReplyEditActivity.a(this.a).getPaint().density));
   }
 }
 

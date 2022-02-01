@@ -1,8 +1,8 @@
 package io.flutter.plugin.common;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 
 public final class MethodChannel
 {
@@ -43,6 +43,11 @@ public final class MethodChannel
     }
   }
   
+  public void resizeChannelBuffer(int paramInt)
+  {
+    BasicMessageChannel.resizeChannelBuffer(this.messenger, this.name, paramInt);
+  }
+  
   @UiThread
   public void setMethodCallHandler(@Nullable MethodChannel.MethodCallHandler paramMethodCallHandler)
   {
@@ -58,7 +63,7 @@ public final class MethodChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.MethodChannel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae.play;
 
 import android.text.TextUtils;
-import blat;
-import bljn;
-import bmpo;
+import bnqb;
+import bnzb;
+import bpgu;
 import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
 import java.io.File;
 import java.util.Timer;
@@ -24,7 +24,7 @@ class AEVideoShelfPreviewFragment$5
         if (localFile.exists())
         {
           localFile.delete();
-          bljn.b(AEVideoShelfPreviewFragment.b(), "onCompletion---delete temp silent file because user cancel generation: " + (String)localObject);
+          bnzb.b(AEVideoShelfPreviewFragment.b(), "onCompletion---delete temp silent file because user cancel generation: " + (String)localObject);
         }
       }
       if (!TextUtils.isEmpty(AEVideoShelfPreviewFragment.a(this.this$0)))
@@ -33,7 +33,7 @@ class AEVideoShelfPreviewFragment$5
         if (((File)localObject).exists())
         {
           ((File)localObject).delete();
-          bljn.b(AEVideoShelfPreviewFragment.b(), "onCompletion---delete final file because user cancel generation: " + AEVideoShelfPreviewFragment.a(this.this$0));
+          bnzb.b(AEVideoShelfPreviewFragment.b(), "onCompletion---delete final file because user cancel generation: " + AEVideoShelfPreviewFragment.a(this.this$0));
         }
       }
       AEVideoShelfPreviewFragment.b(this.this$0, false);
@@ -53,7 +53,7 @@ class AEVideoShelfPreviewFragment$5
         AEVideoShelfPreviewFragment.c(this.this$0, false);
         AEVideoShelfPreviewFragment.a(this.this$0.getActivity(), false);
       }
-      bmpo.a(this.this$0.getActivity(), AEVideoShelfPreviewFragment.a(this.this$0), this.this$0.a(), blat.b(this.this$0.getActivity()), "caller_aecamera");
+      bpgu.a(this.this$0.getActivity(), AEVideoShelfPreviewFragment.a(this.this$0), this.this$0.a(), bnqb.b(this.this$0.getActivity()), "caller_aecamera");
       return;
       AEVideoShelfPreviewFragment.b(this.this$0);
     }
@@ -61,7 +61,7 @@ class AEVideoShelfPreviewFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment.5
  * JD-Core Version:    0.7.0.1
  */

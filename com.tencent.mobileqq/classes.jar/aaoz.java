@@ -1,47 +1,16 @@
-import android.content.Context;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialStatus;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-final class aaoz
-  implements ArkViewImplement.LoadCallback
+class aaoz
+  implements bhlz
 {
-  aaoz(long paramLong, String paramString, WeakReference paramWeakReference1, WeakReference paramWeakReference2, GdtInterstitialParams paramGdtInterstitialParams) {}
+  aaoz(aaor paramaaor, int paramInt, String paramString) {}
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void a(Bundle paramBundle)
   {
-    int i = aaom.a(paramInt2);
-    if (i == 0) {
-      i = 1;
-    }
-    for (;;)
-    {
-      aase.b("GdtInterstitialView", String.format("onLoadFailed state:%d duration:%d errCode:%d msg:%s canRetry:%b error:%d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean), Integer.valueOf(i) }));
-      aaoy.a(i, paramInt2, this.jdField_a_of_type_JavaLangString);
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d))
-      {
-        ((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d = true;
-        aasr.b((Context)this.b.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, (GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get(), i, paramInt2);
-      }
-      return;
-    }
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    aase.b("GdtInterstitialView", String.format("onLoadState state:%d duration:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) }));
-    if (paramInt == 1) {
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d))
-      {
-        ((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d = true;
-        ((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).c = true;
-        aasr.b((Context)this.b.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, (GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 0, -2147483648);
-      }
-    }
-    while (paramInt != -1) {
-      return;
-    }
+    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
+    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aaor.a.a(121, paramBundle);
   }
 }
 

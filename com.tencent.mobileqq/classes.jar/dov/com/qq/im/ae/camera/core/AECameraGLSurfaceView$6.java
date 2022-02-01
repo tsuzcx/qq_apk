@@ -7,12 +7,12 @@ class AECameraGLSurfaceView$6
   
   public void run()
   {
-    AECameraGLSurfaceView.d(this.this$0);
+    AECameraGLSurfaceView.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.6
  * JD-Core Version:    0.7.0.1
  */

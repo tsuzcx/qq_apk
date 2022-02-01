@@ -1,24 +1,22 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
-class tok
-  implements View.OnTouchListener
+public class tok
+  extends tou
 {
-  tok(toi paramtoi, int paramInt) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public tok(BridgeModule paramBridgeModule)
   {
-    toi.a(this.jdField_a_of_type_Toi, paramView);
-    this.jdField_a_of_type_Toi.d = this.jdField_a_of_type_Int;
-    toi.a(this.jdField_a_of_type_Toi).onTouchEvent(paramMotionEvent);
-    return false;
+    super(paramBridgeModule);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$400(this.a, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tok
  * JD-Core Version:    0.7.0.1
  */

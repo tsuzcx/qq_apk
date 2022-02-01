@@ -1,54 +1,14 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class aofj
-  implements Application.ActivityLifecycleCallbacks
+class aofj
+  implements Comparator<MessageRecord>
 {
-  public aofj(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
+  aofj(aofi paramaofi) {}
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityResumed: " + paramActivity.getClass().getName());
-    }
-    if (this.a.f)
-    {
-      this.a.f = false;
-      this.a.d = true;
-      this.a.a().removeCallbacks(this.a.b);
-      this.a.a().postDelayed(this.a.b, 200L);
-    }
-  }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStarted: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStopped: " + paramActivity.getClass().getName());
-    }
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 

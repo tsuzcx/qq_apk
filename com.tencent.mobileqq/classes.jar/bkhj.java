@@ -1,45 +1,24 @@
+import com.tencent.widget.AbsListView;
+
 public class bkhj
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  private int a;
   
-  public bkhj(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  private bkhj(AbsListView paramAbsListView) {}
+  
+  public void a()
   {
-    this.f = paramInt1;
-    this.e = paramInt2;
-    this.b = paramInt3;
-    this.a = paramInt4;
-    this.c = paramInt5;
-    this.d = paramInt6;
+    this.a = AbsListView.access$200(this.this$0);
   }
   
-  public int a()
+  public boolean a()
   {
-    return this.f;
-  }
-  
-  public int b()
-  {
-    return this.e;
-  }
-  
-  public int c()
-  {
-    return this.c - this.b;
-  }
-  
-  public int d()
-  {
-    return this.d - this.a;
+    return (this.this$0.hasWindowFocus()) && (AbsListView.access$300(this.this$0) == this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkhj
  * JD-Core Version:    0.7.0.1
  */

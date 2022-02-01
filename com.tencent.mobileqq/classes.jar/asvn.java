@@ -1,8 +1,21 @@
-public abstract interface asvn
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import java.util.Comparator;
+
+class asvn
+  implements Comparator<FavFileInfo>
 {
-  public abstract void a(String paramString);
+  asvn(asvm paramasvm) {}
   
-  public abstract void c(int paramInt);
+  public int a(FavFileInfo paramFavFileInfo1, FavFileInfo paramFavFileInfo2)
+  {
+    if (paramFavFileInfo2.c > paramFavFileInfo1.c) {
+      return 1;
+    }
+    if (paramFavFileInfo2.c < paramFavFileInfo1.c) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

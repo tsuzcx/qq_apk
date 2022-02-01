@@ -28,7 +28,7 @@ public final class hd_video_comm$PstnAudioSrtpSdpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video_comm.PstnAudioSrtpSdpInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,5 @@
 package com.tencent.qqlive.tvkplayer.vinfo.common;
 
-import com.tencent.qqlive.tvkplayer.TVideoMgr;
-import com.tencent.qqlive.tvkplayer.tools.config.TVKConfigUrl;
-
 public class TVKDownloadFacadeEnum
 {
   public static final int AUTO = 0;
@@ -24,8 +21,6 @@ public class TVKDownloadFacadeEnum
   public static final int CGI_TYPE_VINFO_ALL = 3;
   public static final int CGI_TYPE_VINFO_IPV6 = 4;
   public static final int CGI_TYPE_VKEY = 2;
-  public static final String CHECK_TIEM_BK_SERVER;
-  public static final String CHECK_TIEM_SERVER;
   public static final String CKEY_REQ_PARAM_KEY_DLNA = "dlna";
   public static final String CKEY_REQ_PARAM_KEY_FROM_PLATFORM = "from_platform";
   public static final String CKEY_REQ_PARAM_KEY_OTTFLAG = "ottflag";
@@ -73,37 +68,16 @@ public class TVKDownloadFacadeEnum
   public static final int ERROR_UNKNOWN = 40000;
   public static final int ERROR＿DOWNLOAD_FAILED = 10011;
   public static final int ERROR＿INVALID_M3U8 = 10009;
-  public static final int EVENT_APPTOBACK = 13;
-  public static final int EVENT_APPTOFRONT = 14;
-  public static final int EVENT_BUFFER_MORE_DATA = 21;
-  public static final int EVENT_DOWNLOAD_PAUSE = 11;
-  public static final int EVENT_DOWNLOAD_RESUME = 12;
-  public static final int EVENT_NETWORK_ISWIFIOFF = 10;
-  public static final int EVENT_NETWORK_ISWIFION = 9;
-  public static final int EVENT_NETWORK_OFF = 1;
-  public static final int EVENT_NETWORK_ON = 2;
-  public static final int EVENT_NOT_PLAYING = 16;
-  public static final int EVENT_OFFLINE_ALLOWED = 4;
-  public static final int EVENT_OFFLINE_FORBIDDEN = 3;
-  public static final int EVENT_ON_PLAYING = 15;
-  public static final int EVENT_P2PUPLOAD_OFF = 18;
-  public static final int EVENT_P2PUPLOAD_ON = 17;
   public static final int EVENT_PLAYBUFFER = 7;
   public static final int EVENT_PLAYERROR = 8;
   public static final int EVENT_PLAYPAUSE = 5;
   public static final int EVENT_PLAYRESUME = 6;
   public static final int EVENT_PLAYSTOP = 9;
-  public static final int EVENT_PLAY_ALLOWED = 6;
-  public static final int EVENT_PLAY_FORBIDDEN = 5;
-  public static final int EVENT_SCREEN_OFF = 20;
-  public static final int EVENT_SCREEN_ON = 19;
   public static final int HLS = 3;
   public static final int HLS_LIVE = 3;
   public static final int HLS_MULTI = 8;
   public static final int HLS_VOD = 2;
-  public static final String HOST = "{\"httpproxy_config\":{\"time_cgi_host\":\"http://vv.play.ott.video.qq.com/checktime\",\"time_cgi_host_bk\":\"http://vv.play.ott.video.qq.com/checktime\",\"vkey_cgi_host\":\"http://vv.play.ott.video.qq.com/getvkey\",\"vkey_cgi_host_bk\":\"http://vv.play.ott.video.qq.com/getvkey\",\"bkey_cgi_host\":\"http://vv.play.ott.video.qq.com/getvbkey\",\"bkey_cgi_host_bk\":\"http://vv.play.ott.video.qq.com/getvbkey\",\"vinfo_cgi_host\":\"http://vv.play.ott.video.qq.com/getvinfo\",\"vinfo_cgi_host_bk\":\"http://vv.play.ott.video.qq.com/getvinfo\",\"btrace_boss_cgi\":\"http://btrace.play.ott.video.qq.com/kvcollect\",\"tpt_server_address\":\"http://downloadtpt.play.ott.video.qq.com\",\"tpt_server_address_bk\":\"http://bk-downloadtpt.play.ott.video.qq.com\",\"redirect_server_address\":\"http://ps-p2p.play.ott.video.qq.com\",\"redirect_server_address_bk\":\"http://bk-ps.play.ott.video.qq.com\",\"stun_server_address\":\"http://stun.play.ott.video.qq.com\",\"stun_server_address_bk\":\"http://bk-stun.play.ott.video.qq.com\",\"punch_server_address\":\"http://punch-p2p.play.ott.video.qq.com\",\"punch_server_address_bk\":\"http://bk-punch.play.ott.video.qq.com\",\"uptest_server_address\":\"http://uptest.play.ott.video.qq.com\",\"video_dispatch\":\"http://video-dispatch.play.ott.video.qq.com\",\"mdevstat_address\":\"mdevstat.conn.ott.video.qq.com\"}}";
   public static final int HTTP = 1;
-  public static final String HTTPPROXY_CONFIG = "httpproxy_config";
   public static final String KEY_PARAM_XML_SWITCH = "xmlparse";
   public static final String MAX_USE_MEMORY = "max_use_memory";
   public static final int MP4_20MIN = 5;
@@ -116,8 +90,6 @@ public class TVKDownloadFacadeEnum
   public static final int OFFLINE_TYPE_AUTO = 0;
   public static final int OFFLINE_TYPE_HLS = 2;
   public static final int OFFLINE_TYPE_MP4 = 1;
-  public static final String OPEN_VINFO_SERVER = "https://graph.qq.com/v3/video/get_v_info";
-  public static final String OPEN_VKEY_SERVER = "https://graph.qq.com/v3/video/get_v_key";
   public static final String OfflineDownloadMultCount = "offlineDownloadmultCount";
   public static final String PLAYING = "is_playing";
   public static final int PLAYING_STATE_IN_SEEKING = 1;
@@ -158,13 +130,6 @@ public class TVKDownloadFacadeEnum
   public static final int REQUEST_URL_TARGET_TYPE_DOWNLOAD = 8;
   public static final int REQUEST_URL_TARGET_TYPE_PLAY = 0;
   public static final int REQUEST_URL_TARGET_TYPE_TEST = 64;
-  public static final String SDTFROM_2_FD_OFFLINE = "fcgg";
-  public static final String SDTFROM_2_FD_PLAY = "fceg";
-  public static final String SDTFROM_OFFLINE = "v5020";
-  public static final String SDTFROM_PLAY = TVideoMgr.getVinfoSdtfrom();
-  public static final String SDTFROM_PLAY_DF = "v5000";
-  public static final int STORAGE_AVAILABLE = 1;
-  public static final int STORAGE_UNAVAILABLE = 2;
   public static final String TV_FIRST_PRE_COUNT = "tv_first_pre_count";
   public static final String TV_TASK_TYPE = "tv_task_type";
   public static final int URL_AUDIO = 101;
@@ -196,17 +161,6 @@ public class TVKDownloadFacadeEnum
   public static final String USER_SSTRENGTH = "sstrength";
   public static final String USER_UPC = "carrier_pesudo_code";
   public static final String USER_UPC_STATE = "carrier_pesudo_state";
-  public static final String VBKEY_BK_SERVER_NEW;
-  public static final String VBKEY_SERVER_NEW;
-  public static final String VBKEY_V6_SERVER_NEW;
-  public static final String VINFO_BK_HOST;
-  public static final String VINFO_BK_SERVER;
-  public static final String VINFO_HOST;
-  public static final String VINFO_IPV6_HOST;
-  public static final String VINFO_IPV6_SERVER;
-  public static final String VINFO_SERVER = TVKConfigUrl.vinfo_cgi_host;
-  public static final String VKEY_BK_SERVER;
-  public static final String VKEY_SERVER;
   public static final String WX_OPEN_ID = "wx_open_id";
   public static final int eDOWNLOAD_TASK_TYPE_HLS_ADV = 2;
   public static final int eDOWNLOAD_TASK_TYPE_HLS_ADV_LOOP = 3;
@@ -219,28 +173,10 @@ public class TVKDownloadFacadeEnum
   public static final int eDOWNLOAD_TASK_TYPE_HLS_VOD_LOOP = 1;
   public static final int ePlayerError_NoRequest = 2;
   public static final int ePlayerError_RequestRepeatTs = 1;
-  public static final int platForm_AndroidPhoneApp;
-  
-  static
-  {
-    VINFO_BK_SERVER = TVKConfigUrl.vinfo_cgi_host_bk;
-    VINFO_IPV6_SERVER = TVKConfigUrl.vinfo_cgi_ipv6_host;
-    VINFO_HOST = TVKConfigUrl.vinfo_host;
-    VINFO_BK_HOST = TVKConfigUrl.vinfo_bk_host;
-    VINFO_IPV6_HOST = TVKConfigUrl.vinfo_ipv6_host;
-    VKEY_SERVER = TVKConfigUrl.vkey_cgi_host;
-    VKEY_BK_SERVER = TVKConfigUrl.vkey_cgi_host_bk;
-    CHECK_TIEM_SERVER = TVKConfigUrl.time_cgi_host;
-    CHECK_TIEM_BK_SERVER = TVKConfigUrl.time_cgi_host_bk;
-    VBKEY_SERVER_NEW = TVKConfigUrl.vbkey_cgi_host;
-    VBKEY_BK_SERVER_NEW = TVKConfigUrl.vbkey_cgi_host_bk;
-    VBKEY_V6_SERVER_NEW = TVKConfigUrl.vbkey_ipv6_cgi_host;
-    platForm_AndroidPhoneApp = TVideoMgr.getVinfoPlatform();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.common.TVKDownloadFacadeEnum
  * JD-Core Version:    0.7.0.1
  */

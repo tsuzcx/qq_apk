@@ -1,55 +1,87 @@
-import android.content.Intent;
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bcyq
-  extends MSFServlet
+  extends bcvt
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private LinearLayout a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReportServlet", 2, "onReceive");
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
+    LinearLayout localLinearLayout = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    int i = afur.a(12.0F, paramContext.getResources());
+    localLinearLayout.setPadding(i, i, i, i);
+    localLinearLayout.setLayoutParams(localLayoutParams);
+    return localLinearLayout;
+  }
+  
+  protected int b()
+  {
+    return 22;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Iterator localIterator;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bdqa.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      paramView = (LinearLayout)paramView;
+      paramView.removeAllViews();
+      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     }
     for (;;)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
-      localBundle.putByteArray("extra_data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-      arrayOfByte = null;
+      if (!localIterator.hasNext()) {
+        return paramView;
+      }
+      Object localObject1 = (bcvs)localIterator.next();
+      Object localObject2 = ((bcvs)localObject1).jdField_a_of_type_JavaLangString;
+      ((bcvs)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ("title".equals(localObject2))
+      {
+        localObject2 = (StructMsgItemTitle)localObject1;
+        ((StructMsgItemTitle)localObject2).a(a(), this.p);
+        localObject1 = (TextView)((bcvs)localObject1).a(paramContext, null, paramBundle);
+        ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
+        ((TextView)localObject1).setMaxLines(2);
+        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).c())) {
+          ((TextView)localObject1).setTextSize(18.0F);
+        }
+        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).d())) {
+          ((TextView)localObject1).setTextColor(Color.parseColor("#000000"));
+        }
+        localObject2 = new LinearLayout.LayoutParams(-1, -2);
+        ((LinearLayout.LayoutParams)localObject2).gravity = 16;
+        ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
+        ((LinearLayout.LayoutParams)localObject2).rightMargin = afur.a(12.0F, paramContext.getResources());
+        paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        continue;
+        paramView = a(paramContext);
+        break;
+      }
+      if ("picture".equals(localObject2))
+      {
+        localObject1 = ((bcvs)localObject1).a(paramContext, null, paramBundle);
+        int i = afur.a(50.0F, paramContext.getResources());
+        paramView.addView((View)localObject1, new LinearLayout.LayoutParams(i, i));
+      }
     }
+    return paramView;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public String b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReportServlet", 2, "onSend");
-    }
-    Object localObject = paramIntent.getStringExtra("extra_cmd");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    do
-    {
-      return;
-      paramIntent = paramIntent.getByteArrayExtra("extra_data");
-      paramPacket.setSSOCommand((String)localObject);
-    } while (paramIntent == null);
-    localObject = new byte[paramIntent.length + 4];
-    bdqa.a((byte[])localObject, 0, paramIntent.length + 4);
-    bdqa.a((byte[])localObject, 4, paramIntent, paramIntent.length);
-    paramPacket.putSendData((byte[])localObject);
+    return "layout22";
   }
 }
 

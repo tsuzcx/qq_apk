@@ -18,7 +18,7 @@ class DesktopDataManager$16$1
       DesktopDataManager.access$1702(this.this$1.this$0, new ArrayList());
     }
     DesktopDataManager.access$1700(this.this$1.this$0).clear();
-    DesktopDataManager.access$1702(this.this$1.this$0, DesktopDataManager.access$2800(this.this$1.this$0));
+    DesktopDataManager.access$1702(this.this$1.this$0, this.this$1.this$0.parseRecommendExposureFromSp());
     if ((DesktopDataManager.access$1600(this.this$1.this$0) != null) && (DesktopDataManager.access$1600(this.this$1.this$0).size() > 0)) {
       MiniAppUtils.updateMiniAppList(8);
     }
@@ -26,7 +26,7 @@ class DesktopDataManager$16$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.16.1
  * JD-Core Version:    0.7.0.1
  */

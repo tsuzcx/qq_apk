@@ -9,30 +9,32 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.PinnedFooterExpandableListView;
-import ors;
-import qvg;
-import qvh;
-import qvi;
-import qvp;
-import qvz;
+import pha;
+import rql;
+import rqm;
+import rqn;
+import rqu;
+import rre;
 
 public class FriendListFragment
-  extends Fragment
+  extends ReportV4Fragment
 {
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private ObservableArrayList<ResultRecord> jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList;
   private PinnedFooterExpandableListView jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView;
-  private qvp jdField_a_of_type_Qvp;
-  private qvz jdField_a_of_type_Qvz;
+  private rqu jdField_a_of_type_Rqu;
+  private rre jdField_a_of_type_Rre;
   private View.OnClickListener b;
   
-  private qvp a()
+  private rqu a()
   {
-    if ((this.jdField_a_of_type_Qvz != null) && (this.jdField_a_of_type_Qvz.a() == 1)) {
-      return new qvi(getActivity(), (QQAppInterface)ors.a(), this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, true, this.jdField_a_of_type_Qvz);
+    if ((this.jdField_a_of_type_Rre != null) && (this.jdField_a_of_type_Rre.a() == 1)) {
+      return new rqn(getActivity(), (QQAppInterface)pha.a(), this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, true, this.jdField_a_of_type_Rre);
     }
-    return new qvp(getActivity(), (QQAppInterface)ors.a(), this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, true);
+    return new rqu(getActivity(), (QQAppInterface)pha.a(), this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, true);
   }
   
   public void a(View.OnClickListener paramOnClickListener)
@@ -45,9 +47,9 @@ public class FriendListFragment
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList = paramObservableArrayList;
   }
   
-  public void a(qvz paramqvz)
+  public void a(rre paramrre)
   {
-    this.jdField_a_of_type_Qvz = paramqvz;
+    this.jdField_a_of_type_Rre = paramrre;
   }
   
   public void b(View.OnClickListener paramOnClickListener)
@@ -57,28 +59,29 @@ public class FriendListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131560106, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView = ((PinnedFooterExpandableListView)paramViewGroup.findViewById(2131365862));
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560107, this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, false);
-    paramLayoutInflater.findViewById(2131363703).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramViewGroup = paramLayoutInflater.inflate(2131560248, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView = ((PinnedFooterExpandableListView)paramViewGroup.findViewById(2131366114));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560249, this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, false);
+    paramLayoutInflater.findViewById(2131363906).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.addHeaderView(paramLayoutInflater);
-    this.jdField_a_of_type_Qvp = a();
-    this.jdField_a_of_type_Qvp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList);
-    this.jdField_a_of_type_Qvp.a(this.b);
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setAdapter(this.jdField_a_of_type_Qvp);
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setSelector(2131167140);
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setGroupIndicator(getResources().getDrawable(2130839302));
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnScrollListener(this.jdField_a_of_type_Qvp);
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnGroupExpandListener(new qvg(this));
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnGroupCollapseListener(new qvh(this));
+    this.jdField_a_of_type_Rqu = a();
+    this.jdField_a_of_type_Rqu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList);
+    this.jdField_a_of_type_Rqu.a(this.b);
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setAdapter(this.jdField_a_of_type_Rqu);
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setSelector(2131167224);
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setGroupIndicator(getResources().getDrawable(2130839482));
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnScrollListener(this.jdField_a_of_type_Rqu);
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnGroupExpandListener(new rql(this));
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnGroupCollapseListener(new rqm(this));
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramViewGroup);
     return paramViewGroup;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Qvp != null) {
-      this.jdField_a_of_type_Qvp.b();
+    if (this.jdField_a_of_type_Rqu != null) {
+      this.jdField_a_of_type_Rqu.b();
     }
   }
 }

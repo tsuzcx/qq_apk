@@ -1,16 +1,46 @@
-import java.util.Comparator;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class auln
-  implements Comparator<auls>
+public class auln
+  implements aulp
 {
-  public int a(auls paramauls1, auls paramauls2)
+  public auln(AppletsSettingFragment paramAppletsSettingFragment) {}
+  
+  public void a(CompoundButton paramCompoundButton, boolean paramBoolean, AppletItem paramAppletItem)
   {
-    return paramauls1.a - paramauls2.a;
+    int i = 1;
+    ArrayList localArrayList;
+    if (paramAppletItem != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsSettingFragment", 2, "OnChangeSwitchListener onChangeSwitchListener " + paramAppletItem.toString() + ",  isChecked:" + paramBoolean);
+      }
+      this.a.a(true);
+      paramCompoundButton.setChecked(paramBoolean);
+      paramCompoundButton = (aoql)AppletsSettingFragment.a(this.a).a(148);
+      localArrayList = new ArrayList();
+      if (!paramBoolean) {
+        break label113;
+      }
+    }
+    for (;;)
+    {
+      paramAppletItem.a(i);
+      localArrayList.add(paramAppletItem);
+      paramCompoundButton.a(localArrayList);
+      return;
+      label113:
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auln
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import aepi;
+import afur;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -26,7 +26,7 @@ public class RoundCorneredFrameLayout
   public RoundCorneredFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.a = aepi.a(a(paramContext, paramAttributeSet), paramContext.getResources());
+    this.a = afur.a(a(paramContext, paramAttributeSet), paramContext.getResources());
   }
   
   int a(Context paramContext, AttributeSet paramAttributeSet)
@@ -58,7 +58,7 @@ public class RoundCorneredFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.RoundCorneredFrameLayout
  * JD-Core Version:    0.7.0.1
  */

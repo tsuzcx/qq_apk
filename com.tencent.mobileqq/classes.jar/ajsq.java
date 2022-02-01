@@ -1,66 +1,42 @@
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.21;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
 
 public class ajsq
+  extends niv
 {
-  private static WeakReference<ajss> a;
-  private static WeakReference<ajsr> b;
+  public ajsq(ChatHistoryTroopMemberFragment.21 param21) {}
   
-  public static void a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (b != null) {}
-    for (ajsr localajsr = (ajsr)b.get();; localajsr = null)
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    do
     {
-      if (localajsr != null) {
-        localajsr.i();
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramBundle = new oidb_cmd0x74f.RspBody();
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
+          {
+            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.range.get());
+            ChatHistoryTroopMemberFragment.c(this.a.this$0);
+            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
+            return;
+          }
+        }
+        catch (Exception paramArrayOfByte) {}
       }
-      return;
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    if (b != null) {}
-    for (ajsr localajsr = (ajsr)b.get();; localajsr = null)
-    {
-      if (localajsr != null) {
-        localajsr.b(paramInt);
-      }
-      return;
-    }
-  }
-  
-  public static void a(ajsr paramajsr)
-  {
-    b = new WeakReference(paramajsr);
-  }
-  
-  public static void a(ajss paramajss)
-  {
-    a = new WeakReference(paramajss);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (b != null) {}
-    for (ajsr localajsr = (ajsr)b.get();; localajsr = null)
-    {
-      if (localajsr != null) {
-        localajsr.c(paramString);
-      }
-      return;
-    }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (a != null) {}
-    for (ajss localajss = (ajss)a.get();; localajss = null)
-    {
-      if (localajss != null) {
-        localajss.a(paramString, paramInt);
-      }
-      return;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.history.BaseFragment", 2, "initListView, get0x74f：failed");
   }
 }
 

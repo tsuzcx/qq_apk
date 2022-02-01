@@ -2,22 +2,22 @@ package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import wvg;
-import wvl;
-import wxe;
+import yor;
+import yow;
+import yqp;
 
 public class LocalVideoPushSegment$2
   implements Runnable
 {
-  public LocalVideoPushSegment$2(wvg paramwvg) {}
+  public LocalVideoPushSegment$2(yor paramyor) {}
   
   public void run()
   {
-    wxe.b("Q.qqstory.home.LocalVideoPushSegment", "loadPhotos..");
-    wvl localwvl = wvg.a(this.this$0);
-    if (localwvl != null)
+    yqp.b("Q.qqstory.home.LocalVideoPushSegment", "loadPhotos..");
+    yow localyow = yor.a(this.this$0);
+    if (localyow != null)
     {
-      ThreadManager.getUIHandler().post(new LocalVideoPushSegment.2.1(this, localwvl));
+      ThreadManager.getUIHandler().post(new LocalVideoPushSegment.2.1(this, localyow));
       return;
     }
     ThreadManager.getUIHandler().post(new LocalVideoPushSegment.2.2(this));
@@ -25,7 +25,7 @@ public class LocalVideoPushSegment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment.2
  * JD-Core Version:    0.7.0.1
  */

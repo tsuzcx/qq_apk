@@ -1,280 +1,427 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.FrameLayout;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.util.Log;
 import android.widget.TextView;
-import com.tencent.ttpic.baseutils.collection.CollectionUtils;
-import java.util.LinkedList;
+import android.widget.Toast;
+import androidx.annotation.MainThread;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import cooperation.qqreader.js.JsCallParams;
+import cooperation.qqreader.proxy.ReaderJsCallback;
+import cooperation.qqreader.proxy.ReaderJsPluginProxy;
+import cooperation.qqreader.ui.ReaderContentPageActivity;
+import cooperation.qqreader.ui.ReaderHomePageActivity;
+import cooperation.qqreader.utils.QRDebugEnvUrlUtils;
+import java.util.Arrays;
 import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class blop
-  extends Dialog
-  implements DialogInterface.OnShowListener, View.OnClickListener, CompoundButton.OnCheckedChangeListener, bloj
+  extends VasWebviewJsPlugin
+  implements bhmo
 {
-  private int jdField_a_of_type_Int;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "JSRoot", "JSToast", "JSBookDir", "JSPublicAccount", "JSTopRightButton", "JSTittlebarAction", "JSPay", "JSPublicAccountUtil", "JSRedTouch", "JSBookDetailForQQ", "JSbookshelf", "JSContent", "readonline", "JSPopupList", "JSTypeface" };
+  private Handler jdField_a_of_type_AndroidOsHandler;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private blog jdField_a_of_type_Blog;
-  private blor jdField_a_of_type_Blor;
+  private blos jdField_a_of_type_Blos = new blos(this);
+  private JsBridgeListener jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener;
+  private ReaderJsCallback jdField_a_of_type_CooperationQqreaderProxyReaderJsCallback = new bloq(this);
+  private ReaderJsPluginProxy jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy;
+  private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private CheckBox jdField_b_of_type_AndroidWidgetCheckBox;
-  private boolean jdField_b_of_type_Boolean = true;
-  private boolean c;
+  private String b;
   
-  public blop(@NonNull Context paramContext, int paramInt)
+  private void a(JsBridgeListener paramJsBridgeListener, String paramString)
   {
-    super(paramContext, 2131755053);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131558528, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378986));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131364039));
-    this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131364043));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376101));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366432));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379493);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
-    setOnShowListener(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(paramContext, 0, false);
-    this.jdField_a_of_type_Blog = new blog(paramContext, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Blog);
-    this.jdField_a_of_type_Blog.a(bloh.a);
-    if (paramInt == 0) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    paramJsBridgeListener = new JSONObject(paramString).optString("callback");
+    if (!TextUtils.isEmpty(paramJsBridgeListener))
+    {
+      paramString = new JSONObject();
+      paramString.put("graylevel", blog.a());
+      paramString.put("is_update_newstyle", blog.a());
+      paramString.put("result", 0);
+      paramString.put("message", "success");
+      callJs(paramJsBridgeListener, new String[] { paramString.toString() });
     }
-    setContentView(this.jdField_a_of_type_AndroidViewView);
   }
   
-  private int a(int paramInt)
+  private void a(Object paramObject)
   {
-    int j = this.jdField_a_of_type_Blog.getItemCount();
-    int i;
-    if (paramInt < 0) {
-      i = 0;
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.a(paramObject);
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    try
+    {
+      boolean bool = new JSONObject(paramString).getBoolean("visible");
+      paramString = Message.obtain();
+      paramString.what = 109;
+      paramString.obj = Boolean.valueOf(bool);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  private void a(String paramString, int paramInt)
+  {
+    Object localObject1 = new JSONObject(paramString);
+    paramString = ((JSONObject)localObject1).getString("book_name");
+    String str1 = ((JSONObject)localObject1).getString("chapter_name");
+    String str2 = ((JSONObject)localObject1).getString("nbid");
+    localObject1 = ((JSONObject)localObject1).optString("callback");
+    Object localObject2 = this.mRuntime.a();
+    if ((localObject2 instanceof ReaderHomePageActivity)) {
+      localObject2 = (ReaderHomePageActivity)localObject2;
+    }
+    switch (paramInt)
+    {
+    case 5: 
+    case 7: 
+    default: 
+      return;
+    case 4: 
+      ((ReaderHomePageActivity)localObject2).a(paramString, str1, str2);
+      return;
+    case 6: 
+      ((ReaderHomePageActivity)localObject2).b(paramString, str1, str2);
+      return;
+    }
+    boolean bool = ((ReaderHomePageActivity)localObject2).a(paramString, str1, str2);
+    paramString = new JSONObject();
+    if (bool) {}
+    for (paramInt = 0;; paramInt = 1)
+    {
+      paramString.put("result", paramInt);
+      callJs((String)localObject1, new String[] { paramString.toString() });
+      return;
+    }
+  }
+  
+  private void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return;
+    }
+    Log.i("ReaderJsPlugin", "registerWebSearch");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("callback");
+  }
+  
+  private static boolean a(String[] paramArrayOfString, String paramString)
+  {
+    return Arrays.asList(paramArrayOfString).contains(paramString);
+  }
+  
+  private void b(String paramString)
+  {
+    Intent localIntent = new Intent(this.mRuntime.a(), ReaderContentPageActivity.class);
+    localIntent.putExtras(blnh.a(localIntent, 2));
+    localIntent.putExtra("url", paramString);
+    this.mRuntime.a().startActivity(localIntent);
+  }
+  
+  private void b(String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (blnn.a().a())
+    {
+      blpu.e("ReaderJsPlugin", "pluginHandleJS ->  handleJsCall");
+      a(paramString1, paramString2, paramString3, paramVarArgs);
+      return;
+    }
+    blpu.e("ReaderJsPlugin", "js plugin is not ready...");
+    if ((("JSbookshelf".equals(paramString2)) && ("openLocalBook".equals(paramString3))) || (("readonline".equals(paramString2)) && ("readbook".equals(paramString3))))
+    {
+      c(paramString1, paramString2, paramString3, paramVarArgs);
+      return;
+    }
+    this.jdField_a_of_type_Blos.a(paramString1, paramString2, paramString3, paramVarArgs);
+  }
+  
+  private void b(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(114, paramJSONObject);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramJSONObject);
+    }
+  }
+  
+  private void c(String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    Intent localIntent = new Intent(this.mRuntime.a(), ReaderContentPageActivity.class);
+    localIntent.putExtra("is_to_splash_activity", true);
+    localIntent.putExtra("splash_pending_js_param", new JsCallParams(paramString1, paramString2, paramString3, paramVarArgs));
+    this.mRuntime.a().startActivity(localIntent);
+  }
+  
+  public blop a(Handler paramHandler)
+  {
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    return this;
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+      return;
+    }
+    if (paramString1.trim().length() == 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
+    if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 8) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new blor(this));
+  }
+  
+  @MainThread
+  void a(String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy == null)
+    {
+      blpu.d("ReaderJsPlugin", "create a new js plugin");
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy = blnn.a().a(this.jdField_a_of_type_CooperationQqreaderProxyReaderJsCallback);
+    }
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy != null)
+    {
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy.setHandler(this.jdField_a_of_type_AndroidOsHandler);
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy.call(paramString1, paramString2, paramString3, paramVarArgs);
+      blpu.d("ReaderJsPlugin", "create a new js ,method=" + paramString3);
     }
     do
     {
-      return i;
-      i = paramInt;
-    } while (paramInt <= j - 1);
-    return j - 1;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
-    }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.setInterpolator(new DecelerateInterpolator());
-    localAnimationSet.setDuration(350L);
-    localAnimationSet.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
+      blpu.a("ReaderJsPlugin", "handleJsCall mJsPlugin is null!");
+    } while (!QRDebugEnvUrlUtils.isDebugEnv());
+    Toast.makeText(BaseApplicationImpl.getApplication(), "ReaderRunTime 未创建！", 0).show();
   }
   
-  private boolean a()
+  boolean a()
   {
-    if ((this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) || (this.jdField_a_of_type_Blog == null)) {}
-    while (this.jdField_a_of_type_Blog.getItemCount() == 0) {
+    if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof ReaderHomePageActivity))) {
+      return ((ReaderHomePageActivity)this.mRuntime.a()).c();
+    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    boolean bool = true;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":\"0\"}" });
+    }
+    for (;;)
+    {
+      Log.i("ReaderJsPlugin", "registerWebSearch callWebSearch=" + bool);
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public String[] getMultiNameSpace()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public Object handleEvent(String paramString, long paramLong)
+  {
+    return super.handleEvent(paramString, paramLong);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    blpu.e("ReaderJsPlugin", "handleJsRequest, url=" + paramString1 + " ,pakName=" + paramString2 + " ,method=" + paramString3);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener = paramJsBridgeListener;
+    if (!a(jdField_a_of_type_ArrayOfJavaLangString, paramString2)) {}
+    while ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3))) {
       return false;
     }
-    return true;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return;
-    }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.setInterpolator(new DecelerateInterpolator());
-    localAnimationSet.setDuration(350L);
-    localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new bloq(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
-  }
-  
-  @NonNull
-  public List<bloh> a()
-  {
-    if (this.jdField_a_of_type_Blog != null) {
-      return this.jdField_a_of_type_Blog.a();
-    }
-    return new LinkedList();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (!a()) {
-      return;
-    }
-    paramInt = a(paramInt);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.scrollToPosition(paramInt);
-  }
-  
-  public void a(@NonNull bloh parambloh)
-  {
-    a(parambloh, 0, true);
-  }
-  
-  public void a(@Nullable bloh parambloh, int paramInt, boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-    }
-    do
+    if ("JSTittlebarAction".equals(paramString2))
     {
-      return;
-      if (this.jdField_a_of_type_Blor != null) {
-        this.jdField_a_of_type_Blor.a(parambloh, paramInt);
-      }
-    } while ((this.jdField_a_of_type_AndroidWidgetCheckBox == null) || (!this.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()) || (this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()));
-    this.c = true;
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-  }
-  
-  public void a(@Nullable blor paramblor)
-  {
-    this.jdField_a_of_type_Blor = paramblor;
-  }
-  
-  public void a(@NonNull List<bloh> paramList)
-  {
-    if (this.jdField_a_of_type_Blog != null) {
-      this.jdField_a_of_type_Blog.a(paramList);
-    }
-    if ((!CollectionUtils.isEmpty(paramList)) && (!this.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()))
-    {
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-      if (isShowing()) {
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetCheckBox != null) {
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_AndroidWidgetCheckBox != null) {
-      this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
-    }
-  }
-  
-  public void dismiss()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_Blor != null) {
-      this.jdField_a_of_type_Blor.t();
-    }
-    b();
-  }
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    int i = paramCompoundButton.getId();
-    if (i == 2131364039) {
-      if (this.c) {
-        this.c = false;
-      }
-    }
-    while ((i != 2131364043) || (this.jdField_a_of_type_Blor == null))
-    {
-      do
+      if ("setLoadingVisible".equals(paramString3))
       {
-        return;
-      } while (this.jdField_a_of_type_Blor == null);
-      this.jdField_a_of_type_Blor.a(paramBoolean);
-      return;
-    }
-    this.jdField_a_of_type_Blor.b(paramBoolean);
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = paramView.getId();
-    if (i == 2131378986) {
-      if (!bljm.a(paramView)) {}
-    }
-    while (i != 2131366432)
-    {
-      do
+        if (paramVarArgs.length > 0)
+        {
+          a(paramVarArgs[0]);
+          a(null);
+        }
+        return true;
+      }
+      if ("addDeskShortcutEvent".equals(paramString3))
       {
-        return;
-      } while (this.jdField_a_of_type_Blor == null);
-      this.jdField_a_of_type_Blor.s();
-      return;
-    }
-    dismiss();
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = getWindow().getAttributes();
-    paramBundle.gravity = 81;
-    if (this.jdField_a_of_type_Int != 0) {}
-    for (paramBundle.height = this.jdField_a_of_type_Int;; paramBundle.height = -2)
-    {
-      paramBundle.width = -1;
-      getWindow().setAttributes(paramBundle);
-      setCancelable(true);
-      setCanceledOnTouchOutside(true);
-      return;
-    }
-  }
-  
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_AndroidWidgetCheckBox != null) && (this.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()) && (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked())) {
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+        this.jdField_a_of_type_Boolean = true;
+        return true;
+      }
+      if ("setChannelTabAlpha".equals(paramString3))
+      {
+        if (paramVarArgs.length > 0) {
+          a(null);
+        }
+        return true;
       }
     }
+    else if ("JSContent".equals(paramString2))
+    {
+      if ("registerWebSearch".equals(paramString3))
+      {
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+        try
+        {
+          a(new JSONObject(paramVarArgs[0]));
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            blpu.a("ReaderJsPlugin", "Failed to parse json str,json=" + paramVarArgs[0]);
+          }
+        }
+      }
+      if ("showRedPoint".equals(paramString3))
+      {
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+        try
+        {
+          b(new JSONObject(paramVarArgs[0]));
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            blpu.a("ReaderJsPlugin", "Failed to parse json str,json=" + paramVarArgs[0]);
+          }
+        }
+      }
+      if ("openDetailMore".equals(paramString3))
+      {
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+          b(paramVarArgs[0]);
+        }
+        return true;
+      }
+    }
+    else
+    {
+      if ("JSbookshelf".equals(paramString2))
+      {
+        if ("getGrayUpdateData".equals(paramString3))
+        {
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+          try
+          {
+            a(paramJsBridgeListener, paramVarArgs[0]);
+            return true;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            for (;;)
+            {
+              blpu.e("ReaderJsPlugin", paramJsBridgeListener.getMessage());
+            }
+          }
+        }
+        if ("addColorfulTab".equals(paramString3))
+        {
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+          try
+          {
+            a(paramVarArgs[0], 4);
+            return true;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            for (;;)
+            {
+              blpu.e("ReaderJsPlugin", paramJsBridgeListener.getMessage());
+            }
+          }
+        }
+        if ("removeColorfulTab".equals(paramString3))
+        {
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+          try
+          {
+            a(paramVarArgs[0], 6);
+            return true;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            for (;;)
+            {
+              blpu.e("ReaderJsPlugin", paramJsBridgeListener.getMessage());
+            }
+          }
+        }
+        if (!"isExitsInColorfulTab".equals(paramString3)) {
+          break label584;
+        }
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+        try
+        {
+          a(paramVarArgs[0], 8);
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            blpu.e("ReaderJsPlugin", paramJsBridgeListener.getMessage());
+          }
+        }
+      }
+      if (("JSTopRightButton".equals(paramString2)) && ("showRightButton".equals(paramString3)))
+      {
+        if (paramVarArgs.length > 1)
+        {
+          a(paramVarArgs[0], paramVarArgs[1]);
+          a(null);
+        }
+        return true;
+      }
+    }
+    label584:
+    b(paramString1, paramString2, paramString3, paramVarArgs);
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
   
-  public void show()
+  public void onCreate()
   {
-    super.show();
-    a();
+    super.onCreate();
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy != null) {
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy.onCreate();
+    }
+    this.jdField_a_of_type_Blos.a();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy != null) {
+      this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginProxy.onDestroy();
+    }
+    this.jdField_a_of_type_Blos.b();
   }
 }
 

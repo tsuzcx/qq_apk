@@ -1,26 +1,50 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.45.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.widget.AuthorizationItem;
 
 public class acsi
-  extends BroadcastReceiver
 {
-  public acsi(Conversation paramConversation) {}
+  public int a;
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private acsi(String paramString1, String paramString2, String paramString3)
   {
-    paramContext = paramIntent.getStringExtra("wording");
-    int i = paramIntent.getIntExtra("timetowait", 360000);
-    this.a.jdField_a_of_type_Ajgb.jdField_a_of_type_Int = i;
-    this.a.jdField_a_of_type_Ajgb.jdField_a_of_type_JavaLangString = paramContext;
-    this.a.jdField_a_of_type_Ajgb.a(19, 2);
-    this.a.jdField_a_of_type_Ajgb.a(-1, null);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).postDelayed(new Conversation.45.1(this), i);
-    azqs.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
+    this(paramString1, paramString2, paramString3, 0);
+  }
+  
+  private acsi(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private static acsi b()
+  {
+    return new acsi("", "", "", 1);
+  }
+  
+  public String a(String paramString)
+  {
+    if (TextUtils.equals(paramString, AuthorizationItem.a.b)) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    if (TextUtils.equals(paramString, AuthorizationItem.b.b)) {
+      return this.b;
+    }
+    if (TextUtils.equals(paramString, AuthorizationItem.c.b)) {
+      return this.c;
+    }
+    return "";
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "UserInfoEntity : [name -> " + this.jdField_a_of_type_JavaLangString + ", phone -> " + this.b + ", city -> " + this.c + ", errCode -> " + this.jdField_a_of_type_Int + "]";
   }
 }
 

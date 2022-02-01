@@ -1,31 +1,24 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class ahlo
-  extends bibk
+  implements View.OnClickListener
 {
-  ahlo(ahln paramahln, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  ahlo(ahln paramahln) {}
   
-  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
+  public void onClick(View paramView)
   {
-    paramInt = 1;
-    if ((paramArrayOfbibj == null) || (paramArrayOfbibj.length <= 0)) {}
+    ahls localahls = (ahls)afur.a(paramView);
+    if (paramView == localahls.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localahls);
+    }
     for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      int i = this.a.a();
-      if ((paramArrayOfbibj.length < 0) && ((i & 0xF) == 1))
-      {
-        paramArrayOfbibj[0].b = 0;
-        paramArrayOfbibj[0].a = 0;
-      }
-      while (paramInt < paramArrayOfbibj.length)
-      {
-        paramArrayOfbibj[paramInt].b = -1;
-        paramArrayOfbibj[paramInt].a = -1;
-        paramInt += 1;
-        continue;
-        paramInt = 0;
+      if (paramView == localahls.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+        this.a.a(localahls);
       }
     }
   }

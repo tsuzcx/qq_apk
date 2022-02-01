@@ -8,11 +8,11 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import bmzf;
-import bmzg;
+import bpql;
+import bpqm;
 import com.tencent.mobileqq.R.styleable;
 import java.math.BigDecimal;
-import wxe;
+import yqp;
 
 public class RateWidgetRatingBar
   extends LinearLayout
@@ -20,7 +20,7 @@ public class RateWidgetRatingBar
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bmzg jdField_a_of_type_Bmzg;
+  private bpqm jdField_a_of_type_Bpqm;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -52,7 +52,7 @@ public class RateWidgetRatingBar
       while (i < this.jdField_a_of_type_Int)
       {
         paramAttributeSet = a(paramContext, this.jdField_b_of_type_Boolean);
-        paramAttributeSet.setOnClickListener(new bmzf(this));
+        paramAttributeSet.setOnClickListener(new bpql(this));
         addView(paramAttributeSet);
         i += 1;
       }
@@ -61,7 +61,7 @@ public class RateWidgetRatingBar
     {
       for (;;)
       {
-        wxe.c("RateWidgetRatingBar", "RateWidgetRatingBar load drawable failed : %s", localOutOfMemoryError);
+        yqp.c("RateWidgetRatingBar", "RateWidgetRatingBar load drawable failed : %s", localOutOfMemoryError);
       }
       setStar(this.jdField_b_of_type_Int);
     }
@@ -83,9 +83,9 @@ public class RateWidgetRatingBar
     return paramContext;
   }
   
-  public void setOnRatingChangeListener(bmzg parambmzg)
+  public void setOnRatingChangeListener(bpqm parambpqm)
   {
-    this.jdField_a_of_type_Bmzg = parambmzg;
+    this.jdField_a_of_type_Bpqm = parambpqm;
   }
   
   public void setRatable(boolean paramBoolean)
@@ -154,7 +154,7 @@ public class RateWidgetRatingBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
-import com.tencent.component.network.downloader.DownloadRequest;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-class bjgh
+public class bjgh
+  implements View.OnLongClickListener
 {
-  DownloadRequest jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest;
-  Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  Downloader.DownloadListener jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
+  public bjgh(QidianProfileCardActivity paramQidianProfileCardActivity, Drawable paramDrawable, bjhg parambjhg) {}
   
-  bjgh(bjgf parambjgf) {}
+  public boolean onLongClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) {
+      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, (URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Bjhg.b);
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjgh
  * JD-Core Version:    0.7.0.1
  */

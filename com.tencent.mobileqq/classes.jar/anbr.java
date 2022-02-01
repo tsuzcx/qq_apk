@@ -1,36 +1,57 @@
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.BlockingQueue;
+
 public class anbr
 {
   public int a;
   public long a;
-  public anbi a;
-  public anbj a;
-  public anbk a;
-  public anbl a;
   public anbq a;
-  public anbs a;
-  public anbt a;
-  public avvf a;
-  public String a;
-  public int b;
+  public Map<Integer, Long> a;
+  public BlockingQueue<anbo> a;
+  public boolean a;
   public long b;
-  public anbj b;
-  public String b;
-  public int c = -1;
   public long c;
   
-  public anbr()
+  public anbr(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public String toString()
   {
-    return "ARCloudReqInfo{sessionId = " + this.jdField_a_of_type_JavaLangString + ", fileInfo = " + this.jdField_a_of_type_Anbq + ", longitude = " + this.jdField_a_of_type_Int + ", latitude = " + this.jdField_b_of_type_Int + ", recogType = " + this.jdField_a_of_type_Long + ", businessType = " + this.c + ", markerInfo = " + this.jdField_a_of_type_Anbs + ", objectClassifyInfo = " + this.jdField_a_of_type_Anbj + ", preOcrInfo = " + this.jdField_a_of_type_Anbk + ", sceneRecogInfo = " + this.jdField_a_of_type_Anbl + ", ocrInfo = " + this.jdField_a_of_type_Avvf + ", appid = " + this.jdField_b_of_type_JavaLangString + ", uin = " + this.jdField_b_of_type_Long + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{").append("spanId:").append(this.jdField_a_of_type_Int).append(",result:").append(this.jdField_a_of_type_Anbq);
+    Iterator localIterator;
+    if (this.jdField_a_of_type_JavaUtilMap != null)
+    {
+      localStringBuilder.append(",extra:[");
+      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if (QLog.isColorLevel()) {
+          localStringBuilder.append("{").append(localEntry.getKey()).append(",").append(localEntry.getValue()).append("}");
+        } else {
+          localStringBuilder.append("{").append(localEntry.getKey()).append("}");
+        }
+      }
+      localStringBuilder.append("]");
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null)
+    {
+      localStringBuilder.append(",anno:[");
+      localIterator = this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(((anbo)localIterator.next()).toString());
+      }
+      localStringBuilder.append("]");
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

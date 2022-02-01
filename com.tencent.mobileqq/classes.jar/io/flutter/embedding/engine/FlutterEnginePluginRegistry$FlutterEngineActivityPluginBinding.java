@@ -2,9 +2,13 @@ package io.flutter.embedding.engine;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding.OnSaveInstanceStateListener;
+import io.flutter.embedding.engine.plugins.lifecycle.HiddenLifecycleReference;
 import io.flutter.plugin.common.PluginRegistry.ActivityResultListener;
 import io.flutter.plugin.common.PluginRegistry.NewIntentListener;
 import io.flutter.plugin.common.PluginRegistry.RequestPermissionsResultListener;
@@ -19,17 +23,22 @@ class FlutterEnginePluginRegistry$FlutterEngineActivityPluginBinding
   @NonNull
   private final Activity activity;
   @NonNull
+  private final HiddenLifecycleReference hiddenLifecycleReference;
+  @NonNull
   private final Set<PluginRegistry.ActivityResultListener> onActivityResultListeners = new HashSet();
   @NonNull
   private final Set<PluginRegistry.NewIntentListener> onNewIntentListeners = new HashSet();
   @NonNull
   private final Set<PluginRegistry.RequestPermissionsResultListener> onRequestPermissionsResultListeners = new HashSet();
   @NonNull
+  private final Set<ActivityPluginBinding.OnSaveInstanceStateListener> onSaveInstanceStateListeners = new HashSet();
+  @NonNull
   private final Set<PluginRegistry.UserLeaveHintListener> onUserLeaveHintListeners = new HashSet();
   
-  public FlutterEnginePluginRegistry$FlutterEngineActivityPluginBinding(@NonNull Activity paramActivity)
+  public FlutterEnginePluginRegistry$FlutterEngineActivityPluginBinding(@NonNull Activity paramActivity, @NonNull Lifecycle paramLifecycle)
   {
     this.activity = paramActivity;
+    this.hiddenLifecycleReference = new HiddenLifecycleReference(paramLifecycle);
   }
   
   public void addActivityResultListener(@NonNull PluginRegistry.ActivityResultListener paramActivityResultListener)
@@ -40,6 +49,11 @@ class FlutterEnginePluginRegistry$FlutterEngineActivityPluginBinding
   public void addOnNewIntentListener(@NonNull PluginRegistry.NewIntentListener paramNewIntentListener)
   {
     this.onNewIntentListeners.add(paramNewIntentListener);
+  }
+  
+  public void addOnSaveStateListener(@NonNull ActivityPluginBinding.OnSaveInstanceStateListener paramOnSaveInstanceStateListener)
+  {
+    this.onSaveInstanceStateListeners.add(paramOnSaveInstanceStateListener);
   }
   
   public void addOnUserLeaveHintListener(@NonNull PluginRegistry.UserLeaveHintListener paramUserLeaveHintListener)
@@ -56,6 +70,12 @@ class FlutterEnginePluginRegistry$FlutterEngineActivityPluginBinding
   public Activity getActivity()
   {
     return this.activity;
+  }
+  
+  @NonNull
+  public Object getLifecycle()
+  {
+    return this.hiddenLifecycleReference;
   }
   
   boolean onActivityResult(int paramInt1, int paramInt2, @Nullable Intent paramIntent)
@@ -98,6 +118,22 @@ class FlutterEnginePluginRegistry$FlutterEngineActivityPluginBinding
     return bool;
   }
   
+  void onRestoreInstanceState(@Nullable Bundle paramBundle)
+  {
+    Iterator localIterator = this.onSaveInstanceStateListeners.iterator();
+    while (localIterator.hasNext()) {
+      ((ActivityPluginBinding.OnSaveInstanceStateListener)localIterator.next()).onRestoreInstanceState(paramBundle);
+    }
+  }
+  
+  void onSaveInstanceState(@NonNull Bundle paramBundle)
+  {
+    Iterator localIterator = this.onSaveInstanceStateListeners.iterator();
+    while (localIterator.hasNext()) {
+      ((ActivityPluginBinding.OnSaveInstanceStateListener)localIterator.next()).onSaveInstanceState(paramBundle);
+    }
+  }
+  
   void onUserLeaveHint()
   {
     Iterator localIterator = this.onUserLeaveHintListeners.iterator();
@@ -116,6 +152,11 @@ class FlutterEnginePluginRegistry$FlutterEngineActivityPluginBinding
     this.onNewIntentListeners.remove(paramNewIntentListener);
   }
   
+  public void removeOnSaveStateListener(@NonNull ActivityPluginBinding.OnSaveInstanceStateListener paramOnSaveInstanceStateListener)
+  {
+    this.onSaveInstanceStateListeners.remove(paramOnSaveInstanceStateListener);
+  }
+  
   public void removeOnUserLeaveHintListener(@NonNull PluginRegistry.UserLeaveHintListener paramUserLeaveHintListener)
   {
     this.onUserLeaveHintListeners.remove(paramUserLeaveHintListener);
@@ -128,7 +169,7 @@ class FlutterEnginePluginRegistry$FlutterEngineActivityPluginBinding
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterEnginePluginRegistry.FlutterEngineActivityPluginBinding
  * JD-Core Version:    0.7.0.1
  */

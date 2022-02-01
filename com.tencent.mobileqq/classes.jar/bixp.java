@@ -1,21 +1,21 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.open.filedownload.ApkFileDownloadFragment.2.1;
+import mqq.os.MqqHandler;
+
 public class bixp
+  extends bixz
 {
-  public static String a = "noticeServiceActive";
-  public static String b = "noticeSendEmoticon";
-  public static String c = "com.qqindividuality.ipc.IpcServer";
-  public static String d = "emoticonPackageId";
-  public static String e = "imagePath";
-  public static String f = "imageName";
-  public static String g = "imageWidth";
-  public static String h = "imageHeight";
-  public static String i = "requestCode";
-  public static String j = "commDiyText";
-  public static String k = "diyText";
-  public static String l = "individuality_plugin";
+  public bixp(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  
+  public void a()
+  {
+    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.2.1(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bixp
  * JD-Core Version:    0.7.0.1
  */

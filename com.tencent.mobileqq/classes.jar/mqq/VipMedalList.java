@@ -11,6 +11,7 @@ public final class VipMedalList
   static ArrayList<VipMedalInfo> cache_medalInfo = new ArrayList();
   public int bUpdate;
   public String jumpUrl = "";
+  public String lvlJumpUrl = "";
   public ArrayList<VipMedalInfo> medalInfo;
   
   static
@@ -21,11 +22,12 @@ public final class VipMedalList
   
   public VipMedalList() {}
   
-  public VipMedalList(ArrayList<VipMedalInfo> paramArrayList, int paramInt, String paramString)
+  public VipMedalList(ArrayList<VipMedalInfo> paramArrayList, int paramInt, String paramString1, String paramString2)
   {
     this.medalInfo = paramArrayList;
     this.bUpdate = paramInt;
-    this.jumpUrl = paramString;
+    this.jumpUrl = paramString1;
+    this.lvlJumpUrl = paramString2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -33,6 +35,7 @@ public final class VipMedalList
     this.medalInfo = ((ArrayList)paramJceInputStream.read(cache_medalInfo, 0, false));
     this.bUpdate = paramJceInputStream.read(this.bUpdate, 1, false);
     this.jumpUrl = paramJceInputStream.readString(2, false);
+    this.lvlJumpUrl = paramJceInputStream.readString(3, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -43,6 +46,9 @@ public final class VipMedalList
     paramJceOutputStream.write(this.bUpdate, 1);
     if (this.jumpUrl != null) {
       paramJceOutputStream.write(this.jumpUrl, 2);
+    }
+    if (this.lvlJumpUrl != null) {
+      paramJceOutputStream.write(this.lvlJumpUrl, 3);
     }
   }
 }

@@ -1,11 +1,15 @@
+import com.tencent.mobileqq.ark.ArkAppCenter;
+
 class apmx
-  implements aupv
+  implements apne
 {
   apmx(apmw paramapmw) {}
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    apmt.a(this.a.a).a().a();
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, full update result, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.a.jdField_a_of_type_Apnc.a }));
+    if (paramBoolean) {}
+    this.a.jdField_a_of_type_Apne.a(paramBoolean);
   }
 }
 

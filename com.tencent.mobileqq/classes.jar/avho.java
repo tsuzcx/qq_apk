@@ -1,48 +1,112 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avho
-  implements avdq
+public class avho
+  implements View.OnClickListener
 {
-  avho(avhf paramavhf) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  private TextView f;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static String a(long paramLong)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
+    if (paramLong > 107374182.40000001D) {
+      return String.format("%.1f G", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) });
     }
-    try
+    if (paramLong > 104857.60000000001D) {
+      return String.format("%.1f M", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) });
+    }
+    return String.format("%.1f K", new Object[] { Float.valueOf((float)paramLong / 1024.0F) });
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    if (paramLong == 0L) {
+      this.e.setVisibility(4);
+    }
+    for (;;)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + avhf.c(this.a));
-      }
-      if (paramBundle.busi_buf.has())
-      {
-        paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + avhf.c(this.a));
-        }
-      }
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
       return;
+      this.e.setText(String.format("%1$s/%2$s", new Object[] { a(paramInt * paramLong / 100L), a(paramLong) }));
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+  }
+  
+  public void a(Activity paramActivity, View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367744));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367751));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367752));
+    this.c = ((TextView)paramView.findViewById(2131367745));
+    this.d = ((TextView)paramView.findViewById(2131367750));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367746));
+    this.e = ((TextView)paramView.findViewById(2131367747));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131367748));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131367749));
+    this.f = ((TextView)paramView.findViewById(2131367743));
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+  }
+  
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(paramString);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.c.setText(paramString1);
+    this.d.setText(paramString2);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView == this.jdField_a_of_type_AndroidWidgetLinearLayout) || (paramView == this.jdField_a_of_type_AndroidWidgetTextView)) {
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avho
  * JD-Core Version:    0.7.0.1
  */

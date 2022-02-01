@@ -1,13 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-public class ajnv
+class ajnv
   implements DialogInterface.OnClickListener
 {
-  public ajnv(LoginView paramLoginView) {}
+  ajnv(ajnk paramajnk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      ajnk.a(this.a);
+    }
+  }
 }
 
 

@@ -1,22 +1,19 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class bbfp
-  implements InputFilter
+class bbfp
+  implements View.OnTouchListener
 {
-  public bbfp(AbsPublishActivity paramAbsPublishActivity) {}
+  bbfp(bbfm parambbfm) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramCharSequence != null)
-    {
-      paramCharSequence = paramCharSequence.toString();
-      if (paramCharSequence.contains("\n")) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
-    }
-    return null;
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

@@ -3,9 +3,11 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 import android.app.Activity;
 import android.os.ResultReceiver;
 import com.tencent.qqmini.sdk.MiniSDK;
-import com.tencent.qqmini.sdk.core.proxy.NavigationProxy;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.NavigationProxy;
 import org.json.JSONObject;
 
+@ProxyService(proxy=NavigationProxy.class)
 public class NavigationProxyDefault
   extends NavigationProxy
 {
@@ -25,7 +27,7 @@ public class NavigationProxyDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.NavigationProxyDefault
  * JD-Core Version:    0.7.0.1
  */

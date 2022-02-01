@@ -1,14 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class ayrl
-  implements View.OnClickListener
+  implements ayqr
 {
-  ayrl(ayrk paramayrk, aynt paramaynt) {}
+  ayrl(ayrj paramayrj) {}
   
-  public void onClick(View paramView)
+  public void a(double paramDouble1, double paramDouble2)
   {
-    this.jdField_a_of_type_Aynt.a(paramView);
+    this.a.a(paramDouble1);
   }
 }
 

@@ -1,35 +1,41 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aemh
-  implements bdvr
+  implements Handler.Callback
 {
-  public aemh(VisitorsActivity paramVisitorsActivity, String paramString) {}
+  public aemh(Leba paramLeba) {}
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", this.jdField_a_of_type_JavaLangString, "");
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity, QQBrowserActivity.class);
-    localIntent.putExtra("fragmentStyle", 3);
-    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
-    localIntent.putExtra("isTransparentTitle", true);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.startActivity(localIntent);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorsActivity", 2, "ZanDoubleDialog: onRightClick: ");
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "callback handleMessage,what = " + paramMessage.what);
     }
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", this.jdField_a_of_type_JavaLangString, "");
-    bdun.a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity, "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
-    VisitorsActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity).set(true);
+    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.lebatab.leba", 2, "handler refresh leba config");
+      }
+      this.a.l();
+      continue;
+      Leba.c(this.a);
+      continue;
+      this.a.a(paramMessage);
+      continue;
+      this.a.r();
+      continue;
+      Leba.d(this.a);
+    }
   }
 }
 

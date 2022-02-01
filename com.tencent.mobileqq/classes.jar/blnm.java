@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment.8;
-
-public class blnm
-  implements DialogInterface.OnDismissListener
+class blnm
+  implements blfn
 {
-  public blnm(AEEditorVideoEditFragment.8 param8) {}
+  blnm(blnk paramblnk) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void a(boolean paramBoolean)
+  {
+    blpu.c("QRPluginManager", "startPluginByActivity: openPlugin result = " + paramBoolean);
+  }
 }
 
 

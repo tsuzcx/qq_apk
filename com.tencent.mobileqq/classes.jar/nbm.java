@@ -1,69 +1,18 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
+import android.widget.ImageView;
 
-public class nbm
-  extends alpd
+public abstract interface nbm
 {
-  public nbm(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public abstract ImageView a();
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool2 = false;
-    if (paramObject == null)
-    {
-      notifyUI(1001, false, null);
-      return;
-    }
-    int i = ((Bundle)paramObject).getInt("result");
-    paramToServiceMsg = (BmqqUserSimpleInfo)((Bundle)paramObject).getParcelable("info");
-    boolean bool1 = bool2;
-    if (i == 0)
-    {
-      bool1 = bool2;
-      if (paramToServiceMsg != null)
-      {
-        ((bfyh)this.mApp.getManager(165)).a(paramToServiceMsg);
-        bool1 = true;
-      }
-    }
-    notifyUI(1001, bool1, paramToServiceMsg);
-  }
+  public abstract void a(mxq parammxq);
   
-  public void a(String paramString)
-  {
-    if (!nbp.a(this.app.getApplication(), paramString)) {
-      return;
-    }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("hrtxformqq.service", this.app.getCurrentAccountUin(), "hrtxformqq.getUsrSimpleInfo");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("uin", Long.valueOf(paramString));
-    localToServiceMsg.setAttributes(localHashMap);
-    send(localToServiceMsg);
-  }
+  public abstract void a(boolean paramBoolean);
   
-  protected Class<? extends alpg> observerClass()
-  {
-    return nbn.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("hrtxformqq.getUsrSimpleInfo".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nbm
  * JD-Core Version:    0.7.0.1
  */

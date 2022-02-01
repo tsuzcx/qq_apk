@@ -1,13 +1,15 @@
-public class ayoa
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class ayoa
 {
-  public String a;
-  public String b;
-  
-  public ayoa(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
+  View c;
+  View d;
 }
 
 

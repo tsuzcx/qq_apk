@@ -3,17 +3,20 @@ package com.tencent.biz.qqcircle.widgets;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import bdbk;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import aoch;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.SquareImageView;
 import java.util.List;
-import tql;
+import uxh;
 
 public class AvatarListView
   extends ViewGroup
@@ -24,7 +27,6 @@ public class AvatarListView
   private int b;
   private int c;
   private int d;
-  private int e;
   
   public AvatarListView(Context paramContext)
   {
@@ -48,35 +50,38 @@ public class AvatarListView
     if (paramContext != null)
     {
       this.jdField_a_of_type_Int = paramContext.getInteger(1, 90);
-      this.jdField_a_of_type_Float = paramContext.getFloat(6, 0.8F);
+      this.jdField_a_of_type_Float = paramContext.getFloat(5, 0.8F);
       this.b = ((int)paramContext.getDimension(2, 30.0F));
       this.c = ((int)paramContext.getDimension(0, 30.0F));
-      this.jdField_a_of_type_Boolean = paramContext.getBoolean(5, false);
-      this.d = paramContext.getColor(3, -1);
-      this.e = ((int)paramContext.getDimension(4, 0.0F));
+      this.jdField_a_of_type_Boolean = paramContext.getBoolean(4, false);
+      this.d = ((int)paramContext.getDimension(3, 0.0F));
       paramContext.recycle();
     }
   }
   
-  private void a(String paramString, boolean paramBoolean)
+  private void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    SquareImageView localSquareImageView = new SquareImageView(getContext());
-    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(this.b, this.c);
-    if ((this.d != -1) && (this.e != 0))
+    FrameLayout localFrameLayout = new FrameLayout(getContext());
+    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(this.b + this.d * 2, this.c + this.d * 2));
+    if (!TextUtils.isEmpty(paramString2))
     {
-      localSquareImageView.setPadding(this.e, this.e, this.e, this.e);
-      localSquareImageView.setCircleBgColor(this.d);
+      SquareImageView localSquareImageView = new SquareImageView(getContext());
+      localSquareImageView.setLayoutParams(new FrameLayout.LayoutParams(this.b + this.d * 2, this.c + this.d * 2, 17));
+      localFrameLayout.addView(localSquareImageView);
+      uxh.a(paramString2, localSquareImageView);
     }
-    localSquareImageView.setLayoutParams(localLayoutParams);
-    localSquareImageView.setRoundRect(this.jdField_a_of_type_Int);
+    paramString2 = new SquareImageView(getContext());
+    paramString2.setLayoutParams(new FrameLayout.LayoutParams(this.b, this.c, 17));
+    paramString2.setRoundRect(this.jdField_a_of_type_Int);
+    localFrameLayout.addView(paramString2);
     if (paramBoolean) {
-      tql.a(paramString, localSquareImageView);
+      uxh.a(paramString1, paramString2);
     }
     for (;;)
     {
-      addView(localSquareImageView);
+      addView(localFrameLayout);
       return;
-      localSquareImageView.setImageDrawable(bdbk.a(((BaseActivity)getContext()).app, 1, 4, paramString));
+      paramString2.setImageDrawable(aoch.a(((BaseActivity)getContext()).app, 1, 4, paramString1));
     }
   }
   
@@ -186,45 +191,57 @@ public class AvatarListView
   
   public void setData(List<String> paramList)
   {
-    setData(paramList, false);
+    setData(paramList, null, false);
   }
   
-  public void setData(List<String> paramList, boolean paramBoolean)
+  public void setData(List<String> paramList1, List<String> paramList2, boolean paramBoolean)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      setVisibility(8);
-    }
-    for (;;)
+    if ((paramList1 == null) || (paramList1.size() == 0))
     {
+      setVisibility(8);
       return;
-      setVisibility(0);
-      removeAllViews();
-      int j = paramList.size();
-      int i;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = j - 1;
-        while (i >= 0)
-        {
-          a((String)paramList.get(i), paramBoolean);
-          i -= 1;
+    }
+    setVisibility(0);
+    removeAllViews();
+    int j = paramList1.size();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = j - 1;
+      label50:
+      if (i >= 0) {
+        if ((paramList2 != null) && (paramList2.size() >= i)) {
+          break label101;
         }
       }
-      else
+      label101:
+      for (str = "";; str = (String)paramList2.get(i))
       {
-        i = 0;
-        while (i < j)
-        {
-          a((String)paramList.get(i), paramBoolean);
-          i += 1;
-        }
+        a((String)paramList1.get(i), str, paramBoolean);
+        i -= 1;
+        break label50;
+        break;
       }
+    }
+    int i = 0;
+    label120:
+    if (i < j) {
+      if ((paramList2 != null) && (paramList2.size() >= i)) {
+        break label173;
+      }
+    }
+    label173:
+    for (String str = "";; str = (String)paramList2.get(i))
+    {
+      a((String)paramList1.get(i), str, paramBoolean);
+      i += 1;
+      break label120;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.AvatarListView
  * JD-Core Version:    0.7.0.1
  */

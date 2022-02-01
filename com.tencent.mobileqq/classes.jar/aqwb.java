@@ -1,256 +1,136 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqwb
-  implements arai
+  implements aqlb<String>, aqvj
 {
-  protected QQAppInterface a;
-  protected LinkedHashMap<Long, aqwc> a;
+  static boolean jdField_a_of_type_Boolean = true;
+  static boolean b = true;
+  private long jdField_a_of_type_Long = 20971520L;
+  private ExcitingTransferUploadChnConfigInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+  public String a;
+  private boolean c;
   
-  public aqwb(QQAppInterface paramQQAppInterface)
+  public aqwb()
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  protected int a(String paramString)
+  private void a()
   {
-    paramString = arso.a(paramString);
-    if (".mp4".equalsIgnoreCase(paramString)) {
-      return 17;
-    }
-    if (".rmvb".equalsIgnoreCase(paramString)) {
-      return 18;
-    }
-    if (".avi".equalsIgnoreCase(paramString)) {
-      return 19;
-    }
-    if (".wmv".equalsIgnoreCase(paramString)) {
-      return 20;
-    }
-    if (".flv".equalsIgnoreCase(paramString)) {
-      return 21;
-    }
-    if (".3gp".equalsIgnoreCase(paramString)) {
-      return 22;
-    }
-    if (".mkv".equalsIgnoreCase(paramString)) {
-      return 23;
-    }
-    if (".asf".equalsIgnoreCase(paramString)) {
-      return 26;
-    }
-    if (".vob".equalsIgnoreCase(paramString)) {
-      return 27;
-    }
-    if (".m4v".equalsIgnoreCase(paramString)) {
-      return 28;
-    }
-    if (".f4v".equalsIgnoreCase(paramString)) {
-      return 29;
-    }
-    if (".mov".equalsIgnoreCase(paramString)) {
-      return 30;
-    }
-    if (".mpeg".equalsIgnoreCase(paramString)) {
-      return 31;
-    }
-    if (".mpg".equalsIgnoreCase(paramString)) {
-      return 32;
-    }
-    if (".rm".equalsIgnoreCase(paramString)) {
-      return 33;
-    }
-    if (".webm".equalsIgnoreCase(paramString)) {
-      return 34;
-    }
-    return -1;
+    this.jdField_a_of_type_Long = 20971520L;
+    this.c = false;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
   }
   
-  protected final aqwc a(long paramLong)
+  private void a(JSONObject paramJSONObject)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
+    try
     {
-      if (QLog.isDevelopLevel())
+      this.c = paramJSONObject.getBoolean("enableaqq");
+      paramJSONObject = paramJSONObject.getJSONObject("config");
+      if (paramJSONObject != null)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-        if (localIterator.hasNext())
-        {
-          long l = ((Long)localIterator.next()).longValue();
-          QLog.i("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] call getSession ID[" + l + "] in mMap DowloadSession");
-        }
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMuliFileSizeLimit = paramJSONObject.getLong("mulifilesizelimit");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMaxChannelNum = paramJSONObject.getInt("maxchannelnum");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uPieceSize = paramJSONObject.getInt("piecesize");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostTotalUseCount = paramJSONObject.getInt("maxeachhosttotalusecount");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostErrorCount = paramJSONObject.getInt("maxeachhosterrorcount");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostParallelUseCount = paramJSONObject.getInt("maxeachhostparallelusecount");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nConnectTimeout = paramJSONObject.getLong("connecttimeout");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nDataTimeout = paramJSONObject.getLong("datatimeout");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nTotoalDataTimeout = paramJSONObject.getLong("totoaldatatimeout");
+        this.jdField_a_of_type_Long = paramJSONObject.getLong("limitedsize");
+      }
+      for (;;)
+      {
+        QLog.i("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, "parse Exciting-C2C-Upload config: enable:" + this.c + " LimitedSize:" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.toString());
+        return;
+        this.jdField_a_of_type_Long = 20971520L;
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+      }
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      QLog.e("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramJSONObject));
+    }
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public ExcitingTransferUploadChnConfigInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    int k = 0;
+    this.jdField_a_of_type_JavaLangString = paramString.toLowerCase();
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      QLog.w("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, "configContent is empty, use default value");
+      a();
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      if (paramString.length() == 0)
+      {
+        QLog.w("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
+        a();
+        return;
       }
     }
-    aqwc localaqwc = (aqwc)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramLong));
-    return localaqwc;
-  }
-  
-  protected String a(int paramInt)
-  {
-    switch (paramInt)
+    catch (JSONException paramString)
     {
-    default: 
-      return "64*64";
-    case 0: 
-      return "16*16";
-    case 1: 
-      return "32*32";
-    case 2: 
-      return "64*64";
-    case 3: 
-      return "128*128";
-    case 4: 
-      return "320*320";
-    case 5: 
-      return "384*384";
-    case 6: 
-      return "640*640";
-    case 7: 
-      return "750*750";
+      QLog.e("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramString));
+      return;
     }
-    return "1024*1024";
-  }
-  
-  protected String a(int paramInt, String paramString)
-  {
-    String str;
-    switch (paramInt)
-    {
-    case 5: 
-    case 7: 
-    default: 
-      str = "x-video-";
-    }
+    JSONArray localJSONArray = paramString.names();
+    int i = 0;
     for (;;)
     {
-      return str + paramString;
-      str = "micro-video-";
-      continue;
-      str = "minni-video-";
-      continue;
-      str = "small-video-";
-      continue;
-      str = "middle-video-";
-      continue;
-      str = "large-video-";
-      continue;
-      str = "xlarge-video-";
-      continue;
-      str = "screen-video-";
-    }
-  }
-  
-  protected void a()
-  {
-    File localFile = new File(arqx.a().d());
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-  }
-  
-  protected final void a(long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-    {
-      QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] removeSession");
-      if (QLog.isDevelopLevel())
+      int j = k;
+      if (i < localJSONArray.length())
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-        if (localIterator.hasNext())
+        Object localObject = localJSONArray.getString(i).trim();
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          long l = ((Long)localIterator.next()).longValue();
-          QLog.i("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] call removeSession ID[" + l + "] in mMapDowloadSession");
+          localObject = paramString.optJSONObject((String)localObject).getJSONObject("upload");
+          if (localObject != null)
+          {
+            a((JSONObject)localObject);
+            j = 1;
+          }
         }
       }
-    }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(paramLong));
-  }
-  
-  public void a(long paramLong, int paramInt, arah paramarah) {}
-  
-  public void a(long paramLong, arah paramarah) {}
-  
-  public void a(long paramLong, bdpx parambdpx) {}
-  
-  public void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, arah paramarah)
-  {
-    QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onDownloadCompleted suc:" + paramBoolean + " retCode[" + paramInt + "] thumbPath:" + paramString);
-    a(paramLong);
-  }
-  
-  protected final void a(long paramLong, boolean paramBoolean1, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, boolean paramBoolean2, String paramString5, short paramShort, String paramString6)
-  {
-    QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onGetDownloadUrlResult suc:" + paramBoolean1 + " strDomain:" + paramString1 + " port:" + paramInt + " urlParam:" + paramString2 + " cookie:" + paramString4);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramLong, paramBoolean1, paramString1, paramInt, paramString2, paramString3, paramString4, paramBoolean2, paramString5, paramShort, paramString6);
-  }
-  
-  protected final void a(aqwc paramaqwc)
-  {
-    if (paramaqwc == null)
-    {
-      QLog.e("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb] addSession = null");
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-    {
-      QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramaqwc.jdField_a_of_type_Long + "] addSession");
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramaqwc.jdField_a_of_type_Long), paramaqwc);
-      if (QLog.isDevelopLevel())
+      else
       {
-        paramaqwc = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-        if (paramaqwc.hasNext())
-        {
-          long l = ((Long)paramaqwc.next()).longValue();
-          QLog.i("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] call addSession ID[" + l + "] in mMapDowloadSession");
+        if (j != 0) {
+          break;
         }
+        QLog.w("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, "configContent no Exciting-C2C-Upload config, use default value");
+        a();
+        return;
       }
+      i += 1;
     }
   }
   
-  protected void a(aqwc paramaqwc, String paramString)
+  public boolean a()
   {
-    if ((paramaqwc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext != null) && ((paramaqwc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext instanceof String)) && ("igonFlow".equalsIgnoreCase((String)paramaqwc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext))) {
-      paramaqwc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext = null;
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && (!arbp.a()) && (arrr.a()))
-      {
-        QLog.i("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramaqwc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] size(wh)[" + paramaqwc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth + ":" + paramaqwc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight + "]autoDownload Thumb switch is off!");
-        return;
-      }
-      long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramString, this);
-      if (l == -1L)
-      {
-        QLog.w("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramaqwc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] size(wh)[" + paramaqwc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth + ":" + paramaqwc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight + "] thumb is Downloading,waiting please!");
-        return;
-      }
-      paramString = paramaqwc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-      i = paramString.mThumbRetryCount;
-      paramString.mThumbRetryCount = (i + 1);
-      if (i > 10)
-      {
-        QLog.w("BaseThumbDownloader<FileAssistant>", 1, "thumb retry over 10 count, igon!");
-        return;
-      }
-      paramaqwc.jdField_a_of_type_Long = l;
-      a(paramaqwc);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a();
-      return;
-    }
+    return this.c;
   }
-  
-  public boolean a(long paramLong, arah paramarah)
-  {
-    return false;
-  }
-  
-  public void b(long paramLong, arah paramarah) {}
 }
 
 

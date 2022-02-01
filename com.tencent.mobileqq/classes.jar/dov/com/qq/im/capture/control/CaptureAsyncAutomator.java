@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.control;
 
-import blrn;
+import bokr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -33,7 +33,7 @@ public class CaptureAsyncAutomator
   
   private void e()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new blrn(this, null));
+    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 3, 1000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new bokr(this, null));
     this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.allowCoreThreadTimeOut(true);
   }
   
@@ -98,7 +98,7 @@ public class CaptureAsyncAutomator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.control.CaptureAsyncAutomator
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,94 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class acoo
-  extends alwx
+  implements DownloadListener
 {
-  public acoo(ChatSettingActivity paramChatSettingActivity) {}
+  private WeakReference<GdtMvDownloadBtnManager> a;
   
-  protected void a(boolean paramBoolean, String paramString)
+  public acoo(GdtMvDownloadBtnManager paramGdtMvDownloadBtnManager)
   {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.g(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onInsertIntoBlackList, isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, true);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onInsertIntoBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
-      return;
-    }
-    ChatSettingActivity.a(this.a, 2131720075, 1);
+    this.a = new WeakReference(paramGdtMvDownloadBtnManager);
   }
   
-  protected void b(boolean paramBoolean, String paramString)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramString1, paramString2);
     }
-    ChatSettingActivity.c(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onRemoveFromBlackList, isSuccess=" + paramBoolean);
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    acqy.a("GdtMvDownloadBtnManager", "onDownloadCancel: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.d(paramDownloadInfo);
     }
-    ChatSettingActivity.g(this.a);
-    if (paramBoolean)
-    {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onRemoveFromBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
-      return;
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramDownloadInfo, paramInt1, paramString, paramInt2);
     }
-    ChatSettingActivity.a(this.a, 2131720075, 1);
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    acqy.a("GdtMvDownloadBtnManager", "onDownloadFinish: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.c(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    acqy.a("GdtMvDownloadBtnManager", "onDownloadPause: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    acqy.a("GdtMvDownloadBtnManager", "onDownloadUpdate: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramList);
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    acqy.a("GdtMvDownloadBtnManager", "onDownloadWait: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.b(paramDownloadInfo);
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.c(paramString1, paramString2);
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.b(paramString1, paramString2);
+    }
   }
 }
 

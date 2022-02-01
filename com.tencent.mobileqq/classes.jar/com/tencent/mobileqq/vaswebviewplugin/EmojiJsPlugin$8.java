@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import begg;
-import begz;
-import bels;
-import bety;
+import bhni;
+import bhod;
+import bhsw;
+import biau;
 
 class EmojiJsPlugin$8
   implements Runnable
@@ -12,17 +12,17 @@ class EmojiJsPlugin$8
   
   public void run()
   {
-    begg localbegg = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-    if ((localbegg != null) && ((localbegg instanceof bels)))
+    bhni localbhni = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+    if ((localbhni != null) && ((localbhni instanceof bhsw)))
     {
-      this.this$0.progressDialog = new bety(this.this$0.mRuntime.a(), ((bels)localbegg).b());
+      this.this$0.progressDialog = new biau(this.this$0.mRuntime.a(), ((bhsw)localbhni).getTitleBarHeight());
       this.this$0.progressDialog.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin.8
  * JD-Core Version:    0.7.0.1
  */

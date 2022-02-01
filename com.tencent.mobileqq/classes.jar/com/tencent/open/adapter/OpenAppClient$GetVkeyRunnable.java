@@ -2,10 +2,10 @@ package com.tencent.open.adapter;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bfbm;
-import bfir;
-import bflk;
-import bflp;
+import biip;
+import biqa;
+import bist;
+import bisy;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -39,7 +39,7 @@ public class OpenAppClient$GetVkeyRunnable
   
   public void run()
   {
-    if (!bflk.d(bfbm.a().a())) {}
+    if (!bist.d(biip.a().a())) {}
     while (this.jdField_a_of_type_MqqAppAppRuntime == null) {
       return;
     }
@@ -50,13 +50,13 @@ public class OpenAppClient$GetVkeyRunnable
     }
     for (;;)
     {
-      if ((str1 != null) && (!str1.equals(String.valueOf(bfbm.a().a())))) {
-        bfbm.a().a(Long.valueOf(str1).longValue());
+      if ((str1 != null) && (!str1.equals(String.valueOf(biip.a().a())))) {
+        biip.a().a(Long.valueOf(str1).longValue());
       }
       if (!TextUtils.isEmpty(str2))
       {
-        bflp.b(OpenAppClient.jdField_a_of_type_JavaLangString, "Get skey success");
-        bfbm.a().a(str2);
+        bisy.b(OpenAppClient.jdField_a_of_type_JavaLangString, "Get skey success");
+        biip.a().a(str2);
       }
       OpenAppClient.jdField_a_of_type_Boolean = false;
       switch (this.jdField_a_of_type_Int)
@@ -64,14 +64,14 @@ public class OpenAppClient$GetVkeyRunnable
       default: 
         return;
       case 1: 
-        bfir.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, str1, str2);
+        biqa.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, str1, str2);
         return;
         if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof BrowserAppInterface)) {
           str1 = ((BrowserAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getAccount();
         }
         break;
       case 2: 
-        bfir.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, str1, str2);
+        biqa.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, str1, str2);
         return;
         str1 = null;
       }
@@ -80,7 +80,7 @@ public class OpenAppClient$GetVkeyRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.adapter.OpenAppClient.GetVkeyRunnable
  * JD-Core Version:    0.7.0.1
  */

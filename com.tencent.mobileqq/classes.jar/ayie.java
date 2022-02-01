@@ -1,8 +1,6 @@
-import java.util.List;
-
 public abstract interface ayie
 {
-  public abstract void a(int paramInt, List<? extends ayhs> paramList);
+  public abstract void a(ayid paramayid);
 }
 
 

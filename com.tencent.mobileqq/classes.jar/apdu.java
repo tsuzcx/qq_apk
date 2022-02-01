@@ -1,25 +1,8 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkBabyqCardInfo;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import java.lang.ref.WeakReference;
-
-public class apdu
-  implements afjk
+public abstract interface apdu
 {
-  public apdu(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
+  public abstract void a();
   
-  public void a()
-  {
-    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
-    {
-      Object localObject = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
-      localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (localObject != null) {
-        localObject = (anoh)((QQAppInterface)localObject).a(95);
-      }
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

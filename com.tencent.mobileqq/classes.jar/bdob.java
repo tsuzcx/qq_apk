@@ -1,202 +1,75 @@
-import android.graphics.Point;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.os.Build.VERSION;
-import android.util.Pair;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.Transformation;
-import java.lang.reflect.Field;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class bdob<T>
-  extends Animation
+public class bdob
+  extends ClickableSpan
 {
-  static final bdoi jdField_a_of_type_Bdoi = new bdoc();
-  static final bdoi b;
-  static final bdoi c;
-  static final bdoi d;
-  static final bdoi e = new bdog();
-  private long jdField_a_of_type_Long;
-  protected bdoh<T> a;
-  protected T a;
-  protected boolean a;
-  private Pair[] jdField_a_of_type_ArrayOfAndroidUtilPair;
-  protected T b;
-  protected boolean b;
-  protected boolean c;
-  protected boolean d;
-  protected bdoi<T> f;
+  public String a;
   
-  static
+  public bdob(bdnt parambdnt, String paramString)
   {
-    jdField_b_of_type_Bdoi = new bdod();
-    jdField_c_of_type_Bdoi = new bdoe();
-    jdField_d_of_type_Bdoi = new bdof();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public bdob(T paramT1, T paramT2, bdoh<T> parambdoh)
+  public void onClick(View paramView)
   {
-    this(paramT1, paramT2, parambdoh, false, false, null);
-  }
-  
-  public bdob(T paramT1, T paramT2, bdoh<T> parambdoh, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this(paramT1, paramT2, parambdoh, paramBoolean1, paramBoolean2, null);
-  }
-  
-  public bdob(T paramT1, T paramT2, bdoh<T> parambdoh, boolean paramBoolean1, boolean paramBoolean2, bdoi<T> parambdoi)
-  {
-    Class localClass = paramT1.getClass();
-    if (parambdoi != null) {
-      this.f = parambdoi;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangObject = paramT1;
-      this.jdField_b_of_type_JavaLangObject = paramT2;
-      a(parambdoh);
-      this.jdField_a_of_type_Boolean = paramBoolean1;
-      this.jdField_b_of_type_Boolean = paramBoolean2;
-      return;
-      if (localClass == Integer.class)
-      {
-        this.f = jdField_a_of_type_Bdoi;
-      }
-      else if (Float.class == localClass)
-      {
-        this.f = jdField_b_of_type_Bdoi;
-      }
-      else if (Rect.class == localClass)
-      {
-        this.f = jdField_c_of_type_Bdoi;
-      }
-      else if (Point.class == localClass)
-      {
-        this.f = jdField_d_of_type_Bdoi;
-      }
-      else
-      {
-        if (PointF.class != localClass) {
-          break;
-        }
-        this.f = e;
+    if (bgkw.a) {
+      if (QLog.isColorLevel()) {
+        QLog.e("LinkSpan", 2, "LinkSpan.onCLick is invoked by LongClick misstake");
       }
     }
-    throw new IllegalArgumentException("Can't support type " + paramT1.getClass().getSimpleName());
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_d_of_type_Boolean = true;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(bdoh<T> parambdoh)
-  {
-    this.jdField_a_of_type_Bdoh = parambdoh;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    if (this.jdField_a_of_type_Bdoh != null) {
-      this.jdField_a_of_type_Bdoh.a(this, paramFloat, this.f.a(paramFloat, this.jdField_a_of_type_JavaLangObject, this.jdField_b_of_type_JavaLangObject), paramTransformation);
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  public void cancel()
-  {
-    int i = 0;
-    this.jdField_c_of_type_Boolean = true;
-    if (Build.VERSION.SDK_INT >= 8) {
-      super.cancel();
-    }
-    for (;;)
+    Object localObject;
+    do
     {
       return;
-      if (this.jdField_a_of_type_ArrayOfAndroidUtilPair == null) {
-        this.jdField_a_of_type_ArrayOfAndroidUtilPair = new Pair[] { new Pair("mEnded", Boolean.valueOf(true)), new Pair("mMore", Boolean.valueOf(false)), new Pair("mOneMoreTime", Boolean.valueOf(false)) };
+      localObject = paramView.getTag();
+      if ((localObject instanceof String)) {
+        bdnt.a((String)localObject);
       }
-      try
+      localObject = this.jdField_a_of_type_JavaLangString;
+      boolean bool2 = bgny.d.matcher((CharSequence)localObject).find();
+      boolean bool1 = bool2;
+      if (!bool2) {
+        bool1 = bgny.c.matcher((CharSequence)localObject).find();
+      }
+      if (bool1)
       {
-        Object localObject1 = getClass().getDeclaredField("mListener");
-        ((Field)localObject1).setAccessible(true);
-        localObject1 = ((Field)localObject1).get(this);
-        if ((localObject1 instanceof Animation.AnimationListener)) {
-          ((Animation.AnimationListener)localObject1).onAnimationEnd(this);
-        }
-        localObject1 = getClass().getDeclaredField("mStartTime");
-        ((Field)localObject1).setAccessible(true);
-        ((Field)localObject1).setLong(this, -9223372036854775808L);
-        localObject1 = this.jdField_a_of_type_ArrayOfAndroidUtilPair;
-        int j = localObject1.length;
-        while (i < j)
+        if (bdoh.f.matcher((CharSequence)localObject).find())
         {
-          Object localObject2 = localObject1[i];
-          Field localField = getClass().getDeclaredField((String)localObject2.first);
-          localField.setAccessible(true);
-          localField.setBoolean(this, ((Boolean)localObject2.second).booleanValue());
-          i += 1;
+          this.jdField_a_of_type_Bdnt.a(paramView.getContext(), (String)localObject, 2, bdnt.a(this.jdField_a_of_type_Bdnt));
+          bdnt.a("1", null);
+          return;
         }
+        this.jdField_a_of_type_Bdnt.a(paramView, (String)localObject);
+        bdnt.a("0", null);
         return;
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
+      if (bdoh.a.matcher((CharSequence)localObject).find())
       {
-        localNoSuchFieldException.printStackTrace();
+        this.jdField_a_of_type_Bdnt.a(paramView.getContext(), (String)localObject, 3, bdnt.a(this.jdField_a_of_type_Bdnt));
+        bdnt.a("2", null);
         return;
       }
-      catch (IllegalAccessException localIllegalAccessException)
+      Matcher localMatcher = bdoh.b.matcher((CharSequence)localObject);
+      if ((localMatcher.find()) && (localMatcher.start() == 0) && (localMatcher.end() == ((String)localObject).length()))
       {
-        localIllegalAccessException.printStackTrace();
+        this.jdField_a_of_type_Bdnt.a(paramView.getContext(), (String)localObject, 0, bdnt.a(this.jdField_a_of_type_Bdnt));
+        bdnt.a("1", null);
+        return;
       }
-    }
+    } while (!bdoh.e.matcher((CharSequence)localObject).find());
+    this.jdField_a_of_type_Bdnt.a(paramView.getContext(), (String)localObject, 1, bdnt.a(this.jdField_a_of_type_Bdnt));
+    bdnt.a("2", null);
   }
   
-  public boolean getTransformation(long paramLong, Transformation paramTransformation)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (this.jdField_d_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_Long == 0L) {
-        a(paramLong - getStartTime());
-      }
-      setStartTime(paramLong - this.jdField_a_of_type_Long);
-    }
-    return super.getTransformation(paramLong, paramTransformation);
-  }
-  
-  public void reset()
-  {
-    this.jdField_c_of_type_Boolean = false;
-    super.reset();
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean willChangeTransformationMatrix()
-  {
-    return this.jdField_b_of_type_Boolean;
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.clearShadowLayer();
   }
 }
 

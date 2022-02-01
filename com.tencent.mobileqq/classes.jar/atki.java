@@ -1,165 +1,72 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.X5ApiPlugin.1;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.WebView;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import com.tencent.commonsdk.util.HexUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class atki
-  extends WebViewPlugin
+  extends atkj
 {
-  private ConcurrentHashMap<String, atkj> a;
-  private ConcurrentHashMap<String, atkj> b;
+  final boolean jdField_a_of_type_Boolean;
+  final byte[] jdField_a_of_type_ArrayOfByte;
+  final byte[] b;
   
-  public atki()
+  public atki(String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, boolean paramBoolean)
   {
-    this.mPluginNameSpace = "x5";
+    super(paramString1, paramString2, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte5;
+    this.b = paramArrayOfByte6;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private int a(Context paramContext, String paramString)
+  public boolean a()
   {
-    if (beka.b())
+    if (!super.a()) {}
+    do
     {
-      if ((!TextUtils.isEmpty(paramString)) && (beka.a(paramString)) && (!paramString.contains("asyncMode=3")) && (!paramString.contains("sonic=1")))
+      do
       {
-        if ((paramContext != null) && (QbSdk.getTbsVersion(paramContext) >= 43810)) {
-          return 4;
-        }
-        return 3;
-      }
-      return 2;
-    }
-    return 1;
-  }
-  
-  private void a(Context paramContext, WebView paramWebView, atkj paramatkj)
-  {
-    int i = a(paramContext, paramatkj.jdField_a_of_type_JavaLangString);
-    if (i == 4) {
-      a(paramWebView, paramatkj);
-    }
-    b(i, paramatkj.b);
-  }
-  
-  private void a(atkj paramatkj)
-  {
-    this.b.put(paramatkj.jdField_a_of_type_JavaLangString, paramatkj);
-    b(5, paramatkj.b);
-  }
-  
-  private void a(WebView paramWebView, atkj paramatkj)
-  {
-    this.a.put(paramatkj.jdField_a_of_type_JavaLangString, paramatkj);
-    ThreadManager.post(new X5ApiPlugin.1(this, paramatkj, paramWebView), 5, null, true);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.b != null) && (this.a != null))
-    {
-      Object localObject = this.b.values().iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        localObject = (atkj)((Iterator)localObject).next();
-        this.b.remove(((atkj)localObject).jdField_a_of_type_JavaLangString);
-        this.a.put(((atkj)localObject).jdField_a_of_type_JavaLangString, localObject);
-        a(this.mRuntime.a(), (atkj)localObject);
-        b(4, ((atkj)localObject).b);
-      }
-    }
-  }
-  
-  private boolean a()
-  {
-    Object localObject = this.mRuntime.a();
-    if (localObject != null)
-    {
-      localObject = (beiy)((WebViewFragment)localObject).b().a(-2);
-      return (localObject != null) && (!((beiy)localObject).k);
-    }
-    return false;
-  }
-  
-  private void b()
-  {
-    if (this.a == null) {
-      this.a = new ConcurrentHashMap();
-    }
-    if (this.b == null) {
-      this.b = new ConcurrentHashMap();
-    }
-  }
-  
-  private void b(int paramInt, String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", paramInt);
-      callJs(paramString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void a()
-  {
-    a(true);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0)
-    {
-      if (this.a.containsKey(paramString)) {
-        b(0, ((atkj)this.a.remove(paramString)).b);
-      }
-      a(a());
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"x5".equals(paramString2)) {
-      return false;
-    }
-    if (("preload".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString1 = new atkj();
-        paramString1.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("url");
-        paramString1.b = paramJsBridgeListener.optString("callback");
-        paramString1.jdField_a_of_type_Boolean = paramJsBridgeListener.optBoolean("doWhenPageFinish", false);
-        b();
-        if (paramString1.jdField_a_of_type_Boolean) {
-          if (a()) {
-            a(this.mRuntime.a(), this.mRuntime.a(), paramString1);
-          } else {
-            a(paramString1);
+        do
+        {
+          return false;
+          if ((b() != null) && (b().length != 0)) {
+            break;
           }
+        } while (!QLog.isColorLevel());
+        QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBuf10MMdd5 is err");
+        return false;
+        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0)) {
+          break;
         }
+      } while (!QLog.isColorLevel());
+      QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUuid is err");
+      return false;
+      if ((this.b != null) && (this.b.length != 0)) {
+        break;
       }
-      catch (JSONException paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-      }
-      a(this.mRuntime.a(), this.mRuntime.a(), paramString1);
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUploadKey is err");
+    return false;
     return true;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append(" uuid:");
+    if (this.jdField_a_of_type_ArrayOfByte != null)
+    {
+      str = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
+      localStringBuilder = localStringBuilder.append(str).append(" mBufUploadKey:");
+      if (this.b == null) {
+        break label76;
+      }
+    }
+    label76:
+    for (String str = HexUtil.bytes2HexStr(this.b);; str = "")
+    {
+      return str;
+      str = "";
+      break;
+    }
   }
 }
 

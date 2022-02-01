@@ -1,59 +1,44 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.data.QQAlbumInfo;
 
-class akip
-  implements View.OnClickListener
+public class akip
+  extends akhj
 {
-  akip(akim paramakim) {}
-  
-  public void onClick(View paramView)
+  protected akip(AlbumListFragment paramAlbumListFragment)
   {
-    ((SlideDetectListView)akim.a(this.a)).a();
-    Object localObject = (View)paramView.getParent();
-    if ((localObject instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)localObject).d();
+    super(paramAlbumListFragment);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.mPhotoCommonData.filter.setSupportWebp(true);
+  }
+  
+  public boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
+  {
+    int i;
+    if (paramQQAlbumInfo._id.equals("$RecentAlbumId")) {
+      i = 1;
     }
-    paramView = paramView.getTag();
-    if (!(paramView instanceof DiscussionInfo)) {
-      return;
-    }
-    localObject = (DiscussionInfo)paramView;
-    if (bdin.a(akim.a(this.a)) == 0)
+    for (;;)
     {
-      paramView = (BaseActivity)akim.a(this.a);
-      QQToast.a(paramView, 2131696590, 0).b(paramView.getTitleBarHeight());
-      return;
-    }
-    if ((!((DiscussionInfo)localObject).hasCollect) && (((alrk)this.a.a.getManager(53)).a() >= 80))
-    {
-      paramView = (BaseActivity)akim.a(this.a);
-      QQToast.a(paramView, akim.a(this.a).getString(2131696588, new Object[] { String.valueOf(80) }), 0).b(paramView.getTitleBarHeight());
-      return;
-    }
-    alri localalri = (alri)this.a.a.a(6);
-    if (((DiscussionInfo)localObject).hasCollect) {}
-    for (paramView = "0X8006898";; paramView = "0X8006897")
-    {
-      azqs.b(this.a.a, "CliOper", "", "", paramView, paramView, 0, 0, "", "", "", "");
-      if (!((DiscussionInfo)localObject).hasCollect) {
-        break;
+      bcst.b(null, "CliOper", "", this.mPhotoCommonData.myUin, "0X800A917", "0X800A917", i, 0, "", "", "", "");
+      return super.onItemClick(paramQQAlbumInfo, paramInt, paramIntent);
+      if (paramQQAlbumInfo._id.equals("qzone_album")) {
+        i = 2;
+      } else {
+        i = 3;
       }
-      localalri.e(Long.valueOf(((DiscussionInfo)localObject).uin).longValue());
-      return;
     }
-    localalri.d(Long.valueOf(((DiscussionInfo)localObject).uin).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akip
  * JD-Core Version:    0.7.0.1
  */

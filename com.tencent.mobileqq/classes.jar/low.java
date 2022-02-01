@@ -1,33 +1,22 @@
-import java.io.BufferedReader;
-
-public class low
-  extends lor
+public abstract interface low
 {
-  int a;
-  int b = 0;
-  boolean c;
+  public abstract int a();
   
-  public low()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  public abstract void a();
   
-  public void a(BufferedReader paramBufferedReader)
-  {
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Int = lov.a(loo.a(paramBufferedReader, "shape"));
-    } while (this.jdField_a_of_type_Int != 3);
-    this.c = loo.a(paramBufferedReader, "edges");
-    this.b = lou.a(loo.a(paramBufferedReader, "side"));
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(lop paramlop);
+  
+  public abstract boolean a();
+  
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     low
  * JD-Core Version:    0.7.0.1
  */

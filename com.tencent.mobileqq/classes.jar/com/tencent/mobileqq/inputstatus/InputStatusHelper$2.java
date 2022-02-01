@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.inputstatus;
 
-import asyq;
+import avgi;
 
 public class InputStatusHelper$2
   implements Runnable
 {
-  public InputStatusHelper$2(asyq paramasyq) {}
+  public InputStatusHelper$2(avgi paramavgi) {}
   
   public void run()
   {
-    asyq.a(this.this$0, 3);
+    avgi.a(this.this$0, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.inputstatus.InputStatusHelper.2
  * JD-Core Version:    0.7.0.1
  */

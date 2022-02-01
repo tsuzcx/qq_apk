@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import akvt;
-import akwd;
-import akyb;
-import akyg;
-import akyp;
-import akzp;
-import alko;
-import alpd;
-import alpg;
+import amoz;
+import ampj;
+import amrf;
+import amrk;
+import amrt;
+import amst;
 import android.content.Intent;
-import awgg;
-import baue;
-import bavd;
-import beag;
+import andw;
+import anii;
+import anil;
+import bdvu;
+import bdwr;
+import bhhh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
@@ -34,88 +34,88 @@ public class CmGameAppInterface
   extends AppInterface
   implements IToolProcEventListener
 {
-  private awgg jdField_a_of_type_Awgg;
-  private bavd jdField_a_of_type_Bavd;
-  List<alpg> jdField_a_of_type_JavaUtilList = new Vector();
+  private bdwr jdField_a_of_type_Bdwr;
+  private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
+  List<anil> jdField_a_of_type_JavaUtilList = new Vector();
   Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
-  private alpd[] jdField_a_of_type_ArrayOfAlpd = new alpd[1];
-  List<alpg> b = new Vector();
-  List<alpg> c = new Vector();
+  private anii[] jdField_a_of_type_ArrayOfAnii = new anii[1];
+  List<anil> b = new Vector();
+  List<anil> c = new Vector();
   
   public CmGameAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
     QLog.i("cmgame_process.CmGameAppInterface", 1, "new CmGameAppInterface obj.");
-    akvt.a();
+    amoz.a();
     TVK_SDKMgr.initSdk(BaseApplicationImpl.getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new akyb(this));
+    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new amrf(this));
   }
   
   private void a()
   {
-    akyg localakyg = akwd.a();
-    if (localakyg != null) {
-      akwd.a(localakyg.a());
+    amrk localamrk = ampj.a();
+    if (localamrk != null) {
+      ampj.a(localamrk.a());
     }
   }
   
-  private alpd b(int paramInt)
+  private anii b(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     }
-    return new akzp(this);
+    return new amst(this);
   }
   
-  public alpd a(int paramInt)
+  public anii a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfAlpd[paramInt];
+    Object localObject1 = this.jdField_a_of_type_ArrayOfAnii[paramInt];
     if (localObject1 != null) {
       return localObject1;
     }
-    synchronized (this.jdField_a_of_type_ArrayOfAlpd)
+    synchronized (this.jdField_a_of_type_ArrayOfAnii)
     {
-      alpd localalpd = this.jdField_a_of_type_ArrayOfAlpd[paramInt];
-      localObject1 = localalpd;
-      if (localalpd == null)
+      anii localanii = this.jdField_a_of_type_ArrayOfAnii[paramInt];
+      localObject1 = localanii;
+      if (localanii == null)
       {
-        localalpd = b(paramInt);
-        localObject1 = localalpd;
-        if (localalpd != null)
+        localanii = b(paramInt);
+        localObject1 = localanii;
+        if (localanii != null)
         {
-          this.jdField_a_of_type_ArrayOfAlpd[paramInt] = localalpd;
-          localObject1 = localalpd;
+          this.jdField_a_of_type_ArrayOfAnii[paramInt] = localanii;
+          localObject1 = localanii;
         }
       }
       return localObject1;
     }
   }
   
-  public void addObserver(alpg paramalpg)
+  public void addObserver(anil paramanil)
   {
-    addObserver(paramalpg, false);
+    addObserver(paramanil, false);
   }
   
-  public void addObserver(alpg paramalpg, boolean paramBoolean)
+  public void addObserver(anil paramanil, boolean paramBoolean)
   {
-    if (paramalpg == null) {
+    if (paramanil == null) {
       return;
     }
     if (paramBoolean) {
       synchronized (this.b)
       {
-        if (!this.b.contains(paramalpg)) {
-          this.b.add(paramalpg);
+        if (!this.b.contains(paramanil)) {
+          this.b.add(paramanil);
         }
         return;
       }
     }
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramalpg)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramalpg);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramanil)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramanil);
       }
       return;
     }
@@ -131,7 +131,7 @@ public class CmGameAppInterface
     return AppSetting.a();
   }
   
-  public List<alpg> getBusinessObserver(int paramInt)
+  public List<anil> getBusinessObserver(int paramInt)
   {
     if (paramInt == 1) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -150,12 +150,12 @@ public class CmGameAppInterface
     return getAccount();
   }
   
-  public awgg getEntityManagerFactory(String paramString)
+  public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
-    if (this.jdField_a_of_type_Awgg == null) {
-      this.jdField_a_of_type_Awgg = new QQEntityManagerFactory(getAccount());
+    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null) {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = new QQEntityManagerFactory(getAccount());
     }
-    return this.jdField_a_of_type_Awgg;
+    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   }
   
   public Manager getManager(int paramInt)
@@ -187,16 +187,16 @@ public class CmGameAppInterface
             return localObject1;
           }
           finally {}
-          localObject1 = new akyp(this);
+          localObject1 = new amrt(this);
           break;
         case 256: 
-          localObject4 = new bavd();
+          localObject4 = new bdwr();
         }
       }
       finally {}
-      this.jdField_a_of_type_Bavd = ((bavd)localObject4);
+      this.jdField_a_of_type_Bdwr = ((bdwr)localObject4);
       continue;
-      Object localObject4 = new beag(this);
+      Object localObject4 = new bhhh(this);
       continue;
       Object localObject5 = localObject4;
       if (localObject4 != null)
@@ -212,12 +212,12 @@ public class CmGameAppInterface
     return "cmshowgame_module";
   }
   
-  public baue getNetEngine(int paramInt)
+  public bdvu getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Bavd == null) {
-      this.jdField_a_of_type_Bavd = ((bavd)getManager(256));
+    if (this.jdField_a_of_type_Bdwr == null) {
+      this.jdField_a_of_type_Bdwr = ((bdwr)getManager(256));
     }
-    return this.jdField_a_of_type_Bavd.a(this, paramInt);
+    return this.jdField_a_of_type_Bdwr.a(this, paramInt);
   }
   
   public void onBeforeExitProc()
@@ -260,7 +260,7 @@ public class CmGameAppInterface
     }
     label114:
     this.jdField_a_of_type_JavaUtilMap.clear();
-    alko.a();
+    andw.a();
   }
   
   public boolean onReceiveAccountAction(String paramString, Intent paramIntent)
@@ -273,7 +273,7 @@ public class CmGameAppInterface
   public boolean onReceiveLegalExitProcAction(Intent paramIntent)
   {
     QLog.i("cmgame_process.CmGameAppInterface", 1, "[onReceiveLegalExitProcAction]");
-    if (akwd.a() != null)
+    if (ampj.a() != null)
     {
       QLog.i("cmgame_process.CmGameAppInterface", 1, "NOT kill tool process");
       return true;
@@ -281,30 +281,30 @@ public class CmGameAppInterface
     return false;
   }
   
-  public void removeObserver(alpg paramalpg)
+  public void removeObserver(anil paramanil)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramalpg);
+      this.jdField_a_of_type_JavaUtilList.remove(paramanil);
       synchronized (this.b)
       {
-        this.b.remove(paramalpg);
+        this.b.remove(paramanil);
       }
     }
     synchronized (this.c)
     {
-      this.c.remove(paramalpg);
+      this.c.remove(paramanil);
       return;
-      paramalpg = finally;
-      throw paramalpg;
-      paramalpg = finally;
-      throw paramalpg;
+      paramanil = finally;
+      throw paramanil;
+      paramanil = finally;
+      throw paramanil;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.data.CmGameAppInterface
  * JD-Core Version:    0.7.0.1
  */

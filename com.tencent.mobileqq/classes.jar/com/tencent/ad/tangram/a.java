@@ -9,11 +9,13 @@ import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo;
+import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.ExpParam;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.Ext;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 import com.tencent.ad.tangram.util.AdUriUtil;
 import java.io.Serializable;
+import java.util.List;
 import org.json.JSONObject;
 
 public final class a
@@ -32,6 +34,15 @@ public final class a
   public a(qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
     this.info = paramAdInfo;
+  }
+  
+  private boolean isXiJingOffline()
+  {
+    if (TextUtils.isEmpty(getJSONKeyForXiJingOffline())) {}
+    while ((TextUtils.isEmpty(getJSONUrlForXiJingOffline())) || (TextUtils.isEmpty(getUrlForXiJingOffline()))) {
+      return false;
+    }
+    return true;
   }
   
   public boolean disableAutoDownload()
@@ -120,7 +131,7 @@ public final class a
   
   public String getAppPackageName()
   {
-    if (isAppProductType()) {
+    if ((isAppProductType()) || (isJDProductType())) {
       return this.info.app_info.app_package_name;
     }
     return null;
@@ -134,11 +145,21 @@ public final class a
     return null;
   }
   
+  public String getBusinessIdForXiJingOffline()
+  {
+    return null;
+  }
+  
   public String getCanvas()
   {
     if (isCanvas()) {
       return this.info.dest_info.canvas_json;
     }
+    return null;
+  }
+  
+  public String getCanvasForXiJingOffline()
+  {
     return null;
   }
   
@@ -156,6 +177,21 @@ public final class a
       return this.info.dest_info.dest_type;
     }
     return -2147483648;
+  }
+  
+  public List getExpMap()
+  {
+    return null;
+  }
+  
+  public String getJSONKeyForXiJingOffline()
+  {
+    return null;
+  }
+  
+  public String getJSONUrlForXiJingOffline()
+  {
+    return null;
   }
   
   public String getPosId()
@@ -191,6 +227,33 @@ public final class a
       return this.info.product_type;
     }
     return -2147483648;
+  }
+  
+  public int getRelationTarget()
+  {
+    if (!isValid()) {}
+    for (;;)
+    {
+      return 0;
+      if (this.info.ext.relation_target >= 0) {
+        return this.info.ext.relation_target;
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json)) {
+        try
+        {
+          qq_ad_get.QQAdGetRsp.AdInfo.Ext localExt = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(new JSONObject(this.info.ext_json));
+          if (localExt != null)
+          {
+            int i = localExt.relation_target;
+            return i;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          AdLog.e("AdImplementation", "getRelationTarget", localThrowable);
+        }
+      }
+    }
   }
   
   public String getTencent_video_id()
@@ -233,6 +296,14 @@ public final class a
     return null;
   }
   
+  public String getUrlForFeedBack()
+  {
+    if (isValid()) {
+      return this.info.report_info.negative_feedback_url;
+    }
+    return null;
+  }
+  
   public String getUrlForImpression()
   {
     if (isValid()) {
@@ -246,6 +317,11 @@ public final class a
     if (isValid()) {
       return this.info.dest_info.landing_page;
     }
+    return null;
+  }
+  
+  public String getUrlForXiJingOffline()
+  {
     return null;
   }
   
@@ -288,6 +364,11 @@ public final class a
     return (isAppProductType()) && (getDestType() == 0);
   }
   
+  public boolean isAppXiJingOffline()
+  {
+    return (isAppXiJing()) && (isXiJingOffline());
+  }
+  
   public boolean isCanvas()
   {
     return ((isAppXiJing()) && (!TextUtils.isEmpty(this.info.dest_info.canvas_json))) || ((getProductType() == 1000) && (getDestType() == 4) && (!TextUtils.isEmpty(this.info.dest_info.canvas_json)));
@@ -326,31 +407,45 @@ public final class a
     }
   }
   
-  public boolean isHitJumpExperiment()
+  public boolean isHitFirstLoadImageExp()
   {
     if (!isValid()) {}
     for (;;)
     {
       return false;
-      if (this.info.ext.no_clkcgi_jump) {
-        return true;
-      }
-      if (!TextUtils.isEmpty(this.info.ext_json)) {
-        try
-        {
-          qq_ad_get.QQAdGetRsp.AdInfo.Ext localExt = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(new JSONObject(this.info.ext_json));
-          if (localExt != null)
-          {
-            boolean bool = localExt.no_clkcgi_jump;
-            return bool;
-          }
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 95837) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.equals("1"))) {
+          return true;
         }
-        catch (Throwable localThrowable)
-        {
-          AdLog.e("AdImplementation", "isHitJumpExperiment", localThrowable);
-        }
+        i += 1;
       }
     }
+  }
+  
+  public boolean isHitRelationTargetInstallExp()
+  {
+    if (!isValid()) {}
+    for (;;)
+    {
+      return false;
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 94735) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.equals("1"))) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public boolean isJDProductType()
+  {
+    return getProductType() == 25;
   }
   
   public boolean isQQMINIProgram()
@@ -377,14 +472,26 @@ public final class a
     return ((getProductType() == 1000) || (getProductType() == 12) || (getProductType() == 25) || (getProductType() == 30)) && ((getDestType() == 0) || (getDestType() == 4) || (getDestType() == 1)) && ((getCreativeSize() == 585) || (getCreativeSize() == 930));
   }
   
+  public boolean isWebXiJing()
+  {
+    return (getProductType() == 1000) && (getDestType() == 4);
+  }
+  
+  public boolean isWebXiJingOffline()
+  {
+    return (isWebXiJing()) && (isXiJingOffline());
+  }
+  
   public void setActionSetId(long paramLong)
   {
     this.actionSetId = paramLong;
   }
+  
+  public void setCanvasForXiJingOffline(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.a
  * JD-Core Version:    0.7.0.1
  */

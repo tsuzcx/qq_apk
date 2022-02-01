@@ -1,22 +1,28 @@
-public class ahrl
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+
+class ahrl
+  implements URLDrawable.URLDrawableListener
 {
-  public akmk a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
+  ahrl(ahrk paramahrk, String paramString) {}
   
-  public ahrl(akmk paramakmk)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.a = paramakmk;
+    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
   }
   
-  public String toString()
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return this.b;
+    if (QLog.isColorLevel()) {
+      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
+    }
+    ahrk.a(this.jdField_a_of_type_Ahrk).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
   }
 }
 

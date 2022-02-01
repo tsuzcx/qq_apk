@@ -1,15 +1,72 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneVideoDownloadActivity;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class bltm
-  implements View.OnTouchListener
+public class bltm
+  extends Handler
 {
-  bltm(bltl parambltl) {}
+  public bltm(QZoneVideoDownloadActivity paramQZoneVideoDownloadActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    return true;
+    if (paramMessage == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 1000: 
+            if (QLog.isDevelopLevel()) {
+              QLog.d("QZoneVideoDownloadActivity", 4, "mIsUIInited=" + QZoneVideoDownloadActivity.a(this.a));
+            }
+            break;
+          }
+        } while (QZoneVideoDownloadActivity.a(this.a).get());
+        this.a.setContentView(2131563107);
+        this.a.a();
+        QZoneVideoDownloadActivity.a(this.a).set(true);
+        return;
+      } while ((this.a.jdField_a_of_type_AndroidWidgetTextView == null) || (this.a.jdField_a_of_type_AndroidWidgetProgressBar == null));
+      i = paramMessage.arg1;
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131711259) + i + anni.a(2131711253));
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
+      return;
+    } while ((this.a.jdField_a_of_type_AndroidWidgetTextView == null) || (this.a.jdField_a_of_type_AndroidWidgetProgressBar == null));
+    int i = paramMessage.arg1;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131711295) + i + anni.a(2131711250));
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
+    return;
+    String str2 = anni.a(2131711302);
+    String str1 = str2;
+    if (paramMessage != null)
+    {
+      str1 = str2;
+      if (paramMessage.obj != null)
+      {
+        str1 = str2;
+        if ((paramMessage.obj instanceof String)) {
+          str1 = (String)paramMessage.obj;
+        }
+      }
+    }
+    Toast.makeText(this.a.getApplicationContext(), str1, 1).show();
+    bmks.a(this.a.jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1005", null);
+    this.a.finish();
+    return;
+    Toast.makeText(this.a.getApplicationContext(), anni.a(2131711370), 1).show();
+    bmks.a(this.a.jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1006", null);
+    this.a.finish();
   }
 }
 

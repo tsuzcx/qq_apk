@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amwe;
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture;
+import aouv;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class NormalVideoARRenderable$3
   implements Runnable
 {
-  public NormalVideoARRenderable$3(amwe paramamwe) {}
+  public NormalVideoARRenderable$3(aouv paramaouv) {}
   
   @TargetApi(11)
   public void run()
   {
     try
     {
-      amwe.a(this.this$0).updateTexImage();
-      amwe.a(this.this$0).getTransformMatrix(amwe.a(this.this$0));
-      if (ScanTorchActivity.i)
+      aouv.a(this.this$0).updateTexImage();
+      aouv.a(this.this$0).getTransformMatrix(aouv.a(this.this$0));
+      if (ScanTorchActivity.h)
       {
-        amwe localamwe = this.this$0;
-        localamwe.b += 1L;
+        aouv localaouv = this.this$0;
+        localaouv.b += 1L;
         if (this.this$0.b >= 30L)
         {
           this.this$0.b = 0L;
@@ -46,7 +46,7 @@ public class NormalVideoARRenderable$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.NormalVideoARRenderable.3
  * JD-Core Version:    0.7.0.1
  */

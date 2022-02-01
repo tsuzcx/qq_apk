@@ -1,271 +1,249 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import java.lang.ref.WeakReference;
+import java.util.WeakHashMap;
 
-public class aqag
+public final class aqag
+  extends Animation
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 9223372036854775807L;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 3;
-  private long jdField_b_of_type_Long = 9223372036854775807L;
-  private int jdField_c_of_type_Int = 60;
-  private long jdField_c_of_type_Long = 9223372036854775807L;
+  static final WeakHashMap<View, aqag> jdField_a_of_type_JavaUtilWeakHashMap;
+  public static final boolean a;
+  float jdField_a_of_type_Float = 1.0F;
+  final Camera jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+  final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  float jdField_b_of_type_Float;
+  final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  boolean jdField_b_of_type_Boolean;
+  float c;
+  float d;
+  float e;
+  float f;
+  float g = 1.0F;
+  float h = 1.0F;
+  float i;
+  float j;
   
-  public aqag(String paramString, int paramInt)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime());
-  }
-  
-  public static Drawable a(Context paramContext, aqam paramaqam)
-  {
-    Object localObject = paramaqam.a;
-    if ((localObject instanceof MessageForMarketFace))
+    if (Integer.valueOf(Build.VERSION.SDK_INT).intValue() < 11) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramContext = a((MessageForMarketFace)localObject);
-      if (paramContext == null) {
-        break label170;
-      }
-    }
-    label170:
-    for (paramContext = paramContext.a("fromAIO", true);; paramContext = null)
-    {
-      paramaqam.c = true;
-      URL localURL;
-      do
-      {
-        return paramContext;
-        if (!(localObject instanceof MessageForPic)) {
-          break;
-        }
-        localURL = bayu.a((MessageForPic)localObject, 1);
-        if (baqn.a(localURL.toString()) != null)
-        {
-          paramContext = URLDrawable.getDrawable(localURL, a(paramContext, (int)((MessageForPic)localObject).width, (int)((MessageForPic)localObject).height));
-          paramaqam.c = true;
-          return paramContext;
-        }
-        localURL = afwu.a((MessageForPic)localObject);
-        localObject = URLDrawable.getDrawable(localURL, a(paramContext, ((MessageForPic)localObject).thumbWidth, ((MessageForPic)localObject).thumbHeight));
-        paramaqam.c = false;
-        paramContext = (Context)localObject;
-      } while (!QLog.isColorLevel());
-      QLog.d("EmotionDataManager", 2, new Object[] { "init view,big pic not exist:", baqn.a(localURL.toString()) });
-      return localObject;
-      return null;
+      jdField_a_of_type_Boolean = bool;
+      jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
+      return;
     }
   }
   
-  public static apxv a(MessageForMarketFace paramMessageForMarketFace)
+  private aqag(View paramView)
   {
-    return ((aufn)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getManager(14)).a(paramMessageForMarketFace.mMarkFaceMessage);
+    setDuration(0L);
+    setFillAfter(true);
+    paramView.setAnimation(this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
   }
   
-  private static URLDrawable.URLDrawableOptions a(Context paramContext, int paramInt1, int paramInt2)
+  public static aqag a(View paramView)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mPlayGifImage = true;
-    localURLDrawableOptions.mMemoryCacheKeySuffix = "AIOEmotionFragment";
-    localURLDrawableOptions.mRequestWidth = paramContext.getResources().getDisplayMetrics().widthPixels;
-    localURLDrawableOptions.mRequestHeight = paramContext.getResources().getDisplayMetrics().heightPixels;
-    localURLDrawableOptions.mLoadingDrawable = new apkp(paramInt1, paramInt2);
-    return localURLDrawableOptions;
-  }
-  
-  public static EmoticonPackage a(String paramString)
-  {
-    return ((aufn)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getManager(14)).a(paramString);
-  }
-  
-  private List<MessageRecord> a(List<MessageRecord> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    aqag localaqag2 = (aqag)jdField_a_of_type_JavaUtilWeakHashMap.get(paramView);
+    aqag localaqag1;
+    if (localaqag2 != null)
     {
-      Object localObject1 = (MessageRecord)paramList.next();
-      if (((MessageRecord)localObject1).shmsgseq < this.jdField_b_of_type_Long) {
-        this.jdField_b_of_type_Long = ((MessageRecord)localObject1).shmsgseq;
-      }
-      if (((MessageRecord)localObject1).versionCode < this.jdField_b_of_type_Int) {
-        this.jdField_b_of_type_Int = ((MessageRecord)localObject1).versionCode;
-      }
-      if ((((MessageRecord)localObject1).getId() > 0L) && (((MessageRecord)localObject1).getId() < this.jdField_a_of_type_Long)) {
-        this.jdField_a_of_type_Long = ((MessageRecord)localObject1).getId();
-      }
-      if (((MessageRecord)localObject1).time < this.jdField_c_of_type_Long) {
-        this.jdField_c_of_type_Long = ((MessageRecord)localObject1).time;
-      }
-      Object localObject2;
-      if ((localObject1 instanceof MessageForPic))
-      {
-        localObject2 = (MessageForPic)localObject1;
-        ((MessageForPic)localObject2).parse();
-        if ((!a((MessageForPic)localObject2)) && (afwu.a((MessageForPic)localObject2))) {
-          localArrayList.add(localObject1);
-        }
-      }
-      else if ((localObject1 instanceof MessageForMarketFace))
-      {
-        localArrayList.add(localObject1);
-      }
-      else if ((localObject1 instanceof MessageForMixedMsg))
-      {
-        localObject1 = (MessageForMixedMsg)localObject1;
-        if (((MessageForMixedMsg)localObject1).msgElemList != null)
-        {
-          localObject1 = ((MessageForMixedMsg)localObject1).msgElemList.iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (MessageRecord)((Iterator)localObject1).next();
-            if ((localObject2 instanceof MessageForPic))
-            {
-              localObject2 = (MessageForPic)localObject2;
-              ((MessageForPic)localObject2).parse();
-              if (afwu.a((MessageForPic)localObject2)) {
-                localArrayList.add(localObject2);
-              }
-            }
-          }
-        }
-      }
+      localaqag1 = localaqag2;
+      if (localaqag2 == paramView.getAnimation()) {}
     }
-    return localArrayList;
+    else
+    {
+      localaqag1 = new aqag(paramView);
+      jdField_a_of_type_JavaUtilWeakHashMap.put(paramView, localaqag1);
+    }
+    return localaqag1;
   }
   
   private void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 9223372036854775807L;
-    this.jdField_b_of_type_Long = 9223372036854775807L;
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_c_of_type_Long = 9223372036854775807L;
-    this.jdField_c_of_type_Int = 60;
-  }
-  
-  public List<MessageRecord> a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    return a(paramString, paramInt, paramBoolean, -1L);
-  }
-  
-  public List<MessageRecord> a(String paramString, int paramInt, boolean paramBoolean, long paramLong)
-  {
-    ArrayList localArrayList;
-    for (;;)
-    {
-      try
-      {
-        if ((!paramString.equals(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Int != paramInt)) {
-          break label480;
-        }
-        if (paramBoolean) {
-          a();
-        }
-        if (this.jdField_c_of_type_Int < 60) {
-          return null;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionDataManager", 2, "getEmotionDataIncremental start");
-        }
-        long l = System.currentTimeMillis();
-        localArrayList = new ArrayList();
-        if (paramLong != -1L)
-        {
-          paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-          if (paramString != null) {
-            localArrayList.addAll(a(paramString.a(paramLong)));
-          }
-          if (!QLog.isColorLevel()) {
-            break label482;
-          }
-          paramInt = localArrayList.size();
-          if (paramString != null) {
-            break label485;
-          }
-          paramBoolean = true;
-          QLog.d("EmotionDataManager", 2, new Object[] { "getEmotionDataIncremental end, tempList.size: ", Integer.valueOf(paramInt), "  ", Boolean.valueOf(paramBoolean) });
-          break label482;
-        }
-        int[] arrayOfInt = new int[4];
-        int[] tmp175_173 = arrayOfInt;
-        tmp175_173[0] = -2007;
-        int[] tmp181_175 = tmp175_173;
-        tmp181_175[1] = -20000;
-        int[] tmp187_181 = tmp181_175;
-        tmp187_181[2] = -2000;
-        int[] tmp193_187 = tmp187_181;
-        tmp193_187[3] = -1035;
-        tmp193_187;
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          List localList2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramInt).a(paramString, paramInt, tmp181_175);
-          localList1 = localList2;
-          if (localList2.size() < 60)
-          {
-            localList1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramInt, tmp181_175, 60);
-            this.jdField_c_of_type_Int = localList1.size();
-          }
-          if (!this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_Boolean = true;
-          }
-          tmp175_173.addAll(0, a(localList1));
-          if ((tmp175_173.size() < 30) && (this.jdField_c_of_type_Int >= 60)) {
-            continue;
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("EmotionDataManager", 2, "getEmotionDataIncremental end, tempList.size: " + tmp175_173.size() + ", cost:" + (System.currentTimeMillis() - l));
-          break;
-        }
-        if (abti.a(paramInt))
-        {
-          this.jdField_b_of_type_Long -= 1L;
-          localList1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramInt, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.jdField_b_of_type_Long, tmp181_175, 60);
-          this.jdField_c_of_type_Int = localList1.size();
-          continue;
-        }
-        List localList1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramInt, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.jdField_c_of_type_Long, tmp181_175, 60);
-      }
-      catch (OutOfMemoryError paramString)
-      {
-        QLog.e("EmotionDataManager", 2, "out of memory", paramString);
-        return null;
-      }
-      continue;
-      label480:
-      return null;
-      label482:
-      return tmp175_173;
-      label485:
-      paramBoolean = false;
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localView != null) {
+      a(this.jdField_a_of_type_AndroidGraphicsRectF, localView);
     }
-    return tmp175_173;
   }
   
-  public boolean a(MessageForPic paramMessageForPic)
+  private void a(Matrix paramMatrix, View paramView)
   {
-    return ahbf.a(paramMessageForPic);
+    float f3 = paramView.getWidth();
+    float f4 = paramView.getHeight();
+    boolean bool = this.jdField_b_of_type_Boolean;
+    float f1;
+    if (bool)
+    {
+      f1 = this.jdField_b_of_type_Float;
+      if (!bool) {
+        break label226;
+      }
+    }
+    label226:
+    for (float f2 = this.c;; f2 = f4 / 2.0F)
+    {
+      float f5 = this.d;
+      float f6 = this.e;
+      float f7 = this.f;
+      if ((f5 != 0.0F) || (f6 != 0.0F) || (f7 != 0.0F))
+      {
+        paramView = this.jdField_a_of_type_AndroidGraphicsCamera;
+        paramView.save();
+        paramView.rotateX(f5);
+        paramView.rotateY(f6);
+        paramView.rotateZ(-f7);
+        paramView.getMatrix(paramMatrix);
+        paramView.restore();
+        paramMatrix.preTranslate(-f1, -f2);
+        paramMatrix.postTranslate(f1, f2);
+      }
+      f5 = this.g;
+      f6 = this.h;
+      if ((f5 != 1.0F) || (f6 != 1.0F))
+      {
+        paramMatrix.postScale(f5, f6);
+        paramMatrix.postTranslate(-(f1 / f3) * (f5 * f3 - f3), -(f2 / f4) * (f6 * f4 - f4));
+      }
+      paramMatrix.postTranslate(this.i, this.j);
+      return;
+      f1 = f3 / 2.0F;
+      break;
+    }
+  }
+  
+  private void b()
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localView == null) || (localView.getParent() == null)) {
+      return;
+    }
+    RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+    a(localRectF, localView);
+    localRectF.union(this.jdField_a_of_type_AndroidGraphicsRectF);
+    ((View)localView.getParent()).invalidate((int)Math.floor(localRectF.left), (int)Math.floor(localRectF.top), (int)Math.ceil(localRectF.right), (int)Math.ceil(localRectF.bottom));
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (this.jdField_a_of_type_Float != paramFloat)
+    {
+      this.jdField_a_of_type_Float = paramFloat;
+      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localView != null) {
+        localView.invalidate();
+      }
+    }
+  }
+  
+  public void a(RectF paramRectF, View paramView)
+  {
+    paramRectF.set(0.0F, 0.0F, paramView.getWidth(), paramView.getHeight());
+    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    localMatrix.reset();
+    a(localMatrix, paramView);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(paramRectF);
+    paramRectF.offset(paramView.getLeft(), paramView.getTop());
+    float f1;
+    if (paramRectF.right < paramRectF.left)
+    {
+      f1 = paramRectF.right;
+      paramRectF.right = paramRectF.left;
+      paramRectF.left = f1;
+    }
+    if (paramRectF.bottom < paramRectF.top)
+    {
+      f1 = paramRectF.top;
+      paramRectF.top = paramRectF.bottom;
+      paramRectF.bottom = f1;
+    }
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localView != null)
+    {
+      paramTransformation.setAlpha(this.jdField_a_of_type_Float);
+      a(paramTransformation.getMatrix(), localView);
+    }
+  }
+  
+  public void b(float paramFloat)
+  {
+    if ((!this.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Float != paramFloat))
+    {
+      a();
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_b_of_type_Float = paramFloat;
+      b();
+    }
+  }
+  
+  public void c(float paramFloat)
+  {
+    if ((!this.jdField_b_of_type_Boolean) || (this.c != paramFloat))
+    {
+      a();
+      this.jdField_b_of_type_Boolean = true;
+      this.c = paramFloat;
+      b();
+    }
+  }
+  
+  public void d(float paramFloat)
+  {
+    if (this.g != paramFloat)
+    {
+      a();
+      this.g = paramFloat;
+      b();
+    }
+  }
+  
+  public void e(float paramFloat)
+  {
+    if (this.h != paramFloat)
+    {
+      a();
+      this.h = paramFloat;
+      b();
+    }
+  }
+  
+  public void f(float paramFloat)
+  {
+    if (this.i != paramFloat)
+    {
+      a();
+      this.i = paramFloat;
+      b();
+    }
+  }
+  
+  public void g(float paramFloat)
+  {
+    if (this.j != paramFloat)
+    {
+      a();
+      this.j = paramFloat;
+      b();
+    }
+  }
+  
+  public void h(float paramFloat)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localView != null) {
+      f(paramFloat - localView.getLeft());
+    }
   }
 }
 

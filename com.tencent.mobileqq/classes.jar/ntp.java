@@ -1,78 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.os.AsyncTask;
 
-public class ntp
-  extends aokh<nto>
+class ntp
+  extends AsyncTask<Void, Void, Void>
 {
-  public int a()
-  {
-    return 32;
-  }
+  ntp(nto paramnto, aehv paramaehv) {}
   
-  public Class<nto> a()
+  protected Void a(Void... paramVarArgs)
   {
-    return nto.class;
-  }
-  
-  @NonNull
-  public nto a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        return nto.a(bdne.e(((QQAppInterface)localAppRuntime).getApplication()));
-      }
-    }
-    return new nto();
-  }
-  
-  @Nullable
-  public nto a(aoko[] paramArrayOfaoko)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return nto.a(paramArrayOfaoko);
-    }
+    this.jdField_a_of_type_Nto.a.a(this.jdField_a_of_type_Aehv);
     return null;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(nto paramnto)
+  protected void a(Void paramVoid)
   {
-    paramnto.b();
-    paramnto.a();
-  }
-  
-  public int b()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return bdne.n(((QQAppInterface)localAppRuntime).getApp());
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    this.jdField_a_of_type_Nto.a.a(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ntp
  * JD-Core Version:    0.7.0.1
  */

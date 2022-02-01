@@ -1,18 +1,48 @@
-import android.content.DialogInterface;
+import android.view.View;
 
-class xpl
-  extends bdgx
+public abstract interface xpl
 {
-  xpl(xpk paramxpk) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract long a();
+  
+  public abstract View a();
+  
+  public abstract xpy a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(xpm paramxpm);
+  
+  public abstract void a(xpn paramxpn);
+  
+  public abstract void a(xpo paramxpo);
+  
+  public abstract void a(xpp paramxpp);
+  
+  public abstract void a(xpq paramxpq);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,13 @@
-public class qms
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+
+public abstract interface qms
 {
-  public int a;
-  public long a;
-  public String a;
-  public qmt a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  
-  public String toString()
-  {
-    return "PGCPicInfo{pic_width=" + this.jdField_a_of_type_Int + ", pic_height=" + this.jdField_b_of_type_Int + ", pic_md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pic_url='" + this.jdField_b_of_type_JavaLangString + '\'' + ", thumbnail_url='" + this.jdField_c_of_type_JavaLangString + '\'' + ", is_animation=" + this.jdField_c_of_type_Int + ", picDesc='" + this.d + '\'' + ", galleryIndex=" + this.jdField_a_of_type_Long + ", pgcVideoInfo=" + this.jdField_a_of_type_Qmt + '}';
-  }
+  public abstract void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qms
  * JD-Core Version:    0.7.0.1
  */

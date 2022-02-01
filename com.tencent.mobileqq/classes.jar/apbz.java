@@ -1,215 +1,93 @@
-import android.graphics.drawable.Drawable;
-import android.util.SparseArray;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
 
-public class apbz
+class apbz
+  implements beav
 {
-  private static apbw jdField_a_of_type_Apbw;
-  private static apcm jdField_a_of_type_Apcm;
-  private static apcp jdField_a_of_type_Apcp;
-  private static final String jdField_a_of_type_JavaLangString = apbz.class.getSimpleName();
-  private int jdField_a_of_type_Int;
-  private final SparseArray<apck> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private apcd jdField_a_of_type_Apcd;
-  private apce jdField_a_of_type_Apce;
-  private apcg jdField_a_of_type_Apcg;
-  private apch jdField_a_of_type_Apch;
-  private apci jdField_a_of_type_Apci;
-  private apcj jdField_a_of_type_Apcj;
-  private apcl jdField_a_of_type_Apcl;
-  private apct jdField_a_of_type_Apct = new apct();
-  private final apdf<Drawable> jdField_a_of_type_Apdf;
-  private List<apcq> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  apbz(apby paramapby, apce paramapce) {}
   
-  private apbz(apcb paramapcb)
+  public void a(beau parambeau)
   {
-    this.jdField_a_of_type_Boolean = apcb.a(paramapcb);
-    this.jdField_a_of_type_Apcj = apcb.a(paramapcb);
-    this.jdField_a_of_type_Apch = apcb.a(paramapcb);
-    this.jdField_a_of_type_Apcg = apcb.a(paramapcb);
-    jdField_a_of_type_Apcm = apcb.a(paramapcb);
-    this.jdField_a_of_type_Apcl = apcb.a(paramapcb);
-    this.jdField_a_of_type_Apci = paramapcb.jdField_a_of_type_Apci;
-    this.jdField_a_of_type_Apce = paramapcb.jdField_a_of_type_Apce;
-    this.jdField_a_of_type_Apcd = apcb.a(paramapcb);
-    this.jdField_a_of_type_Int = apcb.a(paramapcb);
-    this.b = apcb.b(paramapcb);
-    this.jdField_a_of_type_Apdf = new apdf();
-    a(paramapcb);
-    c();
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, "onPreDownloadStart");
   }
   
-  public static apbw a()
+  public void onResp(bdwt parambdwt)
   {
-    if (jdField_a_of_type_Apbw == null) {}
-    try
+    if (parambdwt.jdField_a_of_type_Int == 3) {
+      QLog.i("AREngine_ARPreSoResourceDownload", 1, "Download init. url = " + ((bdvs)parambdwt.jdField_a_of_type_Bdws).jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
     {
-      if (jdField_a_of_type_Apbw == null) {
-        jdField_a_of_type_Apbw = new apbw();
-      }
-      return jdField_a_of_type_Apbw;
-    }
-    finally {}
-  }
-  
-  public static apcb a()
-  {
-    return new apcb(null);
-  }
-  
-  public static apcp a()
-  {
-    if (jdField_a_of_type_Apcp == null) {}
-    try
-    {
-      if ((jdField_a_of_type_Apcp == null) && (jdField_a_of_type_Apcm != null)) {
-        jdField_a_of_type_Apcp = jdField_a_of_type_Apcm.a();
-      }
-      if (jdField_a_of_type_Apcp == null) {
-        jdField_a_of_type_Apcp = new apcp();
-      }
-      return jdField_a_of_type_Apcp;
-    }
-    finally {}
-  }
-  
-  private void a(apcb paramapcb)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.addAll(apcb.a(paramapcb));
-  }
-  
-  private void c()
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Apcj == null)) {
-      throw new IllegalArgumentException("Danmaku module need an IDanmakuPlayTimeSupplier or is live setter for computing timeline");
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Apci != null) {
-      return this.jdField_a_of_type_Apci.a();
-    }
-    return (int)Math.ceil(apdr.a(a()));
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_Apcj == null) {
-      return -1L;
-    }
-    return this.jdField_a_of_type_Apcj.a();
-  }
-  
-  public apbq a(int paramInt)
-  {
-    Object localObject;
-    if (paramInt == -2147483647) {
-      localObject = new apby(this);
-    }
-    apbq localapbq;
-    do
-    {
-      return localObject;
-      localapbq = null;
-      if (this.jdField_a_of_type_Apce != null) {
-        localapbq = this.jdField_a_of_type_Apce.a(this, paramInt);
-      }
-      localObject = localapbq;
-    } while (localapbq != null);
-    return new apbv(this);
-  }
-  
-  public apck a(int paramInt)
-  {
-    Object localObject3 = (apck)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    Object localObject1 = localObject3;
-    if (localObject3 == null) {}
-    try
-    {
-      localObject3 = (apck)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-      localObject1 = localObject3;
-      if (localObject3 == null)
+      return;
+      int i;
+      synchronized (apby.a(this.jdField_a_of_type_Apby))
       {
-        localObject1 = localObject3;
-        if (this.jdField_a_of_type_Apcl != null)
+        if (apby.a(this.jdField_a_of_type_Apby) != null)
         {
-          localObject1 = this.jdField_a_of_type_Apcl.a(paramInt);
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
+          i = 0;
+          label67:
+          if (i < apby.a(this.jdField_a_of_type_Apby).size())
+          {
+            if (!((apce)apby.a(this.jdField_a_of_type_Apby).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Apce.jdField_a_of_type_JavaLangString)) {
+              break label342;
+            }
+            apby.a(this.jdField_a_of_type_Apby).remove(i);
+          }
         }
       }
-      localObject3 = localObject1;
-      if (localObject1 == null) {
-        localObject3 = a();
+      synchronized (apby.a(this.jdField_a_of_type_Apby))
+      {
+        ??? = (apcd)apby.a(this.jdField_a_of_type_Apby).get(this.jdField_a_of_type_Apce.b);
+        if (parambdwt.jdField_a_of_type_Int == 0)
+        {
+          if (apby.a(this.jdField_a_of_type_Apby) != null) {
+            apby.a(this.jdField_a_of_type_Apby).a(this.jdField_a_of_type_Apce.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apce.jdField_a_of_type_Long);
+          }
+          ??? = new File(((bdvs)parambdwt.jdField_a_of_type_Bdws).c);
+          String str = azby.a(((File)???).getAbsolutePath());
+          if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_Apce.b))) && (this.jdField_a_of_type_Apce.jdField_a_of_type_Int != 1))
+          {
+            QLog.i("AREngine_ARPreSoResourceDownload", 1, "Download end. MD5 check error. url = " + ((bdvs)parambdwt.jdField_a_of_type_Bdws).jdField_a_of_type_JavaLangString + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
+            if (??? == null) {
+              continue;
+            }
+            ((apcd)???).a(false, this.jdField_a_of_type_Apce);
+            return;
+            label342:
+            i += 1;
+            break label67;
+            parambdwt = finally;
+            throw parambdwt;
+          }
+        }
       }
-      return localObject3;
+      for (boolean bool = true; ??? != null; bool = false)
+      {
+        ((apcd)???).a(bool, this.jdField_a_of_type_Apce);
+        return;
+        if (apby.a(this.jdField_a_of_type_Apby) != null) {
+          apby.a(this.jdField_a_of_type_Apby).a(this.jdField_a_of_type_Apce.jdField_a_of_type_JavaLangString, -1L);
+        }
+      }
     }
-    finally {}
   }
   
-  public apcq a(apbq paramapbq)
+  public void onUpdateProgeress(bdws arg1, long paramLong1, long paramLong2)
   {
-    Iterator localIterator = a().iterator();
-    Object localObject;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARPreSoResourceDownload", 2, "onUpdateProgeress. url = " + ((bdvs)???).jdField_a_of_type_JavaLangString + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+    }
+    synchronized (apby.a(this.jdField_a_of_type_Apby))
     {
-      if (!localIterator.hasNext()) {
-        break;
+      apcd localapcd = (apcd)apby.a(this.jdField_a_of_type_Apby).get(this.jdField_a_of_type_Apce.b);
+      if (localapcd != null) {
+        localapcd.a(paramLong1, paramLong2);
       }
-      localObject = (apcq)localIterator.next();
-    } while (!((apcq)localObject).a(paramapbq));
-    for (paramapbq = (apbq)localObject;; paramapbq = null)
-    {
-      localObject = paramapbq;
-      if (paramapbq == null) {
-        localObject = this.jdField_a_of_type_Apct;
-      }
-      return localObject;
+      return;
     }
-  }
-  
-  public List<apcq> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Apcd != null) {
-      this.jdField_a_of_type_Apcd.a();
-    }
-  }
-  
-  public void a(apbq paramapbq)
-  {
-    if (this.jdField_a_of_type_Apch != null) {
-      this.jdField_a_of_type_Apch.a(paramapbq);
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) || (a() < 0L);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Apdf.a(0);
-  }
-  
-  public boolean b()
-  {
-    return this.b;
   }
 }
 

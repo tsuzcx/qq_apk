@@ -60,13 +60,13 @@ public class x
         break;
         localObject = localasync_context._t104.get_buf();
         continue;
-        localObject = new tlv_t8().get_tlv_8(0, t.u, 0);
+        localObject = new tlv_t8().get_tlv_8(0, t.v, 0);
         continue;
         localObject = new tlv_t116().get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
         continue;
         localObject = new tlv_t(1313);
         byte[] arrayOfByte = new byte[6];
-        util.int32_to_buf(arrayOfByte, 0, t.az);
+        util.int32_to_buf(arrayOfByte, 0, t.aA);
         util.int16_to_buf(arrayOfByte, 4, 0);
         ((tlv_t)localObject).set_data(arrayOfByte, 6);
         localObject = ((tlv_t)localObject).get_buf();
@@ -97,7 +97,7 @@ public class x
   
   public int a(int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.w;
+    int j = t.x;
     int i = 0;
     for (;;)
     {

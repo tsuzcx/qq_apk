@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import alwd;
 import android.os.Bundle;
+import anpk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -20,7 +20,7 @@ class FriendListHandler$5
     if (QLog.isColorLevel()) {
       QLog.d("FriendListHandler", 2, "cancelMayKnowRecommend|uin = " + this.a);
     }
-    ((alwd)this.this$0.mApp.getManager(159)).b(this.a);
+    ((anpk)this.this$0.mApp.getManager(159)).b(this.a);
     this.this$0.notifyUI(93, true, this.a);
     try
     {
@@ -42,7 +42,7 @@ class FriendListHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendListHandler.5
  * JD-Core Version:    0.7.0.1
  */

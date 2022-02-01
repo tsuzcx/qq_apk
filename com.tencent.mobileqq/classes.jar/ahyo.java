@@ -1,69 +1,16 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class ahyo
+class ahyo
+  implements View.OnClickListener
 {
-  protected aiav a;
-  protected FragmentActivity a;
-  protected View a;
-  protected String a;
+  ahyo(ahyk paramahyk) {}
   
-  public ahyo(FragmentActivity paramFragmentActivity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
-  }
-  
-  public abstract int a();
-  
-  public FragmentManager a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager();
-  }
-  
-  protected View a(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
-  }
-  
-  public BaseActivity a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.findViewById(2131376034);
-    f();
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(aiav paramaiav)
-  {
-    this.jdField_a_of_type_Aiav = paramaiav;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Aiav = null;
-  }
-  
-  public void e() {}
-  
-  protected void f()
-  {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("SissionUin");
+    this.a.y(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

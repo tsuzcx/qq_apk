@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.mobileqq.mini.utils.DebugUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -20,7 +21,7 @@ public class EngineVersion
   
   public EngineVersion(String paramString)
   {
-    this.mMajor = "8.3.5.4555";
+    this.mMajor = "8.4.1.4680";
     this.mMinor = paramString;
   }
   
@@ -60,9 +61,12 @@ public class EngineVersion
   
   public static EngineVersion fromFolderName(String paramString)
   {
-    paramString = paramString.split("_");
-    if (paramString.length > 1) {
-      return new EngineVersion(paramString[0], paramString[1]);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split("_");
+      if (paramString.length > 1) {
+        return new EngineVersion(paramString[0], paramString[1]);
+      }
     }
     return null;
   }
@@ -142,7 +146,7 @@ public class EngineVersion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.EngineVersion
  * JD-Core Version:    0.7.0.1
  */

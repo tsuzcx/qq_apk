@@ -4,15 +4,22 @@ import android.support.v4.os.TraceCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.viola.utils.ViolaLogUtils;
 
 class PagerSnapHelper$TouchEventProcessor
   extends RecyclerView.OnScrollListener
-  implements RecyclerViewCompat.OnCompatFlingListener
+  implements View.OnTouchListener, RecyclerViewCompat.OnCompatFlingListener
 {
   private int currentScrollState = 0;
+  private float firstMoveX;
+  private float firstMoveY;
+  private boolean hadMoveEvent = false;
   private int lastCenterPosition = -1;
+  private float moveXDistance;
+  private float moveYDistance;
   private boolean reset = false;
   
   private PagerSnapHelper$TouchEventProcessor(PagerSnapHelper paramPagerSnapHelper) {}
@@ -30,9 +37,9 @@ class PagerSnapHelper$TouchEventProcessor
       this.lastCenterPosition = PagerSnapHelper.access$200(this.this$0).getPosition(localView);
     }
     label150:
-    for (this.lastCenterPosition = PagerSnapHelper.access$800(this.this$0, this.lastCenterPosition);; this.lastCenterPosition = -1)
+    for (this.lastCenterPosition = PagerSnapHelper.access$900(this.this$0, this.lastCenterPosition);; this.lastCenterPosition = -1)
     {
-      if ((PagerSnapHelper.access$900(this.this$0) != -1) && (PagerSnapHelper.access$200(this.this$0).findViewByPosition(PagerSnapHelper.access$900(this.this$0)) == null))
+      if ((PagerSnapHelper.access$1000(this.this$0) != -1) && (PagerSnapHelper.access$200(this.this$0).findViewByPosition(PagerSnapHelper.access$1000(this.this$0)) == null))
       {
         ViolaLogUtils.d("PagerSnapHelper", "onScrollStateChanged: centerPosition has been recycler");
         this.reset = true;
@@ -85,8 +92,8 @@ class PagerSnapHelper$TouchEventProcessor
       i = -1;
       break label97;
       label144:
-      if ((!PagerSnapHelper.access$500(this.this$0)) && (!PagerSnapHelper.access$000(this.this$0)) && (i > PagerSnapHelper.access$600(this.this$0, PagerSnapHelper.access$200(this.this$0)))) {
-        PagerSnapHelper.access$700(this.this$0);
+      if ((!PagerSnapHelper.access$500(this.this$0)) && (!PagerSnapHelper.access$000(this.this$0)) && (i > PagerSnapHelper.access$600(this.this$0, PagerSnapHelper.access$200(this.this$0))) && (PagerSnapHelper.access$700(this.this$0))) {
+        PagerSnapHelper.access$800(this.this$0);
       }
     }
   }
@@ -101,14 +108,14 @@ class PagerSnapHelper$TouchEventProcessor
       do
       {
         return false;
-      } while ((PagerSnapHelper.access$1000(this.this$0).getAdapter() == null) || (!PagerSnapHelper.access$500(this.this$0)));
-      i = PagerSnapHelper.access$1000(this.this$0).getMinFlingVelocity();
+      } while ((PagerSnapHelper.access$1100(this.this$0).getAdapter() == null) || (!PagerSnapHelper.access$500(this.this$0)));
+      i = PagerSnapHelper.access$1100(this.this$0).getMinFlingVelocity();
       j = this.lastCenterPosition;
     } while ((Math.abs(paramFloat2) <= i) && (Math.abs(paramFloat1) <= i));
     try
     {
       TraceCompat.beginSection("snapFromFling");
-      boolean bool = PagerSnapHelper.access$1100(this.this$0, PagerSnapHelper.access$200(this.this$0), paramFloat1, paramFloat2, j);
+      boolean bool = PagerSnapHelper.access$1200(this.this$0, PagerSnapHelper.access$200(this.this$0), this.moveXDistance, this.moveYDistance, paramFloat1, paramFloat2, j);
       return bool;
     }
     finally
@@ -137,10 +144,40 @@ class PagerSnapHelper$TouchEventProcessor
   }
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+    case 2: 
+      do
+      {
+        return false;
+        this.hadMoveEvent = true;
+        if (this.firstMoveX <= 0.0F) {
+          this.firstMoveX = paramMotionEvent.getX();
+        }
+      } while (this.firstMoveY > 0.0F);
+      this.firstMoveY = paramMotionEvent.getY();
+      return false;
+    }
+    if (this.hadMoveEvent) {
+      this.moveXDistance = (this.firstMoveX - paramMotionEvent.getX());
+    }
+    for (this.moveYDistance = (this.firstMoveY - paramMotionEvent.getY());; this.moveYDistance = 0.0F)
+    {
+      this.firstMoveX = 0.0F;
+      this.firstMoveY = 0.0F;
+      this.hadMoveEvent = false;
+      return false;
+      this.moveXDistance = 0.0F;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.PagerSnapHelper.TouchEventProcessor
  * JD-Core Version:    0.7.0.1
  */

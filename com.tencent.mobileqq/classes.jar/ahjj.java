@@ -1,52 +1,33 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import java.util.Set;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 
-class ahjj
-  extends RecyclerView.ViewHolder
-  implements Animator.AnimatorListener, View.OnClickListener
+public class ahjj
+  implements DialogInterface.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  String jdField_a_of_type_JavaLangString;
+  public ahjj(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing) {}
   
-  public ahjj(ahjh paramahjh, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376070));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370977));
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-    ahjh.a(this.jdField_a_of_type_Ahjh).add(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    Bundle localBundle = new Bundle();
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin != null) && (!"".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin))) {
+      localBundle.putString("source_puin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin);
     }
-    ahjh.a(this.jdField_a_of_type_Ahjh, this.jdField_a_of_type_JavaLangString);
+    localBundle.putInt("forward_type", -3);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.mCommentText = null;
+    localBundle.putInt("structmsg_service_id", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.mMsgServiceID);
+    localBundle.putByteArray("stuctmsg_bytes", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.getBytes());
+    localBundle.putLong("structmsg_uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
+    localBundle.putInt("accostType", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.sourceAccoutType);
+    Intent localIntent = new Intent();
+    localIntent.putExtras(localBundle);
+    aufz.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, localIntent, 21);
+    paramDialogInterface.dismiss();
   }
 }
 

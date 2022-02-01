@@ -1,222 +1,434 @@
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Message;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.SendPhotoTask;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.doutu.DoutuData;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class armo
-  extends armd
-  implements arkn, arko
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = this.jdField_a_of_type_Arki.c();
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new armq(this);
-  protected arog a;
-  private bhuw jdField_a_of_type_Bhuw = new armr(this);
-  private bhuy jdField_a_of_type_Bhuy = new arms(this);
-  private List<arkl> jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Arki.a();
-  boolean jdField_a_of_type_Boolean = false;
-  private int b = this.jdField_a_of_type_Arki.c();
-  private boolean d;
+  public static int a;
+  private float jdField_a_of_type_Float;
+  public long a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable();
+  public arms a;
+  URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new armp(this);
+  public SessionInfo a;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public DoutuData a;
+  public HashMap<String, String> a;
+  public List<DoutuData> a;
+  public MqqHandler a;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private DoutuData jdField_b_of_type_ComTencentMobileqqDoutuDoutuData = new DoutuData("abababababababababababab", null);
+  public List<DoutuData> b;
+  private int c;
+  private int d;
+  private int e;
+  private int f = -1;
   
-  public armo(arki paramarki, Activity paramActivity)
+  static
   {
-    super(paramarki, paramActivity);
-    this.jdField_a_of_type_Arog = new arog(paramActivity);
-    a(this.jdField_a_of_type_Arog);
+    jdField_a_of_type_Int = 4;
   }
   
-  private boolean a(String paramString)
+  public armo(Context paramContext, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo, MqqHandler paramMqqHandler, boolean paramBoolean, arms paramarms, int paramInt)
   {
-    return !TextUtils.isEmpty(paramString);
-  }
-  
-  private String b()
-  {
-    arkl localarkl = (arkl)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Arki.c());
-    if (localarkl == null) {
-      return null;
-    }
-    String str = localarkl.a();
-    if (TextUtils.isEmpty(str)) {
-      return localarkl.b();
-    }
-    return str;
-  }
-  
-  private void c()
-  {
-    Object localObject = b();
-    if (TextUtils.isEmpty((CharSequence)localObject))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_Arms = paramarms;
+    if ((paramBoolean) && (this.jdField_a_of_type_Arms != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Arms.b))) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      QLog.i("PictureFilePresenter<QFile>", 1, "startEditPicture. but file path is null.");
-      return;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if ((paramInt > 0) && (this.jdField_a_of_type_Boolean)) {
+        jdField_a_of_type_Int = paramInt;
+      }
+      if (!this.jdField_a_of_type_Boolean) {
+        jdField_a_of_type_Int = 9;
+      }
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      paramInt = i;
+      while (paramInt < jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_JavaUtilList.add(new DoutuData());
+        paramInt += 1;
+      }
     }
-    localObject = EditPicActivity.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, true, true, true, true, true, 2, 130, 7);
-    ((Intent)localObject).putExtra("open_chatfragment", true);
-    ((Intent)localObject).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1041);
-    ((Intent)localObject).putExtra("key_enable_edit_title_bar", true);
-    ((Intent)localObject).putExtra("key_help_forward_pic", true);
-    ((Intent)localObject).putExtra("key_allow_multiple_forward_from_limit", false);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
-    int i;
-    switch (this.jdField_a_of_type_Arki.k())
-    {
-    case 5: 
-    case 6: 
-    case 10: 
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      azqs.b(null, "dc00898", "", "", "0X800A1E2", "0X800A1E2", i, 0, "", "", "", "");
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(2130772036, 2130772038);
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-    }
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_Arki.c();
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+    this.jdField_b_of_type_Int = afur.a(80.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.c = afur.a(80.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.d = afur.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.e = afur.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
   public void a()
   {
-    super.a();
+    int k = 0;
+    int j = 0;
     if (QLog.isColorLevel()) {
-      QLog.w("PictureFilePresenter<QFile>", 1, "FileBrowserPresenter init: type = picture");
+      QLog.d("DoutuEmotionAdapter", 2, "[doutu]resetData");
     }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int) != null) && (this.jdField_a_of_type_Arki.e()))
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_Arog.c(a(b()));
-      arri.b(BaseApplicationImpl.getContext().getString(2131692560));
-    }
-    this.jdField_a_of_type_Arog.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Arog.a(this.jdField_a_of_type_Bhuw);
-    this.jdField_a_of_type_Arog.a(new armp(this));
-    this.jdField_a_of_type_Arog.a(this.jdField_a_of_type_Bhuy);
-    this.jdField_a_of_type_Arog.b(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_Arog.c(this.jdField_a_of_type_Arki.c());
-    b();
-    this.jdField_a_of_type_Arki.a(this);
-    this.jdField_a_of_type_Arki.a(this);
-  }
-  
-  public void a(float paramFloat)
-  {
-    b(paramFloat);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Arki.c(paramInt);
-    if ((this.jdField_a_of_type_Arki.i()) && (this.jdField_a_of_type_Arki.a() != null))
-    {
-      this.jdField_a_of_type_Arog.b(true);
-      this.jdField_a_of_type_Arog.a(false);
-      b(0.0F);
-      this.jdField_a_of_type_Arki.a().a();
-    }
-    b();
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("PictureFilePresenter<QFile>", 1, "PictureFilePresenter onThumbDownload error : picture fileid is null!");
+      i = k;
+      if (this.jdField_b_of_type_JavaUtilList == null) {
+        break;
       }
-    }
-    arkl localarkl;
-    do
-    {
-      return;
-      localarkl = (arkl)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Arki.c());
-    } while (!localarkl.a(paramString1));
-    if (TextUtils.isEmpty(paramString2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PictureFilePresenter<QFile>", 1, "PictureFilePresenter onThumbDownload error : picture thumbPath is null!");
+      i = k;
+      if (this.jdField_b_of_type_JavaUtilList.size() <= 0) {
+        break;
       }
-      localarkl.a(3);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("PictureFilePresenter<QFile>", 1, "PictureFilePresenter onThumbDownload suc : fileId[" + paramString1 + "] thumbPath[" + paramString2 + "]");
-    }
-    localarkl.a(paramString2);
-    localarkl.a(2);
-    this.jdField_a_of_type_Arog.c();
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  protected void b()
-  {
-    int i = this.jdField_a_of_type_Arki.i();
-    if ((i == 2) || (i == 5))
-    {
-      this.jdField_a_of_type_Arog.a(false);
-      this.jdField_a_of_type_Arog.b(false);
-    }
-    do
-    {
-      return;
-      if (i == 6)
+      i = j;
+      while ((i < jdField_a_of_type_Int) && (i < this.jdField_b_of_type_JavaUtilList.size()))
       {
-        this.jdField_a_of_type_Arog.a(true);
-        this.jdField_a_of_type_Arog.b(false);
+        this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+        i += 1;
       }
-      super.b();
-    } while (this.jdField_a_of_type_Arki.f() != 9501);
-    this.jdField_a_of_type_Arog.b();
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Arog.a(false);
-    this.jdField_a_of_type_Arog.b(true);
-    b(this.jdField_a_of_type_Arki.a());
-  }
-  
-  public void e()
-  {
-    b();
-  }
-  
-  public void f()
-  {
-    b();
-    ((arkl)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Arki.c())).b(this.jdField_a_of_type_Arki.d());
-    this.jdField_a_of_type_Arog.c();
-    this.jdField_a_of_type_Arog.d();
-    if (this.jdField_a_of_type_Arhw != null) {
-      this.jdField_a_of_type_Arhw.e();
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+    while (i < 9)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(new DoutuData());
+      i += 1;
+    }
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0)) {
+      if (this.jdField_b_of_type_JavaUtilList.size() < jdField_a_of_type_Int) {
+        break label235;
+      }
+    }
+    label235:
+    for (int i = jdField_a_of_type_Int;; i = this.jdField_b_of_type_JavaUtilList.size())
+    {
+      this.f = i;
+      this.jdField_b_of_type_JavaUtilList.add(this.f, this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData);
+      this.jdField_a_of_type_JavaUtilList.add(this.f, this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData);
+      return;
     }
   }
   
-  public void g()
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_Arog.a(true);
-    this.jdField_a_of_type_Arog.b(false);
-    b();
+    if (paramLong != this.jdField_a_of_type_Long)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("DoutuEmotionAdapter", 2, "removeLoading key:" + paramLong + ", timeKey:" + this.jdField_a_of_type_Long);
+      }
+      return;
+    }
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList != null))
+    {
+      int j = this.jdField_a_of_type_JavaUtilList.size();
+      this.jdField_b_of_type_JavaUtilList.remove(this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData);
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while ((i < j) && (i < this.jdField_b_of_type_JavaUtilList.size()))
+      {
+        localArrayList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+        i += 1;
+      }
+      a(localArrayList);
+    }
+    this.f = -1;
+  }
+  
+  public void a(List<DoutuData> paramList)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void a(List<DoutuData> paramList, boolean paramBoolean, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DoutuEmotionAdapter", 2, "addSmartPicList removeEmptyData:" + paramBoolean);
+    }
+    if (paramLong != this.jdField_a_of_type_Long) {
+      if (QLog.isColorLevel()) {
+        QLog.e("DoutuEmotionAdapter", 2, "addSmartPicList key:" + paramLong + ", timeKey:" + this.jdField_a_of_type_Long);
+      }
+    }
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList != null) && (paramList != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("DoutuEmotionAdapter", 2, "addSmartPicList list:" + this.jdField_a_of_type_JavaUtilList + ", listAll:" + this.jdField_b_of_type_JavaUtilList);
+    return;
+    int j = paramList.size();
+    if (this.f > 0)
+    {
+      this.jdField_b_of_type_JavaUtilList.addAll(this.f, paramList);
+      this.f += paramList.size();
+    }
+    int k = this.jdField_a_of_type_JavaUtilList.size();
+    paramList = new ArrayList();
+    int i = 0;
+    while ((i < k + j) && (i < this.jdField_b_of_type_JavaUtilList.size()))
+    {
+      if ((!paramBoolean) || (!((DoutuData)this.jdField_b_of_type_JavaUtilList.get(i)).pic_md5.equalsIgnoreCase("abababababababababababab"))) {
+        paramList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+      }
+      i += 1;
+    }
+    if (paramBoolean)
+    {
+      this.jdField_b_of_type_JavaUtilList.remove(this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData);
+      this.f = -1;
+    }
+    a(paramList);
+  }
+  
+  public void b()
+  {
+    int j;
+    int k;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList != null))
+    {
+      j = this.jdField_a_of_type_JavaUtilList.size();
+      k = this.jdField_b_of_type_JavaUtilList.size();
+      if (j < k) {}
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    int i = 0;
+    while ((i < k) && (i < jdField_a_of_type_Int + j))
+    {
+      this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+      i += 1;
+    }
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1;
+    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
+    {
+      QLog.e("DoutuEmotionAdapter", 2, "get view position exception , position = " + paramInt + ",size = " + this.jdField_a_of_type_JavaUtilList.size());
+      localObject1 = paramView;
+      paramView = null;
+    }
+    DoutuData localDoutuData;
+    Object localObject2;
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localDoutuData = (DoutuData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      URL localURL;
+      if (localDoutuData == null)
+      {
+        QLog.e("DoutuEmotionAdapter", 1, "getView emoticon empty position = " + paramInt);
+        localURL = null;
+        localObject1 = paramView;
+        paramView = localURL;
+      }
+      else
+      {
+        if ((paramView == null) || (paramView.getTag() == null))
+        {
+          localObject1 = new armq(null);
+          ((armq)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+          paramView = new ViewGroup.LayoutParams(this.jdField_b_of_type_Int, this.c);
+          ((armq)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+          ((armq)localObject1).jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+          paramView = new RelativeLayout.LayoutParams(this.d, this.e);
+          paramView.addRule(13, -1);
+          ((armq)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.addView(((armq)localObject1).jdField_a_of_type_ComTencentImageURLImageView, paramView);
+          ((armq)localObject1).jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext);
+          ((armq)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839402));
+          paramView = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 30.0F), (int)(this.jdField_a_of_type_Float * 30.0F));
+          paramView.addRule(13, -1);
+          ((armq)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.addView(((armq)localObject1).jdField_a_of_type_AndroidWidgetProgressBar, paramView);
+          paramView = ((armq)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout;
+          paramView.setTag(localObject1);
+          ((armq)localObject1).jdField_a_of_type_ComTencentMobileqqDoutuDoutuData = localDoutuData;
+          ((armq)localObject1).jdField_a_of_type_Int = paramInt;
+          ((armq)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+          if (localDoutuData.thumb_down_url == null) {
+            break label675;
+          }
+        }
+        try
+        {
+          localURL = new URL(localDoutuData.thumb_down_url);
+          if (localURL == null)
+          {
+            QLog.e("DoutuEmotionAdapter", 1, "getView url = null");
+            localURL = null;
+            localObject1 = paramView;
+            paramView = localURL;
+            continue;
+            localObject1 = (armq)paramView.getTag();
+          }
+        }
+        catch (MalformedURLException localMalformedURLException)
+        {
+          for (;;)
+          {
+            QLog.e("DoutuEmotionAdapter", 1, "getView url exception e = " + localMalformedURLException.getMessage());
+            localObject2 = null;
+          }
+          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+          localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+          localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+          localURLDrawableOptions.mPlayGifImage = true;
+          localURLDrawableOptions.mExtraInfo = localDoutuData;
+          localObject2 = URLDrawable.getDrawable((URL)localObject2, localURLDrawableOptions);
+          if (((URLDrawable)localObject2).getStatus() == 1) {
+            break label627;
+          }
+        }
+      }
+    }
+    ((URLDrawable)localObject2).setTag(localDoutuData);
+    ((URLDrawable)localObject2).addHeader("my_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    if ((((URLDrawable)localObject2).getStatus() == 2) || (((URLDrawable)localObject2).getStatus() == 3)) {
+      ((URLDrawable)localObject2).restartDownload();
+    }
+    label566:
+    ((armq)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
+    ((armq)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener);
+    ((armq)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setTag(localObject1);
+    ((armq)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setFocusable(true);
+    ((armq)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setFocusableInTouchMode(true);
+    paramView.setOnClickListener(this);
+    for (;;)
+    {
+      localObject1 = paramView;
+      break;
+      label627:
+      ((armq)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(localDoutuData.pic_md5, localDoutuData.pic_down_url);
+      break label566;
+      label675:
+      ((armq)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    Object localObject1 = paramView.getTag();
+    if ((localObject1 != null) && ((localObject1 instanceof armq))) {}
+    for (localObject1 = (armq)localObject1;; localObject1 = null)
+    {
+      if (localObject1 == null) {}
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        DoutuData localDoutuData = ((armq)localObject1).jdField_a_of_type_ComTencentMobileqqDoutuDoutuData;
+        if ((localDoutuData != null) && (localDoutuData.thumb_down_url != null))
+        {
+          Object localObject2 = (URLDrawable)((armq)localObject1).jdField_a_of_type_ComTencentImageURLImageView.getDrawable();
+          if (localObject2 != null)
+          {
+            localObject2 = ((URLDrawable)localObject2).getFileInLocal();
+            if (localObject2 != null)
+            {
+              localObject2 = ((File)localObject2).getPath();
+              Intent localIntent = new Intent();
+              ArrayList localArrayList = new ArrayList();
+              localArrayList.add(localObject2);
+              localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+              localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1044);
+              localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+              localIntent.putExtra("uintype", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+              localIntent.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+              localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+              localIntent.putExtra("send_in_background", true);
+              localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
+              localIntent.putExtra("quick_send_original_size", localDoutuData.pic_size);
+              localIntent.putExtra("quick_send_original_md5", localDoutuData.pic_md5);
+              localIntent.putExtra("quick_send_thumb_md5", localDoutuData.thumb_md5);
+              localIntent.putExtra("PicContants.NEED_COMPRESS", false);
+              ThreadManager.post(new SendPhotoTask(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localIntent, null), 8, null, false);
+              bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007FAB", "0X8007FAB", 0, 0, "", String.valueOf(((armq)localObject1).jdField_a_of_type_Int + 1), localDoutuData.pic_md5, localDoutuData.pic_down_url);
+              this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData = localDoutuData;
+              if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+                this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(80).sendToTarget();
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 

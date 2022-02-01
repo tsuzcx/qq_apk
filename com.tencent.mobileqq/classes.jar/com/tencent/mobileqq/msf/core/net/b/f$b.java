@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.core.net.b;
 
-import com.tencent.mobileqq.msf.core.ag;
-import com.tencent.mobileqq.msf.core.t;
+import com.tencent.mobileqq.msf.core.aj;
+import com.tencent.mobileqq.msf.core.w;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.CodecWarpper;
 import com.tencent.qphone.base.util.QLog;
@@ -39,7 +39,7 @@ class f$b
       }
       try
       {
-        arrayOfByte2 = ag.b(localToServiceMsg, 0);
+        arrayOfByte2 = aj.b(localToServiceMsg, 0);
         localObject = arrayOfByte2;
       }
       catch (Exception localException)
@@ -49,15 +49,15 @@ class f$b
         if ((595 != CodecWarpper.getSharedObjectVersion()) && (600 != CodecWarpper.getSharedObjectVersion())) {
           break label211;
         }
-        byte[] arrayOfByte1 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), t.d(), t.f(), t.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, localThrowable, localToServiceMsg.getWupBuffer(), true);
+        byte[] arrayOfByte1 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, localThrowable, localToServiceMsg.getWupBuffer(), true);
         break label90;
-        arrayOfByte1 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), t.d(), t.f(), t.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, (byte)0, arrayOfByte1, localToServiceMsg.getWupBuffer(), true);
+        arrayOfByte1 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, (byte)0, arrayOfByte1, localToServiceMsg.getWupBuffer(), true);
         break label90;
       }
       if (591 != CodecWarpper.getSharedObjectVersion()) {
         break;
       }
-      localObject = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), t.d(), t.f(), t.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, localToServiceMsg.getWupBuffer(), true);
+      localObject = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, localToServiceMsg.getWupBuffer(), true);
       if (f.c(this.a).get()) {
         f.a(this.a, localToServiceMsg.getServiceCmd(), localToServiceMsg.getMsfCommand(), (byte[])localObject);
       }

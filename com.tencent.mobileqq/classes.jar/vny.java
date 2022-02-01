@@ -1,31 +1,39 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import com.tencent.biz.subscribe.comment.CommentEditText;
 
 class vny
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  vny(vnu paramvnu) {}
+  vny(vnw paramvnw) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramView = vnu.a(this.a).a();
-    if (!bdin.g(paramView))
-    {
-      QQToast.a(paramView, 1, 2131694766, 0).a();
+    if (paramEditable == null) {
       return;
     }
-    wxe.d("Q.qqstory.playernew.StoryPlayerImpl", "updateData error, retry, requestGroupData, currentInfo = %s", new Object[] { vnu.a(this.a) });
-    vnu.a(this.a).setVisibility(0);
-    vnu.a(this.a).removeCallbacks(vnu.a(this.a));
-    vnu.a(this.a).postDelayed(vnu.a(this.a), 500L);
+    vnw.a(this.a).removeTextChangedListener(this);
+    if (vnw.b(this.a).getText().toString().isEmpty()) {
+      if (vnw.a(this.a) != null) {
+        vnw.b(this.a).setBackgroundResource(2130843894);
+      }
+    }
+    for (;;)
+    {
+      vnw.c(this.a).addTextChangedListener(this);
+      return;
+      vnw.c(this.a).setBackgroundResource(2130843895);
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vny
  * JD-Core Version:    0.7.0.1
  */

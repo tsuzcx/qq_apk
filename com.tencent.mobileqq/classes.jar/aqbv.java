@@ -1,43 +1,19 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendFeedView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aqbv
-  extends RecyclerView.ViewHolder
+class aqbv
   implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  aqfj jdField_a_of_type_Aqfj;
-  public bkhs a;
-  public ExtendFriendFeedView a;
+  aqbv(aqbt paramaqbt, BaseActivity paramBaseActivity) {}
   
-  public aqbv(View paramView, Context paramContext, aqfj paramaqfj, bkhs parambkhs)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView = ((ExtendFriendFeedView)paramView);
-    this.jdField_a_of_type_Bkhs = parambkhs;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aqfj = paramaqfj;
-    if (this.jdField_a_of_type_Bkhs != null) {
-      this.jdField_a_of_type_Bkhs.a(this.jdField_a_of_type_Bkhs.a(), new aqbw(this));
-    }
+    aqbt.a(this.jdField_a_of_type_Aqbt, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    bcst.a(this.jdField_a_of_type_Aqbt.a, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 23, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(aqbv paramaqbv, aqcx paramaqcx, int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView != null) && (paramaqcx != null))
-    {
-      int i = paramaqbv.getPosition();
-      paramaqbv.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView.setFeedBgParams(i, paramaqcx.mVoiceUrl, paramInt, false);
-    }
-    if ((this.jdField_a_of_type_Bkhs != null) && (paramaqcx != null) && (paramaqcx.mAlumbasicdata != null)) {
-      paramaqbv.jdField_a_of_type_Bkhs.a(paramaqcx.mAlumbasicdata, paramaqbv.getAdapterPosition());
-    }
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 

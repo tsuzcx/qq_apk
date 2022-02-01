@@ -1,16 +1,10 @@
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import com.tencent.mobileqq.data.QQAlbumInfo;
 
-class bnfe
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+public abstract interface bnfe
 {
-  bnfe(bnfd parambnfd) {}
+  public abstract void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, boolean paramBoolean);
   
-  public void onThreadMonitorEnd(int paramInt)
-  {
-    if (paramInt == 10) {
-      this.a.a();
-    }
-  }
+  public abstract void b();
 }
 
 

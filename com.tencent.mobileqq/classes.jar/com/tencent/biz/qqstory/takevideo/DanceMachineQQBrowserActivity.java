@@ -1,16 +1,20 @@
 package com.tencent.biz.qqstory.takevideo;
 
+import Override;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import wxn;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import yqy;
 
 public class DanceMachineQQBrowserActivity
   extends QQTranslucentBrowserActivity
@@ -66,6 +70,14 @@ public class DanceMachineQQBrowserActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
@@ -81,13 +93,20 @@ public class DanceMachineQQBrowserActivity
   public void doOnResume()
   {
     getWindow().getDecorView().setSystemUiVisibility(2);
-    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new wxn(this));
+    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new yqy(this));
   }
   
   public void finish()
   {
     super.finish();
     overridePendingTransition(0, 0);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
@@ -97,7 +116,7 @@ public class DanceMachineQQBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

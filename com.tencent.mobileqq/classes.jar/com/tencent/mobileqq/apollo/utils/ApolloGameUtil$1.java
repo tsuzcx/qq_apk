@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import afhq;
-import afht;
-import afiv;
+import agoy;
+import agpb;
+import agqe;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -56,17 +56,17 @@ final class ApolloGameUtil$1
         if (localObject != null)
         {
           localObject = ((View)localObject).getTag();
-          if ((localObject instanceof afiv))
+          if ((localObject instanceof agqe))
           {
-            localObject = (afht)localObject;
-            localMessageForApollo = (MessageForApollo)((afht)localObject).a;
+            localObject = (agpb)localObject;
+            localMessageForApollo = (MessageForApollo)((agpb)localObject).a;
             if ((ApolloGameUtil.a(localMessageForApollo.msgType)) && (localMessageForApollo.roomId == this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.roomId))
             {
               if (QLog.isColorLevel()) {
                 QLog.d("ApolloGameUtil", 2, new Object[] { "find the view with the same roomId,", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.roomId) });
               }
               if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.getInt("type") == 1)) {
-                afhq.a((afht)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidOsBundle.getInt("gameId"), this.jdField_a_of_type_AndroidOsBundle.getInt("process"));
+                agoy.a((agpb)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidOsBundle.getInt("gameId"), this.jdField_a_of_type_AndroidOsBundle.getInt("process"));
               }
             }
           }
@@ -86,7 +86,7 @@ final class ApolloGameUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.1
  * JD-Core Version:    0.7.0.1
  */

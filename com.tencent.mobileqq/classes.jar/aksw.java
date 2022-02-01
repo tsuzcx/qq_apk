@@ -1,29 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView.2.1;
-import com.tencent.widget.HorizontalListView;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 
-public class aksw
-  implements Animation.AnimationListener
+class aksw
+  implements anjl
 {
-  public aksw(CmGameDebugView paramCmGameDebugView) {}
+  aksw(akss paramakss, Bundle paramBundle, int paramInt, ResultReceiver paramResultReceiver, anjh paramanjh) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (CmGameDebugView.a(this.a))
-    {
-      CmGameDebugView.a(this.a).postDelayed(new CmGameDebugView.2.1(this), 0L);
-      CmGameDebugView.a(this.a, false);
+    this.jdField_a_of_type_AndroidOsBundle.putInt("updateResult", this.jdField_a_of_type_Int);
+    if (paramBoolean) {
+      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", 1);
     }
-    if (CmGameDebugView.b(this.a)) {
-      CmGameDebugView.b(this.a, 0);
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_Anjh.d(this);
+      return;
+      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", -1);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

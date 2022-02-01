@@ -1,23 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.view.View;
 
-class bkrn
-  implements DialogInterface.OnClickListener
+public abstract interface bkrn
 {
-  bkrn(bkrk parambkrk) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-    if (((bkqs)this.a.a.get()).b != null) {
-      ((bkqs)this.a.a.get()).b.setClickable(true);
-    }
-  }
+  public abstract void a(View paramView1, View paramView2, int paramInt1, int paramInt2);
 }
 
 

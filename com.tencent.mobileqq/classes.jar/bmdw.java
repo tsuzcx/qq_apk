@@ -1,12 +1,9 @@
-import java.util.concurrent.Executor;
+import cooperation.qzone.plugin.PluginRecord;
+import java.io.File;
 
-final class bmdw
-  implements Executor
+abstract interface bmdw
 {
-  public void execute(Runnable paramRunnable)
-  {
-    bmdv.a().b(paramRunnable);
-  }
+  public abstract boolean a(PluginRecord paramPluginRecord, File paramFile);
 }
 
 

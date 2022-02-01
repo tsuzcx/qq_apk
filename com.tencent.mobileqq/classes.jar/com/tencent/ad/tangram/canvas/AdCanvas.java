@@ -7,6 +7,9 @@ import android.support.annotation.Keep;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.AdError;
 import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForXJ;
+import com.tencent.ad.tangram.settings.AdSettingsUtil;
 import java.lang.ref.WeakReference;
 
 @Keep
@@ -56,10 +59,19 @@ public enum AdCanvas
     localParams.extrasForIntent = paramBundle;
     return localAdCanvasAdapter.show(localParams);
   }
+  
+  public boolean isEnable(Context paramContext)
+  {
+    paramContext = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
+    if (paramContext != null) {
+      return paramContext.settingsForXJ.canvas;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.AdCanvas
  * JD-Core Version:    0.7.0.1
  */

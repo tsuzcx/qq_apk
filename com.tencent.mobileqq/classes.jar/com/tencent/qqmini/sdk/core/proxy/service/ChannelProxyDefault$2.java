@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy.RequestListener;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +24,7 @@ class ChannelProxyDefault$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,41 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPagerAdapter;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPanel;
-import com.tencent.mobileqq.widget.QQViewPager;
-import mqq.app.AppRuntime.Status;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager.3;
+import com.tencent.qphone.base.util.QLog;
 
 public class awey
+  extends bhhe
 {
-  private OnlineStatusPanel a;
+  public awey(PngFrameManager.3 param3) {}
   
-  @SuppressLint({"UseSparseArrays"})
-  public awey(@NonNull Context paramContext, @NonNull ViewGroup paramViewGroup, awew paramawew, int paramInt)
+  public void onDone(bhhf parambhhf)
   {
-    this.a = ((OnlineStatusPanel)View.inflate(paramContext, 2131558859, null));
-    this.a.a(paramInt);
-    this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a(paramawew);
-    paramViewGroup.addView(this.a);
-  }
-  
-  public awev a()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a;
-  }
-  
-  public void a()
-  {
-    boolean bool = true;
-    QQViewPager localQQViewPager = this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.getCount() > 1) {}
-    for (;;)
-    {
-      localQQViewPager.b(bool);
-      return;
-      bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameManager", 2, "func onDone.【aio preview】");
     }
-  }
-  
-  public void a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    a(paramStatus, paramLong, null);
-  }
-  
-  public void a(AppRuntime.Status paramStatus, long paramLong, awez paramawez)
-  {
-    awev localawev = aweo.a().a(paramStatus, paramLong);
-    if (localawev != null)
+    synchronized (this.a.this$0)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a = localawev;
-      this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.notifyDataSetChanged();
-      if (paramawez != null)
+      if (this.a.this$0.a != null)
       {
-        paramStatus = new awev(paramStatus);
-        paramStatus.a = paramLong;
-        paramawez.a(paramStatus);
+        if (parambhhf.a() != 3) {
+          this.a.this$0.a.obtainMessage(226, this.a.jdField_a_of_type_Awfc).sendToTarget();
+        }
       }
+      else {
+        return;
+      }
+      parambhhf = awfe.a(this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_Awfc.a = parambhhf;
+      this.a.this$0.a.obtainMessage(227, this.a.jdField_a_of_type_Awfc).sendToTarget();
+      BaseApplicationImpl.sImageCache.put(this.a.jdField_a_of_type_JavaLangString, parambhhf);
     }
-  }
-  
-  void b()
-  {
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awey
  * JD-Core Version:    0.7.0.1
  */

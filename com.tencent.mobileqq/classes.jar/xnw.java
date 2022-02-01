@@ -1,56 +1,32 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class xnw
-  implements axvu
+public class xnw
+  extends xoe<StoryVideoItem>
 {
-  xnw(xnv paramxnv, xno paramxno) {}
-  
-  public void a() {}
-  
-  public void a(String paramString)
+  public xnw(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    synchronized (xnv.a(this.jdField_a_of_type_Xnv))
-    {
-      this.jdField_a_of_type_Xno.c = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "onEncodeFinish, filePath= " + paramString);
-      }
-      xnv.a(this.jdField_a_of_type_Xnv).notifyAll();
-      return;
-    }
+    super(paramVideoViewVideoHolder, null);
   }
   
-  public void a_(int paramInt, Throwable arg2)
+  public void a(StoryVideoItem paramStoryVideoItem)
   {
-    synchronized (xnv.a(this.jdField_a_of_type_Xnv))
-    {
-      this.jdField_a_of_type_Xno.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "onEncodeError, errorCode= " + paramInt);
-      }
-      xnv.a(this.jdField_a_of_type_Xnv).notifyAll();
-      return;
-    }
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
   }
   
-  public void b()
+  public void onError(@NonNull Error paramError)
   {
-    if ((this.jdField_a_of_type_Xno != null) && (!this.jdField_a_of_type_Xno.d) && (!this.jdField_a_of_type_Xno.b))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "cancel mergeVideoTask path : " + this.jdField_a_of_type_Xno.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.b + " currContext id : " + this.jdField_a_of_type_Xno + "  mCanceled : " + this.jdField_a_of_type_Xno.b);
-      }
-      this.jdField_a_of_type_Xnv.b(this.jdField_a_of_type_Xno);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "after cancel : " + this.jdField_a_of_type_Xno.b);
-      }
-    }
+    super.onError(paramError);
+    yqp.d(this.a.a, "STATE_VIDEOFILE_ED error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xnw
  * JD-Core Version:    0.7.0.1
  */

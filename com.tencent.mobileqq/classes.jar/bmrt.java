@@ -1,47 +1,20 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
 public class bmrt
+  implements QQPermissionCallback
 {
-  private static bmrt a = new bmrt();
+  public bmrt(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
   
-  public static bmrt a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return a;
+    bglp.b(this.jdField_a_of_type_AndroidAppActivity);
   }
   
-  public URLDrawable a(String paramString, int paramInt1, int paramInt2)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if ((paramInt1 > 0) && (paramInt2 > 0))
-    {
-      localURLDrawableOptions.mRequestWidth = paramInt1;
-      localURLDrawableOptions.mRequestHeight = paramInt2;
-    }
-    localURLDrawableOptions.mFailedDrawable = bayu.a;
-    localURLDrawableOptions.mLoadingDrawable = bayu.a;
-    localURLDrawableOptions.mUseAutoScaleParams = false;
-    return URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-  }
-  
-  public void a(ImageView paramImageView, String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
-    {
-      wxe.e("ImageLoader", "ImageView or uri is null.");
-      return;
-    }
-    wxe.b("ImageLoader", "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
-    paramString = a(paramString, paramInt1, paramInt2);
-    if (paramBoolean) {}
-    for (;;)
-    {
-      paramImageView.setImageDrawable(paramString);
-      return;
-      paramString = null;
-    }
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.d(this.jdField_a_of_type_Int);
   }
 }
 

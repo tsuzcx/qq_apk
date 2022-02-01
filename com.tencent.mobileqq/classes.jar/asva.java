@@ -1,38 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.hotpic.HotPicTab;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelPicTabView.1;
+import java.util.Comparator;
 
 public class asva
-  extends Handler
+  implements Comparator<Long>
 {
-  public asva(HotPicTab paramHotPicTab) {}
+  public asva(QfileLocalFileDelPicTabView.1 param1) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      HotPicTab.a(this.a, 0.0F);
-      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
-      if (HotPicTab.a(this.a) < 1.0F)
-      {
-        this.a.invalidate();
-        sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(2), 10L);
-      return;
+    if (paramLong1.equals(paramLong2)) {
+      return 1;
     }
-    HotPicTab.a(this.a, 1.0F);
-    HotPicTab.a(this.a, HotPicTab.a(this.a));
-    this.a.invalidate();
+    return (int)(paramLong1.longValue() - paramLong2.longValue());
   }
 }
 

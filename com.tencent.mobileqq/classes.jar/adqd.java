@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import mqq.app.QQPermissionCallback;
 
 public class adqd
-  implements DialogInterface.OnClickListener
+  implements QQPermissionCallback
 {
-  public adqd(QQIdentiferActivity paramQQIdentiferActivity) {}
+  public adqd(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    bglp.b(this.a.a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.l(true);
   }
 }
 

@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.os.HandlerThread;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import ansm;
+import apsr;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -13,10 +13,10 @@ import mqq.os.MqqHandler;
 
 public class SdCardImageAnimView
   extends ImageView
-  implements ansm
+  implements apsr
 {
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  ansm jdField_a_of_type_Ansm = null;
+  apsr jdField_a_of_type_Apsr = null;
   private FrameBmpCache jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache;
   private Runnable jdField_a_of_type_JavaLangRunnable = new SdCardImageAnimView.1(this);
   public boolean a;
@@ -109,8 +109,8 @@ public class SdCardImageAnimView
   
   public void a(SdCardImageAnimView paramSdCardImageAnimView)
   {
-    if (this.jdField_a_of_type_Ansm != null) {
-      this.jdField_a_of_type_Ansm.a(this);
+    if (this.jdField_a_of_type_Apsr != null) {
+      this.jdField_a_of_type_Apsr.a(this);
     }
   }
   
@@ -152,9 +152,9 @@ public class SdCardImageAnimView
     ThreadManager.getSubThreadHandler().post(this.jdField_b_of_type_JavaLangRunnable);
   }
   
-  public void setEndListener(ansm paramansm)
+  public void setEndListener(apsr paramapsr)
   {
-    this.jdField_a_of_type_Ansm = paramansm;
+    this.jdField_a_of_type_Apsr = paramapsr;
   }
   
   public void setFPS(int paramInt)
@@ -176,7 +176,7 @@ public class SdCardImageAnimView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.SdCardImageAnimView
  * JD-Core Version:    0.7.0.1
  */

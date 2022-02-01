@@ -1,5 +1,7 @@
 package com.tencent.biz.subscribe.comment;
 
+import aaen;
+import aaeo;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -8,15 +10,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.tencent.theme.ISkinIgnoreTypeface;
 import com.tencent.theme.TextHook;
-import yga;
-import ygb;
 
 public class CommentEditText
   extends EditText
   implements ISkinIgnoreTypeface
 {
   private int jdField_a_of_type_Int = 140;
-  private ygb jdField_a_of_type_Ygb;
+  private aaeo jdField_a_of_type_Aaeo;
   
   public CommentEditText(Context paramContext)
   {
@@ -26,7 +26,7 @@ public class CommentEditText
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    addTextChangedListener(new yga(this));
+    addTextChangedListener(new aaen(this));
   }
   
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -59,14 +59,14 @@ public class CommentEditText
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setOnInputBackListener(ygb paramygb)
+  public void setOnInputBackListener(aaeo paramaaeo)
   {
-    this.jdField_a_of_type_Ygb = paramygb;
+    this.jdField_a_of_type_Aaeo = paramaaeo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentEditText
  * JD-Core Version:    0.7.0.1
  */

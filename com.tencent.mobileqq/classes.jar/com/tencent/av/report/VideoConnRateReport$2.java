@@ -1,25 +1,25 @@
 package com.tencent.av.report;
 
-import lyg;
+import lvi;
 
 public class VideoConnRateReport$2
   implements Runnable
 {
-  public VideoConnRateReport$2(lyg paramlyg) {}
+  public VideoConnRateReport$2(lvi paramlvi) {}
   
   public void run()
   {
     synchronized (this.this$0.a)
     {
-      lyg.a(this.this$0);
-      lyg.b(this.this$0);
+      lvi.a(this.this$0);
+      lvi.b(this.this$0);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.report.VideoConnRateReport.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
 
-class ahrv
-  implements View.OnTouchListener
+public class ahrv
+  implements aaob
 {
-  ahrv(ahrs paramahrs, TextView paramTextView) {}
+  public ahrv(AIOGalleryAdapter paramAIOGalleryAdapter) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    }
-  }
+  public void callback(Bundle paramBundle) {}
 }
 
 

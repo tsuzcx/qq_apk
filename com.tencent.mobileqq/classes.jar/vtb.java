@@ -1,17 +1,14 @@
-class vtb
-  implements beei
+public abstract interface vtb
 {
-  vtb(vta paramvta) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean)
-  {
-    wxe.a("PromoteWidgetController", "preloadSonicSession() doStartProcess=%b", Boolean.valueOf(paramBoolean));
-    this.a.a = true;
-  }
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vtb
  * JD-Core Version:    0.7.0.1
  */

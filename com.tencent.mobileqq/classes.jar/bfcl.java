@@ -1,17 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment.2.1;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class bfcl
   implements DialogInterface.OnClickListener
 {
-  public bfcl(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
+  public bfcl(ReciteFragment paramReciteFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new AuthorityControlAppDetailsFragment.2.1(this);
-    AuthorityControlAppDetailsFragment.a(this.a).a(paramDialogInterface);
+    this.a.h();
   }
 }
 

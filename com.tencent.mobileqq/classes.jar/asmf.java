@@ -1,31 +1,13 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class asmf
-  implements ArkViewImplement.LoadCallback
+final class asmf
+  implements DialogInterface.OnClickListener
 {
-  public asmf(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
-  
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    onLoadState(paramInt1);
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    if ((QLog.isColorLevel()) || (paramInt == -1)) {
-      QLog.d("QQGamePadFaceFragment", 2, new Object[] { "onLoadFinish, ret=", Integer.valueOf(paramInt), ", ", QQGamePadFaceFragment.a(this.a) });
-    }
-    if (paramInt == 1) {
-      QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
-    }
-    while (paramInt != -1) {
-      return;
-    }
-    QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
-    QQGamePadFaceFragment.b(this.a);
+    bcst.b(null, "dc00898", "", "", "0X800ADA8", "0X800ADA8", 2, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 

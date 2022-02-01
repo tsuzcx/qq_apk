@@ -1,8 +1,14 @@
 public class bnin
+  extends bnim
 {
-  public static boolean a(int paramInt)
+  public int a(int paramInt)
   {
-    return paramInt == 180;
+    return paramInt;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return paramInt > 0;
   }
 }
 

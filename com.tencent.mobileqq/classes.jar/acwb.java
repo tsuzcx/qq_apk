@@ -1,23 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
-public class acwb
-  implements View.OnClickListener
+public abstract interface acwb
 {
-  public acwb(EditInfoActivity paramEditInfoActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847428);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131704021));
-    this.a.jdField_a_of_type_Boolean = false;
-  }
+  public abstract boolean a(String paramString, int paramInt1, int paramInt2, acwr paramacwr, ArrayList<MessageRecord> paramArrayList, MessageRecord paramMessageRecord, long paramLong);
 }
 
 

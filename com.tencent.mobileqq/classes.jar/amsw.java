@@ -1,32 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class amsw
-  implements MediaPlayer.OnPreparedListener
+  implements DialogInterface.OnKeyListener
 {
-  amsw(amsu paramamsu) {}
+  amsw(amsv paramamsv, amtd paramamtd) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "load bg music success. : " + amsu.b(this.a));
-      }
-      this.a.a.seekTo(0);
-      amsu.b(this.a, true);
-      if (amsu.b(this.a))
-      {
-        this.a.a.start();
-        amsu.c(this.a, false);
-      }
-      return;
+    if (paramInt == 4) {
+      this.jdField_a_of_type_Amsv.a(this.jdField_a_of_type_Amtd);
     }
-    catch (Exception paramMediaPlayer)
-    {
-      paramMediaPlayer.printStackTrace();
-    }
+    return true;
   }
 }
 

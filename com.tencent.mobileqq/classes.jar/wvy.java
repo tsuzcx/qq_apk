@@ -1,16 +1,28 @@
-class wvy
-  implements xsr<wrw>
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+
+public class wvy
 {
-  wvy(wvq paramwvq) {}
+  public int a;
+  public VideoCollectionItem a;
   
-  public wrw a()
+  public wvy(int paramInt, VideoCollectionItem paramVideoCollectionItem)
   {
-    return new wrw(new wvz(this));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem = paramVideoCollectionItem;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("StateVideoCollectionItem{itemKey=").append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key).append(", operation=");
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (String str = "delete";; str = "update") {
+      return str + '}';
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wvy
  * JD-Core Version:    0.7.0.1
  */

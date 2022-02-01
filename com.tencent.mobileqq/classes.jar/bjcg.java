@@ -1,46 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
-
-final class bjcg
-  implements WtTicketPromise
+public abstract interface bjcg
 {
-  bjcg(bjch parambjch, String paramString) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void Done(Ticket paramTicket)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletUtils", 2, "get pskey async success!");
-    }
-    if (this.jdField_a_of_type_Bjch != null) {
-      this.jdField_a_of_type_Bjch.a(0, new String[] { bjcf.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
-    }
-  }
+  public abstract void a(byte[] paramArrayOfByte);
   
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletUtils", 2, "preGetKey. PSk Failed!!!");
-    }
-    if (this.jdField_a_of_type_Bjch != null) {
-      this.jdField_a_of_type_Bjch.a(-1, new String[] { paramErrMsg.getMessage() });
-    }
-  }
+  public abstract void b(byte[] paramArrayOfByte);
   
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletUtils", 2, "preGetKey. PSk Timeout!");
-    }
-    if (this.jdField_a_of_type_Bjch != null) {
-      this.jdField_a_of_type_Bjch.a(-1, new String[] { paramErrMsg.getMessage() });
-    }
-  }
+  public abstract void c(byte[] paramArrayOfByte);
+  
+  public abstract void d(byte[] paramArrayOfByte);
+  
+  public abstract void e(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjcg
  * JD-Core Version:    0.7.0.1
  */

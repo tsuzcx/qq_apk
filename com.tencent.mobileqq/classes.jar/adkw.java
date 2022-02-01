@@ -1,20 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class adkw
-  implements DialogInterface.OnClickListener
+  extends aniz
 {
-  public adkw(NotificationActivity paramNotificationActivity) {}
+  public adkw(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onImpeach(boolean paramBoolean, String paramString)
   {
-    this.a.a();
+    if (!this.a.a.equals(paramString)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.a(2130839584, this.a.getString(2131690605));
+      return;
+    }
+    this.a.a(2130839571, this.a.getString(2131690603));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkw
  * JD-Core Version:    0.7.0.1
  */

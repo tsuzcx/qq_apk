@@ -1,34 +1,108 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Intent;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wkk
-  extends QQUIEventReceiver<wjw, uwk>
+  extends wpb
 {
-  public wkk(@NonNull wjw paramwjw)
+  private boolean a(List<String> paramList)
   {
-    super(paramwjw);
-  }
-  
-  public void a(@NonNull wjw paramwjw, @NonNull uwk paramuwk)
-  {
-    if (wjw.a(paramwjw) == null)
+    QQAppInterface localQQAppInterface = (QQAppInterface)QQStoryContext.a();
+    wpf localwpf = (wpf)wpm.a(10);
+    boolean bool;
+    if (paramList.isEmpty())
     {
-      wxe.b(this.TAG, "ignore this troop nick name change event. %s.", paramuwk.toString());
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodeConfigCmd data is null!!!");
+      }
+      localwpf.b("key_story_msg_tab_show", Boolean.valueOf(false));
+      bool = true;
     }
-    wxe.a(this.TAG, "receive troop nick name change event. %s.", paramuwk.toString());
-    wjw.a(paramwjw).c();
+    for (;;)
+    {
+      ((wff)localQQAppInterface.a(98)).notifyUI(1021, true, null);
+      return bool;
+      paramList = (String)paramList.get(0);
+      if (paramList != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.infoTabShow", 2, "config content: " + paramList);
+        }
+        try
+        {
+          paramList = new JSONObject(paramList);
+          if (paramList.getInt("StoryShowInMsgTab") != 0) {}
+          for (bool = true;; bool = false)
+          {
+            localwpf.b("key_story_msg_tab_show", Boolean.valueOf(bool));
+            localwpf.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(paramList.optInt("StoryAutoExpInMsgTab", 2)));
+            bool = true;
+            break;
+          }
+          bool = false;
+        }
+        catch (JSONException paramList)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
+          }
+        }
+      }
+    }
   }
   
-  public Class acceptEventClass()
+  private boolean b(List<String> paramList)
   {
-    return uwk.class;
+    if (paramList.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodePreloaderConfigCmd data is null!!!");
+      }
+      return false;
+    }
+    paramList = (String)paramList.get(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.infoTabShow", 2, "handleStoryMsgTabNodePreloaderConfigCmd config content: " + paramList);
+    }
+    try
+    {
+      paramList = new JSONObject(paramList);
+      int i = paramList.getInt("MsgTabPrestrainbNum");
+      paramList = paramList.getString("4G");
+      wpf localwpf = (wpf)wpm.a(10);
+      localwpf.b("key_story_msg_tab_node_preload", Integer.valueOf(i));
+      localwpf.b("key_story_msg_tab_node_preload_4g", Boolean.valueOf("1".equals(paramList)));
+      return true;
+    }
+    catch (JSONException paramList)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(int paramInt, Intent paramIntent, ConfigurationService.Config paramConfig, List<String> paramList)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 243: 
+      return a(paramList);
+    }
+    return b(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wkk
  * JD-Core Version:    0.7.0.1
  */

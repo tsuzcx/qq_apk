@@ -1,40 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnExtractFrameListener;
-import java.util.HashMap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
 
-class ras
-  implements TVK_IMediaPlayer.OnExtractFrameListener
+public class ras
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ras(ran paramran) {}
+  public ras(RIJRedPacketProgressView paramRIJRedPacketProgressView, View paramView) {}
   
-  public void onExtractFrame(int paramInt, Bitmap paramBitmap)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    rau localrau = (rau)ran.a(this.a).get(Integer.valueOf(paramInt));
-    if (localrau != null) {}
-    try
-    {
-      localrau.jdField_b_of_type_Long = rai.a(paramBitmap, true);
-      localrau.jdField_b_of_type_Int = rai.a(localrau.a, localrau.jdField_b_of_type_Long);
-      if (QLog.isColorLevel()) {
-        QLog.d(ran.a(), 2, "onExtractFrame frameIndex = " + paramInt + ", localHash = " + localrau.jdField_b_of_type_Long + ", hashDiff = " + localrau.jdField_b_of_type_Int);
-      }
-      return;
-    }
-    catch (Throwable paramBitmap)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(ran.a(), 2, "VideoExtractFrameHash.dctImageHash ERROR e = " + paramBitmap.getMessage());
-        }
-      }
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setScaleX(f);
+    this.jdField_a_of_type_AndroidViewView.setScaleY(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ras
  * JD-Core Version:    0.7.0.1
  */

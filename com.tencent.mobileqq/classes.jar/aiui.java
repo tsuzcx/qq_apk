@@ -1,118 +1,248 @@
-import android.content.Context;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build.VERSION;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactPresenter.1;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactPresenter.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Timer;
+import tencent.im.nearfield_friend.nearfield_friend.GPS;
 
 public class aiui
-  extends SQLiteOpenHelper
 {
-  public aiui(Context paramContext, String paramString)
+  private int jdField_a_of_type_Int = 60000;
+  private aiug jdField_a_of_type_Aiug;
+  private aiuh jdField_a_of_type_Aiuh = new aiul(this);
+  private aiup jdField_a_of_type_Aiup;
+  private anmu jdField_a_of_type_Anmu = new aium(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private Timer jdField_a_of_type_JavaUtilTimer;
+  private nearfield_friend.GPS jdField_a_of_type_TencentImNearfield_friendNearfield_friend$GPS;
+  private int b = 1200000;
+  
+  public aiui(Face2FaceAddContactFragment paramFace2FaceAddContactFragment)
   {
-    super(paramContext, "passwd_red_bag_" + paramString + ".db", null, 5);
+    this.jdField_a_of_type_Aiup = paramFace2FaceAddContactFragment;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramFace2FaceAddContactFragment.getActivity().app;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aiuh);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anmu);
+    this.jdField_a_of_type_Aiug = ((aiug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(169));
   }
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  private String a()
   {
-    try
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_" + System.currentTimeMillis() + "_" + (int)Math.floor(Math.random() * 100000.0D) % 100000;
+    }
+    return "";
+  }
+  
+  private nearfield_friend.GPS a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramSosoLbsInfo != null)
     {
+      StringBuffer localStringBuffer = new StringBuffer();
+      nearfield_friend.GPS localGPS = new nearfield_friend.GPS();
+      localGPS.lat.set((int)(paramSosoLbsInfo.a.a * 1000000.0D));
+      localGPS.lng.set((int)(paramSosoLbsInfo.a.b * 1000000.0D));
+      localGPS.type.set(1);
+      localStringBuffer.append("generateGPSInfo GPS: ").append(paramSosoLbsInfo.a.a * 1000000.0D).append(",").append(paramSosoLbsInfo.a.b * 1000000.0D);
+      this.jdField_a_of_type_TencentImNearfield_friendNearfield_friend$GPS = localGPS;
       if (QLog.isColorLevel()) {
-        QLog.d("PasswdRedBagDBHelper", 2, " onCreate execSQL sqlRedBags=" + "CREATE TABLE IF NOT EXISTS red_bags (redbag_id VARCHAR PRIMARY KEY, redbag_index VARCHAR, uint64_creator_uin VARCHAR, expire_time INTEGER, password VARCHAR, is_open INTEGER, is_finish INTEGER, is_overdue INTEGER, redbag_type INTEGER, last_password VARCHAR, ext_str VARCHAR);" + " sqlRedBagRelation=" + "CREATE TABLE IF NOT EXISTS red_bag_relations (code VARCHAR, source VARCHAR, redbag_id VARCHAR, authkey VARCHAR );" + " sqlUpdateTimes=" + "CREATE TABLE IF NOT EXISTS update_times (code INTEGER, source INTEGER, last_update_time INTEGER, PRIMARY KEY(code,source));");
+        QLog.i("Face2FaceAddContactPresenter", 2, localStringBuffer.toString());
       }
-      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS red_bags (redbag_id VARCHAR PRIMARY KEY, redbag_index VARCHAR, uint64_creator_uin VARCHAR, expire_time INTEGER, password VARCHAR, is_open INTEGER, is_finish INTEGER, is_overdue INTEGER, redbag_type INTEGER, last_password VARCHAR, ext_str VARCHAR);");
+    }
+    return this.jdField_a_of_type_TencentImNearfield_friendNearfield_friend$GPS;
+  }
+  
+  private void a(FragmentActivity paramFragmentActivity, boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (Build.VERSION.SDK_INT >= 23) {
+      if (paramFragmentActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0) {
+        paramFragmentActivity.requestPermissions(new aiuj(this, paramBoolean, paramString1, paramString2), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      }
+    }
+    while (!paramBoolean)
+    {
+      do
+      {
+        return;
+      } while (!paramBoolean);
+      a(paramString1, paramString2);
       return;
     }
-    catch (SQLException localSQLException2)
+    a(paramString1, paramString2);
+  }
+  
+  private void a(SosoInterface.SosoLbsInfo paramSosoLbsInfo, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = a();
+    nearfield_friend.GPS localGPS = a(paramSosoLbsInfo);
+    paramSosoLbsInfo = null;
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramSosoLbsInfo = paramString2.getBytes();
+    }
+    this.jdField_a_of_type_Aiug.a(this.jdField_a_of_type_JavaLangString, paramString1, localGPS, paramSosoLbsInfo);
+  }
+  
+  private void a(String paramString1, String paramString2)
+  {
+    ThreadManager.post(new Face2FaceAddContactPresenter.3(this, paramString1, paramString2), 8, null, false);
+  }
+  
+  private void a(boolean paramBoolean1, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, int paramInt4, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString1)) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      if (paramInt2 == 2) {
+        if (this.jdField_a_of_type_Aiup != null) {
+          this.jdField_a_of_type_Aiup.f();
+        }
+      }
+    }
+    while (this.jdField_a_of_type_Aiup == null)
     {
-      try
+      do
       {
-        paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS red_bag_relations (code VARCHAR, source VARCHAR, redbag_id VARCHAR, authkey VARCHAR );");
-      }
-      catch (SQLException localSQLException2)
-      {
-        try
+        do
         {
-          for (;;)
+          do
           {
-            paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS update_times (code INTEGER, source INTEGER, last_update_time INTEGER, PRIMARY KEY(code,source));");
-            return;
-            localSQLException1 = localSQLException1;
-            if (QLog.isColorLevel())
+            do
             {
-              QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", localSQLException1);
-              continue;
-              localSQLException2 = localSQLException2;
-              if (QLog.isColorLevel()) {
-                QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", localSQLException2);
+              do
+              {
+                return;
+                if (paramInt2 != 3) {
+                  break;
+                }
+              } while (this.jdField_a_of_type_Aiup == null);
+              this.jdField_a_of_type_Aiup.b(paramString3);
+              return;
+              switch (paramInt1)
+              {
+              default: 
+                return;
+              case 0: 
+                this.jdField_a_of_type_Int = Math.max(paramInt3 * 1000, 10000);
+                this.b = Math.max(paramInt4 * 1000, 10000);
+                if (this.jdField_a_of_type_Aiup != null)
+                {
+                  this.jdField_a_of_type_Aiup.a(this.b);
+                  this.jdField_a_of_type_Aiup.b(this.jdField_a_of_type_Int);
+                }
+                c();
+                return;
               }
-            }
-          }
-        }
-        catch (SQLException paramSQLiteDatabase)
-        {
-          while (!QLog.isColorLevel()) {}
-          QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", paramSQLiteDatabase);
-        }
+            } while (this.jdField_a_of_type_Aiup == null);
+            this.jdField_a_of_type_Aiup.g();
+            return;
+          } while (this.jdField_a_of_type_Aiup == null);
+          this.jdField_a_of_type_Aiup.c();
+          return;
+        } while (this.jdField_a_of_type_Aiup == null);
+        this.jdField_a_of_type_Aiup.d();
+        return;
+      } while (this.jdField_a_of_type_Aiup == null);
+      this.jdField_a_of_type_Aiup.e();
+      return;
+    }
+    this.jdField_a_of_type_Aiup.e();
+  }
+  
+  private void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, List<String> paramList)
+  {
+    if ((paramBoolean) && (TextUtils.equals(paramString1, this.jdField_a_of_type_JavaLangString))) {
+      switch (paramInt)
+      {
       }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (this.jdField_a_of_type_Aiup == null);
+        if ((paramList != null) && (paramList.size() > 0)) {
+          this.jdField_a_of_type_Aiup.a(paramList);
+        }
+        this.jdField_a_of_type_Aiup.b(this.jdField_a_of_type_Int);
+        return;
+      } while (this.jdField_a_of_type_Aiup == null);
+      this.jdField_a_of_type_Aiup.c();
+      return;
+    } while (this.jdField_a_of_type_Aiup == null);
+    this.jdField_a_of_type_Aiup.d();
+  }
+  
+  private void c()
+  {
+    d();
+    this.jdField_a_of_type_JavaUtilTimer = new Timer();
+    this.jdField_a_of_type_JavaUtilTimer.schedule(new Face2FaceAddContactPresenter.1(this), 300000L);
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_JavaUtilTimer != null)
+    {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
+      this.jdField_a_of_type_JavaUtilTimer = null;
     }
   }
   
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  public void a()
   {
-    int i = paramInt1;
-    if (QLog.isColorLevel())
-    {
-      QLog.d("PasswdRedBagDBHelper", 2, "onUpgrade<<<<<oldVersion: " + paramInt1 + " newVersion: " + paramInt2);
-      i = paramInt1;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      b();
     }
-    if (i < paramInt2)
+    d();
+    this.jdField_a_of_type_Aiup = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      switch (i)
-      {
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        try
-        {
-          paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN redbag_index VARCHAR ");
-        }
-        catch (Exception localException1) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN redbag_index VARCHAR ", localException1);
-          continue;
-          try
-          {
-            paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN redbag_type INTEGER DEFAULT 0");
-          }
-          catch (Exception localException2) {}
-          if (QLog.isColorLevel())
-          {
-            QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN redbag_type INTEGER DEFAULT 0", localException2);
-            continue;
-            try
-            {
-              paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN last_password VARCHAR ");
-            }
-            catch (Exception localException3) {}
-            if (QLog.isColorLevel())
-            {
-              QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN last_password VARCHAR ", localException3);
-              continue;
-              try
-              {
-                paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN ext_str VARCHAR ");
-              }
-              catch (Exception localException4) {}
-              if (QLog.isColorLevel()) {
-                QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN ext_str VARCHAR ", localException4);
-              }
-            }
-          }
-        }
-      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aiuh);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anmu);
+    }
+  }
+  
+  public void a(FragmentActivity paramFragmentActivity)
+  {
+    a(paramFragmentActivity, false, "", "");
+  }
+  
+  public void a(FragmentActivity paramFragmentActivity, String paramString1, String paramString2)
+  {
+    a(paramFragmentActivity, true, paramString1, paramString2);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceAddContactPresenter", 2, "sendFace2FaceAddContactHeartBeatReq mSessionId:" + this.jdField_a_of_type_JavaLangString + " faceFriends:" + paramList);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Aiug.a(this.jdField_a_of_type_JavaLangString, paramList);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceAddContactPresenter", 2, "sendExitFace2FaceAddContactReq mSessionId:" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_Aiug.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaLangString = null;
     }
   }
 }

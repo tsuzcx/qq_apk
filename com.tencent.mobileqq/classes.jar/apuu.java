@@ -1,66 +1,74 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class apuu
-  implements apuy
+  implements View.OnTouchListener
 {
-  public apuu(EmoticonPanelController paramEmoticonPanelController, int paramInt, long paramLong) {}
+  public apuu(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int k = 1;
-    int j = this.jdField_a_of_type_Int;
-    int i = j;
-    List localList;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_b_of_type_Boolean)
+    boolean bool = true;
+    if (!this.a.jdField_c_of_type_Boolean) {
+      bool = false;
+    }
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelController", 2, "switchTabMode mMarketPgkDownloaded = true");
-      }
-      localList = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_b_of_type_JavaUtilList;
-      i = j;
-      if (localList != null)
+      return bool;
+      if ((paramView == this.a.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress)) {}
+      switch (paramMotionEvent.getAction())
       {
-        i = j;
-        if (localList.size() > 0)
+      case 2: 
+      default: 
+        return false;
+      case 0: 
+        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.d.setVisibility(4);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
+        this.a.e.setVisibility(4);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a = System.currentTimeMillis();
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
+        if (this.a.jdField_b_of_type_Int == 1) {}
+        for (int i = 0;; i = 1)
         {
-          if ((localList.size() <= EmoticonPanelController.d) || (((apwv)localList.get(EmoticonPanelController.d)).jdField_a_of_type_Int != 8)) {
-            break label163;
-          }
-          i = 1;
-          if (!((apno)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.a.getManager(334)).c()) {
-            break label198;
-          }
+          bcst.b(null, "dc00898", "", "", "0X8007106", "0X8007106", i, 0, "", "", "", "");
+          return true;
         }
       }
-    }
-    label163:
-    label198:
-    for (j = k;; j = 0)
-    {
-      if (i != 0) {
-        if (localList.size() >= j + 4) {
-          i = j + 3;
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.jdField_b_of_type_Boolean = false;
-        EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController, this.jdField_a_of_type_Long, i);
-        return;
-        i = 0;
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a()) {
         break;
-        i = 0;
-        continue;
-        if (localList.size() >= j + 3) {
-          i = j + 2;
-        } else {
-          i = 0;
-        }
       }
+    } while (!QLog.isColorLevel());
+    QLog.i("DynamicAvatarRecordActivity", 2, "ACTION_UP, current state is already preview!");
+    return true;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
     }
+    if (System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a < 500L)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.d();
+      DynamicAvatarRecordActivity.a(this.a);
+      return true;
+    }
+    DynamicAvatarRecordActivity.b(this.a);
+    return true;
   }
 }
 

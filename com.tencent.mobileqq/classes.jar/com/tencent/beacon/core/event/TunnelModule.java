@@ -1,32 +1,33 @@
 package com.tencent.beacon.core.event;
 
 import android.content.Context;
-import com.tencent.beacon.core.c.i;
-import com.tencent.beacon.core.d.h;
+import com.tencent.beacon.core.d.k;
+import com.tencent.beacon.core.e.j;
 import com.tencent.beacon.core.strategy.StrategyQueryModule;
-import com.tencent.beacon.core.strategy.a.a;
+import com.tencent.beacon.event.a;
 import com.tencent.beacon.upload.TunnelInfo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class TunnelModule
-  extends com.tencent.beacon.core.b
+  extends com.tencent.beacon.core.c
 {
-  private static volatile TunnelModule INSTANCE = null;
-  private static List<com.tencent.beacon.event.a<Map<String, String>>> cacheAdditionInfo = Collections.synchronizedList(new ArrayList(5));
-  private static List<c> cacheEvents;
+  private static volatile TunnelModule INSTANCE;
+  private static List<a<Map<String, String>>> cacheAdditionInfo = Collections.synchronizedList(new ArrayList(5));
+  private static List<f> cacheEvents;
   private static List<TunnelInfo> cacheTunnel = Collections.synchronizedList(new ArrayList(5));
-  private static List<com.tencent.beacon.event.a<String>> cacheUserId = Collections.synchronizedList(new ArrayList(5));
+  private static List<a<String>> cacheUserId = Collections.synchronizedList(new ArrayList(5));
   public static TunnelModule.b netConsumeUtil;
-  private d appDefaultEventTunnel;
+  private h appDefaultEventTunnel;
   private Context context;
+  protected Runnable doUploadTask = new z(this);
   public boolean isEnable;
-  private Map<String, d> tunnelMap;
+  private Map<String, h> tunnelMap;
   
   static
   {
@@ -37,8 +38,8 @@ public class TunnelModule
   {
     super(paramContext);
     this.context = paramContext;
-    this.appDefaultEventTunnel = new d(paramContext, com.tencent.beacon.core.b.b.a(paramContext).b());
-    this.tunnelMap = new HashMap();
+    this.appDefaultEventTunnel = new h(paramContext, com.tencent.beacon.core.info.b.b(paramContext).a());
+    this.tunnelMap = new ConcurrentHashMap();
     dealCacheTunnel();
     dealCacheAdditionalInfo();
     dealCacheUserId();
@@ -50,21 +51,21 @@ public class TunnelModule
     {
       try
       {
-        if (paramTunnelInfo.appKey.equals(this.appDefaultEventTunnel.f()))
+        if (paramTunnelInfo.appKey.equals(this.appDefaultEventTunnel.b()))
         {
-          com.tencent.beacon.core.d.b.d("[event] can not register app default appkey: %s", new Object[] { paramTunnelInfo.appKey });
+          com.tencent.beacon.core.e.d.b("[event] can not register app default appkey: %s", new Object[] { paramTunnelInfo.appKey });
           return;
         }
-        if ((d)this.tunnelMap.get(paramTunnelInfo.appKey) != null)
+        if ((h)this.tunnelMap.get(paramTunnelInfo.appKey) != null)
         {
-          com.tencent.beacon.core.d.b.d("[event] registerTunnel failed. EventTunnel already exists :%s", new Object[] { paramTunnelInfo.appKey });
+          com.tencent.beacon.core.e.d.b("[event] registerTunnel failed. EventTunnel already exists :%s", new Object[] { paramTunnelInfo.appKey });
           continue;
         }
-        locald = createTunnel(this.context, paramTunnelInfo);
+        localh = createTunnel(this.context, paramTunnelInfo);
       }
       finally {}
-      d locald;
-      this.tunnelMap.put(paramTunnelInfo.appKey, locald);
+      h localh;
+      this.tunnelMap.put(paramTunnelInfo.appKey, localh);
     }
   }
   
@@ -74,23 +75,24 @@ public class TunnelModule
     for (;;)
     {
       return;
-      if (this.appDefaultEventTunnel != null) {
-        parama.a(this.appDefaultEventTunnel);
+      Object localObject = this.appDefaultEventTunnel;
+      if (localObject != null) {
+        parama.a((h)localObject);
       }
-      Iterator localIterator = this.tunnelMap.values().iterator();
-      while (localIterator.hasNext()) {
-        parama.a((d)localIterator.next());
+      localObject = this.tunnelMap.values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        parama.a((h)((Iterator)localObject).next());
       }
     }
   }
   
-  private d createTunnel(Context paramContext, TunnelInfo paramTunnelInfo)
+  private h createTunnel(Context paramContext, TunnelInfo paramTunnelInfo)
   {
-    paramTunnelInfo.channel = com.tencent.beacon.core.d.a.a(paramTunnelInfo.channel);
-    d locald = new d(paramContext, paramTunnelInfo.appKey);
-    locald.a(true);
-    com.tencent.beacon.core.b.b.a(paramContext).a(paramTunnelInfo.appKey, paramTunnelInfo);
-    return locald;
+    paramTunnelInfo.channel = com.tencent.beacon.core.e.c.a(paramTunnelInfo.channel);
+    h localh = new h(paramContext, paramTunnelInfo.appKey);
+    localh.a(true);
+    com.tencent.beacon.core.info.g.b(paramContext).a(paramTunnelInfo.appKey, paramTunnelInfo);
+    return localh;
   }
   
   private void dealCacheAdditionalInfo()
@@ -98,7 +100,7 @@ public class TunnelModule
     Iterator localIterator = cacheAdditionInfo.iterator();
     while (localIterator.hasNext())
     {
-      com.tencent.beacon.event.a locala = (com.tencent.beacon.event.a)localIterator.next();
+      a locala = (a)localIterator.next();
       setAdditionalInfoInstance(locala.a, (Map)locala.b);
     }
     cacheAdditionInfo.clear();
@@ -110,8 +112,8 @@ public class TunnelModule
     while (localIterator.hasNext())
     {
       TunnelInfo localTunnelInfo = (TunnelInfo)localIterator.next();
-      d locald = createTunnel(this.context, localTunnelInfo);
-      this.tunnelMap.put(localTunnelInfo.appKey, locald);
+      h localh = createTunnel(this.context, localTunnelInfo);
+      this.tunnelMap.put(localTunnelInfo.appKey, localh);
     }
     cacheTunnel.clear();
   }
@@ -121,7 +123,7 @@ public class TunnelModule
     Iterator localIterator = cacheUserId.iterator();
     while (localIterator.hasNext())
     {
-      com.tencent.beacon.event.a locala = (com.tencent.beacon.event.a)localIterator.next();
+      a locala = (a)localIterator.next();
       setUserIdInstance(locala.a, (String)locala.b);
     }
     cacheUserId.clear();
@@ -131,7 +133,7 @@ public class TunnelModule
   {
     TunnelModule localTunnelModule = getInstance();
     if ((localTunnelModule != null) && (isModuleAble())) {
-      localTunnelModule.allTunnel(new TunnelModule.4());
+      localTunnelModule.allTunnel(new B());
     }
   }
   
@@ -141,14 +143,14 @@ public class TunnelModule
     if ((localTunnelModule == null) || (!isModuleAble())) {
       return;
     }
-    localTunnelModule.allTunnel(new TunnelModule.3(paramBoolean));
+    localTunnelModule.allTunnel(new A(paramBoolean));
   }
   
   public static void flushObjectsToDB(boolean paramBoolean)
   {
     TunnelModule localTunnelModule = getInstance();
     if (localTunnelModule != null) {
-      localTunnelModule.allTunnel(new TunnelModule.5(paramBoolean));
+      localTunnelModule.allTunnel(new C(paramBoolean));
     }
   }
   
@@ -157,16 +159,16 @@ public class TunnelModule
     Object localObject = getInstance();
     if (localObject == null)
     {
-      com.tencent.beacon.core.d.b.d("getAdditionalInfo failed, sdk is not ready", new Object[0]);
+      com.tencent.beacon.core.e.d.b("getAdditionalInfo failed, sdk is not ready", new Object[0]);
       return null;
     }
     localObject = ((TunnelModule)localObject).getTunnelByAppKey(paramString);
     if (localObject == null)
     {
-      com.tencent.beacon.core.d.b.d("getAdditionalInfo failed, tunnel of %s not found", new Object[] { paramString });
+      com.tencent.beacon.core.e.d.b("getAdditionalInfo failed, tunnel of %s not found", new Object[] { paramString });
       return null;
     }
-    return ((d)localObject).g();
+    return ((h)localObject).a();
   }
   
   public static TunnelModule getInstance()
@@ -187,12 +189,12 @@ public class TunnelModule
     finally {}
   }
   
-  private d getTunnelByAppKey(String paramString)
+  private h getTunnelByAppKey(String paramString)
   {
-    if ((h.a(paramString)) || (paramString.equals(this.appDefaultEventTunnel.f()))) {
+    if ((j.c(paramString)) || (paramString.equals(this.appDefaultEventTunnel.b()))) {
       return this.appDefaultEventTunnel;
     }
-    return (d)this.tunnelMap.get(paramString);
+    return (h)this.tunnelMap.get(paramString);
   }
   
   public static String getUserId(String paramString)
@@ -200,16 +202,16 @@ public class TunnelModule
     Object localObject = getInstance();
     if (localObject == null)
     {
-      com.tencent.beacon.core.d.b.d("getUserId failed, sdk is not ready", new Object[0]);
+      com.tencent.beacon.core.e.d.b("getUserId failed, sdk is not ready", new Object[0]);
       return null;
     }
     localObject = ((TunnelModule)localObject).getTunnelByAppKey(paramString);
     if (localObject == null)
     {
-      com.tencent.beacon.core.d.b.d("getUserId failed, tunnel of %s not found", new Object[] { paramString });
+      com.tencent.beacon.core.e.d.b("getUserId failed, tunnel of %s not found", new Object[] { paramString });
       return null;
     }
-    return ((d)localObject).h();
+    return ((h)localObject).f();
   }
   
   public static boolean isModuleAble()
@@ -217,7 +219,7 @@ public class TunnelModule
     Object localObject = getInstance();
     if (localObject == null)
     {
-      com.tencent.beacon.core.d.b.d("[module] this module not ready!", new Object[0]);
+      com.tencent.beacon.core.e.d.b("[module] this module not ready!", new Object[0]);
       return false;
     }
     boolean bool2 = ((TunnelModule)localObject).isEnable;
@@ -228,10 +230,14 @@ public class TunnelModule
     if (bool1)
     {
       localObject = EventStrategyBean.getInstance();
-      if ((localObject != null) && (netConsumeUtil != null) && (netConsumeUtil.a() >= ((EventStrategyBean)localObject).getDailyConsumeLimit()))
+      if (localObject != null)
       {
-        com.tencent.beacon.core.d.b.c("[strategy] reach daily consume limited! %d ", new Object[] { Integer.valueOf(((EventStrategyBean)localObject).getDailyConsumeLimit()) });
-        return false;
+        TunnelModule.b localb = netConsumeUtil;
+        if ((localb != null) && (localb.a() >= ((EventStrategyBean)localObject).getDailyConsumeLimit()))
+        {
+          com.tencent.beacon.core.e.d.i("[strategy] reach daily consume limited! %d ", new Object[] { Integer.valueOf(((EventStrategyBean)localObject).getDailyConsumeLimit()) });
+          return false;
+        }
       }
     }
     return bool1;
@@ -247,15 +253,16 @@ public class TunnelModule
     Object localObject = StrategyQueryModule.getInstance();
     if ((localObject == null) || (!((StrategyQueryModule)localObject).isAtLeastAComQueryEnd()))
     {
-      com.tencent.beacon.core.d.b.a("[event] [%s] add to cache events list.", new Object[] { paramString2 });
-      if (cacheEvents != null) {
-        cacheEvents.add(new c(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2));
+      com.tencent.beacon.core.e.d.d("[event] [%s] add to cache events list.", new Object[] { paramString2 });
+      localObject = cacheEvents;
+      if (localObject != null) {
+        ((List)localObject).add(new f(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2));
       }
       return true;
     }
     if (!isModuleAble())
     {
-      com.tencent.beacon.core.d.b.d("[event] UserEventModule is disable (false).", new Object[0]);
+      com.tencent.beacon.core.e.d.b("[event] UserEventModule is disable (false).", new Object[0]);
       return false;
     }
     localObject = getInstance();
@@ -263,18 +270,18 @@ public class TunnelModule
     {
       localObject = ((TunnelModule)localObject).getTunnelByAppKey(paramString1);
       if (localObject != null) {
-        return ((d)localObject).a(paramString2, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2, paramBoolean3);
+        return ((h)localObject).a(paramString2, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2, paramBoolean3);
       }
-      com.tencent.beacon.core.d.b.d("onUserAction failed, tunnel of %s not found", new Object[] { paramString1 });
+      com.tencent.beacon.core.e.d.b("onUserAction failed, tunnel of %s not found", new Object[] { paramString1 });
     }
     return false;
   }
   
   public static void registerTunnel(TunnelInfo paramTunnelInfo)
   {
-    if (h.a(paramTunnelInfo.appKey))
+    if (j.c(paramTunnelInfo.appKey))
     {
-      com.tencent.beacon.core.d.b.d("[event] registerTunnel failed. appKey is empty", new Object[0]);
+      com.tencent.beacon.core.e.d.b("[event] registerTunnel failed. appKey is empty", new Object[0]);
       return;
     }
     TunnelModule localTunnelModule = getInstance();
@@ -291,7 +298,7 @@ public class TunnelModule
     TunnelModule localTunnelModule = getInstance();
     if (localTunnelModule == null)
     {
-      cacheAdditionInfo.add(new com.tencent.beacon.event.a(paramString, paramMap));
+      cacheAdditionInfo.add(new a(paramString, paramMap));
       return;
     }
     localTunnelModule.setAdditionalInfoInstance(paramString, paramMap);
@@ -299,13 +306,13 @@ public class TunnelModule
   
   private void setAdditionalInfoInstance(String paramString, Map<String, String> paramMap)
   {
-    d locald = getTunnelByAppKey(paramString);
-    if (locald == null)
+    h localh = getTunnelByAppKey(paramString);
+    if (localh == null)
     {
-      com.tencent.beacon.core.d.b.d("setAdditionalInfo failed, tunnel of %s not found", new Object[] { paramString });
+      com.tencent.beacon.core.e.d.b("setAdditionalInfo failed, tunnel of %s not found", new Object[] { paramString });
       return;
     }
-    locald.a(paramMap);
+    localh.a(paramMap);
   }
   
   public static void setNetConsumeProtocol(TunnelModule.b paramb)
@@ -318,52 +325,39 @@ public class TunnelModule
     TunnelModule localTunnelModule = getInstance();
     if (localTunnelModule == null)
     {
-      cacheUserId.add(new com.tencent.beacon.event.a(paramString1, paramString2));
+      cacheUserId.add(new a(paramString1, paramString2));
       return;
     }
-    String str1 = paramString2;
-    if (h.a(paramString2)) {
-      str1 = "10000";
+    String str = paramString2;
+    if (j.c(paramString2)) {
+      str = "10000";
     }
-    String str2 = str1.replace('|', '_').trim();
-    if (com.tencent.beacon.core.d.a.b(str2))
-    {
-      if (str2.length() < 5) {
-        com.tencent.beacon.core.d.b.c("[core] userID length should < 5!", new Object[0]);
-      }
-      paramString2 = str2;
-      if (str2.length() <= 128) {}
-    }
-    for (paramString2 = str2.substring(0, 128);; paramString2 = "10000")
-    {
-      localTunnelModule.setUserIdInstance(paramString1, paramString2);
-      return;
-      com.tencent.beacon.core.d.b.c("[core] userID should be ASCII code in 32-126! userID:" + str1, new Object[0]);
-    }
+    localTunnelModule.setUserIdInstance(paramString1, com.tencent.beacon.core.e.c.d(str));
   }
   
   private void setUserIdInstance(String paramString1, String paramString2)
   {
-    d locald = getTunnelByAppKey(paramString1);
-    if (locald == null)
+    h localh = getTunnelByAppKey(paramString1);
+    if (localh == null)
     {
-      com.tencent.beacon.core.d.b.d("setUserId failed, tunnel of %s not found", new Object[] { paramString1 });
+      com.tencent.beacon.core.e.d.b("setUserId failed, tunnel of %s not found", new Object[] { paramString1 });
       return;
     }
-    locald.b(paramString2);
+    localh.b(paramString2);
   }
   
   public void dealCacheEvent()
   {
     try
     {
-      if ((cacheEvents != null) && (cacheEvents.size() > 0))
+      Object localObject1 = cacheEvents;
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
-        Iterator localIterator = cacheEvents.iterator();
-        while (localIterator.hasNext())
+        localObject1 = cacheEvents.iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          c localc = (c)localIterator.next();
-          onUserAction(localc.g, localc.a, localc.b, localc.c, localc.d, localc.e, localc.f);
+          f localf = (f)((Iterator)localObject1).next();
+          onUserAction(localf.g, localf.a, localf.b, localf.c, localf.d, localf.e, localf.f);
         }
         cacheEvents.clear();
       }
@@ -373,11 +367,8 @@ public class TunnelModule
   
   public void onAppFirstRun()
   {
-    Context localContext = this.mContext;
-    String str = this.appDefaultEventTunnel.f();
-    com.tencent.beacon.core.d.b.b("[db] start", new Object[0]);
-    com.tencent.beacon.core.d.b.e("[event] ua first clean :%d", new Object[] { Integer.valueOf(com.tencent.beacon.core.a.a.b.a(localContext, str, new int[] { 1, 2, 3, 4 })) });
-    com.tencent.beacon.core.d.b.e("[event] ua remove strategy :%d", new Object[] { Integer.valueOf(com.tencent.beacon.core.strategy.b.b(this.mContext)) });
+    com.tencent.beacon.core.e.d.e("[event] ua first clean :%d", new Object[] { Integer.valueOf(t.a(this.mContext, this.appDefaultEventTunnel.b(), null, -1L, 9223372036854775807L)) });
+    com.tencent.beacon.core.e.d.e("[event] ua remove strategy :%d", new Object[] { Integer.valueOf(com.tencent.beacon.core.strategy.d.a(this.mContext, 101)) });
   }
   
   public void onModuleStrategyUpdated(int paramInt, Map<String, String> paramMap)
@@ -392,26 +383,26 @@ public class TunnelModule
   {
     super.onSDKInit(paramContext);
     setModuleUserEnable(true);
-    new com.tencent.beacon.core.a.d().a(paramContext);
+    com.tencent.beacon.core.a.g.a().a(paramContext, new y(this));
   }
   
   public void onStrategyQueryFinished()
   {
     super.onStrategyQueryFinished();
-    allTunnel(new TunnelModule.1());
+    allTunnel(new w(this));
     dealCacheEvent();
   }
   
-  public void onStrategyUpdated(com.tencent.beacon.core.strategy.a parama)
+  public void onStrategyUpdated(com.tencent.beacon.core.strategy.c paramc)
   {
-    super.onStrategyUpdated(parama);
-    if (parama != null)
+    super.onStrategyUpdated(paramc);
+    if (paramc != null)
     {
-      parama = parama.b(1);
-      if (parama != null)
+      paramc = paramc.b(1);
+      if (paramc != null)
       {
-        boolean bool = parama.a();
-        com.tencent.beacon.core.d.b.f("[strategy] setEnable: %b", new Object[] { Boolean.valueOf(bool) });
+        boolean bool = paramc.f();
+        com.tencent.beacon.core.e.d.f("[strategy] setEnable: %b", new Object[] { Boolean.valueOf(bool) });
         setEnable(bool);
       }
     }
@@ -419,8 +410,9 @@ public class TunnelModule
   
   public void setAppKey(String paramString)
   {
-    if (this.appDefaultEventTunnel != null) {
-      this.appDefaultEventTunnel.a(paramString);
+    h localh = this.appDefaultEventTunnel;
+    if (localh != null) {
+      localh.a(paramString);
     }
   }
   
@@ -429,7 +421,7 @@ public class TunnelModule
     try
     {
       this.isEnable = paramBoolean;
-      allTunnel(new TunnelModule.2(paramBoolean));
+      allTunnel(new x(this, paramBoolean));
       return;
     }
     finally
@@ -445,9 +437,9 @@ public class TunnelModule
     if (localObject != null)
     {
       localObject = ((StrategyQueryModule)localObject).getStrategy().b(1);
-      if ((localObject != null) && (((a.a)localObject).a() != paramBoolean))
+      if ((localObject != null) && (((com.tencent.beacon.core.strategy.b)localObject).f() != paramBoolean))
       {
-        ((a.a)localObject).a(paramBoolean);
+        ((com.tencent.beacon.core.strategy.b)localObject).a(paramBoolean);
         setEnable(paramBoolean);
       }
     }
@@ -455,26 +447,26 @@ public class TunnelModule
   
   public void setUploadMode(boolean paramBoolean)
   {
-    if ((i.a(this.mContext) != null) && (paramBoolean != i.a(this.mContext).b()))
+    if ((k.a(this.mContext) != null) && (paramBoolean != k.a(this.mContext).e()))
     {
       if (paramBoolean) {
-        i.a(this.mContext).b(true);
+        k.a(this.mContext).a(true);
       }
     }
     else {
       return;
     }
-    i.a(this.mContext).b(false);
+    k.a(this.mContext).a(false);
   }
   
   public void updateSchedule()
   {
-    allTunnel(new TunnelModule.6());
+    allTunnel(new D(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.event.TunnelModule
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.tts;
 
-import alud;
+import anni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,12 +11,12 @@ class SilkStreamPlayer$SilkStreamPlayerThread$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.context, alud.a(2131714552), 0).a();
+    QQToast.a(BaseApplicationImpl.context, anni.a(2131712922), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.tts.SilkStreamPlayer.SilkStreamPlayerThread.1
  * JD-Core Version:    0.7.0.1
  */

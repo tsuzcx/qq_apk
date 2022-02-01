@@ -1,28 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class yxb
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Animator.AnimatorListener
 {
-  yxb(ywy paramywy, View paramView) {}
+  yxb(ywz paramywz) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    if ((localLayoutParams instanceof LinearLayout.LayoutParams))
-    {
-      ((LinearLayout.LayoutParams)localLayoutParams).topMargin = paramValueAnimator.intValue();
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    }
+    this.a.a = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yxb
  * JD-Core Version:    0.7.0.1
  */

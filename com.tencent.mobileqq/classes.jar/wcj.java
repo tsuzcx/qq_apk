@@ -1,149 +1,118 @@
-import android.app.Dialog;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Map;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wcj
-  extends AbsVideoInfoWidget
-  implements View.OnClickListener
+  extends wcf
 {
-  private TextView a;
-  private String c = "";
-  private boolean e;
-  
-  public wcj(View paramView)
+  public wcj(int paramInt, wcz paramwcz)
   {
-    super(paramView);
-  }
-  
-  public String a()
-  {
-    return "WeishiTagVideoInfoWidget";
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-  }
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
-  {
-    paramMap.put(new wcl(this), "");
-  }
-  
-  public void a(@NonNull vtt paramvtt, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    paramvtt = paramvtt.a();
-    if (paramvtt == null)
+    super(2);
+    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter";
+    this.jdField_a_of_type_Boolean = false;
+    Object localObject = new wde();
+    ((wde)localObject).a(paramInt);
+    ((wde)localObject).a(paramwcz);
+    a((wda)localObject);
+    paramwcz = new wdd();
+    localObject = ((wca)wpm.a(30)).c();
+    if (localObject != null)
     {
-      k();
-      return;
-    }
-    if (TextUtils.equals(this.c, paramStoryVideoItem.mVid))
-    {
-      this.e = false;
-      int i = paramvtt.mSourceTagType;
-      if (i != 1) {
-        break label123;
-      }
-      j();
-      azqs.b(null, "dc00898", "", "", "weishi_share_videoplay", "story_entry_exp", 0, 0, "", "", "", "");
-      paramStoryVideoItem = xst.b(i);
-      switch (i)
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-      default: 
-        paramvtt = paramStoryVideoItem;
+        wdk localwdk = (wdk)((Iterator)localObject).next();
+        switch (localwdk.a)
+        {
+        default: 
+          break;
+        case 2: 
+          paramwcz.a(localwdk);
+          break;
+        case 4: 
+          paramwcz.b(localwdk);
+          break;
+        case 3: 
+          paramwcz.c(localwdk);
+        }
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramvtt);
-      return;
-      this.e = true;
-      this.c = paramStoryVideoItem.mVid;
-      break;
-      label123:
-      k();
-      return;
-      paramvtt = paramStoryVideoItem;
-      if (TextUtils.isEmpty(paramStoryVideoItem)) {
-        paramvtt = "来自微视APP";
-      }
-    }
+    paramwcz.a(new wdi());
+    a(paramwcz);
   }
   
-  public boolean a(@NonNull vtt paramvtt, @NonNull StoryVideoItem paramStoryVideoItem)
+  private static boolean a(String paramString1, String paramString2)
   {
-    if ((paramvtt.a != null) && (paramvtt.a.a == 13)) {}
-    while (paramStoryVideoItem.mSourceTagType != 1) {
-      return false;
-    }
-    return true;
+    return (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString2));
   }
   
-  public int b()
+  public static boolean a(@NonNull wcl paramwcl, int paramInt)
   {
-    return -1;
-  }
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Vtt != null) {}
-    for (paramView = this.jdField_a_of_type_Vtt.a(); paramView == null; paramView = null)
+    Object localObject = paramwcl.a();
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      wxe.e(this.b, "click error , video info not found");
-      return;
-    }
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)a()).a();
-    xst.a(paramView.mSourceTagType);
-    switch (paramView.mSourceTagType)
-    {
-    default: 
-      return;
-    }
-    Dialog localDialog = xva.a(b(), paramView.mOwnerUid, "4", paramView.mVid, 3, paramView.mWsSchema);
-    if (localDialog != null)
-    {
-      localDialog.setOnDismissListener(new wck(this, localVideoViewVideoHolder));
-      if (localVideoViewVideoHolder != null) {
-        localVideoViewVideoHolder.c(true);
+      AddressItem localAddressItem = ((wcm)((List)localObject).get(0)).a;
+      localObject = ((wcm)((List)localObject).get(((List)localObject).size() - 1)).a;
+      if ((localAddressItem == null) || (localObject == null))
+      {
+        yqp.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "initAlbumNameByPOI find no poi item :" + paramwcl);
+        paramwcl.b = "";
+        return false;
+      }
+      if ((paramInt <= 5) && (a(localAddressItem.building, ((AddressItem)localObject).building)))
+      {
+        paramwcl.b = localAddressItem.building;
+        return true;
+      }
+      if ((paramInt <= 4) && (a(localAddressItem.district, ((AddressItem)localObject).district)))
+      {
+        paramwcl.b = localAddressItem.district;
+        return true;
+      }
+      if ((paramInt <= 3) && (a(localAddressItem.city, ((AddressItem)localObject).city)))
+      {
+        paramwcl.b = localAddressItem.city;
+        return true;
+      }
+      if ((paramInt <= 2) && (a(localAddressItem.province, ((AddressItem)localObject).province)))
+      {
+        paramwcl.b = localAddressItem.province;
+        return true;
+      }
+      if ((paramInt <= 1) && (a(localAddressItem.country, ((AddressItem)localObject).country)))
+      {
+        paramwcl.b = localAddressItem.country;
+        return true;
       }
     }
-    int i;
-    if (xsx.a(b()))
+    paramwcl.b = "";
+    return false;
+  }
+  
+  protected List<wcm> a()
+  {
+    yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get start Pic list=" + super.a().size());
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = super.a().iterator();
+    while (localIterator.hasNext())
     {
-      i = 2;
-      wxj.a("weishi_share", "tag_clk", 0, i, new String[] { "4", paramView.mOwnerUid, "weishi", paramView.mVid });
-      if (!xsx.a(b())) {
-        break label220;
+      wcm localwcm = (wcm)localIterator.next();
+      if (localwcm.a != null) {
+        localArrayList.add(localwcm);
       }
     }
-    label220:
-    for (paramView = "story_clk_ws";; paramView = "story_dl_ws")
-    {
-      azqs.b(null, "dc00898", "", "", "weishi_share_videoplay", paramView, 0, 0, "", "", "", "");
-      return;
-      i = 1;
-      break;
-    }
+    yqp.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get end Pic list=" + localArrayList.size());
+    return localArrayList;
   }
+  
+  protected void c(List<wcl> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wcj
  * JD-Core Version:    0.7.0.1
  */

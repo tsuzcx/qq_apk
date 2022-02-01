@@ -1,10 +1,19 @@
-public abstract interface vor
+public class vor
 {
-  public abstract void a(String paramString);
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private final String jdField_a_of_type_JavaLangString;
+  
+  private vor(String paramString, long paramLong, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vor
  * JD-Core Version:    0.7.0.1
  */

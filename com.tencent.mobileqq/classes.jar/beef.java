@@ -1,35 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class beef
-  extends BroadcastReceiver
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public beef(WebProcessManager paramWebProcessManager) {}
+  public beef(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebProcessManager", 2, "action=" + paramContext);
-        }
-        if (!paramContext.equals("com.tencent.mobileqq.webprocess.restart_web_process")) {
-          break;
-        }
-        this.a.f();
-      } while (!paramIntent.getBooleanExtra("isPreloadWebProcess", false));
-      this.a.i();
-      return;
-    } while (!paramContext.equals("com.tencent.mobileqq.webprocess.report"));
-    this.a.i();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.setAlpha(f);
   }
 }
 

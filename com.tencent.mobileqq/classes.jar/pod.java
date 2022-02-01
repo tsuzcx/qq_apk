@@ -1,126 +1,135 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class pod
-  implements poa
+  extends pnq
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "https://pub.idqqimg.com/pc/misc/files/20200416/3c376048a60b488d998e1ef31153db5e.png", "https://pub.idqqimg.com/pc/misc/files/20200416/54aaad879a4042899540fafd969395f6.png", "https://pub.idqqimg.com/pc/misc/files/20200416/8b787675714740eeb21c7fc5b15712c0.png", "https://pub.idqqimg.com/pc/misc/files/20200416/1263e35cec174f0db53e0fc3bb8e7df2.png", "https://pub.idqqimg.com/pc/misc/files/20200430/21b88f2ba3bd43919173a767982d649d.png", "https://pub.idqqimg.com/pc/misc/files/20200430/eb40275894c9455f9ab438dd91081678.png" };
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public pod(@NonNull pnr parampnr, Activity paramActivity)
   {
-    return null;
+    super(parampnr, "RIJUGCAccountPopupStep");
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    j();
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  private boolean c()
   {
-    pjo localpjo = new pjo();
-    String str2;
-    String str1;
-    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a != null) && (paramBaseArticleInfo.mSocialFeedInfo.a.a != null))
+    boolean bool2 = bdch.a();
+    boolean bool3 = rjh.a();
+    boolean bool4 = qph.a().a();
+    if ((!bool2) && (bool3) && (bool4)) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      String str3 = "ReadInjoy_QA_NoImage_cell";
-      String str4 = "";
-      str2 = str4;
-      str1 = str3;
-      if (paramBaseArticleInfo.mSocialFeedInfo.a.c != null)
+      QLog.i("RIJUGCAccountPopupStep", 2, "[handleUGCAccountCreate], isStudyMode = " + bool2 + "isPopupEnable = " + bool3 + ", isPtsLiteEnable = " + bool4);
+      if (bool1)
       {
-        str2 = str4;
-        str1 = str3;
-        if (paramBaseArticleInfo.mSocialFeedInfo.a.c.size() > 0)
-        {
-          str2 = str4;
-          str1 = str3;
-          if (paramBaseArticleInfo.mSocialFeedInfo.a.a.b == 1)
-          {
-            str1 = "ReadInjoy_QA_Image_cell";
-            str2 = ((String)paramBaseArticleInfo.mSocialFeedInfo.a.c.get(0)).trim();
-          }
-        }
+        Intent localIntent = new Intent();
+        localIntent.putExtra("public_fragment_window_feature", 1);
+        aevv.a(this.jdField_a_of_type_AndroidAppActivity, localIntent, PublicTransFragmentActivity.class, RIJUGCAddAccountFragment.class, 10000);
       }
-    }
-    for (;;)
-    {
-      try
-      {
-        localpjo.a(str1).d(paramBaseArticleInfo, str2).j(paramBaseArticleInfo).r(paramBaseArticleInfo);
-        return localpjo.a();
-      }
-      catch (JSONException paramBaseArticleInfo)
-      {
-        paramBaseArticleInfo.printStackTrace();
-        continue;
-      }
-      try
-      {
-        localpjo.a("ReadInjoy_QA_NoImage_cell");
-      }
-      catch (JSONException paramBaseArticleInfo)
-      {
-        paramBaseArticleInfo.printStackTrace();
-      }
+      return bool1;
     }
   }
   
-  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
+  public static void i()
   {
-    Object localObject = paramContainer.getVirtualView();
-    if ((localObject == null) || (parampgd == null) || (parampgd.a() == null)) {}
-    NativeTextImp localNativeTextImp;
-    do
-    {
-      do
-      {
-        return;
-        localObject = ((ViewBase)localObject).findViewBaseByName("id_summary");
-      } while ((localObject == null) || (((ViewBase)localObject).getNativeView() == null) || (!(((ViewBase)localObject).getNativeView() instanceof NativeTextImp)));
-      localNativeTextImp = (NativeTextImp)((ViewBase)localObject).getNativeView();
-    } while (localNativeTextImp == null);
-    boolean bool = owy.a().a(parampgd.a().mArticleID);
-    localNativeTextImp.setTextSize(2, 15.0F);
-    if (bool) {}
-    for (localObject = "#999999";; localObject = "#4c4c4c")
-    {
-      localNativeTextImp.setTextColor(Color.parseColor((String)localObject));
-      paramContainer = paramContainer.getContext().getResources().getDisplayMetrics();
-      paramInt2 = 3;
-      paramInt1 = paramInt2;
-      if (paramContainer.widthPixels <= 720)
-      {
-        paramInt1 = paramInt2;
-        if (!ors.j(parampgd.a())) {
-          paramInt1 = 2;
-        }
-      }
-      localNativeTextImp.setMaxLines(paramInt1);
-      localNativeTextImp.setLineSpacing(Utils.rp2px(2.0D), 1.0F);
-      if (Build.VERSION.SDK_INT < 21) {
-        break;
-      }
-      localNativeTextImp.setLetterSpacing(0.02F);
+    if (!rjh.a()) {
       return;
     }
+    ReadInJoyUserInfoModule.a(pha.a(), null);
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject1 = arrayOfString[i];
+      try
+      {
+        localObject1 = new URL((String)localObject1);
+        if (localObject1 != null)
+        {
+          tdw localtdw = new tdw();
+          localtdw.a = ((URL)localObject1);
+          localtdw.b = true;
+          tdv.a().a(localtdw, null);
+          if ((QLog.isDebugVersion()) || (QLog.isColorLevel())) {
+            QLog.i("RIJUGCAccountPopupStep", 2, "[preload] url = " + localObject1);
+          }
+        }
+        i += 1;
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        for (;;)
+        {
+          QLog.e("RIJUGCAccountPopupStep", 1, "[preload] error, e = " + localMalformedURLException);
+          Object localObject2 = null;
+        }
+      }
+    }
   }
   
-  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
+  private void j()
   {
-    return false;
+    if (!rjh.a()) {
+      return;
+    }
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject1 = arrayOfString[i];
+      try
+      {
+        localObject1 = new URL((String)localObject1);
+        if ((QLog.isDebugVersion()) || (QLog.isColorLevel())) {
+          QLog.i("RIJUGCAccountPopupStep", 2, "[preloadResources] url = " + localObject1);
+        }
+        if (localObject1 != null)
+        {
+          tdw localtdw = new tdw();
+          localtdw.a = ((URL)localObject1);
+          tdv.a().a(localtdw, null);
+        }
+        i += 1;
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        for (;;)
+        {
+          QLog.i("RIJUGCAccountPopupStep", 1, "[preloadResources] error, e = " + localMalformedURLException);
+          Object localObject2 = null;
+        }
+      }
+    }
+  }
+  
+  protected void g()
+  {
+    a(this.jdField_a_of_type_Boolean);
+  }
+  
+  protected void h()
+  {
+    this.jdField_a_of_type_Boolean = c();
+    a(this.jdField_a_of_type_Boolean);
+    QLog.i("RIJUGCAccountPopupStep", 1, "[doStepFromOnShowSelf], needShow = " + this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pod
  * JD-Core Version:    0.7.0.1
  */

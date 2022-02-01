@@ -11,8 +11,8 @@ public class TAVStickerContentView
   extends FrameLayout
 {
   private static final String TAG = TAVStickerContentView.class.getSimpleName();
-  private TAVStickerContentView.DispatchTouchEventListener mDispatchTouchEventListener = null;
-  private TAVStickerEditView mStickerEditView = null;
+  private TAVStickerContentView.DispatchTouchEventListener dispatchTouchEventListener = null;
+  private TAVStickerEditView stickerEditView = null;
   
   public TAVStickerContentView(Context paramContext)
   {
@@ -33,14 +33,14 @@ public class TAVStickerContentView
   {
     super.addView(paramView);
     if ((paramView instanceof TAVStickerEditView)) {
-      this.mStickerEditView = ((TAVStickerEditView)paramView);
+      this.stickerEditView = ((TAVStickerEditView)paramView);
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.mDispatchTouchEventListener != null) {
-      return this.mDispatchTouchEventListener.onDispatchTouchEvent(paramMotionEvent);
+    if (this.dispatchTouchEventListener != null) {
+      return this.dispatchTouchEventListener.onDispatchTouchEvent(paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -48,8 +48,8 @@ public class TAVStickerContentView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.mStickerEditView != null) && (this.mStickerEditView.isNeedInitLocation())) {
-      this.mStickerEditView.initLocation(getMeasuredWidth(), getMeasuredHeight());
+    if ((this.stickerEditView != null) && (this.stickerEditView.isNeedInitLocation())) {
+      this.stickerEditView.initLocation(getMeasuredWidth(), getMeasuredHeight());
     }
   }
   
@@ -60,20 +60,20 @@ public class TAVStickerContentView
   
   void setDispatchTouchEventListener(TAVStickerContentView.DispatchTouchEventListener paramDispatchTouchEventListener)
   {
-    this.mDispatchTouchEventListener = paramDispatchTouchEventListener;
+    this.dispatchTouchEventListener = paramDispatchTouchEventListener;
   }
   
   public void setLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     super.setLayoutParams(paramLayoutParams);
-    if (this.mStickerEditView != null) {
-      this.mStickerEditView.needInitLocation();
+    if (this.stickerEditView != null) {
+      this.stickerEditView.needInitLocation();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerContentView
  * JD-Core Version:    0.7.0.1
  */

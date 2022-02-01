@@ -1,23 +1,10 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
+import java.io.File;
 
-public class aios
-  implements bhuw
+abstract interface aios
 {
-  public aios(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
+  public abstract File a(String paramString);
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if (QzonePhotoPreviewActivity.a(this.a))
-    {
-      this.a.getActivity().finish();
-      bdfa.anim(this.a.getActivity(), true, false);
-      return;
-    }
-    this.a.a();
-  }
+  public abstract String c();
 }
 
 

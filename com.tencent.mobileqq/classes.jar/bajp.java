@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import androidx.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class bajp
-  extends baje
 {
-  public bajp(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bajk parambajk)
+  public bajq a;
+  public bajs a;
+  public bajt a;
+  public List<String> a;
+  public List<bajr> b = new ArrayList();
+  
+  public bajp()
   {
-    super(paramQQAppInterface, paramChatMessage, parambajk);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  protected String a()
+  @NonNull
+  public String toString()
   {
-    return this.a.msg;
-  }
-  
-  protected void a(bajf parambajf) {}
-  
-  protected boolean a()
-  {
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("baseProfile").append("=").append(this.jdField_a_of_type_Bajq).append("|\n");
+    localStringBuilder.append("personalLabels").append("=").append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray())).append("|\n");
+    localStringBuilder.append("qZoneInfo").append("=").append(this.jdField_a_of_type_Bajs).append("|\n");
+    localStringBuilder.append("nicePics").append("=").append(Arrays.toString(this.b.toArray())).append("|\n");
+    localStringBuilder.append("sign").append("=").append(this.jdField_a_of_type_Bajt).append("|\n");
+    return localStringBuilder.toString();
   }
 }
 

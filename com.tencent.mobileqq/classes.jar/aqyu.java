@@ -1,35 +1,54 @@
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
 
-class aqyu
-  extends aqyt
+public class aqyu
+  extends aqwr<aqyo>
 {
-  public aqyu(aqyp paramaqyp)
+  @NonNull
+  public static aqyo c()
   {
-    super(paramaqyp);
-  }
-  
-  protected String a()
-  {
-    return "StateCancelUploadWhenChangeToOff";
-  }
-  
-  protected boolean a()
-  {
-    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
+    aqyo localaqyo2 = (aqyo)aqlk.a().a(628);
+    aqyo localaqyo1 = localaqyo2;
+    if (localaqyo2 == null) {
+      localaqyo1 = aqyo.a();
     }
-    aqyp.b(this.jdField_a_of_type_Aqyp, 11, 9);
-    aqyp.c(this.jdField_a_of_type_Aqyp, 11, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Aqyt = new aqyw(this.jdField_a_of_type_Aqyp);
-    return true;
+    return localaqyo1;
+  }
+  
+  @NonNull
+  public aqyo a()
+  {
+    return aqyo.a();
+  }
+  
+  @NonNull
+  public aqyo a(@NonNull aqlg[] paramArrayOfaqlg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.TROOP_FILE.ConfigProcessor", 1, paramArrayOfaqlg[0].a);
+    }
+    return aqyo.a(paramArrayOfaqlg[0].a);
+  }
+  
+  @NonNull
+  public aqyo b()
+  {
+    return aqyo.a();
+  }
+  
+  public Class<aqyo> clazz()
+  {
+    return aqyo.class;
+  }
+  
+  public int type()
+  {
+    return 628;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyu
  * JD-Core Version:    0.7.0.1
  */

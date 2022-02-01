@@ -1,32 +1,37 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 public class wmr
-  extends QQUIEventReceiver<wml, uvf>
+  extends weu
 {
-  public wmr(wml paramwml)
+  public final int a;
+  public CommentLikeFeedItem a;
+  public final String a;
+  public int b = 0;
+  public int c;
+  
+  public wmr(int paramInt1, String paramString, int paramInt2)
   {
-    super(paramwml);
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
   }
   
-  public void a(@NonNull wml paramwml, @NonNull uvf paramuvf)
+  public wmr(int paramInt1, String paramString, int paramInt2, CommentLikeFeedItem paramCommentLikeFeedItem)
   {
-    if (paramuvf.a.isSuccess())
-    {
-      wxe.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramuvf.toString());
-      wml.a(paramwml, true);
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
   }
   
-  public Class acceptEventClass()
+  public String toString()
   {
-    return uvf.class;
+    return "InteractionInfoChangeEvent{, feedId=" + this.jdField_a_of_type_JavaLangString + ", what=" + this.b + ", commentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem + ", commentId=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wmr
  * JD-Core Version:    0.7.0.1
  */

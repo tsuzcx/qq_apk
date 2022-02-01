@@ -1,43 +1,22 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-class axni
-  extends Handler
+final class axni
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public axni(Looper paramLooper)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    super(paramLooper);
+    QLog.i("VideoPlayerView", 2, "onPreLoadFailed() called with: s = [" + paramString1 + "], i = [" + paramInt + "], s1 = [" + paramString2 + "]");
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    axnm.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
-    switch (paramMessage.what)
-    {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      i = paramMessage.arg1;
-      paramMessage = paramMessage.getData();
-      axnm.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
-      return;
-    }
-    int i = paramMessage.arg1;
-    switch (paramMessage.arg1)
-    {
-    default: 
-      return;
-    }
-    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    axnm.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
+    QLog.i("VideoPlayerView", 2, "onPreLoadSucess() called with: s = [" + paramString1 + "], s1 = [" + paramString2 + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axni
  * JD-Core Version:    0.7.0.1
  */

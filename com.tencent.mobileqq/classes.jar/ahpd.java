@@ -1,6 +1,14 @@
-public abstract interface ahpd
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class ahpd
+  implements ahor
 {
-  public abstract void a(String paramString, boolean paramBoolean);
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramagup.a(paramagwc, paramString);
+  }
 }
 
 

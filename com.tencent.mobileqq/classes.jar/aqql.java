@@ -1,43 +1,102 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aqql
-  implements View.OnClickListener
 {
-  public aqql(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void onClick(View paramView)
+  public static aqql a(aqlg[] paramArrayOfaqlg)
   {
-    if (paramView == null)
+    aqql localaqql = new aqql();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
+      try
+      {
+        if (i >= paramArrayOfaqlg.length) {
+          break label187;
+        }
+        String str = paramArrayOfaqlg[i].a;
+        if (TextUtils.isEmpty(str))
+        {
+          QLog.d("OpenSdkConfProcessor", 1, "parse, content empty");
+        }
+        else
+        {
+          JSONObject localJSONObject = new JSONObject(str);
+          if (localJSONObject.has("enable_third_app_share_big_image_by_server"))
+          {
+            if (localJSONObject.optInt("enable_third_app_share_big_image_by_server", 0) == 1)
+            {
+              bool = true;
+              localaqql.jdField_a_of_type_Boolean = bool;
+            }
+          }
+          else
+          {
+            if (localJSONObject.has("sdk_share_verify_appinfo_timeout_duration")) {
+              localaqql.jdField_a_of_type_Long = localJSONObject.optInt("sdk_share_verify_appinfo_timeout_duration", 0);
+            }
+            if (localJSONObject.has("sdk_login_use_third_transform_pkg_name"))
+            {
+              if (localJSONObject.optInt("sdk_login_use_third_transform_pkg_name", 0) != 1) {
+                break label182;
+              }
+              bool = true;
+              localaqql.b = bool;
+            }
+            localStringBuilder.append("config: ").append(str).append(",");
+          }
+        }
       }
-      return;
+      catch (Exception paramArrayOfaqlg)
+      {
+        QLog.e("OpenSdkConfProcessor", 1, "parse, failed!", paramArrayOfaqlg);
+        return null;
+      }
+      boolean bool = false;
+      continue;
+      label182:
+      bool = false;
+      continue;
+      label187:
+      QLog.d("OpenSdkConfProcessor", 1, "parse, content:" + localStringBuilder.toString());
+      return localaqql;
+      i += 1;
     }
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.getTag();
-    if (localFileManagerEntity != null)
-    {
-      if (this.a.jdField_a_of_type_Aqni != null) {
-        this.a.jdField_a_of_type_Aqni.a(null);
-      }
-      this.a.jdField_a_of_type_Long = localFileManagerEntity.nSessionId;
-      if (QfileBaseRecentFileTabView.m(this.a).a().b(this.a.jdField_a_of_type_Long)) {
-        this.a.a(localFileManagerEntity);
-      }
-    }
-    this.a.jdField_a_of_type_Aqni.a(Integer.valueOf(-1));
-    paramView.setVisibility(4);
-    this.a.g();
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("serverShareImageEnable:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("timeout_duration:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("useThirdTransformPkgName:").append(this.b);
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqql
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import uwa;
-import uwm;
+import wpm;
+import wpy;
 
 class Now$3
   implements Runnable
@@ -10,12 +10,12 @@ class Now$3
   
   public void run()
   {
-    ((uwm)uwa.a(2)).c();
+    ((wpy)wpm.a(2)).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Now.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,48 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.wadl.WadlJsBridgeDownloadInfo;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
-public final class bfsi
-  implements Parcelable.Creator<WadlJsBridgeDownloadInfo>
+class bfsi
+  extends anif
 {
-  public WadlJsBridgeDownloadInfo a(Parcel paramParcel)
+  bfsi(bfsh parambfsh) {}
+  
+  protected void a(Object paramObject)
   {
-    boolean bool2 = true;
-    WadlJsBridgeDownloadInfo localWadlJsBridgeDownloadInfo = new WadlJsBridgeDownloadInfo();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.d = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Long = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.g = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.j = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readByte() != 0)
+    if (this.a.a == null) {}
+    for (;;)
     {
-      bool1 = true;
-      localWadlJsBridgeDownloadInfo.jdField_b_of_type_Boolean = bool1;
-      localWadlJsBridgeDownloadInfo.l = paramParcel.readString();
-      localWadlJsBridgeDownloadInfo.h = paramParcel.readInt();
-      localWadlJsBridgeDownloadInfo.i = paramParcel.readInt();
-      localWadlJsBridgeDownloadInfo.m = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label203;
+      return;
+      paramObject = (bety)paramObject;
+      if (((!paramObject.jdField_a_of_type_Boolean) || (paramObject.jdField_b_of_type_Int != 1)) && (paramObject.jdField_b_of_type_Int == 12))
+      {
+        long l = paramObject.jdField_b_of_type_Long;
+        Iterator localIterator = this.a.a.a().a(String.valueOf(l), 1).iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (ChatMessage)localIterator.next();
+          if ((((ChatMessage)localObject).msgtype == -2017) && ((((ChatMessage)localObject).extraflag == 32772) || (((ChatMessage)localObject).extraflag == 32768)) && (((ChatMessage)localObject).isSendFromLocal()))
+          {
+            localObject = (MessageForTroopFile)localObject;
+            if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString()))) {
+              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.e)) && (((MessageForTroopFile)localObject).url.equals(paramObject.e))) {
+              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            }
+          }
+        }
       }
     }
-    label203:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localWadlJsBridgeDownloadInfo.jdField_c_of_type_Boolean = bool1;
-      return localWadlJsBridgeDownloadInfo;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public WadlJsBridgeDownloadInfo[] a(int paramInt)
-  {
-    return new WadlJsBridgeDownloadInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfsi
  * JD-Core Version:    0.7.0.1
  */

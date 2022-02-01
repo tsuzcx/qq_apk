@@ -6,14 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.biz.qqstory.view.widget.LoadMoreLayout;
-import xwc;
-import xxd;
+import zpn;
+import zqo;
 
 public class XRecyclerView
   extends FrameLayout
 {
   private RecyclerViewWithHeaderFooter jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter;
-  private xwc jdField_a_of_type_Xwc;
+  private zpn jdField_a_of_type_Zpn;
   
   public XRecyclerView(Context paramContext)
   {
@@ -36,20 +36,20 @@ public class XRecyclerView
   private void a()
   {
     LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
-    this.jdField_a_of_type_Xwc = new xwc(localLoadMoreLayout, getContext());
+    this.jdField_a_of_type_Zpn = new zpn(localLoadMoreLayout, getContext());
     this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.a(localLoadMoreLayout);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.setOnScrollListener(new xxd(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.setOnScrollListener(new zqo(this));
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter = ((RecyclerViewWithHeaderFooter)LayoutInflater.from(paramContext).inflate(2131561553, this).findViewById(2131376060));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter = ((RecyclerViewWithHeaderFooter)LayoutInflater.from(paramContext).inflate(2131561788, this).findViewById(2131376815));
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.xrecyclerview.XRecyclerView
  * JD-Core Version:    0.7.0.1
  */

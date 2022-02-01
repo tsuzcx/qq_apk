@@ -1,20 +1,6 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-final class ajkv
-  implements Animation.AnimationListener
+public abstract interface ajkv
 {
-  ajkv(View paramView, Animation paramAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void c();
 }
 
 

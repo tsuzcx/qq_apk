@@ -1,31 +1,46 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.TMG.utils.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bbnw
-  implements View.OnTouchListener
+  extends bbnh
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
+  public static final String a = bbnw.class.getSimpleName();
+  public String b;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
   
-  public bbnw(NewTroopContactView paramNewTroopContactView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bbnw(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public bbnw(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
+      paramString = new JSONObject(paramString);
+      this.b = paramString.optString("leftIcon");
+      this.j = paramString.optString("firstTitle");
+      this.k = paramString.optString("secondTitle");
+      this.l = paramString.optString("moreText");
+      this.m = paramString.optString("jumpUrl");
+      return;
     }
-    for (;;)
+    catch (JSONException paramString)
     {
-      return false;
-      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a.clearFocus();
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.d(a, 0, paramString.toString());
     }
   }
 }

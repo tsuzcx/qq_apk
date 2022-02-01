@@ -1,124 +1,75 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class pkl
+public abstract class pkl<D>
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public static int b;
+  protected int a;
+  protected VafContext a;
+  protected final Map<String, Integer> a;
+  protected int c = b + 1;
+  protected int d = this.c;
+  
+  public pkl()
   {
-    Object localObject3 = null;
-    JSONObject localJSONObject = new JSONObject();
-    pkm.a(paramBaseArticleInfo, localJSONObject, true);
-    pkm.a(paramBaseArticleInfo, localJSONObject);
-    pkm.b(paramBaseArticleInfo, localJSONObject);
-    pkm.l(paramBaseArticleInfo, localJSONObject);
-    pkm.e(paramBaseArticleInfo, localJSONObject);
-    pkm.f(paramBaseArticleInfo, localJSONObject);
-    pkm.X(paramBaseArticleInfo, localJSONObject);
-    pkm.aa(paramBaseArticleInfo, localJSONObject);
-    pkm.ab(paramBaseArticleInfo, localJSONObject);
-    localJSONObject.put("style_ID", "ReadInjoy_triple_img_cell");
-    pkm.a(localJSONObject, paramBaseArticleInfo);
-    Object localObject1;
-    Object localObject2;
-    label152:
-    Object localObject4;
-    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_Int = 2147483647;
+  }
+  
+  public void a(VafContext paramVafContext, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
+    int i = paramVafContext.getTemplateFactory().size();
+    b = paramInt;
+    this.c = (b + 1);
+    this.d = this.c;
+    if ((this.d < this.c + i) && (i > 0) && (this.d < this.jdField_a_of_type_Int))
     {
-      localObject3 = rqj.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
-      if ((localObject3 == null) || (((JSONArray)localObject3).length() < 3)) {
-        return localJSONObject;
-      }
-      localObject1 = ((JSONArray)localObject3).optJSONObject(0);
-      if (localObject1 == null)
+      paramVafContext = paramVafContext.getTemplateFactory().getNameTemplateMap().keySet();
+      paramInt = this.d;
+      paramVafContext = paramVafContext.iterator();
+      if (paramVafContext.hasNext())
       {
-        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject2 = ((JSONArray)localObject3).optJSONObject(1);
-        if (localObject2 != null) {
-          break label261;
+        String str = (String)paramVafContext.next();
+        if (this.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+          break label263;
         }
-        localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject3 = ((JSONArray)localObject3).optJSONObject(2);
-        if (localObject3 != null) {
-          break label271;
-        }
-      }
-      label261:
-      label271:
-      for (paramBaseArticleInfo = paramBaseArticleInfo.mFirstPagePicUrl;; paramBaseArticleInfo = ((JSONObject)localObject3).optString("picture"))
-      {
-        localObject3 = localObject2;
-        localObject4 = localObject1;
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url1", localObject4);
-        localJSONObject.put("id_multi_img_1", localObject1);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url2", localObject3);
-        localJSONObject.put("id_multi_img_2", localObject1);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url3", paramBaseArticleInfo);
-        localJSONObject.put("id_multi_img_3", localObject1);
-        return localJSONObject;
-        localObject1 = ((JSONObject)localObject1).optString("picture");
-        break;
-        localObject2 = ((JSONObject)localObject2).optString("picture");
-        break label152;
+        this.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(paramInt));
+        paramInt += 1;
       }
     }
-    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
+    label263:
+    for (;;)
     {
-      localObject1 = paramBaseArticleInfo.mSinglePicture;
-      label304:
-      if (localObject1 == null) {
-        break label405;
-      }
-      localObject1 = ((URL)localObject1).getFile();
-      label313:
-      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
-        break label410;
-      }
-      localObject2 = paramBaseArticleInfo.mSinglePicture;
-      label336:
-      if (localObject2 == null) {
-        break label420;
-      }
-      localObject2 = ((URL)localObject2).getFile();
-      label345:
-      if ((paramBaseArticleInfo.mPictures.length >= 3) && (paramBaseArticleInfo.mPictures[2] != null)) {
-        break label425;
-      }
-    }
-    label405:
-    label410:
-    label420:
-    label425:
-    for (URL localURL = paramBaseArticleInfo.mSinglePicture;; localURL = paramBaseArticleInfo.mPictures[2])
-    {
-      localObject4 = localObject1;
-      paramBaseArticleInfo = (BaseArticleInfo)localObject3;
-      localObject3 = localObject2;
-      if (localURL == null) {
-        break;
-      }
-      paramBaseArticleInfo = localURL.getFile();
-      localObject4 = localObject1;
-      localObject3 = localObject2;
       break;
-      localObject1 = paramBaseArticleInfo.mPictures[0];
-      break label304;
-      localObject1 = null;
-      break label313;
-      localObject2 = paramBaseArticleInfo.mPictures[1];
-      break label336;
-      localObject2 = null;
-      break label345;
+      this.d = (this.c + i);
+      if (this.jdField_a_of_type_Int == 2147483647) {
+        this.jdField_a_of_type_Int = (this.d + 30);
+      }
+      if (this.d > this.jdField_a_of_type_Int) {
+        this.d = this.jdField_a_of_type_Int;
+      }
+      QLog.d("DynamicItemViewHelperCompatBase", 1, "init: templateCount : " + i + " TYPE_DYNAMIC_END : " + this.d + " max : " + this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Int == 2147483647) {
+        this.jdField_a_of_type_Int = (this.c + 100);
+      }
+      return;
     }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (paramInt >= b) && (paramInt < this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pkl
  * JD-Core Version:    0.7.0.1
  */

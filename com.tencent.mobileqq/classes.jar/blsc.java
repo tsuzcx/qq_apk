@@ -1,18 +1,12 @@
-import android.app.Activity;
-import android.os.Bundle;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class blsc
+final class blsc
+  implements DialogInterface.OnClickListener
 {
-  public Bundle a;
-  public blsf a;
-  public WeakReference<Activity> a;
-  
-  public blsc(blsf paramblsf, Bundle paramBundle, Activity paramActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Blsf = paramblsf;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    paramDialogInterface.dismiss();
   }
 }
 

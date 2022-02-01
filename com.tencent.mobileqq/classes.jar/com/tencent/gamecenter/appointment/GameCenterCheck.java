@@ -1,22 +1,35 @@
 package com.tencent.gamecenter.appointment;
 
-import aahe;
-import aahg;
-import aahi;
+import aced;
+import acef;
+import aceh;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Bundle;
+import android.os.PowerManager;
 import android.text.TextUtils;
-import azbi;
-import bfrz;
-import bfsc;
-import bkjb;
+import auuc;
+import bccg;
+import bgnt;
+import bize;
+import bizh;
+import bmxh;
+import bmxi;
+import bmxq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tgpa.vendorpd.GameHelper;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,31 +43,183 @@ public class GameCenterCheck
     this.jdField_a_of_type_Long = 30L;
   }
   
-  public static void b()
+  public static List<DownloadInfo> a(String[] paramArrayOfString, String paramString)
   {
-    String str1 = aahi.a("APPOINTMENT_CHECKLIST");
-    String str2 = aahi.a("APPOINTMENT_LIST");
-    String str3 = aahi.a("DELAY_LIST");
-    if ((TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2)) && (TextUtils.isEmpty(str3)))
+    int j = paramArrayOfString.length;
+    ArrayList localArrayList = new ArrayList();
+    PackageManager localPackageManager = BaseApplicationImpl.getContext().getPackageManager();
+    int i = 0;
+    Object localObject1 = null;
+    if (i < j)
     {
-      if (QLog.isColorLevel()) {
-        bfrz.c("GameCenterCheck", "checkGameCenter no task");
+      if (TextUtils.isEmpty(paramArrayOfString[i])) {}
+      DownloadInfo localDownloadInfo;
+      label274:
+      label293:
+      for (;;)
+      {
+        i += 1;
+        break;
+        Object localObject2 = aceh.a(paramString + paramArrayOfString[i]);
+        localDownloadInfo = new DownloadInfo();
+        try
+        {
+          localObject2 = new JSONObject((String)localObject2);
+          localDownloadInfo.c = ((JSONObject)localObject2).optString("appid");
+          localDownloadInfo.j = ((JSONObject)localObject2).optString("myAppId");
+          localDownloadInfo.k = ((JSONObject)localObject2).optString("apkId");
+          localDownloadInfo.e = ((JSONObject)localObject2).optString("packageName");
+          localDownloadInfo.b = ((JSONObject)localObject2).optInt("versionCode");
+        }
+        catch (JSONException localJSONException)
+        {
+          label171:
+          localJSONException.printStackTrace();
+        }
+        try
+        {
+          localObject2 = localPackageManager.getPackageInfo(localDownloadInfo.e.trim(), 0);
+          localObject1 = localObject2;
+        }
+        catch (PackageManager.NameNotFoundException localNameNotFoundException)
+        {
+          break label171;
+          if (!QLog.isColorLevel()) {
+            break label274;
+          }
+          QLog.i("GameCenterCheck", 2, localDownloadInfo.c + " installed");
+          aceh.a(null, "426", "202142", localDownloadInfo.c, "42601", "1", "116");
+        }
+        if (localObject1 == null)
+        {
+          localArrayList.add(localDownloadInfo);
+          if (!QLog.isColorLevel()) {
+            break label293;
+          }
+          QLog.i("GameCenterCheck", 2, localDownloadInfo.c + " no installed");
+          continue;
+        }
       }
-      aahe.b();
-      return;
     }
-    if (QLog.isColorLevel()) {
-      bfrz.c("GameCenterCheck", "checkGameCenter checkList=" + str1);
-    }
-    ThreadManager.excute(new GameCenterCheck.1(str3, str2), 192, null, false);
+    return localArrayList;
   }
   
-  public static void c()
+  public static void a()
   {
-    Object localObject = aahi.a("APPOINTMENT_RES_LIST");
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterCheck", 2, "checkGameRes resList =" + (String)localObject);
+    boolean bool = b();
+    bize.c("GameCenterCheck", "checkGameCenter canAppointStart=" + bool);
+    if (!bool) {
+      return;
     }
+    ThreadManager.excute(new GameCenterCheck.1(), 192, null, false);
+  }
+  
+  public static void a(JSONArray paramJSONArray)
+  {
+    bize.c("GameCenterCheck", "checkIfNeedToDownloadUpdateApp jsonArray=" + paramJSONArray);
+    if ((paramJSONArray == null) || (paramJSONArray.length() < 1)) {}
+    for (;;)
+    {
+      return;
+      aceh.a(new String[] { "APPOINTMENT_UPDATE_LIST" });
+      int i = 0;
+      while (i < paramJSONArray.length())
+      {
+        Object localObject;
+        try
+        {
+          localObject = paramJSONArray.optJSONObject(i);
+          String str1 = ((JSONObject)localObject).optString("appid");
+          int j = ((JSONObject)localObject).optInt("version_code");
+          String str2 = ((JSONObject)localObject).optString("pkg_name");
+          String str3 = ((JSONObject)localObject).optString("app_name");
+          String str4 = ((JSONObject)localObject).optString("apk_channel", "10000144");
+          String str5 = ((JSONObject)localObject).optString("apk_url");
+          int k = ((JSONObject)localObject).optInt("min_version");
+          if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str5)))
+          {
+            aceh.a(null, "558", "206679", str1, "72702", "4", "430", new String[] { "", "1", "5" });
+            if (!aceh.a(str2, j, k))
+            {
+              bize.c("GameCenterCheck", "checkIfNeedToDownloadUpdateApp cancel, appId=" + str1 + ",checkVersion is false");
+            }
+            else
+            {
+              localObject = new Bundle();
+              ((Bundle)localObject).putString("packageName", str2);
+              ((Bundle)localObject).putString("apkChannel", str4);
+              ((Bundle)localObject).putString("appName", str3);
+              ((Bundle)localObject).putString("apkUrl", str5);
+              ((Bundle)localObject).putInt("versionCode", j);
+              ((Bundle)localObject).putString("via", "auto_update");
+              ((Bundle)localObject).putInt("from", 3);
+              ((Bundle)localObject).putInt("flags", 63);
+              auuc.a((Bundle)localObject, str1, false, 0);
+            }
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.e("GameCenterCheck", 2, "checkIfNeedToDownloadUpdateApp exception", localException);
+        }
+        bize.c("GameCenterCheck", "checkIfNeedToDownloadUpdateApp params check fail，jsonTmp=" + ((JSONObject)localObject).toString());
+        i += 1;
+      }
+    }
+  }
+  
+  public static void a(String[] paramArrayOfString)
+  {
+    bize.c("GameCenterCheck", "checkIfNeedToDownloadDelayApp:" + paramArrayOfString);
+    if ((paramArrayOfString == null) || (paramArrayOfString.length < 1)) {}
+    for (;;)
+    {
+      return;
+      int j = paramArrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        aceh.a(null, "558", "203713", paramArrayOfString[i], "55801", "4", "430");
+        i += 1;
+      }
+      aceh.a("DELAY_LIST", "");
+      paramArrayOfString = a(paramArrayOfString, "DELAY_APPID_DETAIL_");
+      if (paramArrayOfString.size() == 0)
+      {
+        bize.c("GameCenterCheck", "checkIfNeedToDownloadDelayApp params.size=0:");
+        return;
+      }
+      paramArrayOfString = paramArrayOfString.iterator();
+      while (paramArrayOfString.hasNext())
+      {
+        Object localObject = (DownloadInfo)paramArrayOfString.next();
+        localObject = aceh.a("DELAY_APPID_DETAIL_" + ((DownloadInfo)localObject).c);
+        try
+        {
+          aceh.a((String)localObject, true, 2);
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public static boolean a()
+  {
+    if ((!TextUtils.isEmpty(aceh.a("APPOINTMENT_LIST"))) || (!TextUtils.isEmpty(aceh.a("APPOINTMENT_UPDATE_LIST"))) || (!TextUtils.isEmpty(aceh.a("DELAY_LIST"))) || (!TextUtils.isEmpty(aceh.a("APPOINTMENT_RES_LIST"))) || (!TextUtils.isEmpty(aceh.a("APPOINTMENT_TGPA_LIST"))) || (!TextUtils.isEmpty(aceh.a("UNPACK_APK_LIST")))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bize.c("GameCenterCheck", "hasAppointTask hasTask=" + bool);
+      return bool;
+    }
+  }
+  
+  public static void b()
+  {
+    Object localObject = aceh.a("APPOINTMENT_RES_LIST");
+    bize.c("GameCenterCheck", "checkGameRes resList =" + (String)localObject);
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       localObject = ((String)localObject).split("\\|");
@@ -65,7 +230,7 @@ public class GameCenterCheck
       {
         if (i < localObject.length)
         {
-          String str = aahi.a("APPID_PKGNAME_" + localObject[i]);
+          String str = aceh.a("APPID_PKGNAME_" + localObject[i]);
           try
           {
             localJSONObject.put(str, localObject[i]);
@@ -76,67 +241,297 @@ public class GameCenterCheck
           {
             for (;;)
             {
-              QLog.e("GameCenterCheck", 1, "checkGameRes read appid_pkg fail e=" + localJSONException.toString());
+              bize.a("GameCenterCheck", "checkGameRes read appid_pkg fail e=" + localJSONException.toString());
             }
           }
         }
       }
-      GameHelper.getGameVersionUpdateInfo(BaseApplicationImpl.getContext(), "qq", localArrayList, new aahg(localJSONObject));
+      GameHelper.getGameVersionUpdateInfo(BaseApplicationImpl.getContext(), "qq", localArrayList, new acef(localJSONObject));
+    }
+  }
+  
+  public static void b(JSONArray paramJSONArray)
+  {
+    Object localObject1 = new StringBuilder().append("checkIfNeedToDownloadTGPA jsonArray=");
+    String str1;
+    if (paramJSONArray != null)
+    {
+      str1 = paramJSONArray.toString();
+      bize.c("GameCenterCheck", str1);
+      if ((paramJSONArray != null) && (paramJSONArray.length() >= 1)) {
+        break label61;
+      }
+    }
+    for (;;)
+    {
+      return;
+      str1 = "empty";
+      break;
+      label61:
+      aceh.a(new String[] { "APPOINTMENT_TGPA_LIST" });
+      int i = 0;
+      while (i < paramJSONArray.length())
+      {
+        int j;
+        int k;
+        String str2;
+        String str3;
+        int m;
+        String str4;
+        String str5;
+        try
+        {
+          localObject2 = paramJSONArray.optJSONObject(i);
+          str1 = ((JSONObject)localObject2).optString("appid");
+          j = ((JSONObject)localObject2).optInt("version_code");
+          localObject1 = ((JSONObject)localObject2).optString("app_name");
+          k = ((JSONObject)localObject2).optInt("package_type");
+          str2 = ((JSONObject)localObject2).optString("package_name");
+          str3 = ((JSONObject)localObject2).optString("package_src_url");
+          m = ((JSONObject)localObject2).optInt("package_index");
+          str4 = ((JSONObject)localObject2).optString("package_id");
+          str5 = ((JSONObject)localObject2).optString("package_md5");
+          if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3))) {
+            break label530;
+          }
+          bize.c("GameCenterCheck", "checkIfNeedToDownloadTGPA packageName=" + (String)localObject1 + ",resType=" + k + ",appId=" + str1 + ",resName=" + str2 + ",srcUrl=" + str3 + ",versionCode=" + j + ",versionName=" + str4 + ",resMD5=" + str5);
+          if (((k == 0) && (!aceh.e)) || ((k == 1) && (!aceh.d))) {
+            break label559;
+          }
+          if (k == 1)
+          {
+            boolean bool = aceh.a((String)localObject1, j);
+            localObject2 = aceh.b(str1, j);
+            if ((!bool) || (!TextUtils.isEmpty((CharSequence)localObject2))) {
+              bize.c("GameCenterCheck", "checkIfNeedToDownloadTGPA cancel, checkVersion=" + bool + ",localApkPath=" + (String)localObject2);
+            }
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.e("GameCenterCheck", 2, "checkIfNeedToDownloadTGPA exception", localException);
+        }
+        Object localObject2 = new Bundle();
+        ((Bundle)localObject2).putInt("from", 3);
+        ((Bundle)localObject2).putString("packageName", (String)localObject1);
+        ((Bundle)localObject2).putString("apkUrl", str3);
+        ((Bundle)localObject2).putString("resName", str2);
+        ((Bundle)localObject2).putInt("resIndex", m);
+        ((Bundle)localObject2).putString("resVersionName", str4);
+        ((Bundle)localObject2).putInt("versionCode", j);
+        ((Bundle)localObject2).putString("resMD5", str5);
+        ((Bundle)localObject2).putString("via", "auto_tgpa");
+        auuc.a((Bundle)localObject2, localException, true, k);
+        break label559;
+        label530:
+        bize.c("GameCenterCheck", "checkIfNeedToDownloadTGPA params check fail，jsonTmp=" + ((JSONObject)localObject2).toString());
+        label559:
+        i += 1;
+      }
+    }
+  }
+  
+  public static void b(String[] paramArrayOfString)
+  {
+    bize.c("GameCenterCheck", "checkIfNeedToDownloadAppointApp:" + paramArrayOfString);
+    if ((paramArrayOfString == null) || (paramArrayOfString.length < 1)) {
+      return;
+    }
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      aceh.a(null, "558", "203701", paramArrayOfString[i], "55801", "4", "430");
+      i += 1;
+    }
+    j = 0;
+    Object localObject2 = "";
+    Object localObject1 = "";
+    i = 0;
+    for (;;)
+    {
+      Object localObject3;
+      if (i < paramArrayOfString.length) {
+        localObject3 = aceh.a("APPOINT_APPID_DETAIL_" + paramArrayOfString[i]);
+      }
+      try
+      {
+        localObject3 = new JSONObject((String)localObject3);
+        long l1 = ((JSONObject)localObject3).optLong("downloadStartTime", 0L);
+        long l2 = ((JSONObject)localObject3).optLong("downloadEndTime", 0L);
+        long l3 = NetConnInfoCenter.getServerTime();
+        if ((l1 <= l3) && (l3 <= l2))
+        {
+          localObject3 = (String)localObject1 + paramArrayOfString[i] + "|";
+          j = 1;
+          localObject1 = localObject3;
+        }
+        else
+        {
+          localObject3 = (String)localObject2 + paramArrayOfString[i] + "|";
+          localObject2 = localObject3;
+        }
+      }
+      catch (Exception localException2)
+      {
+        i += 1;
+      }
+      if (j != 0) {
+        aceh.a("APPOINTMENT_LIST", (String)localObject2);
+      }
+      paramArrayOfString = ((String)localObject1).split("\\|");
+      if (paramArrayOfString.length == 0) {
+        break;
+      }
+      i = 0;
+      while (i < paramArrayOfString.length)
+      {
+        if (TextUtils.isEmpty(paramArrayOfString[i])) {}
+        i += 1;
+      }
+      localObject1 = a(paramArrayOfString, "APPOINT_APPID_DETAIL_");
+      if (((List)localObject1).size() < 1)
+      {
+        bize.c("GameCenterCheck", "checkIfNeedToDownloadAppointApp params.size=0:");
+        return;
+      }
+      paramArrayOfString = new JSONArray();
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (DownloadInfo)((Iterator)localObject1).next();
+        localObject3 = aceh.a("APPOINT_APPID_DETAIL_" + ((DownloadInfo)localObject2).c);
+        try
+        {
+          aceh.a((String)localObject3, true, 1);
+          aceh.c(((DownloadInfo)localObject2).c, "APPOINTMENT_DOWNLOAD_LIST");
+          paramArrayOfString.put(((DownloadInfo)localObject2).c);
+        }
+        catch (Exception localException1)
+        {
+          localException1.printStackTrace();
+        }
+      }
+      if (paramArrayOfString.length() <= 0) {
+        break;
+      }
+      bmxq.a().a(paramArrayOfString, null);
+      return;
+    }
+  }
+  
+  public static boolean b()
+  {
+    if (bgnt.h(BaseApplicationImpl.getContext()))
+    {
+      PowerManager localPowerManager = (PowerManager)BaseApplicationImpl.getContext().getSystemService("power");
+      if ((localPowerManager != null) && (!localPowerManager.isScreenOn()) && ((aced.a >= 20) || (aced.b))) {
+        return true;
+      }
+    }
+    aceh.a(null, "426", "205572", "", "42601", "1", "116");
+    return false;
+  }
+  
+  public static void c(JSONArray paramJSONArray)
+  {
+    Object localObject2 = new StringBuilder().append("checkIfNeedToUnpackTGPAApp jsonArray=");
+    Object localObject1;
+    if (paramJSONArray != null)
+    {
+      localObject1 = paramJSONArray.toString();
+      bize.c("GameCenterCheck", (String)localObject1);
+      if ((paramJSONArray != null) && (paramJSONArray.length() >= 1)) {
+        break label58;
+      }
+    }
+    for (;;)
+    {
+      return;
+      localObject1 = "empty";
+      break;
+      label58:
+      aceh.a(new String[] { "UNPACK_APK_LIST" });
+      int i = 0;
+      while (i < paramJSONArray.length())
+      {
+        try
+        {
+          localObject1 = paramJSONArray.optJSONObject(i);
+          localObject2 = ((JSONObject)localObject1).optString("appid");
+          int j = ((JSONObject)localObject1).optInt("version", 0);
+          String str1 = ((JSONObject)localObject1).optString("url");
+          String str2 = ((JSONObject)localObject1).optString("md5", "");
+          if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(str1)))
+          {
+            bize.c("GameCenterCheck", "checkIfNeedToUnpackTGPAApp appId=" + (String)localObject2 + ",version=" + j + ",md5=" + str2 + ",url=" + str1);
+            bmxh.a();
+            bmxh.a().a((String)localObject2, j, str1, str2);
+          }
+          else
+          {
+            bize.c("GameCenterCheck", "checkIfNeedToUnpackTGPAApp params check fail，jsonTmp=" + ((JSONObject)localObject1).toString());
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.e("GameCenterCheck", 2, "checkIfNeedToUnpackTGPAApp exception", localException);
+        }
+        i += 1;
+      }
     }
   }
   
   public int a()
   {
-    if (QLog.isColorLevel()) {
-      bfrz.c("GameCenterCheck", "yuyue:GameCenterCheck start");
-    }
-    aahi.a();
-    if ((!aahi.b) && (!aahi.a))
+    bize.c("GameCenterCheck", "GameCenterCheck doStep");
+    aceh.a();
+    if ((!aceh.b) && (!aceh.a) && (!aceh.c) && (!aceh.d) && (!aceh.e))
     {
-      if (QLog.isColorLevel()) {
-        bfrz.c("GameCenterCheck", "yuyue:!GameCenterUtils.isAppointDownload && !GameCenterUtils.isDelayDownload");
-      }
+      bize.b("GameCenterCheck", "GameCenterCheck switch is off");
       return super.a();
     }
-    Long localLong3 = Long.valueOf(aahi.a("APPOINTMENT_LASTGET_TIME"));
-    Long localLong2 = Long.valueOf(aahi.a("APPOINTMENT_LOAD_GAP"));
+    Long localLong3 = Long.valueOf(aceh.a("APPOINTMENT_LASTGET_TIME"));
+    Long localLong2 = Long.valueOf(aceh.a("APPOINTMENT_LOAD_GAP"));
     Long localLong1 = localLong2;
     if (0L == localLong2.longValue()) {
       localLong1 = Long.valueOf(30L);
     }
-    if (NetConnInfoCenter.getServerTime() - localLong3.longValue() < localLong1.longValue())
+    long l = NetConnInfoCenter.getServerTime();
+    bize.c("GameCenterCheck", "GameCenterCheck loadGap=" + localLong1 + ", lastTime:" + localLong3 + ",isAppointDownload=" + aceh.b + ",isDelayDownload=" + aceh.a + ",isUpdateDownload=" + aceh.c + ",isResApkDownload=" + aceh.d + ",isResDefDownload=" + aceh.e);
+    int i;
+    if (l - localLong3.longValue() < localLong1.longValue())
     {
-      if (QLog.isColorLevel()) {
-        bfrz.c("GameCenterCheck", "yuyue:no getAppointment list ,loadGap=" + localLong1 + ", lastTime:" + localLong3);
+      i = 1;
+      if (i == 0) {
+        break label257;
       }
-      b();
+      a();
     }
     for (;;)
     {
-      if ((!TextUtils.isEmpty(aahi.a("APPOINTMENT_LIST"))) || (!TextUtils.isEmpty(aahi.a("APPOINTMENT_CHECKLIST"))) || (!TextUtils.isEmpty(aahi.a("DELAY_LIST")))) {
-        aahe.a();
+      if (a()) {
+        aced.a();
       }
-      bfsc.a();
-      bkjb.a().a(false, -1L);
+      bizh.a();
+      bmxq.a().a(false, -1L);
       return super.a();
-      if (QLog.isColorLevel()) {
-        bfrz.c("GameCenterCheck", "yuyue: getPreDownloadList loadGap=" + localLong1 + ",isAppointDownload=" + aahi.b);
-      }
-      if (aahi.b) {
-        ((azbi)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(12)).c();
-      }
-      aahi.a("APPOINTMENT_LASTGET_TIME", NetConnInfoCenter.getServerTime());
+      i = 0;
+      break;
+      label257:
+      bize.c("GameCenterCheck", "GameCenterCheck getPreDownloadList loadGap=" + localLong1);
+      ((bccg)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(12)).c();
     }
   }
   
-  public void a()
+  public void c()
   {
-    super.a();
+    super.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gamecenter.appointment.GameCenterCheck
  * JD-Core Version:    0.7.0.1
  */

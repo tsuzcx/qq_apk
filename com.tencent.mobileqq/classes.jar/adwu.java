@@ -1,74 +1,46 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class adwu
-  extends aqru
+public class adwu
+  implements bkhw
 {
-  adwu(adws paramadws) {}
+  public adwu(ChatSettingForTroop paramChatSettingForTroop, bkho parambkho) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferProgress");
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
+    switch (paramInt)
     {
-      paramInt = 0;
-      if (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label232;
+    default: 
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Biax == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Biax = new biax(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+    }
+    if (bgnt.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop))
+    {
+      paramView = (anwd)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(20);
+      if (paramView != null)
+      {
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.k & 0x1) == 0)
+        {
+          ChatSettingForTroop localChatSettingForTroop = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop;
+          localChatSettingForTroop.k |= 0x1;
+          paramView.l(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Biax.b(0, 2131691899, 1000);
       }
-      if (((adwz)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a != paramLong1) {}
     }
     for (;;)
     {
-      if (paramInt != -1) {
-        paramInt = 0;
-      }
-      for (;;)
-      {
-        if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
-        {
-          paramString = (FileManagerEntity)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-          if (paramString.uniseq != paramLong1) {
-            break label202;
-          }
-          if (this.a.jdField_a_of_type_Bdjz != null) {
-            this.a.jdField_a_of_type_Bdjz.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf((int)(paramString.fProgress * 100.0F)) }));
-          }
-        }
-        return;
-        paramInt += 1;
-        break;
-        label202:
-        paramInt += 1;
-      }
-      this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Bkho.cancel();
       return;
-      label232:
-      paramInt = -1;
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Biax.b(2, 2131691895, 1500);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Biax.b(2, 2131693991, 1500);
     }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String arg6, int paramInt1, int paramInt2, String paramString2)
-  {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferEnd");
-    if (!this.a.jdField_b_of_type_Boolean) {
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        this.a.a();
-        return;
-      }
-    }
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferStart");
-    if (this.a.jdField_a_of_type_Bdjz != null) {
-      this.a.jdField_a_of_type_Bdjz.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
-    }
-    this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
   }
 }
 

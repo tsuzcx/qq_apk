@@ -1,46 +1,48 @@
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+
 public class bfoh
+  extends ReportDialog
 {
-  public static String A = "actionFlag";
-  public static String B = "channel";
-  public static String C = "from";
-  public static String D = "iconUrl";
-  public static String E = "downloadType";
-  public static String F = "downloadStyle";
-  public static String G = "downloadSize";
-  public static String H = "sdkShowNotification";
-  public static String I = "extraData";
-  public static String J = "isAutoInstallBySdk";
-  public static final String K = z;
-  public static String a = "ticket";
-  public static String b = "appId";
-  public static String c = "taskAppId";
-  public static String d = "taskApkId";
-  public static String e = "versionCode";
-  public static String f = "packageName";
-  public static String g = "autoDownload";
-  public static String h = "autoInstall";
-  public static String i = "via";
-  public static String j = "url";
-  public static String k = "actionCode";
-  public static String l = "appName";
-  public static String m = "notifyKey";
-  public static String n = "topagetype";
-  public static String o = "ispatchupdate";
-  public static String p = "wording";
-  public static String q = "com.tencent.android.qqdownloader";
-  public static String r = "showNetworkDialog";
-  public static String s = "downloadSource";
-  public static String t = "patchSize";
-  public static String u = "newApkSize";
-  public static String v = "uin";
-  public static String w = "uinType";
-  public static String x = "bolckNotify";
-  public static String y = "isApk";
-  public static String z = "channelId";
+  private static String a = "https://sola.gtimg.cn/aoi/sola/20200515111445_ChpLurYZBA.png";
+  
+  public bfoh(Context paramContext)
+  {
+    super(paramContext, 2131755173);
+    a();
+  }
+  
+  private void a()
+  {
+    setCancelable(false);
+    setCanceledOnTouchOutside(false);
+    setContentView(2131559013);
+    Object localObject1 = (URLImageView)findViewById(2131368246);
+    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#FFEBEDF5"));
+    ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localColorDrawable;
+    ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localColorDrawable;
+    ((URLImageView)localObject1).setBackgroundDrawable(URLDrawable.getDrawable(a, (URLDrawable.URLDrawableOptions)localObject2));
+    localObject1 = (TextView)findViewById(2131369483);
+    ((TextView)localObject1).setClickable(true);
+    localObject2 = new GradientDrawable();
+    ((GradientDrawable)localObject2).setCornerRadius(12.0F);
+    ((GradientDrawable)localObject2).setColor(-1315339);
+    ((TextView)localObject1).setBackgroundDrawable((Drawable)localObject2);
+    ((TextView)localObject1).setOnClickListener(new bfoi(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfoh
  * JD-Core Version:    0.7.0.1
  */

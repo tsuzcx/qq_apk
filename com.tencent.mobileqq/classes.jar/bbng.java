@@ -1,82 +1,68 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.2.1;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bbng
-  implements View.OnClickListener
+  extends bbnh
 {
-  bbng(bbne parambbne) {}
+  public static final String a;
+  public int a;
+  public CharSequence a;
+  public CharSequence b;
+  public String b;
+  public CharSequence c;
   
-  public void onClick(View paramView)
+  static
   {
-    QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick");
-    bbnm localbbnm = (bbnm)paramView.getTag();
-    String str;
-    boolean bool;
-    if ((localbbnm != null) && (localbbnm.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localbbnm.jdField_a_of_type_JavaLangObject != null))
+    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + bbng.class.getSimpleName();
+  }
+  
+  public bbng(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public bbng(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
     {
-      str = "";
-      if (!(localbbnm.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        break label256;
-      }
-      str = ((Friends)localbbnm.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      if (localbbnm.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
-      {
-        if (!localbbnm.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          break label320;
-        }
-        bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(localbbnm.jdField_a_of_type_JavaLangString, str, 4, "-1");
-        label108:
-        if (QLog.isDevelopLevel()) {
-          QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick = " + bool);
-        }
-        if (localbbnm.jdField_a_of_type_Long == 1007L) {
-          this.a.jdField_a_of_type_Bboi.b();
-        }
-        localbbnm.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.c)
-        {
-          if (!localbbnm.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label343;
-          }
-          paramView.setContentDescription(localbbnm.d.getText().toString() + alud.a(2131702892));
-        }
-      }
+    default: 
+      i = 1;
     }
-    for (;;)
+    return i;
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      this.a.a();
-      if (AppSetting.c) {
-        paramView.postDelayed(new ContactListAdapter.2.1(this, paramView), 2000L);
-      }
+      paramString = new JSONObject(paramString);
+      this.i = paramString.optString("leftImageURL");
+      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
+      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
+      this.jdField_b_of_type_JavaLangString = bbup.a(paramString.optString("leftImageTagText"));
+      this.jdField_a_of_type_JavaLangCharSequence = bbup.a(paramString.optString("firstLineText"));
+      this.jdField_b_of_type_JavaLangCharSequence = bbup.a(paramString.optString("secondLineText"));
+      this.c = bbup.a(paramString.optJSONArray("thirdLineText"));
       return;
-      label256:
-      if ((localbbnm.jdField_a_of_type_JavaLangObject instanceof PhoneContact))
-      {
-        str = ((PhoneContact)localbbnm.jdField_a_of_type_JavaLangObject).name;
-        break;
-      }
-      if (!(localbbnm.jdField_a_of_type_JavaLangObject instanceof RelationTroopEntity)) {
-        break;
-      }
-      paramView = (RelationTroopEntity)localbbnm.jdField_a_of_type_JavaLangObject;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(paramView.troopInfo.troopuin);
-      return;
-      label320:
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(localbbnm.jdField_a_of_type_JavaLangString, str, 0, "-1");
-      break label108;
-      label343:
-      paramView.setContentDescription(localbbnm.d.getText().toString() + alud.a(2131702891));
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

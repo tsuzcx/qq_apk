@@ -1,11 +1,11 @@
 package dov.com.tencent.mobileqq.activity.richmedia.view;
 
-import bnio;
+import bpzr;
 
 class CameraGLSurfaceView$1
   implements Runnable
 {
-  CameraGLSurfaceView$1(CameraGLSurfaceView paramCameraGLSurfaceView, bnio parambnio) {}
+  CameraGLSurfaceView$1(CameraGLSurfaceView paramCameraGLSurfaceView, bpzr parambpzr) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class CameraGLSurfaceView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView.1
  * JD-Core Version:    0.7.0.1
  */

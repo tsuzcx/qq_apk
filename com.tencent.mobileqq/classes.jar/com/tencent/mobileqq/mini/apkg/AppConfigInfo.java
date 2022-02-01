@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.apkg;
 
 import android.text.TextUtils;
-import bdnn;
+import bgsp;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
 import common.config.service.QzoneConfig;
 import java.util.HashMap;
@@ -153,7 +153,7 @@ public class AppConfigInfo
   
   public String getRootPath(String paramString)
   {
-    if (bdnn.a(paramString)) {
+    if (bgsp.a(paramString)) {
       return "";
     }
     String str2 = AppBrandUtil.getUrlWithoutParams(paramString);
@@ -194,7 +194,7 @@ public class AppConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.AppConfigInfo
  * JD-Core Version:    0.7.0.1
  */

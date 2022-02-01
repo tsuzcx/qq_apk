@@ -1,68 +1,293 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.MiniAppConfBean.1;
+import com.tencent.mobileqq.minigame.splash.SplashMiniGameUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class aqpu
-  implements View.OnClickListener
 {
-  public aqpu(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  private int jdField_a_of_type_Int = 60;
+  private String jdField_a_of_type_JavaLangString = "";
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new MiniAppConfBean.1(this);
+  private boolean jdField_a_of_type_Boolean = true;
+  private String jdField_b_of_type_JavaLangString = "";
+  private boolean jdField_b_of_type_Boolean = true;
+  private String jdField_c_of_type_JavaLangString = "";
+  private boolean jdField_c_of_type_Boolean;
+  private String jdField_d_of_type_JavaLangString = "";
+  private boolean jdField_d_of_type_Boolean;
+  private String jdField_e_of_type_JavaLangString = "";
+  private boolean jdField_e_of_type_Boolean;
+  private String jdField_f_of_type_JavaLangString = "";
+  private boolean jdField_f_of_type_Boolean;
+  private String jdField_g_of_type_JavaLangString = "";
+  private boolean jdField_g_of_type_Boolean;
+  private boolean h;
   
-  public void onClick(View paramView)
+  public static aqpu a(aqlg[] paramArrayOfaqlg)
   {
-    Object localObject1 = paramView.getTag();
-    FileInfo localFileInfo;
-    if ((localObject1 instanceof aqqc))
-    {
-      localObject1 = (aqqc)paramView.getTag();
-      localFileInfo = (FileInfo)((aqqc)localObject1).jdField_a_of_type_JavaLangObject;
-      localObject1 = ((aqqc)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-    }
+    aqpu localaqpu = new aqpu();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
     for (;;)
     {
-      if ((paramView.getId() == 2131366301) && (QfileBaseLocalFileTabView.b(this.a))) {
-        azqs.b(QfileBaseLocalFileTabView.b(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-      }
-      Object localObject2;
-      if (localFileInfo != null)
+      int j;
+      try
       {
-        localObject2 = this.a;
-        if (paramView.getId() != 2131366301) {
-          break label238;
-        }
-      }
-      label238:
-      for (boolean bool = true;; bool = false)
-      {
-        ((QfileBaseLocalFileTabView)localObject2).a(localFileInfo, (View)localObject1, bool);
-        return;
-        if (!(localObject1 instanceof aqnh)) {
-          break label243;
-        }
-        localObject2 = (aqnh)paramView.getTag();
-        localFileInfo = (FileInfo)((aqnh)localObject2).jdField_a_of_type_JavaLangObject;
-        localObject1 = ((aqnh)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-        if ((this.a.a.g()) || (this.a.a.h()))
+        if (i < paramArrayOfaqlg.length)
         {
-          SharedPreferences.Editor localEditor = this.a.a.getSharedPreferences("LAST_CHOOSE_", 0).edit();
-          localEditor.putInt("GROUP", ((aqnh)localObject2).b);
-          localEditor.putInt("CHILD", (((aqnh)localObject2).jdField_a_of_type_Int + 1) / 4);
-          localEditor.commit();
+          String str1 = paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString;
+          if (str1 == null) {
+            break label671;
+          }
+          Object localObject = new JSONObject(str1);
+          if (((JSONObject)localObject).has("aio_mini_app_on"))
+          {
+            if (((JSONObject)localObject).optInt("aio_mini_app_on", 1) != 1) {
+              break label685;
+            }
+            bool = true;
+            localaqpu.jdField_a_of_type_Boolean = bool;
+          }
+          if (((JSONObject)localObject).has("mini_app_local_search"))
+          {
+            if (((JSONObject)localObject).optInt("mini_app_local_search", 1) != 1) {
+              break label691;
+            }
+            bool = true;
+            localaqpu.jdField_b_of_type_Boolean = bool;
+          }
+          if (((JSONObject)localObject).has("mini_app_refresh_time")) {
+            localaqpu.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("mini_app_refresh_time", 60);
+          }
+          if (((JSONObject)localObject).has("popBarShowMiniAppStore"))
+          {
+            if (((JSONObject)localObject).optInt("popBarShowMiniAppStore", 0) != 1) {
+              break label697;
+            }
+            bool = true;
+            localaqpu.jdField_c_of_type_Boolean = bool;
+          }
+          if (((JSONObject)localObject).has("minigame_splash")) {
+            SplashMiniGameUtil.saveConfigData(str1);
+          }
+          if (((JSONObject)localObject).has("mini_app_entry_auto_show"))
+          {
+            if (((JSONObject)localObject).optInt("mini_app_entry_auto_show", 0) != 1) {
+              break label703;
+            }
+            bool = true;
+            localaqpu.jdField_d_of_type_Boolean = bool;
+          }
+          if (((JSONObject)localObject).has("contact_mini_app_on"))
+          {
+            if (((JSONObject)localObject).optInt("contact_mini_app_on", 0) != 1) {
+              break label709;
+            }
+            bool = true;
+            localaqpu.jdField_f_of_type_Boolean = bool;
+          }
+          if (((JSONObject)localObject).has("more_mini_app_on"))
+          {
+            if (((JSONObject)localObject).optInt("more_mini_app_on", 0) != 1) {
+              break label715;
+            }
+            bool = true;
+            localaqpu.jdField_e_of_type_Boolean = bool;
+          }
+          if (((JSONObject)localObject).has("group_mini_app_on"))
+          {
+            if (((JSONObject)localObject).optInt("group_mini_app_on", 0) != 1) {
+              break label721;
+            }
+            bool = true;
+            localaqpu.jdField_g_of_type_Boolean = bool;
+          }
+          if (((JSONObject)localObject).has("avatar_mini_app_on"))
+          {
+            if (((JSONObject)localObject).optInt("avatar_mini_app_on", 0) != 1) {
+              break label727;
+            }
+            bool = true;
+            localaqpu.h = bool;
+            if (((JSONObject)localObject).has("avatar_mini_app_url")) {
+              localaqpu.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("avatar_mini_app_url");
+            }
+          }
+          if (((JSONObject)localObject).has("back_to_home_scene_list"))
+          {
+            if (localaqpu.jdField_a_of_type_JavaUtilArrayList == null) {
+              localaqpu.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+            }
+            localaqpu.jdField_a_of_type_JavaUtilArrayList.clear();
+            String[] arrayOfString = ((JSONObject)localObject).optString("back_to_home_scene_list", "1044|1007|1008|2003").split("\\|");
+            int k = arrayOfString.length;
+            j = 0;
+            if (j < k)
+            {
+              String str2 = arrayOfString[j];
+              if (TextUtils.isEmpty(str2)) {
+                break label678;
+              }
+              localaqpu.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(str2));
+              break label678;
+            }
+          }
+          if (1 == ((JSONObject)localObject).optInt("enable_c2c_plus_panel", 0))
+          {
+            localaqpu.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("url", "");
+            localaqpu.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("icon", "");
+            localaqpu.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("icon_night", "");
+            localaqpu.jdField_e_of_type_JavaLangString = ((JSONObject)localObject).optString("simple_icon", "");
+            localaqpu.jdField_f_of_type_JavaLangString = ((JSONObject)localObject).optString("simple_icon_night", "");
+            localaqpu.jdField_g_of_type_JavaLangString = ((JSONObject)localObject).optString("name", BaseApplicationImpl.sApplication.getString(2131697687));
+            localObject = BaseApplicationImpl.getApplication().getRuntime();
+            if ((localObject instanceof QQAppInterface))
+            {
+              localObject = (QQAppInterface)localObject;
+              ahrk.a((QQAppInterface)localObject).a((QQAppInterface)localObject, localaqpu);
+            }
+          }
+          localStringBuilder.append("config: ").append(str1).append(",");
         }
-        break;
       }
-      label243:
-      localObject1 = null;
-      localFileInfo = null;
+      catch (Exception paramArrayOfaqlg)
+      {
+        QLog.d("MiniAppConfProcessor", 2, "parse, failed!");
+        paramArrayOfaqlg.printStackTrace();
+        return null;
+      }
+      QLog.e("MiniAppConfProcessor", 2, "parse, content:" + localStringBuilder.toString());
+      return localaqpu;
+      label671:
+      i += 1;
+      continue;
+      label678:
+      j += 1;
+      continue;
+      label685:
+      boolean bool = false;
+      continue;
+      label691:
+      bool = false;
+      continue;
+      label697:
+      bool = false;
+      continue;
+      label703:
+      bool = false;
+      continue;
+      label709:
+      bool = false;
+      continue;
+      label715:
+      bool = false;
+      continue;
+      label721:
+      bool = false;
+      continue;
+      label727:
+      bool = false;
     }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public ArrayList<Integer> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public String c()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public String d()
+  {
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_d_of_type_Boolean;
+  }
+  
+  public String e()
+  {
+    return this.jdField_e_of_type_JavaLangString;
+  }
+  
+  public boolean e()
+  {
+    return this.jdField_f_of_type_Boolean;
+  }
+  
+  public String f()
+  {
+    return this.jdField_f_of_type_JavaLangString;
+  }
+  
+  public boolean f()
+  {
+    return this.jdField_e_of_type_Boolean;
+  }
+  
+  public String g()
+  {
+    return this.jdField_g_of_type_JavaLangString;
+  }
+  
+  public boolean g()
+  {
+    return this.jdField_g_of_type_Boolean;
+  }
+  
+  public boolean h()
+  {
+    return this.h;
+  }
+  
+  public String toString()
+  {
+    new StringBuilder().append("miniAppEntryEnable:").append(this.jdField_a_of_type_Boolean).append(", miniAppRefreshTime:").append(this.jdField_a_of_type_Int).append(",miniAppLocalSearchEnable").append(this.jdField_b_of_type_Boolean);
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqpu
  * JD-Core Version:    0.7.0.1
  */

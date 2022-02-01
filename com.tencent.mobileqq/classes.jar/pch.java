@@ -1,35 +1,21 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
-public class pch
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class pch
+  extends pcm
 {
-  public pch(VideoView paramVideoView) {}
-  
-  public void onGlobalLayout()
+  pch(pbe parampbe, BaseCommentData paramBaseCommentData)
   {
-    if ((VideoView.a(this.a) == VideoView.b) && (!this.a.a))
-    {
-      if ((this.a.isShown()) && (VideoView.a(this.a).get() != 3))
-      {
-        VideoView.a(this.a).set(3);
-        QLog.d("gifvideo.VideoView", 1, "show to play");
-        this.a.c();
-      }
-      if ((!this.a.isShown()) && (VideoView.a(this.a).get() != 5))
-      {
-        VideoView.a(this.a).set(5);
-        QLog.d("gifvideo.VideoView", 1, "unshow to stop");
-        this.a.b();
-      }
-    }
+    super(parampbe, null);
+  }
+  
+  void a(pcp parampcp)
+  {
+    parampcp.onCommentReply(true, new pay(0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, pbe.a(this.jdField_a_of_type_Pbe)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pch
  * JD-Core Version:    0.7.0.1
  */

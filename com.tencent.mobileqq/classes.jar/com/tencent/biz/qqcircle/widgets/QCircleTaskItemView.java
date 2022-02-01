@@ -4,14 +4,13 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import qqcircle.TaskCenterReader.TaskRecord;
-import ufy;
+import vyy;
 
 public class QCircleTaskItemView
-  extends BaseWidgetView<TaskCenterReader.TaskRecord>
+  extends QCircleBaseWidgetView<TaskCenterReader.TaskRecord>
 {
   TextView a;
   TextView b;
@@ -24,50 +23,52 @@ public class QCircleTaskItemView
   
   public int a()
   {
-    return 2131560596;
+    return 2131560788;
+  }
+  
+  protected String a()
+  {
+    return "QCircleTaskItemView";
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.a = ((TextView)findViewById(2131379032));
-    this.b = ((TextView)findViewById(2131379030));
-    this.c = ((TextView)findViewById(2131379029));
+    this.a = ((TextView)findViewById(2131379941));
+    this.b = ((TextView)findViewById(2131379939));
+    this.c = ((TextView)findViewById(2131379938));
   }
   
   protected void a(TaskCenterReader.TaskRecord paramTaskRecord)
   {
-    Object localObject;
+    boolean bool = false;
+    TextView localTextView;
     if (paramTaskRecord != null)
     {
       this.a.setText(paramTaskRecord.title.get());
-      this.b.setText(String.format("%s（%d/%d）", new Object[] { paramTaskRecord.desc.get(), Integer.valueOf(paramTaskRecord.haveDone.get()), Integer.valueOf(paramTaskRecord.maxCnt.get()) }));
-      TextView localTextView = this.c;
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (paramTaskRecord.haveDone.get() >= paramTaskRecord.maxCnt.get()) {
-        break label171;
-      }
-      localObject = "去";
-      localTextView.setText((String)localObject + "完成");
-      localObject = this.c;
-      if (paramTaskRecord.haveDone.get() >= paramTaskRecord.maxCnt.get()) {
-        break label177;
+      this.b.setText(paramTaskRecord.taskDesc.get());
+      this.c.setText(paramTaskRecord.bottonDesc.get());
+      localTextView = this.c;
+      if (paramTaskRecord.bottonJumpFlag.get() <= 0) {
+        break label114;
       }
     }
-    label171:
-    label177:
-    for (int i = 2130843547;; i = 0)
+    label114:
+    for (int i = 2130843895;; i = 0)
     {
-      ((TextView)localObject).setBackgroundResource(i);
-      this.c.setOnClickListener(new ufy(this, paramTaskRecord));
+      localTextView.setBackgroundResource(i);
+      localTextView = this.c;
+      if (paramTaskRecord.bottonJumpFlag.get() > 0) {
+        bool = true;
+      }
+      localTextView.setClickable(bool);
+      this.c.setOnClickListener(new vyy(this, paramTaskRecord));
       return;
-      localObject = "已";
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleTaskItemView
  * JD-Core Version:    0.7.0.1
  */

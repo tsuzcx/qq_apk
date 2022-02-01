@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
 import android.text.TextUtils;
-import awge;
-import awhs;
-import ulj;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
+import wev;
 
 public class MemoryInfoEntry
-  extends awge
-  implements ulj
+  extends Entity
+  implements wev
 {
   public String cookie = "";
   public int isEnd = -1;
@@ -15,7 +15,7 @@ public class MemoryInfoEntry
   public long maxCollectionIndex = -1L;
   public long seq = -1L;
   public int timeZone = -1;
-  @awhs
+  @unique
   public String unionId = "";
   
   public MemoryInfoEntry() {}
@@ -61,7 +61,7 @@ public class MemoryInfoEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.MemoryInfoEntry
  * JD-Core Version:    0.7.0.1
  */

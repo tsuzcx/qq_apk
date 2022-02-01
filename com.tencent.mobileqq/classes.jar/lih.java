@@ -1,24 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class lih
-  extends BroadcastReceiver
 {
-  public lih(VideoAppInterface paramVideoAppInterface) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static void a()
   {
-    paramContext = paramIntent.getAction();
-    QLog.d(VideoAppInterface.c(), 2, String.format("onReceive action=%s", new Object[] { paramContext }));
-    System.exit(0);
+    a("0X8009850");
+  }
+  
+  static void a(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("VoiceRecogReport", 1, "report, key[" + paramString + "]");
+    }
+    bcst.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", null, null);
+  }
+  
+  public static void b()
+  {
+    a("0X8009851");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lih
  * JD-Core Version:    0.7.0.1
  */

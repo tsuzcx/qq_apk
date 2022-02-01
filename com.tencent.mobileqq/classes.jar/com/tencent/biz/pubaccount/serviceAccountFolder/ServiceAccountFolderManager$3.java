@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import ssp;
+import tue;
 
 public class ServiceAccountFolderManager$3
   implements Runnable
 {
-  public ServiceAccountFolderManager$3(ssp paramssp, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public ServiceAccountFolderManager$3(tue paramtue, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class ServiceAccountFolderManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awge;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import ors;
+import com.tencent.mobileqq.persistence.Entity;
+import pha;
 
 public class ArticleExposureInfo
-  extends awge
+  extends Entity
   implements Comparable<ArticleExposureInfo>
 {
   public static final String TABLE_NAME = ArticleExposureInfo.class.getSimpleName();
@@ -27,7 +27,7 @@ public class ArticleExposureInfo
     localArticleExposureInfo.algorithmID = paramBaseArticleInfo.mAlgorithmID;
     localArticleExposureInfo.articleID = paramBaseArticleInfo.mArticleID;
     localArticleExposureInfo.exposureTime = NetConnInfoCenter.getServerTimeMillis();
-    localArticleExposureInfo.feedsType = ors.a(paramBaseArticleInfo);
+    localArticleExposureInfo.feedsType = pha.a(paramBaseArticleInfo);
     localArticleExposureInfo.channelID = paramBaseArticleInfo.mChannelID;
     localArticleExposureInfo.title = paramBaseArticleInfo.mTitle;
     return localArticleExposureInfo;

@@ -1,21 +1,11 @@
-import android.widget.CheckBox;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.contact.SimpleTextView;
-import com.tencent.widget.SingleLineTextView;
-
-public class akhv
+class akhv
+  extends akib
 {
-  public int a;
-  public CheckBox a;
-  public ProgressBar a;
-  public SimpleTextView a;
-  public SingleLineTextView a;
-  public StringBuilder a;
-  public SingleLineTextView b;
+  akhv(akhu paramakhu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhv
  * JD-Core Version:    0.7.0.1
  */

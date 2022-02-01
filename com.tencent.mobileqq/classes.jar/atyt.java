@@ -1,35 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class atyt
-  implements atyy
+public class atyt
+  implements CompoundButton.OnCheckedChangeListener
 {
-  atyt(atys paramatys) {}
+  public atyt(QFileDebugSettingFragment paramQFileDebugSettingFragment, QQAppInterface paramQQAppInterface) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AppRuntime localAppRuntime;
-    if (this.a.jdField_a_of_type_Int == 1)
-    {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        azqs.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
-      }
-    }
-    do
-    {
-      return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)));
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    azqs.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atyt
  * JD-Core Version:    0.7.0.1
  */

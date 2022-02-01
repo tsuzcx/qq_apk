@@ -1,18 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.emoticonview.EmotionPreviewInfo;
+import android.animation.AnimatorSet;
+import android.graphics.Rect;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.HashMap;
 
-public final class apxc
-  implements Parcelable.Creator<EmotionPreviewInfo>
+public class apxc
 {
-  public EmotionPreviewInfo a(Parcel paramParcel)
-  {
-    return new EmotionPreviewInfo(paramParcel);
-  }
+  public long a;
+  public AnimatorSet a;
+  public Rect a;
+  public View a;
+  public ImageView a;
+  public MessageRecord a;
+  public HashMap<String, apxp> a;
+  public long b;
+  public Rect b;
+  public MessageRecord b;
   
-  public EmotionPreviewInfo[] a(int paramInt)
+  public apxc()
   {
-    return new EmotionPreviewInfo[paramInt];
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
   }
 }
 

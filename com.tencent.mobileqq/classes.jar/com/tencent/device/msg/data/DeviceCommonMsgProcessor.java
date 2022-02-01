@@ -1,31 +1,31 @@
 package com.tencent.device.msg.data;
 
+import abuu;
 import com.tencent.litetransfersdk.Session;
-import zxw;
 
 public class DeviceCommonMsgProcessor
 {
-  static String a(zxw paramzxw1, zxw paramzxw2)
+  static String a(abuu paramabuu1, abuu paramabuu2)
   {
-    if ((paramzxw1 == null) || (paramzxw2 == null)) {
+    if ((paramabuu1 == null) || (paramabuu2 == null)) {
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{");
     localStringBuilder.append("\"");
-    localStringBuilder.append(paramzxw1.a);
+    localStringBuilder.append(paramabuu1.a);
     localStringBuilder.append("\"");
     localStringBuilder.append(":");
     localStringBuilder.append("\"");
-    localStringBuilder.append(paramzxw1.b);
+    localStringBuilder.append(paramabuu1.b);
     localStringBuilder.append("\"");
     localStringBuilder.append(",");
     localStringBuilder.append("\"");
-    localStringBuilder.append(paramzxw2.a);
+    localStringBuilder.append(paramabuu2.a);
     localStringBuilder.append("\"");
     localStringBuilder.append(":");
     localStringBuilder.append("\"");
-    localStringBuilder.append(paramzxw2.b);
+    localStringBuilder.append(paramabuu2.b);
     localStringBuilder.append("\"");
     localStringBuilder.append("}");
     return localStringBuilder.toString();
@@ -46,7 +46,7 @@ public class DeviceCommonMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceCommonMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

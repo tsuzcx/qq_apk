@@ -1,45 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
+import java.util.List;
 
 public class lqj
-  extends BroadcastReceiver
 {
-  public lqj(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public int a;
+  public List<TTFaceOriginDataModel> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean a()
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (paramContext.equals("homekey")))
-      {
-        azqs.b(null, "CliOper", "", "", "0X8004210", "0X8004210", 0, 0, "", "", "", "");
-        this.a.c(-1038L);
-      }
-    }
-    boolean bool;
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramContext.equals("android.intent.action.SCREEN_OFF"));
-      bool = VideoController.a(this.a);
-      if (bool) {
-        azqs.b(null, "CliOper", "", "", "0X800420C", "0X800420C", 0, 0, "", "", "", "");
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w(this.a.b, 1, "ACTION_SCREEN_OFF, isScreenLocked[" + bool + "]");
+    return (this.d != 0) && (this.e != 0) && (this.a != null) && (!this.a.isEmpty());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lqj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,14 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class agsa
-  implements nbt
+  implements DialogInterface.OnClickListener
 {
-  agsa(agrn paramagrn) {}
+  agsa(agrz paramagrz) {}
   
-  public void loaded(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    agrn.a(this.a, 0, 10);
+    paramDialogInterface.dismiss();
   }
 }
 

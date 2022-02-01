@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import alud;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -8,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import anni;
 
 public class QQStoryVideoPlayerErrorView
   extends FrameLayout
@@ -29,7 +29,7 @@ public class QQStoryVideoPlayerErrorView
   
   public void a()
   {
-    this.a.setText(alud.a(2131711484));
+    this.a.setText(anni.a(2131709860));
     this.a.setVisibility(0);
     this.b.setVisibility(8);
   }
@@ -42,9 +42,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559391, this, true);
-    this.a = ((TextView)paramContext.findViewById(2131375735));
-    this.b = ((TextView)paramContext.findViewById(2131377898));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559507, this, true);
+    this.a = ((TextView)paramContext.findViewById(2131376462));
+    this.b = ((TextView)paramContext.findViewById(2131378737));
   }
   
   public void setOnRetryClickListener(View.OnClickListener paramOnClickListener)
@@ -60,7 +60,7 @@ public class QQStoryVideoPlayerErrorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView
  * JD-Core Version:    0.7.0.1
  */

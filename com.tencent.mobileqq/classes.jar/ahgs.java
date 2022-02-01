@@ -1,23 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahgs
-  implements View.OnClickListener
+class ahgs
+  implements DialogInterface.OnClickListener
 {
-  public ahgs(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  ahgs(ahgl paramahgl) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = (InputMethodManager)this.a.getSystemService("input_method");
-    if ((paramView != null) && (paramView.isActive())) {
-      paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    }
-    this.a.setResult(1);
-    this.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

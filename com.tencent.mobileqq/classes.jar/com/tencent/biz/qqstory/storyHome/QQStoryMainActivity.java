@@ -1,47 +1,51 @@
 package com.tencent.biz.qqstory.storyHome;
 
+import Override;
+import abdx;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import bdii;
-import bkny;
+import android.view.MotionEvent;
+import bgno;
+import bncl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tribe.async.dispatch.Subscriber;
 import java.util.Map;
 import mqq.app.MobileQQ;
-import ulg;
-import utp;
-import uvt;
-import uwa;
-import wgv;
-import wgw;
-import wxd;
-import wxe;
-import zhe;
+import wes;
+import wnb;
+import wpf;
+import wpm;
+import yag;
+import yah;
+import yqo;
+import yqp;
 
 public class QQStoryMainActivity
   extends QQStoryBaseActivity
 {
   public static long a;
+  private abdx jdField_a_of_type_Abdx;
   protected QQStoryMainController a;
   NavBarCommon jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon;
-  private zhe jdField_a_of_type_Zhe;
   
   public QQStoryMainActivity()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController = new QQStoryMainController(new wgv(this), QQStoryMainController.c);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController = new QQStoryMainController(new yag(this), QQStoryMainController.c);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a(this);
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)findViewById(2131375863));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)findViewById(2131376599));
     this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setOnItemSelectListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a);
-    a(ulg.a);
+    a(wes.a);
   }
   
   private void a(Intent paramIntent)
@@ -60,18 +64,18 @@ public class QQStoryMainActivity
   
   private void a(Intent paramIntent, String paramString)
   {
-    if (this.jdField_a_of_type_Zhe == null) {
-      this.jdField_a_of_type_Zhe = new zhe(this);
+    if (this.jdField_a_of_type_Abdx == null) {
+      this.jdField_a_of_type_Abdx = new abdx(this);
     }
-    String str2 = this.app.getApplication().getString(2131719921);
+    String str2 = this.app.getApplication().getString(2131717865);
     String str1 = str2;
     if (paramString != null) {
       str1 = str2 + paramString;
     }
-    paramIntent = new wgw(this, paramIntent);
-    this.jdField_a_of_type_Zhe.a(str1, paramIntent);
-    this.jdField_a_of_type_Zhe.a(paramIntent);
-    this.jdField_a_of_type_Zhe.show();
+    paramIntent = new yah(this, paramIntent);
+    this.jdField_a_of_type_Abdx.a(str1, paramIntent);
+    this.jdField_a_of_type_Abdx.a(paramIntent);
+    this.jdField_a_of_type_Abdx.show();
   }
   
   private void a(@NonNull String paramString)
@@ -92,6 +96,14 @@ public class QQStoryMainActivity
   
   protected void a(@NonNull Map<Subscriber, String> paramMap) {}
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
@@ -109,16 +121,16 @@ public class QQStoryMainActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, " doOnCreate");
     }
-    wxe.d("Q.qqstory.home.QQStoryMainActivity", "QQStoryMainActivity start");
+    yqp.d("Q.qqstory.home.QQStoryMainActivity", "QQStoryMainActivity start");
     this.mUseOptimizMode = true;
     jdField_a_of_type_Long = System.currentTimeMillis();
     super.doOnCreate(paramBundle);
-    setContentView(2131561490);
+    setContentView(2131561725);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a(paramBundle);
     a();
-    int i = ((Integer)((uvt)uwa.a(10)).b("string_story_global_log_level", Integer.valueOf(-1))).intValue();
-    wxd.a().a(i);
-    bkny.a(BaseApplicationImpl.getContext(), new QQStoryMainActivity.2(this), null);
+    int i = ((Integer)((wpf)wpm.a(10)).b("string_story_global_log_level", Integer.valueOf(-1))).intValue();
+    yqo.a().a(i);
+    bncl.a(BaseApplicationImpl.getContext(), new QQStoryMainActivity.2(this), null);
     a(getIntent());
     return true;
   }
@@ -131,14 +143,14 @@ public class QQStoryMainActivity
     super.doOnDestroy();
     jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.d(this);
-    wxd.a().a(-1);
-    utp.a().b();
-    if (this.jdField_a_of_type_Zhe != null)
+    yqo.a().a(-1);
+    wnb.a().b();
+    if (this.jdField_a_of_type_Abdx != null)
     {
-      this.jdField_a_of_type_Zhe.dismiss();
-      this.jdField_a_of_type_Zhe = null;
+      this.jdField_a_of_type_Abdx.dismiss();
+      this.jdField_a_of_type_Abdx = null;
     }
-    bdii.a().a();
+    bgno.a().a();
   }
   
   public void doOnNewIntent(Intent paramIntent)
@@ -179,7 +191,7 @@ public class QQStoryMainActivity
     }
     super.doOnStop();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.c(this);
-    bdii.a().a();
+    bgno.a().a();
   }
   
   public void finish()
@@ -197,10 +209,17 @@ public class QQStoryMainActivity
   {
     return super.onBackEvent();
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryMainActivity
  * JD-Core Version:    0.7.0.1
  */

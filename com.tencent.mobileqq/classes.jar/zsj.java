@@ -1,25 +1,20 @@
-import com.tencent.device.bind.DevicePluginDownloadActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class zsj
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  public zsj(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
+  public zsj(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdgm.b(this.a);
     this.a.finish();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    DevicePluginDownloadActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zsj
  * JD-Core Version:    0.7.0.1
  */

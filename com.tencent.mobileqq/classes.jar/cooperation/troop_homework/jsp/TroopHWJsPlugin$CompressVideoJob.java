@@ -5,11 +5,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.text.TextUtils;
-import bdzf;
-import begz;
-import bkcy;
-import bkdk;
-import bkdl;
+import bhgg;
+import bhod;
+import bmri;
+import bmru;
+import bmrv;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -21,14 +21,14 @@ import java.util.Set;
 class TroopHWJsPlugin$CompressVideoJob
   implements Runnable
 {
-  private bkdk jdField_a_of_type_Bkdk;
+  private bmru jdField_a_of_type_Bmru;
   private HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap;
   
-  public TroopHWJsPlugin$CompressVideoJob(bkdk parambkdk, HashMap<Integer, String> paramHashMap)
+  public TroopHWJsPlugin$CompressVideoJob(bmru parambmru, HashMap<Integer, String> paramHashMap)
   {
     Object localObject;
     this.jdField_a_of_type_JavaUtilHashMap = localObject;
-    this.jdField_a_of_type_Bkdk = paramHashMap;
+    this.jdField_a_of_type_Bmru = paramHashMap;
   }
   
   public void run()
@@ -55,16 +55,16 @@ class TroopHWJsPlugin$CompressVideoJob
         try
         {
           localBitmap = TroopHWJsPlugin.a(this.this$0, i, (String)localObject);
-          str = bdzf.a(localVFSFile.getAbsolutePath() + "/" + new File((String)localObject).getName());
+          str = bhgg.a(localVFSFile.getAbsolutePath() + "/" + new File((String)localObject).getName());
           this.this$0.a(i, 0.05F);
-          j = bkcy.a(localContext, (String)localObject, str);
+          j = bmri.a(localContext, (String)localObject, str);
           this.this$0.a(i, 0.1F);
           if (j != 1) {
             break label306;
           }
-          localObject = this.this$0.a(this.this$0, i, (String)localObject, localBitmap, this.jdField_a_of_type_Bkdk, 2);
+          localObject = this.this$0.a(this.this$0, i, (String)localObject, localBitmap, this.jdField_a_of_type_Bmru, 2);
           this.this$0.b.put(Integer.valueOf(i), localObject);
-          ((bkdl)localObject).a();
+          ((bmrv)localObject).a();
         }
         catch (Exception localException)
         {
@@ -73,21 +73,21 @@ class TroopHWJsPlugin$CompressVideoJob
         }
         continue;
         label306:
-        bkdl localbkdl;
+        bmrv localbmrv;
         if ((j == 0) && (new File(str).exists()))
         {
-          localbkdl = this.this$0.a(this.this$0, i, str, localBitmap, this.jdField_a_of_type_Bkdk, 2);
-          this.this$0.b.put(Integer.valueOf(i), localbkdl);
-          localbkdl.a();
+          localbmrv = this.this$0.a(this.this$0, i, str, localBitmap, this.jdField_a_of_type_Bmru, 2);
+          this.this$0.b.put(Integer.valueOf(i), localbmrv);
+          localbmrv.a();
         }
         else
         {
           if (QLog.isColorLevel()) {
             QLog.w("TroopHWJsPlugin", 2, "CompressVideoJob failed:" + j);
           }
-          localbkdl = this.this$0.a(this.this$0, i, localbkdl, localBitmap, this.jdField_a_of_type_Bkdk, 2);
-          this.this$0.b.put(Integer.valueOf(i), localbkdl);
-          localbkdl.a();
+          localbmrv = this.this$0.a(this.this$0, i, localbmrv, localBitmap, this.jdField_a_of_type_Bmru, 2);
+          this.this$0.b.put(Integer.valueOf(i), localbmrv);
+          localbmrv.a();
         }
       }
       else
@@ -100,7 +100,7 @@ class TroopHWJsPlugin$CompressVideoJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.CompressVideoJob
  * JD-Core Version:    0.7.0.1
  */

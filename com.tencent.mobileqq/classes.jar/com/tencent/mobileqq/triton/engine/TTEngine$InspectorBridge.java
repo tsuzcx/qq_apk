@@ -2,21 +2,14 @@ package com.tencent.mobileqq.triton.engine;
 
 import androidx.annotation.NonNull;
 import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.jni.TTNativeModule;
-import com.tencent.mobileqq.triton.sdk.bridge.IInspectorAgent;
+import com.tencent.mobileqq.triton.sdk.bridge.InspectorAgent;
 
-@TTNativeModule(name="InspectorBridge")
 public final class TTEngine$InspectorBridge
 {
-  private final IInspectorAgent mProxy;
-  private final long nativeInstance;
-  
-  private TTEngine$InspectorBridge(IInspectorAgent paramIInspectorAgent)
-  {
-    this.mProxy = paramIInspectorAgent;
-    this.nativeInstance = nativeCreate();
-    this.mProxy.setOnDebuggerMessageListener(new TTEngine.InspectorBridge.1(this));
-  }
+  String a = "InspectorBridge";
+  private InspectorAgent b;
+  @TTNativeCall
+  private final long nativeInstance = nativeCreate();
   
   private native long nativeCreate();
   
@@ -25,20 +18,26 @@ public final class TTEngine$InspectorBridge
   {
     try
     {
-      this.mProxy.sendMessageToDebugger(paramString);
+      this.b.sendMessageToDebugger(paramString);
       return;
     }
-    catch (Throwable paramString)
+    finally
     {
-      TTLog.e("TTEngine", "sendMessageToDebugger", paramString);
+      TTLog.b(this.a, "sendMessageToDebugger", paramString);
     }
   }
   
   private static native void sendMessageToEngine(long paramLong, String paramString);
+  
+  public void a(@NonNull InspectorAgent paramInspectorAgent)
+  {
+    this.b = paramInspectorAgent;
+    this.b.setOnDebuggerMessageListener(new TTEngine.InspectorBridge.a(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.TTEngine.InspectorBridge
  * JD-Core Version:    0.7.0.1
  */

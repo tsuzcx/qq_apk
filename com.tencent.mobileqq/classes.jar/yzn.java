@@ -1,26 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.animation.ValueAnimator;
 
-class yzn
-  implements Animation.AnimationListener
+public class yzn
+  implements yzm
 {
-  yzn(yzj paramyzj) {}
+  public void a(ValueAnimator paramValueAnimator) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public void b(ValueAnimator paramValueAnimator) {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void c(ValueAnimator paramValueAnimator) {}
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (yzj.b(this.a) != null) {
-      yzj.b(this.a).setVisibility(0);
-    }
-  }
+  public void d(ValueAnimator paramValueAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yzn
  * JD-Core Version:    0.7.0.1
  */

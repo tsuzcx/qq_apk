@@ -11,11 +11,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
-import bdgm;
-import bdjz;
-import bexq;
-import bexr;
-import bext;
+import bglp;
+import bgpa;
+import bieo;
+import biep;
+import bier;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
 
@@ -305,15 +305,15 @@ public class FloatingScreenPermission
     if (paramContext == null) {
       return;
     }
-    bext.b();
-    bdgm.a(paramContext, 230, paramContext.getString(2131719012), paramContext.getString(2131719010), paramContext.getString(2131719009), paramContext.getString(2131719011), new bexq(paramContext), null).show();
+    bier.b();
+    bglp.a(paramContext, 230, paramContext.getString(2131717133), paramContext.getString(2131717131), paramContext.getString(2131717130), paramContext.getString(2131717132), new bieo(paramContext), null).show();
   }
   
   private static boolean handleVivoPermissionDialog(Context paramContext)
   {
     if (canUseCheckOpForVivo())
     {
-      bdgm.a(paramContext, 230, paramContext.getString(2131719012), paramContext.getString(2131700010), paramContext.getString(2131719009), paramContext.getString(2131695097), new bexr(paramContext), null).show();
+      bglp.a(paramContext, 230, paramContext.getString(2131717133), paramContext.getString(2131698439), paramContext.getString(2131717130), paramContext.getString(2131694163), new biep(paramContext), null).show();
       return true;
     }
     return false;
@@ -570,7 +570,7 @@ public class FloatingScreenPermission
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission
  * JD-Core Version:    0.7.0.1
  */

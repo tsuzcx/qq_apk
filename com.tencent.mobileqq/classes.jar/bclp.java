@@ -1,44 +1,142 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 
 public class bclp
 {
-  public static List<TroopFileTansferItemEntity> a(QQAppInterface paramQQAppInterface, long paramLong)
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private batk jdField_a_of_type_Batk;
+  public batl a;
+  private String jdField_a_of_type_JavaLangString;
+  private float[] jdField_a_of_type_ArrayOfFloat;
+  
+  private static long a(int paramInt)
   {
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    TroopFileTansferItemEntity localTroopFileTansferItemEntity = new TroopFileTansferItemEntity();
-    localTroopFileTansferItemEntity.troopuin = paramLong;
-    return paramQQAppInterface.a(TroopFileTansferItemEntity.class, "select * from " + localTroopFileTansferItemEntity.getTableName() + " where troopuin = ?", new String[] { "" + paramLong });
+    return paramInt * 1000000000L / 25L;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Map<UUID, ? extends awge> paramMap, long paramLong)
+  private Bitmap a(Bitmap paramBitmap)
   {
-    if (paramMap == null) {
-      QLog.e("SerializableManager", 4, "bad Entity Param");
-    }
-    Object localObject;
-    do
+    Bitmap localBitmap = paramBitmap;
+    if (paramBitmap.getWidth() % 2 == 1)
     {
-      return false;
-      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject = new TroopFileTansferItemEntity();
-      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-    } while (!paramQQAppInterface.a(((TroopFileTansferItemEntity)localObject).getTableName()));
-    paramMap = paramMap.values().iterator();
-    while (paramMap.hasNext())
-    {
-      localObject = (awge)paramMap.next();
-      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-      ((awge)localObject).setStatus(1000);
-      paramQQAppInterface.a((awge)localObject);
+      localBitmap = Bitmap.createBitmap(paramBitmap.getWidth() + 1, paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      localCanvas.drawARGB(0, 0, 0, 0);
+      localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
     }
-    return true;
+    return localBitmap;
+  }
+  
+  private void a()
+  {
+    yqp.b("Q.qqstory.publish.upload.PicToVideoConverter", "preparing.");
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    yqp.b("Q.qqstory.publish.upload.PicToVideoConverter", "bitmap's width = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + ", height = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    batj localbatj = new batj(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), 532480, 1, false, 0);
+    localbatj.d = 25;
+    this.jdField_a_of_type_Batl = new batl();
+    this.jdField_a_of_type_Batl.a(localbatj);
+    this.jdField_a_of_type_Batk = new batk();
+    this.jdField_a_of_type_Batk.a(localbatj, this.jdField_a_of_type_Batl.a());
+    this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+  }
+  
+  private void b()
+  {
+    yqp.b("Q.qqstory.publish.upload.PicToVideoConverter", "releasing.");
+    if (this.jdField_a_of_type_Batk != null)
+    {
+      this.jdField_a_of_type_Batk.a();
+      this.jdField_a_of_type_Batk = null;
+    }
+  }
+  
+  public int a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      throw new IllegalStateException("convert image to video failed. because input path or target path is null!");
+    }
+    yqp.d("Q.qqstory.publish.upload.PicToVideoConverter", "input file path is %s. output file path is %s.", new Object[] { paramString1, paramString2 });
+    if (!zkr.c(paramString1))
+    {
+      yqp.e("Q.qqstory.publish.upload.PicToVideoConverter", "input file does not exists or is empty.");
+      return 940007;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    try
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(paramString1);
+      l = System.currentTimeMillis();
+    }
+    catch (OutOfMemoryError paramString2)
+    {
+      try
+      {
+        for (;;)
+        {
+          a();
+          i = 0;
+          for (;;)
+          {
+            if (i < 75)
+            {
+              this.jdField_a_of_type_Batl.a();
+              this.jdField_a_of_type_Batk.a(3553, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, null, a(i));
+              i += 1;
+              continue;
+              paramString2 = paramString2;
+              System.gc();
+              try
+              {
+                Thread.sleep(1000L);
+                this.jdField_a_of_type_AndroidGraphicsBitmap = bgmo.a(paramString1, 540, 960);
+                if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+                  this.jdField_a_of_type_AndroidGraphicsBitmap = bgmo.a(paramString1, 360, 640);
+                }
+                if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+                  break;
+                }
+                yqp.e("Q.qqstory.publish.upload.PicToVideoConverter", "decode bitmap <%s> error:%s", new Object[] { paramString1, paramString2 });
+                return 942014;
+              }
+              catch (InterruptedException localInterruptedException)
+              {
+                for (;;)
+                {
+                  localInterruptedException.printStackTrace();
+                }
+              }
+            }
+          }
+        }
+        this.jdField_a_of_type_Batl.b();
+        b();
+        i = 0;
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          long l;
+          yqp.b("Q.qqstory.publish.upload.PicToVideoConverter", "convert picture to video error. %s.", paramString1);
+          int i = 942013;
+          this.jdField_a_of_type_Batl.c();
+          b();
+        }
+      }
+      finally
+      {
+        b();
+      }
+      yqp.d("Q.qqstory.publish.upload.PicToVideoConverter", "convert image to video done. cost time %d. errorCode is %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i) });
+      return i;
+    }
   }
 }
 

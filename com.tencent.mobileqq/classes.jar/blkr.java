@@ -1,25 +1,56 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class blkr
-  implements Animator.AnimatorListener
+public abstract class blkr
+  extends Binder
+  implements blkq
 {
-  public blkr(AEEditorAILoadingView paramAEEditorAILoadingView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public blkr()
   {
-    AEEditorAILoadingView.a(this.a).setVisibility(8);
-    AEEditorAILoadingView.b(this.a).setVisibility(0);
-    AEEditorAILoadingView.b(this.a).playAnimation();
+    attachInterface(this, "cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public static blkq a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof blkq))) {
+      return (blkq)localIInterface;
+    }
+    return new blks(paramIBinder);
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+    paramInt1 = paramParcel1.readInt();
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramInt1, paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
+    }
+  }
 }
 
 

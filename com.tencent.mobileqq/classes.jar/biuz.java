@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqdataline.ipc.MessageRecordParcel;
-
-public final class biuz
-  implements Parcelable.Creator<MessageRecordParcel>
+public class biuz
 {
-  public MessageRecordParcel a(Parcel paramParcel)
+  protected String a;
+  protected String b;
+  
+  public biuz(String paramString1, String paramString2)
   {
-    return MessageRecordParcel.a(paramParcel);
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public MessageRecordParcel[] a(int paramInt)
+  public String a()
   {
-    return new MessageRecordParcel[paramInt];
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biuz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
 
-class xgu
-  implements Animation.AnimationListener
+public class xgu
+  extends yku
 {
-  xgu(xgt paramxgt) {}
+  public xgu(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, View paramView, Object paramObject, ynb paramynb)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Xgo != null) {
-      this.a.a.jdField_a_of_type_Xgo.a(null);
+    if ((paramObject instanceof QQUserUIItem))
+    {
+      paramView = (QQUserUIItem)paramObject;
+      wjz.a(this.a, 10, paramView.uid);
+      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
+        yqu.a("home_page", "clk_head_list", yqu.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", yqu.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
+      }
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xgu
  * JD-Core Version:    0.7.0.1
  */

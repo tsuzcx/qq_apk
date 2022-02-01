@@ -1,30 +1,98 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import java.util.HashMap;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import mqq.os.MqqHandler;
 
 public class oys
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public oys(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
+  public oys(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramView = (beir)this.a.a.a(4);
-    if ((paramView != null) && (paramView.a != null) && (paramView.a.isShowing())) {
+    int i;
+    label51:
+    label86:
+    ains localains;
+    if ((paramEditable instanceof oui))
+    {
+      i = ((oui)paramEditable).a();
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
+      {
+        if (this.a.c - i >= -99) {
+          break label236;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("-99");
+      }
+      if (i - this.a.c <= 0) {
+        break label261;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF4222"));
+      this.a.d = true;
+      ReadInJoyCommentComponentFragment.a(this.a);
+      localains = ReadInJoyCommentComponentFragment.a(this.a);
+      if (localains != null)
+      {
+        i = paramEditable.toString().trim().length();
+        if (i > 0) {
+          break label294;
+        }
+        this.a.f.setVisibility(8);
+      }
+    }
+    for (;;)
+    {
+      if ((i <= 0) || (paramEditable.length() > 24) || (!localains.a(paramEditable))) {
+        break label308;
+      }
+      if (ReadInJoyCommentComponentFragment.a(this.a))
+      {
+        localains.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramEditable, null, 7220, false);
+        this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
+        this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(84, 10000L);
+      }
+      this.a.f.setImageResource(2130842769);
+      return;
+      i = paramEditable.length();
+      break;
+      label236:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.c - i));
+      break label51;
+      label261:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131165607));
+      this.a.d = false;
+      break label86;
+      label294:
+      this.a.f.setVisibility(0);
+    }
+    label308:
+    localains.c();
+    ReadInJoyCommentComponentFragment.a(this.a, false);
+    this.a.f.setSelected(false);
+    this.a.f.setImageResource(2130843148);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (ReadInJoyCommentComponentFragment.b(this.a)) {
+      ReadInJoyCommentComponentFragment.c(this.a, false);
+    }
+    while ((!ReadInJoyCommentComponentFragment.c(this.a)) || (paramInt3 != 1) || (paramInt2 != 0) || (!paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@"))) {
       return;
     }
-    ReadInJoyAdIMAXBrowserFragment.a(this.a);
-    paramView = new HashMap();
-    paramView.put("stat_src", "5");
-    noy.a(new obk().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(noy.u).b(noy.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(noy.a(paramView)).a());
+    this.a.b("2");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oys
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,48 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
 
-class yjo
-  implements zac<CertifiedAccountRead.StGetMainPageRsp>
+public class yjo
+  extends wfr<yjc, yjw>
 {
-  yjo(yjn paramyjn, yei paramyei) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public yjo(yjc paramyjc)
   {
-    boolean bool = true;
-    List localList;
-    COMM.StCommonExt localStCommonExt;
-    if ((paramBoolean) && (paramStGetMainPageRsp != null))
+    super(paramyjc);
+  }
+  
+  public void a(@NonNull yjc paramyjc, @NonNull yjw paramyjw)
+  {
+    Object localObject = paramyjw.a;
+    paramyjw = paramyjc.a(((yjy)localObject).a.feedId);
+    if (paramyjw == null)
     {
-      paramString = this.jdField_a_of_type_Yei;
-      localList = paramStGetMainPageRsp.vecFeed.get();
-      localStCommonExt = paramStGetMainPageRsp.extInfo;
-      if (paramStGetMainPageRsp.isFinish.get() != 1) {
-        break label61;
-      }
-    }
-    label61:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramString.b(localList, localStCommonExt, paramBoolean);
+      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { ((yjy)localObject).a.feedId });
       return;
     }
+    if ((!(localObject instanceof yka)) || (!(paramyjw instanceof yka)))
+    {
+      yqp.e("Q.qqstory.home.data.HomeFeedPresenter", "SingleFeedInfoEvent error!!");
+      return;
+    }
+    localObject = (yka)localObject;
+    paramyjw = (yka)paramyjw;
+    paramyjw.a = ((yka)localObject).a;
+    paramyjw.a(((yka)localObject).b(), false);
+    paramyjw.b(((yka)localObject).c(), false);
+    paramyjw.c(((yka)localObject).a(), false);
+    yjc.a(paramyjc).b(paramyjw.a.feedId);
+    yqp.a("Q.qqstory.home.data.HomeFeedPresenter", "single feed update from server %s", paramyjw);
   }
+  
+  public Class acceptEventClass()
+  {
+    return yjw.class;
+  }
+  
+  public void b(@NonNull yjc paramyjc, @NonNull yjw paramyjw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yjo
  * JD-Core Version:    0.7.0.1
  */

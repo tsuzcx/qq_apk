@@ -1,195 +1,69 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import appoint.define.appoint_define.RichText;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x877.oidb_0x877.FollowInfo;
-import tencent.im.oidb.cmd0x877.oidb_0x877.InteractInfo;
-import tencent.im.oidb.cmd0x877.oidb_0x877.MsgWord;
-import tencent.im.oidb.cmd0x877.oidb_0x877.RspBody;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ModuleCallbackWrapper;
+import com.tencent.ark.ark.ModuleRegister;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public abstract class apio
-  extends nac
+public class apio
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static long a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg_box.protocol", 2, "UnReadFeedObserver, errorCode=" + paramInt);
+    if (TextUtils.isEmpty(paramString)) {}
+    while (paramString.indexOf("com.tencent.", 0) == -1) {
+      return 1L;
     }
-    oidb_0x877.RspBody localRspBody;
-    if (paramInt == 0) {
-      localRspBody = new oidb_0x877.RspBody();
-    }
-    label723:
-    label981:
-    for (;;)
+    return 0L;
+  }
+  
+  private static QQAppInterface a()
+  {
+    return apkd.a();
+  }
+  
+  public static void a(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
+  {
+    Object localObject1 = paramApplication.GetSpecific("appName");
+    if ((localObject1 != null) && (((String)localObject1).indexOf("com.tencent.", 0) == -1)) {}
+    for (long l = 1L;; l = 0L)
     {
-      boolean bool2;
-      int i;
-      long l2;
-      long l1;
-      boolean bool1;
-      try
+      Object localObject2 = a();
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null))
       {
-        localRspBody.mergeFrom(paramArrayOfByte);
-        if (!localRspBody.interact_info.has()) {
-          break label792;
-        }
-        bool2 = true;
-        i = 0;
-        l2 = 0L;
-        paramArrayOfByte = new StringBuilder();
-        if (!localRspBody.interact_info.uint32_interact_flag.has()) {
-          break label753;
-        }
-        if (localRspBody.interact_info.uint32_interact_flag.get() != 0) {
-          break label740;
-        }
-        if (!localRspBody.interact_info.interact_word.has()) {
-          break label723;
-        }
-        if (localRspBody.interact_info.interact_word.bytes_from_user.has()) {
-          paramArrayOfByte.append(localRspBody.interact_info.interact_word.bytes_from_user.get().toStringUtf8());
-        }
-        if (localRspBody.interact_info.interact_word.bytes_buluo_word.has())
-        {
-          paramArrayOfByte.append(apir.b(apir.a(localRspBody.interact_info.interact_word.bytes_buluo_word.get().toStringUtf8())));
-          paramInt = localRspBody.interact_info.uint32_interact_count.get();
-          l1 = localRspBody.interact_info.uint64_interact_info_time.get();
-          bool1 = true;
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.msg_box.protocol", 2, "interact_info|needShow=" + bool1 + ",rawcontext=" + paramArrayOfByte.toString() + ",unReadCount=" + paramInt + ",timeStamp=" + l1);
-          }
-          if ((!TextUtils.isEmpty(paramArrayOfByte.toString())) && (l1 != 0L)) {
-            break label981;
-          }
-          bool1 = false;
-          a(true, paramArrayOfByte.toString(), paramInt, l1, bool1, paramBundle);
-          if (!localRspBody.follow_info.has()) {
-            break label946;
-          }
-          bool2 = true;
-          i = 0;
-          l2 = 0L;
-          paramArrayOfByte = new StringBuilder();
-          if (!localRspBody.follow_info.uint32_follow_flag.has()) {
-            break label907;
-          }
-          if (localRspBody.follow_info.uint32_follow_flag.get() != 0) {
-            break label894;
-          }
-          if (!localRspBody.follow_info.follow_word.has()) {
-            break label877;
-          }
-          if (localRspBody.follow_info.follow_word.bytes_from_user.has()) {
-            paramArrayOfByte.append(localRspBody.follow_info.follow_word.bytes_from_user.get().toStringUtf8());
-          }
-          if (!localRspBody.follow_info.follow_word.bytes_buluo_word.has()) {
-            break label805;
-          }
-          paramArrayOfByte.append(apir.b(apir.a(localRspBody.interact_info.interact_word.bytes_buluo_word.get().toStringUtf8())));
-          paramInt = localRspBody.follow_info.uint32_follow_count.get();
-          l1 = localRspBody.follow_info.uint64_follow_info_time.get();
-          bool1 = true;
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.msg_box.protocol", 2, "follow_info|needShow=" + bool1 + ",rawcontext=" + paramArrayOfByte.toString() + ",unReadCount=" + paramInt + ",timeStamp=" + l1);
-          }
-          if ((!TextUtils.isEmpty(paramArrayOfByte.toString())) && (l1 != 0L)) {
-            break label978;
-          }
-          bool1 = false;
-          b(true, paramArrayOfByte.toString(), paramInt, l1, bool1, paramBundle);
-          return;
-        }
+        localObject1 = (ArkAppCenter)((QQAppInterface)localObject2).getManager(121);
+        if (localObject1 == null) {}
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      for (localObject1 = ((ArkAppCenter)localObject1).a();; localObject1 = null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.msg_box.protocol", 2, paramArrayOfByte.toString(), paramArrayOfByte);
+        localObject2 = new ArrayList();
+        ((List)localObject2).add(new apix(paramApplication, l));
+        ((List)localObject2).add(new apgu(paramApplication, l));
+        if (1 == BaseApplicationImpl.sProcessId)
+        {
+          ((List)localObject2).add(new aphi(paramApplication, l));
+          ((List)localObject2).add(new apjw(paramApplication, l));
         }
-        a(false, null, 0, 0L, false, paramBundle);
-        b(false, null, 0, 0L, false, paramBundle);
+        if (l == 0L) {
+          ((List)localObject2).add(new apiq(paramApplication, l));
+        }
+        paramApplication = ((List)localObject2).iterator();
+        while (paramApplication.hasNext())
+        {
+          localObject2 = (apih)paramApplication.next();
+          if (localObject1 != null) {
+            ((apih)localObject2).a((List)apme.a.get(((apih)localObject2).GetTypeName()));
+          }
+          paramModuleRegister.RegCallbackWrapper((ark.ModuleCallbackWrapper)localObject2);
+        }
         return;
-      }
-      if (localRspBody.interact_info.interact_word.rich_fresh_word.has())
-      {
-        paramArrayOfByte.append(apir.a((appoint_define.RichText)localRspBody.interact_info.interact_word.rich_fresh_word.get(), 14));
-      }
-      else
-      {
-        paramArrayOfByte.append(localRspBody.interact_info.interact_word.bytes_plain_text.get().toStringUtf8());
-        continue;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("Q.msg_box.protocol", 2, "resp.interact_info.interact_word.has() == false");
-          continue;
-          label740:
-          bool1 = false;
-          paramInt = i;
-          l1 = l2;
-          continue;
-          label753:
-          bool1 = bool2;
-          paramInt = i;
-          l1 = l2;
-          if (QLog.isColorLevel())
-          {
-            QLog.i("Q.msg_box.protocol", 2, "uint32_interact_flag.has()= false");
-            bool1 = bool2;
-            paramInt = i;
-            l1 = l2;
-            continue;
-            a(true, null, 0, 0L, false, paramBundle);
-            continue;
-            if (localRspBody.follow_info.follow_word.rich_fresh_word.has())
-            {
-              paramArrayOfByte.append(apir.a((appoint_define.RichText)localRspBody.follow_info.follow_word.rich_fresh_word.get(), 14));
-            }
-            else
-            {
-              paramArrayOfByte.append(localRspBody.follow_info.follow_word.bytes_plain_text.get().toStringUtf8());
-              continue;
-              label877:
-              if (QLog.isColorLevel())
-              {
-                QLog.i("Q.msg_box.protocol", 2, "resp.follow_info.follow_word.has() == false");
-                continue;
-                label894:
-                bool1 = false;
-                paramInt = i;
-                l1 = l2;
-                continue;
-                bool1 = bool2;
-                paramInt = i;
-                l1 = l2;
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("Q.msg_box.protocol", 2, "uint32_follow_flag.has()= false");
-                  bool1 = bool2;
-                  paramInt = i;
-                  l1 = l2;
-                  continue;
-                  b(true, null, 0, 0L, false, paramBundle);
-                  return;
-                  a(false, null, 0, 0L, false, paramBundle);
-                  b(false, null, 0, 0L, false, paramBundle);
-                  return;
-                }
-              }
-            }
-          }
-        }
       }
     }
   }
-  
-  protected abstract void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle);
-  
-  protected abstract void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle);
 }
 
 

@@ -1,18 +1,22 @@
-import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import mqq.os.MqqHandler;
 
 public class xqx
+  implements TVK_IMediaPlayer.OnSeekCompleteListener
 {
-  public void a(byte[] paramArrayOfByte) {}
+  xqx(xqp paramxqp) {}
   
-  @NonNull
-  public byte[] a(int paramInt)
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    return new byte[paramInt];
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.8.1(this, paramTVK_IMediaPlayer));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xqx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,89 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.lang.ref.WeakReference;
 
 public class bcef
-  extends JobSegment<bced, bced>
+  extends bcea
 {
-  private int jdField_a_of_type_Int;
-  private bced jdField_a_of_type_Bced;
-  private bkdb jdField_a_of_type_Bkdb;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<XMediaEditor> jdField_a_of_type_JavaLangRefWeakReference;
+  public boolean a;
+  public long b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public String h;
+  public String i;
   
-  public bcef(int paramInt, XMediaEditor paramXMediaEditor, String paramString)
+  public String a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramXMediaEditor);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nShortVideoDownloadInfo");
+    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("uuid:").append(this.a);
+    localStringBuilder.append("\n |-").append("fileType:").append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-").append("format:").append(this.d);
+    localStringBuilder.append("\n |-").append("mRequestType:").append(this.f);
+    localStringBuilder.append("\n |-").append("mSceneType:").append(this.g);
+    return localStringBuilder.toString();
   }
   
-  protected void a(JobContext paramJobContext, bced parambced)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (isCanceled()) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start. mediaType=", Integer.valueOf(this.jdField_a_of_type_Int), ", info status=", Integer.valueOf(parambced.g) });
-    }
-    this.jdField_a_of_type_Bced = parambced;
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (paramJobContext = parambced.c;; paramJobContext = ((bcej)parambced).g)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start - getFilePath: ", paramJobContext });
+    if (paramInt2 == 0) {
+      if ((paramInt1 == 0) || (paramInt1 == 1008)) {
+        this.jdField_e_of_type_Int = 1001;
       }
-      if (TextUtils.isEmpty(paramJobContext)) {
-        break;
-      }
-      this.jdField_a_of_type_Bkdb = parambced.a(paramJobContext, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Bkdb.a(new bceg(this));
-      this.jdField_a_of_type_Bkdb.b();
-      return;
     }
-    notifyError(new Error("-2"));
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (paramInt1 == 3000)
+          {
+            this.jdField_e_of_type_Int = 1005;
+            return;
+          }
+        } while (paramInt1 != 1);
+        this.jdField_e_of_type_Int = 1003;
+        return;
+      } while (1 != paramInt2);
+      if ((paramInt1 == 0) || (paramInt1 == 1008))
+      {
+        this.jdField_e_of_type_Int = 1002;
+        return;
+      }
+      if (paramInt1 == 3000)
+      {
+        this.jdField_e_of_type_Int = 1006;
+        return;
+      }
+    } while (paramInt1 != 1);
+    this.jdField_e_of_type_Int = 1004;
   }
   
-  public void onCancel()
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, new Object[] { "UploadMediaSegment onCancel. mediaType=", Integer.valueOf(this.jdField_a_of_type_Int) });
-    }
-    if (this.jdField_a_of_type_Bkdb != null) {
-      this.jdField_a_of_type_Bkdb.c();
-    }
-    Error localError;
-    switch (this.jdField_a_of_type_Int)
+    if (TextUtils.isEmpty(this.a))
     {
-    default: 
-      localError = new Error("c_1001");
+      a("ShortVideoDownloadInfo.check", "uuid invaid:" + this.a);
+      return false;
     }
-    for (;;)
+    if (this.b == null)
     {
-      notifyError(localError);
-      return;
-      localError = new Error("c_2002");
-      continue;
-      localError = new Error("c_2003");
+      a("ShortVideoDownloadInfo", "selfUin invalid,selfUin:" + this.b);
+      return false;
     }
+    return super.a();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 

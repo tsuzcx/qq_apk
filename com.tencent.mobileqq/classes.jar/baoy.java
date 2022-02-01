@@ -1,6 +1,24 @@
-public abstract interface baoy
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+
+public class baoy
+  implements Animation.AnimationListener
 {
-  public abstract void onScreenChange(int paramInt);
+  public baoy(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager, View paramView, int paramInt) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.jdField_a_of_type_Int == CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager)) {
+      CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, false);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

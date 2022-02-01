@@ -1,20 +1,20 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class rzh
-  implements MessageQueue.IdleHandler
+final class rzh
+  extends AnimatorListenerAdapter
 {
-  public rzh(FastWebActivity paramFastWebActivity) {}
+  rzh(View paramView) {}
   
-  public boolean queueIdle()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    FastWebActivity.e(this.a);
-    return false;
+    this.a.setLayerType(0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rzh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,112 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.TagEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.os.SystemClock;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class xof
+  extends JobSegment<StoryVideoItem, StoryVideoItem>
+  implements whm
 {
-  public final int a;
-  public final long a;
-  public final String a;
-  public volatile long b;
-  public final String b;
+  private StoryVideoItem jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+  private xoh jdField_a_of_type_Xoh;
   
-  public xof(long paramLong, String paramString1, String paramString2, int paramInt)
+  public xof(VideoViewVideoHolder paramVideoViewVideoHolder, xoh paramxoh)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Xoh = paramxoh;
   }
   
-  public xof(TagEntry paramTagEntry)
+  protected void a(StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_Long = paramTagEntry.id;
-    this.jdField_a_of_type_JavaLangString = paramTagEntry.name;
-    this.jdField_b_of_type_JavaLangString = paramTagEntry.desc;
-    this.jdField_a_of_type_Int = paramTagEntry.type;
+    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 4);
+    super.notifyResult(paramStoryVideoItem);
   }
   
-  public xof(qqstory_struct.TagInfoBase paramTagInfoBase)
+  protected void a(JobContext paramJobContext, StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_Long = paramTagInfoBase.tag_id.get();
-    this.jdField_a_of_type_JavaLangString = paramTagInfoBase.tag_name.get();
-    this.jdField_b_of_type_JavaLangString = paramTagInfoBase.tag_desc.get();
-    this.jdField_a_of_type_Int = paramTagInfoBase.tag_type.get();
-  }
-  
-  public static boolean a(xof paramxof)
-  {
-    return (paramxof != null) && (Math.abs(System.currentTimeMillis() - paramxof.jdField_b_of_type_Long) < 60000L);
-  }
-  
-  public TagEntry a()
-  {
-    return new TagEntry();
-  }
-  
-  public qqstory_struct.TagInfoBase a()
-  {
-    qqstory_struct.TagInfoBase localTagInfoBase = new qqstory_struct.TagInfoBase();
-    localTagInfoBase.tag_id.set(this.jdField_a_of_type_Long);
-    localTagInfoBase.tag_name.set(this.jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localTagInfoBase.tag_desc.set(this.jdField_b_of_type_JavaLangString);
-    }
-    localTagInfoBase.tag_type.set(this.jdField_a_of_type_Int);
-    return localTagInfoBase;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 3);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    int i = paramStoryVideoItem.isMaskDownloaded();
+    if (i == 0)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (xof)paramObject;
-      if (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
-    return false;
+      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 4);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Xpl.a(8);
+      yqp.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display ... %s", paramStoryVideoItem.getDownloadMaskUrl());
+      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, anni.a(2131715111));
+      this.jdField_a_of_type_Xoh.a().a(paramStoryVideoItem.mVid, 1, true, this);
+      return;
+    }
+    if (i == 1)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b.setVisibility(0);
+      xfe.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b, paramStoryVideoItem.mLocalMaskPath, paramStoryVideoItem.getDownloadMaskUrl(), VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder));
+      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, anni.a(2131715106));
+    }
+    for (;;)
+    {
+      a(paramStoryVideoItem);
+      return;
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b.setVisibility(8);
+    }
   }
   
-  public int hashCode()
+  public void a(String paramString, int paramInt)
   {
-    return (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32) * 31 + this.jdField_a_of_type_Int;
+    if (!isCanceled())
+    {
+      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, "DD", SystemClock.uptimeMillis());
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b.setVisibility(0);
+      xfe.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalMaskPath, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getDownloadMaskUrl(), VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder));
+      a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      return;
+    }
+    yqp.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display onSuccess. stream canceled.");
   }
   
-  public String toString()
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
   {
-    return "TagInfoBase{id=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", desc='" + this.jdField_b_of_type_JavaLangString + '\'' + ", type=" + this.jdField_a_of_type_Int + '}';
+    if (!isCanceled())
+    {
+      yqp.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display error. vid :%s, error=%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramErrorMessage });
+      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 2);
+      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
+      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, paramErrorMessage.errorCode);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "doodle download failed"));
+      return;
+    }
+    yqp.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display error. stream canceled.");
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    if (!isCanceled())
+    {
+      yqp.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display cancel. vid :%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 2);
+      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
+      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 1234);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "doodle download cancel"));
+      return;
+    }
+    yqp.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "wait doodle download and display cancel. stream canceled.");
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    yqp.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "DoodleSegment onCancel");
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) {
+      this.jdField_a_of_type_Xoh.a().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xof
  * JD-Core Version:    0.7.0.1
  */

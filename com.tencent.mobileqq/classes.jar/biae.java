@@ -1,30 +1,57 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.widget.ProgressPieView;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberNewLevelView;
+import com.tencent.mobileqq.widget.ProfileNameView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class biae
-  extends Handler
+  implements View.OnClickListener
 {
-  long jdField_a_of_type_Long;
+  public biae(ProfileNameView paramProfileNameView, azfe paramazfe, QQAppInterface paramQQAppInterface) {}
   
-  public biae(ProgressPieView paramProgressPieView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
-    if (i < this.jdField_a_of_type_ComTencentWidgetProgressPieView.a)
-    {
-      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
-      sendEmptyMessageDelayed(0, 1L);
-      return;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("https://qun.qq.com/interactive/userhonor?gc=").append(this.jdField_a_of_type_Azfe.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("&uin=").append(this.jdField_a_of_type_Azfe.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("&_wv=3&&_wwv=128");
+    localObject = ((StringBuilder)localObject).toString();
+    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("url", (String)localObject);
+    paramView.getContext().startActivity(localIntent);
+    localObject = null;
+    if ((paramView instanceof TroopMemberNewLevelView)) {
+      localObject = (TroopMemberNewLevelView)paramView;
     }
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.a);
+    int i;
+    if (localObject != null) {
+      if ((((TroopMemberNewLevelView)localObject).a()) && (((TroopMemberNewLevelView)localObject).b())) {
+        i = 3;
+      }
+    }
+    for (;;)
+    {
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B201", "0X800B201", i, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (((TroopMemberNewLevelView)localObject).a()) {
+        i = 1;
+      } else if (((TroopMemberNewLevelView)localObject).b()) {
+        i = 2;
+      } else {
+        i = 0;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biae
  * JD-Core Version:    0.7.0.1
  */

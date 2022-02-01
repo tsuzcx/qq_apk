@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import asne;
-import awge;
-import awhs;
+import autn;
 import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class GameUserInfo
-  extends awge
+  extends Entity
 {
-  public static final String TAG = asne.a + "GameUserInfo";
+  public static final String TAG = autn.a + "GameUserInfo";
   public String mAppId;
   public String mFaceUrl;
   public String mLevelPic;
@@ -17,7 +17,7 @@ public class GameUserInfo
   public String mOnLineDesc;
   public int mOnlineType;
   public String mPartitioName;
-  @awhs
+  @unique
   public String mRoleId;
   public long mSaveTs;
   public int mSex;
@@ -40,7 +40,7 @@ public class GameUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.message.GameUserInfo
  * JD-Core Version:    0.7.0.1
  */

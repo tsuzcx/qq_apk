@@ -1,121 +1,231 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Queue;
 
 public class ajte
-  extends PagerAdapter
+  implements View.OnClickListener
 {
-  private final SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private ArrayList<FilterDesc> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final Map<Class<? extends View>, Queue<View>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public ajte(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public ajte(VideoFilterViewPager paramVideoFilterViewPager) {}
-  
-  public int a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i > 0) {
-      return paramInt % i;
-    }
-    return -1;
-  }
-  
-  @Nullable
-  public View a(int paramInt)
-  {
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public FilterDesc a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (FilterDesc)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(List<FilterDesc> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    notifyDataSetChanged();
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "destroyItem position: " + paramInt);
-    }
-    View localView = (View)paramObject;
-    localView.removeCallbacks((Runnable)localView.getTag());
-    localView.clearAnimation();
-    paramViewGroup.removeView(localView);
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localView.getClass());
-    paramViewGroup = paramObject;
-    if (paramObject == null)
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof String))) {}
+    for (;;)
     {
-      paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localView.getClass(), paramViewGroup);
-    }
-    paramViewGroup.offer(localView);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "instantiateItem position: " + paramInt);
-    }
-    Object localObject1 = a(paramInt);
-    if (localObject1 == null)
-    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
       if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterViewPager", 2, "instantiateItem find data is null!");
+        QLog.d("Q.history.BaseFragment", 2, "mOnKickOutBtnClickListener onclick");
       }
-      return null;
-    }
-    localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localObject1.getClass());
-    if (localObject1 != null) {}
-    for (localObject1 = (View)((Queue)localObject1).poll();; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2131560978, null);
+      int j = paramView.getId();
+      Object localObject1 = (String)paramView.getTag();
+      boolean bool1 = ((String)localObject1).equals(this.a.jdField_f_of_type_JavaLangString);
+      int i;
+      if ((this.a.jdField_g_of_type_JavaLangString != null) && (this.a.jdField_g_of_type_JavaLangString.contains((CharSequence)localObject1)))
+      {
+        i = 1;
+        label100:
+        boolean bool4 = this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.a.jdField_f_of_type_JavaLangString);
+        if (((!bool4) || (((String)localObject1).equals(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) && ((bool4) || (bool1) || (i != 0))) {
+          break label314;
+        }
+        i = 1;
       }
-      paramViewGroup.addView((View)localObject2);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-      return localObject2;
+      Object localObject2;
+      for (;;)
+      {
+        if (j == 2131365306)
+        {
+          localObject2 = paramView.findViewById(2131365307);
+          bool1 = bool2;
+          if (((View)localObject2).getTag() != null)
+          {
+            bool1 = bool2;
+            if ((((View)localObject2).getTag() instanceof Boolean)) {
+              bool1 = ((Boolean)((View)localObject2).getTag()).booleanValue();
+            }
+          }
+          localObject2 = this.a.a((String)localObject1, bool1);
+          if (this.a.jdField_d_of_type_Int == 20)
+          {
+            if (localObject2 == null) {
+              break;
+            }
+            localObject1 = ((ajua)localObject2).a.getTag();
+            if ((localObject1 == null) || (!(localObject1 instanceof Integer))) {
+              break;
+            }
+            i = ((Integer)localObject1).intValue();
+            if (i < 0) {
+              break;
+            }
+            localObject1 = (ajtt)this.a.jdField_a_of_type_Ajtv.getItem(i);
+            this.a.a((ajtt)localObject1);
+            break;
+            i = 0;
+            break label100;
+            label314:
+            i = 0;
+            continue;
+          }
+          if (this.a.jdField_g_of_type_Boolean)
+          {
+            if (this.a.jdField_a_of_type_Ajtv.jdField_b_of_type_JavaUtilList.contains(localObject1)) {
+              this.a.jdField_a_of_type_Ajtv.jdField_b_of_type_JavaUtilList.remove(localObject1);
+            }
+            for (;;)
+            {
+              ChatHistoryTroopMemberFragment.a(this.a);
+              this.a.jdField_a_of_type_Ajtv.notifyDataSetChanged();
+              break;
+              if (i != 0) {
+                this.a.jdField_a_of_type_Ajtv.jdField_b_of_type_JavaUtilList.add(localObject1);
+              }
+            }
+          }
+          if (bool1)
+          {
+            if (this.a.v.equals(localObject1)) {
+              break;
+            }
+            if (localObject2 != null) {
+              ((ajua)localObject2).a.a(true);
+            }
+            if (!TextUtils.isEmpty(this.a.v))
+            {
+              localObject2 = this.a.a(this.a.v, bool1);
+              if (localObject2 != null) {
+                ((ajua)localObject2).a.b(true);
+              }
+            }
+            this.a.v = ((String)localObject1);
+            break;
+          }
+          if (this.a.u.equals(localObject1)) {
+            break;
+          }
+          if (localObject2 != null) {
+            ((ajua)localObject2).a.a(true);
+          }
+          if (!TextUtils.isEmpty(this.a.u))
+          {
+            localObject2 = this.a.a(this.a.u, bool1);
+            if (localObject2 != null) {
+              ((ajua)localObject2).a.b(true);
+            }
+          }
+          this.a.u = ((String)localObject1);
+          break;
+        }
+      }
+      if (j == 2131377639)
+      {
+        localObject2 = paramView.findViewById(2131379765);
+        bool1 = bool3;
+        if (((View)localObject2).getTag() != null)
+        {
+          bool1 = bool3;
+          if ((((View)localObject2).getTag() instanceof Boolean)) {
+            bool1 = ((Boolean)((View)localObject2).getTag()).booleanValue();
+          }
+        }
+        if (this.a.jdField_g_of_type_Boolean)
+        {
+          if (!this.a.jdField_a_of_type_Ajtv.jdField_b_of_type_JavaUtilList.contains(localObject1)) {
+            break label767;
+          }
+          this.a.jdField_a_of_type_Ajtv.jdField_b_of_type_JavaUtilList.remove(localObject1);
+        }
+        for (;;)
+        {
+          ChatHistoryTroopMemberFragment.a(this.a);
+          this.a.jdField_a_of_type_Ajtv.notifyDataSetChanged();
+          if (!bool1) {
+            break label792;
+          }
+          localObject1 = this.a.a(this.a.v, bool1);
+          if (localObject1 != null)
+          {
+            ((ajua)localObject1).a.b(true);
+            this.a.v = "";
+          }
+          this.a.jdField_a_of_type_Ajtx.notifyDataSetChanged();
+          break;
+          label767:
+          if (i != 0) {
+            this.a.jdField_a_of_type_Ajtv.jdField_b_of_type_JavaUtilList.add(localObject1);
+          }
+        }
+        label792:
+        localObject1 = this.a.a(this.a.u, bool1);
+        if (localObject1 != null)
+        {
+          ((ajua)localObject1).a.b(true);
+          this.a.u = "";
+        }
+      }
+      else if ((j == 2131363818) && (this.a.jdField_f_of_type_Boolean))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.history.BaseFragment", 2, "delBtn onClick, uin=" + (String)localObject1);
+        }
+        if (!bgnt.d(BaseApplication.getContext()))
+        {
+          if (this.a.getActivity().isResume()) {
+            QQToast.a(this.a.getActivity(), this.a.getString(2131693948), 0).b(this.a.getActivity().getTitleBarHeight());
+          }
+        }
+        else if (this.a.jdField_d_of_type_Int == 1)
+        {
+          this.a.f((String)localObject1);
+        }
+        else if (this.a.jdField_d_of_type_Int == 13)
+        {
+          localObject2 = this.a.a((String)localObject1);
+          this.a.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+          this.a.jdField_a_of_type_Ajtv.a();
+          if (this.a.jdField_d_of_type_AndroidAppDialog.isShowing())
+          {
+            if (localObject2 != null) {
+              this.a.jdField_b_of_type_JavaUtilList.remove(localObject2);
+            }
+            this.a.jdField_a_of_type_Ajtx.notifyDataSetChanged();
+          }
+        }
+        else if (this.a.jdField_d_of_type_Int == 21)
+        {
+          localObject2 = this.a.a((String)localObject1);
+          this.a.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+          this.a.jdField_a_of_type_Ajtv.a();
+          if (this.a.jdField_d_of_type_AndroidAppDialog.isShowing())
+          {
+            if (localObject2 != null) {
+              this.a.jdField_b_of_type_JavaUtilList.remove(localObject2);
+            }
+            this.a.jdField_a_of_type_Ajtx.notifyDataSetChanged();
+          }
+        }
+        else
+        {
+          localObject2 = new ArrayList();
+          ((List)localObject2).add(Long.valueOf(Long.parseLong((String)localObject1)));
+          ChatHistoryTroopMemberFragment.a(this.a, (List)localObject2);
+        }
+      }
     }
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return ((paramObject instanceof View)) && (paramObject == paramView);
   }
 }
 

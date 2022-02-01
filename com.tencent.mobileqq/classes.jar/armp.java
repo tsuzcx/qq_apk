@@ -1,15 +1,39 @@
 import android.view.View;
-import com.tencent.widget.AdapterView;
+import android.widget.ProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.doutu.DoutuData;
+import java.util.HashMap;
 
 class armp
-  implements bhux
+  implements URLDrawableDownListener
 {
   armp(armo paramarmo) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    this.a.a.f();
-    return true;
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof armq)))
+    {
+      paramView = (armq)paramView;
+      if (paramView.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+      }
+      if (this.a.a == null) {
+        this.a.a = new HashMap();
+      }
+      if ((paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5 != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url != null)) {
+        this.a.a.put(paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5, paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url);
+      }
+    }
   }
 }
 

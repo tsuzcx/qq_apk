@@ -1,26 +1,48 @@
-public abstract interface bbxg
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+
+public class bbxg
+  extends bbxh
 {
-  public abstract int a();
+  PeakAppInterface a;
   
-  public abstract long a();
+  public bbxg(PeakAppInterface paramPeakAppInterface)
+  {
+    this.a = paramPeakAppInterface;
+  }
   
-  public abstract String a();
+  public AppInterface a()
+  {
+    return this.a;
+  }
   
-  public abstract void a();
+  protected void a()
+  {
+    try
+    {
+      super.a();
+      a(new bnow(this.a));
+      super.b();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
   
-  public abstract void a(bbxh parambbxh);
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    a(paramToServiceMsg, null, bccd.class);
+  }
   
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract String b();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
-  
-  public abstract int g();
+  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    super.a(paramBoolean, paramToServiceMsg, paramFromServiceMsg, null);
+  }
 }
 
 

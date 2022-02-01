@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.Properties;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajst
+  implements View.OnClickListener
 {
-  private static int a = 10000;
+  public ajst(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public static void a(int paramInt)
+  public void onClick(View paramView)
   {
-    a = paramInt;
-  }
-  
-  public static void a(String paramString, Properties paramProperties)
-  {
-    Properties localProperties = paramProperties;
-    if (paramProperties == null) {
-      localProperties = new Properties();
-    }
-    localProperties.setProperty("shortvideo_business_type", "" + a);
-    azqh.a(VideoEnvironment.a()).reportKVEvent(paramString, localProperties);
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

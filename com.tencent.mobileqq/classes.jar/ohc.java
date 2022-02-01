@@ -1,18 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
 
-public class ohc
-  implements ViewBase.IBuilder
+class ohc
+  extends bkfi
 {
-  public ViewBase build(VafContext paramVafContext)
+  ohc(ohb paramohb) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new ogy(paramVafContext);
+    oha.a(this.a.a.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohc
  * JD-Core Version:    0.7.0.1
  */

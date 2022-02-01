@@ -1,38 +1,40 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.qqcircle.comment.QCircleReplyItemView;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StReply;
 
-class vip
-  implements wec
+public class vip
+  implements vvu
 {
-  vip(vio paramvio, String paramString) {}
+  public vip(QCircleReplyItemView paramQCircleReplyItemView) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void a(boolean paramBoolean)
   {
-    if (vio.a(this.jdField_a_of_type_Vio))
+    FeedCloudMeta.StComment localStComment;
+    FeedCloudMeta.StReply localStReply;
+    aaga localaaga;
+    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
+    if (QCircleReplyItemView.a(this.a) != null)
     {
-      paramString = bdhj.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
-      if (paramString == null)
-      {
-        vio.a(this.jdField_a_of_type_Vio, false);
-        return;
+      localStComment = QCircleReplyItemView.a(this.a);
+      localStReply = QCircleReplyItemView.a(this.a);
+      localaaga = QCircleReplyItemView.a(this.a);
+      localQCircleCommentPraiseLayout = QCircleReplyItemView.a(this.a);
+      if (!paramBoolean) {
+        break label83;
       }
-      bool = xqw.a(paramString, vio.a(this.jdField_a_of_type_Vio));
-      paramString.recycle();
-      vio.b(this.jdField_a_of_type_Vio, bool);
+    }
+    label83:
+    for (int i = 14;; i = 15)
+    {
+      localaaga.a(localQCircleCommentPraiseLayout, i, QCircleReplyItemView.a(this.a), new Object[] { localStComment, localStReply });
       return;
     }
-    boolean bool = xqw.a(paramBitmap, vio.a(this.jdField_a_of_type_Vio));
-    vio.c(this.jdField_a_of_type_Vio, bool);
-  }
-  
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    wxe.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    vio.d(this.jdField_a_of_type_Vio, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vip
  * JD-Core Version:    0.7.0.1
  */

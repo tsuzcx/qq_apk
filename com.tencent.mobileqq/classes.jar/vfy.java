@@ -1,57 +1,96 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqcircle.bizparts.danmaku.text.EmoCell;
+import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
+import com.tencent.component.media.image.ImageLoader.Options;
+import com.tencent.component.media.image.drawable.BitmapRefDrawable;
+import java.lang.ref.WeakReference;
 
-public class vfy
-  extends urt<vho>
+class vfy
+  implements ImageLoader.ImageLoadListener
 {
-  private final String a;
-  public List<String> a;
+  private int jdField_a_of_type_Int;
+  private ImageLoader.ImageLoadListener jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener;
+  private WeakReference<vhc> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public vfy()
+  public vfy(vfw paramvfw, int paramInt, vhc paramvhc, ImageLoader.ImageLoadListener paramImageLoadListener)
   {
-    this.jdField_a_of_type_JavaLangString = uqn.a("StoryGroupSvc.datacard_batch_get_video_info");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvhc);
+    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener = paramImageLoadListener;
   }
   
-  public String a()
+  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener.onImageCanceled(paramString, paramOptions);
+    }
   }
   
-  public uro a(byte[] paramArrayOfByte)
+  public void onImageFailed(String paramString, ImageLoader.Options paramOptions)
   {
-    qqstory_service.RspBatchGetVideoInfo localRspBatchGetVideoInfo = new qqstory_service.RspBatchGetVideoInfo();
-    try
-    {
-      localRspBatchGetVideoInfo.mergeFrom(paramArrayOfByte);
-      return new vho(localRspBatchGetVideoInfo);
+    if (this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener.onImageFailed(paramString, paramOptions);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wxe.b("Q.qqstory.shareGroup:GetShareGroupVideoInfoRequest", a(), paramArrayOfByte);
-    }
-    return null;
   }
   
-  protected byte[] a()
+  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
   {
-    qqstory_service.ReqBatchGetVideoInfo localReqBatchGetVideoInfo = new qqstory_service.ReqBatchGetVideoInfo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if ((paramOptions == null) || (paramOptions.obj == null)) {}
+    label136:
+    label142:
+    label150:
+    for (;;)
     {
-      String str = (String)localIterator.next();
-      localReqBatchGetVideoInfo.story_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      return;
+      EmoCell localEmoCell = (EmoCell)paramOptions.obj;
+      Object localObject;
+      if (paramDrawable != null)
+      {
+        if (!(paramDrawable instanceof BitmapRefDrawable)) {
+          break label136;
+        }
+        localObject = ((BitmapRefDrawable)paramDrawable).newDrawable();
+        vfw.a((Drawable)localObject, this.jdField_a_of_type_Int);
+        localEmoCell.emoDrawable = ((Drawable)localObject);
+        localEmoCell.isDrawableLoaded = true;
+        if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+          continue;
+        }
+        localObject = (vhc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localObject != null)
+        {
+          if (paramDrawable.getBounds().width() == this.jdField_a_of_type_Int) {
+            break label142;
+          }
+          ((vhc)localObject).c();
+          ((vhc)localObject).postInvalidate();
+        }
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener == null) {
+          break label150;
+        }
+        this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener.onImageLoaded(paramString, paramDrawable, paramOptions);
+        return;
+        localObject = paramDrawable;
+        break;
+        ((vhc)localObject).postInvalidate();
+      }
     }
-    return localReqBatchGetVideoInfo.toByteArray();
+  }
+  
+  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions)
+  {
+    if (this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener.onImageProgress(paramString, paramFloat, paramOptions);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vfy
  * JD-Core Version:    0.7.0.1
  */

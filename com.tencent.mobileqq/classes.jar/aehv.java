@@ -1,16 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-
 public class aehv
-  implements View.OnClickListener
 {
-  public aehv(TroopRequestActivity paramTroopRequestActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.f();
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

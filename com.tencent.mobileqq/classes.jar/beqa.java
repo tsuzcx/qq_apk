@@ -1,30 +1,9 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.widget.GridListView;
+import java.util.List;
 
 public class beqa
-  extends DataSetObserver
 {
-  public beqa(GridListView paramGridListView) {}
-  
-  public void onChanged()
-  {
-    if (this.a.jdField_a_of_type_Beqd != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_Beqd.getCount());
-    }
-    if (this.a.jdField_a_of_type_Beqe != null) {
-      this.a.jdField_a_of_type_Beqe.notifyDataSetChanged();
-    }
-  }
-  
-  public void onInvalidated()
-  {
-    if (this.a.jdField_a_of_type_Beqd != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_Beqd.getCount());
-    }
-    if (this.a.jdField_a_of_type_Beqe != null) {
-      this.a.jdField_a_of_type_Beqe.notifyDataSetInvalidated();
-    }
-  }
+  public String a;
+  public List<Integer> a;
 }
 
 

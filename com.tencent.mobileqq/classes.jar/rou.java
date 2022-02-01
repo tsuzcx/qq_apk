@@ -1,32 +1,18 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
 
 public class rou
-  extends AccessibilityDelegateCompat
+  implements ttm
 {
-  public rou(BaseTabbar paramBaseTabbar) {}
+  public rou(EditColumnFragment paramEditColumnFragment) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void a(int paramInt)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (BaseTabbar.a(this.a, paramView) == BaseTabbar.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
-    }
-  }
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rou
  * JD-Core Version:    0.7.0.1
  */

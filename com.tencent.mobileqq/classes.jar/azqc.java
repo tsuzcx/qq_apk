@@ -1,19 +1,35 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfilePhotoView;
 
-public final class azqc
+public class azqc
+  extends azpu
 {
-  public static void a(Context paramContext, boolean paramBoolean)
+  public azqc(azlw paramazlw, azfe paramazfe)
   {
-    paramContext = paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).edit();
-    paramContext.putBoolean("SUPPORT_MTA", paramBoolean);
-    paramContext.commit();
+    super(paramazlw, paramazfe);
   }
   
-  public static boolean a(Context paramContext, boolean paramBoolean)
+  public String a()
   {
-    return paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).getBoolean("SUPPORT_MTA", paramBoolean);
+    return "VasProfileHeaderPhotoComponent";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
+    {
+      VasProfilePhotoView localVasProfilePhotoView = new VasProfilePhotoView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azfe)this.b);
+      localVasProfilePhotoView.setClickListener(this);
+      localVasProfilePhotoView.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfilePhotoView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
+    }
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

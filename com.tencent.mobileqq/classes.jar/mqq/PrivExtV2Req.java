@@ -20,10 +20,12 @@ public final class PrivExtV2Req
   public int iWkOrderState2;
   public long lastVisitTime;
   public long pullPayRuleCfgTime;
+  public String qua = "";
   public String sImsi1 = "";
   public String sImsi2 = "";
   public String sKey = "";
   public String sUin = "";
+  public String trace_info = "";
   
   static
   {
@@ -32,7 +34,7 @@ public final class PrivExtV2Req
   
   public PrivExtV2Req() {}
   
-  public PrivExtV2Req(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong1, long paramLong2, long paramLong3, int paramInt6, Map<String, String> paramMap)
+  public PrivExtV2Req(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong1, long paramLong2, long paramLong3, int paramInt6, Map<String, String> paramMap, String paramString5, String paramString6)
   {
     this.sUin = paramString1;
     this.sKey = paramString2;
@@ -48,6 +50,8 @@ public final class PrivExtV2Req
     this.pullPayRuleCfgTime = paramLong3;
     this.clientLangugeId = paramInt6;
     this.extendInfo = paramMap;
+    this.qua = paramString5;
+    this.trace_info = paramString6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -66,6 +70,8 @@ public final class PrivExtV2Req
     this.pullPayRuleCfgTime = paramJceInputStream.read(this.pullPayRuleCfgTime, 11, false);
     this.clientLangugeId = paramJceInputStream.read(this.clientLangugeId, 12, false);
     this.extendInfo = ((Map)paramJceInputStream.read(cache_extendInfo, 13, false));
+    this.qua = paramJceInputStream.readString(14, false);
+    this.trace_info = paramJceInputStream.readString(15, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -89,6 +95,12 @@ public final class PrivExtV2Req
     paramJceOutputStream.write(this.clientLangugeId, 12);
     if (this.extendInfo != null) {
       paramJceOutputStream.write(this.extendInfo, 13);
+    }
+    if (this.qua != null) {
+      paramJceOutputStream.write(this.qua, 14);
+    }
+    if (this.trace_info != null) {
+      paramJceOutputStream.write(this.trace_info, 15);
     }
   }
 }

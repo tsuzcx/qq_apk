@@ -15,10 +15,12 @@ import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.entry.search.comm.ItemInfo;
 import com.tencent.mobileqq.mini.entry.search.comm.SearchInfo;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager.HotSearchDataChangedListener;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -29,14 +31,16 @@ public class HotSearchAdapter
   implements MiniAppSearchDataManager.HotSearchDataChangedListener
 {
   private static final String TAG = "HotSearchAdapter";
-  private List<SearchInfo> appList = new ArrayList();
+  private List<ItemInfo> appList = new ArrayList();
   private WeakReference<Activity> mActivityReference;
   private TextView mHotTitleView;
+  private int mRefer;
   
-  public HotSearchAdapter(Activity paramActivity, TextView paramTextView)
+  public HotSearchAdapter(Activity paramActivity, TextView paramTextView, int paramInt)
   {
     this.mActivityReference = new WeakReference(paramActivity);
     this.mHotTitleView = paramTextView;
+    this.mRefer = paramInt;
   }
   
   public int getCount()
@@ -56,31 +60,35 @@ public class HotSearchAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    HotSearchAdapter.HotSearchViewHolder localHotSearchViewHolder;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559316, paramViewGroup, false);
-      paramViewGroup = new HotSearchAdapter.HotSearchViewHolder();
-      paramViewGroup.icon = ((ImageView)paramView.findViewById(2131370546));
-      paramViewGroup.ranking = ((ImageView)paramView.findViewById(2131370548));
-      paramViewGroup.name = ((TextView)paramView.findViewById(2131370550));
-      paramViewGroup.category = ((TextView)paramView.findViewById(2131370551));
-      paramView.setTag(paramViewGroup);
+      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559410, paramViewGroup, false);
+      localHotSearchViewHolder = new HotSearchAdapter.HotSearchViewHolder();
+      localHotSearchViewHolder.icon = ((ImageView)paramView.findViewById(2131371049));
+      localHotSearchViewHolder.ranking = ((ImageView)paramView.findViewById(2131371051));
+      localHotSearchViewHolder.name = ((TextView)paramView.findViewById(2131371053));
+      localHotSearchViewHolder.category = ((TextView)paramView.findViewById(2131371054));
+      paramView.setTag(localHotSearchViewHolder);
     }
     for (;;)
     {
       SearchInfo localSearchInfo = (SearchInfo)this.appList.get(paramInt);
       try
       {
-        paramViewGroup.update(paramView, localSearchInfo, (Activity)this.mActivityReference.get(), paramInt);
+        localHotSearchViewHolder.update(paramView, localSearchInfo, (Activity)this.mActivityReference.get(), paramInt, this.mRefer);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
         return paramView;
+        localHotSearchViewHolder = (HotSearchAdapter.HotSearchViewHolder)paramView.getTag();
       }
-      catch (Exception paramViewGroup)
+      catch (Exception localException)
       {
-        QLog.e("HotSearchAdapter", 1, "getView exception: " + Log.getStackTraceString(paramViewGroup));
+        for (;;)
+        {
+          QLog.e("HotSearchAdapter", 1, "getView exception: " + Log.getStackTraceString(localException));
+        }
       }
-      paramViewGroup = (HotSearchAdapter.HotSearchViewHolder)paramView.getTag();
     }
-    return paramView;
   }
   
   public void onHotSearchDataChanged()
@@ -96,12 +104,12 @@ public class HotSearchAdapter
     while (localIterator.hasNext())
     {
       MiniAppConfig localMiniAppConfig = new MiniAppConfig(((SearchInfo)localIterator.next()).miniAppInfo);
-      localMiniAppConfig.launchParam.scene = 2077;
+      localMiniAppConfig.launchParam.scene = this.mRefer;
       ((MiniAppExposureManager)localObject).addSearchItemAndCheckReport(new MiniAppExposureManager.MiniAppModuleExposureData(localMiniAppConfig, "page_view", "expo"));
     }
   }
   
-  public void setData(List<SearchInfo> paramList)
+  public void setData(List<ItemInfo> paramList)
   {
     this.appList.clear();
     this.appList.addAll(paramList);
@@ -109,7 +117,7 @@ public class HotSearchAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.HotSearchAdapter
  * JD-Core Version:    0.7.0.1
  */

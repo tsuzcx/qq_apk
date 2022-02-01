@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.AccountDetail.view;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -34,8 +34,8 @@ public class AccountDetailBannerIndicator
   
   private void a()
   {
-    int j = aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int k = aepi.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = afur.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = afur.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int i = 0;
     if (i < this.jdField_a_of_type_Int)
     {
@@ -87,7 +87,7 @@ public class AccountDetailBannerIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerIndicator
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import android.support.annotation.NonNull;
 
-class p
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface p
 {
-  p(o paramo) {}
+  public abstract int a(int paramInt1, int paramInt2);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i >= this.a.i[0])
-    {
-      this.a.a.cancel();
-      this.a.e = 0;
-      o.a(this.a).a = o.a(this.a).d();
-      o.a(this.a).requestLayout();
-      o.a(this.a).invalidate();
-    }
-    while (i <= this.a.e) {
-      return;
-    }
-    this.a.e = i;
-    o.a(this.a).invalidate();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean);
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     p
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.biz.ui;
 
+import aauv;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -12,13 +13,12 @@ import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebViewCallbackClient;
 import java.util.ArrayList;
 import java.util.Iterator;
-import yxs;
 
 public class TouchWebView
   extends CustomWebView
   implements WebViewCallbackClient
 {
-  protected yxs helper;
+  protected aauv helper;
   TouchWebView.OnOverScrollHandler l;
   GestureDetector mGesture;
   public float mLastYUp;
@@ -178,14 +178,14 @@ public class TouchWebView
     this.mScrollListenerForBiz = paramOnScrollChangedListener;
   }
   
-  public void setWebViewHelper(yxs paramyxs)
+  public void setWebViewHelper(aauv paramaauv)
   {
-    this.helper = paramyxs;
+    this.helper = paramaauv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.ui.TouchWebView
  * JD-Core Version:    0.7.0.1
  */

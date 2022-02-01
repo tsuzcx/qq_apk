@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import org.json.JSONObject;
 
-public final class ampv
-  implements Parcelable.Creator<SosoInterface.SosoCell>
+class ampv
+  implements MediaPlayer.OnPreparedListener
 {
-  public SosoInterface.SosoCell a(Parcel paramParcel)
-  {
-    return new SosoInterface.SosoCell(paramParcel);
-  }
+  ampv(ampr paramampr, JSONObject paramJSONObject, amqr paramamqr) {}
   
-  public SosoInterface.SosoCell[] a(int paramInt)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    return new SosoInterface.SosoCell[paramInt];
+    this.jdField_a_of_type_Ampr.a(3);
+    if (ampr.a(this.jdField_a_of_type_Ampr)) {
+      this.jdField_a_of_type_Ampr.b(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Amqr);
+    }
+    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
+      ampr.a(this.jdField_a_of_type_Ampr, this.jdField_a_of_type_Amqr, this.jdField_a_of_type_OrgJsonJSONObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampv
  * JD-Core Version:    0.7.0.1
  */

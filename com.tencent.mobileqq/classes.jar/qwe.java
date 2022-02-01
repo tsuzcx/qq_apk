@@ -1,84 +1,32 @@
-import android.view.View;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class qwe
-  implements aynu
+  implements pyu
 {
-  private String jdField_a_of_type_JavaLangString;
-  private qkw jdField_a_of_type_Qkw;
+  public qwe(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public qwe(qkw paramqkw)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Qkw = paramqkw;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public CharSequence a()
-  {
-    return ayvm.b(this.jdField_a_of_type_Qkw.a(), this.jdField_a_of_type_JavaLangString, 6, true);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public qkw a()
-  {
-    return this.jdField_a_of_type_Qkw;
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this.jdField_a_of_type_Qkw.a().contains(paramString);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public CharSequence b()
-  {
-    return "";
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_Qkw.a().toString();
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public CharSequence c()
-  {
-    return alud.a(2131705063);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d(ComponentContentRecommend.a, 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131717086, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qwe
  * JD-Core Version:    0.7.0.1
  */

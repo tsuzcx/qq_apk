@@ -1,27 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
 
 public class aukf
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aukf(MultiAIOFragment paramMultiAIOFragment) {}
+  public aukf(ForwardSendHongBaoOption paramForwardSendHongBaoOption, bgpa parambgpa) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131379081);
-    auli.a -= 1;
-    if (auli.a < 1) {
-      auli.a = 1;
-    }
-    paramView.setText(alud.a(2131707385) + auli.a);
-    MultiAIOFragment.c(this.a);
+    this.jdField_a_of_type_Bgpa.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.setResult(-1);
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aukf
  * JD-Core Version:    0.7.0.1
  */

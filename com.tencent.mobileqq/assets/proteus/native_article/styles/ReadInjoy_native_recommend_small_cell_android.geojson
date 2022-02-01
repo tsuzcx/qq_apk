@@ -63,7 +63,7 @@
                         "attributes":{
                             "setTextColorString:":"#262626",
                             "setText:":"-1",
-                            "setFontSizeString:":"16",
+                            "setFontSizeString:ratio:":["16","$attribute_text_size_ratio"],
                             "setNumberOfLinesString:":"2"
                         }
                     },
@@ -89,6 +89,33 @@
                                 "-1",
                                 "-1"
                             ]
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_recommend_category_common_txt",
+                        "below_of_view": "id_recommend_title",
+                        "margin_left": "16",
+                        "margin_top": "4",
+                        "padding_left": "3",
+                        "padding_right": "3",
+                        "padding_top": "1.5",
+                        "padding_bottom": "1.5",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setText:": "$category_txt",
+                            "setTextColorString:": "$category_txt_color",
+                             "setFontSizeString:ratio:":["11","$attribute_text_size_ratio"],
+                            "setTextAlignmentString:": "1",
+                            "setCornerRadiusString:": "2.0",
+                            "setBorderColorString:": "$category_border_color",
+                            "setBackgroundColorString:": "$category_background_color",
+                            "setNumberOfLinesString:": "1"
                         }
                     },
                     {

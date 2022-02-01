@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.task;
 
-import algm;
-import algp;
+import amzt;
+import amzw;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.text.TextUtils;
-import bdfi;
+import bgkl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -15,7 +15,7 @@ import java.io.File;
 public class ApolloAudioPlayer
   implements MediaPlayer.OnPreparedListener
 {
-  private algp jdField_a_of_type_Algp;
+  private amzw jdField_a_of_type_Amzw;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   public Object a;
   private String jdField_a_of_type_JavaLangString;
@@ -39,7 +39,7 @@ public class ApolloAudioPlayer
         if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
           this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
         }
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new algm(this, paramInt, paramString));
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new amzt(this, paramInt, paramString));
         try
         {
           boolean bool = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).isMusicActive();
@@ -52,7 +52,7 @@ public class ApolloAudioPlayer
           synchronized (this.jdField_a_of_type_JavaLangObject)
           {
             this.jdField_a_of_type_JavaLangString = paramString;
-            bdfi.a(BaseApplicationImpl.getContext(), true);
+            bgkl.a(BaseApplicationImpl.getContext(), true);
             long l = System.currentTimeMillis();
             this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
             this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
@@ -84,7 +84,7 @@ public class ApolloAudioPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.task.ApolloAudioPlayer
  * JD-Core Version:    0.7.0.1
  */

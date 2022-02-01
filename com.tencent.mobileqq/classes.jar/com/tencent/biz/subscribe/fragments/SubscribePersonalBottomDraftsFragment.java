@@ -1,20 +1,20 @@
 package com.tencent.biz.subscribe.fragments;
 
+import aadf;
+import aagr;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.richframework.part.block.BlockContainer;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.component.base.ComponentPageView;
 import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
-import yes;
-import yif;
-import yiw;
-import yiz;
+import zwp;
+import zxs;
 
 public class SubscribePersonalBottomDraftsFragment
   extends SubscribeBaseBottomPersonalFragment
 {
+  private aadf jdField_a_of_type_Aadf;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private yes jdField_a_of_type_Yes;
   
   ExtraTypeInfo a()
   {
@@ -37,24 +37,24 @@ public class SubscribePersonalBottomDraftsFragment
   
   protected void a()
   {
-    this.jdField_a_of_type_Yes = new yes(null);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Yes);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.c();
-    this.jdField_a_of_type_Yes.a();
-    if (this.jdField_a_of_type_Yiz != null) {
-      this.jdField_a_of_type_Yes.setShareData("share_key_subscribe_opus", new yif(this.jdField_a_of_type_Yiz));
+    this.jdField_a_of_type_Aadf = new aadf(null);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_Aadf);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.c();
+    this.jdField_a_of_type_Aadf.a();
+    if (this.jdField_a_of_type_Aagr != null) {
+      this.jdField_a_of_type_Aadf.setShareData("share_key_subscribe_opus", new zxs(this.jdField_a_of_type_Aagr));
     }
   }
   
   public void a(int paramInt) {}
   
-  public void a(String paramString, yiz paramyiz)
+  public void a(String paramString, aagr paramaagr)
   {
     if ("share_key_subscribe_opus".equals(paramString))
     {
-      this.jdField_a_of_type_Yiz = paramyiz;
-      if (this.jdField_a_of_type_Yes != null) {
-        this.jdField_a_of_type_Yes.setShareData("share_key_subscribe_opus", new yif(this.jdField_a_of_type_Yiz));
+      this.jdField_a_of_type_Aagr = paramaagr;
+      if (this.jdField_a_of_type_Aadf != null) {
+        this.jdField_a_of_type_Aadf.setShareData("share_key_subscribe_opus", new zxs(this.jdField_a_of_type_Aagr));
       }
     }
   }
@@ -62,12 +62,12 @@ public class SubscribePersonalBottomDraftsFragment
   public void onResume()
   {
     super.onResume();
-    yiw.a().a(new SubDraftChangeEvent());
+    zwp.a().a(new SubDraftChangeEvent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribePersonalBottomDraftsFragment
  * JD-Core Version:    0.7.0.1
  */

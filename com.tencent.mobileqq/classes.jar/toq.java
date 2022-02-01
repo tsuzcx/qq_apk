@@ -1,21 +1,22 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class toq
+  extends tou
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  public TextView a;
-  public VideoFeedsAlphaMaskView a;
-  public ZImageView a;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  public toq(BridgeModule paramBridgeModule)
+  {
+    super(paramBridgeModule);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$900(this.a, paramInt2, paramIntent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     toq
  * JD-Core Version:    0.7.0.1
  */

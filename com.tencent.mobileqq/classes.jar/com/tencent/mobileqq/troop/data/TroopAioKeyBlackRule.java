@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class TroopAioKeyBlackRule
-  extends awge
+  extends Entity
 {
-  @awhs
+  @unique
   public String mBlackUinKeywordRuleId;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeyBlackRule
  * JD-Core Version:    0.7.0.1
  */

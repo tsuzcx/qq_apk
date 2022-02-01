@@ -1,50 +1,58 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aapk;
-import aapl;
-import aapm;
-import aaqa;
-import aasd;
-import aase;
-import aatp;
-import adpn;
+import acml;
+import acmm;
+import acmv;
+import acoc;
+import acod;
+import acoe;
+import acow;
+import acqx;
+import acqy;
+import acsj;
+import aevv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.ResultReceiver;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import com.tencent.ad.tangram.process.AdProcessManager;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.mobileqq.activity.PublicFragmentActivityLandscape;
 import com.tencent.mobileqq.activity.PublicFragmentActivityLandscapeForTool;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class GdtMotiveVideoFragment
   extends PublicBaseFragment
 {
-  private aapm jdField_a_of_type_Aapm;
-  private aaqa jdField_a_of_type_Aaqa;
+  private acoe jdField_a_of_type_Acoe;
+  private acow jdField_a_of_type_Acow;
   private boolean jdField_a_of_type_Boolean;
   
   public GdtMotiveVideoFragment()
   {
-    aase.a("GdtMotiveVideoFragment", "GdtMotiveVideoFragment: ");
+    acqy.a("GdtMotiveVideoFragment", "GdtMotiveVideoFragment: ");
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_Aaqa == null) {
-      this.jdField_a_of_type_Aaqa = new aaqa(new aapl(this), this.jdField_a_of_type_Aapm, false);
+    if (this.jdField_a_of_type_Acow == null) {
+      this.jdField_a_of_type_Acow = new acow(new acod(this), this.jdField_a_of_type_Acoe, false);
     }
   }
   
@@ -62,20 +70,20 @@ public class GdtMotiveVideoFragment
       paramActivity.finish();
       return;
     }
-    this.jdField_a_of_type_Aapm = new aapm((GdtMotiveVideoPageData)GdtMotiveVideoPageData.class.cast(localObject));
+    this.jdField_a_of_type_Acoe = new acoe((GdtMotiveVideoPageData)GdtMotiveVideoPageData.class.cast(localObject));
   }
   
   public static void a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
   {
-    a(paramActivity, paramClass, paramGdtMotiveVideoPageData, new Bundle(), false);
+    a(paramActivity, paramClass, paramGdtMotiveVideoPageData, new Bundle(), false, null);
   }
   
-  private static void a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, GdtMotiveVideoPageData paramGdtMotiveVideoPageData, Bundle paramBundle, boolean paramBoolean)
+  private static void a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, GdtMotiveVideoPageData paramGdtMotiveVideoPageData, Bundle paramBundle, boolean paramBoolean, ResultReceiver paramResultReceiver)
   {
     a(paramActivity, paramGdtMotiveVideoPageData);
-    if ((paramActivity == null) || (paramGdtMotiveVideoPageData == null) || (paramBundle == null) || (!aatp.a(paramGdtMotiveVideoPageData.vSize)))
+    if ((paramActivity == null) || (paramGdtMotiveVideoPageData == null) || (paramBundle == null))
     {
-      aase.b("GdtMotiveVideoFragment", "start error data:" + paramGdtMotiveVideoPageData);
+      acqy.b("GdtMotiveVideoFragment", "start error data:" + paramGdtMotiveVideoPageData);
       return;
     }
     paramBundle.putSerializable("data", paramGdtMotiveVideoPageData);
@@ -85,36 +93,66 @@ public class GdtMotiveVideoFragment
     localIntent.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
     localIntent.putExtras(paramBundle);
     if (TextUtils.isEmpty(localIntent.getStringExtra("big_brother_ref_source_key"))) {
-      aase.d("GdtMotiveVideoFragment", "start gdt empty refId");
+      acqy.d("GdtMotiveVideoFragment", "start gdt empty refId");
+    }
+    if (a(paramGdtMotiveVideoPageData))
+    {
+      QLog.i("GdtMotiveVideoFragment", 1, "start motive browsing type = " + paramGdtMotiveVideoPageData.containerType);
+      if (paramGdtMotiveVideoPageData.containerType == 1)
+      {
+        acml.a.a(paramActivity, paramGdtMotiveVideoPageData, localIntent);
+        return;
+      }
+      GdtMotiveBrowsingFragment.a.a(paramActivity, paramGdtMotiveVideoPageData, localIntent);
+      return;
     }
     if (paramGdtMotiveVideoPageData.containerType == 1)
     {
-      paramActivity.runOnUiThread(new GdtMotiveVideoFragment.1(paramActivity, localIntent));
+      paramActivity.runOnUiThread(new GdtMotiveVideoFragment.1(paramActivity, localIntent, paramResultReceiver));
       return;
     }
+    paramResultReceiver = AdProcessManager.INSTANCE.getCurrentProcessName(paramActivity);
     if (paramBoolean)
     {
-      if (paramGdtMotiveVideoPageData.screenOrientation == 0) {}
-      for (paramClass = PublicFragmentActivityLandscapeForTool.class;; paramClass = PublicFragmentActivityForTool.class)
-      {
-        adpn.a(paramActivity, localIntent, paramClass, GdtMotiveVideoFragment.class, 101);
-        AdReporterForAnalysis.reportForStartActivity(paramActivity, null, "GdtMotiveVideoFragment");
-        return;
+      paramBundle = AdProcessManager.INSTANCE.getWebProcessName();
+      if (!TextUtils.isEmpty(paramResultReceiver)) {
+        localIntent.putExtra("from_process_name", paramResultReceiver);
+      }
+      if (!paramBoolean) {
+        break label293;
+      }
+      if (paramGdtMotiveVideoPageData.screenOrientation != 0) {
+        break label287;
       }
     }
+    label287:
+    for (paramClass = PublicFragmentActivityLandscapeForTool.class;; paramClass = PublicFragmentActivityForTool.class)
+    {
+      aevv.a(paramActivity, localIntent, paramClass, GdtMotiveVideoFragment.class, 101);
+      AdReporterForAnalysis.reportForStartActivity(paramActivity, null, "GdtMotiveVideoFragment", paramBundle);
+      return;
+      paramBundle = AdProcessManager.INSTANCE.getMainProcessName();
+      break;
+    }
+    label293:
     if (paramGdtMotiveVideoPageData.screenOrientation == 0) {}
     for (paramGdtMotiveVideoPageData = PublicFragmentActivityLandscape.class;; paramGdtMotiveVideoPageData = PublicFragmentActivity.class)
     {
-      adpn.a(paramActivity, localIntent, paramGdtMotiveVideoPageData, paramClass, 101);
+      aevv.a(paramActivity, localIntent, paramGdtMotiveVideoPageData, paramClass, 101);
       break;
     }
+  }
+  
+  public static void a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, GdtMotiveVideoPageData paramGdtMotiveVideoPageData, ResultReceiver paramResultReceiver)
+  {
+    a(paramActivity, paramClass, paramGdtMotiveVideoPageData, new Bundle(), false, paramResultReceiver);
   }
   
   public static void a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, GdtMotiveVideoPageData paramGdtMotiveVideoPageData, String paramString)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("arg_callback", paramString);
-    a(paramActivity, paramClass, paramGdtMotiveVideoPageData, localBundle, false);
+    a(paramActivity, paramClass, paramGdtMotiveVideoPageData, localBundle, false, null);
   }
   
   private static void a(Context paramContext, GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
@@ -124,33 +162,38 @@ public class GdtMotiveVideoFragment
     {
       try
       {
-        paramGdtMotiveVideoPageData = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent))));
+        paramGdtMotiveVideoPageData = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent))));
         AdReporterForAnalysis.reportForRewardedVideo(paramContext, paramGdtMotiveVideoPageData);
         return;
       }
       catch (Throwable paramGdtMotiveVideoPageData)
       {
-        aase.d("GdtMotiveVideoFragment", "reportForAnalysis", paramGdtMotiveVideoPageData);
+        acqy.d("GdtMotiveVideoFragment", "reportForAnalysis", paramGdtMotiveVideoPageData);
       }
       paramGdtMotiveVideoPageData = null;
     }
   }
   
+  private static boolean a(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
+  {
+    return (paramGdtMotiveVideoPageData != null) && (paramGdtMotiveVideoPageData.vSize != 585) && (paramGdtMotiveVideoPageData.vSize != 185);
+  }
+  
   public static void b(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
   {
-    a(paramActivity, paramClass, paramGdtMotiveVideoPageData, new Bundle(), true);
+    a(paramActivity, paramClass, paramGdtMotiveVideoPageData, new Bundle(), true, null);
   }
   
   public void beforeFinish()
   {
-    if ((this.jdField_a_of_type_Aaqa != null) && (!this.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_Acow != null) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
       String str = "";
       if (getArguments() != null) {
         str = getArguments().getString("arg_callback", "");
       }
-      this.jdField_a_of_type_Aaqa.a(str);
+      this.jdField_a_of_type_Acow.a(str);
     }
   }
   
@@ -166,9 +209,9 @@ public class GdtMotiveVideoFragment
     localObject = ((Window)localObject).getDecorView();
     ((View)localObject).setSystemUiVisibility(7942);
     if (Build.VERSION.SDK_INT >= 19) {
-      ((View)localObject).setOnSystemUiVisibilityChangeListener(new aapk(this, (View)localObject));
+      ((View)localObject).setOnSystemUiVisibilityChangeListener(new acoc(this, (View)localObject));
     }
-    paramActivity.setRequestedOrientation(this.jdField_a_of_type_Aapm.a().screenOrientation);
+    paramActivity.setRequestedOrientation(this.jdField_a_of_type_Acoe.a().screenOrientation);
   }
   
   public boolean isWrapContent()
@@ -188,8 +231,8 @@ public class GdtMotiveVideoFragment
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Aaqa != null) {
-      return this.jdField_a_of_type_Aaqa.c();
+    if (this.jdField_a_of_type_Acow != null) {
+      return this.jdField_a_of_type_Acow.c();
     }
     return super.onBackEvent();
   }
@@ -197,31 +240,38 @@ public class GdtMotiveVideoFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    aase.b("GdtMotiveVideoFragment", "onCreate: ");
-    if (this.jdField_a_of_type_Aapm == null) {
+    acqy.b("GdtMotiveVideoFragment", "onCreate: ");
+    if (this.jdField_a_of_type_Acoe == null) {
       return;
     }
     a();
-    this.jdField_a_of_type_Aaqa.h();
+    this.jdField_a_of_type_Acow.m();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    AdReporterForAnalysis.reportForActivityStatusChanged(getActivity(), null, "GdtMotiveVideoFragment", 1);
-    if (this.jdField_a_of_type_Aapm == null) {
-      return null;
+    Object localObject = null;
+    if ((getArguments() != null) && (getArguments().containsKey("from_process_name"))) {}
+    for (paramBundle = getArguments().getString("from_process_name");; paramBundle = null)
+    {
+      AdReporterForAnalysis.reportForActivityStatusChanged(getActivity(), null, "GdtMotiveVideoFragment", 1, paramBundle);
+      if (this.jdField_a_of_type_Acoe == null) {}
+      for (paramLayoutInflater = localObject;; paramLayoutInflater = this.jdField_a_of_type_Acow.a(paramLayoutInflater, paramViewGroup))
+      {
+        V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+        return paramLayoutInflater;
+        a();
+        if ((this.jdField_a_of_type_Acoe.a().screenOrientation == 1) && (acsj.a(getActivity()))) {
+          acsj.a(getActivity());
+        }
+      }
     }
-    a();
-    if ((this.jdField_a_of_type_Aapm.a().screenOrientation == 1) && (aatp.a(getActivity()))) {
-      aatp.a(getActivity());
-    }
-    return this.jdField_a_of_type_Aaqa.a(paramLayoutInflater, paramViewGroup);
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Aaqa != null) {
-      this.jdField_a_of_type_Aaqa.g();
+    if (this.jdField_a_of_type_Acow != null) {
+      this.jdField_a_of_type_Acow.l();
     }
     super.onDestroy();
   }
@@ -233,8 +283,8 @@ public class GdtMotiveVideoFragment
   
   public void onPause()
   {
-    if (this.jdField_a_of_type_Aaqa != null) {
-      this.jdField_a_of_type_Aaqa.e();
+    if (this.jdField_a_of_type_Acow != null) {
+      this.jdField_a_of_type_Acow.j();
     }
     super.onPause();
   }
@@ -242,9 +292,9 @@ public class GdtMotiveVideoFragment
   public void onResume()
   {
     super.onResume();
-    aase.b("GdtMotiveVideoFragment", "onResume: ");
-    if (this.jdField_a_of_type_Aaqa != null) {
-      this.jdField_a_of_type_Aaqa.f();
+    acqy.b("GdtMotiveVideoFragment", "onResume: ");
+    if (this.jdField_a_of_type_Acow != null) {
+      this.jdField_a_of_type_Acow.k();
     }
   }
   
@@ -258,7 +308,7 @@ public class GdtMotiveVideoFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment
  * JD-Core Version:    0.7.0.1
  */

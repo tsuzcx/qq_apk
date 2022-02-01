@@ -1,88 +1,44 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Window;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LWMotionEvent;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.common.app.BaseApplicationImpl;
+import common.config.service.QzoneConfig;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class bmfi
 {
-  private static ArrayList<bmgy> a = new ArrayList();
-  
-  public static bmhi a(String paramString, bmhh parambmhh, bmhg parambmhg)
+  public static void a(int paramInt, String paramString, long paramLong)
   {
-    if (paramString.equals(bmfm.class.getName())) {
-      return new bmfm(parambmhh, parambmhg);
-    }
-    return null;
-  }
-  
-  public static void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCExitEvent size: " + a.size());
-    }
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext())
+    boolean bool = true;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    HashMap localHashMap;
+    if ((localObject != null) && (System.currentTimeMillis() % 1000L < QzoneConfig.getInstance().getConfig("QZoneSetting", "qzoneLocationSampleRate", 1)))
     {
-      bmgy localbmgy = (bmgy)localIterator.next();
-      if (localbmgy != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCExitEvent newCode= " + localbmgy.hashCode());
-        }
-        localbmgy.u();
+      localObject = ((AppRuntime)localObject).getAccount();
+      localHashMap = new HashMap();
+      localHashMap.put("param_FailCode", Integer.toString(paramInt));
+      localHashMap.put("param_businessId", paramString);
+      paramString = bctj.a(BaseApplicationImpl.getContext());
+      if (paramInt != 0) {
+        break label104;
       }
     }
-  }
-  
-  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
-  {
-    if (paramString.equals(bmfm.class.getName()))
+    for (;;)
     {
-      if (!paramBoolean) {
-        paramActivity.getWindow().setBackgroundDrawableResource(2130844186);
-      }
-    }
-    else {
+      paramString.a((String)localObject, "QzoneNewLocation", bool, paramLong, 0L, localHashMap, "");
       return;
-    }
-    paramActivity.getWindow().setBackgroundDrawable(new ColorDrawable(-1));
-  }
-  
-  public static void a(bmgy parambmgy)
-  {
-    a.remove(parambmgy);
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "removeIPCEvent: " + a.size() + " newCode=" + parambmgy.hashCode());
+      label104:
+      bool = false;
     }
   }
   
-  public static void a(LWMotionEvent paramLWMotionEvent)
+  public static void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCEvent size: " + a.size());
-    }
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext())
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject != null) && (System.currentTimeMillis() % 1000L < QzoneConfig.getInstance().getConfig("QZoneSetting", "qzoneLocationCacheSampleRate", 1)))
     {
-      bmgy localbmgy = (bmgy)localIterator.next();
-      if (localbmgy != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCEvent newCode= " + localbmgy.hashCode());
-        }
-        localbmgy.a(paramLWMotionEvent);
-      }
-    }
-  }
-  
-  public static void b(bmgy parambmgy)
-  {
-    a.add(parambmgy);
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "addIPCEventHook: " + a.size() + " newCode=" + parambmgy.hashCode());
+      localObject = ((AppRuntime)localObject).getAccount();
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_businessId", paramString);
+      bctj.a(BaseApplicationImpl.getContext()).a((String)localObject, "QzoneNewLocationCache", paramBoolean, 0L, 0L, localHashMap, "");
     }
   }
 }

@@ -1,24 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import javax.annotation.Nullable;
 
-final class tma
-  implements Animation.AnimationListener
+class tma
+  implements tlz
 {
-  tma(View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public InputStream a(@Nullable InputStream paramInputStream)
   {
-    this.a.setTag(-1, null);
+    return paramInputStream;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a() {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tma
  * JD-Core Version:    0.7.0.1
  */

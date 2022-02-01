@@ -1,350 +1,101 @@
-import android.text.TextUtils;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule.1;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule.2;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule.3;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule.4;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Locale;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.List;
+import tencent.im.oidb.cmd0x58b.cmd0x58b.CmdErrorCode;
+import tencent.im.oidb.cmd0x58b.cmd0x58b.GetConfInfoRsp;
+import tencent.im.oidb.cmd0x58b.cmd0x58b.GetMultiConfInfoRsp;
+import tencent.im.oidb.cmd0x58b.cmd0x58b.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class ankt
-  extends ankc
+class ankt
 {
-  private static anku jdField_a_of_type_Anku;
-  public static final ArrayList<WeakReference<ankt>> a;
-  private static String e = "";
-  protected SongInfo a;
-  private WeakReference<ankt> jdField_a_of_type_JavaLangRefWeakReference;
-  protected long c = 0L;
-  protected String d;
+  private ArrayList<Object> jdField_a_of_type_JavaUtilArrayList;
+  private HashMap<String, ankv> jdField_a_of_type_JavaUtilHashMap;
+  private List<cmd0x58b.GetConfInfoRsp> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  static
+  public ankt(byte[] paramArrayOfByte, ArrayList<Object> paramArrayList, HashMap<String, ankv> paramHashMap)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_ArrayOfByte = paramArrayList;
+    this.jdField_a_of_type_JavaUtilArrayList = paramHashMap;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilHashMap = localObject;
   }
   
-  public ankt(ark.Application paramApplication, long paramLong)
+  public ankt a()
   {
-    super(paramApplication, paramLong);
-    jdField_a_of_type_Anku = new anku(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
-    jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangRefWeakReference);
-  }
-  
-  protected static int a(int paramInt)
-  {
-    switch (paramInt)
+    List localList = null;
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    try
     {
-    case 1: 
-    default: 
-      return 5;
-    case 0: 
-      return 4;
-    case 2: 
-      return 1;
-    case 3: 
-      return 2;
-    case 4: 
-      return 3;
-    }
-    return 0;
-  }
-  
-  public static String a()
-  {
-    if (TextUtils.isEmpty(e)) {
-      e = QQPlayerService.a(1, "ark.music.module");
-    }
-    return e;
-  }
-  
-  public void Destruct()
-  {
-    QQPlayerService.c(jdField_a_of_type_Anku);
-    jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaLangRefWeakReference);
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    super.Destruct();
-  }
-  
-  public String GetTypeName()
-  {
-    return "QQMusic";
-  }
-  
-  public boolean HasMenthod(String paramString)
-  {
-    if (paramString.equals("Play")) {}
-    while ((paramString.equals("Stop")) || (paramString.equals("Pause")) || (paramString.equals("Resume")) || (paramString.equals("GetCurrentTime")) || (paramString.equals("GetDuration")) || (paramString.equals("GetState")) || (paramString.equals("GetCurrentSong")) || (paramString.equals("SetCallback")) || (paramString.equals("AttachEvent")) || (paramString.equals("DetachEvent"))) {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    double d2 = 0.0D;
-    if ((QLog.isColorLevel()) && (!paramString.equals("GetCurrentTime")) && (!paramString.equals("GetDuration"))) {
-      QLog.i("ark.music.module", 2, String.format("ArkAppMusicModule.invokeFunc.%s", new Object[] { paramString }));
-    }
-    if (paramString.equals("Play"))
-    {
-      QQPlayerService.a(null);
-      a(paramArrayOfVariantWrapper);
-      return true;
-    }
-    if (paramString.equals("Stop"))
-    {
-      ArkAppCenter.a().postToMainThread(new ArkAppMusicModule.2(this));
-      return true;
-    }
-    if (paramString.equals("Pause"))
-    {
-      ArkAppCenter.a().postToMainThread(new ArkAppMusicModule.3(this));
-      return true;
-    }
-    if (paramString.equals("Resume"))
-    {
-      ArkAppCenter.a().postToMainThread(new ArkAppMusicModule.4(this));
-      return true;
-    }
-    double d1;
-    if (paramString.equals("GetCurrentTime"))
-    {
-      if (QQPlayerService.a() != 2)
+      localOIDBSSOPkg = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom(this.jdField_a_of_type_ArrayOfByte);
+      if ((!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
       {
-        d1 = d2;
-        if (QQPlayerService.a() != 3) {
-          break label182;
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.contacttab.dscs", 2, "sso check fail " + localOIDBSSOPkg.uint32_result.get());
         }
+        this.jdField_a_of_type_Anks.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_Boolean = true;
+        return this;
       }
-      try
-      {
-        int i = QQPlayerService.f();
-        d1 = i / 1000.0D;
-      }
-      catch (IllegalStateException paramString)
-      {
-        for (;;)
-        {
-          label182:
-          QLog.d("ark.music.module", 2, new Object[] { "ArkAppMusicModule.invokeFunc.getCurrentPlayPosition.error", paramString.getMessage() });
-          d1 = d2;
-        }
-      }
-      paramVariantWrapper.SetDouble(d1);
-      return true;
     }
-    if (paramString.equals("GetDuration"))
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
     {
-      paramVariantWrapper.SetDouble(QQPlayerService.d() / 1000.0D);
-      return true;
-    }
-    if (paramString.equals("GetState"))
-    {
-      paramVariantWrapper.SetInt(a(QQPlayerService.a()));
-      return true;
-    }
-    if (paramString.equals("GetCurrentSong"))
-    {
-      a(paramArrayOfVariantWrapper[0], QQPlayerService.b());
-      return true;
-    }
-    if (paramString.equals("SetCallback"))
-    {
-      paramString = a(this.c);
-      if (paramString != null) {
-        paramString.Reset();
-      }
-      paramString = paramArrayOfVariantWrapper[0];
-      if ((paramString == null) || (!paramString.IsFunction()))
-      {
-        this.c = 0L;
-        return true;
-      }
-      this.c = a(paramString.Copy());
-      QQPlayerService.b(jdField_a_of_type_Anku);
-      QQPlayerService.a(null);
-      return true;
-    }
-    if (paramString.equals("AttachEvent"))
-    {
-      paramString = paramArrayOfVariantWrapper[0];
-      if ((paramString == null) || (!paramString.IsString()) || (!"State".equals(paramString.GetString()))) {
-        return true;
-      }
-      paramString = a(this.c);
-      if (paramString != null) {
-        paramString.Reset();
-      }
-      paramString = paramArrayOfVariantWrapper[1];
-      if ((paramString == null) || (!paramString.IsFunction()))
-      {
-        this.c = 0L;
-        return true;
-      }
-      this.c = a(paramString.Copy());
-      QQPlayerService.a(null);
-      return true;
-    }
-    if (paramString.equals("DetachEvent"))
-    {
-      paramString = paramArrayOfVariantWrapper[0];
-      if ((paramString == null) || (!paramString.IsString()) || (!"State".equals(paramString.GetString()))) {
-        return true;
-      }
-      paramString = a(this.c);
-      if (paramString != null) {
-        paramString.Reset();
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.c == 0L) {
       if (QLog.isColorLevel()) {
-        QLog.d("ark.music.module", 2, "ArkAppMusicModule.callback.invalid");
+        QLog.e("Q.contacttab.dscs", 2, "merge fail " + localInvalidProtocolBufferMicroException1.toString());
+      }
+      this.jdField_a_of_type_Anks.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Boolean = true;
+      return this;
+    }
+    cmd0x58b.RspBody localRspBody = new cmd0x58b.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(localInvalidProtocolBufferMicroException1.bytes_bodybuffer.get().toByteArray());
+      if (localRspBody.msg_cmd_error_code.uint32_code.get() != 0)
+      {
+        this.jdField_a_of_type_Anks.a(this.jdField_a_of_type_JavaUtilHashMap.values());
+        this.jdField_a_of_type_Anks.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_Boolean = true;
+        return this;
       }
     }
-    do
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
     {
-      return;
-      ark.VariantWrapper localVariantWrapper = b(this.c);
-      SongInfo localSongInfo2 = QQPlayerService.b();
-      SongInfo localSongInfo1 = localSongInfo2;
-      if (localSongInfo2 == null) {
-        localSongInfo1 = this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo;
-      }
-      a(localVariantWrapper, paramInt, localSongInfo1);
-    } while (paramInt != 4);
-    this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo = null;
-  }
-  
-  public void a(ark.VariantWrapper paramVariantWrapper, int paramInt, SongInfo paramSongInfo)
-  {
-    if ((paramVariantWrapper == null) || (!paramVariantWrapper.IsFunction()) || (paramSongInfo == null)) {
       if (QLog.isColorLevel()) {
-        QLog.i("ark.music.module", 2, "ArkAppMusicModule.callback.invalid");
+        QLog.e("Q.contacttab.dscs", 2, "rspBody merge fail " + localInvalidProtocolBufferMicroException2.toString());
       }
+      this.jdField_a_of_type_Anks.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Boolean = true;
+      return this;
     }
-    do
+    if (localRspBody.msg_get_multi_conf_info.has()) {}
+    for (cmd0x58b.GetMultiConfInfoRsp localGetMultiConfInfoRsp = (cmd0x58b.GetMultiConfInfoRsp)localRspBody.msg_get_multi_conf_info.get();; localGetMultiConfInfoRsp = null)
     {
-      return;
-      paramInt = a(paramInt);
-      if (paramInt != 5) {
-        break;
+      if (localGetMultiConfInfoRsp.msg_get_conf_info.has()) {
+        localList = localGetMultiConfInfoRsp.msg_get_conf_info.get();
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("ark.music.module", 2, "ArkAppMusicModule.callback.state.invalid");
-    return;
-    ark.VariantWrapper localVariantWrapper1 = paramVariantWrapper.Create();
-    if (QLog.isColorLevel()) {
-      QLog.i("ark.music.module", 2, String.format(Locale.CHINA, "ArkAppMusicModule.callback.state: %d", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    localVariantWrapper1.SetInt(paramInt);
-    ark.VariantWrapper localVariantWrapper2 = paramVariantWrapper.Create();
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("url", paramSongInfo.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("title", paramSongInfo.c);
-      localJSONObject.put("singer", paramSongInfo.h);
-      localJSONObject.put("id", String.format(Locale.CHINA, "%d", new Object[] { Long.valueOf(paramSongInfo.a) }));
-      localVariantWrapper2.SetTableAsJsonString(localJSONObject.toString());
-      paramSongInfo = paramVariantWrapper.Create();
-      paramVariantWrapper.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper1, localVariantWrapper2 }, paramSongInfo);
-      localVariantWrapper2.Reset();
-      localVariantWrapper1.Reset();
-      paramSongInfo.Reset();
-      return;
-    }
-    catch (JSONException paramSongInfo)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ark.music.module", 2, new Object[] { "ArkAppMusicModule.doCallback.1.json.", paramSongInfo.getMessage() });
-        }
-      }
+      this.jdField_a_of_type_JavaUtilList = localList;
+      this.jdField_a_of_type_Boolean = false;
+      return this;
     }
   }
   
-  public void a(ark.VariantWrapper paramVariantWrapper, SongInfo paramSongInfo)
+  public List<cmd0x58b.GetConfInfoRsp> a()
   {
-    if ((paramVariantWrapper == null) || (!paramVariantWrapper.IsFunction())) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper1 = paramVariantWrapper.Create();
-    ark.VariantWrapper localVariantWrapper2 = paramVariantWrapper.Create();
-    JSONObject localJSONObject;
-    if (paramSongInfo != null) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("url", paramSongInfo.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("title", paramSongInfo.c);
-      localJSONObject.put("singer", paramSongInfo.h);
-      localJSONObject.put("id", String.format(Locale.CHINA, "%d", new Object[] { Long.valueOf(paramSongInfo.a) }));
-      localVariantWrapper2.SetTableAsJsonString(localJSONObject.toString());
-      paramVariantWrapper.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, localVariantWrapper1);
-      localVariantWrapper2.Reset();
-      localVariantWrapper1.Reset();
-      return;
-    }
-    catch (JSONException paramSongInfo)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ark.music.module", 2, new Object[] { "ArkAppMusicModule.doCallback.2.json.", paramSongInfo.getMessage() });
-        }
-      }
-    }
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void a(SongInfo paramSongInfo) {}
-  
-  protected void a(ark.VariantWrapper[] paramArrayOfVariantWrapper)
+  boolean a()
   {
-    if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {
-      return;
-    }
-    SongInfo localSongInfo = new SongInfo();
-    localSongInfo.jdField_b_of_type_Int = 4;
-    localSongInfo.jdField_b_of_type_JavaLangString = paramArrayOfVariantWrapper[0].GetString();
-    try
-    {
-      paramArrayOfVariantWrapper = new JSONObject(paramArrayOfVariantWrapper[1].GetTableAsJsonString());
-      localSongInfo.f = paramArrayOfVariantWrapper.optString("url");
-      localSongInfo.c = paramArrayOfVariantWrapper.optString("title");
-      localSongInfo.h = paramArrayOfVariantWrapper.optString("singer");
-      localSongInfo.a = paramArrayOfVariantWrapper.optLong("id");
-      this.d = localSongInfo.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo = localSongInfo;
-      ArkAppCenter.a().postToMainThread(new ArkAppMusicModule.1(this, localSongInfo));
-      return;
-    }
-    catch (JSONException paramArrayOfVariantWrapper)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ark.music.module", 2, "QQMusic.Play parameter error: " + paramArrayOfVariantWrapper.getMessage());
-        }
-      }
-    }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

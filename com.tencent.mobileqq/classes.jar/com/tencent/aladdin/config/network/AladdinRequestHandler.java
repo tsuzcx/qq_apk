@@ -2,9 +2,13 @@ package com.tencent.aladdin.config.network;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.aladdin.config.utils.DeviceInfoUtils;
+import com.tencent.aladdin.config.utils.SpUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -16,6 +20,7 @@ import java.util.List;
 
 public abstract class AladdinRequestHandler
 {
+  private static final String KEY_CACHE = "key_cache";
   public static final String KEY_CONFIG_COUNT = "key_config_count";
   public static final String KEY_FAILED_COUNT = "key_failed_count";
   public static final String KEY_REQUEST_TIMESTAMP = "key_request_timestamp";
@@ -87,6 +92,12 @@ public abstract class AladdinRequestHandler
       com.tencent.aladdin.config.utils.Log.e("AladdinRequestHandler", "handleRspBody: failed to flush version info");
     }
     ackConfigResults(paramRspBodyType1.cookie.get(), localArrayList);
+    if ((paramRspBodyType1.cache.has()) && (paramRspBodyType1.cache.get() != null))
+    {
+      paramRspBodyType1 = paramRspBodyType1.cache.get().toStringUtf8();
+      com.tencent.aladdin.config.utils.Log.i("AladdinRequestHandler", "[handleRspBody], cache = " + paramRspBodyType1);
+      SpUtils.updateSpValue("key_cache", paramRspBodyType1, true);
+    }
     return localArrayList;
   }
   
@@ -194,6 +205,11 @@ public abstract class AladdinRequestHandler
       localReqBodyType1.rpt_config_list.add(localConfigSeq);
       i += 1;
     }
+    paramArrayOfInt = (String)SpUtils.getSpValue("key_cache", "", true);
+    com.tencent.aladdin.config.utils.Log.i("AladdinRequestHandler", "[makeReqBody] cache = " + paramArrayOfInt);
+    if (!TextUtils.isEmpty(paramArrayOfInt)) {
+      localReqBodyType1.cache.set(ByteStringMicro.copyFromUtf8(paramArrayOfInt));
+    }
     localReqBody.req_type.set(0);
     localReqBody.body_type_1.set(localReqBodyType1);
     if (com.tencent.aladdin.config.utils.Log.isDebugVersion()) {
@@ -214,7 +230,7 @@ public abstract class AladdinRequestHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aladdin.config.network.AladdinRequestHandler
  * JD-Core Version:    0.7.0.1
  */

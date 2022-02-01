@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.text.style.ForegroundColorSpan;
 import android.util.SparseIntArray;
-import bamd;
-import sgy;
-import sha;
+import bdnh;
+import tfp;
+import tfr;
 
 public class BiuNicknameSpan
   extends ForegroundColorSpan
-  implements sgy, sha
+  implements tfp, tfr
 {
   private int a;
   public long a;
@@ -19,7 +19,7 @@ public class BiuNicknameSpan
   
   public BiuNicknameSpan(String paramString, long paramLong, CharSequence paramCharSequence)
   {
-    super(-12084769);
+    super(-15504151);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Long = paramLong;
@@ -33,7 +33,7 @@ public class BiuNicknameSpan
   
   public BiuNicknameSpan(String paramString, long paramLong, CharSequence paramCharSequence, Context paramContext, Paint paramPaint, int paramInt)
   {
-    super(-12084769);
+    super(-15504151);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Long = paramLong;
@@ -63,7 +63,7 @@ public class BiuNicknameSpan
         i = j + 1;
         break;
         j = i;
-      } while (bamd.a.get(k, -1) < 0);
+      } while (bdnh.a.get(k, -1) < 0);
       if ((k > 65535) && (paramCharSequence.length() >= i + 2)) {
         paramCharSequence.delete(i, i + 2);
       }

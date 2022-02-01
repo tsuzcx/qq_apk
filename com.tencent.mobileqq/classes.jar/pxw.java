@@ -1,23 +1,23 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.PicData;
 
-public class pxw
-  extends pxv
+public final class pxw
+  implements Parcelable.Creator<ReadInJoyDraftboxItem.PicData>
 {
-  public pxw(Context paramContext, bdbb parambdbb, rqj paramrqj)
+  public ReadInJoyDraftboxItem.PicData a(Parcel paramParcel)
   {
-    super(paramContext, parambdbb, paramrqj);
+    return new ReadInJoyDraftboxItem.PicData(paramParcel);
   }
   
-  public pxl g()
+  public ReadInJoyDraftboxItem.PicData[] a(int paramInt)
   {
-    this.jdField_a_of_type_Pxk = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    return new ReadInJoyDraftboxItem.PicData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pxw
  * JD-Core Version:    0.7.0.1
  */

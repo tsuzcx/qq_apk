@@ -1,89 +1,177 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.filter.FilterItem;
-import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFilterList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FilterListPack;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
+import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
+import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
+import mqq.app.AppRuntime;
+import qqcircle.QQCircleBase.UserCircleInfo;
 
 public class uxc
-  extends uro
 {
-  @NonNull
-  public final String a;
-  @NonNull
-  public final List<FilterItem> a;
-  public final boolean a;
-  public final int b;
+  private static int jdField_a_of_type_Int = 1;
+  private static volatile FeedCloudMeta.StUser jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static volatile ArrayList<QQCircleBase.UserCircleInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static HashMap<String, FeedCloudMeta.StFeed> jdField_a_of_type_JavaUtilHashMap;
+  private static volatile ArrayList<QQCircleBase.UserCircleInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private static HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap;
   
-  public uxc(byte[] paramArrayOfByte)
+  static
   {
-    Object localObject1 = new qqstory_service.RspGetFilterList();
-    for (;;)
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_b_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public static int a()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  public static FeedCloudMeta.StFeed a(String paramString)
+  {
+    return (FeedCloudMeta.StFeed)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public static FeedCloudMeta.StUser a()
+  {
+    try
     {
-      try
+      if (jdField_a_of_type_FeedcloudFeedCloudMeta$StUser == null)
       {
-        ((qqstory_service.RspGetFilterList)localObject1).mergeFrom(paramArrayOfByte);
-        this.jdField_a_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).result.error_code.get();
-        this.jdField_b_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).result.error_desc.get().toStringUtf8();
-        if (((qqstory_service.RspGetFilterList)localObject1).is_end.get() != 0)
-        {
-          this.jdField_a_of_type_Boolean = bool;
-          this.jdField_a_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).next_cookie.get().toStringUtf8();
-          this.jdField_b_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).frequency.get();
-          paramArrayOfByte = new ArrayList();
-          localObject1 = ((qqstory_service.RspGetFilterList)localObject1).filter_list.get().iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          Object localObject2 = (qqstory_struct.FilterListPack)((Iterator)localObject1).next();
-          uwu localuwu = new uwu();
-          localuwu.jdField_a_of_type_Long = ((qqstory_struct.FilterListPack)localObject2).filter_id.get();
-          localuwu.jdField_a_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_name.get().toStringUtf8();
-          localuwu.jdField_a_of_type_Int = ((qqstory_struct.FilterListPack)localObject2).filter_type.get();
-          localuwu.jdField_b_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_config_file.get().toStringUtf8();
-          localuwu.c = ((qqstory_struct.FilterListPack)localObject2).filter_config_md5.get().toStringUtf8();
-          try
-          {
-            localObject2 = localuwu.a();
-            paramArrayOfByte.add(localObject2);
-            wxe.d("VideoFilterManager", "GET Filter : id=%d, name=%s, type=%d, url=%s, md5=%s", new Object[] { Long.valueOf(((FilterItem)localObject2).filterId), ((FilterItem)localObject2).filterName, Integer.valueOf(((FilterItem)localObject2).filterType), ((FilterItem)localObject2).filterConfigUrl, ((FilterItem)localObject2).filterConfigMd5 });
-          }
-          catch (FilterItem.FilterItemIllegalException localFilterItemIllegalException)
-          {
-            wxe.c("VideoFilterManager", "GET Filter error : ", localFilterItemIllegalException);
-          }
-          continue;
+        if (VSNetworkHelper.a() != null) {
+          VSNetworkHelper.a().a(new QCircleGetMainPageRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount()), new uxd());
         }
-        bool = false;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        wxe.e("VideoFilterManager", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
-        this.jdField_a_of_type_Int = -1;
-        this.jdField_b_of_type_JavaLangString = alud.a(2131716656);
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
-        this.jdField_a_of_type_JavaLangString = "";
-        this.jdField_b_of_type_Int = 0;
-        return;
+        FeedCloudMeta.StUser localStUser = b();
+        return localStUser;
       }
     }
-    this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(paramArrayOfByte);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
+  }
+  
+  public static Integer a(String paramString)
+  {
+    if (jdField_b_of_type_JavaUtilHashMap.containsKey(paramString)) {
+      return (Integer)jdField_b_of_type_JavaUtilHashMap.get(paramString);
+    }
+    return Integer.valueOf(-1);
+  }
+  
+  public static String a()
+  {
+    return BaseApplicationImpl.getApplication().getRuntime().getAccount();
+  }
+  
+  public static ArrayList<QQCircleBase.UserCircleInfo> a()
+  {
+    return jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public static void a()
+  {
+    try
+    {
+      vof.a().a();
+      vot.a().a();
+      uwz.a();
+      b();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static void a(String paramString, FeedCloudMeta.StFeed paramStFeed)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramStFeed != null)) {
+      jdField_a_of_type_JavaUtilHashMap.put(paramString, paramStFeed);
+    }
+  }
+  
+  public static void a(String paramString, Integer paramInteger)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("qcircle_fakeid_"))) {
+      jdField_b_of_type_JavaUtilHashMap.put(paramString, paramInteger);
+    }
+  }
+  
+  public static void a(List<QQCircleBase.UserCircleInfo> paramList1, List<QQCircleBase.UserCircleInfo> paramList2)
+  {
+    if (paramList1 != null) {
+      jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramList1);
+    }
+    if (paramList2 != null) {
+      jdField_b_of_type_JavaUtilArrayList = new ArrayList(paramList2);
+    }
+  }
+  
+  public static FeedCloudMeta.StUser b()
+  {
+    FeedCloudMeta.StUser localStUser = new FeedCloudMeta.StUser();
+    localStUser.id.set(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    return localStUser;
+  }
+  
+  public static String b()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static ArrayList<QQCircleBase.UserCircleInfo> b()
+  {
+    return jdField_b_of_type_JavaUtilArrayList;
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = null;
+      jdField_b_of_type_JavaUtilHashMap.clear();
+      vpu.b();
+      QCircleFeedPicLoader.a().b();
+      vit.a().a();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void c()
+  {
+    QCircleGetTabListRequest localQCircleGetTabListRequest = new QCircleGetTabListRequest(null);
+    VSNetworkHelper.a().a(localQCircleGetTabListRequest, new uxe());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uxc
  * JD-Core Version:    0.7.0.1
  */

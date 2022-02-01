@@ -1,104 +1,88 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopConfess;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aojq
-  extends BaseBubbleBuilder
+  extends aojs
 {
-  private int c;
-  
-  public aojq(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public aojq(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.c = (BaseChatItemLayout.A + aepi.a(20.0F, paramContext.getResources()));
+    super(paramQQAppInterface, paramContext);
   }
   
-  public int a(ChatMessage paramChatMessage)
+  private void d()
   {
-    return 0;
-  }
-  
-  public aeqi a()
-  {
-    return new aojs();
-  }
-  
-  public View a(ChatMessage paramChatMessage, aeqi paramaeqi, View paramView, BaseChatItemLayout paramBaseChatItemLayout, aetk paramaetk)
-  {
-    paramBaseChatItemLayout = (MessageForTroopConfess)paramChatMessage;
-    aojs localaojs = (aojs)paramaeqi;
-    paramChatMessage = paramView;
-    if (paramView == null)
-    {
-      paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558792, null);
-      paramChatMessage.setLayoutParams(new ViewGroup.LayoutParams(this.c, -2));
-      aojs.a(localaojs, (TextView)paramChatMessage.findViewById(2131379199));
-      aojs.b(localaojs, (TextView)paramChatMessage.findViewById(2131379190));
-      aojs.c(localaojs, (TextView)paramChatMessage.findViewById(2131379214));
-      aojs.a(localaojs, (ConfessNewsBgView)paramChatMessage.findViewById(2131379482));
-      aojs.a(localaojs).setPressMask(true);
-      aojs.a(localaojs, paramChatMessage.findViewById(2131369691));
+    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("title");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = blen.a(1);
     }
-    aojs.a(localaojs).setBgType(paramBaseChatItemLayout.getConfessTopicId() % 4);
-    aojs.a(localaojs).setOnLongClickListener(paramaetk);
-    aojs.a(localaojs).setOnTouchListener(paramaetk);
-    localaojs.a(paramBaseChatItemLayout.mTroopConfessMsg);
-    paramChatMessage.setOnClickListener(new aojr(this, paramBaseChatItemLayout));
-    if (e)
+    ShoppingFragment.a(this.jdField_a_of_type_AndroidContentContext, str1);
+  }
+  
+  private void e()
+  {
+    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("roomid");
+    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("rtmp");
+    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("source");
+    String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("retain");
+    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("closejump");
+    if (TextUtils.isEmpty(str1)) {
+      str1 = "scheme";
+    }
+    for (;;)
     {
-      ((aojs)paramaeqi).b.append(aojs.b(localaojs).getText()).append(aojs.a(localaojs).getText());
-      if (aojs.c(localaojs).getVisibility() == 0) {
-        ((aojs)paramaeqi).b.append(aojs.c(localaojs).getText());
+      try
+      {
+        if (TextUtils.isEmpty(str5)) {
+          continue;
+        }
+        int i = Integer.parseInt(str5);
+        if (i != 1) {
+          continue;
+        }
+        bool = true;
       }
-      paramChatMessage.setContentDescription(((aojs)paramaeqi).b.toString());
-    }
-    return paramChatMessage;
-  }
-  
-  public String a(ChatMessage paramChatMessage)
-  {
-    return null;
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
-  {
-    if ((paramChatMessage == null) || (!(paramChatMessage instanceof MessageForTroopConfess))) {
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        boolean bool = false;
+        continue;
+        bool = false;
+        continue;
+      }
+      bleu.a(new blej(this.jdField_a_of_type_AndroidContentContext, str1, str2, str3, bool, null, str4));
       return;
+      bool = false;
     }
-    MessageForTroopConfess localMessageForTroopConfess = (MessageForTroopConfess)paramChatMessage;
-    switch (paramInt)
+  }
+  
+  public boolean a()
+  {
+    boolean bool = true;
+    try
     {
-    default: 
-      super.a(paramInt, paramContext, paramChatMessage);
-      return;
+      if ("watch".equals(this.c))
+      {
+        e();
+        return true;
+      }
+      if ("mqqapi://vaslive/myshopping".equals(this.c))
+      {
+        d();
+        return true;
+      }
     }
-    acjm.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-  }
-  
-  public void a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout, int paramInt1, int paramInt2) {}
-  
-  public bdpk[] a(View paramView)
-  {
-    paramView = new bdpi();
-    acjm.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    super.e(paramView, this.jdField_a_of_type_AndroidContentContext);
-    return paramView.a();
-  }
-  
-  public void b(View paramView)
-  {
-    super.b(paramView);
+    catch (Exception localException)
+    {
+      QLog.e("IliveJumpAction", 1, "doAction error: " + localException.getMessage());
+      a("IliveJumpAction");
+      bool = false;
+    }
+    return bool;
   }
 }
 

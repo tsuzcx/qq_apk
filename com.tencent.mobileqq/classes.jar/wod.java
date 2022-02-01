@@ -1,29 +1,71 @@
-import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.1;
+import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.2;
+import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.3;
+import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.4;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 public class wod
-  extends xwu
+  extends yke
+  implements View.OnClickListener
 {
-  private static final int[] a = { 2131691562 };
-  private static final int[] f = { 2131165566 };
-  private static final int[] g = { 2131370198 };
-  private static int[] h = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298801) };
+  public EditText a;
+  public wpk a;
+  public EditText b;
   
-  public wod()
+  public void a()
   {
-    super(1, 1, h, -1, g, a, f);
+    super.a();
   }
   
-  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
+  public void a(Bundle paramBundle1, Bundle paramBundle2)
   {
-    paramArrayOfbibj[0].a = 0;
-    paramArrayOfbibj[0].b = 0;
+    super.a(paramBundle1, paramBundle2);
+    this.jdField_a_of_type_Wpk = ((wpk)wpm.a(29));
+    a(2131558447);
+    a(2131363786).setOnClickListener(this);
+    a(2131363841).setOnClickListener(this);
+    a(2131363737).setOnClickListener(this);
+    a(2131363873).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131365840));
+    this.b = ((EditText)a(2131365807));
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.1(this), true);
+      continue;
+      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.2(this), true);
+      continue;
+      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.3(this));
+      continue;
+      this.b.getText().toString();
+      this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      this.b.getText().clear();
+      this.jdField_a_of_type_AndroidWidgetEditText.getText().clear();
+      new woc(BaseApplicationImpl.getApplication().getRuntime().getAccount()).a();
+      continue;
+      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.4(this, this.b.getText().toString(), this.jdField_a_of_type_AndroidWidgetEditText.getText().toString()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wod
  * JD-Core Version:    0.7.0.1
  */

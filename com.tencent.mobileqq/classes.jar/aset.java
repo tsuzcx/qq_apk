@@ -1,133 +1,170 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.util.Pair;
-import android.view.LayoutInflater;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
 import java.util.List;
 
 public class aset
-  extends RecyclerView.Adapter<asew>
+  extends BaseAdapter
+  implements URLDrawableDownListener
 {
-  float jdField_a_of_type_Float = 1.0F;
-  Context jdField_a_of_type_AndroidContentContext;
-  bdbb jdField_a_of_type_Bdbb;
-  List<Pair<String, String>> jdField_a_of_type_JavaUtilList;
+  protected Context a;
+  protected Handler a;
+  protected ases a;
+  public List<ases> a;
   
-  public aset(Context paramContext, bdbb parambdbb, float paramFloat)
+  public aset(Context paramContext, Handler paramHandler, ases paramases)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bdbb = parambdbb;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_Ases = paramases;
   }
   
-  public asew a(ViewGroup paramViewGroup, int paramInt)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    if (paramInt == asep.b)
-    {
-      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-      int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296992);
-      paramInt = i;
-      if (this.jdField_a_of_type_Float != 0.0F) {
-        paramInt = (int)(i / this.jdField_a_of_type_Float);
-      }
-      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, paramInt));
-      return new asew(paramViewGroup);
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    float f1 = paramInt1 / i;
+    float f2 = paramInt2 / j;
+    Matrix localMatrix = new Matrix();
+    localMatrix.postScale(f1, f2);
+    return Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
+  }
+  
+  public int a(ases paramases)
+  {
+    return paramases.a(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public ases a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (ases)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559109, paramViewGroup, false);
-    if ((this.jdField_a_of_type_Float != 0.0F) && (paramViewGroup != null))
+    return this.jdField_a_of_type_Ases;
+  }
+  
+  public Long a(int paramInt)
+  {
+    return Long.valueOf(a(paramInt).a());
+  }
+  
+  public List<ases> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(List<ases> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return a(paramInt).a(this.jdField_a_of_type_Ases);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 1;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+    }
+    for (;;)
     {
-      Object localObject1 = paramViewGroup.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).height = aepi.a(80.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = (ImageView)paramViewGroup.findViewById(2131368180);
-      Object localObject2;
-      if (localObject1 != null)
+      com.tencent.qphone.base.util.QLog.d("EmotionAdapter", 1, "getView position:" + paramInt);
+      Object localObject;
+      Drawable localDrawable;
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
-        localObject2 = ((ImageView)localObject1).getLayoutParams();
-        if (localObject2 != null)
-        {
-          paramInt = aepi.a(40.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
-          ((ViewGroup.LayoutParams)localObject2).width = paramInt;
-          ((ViewGroup.LayoutParams)localObject2).height = paramInt;
-          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        localObject = (ases)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localDrawable = ((ases)localObject).a(this.jdField_a_of_type_AndroidContentContext);
+        if ((((ases)localObject).a()) || (!((ases)localObject).b())) {
+          break label221;
         }
+        ((URLImageView)paramView).setURLDrawableDownListener(this);
+        label110:
+        if ((!(localDrawable instanceof awet)) || (((awet)localDrawable).a() == null)) {
+          break label232;
+        }
+        int i = afur.a(100.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        localObject = a(((awet)localDrawable).a(), i, i);
+        ((ImageView)paramView).setImageBitmap((Bitmap)localObject);
       }
-      localObject1 = (TextView)paramViewGroup.findViewById(2131379199);
-      if (localObject1 != null)
+      for (;;)
       {
-        ((TextView)localObject1).setTextSize(2, (int)(10.0D / this.jdField_a_of_type_Float));
-        localObject2 = (ViewGroup.MarginLayoutParams)((TextView)localObject1).getLayoutParams();
-        ((ViewGroup.MarginLayoutParams)localObject2).setMargins((int)(((ViewGroup.MarginLayoutParams)localObject2).leftMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).topMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).rightMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).bottomMargin / this.jdField_a_of_type_Float));
-        ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+        this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, paramInt, 0, localDrawable).sendToTarget();
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localObject = this.jdField_a_of_type_Ases;
+        break;
+        label221:
+        ((URLImageView)paramView).setURLDrawableDownListener(null);
+        break label110;
+        label232:
+        ((ImageView)paramView).setImageDrawable(localDrawable);
       }
     }
-    return new asev(paramViewGroup);
   }
   
-  public void a(asew paramasew, int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (paramasew.a == asep.b) {}
-    Pair localPair;
-    do
+    try
     {
-      do
-      {
-        return;
-      } while (paramasew.a != asep.a);
-      paramInt -= 1;
-      if (paramInt < 0) {
-        QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "type normal in wrong index");
+      File localFile = paramURLDrawable.getFileInLocal();
+      if (localFile == null) {
+        break label74;
       }
-      localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    } while (!(paramasew instanceof asev));
-    ((asev)paramasew).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_Bdbb);
-  }
-  
-  public void a(List<Pair<String, String>> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+      i = bgmo.c(localFile.getAbsolutePath());
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        label74:
+        int i = 0;
+      }
     }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt == 0) {
-      return asep.b;
+    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+      com.tencent.TMG.utils.QLog.d("EmotionAdapter", 0, "onLoadSuccessed,orientation");
     }
-    return asep.a;
-  }
-  
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if ((paramRecyclerView instanceof GridLayoutManager)) {
-      ((GridLayoutManager)paramRecyclerView).setSpanSizeLookup(new aseu(this));
-    }
+    AIOGalleryAdapter.a(paramView, paramURLDrawable, i);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, -1, 1, paramURLDrawable).sendToTarget();
   }
 }
 

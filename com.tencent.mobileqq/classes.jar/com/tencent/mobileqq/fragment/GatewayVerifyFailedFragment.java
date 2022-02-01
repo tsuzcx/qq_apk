@@ -11,12 +11,14 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import azqs;
+import bcst;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import mqq.app.MobileQQ;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
@@ -60,17 +62,17 @@ public class GatewayVerifyFailedFragment
           int k = localObject2[1].length();
           localObject2 = ((StringBuilder)localObject1).append("pp=").append(localObject2[0]).append("&tp=").append(localObject2[1]).append("&ccode=").append(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.CountryCode).append("&vseq=").append(this.jdField_b_of_type_Int).append("&starnum=").append(i - j - k).append("&isFromLogin=");
           if (!this.jdField_a_of_type_Boolean) {
-            break label563;
+            break label572;
           }
           i = 1;
           label244:
           localObject2 = ((StringBuilder)localObject2).append(i).append("&isFromOpenSdk=");
           if (!"com.tencent.mobileqq:openSdk".equals(getActivity().getAppInterface().getApplication().getQQProcessName())) {
-            break label568;
+            break label577;
           }
           i = 1;
           label280:
-          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(i).append("&mentrance=").append(1);
         }
         localObject1 = ((StringBuilder)localObject1).toString();
       }
@@ -82,12 +84,12 @@ public class GatewayVerifyFailedFragment
       localIntent.putExtra("hide_operation_bar", true);
       localIntent.putExtra("hide_more_button", true);
       if ((this.d == null) || (this.d.equals(this.c))) {
-        break label590;
+        break label599;
       }
     }
-    label444:
-    label579:
-    label590:
+    label453:
+    label588:
+    label599:
     for (boolean bool = true;; bool = false) {
       for (;;)
       {
@@ -101,15 +103,15 @@ public class GatewayVerifyFailedFragment
           if ((getActivity().getAppInterface() instanceof QQAppInterface))
           {
             localObject1 = (QQAppInterface)getActivity().getAppInterface();
-            label476:
-            azqs.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800ADE0", "0X800ADE0", 0, 0, "", "", "", "");
+            label485:
+            bcst.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800ADE0", "0X800ADE0", 0, 0, "", "", "", "");
             if (!(getActivity().getAppInterface() instanceof QQAppInterface)) {
-              break label579;
+              break label588;
             }
           }
           for (localObject1 = (QQAppInterface)getActivity().getAppInterface();; localObject1 = null)
           {
-            azqs.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800A413", "0X800A413", 0, 0, "", "", "", "");
+            bcst.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800A413", "0X800A413", 0, 0, "", "", "", "");
             return;
             ((StringBuilder)localObject1).append("?");
             break;
@@ -118,12 +120,12 @@ public class GatewayVerifyFailedFragment
             i = 0;
             break label280;
             localObject1 = null;
-            break label476;
+            break label485;
           }
         }
         catch (SecurityException localSecurityException)
         {
-          break label444;
+          break label453;
         }
       }
     }
@@ -148,36 +150,39 @@ public class GatewayVerifyFailedFragment
   {
     switch (paramView.getId())
     {
-    default: 
-      return;
-    case 2131368624: 
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
     }
-    a();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      continue;
+      a();
+    }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131560923, paramViewGroup, false);
-    ((TextView)paramViewGroup.findViewById(2131378916)).setOnClickListener(this);
-    ((TextView)paramViewGroup.findViewById(2131368670)).setText(getString(2131692214));
-    paramLayoutInflater = paramViewGroup.findViewById(2131375987);
+    paramViewGroup = paramLayoutInflater.inflate(2131561128, paramViewGroup, false);
+    ((TextView)paramViewGroup.findViewById(2131379806)).setOnClickListener(this);
+    ((TextView)paramViewGroup.findViewById(2131368994)).setText(getString(2131691832));
+    paramLayoutInflater = paramViewGroup.findViewById(2131376734);
     paramBundle = (LinearLayout.LayoutParams)paramLayoutInflater.getLayoutParams();
     paramBundle.topMargin = ImmersiveUtils.getStatusBarHeight(getActivity());
     paramLayoutInflater.setLayoutParams(paramBundle);
-    paramViewGroup.findViewById(2131368624).setOnClickListener(this);
+    paramViewGroup.findViewById(2131368947).setOnClickListener(this);
     if ((getActivity().getAppInterface() instanceof QQAppInterface)) {}
     for (paramLayoutInflater = (QQAppInterface)getActivity().getAppInterface();; paramLayoutInflater = null)
     {
-      azqs.a(paramLayoutInflater, "dc00898", "", "", "0X800ADDF", "0X800ADDF", 0, 0, "", "", "", "");
+      bcst.a(paramLayoutInflater, "dc00898", "", "", "0X800ADDF", "0X800ADDF", 0, 0, "", "", "", "");
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramViewGroup);
       return paramViewGroup;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.GatewayVerifyFailedFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -218,11 +218,11 @@ public class CrashReport
     }
     x.b = "eup";
     x.a = "eup";
-    StrategyBean.a = "http://monitor.uu.qq.com/analytics/rqdsync";
+    StrategyBean.a = "https://android.rqd.qq.com/analytics/hsync";
     if (!i)
     {
-      StrategyBean.b = "http://android.rqd.qq.com/analytics/async";
-      StrategyBean.c = "http://android.rqd.qq.com/analytics/async";
+      StrategyBean.b = "https://android.rqd.qq.com/analytics/hsync";
+      StrategyBean.c = "https://android.rqd.qq.com/analytics/hsync";
     }
     b = paramCrashStrategyBean;
     setCrashHandler(paramCrashHandleListener);
@@ -279,7 +279,7 @@ public class CrashReport
     }
     com.tencent.bugly.crashreport.common.info.a.a(paramContext).f = paramBoolean;
     paramCrashHandleListener.setUploadProcess(paramBoolean);
-    com.tencent.bugly.crashreport.common.info.a.a(paramContext).F = true;
+    com.tencent.bugly.crashreport.common.info.a.a(paramContext).E = true;
     c.b = true;
     com.tencent.bugly.crashreport.common.strategy.a.b = 21600000L;
     paramCrashHandleListener.setEnableUserInfo(g);
@@ -316,15 +316,14 @@ public class CrashReport
     do
     {
       return;
-      com.tencent.bugly.crashreport.common.info.a locala = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
+      Object localObject = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
       if (paramFile != null)
       {
-        localObject = paramFile.getAbsolutePath();
-        if (!z.a((String)localObject)) {
-          locala.p = ((String)localObject);
+        String str = paramFile.getAbsolutePath();
+        if (!z.a(str)) {
+          ((com.tencent.bugly.crashreport.common.info.a)localObject).p = str;
         }
       }
-      Object localObject = paramList;
       if (paramFile != null)
       {
         localObject = paramList;
@@ -332,12 +331,6 @@ public class CrashReport
           localObject = new ArrayList();
         }
         ((List)localObject).add(paramFile);
-      }
-      if ((locala.I() == null) && (locala.f))
-      {
-        x.c("no setted SO , query so!", new Object[0]);
-        paramList = "/data/data/" + paramContext.getPackageName() + "/lib/";
-        w.a().a(new a(paramContext, paramList, (List)localObject), paramLong);
       }
       paramList = NativeCrashHandler.getInstance();
       if ((paramList != null) && (!z.a(paramString))) {
@@ -451,9 +444,9 @@ public class CrashReport
       x.c("replace KV %s %s", new Object[] { paramString1, str });
       return;
     }
-    if (paramString2.C() >= 100)
+    if (paramString2.C() >= 500)
     {
-      x.d("user data size is over limit %d , will drop this new key %s", new Object[] { Integer.valueOf(10), paramString1 });
+      x.d("user data size is over limit %d , will drop this new key %s", new Object[] { Integer.valueOf(50), paramString1 });
       return;
     }
     if (paramString1.length() > 50)
@@ -578,7 +571,7 @@ public class CrashReport
     }
     for (;;)
     {
-      com.tencent.bugly.crashreport.common.info.a.a(paramContext).B = paramBoolean;
+      com.tencent.bugly.crashreport.common.info.a.a(paramContext).A = paramBoolean;
       return;
       x.c("This is not a development device.", new Object[0]);
     }

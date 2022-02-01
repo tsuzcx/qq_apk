@@ -1,33 +1,18 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
 
 class tad
-  extends alqv
+  implements bkiz
 {
-  tad(tac paramtac) {}
+  tad(tab paramtab) {}
   
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  public void a()
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(tac.a(this.a))))
-    {
-      paramLong = BaseApplicationImpl.getApplication().getBaseContext();
-      if (paramBoolean) {
-        QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131719768, 0).b(paramLong.getResources().getDimensionPixelSize(2131298914));
-      }
-    }
-    else
-    {
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131719755, 0).b(paramLong.getResources().getDimensionPixelSize(2131298914));
+    this.a.a.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tad
  * JD-Core Version:    0.7.0.1
  */

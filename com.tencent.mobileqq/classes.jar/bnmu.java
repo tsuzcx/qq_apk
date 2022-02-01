@@ -1,6 +1,12 @@
 public abstract interface bnmu
 {
   public abstract void a();
+  
+  public abstract void a(bnpf parambnpf);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

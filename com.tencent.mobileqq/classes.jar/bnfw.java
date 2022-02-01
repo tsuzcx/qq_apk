@@ -1,15 +1,9 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
+import android.widget.CheckBox;
 
-class bnfw
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface bnfw
 {
-  bnfw(bnfv parambnfv) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    bnfv.a(this.a).f = paramBoolean;
-  }
+  public abstract void a(View paramView, int paramInt, CheckBox paramCheckBox);
 }
 
 

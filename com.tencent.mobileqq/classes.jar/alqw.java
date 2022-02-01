@@ -1,60 +1,44 @@
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
 
 public class alqw
-  extends MSFServlet
+  implements bhyz
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public alqw(TextPreviewMenu paramTextPreviewMenu, TextPreviewActivity paramTextPreviewActivity) {}
+  
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineServlet", 2, "onReceive called");
-    }
-    if (paramIntent == null)
-    {
-      QLog.e("DataLineServlet", 1, "onReceive : req is null");
-      return;
-    }
-    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    ((alqo)localQQAppInterface.a(8)).a(paramIntent, paramFromServiceMsg);
+    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineServlet", 2, "onSend called");
-    }
-    if (paramIntent == null) {
-      QLog.e("DataLineServlet", 1, "onSend : req is null");
-    }
-    do
-    {
-      return;
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent == null) {
-        break;
-      }
-      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-      paramPacket.putSendData(paramIntent.getWupBuffer());
-      paramPacket.setTimeout(paramIntent.getTimeout());
-    } while (paramIntent.isNeedCallback());
-    paramPacket.setNoResponse();
-    return;
-    QLog.e("DataLineServlet", 1, "onSend : toMsg is null");
+    bdon.a(paramString, "OCR_Participle_copy");
+  }
+  
+  public void b(String paramString)
+  {
+    bdon.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    bdon.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, TextPreviewTranslateActivity.class);
+    localIntent.putExtra("TranslateText", paramString);
+    localIntent.putExtra("WhereAreYouFrom", "AIO_TEXTPREVIEW");
+    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu, localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alqw
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,9 @@ import java.util.List;
 public class CommentData
   extends BaseCommentData
 {
-  public static final int EXPOSURE_SUB_COMMMENT_COUNT = 2;
+  public static final int EXPOSURE_SUB_COMMENT_COUNT = 2;
   public List<SubCommentData> subCommentList;
   public int subCommentNum;
-  
-  public int getSubCommentCnt()
-  {
-    return this.subCommentNum;
-  }
 }
 
 

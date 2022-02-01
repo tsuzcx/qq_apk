@@ -1,34 +1,24 @@
-import android.os.Bundle;
 import com.dataline.activities.LiteActivity;
-import java.util.ArrayList;
+import mqq.app.QQPermissionCallback;
 
 public class bi
-  implements arrh
+  implements QQPermissionCallback
 {
-  public bi(LiteActivity paramLiteActivity, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public bi(LiteActivity paramLiteActivity) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Bundle localBundle;
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-    {
-      localBundle = new Bundle();
-      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.jdField_a_of_type_JavaUtilArrayList);
-      new cd(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
-    }
-    if (!this.b.isEmpty())
-    {
-      localBundle = new Bundle();
-      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.b);
-      new ce(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
-    }
+    bglp.b(this.a.getActivity());
   }
   
-  public void b() {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.r();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bi
  * JD-Core Version:    0.7.0.1
  */

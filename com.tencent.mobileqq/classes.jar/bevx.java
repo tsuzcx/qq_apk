@@ -1,44 +1,54 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
 import com.tencent.qphone.base.util.QLog;
 
-public final class bevx
-  implements ValueAnimator.AnimatorUpdateListener
+public class bevx
 {
-  public float a;
-  private final TabDragAnimationView a;
-  public boolean a;
-  public boolean b = false;
+  public static int a;
+  public static String a;
+  public static int b = 1;
+  public static int c = 2;
   
-  public bevx(TabDragAnimationView paramTabDragAnimationView)
+  static
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
+    jdField_a_of_type_JavaLangString = "<TroopFile> ";
   }
   
-  public void a()
+  private static int a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Float = 1.0F;
+    int j = 2;
+    int i;
+    if (jdField_a_of_type_Int == paramInt) {
+      i = 1;
+    }
+    do
+    {
+      do
+      {
+        return i;
+        i = j;
+      } while (b == paramInt);
+      i = j;
+    } while (c != paramInt);
+    return 4;
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static void a(String paramString1, int paramInt, String paramString2)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f - this.jdField_a_of_type_Float > 0.0F) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if ((this.jdField_a_of_type_Boolean) && (f > 0.8F)) {
-      this.b = false;
-    }
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-    if (QLog.isColorLevel()) {
-      QLog.d(TabDragAnimationView.class.getSimpleName(), 2, "do mScale animation, percent=" + this.jdField_a_of_type_Float + ",reversed=" + this.jdField_a_of_type_Boolean + ",doAnim=" + this.b);
-    }
+    QLog.e(paramString1, a(paramInt), jdField_a_of_type_JavaLangString + paramString2);
+  }
+  
+  public static void b(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.w(paramString1, a(paramInt), jdField_a_of_type_JavaLangString + paramString2);
+  }
+  
+  public static void c(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.i(paramString1, a(paramInt), jdField_a_of_type_JavaLangString + paramString2);
+  }
+  
+  public static void d(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.d(paramString1, a(paramInt), jdField_a_of_type_JavaLangString + paramString2);
   }
 }
 

@@ -1,21 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.dispatch.Dispatcher;
 
 public class xxt
-  implements ValueAnimator.AnimatorUpdateListener
+  extends xzi
 {
-  public xxt(RotateCircleImageView paramRotateCircleImageView) {}
+  public xxt(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
   {
-    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    wxy localwxy = new wxy();
+    localwxy.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
+    localwxy.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
+    wfo.a().dispatch(localwxy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xxt
  * JD-Core Version:    0.7.0.1
  */

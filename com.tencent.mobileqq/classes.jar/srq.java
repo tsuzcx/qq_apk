@@ -1,46 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Canvas;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class srq
+  implements Function1<Canvas, Unit>
 {
-  private static final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  public srq(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public static void a()
+  public Unit a(Canvas paramCanvas)
   {
-    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() <= 0)) {}
-  }
-  
-  public static void a(String paramString1, String paramString2, double paramDouble)
-  {
-    if (!a(paramDouble)) {}
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, double paramDouble)
-  {
-    if (!a(paramDouble)) {}
-  }
-  
-  private static boolean a(double paramDouble)
-  {
-    return false;
-  }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_JavaUtilList != null) {
-      jdField_a_of_type_JavaUtilList.clear();
-    }
-  }
-  
-  private static void b(String paramString)
-  {
-    nrt.a(ors.a(), "", "0X800A064", "0X800A064", 0, 0, "", "", "", paramString, false);
+    ReadInJoyListViewGroup.b(this.a, paramCanvas);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     srq
  * JD-Core Version:    0.7.0.1
  */

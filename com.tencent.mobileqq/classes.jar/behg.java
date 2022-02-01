@@ -1,19 +1,41 @@
-import android.net.Uri;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class behg
-  extends behj
+public class behg
+  extends AsyncTask<Void, Void, String>
 {
-  behg(behe parambehe)
+  public behg(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  
+  protected String a(Void... paramVarArgs)
   {
-    super(parambehe);
+    try
+    {
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
+      {
+        bgmo.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramVarArgs);
+        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131694329) + " " + paramVarArgs;
+      }
+    }
+    catch (Exception paramVarArgs)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PhotoPreviewActivity", 2, QLog.getStackTraceString(paramVarArgs));
+        }
+        paramVarArgs = null;
+      }
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131694327);
   }
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  protected void a(String paramString)
   {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.isForMainFrame());
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
   }
 }
 

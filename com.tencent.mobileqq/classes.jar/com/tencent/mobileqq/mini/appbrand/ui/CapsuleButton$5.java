@@ -1,28 +1,22 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import android.widget.TextView;
-import bhvv;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.cache.MiniCacheFreeManager;
+import com.tencent.mobileqq.mini.mainpage.MainPageFragment;
 
 class CapsuleButton$5
-  implements Runnable
+  implements CapsuleButton.onActivityFinishListener
 {
-  CapsuleButton$5(CapsuleButton paramCapsuleButton) {}
+  CapsuleButton$5(CapsuleButton paramCapsuleButton, MiniAppConfig paramMiniAppConfig) {}
   
-  public void run()
+  public void onActivityFinish()
   {
-    if ((CapsuleButton.access$400() > 0) && (CapsuleButton.access$500(this.this$0) != null) && (!CapsuleButton.access$500(this.this$0).isAnimating()))
-    {
-      CapsuleButton.access$600(this.this$0).setVisibility(0);
-      bhvv.a(CapsuleButton.access$600(this.this$0), 7, CapsuleButton.access$400(), 0);
-      return;
-    }
-    CapsuleButton.access$600(this.this$0).setVisibility(8);
+    MiniCacheFreeManager.freeCache(MainPageFragment.getUin(), CapsuleButton.access$700(this.this$0), true, new CapsuleButton.5.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.CapsuleButton.5
  * JD-Core Version:    0.7.0.1
  */

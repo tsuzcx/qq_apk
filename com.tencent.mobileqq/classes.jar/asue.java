@@ -1,75 +1,18 @@
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.hotpic.HotPicData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class asue
-  extends astt
+class asue
+  implements atve
 {
-  public static URL b(String paramString)
+  asue(asuc paramasuc, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void a()
   {
-    try
-    {
-      paramString = new URL("hot_pic_origin", "", paramString);
-      return paramString;
-    }
-    catch (MalformedURLException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    QfileBaseCloudFileTabView.f(this.jdField_a_of_type_Asuc.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
   
-  protected String a(HotPicData paramHotPicData)
-  {
-    return paramHotPicData.originalUrl;
-  }
-  
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
-    String str = a(paramDownloadParams);
-    File localFile = a(str);
-    if (localFile.exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "loadImageFile file exist:" + localFile.getAbsolutePath());
-      }
-      return localFile;
-    }
-    localFile.getParentFile().mkdirs();
-    if ((bdeu.a()) && (bdeu.b() < 20971520L)) {
-      throw new IOException("SD card free space is " + bdeu.b());
-    }
-    Object localObject = new File(a);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdir();
-    }
-    int i = a(str, localFile);
-    if (i == 0)
-    {
-      localObject = awni.a(localFile.getAbsolutePath());
-      if (!paramDownloadParams.originalMD5.equalsIgnoreCase((String)localObject))
-      {
-        localFile.delete();
-        paramURLDrawableHandler.onFileDownloadFailed(0);
-        return null;
-      }
-      paramURLDrawableHandler.onFileDownloadSucceed(localFile.length());
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->0");
-      }
-      return localFile;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->" + i);
-    }
-    return null;
-  }
+  public void b() {}
 }
 
 

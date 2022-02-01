@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.launcher.model;
 
 import android.text.TextUtils;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -52,7 +52,11 @@ public class DomainConfig
         return new DomainConfig(str, i);
         str = paramString;
         if (!paramString.startsWith("https://")) {
-          str = "https://" + paramString;
+          if (paramString.startsWith("http://")) {
+            str = "https://" + paramString.substring("http://".length());
+          } else {
+            str = "https://" + paramString;
+          }
         }
       }
     }
@@ -78,13 +82,13 @@ public class DomainConfig
     if ((paramDomainConfig1 == null) || (paramDomainConfig2 == null)) {
       return false;
     }
-    boolean bool = TextUtils.equals(paramDomainConfig1.host, paramDomainConfig2.host);
+    boolean bool = isDomainMatchRfc2019(paramDomainConfig1.host, paramDomainConfig2);
     int i;
     if (paramDomainConfig1.port == paramDomainConfig2.port)
     {
       i = 1;
       if ((i != 0) || (paramDomainConfig1.port > 0)) {
-        break label124;
+        break label121;
       }
       if ((paramDomainConfig2.port != 80) && (paramDomainConfig2.port != 8080))
       {
@@ -96,7 +100,7 @@ public class DomainConfig
         i = 1;
       }
     }
-    label124:
+    label121:
     for (;;)
     {
       if ((i == 0) && (paramDomainConfig2.port <= 0) && (paramDomainConfig1.port != 80) && (paramDomainConfig1.port != 8080) && (paramDomainConfig1.port <= 0)) {}
@@ -104,6 +108,17 @@ public class DomainConfig
       i = 0;
       break;
     }
+  }
+  
+  public static boolean isDomainMatchRfc2019(String paramString, DomainConfig paramDomainConfig)
+  {
+    if (paramDomainConfig == null) {}
+    do
+    {
+      return false;
+      QMLog.d("domainValid", "isDomainMatchRfc2019 allowedDomainHost=" + paramString + ", requestDomain=" + paramDomainConfig);
+    } while (((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(paramDomainConfig.host)) || (!paramString.startsWith(".")) || (paramString.split("\\.").length < 1) || (!paramDomainConfig.host.endsWith(paramString))) && (!paramString.equals(paramDomainConfig.host)));
+    return true;
   }
   
   public boolean equals(Object paramObject)
@@ -145,7 +160,7 @@ public class DomainConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.DomainConfig
  * JD-Core Version:    0.7.0.1
  */

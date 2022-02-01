@@ -1,54 +1,54 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import apkr;
-import aplz;
-import awge;
+import arnn;
+import arov;
+import com.tencent.mobileqq.persistence.Entity;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 public abstract class XmlData
-  extends awge
+  extends Entity
 {
   public static final int STATE_LOADING = 2;
   public static final int STATE_NONE = 0;
   public static final int STATE_SUCCESS = 1;
-  @aplz(a=true, b=false)
+  @arov(a=true, b=false)
   public String MD5;
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public boolean StoreBackup;
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public int Version;
   public long downSize;
-  @aplz(a=false, b=true)
+  @arov(a=false, b=true)
   public boolean hasResDownloaded;
   public boolean isUserClick;
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public boolean load2G;
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public boolean load3G;
-  @aplz(a=false, b=true)
+  @arov(a=false, b=true)
   public int loadState;
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public boolean loadWifi;
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public boolean net_2_2G;
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public boolean net_2_3G;
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public boolean net_2_wifi;
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public boolean notPreDownloadInLowEndPhone;
   public int reqLoadCount;
   public String strLog;
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public String strPkgName;
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public String strResName;
-  @aplz(a=true, b=false)
+  @arov(a=true, b=false)
   public String strResURL_big;
-  @aplz(a=true, b=false)
+  @arov(a=true, b=false)
   public String strResURL_small;
-  @aplz(a=false, b=true)
+  @arov(a=false, b=true)
   public long tLoadFail;
   public long tStart;
   public long totalSize;
@@ -60,7 +60,7 @@ public abstract class XmlData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    for (Class localClass = getClass(); localClass != awge.class; localClass = localClass.getSuperclass())
+    for (Class localClass = getClass(); localClass != Entity.class; localClass = localClass.getSuperclass())
     {
       Field[] arrayOfField = localClass.getDeclaredFields();
       int j = arrayOfField.length;
@@ -73,7 +73,7 @@ public abstract class XmlData
         {
           i += 1;
           break;
-          if (((Field)localObject).isAnnotationPresent(aplz.class))
+          if (((Field)localObject).isAnnotationPresent(arov.class))
           {
             if (!((Field)localObject).isAccessible()) {
               ((Field)localObject).setAccessible(true);
@@ -102,14 +102,14 @@ public abstract class XmlData
     do
     {
       return;
-      arrayOfField = apkr.a(paramXmlData.getClass());
+      arrayOfField = arnn.a(paramXmlData.getClass());
     } while ((arrayOfField == null) || (arrayOfField.length == 0));
     int j = arrayOfField.length;
     int i = 0;
     while (i < j)
     {
       Field localField = arrayOfField[i];
-      if ((localField.isAnnotationPresent(aplz.class)) && (((aplz)localField.getAnnotation(aplz.class)).a())) {}
+      if ((localField.isAnnotationPresent(arov.class)) && (((arov)localField.getAnnotation(arov.class)).a())) {}
       try
       {
         localField.set(this, localField.get(paramXmlData));
@@ -134,7 +134,7 @@ public abstract class XmlData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.XmlData
  * JD-Core Version:    0.7.0.1
  */

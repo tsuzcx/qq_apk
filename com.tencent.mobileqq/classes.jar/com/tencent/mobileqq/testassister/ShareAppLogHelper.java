@@ -6,11 +6,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.format.Time;
-import balw;
-import balx;
-import baly;
-import balz;
-import bdhb;
+import bdna;
+import bdnb;
+import bdnc;
+import bdnd;
+import bgmg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -22,9 +22,9 @@ import java.util.regex.Pattern;
 
 public class ShareAppLogHelper
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new balw(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new bdna(this, Looper.getMainLooper());
   private Time jdField_a_of_type_AndroidTextFormatTime;
-  private balz jdField_a_of_type_Balz;
+  private bdnd jdField_a_of_type_Bdnd;
   volatile Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString = BaseApplicationImpl.getLogExternalPath(BaseApplicationImpl.context) + "/tencent/msflogs/com/tencent/mobileqq/";
   private ArrayList<ShareAppLogHelper.LogFile> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -153,7 +153,7 @@ public class ShareAppLogHelper
     Object localObject = new File(this.c);
     if (((File)localObject).exists())
     {
-      localObject = ((File)localObject).listFiles(new baly(this));
+      localObject = ((File)localObject).listFiles(new bdnc(this));
       if ((localObject != null) && (localObject.length > 0))
       {
         int j = localObject.length;
@@ -179,7 +179,7 @@ public class ShareAppLogHelper
   
   private void a(File paramFile, boolean paramBoolean)
   {
-    paramFile = paramFile.listFiles(new balx(this));
+    paramFile = paramFile.listFiles(new bdnb(this));
     if ((paramFile != null) && (paramFile.length > 0))
     {
       int j = paramFile.length;
@@ -190,7 +190,7 @@ public class ShareAppLogHelper
         if (paramBoolean)
         {
           ShareAppLogHelper.LogFile localLogFile2 = new ShareAppLogHelper.LogFile(a(localLogFile1.getAbsolutePath()));
-          bdhb.a(localLogFile1, localLogFile2);
+          bgmg.a(localLogFile1, localLogFile2);
           this.jdField_a_of_type_JavaUtilArrayList.add(localLogFile2);
         }
         for (;;)
@@ -531,9 +531,9 @@ public class ShareAppLogHelper
     }
   }
   
-  public void a(balz parambalz)
+  public void a(bdnd parambdnd)
   {
-    this.jdField_a_of_type_Balz = parambalz;
+    this.jdField_a_of_type_Bdnd = parambdnd;
   }
   
   public void a(boolean paramBoolean)
@@ -561,7 +561,7 @@ public class ShareAppLogHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.testassister.ShareAppLogHelper
  * JD-Core Version:    0.7.0.1
  */

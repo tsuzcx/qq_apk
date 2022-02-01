@@ -1,106 +1,87 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnShowListener;
-import android.support.annotation.NonNull;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.widget.XEditText;
-import com.tencent.widget.XEditTextEx;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public class bmyu
-  extends Dialog
-  implements TextWatcher, View.OnClickListener
+public final class bmyu
+  extends MSFServlet
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private DialogInterface.OnShowListener jdField_a_of_type_AndroidContentDialogInterface$OnShowListener;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private bmnj jdField_a_of_type_Bmnj;
-  XEditText jdField_a_of_type_ComTencentWidgetXEditText;
-  String jdField_a_of_type_JavaLangString;
-  private wjq jdField_a_of_type_Wjq;
-  
-  public bmyu(@NonNull Context paramContext, bmnj parambmnj)
+  private static void a(FromServiceMsg paramFromServiceMsg)
   {
-    super(paramContext, 2131755180);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bmnj = parambmnj;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXEditText.getText().toString();
-  }
-  
-  public void a()
-  {
-    Window localWindow = super.getWindow();
-    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = xin.b(getContext());
-    localLayoutParams.flags |= 0x20;
-    localLayoutParams.gravity = 80;
-    localWindow.setAttributes(localLayoutParams);
-    localWindow.setSoftInputMode(34);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131561435, null));
-    this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetXEditText = ((XEditTextEx)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365837));
-    this.jdField_a_of_type_ComTencentWidgetXEditText.addTextChangedListener(this);
-    setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_Wjq = new wjq(getContext(), this.jdField_a_of_type_AndroidViewViewGroup, new bmyv(this));
-    this.jdField_a_of_type_Wjq.a(this.jdField_a_of_type_AndroidContentContext.getString(2131690626));
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    super.setOnShowListener(new bmyw(this, paramBoolean));
-    super.show();
-    if (paramString != null)
+    int i;
+    if (paramFromServiceMsg.getWupBuffer() != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetXEditText.setText(paramString);
-      this.jdField_a_of_type_ComTencentWidgetXEditText.setSelection(paramString.length());
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      if (i >= 0) {}
+    }
+    else
+    {
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetXEditText.setText(this.jdField_a_of_type_JavaLangString);
-    paramString = this.jdField_a_of_type_ComTencentWidgetXEditText;
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaLangString.length())
+    byte[] arrayOfByte = new byte[i];
+    bgva.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    paramFromServiceMsg.putWupBuffer(arrayOfByte);
+  }
+  
+  private static void a(ToServiceMsg paramToServiceMsg)
+  {
+    if (paramToServiceMsg.getWupBuffer() != null)
     {
-      paramString.setSelection(i);
+      long l = paramToServiceMsg.getWupBuffer().length;
+      byte[] arrayOfByte = new byte[(int)l + 4];
+      bgva.a(arrayOfByte, 0, 4L + l);
+      bgva.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
+      paramToServiceMsg.putWupBuffer(arrayOfByte);
+    }
+  }
+  
+  public String[] getPreferSSOCommands()
+  {
+    return new String[] { "WeiyunV2Svc.TransCmd" };
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    a(paramFromServiceMsg);
+    if (paramIntent == null) {
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+    for (;;)
+    {
+      bmyr.a().a(paramIntent, paramFromServiceMsg);
       return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
   }
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void dismiss()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentWidgetXEditText.getText().toString();
-    this.jdField_a_of_type_Wjq.c();
-    this.jdField_a_of_type_Wjq.a();
-    if (isShowing()) {
-      super.dismiss();
+    if (paramIntent == null) {
+      QLog.e("WyServlet", 1, "onSend : req is null");
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    dismiss();
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void setOnShowListener(DialogInterface.OnShowListener paramOnShowListener)
-  {
-    super.setOnShowListener(paramOnShowListener);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnShowListener = paramOnShowListener;
+    do
+    {
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent == null) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WyServlet", 1, "onSend : cmd[" + paramIntent.getServiceCmd() + "]");
+      }
+      a(paramIntent);
+      paramPacket.setSSOCommand("WeiyunV2Svc.TransCmd");
+      paramPacket.putSendData(paramIntent.getWupBuffer());
+      paramPacket.setTimeout(paramIntent.getTimeout());
+      paramPacket.setAttributes(paramIntent.getAttributes());
+    } while (paramIntent.isNeedCallback());
+    paramPacket.setNoResponse();
+    return;
+    QLog.e("WyServlet", 1, "onSend : toMsg is null");
   }
 }
 

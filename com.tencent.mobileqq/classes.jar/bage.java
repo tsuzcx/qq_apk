@@ -1,18 +1,42 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class bage
-  implements Parcelable.Creator<ReSendCmd>
+public class bage
 {
-  public ReSendCmd a(Parcel paramParcel)
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public static bage a(String paramString)
   {
-    return new ReSendCmd(paramParcel);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    bage localbage = new bage();
+    try
+    {
+      paramString = new JSONObject(paramString);
+      localbage.jdField_a_of_type_Int = paramString.optInt("animationType");
+      localbage.jdField_a_of_type_JavaLangString = paramString.optString("boxZipUrl", null);
+      localbage.b = paramString.optString("giftZipUrl", null);
+      localbage.c = paramString.optString("giftParticleUrl", null);
+      localbage.d = paramString.optString("lottieUrl", null);
+      return localbage;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      QLog.e("QzoneGiftManager", 1, "handleFlashChatConfig failed" + paramString);
+    }
+    return localbage;
   }
   
-  public ReSendCmd[] a(int paramInt)
+  public String toString()
   {
-    return new ReSendCmd[paramInt];
+    return " mBoxZipUrl = " + this.jdField_a_of_type_JavaLangString + " mGiftZipUrl = " + this.b + " mGiftUrl = " + this.c;
   }
 }
 

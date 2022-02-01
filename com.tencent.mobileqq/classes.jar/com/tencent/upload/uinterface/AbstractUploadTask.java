@@ -50,8 +50,10 @@ public abstract class AbstractUploadTask
   protected boolean mNeedIpRedirect;
   public String mOriginFilePath;
   protected stEnvironment mStEnv;
+  public IUploadConfig.UploadImageSize mTargetSize;
   protected String mTmpUploadPath;
   public String md5 = null;
+  public boolean needCompress = true;
   public AbstractUploadTask origin;
   public int preupload = 0;
   public String reportRefer = "mqzone";
@@ -199,82 +201,82 @@ public abstract class AbstractUploadTask
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 340	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
+    //   1: getfield 345	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
     //   4: ifle +68 -> 72
     //   7: aload_0
-    //   8: getfield 340	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
+    //   8: getfield 345	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
     //   11: istore_2
     //   12: aload_0
     //   13: iload_2
-    //   14: putfield 340	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
+    //   14: putfield 345	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
     //   17: aconst_null
     //   18: astore 5
     //   20: aload_1
     //   21: monitorenter
     //   22: aload_1
-    //   23: invokevirtual 345	com/tencent/upload/task/AtomFile:getRemainSize	()J
+    //   23: invokevirtual 350	com/tencent/upload/task/AtomFile:getRemainSize	()J
     //   26: lstore_3
     //   27: lload_3
     //   28: lconst_0
     //   29: lcmp
     //   30: ifgt +50 -> 80
     //   33: ldc 14
-    //   35: new 222	java/lang/StringBuilder
+    //   35: new 227	java/lang/StringBuilder
     //   38: dup
-    //   39: invokespecial 224	java/lang/StringBuilder:<init>	()V
-    //   42: ldc_w 347
-    //   45: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokespecial 229	java/lang/StringBuilder:<init>	()V
+    //   42: ldc_w 352
+    //   45: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: aload_0
-    //   49: getfield 186	com/tencent/upload/uinterface/AbstractUploadTask:flowId	I
-    //   52: invokevirtual 350	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   55: ldc_w 352
-    //   58: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   64: invokestatic 355	com/tencent/upload/utils/UploadLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: getfield 191	com/tencent/upload/uinterface/AbstractUploadTask:flowId	I
+    //   52: invokevirtual 355	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   55: ldc_w 357
+    //   58: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokestatic 360	com/tencent/upload/utils/UploadLog:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   67: aload_1
     //   68: monitorexit
     //   69: aload 5
     //   71: areturn
     //   72: aload_0
-    //   73: invokevirtual 357	com/tencent/upload/uinterface/AbstractUploadTask:getBucketSize	()I
+    //   73: invokevirtual 362	com/tencent/upload/uinterface/AbstractUploadTask:getBucketSize	()I
     //   76: istore_2
     //   77: goto -65 -> 12
     //   80: lload_3
     //   81: aload_0
-    //   82: getfield 340	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
+    //   82: getfield 345	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
     //   85: i2l
-    //   86: invokestatic 363	java/lang/Math:min	(JJ)J
+    //   86: invokestatic 368	java/lang/Math:min	(JJ)J
     //   89: lstore_3
-    //   90: new 365	com/tencent/upload/request/impl/FileUploadRequest
+    //   90: new 370	com/tencent/upload/request/impl/FileUploadRequest
     //   93: dup
     //   94: aload_0
-    //   95: getfield 149	com/tencent/upload/uinterface/AbstractUploadTask:mDataSource	Lcom/tencent/upload/task/data/UploadDataSource;
-    //   98: new 222	java/lang/StringBuilder
+    //   95: getfield 154	com/tencent/upload/uinterface/AbstractUploadTask:mDataSource	Lcom/tencent/upload/task/data/UploadDataSource;
+    //   98: new 227	java/lang/StringBuilder
     //   101: dup
-    //   102: invokespecial 224	java/lang/StringBuilder:<init>	()V
+    //   102: invokespecial 229	java/lang/StringBuilder:<init>	()V
     //   105: aload_0
-    //   106: getfield 84	com/tencent/upload/uinterface/AbstractUploadTask:iUin	J
-    //   109: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   112: ldc 80
-    //   114: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   106: getfield 87	com/tencent/upload/uinterface/AbstractUploadTask:iUin	J
+    //   109: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   112: ldc 83
+    //   114: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   120: aload_0
-    //   121: getfield 200	com/tencent/upload/uinterface/AbstractUploadTask:mAppid	Ljava/lang/String;
+    //   121: getfield 205	com/tencent/upload/uinterface/AbstractUploadTask:mAppid	Ljava/lang/String;
     //   124: aload_0
-    //   125: getfield 295	com/tencent/upload/uinterface/AbstractUploadTask:mSessionId	Ljava/lang/String;
+    //   125: getfield 300	com/tencent/upload/uinterface/AbstractUploadTask:mSessionId	Ljava/lang/String;
     //   128: aload_1
     //   129: lload_3
-    //   130: invokevirtual 369	com/tencent/upload/task/AtomFile:reduce	(J)J
+    //   130: invokevirtual 374	com/tencent/upload/task/AtomFile:reduce	(J)J
     //   133: lload_3
     //   134: aload_0
-    //   135: getfield 213	com/tencent/upload/uinterface/AbstractUploadTask:mCheckType	LSLICE_UPLOAD/CheckType;
+    //   135: getfield 218	com/tencent/upload/uinterface/AbstractUploadTask:mCheckType	LSLICE_UPLOAD/CheckType;
     //   138: iconst_0
-    //   139: invokespecial 372	com/tencent/upload/request/impl/FileUploadRequest:<init>	(Lcom/tencent/upload/task/data/UploadDataSource;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLSLICE_UPLOAD/CheckType;Z)V
+    //   139: invokespecial 377	com/tencent/upload/request/impl/FileUploadRequest:<init>	(Lcom/tencent/upload/task/data/UploadDataSource;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLSLICE_UPLOAD/CheckType;Z)V
     //   142: astore 5
     //   144: aload 5
     //   146: aload_0
-    //   147: getfield 186	com/tencent/upload/uinterface/AbstractUploadTask:flowId	I
-    //   150: invokevirtual 373	com/tencent/upload/request/impl/FileUploadRequest:setTaskId	(I)V
+    //   147: getfield 191	com/tencent/upload/uinterface/AbstractUploadTask:flowId	I
+    //   150: invokevirtual 378	com/tencent/upload/request/impl/FileUploadRequest:setTaskId	(I)V
     //   153: goto -86 -> 67
     //   156: astore 5
     //   158: aload_1
@@ -458,7 +460,7 @@ public abstract class AbstractUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.uinterface.AbstractUploadTask
  * JD-Core Version:    0.7.0.1
  */

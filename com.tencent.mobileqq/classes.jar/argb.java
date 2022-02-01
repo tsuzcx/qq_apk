@@ -1,28 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.SystemClock;
 
-final class argb
-  implements View.OnClickListener
+public class argb
 {
-  argb(FileManagerEntity paramFileManagerEntity, arhw paramarhw) {}
+  private long a;
+  private long b;
+  private long c;
   
-  public void onClick(View paramView)
+  public long a()
   {
-    try
-    {
-      paramView = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      paramView.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
-      arri.d(BaseActivity.sTopActivity.getString(2131692914));
-      if ((this.jdField_a_of_type_Arhw != null) && (this.jdField_a_of_type_Arhw.b())) {
-        arrr.a(paramView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    return this.a;
+  }
+  
+  public void a()
+  {
+    this.a = 0L;
+    this.b = 0L;
+  }
+  
+  public long b()
+  {
+    this.b = (SystemClock.uptimeMillis() - this.c);
+    this.a += this.b;
+    b();
+    return this.b;
+  }
+  
+  public void b()
+  {
+    this.c = SystemClock.uptimeMillis();
+  }
+  
+  public long c()
+  {
+    return this.b;
   }
 }
 

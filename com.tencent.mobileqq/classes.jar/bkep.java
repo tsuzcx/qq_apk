@@ -1,26 +1,32 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import com.tencent.sveffects.DpcSwitcher;
 
-class bkep
-  implements ScaleGestureDetector.OnScaleGestureListener
+public class bkep
+  implements DpcSwitcher
 {
-  bkep(bkel parambkel) {}
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public float getBeatyRate()
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    if (bkel.a(this.a) != null) {
-      bkel.a(this.a).a("onActionScale", new float[] { f });
-    }
-    return true;
+    return bclh.a();
   }
   
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  public boolean isBeautySwitchOpen()
   {
-    return true;
+    return bclh.b();
   }
   
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
+  public boolean isDeNoiseSwitchOpen()
+  {
+    return bclh.e();
+  }
+  
+  public boolean isPortraitSwitchOpen()
+  {
+    return bcls.e();
+  }
+  
+  public boolean isSvafSwitchOpen()
+  {
+    return bclh.c();
+  }
 }
 
 

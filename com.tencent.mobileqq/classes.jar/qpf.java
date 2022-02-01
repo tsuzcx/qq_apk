@@ -1,32 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.pts.utils.PTSDeviceUtil;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.collections.CollectionsKt;
 
-public class qpf
-  implements tpv
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/util/PTSLiteItemViewUtil;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qpf
 {
-  public qpf(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  private static final int jdField_a_of_type_Int;
+  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = CollectionsKt.arrayListOf(new String[] { "3289295241", "834584377", "616690602" });
+  public static final qpg a;
+  private static int b;
+  private static int c;
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, sfc paramsfc)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
-    }
-    ReadInJoyDeliverVideoActivity.c(this.a, ShortVideoPreviewActivity.a(paramsfc.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment local cover is " + ReadInJoyDeliverVideoActivity.a(this.a));
-    }
-    this.a.setRightViewTextDisable(1);
+    jdField_a_of_type_Qpg = new qpg(null);
+    jdField_a_of_type_Int = PTSDeviceUtil.dp2pxInt(5.0F);
+    b = PTSDeviceUtil.rp2pxInt(12.0F);
+    c = PTSDeviceUtil.rp2pxInt(24.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qpf
  * JD-Core Version:    0.7.0.1
  */

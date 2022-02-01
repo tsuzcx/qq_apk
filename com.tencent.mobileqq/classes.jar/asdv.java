@@ -1,19 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-final class asdv
-  implements DialogInterface.OnClickListener
+public class asdv
 {
-  asdv(long paramLong, int paramInt, Activity paramActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardShareByServerHelper", 2, "-->qbShowShareResultDialog--stay");
-    }
-    asdt.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity);
+    return "SearchResultItem{md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.jdField_b_of_type_JavaLangString + '\'' + ", resourceId='" + this.c + '\'' + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", imgSize=" + this.jdField_a_of_type_Long + ", imgOther='" + this.d + '\'' + '}';
   }
 }
 

@@ -1,19 +1,20 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class afcn
-  extends bbgz
+public class afcn
+  implements View.OnTouchListener
 {
-  afcn(afcm paramafcm, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString)
-  {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString);
-  }
+  public afcn(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a(true);
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

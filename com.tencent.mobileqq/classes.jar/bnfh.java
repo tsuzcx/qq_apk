@@ -1,14 +1,26 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-
 class bnfh
-  implements CompoundButton.OnCheckedChangeListener
+  implements bnev
 {
-  bnfh(bnfg parambnfg) {}
+  bnfh(bnff parambnff) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(float paramFloat)
   {
-    bnfg.a(this.a).g = paramBoolean;
+    this.a.a.a(paramFloat);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a.a(paramInt);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    this.a.a.a(paramInt, paramBoolean);
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.a.a.b(paramFloat);
   }
 }
 

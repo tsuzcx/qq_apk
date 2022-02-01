@@ -1,47 +1,35 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.SSOAccountObserver;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
 
-class ascy
-  extends SSOAccountObserver
+public class ascy
+  implements TextWatcher
 {
-  WeakReference<ascq> a;
+  public ascy(SystemAndEmojiUniversalPanel paramSystemAndEmojiUniversalPanel) {}
   
-  public ascy(ascq paramascq)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a = new WeakReference(paramascq);
-  }
-  
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    QLog.d("ForwardSdkBaseOption", 1, new Object[] { "-->onFailed--account = ", paramString, ", ret = ", Integer.valueOf(paramInt2) });
-    paramString = (ascq)this.a.get();
-    if (paramString != null) {
-      ascq.a(paramString, "KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
-    }
-    if ((paramString != null) && (!paramString.m) && (ascq.a(paramString) != null)) {
-      ascq.a(paramString).sendEmptyMessage(0);
-    }
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    QLog.d("ForwardSdkBaseOption", 1, new Object[] { "-->onGetTicketNoPasswd--recv g_t_n_p, account = ", paramString });
-    if (paramInt == 4096) {}
-    for (paramString = new String(paramArrayOfByte);; paramString = null)
+    ImageButton localImageButton;
+    if (SystemAndEmojiUniversalPanel.a(this.a) != null)
     {
-      paramArrayOfByte = (ascq)this.a.get();
-      if (paramArrayOfByte != null)
-      {
-        ascq.a(paramArrayOfByte, "KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, true);
-        paramArrayOfByte.k = paramString;
-        paramArrayOfByte.m = true;
+      localImageButton = SystemAndEmojiUniversalPanel.a(this.a);
+      if (TextUtils.isEmpty(paramEditable)) {
+        break label33;
       }
+    }
+    label33:
+    for (boolean bool = true;; bool = false)
+    {
+      localImageButton.setEnabled(bool);
       return;
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

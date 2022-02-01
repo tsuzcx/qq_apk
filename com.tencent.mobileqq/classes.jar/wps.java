@@ -1,28 +1,57 @@
-import android.support.annotation.Nullable;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.TrimmableManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-class wps
-  implements uxw
+public class wps
+  implements wou
 {
-  wps(wpr paramwpr, uxt paramuxt) {}
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  private CopyOnWriteArraySet<wov> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
   
-  public void a(boolean paramBoolean, @Nullable uxs paramuxs)
+  public wps()
   {
-    wxe.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramuxs });
-    this.jdField_a_of_type_Uxt.b(this);
-    if (this.jdField_a_of_type_Wpr.a.get())
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new wpt());
+  }
+  
+  private void b(int paramInt)
+  {
+    yqp.d("TrimmableManager", "trimMemory : level = %d", new Object[] { Integer.valueOf(paramInt) });
+    switch (paramInt)
     {
-      wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
+    default: 
       return;
     }
-    wpr.a(this.jdField_a_of_type_Wpr).a = paramuxs;
-    wpr.a(this.jdField_a_of_type_Wpr).a(null, 0);
-    ((woy)uwa.a(11)).a = paramuxs;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+    while (localIterator.hasNext()) {
+      ((wov)localIterator.next()).a(paramInt);
+    }
+    System.gc();
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new TrimmableManager.1(this, paramInt));
+  }
+  
+  public void a(wov paramwov)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramwov);
+  }
+  
+  public void b() {}
+  
+  public void b(wov paramwov)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramwov);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wps
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,37 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-public final class amdn
-  extends MqqHandler
+class amdn
+  implements View.OnTouchListener
 {
-  public amdn(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  amdn(amdl paramamdl) {}
   
-  public void removeCallbacksAndMessages(Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramObject == null)
+    switch (paramMotionEvent.getAction())
     {
-      QLog.e("ThreadManager", 1, "global SubHandler cannot excute removeCallbacksAndMessages");
-      return;
     }
-    super.removeCallbacksAndMessages(paramObject);
+    for (;;)
+    {
+      return false;
+      if ((paramView instanceof ImageView))
+      {
+        ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
+        continue;
+        if ((paramView instanceof ImageView)) {
+          ((ImageView)paramView).getDrawable().clearColorFilter();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amdn
  * JD-Core Version:    0.7.0.1
  */

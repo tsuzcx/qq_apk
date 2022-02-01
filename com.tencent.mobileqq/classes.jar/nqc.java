@@ -1,23 +1,28 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class nqc
-  implements View.OnClickListener
+public class nqc
 {
-  nqc(nqb paramnqb) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View jdField_b_of_type_AndroidViewView;
+  public ImageView b;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  public ImageView c;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  View jdField_d_of_type_AndroidViewView;
+  public ImageView d;
+  TextView jdField_d_of_type_AndroidWidgetTextView;
+  ImageView e;
   
-  public void onClick(View paramView)
-  {
-    RIJRedPacketManager.a().a(paramView.getContext(), 2, 0, 0);
-    PublicAccountBrowser.a(this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).b(2, PublicAccountBrowser.a(this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser), this.a.jdField_a_of_type_JavaLangString);
-  }
+  nqc(npm paramnpm) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nqc
  * JD-Core Version:    0.7.0.1
  */

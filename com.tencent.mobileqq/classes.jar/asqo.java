@@ -1,36 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class asqo
-  extends BroadcastReceiver
+public abstract interface asqo
 {
-  private asqo(JefsClass paramJefsClass) {}
+  public abstract QQAppInterface a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (!BaseApplicationImpl.processName.equals(paramIntent.getStringExtra("key_process_id"))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TeleScreen|JefsClass", 2, "is not current process");
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TeleScreen|JefsClass", 2, "start");
-      }
-      if ("com.tencent.mobileqq.telescreen.action_run".equals(paramIntent.getAction()))
-      {
-        JefsClass.a(this.a, paramIntent.getIntExtra("key_id", 0), paramIntent.getIntExtra("key_callback_id", 0));
-        return;
-      }
-    } while (!"com.tencent.mobileqq.telescreen.action_remove".equals(paramIntent.getAction()));
-    JefsClass.b(this.a, paramIntent.getIntExtra("key_id", 0), paramIntent.getIntExtra("key_callback_id", 0));
-  }
+  public abstract void a();
+  
+  public abstract void a(asqt paramasqt);
+  
+  public abstract boolean a(asqt paramasqt, int paramInt);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

@@ -1,22 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ScrollView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
 
-public class paw
-  implements bias
+public final class paw
+  implements Parcelable.Creator<AnchorData>
 {
-  public paw(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
+  public AnchorData a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onScrollStateChanged onScrollStateChanged= " + paramInt);
+    boolean bool2 = true;
+    AnchorData localAnchorData = new AnchorData();
+    localAnchorData.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localAnchorData.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localAnchorData.jdField_a_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label67;
+      }
     }
+    label67:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localAnchorData.jdField_b_of_type_Boolean = bool1;
+      return localAnchorData;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public AnchorData[] a(int paramInt)
+  {
+    return new AnchorData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     paw
  * JD-Core Version:    0.7.0.1
  */

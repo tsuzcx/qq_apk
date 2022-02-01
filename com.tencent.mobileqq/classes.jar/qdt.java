@@ -1,55 +1,37 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qdt
-  extends ClickableSpan
-  implements rvl
+class qdt
+  implements ViewBase.OnClickListener
 {
-  private int jdField_a_of_type_Int = -1;
-  protected long a;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  boolean jdField_a_of_type_Boolean;
+  qdt(qdp paramqdp, int paramInt, pxk parampxk, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
   
-  public qdt(ComponentHeaderNewSocial paramComponentHeaderNewSocial, long paramLong, int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_Long);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = -1)
+    int i;
+    snh localsnh;
+    if (this.jdField_a_of_type_Int == 1163)
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      i = 1;
+      localsnh = this.jdField_a_of_type_Pxk.a();
+      if (i == 0) {
+        break label42;
+      }
+    }
+    label42:
+    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
+    {
+      localsnh.b(paramViewBase);
       return;
+      i = 0;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qdt
  * JD-Core Version:    0.7.0.1
  */

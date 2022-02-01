@@ -1,36 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedHashMap;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aomg
-  extends aomf
+public class aomg
+  extends aojt
 {
-  private String a;
-  
-  public aomg(String paramString)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    this.a = paramString;
-  }
-  
-  public Object a(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      return null;
-      paramObject = (LinkedHashMap)paramObject;
-      if (!(paramObject instanceof LinkedHashMap))
-      {
-        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
-        return null;
-      }
-    } while (TextUtils.isEmpty(this.a));
-    return paramObject.get(this.a);
+    paramQQAppInterface = new aomf(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "now";
+    paramQQAppInterface.c = "playmedia";
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomg
  * JD-Core Version:    0.7.0.1
  */

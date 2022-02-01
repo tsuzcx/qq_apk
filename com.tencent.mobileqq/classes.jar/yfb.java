@@ -1,29 +1,21 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnItemTouchListener;
-import android.view.MotionEvent;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.widget.AbsListView;
 
-class yfb
-  implements RecyclerView.OnItemTouchListener
+public class yfb
+  implements bkhe
 {
-  yfb(yew paramyew) {}
+  public yfb(StoryMemoriesFragment paramStoryMemoriesFragment, zlv paramzlv) {}
   
-  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return yew.a(this.a, paramMotionEvent);
+    this.jdField_a_of_type_Zlv.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
   
-  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
-  
-  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
-  {
-    if (yew.a(this.a) != null) {
-      yew.a(this.a).a(paramMotionEvent);
-    }
-  }
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yfb
  * JD-Core Version:    0.7.0.1
  */

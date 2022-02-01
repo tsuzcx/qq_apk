@@ -1,23 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 
-class std
-  extends bdmw
+public class std
+  extends ThreadLocal<Integer>
 {
-  std(Context paramContext, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
-  {
-    super(paramContext, paramList);
-  }
+  public std(ReadInJoyXListView paramReadInJoyXListView) {}
   
-  protected int a()
+  protected Integer a()
   {
-    return 2131562527;
+    return Integer.valueOf(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     std
  * JD-Core Version:    0.7.0.1
  */

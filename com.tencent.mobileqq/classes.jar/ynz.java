@@ -1,21 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
-public class ynz
-  implements View.OnClickListener
+class ynz
+  extends yku
 {
-  public ynz(SubscribeQRCodeShareHelper.3 param3) {}
+  ynz(ynm paramynm) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, View paramView, Object paramObject, ynb paramynb)
   {
-    this.a.this$0.a.dismiss();
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ynz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<permissions
-  xmlns:android="http://schemas.android.com/apk/res/android">
+<permissions>
     <permission description="申请获取你的昵称、头像、地区及性别" id="scope.userInfo" name="用户信息" />
     <permission description="申请获取你的位置信息" id="scope.userLocation" name="位置信息" />
     <permission description="申请获取你的通讯地址" id="scope.address" name="通讯地址" />
@@ -13,6 +12,7 @@
     <permission description="申请发送订阅消息" description-reject="暂不接收" id="setting.appMsgSubscribed" name="小程序订阅消息" />
     <permission id="scope.getPhoneNumber" name="获取你的电话号码" />
     <permission description="允许该小程序向我发起加好友请求" id="setting.addFriend" name="向我发起加好友请求" />
+    <permission description="" id="scope.uploadAvatar" name="是否允许将此图标设为你的QQ头像" />
     <permission built-in="true" description="系统位置权限" id="android.permission.ACCESS_FINE_LOCATION" name="系统位置权限" />
     <permission built-in="true" description="需要麦克风权限，请到设置中设置" id="android.permission.RECORD_AUDIO" name="系统麦克风权限" />
     <permission built-in="true" description="需要麦克风权限，请到设置中设置" id="android.permission.CALL_PHONE" name="系统麦克风权限" />
@@ -28,9 +28,6 @@
     </event>
     <event name="getLocation">
         <request-permission>scope.userLocation</request-permission>
-    </event>
-    <event name="makePhoneCall">
-        <request-permission>android.permission.CALL_PHONE</request-permission>
     </event>
     <event name="insertCamera">
         <request-permission>scope.camera</request-permission>
@@ -81,5 +78,11 @@
     </event>
     <event name="Personalize">
         <request-permission>scope.personalize</request-permission>
+    </event>
+    <event name="getPhoneNumber">
+        <request-permission>scope.getPhoneNumber</request-permission>
+    </event>
+    <event name="invokeNativePlugin.uploadAvatar">
+        <request-permission>scope.uploadAvatar</request-permission>
     </event>
 </permissions>

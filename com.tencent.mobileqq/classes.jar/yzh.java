@@ -1,32 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
 
-public class yzh
+class yzh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  String a = "";
+  private yzh(yzc paramyzc) {}
   
-  public static yzh a(String paramString)
+  public void onGlobalLayout()
   {
-    if (TextUtils.isEmpty(paramString))
+    int i = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom();
+    if (this.a.c < 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.videostory.capture", 2, "config TextUtils.isEmpty(config) return");
-      }
-      return null;
+      this.a.c = i;
+      this.a.jdField_a_of_type_Yzg.a();
     }
-    yzh localyzh = new yzh();
-    localyzh.a(paramString);
-    return localyzh;
-  }
-  
-  public void a(String paramString)
-  {
-    this.a = paramString;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.c - i <= this.a.b);
+      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+      this.a.c = i;
+      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
+    } while (this.a.jdField_a_of_type_Yzg == null);
+    this.a.jdField_a_of_type_Yzg.a(true, null);
+    this.a.jdField_a_of_type_Yzg.a(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yzh
  * JD-Core Version:    0.7.0.1
  */

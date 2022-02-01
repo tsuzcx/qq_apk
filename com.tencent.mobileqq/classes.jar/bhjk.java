@@ -1,25 +1,22 @@
-import android.content.Intent;
-import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
 
-class bhjk
-  implements bgnl
+public class bhjk
+  implements DialogInterface.OnDismissListener
 {
-  bhjk(bhje parambhje) {}
+  public bhjk(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt1 == 2019)
-    {
-      this.a.a.a(paramInt1, paramInt2, paramIntent);
-      bgnk.a().b(this);
-      return true;
+    if (!LiangHaoBuyFragment.a(this.a)) {
+      LiangHaoBuyFragment.b(this.a);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjk
  * JD-Core Version:    0.7.0.1
  */

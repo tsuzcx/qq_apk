@@ -1,64 +1,34 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
-public class auhy
-  implements aoil
+class auhy
+  implements View.OnTouchListener
 {
-  public auhy(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  auhy(auhv paramauhv) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((MsgBackupDateFragment.a(this.a) != null) && (MsgBackupDateFragment.a(this.a).isShowing()))
+    auhv.a(this.a).setImageResource(2130840123);
+    auhv.a(this.a).setTag(Integer.valueOf(2130840123));
+    if (auhv.a(this.a))
     {
-      MsgBackupDateFragment.a(this.a).dismiss();
-      MsgBackupDateFragment.b(this.a);
-      MsgBackupDateFragment.a(this.a);
-      MsgBackupDateFragment.b(this.a, MsgBackupDateFragment.b(this.a));
+      auhv.a(this.a);
+      auhv.a(this.a).removeView(auhv.a(this.a));
+      auhv.a(this.a, false);
+      paramView = this.a.getWindow().getAttributes();
+      paramView.y = 0;
+      this.a.getWindow().setAttributes(paramView);
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      MsgBackupDateFragment.a(this.a, MsgBackupDateFragment.b(this.a));
-      MsgBackupDateFragment.a(this.a);
-      if ((MsgBackupDateFragment.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        MsgBackupDateFragment.a(this.a).a(2);
-      }
-      return;
-      if (MsgBackupDateFragment.b(this.a) == 1)
-      {
-        MsgBackupDateFragment.b(this.a, paramInt2);
-      }
-      else if (MsgBackupDateFragment.b(this.a) == 2)
-      {
-        MsgBackupDateFragment.c(this.a, paramInt2);
-        continue;
-        if (MsgBackupDateFragment.b(this.a) == 1)
-        {
-          MsgBackupDateFragment.d(this.a, paramInt2);
-        }
-        else if (MsgBackupDateFragment.b(this.a) == 2)
-        {
-          MsgBackupDateFragment.e(this.a, paramInt2);
-          continue;
-          if (MsgBackupDateFragment.b(this.a) == 1) {
-            MsgBackupDateFragment.f(this.a, paramInt2);
-          } else if (MsgBackupDateFragment.b(this.a) == 2) {
-            MsgBackupDateFragment.g(this.a, paramInt2);
-          }
-        }
-      }
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auhy
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,15 @@ package com.tencent.mobileqq.filemanager.activity.recentfile;
 
 import android.content.Context;
 import android.text.TextUtils;
-import aoxv;
-import aoxw;
-import aqni;
-import aqqw;
-import aqqx;
-import arrr;
-import arso;
-import arsq;
-import arsu;
+import arav;
+import araw;
+import asti;
+import asxy;
+import asxz;
+import atvo;
+import atwl;
+import atwn;
+import atwr;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +26,7 @@ import java.util.Set;
 public class QfileRecentDocFileTabView
   extends QfileBaseRecentFileTabView
 {
-  private arsq jdField_a_of_type_Arsq;
+  private atwn jdField_a_of_type_Atwn;
   private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
   
   public QfileRecentDocFileTabView(Context paramContext)
@@ -53,9 +53,9 @@ public class QfileRecentDocFileTabView
         do
         {
           return null;
-          paramString = arso.a(paramString).toLowerCase();
+          paramString = atwl.a(paramString).toLowerCase();
         } while ((paramString == null) || (paramString.length() == 0));
-        if (!arrr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity)) {
+        if (!atvo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity)) {
           break;
         }
         paramString = b(paramString);
@@ -78,7 +78,7 @@ public class QfileRecentDocFileTabView
   {
     ArrayList localArrayList = new ArrayList();
     if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      l();
+      o();
     }
     if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
@@ -93,7 +93,7 @@ public class QfileRecentDocFileTabView
   private String b(String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      l();
+      o();
     }
     if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
@@ -113,25 +113,25 @@ public class QfileRecentDocFileTabView
   private void k()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().J();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().H();
     }
-    while (this.jdField_a_of_type_Arsq != null)
+    while (this.jdField_a_of_type_Atwn != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Arsq);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Atwn);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().O();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().M();
     }
-    this.jdField_a_of_type_Arsq = new aqqw(this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Arsq);
+    this.jdField_a_of_type_Atwn = new asxy(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Atwn);
   }
   
-  private void l()
+  private void o()
   {
     if (this.jdField_a_of_type_JavaUtilHashMap == null)
     {
-      String str = aoxw.a().d();
+      String str = araw.a().d();
       if (!TextUtils.isEmpty(str)) {
-        this.jdField_a_of_type_JavaUtilHashMap = arrr.a(str);
+        this.jdField_a_of_type_JavaUtilHashMap = atvo.a(str);
       }
       if (this.jdField_a_of_type_JavaUtilHashMap == null) {
         this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -151,9 +151,9 @@ public class QfileRecentDocFileTabView
     }
   }
   
-  protected aqni a()
+  protected asti a()
   {
-    return new aqqx(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
+    return new asxz(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
   }
   
   protected void a()
@@ -165,7 +165,7 @@ public class QfileRecentDocFileTabView
     localLinkedHashMap.put("PDF", new ArrayList());
     localLinkedHashMap.put("PPT", new ArrayList());
     Object localObject2;
-    if (arrr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity))
+    if (atvo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity))
     {
       localObject1 = a();
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
@@ -271,7 +271,7 @@ public class QfileRecentDocFileTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView
  * JD-Core Version:    0.7.0.1
  */

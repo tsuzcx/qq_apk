@@ -1,91 +1,53 @@
-import QC.HamletCheck;
-import QC.UniBusinessCheckItem;
-import QC.UniLoginCheckRsp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.step.ChatBackgroundAuth;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloManager.20.1;
+import com.tencent.mobileqq.apollo.data.ApolloPreDownloadData;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import mqq.os.MqqHandler;
 
 public class amhi
-  implements alpg
+  extends bhhe
 {
-  private WeakReference<QQAppInterface> a;
+  amhi(amhd paramamhd) {}
   
-  public amhi(QQAppInterface paramQQAppInterface)
+  public void onDoneFile(bhhf parambhhf)
   {
-    this.a = new WeakReference(paramQQAppInterface);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null) {}
-    for (;;)
+    if ((parambhhf == null) || (this.a.a == null)) {}
+    String str1;
+    do
     {
       return;
-      if ((paramObject instanceof UniLoginCheckRsp))
+      if (parambhhf.a != 0)
       {
-        bdww.a(localQQAppInterface).a(((UniLoginCheckRsp)paramObject).stKeyWord);
-        paramObject = (UniLoginCheckRsp)paramObject;
-        if (paramObject.ret != 0) {
-          break;
-        }
-        ChatBackgroundManager localChatBackgroundManager = (ChatBackgroundManager)localQQAppInterface.getManager(63);
-        localChatBackgroundManager.a();
-        localChatBackgroundManager.b();
-        if (QLog.isColorLevel()) {
-          QLog.d("QQInitHandler", 2, "bg and effect id clear");
-        }
-        Iterator localIterator = paramObject.stHamletList.iterator();
-        while (localIterator.hasNext())
-        {
-          HamletCheck localHamletCheck = (HamletCheck)localIterator.next();
-          if ((localHamletCheck.itemlist != null) && (localHamletCheck.itemlist.size() > 0))
-          {
-            int i = -1;
-            paramInt = -1;
-            paramObject = localHamletCheck.itemlist.iterator();
-            Object localObject;
-            while (paramObject.hasNext())
-            {
-              localObject = (UniBusinessCheckItem)paramObject.next();
-              if (((UniBusinessCheckItem)localObject).appid == 8) {
-                i = ((UniBusinessCheckItem)localObject).itemid;
-              } else if (((UniBusinessCheckItem)localObject).appid == 35) {
-                paramInt = ((UniBusinessCheckItem)localObject).itemid;
-              }
-            }
-            if (i >= 0)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("QQInitHandler", 2, "bgId:" + i + " effectId:" + paramInt);
-              }
-              localObject = String.valueOf(localHamletCheck.uid);
-              paramObject = localObject;
-              if (localQQAppInterface.getAccount().equals(localObject))
-              {
-                paramObject = localObject;
-                if (localHamletCheck.locationtype == 1) {
-                  paramObject = null;
-                }
-              }
-              if ((!"99".equals(String.valueOf(i))) || (paramInt > 0)) {
-                localChatBackgroundManager.a(i, paramInt, paramObject, "chatbgAuth", ChatBackgroundAuth.a(localHamletCheck.locationtype));
-              }
-            }
-          }
-        }
+        QLog.e("ApolloManager", 1, new Object[] { "preDownloadListener task error:", Integer.valueOf(parambhhf.a()) });
+        return;
       }
+      str1 = parambhhf.c;
+      parambhhf = parambhhf.a();
+    } while (parambhhf == null);
+    ApolloPreDownloadData localApolloPreDownloadData = (ApolloPreDownloadData)parambhhf.getSerializable(str1);
+    if (localApolloPreDownloadData == null)
+    {
+      QLog.e("ApolloManager", 1, "preDownloadListener res onDoneFile but preDownload data is null");
+      return;
     }
-    QLog.e("QQInitHandler", 1, "onResponse: ret:" + paramObject.ret + " errmsg:" + paramObject.errmsg);
+    if (!TextUtils.isEmpty(localApolloPreDownloadData.zipDir)) {}
+    for (parambhhf = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.zipDir;; parambhhf = ancb.t + localApolloPreDownloadData.resId + ".zip")
+    {
+      String str2 = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.dir;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager", 2, new Object[] { "preDownloadListener res zip done reportId:", localApolloPreDownloadData.reportId, ", url:", str1 });
+      }
+      ThreadManager.getSubThreadHandler().post(new ApolloManager.20.1(this, localApolloPreDownloadData, parambhhf, str2));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amhi
  * JD-Core Version:    0.7.0.1
  */

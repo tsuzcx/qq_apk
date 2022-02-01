@@ -1,74 +1,51 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class tei
-  extends aokh<teh>
+  implements ComplementFileStringLoader
 {
-  public int a()
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
+  private tep jdField_a_of_type_Tep;
+  
+  public tei(Context paramContext, String paramString)
   {
-    return 447;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Tep = new tep(paramContext, paramString);
   }
   
-  public Class<teh> a()
+  public String loadFileAsString(String paramString)
   {
-    return teh.class;
-  }
-  
-  @NonNull
-  public teh a(int paramInt)
-  {
-    return new teh();
-  }
-  
-  @Nullable
-  public teh a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
+    try
     {
-      tlo.d("WeSeeConfigProcessor", "onParsed:" + paramArrayOfaoko[0].a);
-      teh localteh = new teh();
-      localteh.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WeSeeConfigProcessor", 0, "onParsed " + paramArrayOfaoko[0].a);
+      InputStream localInputStream = this.jdField_a_of_type_Tep.a(paramString);
+      Object localObject = localInputStream;
+      if (localInputStream == null) {
+        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
       }
-      return localteh;
+      localObject = tez.a((InputStream)localObject);
+      return localObject;
+    }
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
+        localIOException.printStackTrace();
+      }
     }
     return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(teh paramteh)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeSeeConfigProcessor", 0, "onUpdate " + paramteh);
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tei
  * JD-Core Version:    0.7.0.1
  */

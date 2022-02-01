@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -10,10 +9,11 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdaq;
-import bedl;
-import bedm;
-import bedn;
+import anni;
+import bggq;
+import bhkn;
+import bhko;
+import bhkp;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +27,7 @@ public class ChangeVoiceView
   private long jdField_a_of_type_Long;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bedl a;
+  public bhkn a;
   private CircleProgressView jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView;
   private VolumeIndicateSquareView jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView;
   private boolean jdField_a_of_type_Boolean;
@@ -40,7 +40,7 @@ public class ChangeVoiceView
   
   static
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131701896);
+    jdField_a_of_type_JavaLangString = anni.a(2131700316);
   }
   
   public ChangeVoiceView(Context paramContext, AttributeSet paramAttributeSet)
@@ -60,13 +60,13 @@ public class ChangeVoiceView
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView.setRingWidth(10);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView.setRingColor(getResources().getColor(2131166891));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView.setRingColor(getResources().getColor(2131166974));
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bedl == null) {
+    if (this.jdField_a_of_type_Bhkn == null) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView.setProgress(0);
@@ -84,8 +84,8 @@ public class ChangeVoiceView
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838269);
-      if (this.jdField_a_of_type_Bedl.jdField_b_of_type_Int != 1) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838378);
+      if (this.jdField_a_of_type_Bhkn.jdField_b_of_type_Int != 1) {
         break label182;
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(2137417318);
@@ -96,15 +96,15 @@ public class ChangeVoiceView
       return;
       if (paramInt == 1)
       {
-        setContentDescription(getContext().getString(2131691174) + " " + this.jdField_a_of_type_Bedl.jdField_b_of_type_JavaLangString);
+        setContentDescription(getContext().getString(2131690977) + " " + this.jdField_a_of_type_Bhkn.jdField_b_of_type_JavaLangString);
         break label28;
       }
-      setContentDescription(this.jdField_a_of_type_Bedl.jdField_b_of_type_JavaLangString);
+      setContentDescription(this.jdField_a_of_type_Bhkn.jdField_b_of_type_JavaLangString);
       break label28;
       label180:
       break;
       label182:
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131165245));
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131165275));
       continue;
       label204:
       if (paramInt == 1)
@@ -114,12 +114,12 @@ public class ChangeVoiceView
         this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView.setVisibility(8);
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130847320);
+          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130847779);
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
         }
         else
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838270);
+          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838379);
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
         }
       }
@@ -131,12 +131,12 @@ public class ChangeVoiceView
         this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView.setVisibility(0);
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130847320);
+          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130847779);
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
         }
         else
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838270);
+          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838379);
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
         }
       }
@@ -169,21 +169,21 @@ public class ChangeVoiceView
     }
   }
   
-  public void a(bedl parambedl)
+  public void a(bhkn parambhkn)
   {
     int i = 1;
-    if (parambedl != null) {}
+    if (parambhkn != null) {}
     for (boolean bool = true;; bool = false)
     {
       super.setEnabled(bool);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366468));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366469));
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364104));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364106));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView = ((CircleProgressView)super.findViewById(2131364105));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364109));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView = ((VolumeIndicateSquareView)super.findViewById(2131364110));
-      if (parambedl != null) {
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366733));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366734));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364312));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364314));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView = ((CircleProgressView)super.findViewById(2131364313));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364317));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView = ((VolumeIndicateSquareView)super.findViewById(2131364318));
+      if (parambhkn != null) {
         break;
       }
       this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
@@ -195,42 +195,42 @@ public class ChangeVoiceView
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838269);
+      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838378);
       return;
     }
-    this.d = bdaq.a(getContext(), 4.0F);
-    this.jdField_a_of_type_Int = parambedl.jdField_a_of_type_Int;
+    this.d = bggq.a(getContext(), 4.0F);
+    this.jdField_a_of_type_Int = parambhkn.jdField_a_of_type_Int;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView.setStrokeWidth(4);
-    this.jdField_a_of_type_Bedl = parambedl;
+    this.jdField_a_of_type_Bhkn = parambhkn;
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
     label295:
     Object localObject1;
     label326:
     Object localObject3;
     URLDrawable.URLDrawableOptions localURLDrawableOptions;
-    if (parambedl.jdField_a_of_type_Bedm.jdField_a_of_type_Int > 0)
+    if (parambhkn.jdField_a_of_type_Bhko.jdField_a_of_type_Int > 0)
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(parambedl.jdField_a_of_type_Bedm.jdField_a_of_type_Int);
-      if (parambedl.jdField_c_of_type_Int == 0) {
+      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(parambhkn.jdField_a_of_type_Bhko.jdField_a_of_type_Int);
+      if (parambhkn.jdField_c_of_type_Int == 0) {
         break label805;
       }
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      if (parambedl.jdField_c_of_type_Int != 1) {
+      if (parambhkn.jdField_c_of_type_Int != 1) {
         break label792;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846900);
-      if (parambedl.d == 1) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847357);
+      if (parambhkn.d == 1) {
         break label857;
       }
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      if (parambedl.d != 4) {
+      if (parambhkn.d != 4) {
         break label817;
       }
-      localObject1 = bedn.jdField_a_of_type_ArrayOfJavaLangString[0];
+      localObject1 = bhkp.jdField_a_of_type_ArrayOfJavaLangString[0];
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         break label874;
       }
-      localObject3 = new File(bedn.jdField_a_of_type_JavaLangString + ((String)localObject1).substring(((String)localObject1).lastIndexOf("/") + 1));
+      localObject3 = new File(bhkp.jdField_a_of_type_JavaLangString + ((String)localObject1).substring(((String)localObject1).lastIndexOf("/") + 1));
       localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       if ((!((File)localObject3).exists()) || (!((File)localObject3).isFile())) {
         break label845;
@@ -242,7 +242,7 @@ public class ChangeVoiceView
       label406:
       this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
       label415:
-      localObject3 = parambedl.jdField_a_of_type_JavaLangString;
+      localObject3 = parambhkn.jdField_a_of_type_JavaLangString;
       localObject1 = localObject3;
       if (localObject3 != null)
       {
@@ -252,8 +252,8 @@ public class ChangeVoiceView
         }
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-      super.setContentDescription(parambedl.jdField_b_of_type_JavaLangString);
-      if (parambedl.jdField_a_of_type_Int == this.jdField_b_of_type_Int) {}
+      super.setContentDescription(parambhkn.jdField_b_of_type_JavaLangString);
+      if (parambhkn.jdField_a_of_type_Int == this.jdField_b_of_type_Int) {}
       for (;;)
       {
         for (;;)
@@ -264,13 +264,13 @@ public class ChangeVoiceView
           localObject3 = super.getResources();
           try
           {
-            localObject1 = parambedl.jdField_a_of_type_Bedm.jdField_a_of_type_JavaLangString;
+            localObject1 = parambhkn.jdField_a_of_type_Bhko.jdField_a_of_type_JavaLangString;
             if (!TextUtils.isEmpty((CharSequence)localObject1))
             {
               localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-              localURLDrawableOptions.mFailedDrawable = ((Resources)localObject3).getDrawable(2130847008);
-              localURLDrawableOptions.mLoadingDrawable = ((Resources)localObject3).getDrawable(2130847008);
-              File localFile = new File(bedn.jdField_a_of_type_JavaLangString + ((String)localObject1).substring(((String)localObject1).lastIndexOf("/") + 1));
+              localURLDrawableOptions.mFailedDrawable = ((Resources)localObject3).getDrawable(2130847465);
+              localURLDrawableOptions.mLoadingDrawable = ((Resources)localObject3).getDrawable(2130847465);
+              File localFile = new File(bhkp.jdField_a_of_type_JavaLangString + ((String)localObject1).substring(((String)localObject1).lastIndexOf("/") + 1));
               if ((localFile.exists()) && (localFile.isFile())) {
                 localObject1 = URLDrawable.getDrawable(localFile, localURLDrawableOptions);
               }
@@ -284,24 +284,24 @@ public class ChangeVoiceView
                   ((URLDrawable)localObject3).restartDownload();
                 }
               }
-              if (parambedl.jdField_b_of_type_Int != 1) {
+              if (parambhkn.jdField_b_of_type_Int != 1) {
                 break label781;
               }
               ((Drawable)localObject1).setAlpha(127);
-              parambedl.jdField_a_of_type_Bedm.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject1);
+              parambhkn.jdField_a_of_type_Bhko.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject1);
               this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject1);
               break;
               localObject1 = URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions);
               continue;
-              QLog.d("ChangeVoiceView", 2, "init drawable url = null, name=" + parambedl.jdField_a_of_type_JavaLangString + ",type=" + parambedl.jdField_a_of_type_Int);
-              localObject1 = ((Resources)localObject3).getDrawable(2130847008);
+              QLog.d("ChangeVoiceView", 2, "init drawable url = null, name=" + parambhkn.jdField_a_of_type_JavaLangString + ",type=" + parambhkn.jdField_a_of_type_Int);
+              localObject1 = ((Resources)localObject3).getDrawable(2130847465);
             }
           }
           catch (Exception localException)
           {
             for (;;)
             {
-              localObject2 = ((Resources)localObject3).getDrawable(2130847008);
+              localObject2 = ((Resources)localObject3).getDrawable(2130847465);
               continue;
               label781:
               ((Drawable)localObject2).setAlpha(255);
@@ -309,18 +309,18 @@ public class ChangeVoiceView
           }
         }
         label792:
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846899);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847356);
         break label295;
         label805:
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         break label295;
         label817:
-        if (parambedl.d == 5)
+        if (parambhkn.d == 5)
         {
-          localObject2 = bedn.jdField_a_of_type_ArrayOfJavaLangString[1];
+          localObject2 = bhkp.jdField_a_of_type_ArrayOfJavaLangString[1];
           break label326;
         }
-        localObject2 = bedn.jdField_a_of_type_ArrayOfJavaLangString[2];
+        localObject2 = bhkp.jdField_a_of_type_ArrayOfJavaLangString[2];
         break label326;
         label845:
         localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
@@ -337,7 +337,7 @@ public class ChangeVoiceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView
  * JD-Core Version:    0.7.0.1
  */

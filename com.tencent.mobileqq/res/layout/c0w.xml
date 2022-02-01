@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/kt9" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.playvideo.player.TextureVideoView android:id="@id/jw6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
     <FrameLayout android:id="@id/jw7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_centerHorizontal="true">
         <TextView android:textSize="14.0dip" android:textColor="#33000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/u9r" />
         <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="@string/u9h" />

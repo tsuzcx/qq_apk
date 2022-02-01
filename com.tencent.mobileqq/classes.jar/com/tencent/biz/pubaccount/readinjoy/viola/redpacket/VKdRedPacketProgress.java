@@ -12,15 +12,15 @@ import com.tencent.viola.ui.dom.DomObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import oxb;
-import oxe;
-import spv;
+import pmk;
+import pmn;
+import trc;
 
 public class VKdRedPacketProgress
   extends VComponentContainer<VKdRedPacketLayout>
 {
   private static final String TAG = "VKdRedPacketProgress";
-  oxe mObserver;
+  pmn mObserver;
   private RIJRedPacketProgressView mRedPacketProgressView;
   
   public VKdRedPacketProgress(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
@@ -70,15 +70,15 @@ public class VKdRedPacketProgress
     this.mRedPacketProgressView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
     localVKdRedPacketLayout.addView(this.mRedPacketProgressView);
     this.mRedPacketProgressView.a();
-    this.mObserver = new spv(this);
-    oxb.a().a(this.mObserver);
+    this.mObserver = new trc(this);
+    pmk.a().a(this.mObserver);
     return localVKdRedPacketLayout;
   }
   
   public void onActivityDestroy()
   {
     super.destroy();
-    oxb.a().b(this.mObserver);
+    pmk.a().b(this.mObserver);
   }
   
   public void onActivityPause()
@@ -91,7 +91,7 @@ public class VKdRedPacketProgress
   
   public void removedByJs()
   {
-    oxb.a().b(this.mObserver);
+    pmk.a().b(this.mObserver);
   }
   
   @JSMethod
@@ -107,7 +107,7 @@ public class VKdRedPacketProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.redpacket.VKdRedPacketProgress
  * JD-Core Version:    0.7.0.1
  */

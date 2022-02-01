@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import bgoa;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.mini.utils.WxapkgUnpacker;
 import com.tencent.qphone.base.util.QLog;
 
 class ApkgManager$2
@@ -23,7 +23,7 @@ class ApkgManager$2
   {
     try
     {
-      boolean bool = bgoa.a(this.val$savePath, this.val$folderPath);
+      boolean bool = WxapkgUnpacker.unpackSync(this.val$savePath, this.val$folderPath);
       QLog.d("ApkgManager", 1, "preloadFlutterPkg unpack appid:" + this.val$miniConfig.config.appId + " name:" + this.val$miniConfig.config.name + " folder:" + this.val$folderPath + " hasUnpack:" + bool);
       return;
     }
@@ -35,7 +35,7 @@ class ApkgManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager.2
  * JD-Core Version:    0.7.0.1
  */

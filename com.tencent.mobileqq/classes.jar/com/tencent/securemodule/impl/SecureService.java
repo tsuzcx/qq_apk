@@ -21,6 +21,7 @@ import com.tencent.securemodule.ah;
 import com.tencent.securemodule.as;
 import com.tencent.securemodule.at;
 import com.tencent.securemodule.ax;
+import com.tencent.securemodule.az;
 import com.tencent.securemodule.c;
 import com.tencent.securemodule.e;
 import com.tencent.securemodule.o;
@@ -54,7 +55,7 @@ public class SecureService
     }
     Object localObject1 = new UniAttribute();
     ((UniAttribute)localObject1).setEncodeName("UTF-8");
-    ((UniAttribute)localObject1).decode(ax.b(paramString));
+    ((UniAttribute)localObject1).decode(az.b(paramString));
     paramString = (e)((UniAttribute)localObject1).getByClass("data", new e());
     if ((paramString == null) || (paramString.c() == null)) {
       return -6;
@@ -267,6 +268,7 @@ public class SecureService
     {
       Thread.sleep(500L);
       Process.killProcess(Process.myPid());
+      ax.b("myPid", Integer.valueOf(Process.myPid()));
       System.exit(0);
       return;
     }
@@ -291,7 +293,8 @@ public class SecureService
   
   private void d()
   {
-    ah.a(this.a).a(as.b(this.a));
+    int i = ah.a(this.a).a(as.b(this.a));
+    ax.b("Secure", "reportRunningProcessInfo ret = " + i);
   }
   
   private void e()
@@ -357,7 +360,7 @@ public class SecureService
     if ((paramIntent == null) || ("1000012".equals(paramIntent.getAction()))) {
       return;
     }
-    if (!ax.a(getApplicationContext(), "sm_mq"))
+    if (!az.a(getApplicationContext(), "sm_mq"))
     {
       stopSelf();
       c();
@@ -383,7 +386,7 @@ public class SecureService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.impl.SecureService
  * JD-Core Version:    0.7.0.1
  */

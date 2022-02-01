@@ -1,73 +1,133 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
 
 public class afbo
+  extends AsyncTask<Void, Void, Void>
 {
-  int jdField_a_of_type_Int = 2;
-  public List<afbl> a;
-  boolean jdField_a_of_type_Boolean = false;
+  WeakReference<RegisterVerifyCodeActivity> a = null;
   
-  public afbo()
+  public afbo(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = new WeakReference(paramRegisterVerifyCodeActivity);
   }
   
-  public List<afbl> a()
+  protected Void a(Void... paramVarArgs)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_JavaUtilList.clear();
-    afbl localafbl = new afbl();
-    localafbl.a((afbl)localArrayList.get(localArrayList.size() - 1));
-    this.jdField_a_of_type_JavaUtilList.add(localafbl);
-    this.jdField_a_of_type_Boolean = true;
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      return;
-    }
-    afbl localafbl = (afbl)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
-    localafbl.a.a(localafbl.b);
-    localafbl.c.a(localafbl.d);
-    localafbl.b.a(localafbl.d);
-    this.jdField_a_of_type_JavaUtilList.add(localafbl);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    afbl localafbl = new afbl();
-    localafbl.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.jdField_a_of_type_JavaUtilList.add(localafbl);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    afbl localafbl1 = new afbl();
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
+    boolean bool3 = true;
+    File localFile = new File(BaseApplication.getContext().getFilesDir(), "RegDevLockCfg.xml");
+    if (!HttpDownloadUtil.a(null, "https://dldir1.qq.com/qqfile/qd/RegDevLockCfg.xml?mType=ConfigCheck", localFile))
     {
-      a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterVerifyCodeActivity", 2, "download cfg file failed.");
+      }
+      return null;
     }
-    afbl localafbl2 = (afbl)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
-    localafbl1.a.a(localafbl2.b);
-    localafbl1.c.a(localafbl2.d);
-    localafbl1.b.a((localafbl1.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (localafbl1.c.b + paramFloat2) / 2.0F, (localafbl1.c.c + paramFloat3) / 2.0F, (localafbl1.c.jdField_a_of_type_Long + paramLong) / 2L);
-    localafbl1.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.jdField_a_of_type_JavaUtilList.add(localafbl1);
-    if (this.jdField_a_of_type_Boolean)
+    paramVarArgs = DocumentBuilderFactory.newInstance();
+    label524:
+    label530:
+    label536:
+    label542:
+    label547:
+    label553:
+    label558:
+    label563:
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilList.remove(0);
+      try
+      {
+        localObject3 = paramVarArgs.newDocumentBuilder().parse(localFile).getDocumentElement();
+        paramVarArgs = ((Element)localObject3).getElementsByTagName("Enable");
+        if (paramVarArgs.getLength() <= 0) {
+          break label553;
+        }
+        if (Integer.parseInt(((Text)((Element)paramVarArgs.item(0)).getChildNodes().item(0)).getNodeValue()) == 1)
+        {
+          bool1 = true;
+          break label558;
+          paramVarArgs = ((Element)localObject3).getElementsByTagName("EnableVersion");
+          if (paramVarArgs.getLength() <= 0) {
+            break label547;
+          }
+          paramVarArgs = ((Text)((Element)paramVarArgs.item(0)).getChildNodes().item(0)).getNodeValue();
+          localObject1 = ((Element)localObject3).getElementsByTagName("CheckBoxDefStatus");
+          if (((NodeList)localObject1).getLength() <= 0) {
+            break label542;
+          }
+          if (Integer.parseInt(((Text)((Element)((NodeList)localObject1).item(0)).getChildNodes().item(0)).getNodeValue()) == 1)
+          {
+            bool1 = bool3;
+            break label563;
+            localObject1 = ((Element)localObject3).getElementsByTagName("CheckBoxWording");
+            if (((NodeList)localObject1).getLength() <= 0) {
+              break label536;
+            }
+            localObject1 = ((Text)((Element)((NodeList)localObject1).item(0)).getChildNodes().item(0)).getNodeValue();
+            localObject2 = ((Element)localObject3).getElementsByTagName("CheckBoxHighlightWording");
+            if (((NodeList)localObject2).getLength() <= 0) {
+              break label530;
+            }
+            localObject2 = ((Text)((Element)((NodeList)localObject2).item(0)).getChildNodes().item(0)).getNodeValue();
+            localObject3 = ((Element)localObject3).getElementsByTagName("IntroductionURL");
+            if (((NodeList)localObject3).getLength() <= 0) {
+              break label524;
+            }
+            localObject3 = ((Text)((Element)((NodeList)localObject3).item(0)).getChildNodes().item(0)).getNodeValue();
+            Bundle localBundle = new Bundle();
+            localBundle.putBoolean("visibility", bool2);
+            localBundle.putString("enableVersion", paramVarArgs);
+            localBundle.putBoolean("checked", bool1);
+            localBundle.putString("openDevLockText", (String)localObject1);
+            localBundle.putString("openDevLockHelpText", (String)localObject2);
+            localBundle.putString("openDevLockHelpURL", (String)localObject3);
+            paramVarArgs = (RegisterVerifyCodeActivity)this.a.get();
+            return null;
+          }
+        }
+        else
+        {
+          bool1 = false;
+          break label558;
+        }
+        bool1 = false;
+      }
+      catch (Exception paramVarArgs)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RegisterVerifyCodeActivity", 2, "parse cfg file failed.");
+        }
+        paramVarArgs.printStackTrace();
+        return null;
+      }
+      finally
+      {
+        localFile.delete();
+      }
+      Object localObject3 = null;
+      continue;
+      Object localObject2 = null;
+      continue;
+      Object localObject1 = null;
+      continue;
+      boolean bool1 = false;
+      continue;
+      paramVarArgs = "";
+      continue;
+      boolean bool2 = false;
+      continue;
+      bool2 = bool1;
     }
-    return this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int;
   }
 }
 

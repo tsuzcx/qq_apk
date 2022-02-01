@@ -6,27 +6,27 @@ import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import oym;
-import qip;
-import qit;
-import qiu;
-import qix;
-import qja;
-import qjs;
+import pny;
+import rcs;
+import rcw;
+import rcx;
+import rda;
+import rdd;
+import rdv;
 
 public class RIJSkinOperationPopupStep$1
   implements Runnable
 {
-  public RIJSkinOperationPopupStep$1(oym paramoym) {}
+  public RIJSkinOperationPopupStep$1(pny parampny) {}
   
   public void run()
   {
     Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    qix localqix = (qix)((QQAppInterface)localObject1).a(121);
-    qja localqja = (qja)((QQAppInterface)localObject1).getManager(261);
-    Object localObject2 = (qit)((QQAppInterface)localObject1).getManager(271);
-    Object localObject3 = (qiu)((QQAppInterface)localObject1).getManager(270);
-    localObject1 = ((qiu)localObject3).a(oym.a(this.this$0), 0);
+    rda localrda = (rda)((QQAppInterface)localObject1).a(121);
+    rdd localrdd = (rdd)((QQAppInterface)localObject1).getManager(261);
+    Object localObject2 = (rcw)((QQAppInterface)localObject1).getManager(271);
+    Object localObject3 = (rcx)((QQAppInterface)localObject1).getManager(270);
+    localObject1 = ((rcx)localObject3).a(pny.a(this.this$0), 0);
     boolean bool1;
     label139:
     boolean bool2;
@@ -53,7 +53,7 @@ public class RIJSkinOperationPopupStep$1
       if ((!bool1) || (!bool2)) {
         break label423;
       }
-      bool1 = qjs.a(((RefreshData)localObject1).id);
+      bool1 = rdv.a(((RefreshData)localObject1).id);
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.4tab", 2, "checkSkinAndRefresh dataMatch = true, timeMatch = true, resValid =" + bool1);
       }
@@ -63,23 +63,23 @@ public class RIJSkinOperationPopupStep$1
       if (!((RefreshData)localObject1).isShown) {
         break label380;
       }
-      ((qiu)localObject3).a(1, ((RefreshData)localObject1).id, ((RefreshData)localObject1).seq, 0);
-      ((qiu)localObject3).a(true);
+      ((rcx)localObject3).a(1, ((RefreshData)localObject1).id, ((RefreshData)localObject1).seq, 0);
+      ((rcx)localObject3).a(true);
       bool1 = true;
       label252:
-      localObject2 = (GuideData)((qit)localObject2).a("operation_guide");
-      localObject3 = localqja.a(oym.a(this.this$0));
+      localObject2 = (GuideData)((rcw)localObject2).a("operation_guide");
+      localObject3 = localrdd.a(pny.a(this.this$0));
       if ((localObject3 == null) || (i < ((SkinData)localObject3).beginTime) || (i > ((SkinData)localObject3).endTime)) {
         break label501;
       }
-      if (!qip.a(((SkinData)localObject3).id)) {
+      if (!rcs.a(((SkinData)localObject3).id)) {
         break label481;
       }
-      localqja.a(1, ((SkinData)localObject3).id, bool1);
+      localrdd.a(1, ((SkinData)localObject3).id, bool1);
     }
     for (;;)
     {
-      localqix.a((SkinData)localObject3, null, (RefreshData)localObject1, (GuideData)localObject2, 0);
+      localrda.a((SkinData)localObject3, null, (RefreshData)localObject1, (GuideData)localObject2, 0);
       return;
       QLog.d("Q.readinjoy.4tab", 2, "checkSkinAndRefresh refreshData = " + ((RefreshData)localObject1).toString());
       break;
@@ -90,27 +90,27 @@ public class RIJSkinOperationPopupStep$1
       bool2 = false;
       break label164;
       label380:
-      ((qiu)localObject3).a(0, "", -1L, 0);
+      ((rcx)localObject3).a(0, "", -1L, 0);
       bool1 = false;
       break label252;
       label397:
-      ((qiu)localObject3).a(0, "", -1L, 0);
-      ((qiu)localObject3).a((RefreshData)localObject1, 0);
+      ((rcx)localObject3).a(0, "", -1L, 0);
+      ((rcx)localObject3).a((RefreshData)localObject1, 0);
       bool1 = false;
       break label252;
       label423:
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.4tab", 2, "checkSkinAndRefresh dataMatch =" + bool1 + ",timeMatch = " + bool2);
       }
-      ((qiu)localObject3).a(0, "", -1L, 0);
+      ((rcx)localObject3).a(0, "", -1L, 0);
       bool1 = bool3;
       break label252;
       label481:
-      localqja.a(0, "", bool1);
-      localqja.a((SkinData)localObject3);
+      localrdd.a(0, "", bool1);
+      localrdd.a((SkinData)localObject3);
       continue;
       label501:
-      localqja.a(0, "", bool1);
+      localrdd.a(0, "", bool1);
     }
   }
 }

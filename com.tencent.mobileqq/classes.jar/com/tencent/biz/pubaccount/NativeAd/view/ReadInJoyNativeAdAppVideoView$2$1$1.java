@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.NativeAd.view;
 
-import npi;
+import nyf;
 
 public class ReadInJoyNativeAdAppVideoView$2$1$1
   implements Runnable
 {
-  public ReadInJoyNativeAdAppVideoView$2$1$1(npi paramnpi) {}
+  public ReadInJoyNativeAdAppVideoView$2$1$1(nyf paramnyf) {}
   
   public void run()
   {

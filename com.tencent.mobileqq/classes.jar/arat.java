@@ -1,44 +1,48 @@
-import android.content.Context;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arat
+public class arat
 {
-  float jdField_a_of_type_Float = 14.0F;
-  int jdField_a_of_type_Int = 0;
-  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-  Integer jdField_a_of_type_JavaLangInteger = null;
-  final String jdField_a_of_type_JavaLangString = "SearchForText";
-  float jdField_b_of_type_Float = 16.0F;
-  Integer jdField_b_of_type_JavaLangInteger = null;
-  final String jdField_b_of_type_JavaLangString = "SearchForTitle";
+  private int a = -1;
   
-  arat(arar paramarar, Context paramContext)
+  public static arat a(aqlg[] paramArrayOfaqlg)
   {
-    if (paramContext != null) {
-      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
+      paramArrayOfaqlg = null;
     }
+    arat localarat;
+    do
+    {
+      return paramArrayOfaqlg;
+      localarat = new arat();
+      try
+      {
+        localarat.a = new JSONObject(paramArrayOfaqlg[0].a).getInt("show_limit");
+        return localarat;
+      }
+      catch (JSONException localJSONException)
+      {
+        paramArrayOfaqlg = localarat;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("TencentDocHistoryTabToastBean", 1, "exception = " + localJSONException.toString());
+    return localarat;
   }
   
-  public float a()
+  public int a()
   {
-    return this.jdField_a_of_type_Float;
+    return this.a;
   }
   
-  public Integer a()
+  public boolean a()
   {
-    return this.jdField_b_of_type_JavaLangInteger;
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
+    return this.a == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arat
  * JD-Core Version:    0.7.0.1
  */

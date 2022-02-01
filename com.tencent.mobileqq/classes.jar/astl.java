@@ -1,13 +1,25 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ExpandableListView;
 
-public abstract interface astl
+class astl
+  implements View.OnClickListener
 {
-  public abstract void a(Animation paramAnimation);
+  astl(asti paramasti, int paramInt) {}
   
-  public abstract void a(HeartLayout paramHeartLayout, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(Animation paramAnimation);
+  public void onClick(View paramView)
+  {
+    if (asti.a(this.jdField_a_of_type_Asti).c(this.jdField_a_of_type_Int)) {
+      asti.a(this.jdField_a_of_type_Asti).b(this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      asti.a(this.jdField_a_of_type_Asti).a(this.jdField_a_of_type_Int);
+    }
+  }
 }
 
 

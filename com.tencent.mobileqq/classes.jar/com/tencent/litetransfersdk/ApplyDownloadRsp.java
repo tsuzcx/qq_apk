@@ -2,6 +2,8 @@ package com.tencent.litetransfersdk;
 
 public class ApplyDownloadRsp
 {
+  public boolean bool_use_https;
+  public boolean bool_use_new_httpclient;
   public int int32_ret_code;
   public DownloadInfo msg_download_info;
   public FileInfo msg_file_info;
@@ -9,7 +11,7 @@ public class ApplyDownloadRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.litetransfersdk.ApplyDownloadRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,95 +1,46 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.support.annotation.UiThread;
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class tcj<T>
-  implements Handler.Callback
+public abstract class tcj
 {
-  protected int a;
-  protected Context a;
-  protected Handler a;
-  protected View a;
-  protected T a;
-  protected int b = -1;
-  
-  public tcj(Context paramContext)
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  protected Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  protected Resources a()
-  {
-    if (this.jdField_a_of_type_AndroidContentContext != null) {
-      return this.jdField_a_of_type_AndroidContentContext.getResources();
-    }
-    return null;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
   protected abstract void a();
   
-  public void a(int paramInt)
+  public abstract void a(ListView paramListView);
+  
+  protected void a(String paramString, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(T paramT)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    a();
-    e();
-  }
-  
-  @UiThread
-  protected abstract void b();
-  
-  protected abstract void c();
-  
-  public void d()
-  {
-    c();
-    a(-1);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1)
+    try
     {
-      b();
-      return true;
+      paramJSONObject.put("folder_status", pha.d);
+      paramJSONObject.put("kandian_mode", pha.e());
+      paramJSONObject = paramJSONObject.toString();
+      oat.a(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
+      QLog.d("HeaderViewController", 2, "report: T - " + paramString + " r5 - " + paramJSONObject);
+      return;
     }
-    return false;
+    catch (JSONException paramString)
+    {
+      QLog.d("HeaderViewController", 2, "report failed due to JSONException: " + paramString.getMessage());
+      throw new IllegalArgumentException("fail to construct r5 json");
+    }
   }
+  
+  public abstract void b();
+  
+  public void c()
+  {
+    a();
+  }
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tcj
  * JD-Core Version:    0.7.0.1
  */

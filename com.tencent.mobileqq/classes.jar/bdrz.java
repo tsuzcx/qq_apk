@@ -1,25 +1,11 @@
-import java.util.Comparator;
-
 class bdrz
-  implements Comparator<bdsa>
+  extends bdrk
 {
-  public int a(bdsa parambdsa1, bdsa parambdsa2)
+  bdrz(bdry parambdry) {}
+  
+  protected void a()
   {
-    int i = 1;
-    if (parambdsa1.a == parambdsa2.a) {
-      if (parambdsa1.b == parambdsa2.b) {
-        i = 0;
-      }
-    }
-    while (parambdsa1.a > parambdsa2.a)
-    {
-      do
-      {
-        return i;
-      } while (parambdsa1.b > parambdsa2.b);
-      return -1;
-    }
-    return -1;
+    this.a.a.notifyDataSetChanged();
   }
 }
 

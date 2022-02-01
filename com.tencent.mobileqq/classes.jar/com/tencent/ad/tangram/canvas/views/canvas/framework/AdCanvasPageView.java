@@ -1,6 +1,7 @@
 package com.tencent.ad.tangram.canvas.views.canvas.framework;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.annotation.Keep;
 import android.text.TextUtils;
 import android.view.MotionEvent;
@@ -16,8 +17,10 @@ import com.tencent.ad.tangram.canvas.views.canvas.components.AdCanvasComponentDa
 import com.tencent.ad.tangram.canvas.views.canvas.components.AdCanvasComponentView;
 import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c;
 import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.d;
+import com.tencent.ad.tangram.canvas.views.canvas.components.layerCard.AdCanvasLayerCardView;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.ad.tangram.util.AdUIUtils;
 import java.lang.ref.WeakReference;
 
 @Keep
@@ -30,6 +33,7 @@ public class AdCanvasPageView
   private a data;
   private float mDownPosX = 0.0F;
   private float mDownPosY = 0.0F;
+  private Handler mHandler;
   
   public AdCanvasPageView(Context paramContext, WeakReference<AdCanvasViewListener> paramWeakReference, a parama)
   {
@@ -54,8 +58,8 @@ public class AdCanvasPageView
     else {
       return locala;
     }
-    if ((paramAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)) {
-      parama = new com.tencent.ad.tangram.canvas.views.canvas.components.picture.b(getContext(), this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)com.tencent.ad.tangram.canvas.views.canvas.components.picture.a.class.cast(paramAdCanvasComponentData));
+    if ((paramAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.appInfoButton.a)) {
+      parama = new com.tencent.ad.tangram.canvas.views.canvas.components.appInfoButton.b(getContext(), this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.appInfoButton.a)paramAdCanvasComponentData, true);
     }
     for (;;)
     {
@@ -65,7 +69,11 @@ public class AdCanvasPageView
       }
       parama.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
       return parama;
-      if ((paramAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.button.a))
+      if ((paramAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.picture.a))
+      {
+        parama = new com.tencent.ad.tangram.canvas.views.canvas.components.picture.b(getContext(), this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.picture.a)com.tencent.ad.tangram.canvas.views.canvas.components.picture.a.class.cast(paramAdCanvasComponentData), null, this.mHandler);
+      }
+      else if ((paramAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.button.a))
       {
         parama = new com.tencent.ad.tangram.canvas.views.canvas.components.button.b(getContext(), this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.button.a)com.tencent.ad.tangram.canvas.views.canvas.components.button.a.class.cast(paramAdCanvasComponentData));
       }
@@ -79,7 +87,7 @@ public class AdCanvasPageView
       }
       else if ((paramAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.pictures.a))
       {
-        parama = new com.tencent.ad.tangram.canvas.views.canvas.components.pictures.b(getContext(), this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.pictures.a)com.tencent.ad.tangram.canvas.views.canvas.components.pictures.a.class.cast(paramAdCanvasComponentData));
+        parama = new com.tencent.ad.tangram.canvas.views.canvas.components.pictures.b(getContext(), this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.pictures.a)com.tencent.ad.tangram.canvas.views.canvas.components.pictures.a.class.cast(paramAdCanvasComponentData), this.mHandler);
       }
       else if ((paramAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.imagesCarousel.a))
       {
@@ -89,11 +97,19 @@ public class AdCanvasPageView
       {
         parama = new com.tencent.ad.tangram.canvas.views.canvas.components.appIcon.b(getContext(), this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.appIcon.a)com.tencent.ad.tangram.canvas.views.canvas.components.appIcon.a.class.cast(paramAdCanvasComponentData));
       }
+      else if ((paramAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.text.a))
+      {
+        parama = new com.tencent.ad.tangram.canvas.views.canvas.components.text.b(getContext(), this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.text.a)paramAdCanvasComponentData);
+      }
+      else if ((paramAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.layerCard.a))
+      {
+        parama = new AdCanvasLayerCardView(getContext(), this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.layerCard.a)paramAdCanvasComponentData, this.mHandler);
+      }
       else
       {
         parama = localObject;
-        if ((paramAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.text.a)) {
-          parama = new com.tencent.ad.tangram.canvas.views.canvas.components.text.b(getContext(), this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.text.a)com.tencent.ad.tangram.canvas.views.canvas.components.text.a.class.cast(paramAdCanvasComponentData));
+        if ((paramAdCanvasComponentData instanceof com.tencent.ad.tangram.canvas.views.canvas.components.title.a)) {
+          parama = new com.tencent.ad.tangram.canvas.views.canvas.components.title.b(getContext(), this.canvasViewListener, (com.tencent.ad.tangram.canvas.views.canvas.components.title.a)paramAdCanvasComponentData);
         }
       }
     }
@@ -114,22 +130,23 @@ public class AdCanvasPageView
     ((ViewGroup.LayoutParams)localObject).width = -1;
     ((ViewGroup.LayoutParams)localObject).height = -2;
     this.container.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.mHandler = new AdCanvasPageView.a(this);
     int i = 0;
     int j = parama.getSize();
-    label99:
+    label111:
     if (i < j)
     {
       localObject = getComponentViewFromData(parama.getComponent(i), parama);
       if (localObject != null) {
-        break label128;
+        break label140;
       }
     }
     for (;;)
     {
       i += 1;
-      break label99;
+      break label111;
       break;
-      label128:
+      label140:
       this.container.addView((View)localObject);
     }
   }
@@ -191,6 +208,11 @@ public class AdCanvasPageView
     return this.data;
   }
   
+  public Handler getMHandler()
+  {
+    return this.mHandler;
+  }
+  
   public AdCanvasComponentView getView(int paramInt)
   {
     if ((paramInt < 0) || (paramInt >= getCount()) || (!(getChildAt(0) instanceof ViewGroup))) {
@@ -210,6 +232,9 @@ public class AdCanvasPageView
     {
       getView(i).onActivityDestroy();
       i += 1;
+    }
+    if (this.mHandler != null) {
+      this.mHandler.removeCallbacksAndMessages(null);
     }
   }
   
@@ -283,7 +308,7 @@ public class AdCanvasPageView
       return null;
     }
     paramString = findArkFormView(paramString);
-    int i = com.tencent.ad.tangram.canvas.views.a.getPhysicalScreenWidth(getContext());
+    int i = AdUIUtils.getPhysicalScreenWidth(getContext());
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, i * paramInt2 / paramInt1);
     AdThreadManager.INSTANCE.post(new AdCanvasPageView.1(this, paramString, localLayoutParams), 0);
     return null;
@@ -345,7 +370,7 @@ public class AdCanvasPageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasPageView
  * JD-Core Version:    0.7.0.1
  */

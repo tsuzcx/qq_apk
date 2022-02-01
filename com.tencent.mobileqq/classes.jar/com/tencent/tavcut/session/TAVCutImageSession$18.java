@@ -1,32 +1,27 @@
 package com.tencent.tavcut.session;
 
-import android.util.SparseArray;
-import com.tencent.tavcut.util.DurationUtil;
-import com.tencent.weseevideo.composition.image.WSImageRender;
+import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.WSTemplateManager;
+import com.tencent.weseevideo.model.effect.MediaEffectModel;
+import java.util.List;
 
 class TAVCutImageSession$18
   implements Runnable
 {
-  TAVCutImageSession$18(TAVCutImageSession paramTAVCutImageSession) {}
+  TAVCutImageSession$18(TAVCutImageSession paramTAVCutImageSession, int paramInt) {}
   
   public void run()
   {
-    DurationUtil.start("TAVCutImageSession release");
-    int i = 0;
-    while (i < TAVCutImageSession.access$300(this.this$0).size())
-    {
-      int j = TAVCutImageSession.access$300(this.this$0).keyAt(i);
-      ((WSImageRender)TAVCutImageSession.access$300(this.this$0).get(j)).release();
-      i += 1;
-    }
-    TAVCutImageSession.access$300(this.this$0).clear();
-    TAVCutImageSession.access$200(this.this$0).clear();
-    DurationUtil.end("TAVCutImageSession release");
+    MediaModel localMediaModel = (MediaModel)this.this$0.mediaModels.get(this.val$index);
+    localMediaModel.getMediaEffectModel().putParam("FRAME_PARAMS_KEY_IS_ON", "0");
+    WSTemplateManager.updateTemplate(localMediaModel, 2, "", true, new String[] { "" });
+    TAVCutImageSession.access$500(this.this$0, this.val$index, 0, false);
+    this.this$0.render(this.val$index);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutImageSession.18
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.teamwork.spread;
 
 import android.text.TextUtils;
-import bajg;
-import bajj;
-import bajm;
-import bajo;
+import bdkk;
+import bdkn;
+import bdkq;
+import bdks;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class DataLineMessageSpreadManager$1
   implements Runnable
 {
-  public DataLineMessageSpreadManager$1(bajo parambajo, DataLineMsgRecord paramDataLineMsgRecord) {}
+  public DataLineMessageSpreadManager$1(bdks parambdks, DataLineMsgRecord paramDataLineMsgRecord) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class DataLineMessageSpreadManager$1
     if (QLog.isDebugVersion()) {
       QLog.i("DataLineMessageSpreadManager", 1, "SubThread Process Start");
     }
-    if (!bajo.a(this.this$0, this.a)) {
+    if (!bdks.a(this.this$0, this.a)) {
       if (QLog.isColorLevel()) {
         QLog.i("DataLineMessageSpreadManager", 1, "config return false!");
       }
@@ -46,21 +46,21 @@ public class DataLineMessageSpreadManager$1
             if (QLog.isDebugVersion()) {
               QLog.i("DataLineMessageSpreadManager", 1, "message is MessageForFile");
             }
-            bajo.a(this.this$0, new bajj(bajo.a(this.this$0), this.a, bajo.a(this.this$0)));
-            if (bajo.a(this.this$0).a()) {
+            bdks.a(this.this$0, new bdkn(bdks.a(this.this$0), this.a, bdks.a(this.this$0)));
+            if (bdks.a(this.this$0).a()) {
               break label179;
             }
           } while (!QLog.isColorLevel());
-          QLog.i("DataLineMessageSpreadManager", 1, "file[" + bajo.a(this.this$0).a() + "] is not support!");
+          QLog.i("DataLineMessageSpreadManager", 1, "file[" + bdks.a(this.this$0).a() + "] is not support!");
           return;
         } while (!QLog.isDebugVersion());
         QLog.i("DataLineMessageSpreadManager", 1, "message is unknown");
         return;
-        str2 = bajo.a(this.this$0).a();
+        str2 = bdks.a(this.this$0).a();
         if (QLog.isColorLevel()) {
           QLog.i("DataLineMessageSpreadManager", 1, "recv new File name is :" + str2);
         }
-        arrayOfString = bajo.a(this.this$0).a(bajo.a(this.this$0));
+        arrayOfString = bdks.a(this.this$0).a(bdks.a(this.this$0));
         str1 = "";
         if (arrayOfString.length != 0) {
           break;
@@ -73,14 +73,14 @@ public class DataLineMessageSpreadManager$1
         if (QLog.isColorLevel()) {
           QLog.i("DataLineMessageSpreadManager", 1, "keyWord[" + (String)localObject + "] find!");
         }
-        str1 = bajo.a(this.this$0).a(bajo.a(this.this$0));
-        localObject = bajo.a(this.this$0).b(bajo.a(this.this$0));
+        str1 = bdks.a(this.this$0).a(bdks.a(this.this$0));
+        localObject = bdks.a(this.this$0).b(bdks.a(this.this$0));
         if ((TextUtils.isEmpty(str1)) && (QLog.isColorLevel())) {
           QLog.i("DataLineMessageSpreadManager", 1, "tips is null! return, tips[" + str1 + "], link[" + (String)localObject + "]");
         }
         str1 = str1 + "。" + (String)localObject;
-      } while (!(bajo.a(this.this$0) instanceof bajj));
-      bajo.a(this.this$0, this.a, str1, (String)localObject, "keyword", null);
+      } while (!(bdks.a(this.this$0) instanceof bdkn));
+      bdks.a(this.this$0, this.a, str1, (String)localObject, "keyword", null);
       return;
       if (QLog.isDebugVersion())
       {
@@ -120,7 +120,7 @@ public class DataLineMessageSpreadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.1
  * JD-Core Version:    0.7.0.1
  */

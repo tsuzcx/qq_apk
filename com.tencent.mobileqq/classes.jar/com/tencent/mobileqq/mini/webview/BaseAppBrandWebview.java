@@ -3,16 +3,18 @@ package com.tencent.mobileqq.mini.webview;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build.VERSION;
-import bdgk;
-import bjdl;
+import bgln;
+import blrt;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime.OnLoadServiceWebvieJsListener;
 import com.tencent.mobileqq.mini.appbrand.page.AppBrandServiceEventInterface;
 import com.tencent.mobileqq.mini.appbrand.page.embedded.EmbeddedWidgetClientFactory;
-import com.tencent.mobileqq.mini.appbrand.page.embedded.VideoEmbeddedWidgetClient;
+import com.tencent.mobileqq.mini.appbrand.page.embedded.EmbeddedWidgetClientHolder;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
+import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebSettingsExtension;
@@ -22,6 +24,7 @@ import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebSettings.LayoutAlgorithm;
 import com.tencent.smtt.sdk.WebView;
 import common.config.service.QzoneConfig;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -39,8 +42,10 @@ public class BaseAppBrandWebview
   public static int PAGE_WEBVIEW_ID_FACTORY;
   private static final String TAG;
   public static int aliveWebViewCount;
+  private static final boolean enableEmbeddedLiveConfig;
   private static final boolean enableEmbeddedVideoConfiog;
   public ApkgInfo apkgInfo;
+  protected boolean enableEmbeddedLive;
   protected boolean enableEmbeddedVideo;
   protected EmbeddedWidgetClientFactory mEmbeddedWidgetClientFactory;
   public ConcurrentLinkedQueue<BaseAppBrandWebview.RunData> mRunData = new ConcurrentLinkedQueue();
@@ -49,14 +54,23 @@ public class BaseAppBrandWebview
   
   static
   {
-    boolean bool = true;
+    boolean bool2 = true;
     TAG = BaseAppBrandWebview.class.getSimpleName();
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "enable_embedded_video", 1) == 1) {}
-    for (;;)
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "enable_embedded_video", 1) == 1)
     {
-      enableEmbeddedVideoConfiog = bool;
+      bool1 = true;
+      enableEmbeddedVideoConfiog = bool1;
+      if (QzoneConfig.getInstance().getConfig("qqminiapp", "enable_embedded_live", 1) != 1) {
+        break label58;
+      }
+    }
+    label58:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      enableEmbeddedLiveConfig = bool1;
       return;
-      bool = false;
+      bool1 = false;
+      break;
     }
   }
   
@@ -84,7 +98,7 @@ public class BaseAppBrandWebview
       paramContext.setMixedContentMode(0);
     }
     paramContext.setMediaPlaybackRequiresUserGesture(false);
-    this.userAgent = (paramContext.getUserAgentString() + " QQ/MiniApp QQ/" + bdgk.c());
+    this.userAgent = (paramContext.getUserAgentString() + " QQ/MiniApp QQ/" + bgln.c());
     paramContext.setUserAgent(this.userAgent);
     if (Build.VERSION.SDK_INT >= 11)
     {
@@ -100,19 +114,46 @@ public class BaseAppBrandWebview
       try
       {
         QLog.d("miniapp-embedded", 1, "enableFromWebviewPool : " + paramBoolean);
-        if ((getX5WebViewExtension() != null) && (paramBoolean))
+        paramContext = getX5WebViewExtension();
+        if (paramContext == null)
+        {
+          MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 701, "extension is null", "0");
+          QLog.d("miniapp-embedded", 1, "getX5WebViewExtension is null");
+        }
+        if ((paramContext != null) && (paramBoolean))
         {
           long l = System.currentTimeMillis();
+          paramContext = new String[1];
+          paramContext[0] = "video";
           this.mEmbeddedWidgetClientFactory = new EmbeddedWidgetClientFactory();
-          paramContext = getX5WebViewExtension();
-          EmbeddedWidgetClientFactory localEmbeddedWidgetClientFactory = this.mEmbeddedWidgetClientFactory;
-          this.enableEmbeddedVideo = paramContext.registerEmbeddedWidget(new String[] { "video" }, localEmbeddedWidgetClientFactory);
-          QLog.d("miniapp-embedded", 1, "registerEmbeddedWidget : " + this.enableEmbeddedVideo + "; " + (System.currentTimeMillis() - l));
+          paramBoolean = getX5WebViewExtension().registerEmbeddedWidget(paramContext, this.mEmbeddedWidgetClientFactory);
+          this.enableEmbeddedVideo = paramBoolean;
+          this.enableEmbeddedLive = paramBoolean;
+          QLog.d("miniapp-embedded", 1, "registerEmbeddedWidget : " + paramBoolean + "; tags:" + Arrays.toString(paramContext) + ";costTime:" + (System.currentTimeMillis() - l));
+          if (!this.enableEmbeddedVideo) {
+            MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 701, "registerEmbeddedWidget false", "0");
+          }
+          if (!this.enableEmbeddedLive) {
+            MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 711, "registerEmbeddedWidget false", "0");
+          }
+          if (!enableEmbeddedVideoConfiog) {
+            MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 701, "wns close", "0");
+          }
+          if (!enableEmbeddedLiveConfig) {
+            MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 711, "wns close", "0");
+          }
           if ((!this.enableEmbeddedVideo) || (!enableEmbeddedVideoConfiog)) {
-            break label328;
+            break label521;
           }
           paramBoolean = true;
           this.enableEmbeddedVideo = paramBoolean;
+          if ((!this.enableEmbeddedLive) || (!enableEmbeddedLiveConfig)) {
+            break label526;
+          }
+          paramBoolean = true;
+          this.enableEmbeddedLive = paramBoolean;
+          QLog.d("miniapp-embedded", 1, "enableEmbeddedVideo : " + this.enableEmbeddedVideo);
+          QLog.d("miniapp-embedded", 1, "enableEmbeddedLiveConfig : " + enableEmbeddedLiveConfig);
         }
       }
       catch (Throwable paramContext)
@@ -131,7 +172,10 @@ public class BaseAppBrandWebview
       {
         QLog.e(TAG, 1, "BaseAppBrandWebview init exception!", paramContext);
         continue;
-        label328:
+        label521:
+        paramBoolean = false;
+        continue;
+        label526:
         paramBoolean = false;
       }
     }
@@ -151,14 +195,14 @@ public class BaseAppBrandWebview
     super.destroy();
     QLog.e("miniapp-start", 1, "page webview destroy@@@@@");
     aliveWebViewCount -= 1;
-    if ((this.mEmbeddedWidgetClientFactory != null) && (this.mEmbeddedWidgetClientFactory.getVideoEmbeddedWidgetClientMap() != null))
+    if ((this.mEmbeddedWidgetClientFactory != null) && (this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap() != null))
     {
-      Iterator localIterator = this.mEmbeddedWidgetClientFactory.getVideoEmbeddedWidgetClientMap().entrySet().iterator();
+      Iterator localIterator = this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap().entrySet().iterator();
       while (localIterator.hasNext())
       {
-        VideoEmbeddedWidgetClient localVideoEmbeddedWidgetClient = (VideoEmbeddedWidgetClient)((Map.Entry)localIterator.next()).getValue();
-        if (localVideoEmbeddedWidgetClient != null) {
-          localVideoEmbeddedWidgetClient.webviewDestory();
+        EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)((Map.Entry)localIterator.next()).getValue();
+        if (localEmbeddedWidgetClientHolder != null) {
+          localEmbeddedWidgetClientHolder.webViewDestory();
         }
         localIterator.remove();
       }
@@ -246,7 +290,7 @@ public class BaseAppBrandWebview
     {
       localJSONObject.put("appId", this.apkgInfo.appId);
       localJSONObject.put("icon", this.apkgInfo.iconUrl);
-      localJSONObject.put("nickname", "testuser");
+      localJSONObject.put("nickname", this.apkgInfo.apkgName);
       String str3 = "release";
       String str4 = "";
       String str2 = str4;
@@ -266,11 +310,13 @@ public class BaseAppBrandWebview
           }
         }
       }
-      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bjdl.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { this.apkgInfo.mConfigStr, localJSONObject.toString() });
+      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + blrt.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { this.apkgInfo.mConfigStr, localJSONObject.toString() });
       str1 = str2;
       if (StorageUtil.getPreference().getBoolean(this.apkgInfo.appId + "_debug", false)) {
         str1 = str2 + "__qqConfig.debug=true;";
       }
+      str2 = QzoneConfig.getInstance().getConfig("qqminiapp", "opendatahosts", ".qlogo.com;.qlogo.cn;.qq.com");
+      str1 = str1 + "__qqConfig.openDataHosts='" + str2 + "';";
       evaluteJs(str1 + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};", null);
       return;
     }
@@ -294,6 +340,11 @@ public class BaseAppBrandWebview
     return aliveWebViewCount == 0;
   }
   
+  public boolean isEnableEmbeddedLive()
+  {
+    return this.enableEmbeddedLive;
+  }
+  
   public boolean isEnableEmbeddedVideo()
   {
     return this.enableEmbeddedVideo;
@@ -309,14 +360,14 @@ public class BaseAppBrandWebview
   public void onPause(boolean paramBoolean)
   {
     super.onPause();
-    if ((paramBoolean) && (this.mEmbeddedWidgetClientFactory != null) && (this.mEmbeddedWidgetClientFactory.getVideoEmbeddedWidgetClientMap() != null))
+    if ((paramBoolean) && (this.mEmbeddedWidgetClientFactory != null) && (this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap() != null))
     {
-      Iterator localIterator = this.mEmbeddedWidgetClientFactory.getVideoEmbeddedWidgetClientMap().entrySet().iterator();
+      Iterator localIterator = this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap().entrySet().iterator();
       while (localIterator.hasNext())
       {
-        VideoEmbeddedWidgetClient localVideoEmbeddedWidgetClient = (VideoEmbeddedWidgetClient)((Map.Entry)localIterator.next()).getValue();
-        if (localVideoEmbeddedWidgetClient != null) {
-          localVideoEmbeddedWidgetClient.webviewPause();
+        EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)((Map.Entry)localIterator.next()).getValue();
+        if (localEmbeddedWidgetClientHolder != null) {
+          localEmbeddedWidgetClientHolder.webViewPause();
         }
       }
     }
@@ -325,14 +376,14 @@ public class BaseAppBrandWebview
   public void onResume(boolean paramBoolean)
   {
     super.onResume();
-    if ((paramBoolean) && (this.mEmbeddedWidgetClientFactory != null) && (this.mEmbeddedWidgetClientFactory.getVideoEmbeddedWidgetClientMap() != null))
+    if ((paramBoolean) && (this.mEmbeddedWidgetClientFactory != null) && (this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap() != null))
     {
-      Iterator localIterator = this.mEmbeddedWidgetClientFactory.getVideoEmbeddedWidgetClientMap().entrySet().iterator();
+      Iterator localIterator = this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap().entrySet().iterator();
       while (localIterator.hasNext())
       {
-        VideoEmbeddedWidgetClient localVideoEmbeddedWidgetClient = (VideoEmbeddedWidgetClient)((Map.Entry)localIterator.next()).getValue();
-        if (localVideoEmbeddedWidgetClient != null) {
-          localVideoEmbeddedWidgetClient.webviewResume();
+        EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)((Map.Entry)localIterator.next()).getValue();
+        if (localEmbeddedWidgetClientHolder != null) {
+          localEmbeddedWidgetClientHolder.webViewResume();
         }
       }
     }
@@ -370,7 +421,7 @@ public class BaseAppBrandWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.webview.BaseAppBrandWebview
  * JD-Core Version:    0.7.0.1
  */

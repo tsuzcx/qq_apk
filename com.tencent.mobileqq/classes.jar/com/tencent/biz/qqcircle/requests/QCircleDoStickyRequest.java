@@ -7,7 +7,7 @@ import feedcloud.FeedCloudMeta.StComment;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudWrite.StDoTopReq;
 import feedcloud.FeedCloudWrite.StDoTopRsp;
-import tra;
+import uxx;
 
 public class QCircleDoStickyRequest
   extends QCircleBaseRequest
@@ -25,8 +25,8 @@ public class QCircleDoStickyRequest
     {
       return;
       this.mReq = new FeedCloudWrite.StDoTopReq();
-      this.mReq.feed.set(tra.a(paramStFeed));
-      this.mReq.comment.set(tra.a(paramStComment));
+      this.mReq.feed.set(uxx.a(paramStFeed));
+      this.mReq.comment.set(uxx.a(paramStComment));
       this.mReq.topType.set(paramInt);
     } while (paramStComment == null);
     this.mReq.comment.set(paramStComment);
@@ -51,7 +51,7 @@ public class QCircleDoStickyRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleDoStickyRequest
  * JD-Core Version:    0.7.0.1
  */

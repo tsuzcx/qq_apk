@@ -1,33 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
 public class adlm
-  implements CompoundButton.OnCheckedChangeListener
+  implements agpt
 {
-  public adlm(NotifyPushSettingActivity paramNotifyPushSettingActivity, alpk paramalpk) {}
+  public adlm(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean a(agpq paramagpq)
   {
-    if ((bdin.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) && (NotifyPushSettingActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)))
-    {
-      this.jdField_a_of_type_Alpk.e(paramBoolean);
-      return;
+    this.a.finish();
+    if (ArkFullScreenAppActivity.a(this.a)) {
+      this.a.overridePendingTransition(2130771997, 2130772001);
     }
-    NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
-    paramCompoundButton = NotifyPushSettingActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
-    if (!NotifyPushSettingActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramCompoundButton.setChecked(paramBoolean);
-      NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131695131), 0).b(5);
-      return;
-    }
+    return false;
+  }
+  
+  public boolean a(agpq paramagpq, String paramString1, String paramString2)
+  {
+    return false;
   }
 }
 

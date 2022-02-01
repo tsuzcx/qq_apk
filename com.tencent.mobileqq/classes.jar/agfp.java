@@ -1,12 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
-
-public class agfp
-  extends agfg
+public abstract interface agfp
 {
-  public TroopSignVideoView a;
-  public View e;
-  public View f;
+  public abstract void h();
 }
 
 

@@ -1,36 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
-class ton
-  extends amrx
+public class ton
+  extends tou
 {
-  ton(toi paramtoi) {}
-  
-  public int a()
+  public ton(BridgeModule paramBridgeModule)
   {
-    return 0;
+    super(paramBridgeModule);
   }
   
-  public void a(Object paramObject)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
-    }
-    this.a.a = true;
-    toi.a(this.a);
+    BridgeModule.access$700(this.a, paramInt2, paramIntent);
   }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    toi.a(this.a, 2131695729);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ton
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.av.redpacket;
 
-import lwf;
-import lwi;
+import lth;
+import ltk;
 
 public class AVRedPacketManager$2
   implements Runnable
@@ -12,12 +12,12 @@ public class AVRedPacketManager$2
   {
     AVRedPacketManager.a(this.this$0, this.this$0.g);
     long l = System.currentTimeMillis();
-    this.this$0.a.a(new lwf(this, l));
+    this.this$0.a.a(new lth(this, l));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.redpacket.AVRedPacketManager.2
  * JD-Core Version:    0.7.0.1
  */

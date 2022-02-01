@@ -1,28 +1,72 @@
-import android.widget.LinearLayout;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
-import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.avgame.util.AVGameNodeReportUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class nfq
-  implements benm
+  implements DialogInterface.OnClickListener
 {
-  public nfq(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  public nfq(AvGameLoadingActivity paramAvGameLoadingActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt1 = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight() - this.a.b * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double) + 56.0F * this.a.jdField_a_of_type_Float);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setMaxOverScrollY(paramInt1);
-    if (LebaSearchPluginManagerActivity.a(this.a))
+    int i = -102;
+    if (paramInt == 1)
     {
-      this.a.a(paramInt2);
-      LebaSearchPluginManagerActivity.b(this.a, paramInt2);
+      paramDialogInterface.cancel();
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        Object localObject2 = null;
+        Object localObject1 = null;
+        AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, true);
+        AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, 5);
+        paramDialogInterface = localObject2;
+        if (!this.jdField_a_of_type_Boolean) {
+          if (AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != 3)
+          {
+            paramDialogInterface = localObject2;
+            if (AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != 5) {}
+          }
+          else
+          {
+            paramDialogInterface = localObject1;
+            if (AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != null)
+            {
+              AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, 6);
+              paramDialogInterface = AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity);
+            }
+            QLog.e("AvGameManagerAvGameLoadingActivity", 2, "join failed alert DIALOG change to troop  with  troop UIN " + paramDialogInterface);
+          }
+        }
+        AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity), paramDialogInterface);
+        return;
+      }
+      QLog.e("AvGameManagerAvGameLoadingActivity", 2, "alertDialogWithRetCode createAvGameRoom app null ");
+      if (this.jdField_a_of_type_Boolean) {}
+      for (;;)
+      {
+        AVGameNodeReportUtil.b(i);
+        AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity);
+        return;
+        i = -103;
+      }
+    }
+    paramDialogInterface.cancel();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      AVGameNodeReportUtil.b(i);
+      AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity);
+      return;
+      i = -103;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nfq
  * JD-Core Version:    0.7.0.1
  */

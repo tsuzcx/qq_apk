@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.baseComponent.VComponent;
+import com.tencent.viola.ui.component.image.ImageCacheManager.ImageCacheKey;
 import com.tencent.viola.ui.component.image.VImage2;
 import com.tencent.viola.ui.component.image.VImage2.Measurable;
 import com.tencent.viola.ui.dom.Attr;
@@ -36,6 +37,7 @@ public class VImageView2
   private float[] borderRadii = new float[8];
   private float borderRadius;
   private float borderWidth;
+  private ImageCacheManager.ImageCacheKey cacheKey;
   private int fadingDuration = 200;
   private boolean isNeedFading = true;
   private boolean mDoAlphaAnim = true;
@@ -70,24 +72,16 @@ public class VImageView2
     if (localVImage2 != null) {
       i = localVImage2.getScaleRadioForBlur();
     }
-    return i;
+    int j = i;
+    if (i == 0) {
+      j = 1;
+    }
+    return j;
   }
   
   private boolean hasSetBorderRadius()
   {
-    Object localObject = getComponent();
-    if (localObject == null) {}
-    Style localStyle;
-    do
-    {
-      do
-      {
-        return false;
-        localObject = ((VComponent)localObject).getDomObject();
-      } while (localObject == null);
-      localStyle = ((DomObject)localObject).getStyle();
-    } while ((!isValidRadius(localStyle, "borderRadius", (DomObject)localObject)) && (!isValidRadius(localStyle, "borderTopLeftRadius", (DomObject)localObject)) && (!isValidRadius(localStyle, "borderTopRightRadius", (DomObject)localObject)) && (!isValidRadius(localStyle, "borderBottomLeftRadius", (DomObject)localObject)) && (!isValidRadius(localStyle, "borderBottomRightRadius", (DomObject)localObject)));
-    return true;
+    return (isNeedBorderRadius()) || (!isBorderRadiiEmpty());
   }
   
   private boolean isBorderRadiiEmpty()
@@ -127,17 +121,6 @@ public class VImageView2
     return (this.mDoAlphaAnim) && (l > 100L) && (this.isNeedFading);
   }
   
-  private boolean isValidRadius(Style paramStyle, String paramString, DomObject paramDomObject)
-  {
-    if ((paramDomObject == null) || (paramStyle == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      return false;
-      paramStyle = ViolaUtils.getString(paramStyle.get(paramString), null);
-    } while ((paramStyle == null) || (FlexConvertUtils.getFloatByViewport(paramStyle, paramDomObject.getViewPortWidth()) <= 0.0F));
-    return true;
-  }
-  
   private void resetBorderRadii()
   {
     int i = 0;
@@ -169,27 +152,90 @@ public class VImageView2
   {
     if (isNeedFading())
     {
-      paramDrawable = new TransitionDrawable(new Drawable[] { FAKE_PLACE_HOLDER, paramDrawable });
-      access$101(this, paramDrawable);
-      paramDrawable.startTransition(this.fadingDuration);
-      return;
+      TransitionDrawable localTransitionDrawable = new TransitionDrawable(new Drawable[] { FAKE_PLACE_HOLDER, paramDrawable });
+      access$101(this, localTransitionDrawable);
+      localTransitionDrawable.startTransition(this.fadingDuration);
     }
-    access$201(this, paramDrawable);
+    for (;;)
+    {
+      if (getComponent() != null) {
+        getComponent().onDrawableLoadFinish(this.mUrl, paramDrawable, this.cacheKey);
+      }
+      return;
+      access$201(this, paramDrawable);
+    }
   }
   
   private void setImageDirectly(Drawable paramDrawable)
   {
     if (!ImageDrawable.isMainThread())
     {
-      ViolaSDKManager.getInstance().postOnUiThread(new VImageView2.2(this, paramDrawable));
+      ViolaSDKManager.getInstance().postOnUiThread(new VImageView2.1(this, paramDrawable));
       return;
     }
     setDrawableWithFadingIfNeed(paramDrawable);
   }
   
+  private void setPaddingForBorderWidth()
+  {
+    VImage2 localVImage2 = getComponent();
+    if (localVImage2 == null) {}
+    while (this.borderWidth <= 0.1F) {
+      return;
+    }
+    float f1 = (float)(this.borderWidth / 1.5D);
+    Style localStyle = localVImage2.getDomObject().getStyle();
+    int i = localVImage2.getDomObject().getViewPortWidth();
+    float f2 = localStyle.getPaddingLeft(i);
+    float f5 = localStyle.getPaddingTop(i);
+    float f4 = localStyle.getPaddingRight(i);
+    float f3 = localStyle.getPaddingBottom(i);
+    if (!ViolaUtils.isUiThread())
+    {
+      ViolaSDKManager.getInstance().postOnUiThread(new VImageView2.2(this, f2, f1, f5, f4, f3));
+      return;
+    }
+    label145:
+    int j;
+    if (!Float.isNaN(f2))
+    {
+      f2 += f1;
+      i = Math.round(f2);
+      if (Float.isNaN(f5)) {
+        break label203;
+      }
+      f2 = f5 + f1;
+      j = Math.round(f2);
+      if (Float.isNaN(f4)) {
+        break label208;
+      }
+    }
+    label203:
+    label208:
+    for (f2 = f4 + f1;; f2 = f1)
+    {
+      int k = Math.round(f2);
+      f2 = f1;
+      if (!Float.isNaN(f3)) {
+        f2 = f1 + f3;
+      }
+      setPadding(i, j, k, Math.round(f2));
+      return;
+      f2 = f1;
+      break;
+      f2 = f1;
+      break label145;
+    }
+  }
+  
   public void bindComponent(VImage2 paramVImage2)
   {
     this.mImageRef = new WeakReference(paramVImage2);
+  }
+  
+  public ImageCacheManager.ImageCacheKey getCacheKey()
+  {
+    return this.cacheKey;
   }
   
   public VImage2 getComponent()
@@ -251,6 +297,53 @@ public class VImageView2
     return super.getScaleType();
   }
   
+  public void initBorderInfo(DomObject paramDomObject)
+  {
+    if (paramDomObject == null) {}
+    Style localStyle;
+    int i;
+    do
+    {
+      return;
+      localStyle = paramDomObject.getStyle();
+      i = paramDomObject.getViewPortWidth();
+      float f;
+      if (localStyle.containsKey("borderTopLeftRadius"))
+      {
+        f = FlexConvertUtils.getFloatByViewport(localStyle.get("borderTopLeftRadius"), i);
+        this.borderRadii[0] = f;
+        this.borderRadii[1] = f;
+      }
+      if (localStyle.containsKey("borderTopRightRadius"))
+      {
+        f = FlexConvertUtils.getFloatByViewport(localStyle.get("borderTopRightRadius"), i);
+        this.borderRadii[2] = f;
+        this.borderRadii[3] = f;
+      }
+      if (localStyle.containsKey("borderBottomLeftRadius"))
+      {
+        f = FlexConvertUtils.getFloatByViewport(localStyle.get("borderBottomLeftRadius"), i);
+        this.borderRadii[4] = f;
+        this.borderRadii[5] = f;
+      }
+      if (localStyle.containsKey("borderBottomRightRadius"))
+      {
+        f = FlexConvertUtils.getFloatByViewport(localStyle.get("borderBottomRightRadius"), i);
+        this.borderRadii[6] = f;
+        this.borderRadii[7] = f;
+      }
+    } while (!localStyle.containsKey("borderRadius"));
+    this.borderRadius = FlexConvertUtils.getFloatByViewport(localStyle.get("borderRadius"), i);
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    if (getComponent() != null) {
+      getComponent().tryRemoveCache();
+    }
+  }
+  
   public void resetState()
   {
     this.mUrl = null;
@@ -260,6 +353,7 @@ public class VImageView2
     this.fadingDuration = 200;
     resetBorderRadii();
     this.mImageStartTs = 0L;
+    this.cacheKey = null;
   }
   
   public void setAlphaAnim(boolean paramBoolean)
@@ -297,6 +391,11 @@ public class VImageView2
     this.borderRadii[5] = paramFloat;
   }
   
+  public void setCacheKey(ImageCacheManager.ImageCacheKey paramImageCacheKey)
+  {
+    this.cacheKey = paramImageCacheKey;
+  }
+  
   public void setImageBitmap(Bitmap paramBitmap)
   {
     setImageDrawable(new BitmapDrawable(paramBitmap));
@@ -330,36 +429,14 @@ public class VImageView2
     if ((localVImage2 == null) || (localVImage2.getDomObject() == null) || (localLayoutParams == null)) {
       return;
     }
-    float f1;
+    setPaddingForBorderWidth();
+    int k = localVImage2.getBlurRadius();
     int i;
-    float f2;
-    float f5;
-    float f4;
-    float f3;
-    int k;
-    if (this.borderWidth > 0.1F)
+    if ((k > 0) && (paramDrawable != null) && (paramDrawable.getIntrinsicWidth() > 0) && (paramDrawable.getIntrinsicHeight() > 0))
     {
-      f1 = (float)(this.borderWidth / 1.5D);
-      Style localStyle = localVImage2.getDomObject().getStyle();
-      i = localVImage2.getDomObject().getViewPortWidth();
-      f2 = localStyle.getPaddingLeft(i);
-      f5 = localStyle.getPaddingTop(i);
-      f4 = localStyle.getPaddingRight(i);
-      f3 = localStyle.getPaddingBottom(i);
-      if (!ViolaUtils.isUiThread()) {
-        ViolaSDKManager.getInstance().postOnUiThread(new VImageView2.1(this, f2, f1, f5, f4, f3));
-      }
-    }
-    else
-    {
-      k = localVImage2.getBlurRadius();
-      if ((k <= 0) || (paramDrawable == null) || (paramDrawable.getIntrinsicWidth() <= 0) || (paramDrawable.getIntrinsicHeight() <= 0)) {
-        break label308;
-      }
       i = 1;
-      label172:
       if ((getComponent() == null) || (!getComponent().isGif())) {
-        break label314;
+        break label107;
       }
     }
     boolean bool;
@@ -367,48 +444,16 @@ public class VImageView2
     {
       bool = hasSetBorderRadius();
       if (j == 0) {
-        break label320;
+        break label112;
       }
       setImageDirectly(paramDrawable);
       return;
-      if (!Float.isNaN(f2))
-      {
-        f2 += f1;
-        label217:
-        i = Math.round(f2);
-        if (Float.isNaN(f5)) {
-          break label298;
-        }
-        f2 = f5 + f1;
-        label236:
-        k = Math.round(f2);
-        if (Float.isNaN(f4)) {
-          break label303;
-        }
-      }
-      label298:
-      label303:
-      for (f2 = f4 + f1;; f2 = f1)
-      {
-        int m = Math.round(f2);
-        f2 = f1;
-        if (!Float.isNaN(f3)) {
-          f2 = f1 + f3;
-        }
-        setPadding(i, k, m, Math.round(f2));
-        break;
-        f2 = f1;
-        break label217;
-        f2 = f1;
-        break label236;
-      }
-      label308:
       i = 0;
-      break label172;
-      label314:
+      break;
+      label107:
       j = 0;
     }
-    label320:
+    label112:
     if ((i != 0) && (bool))
     {
       createRoundImageAndBlur(paramDrawable, k, localLayoutParams);
@@ -448,10 +493,22 @@ public class VImageView2
   {
     this.mUrl = paramString;
   }
+  
+  public void trySetImage(Drawable paramDrawable)
+  {
+    if (paramDrawable == null) {
+      return;
+    }
+    setPaddingForBorderWidth();
+    if (getComponent() != null) {
+      getComponent().setHasSetPlaceHolder(true);
+    }
+    super.setImageDrawable(paramDrawable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.image.VImageView2
  * JD-Core Version:    0.7.0.1
  */

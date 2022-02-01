@@ -11,6 +11,7 @@ public class AEEditorImageViewPager
   extends ViewPager
 {
   private boolean a = true;
+  private boolean b = true;
   
   public AEEditorImageViewPager(Context paramContext)
   {
@@ -24,6 +25,9 @@ public class AEEditorImageViewPager
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
+    if (paramMotionEvent.getAction() == 0) {
+      this.b = true;
+    }
     if (this.a) {
       return super.onInterceptTouchEvent(paramMotionEvent);
     }
@@ -37,9 +41,17 @@ public class AEEditorImageViewPager
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a) {
+    if (paramMotionEvent.getAction() == 0) {
+      this.b = true;
+    }
+    if ((this.a) && (this.b))
+    {
+      if (paramMotionEvent.getAction() == 1) {
+        this.b = false;
+      }
       return super.onTouchEvent(paramMotionEvent);
     }
+    this.b = false;
     return false;
   }
   
@@ -50,7 +62,7 @@ public class AEEditorImageViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.edit.AEEditorImageViewPager
  * JD-Core Version:    0.7.0.1
  */

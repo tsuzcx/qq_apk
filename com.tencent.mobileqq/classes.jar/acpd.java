@@ -1,23 +1,49 @@
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.text.TextUtils;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.qphone.base.util.QLog;
 
-public class acpd
-  implements View.OnLayoutChangeListener
+class acpd
+  implements acqs
 {
-  private boolean jdField_a_of_type_Boolean;
+  private acpd(acow paramacow) {}
   
-  public acpd(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public String a(String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    int i = 0;
+    if ((acow.a(this.a) == null) || (acow.a(this.a).a() == null) || (acow.a(this.a).a() == null))
     {
-      Looper.myQueue().addIdleHandler(new acpe(this));
-      this.jdField_a_of_type_Boolean = true;
+      QLog.i("EndCardWeb", 1, "onGetAdInfo fail data empty");
+      i = 1;
     }
+    if (TextUtils.isEmpty(acow.a(this.a).a().adsContent))
+    {
+      QLog.i("EndCardWeb", 1, "onGetAdInfo fail adsContent empty");
+      i = 1;
+    }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(acow.a(this.a).a().getTraceId())))
+    {
+      QLog.i("EndCardWeb", 1, "onGetAdInfo fail req=" + paramString + ",local=" + acow.a(this.a).a().getTraceId());
+      i = 1;
+    }
+    if (i != 0)
+    {
+      if (acow.a(this.a) != null) {
+        acow.a(this.a).a();
+      }
+      return "";
+    }
+    return acow.a(this.a).a().adsContent;
+  }
+  
+  public void a(String paramString)
+  {
+    if (acow.a(this.a) != null)
+    {
+      acow.a(this.a).a(2131362118, paramString);
+      return;
+    }
+    QLog.i("EndCardWeb", 1, "mvAnimationController null");
   }
 }
 

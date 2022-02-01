@@ -1,6 +1,6 @@
 package com.tencent.util.pm;
 
-import bdjz;
+import bgpa;
 
 public final class PackageUtil$4
   implements Runnable
@@ -12,7 +12,7 @@ public final class PackageUtil$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.pm.PackageUtil.4
  * JD-Core Version:    0.7.0.1
  */

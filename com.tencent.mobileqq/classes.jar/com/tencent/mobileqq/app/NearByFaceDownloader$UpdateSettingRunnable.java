@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.app;
 
 import android.text.TextUtils;
-import bdbu;
+import aocs;
+import com.tencent.mobileqq.app.face.FaceInfo;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class NearByFaceDownloader$UpdateSettingRunnable
   implements Runnable
 {
+  FaceInfo jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo;
   Setting jdField_a_of_type_ComTencentMobileqqDataSetting;
-  FaceInfo jdField_a_of_type_ComTencentMobileqqUtilFaceInfo;
   
   public NearByFaceDownloader$UpdateSettingRunnable(NearByFaceDownloader paramNearByFaceDownloader, Setting paramSetting, FaceInfo paramFaceInfo)
   {
     this.jdField_a_of_type_ComTencentMobileqqDataSetting = paramSetting;
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo = paramFaceInfo;
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo = paramFaceInfo;
   }
   
   public void run()
   {
-    Object localObject1 = (bdbu)this.this$0.a.getManager(216);
-    ((bdbu)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a;
-    localObject2 = ((bdbu)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+    Object localObject1 = (aocs)this.this$0.a.getManager(216);
+    ((aocs)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.a;
+    localObject2 = ((aocs)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo);
     localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("/"));
     localObject2 = ((String)localObject2).substring(((String)localObject2).lastIndexOf("/") + 1);
     if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).endsWith("jpg_")))
@@ -44,7 +44,7 @@ class NearByFaceDownloader$UpdateSettingRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearByFaceDownloader.UpdateSettingRunnable
  * JD-Core Version:    0.7.0.1
  */

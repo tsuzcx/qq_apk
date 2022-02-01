@@ -1,26 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class xfn
-  implements View.OnClickListener
+public final class xfn
+  extends weu
 {
-  xfn(xfh paramxfh) {}
+  public int a;
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public xfn(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
   {
-    this.a.dismiss();
-    if ((this.a.a != null) && (this.a.a.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 3, 4);
-    }
-    wxk.a("0X80076C6");
-    wxk.b("0X80075DA");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xfn
  * JD-Core Version:    0.7.0.1
  */

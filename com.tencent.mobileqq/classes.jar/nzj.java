@@ -1,33 +1,23 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.17.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
 
 public class nzj
-  extends oxe
+  implements DialogInterface.OnClickListener
 {
-  public nzj(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public nzj(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, Context paramContext, Uri paramUri, String paramString1, String paramString2) {}
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
-    }
-    this.a.runOnUiThread(new ReadInJoyNewFeedsActivity.17.1(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, true, this.b);
   }
-  
-  public void b(int paramInt)
-  {
-    this.a.f(paramInt);
-  }
-  
-  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzj
  * JD-Core Version:    0.7.0.1
  */

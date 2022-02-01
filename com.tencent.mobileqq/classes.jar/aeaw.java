@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
-import com.tencent.mobileqq.widget.ContainerView;
+import android.view.View;
+import com.tencent.mobileqq.activity.Conversation;
+import mqq.app.QQPermissionCallback;
 
-public class aeaw
-  implements anyo
+class aeaw
+  implements QQPermissionCallback
 {
-  public aeaw(TextPreviewActivity paramTextPreviewActivity) {}
+  aeaw(aeav paramaeav, View paramView) {}
   
-  public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    anyj.a(this.a.app, this.a.e, paramArrayOfHotWordItem);
-    paramArrayOfHotWordItem = bdrv.a(this.a.e, this.a.f, 30, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 13);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
-    {
-      this.a.jdField_a_of_type_JavaLangCharSequence = paramArrayOfHotWordItem;
-      return;
-    }
-    this.a.jdField_a_of_type_JavaLangCharSequence = null;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
-    this.a.i = 0;
+    bglp.b(aeav.a(this.jdField_a_of_type_Aeav).a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Aeav.b(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

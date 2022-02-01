@@ -1,17 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.qapmsdk.common.logger.ILogProxy;
+import com.tencent.qapmsdk.common.logger.LogState;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
 public class adci
-  implements DialogInterface.OnClickListener
+  implements ILogProxy
 {
-  public adci(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  int a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adci(int paramInt)
   {
-    azqs.b(this.a.app, "dc00898", "", "", "0X800A0D8", "0X800A0D8", 0, 0, "", "", "", "");
-    FriendProfileMoreInfoActivity.b(this.a);
+    this.a = paramInt;
   }
+  
+  public void doLog(@NotNull LogState paramLogState, @NotNull String... paramVarArgs)
+  {
+    if (paramLogState.getValue() > this.a) {}
+    while ((paramVarArgs == null) || (paramVarArgs.length <= 1)) {
+      return;
+    }
+    Object localObject = paramVarArgs[0];
+    localObject = new StringBuilder(256);
+    int i = 1;
+    while (i < paramVarArgs.length)
+    {
+      ((StringBuilder)localObject).append(paramVarArgs[i]);
+      i += 1;
+    }
+    switch (adcj.a[paramLogState.ordinal()])
+    {
+    default: 
+      return;
+    case 1: 
+      QLog.d(paramVarArgs[0], 2, ((StringBuilder)localObject).toString());
+    case 2: 
+      QLog.d(paramVarArgs[0], 2, ((StringBuilder)localObject).toString());
+      return;
+    case 3: 
+      QLog.i(paramVarArgs[0], 1, ((StringBuilder)localObject).toString());
+      return;
+    case 4: 
+      QLog.w(paramVarArgs[0], 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    QLog.e(paramVarArgs[0], 1, ((StringBuilder)localObject).toString());
+  }
+  
+  public void flush(@NotNull String paramString) {}
 }
 
 

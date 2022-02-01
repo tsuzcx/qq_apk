@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.audiorecorder;
 
-import alud;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import anni;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -193,7 +193,7 @@ public class LameMp3Recorder
     }
     if (getTime() < 1)
     {
-      this.mMainHandler.sendMessage(generateRecordErrMsg(alud.a(2131706376)));
+      this.mMainHandler.sendMessage(generateRecordErrMsg(anni.a(2131704787)));
       recordStop();
     }
     this.mPauseTime = System.currentTimeMillis();
@@ -330,7 +330,7 @@ public class LameMp3Recorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder
  * JD-Core Version:    0.7.0.1
  */

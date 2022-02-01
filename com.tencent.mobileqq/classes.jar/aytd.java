@@ -1,39 +1,10 @@
-class aytd
+public abstract interface aytd
 {
-  boolean jdField_a_of_type_Boolean;
+  public abstract void a(boolean paramBoolean);
   
-  public aytd(aytb paramaytb, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void b();
   
-  public void a(boolean paramBoolean)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  public abstract void b(int paramInt);
 }
 
 

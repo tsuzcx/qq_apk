@@ -1,50 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.1.1;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-class agql
-  extends asnf
+public class agql
+  extends aopa
 {
-  agql(agqk paramagqk) {}
-  
-  protected void a(Object paramObject)
+  agql(agqk paramagqk, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    QLog.i(agqk.g, 1, "[onGameUsrInfoChangedNotify]");
-    for (;;)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  protected void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
+    for (boolean bool = true;; bool = false)
     {
-      asmt localasmt;
-      try
-      {
-        if ((paramObject instanceof ArrayList))
-        {
-          paramObject = ((ArrayList)paramObject).iterator();
-          if (paramObject.hasNext())
-          {
-            localasmt = (asmt)paramObject.next();
-            if ((TextUtils.isEmpty(localasmt.b)) || (!localasmt.b.equals(this.a.a.a()))) {
-              break label115;
-            }
-            agqk.a(this.a, localasmt);
-            agqk.a(this.a, localasmt);
-            QLog.i(agqk.g, 1, "update friend info.");
-            continue;
-          }
-        }
-        return;
-      }
-      catch (Throwable paramObject)
-      {
-        QLog.e(agqk.g, 1, paramObject.getMessage());
-      }
-      label115:
-      if ((!TextUtils.isEmpty(localasmt.b)) && (localasmt.b.equals(this.a.a.b())))
-      {
-        agqk.b(this.a, localasmt);
-        QLog.i(agqk.g, 1, "update my info.");
-      }
+      ArkAppCenter.a().post(this.a.a, new ArkAppLocationManager.1.1(this, bool, paramSosoLbsInfo));
+      return;
     }
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < 3) {
+      return;
+    }
+    a(paramInt1, null);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    a(paramInt, paramSosoLbsInfo);
   }
 }
 

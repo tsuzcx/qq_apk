@@ -1,9 +1,7 @@
 package com.tencent.beacon.core.strategy;
 
 import android.content.Context;
-import com.tencent.beacon.core.c.g;
-import com.tencent.beacon.core.c.h;
-import com.tencent.beacon.core.c.i;
+import com.tencent.beacon.core.d.k;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.beacon.upload.InitHandleListener;
 import java.util.Iterator;
@@ -11,38 +9,37 @@ import java.util.List;
 import java.util.Map;
 
 public class StrategyQueryModule
-  extends com.tencent.beacon.core.b
+  extends com.tencent.beacon.core.c
 {
   public static final int CheckApp = 1;
   public static final int EndQuery = 3;
   public static final String LAST_SUCCESS_STRATEGY_QUERY_TIME = "last_success_strategy_query_time";
   public static final int Launch = 0;
+  private static final Object QUERY_STATE_LOCK = new Object();
   public static final int StartQuery = 2;
   public static final String TODAY_SUCCESS_STRATEGY_QUERY_TIMES = "today_success_strategy_query_times";
   public static final int WaitNextQuery = 4;
-  private static StrategyQueryModule mInstance = null;
+  private static volatile StrategyQueryModule mInstance;
   private boolean atLeastAComQueryEnd = false;
   private boolean atLeastAComQuerySuccess = false;
   private int commonQueryTime = 0;
   protected int currentQueryStep = 0;
-  private Runnable getInitConfigTask = new StrategyQueryModule.1(this);
   protected boolean isAppFirstRun = false;
   private InitHandleListener mInitHandleListener;
-  private Object queryStateLock = new Object();
-  protected a strategy = null;
-  private g strategyHandler = null;
-  private c strategyQueryRunner = null;
-  protected h uploadHandler = null;
+  protected c strategy = null;
+  private com.tencent.beacon.core.d.g strategyHandler = null;
+  private i strategyQueryRunner = null;
+  protected com.tencent.beacon.core.d.j uploadHandler = null;
   
   private StrategyQueryModule(Context paramContext)
   {
     super(paramContext);
-    this.uploadHandler = i.a(paramContext);
-    this.strategy = a.a();
-    com.tencent.beacon.core.a.b.b().a(this.getInitConfigTask);
-    this.strategyHandler = new d(paramContext);
+    this.uploadHandler = k.a(paramContext);
+    this.strategy = c.g();
+    g.b(paramContext).a(this.strategy);
+    this.strategyHandler = new j(paramContext);
     this.uploadHandler.a(101, getStrategyHandler());
-    this.strategyQueryRunner = new c(paramContext);
+    this.strategyQueryRunner = new i(paramContext);
   }
   
   public static StrategyQueryModule getInstance()
@@ -73,15 +70,15 @@ public class StrategyQueryModule
   }
   
   /* Error */
-  public static h getMyUpload()
+  public static com.tencent.beacon.core.d.j getMyUpload()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 48	com/tencent/beacon/core/strategy/StrategyQueryModule:mInstance	Lcom/tencent/beacon/core/strategy/StrategyQueryModule;
+    //   3: getstatic 113	com/tencent/beacon/core/strategy/StrategyQueryModule:mInstance	Lcom/tencent/beacon/core/strategy/StrategyQueryModule;
     //   6: ifnull +15 -> 21
-    //   9: getstatic 48	com/tencent/beacon/core/strategy/StrategyQueryModule:mInstance	Lcom/tencent/beacon/core/strategy/StrategyQueryModule;
-    //   12: invokespecial 135	com/tencent/beacon/core/strategy/StrategyQueryModule:getStrategyUploadHandler	()Lcom/tencent/beacon/core/c/h;
+    //   9: getstatic 113	com/tencent/beacon/core/strategy/StrategyQueryModule:mInstance	Lcom/tencent/beacon/core/strategy/StrategyQueryModule;
+    //   12: invokespecial 120	com/tencent/beacon/core/strategy/StrategyQueryModule:getStrategyUploadHandler	()Lcom/tencent/beacon/core/d/j;
     //   15: astore_0
     //   16: ldc 2
     //   18: monitorexit
@@ -97,19 +94,19 @@ public class StrategyQueryModule
     //   31: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   15	8	0	localh	h
+    //   15	8	0	localj	com.tencent.beacon.core.d.j
     //   26	5	0	localObject	Object
     // Exception table:
     //   from	to	target	type
     //   3	16	26	finally
   }
   
-  private h getStrategyUploadHandler()
+  private com.tencent.beacon.core.d.j getStrategyUploadHandler()
   {
     try
     {
-      h localh = this.uploadHandler;
-      return localh;
+      com.tencent.beacon.core.d.j localj = this.uploadHandler;
+      return localj;
     }
     finally
     {
@@ -120,7 +117,7 @@ public class StrategyQueryModule
   
   public int getCommonQueryTime()
   {
-    synchronized (this.queryStateLock)
+    synchronized (QUERY_STATE_LOCK)
     {
       int i = this.commonQueryTime;
       return i;
@@ -129,19 +126,19 @@ public class StrategyQueryModule
   
   public int getCurrentQueryStep()
   {
-    synchronized (this.queryStateLock)
+    synchronized (QUERY_STATE_LOCK)
     {
       int i = this.currentQueryStep;
       return i;
     }
   }
   
-  public a getStrategy()
+  public c getStrategy()
   {
     try
     {
-      a locala = this.strategy;
-      return locala;
+      c localc = this.strategy;
+      return localc;
     }
     finally
     {
@@ -150,11 +147,11 @@ public class StrategyQueryModule
     }
   }
   
-  public g getStrategyHandler()
+  public com.tencent.beacon.core.d.g getStrategyHandler()
   {
     try
     {
-      g localg = this.strategyHandler;
+      com.tencent.beacon.core.d.g localg = this.strategyHandler;
       return localg;
     }
     finally
@@ -180,7 +177,7 @@ public class StrategyQueryModule
   
   public boolean isAtLeastAComQueryEnd()
   {
-    synchronized (this.queryStateLock)
+    synchronized (QUERY_STATE_LOCK)
     {
       boolean bool = this.atLeastAComQueryEnd;
       return bool;
@@ -189,7 +186,7 @@ public class StrategyQueryModule
   
   public boolean isAtLeastAComQuerySuccess()
   {
-    synchronized (this.queryStateLock)
+    synchronized (QUERY_STATE_LOCK)
     {
       boolean bool = this.atLeastAComQuerySuccess;
       return bool;
@@ -200,24 +197,24 @@ public class StrategyQueryModule
   {
     Iterator localIterator = UserAction.beaconModules.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.beacon.core.b)localIterator.next()).onModuleStrategyUpdated(paramInt, paramMap);
+      ((com.tencent.beacon.core.c)localIterator.next()).onModuleStrategyUpdated(paramInt, paramMap);
     }
   }
   
-  public void notifyStrategyChanged(a parama)
+  public void notifyStrategyChanged(c paramc)
   {
     Iterator localIterator = UserAction.beaconModules.iterator();
     while (localIterator.hasNext())
     {
-      com.tencent.beacon.core.b localb = (com.tencent.beacon.core.b)localIterator.next();
+      com.tencent.beacon.core.c localc = (com.tencent.beacon.core.c)localIterator.next();
       try
       {
-        localb.onStrategyUpdated(parama);
+        localc.onStrategyUpdated(paramc);
       }
       catch (Throwable localThrowable)
       {
-        com.tencent.beacon.core.d.b.a(localThrowable);
-        com.tencent.beacon.core.d.b.d("[strategy] error %s", new Object[] { localThrowable.toString() });
+        com.tencent.beacon.core.e.d.a(localThrowable);
+        com.tencent.beacon.core.e.d.b("[strategy] error %s", new Object[] { localThrowable.toString() });
       }
     }
   }
@@ -225,30 +222,42 @@ public class StrategyQueryModule
   public void onFirstStrategyQueryFinished()
   {
     super.onFirstStrategyQueryFinished();
-    if (this.mInitHandleListener != null) {
-      this.mInitHandleListener.onInitEnd();
+    InitHandleListener localInitHandleListener = this.mInitHandleListener;
+    if (localInitHandleListener != null) {
+      localInitHandleListener.onInitEnd();
     }
   }
   
   public void onSDKInit(Context paramContext)
   {
     super.onSDKInit(paramContext);
-    com.tencent.beacon.core.d.b.b("[module] strategy module > TRUE", new Object[0]);
+    com.tencent.beacon.core.e.d.a("[module] strategy module > TRUE", new Object[0]);
     startQuery();
+    com.tencent.beacon.core.a.g.a().a(paramContext, new h(this, paramContext));
   }
   
   public void onStrategyQueryFinished()
   {
     super.onStrategyQueryFinished();
-    if (this.mInitHandleListener != null) {
-      this.mInitHandleListener.onStrategyQuerySuccess();
+    InitHandleListener localInitHandleListener = this.mInitHandleListener;
+    if (localInitHandleListener != null) {
+      localInitHandleListener.onStrategyQuerySuccess();
     }
   }
   
-  public void onStrategyUpdated(a parama)
+  public void onStrategyUpdated(c paramc)
   {
-    super.onStrategyUpdated(parama);
-    this.strategy.j();
+    try
+    {
+      super.onStrategyUpdated(paramc);
+      this.strategy.l();
+      return;
+    }
+    finally
+    {
+      paramc = finally;
+      throw paramc;
+    }
   }
   
   public void setAppFirstRun(boolean paramBoolean)
@@ -256,7 +265,7 @@ public class StrategyQueryModule
     try
     {
       this.isAppFirstRun = paramBoolean;
-      com.tencent.beacon.core.d.b.f("[strategy] set isFirst: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      com.tencent.beacon.core.e.d.f("[strategy] set isFirst: %b", new Object[] { Boolean.valueOf(paramBoolean) });
       return;
     }
     finally
@@ -268,7 +277,7 @@ public class StrategyQueryModule
   
   public void setAtLeastAComQueryEnd(boolean paramBoolean)
   {
-    synchronized (this.queryStateLock)
+    synchronized (QUERY_STATE_LOCK)
     {
       this.atLeastAComQueryEnd = paramBoolean;
       return;
@@ -277,7 +286,7 @@ public class StrategyQueryModule
   
   public void setAtLeastAComQuerySuccess(boolean paramBoolean)
   {
-    synchronized (this.queryStateLock)
+    synchronized (QUERY_STATE_LOCK)
     {
       this.atLeastAComQuerySuccess = paramBoolean;
       return;
@@ -286,33 +295,33 @@ public class StrategyQueryModule
   
   public void setCommonQueryTime(int paramInt)
   {
-    synchronized (this.queryStateLock)
+    synchronized (QUERY_STATE_LOCK)
     {
       this.commonQueryTime = paramInt;
       return;
     }
   }
   
-  public void setCommonStrategy(a parama)
+  public void setCommonStrategy(c paramc)
   {
     try
     {
-      this.strategy = parama;
+      this.strategy = paramc;
       return;
     }
     finally
     {
-      parama = finally;
-      throw parama;
+      paramc = finally;
+      throw paramc;
     }
   }
   
   public void setCurrentQueryStep(int paramInt)
   {
-    synchronized (this.queryStateLock)
+    synchronized (QUERY_STATE_LOCK)
     {
       this.currentQueryStep = paramInt;
-      com.tencent.beacon.core.d.b.f("[strategy] current query step:%d", new Object[] { Integer.valueOf(paramInt) });
+      com.tencent.beacon.core.e.d.f("[strategy] current query step:%d", new Object[] { Integer.valueOf(paramInt) });
       if (paramInt == 3) {
         setAtLeastAComQueryEnd(true);
       }
@@ -329,8 +338,11 @@ public class StrategyQueryModule
   {
     try
     {
-      if (!this.strategyQueryRunner.a) {
-        com.tencent.beacon.core.a.b.b().a(this.strategyQueryRunner);
+      i locali = this.strategyQueryRunner;
+      if (!locali.c)
+      {
+        locali.d();
+        com.tencent.beacon.core.a.d.a().a(this.strategyQueryRunner);
       }
       return;
     }
@@ -343,7 +355,7 @@ public class StrategyQueryModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.strategy.StrategyQueryModule
  * JD-Core Version:    0.7.0.1
  */

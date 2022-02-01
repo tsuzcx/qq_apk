@@ -1,32 +1,49 @@
-import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
 
-class asdd
-  implements DialogInterface.OnClickListener
+public class asdd
+  extends asde
 {
-  asdd(asdb paramasdb) {}
+  private int c = 4;
+  private int d = 27;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public asdd(Context paramContext, arxd paramarxd, int paramInt, boolean paramBoolean)
   {
-    if (this.a.c) {
-      bfhz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "52", "0", false);
+    super(paramContext, paramarxd, paramInt);
+    a(paramBoolean);
+  }
+  
+  private int a(int[] paramArrayOfInt)
+  {
+    return (paramArrayOfInt.length + this.d - 1) / this.d;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.c = 5;
+      this.d = 34;
+      return;
     }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_Long), "addToQQFavorites" })));
-    paramDialogInterface.setPackage(this.a.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("pkg_name"));
-    paramDialogInterface = PendingIntent.getActivity(this.a.jdField_a_of_type_AndroidAppActivity, 0, paramDialogInterface, 268435456);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("is_share_flag", true);
-    if (this.a.jdField_a_of_type_Long > 0L) {
-      localIntent.putExtra("activity_finish_run_pendingIntent", paramDialogInterface);
+    this.c = 4;
+    this.d = 27;
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public int b()
+  {
+    return a(this.jdField_a_of_type_ArrayOfInt);
+  }
+  
+  protected void c()
+  {
+    if (this.jdField_a_of_type_Arxj != null) {
+      this.jdField_a_of_type_Arxj.a(this.c, 7);
     }
-    bivc.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, true);
-    bivo.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, 0);
   }
 }
 

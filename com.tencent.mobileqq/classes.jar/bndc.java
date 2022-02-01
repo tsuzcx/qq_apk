@@ -1,26 +1,37 @@
-import android.util.Property;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.List;
+import mqq.util.WeakReference;
 
-class bndc
-  extends Property<bndb, Float>
+final class bndc
+  extends PagerAdapter
 {
-  bndc(bndb parambndb, Class paramClass, String paramString)
+  private List<bndb> a;
+  
+  public void a(List<bndb> paramList)
   {
-    super(paramClass, paramString);
+    this.a = ((List)new WeakReference(paramList).get());
   }
   
-  public Float a(bndb parambndb)
+  public int getCount()
   {
-    if (parambndb != null) {
-      return Float.valueOf(bndb.a(parambndb));
-    }
-    return Float.valueOf(0.0F);
+    return this.a.size();
   }
   
-  public void a(bndb parambndb, Float paramFloat)
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (parambndb != null) {
-      bndb.a(parambndb, paramFloat.floatValue());
+    View localView = bndb.a((bndb)this.a.get(paramInt));
+    if ((bndb.a((bndb)this.a.get(paramInt)) instanceof bndx)) {
+      ((bndx)bndb.a((bndb)this.a.get(paramInt))).a();
     }
+    paramViewGroup.addView(localView);
+    return localView;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

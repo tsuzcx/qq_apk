@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.upload;
 
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import qxg;
-import qxh;
-import qxs;
+import rtf;
+import rtg;
+import rtr;
 
 public class RIJUgcImageUploader$1
   implements Runnable
 {
-  public RIJUgcImageUploader$1(qxg paramqxg) {}
+  public RIJUgcImageUploader$1(rtf paramrtf) {}
   
   public void run()
   {
-    qxg.a(this.this$0, new qxs(qxg.a(this.this$0), qxg.a(this.this$0), new qxh(this)));
+    rtf.a(this.this$0, new rtr(rtf.a(this.this$0), rtf.a(this.this$0), new rtg(this)));
     ThreadManagerV2.excute(new RIJUgcImageUploader.1.2(this), 128, null, false);
   }
 }

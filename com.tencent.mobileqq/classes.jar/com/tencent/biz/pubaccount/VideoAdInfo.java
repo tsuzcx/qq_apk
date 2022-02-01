@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import awhp;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -14,11 +13,12 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nsg;
+import obk;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,23 +29,23 @@ import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PosAdInfo;
 public class VideoAdInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoAdInfo> CREATOR = new nsg();
+  public static final Parcelable.Creator<VideoAdInfo> CREATOR = new obk();
   public String A;
   public String B;
   public String C;
-  @awhp
+  @notColumn
   public String D = "";
-  @awhp
+  @notColumn
   public String E = "";
-  @awhp
+  @notColumn
   public String F = "";
-  @awhp
+  @notColumn
   public String G = "";
-  @awhp
+  @notColumn
   public String H = "";
-  @awhp
+  @notColumn
   public String I;
-  @awhp
+  @notColumn
   public String J;
   public int a;
   public long a;
@@ -61,13 +61,13 @@ public class VideoAdInfo
   public long c;
   public String c;
   public ArrayList<String> c;
-  @awhp
+  @notColumn
   public boolean c;
   public int d;
   public long d;
   public String d;
   public ArrayList<String> d;
-  @awhp
+  @notColumn
   public boolean d;
   public int e;
   public long e;
@@ -76,17 +76,17 @@ public class VideoAdInfo
   public int f;
   public long f;
   public String f;
-  @awhp
+  @notColumn
   public ArrayList<String> f;
   public int g;
   public long g;
   public String g;
-  @awhp
+  @notColumn
   public ArrayList<String> g;
   public int h;
   public long h;
   public String h;
-  @awhp
+  @notColumn
   public ArrayList<String> h;
   public int i;
   public String i;
@@ -100,16 +100,16 @@ public class VideoAdInfo
   public String m;
   public int n;
   public String n;
-  @awhp
+  @notColumn
   public int o;
   public String o;
-  @awhp
+  @notColumn
   public int p;
   public String p;
-  @awhp
+  @notColumn
   public int q;
   public String q;
-  @awhp
+  @notColumn
   public int r;
   public String r;
   public String s;

@@ -1,32 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Method;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class aliv
+class aliv
+  implements Handler.Callback
 {
-  public static void a(boolean paramBoolean, String paramString1, String paramString2)
+  aliv(aliu paramaliu) {}
+  
+  public boolean handleMessage(Message paramMessage)
   {
-    try
-    {
-      if (1 != BaseApplicationImpl.sProcessId) {
-        return;
-      }
-      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
-      if ((localClassLoader != null) && (!TextUtils.isEmpty(paramString2)) && (paramString2.contains("Apollo")))
-      {
-        localClassLoader.loadClass("com.tencent.mobileqq.apollo.utils.ApolloUtil").getMethod("handleApolloNoCatchCrash", new Class[] { Boolean.TYPE, String.class, String.class }).invoke(null, new Object[] { Boolean.valueOf(paramBoolean), paramString1, paramString2 });
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
     }
-    catch (Throwable paramString1)
-    {
-      paramString1.printStackTrace();
-    }
+    aliu.a(this.a, false, null, paramMessage.what);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aliv
  * JD-Core Version:    0.7.0.1
  */

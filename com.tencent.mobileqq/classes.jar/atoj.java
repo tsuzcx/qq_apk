@@ -1,12 +1,23 @@
-import com.tencent.mobileqq.listentogether.data.ISong;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface atoj
+class atoj
+  implements View.OnClickListener
 {
-  public abstract void a(ISong paramISong);
+  atoj(atoe paramatoe, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void onClick(View paramView)
+  {
+    bcst.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+    atwt.a(this.jdField_a_of_type_Atoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atoe.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atoj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,96 +1,49 @@
-import android.app.Application;
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.ProtocolDownloader.Adapter;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.text.TextUtils;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bawj
-  extends ProtocolDownloader.Adapter
 {
-  public bawj(Application paramApplication) {}
-  
-  public static URL a(String paramString, int paramInt1, int paramInt2)
+  public static List<bawo> a(String paramString)
   {
-    return a(paramString, paramInt1, paramInt2, true);
-  }
-  
-  public static URL a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo.path = paramString;
-    paramString = new File(paramString);
-    if (paramString.exists()) {
-      localLocalMediaInfo.modifiedDate = paramString.lastModified();
-    }
-    localLocalMediaInfo.thumbWidth = paramInt1;
-    localLocalMediaInfo.thumbHeight = paramInt2;
-    localLocalMediaInfo.isRegionThumbUseNewDecoder = paramBoolean;
-    try
-    {
-      paramString = new URL("regionalthumb", null, LocalMediaInfo.getUrl(localLocalMediaInfo));
-      return paramString;
-    }
-    catch (MalformedURLException paramString)
-    {
-      for (;;)
+    localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        paramString = null;
+        paramString = new JSONObject(paramString);
+        if (paramString.has("LiuHaiArray"))
+        {
+          paramString = paramString.getJSONArray("LiuHaiArray");
+          int i = 0;
+          while (i < paramString.length())
+          {
+            bawo localbawo = new bawo();
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            if (localJSONObject.has("manufacturer")) {
+              localbawo.a = localJSONObject.optString("manufacturer", "");
+            }
+            if (localJSONObject.has("brand")) {
+              localbawo.b = localJSONObject.optString("brand", "");
+            }
+            if (localJSONObject.has("model")) {
+              localbawo.c = localJSONObject.optString("model", "");
+            }
+            localArrayList.add(localbawo);
+            i += 1;
+          }
+        }
+        return localArrayList;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        BrowserLogHelper.getInstance().getGalleryLog().d("ListConfigParseUtils", 4, "parseWhiteListConfig exception = " + paramString.getMessage());
       }
     }
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramFile = null;
-    paramURLDrawableHandler = LocalMediaInfo.parseUrl(paramDownloadParams.url);
-    if (paramURLDrawableHandler != null) {
-      if (!paramURLDrawableHandler.isRegionThumbUseNewDecoder) {
-        break label58;
-      }
-    }
-    label58:
-    for (paramFile = new aiod();; paramFile = new aioy())
-    {
-      paramFile = paramFile.getBitmap(paramDownloadParams.url);
-      paramDownloadParams.outWidth = paramFile.getWidth();
-      paramDownloadParams.outHeight = paramFile.getHeight();
-      return paramFile;
-    }
-  }
-  
-  public boolean hasDiskFile(DownloadParams paramDownloadParams)
-  {
-    boolean bool2 = false;
-    paramDownloadParams = LocalMediaInfo.parseUrl(paramDownloadParams.url);
-    boolean bool1 = bool2;
-    if (paramDownloadParams != null)
-    {
-      bool1 = bool2;
-      if (new File(paramDownloadParams.path).exists()) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = LocalMediaInfo.parseUrl(paramDownloadParams.url);
-    if (paramDownloadParams != null)
-    {
-      paramDownloadParams = new File(paramDownloadParams.path);
-      if (paramDownloadParams.exists()) {
-        return paramDownloadParams;
-      }
-    }
-    return null;
   }
 }
 

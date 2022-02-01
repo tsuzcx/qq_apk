@@ -1,33 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
+import com.tencent.biz.qqcircle.scrollers.QCircleFeedPicPreloadScroller.4;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class vsb
-  extends AnimatorListenerAdapter
+public class vsb
+  extends voy
 {
-  vsb(Animator.AnimatorListener paramAnimatorListener) {}
+  public vsb(QCircleFeedPicPreloadScroller.4 param4) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt, vou paramvou)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.onAnimationCancel(paramAnimator);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    wxe.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation, onAnimationEnd");
-    this.a.onAnimationEnd(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    this.a.onAnimationStart(paramAnimator);
+    if ((paramInt == QCircleFeedPicLoader.f) || (paramInt == QCircleFeedPicLoader.c)) {
+      vrx.a(this.a.this$0).put(paramvou.b(), Boolean.valueOf(true));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vsb
  * JD-Core Version:    0.7.0.1
  */

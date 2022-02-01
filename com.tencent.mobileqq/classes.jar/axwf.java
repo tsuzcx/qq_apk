@@ -1,116 +1,76 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.opengl.EGL14;
-import android.opengl.GLES20;
-import android.opengl.GLSurfaceView.Renderer;
-import android.opengl.Matrix;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import java.nio.IntBuffer;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axwf
-  implements GLSurfaceView.Renderer
+class axwf
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private axvg jdField_a_of_type_Axvg;
-  private axvh jdField_a_of_type_Axvh;
-  private GPUBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
-  private int b;
+  axwf(axvz paramaxvz) {}
   
-  public Bitmap a(Bitmap paramBitmap, GPUBaseFilter paramGPUBaseFilter)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = paramGPUBaseFilter;
-    onSurfaceCreated(null, null);
-    onSurfaceChanged(null, paramBitmap.getWidth(), paramBitmap.getHeight());
-    onDrawFrame(null);
-    onDrawFrame(null);
-    paramGPUBaseFilter = IntBuffer.allocate(paramBitmap.getWidth() * paramBitmap.getHeight());
-    GLES20.glReadPixels(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), 6408, 5121, paramGPUBaseFilter);
-    paramGPUBaseFilter = paramGPUBaseFilter.array();
-    paramBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-    paramBitmap.copyPixelsFromBuffer(IntBuffer.wrap(paramGPUBaseFilter));
-    return paramBitmap;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Axvh != null)
-    {
-      this.jdField_a_of_type_Axvh.a();
-      this.jdField_a_of_type_Axvh = null;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard == null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
     }
-    if (this.jdField_a_of_type_Axvg != null)
+    for (;;)
     {
-      this.jdField_a_of_type_Axvg.a();
-      this.jdField_a_of_type_Axvg = null;
-    }
-  }
-  
-  @TargetApi(17)
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (Build.VERSION.SDK_INT >= 17) {
-      this.jdField_a_of_type_Axvg = new axvg(EGL14.eglGetCurrentContext(), 1);
-    }
-    this.jdField_a_of_type_Axvh = new axvh(this.jdField_a_of_type_Axvg);
-    this.jdField_a_of_type_Axvh.a(paramInt1, paramInt2);
-    this.jdField_a_of_type_Axvh.b();
-  }
-  
-  public void onDrawFrame(GL10 paramGL10)
-  {
-    GLES20.glClear(16640);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() % 2 == 1)
-    {
-      paramGL10 = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + 1, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-      localObject = new Canvas(paramGL10);
-      ((Canvas)localObject).drawARGB(0, 0, 0, 0);
-      ((Canvas)localObject).drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, null);
-      this.jdField_a_of_type_Int = 1;
-      if (paramGL10 != null) {
-        break label144;
-      }
-    }
-    label144:
-    for (Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;; localObject = paramGL10)
-    {
-      this.b = GlUtil.createTexture(3553, (Bitmap)localObject);
-      if ((paramGL10 != null) && (!paramGL10.isRecycled())) {
-        paramGL10.recycle();
-      }
-      paramGL10 = new float[16];
-      Matrix.setIdentityM(paramGL10, 0);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(this.b, null, paramGL10);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_Int = 0;
-      paramGL10 = null;
-      break;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 1)
+      {
+        bkft.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+        if (!bgnt.d(BaseApplication.getContext()))
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getString(2131693948));
+        }
+        else if (axvz.a(this.a))
+        {
+          this.a.b();
+          boolean bool1 = this.a.a();
+          boolean bool2 = ((Boolean)axdz.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(true))).booleanValue();
+          Object localObject;
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.godFlag) && (bool1))
+          {
+            localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getString(2131693942, new Object[] { this.a.jdField_a_of_type_JavaLangString });
+            localObject = bglp.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, (String)localObject, 0, 0, null, null);
+            ((bgpa)localObject).setPositiveButton(anni.a(2131706056), new axwg(this, (bgpa)localObject));
+            ((bgpa)localObject).setNegativeButton(anni.a(2131706051), new axwh(this, (bgpa)localObject));
+            ((bgpa)localObject).show();
+          }
+          else if ((bool1) && (bool2))
+          {
+            localObject = anni.a(2131706080);
+            localObject = bglp.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, (String)localObject, 0, 0, null, null);
+            ((bgpa)localObject).setPositiveButton(anni.a(2131706102), new axwi(this, (bgpa)localObject));
+            ((bgpa)localObject).setNegativeButton(anni.a(2131706135), new axwj(this, (bgpa)localObject));
+            ((bgpa)localObject).show();
+            axdz.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(false));
+          }
+          else if (bool1)
+          {
+            this.a.e();
+            localObject = new Intent("tribe_profile_edit_finish");
+            BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject);
+          }
+          else
+          {
+            bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, "", "", "", "");
+            this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
+          }
+        }
+      }
     }
-  }
-  
-  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
-  {
-    GLES20.glViewport(0, 0, paramInt1, paramInt2);
-    GLES20.glUseProgram(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.getProgram());
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.onOutputSizeChanged(paramInt1, paramInt2);
-  }
-  
-  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
-  {
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    GLES20.glDisable(2929);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axwf
  * JD-Core Version:    0.7.0.1
  */

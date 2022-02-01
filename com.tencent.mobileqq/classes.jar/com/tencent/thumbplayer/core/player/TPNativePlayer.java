@@ -8,6 +8,8 @@ import com.tencent.thumbplayer.core.common.TPHeadsetPluginDetector;
 import com.tencent.thumbplayer.core.common.TPMediaTrackInfo;
 import com.tencent.thumbplayer.core.common.TPNativeLibraryLoader;
 import com.tencent.thumbplayer.core.common.TPNativeLog;
+import com.tencent.thumbplayer.core.common.TPScreenRefreshRateDetector;
+import com.tencent.thumbplayer.core.common.TPSystemInfo;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -31,6 +33,8 @@ public class TPNativePlayer
       this.m_playerID = _createPlayer();
       TPHeadsetPluginDetector.init(this.mContext);
       TPAudioPassThroughPluginDetector.init(this.mContext);
+      TPScreenRefreshRateDetector.init(this.mContext);
+      TPSystemInfo.initAudioBestSettings(this.mContext);
       return;
     }
     catch (Throwable paramContext)
@@ -136,9 +140,13 @@ public class TPNativePlayer
   
   private native int _setPlaybackRate(float paramFloat);
   
+  private native int _setSubtitleFrameCallback(Object paramObject);
+  
   private native int _setVideoFrameCallback(Object paramObject);
   
   private native int _setVideoSurface(Surface paramSurface);
+  
+  private native int _setVideoSurfaceWithType(Surface paramSurface, int paramInt);
   
   private native int _start();
   
@@ -277,10 +285,10 @@ public class TPNativePlayer
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 177	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramCount	()I
+    //   1: invokespecial 188	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramCount	()I
     //   4: istore_2
     //   5: iload_2
-    //   6: anewarray 181	com/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo
+    //   6: anewarray 192	com/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo
     //   9: astore 4
     //   11: iconst_0
     //   12: istore_1
@@ -293,7 +301,7 @@ public class TPNativePlayer
     //   23: iload_1
     //   24: aload_0
     //   25: iload_1
-    //   26: invokespecial 183	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramInfo	(I)Lcom/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo;
+    //   26: invokespecial 194	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramInfo	(I)Lcom/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo;
     //   29: aastore
     //   30: iload_1
     //   31: iconst_1
@@ -303,8 +311,8 @@ public class TPNativePlayer
     //   37: astore_3
     //   38: iconst_4
     //   39: aload_3
-    //   40: invokevirtual 58	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   43: invokestatic 67	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   40: invokevirtual 66	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   43: invokestatic 75	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   46: aconst_null
     //   47: astore_3
     //   48: aload_3
@@ -771,6 +779,20 @@ public class TPNativePlayer
     return 1000001;
   }
   
+  public int setSubtitleFrameCallback(ITPNativePlayerSubtitleFrameCallback paramITPNativePlayerSubtitleFrameCallback)
+  {
+    try
+    {
+      int i = _setSubtitleFrameCallback(paramITPNativePlayerSubtitleFrameCallback);
+      return i;
+    }
+    catch (Throwable paramITPNativePlayerSubtitleFrameCallback)
+    {
+      TPNativeLog.printLog(4, paramITPNativePlayerSubtitleFrameCallback.getMessage());
+    }
+    return 1000001;
+  }
+  
   public int setVideoFrameCallback(ITPNativePlayerVideoFrameCallback paramITPNativePlayerVideoFrameCallback)
   {
     try
@@ -791,6 +813,20 @@ public class TPNativePlayer
     {
       int i = _setVideoSurface(paramSurface);
       return i;
+    }
+    catch (Throwable paramSurface)
+    {
+      TPNativeLog.printLog(4, paramSurface.getMessage());
+    }
+    return 1000001;
+  }
+  
+  public int setVideoSurfaceWithType(Surface paramSurface, int paramInt)
+  {
+    try
+    {
+      paramInt = _setVideoSurfaceWithType(paramSurface, paramInt);
+      return paramInt;
     }
     catch (Throwable paramSurface)
     {
@@ -849,7 +885,7 @@ public class TPNativePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayer
  * JD-Core Version:    0.7.0.1
  */

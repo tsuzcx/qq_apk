@@ -1,52 +1,38 @@
+import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
-import com.tencent.map.geolocation.TencentLocation;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
-public abstract class vcf
+class vcf
+  implements Observer<vup<FeedCloudRead.StGetMainPageRsp>>
 {
-  public long a;
-  protected AtomicBoolean a;
-  public boolean a;
-  public long b;
-  public boolean b;
+  vcf(vcb paramvcb) {}
   
-  public vcf()
+  public void a(@Nullable vup<FeedCloudRead.StGetMainPageRsp> paramvup)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(String paramString)
-  {
-    long l2 = System.currentTimeMillis();
-    long l1 = this.b - this.jdField_a_of_type_Long;
-    l2 -= this.b;
-    wxe.c(paramString, "page network respond times " + l1);
-    wxe.c(paramString, "page db times " + l2);
-  }
-  
-  public void b()
-  {
-    this.b = System.currentTimeMillis();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    if (paramvup != null) {}
+    try
+    {
+      if ((paramvup.a() == 2) || (paramvup.a() == 3))
+      {
+        vcb.a(this.a, (FeedCloudRead.StGetMainPageRsp)paramvup.a());
+        vcb.a(this.a, (FeedCloudMeta.StUser)vcb.a(this.a).user.get());
+        vcb.a(this.a);
+        vcb.b(this.a);
+        vcb.c(this.a);
+      }
+      return;
+    }
+    catch (Exception paramvup)
+    {
+      QLog.e("QCirclePersonalTitleBar", 1, "getShareInfo error");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vcf
  * JD-Core Version:    0.7.0.1
  */

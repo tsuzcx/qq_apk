@@ -1,24 +1,31 @@
-import android.widget.TextView;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
 
 public class ywf
-  implements URLDrawable.DownloadListener
+  implements Animation.AnimationListener
 {
-  public ywf(TroopGiftPanel paramTroopGiftPanel, TextView paramTextView) {}
+  public ywf(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
+    }
   }
   
-  public void onFileDownloadStarted() {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onFileDownloadSucceed(long paramLong) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ywf
  * JD-Core Version:    0.7.0.1
  */

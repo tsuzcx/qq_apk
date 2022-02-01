@@ -1,25 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahom
-  implements View.OnClickListener
+  implements ahor
 {
-  public ahom(NotificationView paramNotificationView) {}
-  
-  public void onClick(View paramView)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    paramView = (ahok)paramView.getTag();
-    if (paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() == 2)
-    {
-      this.a.a(paramView);
-      if (paramView.jdField_a_of_type_Int == 82) {
-        azqs.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
-      }
-    }
+    paramagup.d(paramagwc.b);
   }
 }
 

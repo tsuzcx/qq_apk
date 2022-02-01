@@ -1,19 +1,25 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import java.util.Comparator;
 
 class pwp
-  extends pvj
+  implements Comparator<ChannelInfo>
 {
-  pwp(pwo parampwo) {}
+  pwp(pwn parampwn) {}
   
-  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
+  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
   {
-    pwo.a(this.a, paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
+    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
+      return 0;
+    }
+    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pwp
  * JD-Core Version:    0.7.0.1
  */

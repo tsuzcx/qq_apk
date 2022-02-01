@@ -5,22 +5,24 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
 import android.view.Surface;
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
+import androidx.annotation.VisibleForTesting;
 import io.flutter.Log;
 import io.flutter.embedding.engine.dart.PlatformMessageHandler;
-import io.flutter.embedding.engine.renderer.FlutterRenderer.RenderSurface;
-import io.flutter.embedding.engine.renderer.OnFirstFrameRenderedListener;
+import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
 import io.flutter.plugin.common.StandardMessageCodec;
 import io.flutter.view.AccessibilityBridge.Action;
 import io.flutter.view.FlutterCallbackInformation;
 import java.nio.ByteBuffer;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 
+@Keep
 public class FlutterJNI
 {
   private static final String TAG = "FlutterJNI";
@@ -32,17 +34,15 @@ public class FlutterJNI
   @Nullable
   private FlutterJNI.AccessibilityDelegate accessibilityDelegate;
   @NonNull
-  private final Set<FlutterEngine.EngineLifecycleListener> engineLifecycleListeners = new HashSet();
+  private final Set<FlutterEngine.EngineLifecycleListener> engineLifecycleListeners = new CopyOnWriteArraySet();
   @NonNull
-  private final Set<OnFirstFrameRenderedListener> firstFrameListeners = new HashSet();
+  private final Set<FlutterUiDisplayListener> flutterUiDisplayListeners = new CopyOnWriteArraySet();
   @NonNull
   private final Looper mainLooper = Looper.getMainLooper();
   @Nullable
   private Long nativePlatformViewId;
   @Nullable
   private PlatformMessageHandler platformMessageHandler;
-  @Nullable
-  private FlutterRenderer.RenderSurface renderSurface;
   
   private static void asyncWaitForVsync(long paramLong)
   {
@@ -115,9 +115,6 @@ public class FlutterJNI
   
   private native Bitmap nativeGetBitmap(long paramLong);
   
-  @UiThread
-  public static native boolean nativeGetIsSoftwareRenderingEnabled();
-  
   public static native void nativeInit(@NonNull Context paramContext, @NonNull String[] paramArrayOfString, @Nullable String paramString1, @NonNull String paramString2, @NonNull String paramString3);
   
   private native void nativeInvokePlatformMessageEmptyResponseCallback(long paramLong, int paramInt);
@@ -150,19 +147,6 @@ public class FlutterJNI
   private native void nativeSurfaceDestroyed(long paramLong);
   
   private native void nativeUnregisterTexture(long paramLong1, long paramLong2);
-  
-  @UiThread
-  private void onFirstFrame()
-  {
-    ensureRunningOnMainThread();
-    if (this.renderSurface != null) {
-      this.renderSurface.onFirstFrameRendered();
-    }
-    Iterator localIterator = this.firstFrameListeners.iterator();
-    while (localIterator.hasNext()) {
-      ((OnFirstFrameRenderedListener)localIterator.next()).onFirstFrameRendered();
-    }
-  }
   
   private void onPreEngineRestart()
   {
@@ -208,10 +192,10 @@ public class FlutterJNI
   }
   
   @UiThread
-  public void addOnFirstFrameRenderedListener(@NonNull OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
+  public void addIsDisplayingFlutterUiListener(@NonNull FlutterUiDisplayListener paramFlutterUiDisplayListener)
   {
     ensureRunningOnMainThread();
-    this.firstFrameListeners.add(paramOnFirstFrameRenderedListener);
+    this.flutterUiDisplayListeners.add(paramFlutterUiDisplayListener);
   }
   
   @UiThread
@@ -352,6 +336,31 @@ public class FlutterJNI
   }
   
   @UiThread
+  public native boolean nativeGetIsSoftwareRenderingEnabled();
+  
+  @UiThread
+  @VisibleForTesting
+  void onFirstFrame()
+  {
+    ensureRunningOnMainThread();
+    Iterator localIterator = this.flutterUiDisplayListeners.iterator();
+    while (localIterator.hasNext()) {
+      ((FlutterUiDisplayListener)localIterator.next()).onFlutterUiDisplayed();
+    }
+  }
+  
+  @UiThread
+  @VisibleForTesting
+  void onRenderingStopped()
+  {
+    ensureRunningOnMainThread();
+    Iterator localIterator = this.flutterUiDisplayListeners.iterator();
+    while (localIterator.hasNext()) {
+      ((FlutterUiDisplayListener)localIterator.next()).onFlutterUiNoLongerDisplayed();
+    }
+  }
+  
+  @UiThread
   public void onSurfaceChanged(int paramInt1, int paramInt2)
   {
     ensureRunningOnMainThread();
@@ -372,6 +381,7 @@ public class FlutterJNI
   {
     ensureRunningOnMainThread();
     ensureAttachedToNative();
+    onRenderingStopped();
     nativeSurfaceDestroyed(this.nativePlatformViewId.longValue());
   }
   
@@ -391,10 +401,10 @@ public class FlutterJNI
   }
   
   @UiThread
-  public void removeOnFirstFrameRenderedListener(@NonNull OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
+  public void removeIsDisplayingFlutterUiListener(@NonNull FlutterUiDisplayListener paramFlutterUiDisplayListener)
   {
     ensureRunningOnMainThread();
-    this.firstFrameListeners.remove(paramOnFirstFrameRenderedListener);
+    this.flutterUiDisplayListeners.remove(paramFlutterUiDisplayListener);
   }
   
   @UiThread
@@ -428,13 +438,6 @@ public class FlutterJNI
   }
   
   @UiThread
-  public void setRenderSurface(@Nullable FlutterRenderer.RenderSurface paramRenderSurface)
-  {
-    ensureRunningOnMainThread();
-    this.renderSurface = paramRenderSurface;
-  }
-  
-  @UiThread
   public void setSemanticsEnabled(boolean paramBoolean)
   {
     ensureRunningOnMainThread();
@@ -460,7 +463,7 @@ public class FlutterJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterJNI
  * JD-Core Version:    0.7.0.1
  */

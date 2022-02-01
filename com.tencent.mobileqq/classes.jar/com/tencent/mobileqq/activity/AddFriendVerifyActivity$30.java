@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import acdd;
-import bdgm;
-import bdjz;
+import adkm;
+import bglp;
+import bgpa;
 
 public class AddFriendVerifyActivity$30
   implements Runnable
@@ -19,10 +19,10 @@ public class AddFriendVerifyActivity$30
     do
     {
       return;
-      this.this$0.a = bdgm.a(this.this$0, 230);
-      this.this$0.a.setMessage(2131721034);
-      acdd localacdd = new acdd(this);
-      this.this$0.a.setPositiveButton(2131691089, localacdd);
+      this.this$0.a = bglp.a(this.this$0, 230);
+      this.this$0.a.setMessage(2131718770);
+      adkm localadkm = new adkm(this);
+      this.this$0.a.setPositiveButton(2131690912, localadkm);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }

@@ -1,70 +1,24 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class rwb
-  extends RecyclerView.OnScrollListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$onColumnSubscribeChangeObserver$1", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/managecolumn/ColumnSubscribeChangeObserver;", "onUgcColumnSubscribeStateChange", "", "columnId", "", "subscribeAction", "subscribeCount", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rwb
+  extends roq
 {
-  public rwb(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 0;
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((paramInt == 0) && (ReadInjoyXRecyclerView.c(this.a) == 2)) {
-      this.a.a();
-    }
-    int j = paramRecyclerView.getChildCount();
-    boolean bool;
-    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
-    {
-      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-      i = paramRecyclerView.getItemCount();
-      paramRecyclerView = paramRecyclerView.findFirstVisibleItemPositions(null);
-      int k = ReadInjoyXRecyclerView.a(this.a).a();
-      if (i - j <= paramRecyclerView[0] + k)
-      {
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("XRecyclerView", 2, new Object[] { "totalItemCount=%d, firstVisibleItem=%d, visibleThreshold=%d, isCloseToTheEnd=%b", Integer.valueOf(i), Integer.valueOf(paramRecyclerView[0]), Integer.valueOf(k), Boolean.valueOf(bool) });
-        }
-        if (bool) {
-          ReadInjoyXRecyclerView.a(this.a).b(true);
-        }
-      }
-    }
+    boolean bool = true;
+    if (paramInt2 == 1) {}
     for (;;)
     {
-      ReadInjoyXRecyclerView.c(this.a, paramInt);
+      rvx.a(this.a, null, paramInt1, bool);
       return;
       bool = false;
-      break;
-      if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager))
-      {
-        paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-        if (paramRecyclerView.getItemCount() - j <= paramRecyclerView.findFirstVisibleItemPosition() + ReadInjoyXRecyclerView.a(this.a).a()) {
-          i = 1;
-        }
-        if (i != 0) {
-          ReadInjoyXRecyclerView.a(this.a).b(true);
-        }
-      }
     }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    ReadInjoyXRecyclerView.a(this.a, ReadInjoyXRecyclerView.a(this.a) + paramInt1);
-    ReadInjoyXRecyclerView.b(this.a, ReadInjoyXRecyclerView.b(this.a) + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rwb
  * JD-Core Version:    0.7.0.1
  */

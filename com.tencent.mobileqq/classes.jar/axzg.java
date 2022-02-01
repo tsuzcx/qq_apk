@@ -1,118 +1,147 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class axzg
+  extends axzi
 {
-  public static Intent a(Activity paramActivity, Intent paramIntent, boolean paramBoolean)
+  public axzg(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if (paramIntent == null)
-    {
-      BrowserLogHelper.getInstance().getGalleryLog().d("ForwardUtils", 4, "getForwardData return null from main process");
-      paramActivity = null;
-    }
-    Intent localIntent;
-    do
-    {
-      do
-      {
-        return paramActivity;
-        paramIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-        paramActivity = paramIntent;
-      } while (paramBoolean);
-      paramIntent.putExtra("filepictest", true);
-      paramActivity = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
-      String str1 = paramIntent.getStringExtra("forward_filepath");
-      paramBoolean = paramIntent.getBooleanExtra("k_favorites", false);
-      String str2 = paramIntent.getStringExtra("forward_text");
-      boolean bool = paramIntent.getBooleanExtra("isFromShare", false);
-      int i = paramIntent.getIntExtra("forward_type", 0);
-      localIntent = new Intent();
-      localIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("forward_type", i);
-      localBundle.putParcelable("fileinfo", paramActivity);
-      localBundle.putBoolean("not_forward", true);
-      localIntent.putExtras(localBundle);
-      localIntent.putExtra("forward_filepath", str1);
-      localIntent.putExtra("forward_text", str2);
-      localIntent.putExtra("k_favorites", paramBoolean);
-      localIntent.putExtra("isFromShare", bool);
-      paramActivity = paramIntent;
-    } while (!AIOFilePictureData.class.isInstance(paramIntent));
-    localIntent.putExtra("isPic", true);
-    localIntent.putExtra("direct_send_if_dataline_forward", true);
-    return paramIntent;
+    super(paramContext, paramQQAppInterface);
   }
   
-  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean)
+  public int a(axxt paramaxxt)
   {
-    a(paramActivity, paramIntent, paramBoolean, -1, "");
+    return 2;
   }
   
-  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean, int paramInt, String paramString)
+  public View a(ViewGroup paramViewGroup, axxt paramaxxt)
   {
-    if (paramIntent == null)
+    paramaxxt = (axzh)paramaxxt;
+    paramViewGroup = LayoutInflater.from(this.a).inflate(2131561306, paramViewGroup, false);
+    paramaxxt.g = ((TextView)paramViewGroup.findViewById(2131379942));
+    paramaxxt.e = ((ImageView)paramViewGroup.findViewById(2131369217));
+    return paramViewGroup;
+  }
+  
+  public axxt a()
+  {
+    return new axzh(this);
+  }
+  
+  public void d(axxt paramaxxt)
+  {
+    axzr localaxzr = (axzr)paramaxxt.a;
+    if ((localaxzr.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry != null) && (localaxzr.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.publishState != 0))
     {
-      BrowserLogHelper.getInstance().getGalleryLog().d("ForwardUtils", 4, "getForwardData return null from main process");
+      axze.a(this.a, localaxzr.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, 4);
       return;
     }
-    paramIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-    if (!paramBoolean)
+    super.d(paramaxxt);
+  }
+  
+  public void f(axxt paramaxxt)
+  {
+    axzh localaxzh = (axzh)paramaxxt;
+    Object localObject1 = (axzr)localaxzh.a;
+    paramaxxt = ((axzr)localObject1).n;
+    paramaxxt = bgsw.a(this.a, localaxzh.a.a, paramaxxt);
+    Object localObject2;
+    if (TextUtils.isEmpty(paramaxxt))
     {
-      paramIntent.putExtra("filepictest", true);
-      ForwardFileInfo localForwardFileInfo = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
-      String str1 = paramIntent.getStringExtra("forward_filepath");
-      paramBoolean = paramIntent.getBooleanExtra("k_favorites", false);
-      String str2 = paramIntent.getStringExtra("forward_text");
-      boolean bool = paramIntent.getBooleanExtra("isFromShare", false);
-      int i = paramIntent.getIntExtra("forward_type", 0);
-      Intent localIntent = new Intent();
-      localIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("forward_type", i);
-      localBundle.putParcelable("fileinfo", localForwardFileInfo);
-      localBundle.putBoolean("not_forward", true);
-      localIntent.putExtras(localBundle);
-      localIntent.putExtra("forward_filepath", str1);
-      localIntent.putExtra("forward_text", str2);
-      localIntent.putExtra("k_favorites", paramBoolean);
-      localIntent.putExtra("isFromShare", bool);
-      if (AIOFilePictureData.class.isInstance(paramIntent))
-      {
-        localIntent.putExtra("isPic", true);
-        localIntent.putExtra("direct_send_if_dataline_forward", true);
+      localaxzh.g.setVisibility(8);
+      localObject2 = (String)localaxzh.e.getTag(2131378283);
+      if (((axzr)localObject1).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry == null) {
+        break label475;
       }
-      aryv.a(paramActivity, paramIntent, 103, paramInt, paramString);
-      return;
+      paramaxxt = new File(((axzr)localObject1).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath + "");
     }
-    aryv.a(paramActivity, paramIntent, 21, paramInt, paramString);
-  }
-  
-  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (paramIntent == null)
+    for (boolean bool = paramaxxt.exists();; bool = false)
     {
-      BrowserLogHelper.getInstance().getGalleryLog().d("ForwardUtils", 4, "getForwardData return null from main process");
-      return;
+      label132:
+      int i;
+      if (bool)
+      {
+        localObject1 = ((axzr)localObject1).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath;
+        if (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1))
+        {
+          localaxzh.e.setTag(2131378283, localObject1);
+          localObject2 = (LinearLayout.LayoutParams)localaxzh.e.getLayoutParams();
+          i = zlx.a(BaseApplicationImpl.getContext(), 180.0F);
+          if (localObject2 != null) {
+            break label368;
+          }
+          localObject2 = new LinearLayout.LayoutParams(-2, -2);
+          localaxzh.e.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          localObject2 = URLDrawable.URLDrawableOptions.obtain();
+          ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.a.getResources().getDrawable(2130845481);
+          ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.a.getResources().getDrawable(2130845481);
+          ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "profileCard";
+          if (!bool) {
+            continue;
+          }
+          paramaxxt = URLDrawable.getDrawable(paramaxxt, (URLDrawable.URLDrawableOptions)localObject2);
+          paramaxxt.setTag(bgey.a(bggq.a(localaxzh.e.getContext(), 3.0F), 0, 0));
+          paramaxxt.setDecodeHandler(bgey.f);
+          localaxzh.e.setImageDrawable(paramaxxt);
+        }
+        catch (Exception paramaxxt)
+        {
+          label368:
+          localaxzh.e.setImageDrawable(this.a.getResources().getDrawable(2130845481));
+          QLog.i("PicMomentItemBuilder", 1, paramaxxt.toString());
+          continue;
+        }
+        localaxzh.e.setTag(localaxzh);
+        localaxzh.e.setOnClickListener(this);
+        return;
+        localaxzh.g.setVisibility(0);
+        if ((paramaxxt instanceof SpannableString)) {
+          localaxzh.g.setMovementMethod(LinkMovementMethod.getInstance());
+        }
+        localaxzh.g.setText(paramaxxt);
+        break;
+        localObject1 = ((axzr)localObject1).jdField_a_of_type_JavaLangString;
+        break label132;
+        if ((((LinearLayout.LayoutParams)localObject2).width <= i) && (((LinearLayout.LayoutParams)localObject2).height <= i)) {
+          if (((LinearLayout.LayoutParams)localObject2).weight < ((LinearLayout.LayoutParams)localObject2).height)
+          {
+            ((LinearLayout.LayoutParams)localObject2).height = i;
+            localaxzh.e.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          }
+          else
+          {
+            ((LinearLayout.LayoutParams)localObject2).width = i;
+            continue;
+            paramaxxt = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+          }
+        }
+      }
+      label475:
+      paramaxxt = null;
     }
-    paramIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-    paramIntent.putExtra("key_req", ForwardRecentActivity.f);
-    paramIntent.putExtra("key_direct_show_uin_type", paramInt);
-    paramIntent.putExtra("key_direct_show_uin", paramString);
-    if (!paramBoolean)
-    {
-      paramIntent.putExtra("filepictest", true);
-      aryv.a(paramActivity, paramIntent, ForwardRecentTranslucentActivity.class, 21);
-      return;
-    }
-    aryv.a(paramActivity, paramIntent, ForwardRecentTranslucentActivity.class, 21);
   }
 }
 

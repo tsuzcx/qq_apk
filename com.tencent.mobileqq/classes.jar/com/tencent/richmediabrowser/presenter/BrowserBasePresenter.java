@@ -1,15 +1,14 @@
 package com.tencent.richmediabrowser.presenter;
 
 import android.widget.RelativeLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.image.URLDrawable;
 import com.tencent.richmediabrowser.listener.IDownloadEventListener;
 import com.tencent.richmediabrowser.listener.IGalleryImageListener;
 import com.tencent.richmediabrowser.model.MainBrowserModel;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
-import com.tencent.richmediabrowser.view.BaseView;
 import com.tencent.richmediabrowser.view.BrowserBaseView;
 import com.tencent.richmediabrowser.view.MainBrowserScene;
-import com.tencent.richmediabrowser.view.page.Gallery;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class BrowserBasePresenter
@@ -51,18 +50,26 @@ public class BrowserBasePresenter
     return -1;
   }
   
-  public Gallery getGallery()
-  {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
-      return this.mainBrowserPresenter.browserScene.mGallery;
-    }
-    return null;
-  }
-  
   public RichMediaBrowserInfo getItem(int paramInt)
   {
     if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
       return this.mainBrowserPresenter.browserScene.getItem(paramInt);
+    }
+    return null;
+  }
+  
+  public RichMediaBrowserInfo getItem(String paramString)
+  {
+    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
+      return this.mainBrowserPresenter.browserModel.getItem(paramString);
+    }
+    return null;
+  }
+  
+  public RecyclerView getRecyclerView()
+  {
+    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
+      return this.mainBrowserPresenter.browserScene.getRecyclerView();
     }
     return null;
   }
@@ -98,6 +105,13 @@ public class BrowserBasePresenter
     }
   }
   
+  public void notifyItemChanged(int paramInt)
+  {
+    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
+      this.mainBrowserPresenter.browserScene.notifyItemChanged(paramInt);
+    }
+  }
+  
   public void notifyProgress(String paramString, int paramInt)
   {
     if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
@@ -111,6 +125,8 @@ public class BrowserBasePresenter
       this.mainBrowserPresenter.browserModel.updateItemStatus(paramString, paramInt);
     }
   }
+  
+  public void onItemSelect(int paramInt) {}
   
   public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable)
   {
@@ -140,12 +156,12 @@ public class BrowserBasePresenter
     }
   }
   
-  public void setGalleryView(BaseView paramBaseView)
+  public void preInitItem(int paramInt) {}
+  
+  public void setGalleryView(BrowserBaseView paramBrowserBaseView)
   {
-    super.setGalleryView(paramBaseView);
-    if ((paramBaseView instanceof BrowserBaseView)) {
-      this.browserBaseView = ((BrowserBaseView)paramBaseView);
-    }
+    super.setGalleryView(paramBrowserBaseView);
+    this.browserBaseView = paramBrowserBaseView;
   }
   
   public void setMainBrowserPresenter(MainBrowserPresenter paramMainBrowserPresenter)
@@ -181,6 +197,13 @@ public class BrowserBasePresenter
     }
   }
   
+  public void updateItemStatus(String paramString, int paramInt)
+  {
+    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
+      this.mainBrowserPresenter.browserModel.updateItemStatus(paramString, paramInt);
+    }
+  }
+  
   public void updateSystemUIVisablity()
   {
     if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
@@ -190,7 +213,7 @@ public class BrowserBasePresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.presenter.BrowserBasePresenter
  * JD-Core Version:    0.7.0.1
  */

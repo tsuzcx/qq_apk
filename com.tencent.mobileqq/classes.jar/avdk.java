@@ -1,20 +1,16 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class avdk
-  extends nab
+  implements DialogInterface.OnClickListener
 {
-  avdk(avdj paramavdj, avdq paramavdq) {}
+  avdk(avdh paramavdh) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Avdq != null) {
-      this.jdField_a_of_type_Avdq.a(paramInt, paramArrayOfByte, paramBundle);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avdk
  * JD-Core Version:    0.7.0.1
  */

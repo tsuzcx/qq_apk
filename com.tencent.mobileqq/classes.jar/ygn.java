@@ -1,65 +1,28 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import cooperation.qzone.util.QZLog;
-import java.util.Map;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import java.util.Comparator;
 
 public class ygn
-  extends QQUIEventReceiver<ygg, ygc>
+  implements Comparator<VideoCollectionItem>
 {
-  public ygn(@NonNull ygg paramygg)
+  public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
   {
-    super(paramygg);
-  }
-  
-  public void a(@NonNull ygg paramygg, @NonNull ygc paramygc)
-  {
-    switch (paramygc.jdField_a_of_type_Int)
-    {
-    case 4: 
-    case 5: 
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-      CertifiedAccountMeta.StFeed localStFeed;
-      int i;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramygg.g();
-            return;
-            paramygg.h();
-            return;
-            ygg.a(paramygg, false);
-            ygg.a(paramygg, null);
-            ygg.a(paramygg, null);
-          } while (!(paramygc.jdField_a_of_type_JavaLangObject instanceof Object[]));
-          paramygc = (Object[])paramygc.jdField_a_of_type_JavaLangObject;
-        } while ((paramygc.length < 2) || (!(paramygc[0] instanceof CertifiedAccountMeta.StFeed)) || (!(paramygc[1] instanceof Integer)));
-        localStFeed = (CertifiedAccountMeta.StFeed)paramygc[0];
-        i = ((Integer)paramygc[1]).intValue();
-      } while (!paramygg.a(localStFeed));
-      ygg.c(paramygg).put(Integer.valueOf(i), localStFeed);
-      QZLog.i(this.TAG, 1, "EVENT_SET_COMMENT_DATA, position:" + i + ", cellId:" + localStFeed.id.get());
-      return;
+    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (zkk.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
+      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
     }
-    ygg.a(paramygg, (Object[])paramygc.jdField_a_of_type_JavaLangObject);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ygc.class;
+    do
+    {
+      return -1;
+      return 1;
+      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
+        return 1;
+      }
+    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ygn
  * JD-Core Version:    0.7.0.1
  */

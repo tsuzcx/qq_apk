@@ -1,19 +1,21 @@
-import android.view.MotionEvent;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aejc
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public aejc(TroopTransferActivity paramTroopTransferActivity) {}
+  public aejc(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.b();
-    }
-    return true;
+    Intent localIntent = new Intent(this.a, FontSettingActivity.class);
+    this.a.startActivity(localIntent);
+    bcst.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

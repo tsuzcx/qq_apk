@@ -1,26 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import android.graphics.Bitmap;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class sjv
-  implements sjw
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$captureAndUpload$1", "Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$CaptureViewCallback;", "onCaptureFailed", "", "onCaptureSuccess", "bitmap", "Landroid/graphics/Bitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sjv
+  implements sjt
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  sjv(rtb paramrtb) {}
   
-  public sjv(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
+  public void a()
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    rtb localrtb = this.jdField_a_of_type_Rtb;
+    if (localrtb != null) {
+      localrtb.a(1, "");
+    }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(@NotNull Bitmap paramBitmap)
   {
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) + this.jdField_a_of_type_Int);
-    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) + this.b);
+    Intrinsics.checkParameterIsNotNull(paramBitmap, "bitmap");
+    sjs.a(this.jdField_a_of_type_Sjs, paramBitmap, this.jdField_a_of_type_Rtb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sjv
  * JD-Core Version:    0.7.0.1
  */

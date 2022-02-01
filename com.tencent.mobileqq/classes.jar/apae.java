@@ -1,26 +1,11 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class apae
-  extends Handler
+public class apae
 {
-  apae(apac paramapac, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aozl a;
+  public boolean a;
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      apac.a(this.a);
-      return;
-    }
-    apac.b(this.a);
+    return "ARCloudRecogResultBase{hasLBSLocation = " + this.jdField_a_of_type_Boolean + ", checkResult = " + this.jdField_a_of_type_Aozl + '}';
   }
 }
 

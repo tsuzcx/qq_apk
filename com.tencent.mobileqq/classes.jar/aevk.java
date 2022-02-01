@@ -1,27 +1,18 @@
-import android.view.animation.Transformation;
-import android.view.animation.TranslateAnimation;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class aevk
-  extends TranslateAnimation
+  implements View.OnTouchListener
 {
-  public int a = 0;
+  public aevk(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
   
-  public aevk()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this(1, 0.0F, 1, -1.0F, 1, 0.0F, 1, 0.0F);
-  }
-  
-  public aevk(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
-  {
-    super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
-  }
-  
-  public boolean getTransformation(long paramLong, Transformation paramTransformation)
-  {
-    if (!aeuo.a) {
-      setStartTime(paramLong);
-    }
-    return super.getTransformation(paramLong, paramTransformation);
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

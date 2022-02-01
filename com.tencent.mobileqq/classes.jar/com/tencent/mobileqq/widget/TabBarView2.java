@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
-import azmk;
+import bcnj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import java.util.List;
@@ -40,18 +40,18 @@ public class TabBarView2
   public TabBarView2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = aepi.a(56.0F, getResources());
+    this.jdField_b_of_type_Int = afur.a(56.0F, getResources());
     this.m = 16;
     boolean bool1 = ThemeUtil.isNowThemeIsDefaultCache(BaseApplicationImpl.getApplication().getRuntime(), true);
     int k = this.s;
     boolean bool2 = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
     int i;
     int j;
-    if (azmk.a()) {
+    if (bcnj.a()) {
       if (bool2)
       {
-        i = 2131166375;
-        k = 2131166981;
+        i = 2131166448;
+        k = 2131167064;
         int n = 255;
         j = i;
         i = k;
@@ -76,32 +76,32 @@ public class TabBarView2
       this.t = paramContext.getDimensionPixelSize(4, this.t);
       this.u = paramContext.getDimensionPixelSize(3, this.u);
       paramContext.recycle();
-      if (("1103".equals(ThemeUtil.curThemeId)) || (azmk.a()))
+      if (("1103".equals(ThemeUtil.curThemeId)) || (bcnj.a()))
       {
         this.r = getResources().getColor(j);
         this.s = k;
       }
       b();
       return;
-      i = 2131166374;
+      i = 2131166447;
       break;
       if (bool2)
       {
-        m = 2131165543;
-        i = 2131165542;
-        j = 2131165541;
+        m = 2131165580;
+        i = 2131165579;
+        j = 2131165578;
         k = 30;
       }
       else if (!bool1)
       {
-        i = 2131166981;
-        j = 2131166910;
+        i = 2131167064;
+        j = 2131166993;
       }
       else
       {
-        m = 2131165544;
-        i = 2131166981;
-        j = 2131165544;
+        m = 2131165581;
+        i = 2131167064;
+        j = 2131165581;
       }
     }
   }
@@ -176,7 +176,7 @@ public class TabBarView2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabBarView2
  * JD-Core Version:    0.7.0.1
  */

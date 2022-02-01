@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 import com.dataline.activities.LiteActivity;
+import com.tencent.widget.XListView;
 
 public class ar
-  implements DialogInterface.OnClickListener
+  implements biao
 {
+  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.findViewById(2131372835);
+  
   public ar(LiteActivity paramLiteActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a()
   {
-    paramDialogInterface.dismiss();
+    return (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
   }
 }
 

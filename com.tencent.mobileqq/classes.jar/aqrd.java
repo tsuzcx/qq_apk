@@ -1,93 +1,147 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.regex.Pattern;
 
 public class aqrd
-  implements arvg
+  extends aqkz<aqrc>
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  
-  public aqrd(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  @NonNull
+  public aqrc a(int paramInt)
   {
-    boolean bool = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.b = 2147483647;
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.getChild(paramInt1, paramInt2);
-    if (localFileManagerEntity == null) {}
-    do
-    {
-      return;
-      if (!arbs.a(localFileManagerEntity)) {
-        bool = true;
-      }
-      this.jdField_a_of_type_Boolean = bool;
-    } while (!QfileRecentPicFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView, localFileManagerEntity, this.jdField_a_of_type_Boolean));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.k();
+    return new aqrc();
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  @Nullable
+  public aqrc a(aqlg[] paramArrayOfaqlg)
   {
-    if (paramInt1 != paramInt3) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("PicPreDownloadConfProcessor", 2, "onParsed " + paramArrayOfaqlg.length);
     }
-    paramInt3 = Math.min(paramInt2, paramInt4);
-    int i = Math.max(paramInt2, paramInt4);
-    if (paramInt4 < paramInt2) {
-      this.b = Math.min(paramInt4, this.b);
-    }
-    for (;;)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaqlg != null)
     {
-      paramInt2 = paramInt3;
-      while (paramInt2 <= i)
-      {
-        QfileRecentPicFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView, (FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
-        paramInt2 += 1;
-      }
-      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
-    }
-    paramInt2 = this.b;
-    QfileRecentPicFileTabView localQfileRecentPicFileTabView;
-    FileManagerEntity localFileManagerEntity;
-    boolean bool;
-    if (paramInt2 < paramInt3)
-    {
-      localQfileRecentPicFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView;
-      localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.getChild(paramInt1, paramInt2);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        QfileRecentPicFileTabView.a(localQfileRecentPicFileTabView, localFileManagerEntity, bool);
-        paramInt2 += 1;
-        break;
+      localObject1 = localObject2;
+      if (paramArrayOfaqlg.length > 0) {
+        localObject1 = aqrc.a(paramArrayOfaqlg);
       }
     }
-    paramInt2 = i + 1;
-    if (paramInt2 <= this.jdField_a_of_type_Int)
-    {
-      localQfileRecentPicFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView;
-      localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.getChild(paramInt1, paramInt2);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        QfileRecentPicFileTabView.a(localQfileRecentPicFileTabView, localFileManagerEntity, bool);
-        paramInt2 += 1;
-        break;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.k();
+    return localObject1;
   }
   
-  public void a(boolean paramBoolean) {}
+  public void a(aqrc paramaqrc)
+  {
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PicPreDownloadConfProcessor", 2, "onUpdate " + paramaqrc.toString());
+    }
+    if (Pattern.matches("(\\d+?\\|){7}\\d+", paramaqrc.jdField_a_of_type_JavaLangString)) {
+      ayxu.a("flowCombination", paramaqrc.jdField_a_of_type_JavaLangString, true);
+    }
+    if (Pattern.matches("(\\d+?\\|){3}\\d+", paramaqrc.jdField_b_of_type_JavaLangString)) {
+      ayxu.a("troopCombination", paramaqrc.jdField_b_of_type_JavaLangString, true);
+    }
+    if (paramaqrc.g > 0L) {
+      ayxu.a("maxRequest", paramaqrc.g, true);
+    }
+    if ((paramaqrc.jdField_a_of_type_Long == 0L) || (paramaqrc.jdField_a_of_type_Long == 1L)) {
+      if (paramaqrc.jdField_a_of_type_Long != 1L) {
+        break label447;
+      }
+    }
+    label447:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      ayxu.a("PicPreDownSwitch", bool1, true);
+      if ((paramaqrc.jdField_b_of_type_Long == 0L) || (paramaqrc.jdField_b_of_type_Long == 1L) || (paramaqrc.jdField_b_of_type_Long == 2L) || (paramaqrc.jdField_b_of_type_Long == 3L)) {
+        ayxu.a("PicAuDownTimePoint", paramaqrc.jdField_b_of_type_Long, true);
+      }
+      if (paramaqrc.jdField_c_of_type_Long > 0L) {
+        ayxu.a("MaxWifiFlow", paramaqrc.jdField_c_of_type_Long, true);
+      }
+      if (paramaqrc.jdField_d_of_type_Long > 0L) {
+        ayxu.a("Max4GFlow", paramaqrc.jdField_d_of_type_Long, true);
+      }
+      if (paramaqrc.e > 0L) {
+        ayxu.a("Max3GFlow", paramaqrc.e, true);
+      }
+      if (paramaqrc.f > 0L) {
+        ayxu.a("Max2GFlow", paramaqrc.f, true);
+      }
+      if (Pattern.matches("^[0-9A-Fa-f]+$", paramaqrc.jdField_c_of_type_JavaLangString)) {
+        ayxu.a("xGPreDownPolicy", Long.valueOf(paramaqrc.jdField_c_of_type_JavaLangString, 16).longValue(), true);
+      }
+      if (paramaqrc.h > 0L) {
+        ayxu.a("AFBFlowHitXG", paramaqrc.h, true);
+      }
+      if (paramaqrc.i > 0L) {
+        ayxu.a("AFBFlowMissXG", paramaqrc.i, true);
+      }
+      if (paramaqrc.j > 0L) {
+        ayxu.a("APicAvgSize", paramaqrc.j, true);
+      }
+      if (paramaqrc.k > 0L) {
+        ayxu.a("APicMaxSize", paramaqrc.k, true);
+      }
+      if ((paramaqrc.l == 0L) || (paramaqrc.l == 1L))
+      {
+        bool1 = bool2;
+        if (paramaqrc.l == 1L) {
+          bool1 = true;
+        }
+        ayxu.a("enablePeakFlow", bool1, true);
+      }
+      if (Pattern.matches("^((([01]?[0-9]|2[01234])-([01]?[0-9]|2[01234]);)*+([01]?[0-9]|2[01234])-([01]?[0-9]|2[01234]))$", paramaqrc.jdField_d_of_type_JavaLangString)) {
+        ayxu.a("PeakFlowTimePeriod", paramaqrc.jdField_d_of_type_JavaLangString, true);
+      }
+      if (paramaqrc.m > 0L) {
+        ayxu.a("PeakFlowMaxPicSize", paramaqrc.m, true);
+      }
+      return;
+    }
+  }
   
-  public void b(int paramInt1, int paramInt2) {}
+  public Class<aqrc> clazz()
+  {
+    return aqrc.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicPreDownloadConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 616;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqrd
  * JD-Core Version:    0.7.0.1
  */

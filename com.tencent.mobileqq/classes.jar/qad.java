@@ -1,23 +1,15 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallGallery;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import java.util.List;
 
-public class qad
-  extends qae
+public abstract interface qad
 {
-  public qad(Context paramContext, bdbb parambdbb, rqj paramrqj)
-  {
-    super(paramContext, parambdbb, paramrqj);
-  }
+  public abstract void a(List<qaa> paramList);
   
-  public pxl g()
-  {
-    this.jdField_a_of_type_Pxk = new ComponentContentSmallGallery(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
+  public abstract void b(SelectPositionModule.PositionData paramPositionData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qad
  * JD-Core Version:    0.7.0.1
  */

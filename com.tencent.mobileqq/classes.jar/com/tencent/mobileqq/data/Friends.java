@@ -1,17 +1,20 @@
 package com.tencent.mobileqq.data;
 
 import QQService.EVIPSPEC;
-import aheq;
+import ajjm;
 import android.database.Cursor;
 import android.text.TextUtils;
-import awge;
-import awhp;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.PrimaryKeyJoinColumn;
+import com.tencent.mobileqq.persistence.defaultValue;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 
+@PrimaryKeyJoinColumn(name="uin")
 public class Friends
-  extends awge
+  extends Entity
   implements Cloneable
 {
   public static final int CLIENT_DEFAULT = 0;
@@ -28,6 +31,7 @@ public class Friends
   public static final int NET_2G = 2;
   public static final int NET_3G = 3;
   public static final int NET_4G = 4;
+  public static final int NET_5G = 5;
   public static final int NET_UNKNOW = 0;
   public static final int NET_WIFI = 1;
   public static final int TERM_TYPE_ANDROID_PAD = 68104;
@@ -55,18 +59,29 @@ public class Friends
   public static final int TERM_TYPE_WIN8 = 69899;
   public static final int TERM_TYPE_WINPHONE = 65804;
   public long abilityBits;
+  public String adCode;
   public int age;
   public String alias;
+  public String area;
+  public long autoStatusUpdateSecond;
+  public int bigClubExtTemplateId;
   public int bigClubInfo;
   public int bigClubTemplateId;
   @Deprecated
   public byte cNetwork = 0;
   public int cNewLoverDiamondFlag;
   public byte cSpecialFlag;
+  public String city;
+  public String constellationBgImageUrl;
+  public String constellationDateStr;
+  public String constellationIconUrl;
+  public String constellationJumpUrl;
+  public String constellationTodayTrend;
+  public String constellationTomorrowTrend;
   public String customModel = "";
-  @awhp
+  @notColumn
   public String customOnlineStatus;
-  @awhp
+  @notColumn
   public int customOnlineStatusType;
   public long datetime;
   public byte detalStatusFlag;
@@ -89,6 +104,8 @@ public class Friends
   @Deprecated
   public byte isRemark = 1;
   public long lastLoginType;
+  public double latitude;
+  public double longitude;
   public int mComparePartInt;
   public String mCompareSpell;
   public String medalsInfo;
@@ -102,15 +119,18 @@ public class Friends
   public long namePlateOfKingLoginTime;
   public String nameplateCfgInfo;
   public int nameplateVipType;
-  @awhp
+  @notColumn
   public int netTypeIconId;
+  public int poiFlag;
+  public String poiName;
+  public long poiUpdateTime;
   public int qqVipInfo;
   public String recommReason;
   public int relationIconFlag;
   public String remark;
   @Deprecated
   public byte[] richBuffer;
-  @awhp
+  @notColumn
   @Deprecated
   public RichStatus richStatus;
   @Deprecated
@@ -120,12 +140,12 @@ public class Friends
   public String signature;
   public String singerName;
   public String smartRemark;
-  @awhp
+  @notColumn
   public int songDuration;
   public long songEndTime;
   public String songId;
   public String songName;
-  @awhp
+  @notColumn
   public int songPauseRemainTime;
   public int songSourceType;
   @Deprecated
@@ -135,14 +155,21 @@ public class Friends
   @Deprecated
   public byte status = 10;
   public String strMasterUin = "";
-  @awhp
+  @notColumn
   public String strTermDesc;
   public int superQqInfo;
   public int superVipInfo;
   public int superVipTemplateId;
+  public String temper;
   public long uExtOnlineStatus;
-  @awhs
+  @unique
   public String uin;
+  @defaultValue(defaultInteger=1)
+  public int weatherFlag;
+  public String weatherTip;
+  public String weatherType;
+  public String weatherTypeId;
+  public long weatherUpdateTime;
   
   public static boolean isValidUin(long paramLong)
   {
@@ -213,6 +240,7 @@ public class Friends
     this.strMasterUin = paramCursor.getString(paramCursor.getColumnIndex("strMasterUin"));
     this.superVipTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("superVipTemplateId"));
     this.bigClubTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("bigClubTemplateId"));
+    this.bigClubExtTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("bigClubExtTemplateId"));
     this.nameplateVipType = paramCursor.getInt(paramCursor.getColumnIndex("nameplateVipType"));
     this.grayNameplateFlag = paramCursor.getInt(paramCursor.getColumnIndex("grayNameplateFlag"));
     this.cNewLoverDiamondFlag = paramCursor.getInt(paramCursor.getColumnIndex("cNewLoverDiamondFlag"));
@@ -222,6 +250,22 @@ public class Friends
     this.uExtOnlineStatus = paramCursor.getLong(paramCursor.getColumnIndex("uExtOnlineStatus"));
     this.iBatteryStatus = paramCursor.getInt(paramCursor.getColumnIndex("iBatteryStatus"));
     this.customModel = paramCursor.getString(paramCursor.getColumnIndex("customModel"));
+    this.constellationTodayTrend = paramCursor.getString(paramCursor.getColumnIndex("constellationTodayTrend"));
+    this.constellationTomorrowTrend = paramCursor.getString(paramCursor.getColumnIndex("constellationTomorrowTrend"));
+    this.constellationBgImageUrl = paramCursor.getString(paramCursor.getColumnIndex("constellationBgImageUrl"));
+    this.constellationIconUrl = paramCursor.getString(paramCursor.getColumnIndex("constellationIconUrl"));
+    this.constellationJumpUrl = paramCursor.getString(paramCursor.getColumnIndex("constellationJumpUrl"));
+    this.constellationDateStr = paramCursor.getString(paramCursor.getColumnIndex("constellationDateStr"));
+    this.temper = paramCursor.getString(paramCursor.getColumnIndex("temper"));
+    this.weatherType = paramCursor.getString(paramCursor.getColumnIndex("weatherType"));
+    this.weatherTypeId = paramCursor.getString(paramCursor.getColumnIndex("weatherTypeId"));
+    this.weatherTip = paramCursor.getString(paramCursor.getColumnIndex("weatherTip"));
+    this.adCode = paramCursor.getString(paramCursor.getColumnIndex("adCode"));
+    this.city = paramCursor.getString(paramCursor.getColumnIndex("city"));
+    this.area = paramCursor.getString(paramCursor.getColumnIndex("area"));
+    this.weatherUpdateTime = paramCursor.getLong(paramCursor.getColumnIndex("weatherUpdateTime"));
+    this.weatherFlag = paramCursor.getInt(paramCursor.getColumnIndex("weatherFlag"));
+    this.autoStatusUpdateSecond = paramCursor.getLong(paramCursor.getColumnIndex("autoStatusUpdateSecond"));
     if (QLog.isColorLevel()) {
       QLog.i("Friends", 2, "entityByCursor uin=" + this.uin + ", cSpecialFlag=" + this.cSpecialFlag);
     }
@@ -293,7 +337,7 @@ public class Friends
   public int getNetWorkType()
   {
     int j = 2;
-    aheq localaheq = aheq.a();
+    ajjm localajjm = ajjm.a();
     int i;
     if (this.eNetwork == 0)
     {
@@ -304,9 +348,9 @@ public class Friends
       {
         return i;
         i = j;
-      } while (1 != localaheq.a(this.iTermType, 1));
+      } while (1 != localajjm.a(this.iTermType, 1));
     }
-    if (1 != localaheq.a(this.iTermType, 1)) {
+    if (1 != localajjm.a(this.iTermType, 1)) {
       i = j;
     }
     switch (this.netTypeIconId)
@@ -314,6 +358,8 @@ public class Friends
     case 2: 
     case 5: 
     case 6: 
+    case 10: 
+    case 11: 
     default: 
       if ((this.netTypeIconId == 7) || (this.netTypeIconId == 8) || (this.netTypeIconId == 9)) {}
       switch (this.netTypeIconId)
@@ -327,6 +373,8 @@ public class Friends
       return 3;
     case 4: 
       return 4;
+    case 12: 
+      return 5;
     case 7: 
       return 7;
     case 8: 

@@ -9,10 +9,10 @@ class AccountDetailActivity$19$1
   {
     if (this.a.this$0.c)
     {
-      this.a.this$0.M();
+      this.a.this$0.N();
       return;
     }
-    this.a.this$0.j();
+    AccountDetailActivity.e(this.a.this$0);
     this.a.this$0.d();
   }
 }

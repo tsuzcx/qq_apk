@@ -1,54 +1,79 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.content.IntentFilter;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aosv
+  extends aosm
 {
-  private String a = "";
-  private String b = "";
-  private String c = "";
-  private String d = "";
+  static PromotionConfigInfo b;
+  final String c = "SubProcessPromotionMgr_" + AudioHelper.b();
   
-  public static aosv a(JSONObject paramJSONObject)
+  public aosv(AppInterface paramAppInterface)
   {
-    if (paramJSONObject == null) {
-      return null;
+    super(paramAppInterface);
+    a(paramAppInterface);
+    QLog.w(this.c, 1, "SubProcessPromotionMgr, sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
+  }
+  
+  public void a(AppInterface paramAppInterface, aoso paramaoso)
+  {
+    if (a("snycGetConfig", paramAppInterface, paramaoso)) {
+      return;
     }
-    aosv localaosv = new aosv();
-    localaosv.a = paramJSONObject.getString("tips");
-    localaosv.b = paramJSONObject.getString("buttonText");
-    localaosv.c = paramJSONObject.getString("url");
-    localaosv.d = paramJSONObject.getString("icon");
-    return localaosv;
+    paramaoso.a(a());
   }
   
-  public String a()
+  public void a(AppInterface paramAppInterface, String paramString)
   {
-    return this.a;
+    BusinessCommonConfig.notifyQQDownload(2, paramString, 0);
   }
   
-  public boolean a()
+  void a(PromotionConfigInfo paramPromotionConfigInfo)
   {
-    return (TextUtils.isEmpty(this.a)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && (TextUtils.isEmpty(this.d));
+    super.a(paramPromotionConfigInfo);
+    try
+    {
+      jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
+      return;
+    }
+    finally {}
   }
   
-  public String b()
+  boolean a(AppInterface paramAppInterface)
   {
-    return this.b;
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
+    return paramAppInterface.getApp().registerReceiver(new aosw(this), localIntentFilter) != null;
   }
   
-  public String c()
+  void b(AppInterface paramAppInterface) {}
+  
+  void b(String paramString)
   {
-    return this.c;
+    try
+    {
+      paramString = bguf.a(this.jdField_b_of_type_JavaLangString, paramString);
+      a(paramString);
+      QLog.w(this.c, 1, "reloadConfigInfo, Uin[" + this.jdField_b_of_type_JavaLangString + "] configInfo[" + paramString + "]");
+      return;
+    }
+    finally {}
   }
   
-  public String d()
+  public void onDestroy()
   {
-    return this.d;
+    super.onDestroy();
+    jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aosv
  * JD-Core Version:    0.7.0.1
  */

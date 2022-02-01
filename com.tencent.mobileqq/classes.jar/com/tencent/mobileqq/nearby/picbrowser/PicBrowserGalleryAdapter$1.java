@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import avji;
-import avjo;
+import axqs;
+import axqy;
 
 public class PicBrowserGalleryAdapter$1
   implements Runnable
 {
-  public PicBrowserGalleryAdapter$1(avji paramavji, int paramInt1, int paramInt2) {}
+  public PicBrowserGalleryAdapter$1(axqs paramaxqs, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    avji.a(this.this$0, this.a, this.b);
-    if (avji.a(this.this$0) != null) {
-      avji.a(this.this$0).a(this.a, this.b);
+    axqs.a(this.this$0, this.a, this.b);
+    if (axqs.a(this.this$0) != null) {
+      axqs.a(this.this$0).a(this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.1
  * JD-Core Version:    0.7.0.1
  */

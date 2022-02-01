@@ -1,23 +1,81 @@
-import java.util.Formatter;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
-public final class bibq
-  implements bibr
+public class bibq
 {
-  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
-  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   
-  public String a(int paramInt)
+  public bibq(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
-    return this.jdField_a_of_type_JavaUtilFormatter.toString();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public bibq(Bitmap paramBitmap, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Int = (paramInt % 360);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public Matrix a()
+  {
+    Matrix localMatrix = new Matrix();
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
+      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
+      localMatrix.preTranslate(-i, -j);
+      localMatrix.postRotate(this.jdField_a_of_type_Int);
+      localMatrix.postTranslate(c() / 2, b() / 2);
+    }
+    return localMatrix;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int / 90 % 2 != 0;
+  }
+  
+  public int b()
+  {
+    if (a()) {
+      return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+  }
+  
+  public int c()
+  {
+    if (a()) {
+      return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bibq
  * JD-Core Version:    0.7.0.1
  */

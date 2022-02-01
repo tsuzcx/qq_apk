@@ -1,24 +1,13 @@
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.GetStaticProxy;
+import mqq.app.AppRuntime;
 
-public class bcqb
+public final class bcqb
+  implements IMCoreProxyRoute.GetStaticProxy<AppRuntime>
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public int b = 0;
-  public String b;
-  
-  public String a(int paramInt)
+  public AppRuntime a()
   {
-    if ((this.a == null) || (this.a.size() == 0)) {
-      return "";
-    }
-    if (paramInt < this.a.size()) {
-      return (String)this.a.get(paramInt);
-    }
-    return (String)this.a.get(this.a.size() - 1);
+    return BaseApplicationImpl.getApplication().getRuntime();
   }
 }
 

@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
-class azjj
-  implements afkw
+public class azjj
+  extends AnimatorListenerAdapter
 {
-  azjj(azjh paramazjh, CustomFrameAnimationDrawable paramCustomFrameAnimationDrawable) {}
+  public azjj(BreatheEffectView paramBreatheEffectView) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Azjh.c > 0) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.h();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.c();
-    azjh localazjh = this.jdField_a_of_type_Azjh;
-    localazjh.c += 1;
+    this.a.a();
   }
 }
 

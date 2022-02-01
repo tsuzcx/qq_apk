@@ -1,16 +1,26 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
 
 class bdve
-  extends bead
+  extends anqd
 {
-  bdve(bdvd parambdvd) {}
+  bdve(bdvb parambdvb) {}
   
-  @TargetApi(9)
-  public void onDone(beae parambeae)
+  public void a(boolean paramBoolean, long paramLong, anqe paramanqe)
   {
-    super.onDone(parambeae);
-    bdvd.a(this.a).sendMessage(bdvd.a(this.a).obtainMessage(10002, parambeae.a(), 0, parambeae.a()));
+    if ((this.a.a.a == 1026) && (QLog.isColorLevel())) {
+      QLog.i("PttShow", 2, "onNotifyResultAfterSendRich, UIN_TYPE_HOTCHAT_TOPIC  " + paramBoolean);
+    }
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramanqe);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    if (paramanqe != null) {
+      this.a.v = paramanqe.d;
+    }
+    this.a.d();
   }
 }
 

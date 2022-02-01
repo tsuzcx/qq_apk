@@ -1,98 +1,110 @@
-import NS_MINI_INTERFACE.INTERFACE.StAddressInfo;
-import NS_MINI_INTERFACE.INTERFACE.StApiUserInfo;
-import NS_MINI_INTERFACE.INTERFACE.StGetProfileReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetProfileRsp;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.QueryItemVersionCallback;
+import com.tencent.mobileqq.vas.updatesystem.VasUpdateEngineV2.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.vas.update.business.BaseUpdateBusiness;
+import com.tencent.vas.update.callback.ICmdManager;
+import com.tencent.vas.update.callback.listener.ICmdListener;
+import com.tencent.vas.update.entity.BusinessUpdateParams;
+import com.tencent.vas.update.wrapper.VasUpdateWrapper;
+import java.lang.ref.WeakReference;
 
 public class bhdi
-  extends bhdw
+  implements bhdf
 {
-  private INTERFACE.StGetProfileReq a = new INTERFACE.StGetProfileReq();
+  private bhdg jdField_a_of_type_Bhdg;
+  private bhdm jdField_a_of_type_Bhdm;
   
-  public bhdi(String paramString1, boolean paramBoolean, String paramString2)
+  public bhdi(QQAppInterface paramQQAppInterface)
   {
-    this.a.appid.set(paramString1);
-    paramString1 = this.a.withCredentials;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      paramString1.set(i);
-      if (!TextUtils.isEmpty(paramString2)) {
-        this.a.lang.set(paramString2);
-      }
-      return;
-    }
-  }
-  
-  protected String a()
-  {
-    return "mini_user_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetProfileRsp localStGetProfileRsp = new INTERFACE.StGetProfileRsp();
     try
     {
-      localStGetProfileRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetProfileRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        JSONObject localJSONObject1 = new JSONObject();
-        JSONObject localJSONObject2 = new JSONObject();
-        if (localStGetProfileRsp.user != null)
-        {
-          paramArrayOfByte.put("nickName", localStGetProfileRsp.user.nick.get());
-          paramArrayOfByte.put("avatarUrl", localStGetProfileRsp.user.avatar.get());
-          paramArrayOfByte.put("gender", localStGetProfileRsp.user.gender.get());
-          paramArrayOfByte.put("language", localStGetProfileRsp.user.language.get());
-          if (localStGetProfileRsp.user.address != null)
-          {
-            paramArrayOfByte.put("province", localStGetProfileRsp.user.address.province.get());
-            paramArrayOfByte.put("city", localStGetProfileRsp.user.address.city.get());
-            paramArrayOfByte.put("country", localStGetProfileRsp.user.address.country.get());
-          }
-        }
-        localJSONObject2.put("rawData", localStGetProfileRsp.rawData.get());
-        localJSONObject2.put("signature", localStGetProfileRsp.signature.get());
-        localJSONObject2.put("encryptedData", localStGetProfileRsp.encryptedData.get());
-        localJSONObject2.put("iv", localStGetProfileRsp.iv.get());
-        localJSONObject2.put("userInfo", paramArrayOfByte);
-        localJSONObject1.put("data", localStGetProfileRsp.rawData.get());
-        localJSONObject1.put("signature", localStGetProfileRsp.signature.get());
-        localJSONObject2.put("data", localJSONObject1.toString());
-        return localJSONObject2;
-      }
-      QMLog.d("GetProfileRequest", "onResponse fail.rsp = null");
-      return null;
+      this.jdField_a_of_type_Bhdg = ((bhdg)paramQQAppInterface.getManager(374));
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    catch (Throwable paramQQAppInterface)
     {
-      QMLog.d("GetProfileRequest", "onResponse fail." + paramArrayOfByte);
+      paramQQAppInterface.printStackTrace();
+      this.jdField_a_of_type_Bhdg = new bhdg(null);
     }
-    return null;
   }
   
-  protected byte[] a()
+  public void cancelDwonloadItem(long paramLong, String paramString)
   {
-    return this.a.toByteArray();
+    if ((this.jdField_a_of_type_Bhdg != null) && (this.jdField_a_of_type_Bhdg.getBusinessCallback(paramLong) != null)) {
+      this.jdField_a_of_type_Bhdg.getBusinessCallback(paramLong).cancelDownload(paramString);
+    }
   }
   
-  protected String b()
+  public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
   {
-    return "GetProfile";
+    if ((this.jdField_a_of_type_Bhdg != null) && (this.jdField_a_of_type_Bhdg.getBusinessCallback(paramLong) != null))
+    {
+      int j = paramArrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramString1 = new BusinessUpdateParams(paramLong, paramArrayOfString[i], paramString2);
+        this.jdField_a_of_type_Bhdg.getBusinessCallback(paramLong).startDownload(paramString1);
+        i += 1;
+      }
+    }
+  }
+  
+  public void downloadItem(long paramLong, String paramString1, String paramString2)
+  {
+    if ((this.jdField_a_of_type_Bhdg != null) && (this.jdField_a_of_type_Bhdg.getBusinessCallback(paramLong) != null))
+    {
+      paramString1 = new BusinessUpdateParams(paramLong, paramString1, paramString2);
+      this.jdField_a_of_type_Bhdg.getBusinessCallback(paramLong).startDownload(paramString1);
+    }
+  }
+  
+  public void onDestory()
+  {
+    this.jdField_a_of_type_Bhdg = null;
+  }
+  
+  public void onPbMsgRecv(int paramInt, String paramString1, String paramString2)
+  {
+    if ((this.jdField_a_of_type_Bhdm != null) && (this.jdField_a_of_type_Bhdm.a() != null)) {
+      this.jdField_a_of_type_Bhdm.a().onPbResponse(paramInt, paramString1, paramString2);
+    }
+  }
+  
+  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback)
+  {
+    ThreadManagerV2.excute(new VasUpdateEngineV2.1(this, paramQueryItemVersionCallback, paramInt, paramString), 32, null, true);
+  }
+  
+  public void setWeakHandler(WeakReference<VasExtensionHandler> paramWeakReference)
+  {
+    if (this.jdField_a_of_type_Bhdg == null) {}
+    while (this.jdField_a_of_type_Bhdg.a() == null) {
+      return;
+    }
+    ICmdManager localICmdManager = VasUpdateWrapper.getCmdManager();
+    if ((localICmdManager == null) || (!(localICmdManager instanceof bhdm)))
+    {
+      QLog.e("VasUpdate_VasUpdateEngineV2", 1, "setWeakHandler cmdManager == null or != VasCmdImpl");
+      return;
+    }
+    this.jdField_a_of_type_Bhdm = ((bhdm)localICmdManager);
+    this.jdField_a_of_type_Bhdm.a(paramWeakReference);
+  }
+  
+  public void startUpdateAllItem()
+  {
+    if (this.jdField_a_of_type_Bhdg != null) {
+      this.jdField_a_of_type_Bhdg.updateAllItem();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhdi
  * JD-Core Version:    0.7.0.1
  */

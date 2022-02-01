@@ -1,52 +1,23 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.view.View;
 
 class bnnr
-  implements axvu
+  implements Observer<Boolean>
 {
-  bnnr(bnnq parambnnq, bnqo parambnqo, axvi paramaxvi, PublishVideoEntry paramPublishVideoEntry, bnnt parambnnt) {}
+  bnnr(bnnl parambnnl) {}
   
-  public void a()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bnqo != null) {
-      this.jdField_a_of_type_Bnqo.a(this.jdField_a_of_type_Axvi.a, this.jdField_a_of_type_Axvi.b);
-    }
-    QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
-  }
-  
-  public void a(String arg1)
-  {
-    synchronized (bnnq.a(this.jdField_a_of_type_Bnnq))
-    {
-      bnnq.a(this.jdField_a_of_type_Bnnq, true);
-      bnnq.a(this.jdField_a_of_type_Bnnq).notifyAll();
-      if (this.jdField_a_of_type_Bnqo != null) {
-        this.jdField_a_of_type_Bnqo.a();
-      }
-      QLog.w("MergeEditVideo", 1, "mp4ReEncoder encode finish!");
+    if (paramBoolean == null) {
       return;
     }
-  }
-  
-  public void a_(int paramInt, Throwable arg2)
-  {
-    wxe.c("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = ", ???);
-    if (paramInt > 10000) {
-      synchronized (bnnq.a(this.jdField_a_of_type_Bnnq))
-      {
-        bnnq.a(this.jdField_a_of_type_Bnnq, true);
-        bnnq.a(this.jdField_a_of_type_Bnnq).notifyAll();
-        return;
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isCancel)
+    View localView = bnnl.a(this.a);
+    if (paramBoolean.booleanValue()) {}
+    for (int i = 0;; i = 4)
     {
-      this.jdField_a_of_type_Bnnt.c();
-      QLog.w("MergeEditVideo", 1, "mergeVideo cancel!");
+      localView.setVisibility(i);
+      return;
     }
   }
 }

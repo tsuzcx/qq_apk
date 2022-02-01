@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.data;
 
-import blsx;
+import bomb;
 
 public class TemplateSet$1
   implements Runnable
 {
-  public TemplateSet$1(blsx paramblsx) {}
+  public TemplateSet$1(bomb parambomb) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class TemplateSet$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.data.TemplateSet.1
  * JD-Core Version:    0.7.0.1
  */

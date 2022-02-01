@@ -1,31 +1,44 @@
-import NS_MINI_APP_MISC.MISC.StGetFriendPlayListV2Rsp;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Message;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class asin
-  implements View.OnClickListener
+  extends bdzm
 {
-  public asin(IntimatePlayTogetherMiniGameCardView paramIntimatePlayTogetherMiniGameCardView, MISC.StGetFriendPlayListV2Rsp paramStGetFriendPlayListV2Rsp) {}
+  public asin(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.total.get() <= 1)
+    bduk localbduk = (bduk)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      QLog.d("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "will not jump because total count less than 2" });
+    case 1004: 
+    default: 
+      return;
+    case 1003: 
+      if (localbduk.b == 23)
+      {
+        ExtendFriendEditFragment.a(this.a, ((bdwp)localbduk.a).o);
+        if (QLog.isColorLevel()) {
+          QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload success. url = " + ExtendFriendEditFragment.a(this.a));
+        }
+        if (this.a.a != null)
+        {
+          this.a.a.a(ExtendFriendEditFragment.a(this.a));
+          ExtendFriendEditFragment.a(this.a, this.a.a.a());
+        }
+      }
+      asmj.a().d(true, 0);
       return;
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get()))
-    {
-      QLog.e("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "Could not launch with empty jump url" });
-      return;
+    if ((localbduk.b == 23) && (QLog.isColorLevel())) {
+      QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload fail.");
     }
-    MiniAppLauncher.startMiniApp(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimatePlayTogetherMiniGameCardView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get(), 2064, new asio(this));
+    ExtendFriendEditFragment.a(this.a).dismiss();
+    QQToast.a(ExtendFriendEditFragment.a(this.a), anni.a(2131703062), 0).a();
+    asmj.a().d(false, 0);
   }
 }
 

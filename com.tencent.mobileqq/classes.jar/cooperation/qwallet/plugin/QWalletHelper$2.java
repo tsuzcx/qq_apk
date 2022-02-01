@@ -1,27 +1,32 @@
 package cooperation.qwallet.plugin;
 
 import android.app.Activity;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.ResultReceiver;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 import java.lang.ref.WeakReference;
 
 final class QWalletHelper$2
-  implements Runnable
+  extends ResultReceiver
 {
-  QWalletHelper$2(String paramString1, WeakReference paramWeakReference, long paramLong, String paramString2, String paramString3, String paramString4) {}
-  
-  public void run()
+  QWalletHelper$2(Handler paramHandler, WeakReference paramWeakReference)
   {
-    AnimationView.AnimationInfo localAnimationInfo = AnimationView.AnimationInfo.loadFromZip(this.val$zipFileName);
-    Activity localActivity = (Activity)this.val$weakActivityRef.get();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return;
+    super(paramHandler);
+  }
+  
+  protected void onReceiveResult(int paramInt, Bundle paramBundle)
+  {
+    super.onReceiveResult(paramInt, paramBundle);
+    paramBundle = (Activity)this.val$activityRef.get();
+    if (((paramBundle instanceof ScannerActivity)) && (!paramBundle.isFinishing())) {
+      paramBundle.finish();
     }
-    localActivity.runOnUiThread(new QWalletHelper.2.1(this, localAnimationInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletHelper.2
  * JD-Core Version:    0.7.0.1
  */

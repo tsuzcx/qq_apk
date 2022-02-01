@@ -1,23 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.FolderTextView;
+import android.text.TextUtils.EllipsizeCallback;
+import android.widget.TextView;
 
-public class bepu
-  implements View.OnClickListener
+final class bepu
+  implements TextUtils.EllipsizeCallback
 {
-  public bepu(FolderTextView paramFolderTextView) {}
+  bepu(bepv parambepv, String paramString) {}
   
-  public void onClick(View paramView)
+  public void ellipsized(int paramInt1, int paramInt2)
   {
-    if (FolderTextView.a(this.a) == 0) {
-      FolderTextView.a(this.a, 1);
-    }
-    for (;;)
+    if (paramInt1 == paramInt2)
     {
-      FolderTextView.a(this.a);
+      this.jdField_a_of_type_Bepv.c.setText(this.jdField_a_of_type_JavaLangString);
       return;
-      FolderTextView.a(this.a, 0);
     }
+    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
+    this.jdField_a_of_type_Bepv.c.setText(new bdnt(nlw.b(nlw.c(str + "...")), 3, 14));
   }
 }
 

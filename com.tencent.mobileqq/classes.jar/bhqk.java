@@ -1,51 +1,26 @@
-public final class bhqk
-  implements Cloneable
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import mqq.os.MqqHandler;
+
+class bhqk
+  implements URLDrawable.URLDrawableListener
 {
-  private int a;
+  bhqk(bhqg parambhqg) {}
   
-  public bhqk(int paramInt)
-  {
-    this.a = paramInt;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public bhqk(byte[] paramArrayOfByte)
-  {
-    this(paramArrayOfByte, 0);
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public bhqk(byte[] paramArrayOfByte, int paramInt)
-  {
-    this.a = (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
-    this.a += (paramArrayOfByte[paramInt] & 0xFF);
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public int a()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return this.a;
-  }
-  
-  public byte[] a()
-  {
-    return new byte[] { (byte)(this.a & 0xFF), (byte)((this.a & 0xFF00) >> 8) };
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof bhqk))) {}
-    while (this.a != ((bhqk)paramObject).a()) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return this.a;
+    this.a.a.sendMessage(this.a.a.obtainMessage(103, paramURLDrawable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqk
  * JD-Core Version:    0.7.0.1
  */

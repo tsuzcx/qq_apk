@@ -1,31 +1,34 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bdjk
+class bdjk
+  implements WtTicketPromise
 {
-  public String a;
-  public boolean a;
+  bdjk(bdjj parambdjj, Runnable paramRunnable) {}
   
-  public static bdjk a(Bundle paramBundle)
+  public void Done(Ticket paramTicket)
   {
-    bdjk localbdjk = new bdjk();
-    localbdjk.jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
-    localbdjk.jdField_a_of_type_Boolean = paramBundle.getBoolean("enableInvite");
-    return localbdjk;
+    if (QLog.isColorLevel()) {
+      QLog.d("TenDocOCRExportHandler", 2, "--- pskey invalid retry ---  ");
+    }
+    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    boolean bool = bdjg.a(paramString1, paramQQAppInterface, paramString2);
-    paramString1 = new Intent();
-    paramString1.setAction("tencent.video.q2v.GroupInfoChanged");
-    paramString1.putExtra("uin", paramString2);
-    paramString1.putExtra("enableInvite", bool);
-    paramString1.setPackage(paramQQAppInterface.getApplication().getPackageName());
-    paramQQAppInterface.getApp().sendBroadcast(paramString1);
+    if (QLog.isColorLevel()) {
+      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
+    }
   }
 }
 

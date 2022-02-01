@@ -7,9 +7,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bibv;
+import bkpg;
 import com.tencent.common.app.BaseApplicationImpl;
-import xsm;
+import zlx;
 
 public class AdvancedTipsBar
   extends TipsBar
@@ -26,7 +26,7 @@ public class AdvancedTipsBar
   
   public void a()
   {
-    if (!bibv.a()) {}
+    if (!bkpg.a()) {}
     for (int i = Color.parseColor("#03081A");; i = Color.parseColor("#FFFFFF"))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
@@ -47,9 +47,9 @@ public class AdvancedTipsBar
     super.c();
     if (this.b != null)
     {
-      this.b.setId(2131377932);
+      this.b.setId(2131378770);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-      localLayoutParams.rightMargin = xsm.a(BaseApplicationImpl.context, 16.0F);
+      localLayoutParams.rightMargin = zlx.a(BaseApplicationImpl.context, 16.0F);
       this.b.setLayoutParams(localLayoutParams);
     }
   }
@@ -60,11 +60,11 @@ public class AdvancedTipsBar
     RelativeLayout.LayoutParams localLayoutParams;
     if (this.jdField_a_of_type_AndroidWidgetButton != null)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setId(2131377931);
+      this.jdField_a_of_type_AndroidWidgetButton.setId(2131378769);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetButton.getLayoutParams();
       localLayoutParams.leftMargin = 0;
-      localLayoutParams.rightMargin = xsm.a(BaseApplicationImpl.context, 44.0F);
-      if (bibv.a()) {
+      localLayoutParams.rightMargin = zlx.a(BaseApplicationImpl.context, 44.0F);
+      if (bkpg.a()) {
         break label110;
       }
     }
@@ -76,7 +76,7 @@ public class AdvancedTipsBar
       if (this.jdField_a_of_type_AndroidWidgetTextView != null)
       {
         localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-        localLayoutParams.addRule(0, 2131377931);
+        localLayoutParams.addRule(0, 2131378769);
         this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
       }
       return;
@@ -85,7 +85,7 @@ public class AdvancedTipsBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AdvancedTipsBar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,136 +1,103 @@
 package com.tencent.beacon.core.d;
 
-import android.os.Build;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
 
-public final class f
+public abstract class f
 {
-  private static f b = null;
-  private boolean a = false;
+  protected static f a;
   
-  protected f()
+  /* Error */
+  public static f a(Context paramContext)
   {
-    String str = Build.TAGS;
-    if ((str != null) && (str.contains("test-keys"))) {
-      b.b("[core] test-keys}", new Object[0]);
-    }
-    for (;;)
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: aload_0
+    //   4: invokestatic 18	com/tencent/beacon/core/strategy/g:b	(Landroid/content/Context;)Lcom/tencent/beacon/core/strategy/g;
+    //   7: invokevirtual 22	com/tencent/beacon/core/strategy/g:e	()Z
+    //   10: istore_1
+    //   11: getstatic 24	com/tencent/beacon/core/d/f:a	Lcom/tencent/beacon/core/d/f;
+    //   14: ifnonnull +21 -> 35
+    //   17: aload_0
+    //   18: ifnull +17 -> 35
+    //   21: aload_0
+    //   22: iload_1
+    //   23: invokestatic 27	com/tencent/beacon/core/d/f:a	(Landroid/content/Context;Z)V
+    //   26: getstatic 24	com/tencent/beacon/core/d/f:a	Lcom/tencent/beacon/core/d/f;
+    //   29: astore_0
+    //   30: ldc 2
+    //   32: monitorexit
+    //   33: aload_0
+    //   34: areturn
+    //   35: getstatic 24	com/tencent/beacon/core/d/f:a	Lcom/tencent/beacon/core/d/f;
+    //   38: astore_2
+    //   39: aload_2
+    //   40: ifnull -14 -> 26
+    //   43: aload_2
+    //   44: invokevirtual 29	com/tencent/beacon/core/d/f:a	()Z
+    //   47: iload_1
+    //   48: if_icmpeq -22 -> 26
+    //   51: aload_0
+    //   52: iload_1
+    //   53: invokestatic 27	com/tencent/beacon/core/d/f:a	(Landroid/content/Context;Z)V
+    //   56: goto -30 -> 26
+    //   59: astore_0
+    //   60: ldc 2
+    //   62: monitorexit
+    //   63: aload_0
+    //   64: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	65	0	paramContext	Context
+    //   10	43	1	bool	boolean
+    //   38	6	2	localf	f
+    // Exception table:
+    //   from	to	target	type
+    //   3	17	59	finally
+    //   21	26	59	finally
+    //   26	30	59	finally
+    //   35	39	59	finally
+    //   43	56	59	finally
+  }
+  
+  private static void a(Context paramContext, boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      if ((i == 0) && (!c()) && (!d())) {
-        this.a = false;
-      }
+      a = new f.b(paramContext);
       return;
-      i = 0;
     }
+    a = new f.a(paramContext);
   }
   
-  public static f a()
+  protected void a(long paramLong)
   {
     try
     {
-      if (b == null) {
-        b = new f();
-      }
-      f localf = b;
-      return localf;
+      Thread.sleep(paramLong);
+      return;
     }
-    finally {}
-  }
-  
-  private static boolean c()
-  {
-    boolean bool = false;
-    try
+    catch (InterruptedException localInterruptedException)
     {
-      if (new File("/system/app/Superuser.apk").exists())
-      {
-        b.b("[core] super_apk}", new Object[0]);
-        bool = true;
-      }
-      return bool;
-    }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  private static boolean d()
-  {
-    Object localObject = e();
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        b.b(str, new Object[0]);
-        if (str.contains("not found")) {
-          return false;
-        }
-      }
-      b.b("[core] sufile}", new Object[0]);
-      return true;
-    }
-    b.b("[core] no response}", new Object[0]);
-    return false;
-  }
-  
-  private static ArrayList<String> e()
-  {
-    ArrayList localArrayList = new ArrayList();
-    String str;
-    Object localObject;
-    try
-    {
-      Process localProcess = Runtime.getRuntime().exec(new String[] { "/system/bin/sh", "-c", "type su" });
-      localBufferedReader = new BufferedReader(new InputStreamReader(localProcess.getInputStream()));
-      for (;;)
-      {
-        str = localBufferedReader.readLine();
-        if (str == null) {
-          break;
-        }
-        localArrayList.add(str);
-      }
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      b.a(localThrowable);
-      localObject = null;
-    }
-    BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(((Process)localObject).getErrorStream()));
-    for (;;)
-    {
-      str = localBufferedReader.readLine();
-      localObject = localArrayList;
-      if (str == null) {
-        break;
-      }
-      localArrayList.add(str);
+      com.tencent.beacon.core.e.d.a(localInterruptedException);
     }
   }
   
-  public final boolean b()
+  public abstract boolean a();
+  
+  public byte[] a(String paramString, int paramInt, byte[] paramArrayOfByte, a parama, d paramd)
   {
-    try
-    {
-      boolean bool = this.a;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return null;
+  }
+  
+  public byte[] a(String paramString, byte[] paramArrayOfByte, a parama, d paramd)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.d.f
  * JD-Core Version:    0.7.0.1
  */

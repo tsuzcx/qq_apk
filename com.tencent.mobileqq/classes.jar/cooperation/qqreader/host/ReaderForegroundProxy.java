@@ -1,8 +1,8 @@
 package cooperation.qqreader.host;
 
 import android.content.Context;
-import bjbl;
-import bjbm;
+import blpu;
+import blpv;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
 import mqq.app.Foreground;
@@ -18,7 +18,7 @@ public class ReaderForegroundProxy
   
   public void onDestroy(Context paramContext)
   {
-    Foreground.onDestroy(bjbm.a(paramContext));
+    Foreground.onDestroy(blpv.a(paramContext));
   }
   
   public void onPause()
@@ -33,8 +33,8 @@ public class ReaderForegroundProxy
   
   public void onStart(Context paramContext)
   {
-    bjbl.e("ReaderForegroundProxy", "onStart context = " + paramContext);
-    Foreground.onStart(this.mRuntime, bjbm.a(paramContext));
+    blpu.e("ReaderForegroundProxy", "onStart context = " + paramContext);
+    Foreground.onStart(this.mRuntime, blpv.a(paramContext));
   }
   
   public void onStop()
@@ -44,7 +44,7 @@ public class ReaderForegroundProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.host.ReaderForegroundProxy
  * JD-Core Version:    0.7.0.1
  */

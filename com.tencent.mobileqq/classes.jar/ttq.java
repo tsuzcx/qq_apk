@@ -1,26 +1,34 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
-import feedcloud.FeedCloudWrite.StDelFeedRsp;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
 
-class ttq
-  implements zac<FeedCloudWrite.StDelFeedRsp>
+public class ttq
+  implements View.OnKeyListener
 {
-  ttq(ttp paramttp, String paramString) {}
+  private ttq(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDelFeedRsp paramStDelFeedRsp)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((!paramBoolean) || (paramLong != 0L))
+    paramView = ReadInJoyNewSearchActivity.a(this.a).getText().toString().trim();
+    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0) && (!TextUtils.isEmpty(paramView)))
     {
-      QLog.e("QCircleSharePart", 1, "deleteFeed  error");
-      return;
+      paramKeyEvent = (InputMethodManager)this.a.getSystemService("input_method");
+      if (paramKeyEvent != null) {
+        paramKeyEvent.hideSoftInputFromWindow(ReadInJoyNewSearchActivity.a(this.a).getWindowToken(), 2);
+      }
+      ReadInJoyNewSearchActivity.a(this.a, paramView);
+      this.a.a(paramView);
     }
-    QLog.d("QCircleSharePart", 1, "deleteFeed  success");
-    yiw.a().a(new QCircleFeedEvent(this.jdField_a_of_type_JavaLangString, 3));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ttq
  * JD-Core Version:    0.7.0.1
  */

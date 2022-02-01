@@ -1,14 +1,17 @@
-import com.tencent.common.app.AppInterface;
+import java.io.File;
+import java.util.concurrent.Callable;
 
 class bldu
-  extends bkzv
+  implements Callable<Boolean>
 {
-  bldu(blds paramblds, AppInterface paramAppInterface) {}
+  bldu(blds paramblds, File paramFile) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public Boolean a()
   {
-    blds.a(this.jdField_a_of_type_Blds).a(paramBoolean1, paramBoolean2);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    if ((blds.a(this.jdField_a_of_type_Blds).exists()) && (this.jdField_a_of_type_JavaIoFile == blds.a(this.jdField_a_of_type_Blds))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
+    }
   }
 }
 

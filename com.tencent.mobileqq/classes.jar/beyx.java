@@ -1,17 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
 
-public class beyx
-  implements ansr
+public final class beyx
+  implements Parcelable.Creator<HWGuideItem>
 {
-  public beyx(ShareActionSheetV2 paramShareActionSheetV2) {}
-  
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public HWGuideItem a(Parcel paramParcel)
   {
-    if (paramBitmap == null) {
-      return;
-    }
-    ShareActionSheetV2.a(this.a, paramString1, paramString2, paramBitmap);
+    return new HWGuideItem(paramParcel);
+  }
+  
+  public HWGuideItem[] a(int paramInt)
+  {
+    return new HWGuideItem[paramInt];
   }
 }
 

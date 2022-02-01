@@ -1,42 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aquz
-  implements aqva
+public class aquz
 {
-  aquz(aquy paramaquy, aque paramaque, MessageRecord paramMessageRecord) {}
+  private Map<String, aqva> a = new HashMap();
   
-  public void a(String paramString, Bundle paramBundle)
+  public static aquz a(aqlg[] paramArrayOfaqlg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask success, multiUniseq[ " + this.jdField_a_of_type_Aquy.jdField_a_of_type_JavaLangString + "] uuid[" + paramString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "]");
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
+      return null;
     }
-    this.jdField_a_of_type_Aquy.b = 2;
-    aque.a(this.jdField_a_of_type_Aquy.jdField_a_of_type_Aque, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramBundle);
-    aque.b(this.jdField_a_of_type_Aquy.jdField_a_of_type_Aque, this.jdField_a_of_type_Aquy.jdField_a_of_type_JavaLangString);
+    localaquz = new aquz();
+    try
+    {
+      paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg[0].a);
+      Iterator localIterator = paramArrayOfaqlg.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        JSONObject localJSONObject = paramArrayOfaqlg.getJSONObject(str);
+        localaquz.a.put(str, aqva.a(localJSONObject));
+      }
+      return localaquz;
+    }
+    catch (JSONException paramArrayOfaqlg) {}
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public static aqva a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask fail, multiUniseq[ " + this.jdField_a_of_type_Aquy.jdField_a_of_type_JavaLangString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "] canResume[" + paramBoolean + "] retMsg[" + paramString + "]");
+    if ((!TextUtils.isEmpty(paramString)) && (aquw.a() != null)) {
+      return (aqva)aquw.a().a().get(paramString);
     }
-    if (paramBoolean) {}
-    for (this.jdField_a_of_type_Aquy.b = 4;; this.jdField_a_of_type_Aquy.b = 3)
-    {
-      aque.b(this.jdField_a_of_type_Aquy.jdField_a_of_type_Aque, this.jdField_a_of_type_Aquy.jdField_a_of_type_JavaLangString);
-      return;
-      String str = alud.a(2131710087) + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-      paramString = str + "\n" + paramString;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFaildReason", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "2");
-    }
+    return null;
+  }
+  
+  public Map<String, aqva> a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aquz
  * JD-Core Version:    0.7.0.1
  */

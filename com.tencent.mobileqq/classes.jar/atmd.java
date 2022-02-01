@@ -1,100 +1,18 @@
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager.RunnableShowForKey;
-import com.tencent.mobileqq.listentogether.data.ISong;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.1;
 
 public class atmd
-  implements atom
+  implements MediaPlayer.OnPreparedListener
 {
-  public atmd(ListenTogetherManager paramListenTogetherManager) {}
+  public atmd(FileViewMusicService.1 param1, MediaPlayer paramMediaPlayer) {}
   
-  public void a(String paramString, int paramInt)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    QLog.d("ListenTogether.Manager", 1, new Object[] { "onPlayStateChanged: " + atoh.a(paramInt), " songId:", paramString, " curSongID:", QQMusicPlayService.a().a() });
-    HashMap localHashMap = new HashMap();
-    if (paramInt == 8)
-    {
-      ListenTogetherManager.a(this.a);
-      if (paramInt != 2) {
-        break label289;
-      }
-      ListenTogetherManager.a(this.a).k();
-      ListenTogetherManager.a(this.a).m();
-      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
-      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
-      localHashMap.put("status", String.valueOf(paramInt));
-      label177:
-      if (paramInt != 2) {
-        break label368;
-      }
-      ListenTogetherManager.a(this.a).removeMessages(1001);
-      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, atlw.a().a);
-    }
-    for (;;)
-    {
-      ListenTogetherManager.a(this.a, paramString, paramInt);
-      if (!localHashMap.isEmpty()) {
-        azri.a(BaseApplication.getContext()).a("", "listen_together_player_status", true, 0L, 0L, localHashMap, "");
-      }
-      if (QQMusicPlayService.a() != null) {
-        awfa.a().a(paramInt);
-      }
-      return;
-      if ((paramInt != 5) && (paramInt != 7)) {
-        break;
-      }
-      localHashMap.put("status", String.valueOf(paramInt));
-      break;
-      label289:
-      if ((paramInt != 4) && (paramInt != 5) && (paramInt != 7)) {
-        break label177;
-      }
-      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
-      break label177;
-      label368:
-      ListenTogetherManager.a(this.a).removeMessages(1001);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QLog.i("ListenTogether.Manager", 1, "onNetChanged: " + paramBoolean);
-    if (paramBoolean) {
-      ListenTogetherManager.b(this.a);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    QLog.i("ListenTogether.Manager", 1, "onFocusChanged: " + paramBoolean1 + " isTransient:" + paramBoolean2);
-    ListenTogetherManager.a(this.a, paramBoolean1);
-    if (paramBoolean1)
-    {
-      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
-      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
-      ListenTogetherManager.a(this.a, 0L);
-      return;
-    }
-    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
-    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
-    ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
-    ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
-    if (paramBoolean2)
-    {
-      ListenTogetherManager.a(this.a, 0L);
-      return;
-    }
-    ListenTogetherManager.a(this.a, SystemClock.elapsedRealtime());
+    int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService$1.a.a(i);
   }
 }
 

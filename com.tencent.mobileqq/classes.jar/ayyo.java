@@ -1,33 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import protocol.KQQConfig.GetResourceReqInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.ReportInfo;
 
-public class ayyo
+public final class ayyo
+  implements Parcelable.Creator<ReportInfo>
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public ReportInfo a(Parcel paramParcel)
   {
-    ArrayList localArrayList = new ArrayList();
-    GetResourceReqInfo localGetResourceReqInfo = new GetResourceReqInfo();
-    localGetResourceReqInfo.uiResID = 0L;
-    localGetResourceReqInfo.strPkgName = paramString2;
-    localGetResourceReqInfo.uiCurVer = 0L;
-    localGetResourceReqInfo.sResType = 4;
-    localGetResourceReqInfo.sLanType = 0;
-    localGetResourceReqInfo.sReqType = 1;
-    localArrayList.add(localGetResourceReqInfo);
-    a(paramQQAppInterface, paramString1, localArrayList);
+    ReportInfo localReportInfo = new ReportInfo();
+    localReportInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localReportInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localReportInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localReportInfo.f = paramParcel.readInt();
+    localReportInfo.d = paramParcel.readInt();
+    localReportInfo.e = paramParcel.readInt();
+    localReportInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localReportInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localReportInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    return localReportInfo;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, ArrayList<GetResourceReqInfo> paramArrayList)
+  public ReportInfo[] a(int paramInt)
   {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      paramString = new ToServiceMsg("mobileqq.service", paramString, "ResourceConfig.GetResourceReq");
-      paramString.extraData.putSerializable("getResourceReqInfos", paramArrayList);
-      paramQQAppInterface.sendToService(paramString);
-    }
+    return new ReportInfo[paramInt];
   }
 }
 

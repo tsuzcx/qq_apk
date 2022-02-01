@@ -1,26 +1,41 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
 public class wyi
 {
-  public static String a;
+  public int a;
+  public String a;
+  public List<LikeEntry> a;
+  public int b;
   
-  public static boolean a(long paramLong, Context paramContext)
+  public boolean equals(Object paramObject)
   {
-    a = alsd.a + "QQEditPic" + File.separator;
-    paramContext = new File(a);
-    boolean bool1 = paramContext.mkdirs();
-    boolean bool2 = paramContext.isDirectory();
-    if (QLog.isColorLevel()) {
-      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (wyi)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
     }
-    return (bool1) || (bool2);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wyi
  * JD-Core Version:    0.7.0.1
  */

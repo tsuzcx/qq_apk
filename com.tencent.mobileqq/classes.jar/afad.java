@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.view.View;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
 
-class afad
-  implements DialogInterface.OnClickListener
+public class afad
+  implements bkom
 {
-  afad(afac paramafac) {}
+  public afad(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    DoodlePanel.a(this.a.a, false);
+    RecommendFriendActivity.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    RecommendFriendActivity.a(this.a, true);
   }
 }
 

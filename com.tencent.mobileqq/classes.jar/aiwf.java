@@ -1,21 +1,11 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aiwf
-  implements benw
+public abstract interface aiwf
 {
-  public aiwf(RedPacketPopFragment paramRedPacketPopFragment, Context paramContext) {}
+  public abstract Activity a();
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
-  {
-    paramClickableColorSpanTextView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramClickableColorSpanTextView);
-  }
+  public abstract QQAppInterface a();
 }
 
 

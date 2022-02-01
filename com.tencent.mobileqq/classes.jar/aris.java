@@ -1,8 +1,33 @@
-public abstract interface aris
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+
+public class aris
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public abstract void a();
+  public aris(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime, String paramString) {}
   
-  public abstract void b();
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  {
+    if (paramInt == 2131365741) {
+      DBFixConfigActivity.a = 1;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().putInt(this.jdField_a_of_type_JavaLangString + DBFixManager.c, DBFixConfigActivity.a).commit();
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      if (paramInt == 2131365261) {
+        DBFixConfigActivity.a = 2;
+      }
+    }
+  }
 }
 
 

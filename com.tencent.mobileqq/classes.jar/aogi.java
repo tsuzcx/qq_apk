@@ -1,160 +1,103 @@
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgAction;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
 
-public class aogi
-  extends QIPCModule
-  implements aogh
+class aogi
+  implements bdxd
 {
-  private static volatile aogi a;
+  aogi(aogd paramaogd, int paramInt1, int paramInt2, structmsg.SystemMsgActionInfo paramSystemMsgActionInfo, structmsg.StructMsg paramStructMsg, long paramLong) {}
   
-  public aogi()
+  public void a(bdxf parambdxf, bdxe parambdxe)
   {
-    super("DanmuDataIPCServer");
-  }
-  
-  public static aogi a()
-  {
-    if (a == null) {}
-    try
+    bool1 = false;
+    ToServiceMsg localToServiceMsg = (ToServiceMsg)parambdxe.a;
+    if (parambdxf.a.getResultCode() != 1000)
     {
-      if (a == null) {
-        a = new aogi();
+      this.jdField_a_of_type_Aogd.a(4012, false, localToServiceMsg);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception code:" + parambdxf.a.getResultCode());
       }
-      return a;
-    }
-    finally {}
-  }
-  
-  private static long[] a(List<Long> paramList)
-  {
-    long[] arrayOfLong = new long[paramList.size()];
-    paramList = paramList.iterator();
-    int i = 0;
-    while (paramList.hasNext())
-    {
-      arrayOfLong[i] = ((Long)paramList.next()).longValue();
-      i += 1;
-    }
-    return arrayOfLong;
-  }
-  
-  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3, SpannableString paramSpannableString)
-  {
-    QLog.d("DanmuDataIPCServer", 1, "notifyDanmuSendResult");
-    String str;
-    if (paramSpannableString != null)
-    {
-      str = paramSpannableString.toString();
-      if ((paramString1.length() > str.length()) && (paramString1.startsWith(str)))
-      {
-        paramSpannableString = paramString1.substring(paramSpannableString.length());
-        if (!TextUtils.isEmpty(paramSpannableString)) {
-          paramString1 = paramSpannableString;
-        }
-      }
+      return;
     }
     for (;;)
     {
-      paramSpannableString = (QQAppInterface)blqh.a();
-      str = bdgc.h(paramSpannableString, String.valueOf(paramString2), paramSpannableString.getAccount());
-      paramString1 = new DanmuItemBean(Long.parseLong(paramSpannableString.c()), 0L, paramLong1, paramLong2, paramString1, str);
-      paramString1.jdField_a_of_type_Boolean = nav.a().a(paramString2);
-      if (paramString1.jdField_a_of_type_Boolean)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("DanmuDataIPCServer", 2, "notifyDanmuSendResult, anonymousFlag true");
+        parambdxf = parambdxf.a.getWupBuffer();
+        localRspSystemMsgAction = new structmsg.RspSystemMsgAction();
+        localRspSystemMsgAction.mergeFrom(parambdxf);
+        j = localRspSystemMsgAction.head.result.get();
+        if (j != 0) {
+          continue;
         }
-        paramSpannableString = nav.a().a(paramString2);
-        paramString1.c = paramSpannableString.jdField_a_of_type_JavaLangString;
-        paramString1.jdField_a_of_type_Int = paramSpannableString.jdField_a_of_type_Int;
+        bool1 = true;
+        parambdxf = localRspSystemMsgAction.msg_detail.get();
+        if (parambdxf != null) {
+          continue;
+        }
+        parambdxf = "";
       }
-      paramSpannableString = new Bundle();
-      paramSpannableString.putParcelable("key_barrage_danmu_msg", paramString1);
-      paramSpannableString.putLong("key_barrage_msg_seq", paramLong3);
-      paramSpannableString.putString("key_barrage_grp_uin", paramString2);
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", "DanmuDataIPCClient", "qipc_action_send_barrage", paramSpannableString, null);
-      return;
-    }
-  }
-  
-  public void a(aogb paramaogb, boolean paramBoolean1, boolean paramBoolean2, int paramInt, ArrayList<DanmuItemBean> paramArrayList, List<Long> paramList)
-  {
-    QLog.d("DanmuDataIPCServer", 1, new Object[] { "onDanmuPullResult, isPullEnd:", Boolean.valueOf(paramBoolean2) });
-    if (paramaogb == null)
-    {
-      QLog.d("DanmuDataIPCServer", 1, "onDanmuPullResult fail, pullContext is null");
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("key_barrage_msg_seq", paramaogb.jdField_a_of_type_Long);
-    localBundle.putLong("key_barrage_grp_uin", paramaogb.b);
-    localBundle.putInt("key_barrage_topic_type", paramaogb.jdField_a_of_type_Int);
-    localBundle.putInt("key_barrage_interval_time", paramInt);
-    localBundle.putBoolean("key_barrage_is_success", paramBoolean1);
-    if (paramaogb.c > 0L)
-    {
-      localBundle.putLong("key_barrage_req_time", paramaogb.c);
-      localBundle.putLong("key_barrage_net_req_time", paramaogb.d);
-      localBundle.putLong("key_barrage_net_response_time", System.currentTimeMillis());
-      paramaogb.c = -1L;
-    }
-    if (paramArrayList != null) {
-      localBundle.putParcelableArrayList("key_barrage_danmu_list", paramArrayList);
-    }
-    if (paramList != null) {
-      localBundle.putLongArray("key_barrage_del_seq_list", a(paramList));
-    }
-    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", "DanmuDataIPCClient", "qipc_action_get_barrage_result", localBundle, null);
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    long l1;
-    long l2;
-    int i;
-    boolean bool;
-    if ("qipc_action_get_barrage".equals(paramString))
-    {
-      l1 = paramBundle.getLong("key_barrage_msg_seq");
-      l2 = paramBundle.getLong("key_barrage_grp_uin");
-      i = paramBundle.getInt("key_barrage_topic_type");
-      bool = paramBundle.getBoolean("key_barrage_is_update");
-      QLog.d("DanmuDataIPCServer", 1, new Object[] { "onCall, msgSeq:", Long.valueOf(l1), " groupUin:", Long.valueOf(l2), " topicType:", Integer.valueOf(i), " peakCached:", Boolean.valueOf(bool) });
-      localObject = aogc.a().a(aogc.a().a(l2, l1));
-      if ((localObject != null) && (!((aogd)localObject).jdField_a_of_type_Boolean))
+      catch (Exception parambdxf)
       {
-        QLog.d("DanmuDataIPCServer", 1, "filter duplicate request, continue pull is not completed");
-        paramString = new Bundle();
-        paramString.putBoolean("key_barrage_is_success", false);
-        callbackResult(paramInt, EIPCResult.createSuccessResult(paramString));
-        return null;
+        structmsg.RspSystemMsgAction localRspSystemMsgAction;
+        int j;
+        int i;
+        boolean bool2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambdxf);
+        bool1 = false;
+        continue;
+        if (!this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsgActionInfo.group_id.has()) {
+          continue;
+        }
+        parambdxe.a(String.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsgActionInfo.group_id.get(), this.b, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_additional.get(), false, bool2, -1L);
+        continue;
+        continue;
       }
-      if (localObject != null) {
-        break label262;
+      i = -1;
+      if (localRspSystemMsgAction.remark_result.has()) {
+        i = localRspSystemMsgAction.remark_result.get();
       }
-    }
-    label262:
-    for (Object localObject = new aogb(l2, l1, i, bool);; localObject = ((aogd)localObject).jdField_a_of_type_Aogb)
-    {
-      ((aogb)localObject).c = paramBundle.getLong("key_barrage_req_time");
-      ((aogb)localObject).d = System.currentTimeMillis();
-      ((aogb)localObject).jdField_a_of_type_Boolean = bool;
-      aogc.a().a((aogb)localObject, this);
-      callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
-      if ("qipc_action_clear_cache".equals(paramString)) {
-        aogc.a().a();
+      localToServiceMsg.extraData.putString("system_msg_action_resp_key", parambdxf);
+      localToServiceMsg.extraData.putInt("system_msg_action_resp_result_code_key", localRspSystemMsgAction.head.result.get());
+      localToServiceMsg.extraData.putInt("system_msg_action_resp_type_key", localRspSystemMsgAction.type.get());
+      localToServiceMsg.extraData.putString("system_msg_action_resp_invalid_decided_key", localRspSystemMsgAction.msg_invalid_decided.get());
+      localToServiceMsg.extraData.putInt("system_msg_action_resp_remark_result_key", i);
+      bool2 = localToServiceMsg.extraData.getBoolean("isUncommonlyUsedFrd");
+      if ((bool1) && (this.jdField_a_of_type_Int == 0))
+      {
+        parambdxe = (FriendListHandler)aogd.a(this.jdField_a_of_type_Aogd).a(1);
+        if ((this.b != 3016) && (this.b != 2016)) {
+          continue;
+        }
+        if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsgActionInfo.group_id.has()) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_source.has())) {
+          parambdxe.a(String.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsgActionInfo.group_id.get(), this.b, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_source.get(), false, bool2, -1L);
+        }
       }
-      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgActionResp result:" + j + " msg:" + parambdxf);
+      }
+      this.jdField_a_of_type_Aogd.a(4011, bool1, localToServiceMsg);
+      return;
+      parambdxe = localRspSystemMsgAction.head.msg_fail.get();
+      parambdxf = parambdxe;
+      if (parambdxe == null) {
+        parambdxf = "";
+      }
+      localToServiceMsg.extraData.putString("system_msg_action_resp_error_key", parambdxf);
     }
   }
 }

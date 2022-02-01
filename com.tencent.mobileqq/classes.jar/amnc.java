@@ -1,35 +1,34 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-final class amnc
-  extends bead
+public class amnc
+  implements EIPCResultCallback
 {
-  amnc(String paramString) {}
+  public amnc(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
   
-  public void onCancel(beae parambeae)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    ammy.jdField_a_of_type_Beae = null;
-    QLog.d(ammy.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
-  }
-  
-  public void onDone(beae parambeae)
-  {
-    ammy.jdField_a_of_type_Beae = null;
-    if (parambeae.a() == 3)
+    try
     {
-      QLog.d(ammy.jdField_a_of_type_JavaLangString, 1, "download finished " + ammy.f);
-      parambeae = new File(this.jdField_a_of_type_JavaLangString);
-      if ((parambeae.exists()) && (ammy.a(parambeae))) {
-        QLog.d(ammy.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameInterfaceProxy", 2, "get_open_key_back");
       }
+      paramEIPCResult = paramEIPCResult.data.getString("respData");
+      ApolloGameInterfaceProxy.a(this.a, "cs.on_get_open_key.local", paramEIPCResult);
       return;
     }
-    QLog.d(ammy.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", parambeae.b, " code=", Integer.valueOf(parambeae.a) });
+    catch (Throwable paramEIPCResult)
+    {
+      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amnc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-class akjl
-  implements CompoundButton.OnCheckedChangeListener
+public class akjl
+  extends akhu
 {
-  akjl(akjk paramakjk, RedTouch paramRedTouch, aozs paramaozs) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected akjl(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if (!AppSetting.c) {
-      akjk.a(this.jdField_a_of_type_Akjk, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Aozs, paramBoolean);
-    }
+    super(paramNewPhotoListActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjl
  * JD-Core Version:    0.7.0.1
  */

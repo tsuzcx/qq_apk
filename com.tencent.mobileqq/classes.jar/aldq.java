@@ -1,25 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.3.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 
+@Deprecated
 public class aldq
-  implements Animator.AnimatorListener
+  extends alcd
 {
-  public aldq(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public View a(int paramInt, Object paramObject, alby paramalby, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aled paramaled)
   {
-    ThreadManager.getUIHandler().postDelayed(new ApolloGuestsStateActivity.3.1(this), 200L);
+    paramObject = paramView;
+    if (paramView == null) {
+      paramObject = View.inflate(paramContext, 2131562988, null);
+    }
+    paramalby = paramObject.findViewById(2131379191);
+    paramalby.setTag(-1, Integer.valueOf(paramInt));
+    paramalby.setOnClickListener(paramOnClickListener);
+    paramalby = paramObject.findViewById(2131379190);
+    paramalby.setTag(-1, Integer.valueOf(paramInt));
+    paramalby.setOnClickListener(paramOnClickListener);
+    paramObject.setTag(-1, Integer.valueOf(paramInt));
+    return paramObject;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

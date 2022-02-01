@@ -8,75 +8,105 @@ import android.view.Window;
 import com.tencent.biz.qqcircle.QCircleInitBean;
 import java.util.ArrayList;
 import java.util.List;
-import tqg;
-import trq;
-import trs;
-import tsc;
-import tsw;
-import ttg;
-import ttl;
-import ttr;
-import tty;
-import tvv;
-import tzv;
-import tzy;
+import uxc;
+import uyk;
+import uyu;
+import uzy;
+import vab;
+import vbt;
+import vcw;
+import vdc;
+import vde;
+import vdt;
+import vea;
+import veh;
+import vrf;
+import vri;
+import zxj;
 
 public class QCircleTagPageFragment
   extends QCircleBaseFragment
 {
   private QCircleInitBean jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean;
-  private List<tvv> jdField_a_of_type_JavaUtilList;
+  private List<zxj> jdField_a_of_type_JavaUtilList;
   
-  private void b()
+  private void a()
   {
-    Intent localIntent = getActivity().getIntent();
-    if ((localIntent != null) && (localIntent.hasExtra("key_bundle_common_init_bean"))) {
-      this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean = ((QCircleInitBean)localIntent.getSerializableExtra("key_bundle_common_init_bean"));
-    }
+    if (getActivity() == null) {}
+    Intent localIntent;
+    do
+    {
+      return;
+      localIntent = getActivity().getIntent();
+    } while ((localIntent == null) || (!localIntent.hasExtra("key_bundle_common_init_bean")));
+    this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean = ((QCircleInitBean)localIntent.getSerializableExtra("key_bundle_common_init_bean"));
   }
   
   public int a()
   {
-    return 2131560594;
+    return 2131560786;
   }
   
-  public String a()
+  public List<zxj> a()
   {
-    return "QCircleTagPageFragment";
-  }
-  
-  public List<tvv> a()
-  {
-    b();
+    a();
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(new tty(this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean));
-      Object localObject = new ArrayList();
-      ((List)localObject).add(new trs(null));
-      ((List)localObject).add(new trq(new Bundle()));
-      localObject = new ttr((List)localObject, 3, 1);
-      ((ttr)localObject).a(this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean);
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-      localObject = new ttl();
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-      localObject = new ttg(tqg.a());
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
+      this.jdField_a_of_type_JavaUtilList.add(new vea(this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean));
+      Object localObject1 = new ArrayList();
+      Object localObject2 = new uyu(null);
+      ((uyu)localObject2).a(a());
+      ((List)localObject1).add(localObject2);
+      localObject2 = new uyk(new Bundle());
+      ((uyk)localObject2).a(a());
+      ((List)localObject1).add(localObject2);
+      localObject1 = new vdt((List)localObject1, 3, 1);
+      ((vdt)localObject1).a(this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean);
+      this.jdField_a_of_type_JavaUtilList.add(localObject1);
+      localObject1 = new vde();
+      ((vde)localObject1).a(a());
+      this.jdField_a_of_type_JavaUtilList.add(localObject1);
+      localObject1 = new vcw(uxc.a());
+      ((vcw)localObject1).a(a());
       if ((this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean != null) && (this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean.getTagInfo() != null)) {
-        ((ttg)localObject).a(this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean.getTagInfo());
+        ((vcw)localObject1).a(this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean.getTagInfo());
       }
-      ((ttg)localObject).a(5);
-      localObject = new tsc();
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-      ((tsc)localObject).a(true);
-      this.jdField_a_of_type_JavaUtilList.add(new tsw());
+      ((vcw)localObject1).a(5);
+      this.jdField_a_of_type_JavaUtilList.add(localObject1);
+      localObject1 = new uzy();
+      this.jdField_a_of_type_JavaUtilList.add(localObject1);
+      ((uzy)localObject1).a(true);
+      localObject1 = new vbt();
+      ((vbt)localObject1).a(a());
+      this.jdField_a_of_type_JavaUtilList.add(localObject1);
+      localObject1 = new vab();
+      ((vab)localObject1).a(a());
+      this.jdField_a_of_type_JavaUtilList.add(localObject1);
+      this.jdField_a_of_type_JavaUtilList.add(new veh());
+      this.jdField_a_of_type_JavaUtilList.add(new vdc());
     }
     return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void a()
+  public int c()
   {
-    tzy.a().a(31);
+    return 31;
+  }
+  
+  public String c()
+  {
+    return "QCircleTagPageFragment";
+  }
+  
+  public String d()
+  {
+    return null;
+  }
+  
+  public void i()
+  {
+    vri.a().b(c());
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -88,15 +118,28 @@ public class QCircleTagPageFragment
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    tzv.a("", 6, 1L);
-    if (tzy.a().b(31)) {
-      tzy.a().a(getActivity().getIntent());
+    vrf.a("", 6, 1);
+    if (vri.a().d()) {
+      vri.a().a(c(), getActivity().getIntent());
     }
+    vri.a().a(c());
+  }
+  
+  public void onPause()
+  {
+    super.onPause();
+    vri.a().d(c());
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+    vri.a().c(c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.fragments.QCircleTagPageFragment
  * JD-Core Version:    0.7.0.1
  */

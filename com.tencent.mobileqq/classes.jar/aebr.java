@@ -1,24 +1,25 @@
-import android.view.View;
-import android.widget.ExpandableListAdapter;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.widget.ExpandableListView;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class aebr
-  implements bhww
+class aebr
+  implements DialogInterface.OnClickListener
 {
-  public aebr(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  aebr(aebp paramaebp, String paramString) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (((akmb)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
-      return true;
-    }
-    azrr.b(this.a.getActivity(), this.a.app.getCurrentAccountUin());
-    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
-    this.a.a(paramExpandableListView);
-    return true;
+    DiscussionInfoCardActivity.a(this.jdField_a_of_type_Aebp.a).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Aebp.a.app.a().a();
+    paramDialogInterface.delRecentUser((RecentUser)paramDialogInterface.findRecentUserByUin(this.jdField_a_of_type_JavaLangString, 3000));
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("isNeedFinish", true);
+    this.jdField_a_of_type_Aebp.a.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_Aebp.a.finish();
   }
 }
 

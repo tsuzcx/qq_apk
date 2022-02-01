@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
 public class ajro
-  implements azht
+  extends anif
 {
-  public ajro(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public ajro(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean1);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
     }
-    ajrw.a(paramBoolean1);
-    NewFlowCameraActivity.b(this.a);
   }
 }
 

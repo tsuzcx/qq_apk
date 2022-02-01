@@ -1,74 +1,17 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajmh
-  extends ajlr
-  implements Cloneable
+  extends anxg
 {
-  public int c;
+  public ajmh(ContactsTroopAdapter paramContactsTroopAdapter) {}
   
-  public ajmh(Context paramContext, boolean paramBoolean)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131720832);
-    if (paramBoolean) {
-      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131720833);
-    }
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ajmh.class.getSimpleName(), 2, "deSerialize");
-    }
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("remindText");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getInt("ctl_flag");
-      if (this.jdField_a_of_type_Bbpe == null) {
-        this.jdField_a_of_type_Bbpe = new bbpe();
-      }
-      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ajmh.class.getSimpleName(), 2, "serialize");
-    }
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("remindText", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      localJSONObject.put("ctl_flag", this.c);
-      if (this.jdField_a_of_type_Bbpe != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      ContactsTroopAdapter.a(this.a, paramString, localBitmap);
     }
   }
 }

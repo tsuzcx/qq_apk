@@ -1,45 +1,45 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import android.graphics.RectF;
+import android.support.annotation.NonNull;
 
 public class tgk
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
+  private float jdField_a_of_type_Float;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private float jdField_b_of_type_Float;
+  private RectF jdField_b_of_type_AndroidGraphicsRectF;
   
-  private IMiniMsgUnreadCallback a()
+  public tgk(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
   {
-    return new tgl(this);
+    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF1;
+    this.jdField_b_of_type_AndroidGraphicsRectF = paramRectF2;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
   }
   
-  public MiniMsgUserParam a()
+  public float a()
   {
-    MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
-    localMiniMsgUserParam.businessName = 6;
-    localMiniMsgUserParam.accessType = 2;
-    localMiniMsgUserParam.filterMsgType = 0;
-    localMiniMsgUserParam.unreadCallback = a();
-    return localMiniMsgUserParam;
+    return this.jdField_a_of_type_Float;
   }
   
-  public void a(View paramView)
+  public RectF a()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    return this.jdField_a_of_type_AndroidGraphicsRectF;
   }
   
-  public void a(MiniMsgUser paramMiniMsgUser)
+  public RectF b()
   {
-    if ((this.jdField_a_of_type_Int > 0) && (paramMiniMsgUser != null) && (this.jdField_a_of_type_AndroidViewView != null))
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      paramMiniMsgUser.onClick(this.jdField_a_of_type_AndroidViewView);
-    }
+    return this.jdField_b_of_type_AndroidGraphicsRectF;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "cropRect:" + this.jdField_a_of_type_AndroidGraphicsRectF + " ,imageRect:" + this.jdField_b_of_type_AndroidGraphicsRectF + " ,scale:" + this.jdField_a_of_type_Float + " ,angle:" + this.jdField_b_of_type_Float;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tgk
  * JD-Core Version:    0.7.0.1
  */

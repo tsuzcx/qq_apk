@@ -1,57 +1,75 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class acnh
-  implements auqa
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/MotiveBrowsingData;", "", "event", "", "script", "", "leftSecond", "(ILjava/lang/String;I)V", "getEvent", "()I", "getLeftSecond", "getScript", "()Ljava/lang/String;", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acnh
 {
-  public acnh(ChatHistoryFileActivity paramChatHistoryFileActivity, aupt paramaupt, auqc paramauqc, List paramList) {}
+  public static final acni a;
+  private final int jdField_a_of_type_Int;
+  @NotNull
+  private final String jdField_a_of_type_JavaLangString;
+  private final int b;
   
-  public void a()
+  static
   {
-    this.jdField_a_of_type_Aupt.a(new acni(this));
-    this.jdField_a_of_type_Aupt.show();
+    jdField_a_of_type_Acni = new acni(null);
   }
   
-  public void a(aupy paramaupy)
+  public acnh(int paramInt1, @NotNull String paramString, int paramInt2)
   {
-    if ((paramaupy != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.isFinishing())) {
-      switch (paramaupy.a)
-      {
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NotNull
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public final int b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      if (this.jdField_a_of_type_Aupt.isShowing()) {
-        this.jdField_a_of_type_Aupt.dismiss();
+      if ((paramObject instanceof acnh))
+      {
+        paramObject = (acnh)paramObject;
+        if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (this.b != paramObject.b)) {}
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
-      this.jdField_a_of_type_Auqc.b();
-      return;
-      aupz.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
-      continue;
-      aupz.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
-      continue;
-      aupz.c(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+    }
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int j = this.jdField_a_of_type_Int;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {}
+    for (int i = str.hashCode();; i = 0) {
+      return (i + j * 31) * 31 + this.b;
     }
   }
   
-  public void a(aupy paramaupy, int paramInt)
+  @NotNull
+  public String toString()
   {
-    this.jdField_a_of_type_Aupt.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aupt.isShowing()) {
-      this.jdField_a_of_type_Aupt.dismiss();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
-    this.jdField_a_of_type_Auqc.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity, this.jdField_a_of_type_JavaUtilList);
+    return "MotiveBrowsingData(event=" + this.jdField_a_of_type_Int + ", script=" + this.jdField_a_of_type_JavaLangString + ", leftSecond=" + this.b + ")";
   }
 }
 

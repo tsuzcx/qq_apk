@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.widget;
 
-import bcrd;
+import bfvv;
 import com.tencent.widget.Gallery;
 
 public class MediaPreviewAdapter$2
   implements Runnable
 {
-  public MediaPreviewAdapter$2(bcrd parambcrd) {}
+  public MediaPreviewAdapter$2(bfvv parambfvv) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class MediaPreviewAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.2
  * JD-Core Version:    0.7.0.1
  */

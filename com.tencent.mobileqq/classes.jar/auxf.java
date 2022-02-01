@@ -1,114 +1,48 @@
-import android.graphics.Path;
-import android.view.View;
-import com.tencent.mobileqq.hotchat.anim.HeartLayout;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import java.lang.reflect.Method;
 
-public class auxf
-  extends astg
+public abstract class auxf
 {
-  public auxf(HeartLayout paramHeartLayout)
+  public static auxf a;
+  
+  public static void a()
   {
-    super(paramHeartLayout);
+    try
+    {
+      Method localMethod = Class.forName("com.tencent.mobileqq.haoliyou.JefsClass").getMethod("getInstance", new Class[0]);
+      localMethod.setAccessible(true);
+      a = (auxf)localMethod.invoke(null, new Object[0]);
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
   
-  public Path a(int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger, View paramView)
+  public static void a(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    Random localRandom = this.jdField_a_of_type_JavaUtilRandom;
-    Path localPath = new Path();
-    label95:
-    label107:
-    int i;
-    int j;
-    int k;
-    int m;
-    if (!this.jdField_a_of_type_Asti.jdField_a_of_type_Boolean) {
-      if ((paramInt1 < 0) || (paramInt1 > paramView.getWidth()))
-      {
-        this.jdField_a_of_type_Asti.jdField_a_of_type_Int = ((paramView.getWidth() - (int)(20.0F * this.jdField_a_of_type_Asti.jdField_a_of_type_Float)) / 2);
-        if ((paramInt2 >= 0) && (paramInt2 <= paramView.getHeight())) {
-          break label415;
-        }
-        this.jdField_a_of_type_Asti.b = ((int)(20.0F * this.jdField_a_of_type_Asti.jdField_a_of_type_Float));
-        if (!this.jdField_a_of_type_JavaUtilRandom.nextBoolean()) {
-          break label447;
-        }
-        paramInt1 = 1;
-        i = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Asti.c) + this.jdField_a_of_type_Asti.d);
-        j = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Asti.c) + this.jdField_a_of_type_Asti.d);
-        k = paramView.getHeight() - this.jdField_a_of_type_Asti.b;
-        paramInt1 = (int)(paramAtomicInteger.intValue() * 4 * this.jdField_a_of_type_Asti.jdField_a_of_type_Float);
-        paramInt2 = this.jdField_a_of_type_Asti.g;
-        paramInt2 = localRandom.nextInt(this.jdField_a_of_type_Asti.f) + (paramInt1 + paramInt2);
-        m = paramInt2 / this.jdField_a_of_type_Asti.e;
-        paramInt1 = k - paramInt2;
-        if (paramInt1 >= 0) {
-          break label666;
-        }
-        paramInt1 = 0;
-      }
-    }
-    label653:
-    label666:
-    for (;;)
-    {
-      paramInt2 = k - paramInt2 / 2;
-      if (paramInt2 < 0) {
-        paramInt2 = 0;
-      }
-      for (;;)
-      {
-        localPath.moveTo(this.jdField_a_of_type_Asti.jdField_a_of_type_Int, k);
-        localPath.cubicTo(this.jdField_a_of_type_Asti.jdField_a_of_type_Int, k - m, this.jdField_a_of_type_Asti.jdField_a_of_type_Int + i, paramInt2 + m, this.jdField_a_of_type_Asti.jdField_a_of_type_Int + i, paramInt2);
-        localPath.moveTo(this.jdField_a_of_type_Asti.jdField_a_of_type_Int + i, paramInt2);
-        if (paramInt2 - m >= 0) {
-          localPath.cubicTo(this.jdField_a_of_type_Asti.jdField_a_of_type_Int + i, paramInt2 - m, this.jdField_a_of_type_Asti.jdField_a_of_type_Int + j, paramInt1 + m, this.jdField_a_of_type_Asti.jdField_a_of_type_Int + j, paramInt1);
-        }
-        return localPath;
-        this.jdField_a_of_type_Asti.jdField_a_of_type_Int = (paramInt1 - (int)(20.0F * this.jdField_a_of_type_Asti.jdField_a_of_type_Float / 3.0F));
-        break;
-        label415:
-        this.jdField_a_of_type_Asti.b = (paramView.getHeight() - paramInt2 + (int)(20.0F * this.jdField_a_of_type_Asti.jdField_a_of_type_Float / 3.0F));
-        break label95;
-        label447:
-        paramInt1 = -1;
-        break label107;
-        k = this.jdField_a_of_type_Asti.l;
-        m = this.jdField_a_of_type_Asti.k;
-        int n = this.jdField_a_of_type_Asti.h / 2;
-        int i1;
-        int i2;
-        int i3;
-        int i4;
-        if (this.jdField_a_of_type_JavaUtilRandom.nextBoolean())
-        {
-          i = 1;
-          i1 = localRandom.nextInt(this.jdField_a_of_type_Asti.c);
-          i2 = this.jdField_a_of_type_Asti.d;
-          i3 = localRandom.nextInt(this.jdField_a_of_type_Asti.c);
-          i4 = this.jdField_a_of_type_Asti.d;
-          j = Math.abs(k - paramInt2) / (this.jdField_a_of_type_JavaUtilRandom.nextInt(3) + 2);
-          if (k <= paramInt2) {
-            break label653;
-          }
-          j = k - j;
-        }
-        for (;;)
-        {
-          localPath.moveTo(paramInt1 - this.jdField_a_of_type_Asti.h / 2, paramInt2 - this.jdField_a_of_type_Asti.i / 2);
-          localPath.cubicTo(i * (i1 + i2) + paramInt1, j, paramInt1 - i * (i3 + i4), j, m - n, k);
-          return localPath;
-          i = -1;
-          break;
-          j += k;
-        }
-      }
+    auxf localauxf = a;
+    if (localauxf != null) {
+      localauxf.b(paramActivity, paramIntent, paramInt, paramBundle);
     }
   }
+  
+  public static void a(Context paramContext, Intent paramIntent, Runnable paramRunnable)
+  {
+    auxf localauxf = a;
+    if (localauxf != null) {
+      localauxf.b(paramContext, paramIntent, paramRunnable);
+    }
+  }
+  
+  public abstract void b(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle);
+  
+  public abstract void b(Context paramContext, Intent paramIntent, Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     auxf
  * JD-Core Version:    0.7.0.1
  */

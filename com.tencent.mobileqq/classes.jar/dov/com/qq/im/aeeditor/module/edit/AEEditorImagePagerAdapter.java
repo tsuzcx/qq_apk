@@ -2,14 +2,14 @@ package dov.com.qq.im.aeeditor.module.edit;
 
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import bljn;
-import blki;
-import blnb;
-import com.tencent.tavcut.bean.CropConfig;
+import bnzb;
+import bnzz;
+import bofa;
 import com.tencent.tavcut.session.TAVCutImageSession;
 import com.tencent.tavcut.view.TAVCutImageView;
 import java.util.ArrayList;
@@ -23,60 +23,36 @@ public class AEEditorImagePagerAdapter
 {
   private static final String jdField_a_of_type_JavaLangString = AEEditorImagePagerAdapter.class.getSimpleName();
   private int jdField_a_of_type_Int;
-  private blnb jdField_a_of_type_Blnb;
+  private SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray;
+  private bofa jdField_a_of_type_Bofa;
   private TAVCutImageSession jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession;
-  private HashMap<String, blki> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<String, bnzz> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   private HashMap<Integer, Boolean> b = new HashMap();
   
-  public AEEditorImagePagerAdapter(TAVCutImageSession paramTAVCutImageSession, List<String> paramList, List<blki> paramList1, blnb paramblnb)
+  public AEEditorImagePagerAdapter(TAVCutImageSession paramTAVCutImageSession, List<String> paramList, List<bnzz> paramList1, SparseArray<String> paramSparseArray, bofa parambofa)
   {
     this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession = paramTAVCutImageSession;
-    this.jdField_a_of_type_Blnb = paramblnb;
+    this.jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
+    this.jdField_a_of_type_Bofa = parambofa;
     if (paramList != null) {
       this.jdField_a_of_type_JavaUtilList = paramList;
     }
     paramTAVCutImageSession = paramList1.iterator();
     while (paramTAVCutImageSession.hasNext())
     {
-      paramList = (blki)paramTAVCutImageSession.next();
+      paramList = (bnzz)paramTAVCutImageSession.next();
       this.jdField_a_of_type_JavaUtilHashMap.put(paramList.jdField_a_of_type_JavaLangString, paramList);
     }
   }
   
   private void a(ViewGroup paramViewGroup, int paramInt, TAVCutImageView paramTAVCutImageView)
   {
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localObject = (blki)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-    int i = ((blki)localObject).jdField_a_of_type_Int;
-    int j = ((blki)localObject).b;
-    double d1 = i * ((blki)localObject).jdField_a_of_type_ComTencentTavcutBeanCropConfig.getWidth();
-    float f = j;
-    double d2 = ((blki)localObject).jdField_a_of_type_ComTencentTavcutBeanCropConfig.getHeight() * f;
-    localObject = paramTAVCutImageView.getLayoutParams();
-    this.jdField_a_of_type_Int = paramViewGroup.getHeight();
-    i = paramViewGroup.getWidth();
-    j = paramViewGroup.getHeight();
-    double d3;
-    if (d1 / d2 > i * 1.0D / j)
-    {
-      ((ViewGroup.LayoutParams)localObject).width = i;
-      d3 = ((ViewGroup.LayoutParams)localObject).width;
-      ((ViewGroup.LayoutParams)localObject).height = ((int)(d2 / d1 * d3));
+    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.setTAVCutImageView(paramInt, paramTAVCutImageView);
+    if (this.jdField_a_of_type_Bofa != null) {
+      this.jdField_a_of_type_Bofa.a(paramInt);
     }
-    for (;;)
-    {
-      paramTAVCutImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.setTAVCutImageView(paramInt, paramTAVCutImageView);
-      if (this.jdField_a_of_type_Blnb != null) {
-        this.jdField_a_of_type_Blnb.a(paramInt);
-      }
-      bljn.b(jdField_a_of_type_JavaLangString, "render position = " + paramInt);
-      return;
-      ((ViewGroup.LayoutParams)localObject).height = j;
-      d3 = ((ViewGroup.LayoutParams)localObject).height;
-      ((ViewGroup.LayoutParams)localObject).width = ((int)(d1 / d2 * d3));
-    }
+    bnzb.b(jdField_a_of_type_JavaLangString, "render position = " + paramInt);
   }
   
   public void a()
@@ -106,8 +82,9 @@ public class AEEditorImagePagerAdapter
   @NonNull
   public Object instantiateItem(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558532, null);
-    TAVCutImageView localTAVCutImageView = (TAVCutImageView)localView.findViewById(2131377468);
+    View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558548, null);
+    TAVCutImageView localTAVCutImageView = (TAVCutImageView)localView.findViewById(2131378303);
+    localTAVCutImageView.setTag(Integer.valueOf(paramInt));
     this.b.put(Integer.valueOf(paramInt), Boolean.valueOf(true));
     AEEditorImagePagerAdapter.1 local1 = new AEEditorImagePagerAdapter.1(this, paramViewGroup, paramInt, localTAVCutImageView);
     if (this.jdField_a_of_type_Int == 0) {
@@ -128,7 +105,7 @@ public class AEEditorImagePagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.edit.AEEditorImagePagerAdapter
  * JD-Core Version:    0.7.0.1
  */

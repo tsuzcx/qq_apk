@@ -1,8 +1,32 @@
-public class antr
+import android.os.Bundle;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+
+class antr
+  implements BusinessObserver
 {
-  public static int a(float paramFloat)
+  antr(antq paramantq, long paramLong) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return Float.floatToIntBits(paramFloat);
+    this.jdField_a_of_type_Antq.a.append(2, Boolean.valueOf(false));
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer onReceive :" + paramBoolean);
+    }
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle == null) {
+        break label79;
+      }
+      antq.a(this.jdField_a_of_type_Antq, 2, this.jdField_a_of_type_Long, paramBundle);
+    }
+    label79:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.e("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer success data is null");
   }
 }
 

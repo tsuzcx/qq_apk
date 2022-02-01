@@ -1,23 +1,23 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnInfoListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.viola.core.ViolaEnvironment;
 
-class tsm
-  implements MediaPlayer.OnInfoListener
+public class tsm
+  implements tsq
 {
-  tsm(tsl paramtsl) {}
+  public tsm(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
   
-  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    if (paramInt1 == 3) {
-      QLog.d("QCircleFolderSplashPart", 1, "videoView render start");
+    if (this.jdField_a_of_type_Boolean) {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_MAIN_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tsm
  * JD-Core Version:    0.7.0.1
  */

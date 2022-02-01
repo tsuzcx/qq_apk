@@ -1,28 +1,23 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nzd
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  private WeakReference<nwi> a;
+  public nzd(PublicAccountBrowser paramPublicAccountBrowser, RIJRedPacketPopupView paramRIJRedPacketPopupView) {}
   
-  public nzd(nwi paramnwi)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramnwi);
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((nwi)this.a.get()).a(true);
-    }
-    return false;
+    PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketPopupView, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzd
  * JD-Core Version:    0.7.0.1
  */

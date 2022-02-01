@@ -1,70 +1,45 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class zbd
-  extends Handler
+public class zbd
+  implements AdapterView.OnItemClickListener
 {
-  private WeakReference<zbb> a;
+  public zbd(FacePanel paramFacePanel) {}
   
-  public zbd(zbb paramzbb, Looper paramLooper)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramzbb);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    Object localObject2 = null;
-    if (this.a.get() != null) {}
-    for (zbb localzbb = (zbb)this.a.get();; localzbb = null)
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
+    if (DoodleLayout.a) {}
+    for (Object localObject = "2";; localObject = "1")
     {
-      Object localObject1 = localObject2;
-      if (paramMessage.obj != null)
+      DoodleLayout.a("change_face", 0, 0, new String[] { localObject });
+      if (this.a.jdField_a_of_type_Zbn != null)
       {
-        localObject1 = localObject2;
-        if ((paramMessage.obj instanceof zbc)) {
-          localObject1 = (zbc)paramMessage.obj;
-        }
-      }
-      switch (paramMessage.what)
-      {
-      }
-      for (;;)
-      {
-        super.handleMessage(paramMessage);
-        return;
-        if ((localzbb != null) && (localObject1 != null))
+        localObject = this.a.jdField_a_of_type_Zbn.a(paramInt);
+        if ((localObject != null) && ((localObject instanceof zbc)))
         {
-          ((zbb)this.a.get()).d();
-          continue;
-          if ((localzbb != null) && (localObject1 != null))
-          {
-            ((zbb)this.a.get()).e();
-            continue;
-            if ((localzbb != null) && (localObject1 != null))
-            {
-              ((zbb)this.a.get()).c(((zbc)localObject1).a);
-              continue;
-              if ((localzbb != null) && (localObject1 != null))
-              {
-                ((zbb)this.a.get()).f();
-                continue;
-                if ((localzbb != null) && (localObject1 != null)) {
-                  ((zbb)this.a.get()).b(((zbc)localObject1).a);
-                }
-              }
-            }
-          }
+          yqv.a("0X80076C7", "", "", ((zbc)localObject).a, "");
+          yqv.a("0X80075DC", ((zbc)localObject).a);
         }
       }
+      if (paramInt == 1)
+      {
+        yqv.a("0X80076CC");
+        yqv.b("0X80075E1");
+      }
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zbd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas.avatar;
 
 import android.graphics.drawable.Drawable;
-import bdwc;
+import bhbe;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
 import java.lang.ref.WeakReference;
@@ -9,7 +9,7 @@ import java.lang.ref.WeakReference;
 public class VasAvatarLoader$1
   implements Runnable
 {
-  public VasAvatarLoader$1(bdwc parambdwc, URLDrawable paramURLDrawable) {}
+  public VasAvatarLoader$1(bhbe parambhbe, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class VasAvatarLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasAvatarLoader.1
  * JD-Core Version:    0.7.0.1
  */

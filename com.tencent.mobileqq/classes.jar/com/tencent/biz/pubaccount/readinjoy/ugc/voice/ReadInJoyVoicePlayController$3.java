@@ -2,28 +2,28 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.voice;
 
 import android.media.AudioManager;
 import com.tencent.qphone.base.util.QLog;
-import qyd;
+import ruc;
 
 public class ReadInJoyVoicePlayController$3
   implements Runnable
 {
-  public ReadInJoyVoicePlayController$3(qyd paramqyd) {}
+  public ReadInJoyVoicePlayController$3(ruc paramruc) {}
   
   public void run()
   {
-    if (qyd.a(this.this$0)) {
-      if (qyd.a(this.this$0) != null) {
-        qyd.a(this.this$0).requestAudioFocus(null, 3, 2);
+    if (ruc.a(this.this$0)) {
+      if (ruc.a(this.this$0) != null) {
+        ruc.a(this.this$0).requestAudioFocus(null, 3, 2);
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(qyd.a, 2, "mRequestOrAbandonAudioFocusCallBack isFocusAudio:" + qyd.a(this.this$0));
+        QLog.d(ruc.a, 2, "mRequestOrAbandonAudioFocusCallBack isFocusAudio:" + ruc.a(this.this$0));
       }
       return;
-      if (qyd.a(this.this$0) != null) {
-        qyd.a(this.this$0).abandonAudioFocus(null);
+      if (ruc.a(this.this$0) != null) {
+        ruc.a(this.this$0).abandonAudioFocus(null);
       }
     }
   }

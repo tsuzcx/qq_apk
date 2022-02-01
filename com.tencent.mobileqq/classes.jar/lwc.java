@@ -1,80 +1,103 @@
+import android.os.Binder;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.C2CGameInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
 
-class lwc
-  implements lip
+public abstract class lwc
+  extends Binder
+  implements lwb
 {
-  lwc(lwb paramlwb) {}
-  
-  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  public lwc()
   {
-    bool2 = false;
-    String str = msp.a();
-    if ((paramArrayOfByte == null) || (TextUtils.isEmpty(str)) || (paramInt1 != 9))
+    attachInterface(this, "com.tencent.av.service.IQQServiceCallback");
+  }
+  
+  public static lwb a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IQQServiceCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof lwb))) {
+      return (lwb)localIInterface;
+    }
+    return new lwd(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    Bundle localBundle = null;
+    String str = null;
+    switch (paramInt1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome error return, msgType=" + paramInt1);
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.service.IQQServiceCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceCallback");
+      paramParcel2 = str;
+      if (paramParcel1.readInt() != 0) {
+        paramParcel2 = (RecvMsg)RecvMsg.CREATOR.createFromParcel(paramParcel1);
       }
-      return false;
-    }
-    localAVRedPacketManager = (AVRedPacketManager)this.a.a.a(6);
-    localC2CGameInfo = new AVRedPacketGameSyncInfo.C2CGameInfo();
-    try
-    {
-      localC2CGameInfo.mergeFrom(paramArrayOfByte);
-      bool1 = true;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
+      a(paramParcel2);
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceCallback");
+      a((RecvGVideoLevelInfo[])paramParcel1.createTypedArray(RecvGVideoLevelInfo.CREATOR));
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceCallback");
+      a(paramParcel1.readString(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceCallback");
+      if (paramParcel1.readInt() != 0) {}
+      for (boolean bool = true;; bool = false)
       {
-        boolean bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("AVRedPacketHandler", 2, "onC2CDataCome,", paramArrayOfByte);
-          bool1 = bool2;
-          continue;
-          if ((paramInt2 == 2) || (paramInt2 == 3)) {
-            localAVRedPacketManager.b(paramInt2);
-          } else if (paramInt2 == 4) {
-            localAVRedPacketManager.c(localC2CGameInfo.exceptionType.get());
-          }
-        }
+        a(bool, paramParcel1.readString(), paramParcel1.readString(), paramParcel1.readString());
+        paramParcel2.writeNoException();
+        return true;
       }
-    }
-    if (paramInt2 == 1)
-    {
-      paramArrayOfByte = new Bundle();
-      paramArrayOfByte.putString("key", localC2CGameInfo.key.get());
-      paramArrayOfByte.putInt("gameState", localC2CGameInfo.state.get());
-      paramArrayOfByte.putString("peerUin", str);
-      paramArrayOfByte.putInt("fromWho", localC2CGameInfo.fromWho.get());
-      paramArrayOfByte.putString("money", localC2CGameInfo.money.get());
-      paramArrayOfByte.putInt("resultCode", localC2CGameInfo.resultCode.get());
-      paramArrayOfByte.putString("resultState", localC2CGameInfo.resultState.get());
-      paramArrayOfByte.putInt("musicId", localC2CGameInfo.musicId.get());
-      paramArrayOfByte.putInt("hitScore", localC2CGameInfo.scores.get());
-      paramArrayOfByte.putInt("enterType", localC2CGameInfo.enterType.get());
-      paramArrayOfByte.putInt("maxScore", localC2CGameInfo.maxScore.get());
-      paramArrayOfByte.putInt("totalEmojiNum", localC2CGameInfo.totalEmojiNum.get());
-      localAVRedPacketManager.a(bool1, paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome, isSucc: " + bool1 + ", subType=" + paramInt2);
+    case 5: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceCallback");
+      str = paramParcel1.readString();
+      paramInt1 = paramParcel1.readInt();
+      paramInt2 = paramParcel1.readInt();
+      if (paramParcel1.readInt() != 0) {
+        localBundle = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
+      paramParcel1 = a(str, paramInt1, paramInt2, localBundle);
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+        return true;
+      }
+      paramParcel2.writeInt(0);
       return true;
     }
+    paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceCallback");
+    a(paramParcel1.readString(), paramParcel1.readInt(), paramParcel1.createByteArray());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lwc
  * JD-Core Version:    0.7.0.1
  */

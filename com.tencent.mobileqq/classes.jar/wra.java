@@ -1,35 +1,26 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-
-class wra
-  extends LruCache<wrb, Drawable>
+public class wra
 {
-  wra(wqy paramwqy, int paramInt)
-  {
-    super(paramInt);
-  }
+  @zkv(a="pkIconUrl")
+  public String a;
+  @zkv(a="pkWording")
+  public String b;
+  @zkv(a="pkAction")
+  public String c;
+  @zkv(a="pkIconUrlSelf")
+  public String d;
+  @zkv(a="pkWordingSelf")
+  public String e;
+  @zkv(a="pkActionSelf")
+  public String f;
   
-  protected int a(wrb paramwrb, Drawable paramDrawable)
+  public String toString()
   {
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
-        wrk.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramwrb, " size=", Integer.valueOf(i) });
-        return i;
-      }
-    }
-    return 524288;
+    return "VideoLinkGameInfo {, pkBody='" + this.b + '\'' + ", pkIconUrl='" + this.a + '\'' + ", pkAction='" + this.c + '\'' + ", pkBodySelf='" + this.e + '\'' + ", pkIconUrlSelf='" + this.d + '\'' + ", pkActionSelf='" + this.f + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wra
  * JD-Core Version:    0.7.0.1
  */

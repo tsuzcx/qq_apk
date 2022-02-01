@@ -4,6 +4,8 @@ import android.support.annotation.NonNull;
 import com.tencent.weseevideo.composition.VideoRenderChainConfigure;
 import com.tencent.weseevideo.composition.VideoRenderChainManager.IStickerContextInterface;
 import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.template.auto.AutoTemplateMediaBuilder;
+import com.tencent.weseevideo.model.template.movie.MovieTemplateMediaBuilder;
 
 public class MediaBuilderFactory
 {
@@ -16,8 +18,16 @@ public class MediaBuilderFactory
   
   public static void mediaBuilderAsync(@NonNull MediaModel paramMediaModel, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface, @NonNull VideoRenderChainConfigure paramVideoRenderChainConfigure, @NonNull MediaBuilderListener paramMediaBuilderListener)
   {
-    paramVideoRenderChainConfigure.setSceneType(0);
-    MediaBuilder.build(paramMediaModel, paramIStickerContextInterface, paramMediaBuilderListener, paramVideoRenderChainConfigure);
+    switch (paramVideoRenderChainConfigure.getSceneType())
+    {
+    default: 
+      MediaBuilder.build(paramMediaModel, paramIStickerContextInterface, paramMediaBuilderListener, paramVideoRenderChainConfigure);
+      return;
+    case 1: 
+      MovieTemplateMediaBuilder.buildAsync(paramMediaModel, paramIStickerContextInterface, paramMediaBuilderListener, paramVideoRenderChainConfigure);
+      return;
+    }
+    AutoTemplateMediaBuilder.build(paramMediaModel, paramIStickerContextInterface, paramVideoRenderChainConfigure, paramMediaBuilderListener);
   }
   
   public static void mediaBuilderAsync(@NonNull MediaModel paramMediaModel, @NonNull VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface, @NonNull MediaBuilderListener paramMediaBuilderListener)
@@ -27,7 +37,7 @@ public class MediaBuilderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.builder.MediaBuilderFactory
  * JD-Core Version:    0.7.0.1
  */

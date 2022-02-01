@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.takevideo.tag;
 
-import awge;
-import ulj;
+import com.tencent.mobileqq.persistence.Entity;
+import wev;
 
 public class TagItemEntry
-  extends awge
-  implements ulj
+  extends Entity
+  implements wev
 {
   public String desc;
   public long id;
@@ -29,7 +29,7 @@ public class TagItemEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.tag.TagItemEntry
  * JD-Core Version:    0.7.0.1
  */

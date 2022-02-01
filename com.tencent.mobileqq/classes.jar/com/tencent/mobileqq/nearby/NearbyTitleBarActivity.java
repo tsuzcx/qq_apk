@@ -1,12 +1,16 @@
 package com.tencent.mobileqq.nearby;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.Window;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
@@ -68,6 +72,14 @@ public class NearbyTitleBarActivity
   }
   
   public void b() {}
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
@@ -134,6 +146,13 @@ public class NearbyTitleBarActivity
     return "module_nearby";
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public boolean showPreview()
   {
     int i = a();
@@ -172,7 +191,7 @@ public class NearbyTitleBarActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyTitleBarActivity
  * JD-Core Version:    0.7.0.1
  */

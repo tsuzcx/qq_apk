@@ -1,110 +1,126 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudCommon.StCommonExt;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import java.util.ArrayList;
+import java.util.List;
+import qqcircle.QQCircleFeedBase.StFeedListBusiRspData;
+import qqcircle.QQCircleFeedBase.StFollowPageData;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
-public abstract class vua
-  extends vti
+class vua
+  implements zxa<FeedCloudRead.StGetFeedListRsp>
 {
-  public int a;
-  @NonNull
-  public final View a;
-  public StoryPlayerGroupHolder a;
-  public String a;
-  public vtt a;
-  protected vub a;
-  protected boolean a;
-  public int b;
-  private final String b;
-  protected boolean b;
+  vua(vtz paramvtz, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, boolean paramBoolean) {}
   
-  public vua(@NonNull ViewGroup paramViewGroup)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
-    this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
-  }
-  
-  protected abstract View a(ViewGroup paramViewGroup);
-  
-  public vua a(Class<? extends vua> paramClass)
-  {
-    if (this.jdField_a_of_type_Vub != null) {
-      return this.jdField_a_of_type_Vub.b(paramClass);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
-    wxe.a(this.jdField_a_of_type_JavaLangString, "onPositionChanged, oldVer=%d, oldHor=%d, newVer=%d, newHor=%d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, @NonNull vtt paramvtt, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Vtt = paramvtt;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = paramStoryPlayerGroupHolder;
-  }
-  
-  void a(vub paramvub)
-  {
-    this.jdField_a_of_type_Vub = paramvub;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d("QCircleFeedViewModel", 1, "requestFeedsData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
+    if (vtz.a(this.jdField_a_of_type_Vtz).a())
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      b(this.jdField_b_of_type_Boolean);
-      return;
+      if (!bool) {
+        break label186;
+      }
+      QLog.d("QCircleFeedViewModel", 1, "use cache data");
+      vtz.a(this.jdField_a_of_type_Vtz, this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId());
     }
-    wxe.e(this.jdField_a_of_type_JavaLangString, "onSelected donot changed !");
-  }
-  
-  protected void b() {}
-  
-  protected void b(boolean paramBoolean)
-  {
-    wxe.b(this.jdField_a_of_type_JavaLangString, "onSelectedChanged (ver=%d, hor=%d) , => %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(paramBoolean));
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Vtt = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = null;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String toString()
-  {
-    return "VideoHolderBase{, GroupPos=" + this.jdField_a_of_type_Int + ", VideoPos=" + this.jdField_b_of_type_Int + ", mData=" + this.jdField_a_of_type_Vtt + '}';
+    else
+    {
+      label144:
+      if ((paramBoolean) && (paramLong == 0L) && (paramStGetFeedListRsp != null)) {
+        break label254;
+      }
+      vtz.a(this.jdField_a_of_type_Vtz).setValue(vup.a(paramString).a(paramLong).b(this.jdField_a_of_type_Boolean));
+    }
+    for (;;)
+    {
+      return;
+      label186:
+      if (!this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId().equals(vtz.a(this.jdField_a_of_type_Vtz))) {
+        break label144;
+      }
+      if ((!paramBoolean) && (paramLong == -2L))
+      {
+        vtz.a(this.jdField_a_of_type_Vtz).setValue(vup.a(paramString).a(paramLong).b(this.jdField_a_of_type_Boolean));
+        return;
+      }
+      QLog.d("QCircleFeedViewModel", 1, "from old cache data rsp,direct return!");
+      return;
+      label254:
+      if (!bool)
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          vtz.a(this.jdField_a_of_type_Vtz).clear();
+        }
+        vtz.a(this.jdField_a_of_type_Vtz).addAll(paramStGetFeedListRsp.vecFeed.get());
+      }
+      if (paramStGetFeedListRsp.extInfo.has())
+      {
+        vtz.a(this.jdField_a_of_type_Vtz, (FeedCloudCommon.StCommonExt)paramStGetFeedListRsp.extInfo.get());
+        this.jdField_a_of_type_Vtz.a(vtz.a(this.jdField_a_of_type_Vtz));
+      }
+      vtz.b(this.jdField_a_of_type_Vtz, paramStGetFeedListRsp.feedAttchInfo.get());
+      paramString = this.jdField_a_of_type_Vtz;
+      if (paramStGetFeedListRsp.isFinish.get() > 0)
+      {
+        paramBoolean = true;
+        label374:
+        vtz.a(paramString, paramBoolean);
+        paramString = paramStGetFeedListRsp.vecFeed.get();
+        QLog.d("QCircleFeedViewModel", 1, "feed size:" + paramString.size() + " | isFinish:" + vtz.a(this.jdField_a_of_type_Vtz) + " | feedAttachInfo:" + vtz.b(this.jdField_a_of_type_Vtz));
+        if (paramString.size() <= 0) {
+          break label677;
+        }
+        vtz.a(this.jdField_a_of_type_Vtz, paramString);
+        vtz.a(this.jdField_a_of_type_Vtz).setValue(vup.a(bool).a(this.jdField_a_of_type_Boolean, paramString).c(vtz.a(this.jdField_a_of_type_Vtz)));
+        paramString = new QQCircleFeedBase.StFeedListBusiRspData();
+        if (!paramStGetFeedListRsp.busiRspData.has()) {
+          break;
+        }
+      }
+      try
+      {
+        paramString.mergeFrom(paramStGetFeedListRsp.busiRspData.get().toByteArray());
+        if (paramString.followPageData.has()) {
+          vtz.b(this.jdField_a_of_type_Vtz).setValue(paramString.followPageData.get());
+        }
+        if (paramString.refreshAttachInfo.has()) {
+          vtz.c(this.jdField_a_of_type_Vtz, paramString.refreshAttachInfo.get());
+        }
+        if ((this.jdField_a_of_type_Boolean) || (vtz.a(this.jdField_a_of_type_Vtz) == null) || (vtz.a(this.jdField_a_of_type_Vtz).a == null) || (vtz.a(this.jdField_a_of_type_Vtz).a.tabType.get() != 1) || (!paramString.rspTimestamp.has())) {
+          continue;
+        }
+        vqs.b(paramString.rspTimestamp.get());
+        return;
+        paramBoolean = false;
+        break label374;
+        label677:
+        vtz.a(this.jdField_a_of_type_Vtz).setValue(vup.a().b(this.jdField_a_of_type_Boolean).c(vtz.a(this.jdField_a_of_type_Vtz)));
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramStGetFeedListRsp)
+      {
+        for (;;)
+        {
+          paramStGetFeedListRsp.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vua
  * JD-Core Version:    0.7.0.1
  */

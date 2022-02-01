@@ -1,23 +1,27 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.List;
-import java.util.Map;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-class aiuz
-  implements ajal
+public class aiuz
+  extends RecyclerView.ItemDecoration
 {
-  aiuz(aiux paramaiux, AppInterface paramAppInterface) {}
+  private int a;
+  private int b;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public aiuz(int paramInt1, int paramInt2)
   {
-    List localList = (List)aiux.a(this.jdField_a_of_type_Aiux).get(paramPathResult.url);
-    if (paramPathResult.url.endsWith(".zip")) {
-      aiux.a(this.jdField_a_of_type_Aiux, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, paramPathResult.folderPath, localList);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.a;
+    if (paramRecyclerView.getChildPosition(paramView) == 0) {
+      paramRect.left = this.b;
     }
-    while (!paramPathResult.url.endsWith(".png")) {
-      return;
-    }
-    aiux.a(this.jdField_a_of_type_Aiux, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, localList);
   }
 }
 

@@ -1,26 +1,17 @@
-import android.util.Property;
+import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
+import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import com.tencent.ttpic.util.Coffee;
+import com.tencent.ttpic.util.DecryptListener;
 
-class bndg
-  extends Property<bndb, Integer>
+final class bndg
+  implements DecryptListener
 {
-  bndg(bndb parambndb, Class paramClass, String paramString)
+  public byte[] decrypt(byte[] paramArrayOfByte)
   {
-    super(paramClass, paramString);
-  }
-  
-  public Integer a(bndb parambndb)
-  {
-    if (parambndb != null) {
-      return Integer.valueOf(bndb.c(parambndb));
+    if (!FeatureManager.Features.PTU_TOOLS.isFunctionReady()) {
+      return paramArrayOfByte;
     }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bndb parambndb, Integer paramInteger)
-  {
-    if (parambndb != null) {
-      bndb.c(parambndb, paramInteger.intValue());
-    }
+    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
   }
 }
 

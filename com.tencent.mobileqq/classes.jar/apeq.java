@@ -1,7 +1,40 @@
-public final class apeq
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+
+class apeq
+  extends Handler
 {
-  public String a;
-  public String b;
+  public apeq(apep paramapep, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      apep.a(this.a);
+      return;
+      if (apep.a(this.a))
+      {
+        apep.a(this.a, false);
+        apdk.a();
+      }
+      try
+      {
+        apep.b(this.a);
+        return;
+      }
+      catch (Throwable paramMessage) {}
+    } while (!QLog.isColorLevel());
+    QLog.i("QRSession", 2, paramMessage.getMessage(), paramMessage);
+  }
 }
 
 

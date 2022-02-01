@@ -1,37 +1,46 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MusicPlayerProxy.MusicPlayerListener;
 
-public class bjxr
-  extends bjxz
+class bjxr
+  extends awxx
 {
-  private static void a(WebViewPlugin paramWebViewPlugin, begz parambegz, String[] paramArrayOfString)
+  bjxr(bjxo parambjxo) {}
+  
+  public void onPlaySongChanged(com.tencent.mobileqq.music.SongInfo paramSongInfo)
   {
-    paramWebViewPlugin = new Intent("action_js2qzone");
-    paramArrayOfString = new Bundle();
-    paramArrayOfString.putString("cmd", "writeBlogSuccess");
-    paramWebViewPlugin.putExtras(paramArrayOfString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneBlogJsPlugin", 2, "handleWriteBlog actionString: " + paramWebViewPlugin.getAction());
+    if (bjxo.a(this.a) != null)
+    {
+      com.tencent.qqmini.sdk.launcher.core.model.SongInfo localSongInfo = new com.tencent.qqmini.sdk.launcher.core.model.SongInfo();
+      localSongInfo.album = paramSongInfo.g;
+      localSongInfo.coverUrl = paramSongInfo.e;
+      localSongInfo.detailUrl = paramSongInfo.f;
+      localSongInfo.duration = paramSongInfo.jdField_d_of_type_Long;
+      localSongInfo.fromMini = paramSongInfo.jdField_a_of_type_Boolean;
+      localSongInfo.id = paramSongInfo.jdField_a_of_type_Long;
+      localSongInfo.mid = paramSongInfo.jdField_a_of_type_JavaLangString;
+      localSongInfo.singer = paramSongInfo.h;
+      localSongInfo.singerId = paramSongInfo.jdField_c_of_type_Long;
+      localSongInfo.startTime = paramSongInfo.jdField_a_of_type_Int;
+      localSongInfo.summary = paramSongInfo.jdField_d_of_type_JavaLangString;
+      localSongInfo.title = paramSongInfo.jdField_c_of_type_JavaLangString;
+      localSongInfo.type = paramSongInfo.jdField_b_of_type_Int;
+      localSongInfo.uin = paramSongInfo.jdField_b_of_type_Long;
+      localSongInfo.url = paramSongInfo.jdField_b_of_type_JavaLangString;
+      bjxo.a(this.a).onPlaySongChanged(localSongInfo);
     }
-    bjdt.a(parambegz.a(), bjea.a(), paramWebViewPlugin);
   }
   
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void onPlayStateChanged(int paramInt)
   {
-    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
-    while (!paramString3.equalsIgnoreCase("writeBlogSuccess")) {
-      return false;
+    if ((bjxo.a(this.a) == null) || ((bjxo.a(this.a).a() != null) && (!bjxo.a(this.a).a().equals(bjxo.a(this.a))))) {}
+    while (bjxo.a(this.a) == null) {
+      return;
     }
-    a(this.a, this.a.mRuntime, paramVarArgs);
-    return true;
+    bjxo.a(this.a).onPlayStateChanged(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjxr
  * JD-Core Version:    0.7.0.1
  */

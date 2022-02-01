@@ -1,16 +1,17 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.BindGroupFragment;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
 
 public class bfdh
-  implements View.OnClickListener
+  implements zpp
 {
-  public bfdh(BindGroupFragment paramBindGroupFragment) {}
+  public bfdh(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
   {
-    BindGroupFragment.a(this.a).finish();
+    this.a.b(this.a.a.getText().toString());
+    return true;
   }
 }
 

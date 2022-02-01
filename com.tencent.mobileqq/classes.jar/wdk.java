@@ -1,45 +1,28 @@
 public class wdk
+  extends wdi
 {
-  public static void a(String paramString1, String paramString2)
+  public int d = -1;
+  public int e = -1;
+  
+  public wdk() {}
+  
+  public wdk(wbv paramwbv)
   {
-    wxe.b(paramString1, paramString2);
+    super(paramwbv);
   }
   
-  public static void a(String paramString1, String paramString2, Object paramObject)
+  public String toString()
   {
-    wxe.a(paramString1, paramString2, paramObject);
-  }
-  
-  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    wxe.d(paramString1, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject)
-  {
-    wxe.a(paramString1, paramString2, paramObject);
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    wxe.a(paramString1, paramString2, paramObject1, paramObject2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    wxe.e(paramString1, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    wxe.a(paramString1, paramString2, paramObject1, paramObject2);
+    StringBuilder localStringBuilder = new StringBuilder("TreeGatherConfig =[");
+    localStringBuilder.append(" mStartGatherLevel=").append(this.d);
+    localStringBuilder.append(" mEndGatherLevel=").append(this.e);
+    localStringBuilder.append("] ");
+    return localStringBuilder.toString() + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wdk
  * JD-Core Version:    0.7.0.1
  */

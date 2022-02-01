@@ -1,39 +1,28 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import mqq.app.AppRuntime;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.2;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class ohd
+  implements Animation.AnimationListener
 {
-  private View a;
+  public ohd(ReadInJoyNaviController.2 param2) {}
   
-  public ohd(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (ors.a() != null)
-    {
-      paramArkAppMessage = ors.a().getApplication();
-      if (paramArkAppMessage != null) {}
-    }
-    else
-    {
-      return;
-    }
-    this.a = new View(paramArkAppMessage);
-    this.a.setVisibility(8);
+    oha.a(this.a.this$0, true);
+    oha.a(this.a.this$0).setAlpha(0.0F);
+    oha.a(this.a.this$0).removeView(oha.a(this.a.this$0));
   }
   
-  public View a()
-  {
-    return this.a;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a() {}
-  
-  public void a(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohd
  * JD-Core Version:    0.7.0.1
  */

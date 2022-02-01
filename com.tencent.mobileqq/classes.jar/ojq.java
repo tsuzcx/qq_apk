@@ -1,19 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
-class ojq
-  implements ViewBase.OnClickListener
+public class ojq
 {
-  ojq(ojn paramojn) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onClick(ViewBase paramViewBase)
+  public ojq(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    ((ola)this.a.jdField_a_of_type_Omg).a(this.a.jdField_a_of_type_Omt, ojm.a(this.a.jdField_a_of_type_Omt, 0));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ojq
  * JD-Core Version:    0.7.0.1
  */

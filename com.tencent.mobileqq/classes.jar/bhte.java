@@ -1,343 +1,484 @@
+import KQQ.ProfSmpInfoRes;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DateNickNameInfo;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import mqq.app.MobileQQ;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.WereWolfPush;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.ReqBody;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.ReqBody;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
+
 public class bhte
+  extends anii
 {
-  /* Error */
-  public static void a(android.content.Context paramContext, java.lang.String paramString1, java.lang.String paramString2)
+  protected static HashMap<String, WeakReference<TextView>> a;
+  protected BroadcastReceiver a;
+  protected LruCache<String, String> a;
+  protected bhtm a;
+  bhtu a;
+  public String a;
+  public boolean a;
+  
+  static
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aconst_null
-    //   4: astore 7
-    //   6: aconst_null
-    //   7: astore 9
-    //   9: iconst_0
-    //   10: istore_3
-    //   11: aload_1
-    //   12: ifnonnull +4 -> 16
-    //   15: return
-    //   16: new 12	java/io/File
-    //   19: dup
-    //   20: aload_2
-    //   21: invokespecial 16	java/io/File:<init>	(Ljava/lang/String;)V
-    //   24: invokevirtual 20	java/io/File:listFiles	()[Ljava/io/File;
-    //   27: astore 8
-    //   29: aload 8
-    //   31: ifnull +29 -> 60
-    //   34: aload 8
-    //   36: arraylength
-    //   37: istore 4
-    //   39: iload_3
-    //   40: iload 4
-    //   42: if_icmpge +18 -> 60
-    //   45: aload 8
-    //   47: iload_3
-    //   48: aaload
-    //   49: invokevirtual 24	java/io/File:delete	()Z
-    //   52: pop
-    //   53: iload_3
-    //   54: iconst_1
-    //   55: iadd
-    //   56: istore_3
-    //   57: goto -18 -> 39
-    //   60: new 26	com/tencent/commonsdk/zip/QZipInputStream
-    //   63: dup
-    //   64: new 28	java/io/BufferedInputStream
-    //   67: dup
-    //   68: aload_0
-    //   69: invokevirtual 34	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   72: aload_1
-    //   73: invokevirtual 40	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   76: invokespecial 43	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   79: invokespecial 44	com/tencent/commonsdk/zip/QZipInputStream:<init>	(Ljava/io/InputStream;)V
-    //   82: astore 8
-    //   84: aconst_null
-    //   85: astore_0
-    //   86: aload 8
-    //   88: invokevirtual 48	com/tencent/commonsdk/zip/QZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
-    //   91: astore_1
-    //   92: aload_1
-    //   93: ifnull +281 -> 374
-    //   96: sipush 4096
-    //   99: newarray byte
-    //   101: astore 7
-    //   103: aload_1
-    //   104: invokevirtual 54	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   107: astore_1
-    //   108: aload_1
-    //   109: ifnull +40 -> 149
-    //   112: aload_1
-    //   113: ldc 56
-    //   115: invokevirtual 62	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   118: istore 5
-    //   120: iload 5
-    //   122: ifeq +27 -> 149
-    //   125: aload_0
-    //   126: ifnull +7 -> 133
-    //   129: aload_0
-    //   130: invokevirtual 68	java/io/BufferedOutputStream:close	()V
-    //   133: iconst_0
-    //   134: ifeq -48 -> 86
-    //   137: new 70	java/lang/NullPointerException
-    //   140: dup
-    //   141: invokespecial 72	java/lang/NullPointerException:<init>	()V
-    //   144: athrow
-    //   145: astore_1
-    //   146: goto -60 -> 86
-    //   149: new 12	java/io/File
-    //   152: dup
-    //   153: new 74	java/lang/StringBuilder
-    //   156: dup
-    //   157: invokespecial 75	java/lang/StringBuilder:<init>	()V
-    //   160: aload_2
-    //   161: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: aload_1
-    //   165: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   168: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   171: invokespecial 16	java/io/File:<init>	(Ljava/lang/String;)V
-    //   174: astore 6
-    //   176: new 12	java/io/File
-    //   179: dup
-    //   180: aload 6
-    //   182: invokevirtual 85	java/io/File:getParent	()Ljava/lang/String;
-    //   185: invokespecial 16	java/io/File:<init>	(Ljava/lang/String;)V
-    //   188: astore_1
-    //   189: aload_1
-    //   190: invokevirtual 88	java/io/File:exists	()Z
-    //   193: ifne +8 -> 201
-    //   196: aload_1
-    //   197: invokevirtual 91	java/io/File:mkdirs	()Z
-    //   200: pop
-    //   201: new 93	java/io/FileOutputStream
-    //   204: dup
-    //   205: aload 6
-    //   207: invokespecial 96	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   210: astore_1
-    //   211: new 64	java/io/BufferedOutputStream
-    //   214: dup
-    //   215: aload_1
-    //   216: sipush 4096
-    //   219: invokespecial 99	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
-    //   222: astore 6
-    //   224: aload 8
-    //   226: aload 7
-    //   228: iconst_0
-    //   229: sipush 4096
-    //   232: invokevirtual 103	com/tencent/commonsdk/zip/QZipInputStream:read	([BII)I
-    //   235: istore_3
-    //   236: iload_3
-    //   237: iconst_m1
-    //   238: if_icmpeq +47 -> 285
-    //   241: aload 6
-    //   243: aload 7
-    //   245: iconst_0
-    //   246: iload_3
-    //   247: invokevirtual 107	java/io/BufferedOutputStream:write	([BII)V
-    //   250: goto -26 -> 224
-    //   253: astore_0
-    //   254: aload 6
-    //   256: astore_0
-    //   257: aload_0
-    //   258: ifnull +7 -> 265
-    //   261: aload_0
-    //   262: invokevirtual 68	java/io/BufferedOutputStream:close	()V
-    //   265: aload_0
-    //   266: astore 7
-    //   268: aload_1
-    //   269: ifnull +10 -> 279
-    //   272: aload_1
-    //   273: invokevirtual 108	java/io/FileOutputStream:close	()V
-    //   276: aload_0
-    //   277: astore 7
-    //   279: aload 7
-    //   281: astore_0
-    //   282: goto -196 -> 86
-    //   285: aload 6
-    //   287: invokevirtual 111	java/io/BufferedOutputStream:flush	()V
-    //   290: aload_1
-    //   291: invokevirtual 112	java/io/FileOutputStream:flush	()V
-    //   294: aload 6
-    //   296: ifnull +8 -> 304
-    //   299: aload 6
-    //   301: invokevirtual 68	java/io/BufferedOutputStream:close	()V
-    //   304: aload 6
-    //   306: astore 7
-    //   308: aload_1
-    //   309: ifnull -30 -> 279
-    //   312: aload_1
-    //   313: invokevirtual 108	java/io/FileOutputStream:close	()V
-    //   316: aload 6
-    //   318: astore 7
-    //   320: goto -41 -> 279
-    //   323: astore_0
-    //   324: aload 6
-    //   326: astore 7
-    //   328: goto -49 -> 279
-    //   331: astore_0
-    //   332: aload_1
-    //   333: astore_2
-    //   334: aload_0
-    //   335: astore_1
-    //   336: aload 6
-    //   338: ifnull +8 -> 346
-    //   341: aload 6
-    //   343: invokevirtual 68	java/io/BufferedOutputStream:close	()V
-    //   346: aload_2
-    //   347: ifnull +7 -> 354
-    //   350: aload_2
-    //   351: invokevirtual 108	java/io/FileOutputStream:close	()V
-    //   354: aload_1
-    //   355: athrow
-    //   356: astore_0
-    //   357: aload 8
-    //   359: ifnull -344 -> 15
-    //   362: aload 8
-    //   364: invokevirtual 113	com/tencent/commonsdk/zip/QZipInputStream:close	()V
-    //   367: return
-    //   368: astore_0
-    //   369: aload_0
-    //   370: invokevirtual 116	java/io/IOException:printStackTrace	()V
-    //   373: return
-    //   374: aload 8
-    //   376: ifnull -361 -> 15
-    //   379: aload 8
-    //   381: invokevirtual 113	com/tencent/commonsdk/zip/QZipInputStream:close	()V
-    //   384: return
-    //   385: astore_0
-    //   386: aload_0
-    //   387: invokevirtual 116	java/io/IOException:printStackTrace	()V
-    //   390: return
-    //   391: astore_0
-    //   392: aload 7
-    //   394: astore 8
-    //   396: aload 8
-    //   398: ifnull +8 -> 406
-    //   401: aload 8
-    //   403: invokevirtual 113	com/tencent/commonsdk/zip/QZipInputStream:close	()V
-    //   406: aload_0
-    //   407: athrow
-    //   408: astore_1
-    //   409: aload_1
-    //   410: invokevirtual 116	java/io/IOException:printStackTrace	()V
-    //   413: goto -7 -> 406
-    //   416: astore_1
-    //   417: goto -284 -> 133
-    //   420: astore_0
-    //   421: goto -117 -> 304
-    //   424: astore 6
-    //   426: goto -161 -> 265
-    //   429: astore_1
-    //   430: aload_0
-    //   431: astore 7
-    //   433: goto -154 -> 279
-    //   436: astore_0
-    //   437: goto -91 -> 346
-    //   440: astore_0
-    //   441: goto -87 -> 354
-    //   444: astore_0
-    //   445: goto -49 -> 396
-    //   448: astore_0
-    //   449: aload 6
-    //   451: astore 8
-    //   453: goto -96 -> 357
-    //   456: astore_1
-    //   457: aload 9
-    //   459: astore_2
-    //   460: aload_0
-    //   461: astore 6
-    //   463: goto -127 -> 336
-    //   466: astore 6
-    //   468: aload_1
-    //   469: astore_2
-    //   470: aload 6
-    //   472: astore_1
-    //   473: aload_0
-    //   474: astore 6
-    //   476: goto -140 -> 336
-    //   479: astore_1
-    //   480: aconst_null
-    //   481: astore_1
-    //   482: goto -225 -> 257
-    //   485: astore 6
-    //   487: goto -230 -> 257
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	490	0	paramContext	android.content.Context
-    //   0	490	1	paramString1	java.lang.String
-    //   0	490	2	paramString2	java.lang.String
-    //   10	237	3	i	int
-    //   37	6	4	j	int
-    //   118	3	5	bool	boolean
-    //   1	341	6	localObject1	Object
-    //   424	26	6	localIOException	java.io.IOException
-    //   461	1	6	localContext1	android.content.Context
-    //   466	5	6	localObject2	Object
-    //   474	1	6	localContext2	android.content.Context
-    //   485	1	6	localException	java.lang.Exception
-    //   4	428	7	localObject3	Object
-    //   27	425	8	localObject4	Object
-    //   7	451	9	localObject5	Object
-    // Exception table:
-    //   from	to	target	type
-    //   137	145	145	java/io/IOException
-    //   224	236	253	java/lang/Exception
-    //   241	250	253	java/lang/Exception
-    //   285	294	253	java/lang/Exception
-    //   312	316	323	java/io/IOException
-    //   224	236	331	finally
-    //   241	250	331	finally
-    //   285	294	331	finally
-    //   86	92	356	java/lang/Exception
-    //   129	133	356	java/lang/Exception
-    //   137	145	356	java/lang/Exception
-    //   261	265	356	java/lang/Exception
-    //   272	276	356	java/lang/Exception
-    //   299	304	356	java/lang/Exception
-    //   312	316	356	java/lang/Exception
-    //   341	346	356	java/lang/Exception
-    //   350	354	356	java/lang/Exception
-    //   354	356	356	java/lang/Exception
-    //   362	367	368	java/io/IOException
-    //   379	384	385	java/io/IOException
-    //   16	29	391	finally
-    //   34	39	391	finally
-    //   45	53	391	finally
-    //   60	84	391	finally
-    //   401	406	408	java/io/IOException
-    //   129	133	416	java/io/IOException
-    //   299	304	420	java/io/IOException
-    //   261	265	424	java/io/IOException
-    //   272	276	429	java/io/IOException
-    //   341	346	436	java/io/IOException
-    //   350	354	440	java/io/IOException
-    //   86	92	444	finally
-    //   129	133	444	finally
-    //   137	145	444	finally
-    //   261	265	444	finally
-    //   272	276	444	finally
-    //   299	304	444	finally
-    //   312	316	444	finally
-    //   341	346	444	finally
-    //   350	354	444	finally
-    //   354	356	444	finally
-    //   16	29	448	java/lang/Exception
-    //   34	39	448	java/lang/Exception
-    //   45	53	448	java/lang/Exception
-    //   60	84	448	java/lang/Exception
-    //   96	108	456	finally
-    //   112	120	456	finally
-    //   149	201	456	finally
-    //   201	211	456	finally
-    //   211	224	466	finally
-    //   96	108	479	java/lang/Exception
-    //   112	120	479	java/lang/Exception
-    //   149	201	479	java/lang/Exception
-    //   201	211	479	java/lang/Exception
-    //   211	224	485	java/lang/Exception
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public bhte(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(100);
+    this.jdField_a_of_type_Bhtm = new bhtm();
+    this.jdField_a_of_type_Bhtu = null;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bhtk(this);
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getApp().getSharedPreferences("werewolves_sp", 0).getString("judgeUin", "");
+    IntentFilter localIntentFilter = new IntentFilter("tencent.video.v2q.memberSpeaking");
+    paramQQAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+  }
+  
+  public bhtu a(String paramString)
+  {
+    if (this.jdField_a_of_type_Bhtu == null) {
+      this.jdField_a_of_type_Bhtu = new bhtu(paramString);
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_Bhtu.jdField_a_of_type_JavaLangString = paramString;
+    }
+    return this.jdField_a_of_type_Bhtu;
+  }
+  
+  protected niv a(bhtl<oidb_0x8e4.RspBody> parambhtl)
+  {
+    return new bhti(this, parambhtl);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bhtu = null;
+  }
+  
+  public void a(int paramInt1, int paramInt2, bhtl<oidb_0x8e4.RspBody> parambhtl)
+  {
+    oidb_0x8e4.ReqBody localReqBody = new oidb_0x8e4.ReqBody();
+    localReqBody.uint32_max_member_num.set(paramInt1, true);
+    localReqBody.uint32_zone_id.set(paramInt2);
+    nir.a(this.app, a(parambhtl), localReqBody.toByteArray(), "OidbSvc.0x8e4_1", 2276, 1, new Bundle(), 5000L);
+  }
+  
+  public void a(TextView paramTextView, String paramString1, String paramString2)
+  {
+    if (this.app.getCurrentAccountUin().equals(paramString1)) {}
+    do
+    {
+      try
+      {
+        paramTextView.setText(String.format(paramString2, new Object[] { this.app.getCurrentNickname() }));
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        paramTextView.setText(this.app.getCurrentNickname());
+        return;
+      }
+      Object localObject = (anmw)this.app.getManager(51);
+      if (((anmw)localObject).b(paramString1))
+      {
+        paramString1 = bglf.j(this.app, paramString1);
+        try
+        {
+          paramTextView.setText(String.format(paramString2, new Object[] { paramString1 }));
+          return;
+        }
+        catch (Exception paramString2)
+        {
+          paramTextView.setText(paramString1);
+          return;
+        }
+      }
+      localObject = ((anmw)localObject).a(paramString1);
+      if ((localObject != null) && (((DateNickNameInfo)localObject).nickName != null) && (!((DateNickNameInfo)localObject).nickName.equals(paramString1))) {
+        try
+        {
+          paramTextView.setText(String.format(paramString2, new Object[] { ((DateNickNameInfo)localObject).nickName }));
+          return;
+        }
+        catch (Exception paramString1)
+        {
+          paramTextView.setText(((DateNickNameInfo)localObject).nickName);
+          return;
+        }
+      }
+      paramTextView.setText(paramString1);
+      paramTextView.setTag(new String[] { paramString1, paramString2 });
+      if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
+      {
+        jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
+        jdField_a_of_type_JavaUtilHashMap.put(paramString1, new WeakReference(paramTextView));
+        return;
+      }
+      jdField_a_of_type_JavaUtilHashMap.put(paramString1, new WeakReference(paramTextView));
+      paramTextView = createToServiceMsg("ProfileService.GetSimpleInfo");
+      paramString2 = new ArrayList();
+      paramString2.add(paramString1);
+      paramTextView.extraData.putStringArrayList("uinList", paramString2);
+      paramTextView.extraData.putBoolean("reqDateNick", true);
+      send(paramTextView);
+    } while (!QLog.isColorLevel());
+    QLog.d("WerewolvesHandler", 2, "WerewolvesHandler: setNickname->sendToServiceMsg, uin = " + paramString1);
+  }
+  
+  public void a(bhtl<oidb_0x8e4.RspBody> parambhtl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("WerewolvesHandler", 2, "reqInviteId");
+    }
+    oidb_0x8e4.ReqBody localReqBody = new oidb_0x8e4.ReqBody();
+    nir.a(this.app, a(parambhtl), localReqBody.toByteArray(), "OidbSvc.0x8e4_6", 2276, 6, new Bundle(), 5000L);
+  }
+  
+  public void a(HotChatInfo paramHotChatInfo)
+  {
+    try
+    {
+      long l = Long.parseLong(paramHotChatInfo.troopUin);
+      axey.a().a(l);
+      axdz.a(this.app.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(bbyp.a()));
+      if ((paramHotChatInfo.troopUin != null) && (!paramHotChatInfo.troopUin.equals("0"))) {
+        this.app.a().a(paramHotChatInfo.troopUin, 1);
+      }
+      if (this.jdField_a_of_type_Bhtu != null) {
+        this.jdField_a_of_type_Bhtu.b();
+      }
+      HotChatManager localHotChatManager = (HotChatManager)this.app.getManager(60);
+      List localList = localHotChatManager.a();
+      if (localList != null) {
+        localList.remove(paramHotChatInfo);
+      }
+      localHotChatManager.a(paramHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
+      return;
+    }
+    catch (Exception paramHotChatInfo)
+    {
+      paramHotChatInfo.printStackTrace();
+    }
+  }
+  
+  public void a(HotChatInfo paramHotChatInfo, int paramInt1, int paramInt2, bhtl<oidb_0x8e4.RspBody> parambhtl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("WerewolvesHandler", 2, "exitRoom");
+    }
+    oidb_0x8ed.ReqBody localReqBody = new oidb_0x8ed.ReqBody();
+    bhtg localbhtg = new bhtg(this, parambhtl);
+    try
+    {
+      long l = Long.parseLong(paramHotChatInfo.troopUin);
+      localReqBody.uint64_room_id.set(l, true);
+      localReqBody.rpt_uint64_uins.add(Long.valueOf(this.app.getLongAccountUin()));
+      nir.a(this.app, b(new bhth(this, localbhtg, paramHotChatInfo, l, paramInt2, paramInt1, parambhtl)), localReqBody.toByteArray(), "OidbSvc.0x8ed_2", 2285, 2, new Bundle(), 5000L);
+      return;
+    }
+    catch (Exception paramHotChatInfo)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WerewolvesHandler", 2, "hotChatInfo.troopUin is wrong");
+    }
+  }
+  
+  public void a(HotChatInfo paramHotChatInfo, bhtl<oidb_0x8ed.RspBody> parambhtl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("WerewolvesHandler", 2, "exitRoom");
+    }
+    oidb_0x8ed.ReqBody localReqBody = new oidb_0x8ed.ReqBody();
+    try
+    {
+      long l = Long.parseLong(paramHotChatInfo.troopUin);
+      localReqBody.uint64_room_id.set(l, true);
+      localReqBody.rpt_uint64_uins.add(Long.valueOf(this.app.getLongAccountUin()));
+      nir.a(this.app, b(new bhtf(this, parambhtl, paramHotChatInfo)), localReqBody.toByteArray(), "OidbSvc.0x8ed_2", 2285, 2, new Bundle(), 5000L);
+      axey.a().a(l);
+      axdz.a(this.app.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(bbyp.a()));
+      try
+      {
+        if ((paramHotChatInfo.troopUin != null) && (!paramHotChatInfo.troopUin.equals("0"))) {
+          this.app.a().a(paramHotChatInfo.troopUin, 1);
+        }
+        if (this.jdField_a_of_type_Bhtu != null)
+        {
+          this.jdField_a_of_type_Bhtu.b();
+          return;
+        }
+      }
+      catch (Exception paramHotChatInfo)
+      {
+        for (;;)
+        {
+          paramHotChatInfo.printStackTrace();
+        }
+      }
+      return;
+    }
+    catch (Exception paramHotChatInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("WerewolvesHandler", 2, "hotChatInfo.troopUin is wrong");
+      }
+    }
+  }
+  
+  public void a(String paramString, long paramLong, bhtl<oidb_0x8e4.RspBody> parambhtl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("WerewolvesHandler", 2, "kickInviteUser");
+    }
+    oidb_0x8e4.ReqBody localReqBody = new oidb_0x8e4.ReqBody();
+    localReqBody.string_invite_id.set(ByteStringMicro.copyFromUtf8(paramString), true);
+    localReqBody.uint64_kick_uin.set(paramLong, true);
+    nir.a(this.app, a(parambhtl), localReqBody.toByteArray(), "OidbSvc.0x8e4_5", 2276, 5, new Bundle(), 5000L);
+  }
+  
+  public void a(String paramString, bhtl<oidb_0x8e4.RspBody> parambhtl)
+  {
+    oidb_0x8e4.ReqBody localReqBody = new oidb_0x8e4.ReqBody();
+    localReqBody.string_invite_id.set(ByteStringMicro.copyFromUtf8(paramString), true);
+    nir.a(this.app, a(parambhtl), localReqBody.toByteArray(), "OidbSvc.0x8e4_3", 2276, 3, new Bundle(), 5000L);
+  }
+  
+  public void a(String paramString, boolean paramBoolean, bhtl<oidb_0x8e4.RspBody> parambhtl)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("WerewolvesHandler", 2, "acceptInvite failed, invitedId null; isAccept = " + paramBoolean);
+      return;
+    }
+    oidb_0x8e4.ReqBody localReqBody = new oidb_0x8e4.ReqBody();
+    localReqBody.string_invite_id.set(ByteStringMicro.copyFromUtf8(paramString), true);
+    paramString = localReqBody.uint32_accept_invite;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      paramString.set(i, true);
+      localReqBody.uint32_ready_state.set(2);
+      nir.a(this.app, a(parambhtl), localReqBody.toByteArray(), "OidbSvc.0x8e4_2", 2276, 2, new Bundle(), 5000L);
+      return;
+    }
+  }
+  
+  public void a(TroopTips0x857.WereWolfPush paramWereWolfPush, byte[] paramArrayOfByte)
+  {
+    if (paramWereWolfPush == null) {}
+    String str2;
+    long l;
+    String str1;
+    do
+    {
+      do
+      {
+        return;
+        if ((!paramWereWolfPush.uint64_game_room.has()) || (!paramWereWolfPush.bytes_judge_words.has()) || (!paramWereWolfPush.uint64_judge_uin.has())) {
+          break label505;
+        }
+        str2 = paramWereWolfPush.uint64_game_room.get() + "";
+        l = bbyp.a();
+        str1 = paramWereWolfPush.bytes_judge_words.get().toStringUtf8();
+        if (!TextUtils.isEmpty(str1)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.werewolf.WereWolfPush", 2, "uint64_game_room:" + str2 + ", msg is empty");
+      return;
+      localObject = this.app.a(false);
+    } while (localObject == null);
+    Object localObject = ((HotChatManager)localObject).a(str2);
+    if ((localObject == null) || (!((HotChatInfo)localObject).isGameRoom))
+    {
+      ((anno)this.app.a(35)).a(2);
+      return;
+    }
+    localObject = this.app.a().a(str2, 1);
+    MessageRecord localMessageRecord = bbzh.a(-1000);
+    localMessageRecord.init(this.app.getCurrentAccountUin(), str2, this.app.getCurrentAccountUin(), str1, l, -1000, 1, l);
+    if (localObject != null) {
+      localMessageRecord.shmsgseq = ((QQMessageFacade.Message)localObject).shmsgseq;
+    }
+    localMessageRecord.senderuin = (paramWereWolfPush.uint64_judge_uin.get() + "");
+    this.jdField_a_of_type_JavaLangString = localMessageRecord.senderuin;
+    localObject = "";
+    if (paramWereWolfPush.bytes_judge_nickname.has())
+    {
+      localObject = paramWereWolfPush.bytes_judge_nickname.get().toStringUtf8();
+      ((TroopManager)this.app.getManager(52)).a(str2, paramWereWolfPush.uint64_judge_uin.get() + "", (String)localObject, 0, null, null, 0, 0, 0, 0L, (byte)0, 0L, 0.0D);
+    }
+    localMessageRecord.isread = true;
+    localMessageRecord.issend = 0;
+    localMessageRecord.saveExtInfoToExtStr("isJudgeMsg", "true");
+    this.app.a().a(localMessageRecord, this.app.getCurrentAccountUin());
+    paramWereWolfPush = this.app.a().a();
+    paramWereWolfPush.delRecentUser((RecentUser)paramWereWolfPush.findRecentUserByUin(str2, 1));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("uint64_game_room:").append(str2).append("|judge_nickname:").append((String)localObject).append("|msg:");
+      if (!TextUtils.isEmpty(str1)) {
+        break label524;
+      }
+    }
+    label524:
+    for (paramWereWolfPush = "";; paramWereWolfPush = str1.substring(0, 1) + "***" + str1.substring(str1.length() - 1) + "|msg len:" + str1.length())
+    {
+      QLog.d("Q.werewolf.WereWolfPush", 2, paramWereWolfPush);
+      label505:
+      if (this.jdField_a_of_type_Bhtu == null) {
+        break;
+      }
+      this.jdField_a_of_type_Bhtu.a("WereWolfPush", paramArrayOfByte);
+      return;
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    submsgtype0xdd.MsgBody localMsgBody = new submsgtype0xdd.MsgBody();
+    try
+    {
+      localMsgBody.mergeFrom(paramArrayOfByte);
+      notifyUI(1, true, localMsgBody);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WerewolvesHandler", 2, QLog.getStackTraceString(paramArrayOfByte));
+    }
+  }
+  
+  protected niv b(bhtl<oidb_0x8ed.RspBody> parambhtl)
+  {
+    return new bhtj(this, parambhtl);
+  }
+  
+  public void b(int paramInt1, int paramInt2, bhtl<oidb_0x8e4.RspBody> parambhtl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("WerewolvesHandler", 2, "quickStartGame");
+    }
+    oidb_0x8e4.ReqBody localReqBody = new oidb_0x8e4.ReqBody();
+    localReqBody.uint32_play_way.set(1, true);
+    localReqBody.uint32_max_member_num.set(paramInt1);
+    localReqBody.uint32_zone_id.set(paramInt2);
+    nir.a(this.app, a(parambhtl), localReqBody.toByteArray(), "OidbSvc.0x8e4_4", 2276, 4, new Bundle(), 5000L);
+  }
+  
+  public void b(String paramString, bhtl<oidb_0x8e4.RspBody> parambhtl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("WerewolvesHandler", 2, "startGame");
+    }
+    oidb_0x8e4.ReqBody localReqBody = new oidb_0x8e4.ReqBody();
+    localReqBody.string_invite_id.set(ByteStringMicro.copyFromUtf8(paramString), true);
+    localReqBody.uint32_play_way.set(2, true);
+    nir.a(this.app, a(parambhtl), localReqBody.toByteArray(), "OidbSvc.0x8e4_4", 2276, 4, new Bundle(), 5000L);
+  }
+  
+  public void b(String paramString, boolean paramBoolean, bhtl<oidb_0x8e4.RspBody> parambhtl)
+  {
+    oidb_0x8e4.ReqBody localReqBody = new oidb_0x8e4.ReqBody();
+    localReqBody.string_invite_id.set(ByteStringMicro.copyFromUtf8(paramString));
+    paramString = localReqBody.uint32_ready_state;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      paramString.set(i);
+      nir.a(this.app, a(parambhtl), localReqBody.toByteArray(), "OidbSvc.0x8e4_7", 2276, 7, new Bundle(), 5000L);
+      return;
+    }
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return bhts.class;
+  }
+  
+  public void onDestroy()
+  {
+    axey localaxey = axey.a();
+    this.app.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    localaxey.d();
+    localaxey.a();
+    if (this.jdField_a_of_type_Bhtu != null) {
+      this.jdField_a_of_type_Bhtu.b();
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.app.getApp().getSharedPreferences("werewolves_sp", 0).edit().putString("judgeUin", this.jdField_a_of_type_JavaLangString).commit();
+    }
+    this.jdField_a_of_type_Bhtm.removeCallbacksAndMessages(null);
+    super.onDestroy();
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    Object localObject = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.protocol", 2, "WereWolevsHandler onReceive. cmd=" + (String)localObject);
+    }
+    if ("ProfileService.GetSimpleInfo".equals(localObject))
+    {
+      paramToServiceMsg = paramToServiceMsg.extraData.getStringArrayList("uinList");
+      if (paramFromServiceMsg.isSuccess())
+      {
+        localObject = (ArrayList)paramObject;
+        if ((localObject != null) && (paramToServiceMsg != null) && (((ArrayList)localObject).size() > 0) && (paramToServiceMsg.size() > 0))
+        {
+          paramObject = (String)paramToServiceMsg.get(0);
+          paramFromServiceMsg = ((ProfSmpInfoRes)((ArrayList)localObject).get(0)).sDateNick;
+          paramToServiceMsg = paramFromServiceMsg;
+          if (TextUtils.isEmpty(paramFromServiceMsg)) {
+            paramToServiceMsg = ((ProfSmpInfoRes)((ArrayList)localObject).get(0)).strNick;
+          }
+          paramFromServiceMsg = new Message();
+          paramFromServiceMsg.obj = new String[] { paramObject, paramToServiceMsg };
+          this.jdField_a_of_type_Bhtm.sendMessage(paramFromServiceMsg);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhte
  * JD-Core Version:    0.7.0.1
  */

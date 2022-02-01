@@ -1,14 +1,27 @@
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.QQBroadcastReceiver;
 
 public class aylx
+  extends QQBroadcastReceiver
 {
-  public List<Long> a;
+  public aylx(ScanTorchActivity paramScanTorchActivity) {}
   
-  public aylx() {}
-  
-  public aylx(List<Long> paramList)
+  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
   {
-    this.a = paramList;
+    if (paramIntent == null) {}
+    do
+    {
+      return;
+      paramAppRuntime = paramIntent.getAction();
+      if (QLog.isColorLevel()) {
+        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
+      }
+    } while (!"com.tencent.mobileqq__alive".equals(paramAppRuntime));
+    ScanTorchActivity.a(this.a);
   }
 }
 

@@ -1,16 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bbjg
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public bbjg(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public bbjg(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QQToast.a(this.a.a, alud.a(2131715618), 0).a();
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

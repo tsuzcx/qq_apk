@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
 import android.view.View;
-import bbng;
+import benu;
 
 public class ContactListAdapter$2$1
   implements Runnable
 {
-  public ContactListAdapter$2$1(bbng parambbng, View paramView) {}
+  public ContactListAdapter$2$1(benu parambenu, View paramView) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ContactListAdapter$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.2.1
  * JD-Core Version:    0.7.0.1
  */

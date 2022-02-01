@@ -1,44 +1,14 @@
-import android.support.annotation.NonNull;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahod
+  implements ahor
 {
-  public int a;
-  public boolean a;
-  public int b = 0;
-  
-  public ahod()
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    this.jdField_a_of_type_Int = 23;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 23;
-    this.b = 0;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = 23;
-    this.b = 0;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "TabLayoutStatus{tabId=" + this.jdField_a_of_type_Int + ", tabPosition=" + this.b + ", display='" + this.jdField_a_of_type_Boolean + '\'' + '}';
+    paramagup.a((MessageForGrayTips)paramMessageRecord, paramagwc);
   }
 }
 

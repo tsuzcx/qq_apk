@@ -1,13 +1,10 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.os.Bundle;
+import android.os.IInterface;
 
-public final class blkq
-  implements FileFilter
+public abstract interface blkq
+  extends IInterface
 {
-  public boolean accept(File paramFile)
-  {
-    return paramFile.getName().endsWith(".json");
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
 }
 
 

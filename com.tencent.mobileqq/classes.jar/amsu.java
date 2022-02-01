@@ -1,231 +1,70 @@
-import android.media.MediaPlayer;
-import android.media.SoundPool;
+import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class amsu
+  extends MSFServlet
 {
-  private int jdField_a_of_type_Int;
-  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-  private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private HashSet<Integer> jdField_b_of_type_JavaUtilHashSet;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
-  private boolean e;
-  
-  public amsu(int paramInt, String... paramVarArgs)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    try
-    {
-      this.e = true;
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(paramInt, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new amsy(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new amsz(this));
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-      {
-        int j = paramVarArgs.length;
-        paramInt = i;
-        while (paramInt < j)
-        {
-          String str = paramVarArgs[paramInt];
-          if (!TextUtils.isEmpty(str))
-          {
-            i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 1);
-            this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(i));
-            if (QLog.isColorLevel()) {
-              QLog.d("ARMusicController", 2, "load file:" + str + ", id=" + i);
-            }
-          }
-          paramInt += 1;
-        }
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameServlet", 2, "[onReceive]");
     }
-    catch (Exception paramVarArgs)
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
     {
-      paramVarArgs.printStackTrace();
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bgva.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-  }
-  
-  public amsu(String paramString1, String paramString2)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.jdField_b_of_type_JavaLangString = paramString2;
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new amsv(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new amsw(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new amsx(this));
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString2, 1);
-      try
-      {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString1);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-        return;
-      }
-      catch (IOException paramString1)
-      {
-        paramString1.printStackTrace();
-        return;
-      }
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-  }
-  
-  public void a()
-  {
-    a(false);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    int i;
     for (;;)
     {
-      try
-      {
-        if (!this.e) {
-          return;
-        }
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-        {
-          i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-          if (QLog.isColorLevel()) {
-            QLog.d("ARMusicController", 2, "playSound path=" + paramString + ", id=" + i);
-          }
-          if (i == -1) {
-            return;
-          }
-          if (!this.jdField_b_of_type_JavaUtilHashSet.contains(Integer.valueOf(i))) {
-            break;
-          }
-          this.jdField_a_of_type_AndroidMediaSoundPool.play(i, 1.0F, 1.0F, 1, 0, 1.0F);
-          return;
-        }
+      Object localObject = ampj.a();
+      if (localObject == null) {
+        QLog.e("cmgame_process.CmGameServlet", 1, "app is null.");
       }
-      catch (Exception paramString)
+      do
       {
-        QLog.e("ARMusicController", 2, paramString, new Object[0]);
         return;
-      }
-      i = -1;
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(i));
+        localObject = (amst)((AppInterface)localObject).getBusinessHandler(0);
+      } while (localObject == null);
+      ((amst)localObject).a(paramIntent, paramFromServiceMsg, arrayOfByte);
       return;
-    }
-    this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        if (!new File(paramString).exists())
-        {
-          QLog.d("ARMusicController", 2, "playBgMusic file not exist" + paramString);
-          return;
-        }
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-        }
-        this.jdField_a_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean1);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-        this.d = paramBoolean2;
-        return;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.e("ARMusicController", 2, "playBgMusic exception", paramString);
-        return;
-      }
-      QLog.d("ARMusicController", 1, "playBgMusic exception" + paramString.getMessage());
+      arrayOfByte = null;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameServlet", 2, "[onSend]");
+    }
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
     {
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      }
-      while (QLog.isColorLevel())
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte != null)
       {
-        QLog.d("ARMusicController", 2, "playBgMusic : " + this.jdField_a_of_type_JavaLangString);
-        return;
-        this.d = true;
+        paramIntent = new byte[arrayOfByte.length + 4];
+        bgva.a(paramIntent, 0, arrayOfByte.length + 4);
+        bgva.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+        paramPacket.putSendData(paramIntent);
       }
+    }
+    else
+    {
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "stopAllMusic");
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void c()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
-      this.jdField_a_of_type_JavaUtilHashSet = null;
-      this.jdField_b_of_type_JavaUtilHashSet = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    paramIntent = new byte[4];
+    bgva.a(paramIntent, 0, 4L);
+    paramPacket.putSendData(paramIntent);
   }
 }
 

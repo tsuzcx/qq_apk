@@ -1,57 +1,47 @@
 package com.tencent.mobileqq.activity;
 
-import afzu;
-import android.os.Message;
-import aybx;
+import adrm;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForRichState;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.util.LRULinkedHashMap;
+import java.util.Iterator;
+import java.util.List;
 import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 class BaseChatPie$75
   implements Runnable
 {
-  BaseChatPie$75(BaseChatPie paramBaseChatPie, aybx paramaybx) {}
+  BaseChatPie$75(BaseChatPie paramBaseChatPie, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, afzu.a);
-    Object localObject;
-    Message localMessage;
-    if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForRichState)))
+    adrm.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a, false);
+    Object localObject = EmojiStickerManager.a(this.a);
+    if (localObject != null)
     {
-      localObject = new HashMap();
-      ((Map)localObject).put("chatMessage", localMessageRecord);
-      ((Map)localObject).put("sigZanInfo", this.a);
-      this.this$0.jdField_a_of_type_MqqOsMqqHandler.removeMessages(267387138);
-      localMessage = this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(267387138);
-      localMessage.obj = localObject;
+      EmojiStickerManager.a().jdField_b_of_type_Int = 0;
+      EmojiStickerManager.a().jdField_b_of_type_ComTencentUtilLRULinkedHashMap.put(localObject, Boolean.valueOf(true));
+      localObject = EmojiStickerManager.a().a(this.a);
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          Long localLong = (Long)((Iterator)localObject).next();
+          this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localLong.longValue());
+        }
+      }
     }
-    try
-    {
-      localObject = new JSONObject(localMessageRecord.msg);
-      ((JSONObject)localObject).put("count", this.a.b);
-      ((JSONObject)localObject).put("zanfalg", this.a.c);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localMessageRecord.uniseq, ((JSONObject)localObject).toString());
-      label190:
-      this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, 1000L);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      break label190;
-    }
+    this.this$0.jdField_a_of_type_MqqOsMqqHandler.post(new BaseChatPie.75.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.75
  * JD-Core Version:    0.7.0.1
  */

@@ -1,137 +1,112 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajmq;
 import android.content.Context;
-import auud;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.activity.recent.config.RecentConfig;
+import com.tencent.mobileqq.activity.recent.config.menu.RecentMenuFlagDispatch;
+import com.tencent.mobileqq.activity.recent.parcelUtils.annotation.ParcelAnnotation.NotParcel;
+import com.tencent.mobileqq.data.BaseRecentUser;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
 public abstract class RecentUserBaseData
   extends RecentBaseData
 {
   protected static final String DES_DEFAULT_HAVE_MSG = "%s,%s,%d条未读,%s";
   protected static final String DES_DEFAULT_NO_MSG = "%s,%s,%s";
-  @ajmq
-  public RecentUser mUser;
+  @ParcelAnnotation.NotParcel
+  protected Bundle mArgsBundle;
+  @ParcelAnnotation.NotParcel
+  public BaseRecentUser mUser;
   
-  public RecentUserBaseData(RecentUser paramRecentUser)
+  public RecentUserBaseData(BaseRecentUser paramBaseRecentUser)
   {
-    if (paramRecentUser == null) {
+    if (paramBaseRecentUser == null) {
       throw new NullPointerException("RecentUser is null");
     }
-    this.mUser = paramRecentUser;
-    switch (this.mUser.getType())
-    {
-    default: 
-      e();
-      this.mMenuFlag &= 0xFFFFFF0F;
-      if (this.mUser.showUpTime != 0L) {
-        break;
-      }
-    }
-    for (this.mMenuFlag |= 0x10;; this.mMenuFlag |= 0x20)
-    {
-      this.mMenuFlag &= 0xF0FFFFFF;
-      if (this.mUser.isHiddenChat == 1) {
-        this.mMenuFlag |= 0x1000000;
-      }
-      return;
-      this.mMenuFlag |= 0x1000;
-      break;
-      this.mMenuFlag |= 0x2000;
-      break;
-    }
+    this.mUser = paramBaseRecentUser;
   }
   
-  public int a()
-  {
-    return this.mUser.getType();
-  }
-  
-  public long a()
-  {
-    return this.mUser.lastmsgtime;
-  }
-  
-  public RecentUser a()
-  {
-    return this.mUser;
-  }
-  
-  public String a()
-  {
-    return this.mUser.uin;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    this.mMsgExtroInfo = "";
-    this.mMenuFlag &= 0xFFFFFF0F;
-    int i;
-    if ((this.mUser.getType() == 1) && (!auud.a(paramQQAppInterface, this.mUser)))
-    {
-      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
-      int j = this.mMenuFlag;
-      if (paramQQAppInterface.b(this.mUser.uin))
-      {
-        i = 32;
-        this.mMenuFlag = (i | j);
-      }
-    }
-    for (;;)
-    {
-      this.mMenuFlag &= 0xF0FFFFFF;
-      if (this.mUser.isHiddenChat == 1) {
-        this.mMenuFlag |= 0x1000000;
-      }
-      return;
-      i = 16;
-      break;
-      FriendsStatusUtil.a(paramQQAppInterface, this.mUser);
-      if ((this.mUser.showUpTime == 0L) && (9223372036854775807L - this.mUser.lastmsgtime > 4L)) {
-        this.mMenuFlag |= 0x10;
-      } else {
-        this.mMenuFlag |= 0x20;
-      }
-    }
-  }
-  
-  public void a(RecentUser paramRecentUser)
-  {
-    this.mUser = paramRecentUser;
-  }
-  
-  public final boolean a()
-  {
-    return (this.mUnreadFlag == 1) || (this.mUnreadFlag == 4);
-  }
-  
-  public long b()
+  public long getLastDraftTime()
   {
     return this.mUser.lastmsgdrafttime;
   }
   
-  public String c()
+  public long getLastMsgTime()
+  {
+    return this.mUser.lastmsgtime;
+  }
+  
+  public int getMenuFlag()
+  {
+    return this.mMenuFlag;
+  }
+  
+  public BaseRecentUser getRecentUser()
+  {
+    return this.mUser;
+  }
+  
+  public int getRecentUserMsgType()
+  {
+    return this.mUser.msgType;
+  }
+  
+  public String getRecentUserTroopUin()
   {
     return this.mUser.troopUin;
   }
   
-  public void e()
+  public int getRecentUserType()
   {
-    switch (this.mUser.getType())
-    {
+    return this.mUser.getType();
+  }
+  
+  public String getRecentUserUin()
+  {
+    return this.mUser.uin;
+  }
+  
+  protected boolean isEnableUnreadState()
+  {
+    return false;
+  }
+  
+  public final boolean isUnreadMsgNumInTabNum()
+  {
+    return (this.mUnreadFlag == 1) || (this.mUnreadFlag == 4);
+  }
+  
+  public void setRecentUser(BaseRecentUser paramBaseRecentUser)
+  {
+    this.mUser = paramBaseRecentUser;
+  }
+  
+  public void update(IMCoreAppRuntime paramIMCoreAppRuntime, Context paramContext)
+  {
+    if (this.mArgsBundle == null) {
+      this.mArgsBundle = new Bundle();
     }
-    do
+    for (;;)
     {
+      this.mMsgExtroInfo = "";
+      paramIMCoreAppRuntime.getRecentConfig().getRecentMenuFlagDispatch().processor(paramIMCoreAppRuntime, this);
       return;
-    } while (!a());
-    this.mMenuFlag &= 0xFFF0FFFF;
-    if (this.mUnreadNum != 0)
+      this.mArgsBundle.clear();
+    }
+  }
+  
+  public final void updateMsgUnreadStateMenu()
+  {
+    if ((isUnreadMsgNumInTabNum()) && (isEnableUnreadState()))
     {
-      this.mMenuFlag |= 0x10000;
+      this.mMenuFlag &= 0xFFF0FFFF;
+      if (this.mUnreadNum != 0) {
+        this.mMenuFlag |= 0x10000;
+      }
+    }
+    else
+    {
       return;
     }
     this.mMenuFlag |= 0x20000;
@@ -139,7 +114,7 @@ public abstract class RecentUserBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentUserBaseData
  * JD-Core Version:    0.7.0.1
  */

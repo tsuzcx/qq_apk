@@ -1,14 +1,11 @@
 package com.tencent.mfsdk.reporter;
 
-import abuz;
-import abvg;
-import abvj;
-import abvv;
-import abvx;
-import abvy;
-import abvz;
-import abwc;
-import abwn;
+import adbp;
+import adbs;
+import addn;
+import addp;
+import addq;
+import addt;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -17,16 +14,15 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.text.TextUtils;
-import azri;
-import bavg;
+import bdwu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
+import com.tencent.mfsdk.config.Config;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -35,21 +31,13 @@ import org.json.JSONObject;
 
 public class ReporterMachine
 {
-  public static int a;
-  private static abvv jdField_a_of_type_Abvv;
+  private static addn jdField_a_of_type_Addn;
   private static ReporterMachine jdField_a_of_type_ComTencentMfsdkReporterReporterMachine;
   private static String jdField_a_of_type_JavaLangString = "";
   private static List<ResultObject> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private static Queue<String> jdField_a_of_type_JavaUtilQueue;
+  private static Queue<String> jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
   private static MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private static boolean jdField_a_of_type_Boolean;
-  private static abvv b;
-  
-  static
-  {
-    jdField_a_of_type_Int = 2;
-    jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
-  }
   
   private ReporterMachine()
   {
@@ -58,8 +46,7 @@ public class ReporterMachine
       HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("ReporterMachine", 0);
       localHandlerThread.start();
       jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(localHandlerThread.getLooper());
-      jdField_a_of_type_Abvv = new abwc(localHandlerThread);
-      b = new abvx(localHandlerThread);
+      jdField_a_of_type_Addn = new addp(localHandlerThread);
     }
     jdField_a_of_type_JavaLangString = a();
   }
@@ -75,16 +62,10 @@ public class ReporterMachine
     finally {}
   }
   
-  public static void a(int paramInt)
-  {
-    QLog.i("Magnifier_ReporterMachine", 1, "setReportType t=" + paramInt + "");
-    jdField_a_of_type_Int = paramInt;
-  }
-  
   public static void a(ResultObject paramResultObject)
   {
-    abvj.a(paramResultObject.params);
-    if ((true == paramResultObject.isRealTime) && (1 == bavg.a().a())) {
+    adbs.a(paramResultObject.params);
+    if ((true == paramResultObject.isRealTime) && (1 == bdwu.a().a())) {
       try
       {
         c(paramResultObject);
@@ -107,41 +88,29 @@ public class ReporterMachine
   
   private static void c(ResultObject paramResultObject)
   {
-    if (abvg.jdField_a_of_type_Int > abuz.jdField_a_of_type_Int) {}
-    for (;;)
-    {
+    if (adbp.a > Config.MAX_REPORT_NUM) {
       return;
-      Object localObject = paramResultObject.params.getJSONObject("clientinfo");
-      ((JSONObject)localObject).put("versionname", MagnifierSDK.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("uin", String.valueOf(paramResultObject.uin));
-      ((JSONObject)localObject).put("manu", Build.MANUFACTURER);
-      ((JSONObject)localObject).put("model", Build.MODEL);
-      ((JSONObject)localObject).put("os", Build.VERSION.RELEASE);
-      ((JSONObject)localObject).put("rdmuuid", jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("deviceid", abwn.a(BaseApplicationImpl.sApplication));
-      if (BaseApplicationImpl.sProcessId == 1) {}
-      try
+    }
+    JSONObject localJSONObject = paramResultObject.params.getJSONObject("clientinfo");
+    localJSONObject.put("versionname", MagnifierSDK.jdField_a_of_type_JavaLangString);
+    localJSONObject.put("uin", String.valueOf(paramResultObject.uin));
+    localJSONObject.put("manu", Build.MANUFACTURER);
+    localJSONObject.put("model", Build.MODEL);
+    localJSONObject.put("os", Build.VERSION.RELEASE);
+    localJSONObject.put("rdmuuid", jdField_a_of_type_JavaLangString);
+    localJSONObject.put("deviceid", addt.a(BaseApplicationImpl.sApplication));
+    if (BaseApplicationImpl.sProcessId == 1) {}
+    try
+    {
+      String.valueOf(paramResultObject.params.get("newplugin"));
+      jdField_a_of_type_Addn.a(paramResultObject, new addq());
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        if (TextUtils.equals(String.valueOf(paramResultObject.params.get("newplugin")), String.valueOf(102)))
-        {
-          localObject = new HashMap();
-          azri.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actAPMReportMainLooper", true, 0L, 0L, (HashMap)localObject, null);
-        }
-        if ((jdField_a_of_type_Int & 0x1) > 0) {
-          jdField_a_of_type_Abvv.a(paramResultObject, new abvy());
-        }
-        if ((jdField_a_of_type_Int & 0x2) <= 0) {
-          continue;
-        }
-        b.a(paramResultObject, new abvz());
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.d("Magnifier_ReporterMachine", 1, "reportAtOnce", localException);
-        }
+        QLog.d("Magnifier_ReporterMachine", 1, "reportAtOnce", localException);
       }
     }
   }
@@ -153,7 +122,7 @@ public class ReporterMachine
     }
     try
     {
-      jdField_a_of_type_JavaLangString = BaseApplicationImpl.sApplication.getPackageManager().getApplicationInfo(BaseApplicationImpl.sApplication.getPackageName(), 128).metaData.get("com.tencent.rdm.uuid").toString();
+      jdField_a_of_type_JavaLangString = BaseApplicationImpl.sApplication.getPackageManager().getApplicationInfo(BaseApplicationImpl.sApplication.getPackageName(), 128).metaData.get("com.tencent.qapm.uuid").toString();
       if ("1234567890".equals(jdField_a_of_type_JavaLangString)) {
         jdField_a_of_type_JavaLangString = "0";
       }

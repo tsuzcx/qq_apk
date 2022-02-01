@@ -1,64 +1,36 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import java.lang.reflect.Field;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.teamworkforgroup.TeamWorkTransparentShareActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class bdmm
+  implements bihh
 {
-  public static SharedPreferences a(Context paramContext, String paramString)
+  public bdmm(TeamWorkTransparentShareActivity paramTeamWorkTransparentShareActivity, String paramString) {}
+  
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if ((paramContext == null) || (paramString == null) || (paramString.length() <= 0)) {
-      return null;
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
+      return;
     }
-    try
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
-      Class localClass = Class.forName("android.content.Context");
-      i = ((Integer)localClass.getField("MODE_MULTI_PROCESS").get(localClass)).intValue();
-      int j = i;
-      if (i == -1) {
-        j = 0;
-      }
-      return paramContext.getSharedPreferences(paramString, j);
+    case -1: 
+    default: 
+      zvc.a(1, 2131718007);
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    for (;;)
     {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i = -1;
-      }
+      WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkTransparentShareActivity.a);
+      return;
+      zvc.a(2, 2131718025);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmm
  * JD-Core Version:    0.7.0.1
  */

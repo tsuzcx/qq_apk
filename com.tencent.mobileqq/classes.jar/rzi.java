@@ -1,18 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class rzi
-  implements rzt
+final class rzi
+  extends AnimatorListenerAdapter
 {
-  public rzi(FastWebActivity paramFastWebActivity) {}
+  rzi(View paramView) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    FastWebActivity.r(this.a);
+    this.a.setAlpha(1.0F);
+    this.a.setLayerType(0, null);
+    this.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rzi
  * JD-Core Version:    0.7.0.1
  */

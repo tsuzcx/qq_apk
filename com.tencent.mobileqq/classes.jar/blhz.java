@@ -1,8 +1,23 @@
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public abstract interface blhz
+public class blhz
+  extends aomz
 {
-  public abstract void a(List<blia> paramList);
+  public blhz(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  {
+    super(paramQQAppInterface, paramProxyManager);
+  }
+  
+  protected void a()
+  {
+    blhx.a().c();
+  }
+  
+  protected void b()
+  {
+    blhx.a().d();
+  }
 }
 
 

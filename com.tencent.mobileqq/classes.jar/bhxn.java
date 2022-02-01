@@ -1,75 +1,71 @@
+import android.content.Context;
 import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.widget.HongBaoListView;
+import android.graphics.drawable.ColorDrawable;
+import android.util.Pair;
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
+import java.util.ArrayList;
 
 public class bhxn
-  implements Handler.Callback
 {
-  public bhxn(HongBaoListView paramHongBaoListView) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  private SparseArray<bhxq> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  public PopupWindow a;
+  bhxr jdField_a_of_type_Bhxr;
   
-  public boolean handleMessage(Message paramMessage)
+  public bhxn(Context paramContext)
   {
-    switch (paramMessage.what)
-    {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bhxr = new bhxr(this, paramContext);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setWindowLayoutMode(-1, -1);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(true);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new ColorDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165500)));
+  }
+  
+  public bhxn a(int paramInt, View paramView, bhxp parambhxp)
+  {
+    bhxq localbhxq = (bhxq)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localbhxq != null) {
+      localbhxq.jdField_a_of_type_JavaUtilArrayList.add(new Pair(paramView, parambhxp));
     }
-    do
+    return this;
+  }
+  
+  public bhxn a(View paramView, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
     {
-      do
+      bhxq localbhxq = new bhxq(this, null);
+      localbhxq.jdField_a_of_type_AndroidViewView = paramView;
+      if (paramView.isShown())
       {
-        do
-        {
-          do
-          {
-            return false;
-            this.a.setIsShowingPreguide(true);
-            this.a.jdField_a_of_type_Awmt.a(this.a.d / 5, 300L);
-            this.a.springBackTo(-this.a.d);
-            if (this.a.jdField_a_of_type_Bhxo != null) {
-              this.a.jdField_a_of_type_Bhxo.b(false);
-            }
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 2000L);
-            this.a.invalidate();
-            return false;
-            this.a.a(300L);
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
-          } while (this.a.jdField_a_of_type_Bhxo == null);
-          this.a.jdField_a_of_type_Bhxo.a(false);
-          return false;
-          this.a.setIsShowingPreguide(true);
-          i = this.a.d / 2;
-          this.a.setSpringbackOffset(-this.a.d);
-          if (paramMessage.arg1 != 0) {
-            i = paramMessage.arg1;
-          }
-          this.a.springBackTo(-i);
-          this.a.jdField_a_of_type_Awmt.a(this.a.d / 5, 300L);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 2000L);
-        } while (this.a.jdField_a_of_type_Bhxo == null);
-        this.a.jdField_a_of_type_Bhxo.b(false);
-        return false;
-        this.a.a(300L);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
-      } while (this.a.jdField_a_of_type_Bhxo == null);
-      this.a.jdField_a_of_type_Bhxo.a(false);
-      return false;
-      this.a.setIsShowingPreguide(false);
-      this.a.setSpringbackOffset(0);
-      return false;
-      if (!this.a.isStackFromBottom()) {
-        this.a.setStackFromBottom(true);
+        localbhxq.jdField_a_of_type_ArrayOfInt = new int[2];
+        paramView.getLocationOnScreen(localbhxq.jdField_a_of_type_ArrayOfInt);
       }
-      this.a.setStackFromBottom(false);
-    } while (this.a.k);
-    int i = (int)this.a.getResources().getDimension(2131298044);
-    this.a.springBackTo(-i);
-    return false;
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localbhxq);
+    }
+    return this;
+  }
+  
+  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  {
+    a(paramOnDismissListener, true);
+  }
+  
+  public void a(PopupWindow.OnDismissListener paramOnDismissListener, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_Bhxr);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(new View(this.jdField_a_of_type_AndroidContentContext), 0, 0, 0);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(paramOnDismissListener);
+    this.jdField_a_of_type_Bhxr.setOnClickListener(new bhxo(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhxn
  * JD-Core Version:    0.7.0.1
  */

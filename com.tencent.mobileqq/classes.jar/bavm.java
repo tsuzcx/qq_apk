@@ -1,77 +1,48 @@
-public class bavm
+public abstract class bavm
 {
-  public int a;
+  public static final String a;
   public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  private String b;
   
-  public void a(String paramString)
+  static
   {
-    if ((paramString != null) && (paramString.length() > 12))
-    {
-      paramString = paramString.split("\\|");
-      if ((paramString != null) && (paramString.length < 13)) {}
+    jdField_a_of_type_JavaLangString = baou.jdField_a_of_type_JavaLangString;
+  }
+  
+  public bavm(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  private void a()
+  {
+    if (this.b == null) {
+      this.b = (jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long + "/");
     }
-    try
-    {
-      this.jdField_a_of_type_Long = Long.parseLong(paramString[12]);
-      if (paramString.length >= 14) {
-        this.jdField_a_of_type_JavaLangString = paramString[13];
-      }
-      if (paramString.length < 15) {}
-    }
-    catch (Exception localException3)
-    {
-      try
-      {
-        this.jdField_a_of_type_Int = Integer.parseInt(paramString[14]);
-        if (paramString.length < 16) {}
-      }
-      catch (Exception localException3)
-      {
-        try
-        {
-          this.jdField_b_of_type_JavaLangString = paramString[15];
-          if (paramString.length < 17) {}
-        }
-        catch (Exception localException3)
-        {
-          try
-          {
-            for (;;)
-            {
-              this.c = paramString[16];
-              if (paramString.length >= 18) {}
-              try
-              {
-                this.jdField_b_of_type_Int = Integer.parseInt(paramString[17]);
-                return;
-              }
-              catch (Exception paramString)
-              {
-                this.jdField_b_of_type_Int = -1;
-              }
-              localException1 = localException1;
-              this.jdField_a_of_type_Long = -1L;
-              continue;
-              localException2 = localException2;
-              this.jdField_a_of_type_Int = -1;
-            }
-            localException3 = localException3;
-            this.jdField_b_of_type_JavaLangString = null;
-          }
-          catch (Exception localException4)
-          {
-            for (;;)
-            {
-              this.c = null;
-            }
-          }
-        }
-      }
-    }
+  }
+  
+  public final String a()
+  {
+    a();
+    return this.b + "thumb.jpg";
+  }
+  
+  public final String b()
+  {
+    a();
+    return this.b + "combine.mp4";
+  }
+  
+  public final String c()
+  {
+    a();
+    return this.b + "audio.mp4";
+  }
+  
+  public String d()
+  {
+    a();
+    return this.b;
   }
 }
 

@@ -1,27 +1,8 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import cooperation.qqpim.QQPimTipsInfo;
 
-public class blmv
-  implements WtTicketPromise
+public abstract interface blmv
 {
-  public blmv(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
-  
-  public void Done(Ticket paramTicket)
-  {
-    bljn.b(AEEditorImageEditFragment.e(), "psKey success.");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    bljn.d(AEEditorImageEditFragment.e(), paramErrMsg.toString());
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    bljn.d(AEEditorImageEditFragment.e(), paramErrMsg.toString());
-  }
+  public abstract void a(QQPimTipsInfo paramQQPimTipsInfo);
 }
 
 

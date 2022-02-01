@@ -8,7 +8,7 @@
     </item>
     <item android:id="@id/lp7" android:left="-30.0dip" android:top="-30.0dip" android:right="-30.0dip">
         <shape android:dither="true" android:shape="rectangle">
-            <stroke android:width="25.0dip" android:color="@color/skin_aio_at_white" />
+            <stroke android:width="25.0dip" android:color="@color/skin_aio_at_white_for_theme" />
         </shape>
     </item>
 </layer-list>

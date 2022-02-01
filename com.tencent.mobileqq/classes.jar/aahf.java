@@ -1,43 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.gamecenter.appointment.GameCenterCheck;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.SubscribePersonalDetailRequest;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBStringField;
 
-final class aahf
-  extends BroadcastReceiver
+public class aahf
+  implements zxw<aacp>
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aahf(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
+  
+  public void a(zxz paramzxz, aacp paramaacp)
   {
-    boolean bool = false;
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
+    if ((paramzxz.e()) && (this.a.a != null) && (this.a.a.a != null))
     {
-      do
-      {
-        return;
-        if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-        {
-          if (QLog.isColorLevel()) {
-            bfrz.c("GameCenterBroadcastReceiver", "mScreenOff = true");
-          }
-          GameCenterCheck.b();
-          return;
-        }
-        if (!"android.intent.action.BATTERY_CHANGED".equals(paramContext)) {
-          break;
-        }
-        aahe.a = paramIntent.getIntExtra("level", 0) * 100 / paramIntent.getIntExtra("scale", 100);
-      } while (!QLog.isColorLevel());
-      bfrz.c("GameCenterBroadcastReceiver", "battery cap= " + aahe.a);
-      return;
-    } while ((!"android.intent.action.ACTION_POWER_CONNECTED".equals(paramContext)) && (!"android.intent.action.ACTION_POWER_DISCONNECTED".equals(paramContext)));
-    int i = paramIntent.getIntExtra("status", -1);
-    if ((i == 2) || (i == 5)) {
-      bool = true;
+      paramzxz = new SubscribePersonalDetailRequest(this.a.a.a.poster.id.get(), paramzxz.b());
+      VSNetworkHelper.a().a(paramzxz, new aahg(this, paramaacp));
     }
-    aahe.b = bool;
   }
 }
 

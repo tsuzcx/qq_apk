@@ -1,82 +1,47 @@
-import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
-import com.tencent.TMG.channel.KSAppChannel;
-import com.tencent.TMG.sdk.AVContext.StartParam;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class alhg
-  extends KSAppChannel
+  implements MediaPlayer.OnPreparedListener
 {
-  public static String a;
-  public AVContext.StartParam a;
+  public alhg(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  static
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    jdField_a_of_type_JavaLangString = "SSOChannel";
-  }
-  
-  public long getTinyId()
-  {
-    try
-    {
-      long l = Long.valueOf(this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier).longValue();
-      return l;
+    if (QLog.isColorLevel()) {
+      QLog.d("EditLocalVideoActivity", 2, "onPrepared, duration:" + paramMediaPlayer.getDuration());
     }
-    catch (Exception localException)
+    EditLocalVideoActivity.a(this.a).removeMessages(9999);
+    EditLocalVideoActivity.h(this.a);
+    EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.a(this.a), EditLocalVideoActivity.a(this.a));
+    EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.c(this.a), EditLocalVideoActivity.d(this.a));
+    EditLocalVideoActivity.a(this.a).a(paramMediaPlayer.getDuration());
+    int i;
+    int j;
+    if (!EditLocalVideoActivity.a(this.a).a())
     {
-      localException.printStackTrace();
-    }
-    return 0L;
-  }
-  
-  public boolean loginWithParam(AVContext.StartParam paramStartParam)
-  {
-    this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam = paramStartParam;
-    return true;
-  }
-  
-  public boolean requestAppCmd(byte[] paramArrayOfByte, int paramInt, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    try
-    {
-      com.tencent.qphone.base.util.QLog.e(jdField_a_of_type_JavaLangString, 1, "requestAppCmd enter");
-      if ((this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam instanceof algs))
-      {
-        bgkx.a().a(paramArrayOfByte, "", this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, ((algs)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int, ((algs)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long, new alhh(this, paramArrayOfByte, paramCsCmdCallback));
-        return true;
+      EditLocalVideoActivity.d(this.a, paramMediaPlayer.getDuration());
+      if ((bmij.a(EditLocalVideoActivity.b(this.a)) / EditLocalVideoActivity.a(this.a).getDuration() * 15000L > this.a.a(EditLocalVideoActivity.a())) && (QLog.isColorLevel())) {
+        QLog.d("EditLocalVideoActivity", 2, "prepared, there is not enough space on sdcard");
       }
-      return false;
+      i = paramMediaPlayer.getVideoWidth();
+      j = paramMediaPlayer.getVideoHeight();
+      if ((i <= 0) || (j <= 0)) {
+        Toast.makeText(this.a.getApplicationContext(), anni.a(2131702430), 1).show();
+      }
     }
-    catch (NumberFormatException paramArrayOfByte)
+    else
     {
-      paramArrayOfByte.printStackTrace();
+      return;
     }
-    return false;
-  }
-  
-  public boolean requestAppCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    return requestCmd("0", paramArrayOfByte, paramCsCmdCallback);
-  }
-  
-  public boolean requestCmd(String paramString, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    if (paramString.equals("VideoCCSvc.opensdk")) {
-      return super.requestCmd(paramString, paramArrayOfByte, paramCsCmdCallback);
-    }
-    return super.requestCmd(paramString, paramArrayOfByte, paramCsCmdCallback);
-  }
-  
-  public boolean requestInfoCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    return requestCmd("1", paramArrayOfByte, paramCsCmdCallback);
-  }
-  
-  public boolean requestReportCmd(int paramInt, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    if (paramArrayOfByte.length >= 0) {
-      return requestCmd("3", nativeConvertToIMReportData(paramArrayOfByte, paramInt, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, getTinyId(), (int)System.currentTimeMillis() / 1000), paramCsCmdCallback);
-    }
-    com.tencent.TMG.utils.QLog.e(jdField_a_of_type_JavaLangString, 0, "requestReportCmd reportData == NULL");
-    return false;
+    EditLocalVideoActivity.e(this.a, i);
+    EditLocalVideoActivity.f(this.a, j);
+    EditLocalVideoActivity.a(this.a, i, j);
   }
 }
 

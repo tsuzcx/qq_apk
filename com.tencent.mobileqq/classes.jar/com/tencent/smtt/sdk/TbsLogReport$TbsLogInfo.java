@@ -6,23 +6,23 @@ import com.tencent.smtt.utils.TbsLog;
 public class TbsLogReport$TbsLogInfo
   implements Cloneable
 {
-  private String mApn;
-  private String mCheckErrorDetail;
-  private long mDownConsumeTime;
-  private int mDownFinalFlag;
-  private String mDownUrl;
-  private int mDownloadCancel;
-  private long mDownloadSize;
-  int mErrorCode;
-  private long mEventTime;
-  private String mFailDetail;
-  private int mHttpCode;
-  private int mNetworkChange;
-  private int mNetworkType;
-  private int mPatchUpdateFlag;
-  private long mPkgSize;
-  private String mResolveIp;
-  private int mUnpkgFlag;
+  int a;
+  private long b;
+  private String c;
+  private String d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
+  private String i;
+  private int j;
+  private int k;
+  private long l;
+  private long m;
+  private int n;
+  private String o;
+  private String p;
+  private long q;
   
   private TbsLogReport$TbsLogInfo()
   {
@@ -42,69 +42,69 @@ public class TbsLogReport$TbsLogInfo
   
   public int getDownFinalFlag()
   {
-    return this.mDownFinalFlag;
+    return this.k;
   }
   
   public void resetArgs()
   {
-    this.mEventTime = 0L;
-    this.mDownUrl = null;
-    this.mResolveIp = null;
-    this.mHttpCode = 0;
-    this.mPatchUpdateFlag = 0;
-    this.mDownloadCancel = 0;
-    this.mUnpkgFlag = 2;
-    this.mApn = "unknown";
-    this.mNetworkType = 0;
-    this.mDownFinalFlag = 2;
-    this.mPkgSize = 0L;
-    this.mDownConsumeTime = 0L;
-    this.mNetworkChange = 1;
-    this.mErrorCode = 0;
-    this.mCheckErrorDetail = null;
-    this.mFailDetail = null;
-    this.mDownloadSize = 0L;
+    this.b = 0L;
+    this.c = null;
+    this.d = null;
+    this.e = 0;
+    this.f = 0;
+    this.g = 0;
+    this.h = 2;
+    this.i = "unknown";
+    this.j = 0;
+    this.k = 2;
+    this.l = 0L;
+    this.m = 0L;
+    this.n = 1;
+    this.a = 0;
+    this.o = null;
+    this.p = null;
+    this.q = 0L;
   }
   
   public void setApn(String paramString)
   {
-    this.mApn = paramString;
+    this.i = paramString;
   }
   
   public void setCheckErrorDetail(String paramString)
   {
     setErrorCode(108);
-    this.mCheckErrorDetail = paramString;
+    this.o = paramString;
   }
   
   public void setDownConsumeTime(long paramLong)
   {
-    this.mDownConsumeTime += paramLong;
+    this.m += paramLong;
   }
   
   public void setDownFinalFlag(int paramInt)
   {
-    this.mDownFinalFlag = paramInt;
+    this.k = paramInt;
   }
   
   public void setDownloadCancel(int paramInt)
   {
-    this.mDownloadCancel = paramInt;
+    this.g = paramInt;
   }
   
   public void setDownloadSize(long paramLong)
   {
-    this.mDownloadSize += paramLong;
+    this.q += paramLong;
   }
   
   public void setDownloadUrl(String paramString)
   {
-    if (this.mDownUrl == null)
+    if (this.c == null)
     {
-      this.mDownUrl = paramString;
+      this.c = paramString;
       return;
     }
-    this.mDownUrl = (this.mDownUrl + ";" + paramString);
+    this.c = (this.c + ";" + paramString);
   }
   
   public void setErrorCode(int paramInt)
@@ -115,12 +115,12 @@ public class TbsLogReport$TbsLogInfo
     if (paramInt == 111) {
       TbsLog.i("TbsDownload", "you are not in wifi, downloading stoped", true);
     }
-    this.mErrorCode = paramInt;
+    this.a = paramInt;
   }
   
   public void setEventTime(long paramLong)
   {
-    this.mEventTime = paramLong;
+    this.b = paramLong;
   }
   
   public void setFailDetail(String paramString)
@@ -132,14 +132,14 @@ public class TbsLogReport$TbsLogInfo
     if (paramString.length() > 1024) {
       str = paramString.substring(0, 1024);
     }
-    this.mFailDetail = str;
+    this.p = str;
   }
   
   public void setFailDetail(Throwable paramThrowable)
   {
     if (paramThrowable == null)
     {
-      this.mFailDetail = "";
+      this.p = "";
       return;
     }
     String str = Log.getStackTraceString(paramThrowable);
@@ -147,47 +147,47 @@ public class TbsLogReport$TbsLogInfo
     if (str.length() > 1024) {
       paramThrowable = str.substring(0, 1024);
     }
-    this.mFailDetail = paramThrowable;
+    this.p = paramThrowable;
   }
   
   public void setHttpCode(int paramInt)
   {
-    this.mHttpCode = paramInt;
+    this.e = paramInt;
   }
   
   public void setNetworkChange(int paramInt)
   {
-    this.mNetworkChange = paramInt;
+    this.n = paramInt;
   }
   
   public void setNetworkType(int paramInt)
   {
-    this.mNetworkType = paramInt;
+    this.j = paramInt;
   }
   
   public void setPatchUpdateFlag(int paramInt)
   {
-    this.mPatchUpdateFlag = paramInt;
+    this.f = paramInt;
   }
   
   public void setPkgSize(long paramLong)
   {
-    this.mPkgSize = paramLong;
+    this.l = paramLong;
   }
   
   public void setResolveIp(String paramString)
   {
-    this.mResolveIp = paramString;
+    this.d = paramString;
   }
   
   public void setUnpkgFlag(int paramInt)
   {
-    this.mUnpkgFlag = paramInt;
+    this.h = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsLogReport.TbsLogInfo
  * JD-Core Version:    0.7.0.1
  */

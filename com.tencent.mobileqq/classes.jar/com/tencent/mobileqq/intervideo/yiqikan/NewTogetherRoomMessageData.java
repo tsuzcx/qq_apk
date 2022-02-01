@@ -3,12 +3,12 @@ package com.tencent.mobileqq.intervideo.yiqikan;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import atfd;
+import avlt;
 
 public class NewTogetherRoomMessageData
   implements Parcelable
 {
-  public static final Parcelable.Creator<NewTogetherRoomMessageData> CREATOR = new atfd();
+  public static final Parcelable.Creator<NewTogetherRoomMessageData> CREATOR = new avlt();
   public int a;
   public long a;
   public String a;
@@ -79,7 +79,7 @@ public class NewTogetherRoomMessageData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData
  * JD-Core Version:    0.7.0.1
  */

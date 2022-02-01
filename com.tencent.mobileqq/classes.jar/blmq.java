@@ -1,20 +1,37 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8.1.1;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimBridgeActivity;
 
 public class blmq
-  implements bazz
+  implements blmy
 {
-  public blmq(AEEditorCommonEditFragment.8 param8) {}
+  public blmq(QQPimBridgeActivity paramQQPimBridgeActivity) {}
   
-  public void a(bazy parambazy) {}
-  
-  public void onResp(bavf parambavf)
+  public void a()
   {
-    ThreadManager.excute(new AEEditorCommonEditFragment.8.1.1(this, parambavf), 64, null, true);
+    if (QLog.isColorLevel()) {
+      QLog.i(blmr.a, 2, "QQPimBridgeActivity.hasInstalled()");
+    }
+    QQPimBridgeActivity.a(this.a).sendEmptyMessage(1);
   }
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(blmr.a, 2, "QQPimBridgeActivity.downloadError()");
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 2;
+    localMessage.arg1 = paramInt;
+    QQPimBridgeActivity.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void b()
+  {
+    QQPimBridgeActivity.a(this.a).sendEmptyMessage(0);
+  }
 }
 
 

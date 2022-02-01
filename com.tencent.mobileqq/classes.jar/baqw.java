@@ -1,133 +1,89 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.IRequestCallback;
-import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.ImageFilterResponse;
-import com.tencent.mobileqq.highway.segment.HwResponse;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntC2SFailedRsp;
+import com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntHead;
+import com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntRspBody;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-class baqw
-  implements IRequestCallback
+public class baqw
 {
-  baqw(baqu parambaqu) {}
-  
-  public void onFailed(int paramInt)
+  public void a(MsfSocketInputBuffer paramMsfSocketInputBuffer)
   {
-    this.a.f = SystemClock.uptimeMillis();
-    this.a.a(paramInt, "getFilterTimeoutError");
+    byte[] arrayOfByte = new byte[paramMsfSocketInputBuffer.getBufferlen()];
+    System.arraycopy(paramMsfSocketInputBuffer.getBuffer(), 0, arrayOfByte, 0, arrayOfByte.length);
+    a(arrayOfByte);
   }
   
-  public void onResponse(HwResponse paramHwResponse)
+  public boolean a(byte[] paramArrayOfByte)
   {
-    long l1 = 0L;
-    this.a.f = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG>getFilterResponse  retCode : " + paramHwResponse.retCode + " htCost:" + paramHwResponse.htCost + " front:" + paramHwResponse.cacheCost + " onResponse" + paramHwResponse);
-    }
-    Object localObject;
-    if (paramHwResponse.retCode == 0)
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length > 60))
     {
-      if (!this.a.jdField_a_of_type_Xcy.b.equals(this.a.jdField_a_of_type_Xda.jdField_a_of_type_JavaLangString)) {
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.e("PeakAudioTransHandler", 2, "decodeS2CData data error");
       }
-      this.a.jdField_a_of_type_Xcy.jdField_a_of_type_Long = this.a.f;
-      localObject = paramHwResponse.mBuExtendinfo;
-      if ((localObject == null) || (localObject.length <= 0)) {
-        break label493;
-      }
+      return false;
     }
+    Object localObject = null;
     for (;;)
     {
       try
       {
-        localImageFilterResponse = new CSDataHighwayHead.ImageFilterResponse();
-        localImageFilterResponse.mergeFrom((byte[])localObject);
-        localObject = localImageFilterResponse.image_data.get();
-        i = localImageFilterResponse.cost_time.get();
-        l4 = i;
-        l3 = l1;
-        l2 = l3;
-      }
-      catch (InvalidProtocolBufferMicroException paramHwResponse)
-      {
-        try
+        for (;;)
         {
-          l2 = paramHwResponse.cacheCost;
-          l3 = l1;
-          l2 = paramHwResponse.htCost + l2;
-          l3 = l2;
-          this.a.b(((ByteStringMicro)localObject).toStringUtf8());
-          l1 = l4;
-          this.a.jdField_a_of_type_JavaUtilHashMap.put("teg_Costtime", String.valueOf(l1));
-          this.a.jdField_a_of_type_JavaUtilHashMap.put("detailPic_Costtime", String.valueOf(l2));
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramHwResponse)
-        {
-          CSDataHighwayHead.ImageFilterResponse localImageFilterResponse;
-          int i;
-          long l4;
-          long l3;
-          long l2;
-          break label270;
-        }
-        paramHwResponse = paramHwResponse;
-        l4 = 0L;
-        l3 = l1;
-      }
-      label270:
-      l1 = l4;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("ArtFilterUploadProcessor", 2, "sendAckToBDHServer onResponse ", paramHwResponse);
-        l2 = l3;
-        l1 = l4;
-        continue;
-        this.a.a(paramHwResponse.buzRetCode, "getFilterError");
-        if (paramHwResponse.retCode == 222)
-        {
-          if (this.a.jdField_a_of_type_Xcy.b.equals(this.a.jdField_a_of_type_Xda.jdField_a_of_type_JavaLangString))
+          paramArrayOfByte = lfo.a(paramArrayOfByte);
+          localObject = paramArrayOfByte.a;
+          paramArrayOfByte = paramArrayOfByte.b;
+          AudioTransClientTransInfo.IntHead localIntHead = new AudioTransClientTransInfo.IntHead();
+          try
           {
-            this.a.jdField_a_of_type_Xcy.jdField_a_of_type_Long = 0L;
-            this.a.jdField_a_of_type_Xcy.jdField_a_of_type_JavaLangString = null;
-            l3 = 0L;
-            l2 = l1;
-            l1 = l3;
-          }
-        }
-        else if (paramHwResponse.retCode == 221)
-        {
-          paramHwResponse = paramHwResponse.mBuExtendinfo;
-          if ((paramHwResponse != null) && (paramHwResponse.length > 0)) {
-            try
-            {
-              localImageFilterResponse = new CSDataHighwayHead.ImageFilterResponse();
-              localImageFilterResponse.mergeFrom(paramHwResponse);
-              i = localImageFilterResponse.ret_code.get();
-              if (QLog.isColorLevel()) {
-                QLog.e("ArtFilterUploadProcessor", 2, "teg pocess error" + i);
-              }
-              l3 = 0L;
-              l2 = l1;
-              l1 = l3;
+            localObject = (AudioTransClientTransInfo.IntHead)localIntHead.mergeFrom((byte[])localObject);
+            if (!((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.has()) {
+              break label353;
             }
-            catch (InvalidProtocolBufferMicroException paramHwResponse)
+            i = ((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.get();
+            if (((AudioTransClientTransInfo.IntHead)localObject).enum_body_type.has())
             {
-              if (QLog.isColorLevel()) {
-                QLog.e("ArtFilterUploadProcessor", 2, "sendAckToBDHServer onResponse ", paramHwResponse);
+              j = ((AudioTransClientTransInfo.IntHead)localObject).enum_body_type.get();
+              long l = 0L;
+              if (((AudioTransClientTransInfo.IntHead)localObject).str_session_id.has()) {
+                l = Long.valueOf(((AudioTransClientTransInfo.IntHead)localObject).str_session_id.get()).longValue();
+              }
+              QLog.d("SubTitleProtocoDataCodec", 2, "onReceive result:" + i + " sessionid:" + l + " bodyType:" + j);
+              paramArrayOfByte = (AudioTransClientTransInfo.IntRspBody)new AudioTransClientTransInfo.IntRspBody().mergeFrom(paramArrayOfByte);
+              if (i == 0)
+              {
+                if ((j != 10) || (!QLog.isColorLevel())) {
+                  break;
+                }
+                QLog.d("PeakAudioTransHandler", 2, "decodeS2CData INT_C2S_HEART_BEAT_RSP heartbeat !");
+                return false;
               }
             }
           }
+          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+          {
+            paramArrayOfByte.printStackTrace();
+            QLog.e("SubTitleProtocoDataCodec", 2, "decodeS2CData exception = " + paramArrayOfByte.getMessage(), paramArrayOfByte);
+            return false;
+          }
         }
-        label493:
-        l3 = 0L;
-        l2 = l1;
-        l1 = l3;
       }
+      catch (OutOfMemoryError paramArrayOfByte)
+      {
+        QLog.e("SubTitleProtocoDataCodec", 2, "decodeS2CData OOM!!");
+        paramArrayOfByte = (byte[])localObject;
+        continue;
+        paramArrayOfByte = (AudioTransClientTransInfo.IntC2SFailedRsp)paramArrayOfByte.msg_failed_rsp.get();
+        QLog.d("SubTitleProtocoDataCodec", 2, "create session rsp fail msg: " + ((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.get() + " uint32_errcode = " + paramArrayOfByte.uint32_errcode.get() + " str_errmsg = " + paramArrayOfByte.str_errmsg.get());
+        return false;
+      }
+      int j = 0;
+      continue;
+      label353:
+      int i = 0;
     }
   }
 }

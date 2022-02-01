@@ -1,44 +1,95 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
-import NS_QQ_STORY_META.META.StMusic;
-import android.text.TextUtils;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import dov.com.qq.im.aeeditor.module.controlpanel.VideoControlPanel;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
-import dov.com.qq.im.aeeditor.module.music.AEEditorMusicHelper;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.regex.Pattern;
+import mqq.app.ISecurityFileHelper;
 
 public class blnd
-  implements zac<CLIENT.StBatchGetMusicInfoRsp>
+  implements ISecurityFileHelper
 {
-  public blnd(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, VsMusicItemInfo paramVsMusicItemInfo) {}
+  private FilenameFilter jdField_a_of_type_JavaIoFilenameFilter = new blne(this);
+  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\d{5,}");
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StBatchGetMusicInfoRsp paramStBatchGetMusicInfoRsp)
+  public String declareBusinessFileName()
   {
-    if ((!paramBoolean) || (paramStBatchGetMusicInfoRsp.vecMusic.size() == 0)) {
-      bljn.d(AEEditorVideoEditFragment.e(), "[VSDispatchObserver.onVSRspCallBack.onReceive], music - request music detail failed");
+    return "ReaderZone";
+  }
+  
+  public boolean doMigrate(File paramFile)
+  {
+    boolean bool2 = false;
+    File localFile1 = new File(anhk.aZ, "/Tencent/ReaderZone/");
+    String[] arrayOfString = localFile1.list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    boolean bool1;
+    if ((arrayOfString == null) || (arrayOfString.length == 0))
+    {
+      bool1 = true;
+      return bool1;
     }
+    int j = arrayOfString.length;
+    int i = 0;
     for (;;)
     {
-      return;
-      int i = 0;
-      if (i < paramStBatchGetMusicInfoRsp.vecMusic.size())
-      {
-        paramString = (META.StMusic)paramStBatchGetMusicInfoRsp.vecMusic.get(i);
-        if ((paramString == null) || (TextUtils.isEmpty(paramString.strSongMid.get()))) {}
-        while (!this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid.equals(paramString.strSongMid.get()))
-        {
-          i += 1;
-          break;
-        }
-        this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.a(paramString);
+      if (i >= j) {
+        break label220;
       }
-      for (i = 1; (i != 0) && (AEEditorMusicHelper.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo)) && (AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment) != null); i = 0)
-      {
-        AEEditorVideoEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment).a(new bloh(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo, false));
-        return;
+      Object localObject = arrayOfString[i];
+      File localFile2 = new File(localFile1, (String)localObject);
+      localObject = new File(paramFile.getAbsolutePath() + File.separator + (String)localObject + File.separator + declareBusinessFileName());
+      int k = bgmg.a(localFile2.getAbsolutePath(), ((File)localObject).getAbsolutePath());
+      QLog.d("ISecurityFileHelper", 1, "doMigrate：" + declareBusinessFileName() + " result = " + k + " fromFile = " + localFile2.getAbsolutePath() + " targetFile = " + ((File)localObject).getAbsolutePath());
+      bool1 = bool2;
+      if (k != 0) {
+        break;
       }
+      i += 1;
     }
+    label220:
+    return true;
+  }
+  
+  public boolean needMigration()
+  {
+    String[] arrayOfString = new File(anhk.aZ, "/Tencent/ReaderZone/").list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    return (arrayOfString != null) && (arrayOfString.length > 0);
+  }
+  
+  @NonNull
+  public File oldBusinessDir(String paramString)
+  {
+    return new File(new File(anhk.aZ, "/Tencent/ReaderZone/"), paramString);
+  }
+  
+  public boolean oldBusinessDirExist(String paramString)
+  {
+    paramString = oldBusinessDir(paramString);
+    return (paramString.isDirectory()) && (paramString.exists());
+  }
+  
+  public String[] reportHistoryFileInfo()
+  {
+    long l2 = 0L;
+    String[] arrayOfString1 = new String[2];
+    File localFile = new File(anhk.aZ, "/Tencent/ReaderZone/");
+    String[] arrayOfString2 = localFile.list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    if ((arrayOfString2 != null) && (arrayOfString2.length > 0))
+    {
+      int j = arrayOfString2.length;
+      int i = 0;
+      long l1 = 0L;
+      while (i < j)
+      {
+        String str = arrayOfString2[i];
+        l2 += bgmg.b(new File(localFile, str).getAbsolutePath());
+        l1 += bgmg.c(new File(localFile, str).getAbsolutePath());
+        i += 1;
+      }
+      arrayOfString1[0] = Long.toString(l2);
+      arrayOfString1[1] = Long.toString(l1);
+      QLog.d("ISecurityFileHelper", 1, "reportHistoryFileInfo:" + declareBusinessFileName() + " fileAmount = " + l1 + " fileSize = " + l2);
+    }
+    return arrayOfString1;
   }
 }
 

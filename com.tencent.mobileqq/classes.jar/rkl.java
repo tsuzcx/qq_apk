@@ -1,45 +1,24 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class rkl
-  extends pen
+  implements View.OnClickListener
 {
-  rkl(rkd paramrkd) {}
+  rkl(rkk paramrkk) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "handleDoFavoriteResult isSuccess = " + paramBoolean + ", operationType = " + paramInt + ", cid = " + paramString2);
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (rkk.a(this.a) != null) {
+      rkk.a(this.a).a(paramView, i);
     }
-    if (TextUtils.isEmpty(paramString1)) {}
-    while (!rkd.a(this.a).contains(paramString1)) {
-      return;
-    }
-    paramString2 = new QQToast(rkd.a(this.a));
-    paramString2.d(2000);
-    if (paramBoolean)
-    {
-      paramString2.a(QQToast.a(2));
-      paramString2.c(2131692402);
-      paramString2.b(rkd.a(this.a).getResources().getDimensionPixelSize(2131298914) - (int)bdgz.a(rkd.a(this.a), 5.0F));
-    }
-    for (;;)
-    {
-      rkd.a(this.a).remove(paramString1);
-      return;
-      paramString2.a(QQToast.a(1));
-      paramString2.c(2131692403);
-      paramString2.b(rkd.a(this.a).getResources().getDimensionPixelSize(2131298914) - (int)bdgz.a(rkd.a(this.a), 5.0F));
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rkl
  * JD-Core Version:    0.7.0.1
  */

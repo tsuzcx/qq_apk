@@ -1,27 +1,25 @@
-import android.os.Message;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.IPSiteModel.Book;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class arwn
-  implements afjs
+  implements View.OnClickListener
 {
-  arwn(arwl paramarwl, arwo paramarwo, int paramInt) {}
+  arwn(arwh paramarwh, IPSiteModel.Book paramBook, String paramString1, String paramString2) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    FlashChatTextEffectView.a(this.jdField_a_of_type_Arwo);
-    Message localMessage = Message.obtain();
-    localMessage.obj = this.jdField_a_of_type_Arwo;
-    localMessage.what = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Int < FlashChatTextEffectView.a().length)
-    {
-      arwl.a(this.jdField_a_of_type_Arwl).sendMessageDelayed(localMessage, FlashChatTextEffectView.a()[this.jdField_a_of_type_Int]);
-      return;
-    }
-    arwl.a(this.jdField_a_of_type_Arwl).sendMessageDelayed(localMessage, 7000L);
+    Intent localIntent = new Intent(this.jdField_a_of_type_Arwh.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    localIntent.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Arwh.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Book.jumpUrl, -1L, localIntent, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_bookclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void b() {}
 }
 
 

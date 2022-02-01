@@ -1,16 +1,19 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afmv
-  extends aepm
+public class afmv
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  public afmv(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  afmv(afmt paramafmt) {}
+  public void onClick(View paramView)
+  {
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

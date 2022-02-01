@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public final class aurf
-  implements Parcelable.Creator<SongInfo>
+class aurf
+  implements DialogInterface.OnDismissListener
 {
-  public SongInfo a(Parcel paramParcel)
-  {
-    return new SongInfo(paramParcel, null);
-  }
+  aurf(aure paramaure) {}
   
-  public SongInfo[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new SongInfo[paramInt];
+    aurd.a(this.a.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aurf
  * JD-Core Version:    0.7.0.1
  */

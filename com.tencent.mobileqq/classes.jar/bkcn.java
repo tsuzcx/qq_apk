@@ -1,34 +1,10 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-
-class bkcn
-  extends RemoteCommand
+public class bkcn
 {
-  bkcn(bkck parambkck, String paramString)
-  {
-    super(paramString);
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    if (paramBundle == null) {
-      paramBundle = null;
-    }
-    Bundle localBundle;
-    do
-    {
-      return paramBundle;
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      localBundle = this.a.b(paramBundle);
-      if (localBundle != null) {
-        localBundle.setClassLoader(getClass().getClassLoader());
-      }
-      paramBundle = localBundle;
-    } while (paramOnInvokeFinishLinstener == null);
-    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
-    return localBundle;
-  }
+  public int a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
 }
 
 

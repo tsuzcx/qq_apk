@@ -1,129 +1,93 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class amad
-  extends Handler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherPreloadWebPageConfigProcessor;", "Lcom/tencent/mobileqq/config/IQConfigProcessor;", "Lcom/tencent/mobileqq/activity/weather/webpage/WeatherPreloadWebPageConfigProcessor$Config;", "()V", "clazz", "Ljava/lang/Class;", "isAccountRelated", "", "isNeedCompressed", "isNeedStoreLargeFile", "migrateOldOrDefaultContent", "type", "", "migrateOldVersion", "onParsed", "confFiles", "", "Lcom/tencent/mobileqq/config/QConfItem;", "([Lcom/tencent/mobileqq/config/QConfItem;)Lcom/tencent/mobileqq/activity/weather/webpage/WeatherPreloadWebPageConfigProcessor$Config;", "onReqFailed", "", "failCode", "onUpdate", "newConf", "Companion", "Config", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amad
+  extends aqkz<amaf>
 {
-  public amad(QQAppInterface paramQQAppInterface, Looper paramLooper)
+  public static final amae a = new amae(null);
+  
+  @NotNull
+  public amaf a(int paramInt)
   {
-    super(paramLooper);
+    return new amaf();
   }
   
-  public void handleMessage(Message paramMessage)
+  @Nullable
+  public amaf a(@Nullable aqlg[] paramArrayOfaqlg)
   {
-    int i;
-    if (paramMessage.what == 990)
+    int j = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("WeatherPreloadWebPageConfigProcessor", 2, "onParsed");
+    }
+    amaf localamaf = new amaf();
+    if (paramArrayOfaqlg != null)
     {
-      paramMessage = new ArrayList();
-      synchronized (QQAppInterface.a(this.a))
-      {
-        paramMessage.addAll(QQAppInterface.a(this.a));
-        QQAppInterface.a(this.a).clear();
-        QQAppInterface.a(this.a).removeMessages(990);
-        ??? = new ArrayList();
-        if ((paramMessage == null) || (paramMessage.size() <= 0)) {
-          break label138;
-        }
-        i = 0;
-        if (i < paramMessage.size())
-        {
-          ???.add(this.a.a(1, (String)paramMessage.get(i), 0));
-          i += 1;
-        }
+      if (paramArrayOfaqlg.length != 0) {
+        break label68;
       }
-      QQAppInterface.a(this.a, 1, paramMessage, ???);
-      label138:
-      if (QLog.isColorLevel()) {
-        bdmh.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, user getQQHead resp uinList: ", paramMessage);
+      i = 1;
+      if (i != 0) {
+        break label73;
       }
     }
-    do
+    label68:
+    label73:
+    for (int i = j;; i = 0)
     {
-      do
+      if (i != 0)
       {
-        do
-        {
-          do
-          {
-            return;
-            if (paramMessage.what != 991) {
-              break;
-            }
-            paramMessage = new ArrayList();
-            synchronized (QQAppInterface.b(this.a))
-            {
-              paramMessage.addAll(QQAppInterface.b(this.a));
-              QQAppInterface.b(this.a).clear();
-              QQAppInterface.a(this.a).removeMessages(991);
-              ??? = new ArrayList();
-              if ((paramMessage == null) || (paramMessage.size() <= 0)) {
-                continue;
-              }
-              i = 0;
-              if (i < paramMessage.size())
-              {
-                ???.add(this.a.a(4, (String)paramMessage.get(i), 0));
-                i += 1;
-              }
-            }
-            QQAppInterface.a(this.a, 4, paramMessage, ???);
-          } while (!QLog.isColorLevel());
-          bdmh.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, group getQQHead resp uinList: ", paramMessage);
-          return;
-          if (paramMessage.what != 993) {
-            break;
-          }
-          paramMessage = new ArrayList();
-          synchronized (QQAppInterface.c(this.a))
-          {
-            paramMessage.addAll(QQAppInterface.c(this.a));
-            QQAppInterface.c(this.a).clear();
-            QQAppInterface.a(this.a).removeMessages(993);
-            ??? = new ArrayList();
-            if ((paramMessage == null) || (paramMessage.size() <= 0)) {
-              continue;
-            }
-            i = 0;
-            if (i < paramMessage.size())
-            {
-              ???.add(this.a.a(101, (String)paramMessage.get(i), 0));
-              i += 1;
-            }
-          }
-          QQAppInterface.a(this.a, 101, paramMessage, ???);
-        } while (!QLog.isColorLevel());
-        bdmh.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, dis getQQHead resp uinList: ", paramMessage);
-        return;
-      } while (paramMessage.what != 992);
-      paramMessage = new ArrayList();
-      synchronized (QQAppInterface.d(this.a))
-      {
-        paramMessage.addAll(QQAppInterface.d(this.a));
-        QQAppInterface.d(this.a).clear();
-        QQAppInterface.a(this.a).removeMessages(992);
-        ??? = new ArrayList();
-        if ((paramMessage == null) || (paramMessage.size() <= 0)) {
-          continue;
-        }
-        i = 0;
-        if (i < paramMessage.size())
-        {
-          ???.add(this.a.a(113, (String)paramMessage.get(i), 0));
-          i += 1;
-        }
+        paramArrayOfaqlg = paramArrayOfaqlg[0].a;
+        Intrinsics.checkExpressionValueIsNotNull(paramArrayOfaqlg, "confFiles[0].content");
+        localamaf.a(paramArrayOfaqlg);
       }
-      QQAppInterface.a(this.a, 113, paramMessage, ???);
-    } while (!QLog.isColorLevel());
-    bdmh.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, newGroup getQQHead resp uinList: ", paramMessage);
+      return localamaf;
+      i = 0;
+      break;
+    }
+  }
+  
+  public void a(@Nullable amaf paramamaf) {}
+  
+  @NotNull
+  public Class<amaf> clazz()
+  {
+    return amaf.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 638;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amad
  * JD-Core Version:    0.7.0.1
  */

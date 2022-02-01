@@ -1,42 +1,167 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.fts.FTSDatabase;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-class auqe
-  implements arpz
+public class auqe
 {
-  auqe(auqc paramauqc, arpy paramarpy) {}
-  
-  public void a()
+  public static String a(String paramString)
   {
-    Message localMessage = auqc.a(this.jdField_a_of_type_Auqc).obtainMessage(1);
-    aupy localaupy = this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_Arpy.a());
-    if (localaupy != null)
+    for (;;)
     {
-      localaupy.jdField_a_of_type_Int = 0;
-      localMessage.obj = localaupy;
-      auqc.a(this.jdField_a_of_type_Auqc).sendMessage(localMessage);
+      try
+      {
+        localStringBuilder = new StringBuilder(64);
+        aupz localaupz = new aupz(new StringReader(paramString), paramString.length());
+        paramString = null;
+        try
+        {
+          localaupw = localaupz.a();
+          if (localaupw != null) {
+            continue;
+          }
+          if ((paramString != null) && (TextUtils.equals(paramString.b(), "double")) && (!TextUtils.isEmpty(paramString.a())))
+          {
+            localStringBuilder.append(paramString.a().charAt(paramString.a().length() - 1));
+            localStringBuilder.append("*");
+          }
+        }
+        catch (IOException paramString)
+        {
+          aupw localaupw;
+          paramString.printStackTrace();
+          FTSDatabase.a().a("SegmentUtils", "e", "tokenSegment: failure", paramString);
+          continue;
+        }
+        paramString = localStringBuilder.toString();
+        return paramString;
+      }
+      catch (Throwable paramString)
+      {
+        StringBuilder localStringBuilder;
+        paramString.printStackTrace();
+        FTSDatabase.a().a("SegmentUtils", "e", "tokenSegment: failure", paramString);
+      }
+      if ((paramString != null) && (TextUtils.equals(paramString.b(), "double")) && ((!TextUtils.equals(localaupw.b(), "double")) || (paramString.b() < localaupw.a())) && (!TextUtils.isEmpty(paramString.a())))
+      {
+        localStringBuilder.append(paramString.a().charAt(paramString.a().length() - 1));
+        localStringBuilder.append("*");
+        localStringBuilder.append(' ');
+      }
+      if ((!TextUtils.isEmpty(localaupw.a())) && ((!TextUtils.equals(localaupw.b(), "double")) || (localaupw.a().length() != 1)))
+      {
+        localStringBuilder.append(localaupw.a());
+        localStringBuilder.append(' ');
+      }
+      paramString = localaupw;
     }
+    return null;
   }
   
-  public void a(int paramInt, String paramString)
+  public static ArrayList<String> a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("MultiRichMediaSaveManager", 2, "saveVideoFile fail, errorCode = " + paramInt + " ,errorMsg = " + paramString);
+    if (paramString == null) {
+      return null;
     }
-    aupy localaupy = this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_Arpy.a());
-    if (localaupy != null)
+    paramString = paramString.split("\\s");
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramString.length)
     {
-      localaupy.jdField_a_of_type_Int = -1;
-      localaupy.b = paramInt;
-      localaupy.jdField_a_of_type_JavaLangString = paramString;
-      auqc.a(this.jdField_a_of_type_Auqc, localaupy);
+      String str = paramString[i].trim();
+      if ((str != null) && (!TextUtils.isEmpty(str))) {
+        localArrayList.add(str);
+      }
+      i += 1;
     }
+    return localArrayList;
+  }
+  
+  public static String[] a(String paramString)
+  {
+    int j = 0;
+    Object localObject = a(paramString);
+    if (localObject == null) {
+      return null;
+    }
+    paramString = new ArrayList();
+    int i = 0;
+    while (i < ((ArrayList)localObject).size())
+    {
+      String str = a((String)((ArrayList)localObject).get(i));
+      if (!TextUtils.isEmpty(str)) {
+        paramString.add(str.trim());
+      }
+      i += 1;
+    }
+    if (paramString.size() == 0) {
+      return null;
+    }
+    localObject = new String[paramString.size()];
+    i = j;
+    while (i < paramString.size())
+    {
+      localObject[i] = ((String)paramString.get(i));
+      i += 1;
+    }
+    return localObject;
+  }
+  
+  public static String[] b(String paramString)
+  {
+    Object localObject2 = a(paramString);
+    FTSDatabase.a().a("SegmentUtils", "i", "query segments = " + Arrays.toString((Object[])localObject2));
+    Object localObject1;
+    if (localObject2 != null)
+    {
+      localObject1 = localObject2;
+      if (localObject2.length != 0) {}
+    }
+    else
+    {
+      if ((paramString == null) || (paramString.length() <= 0)) {
+        break label223;
+      }
+      localObject1 = new String[1];
+      localObject1[0] = paramString;
+    }
+    paramString = new String[localObject1.length];
+    int i = 0;
+    while (i < localObject1.length)
+    {
+      localObject2 = new StringBuilder(64);
+      String[] arrayOfString = localObject1[i].split(" ");
+      int j = 0;
+      if (j < arrayOfString.length)
+      {
+        if (((StringBuilder)localObject2).length() > 0) {
+          ((StringBuilder)localObject2).append(" ");
+        }
+        if ((arrayOfString[j].length() == 1) || ((arrayOfString[j].charAt(0) >= '0') && (arrayOfString[j].charAt(0) <= '9')) || ((arrayOfString[j].charAt(0) >= 'a') && (arrayOfString[j].charAt(0) <= 'z')))
+        {
+          ((StringBuilder)localObject2).append(arrayOfString[j]);
+          ((StringBuilder)localObject2).append("*");
+        }
+        for (;;)
+        {
+          j += 1;
+          break;
+          label223:
+          return null;
+          ((StringBuilder)localObject2).append(arrayOfString[j]);
+        }
+      }
+      paramString[i] = ((StringBuilder)localObject2).toString();
+      i += 1;
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auqe
  * JD-Core Version:    0.7.0.1
  */

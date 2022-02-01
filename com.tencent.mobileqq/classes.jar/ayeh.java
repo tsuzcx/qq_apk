@@ -1,86 +1,111 @@
-import PersonalState.HotRishState;
-import PersonalState.RespGetSameStateList;
-import PersonalState.UserProfile;
-import android.os.Bundle;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusServlet.RspGetHistory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.nearby.now.model.MedalItem;
+import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.MedalInfo;
+import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.RichTitleElement;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.List;
-import mqq.observer.BusinessObserver;
 
 public class ayeh
-  implements BusinessObserver
 {
-  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RichStatus> paramArrayList, boolean paramBoolean3) {}
+  public int a;
+  public long a;
+  public MedalItem a;
+  public String a;
+  public List<NowQQLiveHomepageProto.RichTitleElement> a;
+  public boolean a;
+  public int b;
+  private long b = -1L;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public int e = -16711936;
+  public String e;
+  public int f = -16711936;
+  public String f;
+  public int g;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l = "NOW达人";
+  public String m;
+  public String n;
+  public String o;
+  private String p;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void a(boolean paramBoolean, ArrayList<HotRishState> paramArrayList) {}
-  
-  protected void a(boolean paramBoolean, List<byte[]> paramList, List<Integer> paramList1) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, byte[] paramArrayOfByte, ArrayList<UserProfile> paramArrayList) {}
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ayeh()
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    switch (paramInt)
-    {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public String a()
+  {
+    if (this.p == null) {
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0)) {
+        break label37;
+      }
     }
-    do
+    label37:
+    String str;
+    for (this.p = "";; this.p = str)
     {
-      return;
-      if (paramBoolean) {
-        bool1 = paramBundle.getBoolean("k_sync_ss", false);
-      }
-      a(paramBoolean, bool1);
-      return;
-      bool1 = bool2;
-      if (paramBoolean) {
-        bool1 = paramBundle.getBoolean("k_sync_ss", false);
-      }
-      b(paramBoolean, bool1);
-      return;
-      bool1 = paramBundle.getBoolean("k_is_first");
-      paramInt = paramBundle.getInt("k_fetch_sex");
-      if (paramBoolean)
+      return this.p;
+      str = "";
+      int i2 = this.jdField_a_of_type_JavaUtilList.size();
+      int i1 = 0;
+      if (i1 < i2)
       {
-        paramBundle = (RespGetSameStateList)paramBundle.getSerializable("k_resp_mate");
-        a(paramBoolean, bool1, paramInt, paramBundle.vCookie, paramBundle.vUserInfos);
-        return;
-      }
-      a(false, bool1, paramInt, null, null);
-      return;
-      paramBundle = (StatusServlet.RspGetHistory)paramBundle.getSerializable("k_data");
-      a(paramBoolean, paramBundle.startTime, paramBundle.endTime, paramBundle.over, paramBundle.richStatus, paramBundle.isAddFromCard);
-      return;
-      Object localObject = paramBundle.getStringArrayList("k_status_key");
-      ArrayList localArrayList = new ArrayList();
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          localArrayList.add(((String)((Iterator)localObject).next()).getBytes());
+        NowQQLiveHomepageProto.RichTitleElement localRichTitleElement = (NowQQLiveHomepageProto.RichTitleElement)this.jdField_a_of_type_JavaUtilList.get(i1);
+        if (localRichTitleElement.uint32_type.get() == 2) {}
+        for (;;)
+        {
+          i1 += 1;
+          break;
+          str = localRichTitleElement.string_text.get();
         }
       }
-      a(paramBoolean, localArrayList, paramBundle.getIntegerArrayList("k_status_err_code_list"));
-      return;
-      a(paramBoolean, (ArrayList)paramBundle.get("k_resp_hot_status"));
-      return;
-      a(paramBoolean, paramBundle);
-      return;
-      b(paramBoolean, paramBundle);
-    } while (!QLog.isColorLevel());
-    QLog.d("StatusObserver", 2, "clear self sign ret:" + paramBoolean);
+    }
+  }
+  
+  public void a(List<NowQQLiveHomepageProto.MedalInfo> paramList)
+  {
+    paramList = (NowQQLiveHomepageProto.MedalInfo)paramList.get(0);
+    if (paramList.medal_type.get() != 3)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem == null) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem = new MedalItem();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.jdField_a_of_type_Int = paramList.medal_id.get();
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.b = paramList.medal_version.get();
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.c = paramList.medal_type.get();
+      if (paramList.medal_name.has()) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.jdField_a_of_type_JavaLangString = paramList.medal_name.get().toStringUtf8();
+      }
+      if (paramList.medal_bg.has()) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.e = paramList.medal_bg.get();
+      }
+      if (paramList.medal_frame.has()) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.f = paramList.medal_frame.get();
+      }
+      if (paramList.medal_level.has()) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.g = paramList.medal_level.get();
+      }
+    }
+  }
+  
+  public String b()
+  {
+    if ((a() != null) && (this.p.length() > 0)) {
+      return this.p;
+    }
+    return this.i;
   }
 }
 

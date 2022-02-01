@@ -1,13 +1,17 @@
 package com.tencent.biz.qqcircle;
 
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StPoiInfoV2;
 import feedcloud.FeedCloudMeta.StTagInfo;
 import feedcloud.FeedCloudMeta.StUser;
 import java.io.Serializable;
 import qqcircle.QQCircleFeedBase.StFeedListBusiReqData;
-import tqo;
+import qqcircle.QQCircleFeedBase.StPolyLike;
+import uxk;
 
 public class QCircleInitBean
   implements Serializable
@@ -19,31 +23,41 @@ public class QCircleInitBean
   private ExtraTypeInfo mExtraTypeInfo;
   private byte[] mFeedByteArray;
   private byte[] mFeedListBusiReqByteArray;
+  public QCircleReportBean mFromReportBean;
+  private byte[] mPoiInfoByteArray;
+  private byte[] mPolyLikeByteArray;
   private byte[] mTagInfoByteArray;
   private byte[] mUserByteArray;
   public long mVideoCurrentPosition;
   
-  private QCircleInitBean(tqo paramtqo)
+  private QCircleInitBean(uxk paramuxk)
   {
-    if (tqo.a(paramtqo) != null) {
-      this.mFeedByteArray = tqo.a(paramtqo).toByteArray();
+    if (uxk.a(paramuxk) != null) {
+      this.mFeedByteArray = uxk.a(paramuxk).toByteArray();
     }
-    if (tqo.a(paramtqo) != null) {
-      this.mUserByteArray = tqo.a(paramtqo).toByteArray();
+    if (uxk.a(paramuxk) != null) {
+      this.mUserByteArray = uxk.a(paramuxk).toByteArray();
     }
-    if (tqo.a(paramtqo) != null) {
-      this.mTagInfoByteArray = tqo.a(paramtqo).toByteArray();
+    if (uxk.a(paramuxk) != null) {
+      this.mTagInfoByteArray = uxk.a(paramuxk).toByteArray();
     }
-    if (tqo.a(paramtqo) != null) {
-      this.mFeedListBusiReqByteArray = tqo.a(paramtqo).toByteArray();
+    if (uxk.a(paramuxk) != null) {
+      this.mPoiInfoByteArray = uxk.a(paramuxk).toByteArray();
     }
-    this.mBusiInfoDataByteArray = tqo.a(paramtqo);
-    if (tqo.a(paramtqo) == null) {}
-    for (ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo();; localExtraTypeInfo = tqo.a(paramtqo))
+    if (uxk.a(paramuxk) != null) {
+      this.mFeedListBusiReqByteArray = uxk.a(paramuxk).toByteArray();
+    }
+    if (uxk.a(paramuxk) != null) {
+      this.mPolyLikeByteArray = uxk.a(paramuxk).toByteArray();
+    }
+    this.mBusiInfoDataByteArray = uxk.a(paramuxk);
+    if (uxk.a(paramuxk) == null) {}
+    for (ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo();; localExtraTypeInfo = uxk.a(paramuxk))
     {
       this.mExtraTypeInfo = localExtraTypeInfo;
-      this.mDataPosInList = tqo.a(paramtqo);
-      this.mActionBean = tqo.a(paramtqo);
+      this.mDataPosInList = uxk.a(paramuxk);
+      this.mActionBean = uxk.a(paramuxk);
+      this.mFromReportBean = uxk.a(paramuxk);
       return;
     }
   }
@@ -91,6 +105,33 @@ public class QCircleInitBean
     return localStFeedListBusiReqData;
   }
   
+  public FeedCloudMeta.StPoiInfoV2 getPoiInfo()
+  {
+    FeedCloudMeta.StPoiInfoV2 localStPoiInfoV2 = new FeedCloudMeta.StPoiInfoV2();
+    try
+    {
+      localStPoiInfoV2.mergeFrom(this.mPoiInfoByteArray);
+      return localStPoiInfoV2;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QCircleInitBean", 1, localException, new Object[0]);
+    }
+    return localStPoiInfoV2;
+  }
+  
+  public QQCircleFeedBase.StPolyLike getPolyLike()
+  {
+    QQCircleFeedBase.StPolyLike localStPolyLike = new QQCircleFeedBase.StPolyLike();
+    try
+    {
+      localStPolyLike.mergeFrom(this.mPolyLikeByteArray);
+      return localStPolyLike;
+    }
+    catch (Exception localException) {}
+    return localStPolyLike;
+  }
+  
   public FeedCloudMeta.StTagInfo getTagInfo()
   {
     FeedCloudMeta.StTagInfo localStTagInfo = new FeedCloudMeta.StTagInfo();
@@ -114,10 +155,15 @@ public class QCircleInitBean
     catch (Exception localException) {}
     return localStUser;
   }
+  
+  public void setExtraTypeInfo(ExtraTypeInfo paramExtraTypeInfo)
+  {
+    this.mExtraTypeInfo = paramExtraTypeInfo;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.QCircleInitBean
  * JD-Core Version:    0.7.0.1
  */

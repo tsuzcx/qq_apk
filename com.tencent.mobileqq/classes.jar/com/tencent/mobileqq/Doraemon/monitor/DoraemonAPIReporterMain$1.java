@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
-import abzk;
-import awgf;
-import awgg;
+import adgq;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.List;
 
 public class DoraemonAPIReporterMain$1
   implements Runnable
 {
-  public DoraemonAPIReporterMain$1(abzk paramabzk, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2) {}
+  public DoraemonAPIReporterMain$1(adgq paramadgq, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(APIQuotaEntity.class, false, "type=? and appid=?", new String[] { String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }, null, null, null, null);
+    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager().query(APIQuotaEntity.class, false, "type=? and appid=?", new String[] { String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }, null, null, null, null);
     if ((localList != null) && (localList.size() > 0)) {
-      abzk.a(this.this$0, this.b, localList);
+      adgq.a(this.this$0, this.b, localList);
     }
   }
 }

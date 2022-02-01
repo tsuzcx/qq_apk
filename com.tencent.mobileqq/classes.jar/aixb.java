@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
 
 public class aixb
-  implements DialogInterface.OnClickListener
+  extends ClickableSpan
 {
-  public aixb(TransactionActivity paramTransactionActivity) {}
+  public aixb(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.go", "", "", TransactionActivity.b(this.a), "");
-    this.a.b();
+    PermisionPrivacyActivity.a(NewFriendVerifyBlockedListFragment.a(this.a));
+    bcst.b(null, "dc00898", "", "", "0X800A3AA", "0X800A3AA", 0, 0, "", "", "", "");
   }
 }
 

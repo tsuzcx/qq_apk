@@ -1,40 +1,50 @@
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
 
 public class lgv
+  extends Handler
 {
-  HashMap<String, String> a = new HashMap();
-  HashMap<String, Long> b = new HashMap();
-  
-  void a(String paramString, boolean paramBoolean)
+  public lgv(MagicFaceDataEntity paramMagicFaceDataEntity, Looper paramLooper)
   {
-    QLog.w("DeviceCapabilityExamination", 1, "setDownloadFinish, md5[" + paramString + "], suc[" + paramBoolean + "], time[" + this.b.get(paramString) + "]");
-    AudioHelper.c(alud.a(2131703560) + paramBoolean);
-    this.a.remove(paramString);
-    this.b.remove(paramString);
+    super(paramLooper);
   }
   
-  boolean a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.a.isEmpty();
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (this.a.get(paramString1) != null)
+    lbc.c("MagicFaceDataEntity", "MagicFaceDataEntity handleMessage A: " + this.a.a + "|" + paramMessage.what);
+    switch (paramMessage.what)
     {
-      QLog.w("DeviceCapabilityExamination", 1, "isDownloading, md5[" + paramString1 + "], time[" + this.b.get(paramString1) + "]");
-      return true;
     }
-    this.a.put(paramString1, paramString2);
-    this.b.put(paramString1, Long.valueOf(System.currentTimeMillis()));
-    return false;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while (this.a.a != 1);
+          MagicFaceDataEntity.a(this.a, (Object[])paramMessage.obj);
+          return;
+        } while (this.a.a != 0);
+        this.a.a = 1;
+        this.a.c();
+        return;
+      } while (this.a.a != 1);
+      this.a.a = 0;
+      this.a.d();
+      return;
+    } while (this.a.a != 1);
+    paramMessage = (Integer)paramMessage.obj;
+    this.a.a(paramMessage.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lgv
  * JD-Core Version:    0.7.0.1
  */

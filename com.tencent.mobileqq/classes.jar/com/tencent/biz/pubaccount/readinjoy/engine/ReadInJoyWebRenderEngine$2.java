@@ -5,8 +5,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.core.ViolaInstance;
 import org.json.JSONException;
 import org.json.JSONObject;
-import oxi;
-import smk;
+import pmr;
+import tlg;
 
 public class ReadInJoyWebRenderEngine$2
   implements Runnable
@@ -15,15 +15,15 @@ public class ReadInJoyWebRenderEngine$2
   {
     try
     {
-      JSONObject localJSONObject = smk.a();
+      JSONObject localJSONObject = tlg.a();
       if (localJSONObject != null)
       {
         if (!TextUtils.isEmpty(this.a)) {
           localJSONObject.put("param", this.a);
         }
         localJSONObject.put("url", this.b);
-        oxi.a(this.this$0, false);
-        oxi.a(this.this$0).render(this.c, localJSONObject.toString());
+        pmr.a(this.this$0, false);
+        pmr.a(this.this$0).render(this.c, localJSONObject.toString());
       }
       return;
     }

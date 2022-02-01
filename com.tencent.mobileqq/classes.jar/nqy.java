@@ -1,21 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class nqy
-  implements DialogInterface.OnCancelListener
+class nqy
+  extends BroadcastReceiver
 {
-  public nqy(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  nqy(nqt paramnqt) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "onReceive ===>" + paramContext);
+    }
+    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext))) {
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nqy
  * JD-Core Version:    0.7.0.1
  */

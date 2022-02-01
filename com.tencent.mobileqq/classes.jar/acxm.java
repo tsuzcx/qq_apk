@@ -1,30 +1,13 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import msf.msgcomm.msg_comm.UinPairMsg;
 
-public class acxm
-  extends ameq
+public abstract interface acxm
 {
-  public acxm(ForwardRecentActivity paramForwardRecentActivity) {}
-  
-  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      ForwardRecentActivity.f(this.a);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
-      ForwardRecentActivity.f(this.a);
-    }
-  }
+  public abstract boolean a(msg_comm.UinPairMsg paramUinPairMsg, String paramString, int[] paramArrayOfInt, QQAppInterface paramQQAppInterface);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxm
  * JD-Core Version:    0.7.0.1
  */

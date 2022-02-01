@@ -1,25 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
 public class bcau
-  implements View.OnTouchListener
+  implements bcba
 {
-  public bcau(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn, MessageHandler paramMessageHandler)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    ((ansf)paramMessageHandler.app.a(47)).a(true);
+    bbzf.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
   }
 }
 

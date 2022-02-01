@@ -1,127 +1,86 @@
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import com.tencent.av.VideoConstants;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import mqq.app.MobileQQ;
 
 public class advx
-  extends AsyncTask<String, Void, HashMap<Integer, Integer>>
+  extends anuw
 {
-  public advx(ScoreQAVFragment paramScoreQAVFragment) {}
+  public advx(ChatSettingActivity paramChatSettingActivity) {}
   
-  protected HashMap<Integer, Integer> a(String... paramVarArgs)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    int i = 0;
-    if ((this.a.jdField_d_of_type_JavaLangString == null) || (this.a.jdField_d_of_type_JavaLangString.isEmpty()))
+    if (!ChatSettingActivity.c(this.a))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mSelfUin is null!");
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mShieldByThis=" + ChatSettingActivity.c(this.a));
       }
-      return null;
+      return;
     }
-    paramVarArgs = bdne.e(this.a.jdField_d_of_type_JavaLangString);
-    this.a.b = paramVarArgs.getString(VideoConstants.h, "");
-    paramVarArgs = mvs.a();
-    this.a.b(paramVarArgs);
-    paramVarArgs = lex.b(270).a;
-    this.a.a(paramVarArgs);
-    if (this.a.e.isEmpty())
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.g(this.a);
+    paramList = this.a;
+    ChatSettingActivity localChatSettingActivity = this.a;
+    if (paramBoolean) {}
+    for (int i = 2131718056;; i = 2131718045)
     {
-      this.a.e = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131696309);
+      QQToast.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
       if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mProblem_Video config data is invalid, use default!");
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, isSuccess=" + paramBoolean + ", mShieldByThis=" + ChatSettingActivity.c(this.a) + ", mShieldUin=" + ChatSettingActivity.d(this.a) + ", mIsShield=" + ChatSettingActivity.a(this.a));
       }
-    }
-    if (this.a.f.isEmpty())
-    {
-      this.a.f = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131696307);
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mProblem_Audio config data is invalid, use default!");
+      if (!paramBoolean) {
+        break;
       }
-    }
-    if (this.a.g.isEmpty())
-    {
-      this.a.g = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131696308);
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mProblem_Net config data is invalid, use default!");
+      paramList = (awhl)this.a.app.getManager(16);
+      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.d(this.a)));
       }
-    }
-    if (this.a.jdField_d_of_type_Long == 0L) {
-      paramVarArgs = this.a.e + "/" + this.a.f + "/" + this.a.g;
-    }
-    try
-    {
-      this.a.jdField_a_of_type_JavaUtilList = Arrays.asList(paramVarArgs.split("/"));
-      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
+      ChatSettingActivity.b(this.a);
+      if (ChatSettingActivity.a(this.a))
       {
-        i = 0;
-        if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-          break label778;
-        }
+        this.a.jdField_a_of_type_Boolean = false;
+        ChatSettingActivity.a(this.a);
       }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mIsShield=" + ChatSettingActivity.a(this.a) + ", mIsFollowed=" + this.a.jdField_a_of_type_Boolean);
+      return;
     }
-    catch (Exception paramVarArgs)
-    {
-      try
-      {
-        do
-        {
-          for (;;)
-          {
-            paramVarArgs = ((String)this.a.jdField_a_of_type_JavaUtilList.get(i)).split(",");
-            this.a.jdField_a_of_type_JavaUtilList.set(i, paramVarArgs[1]);
-            int j = Integer.parseInt(paramVarArgs[0]);
-            this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(j));
-            i += 1;
-            continue;
-            paramVarArgs = this.a.f + "/" + this.a.g;
-          }
-          paramVarArgs = paramVarArgs;
-          paramVarArgs.printStackTrace();
-        } while (!QLog.isColorLevel());
-        QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
-      }
-      catch (Exception paramVarArgs)
-      {
-        for (;;)
-        {
-          paramVarArgs.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "processDataTask mDatas is invalid, use default!");
-      }
-      this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.a.jdField_a_of_type_JavaUtilList.add(alud.a(2131713971));
-      this.a.jdField_a_of_type_JavaUtilList.add(alud.a(2131713964));
-      this.a.jdField_a_of_type_JavaUtilList.add(alud.a(2131713967));
-      this.a.jdField_a_of_type_JavaUtilList.add(alud.a(2131713970));
-      this.a.jdField_a_of_type_JavaUtilList.add(alud.a(2131713965));
-      this.a.jdField_a_of_type_JavaUtilList.add(alud.a(2131713969));
-      this.a.jdField_a_of_type_JavaUtilList.add(alud.a(2131713966));
-      this.a.jdField_a_of_type_JavaUtilList.add(alud.a(2131713968));
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(i));
-        i += 1;
-      }
-    }
-    label778:
-    return this.a.jdField_a_of_type_JavaUtilHashMap;
   }
   
-  protected void a(HashMap<Integer, Integer> paramHashMap)
+  protected void b(boolean paramBoolean, List<Long> paramList)
   {
-    super.onPostExecute(paramHashMap);
+    if (!ChatSettingActivity.c(this.a)) {
+      return;
+    }
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.g(this.a);
+    paramList = this.a;
+    ChatSettingActivity localChatSettingActivity = this.a;
+    if (paramBoolean) {}
+    for (int i = 2131718044;; i = 2131718043)
+    {
+      QQToast.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, isSuccess=" + paramBoolean);
+      }
+      if (!paramBoolean) {
+        break;
+      }
+      paramList = (awhl)this.a.app.getManager(16);
+      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.d(this.a)));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, mIsShield=" + ChatSettingActivity.a(this.a));
+      }
+      ChatSettingActivity.b(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131718043, 1);
   }
 }
 

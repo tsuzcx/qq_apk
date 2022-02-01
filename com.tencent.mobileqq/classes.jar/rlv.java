@@ -1,30 +1,69 @@
-import android.net.ConnectivityManager.NetworkCallback;
-import android.net.Network;
-import android.os.Handler;
-import android.support.annotation.RequiresApi;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.1;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.2;
-import org.jetbrains.annotations.Nullable;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
+import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.itemview.PTSItemData.Builder;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@RequiresApi(21)
-public final class rlv
-  extends ConnectivityManager.NetworkCallback
+public class rlv
 {
-  private rlv(rlt paramrlt) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private qnw jdField_a_of_type_Qnw;
   
-  public void onAvailable(@Nullable Network paramNetwork)
+  public rlv(Context paramContext, ViewGroup paramViewGroup)
   {
-    rlt.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.1(this));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Qnw = new qnw(paramContext);
+    b();
+    a(paramViewGroup);
   }
   
-  public void onLost(@Nullable Network paramNetwork)
+  private String a()
   {
-    rlt.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.2(this));
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("tips", RIJUGCAddAccountFragment.a() + " " + rlt.a());
+      localJSONObject.put("edit_profile_text", rlt.c());
+      localJSONObject.put("use_origin_account_text", rlt.b());
+      localJSONObject.put("accountUin", pha.a());
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("RIJUGCPopupPtsLiteBuilder", 1, "[getJsonData] error, e = " + localJSONException);
+      }
+    }
+  }
+  
+  private void a(ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup == null) {
+      return;
+    }
+    Object localObject = qpn.a().a("default_feeds", "ugc_account_popup");
+    String str = a();
+    localObject = new PTSItemData.Builder().withItemID("RIJUGCPopupPtsLiteBuilder").withPageName("ugc_account_popup").withFrameTreeJson((String)localObject).withJsonData(str).build();
+    paramViewGroup.addView(this.jdField_a_of_type_Qnw.a(null, (PTSItemData)localObject));
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Qnw.a(new rlw(this));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Qnw.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rlv
  * JD-Core Version:    0.7.0.1
  */

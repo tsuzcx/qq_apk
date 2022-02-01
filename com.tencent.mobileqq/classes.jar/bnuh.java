@@ -1,0 +1,103 @@
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.PointF;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.view.RendererUtils;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+public class bnuh
+  implements SurfaceTexture.OnFrameAvailableListener
+{
+  public bnuh(bnuf parambnuf) {}
+  
+  private List<List<PointF>> a(List<List<PointF>> paramList)
+  {
+    LinkedList localLinkedList1 = new LinkedList();
+    int k = paramList.size();
+    int i = 0;
+    while (i < k)
+    {
+      List localList = (List)paramList.get(i);
+      LinkedList localLinkedList2 = new LinkedList();
+      int m = localList.size();
+      int j = 0;
+      while (j < m)
+      {
+        PointF localPointF = (PointF)localList.get(j);
+        localLinkedList2.add(new PointF(localPointF.x, localPointF.y));
+        j += 1;
+      }
+      localLinkedList1.add(localLinkedList2);
+      i += 1;
+    }
+    return localLinkedList1;
+  }
+  
+  private List<float[]> b(List<float[]> paramList)
+  {
+    LinkedList localLinkedList = new LinkedList();
+    int k = paramList.size();
+    int i = 0;
+    while (i < k)
+    {
+      float[] arrayOfFloat1 = (float[])paramList.get(i);
+      float[] arrayOfFloat2 = new float[arrayOfFloat1.length];
+      int j = 0;
+      while (j < arrayOfFloat1.length)
+      {
+        arrayOfFloat2[j] = arrayOfFloat1[j];
+        j += 1;
+      }
+      localLinkedList.add(arrayOfFloat2);
+      i += 1;
+    }
+    return localLinkedList;
+  }
+  
+  @TargetApi(19)
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    QLog.d(bnuf.a(), 4, "PngsCreator onFrameAvailable()");
+    paramSurfaceTexture.updateTexImage();
+    bnuf.a(this.a).RenderProcess(bnuf.a(this.a), 960, 480, -1, 0.0D, bnuf.a(this.a));
+    bnuf.a(this.a).a(bnuf.a(this.a));
+    bnrf localbnrf = bnuf.a(this.a);
+    Frame localFrame = bnuf.a(this.a);
+    if (bnuf.b(this.a) < bnuf.a(this.a).size())
+    {
+      paramSurfaceTexture = a((List)bnuf.a(this.a).get(bnuf.b(this.a)));
+      if (bnuf.b(this.a) >= bnuf.b(this.a).size()) {
+        break label341;
+      }
+    }
+    label341:
+    for (Object localObject = b((List)bnuf.b(this.a).get(bnuf.b(this.a)));; localObject = new ArrayList())
+    {
+      paramSurfaceTexture = RendererUtils.saveTexture(localbnrf.a(localFrame, 480, 480, paramSurfaceTexture, (List)localObject));
+      paramSurfaceTexture.setPremultiplied(false);
+      bncx.a(String.format(bnuf.a(this.a) + "/frame_%03d.png", new Object[] { Integer.valueOf(bnuf.b(this.a)) }), paramSurfaceTexture);
+      paramSurfaceTexture.recycle();
+      bnuf.c(this.a);
+      if (!bnuf.a(this.a).a())
+      {
+        QLog.d(bnuf.a(), 4, "pngs create duration = " + (System.currentTimeMillis() - bnuf.a(this.a)));
+        bnuf.a(this.a).a(bnuf.a(this.a));
+      }
+      return;
+      paramSurfaceTexture = new ArrayList();
+      break;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     bnuh
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,78 +1,29 @@
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import com.tencent.mobileqq.mini.tissue.TissueEnvImpl;
+import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IFlutterProxy;
+import io.flutter.view.FlutterMain;
 
-public class bjvr
+class bjvr
+  implements IFlutterProxy
 {
-  static volatile String a = null;
+  bjvr(bjvo parambjvo) {}
   
-  private static Object a(Object paramObject)
+  public void initFlutterRuntime(BaseRuntime paramBaseRuntime, Context paramContext)
   {
-    Object localObject1 = (WifiManager)BaseApplication.getContext().getSystemService("wifi");
-    if (localObject1 == null) {}
-    for (;;)
-    {
-      return paramObject;
-      try
-      {
-        localObject1 = ((WifiManager)localObject1).getConnectionInfo();
-        if (localObject1 == null) {
-          continue;
-        }
-        return localObject1;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Object localObject2 = null;
-        }
-      }
-    }
-  }
-  
-  public static String a()
-  {
-    if (a == null) {}
     try
     {
-      if (a == null) {
-        b();
-      }
-      if (("N/A".equals(a)) || ("00:00:00:00:00:00".equals(a)) || ("FF:FF:FF:FF:FF:FF".equalsIgnoreCase(a))) {
-        return null;
-      }
+      FlutterMain.setNativeLibDir(TissueEnvImpl.getNativeLibDirInSubProgress());
+      FlutterMain.startInitialization(paramContext.getApplicationContext());
+      FlutterMain.ensureInitializationComplete(paramContext.getApplicationContext(), null);
+      return;
     }
-    finally {}
-    return a;
-  }
-  
-  public static String b()
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = a("N/A");
-        if (localObject1 != "N/A")
-        {
-          String str = ((WifiInfo)localObject1).getBSSID();
-          localObject1 = str;
-          if (str == null) {
-            localObject1 = "N/A";
-          }
-          a = (String)localObject1;
-          return localObject1;
-        }
-      }
-      finally {}
-      Object localObject3 = null;
-    }
+    catch (IllegalStateException paramBaseRuntime) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjvr
  * JD-Core Version:    0.7.0.1
  */

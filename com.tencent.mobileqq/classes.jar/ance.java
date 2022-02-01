@@ -1,6 +1,21 @@
-public abstract interface ance
+import com.tencent.mobileqq.data.ApolloFavActionData;
+import java.util.Comparator;
+
+class ance
+  implements Comparator<ApolloFavActionData>
 {
-  public abstract void a(ancg paramancg);
+  ance(ancd paramancd) {}
+  
+  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
+  {
+    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
+      return 0;
+    }
+    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 

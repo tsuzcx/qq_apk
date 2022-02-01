@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import alpk;
-import alqf;
-import badd;
-import bdbk;
+import anip;
+import anjo;
+import aoch;
+import bdeh;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -19,13 +19,13 @@ public class GetSelfInfo
     FriendListHandler localFriendListHandler = (FriendListHandler)this.a.app.a(1);
     if (this.a.app.c)
     {
-      localObject = (badd)this.a.app.getManager(61);
+      localObject = (bdeh)this.a.app.getManager(61);
       if (localObject == null) {
         break label170;
       }
     }
     label170:
-    for (Object localObject = ((badd)localObject).a();; localObject = null)
+    for (Object localObject = ((bdeh)localObject).a();; localObject = null)
     {
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
@@ -35,12 +35,12 @@ public class GetSelfInfo
           localFriendListHandler.b((String)((Iterator)localObject).next());
         }
       }
-      localObject = (alpk)this.a.app.a(2);
+      localObject = (anip)this.a.app.a(2);
       if (localObject != null) {
-        ((alpk)localObject).d();
+        ((anip)localObject).d();
       }
-      ((alqf)this.a.app.a(4)).d();
-      bdbk.a(this.a.app, this.a.app.getAccount(), (byte)3);
+      ((anjo)this.a.app.a(4)).e();
+      aoch.a(this.a.app, this.a.app.getAccount(), (byte)3);
       return 7;
     }
   }

@@ -62,6 +62,25 @@ class IBaseService$Stub$Proxy
     }
   }
   
+  public int onKillProcess()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.qphone.base.remote.IBaseService");
+      this.mRemote.transact(6, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      return i;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
   public int onProcessViewableChanged(boolean paramBoolean, long paramLong, String paramString)
   {
     int i = 0;
@@ -139,11 +158,11 @@ class IBaseService$Stub$Proxy
     //   16: ifnull +51 -> 67
     //   19: aload_3
     //   20: iconst_1
-    //   21: invokevirtual 56	android/os/Parcel:writeInt	(I)V
+    //   21: invokevirtual 57	android/os/Parcel:writeInt	(I)V
     //   24: aload_1
     //   25: aload_3
     //   26: iconst_0
-    //   27: invokevirtual 71	com/tencent/qphone/base/remote/ToServiceMsg:writeToParcel	(Landroid/os/Parcel;I)V
+    //   27: invokevirtual 72	com/tencent/qphone/base/remote/ToServiceMsg:writeToParcel	(Landroid/os/Parcel;I)V
     //   30: aload_0
     //   31: getfield 15	com/tencent/qphone/base/remote/IBaseService$Stub$Proxy:mRemote	Landroid/os/IBinder;
     //   34: iconst_2
@@ -165,7 +184,7 @@ class IBaseService$Stub$Proxy
     //   66: ireturn
     //   67: aload_3
     //   68: iconst_0
-    //   69: invokevirtual 56	android/os/Parcel:writeInt	(I)V
+    //   69: invokevirtual 57	android/os/Parcel:writeInt	(I)V
     //   72: goto -42 -> 30
     //   75: astore_1
     //   76: aload 4

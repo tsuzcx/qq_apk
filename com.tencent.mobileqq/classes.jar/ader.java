@@ -1,36 +1,15 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class ader
-  implements TextWatcher
+class ader
+  extends JobSegment<awlp, awlp>
 {
-  public ader(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  ader(adep paramadep, String paramString, int paramInt) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void a(JobContext paramJobContext, awlp paramawlp)
   {
-    paramEditable = paramEditable.toString();
-    int i = 0;
-    if (!TextUtils.isEmpty(paramEditable)) {
-      i = paramEditable.getBytes().length / 3;
-    }
-    if (i <= 40) {
-      this.a.a.setTextColor(this.a.getResources().getColor(2131166977));
-    }
-    for (;;)
-    {
-      this.a.a.setText("" + (40 - i));
-      return;
-      this.a.a.setTextColor(-65536);
-    }
+    awlu.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new ades(this, this));
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

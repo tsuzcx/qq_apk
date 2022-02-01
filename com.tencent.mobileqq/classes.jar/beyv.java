@@ -1,185 +1,100 @@
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.DialogInterface.OnShowListener;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class beyv
-  implements ShareActionSheet
 {
-  private ShareActionSheet a;
+  public int a;
+  private String jdField_a_of_type_JavaLangString;
+  private List<beyw> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private JSONArray jdField_a_of_type_OrgJsonJSONArray;
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  public boolean a;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public beyv(ShareActionSheet paramShareActionSheet)
+  public static beyv a(String paramString)
   {
-    this.a = paramShareActionSheet;
+    beyv localbeyv = new beyv();
+    localbeyv.a(paramString);
+    return localbeyv;
   }
   
-  public void dismiss()
+  private void a(String paramString)
   {
-    this.a.dismiss();
+    long l = System.currentTimeMillis();
+    this.jdField_b_of_type_JavaLangString = paramString;
+    new ArrayList();
+    JSONObject localJSONObject1 = new JSONObject(paramString);
+    this.jdField_b_of_type_Int = localJSONObject1.optInt("errorcode");
+    this.jdField_a_of_type_JavaLangString = localJSONObject1.optString("errormsg");
+    JSONArray localJSONArray = localJSONObject1.optJSONArray("items");
+    int i = 0;
+    while (i < localJSONArray.length())
+    {
+      JSONObject localJSONObject2 = localJSONArray.getJSONObject(i);
+      beyw localbeyw = new beyw();
+      localbeyw.jdField_a_of_type_JavaLangString = localJSONObject2.optString("itemstring");
+      localbeyw.jdField_a_of_type_Boolean = "YES".equalsIgnoreCase(localJSONObject2.optString("item"));
+      localbeyw.jdField_a_of_type_Int = localJSONObject2.optInt("itemconf");
+      JSONObject localJSONObject3 = localJSONObject2.optJSONObject("itemcoord");
+      localbeyw.jdField_b_of_type_Int = localJSONObject3.optInt("x");
+      localbeyw.c = localJSONObject3.optInt("y");
+      localbeyw.d = localJSONObject3.optInt("width");
+      localbeyw.e = localJSONObject3.optInt("height");
+      if (!localbeyw.a())
+      {
+        yqp.e("QQ.Troop.homework.ArithResult", "arith homework json error!! all json=" + paramString);
+        zkb.a("arith homework json error!! json=" + localJSONObject2, new Object[0]);
+      }
+      if (!localbeyw.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Int += 1;
+      }
+      this.jdField_a_of_type_JavaUtilList.add(localbeyw);
+      i += 1;
+    }
+    this.jdField_a_of_type_OrgJsonJSONArray = localJSONArray;
+    this.jdField_a_of_type_OrgJsonJSONObject = localJSONObject1;
+    yqp.d("QQ.Troop.homework.ArithResult", "parse json cost=" + (System.currentTimeMillis() - l));
   }
   
-  public void dismissImmediately()
+  public int a()
   {
-    this.a.dismissImmediately();
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public View findViewById(int paramInt)
+  public beyw a(int paramInt)
   {
-    return this.a.findViewById(paramInt);
+    return (beyw)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public bhuf getActionSheet()
+  public String a()
   {
-    return this.a.getActionSheet();
-  }
-  
-  public int getIconWidth()
-  {
-    return this.a.getIconWidth();
-  }
-  
-  public String getOpenSource()
-  {
-    return this.a.getOpenSource();
-  }
-  
-  public Window getWindow()
-  {
-    return this.a.getWindow();
-  }
-  
-  public void hideTitle()
-  {
-    this.a.hideTitle();
-  }
-  
-  public boolean isShowing()
-  {
-    return this.a.isShowing();
-  }
-  
-  public void onConfigurationChanged()
-  {
-    this.a.onConfigurationChanged();
-  }
-  
-  public void refresh()
-  {
-    this.a.refresh();
-  }
-  
-  public void setActionSheetItems(List<ShareActionSheetBuilder.ActionSheetItem> paramList1, List<ShareActionSheetBuilder.ActionSheetItem> paramList2)
-  {
-    this.a.setActionSheetItems(paramList1, paramList2);
-  }
-  
-  public void setActionSheetItems(List<ShareActionSheetBuilder.ActionSheetItem>[] paramArrayOfList)
-  {
-    this.a.setActionSheetItems(paramArrayOfList);
-  }
-  
-  public void setActionSheetTitle(CharSequence paramCharSequence)
-  {
-    this.a.setActionSheetTitle(paramCharSequence);
-  }
-  
-  public void setAdvBgColor(int paramInt)
-  {
-    this.a.setAdvBgColor(paramInt);
-  }
-  
-  public void setAdvView(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    this.a.setAdvView(paramView, paramLayoutParams);
-  }
-  
-  public void setBottomBarInterface(beys parambeys)
-  {
-    this.a.setBottomBarInterface(parambeys);
-  }
-  
-  public void setCancelListener(DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    this.a.setCancelListener(paramOnCancelListener);
-  }
-  
-  public void setEnableNotTriggerVirtualNavigationBar(boolean paramBoolean)
-  {
-    this.a.setEnableNotTriggerVirtualNavigationBar(paramBoolean);
-  }
-  
-  public void setExtras(Bundle paramBundle)
-  {
-    this.a.setExtras(paramBundle);
-  }
-  
-  public void setIconMarginLeftRight(int paramInt)
-  {
-    this.a.setIconMarginLeftRight(paramInt);
-  }
-  
-  public void setIntentForStartForwardRecentActivity(Intent paramIntent)
-  {
-    this.a.setIntentForStartForwardRecentActivity(paramIntent);
-  }
-  
-  public void setItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
-  {
-    this.a.setItemClickListener(paramOnItemClickListener);
-  }
-  
-  public void setItemClickListenerV2(ShareActionSheet.OnItemClickListener paramOnItemClickListener)
-  {
-    this.a.setItemClickListenerV2(paramOnItemClickListener);
-  }
-  
-  public void setOnDismissListener(DialogInterface.OnDismissListener paramOnDismissListener)
-  {
-    this.a.setOnDismissListener(paramOnDismissListener);
-  }
-  
-  public void setOnShowListener(DialogInterface.OnShowListener paramOnShowListener)
-  {
-    this.a.setOnShowListener(paramOnShowListener);
-  }
-  
-  public void setOpenSource(String paramString)
-  {
-    this.a.setOpenSource(paramString);
-  }
-  
-  public void setRowMarginLeftRight(int paramInt)
-  {
-    this.a.setRowMarginLeftRight(paramInt);
-  }
-  
-  public void setRowVisibility(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.setRowVisibility(paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void show()
-  {
-    this.a.show();
-  }
-  
-  public void updateUI()
-  {
-    this.a.updateUI();
-  }
-  
-  public void updateUIIfShowing()
-  {
-    this.a.updateUIIfShowing();
+    yqp.d("QQ.Troop.homework.ArithResult", "toJson:" + this.jdField_a_of_type_Boolean);
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      int i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localObject = (beyw)this.jdField_a_of_type_JavaUtilList.get(i);
+        JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i);
+        if (((beyw)localObject).jdField_a_of_type_Boolean) {}
+        for (localObject = "YES";; localObject = "NO")
+        {
+          localJSONObject.put("item", localObject);
+          i += 1;
+          break;
+        }
+      }
+      this.jdField_a_of_type_OrgJsonJSONObject.put("items", this.jdField_a_of_type_OrgJsonJSONArray);
+    }
+    for (Object localObject = this.jdField_a_of_type_OrgJsonJSONObject.toString();; localObject = this.jdField_b_of_type_JavaLangString)
+    {
+      yqp.d("QQ.Troop.homework.ArithResult", "toJSON cost=" + (System.currentTimeMillis() - l));
+      return localObject;
+    }
   }
 }
 

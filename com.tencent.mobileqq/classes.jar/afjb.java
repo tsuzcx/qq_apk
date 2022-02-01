@@ -1,153 +1,250 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class afjb
+  extends anxg
 {
-  private ampt jdField_a_of_type_Ampt;
-  protected String a;
-  private final ArrayList<afjf> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final ArrayList<afjf> b = new ArrayList();
-  private final ArrayList<afje> c = new ArrayList();
+  public afjb(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public afjb(String paramString, long paramLong)
+  protected void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ampt = new afjc(this, 3, true, true, paramLong, true, true, "ArkAppLocationManager");
+    if (paramInt1 == 9)
+    {
+      Object localObject = this.a;
+      ((TroopDisbandActivity)localObject).jdField_b_of_type_Int &= 0xFFFFFFFE;
+      if (paramInt2 == 8)
+      {
+        if (this.a.jdField_a_of_type_Biax != null) {
+          this.a.jdField_a_of_type_Biax.b();
+        }
+        localObject = bglp.a(this.a, 230);
+        ((bgpa)localObject).setTitle(this.a.getString(2131695431));
+        ((bgpa)localObject).setMessage(this.a.getString(2131695432));
+        ((bgpa)localObject).setNegativeButton(this.a.getString(2131695463), new afjc(this, (bgpa)localObject));
+        ((bgpa)localObject).setPositiveButton(this.a.getString(2131718062), new afjd(this, (bgpa)localObject));
+        ((bgpa)localObject).show();
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (this.a.jdField_a_of_type_Biax == null) {
+      this.a.jdField_a_of_type_Biax = new biax(this.a);
+    }
+    this.a.jdField_a_of_type_Biax.b(2, 2131691895, 1500);
   }
   
-  public static boolean a()
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    boolean bool2 = true;
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    boolean bool1 = bool2;
-    if (localBaseActivity != null)
+    if (!bgjw.a(paramString, this.a.jdField_a_of_type_JavaLangString)) {}
+    while (paramInt1 != 9) {
+      return;
+    }
+    paramString = this.a;
+    paramString.jdField_b_of_type_Int &= 0xFFFFFFFE;
+    if (paramInt2 == 0)
     {
-      bool1 = bool2;
-      if (Build.VERSION.SDK_INT >= 23) {
-        if ((localBaseActivity.checkSelfPermission("android.permission.ACCESS_COARSE_LOCATION") != 0) || (localBaseActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)) {
-          break label68;
+      if (this.a.jdField_a_of_type_Biax != null) {
+        this.a.jdField_a_of_type_Biax.b();
+      }
+      paramString = new Intent();
+      paramString.putExtra("isNeedFinish", true);
+      paramString.putExtra("fin_tip_msg", this.a.getString(2131691898));
+      this.a.setResult(-1, paramString);
+      this.a.finish();
+      return;
+    }
+    if (this.a.jdField_a_of_type_Biax == null) {
+      this.a.jdField_a_of_type_Biax = new biax(this.a);
+    }
+    this.a.jdField_a_of_type_Biax.b(2, 2131691895, 1500);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
+  {
+    if (!bgjw.a(String.valueOf(paramLong1), this.a.jdField_a_of_type_JavaLangString)) {}
+    Object localObject;
+    label132:
+    label190:
+    label320:
+    label595:
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder(150);
+          ((StringBuilder)localObject).append("onOIDB0X899_0_Ret").append("| isSuccess = ").append(paramBoolean).append("| troopuin = ").append(paramLong1).append("| nFlag = ").append(paramInt1).append("| strErorMsg = ").append(paramString);
+          QLog.i("Q.troopdisband.disband", 2, ((StringBuilder)localObject).toString());
+        }
+        switch (paramInt1)
+        {
+        default: 
+          return;
+        case 4: 
+          if (paramBoolean)
+          {
+            if (paramList == null)
+            {
+              paramInt1 = 0;
+              paramInt2 = 0;
+              if (paramInt2 >= paramInt1) {
+                break label320;
+              }
+              paramString = (oidb_0x899.memberlist)paramList.get(paramInt2);
+              if ((paramString != null) && (paramString.uint64_member_uin.has())) {
+                break label190;
+              }
+            }
+            do
+            {
+              paramInt2 += 1;
+              break label132;
+              paramInt1 = paramList.size();
+              break;
+              localObject = String.valueOf(paramString.uint64_member_uin.get());
+            } while ((this.a.jdField_a_of_type_JavaUtilArrayList.contains(localObject)) || (localObject == null) || ("".equals(((String)localObject).trim())) || (bgjw.a(this.a.d, localObject)));
+            if (paramString.uint32_uin_flag.has()) {}
+            for (int i = paramString.uint32_uin_flag.get();; i = 0)
+            {
+              this.a.jdField_a_of_type_JavaUtilArrayList.add((String)localObject + "|" + String.valueOf(i));
+              break;
+            }
+          }
+          if (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+            break label595;
+          }
+          paramList = (anwd)this.a.app.a(20);
+          if ((paramList == null) || (!paramBoolean) || (paramLong2 <= 0L) || (this.a.jdField_b_of_type_Long != 0L)) {
+            break label418;
+          }
+          this.a.jdField_b_of_type_Long = paramLong2;
+          paramList.a(paramLong1, this.a.jdField_b_of_type_Long, 4, 0, 0);
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("Q.troopdisband.", 2, "handle_oidb_0x899_0|need get another package");
+      return;
+      if (this.a.jdField_a_of_type_Biax != null) {
+        this.a.jdField_a_of_type_Biax.b();
+      }
+      paramList = this.a;
+      paramList.jdField_b_of_type_Int &= 0xFFFFFFFD;
+      paramList = new Intent(this.a, TroopTransferActivity.class);
+      paramList.putExtra("leftViewText", this.a.getString(2131715889));
+      paramList.putExtra("TROOP_INFO_FLAG_EXT", this.a.jdField_a_of_type_Long);
+      paramList.putExtra("troop_auth_submit_time", this.a.jdField_a_of_type_Int);
+      paramList.putStringArrayListExtra("troopVipMembers", this.a.jdField_a_of_type_JavaUtilArrayList);
+      paramList.putExtra("troop_uin", this.a.jdField_a_of_type_JavaLangString);
+      paramList.putExtra("troop_code", this.a.c);
+      paramList.putExtra("uinname", this.a.jdField_b_of_type_JavaLangString);
+      this.a.startActivityForResult(paramList, 0);
+      return;
+      if (paramBoolean)
+      {
+        paramList = this.a;
+        paramList.jdField_b_of_type_Int &= 0xFFFFFFFD;
+        if (this.a.jdField_a_of_type_Biax == null) {
+          this.a.jdField_a_of_type_Biax = new biax(this.a);
+        }
+        this.a.jdField_a_of_type_Biax.b(2, 2131718728, 1500);
+        return;
+      }
+      paramList = this.a;
+      paramList.jdField_b_of_type_Int &= 0xFFFFFFFD;
+      if (this.a.jdField_a_of_type_Biax == null) {
+        this.a.jdField_a_of_type_Biax = new biax(this.a);
+      }
+      this.a.jdField_a_of_type_Biax.b(2, 2131718723, 1500);
+      return;
+    } while (!paramBoolean);
+    label418:
+    if (paramList == null)
+    {
+      paramInt1 = 0;
+      if ((paramInt1 > 0) && (paramInt1 < 6))
+      {
+        paramString = (TroopManager)this.a.app.getManager(52);
+        localObject = this.a;
+        if (paramString != null) {
+          break label873;
         }
       }
     }
-    label68:
-    for (bool1 = bool2;; bool1 = false)
+    label873:
+    for (paramString = null;; paramString = paramString.b(this.a.jdField_a_of_type_JavaLangString))
     {
-      ArkAppCenter.c("GetArkLocPermission", "CheckPermission is = " + bool1);
-      return bool1;
+      ((TroopDisbandActivity)localObject).jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramString;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberNum != paramInt1)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.wMemberNum = paramList.size();
+      }
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, false);
+      this.a.jdField_a_of_type_Afjf.b(paramList);
+      return;
+      paramInt1 = paramList.size();
+      break;
     }
   }
   
-  public void a()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.troopdisband.disband", 2, "onGetTroopInfoResult, isSuc=" + paramBoolean + ", groupUin : " + paramString);
     }
-    synchronized (this.b)
+    TroopDisbandActivity localTroopDisbandActivity;
+    if ((paramBoolean) && (bgjw.a(paramString, this.a.jdField_a_of_type_JavaLangString)))
     {
-      this.b.clear();
-      SosoInterface.b(this.jdField_a_of_type_Ampt);
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
-  }
-  
-  public void a(afje paramafje, boolean paramBoolean)
-  {
-    if (paramafje == null) {
-      return;
-    }
-    synchronized (this.c)
-    {
-      this.c.add(paramafje);
-      if (paramBoolean)
-      {
-        c();
-        return;
+      paramString = (TroopManager)this.a.app.getManager(52);
+      localTroopDisbandActivity = this.a;
+      if (paramString != null) {
+        break label108;
       }
     }
-    SosoInterface.a(this.jdField_a_of_type_Ampt);
-  }
-  
-  public void a(afjf paramafjf)
-  {
-    if (paramafjf == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    label108:
+    for (paramString = null;; paramString = paramString.b(this.a.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramafjf);
-      c();
+      localTroopDisbandActivity.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramString;
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, false);
       return;
     }
   }
   
-  public void b()
+  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
   {
-    if ((this.b.size() == 0) && (this.c.size() == 0)) {
-      SosoInterface.b(this.jdField_a_of_type_Ampt);
+    if ((!paramBoolean) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    TroopInfo localTroopInfo = null;
+    int i = 0;
+    label21:
+    if ((localTroopInfo == null) && (i < paramArrayList.size()))
     {
-      ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-      ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
-        ((afjf)((Iterator)???).next()).a();
+      localTroopInfo = (TroopInfo)paramArrayList.get(i);
+      if (localTroopInfo != null) {
+        break label56;
       }
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    label56:
+    while (!bgjw.a(localTroopInfo.troopuin, this.a.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
+      i += 1;
+      break label21;
+      break;
     }
-  }
-  
-  public void b(afjf paramafjf)
-  {
-    if (paramafjf == null) {
-      return;
-    }
-    synchronized (this.b)
-    {
-      this.b.add(paramafjf);
-      c();
-      return;
-    }
-  }
-  
-  protected void c()
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (!a())
-    {
-      localBaseActivity.requestPermissions(new afjd(this, localBaseActivity), 1, new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" });
-      return;
-    }
-    grant();
-  }
-  
-  @QQPermissionDenied(1)
-  @TargetApi(23)
-  public void denied()
-  {
-    SosoInterface.a(this.jdField_a_of_type_Ampt);
-    ArkAppCenter.c("GetArkLocPermission", "CheckPermission location is denied");
-  }
-  
-  @QQPermissionGrant(1)
-  @TargetApi(23)
-  public void grant()
-  {
-    SosoInterface.a(this.jdField_a_of_type_Ampt);
-    ArkAppCenter.c("GetArkLocPermission", "CheckPermission location is granted ");
+    this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = localTroopInfo;
+    this.a.a(localTroopInfo, false);
   }
 }
 

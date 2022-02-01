@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.widget;
 
+import aaum;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -9,10 +10,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import betq;
+import biam;
 import com.tencent.biz.ui.CustomMenuBar;
-import ndp;
-import yxj;
+import nmi;
 
 public class PublicMenuBar
   extends CustomMenuBar
@@ -22,15 +22,15 @@ public class PublicMenuBar
     super(paramContext, paramAttributeSet);
   }
   
-  public View a(yxj paramyxj, int paramInt)
+  public View a(aaum paramaaum, int paramInt)
   {
-    String str = paramyxj.a();
-    Drawable localDrawable = paramyxj.a();
+    String str = paramaaum.b();
+    Drawable localDrawable = paramaaum.a();
     View localView = ((LayoutInflater)super.getContext().getSystemService("layout_inflater")).inflate(paramInt, null);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131370213);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131370203);
-    TextView localTextView = (TextView)localView.findViewById(2131370216);
-    if ((localImageView1 != null) && (paramyxj.a() > 0))
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131370653);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131370644);
+    TextView localTextView = (TextView)localView.findViewById(2131370656);
+    if ((localImageView1 != null) && (paramaaum.a() > 0))
     {
       localImageView1.setVisibility(0);
       if (localDrawable == null) {
@@ -41,19 +41,19 @@ public class PublicMenuBar
       if (str == null) {
         break label219;
       }
-      if (ndp.a(str) <= 10) {
+      if (nmi.a(str) <= 10) {
         break label209;
       }
-      localTextView.setText(ndp.a(str, 10, "..."));
+      localTextView.setText(nmi.a(str, 10, "..."));
     }
     for (;;)
     {
-      localView.setOnClickListener(new betq(this, paramyxj.b(), paramyxj.a()));
+      localView.setOnClickListener(new biam(this, paramaaum.c(), paramaaum.a()));
       localView.setFocusable(true);
       localView.setClickable(true);
-      paramyxj = new LinearLayout.LayoutParams(-1, -1, 1.0F);
-      paramyxj.gravity = 17;
-      localView.setLayoutParams(paramyxj);
+      paramaaum = new LinearLayout.LayoutParams(-1, -1, 1.0F);
+      paramaaum.gravity = 17;
+      localView.setLayoutParams(paramaaum);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       return localView;
       if (localImageView1 == null) {
@@ -84,7 +84,7 @@ public class PublicMenuBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PublicMenuBar
  * JD-Core Version:    0.7.0.1
  */

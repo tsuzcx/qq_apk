@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
 
-class wtm
-  implements View.OnClickListener
+public abstract interface wtm
 {
-  wtm(wtd paramwtd, wwk paramwwk) {}
+  public abstract void a(@Nullable wrs paramwrs, Error paramError);
   
-  public void onClick(View paramView)
-  {
-    wxj.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.jdField_a_of_type_Wwk.dismiss();
-  }
+  public abstract void a(@Nullable wrs paramwrs, @NonNull List<StoryVideoItem> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wtm
  * JD-Core Version:    0.7.0.1
  */

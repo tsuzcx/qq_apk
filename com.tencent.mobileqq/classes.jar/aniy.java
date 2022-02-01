@@ -1,70 +1,38 @@
-import android.os.Build;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.Card;
 
-public class aniy
-  implements anih
+class aniy
 {
-  private aniy(anif paramanif) {}
+  String jdField_a_of_type_JavaLangString = "0";
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString = "0";
+  boolean jdField_b_of_type_Boolean = false;
+  String c = "0";
+  String d = "0";
+  String e = "0";
+  String f = "0";
+  String g = "0";
+  String h = "0";
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public void a(Card paramCard)
   {
-    if (!anjy.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.DEVICE_INFORMATION")) {}
-    do
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_Boolean)
     {
-      return false;
-      if ("GetModelName".equals(paramString))
-      {
-        paramVariantWrapper.SetString(Build.MODEL);
-        return true;
-      }
-      if ("GetScreenWidth".equals(paramString))
-      {
-        paramString = anob.a;
-        paramVariantWrapper.SetInt((int)(paramString.widthPixels / paramString.density));
-        return true;
-      }
-      if ("GetScreenHeight".equals(paramString))
-      {
-        paramString = anob.a;
-        paramVariantWrapper.SetInt((int)(paramString.heightPixels / paramString.density));
-        return true;
-      }
-      if ("GetPixelRatio".equals(paramString))
-      {
-        paramVariantWrapper.SetDouble(anob.a());
-        return true;
-      }
-    } while (!"GetIdentifier".equals(paramString));
-    paramArrayOfVariantWrapper = bdgk.a();
-    paramString = paramArrayOfVariantWrapper;
-    if (TextUtils.isEmpty(paramArrayOfVariantWrapper)) {}
-    try
-    {
-      paramString = bhsp.a("6973c4");
-      paramArrayOfVariantWrapper = paramString;
-      if (paramString == null)
-      {
-        paramArrayOfVariantWrapper = "";
-        QLog.e("ArkAppDeviceModule", 1, "get identifer: null, fix it with empty string");
-      }
-      paramString = paramArrayOfVariantWrapper;
-      if (this.a.jdField_a_of_type_Long != 0L) {
-        paramString = MD5Coding.encodeHexStr(paramArrayOfVariantWrapper);
-      }
-      paramVariantWrapper.SetString(paramString);
-      return true;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("-");
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append("-");
+      localStringBuilder.append(this.c).append("-");
+      localStringBuilder.append(this.d);
+      paramCard.strLocationCodes = localStringBuilder.toString();
     }
-    catch (Exception paramString)
+    if (this.jdField_b_of_type_Boolean)
     {
-      for (;;)
-      {
-        QLog.e("ArkAppDeviceModule", 1, "get identifer: exception, catch it");
-        paramString = paramArrayOfVariantWrapper;
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.e).append("-");
+      localStringBuilder.append(this.f).append("-");
+      localStringBuilder.append(this.g).append("-");
+      localStringBuilder.append(this.h);
+      paramCard.strHometownCodes = localStringBuilder.toString();
     }
   }
 }

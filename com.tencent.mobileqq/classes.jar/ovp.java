@@ -1,38 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.XRecyclerView;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public class ovp
-  implements bifk
+public abstract interface ovp
 {
-  public ovp(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString);
   
-  public void a()
-  {
-    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "endOfRefresh.");
-  }
-  
-  public void a(XRecyclerView paramXRecyclerView, int paramInt)
-  {
-    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startLoadMore.");
-    paramXRecyclerView = ovz.a();
-    if (paramXRecyclerView != null) {
-      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.f(this.a), ReadInJoyCGIDynamicChannelFragment.a(this.a).a(), 10);
-    }
-  }
-  
-  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
-  {
-    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startTopRefresh.");
-    paramXRecyclerView = ovz.a();
-    if (paramXRecyclerView != null) {
-      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.e(this.a));
-    }
-  }
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ovp
  * JD-Core Version:    0.7.0.1
  */

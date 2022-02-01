@@ -1,49 +1,15 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.widget.WaveView;
+import android.view.View;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-public class bich
-  implements Handler.Callback
+public abstract interface bich
 {
-  public bich(WaveView paramWaveView) {}
+  public abstract void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage == null) {
-      return false;
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.invalidate();
-      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
-      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
-      if (WaveView.d(this.a) > 0) {
-        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
-      }
-      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
-      continue;
-      this.a.invalidate();
-      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
-      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
-      if (WaveView.d(this.a) > 0) {
-        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
-      }
-      WaveView.a(this.a).removeMessages(1002);
-      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
-      continue;
-      WaveView.a(this.a).removeMessages(1001);
-      WaveView.a(this.a).removeMessages(1002);
-    }
-  }
+  public abstract void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bich
  * JD-Core Version:    0.7.0.1
  */

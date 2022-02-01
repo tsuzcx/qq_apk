@@ -1,8 +1,10 @@
-public abstract interface blar
+final class blar
+  extends ThreadLocal<char[]>
 {
-  public abstract void a(blao paramblao, long paramLong1, long paramLong2);
-  
-  public abstract void a(blao paramblao, String paramString, boolean paramBoolean, int paramInt);
+  protected char[] a()
+  {
+    return new char[1024];
+  }
 }
 
 

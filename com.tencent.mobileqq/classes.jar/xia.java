@@ -1,58 +1,18 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
+import android.support.annotation.NonNull;
 
-public abstract class xia<PACKAGE extends xhr>
-  extends BaseAdapter
+public abstract interface xia
 {
-  public int a;
-  protected Context a;
-  protected PACKAGE a;
-  protected xht a;
+  public abstract void a(@NonNull xhz paramxhz);
   
-  public xia(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
+  public abstract void a(@NonNull xhz paramxhz, @NonNull Throwable paramThrowable);
   
-  public void a(PACKAGE paramPACKAGE)
-  {
-    this.jdField_a_of_type_Xhr = paramPACKAGE;
-  }
+  public abstract void b(@NonNull xhz paramxhz);
   
-  public void a(xht paramxht)
-  {
-    this.jdField_a_of_type_Xht = paramxht;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_Xhr == null) {
-      return 0;
-    }
-    int i = this.jdField_a_of_type_Xhr.b();
-    int j = this.jdField_a_of_type_Xhr.a();
-    if (j < 1) {
-      throw new IllegalArgumentException("per item count < 1 :" + j);
-    }
-    if (i % j == 0) {
-      return i / j;
-    }
-    return i / j + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
+  public abstract void c(@NonNull xhz paramxhz);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xia
  * JD-Core Version:    0.7.0.1
  */

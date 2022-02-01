@@ -1,6 +1,6 @@
 package com.tencent.gdtad.aditem;
 
-import aamx;
+import ackh;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class GdtBaseAdItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtBaseAdItem> CREATOR = new aamx();
+  public static final Parcelable.Creator<GdtBaseAdItem> CREATOR = new ackh();
   public Bundle a;
   public Class a;
   public String a;
@@ -184,7 +184,7 @@ public class GdtBaseAdItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtBaseAdItem
  * JD-Core Version:    0.7.0.1
  */

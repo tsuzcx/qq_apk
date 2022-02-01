@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class atum
-  implements View.OnClickListener
+  implements bhhd
 {
-  atum(atuh paramatuh, View.OnClickListener paramOnClickListener) {}
+  atum(atul paramatul, atve paramatve) {}
   
-  public void onClick(View paramView)
+  public void callback(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    if ((paramInt == 1) || (paramInt == 2))
+    {
+      this.jdField_a_of_type_Atve.a();
+      return;
+    }
+    this.jdField_a_of_type_Atve.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atum
  * JD-Core Version:    0.7.0.1
  */

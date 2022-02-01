@@ -1,24 +1,12 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import android.graphics.Canvas;
 
-public class bkph
+public abstract interface bkph
 {
-  protected static final String a = BaseApplicationImpl.getContext().getCacheDir().getPath();
-  protected static final String b;
-  protected static final String c = BaseApplicationImpl.getContext().getFilesDir().getParent();
+  public abstract void a_(Canvas paramCanvas);
   
-  static
-  {
-    if ((BaseApplicationImpl.getContext().getExternalFilesDir(null) != null) && (BaseApplicationImpl.getContext().getExternalCacheDir() != null)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      b = BaseApplicationImpl.getContext().getExternalFilesDir(null).getPath();
-      a = BaseApplicationImpl.getContext().getExternalCacheDir().getPath();
-      return;
-    }
-    b = BaseApplicationImpl.getContext().getFilesDir().getPath();
-  }
+  public abstract int getHeight();
+  
+  public abstract int getWidth();
 }
 
 

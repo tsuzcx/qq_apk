@@ -1,17 +1,21 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aivj
-  implements ajez
+  implements aivb
 {
-  public aivj(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
+  public aivj(TroopView paramTroopView) {}
   
-  public void a(String paramString)
+  public void a(View paramView, int paramInt)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    this.a.startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "AddContactTroopClassifyAdapter.onItemClickListener onItemClick. position:" + paramInt);
+    }
+    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
+    TroopView.b(this.a, paramInt);
+    TroopView.a(this.a).setCurrentItem(paramInt, false);
   }
 }
 

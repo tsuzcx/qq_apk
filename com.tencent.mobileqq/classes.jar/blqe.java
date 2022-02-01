@@ -1,6 +1,10 @@
-public abstract interface blqe
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class blqe
 {
-  public abstract void a(int paramInt);
+  public ImageView a;
+  public TextView a;
 }
 
 

@@ -1,17 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
 public class acpn
-  implements DialogInterface.OnClickListener
+  extends QIPCModule
 {
-  public acpn(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
+  private static volatile acpn a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private acpn(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    super(paramString);
+  }
+  
+  public static acpn a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new acpn("gdt_ipc");
+      }
+      return a;
     }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    acqy.b("gdt_ipc", "Action  " + paramString);
+    if ("do_app_jump".equals(paramString))
+    {
+      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+      {
+        paramString = (acqz)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110);
+        paramBundle.setClassLoader(getClass().getClassLoader());
+        paramBundle = (GdtBaseAdItem)paramBundle.getParcelable("gdtBaseAdItem");
+        paramString.a(BaseApplicationImpl.getContext(), paramBundle);
+        callbackResult(paramInt, EIPCResult.createSuccessResult(null));
+      }
+    }
+    else {
+      return null;
+    }
+    callbackResult(paramInt, EIPCResult.createResult(-1, null));
+    return null;
   }
 }
 

@@ -16,7 +16,7 @@ class SkinEngine$a
     if (SkinEngine.SWITCH_DEBUG) {
       Log.d("SkinEngine.switch", "UpdateTask.doInBackground start");
     }
-    i.a("SkinEngine", 1, "UpdateTask switch theme start");
+    h.a("SkinEngine", 1, "UpdateTask switch theme start");
     this.a.a(paramVarArgs[0]);
     System.gc();
     Thread.yield();
@@ -32,7 +32,7 @@ class SkinEngine$a
     if (SkinEngine.SWITCH_DEBUG) {
       Log.d("SkinEngine.switch", "UpdateTask.onPostExecute start");
     }
-    i.a("SkinEngine", 1, "UpdateTask switch theme end");
+    h.a("SkinEngine", 1, "UpdateTask switch theme end");
     SkinEngine.a(this.a, null);
     SkinEngine.a(this.a, SkinEngine.a(this.a));
     Intent localIntent = new Intent("com.tencent.qplus.THEME_INVALIDATE");

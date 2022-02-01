@@ -1,189 +1,248 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.PhotoListHelper.2;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-class agmo
-  implements View.OnClickListener
+public class agmo
+  implements agma, agmn
 {
-  agmo(agmg paramagmg) {}
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  Map<Integer, Intent> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void onClick(View paramView)
+  agmo(aglu paramaglu, BaseChatPie paramBaseChatPie)
   {
-    if (BaseChatItemLayout.a) {}
-    label314:
-    label834:
-    label1105:
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    paramaglu.a(this);
+  }
+  
+  private PhotoListPanel a()
+  {
+    PhotoListPanel localPhotoListPanel = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
+      localPhotoListPanel = (PhotoListPanel)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().b(4);
+    }
+    return localPhotoListPanel;
+  }
+  
+  private void e()
+  {
+    PhotoListPanel localPhotoListPanel = a();
+    if (localPhotoListPanel == null) {}
+    XPanelContainer localXPanelContainer;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null);
+      localXPanelContainer = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    } while ((localXPanelContainer == null) || (localXPanelContainer.a() != 4));
+    localPhotoListPanel.a();
+    localPhotoListPanel.postDelayed(new PhotoListHelper.2(this, localPhotoListPanel), 2000L);
+    localPhotoListPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+  }
+  
+  private void f()
+  {
+    PhotoListPanel localPhotoListPanel = a();
+    if (localPhotoListPanel != null) {
+      localPhotoListPanel.l();
+    }
+  }
+  
+  public Intent a(int paramInt)
+  {
+    return (Intent)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public void a()
+  {
+    int i;
+    if (Build.VERSION.SDK_INT >= 23) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0)) {
+        i = 1;
+      }
+    }
     for (;;)
     {
-      return;
-      if (this.a.jdField_a_of_type_Aixi != null) {
-        this.a.jdField_a_of_type_Aixi.a(0);
-      }
-      long l = System.currentTimeMillis();
-      if (ajet.a(agmg.jdField_a_of_type_Long, l))
+      if (i == 0)
       {
-        agmg.jdField_a_of_type_Long = l;
-        int m = bjcf.a(paramView.getTag(2131377425), 0);
-        MessageForQQWalletMsg localMessageForQQWalletMsg = (MessageForQQWalletMsg)paramView.getTag();
-        if ((localMessageForQQWalletMsg == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null))
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.requestPermissions(new agmp(this), 3, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+        return;
+        i = 0;
+      }
+      else
+      {
+        b();
+        return;
+        i = 1;
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 3: 
+      b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.hashCode());
+      return;
+    case 9: 
+      f();
+      return;
+    case 5: 
+      e();
+      return;
+    }
+    b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.hashCode());
+    d();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    PhotoListPanel localPhotoListPanel = a();
+    if (localPhotoListPanel != null) {
+      if (paramInt2 == -1) {
+        switch (paramInt1)
         {
-          QLog.i(agmg.jdField_a_of_type_JavaLangString, 2, "error, qqWalletMsg: " + localMessageForQQWalletMsg + ", sessionInfo: " + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-          return;
-        }
-        Object localObject2 = null;
-        Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        Object localObject4;
-        Object localObject3;
-        if (localMessageForQQWalletMsg.mQQWalletTransferMsg != null)
-        {
-          localObject4 = localMessageForQQWalletMsg.mQQWalletTransferMsg.elem;
-          localMessageForQQWalletMsg.mQQWalletRedPacketMsg = new QQWalletRedPacketMsg();
-          localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem = localMessageForQQWalletMsg.mQQWalletTransferMsg.elem;
-          localMessageForQQWalletMsg.msgtype = -2025;
-          localMessageForQQWalletMsg.mQQWalletRedPacketMsg.authkey = "";
-          localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId = "";
-          localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redtype = 0;
-          localMessageForQQWalletMsg.mQQWalletRedPacketMsg.templateId = 0;
-          localMessageForQQWalletMsg.mQQWalletRedPacketMsg.isOpened = true;
-          localMessageForQQWalletMsg.mQQWalletTransferMsg = null;
-          localMessageForQQWalletMsg.msgData = localMessageForQQWalletMsg.getBytes();
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localMessageForQQWalletMsg.uniseq, localMessageForQQWalletMsg.msgData);
-          localObject3 = localObject1;
-          localObject2 = null;
-          localObject1 = localObject4;
-        }
-        for (;;)
-        {
-          if (localObject1 == null) {
-            break label1105;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d(agmg.jdField_a_of_type_JavaLangString, 2, "elem.actionsPriority: " + ((QQWalletTransferMsgElem)localObject1).actionsPriority);
-          }
-          int i;
-          if (TextUtils.isEmpty(((QQWalletTransferMsgElem)localObject1).actionsPriority))
-          {
-            ajet.b(paramView.getContext(), ((QQWalletTransferMsgElem)localObject1).linkUrl);
-            return;
-            if (localMessageForQQWalletMsg.mQQWalletRedPacketMsg == null) {
-              break label1089;
-            }
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1000) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1004) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10002) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10004) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1008))
-            {
-              i = 1;
-              label499:
-              if ((i == 0) || (localMessageForQQWalletMsg.isSend())) {
-                break label1086;
-              }
-              localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-            }
-          }
-          for (;;)
-          {
-            if ((localMessageForQQWalletMsg.fromHBList != 1) && ((localMessageForQQWalletMsg.istroop == 1) || (localMessageForQQWalletMsg.istroop == 3000)) && (localMessageForQQWalletMsg.mQQWalletRedPacketMsg != null)) {
-              aizw.a(localMessageForQQWalletMsg.frienduin, localMessageForQQWalletMsg.istroop, localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId);
-            }
-            localObject4 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem;
-            localObject2 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.authkey;
-            localMessageForQQWalletMsg.msgtype = -2025;
-            localMessageForQQWalletMsg.mQQWalletRedPacketMsg.isOpened = true;
-            localMessageForQQWalletMsg.msgData = localMessageForQQWalletMsg.getBytes();
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localMessageForQQWalletMsg.uniseq, localMessageForQQWalletMsg.msgData);
-            azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "transferaccountmsg", "show", 0, 0, "" + localMessageForQQWalletMsg.mQQWalletRedPacketMsg.templateId, "", "", "");
-            if ((((QQWalletTransferMsgElem)localObject4).skinId > 0) && ((localMessageForQQWalletMsg.messageType == 2) || (localMessageForQQWalletMsg.messageType == 3))) {
-              azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "wrap.aio.click", 0, 0, "" + ((QQWalletTransferMsgElem)localObject4).skinId, "", "", "");
-            }
-            localObject3 = localObject1;
-            localObject1 = localObject4;
-            break label314;
-            i = 0;
-            break label499;
-            localObject4 = ((QQWalletTransferMsgElem)localObject1).actionsPriority.split("\\|");
-            int j = 0;
-            i = 0;
-            if (j < localObject4.length) {
-              if (!TextUtils.isEmpty(localObject4[j])) {
-                break label858;
-              }
-            }
-            for (;;)
-            {
-              for (;;)
-              {
-                j += 1;
-                break label834;
-                break;
-                try
-                {
-                  label858:
-                  k = Integer.valueOf(localObject4[j]).intValue();
-                  if (k == 1)
-                  {
-                    if (!ajet.b(paramView.getContext(), ((QQWalletTransferMsgElem)localObject1).linkUrl)) {
-                      break label1081;
-                    }
-                    if (!QLog.isColorLevel()) {
-                      break;
-                    }
-                    QLog.d(agmg.jdField_a_of_type_JavaLangString, 2, "start browser...");
-                    return;
-                  }
-                }
-                catch (Exception localException)
-                {
-                  int k;
-                  for (;;)
-                  {
-                    if (QLog.isDevelopLevel()) {
-                      localException.printStackTrace();
-                    }
-                    k = i;
-                    if (QLog.isColorLevel())
-                    {
-                      QLog.d(agmg.jdField_a_of_type_JavaLangString, 2, "QQWalletMsgItemBuilder failed to convert String:" + localObject4[j] + " to Interger,", localException);
-                      k = i;
-                    }
-                  }
-                  if (k == 2)
-                  {
-                    String str = bjcf.a(((QQWalletTransferMsgElem)localObject1).jumpUrl, agmg.a(this.a, m), true);
-                    if (!ajet.a(paramView.getContext(), str)) {
-                      break label1081;
-                    }
-                    if (!QLog.isColorLevel()) {
-                      break;
-                    }
-                    QLog.d(agmg.jdField_a_of_type_JavaLangString, 2, "do jump action...");
-                    return;
-                  }
-                  if ((k == 3) && (agmg.a(this.a, paramView.getContext(), (QQWalletTransferMsgElem)localObject1, (String)localObject2, localObject3, localMessageForQQWalletMsg, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)))
-                  {
-                    if (!QLog.isColorLevel()) {
-                      break;
-                    }
-                    QLog.d(agmg.jdField_a_of_type_JavaLangString, 2, "do wallet action...");
-                    return;
-                  }
-                  i = -1;
-                }
-              }
-            }
-          }
-          localObject3 = localObject1;
-          localObject4 = null;
-          localObject1 = localObject2;
-          localObject2 = localObject4;
         }
       }
+    }
+    for (;;)
+    {
+      localPhotoListPanel.setLastRequestCode(paramInt1);
+      return;
+      localPhotoListPanel.a(paramInt1, paramIntent);
+    }
+  }
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    int j = 0;
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramIntent);
+    if (QLog.isColorLevel())
+    {
+      if (paramIntent != null) {
+        break label54;
+      }
+      QLog.d("PhotoListHelper", 2, "setSelectedPhotoData null, code=" + paramInt);
+    }
+    label54:
+    while (!paramIntent.hasExtra("PhotoConst.SELECTED_PATHS")) {
+      return;
+    }
+    Object localObject = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
+    paramIntent = paramIntent.getIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS");
+    StringBuilder localStringBuilder = new StringBuilder().append("setSelectedPhotoData checked size=");
+    if (localObject == null)
+    {
+      i = 0;
+      localObject = localStringBuilder.append(i).append(",checkedIndex size=");
+      if (paramIntent != null) {
+        break label153;
+      }
+    }
+    label153:
+    for (int i = j;; i = paramIntent.size())
+    {
+      QLog.d("PhotoListHelper", 2, i + ", code=" + paramInt);
+      return;
+      i = ((ArrayList)localObject).size();
+      break;
+    }
+  }
+  
+  public boolean a()
+  {
+    PhotoListPanel localPhotoListPanel = a();
+    if (localPhotoListPanel != null)
+    {
+      localPhotoListPanel.e();
+      return true;
+    }
+    return false;
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 13, 9, 5 };
+  }
+  
+  public void b()
+  {
+    int i = 0;
+    aglj localaglj = (aglj)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(24);
+    int j = localaglj.a();
+    if (localaglj.a())
+    {
+      if (j >= 20)
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131694292, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDimensionPixelSize(2131298998));
+        return;
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1033) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1034)) {
+        i = 1;
+      }
+      if ((i != 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.o()))
+      {
+        localaglj.a(true);
+        return;
+      }
+      agaa.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), j);
+      d();
+      return;
+    }
+    if (j > 0)
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131694267, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDimensionPixelSize(2131298998));
+      return;
+    }
+    if (a())
+    {
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC2E", "0X800AC2E", 2, 0, "", "", "", "");
+      return;
+    }
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC2E", "0X800AC2E", 1, 0, "", "", "", "");
+    agaa.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, new Intent(), null);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListHelper", 2, "removeSelectedPhotoData code=" + paramInt);
+    }
+  }
+  
+  public void c()
+  {
+    PhotoListPanel localPhotoListPanel = a();
+    if (localPhotoListPanel != null)
+    {
+      localPhotoListPanel.a(true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.ar();
+    }
+  }
+  
+  public void d()
+  {
+    PhotoListPanel localPhotoListPanel = a();
+    if (localPhotoListPanel != null) {
+      localPhotoListPanel.g();
     }
   }
 }

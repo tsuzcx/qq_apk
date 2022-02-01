@@ -1,12 +1,10 @@
 public abstract interface zhs
 {
-  public abstract void c(int paramInt);
-  
-  public abstract void j();
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zhs
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.ad.tangram.device;
 import android.content.Context;
 import android.support.annotation.Keep;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.util.a;
+import com.tencent.ad.tangram.util.d;
 
 @Keep
 public final class AdMacAddressMD5Digest
@@ -45,7 +45,7 @@ public final class AdMacAddressMD5Digest
         if (TextUtils.isEmpty(paramString)) {
           break;
         }
-        paramString = a.md5(paramString, "UTF-8");
+        paramString = d.md5(paramString, "UTF-8");
         if (TextUtils.isEmpty(paramString)) {
           break;
         }
@@ -57,7 +57,7 @@ public final class AdMacAddressMD5Digest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.device.AdMacAddressMD5Digest
  * JD-Core Version:    0.7.0.1
  */

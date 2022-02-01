@@ -1,8 +1,19 @@
-import java.io.File;
+import java.util.Formatter;
 
-public class bkpb
+public final class bkpb
+  implements bkpc
 {
-  public static final String a = bkpd.f + File.separator + "camera_emo_default_template.json";
+  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
+  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
+  
+  public String a(int paramInt)
+  {
+    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
+    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
+    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
+    return this.jdField_a_of_type_JavaUtilFormatter.toString();
+  }
 }
 
 

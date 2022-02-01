@@ -1,73 +1,35 @@
-import UserGrowth.stNewIconStyle;
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.view.ViewStub;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tnh
-  extends tck<tmv>
+  implements View.OnClickListener
 {
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private tni jdField_a_of_type_Tni;
-  private tnj jdField_a_of_type_Tnj;
+  public tnh(BridgeModule paramBridgeModule, String paramString) {}
   
-  public tnh(Context paramContext, tnj paramtnj)
+  public void onClick(View paramView)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Tnj = paramtnj;
-  }
-  
-  private stSimpleMetaFeed a()
-  {
-    tmv localtmv = (tmv)a();
-    if ((localtmv != null) && ((localtmv.a() instanceof stSimpleMetaFeed))) {
-      return (stSimpleMetaFeed)localtmv.a();
-    }
-    return null;
-  }
-  
-  private void b(tmv paramtmv)
-  {
-    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      if (this.jdField_a_of_type_Tni == null)
-      {
-        this.jdField_a_of_type_Tni = new tni(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Tnj);
-        this.jdField_a_of_type_Tni.a(this.jdField_a_of_type_AndroidViewViewStub);
-      }
-      this.jdField_a_of_type_Tni.a(paramtmv);
+      localJSONObject.put("timestamp", System.currentTimeMillis());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      label30:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-  }
-  
-  protected void a() {}
-  
-  public void a(tmv paramtmv)
-  {
-    super.a(paramtmv);
-    b(paramtmv);
-  }
-  
-  protected int b()
-  {
-    return 2131559876;
-  }
-  
-  protected void b() {}
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_Tni != null) {
-      this.jdField_a_of_type_Tni.c();
+    catch (JSONException localJSONException)
+    {
+      break label30;
     }
-  }
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131379575));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tnh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,83 +1,62 @@
 import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.FaceItem;
-import com.tencent.av.business.manager.voiceRecog.VoiceRecogTips;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.FaceToolbar;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.MultiMembersAudioUI;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import java.util.ArrayList;
 
 public class mga
-  implements mjp
+  extends ldy
 {
-  public mga(FaceToolbar paramFaceToolbar) {}
+  public mga(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void a(long paramLong)
+  protected void a(int paramInt)
   {
-    EffectSettingUi.a(this.a.mApp, paramLong);
+    if (this.a.b()) {
+      return;
+    }
+    this.a.c(paramInt);
   }
   
-  public void a(long paramLong, mkj parammkj)
+  protected void a(long paramLong, ArrayList<lco> paramArrayList, int paramInt1, int paramInt2)
   {
-    int j = 1;
-    if (AudioHelper.e()) {
-      QLog.w(FaceToolbar.TAG, 1, "onEffectClick, seq[" + paramLong + "], id[" + parammkj.a + "]");
+    if (this.a.b()) {
+      return;
     }
-    EffectSettingUi.a(this.a.mApp, paramLong);
-    Object localObject = this.a.mApp.a();
-    if (this.a.checkDimmStatus(parammkj)) {}
+    this.a.a(paramLong, paramArrayList, paramInt1, paramInt2);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (this.a.b()) {}
     do
     {
+      do
+      {
+        return;
+      } while (paramLong != this.a.jdField_a_of_type_Long);
+      if (paramBoolean)
+      {
+        this.a.b(paramInt);
+        return;
+      }
+    } while (((paramInt != 10) && (paramInt != 1)) || (!MultiVideoEnterPageActivity.a(this.a)));
+    this.a.a(paramInt);
+  }
+  
+  protected void d()
+  {
+    if (this.a.b()) {}
+    while (this.a.jdField_a_of_type_Boolean) {
       return;
-      localObject = ((VideoController)localObject).a(this.a.mApp.a().a().d) + "";
-      VoiceRecogTips.a(this.a.mApp, parammkj);
-      if (!parammkj.a.equals("0")) {
-        break;
-      }
-      this.a.notifyEvent(Integer.valueOf(6101), null, Boolean.valueOf(true));
-      ljx.a(2, (String)localObject);
-      ljx.a(2);
-    } while (!this.a.mApp.a(13));
-    ((lkj)this.a.mApp.a(13)).a(paramLong, "onEffectClick2");
-    return;
-    AudioHelper.a(parammkj.a, false);
-    new mez(paramLong, parammkj.a, true, 1).a(this.a.mApp);
-    FaceItem localFaceItem = (FaceItem)this.a.mFaceManager.a(parammkj.a);
-    int i = j;
-    if (localFaceItem != null)
-    {
-      if (!localFaceItem.getType().equalsIgnoreCase("face")) {
-        break label314;
-      }
-      i = j;
     }
-    for (;;)
-    {
-      ljx.a(parammkj.a, i, (String)localObject);
-      ljx.a(parammkj.a, i);
-      return;
-      label314:
-      if (localFaceItem.getType().equalsIgnoreCase("pendant"))
-      {
-        i = 2;
-      }
-      else if (localFaceItem.getType().equalsIgnoreCase("voicesticker"))
-      {
-        i = 3;
-      }
-      else
-      {
-        i = j;
-        if (localFaceItem.getType().equalsIgnoreCase("creativecop")) {
-          i = 4;
-        }
-      }
-    }
+    super.d();
+    ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.e();
+    localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(localArrayList.size(), localArrayList);
+    this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mga
  * JD-Core Version:    0.7.0.1
  */

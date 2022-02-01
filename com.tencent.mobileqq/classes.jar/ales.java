@@ -1,49 +1,82 @@
-import android.text.TextUtils;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ales
-  implements Comparable<ales>
+  extends alej
+  implements Cloneable
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public short b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e = -1;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g = 0;
-  public String g;
-  public int h;
-  
-  public int a(ales paramales)
+  public ales(Context paramContext)
   {
-    if (paramales == null) {}
-    do
-    {
-      return -1;
-      if (this.jdField_a_of_type_Boolean == paramales.jdField_a_of_type_Boolean) {
-        return -(int)(this.c - paramales.c);
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    return 0;
+    this.jdField_a_of_type_JavaLangString = anni.a(2131698400);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
-  public boolean a(String paramString)
+  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    return (this.jdField_a_of_type_Long == this.b) || ((!TextUtils.isEmpty(paramString)) && (paramString.equals(String.valueOf(this.jdField_a_of_type_Long))));
+    if ((paramObject instanceof ales))
+    {
+      paramObject = (ales)paramObject;
+      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
+      return paramObject;
+    }
+    paramObject = new ales(BaseApplication.getContext());
+    paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
+    return paramObject;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    QLog.d("TroopConfessToMeMsg", 2, "deSerialize");
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      if ((this.c != null) && (this.c.length() != 0)) {
+        this.jdField_a_of_type_Beps.a(this.c);
+      }
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Beps != null) {
+        this.c = this.jdField_a_of_type_Beps.a();
+      }
+      localJSONObject.put("messageNavInfo", this.c);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    return localJSONObject.toString().getBytes();
   }
 }
 

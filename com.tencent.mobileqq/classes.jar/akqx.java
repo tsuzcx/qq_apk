@@ -1,8 +1,12 @@
-import javax.microedition.khronos.opengles.GL;
+import java.util.Comparator;
 
-public abstract interface akqx
+final class akqx
+  implements Comparator<akqw>
 {
-  public abstract GL a(GL paramGL);
+  public int a(akqw paramakqw1, akqw paramakqw2)
+  {
+    return paramakqw1.a - paramakqw2.a;
+  }
 }
 
 

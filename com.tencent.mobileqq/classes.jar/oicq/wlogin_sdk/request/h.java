@@ -134,15 +134,15 @@ public class h
   
   byte[] a(int paramInt)
   {
-    Object localObject1 = ByteBuffer.allocate("6.0.0.2424".length() + 24 + 2 + 2 + 1 + 4);
+    Object localObject1 = ByteBuffer.allocate("6.0.0.2432".length() + 24 + 2 + 2 + 1 + 4);
     Object localObject2 = t.b(this.a.h);
-    ((ByteBuffer)localObject1).put(t.af);
+    ((ByteBuffer)localObject1).put(t.ag);
     ((ByteBuffer)localObject1).putInt((int)((async_context)localObject2)._sappid);
     ((ByteBuffer)localObject1).putInt((int)((async_context)localObject2)._sub_appid);
     ((ByteBuffer)localObject1).putShort((short)0);
     ((ByteBuffer)localObject1).putLong(this.a.f);
-    ((ByteBuffer)localObject1).putShort((short)"6.0.0.2424".length());
-    ((ByteBuffer)localObject1).put("6.0.0.2424".getBytes());
+    ((ByteBuffer)localObject1).putShort((short)"6.0.0.2432".length());
+    ((ByteBuffer)localObject1).put("6.0.0.2432".getBytes());
     ((ByteBuffer)localObject1).putShort((short)this.b);
     ((ByteBuffer)localObject1).putShort((short)this.c);
     if (paramInt == -1000) {}
@@ -150,7 +150,7 @@ public class h
     {
       ((ByteBuffer)localObject1).put((byte)i);
       ((ByteBuffer)localObject1).putInt(paramInt);
-      localObject2 = new tlv_t8().get_tlv_8(0, t.u, 0);
+      localObject2 = new tlv_t8().get_tlv_8(0, t.v, 0);
       ByteBuffer localByteBuffer = ByteBuffer.allocate(((ByteBuffer)localObject1).capacity() + 4 + 4 + (tlv_t508.userBuf.length + 4) + 8 + localObject2.length);
       localByteBuffer.putShort((short)2);
       localByteBuffer.putShort((short)3);

@@ -1,475 +1,322 @@
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Vibrator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.swipeback.PostTable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharpP.SharpPUtil;
-import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
-import cooperation.qzone.webviewplugin.QzonePhotoWallPlugin.2;
-import cooperation.qzone.webviewplugin.QzonePhotoWallPlugin.3;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.PageGestureProxy;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import mqq.util.WeakReference;
 
+@ProxyService(proxy=PageGestureProxy.class)
 public class bjyg
-  extends bjxz
+  implements aqck, PageGestureProxy
 {
-  public static Set<String> a;
-  private byte jdField_a_of_type_Byte = 115;
-  public int a;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject = null;
+  private Vibrator jdField_a_of_type_AndroidOsVibrator;
+  protected aqcb a;
+  private aqcc jdField_a_of_type_Aqcc;
+  private aqck jdField_a_of_type_Aqck;
+  private aqfc jdField_a_of_type_Aqfc;
+  private aqgi jdField_a_of_type_Aqgi;
+  private bgpa jdField_a_of_type_Bgpa;
+  public PostTable a;
+  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
   private boolean jdField_a_of_type_Boolean;
-  public int b;
-  private boolean b;
-  int c = 0;
-  int d = 3;
-  int e = 0;
+  private boolean b = true;
+  private boolean c;
   
-  static
+  private ColorNote a()
   {
-    jdField_a_of_type_JavaUtilSet = new HashSet();
-  }
-  
-  public bjyg()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 4;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public static double a(Context paramContext, int paramInt, bjxx parambjxx)
-  {
-    if (parambjxx != null)
-    {
-      int i = parambjxx.jdField_a_of_type_Int;
-      int j = parambjxx.jdField_b_of_type_Int;
-      int k;
-      if (i < j)
-      {
-        k = j;
-        j = i;
-      }
-      for (;;)
-      {
-        paramContext = bjdt.a(paramContext, k, j, paramInt, false);
-        double d3;
-        if ((paramContext == null) || ((k <= paramContext.width) && (j <= paramContext.height)))
-        {
-          d3 = 0.0D;
-          return d3;
-        }
-        double d1;
-        if (k > j) {
-          d1 = k / paramContext.width;
-        }
-        for (double d2 = j / paramContext.height;; d2 = k / paramContext.height)
-        {
-          d3 = d1;
-          if (d1 > d2) {
-            break;
-          }
-          return d2;
-          d1 = j / paramContext.width;
-        }
-        k = i;
-      }
+    if (this.jdField_a_of_type_Aqck != null) {
+      return this.jdField_a_of_type_Aqck.getColorNote();
     }
-    return 0.0D;
+    return null;
   }
   
-  private int a()
+  private void a()
   {
-    if (this.d > 1) {
-      return 1;
-    }
-    return 2;
-  }
-  
-  private int a(JSONObject paramJSONObject)
-  {
-    switch (paramJSONObject.optInt("compressType", 0))
+    if (this.jdField_a_of_type_Aqfc == null)
     {
-    default: 
-      return 0;
-    case 1: 
-      return 2;
-    }
-    return 3;
-  }
-  
-  public static String a(String paramString, Context paramContext)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    Object localObject;
-    do
-    {
-      return paramString;
-      localObject = new File(paramString);
-    } while ((!((File)localObject).exists()) || (!((File)localObject).canRead()) || (!SharpPUtil.isSharpPFile((File)localObject)));
-    try
-    {
-      if (!bhqa.a(paramContext))
-      {
-        QLog.w("QzonePhotoWallPlugin", 1, "------ sharpp is not avaliable.");
-        return paramString;
-      }
-    }
-    catch (Throwable paramContext) {}
-    for (;;)
-    {
-      QLog.e("QzonePhotoWallPlugin", 1, "decodeSharpP catch an exception: ", paramContext);
-      return paramString;
-      localObject = SharpPUtil.decodeSharpPByFilePath(((File)localObject).getAbsolutePath());
-      if (localObject == null) {
-        break;
-      }
-      String str = String.valueOf(System.currentTimeMillis()) + ".jpeg";
-      paramContext = bdzf.a(alof.bd + str);
-      boolean bool = bjup.a((Bitmap)localObject, paramContext, Bitmap.CompressFormat.JPEG, 90, true);
-      if (!bool) {
-        break;
-      }
-      try
-      {
-        QLog.i("QzonePhotoWallPlugin", 1, "------ sharpp file save success:" + str);
-        return paramContext;
-      }
-      catch (Throwable localThrowable)
-      {
-        paramString = paramContext;
-        paramContext = localThrowable;
-      }
+      this.jdField_a_of_type_Aqcc = new aqcc();
+      this.jdField_a_of_type_Aqcc.a(new bjyj(this));
+      this.jdField_a_of_type_Aqfc = new aqfc();
+      this.jdField_a_of_type_Aqfc.a(this.jdField_a_of_type_Aqcc);
     }
   }
   
-  private static void a(Activity paramActivity, WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte)
+  private void a(Activity paramActivity)
   {
-    int i = AbsBaseWebViewActivity.a(paramWebViewPlugin, paramByte);
-    paramIntent.putExtra("keyAction", "actionSelectPicture");
-    paramIntent.putExtra("requestCode", i);
-    paramActivity.startActivity(paramIntent);
-  }
-  
-  private void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.c = paramString.getInt("pickerType");
-      this.d = paramString.getInt("maxPickCount");
-      this.e = a(paramString);
-      this.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("userInfo");
-      this.jdField_a_of_type_Boolean = paramString.optBoolean("clipByH5");
-      this.jdField_b_of_type_Boolean = paramString.optBoolean("noNeedImageData", false);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  private void a(ArrayList<String> paramArrayList)
-  {
-    ThreadManager.post(new QzonePhotoWallPlugin.2(this, paramArrayList), 8, null, false);
-  }
-  
-  private void a(ArrayList<String> paramArrayList, boolean paramBoolean)
-  {
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (i < paramArrayList.size())
-        {
-          Object localObject = (String)paramArrayList.get(i);
-          long l1 = System.currentTimeMillis();
-          if (!TextUtils.isEmpty((CharSequence)localObject))
-          {
-            String str2 = a((String)localObject, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getApplicationContext());
-            jdField_a_of_type_JavaUtilSet.add(str2);
-            localObject = bjxu.a(str2);
-            if (localObject != null)
-            {
-              QLog.i("QzonePhotoWallPlugin", 2, "@coverOptimize with =" + ((bjxx)localObject).jdField_a_of_type_Int + " height=" + ((bjxx)localObject).jdField_b_of_type_Int + " compressType=" + this.e);
-              if (this.e != 3)
-              {
-                double d1 = a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), this.e, (bjxx)localObject);
-                if (d1 > 0.0D)
-                {
-                  ((bjxx)localObject).jdField_a_of_type_Int = ((int)(((bjxx)localObject).jdField_a_of_type_Int / d1));
-                  ((bjxx)localObject).jdField_b_of_type_Int = ((int)(((bjxx)localObject).jdField_b_of_type_Int / d1));
-                }
-              }
-              QLog.i("QzonePhotoWallPlugin", 2, "@coverOptimize change width =" + ((bjxx)localObject).jdField_a_of_type_Int + " height=" + ((bjxx)localObject).jdField_b_of_type_Int + " compressType=" + this.e);
-              String str1 = bjxu.a(str2, ((bjxx)localObject).jdField_a_of_type_Int, ((bjxx)localObject).jdField_b_of_type_Int);
-              boolean bool = TextUtils.isEmpty(str1);
-              if (!bool) {
-                try
-                {
-                  JSONObject localJSONObject = new JSONObject();
-                  localJSONObject.put("currentIndex", i);
-                  String str3;
-                  if ((a() == 2) || (!paramBoolean))
-                  {
-                    QLog.i("QzonePhotoWallPlugin", 2, "@coverOptimize before path =" + str2);
-                    str3 = Base64.encodeToString(str2.getBytes(), 2);
-                    localJSONObject.put("identifier", str3);
-                    QLog.i("QzonePhotoWallPlugin", 2, "@coverOptimize toH5 identifier =" + str3);
-                  }
-                  int j = 0;
-                  if (!this.jdField_b_of_type_Boolean)
-                  {
-                    str3 = "" + "data:image/jpg;base64," + str1;
-                    j = str1.length();
-                    localJSONObject.put("imageSize", j);
-                    localJSONObject.put("data", str3);
-                  }
-                  this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZImagePickerJSInterface.onReceive(" + localJSONObject.toString() + ")");
-                  long l2 = System.currentTimeMillis();
-                  QLog.i("QzonePhotoWallPlugin", 2, "@coverOptimize  path=" + str2 + " timediff=" + (l2 - l1) + " length=" + j + " compressType =" + this.e + " with =" + ((bjxx)localObject).jdField_a_of_type_Int + " height=" + ((bjxx)localObject).jdField_b_of_type_Int);
-                }
-                catch (OutOfMemoryError localOutOfMemoryError)
-                {
-                  QLog.e("QzonePhotoWallPlugin", 2, "imageBase64 size=" + str1.length() + ",compressType=" + this.e + ",width=" + ((bjxx)localObject).jdField_a_of_type_Int + ",height=" + ((bjxx)localObject).jdField_b_of_type_Int + "," + localOutOfMemoryError);
-                  bflz.a().a(alud.a(2131712535), 1);
-                }
-              }
-            }
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      catch (Throwable paramArrayList)
-      {
-        QLog.e("QzonePhotoWallPlugin", 1, "toBase64: " + paramArrayList);
-      }
-      i += 1;
-    }
+    this.jdField_a_of_type_Aqcb = new aqcb(paramActivity, false, true);
+    this.jdField_a_of_type_Aqcb.a(paramActivity);
+    this.jdField_a_of_type_Aqcb.a(this);
+    this.jdField_a_of_type_Aqcb.a(new bjyh(this, paramActivity));
+    this.jdField_a_of_type_Aqcb.a(new bjyi(this, paramActivity));
+    this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable = new PostTable(paramActivity);
+    ((ViewGroup)paramActivity.getWindow().getDecorView()).addView(this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.setVisibility(4);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.a(0.0D);
+    this.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)paramActivity.getSystemService("vibrator"));
   }
   
   private void b()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), NewPhotoListActivity.class);
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("PhotoConst.MAXUM_SELECTED_NUM", this.d);
-    ((Bundle)localObject).putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", QQBrowserActivity.class.getName());
-    ((Bundle)localObject).putString("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-    if (this.d > 1) {}
-    for (boolean bool = false;; bool = true)
-    {
-      ((Bundle)localObject).putBoolean("PhotoConst.IS_SINGLE_MODE", bool);
-      ((Bundle)localObject).putBoolean("PhotoConst.IS_SINGLE_DERECTBACK_MODE", this.jdField_a_of_type_Boolean);
-      localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
-      ((Bundle)localObject).putBoolean("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-      ((Bundle)localObject).putInt("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
-      ((Bundle)localObject).putInt("uintype", 0);
-      localIntent.putExtras((Bundle)localObject);
-      bjdt.c(localIntent);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-      if (localObject == null) {
-        break;
-      }
-      a((Activity)localObject, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, localIntent, this.jdField_a_of_type_Byte);
-      return;
-    }
-    QLog.e("QzonePhotoWallPlugin", 1, "launchCustom MobileAlbum activity is null");
-  }
-  
-  private void b(String paramString)
-  {
-    if ("MobileAlbum".equals(paramString)) {
-      if (bjvb.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), new bjyh(this), 1)) {}
-    }
-    while (!"QzoneAlbum".equals(paramString))
-    {
-      return;
-      b();
-      return;
-    }
-    paramString = new Bundle();
-    paramString.putInt("key_personal_album_enter_model", a());
-    paramString.putInt("_input_max", this.d);
-    paramString.putBoolean("key_multiple_model_need_download_img", true);
-    bjea localbjea = bjea.a();
-    localbjea.a = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getAccount();
-    paramString.putString("keyAction", "actionSelectPicture");
-    paramString.putBoolean("key_need_change_to_jpg", false);
-    bjdt.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), localbjea, paramString, this.jdField_a_of_type_Byte);
-  }
-  
-  private void b(ArrayList<String> paramArrayList)
-  {
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-          this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-        }
-        localJSONObject.put("userInfo", this.jdField_a_of_type_OrgJsonJSONObject);
-        if (paramArrayList != null) {
-          continue;
-        }
-        i = 0;
-        localJSONObject.put("totalPickCount", i);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZImagePickerJSInterface.doSelectPhoto(" + localJSONObject.toString() + ")");
-      }
-      catch (JSONException localJSONException)
-      {
-        int i;
-        localJSONException.printStackTrace();
-        continue;
-      }
-      if ((a() == 2) && (paramArrayList != null) && (paramArrayList.size() != 0)) {
-        jdField_a_of_type_JavaUtilSet.add(paramArrayList.get(0));
-      }
-      ThreadManager.post(new QzonePhotoWallPlugin.3(this, paramArrayList), 8, null, false);
-      return;
-      i = paramArrayList.size();
-    }
-  }
-  
-  public void a(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.a(paramIntent, paramByte, paramInt);
-    if ((paramByte == this.jdField_a_of_type_Byte) && (paramInt == -1))
-    {
-      ArrayList localArrayList2 = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-      ArrayList localArrayList1;
-      if (localArrayList2 != null)
-      {
-        localArrayList1 = localArrayList2;
-        if (!localArrayList2.isEmpty()) {}
-      }
-      else
-      {
-        localArrayList2 = new ArrayList(1);
-        paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-        localArrayList1 = localArrayList2;
-        if (!TextUtils.isEmpty(paramIntent))
-        {
-          localArrayList2.add(paramIntent);
-          localArrayList1 = localArrayList2;
-        }
-      }
-      b(localArrayList1);
-    }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((!paramString2.equals("QZImagePicker")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      bool1 = false;
-    }
+    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {}
+    Object localObject;
     do
     {
-      do
-      {
-        return bool1;
-        if (!paramString3.equals("choosePhoto")) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramVarArgs == null);
-      bool1 = bool2;
-    } while (paramVarArgs.length <= 0);
-    a(paramVarArgs[0]);
-    this.e = 0;
-    if (this.c == 0)
+      return;
+      if (this.jdField_a_of_type_Bgpa != null) {
+        break;
+      }
+      localObject = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    } while (localObject == null);
+    this.jdField_a_of_type_Bgpa = new bgpa((Context)localObject, 2131755823);
+    this.jdField_a_of_type_Bgpa.setContentView(2131559009);
+    this.jdField_a_of_type_Bgpa.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Bgpa.setTitle(((Activity)localObject).getString(2131690759));
+    this.jdField_a_of_type_Bgpa.setNegativeButton(((Activity)localObject).getString(2131690758), new bjyk(this, (Activity)localObject));
+    for (;;)
     {
-      b("MobileAlbum");
-      return true;
-    }
-    b("QzoneAlbum");
-    return true;
-    if (paramString3.equals("getLocalImage")) {
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        this.e = a(paramJsBridgeListener);
-        paramJsBridgeListener = paramJsBridgeListener.optString("identifier", "");
-        if (TextUtils.isEmpty(paramJsBridgeListener))
-        {
-          QLog.w("QzonePhotoWallPlugin", 2, "@coverOptimize  identifier is null or size is 0 ");
-          return false;
-        }
-        paramJsBridgeListener = new String(Base64.decode(paramJsBridgeListener, 2));
-        paramString1 = new ArrayList();
-        paramString1.add(paramJsBridgeListener);
-        QLog.i("QzonePhotoWallPlugin", 1, "@coverOptimize  identifier =" + paramJsBridgeListener);
-        if (!jdField_a_of_type_JavaUtilSet.contains(paramJsBridgeListener))
-        {
-          QLog.w("QzonePhotoWallPlugin", 2, "@coverOptimize  identifier is wrong identifier = " + paramJsBridgeListener);
-          return false;
-        }
-        this.jdField_b_of_type_Boolean = false;
-        a(paramString1);
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-        return true;
+      this.jdField_a_of_type_Bgpa.show();
+      localObject = this.jdField_a_of_type_Bgpa.getTitleTextView();
+      ((View)localObject).setClickable(true);
+      ((View)localObject).setFocusable(true);
+      ((View)localObject).setFocusableInTouchMode(true);
+      bgfz.a((View)localObject, true);
+      return;
+      if (this.jdField_a_of_type_Bgpa.isShowing()) {
+        this.jdField_a_of_type_Bgpa.dismiss();
       }
     }
-    return false;
   }
   
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
+  public aqcb a()
   {
-    if ((paramLong == 8589934600L) && (Integer.valueOf(String.valueOf(paramMap.get("requestCode"))).intValue() == this.jdField_a_of_type_Byte))
+    return this.jdField_a_of_type_Aqcb;
+  }
+  
+  public void a(aqck paramaqck)
+  {
+    this.jdField_a_of_type_Aqck = paramaqck;
+    a();
+    this.jdField_a_of_type_Aqfc.a(paramaqck);
+  }
+  
+  public ColorNote getColorNote()
+  {
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null)
     {
-      int i = Integer.valueOf(String.valueOf(paramMap.get("requestCode"))).intValue();
-      Intent localIntent = (Intent)paramMap.get("data");
-      int j = Integer.valueOf(String.valueOf(paramMap.get("resultCode"))).intValue();
-      if ((i == this.jdField_a_of_type_Byte) && (j == -1))
+      MiniAppInfo localMiniAppInfo = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+      if (QLog.isColorLevel()) {
+        QLog.d("PageGuestureProxyImpl", 2, "getColorNote, appId: " + localMiniAppInfo.appId + ", name: " + localMiniAppInfo.name);
+      }
+      return new aqcs().a(16842752).a(localMiniAppInfo.appId).b(localMiniAppInfo.name).c(localMiniAppInfo.desc).d(localMiniAppInfo.iconUrl).a();
+    }
+    return null;
+  }
+  
+  public void onActivityCreate(Activity paramActivity)
+  {
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
+    a(paramActivity);
+  }
+  
+  public void onActivityDestroy(Activity paramActivity)
+  {
+    this.jdField_a_of_type_Aqcb.c();
+  }
+  
+  public void onActivityFinish(Activity paramActivity) {}
+  
+  public void onActivityPause(Activity paramActivity)
+  {
+    this.jdField_a_of_type_Aqcb.b();
+  }
+  
+  public void onActivityResume(Activity paramActivity)
+  {
+    this.jdField_a_of_type_Aqcb.a();
+  }
+  
+  public void onActivityStop(Activity paramActivity)
+  {
+    QLog.d("PageGuestureProxyImpl", 1, "onActivityStop");
+    this.jdField_a_of_type_Aqcb.b();
+  }
+  
+  public void onCreateMiniAppInfo(MiniAppInfo paramMiniAppInfo)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
+  }
+  
+  public void onLoadUrl(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
+    }
+    a(this);
+  }
+  
+  public void onMoveTaskToBack(Activity paramActivity)
+  {
+    if ((this.jdField_a_of_type_Aqcb != null) && (this.jdField_a_of_type_Aqcb.c())) {
+      this.jdField_a_of_type_Aqcb.d();
+    }
+  }
+  
+  public void onPageWebViewInit()
+  {
+    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
+    {
+      Activity localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (localActivity != null) {
+        this.jdField_a_of_type_Aqgi = new aqgi(localActivity);
+      }
+    }
+    a();
+  }
+  
+  public void onProcessTouchEvent(MotionEvent paramMotionEvent)
+  {
+    QLog.d("PageGuestureProxyImpl", 1, "onProcessTouchEvent");
+    double d;
+    Object localObject;
+    boolean bool1;
+    if ((this.jdField_a_of_type_Aqcc != null) && (this.jdField_a_of_type_Aqcc.b()) && (this.jdField_a_of_type_Aqgi != null) && (this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable != null))
+    {
+      d = this.jdField_a_of_type_Aqgi.a(paramMotionEvent);
+      this.jdField_a_of_type_Aqcc.a();
+      localObject = this.jdField_a_of_type_Aqck.getColorNote();
+      if (localObject == null) {
+        break label323;
+      }
+      bool1 = this.jdField_a_of_type_Aqcc.a(((ColorNote)localObject).getServiceType(), ((ColorNote)localObject).getSubType());
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) {
+        break label383;
+      }
+    }
+    label227:
+    label383:
+    for (boolean bool2 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.isLimitedAccessApp();; bool2 = false)
+    {
+      if ((d > 0.0D) && (!bool1) && (!bool2) && (this.jdField_a_of_type_MqqUtilWeakReference != null))
       {
-        if (a() != 1) {
-          break label128;
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.setVisibility(0);
+          this.jdField_a_of_type_Boolean = true;
         }
-        paramString = localIntent.getStringArrayListExtra("key_cover_selected_img_path");
+        localObject = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+        if ((this.jdField_a_of_type_Aqcc.a()) && (localObject != null)) {
+          if (this.jdField_a_of_type_Aqgi.a(paramMotionEvent, (Context)localObject))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.b();
+            if ((!this.c) && (this.jdField_a_of_type_AndroidOsVibrator != null))
+            {
+              this.jdField_a_of_type_AndroidOsVibrator.vibrate(20L);
+              this.c = true;
+            }
+            this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.a(d);
+            if (this.b)
+            {
+              bcst.b(null, "dc00898", "", "", "0X800A741", "0X800A741", aqca.a(this.jdField_a_of_type_Aqck.getColorNote().mServiceType), 0, "", "", "", "");
+              this.b = false;
+            }
+          }
+        }
       }
       for (;;)
       {
-        b(paramString);
-        return true;
-        label128:
-        paramString = new ArrayList();
-        paramMap = localIntent.getStringExtra("key_cover_selected_img_path");
-        if (!TextUtils.isEmpty(paramMap)) {
-          paramString.add(paramMap);
+        if ((paramMotionEvent.getActionMasked() == 1) && (this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable != null))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.setVisibility(4);
+          this.jdField_a_of_type_Boolean = false;
+        }
+        return;
+        bool1 = false;
+        break;
+        this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.a();
+        this.c = false;
+        break label227;
+        this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.c();
+        break label227;
+        if ((d < 1.0E-008D) || (bool1))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.setVisibility(4);
+          this.jdField_a_of_type_Boolean = false;
         }
       }
     }
-    return super.a(paramString, paramLong, paramMap);
+  }
+  
+  public boolean onViewReleasedAndNeedScrollOriginPosition(MotionEvent paramMotionEvent)
+  {
+    boolean bool2 = true;
+    QLog.d("PageGuestureProxyImpl", 1, "onViewReleased");
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null) {}
+    for (boolean bool1 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.isLimitedAccessApp();; bool1 = false)
+    {
+      if (bool1) {
+        return false;
+      }
+      ColorNote localColorNote = a();
+      Activity localActivity;
+      if (localColorNote != null)
+      {
+        bool1 = this.jdField_a_of_type_Aqcc.a(localColorNote.getServiceType(), localColorNote.getSubType());
+        this.b = true;
+        if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
+          break label222;
+        }
+        localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+        label85:
+        if ((this.jdField_a_of_type_Aqgi == null) || (!this.jdField_a_of_type_Aqgi.a(paramMotionEvent, localActivity)) || (bool1) || (localColorNote == null)) {
+          break label278;
+        }
+        if (!this.jdField_a_of_type_Aqcc.a()) {
+          break label228;
+        }
+        paramMotionEvent = localColorNote.parseBundle();
+        paramMotionEvent.putInt("color_note_curd_from_type", 1);
+        this.jdField_a_of_type_Aqcc.a(paramMotionEvent);
+        bcst.b(null, "dc00898", "", "", "0X800A742", "0X800A742", aqca.a(this.jdField_a_of_type_Aqck.getColorNote().mServiceType), 0, "", "", "", "");
+        bool1 = false;
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.setVisibility(4);
+          this.jdField_a_of_type_Boolean = false;
+        }
+        return bool1;
+        bool1 = false;
+        break;
+        label222:
+        localActivity = null;
+        break label85;
+        label228:
+        this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.a(0.0D);
+        b();
+        bcst.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
+        bool1 = bool2;
+        continue;
+        label278:
+        bool1 = false;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjyg
  * JD-Core Version:    0.7.0.1
  */

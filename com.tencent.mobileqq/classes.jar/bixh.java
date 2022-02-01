@@ -1,195 +1,211 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.text.InputFilter;
-import android.text.InputFilter.LengthFilter;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import mqq.app.AppRuntime;
+import com.tencent.open.downloadnew.common.NoticeParam;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class bixh
-  extends bdjz
-  implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener, View.OnClickListener, bdpc
 {
-  private int jdField_a_of_type_Int;
-  protected Context a;
-  private AnimationDrawable jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  protected bdpb a;
-  protected bixi a;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  public static String a;
+  public static ArrayList<String> a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
   
-  public bixh(Context paramContext, AppRuntime paramAppRuntime, int paramInt, bixi parambixi)
+  static
   {
-    super(paramContext, 2131755801);
-    this.jdField_a_of_type_Bixi = parambixi;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    super.setContentView(2131558955);
-    super.setNegativeButton(2131690648, this);
-    super.setPositiveButton(2131692401, this);
-    super.setTitle(2131689694);
-    ((TextView)super.findViewById(2131365237)).setGravity(3);
-    paramInt = bdoo.a(6.0F);
-    int i = bdoo.a(16.0F);
-    int j = bdoo.a(40.0F);
-    int k = bdoo.a(50.0F);
-    paramContext = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    paramContext.setOrientation(0);
-    paramContext.setGravity(16);
-    paramAppRuntime = new LinearLayout.LayoutParams(j, j);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    paramContext.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramAppRuntime);
-    this.jdField_a_of_type_AndroidWidgetButton = new Button(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetButton.setId(2131372398);
-    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843779);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130772213));
-    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130843784, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetButton.setHeight(k);
-    paramContext.addView(this.jdField_a_of_type_AndroidWidgetButton);
-    super.findViewById(2131365233).setVisibility(8);
-    paramAppRuntime = (RelativeLayout)super.findViewById(2131365229);
-    parambixi = new RelativeLayout.LayoutParams(0, -2);
-    parambixi.addRule(3, 2131365237);
-    parambixi.addRule(5, 2131365237);
-    parambixi.addRule(7, 2131365237);
-    parambixi.bottomMargin = i;
-    parambixi.topMargin = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131368343));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131692407);
-    Object localObject = new InputFilter.LengthFilter(60);
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { localObject });
-    localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetEditText.getLayoutParams();
-    paramContext.setId(2131364781);
-    ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131364781);
-    paramAppRuntime.addView(paramContext, parambixi);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    super.setOnDismissListener(this);
+    jdField_a_of_type_JavaLangString = "com.tencent.open.download.start";
+    b = "com.tencent.open.download.pause";
+    c = "com.tencent.open.download.restart";
+    d = "com.tencent.open.download.complete";
+    e = "com.tencent.open.download.open";
+    f = "com.tencent.open.download.yyb";
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_JavaUtilArrayList.add(d);
+    jdField_a_of_type_JavaUtilArrayList.add(e);
+    jdField_a_of_type_JavaUtilArrayList.add(b);
+    jdField_a_of_type_JavaUtilArrayList.add(f);
+    jdField_a_of_type_JavaUtilArrayList.add(c);
+    jdField_a_of_type_JavaUtilArrayList.add(jdField_a_of_type_JavaLangString);
   }
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public static PendingIntent a(int paramInt, NoticeParam paramNoticeParam)
   {
-    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130843784, 0, 0, 0);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public boolean a(String paramString, int paramInt, Bitmap paramBitmap, Drawable paramDrawable)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString))
+    Intent localIntent = new Intent();
+    if (paramNoticeParam != null)
     {
-      bool1 = bool2;
-      if (arso.a(paramString))
-      {
-        bool1 = bool2;
-        if (paramInt > 0)
-        {
-          this.jdField_a_of_type_AndroidWidgetButton.setText(afxr.a(paramInt));
-          this.jdField_a_of_type_AndroidWidgetButton.setPadding(bdoo.a(20.0F), 0, Math.min(afxr.a(this.jdField_a_of_type_AndroidContentContext, paramInt, null, null, 0), bdoo.a(200.0F)), 0);
-          if (paramDrawable == null) {
-            break label107;
-          }
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-        }
-      }
+      localIntent.putExtra("noticeParam", paramNoticeParam);
+      localIntent.putExtra("param_notifyid", bixd.a().a(paramNoticeParam.f, paramNoticeParam.b, paramNoticeParam.jdField_a_of_type_JavaLangString));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.b = paramInt;
-      bool1 = true;
-      return bool1;
-      label107:
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    paramNoticeParam = biqd.r();
+    if (!TextUtils.isEmpty(paramNoticeParam)) {
+      localIntent.putExtra("processName", paramNoticeParam);
     }
-  }
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
+    paramNoticeParam = paramNoticeParam.replace(":", ".");
     switch (paramInt)
     {
     }
     for (;;)
     {
-      super.cancel();
-      return;
-      if (this.jdField_a_of_type_Bixi != null) {
-        this.jdField_a_of_type_Bixi.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+      localIntent.setPackage(MobileQQ.getContext().getPackageName());
+      return PendingIntent.getBroadcast(biip.a().a(), (int)(System.currentTimeMillis() & 0xFFFFFFF), localIntent, 134217728);
+      localIntent.setAction(b + "." + paramNoticeParam);
+      continue;
+      localIntent.setAction(jdField_a_of_type_JavaLangString + "." + paramNoticeParam);
+      continue;
+      localIntent.setAction(d + "." + paramNoticeParam);
+      continue;
+      localIntent.setAction(f + "." + paramNoticeParam);
+      continue;
+      localIntent.setAction(e + "." + paramNoticeParam);
+    }
+  }
+  
+  public static Intent a(Bundle paramBundle)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("adapter_action", "action_push_app_detail");
+    localIntent.setClassName("com.tencent.plugin.qappcenter", "com.tencent.open.appcenter.QZoneAppWebViewActivity");
+    localIntent.putExtras(paramBundle);
+    Object localObject1 = new StringBuffer("sd://qapp_center_detail.htm?");
+    Object localObject2 = paramBundle.keySet().iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      str1 = (String)((Iterator)localObject2).next();
+      String str2 = paramBundle.getString(str1);
+      ((StringBuffer)localObject1).append(str1).append("=").append(str2).append("&");
+    }
+    localObject2 = biqd.a(((StringBuffer)localObject1).toString());
+    localObject1 = localObject2[0];
+    localObject2 = "" + localObject2[1];
+    String str1 = paramBundle.getString("from");
+    localIntent.putExtra("uinRestore", biip.a().a());
+    localIntent.putExtra("APP_URL_NOTICE", (String)localObject1);
+    if (a(str1)) {}
+    for (localObject1 = a(paramBundle);; localObject1 = localObject2)
+    {
+      localIntent.putExtra("APP_PARAMS_NOTICE", (String)localObject1);
+      bisy.b("IntentFactory", "params=" + (String)localObject2 + "\n pushParams=" + a(paramBundle));
+      if (paramBundle.containsKey("friendUin"))
+      {
+        localIntent.putExtra("friendUin", paramBundle.getString("friendUin"));
+        localIntent.putExtra("isTroop", paramBundle.getInt("isTroop"));
+      }
+      localIntent.addFlags(603979776);
+      return localIntent;
+    }
+  }
+  
+  public static Intent a(String paramString1, String paramString2, int paramInt)
+  {
+    if ((paramString1 == null) || (paramString1.length() == 0)) {
+      return null;
+    }
+    Object localObject = biqd.a(paramString1);
+    paramString1 = (String)((HashMap)localObject).get("appid");
+    String str1 = (String)((HashMap)localObject).get("sendtime");
+    String str2 = (String)((HashMap)localObject).get("packname");
+    String str3 = (String)((HashMap)localObject).get("packetversion");
+    String str4 = (String)((HashMap)localObject).get("msgtype");
+    String str5 = (String)((HashMap)localObject).get("type");
+    String str6 = (String)((HashMap)localObject).get("downurl");
+    localObject = (String)((HashMap)localObject).get("via");
+    String str7 = biqa.a((String)localObject);
+    bisy.b("IntentFactory", "appid=" + paramString1 + "&sendtime=" + str1 + "&packname=" + str2 + "&packetversion=" + str3 + "&msgtype=" + str4 + "&type=" + str5 + "&downUrl=" + str6 + "&via=" + (String)localObject);
+    int i = biub.a(str2);
+    int j = biub.b(bivr.a().a(paramString1));
+    Bundle localBundle = new Bundle();
+    localBundle.putString("id", paramString1);
+    localBundle.putString("from", "2458");
+    localBundle.putString("downloadUrl", str6);
+    localBundle.putString("packageName", str2);
+    localBundle.putString("installedVersion", String.valueOf(i));
+    localBundle.putString("localVersion", String.valueOf(j));
+    localBundle.putString("serverApkVersion", str3);
+    localBundle.putString("typeid", str5);
+    localBundle.putString("msgType", str4);
+    localBundle.putString("sendTime", str1);
+    localBundle.putString("via", (String)localObject);
+    localBundle.putString("splitvia", str7);
+    localBundle.putString("friendUin", paramString2);
+    localBundle.putInt("isTroop", paramInt);
+    return a(localBundle);
+  }
+  
+  protected static String a(Bundle paramBundle)
+  {
+    Object localObject1;
+    if (paramBundle == null)
+    {
+      localObject1 = "";
+      return localObject1;
+    }
+    String str3 = paramBundle.getString("id");
+    bisy.b("IntentFactory", "appId=" + str3);
+    String str5;
+    if (!TextUtils.isEmpty(str3))
+    {
+      Object localObject2 = paramBundle.getString("downloadUrl");
+      String str4 = paramBundle.getString("packageName");
+      String str1 = paramBundle.getString("serverApkVersion");
+      localObject1 = str1;
+      if (str1 == null) {
+        localObject1 = "0";
+      }
+      str5 = paramBundle.getString("via");
+      String str2 = paramBundle.getString("splitvia");
+      int j = biub.a(str4);
+      int k = biub.b(bivr.a().a(str3));
+      if (bist.c(biip.a().a())) {}
+      for (int i = 1;; i = 0)
+      {
+        try
+        {
+          str1 = URLEncoder.encode((String)localObject2, "utf-8");
+          localObject2 = str1;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          for (;;)
+          {
+            localUnsupportedEncodingException.printStackTrace();
+            continue;
+            paramBundle = paramBundle + "&via=" + str5;
+          }
+        }
+        paramBundle = "&from=-10&id=" + str3 + "&channelId=" + paramBundle.getString("from") + "&installedVersion=" + String.valueOf(j) + "&localVersion=" + k + "&serverApkVersion=" + (String)localObject1 + "&typeId=" + "0" + "&msgType=" + "56" + "&sendTime=" + str3 + "&downloadUrl=" + (String)localObject2 + "&packageName=" + str4 + "&nt=" + i;
+        if (!TextUtils.isEmpty(str5)) {
+          break label357;
+        }
+        localObject1 = paramBundle;
+        if (TextUtils.isEmpty(str2)) {
+          break;
+        }
+        return paramBundle + "&splitvia=" + str2;
       }
     }
+    label357:
+    return "";
   }
   
-  public void onClick(View paramView)
+  protected static boolean a(String paramString)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    if ((this.jdField_a_of_type_Bdpb != null) && (this.jdField_a_of_type_Bdpb.a() == 2))
-    {
-      this.jdField_a_of_type_Bdpb.e();
-      this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130843784, 0, 0, 0);
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-      return;
-    }
-    if (this.jdField_a_of_type_Bdpb != null) {
-      this.jdField_a_of_type_Bdpb.f();
-    }
-    this.jdField_a_of_type_Bdpb = new bdpb(this.jdField_a_of_type_JavaLangString, new Handler(), this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bdpb.a(super.getContext());
-    this.jdField_a_of_type_Bdpb.b();
-    this.jdField_a_of_type_Bdpb.a(this);
-    this.jdField_a_of_type_Bdpb.c();
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable, null, null, null);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-    if (this.jdField_a_of_type_Bdpb != null) {
-      this.jdField_a_of_type_Bdpb.f();
-    }
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      super.dismiss();
-    }
+    return ("2457".equals(paramString)) || ("2458".equals(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bixh
  * JD-Core Version:    0.7.0.1
  */

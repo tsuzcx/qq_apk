@@ -1,65 +1,62 @@
-import android.support.annotation.NonNull;
-import android.util.Log;
-import com.tencent.feedback.eup.CrashReport;
-import com.tencent.mobileqq.statistics.CaughtException;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport.1;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport.2;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
+import java.io.File;
 
-public final class azpo
+class azpo
 {
-  private static final Set<String> a = new CaughtExceptionReport.1(20);
-  private static final Set<Class> b = new CaughtExceptionReport.2(5);
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private File jdField_a_of_type_JavaIoFile;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static void a(@NonNull Throwable paramThrowable)
+  public azpo(azpn paramazpn, String paramString, File paramFile, Drawable paramDrawable)
   {
-    a(paramThrowable, "This is CaughtException");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
   
-  public static void a(@NonNull Throwable paramThrowable, @NonNull String paramString)
+  public Drawable a()
   {
-    if ((paramThrowable == null) || (paramString == null)) {
-      return;
-    }
-    if (!a(paramThrowable))
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public azpo a()
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (aqyj.c().b()))
     {
-      Log.e("CaughtExceptionReport", "this report is not permitted. ", paramThrowable);
-      return;
-    }
-    Object localObject = paramThrowable;
-    if (!(paramThrowable instanceof CaughtException)) {
-      localObject = new CaughtException("Caught: " + paramThrowable.getMessage(), paramThrowable);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("CaughtExceptionReport-eup", 2, "rqd将上报信息到rdm网站，上报不会导致客户端闪退，仅用作数据统计");
-    }
-    CrashReport.handleCatchException(Thread.currentThread(), (Throwable)localObject, "ExtraMessage: " + paramString, null);
-  }
-  
-  private static boolean a(Throwable paramThrowable)
-  {
-    if (b.contains(paramThrowable.getClass())) {
-      return true;
-    }
-    paramThrowable = paramThrowable.getStackTrace();
-    if ((paramThrowable == null) || (paramThrowable.length < 1)) {
-      return false;
-    }
-    paramThrowable = paramThrowable[0].getClassName();
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext()) {
-      if (paramThrowable.startsWith((String)localIterator.next())) {
-        return true;
+      String str = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
+      if ((azpn.a(this.jdField_a_of_type_Azpn) != null) && (TextUtils.equals(azpn.a(this.jdField_a_of_type_Azpn), str)) && (bhbt.a(azpn.a(this.jdField_a_of_type_Azpn))))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(this.jdField_a_of_type_Azpn.b(), 2, "initProfileCardBackground: use old etc-drawable");
+        }
+        this.jdField_a_of_type_Boolean = true;
+        return this;
+      }
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bhbt.a().a(this.jdField_a_of_type_JavaIoFile, true);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      {
+        bhbt.a().a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
+        azpn.a(this.jdField_a_of_type_Azpn, str);
+        if (QLog.isColorLevel()) {
+          QLog.i(this.jdField_a_of_type_Azpn.b(), 2, "initProfileCardBackground use new etc-drawable");
+        }
       }
     }
-    return false;
+    this.jdField_a_of_type_Boolean = false;
+    return this;
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azpo
  * JD-Core Version:    0.7.0.1
  */

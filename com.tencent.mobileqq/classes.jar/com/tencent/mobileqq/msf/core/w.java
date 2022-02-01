@@ -1,931 +1,853 @@
 package com.tencent.mobileqq.msf.core;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
+import android.content.ContextWrapper;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.os.Build;
+import android.content.res.AssetManager;
 import android.os.Build.VERSION;
-import android.os.PowerManager;
-import android.os.SystemClock;
-import android.telephony.PhoneStateListener;
+import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.mobileqq.msf.core.c.k.c;
-import com.tencent.mobileqq.msf.core.net.b.o;
-import com.tencent.mobileqq.msf.core.net.n;
-import com.tencent.mobileqq.msf.core.push.g;
-import com.tencent.mobileqq.msf.sdk.MsfCommand;
+import android.telephony.cdma.CdmaCellLocation;
+import android.telephony.gsm.GsmCellLocation;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.msf.sdk.a.a.b;
-import com.tencent.mobileqq.msf.sdk.a.a.c;
-import com.tencent.msf.boot.config.NativeConfigStore;
-import com.tencent.msf.service.protocol.security.d;
 import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
-import java.text.SimpleDateFormat;
+import java.net.NetworkInterface;
+import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.zip.CRC32;
 
 public class w
-  implements a.b, a.c
 {
-  public static final String a = "MSF.D.NetCenterNewImpl";
-  public static MsfCore b;
-  public static final String c = "recordSysTimeKey";
-  public static final int d = 100;
-  private static final String k = "servetTimeDiff";
-  private static long l = -1L;
-  private static long m = 0L;
-  private static final String n = "dozeWhiteList";
-  private static final String o = "keyDozeLastTime";
-  private static final long p = 86400000L;
-  int e;
-  int f;
-  int g;
-  boolean h = true;
-  private com.tencent.mobileqq.msf.sdk.a.a i;
-  private String j = "MSF.C.NetConnInfoCenter";
-  private ThreadLocal q = new ThreadLocal();
-  private AtomicBoolean r = new AtomicBoolean(false);
-  private ThreadLocal s = new ThreadLocal();
-  private boolean t = false;
-  private AtomicBoolean u = new AtomicBoolean();
-  private long v = 0L;
-  private long w = 0L;
-  private int x = 0;
-  private long y = 0L;
+  public static final String a = "MSF.C.Util";
+  public static final String b = "sp_imei";
+  public static final int c = 0;
+  public static final int d = 1;
+  public static final int e = 2;
+  public static final int f = 3;
+  public static final int g = 4;
+  public static long h = 0L;
+  public static String i = "";
+  public static String j = "";
+  public static int k = 0;
+  private static final int l = 60000;
+  private static final int m = 1000000;
+  private static final AtomicInteger n = new AtomicInteger(60000 + new Random().nextInt(100000));
+  private static String o = "";
+  private static String p = "";
+  private static int q;
+  private static int r = 0;
+  private static String s = "";
+  private static String t = "";
+  private static String u = "";
+  private static String v = "";
+  private static String w = "";
   
-  private w()
+  public static int a()
   {
-    QLog.i("MSF.D.NetCenterNewImpl", 1, BaseApplication.processName + " create NetConnInfoCenterNewImpl instance");
-    this.i = new com.tencent.mobileqq.msf.sdk.a.a();
-    this.i.a(this);
-    this.i.a(u.d());
-  }
-  
-  private void E()
-  {
-    this.u.set(false);
-    this.v = 0L;
-  }
-  
-  private void F()
-  {
-    if ((this.i.i() > 0) && (this.u.get()))
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_Reason", String.valueOf((System.currentTimeMillis() - this.v) / 1000L));
-      localHashMap.put("param_connecttrycount", String.valueOf(this.i.i()));
-      if (b.getStatReporter() != null) {
-        b.getStatReporter().a("dim.Msf.NoNetInfoConnSucc", false, 0L, 0L, localHashMap, false, false);
-      }
-      E();
-    }
-  }
-  
-  private void G()
-  {
-    F();
-    ag.c("");
-    ag.d(0);
-    I();
-    if ((b != null) && (b.pushManager != null)) {
-      b.pushManager.c();
-    }
-  }
-  
-  private void H()
-  {
-    if ((o()) && (b != null) && (b.standbyModeManager != null)) {
-      b.standbyModeManager.d();
-    }
-  }
-  
-  private void I()
-  {
-    if ((b != null) && (b.sender != null) && (b.getStatReporter() != null)) {
-      b.getStatReporter().i();
-    }
-  }
-  
-  private void J()
-  {
-    if (b != null)
-    {
-      localToServiceMsg = new ToServiceMsg("", "0", "login.time");
-      localToServiceMsg.setMsfCommand(MsfCommand.getServerTime);
-      if (b.sender.k() == -1)
-      {
-        i1 = 100;
-        localToServiceMsg.setAppId(i1);
-        localToServiceMsg.setTimeout(30000L);
-        localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-        localUniPacket = new UniPacket(true);
-        localUniPacket.setServantName("test");
-        localUniPacket.setFuncName("cmdstr");
-        locald = new d(1, 15, MsfCore.getNextSeq(), 1, "0", b.sender.k(), String.valueOf(b.sender.k()), "123", 0);
-        localc = new com.tencent.msf.service.protocol.security.c();
-        localc.a = ((int)(System.currentTimeMillis() / 1000L));
-        localUniPacket.put("RequestHeader", locald);
-        localUniPacket.put("RequestGetServerTime", localc);
-        localToServiceMsg.putWupBuffer(localUniPacket.encode());
-        b.sender.b(localToServiceMsg);
-      }
-    }
-    while (!QLog.isDevelopLevel()) {
-      for (;;)
-      {
-        ToServiceMsg localToServiceMsg;
-        UniPacket localUniPacket;
-        d locald;
-        com.tencent.msf.service.protocol.security.c localc;
-        return;
-        int i1 = b.sender.k();
-      }
-    }
-    QLog.d("MSF.D.NetCenterNewImpl", 4, "msfCore not inited. can not send checkServerTimeMsg.");
-  }
-  
-  private void K()
-  {
-    if (b != null)
-    {
-      localToServiceMsg = new ToServiceMsg("", "0", "Client.CorrectTime");
-      localToServiceMsg.setMsfCommand(MsfCommand.getServerTime);
-      if (b.sender.k() == -1)
-      {
-        i1 = 100;
-        localToServiceMsg.setAppId(i1);
-        localToServiceMsg.setTimeout(30000L);
-        localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-        localToServiceMsg.addAttribute("__base_tag_isAppMsg", Boolean.valueOf(true));
-        localToServiceMsg.putWupBuffer(MsfSdkUtils.convertInt2Bytes(4));
-        b.sender.b(localToServiceMsg);
-      }
-    }
-    while (!QLog.isDevelopLevel()) {
-      for (;;)
-      {
-        ToServiceMsg localToServiceMsg;
-        return;
-        int i1 = b.sender.k();
-      }
-    }
-    QLog.d("MSF.D.NetCenterNewImpl", 4, "msfCore not inited. can not send checkServerTimeMsg.");
-  }
-  
-  private void L()
-  {
-    int i1;
-    if (Math.random() <= 0.01D)
-    {
-      i1 = 1;
-      if (i1 == 0) {}
-    }
-    label362:
-    label367:
-    label372:
-    for (;;)
-    {
-      try
-      {
-        SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("dozeWhiteList", 0);
-        long l1 = localSharedPreferences.getLong("keyDozeLastTime", 0L);
-        if (Math.abs(System.currentTimeMillis() - l1) >= 86400000L)
-        {
-          if (Build.VERSION.SDK_INT < 23) {
-            break label367;
-          }
-          if (((PowerManager)BaseApplication.getContext().getSystemService("power")).isIgnoringBatteryOptimizations("com.tencent.mobileqq"))
-          {
-            i1 = 1;
-            break label372;
-            if (Build.VERSION.SDK_INT < 24) {
-              break label362;
-            }
-            i2 = ((ConnectivityManager)BaseApplication.getContext().getSystemService("connectivity")).getRestrictBackgroundStatus();
-            if (QLog.isColorLevel())
-            {
-              localObject = new StringBuilder(30);
-              ((StringBuilder)localObject).append("report:");
-              ((StringBuilder)localObject).append(", ").append(i1);
-              ((StringBuilder)localObject).append(", ").append(Build.MODEL);
-              ((StringBuilder)localObject).append(", ").append(Build.MANUFACTURER);
-              ((StringBuilder)localObject).append(", ").append(i2);
-              QLog.d("MSF.D.NetCenterNewImpl", 1, ((StringBuilder)localObject).toString());
-            }
-            Object localObject = new HashMap(10);
-            ((HashMap)localObject).put("osVersion", Build.VERSION.SDK_INT + "");
-            ((HashMap)localObject).put("ignoreBat", String.valueOf(i1));
-            ((HashMap)localObject).put("model", Build.MODEL);
-            ((HashMap)localObject).put("manufacture", Build.MANUFACTURER);
-            ((HashMap)localObject).put("restrictBgStatus", String.valueOf(i2));
-            b.statReporter.a("EvtDozeWhiteList", true, 0L, 0L, (Map)localObject, false, false);
-          }
-        }
-        else
-        {
-          localSharedPreferences.edit().putLong("keyDozeLastTime", System.currentTimeMillis()).commit();
-          return;
-          i1 = 0;
-          break;
-        }
-        i1 = 0;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.d("MSF.D.NetCenterNewImpl", 1, "report doze whiteList exception ", localThrowable);
-        return;
-      }
-      int i2 = -1;
-      continue;
-      i1 = -1;
-    }
-  }
-  
-  public static w a()
-  {
-    return w.a.a();
-  }
-  
-  private void a(String paramString, int paramInt)
-  {
-    if ((b != null) && (b.sender != null))
-    {
-      b.sender.b.g.a(paramString, paramInt);
-      if (b.standbyModeManager != null) {
-        b.standbyModeManager.e();
-      }
-    }
-  }
-  
-  public int A()
-  {
-    if ((this.e == 0) && (n())) {
-      D();
-    }
-    return this.e;
-  }
-  
-  public int B()
-  {
-    return this.g;
-  }
-  
-  public int C()
-  {
-    return this.f;
-  }
-  
-  public void D()
-  {
-    for (;;)
-    {
-      try
-      {
-        boolean bool = this.h;
-        if (!bool) {
-          break label147;
-        }
-        try
-        {
-          Object localObject1 = (WifiManager)BaseApplication.getContext().getApplicationContext().getSystemService("wifi");
-          if (localObject1 != null)
-          {
-            localObject1 = ((WifiManager)localObject1).getConnectionInfo();
-            if (localObject1 == null) {
-              continue;
-            }
-            i1 = 1;
-            if (((WifiInfo)localObject1).getBSSID() == null) {
-              continue;
-            }
-            i2 = 1;
-            if ((i2 & i1) != 0) {
-              this.e = WifiManager.calculateSignalLevel(((WifiInfo)localObject1).getRssi(), 32);
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          int i1;
-          int i2;
-          QLog.d("MSF.D.NetCenterNewImpl", 1, "check WifiState error " + localException, localException);
-          this.h = false;
-          continue;
-        }
-        com.tencent.mobileqq.a.a.a.a().a(0, this.e);
-        return;
-      }
-      finally {}
-      i1 = 0;
-      continue;
-      i2 = 0;
-      continue;
-      label147:
-      this.e = 0;
-    }
-  }
-  
-  public String a(boolean paramBoolean)
-  {
-    return this.i.b(paramBoolean);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.NetCenterNewImpl", 2, "wifiConnected");
-    }
     try
     {
-      WifiInfo localWifiInfo = ((WifiManager)BaseApplication.getContext().getSystemService("wifi")).getConnectionInfo();
-      if (localWifiInfo != null)
-      {
-        int i1 = localWifiInfo.getIpAddress();
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.D.NetCenterNewImpl", 2, "wifiConnected localAddress " + i1 + "(" + NetConnInfoCenter.intToInetAddress(i1).getHostAddress() + "), " + localWifiInfo.toString());
-        }
-        if ((b != null) && (b.getStatReporter() != null)) {
-          b.getStatReporter().a(localWifiInfo);
-        }
+      int i1 = n.incrementAndGet();
+      if (i1 > 1000000) {
+        n.set(60000 + new Random().nextInt(100000));
       }
+      return i1;
+    }
+    finally {}
+  }
+  
+  public static long a(Context paramContext, String paramString)
+  {
+    paramContext = a(paramContext);
+    paramContext = new File(paramContext + paramString);
+    if (paramContext.exists()) {
+      return a(paramContext);
+    }
+    return 0L;
+  }
+  
+  /* Error */
+  public static long a(File paramFile)
+  {
+    // Byte code:
+    //   0: ldc2_w 130
+    //   3: lstore_1
+    //   4: lload_1
+    //   5: lstore_3
+    //   6: aload_0
+    //   7: ifnull +12 -> 19
+    //   10: aload_0
+    //   11: invokevirtual 122	java/io/File:exists	()Z
+    //   14: ifne +7 -> 21
+    //   17: lload_1
+    //   18: lstore_3
+    //   19: lload_3
+    //   20: lreturn
+    //   21: new 133	java/io/FileInputStream
+    //   24: dup
+    //   25: aload_0
+    //   26: invokespecial 136	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   29: astore 5
+    //   31: aload 5
+    //   33: astore_0
+    //   34: aload 5
+    //   36: invokestatic 139	com/tencent/mobileqq/msf/core/w:a	(Ljava/io/InputStream;)J
+    //   39: lstore_3
+    //   40: lload_3
+    //   41: lstore_1
+    //   42: lload_1
+    //   43: lstore_3
+    //   44: aload 5
+    //   46: ifnull -27 -> 19
+    //   49: aload 5
+    //   51: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   54: lload_1
+    //   55: lreturn
+    //   56: astore_0
+    //   57: aload_0
+    //   58: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   61: lload_1
+    //   62: lreturn
+    //   63: astore 6
+    //   65: aconst_null
+    //   66: astore 5
+    //   68: aload 5
+    //   70: astore_0
+    //   71: aload 6
+    //   73: invokevirtual 146	java/lang/Exception:printStackTrace	()V
+    //   76: lload_1
+    //   77: lstore_3
+    //   78: aload 5
+    //   80: ifnull -61 -> 19
+    //   83: aload 5
+    //   85: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   88: ldc2_w 130
+    //   91: lreturn
+    //   92: astore_0
+    //   93: goto -36 -> 57
+    //   96: astore 5
+    //   98: aconst_null
+    //   99: astore_0
+    //   100: aload_0
+    //   101: ifnull +7 -> 108
+    //   104: aload_0
+    //   105: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   108: aload 5
+    //   110: athrow
+    //   111: astore_0
+    //   112: aload_0
+    //   113: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   116: goto -8 -> 108
+    //   119: astore 5
+    //   121: goto -21 -> 100
+    //   124: astore 6
+    //   126: goto -58 -> 68
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	129	0	paramFile	File
+    //   3	74	1	l1	long
+    //   5	73	3	l2	long
+    //   29	55	5	localFileInputStream	java.io.FileInputStream
+    //   96	13	5	localObject1	Object
+    //   119	1	5	localObject2	Object
+    //   63	9	6	localException1	Exception
+    //   124	1	6	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   49	54	56	java/io/IOException
+    //   21	31	63	java/lang/Exception
+    //   83	88	92	java/io/IOException
+    //   21	31	96	finally
+    //   104	108	111	java/io/IOException
+    //   34	40	119	finally
+    //   71	76	119	finally
+    //   34	40	124	java/lang/Exception
+  }
+  
+  public static long a(InputStream paramInputStream)
+  {
+    byte[] arrayOfByte = new byte[8192];
+    CRC32 localCRC32 = new CRC32();
+    for (;;)
+    {
+      int i1 = paramInputStream.read(arrayOfByte);
+      if (i1 == -1) {
+        break;
+      }
+      localCRC32.update(arrayOfByte, 0, i1);
+    }
+    return localCRC32.getValue();
+  }
+  
+  public static FromServiceMsg a(ToServiceMsg paramToServiceMsg)
+  {
+    FromServiceMsg localFromServiceMsg = new FromServiceMsg(paramToServiceMsg.getUin(), paramToServiceMsg.getServiceCmd());
+    localFromServiceMsg.setAppId(paramToServiceMsg.getAppId());
+    localFromServiceMsg.setAppSeq(paramToServiceMsg.getAppSeq());
+    localFromServiceMsg.setRequestSsoSeq(paramToServiceMsg.getRequestSsoSeq());
+    localFromServiceMsg.setMsfCommand(paramToServiceMsg.getMsfCommand());
+    localFromServiceMsg.addAttribute("to_SenderProcessName", paramToServiceMsg.getAttribute("to_SenderProcessName"));
+    localFromServiceMsg.addAttribute("__timestamp_net2msf", Long.valueOf(System.currentTimeMillis()));
+    return localFromServiceMsg;
+  }
+  
+  public static String a(Context paramContext)
+  {
+    try
+    {
+      String str = paramContext.getFilesDir().getParent();
+      return str;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    D();
-    a(this.i.k(), paramInt);
-    G();
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MSF.D.NetCenterNewImpl", 4, "handleGetServerTimeResp servertime is " + paramLong);
-    }
-    NetConnInfoCenter.servetTimeSecondInterv = paramLong - System.currentTimeMillis() / 1000L;
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences(this.j, 0).edit();
-    localEditor.putLong("servetTimeDiff", NetConnInfoCenter.servetTimeSecondInterv);
-    localEditor.commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.NetCenterNewImpl", 2, "set serverTime is " + b.timeFormatter.format(Long.valueOf(System.currentTimeMillis() + NetConnInfoCenter.servetTimeSecondInterv * 1000L)));
-    }
-    MsfCore.initAppProMsg("*", b.sender.k());
-  }
-  
-  public void a(Context paramContext)
-  {
-    Object localObject = new w.c(this, null);
-    ((TelephonyManager)paramContext.getSystemService("phone")).listen((PhoneStateListener)localObject, 256);
-    localObject = new w.d(this, null);
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.net.wifi.RSSI_CHANGED");
-    paramContext.registerReceiver((BroadcastReceiver)localObject, localIntentFilter);
-  }
-  
-  public void a(Context paramContext, NetworkInfo paramNetworkInfo, boolean paramBoolean)
-  {
-    this.q.set(Boolean.valueOf(paramBoolean));
-    if (this.r.compareAndSet(false, true)) {
-      this.i.a(paramContext, paramNetworkInfo);
-    }
-  }
-  
-  public void a(MsfCore paramMsfCore)
-  {
-    b = paramMsfCore;
-    NetConnInfoCenter.servetTimeSecondInterv = BaseApplication.getContext().getSharedPreferences(this.j, 0).getLong("servetTimeDiff", 0L);
-    a(BaseApplication.getContext());
-    if (Build.VERSION.SDK_INT >= 23) {
-      c(BaseApplication.getContext());
-    }
-  }
-  
-  public void a(com.tencent.qphone.base.a parama)
-  {
-    NetConnInfoCenter.socketConnState = 1;
-    if ((b != null) || (b.pushManager != null)) {
       try
       {
-        b.pushManager.a(parama);
-        if ((b.standbyModeManager != null) && (!b.standbyModeManager.b()))
+        if ((paramContext instanceof ContextWrapper)) {}
+        Object localObject;
+        for (paramContext = ((ContextWrapper)paramContext).getBaseContext();; paramContext = ((Field)localObject).get(paramContext))
         {
-          parama = new FromServiceMsg(b.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_connClosed");
-          parama.setMsgSuccess();
-          parama.setMsfCommand(MsfCommand.onConnClosed);
-          MsfSdkUtils.addFromMsgProcessName("*", parama);
-          b.addRespToQuque(null, parama);
-          return;
+          localObject = paramContext.getClass().getDeclaredMethod("getDataDirFile", new Class[0]);
+          ((Method)localObject).setAccessible(true);
+          return ((File)((Method)localObject).invoke(paramContext, new Object[0])).getAbsolutePath();
+          localObject = ContextWrapper.class.getDeclaredField("mBase");
+          ((Field)localObject).setAccessible(true);
         }
-        QLog.d("MSF.D.NetCenterNewImpl", 1, "onConnClosed, stop notify by standby");
-        return;
+        return null;
       }
-      catch (Exception parama)
-      {
-        QLog.d("MSF.D.NetCenterNewImpl", 1, "", parama);
-      }
+      catch (Throwable paramContext) {}
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  /* Error */
+  private static void a(File paramFile, List paramList)
   {
-    if ((paramString2 != null) && ((paramString1 == null) || (!paramString1.equals(paramString2))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.NetCenterNewImpl", 2, "SSID changed, new ssid :  " + paramString2 + " old ssid: " + paramString1);
-      }
-      if ((b != null) && (b.ssoListManager != null)) {
-        b.ssoListManager.c();
-      }
-    }
+    // Byte code:
+    //   0: new 284	java/util/Properties
+    //   3: dup
+    //   4: invokespecial 285	java/util/Properties:<init>	()V
+    //   7: astore_3
+    //   8: aload_0
+    //   9: invokevirtual 122	java/io/File:exists	()Z
+    //   12: ifne +8 -> 20
+    //   15: aload_0
+    //   16: invokevirtual 288	java/io/File:createNewFile	()Z
+    //   19: pop
+    //   20: aload_1
+    //   21: invokeinterface 294 1 0
+    //   26: astore_1
+    //   27: aload_1
+    //   28: invokeinterface 299 1 0
+    //   33: ifeq +103 -> 136
+    //   36: aload_1
+    //   37: invokeinterface 303 1 0
+    //   42: checkcast 305	com/tencent/qphone/base/remote/SimpleAccount
+    //   45: astore_2
+    //   46: aload_3
+    //   47: aload_2
+    //   48: invokevirtual 306	com/tencent/qphone/base/remote/SimpleAccount:getUin	()Ljava/lang/String;
+    //   51: aload_2
+    //   52: invokevirtual 309	com/tencent/qphone/base/remote/SimpleAccount:toStoreString	()Ljava/lang/String;
+    //   55: invokevirtual 313	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   58: pop
+    //   59: goto -32 -> 27
+    //   62: astore_3
+    //   63: aconst_null
+    //   64: astore_2
+    //   65: aload_2
+    //   66: astore_1
+    //   67: invokestatic 318	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   70: ifeq +45 -> 115
+    //   73: aload_2
+    //   74: astore_1
+    //   75: ldc 8
+    //   77: iconst_2
+    //   78: new 106	java/lang/StringBuilder
+    //   81: dup
+    //   82: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   85: ldc_w 320
+    //   88: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: aload_0
+    //   92: invokevirtual 323	java/io/File:getName	()Ljava/lang/String;
+    //   95: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: ldc_w 325
+    //   101: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: aload_3
+    //   105: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   108: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   111: aload_3
+    //   112: invokestatic 331	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   115: iconst_0
+    //   116: ifeq +11 -> 127
+    //   119: new 333	java/lang/NullPointerException
+    //   122: dup
+    //   123: invokespecial 334	java/lang/NullPointerException:<init>	()V
+    //   126: athrow
+    //   127: aload_2
+    //   128: ifnull +7 -> 135
+    //   131: aload_2
+    //   132: invokevirtual 337	java/io/FileOutputStream:close	()V
+    //   135: return
+    //   136: new 336	java/io/FileOutputStream
+    //   139: dup
+    //   140: aload_0
+    //   141: invokespecial 338	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   144: astore_2
+    //   145: aload_2
+    //   146: astore_1
+    //   147: aload_3
+    //   148: aload_2
+    //   149: ldc 67
+    //   151: invokevirtual 342	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   154: aload_2
+    //   155: astore_1
+    //   156: aload_2
+    //   157: invokevirtual 337	java/io/FileOutputStream:close	()V
+    //   160: aload_2
+    //   161: astore_1
+    //   162: ldc 8
+    //   164: iconst_1
+    //   165: new 106	java/lang/StringBuilder
+    //   168: dup
+    //   169: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   172: ldc_w 344
+    //   175: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: aload_0
+    //   179: invokevirtual 323	java/io/File:getName	()Ljava/lang/String;
+    //   182: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   188: invokestatic 347	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   191: iconst_0
+    //   192: ifeq +11 -> 203
+    //   195: new 333	java/lang/NullPointerException
+    //   198: dup
+    //   199: invokespecial 334	java/lang/NullPointerException:<init>	()V
+    //   202: athrow
+    //   203: aload_2
+    //   204: ifnull -69 -> 135
+    //   207: aload_2
+    //   208: invokevirtual 337	java/io/FileOutputStream:close	()V
+    //   211: return
+    //   212: astore_0
+    //   213: aload_0
+    //   214: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   217: return
+    //   218: astore_0
+    //   219: aconst_null
+    //   220: astore_1
+    //   221: iconst_0
+    //   222: ifeq +11 -> 233
+    //   225: new 333	java/lang/NullPointerException
+    //   228: dup
+    //   229: invokespecial 334	java/lang/NullPointerException:<init>	()V
+    //   232: athrow
+    //   233: aload_1
+    //   234: ifnull +7 -> 241
+    //   237: aload_1
+    //   238: invokevirtual 337	java/io/FileOutputStream:close	()V
+    //   241: aload_0
+    //   242: athrow
+    //   243: astore_2
+    //   244: aload_2
+    //   245: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   248: goto -15 -> 233
+    //   251: astore_1
+    //   252: aload_1
+    //   253: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   256: goto -15 -> 241
+    //   259: astore_0
+    //   260: aload_0
+    //   261: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   264: goto -137 -> 127
+    //   267: astore_0
+    //   268: goto -55 -> 213
+    //   271: astore_0
+    //   272: aload_0
+    //   273: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   276: goto -73 -> 203
+    //   279: astore_0
+    //   280: goto -59 -> 221
+    //   283: astore_3
+    //   284: goto -219 -> 65
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	287	0	paramFile	File
+    //   0	287	1	paramList	List
+    //   45	163	2	localObject	Object
+    //   243	2	2	localIOException	IOException
+    //   7	40	3	localProperties	Properties
+    //   62	86	3	localException1	Exception
+    //   283	1	3	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   8	20	62	java/lang/Exception
+    //   20	27	62	java/lang/Exception
+    //   27	59	62	java/lang/Exception
+    //   136	145	62	java/lang/Exception
+    //   207	211	212	java/io/IOException
+    //   8	20	218	finally
+    //   20	27	218	finally
+    //   27	59	218	finally
+    //   136	145	218	finally
+    //   225	233	243	java/io/IOException
+    //   237	241	251	java/io/IOException
+    //   119	127	259	java/io/IOException
+    //   131	135	267	java/io/IOException
+    //   195	203	271	java/io/IOException
+    //   67	73	279	finally
+    //   75	115	279	finally
+    //   147	154	279	finally
+    //   156	160	279	finally
+    //   162	191	279	finally
+    //   147	154	283	java/lang/Exception
+    //   156	160	283	java/lang/Exception
+    //   162	191	283	java/lang/Exception
   }
   
-  public String b(boolean paramBoolean)
+  public static void a(String paramString)
   {
-    return this.i.c(paramBoolean);
-  }
-  
-  public void b()
-  {
-    long l1 = SystemClock.uptimeMillis();
-    this.s.set(Long.valueOf(l1));
-  }
-  
-  protected void b(Context paramContext)
-  {
-    boolean bool3 = false;
-    boolean bool1 = false;
-    if ((MsfCore.sCore == null) || (MsfCore.sCore.statReporter == null)) {
-      return;
-    }
-    paramContext = (PowerManager)paramContext.getSystemService("power");
-    for (;;)
-    {
-      try
-      {
-        localMethod = paramContext.getClass().getMethod("isDeviceIdleMode", new Class[0]);
-        localMethod.setAccessible(true);
-        bool2 = ((Boolean)localMethod.invoke(paramContext, new Object[0])).booleanValue();
-        bool1 = bool3;
-      }
-      catch (Exception paramContext)
-      {
-        Method localMethod;
-        boolean bool4;
-        boolean bool2 = false;
-        paramContext.printStackTrace();
-        QLog.d("MSF.D.NetCenterNewImpl", 1, paramContext, new Object[0]);
-        b.statReporter.a(bool2, 0L, 0L, 0L, 0L, bool1, false);
-        return;
-      }
-      try
-      {
-        localMethod = paramContext.getClass().getMethod("isPowerSaveMode", new Class[0]);
-        bool1 = bool3;
-        localMethod.setAccessible(true);
-        bool1 = bool3;
-        bool3 = ((Boolean)localMethod.invoke(paramContext, new Object[0])).booleanValue();
-        bool1 = bool3;
-        localMethod = paramContext.getClass().getMethod("isInteractive", new Class[0]);
-        bool1 = bool3;
-        localMethod.setAccessible(true);
-        bool1 = bool3;
-        bool4 = ((Boolean)localMethod.invoke(paramContext, new Object[0])).booleanValue();
-        l1 = 0L;
-        l2 = 0L;
-        l6 = 0L;
-        if (b.statReporter.X == null) {
-          b.statReporter.X = new k.c();
-        }
-        b.statReporter.X.a = bool2;
-        if (!bool2) {
-          break label640;
-        }
-        b.statReporter.X.b = System.currentTimeMillis();
-        if (b.statReporter.X.c > 0L) {
-          l1 = System.currentTimeMillis() - b.statReporter.X.c;
-        }
-        l3 = l6;
-        if (b.statReporter.X.e > 0L)
-        {
-          l4 = System.currentTimeMillis() - b.statReporter.X.e;
-          l3 = l6;
-          l2 = l4;
-          if (b.statReporter.X.f > 0L)
-          {
-            l3 = b.statReporter.X.f - b.statReporter.X.e;
-            l2 = l4;
-          }
-        }
-        l5 = l1;
-        l6 = l3;
-        l4 = l2;
-        if (b.pushManager == null) {
-          break label788;
-        }
-        QLog.d("MSF.D.NetCenterNewImpl", 1, "MSF_Alive_Log do register alarm by device ,interval = " + b.pushManager.e());
-        b.pushManager.a(b.pushManager.e());
-        b.pushManager.p = System.currentTimeMillis();
-        l5 = 0L;
-        l4 = l3;
-        l3 = l5;
-      }
-      catch (Exception paramContext)
-      {
-        continue;
-        l3 = 0L;
-        l1 = l5;
-        l2 = l4;
-        l4 = l6;
-        continue;
-      }
-      paramContext = new StringBuilder(128);
-      paramContext.append("MSF_Alive_Log deviceIdleChanged: isDeviceIdleMode=").append(bool2);
-      paramContext.append(" takeTimes=").append(l1);
-      paramContext.append(" alarmCost=").append(l3);
-      paramContext.append(" connFailCost=").append(l4);
-      paramContext.append(" screenOffCost=").append(l2);
-      paramContext.append(" isPowerSaveMode=").append(bool3);
-      paramContext.append(" isInteractive=").append(bool4);
-      QLog.d("MSF.D.NetCenterNewImpl", 1, paramContext.toString());
-      if (l1 <= 0L) {
-        break;
-      }
-      b.statReporter.a(bool2, l1, l3, l2, l4, bool3, bool4);
-      return;
-      label640:
-      b.statReporter.X.c = System.currentTimeMillis();
-      b.statReporter.X.e = 0L;
-      b.statReporter.X.f = 0L;
-      l5 = l1;
-      l4 = l2;
-      if (b.statReporter.X.b <= 0L) {
-        break label788;
-      }
-      l1 = System.currentTimeMillis();
-      l4 = b.statReporter.X.b;
-      l3 = b.statReporter.X.d;
-      b.statReporter.X.d = 0L;
-      if (b.pushManager != null) {
-        b.pushManager.p = 0L;
-      }
-      l1 -= l4;
-      l4 = 0L;
-    }
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if ((paramString2 != null) && ((paramString1 == null) || (!paramString1.equals(paramString2))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.NetCenterNewImpl", 2, "Mobile APN changed, load sso list new apn :  " + paramString2 + " old apn: " + paramString1);
-      }
-      if ((b != null) && (b.ssoListManager != null)) {
-        b.ssoListManager.b();
-      }
-    }
-  }
-  
-  public int c(boolean paramBoolean)
-  {
-    return this.i.a(paramBoolean);
-  }
-  
-  public void c()
-  {
-    this.r.set(false);
-    long l1 = ((Long)this.s.get()).longValue();
-    if ((!this.t) && (Math.abs(SystemClock.uptimeMillis() - ((Long)this.s.get()).longValue()) > 120000L))
-    {
-      this.t = true;
-      QLog.w("MSF.D.NetCenterNewImpl", 1, "checkConnInfo refresh held 2min!!! enter=" + l1 + " now=" + System.currentTimeMillis());
-      MsfCore.sCore.statReporter.a("", 0L);
-    }
-  }
-  
-  public void c(Context paramContext)
-  {
-    w.b localb = new w.b(this, null);
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.os.action.DEVICE_IDLE_MODE_CHANGED");
-    paramContext.registerReceiver(localb, localIntentFilter);
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    NetConnInfoCenter.socketConnState = 2;
-    if (b == null)
-    {
-      QLog.d("MSF.D.NetCenterNewImpl", 1, "onConnOpened, return by msfCore null");
-      return;
-    }
-    b.pushManager.d();
-    if (com.tencent.mobileqq.msf.service.k.a) {
-      com.tencent.mobileqq.msf.service.k.a(null);
-    }
-    if ((b.standbyModeManager != null) && (!b.standbyModeManager.b()))
-    {
-      FromServiceMsg localFromServiceMsg = new FromServiceMsg(b.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_connOpened");
-      localFromServiceMsg.setMsgSuccess();
-      localFromServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-      localFromServiceMsg.setMsfCommand(MsfCommand.onConnOpened);
-      localFromServiceMsg.addAttribute("resp_connopen_serverAdd", paramString1);
-      localFromServiceMsg.addAttribute("resp_connopen_localAdd", paramString2);
-      if (b.pushManager.b()) {
-        localFromServiceMsg.addAttribute("resp_needBootApp", Integer.valueOf(1));
-      }
-      MsfSdkUtils.addFromMsgProcessName("*", localFromServiceMsg);
-      b.addRespToQuque(null, localFromServiceMsg);
-      return;
-    }
-    if (b.standbyModeManager != null) {
-      b.standbyModeManager.g();
-    }
-    QLog.d("MSF.D.NetCenterNewImpl", 1, "onConnOpened, stop notify by standby");
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.NetCenterNewImpl", 2, "wifiDisConnected");
-    }
-    if ((b != null) && (b.sender != null)) {
-      b.sender.b.g.a();
-    }
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.NetCenterNewImpl", 2, "mobileConnected");
-    }
-    H();
-    G();
-  }
-  
-  public void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.NetCenterNewImpl", 2, "mobileDisConnected");
-    }
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.NetCenterNewImpl", 2, "unknowConnected");
-    }
-  }
-  
-  public void h()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.NetCenterNewImpl", 2, "unknowDisConnected");
-    }
-  }
-  
-  public boolean i()
-  {
-    return this.i.e();
-  }
-  
-  public void j()
-  {
-    this.v = System.currentTimeMillis();
-    this.u.set(true);
-  }
-  
-  public int k()
-  {
-    if (n()) {
-      return 2;
-    }
-    if (o()) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public NetworkInfo l()
-  {
-    return this.i.f();
-  }
-  
-  public boolean m()
-  {
-    return (this.i.a()) || (this.i.b());
-  }
-  
-  public boolean n()
-  {
-    return this.i.a();
-  }
-  
-  public boolean o()
-  {
-    return this.i.b();
-  }
-  
-  public void p()
-  {
-    if ((b != null) && (b.standbyModeManager != null) && (!b.standbyModeManager.b()))
-    {
-      NetConnInfoCenter.socketConnState = 3;
-      FromServiceMsg localFromServiceMsg = new FromServiceMsg(b.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_connAllFailed");
-      localFromServiceMsg.setMsgSuccess();
-      localFromServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-      localFromServiceMsg.setMsfCommand(MsfCommand.onOepnConnAllFailed);
-      if (b.pushManager.b()) {
-        localFromServiceMsg.addAttribute("resp_needBootApp", Integer.valueOf(1));
-      }
-      MsfSdkUtils.addFromMsgProcessName("*", localFromServiceMsg);
-      b.addRespToQuque(null, localFromServiceMsg);
-    }
-    for (;;)
-    {
-      if ((b != null) && (b.sender != null)) {
-        b.sender.b.g.b();
-      }
-      return;
-      QLog.d("MSF.D.NetCenterNewImpl", 1, "onOepnConnAllFailed, stop notify by standby");
-    }
-  }
-  
-  public String q()
-  {
-    return this.i.j();
-  }
-  
-  public String r()
-  {
-    return this.i.k();
-  }
-  
-  public void s()
-  {
-    if ((n()) && (b != null) && (b.sender != null)) {
-      b.sender.b.g.a(this.i.k());
-    }
-    if ((b.standbyModeManager != null) && (!b.standbyModeManager.b()))
-    {
-      NetConnInfoCenter.socketConnState = 4;
-      FromServiceMsg localFromServiceMsg = new FromServiceMsg(b.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_recvFirstResp");
-      localFromServiceMsg.setMsgSuccess();
-      localFromServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-      localFromServiceMsg.setMsfCommand(MsfCommand.onReceFirstResp);
-      if (b.pushManager.b()) {
-        localFromServiceMsg.addAttribute("resp_needBootApp", Integer.valueOf(1));
-      }
-      MsfSdkUtils.addFromMsgProcessName("*", localFromServiceMsg);
-      b.addRespToQuque(null, localFromServiceMsg);
-      return;
-    }
-    QLog.d("MSF.D.NetCenterNewImpl", 1, "onRecvFirstResp, stop notify by standby");
-  }
-  
-  public int t()
-  {
-    return this.i.g();
-  }
-  
-  public String u()
-  {
-    return this.i.l();
-  }
-  
-  public String v()
-  {
-    return this.i.h();
-  }
-  
-  public int w()
-  {
-    int i1 = 0;
-    if (n()) {
-      i1 = this.i.i();
-    }
-    while (!o()) {
-      return i1;
-    }
-    return this.i.g() + 10000;
-  }
-  
-  public int x()
-  {
-    return this.i.i();
-  }
-  
-  public void y()
-  {
-    System.currentTimeMillis();
-    long l1 = SystemClock.elapsedRealtime();
-    if ((l1 - this.y > 0L) && (l1 - this.y <= com.tencent.mobileqq.msf.core.a.a.K()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.NetCenterNewImpl", 2, "quit to checkTimeMsg too frequency.");
-      }
-      return;
-    }
-    if (this.x < 10)
-    {
-      K();
-      this.x += 1;
-      this.y = l1;
-    }
-    for (;;)
-    {
-      long l2 = System.currentTimeMillis();
-      if ((this.w == 0L) || (l1 - this.w > 600000L))
-      {
-        this.w = l1;
-        this.x = 0;
-      }
-      l = l2;
-      if (MsfStore.getNativeConfigStore() == null) {
-        break;
-      }
-      MsfStore.getNativeConfigStore().n_setConfig("recordSysTimeKey", String.valueOf(l2));
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.NetCenterNewImpl", 2, "also send checkTimeMsg " + this.x);
-      }
-    }
-  }
-  
-  public void z()
-  {
+    Object localObject = new File(MsfCore.getIMEIPath());
     try
     {
-      long l1 = SystemClock.elapsedRealtime();
-      if ((0L != m) && (l1 > m + com.tencent.mobileqq.msf.core.a.a.N()))
+      if (!((File)localObject).exists()) {
+        ((File)localObject).createNewFile();
+      }
+      if (((File)localObject).exists())
       {
-        m = l1;
-        String str;
-        if ((-1L == l) && (MsfStore.getNativeConfigStore() != null))
+        localObject = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath());
+        ((Properties)localObject).put("imei", paramString);
+        MsfSdkUtils.saveConfig(MsfCore.getIMEIPath(), (Properties)localObject);
+        return;
+      }
+      QLog.d("MSF.C.Util", 1, "can not create imei file");
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("MSF.C.Util", 1, "save sys imei error", paramString);
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, long paramLong)
+  {
+    h = paramLong;
+    i = paramString1;
+    j = paramString2;
+  }
+  
+  private static void a(String paramString, List paramList)
+  {
+    int i1 = 1;
+    for (;;)
+    {
+      if (i1 != 0)
+      {
+        Iterator localIterator = paramList.iterator();
+        i1 = 0;
+        for (;;)
         {
-          str = MsfStore.getNativeConfigStore().getConfig("recordSysTimeKey");
-          if (str == null) {}
+          if (!localIterator.hasNext()) {
+            break label64;
+          }
+          if (((SimpleAccount)localIterator.next()).getUin().equals(paramString))
+          {
+            paramList.remove(i1);
+            i1 = 1;
+            break;
+          }
+          i1 += 1;
         }
+      }
+      return;
+      label64:
+      i1 = 0;
+    }
+  }
+  
+  public static String b()
+  {
+    Random localRandom = new Random(System.currentTimeMillis());
+    String str = "---------";
+    int i1 = 0;
+    while (i1 < 12)
+    {
+      str = str + String.valueOf(localRandom.nextInt(10));
+      i1 += 1;
+    }
+    return str;
+  }
+  
+  public static String b(ToServiceMsg paramToServiceMsg)
+  {
+    if (paramToServiceMsg.getAttributes().get("to_SenderProcessName") != null) {
+      return (String)paramToServiceMsg.getAttributes().get("to_SenderProcessName");
+    }
+    return "";
+  }
+  
+  public static void c()
+  {
+    for (;;)
+    {
+      try
+      {
+        localObject1 = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
+      }
+      catch (Exception localException4)
+      {
+        Object localObject1;
+        Object localObject3;
+        Object localObject5;
+        Object localObject2 = null;
+        continue;
+        Object localObject4 = null;
+        continue;
+        localObject2 = null;
+        continue;
+      }
+      try
+      {
+        localObject3 = ((TelephonyManager)localObject1).getSubscriberId();
+        if (localObject3 != null)
+        {
+          t = (String)localObject3;
+          u = (String)localObject3;
+        }
+        localObject3 = ((TelephonyManager)localObject1).getNetworkOperatorName();
+        if (localObject3 != null) {
+          w = (String)localObject3;
+        }
+        o = ((TelephonyManager)localObject1).getNetworkCountryIso();
+        p = ((TelephonyManager)localObject1).getSimCountryIso();
+        localObject3 = ((TelephonyManager)localObject1).getCellLocation();
+        if (!(localObject3 instanceof CdmaCellLocation)) {
+          continue;
+        }
+        localObject3 = (CdmaCellLocation)((TelephonyManager)localObject1).getCellLocation();
+        localObject5 = localObject1;
+        if (localObject3 != null)
+        {
+          q = ((CdmaCellLocation)localObject3).getBaseStationId();
+          localObject5 = localObject1;
+        }
+      }
+      catch (Exception localException3)
+      {
         try
         {
-          l = Long.parseLong(str);
-          l1 = System.currentTimeMillis();
-          if (-1L != l)
+          k = 0;
+          if (!new File(MsfCore.getIMEIPath()).exists()) {
+            continue;
+          }
+          localObject3 = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath()).getProperty("imei");
+          if (localObject3 != null)
           {
-            if (l1 <= l + com.tencent.mobileqq.msf.core.a.a.L() + Math.random() * com.tencent.mobileqq.msf.core.a.a.M()) {
-              return;
+            localObject1 = localObject3;
+            if (((String)localObject3).length() != 0) {}
+          }
+          else
+          {
+            Thread.sleep(200L);
+            localObject1 = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath()).getProperty("imei", null);
+          }
+          k = 1;
+          localObject3 = localObject1;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("MSF.C.Util", 2, "read imei from file " + MsfCore.getIMEIPath() + ", imei:" + (String)localObject1);
+            localObject3 = localObject1;
+          }
+          localSharedPreferences = BaseApplication.getContext().getSharedPreferences("MSF.C.Util", 0);
+          if ((localObject3 != null) && (((String)localObject3).length() != 0)) {
+            continue;
+          }
+          localObject3 = localSharedPreferences.getString("sp_imei", null);
+          if (QLog.isColorLevel()) {
+            QLog.d("MSF.C.Util", 2, "read imei from sharepreference:" + (String)localObject3);
+          }
+          if (localObject3 != null)
+          {
+            i1 = ((String)localObject3).length();
+            if (i1 != 0) {
+              continue;
             }
-            y();
+          }
+          if (localObject5 == null) {
+            continue;
           }
         }
         catch (Exception localException1)
         {
-          for (;;)
+          QLog.d("MSF.C.Util", 1, "read sys imei error " + localException1, localException1);
+          continue;
+          k = 2;
+          continue;
+          k = 1;
+          continue;
+        }
+        try
+        {
+          if (Build.VERSION.SDK_INT > 28)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("MSF.D.NetCenterNewImpl", 2, "get lastCheckTime catch Exception " + localException1);
+            localObject1 = Settings.System.getString(BaseApplication.getContext().getContentResolver(), "android_id");
+            if ((localObject1 == null) || (((String)localObject1).length() <= 0)) {
+              continue;
             }
+            k = 3;
+            localObject3 = localObject1;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("MSF.C.Util", 2, "read sys imei:" + (String)localObject1);
+              localObject3 = localObject1;
+            }
+            a((String)localObject3);
+            localObject1 = localSharedPreferences.edit();
+            ((SharedPreferences.Editor)localObject1).putString("sp_imei", (String)localObject3);
+            ((SharedPreferences.Editor)localObject1).commit();
+            s = (String)localObject3;
+            if (QLog.isColorLevel()) {
+              QLog.d("MSF.C.Util", 1, "save imei:" + s + ",with order:" + k);
+            }
+            v = "testrevision";
           }
         }
+        catch (SecurityException localSecurityException)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+        }
+        try
+        {
+          localObject1 = BaseApplication.getContext().getAssets().open("revision.txt");
+          try
+          {
+            localObject3 = new byte[64];
+            i1 = ((InputStream)localObject1).read((byte[])localObject3, 0, 64);
+            if (i1 != -1)
+            {
+              v = new String((byte[])localObject3, 0, i1);
+              if (QLog.isColorLevel()) {
+                QLog.d("MSF.C.Util", 2, "revision:" + v);
+              }
+            }
+            return;
+          }
+          catch (IOException localIOException)
+          {
+            QLog.d("MSF.C.Util", 1, "get revision IOException " + localIOException.getMessage());
+            return;
+          }
+          localObject5 = localObject1;
+          if (!(localObject3 instanceof GsmCellLocation)) {
+            continue;
+          }
+          localObject3 = (GsmCellLocation)((TelephonyManager)localObject1).getCellLocation();
+          localObject5 = localObject1;
+          if (localObject3 == null) {
+            continue;
+          }
+          q = ((GsmCellLocation)localObject3).getCid();
+          localObject5 = localObject1;
+        }
+        catch (Exception localException2)
+        {
+          QLog.d("MSF.C.Util", 1, "get revision error " + localException2.getMessage());
+          return;
+        }
+        localException3 = localException3;
+        QLog.d("MSF.C.Util", 1, "get imsi error " + localException3, localException3);
+        localObject5 = localObject1;
+        continue;
+        if (t.length() <= 5) {
+          continue;
+        }
+        t = t.substring(0, 5);
+        continue;
+        if (Build.VERSION.SDK_INT >= 26) {
+          continue;
+        }
+        localObject1 = localObject5.getDeviceId();
+        continue;
+        localObject1 = localObject5.getImei();
       }
-      return;
     }
-    catch (Exception localException2)
+    if (t == null)
     {
+      t = "";
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.C.Util", 2, "imsi:" + t + " networkOperatorName:" + w);
+      }
+    }
+    for (;;)
+    {
+      SharedPreferences localSharedPreferences;
+      int i1;
+      QLog.d("MSF.C.Util", 2, "read sys imei SecurityException=", localSecurityException);
+      break;
+      String str1 = m();
+      k = 4;
+      String str2 = str1;
       if (QLog.isColorLevel())
       {
-        QLog.d("MSF.D.NetCenterNewImpl", 2, "checkRecordTime catch Exception " + localException2);
-        return;
-        l = l1;
-        if (MsfStore.getNativeConfigStore() != null)
-        {
-          MsfStore.getNativeConfigStore().n_setConfig("recordSysTimeKey", String.valueOf(l));
-          return;
-          if (0L == m) {
-            m = l1;
-          }
+        QLog.d("MSF.C.Util", 2, "load imei:" + str1);
+        str2 = str1;
+      }
+    }
+  }
+  
+  public static String d()
+  {
+    return s;
+  }
+  
+  public static String e()
+  {
+    return t;
+  }
+  
+  public static String f()
+  {
+    return u;
+  }
+  
+  public static String g()
+  {
+    return v;
+  }
+  
+  public static int h()
+  {
+    return r;
+  }
+  
+  public static String i()
+  {
+    return o;
+  }
+  
+  public static String j()
+  {
+    return p;
+  }
+  
+  public static int k()
+  {
+    return q;
+  }
+  
+  public static String l()
+  {
+    return w;
+  }
+  
+  public static String m()
+  {
+    String str1 = null;
+    Object localObject = new File(MsfCore.getIMEIPath());
+    StringBuffer localStringBuffer;
+    String str2;
+    try
+    {
+      if (((File)localObject).exists()) {
+        str1 = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath()).getProperty("imei");
+      }
+      if (str1 != null)
+      {
+        i1 = str1.length();
+        if (i1 > 0) {
+          return str1;
         }
       }
     }
+    catch (Exception localException1)
+    {
+      QLog.d("MSF.C.Util", 1, "load sys imei error", localException1);
+      localStringBuffer = new StringBuffer();
+      int i1 = 0;
+      while (i1 < 15)
+      {
+        localStringBuffer.append(new Random().nextInt(10));
+        i1 += 1;
+      }
+      str2 = localStringBuffer.toString();
+    }
+    for (;;)
+    {
+      try
+      {
+        if (!((File)localObject).exists()) {
+          ((File)localObject).createNewFile();
+        }
+        if (!((File)localObject).exists()) {
+          continue;
+        }
+        localObject = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath());
+        ((Properties)localObject).put("imei", str2);
+        MsfSdkUtils.saveConfig(MsfCore.getIMEIPath(), (Properties)localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.Util", 2, "write imei " + str2);
+        }
+      }
+      catch (Exception localException2)
+      {
+        QLog.d("MSF.C.Util", 1, "load imei error", localException2);
+        continue;
+      }
+      return localStringBuffer.toString();
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.C.Util", 2, "can not create imei file");
+      }
+    }
+  }
+  
+  public static String n()
+  {
+    try
+    {
+      NetworkInterface localNetworkInterface;
+      InetAddress localInetAddress;
+      do
+      {
+        localObject = NetworkInterface.getNetworkInterfaces();
+        Enumeration localEnumeration;
+        while (!localEnumeration.hasMoreElements())
+        {
+          do
+          {
+            if ((localObject == null) || (!((Enumeration)localObject).hasMoreElements())) {
+              break;
+            }
+            localNetworkInterface = (NetworkInterface)((Enumeration)localObject).nextElement();
+          } while (localNetworkInterface == null);
+          localEnumeration = localNetworkInterface.getInetAddresses();
+        }
+        localInetAddress = (InetAddress)localEnumeration.nextElement();
+      } while ((localInetAddress == null) || (localInetAddress.isLoopbackAddress()) || (localInetAddress.isAnyLocalAddress()) || (localInetAddress.isLinkLocalAddress()));
+      Object localObject = localNetworkInterface.getName() + ":" + localInetAddress.getHostAddress();
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("MSF.C.Util", 2, "getDeviceIp error " + localException.toString(), localException);
+      }
+    }
+    return "0";
   }
 }
 

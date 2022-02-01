@@ -1,14 +1,45 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class bddc
 {
-  public static boolean a(Context paramContext, AppInterface paramAppInterface)
+  public long a;
+  private DownloaderTask a;
+  public String a;
+  public String b;
+  public String c;
+  public String d = "now_for_qq";
+  public String e = "now_appid_2";
+  public String f = "now";
+  public String g;
+  public String h;
+  
+  public static bddc a(String paramString1, String paramString2, String paramString3)
   {
-    return (SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), paramContext.getString(2131719350), "qqsetting_notify_blncontrol_key", true)) && ((paramAppInterface.isBackground_Pause) || (!bdds.a(BaseApplicationImpl.sApplication))) && (!FriendsStatusUtil.a(paramContext));
+    bddc localbddc = new bddc();
+    localbddc.jdField_a_of_type_JavaLangString = "2";
+    localbddc.g = paramString3.substring(0, paramString3.lastIndexOf("/") + 1);
+    localbddc.h = paramString3.substring(paramString3.lastIndexOf("/") + 1);
+    localbddc.b = paramString1;
+    localbddc.c = paramString2;
+    localbddc.jdField_a_of_type_Long = System.currentTimeMillis();
+    QLog.i("NowDownloadTaskInfo", 4, localbddc.toString());
+    return localbddc;
+  }
+  
+  public DownloaderTask a()
+  {
+    return this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask;
+  }
+  
+  public void a(DownloaderTask paramDownloaderTask)
+  {
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask = paramDownloaderTask;
+  }
+  
+  public String toString()
+  {
+    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
   }
 }
 

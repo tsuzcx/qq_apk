@@ -1,26 +1,26 @@
-import android.widget.ImageView;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-public class ync
-  implements ymw
+public abstract interface ync
 {
-  public ync(VideoPlayerView paramVideoPlayerView) {}
+  public abstract StoryInputBarView a();
   
-  public void a(boolean paramBoolean)
-  {
-    if ((VideoPlayerView.a(this.a) != null) && (!paramBoolean) && (this.a.e != null) && (this.a.e.getVisibility() == 0))
-    {
-      this.a.e.setVisibility(8);
-      VideoPlayerView.a(this.a, "");
-    }
-    if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).a(paramBoolean);
-    }
-  }
+  public abstract zpa a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ync
  * JD-Core Version:    0.7.0.1
  */

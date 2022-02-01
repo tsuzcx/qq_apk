@@ -1,11 +1,30 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.FadeIconImageView;
+import cooperation.qqfav.widget.LocationDetailActivity;
+import mqq.app.AppRuntime;
 
-public abstract interface bllh
+public class bllh
+  extends bllb
 {
-  public abstract void a(int paramInt);
+  public bllh(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, blld paramblld, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
+  {
+    super(paramActivity, paramblld, paramInt1, paramInt2, paramAppRuntime);
+  }
   
-  public abstract void a(ArrayList<SmartFilterReqItem> paramArrayList);
+  public void onClick(View paramView)
+  {
+    if (LocationDetailActivity.a(this.a))
+    {
+      bljz.a(true);
+      if (LocationDetailActivity.a(this.a) != null) {
+        LocationDetailActivity.a(this.a).setVisibility(8);
+      }
+    }
+    super.onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,24 +1,22 @@
 public class bgmh
-  implements bgmc<Void>
 {
-  private bgmi a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public static void a(bglv parambglv, bgmi parambgmi)
+  public bgmh(String paramString)
   {
-    bgmh localbgmh = new bgmh();
-    localbgmh.a = parambgmi;
-    parambglv.a(localbgmh);
+    this.a = paramString;
   }
   
-  public Void a(bgls parambgls)
+  public boolean a()
   {
-    parambgls.a(this.a);
-    return null;
+    return "mounted".equals(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgmh
  * JD-Core Version:    0.7.0.1
  */

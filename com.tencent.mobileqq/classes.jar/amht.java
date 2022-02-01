@@ -1,27 +1,10 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
-
-public class amht
-  implements Comparator<File>
+public abstract interface amht
 {
-  public amht(CleanCache paramCleanCache) {}
-  
-  public int a(File paramFile1, File paramFile2)
-  {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
-    }
-    if (l < 0L) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amht
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,44 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.opengl.GLES20;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class axwk
-  extends axwg
+class axwk
+  extends bdzm
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230753);
-  private int jdField_a_of_type_Int = -1;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private int b;
+  axwk(axvz paramaxvz) {}
   
-  public axwk()
+  public void handleMessage(Message paramMessage)
   {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
-    this.mFilterType = 5;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Int != -1) {
-      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-    }
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    bduk localbduk = (bduk)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      wxe.b("Q.qqstory.publish.edit GPULordKelvinFilter", "mosaic bitmap recycle");
-    }
-  }
-  
-  public void onDrawTexture()
-  {
-    super.onDrawTexture();
-    GLES20.glActiveTexture(33985);
-    if (this.jdField_a_of_type_Int == -1)
-    {
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    case 1004: 
+    default: 
+    case 1003: 
+      do
       {
-        QLog.w("Q.qqstory.publish.edit GPULordKelvinFilter", 1, "bitmap error");
-        return;
-      }
-      this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    GLES20.glBindTexture(3553, this.jdField_a_of_type_Int);
-    GLES20.glUniform1i(this.b, 1);
-  }
-  
-  public void onInitialized()
-  {
-    super.onInitialized();
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(BaseApplicationImpl.getContext().getResources().openRawResource(2130845704));
-      this.b = GLES20.glGetUniformLocation(getProgram(), "sTexture2");
+        do
+        {
+          return;
+        } while (localbduk.b != 8);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + bdwp.a);
+        }
+      } while (axvz.a(this.a) == null);
+      axvz.a(this.a).a = bdwp.a;
+      axvz.a(this.a);
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        wxe.e("Q.qqstory.publish.edit GPULordKelvinFilter", "OutOfMemoryError:%s", new Object[] { localOutOfMemoryError.getMessage() });
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
     }
+    this.a.a.a();
+    this.a.a.b(anni.a(2131706098));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axwk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,47 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 
-public final class aoza
-  extends aokh<aoyz>
+class aoza
+  implements SensorEventListener
 {
-  public static void b()
-  {
-    QLog.d("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "initConfig");
-    aoyz.a(false, (aoyz)aoks.a().a(501));
-  }
+  aoza(aoyz paramaoyz) {}
   
-  public int a()
-  {
-    return 501;
-  }
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
-  @NonNull
-  public aoyz a(int paramInt)
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    return new aoyz();
-  }
-  
-  @Nullable
-  public aoyz a(aoko[] paramArrayOfaoko)
-  {
-    return aoyz.a(paramArrayOfaoko);
-  }
-  
-  public Class<aoyz> a()
-  {
-    return aoyz.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.e("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(aoyz paramaoyz)
-  {
-    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onUpdate");
-    aoyz.a(true, paramaoyz);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    double d1 = 1.0D;
+    if (1 != paramSensorEvent.sensor.getType()) {
+      return;
+    }
+    paramSensorEvent = paramSensorEvent.values;
+    float f1 = paramSensorEvent[0];
+    float f2 = paramSensorEvent[1];
+    double d2 = Math.sqrt(f1 * f1 + f2 * f2);
+    d2 = f2 / d2;
+    if (d2 > 1.0D) {}
+    for (;;)
+    {
+      d2 = Math.acos(d1);
+      d1 = d2;
+      if (f1 < 0.0F) {
+        d1 = 6.283185307179586D - d2;
+      }
+      int i = (int)(d1 * 57.295779513082323D);
+      aoyz.a(this.a, (i + 45) / 90 * 90);
+      return;
+      if (d2 < -1.0D) {
+        d1 = -1.0D;
+      } else {
+        d1 = d2;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoza
  * JD-Core Version:    0.7.0.1
  */

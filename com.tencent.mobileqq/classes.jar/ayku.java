@@ -1,27 +1,19 @@
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
-import com.tencent.mobileqq.search.model.BusinessGroupWord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
 
-public class ayku
-  extends amfg
+class ayku
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ayku(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  ayku(ayko paramayko) {}
   
-  public void a(int paramInt, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.a(paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
-    }
-  }
-  
-  public void a(int paramInt, List<BusinessGroupWord> paramList)
-  {
-    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
-    HotWordsForSubBussFragment.a(this.a, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (ayko.a(this.a) != null)
+    {
+      ayko.a(this.a).setAlpha(f);
+      ayko.a(this.a).setTranslationY((1.0F - f) * afur.a(25.0F, ayko.a(this.a)));
     }
   }
 }

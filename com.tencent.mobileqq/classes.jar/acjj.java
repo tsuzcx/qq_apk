@@ -1,83 +1,35 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class acjj
-  extends GestureDetector.SimpleOnGestureListener
+class acjj
+  implements EIPCResultCallback
 {
-  public acjj(BaseChatPie paramBaseChatPie) {}
+  acjj(acji paramacji, AdIPCManager.Params paramParams, int paramInt) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.a(paramMotionEvent);
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return super.onDown(paramMotionEvent);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    super.onLongPress(paramMotionEvent);
-    ((affl)this.a.a(26)).a();
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((BaseChatPie.i() == 1) && (!BaseChatPie.a(this.a).booleanValue())) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() != 0) {}
-    }
-    do
+    String str2 = null;
+    String str1;
+    if (this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params != null)
     {
-      return false;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() >= this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() - 1))
-      {
-        paramMotionEvent1 = new int[2];
-        this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
-        int i = paramMotionEvent1[1];
-        if (BaseChatPie.g(this.a) == i)
-        {
-          this.a.w(1);
-          BaseChatPie.a(this.a, Boolean.valueOf(true));
-          BaseChatPie.e(this.a, -1);
-        }
-        BaseChatPie.e(this.a, i);
+      str1 = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params.getAction();
+      if (this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params != null) {
+        str2 = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params.getToProcessName();
       }
-      if (BaseChatPie.a(this.a)) {
-        this.a.i(true);
+      if (paramEIPCResult == null) {
+        break label91;
       }
-    } while (paramFloat2 >= 0.0F);
-    this.a.H = false;
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onShowPress");
     }
-    this.a.j(false);
-    this.a.i(true);
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    paramMotionEvent = (anxw)this.a.a(50);
-    if (paramMotionEvent != null) {
-      paramMotionEvent.a(true);
+    label91:
+    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
+    {
+      acqy.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.onCallback action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(bool) }));
+      this.jdField_a_of_type_Acji.callbackResult(this.jdField_a_of_type_Int, paramEIPCResult);
+      return;
+      str1 = null;
+      break;
     }
-    this.a.j(false);
-    this.a.i(true);
-    if (paramMotionEvent != null) {
-      paramMotionEvent.a(false);
-    }
-    return false;
   }
 }
 

@@ -1,19 +1,20 @@
-import com.tencent.maxvideo.common.AVIOStruct;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import java.util.concurrent.atomic.AtomicReference;
+import android.graphics.Point;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
 
 public class azkb
 {
   public int a;
-  public azic a;
-  public azkx a;
-  public AVIOStruct a;
-  public AtomicReference<SVHwEncoder> a;
-  public boolean a;
+  public Point a;
   public int b;
+  public Point b;
   public int c;
+  public Point c;
   public int d;
-  public int e;
+  public Point d;
+  public Point e;
+  public Point f;
+  
+  public azkb(SingleTouchLayout paramSingleTouchLayout) {}
 }
 
 

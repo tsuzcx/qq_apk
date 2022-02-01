@@ -1,57 +1,85 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class aqob
-  implements View.OnClickListener
+  extends aqkz<aqoc>
 {
-  public aqob(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
-  
-  public void onClick(View paramView)
+  @NonNull
+  public aqoc a(int paramInt)
   {
-    Object localObject = paramView.getTag();
-    int i;
-    if ((localObject instanceof aqon))
-    {
-      localObject = (aqon)paramView.getTag();
-      i = ((aqon)localObject).c;
-      localObject = (WeiYunFileInfo)((aqon)localObject).a;
+    return new aqoc();
+  }
+  
+  @Nullable
+  public aqoc a(aqlg[] paramArrayOfaqlg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BroadcastConfProcessor", 2, "onParsed");
     }
-    for (;;)
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-      QfileBaseCloudFileTabView localQfileBaseCloudFileTabView;
-      if (localObject != null)
-      {
-        if ((paramView.getId() == 2131366301) && (QfileBaseCloudFileTabView.c(this.a))) {
-          azqs.b(QfileBaseCloudFileTabView.c(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-        }
-        localQfileBaseCloudFileTabView = this.a;
-        if (paramView.getId() != 2131366301) {
-          break label148;
-        }
+      paramArrayOfaqlg = paramArrayOfaqlg[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("BroadcastConfProcessor", 2, "onParsed, content:" + paramArrayOfaqlg);
       }
-      label148:
-      for (boolean bool = true;; bool = false)
+      aqoc localaqoc = aqoc.a(paramArrayOfaqlg);
+      if (!TextUtils.isEmpty(paramArrayOfaqlg))
       {
-        localQfileBaseCloudFileTabView.a((WeiYunFileInfo)localObject, i, bool);
-        return;
-        if (!(localObject instanceof aqnh)) {
-          break label153;
-        }
-        localObject = (WeiYunFileInfo)((aqnh)paramView.getTag()).a;
-        i = -1;
-        break;
+        BaseApplicationImpl.getApplication().getSharedPreferences("broadcast_white_pref", 4).edit().putString("white_list", paramArrayOfaqlg).apply();
+        MobileQQ.addBroadcastWhitList(localaqoc.a);
       }
-      label153:
-      i = 0;
-      localObject = null;
     }
+    return new aqoc();
+  }
+  
+  public void a(aqoc paramaqoc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BroadcastConfProcessor", 2, "onUpdate");
+    }
+  }
+  
+  public Class<aqoc> clazz()
+  {
+    return aqoc.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 567;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqob
  * JD-Core Version:    0.7.0.1
  */

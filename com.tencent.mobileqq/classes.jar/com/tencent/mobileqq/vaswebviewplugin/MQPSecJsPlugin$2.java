@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import begg;
-import begz;
-import bels;
-import bety;
+import bhni;
+import bhod;
+import bhsw;
+import biau;
 
 class MQPSecJsPlugin$2
   implements Runnable
@@ -17,12 +17,12 @@ class MQPSecJsPlugin$2
     {
       if ((MQPSecJsPlugin.access$100(this.this$0) == null) && (!this.this$0.activity.isFinishing()))
       {
-        begg localbegg = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-        if ((localbegg != null) && ((localbegg instanceof bels)))
+        bhni localbhni = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+        if ((localbhni != null) && ((localbhni instanceof bhsw)))
         {
-          MQPSecJsPlugin.access$102(this.this$0, new bety(this.this$0.activity, ((bels)localbegg).b()));
+          MQPSecJsPlugin.access$102(this.this$0, new biau(this.this$0.activity, ((bhsw)localbhni).getTitleBarHeight()));
           MQPSecJsPlugin.access$100(this.this$0).setCancelable(false);
-          MQPSecJsPlugin.access$100(this.this$0).c(2131695090);
+          MQPSecJsPlugin.access$100(this.this$0).c(2131694158);
         }
       }
     }
@@ -40,7 +40,7 @@ class MQPSecJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MQPSecJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

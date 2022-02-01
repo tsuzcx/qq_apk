@@ -1,95 +1,62 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 public class awiw
+  extends Animation
 {
-  public static String a(int paramInt1, int paramInt2, int paramInt3)
+  private final float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private final float b;
+  private final float c;
+  private final float d;
+  private final float e;
+  
+  public awiw(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
   {
-    String str = baws.a(paramInt2);
-    return baws.a(baws.b(paramInt1), baws.c(paramInt3), str, "L");
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
+    this.e = paramFloat5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static void a(Object paramObject, String paramString1, String paramString2)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if ((paramObject instanceof awiz))
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.b;
+    float f3 = this.c;
+    float f4 = this.d;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    paramTransformation = paramTransformation.getMatrix();
+    localCamera.save();
+    if (this.jdField_a_of_type_Boolean) {
+      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
+    }
+    for (;;)
     {
-      paramObject = (awiz)paramObject;
-      baws.c(paramObject.b, true, 1, paramObject.a, paramString1, paramString2);
+      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f3, -f4);
+      paramTransformation.postTranslate(f3, f4);
       return;
+      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
     }
-    if ((paramObject instanceof MessageForPic))
-    {
-      paramObject = (MessageForPic)paramObject;
-      baws.c(paramObject.istroop, true, 1, paramObject.localUUID, paramString1, paramString2);
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("step:").append(paramString1);
-    localStringBuilder.append("    \tcontent:").append(paramString2);
-    QLog.d("Q.richmedia.L." + paramObject, 2, localStringBuilder.toString());
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    a(paramString1, paramString2, paramString3, paramString4, 1);
-  }
-  
-  private static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
-  {
-    if (paramInt == 1) {
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("id:");
-        localStringBuilder.append(paramString2);
-        localStringBuilder.append(" \tstep:");
-        localStringBuilder.append(paramString3);
-        localStringBuilder.append(" \tcont:");
-        localStringBuilder.append(paramString4);
-        QLog.d(paramString1, 2, localStringBuilder.toString());
-      }
-    }
-    while (paramInt != 2) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id:");
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append(" \tstep:");
-    localStringBuilder.append(paramString3);
-    localStringBuilder.append(" \tcont:");
-    localStringBuilder.append(paramString4);
-    QLog.e(paramString1, 1, localStringBuilder.toString());
-  }
-  
-  public static void b(Object paramObject, String paramString1, String paramString2)
-  {
-    if ((paramObject instanceof awiz))
-    {
-      paramObject = (awiz)paramObject;
-      baws.b(paramObject.b, true, 1, paramObject.a, paramString1, paramString2, null);
-      return;
-    }
-    if ((paramObject instanceof MessageForPic))
-    {
-      paramObject = (MessageForPic)paramObject;
-      baws.b(paramObject.istroop, true, 1, paramObject.localUUID, paramString1, paramString2, null);
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("step:").append(paramString1);
-    localStringBuilder.append("    \tcontent:").append(paramString2);
-    QLog.e("Q.richmedia.L." + paramObject, 2, localStringBuilder.toString());
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    a(paramString1, paramString2, paramString3, paramString4, 2);
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awiw
  * JD-Core Version:    0.7.0.1
  */

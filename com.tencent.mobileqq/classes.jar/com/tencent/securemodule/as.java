@@ -60,8 +60,8 @@ public class as
     //   59: aload_0
     //   60: aload_1
     //   61: invokevirtual 64	java/security/cert/X509Certificate:getEncoded	()[B
-    //   64: invokestatic 70	com/tencent/securemodule/ax:b	([B)[B
-    //   67: invokestatic 73	com/tencent/securemodule/ax:a	([B)Ljava/lang/String;
+    //   64: invokestatic 70	com/tencent/securemodule/az:b	([B)[B
+    //   67: invokestatic 73	com/tencent/securemodule/az:a	([B)Ljava/lang/String;
     //   70: invokevirtual 76	com/tencent/securemodule/impl/AppInfo:setCertMd5	(Ljava/lang/String;)V
     //   73: aload_0
     //   74: areturn
@@ -477,25 +477,26 @@ public class as
       {
         i = 1;
         if ((i != 0) && (!paramBoolean)) {
-          break label160;
+          break label188;
         }
         localAppInfo = a(paramContext, localApplicationInfo.packageName);
         if (localAppInfo == null) {
           continue;
         }
-        localAppInfo.setSoftName(ax.a(localPackageManager.getApplicationLabel(localApplicationInfo).toString()));
+        localAppInfo.setSoftName(az.a(localPackageManager.getApplicationLabel(localApplicationInfo).toString()));
         if (i == 0) {
-          break label162;
+          break label190;
         }
       }
-      label160:
-      label162:
+      label188:
+      label190:
       for (int i = 1;; i = 0)
       {
         localAppInfo.setAppType(i);
         localAppInfo.setFileSize(new File(localApplicationInfo.sourceDir).length());
         localAppInfo.setApkPath(localApplicationInfo.sourceDir);
         localArrayList.add(localAppInfo);
+        ax.b("CloudScan", "add app " + localApplicationInfo.packageName);
         break;
         i = 0;
         break label61;
@@ -568,7 +569,7 @@ public class as
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.as
  * JD-Core Version:    0.7.0.1
  */

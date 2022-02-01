@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app.automator.step;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import becr;
-import bedc;
+import bhjt;
+import bhke;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -14,10 +14,10 @@ public class GetFunCallData
 {
   public int a()
   {
-    long l = becr.a(this.a.app, 1, null).getLong("update_time", 0L);
+    long l = bhjt.a(this.a.app, 1, null).getLong("update_time", 0L);
     if ((System.currentTimeMillis() - l > 14400000L) || (System.currentTimeMillis() < l))
     {
-      ((bedc)this.a.app.a(46)).a(1, new Bundle());
+      ((bhke)this.a.app.a(46)).a(1, new Bundle());
       if (QLog.isColorLevel()) {
         QLog.d("GetFunCallData", 2, "doStep SUB_CMD_GET_MY_FC.");
       }

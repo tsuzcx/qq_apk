@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class arvc
-  implements arrh
+public abstract class arvc
 {
-  public arvc(QfileEditBottomBar paramQfileEditBottomBar) {}
+  public void a(EmoticonPackage paramEmoticonPackage) {}
   
-  public void a()
-  {
-    QfileEditBottomBar.a(this.a);
-  }
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
   
-  public void b() {}
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

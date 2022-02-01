@@ -1,20 +1,143 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import java.lang.ref.SoftReference;
 
-class rmz
-  implements rnb<RecyclerView.ViewHolder>
+public class rmz
+  extends AsyncTask<Void, Void, Bitmap>
 {
-  rmz(rmy paramrmy, int paramInt) {}
+  int jdField_a_of_type_Int = -2147483648;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  public String a;
+  private SoftReference<Bitmap> jdField_a_of_type_JavaLangRefSoftReference;
+  private rnb jdField_a_of_type_Rnb;
+  private rnc jdField_a_of_type_Rnc;
+  private rnd jdField_a_of_type_Rnd;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  private int f;
   
-  public void a(RecyclerView.ViewHolder paramViewHolder)
+  public rmz(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, rnb paramrnb)
   {
-    if ((paramViewHolder instanceof rne)) {
-      ((rne)paramViewHolder).a(this.jdField_a_of_type_Int);
+    this.b = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.e = paramInt4;
+    this.jdField_a_of_type_Rnb = paramrnb;
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_Rnb = null;
+    this.jdField_a_of_type_Rnc = null;
+  }
+  
+  private void b()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
     }
+  }
+  
+  public Bitmap a()
+  {
+    if ((this.jdField_a_of_type_JavaLangRefSoftReference != null) && (this.jdField_a_of_type_JavaLangRefSoftReference.get() != null))
+    {
+      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+      if (!localBitmap.isRecycled()) {
+        return localBitmap;
+      }
+    }
+    this.jdField_a_of_type_JavaLangRefSoftReference = null;
+    return null;
+  }
+  
+  protected Bitmap a(Void... arg1)
+  {
+    ??? = a();
+    if (??? != null) {
+      return ???;
+    }
+    this.f += 1;
+    Bitmap[] arrayOfBitmap = new Bitmap[1];
+    arrayOfBitmap[0] = null;
+    this.jdField_a_of_type_Rnd.a(this, new rna(this, arrayOfBitmap));
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      try
+      {
+        this.jdField_a_of_type_JavaLangObject.wait();
+        return arrayOfBitmap[0];
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          localInterruptedException.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    super.onPostExecute(paramBitmap);
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramBitmap);
+    if (this.jdField_a_of_type_Rnc != null) {
+      this.jdField_a_of_type_Rnc.b(this);
+    }
+    if (this.jdField_a_of_type_Rnb != null)
+    {
+      if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
+        break label68;
+      }
+      this.jdField_a_of_type_Rnb.a(paramBitmap, this);
+    }
+    for (;;)
+    {
+      a();
+      return;
+      label68:
+      this.jdField_a_of_type_Rnb.a();
+    }
+  }
+  
+  public void a(rnc paramrnc)
+  {
+    this.jdField_a_of_type_Rnc = paramrnc;
+  }
+  
+  public void a(rnd paramrnd)
+  {
+    this.jdField_a_of_type_Rnd = paramrnd;
+  }
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
+    a();
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    if (this.jdField_a_of_type_Rnc != null) {
+      this.jdField_a_of_type_Rnc.a(this);
+    }
+  }
+  
+  public String toString()
+  {
+    return "CaptureTask{id=" + this.jdField_a_of_type_Int + ", type=" + this.b + ", path='" + this.jdField_a_of_type_JavaLangString + '\'' + ", position=" + this.c + ", width=" + this.d + ", height=" + this.e + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rmz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCPUMonitor.1.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class ryc
-  implements View.OnClickListener
+public final class ryc
+  extends BroadcastReceiver
 {
-  ryc(ryb paramryb) {}
-  
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    RIJRedPacketManager.a().a(this.a.a, 2, 0, 0);
-    FastWebActivity.a(this.a.a).b(2, FastWebActivity.a(this.a.a), FastWebActivity.a(this.a.a).innerUniqueID);
+    paramContext = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(ryb.a(), 2, "Intent.ACTION_SCREEN_OFF");
+      }
+      if ((ryb.a().get() == 0) && (ryb.b().get() < ryb.a()))
+      {
+        ryb.a(new Thread(new VideoFeedsCPUMonitor.1.1(this)));
+        ryb.a().set(1);
+        ryb.a().start();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!"android.intent.action.SCREEN_ON".equals(paramContext));
+      if (QLog.isColorLevel()) {
+        QLog.d(ryb.a(), 2, "Intent.ACTION_SCREEN_ON");
+      }
+    } while (ryb.a().get() != 1);
+    if ((ryb.a() != null) && (ryb.a().isAlive())) {
+      ryb.a().interrupt();
+    }
+    ryb.a().set(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ryc
  * JD-Core Version:    0.7.0.1
  */

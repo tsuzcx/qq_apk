@@ -1,21 +1,70 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aslk
-  extends AnimatorListenerAdapter
+public class aslk
 {
-  aslk(aslg paramaslg) {}
+  private int a;
+  private int b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static aslk a(aqlg paramaqlg)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.d.setVisibility(8);
-    this.a.a.setVisibility(8);
-    this.a.a.setFocusable(false);
-    aslg.a(this.a).sendEmptyMessage(3);
+    aslk localaslk = new aslk();
+    if (paramaqlg != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("limitChatOnPlusConfBean", 2, "parse taskid->" + paramaqlg.jdField_a_of_type_Int + " content->" + paramaqlg.jdField_a_of_type_JavaLangString);
+      }
+      try
+      {
+        paramaqlg = paramaqlg.jdField_a_of_type_JavaLangString;
+        if (!TextUtils.isEmpty(paramaqlg))
+        {
+          paramaqlg = new JSONObject(paramaqlg);
+          localaslk.a(paramaqlg.optInt("business_switch", 0));
+          localaslk.b(paramaqlg.optInt("showInRecentView", 0));
+          return localaslk;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.e("limitChatOnPlusConfBean", 2, "parse content is null ");
+          return localaslk;
+        }
+      }
+      catch (JSONException paramaqlg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("limitChatOnPlusConfBean", 2, "parse error->" + paramaqlg.toString());
+        }
+      }
+    }
+    return localaslk;
+  }
+  
+  void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  void b(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public boolean b()
+  {
+    return this.b == 1;
+  }
+  
+  public String toString()
+  {
+    return String.format("mBusinessSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class adoe
-  extends alwx
+  extends anut
 {
-  public adoe(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public adoe(AuthDevRenameActivity paramAuthDevRenameActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
-      this.a.a(paramBoolean, false);
+    AuthDevRenameActivity.a(this.a);
+    if (!paramBoolean)
+    {
+      QQToast.a(this.a, this.a.getString(2131691854), 0).b(this.a.getTitleBarHeight());
+      return;
     }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
-      this.a.a(paramBoolean, true);
-    }
+    this.a.finish();
   }
 }
 

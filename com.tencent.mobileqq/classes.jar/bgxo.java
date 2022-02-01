@@ -1,79 +1,38 @@
-import android.webkit.ValueCallback;
-import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
-import com.tencent.qqmini.sdk.log.QMLog;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.style.ReplacementSpan;
+import com.tencent.qphone.base.util.QLog;
 
 public class bgxo
-  implements bglu
+  extends ReplacementSpan
 {
-  private int jdField_a_of_type_Int;
-  public ITTJSRuntime a;
-  private final String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean;
+  public int a;
+  public int b;
   
-  public bgxo(ITTJSRuntime paramITTJSRuntime, int paramInt)
+  public bgxo(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = ("[minigame] " + this + "[" + paramInt + "]");
-    this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime = paramITTJSRuntime;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public int a()
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
   {
-    return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorSpan", 2, "onDraw");
+    }
   }
   
-  public void a()
+  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (a()) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime.evaluateCallbackJs(paramInt, paramString);
-      return;
-    }
-    QMLog.e(this.jdField_a_of_type_JavaLangString, "evaluateCallbackJs on null realJsRuntime");
-  }
-  
-  public void a(String paramString, ValueCallback paramValueCallback)
-  {
-    if (a()) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime.evaluateJs(paramString);
-      return;
-    }
-    QMLog.e(this.jdField_a_of_type_JavaLangString, "evaluateJs on null realJsRuntime");
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    if (a()) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime.evaluateSubscribeJs(paramString1, paramString2);
-      return;
-    }
-    QMLog.e(this.jdField_a_of_type_JavaLangString, "evaluateSubscribeJS on null realJsRuntime");
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgxo
  * JD-Core Version:    0.7.0.1
  */

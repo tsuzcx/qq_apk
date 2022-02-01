@@ -1,22 +1,10 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
+import kotlin.Metadata;
 
-class rck
-  extends bhry
-{
-  rck(rch paramrch, AlphaAnimation paramAlphaAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Rch.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWatchWordJumpDialog$Companion;", "", "()V", "CLICK_CANCEL", "", "CLICK_JUMP", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rck {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rck
  * JD-Core Version:    0.7.0.1
  */

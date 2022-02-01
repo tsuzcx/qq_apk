@@ -1,20 +1,18 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 
 class acvm
-  extends acwf
+  implements acvn
 {
-  acvm(acvl paramacvl, int paramInt1, int paramInt2, String paramString)
-  {
-    super(paramacvl.a, paramInt1, paramInt2);
-  }
+  acvm(acvl paramacvl, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq) {}
   
-  public void onClick(View paramView)
+  public ToServiceMsg a()
   {
-    if (this.jdField_a_of_type_Acvl.a.a != null) {
-      this.jdField_a_of_type_Acvl.a.a.setText(this.jdField_a_of_type_JavaLangString);
-    }
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Acvl.a.createToServiceMsg("PbMessageSvc.PbMsgReadedReport");
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray());
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
   }
 }
 

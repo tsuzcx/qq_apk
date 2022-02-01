@@ -1,26 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 class nvy
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  nvy(nvp paramnvp, Runnable paramRunnable) {}
+  nvy(nvu paramnvu, JsResult paramJsResult, Context paramContext) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
-    nvp.a(this.jdField_a_of_type_Nvp, 3);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvy
  * JD-Core Version:    0.7.0.1
  */

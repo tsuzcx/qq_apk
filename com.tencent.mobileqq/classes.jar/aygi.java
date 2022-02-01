@@ -1,33 +1,36 @@
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+import mqq.util.WeakReference;
 
 public class aygi
-  implements Comparable<aygi>
+  implements bhyz
 {
-  public int a;
-  public MessageForScribble a;
+  public aygi(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  aygi(MessageForScribble paramMessageForScribble, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Int = 200;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = paramMessageForScribble;
-    if (paramInt >= 200)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-    }
-    QLog.e("ScribbleDownloadInfo", 1, "err priority");
+    OCRResultFragmentNew.a(this.a, 0);
   }
   
-  public int a(aygi paramaygi)
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Int < paramaygi.jdField_a_of_type_Int) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Int > paramaygi.jdField_a_of_type_Int) {
-      return 1;
-    }
-    return 0;
+    bdon.a(paramString, "OCR_Participle_copy");
+  }
+  
+  public void b(String paramString)
+  {
+    ayfi.a(OCRResultFragmentNew.a(this.a), paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    bdon.a(OCRResultFragmentNew.a(this.a), (QQAppInterface)OCRResultFragmentNew.a(this.a).get(), paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    TranslateFragment.a(OCRResultFragmentNew.a(this.a), paramString);
   }
 }
 

@@ -1,14 +1,19 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface ayfg
+public class ayfg
+  implements View.OnClickListener
 {
-  public abstract Object a();
+  public ayfg(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public abstract void a(View paramView, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void onClick(View paramView);
+  public void onClick(View paramView)
+  {
+    ayfi.a("0X800AADF", 0);
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

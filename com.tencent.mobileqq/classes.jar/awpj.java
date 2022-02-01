@@ -1,34 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
 
 public class awpj
-  extends BroadcastReceiver
+  implements biea
 {
-  public awpj(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  public awpj(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    if ((paramIntent != null) && (paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label")))
+    if (paramInt == 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("PersonalityLabelGalleryActivity", 2, "receive broadcast modify pl info");
+      if (MsgBackupPCAuthFragment.a(this.a)) {
+        this.a.k();
       }
-      paramContext = paramIntent.getBundleExtra("key_bundle_data");
-      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged")))
-      {
-        this.a.a = true;
-        PersonalityLabelGalleryActivity.a(this.a);
-      }
+      this.a.onBackEvent();
+    }
+    while (paramInt != 2) {
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpj
  * JD-Core Version:    0.7.0.1
  */

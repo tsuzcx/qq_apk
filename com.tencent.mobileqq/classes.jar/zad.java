@@ -1,66 +1,33 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListReq;
-import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp;
-import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
 public class zad
-  extends ProtoBufRequest
 {
-  private final CLIENT.StGetStoryFeedListReq a = new CLIENT.StGetStoryFeedListReq();
+  public final ArrayList<yxs> a;
+  @NonNull
+  public final ywx a;
+  @NonNull
+  public final ywy a;
+  @NonNull
+  public final yxi a;
+  @NonNull
+  public final yxm a;
   
-  public zad(int paramInt, CLIENT.StUinTime paramStUinTime)
+  public zad(@NonNull yxm paramyxm, @NonNull yxi paramyxi, @NonNull ywy paramywy, @NonNull ywx paramywx)
   {
-    this.a.listType.set(paramInt);
-    this.a.uinTime.set(paramStUinTime);
-    this.a.listNum.set(10);
-  }
-  
-  @Nullable
-  public static CLIENT.StGetStoryFeedListRsp a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null)
-    {
-      a("data is null");
-      return null;
-    }
-    paramArrayOfByte = decode(paramArrayOfByte);
-    if (paramArrayOfByte == null)
-    {
-      a("storyData is null");
-      return null;
-    }
-    CLIENT.StGetStoryFeedListRsp localStGetStoryFeedListRsp = new CLIENT.StGetStoryFeedListRsp();
-    try
-    {
-      localStGetStoryFeedListRsp.mergeFrom(paramArrayOfByte);
-      return localStGetStoryFeedListRsp;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      a("onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  private static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetMineStoryFeedListRequest", 2, paramString);
-    }
-  }
-  
-  public byte[] getBusiBuf()
-  {
-    return this.a.toByteArray();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Yxm = paramyxm;
+    this.jdField_a_of_type_Yxi = paramyxi;
+    this.jdField_a_of_type_Ywy = paramywy;
+    this.jdField_a_of_type_Ywx = paramywx;
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramywy);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramyxi);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramyxm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zad
  * JD-Core Version:    0.7.0.1
  */

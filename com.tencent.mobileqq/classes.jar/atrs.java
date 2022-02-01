@@ -1,24 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
 class atrs
-  implements bhuw
+  implements ShareActionSheet.OnItemClickListener
 {
-  atrs(atro paramatro, PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  atrs(atro paramatro) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    atro.a(this.jdField_a_of_type_Atro, true);
-    atro.a(this.jdField_a_of_type_Atro).a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.b()) {
-      azqs.b(null, "CliOper", "", "", "0X800A960", "0X800A960", 0, 0, "0", "0", "0", "");
-    }
+    if (paramActionSheetItem == null) {}
+    do
+    {
+      return;
+      atro.a(this.a).dismiss();
+      if (paramActionSheetItem.listener != null)
+      {
+        paramActionSheetItem.listener.onClick(null);
+        return;
+      }
+    } while (this.a.a == null);
+    this.a.a.a(paramActionSheetItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atrs
  * JD-Core Version:    0.7.0.1
  */

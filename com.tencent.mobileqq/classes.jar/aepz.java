@@ -1,44 +1,36 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
 public class aepz
-  implements apry
+  extends wrj
 {
-  public aepz(BaseBubbleBuilder paramBaseBubbleBuilder) {}
-  
-  public void a(View paramView)
+  public aepz(NearbyActivity paramNearbyActivity, String paramString)
   {
-    String str = bdtg.a("aioEmojiStickerDetail");
-    ViewParent localViewParent = paramView.getParent();
-    if ((localViewParent instanceof ChatXListView)) {
-      EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
-    }
-    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
-    paramView.setFlags(268435456);
-    paramView.putExtra("vasUsePreWebview", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
-    int i;
-    if (EmojiStickerManager.a().a == 0) {
-      i = 1;
-    }
-    for (;;)
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      return;
-      if (EmojiStickerManager.a().a == 1) {
-        i = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
-        i = 3;
-      } else {
-        i = -1;
+      localStringBuilder = new StringBuilder().append("startLocation end, errCode=").append(paramInt).append(" lbsInfo=").append(paramSosoLbsInfo).append(", info.location=");
+      if (paramSosoLbsInfo == null) {
+        break label103;
       }
+    }
+    label103:
+    for (SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;; localSosoLocation = null)
+    {
+      QLog.d("nearby.heart_beat", 2, localSosoLocation);
+      if ((!this.a.isFinishing()) && (!this.a.c))
+      {
+        this.a.c = false;
+        this.a.a.a(1, paramSosoLbsInfo);
+      }
+      return;
     }
   }
 }

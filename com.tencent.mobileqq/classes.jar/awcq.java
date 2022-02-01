@@ -1,34 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.net.Network;
+import mqq.os.MqqHandler;
 
-public class awcq
-  implements Animator.AnimatorListener
+class awcq
+  implements awct
 {
-  public awcq(ScanIconAnimateView paramScanIconAnimateView) {}
+  awcq(awco paramawco, String paramString, awcr paramawcr) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(Network paramNetwork)
   {
-    ScanIconAnimateView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    awco.a(this.jdField_a_of_type_Awco).removeCallbacksAndMessages(null);
+    awco.a(this.jdField_a_of_type_Awco, this.jdField_a_of_type_JavaLangString, paramNetwork, new awcs(this.jdField_a_of_type_Awcr, paramNetwork));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awcq
  * JD-Core Version:    0.7.0.1
  */

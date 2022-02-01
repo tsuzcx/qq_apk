@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 
-class rhz
-  implements DialogInterface.OnClickListener
+public final class rhz
+  implements Parcelable.Creator<TagInfo>
 {
-  rhz(rhx paramrhx) {}
+  public TagInfo a(Parcel paramParcel)
+  {
+    return new TagInfo(paramParcel);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public TagInfo[] a(int paramInt)
+  {
+    return new TagInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rhz
  * JD-Core Version:    0.7.0.1
  */

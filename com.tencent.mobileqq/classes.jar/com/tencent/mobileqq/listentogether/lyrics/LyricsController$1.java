@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import atnw;
+import avuv;
 
 public class LyricsController$1
   implements Runnable
 {
-  public LyricsController$1(atnw paramatnw) {}
+  public LyricsController$1(avuv paramavuv) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class LyricsController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.LyricsController.1
  * JD-Core Version:    0.7.0.1
  */

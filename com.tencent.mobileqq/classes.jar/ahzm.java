@@ -1,37 +1,77 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class ahzm
-  implements arrh
+  extends BroadcastReceiver
 {
-  ahzm(ahzl paramahzl, FileManagerEntity paramFileManagerEntity) {}
+  ahzm(ahzf paramahzf) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Ahzl.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    if (paramIntent != null)
+    {
+      if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_DeviceUnBindRst")) {
+        break label72;
+      }
+      paramContext = paramIntent.getExtras();
+      if (paramContext != null) {
+        break label26;
+      }
     }
-    alqo localalqo;
-    ArrayList localArrayList;
+    label26:
+    label72:
     do
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
+      do
+      {
+        do
+        {
+          long l;
+          do
+          {
+            return;
+            l = paramContext.getLong("deviceopdin", 0L);
+          } while ((paramContext.getInt("deviceoprstcode", 0) != 0) || (Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) != l));
+          this.a.I();
+          return;
+          if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_ProductFetchRst")) {
+            break;
+          }
+          paramContext = paramIntent.getExtras();
+        } while ((paramContext == null) || (paramContext.getInt("deviceoprstcode", 0) != 0));
+        this.a.bo();
+        return;
+        if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_receiveVasFlagResult")) {
+          break;
+        }
+        paramContext = paramIntent.getExtras();
+      } while (paramContext == null);
+      int i = paramContext.getInt("Flag", 0);
+      paramContext = (abux)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49);
+      if (i == 1)
+      {
+        ahzf.W = true;
+        paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691634) + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691373);
+        paramContext.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramIntent, bbyp.a(), true, false, 0);
+        return;
       }
-      localalqo = (alqo)this.jdField_a_of_type_Ahzl.a.a.a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localalqo.a(localArrayList));
-    arri.a(2131692746);
-    return;
-    this.jdField_a_of_type_Ahzl.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      ahzf.W = false;
+      paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691634) + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691372) + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691355);
+      paramContext.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramIntent, bbyp.a(), true, false, 2);
+      return;
+      if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_OnDataPointFileMsgProgress"))
+      {
+        ahzf.a(this.a, paramIntent);
+        return;
+      }
+    } while (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_OnDataPointFileMsgSendRet"));
+    ahzf.b(this.a, paramIntent);
   }
-  
-  public void b() {}
 }
 
 

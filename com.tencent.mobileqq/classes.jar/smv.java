@@ -1,20 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-
-public class smv
-  implements snn
+public abstract interface smv
 {
-  public smv(ViolaFragment paramViolaFragment) {}
+  public abstract void a();
   
-  public void a(int paramInt)
-  {
-    if (ViolaFragment.a(this.a) != null) {
-      ViolaFragment.a(this.a).a(paramInt);
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     smv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,19 @@
+public class zwb
+  extends zwd
+{
+  public String a()
+  {
+    return "RichFrameWorkStrategy";
+  }
+  
+  public String b()
+  {
+    return zwc.b;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+ * Qualified Name:     zwb
+ * JD-Core Version:    0.7.0.1
+ */

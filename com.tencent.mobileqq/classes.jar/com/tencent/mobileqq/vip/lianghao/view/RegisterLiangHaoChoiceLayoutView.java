@@ -8,9 +8,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bebz;
-import bece;
-import becg;
+import bhjb;
+import bhjg;
+import bhji;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class RegisterLiangHaoChoiceLayoutView
@@ -19,7 +20,7 @@ public class RegisterLiangHaoChoiceLayoutView
 {
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bebz jdField_a_of_type_Bebz;
+  private bhjb jdField_a_of_type_Bhjb;
   private LiangHaoView[] jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView = new LiangHaoView[4];
   private View b;
   
@@ -44,8 +45,8 @@ public class RegisterLiangHaoChoiceLayoutView
   private void a(int paramInt)
   {
     LiangHaoView localLiangHaoView = this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[paramInt];
-    if ((localLiangHaoView != null) && (localLiangHaoView.a != null) && (this.jdField_a_of_type_Bebz != null)) {
-      this.jdField_a_of_type_Bebz.a(localLiangHaoView.a);
+    if ((localLiangHaoView != null) && (localLiangHaoView.a != null) && (this.jdField_a_of_type_Bhjb != null)) {
+      this.jdField_a_of_type_Bhjb.a(localLiangHaoView.a);
     }
   }
   
@@ -53,14 +54,14 @@ public class RegisterLiangHaoChoiceLayoutView
   {
     int i = 0;
     setOrientation(1);
-    LayoutInflater.from(getContext()).inflate(2131561730, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369403);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369402));
-    this.b = findViewById(2131369401);
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[0] = ((LiangHaoView)findViewById(2131369406));
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[1] = ((LiangHaoView)findViewById(2131369407));
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[2] = ((LiangHaoView)findViewById(2131369408));
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[3] = ((LiangHaoView)findViewById(2131369409));
+    LayoutInflater.from(getContext()).inflate(2131561969, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369796);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369795));
+    this.b = findViewById(2131369794);
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[0] = ((LiangHaoView)findViewById(2131369799));
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[1] = ((LiangHaoView)findViewById(2131369800));
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[2] = ((LiangHaoView)findViewById(2131369801));
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[3] = ((LiangHaoView)findViewById(2131369802));
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.b.setOnClickListener(this);
@@ -73,27 +74,27 @@ public class RegisterLiangHaoChoiceLayoutView
     }
   }
   
-  public void a(bece parambece)
+  public void a(bhjg parambhjg)
   {
-    if ((parambece == null) || (parambece.a == null) || (parambece.a.size() == 0)) {
+    if ((parambhjg == null) || (parambhjg.a == null) || (parambhjg.a.size() == 0)) {
       return;
     }
     int i = 0;
     if (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView.length)
     {
-      if (parambece.a.size() <= i) {
+      if (parambhjg.a.size() <= i) {
         ((ViewGroup)this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].getParent()).setVisibility(8);
       }
       for (;;)
       {
         i += 1;
         break;
-        becg localbecg = (becg)parambece.a.get(i);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].setUin(localbecg);
+        bhji localbhji = (bhji)parambhjg.a.get(i);
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].setUin(localbhji);
         ((ViewGroup)this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].getParent()).setVisibility(0);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambece.c);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambhjg.c);
   }
   
   public void a(boolean paramBoolean)
@@ -121,48 +122,52 @@ public class RegisterLiangHaoChoiceLayoutView
   
   public void onClick(View paramView)
   {
-    bebz localbebz = this.jdField_a_of_type_Bebz;
-    if (localbebz == null) {
-      return;
-    }
-    switch (paramView.getId())
+    bhjb localbhjb = this.jdField_a_of_type_Bhjb;
+    if (localbhjb == null) {}
+    for (;;)
     {
-    case 2131369402: 
-    case 2131369404: 
-    case 2131369405: 
-    case 2131369406: 
-    case 2131369407: 
-    case 2131369408: 
-    case 2131369409: 
-    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 2131369401: 
-      localbebz.b();
-      return;
-    case 2131369403: 
-      localbebz.a();
-      return;
-    case 2131369410: 
-      a(0);
-      return;
-    case 2131369411: 
-      a(1);
-      return;
-    case 2131369412: 
-      a(2);
-      return;
+      switch (paramView.getId())
+      {
+      case 2131369795: 
+      case 2131369797: 
+      case 2131369798: 
+      case 2131369799: 
+      case 2131369800: 
+      case 2131369801: 
+      case 2131369802: 
+      default: 
+        break;
+      case 2131369794: 
+        localbhjb.b();
+        break;
+      case 2131369796: 
+        localbhjb.a();
+        break;
+      case 2131369803: 
+        a(0);
+        break;
+      case 2131369804: 
+        a(1);
+        break;
+      case 2131369805: 
+        a(2);
+        break;
+      case 2131369806: 
+        a(3);
+      }
     }
-    a(3);
   }
   
-  public void setLiangHaoHelper(bebz parambebz)
+  public void setLiangHaoHelper(bhjb parambhjb)
   {
-    this.jdField_a_of_type_Bebz = parambebz;
+    this.jdField_a_of_type_Bhjb = parambhjb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.view.RegisterLiangHaoChoiceLayoutView
  * JD-Core Version:    0.7.0.1
  */

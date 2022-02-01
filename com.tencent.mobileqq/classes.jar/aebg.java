@@ -1,18 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aebg
-  implements avzl
+  implements DialogInterface.OnCancelListener
 {
-  public aebg(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public aebg(DialogActivity paramDialogActivity) {}
   
-  public void a(int paramInt, avzm paramavzm)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramavzm != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.b(this.a))) && (!TextPreviewTranslateActivity.b(this.a).equals(paramavzm.b)))
-    {
-      TextPreviewTranslateActivity.b(this.a, paramavzm.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
-    }
+    this.a.finish();
   }
 }
 

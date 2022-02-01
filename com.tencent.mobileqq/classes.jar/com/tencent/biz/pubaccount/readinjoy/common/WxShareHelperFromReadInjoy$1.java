@@ -4,14 +4,12 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
 import com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.qphone.base.util.QLog;
-import xqw;
+import zkh;
 
 class WxShareHelperFromReadInjoy$1
   implements Runnable
@@ -40,7 +38,7 @@ class WxShareHelperFromReadInjoy$1
       j *= 4;
       if (this.c.startsWith("/pages/index/index?share=1&share_type=1"))
       {
-        localObject1 = xqw.a(xqw.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true), BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841418), true);
+        localObject1 = zkh.a(zkh.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true), BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841722), true);
         if (localObject1 != null)
         {
           i = ((Bitmap)localObject1).getWidth();
@@ -62,9 +60,9 @@ class WxShareHelperFromReadInjoy$1
       ((SendMessageToWX.Req)localObject1).transaction = this.f;
       ((SendMessageToWX.Req)localObject1).message = localWXMediaMessage;
       ((SendMessageToWX.Req)localObject1).scene = 0;
-      WxShareHelperFromReadInjoy.a(this.this$0).sendReq((BaseReq)localObject1);
+      WxShareHelperFromReadInjoy.a(this.this$0, (SendMessageToWX.Req)localObject1);
       return;
-      localObject1 = xqw.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true);
+      localObject1 = zkh.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true);
       break;
       if (QLog.isColorLevel()) {
         QLog.e("WxShareHelperFromReadInjoy", 2, "shareToMiniProgramWithPathAndId, error icon == null! title" + this.d + ", description = " + this.e + ", path = " + this.c + ", webPageUrl = " + this.jdField_a_of_type_JavaLangString + ", id = " + this.b);

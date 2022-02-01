@@ -1,32 +1,50 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.app.Dialog;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
 public class adyl
-  extends RecyclerView.ItemDecoration
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
+  public adyl(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public adyl(adyd paramadyd, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.right = this.jdField_a_of_type_Int;
-    paramRect.bottom = this.jdField_a_of_type_Int;
-    paramRect.left = this.jdField_a_of_type_Int;
-    if (paramRecyclerView.getChildPosition(paramView) != 0) {
-      paramRect.right = this.jdField_a_of_type_Int;
+    if (paramMessage.what == 1000)
+    {
+      if (this.a.a()) {
+        break label149;
+      }
+      i = paramMessage.arg1 - 1;
+      if (i != 0) {
+        break label39;
+      }
+      ContactSyncJumpActivity.a(this.a);
     }
+    label39:
+    while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (this.a.jdField_a_of_type_Int != 2))
+    {
+      int i;
+      return;
+      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_Int == 2))
+      {
+        paramMessage = "(" + i + ")";
+        ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365506)).setText(String.format(this.a.getResources().getString(2131697850), new Object[] { paramMessage }));
+      }
+      paramMessage = obtainMessage(1000);
+      paramMessage.arg1 = i;
+      sendMessageDelayed(paramMessage, 1000L);
+      return;
+    }
+    label149:
+    ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365506)).setText(String.format(this.a.getResources().getString(2131697850), new Object[] { "" }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adyl
  * JD-Core Version:    0.7.0.1
  */

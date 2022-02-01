@@ -1,40 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class wmp
-  extends QQUIEventReceiver<wml, wmo>
+class wmp
+  extends xbu
 {
-  public wmp(wml paramwml)
+  wmp(wmm paramwmm) {}
+  
+  public void a()
   {
-    super(paramwml);
+    super.a();
+    wml.a(this.a.a, null);
   }
   
-  public void a(@NonNull wml paramwml, @NonNull wmo paramwmo)
+  public void a(int paramInt)
   {
-    if (paramwmo.jdField_a_of_type_Boolean)
-    {
-      if (paramwmo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-      {
-        wml.a(paramwml, paramwmo.jdField_a_of_type_JavaUtilList, true);
-        wml.a(paramwml).a(true);
-      }
-      return;
-    }
-    wml.a(paramwml, paramwmo);
-    wml.a(paramwml).remove(wml.b());
-    wml.a(paramwml);
+    super.a(paramInt);
+    yqu.a("home_page", "suc_share", 1, paramInt, new String[] { yqu.b(this.a.a.a) + "", yqu.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
   
-  public Class acceptEventClass()
+  public void b(int paramInt)
   {
-    return wmo.class;
+    super.b(paramInt);
+    yqu.a("home_page", "share_chanel", 1, paramInt, new String[] { yqu.b(this.a.a.a) + "", yqu.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wmp
  * JD-Core Version:    0.7.0.1
  */

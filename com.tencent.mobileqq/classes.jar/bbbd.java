@@ -1,15 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+
 public class bbbd
-  extends bbbi
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public byte[] a;
+  public bbbd(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" msgResId:");
-    localStringBuilder.append(this.a);
-    return localStringBuilder.toString();
+    SignatureEditFragment.a(this.a, 8589934618L, null);
+    paramDialogInterface.dismiss();
   }
 }
 

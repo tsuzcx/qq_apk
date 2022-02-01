@@ -1,112 +1,135 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONObject;
 
 public class aqmj
-  implements View.OnClickListener
 {
-  public aqmj(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  private Map<String, String> a = new HashMap();
   
-  public void onClick(View paramView)
+  public static aqmj a(aqlg[] paramArrayOfaqlg)
   {
-    Object localObject = (arcd)paramView.getTag();
-    FileInfo localFileInfo = ((arcd)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
-    int i;
-    if (paramView.getId() == 2131366301)
+    Object localObject;
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0))
     {
-      i = 1;
-      if (!localFileInfo.c()) {
-        break label51;
-      }
-      LocalFileBrowserActivity.a(this.a, localFileInfo.c(), true);
+      QLog.e("ApolloConfig_GlobalProcessor", 1, "onParsed error: confFiles is empty");
+      localObject = null;
+      return localObject;
     }
-    label51:
+    for (;;)
+    {
+      aqmj localaqmj;
+      int i;
+      try
+      {
+        localaqmj = new aqmj();
+        i = 0;
+        localObject = localaqmj;
+        if (i >= paramArrayOfaqlg.length) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloConfig_GlobalProcessor", 2, new Object[] { "parse conf taskId:", Integer.valueOf(paramArrayOfaqlg[i].jdField_a_of_type_Int) });
+        }
+        localObject = new JSONObject(paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString);
+        if (((JSONObject)localObject).has("apolloSwitch")) {
+          localaqmj.a.put("apolloConfig", paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString);
+        } else if (((JSONObject)localObject).has("aioGameTab")) {
+          localaqmj.a.put("apolloGame", paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString);
+        }
+      }
+      catch (Exception paramArrayOfaqlg)
+      {
+        QLog.e("ApolloConfig_GlobalProcessor", 1, paramArrayOfaqlg, new Object[0]);
+        return null;
+      }
+      if (((JSONObject)localObject).has("preDownLoadRes")) {
+        localaqmj.a.put("apolloPreDownload", paramArrayOfaqlg[i].jdField_a_of_type_JavaLangString);
+      }
+      i += 1;
+    }
+  }
+  
+  public static String a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (!paramBoolean) {}
+    return paramString2;
+  }
+  
+  public static void a()
+  {
+    try
+    {
+      String str = BaseApplicationImpl.getContext().getSharedPreferences("apollo_sp", 0).getString("sp_key_config_script", "");
+      if (!TextUtils.isEmpty(str))
+      {
+        QLog.d("ApolloConfig_GlobalProcessor", 1, new Object[] { "rollbackConfig scriptConfig:", str });
+        anca.a(new JSONObject(str), "base_script", false);
+        amhd.a.set(true);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ApolloConfig_GlobalProcessor", 1, "rollbackConfig e:", localException);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, aqmj paramaqmj)
+  {
+    if ((paramQQAppInterface == null) || (paramaqmj == null) || (paramaqmj.a.size() == 0))
+    {
+      QLog.e("ApolloConfig_GlobalProcessor", 1, "parseApolloConfBean err params");
+      if (!paramBoolean) {
+        aqmk.b();
+      }
+    }
+    int i;
     do
     {
       return;
+      Iterator localIterator = paramaqmj.a.keySet().iterator();
       i = 0;
-      break;
-      if ((this.a.f()) && (i == 0))
+      if (localIterator.hasNext())
       {
-        if ((this.a.i()) && (!arbs.a(arbs.b)))
-        {
-          paramView = bdgm.a(this.a, 2131698506);
-          paramView.setPositiveButton(2131694953, new bdgx());
-          paramView.show();
-          return;
+        String str1 = (String)localIterator.next();
+        String str2 = a(paramBoolean, str1, (String)paramaqmj.a.get(str1));
+        if ((paramBoolean) && (QLog.isColorLevel())) {
+          QLog.d("ApolloConfig_GlobalProcessor", 2, new Object[] { "parseApolloConfBean isUpdate:", paramBoolean + ",content:", str2 });
         }
-        if (arbs.a(localFileInfo)) {
-          arbs.b(localFileInfo);
+        if ("apolloConfig".equals(str1))
+        {
+          anca.a(str2, paramQQAppInterface, paramBoolean);
+          if (paramBoolean) {
+            amhd.b(false);
+          }
+          i = 1;
         }
         for (;;)
         {
-          this.a.l();
-          if (!this.a.f()) {
-            break;
-          }
-          ((arcd)localObject).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-          ((arcd)localObject).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(arbs.a(localFileInfo));
-          return;
-          if (this.a.f) {
-            arbs.b();
-          }
-          if (localFileInfo.a() == -1) {
-            localFileInfo.b(arrr.a(localFileInfo.c()));
-          }
-          arbs.a(localFileInfo);
-          if (this.a.f) {
-            LocalFileBrowserActivity.a(this.a);
+          break;
+          if ("apolloGame".equals(str1)) {
+            anca.b(paramQQAppInterface, str2, paramBoolean);
+          } else if ("apolloPreDownload".equals(str1)) {
+            anca.b(paramQQAppInterface, str2);
           }
         }
-        ((arcd)localObject).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-        return;
       }
-      if (this.a.a()) {
-        break label256;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(LocalFileBrowserActivity.g, 2, "click too fast , wait a minute.");
-    return;
-    label256:
-    if (this.a.f()) {
-      azqs.b(this.a.app, "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-    }
-    this.a.e();
-    localObject = arrr.a(localFileInfo);
-    ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-    localForwardFileInfo.b(((FileManagerEntity)localObject).nSessionId);
-    localForwardFileInfo.d(3);
-    localForwardFileInfo.b(10000);
-    localForwardFileInfo.a(localFileInfo.c());
-    localForwardFileInfo.d(localFileInfo.d());
-    localForwardFileInfo.d(localFileInfo.a());
-    paramView = new Intent(this.a.getApplicationContext(), FileBrowserActivity.class);
-    paramView.putExtra("fileinfo", localForwardFileInfo);
-    if ((((FileManagerEntity)localObject).nFileType == 0) || (((FileManagerEntity)localObject).nFileType == 1))
-    {
-      arbs.a(this.a.b);
-      paramView.putExtra("clicked_file_hashcode", localFileInfo.hashCode());
-    }
-    localObject = new arrq();
-    ((arrq)localObject).b = "file_viewer_in";
-    ((arrq)localObject).jdField_a_of_type_Int = 80;
-    ((arrq)localObject).c = arso.a(localFileInfo.d());
-    ((arrq)localObject).jdField_a_of_type_Long = localFileInfo.a();
-    arrp.a(this.a.app.getCurrentAccountUin(), (arrq)localObject);
-    this.a.startActivityForResult(paramView, 102);
+    } while (i == 0);
+    aqmm.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmj
  * JD-Core Version:    0.7.0.1
  */

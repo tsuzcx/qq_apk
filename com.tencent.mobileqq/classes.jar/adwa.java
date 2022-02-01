@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class adwa
-  extends altm
+  implements DialogInterface.OnClickListener
 {
-  public adwa(SearchFriendListActivity paramSearchFriendListActivity) {}
+  public adwa(ChatSettingActivity paramChatSettingActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null)) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    this.a.finish();
+    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
+      ChatSettingActivity.a(this.a).dismiss();
     }
   }
 }

@@ -1,60 +1,33 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadManager.5.1;
+import com.tencent.open.downloadnew.DownloadManager.5.2;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import mqq.os.MqqHandler;
 
 public class bivx
-  implements ayqp<aynt, aywd>
+  implements ITMAssistantDownloadClientListener
 {
-  public void a(aynt paramaynt, aywd paramaywd)
+  bivx(bivr parambivr) {}
+  
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    biwb localbiwb;
-    int i;
-    if (((paramaynt instanceof biwb)) && ((paramaywd instanceof ayxt)))
-    {
-      localbiwb = (biwb)paramaynt;
-      paramaywd = (ayxt)paramaywd;
-      paramaynt = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20170310/4c615c46286c40e78851635a63a22dae.png", URLDrawable.URLDrawableOptions.obtain());
-      if ((paramaynt != null) && (paramaynt.getStatus() == 2)) {
-        paramaynt.restartDownload();
-      }
-      paramaywd.b().setImageDrawable(paramaynt);
-      paramaywd.a().setText(biwb.b);
-      if (localbiwb.a() != null) {
-        break label204;
-      }
-      i = 0;
-      if (i > 10) {
-        break label218;
-      }
-    }
-    label204:
-    label218:
-    for (paramaynt = String.valueOf(i);; paramaynt = "10+")
-    {
-      ((TextView)paramaywd.a().findViewById(2131365123)).setText(String.format("%s条与\"", new Object[] { paramaynt }));
-      paramaynt = (TextView)paramaywd.a().findViewById(2131365117);
-      if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-        paramaynt.setTextColor(Color.parseColor("#004080"));
-      }
-      paramaynt.setText(localbiwb.b());
-      ((TextView)paramaywd.a().findViewById(2131365124)).setText("\"相关收藏");
-      paramaywd.a().setVisibility(8);
-      paramaywd.a().setOnClickListener(new bivy(this, localbiwb));
-      return;
-      i = localbiwb.a().size();
-      break;
-    }
+    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.2(this, paramLong1, paramLong2, paramString));
+  }
+  
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.1(this, paramTMAssistantDownloadClient, paramInt1, paramString1, paramInt2, paramString2));
+  }
+  
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  {
+    bisy.e("DownloadManager_", "OnDwonloadSDKServiceInvalid");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bivx
  * JD-Core Version:    0.7.0.1
  */

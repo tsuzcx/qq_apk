@@ -1,25 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class adly
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public adly(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
+  public adly(AssistantSettingActivity paramAssistantSettingActivity, ArrayList paramArrayList) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage(str, "bubble_new", "change", "0", 0, 0, 0, "", "", paramCompoundButton, "", "", "", "", 0, 0, 0, 0);
-      return;
-    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity, ArkAppListActivity.class);
+    localIntent.putExtra("intent_extra_authority_app_list", (String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

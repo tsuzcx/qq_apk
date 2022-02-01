@@ -1,28 +1,48 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.CommTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class adak
-  implements aqhr
+  implements acxp
 {
-  public adak(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void a()
+  public int a()
   {
-    aqhi.a(this.a);
+    return 10004;
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    aqhi.a(this.a, this.a.getString(paramInt));
+    return false;
   }
   
-  public void a(String paramString1, String paramString2)
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    aqhi.a(this.a, paramString1, paramString2);
+    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
+    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    localCommTmp.c2c_type.set(1);
+    localCommTmp.svr_type.set(153);
+    paramRoutingHead.comm_tmp.set(localCommTmp);
+    paramMessageRecord = paramQQAppInterface.a().m(paramMessageRecord.frienduin);
+    if (paramMessageRecord != null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MovieTicketTmpRoutingType", 2, "movieTicket------>" + bgmj.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      }
+      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    }
+    paramRoutingHead.comm_tmp.set(localCommTmp);
+    return true;
   }
   
-  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  public int b()
   {
-    aqhi.a(this.a, paramBoolean, paramInt, paramString1, paramString2);
+    return 0;
   }
 }
 

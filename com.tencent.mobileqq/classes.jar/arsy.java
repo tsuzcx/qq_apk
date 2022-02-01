@@ -1,15 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import org.json.JSONObject;
 
-final class arsy
-  implements View.OnClickListener
+public class arsy
+  extends odp
 {
-  arsy(arsg paramarsg) {}
+  public arsy(MessengerService paramMessengerService) {}
   
-  public void onClick(View paramView)
+  public void a(Object paramObject)
   {
-    if (this.a != null) {
-      this.a.onClick(paramView);
+    if (this.a.a != null)
+    {
+      this.a.a.putString("data", bghp.a(paramObject).toString());
+      this.a.a(this.a.a);
+      this.a.a = null;
     }
   }
 }

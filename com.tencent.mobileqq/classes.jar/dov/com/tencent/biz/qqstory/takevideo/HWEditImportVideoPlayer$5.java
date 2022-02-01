@@ -1,27 +1,27 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import bmnj;
-import bmpc;
+import bpep;
+import bpgi;
 
 public class HWEditImportVideoPlayer$5
   implements Runnable
 {
-  public HWEditImportVideoPlayer$5(bmpc parambmpc, long paramLong) {}
+  public HWEditImportVideoPlayer$5(bpgi parambpgi, long paramLong) {}
   
   public void run()
   {
     long l2 = this.a / 1000000L;
     long l1;
-    if (l2 < bmpc.a(this.this$0)) {
-      l1 = bmpc.a(this.this$0);
+    if (l2 < bpgi.a(this.this$0)) {
+      l1 = bpgi.a(this.this$0);
     }
     while (this.this$0.a.b)
     {
       return;
       l1 = l2;
-      if (l2 > bmpc.b(this.this$0)) {
-        l1 = bmpc.b(this.this$0);
+      if (l2 > bpgi.b(this.this$0)) {
+        l1 = bpgi.b(this.this$0);
       }
     }
     this.this$0.a.a(Message.obtain(null, 13, new Long[] { Long.valueOf(l1), Long.valueOf(this.a) }));
@@ -29,7 +29,7 @@ public class HWEditImportVideoPlayer$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer.5
  * JD-Core Version:    0.7.0.1
  */

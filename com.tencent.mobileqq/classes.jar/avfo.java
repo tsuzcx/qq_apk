@@ -1,22 +1,27 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
 public class avfo
-  implements View.OnClickListener
+  implements avex
 {
-  public avfo(StuffContainerView paramStuffContainerView) {}
-  
-  public void onClick(View paramView)
+  public void a(avey paramavey)
   {
-    if (this.a.a != null) {
-      this.a.a.a(0);
+    paramavey.a();
+  }
+  
+  public void a(View... paramVarArgs)
+  {
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramVarArgs[i].setVisibility(0);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avfo
  * JD-Core Version:    0.7.0.1
  */

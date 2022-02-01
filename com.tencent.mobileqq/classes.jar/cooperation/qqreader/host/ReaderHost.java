@@ -9,27 +9,27 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.text.TextUtils;
-import arrr;
-import azps;
-import azqs;
-import azvd;
-import bdhk;
-import bdib;
-import bdng;
-import bdzf;
-import bexu;
-import bfhz;
-import bhsp;
-import bhsv;
-import biys;
-import bizc;
-import bjaa;
-import bjat;
-import bjbl;
-import bjbm;
-import bjdt;
-import bjea;
-import bjev;
+import atvo;
+import bcrt;
+import bcst;
+import bcwd;
+import bgmp;
+import bgng;
+import bgsi;
+import bhgg;
+import bies;
+import bipi;
+import bkfy;
+import bkgf;
+import blnd;
+import blnn;
+import blol;
+import blpe;
+import blpu;
+import blpv;
+import blsb;
+import blsi;
+import bltb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.DirectForwardActivity;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
@@ -63,13 +63,13 @@ public class ReaderHost
   
   public static void setAccount(String paramString)
   {
-    bjbl.c("ReaderHost", "setAccount: account=" + paramString);
+    blpu.c("ReaderHost", "setAccount: account=" + paramString);
     a = paramString;
   }
   
   public String decode(String paramString1, String paramString2)
   {
-    return bhsv.b(paramString1, paramString2);
+    return bkgf.b(paramString1, paramString2);
   }
   
   public String getAccount()
@@ -82,7 +82,7 @@ public class ReaderHost
     if (TextUtils.isEmpty(str3)) {}
     try
     {
-      bjbl.e("ReaderHost", "[getAccount] runtime getAccount is null!");
+      blpu.e("ReaderHost", "[getAccount] runtime getAccount is null!");
       EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "action_get_account", new Bundle());
       str1 = str3;
       if (localEIPCResult != null)
@@ -97,7 +97,7 @@ public class ReaderHost
     {
       for (;;)
       {
-        bjbl.a("ReaderHost", "[getAccount IPC error ]", localException);
+        blpu.a("ReaderHost", "[getAccount IPC error ]", localException);
         String str2 = str3;
       }
     }
@@ -107,7 +107,7 @@ public class ReaderHost
   
   public String getIMEI(String paramString)
   {
-    return bhsp.a(paramString);
+    return bkfy.a(paramString);
   }
   
   public String getIPV4AddressCache()
@@ -132,7 +132,7 @@ public class ReaderHost
   
   public String getSDKPrivatePath(String paramString)
   {
-    return bdzf.a(paramString);
+    return bhgg.a(paramString);
   }
   
   public String getSKey(String paramString)
@@ -140,21 +140,21 @@ public class ReaderHost
     paramString = QRBridgeUtil.getSKey(paramString);
     if (TextUtils.isEmpty(paramString))
     {
-      bjbl.a("ReaderHost", "skey is null");
+      blpu.a("ReaderHost", "skey is null");
       return paramString;
     }
-    bjbl.e("ReaderHost", "success get skey");
+    blpu.e("ReaderHost", "success get skey");
     return paramString;
   }
   
   public String getSecurityBusinessRootFilePath()
   {
-    biys localbiys = new biys();
-    File localFile = BaseApplicationImpl.getApplication().getRuntime().getSecurityBusinessRootFile(localbiys);
+    blnd localblnd = new blnd();
+    File localFile = BaseApplicationImpl.getApplication().getRuntime().getSecurityBusinessRootFile(localblnd);
     if (localFile != null) {
       return localFile.getAbsolutePath();
     }
-    return localbiys.oldBusinessDir(getAccount()).getAbsolutePath();
+    return localblnd.oldBusinessDir(getAccount()).getAbsolutePath();
   }
   
   public long getServerTimeMillis()
@@ -164,12 +164,12 @@ public class ReaderHost
   
   public Map<String, String> getUrlConfigData()
   {
-    return bjaa.a;
+    return blol.a;
   }
   
   public boolean hasShortCut(Context paramContext, String[] paramArrayOfString)
   {
-    return bdng.a(paramContext, paramArrayOfString);
+    return bgsi.a(paramContext, paramArrayOfString);
   }
   
   public boolean isMobileConn()
@@ -207,10 +207,10 @@ public class ReaderHost
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
     if ((localAppRuntime instanceof QQAppInterface))
     {
-      paramContext = bdib.a((QQAppInterface)localAppRuntime, paramContext, paramString);
+      paramContext = bgng.a((QQAppInterface)localAppRuntime, paramContext, paramString);
       if (paramContext != null)
       {
-        paramContext.c();
+        paramContext.a();
         return true;
       }
     }
@@ -219,12 +219,12 @@ public class ReaderHost
   
   public void jumpToPlugin(Context paramContext, Intent paramIntent, String paramString)
   {
-    if (bjbm.a(paramContext) == null)
+    if (blpv.a(paramContext) == null)
     {
-      bjbl.a("ReaderHost", "jumpToPlugin: 传入了错误的context，context=" + paramContext);
+      blpu.a("ReaderHost", "jumpToPlugin: 传入了错误的context，context=" + paramContext);
       return;
     }
-    bjat.a(paramContext, paramIntent, paramString);
+    blpe.a(paramContext, paramIntent, paramString);
   }
   
   public Toast makeText(Context paramContext, CharSequence paramCharSequence, int paramInt1, int paramInt2)
@@ -234,7 +234,7 @@ public class ReaderHost
   
   public void openFileWithOtherApp(Context paramContext, String paramString)
   {
-    arrr.a(bjbm.a(paramContext), paramString);
+    atvo.a(blpv.a(paramContext), paramString);
   }
   
   public boolean recreateTicket(String paramString, Handler.Callback paramCallback)
@@ -248,40 +248,40 @@ public class ReaderHost
     if (TextUtils.isEmpty(str)) {}
     for (long l = 0L;; l = Long.parseLong(str))
     {
-      bfhz.a().a(paramString1, paramLong1, paramLong2, paramLong3, paramInt, l, paramString2, paramString3, paramBoolean);
+      bipi.a().a(paramString1, paramLong1, paramLong2, paramLong3, paramInt, l, paramString2, paramString3, paramBoolean);
       return;
     }
   }
   
   public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    azqs.b(null, "P_CliOper", paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, paramString5, paramString6, paramString7, paramString8);
+    bcst.b(null, "P_CliOper", paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, paramString5, paramString6, paramString7, paramString8);
   }
   
   public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    azqs.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    bcst.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
   public void reportDCEvent(String paramString1, String paramString2, boolean paramBoolean)
   {
-    azps.a(null, paramString1, paramString2, paramBoolean);
+    bcrt.a(null, paramString1, paramString2, paramBoolean);
   }
   
   public void sendWindowClosedBroadcast(Context paramContext)
   {
-    bexu.a(paramContext, 11);
+    bies.a(paramContext, 11);
   }
   
   public void setBuilderInterfaceImpl(ReaderJsPluginBuilder paramReaderJsPluginBuilder, ReaderInterfacePluginBuilder paramReaderInterfacePluginBuilder)
   {
-    bizc.a().a(paramReaderJsPluginBuilder, paramReaderInterfacePluginBuilder);
-    bizc.a().a(true);
+    blnn.a().a(paramReaderJsPluginBuilder, paramReaderInterfacePluginBuilder);
+    blnn.a().a(true);
   }
   
   public void shareBookToQQ(ContextWrapper paramContextWrapper, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, String paramString7, int paramInt2, String paramString8)
   {
-    Activity localActivity = bjbm.a(paramContextWrapper);
+    Activity localActivity = blpv.a(paramContextWrapper);
     if (localActivity == null) {
       return;
     }
@@ -308,10 +308,10 @@ public class ReaderHost
       paramContextWrapper.putExtra("k_back", true);
       paramContextWrapper.putExtra("struct_share_key_source_action", "plugin");
       paramContextWrapper.putExtra("struct_share_key_source_action_data", paramString6);
-      paramContextWrapper.putExtra("struct_share_key_source_icon", "http://dwz.cn/3UWeuX");
+      paramContextWrapper.putExtra("struct_share_key_source_icon", "https://dwz.cn/3UWeuX");
       paramContextWrapper.putExtra("app_name", "手Q阅读");
       paramContextWrapper.putExtra("brief_key", paramString4);
-      paramString1 = azvd.a(paramContextWrapper.getExtras());
+      paramString1 = bcwd.a(paramContextWrapper.getExtras());
       if (paramString1 != null) {
         paramContextWrapper.putExtra("stuctmsg_bytes", paramString1.getBytes());
       }
@@ -336,18 +336,18 @@ public class ReaderHost
   
   public void shareLocalFileToQZone(ContextWrapper paramContextWrapper, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    paramContextWrapper = bjbm.a(paramContextWrapper);
+    paramContextWrapper = blpv.a(paramContextWrapper);
     if (paramContextWrapper == null) {
       return;
     }
-    bjea localbjea = bjea.a();
-    localbjea.a = getAccount();
-    bjdt.a(paramContextWrapper, localbjea, paramString3, paramString1, paramString2, paramInt);
+    blsi localblsi = blsi.a();
+    localblsi.a = getAccount();
+    blsb.a(paramContextWrapper, localblsi, paramString3, paramString1, paramString2, paramInt);
   }
   
   public void shareSummaryPosterToQQ(ContextWrapper paramContextWrapper, String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, String paramString4)
   {
-    Activity localActivity = bjbm.a(paramContextWrapper);
+    Activity localActivity = blpv.a(paramContextWrapper);
     if (localActivity == null) {
       return;
     }
@@ -369,9 +369,9 @@ public class ReaderHost
       paramContextWrapper.putExtra("brief_key", "[图片]");
       paramContextWrapper.putExtra("struct_share_key_source_action", "plugin");
       paramContextWrapper.putExtra("app_name", "手Q阅读");
-      paramContextWrapper.putExtra("struct_share_key_source_icon", "http://dwz.cn/3UWeuX");
+      paramContextWrapper.putExtra("struct_share_key_source_icon", "https://dwz.cn/3UWeuX");
       paramContextWrapper.putExtra("struct_share_key_source_action_data", paramString2);
-      paramString1 = azvd.a(paramContextWrapper.getExtras());
+      paramString1 = bcwd.a(paramContextWrapper.getExtras());
       if (paramString1 != null) {
         paramContextWrapper.putExtra("stuctmsg_bytes", paramString1.getBytes());
       }
@@ -383,7 +383,7 @@ public class ReaderHost
   
   public void shareToQZone(ContextWrapper paramContextWrapper, String paramString1, String paramString2, String paramString3, ArrayList<String> paramArrayList, int paramInt)
   {
-    paramContextWrapper = bjbm.a(paramContextWrapper);
+    paramContextWrapper = blpv.a(paramContextWrapper);
     if (paramContextWrapper == null) {
       return;
     }
@@ -392,15 +392,15 @@ public class ReaderHost
     localQZoneShareData.c = paramString2;
     localQZoneShareData.d = paramString3;
     localQZoneShareData.a = paramArrayList;
-    bjev.a(paramContextWrapper, getAccount(), localQZoneShareData, null, paramInt);
+    bltb.a(paramContextWrapper, getAccount(), localQZoneShareData, null, paramInt);
   }
   
   public void startToFMActivity(Context paramContext)
   {
-    paramContext = bjbm.a(paramContext);
+    paramContext = blpv.a(paramContext);
     if (paramContext == null)
     {
-      bjbl.a("ReaderHost", "[startToFMActivity] activity null !");
+      blpu.a("ReaderHost", "[startToFMActivity] activity null !");
       return;
     }
     Intent localIntent = new Intent(paramContext, FMActivity.class);
@@ -416,7 +416,7 @@ public class ReaderHost
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.host.ReaderHost
  * JD-Core Version:    0.7.0.1
  */

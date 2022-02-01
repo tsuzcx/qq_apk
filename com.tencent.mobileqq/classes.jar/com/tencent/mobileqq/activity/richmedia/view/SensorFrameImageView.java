@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ajxi;
+import alpy;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -12,7 +12,7 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bdoo;
+import bgtn;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -25,11 +25,11 @@ public class SensorFrameImageView
   extends URLImageView
   implements Handler.Callback
 {
-  private static final int g = bdoo.b(5.0F);
+  private static final int g = bgtn.b(5.0F);
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Sensor jdField_a_of_type_AndroidHardwareSensor;
-  private SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener = new ajxi(this);
+  private SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener = new alpy(this);
   private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(this);
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
@@ -382,7 +382,7 @@ public class SensorFrameImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView
  * JD-Core Version:    0.7.0.1
  */

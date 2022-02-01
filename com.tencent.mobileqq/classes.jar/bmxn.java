@@ -1,17 +1,18 @@
-import android.animation.ValueAnimator;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.wadl.ipc.WadlResult;
 
-public class bmxn
-  extends bmtb
+public final class bmxn
+  implements Parcelable.Creator<WadlResult>
 {
-  public bmxn(ElasticImageView paramElasticImageView) {}
-  
-  public void a(ValueAnimator paramValueAnimator)
+  public WadlResult a(Parcel paramParcel)
   {
-    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    ElasticImageView.a(this.a, this.a.d);
-    wxe.b("ElasticImageView", "updateAnimator:" + this.a.d);
-    ElasticImageView.a(this.a);
+    return new WadlResult(paramParcel);
+  }
+  
+  public WadlResult[] a(int paramInt)
+  {
+    return new WadlResult[paramInt];
   }
 }
 

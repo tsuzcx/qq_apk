@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
-import alof;
-import alsb;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import apol;
-import apon;
-import aufn;
-import bdhb;
+import anhk;
+import anlh;
+import arrm;
+import arro;
+import awmr;
+import bgmg;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -21,7 +21,7 @@ import tencent.im.cs.faceroam_sso.faceroam_sso.RspUserInfo;
 public class FavEmoRoamingHandler$1
   implements Runnable
 {
-  public FavEmoRoamingHandler$1(alsb paramalsb, faceroam_sso.RspUserInfo paramRspUserInfo, long paramLong) {}
+  public FavEmoRoamingHandler$1(anlh paramanlh, faceroam_sso.RspUserInfo paramRspUserInfo, long paramLong) {}
   
   public void run()
   {
@@ -31,13 +31,13 @@ public class FavEmoRoamingHandler$1
       List localList2;
       try
       {
-        bdhb.c(alof.bi + ".nomedia");
+        bgmg.c(anhk.bl + ".nomedia");
         localList1 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.filename.get();
         localList2 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.delete_file.get();
         localList3 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.uint32_emoji_type.get();
         localObject = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.bid.get();
         k = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.max_roam_size.get();
-        apol.a = k;
+        arrm.a = k;
         String str = this.this$0.app.getCurrentAccountUin();
         if (!TextUtils.isEmpty(str)) {
           BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putInt("fav_roaming_max" + str, k).apply();
@@ -46,10 +46,10 @@ public class FavEmoRoamingHandler$1
           continue;
         }
         i = localList1.size();
-        if (i <= apol.a) {
+        if (i <= arrm.a) {
           continue;
         }
-        apol.b = i;
+        arrm.b = i;
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -76,25 +76,25 @@ public class FavEmoRoamingHandler$1
         QLog.e("FavEmoRoamingHandler", 1, "handleUserInfoGet oom2");
         return;
       }
-      QLog.d("FavEmoRoamingHandler", 2, "local max size:" + apol.a + ",server max size:" + apol.b + ",delListSize=" + j + ",fileListSize=" + i);
+      QLog.d("FavEmoRoamingHandler", 2, "local max size:" + arrm.a + ",server max size:" + arrm.b + ",delListSize=" + j + ",fileListSize=" + i);
       if ((QLog.isColorLevel()) && (localList1 != null) && (localList2 != null)) {
         QLog.d("FavEmoRoamingHandler", 2, "ret = " + this.jdField_a_of_type_Long + " userlist= " + localList1.toString() + " delList=" + localList2.toString() + " bid=" + (String)localObject + " local_max =" + k);
       }
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = "qq_expression";
-        alsb.a(this.this$0, localList2, localList1);
-        localList1 = ((apon)this.this$0.app.getManager(149)).a(localList2, localList1, (String)localObject, localList3);
+        anlh.a(this.this$0, localList2, localList1);
+        localList1 = ((arro)this.this$0.app.getManager(149)).a(localList2, localList1, (String)localObject, localList3);
         localObject = localList1;
         if (localList1 == null) {
           localObject = new ArrayList();
         }
         this.this$0.notifyUI(1, true, localObject);
-        aufn.e("0", 1);
+        awmr.e("0", 1);
         return;
-        i = apol.a;
+        i = arrm.a;
         continue;
-        apol.b = apol.a;
+        arrm.b = arrm.a;
       }
       else
       {
@@ -107,7 +107,7 @@ public class FavEmoRoamingHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.FavEmoRoamingHandler.1
  * JD-Core Version:    0.7.0.1
  */

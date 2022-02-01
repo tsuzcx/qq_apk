@@ -15,27 +15,39 @@ class DragFrameLayout$AllBornRunner
 {
   private int jdField_a_of_type_Int;
   private List<View> jdField_a_of_type_JavaUtilList;
+  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
   
   public DragFrameLayout$AllBornRunner(List<View> paramList)
   {
     Collection localCollection;
     this.jdField_a_of_type_JavaUtilList = new ArrayList(localCollection);
     this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[DragFrameLayout.a().length];
   }
   
   public Bitmap a()
   {
+    Bitmap localBitmap = null;
     Object localObject2 = null;
     Object localObject1 = localObject2;
     if (this.jdField_a_of_type_Int >= 0)
     {
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Int >= DragFrameLayout.a().length) {}
+      if (this.jdField_a_of_type_Int < DragFrameLayout.a().length) {
+        localObject2 = localBitmap;
+      }
     }
     try
     {
-      localObject1 = BitmapFactory.decodeResource(this.this$0.getResources(), DragFrameLayout.a()[this.jdField_a_of_type_Int]);
-      return localObject1;
+      localBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.jdField_a_of_type_Int];
+      localObject1 = localBitmap;
+      if (localBitmap == null)
+      {
+        localObject2 = localBitmap;
+        localObject1 = BitmapFactory.decodeResource(this.this$0.getResources(), DragFrameLayout.a()[this.jdField_a_of_type_Int]);
+        localObject2 = localObject1;
+        this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.jdField_a_of_type_Int] = localObject1;
+      }
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -45,7 +57,8 @@ class DragFrameLayout$AllBornRunner
       } while (!QLog.isColorLevel());
       QLog.e("DragRelativeLayout", 2, "decodeBitmap failed" + localOutOfMemoryError, localOutOfMemoryError);
     }
-    return null;
+    return localObject1;
+    return localObject2;
   }
   
   public PointF a()
@@ -101,7 +114,7 @@ class DragFrameLayout$AllBornRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.AllBornRunner
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,67 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryPlayerTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Typeface;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.bizparts.danmaku.text.QzoneFontManager.2;
+import com.tencent.component.media.utils.LruCache;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.util.MultiHashMap;
 
 public class vgc
-  extends urt<vhq>
 {
-  public final List<String> a;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static vgc jdField_a_of_type_Vgc;
+  private blxz jdField_a_of_type_Blxz;
+  private LruCache<Integer, Typeface> jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new LruCache(8);
+  private MultiHashMap<Integer, vge> jdField_a_of_type_CooperationQzoneUtilMultiHashMap = new MultiHashMap();
   
-  public vgc(List<String> paramList)
+  public static vgc a()
   {
-    this.a = paramList;
-  }
-  
-  public String a()
-  {
-    return "StorySvc.get_video_tag_778";
-  }
-  
-  public uro a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
-    try
+    if (jdField_a_of_type_Vgc == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
-      return new vhq(localRspStoryPlayerTagInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        wxe.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
+      if (jdField_a_of_type_Vgc == null) {
+        jdField_a_of_type_Vgc = new vgc();
       }
+      return jdField_a_of_type_Vgc;
     }
   }
   
-  protected byte[] a()
+  private void a(int paramInt, String paramString)
   {
-    qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
-    localReqStoryPlayerTagInfo.client.set(2);
-    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.3.5"));
-    return localReqStoryPlayerTagInfo.toByteArray();
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QzoneFontManager.2(this, paramString, paramInt));
+  }
+  
+  public Typeface a(int paramInt, String paramString, vge paramvge)
+  {
+    ??? = (Typeface)this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache.get(Integer.valueOf(paramInt));
+    if (??? != null) {
+      return ???;
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_CooperationQzoneUtilMultiHashMap.contains(Integer.valueOf(paramInt), paramvge)) {
+        return null;
+      }
+      if (this.jdField_a_of_type_CooperationQzoneUtilMultiHashMap.containsKey(Integer.valueOf(paramInt)))
+      {
+        this.jdField_a_of_type_CooperationQzoneUtilMultiHashMap.add(Integer.valueOf(paramInt), paramvge);
+        return null;
+      }
+      this.jdField_a_of_type_CooperationQzoneUtilMultiHashMap.add(Integer.valueOf(paramInt), paramvge);
+      if (this.jdField_a_of_type_Blxz == null) {
+        this.jdField_a_of_type_Blxz = new vgd(this, paramInt);
+      }
+      a(paramInt, blxw.a(paramInt, paramString, null, false, this.jdField_a_of_type_Blxz));
+      return null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vgc
  * JD-Core Version:    0.7.0.1
  */

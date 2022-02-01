@@ -1,118 +1,36 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import java.util.List;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aoho
-  extends besd
 {
-  private aoho(CountrySelectActivity paramCountrySelectActivity) {}
-  
-  public int a()
+  public static boolean a(int paramInt)
   {
-    return 2131559422;
+    return (paramInt == -2000) || (paramInt == -20000) || (paramInt == -3004) || (paramInt == -3005) || (paramInt == -3000) || (paramInt == -3001) || (paramInt == -1032);
   }
   
-  public void a(View paramView, int paramInt)
+  public static boolean a(MessageRecord paramMessageRecord)
   {
-    paramView = (TextView)paramView;
-    Object localObject = getItem(paramInt);
-    if ((localObject instanceof aohp)) {
-      paramView.setText(((aohp)localObject).jdField_a_of_type_JavaLangString);
-    }
-    while (!(localObject instanceof BaseAddress)) {
-      return;
-    }
-    paramView.setText(((BaseAddress)localObject).pinyinFirst);
+    int i = paramMessageRecord.msgtype;
+    return (i == -2011) || (i == -2060) || (i == -2065) || (i == -5008) || (i == -5010) || (i == -2050) || (i == -1051) || (i == -2021) || (i == -2018) || (i == -4502);
   }
   
-  public boolean a(int paramInt)
+  public static boolean b(int paramInt)
   {
-    return getItemViewType(paramInt) == 0;
+    return paramInt == -2022;
   }
   
-  public int getCount()
+  public static boolean c(int paramInt)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
+    return (paramInt == -2005) || (paramInt == -2014) || (paramInt == -2017);
   }
   
-  public Object getItem(int paramInt)
+  public static boolean d(int paramInt)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return paramInt == -1035;
   }
   
-  public long getItemId(int paramInt)
+  public static boolean e(int paramInt)
   {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.a.jdField_a_of_type_JavaUtilList.get(paramInt) instanceof aohp)) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (getItemViewType(paramInt) == 0)
-    {
-      if (paramView != null) {
-        break label284;
-      }
-      paramView = this.a.getLayoutInflater().inflate(a(), null);
-    }
-    label273:
-    label284:
-    for (;;)
-    {
-      ((TextView)paramView).setText(((aohp)getItem(paramInt)).jdField_a_of_type_JavaLangString);
-      return paramView;
-      paramViewGroup = paramView;
-      if (paramView == null)
-      {
-        paramViewGroup = this.a.getLayoutInflater().inflate(2131559423, null);
-        paramView = new aohq(null);
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131364879));
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131364252));
-        paramViewGroup.findViewById(2131364878).setVisibility(8);
-        paramViewGroup.setTag(paramView);
-        paramViewGroup.setOnClickListener(this.a);
-      }
-      aohq localaohq = (aohq)paramViewGroup.getTag();
-      BaseAddress localBaseAddress = (BaseAddress)getItem(paramInt);
-      localaohq.jdField_a_of_type_AndroidWidgetTextView.setText(localBaseAddress.name);
-      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_JavaLangString.equals(localBaseAddress.code))) {
-        localaohq.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-      for (;;)
-      {
-        localaohq.jdField_a_of_type_JavaLangString = localBaseAddress.code;
-        paramView = paramViewGroup;
-        if (!CountrySelectActivity.jdField_a_of_type_Boolean) {
-          break;
-        }
-        if (localaohq.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
-          break label273;
-        }
-        paramViewGroup.setContentDescription(localBaseAddress.name + alud.a(2131703000));
-        return paramViewGroup;
-        localaohq.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-      paramViewGroup.setContentDescription(localBaseAddress.name);
-      return paramViewGroup;
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
+    return paramInt == -2011;
   }
 }
 

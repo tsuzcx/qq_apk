@@ -1,23 +1,62 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class atmi
-  extends BroadcastReceiver
+class atmi
+  implements atkw
 {
-  public atmi(ListenTogetherManager paramListenTogetherManager) {}
+  atmi(atmh paramatmh, BaseActivity paramBaseActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public atoo a()
   {
-    if (paramIntent == null) {}
-    while (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {
-      return;
+    Object localObject3 = null;
+    int i = 0;
+    Object localObject1;
+    switch (this.jdField_a_of_type_Atmh.a())
+    {
+    default: 
+      localObject1 = null;
     }
-    QLog.i("ListenTogether.Manager", 1, "onThemeChange.");
-    ListenTogetherManager.c(this.a);
+    int j;
+    int k;
+    for (;;)
+    {
+      Object localObject2 = localObject3;
+      if (localObject1 != null)
+      {
+        localObject2 = localObject3;
+        if (((List)localObject1).size() > 0)
+        {
+          localObject2 = (atmn)((List)localObject1).get(i);
+          j = ((atmn)localObject2).c();
+          k = ((atmn)localObject2).b();
+          if (j != 7) {
+            break;
+          }
+          localObject2 = new atow(atmh.a(this.jdField_a_of_type_Atmh), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+        }
+      }
+      return localObject2;
+      localObject1 = this.jdField_a_of_type_Atmh.a();
+      i = this.jdField_a_of_type_Atmh.b();
+      continue;
+      localObject1 = this.jdField_a_of_type_Atmh.a();
+      i = this.jdField_a_of_type_Atmh.b();
+      continue;
+      localObject1 = new ArrayList(1);
+      ((List)localObject1).add(this.jdField_a_of_type_Atmh.a());
+    }
+    if (j == 9) {
+      return new aubq(atmh.a(this.jdField_a_of_type_Atmh), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+    }
+    switch (k)
+    {
+    default: 
+      return new atns(atmh.a(this.jdField_a_of_type_Atmh), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+    case 6000: 
+      return new atny(atmh.a(this.jdField_a_of_type_Atmh), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+    }
+    return new aubl(atmh.a(this.jdField_a_of_type_Atmh), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
   }
 }
 

@@ -1,18 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Size;
+import java.util.Comparator;
 
-class bcgr
-  extends BroadcastReceiver
+public class bcgr
+  implements Comparator<Size>
 {
-  bcgr(bcgq parambcgq) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(Size paramSize1, Size paramSize2)
   {
-    paramContext = paramIntent.getStringExtra("callback");
-    QLog.d("TroopReceiver", 4, paramContext);
-    this.a.e(paramContext);
+    return Long.signum(paramSize1.getWidth() * paramSize1.getHeight() - paramSize2.getWidth() * paramSize2.getHeight());
   }
 }
 

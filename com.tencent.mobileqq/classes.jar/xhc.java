@@ -1,17 +1,19 @@
-public class xhc
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+
+class xhc
+  extends AnimatorListenerAdapter
 {
-  public int a;
+  xhc(xhb paramxhb) {}
   
-  public xhc(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = paramInt;
+    super.onAnimationEnd(paramAnimator);
   }
-  
-  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xhc
  * JD-Core Version:    0.7.0.1
  */

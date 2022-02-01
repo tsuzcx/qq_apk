@@ -1,109 +1,26 @@
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
-class rop
-  implements azlv
+public class rop
 {
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  final String jdField_a_of_type_JavaLangString;
-  Throwable jdField_a_of_type_JavaLangThrowable;
-  final int jdField_b_of_type_Int;
-  final long jdField_b_of_type_Long;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  rop(roo paramroo, String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  public rop(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    if (paramInt2 > 0) {}
-    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
-    {
-      this.jdField_a_of_type_JavaLangThrowable = null;
-      if (paramString != null) {
-        break;
-      }
-      throw new IllegalArgumentException("null == outputFilePath");
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private void c()
+  public String toString()
   {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-  }
-  
-  public azlw a(int paramInt1, int paramInt2)
-  {
-    int i = 30;
-    azlw localazlw = new azlw();
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    localazlw.jdField_a_of_type_JavaIoFile = localFile;
-    long l = ror.a(paramInt1, paramInt2);
-    int j = ror.a(paramInt1, paramInt2);
-    localazlw.jdField_a_of_type_Int = ((int)l);
-    paramInt2 = Math.min(paramInt1, paramInt2);
-    localazlw.jdField_a_of_type_Float = (j / paramInt2);
-    paramInt1 = i;
-    if (this.jdField_b_of_type_Int <= 30) {
-      paramInt1 = this.jdField_b_of_type_Int;
-    }
-    localazlw.jdField_b_of_type_Int = paramInt1;
-    localazlw.jdField_b_of_type_Boolean = a();
-    localazlw.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localazlw.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressTask", 2, "CompressTask, step: getEncodeConfig()\n  sourceShortEdge:" + paramInt2 + ", dstResolution:" + j + ", scaleRate:" + localazlw.jdField_a_of_type_Float + "\n  targetVideoBitRate:" + localazlw.jdField_a_of_type_Int + ", videoFrameRate:" + localazlw.jdField_b_of_type_Int + "\n setRotation:" + localazlw.jdField_b_of_type_Boolean + ", beginTime:" + localazlw.jdField_a_of_type_Long + ", endTime:" + localazlw.jdField_b_of_type_Long);
-    }
-    return localazlw;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    if ((roo.a(this.jdField_a_of_type_Roo) != null) && (!this.jdField_a_of_type_Roo.isCancelled())) {
-      roo.a(this.jdField_a_of_type_Roo).a(paramInt / 100.0F);
-    }
-  }
-  
-  public void a(Throwable paramThrowable)
-  {
-    QLog.e("VideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onFailed:" + paramThrowable.getMessage());
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
-      bool = true;
-    }
-    while (Build.VERSION.SDK_INT <= 19) {
-      return bool;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    QLog.e("VideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onCanceled:");
-    c();
-    if (roo.a(this.jdField_a_of_type_Roo) != null) {
-      roo.a(this.jdField_a_of_type_Roo).a(6, null, null);
-    }
+    return "ColumnPublishInfo{coverUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", title='" + this.b + '\'' + ", intro='" + this.c + '\'' + ", submitPermission='" + this.jdField_a_of_type_Int + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rop
  * JD-Core Version:    0.7.0.1
  */

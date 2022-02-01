@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.profile.stickynote.publish.StickyNotePublishConstant.1;
-import java.util.List;
+import android.support.v4.view.PagerAdapter;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
 
-public class awsz
+public abstract interface awsz
 {
-  public static final List<awtf> a = new StickyNotePublishConstant.1();
+  public abstract void a(MultiAIOBaseViewPager paramMultiAIOBaseViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awsz
  * JD-Core Version:    0.7.0.1
  */

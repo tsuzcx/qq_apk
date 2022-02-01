@@ -1,43 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.app.Activity;
+import android.content.Intent;
 
-public class acpf
-  implements View.OnClickListener
+public abstract interface acpf
 {
-  public acpf(ChatSettingForTroop paramChatSettingForTroop) {}
+  public abstract Activity a();
   
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131368624: 
-      ChatSettingForTroop.f(this.a);
-      this.a.finish();
-      return;
-    }
-    ChatSettingForTroop.g(this.a);
-    String str2;
-    if (this.a.a.isMember)
-    {
-      paramView = "grpData_admin";
-      str2 = this.a.a.troopUin;
-      if (!this.a.a.isMember) {
-        break label135;
-      }
-    }
-    label135:
-    for (String str1 = bdes.a(this.a.a);; str1 = "0")
-    {
-      bdes.a("Grp_set_new", paramView, "clk_upright", 0, 0, new String[] { str2, str1 });
-      return;
-      paramView = "grpData_visitor";
-      break;
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt, Intent paramIntent);
 }
 
 

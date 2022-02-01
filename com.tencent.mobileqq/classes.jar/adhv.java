@@ -1,23 +1,63 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class adhv
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public adhv(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public adhv(AccountManageActivity paramAccountManageActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    bcst.b(this.a.app, "CliOper", "", "", "0X8004038", "0X8004038", 0, 0, String.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), "", "", "");
+    if (!aywm.a().a(this.a.app, this.a)) {}
+    for (;;)
     {
-    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 2014: 
-      this.a.finish();
-      return;
+      AccountManageActivity.a(this.a, bddy.a(this.a.app));
+      if (this.a.c)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("AccountManage", 2, "onClick v.hashCode()" + paramView.hashCode());
+        }
+      }
+      else
+      {
+        Object localObject = paramView.getTag();
+        if (localObject == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Switch_Account", 2, "switch a non-existing account");
+          }
+        }
+        else
+        {
+          int i = ((Integer)localObject).intValue();
+          localObject = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(i);
+          if (QLog.isColorLevel()) {
+            QLog.d("Switch_Account", 2, "switch uin:" + ((SimpleAccount)localObject).getUin());
+          }
+          if ((localObject != null) && (!((SimpleAccount)localObject).getUin().equals(this.a.app.getCurrentAccountUin())))
+          {
+            bcst.b(this.a.app, "CliOper", "", "", "0X8009C05", "0X8009C05", 0, 0, "", "", "", "");
+            this.a.f();
+            this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = ((SimpleAccount)localObject);
+            AccountManageActivity.b(this.a, true);
+            AccountManageActivity.c(this.a, true);
+            bcst.b(this.a.app, "dc00898", "", "", "0X800AC38", "0X800AC38", 0, 0, "", "", "", "");
+            this.a.app.switchAccount((SimpleAccount)localObject, null);
+            bddx.a(this.a.app, this.a);
+          }
+          bgkc.b();
+        }
+      }
     }
-    this.a.finish();
   }
 }
 

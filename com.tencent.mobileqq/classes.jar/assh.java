@@ -1,53 +1,31 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.net.URLEncoder;
-import tencent.hiboom.hiboomauth.hiboom_auth.TTipsInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-final class assh
-  implements DialogInterface.OnClickListener
+class assh
+  implements View.OnClickListener
 {
-  assh(int paramInt1, String paramString, Context paramContext, hiboom_auth.TTipsInfo paramTTipsInfo, int paramInt2) {}
+  assh(assg paramassg, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (this.jdField_a_of_type_Int)
+    Object localObject = (atho)this.jdField_a_of_type_AndroidViewView.getTag();
+    this.jdField_a_of_type_Assg.a.e = ((atho)localObject).a;
+    localObject = (FileInfo)this.jdField_a_of_type_Assg.a.b.get(this.jdField_a_of_type_Assg.a.e);
+    if ((!atwl.a(((FileInfo)localObject).c())) || (atwl.c(((FileInfo)localObject).c())))
     {
-    default: 
-    case 1: 
-      for (;;)
-      {
-        paramDialogInterface.dismiss();
-        return;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, -1L, null, false, -1);
-        }
-      }
-    }
-    boolean bool1 = false;
-    boolean bool2 = false;
-    String str3 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_vip_type.get();
-    String str2 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_month.get();
-    String str4 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_aid.get();
-    String str1 = str3;
-    if (str3.startsWith("!"))
-    {
-      bool1 = true;
-      str1 = str3.substring(1, str3.length());
-    }
-    if (str2.startsWith("!"))
-    {
-      str2 = str2.substring(1, str2.length());
-      bool2 = true;
+      atvo.d(((FileInfo)localObject).c());
+      this.jdField_a_of_type_Assg.a.b.remove(this.jdField_a_of_type_Assg.a.e);
+      LocalFileBrowserActivity.a(this.jdField_a_of_type_Assg.a);
     }
     for (;;)
     {
-      str3 = URLEncoder.encode("jsbridge://font/paySuccess?p={\"id\":" + this.b + "}");
-      bdun.a(this.jdField_a_of_type_AndroidContentContext, str4, str1, Integer.parseInt(str2), bool2, bool1, null, str3, false, false);
-      break;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      atvf.a(2131692071);
     }
   }
 }

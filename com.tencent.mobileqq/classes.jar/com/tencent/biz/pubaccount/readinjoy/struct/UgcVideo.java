@@ -4,21 +4,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.Nullable;
-import awge;
-import awhs;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import java.io.Serializable;
-import qnq;
+import rim;
 import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.UgcVideoInfo;
 
 public class UgcVideo
-  extends awge
+  extends Entity
   implements Parcelable, Serializable, Comparable<UgcVideo>
 {
-  public static final Parcelable.Creator<UgcVideo> CREATOR = new qnq();
+  public static final Parcelable.Creator<UgcVideo> CREATOR = new rim();
   public static int RETRY_TIME_LIMIT = 3;
   public static int STATUS_FAILED;
   public static int STATUS_FINISH;
@@ -28,6 +28,9 @@ public class UgcVideo
   public static int SUBSTATUS_COMPRESS_VIDEO;
   public static int SUBSTATUS_IDLE_VIDEO;
   public static int SUBSTATUS_UPLOADING_VIDEO;
+  public static int TYPE_NO_PUBLIC;
+  public static int TYPE_PUBLIC;
+  public static int TYPE_PUBLIC_AND_REMIND;
   public long bitrate;
   public String brief = "";
   public int businessType = 4;
@@ -48,14 +51,13 @@ public class UgcVideo
   public int fromForReport;
   public int height;
   public long insertTime;
-  public boolean isRemindQQFriend;
   public long lastUploadSize;
   public long lastUploadSizeUpdateTime;
-  private int progress;
+  public int publicType = TYPE_PUBLIC;
   public boolean reprintDisable;
   public int retryTime;
   public String rowkey = "";
-  @awhs
+  @unique
   public String seqId = "";
   public long startCompressTime;
   public long startUploadingTime;
@@ -64,6 +66,7 @@ public class UgcVideo
   public String title = "";
   public String uploadSpeed = "0KB/S";
   public long uploadTotalCostTime;
+  public int uploadType;
   public int uploadVideoStatus = SUBSTATUS_IDLE_VIDEO;
   public String url = "";
   public long userWaitingTotalCostTime;
@@ -76,6 +79,9 @@ public class UgcVideo
     STATUS_FINISH = 2;
     STATUS_FAILED = 3;
     STATUS_PAUSE = 4;
+    TYPE_PUBLIC_AND_REMIND = 1;
+    TYPE_PUBLIC = 2;
+    TYPE_NO_PUBLIC = 3;
     SUBSTATUS_COMPRESS_VIDEO = 1;
     SUBSTATUS_UPLOADING_VIDEO = 2;
   }
@@ -102,7 +108,6 @@ public class UgcVideo
     this.uploadTotalCostTime = paramParcel.readLong();
     this.userWaitingTotalCostTime = paramParcel.readLong();
     this.bitrate = paramParcel.readLong();
-    this.progress = paramParcel.readInt();
     this.uploadVideoStatus = paramParcel.readInt();
     this.lastUploadSize = paramParcel.readLong();
     this.lastUploadSizeUpdateTime = paramParcel.readLong();
@@ -119,23 +124,15 @@ public class UgcVideo
     this.height = paramParcel.readInt();
     this.fileSize = paramParcel.readLong();
     this.fileMd5 = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
+    if (paramParcel.readByte() != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      bool1 = true;
-      this.reprintDisable = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label421;
-      }
-    }
-    label421:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.isRemindQQFriend = bool1;
+      this.reprintDisable = bool;
+      this.publicType = paramParcel.readByte();
       this.startCompressTime = paramParcel.readLong();
       this.fromForReport = paramParcel.readInt();
+      this.uploadType = paramParcel.readInt();
       return;
-      bool1 = false;
-      break;
     }
   }
   
@@ -153,21 +150,14 @@ public class UgcVideo
     this.height = paramUgcVideoInfo.uint32_height.get();
     this.fileSize = paramUgcVideoInfo.uint64_file_size.get();
     this.fileMd5 = paramUgcVideoInfo.bytes_file_md5.get().toStringUtf8();
-    if (paramUgcVideoInfo.uint32_reprint_disable.get() == 1)
+    if (paramUgcVideoInfo.uint32_reprint_disable.get() == 1) {}
+    for (;;)
     {
-      bool1 = true;
-      this.reprintDisable = bool1;
-      if (paramUgcVideoInfo.uint32_remind_friends.get() != 1) {
-        break label280;
-      }
-    }
-    label280:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.isRemindQQFriend = bool1;
+      this.reprintDisable = bool;
+      this.publicType = paramUgcVideoInfo.uint32_remind_friends.get();
+      this.uploadType = paramUgcVideoInfo.uint32_upload_type.get();
       return;
-      bool1 = false;
-      break;
+      bool = false;
     }
   }
   
@@ -198,7 +188,6 @@ public class UgcVideo
   
   public oidb_0xe2a.UgcVideoInfo parseUgcVideo()
   {
-    int j = 1;
     oidb_0xe2a.UgcVideoInfo localUgcVideoInfo = new oidb_0xe2a.UgcVideoInfo();
     PBBytesField localPBBytesField = localUgcVideoInfo.bytes_title;
     Object localObject;
@@ -208,24 +197,24 @@ public class UgcVideo
       localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
       localPBBytesField = localUgcVideoInfo.bytes_url;
       if (this.url == null) {
-        break label284;
+        break label269;
       }
       localObject = this.url;
-      label58:
+      label53:
       localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
       localPBBytesField = localUgcVideoInfo.bytes_cover_url;
       if (this.coverUrl == null) {
-        break label290;
+        break label275;
       }
       localObject = this.coverUrl;
-      label86:
+      label80:
       localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
       localPBBytesField = localUgcVideoInfo.bytes_brief;
       if (this.brief == null) {
-        break label296;
+        break label281;
       }
       localObject = this.brief;
-      label114:
+      label107:
       localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
       localUgcVideoInfo.uint32_cover_width.set(this.coverWidth);
       localUgcVideoInfo.uint32_cover_height.set(this.coverHeight);
@@ -236,51 +225,42 @@ public class UgcVideo
       localUgcVideoInfo.uint64_file_size.set(this.fileSize);
       localPBBytesField = localUgcVideoInfo.bytes_file_md5;
       if (this.fileMd5 == null) {
-        break label302;
+        break label287;
       }
       localObject = this.fileMd5;
-      label226:
+      label211:
       localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
       localObject = localUgcVideoInfo.uint32_reprint_disable;
       if (!this.reprintDisable) {
-        break label308;
-      }
-      i = 1;
-      label250:
-      ((PBUInt32Field)localObject).set(i);
-      localObject = localUgcVideoInfo.uint32_remind_friends;
-      if (!this.isRemindQQFriend) {
-        break label313;
+        break label293;
       }
     }
-    label284:
-    label290:
-    label296:
-    label302:
-    label308:
-    label313:
-    for (int i = j;; i = 0)
+    label269:
+    label275:
+    label281:
+    label287:
+    label293:
+    for (int i = 1;; i = 0)
     {
       ((PBUInt32Field)localObject).set(i);
+      localUgcVideoInfo.uint32_remind_friends.set(this.publicType);
+      localUgcVideoInfo.uint32_upload_type.set(this.uploadType);
       return localUgcVideoInfo;
       localObject = "";
       break;
       localObject = "";
-      break label58;
+      break label53;
       localObject = "";
-      break label86;
+      break label80;
       localObject = "";
-      break label114;
+      break label107;
       localObject = "";
-      break label226;
-      i = 0;
-      break label250;
+      break label211;
     }
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
     paramParcel.writeString(this.seqId);
     paramParcel.writeLong(this.insertTime);
     paramParcel.writeString(this.filePath);
@@ -299,7 +279,6 @@ public class UgcVideo
     paramParcel.writeLong(this.uploadTotalCostTime);
     paramParcel.writeLong(this.userWaitingTotalCostTime);
     paramParcel.writeLong(this.bitrate);
-    paramParcel.writeInt(this.progress);
     paramParcel.writeInt(this.uploadVideoStatus);
     paramParcel.writeLong(this.lastUploadSize);
     paramParcel.writeLong(this.lastUploadSizeUpdateTime);
@@ -316,23 +295,15 @@ public class UgcVideo
     paramParcel.writeInt(this.height);
     paramParcel.writeLong(this.fileSize);
     paramParcel.writeString(this.fileMd5);
-    if (this.reprintDisable)
-    {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.isRemindQQFriend) {
-        break label334;
-      }
-    }
-    label334:
-    for (paramInt = i;; paramInt = 0)
+    if (this.reprintDisable) {}
+    for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeByte((byte)this.publicType);
       paramParcel.writeLong(this.startCompressTime);
       paramParcel.writeInt(this.fromForReport);
+      paramParcel.writeInt(this.uploadType);
       return;
-      paramInt = 0;
-      break;
     }
   }
 }

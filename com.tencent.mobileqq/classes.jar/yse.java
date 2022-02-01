@@ -1,22 +1,23 @@
-import com.tencent.biz.troop.VideoCombineHelper.4;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 
-public class yse
-  extends yta
+public final class yse
+  implements Parcelable.Creator<EditTakePhotoSource>
 {
-  public yse(VideoCombineHelper.4 param4)
+  public EditTakePhotoSource a(Parcel paramParcel)
   {
-    super(param4.this$0);
+    return new EditTakePhotoSource(paramParcel);
   }
   
-  public void b(ysz paramysz)
+  public EditTakePhotoSource[] a(int paramInt)
   {
-    QLog.d(".troop.VideoCombineHelper", 2, "");
+    return new EditTakePhotoSource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yse
  * JD-Core Version:    0.7.0.1
  */

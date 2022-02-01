@@ -11,7 +11,7 @@ public abstract class MainThreadTask
     super(paramContext, 3);
   }
   
-  public void execute()
+  public final void execute()
   {
     this.mainHander.post(new MainThreadTask.1(this));
   }
@@ -20,7 +20,7 @@ public abstract class MainThreadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.tfs.MainThreadTask
  * JD-Core Version:    0.7.0.1
  */

@@ -62,6 +62,13 @@ public class Vector4f
     return (this.points[0] == paramVector4f.points[0]) && (this.points[1] == paramVector4f.points[1]) && (this.points[2] == paramVector4f.points[2]) && (this.points[3] == paramVector4f.points[3]);
   }
   
+  public Vector4f copy()
+  {
+    Vector4f localVector4f = new Vector4f();
+    localVector4f.setXYZW(x(), y(), z(), w());
+    return localVector4f;
+  }
+  
   public void copyFromV3f(Vector3f paramVector3f, float paramFloat)
   {
     this.points[0] = paramVector3f.x();
@@ -180,7 +187,7 @@ public class Vector4f
     arrayOfFloat[3] /= paramVector4f.points[3];
   }
   
-  public void subtract(Vector4f paramVector4f)
+  public Vector4f subtract(Vector4f paramVector4f)
   {
     float[] arrayOfFloat = this.points;
     arrayOfFloat[0] -= paramVector4f.points[0];
@@ -190,6 +197,7 @@ public class Vector4f
     arrayOfFloat[2] -= paramVector4f.points[2];
     arrayOfFloat = this.points;
     arrayOfFloat[3] -= paramVector4f.points[3];
+    return this;
   }
   
   public void subtract(Vector4f paramVector4f1, Vector4f paramVector4f2)
@@ -244,7 +252,7 @@ public class Vector4f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.ar.sensor.representation.Vector4f
  * JD-Core Version:    0.7.0.1
  */

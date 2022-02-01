@@ -1,27 +1,21 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 public class anou
+  implements anik
 {
-  public View a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public BaseChatItemLayout a;
-  public ArkAppLoadLayout a;
-  public ArkAppRootLayout a;
-  public ArkAppView a;
-  public LinearLayout b;
+  public List<String> a(AppInterface paramAppInterface)
+  {
+    if (((paramAppInterface instanceof QQAppInterface)) && (((QQAppInterface)paramAppInterface).a().a()))
+    {
+      paramAppInterface = new ArrayList();
+      paramAppInterface.add("100000");
+      return paramAppInterface;
+    }
+    return null;
+  }
 }
 
 

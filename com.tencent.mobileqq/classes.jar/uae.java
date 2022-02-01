@@ -1,108 +1,98 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.app.Activity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.BytesEntry;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
 
+@Deprecated
 public class uae
+  implements Handler.Callback, AdapterView.OnItemClickListener
 {
-  private int a;
+  public Activity a;
+  private bkgm jdField_a_of_type_Bkgm;
+  public ShareActionSheetBuilder a;
+  private uaf jdField_a_of_type_Uaf;
+  protected uag a;
   
-  private uae(int paramInt)
+  public void a(String paramString)
   {
-    this.a = paramInt;
-  }
-  
-  private FeedCloudCommon.BytesEntry a(String paramString, byte[] paramArrayOfByte)
-  {
-    FeedCloudCommon.BytesEntry localBytesEntry = new FeedCloudCommon.BytesEntry();
-    localBytesEntry.key.set(paramString);
-    localBytesEntry.value.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    return localBytesEntry;
-  }
-  
-  private FeedCloudCommon.StCommonExt a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    FeedCloudCommon.StCommonExt localStCommonExt = new FeedCloudCommon.StCommonExt();
-    ArrayList localArrayList = new ArrayList();
-    if (paramArrayOfByte1 != null) {
-      localArrayList.add(a("SessionID", paramArrayOfByte1));
-    }
-    if (paramArrayOfByte2 != null) {
-      localArrayList.add(a("SubSessionID", paramArrayOfByte2));
-    }
-    if (localArrayList.size() > 0)
+    if (TextUtils.isEmpty(paramString))
     {
-      localStCommonExt.mapBytesInfo.set(localArrayList);
-      QLog.d("QCircleReporterAgent", 2, "buildSessionCommonExt() valid session and subsession!scene:" + this.a);
-      return localStCommonExt;
+      zvc.a(1, 2131694643);
+      return;
     }
-    QLog.e("QCircleReporterAgent", 2, "buildSessionCommonExt() no session and subsession!scene:" + this.a);
-    return localStCommonExt;
+    paramString = EditPicActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramString, true, true, true, true, true, 4);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
   }
   
-  public static uae a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new uae(paramInt);
-  }
-  
-  private void a(byte[] paramArrayOfByte)
-  {
-    tzy.a().a(this.a, paramArrayOfByte);
-  }
-  
-  public FeedCloudCommon.StCommonExt a(boolean paramBoolean)
-  {
-    byte[] arrayOfByte1 = null;
-    byte[] arrayOfByte2 = tzy.a().a();
-    if (!paramBoolean) {
-      arrayOfByte1 = tzy.a().a(this.a);
-    }
-    return a(arrayOfByte2, arrayOfByte1);
-  }
-  
-  public void a(FeedCloudCommon.StCommonExt paramStCommonExt)
-  {
-    QLog.d("QCircleReporterAgent", 1, "updateSubSession,scene:" + this.a);
-    int i;
-    if ((paramStCommonExt != null) && (paramStCommonExt.has()) && (paramStCommonExt.mapBytesInfo.has()))
+    switch (paramMessage.what)
     {
-      paramStCommonExt = paramStCommonExt.mapBytesInfo.get().iterator();
-      while (paramStCommonExt.hasNext())
+    }
+    for (;;)
+    {
+      return true;
+      if (paramMessage.obj != null) {
+        a((String)paramMessage.obj);
+      }
+    }
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    Object localObject = paramView.getTag();
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("onItemClick, tag = ");
+      if (localObject != null)
       {
-        FeedCloudCommon.BytesEntry localBytesEntry = (FeedCloudCommon.BytesEntry)paramStCommonExt.next();
-        if ((localBytesEntry != null) && ("SubSessionID".equals(localBytesEntry.key.get())))
-        {
-          paramStCommonExt = localBytesEntry.value.get().toByteArray();
-          i = 1;
-        }
+        bool = true;
+        QLog.d("ReadInJoyShareHelper", 2, bool);
+      }
+    }
+    else
+    {
+      if (localObject != null) {
+        break label73;
       }
     }
     for (;;)
     {
-      if (paramStCommonExt != null) {
-        a(paramStCommonExt);
-      }
-      if (i != 0)
-      {
-        QLog.d("QCircleReporterAgent", 1, "find subsession!");
-        return;
-      }
-      QLog.e("QCircleReporterAgent", 1, "can't find subsession!");
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
       return;
-      i = 0;
-      paramStCommonExt = null;
+      bool = false;
+      break;
+      label73:
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
+      localObject = (uah)((bgsa)localObject).a;
+      int i = ((uah)localObject).action;
+      if (this.jdField_a_of_type_Uaf != null) {
+        if (((uah)localObject).a)
+        {
+          this.jdField_a_of_type_Uaf.a(Integer.valueOf(i));
+        }
+        else
+        {
+          localObject = this.jdField_a_of_type_Uag.a(i);
+          if (localObject != null) {
+            this.jdField_a_of_type_Uaf.a((Integer)localObject);
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uae
  * JD-Core Version:    0.7.0.1
  */

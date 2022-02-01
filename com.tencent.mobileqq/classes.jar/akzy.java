@@ -1,19 +1,28 @@
-import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class akzy
+class akzy
+  implements View.OnClickListener
 {
-  abstract int a(Context paramContext);
+  akzy(akyh paramakyh) {}
   
-  abstract String a();
-  
-  abstract void a();
-  
-  void a(String paramString1, String paramString2, akzz paramakzz)
+  public void onClick(View paramView)
   {
-    if (("destroy".equals(paramString2)) && (paramakzz != null))
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim()))) {
+      this.a.k();
+    }
+    for (;;)
     {
-      a();
-      paramakzz.a(this);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Intent localIntent = new Intent(akyh.a(this.a), QRLoginMgrActivity.class);
+      localIntent.putExtra("qrlogin_position", this.a.b);
+      localIntent.putExtra("qrlogin_appid", this.a.a);
+      akyh.a(this.a).startActivity(localIntent);
     }
   }
 }

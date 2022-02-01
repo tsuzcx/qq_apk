@@ -1,32 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
-
-class tsu
-  implements bhuk
+public abstract interface tsu
 {
-  tsu(tss paramtss, bhuf parambhuf) {}
+  public abstract void a();
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (!yxv.a("showMoreActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      tss.d(this.jdField_a_of_type_Tss);
-      continue;
-      PublicFragmentActivity.a(this.jdField_a_of_type_Tss.a(), TempMsgSettingFragment.class);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tsu
  * JD-Core Version:    0.7.0.1
  */

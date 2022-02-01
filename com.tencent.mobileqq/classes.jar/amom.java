@@ -1,23 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 
-class amom
-  implements View.OnClickListener
+public abstract interface amom
 {
-  amom(amol paramamol, String paramString) {}
+  public abstract void a(MsfSocketInputBuffer paramMsfSocketInputBuffer);
   
-  public void onClick(View paramView)
-  {
-    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString), 120);
-    paramView.a();
-    vod.a(this.jdField_a_of_type_Amol.a, paramView.a(), null);
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract byte[] a();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amom
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,65 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.open.agent.SocialFriendChooser;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONObject;
 
 public class bfhc
-  extends Handler
+  extends WebViewPlugin
 {
-  public bfhc(SocialFriendChooser paramSocialFriendChooser) {}
+  protected aanz a;
+  protected AtomicBoolean a;
   
-  public void handleMessage(Message paramMessage)
+  public bfhc()
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    if ((!"GroupAppPanel".equals(paramString2)) || (("launchGroupApp".equals(paramString3)) && (paramVarArgs.length > 0) && (this.jdField_a_of_type_Aanz != null))) {}
+    try
     {
-    default: 
-      return;
-    case 10001: 
-      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
-      paramMessage.putString("agentversion", bfbm.a().e());
-      paramMessage.putString("facetype", "mqqface");
-      String str = bfri.a().a("http://fusion.qq.com/cgi-bin/appstage/get_image_update");
-      bfgf.a().a(str, paramMessage, new bfhd(this));
-      return;
+      paramString3 = new JSONObject(paramVarArgs[0]);
+      paramJsBridgeListener = paramString3.getString("groupCode");
+      paramString1 = paramString3.getString("appID");
+      paramString2 = paramString3.getString("url");
+      paramString3 = paramString3.getString("source");
+      this.jdField_a_of_type_Aanz.a(paramJsBridgeListener, paramString1, paramString2, paramString3);
+      bool = true;
+      return bool;
     }
-    if ((this.a.jdField_a_of_type_Bfmk != null) && (!this.a.jdField_a_of_type_Bfmk.isCancelled())) {
-      this.a.jdField_a_of_type_Bfmk.cancel(true);
+    catch (Exception paramJsBridgeListener)
+    {
+      for (;;)
+      {
+        paramJsBridgeListener.printStackTrace();
+        QLog.e("TroopAppPanelJsPlugin", 2, "launchGroupApp: args error");
+      }
     }
-    this.a.l();
-    paramMessage = new Intent();
-    paramMessage.putExtra("key_error_code", -7);
-    paramMessage.putExtra("key_error_msg", bfmt.e);
-    this.a.setResult(-1, paramMessage);
-    this.a.finish();
+  }
+  
+  public void onCreate()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    {
+      this.jdField_a_of_type_Aanz = aanz.a();
+      this.jdField_a_of_type_Aanz.a();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      this.jdField_a_of_type_Aanz.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfhc
  * JD-Core Version:    0.7.0.1
  */

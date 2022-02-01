@@ -1,23 +1,23 @@
 package cooperation.qzone.contentbox;
 
-import awgf;
-import awgg;
-import bjiy;
+import blxg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import cooperation.qzone.util.QZLog;
 
 public class QZoneMsgManager$2
   implements Runnable
 {
-  public QZoneMsgManager$2(bjiy parambjiy, QZoneMsgEntityNew paramQZoneMsgEntityNew) {}
+  public QZoneMsgManager$2(blxg paramblxg, QZoneMsgEntityNew paramQZoneMsgEntityNew) {}
   
   public void run()
   {
-    awgf localawgf = null;
-    Object localObject4 = null;
-    localObject2 = localObject4;
-    localObject1 = localawgf;
+    Object localObject3 = null;
+    EntityManager localEntityManager2 = null;
+    localEntityManager1 = localEntityManager2;
+    localObject1 = localObject3;
     for (;;)
     {
       try
@@ -26,8 +26,8 @@ public class QZoneMsgManager$2
         if (localQQAppInterface != null) {
           continue;
         }
-        localObject2 = localObject4;
-        localObject1 = localawgf;
+        localEntityManager1 = localEntityManager2;
+        localObject1 = localObject3;
         QZLog.e("QZoneMsgManager", "saveMsgToDB error app == null");
         if (0 != 0) {
           throw new NullPointerException();
@@ -36,8 +36,12 @@ public class QZoneMsgManager$2
       catch (Throwable localThrowable)
       {
         QQAppInterface localQQAppInterface;
-        localObject1 = localObject2;
+        localObject1 = localEntityManager1;
         QZLog.e("QZoneMsgManager", 1, localThrowable, new Object[0]);
+        if (localEntityManager1 == null) {
+          continue;
+        }
+        localEntityManager1.close();
         return;
       }
       finally
@@ -45,38 +49,38 @@ public class QZoneMsgManager$2
         if (localObject1 == null) {
           continue;
         }
-        ((awgf)localObject1).a();
+        ((EntityManager)localObject1).close();
       }
       return;
-      localObject2 = localObject4;
-      localObject1 = localawgf;
+      localEntityManager1 = localEntityManager2;
+      localObject1 = localObject3;
       this.a.writeArkNewsToBuffer();
-      localObject2 = localObject4;
-      localObject1 = localawgf;
-      localawgf = localQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject2 = localawgf;
-      localObject1 = localawgf;
+      localEntityManager1 = localEntityManager2;
+      localObject1 = localObject3;
+      localEntityManager2 = localQQAppInterface.a().createEntityManager();
+      localEntityManager1 = localEntityManager2;
+      localObject1 = localEntityManager2;
       if (this.a.getStatus() == 1000)
       {
-        localObject2 = localawgf;
-        localObject1 = localawgf;
-        localawgf.a(this.a);
-        if (localawgf != null) {
-          localawgf.a();
+        localEntityManager1 = localEntityManager2;
+        localObject1 = localEntityManager2;
+        localEntityManager2.persist(this.a);
+        if (localEntityManager2 != null) {
+          localEntityManager2.close();
         }
       }
       else
       {
-        localObject2 = localawgf;
-        localObject1 = localawgf;
-        localawgf.a(this.a);
+        localEntityManager1 = localEntityManager2;
+        localObject1 = localEntityManager2;
+        localEntityManager2.update(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgManager.2
  * JD-Core Version:    0.7.0.1
  */

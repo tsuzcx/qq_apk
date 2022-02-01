@@ -1,42 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.annotation.TargetApi;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.util.Log;
 
 public class zcx
-  implements View.OnTouchListener
 {
-  public zcx(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  @TargetApi(16)
+  public static int a(MediaExtractor paramMediaExtractor)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramMotionEvent.getAction())
+    int j = paramMediaExtractor.getTrackCount();
+    int i = 0;
+    while (i < j)
     {
-    default: 
-      bool1 = false;
+      MediaFormat localMediaFormat = paramMediaExtractor.getTrackFormat(i);
+      String str = localMediaFormat.getString("mime");
+      if (str.startsWith("video/"))
+      {
+        Log.d("VideoUtils", "Extractor selected track " + i + " (" + str + "): " + localMediaFormat);
+        return i;
+      }
+      i += 1;
     }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (paramView != AbsBaseWebViewActivity.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "vg onTouch");
-    }
-    paramView = new HashMap(2);
-    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
-    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
-    this.a.a(8589934606L, paramView);
-    return true;
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zcx
  * JD-Core Version:    0.7.0.1
  */

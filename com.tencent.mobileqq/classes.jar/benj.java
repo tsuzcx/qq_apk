@@ -1,15 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class benj
-  extends GestureDetector.SimpleOnGestureListener
+class benj
+  implements DialogInterface.OnDismissListener
 {
-  public benj(BounceScrollView paramBounceScrollView) {}
+  benj(beng parambeng) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return Math.abs(paramFloat2) >= Math.abs(paramFloat1);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 

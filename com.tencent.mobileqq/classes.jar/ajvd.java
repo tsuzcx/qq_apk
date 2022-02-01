@@ -1,352 +1,128 @@
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import com.tencent.widget.AbsListView;
+import java.util.List;
 
 public class ajvd
 {
-  private int jdField_a_of_type_Int = -1;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
+  private ajve jdField_a_of_type_Ajve;
+  private avrl jdField_a_of_type_Avrl;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<arcs> jdField_a_of_type_JavaUtilList;
   
-  static
+  private boolean a()
   {
-    if (!ajvd.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    anov localanov;
+    do
     {
-      jdField_b_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
-  public ajvd(int paramInt)
-  {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("RDDataPipe : Pipe Size <= 0");
-    }
-    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
-    if (QLog.isColorLevel()) {
-      QLog.d("RDDataPipe", 2, "RDDataPipe init, size:" + paramInt);
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      throw new IOException("RDDataPipe : Pipe closed");
-    }
-  }
-  
-  private void d()
-  {
-    while (this.jdField_a_of_type_Int == this.jdField_b_of_type_Int)
-    {
-      c();
-      notifyAll();
-      try
-      {
-        wait(100L);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        QLog.e("RDDataPipe", 2, "awaitSpace, wait exception:" + localInterruptedException.toString());
-      }
-    }
+      return false;
+      localanov = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
+    return localanov.a();
   }
   
   public int a()
   {
-    int i = -1;
-    try
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        throw new IOException("RDDataPipe : Pipe closed");
-      }
+    if (this.jdField_a_of_type_Avrl != null) {
+      return this.jdField_a_of_type_Avrl.a();
     }
-    finally {}
-    for (;;)
-    {
-      notifyAll();
-      try
-      {
-        wait(1000L);
-        if (this.jdField_a_of_type_Int < 0)
-        {
-          boolean bool = this.jdField_a_of_type_Boolean;
-          if (!bool) {
-            continue;
-          }
-          return i;
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("RDDataPipe", 2, "read, wait exception:" + localInterruptedException);
-            continue;
-            byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-            i = this.jdField_b_of_type_Int;
-            this.jdField_b_of_type_Int = (i + 1);
-            int j = arrayOfByte[i] & 0xFF;
-            if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_ArrayOfByte.length) {
-              this.jdField_b_of_type_Int = 0;
-            }
-            i = j;
-            if (this.jdField_a_of_type_Int == this.jdField_b_of_type_Int)
-            {
-              this.jdField_a_of_type_Int = -1;
-              i = j;
-            }
-          }
-        }
-      }
-    }
+    return -1;
   }
   
-  int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public avrl a(boolean paramBoolean)
   {
-    for (;;)
-    {
-      int i;
-      int j;
-      try
-      {
-        c();
-        i = paramInt2;
-        j = paramInt1;
-        if (i <= 0) {
-          break label211;
-        }
-        if (this.jdField_a_of_type_Int == this.jdField_b_of_type_Int) {
-          d();
-        }
-        if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int) {
-          break label81;
-        }
-        paramInt1 = this.jdField_a_of_type_ArrayOfByte.length - this.jdField_a_of_type_Int;
-      }
-      finally {}
-      if ((!jdField_b_of_type_Boolean) && (k <= 0))
-      {
-        throw new AssertionError();
-        label81:
-        if (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int)
-        {
-          if (this.jdField_a_of_type_Int == -1)
-          {
-            this.jdField_b_of_type_Int = 0;
-            this.jdField_a_of_type_Int = 0;
-            paramInt1 = this.jdField_a_of_type_ArrayOfByte.length - this.jdField_a_of_type_Int;
-            break label220;
-          }
-          paramInt1 = this.jdField_b_of_type_Int - this.jdField_a_of_type_Int;
-          break label220;
-        }
-      }
-      else
-      {
-        System.arraycopy(paramArrayOfByte, j, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, k);
-        paramInt1 = i - k;
-        int m = j + k;
-        this.jdField_a_of_type_Int = (k + this.jdField_a_of_type_Int);
-        i = paramInt1;
-        j = m;
-        if (this.jdField_a_of_type_Int < this.jdField_a_of_type_ArrayOfByte.length) {
-          continue;
-        }
-        this.jdField_a_of_type_Int = 0;
-        i = paramInt1;
-        j = m;
-        continue;
-        label211:
-        return paramInt2 - i;
-      }
-      paramInt1 = 0;
-      label220:
-      int k = paramInt1;
-      if (paramInt1 > i) {
-        k = i;
-      }
+    if (paramBoolean) {
+      return new avrq();
     }
+    return new avrn();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    try
+    QLog.i("Q.lebatab.LebaController", 1, "onResume");
+    if (this.jdField_a_of_type_Avrl != null)
     {
-      this.jdField_a_of_type_Int = -1;
-      notifyAll();
-      return;
+      a(true);
+      this.jdField_a_of_type_Avrl.a();
     }
-    finally {}
   }
   
-  /* Error */
-  public int b()
+  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 28	ajvd:jdField_a_of_type_Int	I
-    //   6: ifge +13 -> 19
-    //   9: aload_0
-    //   10: getfield 37	ajvd:jdField_a_of_type_ArrayOfByte	[B
-    //   13: arraylength
-    //   14: istore_1
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: iload_1
-    //   18: ireturn
-    //   19: aload_0
-    //   20: getfield 28	ajvd:jdField_a_of_type_Int	I
-    //   23: aload_0
-    //   24: getfield 74	ajvd:jdField_b_of_type_Int	I
-    //   27: if_icmpne +8 -> 35
-    //   30: iconst_0
-    //   31: istore_1
-    //   32: goto -17 -> 15
-    //   35: aload_0
-    //   36: getfield 28	ajvd:jdField_a_of_type_Int	I
-    //   39: aload_0
-    //   40: getfield 74	ajvd:jdField_b_of_type_Int	I
-    //   43: if_icmple +22 -> 65
-    //   46: aload_0
-    //   47: getfield 37	ajvd:jdField_a_of_type_ArrayOfByte	[B
-    //   50: arraylength
-    //   51: aload_0
-    //   52: getfield 28	ajvd:jdField_a_of_type_Int	I
-    //   55: aload_0
-    //   56: getfield 74	ajvd:jdField_b_of_type_Int	I
-    //   59: isub
-    //   60: isub
-    //   61: istore_1
-    //   62: goto -47 -> 15
-    //   65: aload_0
-    //   66: getfield 74	ajvd:jdField_b_of_type_Int	I
-    //   69: istore_1
-    //   70: aload_0
-    //   71: getfield 28	ajvd:jdField_a_of_type_Int	I
-    //   74: istore_2
-    //   75: iload_1
-    //   76: iload_2
-    //   77: isub
-    //   78: istore_1
-    //   79: goto -64 -> 15
-    //   82: astore_3
-    //   83: aload_0
-    //   84: monitorexit
-    //   85: aload_3
-    //   86: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	87	0	this	ajvd
-    //   14	65	1	i	int
-    //   74	4	2	j	int
-    //   82	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	15	82	finally
-    //   19	30	82	finally
-    //   35	62	82	finally
-    //   65	75	82	finally
+    QLog.i("Q.lebatab.LebaController", 1, "onPause" + paramInt1 + "|" + paramBoolean + paramInt2);
+    if (this.jdField_a_of_type_Avrl != null) {
+      this.jdField_a_of_type_Avrl.a(paramInt1, paramBoolean, paramInt2);
+    }
   }
   
-  public int b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public void a(ajve paramajve)
   {
-    int i = 0;
-    if (paramArrayOfByte == null) {
-      try
-      {
-        throw new NullPointerException();
-      }
-      finally {}
-    }
-    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt2 > paramArrayOfByte.length - paramInt1)) {
-      throw new IndexOutOfBoundsException();
-    }
-    if (paramInt2 == 0) {
-      paramInt2 = i;
-    }
-    int j;
-    do
+    this.jdField_a_of_type_Ajve = paramajve;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramajve.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_JavaUtilList = paramajve.jdField_a_of_type_JavaUtilList;
+    QLog.i("Q.lebatab.LebaController", 1, "initLebaView" + arcs.a(this.jdField_a_of_type_JavaUtilList));
+    if (this.jdField_a_of_type_Avrl == null)
     {
-      do
-      {
-        for (;;)
-        {
-          return paramInt2;
-          i = a();
-          if (i >= 0) {
-            break;
-          }
-          paramInt2 = -1;
-        }
-        paramInt2 = i;
-      } while (this.jdField_a_of_type_Int < 0);
-      paramInt2 = i;
-    } while (j <= 1);
-    if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int) {
-      paramInt2 = Math.min(this.jdField_a_of_type_ArrayOfByte.length - this.jdField_b_of_type_Int, this.jdField_a_of_type_Int - this.jdField_b_of_type_Int);
+      boolean bool = a();
+      this.jdField_a_of_type_Avrl = a(bool);
+      QLog.i("Q.lebatab.LebaController", 1, String.format("init puginLogin modle = %b", new Object[] { Boolean.valueOf(bool) }));
     }
     for (;;)
     {
-      System.arraycopy(this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_Int, paramArrayOfByte, paramInt1 + i, k);
-      this.jdField_b_of_type_Int += k;
-      paramInt2 = i + k;
-      int k = j - k;
-      if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_ArrayOfByte.length) {
-        this.jdField_b_of_type_Int = 0;
-      }
-      i = paramInt2;
-      j = k;
-      if (this.jdField_a_of_type_Int != this.jdField_b_of_type_Int) {
-        break;
-      }
-      this.jdField_a_of_type_Int = -1;
-      i = paramInt2;
-      j = k;
-      break;
-      paramInt2 = this.jdField_a_of_type_ArrayOfByte.length;
-      k = this.jdField_b_of_type_Int;
-      paramInt2 -= k;
-      break label256;
-      paramArrayOfByte[paramInt1] = ((byte)i);
-      i = 1;
-      j = paramInt2;
-      break;
-      label256:
-      k = paramInt2;
-      if (paramInt2 > j - 1) {
-        k = j - 1;
+      this.jdField_a_of_type_Avrl.a(paramajve);
+      return;
+      a(false);
+    }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.jdField_a_of_type_Avrl != null) {
+      this.jdField_a_of_type_Avrl.a(paramAbsListView, paramInt);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Avrl != null)
+    {
+      boolean bool1 = a();
+      boolean bool2 = this.jdField_a_of_type_Avrl instanceof avrq;
+      if (bool1 != bool2)
+      {
+        QLog.i("Q.lebatab.LebaController", 1, String.format("checkAndSwtichModel old: %b new %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
+        this.jdField_a_of_type_Avrl.d();
+        this.jdField_a_of_type_Avrl = a(bool1);
+        if (paramBoolean) {
+          this.jdField_a_of_type_Avrl.a(this.jdField_a_of_type_Ajve);
+        }
       }
     }
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_Avrl != null) {
+      return this.jdField_a_of_type_Avrl.b();
+    }
+    return 0;
   }
   
   public void b()
   {
-    try
-    {
-      notifyAll();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    QLog.i("Q.lebatab.LebaController", 1, "notifyDataSetChanged" + arcs.a(this.jdField_a_of_type_JavaUtilList));
+    if (this.jdField_a_of_type_Avrl != null) {
+      this.jdField_a_of_type_Avrl.c();
     }
   }
   
-  public int c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public void c()
   {
-    if (paramArrayOfByte == null) {}
-    while ((paramInt1 < 0) || (paramInt1 > paramArrayOfByte.length) || (paramInt2 < 0) || (paramInt1 + paramInt2 > paramArrayOfByte.length) || (paramInt1 + paramInt2 < 0) || (paramInt2 == 0)) {
-      return 0;
+    QLog.i("Q.lebatab.LebaController", 1, "onPostThemeChanged");
+    if (this.jdField_a_of_type_Avrl != null) {
+      this.jdField_a_of_type_Avrl.b();
     }
-    return a(paramArrayOfByte, paramInt1, paramInt2);
   }
 }
 

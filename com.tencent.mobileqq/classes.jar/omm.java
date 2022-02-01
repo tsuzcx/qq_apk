@@ -1,23 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
+import org.json.JSONObject;
 
-class omm
-  implements DialogInterface.OnClickListener
+public class omm
 {
-  omm(oml paramoml, String paramString, int paramInt) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public omm(JSONObject paramJSONObject)
   {
-    QQToast.a(this.jdField_a_of_type_Oml.jdField_a_of_type_Omg.a, 2, alud.a(2131713434), 0).a();
-    if (this.jdField_a_of_type_Oml.jdField_a_of_type_Olz != null) {
-      this.jdField_a_of_type_Oml.jdField_a_of_type_Olz.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt);
+    if (paramJSONObject != null)
+    {
+      this.a = paramJSONObject.optString("dest_url");
+      this.b = paramJSONObject.optString("rl");
+      this.c = paramJSONObject.optString("button_txt");
+      this.d = paramJSONObject.optString("button_bg");
     }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("AdPKImageData{");
+    localStringBuilder.append("destUrl=").append(this.a);
+    localStringBuilder.append(",rl=").append(this.b);
+    localStringBuilder.append(",buttonTxt=").append(this.c);
+    localStringBuilder.append(",buttonBg=").append(this.d);
+    localStringBuilder.append("}");
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     omm
  * JD-Core Version:    0.7.0.1
  */

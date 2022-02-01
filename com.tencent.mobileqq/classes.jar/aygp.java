@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import android.hardware.Camera.Size;
 import java.util.Comparator;
 
-public class aygp
-  implements Comparator<ScribbleResMgr.ResInfo>
+class aygp
+  implements Comparator<Camera.Size>
 {
-  public aygp(ScribbleResMgr paramScribbleResMgr) {}
+  aygp(aygn paramaygn) {}
   
-  public int a(ScribbleResMgr.ResInfo paramResInfo1, ScribbleResMgr.ResInfo paramResInfo2)
+  public int a(Camera.Size paramSize1, Camera.Size paramSize2)
   {
-    if ((paramResInfo1 != null) && (paramResInfo2 != null)) {
-      return paramResInfo1.orderIndex - paramResInfo2.orderIndex;
+    int i = paramSize1.height * paramSize1.width;
+    int j = paramSize2.height * paramSize2.width;
+    if (j < i) {
+      return 1;
     }
-    return -1;
+    if (j > i) {
+      return -1;
+    }
+    return 0;
   }
 }
 

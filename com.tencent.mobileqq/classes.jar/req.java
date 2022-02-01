@@ -1,58 +1,154 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.articlesummary.articlesummary.ArkAppFeedsInfo;
 
 public class req
-  extends LinearLayoutManager
+  implements Cloneable
 {
-  private VideoFeedsRecyclerView a;
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public req(Context paramContext, VideoFeedsRecyclerView paramVideoFeedsRecyclerView, int paramInt, boolean paramBoolean)
+  public static req a(articlesummary.ArkAppFeedsInfo paramArkAppFeedsInfo)
   {
-    super(paramContext, paramInt, paramBoolean);
-    this.a = paramVideoFeedsRecyclerView;
-  }
-  
-  private boolean a(View paramView)
-  {
-    if (paramView == null) {}
-    int i;
-    int j;
-    do
+    if (paramArkAppFeedsInfo == null)
     {
-      return false;
-      i = this.a.getChildViewHolder(paramView).getLayoutPosition();
-      j = this.a.b();
-    } while ((j < 0) || ((i != j + 1) && (i != j - 1)));
-    return true;
-  }
-  
-  public int getExtraLayoutSpace(RecyclerView.State paramState)
-  {
-    return super.getExtraLayoutSpace(paramState) + 200;
-  }
-  
-  public void removeAndRecycleView(View paramView, RecyclerView.Recycler paramRecycler)
-  {
-    if (!a(paramView)) {
-      super.removeAndRecycleView(paramView, paramRecycler);
+      QLog.d("ArkAppFeedsInfo", 1, "covertPBToInfo feedsInfo == null");
+      return null;
+    }
+    req localreq = new req();
+    long l;
+    int i;
+    label65:
+    String str;
+    if (paramArkAppFeedsInfo.uint64_feeds_id.has())
+    {
+      l = paramArkAppFeedsInfo.uint64_feeds_id.get();
+      localreq.jdField_a_of_type_Long = l;
+      if (!paramArkAppFeedsInfo.uint32_feeds_style.has()) {
+        break label418;
+      }
+      i = paramArkAppFeedsInfo.uint32_feeds_style.get();
+      localreq.jdField_a_of_type_Int = i;
+      if ((!paramArkAppFeedsInfo.bytes_app_name.has()) || (paramArkAppFeedsInfo.bytes_app_name.get() == null)) {
+        break label423;
+      }
+      str = paramArkAppFeedsInfo.bytes_app_name.get().toStringUtf8();
+      label103:
+      localreq.jdField_a_of_type_JavaLangString = str;
+      if ((!paramArkAppFeedsInfo.bytes_app_view.has()) || (paramArkAppFeedsInfo.bytes_app_view.get() == null)) {
+        break label430;
+      }
+      str = paramArkAppFeedsInfo.bytes_app_view.get().toStringUtf8();
+      label142:
+      localreq.b = str;
+      if ((!paramArkAppFeedsInfo.bytes_app_desc.has()) || (paramArkAppFeedsInfo.bytes_app_desc.get() == null)) {
+        break label437;
+      }
+      str = paramArkAppFeedsInfo.bytes_app_desc.get().toStringUtf8();
+      label181:
+      localreq.c = str;
+      if ((!paramArkAppFeedsInfo.bytes_app_prompt.has()) || (paramArkAppFeedsInfo.bytes_app_prompt.get() == null)) {
+        break label444;
+      }
+      str = paramArkAppFeedsInfo.bytes_app_prompt.get().toStringUtf8();
+      label220:
+      localreq.d = str;
+      if ((!paramArkAppFeedsInfo.bytes_app_ver.has()) || (paramArkAppFeedsInfo.bytes_app_ver.get() == null)) {
+        break label451;
+      }
+      str = paramArkAppFeedsInfo.bytes_app_ver.get().toStringUtf8();
+      label259:
+      localreq.e = str;
+      if ((!paramArkAppFeedsInfo.bytes_app_meta.has()) || (paramArkAppFeedsInfo.bytes_app_meta.get() == null)) {
+        break label458;
+      }
+    }
+    label418:
+    label423:
+    label430:
+    label437:
+    label444:
+    label451:
+    label458:
+    for (paramArkAppFeedsInfo = paramArkAppFeedsInfo.bytes_app_meta.get().toStringUtf8();; paramArkAppFeedsInfo = "")
+    {
+      localreq.f = paramArkAppFeedsInfo;
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkAppFeedsInfo", 2, new Object[] { "mFeedsId: ", Long.valueOf(localreq.jdField_a_of_type_Long), ", mFeedsStyle: ", Integer.valueOf(localreq.jdField_a_of_type_Int), ", appName: ", localreq.jdField_a_of_type_JavaLangString, ", appView: ", localreq.b, ", appMinVersion: ", localreq.e, ", metaList: ", localreq.f });
+      }
+      return localreq;
+      l = 0L;
+      break;
+      i = 0;
+      break label65;
+      str = "";
+      break label103;
+      str = "";
+      break label142;
+      str = "";
+      break label181;
+      str = "";
+      break label220;
+      str = "";
+      break label259;
     }
   }
   
-  public void removeAndRecycleViewAt(int paramInt, RecyclerView.Recycler paramRecycler)
+  public req a()
   {
-    if (!a(getChildAt(paramInt))) {
-      super.removeAndRecycleViewAt(paramInt, paramRecycler);
+    try
+    {
+      req localreq = (req)super.clone();
+      return localreq;
     }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkAppFeedsInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
+      }
+    }
+    return null;
+  }
+  
+  public articlesummary.ArkAppFeedsInfo a()
+  {
+    articlesummary.ArkAppFeedsInfo localArkAppFeedsInfo = new articlesummary.ArkAppFeedsInfo();
+    localArkAppFeedsInfo.uint32_feeds_style.set(this.jdField_a_of_type_Int);
+    localArkAppFeedsInfo.uint64_feeds_id.set(this.jdField_a_of_type_Long);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localArkAppFeedsInfo.bytes_app_name.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localArkAppFeedsInfo.bytes_app_view.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localArkAppFeedsInfo.bytes_app_desc.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.d)) {
+      localArkAppFeedsInfo.bytes_app_prompt.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    if (!TextUtils.isEmpty(this.e)) {
+      localArkAppFeedsInfo.bytes_app_ver.set(ByteStringMicro.copyFromUtf8(this.e));
+    }
+    if (!TextUtils.isEmpty(this.f)) {
+      localArkAppFeedsInfo.bytes_app_meta.set(ByteStringMicro.copyFromUtf8(this.f));
+    }
+    return localArkAppFeedsInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     req
  * JD-Core Version:    0.7.0.1
  */

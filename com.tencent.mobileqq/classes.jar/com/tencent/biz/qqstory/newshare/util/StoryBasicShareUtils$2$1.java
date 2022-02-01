@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.newshare.util;
 
-import vij;
+import xbv;
 
 class StoryBasicShareUtils$2$1
   implements Runnable
@@ -9,14 +9,14 @@ class StoryBasicShareUtils$2$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Vij != null) {
-      this.this$0.jdField_a_of_type_Vij.a(this.this$0.jdField_a_of_type_Vkq);
+    if (this.this$0.jdField_a_of_type_Xbv != null) {
+      this.this$0.jdField_a_of_type_Xbv.a(this.this$0.jdField_a_of_type_Xec);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.util.StoryBasicShareUtils.2.1
  * JD-Core Version:    0.7.0.1
  */

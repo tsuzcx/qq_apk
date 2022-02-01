@@ -1,40 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-
 class lsb
-  extends lme
 {
-  lsb(lsa paramlsa) {}
+  public long a;
+  public final String a;
+  public long b;
+  public long c;
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  public lsb(String paramString, long paramLong)
   {
-    QLog.w(lsa.jdField_a_of_type_JavaLangString, 1, "onAfterOpenCamera, success[" + paramBoolean + "], preSessionType[" + paramInt + "], seq[" + paramLong + "]");
-    if (paramBoolean) {
-      b(paramLong);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
+    this.c = paramLong;
   }
   
-  void b(long paramLong)
+  public void a(long paramLong)
   {
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4);
-    localMessage.obj = Long.valueOf(paramLong);
-    localMessage.sendToTarget();
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    long l = AudioHelper.b();
-    QLog.w(lsa.jdField_a_of_type_JavaLangString, 1, "onAfterReopenCamera, success[" + paramBoolean + "], seq[" + l + "]");
-    if (paramBoolean) {
-      b(l);
+    if (this.jdField_a_of_type_Long < paramLong) {
+      this.jdField_a_of_type_Long = paramLong;
     }
+    if (this.b > paramLong) {
+      this.b = paramLong;
+    }
+    this.c = ((this.c + paramLong) / 2L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lsb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,6 @@
-class bkqm
-  implements bkqb
+public abstract interface bkqm
 {
-  bkqm(bkql parambkql) {}
-  
-  public void a(float paramFloat)
-  {
-    this.a.a.a(paramFloat);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.a.a(paramInt);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    this.a.a.a(paramInt, paramBoolean);
-  }
+  public abstract int a();
 }
 
 

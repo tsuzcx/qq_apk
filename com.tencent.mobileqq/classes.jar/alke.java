@@ -1,6 +1,19 @@
-public abstract interface alke
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class alke
+  implements bcit
 {
-  public abstract void a(int paramInt);
+  public alke(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean1);
+    }
+    alkm.a(paramBoolean1);
+    NewFlowCameraActivity.b(this.a);
+  }
 }
 
 

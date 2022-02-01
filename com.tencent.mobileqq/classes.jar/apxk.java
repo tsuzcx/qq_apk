@@ -1,9 +1,16 @@
-import android.widget.RelativeLayout;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 
-public class apxk
-  extends aptf
+class apxk
+  extends AnimatorListenerAdapter
 {
-  RelativeLayout[] a;
+  apxk(apxi paramapxi, ObjectAnimator paramObjectAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+  }
 }
 
 

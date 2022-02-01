@@ -1,27 +1,38 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import kotlin.Metadata;
 
-class rek
-  extends altm
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterOutsideLink;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rek
+  extends reh
 {
-  rek(reh paramreh, QQAppInterface paramQQAppInterface) {}
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void a()
   {
-    if (paramBoolean)
+    Object localObject = a();
+    if (localObject != null) {
+      ((SocializeFeedsInfo)localObject).a = 19191924;
+    }
+    localObject = a();
+    if (localObject != null) {
+      ((rhn)localObject).a = true;
+    }
+    BaseArticleInfo localBaseArticleInfo = a();
+    localObject = a();
+    if (localObject != null)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("VALUE_USER_UIN_TO_GET_NICK_NAME", paramString);
-      localBundle.putString("VALUE_USER_NICK_NAME", bdgc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, true));
-      QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_GET_NICK_NAME_BY_UIN", localBundle, null);
+      localObject = ((rhg)localObject).a;
+      if (localObject == null) {}
+    }
+    for (localObject = ((rhm)localObject).a;; localObject = null)
+    {
+      localBaseArticleInfo.mTitle = ((String)localObject);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rek
  * JD-Core Version:    0.7.0.1
  */

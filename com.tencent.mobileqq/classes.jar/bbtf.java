@@ -1,89 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.os.Bundle;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
 import java.util.ArrayList;
 import java.util.List;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyGetFileListRspBody.FileInfo;
 
 public class bbtf
+  extends bbti
 {
-  public long a;
-  public bbsa a;
-  public String a;
-  public ArrayList<String> a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  
-  public bbtf(QQAppInterface paramQQAppInterface, cmd0x383.ApplyFileSearchRspBody.Item paramItem)
+  public bbtf(GroupSearchEngine paramGroupSearchEngine, bbtj parambbtj, String paramString, int paramInt)
   {
-    if (paramItem == null) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramItem.uint64_group_code.get();
-    this.jdField_a_of_type_JavaLangString = paramItem.bytes_group_name.get().toStringUtf8();
-    this.jdField_b_of_type_Long = paramItem.uint64_upload_uin.get();
-    this.jdField_b_of_type_JavaLangString = paramItem.bytes_uploader_nick_name.get().toStringUtf8();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    List localList = paramItem.bytes_match_word.get();
-    if (localList != null)
-    {
-      int i = 0;
-      while (i < localList.size())
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(((ByteStringMicro)localList.get(i)).toStringUtf8());
-        i += 1;
-      }
-    }
-    this.jdField_c_of_type_Long = paramItem.uint64_match_uin.get();
-    if (this.jdField_c_of_type_Long > 0L)
-    {
-      paramQQAppInterface = ((alto)paramQQAppInterface.getManager(51)).e(String.valueOf(this.jdField_c_of_type_Long));
-      if (paramQQAppInterface != null)
-      {
-        this.jdField_c_of_type_JavaLangString = paramQQAppInterface.name;
-        this.d = paramQQAppInterface.remark;
-      }
-    }
-    this.jdField_a_of_type_Bbsa = new bbsa((cmd0x383.ApplyGetFileListRspBody.FileInfo)paramItem.file_info.get());
+    super(paramGroupSearchEngine, parambbtj, paramString, paramInt);
   }
   
-  public String toString()
+  public bbmx a(List<bbmy> paramList, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("groupCode = " + this.jdField_a_of_type_Long);
-    localStringBuilder.append(", groupName = " + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", uploaderUin = " + this.jdField_b_of_type_Long);
-    localStringBuilder.append(", uploaderNickName = " + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", matchUin = " + this.jdField_c_of_type_Long);
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      localStringBuilder.append(", matchWord: = ");
-      int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-      int i = 0;
-      if (i < j)
-      {
-        if (i == j - 1) {
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i) + ", ");
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).append("、 ");
-        }
-      }
+    return null;
+  }
+  
+  public List<bbmx> a(bbtx parambbtx)
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = -1;
+    parambbtx.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", 16);
+    parambbtx.a.putInt("SEARCH_REQUEST_EXTRA_PAGE", 0);
+    ArrayList localArrayList = new ArrayList();
+    parambbtx = this.jdField_a_of_type_Bbtj.a(parambbtx);
+    if (parambbtx != null) {
+      localArrayList.addAll(parambbtx);
     }
-    if (this.jdField_a_of_type_Bbsa != null) {
-      localStringBuilder.append(", fileInfo = " + this.jdField_a_of_type_Bbsa.toString());
-    }
-    return localStringBuilder.toString();
+    return localArrayList;
   }
 }
 

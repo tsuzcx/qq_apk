@@ -7,36 +7,46 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bgls;
-import bgun;
-import bhbe;
-import bhbm;
-import bhbo;
-import bhbp;
+import com.tencent.qqmini.sdk.R.id;
+import com.tencent.qqmini.sdk.R.layout;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.action.Action;
+import com.tencent.qqmini.sdk.monitor.common.FPSCalculator;
+import com.tencent.qqmini.sdk.monitor.service.TaskMonitorManager;
+import com.tencent.qqmini.sdk.monitor.service.ThreadMsgInfo;
 
 public class MiniAppMonitorInfoView
   extends FrameLayout
 {
-  public static long a;
-  public static long b;
-  private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler = ThreadManager.c();
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhbp jdField_a_of_type_Bhbp;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new MiniAppMonitorInfoView.1(this);
-  private volatile boolean jdField_a_of_type_Boolean;
-  private TextView b;
-  private TextView c;
-  private TextView d;
-  private TextView e;
-  private TextView f;
-  private TextView g;
-  private TextView h;
-  private TextView i;
-  private TextView j;
+  public static final String ACTION_SHOW_MONITOR_VIEW = "action.qq.miniapp.show.monitorview";
+  private static final int REFRESH_MONITOR_DURATION = 1000;
+  public static long sDownloadDuration = 0L;
+  private static final Action<Long> sGetDrawCallCountAction = new MiniAppMonitorInfoView.2();
+  public static long sStartDuration;
+  public static long sStartTime = 0L;
+  private TextView mCpuRate;
+  private TextView mCpuUsage;
+  private TextView mDbCacheTv;
+  private TextView mDownloadInfoTv;
+  private TextView mDrawCallTv;
+  private MiniAppMonitorInfoView.FpsListener mFpsListener;
+  private TextView mFpsTv;
+  private volatile boolean mHasStartMonitor = false;
+  private View mInflateView;
+  private Handler mMainHandler = ThreadManager.getUIHandler();
+  private IMiniAppContext mMiniAppContext;
+  private int mMiniAppType = 0;
+  private TextView mPageSwitchTv;
+  private Runnable mRefreshRunnable = new MiniAppMonitorInfoView.1(this);
+  private TextView mRenderAgainTv;
+  private TextView mRenderFirstTv;
+  private TextView mStartDurationTv;
+  
+  static
+  {
+    sStartDuration = 0L;
+  }
   
   public MiniAppMonitorInfoView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -46,153 +56,40 @@ public class MiniAppMonitorInfoView
   public MiniAppMonitorInfoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559358, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370702));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370701));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370690));
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370699));
-    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370698));
-    this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370692));
-    this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370691));
-    this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370687));
-    this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370688));
-    this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370689));
+    this.mInflateView = LayoutInflater.from(paramContext).inflate(R.layout.mini_sdk_popup_monitor_layout, this);
+    this.mPageSwitchTv = ((TextView)this.mInflateView.findViewById(R.id.monitor_switch_page));
+    this.mStartDurationTv = ((TextView)this.mInflateView.findViewById(R.id.monitor_start_time));
+    this.mDownloadInfoTv = ((TextView)this.mInflateView.findViewById(R.id.monitor_download_package));
+    this.mRenderFirstTv = ((TextView)this.mInflateView.findViewById(R.id.monitor_render_first));
+    this.mRenderAgainTv = ((TextView)this.mInflateView.findViewById(R.id.monitor_render_again));
+    this.mFpsTv = ((TextView)this.mInflateView.findViewById(R.id.monitor_fps));
+    this.mDrawCallTv = ((TextView)this.mInflateView.findViewById(R.id.monitor_drawcall));
+    this.mCpuRate = ((TextView)this.mInflateView.findViewById(R.id.monitor_cpu_rate));
+    this.mCpuUsage = ((TextView)this.mInflateView.findViewById(R.id.monitor_cpu_usage));
+    this.mDbCacheTv = ((TextView)this.mInflateView.findViewById(R.id.monitor_db_cache));
     setMiniAppType(paramInt);
-    c();
+    initData();
   }
   
-  private bgls a()
+  private long getDrawCallCount()
   {
-    bgun localbgun = AppRuntimeLoaderManager.g().getCurrentRunTimeLoader();
-    if (localbgun == null) {
-      return null;
+    if (this.mMiniAppContext != null) {
+      return ((Long)this.mMiniAppContext.performAction(sGetDrawCallCountAction)).longValue();
     }
-    return localbgun.getRuntime();
+    return 0L;
   }
   
-  public void a()
+  protected void initData()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      }
-    }
-    for (;;)
+    if (this.mStartDurationTv != null)
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
-      }
-      return;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        if (this.jdField_a_of_type_Bhbp == null) {
-          this.jdField_a_of_type_Bhbp = new bhbp(this, null);
-        }
-        bhbe.a().a(this.jdField_a_of_type_Bhbp);
-      }
+      this.mStartDurationTv.setText("启动耗时：" + sStartDuration + "ms");
+      this.mStartDurationTv.setVisibility(0);
     }
-  }
-  
-  public void a(double paramDouble)
-  {
-    if (this.f != null)
+    if (this.mDownloadInfoTv != null)
     {
-      String str = "帧率: " + String.format("%.0f", new Object[] { Double.valueOf(paramDouble) }) + "fps";
-      this.f.setText(str);
-      bhbm.a().a(paramDouble);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    try
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      if (this.jdField_a_of_type_Bhbp != null) {
-        bhbe.a().b(this.jdField_a_of_type_Bhbp);
-      }
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    catch (Throwable localThrowable) {}
-  }
-  
-  protected void c()
-  {
-    if (this.c != null)
-    {
-      this.c.setText("启动耗时：" + jdField_a_of_type_Long + "ms");
-      this.c.setVisibility(0);
-    }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null)
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("包下载耗时：" + jdField_b_of_type_Long + "ms");
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-  }
-  
-  protected void d()
-  {
-    Object localObject = "";
-    bhbo localbhbo = bhbm.a().a();
-    if (localbhbo != null) {
-      localObject = "" + "切换页面耗时: " + localbhbo.d + "ms";
-    }
-    long l;
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if (localbhbo != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      }
-    }
-    else if (this.g != null)
-    {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label280;
-      }
-      localObject = a();
-      if (localObject == null) {
-        break label275;
-      }
-      l = ((bgls)localObject).a();
-      label107:
-      this.g.setText("drawCall: " + l);
-      this.g.setVisibility(0);
-    }
-    for (;;)
-    {
-      localObject = bhbm.a().a();
-      if (this.h != null)
-      {
-        this.h.setText((CharSequence)localObject);
-        this.h.setVisibility(0);
-      }
-      localObject = bhbm.a().b();
-      if (this.i != null)
-      {
-        this.i.setText((CharSequence)localObject);
-        this.i.setVisibility(0);
-      }
-      localObject = "内存 使用率: " + bhbm.a().a() + "%";
-      if (this.j != null)
-      {
-        this.j.setText((CharSequence)localObject);
-        this.j.setVisibility(0);
-      }
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("切换页面耗时: 无页面切换");
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      break;
-      label275:
-      l = 0L;
-      break label107;
-      label280:
-      this.g.setVisibility(8);
+      this.mDownloadInfoTv.setText("包下载耗时：" + sDownloadDuration + "ms");
+      this.mDownloadInfoTv.setVisibility(0);
     }
   }
   
@@ -204,12 +101,116 @@ public class MiniAppMonitorInfoView
   
   public void setMiniAppType(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.mMiniAppType = paramInt;
+  }
+  
+  public void startRefreshMonitorUi()
+  {
+    if (this.mHasStartMonitor) {
+      if (this.mMainHandler != null) {
+        this.mMainHandler.removeCallbacks(this.mRefreshRunnable);
+      }
+    }
+    for (;;)
+    {
+      if (this.mMainHandler != null) {
+        this.mMainHandler.postDelayed(this.mRefreshRunnable, 1000L);
+      }
+      return;
+      if (this.mMiniAppType == 0)
+      {
+        if (this.mFpsListener == null) {
+          this.mFpsListener = new MiniAppMonitorInfoView.FpsListener(this, null);
+        }
+        FPSCalculator.getInstance().addListener(this.mFpsListener);
+      }
+    }
+  }
+  
+  public void stopRefreshMonitorUi()
+  {
+    if (this.mHasStartMonitor) {}
+    try
+    {
+      if (this.mMainHandler != null) {
+        this.mMainHandler.removeCallbacks(this.mRefreshRunnable);
+      }
+      if (this.mFpsListener != null) {
+        FPSCalculator.getInstance().removeListener(this.mFpsListener);
+      }
+      this.mHasStartMonitor = false;
+      return;
+    }
+    catch (Throwable localThrowable) {}
+  }
+  
+  protected void updateData()
+  {
+    String str = "";
+    ThreadMsgInfo localThreadMsgInfo = TaskMonitorManager.g().getTaskPerfmSwitchPageInfo();
+    if (localThreadMsgInfo != null) {
+      str = "" + "切换页面耗时: " + localThreadMsgInfo.realTimeCost + "ms";
+    }
+    if (this.mPageSwitchTv != null)
+    {
+      if (localThreadMsgInfo != null)
+      {
+        this.mPageSwitchTv.setVisibility(0);
+        this.mPageSwitchTv.setText(str);
+      }
+    }
+    else if (this.mDrawCallTv != null)
+    {
+      if (this.mMiniAppType != 1) {
+        break label273;
+      }
+      long l = getDrawCallCount();
+      this.mDrawCallTv.setText("drawCall: " + l);
+      this.mDrawCallTv.setVisibility(0);
+    }
+    for (;;)
+    {
+      str = TaskMonitorManager.g().getCpuUsageRate();
+      if (this.mCpuRate != null)
+      {
+        this.mCpuRate.setText(str);
+        this.mCpuRate.setVisibility(0);
+      }
+      str = TaskMonitorManager.g().getCpuUsageInfo();
+      if (this.mCpuUsage != null)
+      {
+        this.mCpuUsage.setText(str);
+        this.mCpuUsage.setVisibility(0);
+      }
+      str = "内存 使用率: " + TaskMonitorManager.g().getMemeryUsage() + "%";
+      if (this.mDbCacheTv != null)
+      {
+        this.mDbCacheTv.setText(str);
+        this.mDbCacheTv.setVisibility(0);
+      }
+      return;
+      this.mPageSwitchTv.setText("切换页面耗时: 无页面切换");
+      this.mPageSwitchTv.setVisibility(0);
+      break;
+      label273:
+      this.mDrawCallTv.setVisibility(8);
+    }
+  }
+  
+  public void updateFPSText(IMiniAppContext paramIMiniAppContext, double paramDouble)
+  {
+    this.mMiniAppContext = paramIMiniAppContext;
+    if (this.mFpsTv != null)
+    {
+      paramIMiniAppContext = "帧率: " + String.format("%.0f", new Object[] { Double.valueOf(paramDouble) }) + "fps";
+      this.mFpsTv.setText(paramIMiniAppContext);
+      TaskMonitorManager.g().setCurrentFps(paramDouble);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.ui.MiniAppMonitorInfoView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,45 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.FlowMusic;
+import com.tencent.qphone.base.util.QLog;
 
 class zdl
-  implements View.OnClickListener
+  implements boku
 {
-  zdl(zdj paramzdj, String paramString, Activity paramActivity) {}
+  zdl(zdj paramzdj) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Zdj.a(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
+    String str = zdj.a(this.a).getResources().getString(2131697517);
+    Object localObject = str;
+    if (paramBoolean)
     {
-      paramView = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
-      if ((paramView instanceof NearbyAppInterface)) {
-        ((NearbyAppInterface)paramView).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
+      paramObject = (FlowMusic)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicCache", 2, "onGetSingleMusicInfo flowMusic:" + paramObject.toString());
+      }
+      if ((paramObject.playable == 1) && (!TextUtils.isEmpty(paramObject.url)))
+      {
+        localObject = new zdw();
+        ((zdw)localObject).jdField_b_of_type_JavaLangString = paramObject.songName;
+        ((zdw)localObject).d = paramObject.url;
+        ((zdw)localObject).jdField_b_of_type_Int = 2;
+        ((zdw)localObject).a = String.valueOf(paramObject.songId);
+        this.a.a(12, localObject);
+        return;
+      }
+      localObject = str;
+      if (paramObject.playable != 1) {
+        localObject = zdj.a(this.a).getResources().getString(2131697518);
       }
     }
+    this.a.a(7, localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zdl
  * JD-Core Version:    0.7.0.1
  */

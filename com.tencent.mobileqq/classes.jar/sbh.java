@@ -1,64 +1,89 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.widget.AbsListView;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class sbh
-  implements sai, sak
+  extends RecyclerView.OnScrollListener
+  implements RecyclerView.OnItemTouchListener
 {
-  private static boolean a;
+  private int jdField_a_of_type_Int = 0;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public static void f()
+  private sbh(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    a = false;
-    SharedPreferences.Editor localEditor = bkbq.a(ors.a(), true, false).edit();
-    localEditor.putBoolean("key_read_injoy_fast_web_share_guide", false);
-    localEditor.commit();
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    return false;
   }
   
-  public int a(BaseData paramBaseData)
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return 17;
-  }
-  
-  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560022, null);
-    ((TextView)paramContext.findViewById(2131378831)).setTextSize(0, Utils.dp2px(15.0D));
-    return new sbi(paramContext, paramBaseData);
-  }
-  
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.s == 19;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    if (a) {
-      f();
+    if (paramInt == 0)
+    {
+      adcd.a().a("list_video_feeds", false);
+      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != 0) || (paramInt != 1)) {
+        break label91;
+      }
+    }
+    label91:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        this.b = true;
+        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment);
+      }
+      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 0) && (paramInt == 2)) {
+        this.b = false;
+      }
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+      adcd.a().a("list_video_feeds");
+      break;
     }
   }
   
-  public void e() {}
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    paramRecyclerView = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a();
+    if (paramRecyclerView != null)
+    {
+      paramRecyclerView = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).getChildViewHolder(paramRecyclerView);
+      RecyclerView.ViewHolder localViewHolder1 = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).findViewHolderForLayoutPosition(paramRecyclerView.getLayoutPosition() - 1);
+      RecyclerView.ViewHolder localViewHolder2 = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).findViewHolderForLayoutPosition(paramRecyclerView.getLayoutPosition() + 1);
+      if ((paramRecyclerView instanceof rxo)) {
+        ((rxo)paramRecyclerView).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), true);
+      }
+      if ((localViewHolder1 instanceof rxo)) {
+        ((rxo)localViewHolder1).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), false);
+      }
+      if ((localViewHolder2 instanceof rxo)) {
+        ((rxo)localViewHolder2).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), false);
+      }
+    }
+  }
+  
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sbh
  * JD-Core Version:    0.7.0.1
  */

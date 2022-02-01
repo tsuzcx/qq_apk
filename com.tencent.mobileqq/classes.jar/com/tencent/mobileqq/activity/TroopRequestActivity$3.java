@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import bcwd;
-import bcwe;
+import bgao;
+import bgap;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -14,17 +14,17 @@ class TroopRequestActivity$3
   
   public void run()
   {
-    bcwd localbcwd = bcwe.a(BaseApplication.getContext()).a(this.this$0, Long.toString(this.a.dwGroupClassExt));
-    if (localbcwd != null)
+    bgao localbgao = bgap.a(BaseApplication.getContext()).a(this.this$0, Long.toString(this.a.dwGroupClassExt));
+    if (localbgao != null)
     {
-      this.this$0.i = localbcwd.a();
+      this.this$0.i = localbgao.a();
       ThreadManager.getUIHandler().post(new TroopRequestActivity.3.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRequestActivity.3
  * JD-Core Version:    0.7.0.1
  */

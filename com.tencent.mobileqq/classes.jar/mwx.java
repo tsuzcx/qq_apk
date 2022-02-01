@@ -1,27 +1,37 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.qav.QavDef.MultiUserInfo;
+import java.util.List;
 
-public class mwx
-  implements View.OnTouchListener
+public abstract class mwx
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      mww.a(paramView, 0.5F);
-      continue;
-      mww.a(paramView, 1.0F);
-    }
-  }
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo) {}
+  
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
+  
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean, int paramInt) {}
+  
+  public void a(List<QavDef.MultiUserInfo> paramList) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void b(QavDef.MultiUserInfo paramMultiUserInfo) {}
+  
+  public void b(boolean paramBoolean, long paramLong, int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mwx
  * JD-Core Version:    0.7.0.1
  */

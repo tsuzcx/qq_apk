@@ -1,52 +1,50 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class afia
-  extends baqn
+  implements bkhw
 {
-  public static final String a(int paramInt)
-  {
-    return aliu.d + paramInt + "/panelGif.gif";
-  }
+  public afia(TroopAssisSettingActivity paramTroopAssisSettingActivity, int paramInt, TroopInfo paramTroopInfo, bkho parambkho) {}
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadStarted();
-    }
-    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof Integer)))
+    switch (paramInt)
     {
-      paramDownloadParams = (Integer)paramDownloadParams.tag;
-      paramOutputStream = new File(a(paramDownloadParams.intValue()));
-      if (paramOutputStream.exists())
+    default: 
+      paramInt = -1;
+      if (this.jdField_a_of_type_Int != paramInt)
       {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
+        if (!bgnt.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getActivity())) {
+          break label218;
         }
-        return paramOutputStream;
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Bgrs.b.clear();
+        awhv.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, paramInt);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Bgrs.c.put(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, Boolean.valueOf(true));
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Amfu.notifyDataSetChanged();
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.b();
+        awhv.a().c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, "P_CliOper", "Grp_msg", "", "set_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, String.valueOf(paramInt - 1), "", "");
       }
-      paramOutputStream.getParentFile().mkdirs();
-      if ((BaseApplicationImpl.sApplication != null) && (!bdin.g(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
-        paramURLDrawableHandler.onFileDownloadFailed(0);
-      }
-      paramDownloadParams = new beae("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramDownloadParams + "/preview.gif", paramOutputStream);
-      paramDownloadParams.b = 1;
-      paramDownloadParams.p = false;
-      if (beag.a(paramDownloadParams, null) == 0)
-      {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
-        }
-        return paramOutputStream;
-      }
+      break;
     }
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadFailed(0);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      paramInt = 1;
+      break;
+      paramInt = 4;
+      break;
+      paramInt = 2;
+      break;
+      paramInt = 3;
+      break;
+      label218:
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getActivity(), 2131693948, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getTitleBarHeight());
     }
-    return null;
   }
 }
 

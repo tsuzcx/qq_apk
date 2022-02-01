@@ -1,22 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acug
-  implements bhuk
+  implements View.OnClickListener
 {
-  public acug(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bhuf parambhuf) {}
+  public acug(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bhuf.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "P_CliOper", "Grp_discuss", "", "0X80040ED", "0X80040ED", 0, 0, "", "", "", "");
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006623", "0X8006623", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.f();
+    GdtVideoImaxFragment.a(this.a);
+    GdtVideoImaxFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

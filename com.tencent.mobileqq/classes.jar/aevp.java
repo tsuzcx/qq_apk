@@ -1,123 +1,99 @@
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.List;
 
 public class aevp
-  extends Drawable
+  extends amck
 {
-  protected int a;
-  aevq jdField_a_of_type_Aevq;
-  Resources jdField_a_of_type_AndroidContentResResources;
-  protected Paint a;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  protected Object a;
-  protected int b = 50;
+  private List<aevm> jdField_a_of_type_JavaUtilList;
   
-  public aevp(Resources paramResources)
+  public aevp(List<aevm> paramList)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
+    super(paramList, paramList.app, paramList.jdField_a_of_type_ComTencentWidgetXListView, 1, true);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public void a()
+  public int getCount()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.b = 50;
-  }
-  
-  public void a(aevq paramaevq)
-  {
-    this.jdField_a_of_type_Aevq = paramaevq;
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof aevr)) && (((aevr)this.jdField_a_of_type_JavaLangObject).a != null) && (this.jdField_a_of_type_Int == 1) && (((aevr)this.jdField_a_of_type_JavaLangObject).a.equals(paramString))) {
-      return;
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    a();
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangObject = new aevr(this, paramString);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void a(String[] paramArrayOfString, int paramInt)
+  public Object getItem(int paramInt)
   {
-    if (paramArrayOfString == null) {}
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559624, paramViewGroup, false);
+      paramView = new aevs();
+      paramView.c = ((ImageView)localView.findViewById(2131368138));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371539));
+      localView.setTag(paramView);
+      localObject = getItem(paramInt);
+      if (localObject != null)
+      {
+        localObject = (aevm)localObject;
+        if (localObject != null)
+        {
+          paramView.jdField_a_of_type_JavaLangString = ((aevm)localObject).a.getUin();
+          paramView.jdField_a_of_type_Aevm = ((aevm)localObject);
+          paramView.c.setImageBitmap(super.a(paramView.jdField_a_of_type_JavaLangString, 1, (byte)0));
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((aevm)localObject).a.name);
+          if (((aevm)localObject).a.certifiedGrade <= 0L) {
+            break label284;
+          }
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getResources().getDrawable(2130841741);
+            this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
+            ThemeUtil.setThemeFilter(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ThemeUtil.curThemeId);
+          }
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
+        }
+      }
+    }
     for (;;)
     {
-      return;
-      try
-      {
-        if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_JavaLangObject != null) && (!(this.jdField_a_of_type_JavaLangObject instanceof aevr)))
-        {
-          boolean bool = Arrays.equals((String[])this.jdField_a_of_type_JavaLangObject, paramArrayOfString);
-          if (bool) {
-            continue;
-          }
-        }
+      if (AppSetting.c) {
+        localView.setContentDescription(paramView.jdField_a_of_type_AndroidWidgetTextView.getText());
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("VipPendantDrawable", 1, "setPngPaths, exception=" + MsfSdkUtils.getStackTraceString(localException));
-        }
-      }
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (aevs)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label284:
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
     }
-    a();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangObject = paramArrayOfString;
-    this.b = paramInt;
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_Int == -1) {}
-    Bitmap localBitmap;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Aevq == null);
-      localBitmap = this.jdField_a_of_type_Aevq.a();
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    paramCanvas.drawBitmap(localBitmap, null, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-      invalidateSelf();
-    }
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
-    invalidateSelf();
-  }
-  
-  public void setDither(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
-    invalidateSelf();
   }
 }
 

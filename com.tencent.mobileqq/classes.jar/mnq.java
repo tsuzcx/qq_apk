@@ -1,21 +1,28 @@
-import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.qphone.base.util.QLog;
 
-public class mnq
-  implements luv
+final class mnq
+  implements mna
 {
-  public mnq(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void a()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].a(Boolean.valueOf(true));
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
+    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onError " + paramInt);
+    mno.a(false, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onStart " + paramString);
+  }
+  
+  public void b(String paramString)
+  {
+    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onFinish " + paramString);
+    mno.a(true, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mnq
  * JD-Core Version:    0.7.0.1
  */

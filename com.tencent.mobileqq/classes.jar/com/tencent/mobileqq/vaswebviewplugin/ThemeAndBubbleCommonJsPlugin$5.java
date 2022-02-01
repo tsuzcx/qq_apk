@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import begz;
+import bhod;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import java.io.File;
 
@@ -25,7 +25,7 @@ class ThemeAndBubbleCommonJsPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeAndBubbleCommonJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

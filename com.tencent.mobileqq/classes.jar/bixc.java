@@ -1,33 +1,71 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.widget.QfavJumpActivity;
-import java.io.InputStream;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
 
 public class bixc
-  implements DialogInterface.OnClickListener
+  extends AsyncTask<Void, Long, Boolean>
 {
-  public bixc(QfavJumpActivity paramQfavJumpActivity, String paramString, InputStream paramInputStream, long paramLong) {}
+  Activity jdField_a_of_type_AndroidAppActivity;
+  ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bixc(Activity paramActivity)
   {
-    try
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public bixc(Activity paramActivity, String paramString)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected Boolean a(Void... paramVarArgs)
+  {
+    return Boolean.valueOf(false);
+  }
+  
+  protected void a()
+  {
+    if ((this.jdField_a_of_type_AndroidAppProgressDialog != null) && (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+    }
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    super.onPostExecute(paramBoolean);
+    a();
+    if (paramBoolean.booleanValue())
     {
-      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
+      if ((bixb.a()) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        biuh.a("311", this.jdField_a_of_type_JavaLangString, "1101070898");
+      }
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("qqfav|QfavJumpActivity", 2, "copy file error", paramDialogInterface);
-      }
-      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.a());
+    biti.a().a(anni.a(2131715697), 1);
+  }
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
+    a();
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this.jdField_a_of_type_AndroidAppActivity);
+    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
+      this.jdField_a_of_type_AndroidAppProgressDialog.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bixc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,100 +1,81 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqpim.QQPimBridgeActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class biym
+class biym
+  extends Handler
 {
-  public static Intent a(Context paramContext)
+  public biym(biyj parambiyj, Looper paramLooper)
   {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpim");
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
+    super(paramLooper);
   }
   
-  public static Intent a(Context paramContext, String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    try
+    String str1 = null;
+    bisy.b("PCPushProxy", "handleMessage msg.what = " + paramMessage.what + ", msg.obj = " + paramMessage.obj);
+    String str2;
+    biyl localbiyl;
+    switch (paramMessage.what)
     {
-      if (localPackageManager.getPackageInfo("com.tencent.qqpim", 1).versionCode < 1171)
+    default: 
+      str2 = (String)paramMessage.obj;
+      if (str2 != null)
       {
-        paramContext = a(paramContext);
-        paramContext.putExtra("big_brother_source_key", "biz_src_qqpim");
-        return paramContext;
+        localbiyl = (biyl)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
+        if (localbiyl == null) {
+          bisy.e("PCPushProxy", "handleMessage get entry = null, key = " + str2);
+        }
       }
-      paramContext = new Intent();
-      paramContext.setPackage("com.tencent.qqpim");
-      paramContext.setAction("com.tencent.qqpim.action_open_qqpim");
-      paramContext.putExtra("product_package", "com.tencent.mobileqq");
-      paramContext.putExtra("model_name", paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        paramContext.putExtra("account_name", paramString2);
+      break;
+    }
+    do
+    {
+      do
+      {
+        return;
+        biuh.a("200", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
+        return;
+        biuh.a("100", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
+        return;
+        if (localbiyl.jdField_b_of_type_Int != 1) {
+          str1 = localbiyl.jdField_b_of_type_JavaLangString.substring(localbiyl.jdField_b_of_type_JavaLangString.indexOf("#") + 1);
+        }
+        for (;;)
+        {
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 1: 
+            this.a.jdField_a_of_type_Biyi.a(this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+            return;
+            str1 = localbiyl.jdField_b_of_type_JavaLangString;
+            continue;
+            bisy.e("PCPushProxy", "handleMessage get key = null");
+            localbiyl = null;
+          }
+        }
+      } while (localbiyl == null);
+      if (localbiyl.c.startsWith("ANDROIDQQ.PCPUSH.")) {
+        biuh.a("100", localbiyl.c, str1);
       }
-      paramContext.setFlags(67108864);
-      paramContext.setFlags(268435456);
-      paramContext.putExtra("big_brother_source_key", "biz_src_qqpim");
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    boolean bool = true;
-    paramContext = paramContext.getPackageManager();
-    try
-    {
-      paramContext = paramContext.getPackageInfo("com.tencent.qqpim", 1);
-      if (paramContext == null) {
-        bool = false;
-      }
-      return bool;
-    }
-    catch (Throwable paramContext)
-    {
       for (;;)
       {
-        paramContext.printStackTrace();
-        paramContext = null;
+        this.a.jdField_a_of_type_Biyi.a(localbiyl);
+        return;
+        biuh.a("100", "ANDROIDQQ.PCPUSH." + localbiyl.c, str1);
       }
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Bundle paramBundle)
-  {
-    if (a(paramActivity))
-    {
-      azqs.b(paramQQAppInterface, "CliOper", "", "", "0X8006711", "0X8006711", 0, 0, "", "", "", "");
-      paramActivity.startActivity(a(paramActivity, biyg.s, null));
+      this.a.jdField_a_of_type_Biyi.a(str2);
       return;
-    }
-    azqs.b(paramQQAppInterface, "CliOper", "", "", "0X8006712", "0X8006712", 0, 0, "", "", "", "");
-    paramQQAppInterface = new Intent();
-    paramQQAppInterface.setClass(paramActivity, QQPimBridgeActivity.class);
-    paramQQAppInterface.putExtras(paramBundle);
-    paramActivity.startActivity(paramQQAppInterface);
+    } while (localbiyl == null);
+    biuh.a("500", localbiyl.c, str1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biym
  * JD-Core Version:    0.7.0.1
  */

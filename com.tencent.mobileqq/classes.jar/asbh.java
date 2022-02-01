@@ -1,17 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.forward.ForwardPhotoOption.3;
-
-public class asbh
-  implements View.OnTouchListener
+public abstract interface asbh
 {
-  public asbh(ForwardPhotoOption.3 param3) {}
+  public abstract int a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract String a();
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
 }
 
 

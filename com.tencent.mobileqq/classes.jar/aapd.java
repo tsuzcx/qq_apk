@@ -1,6 +1,18 @@
-public abstract interface aapd
+import com.tencent.biz.troop.VideoCombineHelper.4;
+import com.tencent.qphone.base.util.QLog;
+
+public class aapd
+  extends aapz
 {
-  public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public aapd(VideoCombineHelper.4 param4)
+  {
+    super(param4.this$0);
+  }
+  
+  public void b(aapy paramaapy)
+  {
+    QLog.d(".troop.VideoCombineHelper", 2, "");
+  }
 }
 
 

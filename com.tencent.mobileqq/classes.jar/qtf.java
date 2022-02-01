@@ -1,83 +1,61 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.AddVideoRsp;
-import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.RspBody;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-final class qtf
-  extends nac
+public class qtf
+  extends qqt
 {
-  qtf(qti paramqti) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public qtf(Context paramContext, aobu paramaobu, snh paramsnh)
   {
-    paramBundle = new ArrayList();
-    QLog.i("RIJUGC.PublishVideoHelper", 1, "publishVideo, errorCode=" + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      Object localObject = new oidb_0xe2a.RspBody();
-      try
-      {
-        ((oidb_0xe2a.RspBody)localObject).mergeFrom(paramArrayOfByte);
-        if ((!((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.has()) || (!((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.rpt_rowkey_list.has())) {
-          break label251;
-        }
-        paramArrayOfByte = ((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.rpt_rowkey_list.get().iterator();
-        while (paramArrayOfByte.hasNext())
-        {
-          localObject = (ByteStringMicro)paramArrayOfByte.next();
-          if (((ByteStringMicro)localObject).toStringUtf8().isEmpty()) {
-            break label240;
-          }
-          paramBundle.add(((ByteStringMicro)localObject).toStringUtf8());
-        }
-        paramArrayOfByte = ors.a();
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RIJUGC.PublishVideoHelper", 2, "publishVideo" + paramArrayOfByte.toString());
-        }
-      }
+    super(paramContext, paramaobu, paramsnh);
+  }
+  
+  public qqt a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g().h();
+  }
+  
+  public qqt d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    else
-    {
-      label180:
-      if ((paramArrayOfByte != null) && (bkbq.k(paramArrayOfByte)))
-      {
-        if ((paramInt != 0) || (paramBundle.size() <= 0)) {
-          break label262;
-        }
-        QQToast.a(BaseApplicationImpl.getContext(), 0, "视频发表成功", 0).a();
-      }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pya)) && (pha.s(((pya)this.jdField_a_of_type_JavaLangObject).a()))) {
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(afur.a(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
     }
     for (;;)
     {
-      if (this.a != null) {
-        this.a.a(paramBundle);
+      if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentBig))) {
+        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Qqs);
       }
-      return;
-      label240:
-      QLog.i("RIJUGC.PublishVideoHelper", 1, "publishVideo, rowKey isEmpty");
-      break;
-      label251:
-      QLog.i("RIJUGC.PublishVideoHelper", 1, "publishVideo, not has rpt_rowkey_list");
-      break label180;
-      label262:
-      QQToast.a(BaseApplicationImpl.getContext(), 0, "视频发表失败，errorCode=" + paramInt, 0).a();
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      }
+      a(localLinearLayout);
+      return this;
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(afur.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
     }
+  }
+  
+  public qqt e()
+  {
+    return null;
+  }
+  
+  public qqt g()
+  {
+    this.jdField_a_of_type_Qqs = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qtf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.dataline.activities.LiteMutiPicViewerActivity;
-import com.dataline.util.widget.AsyncImageView;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.dataline.activities.LiteAdvanceActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class cn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public AsyncImageView a;
-  public DataLineMsgRecord a;
+  public cn(LiteAdvanceActivity paramLiteAdvanceActivity) {}
   
-  public cn(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    LiteAdvanceActivity.d(this.a, paramBoolean);
+    LiteAdvanceActivity.b(this.a, LiteAdvanceActivity.b(this.a));
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

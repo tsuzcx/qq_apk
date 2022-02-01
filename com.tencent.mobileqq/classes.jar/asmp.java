@@ -1,17 +1,12 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class asmp
-  implements View.OnTouchListener
+final class asmp
+  implements DialogInterface.OnClickListener
 {
-  public asmp(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    paramDialogInterface.dismiss();
   }
 }
 

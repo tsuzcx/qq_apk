@@ -1,22 +1,29 @@
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aapo
-  extends aapr
+class aapo
+  implements aapi
 {
-  public int a;
-  public View a;
-  public int b;
-  public View b;
-  public int c;
-  public View c;
-  public int d;
-  public View d;
-  public int e;
-  public View e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
+  aapo(aapn paramaapn, long paramLong) {}
+  
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
+      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
+    {
+      this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapk.e = paramString1;
+      this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapl.a.b(this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapl);
+      this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapl.b();
+      return;
+    }
+    this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapl.d = paramString2;
+    this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapl.a.a(this.jdField_a_of_type_Aapn.a.jdField_a_of_type_Aapl);
+  }
 }
 
 

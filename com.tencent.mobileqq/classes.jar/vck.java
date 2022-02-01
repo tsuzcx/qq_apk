@@ -1,33 +1,24 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqcircle.widgets.QCircleTitleFollowView;
 
-public class vck
-  extends vcb
+class vck
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public String a;
-  public List<VideoCollectionItem> a;
-  public String b;
-  public boolean e = true;
+  vck(vcb paramvcb) {}
   
-  public vck(String paramString, ErrorMessage paramErrorMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "GetCollectionListEvent{isEnd=" + this.jdField_a_of_type_Boolean + ", isUpdated=" + this.e + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isRefreshFromLoadMore=" + this.d + ", collectionList=" + this.jdField_a_of_type_JavaUtilList + ", totalVideoCount=" + this.jdField_a_of_type_Int + ", context='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    super.onAnimationEnd(paramAnimator);
+    vcb.a(this.a, false);
+    vcb.a(this.a).setVisibility(8);
+    vcb.a(this.a).getLayoutParams().width = bgtn.a(80.0F);
+    vcb.a(this.a).setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vck
  * JD-Core Version:    0.7.0.1
  */

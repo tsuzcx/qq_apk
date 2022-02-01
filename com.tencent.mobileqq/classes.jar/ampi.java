@@ -1,37 +1,10 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-
-public class ampi
-  extends oxe
-  implements owq, owr, ows
+class ampi
 {
-  public void a() {}
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    c();
-  }
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
-  {
-    c();
-  }
-  
-  public void b()
-  {
-    c();
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    c();
-  }
-  
-  public void c() {}
+  private static ampb a = new ampb("cm_game_module");
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampi
  * JD-Core Version:    0.7.0.1
  */

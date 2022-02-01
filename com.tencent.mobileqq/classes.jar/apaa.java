@@ -1,6 +1,11 @@
 public class apaa
 {
-  public static String a = "true";
+  public int a = 3000;
+  
+  public String toString()
+  {
+    return "ARCloudRecogReqObjectClassifyInfo{timeout = " + this.a + '}';
+  }
 }
 
 

@@ -1,32 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import qqcircle.TaskCenterReader.TaskListRsp;
 
-public class vqm
-  extends Subscriber.SingleEventSubscriberNoRefect<veb>
+class vqm
+  implements zxa<TaskCenterReader.TaskListRsp>
 {
-  vqi a;
+  vqm(vql paramvql) {}
   
-  public vqm(@NonNull vqi paramvqi)
+  public void a(boolean paramBoolean, long paramLong, String paramString, TaskCenterReader.TaskListRsp paramTaskListRsp)
   {
-    this.a = paramvqi;
-  }
-  
-  protected void a(@NonNull veb paramveb)
-  {
-    if (paramveb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      this.a.a(paramveb.jdField_a_of_type_JavaLangString);
+    if (paramTaskListRsp != null) {
+      vog.a().a((ArrayList)paramTaskListRsp.taskRecords.get());
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return veb.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vqm
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,49 @@ class MobileQQ$3
 {
   MobileQQ$3(MobileQQ paramMobileQQ) {}
   
+  private boolean isAllActEmpty()
+  {
+    Iterator localIterator;
+    WeakReference localWeakReference;
+    if (!MobileQQ.access$500(this.this$0).isEmpty())
+    {
+      localIterator = MobileQQ.access$500(this.this$0).iterator();
+      while (localIterator.hasNext())
+      {
+        localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference != null) && (!((BaseActivity)localWeakReference.get()).isFinishing())) {
+          return false;
+        }
+      }
+    }
+    if (!this.this$0.appActivities.isEmpty())
+    {
+      localIterator = this.this$0.appActivities.iterator();
+      while (localIterator.hasNext())
+      {
+        localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference != null) && (!((AppActivity)localWeakReference.get()).isFinishing())) {
+          return false;
+        }
+      }
+    }
+    if (!this.this$0.otherTypeActivitys.isEmpty())
+    {
+      localIterator = this.this$0.otherTypeActivitys.iterator();
+      while (localIterator.hasNext())
+      {
+        localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference != null) && (!((Activity)localWeakReference.get()).isFinishing())) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  
   public void run()
   {
-    if ((MobileQQ.access$500(this.this$0).isEmpty()) && (this.this$0.appActivities.isEmpty()) && (this.this$0.otherTypeActivitys.isEmpty()))
+    if (isAllActEmpty())
     {
       localObject1 = new Intent("mqq.intent.action.EXIT_" + MobileQQ.processName);
       this.this$0.sendBroadcast((Intent)localObject1);

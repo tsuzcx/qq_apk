@@ -1,41 +1,22 @@
 public final class gz
 {
-  private final int jdField_a_of_type_Int;
-  private final gy[] jdField_a_of_type_ArrayOfGy;
+  private final int a;
+  private final int b;
   
-  gz(int paramInt, gy... paramVarArgs)
+  gz(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfGy = paramVarArgs;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public gy[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfGy;
+    return this.a;
   }
   
   public int b()
   {
-    int i = 0;
-    gy[] arrayOfgy = this.jdField_a_of_type_ArrayOfGy;
-    int k = arrayOfgy.length;
-    int j = 0;
-    while (i < k)
-    {
-      j += arrayOfgy[i].a();
-      i += 1;
-    }
-    return j;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int * b();
+    return this.b;
   }
 }
 

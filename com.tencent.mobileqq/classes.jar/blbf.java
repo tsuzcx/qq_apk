@@ -1,12 +1,6 @@
-class blbf
-  implements blcv
+public abstract interface blbf
 {
-  blbf(blbe paramblbe) {}
-  
-  public void a(blag paramblag)
-  {
-    blbe.a(this.a, paramblag);
-  }
+  public abstract blbg a(bhod parambhod, blbc paramblbc);
 }
 
 

@@ -1,28 +1,21 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atle
-  extends BaseAdapter
+final class atle
+  implements View.OnClickListener
 {
-  public int getCount()
-  {
-    return 0;
-  }
+  atle(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
-  public Object getItem(int paramInt)
+  public void onClick(View paramView)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, true);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

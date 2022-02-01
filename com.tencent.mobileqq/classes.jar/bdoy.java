@@ -1,294 +1,59 @@
-import QQService.EVIPSPEC;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class bdoy
-  implements View.OnTouchListener
+class bdoy
+  implements bdow
 {
-  private int jdField_a_of_type_Int;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private final String jdField_b_of_type_JavaLangString;
-  private int c;
+  private IBinder a;
   
-  private bdoy(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  bdoy(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    Friends localFriends = ((alto)paramQQAppInterface.getManager(51)).e(paramString1);
-    int i;
-    if (localFriends != null)
-    {
-      if (!bdow.a(localFriends.nameplateVipType)) {
-        break label166;
-      }
-      paramQQAppInterface = bdox.a(localFriends.nameplateVipType);
-      if (!bdow.b(localFriends.grayNameplateFlag)) {
-        break label116;
-      }
-      i = 1;
-      this.c = i;
-      this.jdField_a_of_type_Int = paramQQAppInterface.jdField_a_of_type_Int;
-      if ((paramQQAppInterface != bdox.f) && (paramQQAppInterface != bdox.g)) {
-        break label122;
-      }
-      this.jdField_b_of_type_Int = localFriends.bigClubTemplateId;
-      this.jdField_a_of_type_Boolean = true;
-    }
-    label116:
-    label122:
-    do
-    {
-      do
-      {
-        return;
-        i = 0;
-        break;
-        if ((paramQQAppInterface == bdox.d) || (paramQQAppInterface == bdox.e))
-        {
-          this.jdField_b_of_type_Int = localFriends.superVipTemplateId;
-          return;
-        }
-      } while ((paramQQAppInterface != bdox.b) && (paramQQAppInterface != bdox.c));
-      this.jdField_b_of_type_Int = 0;
-      return;
-      i = VipUtils.a(paramQQAppInterface, paramString1);
-      paramString2 = null;
-      if (i >> 8 == 3) {
-        paramString2 = EVIPSPEC.E_SP_BIGCLUB;
-      }
-      while (paramString2 == EVIPSPEC.E_SP_BIGCLUB)
-      {
-        this.jdField_a_of_type_Int = VipUtils.a(paramQQAppInterface, paramString1, EVIPSPEC.E_SP_BIGCLUB);
-        this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int >> 8 | (this.jdField_a_of_type_Int & 0xF) << 8);
-        this.jdField_b_of_type_Int = localFriends.bigClubTemplateId;
-        this.jdField_a_of_type_Boolean = true;
-        return;
-        if (i >> 8 == 1) {
-          paramString2 = EVIPSPEC.E_SP_QQVIP;
-        } else if (i >> 8 == 2) {
-          paramString2 = EVIPSPEC.E_SP_SUPERVIP;
-        }
-      }
-      if (paramString2 == EVIPSPEC.E_SP_SUPERVIP)
-      {
-        this.jdField_a_of_type_Int = VipUtils.a(paramQQAppInterface, paramString1, EVIPSPEC.E_SP_SUPERVIP);
-        this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int >> 8 | (this.jdField_a_of_type_Int & 0xF) << 8);
-        this.jdField_b_of_type_Int = localFriends.superVipTemplateId;
-        return;
-      }
-    } while (paramString2 != EVIPSPEC.E_SP_QQVIP);
-    label166:
-    this.jdField_a_of_type_Int = VipUtils.a(paramQQAppInterface, paramString1, EVIPSPEC.E_SP_QQVIP);
-    this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int >> 8 | (this.jdField_a_of_type_Int & 0xF) << 8);
-    this.jdField_b_of_type_Int = 0;
+    this.a = paramIBinder;
   }
   
-  public static bdoy a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public IBinder asBinder()
   {
-    return new bdoy(paramQQAppInterface, paramString1, paramString2);
+    return this.a;
   }
   
-  public void a()
+  public void onComplete(String paramString, int paramInt)
   {
-    String str = this.jdField_b_of_type_JavaLangString;
-    int i = this.jdField_b_of_type_Int;
-    if (this.c != 0) {}
-    for (boolean bool = true;; bool = false)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      bdow.a(str, i, bool);
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
+      localParcel1.writeString(paramString);
+      localParcel1.writeInt(paramInt);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onProgress(String paramString, long paramLong1, long paramLong2)
   {
-    if (!bdwt.a.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "namePlate_UrlConfig")) {
-      bdwt.a.download(null, "namePlate_UrlConfig", null, false);
-    }
-    Object localObject1;
-    int i;
-    boolean bool;
-    if ((paramMotionEvent == null) || (paramMotionEvent.getAction() == 1))
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      paramMotionEvent = bdwt.a.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
-      localObject1 = this.jdField_b_of_type_JavaLangString;
-      i = this.jdField_b_of_type_Int;
-      if (this.c == 0) {
-        break label234;
-      }
-      bool = true;
-      bdow.b((String)localObject1, i, bool);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      bool = this.jdField_a_of_type_JavaLangString.equals(localObject1);
-      if ((paramMotionEvent == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        break label339;
-      }
-      if (!"VIA_SETTINGME".equals(this.jdField_b_of_type_JavaLangString)) {
-        break label240;
-      }
-      paramMotionEvent = paramMotionEvent.d;
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
+      localParcel1.writeString(paramString);
+      localParcel1.writeLong(paramLong1);
+      localParcel1.writeLong(paramLong2);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    for (;;)
+    finally
     {
-      label142:
-      if (!TextUtils.isEmpty(paramMotionEvent))
-      {
-        if (bool) {
-          break label748;
-        }
-        paramMotionEvent = paramMotionEvent.replace("{uin}", this.jdField_a_of_type_JavaLangString);
-      }
-      label234:
-      label748:
-      for (;;)
-      {
-        Object localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
-        ((Intent)localObject2).putExtra("portraitOnly", true);
-        ((Intent)localObject2).putExtra("uin", (String)localObject1);
-        ((Intent)localObject2).putExtra("hide_operation_bar", true);
-        ((Intent)localObject2).putExtra("hide_more_button", true);
-        VasWebviewUtil.openQQBrowserWithoutAD(paramView.getContext(), paramMotionEvent, 256L, (Intent)localObject2, false, -1);
-        return true;
-        bool = false;
-        break;
-        label240:
-        if ("VIA_PROFILECARD".equals(this.jdField_b_of_type_JavaLangString))
-        {
-          if (bool)
-          {
-            paramMotionEvent = paramMotionEvent.e;
-            break label142;
-          }
-          paramMotionEvent = paramMotionEvent.g;
-          break label142;
-        }
-        if ("VIA_AIO_TITLE".equals(this.jdField_b_of_type_JavaLangString))
-        {
-          if (bool)
-          {
-            paramMotionEvent = paramMotionEvent.f;
-            break label142;
-          }
-          paramMotionEvent = paramMotionEvent.h;
-          break label142;
-        }
-        if (!"VIA_AIO_CHATSETTINGS".equals(this.jdField_b_of_type_JavaLangString)) {
-          break label751;
-        }
-        if (bool)
-        {
-          paramMotionEvent = paramMotionEvent.i;
-          break label142;
-        }
-        paramMotionEvent = paramMotionEvent.j;
-        break label142;
-        if ("VIA_SETTINGME".equals(this.jdField_b_of_type_JavaLangString))
-        {
-          if (this.jdField_a_of_type_Boolean)
-          {
-            VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, "cty");
-            return true;
-          }
-          VipUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), "cty");
-          return true;
-        }
-        if ("VIA_PROFILECARD".equals(this.jdField_b_of_type_JavaLangString))
-        {
-          if (this.jdField_a_of_type_Boolean)
-          {
-            paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-            localObject1 = paramView.getContext();
-            i = this.jdField_a_of_type_Int;
-            localObject2 = this.jdField_a_of_type_JavaLangString;
-            if (bool) {}
-            for (paramView = "zlk";; paramView = "zlkkr")
-            {
-              VipUtils.a(paramMotionEvent, (Context)localObject1, i, (String)localObject2, paramView);
-              return true;
-            }
-          }
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          localObject1 = paramView.getContext();
-          if (bool) {}
-          for (paramView = "zlk";; paramView = "zlkkr")
-          {
-            VipUtils.b(paramMotionEvent, (Context)localObject1, paramView);
-            return true;
-          }
-        }
-        if ("VIA_AIO_TITLE".equals(this.jdField_b_of_type_JavaLangString))
-        {
-          if (this.jdField_a_of_type_Boolean)
-          {
-            paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-            localObject1 = paramView.getContext();
-            i = this.jdField_a_of_type_Int;
-            localObject2 = this.jdField_a_of_type_JavaLangString;
-            if (bool) {}
-            for (paramView = "ctoc";; paramView = "ctockr")
-            {
-              VipUtils.a(paramMotionEvent, (Context)localObject1, i, (String)localObject2, paramView);
-              return true;
-            }
-          }
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          localObject1 = paramView.getContext();
-          if (bool) {}
-          for (paramView = "ctoc";; paramView = "ctockr")
-          {
-            VipUtils.b(paramMotionEvent, (Context)localObject1, paramView);
-            return true;
-          }
-        }
-        if ("VIA_AIO_CHATSETTINGS".equals(this.jdField_b_of_type_JavaLangString))
-        {
-          if (this.jdField_a_of_type_Boolean)
-          {
-            paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-            localObject1 = paramView.getContext();
-            i = this.jdField_a_of_type_Int;
-            localObject2 = this.jdField_a_of_type_JavaLangString;
-            if (bool) {}
-            for (paramView = "ctocset";; paramView = "ctocsetkr")
-            {
-              VipUtils.a(paramMotionEvent, (Context)localObject1, i, (String)localObject2, paramView);
-              return true;
-            }
-          }
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          localObject1 = paramView.getContext();
-          if (bool) {}
-          for (paramView = "ctocset";; paramView = "ctocsetkr")
-          {
-            VipUtils.b(paramMotionEvent, (Context)localObject1, paramView);
-            return true;
-          }
-        }
-        if (this.jdField_a_of_type_Boolean)
-        {
-          VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, "unknow");
-          return true;
-        }
-        VipUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), "unknow");
-        return true;
-      }
-      label339:
-      label751:
-      paramMotionEvent = null;
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
 }

@@ -1,33 +1,62 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.JNICallCenter.DataPoint;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-public final class zjo
-  implements Parcelable.Creator<DataPoint>
+public class zjo
+  extends zqf
 {
-  public DataPoint a(Parcel paramParcel)
+  public View a(Context paramContext, View paramView, bkot parambkot, int paramInt)
   {
-    DataPoint localDataPoint = new DataPoint();
-    localDataPoint.mDin = paramParcel.readLong();
-    localDataPoint.mSendUinType = paramParcel.readInt();
-    localDataPoint.mApiName = paramParcel.readString();
-    localDataPoint.mProperityId = paramParcel.readInt();
-    localDataPoint.mValueType = paramParcel.readString();
-    localDataPoint.mValue = paramParcel.readString();
-    localDataPoint.mRetCode = paramParcel.readInt();
-    localDataPoint.mErrMsg = paramParcel.readString();
-    localDataPoint.mSeq = paramParcel.readString();
-    return localDataPoint;
+    parambkot.a = new bkou[this.b];
+    paramInt = 0;
+    while (paramInt < this.b)
+    {
+      parambkot.a[paramInt] = new bkou();
+      parambkot.a[paramInt].jdField_a_of_type_Int = -1;
+      parambkot.a[paramInt].c = 0;
+      parambkot.a[paramInt].jdField_a_of_type_AndroidViewView = null;
+      paramInt += 1;
+    }
+    parambkot.g = paramView.findViewById(2131369536);
+    return paramView;
   }
   
-  public DataPoint[] a(int paramInt)
+  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
   {
-    return new DataPoint[paramInt];
+    paramArrayOfbkou[0].jdField_a_of_type_Int = 0;
+    paramArrayOfbkou[0].b = 0;
+    paramArrayOfbkou[1].jdField_a_of_type_Int = -1;
+    paramArrayOfbkou[1].b = -1;
+    String str = QQStoryContext.a().a();
+    if ((this.a.a) || (((TroopStoryItemInfo)paramObject).uin.equals(str)))
+    {
+      paramArrayOfbkou[1].jdField_a_of_type_Int = 1;
+      paramArrayOfbkou[1].b = 1;
+    }
+  }
+  
+  protected void a(ViewGroup paramViewGroup, View paramView, bkou parambkou, int paramInt)
+  {
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+    if (localLayoutParams == null) {
+      paramView.setLayoutParams(new LinearLayout.LayoutParams(parambkou.c, parambkou.d));
+    }
+    for (;;)
+    {
+      paramViewGroup.addView(paramView, paramInt);
+      return;
+      localLayoutParams.width = parambkou.c;
+      localLayoutParams.height = parambkou.d;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zjo
  * JD-Core Version:    0.7.0.1
  */

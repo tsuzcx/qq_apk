@@ -1,26 +1,67 @@
-import com.tencent.mobileqq.data.Emoticon;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.util.LruCache;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 class apsu
-  implements aufy<Emoticon>
+  extends Handler
 {
-  apsu(apss paramapss, int paramInt, String paramString) {}
-  
-  public void a(Emoticon paramEmoticon)
+  apsu(apss paramapss, Looper paramLooper)
   {
-    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
-    {
-      this.jdField_a_of_type_Apss.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1000) {
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList.size());
+        paramMessage.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        this.a.a(paramMessage);
       }
     }
+    Object localObject;
+    String str;
     do
     {
+      this.a.jdField_a_of_type_JavaUtilArrayList.removeAll(paramMessage);
+      for (;;)
+      {
+        return;
+        if (paramMessage.what == 1002) {
+          try
+          {
+            localObject = (Bundle)paramMessage.obj;
+            paramMessage = (Bitmap)((Bundle)localObject).getParcelable("bmp");
+            str = ((Bundle)localObject).getString("uin");
+            localObject = ((Bundle)localObject).getString("path");
+            if (paramMessage != null) {
+              this.a.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(str, paramMessage);
+            }
+            Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+            while (localIterator.hasNext())
+            {
+              apsw localapsw = (apsw)localIterator.next();
+              if (localapsw != null) {
+                localapsw.a(str, (String)localObject, paramMessage);
+              }
+            }
+            if (!QLog.isColorLevel()) {}
+          }
+          catch (Exception paramMessage) {}
+        }
+      }
+      QLog.e("NonMainAppHeadLoader", 2, "refreshImg, exception:" + paramMessage.toString());
       return;
-      this.jdField_a_of_type_Apss.a(paramEmoticon);
     } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
+    QLog.d("NonMainAppHeadLoader", 2, "refreshImg, uin:" + str + ", path=" + (String)localObject);
   }
 }
 

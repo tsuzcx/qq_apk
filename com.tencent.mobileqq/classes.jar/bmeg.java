@@ -1,59 +1,35 @@
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.Map.Entry;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
-public class bmeg
-  implements bmei<K, V>, Iterator<Map.Entry<K, V>>
+class bmeg
+  implements bmcw
 {
-  private bmef<K, V> jdField_a_of_type_Bmef;
-  private boolean jdField_a_of_type_Boolean = true;
+  bmeg(bmef parambmef) {}
   
-  public bmeg(bmec parambmec) {}
-  
-  public Map.Entry<K, V> a()
+  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (this.jdField_a_of_type_Boolean)
+    boolean bool = false;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Bmef = bmec.a(this.jdField_a_of_type_Bmec);
-      return this.jdField_a_of_type_Bmef;
-    }
-    if (this.jdField_a_of_type_Bmef != null) {}
-    for (bmef localbmef = this.jdField_a_of_type_Bmef.jdField_a_of_type_Bmef;; localbmef = null)
-    {
-      this.jdField_a_of_type_Bmef = localbmef;
-      break;
-    }
-  }
-  
-  public void a(@NonNull bmef<K, V> parambmef)
-  {
-    if (parambmef == this.jdField_a_of_type_Bmef)
-    {
-      this.jdField_a_of_type_Bmef = this.jdField_a_of_type_Bmef.b;
-      if (this.jdField_a_of_type_Bmef != null) {
-        break label34;
+      paramIntent = bmcg.a(paramFromServiceMsg.getWupBuffer());
+      bmef.a(this.a, paramIntent);
+      bmef.a(this.a, paramIntent, null);
+      bmau.a().a(paramIntent);
+      if (this.a.a != null)
+      {
+        paramFromServiceMsg = this.a.a;
+        if (paramIntent != null) {
+          bool = true;
+        }
+        paramFromServiceMsg.a(bool);
       }
     }
-    label34:
-    for (boolean bool = true;; bool = false)
+    do
     {
-      this.jdField_a_of_type_Boolean = bool;
       return;
-    }
-  }
-  
-  public boolean hasNext()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      if (bmec.a(this.jdField_a_of_type_Bmec) == null) {}
-    }
-    while ((this.jdField_a_of_type_Bmef != null) && (this.jdField_a_of_type_Bmef.jdField_a_of_type_Bmef != null))
-    {
-      return true;
-      return false;
-    }
-    return false;
+      bmef.a(this.a, null, null);
+    } while (this.a.a == null);
+    this.a.a.a(false);
   }
 }
 

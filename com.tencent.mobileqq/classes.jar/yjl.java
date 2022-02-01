@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
-
-public class yjl
-  implements View.OnClickListener
+public abstract interface yjl
+  extends yih<yiy>
 {
-  public yjl(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
+  public abstract void a(String paramString);
   
-  public void onClick(View paramView)
-  {
-    if (SubscribeMultiPicFragment.a(this.a) != null) {
-      this.a.a(SubscribeMultiPicFragment.a(this.a).a(1));
-    }
-  }
+  public abstract void a(yka paramyka);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yjl
  * JD-Core Version:    0.7.0.1
  */

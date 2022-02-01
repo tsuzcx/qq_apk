@@ -1,18 +1,169 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchMgr.1;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.UUID;
 
 public class bexk
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bexn
 {
-  public bexk(FloatingScreenContainer paramFloatingScreenContainer, WindowManager.LayoutParams paramLayoutParams) {}
+  private LinkedList<String> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private Map<String, bexl> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private LinkedList<bexl> b = new LinkedList();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private String a()
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    return " WS:" + this.jdField_a_of_type_JavaUtilMap.size() + " QS:" + this.jdField_a_of_type_JavaUtilLinkedList.size() + " RS:" + this.b.size();
+  }
+  
+  public static String a(UUID paramUUID, int paramInt)
+  {
+    return paramUUID.toString() + "_" + paramInt;
+  }
+  
+  private void d()
+  {
+    if (this.b.size() >= 10) {}
+    label79:
+    for (;;)
+    {
+      return;
+      for (;;)
+      {
+        if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
+          break label79;
+        }
+        Object localObject = (String)this.jdField_a_of_type_JavaUtilLinkedList.remove(0);
+        localObject = (bexl)this.jdField_a_of_type_JavaUtilMap.remove(localObject);
+        if (localObject != null)
+        {
+          this.b.add(localObject);
+          if (((bexl)localObject).a()) {
+            break;
+          }
+          this.b.remove(localObject);
+        }
+      }
+    }
+  }
+  
+  public int a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
+  {
+    if ((paramLong == 0L) || (paramItem == null)) {
+      return -1;
+    }
+    if (paramItem.Id == null) {
+      return -2;
+    }
+    if (paramInt == 0) {
+      return -5;
+    }
+    String str = a(paramItem.Id, paramInt);
+    if (a(str))
+    {
+      bevx.c("TroopFileThumbnailFetchMgr", bevx.a, "[" + str + "] fetchFileThumbnail worker exsited. ");
+      return -4;
+    }
+    bexl localbexl = bexl.a(paramLong, paramItem, paramInt, this);
+    if (localbexl == null) {
+      return -3;
+    }
+    bexq.a(paramItem, paramInt);
+    this.jdField_a_of_type_JavaUtilMap.put(str, localbexl);
+    this.jdField_a_of_type_JavaUtilLinkedList.add(str);
+    bevx.c("TroopFileThumbnailFetchMgr", bevx.a, "[" + str + "] fetchFileThumbnail fileName. " + paramItem.FileName + a());
+    d();
+    return 0;
+  }
+  
+  public int a(UUID paramUUID, int paramInt)
+  {
+    if (paramUUID == null) {
+      return -2;
+    }
+    String str = a(paramUUID, paramInt);
+    Object localObject = this.b.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      bexl localbexl = (bexl)((Iterator)localObject).next();
+      if (str.equalsIgnoreCase(localbexl.a()))
+      {
+        localbexl.a();
+        ((Iterator)localObject).remove();
+      }
+    }
+    for (paramInt = 1;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (paramInt == 0)
+      {
+        localObject = (bexl)this.jdField_a_of_type_JavaUtilMap.remove(paramUUID);
+        if (localObject == null) {
+          break label168;
+        }
+        ((bexl)localObject).a();
+        paramInt |= 0x1;
+      }
+      label168:
+      for (;;)
+      {
+        boolean bool = this.jdField_a_of_type_JavaUtilLinkedList.remove(paramUUID) | paramInt;
+        if (bool) {
+          bevx.c("TroopFileThumbnailFetchMgr", bevx.a, "[" + str + "] stopFetch. " + a());
+        }
+        d();
+        return 0;
+      }
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt, bexl parambexl)
+  {
+    bevn.a(new TroopFileThumbnailFetchMgr.1(this, paramString, paramBoolean, paramInt, parambexl), false);
+  }
+  
+  protected boolean a(String paramString)
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      if (paramString.equalsIgnoreCase(((bexl)localIterator.next()).a())) {
+        return true;
+      }
+    }
+    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
+  }
+  
+  public void b()
+  {
+    c();
+  }
+  
+  public void b(String paramString, boolean paramBoolean, int paramInt, bexl parambexl)
+  {
+    this.b.remove(parambexl);
+    bevx.c("TroopFileThumbnailFetchMgr", bevx.a, "[" + paramString + "] onWorkDoneInter. bSuc:" + paramBoolean + " errCode:" + paramInt + a());
+    d();
+  }
+  
+  protected void c()
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      ((bexl)localIterator.next()).a();
+    }
+    this.b.clear();
+    localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext()) {
+      ((bexl)localIterator.next()).a();
+    }
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    bevx.c("TroopFileThumbnailFetchMgr", bevx.a, "stopAllInter");
   }
 }
 

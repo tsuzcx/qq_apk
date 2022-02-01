@@ -1,8 +1,13 @@
+import android.app.Activity;
+import android.view.View;
+
 public abstract interface ayht
 {
-  public abstract double a();
+  public abstract Activity a();
   
-  public abstract double b();
+  public abstract void a(View paramView);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

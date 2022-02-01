@@ -1,49 +1,126 @@
 package com.tencent.turingfd.sdk.xq;
 
+import android.content.Context;
+import android.text.TextUtils;
+
 public class void
 {
-  public static final String lb;
-  public static final String mb;
-  public static final String nb;
-  public static final String ob;
-  public static final String pb;
-  public static final String qb;
-  public static final String rb;
+  public int Ad = 5000;
+  public int Bd = 3;
+  public String metaData;
+  public String pd = "";
+  public boolean qd = true;
+  public String rd = "";
+  public String sd = "";
+  public int ta = 0;
+  public String td = "";
+  public int ud = 0;
+  public Context v;
+  public String vd = "";
+  public boolean wd = true;
+  public boolean xd = false;
+  public String ya = "";
+  public boolean yd = false;
+  public boolean zd = true;
   
-  static
+  public final String f()
   {
-    else.get(else.Ja);
-    else.get(else.Ka);
-    else.get(else.La);
-    else.get(else.Ma);
-    lb = else.get(else.F);
-    else.get(else.G);
-    else.get(else.H);
-    else.get(else.I);
-    else.get(else.J);
-    else.get(else.Na);
-    else.get(else.Oa);
-    else.get(else.Pa);
-    mb = else.get(else.Qa);
-    nb = else.get(else.Va);
-    ob = else.get(else.Ra);
-    else.get(else.Wa);
-    else.get(else.Xa);
-    pb = else.get(else._a);
-    qb = else.get(else.Sa);
-    rb = else.get(else.Ta);
-    else.get(else.Ua);
-    else.get(else.ab);
-    else.get(else.bb);
-    else.get(else.cb);
-    else.get(else.db);
-    else.get(else.eb);
-    else.get(else.fb);
+    if (TextUtils.isEmpty(this.ya)) {
+      return "";
+    }
+    return this.ya;
+  }
+  
+  public int g()
+  {
+    return this.ud;
+  }
+  
+  public final Context getContext()
+  {
+    return this.v;
+  }
+  
+  public String getMetaData()
+  {
+    return this.metaData;
+  }
+  
+  public final int getTimeout()
+  {
+    return this.Ad;
+  }
+  
+  public final String getUniqueId()
+  {
+    if (TextUtils.isEmpty(this.pd)) {
+      return "";
+    }
+    return this.pd;
+  }
+  
+  public String h()
+  {
+    return this.sd;
+  }
+  
+  public String i()
+  {
+    return this.vd;
+  }
+  
+  public String j()
+  {
+    return this.td;
+  }
+  
+  public final int k()
+  {
+    return this.Bd;
+  }
+  
+  public String l()
+  {
+    return this.rd;
+  }
+  
+  public final void m() {}
+  
+  public long n()
+  {
+    return new throws("https://tdid.m.qq.com?mc=2");
+  }
+  
+  public void o() {}
+  
+  public final boolean p()
+  {
+    return this.yd;
+  }
+  
+  public final boolean q()
+  {
+    return this.wd;
+  }
+  
+  public final boolean r()
+  {
+    return this.xd;
+  }
+  
+  public final boolean s()
+  {
+    return this.qd;
+  }
+  
+  public boolean t()
+  {
+    return this.zd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.void
  * JD-Core Version:    0.7.0.1
  */

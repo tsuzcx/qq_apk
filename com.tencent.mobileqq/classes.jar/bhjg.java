@@ -1,35 +1,66 @@
-import com.tencent.qqmini.sdk.core.widget.NavigationBar;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class bhjg
-  implements bgmc<Void>
+public class bhjg
 {
-  bhjg(bhje parambhje, int paramInt) {}
+  public int a;
+  public String a;
+  public List<bhji> a;
+  public boolean a;
+  public String b;
+  public String c;
   
-  public Void a(bgls parambgls)
+  public bhjg()
   {
-    parambgls = parambgls.a();
-    if (!(parambgls instanceof AppBrandPageContainer)) {
-      QMLog.d("Action", "Page is invalid");
-    }
-    do
+    this.jdField_a_of_type_Int = -30009;
+  }
+  
+  public bhjg(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Int = -30009;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("msg");
+    if (paramJSONObject.optInt("openflag") == 1)
     {
-      do
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
+      this.c = paramJSONObject.optString("content");
+      this.b = paramJSONObject.optString("url");
+      paramJSONObject = paramJSONObject.optString("list");
+      if (!TextUtils.isEmpty(paramJSONObject)) {
+        break label96;
+      }
+    }
+    for (;;)
+    {
+      return;
+      bool = false;
+      break;
+      label96:
+      paramJSONObject = new JSONArray(paramJSONObject);
+      int j = paramJSONObject.length();
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      while (i < j)
       {
-        return null;
-        parambgls = ((AppBrandPageContainer)parambgls).a();
-      } while ((parambgls == null) || (parambgls.a() == null));
-      parambgls.a().a((byte)1);
-    } while (this.jdField_a_of_type_Int != 100);
-    parambgls.a().a((byte)2);
-    return null;
+        JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
+        if (localJSONObject != null) {
+          this.jdField_a_of_type_JavaUtilList.add(new bhji(localJSONObject.optString("num"), localJSONObject.optString("light")));
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "LiangHaoRsp{openFlag=" + this.jdField_a_of_type_Boolean + ", ret=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", moreUrl='" + this.b + '\'' + ", content='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjg
  * JD-Core Version:    0.7.0.1
  */

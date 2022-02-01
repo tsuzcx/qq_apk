@@ -1,6 +1,26 @@
-public abstract interface apcg
+import java.io.File;
+import java.io.FileFilter;
+
+final class apcg
+  implements FileFilter
 {
-  public abstract void a(apdh paramapdh, apcf paramapcf);
+  public boolean accept(File paramFile)
+  {
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
+    {
+      int i = 3;
+      while (i < paramFile.length())
+      {
+        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
+    }
+    return false;
+  }
 }
 
 

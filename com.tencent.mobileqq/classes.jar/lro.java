@@ -1,359 +1,297 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.initializer.PagInitializer;
-import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import android.content.Context;
+import android.graphics.Rect;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import com.tencent.av.opengl.ui.GLRootView;
+import com.tencent.ttpic.openapi.filter.TextureRender;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
-public final class lro
+public class lro
+  extends lrl
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static long jdField_a_of_type_Long;
-  private static Boolean jdField_a_of_type_JavaLangBoolean;
-  private static boolean jdField_a_of_type_Boolean;
-  private static Boolean b;
+  protected TextureRender a;
+  private ArrayList<lrl> jdField_a_of_type_JavaUtilArrayList;
+  private Comparator<lrl> jdField_a_of_type_JavaUtilComparator = new lrq(this);
+  protected TextureRender b;
+  private lrl jdField_b_of_type_Lrl;
+  private lrn jdField_b_of_type_Lrn = new lrp(this);
+  protected boolean b;
   
-  /* Error */
-  public static boolean a()
+  public lro(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 19
-    //   2: fstore_0
-    //   3: iconst_1
-    //   4: istore 8
-    //   6: getstatic 21	lro:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   9: ifnonnull +135 -> 144
-    //   12: invokestatic 26	bdgk:b	()I
-    //   15: istore 7
-    //   17: ldc 28
-    //   19: invokestatic 33	mvh:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   22: astore 9
-    //   24: ldc 34
-    //   26: fstore_2
-    //   27: ldc 35
-    //   29: fstore 5
-    //   31: aload 9
-    //   33: invokestatic 41	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   36: ifne +224 -> 260
-    //   39: aload 9
-    //   41: ldc 43
-    //   43: invokevirtual 49	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   46: astore 9
-    //   48: aload 9
-    //   50: arraylength
-    //   51: iconst_4
-    //   52: if_icmplt +208 -> 260
-    //   55: aload 9
-    //   57: iconst_0
-    //   58: aaload
-    //   59: invokestatic 55	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   62: fstore_1
-    //   63: fload_0
-    //   64: fstore_3
-    //   65: aload 9
-    //   67: iconst_1
-    //   68: aaload
-    //   69: invokestatic 55	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   72: fstore 4
-    //   74: fload_0
-    //   75: fstore_3
-    //   76: fload 4
-    //   78: fstore_2
-    //   79: aload 9
-    //   81: iconst_2
-    //   82: aaload
-    //   83: invokestatic 55	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   86: fstore_0
-    //   87: fload_0
-    //   88: fstore_3
-    //   89: fload 4
-    //   91: fstore_2
-    //   92: aload 9
-    //   94: iconst_3
-    //   95: aaload
-    //   96: invokestatic 55	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   99: fstore 6
-    //   101: fload 6
-    //   103: fstore_3
-    //   104: fload 4
-    //   106: fstore_2
-    //   107: invokestatic 59	bdgk:d	()J
-    //   110: l2f
-    //   111: fconst_1
-    //   112: fmul
-    //   113: ldc 60
-    //   115: fdiv
-    //   116: fstore 4
-    //   118: invokestatic 63	lnz:d	()J
-    //   121: l2f
-    //   122: ldc 64
-    //   124: fdiv
-    //   125: fstore 5
-    //   127: iload 7
-    //   129: iconst_4
-    //   130: if_icmpge +37 -> 167
-    //   133: new 66	java/lang/Boolean
-    //   136: dup
-    //   137: iconst_0
-    //   138: invokespecial 70	java/lang/Boolean:<init>	(Z)V
-    //   141: putstatic 21	lro:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   144: getstatic 21	lro:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   147: invokevirtual 73	java/lang/Boolean:booleanValue	()Z
-    //   150: ireturn
-    //   151: astore 9
-    //   153: ldc 19
-    //   155: fstore_1
-    //   156: aload 9
-    //   158: invokevirtual 76	java/lang/NumberFormatException:printStackTrace	()V
-    //   161: fload 5
-    //   163: fstore_3
-    //   164: goto -57 -> 107
-    //   167: iload 7
-    //   169: iconst_4
-    //   170: if_icmplt +48 -> 218
-    //   173: iload 7
-    //   175: bipush 8
-    //   177: if_icmpge +41 -> 218
-    //   180: fload 4
-    //   182: fload_1
-    //   183: fcmpl
-    //   184: iflt +28 -> 212
-    //   187: fload 5
-    //   189: fload_2
-    //   190: fcmpl
-    //   191: iflt +21 -> 212
-    //   194: iconst_1
-    //   195: istore 8
-    //   197: new 66	java/lang/Boolean
-    //   200: dup
-    //   201: iload 8
-    //   203: invokespecial 70	java/lang/Boolean:<init>	(Z)V
-    //   206: putstatic 21	lro:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   209: goto -65 -> 144
-    //   212: iconst_0
-    //   213: istore 8
-    //   215: goto -18 -> 197
-    //   218: fload 4
-    //   220: fload_0
-    //   221: fcmpl
-    //   222: iflt +25 -> 247
-    //   225: fload 5
-    //   227: fload_3
-    //   228: fcmpl
-    //   229: iflt +18 -> 247
-    //   232: new 66	java/lang/Boolean
-    //   235: dup
-    //   236: iload 8
-    //   238: invokespecial 70	java/lang/Boolean:<init>	(Z)V
-    //   241: putstatic 21	lro:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   244: goto -100 -> 144
-    //   247: iconst_0
-    //   248: istore 8
-    //   250: goto -18 -> 232
-    //   253: astore 9
-    //   255: fload_3
-    //   256: fstore_0
-    //   257: goto -101 -> 156
-    //   260: ldc 19
-    //   262: fstore_1
-    //   263: fload 5
-    //   265: fstore_3
-    //   266: goto -159 -> 107
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   2	255	0	f1	float
-    //   62	201	1	f2	float
-    //   26	164	2	f3	float
-    //   64	202	3	f4	float
-    //   72	147	4	f5	float
-    //   29	235	5	f6	float
-    //   99	3	6	f7	float
-    //   15	163	7	i	int
-    //   4	245	8	bool	boolean
-    //   22	71	9	localObject	Object
-    //   151	6	9	localNumberFormatException1	NumberFormatException
-    //   253	1	9	localNumberFormatException2	NumberFormatException
-    // Exception table:
-    //   from	to	target	type
-    //   55	63	151	java/lang/NumberFormatException
-    //   65	74	253	java/lang/NumberFormatException
-    //   79	87	253	java/lang/NumberFormatException
-    //   92	101	253	java/lang/NumberFormatException
+    super(paramContext);
   }
   
-  public static boolean a(VideoAppInterface paramVideoAppInterface)
+  public lrl a(int paramInt)
   {
-    int i;
-    if (!jdField_a_of_type_Boolean)
-    {
-      i = azdw.a(BaseApplicationImpl.getContext());
-      if (i != 2) {
-        break label26;
-      }
-      jdField_a_of_type_Boolean = false;
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      throw new ArrayIndexOutOfBoundsException(paramInt);
     }
-    for (;;)
-    {
-      return jdField_a_of_type_Boolean;
-      label26:
-      if (i == 1) {
-        jdField_a_of_type_Boolean = true;
-      } else if (i == 0) {
-        jdField_a_of_type_Boolean = true;
-      }
+    return (lrl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public void a(lpx paramlpx)
+  {
+    paramlpx.a(b() / 2, c() / 2, 0.0F);
+    c(paramlpx);
+    paramlpx.a(-b() / 2, -c() / 2, 0.0F);
+    e(paramlpx);
+  }
+  
+  public void a(lpx paramlpx, lrl paramlrl)
+  {
+    if (!paramlrl.a()) {
+      return;
+    }
+    int i = -this.e;
+    int j = -this.d;
+    paramlpx.a(i, j);
+    paramlrl.a(paramlpx);
+    paramlpx.a(-i, -j);
+  }
+  
+  public void a(lrl paramlrl)
+  {
+    if (paramlrl.jdField_a_of_type_Lrl != null) {
+      throw new IllegalStateException();
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramlrl);
+    paramlrl.jdField_a_of_type_Lrl = this;
+    paramlrl.a(this.jdField_b_of_type_Lrn);
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
+    if (this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView != null) {
+      paramlrl.b(this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView);
     }
   }
   
-  public static boolean b()
+  protected boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2, lrl paramlrl, boolean paramBoolean)
   {
+    Rect localRect = paramlrl.jdField_a_of_type_AndroidGraphicsRect;
+    if ((!paramBoolean) || (localRect.contains(paramInt1, paramInt2)))
+    {
+      if (paramlrl.b(paramMotionEvent)) {}
+      while ((this.jdField_a_of_type_Lrm != null) && (this.jdField_a_of_type_Lrm.a(paramlrl, paramMotionEvent))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(lrl paramlrl)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    while (!this.jdField_a_of_type_JavaUtilArrayList.remove(paramlrl)) {
+      return false;
+    }
+    if (this.jdField_b_of_type_Lrl == paramlrl)
+    {
+      long l = SystemClock.uptimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+      b(localMotionEvent);
+      localMotionEvent.recycle();
+    }
+    paramlrl.d();
+    paramlrl.jdField_a_of_type_Lrl = null;
+    paramlrl.a(null);
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
+    return true;
+  }
+  
+  protected void b(GLRootView paramGLRootView)
+  {
+    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = paramGLRootView;
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).b(paramGLRootView);
+      i += 1;
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  protected boolean b(MotionEvent paramMotionEvent)
+  {
+    int j = (int)paramMotionEvent.getX();
+    int k = (int)paramMotionEvent.getY();
+    int i = paramMotionEvent.getAction();
     Object localObject;
-    float f1;
-    if (b == null)
+    if (this.jdField_b_of_type_Lrl != null)
     {
-      localObject = mvh.a("ptuAfterTreamentLimit");
-      f3 = 3.0F;
-      j = 4;
-      f4 = 1.1F;
-      f2 = f4;
-      i = j;
-      f1 = f3;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      if (i == 0)
       {
-        localObject = ((String)localObject).split(";");
-        f2 = f4;
-        i = j;
-        f1 = f3;
-        if (localObject.length >= 3)
-        {
-          i = j;
-          f1 = f3;
-        }
+        localObject = MotionEvent.obtain(paramMotionEvent);
+        ((MotionEvent)localObject).setAction(3);
+        a((MotionEvent)localObject, j, k, this.jdField_b_of_type_Lrl, false);
+        this.jdField_b_of_type_Lrl = null;
       }
     }
-    try
+    else
     {
-      f2 = Float.parseFloat(localObject[0]);
-      i = j;
-      f1 = f2;
-      j = Integer.parseInt(localObject[1]);
-      i = j;
-      f1 = f2;
-      f3 = Float.parseFloat(localObject[2]);
-      f1 = f2;
-      i = j;
-      f2 = f3;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        int k;
-        localNumberFormatException.printStackTrace();
-        f2 = f4;
-        continue;
-        b = new Boolean(false);
-        continue;
-        i = 0;
-        continue;
-        boolean bool = false;
+      if (i != 0) {
+        break label151;
+      }
+      i = e() - 1;
+      if (i < 0) {
+        break label151;
+      }
+      localObject = a(i);
+      if (((lrl)localObject).a() == 0) {
+        break label129;
       }
     }
-    float f3 = (float)bdgk.d() * 1.0F / 1.073742E+009F;
-    int j = bdgk.b();
-    f4 = (float)lnz.d() / 1048576.0F;
-    if ((f1 <= f3) && (i <= j) && (f2 <= f4))
+    label129:
+    while (!a(paramMotionEvent, j, k, (lrl)localObject, true))
     {
-      b = new Boolean(true);
-      k = b.booleanValue();
-      if (azdw.a(BaseApplicationImpl.getContext()) == 0) {
-        break label246;
+      i -= 1;
+      break;
+      a(paramMotionEvent, j, k, this.jdField_b_of_type_Lrl, false);
+      if ((i == 3) || (i == 1)) {
+        this.jdField_b_of_type_Lrl = null;
       }
-      i = 1;
-      if (((i & k) == 0) || (Build.VERSION.SDK_INT < 21)) {
-        break label252;
-      }
-      bool = true;
-      b = Boolean.valueOf(bool);
-      return b.booleanValue();
+      return true;
+    }
+    this.jdField_b_of_type_Lrl = ((lrl)localObject);
+    return true;
+    label151:
+    return super.b(paramMotionEvent);
+  }
+  
+  protected void d()
+  {
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).d();
+      i += 1;
+    }
+    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = null;
+  }
+  
+  protected void d(lpx paramlpx) {}
+  
+  protected boolean d()
+  {
+    return false;
+  }
+  
+  public int e()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  protected void e()
+  {
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).e();
+      i += 1;
     }
   }
   
-  public static boolean b(VideoAppInterface paramVideoAppInterface)
+  protected void e(lpx paramlpx)
   {
-    int i;
-    if (!jdField_a_of_type_Boolean)
-    {
-      i = azdw.a(BaseApplicationImpl.getContext());
-      if (i != 2) {
-        break label123;
-      }
-      long l1 = System.currentTimeMillis();
-      if (l1 <= jdField_a_of_type_Long) {
-        break label106;
-      }
-      long l2 = AudioHelper.c();
-      paramVideoAppInterface.h();
-      long l3 = AudioHelper.c();
-      QLog.w("AEKitAbilityInfo", 1, "checkAEKitPagSoReady, getEffectLibPagSoLoadIsOk[" + jdField_a_of_type_Boolean + "], cost[" + (l3 - l2) + "]");
-      jdField_a_of_type_Long = l1 + 30000L;
-      jdField_a_of_type_Boolean = false;
+    if ((this.jdField_b_of_type_Boolean) || (d())) {
+      d(paramlpx);
     }
     for (;;)
     {
-      return jdField_a_of_type_Boolean;
-      label106:
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.w("AEKitAbilityInfo", 1, "tryDownloadPTULibPagSo, 频繁调用");
-      break;
-      label123:
-      if (i == 1) {
-        jdField_a_of_type_Boolean = true;
-      } else if (i == 0) {
-        jdField_a_of_type_Boolean = true;
+      return;
+      int i = 0;
+      int j = e();
+      while (i < j)
+      {
+        a(paramlpx, a(i));
+        i += 1;
       }
     }
   }
   
-  public static boolean c(VideoAppInterface paramVideoAppInterface)
+  protected void f(int paramInt)
   {
-    boolean bool = true;
-    if (!b())
+    int i = 0;
+    int j = e();
+    while (i < j)
     {
-      QLog.w("AEKitAbilityInfo", 1, "hasLoadSoSuccess machine power not support");
-      return false;
-    }
-    if (jdField_a_of_type_Int != -1)
-    {
-      if (jdField_a_of_type_Int == 0) {}
-      for (;;)
-      {
-        return bool;
-        bool = false;
+      lrl locallrl = a(i);
+      if (locallrl.a() == 0) {
+        locallrl.f(paramInt);
       }
+      i += 1;
     }
-    if (!b(paramVideoAppInterface))
-    {
-      QLog.w("AEKitAbilityInfo", 1, "hasLoadSoSuccess machine so not ready");
-      return false;
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
     }
-    long l = AudioHelper.c();
-    bool = FeatureManager.Features.PAG.init();
-    QLog.w("AEKitAbilityInfo", 1, "loadLibPag[" + jdField_a_of_type_Boolean + "], cost[" + (AudioHelper.c() - l) + "]");
-    if (!bool) {}
-    for (jdField_a_of_type_Int = 1;; jdField_a_of_type_Int = 0)
+  }
+  
+  public void i()
+  {
+    int j = e();
+    int i = 0;
+    while (i < j)
     {
-      QLog.w("AEKitAbilityInfo", 1, "hasLoadSoSuccess result:=" + jdField_a_of_type_Int);
-      return bool;
+      lrl locallrl = (lrl)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (this.jdField_b_of_type_Lrl == locallrl)
+      {
+        long l = SystemClock.uptimeMillis();
+        MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+        b(localMotionEvent);
+        localMotionEvent.recycle();
+      }
+      locallrl.d();
+      locallrl.jdField_a_of_type_Lrl = null;
+      locallrl.a(null);
+      i += 1;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public void j()
+  {
+    f();
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).f();
+      i += 1;
+    }
+  }
+  
+  public void k()
+  {
+    g();
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).g();
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lro
  * JD-Core Version:    0.7.0.1
  */

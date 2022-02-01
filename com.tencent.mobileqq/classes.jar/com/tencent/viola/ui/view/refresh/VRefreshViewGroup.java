@@ -138,6 +138,16 @@ public class VRefreshViewGroup
     return (this.mContentView != null) && (this.mFooterView != null) && (this.mHeaderView == null);
   }
   
+  private boolean isDoingBottomSpringBack()
+  {
+    return (this.mContentView.isBottom()) && (this.mHolder.hasFooterPullUp()) && (this.mAllowFooterSliding);
+  }
+  
+  private boolean isDoingTopSpringBack()
+  {
+    return (this.mContentView.isTop()) && (this.mHolder.hasHeaderPullDown()) && (this.mAllowHeaderSliding);
+  }
+  
   private boolean isHeaderComponentHeaderView()
   {
     return (this.mHeaderCallBack != null) && (this.mHeaderCallBack.getComponentType() == 2);
@@ -398,6 +408,10 @@ public class VRefreshViewGroup
                 if (this.mFooterCallBack != null) {
                   this.mFooterCallBack.onMove(this.mHolder.mOffsetY);
                 }
+                localIterator = this.mRefreshMoveObervers.iterator();
+                while (localIterator.hasNext()) {
+                  ((RefreshMoveOberver)localIterator.next()).onRefreshMove(this.mHolder.mOffsetY);
+                }
                 updateFooterHeight(j);
               }
             }
@@ -470,6 +484,14 @@ public class VRefreshViewGroup
       this.mHeaderViewHeight = this.mHeaderCallBack.getHeaderHeight();
     }
     return this.mHeaderViewHeight;
+  }
+  
+  public int getHeaderViewWidth()
+  {
+    if (this.mHeaderCallBack != null) {
+      return this.mHeaderCallBack.getHeaderWidth();
+    }
+    return 0;
   }
   
   public void moveView(int paramInt)
@@ -812,7 +834,7 @@ public class VRefreshViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.refresh.VRefreshViewGroup
  * JD-Core Version:    0.7.0.1
  */

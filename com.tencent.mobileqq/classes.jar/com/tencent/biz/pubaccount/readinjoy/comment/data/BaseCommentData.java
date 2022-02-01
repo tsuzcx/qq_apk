@@ -1,11 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.List;
-import nxe;
-import oms;
+import ogz;
+import pax;
 
 public abstract class BaseCommentData
   implements Serializable
@@ -16,10 +17,12 @@ public abstract class BaseCommentData
   public long activityCfgID;
   public String activityJumpUrl;
   public String activityPicUrl;
+  public AdvertisementInfo advertisementInfo;
   public int anonymous;
   public String authorComment;
   public int authorSelection;
   public String avatar;
+  public String avatarPendantUrl;
   public int awesome;
   public String commentContent;
   public String commentId;
@@ -30,18 +33,22 @@ public abstract class BaseCommentData
   public String flowGuidePtsData;
   public String homepage;
   public int isActivity;
+  public boolean isAd;
   public boolean isAnchor;
   public int isApproved;
+  public boolean isAuthorLike;
   public int isAuthorReply;
+  public boolean isAuthorSticky;
   public boolean isBanner;
   public boolean isDelete;
+  public boolean isFollowing;
   public int isStar;
   public String ksHomePage;
   public int level;
   public int like;
   public int likeCnt;
-  public nxe medalInfo;
-  public List<oms> mediaDataList;
+  public ogz medalInfo;
+  public List<pax> mediaDataList;
   public int myself;
   public String nickName;
   public String passthrough;
@@ -66,9 +73,9 @@ public abstract class BaseCommentData
   {
     if ((this.mediaDataList != null) && (this.mediaDataList.size() > 0))
     {
-      oms localoms = (oms)this.mediaDataList.get(0);
-      if (localoms != null) {
-        return localoms.e;
+      pax localpax = (pax)this.mediaDataList.get(0);
+      if (localpax != null) {
+        return localpax.e;
       }
     }
     return 0;

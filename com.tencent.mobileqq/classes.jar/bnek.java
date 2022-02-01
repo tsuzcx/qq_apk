@@ -1,76 +1,19 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class bnek
-  extends BaseAdapter
+class bnek
+  implements CosFunHelper.CountDownListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<xoe> jdField_a_of_type_JavaUtilList = new ArrayList();
-  @Nullable
-  private xoe jdField_a_of_type_Xoe;
+  bnek(bndy parambndy) {}
   
-  public bnek(Context paramContext)
+  public void onCountDownEnd()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    bndy.b(this.a);
   }
   
-  @Nullable
-  public xoe a()
+  public void onCountDownStart(VideoMaterial paramVideoMaterial)
   {
-    return this.jdField_a_of_type_Xoe;
-  }
-  
-  public void a(List<xoe> paramList)
-  {
-    if (paramList == null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void a(@Nullable xoe paramxoe)
-  {
-    this.jdField_a_of_type_Xoe = paramxoe;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561587, null);
-      paramView = new bnel(paramViewGroup);
-      paramViewGroup.setTag(paramView);
-    }
-    for (;;)
-    {
-      paramView.a((xoe)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Xoe);
-      return paramView.a;
-      paramView = (bnel)paramView.getTag();
-    }
+    bndy.a(this.a, paramVideoMaterial.getTipsDrawable());
   }
 }
 

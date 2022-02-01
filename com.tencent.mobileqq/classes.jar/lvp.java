@@ -1,19 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.av.random.RandomWebProtocol;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig.ExpressionInfo;
 
-public class lvp
-  extends lvn
+public final class lvp
+  implements Parcelable.Creator<AVRedPacketConfig.ExpressionInfo>
 {
-  public Bitmap a;
-  
-  public lvp(RandomWebProtocol paramRandomWebProtocol)
+  public AVRedPacketConfig.ExpressionInfo a(Parcel paramParcel)
   {
-    this.a = -100;
+    return new AVRedPacketConfig.ExpressionInfo(paramParcel);
+  }
+  
+  public AVRedPacketConfig.ExpressionInfo[] a(int paramInt)
+  {
+    return new AVRedPacketConfig.ExpressionInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lvp
  * JD-Core Version:    0.7.0.1
  */

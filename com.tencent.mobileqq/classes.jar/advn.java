@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
 
 public class advn
   implements DialogInterface.OnClickListener
 {
-  public advn(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public advn(ChatHistoryImageView paramChatHistoryImageView) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(this.a.b);
+    this.a.k();
   }
 }
 

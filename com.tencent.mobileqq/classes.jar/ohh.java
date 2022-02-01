@@ -1,17 +1,27 @@
-public class ohh
+import java.lang.ref.WeakReference;
+
+class ohh
+  implements snf
 {
-  private static Boolean jdField_a_of_type_JavaLangBoolean;
-  private static Integer jdField_a_of_type_JavaLangInteger;
+  private WeakReference<ohg> a;
   
-  public static void a()
+  public ohh(ohg paramohg)
   {
-    jdField_a_of_type_JavaLangBoolean = null;
-    jdField_a_of_type_JavaLangInteger = null;
+    this.a = new WeakReference(paramohg);
+  }
+  
+  public void a()
+  {
+    ohg localohg = (ohg)this.a.get();
+    if ((localohg == null) || (!localohg.b())) {
+      return;
+    }
+    ohg.a(localohg).sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,89 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqrh
-  extends arsq
+  extends aqkz<aqrg>
 {
-  public aqrh(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
-  
-  public void a()
+  @NonNull
+  public aqrg a(int paramInt)
   {
-    this.a.a.a().b();
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadConfProcessor", 2, "[migrateOldOrDefaultContent]");
+    }
+    return new aqrg();
   }
   
-  public void b()
+  @Nullable
+  public aqrg a(aqlg[] paramArrayOfaqlg)
   {
-    this.a.a.a().p();
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadConfProcessor", 2, "[onParsed]");
+    }
+    aqrg localaqrg = new aqrg();
+    localaqrg.a = paramArrayOfaqlg;
+    return localaqrg;
   }
   
-  public void c()
+  public void a(aqrg paramaqrg)
   {
-    this.a.a.a().q();
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadConfProcessor", 2, "[onUpdate]");
+    }
+    PreloadManager localPreloadManager = (PreloadManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(151);
+    localPreloadManager.a(paramaqrg);
+    localPreloadManager.b();
+    localPreloadManager.b(true);
   }
   
-  public void d()
+  public Class<aqrg> clazz()
   {
-    this.a.a.a().r();
+    return aqrg.class;
   }
   
-  public void e()
+  public boolean isNeedCompressed()
   {
-    this.a.a.a().s();
+    return false;
   }
   
-  public void f()
+  public boolean isNeedStoreLargeFile()
   {
-    this.a.a.a().t();
+    return false;
   }
   
-  public void g()
+  public int migrateOldVersion()
   {
-    this.a.a.a().G();
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadConfProcessor", 2, "[get migrateOldVersion]");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadConfProcessor", 2, "[onReqNoReceive] failCode=" + paramInt);
+    }
+  }
+  
+  public void onReqNoReceive()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadConfProcessor", 2, "onReqNoReceive: type=" + type());
+    }
+  }
+  
+  public int type()
+  {
+    return 68;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqrh
  * JD-Core Version:    0.7.0.1
  */

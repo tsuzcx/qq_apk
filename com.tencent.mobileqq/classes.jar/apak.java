@@ -1,9 +1,26 @@
+import android.text.TextUtils;
+
 public class apak
 {
-  public int a;
-  public String a = "";
+  public String a;
   public String b;
   public String c;
+  
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.b)) {
+      return "";
+    }
+    return this.b;
+  }
+  
+  public String b()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return "";
+    }
+    return this.c;
+  }
 }
 
 

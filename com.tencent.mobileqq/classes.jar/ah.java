@@ -1,165 +1,63 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.dataline.activities.DLFilesViewerActivity;
+import com.dataline.activities.DLFilesViewerActivity.2.1;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 public class ah
-  extends AsyncTask<Integer, Integer, String>
+  extends anke
 {
-  public ah(LiteActivity paramLiteActivity, ArrayList paramArrayList) {}
+  public ah(DLFilesViewerActivity paramDLFilesViewerActivity) {}
   
-  DataLineMsgRecord a(alqo paramalqo, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void a(long paramLong, float paramFloat)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    int i = paramInt1;
-    if (paramInt1 == 0) {
-      switch (arrr.a(paramString))
-      {
-      default: 
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.msgtype = alqo.a(i);
-      localDataLineMsgRecord.sessionid = paramalqo.a(0, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a).longValue();
-      localDataLineMsgRecord.path = paramString;
-      localDataLineMsgRecord.thumbPath = null;
-      localDataLineMsgRecord.groupId = paramInt2;
-      localDataLineMsgRecord.groupSize = paramInt3;
-      localDataLineMsgRecord.groupIndex = paramInt4;
-      return localDataLineMsgRecord;
-      i = 1;
-      continue;
-      i = 3;
-      continue;
-      i = 2;
-    }
+    super.a(paramLong, paramFloat);
+    this.a.runOnUiThread(new DLFilesViewerActivity.2.1(this, paramLong, paramFloat));
   }
   
-  protected String a(Integer... paramVarArgs)
+  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
   {
-    int i = paramVarArgs[0].intValue();
-    a(this.jdField_a_of_type_JavaUtilArrayList, i);
-    return null;
+    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
+    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.b(this.a);
   }
   
   protected void a(String paramString)
   {
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(false);
+    super.a(paramString);
+    Iterator localIterator = DLFilesViewerActivity.a(this.a).values().iterator();
+    while (localIterator.hasNext())
+    {
+      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
+      if (paramString.equals(localDataLineMsgRecord.strMoloKey))
+      {
+        localDataLineMsgRecord.nAppStatus = 1;
+        DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+      }
+    }
+    DLFilesViewerActivity.b(this.a);
   }
   
-  void a(List<String> paramList, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    if (paramList == null) {}
-    alqo localalqo;
-    int j;
-    int i;
-    Object localObject;
-    for (;;)
-    {
-      return;
-      localalqo = (alqo)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
-      j = paramList.size();
-      if (j > 3) {
-        break;
-      }
-      i = 0;
-      while (i < j)
-      {
-        localObject = a(localalqo, (String)paramList.get(i), paramInt, 0, 0, 0);
-        if (localObject != null) {
-          localalqo.a((DataLineMsgRecord)localObject, false);
-        }
-        i += 1;
-      }
-    }
-    label117:
-    DataLineMsgRecord localDataLineMsgRecord;
-    if ((j > 3) && (j < 50))
-    {
-      localObject = new ArrayList();
-      int k = localalqo.a();
-      i = 0;
-      if (i < j)
-      {
-        localDataLineMsgRecord = a(localalqo, (String)paramList.get(i), paramInt, k, j, i);
-        if (localDataLineMsgRecord != null) {
-          ((ArrayList)localObject).add(localDataLineMsgRecord);
-        }
-        if (!DataLineMsgSet.isSingle(paramInt, k)) {
-          break label408;
-        }
-        if (localDataLineMsgRecord != null)
-        {
-          localDataLineMsgRecord.groupId = 0;
-          localDataLineMsgRecord.groupIndex = 0;
-          localDataLineMsgRecord.groupSize = 0;
-        }
-        if (((ArrayList)localObject).size() > 0) {
-          localalqo.a((ArrayList)localObject, false);
-        }
-        localObject = new ArrayList();
-      }
-    }
-    label259:
-    label405:
-    label408:
-    for (;;)
-    {
-      i += 1;
-      break label117;
-      if (((ArrayList)localObject).size() <= 0) {
-        break;
-      }
-      localalqo.a((ArrayList)localObject, false);
-      return;
-      localObject = new ArrayList();
-      j = localalqo.a();
-      i = 0;
-      if (i < 50)
-      {
-        localDataLineMsgRecord = a(localalqo, (String)paramList.get(i), paramInt, j, 50, i);
-        if (localDataLineMsgRecord != null) {
-          ((ArrayList)localObject).add(localDataLineMsgRecord);
-        }
-        if (!DataLineMsgSet.isSingle(paramInt, j)) {
-          break label405;
-        }
-        if (localDataLineMsgRecord != null)
-        {
-          localDataLineMsgRecord.groupId = 0;
-          localDataLineMsgRecord.groupIndex = 0;
-          localDataLineMsgRecord.groupSize = 0;
-        }
-        if (((ArrayList)localObject).size() > 0) {
-          localalqo.a((ArrayList)localObject, false);
-        }
-        localObject = new ArrayList();
-      }
-      for (;;)
-      {
-        i += 1;
-        break label259;
-        if (((ArrayList)localObject).size() > 0) {
-          localalqo.a((ArrayList)localObject, false);
-        }
-        i = 0;
-        while (i < 50)
-        {
-          paramList.remove(0);
-          i += 1;
-        }
-        break;
-      }
-    }
+    super.a(paramBoolean, paramLong, paramString);
+    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.b(this.a);
+  }
+  
+  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.b(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
+    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.b(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.a(paramBoolean, paramLong, paramString);
+    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.b(this.a);
   }
 }
 

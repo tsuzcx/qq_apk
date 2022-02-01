@@ -1,69 +1,50 @@
 import android.os.Bundle;
-import com.tencent.ad.tangram.ipc.AdIPCManager;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtBaseAdItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.cs.group_file_common.group_file_common.FolderInfo;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.CreateFolderRspBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
 
-public class aaqz
-  extends QIPCModule
+public abstract class aaqz
+  extends niv
 {
-  private static volatile aaqz a;
-  
-  private aaqz(String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramString);
+    b(paramInt, paramArrayOfByte, paramBundle);
   }
   
-  public static aaqz a()
+  protected abstract void a(boolean paramBoolean, int paramInt, besl parambesl);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (a == null) {}
+    if (paramInt != 0)
+    {
+      a(false, paramInt, null);
+      return;
+    }
+    paramBundle = new oidb_0x6d7.RspBody();
     try
     {
-      if (a == null) {
-        a = new aaqz("gdt_ipc");
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d7.CreateFolderRspBody)paramBundle.create_folder_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label104;
       }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    aase.b("gdt_ipc", "Action  " + paramString);
-    if ("do_app_jump".equals(paramString))
-    {
-      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
       {
-        paramString = (aasf)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110);
-        paramBundle.setClassLoader(getClass().getClassLoader());
-        paramBundle = (GdtBaseAdItem)paramBundle.getParcelable("gdtBaseAdItem");
-        paramString.a(BaseApplicationImpl.getContext(), paramBundle);
-        callbackResult(paramInt, EIPCResult.createSuccessResult(null));
-      }
-      for (;;)
-      {
-        return null;
-        callbackResult(paramInt, EIPCResult.createResult(-1, null));
+        a(true, 0, new besl((group_file_common.FolderInfo)paramArrayOfByte.folder_info.get()));
+        return;
       }
     }
-    AdIPCManager.Params localParams = new AdIPCManager.Params();
-    localParams.bundle = paramBundle;
-    paramString = AdIPCManager.INSTANCE.receive(paramString, localParams);
-    if (paramString == null) {
-      return null;
-    }
-    paramBundle = new EIPCResult();
-    if (paramString.success) {}
-    for (paramInt = 0;; paramInt = -102)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramBundle.code = paramInt;
-      paramBundle.data = paramString.bundle;
-      return paramBundle;
+      a(false, -1, null);
+      return;
     }
+    a(false, paramArrayOfByte.int32_ret_code.get(), null);
+    return;
+    label104:
+    a(false, -1, null);
   }
 }
 

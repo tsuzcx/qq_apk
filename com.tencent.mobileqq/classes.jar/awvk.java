@@ -1,20 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import java.lang.ref.WeakReference;
 
 public class awvk
-  implements View.OnClickListener
+  implements bkkq
 {
-  public awvk(ProfileHeaderView paramProfileHeaderView, awqt paramawqt) {}
+  public awvk(MultiCardRootLayout paramMultiCardRootLayout) {}
   
-  public void onClick(View paramView)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView, this.jdField_a_of_type_Awqt);
+    int i = paramMotionEvent.getActionMasked();
+    if (MultiCardRootLayout.a(this.a) != null)
+    {
+      awvm localawvm = (awvm)MultiCardRootLayout.a(this.a).get();
+      if ((localawvm != null) && (localawvm.a(i))) {
+        return true;
+      }
+    }
+    if (MultiCardRootLayout.a(this.a) != null) {
+      MultiCardRootLayout.a(this.a).onTouchEvent(paramMotionEvent);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvk
  * JD-Core Version:    0.7.0.1
  */

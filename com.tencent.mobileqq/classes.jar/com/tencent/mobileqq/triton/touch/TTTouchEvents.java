@@ -1,15 +1,20 @@
 package com.tencent.mobileqq.triton.touch;
 
+import com.tencent.mobileqq.triton.jni.TTNativeCall;
 import java.util.ArrayList;
 
 public class TTTouchEvents
 {
+  @TTNativeCall
   public int action;
+  @TTNativeCall
   public ArrayList<Touch> changedTouches = new ArrayList();
+  @TTNativeCall
   public double timeStamp;
+  @TTNativeCall
   public ArrayList<Touch> touches = new ArrayList();
   
-  public TTTouchEvents copy()
+  public TTTouchEvents a()
   {
     TTTouchEvents localTTTouchEvents = new TTTouchEvents();
     localTTTouchEvents.action = this.action;
@@ -21,7 +26,7 @@ public class TTTouchEvents
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.touch.TTTouchEvents
  * JD-Core Version:    0.7.0.1
  */

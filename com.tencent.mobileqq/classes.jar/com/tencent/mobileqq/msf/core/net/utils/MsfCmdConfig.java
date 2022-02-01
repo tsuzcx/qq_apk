@@ -13,12 +13,20 @@ public class MsfCmdConfig
 {
   private static final String CMD_DELETE_FILE = "rm";
   private static final String CMD_DELETE_SP_KEY = "rm_kv";
+  private static final String CMD_NOT_AUTO_RESTART = "not_auto_restart";
   private static final String CMD_NOT_EXIT = "not_exit";
   private static final String CMD_SAFE_MODE_TEST_FLAG = "test_flag";
+  public static final String KEY_NOT_AUTO_RESTART_CRASH_STACK = "key_not_restart_crash_stack";
+  public static final String KEY_NOT_AUTO_RESTART_CRASH_TYPE = "key_not_restart_crash_type";
+  public static final String KEY_NOT_AUTO_RESTART_DELAY_MILL = "key_not_restart_delay_mill";
+  public static final String KEY_NOT_AUTO_RESTART_ENABLE = "key_not_restart_enable";
+  public static final String KEY_NOT_AUTO_RESTART_MAX_CRASH_NUM = "key_not_restart_max_crash";
+  public static final String KEY_NOT_AUTO_RESTART_VERSION = "key_not_restart_version";
   public static final String KEY_NOT_EXIT_CRASH_STACK = "key_not_exit_crash_stack";
   public static final String KEY_NOT_EXIT_CRASH_TYPE = "key_not_exit_crash_type";
   public static final String KEY_NOT_EXIT_ENABLE = "key_not_exit_enable";
   private static final String KEY_NOT_EXIT_VERSION = "key_not_exit_version";
+  public static final String NOT_AUTO_RESTART_CONTROL_FILE = "not_restart_control_file";
   public static final String SP_SAFEMODE_NOT_EXIT = "pref_safemode_not_exit";
   private static final String TAG = "MsfCmdConfig";
   
@@ -91,10 +99,13 @@ public class MsfCmdConfig
           return new MsfCmdConfig.c(str1, paramJSONObject, bool1, bool2);
         }
         if ("not_exit".equals(str1)) {
-          return new MsfCmdConfig.d(str1, paramJSONObject, bool1);
+          return new MsfCmdConfig.e(str1, paramJSONObject, bool1);
         }
         if ("test_flag".equals(str1)) {
-          return new MsfCmdConfig.e(str1, paramJSONObject, bool1);
+          return new MsfCmdConfig.f(str1, paramJSONObject, bool1);
+        }
+        if ("not_auto_restart".equals(str1)) {
+          return new MsfCmdConfig.d(str1, paramJSONObject, bool1);
         }
         return null;
       }

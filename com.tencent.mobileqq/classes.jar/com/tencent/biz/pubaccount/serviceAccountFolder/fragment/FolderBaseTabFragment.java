@@ -7,9 +7,10 @@ import android.view.View;
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 
 public abstract class FolderBaseTabFragment
-  extends Fragment
+  extends ReportV4Fragment
 {
   public static int a;
   public static String a;
@@ -54,7 +55,7 @@ public abstract class FolderBaseTabFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderBaseTabFragment
  * JD-Core Version:    0.7.0.1
  */

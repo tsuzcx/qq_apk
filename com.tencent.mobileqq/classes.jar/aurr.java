@@ -1,81 +1,54 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.gamecenter.anim.FullPopAnimWithLOLLIPOP.5;
+import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
 
 public class aurr
+  extends auro
+  implements auuj
 {
-  public static String a = "";
+  private int jdField_a_of_type_Int;
+  @SuppressLint({"HandlerLeak"})
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private ausj jdField_a_of_type_Ausj;
+  private int b;
   
-  public static Intent a(Context paramContext, AppInterface paramAppInterface, String paramString, boolean paramBoolean)
+  @SuppressLint({"NewApi"})
+  private void b()
   {
-    Object localObject = paramContext;
-    if (paramContext == null) {}
-    for (;;)
+    if (this.jdField_a_of_type_Ausj != null)
     {
-      try
+      ausj localausj = this.jdField_a_of_type_Ausj;
+      localausj.jdField_a_of_type_Int += this.jdField_a_of_type_Int;
+      localausj = this.jdField_a_of_type_Ausj;
+      localausj.b -= this.b;
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setOutlineProvider(this.jdField_a_of_type_Ausj);
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setClipToOutline(true);
+      if (this.jdField_a_of_type_Ausj.jdField_a_of_type_Int > this.jdField_a_of_type_Ausj.b)
       {
-        localObject = BaseApplication.getContext();
-        localObject = new Intent((Context)localObject, QQBrowserActivity.class);
-        paramContext = "http://y.qq.com/m/personal_music/index.html?_wv=3&_bid=2032";
-        if (paramAppInterface != null) {}
-        try
-        {
-          paramContext = "http://y.qq.com/m/personal_music/index.html?_wv=3&_bid=2032" + "&uin=" + paramAppInterface.getCurrentAccountUin();
-          paramAppInterface = paramContext;
-          if (!TextUtils.isEmpty(paramString)) {
-            paramAppInterface = paramContext + "&guestuin=" + paramString;
-          }
-          if (!paramBoolean) {
-            continue;
-          }
-          paramContext = paramAppInterface + "&ADTAG=GXYY_GUAJIAN";
-          ((Intent)localObject).putExtra("url", paramContext);
-          ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-          return localObject;
-        }
-        catch (Exception paramAppInterface)
-        {
-          paramContext = (Context)localObject;
-        }
-        QLog.e("MusicPendantUtil", 1, "openMusicPendantSettingPage() app is null.");
-        continue;
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
+        this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.a();
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
       }
-      catch (Exception paramAppInterface)
-      {
-        paramContext = null;
-        continue;
-      }
-      QLog.e("MusicPendantUtil", 1, "getPlayBarIntent() exception", paramAppInterface);
-      return paramContext;
-      paramContext = paramAppInterface + "&ADTAG=GXYY_TOPCELL";
     }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 5L);
   }
   
-  public static String a()
+  public void a()
   {
-    if (TextUtils.isEmpty(a)) {}
-    try
-    {
-      a = QQPlayerService.a(6, "MusicPendantUtil");
-      return a;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("MusicPendantUtil", 1, "MusicPendantManager() exception", localException);
-      }
-    }
+    ThreadManagerV2.getUIHandlerV2().post(new FullPopAnimWithLOLLIPOP.5(this));
+    a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aurr
  * JD-Core Version:    0.7.0.1
  */

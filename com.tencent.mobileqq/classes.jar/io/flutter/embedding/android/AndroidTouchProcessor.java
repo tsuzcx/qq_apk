@@ -1,10 +1,10 @@
 package io.flutter.embedding.android;
 
 import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
 import android.view.InputDevice;
 import android.view.InputDevice.MotionRange;
 import android.view.MotionEvent;
+import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.renderer.FlutterRenderer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -12,8 +12,9 @@ import java.nio.ByteOrder;
 public class AndroidTouchProcessor
 {
   private static final int BYTES_PER_FIELD = 8;
-  private static final int POINTER_DATA_FIELD_COUNT = 24;
+  private static final int POINTER_DATA_FIELD_COUNT = 28;
   private static final int POINTER_DATA_FLAG_BATCHED = 1;
+  private static final int _POINTER_BUTTON_PRIMARY = 1;
   @NonNull
   private final FlutterRenderer renderer;
   
@@ -29,8 +30,8 @@ public class AndroidTouchProcessor
     }
     int j = getPointerDeviceTypeForToolType(paramMotionEvent.getToolType(paramInt1));
     int i;
-    label125:
-    double d2;
+    long l1;
+    label184:
     double d1;
     if (paramMotionEvent.getActionMasked() == 8)
     {
@@ -40,32 +41,54 @@ public class AndroidTouchProcessor
       paramByteBuffer.putLong(j);
       paramByteBuffer.putLong(i);
       paramByteBuffer.putLong(paramMotionEvent.getPointerId(paramInt1));
+      paramByteBuffer.putLong(0L);
       paramByteBuffer.putDouble(paramMotionEvent.getX(paramInt1));
       paramByteBuffer.putDouble(paramMotionEvent.getY(paramInt1));
+      paramByteBuffer.putDouble(0.0D);
+      paramByteBuffer.putDouble(0.0D);
       if (j != 1) {
-        break label359;
+        break label436;
       }
-      paramByteBuffer.putLong(paramMotionEvent.getButtonState() & 0x1F);
+      long l2 = paramMotionEvent.getButtonState() & 0x1F;
+      l1 = l2;
+      if (l2 == 0L)
+      {
+        l1 = l2;
+        if (paramMotionEvent.getSource() == 8194) {
+          if (paramInt2 != 4)
+          {
+            l1 = l2;
+            if (paramInt2 != 5) {}
+          }
+          else
+          {
+            l1 = 1L;
+          }
+        }
+      }
+      paramByteBuffer.putLong(l1);
+      paramByteBuffer.putLong(0L);
       paramByteBuffer.putLong(0L);
       paramByteBuffer.putDouble(paramMotionEvent.getPressure(paramInt1));
+      double d2 = 1.0D;
       if (paramMotionEvent.getDevice() == null) {
-        break label394;
+        break label463;
       }
       InputDevice.MotionRange localMotionRange = paramMotionEvent.getDevice().getMotionRange(2);
       if (localMotionRange == null) {
-        break label394;
+        break label463;
       }
-      d2 = localMotionRange.getMin();
-      d1 = localMotionRange.getMax();
-      label182:
-      paramByteBuffer.putDouble(d2);
+      d1 = localMotionRange.getMin();
+      d2 = localMotionRange.getMax();
+      label259:
       paramByteBuffer.putDouble(d1);
+      paramByteBuffer.putDouble(d2);
       if (j != 2) {
-        break label403;
+        break label469;
       }
       paramByteBuffer.putDouble(paramMotionEvent.getAxisValue(24, paramInt1));
       paramByteBuffer.putDouble(0.0D);
-      label225:
+      label302:
       paramByteBuffer.putDouble(paramMotionEvent.getSize(paramInt1));
       paramByteBuffer.putDouble(paramMotionEvent.getToolMajor(paramInt1));
       paramByteBuffer.putDouble(paramMotionEvent.getToolMinor(paramInt1));
@@ -73,7 +96,7 @@ public class AndroidTouchProcessor
       paramByteBuffer.putDouble(0.0D);
       paramByteBuffer.putDouble(paramMotionEvent.getAxisValue(8, paramInt1));
       if (j != 2) {
-        break label420;
+        break label486;
       }
       paramByteBuffer.putDouble(paramMotionEvent.getAxisValue(25, paramInt1));
     }
@@ -81,33 +104,32 @@ public class AndroidTouchProcessor
     {
       paramByteBuffer.putLong(paramInt3);
       if (i != 1) {
-        break label430;
+        break label496;
       }
       paramByteBuffer.putDouble(-paramMotionEvent.getAxisValue(10));
       paramByteBuffer.putDouble(-paramMotionEvent.getAxisValue(9));
       return;
       i = 0;
       break;
-      label359:
+      label436:
       if (j == 2)
       {
-        paramByteBuffer.putLong(paramMotionEvent.getButtonState() >> 4 & 0xF);
-        break label125;
+        l1 = paramMotionEvent.getButtonState() >> 4 & 0xF;
+        break label184;
       }
-      paramByteBuffer.putLong(0L);
-      break label125;
-      label394:
-      d1 = 1.0D;
-      d2 = 0.0D;
-      break label182;
-      label403:
+      l1 = 0L;
+      break label184;
+      label463:
+      d1 = 0.0D;
+      break label259;
+      label469:
       paramByteBuffer.putDouble(0.0D);
       paramByteBuffer.putDouble(0.0D);
-      break label225;
-      label420:
+      break label302;
+      label486:
       paramByteBuffer.putDouble(0.0D);
     }
-    label430:
+    label496:
     paramByteBuffer.putDouble(0.0D);
     paramByteBuffer.putDouble(0.0D);
   }
@@ -179,10 +201,10 @@ public class AndroidTouchProcessor
     }
     label58:
     int i = getPointerChangeForAction(paramMotionEvent.getActionMasked());
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramMotionEvent.getPointerCount() * 24 * 8);
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramMotionEvent.getPointerCount() * 28 * 8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     addPointerForIndex(paramMotionEvent, paramMotionEvent.getActionIndex(), i, 0, localByteBuffer);
-    if (localByteBuffer.position() % 192 == 0)
+    if (localByteBuffer.position() % 224 == 0)
     {
       this.renderer.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
       return true;
@@ -193,7 +215,7 @@ public class AndroidTouchProcessor
   public boolean onTouchEvent(@NonNull MotionEvent paramMotionEvent)
   {
     int k = paramMotionEvent.getPointerCount();
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(k * 24 * 8);
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(k * 28 * 8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     int j = paramMotionEvent.getActionMasked();
     int m = getPointerChangeForAction(paramMotionEvent.getActionMasked());
@@ -213,7 +235,7 @@ public class AndroidTouchProcessor
     }
     for (;;)
     {
-      if (localByteBuffer.position() % 192 != 0) {
+      if (localByteBuffer.position() % 224 != 0) {
         break label216;
       }
       this.renderer.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
@@ -252,7 +274,7 @@ public class AndroidTouchProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.AndroidTouchProcessor
  * JD-Core Version:    0.7.0.1
  */

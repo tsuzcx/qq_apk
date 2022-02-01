@@ -1,40 +1,34 @@
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import mqq.app.MobileQQ;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
 class scy
-  implements bfah
+  implements spt
 {
-  scy(scx paramscx, ArticleInfo paramArticleInfo, int paramInt) {}
+  scy(scw paramscw, VideoInfo paramVideoInfo, JSONObject paramJSONObject) {}
   
-  public void a(BaseResp paramBaseResp)
+  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    boolean bool = true;
-    if ((scx.a(this.jdField_a_of_type_Scx) == null) || (!scx.a(this.jdField_a_of_type_Scx).equals(paramBaseResp.transaction))) {
-      return;
+    paramView = pha.a();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
+      pmh.a().a(Long.valueOf(paramView).longValue(), sce.a(this.jdField_a_of_type_Scw.a).a.makeDislikeParam(paramArrayList, sce.a(this.jdField_a_of_type_Scw.a).g));
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      ybk.b(1, 2131720031);
-      bool = false;
-    }
-    for (;;)
-    {
-      paramBaseResp = (AppInterface)ors.a();
-      sdn.b(paramBaseResp.getApplication().getApplicationContext(), paramBaseResp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false, bool);
-      return;
-      ybk.b(2, 2131720050);
-      continue;
-      bool = false;
-    }
+    QQToast.a(sce.a(this.jdField_a_of_type_Scw.a), -1, sce.a(this.jdField_a_of_type_Scw.a).getString(2131698480), 0).b(sce.a(this.jdField_a_of_type_Scw.a).getResources().getDimensionPixelSize(2131298998));
+    sce.a(this.jdField_a_of_type_Scw.a).dismiss();
+    sce.b(this.jdField_a_of_type_Scw.a, false);
+    oat.b(null, null, "0X800913C", "0X800913C", 0, 0, null, null, null, new skc(och.a(null, null, null, null, this.jdField_a_of_type_OrgJsonJSONObject)).h(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g).a(paramArrayList).a().a(), false);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     scy
  * JD-Core Version:    0.7.0.1
  */

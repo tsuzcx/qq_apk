@@ -1,51 +1,73 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.widget.PinnedFooterExpandableListView;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
+import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
 
 public class bbnq
-  implements bbok
+  extends bbnh
 {
-  public bbnq(NewTroopContactView paramNewTroopContactView) {}
+  public bbnd a;
+  public boolean b;
   
-  public ArrayList<ResultRecord> a()
+  public bbnq(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    return this.a.c;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    this.jdField_g_of_type_Boolean = false;
   }
   
-  public void a()
+  public void a(String paramString)
   {
-    this.a.jdField_a_of_type_Bbne.notifyDataSetChanged();
-    if (this.a.jdField_a_of_type_Bbne.getGroupCount() > 0)
+    try
     {
-      Groups localGroups1 = this.a.jdField_a_of_type_Bbne.a(1007L);
-      Groups localGroups2 = this.a.jdField_a_of_type_Bbne.a(1008L);
-      if ((localGroups1 != null) || (localGroups2 != null))
+      JSONObject localJSONObject = new JSONObject(paramString);
+      String str2 = localJSONObject.optString("appname");
+      String str1 = localJSONObject.optString("desc");
+      String str3 = localJSONObject.optString("appIcon");
+      String str4 = localJSONObject.optString("appid");
+      int i = localJSONObject.optInt("showMask", 0);
+      Object localObject = null;
+      paramString = (String)localObject;
+      if (localJSONObject.has("friendExtra"))
       {
-        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.a(0);
-        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setIsNeedScrollPositionTop(true);
-        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.smoothScrollToPositionFromTop(1, 0, 0);
+        localJSONObject = localJSONObject.optJSONObject("friendExtra");
+        paramString = (String)localObject;
+        if (localJSONObject != null)
+        {
+          paramString = (String)localObject;
+          if (localJSONObject.has("displayText")) {
+            paramString = localJSONObject.optString("displayText");
+          }
+        }
       }
-      if (localGroups1 != null) {
-        this.a.jdField_a_of_type_Bboi.a();
+      localObject = str1;
+      if (!TextUtils.isEmpty(paramString)) {
+        localObject = paramString + " | " + str1;
       }
-      if (localGroups2 != null) {
-        this.a.jdField_a_of_type_Bboi.c();
+      paramString = new MiniAppLocalSearchEntity(str4, str2, str3, (String)localObject, i);
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      this.a = new bbnd((QQAppInterface)localObject, this.c, paramString, this.jdField_g_of_type_JavaLangString);
+      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) && (str2.equalsIgnoreCase(this.jdField_g_of_type_JavaLangString))) {}
+      for (this.b = true; localObject != null; this.b = false)
+      {
+        localObject = (MiniAppLocalSearchManager)((QQAppInterface)localObject).getManager(310);
+        if (localObject == null) {
+          break;
+        }
+        ((MiniAppLocalSearchManager)localObject).updateDataDbFromNetResult(paramString);
+        return;
       }
+      return;
     }
-  }
-  
-  public ArrayList<String> b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.a.c.size())
+    catch (JSONException paramString)
     {
-      localArrayList.add(((ResultRecord)this.a.c.get(i)).a);
-      i += 1;
+      QLog.e("NetSearchTemplateMiniAppItem", 1, "parseLayoutExtensions, exception.");
     }
-    return localArrayList;
   }
 }
 

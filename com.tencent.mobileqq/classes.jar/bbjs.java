@@ -1,64 +1,21 @@
-import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity.2.1;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity.2.2;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bbjs
-  implements bhzf
+  implements View.OnTouchListener
 {
-  public bbjs(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
+  public bbjs(FunctionSearchFragment paramFunctionSearchFragment) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.c(l);
-      return;
-    }
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    paramListView = (PullRefreshHeader)paramView;
-    long l;
-    if (this.a.jdField_a_of_type_Long == 0L)
-    {
-      l = System.currentTimeMillis();
-      paramListView.a(l);
-      if (!bdin.g(this.a.getActivity())) {
-        break label97;
-      }
-      this.a.a(0, true);
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopBarPublishLocationSelectActivity.2.1(this), 300L);
-    }
-    for (;;)
-    {
-      ((acrg)paramView.getTag()).a = true;
-      return true;
-      l = this.a.jdField_a_of_type_Long;
-      break;
-      label97:
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopBarPublishLocationSelectActivity.2.2(this), 300L);
-    }
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.b(l);
-      return;
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

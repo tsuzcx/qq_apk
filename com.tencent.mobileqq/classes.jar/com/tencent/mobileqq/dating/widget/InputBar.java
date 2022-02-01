@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import apjb;
+import arlw;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 
@@ -15,7 +15,7 @@ public class InputBar
 {
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  private apjb jdField_a_of_type_Apjb;
+  private arlw jdField_a_of_type_Arlw;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private boolean jdField_a_of_type_Boolean;
   private int b;
@@ -50,8 +50,8 @@ public class InputBar
         while (!this.jdField_a_of_type_Boolean)
         {
           return;
-          if ((paramInt4 == this.h) && (this.jdField_a_of_type_Apjb != null)) {
-            this.jdField_a_of_type_Apjb.a();
+          if ((paramInt4 == this.h) && (this.jdField_a_of_type_Arlw != null)) {
+            this.jdField_a_of_type_Arlw.a();
           }
         }
         if (QLog.isDevelopLevel()) {
@@ -77,14 +77,14 @@ public class InputBar
     this.d = paramInt2;
   }
   
-  public void setmCallback(apjb paramapjb)
+  public void setmCallback(arlw paramarlw)
   {
-    this.jdField_a_of_type_Apjb = paramapjb;
+    this.jdField_a_of_type_Arlw = paramarlw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.widget.InputBar
  * JD-Core Version:    0.7.0.1
  */

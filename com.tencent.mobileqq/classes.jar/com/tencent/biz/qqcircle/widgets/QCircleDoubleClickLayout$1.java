@@ -1,7 +1,7 @@
 package com.tencent.biz.qqcircle.widgets;
 
 import com.tencent.qphone.base.util.QLog;
-import ucr;
+import vvv;
 
 class QCircleDoubleClickLayout$1
   implements Runnable
@@ -11,7 +11,7 @@ class QCircleDoubleClickLayout$1
   public void run()
   {
     QCircleDoubleClickLayout.a(this.this$0, false);
-    if (QCircleDoubleClickLayout.a(this.this$0) >= 2)
+    if ((QCircleDoubleClickLayout.a(this.this$0) >= 2) && (QCircleDoubleClickLayout.a(this.this$0) != null))
     {
       QCircleDoubleClickLayout.a(this.this$0).a();
       QLog.d("QCircleDoubleClickLayout", 1, "onDoubleClick:" + QCircleDoubleClickLayout.a(this.this$0));
@@ -29,7 +29,7 @@ class QCircleDoubleClickLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout.1
  * JD-Core Version:    0.7.0.1
  */

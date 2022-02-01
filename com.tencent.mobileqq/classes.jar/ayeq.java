@@ -1,19 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
+import android.database.DataSetObserver;
+import android.support.v4.view.ViewPager;
+import com.tencent.mobileqq.now.widget.SimpleCircleIndicator;
 
 public class ayeq
-  extends ayem
+  extends DataSetObserver
 {
-  public ayeq(CommentsView paramCommentsView, int paramInt, String paramString)
-  {
-    super(paramInt);
-  }
+  public ayeq(SimpleCircleIndicator paramSimpleCircleIndicator, ViewPager paramViewPager) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
-      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_JavaLangString);
-    }
+    super.onChanged();
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator.setCurrentItem(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
   }
 }
 

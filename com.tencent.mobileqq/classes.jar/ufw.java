@@ -1,56 +1,77 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import java.util.List;
+import UserGrowth.stSimpleMetaFeed;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import cooperation.qzone.util.QZLog;
 
-class ufw
-  extends RecyclerView.ViewHolder
+public class ufw
+  extends QQUIEventReceiver<ufp, uhc>
 {
-  public RelativeLayout a;
-  public TextView a;
-  public FeedCloudMeta.StTagInfo a;
+  private int a;
   
-  public ufw(ufv paramufv, View paramView)
+  ufw(@NonNull ufp paramufp, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369129));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369127));
+    super(paramufp);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(FeedCloudMeta.StTagInfo paramStTagInfo, int paramInt)
+  public void a(@NonNull ufp paramufp, @NonNull uhc paramuhc)
   {
-    if (paramStTagInfo != null)
-    {
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = paramStTagInfo;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStTagInfo.tagName.get());
-      paramStTagInfo = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      if (paramInt != 0) {
-        break label89;
-      }
-      paramStTagInfo.setMargins(0, 0, 0, 0);
+    upe.c("comment", "onEvent,commentEvent.mEventAction:" + paramuhc.jdField_a_of_type_Int + ",WSHomeFragment.mCurrentPageIndex:" + WSHomeFragment.jdField_a_of_type_Int + ",mCurrentPageIndex:" + this.jdField_a_of_type_Int);
+    if (WSHomeFragment.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
+      upe.d("comment", "commentPresenter 's hashCode:" + paramufp.hashCode() + ", 页面不对,不响应!");
     }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramStTagInfo);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(azkz.a(5.0F), 0, azkz.a(5.0F), 0);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ufx(this));
       return;
-      label89:
-      if (paramInt == this.jdField_a_of_type_Ufv.a.size() - 1) {
-        paramStTagInfo.setMargins(azkz.a(5.0F), 0, azkz.a(38.0F), 0);
-      } else {
-        paramStTagInfo.setMargins(azkz.a(5.0F), 0, 0, 0);
+      upe.c("comment", "commentPresenter 's hashCode:" + paramufp.hashCode() + ", 页面正确,开始响应~");
+      switch (paramuhc.jdField_a_of_type_Int)
+      {
+      case 3: 
+      case 5: 
+      default: 
+        upe.b("comment", "default process,commentEvent.mEventAction:" + paramuhc.jdField_a_of_type_Int);
+        return;
+      case 1: 
+        paramufp.b();
+        return;
+      case 2: 
+        ufp.a(paramufp);
+        return;
+      case 4: 
+        if ((paramuhc.jdField_a_of_type_JavaLangObject instanceof Object[]))
+        {
+          paramuhc = (Object[])paramuhc.jdField_a_of_type_JavaLangObject;
+          int i = ((Integer)paramuhc[0]).intValue();
+          paramufp.a(i);
+          paramuhc = (stSimpleMetaFeed)((uru)paramuhc[1]).a();
+          upe.c("comment", "setCurrentFeed , feedId:" + paramuhc.id + ", position:" + i + ",feed desc:" + paramuhc.feed_desc);
+          paramufp.a(paramuhc);
+        }
+        QZLog.w(this.TAG, "event page change, position:" + ufp.b(paramufp) + " feedId:" + ufp.a(paramufp));
+        ufp.a(paramufp, null);
+        ufp.a(paramufp, "");
+        ufp.b(paramufp, 0L);
+        ufp.a(paramufp, false);
+        paramuhc = ufp.a(paramufp);
       }
-    }
+    } while ((!ufp.e(paramufp)) || (paramuhc == null));
+    paramufp = paramuhc.a();
+    paramufp.removeMessages(11);
+    paramufp.sendMessageDelayed(paramufp.obtainMessage(11), 20L);
+    return;
+    paramufp.a((Object[])paramuhc.jdField_a_of_type_JavaLangObject);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uhc.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ufw
  * JD-Core Version:    0.7.0.1
  */

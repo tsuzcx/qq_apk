@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.widget;
 
 import android.graphics.drawable.Animatable;
-import bety;
+import biau;
 
 public class QQProgressDialog$1
   implements Runnable
 {
-  public QQProgressDialog$1(bety parambety) {}
+  public QQProgressDialog$1(biau parambiau) {}
   
   public void run()
   {
-    bety.a(this.this$0).start();
+    biau.a(this.this$0).start();
   }
 }
 

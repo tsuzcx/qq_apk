@@ -1,32 +1,35 @@
-import android.support.v4.view.ViewPager.PageTransformer;
-import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class nnu
-  implements ViewPager.PageTransformer
+final class nnu
+  implements BusinessObserver
 {
-  private nnu(VerticleViewPager paramVerticleViewPager) {}
+  nnu(QQAppInterface paramQQAppInterface, nnw paramnnw) {}
   
-  public void transformPage(View paramView, float paramFloat)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramFloat < -1.0F)
+    if ((paramBoolean) && (paramBundle != null))
     {
-      paramView.setAlpha(0.0F);
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        nnt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Nnw);
+      }
+    }
+    else
+    {
       return;
     }
-    if (paramFloat <= 1.0F)
-    {
-      paramView.setAlpha(1.0F);
-      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
-      paramView.setTranslationY(paramView.getHeight() * paramFloat);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
     }
-    paramView.setAlpha(0.0F);
+    this.jdField_a_of_type_Nnw.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nnu
  * JD-Core Version:    0.7.0.1
  */

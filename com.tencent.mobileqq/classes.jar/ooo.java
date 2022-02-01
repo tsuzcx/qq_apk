@@ -1,23 +1,18 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
 class ooo
-  implements View.OnClickListener
+  extends oom
 {
-  ooo(oon paramoon, omt paramomt, Context paramContext) {}
+  ooo(oon paramoon) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString)
   {
-    QLog.d(oon.a(this.jdField_a_of_type_Oon), 1, "getBottomGuideView : " + oon.b(this.jdField_a_of_type_Oon));
-    oon.a(this.jdField_a_of_type_Oon, "0X8009FEA", this.jdField_a_of_type_Omt.a);
-    ors.a(this.jdField_a_of_type_AndroidContentContext, oon.b(this.jdField_a_of_type_Oon));
+    if (paramBoolean) {
+      oon.a(this.a, paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ooo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import befl;
-import begz;
-import bfrz;
+import bhmn;
+import bhod;
+import bize;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.open.appcommon.js.BaseInterface;
@@ -15,7 +15,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class WadlWebViewJsPlugin
-  extends befl
+  extends bhmn
 {
   public static final String PLUGIN_NAMESPACE = "wadl_download";
   public static final String TAG = "WadlWebViewJsPlugin";
@@ -30,33 +30,12 @@ public class WadlWebViewJsPlugin
   
   public Method getJsMethod(String paramString1, String paramString2, int paramInt)
   {
-    paramString1 = (BaseInterface)this.apiMap.get(paramString1);
-    if (paramString1 != null)
-    {
-      paramString1 = paramString1.getClass().getDeclaredMethods();
-      int j = paramString1.length;
-      int i = 0;
-      while (i < j)
-      {
-        Method localMethod = paramString1[i];
-        if ((localMethod.getName().equals(paramString2)) && (localMethod.getParameterTypes().length == paramInt)) {
-          return localMethod;
-        }
-        i += 1;
-      }
-    }
     return null;
   }
   
   public String getNameSpace()
   {
     return "wadl_download";
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if (paramLong == 8589934593L) {}
-    return false;
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -70,7 +49,7 @@ public class WadlWebViewJsPlugin
     int i;
     if (localBaseInterface != null)
     {
-      bfrz.c("WadlWebViewJsPlugin", "handleJsRequest pkgName=" + paramString2 + ",methodName=" + paramString3);
+      bize.c("WadlWebViewJsPlugin", "handleJsRequest pkgName=" + paramString2 + ",methodName=" + paramString3);
       Method[] arrayOfMethod = localBaseInterface.getClass().getDeclaredMethods();
       int j = arrayOfMethod.length;
       i = 0;
@@ -141,7 +120,7 @@ public class WadlWebViewJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin
  * JD-Core Version:    0.7.0.1
  */

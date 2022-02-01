@@ -1,20 +1,21 @@
-public abstract interface bfvf
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.troop.widget.BorderURLImageView;
+
+public class bfvf
 {
-  public abstract void a(String paramString, int paramInt);
+  akeh jdField_a_of_type_Akeh;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  BorderURLImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView;
   
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b(byte[] paramArrayOfByte);
-  
-  public abstract void c(byte[] paramArrayOfByte);
-  
-  public abstract void d(byte[] paramArrayOfByte);
-  
-  public abstract void e(byte[] paramArrayOfByte);
+  protected bfvf(bfve parambfve) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfvf
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.securemodule.ae;
 import com.tencent.securemodule.at;
-import com.tencent.securemodule.ax;
+import com.tencent.securemodule.az;
 import com.tencent.securemodule.service.ApkDownLoadListener;
 import com.tencent.securemodule.service.CloudScanListener;
 import com.tencent.securemodule.service.ISecureModuleService;
@@ -102,7 +102,7 @@ public class SecureModuleService
       return -6;
     }
     at.a(this.mContext, paramProductInfo);
-    if (!ax.a(this.mContext, "sm_mq")) {
+    if (!az.a(this.mContext, "sm_mq")) {
       return -1;
     }
     return 0;
@@ -168,7 +168,7 @@ public class SecureModuleService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.impl.SecureModuleService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.confess.BaseMsgListFragment;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aoin
-  extends altm
+  extends aojt
 {
-  public aoin(BaseMsgListFragment paramBaseMsgListFragment) {}
-  
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    if ((paramBoolean) && ((paramObject instanceof HashMap))) {}
-    try
-    {
-      paramObject = ((HashMap)paramObject).entrySet().iterator();
-      do
-      {
-        Map.Entry localEntry;
-        do
-        {
-          if (!paramObject.hasNext()) {
-            break;
-          }
-          localEntry = (Map.Entry)paramObject.next();
-        } while (localEntry == null);
-        paramBoolean = this.a.a((String)localEntry.getKey(), 2);
-      } while (!paramBoolean);
-      i = 1;
+    paramQQAppInterface = new aoil(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "avgame";
+    paramQQAppInterface.c = "join_room";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    catch (Throwable paramObject)
+    paramContext = paramContext[1].split("&");
+    int i = 0;
+    while (i < paramContext.length)
     {
-      for (;;)
+      paramString = paramContext[i];
+      if (paramString.split("=").length == 2)
       {
-        int i = 0;
-        continue;
-        i = 0;
+        int j = paramString.indexOf("=");
+        paramQQAppInterface.a(paramString.substring(0, j), paramString.substring(j + 1));
       }
+      i += 1;
     }
-    if (i != 0) {
-      this.a.b();
-    }
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString, 1))) {
-      this.a.b();
-    }
+    return paramQQAppInterface;
   }
 }
 

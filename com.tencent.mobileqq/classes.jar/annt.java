@@ -1,12 +1,16 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class annt
-  implements FileFilter
+final class annt
+  implements DialogInterface.OnClickListener
 {
-  public boolean accept(File paramFile)
+  annt(QQAppInterface paramQQAppInterface) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (paramFile.getName().startsWith("hc_")) || (paramFile.getName().startsWith(".hc_"));
+    paramDialogInterface.dismiss();
+    bcst.b(this.a, "CliOper", "", "", "0X8004C6C", "0X8004C6C", 0, 0, "", "", "", "");
   }
 }
 

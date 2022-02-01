@@ -1,25 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanelWithActionBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ascw
-  implements DialogInterface.OnClickListener
+public class ascw
+  implements View.OnClickListener
 {
-  ascw(ascq paramascq) {}
+  public ascw(SystemAndEmojiEmoticonPanelWithActionBar paramSystemAndEmojiEmoticonPanelWithActionBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
-    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.putExtra("fragment_id", 1);
-    paramDialogInterface.setFlags(67108864);
-    paramDialogInterface.setFlags(268435456);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    if (this.a.a != null) {
+      this.a.a.c();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,45 +1,68 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import java.util.Collection;
-import java.util.Iterator;
+import android.content.Context;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.PublicAcntSearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import java.util.List;
 
 public class bbmq
+  implements bbmx
 {
-  public static String a(Collection<TroopAIOAppInfo> paramCollection)
+  public static final String a;
+  private int jdField_a_of_type_Int;
+  private final List<bbmy> jdField_a_of_type_JavaUtilList;
+  private final String b;
+  
+  static
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (bbmp.a(paramCollection))
-    {
-      localStringBuilder.append("empty apps");
-      return localStringBuilder.toString();
+    jdField_a_of_type_JavaLangString = anni.a(2131704154);
+  }
+  
+  public bbmq(List<bbmy> paramList, String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return bbgu.a("pref_fts_native_search_public_account_max_num", 3);
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Int == 12) {
+      return anni.a(2131704179) + tyg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext());
     }
-    localStringBuilder.append("[gray+ red*]");
-    paramCollection = paramCollection.iterator();
-    label41:
-    TroopAIOAppInfo localTroopAIOAppInfo;
-    if (paramCollection.hasNext())
-    {
-      localTroopAIOAppInfo = (TroopAIOAppInfo)paramCollection.next();
-      if (localTroopAIOAppInfo.isGray) {
-        localStringBuilder.append("+");
-      }
-      if (localTroopAIOAppInfo.redPoint) {
-        localStringBuilder.append("*");
-      }
-      if (TextUtils.isEmpty(localTroopAIOAppInfo.name)) {
-        break label117;
-      }
-      localStringBuilder.append(localTroopAIOAppInfo.name);
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<bbmy> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    bbup.a(this.b, 50, 0, paramView);
+    Context localContext = paramView.getContext();
+    if ((localContext != null) && ((localContext instanceof BaseActivity))) {
+      bcst.b(((BaseActivity)localContext).app, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1C", "0X8005D1C", 0, 1, 0, "0", "", this.b, "");
     }
-    for (;;)
+    if ((paramView.getContext() instanceof UniteSearchActivity))
     {
-      localStringBuilder.append(" ");
-      break label41;
-      break;
-      label117:
-      localStringBuilder.append("id:");
-      localStringBuilder.append(localTroopAIOAppInfo.appid);
+      bbup.a("all_result", "clk_public_uin_more", new String[] { "" + this.b });
+      bbrf.a(null, 0, this.jdField_a_of_type_Int, "0X8009D53", 0, 0, null, null);
     }
+    PublicAcntSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int);
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

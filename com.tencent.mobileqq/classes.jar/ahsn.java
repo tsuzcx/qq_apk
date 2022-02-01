@@ -1,11 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
+
 class ahsn
-  implements ahvu
+  implements DialogInterface.OnDismissListener
 {
-  ahsn(ahsi paramahsi) {}
+  ahsn(ahsd paramahsd) {}
   
-  public long a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return ahsi.a(this.a);
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (ahsd.a(this.a) != null)) {
+      this.a.r();
+    }
   }
 }
 

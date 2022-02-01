@@ -1,28 +1,50 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFeedVisitor;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-class wzu
-  implements urr<vfo, vhi>
+public class wzu
+  extends wlf
 {
-  wzu(wzs paramwzs) {}
+  public static final String a = wjz.a("StorySvc.feed_visitor_list");
+  public String b;
   
-  public void a(@NonNull vfo paramvfo, @Nullable vhi paramvhi, @NonNull ErrorMessage paramErrorMessage)
+  public String a()
   {
-    wxe.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramvhi != null))
+    return a;
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetFeedVisitor localRspGetFeedVisitor = new qqstory_service.RspGetFeedVisitor();
+    try
     {
-      wxe.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramvhi.toString());
-      paramvfo = new uuv(paramvhi.a, paramvhi.c, paramvhi.d, paramvhi.e, paramvhi.f, paramvfo.d, paramvfo.e);
-      this.a.a(0, paramvfo);
-      return;
+      localRspGetFeedVisitor.mergeFrom(paramArrayOfByte);
+      return new xbf(this.b, localRspGetFeedVisitor);
     }
-    wxe.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.d("Q.qqstory:GetVideoWatcherListRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetFeedVisitor localReqGetFeedVisitor = new qqstory_service.ReqGetFeedVisitor();
+    localReqGetFeedVisitor.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqGetFeedVisitor.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetVideoWatcherListRequest{, feedId='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wzu
  * JD-Core Version:    0.7.0.1
  */

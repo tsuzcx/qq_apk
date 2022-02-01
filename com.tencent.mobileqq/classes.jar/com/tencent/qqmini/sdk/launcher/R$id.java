@@ -1,0 +1,13 @@
+package com.tencent.qqmini.sdk.launcher;
+
+public final class R$id
+{
+  public static final int frag_container = 2131367058;
+  public static final int title = 2131378776;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.qqmini.sdk.launcher.R.id
+ * JD-Core Version:    0.7.0.1
+ */

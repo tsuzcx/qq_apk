@@ -1,13 +1,8 @@
-class aijs
-  implements bdnk
+import java.util.List;
+
+abstract interface aijs
 {
-  aijs(aijq paramaijq) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    aijq.a(this.a, bdni.a(paramInt));
-    this.a.a.height = aijq.a(this.a);
-  }
+  public abstract void a(List<aiit> paramList, String paramString1, String paramString2, int paramInt, String paramString3);
 }
 
 

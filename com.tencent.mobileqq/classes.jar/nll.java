@@ -1,23 +1,45 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class nll
-  implements View.OnClickListener
 {
-  public nll(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
+  private static final String a = nll.class.getName();
   
-  public void onClick(View paramView)
+  public static String a(String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    localStringBuffer = new StringBuffer();
+    try
+    {
+      paramString = new BufferedReader(new InputStreamReader(((HttpURLConnection)new URL(paramString).openConnection()).getInputStream()));
+      for (;;)
+      {
+        String str = paramString.readLine();
+        if (str == null) {
+          break;
+        }
+        localStringBuffer.append(str);
+      }
+      return localStringBuffer.toString();
     }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "http error");
+      }
+    }
+  }
+  
+  public static void a(String paramString, nln paramnln)
+  {
+    new nlm(paramnln, paramString).execute(new Void[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nll
  * JD-Core Version:    0.7.0.1
  */

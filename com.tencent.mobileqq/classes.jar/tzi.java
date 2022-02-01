@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import qqcircle.TaskCenterReader.TaskListRsp;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.7;
 
-class tzi
-  implements zac<TaskCenterReader.TaskListRsp>
+public class tzi
+  implements biaw
 {
-  tzi(tzh paramtzh) {}
+  public tzi(PublicAccountH5AbilityPlugin.7 param7, rzn paramrzn) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, TaskCenterReader.TaskListRsp paramTaskListRsp)
+  public void a()
   {
-    if (paramTaskListRsp != null) {
-      tyz.a().a((ArrayList)paramTaskListRsp.taskRecords.get());
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$7.this$0.a.b(this.jdField_a_of_type_Rzn);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzi
  * JD-Core Version:    0.7.0.1
  */

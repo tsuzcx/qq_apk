@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import bgsg;
+import com.tencent.common.app.BaseApplicationImpl;
 
 class LoadDex$3
   implements Runnable
@@ -9,7 +10,7 @@ class LoadDex$3
   
   public void run()
   {
-    UnifiedMonitor.a().b();
+    bgsg.b(BaseApplicationImpl.context);
   }
 }
 

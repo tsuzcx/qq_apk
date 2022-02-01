@@ -1,16 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.statistics.GdtCgiReportRunnable;
-import com.tencent.mobileqq.app.ThreadManager;
+import org.json.JSONObject;
 
 public class aasq
 {
-  public static void a(String paramString)
+  public int a;
+  public aasl a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  
+  public aasq(JSONObject paramJSONObject)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
+    this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
+    if (paramJSONObject.optJSONObject("aioActivityBubble") != null) {
+      this.jdField_a_of_type_Aasl = new aasl(paramJSONObject.optJSONObject("aioActivityBubble"));
     }
-    ThreadManager.post(new GdtCgiReportRunnable(paramString), 2, null, false);
-    aase.b("GDT_CGI_REPORT", paramString);
   }
 }
 

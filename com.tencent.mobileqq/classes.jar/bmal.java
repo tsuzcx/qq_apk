@@ -1,15 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bmal
   implements DialogInterface.OnClickListener
 {
-  public bmal(MusicProviderView paramMusicProviderView) {}
+  public bmal(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    this.a.stopPlay();
+    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
     paramDialogInterface.dismiss();
+    QzoneWebMusicJsPlugin.access$902(this.a, false);
   }
 }
 

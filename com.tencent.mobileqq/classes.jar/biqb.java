@@ -1,130 +1,68 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.hce.HcePluginManager.1;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.manager.Manager;
+import java.util.ArrayList;
+import java.util.List;
 
 public class biqb
-  implements Manager
 {
-  public biqc a;
-  private HashSet<String> a;
-  public byte[] a;
+  protected static volatile biqb a;
+  protected List<biqc> a;
+  protected boolean a;
   
-  public biqb(AppInterface paramAppInterface)
+  public biqb()
   {
-    this.jdField_a_of_type_JavaUtilHashSet = new HcePluginManager.1(this);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   public static biqb a()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (biqb)((QQAppInterface)localAppRuntime).getManager(291);
+    if (jdField_a_of_type_Biqb == null) {
+      jdField_a_of_type_Biqb = new biqb();
     }
-    return null;
+    return jdField_a_of_type_Biqb;
   }
   
-  public static String a()
+  public void a(boolean paramBoolean)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (BaseApplicationImpl.getApplication().getRuntime() != null)
+    try
     {
-      str1 = str2;
-      if (BaseApplicationImpl.getApplication().getRuntime().getAccount() != null) {
-        str1 = MD5.toMD5(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-      }
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      b(paramBoolean);
+      return;
     }
-    return str1;
-  }
-  
-  public int a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null)
+    finally
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("HcePluginManager", 2, "matchAID fail  commandApdu is null");
-      }
-      return -1;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      byte[] arrayOfByte = bipy.a(str);
-      if (QLog.isColorLevel()) {
-        QLog.i("HcePluginManager", 2, "aidApdu: " + bipy.a(arrayOfByte) + " commandApdu" + bipy.a(paramArrayOfByte));
-      }
-      if (Arrays.equals(arrayOfByte, paramArrayOfByte))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("HcePluginManager", 2, "matchAID succ, aid=" + str);
-        }
-        return 0;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("HcePluginManager", 2, "matchAID fail  no match aid");
-    }
-    return -1;
-  }
-  
-  public long a()
-  {
-    String str = bdea.a(BaseApplicationImpl.getApplication(), "vfcStartTime");
-    if (bdnn.a(str)) {
-      return 0L;
-    }
-    return Long.parseLong(str);
-  }
-  
-  public void a()
-  {
-    bdea.a(BaseApplicationImpl.getApplication(), "vfcStartTime", System.currentTimeMillis() + "");
-  }
-  
-  public void a(Context paramContext, int paramInt)
-  {
-    if (paramContext != null) {
-      bdea.a(paramContext, "vfcState", paramInt + "");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("HcePluginManager", 2, "onVfcPluginLifecycle state " + paramInt + " Context " + paramContext);
+      localObject = finally;
+      throw localObject;
     }
   }
   
   public boolean a()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    return (localAppRuntime != null) && (localAppRuntime.isLogin());
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public boolean a(Context paramContext)
+  protected void b(boolean paramBoolean)
   {
-    return (paramContext != null) && ("1".equals(bdea.a(paramContext, "vfcState")));
-  }
-  
-  public boolean a(byte[] paramArrayOfByte)
-  {
-    return (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 0) && (paramArrayOfByte[1] == -92);
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_Biqc = null;
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      biqc[] arrayOfbiqc = new biqc[this.jdField_a_of_type_JavaUtilList.size()];
+      this.jdField_a_of_type_JavaUtilList.toArray(arrayOfbiqc);
+      if (arrayOfbiqc != null)
+      {
+        int j = arrayOfbiqc.length;
+        int i = 0;
+        if (i < j)
+        {
+          arrayOfbiqc[i].a(paramBoolean);
+          i += 1;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biqb
  * JD-Core Version:    0.7.0.1
  */

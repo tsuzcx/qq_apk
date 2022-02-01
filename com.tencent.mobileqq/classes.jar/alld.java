@@ -1,23 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder.1;
-import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder.1.1.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
 
 public class alld
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public alld(ApolloFavViewBinder.1 param1) {}
+  public alld(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new ApolloFavViewBinder.1.1.1(this), 300L);
+    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

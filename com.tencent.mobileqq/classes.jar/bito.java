@@ -1,45 +1,17 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-
-class bito
-  implements ServiceConnection
+public class bito
 {
-  bito(bitn parambitn) {}
+  public final int a;
+  public final String a;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public bito(String paramString, int paramInt)
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
-    bitn.a(this.a, biso.a(paramIBinder));
-    bitn.a(this.a, false);
-    bitn.a(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
-    try
-    {
-      bitn.a(this.a).getApplication().unbindService(bitn.a(this.a));
-      bitn.a(this.a, null);
-      bitn.a(this.a, false);
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bito
  * JD-Core Version:    0.7.0.1
  */

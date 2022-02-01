@@ -1,15 +1,30 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aiaf
-  implements aupv
+  extends auwq
 {
-  aiaf(aiae paramaiae) {}
+  aiaf(ahzy paramahzy) {}
   
-  public void a()
+  protected void a()
   {
-    this.a.jdField_a_of_type_Auqc.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Auqc.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
+    if (((auwj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      ahzy.a(this.a).a(this.a.jdField_a_of_type_Ailk, new Object[0]);
+    }
+  }
+  
+  protected void b()
+  {
+    if (((auwj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_Ailk.a();
+    }
+  }
+  
+  protected void c()
+  {
+    if ((((auwj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (ahzy.b(this.a).a() == 14)) {
+      ahzy.c(this.a).a();
+    }
   }
 }
 

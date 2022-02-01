@@ -1,17 +1,25 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class anpm
-  implements beix
+class anpm
+  implements bkhw
 {
-  public anpm(ArkBrowserFragment paramArkBrowserFragment) {}
+  anpm(anpk paramanpk, bkho parambkho) {}
   
-  public void a(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a = paramString;
-    paramString = this.a.getWebView();
-    if (paramString != null) {
-      paramString.callJs("NativeApi.lightappGetShareData();");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.e();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("MayknowRecommendManager", 2, " onMsgTabRecommendBClick recommend_item_menu hide clicked");
+      }
+      this.jdField_a_of_type_Anpk.h();
+      bcst.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_hide", 0, 0, "", "", "", "");
     }
   }
 }

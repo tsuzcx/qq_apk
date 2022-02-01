@@ -1,235 +1,151 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.1;
-import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.2;
-import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.3;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.music.QzoneMusicHelper;
-import eipc.EIPCResult;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.List;
 
 public class atnl
-  extends QIPCModule
+  implements atnh
 {
-  private atnl()
+  protected QQAppInterface a;
+  protected FileManagerEntity a;
+  
+  public atnl(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    super("ListenTogetherIPCModuleMainServer");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
   }
   
-  public static atnl a()
+  private String a(String paramString, int paramInt, List<String> paramList, boolean paramBoolean)
   {
-    return atnm.a();
-  }
-  
-  private EIPCResult a(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if ((!"action_status_changed".equals(paramString)) || (paramBundle == null)) {}
+    if (!atcq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1)) {}
     for (;;)
     {
-      return null;
-      paramBundle = paramBundle.getString("data");
-      try
+      return "";
+      int i;
+      if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
       {
-        paramBundle = new JSONObject(paramBundle);
-        if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+        QLog.i("VideoForC2C<QFile>XOXO", 1, "[IPv6-File] offlineVideo download mediaplatform. is config enable IPv6. domain[" + paramString + "]");
+        paramString = atcq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramList);
+        if ((paramString != null) && (paramString.size() > 0))
         {
-          localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          if (QLog.isColorLevel()) {
-            QLog.d("ListenTogetherIPCModuleMainServer", 2, "statusChanged action:" + paramString + " data=" + paramBundle + " app:" + localQQAppInterface);
+          i = paramString.size();
+          paramInt = 0;
+          if (paramInt >= i) {
+            break label192;
           }
-          if ((localQQAppInterface == null) || (paramBundle == null)) {
-            continue;
+          paramList = (String)paramString.get(paramInt);
+          if (!TextUtils.isEmpty(paramList))
+          {
+            paramString = "[" + paramList + "]";
+            QLog.i("VideoForC2C<QFile>XOXO", 1, "[IPv6-File] offlineVideo download mediaplatform. use IPv6. hostlist:" + paramString);
           }
-          ((ListenTogetherManager)localQQAppInterface.getManager(331)).a(paramBundle);
-          paramString = new EIPCResult();
-          paramString.code = 0;
-          return paramString;
         }
-      }
-      catch (JSONException paramBundle)
-      {
         for (;;)
         {
-          QLog.i("ListenTogetherIPCModuleMainServer", 1, "statusChanged error:" + paramBundle.getMessage());
-          paramBundle = null;
-          continue;
-          QQAppInterface localQQAppInterface = null;
+          return paramString;
+          paramInt += 1;
+          break;
+          QLog.i("VideoForC2C<QFile>XOXO", 1, "[IPv6-File] offlineVideo download mediaplatform. use IPv4");
+          label192:
+          paramString = "";
         }
       }
-    }
-  }
-  
-  public static void a(JSONObject paramJSONObject)
-  {
-    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 2, "callWebClientStatusChanged data:" + paramJSONObject + "  isToolRunning:" + bool);
-    }
-    if (bool)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("data", paramJSONObject.toString());
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "ListenTogetherIPCModuleWebClient", "action_status_changed", localBundle, null);
-    }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    boolean bool2 = false;
-    int i = 0;
-    boolean bool1 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
-    }
-    if (paramBundle == null) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
-    }
-    for (;;)
-    {
-      return null;
-      if ("action_status_changed".equals(paramString)) {
-        return a(paramString, paramBundle, paramInt);
-      }
-      if ("isOpener".equals(paramString))
+      if (!TextUtils.isEmpty(paramString))
       {
-        paramString = new Bundle();
-        paramString.putBoolean("result", banz.a().a());
-        paramString = EIPCResult.createResult(0, paramString);
-        if (paramInt > 0)
-        {
-          callbackResult(paramInt, paramString);
-          return null;
+        QLog.i("VideoForC2C<QFile>XOXO", 1, "[IPv6-File] offlineVideo download. is config enable IPv6. domain[" + paramString + "]");
+        paramString = new atcr(paramString, paramInt);
+        paramString = atcq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 1);
+        if ((paramString == null) || (paramString.a())) {
+          break;
         }
-      }
-      else if ("isShowAtmosphere".equals(paramString))
-      {
-        try
+        i = paramString.a.size();
+        paramInt = 0;
+        while (paramInt < i)
         {
-          paramString = new JSONObject(paramBundle.getString("data")).optString("uin");
-          paramBundle = new Bundle();
-          if ((banz.a().a()) || (banz.a().a(paramString))) {
-            break label609;
-          }
-          label220:
-          paramBundle.putBoolean("result", bool1);
-          paramString = EIPCResult.createResult(0, paramBundle);
-          if (paramInt > 0)
+          paramList = (atcs)paramString.a.get(paramInt);
+          if ((paramList != null) && (!TextUtils.isEmpty(paramList.a)))
           {
-            callbackResult(paramInt, paramString);
-            return null;
+            paramString = paramList.a;
+            QLog.i("VideoForC2C<QFile>XOXO", 1, "[IPv6-File] offlineVideo download. use IPv6. hostlist:" + paramString);
+            return paramString;
           }
-        }
-        catch (JSONException paramString)
-        {
-          QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_IS_SHOW_ATMOSPHERE: ", paramString);
-          return null;
+          paramInt += 1;
         }
       }
     }
-    if ("setPlayerId".equals(paramString)) {
-      try
-      {
-        paramInt = new JSONObject(paramBundle.getString("data")).optInt("id");
-        baoc.a().a(paramInt);
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_PLAYERID: ", paramString);
-        return null;
-      }
-    }
-    if ("setThemeEnabled".equals(paramString)) {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle.getString("data"));
-        paramString = paramBundle.optString("uin");
-        paramInt = paramBundle.optInt("id");
-        paramBundle = banz.a();
-        bool1 = bool2;
-        if (paramInt == 1) {
-          bool1 = true;
-        }
-        paramBundle.a(paramString, bool1);
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_THEME_ENABLED: ", paramString);
-        return null;
-      }
-    }
-    if ("showFloatView".equals(paramString)) {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle.getString("data"));
-        paramString = paramBundle.optString("uin");
-        paramBundle = paramBundle.optString("coverUrl");
-        ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.1(this, paramString, paramBundle));
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-    }
-    if ("pauseFloatView".equals(paramString))
+    QLog.i("VideoForC2C<QFile>XOXO", 1, "[IPv6-File] offlineVideo download. use IPv4");
+    return "";
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "";
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = ((float)paramLong / (float)this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
+  }
+  
+  public void a(atds paramatds)
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid))
     {
-      ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.2(this));
-      return null;
+      a(true);
+      paramatds.a(-6101, BaseApplication.getContext().getResources().getString(2131692499));
+      QLog.e("VideoForC2C<QFile>XOXO", 2, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "],[getOnlinePlay]  uuid is null");
+      return;
     }
-    if ("changeMusicList".equals(paramString)) {}
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, new atnm(this, paramatds));
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramString);
+    File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.localModifyTime = localFile.lastModified();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOLfileSessionId = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 1.0F;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(3);
+    atvo.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 11, new Object[] { paramString, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize), Boolean.valueOf(true), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strServerPath }, 0, null);
+    atdq.a(this);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+    if (paramBoolean)
     {
-      SongInfo localSongInfo;
-      try
-      {
-        paramString = new JSONObject(paramBundle.getString("data"));
-        int j = paramString.optInt("playType");
-        int k = paramString.optInt("index");
-        paramString = paramString.getJSONArray("songList");
-        paramBundle = new SongInfo[paramString.length()];
-        paramInt = i;
-        if (paramInt < paramString.length())
-        {
-          localSongInfo = QzoneMusicHelper.convertSongInfo(paramString.getJSONObject(paramInt));
-          if (localSongInfo.a != 0L) {
-            break label615;
-          }
-          localSongInfo.a = paramInt;
-          break label615;
-        }
-        QQPlayerService.a(paramBundle, j, k);
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      if (!"stopMusicBox".equals(paramString)) {
-        break;
-      }
-      ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.3(this));
-      return null;
-      label609:
-      bool1 = true;
-      break label220;
-      label615:
-      paramBundle[paramInt] = localSongInfo;
-      paramInt += 1;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 12, null, 2, null);
+    atdq.a(this);
+  }
+  
+  public String b()
+  {
+    return atut.a().c() + bkdr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
   }
 }
 

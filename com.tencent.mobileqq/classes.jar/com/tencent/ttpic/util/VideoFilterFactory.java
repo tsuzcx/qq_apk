@@ -44,8 +44,8 @@ public class VideoFilterFactory
             paramString.updateFilterShader(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_ETC));
           }
           return paramString;
-          if ((paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.GESTURE.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.BODY.type)) {
-            break label436;
+          if ((paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.GESTURE.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.BODY.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.CAT.type)) {
+            break label449;
           }
           paramString = new DynamicStickerFilter(paramStickerItem, paramString);
           break;
@@ -57,13 +57,13 @@ public class VideoFilterFactory
               break;
             }
             if ((paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.GESTURE.type)) {
-              break label436;
+              break label449;
             }
             paramString = new WatermarkDynamicFilter(paramStickerItem, paramString);
             break;
           }
           if (paramStickerItem.stickerType != VideoFilterFactory.STICKER_TYPE.SNAP_SHOT.type) {
-            break label436;
+            break label449;
           }
           paramString = new SnapShotFilter(paramStickerItem, paramString);
           break;
@@ -73,7 +73,7 @@ public class VideoFilterFactory
             break;
           }
           if (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) {
-            break label436;
+            break label449;
           }
           paramString = new DynamicNumFilter(paramStickerItem, paramString);
           break;
@@ -81,7 +81,7 @@ public class VideoFilterFactory
             paramString.updateFilterShader(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_LEFT_RIGHT));
           }
         }
-        label436:
+        label449:
         paramString = null;
       }
     }
@@ -156,7 +156,7 @@ public class VideoFilterFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.VideoFilterFactory
  * JD-Core Version:    0.7.0.1
  */

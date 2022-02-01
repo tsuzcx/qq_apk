@@ -1,9 +1,19 @@
+import com.tencent.maxvideo.common.AVIOStruct;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import java.util.concurrent.atomic.AtomicReference;
+
 public class bcla
 {
   public int a;
-  public long a;
-  public String a;
-  public long b;
+  public bcjc a;
+  public bclv a;
+  public AVIOStruct a;
+  public AtomicReference<SVHwEncoder> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

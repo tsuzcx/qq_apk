@@ -1,10 +1,22 @@
-import com.tencent.TMG.sdk.AVContext.StartParam;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class algs
-  extends AVContext.StartParam
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
+  public algs(LoginView paramLoginView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bcst.a(this.a.a, "dc00898", "", "", "0X8006797", "0X8006797", 0, 0, "", "", "", "");
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
+  }
 }
 
 

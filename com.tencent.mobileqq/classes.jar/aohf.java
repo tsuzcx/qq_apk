@@ -1,20 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-
 public class aohf
-  implements TextWatcher
 {
-  public aohf(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public static String a(long paramLong)
   {
-    this.a.a = true;
+    if (paramLong <= 0L) {
+      return "";
+    }
+    if (paramLong < 1024L) {
+      return paramLong + "B";
+    }
+    if (paramLong < 1048576L) {
+      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F) }) + "K";
+    }
+    if (paramLong < 1073741824L) {
+      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) }) + "M";
+    }
+    return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) }) + "G";
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

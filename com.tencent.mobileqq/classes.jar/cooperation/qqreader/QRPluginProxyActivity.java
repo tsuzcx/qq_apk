@@ -1,9 +1,13 @@
 package cooperation.qqreader;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class QRPluginProxyActivity
   extends PluginProxyActivity
@@ -16,6 +20,14 @@ public class QRPluginProxyActivity
     return QRPluginProxyActivity.class;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public String getPluginID()
   {
     return "qqreaderplugin.apk";
@@ -24,6 +36,13 @@ public class QRPluginProxyActivity
   public final Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
     return a(paramString);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -43,7 +62,7 @@ public class QRPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.QRPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

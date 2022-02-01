@@ -1,14 +1,66 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajzv
-  extends akit
+  extends aqkz
 {
-  public CheckBox a;
-  public TextView a;
+  public static ajzu a()
+  {
+    return (ajzu)aqlk.a().a(470);
+  }
   
-  private ajzv(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
+  @NonNull
+  public ajzu a(int paramInt)
+  {
+    return new ajzu();
+  }
+  
+  @Nullable
+  public ajzu a(aqlg[] paramArrayOfaqlg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaqlg[0].a);
+    }
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return ajzu.a(paramArrayOfaqlg);
+    }
+    return null;
+  }
+  
+  public Class<ajzu> clazz()
+  {
+    return ajzu.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public void onUpdate(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
+    }
+  }
+  
+  public int type()
+  {
+    return 470;
+  }
 }
 
 

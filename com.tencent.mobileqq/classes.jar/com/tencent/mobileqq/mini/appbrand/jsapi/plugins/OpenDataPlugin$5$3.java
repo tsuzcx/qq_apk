@@ -1,0 +1,24 @@
+package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.minigame.utils.GameLog;
+
+class OpenDataPlugin$5$3
+  implements DialogInterface.OnCancelListener
+{
+  OpenDataPlugin$5$3(OpenDataPlugin.5 param5) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_SHARE_MESSAGE_TO_FRIEND cancel");
+    GameLog.vconsoleLog("handleNativeRequest API_SHARE_MESSAGE_TO_FRIEND cancel");
+    this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$jsRuntime, "shareMessageToFriend", null, "cancel", this.this$1.val$callbackId);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.OpenDataPlugin.5.3
+ * JD-Core Version:    0.7.0.1
+ */

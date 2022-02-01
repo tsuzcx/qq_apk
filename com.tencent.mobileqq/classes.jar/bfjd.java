@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.quickat.ui.AllMemberItemViewWrapper.3.1;
 
 public class bfjd
-  implements DialogInterface.OnClickListener
+  extends anxg
 {
-  public bfjd(BaseJsCallBack paramBaseJsCallBack) {}
+  bfjd(bfja parambfja) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3)
+  {
+    ThreadManager.getUIHandlerV2().post(new AllMemberItemViewWrapper.3.1(this, paramBoolean1, paramString1, paramBoolean2, paramString2, paramString3, paramBoolean3));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfjd
  * JD-Core Version:    0.7.0.1
  */

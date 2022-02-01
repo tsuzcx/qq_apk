@@ -1,70 +1,104 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.XRecyclerView;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bifj
-  extends RecyclerView.OnScrollListener
+  extends Handler
 {
-  public bifj(XRecyclerView paramXRecyclerView) {}
+  private bifj(bifg parambifg) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    int i = 0;
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((paramInt == 0) && (XRecyclerView.c(this.a) == 2)) {
-      this.a.a();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TVKVideoController", 4, new Object[] { "PlayerStatusHandler msg:", Integer.valueOf(paramMessage.what), " ,arg:", Integer.valueOf(paramMessage.arg1) });
     }
-    int j = paramRecyclerView.getChildCount();
-    boolean bool;
-    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    switch (paramMessage.what)
     {
-      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-      i = paramRecyclerView.getItemCount();
-      paramRecyclerView = paramRecyclerView.findFirstVisibleItemPositions(null);
-      int k = XRecyclerView.a(this.a).a();
-      if (i - j <= paramRecyclerView[0] + k)
+    }
+    do
+    {
+      do
       {
-        bool = true;
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d("TVKVideoController", 2, new Object[] { "MEDIA_PREPAREING viewW:", Integer.valueOf(bifg.a(this.a).getWidth()), " ,viewH:", Integer.valueOf(bifg.a(this.a).getHeight()), " ,videoW:", Integer.valueOf(bifg.a(this.a)), " ,videoH:", Integer.valueOf(bifg.b(this.a)) });
+                }
+                if (bifg.a(this.a) != null)
+                {
+                  bifg.a(this.a).onSetVideoCover(bifg.a(this.a));
+                  bifg.a(this.a).onVideoSize(bifg.a(this.a), bifg.b(this.a));
+                }
+                this.a.a(bifg.a(this.a), bifg.b(this.a));
+                bifg.a(this.a, 2);
+                return;
+                if (bifg.a(this.a).get())
+                {
+                  if (bifg.a(this.a) != null) {
+                    bifg.a(this.a).onVideoStart((int)bifg.a(this.a).c());
+                  }
+                  bifg.c(this.a);
+                  bifg.a(this.a).set(false);
+                  return;
+                }
+                bifg.a(this.a, 3);
+                return;
+              } while (!QLog.isColorLevel());
+              QLog.d("TVKVideoController", 2, "onSeekComplete");
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("TVKVideoController", 2, "onPlaybackComplete");
+              }
+              bifg.a(this.a, true);
+              bifg.a(this.a, 0);
+              bifg.a(this.a).removeCallbacks(this.a.a);
+              if (bifg.a(this.a) != null) {
+                bifg.a(this.a).e = 0L;
+              }
+              bifg.d(this.a);
+            } while (bifg.a(this.a) == null);
+            bifg.a(this.a).onVideoComplete(true);
+            bifg.a(this.a).onVideoProgressUpdate(0);
+            return;
+          } while (!QLog.isColorLevel());
+          QLog.d("TVKVideoController", 2, "onVideoSizeChanged");
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.d("TVKVideoController", 2, "MEDIA_INSTALL_SUCCESS");
+          }
+        } while ((bifg.a(this.a) == null) || (bifg.a(this.a) == null));
+        bifg.a(this.a, bifg.a(this.a).a((Context)bifg.a(this.a).get()));
+        return;
         if (QLog.isColorLevel()) {
-          QLog.d("XRecyclerView", 2, new Object[] { "totalItemCount=%d, firstVisibleItem=%d, visibleThreshold=%d, isCloseToTheEnd=%b", Integer.valueOf(i), Integer.valueOf(paramRecyclerView[0]), Integer.valueOf(k), Boolean.valueOf(bool) });
+          QLog.d("TVKVideoController", 2, "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
         }
-        if (bool) {
-          XRecyclerView.a(this.a).b(true);
-        }
-      }
-    }
-    for (;;)
-    {
-      XRecyclerView.c(this.a, paramInt);
-      return;
-      bool = false;
-      break;
-      if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager))
+        bifg.a(this.a, paramMessage.arg1, paramMessage.arg2);
+        return;
+      } while ((bifg.a(this.a) == null) || (bifg.c(this.a) == 4));
+      if (paramMessage.arg1 == 929)
       {
-        paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-        if (paramRecyclerView.getItemCount() - j <= paramRecyclerView.findFirstVisibleItemPosition() + XRecyclerView.a(this.a).a()) {
-          i = 1;
-        }
-        if (i != 0) {
-          XRecyclerView.a(this.a).b(true);
-        }
+        bifg.a(this.a).onVideoBuffering();
+        return;
       }
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    XRecyclerView.a(this.a, XRecyclerView.a(this.a) + paramInt1);
-    XRecyclerView.b(this.a, XRecyclerView.b(this.a) + paramInt2);
+    } while (paramMessage.arg1 != 92);
+    bifg.a(this.a).onVideoStart((int)bifg.a(this.a).c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bifj
  * JD-Core Version:    0.7.0.1
  */

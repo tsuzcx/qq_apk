@@ -1,43 +1,115 @@
-import android.app.Activity;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
 
 public class xlh
+  implements xkx
 {
-  public final double a;
-  public final float a;
-  public final int a;
-  public final String a;
-  public final WeakReference<Activity> a;
-  public final boolean a;
-  public final double b;
-  public final int b;
-  public final String b;
-  public final boolean b;
-  public final int c;
+  private xlh(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
   
-  public xlh(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, float paramFloat, boolean paramBoolean1, int paramInt3, double paramDouble1, double paramDouble2, String paramString2, boolean paramBoolean2)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Double = paramDouble1;
-    this.jdField_b_of_type_Double = paramDouble2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.a.p();
   }
   
-  public String toString()
+  public void a(@NonNull ycb paramycb, ErrorMessage paramErrorMessage, boolean paramBoolean)
   {
-    return "GenerateThumbArgs{mFileDir='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mRatioWH=" + this.jdField_a_of_type_Float + ", mShowLastFrameThumb=" + this.jdField_a_of_type_Boolean + ", mOrientation=" + this.c + ", mLatitude=" + this.jdField_a_of_type_Double + ", mLongitude=" + this.jdField_b_of_type_Double + ", mExistsThumbPath=" + this.jdField_b_of_type_JavaLangString + ", mThumbOk=" + this.jdField_b_of_type_Boolean + '}';
+    Object localObject;
+    if (paramErrorMessage.isSuccess())
+    {
+      localObject = "suc";
+      yqp.a("Q.qqstory.player.StoryPlayerCommentListView", "on cache item back %s:%s ", localObject, paramycb);
+      boolean bool = StoryPlayerCommentListView.a(this.a).a();
+      localObject = (xla)this.a.a("PlayerCommentSegment");
+      if (localObject != null) {
+        ((xla)localObject).a(paramycb);
+      }
+      localObject = (xle)this.a.a("PlayerDoubleTabSegment");
+      if (localObject != null) {
+        ((xle)localObject).a(paramycb);
+      }
+      localObject = (xkz)this.a.a("PlayerCommentEmptySegment");
+      if (localObject != null)
+      {
+        ((xkz)localObject).a(paramycb);
+        if (!paramBoolean) {
+          break label183;
+        }
+        ((xkz)localObject).a(true);
+      }
+      label118:
+      localObject = this.a;
+      if (paramycb.a(bool)) {
+        break label192;
+      }
+    }
+    label183:
+    label192:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
+      this.a.p();
+      if (StoryPlayerCommentListView.a(this.a) != null) {
+        StoryPlayerCommentListView.a(this.a).a(paramycb, paramErrorMessage);
+      }
+      return;
+      localObject = "fail";
+      break;
+      ((xkz)localObject).a(false);
+      break label118;
+    }
+  }
+  
+  public void a(@NonNull ycb paramycb, boolean paramBoolean)
+  {
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = "suc";
+      yqp.a("Q.qqstory.player.StoryPlayerCommentListView", "on comment item back %s: %s", localObject, paramycb);
+      boolean bool = StoryPlayerCommentListView.a(this.a).a();
+      localObject = (xla)this.a.a("PlayerCommentSegment");
+      if (localObject != null) {
+        ((xla)localObject).a(paramycb);
+      }
+      localObject = (xle)this.a.a("PlayerDoubleTabSegment");
+      if (localObject != null) {
+        ((xle)localObject).a(paramycb);
+      }
+      localObject = (xkz)this.a.a("PlayerCommentEmptySegment");
+      if (localObject != null)
+      {
+        ((xkz)localObject).a(paramycb);
+        ((xkz)localObject).a(false);
+      }
+      if (!paramBoolean) {
+        break label159;
+      }
+      localObject = this.a;
+      if (paramycb.a(bool)) {
+        break label154;
+      }
+      paramBoolean = true;
+      label130:
+      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
+    }
+    for (;;)
+    {
+      this.a.p();
+      return;
+      localObject = "fail";
+      break;
+      label154:
+      paramBoolean = false;
+      break label130;
+      label159:
+      this.a.setLoadMoreComplete("CommentFloatDialog", false, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xlh
  * JD-Core Version:    0.7.0.1
  */

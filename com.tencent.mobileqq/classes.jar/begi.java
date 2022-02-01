@@ -1,44 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import mqq.app.QQPermissionCallback;
 
 public class begi
-  implements bejp
+  implements QQPermissionCallback
 {
-  public begi(WebViewFragment paramWebViewFragment) {}
+  public begi(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public int a(Bundle paramBundle)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int j = this.a.m;
-    int i = -1;
-    long l = System.currentTimeMillis();
-    switch (this.a.m)
-    {
-    }
-    for (;;)
-    {
-      QLog.i("WebLog_WebViewFragment", 1, "CreateLoop:step[" + j + "] -> step[" + this.a.m + "] cost" + (System.currentTimeMillis() - l) + " ms.");
-      return i;
-      i = this.a.c(paramBundle);
-      continue;
-      i = this.a.g(paramBundle);
-      continue;
-      i = this.a.h(paramBundle);
-      continue;
-      i = this.a.e(paramBundle);
-      continue;
-      i = this.a.i(paramBundle);
-      continue;
-      i = this.a.f(paramBundle);
-      continue;
-      i = this.a.d(paramBundle);
-      continue;
-      i = this.a.b(paramBundle);
-      continue;
-      i = this.a.j(paramBundle);
-      continue;
-      i = this.a.a(paramBundle);
-    }
+    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a(this.a, this.a);
   }
 }
 

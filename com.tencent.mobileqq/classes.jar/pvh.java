@@ -1,22 +1,34 @@
-public class pvh
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0xc90.RspBody;
+
+class pvh
+  extends nis
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  pvh(pvf parampvf, tcr paramtcr) {}
   
-  public String toString()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return "InnerMsg{innerUniqId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", title='" + this.jdField_b_of_type_JavaLangString + '\'' + ", algorithID=" + this.jdField_a_of_type_Long + ", strategyID=" + this.jdField_a_of_type_Int + ", jumpSrcType=" + this.jdField_b_of_type_Int + ", pushContext='" + this.jdField_c_of_type_JavaLangString + '\'' + ", templateID=" + this.jdField_c_of_type_Int + ", articleContentType=" + this.d + '}';
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle = new oidb_0xc90.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (this.jdField_a_of_type_Tcr != null) {
+        this.jdField_a_of_type_Tcr.a(true, paramInt, paramBundle);
+      }
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(pvf.a, 2, "requestNewCommunityMsg onResult(), exception = " + QLog.getStackTraceString(paramArrayOfByte));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pvh
  * JD-Core Version:    0.7.0.1
  */

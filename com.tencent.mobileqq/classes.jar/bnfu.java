@@ -1,60 +1,111 @@
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.util.QZLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Message;
+import android.view.View;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaScannerListener;
+import com.tencent.mobileqq.activity.photo.album.OtherCommonData;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.activity.photo.album.PhotoListBaseData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.util.WeakReference;
 
-class bnfu
+public abstract class bnfu<K extends bnff>
+  implements MediaScanner.OnMediaScannerListener
 {
-  private int jdField_a_of_type_Int;
-  private final Class<? extends bmnh> jdField_a_of_type_JavaLangClass;
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private final int b;
-  private final int c;
+  protected static volatile bnfu a;
+  protected long a;
+  public bnfv a;
+  public bnfw a;
+  public bnfx a;
+  bnfy a;
+  public PhotoCommonBaseData<OtherCommonData> a;
+  public PhotoListBaseData a;
+  public WeakReference<K> a;
   
-  private bnfu(int paramInt1, int paramInt2, int paramInt3, Class<? extends bmnh> paramClass)
+  protected bnfu(K paramK)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-  }
-  
-  static bnfu a(int paramInt1, int paramInt2, int paramInt3, Class<? extends bmnh> paramClass)
-  {
-    return new bnfu(paramInt1, paramInt2, paramInt3, paramClass);
-  }
-  
-  Class<? extends bmnh> a()
-  {
-    return this.jdField_a_of_type_JavaLangClass;
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilSet.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
-      {
-        Integer localInteger = (Integer)localIterator.next();
-        LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, localInteger.intValue());
-        QZLog.d("QzoneEditPictureAndVide", 2, new Object[] { "performReport ", toString() + " with " + localInteger });
-      }
+    this.jdField_a_of_type_Bnfy = null;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramK);
+    paramK.getActivity().getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData = PhotoCommonBaseData.getInstance();
+    paramK.getActivity().getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.addHoldNember();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoListBaseData = new PhotoListBaseData();
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListActivity", 2, "PhotoListLogic new，fragment = " + paramK + ",PhotoCommonData = " + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData);
     }
-    LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, this.c);
-    QZLog.d("QzoneEditPictureAndVide", 2, "performReport " + toString());
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  void a(Set<Integer> paramSet)
+  abstract String a(LocalMediaInfo paramLocalMediaInfo);
+  
+  public abstract List<LocalMediaInfo> a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(Message paramMessage);
+  
+  public abstract void a(View paramView);
+  
+  public abstract void a(View paramView, Bundle paramBundle, int paramInt, Intent paramIntent);
+  
+  public abstract void a(CompoundButton paramCompoundButton, boolean paramBoolean);
+  
+  public abstract void a(ArrayList<LocalMediaInfo> paramArrayList);
+  
+  public abstract void a(List<LocalMediaInfo> paramList);
+  
+  public void a(boolean paramBoolean) {}
+  
+  abstract void a(boolean paramBoolean, Intent paramIntent);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(List<LocalMediaInfo> paramList);
+  
+  public void b()
   {
-    this.jdField_a_of_type_JavaUtilSet.addAll(paramSet);
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListActivity", 2, "PhotoListLogic close，fragment = " + this.jdField_a_of_type_MqqUtilWeakReference.get() + ",PhotoCommonData = " + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.releaseCommonData();
+    jdField_a_of_type_Bnfu = null;
   }
   
-  public String toString()
-  {
-    return "QzoneEditPictureReportModel{actionType=" + this.jdField_a_of_type_Int + ", subActionType=" + this.b + ", reserve=" + this.c + '}';
-  }
+  public abstract void b(float paramFloat);
+  
+  public abstract void b(Intent paramIntent);
+  
+  public abstract void b(View paramView);
+  
+  public abstract void c();
+  
+  public abstract void c(Intent paramIntent);
+  
+  public abstract void c(View paramView);
+  
+  public abstract void d();
+  
+  public abstract void d(View paramView);
+  
+  public abstract void e();
+  
+  public abstract void e(View paramView);
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

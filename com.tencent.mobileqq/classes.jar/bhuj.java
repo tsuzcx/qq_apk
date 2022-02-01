@@ -1,22 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bhuj
-  implements View.OnClickListener
+public abstract interface bhuj
 {
-  bhuj(bhuf parambhuf) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-    if (bhuf.a(this.a) != null) {
-      bhuf.a(this.a).onDismiss();
-    }
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhuj
  * JD-Core Version:    0.7.0.1
  */

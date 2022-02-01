@@ -1,31 +1,24 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout;
 
-public class smd
-  implements Animation.AnimationListener
+class smd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public smd(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
+  smd(smc paramsmc, View paramView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    CommonSuspensionGestureLayout.c(this.a).setLayerType(0, null);
-    CommonSuspensionGestureLayout.a(this.a).c();
-    CommonSuspensionGestureLayout.a(this.a).a();
-    CommonSuspensionGestureLayout.b(this.a);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    CommonSuspensionGestureLayout.a(this.a).b();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setX(f);
+    CaptureOperateTouchLayout.a(this.jdField_a_of_type_Smc.a).setX(f + this.jdField_a_of_type_AndroidViewView.getWidth() * 0.32F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     smd
  * JD-Core Version:    0.7.0.1
  */

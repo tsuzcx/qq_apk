@@ -1,24 +1,33 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import android.os.AsyncTask;
+import android.text.TextUtils;
 
-public class nlm
-  implements View.OnClickListener
+final class nlm
+  extends AsyncTask<Void, Void, Void>
 {
-  public nlm(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
+  String jdField_a_of_type_JavaLangString = "";
   
-  public void onClick(View paramView)
+  nlm(nln paramnln, String paramString) {}
+  
+  protected Void a(Void... paramVarArgs)
   {
-    PublicAccountAdvertisementActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementActivityPublicAccountAdvertisementActivity);
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.jdField_a_of_type_JavaLangString = nll.a(this.b);
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    super.onPostExecute(paramVoid);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_Nln.a();
+      return;
     }
+    this.jdField_a_of_type_Nln.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nlm
  * JD-Core Version:    0.7.0.1
  */

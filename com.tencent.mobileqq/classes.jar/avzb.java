@@ -1,12 +1,20 @@
-public abstract interface avzb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BaseActivity;
+
+class avzb
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  avzb(avza paramavza) {}
   
-  public abstract void b();
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avzb
  * JD-Core Version:    0.7.0.1
  */

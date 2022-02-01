@@ -1,61 +1,86 @@
-import android.util.SparseArray;
-import com.tencent.smtt.utils.ByteUtils;
-import java.nio.ByteBuffer;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 
 public class lre
+  extends lrg
 {
-  public static SparseArray<lrd> a(byte[] paramArrayOfByte)
+  protected final Context a;
+  protected final int k;
+  
+  public lre(Context paramContext, int paramInt)
   {
-    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
-    SparseArray localSparseArray = new SparseArray();
-    int j = 0;
-    while (j < paramArrayOfByte.length)
-    {
-      short s = a(localByteBuffer, j);
-      j += 2;
-      int i = b(localByteBuffer, j);
-      j += 2;
-      byte[] arrayOfByte = a(paramArrayOfByte, j, i);
-      j += i;
-      localSparseArray.put(s, new lrd(s, i, arrayOfByte));
-    }
-    return localSparseArray;
+    bkfk.a(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.k = paramInt;
+    a(false);
   }
   
-  private static short a(ByteBuffer paramByteBuffer, int paramInt)
+  protected Bitmap a()
   {
-    return paramByteBuffer.getShort(paramInt);
-  }
-  
-  public static byte[] a(lrd paramlrd)
-  {
-    if (paramlrd != null)
-    {
-      short s1 = paramlrd.a();
-      short s2 = paramlrd.b();
-      paramlrd = paramlrd.a();
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(s2 + 4);
-      localByteBuffer.putShort(s1);
-      localByteBuffer.putShort(s2);
-      localByteBuffer.put(paramlrd);
-      return localByteBuffer.array();
+    Object localObject = null;
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
+    localOptions.inScaled = false;
+    int i = mue.a(this.jdField_a_of_type_AndroidContentContext);
+    localOptions.inSampleSize = 1;
+    if (i <= 480) {
+      localOptions.inSampleSize = 2;
     }
+    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    try
+    {
+      Bitmap localBitmap2 = BitmapFactory.decodeResource(localResources, this.k, localOptions);
+      localObject = localBitmap2;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError3)
+    {
+      do
+      {
+        localOptions.inSampleSize *= 2;
+      } while (localResources == null);
+      try
+      {
+        localObject = BitmapFactory.decodeResource(localResources, this.k, localOptions);
+        return localObject;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError1)
+      {
+        localOptions.inSampleSize *= 2;
+        i = this.k;
+        try
+        {
+          Bitmap localBitmap1 = BitmapFactory.decodeResource(localResources, i, localOptions);
+          return localBitmap1;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2) {}
+      }
+    }
+    return localObject;
     return null;
   }
   
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  protected void a(Bitmap paramBitmap)
   {
-    return ByteUtils.subByte(paramArrayOfByte, paramInt1, paramInt2);
+    if (!d()) {
+      paramBitmap.recycle();
+    }
   }
   
-  private static short b(ByteBuffer paramByteBuffer, int paramInt)
+  public int[] a(lpx paramlpx)
   {
-    return paramByteBuffer.getShort(paramInt);
+    if (!c()) {
+      b(paramlpx);
+    }
+    return this.jdField_a_of_type_ArrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lre
  * JD-Core Version:    0.7.0.1
  */

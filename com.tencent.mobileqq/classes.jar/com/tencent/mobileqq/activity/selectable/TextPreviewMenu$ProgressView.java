@@ -27,9 +27,9 @@ public final class TextPreviewMenu$ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561654, this);
-    this.a = ((TextView)findViewById(2131377606));
-    findViewById(2131363189).setBackgroundColor(Color.parseColor("#1c1c1d"));
+    LayoutInflater.from(paramContext).inflate(2131561888, this);
+    this.a = ((TextView)findViewById(2131378445));
+    findViewById(2131363377).setBackgroundColor(Color.parseColor("#1c1c1d"));
   }
   
   public void setProgressText(CharSequence paramCharSequence)
@@ -45,7 +45,7 @@ public final class TextPreviewMenu$ProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.TextPreviewMenu.ProgressView
  * JD-Core Version:    0.7.0.1
  */

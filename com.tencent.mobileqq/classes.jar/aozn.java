@@ -1,524 +1,354 @@
-import android.content.Intent;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.splashlogo.KandianConfigServlet.1;
-import com.tencent.mobileqq.config.splashlogo.KandianConfigServlet.2;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ConfigSeq;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ReqGetConfig;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.RespGetConfig;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.annotation.TargetApi;
+import android.hardware.SensorManager;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ARRelationShip;
+import com.tencent.mobileqq.ar.model.ArAwardInfo;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.mobileqq.ar.model.ArModelResource;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.mobileqq.ar.model.ArWebInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
-import mqq.os.MqqHandler;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 public class aozn
-  extends MSFServlet
 {
-  private static Class<?> jdField_a_of_type_JavaLangClass;
-  private static boolean jdField_a_of_type_Boolean;
-  private static long b;
-  private static long c;
-  private static long d;
-  private static long e;
-  private long jdField_a_of_type_Long;
-  
-  private void a(long paramLong, QQAppInterface paramQQAppInterface)
+  @TargetApi(9)
+  public static ArCloudConfigInfo a(String paramString)
   {
-    long l = System.currentTimeMillis();
-    e = l - paramLong;
-    Object localObject;
-    if (jdField_a_of_type_JavaLangClass != null)
-    {
-      localObject = paramQQAppInterface.getHandler(jdField_a_of_type_JavaLangClass);
-      if ((localObject == null) || (e > 800L)) {
-        break label194;
-      }
-      Message localMessage = Message.obtain();
-      localMessage.what = 20140326;
-      ((MqqHandler)localObject).sendMessage(localMessage);
-      QLog.d("KandianConfigServlet", 1, "send msg notify login activity!");
+    if ((paramString == null) || (paramString.isEmpty())) {
+      return null;
     }
     for (;;)
     {
-      jdField_a_of_type_JavaLangClass = null;
-      QLog.d("KandianConfigServlet", 1, paramQQAppInterface.getAccount() + " notifyLoginNext, all cost:" + e + "  nowTime:" + l + "  startTime:" + paramLong);
-      localObject = new JSONObject();
+      JSONObject localJSONObject1;
+      Object localObject2;
+      Object localObject1;
       try
       {
-        ((JSONObject)localObject).put("totalCost", String.valueOf(e));
-        bkbq.a((JSONObject)localObject);
-        nrt.a(null, paramQQAppInterface.getAccount(), "0X800965D", "0X800965D", 0, 0, String.valueOf(b), String.valueOf(c), String.valueOf(d), ((JSONObject)localObject).toString(), false);
-        return;
-      }
-      catch (JSONException paramQQAppInterface)
-      {
-        label194:
-        QLog.d("KandianConfigServlet", 2, "only kandian tab switch, report error:" + paramQQAppInterface.toString());
-      }
-      QLog.d("KandianConfigServlet", 1, "give up send login next msg!");
-    }
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, Intent paramIntent, int[] paramArrayOfInt, Packet paramPacket)
-  {
-    ConfigurationService.ReqGetConfig localReqGetConfig = new ConfigurationService.ReqGetConfig();
-    int j = paramArrayOfInt.length;
-    ArrayList localArrayList = new ArrayList(j);
-    int i = 0;
-    if (i < j)
-    {
-      ConfigurationService.ConfigSeq localConfigSeq = new ConfigurationService.ConfigSeq();
-      int k = paramArrayOfInt[i];
-      localConfigSeq.type.set(k);
-      switch (k)
-      {
-      }
-      for (;;)
-      {
-        localArrayList.add(localConfigSeq);
-        i += 1;
-        break;
-        String str = paramQQAppInterface.getCurrentAccountUin();
-        k = bdne.M(paramQQAppInterface.getApp(), str);
-        localConfigSeq.version.set(k);
-        if (paramIntent.getBooleanExtra("configkandiantab", false))
+        localJSONObject1 = new JSONObject(paramString);
+        paramString = new ArCloudConfigInfo();
+        if (localJSONObject1.has("BusinessId")) {
+          paramString.jdField_a_of_type_Int = Integer.parseInt(localJSONObject1.getString("BusinessId"));
+        }
+        if (localJSONObject1.has("SDKVersion")) {
+          paramString.jdField_a_of_type_JavaLangString = localJSONObject1.getString("SDKVersion");
+        }
+        if (localJSONObject1.has("CloseCache")) {
+          paramString.jdField_b_of_type_Int = localJSONObject1.getInt("CloseCache");
+        }
+        if (localJSONObject1.has("Type")) {
+          paramString.jdField_d_of_type_Int = localJSONObject1.getInt("Type");
+        }
+        if (localJSONObject1.has("TrackMode"))
         {
-          paramPacket.addAttribute("_attr_disable_merge", Boolean.valueOf(true));
-          QLog.e("KandianConfigServlet", 1, "addAllConfigs version : " + k + "  mCurrentUin : " + str);
-          a("1");
+          paramString.jdField_c_of_type_Int = localJSONObject1.getInt("TrackMode");
+          if (paramString.jdField_c_of_type_Int == 4) {
+            paramString.jdField_c_of_type_Int = 1;
+          }
+          if (paramString.jdField_c_of_type_Int == 1)
+          {
+            localObject2 = (SensorManager)BaseApplication.getContext().getSystemService("sensor");
+            if (!aovb.a()) {
+              break label1947;
+            }
+            i = 15;
+            localObject1 = ((SensorManager)localObject2).getSensorList(i);
+            localObject2 = ((SensorManager)localObject2).getDefaultSensor(4);
+            if ((((List)localObject1).size() <= 0) || (localObject2 == null) || (Build.MODEL.equalsIgnoreCase("GT-I9500"))) {
+              continue;
+            }
+            paramString.jdField_c_of_type_Int = 1;
+          }
+          if (paramString.jdField_d_of_type_Int == 8) {
+            paramString.jdField_c_of_type_Int = 2;
+          }
         }
-      }
-    }
-    localReqGetConfig.setHasFlag(true);
-    localReqGetConfig.seq_list.addAll(localArrayList);
-    if (paramIntent != null)
-    {
-      boolean bool = paramIntent.getBooleanExtra("key_is_page_req", false);
-      paramQQAppInterface = localReqGetConfig.is_page_req;
-      if (!bool) {
-        break label293;
-      }
-    }
-    label293:
-    for (i = 1;; i = 0)
-    {
-      paramQQAppInterface.set(i);
-      paramQQAppInterface = paramIntent.getByteArrayExtra("key_cookies");
-      if (paramQQAppInterface != null) {
-        localReqGetConfig.cookies.set(ByteStringMicro.copyFrom(paramQQAppInterface));
-      }
-      paramQQAppInterface = a(localReqGetConfig);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
-        paramPacket.putSendData(paramQQAppInterface);
-      }
-      paramPacket.setSSOCommand("ConfigurationService.ReqGetConfig");
-      return;
-    }
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    paramQQAppInterface = (Boolean)bkbq.a("local_kd_tab_has_set");
-    boolean bool = TextUtils.equals("1", paramString);
-    int i;
-    if ((paramQQAppInterface != null) && (!paramQQAppInterface.booleanValue())) {
-      if (bkbq.a(bool))
-      {
-        if (System.currentTimeMillis() - paramLong > 800L) {
-          break label118;
+        if (localJSONObject1.has("PicId")) {
+          paramString.jdField_b_of_type_JavaLangString = localJSONObject1.getString("PicId");
         }
-        if (!bool) {
-          break label112;
+        if (localJSONObject1.has("LotterySet")) {
+          paramString.e = localJSONObject1.getInt("LotterySet");
         }
-        i = 1;
-        bkbq.e(i);
-      }
-    }
-    for (;;)
-    {
-      paramLong = System.currentTimeMillis();
-      QLog.d("KandianConfigServlet", 1, "updateKandianTabConfigSwitch, tabSwitch = " + bool + "write sp cost:" + (paramLong - l));
-      return;
-      label112:
-      i = 0;
-      break;
-      label118:
-      if ((!ors.d()) && (!ors.k()))
-      {
-        QLog.d("KandianConfigServlet", 1, "receive kandian tab config is delay, but not in kandian , update now !");
-        bkbq.c();
-        oxb.a().a(0, null);
-        continue;
-        QLog.d("KandianConfigServlet", 1, "updateKandianTabConfigSwitch user has set switch, give up !");
-      }
-    }
-  }
-  
-  private void a(ConfigurationService.RespGetConfig paramRespGetConfig, QQAppInterface paramQQAppInterface, Intent paramIntent, int[] paramArrayOfInt, boolean paramBoolean)
-  {
-    int i = 0;
-    if ((!paramBoolean) || (paramRespGetConfig.result.get() != 0) || (paramRespGetConfig.config_list == null) || (paramRespGetConfig.config_list.size() == 0))
-    {
-      if (!paramBoolean) {
-        i = 1;
-      }
-      for (;;)
-      {
-        QLog.d("KandianConfigServlet", 1, "receiveAllConfig fail, errorType : " + i);
-        if ((paramIntent.getBooleanExtra("configkandiantab", false)) && (paramIntent.getBooleanExtra("needNotifyNext", false))) {
-          a(paramIntent.getLongExtra("startTime", 0L), paramQQAppInterface);
-        }
-        a("0X8009680", "1", String.valueOf(i));
-        return;
-        if (paramRespGetConfig.result.get() != 0)
+        if (localJSONObject1.has("Award"))
         {
-          i = 2;
+          localObject1 = localJSONObject1.getJSONObject("Award");
+          localObject2 = new ArAwardInfo();
+          if (((JSONObject)localObject1).has("AwardDistance")) {
+            ((ArAwardInfo)localObject2).jdField_a_of_type_Int = localJSONObject1.getInt("AwardDistance");
+          }
+          if (((JSONObject)localObject1).has("BusinessBanner")) {
+            ((ArAwardInfo)localObject2).jdField_a_of_type_JavaLangString = localJSONObject1.getString("BusinessBanner");
+          }
+          if (((JSONObject)localObject1).has("BusinessLogo")) {
+            ((ArAwardInfo)localObject2).jdField_b_of_type_JavaLangString = localJSONObject1.getString("BusinessLogo");
+          }
+          if (((JSONObject)localObject1).has("BusinessName")) {
+            ((ArAwardInfo)localObject2).f = localJSONObject1.getString("BusinessName");
+          }
+          if (((JSONObject)localObject1).has("BusinessWishing")) {
+            ((ArAwardInfo)localObject2).jdField_d_of_type_JavaLangString = localJSONObject1.getString("BusinessWishing");
+          }
+          if (((JSONObject)localObject1).has("NotPlayModel"))
+          {
+            if (localJSONObject1.getInt("NotPlayModel") == 1) {
+              ((ArAwardInfo)localObject2).jdField_b_of_type_Int = 0;
+            }
+          }
+          else {
+            paramString.jdField_a_of_type_ComTencentMobileqqArModelArAwardInfo = ((ArAwardInfo)localObject2);
+          }
         }
         else
         {
-          if ((paramRespGetConfig.config_list != null) && (paramRespGetConfig.config_list.size() != 0)) {
-            break;
-          }
-          i = 3;
-        }
-      }
-    }
-    long l1 = System.currentTimeMillis();
-    int j = paramRespGetConfig.config_list.size();
-    label171:
-    if (i < j)
-    {
-      paramArrayOfInt = (ConfigurationService.Config)paramRespGetConfig.config_list.get(i);
-      if (paramArrayOfInt != null) {}
-    }
-    for (;;)
-    {
-      i += 1;
-      break label171;
-      if (paramArrayOfInt.type.has())
-      {
-        Integer localInteger = Integer.valueOf(paramArrayOfInt.type.get());
-        QLog.d("KandianConfigServlet", 1, "receiveAllConfigs|receive type: " + localInteger + ", length: " + j);
-        try
-        {
-          switch (localInteger.intValue())
+          if (localJSONObject1.has("Feature"))
           {
-          case 92: 
-            l2 = paramIntent.getLongExtra("startTime", 0L);
-            if (!paramIntent.getBooleanExtra("configkandiantab", false)) {
-              continue;
+            localObject1 = localJSONObject1.getJSONObject("Feature");
+            localObject2 = new ArFeatureInfo();
+            if (((JSONObject)localObject1).has("FeatureMD5")) {
+              ((ArFeatureInfo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("FeatureMD5");
             }
-            a(paramArrayOfInt, l2);
-            if (!paramIntent.getBooleanExtra("needNotifyNext", false)) {
-              continue;
+            if (((JSONObject)localObject1).has("FeatureSize")) {
+              ((ArFeatureInfo)localObject2).jdField_a_of_type_Long = ((JSONObject)localObject1).getLong("FeatureSize");
             }
-            a(l2, paramQQAppInterface);
+            if (((JSONObject)localObject1).has("FeatureUrl")) {
+              ((ArFeatureInfo)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("FeatureUrl");
+            }
+            paramString.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo = ((ArFeatureInfo)localObject2);
           }
-        }
-        catch (Exception paramArrayOfInt)
-        {
-          QLog.d("KandianConfigServlet", 1, "receiveAllConfig..parse error:" + paramArrayOfInt.getMessage());
-        }
-        continue;
-        long l2 = System.currentTimeMillis();
-        QLog.d("KandianConfigServlet", 1, "receiveAllConfigs|executeSpendTime: " + (l2 - l1));
-        return;
-        i = 0;
-        break;
-      }
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    a("0X800967F", paramString, null);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    ThreadManager.executeOnSubThread(new KandianConfigServlet.2(paramString1, paramString2, paramString3));
-  }
-  
-  public static void a(String paramString, int[] paramArrayOfInt, int paramInt)
-  {
-    int i;
-    if (paramArrayOfInt != null) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < paramArrayOfInt.length)
-      {
-        if (paramArrayOfInt[i] == 92) {
-          a("0X8009680", paramString, String.valueOf(paramInt));
-        }
-      }
-      else
-      {
-        QLog.d("KandianConfigServlet", 1, "reportKDConfigNetFailed isOnly92:" + paramString + "  cmds:" + paramArrayOfInt + "   resultCode:" + paramInt);
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime, Class<?> paramClass, long paramLong)
-  {
-    QLog.d("KandianConfigServlet", 1, "getKandianTabConfig,need notify");
-    return a(paramAppRuntime, paramClass, paramLong, true);
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime, Class<?> paramClass, long paramLong, boolean paramBoolean)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (paramAppRuntime != null)
-    {
-      bool1 = bool2;
-      if ((paramAppRuntime instanceof AppInterface))
-      {
-        paramAppRuntime = (AppInterface)paramAppRuntime;
-        BaseApplication localBaseApplication = paramAppRuntime.getApp();
-        String str = paramAppRuntime.getAccount();
-        bool1 = bool2;
-        if (localBaseApplication != null)
-        {
-          bool1 = bool2;
-          if (!TextUtils.isEmpty(str))
+          if (localJSONObject1.has("ModelResource"))
           {
-            i = bdne.M(localBaseApplication, str);
-            if (i != 0) {
-              break label251;
+            localObject1 = localJSONObject1.getJSONObject("ModelResource");
+            localObject2 = new ArModelResource();
+            if (((JSONObject)localObject1).has("ModelResourceSize")) {
+              ((ArModelResource)localObject2).jdField_a_of_type_Long = ((JSONObject)localObject1).getLong("ModelResourceSize");
             }
-            jdField_a_of_type_JavaLangClass = paramClass;
-            paramClass = new NewIntent(localBaseApplication, aozn.class);
-            paramClass.putExtra("k_cmd_type", new int[] { 92 });
-            paramClass.putExtra("configkandiantab", true);
-            paramClass.putExtra("startTime", paramLong);
-            paramClass.putExtra("needNotifyNext", paramBoolean);
-            if (!bdnn.a(str)) {
-              paramClass.putExtra("key_uin", str);
+            if (((JSONObject)localObject1).has("ModelResourceMD5")) {
+              ((ArModelResource)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("ModelResourceMD5");
             }
-            b = System.currentTimeMillis() - paramLong;
-            QLog.d("KandianConfigServlet", 1, "getKandianTabConfig, currentUin : " + str + "  cost time：" + b);
-            paramAppRuntime.startServlet(paramClass);
+            if (((JSONObject)localObject1).has("ModelResourceUrl")) {
+              ((ArModelResource)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("ModelResourceUrl");
+            }
+            if (((JSONObject)localObject1).has("ModelResourceBgMusic")) {
+              ((ArModelResource)localObject2).jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).getString("ModelResourceBgMusic");
+            }
+            if (((JSONObject)localObject1).has("ModelConfigFile")) {
+              ((ArModelResource)localObject2).jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).getString("ModelConfigFile");
+            }
+            if (((JSONObject)localObject1).has("ModelRepeatTimes")) {
+              ((ArModelResource)localObject2).jdField_a_of_type_Int = ((JSONObject)localObject1).getInt("ModelRepeatTimes");
+            }
+            if (((JSONObject)localObject1).has("ModelLayout")) {
+              ((ArModelResource)localObject2).e = ((JSONObject)localObject1).getString("ModelLayout");
+            }
+            paramString.jdField_a_of_type_ComTencentMobileqqArModelArModelResource = ((ArModelResource)localObject2);
           }
-        }
-      }
-    }
-    for (bool1 = true;; bool1 = bool2)
-    {
-      QLog.d("KandianConfigServlet", 1, ors.a() + " getKandianTabConfig executed:" + bool1 + "  startTime:" + paramLong);
-      return bool1;
-      label251:
-      QLog.d("KandianConfigServlet", 1, "getKandianTabConfig local config exist, version : " + i);
-    }
-  }
-  
-  private static byte[] a(ConfigurationService.ReqGetConfig paramReqGetConfig)
-  {
-    paramReqGetConfig = paramReqGetConfig.toByteArray();
-    long l = paramReqGetConfig.length;
-    byte[] arrayOfByte = new byte[(int)l + 4];
-    bdqa.a(arrayOfByte, 0, 4L + l);
-    bdqa.a(arrayOfByte, 4, paramReqGetConfig, (int)l);
-    return arrayOfByte;
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    int i = paramArrayOfByte.length - 4;
-    byte[] arrayOfByte = new byte[i];
-    bdqa.a(arrayOfByte, 0, paramArrayOfByte, 4, i);
-    return arrayOfByte;
-  }
-  
-  public void a(ConfigurationService.Config paramConfig, long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    try
-    {
-      localQQAppInterface = (QQAppInterface)getAppRuntime();
-      if ((!paramConfig.content_list.has()) || (paramConfig.content_list.size() <= 0)) {
-        break label328;
-      }
-      k = 0;
-      i = 0;
-    }
-    catch (Exception paramConfig)
-    {
-      for (;;)
-      {
-        QQAppInterface localQQAppInterface;
-        int k;
-        int j;
-        QLog.e("KandianConfigServlet", 1, "handleReadTabConfig has exception : " + paramConfig);
-        continue;
-        int i = j;
-        continue;
-        k += 1;
-      }
-    }
-    j = paramConfig.content_list.size();
-    if (k < j) {}
-    for (;;)
-    {
-      String str2;
-      try
-      {
-        localObject = ((String)paramConfig.content_list.get(k)).trim();
-        j = i;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-        j = i;
-        if (!((String)localObject).contains("kandian_tab_switch")) {
-          break;
-        }
-        localObject = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(((String)localObject).getBytes("utf-8"))).getElementsByTagName("configs").item(0).getFirstChild();
-        j = i;
-        if (localObject == null) {
-          break;
-        }
-        if (((Node)localObject).getFirstChild() != null)
-        {
-          String str1 = ((Node)localObject).getNodeName();
-          str2 = ((Node)localObject).getFirstChild().getNodeValue();
-          if (TextUtils.equals(str1, "kandian_tab_switch")) {
-            a(localQQAppInterface, str2, paramLong);
+          if (localJSONObject1.has("Web"))
+          {
+            localObject1 = localJSONObject1.getJSONObject("Web");
+            localObject2 = new ArWebInfo();
+            if (((JSONObject)localObject1).has("IsUrlAutoJump"))
+            {
+              if (((JSONObject)localObject1).getInt("IsUrlAutoJump") != 1) {
+                break label1953;
+              }
+              bool = true;
+              ((ArWebInfo)localObject2).jdField_a_of_type_Boolean = bool;
+            }
+            if (((JSONObject)localObject1).has("IsUrlTransparent"))
+            {
+              if (((JSONObject)localObject1).getInt("IsUrlTransparent") != 1) {
+                break label1958;
+              }
+              bool = true;
+              ((ArWebInfo)localObject2).jdField_b_of_type_Boolean = bool;
+            }
+            if (((JSONObject)localObject1).has("WebJumpUrl")) {
+              ((ArWebInfo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("WebJumpUrl");
+            }
+            if (((JSONObject)localObject1).has("HtmlOfflineBid")) {
+              ((ArWebInfo)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("HtmlOfflineBid");
+            }
+            if ((Build.VERSION.SDK_INT < 16) && (((ArWebInfo)localObject2).jdField_b_of_type_Boolean))
+            {
+              QLog.i("AREngine_MarkerJsonParser", 1, "isUrlTransparent isUrlTransparent forse to  false");
+              ((ArWebInfo)localObject2).jdField_b_of_type_Boolean = false;
+              ((ArWebInfo)localObject2).jdField_a_of_type_JavaLangString = "";
+              ((ArWebInfo)localObject2).jdField_a_of_type_Boolean = false;
+            }
+            paramString.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo = ((ArWebInfo)localObject2);
           }
+          if (!localJSONObject1.has("VideoResource")) {
+            break label1310;
+          }
+          localObject1 = localJSONObject1.getJSONArray("VideoResource");
+          localObject2 = new ArrayList();
+          i = 0;
+          if (i >= ((JSONArray)localObject1).length()) {
+            break label1304;
+          }
+          JSONObject localJSONObject2 = ((JSONArray)localObject1).getJSONObject(i);
+          ArVideoResourceInfo localArVideoResourceInfo = new ArVideoResourceInfo();
+          if (localJSONObject2.has("VideoConnectType")) {
+            localArVideoResourceInfo.jdField_a_of_type_Int = localJSONObject2.getInt("VideoConnectType");
+          }
+          if (localJSONObject2.has("VideoKeyingConfig")) {
+            localArVideoResourceInfo.jdField_a_of_type_JavaLangString = localJSONObject2.getString("VideoKeyingConfig");
+          }
+          if (localJSONObject2.has("VideoSize")) {
+            localArVideoResourceInfo.jdField_a_of_type_Long = localJSONObject2.getLong("VideoSize");
+          }
+          if (localJSONObject2.has("VideoLayout")) {
+            localArVideoResourceInfo.jdField_b_of_type_JavaLangString = localJSONObject2.getString("VideoLayout");
+          }
+          if (localJSONObject2.has("VideoMD5")) {
+            localArVideoResourceInfo.jdField_c_of_type_JavaLangString = localJSONObject2.getString("VideoMD5");
+          }
+          if (localJSONObject2.has("VideoRepeatTimes")) {
+            localArVideoResourceInfo.jdField_b_of_type_Int = localJSONObject2.getInt("VideoRepeatTimes");
+          }
+          if (localJSONObject2.has("VideoTrackMode")) {
+            localArVideoResourceInfo.jdField_c_of_type_Int = localJSONObject2.getInt("VideoTrackMode");
+          }
+          if (localJSONObject2.has("VideoType")) {
+            localArVideoResourceInfo.jdField_d_of_type_Int = localJSONObject2.getInt("VideoType");
+          }
+          if (localJSONObject2.has("VideoUrl")) {
+            localArVideoResourceInfo.jdField_d_of_type_JavaLangString = localJSONObject2.getString("VideoUrl");
+          }
+          ((ArrayList)localObject2).add(localArVideoResourceInfo);
+          i += 1;
+          continue;
+          paramString.jdField_c_of_type_Int = 2;
+          QLog.i("AREngine_MarkerJsonParser", 1, "no support sensor or GT-I9500. make trackmode 1 to 2");
+          localObject1 = new HashMap();
+          ((HashMap)localObject1).put("ar_model", Build.MODEL);
+          ((HashMap)localObject1).put("ar_type", "1");
+          ((HashMap)localObject1).put("ar_reason", "1");
+          bctj.a(BaseApplication.getContext()).a("", "AndroidARException", true, 0L, 0L, (HashMap)localObject1, "", true);
+          continue;
         }
+        ((ArAwardInfo)localObject2).jdField_b_of_type_Int = 1;
       }
-      catch (Exception localException1) {}
-      try
+      catch (JSONException paramString)
       {
-        QLog.d("KandianConfigServlet", 1, "handleReadTabConfig receive config, value : " + str2);
-        i = 1;
-        if (i == 0) {
-          break label385;
-        }
-        d = System.currentTimeMillis() - l;
-        QLog.d("KandianConfigServlet", 1, "handleReadTabConfig parse cost : " + d);
-        return;
+        QLog.i("AREngine_MarkerJsonParser", 1, "parseCloudInfo parse json failed. error msg = " + paramString.getMessage());
+        return null;
       }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          i = 1;
-        }
-      }
-      Object localObject = ((Node)localObject).getNextSibling();
       continue;
-      QLog.d("KandianConfigServlet", 1, "handleReadTabConfig parse has exception " + localException1);
-      j = i;
-      break;
-      label328:
-      QLog.d("KandianConfigServlet", 1, "handleReadTabConfig receive config is empty!");
-    }
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    long l = System.currentTimeMillis();
-    c = l - this.jdField_a_of_type_Long;
-    QLog.i("KandianConfigServlet", 1, "onReceive  request cost:" + c);
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    int[] arrayOfInt = paramIntent.getIntArrayExtra("k_cmd_type");
-    boolean bool = paramFromServiceMsg.isSuccess();
-    QLog.d("KandianConfigServlet", 1, ors.a() + " onReceive   nowTime:" + l + "   requestCost:" + c + " success:" + bool + "  code" + paramFromServiceMsg.getResultCode());
-    if ((arrayOfInt == null) || (arrayOfInt.length == 0)) {
-      return;
-    }
-    Object localObject = paramFromServiceMsg.getWupBuffer();
-    if ((localObject == null) || (localObject.length < 4))
-    {
-      QLog.d("KandianConfigServlet", 1, "wup buf is null!!!");
-      a("1", arrayOfInt, paramFromServiceMsg.getResultCode());
-      return;
-    }
-    paramFromServiceMsg.putWupBuffer(a((byte[])localObject));
-    localObject = new ConfigurationService.RespGetConfig();
-    try
-    {
-      ((ConfigurationService.RespGetConfig)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
-      try
-      {
-        aawh.a(((ConfigurationService.RespGetConfig)localObject).min_req_interval_for_reconnect.get());
-        a((ConfigurationService.RespGetConfig)localObject, localQQAppInterface, paramIntent, arrayOfInt, bool);
-        return;
+      label1304:
+      paramString.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
+      label1310:
+      if (localJSONObject1.has("IsRelationShip")) {
+        paramString.g = localJSONObject1.getInt("IsRelationShip");
       }
-      catch (Exception paramIntent)
-      {
-        QLog.w("KandianConfigServlet", 1, paramIntent.toString());
-        return;
+      if (localJSONObject1.has("traversing360")) {
+        paramString.jdField_a_of_type_Aory = aory.a(localJSONObject1.getJSONObject("traversing360"));
       }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramIntent)
-    {
-      QLog.d("KandianConfigServlet", 1, "error: " + paramIntent.toString());
-      paramIntent.printStackTrace();
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    int[] arrayOfInt = paramIntent.getIntArrayExtra("k_cmd_type");
-    if ((arrayOfInt == null) || (arrayOfInt.length == 0)) {
-      return;
-    }
-    a(localQQAppInterface, paramIntent, arrayOfInt, paramPacket);
-    if (!jdField_a_of_type_Boolean) {
-      jdField_a_of_type_Boolean = false;
-    }
-    try
-    {
-      ThreadManager.executeOnSubThread(new KandianConfigServlet.1(this));
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      QLog.d("KandianConfigServlet", 1, ors.a() + " onSend   mRequestStartTime:" + this.jdField_a_of_type_Long + "  cmds:" + arrayOfInt);
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      for (;;)
+      if (localJSONObject1.has("ARRelationShip"))
       {
-        QLog.i("KandianConfigServlet", 1, "sSpHasRead error:" + paramIntent.toString());
+        localObject1 = localJSONObject1.getJSONObject("ARRelationShip");
+        localObject2 = new ARRelationShip();
+        if (((JSONObject)localObject1).has("TaskId"))
+        {
+          paramString.jdField_b_of_type_Int = 1;
+          paramString.jdField_d_of_type_Int = 7;
+          ((ARRelationShip)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("TaskId");
+        }
+        if (((JSONObject)localObject1).has("ARRelationShipResourceUrl")) {
+          ((ARRelationShip)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("ARRelationShipResourceUrl");
+        }
+        if (((JSONObject)localObject1).has("ARRelationShipResourceMd5")) {
+          ((ARRelationShip)localObject2).jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).getString("ARRelationShipResourceMd5");
+        }
+        if (((JSONObject)localObject1).has("AIOMsgImageUrl")) {
+          ((ARRelationShip)localObject2).k = ((JSONObject)localObject1).getString("AIOMsgImageUrl");
+        }
+        if (((JSONObject)localObject1).has("AIOMsgJumpUrl")) {
+          ((ARRelationShip)localObject2).j = ((JSONObject)localObject1).getString("AIOMsgJumpUrl");
+        }
+        if (((JSONObject)localObject1).has("AIOMsgSummary")) {
+          ((ARRelationShip)localObject2).i = ((JSONObject)localObject1).getString("AIOMsgSummary");
+        }
+        if (((JSONObject)localObject1).has("AIOMsgTitle")) {
+          ((ARRelationShip)localObject2).h = ((JSONObject)localObject1).getString("AIOMsgTitle");
+        }
+        if (((JSONObject)localObject1).has("ARRelationShipResourceSize")) {
+          ((ARRelationShip)localObject2).jdField_a_of_type_Long = ((JSONObject)localObject1).getLong("ARRelationShipResourceSize");
+        }
+        if (((JSONObject)localObject1).has("GuideWebPageUrl")) {
+          ((ARRelationShip)localObject2).g = ((JSONObject)localObject1).getString("GuideWebPageUrl");
+        }
+        if (((JSONObject)localObject1).has("SendMsgSuccessUrl")) {
+          ((ARRelationShip)localObject2).f = ((JSONObject)localObject1).getString("SendMsgSuccessUrl");
+        }
+        if (((JSONObject)localObject1).has("ShareTopicUrl")) {
+          ((ARRelationShip)localObject2).e = ((JSONObject)localObject1).getString("ShareTopicUrl");
+        }
+        if (((JSONObject)localObject1).has("CardDefaultText")) {
+          ((ARRelationShip)localObject2).l = ((JSONObject)localObject1).getString("CardDefaultText");
+        }
+        if (((JSONObject)localObject1).has("StarUin")) {
+          ((ARRelationShip)localObject2).m = ((JSONObject)localObject1).getString("StarUin");
+        }
+        if (((JSONObject)localObject1).has("StarNickName")) {
+          ((ARRelationShip)localObject2).n = ((JSONObject)localObject1).getString("StarNickName");
+        }
+        paramString.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip = ((ARRelationShip)localObject2);
       }
+      if (localJSONObject1.has("LbsActivity"))
+      {
+        localJSONObject1 = localJSONObject1.getJSONObject("LbsActivity");
+        localObject1 = new ArLBSActivity();
+        if (localJSONObject1.has("ActivityName")) {
+          ((ArLBSActivity)localObject1).jdField_a_of_type_JavaLangString = localJSONObject1.getString("ActivityName");
+        }
+        if (localJSONObject1.has("Logo")) {
+          ((ArLBSActivity)localObject1).jdField_b_of_type_JavaLangString = localJSONObject1.getString("Logo");
+        }
+        if (localJSONObject1.has("MapBackground")) {
+          ((ArLBSActivity)localObject1).jdField_c_of_type_JavaLangString = localJSONObject1.getString("MapBackground");
+        }
+        if (localJSONObject1.has("PrizeImage")) {
+          ((ArLBSActivity)localObject1).jdField_d_of_type_JavaLangString = localJSONObject1.getString("PrizeImage");
+        }
+        if (localJSONObject1.has("PrizeName")) {
+          ((ArLBSActivity)localObject1).e = localJSONObject1.getString("PrizeName");
+        }
+        if (localJSONObject1.has("TipsForOutsideLBSLocation")) {
+          ((ArLBSActivity)localObject1).f = localJSONObject1.getString("TipsForOutsideLBSLocation");
+        }
+        if (localJSONObject1.has("TipsTitleForNoLBSLocation")) {
+          ((ArLBSActivity)localObject1).g = localJSONObject1.getString("TipsTitleForNoLBSLocation");
+        }
+        if (localJSONObject1.has("TipsContentForNoLBSLocation")) {
+          ((ArLBSActivity)localObject1).h = localJSONObject1.getString("TipsContentForNoLBSLocation");
+        }
+        paramString.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity = ((ArLBSActivity)localObject1);
+      }
+      return paramString;
+      label1947:
+      int i = 11;
+      continue;
+      label1953:
+      boolean bool = false;
+      continue;
+      label1958:
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozn
  * JD-Core Version:    0.7.0.1
  */

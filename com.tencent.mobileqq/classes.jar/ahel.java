@@ -1,37 +1,76 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
-public class ahel
-  implements View.OnClickListener
+final class ahel
+  implements bdvw
 {
-  public ahel(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  ahel(String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void onResp(bdwt parambdwt)
   {
-    paramView = paramView.getTag();
-    if ((paramView == null) || (!(paramView instanceof Integer))) {}
-    int i;
-    do
+    if (parambdwt.jdField_a_of_type_Int == 3)
     {
-      do
-      {
-        return;
-        i = ((Integer)paramView).intValue();
-      } while ((i < 0) || (this.a.jdField_a_of_type_Aheo == null));
-      paramView = this.a.getActivity();
-    } while (paramView == null);
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
-    MessageRecord localMessageRecord = ((ahen)this.a.jdField_a_of_type_Aheo.getItem(i)).a;
-    ChatHistoryBubbleListForTroopFragment.a(paramView, this.a.b, localMessageRecord, 100, 1);
-    if (QLog.isColorLevel()) {
-      QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + localMessageRecord);
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo", 2, "pe res download repeating ");
+      }
+      return;
     }
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A597", "0X800A597", 0, 0, "", "", "", "");
+    boolean bool;
+    if (parambdwt.jdField_a_of_type_Int == 0)
+    {
+      parambdwt = parambdwt.jdField_a_of_type_Bdws.c;
+      String str1 = bgmg.c(parambdwt);
+      String str2 = this.a;
+      if ((str1 != null) && (str1.equalsIgnoreCase(this.b)))
+      {
+        try
+        {
+          bgmg.a(parambdwt, str2, false);
+          bqfh.a(str2);
+          bool = true;
+        }
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            label83:
+            if (QLog.isColorLevel()) {
+              QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but unzip is failed");
+            }
+            bool = false;
+          }
+        }
+        bgmg.d(parambdwt);
+        if (!bool) {
+          break label189;
+        }
+        bgsg.a(true);
+        aheh.b = true;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo", 2, "downloadRes.onResp download result = " + bool);
+      }
+      aheh.c = false;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but md5 is mismatched");
+      }
+      bool = false;
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo", 2, "downloadRes.onResp failed ");
+      }
+      bool = false;
+      break label83;
+      label189:
+      aheh.o += 1;
+    }
   }
+  
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

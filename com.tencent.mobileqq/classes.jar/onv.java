@@ -1,31 +1,32 @@
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class onv
-  extends oob
+public class onv
+  extends onp
 {
-  onv(omz paramomz, int paramInt)
+  public int a(BaseData paramBaseData)
   {
-    super(paramomz, null);
+    int i = -1;
+    if ((paramBaseData instanceof ProteusBannerBigPicItemData)) {
+      i = opz.a((ProteusBannerBigPicItemData)paramBaseData);
+    }
+    return i;
   }
   
-  void a(ooe paramooe)
+  protected syj a(View paramView, BaseData paramBaseData)
   {
-    if (paramooe == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        paramooe.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 2);
-    paramooe.onCommentLoadMore(1, false, new ArrayList(), false, 3);
+    return new onw(this, paramView, paramBaseData, this.a);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return (paramBaseData != null) && (paramBaseData.t == 10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     onv
  * JD-Core Version:    0.7.0.1
  */

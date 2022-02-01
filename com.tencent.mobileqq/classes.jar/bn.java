@@ -1,16 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 import com.dataline.activities.LiteActivity;
+import java.util.ArrayList;
 
 public class bn
-  implements DialogInterface.OnClickListener
+  implements atve
 {
-  public bn(LiteActivity paramLiteActivity) {}
+  public bn(LiteActivity paramLiteActivity, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.finish();
+    Bundle localBundle;
+    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    {
+      localBundle = new Bundle();
+      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.jdField_a_of_type_JavaUtilArrayList);
+      new ci(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
+    }
+    if (!this.b.isEmpty())
+    {
+      localBundle = new Bundle();
+      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.b);
+      new cj(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
+    }
   }
+  
+  public void b() {}
 }
 
 

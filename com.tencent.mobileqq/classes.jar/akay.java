@@ -1,10 +1,35 @@
-import android.view.View;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 
-public class akay
-  extends akba
+class akay
+  extends anqd
 {
-  public long a;
-  public View a;
+  akay(akax paramakax) {}
+  
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  {
+    if (akax.a(this.a) != null) {
+      akax.a(this.a).a(paramString1);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    a(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong, anqa paramanqa)
+  {
+    if (akax.a(this.a) != null) {
+      akax.a(this.a).a(paramString);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (akax.a(this.a) != null) {
+      akax.a(this.a).a(paramString);
+    }
+  }
 }
 
 

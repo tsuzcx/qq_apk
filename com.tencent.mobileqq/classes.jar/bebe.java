@@ -1,107 +1,274 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.mobileqq.vip.diy.ProfileTemplateNickNameContainer;
-import com.tencent.mobileqq.vip.diy.TemplateLikeView;
-import com.tencent.mobileqq.vip.diy.common.DIYImageView;
-import com.tencent.mobileqq.widget.ProfileNameView;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.HashMap;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.cs.cmd0x388.cmd0x388.ReqBody;
+import tencent.im.cs.cmd0x388.cmd0x388.RspBody;
+import tencent.im.cs.cmd0x388.cmd0x388.TryUpImgReq;
+import tencent.im.cs.cmd0x388.cmd0x388.TryUpImgRsp;
+import tencent.im.cs.cmd0x388.cmd0x388.TryUpInfo4Busi;
 
 public class bebe
-  extends bkfs
+  extends bebf
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TemplateLikeView jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView;
-  private ProfileNameView jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView;
-  private String jdField_a_of_type_JavaLangString = "";
-  private HashMap<String, View> jdField_a_of_type_JavaUtilHashMap;
-  private HashMap<String, bkfr> b;
+  int a;
   
-  public bebe(HashMap<String, View> paramHashMap, String paramString)
+  private void a(becl parambecl, cmd0x388.TryUpImgRsp paramTryUpImgRsp)
   {
-    if (paramHashMap == null) {
-      throw new RuntimeException("create the QVipProfileJsonInflaterFactory with null profileHeaderViewsMap");
+    boolean bool = false;
+    if (paramTryUpImgRsp.msg_info4busi.has())
+    {
+      localObject1 = (cmd0x388.TryUpInfo4Busi)paramTryUpImgRsp.msg_info4busi.get();
+      if (((cmd0x388.TryUpInfo4Busi)localObject1).bytes_down_domain.has()) {
+        parambecl.jdField_b_of_type_JavaLangString = ((cmd0x388.TryUpInfo4Busi)localObject1).bytes_down_domain.get().toStringUtf8();
+      }
+      if (((cmd0x388.TryUpInfo4Busi)localObject1).bytes_big_down_url.has()) {
+        parambecl.jdField_d_of_type_JavaLangString = ((cmd0x388.TryUpInfo4Busi)localObject1).bytes_big_down_url.get().toStringUtf8();
+      }
+      if (((cmd0x388.TryUpInfo4Busi)localObject1).bytes_original_down_url.has()) {
+        parambecl.e = ((cmd0x388.TryUpInfo4Busi)localObject1).bytes_original_down_url.get().toStringUtf8();
+      }
+      if (((cmd0x388.TryUpInfo4Busi)localObject1).bytes_thumb_down_url.has()) {
+        parambecl.jdField_c_of_type_JavaLangString = ((cmd0x388.TryUpInfo4Busi)localObject1).bytes_thumb_down_url.get().toStringUtf8();
+      }
+      if (((cmd0x388.TryUpInfo4Busi)localObject1).bytes_file_resid.has()) {
+        parambecl.f = ((cmd0x388.TryUpInfo4Busi)localObject1).bytes_file_resid.get().toStringUtf8();
+      }
     }
-    this.b = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    parambecl.jdField_a_of_type_Long = paramTryUpImgRsp.uint64_fileid.get();
+    Object localObject1 = paramTryUpImgRsp.rpt_uint32_up_ip.get();
+    Object localObject2 = paramTryUpImgRsp.rpt_uint32_up_port.get();
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
+    {
+      int i = 0;
+      while (i < ((List)localObject1).size())
+      {
+        long l1 = ((Integer)((List)localObject1).get(i)).intValue();
+        long l2 = ((Integer)((List)localObject2).get(i)).intValue();
+        bdyf localbdyf = new bdyf();
+        localbdyf.jdField_a_of_type_JavaLangString = bgva.a(l1 & 0xFFFFFFFF);
+        localbdyf.jdField_a_of_type_Int = ((int)l2);
+        parambecl.jdField_a_of_type_JavaUtilArrayList.add(i, localbdyf);
+        i += 1;
+      }
+    }
+    if ((paramTryUpImgRsp.bool_file_exit.has()) && (paramTryUpImgRsp.bool_file_exit.get())) {
+      parambecl.jdField_a_of_type_Boolean = true;
+    }
+    do
+    {
+      return;
+      localObject2 = HexUtil.bytes2HexStr(paramTryUpImgRsp.bytes_up_ukey.get().toByteArray());
+      if ((localObject2 == null) || (((String)localObject2).equals("")) || (localObject1 == null) || (((List)localObject1).size() == 0)) {
+        throw new Exception("check ukey,iplist");
+      }
+      parambecl.jdField_a_of_type_JavaLangString = ((String)localObject2);
+      parambecl.jdField_a_of_type_Int = ((int)paramTryUpImgRsp.uint64_block_size.get());
+      parambecl.jdField_b_of_type_Int = ((int)paramTryUpImgRsp.uint64_up_offset.get());
+      if (bdwu.a().a() != this.jdField_a_of_type_Int) {
+        bool = true;
+      }
+      parambecl.jdField_b_of_type_Boolean = bool;
+      parambecl.jdField_b_of_type_Long = paramTryUpImgRsp.uint64_up_offset.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("BDH_LOG", 2, " Channel:" + paramTryUpImgRsp.bool_new_big_chan.get());
+      }
+    } while ((!paramTryUpImgRsp.bool_new_big_chan.has()) || (paramTryUpImgRsp.bool_new_big_chan.get() != true));
+    parambecl.jdField_c_of_type_Boolean = true;
   }
   
-  public View a(Context paramContext, String paramString)
+  public static boolean a(int paramInt)
   {
-    if ("pf_name".equals(paramString))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView != null) {
-        throw new RuntimeException("It have duplicate " + paramString);
-      }
-      wxe.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了昵称控件");
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView = new ProfileNameView(paramContext);
-      paramContext = new ProfileTemplateNickNameContainer(paramContext, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
-      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_nick_name", this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
-      return paramContext;
-    }
-    if ("pf_avatar".equals(paramString))
-    {
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        throw new RuntimeException("It have duplicate " + paramString);
-      }
-      wxe.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了头像控件");
-      paramContext = LayoutInflater.from(paramContext).inflate(2131561816, null);
-      this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131374005);
-      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_diy_nick_container", this.jdField_a_of_type_AndroidViewView);
-      return paramContext;
-    }
-    if ("pf_like".equals(paramString))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView != null) {
-        throw new RuntimeException("It have duplicate " + paramString);
-      }
-      wxe.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了点赞控件");
-      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView = new TemplateLikeView(paramContext);
-      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView.a(0);
-      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like", this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView);
-      return this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView;
-    }
-    if ("image_view".equals(paramString)) {
-      return new DIYImageView(paramContext);
-    }
-    return super.a(paramContext, paramString);
+    return (paramInt != 196) && (paramInt != 194) && (paramInt != 197) && (paramInt != 199) && (paramInt != 200) && (paramInt != 201) && (paramInt != 203) && (paramInt != 202) && (paramInt != 120509) && (paramInt != 400010) && (paramInt != 400011);
   }
   
-  public bkfr a(String paramString, View paramView)
+  void a(int paramInt, becg parambecg, cmd0x388.ReqBody paramReqBody)
   {
-    if ("pf_name".equals(paramString)) {
-      return new bebc(paramString, paramView, this.jdField_a_of_type_JavaLangString);
+    parambecg = (bece)parambecg;
+    cmd0x388.TryUpImgReq localTryUpImgReq = new cmd0x388.TryUpImgReq();
+    localTryUpImgReq.setHasFlag(true);
+    localTryUpImgReq.uint64_src_uin.set(Long.valueOf(parambecg.jdField_c_of_type_JavaLangString).longValue());
+    localTryUpImgReq.uint64_group_code.set(Long.valueOf(parambecg.jdField_d_of_type_JavaLangString).longValue());
+    localTryUpImgReq.uint64_file_id.set(paramInt);
+    localTryUpImgReq.uint64_file_size.set(parambecg.jdField_a_of_type_Long);
+    localTryUpImgReq.bytes_file_md5.set(ByteStringMicro.copyFrom(parambecg.jdField_a_of_type_ArrayOfByte));
+    localTryUpImgReq.bytes_file_name.set(ByteStringMicro.copyFromUtf8(parambecg.jdField_a_of_type_JavaLangString));
+    localTryUpImgReq.uint32_src_term.set(5);
+    localTryUpImgReq.uint32_platform_type.set(9);
+    localTryUpImgReq.uint32_pic_width.set(parambecg.jdField_c_of_type_Int);
+    localTryUpImgReq.uint32_pic_height.set(parambecg.jdField_d_of_type_Int);
+    localTryUpImgReq.uint32_pic_type.set(parambecg.jdField_a_of_type_Int);
+    PBUInt32Field localPBUInt32Field = localTryUpImgReq.uint32_bu_type;
+    if (parambecg.f == 1) {}
+    for (paramInt = 1;; paramInt = 2)
+    {
+      localPBUInt32Field.set(paramInt);
+      localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(bdxz.a()));
+      if (parambecg.jdField_b_of_type_Boolean) {
+        localTryUpImgReq.uint32_original_pic.set(1);
+      }
+      paramReqBody.rpt_msg_tryup_img_req.add(localTryUpImgReq);
+      return;
     }
-    if ("pf_avatar".equals(paramString)) {
-      return new beba(paramString, paramView, this.b);
-    }
-    if ("pf_like".equals(paramString)) {
-      return new bebb(paramString, paramView, this.jdField_a_of_type_JavaLangString);
-    }
-    if ("image_view".equals(paramString)) {
-      return new bebg(paramString, paramView, this.jdField_a_of_type_JavaLangString);
-    }
-    return super.a(paramString, paramView);
   }
   
-  public void a(bkfr parambkfr, JSONObject paramJSONObject)
+  public void a(bdxf parambdxf, bdxe parambdxe)
   {
-    Object localObject = paramJSONObject.optString("id");
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (parambkfr != null)) {
-      this.b.put(localObject, parambkfr);
+    if (QLog.isColorLevel()) {
+      QLog.e("BDHCommonUpHandler", 1, "onProtoResp: " + parambdxf.a.getResultCode());
     }
-    if ("pf_avatar".equals(paramJSONObject.optString("type")))
+    super.a(parambdxf, parambdxe);
+  }
+  
+  public void a(bebv parambebv)
+  {
+    if ((parambebv != null) && (parambebv.jdField_a_of_type_JavaUtilList != null) && (parambebv.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
     {
-      localObject = paramJSONObject.optString("border", "");
-      localObject = (bkfr)this.b.get(localObject);
-      if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_diy_avatar_sticker", ((bkfr)localObject).a());
+      bdxe localbdxe = new bdxe();
+      localbdxe.jdField_a_of_type_JavaLangString = "ImgStore.BDHCommonUp";
+      localbdxe.jdField_a_of_type_ArrayOfByte = a(parambebv);
+      localbdxe.jdField_a_of_type_JavaLangObject = parambebv;
+      localbdxe.jdField_a_of_type_Bdxd = this;
+      a(parambebv, localbdxe);
+    }
+  }
+  
+  protected void a(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, bebv parambebv, beck parambeck, anqe paramanqe, bdxf parambdxf, bdxe parambdxe)
+  {
+    try
+    {
+      parambdxf = ((cmd0x388.RspBody)new cmd0x388.RspBody().mergeFrom(paramArrayOfByte)).rpt_msg_tryup_img_rsp.get();
+      if ((parambdxf == null) || (parambdxf.size() == 0)) {
+        throw new Exception("resps null");
       }
     }
-    super.a(parambkfr, paramJSONObject);
+    catch (Exception paramFromServiceMsg)
+    {
+      a(-1, -9527, bdsx.a("P", -9529L), paramFromServiceMsg.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanqe, parambeck.jdField_a_of_type_JavaUtilList);
+    }
+    for (;;)
+    {
+      return;
+      Iterator localIterator = parambdxf.iterator();
+      while (localIterator.hasNext())
+      {
+        parambdxf = (cmd0x388.TryUpImgRsp)localIterator.next();
+        try
+        {
+          localbecl = (becl)parambeck.jdField_a_of_type_JavaUtilList.get((int)parambdxf.uint64_file_id.get());
+          if (localbecl == null) {
+            continue;
+          }
+          try
+          {
+            if (paramFromServiceMsg.getAttributes().containsKey("_attr_send_by_quickHttp")) {
+              localbecl.jdField_d_of_type_Boolean = ((Boolean)paramFromServiceMsg.getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
+            }
+            i = parambdxf.uint32_result.get();
+            if (i != 0) {
+              break label296;
+            }
+            a(localbecl, parambdxf);
+            a(0, 0, "", "", paramanqe, localbecl);
+          }
+          catch (Exception parambdxf) {}
+        }
+        catch (Exception parambdxf)
+        {
+          for (;;)
+          {
+            int i;
+            becl localbecl = null;
+          }
+        }
+        a(-1, -9527, bdsx.a("P", -9529L), parambdxf.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanqe, localbecl);
+        continue;
+        label296:
+        if (a(i))
+        {
+          this.jdField_b_of_type_Int += 1;
+          if (this.jdField_b_of_type_Int < 2)
+          {
+            parambebv.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(parambdxe);
+            return;
+          }
+        }
+        a(-1, -9527, bdsx.a(i), "", paramanqe, localbecl);
+      }
+    }
+  }
+  
+  byte[] a(bebv parambebv)
+  {
+    if (parambebv == null) {
+      return null;
+    }
+    List localList = parambebv.jdField_a_of_type_JavaUtilList;
+    cmd0x388.ReqBody localReqBody = new cmd0x388.ReqBody();
+    localReqBody.setHasFlag(true);
+    localReqBody.uint32_subcmd.set(1);
+    localReqBody.uint32_command_id.set(parambebv.jdField_a_of_type_Int);
+    if (parambebv.jdField_a_of_type_ArrayOfByte != null) {
+      localReqBody.bytes_extension.set(ByteStringMicro.copyFrom(parambebv.jdField_a_of_type_ArrayOfByte));
+    }
+    int i = 0;
+    while (i < localList.size())
+    {
+      a(i, (becg)localList.get(i), localReqBody);
+      i += 1;
+    }
+    i = bdwu.a().a();
+    this.jdField_a_of_type_Int = i;
+    switch (i)
+    {
+    default: 
+      i = 6;
+    }
+    for (;;)
+    {
+      parambebv = bdwu.a().a();
+      int j = i;
+      if (parambebv != null)
+      {
+        j = i;
+        if (parambebv.contains("wap")) {
+          j = 5;
+        }
+      }
+      localReqBody.uint32_net_type.set(j);
+      return localReqBody.toByteArray();
+      i = 3;
+      continue;
+      i = 6;
+      continue;
+      i = 7;
+      continue;
+      i = 8;
+    }
+  }
+  
+  void b(bebv parambebv)
+  {
+    beck localbeck = parambebv.jdField_a_of_type_Beck;
+    localbeck.jdField_a_of_type_JavaUtilList.clear();
+    int i = 0;
+    while (i < parambebv.jdField_a_of_type_JavaUtilList.size())
+    {
+      becl localbecl = new becl();
+      localbeck.jdField_a_of_type_JavaUtilList.add(i, localbecl);
+      i += 1;
+    }
   }
 }
 

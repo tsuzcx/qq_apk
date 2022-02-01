@@ -26,7 +26,7 @@ public class RecentItemEcShop
     return localPubAccountAssistantData;
   }
   
-  public int a()
+  public int getRecentUserType()
   {
     return 1008;
   }

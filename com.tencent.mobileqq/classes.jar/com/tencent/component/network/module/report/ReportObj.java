@@ -29,7 +29,7 @@ public class ReportObj
   public static final int OP_DOWN = 1;
   public static final int OP_UP = 0;
   public static final String REPORT_REFER_QQ_QUN = "mqun";
-  private static final String REPORT_URL = "http://p.store.qq.com/";
+  private static final String REPORT_URL = "https://expeva.store.qq.com/";
   public String domain;
   public long downloadTime;
   public long elapse = 0L;
@@ -83,7 +83,7 @@ public class ReportObj
     default: 
       return "";
     case 0: 
-      str = "http://p.store.qq.com/" + "photo";
+      str = "https://expeva.store.qq.com/" + "photo";
     }
     for (;;)
     {
@@ -92,15 +92,15 @@ public class ReportObj
         break;
       }
       return str + "op=upload";
-      str = "http://p.store.qq.com/" + "qzone_video";
+      str = "https://expeva.store.qq.com/" + "qzone_video";
       continue;
-      str = "http://p.store.qq.com/" + "qzone_sound";
+      str = "https://expeva.store.qq.com/" + "qzone_sound";
       continue;
-      str = "http://p.store.qq.com/" + "qzone_head";
+      str = "https://expeva.store.qq.com/" + "qzone_head";
       continue;
-      str = "http://p.store.qq.com/" + "upp";
+      str = "https://expeva.store.qq.com/" + "upp";
       continue;
-      str = "http://p.store.qq.com/" + "groupphoto";
+      str = "https://expeva.store.qq.com/" + "groupphoto";
     }
     if (paramInt2 == 1) {
       return str + "op=down";
@@ -228,7 +228,7 @@ public class ReportObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.component.network.module.report.ReportObj
  * JD-Core Version:    0.7.0.1
  */

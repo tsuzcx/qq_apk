@@ -1,39 +1,42 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.annotation.TargetApi;
+import android.graphics.Rect;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qphone.base.util.QLog;
 
-public final class arhg
-  extends WebViewClient
+public class arhg
+  implements ArkViewImplement.LoadCallback
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final IHostInterface.IWebClient jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient;
+  public arhg(MessageForArkApp paramMessageForArkApp, appa paramappa, agpp paramagpp, apow paramapow, int paramInt) {}
   
-  private arhg(Context paramContext, IHostInterface.IWebClient paramIWebClient)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient = paramIWebClient;
-  }
+  @TargetApi(14)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.onPageFinished(paramWebView, paramString))) {
-      super.onPageFinished(paramWebView, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView onLoadFinish MessageForArkApp state=", Integer.valueOf(paramInt), ",app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
     }
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.shouldOverrideUrlLoading(paramWebView, paramString)))
+    this.jdField_a_of_type_Appa.b.setVisibility(8);
+    if (paramInt == 1)
     {
-      paramWebView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserDelegationActivity.class);
-      paramWebView.putExtra("param_force_internal_browser", true);
-      paramWebView.putExtra("url", paramString);
-      aemu.a(this.jdField_a_of_type_AndroidContentContext, paramWebView, paramString);
+      Object localObject = this.jdField_a_of_type_Agpp.getContainerRect();
+      float f = apoh.a();
+      paramInt = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
+      int i = (int)((((Rect)localObject).bottom - ((Rect)localObject).top) * f);
+      this.jdField_a_of_type_Apow.a(this.jdField_a_of_type_Appa, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      if (apoh.a)
+      {
+        localObject = this.jdField_a_of_type_Appa.a.getLayoutParams();
+        QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView.onLoadFinish arkContainer rect(", Integer.valueOf(paramInt), ",", Integer.valueOf(i), "), arkView rect(", Integer.valueOf(((ViewGroup.LayoutParams)localObject).width), ",", Integer.valueOf(((ViewGroup.LayoutParams)localObject).height), "),app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
+      }
     }
-    return true;
+    this.jdField_a_of_type_Apow.a(this.jdField_a_of_type_Agpp, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,6 +1,47 @@
-// INTERNAL ERROR //
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ufr
+  implements AbsListView.OnScrollListener
+{
+  boolean jdField_a_of_type_Boolean = false;
+  
+  ufr(ufp paramufp) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!ufp.a(this.jdField_a_of_type_Ufp)) && (!ufp.b(this.jdField_a_of_type_Ufp)))
+    {
+      upe.c("comment", "onScrollStateChanged scrollState:" + paramInt);
+      ufp.a(this.jdField_a_of_type_Ufp, this.jdField_a_of_type_Ufp.a().a(ufp.a(this.jdField_a_of_type_Ufp)));
+      if (ufp.b(this.jdField_a_of_type_Ufp) != null)
+      {
+        this.jdField_a_of_type_Ufp.a().a(ufp.a(this.jdField_a_of_type_Ufp), true);
+        ufp.a(this.jdField_a_of_type_Ufp, true);
+      }
+    }
+    else
+    {
+      return;
+    }
+    upe.c("comment", "mCommentAttachInfo is null");
+  }
+}
+
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ufr
  * JD-Core Version:    0.7.0.1
  */

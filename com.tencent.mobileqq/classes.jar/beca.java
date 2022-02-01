@@ -1,23 +1,11 @@
-class beca
-  implements becn
+public class beca
+  extends becg
 {
-  beca(bebz parambebz) {}
+  public String a;
   
-  public void a(int paramInt, String paramString)
+  public String toString()
   {
-    if (bebz.a(this.a) != null) {
-      bebz.a(this.a).a(false);
-    }
-  }
-  
-  public void a(bece parambece)
-  {
-    bebz.a(this.a, parambece);
-    if (bebz.a(this.a) != null)
-    {
-      bebz.a(this.a);
-      bebz.a(this.a).a(parambece.a);
-    }
+    return this.a;
   }
 }
 

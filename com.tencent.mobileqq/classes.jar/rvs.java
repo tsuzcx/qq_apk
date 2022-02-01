@@ -1,32 +1,29 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
-
 public class rvs
-  implements Animator.AnimatorListener
 {
-  public rvs(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public String toString()
   {
-    this.a.setScaleX(1.0F);
-    this.a.setScaleY(1.0F);
-    this.a.setRotation(0.0F);
-    this.a.setAlpha(1.0F);
-    if (ReadInjoyTabDragAnimationView.a(this.a) != 0) {
-      this.a.a(0);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append("mSceneType: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mCurIndexDiff: ").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mPreIndexDiff: ").append(this.c);
+    localStringBuilder.append(", mTimeInterval: ").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", mIsPull: ").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mIsAutoPlay: ").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rvs
  * JD-Core Version:    0.7.0.1
  */

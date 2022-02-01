@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
-import ajeu;
+import akww;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.sdk.LaunchParam;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -34,7 +35,7 @@ public final class a
     String str = a(paramQQAppInterface);
     try
     {
-      paramQQAppInterface = (a)ajeu.a(str);
+      paramQQAppInterface = (a)akww.a(str);
       Object localObject = paramQQAppInterface;
       if (paramQQAppInterface == null) {
         localObject = new a();
@@ -79,7 +80,7 @@ public final class a
           PreloadManager.a((String)localIterator.next(), false, 0);
         }
       }
-      com.tencent.mobileqq.microapp.b.a.a(g.a(paramApkgConfig), false);
+      c.a(g.a(paramApkgConfig), false);
     }
   }
   
@@ -245,7 +246,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.a
  * JD-Core Version:    0.7.0.1
  */

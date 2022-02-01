@@ -1,26 +1,35 @@
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Comparator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
 
-class amlq
-  implements Comparator<structmsg.StructMsg>
+public abstract interface amlq
 {
-  amlq(amlp paramamlp) {}
+  public abstract void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, amlp paramamlp, long paramLong);
   
-  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
-  {
-    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
-      return 1;
-    }
-    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt);
+  
+  public abstract void onDownloadGameResStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
+  
+  public abstract void onGameCheckRetry(int paramInt);
+  
+  public abstract void onGameCheckStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong);
+  
+  public abstract void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onSsoCmdRuleRsp(CmGameStartChecker.StartCheckParam paramStartCheckParam, String paramString);
+  
+  public abstract void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amlq
  * JD-Core Version:    0.7.0.1
  */

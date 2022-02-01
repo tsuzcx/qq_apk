@@ -1,74 +1,35 @@
-import android.graphics.Bitmap;
-import android.media.ThumbnailUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.RoundRectBitmap;
-import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.downloader.GalleryDecoder;
-import com.tencent.widget.Gallery;
-import java.io.File;
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1.2.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class agkv
-  extends GalleryDecoder
+  implements Animation.AnimationListener
 {
-  private BaseApplicationImpl a;
+  public agkv(AIOShakeHelper.1 param1) {}
   
-  public agkv(BaseApplicationImpl paramBaseApplicationImpl)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(BaseApplicationImpl.getContext());
-    this.a = paramBaseApplicationImpl;
-  }
-  
-  public Object decodeVideo(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    int i = 0;
-    if (paramDownloadParams.tag != null) {
-      i = ((Integer)paramDownloadParams.tag).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, "animSet onAnimationEnd is called,time is:" + System.currentTimeMillis());
     }
-    if (i == 3)
-    {
-      paramURLDrawableHandler = ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
-      int j = paramURLDrawableHandler.getWidth();
-      i = paramURLDrawableHandler.getHeight();
-      float f = Gallery.a(j, i, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, null);
-      j = (int)(j * f);
-      i = (int)(i * f);
-      return ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
-    }
-    return null;
+    agkt.a(this.a.this$0).post(new AIOShakeHelper.1.2.1(this));
   }
   
-  public String getLogTag()
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    return "PEAK";
-  }
-  
-  public void reportSafeDecode(SafeBitmapFactory.SafeDecodeOption paramSafeDecodeOption)
-  {
-    if ((!paramSafeDecodeOption.isInJustDecodeBounds) && (paramSafeDecodeOption.needRegionDecode))
-    {
-      HashMap localHashMap = paramSafeDecodeOption.getInfo();
-      localHashMap.put("from", "GalleryDecoder");
-      azri.a(BaseApplicationImpl.getApplication()).a(null, "safeDecode", paramSafeDecodeOption.isGetBitmap, paramSafeDecodeOption.runTime, paramSafeDecodeOption.rawHeight * paramSafeDecodeOption.rawWidth, localHashMap, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, "animSet onAnimationRepeat is called,time is:" + System.currentTimeMillis());
     }
   }
   
-  public RoundRectBitmap resizeAndClipBitmap(Bitmap paramBitmap, int paramInt)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    try
-    {
-      RoundRectBitmap localRoundRectBitmap = new RoundRectBitmap(paramBitmap, paramInt);
-      return localRoundRectBitmap;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, "animSet onAnimationStart is called,time is:" + System.currentTimeMillis());
     }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
-    return new RoundRectBitmap(paramBitmap, 12.0F);
-  }
-  
-  public boolean useJpegTurbo()
-  {
-    return awkr.b();
   }
 }
 

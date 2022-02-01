@@ -1,40 +1,16 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener2;
-import com.tencent.image.URLImageView;
-import java.lang.ref.SoftReference;
+import com.tencent.qphone.base.util.QLog;
 
 final class ayho
-  implements URLDrawable.URLDrawableListener2
+  implements ankk
 {
-  ayho(SoftReference paramSoftReference, URLDrawable paramURLDrawable, ayhq paramayhq) {}
-  
-  public void onFileDownloaded(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramURLDrawable = (URLImageView)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-      } while (!(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof GifDrawable));
-      AbstractGifImage localAbstractGifImage = ((GifDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getImage();
-      localAbstractGifImage.reset();
-      localAbstractGifImage.setStrongGIFPlayOnceListener(new ayhp(this, localAbstractGifImage));
-      paramURLDrawable.setVisibility(0);
-      paramURLDrawable.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    } while (this.jdField_a_of_type_Ayhq == null);
-    this.jdField_a_of_type_Ayhq.a();
+    if (paramBoolean) {
+      ayhn.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.dpc", 2, "onDpcPullFinished, hasChanged=" + paramBoolean);
+    }
   }
 }
 

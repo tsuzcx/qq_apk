@@ -1,32 +1,9 @@
-class bdbw
-  extends altm
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeRadioGroup$OnCheckChangeListener;", "", "onModeCheckedChanged", "", "curType", "", "oldType", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface bdbw
 {
-  private bdbw(bdbu parambdbu) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(4, paramBoolean, new Object[] { paramString });
-  }
-  
-  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(39, paramBoolean, new Object[] { paramString });
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(30, paramBoolean, new Object[] { paramString });
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

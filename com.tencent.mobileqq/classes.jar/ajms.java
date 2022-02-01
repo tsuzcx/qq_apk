@@ -1,25 +1,40 @@
-import android.os.Parcel;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public abstract class ajms
+public class ajms
+  implements AdapterView.OnItemClickListener
 {
-  public abstract void a(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList);
+  public ajms(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  abstract void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
-  
-  public boolean a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    a(paramObject, paramArrayList, paramParcel);
-    if (b(paramObject, paramArrayList, paramParcel)) {
-      b(paramObject, paramArrayList, paramParcel);
+    ajmy localajmy = (ajmy)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+    boolean bool = localajmy.jdField_a_of_type_Boolean;
+    if (bool)
+    {
+      if (EmoticonGroupStoreFragment.b(this.a).contains(localajmy.jdField_a_of_type_JavaLangString)) {
+        EmoticonGroupStoreFragment.b(this.a).remove(localajmy.jdField_a_of_type_JavaLangString);
+      }
+      localajmy = (ajmy)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+      if (bool) {
+        break label144;
+      }
     }
-    return false;
+    label144:
+    for (bool = true;; bool = false)
+    {
+      localajmy.jdField_a_of_type_Boolean = bool;
+      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      EmoticonGroupStoreFragment.b(this.a).add(localajmy.jdField_a_of_type_JavaLangString);
+      break;
+    }
   }
-  
-  abstract void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
-  
-  abstract boolean b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
 }
 
 

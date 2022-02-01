@@ -1,18 +1,42 @@
-import android.support.annotation.NonNull;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqcircle.events.QCircleFollowUpdateEvent;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public abstract interface vop
+class vop
+  implements zwr<QCircleFollowUpdateEvent>
 {
-  public abstract void a(@NonNull voo paramvoo);
+  private final Handler a;
   
-  public abstract void a(@NonNull voo paramvoo, @NonNull Throwable paramThrowable);
+  private vop(Handler paramHandler)
+  {
+    this.a = paramHandler;
+  }
   
-  public abstract void b(@NonNull voo paramvoo);
+  public ArrayList<Class<QCircleFollowUpdateEvent>> getEventClass()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(QCircleFollowUpdateEvent.class);
+    return localArrayList;
+  }
   
-  public abstract void c(@NonNull voo paramvoo);
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if (!(paramSimpleBaseEvent instanceof QCircleFollowUpdateEvent)) {}
+    do
+    {
+      return;
+      paramSimpleBaseEvent = (QCircleFollowUpdateEvent)paramSimpleBaseEvent;
+      QLog.i("QCircleSpecialFollowMgr", 4, "onReceiveEvent: QCircleFollowUpdateEvent " + paramSimpleBaseEvent.mUserId + " " + paramSimpleBaseEvent.mFollowStatus);
+    } while (paramSimpleBaseEvent.mFollowStatus != 0);
+    this.a.obtainMessage(1002, paramSimpleBaseEvent.mUserId).sendToTarget();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vop
  * JD-Core Version:    0.7.0.1
  */

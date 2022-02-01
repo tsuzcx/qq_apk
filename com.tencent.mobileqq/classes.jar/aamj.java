@@ -1,27 +1,29 @@
-import android.content.Context;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aamj
-  implements AdQQMINIProgramAdapter
+  implements View.OnClickListener
 {
-  public AdError show(AdQQMINIProgramAdapter.Params paramParams)
+  public aamj(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    if (!aauy.a("subscribe_draft_click"))
     {
-      aase.d("GdtQQMINIProgramAdapter", "show error");
-      return new AdError(4);
+      boolean bool = SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("postUin", SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView));
+      localIntent.putExtra("has_shop", bool);
+      localIntent.putExtra("subscribeDraftID", String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()));
+      blsb.a((Activity)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), localIntent, 0);
+      aaxb.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_draftclk", 0, 0, new String[0]);
     }
-    GdtAd localGdtAd = (GdtAd)GdtAd.class.cast(paramParams.ad);
-    aase.b("GdtQQMINIProgramAdapter", String.format("show %s", new Object[] { localGdtAd.getUrlForLandingPage() }));
-    AdReporterForAnalysis.reportForLaunchQQMINIProgramStart((Context)paramParams.context.get(), localGdtAd);
-    MiniAppLauncher.startMiniApp((Context)paramParams.context.get(), localGdtAd.getUrlForLandingPage(), 2054, new aamk(this, paramParams, localGdtAd));
-    return new AdError(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

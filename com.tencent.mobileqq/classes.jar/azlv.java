@@ -1,14 +1,11 @@
-public abstract interface azlv
+public abstract interface azlv<VIEW, DATA>
+  extends azlx
 {
-  public abstract azlw a(int paramInt1, int paramInt2);
+  public abstract int a();
   
-  public abstract void a();
+  public abstract String a();
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Throwable paramThrowable);
-  
-  public abstract void b();
+  public abstract boolean a(DATA paramDATA);
 }
 
 

@@ -1,105 +1,126 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class qfw
-  implements rjj
+  implements qft
 {
-  @Nullable
-  private RIJRedPacketProgressView jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView;
-  private qfy jdField_a_of_type_Qfy;
-  private qhj jdField_a_of_type_Qhj;
-  
-  public qfw()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    this(null);
+    return null;
   }
   
-  public qfw(@Nullable RIJRedPacketProgressView paramRIJRedPacketProgressView)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    if (paramRIJRedPacketProgressView == null)
+    qba localqba = new qba();
+    String str2;
+    String str1;
+    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a != null) && (paramBaseArticleInfo.mSocialFeedInfo.a.a != null))
     {
-      paramRIJRedPacketProgressView = ors.a(BaseActivity.sTopActivity);
-      if (paramRIJRedPacketProgressView == null) {}
-    }
-    for (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView = paramRIJRedPacketProgressView.a();; this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView = paramRIJRedPacketProgressView)
-    {
-      this.jdField_a_of_type_Qfy = new qfy(this, null);
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.a();
+      String str3 = "ReadInjoy_QA_NoImage_cell";
+      String str4 = "";
+      str2 = str4;
+      str1 = str3;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a.c != null)
+      {
+        str2 = str4;
+        str1 = str3;
+        if (paramBaseArticleInfo.mSocialFeedInfo.a.c.size() > 0)
+        {
+          str2 = str4;
+          str1 = str3;
+          if (paramBaseArticleInfo.mSocialFeedInfo.a.a.b == 1)
+          {
+            str1 = "ReadInjoy_QA_Image_cell";
+            str2 = ((String)paramBaseArticleInfo.mSocialFeedInfo.a.c.get(0)).trim();
+          }
+        }
       }
-      return;
     }
-  }
-  
-  private void a(rjk paramrjk, rjn paramrjn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJVideoRedPacketManager", 2, "startRedPacketTiming:view=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView + ", title=" + paramrjk.a);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null) {
-      RIJRedPacketManager.a().a(new qfx(this, paramrjk, paramrjn));
-    }
-  }
-  
-  private void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJVideoRedPacketManager", 2, "stopRedPacketTiming: ");
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.b();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.c();
+      try
+      {
+        localqba.a(str1).d(paramBaseArticleInfo, str2).i(paramBaseArticleInfo).q(paramBaseArticleInfo);
+        return localqba.a();
+      }
+      catch (JSONException paramBaseArticleInfo)
+      {
+        paramBaseArticleInfo.printStackTrace();
+        continue;
+      }
+      try
+      {
+        localqba.a("ReadInjoy_QA_NoImage_cell");
+      }
+      catch (JSONException paramBaseArticleInfo)
+      {
+        paramBaseArticleInfo.printStackTrace();
+      }
     }
   }
   
-  public void a()
+  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketWidgetRIJRedPacketProgressView.a();
-    }
-    oxb.a().a(this.jdField_a_of_type_Qfy);
-  }
-  
-  public void a(rjk paramrjk, rjn paramrjn, int paramInt1, int paramInt2, Object paramObject)
-  {
-    if ((paramrjk == null) || (paramrjk.b)) {
-      d();
-    }
+    Object localObject = paramContainer.getVirtualView();
+    if ((localObject == null) || (parampxk == null) || (parampxk.a() == null)) {}
+    NativeTextImp localNativeTextImp;
     do
     {
-      return;
-      if (paramInt2 == 3)
+      do
       {
-        a(paramrjk, paramrjn);
         return;
+        localObject = ((ViewBase)localObject).findViewBaseByName("id_summary");
+      } while ((localObject == null) || (((ViewBase)localObject).getNativeView() == null) || (!(((ViewBase)localObject).getNativeView() instanceof NativeTextImp)));
+      localNativeTextImp = (NativeTextImp)((ViewBase)localObject).getNativeView();
+    } while (localNativeTextImp == null);
+    boolean bool = pmh.a().a(parampxk.a().mArticleID);
+    localNativeTextImp.setTextSize(2, 15.0F);
+    if (bool) {}
+    for (localObject = "#999999";; localObject = "#4c4c4c")
+    {
+      localNativeTextImp.setTextColor(Color.parseColor((String)localObject));
+      paramContainer = paramContainer.getContext().getResources().getDisplayMetrics();
+      paramInt2 = 3;
+      paramInt1 = paramInt2;
+      if (paramContainer.widthPixels <= 720)
+      {
+        paramInt1 = paramInt2;
+        if (!pha.j(parampxk.a())) {
+          paramInt1 = 2;
+        }
       }
-    } while (paramInt1 != 3);
-    d();
+      localNativeTextImp.setMaxLines(paramInt1);
+      localNativeTextImp.setLineSpacing(Utils.rp2px(2.0D), 1.0F);
+      if (Build.VERSION.SDK_INT < 21) {
+        break;
+      }
+      localNativeTextImp.setLetterSpacing(0.02F);
+      return;
+    }
   }
   
-  public boolean a()
+  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
   {
-    return (this.jdField_a_of_type_Qhj != null) && (this.jdField_a_of_type_Qhj.isShowing());
-  }
-  
-  public void b()
-  {
-    oxb.a().b(this.jdField_a_of_type_Qfy);
-  }
-  
-  public void c()
-  {
-    oxb.a().b(this.jdField_a_of_type_Qfy);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qfw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.loginwelcome;
 
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class LoginUserGuideHelper$GuideRunnable$1
@@ -18,7 +18,7 @@ class LoginUserGuideHelper$GuideRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper.GuideRunnable.1
  * JD-Core Version:    0.7.0.1
  */

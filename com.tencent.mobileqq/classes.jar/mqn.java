@@ -1,90 +1,75 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
 
-class mqn
-  extends Handler
+public class mqn
 {
-  private WeakReference<mqm> jdField_a_of_type_JavaLangRefWeakReference;
+  private static final Map<String, Long> a = new HashMap(5);
+  private static final Map<String, Long> b = new HashMap(5);
   
-  public mqn(mqm parammqm1, Looper paramLooper, mqm parammqm2)
+  public static void a(String paramString1, String paramString2, int paramInt, Object... paramVarArgs)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammqm2);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    mqm localmqm = (mqm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localmqm == null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("QavVideoAudioRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
-      }
-    }
-    do
+    int j = 0;
+    if (QLog.isColorLevel())
     {
+      long l2 = SystemClock.elapsedRealtime();
+      Object localObject1 = (Long)b.get(paramString1);
+      long l1;
+      if ((paramInt == 1) || (localObject1 == null))
+      {
+        a.put(paramString1, Long.valueOf(l2));
+        b.put(paramString1, Long.valueOf(l2));
+        l1 = 0L;
+      }
       for (;;)
       {
-        return;
-        switch (i)
-        {
-        default: 
-          throw new RuntimeException("Unhandled msg what=" + i);
-        case 0: 
-          if (mqm.a(this.jdField_a_of_type_Mqm) == null) {
-            mqm.a(this.jdField_a_of_type_Mqm, new ByteArrayOutputStream(32768));
-          }
-          if (paramMessage.obj != null)
-          {
-            mqm.a(localmqm, (axvi)paramMessage.obj);
-            return;
-          }
-          throw new RuntimeException("MSG_START_RECORDING bundle == null");
-        case 1: 
-          mqm.a(localmqm);
-          try
-          {
-            if (mqm.a(this.jdField_a_of_type_Mqm) != null)
-            {
-              mqm.a(this.jdField_a_of_type_Mqm).flush();
-              mqm.a(this.jdField_a_of_type_Mqm).close();
-              mqm.a(this.jdField_a_of_type_Mqm, null);
-              return;
-            }
-          }
-          catch (IOException paramMessage) {}
+        Object localObject2 = "[]";
+        localObject1 = localObject2;
+        if (paramVarArgs == null) {
+          break label210;
         }
+        localObject1 = localObject2;
+        if (paramVarArgs.length <= 0) {
+          break label210;
+        }
+        localObject1 = new StringBuilder(100);
+        ((StringBuilder)localObject1).append("[");
+        int k = paramVarArgs.length;
+        int i = 0;
+        while (i < k)
+        {
+          localObject2 = paramVarArgs[i];
+          if (j > 0) {
+            ((StringBuilder)localObject1).append(",");
+          }
+          ((StringBuilder)localObject1).append(localObject2);
+          j += 1;
+          i += 1;
+        }
+        l1 = l2 - ((Long)localObject1).longValue();
+        b.put(paramString1, Long.valueOf(l2));
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("QavVideoAudioRecorder", 2, "AudioBuf.close() ", paramMessage);
-    return;
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (Object[])paramMessage.obj;
-      if ((paramMessage == null) || (paramMessage.length != 5)) {
-        throw new IllegalArgumentException("args == null || args.length != 5");
+      ((StringBuilder)localObject1).append("]");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      label210:
+      QLog.i("AVTraceUtil", 2, paramString1 + "--" + paramString2 + "--" + (String)localObject1 + "--" + l1);
+      if (paramInt == 2)
+      {
+        paramVarArgs = (Long)a.get(paramString1);
+        paramString2 = paramVarArgs;
+        if (paramVarArgs == null) {
+          paramString2 = Long.valueOf(l2);
+        }
+        l1 = paramString2.longValue();
+        QLog.i("AVTraceUtil", 2, paramString1 + ": " + (l2 - l1));
       }
-      mqm.a(localmqm, ((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
-      return;
     }
-    throw new RuntimeException("MSG_VIDEO_FRAME_AVAILABLE bundle == null");
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (Object[])paramMessage.obj;
-      localmqm.b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
-      return;
-    }
-    throw new RuntimeException("MSG_AUDIO_FRAME_AVAILABLE bundle == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mqn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agzr
-  implements View.OnClickListener
+  extends ahbl
 {
-  agzr(agzq paramagzq) {}
-  
-  public void onClick(View paramView)
+  agzr(agwz paramagwz)
   {
-    paramView = new Intent(agzq.a(this.a), QQBrowserActivity.class);
-    paramView.putExtra("url", String.format("https://openmobile.qq.com/TeamGame/index.html?_wv=1031&uin=%s&team_id=%s&srcSessionType=%d&srcSessionUin=%s", new Object[] { agzq.a(this.a).getAccount(), agzq.a(this.a), Integer.valueOf(aspf.a(agzq.a(this.a).jdField_a_of_type_Int)), agzq.a(this.a).jdField_a_of_type_JavaLangString }));
-    agzq.a(this.a).startActivity(paramView);
-    bfhz.a().a(agzq.a(this.a).getCurrentAccountUin(), "", "", "2000", "2016", "0", false);
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahmn(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

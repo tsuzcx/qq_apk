@@ -1,47 +1,26 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.qipc.QIPCModule;
 
-class bcks
-  implements bckx
+public class bcks
 {
-  bcks(bckr parambckr) {}
+  private static volatile bcks jdField_a_of_type_Bcks;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new bckt(this, "Module_VideoPlayIPCServer");
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public static bcks a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.change_machine", 2, "getChangeMachineFlag result:" + paramJSONObject);
-    }
-    int j = 0;
-    int k = -1;
-    paramInt = k;
-    int i = j;
-    if (paramJSONObject != null)
+    if (jdField_a_of_type_Bcks == null) {}
+    try
     {
-      if (paramJSONObject.has("code")) {
-        break label88;
+      if (jdField_a_of_type_Bcks == null) {
+        jdField_a_of_type_Bcks = new bcks();
       }
-      i = j;
-      paramInt = k;
+      return jdField_a_of_type_Bcks;
     }
-    for (;;)
-    {
-      if ((paramInt == 0) && (i != 0))
-      {
-        bckr.a(this.a);
-        this.a.b();
-      }
-      return;
-      label88:
-      k = paramJSONObject.optInt("code");
-      paramInt = k;
-      i = j;
-      if (k == 0)
-      {
-        i = paramJSONObject.optInt("flag");
-        paramInt = k;
-      }
-    }
+    finally {}
+  }
+  
+  public QIPCModule a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
 }
 

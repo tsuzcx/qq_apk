@@ -1,188 +1,200 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.qphone.base.util.QLog;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class amof
-  extends Handler
+  extends amlo
 {
-  public static int a;
-  public static long a;
-  private amnu a;
-  private long b;
-  private long c;
-  private long d;
-  
-  static
+  public amof(CmGameLoadingFragment paramCmGameLoadingFragment, AppInterface paramAppInterface)
   {
-    jdField_a_of_type_Int = -1000;
+    super(paramAppInterface, true);
   }
   
-  public amof(Looper paramLooper, QQAppInterface paramQQAppInterface, amnu paramamnu)
+  public void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, amlp paramamlp, long paramLong)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_Amnu = paramamnu;
-    this.b = System.currentTimeMillis();
-  }
-  
-  public void a()
-  {
-    removeCallbacksAndMessages(null);
-  }
-  
-  public void dispatchMessage(Message paramMessage)
-  {
-    ThreadRegulator.a().b();
-    super.dispatchMessage(paramMessage);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    jdField_a_of_type_Int = Process.myTid();
-    jdField_a_of_type_Long = SystemClock.currentThreadTimeMillis();
-    long l2 = System.currentTimeMillis();
-    long l3 = SystemClock.currentThreadTimeMillis();
-    Object localObject1 = (amob)paramMessage.obj;
-    label266:
-    boolean bool;
+    if (CmGameLoadingFragment.a(this.a)) {}
     do
     {
-      for (;;)
+      do
       {
-        try
+        do
         {
-          int i = paramMessage.what;
-          switch (i)
+          do
           {
-          default: 
-            this.d += SystemClock.currentThreadTimeMillis() - l3;
-            this.c += System.currentTimeMillis() - l2;
-            if (System.currentTimeMillis() - this.b > 300000L)
-            {
-              paramMessage = new StringBuilder(100);
-              paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-              paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-              localObject1 = (amoc)this.jdField_a_of_type_Amnu.a(1);
-              if (localObject1 != null) {
-                paramMessage.append(((amoc)localObject1).a());
-              }
-              localObject1 = (amog)this.jdField_a_of_type_Amnu.a(2);
-              if (localObject1 != null) {
-                paramMessage.append(((amog)localObject1).a()).append("\n");
-              }
-              QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
-              this.d = 0L;
-              this.c = 0L;
-              this.b = System.currentTimeMillis();
-            }
             return;
+            if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("cmgame_process.CmGameLoadingFragment", 2, "onDownloadConfirm mStartCheckParam == null || mStartCheckParam.game == null");
+          return;
+          if ((CmGameLoadingFragment.a(this.a) == null) || (paramStartCheckParam.requestCode == CmGameLoadingFragment.a(this.a).requestCode)) {
+            break;
           }
+        } while (!QLog.isColorLevel());
+        QLog.d("cmgame_process.CmGameLoadingFragment", 2, "onDownloadConfirm startCheckParam.requestCode != mStartCheckParam.requestCode");
+        return;
+        if (paramLong > 0L) {
+          break;
         }
-        finally
-        {
-          l1 = this.d;
-          this.d = (SystemClock.currentThreadTimeMillis() - l3 + l1);
-          l1 = this.c;
-          this.c = (System.currentTimeMillis() - l2 + l1);
-          if (System.currentTimeMillis() - this.b <= 300000L) {
-            continue;
-          }
-          localObject1 = new StringBuilder(100);
-          ((StringBuilder)localObject1).append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-          ((StringBuilder)localObject1).append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-          Object localObject2 = (amoc)this.jdField_a_of_type_Amnu.a(1);
-          if (localObject2 == null) {
-            continue;
-          }
-          ((StringBuilder)localObject1).append(((amoc)localObject2).a());
-          localObject2 = (amog)this.jdField_a_of_type_Amnu.a(2);
-          if (localObject2 == null) {
-            continue;
-          }
-          ((StringBuilder)localObject1).append(((amog)localObject2).a()).append("\n");
-          QLog.d("Q.fts.BgCpu.Total", 1, ((StringBuilder)localObject1).toString());
-          this.d = 0L;
-          this.c = 0L;
-          this.b = System.currentTimeMillis();
-        }
-        if (((amob)localObject1).c()) {
-          sendMessageDelayed(obtainMessage(2, localObject1), 30000L);
-        } else if (QLog.isColorLevel()) {
-          QLog.w("Q.fts.sync_worker", 2, "readSyncedCursor is false!!");
-        }
+        QLog.d("cmgame_process.CmGameLoadingFragment", 2, new Object[] { "[onDownloadConfirm] packageSize is invalid, packageSize=", Long.valueOf(paramLong) });
+      } while (paramamlp == null);
+      paramamlp.a(paramStartCheckParam);
+      return;
+      if ((CmGameLoadingFragment.a(this.a) != null) && (CmGameLoadingFragment.a(this.a).statMap != null)) {
+        CmGameLoadingFragment.a(this.a).statMap.put("download_confirm", Long.valueOf(1L));
       }
-      removeMessages(2, localObject1);
-      if (((amob)localObject1).d()) {
-        ((amob)localObject1).e();
-      }
-      bool = this.jdField_a_of_type_Amnu.b;
-      if (!bool) {
-        break;
-      }
-      this.d += SystemClock.currentThreadTimeMillis() - l3;
-      this.c += System.currentTimeMillis() - l2;
-    } while (System.currentTimeMillis() - this.b <= 300000L);
-    paramMessage = new StringBuilder(100);
-    paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-    paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-    localObject1 = (amoc)this.jdField_a_of_type_Amnu.a(1);
-    if (localObject1 != null) {
-      paramMessage.append(((amoc)localObject1).a());
+    } while (CmGameLoadingFragment.a(this.a) == null);
+    CmGameLoadingFragment.a(this.a).a(paramStartCheckParam, paramamlp, paramLong);
+  }
+  
+  public void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    super.onDownloadGameResDown(paramStartCheckParam);
+    if ((CmGameLoadingFragment.a(this.a) != null) && (CmGameLoadingFragment.a(this.a).statMap != null)) {
+      CmGameLoadingFragment.a(this.a).statMap.put("download_game_res", Long.valueOf(1L));
     }
-    localObject1 = (amog)this.jdField_a_of_type_Amnu.a(2);
-    if (localObject1 != null) {
-      paramMessage.append(((amog)localObject1).a()).append("\n");
+  }
+  
+  public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    QLog.d("cmgame_process.CmGameLoadingFragment", 1, "[onDownloadGameResFail]");
+    onGameFailed(paramStartCheckParam, -12L);
+  }
+  
+  public void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt)
+  {
+    if (CmGameLoadingFragment.a(this.a) != null) {
+      CmGameLoadingFragment.a(this.a).a(paramStartCheckParam, paramInt);
     }
-    QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
-    this.d = 0L;
-    this.c = 0L;
-    this.b = System.currentTimeMillis();
-    return;
-    paramMessage = obtainMessage(2, localObject1);
-    if (((amob)localObject1).f()) {}
-    for (long l1 = 15000L;; l1 = 30000L)
+  }
+  
+  public void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  {
+    if (CmGameLoadingFragment.a(this.a)) {}
+    do
     {
-      sendMessageDelayed(paramMessage, l1);
-      break;
-      removeMessages(3, localObject1);
-      ((amob)localObject1).e();
-      bool = this.jdField_a_of_type_Amnu.b;
-      if (!bool) {
-        break;
+      return;
+      if (paramStartCheckParam == null)
+      {
+        QLog.e("cmgame_process.CmGameLoadingFragment", 1, "onCheckGameFinish mStartCheckParam == null");
+        return;
       }
-      this.d += SystemClock.currentThreadTimeMillis() - l3;
-      this.c += System.currentTimeMillis() - l2;
-      if (System.currentTimeMillis() - this.b <= 300000L) {
-        break label266;
+      if (paramLong != 0L)
+      {
+        onGameFailed(paramStartCheckParam, paramLong);
+        return;
       }
-      paramMessage = new StringBuilder(100);
-      paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-      paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-      localObject1 = (amoc)this.jdField_a_of_type_Amnu.a(1);
-      if (localObject1 != null) {
-        paramMessage.append(((amoc)localObject1).a());
-      }
-      localObject1 = (amog)this.jdField_a_of_type_Amnu.a(2);
-      if (localObject1 != null) {
-        paramMessage.append(((amog)localObject1).a()).append("\n");
-      }
-      QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
-      this.d = 0L;
-      this.c = 0L;
-      this.b = System.currentTimeMillis();
+    } while (CmGameLoadingFragment.a(this.a) == null);
+    CmGameLoadingFragment.a(this.a).a(paramLong, paramStartCheckParam);
+  }
+  
+  public void onGameCheckRetry(int paramInt)
+  {
+    if (CmGameLoadingFragment.a(this.a)) {}
+    while (CmGameLoadingFragment.a(this.a) == null) {
       return;
     }
+    CmGameLoadingFragment.a(this.a).a(paramInt, CmGameLoadingFragment.a(this.a));
+  }
+  
+  public void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong)
+  {
+    ampb.a().a(paramStartCheckParam, paramLong, null);
+    if (CmGameLoadingFragment.a(this.a) != null) {
+      CmGameLoadingFragment.a(this.a).b(paramStartCheckParam, paramLong);
+    }
+  }
+  
+  public void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (CmGameLoadingFragment.a(this.a)) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      if (paramStartCheckParam != null) {
+        break label38;
+      }
+      QLog.d("cmgame_process.CmGameLoadingFragment", 2, "showGameLifeTip mStartCheckParam is null");
+    }
+    for (;;)
+    {
+      onGameFailed(paramStartCheckParam, -1L);
+      return;
+      label38:
+      QLog.d("cmgame_process.CmGameLoadingFragment", 2, new Object[] { "showGameLifeTip mStartCheckParam:", paramStartCheckParam });
+    }
+  }
+  
+  public void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    super.onGetGameData(paramStartCheckParam);
+    if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null)) {
+      QLog.e("cmgame_process.CmGameLoadingFragment", 1, "onGetGameData startCheckParam == null or game is null");
+    }
+    do
+    {
+      return;
+      CmGameLoadingFragment.a(this.a).game = paramStartCheckParam.game;
+    } while (CmGameLoadingFragment.a(this.a) == null);
+    CmGameLoadingFragment.a(this.a).b(paramStartCheckParam);
+  }
+  
+  public void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  {
+    if (CmGameLoadingFragment.a(this.a)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if ((paramCmGameInitParams != null) && (CmGameLoadingFragment.a(this.a) != null))
+          {
+            paramCmGameInitParams.commFlag = CmGameLoadingFragment.a(this.a).commFlag;
+            paramCmGameInitParams.mSSORule = CmGameLoadingFragment.a(this.a).mSSORule;
+            if (CmGameLoadingFragment.a(this.a).game != null) {
+              paramCmGameInitParams.appId = CmGameLoadingFragment.a(this.a).game.appId;
+            }
+            paramCmGameInitParams.rpUrl = CmGameLoadingFragment.a(this.a).rpUrl;
+            paramCmGameInitParams.rpIconUrl = CmGameLoadingFragment.a(this.a).rpIconUrl;
+          }
+          if (paramCmGameInitParams != null) {
+            paramCmGameInitParams.accessTokenRet = 0;
+          }
+          ampb.a().a(paramStartCheckParam, paramLong, paramCmGameInitParams);
+          QLog.d("cmgame_process.CmGameLoadingFragment", 1, new Object[] { "[onCheckGameFinish] resultCode=", Long.valueOf(paramLong) });
+          if (paramStartCheckParam != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("cmgame_process.CmGameLoadingFragment", 2, "onCheckGameFinish mStartCheckParam == null");
+        return;
+        if ((CmGameLoadingFragment.a(this.a) == null) || (paramStartCheckParam.requestCode == CmGameLoadingFragment.a(this.a).requestCode)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("cmgame_process.CmGameLoadingFragment", 2, "onCheckGameFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
+      return;
+      if (paramLong != 0L)
+      {
+        onGameFailed(paramStartCheckParam, paramLong);
+        return;
+      }
+    } while (CmGameLoadingFragment.a(this.a) == null);
+    CmGameLoadingFragment.a(this.a).a(paramStartCheckParam, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amof
  * JD-Core Version:    0.7.0.1
  */

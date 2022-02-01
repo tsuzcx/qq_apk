@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import android.view.animation.Interpolator;
 
-public class asqk
+class asqk
+  implements Interpolator
 {
-  JefsClass.CancelableRunnable a;
+  asqk(asqe paramasqe) {}
   
-  public asqk(JefsClass.CancelableRunnable paramCancelableRunnable)
+  public float getInterpolation(float paramFloat)
   {
-    this.a = paramCancelableRunnable;
-  }
-  
-  public void a()
-  {
-    this.a.a = true;
+    paramFloat -= 1.0F;
+    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
   }
 }
 

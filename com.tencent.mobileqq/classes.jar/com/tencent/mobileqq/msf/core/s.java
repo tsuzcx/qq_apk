@@ -1,133 +1,106 @@
 package com.tencent.mobileqq.msf.core;
 
-import android.os.Build;
-import android.os.SystemClock;
-import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.c.e;
-import com.tencent.mobileqq.msf.core.quic.QuicWrapper;
-import com.tencent.mobileqq.msf.sdk.utils.MonitorSocketStat;
-import com.tencent.mobileqq.msf.service.j;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Properties;
+import android.os.Handler;
+import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Collection;
+import java.util.Iterator;
 
-class s
-  extends Thread
+public class s
 {
-  s(MsfCore paramMsfCore, com.tencent.mobileqq.msf.core.c.k paramk, boolean paramBoolean, int paramInt1, int paramInt2) {}
+  private static s.b a = null;
+  private static s.c b = null;
+  private static boolean c = true;
+  private static boolean d = true;
+  private static s.d e = null;
   
-  public void run()
+  public static void a() {}
+  
+  public static void b()
   {
-    long l = SystemClock.elapsedRealtime();
-    NetConnInfoCenter.checkConnInfo(BaseApplication.getContext(), true);
-    this.e.netFlowStore = new e(MsfCore.sCore, BaseApplication.getContext());
-    try
+    if ((c) || (d))
     {
-      BaseApplication.monitor.start();
-      QLog.d("MSF.C.MsfCore", 1, "init netflow monitor cost=" + (SystemClock.elapsedRealtime() - l));
-      l = SystemClock.elapsedRealtime();
-      this.a.f();
-      if (this.a.c())
-      {
-        this.e.statReporter = this.a;
-        if (j.f)
-        {
-          QLog.d("MSF.C.MsfCore", 1, "MSF_Alive_Log do report JobScheduler alive MSF to rdm in msfcore init");
-          j.a(true);
-        }
-        this.e.store.reportLoadCfgTempFile();
+      if (b == null) {
+        b = new s.c();
       }
-      QLog.d("MSF.C.MsfCore", 1, "init beacon Cost=" + (SystemClock.elapsedRealtime() - l));
-      l = SystemClock.elapsedRealtime();
-      if (com.tencent.mobileqq.msf.service.k.a)
-      {
-        QLog.d("MSF.C.MsfCore", 1, "MSF_Alive_REPORT_Log do report MSF alive to bigT in msfcore init");
-        com.tencent.mobileqq.msf.service.k.a(null);
-      }
-      QLog.d("MSF.C.MsfCore", 1, "init BigT Cost=" + (SystemClock.elapsedRealtime() - l));
-      l = SystemClock.elapsedRealtime();
-      Object localObject;
-      if (com.tencent.mobileqq.msf.core.c.b.a(BaseApplication.getContext(), false))
-      {
-        localObject = com.tencent.mobileqq.msf.core.c.b.a(BaseApplication.getContext());
-        this.e.mtaReporter = ((com.tencent.mobileqq.msf.core.c.b)localObject);
-      }
-      QLog.d("MSF.C.MsfCore", 1, "init mtaSupport=" + com.tencent.mobileqq.msf.core.c.b.a(BaseApplication.getContext()).isMtaSupported() + " mtaCost=" + (SystemClock.elapsedRealtime() - l));
-      l = SystemClock.elapsedRealtime();
-      Properties localProperties;
-      if (MsfCore.access$000(this.e))
-      {
-        localProperties = new Properties();
-        localProperties.setProperty("isNewVersion", String.valueOf(this.b));
-        localProperties.setProperty("newVersion", String.valueOf(this.c));
-        localProperties.setProperty("oldVersion", String.valueOf(this.d));
-        if (t.d() == null)
-        {
-          localObject = "null";
-          localProperties.setProperty("imei", (String)localObject);
-          com.tencent.mobileqq.msf.core.c.b.a(BaseApplication.getContext()).reportKVEvent("msf.core.EvtTxlibSoExist", localProperties);
-        }
-      }
-      else if (this.e.bLoadUseTxlib)
-      {
-        localProperties = new Properties();
-        localProperties.setProperty("bLoadUseTxlib", String.valueOf(this.e.bLoadUseTxlib));
-        localProperties.setProperty("newVersion", String.valueOf(this.c));
-        localProperties.setProperty("oldVersion", String.valueOf(this.d));
-        if (t.d() != null) {
-          break label703;
-        }
-        localObject = "null";
-        localProperties.setProperty("imei", (String)localObject);
-        localProperties.setProperty("product", Build.MANUFACTURER + "_" + Build.MODEL);
-        localProperties.setProperty("uin", String.valueOf(MsfCore.sCore.getAccountCenter().i()));
-        localProperties.setProperty("platform", c.c(BaseApplication.getContext()));
-        com.tencent.mobileqq.msf.core.c.b.a(BaseApplication.getContext()).reportKVEvent("msf.core.EvtLoadUseTxlib", localProperties);
+      Handler localHandler = x.b();
+      localHandler.removeCallbacks(b);
+      localHandler.postDelayed(b, 5000L);
+    }
+  }
+  
+  private static void b(StringBuilder paramStringBuilder, Collection paramCollection, int paramInt)
+  {
+    String str;
+    if ((paramCollection != null) && (paramCollection.size() > 0) && (paramStringBuilder != null)) {
+      if (paramInt == 1) {
+        str = "  ";
       }
     }
-    catch (Throwable localException1)
+    for (;;)
     {
-      try
+      paramCollection = paramCollection.iterator();
+      for (;;)
       {
-        y.a().a(MsfCore.sCore, true);
-        QLog.d("MSF.C.MsfCore", 1, "init wifiScan cost=" + (SystemClock.elapsedRealtime() - l));
-        l = SystemClock.elapsedRealtime();
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          label703:
-          do
-          {
-            for (;;)
-            {
-              y.a(y.O);
-              QLog.d("MSF.C.MsfCore", 1, "MsfCore init health step cost=" + (SystemClock.elapsedRealtime() - l));
-              QLog.i("MSF.C.MsfCore", 1, "init quic_enable=" + a.e("quic_enable") + " version=" + QuicWrapper.getQuicResVersion() + " libpath=" + QuicWrapper.getQuicResLoadPath());
-              return;
-              localThrowable = localThrowable;
-              QLog.d("MSF.C.MsfCore", 1, "", localThrowable);
-              continue;
-              String str = t.d();
-              continue;
-              str = t.d();
-            }
-            localException1 = localException1;
-          } while (!QLog.isColorLevel());
-          QLog.d("MSF.C.MsfCore", 2, localException1.toString(), localException1);
+        if (!paramCollection.hasNext()) {
+          break label238;
         }
-        catch (Exception localException2)
+        Object localObject = paramCollection.next();
+        if ((localObject instanceof ToServiceMsg))
         {
-          for (;;)
+          localObject = (ToServiceMsg)localObject;
+          if (localObject == null) {
+            continue;
+          }
+          paramStringBuilder.append(str).append(((ToServiceMsg)localObject).getShortStringForLog()).append("\n");
+          continue;
+          if (paramInt == 2)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("MSF.C.MsfCore", 2, localException2.toString(), localException2);
+            str = "    ";
+            break;
+          }
+          if (paramInt != 3) {
+            break label239;
+          }
+          str = "      ";
+          break;
+        }
+        if ((localObject instanceof FromServiceMsg))
+        {
+          localObject = (FromServiceMsg)localObject;
+          if (localObject != null) {
+            paramStringBuilder.append(str).append(((FromServiceMsg)localObject).getShortStringForLog()).append("\n");
+          }
+        }
+        else if ((localObject instanceof MsfMessagePair))
+        {
+          localObject = (MsfMessagePair)localObject;
+          if (localObject != null)
+          {
+            if (((MsfMessagePair)localObject).toServiceMsg != null) {
+              paramStringBuilder.append(str).append(((MsfMessagePair)localObject).toServiceMsg.getShortStringForLog()).append("\n");
+            }
+            if (((MsfMessagePair)localObject).fromServiceMsg != null) {
+              paramStringBuilder.append(str).append(((MsfMessagePair)localObject).fromServiceMsg.getShortStringForLog()).append("\n");
             }
           }
         }
       }
+      label238:
+      return;
+      label239:
+      str = "";
     }
+  }
+  
+  public static void c()
+  {
+    if (e == null) {
+      e = new s.d(null);
+    }
+    x.b().removeCallbacks(e);
+    x.b().postDelayed(e, 60000L);
   }
 }
 

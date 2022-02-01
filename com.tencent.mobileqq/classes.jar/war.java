@@ -1,32 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleTimeLineFeedItemView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class war
-  extends QQUIEventReceiver<wah, vdl>
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public war(@NonNull wah paramwah)
-  {
-    super(paramwah);
-  }
+  public war(QCircleTimeLineFeedItemView paramQCircleTimeLineFeedItemView) {}
   
-  public void a(@NonNull wah paramwah, @NonNull vdl paramvdl)
+  public int getSpanSize(int paramInt)
   {
-    if (paramvdl.a.isSuccess())
-    {
-      wxe.a(paramwah.b, "receive user info event. %s.", paramvdl.toString());
-      paramwah.i();
+    if (((this.a.a() instanceof FeedCloudMeta.StFeed)) && (((FeedCloudMeta.StFeed)this.a.a()).type.get() == 2) && (((FeedCloudMeta.StFeed)this.a.a()).images.size() > 1)) {
+      return 1;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vdl.class;
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     war
  * JD-Core Version:    0.7.0.1
  */

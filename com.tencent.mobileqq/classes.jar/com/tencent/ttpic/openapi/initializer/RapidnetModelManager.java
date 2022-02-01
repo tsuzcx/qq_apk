@@ -17,10 +17,14 @@ import java.util.Map;
 
 public class RapidnetModelManager
 {
+  public static final int MODEL_ID_GENDER_DETECT = 5;
   public static final int MODEL_ID_GENDER_SWITCH = 0;
   public static final int MODEL_ID_HAIR_SEG = 1;
   public static final int MODEL_ID_HAND_DETECT = 3;
+  public static final int MODEL_ID_HUMAN_SEG = 4;
   public static final int MODEL_ID_SKY_SEG = 2;
+  public static final int MODEL_ID_STYLE_CHILD = 6;
+  public static final int MODEL_TYPE_GENDER_DETECT = 3;
   public static final int MODEL_TYPE_GENDER_SWITCH = 1;
   public static final int MODEL_TYPE_HAND_DETECT = 2;
   public static final int MODEL_TYPE_SEG = 0;
@@ -107,7 +111,7 @@ public class RapidnetModelManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.RapidnetModelManager
  * JD-Core Version:    0.7.0.1
  */

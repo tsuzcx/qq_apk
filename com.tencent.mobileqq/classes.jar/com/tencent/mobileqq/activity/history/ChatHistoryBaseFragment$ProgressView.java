@@ -27,9 +27,9 @@ class ChatHistoryBaseFragment$ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561654, this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372332));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377606));
+    LayoutInflater.from(paramContext).inflate(2131561888, this);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372926));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378445));
   }
   
   public void a(CharSequence paramCharSequence)
@@ -45,7 +45,7 @@ class ChatHistoryBaseFragment$ProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment.ProgressView
  * JD-Core Version:    0.7.0.1
  */

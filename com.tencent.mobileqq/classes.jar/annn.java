@@ -1,11 +1,23 @@
-import com.tencent.ark.open.ArkAppInfo.AppDownloadInfo;
+import com.tencent.mobileqq.data.HotChatItemData;
+import java.util.Comparator;
 
-public class annn
+class annn
+  implements Comparator<HotChatItemData>
 {
-  public int a;
-  public ArkAppInfo.AppDownloadInfo a;
-  public String a;
-  public int b;
+  annn(annl paramannl) {}
+  
+  public int a(HotChatItemData paramHotChatItemData1, HotChatItemData paramHotChatItemData2)
+  {
+    long l1 = Math.max(paramHotChatItemData1.mLatestMsgSec, paramHotChatItemData1.mDraftSec);
+    long l2 = Math.max(paramHotChatItemData2.mLatestMsgSec, paramHotChatItemData2.mDraftSec);
+    if (l1 < l2) {
+      return 1;
+    }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
+  }
 }
 
 

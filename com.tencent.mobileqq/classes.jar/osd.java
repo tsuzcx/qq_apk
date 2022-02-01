@@ -1,53 +1,41 @@
-import com.tencent.image.AbsThirdDataSourceAdapter;
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class osd
-  extends AbsThirdDataSourceAdapter
+class osd
+  implements Handler.Callback
 {
-  int jdField_a_of_type_Int = 2;
-  private AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int b = 0;
-  private int c = 0;
+  osd(osb paramosb) {}
   
-  public osd(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int getPlayType()
-  {
-    return this.c;
-  }
-  
-  public int getStaus()
-  {
-    return this.b;
-  }
-  
-  public String getURL()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
-  {
-    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
-    this.b = 1;
-    paramOnPreparedCallback = osf.a();
-    ose localose = new ose(this);
-    if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 6)) {
-      paramOnPreparedCallback.a(paramString, "PubAccountArticleCenter.GetUrlByVid", localose);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      if (System.currentTimeMillis() - osb.a(this.a) > 1500L)
+      {
+        osb.a(this.a, false);
+        QLog.d("KandianAdPandent", 2, "time up do not update volume");
+      }
+      if (osb.b(this.a))
+      {
+        osb.a(this.a).sendEmptyMessageDelayed(1, 300L);
+        this.a.d();
+        return false;
+      }
+      osb.a(this.a).removeMessages(1);
+      return false;
     }
-    while (this.jdField_a_of_type_Int != 4) {
-      return;
-    }
-    paramOnPreparedCallback.a(paramString, "SQQShopAdSvr.GetUrlByVid", localose);
+    osb.a(this.a);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     osd
  * JD-Core Version:    0.7.0.1
  */

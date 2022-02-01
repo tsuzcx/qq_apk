@@ -1,29 +1,8 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-
-class bkzg
-  implements ActionMode.Callback
+public class bkzg
 {
-  bkzg(bkyz parambkyz) {}
-  
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
-  {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
+  public int a;
+  public long a;
+  public byte[] a;
 }
 
 

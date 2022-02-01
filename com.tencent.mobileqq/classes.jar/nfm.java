@@ -1,25 +1,24 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
 
 public class nfm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends mwq
 {
-  public nfm(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  public nfm(AvGameLoadingActivity paramAvGameLoadingActivity) {}
   
-  public void onGlobalLayout()
+  public void a(int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong1, long paramLong2)
   {
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int i = this.a.getWindow().getDecorView().getBottom();
-    int j = this.a.getWindow().getDecorView().getTop();
-    LebaSearchPluginManagerActivity.a(this.a, i - j);
+    AvGameLoadingActivity.a(this.a, true, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong1, paramLong2);
+  }
+  
+  public void b(int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong1, long paramLong2)
+  {
+    AvGameLoadingActivity.a(this.a, false, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong1, paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nfm
  * JD-Core Version:    0.7.0.1
  */

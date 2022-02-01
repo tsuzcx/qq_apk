@@ -1,38 +1,27 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.theme.SkinnableBitmapDrawable;
-import com.tencent.theme.SkinnableNinePatchDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bdeb
+final class bdeb
+  implements DialogInterface.OnClickListener
 {
-  public static int a(Drawable paramDrawable)
-  {
-    if (paramDrawable == null) {}
-    do
-    {
-      return -1;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return bdeu.a(((BitmapDrawable)paramDrawable).getBitmap());
-      }
-      if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
-        return bdeu.a(((SkinnableBitmapDrawable)paramDrawable).getBitmap());
-      }
-    } while (!(paramDrawable instanceof SkinnableNinePatchDrawable));
-    return bdeu.a(((SkinnableNinePatchDrawable)paramDrawable).getBitmap());
-  }
+  bdeb(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public static final Bitmap a(Drawable paramDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDrawable == null) {}
-    do
-    {
-      return null;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return ((BitmapDrawable)paramDrawable).getBitmap();
-      }
-    } while (!(paramDrawable instanceof SkinnableBitmapDrawable));
-    return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
+    bddx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bddx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bddx.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bddx.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.b);
+    paramDialogInterface.setFlags(67108864);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
   }
 }
 

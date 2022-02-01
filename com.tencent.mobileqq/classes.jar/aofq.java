@@ -1,37 +1,45 @@
-import android.app.Activity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.colornote.swipeback.SwipeBackLayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-public class aofq
-  extends GestureDetector.SimpleOnGestureListener
+class aofq
+  implements acvn
 {
-  public aofq(SwipeBackLayout paramSwipeBackLayout) {}
+  aofq(aofp paramaofp, String paramString, FMTransC2CMsgInfo paramFMTransC2CMsgInfo, int paramInt, byte[] paramArrayOfByte) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public ToServiceMsg a()
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    ToServiceMsg localToServiceMsg = aofp.a(this.jdField_a_of_type_Aofp).createToServiceMsg("MessageSvc.PbSendMsg");
+    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("msgsize", 0L);
+    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uniseq);
+    localToServiceMsg.extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
+    localToServiceMsg.extraData.putString("uuid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uuid);
+    localToServiceMsg.extraData.putByte("cmd", (byte)0);
+    localToServiceMsg.extraData.putByte("keyType", (byte)0);
+    localToServiceMsg.extraData.putInt("busiType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.busiType);
+    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("queueSeq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.queueSeq);
+    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.sessionId);
+    localToServiceMsg.extraData.putInt("random", bbzj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
+    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq));
+    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
+    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_a_of_type_Int);
+    bbzm localbbzm = new bbzm();
+    localbbzm.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.subCmd;
+    localbbzm.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    msg_svc.PbSendMsgReq localPbSendMsgReq = bbzf.a(aofp.a(this.jdField_a_of_type_Aofp), 13, this.jdField_a_of_type_JavaLangString, localbbzm, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq, bbzj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
+    aofp.a(this.jdField_a_of_type_Aofp, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo);
+    aofp.a(this.jdField_a_of_type_Aofp, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo, localbbzm);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.entity != null) {
+      localToServiceMsg.extraData.putLong("tmpSessionType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.entity.tmpSessionType);
     }
-    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
-    if ((!this.a.jdField_a_of_type_Boolean) || (paramFloat1 < 200.0F)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    if ((f1 < 0.0F) && (f2 < 0.5F))
-    {
-      if (!(this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-        break label126;
-      }
-      this.a.c = true;
-      this.a.d();
-    }
-    for (;;)
-    {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label126:
-      this.a.d();
-    }
+    localToServiceMsg.putWupBuffer(localPbSendMsgReq.toByteArray());
+    localToServiceMsg.extraData.putLong(aszq.class.getName(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.observerSeq);
+    return localToServiceMsg;
   }
 }
 

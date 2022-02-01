@@ -1,30 +1,50 @@
+import android.text.TextUtils;
+
 public class bmgo
 {
-  public static final int a = bnsm.a(8.0F);
-  public static final int b = bnsm.a(15.0F);
-  public static final int c = bnsm.a(23.0F);
-  public float a;
-  public long a;
-  public boolean a;
-  public float b;
-  public long b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public int d = 0;
-  public boolean d;
-  public float e;
-  public int e = 0;
-  public boolean e;
-  public float f;
-  public int f = 0;
-  public boolean f;
-  public float g;
-  public boolean g;
-  public float h;
-  public boolean h;
-  public boolean i;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean = false;
+  private String b = "";
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
+    if (!TextUtils.isEmpty(this.b))
+    {
+      this.b = this.b.replaceAll("\\+86", "");
+      this.b = this.b.replaceAll("\\D", "");
+    }
+  }
+  
+  public String toString()
+  {
+    return "SimInfo mIseDataTrafficSim=" + this.jdField_a_of_type_Boolean + ",mIMSI=" + this.jdField_a_of_type_JavaLangString + ",mPhoneNum=" + this.b;
+  }
 }
 
 

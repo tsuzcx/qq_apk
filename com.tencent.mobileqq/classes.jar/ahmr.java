@@ -1,50 +1,25 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahmr
-  extends ahln
+class ahmr
   implements View.OnClickListener
 {
-  public ahmr(Context paramContext, QQAppInterface paramQQAppInterface, akln paramakln, avun paramavun)
-  {
-    super(paramContext, paramQQAppInterface, paramakln, paramavun);
-  }
-  
-  public View a(int paramInt, View paramView)
-  {
-    ahms localahms;
-    if ((paramView == null) || (!(paramView.getTag() instanceof ahms)))
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561335, null);
-      localahms = new ahms();
-      localahms.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367516));
-      paramView.setOnClickListener(this);
-      paramView.setTag(localahms);
-    }
-    for (;;)
-    {
-      String str = ((avuv)this.jdField_a_of_type_Avun).b;
-      localahms.jdField_f_of_type_JavaLangString = str;
-      localahms.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Akln.a(1, str));
-      amgf.a += 1;
-      return paramView;
-      localahms = (ahms)paramView.getTag();
-    }
-  }
+  ahmr(ahmp paramahmp) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerifyBlockedBuilder", 2, "start PhoneLaunchActivity");
+    if (paramView.getId() == 2131363668) {
+      ahmp.a(this.a).a(paramView);
     }
-    amgf.a((Activity)this.jdField_a_of_type_AndroidContentContext);
-    azqs.b(null, "dc00898", "", "", "0X800A3A4", "0X800A3A4", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView.getId() == 2131363669) {
+        ahmp.a(this.a).b(paramView);
+      }
+    }
   }
 }
 

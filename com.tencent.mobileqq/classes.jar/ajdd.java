@@ -1,15 +1,11 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class ajdd
-  extends aiym
+public abstract interface ajdd
 {
-  public ajdd(DrawHbFragment paramDrawHbFragment) {}
+  public abstract void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
   
-  public void afterTextChanged(Editable paramEditable)
-  {
-    DrawHbFragment.a(this.a);
-  }
+  public abstract boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 

@@ -1,18 +1,18 @@
-public class bayo
+import mqq.app.QQPermissionCallback;
+
+class bayo
+  implements QQPermissionCallback
 {
-  public int a;
-  public baym a;
-  public boolean a;
-  public boolean b;
+  bayo(bayi parambayi) {}
   
-  public String toString()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUinType:" + this.jdField_a_of_type_Int);
-    localStringBuilder.append(",mIsRaw:" + this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",mIsShareAppPic:" + this.b);
-    localStringBuilder.append(",mShareAppInfo:{" + this.jdField_a_of_type_Baym + "}");
-    return localStringBuilder.toString();
+    bglp.b(this.a.mContext);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bayi.a(this.a);
   }
 }
 

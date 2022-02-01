@@ -1,13 +1,6 @@
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
-
 public class aiji
 {
-  public DragTextView a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  public static final String a = bhgg.a(anhk.ba + ".sticker_recommended_pics/");
 }
 
 

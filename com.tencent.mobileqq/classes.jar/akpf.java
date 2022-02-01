@@ -1,42 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import org.json.JSONObject;
+import Wallet.RspWalletConfig;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public final class akpf
-  implements abwu
+class akpf
+  implements BusinessObserver
 {
-  public akpf(View paramView, abwx paramabwx, long paramLong, int paramInt) {}
+  akpf(akpd paramakpd) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location failed," + paramString);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    double d1 = paramJSONObject.optDouble("altitude", 0.0D);
-    double d2 = paramJSONObject.optDouble("latitude", 0.0D);
-    double d3 = paramJSONObject.optDouble("longitude", 0.0D);
-    double d4 = paramJSONObject.optDouble("horizontalAccuracy", 0.0D);
-    paramJSONObject.optDouble("verticalAccuracy", 0.0D);
-    paramJSONObject.optDouble("accuracy", 0.0D);
-    double d5 = paramJSONObject.optDouble("speed", 0.0D);
-    if (this.jdField_a_of_type_Int == 1)
+    if (paramInt == 17)
     {
-      ApolloRender.getLocationCity(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
-      return;
+      if (!paramBoolean) {}
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("QWalletConfigManager", 2, "setConfigSession fail get rsp:");
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
+      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QWalletConfigManager", 2, "setConfigSession RspWalletConfig|" + paramBundle);
+        return;
+      }
     }
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
   }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

@@ -3,7 +3,7 @@ package com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets;
 import android.os.Handler;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.widget.MessageProgressView;
-import uoy;
+import wik;
 
 class StoryMsgNodeFrameLayout$1
   implements Runnable
@@ -12,7 +12,7 @@ class StoryMsgNodeFrameLayout$1
   
   public void run()
   {
-    int i = uoy.a().a();
+    int i = wik.a().a();
     if (i >= 0)
     {
       this.this$0.a.setAnimProgress(i, QQStoryContext.a().b());
@@ -24,7 +24,7 @@ class StoryMsgNodeFrameLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout.1
  * JD-Core Version:    0.7.0.1
  */

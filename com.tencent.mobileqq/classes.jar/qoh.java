@@ -1,18 +1,30 @@
-import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSAppLoader.2;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface qoh
+public class qoh
+  extends qon
 {
-  public abstract void a(Bundle paramBundle, float paramFloat);
+  public qoh(PTSAppLoader.2 param2) {}
   
-  public abstract void a(Bundle paramBundle, int paramInt, float paramFloat);
+  public void loaded(String paramString, int paramInt)
+  {
+    super.loaded(paramString, paramInt);
+    QLog.i("PTSAppLoader", 1, "[updatePTSApp], asyncBack code = " + paramInt + ", param = " + paramString);
+    if ((paramInt == 0) && (paramString == null))
+    {
+      qog.b(this.a.this$0, this.a.a);
+      QLog.i("PTSAppLoader", 1, "[updatePTSApp], download succeed, bid = " + this.a.a);
+    }
+  }
   
-  public abstract void a(Bundle paramBundle, String paramString);
-  
-  public abstract void a(String paramString);
+  public void progress(int paramInt)
+  {
+    super.progress(paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qoh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,52 @@
-import android.content.Context;
-import android.opengl.GLSurfaceView.Renderer;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.shortvideo.resource.GestureResource;
 
-public abstract class bker
-  implements GLSurfaceView.Renderer
+public class bker
+  implements GestureResource
 {
-  public Context a;
-  protected ViewGroup a;
+  public static String a;
+  public static boolean a;
+  public static String b = "200";
+  public static String c = "20";
   
-  public bker(Context paramContext, ViewGroup paramViewGroup)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    jdField_a_of_type_JavaLangString = "5";
   }
   
-  public void c() {}
+  public String getGestureGapFrame()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
   
-  public void d() {}
+  public String getGestureGapTime()
+  {
+    return b;
+  }
   
-  public void e() {}
+  public boolean getGestureShouldUpload()
+  {
+    return jdField_a_of_type_Boolean;
+  }
   
-  public void f() {}
+  public String getGestureThreadColdTime()
+  {
+    return c;
+  }
+  
+  public String getModelPath()
+  {
+    return bchn.a();
+  }
+  
+  public String getSoPathDir()
+  {
+    return bchn.b();
+  }
+  
+  public boolean isGestureEnable()
+  {
+    return bchg.a().d();
+  }
 }
 
 

@@ -1,10 +1,8 @@
 public abstract interface bnpq
 {
-  public abstract void a();
+  public abstract void a(bnpf parambnpf, int paramInt);
   
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void b();
+  public abstract void a(bnpf parambnpf, boolean paramBoolean);
 }
 
 

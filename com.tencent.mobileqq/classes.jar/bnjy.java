@@ -1,13 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public class bnjy
+class bnjy
   implements DialogInterface.OnClickListener
 {
-  public bnjy(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bnjy(bnjw parambnjw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bnjw.a(this.a).smoothScrollToPosition(bnjw.a);
+    bnjw.b = bnjw.a;
+  }
 }
 
 

@@ -1,18 +1,6 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-
-class afso
-  extends afuf
+public abstract interface afso
 {
-  afso(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
-  
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agcd(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  public abstract void a(int paramInt);
 }
 
 

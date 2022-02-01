@@ -1,16 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.confess.BaseMsgListFragment;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class aqjf
-  implements DialogInterface.OnClickListener
+public class aqjf
+  extends anmu
 {
-  aqjf(aqje paramaqje) {}
+  public aqjf(BaseMsgListFragment paramBaseMsgListFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    this.a.a.a = false;
-    this.a.a.doOnBackPressed();
+    if ((paramBoolean) && ((paramObject instanceof HashMap))) {}
+    try
+    {
+      paramObject = ((HashMap)paramObject).entrySet().iterator();
+      do
+      {
+        Map.Entry localEntry;
+        do
+        {
+          if (!paramObject.hasNext()) {
+            break;
+          }
+          localEntry = (Map.Entry)paramObject.next();
+        } while (localEntry == null);
+        paramBoolean = this.a.a((String)localEntry.getKey(), 2);
+      } while (!paramBoolean);
+      i = 1;
+    }
+    catch (Throwable paramObject)
+    {
+      for (;;)
+      {
+        int i = 0;
+        continue;
+        i = 0;
+      }
+    }
+    if (i != 0) {
+      this.a.b();
+    }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString, 1))) {
+      this.a.b();
+    }
   }
 }
 

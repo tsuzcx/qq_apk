@@ -1,75 +1,39 @@
-import android.content.Context;
-import android.graphics.Paint;
-import android.text.SpannableString;
-import android.text.TextPaint;
-import android.text.style.ForegroundColorSpan;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.TextView;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.mobileqq.widget.QQToast;
 
-class afho
-  implements ViewTreeObserver.OnPreDrawListener
+public class afho
+  extends ayfc
 {
-  afho(afhn paramafhn, TextView paramTextView, String paramString) {}
+  public afho(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  private String a(String paramString)
+  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
   {
-    paramString = paramString.toCharArray();
-    int i = 0;
-    if (i < paramString.length)
+    TextPreviewTranslateActivity.b(this.a);
+    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
     {
-      if (paramString[i] == '　') {
-        paramString[i] = 32;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
-          paramString[i] = ((char)(paramString[i] - 65248));
-        }
-      }
+      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
+      return;
     }
-    return new String(paramString);
-  }
-  
-  public boolean onPreDraw()
-  {
-    int j = 0;
-    int k = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() * 2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetTextView.getPaint();
-    String str2 = a(this.jdField_a_of_type_Afhn.a.getString(2131697652) + ">");
-    String str3 = a(this.jdField_a_of_type_JavaLangString);
-    String str1 = "  " + str2;
-    Object localObject = str3 + str1;
-    if (localTextPaint.measureText((String)localObject + "      ") < k) {}
-    label329:
+    String str2 = this.a.getResources().getString(2131698145);
+    String str1 = str2;
+    if (paramTranslateResult != null)
+    {
+      if (TextUtils.isEmpty(paramTranslateResult.e)) {
+        break label92;
+      }
+      str1 = paramTranslateResult.e;
+    }
     for (;;)
     {
-      k = ((String)localObject).length();
-      int i = j;
-      if (k > str2.length()) {
-        i = k - str2.length();
-      }
-      localObject = new SpannableString((CharSequence)localObject);
-      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-12541697), i, k, 33);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      return true;
-      String str4 = "..." + str1;
-      int m = str3.length();
-      i = 0;
-      for (;;)
-      {
-        if (i >= m) {
-          break label329;
-        }
-        str1 = str3.substring(0, m - i) + str4;
-        localObject = str1;
-        if (localTextPaint.measureText(str1 + "      ") < k) {
-          break;
-        }
-        i += 1;
-        localObject = str1;
+      QQToast.a(this.a, 1, str1, 0).a();
+      return;
+      label92:
+      str1 = str2;
+      if (paramTranslateResult.a()) {
+        str1 = this.a.getResources().getString(2131698132);
       }
     }
   }

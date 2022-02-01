@@ -1,32 +1,25 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.QQBroadcastReceiver;
+import android.os.Process;
 
-public class awcf
-  extends QQBroadcastReceiver
+class awcf
+  extends BroadcastReceiver
 {
-  public awcf(ScanTorchActivity paramScanTorchActivity) {}
+  awcf(awce paramawce) {}
   
-  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
     if (paramIntent == null) {}
-    do
-    {
+    while ((paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) || (awce.a(this.a) == null)) {
       return;
-      paramAppRuntime = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
-      }
-    } while (!"com.tencent.mobileqq__alive".equals(paramAppRuntime));
-    ScanTorchActivity.a(this.a);
+    }
+    awce.a(this.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awcf
  * JD-Core Version:    0.7.0.1
  */

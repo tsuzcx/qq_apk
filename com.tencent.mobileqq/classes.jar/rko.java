@@ -1,10 +1,13 @@
-public abstract class rko
+import android.view.MotionEvent;
+import android.view.View;
+
+public abstract interface rko
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rko
  * JD-Core Version:    0.7.0.1
  */

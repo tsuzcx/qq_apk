@@ -1,31 +1,29 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 
 class GameActivity$38
-  implements Runnable
+  implements AdExposureChecker.ExposureCallback
 {
   GameActivity$38(GameActivity paramGameActivity) {}
   
-  public void run()
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("miniAppID", GameActivity.access$5600(this.this$0).appId);
-    localBundle.putString("param_proc_name", BaseApplicationImpl.getApplication().getQQProcessName());
-    localBundle.putString("param_proc_modulename", "mini_app_client_module");
-    this.this$0.onProcessForeGround(localBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("[minigame] GameActivity", 1, "onResume--onRefreshMiniBadge");
+    QLog.i("[minigame] GameActivity", 1, "bannerad onExposure");
+    if ((this.this$0.mBannerAdOpInfo != null) && (this.this$0.mBannerAdOpInfo.report_info != null) && (this.this$0.mBannerAdOpInfo.report_info.exposure_url != null)) {
+      GameActivity.access$5400(this.this$0, this.this$0.mBannerAdOpInfo.report_info.exposure_url.get(), System.currentTimeMillis());
     }
-    this.this$0.onRefreshMiniBadge(localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.38
  * JD-Core Version:    0.7.0.1
  */

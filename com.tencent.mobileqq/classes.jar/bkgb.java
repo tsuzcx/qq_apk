@@ -1,41 +1,174 @@
-import SWEET_NEW_BASE.sweet_req_comm;
-import SWEET_NEW_PAIR.sweet_pair_byebye_req;
 import android.content.Intent;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.qphone.base.util.QLog;
 
-class bkgb
-  extends QzoneExternalRequest
+public class bkgb
 {
-  bkgb(bkga parambkga, Intent paramIntent) {}
-  
-  public String getCmdString()
+  private static int a(int paramInt)
   {
-    return "SweetQzoneService.sweet_pair_byebye";
-  }
-  
-  public JceStruct getReq()
-  {
-    sweet_pair_byebye_req localsweet_pair_byebye_req = new sweet_pair_byebye_req();
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    switch (paramInt)
     {
-      long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
-      long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("friendUin", -1L);
-      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
-      localsweet_req_comm.opuin = l1;
-      localsweet_req_comm.uin = l1;
-      localsweet_req_comm.loveuin = l2;
-      localsweet_req_comm.qua = bjdm.a();
-      localsweet_req_comm.pf = 1;
-      localsweet_req_comm.src = 3;
-      localsweet_pair_byebye_req.req_comm = localsweet_req_comm;
+    default: 
+      return 0;
+    case 0: 
+      return 2;
+    case 1: 
+      return 3;
+    case 2: 
+      return 1;
+    case 3: 
+      return 6;
     }
-    return localsweet_pair_byebye_req;
+    return 7;
   }
   
-  public String uniKey()
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong)
   {
-    return "sweet_pair_byebye";
+    if (paramInt == 7220) {}
+    try
+    {
+      a(paramQQAppInterface, "0X80098E4", "" + paramLong, "", "", "");
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, arcs paramarcs, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      if (paramarcs.a.strPkgName.equals("com.android.ReadInJoy")) {
+        a(paramQQAppInterface, "0X80098E6", "" + a(paramInt1), "" + paramInt2, "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MainFragment paramMainFragment, anlv paramanlv, int paramInt)
+  {
+    try
+    {
+      if ((((paramanlv instanceof ReadinjoyTabFrame)) || (paramInt == MainFragment.h)) && ((ReadinjoyTabFrame)paramMainFragment.a(ReadinjoyTabFrame.class) != null) && (paramInt == MainFragment.h) && (paramMainFragment.getActivity().getIntent().getIntExtra("launch_from", 5) == 6)) {
+        a(paramQQAppInterface, "0X80098E2", "", "", "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  {
+    try
+    {
+      if (((paramBaseActivity instanceof ReadInJoyNewFeedsActivity)) && (paramBaseActivity.getIntent().getIntExtra("launch_from", 5) == 6)) {
+        a(paramQQAppInterface, "0X80098E2", "", "", "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    try
+    {
+      if ((paramMessageRecord.istroop == 7220) || ((paramMessageRecord.istroop == 1008) && (anhk.az.equals(paramMessageRecord.frienduin))))
+      {
+        a(paramQQAppInterface, "0X80098E5", "" + paramMessageRecord.msgUid, "", "", "");
+        return;
+      }
+      if (paramMessageRecord.istroop == 10007)
+      {
+        autf.a(paramQQAppInterface, paramMessageRecord.frienduin, 10006, 1);
+        return;
+      }
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
+  {
+    if (paramRecentUser != null) {}
+    try
+    {
+      if (paramRecentUser.getType() == 7220) {
+        a(paramQQAppInterface, "0X80098E3", "", "", "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser, RecentBaseData paramRecentBaseData)
+  {
+    if (paramRecentUser != null) {
+      try
+      {
+        if (paramRecentUser.getType() == 1008)
+        {
+          if (!"2173223560".equals(paramRecentBaseData.getRecentUserUin())) {
+            break label145;
+          }
+          a(paramQQAppInterface, "0X80098E0", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
+        }
+        while (paramRecentUser.getType() == 7220)
+        {
+          a(paramQQAppInterface, "0X80098DF", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
+          return;
+          label145:
+          if (anhk.aR.equals(paramRecentBaseData.getRecentUserUin())) {
+            a(paramQQAppInterface, "0X80098F2", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
+          }
+        }
+        return;
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+        }
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    bcst.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5);
   }
 }
 

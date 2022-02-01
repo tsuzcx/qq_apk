@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArLBSActivity;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface anby
+public class anby
+  implements amht
 {
-  public abstract void a();
+  public anby(ApolloConfigDataReport.1 param1) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, amwo paramamwo, int paramInt2);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(long paramLong, int paramInt, amvm paramamvm, ancs paramancs);
-  
-  public abstract void a(long paramLong, amwo paramamwo);
-  
-  public abstract void a(long paramLong, boolean paramBoolean, amwo paramamwo);
-  
-  public abstract void a(anau paramanau, ArLBSActivity paramArLBSActivity);
-  
-  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo1, ArCloudConfigInfo paramArCloudConfigInfo2, int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, amvj paramamvj);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloConfigDataReport", 2, new Object[] { "checkReportConfigJson errorCode:", Integer.valueOf(paramInt1), ", httpCode:", Integer.valueOf(paramInt2) });
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 200)) {
+      anbx.b();
+    }
+  }
 }
 
 

@@ -1,14 +1,60 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.data.Emoticon;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class apwi
+public class apwi
+  extends aqkz<apwj>
 {
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  Emoticon jdField_a_of_type_ComTencentMobileqqDataEmoticon;
+  @NonNull
+  public apwj a(int paramInt)
+  {
+    return new apwj();
+  }
+  
+  @Nullable
+  public apwj a(aqlg[] paramArrayOfaqlg)
+  {
+    apwj localapwj = new apwj();
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null)) {
+      apwj.a(localapwj, paramArrayOfaqlg[0].a);
+    }
+    return localapwj;
+  }
+  
+  public void a(apwj paramapwj) {}
+  
+  public Class<apwj> clazz()
+  {
+    return apwj.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public void onReqNoReceive() {}
+  
+  public int type()
+  {
+    return 416;
+  }
 }
 
 

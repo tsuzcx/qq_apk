@@ -15,7 +15,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.RandomAccessFile;
 import java.io.Reader;
+import java.lang.reflect.Method;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileChannel.MapMode;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +33,7 @@ import kotlin.TypeCastException;
 import kotlin.Unit;
 import kotlin.collections.ArraysKt;
 import kotlin.io.CloseableKt;
+import kotlin.io.FilesKt;
 import kotlin.io.TextStreamsKt;
 import kotlin.jvm.JvmStatic;
 import kotlin.jvm.functions.Function1;
@@ -38,7 +44,7 @@ import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/FileUtil$Companion;", "", "()V", "QAPM_ROOT", "", "SDPath", "TAG", "app", "Landroid/app/Application;", "getApp", "()Landroid/app/Application;", "setApp", "(Landroid/app/Application;)V", "createFile", "", "filePath", "path", "fileName", "deleteAllFilesOfDir", "", "Ljava/io/File;", "getExternalStorageDirectory", "getFiles", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "reg", "getRootPath", "loadLibrary", "soPath", "readOutputFromFile", "pathToFile", "readStream", "inputStream", "Ljava/io/InputStream;", "bufferSize", "", "inputStreamReader", "Ljava/io/InputStreamReader;", "writeFile", "fileStr", "text", "isAppend", "zipFiles", "dir", "outputPath", "allFiles", "", "common_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/FileUtil$Companion;", "", "()V", "QAPM_ROOT", "", "SDPath", "TAG", "app", "Landroid/app/Application;", "getApp", "()Landroid/app/Application;", "setApp", "(Landroid/app/Application;)V", "copyFile", "Ljava/io/File;", "origin", "dist", "createFile", "", "filePath", "path", "fileName", "deleteAllFilesOfDir", "", "getExternalStorageDirectory", "getFileBufferStream", "Ljava/io/BufferedOutputStream;", "fileStr", "isAppend", "getFiles", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "reg", "getLastModifiedTime", "", "file", "getRootPath", "loadLibrary", "soPath", "mmapFile", "Lcom/tencent/qapmsdk/common/util/FileUtil$MmapFile;", "size", "readOutputFromFile", "pathToFile", "readStream", "inputStream", "Ljava/io/InputStream;", "bufferSize", "", "inputStreamReader", "Ljava/io/InputStreamReader;", "readStreamByLine", "listener", "Lcom/tencent/qapmsdk/common/util/IStreamListener;", "unmapFile", "writeFile", "text", "", "zipFiles", "dir", "outputPath", "isGzip", "allFiles", "", "common_release"}, k=1, mv={1, 1, 15})
 public final class FileUtil$Companion
 {
   private final String getExternalStorageDirectory()
@@ -105,6 +111,24 @@ public final class FileUtil$Companion
       continue;
       localObject = null;
     }
+  }
+  
+  @JvmStatic
+  @Nullable
+  public final File copyFile(@NotNull File paramFile1, @NotNull File paramFile2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFile1, "origin");
+    Intrinsics.checkParameterIsNotNull(paramFile2, "dist");
+    try
+    {
+      paramFile1 = FilesKt.copyTo$default(paramFile1, paramFile2, true, 0, 4, null);
+      return paramFile1;
+    }
+    catch (Exception paramFile1)
+    {
+      Logger.INSTANCE.exception(FileUtil.access$getTAG$cp(), (Throwable)paramFile1);
+    }
+    return null;
   }
   
   @JvmStatic
@@ -196,6 +220,62 @@ public final class FileUtil$Companion
   
   @JvmStatic
   @Nullable
+  public final BufferedOutputStream getFileBufferStream(@Nullable String paramString, boolean paramBoolean)
+  {
+    int j = 1;
+    BufferedOutputStream localBufferedOutputStream1 = null;
+    if (paramString == null) {
+      return localBufferedOutputStream1;
+    }
+    for (;;)
+    {
+      try
+      {
+        File localFile1 = new File(paramString);
+        File localFile2 = localFile1.getParentFile();
+        if (!localFile2.exists())
+        {
+          if (localFile2.mkdirs())
+          {
+            break label174;
+            if (i != 0)
+            {
+              i = j;
+              if (localFile1.exists()) {}
+            }
+            else
+            {
+              if (!localFile1.createNewFile()) {
+                continue;
+              }
+              i = j;
+            }
+            if (i == 0) {
+              break;
+            }
+            localBufferedOutputStream1 = new BufferedOutputStream((OutputStream)new FileOutputStream(paramString, paramBoolean), 8192);
+            break;
+          }
+          i = 0;
+          continue;
+          i = 0;
+          continue;
+        }
+      }
+      catch (IOException localIOException)
+      {
+        Logger.INSTANCE.exception(FileUtil.access$getTAG$cp(), "write file " + paramString + " error. ", (Throwable)localIOException);
+        BufferedOutputStream localBufferedOutputStream2 = (BufferedOutputStream)null;
+        break;
+      }
+      finally {}
+      label174:
+      int i = 1;
+    }
+  }
+  
+  @JvmStatic
+  @Nullable
   public final ArrayList<File> getFiles(@Nullable String paramString1, @Nullable String paramString2)
   {
     File[] arrayOfFile = null;
@@ -242,7 +322,16 @@ public final class FileUtil$Companion
   }
   
   @JvmStatic
-  @Nullable
+  public final long getLastModifiedTime(@Nullable File paramFile)
+  {
+    if (paramFile != null) {
+      return paramFile.lastModified();
+    }
+    return -1L;
+  }
+  
+  @JvmStatic
+  @NotNull
   public final String getRootPath()
   {
     int i;
@@ -286,6 +375,66 @@ public final class FileUtil$Companion
       Logger.INSTANCE.exception(FileUtil.access$getTAG$cp(), paramString);
     }
     return false;
+  }
+  
+  @JvmStatic
+  @Nullable
+  public final FileUtil.MmapFile mmapFile(@Nullable String paramString, long paramLong)
+  {
+    int j = 1;
+    if (paramString != null) {}
+    for (;;)
+    {
+      try
+      {
+        Object localObject1 = new File(paramString);
+        Object localObject2 = ((File)localObject1).getParentFile();
+        if (((File)localObject2).exists()) {
+          break label198;
+        }
+        if (((File)localObject2).mkdirs())
+        {
+          break label198;
+          if (i != 0)
+          {
+            i = j;
+            if (((File)localObject1).exists()) {}
+          }
+          else
+          {
+            if (!((File)localObject1).createNewFile()) {
+              continue;
+            }
+            i = j;
+          }
+          if (i == 0) {
+            break label191;
+          }
+          localObject1 = new RandomAccessFile(paramString, "rw");
+          localObject2 = ((RandomAccessFile)localObject1).getChannel();
+          localObject2 = ((FileChannel)localObject2).map(FileChannel.MapMode.READ_WRITE, ((FileChannel)localObject2).size(), paramLong);
+          Intrinsics.checkExpressionValueIsNotNull(localObject2, "buffer");
+          localObject1 = new FileUtil.MmapFile(paramString, (RandomAccessFile)localObject1, (MappedByteBuffer)localObject2);
+          return localObject1;
+        }
+        else
+        {
+          i = 0;
+          continue;
+        }
+        i = 0;
+        continue;
+        return (FileUtil.MmapFile)null;
+      }
+      catch (Exception localException)
+      {
+        Logger.INSTANCE.exception(FileUtil.access$getTAG$cp(), "mmap file " + paramString + " error. ", (Throwable)localException);
+      }
+      label191:
+      return null;
+      label198:
+      int i = 1;
+    }
   }
   
   @JvmStatic
@@ -342,384 +491,493 @@ public final class FileUtil$Companion
     }
   }
   
+  @JvmStatic
+  public final void readStreamByLine(@Nullable File paramFile, @Nullable IStreamListener paramIStreamListener)
+  {
+    if ((paramFile == null) || (paramIStreamListener == null) || (!paramFile.exists())) {
+      return;
+    }
+    try
+    {
+      FilesKt.forEachLine$default(paramFile, null, (Function1)new FileUtil.Companion.readStreamByLine.1(paramIStreamListener), 1, null);
+      return;
+    }
+    catch (Throwable paramFile)
+    {
+      Logger.INSTANCE.exception(FileUtil.access$getTAG$cp(), paramFile);
+    }
+  }
+  
   public final void setApp(@Nullable Application paramApplication)
   {
     FileUtil.access$setApp$cp(paramApplication);
   }
   
   @JvmStatic
-  public final boolean writeFile(@Nullable String paramString1, @Nullable String paramString2, boolean paramBoolean)
+  public final boolean unmapFile(@Nullable FileUtil.MmapFile paramMmapFile)
   {
-    boolean bool = false;
-    if (paramString1 == null)
-    {
-      paramBoolean = bool;
-      return paramBoolean;
+    boolean bool = true;
+    if (paramMmapFile == null) {
+      return false;
     }
-    for (;;)
+    try
     {
-      try
+      Method localMethod = Class.forName("sun.nio.ch.FileChannelImpl").getDeclaredMethod("unmap", new Class[] { MappedByteBuffer.class });
+      Intrinsics.checkExpressionValueIsNotNull(localMethod, "clazz.getDeclaredMethod(…edByteBuffer::class.java)");
+      localMethod.setAccessible(true);
+      localMethod.invoke(null, new Object[] { paramMmapFile.getBuffer() });
+      paramMmapFile.getFile().close();
+      return bool;
+    }
+    catch (Throwable paramMmapFile)
+    {
+      for (;;)
       {
-        localObject1 = new File(paramString1);
-        localObject2 = ((File)localObject1).getParentFile();
-        if (!((File)localObject2).exists()) {
-          if (((File)localObject2).mkdirs())
-          {
-            break label287;
-            if ((i != 0) && (((File)localObject1).exists())) {
-              break label293;
-            }
-            if (!((File)localObject1).createNewFile()) {
-              continue;
-            }
-            break label293;
-            if (i == 0) {
-              continue;
-            }
-            localCloseable = (Closeable)new BufferedOutputStream((OutputStream)new FileOutputStream(paramString1, paramBoolean), 8192);
-            localObject2 = (Throwable)null;
-            localObject1 = localObject2;
-            try
-            {
-              localBufferedOutputStream = (BufferedOutputStream)localCloseable;
-              if (paramString2 != null)
-              {
-                localObject1 = localObject2;
-                localCharset = Charsets.UTF_8;
-                if (paramString2 == null)
-                {
-                  localObject1 = localObject2;
-                  throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
-                }
-              }
-            }
-            catch (Throwable paramString2)
-            {
-              localObject1 = paramString2;
-              throw paramString2;
-            }
-            finally
-            {
-              CloseableKt.closeFinally(localCloseable, (Throwable)localObject1);
-            }
-          }
-        }
+        Logger.INSTANCE.exception(FileUtil.access$getTAG$cp(), "unmap file error.", paramMmapFile);
+        bool = false;
       }
-      catch (IOException paramString2)
-      {
-        Object localObject2;
-        Closeable localCloseable;
-        BufferedOutputStream localBufferedOutputStream;
-        Charset localCharset;
-        Logger.INSTANCE.exception(FileUtil.access$getTAG$cp(), "write file " + paramString1 + " error. ", (Throwable)paramString2);
-        paramBoolean = false;
-        break;
-        i = 0;
-        continue;
-        i = 0;
-        continue;
-        Object localObject1 = localObject2;
-        paramString2 = paramString2.getBytes(localCharset);
-        localObject1 = localObject2;
-        Intrinsics.checkExpressionValueIsNotNull(paramString2, "(this as java.lang.String).getBytes(charset)");
-        localObject1 = localObject2;
-        localBufferedOutputStream.write(paramString2);
-        localObject1 = localObject2;
-        paramString2 = Unit.INSTANCE;
-        CloseableKt.closeFinally(localCloseable, (Throwable)localObject2);
-        paramBoolean = true;
-        continue;
-      }
-      finally {}
-      label287:
-      int i = 1;
-      continue;
-      label293:
-      i = 1;
     }
   }
   
   @JvmStatic
-  public final boolean zipFiles(@NotNull String paramString1, @NotNull String paramString2)
+  public final boolean writeFile(@Nullable String paramString1, @Nullable String paramString2, boolean paramBoolean)
+  {
+    if (paramString2 != null)
+    {
+      Companion localCompanion = FileUtil.Companion;
+      Charset localCharset = Charsets.UTF_8;
+      if (paramString2 == null) {
+        throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+      }
+      paramString2 = paramString2.getBytes(localCharset);
+      Intrinsics.checkExpressionValueIsNotNull(paramString2, "(this as java.lang.String).getBytes(charset)");
+      return localCompanion.writeFile(paramString1, paramString2, paramBoolean);
+    }
+    return false;
+  }
+  
+  @JvmStatic
+  public final boolean writeFile(@Nullable String paramString, @Nullable byte[] paramArrayOfByte, boolean paramBoolean)
+  {
+    for (;;)
+    {
+      try
+      {
+        localObject = ((Companion)this).getFileBufferStream(paramString, paramBoolean);
+        if (localObject != null)
+        {
+          localCloseable = (Closeable)localObject;
+          localThrowable = (Throwable)null;
+          localObject = localThrowable;
+        }
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        Object localObject;
+        Closeable localCloseable;
+        Throwable localThrowable;
+        BufferedOutputStream localBufferedOutputStream;
+        Logger.INSTANCE.exception(FileUtil.access$getTAG$cp(), "write file " + paramString + " error. ", (Throwable)paramArrayOfByte);
+        paramBoolean = false;
+        continue;
+      }
+      finally {}
+      try
+      {
+        localBufferedOutputStream = (BufferedOutputStream)localCloseable;
+        if (paramArrayOfByte != null)
+        {
+          localObject = localThrowable;
+          localBufferedOutputStream.write(paramArrayOfByte);
+          localObject = localThrowable;
+          paramArrayOfByte = Unit.INSTANCE;
+        }
+        CloseableKt.closeFinally(localCloseable, localThrowable);
+        paramBoolean = true;
+        return paramBoolean;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        localObject = paramArrayOfByte;
+        throw paramArrayOfByte;
+      }
+      finally
+      {
+        CloseableKt.closeFinally(localCloseable, (Throwable)localObject);
+      }
+    }
+  }
+  
+  @JvmStatic
+  public final boolean zipFiles(@NotNull String paramString1, @NotNull String paramString2, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "dir");
     Intrinsics.checkParameterIsNotNull(paramString2, "outputPath");
     paramString1 = new File(paramString1).listFiles();
     Intrinsics.checkExpressionValueIsNotNull(paramString1, "listFiles");
     paramString1 = SequencesKt.toList(SequencesKt.map(SequencesKt.filter(SequencesKt.filter(ArraysKt.asSequence(paramString1), (Function1)FileUtil.Companion.zipFiles.allFiles.1.INSTANCE), (Function1)FileUtil.Companion.zipFiles.allFiles.2.INSTANCE), (Function1)FileUtil.Companion.zipFiles.allFiles.3.INSTANCE));
-    return ((Companion)this).zipFiles(paramString1, paramString2);
+    return ((Companion)this).zipFiles(paramString1, paramString2, paramBoolean);
   }
   
   /* Error */
   @JvmStatic
-  public final boolean zipFiles(@NotNull java.util.List<String> paramList, @NotNull String paramString)
+  public final boolean zipFiles(@NotNull java.util.List<String> paramList, @NotNull String paramString, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_1
-    //   1: ldc_w 446
-    //   4: invokestatic 242	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1: ldc_w 576
+    //   4: invokestatic 171	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
     //   7: aload_2
-    //   8: ldc_w 405
-    //   11: invokestatic 242	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   14: new 448	java/util/zip/ZipOutputStream
+    //   8: ldc_w 541
+    //   11: invokestatic 171	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   14: new 227	java/io/FileOutputStream
     //   17: dup
-    //   18: new 352	java/io/BufferedOutputStream
+    //   18: new 113	java/io/File
     //   21: dup
-    //   22: new 354	java/io/FileOutputStream
-    //   25: dup
-    //   26: new 98	java/io/File
-    //   29: dup
-    //   30: aload_2
-    //   31: invokespecial 141	java/io/File:<init>	(Ljava/lang/String;)V
-    //   34: invokespecial 449	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   37: checkcast 359	java/io/OutputStream
-    //   40: invokespecial 452	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   43: checkcast 359	java/io/OutputStream
-    //   46: invokespecial 453	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   49: astore_3
-    //   50: aload_3
-    //   51: checkcast 364	java/io/Closeable
-    //   54: astore 6
-    //   56: aconst_null
-    //   57: checkcast 67	java/lang/Throwable
-    //   60: astore 5
-    //   62: aload 5
-    //   64: astore_3
-    //   65: aload 6
-    //   67: checkcast 448	java/util/zip/ZipOutputStream
-    //   70: astore 8
-    //   72: aload 5
-    //   74: astore_3
-    //   75: aload_1
-    //   76: checkcast 325	java/lang/Iterable
-    //   79: astore 4
-    //   81: aload 5
-    //   83: astore_3
-    //   84: new 183	java/util/ArrayList
-    //   87: dup
-    //   88: invokespecial 184	java/util/ArrayList:<init>	()V
-    //   91: checkcast 186	java/util/Collection
-    //   94: astore_1
-    //   95: aload 5
-    //   97: astore_3
-    //   98: aload 4
-    //   100: invokeinterface 329 1 0
-    //   105: astore 4
-    //   107: aload 5
-    //   109: astore_3
-    //   110: aload 4
-    //   112: invokeinterface 334 1 0
-    //   117: ifeq +101 -> 218
-    //   120: aload 5
-    //   122: astore_3
-    //   123: aload 4
-    //   125: invokeinterface 338 1 0
-    //   130: astore 7
-    //   132: aload 5
-    //   134: astore_3
-    //   135: new 98	java/io/File
-    //   138: dup
-    //   139: aload 7
-    //   141: checkcast 279	java/lang/String
-    //   144: invokespecial 141	java/io/File:<init>	(Ljava/lang/String;)V
-    //   147: invokevirtual 145	java/io/File:exists	()Z
-    //   150: ifeq -43 -> 107
-    //   153: aload 5
-    //   155: astore_3
-    //   156: aload_1
-    //   157: aload 7
-    //   159: invokeinterface 454 2 0
-    //   164: pop
-    //   165: goto -58 -> 107
-    //   168: astore_1
-    //   169: aload_1
-    //   170: astore_3
-    //   171: aload_1
-    //   172: athrow
-    //   173: astore_1
-    //   174: aload 6
-    //   176: aload_3
-    //   177: invokestatic 381	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   180: aload_1
-    //   181: athrow
-    //   182: astore_1
-    //   183: getstatic 118	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   186: invokestatic 121	com/tencent/qapmsdk/common/util/FileUtil:access$getTAG$cp	()Ljava/lang/String;
-    //   189: new 281	java/lang/StringBuilder
-    //   192: dup
-    //   193: invokespecial 282	java/lang/StringBuilder:<init>	()V
-    //   196: ldc_w 456
-    //   199: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: aload_2
-    //   203: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: invokevirtual 296	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   209: aload_1
-    //   210: checkcast 67	java/lang/Throwable
-    //   213: invokevirtual 388	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   216: iconst_0
-    //   217: ireturn
-    //   218: aload 5
-    //   220: astore_3
-    //   221: aload_1
-    //   222: checkcast 458	java/util/List
-    //   225: checkcast 325	java/lang/Iterable
-    //   228: invokeinterface 329 1 0
-    //   233: astore_1
-    //   234: aload 5
-    //   236: astore_3
-    //   237: aload_1
-    //   238: invokeinterface 334 1 0
-    //   243: ifeq +150 -> 393
-    //   246: aload 5
-    //   248: astore_3
-    //   249: new 98	java/io/File
-    //   252: dup
-    //   253: aload_1
-    //   254: invokeinterface 338 1 0
-    //   259: checkcast 279	java/lang/String
-    //   262: invokespecial 141	java/io/File:<init>	(Ljava/lang/String;)V
-    //   265: astore 4
-    //   267: aload 5
-    //   269: astore_3
-    //   270: aload 8
-    //   272: new 460	java/util/zip/ZipEntry
-    //   275: dup
-    //   276: aload 4
-    //   278: invokevirtual 213	java/io/File:getName	()Ljava/lang/String;
-    //   281: invokespecial 461	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   284: invokevirtual 465	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
-    //   287: aload 5
-    //   289: astore_3
-    //   290: aload 8
-    //   292: bipush 9
-    //   294: invokevirtual 468	java/util/zip/ZipOutputStream:setLevel	(I)V
-    //   297: aload 5
-    //   299: astore_3
-    //   300: new 470	java/io/FileInputStream
-    //   303: dup
-    //   304: aload 4
-    //   306: invokespecial 471	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   309: checkcast 364	java/io/Closeable
-    //   312: astore 7
-    //   314: aload 5
-    //   316: astore_3
-    //   317: aconst_null
-    //   318: checkcast 67	java/lang/Throwable
-    //   321: astore 4
-    //   323: aload 7
-    //   325: checkcast 470	java/io/FileInputStream
-    //   328: checkcast 473	java/io/InputStream
-    //   331: aload 8
-    //   333: checkcast 359	java/io/OutputStream
-    //   336: sipush 20480
-    //   339: invokestatic 479	kotlin/io/ByteStreamsKt:copyTo	(Ljava/io/InputStream;Ljava/io/OutputStream;I)J
-    //   342: pop2
-    //   343: aload 5
-    //   345: astore_3
-    //   346: aload 7
-    //   348: aload 4
-    //   350: invokestatic 381	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   353: aload 5
-    //   355: astore_3
-    //   356: aload 8
-    //   358: invokevirtual 482	java/util/zip/ZipOutputStream:flush	()V
-    //   361: aload 5
-    //   363: astore_3
-    //   364: aload 8
-    //   366: invokevirtual 485	java/util/zip/ZipOutputStream:closeEntry	()V
-    //   369: goto -135 -> 234
-    //   372: astore 4
-    //   374: aload 4
-    //   376: athrow
-    //   377: astore_1
-    //   378: aload 5
-    //   380: astore_3
-    //   381: aload 7
-    //   383: aload 4
-    //   385: invokestatic 381	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   388: aload 5
-    //   390: astore_3
-    //   391: aload_1
-    //   392: athrow
-    //   393: aload 5
-    //   395: astore_3
-    //   396: getstatic 403	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   22: aload_2
+    //   23: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
+    //   26: invokespecial 577	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   29: astore 4
+    //   31: iload_3
+    //   32: ifeq +209 -> 241
+    //   35: new 579	java/util/zip/GZIPOutputStream
+    //   38: dup
+    //   39: new 225	java/io/BufferedOutputStream
+    //   42: dup
+    //   43: aload 4
+    //   45: checkcast 232	java/io/OutputStream
+    //   48: invokespecial 582	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   51: checkcast 232	java/io/OutputStream
+    //   54: invokespecial 583	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   57: checkcast 585	java/util/zip/DeflaterOutputStream
+    //   60: astore 4
+    //   62: aload 4
+    //   64: checkcast 524	java/io/Closeable
+    //   67: astore 8
+    //   69: aconst_null
+    //   70: checkcast 82	java/lang/Throwable
+    //   73: astore 6
+    //   75: aload 6
+    //   77: astore 5
+    //   79: aload 8
+    //   81: checkcast 585	java/util/zip/DeflaterOutputStream
+    //   84: astore 4
+    //   86: aload 6
+    //   88: astore 5
+    //   90: aload_1
+    //   91: checkcast 420	java/lang/Iterable
+    //   94: astore 7
+    //   96: aload 6
+    //   98: astore 5
+    //   100: new 255	java/util/ArrayList
+    //   103: dup
+    //   104: invokespecial 256	java/util/ArrayList:<init>	()V
+    //   107: checkcast 258	java/util/Collection
+    //   110: astore_1
+    //   111: aload 6
+    //   113: astore 5
+    //   115: aload 7
+    //   117: invokeinterface 424 1 0
+    //   122: astore 7
+    //   124: aload 6
+    //   126: astore 5
+    //   128: aload 7
+    //   130: invokeinterface 429 1 0
+    //   135: ifeq +136 -> 271
+    //   138: aload 6
+    //   140: astore 5
+    //   142: aload 7
+    //   144: invokeinterface 433 1 0
+    //   149: astore 9
+    //   151: aload 6
+    //   153: astore 5
+    //   155: new 113	java/io/File
+    //   158: dup
+    //   159: aload 9
+    //   161: checkcast 384	java/lang/String
+    //   164: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
+    //   167: invokevirtual 190	java/io/File:exists	()Z
+    //   170: ifeq -46 -> 124
+    //   173: aload 6
+    //   175: astore 5
+    //   177: aload_1
+    //   178: aload 9
+    //   180: invokeinterface 586 2 0
+    //   185: pop
+    //   186: goto -62 -> 124
+    //   189: astore_1
+    //   190: aload_1
+    //   191: astore 5
+    //   193: aload_1
+    //   194: athrow
+    //   195: astore_1
+    //   196: aload 8
+    //   198: aload 5
+    //   200: invokestatic 539	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   203: aload_1
+    //   204: athrow
+    //   205: astore_1
+    //   206: getstatic 133	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   209: invokestatic 136	com/tencent/qapmsdk/common/util/FileUtil:access$getTAG$cp	()Ljava/lang/String;
+    //   212: new 237	java/lang/StringBuilder
+    //   215: dup
+    //   216: invokespecial 238	java/lang/StringBuilder:<init>	()V
+    //   219: ldc_w 588
+    //   222: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: aload_2
+    //   226: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   232: aload_1
+    //   233: checkcast 82	java/lang/Throwable
+    //   236: invokevirtual 252	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   239: iconst_0
+    //   240: ireturn
+    //   241: new 590	java/util/zip/ZipOutputStream
+    //   244: dup
+    //   245: new 225	java/io/BufferedOutputStream
+    //   248: dup
+    //   249: aload 4
+    //   251: checkcast 232	java/io/OutputStream
+    //   254: invokespecial 582	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   257: checkcast 232	java/io/OutputStream
+    //   260: invokespecial 591	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   263: checkcast 585	java/util/zip/DeflaterOutputStream
+    //   266: astore 4
+    //   268: goto -206 -> 62
+    //   271: aload 6
+    //   273: astore 5
+    //   275: aload_1
+    //   276: checkcast 593	java/util/List
+    //   279: checkcast 420	java/lang/Iterable
+    //   282: invokeinterface 424 1 0
+    //   287: astore 9
+    //   289: aload 6
+    //   291: astore 5
+    //   293: aload 9
+    //   295: invokeinterface 429 1 0
+    //   300: ifeq +247 -> 547
+    //   303: aload 6
+    //   305: astore 5
+    //   307: new 113	java/io/File
+    //   310: dup
+    //   311: aload 9
+    //   313: invokeinterface 433 1 0
+    //   318: checkcast 384	java/lang/String
+    //   321: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
+    //   324: astore 7
+    //   326: iload_3
+    //   327: ifne +87 -> 414
+    //   330: aload 6
+    //   332: astore 5
+    //   334: aload 4
+    //   336: instanceof 590
+    //   339: ifne +245 -> 584
+    //   342: aconst_null
+    //   343: astore_1
+    //   344: aload 6
+    //   346: astore 5
+    //   348: aload_1
+    //   349: checkcast 590	java/util/zip/ZipOutputStream
+    //   352: astore_1
+    //   353: aload_1
+    //   354: ifnull +23 -> 377
+    //   357: aload 6
+    //   359: astore 5
+    //   361: aload_1
+    //   362: new 595	java/util/zip/ZipEntry
+    //   365: dup
+    //   366: aload 7
+    //   368: invokevirtual 282	java/io/File:getName	()Ljava/lang/String;
+    //   371: invokespecial 596	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   374: invokevirtual 600	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   377: aload 6
+    //   379: astore 5
+    //   381: aload 4
+    //   383: instanceof 590
+    //   386: ifne +192 -> 578
+    //   389: aconst_null
+    //   390: astore_1
+    //   391: aload 6
+    //   393: astore 5
+    //   395: aload_1
+    //   396: checkcast 590	java/util/zip/ZipOutputStream
     //   399: astore_1
-    //   400: aload 6
-    //   402: aload 5
-    //   404: invokestatic 381	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   407: iconst_1
-    //   408: ireturn
-    //   409: astore_1
-    //   410: goto -32 -> 378
+    //   400: aload_1
+    //   401: ifnull +13 -> 414
+    //   404: aload 6
+    //   406: astore 5
+    //   408: aload_1
+    //   409: bipush 9
+    //   411: invokevirtual 603	java/util/zip/ZipOutputStream:setLevel	(I)V
+    //   414: aload 6
+    //   416: astore 5
+    //   418: new 605	java/io/FileInputStream
+    //   421: dup
+    //   422: aload 7
+    //   424: invokespecial 606	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   427: checkcast 524	java/io/Closeable
+    //   430: astore 10
+    //   432: aload 6
+    //   434: astore 5
+    //   436: aconst_null
+    //   437: checkcast 82	java/lang/Throwable
+    //   440: astore 7
+    //   442: aload 10
+    //   444: checkcast 605	java/io/FileInputStream
+    //   447: checkcast 608	java/io/InputStream
+    //   450: aload 4
+    //   452: checkcast 232	java/io/OutputStream
+    //   455: sipush 20480
+    //   458: invokestatic 614	kotlin/io/ByteStreamsKt:copyTo	(Ljava/io/InputStream;Ljava/io/OutputStream;I)J
+    //   461: pop2
+    //   462: aload 6
+    //   464: astore 5
+    //   466: aload 10
+    //   468: aload 7
+    //   470: invokestatic 539	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   473: aload 6
+    //   475: astore 5
+    //   477: aload 4
+    //   479: invokevirtual 617	java/util/zip/DeflaterOutputStream:flush	()V
+    //   482: iload_3
+    //   483: ifne +38 -> 521
+    //   486: aload 6
+    //   488: astore 5
+    //   490: aload 4
+    //   492: instanceof 590
+    //   495: ifne +77 -> 572
+    //   498: aconst_null
+    //   499: astore_1
+    //   500: aload 6
+    //   502: astore 5
+    //   504: aload_1
+    //   505: checkcast 590	java/util/zip/ZipOutputStream
+    //   508: astore_1
+    //   509: aload_1
+    //   510: ifnull +11 -> 521
+    //   513: aload 6
+    //   515: astore 5
+    //   517: aload_1
+    //   518: invokevirtual 620	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   521: goto -232 -> 289
+    //   524: astore 4
+    //   526: aload 4
+    //   528: athrow
+    //   529: astore_1
+    //   530: aload 6
+    //   532: astore 5
+    //   534: aload 10
+    //   536: aload 4
+    //   538: invokestatic 539	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   541: aload 6
+    //   543: astore 5
+    //   545: aload_1
+    //   546: athrow
+    //   547: aload 6
+    //   549: astore 5
+    //   551: getstatic 533	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   554: astore_1
+    //   555: aload 8
+    //   557: aload 6
+    //   559: invokestatic 539	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   562: iconst_1
+    //   563: ireturn
+    //   564: astore_1
+    //   565: aload 7
+    //   567: astore 4
+    //   569: goto -39 -> 530
+    //   572: aload 4
+    //   574: astore_1
+    //   575: goto -75 -> 500
+    //   578: aload 4
+    //   580: astore_1
+    //   581: goto -190 -> 391
+    //   584: aload 4
+    //   586: astore_1
+    //   587: goto -243 -> 344
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	413	0	this	Companion
-    //   0	413	1	paramList	java.util.List<String>
-    //   0	413	2	paramString	String
-    //   49	347	3	localObject1	Object
-    //   79	270	4	localObject2	Object
-    //   372	12	4	localThrowable1	Throwable
-    //   60	343	5	localThrowable2	Throwable
-    //   54	347	6	localCloseable	Closeable
-    //   130	252	7	localObject3	Object
-    //   70	295	8	localZipOutputStream	java.util.zip.ZipOutputStream
+    //   0	590	0	this	Companion
+    //   0	590	1	paramList	java.util.List<String>
+    //   0	590	2	paramString	String
+    //   0	590	3	paramBoolean	boolean
+    //   29	462	4	localObject1	Object
+    //   524	13	4	localThrowable1	Throwable
+    //   567	18	4	localObject2	Object
+    //   77	473	5	localObject3	Object
+    //   73	485	6	localThrowable2	Throwable
+    //   94	472	7	localObject4	Object
+    //   67	489	8	localCloseable1	Closeable
+    //   149	163	9	localObject5	Object
+    //   430	105	10	localCloseable2	Closeable
     // Exception table:
     //   from	to	target	type
-    //   65	72	168	java/lang/Throwable
-    //   75	81	168	java/lang/Throwable
-    //   84	95	168	java/lang/Throwable
-    //   98	107	168	java/lang/Throwable
-    //   110	120	168	java/lang/Throwable
-    //   123	132	168	java/lang/Throwable
-    //   135	153	168	java/lang/Throwable
-    //   156	165	168	java/lang/Throwable
-    //   221	234	168	java/lang/Throwable
-    //   237	246	168	java/lang/Throwable
-    //   249	267	168	java/lang/Throwable
-    //   270	287	168	java/lang/Throwable
-    //   290	297	168	java/lang/Throwable
-    //   300	314	168	java/lang/Throwable
-    //   317	323	168	java/lang/Throwable
-    //   346	353	168	java/lang/Throwable
-    //   356	361	168	java/lang/Throwable
-    //   364	369	168	java/lang/Throwable
-    //   381	388	168	java/lang/Throwable
-    //   391	393	168	java/lang/Throwable
-    //   396	400	168	java/lang/Throwable
-    //   65	72	173	finally
-    //   75	81	173	finally
-    //   84	95	173	finally
-    //   98	107	173	finally
-    //   110	120	173	finally
-    //   123	132	173	finally
-    //   135	153	173	finally
-    //   156	165	173	finally
-    //   171	173	173	finally
-    //   221	234	173	finally
-    //   237	246	173	finally
-    //   249	267	173	finally
-    //   270	287	173	finally
-    //   290	297	173	finally
-    //   300	314	173	finally
-    //   317	323	173	finally
-    //   346	353	173	finally
-    //   356	361	173	finally
-    //   364	369	173	finally
-    //   381	388	173	finally
-    //   391	393	173	finally
-    //   396	400	173	finally
-    //   50	62	182	java/io/IOException
-    //   174	182	182	java/io/IOException
-    //   400	407	182	java/io/IOException
-    //   323	343	372	java/lang/Throwable
-    //   374	377	377	finally
-    //   323	343	409	finally
+    //   79	86	189	java/lang/Throwable
+    //   90	96	189	java/lang/Throwable
+    //   100	111	189	java/lang/Throwable
+    //   115	124	189	java/lang/Throwable
+    //   128	138	189	java/lang/Throwable
+    //   142	151	189	java/lang/Throwable
+    //   155	173	189	java/lang/Throwable
+    //   177	186	189	java/lang/Throwable
+    //   275	289	189	java/lang/Throwable
+    //   293	303	189	java/lang/Throwable
+    //   307	326	189	java/lang/Throwable
+    //   334	342	189	java/lang/Throwable
+    //   348	353	189	java/lang/Throwable
+    //   361	377	189	java/lang/Throwable
+    //   381	389	189	java/lang/Throwable
+    //   395	400	189	java/lang/Throwable
+    //   408	414	189	java/lang/Throwable
+    //   418	432	189	java/lang/Throwable
+    //   436	442	189	java/lang/Throwable
+    //   466	473	189	java/lang/Throwable
+    //   477	482	189	java/lang/Throwable
+    //   490	498	189	java/lang/Throwable
+    //   504	509	189	java/lang/Throwable
+    //   517	521	189	java/lang/Throwable
+    //   534	541	189	java/lang/Throwable
+    //   545	547	189	java/lang/Throwable
+    //   551	555	189	java/lang/Throwable
+    //   79	86	195	finally
+    //   90	96	195	finally
+    //   100	111	195	finally
+    //   115	124	195	finally
+    //   128	138	195	finally
+    //   142	151	195	finally
+    //   155	173	195	finally
+    //   177	186	195	finally
+    //   193	195	195	finally
+    //   275	289	195	finally
+    //   293	303	195	finally
+    //   307	326	195	finally
+    //   334	342	195	finally
+    //   348	353	195	finally
+    //   361	377	195	finally
+    //   381	389	195	finally
+    //   395	400	195	finally
+    //   408	414	195	finally
+    //   418	432	195	finally
+    //   436	442	195	finally
+    //   466	473	195	finally
+    //   477	482	195	finally
+    //   490	498	195	finally
+    //   504	509	195	finally
+    //   517	521	195	finally
+    //   534	541	195	finally
+    //   545	547	195	finally
+    //   551	555	195	finally
+    //   62	75	205	java/io/IOException
+    //   196	205	205	java/io/IOException
+    //   555	562	205	java/io/IOException
+    //   442	462	524	java/lang/Throwable
+    //   526	529	529	finally
+    //   442	462	564	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.FileUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

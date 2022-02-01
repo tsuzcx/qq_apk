@@ -1,20 +1,12 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-
 public class akbw
-  extends akit
 {
   public int a;
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public TroopInfo a;
-  public ImageView b;
-  public TextView b;
-  
-  public akbw(akbr paramakbr) {}
+  public String a;
+  public boolean a = true;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

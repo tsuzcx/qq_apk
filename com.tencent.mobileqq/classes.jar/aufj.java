@@ -1,25 +1,94 @@
 import android.os.Bundle;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.theme.diy.ResData;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
 public class aufj
-  implements bapb
+  extends QIPCModule
 {
-  public aufj(ChatBackgroundManager paramChatBackgroundManager) {}
+  private static volatile aufj a;
+  public static volatile boolean a;
   
-  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
+  private aufj(String paramString)
   {
-    if (paramInt2 == 4) {
-      BaseApplicationImpl.sImageCache.evictAll();
+    super(paramString);
+  }
+  
+  public static aufj a()
+  {
+    if (jdField_a_of_type_Aufj == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aufj == null) {
+        jdField_a_of_type_Aufj = new aufj("FlutterSubQIPCModule");
+      }
+      return jdField_a_of_type_Aufj;
     }
-    return 0;
+    finally {}
+  }
+  
+  public static void a()
+  {
+    if (!jdField_a_of_type_Boolean) {}
+    try
+    {
+      QIPCClientHelper.getInstance().register(a());
+      jdField_a_of_type_Boolean = true;
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("FlutterSubQIPCModule", 1, "register", localException);
+    }
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      if (QIPCClientHelper.getInstance().getClient() != null)
+      {
+        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+        jdField_a_of_type_Boolean = false;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("FlutterSubQIPCModule", 1, "unregister", localException);
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    boolean bool1;
+    if ("ACTION_INSTALL_RESULT".equals(paramString))
+    {
+      bool1 = paramBundle.getBoolean("KEY_INSTALL_RESULT");
+      paramString = paramBundle.getString("KEY_INSTALL_DIR");
+      boolean bool2 = paramBundle.getBoolean("KEY_IS_ENGINE_EXIST");
+      boolean bool3 = paramBundle.getBoolean("KEY_IS_APP_EXIST");
+      QLog.d("FlutterSubQIPCModule", 1, String.format("install finish isSuccess: %s, installDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(bool1), paramString, Boolean.valueOf(bool2), Boolean.valueOf(bool3) }));
+      aufo.a().a(bool1, paramString, bool2, bool3);
+    }
+    for (;;)
+    {
+      return null;
+      if ("ACTION_PREDOWNLOAD_RESULT".equals(paramString))
+      {
+        bool1 = paramBundle.getBoolean("KEY_INSTALL_RESULT");
+        QLog.d("FlutterSubQIPCModule", 1, "predownload finish isSuccess=" + bool1);
+        LocalMultiProcConfig.putBool("qzone_flutter_predownload_success", bool1);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aufj
  * JD-Core Version:    0.7.0.1
  */

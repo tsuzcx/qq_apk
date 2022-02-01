@@ -1,56 +1,17 @@
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahcx
-  implements bbqo
+class ahcx
+  implements View.OnClickListener
 {
-  public ahcx(BlessResultActivity paramBlessResultActivity) {}
+  ahcx(ahcw paramahcw) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.g = this.a.b(this.a.d);
-    if (this.a.jdField_a_of_type_Bhsl.hasMessages(1003)) {
-      this.a.jdField_a_of_type_Bhsl.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_Bhsl.sendEmptyMessage(1001);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
-    }
-    if (this.a.jdField_a_of_type_Bhsl.hasMessages(1003)) {
-      this.a.jdField_a_of_type_Bhsl.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_Bhsl.sendEmptyMessage(1003);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    long l = bdhb.a(this.a.jdField_a_of_type_Ahcy.a);
-    int i = (int)(100L * paramLong / l);
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
-    }
+    ahcw.a(this.a, true, this.a.a.getCurrentAccountUin());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

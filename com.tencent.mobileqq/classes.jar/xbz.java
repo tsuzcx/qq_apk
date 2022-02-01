@@ -1,41 +1,63 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity.1.1;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.widget.PollContainerLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
+import java.net.URI;
 
-public class xbz
-  implements akcn
+class xbz
+  implements xxn
 {
-  public xbz(EditWebVideoActivity paramEditWebVideoActivity) {}
+  xbz(xby paramxby, wqw paramwqw) {}
   
-  public void a(int paramInt)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    this.a.runOnUiThread(new EditWebVideoActivity.1.1(this));
-  }
-  
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
-  {
-    int i = ((xca)this.a.a).a;
-    EditWebVideoActivity.a(this.a, paramString1);
-    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
-    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
-    paramString1 = this.a;
-    if (i <= 0) {}
+    paramString = BaseApplicationImpl.getContext();
+    Object localObject = new PollContainerLayout(paramString);
+    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Wqw, -1, null);
+    FrameLayout localFrameLayout = new FrameLayout(paramString);
+    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
+    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
+    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
+    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
+    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Wqw, -1, null);
+    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
+    localFrameLayout.draw(localCanvas);
+    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
+    if (zkh.a((Bitmap)localObject, paramString)) {
+      this.jdField_a_of_type_Xby.a("result", new File(paramString).toURI().toString());
+    }
     for (;;)
     {
-      EditWebVideoActivity.a(paramString1, paramInt3);
-      EditWebVideoActivity.c(this.a, paramString2);
-      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
-      EditWebVideoActivity.b(this.a, paramInt1);
-      EditWebVideoActivity.c(this.a, paramInt2);
-      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
+      ((Bitmap)localObject).recycle();
+      xby.a(this.jdField_a_of_type_Xby, true);
       return;
-      paramInt3 = i;
+      this.jdField_a_of_type_Xby.a("result", this.jdField_a_of_type_Xby.a.mVideoThumbnailUrl);
     }
+  }
+  
+  public void a(String paramString, Throwable paramThrowable)
+  {
+    this.jdField_a_of_type_Xby.a("result", this.jdField_a_of_type_Xby.a.mVideoThumbnailUrl);
+    xby.b(this.jdField_a_of_type_Xby, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xbz
  * JD-Core Version:    0.7.0.1
  */

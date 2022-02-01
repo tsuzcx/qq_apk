@@ -1,82 +1,66 @@
-import com.tencent.biz.qqstory.database.VideoUrlEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCollectionVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoUrl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.Color;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class vhb
-  extends uro
+  extends Animation
 {
-  public String a;
-  public List<StoryVideoItem> a;
-  public boolean a;
-  public int b;
-  public List<List<VideoUrlEntry>> b;
-  public String c;
+  private int jdField_a_of_type_Int;
+  private WeakReference<vgl> jdField_a_of_type_JavaLangRefWeakReference;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
   
-  public vhb(String paramString, qqstory_service.RspGetCollectionVideoList paramRspGetCollectionVideoList)
+  public vhb(vgl paramvgl, ArrayList<Integer> paramArrayList)
   {
-    super(paramRspGetCollectionVideoList.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramRspGetCollectionVideoList.is_end.get() == 1)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_Int = paramRspGetCollectionVideoList.interact_status.get();
-      this.c = paramRspGetCollectionVideoList.next_cookie.get().toStringUtf8();
-      paramString = paramRspGetCollectionVideoList.full_video_info_list.get().iterator();
+    a(paramvgl, paramArrayList);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(vgl paramvgl, ArrayList<Integer> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvgl);
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2) || ((vgl)this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+      return;
+    }
+    float f = 1.0F / (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    int i = (int)(paramFloat / f);
+    f = (paramFloat - i * f) / f;
+    if (i == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
+      i = this.jdField_a_of_type_JavaUtilArrayList.size() - 2;
     }
     for (;;)
     {
-      if (!paramString.hasNext()) {
-        return;
-      }
-      Object localObject1 = (qqstory_struct.StoryVideoFullInfo)paramString.next();
-      paramRspGetCollectionVideoList = new StoryVideoItem();
-      paramRspGetCollectionVideoList.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject1);
-      this.jdField_a_of_type_JavaUtilList.add(paramRspGetCollectionVideoList);
-      Object localObject2 = ((qqstory_struct.StoryVideoFullInfo)localObject1).compressed_video.get();
-      if (localObject2 != null)
+      int k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
+      int j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i + 1)).intValue();
+      i = j;
+      if (paramFloat < 1.0F)
       {
-        localObject1 = new ArrayList(((List)localObject2).size());
-        localObject2 = ((List)localObject2).iterator();
-        for (;;)
-        {
-          if (((Iterator)localObject2).hasNext())
-          {
-            qqstory_struct.VideoUrl localVideoUrl = (qqstory_struct.VideoUrl)((Iterator)localObject2).next();
-            VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
-            localVideoUrlEntry.vid = paramRspGetCollectionVideoList.mVid;
-            localVideoUrlEntry.videoUrlLevel = localVideoUrl.video_level.get();
-            localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
-            ((List)localObject1).add(localVideoUrlEntry);
-            continue;
-            bool = false;
-            break;
-          }
-        }
-        this.jdField_b_of_type_JavaUtilList.add(localObject1);
+        i = (int)(Color.alpha(k) + (Color.alpha(j) - Color.alpha(k)) * f);
+        int m = (int)(Color.red(k) + (Color.red(j) - Color.red(k)) * f);
+        int n = (int)(Color.green(k) + (Color.green(j) - Color.green(k)) * f);
+        paramFloat = Color.blue(k);
+        i = Color.argb(i, m, n, (int)((Color.blue(j) - Color.blue(k)) * f + paramFloat));
       }
+      this.jdField_a_of_type_Int = i;
+      return;
     }
-  }
-  
-  public String toString()
-  {
-    return "GetCollectionVideoListResponse{unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", nextCookie='" + this.c + '\'' + ", isEnd=" + this.jdField_a_of_type_Boolean + ", interactStatus=" + this.jdField_b_of_type_Int + ", videoItems=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vhb
  * JD-Core Version:    0.7.0.1
  */

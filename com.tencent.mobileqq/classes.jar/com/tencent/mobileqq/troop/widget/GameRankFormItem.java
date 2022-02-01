@@ -72,7 +72,7 @@ public class GameRankFormItem
           int k;
           if (this.jdField_a_of_type_Int == 1)
           {
-            i = 2130843337;
+            i = 2130843698;
             localObject = ((Resources)localObject).getDrawable(i);
             localCharSequence = this.jdField_d_of_type_JavaLangCharSequence;
             localTextPaint = this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.getPaint();
@@ -93,10 +93,10 @@ public class GameRankFormItem
             break;
             if (this.jdField_a_of_type_Int == 2)
             {
-              i = 2130843338;
+              i = 2130843699;
               break label282;
             }
-            i = 2130843339;
+            i = 2130843700;
             break label282;
             i = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
             break label319;
@@ -175,7 +175,7 @@ public class GameRankFormItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.GameRankFormItem
  * JD-Core Version:    0.7.0.1
  */

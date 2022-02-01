@@ -1,96 +1,72 @@
-import android.annotation.TargetApi;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-@TargetApi(14)
 public class xcp
+  extends xcs
 {
-  private static float jdField_a_of_type_Float;
-  private static int jdField_a_of_type_Int;
-  private static int b;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  private final int[] a;
+  private int c;
+  private String k;
+  private String l;
   
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  static
   {
-    paramFloat1 -= paramFloat3;
-    paramFloat2 -= paramFloat4;
-    return (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
+    jdField_a_of_type_JavaLangString = "src_type=internal&version=1&uin=%s&usertype=%s&unionid=%s&fromId=%s&storysharefrom=%s" + wjz.a(2131698491);
+    b = "mqqapi://qstory/infoCard?" + jdField_a_of_type_JavaLangString;
+    jdField_c_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?" + jdField_a_of_type_JavaLangString + "&actionnamekey=3&one_page=0";
   }
   
-  public static float a(Resources paramResources)
+  public xcp(QQUserUIItem paramQQUserUIItem)
   {
-    if ((b == 0) || (jdField_a_of_type_Int == 0))
+    this.k = paramQQUserUIItem.qq;
+    this.i = paramQQUserUIItem.headUrl;
+    int i;
+    if (paramQQUserUIItem.isVip)
     {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
+      i = 1;
+      this.jdField_c_of_type_Int = i;
+      this.l = paramQQUserUIItem.uid;
+      this.d = (paramQQUserUIItem.nickName + anni.a(2131704545) + wes.jdField_a_of_type_JavaLangString);
+      this.f = ("[" + wes.jdField_a_of_type_JavaLangString + anni.a(2131704548) + paramQQUserUIItem.nickName + anni.a(2131704551) + wes.jdField_a_of_type_JavaLangString);
+      this.g = (paramQQUserUIItem.nickName + anni.a(2131704550) + wes.jdField_a_of_type_JavaLangString + anni.a(2131704544) + wes.jdField_a_of_type_JavaLangString + anni.a(2131704547) + wjz.a(2131698488) + anni.a(2131704546));
+      if (paramQQUserUIItem.videoCount > 0) {
+        break label331;
+      }
     }
-    return jdField_a_of_type_Float;
-  }
-  
-  public static int a(Resources paramResources)
-  {
-    if (jdField_a_of_type_Int == 0)
+    label331:
+    for (this.e = "0个小视频";; this.e = (paramQQUserUIItem.videoCount + anni.a(2131704549)))
     {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
+      this.j = ("#" + wes.jdField_a_of_type_JavaLangString + "# " + this.d + "（" + this.e + "）");
+      this.jdField_a_of_type_Int = 102;
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 13, 14, 15, 16, 17, 18 };
+      return;
+      i = 0;
+      break;
     }
-    return jdField_a_of_type_Int;
   }
   
-  public static void a(View paramView, boolean paramBoolean)
+  protected String a(int paramInt)
   {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new xcq(paramView));
-    paramView.setVisibility(8);
-    paramView.startAnimation(localAlphaAnimation);
-  }
-  
-  public static boolean a(View paramView, int paramInt1, int paramInt2)
-  {
-    Rect localRect = new Rect();
-    int[] arrayOfInt = new int[2];
-    paramView.getDrawingRect(localRect);
-    paramView.getLocationOnScreen(arrayOfInt);
-    localRect.offset(arrayOfInt[0], arrayOfInt[1]);
-    return localRect.contains(paramInt1, paramInt2);
-  }
-  
-  public static int b(Resources paramResources)
-  {
-    if (b == 0)
-    {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
+    if (paramInt == 1) {
+      return String.format(b, new Object[] { this.k, Integer.valueOf(this.jdField_c_of_type_Int), this.l, Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), b(paramInt) });
     }
-    return b;
+    return String.format(jdField_c_of_type_JavaLangString, new Object[] { this.k, Integer.valueOf(this.jdField_c_of_type_Int), this.l, Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), b(paramInt) });
   }
   
-  public static void b(View paramView, boolean paramBoolean)
+  protected void a(xdz paramxdz)
   {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(500L);
-    if (paramBoolean) {
-      localAlphaAnimation.setStartOffset(500L);
+    super.a(paramxdz);
+    if ((paramxdz != null) && ((paramxdz instanceof xea))) {
+      ((xea)paramxdz).jdField_a_of_type_JavaLangString = (xek.b(this.i) + "#private_share_cache");
     }
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new xcr(paramView));
-    paramView.setVisibility(0);
-    paramView.startAnimation(localAlphaAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xcp
  * JD-Core Version:    0.7.0.1
  */

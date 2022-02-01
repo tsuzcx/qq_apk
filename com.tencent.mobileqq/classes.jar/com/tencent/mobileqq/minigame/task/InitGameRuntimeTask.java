@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.minigame.task;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import com.tencent.mobileqq.mini.tfs.MainThreadTask;
 
 public class InitGameRuntimeTask
@@ -15,10 +16,16 @@ public class InitGameRuntimeTask
   {
     onTaskSucceed();
   }
+  
+  @NonNull
+  public String getName()
+  {
+    return "InitGameRuntimeTask";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.task.InitGameRuntimeTask
  * JD-Core Version:    0.7.0.1
  */

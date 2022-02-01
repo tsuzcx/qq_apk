@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import java.util.ArrayList;
 
-class aliy
-  implements Comparator<ApolloActionData>
+public abstract interface aliy
 {
-  aliy(aliw paramaliw) {}
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
-  {
-    if (paramApolloActionData2.limitStart == paramApolloActionData1.limitStart) {
-      return 0;
-    }
-    if (paramApolloActionData2.limitStart > paramApolloActionData1.limitStart) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
 }
 
 

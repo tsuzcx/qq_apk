@@ -1,48 +1,47 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
-class bnni
+public class bnni
+  extends bnil
 {
-  private final Drawable a;
-  private final Drawable b;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  bnni(Context paramContext)
+  public bnni(ViewStub paramViewStub)
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837549);
-    this.b = paramContext.getDrawable(2130837553);
+    super(paramViewStub);
   }
   
-  private Drawable a(Drawable paramDrawable)
+  protected void a(View paramView)
   {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366178);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366177));
   }
   
-  private Drawable b(Drawable paramDrawable)
+  public void b()
   {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692280);
   }
   
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public void c()
   {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
+    if (a())
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
   }
   
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
+  public void d()
   {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    if (!a()) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

@@ -1,17 +1,11 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import java.util.List;
+import com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment;
 
 public class acnm
-  implements arrh
+  implements acla
 {
-  public acnm(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
+  public acnm(GdtDemoMvFragment paramGdtDemoMvFragment) {}
   
-  public void a()
-  {
-    arrr.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
-  }
-  
-  public void b() {}
+  public void onDismiss() {}
 }
 
 

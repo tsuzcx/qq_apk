@@ -1,27 +1,38 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.widget.ksong.KSongView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aivz
-  implements MediaPlayer.OnPreparedListener
+class aivz
+  implements View.OnClickListener
 {
-  public aivz(RedPacketKSongFragment paramRedPacketKSongFragment, boolean paramBoolean) {}
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public PressEffectImageView a;
+  public View b;
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  aivz(aivx paramaivx) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketKSongFragment", 2, "playSong onPrepared");
+    String str = this.jdField_a_of_type_Aivx.a(this.jdField_a_of_type_Int);
+    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
+    {
+      aiwa.a().b(aivx.a(this.jdField_a_of_type_Aivx), str);
+      this.jdField_a_of_type_Aivx.a();
     }
-    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, true);
-    bdfi.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.getActivity(), true);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.a(true);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((paramView == this.jdField_a_of_type_AndroidViewView) && (aivx.a(this.jdField_a_of_type_Aivx) != null)) {
+        aivx.a(this.jdField_a_of_type_Aivx).a(str);
+      }
     }
-    paramMediaPlayer.start();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a(this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,47 +1,27 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.PrinterActivity;
-import com.tencent.mobileqq.data.PrinterItemMsgRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import java.util.ArrayList;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-class eo
-  implements View.OnClickListener
+public class eo
 {
-  eo(en paramen) {}
+  public GridView a;
+  public LinearLayout a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public LinearLayout b;
+  public TextView b;
+  public TextView c;
   
-  public void onClick(View paramView)
-  {
-    Object localObject = (PrinterItemMsgRecord)((ef)paramView.getTag()).a();
-    if (localObject != null)
-    {
-      paramView = arrr.a((PrinterItemMsgRecord)localObject);
-      ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-      localForwardFileInfo.b(10009);
-      localForwardFileInfo.d(6);
-      localForwardFileInfo.b(paramView.nSessionId);
-      localForwardFileInfo.d(paramView.fileName);
-      localForwardFileInfo.c(((PrinterItemMsgRecord)localObject).uSessionID);
-      localForwardFileInfo.d(paramView.fileSize);
-      localForwardFileInfo.a(paramView.getFilePath());
-      localObject = new Intent(this.a.a.getApplicationContext(), FileBrowserActivity.class);
-      if ((paramView.nFileType == 0) || (paramView.nFileType == 1))
-      {
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(String.valueOf(paramView.nSessionId));
-        ((Intent)localObject).putStringArrayListExtra("Aio_SessionId_ImageList", localArrayList);
-      }
-      ((Intent)localObject).putExtra("fileinfo", localForwardFileInfo);
-      this.a.a.startActivityForResult((Intent)localObject, 102);
-    }
-  }
+  public eo(ek paramek) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     eo
  * JD-Core Version:    0.7.0.1
  */

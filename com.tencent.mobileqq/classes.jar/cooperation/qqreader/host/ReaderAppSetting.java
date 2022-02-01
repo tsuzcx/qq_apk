@@ -1,13 +1,13 @@
 package cooperation.qqreader.host;
 
-import bjdm;
+import blru;
 import com.tencent.common.config.AppSetting;
 
 public class ReaderAppSetting
 {
   public static String buildNum()
   {
-    return "4555";
+    return "4680";
   }
   
   public static boolean enableTalkBack()
@@ -17,7 +17,7 @@ public class ReaderAppSetting
   
   public static String getQUA()
   {
-    return bjdm.a();
+    return blru.a();
   }
   
   public static boolean isDebugVersion()
@@ -27,12 +27,12 @@ public class ReaderAppSetting
   
   public static String subVersion()
   {
-    return "8.3.5";
+    return "8.4.1";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.host.ReaderAppSetting
  * JD-Core Version:    0.7.0.1
  */

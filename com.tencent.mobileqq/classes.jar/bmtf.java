@@ -1,334 +1,119 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.RectF;
-import android.graphics.Region.Op;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.Clip.ClipConstant.Anchor;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.crop.CropNewView;
+import android.content.Context;
+import android.view.SurfaceHolder;
 
 public class bmtf
 {
-  private float jdField_a_of_type_Float;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private bmsh jdField_a_of_type_Bmsh = new bmsh();
-  private ClipConstant.Anchor jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiClipClipConstant$Anchor;
-  public CropNewView a;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float = 0.0F;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_c_of_type_Boolean = true;
-  private RectF jdField_d_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_d_of_type_Boolean;
+  private Object a = bmio.a("com.tencent.tar.TarInterface", null, new Object[0]);
   
-  private void e(float paramFloat1, float paramFloat2)
+  public int a()
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_a_of_type_Bmsh.a(paramFloat1, paramFloat2);
-    if (this.jdField_b_of_type_AndroidGraphicsRectF.isEmpty()) {}
-    do
-    {
-      return;
-      g();
-      this.jdField_d_of_type_Boolean = true;
-      h();
-    } while (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView == null);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.d();
-  }
-  
-  private void f()
-  {
-    this.jdField_d_of_type_Boolean = false;
-    a(this.jdField_d_of_type_AndroidGraphicsRectF.width(), this.jdField_d_of_type_AndroidGraphicsRectF.height());
-    this.jdField_a_of_type_Bmsh.a(this.jdField_b_of_type_AndroidGraphicsRectF, a());
-  }
-  
-  private void g()
-  {
-    if (this.jdField_b_of_type_AndroidGraphicsRectF.isEmpty()) {
-      return;
+    Object localObject = bmio.a(this.a, "getConfigWith", false, null, new Object[0]);
+    if ((localObject instanceof Integer)) {
+      return ((Integer)localObject).intValue();
     }
-    float f = Math.min(this.jdField_d_of_type_AndroidGraphicsRectF.width() / this.jdField_b_of_type_AndroidGraphicsRectF.width(), this.jdField_d_of_type_AndroidGraphicsRectF.height() / this.jdField_b_of_type_AndroidGraphicsRectF.height());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f, f, this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_d_of_type_AndroidGraphicsRectF.centerX() - this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_d_of_type_AndroidGraphicsRectF.centerY() - this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF);
+    return -1;
   }
   
-  private void h()
+  public int a(SurfaceHolder paramSurfaceHolder, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bmsh.a(this.jdField_b_of_type_AndroidGraphicsRectF, a());
-  }
-  
-  public float a()
-  {
-    return this.jdField_c_of_type_Float;
-  }
-  
-  public RectF a()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsRectF;
-  }
-  
-  public bmtc a(float paramFloat1, float paramFloat2)
-  {
-    RectF localRectF = this.jdField_a_of_type_Bmsh.a(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-b(), this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF, localRectF);
-    return new bmtc(this.jdField_b_of_type_AndroidGraphicsRectF.centerX() - localRectF.centerX() + paramFloat1, this.jdField_b_of_type_AndroidGraphicsRectF.centerY() - localRectF.centerY() + paramFloat2, c(), b());
-  }
-  
-  public bmtc a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.jdField_a_of_type_Bmsh.d(false);
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiClipClipConstant$Anchor != null)
-    {
-      this.jdField_a_of_type_Bmsh.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiClipClipConstant$Anchor, paramFloat3, paramFloat4);
-      RectF localRectF1 = new RectF();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(b(), this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(localRectF1, this.jdField_a_of_type_AndroidGraphicsRectF);
-      RectF localRectF2 = this.jdField_a_of_type_Bmsh.a(paramFloat1, paramFloat2);
-      bmtc localbmtc = new bmtc(paramFloat1, paramFloat2, c(), a());
-      localbmtc.a(bmsg.b(localRectF2, localRectF1, this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY()));
-      return localbmtc;
+    paramSurfaceHolder = bmio.a(this.a, "onDrawFrame", false, a(new Class[] { SurfaceHolder.class, Boolean.TYPE }), new Object[] { paramSurfaceHolder, Boolean.valueOf(paramBoolean) });
+    if ((paramSurfaceHolder instanceof Integer)) {
+      return ((Integer)paramSurfaceHolder).intValue();
     }
-    return null;
+    return 0;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Float = b();
-    this.jdField_c_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_AndroidGraphicsRectF);
-    float f = 1.0F / c();
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-this.jdField_a_of_type_AndroidGraphicsRectF.left, -this.jdField_a_of_type_AndroidGraphicsRectF.top);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f, f);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_c_of_type_AndroidGraphicsRectF);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_c_of_type_Float = paramFloat;
+    bmio.a(this.a, "onResume", false, null, new Object[0]);
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    if ((paramFloat1 == 0.0F) || (paramFloat2 == 0.0F)) {
-      return;
+    bmio.a(this.a, "setTrackingPoint", false, a(new Class[] { Float.TYPE, Float.TYPE }), new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    bmio.a(this.a, "onSurfaceChanged", false, a(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+  }
+  
+  public void a(Context paramContext, int paramInt)
+  {
+    bmio.a(this.a, "init", false, a(new Class[] { Context.class, Integer.TYPE }), new Object[] { paramContext, Integer.valueOf(paramInt) });
+  }
+  
+  public float[] a()
+  {
+    Object localObject = bmio.a(this.a, "getModelMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
     }
-    this.jdField_d_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramFloat1, paramFloat2);
-    if (!this.jdField_d_of_type_Boolean) {
-      e(paramFloat1, paramFloat2);
-    }
-    for (;;)
+    return null;
+  }
+  
+  public Class[] a(Class... paramVarArgs)
+  {
+    Class[] arrayOfClass = new Class[paramVarArgs.length];
+    int i = 0;
+    while (i < paramVarArgs.length)
     {
-      this.jdField_a_of_type_Bmsh.a(paramFloat1, paramFloat2);
-      return;
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(this.jdField_d_of_type_AndroidGraphicsRectF.centerX() - this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_d_of_type_AndroidGraphicsRectF.centerY() - this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_a_of_type_AndroidGraphicsRectF);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF);
+      arrayOfClass[i] = paramVarArgs[i];
+      i += 1;
     }
+    return arrayOfClass;
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  public int b()
   {
-    b(paramFloat1 / c(), paramFloat2, paramFloat3);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Float = (Math.round((this.jdField_b_of_type_Float + paramInt) / 90.0F) * 90 % 360);
-    this.jdField_a_of_type_Bmsh.a(this.jdField_b_of_type_AndroidGraphicsRectF, a());
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      return;
+    Object localObject = bmio.a(this.a, "getConfigHeight", false, null, new Object[0]);
+    if ((localObject instanceof Integer)) {
+      return ((Integer)localObject).intValue();
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    b(0.0F);
-    a(0.0F);
-    f();
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_Bmsh.c()) {}
-    for (RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;; localRectF = this.jdField_b_of_type_AndroidGraphicsRectF)
-    {
-      paramCanvas.clipRect(localRectF);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRectF, null);
-      return;
-    }
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_Bmsh.a(paramCanvas);
-  }
-  
-  public void a(CropNewView paramCropNewView)
-  {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView = paramCropNewView;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Bmsh.a();
-  }
-  
-  public boolean a(float paramFloat1, float paramFloat2, boolean paramBoolean)
-  {
-    if (!this.jdField_b_of_type_Boolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.jdField_a_of_type_Bmsh.a(false);
-      this.jdField_a_of_type_Bmsh.b(true);
-      this.jdField_a_of_type_Bmsh.c(false);
-      return paramBoolean;
-    }
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public bmtc b(float paramFloat1, float paramFloat2)
-  {
-    return new bmtc(paramFloat1, paramFloat2, c(), b());
+    return -1;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(c(), c());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_AndroidGraphicsRectF.left, this.jdField_a_of_type_AndroidGraphicsRectF.top);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_AndroidGraphicsRectF);
-    a(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_Boolean = true;
+    bmio.a(this.a, "onStop", false, null, new Object[0]);
   }
   
-  public void b(float paramFloat)
+  public float[] b()
   {
-    this.jdField_b_of_type_Float = paramFloat;
-  }
-  
-  public void b(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiClipClipConstant$Anchor = this.jdField_a_of_type_Bmsh.a(paramFloat1, paramFloat2);
-  }
-  
-  public void b(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (paramFloat1 == 1.0F) {
-      return;
+    Object localObject = bmio.a(this.a, "getViewMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
     }
-    float f = paramFloat1;
-    if (Math.min(this.jdField_b_of_type_AndroidGraphicsRectF.width(), this.jdField_b_of_type_AndroidGraphicsRectF.height()) <= 500.0F) {
-      f = paramFloat1 + (1.0F - paramFloat1) / 2.0F;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f, f, paramFloat2, paramFloat3);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF);
-  }
-  
-  public void b(Canvas paramCanvas)
-  {
-    if (this.jdField_c_of_type_Boolean)
-    {
-      paramCanvas.clipRect(this.jdField_a_of_type_AndroidGraphicsRectF.left, this.jdField_a_of_type_AndroidGraphicsRectF.top, this.jdField_a_of_type_AndroidGraphicsRectF.right, this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-      paramCanvas.clipRect(this.jdField_b_of_type_AndroidGraphicsRectF, Region.Op.DIFFERENCE);
-      paramCanvas.drawColor(-872415232);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Bmsh.c(paramBoolean);
-  }
-  
-  public float c()
-  {
-    return 1.0F * this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-  }
-  
-  public bmtc c(float paramFloat1, float paramFloat2)
-  {
-    bmtc localbmtc = new bmtc(paramFloat1, paramFloat2, c(), a());
-    RectF localRectF1 = new RectF(this.jdField_a_of_type_Bmsh.a());
-    localRectF1.offset(paramFloat1, paramFloat2);
-    if (this.jdField_a_of_type_Bmsh.d())
-    {
-      localRectF2 = new RectF();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(a(), this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(localRectF2, this.jdField_b_of_type_AndroidGraphicsRectF);
-      localbmtc.a(bmsg.a(localRectF1, localRectF2));
-      return localbmtc;
-    }
-    RectF localRectF2 = new RectF();
-    if (this.jdField_a_of_type_Bmsh.b())
-    {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(a() - b(), this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(localRectF2, this.jdField_a_of_type_Bmsh.a(paramFloat1, paramFloat2));
-      localbmtc.a(bmsg.a(localRectF1, localRectF2, this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY()));
-      return localbmtc;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(a(), this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(localRectF2, this.jdField_a_of_type_AndroidGraphicsRectF);
-    localbmtc.a(bmsg.b(localRectF1, localRectF2, this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY()));
-    return localbmtc;
+    return null;
   }
   
   public void c()
   {
-    a(b() - b() % 360.0F);
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_a_of_type_Bmsh.a(this.jdField_b_of_type_AndroidGraphicsRectF, a());
+    bmio.a(this.a, "onDestroy", false, null, new Object[0]);
   }
   
-  public void c(float paramFloat)
+  public float[] c()
   {
-    a(paramFloat, this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-  }
-  
-  public void c(float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiClipClipConstant$Anchor != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiClipClipConstant$Anchor = null;
+    Object localObject = bmio.a(this.a, "getProjectionMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
     }
+    return null;
   }
   
-  public void c(boolean paramBoolean)
+  public void d()
   {
-    this.jdField_b_of_type_Boolean = true;
+    bmio.a(this.a, "onSurfaceCreated", false, null, new Object[0]);
   }
   
-  public void d() {}
-  
-  public void d(float paramFloat)
+  public float[] d()
   {
-    this.jdField_a_of_type_Bmsh.a(paramFloat);
+    Object localObject = bmio.a(this.a, "getScaleMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
+    }
+    return null;
   }
-  
-  public void d(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_c_of_type_Boolean = true;
-    a();
-    this.jdField_a_of_type_Bmsh.d(true);
-  }
-  
-  public void e() {}
 }
 
 

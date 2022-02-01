@@ -1,149 +1,200 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.math.BigInteger;
+import org.jetbrains.annotations.NotNull;
 
 public class ovf
 {
-  public static ProteusItemView a(VafContext paramVafContext, String paramString1, String paramString2)
+  private int jdField_a_of_type_Int;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString;
+  private int jdField_e_of_type_Int;
+  private String jdField_e_of_type_JavaLangString;
+  private int jdField_f_of_type_Int;
+  private String jdField_f_of_type_JavaLangString;
+  private String g;
+  private String h;
+  private String i;
+  
+  public int a()
   {
-    Object localObject = null;
-    paramString1 = a(paramVafContext, paramString2, paramString1);
-    paramString2 = paramVafContext.getViewFactory().inflate(paramVafContext, paramString1);
-    paramString1 = localObject;
-    if (paramString2 != null)
-    {
-      paramString2.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
-      paramString1 = new ProteusItemView(paramVafContext.getContext());
-      paramString1.a(paramString2);
-    }
-    return paramString1;
+    return this.jdField_a_of_type_Int;
   }
   
-  public static ProteusItemView a(VafContext paramVafContext, String paramString, JSONObject paramJSONObject)
+  public long a()
   {
-    Object localObject = null;
-    paramString = a(paramVafContext, paramJSONObject, paramString);
-    paramJSONObject = paramVafContext.getViewFactory().inflate(paramVafContext, paramString);
-    paramString = localObject;
-    if (paramJSONObject != null)
-    {
-      paramJSONObject.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
-      paramString = new ProteusItemView(paramVafContext.getContext());
-      paramString.a(paramJSONObject);
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return new BigInteger(this.jdField_b_of_type_JavaLangString).longValue();
     }
-    return paramString;
+    return 0L;
   }
   
-  public static TemplateBean a(VafContext paramVafContext, String paramString1, String paramString2)
+  public ArticleInfo a()
   {
-    QLog.d("ProteusSupportUtilBase", 2, new Object[] { "getTemplateBean, styleID = ", paramString1, ", serviceID = ", paramString2 });
-    sfq localsfq = (sfq)paramVafContext.getTemplateFactory();
-    paramVafContext = localsfq;
-    if (localsfq == null) {
-      paramVafContext = sfq.a(paramString2, true);
-    }
-    if (paramVafContext != null) {}
-    try
-    {
-      paramVafContext = paramVafContext.getTemplateBean(new pjo().a(paramString1).a());
-      return paramVafContext;
-    }
-    catch (JSONException paramVafContext)
-    {
-      QLog.e("ProteusSupportUtilBase", 1, new Object[] { "getTemplateBean failed, styleID = ", paramString1, ", serviceID = ", paramString2, ", e = ", paramVafContext });
-    }
-    return null;
-    return null;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   }
   
-  public static TemplateBean a(VafContext paramVafContext, JSONObject paramJSONObject, String paramString)
+  public String a()
   {
-    QLog.d("ProteusSupportUtilBase", 2, new Object[] { "getTemplateBean, data = ", paramJSONObject, ", serviceID = ", paramString });
-    sfq localsfq = (sfq)paramVafContext.getTemplateFactory();
-    paramVafContext = localsfq;
-    if (localsfq == null) {
-      paramVafContext = sfq.a(paramString, true);
-    }
-    if (paramVafContext != null) {}
-    try
-    {
-      paramVafContext = paramVafContext.getTemplateBean(paramJSONObject);
-      return paramVafContext;
-    }
-    catch (JSONException paramVafContext)
-    {
-      QLog.e("ProteusSupportUtilBase", 1, new Object[] { "getTemplateBean failed, data = ", paramJSONObject, ", serviceID = ", paramString, ", e = ", paramVafContext });
-    }
-    return null;
-    return null;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public static JSONObject a(String paramString)
+  public void a(int paramInt)
   {
-    localJSONObject = new JSONObject();
-    if (TextUtils.isEmpty(paramString)) {
-      return localJSONObject;
-    }
-    QLog.d("ProteusSupportUtilBase", 2, new Object[] { "getProteusDynamicData data = ", paramString });
-    try
-    {
-      paramString = new JSONObject(paramString);
-      Iterator localIterator = paramString.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Object localObject = paramString.opt(str);
-        if (localObject != null) {
-          localJSONObject.put(str, localObject);
-        }
-      }
-      return localJSONObject;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.d("ProteusSupportUtilBase", 2, "getProteusDynamicData e = ", paramString);
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static void a(ProteusItemView paramProteusItemView, VafContext paramVafContext, String paramString1, String paramString2)
+  public void a(ArticleInfo paramArticleInfo)
   {
-    if ((paramProteusItemView == null) || (paramProteusItemView.a() == null))
-    {
-      QLog.d("ProteusSupportUtilBase", 1, new Object[] { "bindData proteusItemVIew is null, data = ", paramString2 });
-      return;
-    }
-    TemplateBean localTemplateBean = paramProteusItemView.a();
-    paramString1 = a(paramVafContext, a(paramString2), paramString1);
-    if ((localTemplateBean != null) && (paramString1 != null) && (!paramString1.equals(localTemplateBean)))
-    {
-      paramString2 = paramVafContext.getViewFactory().inflate(paramVafContext, paramString1);
-      if (paramString2 != null)
-      {
-        paramString2.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
-        paramProteusItemView.d();
-        paramProteusItemView.a(paramString2);
-      }
-    }
-    paramProteusItemView = paramProteusItemView.a();
-    paramProteusItemView.setTag(2131375339, paramString1);
-    if (paramString1 != null) {
-      opy.a(paramProteusItemView, localTemplateBean, paramString1);
-    }
-    opy.a(paramProteusItemView, paramVafContext, paramString1);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_f_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public int c()
+  {
+    return this.jdField_e_of_type_Int;
+  }
+  
+  public String c()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_e_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_f_of_type_JavaLangString = paramString;
+  }
+  
+  public int d()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String d()
+  {
+    return this.g;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_f_of_type_Int = paramInt;
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public int e()
+  {
+    return this.jdField_d_of_type_Int;
+  }
+  
+  public String e()
+  {
+    return this.i;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void e(String paramString)
+  {
+    this.g = paramString;
+  }
+  
+  public String f()
+  {
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public void f(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+  }
+  
+  public void f(String paramString)
+  {
+    this.h = paramString;
+  }
+  
+  public String g()
+  {
+    return this.jdField_e_of_type_JavaLangString;
+  }
+  
+  public void g(String paramString)
+  {
+    this.i = paramString;
+  }
+  
+  public void h(String paramString)
+  {
+    this.jdField_d_of_type_JavaLangString = paramString;
+  }
+  
+  public void i(String paramString)
+  {
+    this.jdField_e_of_type_JavaLangString = paramString;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "RIJBiuAndCommentRespData{mResultCode=" + this.jdField_a_of_type_Int + ", mCommentId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mFeedsId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mFeedsType=" + this.jdField_b_of_type_Int + ", mCommentString='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mCommentShareUrl='" + this.jdField_f_of_type_JavaLangString + '\'' + ", mCardAvailable=" + this.jdField_c_of_type_Int + ", mCardJumpUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mCommentBtnUrl='" + this.jdField_e_of_type_JavaLangString + '\'' + ", mArticleInfo=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo + ", mContentSrc=" + this.jdField_d_of_type_Int + ", mCommentType=" + this.jdField_e_of_type_Int + ", mListShowType=" + this.jdField_f_of_type_Int + ", mIsSecondReply=" + this.jdField_a_of_type_Boolean + ", mReplyCommentId='" + this.g + '\'' + ", mReplyUin='" + this.i + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ovf
  * JD-Core Version:    0.7.0.1
  */

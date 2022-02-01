@@ -1,35 +1,11 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
 
-class bbpr
-  implements Animation.AnimationListener
+public abstract interface bbpr<M extends bbmv, V extends bbve>
+  extends bbps<M, V>
 {
-  bbpr(bbpo parambbpo, boolean paramBoolean) {}
+  public abstract void a(M paramM, V paramV);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (bbpo.a(this.jdField_a_of_type_Bbpo) != null)
-    {
-      bbpo.a(this.jdField_a_of_type_Bbpo).a.clearAnimation();
-      bbpo.a(this.jdField_a_of_type_Bbpo).a.setVisibility(8);
-    }
-    bbpo.a(this.jdField_a_of_type_Bbpo, false);
-    bbpo.a(this.jdField_a_of_type_Bbpo, null);
-    bbpo.a(this.jdField_a_of_type_Bbpo, null);
-    bbpo.a(this.jdField_a_of_type_Bbpo, -1);
-    if ((!this.jdField_a_of_type_Boolean) && (!bbpo.b(this.jdField_a_of_type_Bbpo)))
-    {
-      ThreadManager.getUIHandler().post(bbpo.a(this.jdField_a_of_type_Bbpo));
-      bbpo.b(this.jdField_a_of_type_Bbpo, true);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(M paramM, V paramV, Bitmap paramBitmap);
 }
 
 

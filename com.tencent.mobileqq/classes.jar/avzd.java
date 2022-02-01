@@ -1,45 +1,66 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class avzd
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bpti
 {
-  public avzd(ScanOcrView paramScanOcrView) {}
+  public avzd(LocationPickFragment paramLocationPickFragment, View paramView1, View paramView2, View paramView3, ImageView paramImageView, View paramView4) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void cancelAnimator() {}
+  
+  public void displayPanel() {}
+  
+  public void displayPanelFinish()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int j = (int)(this.a.a.a * f);
-    int i = (int)(f * this.a.a.jdField_b_of_type_Int);
-    int m = j - this.a.a.a;
-    int k = i - this.a.a.jdField_b_of_type_Int;
-    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
-    i = j;
-    if (j > 255) {
-      i = 255;
+    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment) != null) {
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).setEnabled(false);
     }
-    j = i;
-    if (i < 0) {
-      j = 0;
+    bcst.b(null, "CliOper", "", "", "0X800A95F", "0X800A95F", LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b(), 0, "", "0", "0", "");
+    this.b.setVisibility(8);
+    this.c.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment.getString(2131693408));
+    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b())) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849661);
     }
-    i = this.a.a.jdField_b_of_type_AndroidGraphicsRect.left;
-    int n = m / 2;
-    int i1 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.top;
-    int i2 = k / 2;
-    int i3 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.right;
-    m /= 2;
-    int i4 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    k /= 2;
-    this.a.a.e = j;
-    this.a.a.c.set(i - n, i1 - i2, m + i3, k + i4);
-    this.a.invalidate();
+  }
+  
+  public void fadeBackground(float paramFloat)
+  {
+    if (paramFloat < 0.0F) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationPickFragment", 2, "[panel] fadeBackground: invoked. alpha: " + paramFloat);
+    }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(Math.round(0.7F * paramFloat * 255.0F), 0, 0, 0));
+  }
+  
+  public void hidePanel()
+  {
+    LocationPickFragment.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
+  }
+  
+  public void hidePanelFinish()
+  {
+    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment) != null) {
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).setEnabled(true);
+    }
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).setDisplayFromType(2);
+    this.d.requestFocus();
+    this.b.setVisibility(0);
+    this.c.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment.getString(2131693406));
+    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (!LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b())) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849660);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avzd
  * JD-Core Version:    0.7.0.1
  */

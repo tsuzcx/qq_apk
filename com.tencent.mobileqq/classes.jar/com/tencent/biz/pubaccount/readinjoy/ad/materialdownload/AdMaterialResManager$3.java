@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.materialdownload;
 
 import android.text.TextUtils;
-import bdne;
+import bgsg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import ocx;
+import oon;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class AdMaterialResManager$3
   implements Runnable
 {
-  public AdMaterialResManager$3(ocx paramocx, String paramString) {}
+  public AdMaterialResManager$3(oon paramoon, String paramString) {}
   
   public void run()
   {
@@ -28,14 +28,14 @@ public class AdMaterialResManager$3
       int i;
       try
       {
-        if ((ocx.a(this.this$0) == null) || (ocx.b(this.this$0).getApp() == null) || (ocx.c(this.this$0).getCurrentAccountUin() == null)) {
+        if ((oon.a(this.this$0) == null) || (oon.b(this.this$0).getApp() == null) || (oon.c(this.this$0).getCurrentAccountUin() == null)) {
           break;
         }
-        bdne.D(ocx.d(this.this$0).getApp(), ocx.e(this.this$0).getCurrentAccountUin());
+        bgsg.D(oon.d(this.this$0).getApp(), oon.e(this.this$0).getCurrentAccountUin());
         ArrayList localArrayList = new ArrayList();
         Object localObject = new JSONObject(this.a);
-        bdne.V(ocx.f(this.this$0).getApp(), ocx.g(this.this$0).getCurrentAccountUin(), ((JSONObject)localObject).optInt("is_preview"));
-        ocu.a = ((JSONObject)localObject).optLong("req_interval");
+        bgsg.V(oon.f(this.this$0).getApp(), oon.g(this.this$0).getCurrentAccountUin(), ((JSONObject)localObject).optInt("is_preview"));
+        ook.a = ((JSONObject)localObject).optLong("req_interval");
         localObject = ((JSONObject)localObject).optJSONArray("res_list");
         i = 0;
         if (i >= ((JSONArray)localObject).length()) {
@@ -58,7 +58,7 @@ public class AdMaterialResManager$3
       if (QLog.isColorLevel()) {
         QLog.d("AdMaterialResManager", 2, "preload ad_material result size" + localException.size());
       }
-      ocx.a(this.this$0, localException);
+      oon.a(this.this$0, localException);
       return;
       i += 1;
     }

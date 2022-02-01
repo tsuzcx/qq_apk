@@ -1,35 +1,27 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+import com.tencent.widget.AbsListView;
 
 public class aiwz
-  implements TextWatcher
+  implements bkhe
 {
-  public aiwz(TransactionActivity paramTransactionActivity) {}
+  public aiwz(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (TransactionActivity.b(this.a).getText().length() > 4) {
-      if (!TransactionActivity.b(this.a).isEnabled())
-      {
-        TransactionActivity.b(this.a).setEnabled(true);
-        TransactionActivity.b(this.a).setClickable(true);
-        this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.b(this.a), "");
+    if (NewFriendVerifyBlockedListFragment.a(this.a) != null)
+    {
+      if ((paramInt != 0) && (paramInt != 1)) {
+        NewFriendVerifyBlockedListFragment.a(this.a).a();
       }
     }
-    while (!TransactionActivity.b(this.a).isEnabled()) {
+    else {
       return;
     }
-    TransactionActivity.b(this.a).setClickable(false);
-    TransactionActivity.b(this.a).setEnabled(false);
-    this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.b(this.a), "");
+    NewFriendVerifyBlockedListFragment.a(this.a).b();
+    NewFriendVerifyBlockedListFragment.a(this.a).c();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

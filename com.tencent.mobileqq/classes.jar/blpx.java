@@ -1,103 +1,151 @@
-import android.media.MediaMetadataRetriever;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.tavcut.bean.Size;
-import com.tencent.tavcut.util.BitmapUtil;
-import java.io.File;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class blpx
+public final class blpx
 {
-  public static LocalMediaInfo a(int paramInt1, int paramInt2, @NonNull String paramString1, @Nullable String paramString2, @NonNull String paramString3)
+  public static String a = "VIP_QQREADER";
+  @Deprecated
+  public static String b = "qqreader_1.0." + "8.4.1".replace(".", "") + ".0001_android_qqplugin";
+  private static String c = "0x0";
+  
+  private static String a(Context paramContext)
   {
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    Size localSize;
-    if (paramString2 != null)
-    {
-      localSize = BitmapUtil.getImageSize(paramString2);
-      localLocalMediaInfo.thumbHeight = localSize.getHeight();
+    if (("0x0".equals(c)) && ((paramContext instanceof Activity))) {
+      c = blpz.a((Activity)paramContext);
     }
-    for (localLocalMediaInfo.thumbWidth = localSize.getWidth();; localLocalMediaInfo.thumbWidth = 0)
-    {
-      localLocalMediaInfo.path = paramString1;
-      localLocalMediaInfo.mediaHeight = paramInt1;
-      localLocalMediaInfo.mediaWidth = paramInt2;
-      localLocalMediaInfo.mMimeType = "video/mp4";
-      localLocalMediaInfo.addedDate = System.currentTimeMillis();
-      localLocalMediaInfo.modifiedDate = System.currentTimeMillis();
-      localLocalMediaInfo.thumbnailPath = paramString2;
-      localLocalMediaInfo.mDuration = 0L;
-      localLocalMediaInfo.isSystemMeidaStore = false;
-      localLocalMediaInfo.isMakeVideo = false;
-      localLocalMediaInfo.isVideoReady = false;
-      localLocalMediaInfo.missionID = paramString3;
-      return localLocalMediaInfo;
-      localLocalMediaInfo.thumbHeight = 0;
-    }
+    return c;
   }
   
-  public static LocalMediaInfo a(@NonNull String paramString)
+  public static String a(String paramString)
   {
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    Size localSize = BitmapUtil.getImageSize(paramString);
-    localLocalMediaInfo.mediaHeight = localSize.getHeight();
-    localLocalMediaInfo.mediaWidth = localSize.getWidth();
-    localLocalMediaInfo.mMimeType = "image/jpeg";
-    localLocalMediaInfo.path = paramString;
-    return localLocalMediaInfo;
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("message", paramString);
+      paramString = localJSONObject.toString();
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      Log.e("ReportUtils", "[wrapperException] json error", paramString);
+    }
+    return "";
   }
   
-  @Nullable
-  public static LocalMediaInfo a(@Nullable String paramString1, @Nullable String paramString2)
+  public static void a(Context paramContext, int paramInt, String paramString)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    for (;;)
+    a(paramContext, paramInt, paramString, null);
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString1, String paramString2)
+  {
+    a(null, "dc05135", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.4.1.4680", "", "", bgln.a(paramContext).a, "ReaderShadowPlugin_5", a(paramContext), "2", "/plugin/ReaderHost", String.valueOf(paramInt), paramString1, "", "0", a(paramString2) });
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    a(null, "dc05133", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.4.1.4680", "", "", bgln.a(paramContext).a, "5", a(paramContext), "11", "", "", "", "", "", "", paramString, "", "", "", "", "", "", "", "", "", "" });
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    a(null, "dc05133", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.4.1.4680", "", "", bgln.a(paramContext).a, "5", a(paramContext), "10", "", "", "", "", paramString1, "", "", "", "", "", "", "", "", "", "", "", paramString2 });
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, String... paramVarArgs)
+  {
+    String str2 = "";
+    String str1 = str2;
+    if (paramVarArgs != null)
     {
-      try
+      int j = paramVarArgs.length;
+      int i = 0;
+      for (;;)
       {
-        localMediaMetadataRetriever.setDataSource(paramString1);
-        int i = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(19));
-        int j = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(18));
-        int k = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(9));
-        localLocalMediaInfo.path = paramString1;
-        localLocalMediaInfo.mMimeType = "video/mp4";
-        localLocalMediaInfo.addedDate = System.currentTimeMillis();
-        localLocalMediaInfo.modifiedDate = System.currentTimeMillis();
-        localLocalMediaInfo.thumbnailPath = paramString2;
-        localLocalMediaInfo.mDuration = k;
-        if (paramString1 != null)
-        {
-          paramString1 = new File(paramString1);
-          if (paramString1.exists())
-          {
-            localLocalMediaInfo.fileSize = paramString1.length();
-            localLocalMediaInfo.isSystemMeidaStore = false;
-            localLocalMediaInfo.isMakeVideo = true;
-            localLocalMediaInfo.mediaWidth = j;
-            localLocalMediaInfo.mediaHeight = i;
-            if (paramString2 == null) {
-              break;
-            }
-            paramString1 = BitmapUtil.getImageSize(paramString2);
-            localLocalMediaInfo.thumbHeight = paramString1.getHeight();
-            localLocalMediaInfo.thumbWidth = paramString1.getWidth();
-            return localLocalMediaInfo;
-          }
-          localLocalMediaInfo.fileSize = 0L;
-          continue;
+        str1 = str2;
+        if (i >= j) {
+          break;
         }
-        localLocalMediaInfo.fileSize = 0L;
-      }
-      catch (Exception paramString1)
-      {
-        bljn.d("AELocalMediaInfoUtil", "[buildLocalMediaInfoForReady] " + paramString1.getMessage());
-        return null;
+        str1 = paramVarArgs[i];
+        str2 = str2 + str1 + "|";
+        i += 1;
       }
     }
-    localLocalMediaInfo.thumbHeight = 0;
-    localLocalMediaInfo.thumbWidth = 0;
-    return localLocalMediaInfo;
+    paramVarArgs = str1;
+    if (str1.length() > 0) {
+      paramVarArgs = str1.substring(0, str1.length() - 1);
+    }
+    Log.d("ReportUtils", "dcId=" + paramString + ";detail=" + paramVarArgs);
+    bcrt.a(paramQQAppInterface, paramString, paramVarArgs, false);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, float paramFloat, int paramInt2, long paramLong, int paramInt3, String paramString4)
+  {
+    a(null, "dc05133", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.4.1.4680", "", "", paramString1, b, blpz.b(), paramString2, paramString3, String.valueOf(paramInt1), String.valueOf(paramFloat), String.valueOf(paramInt2), String.valueOf(paramLong), paramString4, "", "", "", "", "", "", "", "", "", "", String.valueOf(paramInt3) });
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, float paramFloat, int paramInt2, long paramLong, String paramString4)
+  {
+    a(paramString1, paramString2, paramString3, paramInt1, paramFloat, paramInt2, paramLong, 0, paramString4);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    a(paramString1, paramString2, "52", paramString3, paramString4, paramString5, "", paramString6, "", "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    a(paramString1, paramString2, "66", paramString3, paramString4, paramString5, "", paramString6, paramString7);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
+  {
+    a("109", Build.VERSION.RELEASE, "mobile qq", "8.4.1", "", "", "android", paramString1, "", "", b, paramString2, paramString3, paramString4, "", paramString5, "", paramString6, paramString7, "", "", "", paramString8, paramString9, "", "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
+  {
+    a("109", Build.VERSION.RELEASE, "mobile qq", "8.4.1", "", "", "android", paramString1, "", "", b, paramString2, paramString3, paramString4, "", paramString5, "", paramString6, paramString7, paramString8, paramString9, paramString10, "", "", "", "");
+  }
+  
+  private static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, String paramString20, String paramString21, String paramString22, String paramString23, String paramString24, String paramString25, String paramString26)
+  {
+    String str1;
+    if ("1".equals(paramString18))
+    {
+      str1 = "1";
+      if (!blog.a()) {
+        break label254;
+      }
+    }
+    label254:
+    for (String str2 = "1";; str2 = "0")
+    {
+      a(null, "dc00547", new String[] { paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13, paramString14, paramString15, paramString16, paramString17, str1, paramString18, "0", paramString19, paramString20, paramString21, paramString22, paramString23, paramString24, paramString26, "", "", "", "", "", str2, paramString25 });
+      return;
+      if ("2".equals(paramString18))
+      {
+        str1 = "2";
+        break;
+      }
+      str1 = "3";
+      break;
+    }
+  }
+  
+  public static void b(Context paramContext, int paramInt, String paramString)
+  {
+    a(null, "dc05135", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.4.1.4680", "", "", bgln.a(paramContext).a, "", a(paramContext), "2", "/h5/BlankScreen", String.valueOf(paramInt), paramString, "", "0", "" });
   }
 }
 

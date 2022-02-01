@@ -1,43 +1,27 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wud
-  implements INetInfoHandler
+public class wud
+  extends QQUIEventReceiver<wtu, wii>
 {
-  wud(wub paramwub) {}
-  
-  public void onNetMobile2None()
+  public wud(@NonNull wtu paramwtu)
   {
-    wub.b(this.a, wub.a(3));
+    super(paramwtu);
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public void a(@NonNull wtu paramwtu, @NonNull wii paramwii)
   {
-    wub.b(this.a, wub.a(1));
+    paramwtu.a.b(paramwii);
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public Class acceptEventClass()
   {
-    wub.b(this.a, wub.a(2));
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    wub.b(this.a, wub.a(1));
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    wub.b(this.a, wub.a(2));
-  }
-  
-  public void onNetWifi2None()
-  {
-    wub.b(this.a, wub.a(3));
+    return wii.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wud
  * JD-Core Version:    0.7.0.1
  */

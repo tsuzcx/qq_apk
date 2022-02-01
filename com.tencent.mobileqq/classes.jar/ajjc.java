@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class ajjc
-  extends ajjw
+class ajjc
+  implements View.OnClickListener
 {
-  public DragTextView a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  private WeakReference<ajiy> a;
+  
+  public ajjc(ajiy paramajiy)
+  {
+    this.a = new WeakReference(paramajiy);
+  }
+  
+  public void onClick(View paramView)
+  {
+    ajiy localajiy = (ajiy)this.a.get();
+    if (localajiy != null) {
+      localajiy.onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

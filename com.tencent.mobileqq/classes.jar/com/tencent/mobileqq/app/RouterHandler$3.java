@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import awgf;
-import awgg;
 import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.litetransfersdk.MsgHeader;
 import com.tencent.litetransfersdk.ProtocolHelper;
 import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.RouterMsgRecord;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,9 +23,9 @@ class RouterHandler$3
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = this.this$0.b.getEntityManagerFactory().createEntityManager();
-      List localList = ((awgf)localObject1).a(RouterMsgRecord.class, "select * from " + RouterMsgRecord.sBasicTableName + this.jdField_a_of_type_ComTencentLitetransfersdkMsgHeader.uint64_src_uin + " where uSessionID=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
-      ((awgf)localObject1).a();
+      localObject1 = this.this$0.b.a().createEntityManager();
+      List localList = ((EntityManager)localObject1).rawQuery(RouterMsgRecord.class, "select * from " + RouterMsgRecord.sBasicTableName + this.jdField_a_of_type_ComTencentLitetransfersdkMsgHeader.uint64_src_uin + " where uSessionID=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
+      ((EntityManager)localObject1).close();
       if ((localList == null) || (localList.size() <= 0)) {
         break label265;
       }
@@ -66,7 +66,7 @@ class RouterHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.RouterHandler.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
+import javax.microedition.khronos.opengles.GL;
+
 public abstract interface amkd
 {
-  public abstract void a(int paramInt, zib paramzib);
-  
-  public abstract void a(long paramLong);
+  public abstract GL a(GL paramGL);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amkd
  * JD-Core Version:    0.7.0.1
  */

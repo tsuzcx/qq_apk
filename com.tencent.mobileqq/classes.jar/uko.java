@@ -1,21 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class uko
-  implements View.OnClickListener
+public abstract interface uko
 {
-  uko(ukl paramukl) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    if (ukl.a(this.a) != null) {
-      ukl.a(this.a).a(ukl.a(this.a));
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(int paramInt, Object paramObject);
+  
+  public abstract void a(String paramString1, boolean paramBoolean, String paramString2);
+  
+  public abstract void a(uke paramuke);
+  
+  public abstract void a(uke paramuke, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(uke paramuke);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uko
  * JD-Core Version:    0.7.0.1
  */

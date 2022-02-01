@@ -476,9 +476,9 @@ public class ImageDownloadReporter
         }
         return localDownloadReportObject;
       }
-      if (paramDownloadResult.getContent().size != paramDownloadResult.getContent().length)
+      if ((paramDownloadResult.getContent().size != paramDownloadResult.getContent().length) && (!paramDownloadResult.getContent().isGzip))
       {
-        localDownloadReportObject.retCode = -3;
+        localDownloadReportObject.retCode = 50008;
         localDownloadReportObject.errMsg.append(";content-length:" + paramDownloadResult.getContent().length + ";actual-size:" + paramDownloadResult.getContent().size);
         paramDownloadReport = new File(paramDownloadResult.getPath());
         paramDownloadResult = bytes2HexStr(readFromFile(paramDownloadReport, 0L, 1024));
@@ -528,7 +528,7 @@ public class ImageDownloadReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.component.network.module.report.ImageDownloadReporter
  * JD-Core Version:    0.7.0.1
  */

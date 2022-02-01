@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-
-final class bkjq
-  implements arrh
+public abstract interface bkjq
 {
-  bkjq(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  public abstract int a();
   
-  public void a()
-  {
-    arrr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void b() {}
+  public abstract boolean a(int paramInt);
 }
 
 

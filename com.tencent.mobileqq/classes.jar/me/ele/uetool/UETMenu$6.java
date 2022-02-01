@@ -3,6 +3,7 @@ package me.ele.uetool;
 import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class UETMenu$6
   implements View.OnClickListener
@@ -21,11 +22,12 @@ class UETMenu$6
       UETMenu.access$600(this.this$0).sendEmptyMessageDelayed(0, 5000L);
     }
     UETMenu.access$700(this.this$0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.UETMenu.6
  * JD-Core Version:    0.7.0.1
  */

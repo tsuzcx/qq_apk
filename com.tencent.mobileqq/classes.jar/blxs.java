@@ -1,18 +1,8 @@
-import android.support.annotation.NonNull;
+import cooperation.qzone.event.ExoticEventPool;
 
-class blxs
-  implements blxl
+public class blxs
 {
-  blxs(blxr paramblxr) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    if (paramInt == 0) {
-      return bcnt.b(paramString);
-    }
-    return "";
-  }
+  private static final ExoticEventPool a = new ExoticEventPool(null);
 }
 
 

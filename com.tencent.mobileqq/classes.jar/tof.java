@@ -1,22 +1,73 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class tof
-  implements View.OnClickListener
+public class tof
+  implements pyb
 {
-  tof(toe paramtoe, WSTabLayout paramWSTabLayout) {}
+  private int jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
+  private List<ReadInJoyUserInfo> b = new ArrayList();
   
-  public void onClick(View paramView)
+  public tof(BridgeModule paramBridgeModule, List paramList, String paramString) {}
+  
+  private void a(String paramString)
   {
-    if (WSTabLayout.a(this.jdField_a_of_type_Toe.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout) != null) {
-      WSTabLayout.a(this.jdField_a_of_type_Toe.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout).a(toe.a(this.jdField_a_of_type_Toe));
+    this.jdField_a_of_type_Int -= 1;
+    if (this.jdField_a_of_type_Int == 0) {
+      b(paramString);
     }
+  }
+  
+  private void b(String paramString)
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    try
+    {
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext())
+      {
+        ReadInJoyUserInfo localReadInJoyUserInfo = (ReadInJoyUserInfo)localIterator.next();
+        String str = ReadInJoyUserInfoModule.a(localReadInJoyUserInfo);
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("headUrl", str).put("nickName", localReadInJoyUserInfo.nick).put("uin", localReadInJoyUserInfo.uin);
+        localJSONArray.put(localJSONObject2);
+        continue;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeJS(paramString, localJSONObject1);
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e(BridgeModule.TAG, 1, localException.getMessage());
+    }
+    for (;;)
+    {
+      return;
+      localJSONObject1.put("list", localException);
+    }
+  }
+  
+  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  {
+    a(this.jdField_a_of_type_JavaLangString);
+    QLog.e(BridgeModule.TAG, 1, "[onLoadUserInfoFailed]: " + paramString2 + ", uin: " + paramString1);
+  }
+  
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  {
+    this.b.add(paramReadInJoyUserInfo);
+    a(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tof
  * JD-Core Version:    0.7.0.1
  */

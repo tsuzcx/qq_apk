@@ -1,115 +1,168 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmall;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentInfo;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
 
 public class qae
-  extends pxl
 {
-  public qae(Context paramContext, bdbb parambdbb, rqj paramrqj)
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  private volatile qaf jdField_a_of_type_Qaf;
+  
+  public qae(ExecutorService paramExecutorService)
   {
-    super(paramContext, parambdbb, paramrqj);
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = paramExecutorService;
   }
   
-  public pxl a()
+  public static qae a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return b();
-  }
-  
-  public pxl d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend);
-    }
-    if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentSmall)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
+    Object localObject = (QQAppInterface)pha.a();
+    if (localObject != null)
     {
-      RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298578)));
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(11);
-      ((ComponentContentSmall)this.jdField_a_of_type_Pxk).setId(1);
-      ((ComponentContentSmall)this.jdField_a_of_type_Pxk).setLayoutParams(localLayoutParams);
-      localRelativeLayout.addView((ComponentContentSmall)this.jdField_a_of_type_Pxk);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(9);
-      localLayoutParams.addRule(0, ((ComponentContentSmall)this.jdField_a_of_type_Pxk).getId());
-      localLayoutParams.topMargin = aepi.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setId(2);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
-      localRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo != null)
-      {
-        localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-        localLayoutParams.addRule(12);
-        localLayoutParams.addRule(9);
-        localLayoutParams.addRule(0, ((ComponentContentSmall)this.jdField_a_of_type_Pxk).getId());
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo.setId(3);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo.setLayoutParams(localLayoutParams);
-        localRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo);
+      localObject = ((pmm)((QQAppInterface)localObject).getManager(163)).a();
+      if (localObject != null) {
+        return ((pmh)localObject).a();
       }
-      localLinearLayout.addView(localRelativeLayout);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
+    return null;
   }
   
-  public pxl e()
+  private boolean a(List<Long> paramList1, List<Long> paramList2)
   {
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (qbs.d((pgd)this.jdField_a_of_type_JavaLangObject))
-    {
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.getLayoutParams();
-      localLayoutParams.addRule(15);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramList1 == null) || (paramList2 == null)) {
+      if (paramList1 == paramList2) {
+        bool1 = true;
+      }
     }
+    do
+    {
+      for (;;)
+      {
+        return bool1;
+        bool1 = false;
+      }
+      bool1 = bool2;
+    } while (paramList1.size() != paramList2.size());
+    int i = 0;
     for (;;)
     {
-      return null;
-      if (!qbs.j((pgd)this.jdField_a_of_type_JavaLangObject))
-      {
-        localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.getLayoutParams();
-        localLayoutParams.addRule(15, 0);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
+      if (i >= paramList1.size()) {
+        break label93;
       }
+      bool1 = bool2;
+      if (!((Long)paramList1.get(i)).equals(paramList2.get(i))) {
+        break;
+      }
+      i += 1;
+    }
+    label93:
+    return true;
+  }
+  
+  qaf a(qni paramqni)
+  {
+    if (paramqni != null) {}
+    for (;;)
+    {
+      try
+      {
+        if ((this.jdField_a_of_type_Qaf != null) && (this.jdField_a_of_type_Qaf.a != null))
+        {
+          Object localObject = this.jdField_a_of_type_Qaf.a;
+          Long localLong1 = (Long)((ToServiceMsg)localObject).getAttribute(pxz.d);
+          Long localLong2 = (Long)((ToServiceMsg)localObject).getAttribute(pxz.e);
+          long l1;
+          if (localLong1 != null)
+          {
+            l1 = localLong1.longValue();
+            if (localLong2 != null)
+            {
+              l2 = localLong2.longValue();
+              QLog.d("FeedsPreloadDataModule", 1, new Object[] { "isReqEqual: ", "cache bSeq = ", Long.valueOf(l1), ", request bSeq = ", Long.valueOf(paramqni.a), "\n", "cache eSeq = ", Long.valueOf(l2), ", request eSeq = ", Long.valueOf(paramqni.jdField_b_of_type_Long) });
+              if ((l1 == paramqni.a) && (l2 == paramqni.jdField_b_of_type_Long)) {
+                continue;
+              }
+              QLog.d("FeedsPreloadDataModule", 1, "getCache, the seq is not equal.");
+              paramqni = null;
+              return paramqni;
+            }
+          }
+          else
+          {
+            l1 = -1L;
+            continue;
+          }
+          long l2 = -1L;
+          continue;
+          paramqni = paramqni.jdField_b_of_type_JavaUtilList;
+          localObject = (List)((ToServiceMsg)localObject).getAttribute("SubscriptionArticles");
+          if ((paramqni != null) && (paramqni.size() > 0))
+          {
+            if (a(paramqni, (List)localObject))
+            {
+              QLog.d("FeedsPreloadDataModule", 1, "two subscriptionLists are the same.");
+              paramqni = this.jdField_a_of_type_Qaf.a();
+              continue;
+            }
+            QLog.d("FeedsPreloadDataModule", 1, "two subscriptionList are different.");
+          }
+          else
+          {
+            if ((localObject == null) || (((List)localObject).size() == 0))
+            {
+              QLog.d("FeedsPreloadDataModule", 1, "two subscriptionLists both are empty.");
+              paramqni = this.jdField_a_of_type_Qaf.a();
+              continue;
+            }
+            QLog.d("FeedsPreloadDataModule", 1, "cache subscriptionList is not empty.");
+          }
+        }
+      }
+      finally {}
+      paramqni = null;
     }
   }
   
-  public pxl g()
+  public void a()
   {
-    this.jdField_a_of_type_Pxk = new ComponentContentSmall(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    this.jdField_a_of_type_Qaf = null;
+  }
+  
+  public void a(qaf paramqaf)
+  {
+    if (paramqaf != null) {}
+    try
+    {
+      this.jdField_a_of_type_Qaf = paramqaf;
+      return;
+    }
+    finally
+    {
+      paramqaf = finally;
+      throw paramqaf;
+    }
+  }
+  
+  void b()
+  {
+    try
+    {
+      QLog.d("FeedsPreloadDataModule", 2, "clearCache.");
+      this.jdField_a_of_type_Qaf = null;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qae
  * JD-Core Version:    0.7.0.1
  */

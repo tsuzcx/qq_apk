@@ -1,15 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayiu
-  implements View.OnClickListener
+  extends Handler
 {
-  public ayiu(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  public ayiu(ScanOcrView paramScanOcrView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("ScanOcrView", 2, "handleMessage, MSG_SCANLINE");
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.a(paramMessage.arg1);
+    }
   }
 }
 

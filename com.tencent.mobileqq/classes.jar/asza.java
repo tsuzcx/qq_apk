@@ -1,22 +1,21 @@
-import java.io.File;
-import java.util.concurrent.Callable;
-
 class asza
-  implements Callable<File>
+  extends aszz
 {
-  asza(asyz paramasyz) {}
+  asza(asyx paramasyx, aszc paramaszc) {}
   
-  public File a()
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
   {
-    if (asyz.a(this.a).exists()) {
-      return asyz.a(this.a);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aszc.a(paramString2, paramString3);
+      return;
     }
-    return null;
+    this.jdField_a_of_type_Aszc.a(paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asza
  * JD-Core Version:    0.7.0.1
  */

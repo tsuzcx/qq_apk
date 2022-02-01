@@ -1,45 +1,91 @@
-import android.content.res.TypedArray;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class atxd
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
+  private static Calendar a = ;
   
-  public void a(TypedArray paramTypedArray)
+  public static String a(long paramLong)
   {
-    this.jdField_a_of_type_Int = paramTypedArray.getDimensionPixelSize(19, 16);
-    this.jdField_b_of_type_Int = paramTypedArray.getInt(18, 255);
-    this.jdField_c_of_type_Int = paramTypedArray.getInt(20, 255);
-    this.d = paramTypedArray.getDimensionPixelSize(8, 20);
-    this.i = paramTypedArray.getDimensionPixelSize(9, 20);
-    this.j = paramTypedArray.getDimensionPixelSize(0, 15);
-    this.e = paramTypedArray.getDimensionPixelSize(4, 20);
-    this.f = paramTypedArray.getInt(2, 255);
-    this.g = paramTypedArray.getInt(5, 255);
-    this.h = paramTypedArray.getDimensionPixelSize(3, 20);
-    this.k = paramTypedArray.getDimensionPixelSize(12, 20);
-    this.jdField_a_of_type_Boolean = paramTypedArray.getBoolean(11, false);
-    this.l = paramTypedArray.getDimensionPixelSize(7, 10);
-    this.jdField_c_of_type_Boolean = paramTypedArray.getBoolean(6, false);
-    this.jdField_b_of_type_Boolean = paramTypedArray.getBoolean(1, true);
+    Calendar localCalendar1 = Calendar.getInstance();
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar1.setTimeInMillis(bbyp.a() * 1000L);
+    localCalendar2.setTimeInMillis(paramLong);
+    int k = localCalendar1.get(1);
+    int i = localCalendar1.get(6) - localCalendar2.get(6);
+    int j = i;
+    if (localCalendar2.get(1) != k)
+    {
+      localCalendar1 = (Calendar)localCalendar2.clone();
+      do
+      {
+        j = i + localCalendar1.getActualMaximum(6);
+        localCalendar1.add(1, 1);
+        i = j;
+      } while (localCalendar1.get(1) != k);
+    }
+    if (j <= 7) {
+      return "7天内";
+    }
+    return a(paramLong, "yyyy年MM月");
+  }
+  
+  public static String a(long paramLong, String paramString)
+  {
+    if (paramLong == 0L) {
+      return "";
+    }
+    try
+    {
+      paramString = new SimpleDateFormat(paramString).format(new Date(paramLong));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString = new SimpleDateFormat("yyyy-MM-dd");
+      try
+      {
+        paramString = paramString.format(new Date(paramLong));
+        return paramString;
+      }
+      catch (Exception paramString) {}
+    }
+    return null;
+  }
+  
+  public static String b(long paramLong)
+  {
+    a.setTimeInMillis(System.currentTimeMillis());
+    int i = a.get(1);
+    int j = a.get(2);
+    int k = a.get(5);
+    a.setTimeInMillis(paramLong);
+    int m = a.get(1);
+    int n = a.get(2);
+    int i1 = a.get(5);
+    if (i != m) {
+      return new SimpleDateFormat("yyyy-MM-dd ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
+    }
+    if (j != n) {
+      return new SimpleDateFormat("MM-dd ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
+    }
+    if (k == i1) {
+      return new SimpleDateFormat("HH:mm ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
+    }
+    if (k - i1 <= 1) {
+      return anni.a(2131708481);
+    }
+    return new SimpleDateFormat("MM-dd ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atxd
  * JD-Core Version:    0.7.0.1
  */

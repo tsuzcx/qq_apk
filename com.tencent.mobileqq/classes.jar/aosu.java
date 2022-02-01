@@ -1,51 +1,41 @@
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class aosu
+class aosu
+  extends bgsq
 {
-  private Map<String, aosv> a = new HashMap();
+  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public static aosu a(aoko[] paramArrayOfaoko)
+  aosu(String paramString1, String paramString2, AppInterface paramAppInterface)
   {
-    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length <= 0)) {
-      return null;
-    }
-    localaosu = new aosu();
-    try
-    {
-      paramArrayOfaoko = new JSONObject(paramArrayOfaoko[0].a);
-      Iterator localIterator = paramArrayOfaoko.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        JSONObject localJSONObject = paramArrayOfaoko.getJSONObject(str);
-        localaosu.a.put(str, aosv.a(localJSONObject));
-      }
-      return localaosu;
-    }
-    catch (JSONException paramArrayOfaoko) {}
+    super(paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
   }
   
-  public static aosv a(String paramString)
+  public void innerClean()
   {
-    if ((!TextUtils.isEmpty(paramString)) && (aosr.a() != null)) {
-      return (aosv)aosr.a().a().get(paramString);
-    }
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
   }
   
-  public Map<String, aosv> a()
+  public boolean runOnSubThread(Resources paramResources)
   {
-    return this.a;
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = bguf.a(this.jdField_a_of_type_JavaLangString, null);
+    QLog.w(this.TAG, 1, "ReadConfigTask,ConfigInfo[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "]");
+    aosl.c();
+    AudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aosu
  * JD-Core Version:    0.7.0.1
  */

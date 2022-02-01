@@ -1,43 +1,54 @@
+import NS_MINI_AD.MiniAppAd.StGetAdRsp;
+import android.text.TextUtils;
+import com.tencent.mobileqq.mini.manager.MiniLoadingAdManager;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class bjuw
-  implements FilenameFilter
+public class bjuw
+  implements MiniAppCmdInterface
 {
-  bjuw(long paramLong1, long paramLong2) {}
+  public bjuw(AdProxyImpl paramAdProxyImpl, String paramString1, String paramString2, AdProxy.ILoadingAdListener paramILoadingAdListener) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if ((!paramString.startsWith("QAVSDK")) && (!paramString.startsWith("qavsdk"))) {}
-    long l;
-    do
+    QLog.d("MiniLoadingAdManager", 1, "requestPreloadLoadingAd receive isSuc= " + paramBoolean);
+    if (paramBoolean) {}
+    for (;;)
     {
-      File localFile;
-      do
+      try
       {
-        do
+        Object localObject = (MiniAppAd.StGetAdRsp)paramJSONObject.get("response");
+        i = paramJSONObject.getInt("retCode");
+        String str = paramJSONObject.getString("errMsg");
+        localObject = ((MiniAppAd.StGetAdRsp)localObject).strAdsJson.get();
+        QLog.d("MiniLoadingAdManager", 1, "requestPreloadLoadingAd receive retCode= " + i + " errMsg=" + str + " adJson=" + (String)localObject);
+        if ((i == 0) && (!TextUtils.isEmpty((CharSequence)localObject)))
         {
-          return false;
-        } while (paramString.split("_").length == 2);
-        localFile = new File(paramFile + File.separator + paramString);
-      } while ((localFile == null) || (!localFile.exists()));
-      l = localFile.lastModified();
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
+          MiniLoadingAdManager.downloadAndSaveLoadingAd((String)localObject, this.jdField_a_of_type_JavaLangString, this.b);
+          if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener != null) {
+            this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onPreloadAdReceive(i);
+          }
+          return;
+        }
       }
-    } while ((l < this.a) || (l > this.b));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
+      catch (JSONException localJSONException) {}
+      if (paramJSONObject != null) {}
+      for (int i = paramJSONObject.optInt("retCode", -1); this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener != null; i = -1)
+      {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onPreloadAdReceive(i);
+        return;
+      }
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjuw
  * JD-Core Version:    0.7.0.1
  */

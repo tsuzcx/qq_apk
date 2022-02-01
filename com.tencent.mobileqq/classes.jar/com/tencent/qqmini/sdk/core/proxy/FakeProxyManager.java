@@ -1,9 +1,11 @@
 package com.tencent.qqmini.sdk.core.proxy;
 
-import bgly;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
+import com.tencent.qqmini.sdk.launcher.core.IProxyManager;
 
+@MiniKeep
 public class FakeProxyManager
-  implements bgly
+  implements IProxyManager
 {
   public <T> T get(Class paramClass)
   {
@@ -12,7 +14,7 @@ public class FakeProxyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.FakeProxyManager
  * JD-Core Version:    0.7.0.1
  */

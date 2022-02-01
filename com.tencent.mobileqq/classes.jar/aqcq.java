@@ -1,30 +1,22 @@
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import org.json.JSONObject;
+import com.tencent.mobileqq.colornote.anim.MusicDanceDrawable;
 
-class aqcq
-  implements MiniAppCmdInterface
+public class aqcq
 {
-  aqcq(aqcp paramaqcp, aqcr paramaqcr) {}
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
+  private int d;
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  private aqcq(MusicDanceDrawable paramMusicDanceDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
-    {
-      paramJSONObject = paramJSONObject.opt("data");
-      if ((paramJSONObject instanceof MiniAppRecommInfo))
-      {
-        aqcp.a(this.jdField_a_of_type_Aqcp, (MiniAppRecommInfo)paramJSONObject);
-        this.jdField_a_of_type_Aqcp.a(aqcp.a(this.jdField_a_of_type_Aqcp));
-        if (this.jdField_a_of_type_Aqcr != null) {
-          this.jdField_a_of_type_Aqcr.a(true, aqcp.a(this.jdField_a_of_type_Aqcp));
-        }
-      }
-    }
-    while (this.jdField_a_of_type_Aqcr == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aqcr.a(false, null);
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

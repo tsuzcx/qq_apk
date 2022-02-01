@@ -1,24 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.ShieldOperationItem;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
 
-public final class amcn
-  implements Parcelable.Creator<ShieldOperationItem>
+public class amcn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ShieldOperationItem a(Parcel paramParcel)
-  {
-    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
-    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localShieldOperationItem.b = paramParcel.readInt();
-    localShieldOperationItem.c = paramParcel.readInt();
-    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
-    localShieldOperationItem.d = paramParcel.readInt();
-    return localShieldOperationItem;
-  }
+  public amcn(ForwardRecentItemView paramForwardRecentItemView, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public ShieldOperationItem[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return null;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b);
+    if (AppSetting.c) {
+      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

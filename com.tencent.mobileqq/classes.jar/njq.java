@@ -1,23 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import java.lang.ref.WeakReference;
-
-class njq
-  implements View.OnClickListener
+public class njq
 {
-  njq(nin paramnin, int paramInt, npo paramnpo) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public njq(njo paramnjo, boolean paramBoolean)
   {
-    yuq.a((BaseActivity)this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangRefWeakReference.get(), new yus(this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nin.a(this.jdField_a_of_type_Nin), this.jdField_a_of_type_Int);
-    nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     njq
  * JD-Core Version:    0.7.0.1
  */

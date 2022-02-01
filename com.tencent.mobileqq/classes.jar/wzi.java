@@ -1,72 +1,56 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetShareGroupInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
+import java.util.List;
 
-class wzi
-  extends QQUIEventReceiver<wzb, xfc>
+public class wzi
+  extends wlf<xay>
 {
-  public wzi(@NonNull wzb paramwzb)
+  private final String a;
+  public List<String> a;
+  
+  public wzi()
   {
-    super(paramwzb);
+    this.jdField_a_of_type_JavaLangString = wjz.a("StorySvc.get_share_group_info");
   }
   
-  public void a(@NonNull wzb paramwzb, @NonNull xfc paramxfc)
+  public String a()
   {
-    if (paramxfc.jdField_a_of_type_Int != 0) {
-      paramwzb.jdField_a_of_type_Xan.a("fail_face", 0, 0, new String[0]);
-    }
-    wzl localwzl = paramwzb.jdField_a_of_type_Wzl;
-    if (localwzl != null)
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetShareGroupInfo localRspGetShareGroupInfo = new qqstory_service.RspGetShareGroupInfo();
+    try
     {
-      Object localObject = localwzl.a(paramxfc.jdField_a_of_type_Xes.a);
-      if (!(localObject instanceof xhx))
-      {
-        wxe.d(this.TAG, "DoodleEmojiDownloadEventReceiver no FacePackage found by pack id = " + paramxfc.jdField_a_of_type_Xes.a);
-        return;
-      }
-      localObject = (xhx)localObject;
-      if (paramxfc.jdField_a_of_type_Int == 0)
-      {
-        if (paramxfc.jdField_a_of_type_Boolean)
-        {
-          wxe.b(this.TAG, "notify ui we finish downloading");
-          ((xhx)localObject).jdField_a_of_type_Boolean = false;
-          ((xhx)localObject).f = paramxfc.jdField_a_of_type_Xes.a();
-          ((xhx)localObject).jdField_a_of_type_Int = 0;
-          ((xhx)localObject).b = 0;
-          localwzl.a((xhr)localObject);
-          return;
-        }
-        wxe.a(this.TAG, "notify ui we new progress : " + paramxfc.b + " / " + paramxfc.jdField_a_of_type_Long);
-        ((xhx)localObject).jdField_a_of_type_Boolean = true;
-        ((xhx)localObject).f = null;
-        ((xhx)localObject).jdField_a_of_type_Int = ((int)paramxfc.jdField_a_of_type_Long);
-        ((xhx)localObject).b = ((int)paramxfc.b);
-        localwzl.a((xhr)localObject);
-        return;
-      }
-      ((xhx)localObject).jdField_a_of_type_Boolean = false;
-      ((xhx)localObject).f = null;
-      ((xhx)localObject).jdField_a_of_type_Int = 0;
-      ((xhx)localObject).b = 0;
-      localwzl.a((xhr)localObject);
-      wxe.e(this.TAG, "DoodleEmojiDownloadEventReceiver download error = " + paramxfc.jdField_a_of_type_Int);
-      QQToast.a(paramwzb.a(), alud.a(2131704312), 1).a();
-      wxk.a("0X80076C9");
-      wxk.b("0X80075DE");
-      return;
+      localRspGetShareGroupInfo.mergeFrom(paramArrayOfByte);
+      return new xay(localRspGetShareGroupInfo);
     }
-    wxe.b(this.TAG, "DoodleEmojiDownloadEventReceiver adapter is null");
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.b("Q.qqstory.shareGroup:GetShareGroupInfoRequest", a(), paramArrayOfByte);
+    }
+    return null;
   }
   
-  public Class acceptEventClass()
+  protected byte[] a()
   {
-    return xfc.class;
+    qqstory_service.ReqGetShareGroupInfo localReqGetShareGroupInfo = new qqstory_service.ReqGetShareGroupInfo();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqGetShareGroupInfo.share_group_id_list.add(str);
+    }
+    return localReqGetShareGroupInfo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wzi
  * JD-Core Version:    0.7.0.1
  */

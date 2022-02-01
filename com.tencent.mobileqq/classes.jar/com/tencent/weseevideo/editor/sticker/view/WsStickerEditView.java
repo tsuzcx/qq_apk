@@ -109,8 +109,8 @@ public class WsStickerEditView
     Object localObject = this.vertexPoints;
     if ((localObject != null) && (localObject.length >= 4))
     {
-      float f1 = localObject[1].x;
-      float f2 = localObject[1].y;
+      float f1 = localObject[0].x;
+      float f2 = localObject[0].y;
       paramCanvas.rotate(getSticker().getRotate(), f1, f2);
       paramCanvas.scale(this.OPERATION_BUTTON_SCALE, this.OPERATION_BUTTON_SCALE, f1, f2);
       localObject = new Rect(0, 0, this.bmpDelete.getWidth(), this.bmpDelete.getHeight());
@@ -128,8 +128,8 @@ public class WsStickerEditView
     Object localObject = this.vertexPoints;
     if ((localObject != null) && (localObject.length >= 4))
     {
-      float f1 = localObject[0].x;
-      float f2 = localObject[0].y;
+      float f1 = localObject[1].x;
+      float f2 = localObject[1].y;
       paramCanvas.rotate(getSticker().getRotate(), f1, f2);
       paramCanvas.scale(this.OPERATION_BUTTON_SCALE, this.OPERATION_BUTTON_SCALE, f1, f2);
       localObject = new Rect(0, 0, this.bmpEdit.getWidth(), this.bmpEdit.getHeight());
@@ -227,13 +227,8 @@ public class WsStickerEditView
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (TAVStickerOperationMode.OP_NONE != this.operationMode) {}
-    do
+    if (paramCanvas != null)
     {
-      do
-      {
-        return;
-      } while ((paramCanvas == null) || (!this.isStickerSelected));
       if (StickerDrawingOperationMask.isDrawBorder(this.drawMask)) {
         drawBorder(paramCanvas);
       }
@@ -246,8 +241,7 @@ public class WsStickerEditView
       if ((StickerDrawingOperationMask.isDrawLeftBottom(this.drawMask)) && (BitmapUtil.isValidBitmap(this.bmpAdjustTimeRange))) {
         drawAdjustTimeBtn(paramCanvas);
       }
-    } while ((!StickerDrawingOperationMask.isDrawRightTop(this.drawMask)) || (!BitmapUtil.isValidBitmap(this.bmpEdit)));
-    drawEditBtn(paramCanvas);
+    }
   }
   
   public boolean isDrawGuideLine()
@@ -331,7 +325,7 @@ public class WsStickerEditView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.view.WsStickerEditView
  * JD-Core Version:    0.7.0.1
  */

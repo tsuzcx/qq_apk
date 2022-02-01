@@ -1,9 +1,9 @@
 package dov.com.qq.im.capture.music.humrecognition;
 
 import android.os.Handler;
-import axob;
-import bhtd;
-import blun;
+import bamc;
+import bkgm;
+import bonr;
 import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
 import java.io.File;
 
@@ -37,7 +37,7 @@ class HummingActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.music.humrecognition.HummingActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
+import android.view.View;
+
 public abstract interface aivb
 {
-  public abstract void a();
-  
-  public abstract void a(Object paramObject);
+  public abstract void a(View paramView, int paramInt);
 }
 
 

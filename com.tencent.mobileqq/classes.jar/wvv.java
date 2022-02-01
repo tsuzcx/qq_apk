@@ -1,23 +1,31 @@
-import android.os.Handler;
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
 
-class wvv
-  implements wsv<wsc>
+public class wvv
 {
-  wvv(wvq paramwvq, String paramString) {}
+  public int a;
+  public long a;
+  public String a;
   
-  public void a(wsc paramwsc)
+  public wvv(wvs paramwvs, String paramString)
   {
-    if ((paramwsc.a != null) && (TextUtils.equals(paramwsc.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
-    {
-      wvq.a(this.jdField_a_of_type_Wvq).a = paramwsc.a;
-      wvq.a(this.jdField_a_of_type_Wvq).sendMessage(wvq.a(this.jdField_a_of_type_Wvq).obtainMessage(0, wvq.a(this.jdField_a_of_type_Wvq)));
+    this.jdField_a_of_type_JavaLangString = "";
+    paramwvs = ((woz)wpm.a(19)).a(paramString);
+    if (paramwvs != null) {
+      a(paramwvs);
     }
+  }
+  
+  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
+  {
+    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
+    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
+    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wvv
  * JD-Core Version:    0.7.0.1
  */

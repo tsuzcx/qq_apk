@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.gamecenter.data;
 
 import android.text.TextUtils;
-import awge;
-import awgf;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,11 +13,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class GameNoticeCenter$GameNoticeInfoList
   extends CopyOnWriteArrayList<GameNoticeInfo>
 {
-  private awgf mEntityManager;
+  private EntityManager mEntityManager;
   
-  public GameNoticeCenter$GameNoticeInfoList(GameNoticeCenter paramGameNoticeCenter, awgf paramawgf)
+  public GameNoticeCenter$GameNoticeInfoList(GameNoticeCenter paramGameNoticeCenter, EntityManager paramEntityManager)
   {
-    this.mEntityManager = paramawgf;
+    this.mEntityManager = paramEntityManager;
   }
   
   private final void a()
@@ -37,7 +37,7 @@ public class GameNoticeCenter$GameNoticeInfoList
   {
     boolean bool = super.add(paramGameNoticeInfo);
     if (bool) {
-      this.mEntityManager.a(paramGameNoticeInfo);
+      this.mEntityManager.persist(paramGameNoticeInfo);
     }
     return bool;
   }
@@ -57,22 +57,31 @@ public class GameNoticeCenter$GameNoticeInfoList
   
   void initData()
   {
-    ArrayList localArrayList = (ArrayList)this.mEntityManager.a(GameNoticeInfo.class);
-    clear();
-    if (localArrayList != null)
+    try
     {
-      addAll(localArrayList);
-      sort();
-      localObject = listIterator();
+      ArrayList localArrayList = (ArrayList)this.mEntityManager.query(GameNoticeInfo.class);
+      clear();
+      if (localArrayList == null) {
+        break label82;
+      }
+      localObject = localArrayList.iterator();
       while (((Iterator)localObject).hasNext()) {
         if (!((GameNoticeInfo)((Iterator)localObject).next()).isValid()) {
           ((Iterator)localObject).remove();
         }
       }
+      addAll(localThrowable);
     }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("GameNoticeCenter", 1, "initData exception", localThrowable);
+      return;
+    }
+    sort();
+    label82:
     Object localObject = new StringBuilder().append("initData, restore size=");
-    if (localArrayList != null) {}
-    for (int i = localArrayList.size();; i = 0)
+    if (localThrowable != null) {}
+    for (int i = localThrowable.size();; i = 0)
     {
       QLog.d("GameNoticeCenter", 1, i + ", remains size=" + size());
       a();
@@ -85,7 +94,7 @@ public class GameNoticeCenter$GameNoticeInfoList
   {
     GameNoticeInfo localGameNoticeInfo = (GameNoticeInfo)super.remove(paramInt);
     if (localGameNoticeInfo != null) {
-      this.mEntityManager.b(localGameNoticeInfo);
+      this.mEntityManager.remove(localGameNoticeInfo);
     }
     return localGameNoticeInfo;
   }
@@ -93,8 +102,8 @@ public class GameNoticeCenter$GameNoticeInfoList
   public boolean remove(Object paramObject)
   {
     boolean bool = super.remove(paramObject);
-    if ((bool) && ((paramObject instanceof awge))) {
-      this.mEntityManager.b((awge)paramObject);
+    if ((bool) && ((paramObject instanceof Entity))) {
+      this.mEntityManager.remove((Entity)paramObject);
     }
     return bool;
   }
@@ -111,24 +120,24 @@ public class GameNoticeCenter$GameNoticeInfoList
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("GameNoticeCenter", 1, "initData exception", localThrowable);
+      QLog.e("GameNoticeCenter", 1, "sort exception", localThrowable);
     }
   }
   
   public void updateDB(GameNoticeInfo paramGameNoticeInfo)
   {
     if (paramGameNoticeInfo.getStatus() == 1000) {
-      this.mEntityManager.b(paramGameNoticeInfo);
+      this.mEntityManager.persistOrReplace(paramGameNoticeInfo);
     }
     while ((paramGameNoticeInfo.getStatus() != 1001) && (paramGameNoticeInfo.getStatus() != 1002)) {
       return;
     }
-    this.mEntityManager.a(paramGameNoticeInfo);
+    this.mEntityManager.update(paramGameNoticeInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.GameNoticeCenter.GameNoticeInfoList
  * JD-Core Version:    0.7.0.1
  */

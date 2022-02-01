@@ -1,80 +1,289 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.drawable.Drawable;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileImageAvatar.1;
+import com.tencent.mobileqq.activity.FriendProfileImageAvatar.3;
+import com.tencent.mobileqq.activity.FriendProfileImageAvatar.4;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Setting;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import java.net.URL;
+import mqq.os.MqqHandler;
 
 public class aehr
-  implements ahpq
+  extends aeht
+  implements Handler.Callback, bgmm
 {
-  public aehr(TroopRequestActivity paramTroopRequestActivity) {}
+  int jdField_a_of_type_Int;
+  private anmu jdField_a_of_type_Anmu = new aehs(this);
+  String jdField_a_of_type_JavaLangString;
+  public URL a;
+  public MqqHandler a;
+  public boolean a;
+  public boolean b;
+  public boolean c = false;
   
-  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
+  public aehr(QQAppInterface paramQQAppInterface)
   {
-    int i;
-    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512)))
+    super(paramQQAppInterface);
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaNetURL = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bgli(Looper.getMainLooper(), this);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public aehv a(int paramInt)
+  {
+    return this.jdField_a_of_type_Aehv;
+  }
+  
+  public Drawable a()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      i = 1;
-      if (i == 0) {
-        break label126;
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_Aehv != null)
+      {
+        localObject1 = localObject2;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Aehv.d)) {
+          localObject1 = aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_Aehv.d);
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.TroopRequestActivity", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
-      }
-      ahpp.a(this.a, paramString);
-      ahpp.a(this.a.app);
-      this.a.i();
-      azqs.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "pay_troop", "", "", "");
     }
-    label126:
+    return localObject1;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt > 0) {
+      i = 0;
+    }
+    this.jdField_b_of_type_Int = i;
+    this.jdField_a_of_type_Aehv = a(i);
+    if (this.jdField_a_of_type_Aehv != null)
+    {
+      a(this.jdField_a_of_type_Aehv, true);
+      c(this.jdField_a_of_type_Aehv);
+    }
+  }
+  
+  public void a(aehv paramaehv)
+  {
+    this.jdField_a_of_type_Aehv = paramaehv;
+  }
+  
+  void a(aehv paramaehv, boolean paramBoolean)
+  {
+    int i = paramaehv.jdField_a_of_type_Int;
+    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean) && ((paramaehv.jdField_a_of_type_Int == 0) || (paramaehv.jdField_a_of_type_Int == 3)))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      ThreadManager.postImmediately(new FriendProfileImageAvatar.1(this, paramaehv), null, false);
+    }
+    if (paramaehv.jdField_a_of_type_Int == 0) {
+      paramaehv.jdField_a_of_type_Int = 1;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.Avatar", 2, "load: uin=" + paramaehv.d + ",state=" + paramaehv.jdField_a_of_type_Int + ", bState=" + i + ", bGetHeadInfo=" + this.jdField_a_of_type_Boolean + ", isFromClickEvent=" + paramBoolean);
+      }
+      return;
+      if ((!paramBoolean) && (paramaehv.jdField_a_of_type_Int == 3))
+      {
+        paramaehv.jdField_a_of_type_Int = 4;
+        if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+          this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(4, 400L);
+        }
+      }
+    }
+  }
+  
+  public void a(BaseActivity paramBaseActivity)
+  {
+    paramBaseActivity.removeObserver(this.jdField_a_of_type_Anmu);
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    }
+    this.jdField_a_of_type_MqqOsMqqHandler = null;
+  }
+  
+  public void a(BaseActivity paramBaseActivity, aehv paramaehv)
+  {
+    paramaehv.jdField_a_of_type_JavaLangString = null;
+    paramaehv.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(false, this.jdField_b_of_type_JavaLangString);
+    paramaehv.c = bghy.b(this.jdField_b_of_type_JavaLangString);
+    b(paramaehv);
+    this.jdField_a_of_type_Aehv = paramaehv;
+  }
+  
+  void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      axei.a("Q.profilecard.Avatar", "downloadHDAvatar", new Object[] { paramString });
+    }
+    if (this.c)
+    {
+      if (axei.a()) {
+        axei.a("Q.profilecard.Avatar", "downloadHDAvatar makingHDUrl return 1", new Object[0]);
+      }
+      return;
+    }
+    ThreadManager.post(new FriendProfileImageAvatar.3(this, paramString), 5, null, true);
+  }
+  
+  void a(String paramString1, byte paramByte, String paramString2)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Aehv.jdField_a_of_type_Boolean = true;
+    c(this.jdField_a_of_type_Aehv);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if (axei.a()) {
+        axei.a("Q.profilecard.Avatar", "downloadHDAvatar is downloading and return 1", new Object[0]);
+      }
+      return;
+    }
+    ThreadManager.post(new FriendProfileImageAvatar.4(this, paramString1, paramByte, paramString2), 5, null, true);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.Avatar", 2, "onHttpStart() url = " + paramString);
+    }
+    if ((this.jdField_a_of_type_JavaNetURL != null) && (this.jdField_a_of_type_JavaNetURL.toString().equals(paramString)))
+    {
+      paramString = Message.obtain();
+      paramString.what = 2;
+      paramString.arg1 = paramInt;
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramString);
+      }
+    }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    if ((this.jdField_a_of_type_JavaNetURL != null) && (this.jdField_a_of_type_JavaNetURL.toString().equals(paramString)))
+    {
+      if ((this.jdField_a_of_type_MqqOsMqqHandler != null) && (this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1))) {
+        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
+      }
+      paramString = Message.obtain();
+      paramString.what = 1;
+      paramString.arg1 = ((int)((float)paramLong2 / (float)paramLong1 * 100.0F));
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramString);
+      }
+    }
+  }
+  
+  void b(aehv paramaehv)
+  {
+    for (;;)
+    {
+      try
+      {
+        int i = paramaehv.jdField_a_of_type_Int;
+        if (atwl.a(paramaehv.c))
+        {
+          paramaehv.jdField_a_of_type_Int = 6;
+          paramaehv.jdField_a_of_type_Boolean = false;
+          if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+            this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(4);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.profilecard.Avatar", 2, "updateState: uin=" + paramaehv.d + ",state=" + paramaehv.jdField_a_of_type_Int + ", beforeState=" + i);
+          }
+          return;
+        }
+        if (atwl.a(paramaehv.jdField_b_of_type_JavaLangString)) {
+          paramaehv.jdField_a_of_type_Int = 3;
+        } else {
+          paramaehv.jdField_a_of_type_Int = 0;
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public void b(BaseActivity paramBaseActivity)
+  {
+    paramBaseActivity.addObserver(this.jdField_a_of_type_Anmu);
+  }
+  
+  public void b(String paramString, int paramInt) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    Setting localSetting = null;
+    switch (paramMessage.what)
+    {
+    }
     do
     {
       do
       {
-        do
-        {
-          return;
-          i = 0;
-          break;
-          if (((this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 11) || (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get() != 3)) && (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 7)) {
-            break label250;
-          }
-        } while (this.a.jdField_a_of_type_Amdu == null);
-        try
-        {
-          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
-          this.a.h();
-          this.a.jdField_a_of_type_Amdu.a(l, 8390784);
-          return;
+        return true;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.profilecard.Avatar", 2, "refresh progress : " + paramMessage.arg1);
         }
-        catch (Exception paramString) {}
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.systemmsg.TroopRequestActivity", 2, paramString.toString());
-      return;
-      this.a.h();
-      TroopRequestActivity.a(this.a, 1);
-    } while (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 2);
-    label250:
-    azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, paramString, "", "0", "0");
-    azqs.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop", "", "", "");
-  }
-  
-  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.i();
-    paramStructMsg = this.a;
-    if (paramInt1 == 72) {}
-    for (paramInt1 = 2131690073;; paramInt1 = 2131690072)
-    {
-      QQToast.a(paramStructMsg, paramInt1, 1).a();
-      azqs.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "err", "", "", "");
+        this.jdField_a_of_type_Aehv.jdField_b_of_type_Int = paramMessage.arg1;
+        c(this.jdField_a_of_type_Aehv);
+        return true;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.profilecard.Avatar", 2, "start progress : " + paramMessage.arg1);
+        }
+        this.jdField_a_of_type_Aehv.jdField_b_of_type_Int = 0;
+        c(this.jdField_a_of_type_Aehv);
+        return true;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.profilecard.Avatar", 2, "end result : " + paramMessage.arg1);
+        }
+        this.jdField_a_of_type_Aehv.jdField_b_of_type_Int = 100;
+        this.jdField_a_of_type_Aehv.jdField_a_of_type_Boolean = false;
+        b(this.jdField_a_of_type_Aehv);
+        if (paramMessage.arg1 == 1)
+        {
+          c(this.jdField_a_of_type_Aehv);
+          return true;
+        }
+        this.jdField_a_of_type_Aehv.jdField_a_of_type_Int = 5;
+        c(this.jdField_a_of_type_Aehv);
+      } while (this.jdField_a_of_type_Int >= 3);
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_JavaLangString = null;
+      return true;
+      a(this.jdField_b_of_type_JavaLangString);
+      return true;
       if (QLog.isColorLevel()) {
-        QLog.e("Q.systemmsg.TroopRequestActivity", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
+        QLog.i("Q.profilecard.Avatar", 2, "MSG_DOWNLOAD_HD_AVATAR " + paramMessage.obj);
       }
-      return;
-    }
+      if ((paramMessage.obj instanceof Setting)) {
+        localSetting = (Setting)paramMessage.obj;
+      }
+      if ((localSetting != null) && (!localSetting.url.equals(this.jdField_a_of_type_JavaLangString)))
+      {
+        this.jdField_a_of_type_JavaLangString = localSetting.url;
+        a(localSetting.uin, localSetting.bFaceFlags, localSetting.url);
+        return true;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.profilecard.Avatar", 2, "MSG_DOWNLOAD_HD_AVATAR | has download path = " + this.jdField_a_of_type_JavaLangString);
+    return true;
   }
 }
 

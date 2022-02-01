@@ -1,27 +1,43 @@
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import java.lang.ref.WeakReference;
 
 public class akcc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends Handler
 {
-  public akcc(TroopMemberListInnerFrame paramTroopMemberListInnerFrame, ViewGroup paramViewGroup) {}
+  private WeakReference<BaseActivityView> a;
   
-  public void onGlobalLayout()
+  public akcc(BaseActivityView paramBaseActivityView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c);
-    Bitmap localBitmap = TroopMemberListInnerFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c);
-    if (localBitmap == null) {}
-    do
-    {
+    this.a = new WeakReference(paramBaseActivityView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
+    if (localBaseActivityView == null) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c.setTag(localBitmap);
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a.notifyDataSetChanged();
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localBaseActivityView.b(i, bool);
+        return;
+        bool = false;
+      }
+    case 2: 
+      localBaseActivityView.f();
+      return;
+    }
+    localBaseActivityView.i();
   }
 }
 

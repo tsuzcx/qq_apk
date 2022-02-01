@@ -1,18 +1,20 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afjr
   implements View.OnClickListener
 {
-  public afjr(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
+  public afjr(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
-      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

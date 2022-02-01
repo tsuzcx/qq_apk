@@ -1,70 +1,22 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qvv
-  implements Comparator<qvt>
+public class qvv
+  implements View.OnClickListener
 {
-  public int a(qvt paramqvt)
-  {
-    if (paramqvt.jdField_a_of_type_Int != -1) {
-      return paramqvt.jdField_a_of_type_Int;
-    }
-    Friends localFriends = paramqvt.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = bdgc.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
-    }
-    for (;;)
-    {
-      paramqvt.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
-    }
-  }
+  public qvv(ComponentContentNoteCard paramComponentContentNoteCard) {}
   
-  public int a(qvt paramqvt1, qvt paramqvt2)
+  public void onClick(View paramView)
   {
-    return a(paramqvt1) - a(paramqvt2);
+    ComponentContentNoteCard.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qvv
  * JD-Core Version:    0.7.0.1
  */

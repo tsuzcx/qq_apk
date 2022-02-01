@@ -1,87 +1,18 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
 
-public final class bkkh
-  extends MSFServlet
+public class bkkh
+  implements ContextMenu.ContextMenuInfo
 {
-  private static void a(FromServiceMsg paramFromServiceMsg)
-  {
-    int i;
-    if (paramFromServiceMsg.getWupBuffer() != null)
-    {
-      i = paramFromServiceMsg.getWupBuffer().length - 4;
-      if (i >= 0) {}
-    }
-    else
-    {
-      return;
-    }
-    byte[] arrayOfByte = new byte[i];
-    bdqa.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    paramFromServiceMsg.putWupBuffer(arrayOfByte);
-  }
+  public long a;
+  public View a;
+  public long b;
   
-  private static void a(ToServiceMsg paramToServiceMsg)
+  public bkkh(View paramView, long paramLong1, long paramLong2)
   {
-    if (paramToServiceMsg.getWupBuffer() != null)
-    {
-      long l = paramToServiceMsg.getWupBuffer().length;
-      byte[] arrayOfByte = new byte[(int)l + 4];
-      bdqa.a(arrayOfByte, 0, 4L + l);
-      bdqa.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
-      paramToServiceMsg.putWupBuffer(arrayOfByte);
-    }
-  }
-  
-  public String[] getPreferSSOCommands()
-  {
-    return new String[] { "WeiyunV2Svc.TransCmd" };
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    a(paramFromServiceMsg);
-    if (paramIntent == null) {
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
-    for (;;)
-    {
-      bkke.a().a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent == null) {
-      QLog.e("WyServlet", 1, "onSend : req is null");
-    }
-    do
-    {
-      return;
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent == null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("WyServlet", 1, "onSend : cmd[" + paramIntent.getServiceCmd() + "]");
-      }
-      a(paramIntent);
-      paramPacket.setSSOCommand("WeiyunV2Svc.TransCmd");
-      paramPacket.putSendData(paramIntent.getWupBuffer());
-      paramPacket.setTimeout(paramIntent.getTimeout());
-      paramPacket.setAttributes(paramIntent.getAttributes());
-    } while (paramIntent.isNeedCallback());
-    paramPacket.setNoResponse();
-    return;
-    QLog.e("WyServlet", 1, "onSend : toMsg is null");
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

@@ -1,79 +1,32 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
-public class bcga
-  extends WebViewPlugin
+class bcga
+  implements bcme
 {
-  private boolean a(JSONObject paramJSONObject)
+  bcga(bcfy parambcfy) {}
+  
+  public void a()
   {
-    String str1 = paramJSONObject.optString("callback");
-    String str2 = paramJSONObject.optString("grayType");
-    paramJSONObject = paramJSONObject.optString("gc");
-    if (!str2.equals("dragonPrivilege")) {
-      return false;
-    }
-    aevz localaevz = (aevz)aoks.a().a(609);
-    if ((localaevz != null) && (localaevz.a(paramJSONObject))) {}
-    for (int i = 1;; i = 0) {
-      try
-      {
-        paramJSONObject = new JSONObject();
-        paramJSONObject.put(str2, i);
-        callJs(str1, new String[] { paramJSONObject.toString() });
-        return true;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return false;
-      }
+    this.a.a = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onStop!");
     }
   }
   
-  private boolean b(JSONObject paramJSONObject)
+  public void a(Process paramProcess)
   {
-    String str = paramJSONObject.optString("gc");
-    paramJSONObject = paramJSONObject.optString("text");
-    Activity localActivity = this.mRuntime.a();
-    Intent localIntent = aepi.a(new Intent(localActivity, SplashActivity.class), new int[] { 2 });
-    localIntent.addFlags(4194304);
-    localIntent.putExtra("uin", str);
-    localIntent.putExtra("uintype", 1);
-    localIntent.putExtra("chat_inputBarContent", paramJSONObject);
-    localActivity.startActivity(localIntent);
-    localActivity.overridePendingTransition(2130771990, 2130772295);
-    return true;
+    this.a.a = paramProcess;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer Start!");
+    }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void b()
   {
-    if (!"groupInteractionIcon".equals(paramString2)) {
-      return false;
+    this.a.a = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onDestroy!");
     }
-    try
-    {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-      if (paramJsBridgeListener == null) {
-        return true;
-      }
-    }
-    catch (JSONException paramJsBridgeListener)
-    {
-      paramJsBridgeListener.printStackTrace();
-      return false;
-    }
-    if (paramString3.equals("getGroupGrayFlag")) {
-      return a(paramJsBridgeListener);
-    }
-    if (paramString3.equals("jumpToAIOAndFillText")) {
-      return b(paramJsBridgeListener);
-    }
-    return true;
   }
 }
 

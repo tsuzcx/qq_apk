@@ -1,15 +1,18 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import aahi;
-import akwd;
+import aceh;
+import ampj;
 import android.os.Handler;
-import android.support.v4.view.PagerAdapter;
 import android.widget.RelativeLayout;
-import asnl;
+import ausv;
+import auud;
+import auuq;
+import auvc;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.gamecenter.view.QQGameIndicator;
 import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
 import java.util.ArrayList;
+import java.util.List;
 
 class QQGamePubAccountFragment$10
   implements Runnable
@@ -18,31 +21,34 @@ class QQGamePubAccountFragment$10
   
   public void run()
   {
-    synchronized (QQGamePubAccountFragment.jdField_a_of_type_ArrayOfByte)
+    synchronized (QQGamePubAccountFragment.a)
     {
       QQGamePubAccountFragment.a(this.this$0).add(0, this.a);
-      if (this.this$0.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter != null) {
-        this.this$0.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.notifyDataSetChanged();
+      auuq localauuq = auvc.a(this.a, this.this$0.getActivity());
+      QQGamePubAccountFragment.a(this.this$0).add(0, localauuq);
+      if (QQGamePubAccountFragment.a(this.this$0) != null) {
+        QQGamePubAccountFragment.a(this.this$0).notifyDataSetChanged();
       }
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator != null)
+      if (QQGamePubAccountFragment.a(this.this$0) != null)
       {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator.a();
-        int i = this.this$0.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.getCurrentItem();
-        this.this$0.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.setCurrentItem(i + 1);
-        this.this$0.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator.setCurrentIndex(i + 1);
+        QQGamePubAccountFragment.a(this.this$0).a();
+        int i = QQGamePubAccountFragment.a(this.this$0).getCurrentItem();
+        QQGamePubAccountFragment.a(this.this$0).setCurrentItem(i + 1);
+        QQGamePubAccountFragment.a(this.this$0).setCurrentIndex(i + 1);
       }
-      this.this$0.e();
+      this.this$0.c();
       QQGamePubAccountFragment.a(this.this$0).setVisibility(0);
       QQGamePubAccountFragment.a(this.this$0).sendEmptyMessageDelayed(0, 3000L);
-      QQGamePubAccountFragment.a(this.this$0).setTag(asnl.a(this.a));
-      aahi.a(akwd.a(), "769", "205030", "", "76901", "1", "160", new String[] { asnl.a(this.a), "", "8" });
+      QQGamePubAccountFragment.a(this.this$0).setTag(auud.a(this.a));
+      ??? = auud.a(this.a, 0);
+      aceh.a(ampj.a(), "769", "205030", (String)???, "76901", "1", "160", new String[] { auud.a(this.a), "", "8" });
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment.10
  * JD-Core Version:    0.7.0.1
  */

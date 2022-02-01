@@ -18,15 +18,15 @@ class TimelineView$ViewHolder
   {
     Object localObject2 = null;
     int i = getAdapterPosition();
-    if ((i == 0) || (i == TimelineView.access$1600(this.this$0) + 1))
+    if ((i == 0) || (i == TimelineView.access$1900(this.this$0) + 1))
     {
       ((ImageView)this.itemView).setImageBitmap(null);
       return;
     }
     Object localObject1 = localObject2;
-    if (TimelineView.access$2000(this.this$0) != null)
+    if (TimelineView.access$2400(this.this$0) != null)
     {
-      Bitmap localBitmap = TimelineView.access$2000(this.this$0).getCover(i - 1);
+      Bitmap localBitmap = TimelineView.access$2400(this.this$0).getCover(i - 1);
       localObject1 = localObject2;
       if (localBitmap != null)
       {
@@ -41,12 +41,12 @@ class TimelineView$ViewHolder
       ((ImageView)this.itemView).setImageBitmap(localObject1);
       return;
     }
-    ((ImageView)this.itemView).setImageDrawable(TimelineView.access$2100(this.this$0));
+    ((ImageView)this.itemView).setImageDrawable(TimelineView.access$2500(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.timeline.TimelineView.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

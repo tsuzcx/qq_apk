@@ -1,23 +1,50 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-public final class apec
-  implements Parcelable.Creator
+public abstract class apec
+  implements apen
 {
-  public IPSiteModel.ComicRich a(Parcel paramParcel)
+  public int a;
+  protected Context a;
+  protected AppInterface a;
+  protected int b;
+  
+  public apec()
   {
-    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
-    localComicRich.extCover = paramParcel.readString();
-    localComicRich.extName = paramParcel.readString();
-    localComicRich.extTitle = paramParcel.readString();
-    localComicRich.extUrl = paramParcel.readString();
-    return localComicRich;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public IPSiteModel.ComicRich[] a(int paramInt)
+  public int a()
   {
-    return new IPSiteModel.ComicRich[paramInt];
+    return 0;
+  }
+  
+  public void a(Context paramContext, AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void i() {}
+  
+  public void j()
+  {
+    this.jdField_a_of_type_Int = 5;
   }
 }
 

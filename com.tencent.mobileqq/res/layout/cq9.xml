@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:layout_gravity="center_vertical" android:id="@id/nms" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wyn" />
+    <com.tencent.mobileqq.widget.CircleBoarderImageView android:layout_gravity="center_vertical" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginLeft="2.0dip" android:src="@drawable/ddm" />
+</LinearLayout>

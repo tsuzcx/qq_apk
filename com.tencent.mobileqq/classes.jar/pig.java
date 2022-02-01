@@ -1,118 +1,67 @@
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import mqq.app.AppRuntime;
 
 public class pig
-  extends bead
+  implements AladdinConfigHandler
 {
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<TroopMemberApiService> jdField_a_of_type_JavaLangRefWeakReference;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  
-  public pig(AppRuntime paramAppRuntime, String paramString, Bundle paramBundle, TroopMemberApiService paramTroopMemberApiService)
+  public static int a(AppRuntime paramAppRuntime, int paramInt)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTroopMemberApiService);
-  }
-  
-  public void onCancel(beae parambeae)
-  {
-    super.onCancel(parambeae);
-    Object localObject = parambeae.a().getString("resId");
-    parambeae = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString))
+    int i = 1;
+    if (paramAppRuntime == null)
     {
-      ((qja)this.jdField_a_of_type_MqqAppAppRuntime.getManager(261)).b(this);
-      if (parambeae != null)
-      {
-        localObject = new Bundle();
-        ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
-        ((Bundle)localObject).putInt("retCode", -1);
-        ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
-        ((Bundle)localObject).putInt("rate", 0);
-        parambeae.a(107, (Bundle)localObject);
-        if (QLog.isDebugVersion()) {
-          QLog.d("ReadInJoySkinHelper", 4, "onCancel rsp:" + ((Bundle)localObject).toString());
-        }
-      }
+      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
+      return 0;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("readinjoy", 4, "SkinDownloadListener onCancel");
+    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
+    if (BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).getBoolean("channel_" + paramInt, false)) {}
+    for (paramInt = i;; paramInt = 0) {
+      return paramInt;
     }
   }
   
-  public void onDone(beae parambeae)
+  public static void a(AppRuntime paramAppRuntime, int paramInt)
   {
-    super.onDone(parambeae);
-    Object localObject = parambeae.a().getString("resId");
-    TroopMemberApiService localTroopMemberApiService = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString))
+    if (paramAppRuntime == null)
     {
-      ((qja)this.jdField_a_of_type_MqqAppAppRuntime.getManager(261)).b(this);
-      if (localTroopMemberApiService != null)
-      {
-        localObject = new Bundle();
-        if (parambeae.jdField_a_of_type_Int != 0) {
-          break label169;
-        }
-        ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
-        ((Bundle)localObject).putInt("retCode", 0);
-        ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
-        ((Bundle)localObject).putInt("rate", 100);
-        localTroopMemberApiService.a(107, (Bundle)localObject);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isDebugVersion()) {
-        QLog.d("ReadInJoySkinHelper", 4, "onDone rsp:" + ((Bundle)localObject).toString());
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("readinjoy", 4, "SkinDownloadListener onDone");
-      }
+      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
       return;
-      label169:
-      ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
-      ((Bundle)localObject).putInt("retCode", parambeae.jdField_a_of_type_Int);
-      ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
-      ((Bundle)localObject).putInt("rate", 0);
-      localTroopMemberApiService.a(107, (Bundle)localObject);
     }
+    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
+    BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).edit().putBoolean("channel_" + paramInt, true).apply();
   }
   
-  public void onProgress(beae parambeae)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super.onProgress(parambeae);
-    Object localObject = parambeae.a().getString("resId");
-    TroopMemberApiService localTroopMemberApiService = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString)) && (localTroopMemberApiService != null))
+    QLog.d("ChannelListDynamicOrder", 2, "[onReceiveConfig] " + paramString);
+    paramString = phv.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      localObject = new Bundle();
-      ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
-      ((Bundle)localObject).putInt("retCode", 0);
-      ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
-      int i = (int)(parambeae.b * 100L / parambeae.jdField_a_of_type_Long);
-      ((Bundle)localObject).putInt("rate", i);
-      if (i != 100) {
-        localTroopMemberApiService.a(107, (Bundle)localObject);
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if (TextUtils.equals("channel_list_dynamic_order_switch", str1)) {
+        bmqa.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(TextUtils.equals(str2, "1")));
       }
     }
+    return true;
   }
   
-  public boolean onStart(beae parambeae)
+  public void onWipeConfig(int paramInt)
   {
-    return super.onStart(parambeae);
+    bmqa.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pig
  * JD-Core Version:    0.7.0.1
  */

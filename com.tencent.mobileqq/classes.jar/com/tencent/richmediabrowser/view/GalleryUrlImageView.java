@@ -13,11 +13,10 @@ import android.util.AttributeSet;
 import com.tencent.image.URLDrawable;
 import com.tencent.richmediabrowser.listener.IGalleryImageListener;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
-import com.tencent.richmediabrowser.presenter.BrowserBasePresenter;
 import java.net.URL;
 
 public class GalleryUrlImageView
-  extends BrowserBaseAdapter.URLImageView2
+  extends BrowserURLImageView
 {
   private IGalleryImageListener imageListener;
   private boolean isOriginalImage = false;
@@ -138,12 +137,8 @@ public class GalleryUrlImageView
       if (((str == null) || (!str.equals("DISPLAY"))) && (this.imageListener != null)) {
         this.imageListener.onLoadSuccessed(this.mPosition, true);
       }
-      if (this.mImageInfo != null)
-      {
-        if (this.mImageInfo.orientation == -2) {
-          this.mImageInfo.orientation = paramURLDrawable.getExifOrientation();
-        }
-        BrowserBasePresenter.updateRotation(this, paramURLDrawable, this.mImageInfo.orientation);
+      if ((this.mImageInfo != null) && (this.mImageInfo.orientation == -2)) {
+        this.mImageInfo.orientation = paramURLDrawable.getExifOrientation();
       }
     }
   }
@@ -180,7 +175,7 @@ public class GalleryUrlImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.GalleryUrlImageView
  * JD-Core Version:    0.7.0.1
  */

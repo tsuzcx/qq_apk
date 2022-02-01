@@ -1,40 +1,24 @@
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.liveroom.LiveRoomGiftCallback;
 
 class ose
-  implements osi
+  implements LiveRoomGiftCallback
 {
-  ose(osd paramosd) {}
+  ose(osb paramosb) {}
   
-  public void a(osl paramosl)
+  public void onCall(int paramInt, String paramString)
   {
-    osd.a(this.a, 2);
-    osd localosd = this.a;
-    String str;
-    if (paramosl.jdField_a_of_type_JavaLangString == null)
+    if (paramInt == 7)
     {
-      str = "";
-      osd.a(localosd, str);
-      if (paramosl.jdField_a_of_type_Int != 1) {
-        break label78;
-      }
-      osd.b(this.a, 1);
-    }
-    for (;;)
-    {
-      if (osd.a(this.a) != null) {
-        osd.a(this.a).onPrepared();
-      }
-      return;
-      str = paramosl.jdField_a_of_type_JavaLangString;
-      break;
-      label78:
-      osd.b(this.a, 0);
+      QLog.d("KandianAdPandent", 2, "Vpng play completion!");
+      osb.a(this.a).sendEmptyMessage(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ose
  * JD-Core Version:    0.7.0.1
  */

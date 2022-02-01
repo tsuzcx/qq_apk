@@ -1,52 +1,82 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.ad.tangram.process.AdProcessManagerAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
 public class acjr
-  extends avvd
+  implements AdProcessManagerAdapter
 {
-  public SessionInfo a;
-  public WeakReference<QQAppInterface> a;
-  
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public String getMainProcessName()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed appRef==null");
-      }
+    return "com.tencent.mobileqq";
+  }
+  
+  public String getWebProcessName()
+  {
+    return "com.tencent.mobileqq:tool";
+  }
+  
+  public Boolean isOnMainProcess()
+  {
+    if (BaseApplicationImpl.getApplication() == null) {}
+    while (BaseApplicationImpl.getApplication().getRuntime() == null) {
+      return null;
     }
-    QQAppInterface localQQAppInterface;
+    return Boolean.valueOf(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface);
+  }
+  
+  public Boolean isOnWebProcess()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
     do
     {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed app == null || sessionInfo == nul");
-    return;
-    if (paramBoolean) {}
-    try
+      return null;
+      localObject = AdProcessManager.INSTANCE.getCurrentProcessName((Context)localObject);
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    return Boolean.valueOf(TextUtils.equals((CharSequence)localObject, AdProcessManager.INSTANCE.getWebProcessName()));
+  }
+  
+  public Boolean isWebProcessRunning()
+  {
+    Object localObject = isWebProcessRunningForPreloading();
+    if ((localObject != null) && (((Boolean)localObject).booleanValue())) {
+      return Boolean.valueOf(true);
+    }
+    localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    for (;;)
     {
-      paramBundle = (FromServiceMsg)paramBundle.getParcelable("KEY_FOR_AIO_STORY_FEED_DATA");
-      if (paramBundle != null)
-      {
-        paramBundle = zae.a(bdpd.b(paramBundle.getWupBuffer()));
-        if (paramBundle != null) {
-          acjm.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBundle);
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+      if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
+        try
+        {
+          boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+          return Boolean.valueOf(bool);
+        }
+        catch (Throwable localThrowable)
+        {
+          acqy.d("GdtProcessManagerAdapter", "isWebProcessRunning", localThrowable);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-      return;
     }
-    catch (Exception paramBundle)
+  }
+  
+  public Boolean isWebProcessRunningForPreloading()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
     {
-      QLog.e("UndealCount.QZoneObserver", 1, "call onGetNewestStoryFeed exception " + paramBundle);
-    }
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    } while ((localObject == null) || (!(localObject instanceof ToolAppRuntime)));
+    return Boolean.valueOf(bhqc.s);
   }
 }
 

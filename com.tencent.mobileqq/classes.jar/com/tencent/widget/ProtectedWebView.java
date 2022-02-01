@@ -13,22 +13,22 @@ public class ProtectedWebView
   public ProtectedWebView(Context paramContext)
   {
     super(paramContext);
-    a();
+    b();
   }
   
   public ProtectedWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    b();
   }
   
   public ProtectedWebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
+    b();
   }
   
-  private void a()
+  private void b()
   {
     if (Build.VERSION.SDK_INT >= 11)
     {
@@ -130,7 +130,7 @@ public class ProtectedWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.ProtectedWebView
  * JD-Core Version:    0.7.0.1
  */

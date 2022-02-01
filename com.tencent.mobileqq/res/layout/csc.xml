@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/mtd" android:padding="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cbf" />
+    <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nq4" android:visibility="gone" android:layout_width="68.0dip" android:layout_height="wrap_content" android:text="置顶" />
+    <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nmt" android:visibility="gone" android:layout_width="68.0dip" android:layout_height="36.0dip" android:text="沉底" />
+    <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nmq" android:visibility="gone" android:layout_width="67.0dip" android:layout_height="wrap_content" android:text="删除" />
+</LinearLayout>

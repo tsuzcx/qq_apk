@@ -1,78 +1,93 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLDecoder;
 
 public class bixt
-  extends RemoteCommand
 {
-  private SparseArray<List<bixu>> a = new SparseArray();
-  
-  public bixt(AppRuntime paramAppRuntime)
+  public static String a(String paramString)
   {
-    super("com.tencent.individuality.individualityremotecommand");
-    a(0, new bixv());
+    bisy.b("CommonUtils_", "genExistedAPKFileNameByUrl url = " + paramString);
+    Object localObject2 = null;
+    if (paramString.contains(".apk"))
+    {
+      localObject2 = paramString.trim().substring(paramString.lastIndexOf("/") + 1).trim();
+      localObject1 = localObject2;
+      if (((String)localObject2).contains("?")) {
+        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("?"));
+      }
+      localObject2 = localObject1;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        paramString = c(b((String)localObject1));
+        bisy.b("CommonUtils_", "genExistedAPKFileNameByUrl  fileName = " + paramString);
+        return paramString;
+      }
+    }
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject2 = GlobalUtil.calcMD5AsString(paramString);
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = Integer.toString(Math.abs(paramString.hashCode()));
+      }
+      localObject1 = (String)localObject1 + ".apk";
+    }
+    bisy.b("CommonUtils_", "genExistedAPKFileNameByUrl fileName == null, return fileName = " + (String)localObject1);
+    return localObject1;
   }
   
-  public boolean a(int paramInt, bixu parambixu)
+  public static void a(ImageView paramImageView, String paramString)
   {
-    List localList = (List)this.a.get(paramInt);
-    Object localObject = localList;
-    if (localList == null)
+    try
     {
-      localObject = new ArrayList();
-      this.a.put(paramInt, localObject);
+      paramString = new URL(paramString);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestHeight = 234;
+      localURLDrawableOptions.mRequestWidth = 234;
+      localURLDrawableOptions.mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130841815);
+      localURLDrawableOptions.mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130841815);
+      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      paramString.setAutoDownload(true);
+      paramString.setURLDrawableListener(new bixu(paramImageView));
+      paramString.startDownload();
+      paramImageView.setImageDrawable(paramString);
+      return;
     }
-    if (!((List)localObject).contains(parambixu)) {
-      return ((List)localObject).add(parambixu);
+    catch (MalformedURLException paramImageView)
+    {
+      paramImageView.printStackTrace();
     }
-    return false;
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public static boolean a()
   {
-    int i = paramBundle.getInt("com.tencent.individuality.individualityremotecommand.id", -1);
-    if (-1 != i)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("IndividualityRemoteCommand", 4, "invoke: dataInvoke=" + paramBundle.toString());
-      }
-      paramOnInvokeFinishLinstener = (List)this.a.get(i);
-      if (paramOnInvokeFinishLinstener == null) {
-        break label100;
-      }
-      paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      do
-      {
-        if (!paramOnInvokeFinishLinstener.hasNext()) {
-          break;
-        }
-      } while (!((bixu)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
+    return biwe.a().b();
+  }
+  
+  private static String b(String paramString)
+  {
+    if (paramString != null) {
+      return URLDecoder.decode(paramString);
     }
-    label100:
-    do
-    {
-      while (!paramOnInvokeFinishLinstener.hasNext())
-      {
-        do
-        {
-          return paramBundle;
-          paramOnInvokeFinishLinstener = (List)this.a.get(0);
-        } while (paramOnInvokeFinishLinstener == null);
-        paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      }
-    } while (!((bixu)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    return paramBundle;
+    return "";
+  }
+  
+  private static String c(String paramString)
+  {
+    return paramString.replace("?", "_").replace("*", "_").replace(" ", "_").replace("$", "_").replace("&", "_").replace("@", "_").replace("#", "_").replace("<", "_").replace(">", "_").replace("|", "_").replace(":", "_").replace("/", "_").replace("\\", "_").replace("\"", "_");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bixt
  * JD-Core Version:    0.7.0.1
  */

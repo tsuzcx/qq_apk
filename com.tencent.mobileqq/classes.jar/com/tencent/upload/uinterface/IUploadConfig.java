@@ -74,13 +74,15 @@ public abstract interface IUploadConfig
   
   public abstract int getWifiOperator();
   
+  public abstract long getWtAppId();
+  
   public abstract boolean isPictureNeedToCompress(String paramString);
   
   public abstract boolean isReleaseMode();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.uinterface.IUploadConfig
  * JD-Core Version:    0.7.0.1
  */

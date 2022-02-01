@@ -1,79 +1,38 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.graphics.Bitmap;
 
 public class yrp
-  extends oxe
+  extends ywd
 {
-  public yrp(TroopMemberApiService paramTroopMemberApiService) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public yrp(int paramInt, Bitmap paramBitmap)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("rowKey", paramString1);
-    localBundle.putString("action", paramString2);
-    localBundle.putInt("seq", paramInt);
-    localBundle.putString("processName", yqz.a());
-    this.a.a(137, localBundle);
+    super(paramInt, paramBitmap);
   }
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public static yrp a(yrp paramyrp, Bitmap paramBitmap)
   {
-    if (paramBoolean)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("rowKey", paramString1);
-      localBundle.putString("commentId", paramString2);
-      localBundle.putString("action", paramString3);
-      localBundle.putInt("seq", paramInt1);
-      localBundle.putInt("totalDeleteCount", paramInt2);
-      localBundle.putString("processName", yqz.a());
-      this.a.a(136, localBundle);
-    }
+    paramBitmap = new yrp(paramyrp.c, paramBitmap);
+    paramBitmap.jdField_a_of_type_Int = paramyrp.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Int = paramyrp.jdField_b_of_type_Int;
+    paramBitmap.jdField_a_of_type_JavaLangString = paramyrp.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_a_of_type_Boolean = paramyrp.jdField_a_of_type_Boolean;
+    paramBitmap.jdField_b_of_type_Boolean = paramyrp.jdField_b_of_type_Boolean;
+    return paramBitmap;
   }
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5)
+  public String toString()
   {
-    if (paramBoolean)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("rowKey", paramString1);
-      localBundle.putString("commentId", paramString2);
-      localBundle.putString("commentContent", paramString3);
-      localBundle.putInt("commentLevel", paramInt1);
-      localBundle.putString("action", paramString4);
-      localBundle.putString("parentCommentId", paramString5);
-      localBundle.putInt("seq", paramInt2);
-      localBundle.putString("processName", yqz.a());
-      this.a.a(134, localBundle);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
-  {
-    if (paramBoolean)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("rowKey", paramString1);
-      localBundle.putString("commentId", paramString2);
-      localBundle.putString("likeStatus", paramString3);
-      localBundle.putString("action", paramString4);
-      localBundle.putInt("seq", paramInt);
-      localBundle.putString("processName", yqz.a());
-      this.a.a(135, localBundle);
-    }
-  }
-  
-  public void g(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", paramInt);
-    localBundle.putString("processName", yqz.a());
-    this.a.a(138, localBundle);
+    return "PlayerContext{startTime=" + this.jdField_a_of_type_Int + ", endTime=" + this.jdField_b_of_type_Int + ", isMute=" + this.jdField_a_of_type_Boolean + ", isDeleted=" + this.jdField_b_of_type_Boolean + "} " + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yrp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
 import java.util.List;
 
-public abstract interface pgx
+public class pgx
 {
-  public abstract void a(SelectPositionModule.PositionData paramPositionData);
+  public int a;
+  public String a;
+  public List<Integer> a;
+  public String b;
+  public List<Integer> b;
+  public String c;
   
-  public abstract void a(List<pio> paramList);
+  public pgx(pgw parampgw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pgx
  * JD-Core Version:    0.7.0.1
  */

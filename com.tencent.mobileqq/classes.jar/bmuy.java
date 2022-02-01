@@ -1,60 +1,246 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.manager.MonitorManager;
+import cooperation.vip.pb.mobile_monitor_report.ExceptionReport;
+import cooperation.vip.pb.mobile_monitor_report.PkgExceptionReq;
+import cooperation.vip.pb.mobile_monitor_report.PkgRsp;
+import cooperation.vip.pb.mobile_monitor_report.PkgTraceReq;
+import cooperation.vip.pb.mobile_monitor_report.TraceReport;
+import cooperation.vip.pb.mobile_monitor_report.UserCommReport;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import tencent.im.new_year_2014.Unisso.UniSsoServerReq;
+import tencent.im.new_year_2014.Unisso.UniSsoServerReqComm;
+import tencent.im.new_year_2014.Unisso.UniSsoServerRsp;
 
 public class bmuy
-  extends bmux
+  extends MSFServlet
 {
-  protected int a;
-  protected int b;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  protected int c;
-  protected int d;
-  protected int e;
-  protected int f;
-  
-  public bmuy(GLTextureView paramGLTextureView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  private static int a()
   {
-    super(paramGLTextureView, new int[] { 12324, paramInt1, 12323, paramInt2, 12322, paramInt3, 12321, paramInt4, 12325, paramInt5, 12326, paramInt6, 12344 });
-    this.a = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.e = paramInt5;
-    this.f = paramInt6;
-  }
-  
-  private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt1, int paramInt2)
-  {
-    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt1, this.jdField_b_of_type_ArrayOfInt)) {
-      paramInt2 = this.jdField_b_of_type_ArrayOfInt[0];
-    }
-    return paramInt2;
-  }
-  
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
-  {
-    int j = paramArrayOfEGLConfig.length;
-    int i = 0;
-    while (i < j)
+    switch (bgnt.b(BaseApplicationImpl.getContext()))
     {
-      EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
-      int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325, 0);
-      int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326, 0);
-      if ((k >= this.e) && (m >= this.f))
+    default: 
+      return 1;
+    case 1: 
+      return 3;
+    case 4: 
+      return 4;
+    case 3: 
+      return 5;
+    }
+    return 6;
+  }
+  
+  private static mobile_monitor_report.UserCommReport a()
+  {
+    mobile_monitor_report.UserCommReport localUserCommReport = new mobile_monitor_report.UserCommReport();
+    localUserCommReport.qua.set(String.valueOf(blru.a()));
+    localUserCommReport.imei.set(String.valueOf(biuf.c()));
+    String str = aoor.b();
+    localUserCommReport.city_code.set(str);
+    localUserCommReport.mobile_type.set(Build.MODEL);
+    localUserCommReport.net_type.set(a());
+    localUserCommReport.from_id.set(2);
+    return localUserCommReport;
+  }
+  
+  private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    byte[] arrayOfByte = null;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bgva.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    mobile_monitor_report.PkgRsp localPkgRsp = new mobile_monitor_report.PkgRsp();
+    int i = paramFromServiceMsg.getResultCode();
+    if (i == 1000) {
+      try
       {
-        k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324, 0);
-        m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323, 0);
-        int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322, 0);
-        int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321, 0);
-        if ((k == this.a) && (m == this.jdField_b_of_type_Int) && (n == this.c) && (i1 == this.d)) {
-          return localEGLConfig;
+        paramFromServiceMsg = new Unisso.UniSsoServerRsp();
+        paramFromServiceMsg.mergeFrom(arrayOfByte);
+        long l = paramFromServiceMsg.ret.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("MonitorServlet", 1, new Object[] { " unissoResult=", Long.valueOf(l) });
+        }
+        localPkgRsp.mergeFrom(paramFromServiceMsg.rspdata.get().toByteArray());
+        i = localPkgRsp.ret.get();
+        if (i == 0)
+        {
+          MonitorManager.a().a(localPkgRsp.mult_cnt.get(), localPkgRsp.mult_delay.get());
+          if (QLog.isColorLevel()) {
+            QLog.d("MonitorServlet", 2, "onReceive ret " + i);
+          }
+          notifyObserver(paramIntent, 1000, true, new Bundle(), bmux.class);
+          return;
+        }
+        QLog.d("MonitorServlet", 2, "onReceive ret " + i);
+        notifyObserver(paramIntent, 1000, false, new Bundle(), bmux.class);
+        return;
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        QLog.e("MonitorServlet", 2, "onReceive exception " + paramFromServiceMsg);
+        notifyObserver(paramIntent, 1000, false, new Bundle(), bmux.class);
+        return;
+      }
+    }
+    QLog.e("MonitorServlet", 2, "onReceive result fail with result " + i);
+    notifyObserver(paramIntent, 1000, false, new Bundle(), bmux.class);
+  }
+  
+  public static void a(List<mobile_monitor_report.ExceptionReport> paramList)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    mobile_monitor_report.PkgExceptionReq localPkgExceptionReq = new mobile_monitor_report.PkgExceptionReq();
+    localPkgExceptionReq.exception_report.set(paramList);
+    paramList = a();
+    localPkgExceptionReq.user_comm_report.set(paramList);
+    paramList = new NewIntent(localAppRuntime.getApplication(), bmuy.class);
+    Unisso.UniSsoServerReq localUniSsoServerReq = new Unisso.UniSsoServerReq();
+    Unisso.UniSsoServerReqComm localUniSsoServerReqComm = new Unisso.UniSsoServerReqComm();
+    localUniSsoServerReqComm.platform.set(109L);
+    localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
+    localUniSsoServerReqComm.mqqver.set("8.4.1");
+    localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
+    localUniSsoServerReq.reqdata.set(ByteStringMicro.copyFrom(localPkgExceptionReq.toByteArray()));
+    paramList.putExtra("data", bguc.a(localUniSsoServerReq.toByteArray()));
+    paramList.putExtra("cmd", "MobileReport.ExceptionReport");
+    localAppRuntime.startServlet(paramList);
+  }
+  
+  private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    byte[] arrayOfByte = null;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bgva.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    mobile_monitor_report.PkgRsp localPkgRsp = new mobile_monitor_report.PkgRsp();
+    int i = paramFromServiceMsg.getResultCode();
+    if (i == 1000) {
+      try
+      {
+        paramFromServiceMsg = new Unisso.UniSsoServerRsp();
+        paramFromServiceMsg.mergeFrom(arrayOfByte);
+        long l = paramFromServiceMsg.ret.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("MonitorServlet", 1, new Object[] { " unissoResult=", Long.valueOf(l) });
+        }
+        localPkgRsp.mergeFrom(paramFromServiceMsg.rspdata.get().toByteArray());
+        i = localPkgRsp.ret.get();
+        if (i == 0)
+        {
+          MonitorManager.a().a(localPkgRsp.mult_cnt.get(), localPkgRsp.mult_delay.get());
+          if (QLog.isColorLevel()) {
+            QLog.d("MonitorServlet", 2, "onReceive ret " + i);
+          }
+          notifyObserver(paramIntent, 1000, true, new Bundle(), bmux.class);
+          return;
+        }
+        QLog.d("MonitorServlet", 2, "onReceive ret " + i);
+        notifyObserver(paramIntent, 1000, false, new Bundle(), bmux.class);
+        return;
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        QLog.e("MonitorServlet", 2, "onReceive exception " + paramFromServiceMsg);
+        notifyObserver(paramIntent, 1000, false, new Bundle(), bmux.class);
+        return;
+      }
+    }
+    QLog.e("MonitorServlet", 2, "onReceive result fail with result " + i);
+    notifyObserver(paramIntent, 1000, false, new Bundle(), bmux.class);
+  }
+  
+  public static void b(List<mobile_monitor_report.TraceReport> paramList)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    mobile_monitor_report.PkgTraceReq localPkgTraceReq = new mobile_monitor_report.PkgTraceReq();
+    localPkgTraceReq.trace_report.set(paramList);
+    paramList = a();
+    localPkgTraceReq.user_comm_report.set(paramList);
+    paramList = new NewIntent(localAppRuntime.getApplication(), bmuy.class);
+    Unisso.UniSsoServerReq localUniSsoServerReq = new Unisso.UniSsoServerReq();
+    Unisso.UniSsoServerReqComm localUniSsoServerReqComm = new Unisso.UniSsoServerReqComm();
+    localUniSsoServerReqComm.platform.set(109L);
+    localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
+    localUniSsoServerReqComm.mqqver.set("8.4.1");
+    localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
+    localUniSsoServerReq.reqdata.set(ByteStringMicro.copyFrom(localPkgTraceReq.toByteArray()));
+    paramList.putExtra("data", bguc.a(localUniSsoServerReq.toByteArray()));
+    paramList.putExtra("cmd", "MobileReport.TraceReport");
+    localAppRuntime.startServlet(paramList);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MonitorServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    }
+    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
+    String str2;
+    label157:
+    do
+    {
+      do
+      {
+        return;
+        str2 = paramFromServiceMsg.getServiceCmd();
+      } while (str2 == null);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        boolean bool = paramFromServiceMsg.isSuccess();
+        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
+        if (!bool) {
+          break label157;
         }
       }
-      i += 1;
+      for (String str1 = "";; str1 = "not")
+      {
+        QLog.d("MonitorServlet", 2, str1 + " success");
+        if (!str2.equals("MobileReport.ExceptionReport")) {
+          break;
+        }
+        a(paramIntent, paramFromServiceMsg);
+        return;
+      }
+    } while (!str2.equals("MobileReport.TraceReport"));
+    b(paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    String str = paramIntent.getStringExtra("cmd");
+    long l = paramIntent.getLongExtra("timeout", 10000L);
+    paramPacket.setSSOCommand(str);
+    paramPacket.setTimeout(l);
+    paramPacket.putSendData(arrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("MonitorServlet", 2, "onSend exit cmd=" + str);
     }
-    return null;
   }
 }
 

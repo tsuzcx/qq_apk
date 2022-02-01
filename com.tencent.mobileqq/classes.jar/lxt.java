@@ -1,43 +1,29 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class lxt
+class lxt
+  implements DialogInterface.OnClickListener
 {
-  public Bitmap a;
-  public Rect a;
+  lxt(lxs paramlxs, long paramLong) {}
   
-  public lxt(Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    if (this.jdField_a_of_type_Lxs.jdField_a_of_type_ComTencentAvShareAVSchema.a("checkQAVPermission.callback", this.jdField_a_of_type_Long)) {
+      return;
+    }
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      this.jdField_a_of_type_AndroidGraphicsRect.bottom = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      this.jdField_a_of_type_Lxs.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Lxs.jdField_a_of_type_JavaLangString);
+      return;
     }
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-  }
-  
-  public void a(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, paramRect, paramPaint);
-    }
+    ChatActivityUtils.a(this.jdField_a_of_type_Lxs.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lxu(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lxt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class admm
-  extends alvn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public admm(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public admm(AssistantSettingActivity paramAssistantSettingActivity, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sticker_switch_" + this.jdField_a_of_type_JavaLangString, paramBoolean).commit();
+    if ((paramBoolean) && (EmojiStickerManager.a())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      EmojiStickerManager.e = bool;
+      if (EmojiStickerManager.e) {
+        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app.c(), "Stick", "ClickSwitchOn", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      }
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
-    if ((paramBoolean1) && (paramInt == 64)) {
-      this.a.a(paramBoolean2);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
-    }
-    if (!paramBoolean1) {
-      this.a.a(2131719884, 1);
-    }
-    this.a.a(paramBoolean2);
   }
 }
 

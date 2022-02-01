@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.weaknet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import srq;
+import ttf;
 
 public final class ReadInJoyPTSCostHelper$1
   implements Runnable
@@ -12,17 +12,17 @@ public final class ReadInJoyPTSCostHelper$1
   {
     synchronized ()
     {
-      Iterator localIterator = new ArrayList(srq.a()).iterator();
+      Iterator localIterator = new ArrayList(ttf.a()).iterator();
       if (localIterator.hasNext()) {
-        srq.a((String)localIterator.next());
+        ttf.a((String)localIterator.next());
       }
     }
-    srq.a().clear();
+    ttf.a().clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.weaknet.ReadInJoyPTSCostHelper.1
  * JD-Core Version:    0.7.0.1
  */

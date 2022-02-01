@@ -1,129 +1,92 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.data.QidianCorpInfo;
-import com.tencent.qidian.data.QidianExternalInfo;
-import com.tencent.qidian.data.QidianProfileUiInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import eipc.EIPCResult;
 
 public class bfys
-  extends bfzo
+  extends QIPCModule
 {
-  public bfys(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public static bfys a;
+  private bfyu a;
   
-  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  private bfys()
   {
-    super.b(paramBoolean, paramHashMap);
-    this.a.a();
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      j = 0;
-      i = j;
-      if (paramHashMap.containsKey("external"))
-      {
-        i = j;
-        if (paramHashMap.get("external") != null)
-        {
-          localQidianExternalInfo = (QidianExternalInfo)paramHashMap.get("external");
-          if (!this.a.jdField_a_of_type_Awqt.a.a.equals(localQidianExternalInfo.uin)) {
-            if (QLog.isColorLevel()) {
-              QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo not current uin");
-            }
-          }
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        QidianExternalInfo localQidianExternalInfo;
-        return;
-        int i = j;
-        if (!localQidianExternalInfo.equals(this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo))
-        {
-          this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = localQidianExternalInfo;
-          i = 1;
-        }
-        int j = i;
-        if (paramHashMap.containsKey("ConfigGroupInfo"))
-        {
-          j = i;
-          if (paramHashMap.get("ConfigGroupInfo") != null)
-          {
-            paramHashMap = (QidianProfileUiInfo)paramHashMap.get("ConfigGroupInfo");
-            j = i;
-            if (!paramHashMap.equals(QidianProfileCardActivity.a(this.a)))
-            {
-              QidianProfileCardActivity.a(this.a, paramHashMap);
-              j = 1;
-            }
-          }
-        }
-        if (j != 0)
-        {
-          this.a.c(6);
-          this.a.b();
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo not change");
-      return;
-    }
-    QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo fail");
+    super("Module_CheckInServer");
   }
   
-  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public static bfys a()
   {
-    super.e(paramBoolean, paramHashMap);
-    this.a.a();
-    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null) && (paramHashMap.containsKey("corp")) && (paramHashMap.get("corp") != null) && (paramHashMap.containsKey("ConfigGroupInfo")) && (paramHashMap.get("ConfigGroupInfo") != null))
+    if (jdField_a_of_type_Bfys == null) {}
+    try
     {
-      localQidianExternalInfo = (QidianExternalInfo)paramHashMap.get("external");
-      localQidianCorpInfo = (QidianCorpInfo)paramHashMap.get("corp");
-      paramHashMap = (QidianProfileUiInfo)paramHashMap.get("ConfigGroupInfo");
-      if (this.a.jdField_a_of_type_Awqt.a.a.equals(localQidianExternalInfo.uin)) {
-        if ((!localQidianExternalInfo.equals(this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo)) || (!localQidianCorpInfo.equals(QidianProfileCardActivity.a(this.a))) || (!paramHashMap.equals(QidianProfileCardActivity.a(this.a))))
-        {
-          i = 1;
-          if (i == 0) {
-            break label230;
-          }
-          this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = localQidianExternalInfo;
-          QidianProfileCardActivity.a(this.a, localQidianCorpInfo);
-          QidianProfileCardActivity.a(this.a, paramHashMap);
-          this.a.c(1);
-          this.a.b();
-        }
+      if (jdField_a_of_type_Bfys == null) {
+        jdField_a_of_type_Bfys = new bfys();
+      }
+      return jdField_a_of_type_Bfys;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_Bfyu != null)
+    {
+      this.jdField_a_of_type_Bfyu.d();
+      this.jdField_a_of_type_Bfyu = null;
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Module_CheckInServer", 2, "notifyUploadResult callbackId" + paramInt + ", data = " + paramBundle.toString());
+    }
+    paramBundle = EIPCResult.createResult(0, paramBundle);
+    a();
+    callbackResult(paramInt, paramBundle);
+  }
+  
+  public void onAccountChange()
+  {
+    super.onAccountChange();
+    a();
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Module_CheckInServer", 2, "action = " + paramString + ", params = " + paramBundle + ",callbackId=" + paramInt);
+    }
+    a();
+    bfyr localbfyr;
+    if (("ACTION_UPLOAD_PIC".equals(paramString)) || ("ACTION_UPLOAD_VIDEO".equals(paramString)))
+    {
+      localbfyr = new bfyr();
+      if ("ACTION_UPLOAD_PIC".equals(paramString))
+      {
+        localbfyr.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
+        paramString = new bfyt(localbfyr, paramInt);
+        this.jdField_a_of_type_Bfyu = paramString;
+        paramString.a();
       }
     }
-    label230:
-    while (!QLog.isColorLevel())
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            QidianExternalInfo localQidianExternalInfo;
-            QidianCorpInfo localQidianCorpInfo;
-            return;
-            int i = 0;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QidianProfileCardActivity", 2, "onGetQidianUserDetailInfo not change");
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianProfileCardActivity", 2, "onGetQidianUserDetailInfo not current uin");
-      return;
+      return null;
+      localbfyr.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
+      localbfyr.b = paramBundle.getString("BUNDLE_NAME_COVER");
+      localbfyr.jdField_a_of_type_Long = paramBundle.getLong("BUNDLE_NAME_VIDEOTIME");
+      paramString = new bfyw(localbfyr, paramInt);
+      break;
+      if ("ACTION_CANCEL".equals(paramString)) {
+        a();
+      }
     }
-    QLog.d("QidianProfileCardActivity", 2, "onGetQidianUserDetailInfo fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfys
  * JD-Core Version:    0.7.0.1
  */

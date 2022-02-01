@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import android.text.SpannableString;
 import android.text.TextUtils;
-import bamb;
-import bdrv;
+import bdnf;
+import bgwv;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.widget.MultiImageTextView;
@@ -24,19 +24,19 @@ class ChatSettingForTroop$42$1
         if (!TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopColorNick)) {
           break label96;
         }
-        localFormSimpleItem.setRightText(this.a.this$0.getString(2131698006));
+        localFormSimpleItem.setRightText(this.a.this$0.getString(2131696852));
       }
     }
     return;
     label96:
-    SpannableString localSpannableString = new bamb(this.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopColorNick, 16).a();
+    SpannableString localSpannableString = new bdnf(this.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopColorNick, 16).a();
     localFormSimpleItem.setRightText(localSpannableString);
-    bdrv.a(this.a.this$0.app, localFormSimpleItem.a(), localSpannableString);
+    bgwv.a(this.a.this$0.app, localFormSimpleItem.a(), localSpannableString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.42.1
  * JD-Core Version:    0.7.0.1
  */

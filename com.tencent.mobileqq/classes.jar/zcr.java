@@ -1,149 +1,70 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.text.TextUtils;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
-import com.tencent.biz.viewplugin.ViewPluginManager.1;
-import com.tencent.biz.viewplugin.ViewPluginManager.3;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.util.HashMap;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.widget.XEditTextEx;
+import com.tribe.async.dispatch.IEventReceiver;
 
 public class zcr
+  implements IEventReceiver
 {
-  SharedPreferences a;
-  public BaseActivity a;
-  public ClassLoader a;
+  public View.OnClickListener a;
+  public final View a;
+  public ImageButton a;
+  public TextView a;
+  public XEditTextEx a;
   public String a;
-  public HashMap<String, Class> a;
-  public zcm a;
-  public String b;
-  String c = null;
-  public String d;
+  public zcu a;
   
-  public zcr(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3)
+  public zcr(View paramView)
   {
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.c = (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getFilesDir() + paramString3);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getPreferences(0);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a(paramView);
   }
   
-  public static boolean a(View paramView, String paramString)
+  private void a(View paramView)
   {
-    if ((paramView == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    try
-    {
-      Method localMethod = paramView.getClass().getMethod("setData", new Class[] { String.class });
-      localMethod.setAccessible(true);
-      localMethod.invoke(paramView, new Object[] { paramString });
-      return true;
-    }
-    catch (Exception paramView)
-    {
-      ThreadManager.post(new ViewPluginManager.1(paramView), 2, null, true);
-    }
-    return false;
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131363226));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364879));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)paramView.findViewById(2131365835));
+    paramView = new SpannableString(anni.a(2131709568));
+    paramView.setSpan(new AbsoluteSizeSpan(14, true), 0, paramView.length(), 33);
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(paramView);
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(new zct(this));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new zcs(this));
   }
   
-  public View a(String paramString)
+  public int a()
   {
-    if (this.jdField_a_of_type_JavaLangClassLoader != null) {}
-    for (;;)
-    {
-      try
-      {
-        Class localClass = this.jdField_a_of_type_JavaLangClassLoader.loadClass(paramString);
-        if (localClass == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ViewPluginManager", 2, "plugin:" + this.b + " not find view:" + paramString);
-          }
-          return null;
-        }
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        localObject = null;
-        continue;
-        if (this.jdField_a_of_type_Zcm == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ViewPluginManager", 2, "plugin:" + this.b + " plugin context is null");
-          }
-          return null;
-        }
-        try
-        {
-          paramString = (View)localObject.getConstructor(new Class[] { Context.class }).newInstance(new Object[] { this.jdField_a_of_type_Zcm });
-          return paramString;
-        }
-        catch (Exception paramString)
-        {
-          return null;
-        }
-      }
-      Object localObject = null;
-    }
+    return this.jdField_a_of_type_AndroidViewView.getVisibility();
   }
   
-  public String a(String paramString)
+  public void a(int paramInt)
   {
-    return "sp_key_plugin_view_version_" + paramString;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
   }
   
-  public void a()
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    ThreadManager.post(new ViewPluginManager.3(this), 8, null, true);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(paramOnClickListener);
   }
   
-  public void a(String paramString)
+  public void b(View.OnClickListener paramOnClickListener)
   {
-    paramString = a(paramString);
-    if (paramString == null) {
-      return;
-    }
-    try
-    {
-      Method localMethod = paramString.getClass().getMethod("destory", new Class[0]);
-      localMethod.setAccessible(true);
-      localMethod.invoke(paramString, new Object[0]);
-      return;
-    }
-    catch (Exception paramString) {}
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
   }
   
-  public void a(nbt paramnbt, boolean paramBoolean)
+  public boolean isValidate()
   {
-    String str = "http://" + this.b + "?_bid=" + this.jdField_a_of_type_JavaLangString;
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginManager", 2, "loadPlugin:" + this.b + "mBid:" + this.jdField_a_of_type_JavaLangString);
-    }
-    nbv.a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getLongAccountUin() % 10L == 6L)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      nbv.a = bool;
-      a();
-      Context localContext = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext();
-      long l = System.currentTimeMillis();
-      if ((!nbv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), str, new zcs(this, l, localContext, paramBoolean, paramnbt))) && (QLog.isColorLevel())) {
-        QLog.i("ViewPluginManager", 2, "plugin:" + this.b + " transToLocalUrl: return false");
-      }
-      return;
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zcr
  * JD-Core Version:    0.7.0.1
  */

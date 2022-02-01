@@ -1,15 +1,15 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
-public class bazf
+class bazf
+  implements DialogInterface.OnClickListener
 {
-  baze a;
+  bazf(bayw parambayw) {}
   
-  protected Bitmap b(Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a == null) {
-      return paramBitmap;
-    }
-    return this.a.a(paramBitmap);
+    this.a.a.pauseDownload();
   }
 }
 

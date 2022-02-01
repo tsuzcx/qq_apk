@@ -1,21 +1,48 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.app.Activity;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+import java.util.ArrayList;
 
-class alja
-  implements Comparator<ApolloActionData>
+public class alja
 {
-  alja(aliw paramaliw) {}
-  
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
-  {
-    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
-      return 0;
-    }
-    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
-      return 1;
-    }
-    return -1;
-  }
+  public double a;
+  public int a;
+  public alip a;
+  public Activity a;
+  public QzoneVerticalVideoTopicInfo a;
+  public String a;
+  public ArrayList<String> a;
+  public boolean a;
+  public double b;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public boolean e;
+  public int f;
+  public String f;
+  public boolean f;
+  public int g;
+  public String g;
+  public boolean g;
+  public int h;
+  public String h;
+  public boolean h;
+  public int i;
+  public String i;
+  public boolean i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public int m;
 }
 
 

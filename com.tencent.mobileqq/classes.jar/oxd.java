@@ -1,43 +1,26 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oxd
-  implements Manager
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initChooseCommentTypeClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxd
+  implements owp
 {
-  private AppInterface a;
-  
-  public oxd(AppInterface paramAppInterface)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
   {
-    QLog.i("ReadInJoyLogicManager", 1, "[ReadInJoyLogicManager] constructed.");
-    this.a = paramAppInterface;
-    a();
-  }
-  
-  public owy a()
-  {
-    return owy.a();
-  }
-  
-  public void a()
-  {
-    osv.a();
-    owy.a().a(this.a);
-  }
-  
-  public void b()
-  {
-    owy.a().a(false);
-  }
-  
-  public void onDestroy()
-  {
-    b();
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oxe(parampan));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oxd
  * JD-Core Version:    0.7.0.1
  */

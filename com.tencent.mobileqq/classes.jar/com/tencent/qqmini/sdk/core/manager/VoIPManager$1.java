@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.core.manager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 class VoIPManager$1
   extends BroadcastReceiver
@@ -59,7 +59,7 @@ class VoIPManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.VoIPManager.1
  * JD-Core Version:    0.7.0.1
  */

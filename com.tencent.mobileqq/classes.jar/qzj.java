@@ -1,56 +1,78 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.5;
+import android.view.View;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.AbsListView;
 
-public class qzj
-  implements bckx
+class qzj
+  implements bkhe
 {
-  public qzj(ReadInJoyWebDataManager.5 param5) {}
+  int jdField_a_of_type_Int = 0;
+  View jdField_a_of_type_AndroidViewView = null;
+  int jdField_b_of_type_Int = 0;
+  View jdField_b_of_type_AndroidViewView = null;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  qzj(qzi paramqzi, AbsListView paramAbsListView, ChatMessage paramChatMessage) {}
+  
+  private void a()
   {
-    if (paramJSONObject != null)
+    int i;
+    int j;
+    label84:
+    PressEffectImageView localPressEffectImageView;
+    if ((this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0) != null) && ("RIJRedPacketStruttingMsgItemBuilder".equals(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0).getTag(2131369971))))
     {
-      this.a.this$0.a(this.a.b, Integer.toString(qzi.b));
-      try
-      {
-        if ((this.a.jdField_a_of_type_Qzn != null) && ((this.a.jdField_a_of_type_Qzn instanceof qzn))) {
-          this.a.jdField_a_of_type_Qzn.a(paramJSONObject);
-        }
-        paramBundle = paramJSONObject.toString();
-        qzi.a(this.a.this$0, this.a.b, paramBundle);
-        if (this.a.jdField_a_of_type_OrgJsonJSONObject != null)
-        {
-          this.a.jdField_a_of_type_OrgJsonJSONObject.put("data", paramBundle);
-          this.a.this$0.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject.toString(), "", this.a.jdField_a_of_type_OrgJsonJSONObject);
-        }
+      i = 1;
+      if ((this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1) == null) || (!"RIJRedPacketStruttingMsgItemBuilder".equals(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1).getTag(2131369971)))) {
+        break label260;
       }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:storeParams putData JSONException :" + paramBundle);
-          }
-        }
+      j = 1;
+      if (((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView == this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0)) || (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0) == null) || (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0).getTop() >= this.jdField_a_of_type_Int))) || (i == 0)) {
+        break label265;
       }
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result :" + paramJSONObject);
+      QLog.d("RIJRedPacketStruttingMsgItemBuilder", 1, "qqqqqqqqqqqqqqqqqqqqqqqqqqq 1");
+      localPressEffectImageView = (PressEffectImageView)this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0).findViewById(2131375974);
+      qzi.a(this.jdField_a_of_type_Qzi, localPressEffectImageView);
+      qzi.a(this.jdField_a_of_type_Qzi, (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(0);
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1);
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewView.getTop();
+      }
+      if (this.jdField_b_of_type_AndroidViewView != null) {
+        this.jdField_b_of_type_Int = this.jdField_b_of_type_AndroidViewView.getTop();
+      }
+      return;
+      i = 0;
+      break;
+      label260:
+      j = 0;
+      break label84;
+      label265:
+      if (((this.jdField_b_of_type_AndroidViewView == null) || ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1)) && (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1) != null) && (this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1).getTop() > this.jdField_b_of_type_Int))) && (j != 0))
+      {
+        QLog.d("RIJRedPacketStruttingMsgItemBuilder", 1, "qqqqqqqqqqqqqqqqqqqqqqqqqqq 2");
+        localPressEffectImageView = (PressEffectImageView)this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildCount() - 1).findViewById(2131375974);
+        qzi.a(this.jdField_a_of_type_Qzi, localPressEffectImageView);
+        qzi.a(this.jdField_a_of_type_Qzi, (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
       }
     }
-    do
-    {
-      return;
-      this.a.this$0.a(this.a.b, Integer.toString(qzi.a));
-    } while (!QLog.isColorLevel());
-    QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result null");
   }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    a();
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qzj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,36 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+
 public class ausc
+  extends ausb
 {
-  public final long a;
-  public final String a;
-  public final boolean a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
+  private ImageView a;
   
-  public ausc(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
+  public ausc(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramContext, paramView, paramViewGroup);
+    this.a = ((ImageView)paramView.findViewById(2131363262));
+  }
+  
+  public void a(FeedsItemData paramFeedsItemData)
+  {
+    this.itemView.setBackgroundDrawable(auud.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130847064);
+    localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130847064);
+    this.a.setImageDrawable(URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions));
+    this.a.setOnClickListener(new ausd(this, paramFeedsItemData));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ausc
  * JD-Core Version:    0.7.0.1
  */

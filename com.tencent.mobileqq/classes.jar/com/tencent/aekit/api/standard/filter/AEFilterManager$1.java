@@ -1,30 +1,46 @@
 package com.tencent.aekit.api.standard.filter;
 
-import com.tencent.ttpic.baseutils.log.LogUtils;
+import android.text.TextUtils;
+import com.tencent.ttpic.openapi.listener.IDetectorSettingListener;
+import java.util.HashMap;
 
 class AEFilterManager$1
-  implements Runnable
+  implements IDetectorSettingListener
 {
   AEFilterManager$1(AEFilterManager paramAEFilterManager) {}
   
-  public void run()
+  public void disableDetector(String[] paramArrayOfString)
   {
-    if (AEFilterManager.access$000(this.this$0) == null)
-    {
-      AEFilterManager.access$002(this.this$0, new AEFaceTransform());
-      LogUtils.i(AEFilterManager.access$100(), "create faceTransform action done");
+    if (paramArrayOfString == null) {
+      return;
     }
-    if ((AEFilterManager.access$200(this.this$0)) && (AEFilterManager.access$000(this.this$0) != null))
+    int j = paramArrayOfString.length;
+    int i = 0;
+    label10:
+    String str;
+    if (i < j)
     {
-      LogUtils.i(AEFilterManager.access$100(), "create faceTransform action done, but GLThread has exited, so do cleaning");
-      AEFilterManager.access$000(this.this$0).clear();
-      AEFilterManager.access$002(this.this$0, null);
+      str = paramArrayOfString[i];
+      if (!TextUtils.isEmpty(str)) {
+        break label35;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label10;
+      break;
+      label35:
+      if (AEFilterManager.access$000(this.this$0) == null) {
+        AEFilterManager.access$002(this.this$0, new HashMap());
+      }
+      AEFilterManager.access$000(this.this$0).put(str, Boolean.valueOf(false));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AEFilterManager.1
  * JD-Core Version:    0.7.0.1
  */

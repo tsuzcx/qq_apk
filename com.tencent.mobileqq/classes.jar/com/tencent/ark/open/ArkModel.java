@@ -30,31 +30,26 @@ public class ArkModel
     {
       bool1 = true;
       if (paramInt != -2) {
-        break label117;
+        break label134;
       }
     }
-    String str1;
-    String str2;
-    String str3;
-    label117:
+    label134:
     for (boolean bool2 = true;; bool2 = false)
     {
-      str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
-      str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
-      str3 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
+      String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
+      String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
+      String str3 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
       ArkUtil.createDir(str1);
       ArkUtil.createDir(str2);
       ArkUtil.createDir(str3);
-      if (!TextUtils.isEmpty(paramString1)) {
-        break label123;
+      if (TextUtils.isEmpty(paramString1)) {
+        ENV.logE("ArkApp.ArkModel", String.format("ArkTemp.loadArkApp app=null mAppInfo.appName=%s, mAppInfo.appView=%s, appPath=%s", new Object[] { this.mAppInfo.name, this.mAppInfo.view, paramString1 }));
       }
-      ENV.logE("ArkApp.ArkModel", String.format("ArkTemp.loadArkApp app=null mAppInfo.appName=%s, mAppInfo.appView=%s, appPath=%s", new Object[] { this.mAppInfo.name, this.mAppInfo.view, paramString1 }));
+      doLoadArkApp(paramString1, str1, str2, str3, bool1, bool2, paramInt, paramString2);
       return;
       bool1 = false;
       break;
     }
-    label123:
-    doLoadArkApp(paramString1, str1, str2, str3, bool1, bool2, paramInt, paramString2);
   }
   
   public void onFirstDrawEnd()
@@ -129,7 +124,7 @@ public class ArkModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ark.open.ArkModel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,60 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import android.support.v4.view.ViewPager;
+import android.view.MotionEvent;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
-final class banf
-  extends Editable.Factory
+public class banf
+  implements GLGestureListener
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  private ViewPager a;
+  
+  public banf(ViewPager paramViewPager)
   {
-    if ((paramCharSequence instanceof bane)) {
-      return (Editable)paramCharSequence;
+    this.a = paramViewPager;
+  }
+  
+  public void a(ViewPager paramViewPager)
+  {
+    this.a = paramViewPager;
+  }
+  
+  public int onGetPriority()
+  {
+    return 1002;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    int i = paramMotionEvent.getPointerCount();
+    paramMotionEvent.getAction();
+    if ((i == 1) && (!paramBoolean) && (this.a != null) && (this.a.isShown())) {}
+    try
+    {
+      this.a.onTouchEvent(paramMotionEvent);
+      if ((i != 2) || (!paramBoolean) || (this.a == null) || (!this.a.isShown())) {}
     }
-    return new bane(paramCharSequence, 3, 20);
+    catch (Exception localException)
+    {
+      try
+      {
+        if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
+        {
+          paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
+          this.a.onTouchEvent(paramMotionEvent);
+          paramMotionEvent.recycle();
+        }
+        return false;
+        localException = localException;
+        localException.printStackTrace();
+      }
+      catch (Exception paramMotionEvent)
+      {
+        for (;;)
+        {
+          paramMotionEvent.printStackTrace();
+        }
+      }
+    }
   }
 }
 

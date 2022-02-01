@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemSingle;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qff
-  implements View.OnClickListener
+class qff
+  implements ViewBase.OnClickListener
 {
-  public qff(ComponentTopicItemSingle paramComponentTopicItemSingle) {}
+  qff(qfa paramqfa, pxk parampxk) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(ViewBase paramViewBase)
+  {
+    qfa.a(this.jdField_a_of_type_Qfa, this.jdField_a_of_type_Pxk, paramViewBase);
+    qfa.a(this.jdField_a_of_type_Qfa, this.jdField_a_of_type_Pxk.a());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qff
  * JD-Core Version:    0.7.0.1
  */

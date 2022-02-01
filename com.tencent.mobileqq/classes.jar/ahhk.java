@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahhk
-  implements QQPermissionCallback
+class ahhk
+  implements DialogInterface.OnClickListener
 {
-  public ahhk(PublicView paramPublicView, AppActivity paramAppActivity) {}
+  ahhk(ahhh paramahhh) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.denied();
-    bdgm.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.grant();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

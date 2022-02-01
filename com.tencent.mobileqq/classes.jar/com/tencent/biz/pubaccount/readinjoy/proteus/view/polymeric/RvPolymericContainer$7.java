@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric;
 
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import org.json.JSONArray;
-import ptw;
-import pug;
+import qly;
+import qmi;
 
 public class RvPolymericContainer$7
   implements Runnable
 {
-  public RvPolymericContainer$7(ptw paramptw, JSONArray paramJSONArray) {}
+  public RvPolymericContainer$7(qly paramqly, JSONArray paramJSONArray) {}
   
   public void run()
   {
-    ptw.a(this.this$0).setCellArray(ptw.b(this.this$0).getTemplateFactory(), this.a);
-    ptw.a(this.this$0).notifyDataSetChanged();
+    qly.a(this.this$0).setCellArray(qly.b(this.this$0).getTemplateFactory(), this.a);
+    qly.a(this.this$0).notifyDataSetChanged();
     this.this$0.a();
   }
 }

@@ -1,10 +1,17 @@
-public abstract interface pcr
+public class pcr
 {
-  public abstract void a(String[] paramArrayOfString1, String[] paramArrayOfString2);
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  
+  public String toString()
+  {
+    return "Label{showDelete=" + this.a + ", showSink=" + this.b + ", showSticky=" + this.c + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pcr
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import umc;
-import uwi;
-import uwj;
-import uwk;
+import wfo;
+import wpu;
+import wpv;
+import wpw;
 
 public class TroopNickNameManager$1$1
   implements Runnable
 {
-  public TroopNickNameManager$1$1(uwj paramuwj, ArrayList paramArrayList) {}
+  public TroopNickNameManager$1$1(wpv paramwpv, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -26,8 +26,8 @@ public class TroopNickNameManager$1$1
     if (((Iterator)localObject).hasNext())
     {
       localTroopMemberCardInfo = (TroopMemberCardInfo)((Iterator)localObject).next();
-      str2 = uwi.a(str1, localTroopMemberCardInfo.memberuin);
-      if ((this.jdField_a_of_type_Uwj.a.a.remove(str2) == null) && (QLog.isColorLevel())) {
+      str2 = wpu.a(str1, localTroopMemberCardInfo.memberuin);
+      if ((this.jdField_a_of_type_Wpv.a.a.remove(str2) == null) && (QLog.isColorLevel())) {
         QLog.d("TroopNickNameManager", 2, "loading not match, return");
       }
     }
@@ -39,15 +39,15 @@ public class TroopNickNameManager$1$1
       localArrayList.add(localTroopMemberCardInfo.memberuin);
       break;
     }
-    localObject = new uwk();
-    ((uwk)localObject).jdField_a_of_type_JavaUtilList = localArrayList;
-    ((uwk)localObject).jdField_a_of_type_JavaLangString = str1;
-    umc.a().dispatch((Dispatcher.Dispatchable)localObject);
+    localObject = new wpw();
+    ((wpw)localObject).jdField_a_of_type_JavaUtilList = localArrayList;
+    ((wpw)localObject).jdField_a_of_type_JavaLangString = str1;
+    wfo.a().dispatch((Dispatcher.Dispatchable)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopNickNameManager.1.1
  * JD-Core Version:    0.7.0.1
  */

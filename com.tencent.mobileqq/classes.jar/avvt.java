@@ -1,50 +1,37 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.qphone.base.util.QLog;
 
 public class avvt
-  implements bers
+  extends BroadcastReceiver
 {
-  public avvt(OCRResultActivity paramOCRResultActivity) {}
+  private avvt(QQMusicPlayService paramQQMusicPlayService) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (OCRResultActivity.a(this.a) == 0) {
-      OCRResultActivity.a(this.a);
+    if (paramIntent != null)
+    {
+      QLog.d("QQMusicPlay.QQMusicPlayService", 1, "QQMusicPlayBroadcastReceiver onReceive,action:" + paramIntent.getAction());
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("QQMusicPlay_exit_action"))))
+      {
+        if (QQMusicPlayService.a(this.a) == null) {
+          break label150;
+        }
+        QQMusicPlayService.a(this.a).sendEmptyMessage(11);
+      }
     }
-    while (OCRResultActivity.a(this.a) != 1) {
-      return;
-    }
-    OCRResultActivity.b(this.a);
-  }
-  
-  public void a(String paramString)
-  {
-    banj.a(paramString, "OCR_Participle_copy");
-  }
-  
-  public void b(String paramString)
-  {
-    OCRResultActivity.a(this.a, paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    banj.a(this.a, this.a.app, paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    Intent localIntent = new Intent(this.a, TextPreviewTranslateActivity.class);
-    localIntent.putExtra("TranslateText", paramString);
-    localIntent.putExtra("WhereAreYouFrom", "OCR_RESULT");
-    this.a.startActivityForResult(localIntent, 1);
-    OCRResultActivity.a(this.a, true);
+    return;
+    label150:
+    this.a.stopSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avvt
  * JD-Core Version:    0.7.0.1
  */

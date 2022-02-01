@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import ajyb;
-import ajyd;
+import alqr;
+import alqt;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,11 +13,11 @@ import com.tencent.qphone.base.util.QLog;
 
 public class SelectableLinearLayout
   extends LinearLayout
-  implements ajyb
+  implements alqr
 {
   private int jdField_a_of_type_Int;
-  private ajyb jdField_a_of_type_Ajyb;
-  private ajyd jdField_a_of_type_Ajyd;
+  private alqr jdField_a_of_type_Alqr;
+  private alqt jdField_a_of_type_Alqt;
   private boolean jdField_a_of_type_Boolean;
   private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int;
@@ -40,9 +40,9 @@ public class SelectableLinearLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void bind(@Nullable ajyd paramajyd)
+  public void bind(@Nullable alqt paramalqt)
   {
-    this.jdField_a_of_type_Ajyd = paramajyd;
+    this.jdField_a_of_type_Alqt = paramalqt;
   }
   
   public void clearHighlightContent()
@@ -53,8 +53,8 @@ public class SelectableLinearLayout
     while (i < j)
     {
       View localView = getChildAt(i);
-      if ((localView instanceof ajyb)) {
-        ((ajyb)localView).clearHighlightContent();
+      if ((localView instanceof alqr)) {
+        ((alqr)localView).clearHighlightContent();
       }
       i += 1;
     }
@@ -69,8 +69,8 @@ public class SelectableLinearLayout
     while (i < j)
     {
       View localView = getChildAt(i);
-      if ((localView instanceof ajyb)) {
-        localStringBuilder.append(((ajyb)localView).content());
+      if ((localView instanceof alqr)) {
+        localStringBuilder.append(((alqr)localView).content());
       }
       i += 1;
     }
@@ -85,10 +85,10 @@ public class SelectableLinearLayout
     if (j < k)
     {
       View localView = getChildAt(j);
-      if (!(localView instanceof ajyb)) {
+      if (!(localView instanceof alqr)) {
         break label51;
       }
-      i = ((ajyb)localView).contentLength() + i;
+      i = ((alqr)localView).contentLength() + i;
     }
     label51:
     for (;;)
@@ -100,9 +100,9 @@ public class SelectableLinearLayout
   }
   
   @Nullable
-  public ajyd delegate()
+  public alqt delegate()
   {
-    return this.jdField_a_of_type_Ajyd;
+    return this.jdField_a_of_type_Alqt;
   }
   
   public void doSelecting(ChatMessage paramChatMessage)
@@ -112,15 +112,39 @@ public class SelectableLinearLayout
         QLog.d("SelectableLinearLayout", 2, "doSelecting msg = null.");
       }
     }
-    while (this.jdField_a_of_type_Ajyd == null) {
+    while (this.jdField_a_of_type_Alqt == null) {
       return;
     }
-    this.jdField_a_of_type_Ajyd.a(paramChatMessage);
+    this.jdField_a_of_type_Alqt.a(paramChatMessage);
   }
   
   public boolean hasSelected()
   {
     return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean hasTouchSelectableArea(int paramInt1, int paramInt2)
+  {
+    getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+    int i = paramInt1 - this.jdField_a_of_type_ArrayOfInt[0];
+    paramInt2 = paramInt2 - this.jdField_a_of_type_ArrayOfInt[1] - getPaddingTop();
+    int j = getChildCount();
+    paramInt1 = 0;
+    while (paramInt1 < j)
+    {
+      View localView = getChildAt(paramInt1);
+      if ((localView instanceof alqr))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SelectableLinearLayout", 2, new Object[] { "left=", Integer.valueOf(localView.getLeft()), " right=", Integer.valueOf(localView.getRight()), " top=", Integer.valueOf(localView.getTop()), " bottom=", Integer.valueOf(localView.getBottom()), " relativeX=", Integer.valueOf(i), " relativeY=", Integer.valueOf(paramInt2) });
+        }
+        if ((i > localView.getLeft()) && (i < localView.getRight()) && (paramInt2 > localView.getTop()) && (paramInt2 < localView.getBottom())) {
+          return true;
+        }
+      }
+      paramInt1 += 1;
+    }
+    return false;
   }
   
   public void highlightBackgroundColor(int paramInt)
@@ -142,14 +166,14 @@ public class SelectableLinearLayout
     if (i < j)
     {
       localObject = getChildAt(i);
-      if ((localObject instanceof ajyb))
+      if ((localObject instanceof alqr))
       {
-        localObject = (ajyb)localObject;
-        if (!((ajyb)localObject).hasSelected()) {
+        localObject = (alqr)localObject;
+        if (!((alqr)localObject).hasSelected()) {
           break label74;
         }
-        ((ajyb)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
-        ((ajyb)localObject).highlightContent();
+        ((alqr)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
+        ((alqr)localObject).highlightContent();
       }
     }
     for (;;)
@@ -158,7 +182,7 @@ public class SelectableLinearLayout
       break label19;
       break;
       label74:
-      ((ajyb)localObject).clearHighlightContent();
+      ((alqr)localObject).clearHighlightContent();
     }
   }
   
@@ -170,11 +194,11 @@ public class SelectableLinearLayout
     if (i < j)
     {
       localObject = getChildAt(i);
-      if (!(localObject instanceof ajyb)) {
+      if (!(localObject instanceof alqr)) {
         break label79;
       }
-      localObject = (ajyb)localObject;
-      int k = ((ajyb)localObject).contentLength();
+      localObject = (alqr)localObject;
+      int k = ((alqr)localObject).contentLength();
       if (paramInt > k) {
         paramInt -= k;
       }
@@ -184,7 +208,7 @@ public class SelectableLinearLayout
     {
       i += 1;
       break;
-      ((ajyb)localObject).locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
+      ((alqr)localObject).locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
       return;
     }
   }
@@ -204,7 +228,7 @@ public class SelectableLinearLayout
     int i;
     int k;
     label46:
-    ajyb localajyb;
+    alqr localalqr;
     int m;
     int j;
     if ((paramInt1 == -1) || (paramInt2 == -1))
@@ -221,19 +245,19 @@ public class SelectableLinearLayout
         break label257;
       }
       View localView = getChildAt(k);
-      if (!(localView instanceof ajyb)) {
+      if (!(localView instanceof alqr)) {
         break label266;
       }
-      localajyb = (ajyb)localView;
+      localalqr = (alqr)localView;
       if (paramInt1 != 0) {
         break label237;
       }
-      m = localajyb.contentLength();
+      m = localalqr.contentLength();
       if (paramInt2 < m) {
         break label190;
       }
       i -= m;
-      localajyb.selectContent(-1, -1);
+      localalqr.selectContent(-1, -1);
       j = paramInt2 - m;
       paramInt2 = paramInt1;
       paramInt1 = j;
@@ -269,7 +293,7 @@ public class SelectableLinearLayout
       }
       for (;;)
       {
-        localajyb.selectContent(paramInt2, paramInt1);
+        localalqr.selectContent(paramInt2, paramInt1);
         if (j != 0) {
           break label258;
         }
@@ -281,7 +305,7 @@ public class SelectableLinearLayout
         j = 1;
       }
       label237:
-      localajyb.selectContent(-1, -1);
+      localalqr.selectContent(-1, -1);
       j = paramInt1;
       paramInt1 = paramInt2;
       paramInt2 = j;
@@ -311,16 +335,16 @@ public class SelectableLinearLayout
     if (j < k)
     {
       localObject = getChildAt(j);
-      if (!(localObject instanceof ajyb)) {
+      if (!(localObject instanceof alqr)) {
         break label238;
       }
-      ajyb localajyb = (ajyb)localObject;
+      alqr localalqr = (alqr)localObject;
       if ((m > ((View)localObject).getLeft()) && (m < ((View)localObject).getRight()) && (n > ((View)localObject).getTop()) && (n < ((View)localObject).getBottom()))
       {
-        this.jdField_a_of_type_Ajyb = localajyb;
-        return localajyb.touchIndex(paramInt1, paramInt2) + i;
+        this.jdField_a_of_type_Alqr = localalqr;
+        return localalqr.touchIndex(paramInt1, paramInt2) + i;
       }
-      i = localajyb.contentLength() + i;
+      i = localalqr.contentLength() + i;
     }
     label235:
     label238:
@@ -333,14 +357,14 @@ public class SelectableLinearLayout
       if (j < k)
       {
         localObject = getChildAt(j);
-        if (!(localObject instanceof ajyb)) {
+        if (!(localObject instanceof alqr)) {
           break label235;
         }
-        localObject = (ajyb)localObject;
-        if (this.jdField_a_of_type_Ajyb == localObject) {
-          return this.jdField_a_of_type_Ajyb.touchIndex(paramInt1, paramInt2) + i;
+        localObject = (alqr)localObject;
+        if (this.jdField_a_of_type_Alqr == localObject) {
+          return this.jdField_a_of_type_Alqr.touchIndex(paramInt1, paramInt2) + i;
         }
-        i = ((ajyb)localObject).contentLength() + i;
+        i = ((alqr)localObject).contentLength() + i;
       }
       for (;;)
       {
@@ -359,7 +383,7 @@ public class SelectableLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.SelectableLinearLayout
  * JD-Core Version:    0.7.0.1
  */

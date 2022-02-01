@@ -10,6 +10,7 @@ import com.tencent.ditto.shell.LayoutAttrSet;
 public class LinearAreaLayout
   extends DittoAreaGroup
 {
+  private int mGravity = 3;
   private int mOrientation = 1;
   private int mTotalLength;
   
@@ -17,6 +18,145 @@ public class LinearAreaLayout
   {
     super(paramDittoHost, paramLayoutAttrSet);
     setOrientation(paramLayoutAttrSet.orientation);
+    setGravity(paramLayoutAttrSet.gravity);
+  }
+  
+  private void layoutChildHorizontal(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    int m = 0;
+    int i = paramInt6;
+    paramInt6 = paramInt4;
+    LayoutAttrSet localLayoutAttrSet;
+    int i3;
+    if (m < paramInt1)
+    {
+      DittoArea localDittoArea = getChildAt(m);
+      if (localDittoArea.getVisibility() == 8) {
+        break label306;
+      }
+      localLayoutAttrSet = localDittoArea.getLayoutAttr();
+      int i2 = localDittoArea.getMeasuredWidth();
+      i3 = localDittoArea.getMeasuredHeight();
+      switch (localLayoutAttrSet.layout_gravity)
+      {
+      default: 
+        paramInt4 = localLayoutAttrSet.topMargin;
+        label103:
+        int i4 = localDittoArea.getWeight();
+        int i1 = 0;
+        int n = i1;
+        int j = paramInt5;
+        int k = paramInt6;
+        if (i4 > 0)
+        {
+          n = i1;
+          j = paramInt5;
+          k = paramInt6;
+          if (paramInt6 > 0)
+          {
+            n = i1;
+            j = paramInt5;
+            k = paramInt6;
+            if (paramInt5 > 0)
+            {
+              n = i4 * paramInt5 / paramInt6;
+              k = paramInt6 - i4;
+              j = paramInt5 - n;
+            }
+          }
+        }
+        paramInt5 = i + localLayoutAttrSet.leftMargin;
+        localDittoArea.layout(paramInt5, paramInt4, paramInt5 + i2 + n, i3 + paramInt4);
+        paramInt4 = i2 + n + localLayoutAttrSet.rightMargin + paramInt5;
+        paramInt6 = k;
+        paramInt5 = j;
+      }
+    }
+    for (;;)
+    {
+      m += 1;
+      i = paramInt4;
+      break;
+      paramInt4 = localLayoutAttrSet.topMargin;
+      break label103;
+      paramInt4 = (paramInt2 - i3) / 2 + localLayoutAttrSet.topMargin - localLayoutAttrSet.bottomMargin;
+      break label103;
+      paramInt4 = paramInt3 - i3 - localLayoutAttrSet.bottomMargin;
+      break label103;
+      return;
+      label306:
+      paramInt4 = i;
+    }
+  }
+  
+  private void layoutChildVertical(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    int m = 0;
+    int i = paramInt5;
+    paramInt5 = paramInt4;
+    paramInt4 = i;
+    LayoutAttrSet localLayoutAttrSet;
+    int i2;
+    if (m < paramInt1)
+    {
+      DittoArea localDittoArea = getChildAt(m);
+      if (localDittoArea.getVisibility() == 8) {
+        break label288;
+      }
+      localLayoutAttrSet = localDittoArea.getLayoutAttr();
+      i2 = localDittoArea.getMeasuredWidth();
+      int i3 = localDittoArea.getMeasuredHeight();
+      switch (localLayoutAttrSet.layout_gravity)
+      {
+      default: 
+        i = localLayoutAttrSet.leftMargin;
+        label99:
+        int i4 = localDittoArea.getWeight();
+        int i1 = 0;
+        int n = i1;
+        int j = paramInt4;
+        int k = paramInt5;
+        if (i4 > 0)
+        {
+          n = i1;
+          j = paramInt4;
+          k = paramInt5;
+          if (paramInt5 > 0)
+          {
+            n = i1;
+            j = paramInt4;
+            k = paramInt5;
+            if (paramInt4 > 0)
+            {
+              n = i4 * paramInt4 / paramInt5;
+              k = paramInt5 - i4;
+              j = paramInt4 - n;
+            }
+          }
+        }
+        paramInt4 = paramInt6 + localLayoutAttrSet.topMargin;
+        localDittoArea.layout(i, paramInt4, i2 + i, paramInt4 + i3 + n);
+        paramInt6 = i3 + n + localLayoutAttrSet.bottomMargin + paramInt4;
+        paramInt5 = k;
+        paramInt4 = j;
+      }
+    }
+    label288:
+    for (;;)
+    {
+      m += 1;
+      break;
+      i = (paramInt2 - i2) / 2 + localLayoutAttrSet.leftMargin - localLayoutAttrSet.rightMargin;
+      break label99;
+      i = paramInt3 - i2 - localLayoutAttrSet.rightMargin;
+      break label99;
+      return;
+    }
+  }
+  
+  public int getGravity()
+  {
+    return this.mGravity;
   }
   
   public int getOrientation()
@@ -26,141 +166,126 @@ public class LinearAreaLayout
   
   public void layoutHorizontal()
   {
-    int m = getPaddingTop();
-    int i = getPaddingLeft();
-    int n = getPaddingRight();
-    int i1 = getHeight();
-    int k;
-    int j;
-    label64:
-    LayoutAttrSet localLayoutAttrSet;
-    int i3;
-    int i4;
-    switch (this.mGravity)
+    int n = 0;
+    int i1 = getPaddingTop();
+    getPaddingLeft();
+    int i2 = getPaddingRight();
+    int i3 = getHeight();
+    int j = this.mTotalLength;
+    int i4 = getWidth() - j;
+    int i5 = getChildCount();
+    int i;
+    if (i4 > 0)
     {
-    default: 
-      i = 0;
-      int i2 = getChildCount();
-      k = 0;
-      j = i;
-      if (k < i2)
+      int k = 0;
+      int m;
+      for (i = 0; k < i5; i = m)
       {
-        DittoArea localDittoArea = getChildAt(k);
-        if (localDittoArea.getVisibility() == 8) {
-          break label286;
+        int i6 = getChildAt(k).getWeight();
+        m = i;
+        if (i6 > 0) {
+          m = i + i6;
         }
-        localLayoutAttrSet = localDittoArea.getLayoutAttr();
-        i3 = localDittoArea.getMeasuredWidth();
-        i4 = localDittoArea.getMeasuredHeight();
-        switch (localLayoutAttrSet.layout_gravity)
-        {
-        default: 
-          i = localLayoutAttrSet.topMargin;
-          label154:
-          j += localLayoutAttrSet.leftMargin;
-          localDittoArea.layout(j, i, j + i3, i4 + i);
-        }
+        k += 1;
       }
-      break;
+      if (i > 0) {
+        j = getWidth();
+      }
     }
-    label286:
-    for (i = localLayoutAttrSet.rightMargin + i3 + j;; i = j)
+    for (;;)
     {
-      k += 1;
-      j = i;
-      break label64;
-      i = getWidth() + i - this.mTotalLength;
-      break;
-      i = (getWidth() - this.mTotalLength) / 2 + i;
-      break;
-      i = localLayoutAttrSet.topMargin;
-      break label154;
-      i = (i1 - m - n - i4) / 2 + localLayoutAttrSet.topMargin - localLayoutAttrSet.bottomMargin;
-      break label154;
-      i = i1 - n - i4 - localLayoutAttrSet.bottomMargin;
-      break label154;
-      return;
+      switch (this.mGravity)
+      {
+      default: 
+        j = n;
+      }
+      for (;;)
+      {
+        layoutChildHorizontal(i5, i3 - i1 - i2, i3 - i2, i, i4, j);
+        return;
+        j = getWidth() - j;
+        continue;
+        j = (getWidth() - j) / 2;
+      }
+      continue;
+      i = 0;
     }
   }
   
   public void layoutVertical()
   {
+    int n = 0;
     getPaddingTop();
-    int m = getPaddingLeft();
-    int n = getPaddingRight();
-    int i1 = getWidth();
+    int i1 = getPaddingLeft();
+    int i2 = getPaddingRight();
+    int i3 = getWidth();
+    int j = this.mTotalLength;
+    int i4 = getHeight() - j;
+    int i5 = getChildCount();
     int i;
-    int k;
-    label62:
-    LayoutAttrSet localLayoutAttrSet;
-    int i3;
-    int j;
-    switch (this.mGravity)
+    if (i4 > 0)
     {
-    default: 
-      i = 0;
-      int i2 = getChildCount();
-      k = 0;
-      if (k < i2)
+      int k = 0;
+      int m;
+      for (i = 0; k < i5; i = m)
       {
-        DittoArea localDittoArea = getChildAt(k);
-        if (localDittoArea.getVisibility() == 8) {
-          break label259;
+        int i6 = getChildAt(k).getWeight();
+        m = i;
+        if (i6 > 0) {
+          m = i + i6;
         }
-        localLayoutAttrSet = localDittoArea.getLayoutAttr();
-        i3 = localDittoArea.getMeasuredWidth();
-        int i4 = localDittoArea.getMeasuredHeight();
-        switch (localLayoutAttrSet.layout_gravity)
-        {
-        default: 
-          j = localLayoutAttrSet.leftMargin;
-          label142:
-          i += localLayoutAttrSet.topMargin;
-          localDittoArea.layout(j, i, i3 + j, i + i4);
-          i = localLayoutAttrSet.bottomMargin + i4 + i;
-        }
+        k += 1;
       }
-      break;
+      if (i > 0) {
+        j = getHeight();
+      }
     }
-    label259:
     for (;;)
     {
-      k += 1;
-      break label62;
-      i = getHeight() - this.mTotalLength;
-      break;
-      i = (getHeight() - this.mTotalLength) / 2;
-      break;
-      j = (i1 - m - n - i3) / 2 + localLayoutAttrSet.leftMargin - localLayoutAttrSet.rightMargin;
-      break label142;
-      j = i1 - n - i3 - localLayoutAttrSet.rightMargin;
-      break label142;
-      return;
+      switch (this.mGravity)
+      {
+      default: 
+        j = n;
+      }
+      for (;;)
+      {
+        layoutChildVertical(i5, i3 - i1 - i2, i3 - i2, i, i4, j);
+        return;
+        j = getHeight() - j;
+        continue;
+        j = (getHeight() - j) / 2;
+      }
+      continue;
+      i = 0;
     }
   }
   
   public void measureChildrenHorizontal(int paramInt1, int paramInt2)
   {
-    int i = View.MeasureSpec.getMode(paramInt1);
+    int j = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
-    int j = ViewGroup.getChildMeasureSpec(paramInt2, 0, getLayoutAttr().height);
-    int k = getChildCount();
+    int k = ViewGroup.getChildMeasureSpec(paramInt2, 0, getLayoutAttr().height);
+    int m = getChildCount();
     paramInt2 = 0;
-    if (paramInt2 < k)
+    if (paramInt2 < m)
     {
       DittoArea localDittoArea = getChildAt(paramInt2);
       if (localDittoArea.getVisibility() == 8) {
-        break label117;
+        break label137;
       }
       LayoutAttrSet localLayoutAttrSet = localDittoArea.getLayoutAttr();
-      measureChildWithMargins(localDittoArea, getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(paramInt1, i), 0, localLayoutAttrSet.width, localDittoArea), 0, j, 0);
-      int m = localDittoArea.getMeasuredWidth();
-      if ((paramInt1 <= 0) || (m <= 0)) {
-        break label117;
+      measureChildWithMargins(localDittoArea, getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(paramInt1, j), 0, localLayoutAttrSet.width, localDittoArea), 0, k, 0);
+      int i = localDittoArea.getMeasuredWidth();
+      if ((paramInt1 <= 0) || (i <= 0)) {
+        break label137;
       }
-      paramInt1 -= m;
+      i = paramInt1 - i;
+      paramInt1 = i;
+      if (localLayoutAttrSet != null) {
+        paramInt1 = i - localLayoutAttrSet.leftMargin - localLayoutAttrSet.rightMargin;
+      }
     }
-    label117:
+    label137:
     for (;;)
     {
       paramInt2 += 1;
@@ -249,6 +374,16 @@ public class LinearAreaLayout
     measureHorizontal(paramInt1, paramInt2);
   }
   
+  public void setGravity(int paramInt)
+  {
+    super.setGravity(paramInt);
+    if (this.mGravity != paramInt)
+    {
+      this.mGravity = paramInt;
+      requestLayout();
+    }
+  }
+  
   public void setOrientation(int paramInt)
   {
     if (this.mOrientation != paramInt)
@@ -260,7 +395,7 @@ public class LinearAreaLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.ditto.widget.LinearAreaLayout
  * JD-Core Version:    0.7.0.1
  */

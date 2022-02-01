@@ -3,14 +3,18 @@ package io.flutter.plugin.platform;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.view.WindowManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 class SingleViewPresentation$PresentationContext
   extends ContextWrapper
 {
+  @Nullable
   private WindowManager windowManager;
+  @NonNull
   private final SingleViewPresentation.WindowManagerHandler windowManagerHandler;
   
-  SingleViewPresentation$PresentationContext(Context paramContext, SingleViewPresentation.WindowManagerHandler paramWindowManagerHandler)
+  SingleViewPresentation$PresentationContext(Context paramContext, @NonNull SingleViewPresentation.WindowManagerHandler paramWindowManagerHandler)
   {
     super(paramContext);
     this.windowManagerHandler = paramWindowManagerHandler;
@@ -34,7 +38,7 @@ class SingleViewPresentation$PresentationContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation.PresentationContext
  * JD-Core Version:    0.7.0.1
  */

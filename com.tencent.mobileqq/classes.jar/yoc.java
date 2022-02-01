@@ -1,30 +1,29 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class yoc
-  implements bfah
+public class yoc
+  extends QQUIEventReceiver<ynm, woq>
 {
-  yoc(ynx paramynx) {}
-  
-  public void a(BaseResp paramBaseResp)
+  public yoc(@NonNull ynm paramynm)
   {
-    if ((ynx.c(this.a) == null) || (!ynx.c(this.a).equals(paramBaseResp.transaction))) {
-      return;
+    super(paramynm);
+  }
+  
+  public void a(@NonNull ynm paramynm, @NonNull woq paramwoq)
+  {
+    if (paramwoq.a) {
+      ynm.d(paramynm);
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      QQToast.a(ynx.a(this.a), 1, "分享失败", 0).a();
-      return;
-    }
-    QQToast.a(ynx.a(this.a), 2, "分享成功", 0).a();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return woq.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yoc
  * JD-Core Version:    0.7.0.1
  */

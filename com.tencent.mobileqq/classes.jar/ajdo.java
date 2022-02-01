@@ -1,32 +1,28 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.SwapViews;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-public final class ajdo
-  implements Animation.AnimationListener
+public class ajdo
+  implements View.OnClickListener
 {
-  private final View jdField_a_of_type_AndroidViewView;
-  private final boolean jdField_a_of_type_Boolean;
-  private final View b;
+  public ajdo(NotificationView paramNotificationView) {}
   
-  private ajdo(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, boolean paramBoolean, View paramView1, View paramView2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidViewView = paramView1;
-    this.b = paramView2;
+    ajdm localajdm = (ajdm)paramView.getTag();
+    if (localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() == 2)
+    {
+      this.a.a(localajdm);
+      if (localajdm.jdField_a_of_type_Int == 82) {
+        bcst.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", localajdm.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).post(new DrawRedpacketPannelPreviewFragment.SwapViews(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidViewView, this.b));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -9,6 +9,7 @@ import com.tencent.component.network.downloader.DownloadResult.Status;
 import com.tencent.component.network.downloader.Downloader;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
+import com.tencent.component.network.downloader.Downloader.MiniDownloadListener;
 import com.tencent.component.network.downloader.Downloader.StreamDownloadListener;
 import com.tencent.component.network.downloader.PreConnectManager;
 import com.tencent.component.network.downloader.common.Utils;
@@ -455,6 +456,27 @@ public class DownloaderImpl
     }
   }
   
+  private void notifyHeaderRequest(Collection<DownloadRequest> paramCollection, int paramInt, Map<String, List<String>> paramMap)
+  {
+    if (paramCollection == null) {}
+    for (;;)
+    {
+      return;
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext())
+      {
+        DownloadRequest localDownloadRequest = (DownloadRequest)paramCollection.next();
+        if ((localDownloadRequest != null) && (!localDownloadRequest.isCanceled()))
+        {
+          Downloader.DownloadListener localDownloadListener = localDownloadRequest.getListener();
+          if ((localDownloadListener instanceof Downloader.MiniDownloadListener)) {
+            ((Downloader.MiniDownloadListener)localDownloadListener).onDownloadHeadersReceived(localDownloadRequest.getUrl(), paramInt, paramMap);
+          }
+        }
+      }
+    }
+  }
+  
   private void notifyStreamDownloadProgress(Collection<DownloadRequest> paramCollection, String paramString)
   {
     if (paramCollection == null) {}
@@ -749,13 +771,13 @@ public class DownloaderImpl
           bool1 = true;
         }
       }
-      if ((paramDownloadRequest.mode != Downloader.DownloadMode.RangeMode) && (!bool1)) {
-        break label359;
+      if ((paramDownloadRequest.mode != Downloader.DownloadMode.RangeMode) && (paramDownloadRequest.mode != Downloader.DownloadMode.OkHttpMode) && (!bool1)) {
+        break label378;
       }
       obtainHttp2Client();
-      label226:
+      label236:
       if (paramDownloadRequest.mode != Downloader.DownloadMode.StrictMode) {
-        break label367;
+        break label386;
       }
       localObject = new StrictDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, bool1);
       ((DownloadTask)localObject).setAttemptCount(12);
@@ -768,20 +790,26 @@ public class DownloaderImpl
       if (paramDownloadRequest.onResponseDataListener != null) {
         ((DownloadTask)localObject).setResponseDataListener(paramDownloadRequest.onResponseDataListener);
       }
+      ((DownloadTask)localObject).setProgressCallbackStep(paramDownloadRequest.progressCallbackStep);
       ((DownloadTask)localObject).setHttpParams(paramDownloadRequest.getParams());
       ((DownloadTask)localObject).setHandler(this, this.pDirectIPConfig, this.pBackupIPConfig, this.pPortConfigStrategy, this.pResumeTransfer, this.pReportHandler, this.pExternalReportHandler, this.pNetworkFlowStatistics, this.pTmpFileCache);
       enqueueTask((DownloadTask)localObject);
       return true;
       i = 0;
       break;
-      label359:
+      label378:
       obtainHttpClient();
-      break label226;
-      label367:
+      break label236;
+      label386:
       if (paramDownloadRequest.mode == Downloader.DownloadMode.RangeMode)
       {
         localObject = new RangeDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, paramDownloadRequest.rangeNumber, paramDownloadRequest.getFileSizeForRangeMode());
         ((DownloadTask)localObject).setDownloadRequest(paramDownloadRequest);
+      }
+      else if (paramDownloadRequest.mode == Downloader.DownloadMode.OkHttpMode)
+      {
+        localObject = new OkHttpDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, bool1);
+        ((DownloadTask)localObject).setAttemptCount(3);
       }
       else
       {
@@ -881,6 +909,11 @@ public class DownloaderImpl
     }
   }
   
+  public void handleRequestHeader(String paramString, int paramInt, Map<String, List<String>> paramMap)
+  {
+    notifyHeaderRequest(collectPendingRequest(paramString, false, null), paramInt, paramMap);
+  }
+  
   public void handleStreamDownloadProgress(String paramString1, String paramString2)
   {
     notifyStreamDownloadProgress(collectPendingRequest(paramString1, false, new ArrayList()), paramString2);
@@ -922,7 +955,7 @@ public class DownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.DownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

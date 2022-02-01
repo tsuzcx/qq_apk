@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import bfhr;
+import bipa;
 import com.tencent.common.app.InnerFrame;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,7 +16,7 @@ public abstract class OpenFrame
   extends InnerFrame
 {
   public LayoutInflater a;
-  public bfhr a;
+  public bipa a;
   public InnerFrameManager a;
   protected QQAppInterface a;
   public FriendChooser a;
@@ -30,9 +30,9 @@ public abstract class OpenFrame
   {
     ArrayList localArrayList = new ArrayList(50);
     int i = 0;
-    while (i < this.jdField_a_of_type_Bfhr.b())
+    while (i < this.jdField_a_of_type_Bipa.b())
     {
-      localArrayList.addAll(this.jdField_a_of_type_Bfhr.a(i));
+      localArrayList.addAll(this.jdField_a_of_type_Bipa.a(i));
       i += 1;
     }
     return localArrayList;
@@ -45,14 +45,14 @@ public abstract class OpenFrame
     this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = super.a();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = super.a();
     this.jdField_a_of_type_AndroidViewLayoutInflater = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater();
-    this.jdField_a_of_type_Bfhr = bfhr.a();
+    this.jdField_a_of_type_Bipa = bipa.a();
   }
   
   public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.agent.OpenFrame
  * JD-Core Version:    0.7.0.1
  */

@@ -1,165 +1,194 @@
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.KplRoleInfo.WZRYUIinfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-public class amec
-  extends ameq
+class amec
+  extends anqd
 {
-  public amec(TroopManager paramTroopManager) {}
+  amec(amdv paramamdv) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  protected void a(String paramString)
   {
-    switch (paramInt1)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onSendSystemMsgActionError execute");
     }
-    Object localObject2;
-    do
-    {
-      return;
-      this.a.f(paramString);
-      synchronized (this.a)
-      {
-        if (TroopManager.a(this.a) != null)
-        {
-          localObject2 = TroopManager.a(this.a).iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            if (((TroopInfo)((Iterator)localObject2).next()).troopuin.equals(paramString)) {
-              ((Iterator)localObject2).remove();
-            }
-          }
-        }
-        return;
-      }
-      ??? = new ArrayList();
-      ((ArrayList)???).add(paramString);
-      this.a.b((ArrayList)???);
-      return;
-      localObject2 = this.a.b(paramString);
-    } while ((localObject2 == null) || (!TroopManager.a(this.a, (TroopInfo)localObject2, true)));
-    amdu localamdu = (amdu)this.a.a.a(20);
+    amdv.d(this.a);
+    paramString = amdv.a(this.a).getResources().getString(2131718381);
+    QQToast.a(amdv.a(this.a), 1, paramString, 0).b(amdv.b(this.a));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onSendSystemMsgActionFin|isSuccess : " + paramBoolean + ",logStr : " + paramString1 + ",actionType : " + paramInt1 + ", msgDetail : " + paramString2 + ",resultCode : " + paramInt2 + ", respType : " + paramInt3 + "msgFail : " + paramString3 + "msgInvalidDecided : " + paramString4 + ",remarkRet : " + paramInt4);
+    }
+    amdv.d(this.a);
+    this.a.notifyDataSetChanged();
+    long l1 = bdgm.a().b();
+    if (!TextUtils.isEmpty(paramString1)) {}
     for (;;)
     {
-      synchronized (this.a)
+      structmsg.StructMsg localStructMsg;
+      try
       {
-        if (TroopManager.a(this.a) == null)
+        l2 = Long.parseLong(paramString1);
+        l1 = l2;
+        localStructMsg = bdgm.a().a(Long.valueOf(l1));
+        if (paramBoolean) {
+          break label239;
+        }
+        if (TextUtils.isEmpty(paramString3)) {
+          break label219;
+        }
+        QQToast.a(amdv.a(this.a), 1, paramString3, 0).b(amdv.b(this.a));
+        bdgo.a(localStructMsg, paramInt3, paramString2, paramString4);
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+      }
+      continue;
+      label219:
+      paramString3 = amdv.a(this.a).getResources().getString(2131717746);
+      continue;
+      label239:
+      paramString1 = amdv.a(this.a).getResources().getString(2131692406);
+      QQToast.a(amdv.a(this.a), 2, paramString1, 0).b(amdv.b(this.a));
+      long l2 = bdgm.a().a();
+      bdgo.a(localStructMsg, paramInt1, paramString2, paramInt2);
+      if ((l2 != 0L) && (localStructMsg != null)) {}
+      try
+      {
+        this.a.a.a().a(anhk.M, 0, l2, localStructMsg.toByteArray());
+        if ((paramInt1 != 0) || (localStructMsg == null)) {
+          continue;
+        }
+        paramString3 = new Bundle();
+        paramString3.putString("base_uin", String.valueOf(localStructMsg.req_uin.get()));
+        paramString2 = localStructMsg.msg.req_uin_nick.get();
+        paramString1 = paramString2;
+        if (TextUtils.isEmpty(paramString2)) {
+          paramString1 = String.valueOf(localStructMsg.req_uin.get());
+        }
+        paramString3.putString("base_nick", paramString1);
+        paramString3.putInt("verfy_type", localStructMsg.msg.sub_type.get());
+        paramString3.putString("verfy_msg", localStructMsg.msg.msg_additional.get());
+        if (ajas.a(this.a.a, String.valueOf(localStructMsg.req_uin.get()), localStructMsg, false))
         {
-          TroopManager.a(this.a, new ArrayList());
-          TroopManager.a(this.a).add(localObject2);
-          localamdu.a(true, paramString, ((TroopInfo)localObject2).troopcode, 9);
-          return;
+          paramString4 = new String(localStructMsg.msg.bytes_game_nick.get().toByteArray());
+          paramString2 = paramString1;
+          if (!TextUtils.isEmpty(paramString4)) {
+            paramString2 = KplRoleInfo.WZRYUIinfo.buildNickName(paramString1, paramString4);
+          }
+          paramString3.putString("base_nick", paramString2);
+          paramString3.putBoolean("isFromWzry", true);
+        }
+        AutoRemarkActivity.a(amdv.a(this.a), 0, String.valueOf(localStructMsg.req_uin.get()), l1, paramString3);
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          paramString1.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.i("NewFriendMoreSysMsgAdapter", 2, "onSendSystemMsgActionFin Exception!");
+          }
         }
       }
-      TroopManager.a(this.a).add(localObject2);
     }
   }
   
-  protected void a(String arg1, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool;
-    ArrayList localArrayList;
-    if (QLog.isColorLevel())
-    {
-      paramList = new StringBuilder().append("onUpdateTroopGetMemberList(memberLimit), troopUin:").append(???).append(", mGetTroopMemberListTroops == null:");
-      if (TroopManager.a(this.a) == null)
-      {
-        bool = true;
-        QLog.i("Q.contacttab.troop", 2, bool);
-      }
-    }
-    else
-    {
-      localArrayList = new ArrayList();
-      localArrayList.add(???);
-      if (TroopManager.a(this.a) != null) {
-        break label98;
-      }
-      this.a.b(localArrayList);
-    }
-    label98:
-    TroopInfo localTroopInfo;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          bool = false;
-          break;
-        } while (TroopManager.a(this.a).size() <= 0);
-        localTroopInfo = (TroopInfo)TroopManager.a(this.a).get(0);
-      } while (!localTroopInfo.troopuin.equals(???));
-      paramList = (amdu)this.a.a.a(20);
-      if ((paramBoolean) || (TroopManager.a(this.a) >= 3)) {
-        break label237;
-      }
-      paramList.a(true, localTroopInfo.troopuin, localTroopInfo.troopcode, 4);
-    } while (!QLog.isColorLevel());
-    QLog.w("Q.contacttab.troop", 2, "getTroopsMemberList(memberLimit), failed, retry mRetryGetTroopMemberListCount:" + TroopManager.b(this.a) + ", troopUin" + localTroopInfo.troopuin);
-    return;
-    label237:
     if (QLog.isColorLevel()) {
-      QLog.i("Q.contacttab.troop", 2, "notifyTroopMembersUpdate, troopUin:" + ???);
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onGetDelSystemMsgFin|isSuccess : " + paramBoolean1 + ", bTimeOut : " + paramBoolean2);
     }
-    if (paramBoolean) {
-      this.a.b(localArrayList);
+    amdv.d(this.a);
+    if (paramBoolean1) {
+      amdv.c(this.a);
     }
-    synchronized (this.a)
-    {
-      TroopManager.a(this.a).remove(0);
-      if (TroopManager.a(this.a).size() > 0)
-      {
-        ??? = (TroopInfo)TroopManager.a(this.a).get(0);
-        TroopManager.a(this.a, 0);
-        paramList.a(true, ???.troopuin, ???.troopcode, 4);
-        return;
-        this.a.g(???);
-      }
-    }
-    synchronized (this.a)
-    {
-      TroopManager.a(this.a, null);
+    while ((!paramBoolean2) || (!amdv.a(this.a))) {
       return;
     }
+    String str = amdv.a(this.a).getResources().getString(2131718372);
+    QQToast.a(amdv.a(this.a), 1, str, 0).b(amdv.b(this.a));
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
   {
-    QLog.i("troop_ext", 1, "onGetTroopInfoResult success: troopUin: " + paramString);
-  }
-  
-  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onGetSystemMsgFin|isSuccess : " + paramBoolean1 + ", bTimeOut : " + paramBoolean2);
+    }
+    if (amdv.a(this.a).isFinishing()) {
+      return;
+    }
+    if (paramBoolean1) {
+      amdv.c(this.a);
+    }
+    for (;;)
     {
-      int i = 0;
-      while (i < paramArrayList.size())
+      amdv.e(this.a);
+      return;
+      if ((paramBoolean2) && (amdv.a(this.a)))
       {
-        paramString = (TroopMemberCardInfo)paramArrayList.get(i);
-        this.a.b(paramString.troopuin, paramString.memberuin);
-        i += 1;
+        paramList = amdv.a(this.a).getResources().getString(2131718379);
+        QQToast.a(amdv.a(this.a), 1, paramList, 0).b(amdv.b(this.a));
       }
     }
   }
   
-  protected void f(boolean paramBoolean, String paramString)
+  protected void b(boolean paramBoolean, int paramInt)
   {
-    QLog.i("troop_ext", 1, "onActiveExtTroop success: " + paramBoolean + " troopUin: " + paramString);
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-      ((amdu)this.a.a.a(20)).j(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onDeleteAllSysMsg " + paramBoolean + " " + paramInt);
     }
+    amdv.d(this.a);
+    if (paramBoolean)
+    {
+      if (amdv.a(this.a) != null) {
+        amdv.a(this.a).finish();
+      }
+      return;
+    }
+    QQToast.a(amdv.a(this.a), 2131698365, 0).a();
+  }
+  
+  public void c(String paramString)
+  {
+    amdv.c(this.a);
+  }
+  
+  protected void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onGetDelSystemMsgError");
+    }
+    amdv.d(this.a);
+    String str = amdv.a(this.a).getResources().getString(2131718372);
+    QQToast.a(amdv.a(this.a), 1, str, 0).b(amdv.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amec
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,18 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
 
-public class afyp
-  implements DialogInterface.OnClickListener
+public final class afyp
+  implements Parcelable.Creator<ForwardUtils.Section_Pic>
 {
-  public afyp(QQStoryItemBuilder paramQQStoryItemBuilder, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ForwardUtils.Section_Pic a(Parcel paramParcel)
   {
-    acjm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    return new ForwardUtils.Section_Pic(paramParcel);
+  }
+  
+  public ForwardUtils.Section_Pic[] a(int paramInt)
+  {
+    return new ForwardUtils.Section_Pic[paramInt];
   }
 }
 

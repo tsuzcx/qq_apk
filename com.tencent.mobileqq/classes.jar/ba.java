@@ -3,33 +3,71 @@ import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.mobileqq.data.DataLineMsgSetList;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-public class ba
+class ba
   implements DialogInterface.OnClickListener
 {
-  public ba(LiteActivity paramLiteActivity, List paramList) {}
+  ba(az paramaz) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    alqo localalqo = (alqo)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
-    localalqo.b(113);
-    localalqo.a(116);
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    anjx localanjx = (anjx)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+    Object localObject;
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335))
     {
-      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-      if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null)) {
-        dl.f(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
+      this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause = true;
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) {
+        dq.m(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
       }
-      localArrayList.add(Long.valueOf(localDataLineMsgRecord.sessionid));
     }
-    localalqo.a(localArrayList);
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.notifyDataSetChanged();
-    paramDialogInterface.dismiss();
+    else
+    {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000) && (!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle())) {
+        dq.o(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) || (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335)) {
+        break label251;
+      }
+      localanjx.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupId(), 0L, true);
+      localObject = null;
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      localanjx.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
+      if (paramInt != 0) {
+        localanjx.a((DataLineMsgSet)localObject);
+      }
+      this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_Dy.b();
+      this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_Dy.notifyDataSetChanged();
+      paramDialogInterface.dismiss();
+      return;
+      dq.k(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
+      break;
+      label251:
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
+        localanjx.a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, true);
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().size() == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2005))
+      {
+        paramInt = this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.getSetIndex(((DataLineMsgRecord)this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().get(0)).sessionid) + 1;
+        if ((paramInt < this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.size()) && (((DataLineMsgRecord)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.get(paramInt).values().get(0)).msgtype == -5041) && (Long.parseLong(((DataLineMsgRecord)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.get(paramInt).values().get(0)).getExtInfoFromExtStr("tim_aio_file_msg_uiniseq")) == ((DataLineMsgRecord)this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().get(0)).sessionid))
+        {
+          localObject = this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSetList.get(paramInt);
+          paramInt = 1;
+          continue;
+        }
+      }
+      localObject = null;
+      paramInt = 0;
+    }
   }
 }
 

@@ -1,52 +1,160 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.observer.SSOAccountObserver;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.support.annotation.Nullable;
+import android.util.AndroidRuntimeException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 
-class batc
-  extends SSOAccountObserver
+public class batc
+  implements barz, basf
 {
-  batc(batb parambatb) {}
+  private bary jdField_a_of_type_Bary = new batd(this);
+  private batf jdField_a_of_type_Batf;
+  private batg jdField_a_of_type_Batg = new batg();
+  private Comparator<basb> jdField_a_of_type_JavaUtilComparator = new bate(this);
+  private final List<basb> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  private void f()
   {
-    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onFailed|account=" + paramString + ",ret=" + paramInt2);
-    if (basx.b(this.a.b) == 11) {
-      aseh.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
-    }
-    this.a.b.b(9401, "get sKey failed");
-    this.a.c();
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.share.ForwardSdkShareProcessor", 2, "GetSKeyStep|onGetTicketNoPasswd|account=" + paramString + ",type=" + paramInt);
-    }
-    if (basx.b(this.a.b) == 11) {
-      aseh.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, true);
-    }
-    long l = System.currentTimeMillis();
-    if (paramInt == 4096)
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      basx.d(this.a.b, new String(paramArrayOfByte));
-      batb.a(this.a).set(true);
-      bfnz.a(paramString, l);
-      this.a.b();
-      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext()) {
+        ((basb)localIterator.next()).b();
+      }
     }
-    this.a.b.b(9401, "get sKey failed");
-    this.a.c();
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
   
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  public int a()
   {
-    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onUserCancel|action=" + paramInt);
-    if (basx.b(this.a.b) == 11) {
-      aseh.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      return i;
     }
-    this.a.b.b(9401, "onUserCancel");
-    this.a.c();
+  }
+  
+  public int a(List<basb> paramList)
+  {
+    if (paramList.size() > 0) {
+      yqp.c("FlowEdit_VideoFlowDecodeWrapper", "onFrameReached : size " + paramList.size() + ", range [" + ((basb)paramList.get(0)).a() + " - " + ((basb)paramList.get(paramList.size() - 1)).a() + "], cycle " + ((basb)paramList.get(0)).b() + ", current size " + this.jdField_a_of_type_JavaUtilList.size());
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+        Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilComparator);
+        int j = this.jdField_a_of_type_JavaUtilList.size();
+        if (j <= 5) {
+          break;
+        }
+        i = 1;
+        if ((i != 0) && (this.jdField_a_of_type_Batf != null)) {
+          this.jdField_a_of_type_Batf.a();
+        }
+        return j;
+        yqp.d("FlowEdit_VideoFlowDecodeWrapper", "onFrameReached : size 0");
+      }
+      int i = 0;
+    }
+  }
+  
+  @Nullable
+  public basb a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      {
+        basb localbasb = (basb)this.jdField_a_of_type_JavaUtilList.remove(0);
+        return localbasb;
+      }
+      return null;
+    }
+  }
+  
+  public void a()
+  {
+    yqp.a("FlowEdit_VideoFlowDecodeWrapper", new Throwable(), "stopDecode", new Object[0]);
+    this.jdField_a_of_type_Batg.a();
+    yqp.c("FlowEdit_VideoFlowDecodeWrapper", "clear frame list because of stopDecode");
+    f();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Batg.a(paramInt);
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_Batg.a(paramLong1, paramLong2);
+  }
+  
+  public void a(barv parambarv, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, bary parambary)
+  {
+    throw new AndroidRuntimeException("please use startDecode(FlowDecodeConfig, FlowListener) instead");
+  }
+  
+  public void a(base parambase, batf parambatf)
+  {
+    this.jdField_a_of_type_Batf = parambatf;
+    yqp.a("FlowEdit_VideoFlowDecodeWrapper", new Throwable(), "startDecode : decodeConfig = %s", new Object[] { parambase });
+    this.jdField_a_of_type_Batg.a(parambase, this.jdField_a_of_type_Bary, this);
+  }
+  
+  @Nullable
+  public basb b()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      {
+        basb localbasb = (basb)this.jdField_a_of_type_JavaUtilList.get(0);
+        return localbasb;
+      }
+      return null;
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Batg.b();
+  }
+  
+  @Nullable
+  public basb c()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() >= 2)
+      {
+        basb localbasb = (basb)this.jdField_a_of_type_JavaUtilList.get(1);
+        return localbasb;
+      }
+      return null;
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Batg.c();
+  }
+  
+  public void d()
+  {
+    yqp.c("FlowEdit_VideoFlowDecodeWrapper", "clear frame list because of play range change");
+    f();
+  }
+  
+  public void e()
+  {
+    yqp.c("FlowEdit_VideoFlowDecodeWrapper", "clear frame list because of direction change");
+    f();
   }
 }
 

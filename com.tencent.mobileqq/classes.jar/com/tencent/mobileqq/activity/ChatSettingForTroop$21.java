@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import bdbk;
-import bdhj;
+import aoch;
+import bgmo;
 import java.util.List;
 
 class ChatSettingForTroop$21
@@ -33,9 +33,9 @@ class ChatSettingForTroop$21
         long l = Long.valueOf((String)localObject).longValue();
         if (l == this.a)
         {
-          localObject = bdhj.a();
-          localObject = bdbk.a(this.this$0.app, 1, Long.toString(this.a), 3, (Drawable)localObject, (Drawable)localObject, 4);
-          this.this$0.runOnUiThread(new ChatSettingForTroop.21.1(this, localImageView, (bdbk)localObject));
+          localObject = bgmo.a();
+          localObject = aoch.a(this.this$0.app, 1, Long.toString(this.a), 3, (Drawable)localObject, (Drawable)localObject, 4);
+          this.this$0.runOnUiThread(new ChatSettingForTroop.21.1(this, localImageView, (aoch)localObject));
           return;
         }
       }
@@ -48,7 +48,7 @@ class ChatSettingForTroop$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.21
  * JD-Core Version:    0.7.0.1
  */

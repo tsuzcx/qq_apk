@@ -1,247 +1,260 @@
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskHttpDownload;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskHttpDownloadThumbnail;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import java.util.UUID;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
 public class bfsb
-  extends bfsa
+  extends aark
 {
-  private HashMap<String, bfrx> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private List<bfry> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public String c = "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin";
+  public bfsb(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  private bfrx a(String paramString1, String paramString2, bfry parambfry)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (parambfry == null)) {}
-    String[] arrayOfString;
-    do
-    {
-      int i;
-      do
-      {
-        return null;
-        i = paramString2.lastIndexOf("/") + 1;
-      } while (i < 2);
-      str1 = paramString2.substring(i);
-      paramString2 = paramString2.substring(0, i).split("/");
-      arrayOfString = str1.split(parambfry.jdField_b_of_type_JavaLangString);
-      if ((paramString2.length >= parambfry.jdField_a_of_type_Int) && (arrayOfString.length >= parambfry.d)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("WadlCommConfig", 1, "interrupt url fail, pathInfo.length=" + paramString2.length + ",fileInfo.length=" + arrayOfString.length);
-    return null;
-    String str2 = paramString2[parambfry.jdField_b_of_type_Int];
-    if (parambfry.c > -1)
-    {
-      paramString2 = paramString2[parambfry.c];
-      if (parambfry.e <= -1) {
-        break label192;
-      }
-    }
-    label192:
-    for (String str1 = arrayOfString[parambfry.e];; str1 = "")
-    {
-      return new bfrx(str2, paramString2, str1, arrayOfString[parambfry.f], paramString1);
-      paramString2 = "";
-      break;
-    }
-  }
-  
-  /* Error */
-  public bfrx a(String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 36	bfsb:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   4: aload_1
-    //   5: invokevirtual 127	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   8: checkcast 112	bfrx
-    //   11: astore_2
-    //   12: aload_2
-    //   13: astore_3
-    //   14: aload_2
-    //   15: ifnonnull +70 -> 85
-    //   18: aload_0
-    //   19: getfield 31	bfsb:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   22: invokeinterface 133 1 0
-    //   27: astore 4
-    //   29: aload_2
-    //   30: astore_3
-    //   31: aload 4
-    //   33: invokeinterface 138 1 0
-    //   38: ifeq +47 -> 85
-    //   41: aload 4
-    //   43: invokeinterface 142 1 0
-    //   48: checkcast 65	bfry
-    //   51: astore_3
-    //   52: aload_3
-    //   53: getfield 144	bfry:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   56: invokestatic 150	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
-    //   59: aload_1
-    //   60: invokevirtual 154	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   63: astore 5
-    //   65: aload 5
-    //   67: invokevirtual 159	java/util/regex/Matcher:find	()Z
-    //   70: ifeq -41 -> 29
-    //   73: aload_0
-    //   74: aload_1
-    //   75: aload 5
-    //   77: invokevirtual 162	java/util/regex/Matcher:group	()Ljava/lang/String;
-    //   80: aload_3
-    //   81: invokespecial 164	bfsb:a	(Ljava/lang/String;Ljava/lang/String;Lbfry;)Lbfrx;
-    //   84: astore_3
-    //   85: aload_3
-    //   86: areturn
-    //   87: astore_1
-    //   88: aconst_null
-    //   89: astore_2
-    //   90: aload_1
-    //   91: invokevirtual 167	java/lang/Exception:printStackTrace	()V
-    //   94: aload_2
-    //   95: areturn
-    //   96: astore_1
-    //   97: goto -7 -> 90
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	100	0	this	bfsb
-    //   0	100	1	paramString	String
-    //   11	84	2	localbfrx	bfrx
-    //   13	73	3	localObject	Object
-    //   27	15	4	localIterator	java.util.Iterator
-    //   63	13	5	localMatcher	java.util.regex.Matcher
-    // Exception table:
-    //   from	to	target	type
-    //   0	12	87	java/lang/Exception
-    //   18	29	96	java/lang/Exception
-    //   31	85	96	java/lang/Exception
-  }
-  
-  public HashSet<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashSet;
-  }
-  
-  public void a(String arg1)
-  {
-    boolean bool = true;
-    super.a(???);
-    Object localObject3;
-    int j;
-    int i;
-    Object localObject4;
+    long l = paramBundle.getLong("troopUin");
+    Object localObject2;
+    Object localObject1;
     try
     {
-      JSONObject localJSONObject = new JSONObject(new JSONObject(???).optString(this.jdField_a_of_type_JavaLangString));
-      this.c = localJSONObject.optString("download_mgr_url", "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin");
-      localObject3 = localJSONObject.optJSONArray("websso_cmds");
-      if (localObject3 == null) {
-        break label137;
-      }
-      j = ((JSONArray)localObject3).length();
-      if (j <= 0) {
-        break label137;
-      }
-      synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+      localObject2 = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
+      if (localObject2 == null)
       {
-        this.jdField_a_of_type_JavaUtilHashSet.clear();
-        i = 0;
-        if (i >= j) {
-          break label135;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileTransferManager", 4, "bad troopUin" + l);
         }
-        localObject4 = ((JSONArray)localObject3).optString(i);
-        if (TextUtils.isEmpty((CharSequence)localObject4)) {
-          break label531;
-        }
-        this.jdField_a_of_type_JavaUtilHashSet.add(localObject4);
+        return;
       }
-      return;
-    }
-    catch (JSONException ???)
-    {
-      ???.printStackTrace();
-    }
-    label134:
-    label135:
-    label137:
-    if (localObject1.optInt("providerSwitch", 1) == 1) {}
-    for (;;)
-    {
-      cooperation.wadl.WadlProvider.jdField_a_of_type_Boolean = bool;
-      cooperation.wadl.WadlProvider.jdField_a_of_type_JavaLangString = localObject1.optString("providerSignKey", "");
-      ??? = localObject1.optJSONObject("url_match_rule");
-      if (??? == null) {
-        break label134;
+      String str = paramBundle.getString("itemKey");
+      if (str == null) {
+        return;
       }
-      Object localObject2 = ???.optJSONArray("reg_list");
-      if (localObject2 != null)
+      localObject1 = UUID.fromString(str);
+      try
       {
-        j = ((JSONArray)localObject2).length();
-        if (j > 0) {
-          i = 0;
+        localObject1 = (TroopFileTransferManager.Item)((TroopFileTransferManager)localObject2).jdField_a_of_type_JavaUtilMap.get(localObject1);
+        if (localObject1 == null)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.i("TroopFileTransferManager", 4, "bad item key" + str);
+          }
+          return;
         }
       }
+      finally {}
+    }
+    finally {}
+    int i = atvo.a(atwl.a(((TroopFileTransferManager.Item)localObject1).FileName));
+    paramInt = paramBundle.getInt("thumbNail");
+    boolean bool2 = paramBundle.getBoolean("isPreview", false);
+    paramBundle = new bfsf();
+    paramBundle.jdField_a_of_type_Int = -1;
+    try
+    {
+      paramBundle.e = ((TroopFileTransferManager.Item)localObject1).Id.toString();
+      if (QLog.isDevelopLevel())
+      {
+        localObject2 = new StringBuilder().append("isSuccess=").append(paramBoolean).append(", resp=");
+        if (paramDownloadFileRspBody != null)
+        {
+          bool1 = true;
+          QLog.i("TroopFileTransferManager", 4, bool1);
+        }
+      }
+      else
+      {
+        if ((paramDownloadFileRspBody != null) && (paramBoolean)) {
+          break label504;
+        }
+        if ((i == 2) && (QLog.isColorLevel()))
+        {
+          localObject2 = new StringBuilder().append("mReqDownloadFileObserver failed return, fn=").append(((TroopFileTransferManager.Item)localObject1).FileName).append(", isSucc").append(paramBoolean).append(", resp=");
+          if (paramDownloadFileRspBody == null) {
+            break label390;
+          }
+          paramBoolean = true;
+          QLog.e(".troop.troop_file_video.thumb", 2, paramBoolean);
+        }
+        if (paramInt != 128) {
+          break label395;
+        }
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Small = false;
+        return;
+      }
+    }
+    catch (NullPointerException localNullPointerException)
+    {
       for (;;)
       {
-        if (i < j)
-        {
-          localObject3 = ((JSONArray)localObject2).getJSONObject(i);
-          localObject4 = new bfry();
-          ((bfry)localObject4).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).getString("pattern");
-          ((bfry)localObject4).jdField_a_of_type_Int = ((JSONObject)localObject3).getInt("path_node_num");
-          ((bfry)localObject4).jdField_b_of_type_Int = ((JSONObject)localObject3).getInt("appid_index");
-          ((bfry)localObject4).c = ((JSONObject)localObject3).optInt("app_name_index", -1);
-          ((bfry)localObject4).jdField_b_of_type_JavaLangString = ((JSONObject)localObject3).getString("split_name_char");
-          ((bfry)localObject4).d = ((JSONObject)localObject3).getInt("name_node_num");
-          ((bfry)localObject4).e = ((JSONObject)localObject3).optInt("channel_index", -1);
-          ((bfry)localObject4).f = ((JSONObject)localObject3).getInt("pkg_name_index");
-          if ((((bfry)localObject4).jdField_b_of_type_Int < ((bfry)localObject4).jdField_a_of_type_Int) && (((bfry)localObject4).c < ((bfry)localObject4).jdField_a_of_type_Int) && (((bfry)localObject4).e < ((bfry)localObject4).d) && (((bfry)localObject4).f < ((bfry)localObject4).d)) {
-            this.jdField_a_of_type_JavaUtilList.add(localObject4);
-          }
-        }
-        else
-        {
-          ??? = ???.optJSONArray("replace_list");
-          if (??? == null) {
-            break label134;
-          }
-          j = ???.length();
-          if (j <= 0) {
-            break label134;
-          }
-          i = 0;
-          while (i < j)
-          {
-            Object localObject5 = ???.getJSONObject(i);
-            localObject2 = ((JSONObject)localObject5).getString("url");
-            localObject3 = ((JSONObject)localObject5).getString("appid");
-            localObject4 = ((JSONObject)localObject5).optString("app_name", "");
-            String str1 = ((JSONObject)localObject5).optString("channel", "");
-            String str2 = ((JSONObject)localObject5).getString("pkg_name");
-            localObject5 = ((JSONObject)localObject5).optString("replace_url", "");
-            this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, new bfrx((String)localObject3, (String)localObject4, str1, str2, (String)localObject5));
-            i += 1;
-          }
-          break label134;
-          label531:
-          i += 1;
-          break;
-        }
-        i += 1;
+        paramBundle.e = null;
+        continue;
+        boolean bool1 = false;
+        continue;
+        label390:
+        paramBoolean = false;
       }
-      bool = false;
+      label395:
+      if (paramInt == 640)
+      {
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Large = false;
+        return;
+      }
+      if (paramInt == 383)
+      {
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Middle = false;
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Middle_Fail = true;
+        this.a.d((TroopFileTransferManager.Item)localObject1);
+        return;
+      }
+      if (bool2)
+      {
+        bfrh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, 700);
+        paramBundle.jdField_a_of_type_Boolean = false;
+        ((anie)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22)).c(paramBundle);
+        return;
+      }
+      this.a.a((TroopFileTransferManager.Item)localObject1, 10, 103);
+      return;
+    }
+    label504:
+    i = paramDownloadFileRspBody.int32_ret_code.get();
+    paramBundle.jdField_a_of_type_Int = i;
+    if (bool2)
+    {
+      paramBundle.jdField_a_of_type_Boolean = false;
+      paramBundle.jdField_a_of_type_JavaLangString = paramDownloadFileRspBody.str_download_ip.get();
+      if ((TextUtils.isEmpty(paramBundle.jdField_a_of_type_JavaLangString)) || (paramBundle.jdField_a_of_type_JavaLangString.equals("0.0.0.0"))) {
+        paramBundle.jdField_a_of_type_JavaLangString = paramDownloadFileRspBody.str_download_dns.get().toString();
+      }
+      paramBundle.b = String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get());
+      paramBundle.c = paramDownloadFileRspBody.str_ret_msg.get();
+      paramBundle.d = bgmj.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.troop_file_video.thumb", 2, "mReqDownloadFileObserver, fn=" + ((TroopFileTransferManager.Item)localObject1).FileName + ", retCode=" + i + ", bPreview=" + bool2);
+    }
+    ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Middle_Fail = false;
+    if (i < 0)
+    {
+      if (paramInt == 128)
+      {
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Small = false;
+        return;
+      }
+      if (paramInt == 640)
+      {
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Large = false;
+        return;
+      }
+      if (paramInt == 383)
+      {
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Middle = false;
+        ((TroopFileTransferManager.Item)localObject1).ThumbnailDownloading_Middle_Fail = true;
+        if ((i == -103) || (i == -302) || (i == -301))
+        {
+          TroopFileTransferManager.a(this.a, (TroopFileTransferManager.Item)localObject1);
+          return;
+        }
+        this.a.d((TroopFileTransferManager.Item)localObject1);
+        return;
+      }
+      if (bool2)
+      {
+        bfrh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, 700);
+        if (TextUtils.isEmpty(paramBundle.c)) {
+          paramBundle.c = anni.a(2131714033);
+        }
+        paramBundle.jdField_a_of_type_Boolean = false;
+        ((anie)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22)).c(paramBundle);
+        return;
+      }
+      QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+      QLog.i("TroopFileTransferManager", 1, "download_failed,troopUin=" + this.a.e + ",fileName=" + ((TroopFileTransferManager.Item)localObject1).FileName + ",filePath=" + ((TroopFileTransferManager.Item)localObject1).FilePath + ",retCode=" + i);
+    }
+    switch (i)
+    {
+    case -134: 
+    default: 
+      if (bool2)
+      {
+        paramBundle.jdField_a_of_type_Boolean = true;
+        ((anie)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22)).c(paramBundle);
+        return;
+      }
+      break;
+    case -107: 
+    case -102: 
+      this.a.a((TroopFileTransferManager.Item)localObject1, 10, 101);
+      if (paramInt != 0) {
+        return;
+      }
+      bfui.b(bfuj.c, i);
+      return;
+    case -302: 
+    case -301: 
+    case -103: 
+      TroopFileTransferManager.a(this.a, (TroopFileTransferManager.Item)localObject1, 301);
+      if (((TroopFileTransferManager.Item)localObject1).TmpFile != null) {
+        new File(((TroopFileTransferManager.Item)localObject1).TmpFile).delete();
+      }
+      ((TroopFileTransferManager.Item)localObject1).deleteThumbnailFile(this.a.e, 128);
+      ((TroopFileTransferManager.Item)localObject1).deleteThumbnailFile(this.a.e, 640);
+      TroopFileTransferManager.a(this.a, (TroopFileTransferManager.Item)localObject1);
+      if (paramInt != 0) {
+        return;
+      }
+      bfui.b(bfuj.c, i);
+      return;
+    }
+    ((TroopFileTransferManager.Item)localObject1).cookieValue = bgmj.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+    if (((TroopFileTransferManager.Item)localObject1).cookieValue != null) {
+      ((TroopFileTransferManager.Item)localObject1).cookieValue = ((TroopFileTransferManager.Item)localObject1).cookieValue.toLowerCase();
+    }
+    ((TroopFileTransferManager.Item)localObject1).DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+    ((TroopFileTransferManager.Item)localObject1).DownloadUrl = bgmj.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+    ((TroopFileTransferManager.Item)localObject1).Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+    ((TroopFileTransferManager.Item)localObject1).NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+    if (TextUtils.isEmpty(((TroopFileTransferManager.Item)localObject1).DownloadIp)) {
+      bfui.a("gfile", "ipnull", "", "", "", "");
+    }
+    if ((i == -133) || (i == -132)) {
+      this.a.a((TroopFileTransferManager.Item)localObject1, ((TroopFileTransferManager.Item)localObject1).Status, 309);
+    }
+    while ((paramInt == 128) || (paramInt == 383) || (paramInt == 640))
+    {
+      paramDownloadFileRspBody = new TroopFileTransferManager.TaskHttpDownloadThumbnail(this.a, (TroopFileTransferManager.Item)localObject1, paramInt, String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get()));
+      this.a.jdField_a_of_type_ArrayOfBfsg[4].a(paramDownloadFileRspBody);
+      return;
+      if (i == -134)
+      {
+        this.a.a((TroopFileTransferManager.Item)localObject1, 10, 302);
+        if (paramInt != 0) {
+          return;
+        }
+        bfui.b(bfuj.c, i);
+        return;
+      }
+    }
+    if (!this.a.c((TroopFileTransferManager.Item)localObject1)) {
+      this.a.jdField_a_of_type_ArrayOfBfsg[3].a(new TroopFileTransferManager.TaskHttpDownload(this.a, (TroopFileTransferManager.Item)localObject1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfsb
  * JD-Core Version:    0.7.0.1
  */

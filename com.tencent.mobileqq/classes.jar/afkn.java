@@ -1,14 +1,16 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.GridView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 
 public class afkn
-  extends aepm
+  implements DialogInterface.OnClickListener
 {
-  public RelativeLayout a;
-  public GridView a;
-  public RelativeLayout b;
-  public TextView b;
+  public afkn(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 

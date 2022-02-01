@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.manager;
 
-import alud;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import anni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
@@ -18,7 +18,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ndr;
+import nmk;
 import org.json.JSONObject;
 
 public class EngineInstaller
@@ -615,11 +615,11 @@ public class EngineInstaller
     //   60: aload_0
     //   61: fconst_1
     //   62: ldc_w 416
-    //   65: invokestatic 422	alud:a	(I)Ljava/lang/String;
+    //   65: invokestatic 422	anni:a	(I)Ljava/lang/String;
     //   68: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
     //   71: aload 4
     //   73: aload_1
-    //   74: invokestatic 427	ndr:a	(Ljava/lang/String;Ljava/lang/String;)I
+    //   74: invokestatic 427	nmk:a	(Ljava/lang/String;Ljava/lang/String;)I
     //   77: istore 6
     //   79: iload 6
     //   81: ifne +346 -> 427
@@ -628,7 +628,7 @@ public class EngineInstaller
     //   90: aload_0
     //   91: fconst_1
     //   92: ldc_w 428
-    //   95: invokestatic 422	alud:a	(I)Ljava/lang/String;
+    //   95: invokestatic 422	anni:a	(I)Ljava/lang/String;
     //   98: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
     //   101: ldc2_w 193
     //   104: invokestatic 200	java/lang/Thread:sleep	(J)V
@@ -673,7 +673,7 @@ public class EngineInstaller
     //   194: aload_0
     //   195: fconst_1
     //   196: ldc_w 439
-    //   199: invokestatic 422	alud:a	(I)Ljava/lang/String;
+    //   199: invokestatic 422	anni:a	(I)Ljava/lang/String;
     //   202: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
     //   205: ldc2_w 193
     //   208: invokestatic 200	java/lang/Thread:sleep	(J)V
@@ -712,7 +712,7 @@ public class EngineInstaller
     //   279: aload_0
     //   280: fconst_0
     //   281: ldc_w 442
-    //   284: invokestatic 422	alud:a	(I)Ljava/lang/String;
+    //   284: invokestatic 422	anni:a	(I)Ljava/lang/String;
     //   287: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
     //   290: iload 10
     //   292: istore 7
@@ -735,7 +735,7 @@ public class EngineInstaller
     //   331: aload_0
     //   332: fconst_0
     //   333: ldc_w 445
-    //   336: invokestatic 422	alud:a	(I)Ljava/lang/String;
+    //   336: invokestatic 422	anni:a	(I)Ljava/lang/String;
     //   339: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
     //   342: aload 4
     //   344: iconst_1
@@ -752,7 +752,7 @@ public class EngineInstaller
     //   368: aload_0
     //   369: fconst_0
     //   370: ldc_w 446
-    //   373: invokestatic 422	alud:a	(I)Ljava/lang/String;
+    //   373: invokestatic 422	anni:a	(I)Ljava/lang/String;
     //   376: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
     //   379: iload 10
     //   381: istore 7
@@ -768,7 +768,7 @@ public class EngineInstaller
     //   399: aload_0
     //   400: fconst_1
     //   401: ldc_w 447
-    //   404: invokestatic 422	alud:a	(I)Ljava/lang/String;
+    //   404: invokestatic 422	anni:a	(I)Ljava/lang/String;
     //   407: invokespecial 52	com/tencent/mobileqq/minigame/manager/EngineInstaller:updateMessage	(FLjava/lang/String;)V
     //   410: goto -205 -> 205
     //   413: astore 11
@@ -863,7 +863,7 @@ public class EngineInstaller
   
   private boolean verifyBaselib(String paramString1, String paramString2)
   {
-    long l1 = ndr.a(paramString1);
+    long l1 = nmk.a(paramString1);
     if (l1 <= 0L)
     {
       QLog.e("EngineInstaller", 1, "[MiniEng] getUncompressedFileSize error " + paramString1 + ", sz=" + l1);
@@ -1053,7 +1053,7 @@ public class EngineInstaller
       {
         workBegin();
         if (bool1) {
-          updateMessage(0.0F, alud.a(2131704520) + paramBaseLibInfo.baseLibVersion + ")");
+          updateMessage(0.0F, anni.a(2131702917) + paramBaseLibInfo.baseLibVersion + ")");
         }
         for (;;)
         {
@@ -1064,7 +1064,7 @@ public class EngineInstaller
           QLog.i("EngineInstaller", 1, "[MiniEng] mkdir failed, is disk writable? " + localFile.getAbsolutePath());
           workFinish();
           break;
-          updateMessage(0.0F, alud.a(2131704525) + paramBaseLibInfo.baseLibVersion + ")");
+          updateMessage(0.0F, anni.a(2131702922) + paramBaseLibInfo.baseLibVersion + ")");
         }
         label780:
         boolean bool2 = false;
@@ -1081,12 +1081,12 @@ public class EngineInstaller
         }
         try
         {
-          updateMessage(0.0F, alud.a(2131704521));
+          updateMessage(0.0F, anni.a(2131702918));
           paramBaseLibInfo = getInstallLibDir(localFile, localEngineVersion);
           QLog.i("EngineInstaller", 1, "[MiniEng] installLocalEngine start url=" + (String)localObject + ",installBasePath=" + paramBaseLibInfo);
           if (TextUtils.isEmpty(paramBaseLibInfo))
           {
-            updateMessage(0.0F, alud.a(2131704532));
+            updateMessage(0.0F, anni.a(2131702929));
             QLog.e("EngineInstaller", 1, "[MiniEng] installLocalEngine failed installBasePath=" + paramBaseLibInfo);
             workFinish();
             break;
@@ -1097,24 +1097,24 @@ public class EngineInstaller
       localObject = new File(paramBaseLibInfo);
       if ((!((File)localObject).exists()) && (!((File)localObject).mkdir()))
       {
-        updateMessage(0.0F, alud.a(2131704524));
+        updateMessage(0.0F, anni.a(2131702921));
         QLog.e("EngineInstaller", 1, "[MiniEng] installLocalEngine failed targetPath=" + localObject);
         workFinish();
         break;
       }
-      BaseLibManager.g().installInnerBaseLib();
+      BaseLibManager.g().installMiniGameInnerJsLib();
       QLog.i("EngineInstaller", 1, "[MiniEng] installLocalEngine finish copied " + paramCallback[0] + "<>" + l);
       if ((paramCallback[0] == l) || (l < 0L))
       {
         getSp().edit().putBoolean(paramBaseLibInfo, true).commit();
         updateInstalledEngine();
-        updateMessage(1.0F, alud.a(2131704519));
+        updateMessage(1.0F, anni.a(2131702916));
       }
       for (;;)
       {
         workFinish();
         break;
-        updateMessage(0.0F, alud.a(2131704530));
+        updateMessage(0.0F, anni.a(2131702927));
       }
       label1143:
       installedFromNetwork(paramBaseLibInfo, (String)localObject, l, localFile, localEngineVersion, bool1);
@@ -1154,7 +1154,7 @@ public class EngineInstaller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.EngineInstaller
  * JD-Core Version:    0.7.0.1
  */

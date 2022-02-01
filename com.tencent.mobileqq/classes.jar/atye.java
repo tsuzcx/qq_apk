@@ -1,26 +1,20 @@
-import java.math.BigDecimal;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class atye
+  implements atve
 {
-  public String a;
-  public String b;
-  public String c;
+  public atye(SendBottomBar paramSendBottomBar) {}
   
-  public String a(int paramInt, float paramFloat)
+  public void a()
   {
-    String str = null;
-    if (this.c != null)
-    {
-      str = this.c.replaceFirst("%param%", "" + paramInt);
-      paramFloat = new BigDecimal(paramFloat).setScale(1, 4).floatValue();
-      str = str.replaceFirst("%param%", "" + paramFloat);
-    }
-    return str;
+    SendBottomBar.h(this.a);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atye
  * JD-Core Version:    0.7.0.1
  */

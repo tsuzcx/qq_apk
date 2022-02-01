@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-
-class acvs
-  implements DialogInterface.OnClickListener
+public class acvs
 {
-  acvs(acvq paramacvq) {}
+  public long a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public boolean c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    this.a.a.a.sendEmptyMessage(259);
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = paramBoolean;
   }
 }
 

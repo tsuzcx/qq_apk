@@ -2,7 +2,7 @@ package cooperation.qzone.plugin;
 
 import NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO;
 import android.content.Context;
-import bjon;
+import bmcw;
 import java.util.ArrayList;
 import mqq.app.NewIntent;
 import mqq.app.Servlet;
@@ -10,7 +10,7 @@ import mqq.app.Servlet;
 public class PluginIntent
   extends NewIntent
 {
-  bjon a;
+  bmcw a;
   public ArrayList<UPDATE_INFO> a;
   public ArrayList<UPDATE_INFO> b;
   
@@ -19,19 +19,19 @@ public class PluginIntent
     super(paramContext, paramClass);
   }
   
-  public bjon a()
+  public bmcw a()
   {
     return this.a;
   }
   
-  public void a(bjon parambjon)
+  public void a(bmcw parambmcw)
   {
-    this.a = parambjon;
+    this.a = parambmcw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.plugin.PluginIntent
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/alq" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/hvh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0KB/s" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="14.0dip" android:textColor="#80ffffff" android:id="@id/jmx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wno" android:layout_below="@id/hvh" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat android:id="@id/nx9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/nwo" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <ImageView android:id="@id/nw_" android:paddingLeft="@dimen/mp" android:paddingTop="@dimen/mp" android:paddingRight="@dimen/mp" android:paddingBottom="@dimen/mp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dtr" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout android:id="@id/nwr" android:layout_width="120.0dip" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/nwb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/crg" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@id/nwm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="52.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/nwk" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/com" />
+            <ImageView android:id="@id/nwf" android:background="@drawable/dho" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignRight="@id/nwk" />
+        </RelativeLayout>
+        <View android:id="@id/nws" android:background="#33979797" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <ViewStub android:layout_gravity="bottom|center|right" android:id="@id/nxa" android:layout="@layout/ckj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mw" android:layout_marginRight="@dimen/mw" android:layout_marginBottom="@dimen/n5" />
+    <ViewStub android:id="@id/nwi" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:layout_gravity="center|right|top" android:id="@id/nx_" android:layout="@layout/cki" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="60.0dip" />
+</FrameLayout>

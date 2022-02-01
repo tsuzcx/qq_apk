@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import java.util.List;
 
-public class sse
-  implements View.OnClickListener
+class sse
+  extends pue
 {
-  public sse(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
-  
-  public void onClick(View paramView)
+  sse(ssd paramssd, String paramString, List paramList)
   {
-    this.a.doOnBackPressed();
+    super(paramString);
+  }
+  
+  public void a(ptx paramptx)
+  {
+    paramptx.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sse
  * JD-Core Version:    0.7.0.1
  */

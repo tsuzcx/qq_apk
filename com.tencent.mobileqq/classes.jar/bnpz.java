@@ -1,53 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
-import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.Manager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bnpz
-  implements Manager
+final class bnpz
+  implements DialogInterface.OnClickListener
 {
-  public static long a;
-  public QQAppInterface a;
-  Timer a;
-  public PriorityBlockingQueue<bnqa> a;
-  public AtomicBoolean a;
-  
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_Long = 86400000L;
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel())
-    {
-      String str = paramString2;
-      if (paramString2 == null) {
-        str = "";
-      }
-      QLog.d("ShortVideoPreDownloader", 2, paramString1 + "(): " + str);
-    }
-  }
-  
-  public void a(bnqa parambnqa)
-  {
-    bnpu.a(parambnqa, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "launchRequest:" + parambnqa.a.busiType);
-    }
-  }
-  
-  public void onDestroy()
-  {
-    a("onDestroy", null);
-    if (this.jdField_a_of_type_JavaUtilTimer != null)
-    {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-      this.jdField_a_of_type_JavaUtilTimer.purge();
-    }
+    bnzb.d("AEResUtil", "【Camera is in Prepareing】toast show: choose cancel");
+    paramDialogInterface.cancel();
   }
 }
 

@@ -1,57 +1,43 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import auqt;
-import auqu;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.mini.sdk.BridgeInfo;
+import com.tencent.mobileqq.mini.widget.media.MiniAppAudioPlayer.OnPreparedListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class AudioJsPlugin$1
-  implements ServiceConnection
+  implements MiniAppAudioPlayer.OnPreparedListener
 {
-  AudioJsPlugin$1(AudioJsPlugin paramAudioJsPlugin) {}
+  AudioJsPlugin$1(AudioJsPlugin paramAudioJsPlugin, JSONObject paramJSONObject, BridgeInfo paramBridgeInfo) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onPrepared()
   {
-    AudioJsPlugin.access$2102(this.this$0, auqu.a(paramIBinder));
+    JSONObject localJSONObject = AudioJsPlugin.access$800(this.this$0, this.val$jsonObject).getAudioContext();
+    AudioJsPlugin.InnerAudioManager localInnerAudioManager = AudioJsPlugin.access$800(this.this$0, this.val$jsonObject);
+    int i = AudioJsPlugin.InnerAudioManager.access$000(localInnerAudioManager);
+    double d = AudioJsPlugin.InnerAudioManager.access$100(localInnerAudioManager);
+    boolean bool = AudioJsPlugin.InnerAudioManager.access$200(localInnerAudioManager);
     try
     {
-      if (AudioJsPlugin.access$2100(this.this$0) != null) {
-        AudioJsPlugin.access$2100(this.this$0).a(AudioJsPlugin.access$3100(this.this$0));
-      }
-      if (paramIBinder != null) {
-        paramIBinder.linkToDeath(new AudioJsPlugin.1.1(this, paramIBinder), 0);
-      }
+      localJSONObject.put("duration", i);
+      localJSONObject.put("currentTime", d);
+      localJSONObject.put("paused", bool);
+      localJSONObject.put("buffered", i);
+      AudioJsPlugin.access$900(this.this$0, "setAudioState", this.val$bridgeInfo, localJSONObject);
       return;
     }
-    catch (Exception paramComponentName)
+    catch (JSONException localJSONException)
     {
-      QLog.i("[mini] AudioJsPlugin", 2, "onServiceConnected " + paramComponentName);
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    QLog.i("[mini] AudioJsPlugin", 2, "onServiceDisconnected " + paramComponentName);
-    try
-    {
-      if (AudioJsPlugin.access$2100(this.this$0) != null)
+      for (;;)
       {
-        AudioJsPlugin.access$2100(this.this$0).b(AudioJsPlugin.access$3100(this.this$0));
-        AudioJsPlugin.access$2102(this.this$0, null);
+        localJSONException.printStackTrace();
       }
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      QLog.i("[mini] AudioJsPlugin", 2, "onServiceDisconnected " + paramComponentName);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AudioJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

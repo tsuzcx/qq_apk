@@ -1,26 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import java.lang.ref.WeakReference;
 
 public class ajpu
-  implements bhuk
+  implements DialogInterface.OnCancelListener
 {
-  public ajpu(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  private final WeakReference<ChatHistoryC2CDateFragment> a;
   
-  public void OnClick(View paramView, int paramInt)
+  ajpu(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    this.a = new WeakReference(paramChatHistoryC2CDateFragment);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
+    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
+      paramDialogInterface.dismiss();
     }
-    if (this.a.a.b.get() == 4) {
-      this.a.a(false);
-    }
-    this.a.a.a("FlowCameraActivity");
-    this.a.b();
-    ajpy.b("", "0X800656F", "0");
   }
 }
 

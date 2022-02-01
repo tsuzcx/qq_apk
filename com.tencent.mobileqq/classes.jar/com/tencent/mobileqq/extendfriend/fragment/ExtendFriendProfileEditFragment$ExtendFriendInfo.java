@@ -3,13 +3,13 @@ package com.tencent.mobileqq.extendfriend.fragment;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqem;
+import asjl;
 import com.tencent.mobileqq.data.Card;
 
 public class ExtendFriendProfileEditFragment$ExtendFriendInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<ExtendFriendInfo> CREATOR = new aqem();
+  public static final Parcelable.Creator<ExtendFriendInfo> CREATOR = new asjl();
   public int a;
   public long a;
   public String a;
@@ -147,7 +147,7 @@ public class ExtendFriendProfileEditFragment$ExtendFriendInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo
  * JD-Core Version:    0.7.0.1
  */

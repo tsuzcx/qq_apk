@@ -1,22 +1,17 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
 
-class qvs
+public class qvs
   implements View.OnClickListener
 {
-  qvs(qvp paramqvp) {}
+  public qvs(ComponentContentHotSearch paramComponentContentHotSearch) {}
   
-  public void onClick(View paramView)
-  {
-    GroupManagerActivity.a((Activity)this.a.a);
-    azqs.b(qvp.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qvs
  * JD-Core Version:    0.7.0.1
  */

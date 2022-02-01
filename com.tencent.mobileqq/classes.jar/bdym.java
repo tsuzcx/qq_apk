@@ -1,42 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 
-public class bdym
-  extends Handler
+class bdym
+  implements ITransCallbackForReport
 {
-  public bdym(PathTraceManager paramPathTraceManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bdym(bdyk parambdyk) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramMessage = (JSONObject)paramMessage.obj;
-        String str = paramMessage.getString("callback");
-        if (this.a.a != null)
-        {
-          bdyc localbdyc = (bdyc)this.a.a.get();
-          if (localbdyc != null)
-          {
-            localbdyc.callJs(str, new String[] { paramMessage.toString() });
-            return;
-          }
-        }
-      }
-      catch (Exception paramMessage) {}
-    }
+    this.a.a(false, paramInt, paramString1, paramString2);
   }
 }
 

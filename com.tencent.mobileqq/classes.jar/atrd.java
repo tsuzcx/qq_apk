@@ -1,21 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-public class atrd
-  implements DialogInterface.OnClickListener
+class atrd
+  implements bkij
 {
-  public atrd(LocationDialogUtil.5 param5) {}
+  atrd(atra paramatra) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.finish();
+    paramAdapterView = this.a;
+    boolean bool;
+    if (!atra.a(this.a))
+    {
+      bool = true;
+      atra.a(paramAdapterView, bool);
+      if (this.a.jdField_a_of_type_Atml != null) {
+        this.a.jdField_a_of_type_Atml.a(atra.a(this.a));
+      }
+      if (!atra.a(this.a)) {
+        break label110;
+      }
+      this.a.jdField_a_of_type_Atsm.a(false);
+      this.a.jdField_a_of_type_Atsm.b(false);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Atsm.e(atra.a(this.a));
+      return;
+      bool = false;
+      break;
+      label110:
+      this.a.jdField_a_of_type_Atsm.a(true);
+      this.a.h();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atrd
  * JD-Core Version:    0.7.0.1
  */

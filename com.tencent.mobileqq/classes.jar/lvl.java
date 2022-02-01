@@ -1,52 +1,91 @@
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import com.tencent.av.VideoConstants.EmShareOps;
+import com.tencent.av.VideoConstants.EmShareOpsRet;
+import com.tencent.av.VideoController;
+import com.tencent.av.screenshare.ScreenShareCtrl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class lvl
-  extends lvi
+  implements los, miv
 {
-  long jdField_b_of_type_Long;
-  int c;
-  int d;
-  int e;
-  String f;
+  private final lvm jdField_a_of_type_Lvm = new lvm();
+  private final WeakReference<ScreenShareCtrl> jdField_a_of_type_MqqUtilWeakReference;
   
-  public lvl(RandomWebProtocol paramRandomWebProtocol, lvi paramlvi, String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, long paramLong)
+  public lvl(ScreenShareCtrl paramScreenShareCtrl)
   {
-    super(paramRandomWebProtocol, paramlvi);
-    this.a = 3;
-    this.c = paramString1;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.f = paramString2;
-    this.e = paramInt3;
-    this.jdField_b_of_type_Long = paramLong;
-    this.d = ("[p]" + paramInt1 + paramInt2 + paramString2 + paramInt3 + paramLong);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramScreenShareCtrl);
   }
   
-  String a()
+  @TargetApi(21)
+  public void a(int paramInt)
   {
-    this.a = null;
-    try
-    {
-      this.a = new JSONObject().put("session_type", this.c).put("reqtype", this.d).put("groupid", this.jdField_b_of_type_Long);
-      if (2 == this.d) {
-        this.a.put("peer_enuin", ChatActivityUtils.b(RandomWebProtocol.a(), this.f)).put("peer_gender", this.e);
-      }
-      return super.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("AVShare", 2, "onMediaProjectionEnd fromType:=" + paramInt);
     }
-    catch (Exception localException)
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localScreenShareCtrl == null) {}
+    while (paramInt != 2) {
+      return;
+    }
+    if (localScreenShareCtrl.a(VideoConstants.EmShareOps.STOP) == VideoConstants.EmShareOpsRet.SUC) {}
+    for (paramInt = 2;; paramInt = 3)
     {
-      for (;;)
+      ScreenShareCtrl.a(paramInt);
+      return;
+    }
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(Bitmap paramBitmap, lvj paramlvj)
+  {
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localScreenShareCtrl != null) {
+      localScreenShareCtrl.a(paramBitmap, paramlvj);
+    }
+  }
+  
+  @TargetApi(21)
+  public void a(lvj paramlvj, int paramInt1, int paramInt2)
+  {
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localScreenShareCtrl == null) {}
+    do
+    {
+      return;
+      localScreenShareCtrl.a(paramlvj, paramInt1, paramInt2);
+      if (localScreenShareCtrl.a(VideoConstants.EmShareOps.START) == VideoConstants.EmShareOpsRet.SUC)
       {
-        localException.printStackTrace();
+        ScreenShareCtrl.a(4);
+        return;
       }
+      ScreenShareCtrl.a(6);
+      paramlvj = VideoController.a().a();
+    } while (paramlvj == null);
+    paramlvj.a(1);
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, lvj paramlvj)
+  {
+    this.jdField_a_of_type_Lvm.a(1, paramArrayOfByte, paramInt1, paramInt2, paramlvj);
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localScreenShareCtrl != null) {
+      localScreenShareCtrl.a(paramArrayOfByte, paramInt1, paramInt2, paramlvj);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AVShare", 2, "onMediaProjectionReady errorReason:=" + paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lvl
  * JD-Core Version:    0.7.0.1
  */

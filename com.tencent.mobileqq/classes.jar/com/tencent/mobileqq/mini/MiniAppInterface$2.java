@@ -26,13 +26,19 @@ class MiniAppInterface$2
         QLog.w("MiniAppInterface", 2, "accountReceiver.onReceive no exit!");
         return;
       }
-    } while ((!"mqq.intent.action.ACCOUNT_CHANGED".equals(paramContext)) && (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) && (!"mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext)) && (!"mqq.intent.action.LOGOUT".equals(paramContext)) && (!("mqq.intent.action.EXIT_" + MiniAppInterface.access$100(this.this$0).getPackageName()).equals(paramContext)));
+      if (("mqq.intent.action.ACCOUNT_CHANGED".equals(paramContext)) || ("mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) || ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext)) || ("mqq.intent.action.LOGOUT".equals(paramContext)) || (("mqq.intent.action.EXIT_" + MiniAppInterface.access$100(this.this$0).getPackageName()).equals(paramContext)))
+      {
+        this.this$0.exitProcess();
+        return;
+      }
+    } while (!"com.tencent.mobile.mini.process.exit".equals(paramContext));
+    QLog.w("MiniAppInterface", 2, "ACTION_MINI_PROCESS_EXIT.onReceive exit!");
     this.this$0.exitProcess();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.MiniAppInterface.2
  * JD-Core Version:    0.7.0.1
  */

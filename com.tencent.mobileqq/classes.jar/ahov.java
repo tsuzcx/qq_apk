@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahov
-  implements View.OnClickListener
+public class ahov
+  implements ahor
 {
-  ahov(ahot paramahot) {}
-  
-  public void onClick(View paramView)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    bcpx.a(ahot.a(this.a), paramView, 10001);
-    bdes.a("Grp_contacts_news", "notice", "recom_clk_add", 0, 0, new String[] { paramView.uin, paramView.recomAlgol });
+    paramagup.b(paramafzq, paramagwc, paramString);
   }
 }
 

@@ -1,22 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
-import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.common.app.AppInterface;
+import java.util.List;
 
 public class anvr
-  implements DialogInterface.OnDismissListener
+  implements anik
 {
-  public anvr(JumpConfirmFragment paramJumpConfirmFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public List<String> a(AppInterface paramAppInterface)
   {
-    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
+    return null;
   }
 }
 

@@ -1,123 +1,96 @@
-import android.text.TextUtils;
+import android.annotation.TargetApi;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
 import android.view.View;
-import com.tencent.biz.troopgift.GridListViewPager;
-import com.tencent.biz.troopgift.RadioViewPager;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.animation.AlphaAnimation;
 
+@TargetApi(14)
 public class ywa
-  extends bcoc
 {
-  public ywa(TroopGiftPanel paramTroopGiftPanel, ywp paramywp) {}
+  private static float jdField_a_of_type_Float;
+  private static int jdField_a_of_type_Int;
+  private static int b;
   
-  public void a(int paramInt, String paramString)
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    QLog.d("TroopGiftPanel", 1, "getPackGiftStorage, onError: errorCode = " + paramInt + ", errorMsg = " + paramString);
-    if (this.jdField_a_of_type_Ywp != null) {
-      this.jdField_a_of_type_Ywp.a(paramInt);
-    }
+    paramFloat1 -= paramFloat3;
+    paramFloat2 -= paramFloat4;
+    return (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
   }
   
-  public void a(List<bcoo> paramList, yvm paramyvm)
+  public static float a(Resources paramResources)
   {
-    boolean bool2 = true;
-    QLog.d("TroopGiftPanel", 1, "getPackGiftStorage, onGetPackageGiftList giveGifts.size=" + paramList.size());
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Yvk == null) {
-      return;
-    }
-    boolean bool1;
-    label170:
-    int i;
-    if (this.jdField_a_of_type_Ywp != null)
+    if ((b == 0) || (jdField_a_of_type_Int == 0))
     {
-      this.jdField_a_of_type_Ywp.a(paramList, paramyvm);
-      if ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfAndroidViewView[TroopGiftPanel.d] instanceof RadioViewPager))
-      {
-        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Yvk.a != null)
-        {
-          ((RadioViewPager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfAndroidViewView[TroopGiftPanel.d]).setEmptyInfo(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Yvk.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Yvk.a.b);
-          paramList = (RadioViewPager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfAndroidViewView[TroopGiftPanel.d];
-          if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Yvk.a.jdField_a_of_type_Int != 1) {
-            break label412;
-          }
-          bool1 = true;
-          paramList.setIsShowJumpInfo(bool1, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Yvk.a.c, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext);
-        }
-        if ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Yvk.e == null) || (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Yvk.e.size() <= 0)) {
-          break label418;
-        }
-        i = 1;
-        label227:
-        paramList = (RadioViewPager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfAndroidViewView[TroopGiftPanel.d];
-        if (i != 0) {
-          break label423;
-        }
-        bool1 = true;
-        label249:
-        paramList.setIsListEmpty(bool1);
-        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d())
-        {
-          paramList = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.i;
-          if (i == 0) {
-            break label429;
-          }
-          i = 0;
-          label279:
-          paramList.setVisibility(i);
-        }
-      }
+      paramResources = paramResources.getDisplayMetrics();
+      jdField_a_of_type_Int = paramResources.widthPixels;
+      b = paramResources.heightPixels;
+      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
     }
-    for (;;)
+    return jdField_a_of_type_Float;
+  }
+  
+  public static int a(Resources paramResources)
+  {
+    if (jdField_a_of_type_Int == 0)
     {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfComTencentBizTroopgiftGridListViewPager[TroopGiftPanel.d] != null)
-        {
-          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfComTencentBizTroopgiftGridListViewPager[TroopGiftPanel.d].setData(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Yvk.e);
-          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfComTencentBizTroopgiftGridListViewPager[TroopGiftPanel.d].a();
-        }
-        if (!this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d()) {
-          break label440;
-        }
-        paramList = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel;
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.f)) || (!TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel))) {
-          break label434;
-        }
-        bool1 = bool2;
-        paramList.setSendGiftBtnEnabled(bool1);
-        return;
-      }
-      catch (Exception paramList)
-      {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Yvk.b(paramList);
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Yvk.a(paramyvm);
-      break;
-      label412:
-      bool1 = false;
-      break label170;
-      label418:
-      i = 0;
-      break label227;
-      label423:
-      bool1 = false;
-      break label249;
-      label429:
-      i = 4;
-      break label279;
-      label434:
-      bool1 = false;
+      paramResources = paramResources.getDisplayMetrics();
+      jdField_a_of_type_Int = paramResources.widthPixels;
+      b = paramResources.heightPixels;
+      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
     }
-    label440:
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setSendGiftBtnEnabled(TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel));
+    return jdField_a_of_type_Int;
+  }
+  
+  public static void a(View paramView, boolean paramBoolean)
+  {
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setDuration(500L);
+    localAlphaAnimation.setFillAfter(true);
+    localAlphaAnimation.setAnimationListener(new ywb(paramView));
+    paramView.setVisibility(8);
+    paramView.startAnimation(localAlphaAnimation);
+  }
+  
+  public static boolean a(View paramView, int paramInt1, int paramInt2)
+  {
+    Rect localRect = new Rect();
+    int[] arrayOfInt = new int[2];
+    paramView.getDrawingRect(localRect);
+    paramView.getLocationOnScreen(arrayOfInt);
+    localRect.offset(arrayOfInt[0], arrayOfInt[1]);
+    return localRect.contains(paramInt1, paramInt2);
+  }
+  
+  public static int b(Resources paramResources)
+  {
+    if (b == 0)
+    {
+      paramResources = paramResources.getDisplayMetrics();
+      jdField_a_of_type_Int = paramResources.widthPixels;
+      b = paramResources.heightPixels;
+      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
+    }
+    return b;
+  }
+  
+  public static void b(View paramView, boolean paramBoolean)
+  {
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+    localAlphaAnimation.setDuration(500L);
+    if (paramBoolean) {
+      localAlphaAnimation.setStartOffset(500L);
+    }
+    localAlphaAnimation.setFillAfter(true);
+    localAlphaAnimation.setAnimationListener(new ywc(paramView));
+    paramView.setVisibility(0);
+    paramView.startAnimation(localAlphaAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ywa
  * JD-Core Version:    0.7.0.1
  */

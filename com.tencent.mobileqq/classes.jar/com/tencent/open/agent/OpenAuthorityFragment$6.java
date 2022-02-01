@@ -2,7 +2,7 @@ package com.tencent.open.agent;
 
 import android.content.res.Resources;
 import android.widget.Button;
-import bffj;
+import bimo;
 import com.tencent.qphone.base.util.QLog;
 
 public class OpenAuthorityFragment$6
@@ -14,27 +14,25 @@ public class OpenAuthorityFragment$6
   {
     if (OpenAuthorityFragment.a(this.this$0))
     {
-      QLog.e("OpenAuthorityFragment", 1, " activity is isInvalid");
+      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, " activity is isInvalid");
       return;
     }
-    this.this$0.i();
-    if (this.this$0.jdField_a_of_type_Int == 0)
-    {
-      String str = this.this$0.getResources().getString(2131695056);
-      this.this$0.jdField_a_of_type_AndroidWidgetButton.setTag(str);
+    this.this$0.h();
+    if (OpenAuthorityFragment.c(this.this$0) == 0) {
+      OpenAuthorityFragment.a(this.this$0).setTag(this.this$0.getResources().getString(2131694134));
     }
     for (;;)
     {
-      this.this$0.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.this$0.a(this.this$0.getResources().getString(2131695065), new bffj(this));
+      OpenAuthorityFragment.a(this.this$0).setEnabled(true);
+      this.this$0.a(this.this$0.getResources().getString(2131694142), new bimo(this));
       return;
-      this.this$0.jdField_a_of_type_AndroidWidgetButton.setTag(this.this$0.c);
+      OpenAuthorityFragment.a(this.this$0).setTag(OpenAuthorityFragment.d(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.agent.OpenAuthorityFragment.6
  * JD-Core Version:    0.7.0.1
  */

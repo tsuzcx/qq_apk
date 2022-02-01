@@ -1,43 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.appinfo.data.AppDetail;
 
-public class bevr
-  extends Handler
+class bevr
+  implements atal
 {
-  public bevr(TabBarView paramTabBarView) {}
+  bevr(bevq parambevq) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.a = 0.0F;
-      paramMessage = this.a;
-      paramMessage.a = ((float)(paramMessage.a + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      if (this.a.a < 1.0F)
-      {
-        paramMessage = this.a;
-        paramMessage.a = ((float)(paramMessage.a + 0.1D));
-        this.a.invalidate();
-        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
-      return;
+    QLog.i("TroopFileTransferMgr", 1, "waterTest, onGetAppDetailTimeLimit. apkName[" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkName + "]");
+    if (bgnt.a(BaseApplication.getContext()) == 0) {
+      this.a.jdField_a_of_type_Bevn.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, 106);
     }
-    TabBarView.a(this.a, this.a.o, this.a.n);
-    this.a.a = 1.0F;
-    TabBarView.b(this.a, this.a.o, this.a.n);
-    this.a.o = this.a.n;
-    this.a.invalidate();
-    TabBarView.a(this.a);
+    bexz.a().a(bevn.e(this.a.jdField_a_of_type_Bevn), this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, null);
+  }
+  
+  public void a(boolean paramBoolean, AppDetail paramAppDetail)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkPackageName = paramAppDetail.packageName;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkName = paramAppDetail.appName;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkIconUrl = paramAppDetail.iconUrl;
   }
 }
 

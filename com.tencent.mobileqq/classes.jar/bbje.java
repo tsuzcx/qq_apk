@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbje
-  implements DialogInterface.OnClickListener
+class bbje
+  implements View.OnClickListener
 {
-  public bbje(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  bbje(bbjc parambbjc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.setResult(-1, null);
-    this.a.finish();
+    this.a.a.b(this.a.a.b);
+    this.a.a.e.setVisibility(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,14 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bmld
-  implements View.OnClickListener
+public class bmld
 {
-  bmld(bmla parambmla) {}
+  public static String a;
+  public static String[] a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static final String j;
+  public static final String k;
   
-  public void onClick(View paramView)
+  static
   {
-    this.a.a.a(22);
+    jdField_a_of_type_JavaLangString = "JsFamousShare";
+    b = "famousShareToQQFriend";
+    c = "famousShareToQzone";
+    d = "famousShareToWxFriend";
+    e = "famousShareToWxPengyouquan";
+    f = "famousJubao";
+    g = "setUserHomePageMsgBoardGate";
+    h = "SetHostMessage";
+    i = "writeMood";
+    j = anni.a(2131710697);
+    k = anni.a(2131710696);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "SetPersonalizeFinished", "setAvatar", "SetNaviDeco", "setFloat", "updateCustomPraise", "setcardfinish", "updatePloymorphicPraise", "setResponsiveLike", "OpenCustomVipSucc", "SetFacade", "setFriendNaviDeco", "SetPlayerDeco", "setDefaultFont", "refreshFeeds", "setCustomTrack" };
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int n = arrayOfString.length;
+    int m = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (m < n)
+      {
+        if (arrayOfString[m].equalsIgnoreCase(paramString)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      m += 1;
+    }
   }
 }
 

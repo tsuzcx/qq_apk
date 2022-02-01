@@ -1,28 +1,24 @@
-import com.tencent.widget.HongBaoListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bhxo
+class bhxo
+  implements View.OnClickListener
 {
-  public abstract void a();
+  bhxo(bhxn parambhxn, boolean paramBoolean) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(HongBaoListView paramHongBaoListView);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(HongBaoListView paramHongBaoListView);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void c(HongBaoListView paramHongBaoListView);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bhxn.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhxo
  * JD-Core Version:    0.7.0.1
  */

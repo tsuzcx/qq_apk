@@ -1,28 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class amfn
-  implements DialogInterface.OnClickListener
+class amfn
+  implements View.OnClickListener
 {
-  public amfn(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  amfn(amfk paramamfk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    mtq.e(false, false);
-    VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
-    VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_JavaLangString, this.c, this.d);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    Object localObject = paramView.getTag();
+    if (!(localObject instanceof amft)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = (amft)localObject;
+      if ((((amft)localObject).a != null) && (((amft)localObject).a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)) {
+        this.a.jdField_a_of_type_Amfp.a(((amft)localObject).a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, ((amft)localObject).a.jdField_a_of_type_Int);
+      }
+      if ((((amft)localObject).a != null) && (((amft)localObject).a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null)) {
+        this.a.jdField_a_of_type_Amfp.a(((amft)localObject).a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo);
+      }
+      new bcsy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("send_to").d("clk_grp").a(new String[] { "1" }).a();
     }
-    mtq.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amfn
  * JD-Core Version:    0.7.0.1
  */

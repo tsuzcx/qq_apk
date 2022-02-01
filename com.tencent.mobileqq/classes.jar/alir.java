@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
 
 public class alir
-  implements akon
 {
-  public alir(ApolloConfigDataReport.1 param1) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public static <T extends aliq> T a(FlowActivity paramFlowActivity, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfigDataReport", 2, new Object[] { "checkReportConfigJson errorCode:", Integer.valueOf(paramInt1), ", httpCode:", Integer.valueOf(paramInt2) });
+    switch (paramInt)
+    {
+    default: 
+      return null;
     }
-    if ((paramInt1 == 0) && (paramInt2 == 200)) {
-      aliq.b();
-    }
+    return new alis(paramFlowActivity);
   }
 }
 

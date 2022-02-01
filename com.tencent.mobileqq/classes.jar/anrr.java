@@ -1,57 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import mqq.app.Foreground;
 
 public class anrr
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<String, anrs> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  public anrr(QQAppInterface paramQQAppInterface)
+  public static String a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  public anrs a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
+    Activity localActivity = Foreground.getTopActivity();
+    String str;
+    if (localActivity != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.getPreprocessor in valid param");
+      str = localActivity.getClass().getName();
+      if ((localActivity instanceof SplashActivity))
+      {
+        if (SplashActivity.a == 1) {
+          return str + "_" + ((SplashActivity)localActivity).a();
+        }
+        return str + "_ChatFragment";
       }
-      return null;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    else
     {
-      paramString = (anrs)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      return paramString;
+      return "Null";
     }
-  }
-  
-  public void a(String paramString, anrs paramanrs)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramanrs == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.setPreprocessor in valid param");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, new Object[] { "AAShare.setPreprocessor app=", paramString });
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramanrs);
-      return;
-    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anrr
  * JD-Core Version:    0.7.0.1
  */

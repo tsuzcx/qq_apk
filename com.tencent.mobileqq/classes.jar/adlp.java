@@ -1,18 +1,51 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adlp
-  implements View.OnClickListener
+  implements agra
 {
-  public adlp(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adlp(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    PublicFragmentActivity.a(this.a, TempMsgSettingFragment.class);
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
+    }
+    Object localObject;
+    boolean bool;
+    if (ArkFullScreenAppActivity.a(this.a) != null)
+    {
+      localObject = ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Agpq;
+      if (localObject != null)
+      {
+        if ((!((agpq)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Boolean)) {
+          break label135;
+        }
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
+        }
+        localObject = this.a.rightViewImg;
+        if (!bool) {
+          break label140;
+        }
+      }
+    }
+    for (;;)
+    {
+      ((ImageView)localObject).setVisibility(i);
+      return;
+      label135:
+      bool = false;
+      break;
+      label140:
+      i = 4;
+    }
   }
+  
+  public void b() {}
 }
 
 

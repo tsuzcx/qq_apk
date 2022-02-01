@@ -1,20 +1,14 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-
-public abstract interface bguo<T>
+public abstract interface bguo
 {
-  public abstract T a(Context paramContext, Bundle paramBundle);
+  public abstract void a(bgun parambgun, float paramFloat1, float paramFloat2);
   
-  public abstract void a(Bundle paramBundle);
+  public abstract void a(bgun parambgun, bgup parambgup, float paramFloat1, float paramFloat2);
   
-  public abstract boolean a(Bundle paramBundle);
-  
-  public abstract boolean a(MiniAppInfo paramMiniAppInfo);
+  public abstract boolean a(bgun parambgun, float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bguo
  * JD-Core Version:    0.7.0.1
  */

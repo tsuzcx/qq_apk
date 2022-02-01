@@ -1,37 +1,90 @@
-import android.widget.ImageView;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.1;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.2;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMultiRcmdDisLike;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ynr
-  implements baug
+class ynr
+  implements bkhw
 {
-  public ynr(AbsSubscribeShareCardView.2 param2) {}
+  ynr(ynm paramynm, bkho parambkho, QQUserUIItem paramQQUserUIItem, StoryVideoItem paramStoryVideoItem, HotRecommendFeedItem paramHotRecommendFeedItem) {}
   
-  public void onResp(bavf parambavf)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (parambavf.jdField_a_of_type_Int == 0)
+    this.jdField_a_of_type_Bkho.e();
+    switch (paramInt)
     {
-      ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Int)).setImageBitmap(SafeBitmapFactory.decodeFile(this.a.jdField_a_of_type_JavaLangString));
-      AbsSubscribeShareCardView.a(this.a.this$0);
-      if (AbsSubscribeShareCardView.b(this.a.this$0) == this.a.b.size()) {
-        ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.1(this));
+    default: 
+      yqu.a("home_page", "multi_press_clk", 0, 5, new String[0]);
+    case 0: 
+    case 1: 
+      Object localObject;
+      do
+      {
+        return;
+        localObject = ynm.a(this.jdField_a_of_type_Ynm);
+        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) {}
+        for (paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;; paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid)
+        {
+          wjz.a((Context)localObject, 4, paramView);
+          yqu.a("home_page", "multi_press_clk", 0, 1, new String[0]);
+          return;
+        }
+        if (!bgnt.g(ynm.f(this.jdField_a_of_type_Ynm)))
+        {
+          QQToast.a(ynm.a(this.jdField_a_of_type_Ynm), 1, anni.a(2131703241), 0).a();
+          return;
+        }
+      } while (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
+      int i = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isSubscribe;
+      paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isSubscribe())
+      {
+        paramInt = 0;
+        paramView.isSubscribe = paramInt;
+        ynm.a(this.jdField_a_of_type_Ynm, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
+        paramView = (wff)xfe.a().a(98);
+        localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
+        if (i != 1) {
+          break label255;
+        }
+        paramInt = 1;
+        label220:
+        paramView.a(1, (String)localObject, paramInt, 1);
+        if (i != 1) {
+          break label260;
+        }
       }
+      label260:
+      for (paramInt = 3;; paramInt = 2)
+      {
+        yqu.a("home_page", "multi_press_clk", 0, paramInt, new String[0]);
+        return;
+        paramInt = 1;
+        break;
+        label255:
+        paramInt = 0;
+        break label220;
+      }
+    }
+    if (!bgnt.g(ynm.g(this.jdField_a_of_type_Ynm)))
+    {
+      QQToast.a(ynm.a(this.jdField_a_of_type_Ynm), 1, anni.a(2131703244), 0).a();
       return;
     }
-    ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.2(this));
+    paramView = new qqstory_service.ReqMultiRcmdDisLike();
+    paramView.vid.set(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+    nir.a(xfe.a(), new yns(this), paramView.toByteArray(), wjz.a("StorySvc.multi_rcmd_dis_like"));
+    yqu.a("home_page", "multi_press_clk", 0, 4, new String[0]);
   }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ynr
  * JD-Core Version:    0.7.0.1
  */

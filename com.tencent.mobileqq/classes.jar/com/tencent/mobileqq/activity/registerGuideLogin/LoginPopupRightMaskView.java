@@ -9,12 +9,12 @@ public class LoginPopupRightMaskView
   public LoginPopupRightMaskView(Context paramContext)
   {
     super(paramContext);
-    setBackgroundResource(2130844978);
+    setBackgroundResource(2130845376);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginPopupRightMaskView
  * JD-Core Version:    0.7.0.1
  */

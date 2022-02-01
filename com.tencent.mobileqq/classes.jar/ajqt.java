@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
-public class ajqt
-  implements ajru
+class ajqt
+  implements awxb
 {
-  public ajqt(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  ajqt(ajqs paramajqs) {}
   
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  public void a()
   {
-    if (this.a.r == 10011)
-    {
-      NewFlowCameraActivity.a(this.a, paramString1);
-      return;
-    }
-    if (paramBoolean)
-    {
-      NewFlowCameraActivity.b(this.a, paramString1);
-      return;
-    }
-    this.a.i(true);
-    QQToast.a(this.a, alud.a(2131707872), 0).a();
+    this.a.jdField_a_of_type_Awxi.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Awxi.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.v();
   }
 }
 

@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-
 class agak
-  implements View.OnClickListener
 {
-  agak(agai paramagai) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b = "";
+  public String c = "";
   
-  public void onClick(View paramView)
+  private agak()
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof MessageForShortVideo))
-    {
-      localObject = (MessageForShortVideo)localObject;
-      azdl.a(paramView.getContext(), this.a.a.a, ((MessageForShortVideo)localObject).msgTailType);
-    }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

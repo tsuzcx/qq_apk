@@ -49,7 +49,7 @@ public class DeviceInfo
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when checking external card.", localThrowable);
+      AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when checking external card.", localThrowable);
     }
     return false;
   }
@@ -140,7 +140,7 @@ public class DeviceInfo
     //   161: ldc 10
     //   163: ldc_w 302
     //   166: aload_2
-    //   167: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   167: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   170: aload_1
     //   171: ifnull +7 -> 178
     //   174: aload_1
@@ -186,25 +186,25 @@ public class DeviceInfo
     //   248: ldc 10
     //   250: ldc_w 310
     //   253: aload_1
-    //   254: invokestatic 313	com/tencent/camerasdk/avreport/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   254: invokestatic 313	com/tencent/camerasdk/avreport/AVRLogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   257: goto -20 -> 237
     //   260: astore_0
     //   261: ldc 10
     //   263: ldc_w 310
     //   266: aload_0
-    //   267: invokestatic 313	com/tencent/camerasdk/avreport/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   267: invokestatic 313	com/tencent/camerasdk/avreport/AVRLogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   270: goto -25 -> 245
     //   273: astore_1
     //   274: ldc 10
     //   276: ldc_w 310
     //   279: aload_1
-    //   280: invokestatic 313	com/tencent/camerasdk/avreport/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   280: invokestatic 313	com/tencent/camerasdk/avreport/AVRLogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   283: goto -105 -> 178
     //   286: astore_0
     //   287: ldc 10
     //   289: ldc_w 310
     //   292: aload_0
-    //   293: invokestatic 313	com/tencent/camerasdk/avreport/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   293: invokestatic 313	com/tencent/camerasdk/avreport/AVRLogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   296: goto -110 -> 186
     //   299: astore_0
     //   300: aconst_null
@@ -223,13 +223,13 @@ public class DeviceInfo
     //   321: ldc 10
     //   323: ldc_w 310
     //   326: aload_1
-    //   327: invokestatic 313	com/tencent/camerasdk/avreport/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   327: invokestatic 313	com/tencent/camerasdk/avreport/AVRLogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   330: goto -20 -> 310
     //   333: astore_1
     //   334: ldc 10
     //   336: ldc_w 310
     //   339: aload_1
-    //   340: invokestatic 313	com/tencent/camerasdk/avreport/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   340: invokestatic 313	com/tencent/camerasdk/avreport/AVRLogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   343: goto -25 -> 318
     //   346: astore_0
     //   347: goto -45 -> 302
@@ -317,7 +317,7 @@ public class DeviceInfo
         return "null";
       }
       String str1;
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting Android ID.", localThrowable1);
+      AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting Android ID.", localThrowable1);
     }
     catch (Throwable localThrowable1)
     {
@@ -346,7 +346,7 @@ public class DeviceInfo
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting API level.", localThrowable);
+      AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting API level.", localThrowable);
     }
     return -1;
   }
@@ -360,7 +360,7 @@ public class DeviceInfo
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting brand.", localThrowable);
+      AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting brand.", localThrowable);
     }
     return "fail";
   }
@@ -374,7 +374,7 @@ public class DeviceInfo
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting country name.", localThrowable);
+      AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting country name.", localThrowable);
     }
     return "fail";
   }
@@ -411,13 +411,13 @@ public class DeviceInfo
         }
         return "" + paramContext;
         label102:
-        LogUtils.d("MobileBase-DeviceInfo", "ABI list: " + (String)localObject2);
+        AVRLogUtils.d("MobileBase-DeviceInfo", "ABI list: " + (String)localObject2);
       }
       return "fail";
     }
     catch (Throwable paramContext)
     {
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting CPU ABI.", paramContext);
+      AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting CPU ABI.", paramContext);
     }
   }
   
@@ -546,7 +546,7 @@ public class DeviceInfo
     //   223: ldc 10
     //   225: ldc_w 468
     //   228: aload_0
-    //   229: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   229: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   232: aload_2
     //   233: areturn
     //   234: astore_2
@@ -557,7 +557,7 @@ public class DeviceInfo
     //   239: ldc 10
     //   241: ldc_w 470
     //   244: aload_2
-    //   245: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   245: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   248: aload_1
     //   249: ifnull +7 -> 256
     //   252: aload_1
@@ -569,7 +569,7 @@ public class DeviceInfo
     //   262: ldc 10
     //   264: ldc_w 468
     //   267: aload_0
-    //   268: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   268: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   271: goto -15 -> 256
     //   274: astore_1
     //   275: aconst_null
@@ -584,7 +584,7 @@ public class DeviceInfo
     //   288: ldc 10
     //   290: ldc_w 468
     //   293: aload_0
-    //   294: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   294: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   297: goto -12 -> 285
     //   300: astore_1
     //   301: goto -24 -> 277
@@ -686,7 +686,7 @@ public class DeviceInfo
     //   96: ldc 10
     //   98: ldc_w 468
     //   101: aload_0
-    //   102: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   102: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   105: fload_1
     //   106: fstore_2
     //   107: goto -15 -> 92
@@ -698,7 +698,7 @@ public class DeviceInfo
     //   118: ldc 10
     //   120: ldc_w 489
     //   123: aload 5
-    //   125: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   125: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   128: fload_3
     //   129: fstore_2
     //   130: aload 4
@@ -712,7 +712,7 @@ public class DeviceInfo
     //   146: ldc 10
     //   148: ldc_w 468
     //   151: aload_0
-    //   152: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   152: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   155: fload_3
     //   156: fstore_2
     //   157: goto -65 -> 92
@@ -729,7 +729,7 @@ public class DeviceInfo
     //   176: ldc 10
     //   178: ldc_w 468
     //   181: aload_0
-    //   182: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   182: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   185: goto -13 -> 172
     //   188: astore 4
     //   190: goto -26 -> 164
@@ -774,7 +774,7 @@ public class DeviceInfo
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting device name.", localThrowable);
+      AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting device name.", localThrowable);
     }
     return "fail";
   }
@@ -959,7 +959,7 @@ public class DeviceInfo
     //   312: ldc 10
     //   314: ldc_w 468
     //   317: aload_0
-    //   318: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   318: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   321: goto -16 -> 305
     //   324: astore_1
     //   325: aconst_null
@@ -967,7 +967,7 @@ public class DeviceInfo
     //   327: ldc 10
     //   329: ldc_w 470
     //   332: aload_1
-    //   333: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   333: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   336: aload_0
     //   337: ifnull -32 -> 305
     //   340: aload_0
@@ -977,7 +977,7 @@ public class DeviceInfo
     //   348: ldc 10
     //   350: ldc_w 468
     //   353: aload_0
-    //   354: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   354: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   357: goto -52 -> 305
     //   360: astore_0
     //   361: aload_2
@@ -992,7 +992,7 @@ public class DeviceInfo
     //   374: ldc 10
     //   376: ldc_w 468
     //   379: aload_1
-    //   380: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   380: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   383: goto -12 -> 371
     //   386: astore_0
     //   387: goto -24 -> 363
@@ -1109,7 +1109,7 @@ public class DeviceInfo
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting hardware serial number.", localThrowable);
+      AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting hardware serial number.", localThrowable);
     }
     return "fail";
   }
@@ -1130,18 +1130,18 @@ public class DeviceInfo
         break label107;
       }
       int i = paramContext.getIpAddress();
-      LogUtils.d("MobileBase-DeviceInfo", "IP integer address: " + i);
+      AVRLogUtils.d("MobileBase-DeviceInfo", "IP integer address: " + i);
       paramContext = formatIpAddress(i);
     }
     catch (Throwable paramContext)
     {
       for (;;)
       {
-        LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting IP address.", paramContext);
+        AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting IP address.", paramContext);
         paramContext = "fail";
       }
     }
-    LogUtils.d("MobileBase-DeviceInfo", "IP address: " + paramContext);
+    AVRLogUtils.d("MobileBase-DeviceInfo", "IP address: " + paramContext);
     return paramContext;
   }
   
@@ -1295,7 +1295,7 @@ public class DeviceInfo
     //   251: ldc 10
     //   253: ldc_w 468
     //   256: aload_1
-    //   257: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   257: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   260: aload_0
     //   261: areturn
     //   262: astore_1
@@ -1306,7 +1306,7 @@ public class DeviceInfo
     //   267: ldc 10
     //   269: ldc_w 552
     //   272: aload_1
-    //   273: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   273: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   276: aload 4
     //   278: astore_2
     //   279: aload_0
@@ -1319,7 +1319,7 @@ public class DeviceInfo
     //   290: ldc 10
     //   292: ldc_w 468
     //   295: aload_0
-    //   296: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   296: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   299: aconst_null
     //   300: areturn
     //   301: astore_0
@@ -1335,7 +1335,7 @@ public class DeviceInfo
     //   315: ldc 10
     //   317: ldc_w 468
     //   320: aload_1
-    //   321: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   321: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   324: goto -12 -> 312
     //   327: astore_0
     //   328: goto -24 -> 304
@@ -1465,7 +1465,7 @@ public class DeviceInfo
       }
       catch (Throwable paramContext)
       {
-        LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting type of network.", paramContext);
+        AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting type of network.", paramContext);
       }
       return "HSPA+";
       label185:
@@ -1518,7 +1518,7 @@ public class DeviceInfo
     {
       for (;;)
       {
-        LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting class of network.", paramContext);
+        AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting class of network.", paramContext);
       }
     }
     return -1;
@@ -1572,13 +1572,13 @@ public class DeviceInfo
     //   79: ldc 10
     //   81: ldc_w 628
     //   84: aload 6
-    //   86: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   86: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   89: goto -28 -> 61
     //   92: astore 6
     //   94: ldc 10
     //   96: ldc_w 468
     //   99: aload 6
-    //   101: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   101: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   104: ldc2_w 619
     //   107: lreturn
     //   108: aload 6
@@ -1615,14 +1615,14 @@ public class DeviceInfo
     //   178: ldc 10
     //   180: ldc_w 468
     //   183: aload 6
-    //   185: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   185: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   188: ldc2_w 619
     //   191: lreturn
     //   192: astore 6
     //   194: ldc 10
     //   196: ldc_w 628
     //   199: aload 6
-    //   201: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   201: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   204: goto -44 -> 160
     //   207: aload 6
     //   209: ldc_w 630
@@ -1658,14 +1658,14 @@ public class DeviceInfo
     //   278: ldc 10
     //   280: ldc_w 468
     //   283: aload 6
-    //   285: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   285: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   288: ldc2_w 619
     //   291: lreturn
     //   292: astore 6
     //   294: ldc 10
     //   296: ldc_w 628
     //   299: aload 6
-    //   301: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   301: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   304: goto -44 -> 260
     //   307: aload 6
     //   309: ldc_w 630
@@ -1710,14 +1710,14 @@ public class DeviceInfo
     //   384: ldc 10
     //   386: ldc_w 468
     //   389: aload 6
-    //   391: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   391: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   394: lload_2
     //   395: lreturn
     //   396: astore 6
     //   398: ldc 10
     //   400: ldc_w 628
     //   403: aload 6
-    //   405: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   405: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   408: goto -40 -> 368
     //   411: astore 8
     //   413: aconst_null
@@ -1725,7 +1725,7 @@ public class DeviceInfo
     //   416: ldc 10
     //   418: ldc_w 649
     //   421: aload 8
-    //   423: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   423: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   426: aload 7
     //   428: ifnull +8 -> 436
     //   431: aload 7
@@ -1740,13 +1740,13 @@ public class DeviceInfo
     //   452: ldc 10
     //   454: ldc_w 628
     //   457: aload 7
-    //   459: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   459: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   462: goto -26 -> 436
     //   465: astore 6
     //   467: ldc 10
     //   469: ldc_w 468
     //   472: aload 6
-    //   474: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   474: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   477: goto -31 -> 446
     //   480: astore 6
     //   482: aconst_null
@@ -1767,13 +1767,13 @@ public class DeviceInfo
     //   513: ldc 10
     //   515: ldc_w 628
     //   518: aload 7
-    //   520: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   520: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   523: goto -25 -> 498
     //   526: astore 7
     //   528: ldc 10
     //   530: ldc_w 468
     //   533: aload 7
-    //   535: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   535: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   538: goto -30 -> 508
     //   541: astore 6
     //   543: aconst_null
@@ -1905,13 +1905,13 @@ public class DeviceInfo
     //   73: ldc 10
     //   75: ldc_w 628
     //   78: aload 4
-    //   80: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   80: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   83: goto -28 -> 55
     //   86: astore 4
     //   88: ldc 10
     //   90: ldc_w 468
     //   93: aload 4
-    //   95: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   95: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   98: ldc2_w 619
     //   101: lreturn
     //   102: aload 4
@@ -1947,14 +1947,14 @@ public class DeviceInfo
     //   164: ldc 10
     //   166: ldc_w 468
     //   169: aload 4
-    //   171: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   171: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   174: lload_2
     //   175: lreturn
     //   176: astore 4
     //   178: ldc 10
     //   180: ldc_w 628
     //   183: aload 4
-    //   185: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   185: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   188: goto -40 -> 148
     //   191: astore 6
     //   193: aconst_null
@@ -1964,7 +1964,7 @@ public class DeviceInfo
     //   200: ldc 10
     //   202: ldc_w 654
     //   205: aload 6
-    //   207: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   207: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   210: aload 5
     //   212: ifnull +8 -> 220
     //   215: aload 5
@@ -1979,13 +1979,13 @@ public class DeviceInfo
     //   236: ldc 10
     //   238: ldc_w 628
     //   241: aload 5
-    //   243: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   243: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   246: goto -26 -> 220
     //   249: astore 4
     //   251: ldc 10
     //   253: ldc_w 468
     //   256: aload 4
-    //   258: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   258: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   261: goto -31 -> 230
     //   264: astore 4
     //   266: aconst_null
@@ -2006,13 +2006,13 @@ public class DeviceInfo
     //   297: ldc 10
     //   299: ldc_w 628
     //   302: aload 5
-    //   304: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   304: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   307: goto -25 -> 282
     //   310: astore 5
     //   312: ldc 10
     //   314: ldc_w 468
     //   317: aload 5
-    //   319: invokestatic 215	com/tencent/camerasdk/avreport/LogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   319: invokestatic 215	com/tencent/camerasdk/avreport/AVRLogUtils:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   322: goto -30 -> 292
     //   325: astore 4
     //   327: aconst_null
@@ -2101,7 +2101,7 @@ public class DeviceInfo
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting available size of ROM.", localThrowable);
+      AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting available size of ROM.", localThrowable);
     }
     return -1L;
   }
@@ -2168,7 +2168,7 @@ public class DeviceInfo
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting total size of ROM.", localThrowable);
+      AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting total size of ROM.", localThrowable);
     }
     return -1L;
   }
@@ -2217,7 +2217,7 @@ public class DeviceInfo
       {
         Object localObject;
         paramContext = "fail";
-        LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting SIM serial number.", localThrowable);
+        AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting SIM serial number.", localThrowable);
         continue;
         String str = "fail";
         continue;
@@ -2242,7 +2242,7 @@ public class DeviceInfo
       Object localObject = executeCommand(paramContext, "getprop");
       if ((localObject != null) && (!((List)localObject).isEmpty()))
       {
-        LogUtils.d("MobileBase-DeviceInfo", "Successfully get 'getprop' list.");
+        AVRLogUtils.d("MobileBase-DeviceInfo", "Successfully get 'getprop' list.");
         paramContext = Pattern.compile("\\[(.+)\\]: \\[(.*)\\]");
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
@@ -2252,7 +2252,7 @@ public class DeviceInfo
             systemProperties.put(localMatcher.group(1), localMatcher.group(2));
           }
         }
-        LogUtils.d("MobileBase-DeviceInfo", "System properties number: " + systemProperties.size());
+        AVRLogUtils.d("MobileBase-DeviceInfo", "System properties number: " + systemProperties.size());
       }
     }
     if (systemProperties.containsKey(paramString)) {
@@ -2270,7 +2270,7 @@ public class DeviceInfo
     }
     catch (Throwable localThrowable)
     {
-      LogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting release version.", localThrowable);
+      AVRLogUtils.w("MobileBase-DeviceInfo", "Exception occurred when getting release version.", localThrowable);
     }
     return "fail";
   }
@@ -2301,7 +2301,7 @@ public class DeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

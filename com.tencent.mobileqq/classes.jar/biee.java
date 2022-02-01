@@ -1,29 +1,34 @@
-import android.graphics.Canvas;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
 
 public class biee
-  implements biec
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
+  public biee(FloatingScreenContainer paramFloatingScreenContainer, int paramInt1, int paramInt2, WindowManager.LayoutParams paramLayoutParams, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramView.setTranslationX(paramFloat1);
-    paramView.setTranslationY(paramFloat2);
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    if (this.jdField_a_of_type_Int >= -this.b) {
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = ((int)(this.c + paramValueAnimator.floatValue() * (this.jdField_a_of_type_Int - this.c)));
+    }
+    if (this.d >= this.e)
+    {
+      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+      float f1 = this.f;
+      localLayoutParams.y = ((int)(paramValueAnimator.floatValue() * (this.d - this.f) + f1));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    FloatingScreenContainer.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer).setFloatingCenterX(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x);
+    FloatingScreenContainer.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer).setFloatingCenterY(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y);
   }
-  
-  public void a(View paramView)
-  {
-    paramView.setTranslationX(0.0F);
-    paramView.setTranslationY(0.0F);
-  }
-  
-  public void b(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean) {}
-  
-  public void b(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biee
  * JD-Core Version:    0.7.0.1
  */

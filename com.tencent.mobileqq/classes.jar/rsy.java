@@ -1,22 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.Map;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
 
 public class rsy
-  extends pdi
+  extends pmn
 {
-  public rsy(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  public rsy(SelectVideoTabFragment paramSelectVideoTabFragment) {}
   
-  public void a(pdc parampdc)
+  public void i(int paramInt)
   {
-    parampdc.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+    super.i(paramInt);
+    if ((SelectVideoTabFragment.a(this.a) != null) && (paramInt != 0) && (!SelectVideoTabFragment.a(this.a).isEmpty()))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_column_id", paramInt);
+      localIntent.putExtra("arg_callback", SelectVideoTabFragment.a(this.a));
+      SelectVideoTabFragment.a(this.a).setResult(3, localIntent);
+      SelectVideoTabFragment.a(this.a).finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rsy
  * JD-Core Version:    0.7.0.1
  */

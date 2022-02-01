@@ -1,190 +1,410 @@
+import android.app.Activity;
+import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.util.ArrayMap;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
+import com.tencent.mobileqq.troop.activity.PublicCommentWindow.1;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.extension.proxy.ProxyWebViewClientExtension;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class behi
-  extends ProxyWebViewClientExtension
+public class behi
+  extends ReportDialog
+  implements View.OnClickListener, arxd, bhyc
 {
-  ArrayMap<String, Object> jdField_a_of_type_AndroidSupportV4UtilArrayMap;
-  begh jdField_a_of_type_Begh;
-  final TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
+  protected int a;
+  protected long a;
+  protected Handler a;
+  protected Button a;
+  protected EditText a;
+  protected FrameLayout a;
+  public ImageView a;
+  protected behj a;
+  public BaseActivity a;
+  public SystemAndEmojiEmoticonPanel a;
+  protected InputMethodRelativeLayout a;
+  protected String a;
+  protected ArrayList<String> a;
+  protected JSONObject a;
+  protected boolean a;
+  protected int b;
+  protected String b;
+  public boolean b;
+  protected String c;
   
-  public behi(behe parambehe, TouchWebView paramTouchWebView, begh parambegh)
+  public behi(BaseActivity paramBaseActivity, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
-    this.jdField_a_of_type_Begh = parambegh;
+    super(paramBaseActivity);
+    requestWindowFeature(1);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    a(paramBundle);
   }
   
-  void a(Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  protected void a()
   {
-    WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
-    if (localWebViewPluginEngine != null)
-    {
-      if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap == null) {
-        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(4);
-      }
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("performanceData", paramObject1);
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("requestData", paramObject2);
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("responseData", paramObject3);
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("errorCode", paramObject4);
-      localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 64L, this.jdField_a_of_type_AndroidSupportV4UtilArrayMap);
+    String str = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
+    if (!TextUtils.isEmpty(str)) {
+      bfqu.c.put(this.jdField_a_of_type_JavaLangString, str);
     }
-    while (!QLog.isColorLevel()) {
-      return;
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    long l = System.currentTimeMillis();
+    paramActivity = LayoutInflater.from(paramActivity).inflate(2131559907, null);
+    setContentView(paramActivity);
+    a(paramActivity);
+    a();
+    super.show();
+    paramActivity = getWindow().getAttributes();
+    paramActivity.x = 0;
+    paramActivity.y = 0;
+    paramActivity.width = -1;
+    paramActivity.windowAnimations = 16973824;
+    paramActivity.gravity = 83;
+    paramActivity.softInputMode = 21;
+    getWindow().setBackgroundDrawable(new ColorDrawable());
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicCommentPopupWindow", 2, "PublicCommentWindow show time = " + (System.currentTimeMillis() - l));
     }
-    QLog.i("WebCoreDump", 2, "No JS plugin engine to web core dump");
   }
   
-  public void computeScroll(View paramView)
+  /* Error */
+  protected void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.computeScroll(paramView);
+    // Byte code:
+    //   0: aload_1
+    //   1: ldc 179
+    //   3: invokevirtual 185	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   6: astore_2
+    //   7: aload_0
+    //   8: aload_1
+    //   9: ldc 187
+    //   11: invokevirtual 185	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   14: putfield 189	behi:c	Ljava/lang/String;
+    //   17: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   20: ifeq +28 -> 48
+    //   23: ldc 156
+    //   25: iconst_2
+    //   26: new 158	java/lang/StringBuilder
+    //   29: dup
+    //   30: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   33: ldc 191
+    //   35: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: aload_2
+    //   39: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   48: aload_0
+    //   49: new 193	org/json/JSONObject
+    //   52: dup
+    //   53: aload_2
+    //   54: invokespecial 196	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   57: putfield 198	behi:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   60: aload_0
+    //   61: aload_0
+    //   62: getfield 198	behi:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   65: ldc 200
+    //   67: invokevirtual 203	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   70: putfield 72	behi:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   73: aload_0
+    //   74: aload_0
+    //   75: getfield 198	behi:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   78: ldc 205
+    //   80: invokevirtual 209	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   83: putfield 211	behi:jdField_a_of_type_Int	I
+    //   86: aload_0
+    //   87: aload_0
+    //   88: getfield 198	behi:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   91: ldc 213
+    //   93: invokevirtual 209	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   96: putfield 215	behi:jdField_b_of_type_Int	I
+    //   99: aload_0
+    //   100: aload_0
+    //   101: getfield 198	behi:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   104: ldc 217
+    //   106: invokevirtual 203	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   109: putfield 219	behi:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   112: aload_0
+    //   113: new 221	java/util/ArrayList
+    //   116: dup
+    //   117: invokespecial 222	java/util/ArrayList:<init>	()V
+    //   120: putfield 224	behi:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   123: aload_0
+    //   124: getfield 198	behi:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   127: ldc 226
+    //   129: invokevirtual 203	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   132: invokestatic 232	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   135: astore_1
+    //   136: aload_0
+    //   137: getfield 224	behi:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   140: aload_1
+    //   141: invokevirtual 235	android/net/Uri:getHost	()Ljava/lang/String;
+    //   144: invokevirtual 239	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   147: pop
+    //   148: aload_0
+    //   149: new 241	behj
+    //   152: dup
+    //   153: aload_0
+    //   154: invokespecial 244	behj:<init>	(Lbehi;)V
+    //   157: putfield 246	behi:jdField_a_of_type_Behj	Lbehj;
+    //   160: new 248	android/content/IntentFilter
+    //   163: dup
+    //   164: ldc 250
+    //   166: invokespecial 251	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
+    //   169: astore_1
+    //   170: aload_0
+    //   171: getfield 40	behi:jdField_a_of_type_ComTencentMobileqqAppBaseActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   174: aload_0
+    //   175: getfield 246	behi:jdField_a_of_type_Behj	Lbehj;
+    //   178: aload_1
+    //   179: invokevirtual 257	com/tencent/mobileqq/app/BaseActivity:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    //   182: pop
+    //   183: return
+    //   184: astore_1
+    //   185: aload_0
+    //   186: invokevirtual 260	behi:dismiss	()V
+    //   189: return
+    //   190: astore_1
+    //   191: aload_0
+    //   192: invokevirtual 260	behi:dismiss	()V
+    //   195: return
+    //   196: astore_1
+    //   197: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   200: ifeq -52 -> 148
+    //   203: ldc 156
+    //   205: iconst_2
+    //   206: aload_1
+    //   207: invokestatic 264	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   210: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   213: goto -65 -> 148
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	216	0	this	behi
+    //   0	216	1	paramBundle	Bundle
+    //   6	48	2	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   48	60	184	org/json/JSONException
+    //   48	60	190	java/lang/NullPointerException
+    //   123	148	196	java/lang/NullPointerException
   }
   
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  protected void a(View paramView)
   {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.dispatchTouchEvent(paramMotionEvent, paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout = ((InputMethodRelativeLayout)paramView.findViewById(2131376788));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365878));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131368651));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131377184));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131369583));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton.setSelected(true);
+    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    paramView.findViewById(2131379127).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel = TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_AndroidWidgetEditText, this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.setOnSizeChangedListenner(this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_b_of_type_JavaLangString);
   }
   
-  public void onFakeLoginRecognised(Bundle paramBundle)
+  public void a(arxg paramarxg)
   {
-    super.onFakeLoginRecognised(paramBundle);
-    boolean bool1;
-    String str2;
-    boolean bool2;
-    boolean bool3;
-    StringBuilder localStringBuilder;
+    paramarxg.a(null, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+  }
+  
+  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
+  
+  protected void a(String paramString)
+  {
     try
     {
-      localObject = (ArrayList)paramBundle.get("recognised-text");
-      bool1 = paramBundle.getBoolean("virtual-keyboard", false);
-      str2 = paramBundle.getString("normal-input-value-change");
-      bool2 = paramBundle.getBoolean("password-start-input", false);
-      bool3 = paramBundle.getBoolean("password-input-show", false);
-      localStringBuilder = new StringBuilder(128);
+      avob.a("qbrowserCommentOnSend", new JSONObject(TroopBarPublishUtils.a(paramString, null, null)), this.jdField_a_of_type_JavaUtilArrayList, null);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("PublicCommentPopupWindow", 2, QLog.getStackTraceString(paramString));
+    }
+  }
+  
+  protected void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    Object localObject;
+    if ((!TextUtils.isEmpty(paramString1)) && ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof bhne)))
+    {
+      localObject = ((bhne)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).a();
       if (localObject != null)
       {
-        paramBundle = ((ArrayList)localObject).iterator();
-        while (paramBundle.hasNext())
+        localObject = ((WebViewFragment)localObject).getWebView();
+        if (localObject != null)
         {
-          localStringBuilder.append((String)paramBundle.next()).append(",");
-          continue;
-          return;
+          if (!paramBoolean) {
+            break label92;
+          }
+          ((CustomWebView)localObject).callJs(paramString1, new String[] { "{\"code\":0,\"data\":{\"retcode\":0,\"result\":" + paramString2 + "}}" });
         }
       }
     }
-    catch (Throwable paramBundle)
+    return;
+    label92:
+    ((CustomWebView)localObject).callJs(paramString1, new String[] { "{\"code\":-1}" });
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel == null) {}
+    do
     {
-      QLog.e("WebLog_WebViewWrapper", 2, "onFakeLoginRecognised ", paramBundle);
-    }
-    paramBundle = "";
-    String str1 = "";
-    if (this.jdField_a_of_type_Behe.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
-    {
-      paramBundle = this.jdField_a_of_type_Behe.jdField_a_of_type_ComTencentBizUiTouchWebView.getOriginalUrl();
-      str1 = this.jdField_a_of_type_Behe.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
-      beiy.a(paramBundle, str1, localStringBuilder.toString(), str2, bool2, bool3, bool1);
-    }
-    String str3;
-    if (((localObject != null) && (((ArrayList)localObject).size() > 0)) || (bool1) || (!TextUtils.isEmpty(str2)))
-    {
-      str3 = this.jdField_a_of_type_Behe.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-      if (this.jdField_a_of_type_Behe.jdField_a_of_type_ComTencentBizUiTouchWebView == null) {
-        break label321;
+      return;
+      if (paramBoolean)
+      {
+        avob.a("qbrowserCommentOnCreate", null, this.jdField_a_of_type_JavaUtilArrayList, null);
+        if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.getVisibility() == 0) {
+          this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(8);
+        }
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847887);
+        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695545));
+        return;
       }
-    }
-    label321:
-    for (Object localObject = this.jdField_a_of_type_Behe.jdField_a_of_type_ComTencentBizUiTouchWebView.getTitle();; localObject = "")
+    } while ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.getVisibility() != 8) || (this.jdField_b_of_type_Boolean));
+    dismiss();
+  }
+  
+  protected boolean a()
+  {
+    String str = (String)bfqu.c.get(this.jdField_a_of_type_JavaLangString);
+    bfqu.c.clear();
+    if (!TextUtils.isEmpty(str))
     {
-      beiy.a(paramBundle, str1, (String)localObject, str3);
-      localStringBuilder.append(" hasVirtualKB:").append(bool1);
-      localStringBuilder.append(" inputText:").append(str2);
-      localStringBuilder.append(" passwdTyped:").append(bool2);
-      localStringBuilder.append(" showPasswdInput:").append(bool3);
-      if (!QLog.isColorLevel()) {
-        break;
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(str.length());
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(arxg paramarxg)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    bdol.a(this.jdField_a_of_type_AndroidWidgetEditText);
+  }
+  
+  public void b(arxg paramarxg) {}
+  
+  public void c()
+  {
+    String str = bfqu.a(this.jdField_a_of_type_AndroidWidgetEditText);
+    if (!TextUtils.isEmpty(str)) {
+      str = str.trim();
+    }
+    for (int i = str.length();; i = 0)
+    {
+      if (i == 0)
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131695563, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        return;
       }
-      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "onFakeLoginRecognised ", localStringBuilder.toString() });
+      if (i < this.jdField_b_of_type_Int)
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695561, new Object[] { Integer.valueOf(this.jdField_b_of_type_Int) }), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        return;
+      }
+      if (i > this.jdField_a_of_type_Int)
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695562, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        return;
+      }
+      if (!nlw.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693919, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        return;
+      }
+      a(str);
       return;
     }
   }
   
-  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onInterceptTouchEvent(paramMotionEvent, paramView);
-  }
+  public void d() {}
   
-  public Object onMiscCallBack(String paramString, Bundle paramBundle)
+  public void dismiss()
   {
-    if (this.jdField_a_of_type_Begh != null) {
-      return this.jdField_a_of_type_Begh.a(paramString, paramBundle);
+    if (this.jdField_a_of_type_Behj != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.unregisterReceiver(this.jdField_a_of_type_Behj);
+      this.jdField_a_of_type_Behj = null;
     }
-    return null;
-  }
-  
-  public Object onMiscCallBack(String paramString, Bundle paramBundle, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
-  {
-    if ((paramString.equalsIgnoreCase("onReportResourceInfo")) || (paramString.equalsIgnoreCase("onResourcesPerformance"))) {
-      a(paramObject1, paramObject2, paramObject3, paramObject4);
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel != null) {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel = null;
     }
-    return null;
-  }
-  
-  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
-  }
-  
-  public void onPrefetchResourceHit(boolean paramBoolean)
-  {
-    QLog.i("WebLog_WebViewWrapper", 1, "now prefetchResource is hit: " + paramBoolean);
-  }
-  
-  public void onPreloadCallback(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_Begh != null) {
-      this.jdField_a_of_type_Begh.a(paramInt, paramString);
+    bkft.b(this.jdField_a_of_type_AndroidWidgetEditText);
+    if (!this.jdField_a_of_type_Boolean) {
+      a();
     }
+    avob.a("qbrowserCommentOnClose", null, this.jdField_a_of_type_JavaUtilArrayList, null);
+    super.dismiss();
   }
   
-  public void onResponseReceived(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt)
+  public void onClick(View paramView)
   {
-    a(null, paramWebResourceRequest, paramWebResourceResponse, Integer.valueOf(paramInt));
-  }
-  
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onTouchEvent(paramMotionEvent, paramView);
-  }
-  
-  public void onUrlChange(String paramString1, String paramString2)
-  {
-    
-    if (this.jdField_a_of_type_Begh != null) {
-      this.jdField_a_of_type_Begh.b(paramString1, paramString2);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      dismiss();
+      continue;
+      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L)
+      {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.getVisibility() == 0)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(8);
+          bkft.a(this.jdField_a_of_type_AndroidWidgetEditText);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847887);
+          this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131695545));
+        }
+        else
+        {
+          this.jdField_b_of_type_Boolean = true;
+          bkft.b(this.jdField_a_of_type_AndroidWidgetEditText);
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new PublicCommentWindow.1(this), 200L);
+          continue;
+          c();
+        }
+      }
     }
   }
   
-  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
-  }
+  public void setting() {}
 }
 
 

@@ -1,31 +1,25 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopAdHandler.3.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-public final class nuf
-  implements aaso
+public class nuf
+  implements nvk
 {
-  nuf(AppInterface paramAppInterface) {}
+  public nuf(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void reportImpression(View paramView)
+  public boolean a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EcshopAdHandler", 1, "--> reportImpression");
-    }
-    if (paramView == null) {}
-    do
-    {
-      return;
-      paramView = paramView.getTag(2131364186);
-    } while (paramView == null);
-    ThreadManagerV2.executeOnSubThread(new EcshopAdHandler.3.1(this, paramView));
+    return (PublicAccountAdvertisementActivity.e(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return (PublicAccountAdvertisementActivity.e(this.a)) && (!PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView() != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView().getWebScrollY() == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nuf
  * JD-Core Version:    0.7.0.1
  */

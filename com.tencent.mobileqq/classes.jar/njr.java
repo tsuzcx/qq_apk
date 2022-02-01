@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class njr
-  implements View.OnClickListener
+public class njr
 {
-  njr(nin paramnin, String paramString, npo paramnpo) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
-  {
-    nin.c(this.jdField_a_of_type_Nin, this.jdField_a_of_type_JavaLangString);
-    nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString);
-  }
+  public njr(njo paramnjo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     njr
  * JD-Core Version:    0.7.0.1
  */

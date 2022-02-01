@@ -1,25 +1,52 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import java.io.OutputStream;
+import msg.aio_doodle.DoodleMsgProto.DoodleData;
+import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
 
-class aggs
-  implements Animation.AnimationListener
+public class aggs
+  implements aggj
 {
-  aggs(aggq paramaggq) {}
+  public aggs(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
   {
-    if (aggq.a(this.a) != null) {
-      aggq.a(this.a).setVisibility(8);
+    if (paramDoodleData == null) {
+      return false;
     }
-    if (aggq.a(this.a) != null) {
-      aggq.a(this.a).c();
+    paramDoodleData = paramDoodleData.toByteArray();
+    byte[] arrayOfByte = aggi.a(paramDoodleData.length);
+    try
+    {
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
+      label33:
+      return true;
+    }
+    catch (Exception paramDoodleData)
+    {
+      break label33;
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
+  {
+    if (paramDoodleHeader == null) {
+      return false;
+    }
+    paramDoodleHeader = paramDoodleHeader.toByteArray();
+    byte[] arrayOfByte = aggi.a(paramDoodleHeader.length);
+    try
+    {
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
+      label33:
+      return true;
+    }
+    catch (Exception paramDoodleHeader)
+    {
+      break label33;
+    }
+  }
 }
 
 

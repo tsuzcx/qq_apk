@@ -1,18 +1,22 @@
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import com.tencent.mobileqq.widget.IndexView;
 
 public class akdq
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public akdq(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public akdq(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
-    this.a.startActivity(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    NewStyleCountryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity).setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
 }
 

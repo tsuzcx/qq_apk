@@ -1,18 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
-final class artk
-  implements View.OnClickListener
+class artk
+  extends VasQuickUpdateManager.CallBacker
 {
-  artk(QQAppInterface paramQQAppInterface, String paramString, artl paramartl, aoxm paramaoxm) {}
+  artk(arti paramarti, MessengerService paramMessengerService) {}
   
-  public void onClick(View paramView)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
+    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a != null)
+      {
+        paramString1 = new Bundle();
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a.putString("cmd", "card_download_wzry_template");
+        paramString1.putInt("result", paramInt1);
+        paramString1.putString("message", paramString3);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a.putBundle("response", paramString1);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a = null;
+      }
+      paramVasQuickUpdateManager.removeCallBacker(this);
     }
-    this.jdField_a_of_type_Artl.a(this.jdField_a_of_type_Aoxm.b());
   }
 }
 

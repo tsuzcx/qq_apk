@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.BaseSearchActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bbhw
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bbhw(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public bbhw(BaseSearchActivity paramBaseSearchActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

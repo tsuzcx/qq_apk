@@ -1,6 +1,33 @@
-public abstract interface aepe
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.qphone.base.util.QLog;
+
+public class aepe
+  implements View.OnLongClickListener
 {
-  public abstract void a(int paramInt1, String paramString, int paramInt2);
+  public aepe(MainFragment paramMainFragment) {}
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (this.a.a() == MainFragment.b)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MainFragment", 2, "Mainfragment onLongClick");
+      }
+      paramView = (Conversation)this.a.a(Conversation.class);
+      if (paramView != null)
+      {
+        paramView = paramView.a().a();
+        if (paramView != null) {
+          awsf.a(this.a.getActivity(), paramView.getRecentUserUin(), paramView.getRecentUserType(), paramView.getTitleName(), "conversation_tab_bottom");
+        }
+      }
+    }
+    return true;
+  }
 }
 
 

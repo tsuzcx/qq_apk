@@ -1,24 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import java.util.Map;
 
-class ajgd
-  implements View.OnClickListener
+public class ajgd
+  extends anmu
 {
-  ajgd(ajgb paramajgb, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public ajgd(TroopView paramTroopView) {}
   
-  public void onClick(View paramView)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper click banner, jump");
+    if (paramBoolean1) {
+      this.a.j();
     }
-    paramView = (QQAppInterface)ajgb.a(this.jdField_a_of_type_Ajgb).getAppRuntime();
-    ((UpgradeTIMManager)paramView.getManager(256)).a(ajgb.a(this.jdField_a_of_type_Ajgb), this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.g);
-    azqs.b(paramView, "CliOper", "", "", "0X8008659", "0X8008659", 0, 0, "", "", "", "");
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.j();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
   }
 }
 

@@ -1,70 +1,62 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class qbg
-  extends qbk
 {
-  public qbg(Context paramContext, bdbb parambdbb, rqj paramrqj)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramContext, parambdbb, paramrqj);
-  }
-  
-  public pxl g()
-  {
-    this.jdField_a_of_type_Pxk = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public pxl o()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null)
+    JSONObject localJSONObject = new JSONObject();
+    String str4 = "";
+    String str5 = "";
+    String str6 = "";
+    qcd.a(paramBaseArticleInfo, localJSONObject, true);
+    qcd.a(paramBaseArticleInfo, localJSONObject);
+    qcd.b(paramBaseArticleInfo, localJSONObject);
+    qcd.l(paramBaseArticleInfo, localJSONObject);
+    qcd.e(paramBaseArticleInfo, localJSONObject);
+    qcd.f(paramBaseArticleInfo, localJSONObject);
+    qcd.X(paramBaseArticleInfo, localJSONObject);
+    qcd.aa(paramBaseArticleInfo, localJSONObject);
+    qcd.ab(paramBaseArticleInfo, localJSONObject);
+    localJSONObject.put("style_ID", "ReadInjoy_ad_small_game_triple_img_cell");
+    qcd.a(localJSONObject, paramBaseArticleInfo);
+    String str1 = str6;
+    String str2 = str5;
+    String str3 = str4;
+    if (paramBaseArticleInfo.mSmallMiniGameInfo != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_JavaLangObject);
-      if ((this.jdField_a_of_type_JavaLangObject instanceof pgd))
+      str1 = str6;
+      str2 = str5;
+      str3 = str4;
+      if (paramBaseArticleInfo.mSmallMiniGameInfo.a != null)
       {
-        pgd localpgd = (pgd)this.jdField_a_of_type_JavaLangObject;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.setReadedStatus(this.jdField_a_of_type_Rqj.a(localpgd.e(), localpgd.a().mArticleID));
+        str1 = str6;
+        str2 = str5;
+        str3 = str4;
+        if (paramBaseArticleInfo.mSmallMiniGameInfo.a.length() > 2)
+        {
+          str3 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(0);
+          str2 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(1);
+          str1 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(2);
+        }
       }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_Pxk != null)
-    {
-      if ((this.jdField_a_of_type_Pxk instanceof ComponentContentGridImage)) {
-        ((ComponentContentGridImage)this.jdField_a_of_type_Pxk).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
-      }
-      this.jdField_a_of_type_Pxk.a(ComponentContentGridImage.a(((pgd)this.jdField_a_of_type_JavaLangObject).a()));
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
+    paramBaseArticleInfo = new JSONObject();
+    paramBaseArticleInfo.put("multi_img_url1", str3);
+    localJSONObject.put("id_multi_img_1", paramBaseArticleInfo);
+    paramBaseArticleInfo = new JSONObject();
+    paramBaseArticleInfo.put("multi_img_url2", str2);
+    localJSONObject.put("id_multi_img_2", paramBaseArticleInfo);
+    paramBaseArticleInfo = new JSONObject();
+    paramBaseArticleInfo.put("multi_img_url3", str1);
+    localJSONObject.put("id_multi_img_3", paramBaseArticleInfo);
+    return localJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qbg
  * JD-Core Version:    0.7.0.1
  */

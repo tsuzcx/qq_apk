@@ -1,15 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
 public class acek
-  implements CompoundButton.OnCheckedChangeListener
+  extends FrameLayout
 {
-  public acek(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public acek(GameCenterAPIJavaScript paramGameCenterAPIJavaScript, Context paramContext, CustomWebView paramCustomWebView)
   {
-    auku.a(paramBoolean);
+    super(paramContext);
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView instanceof View)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.dispatchTouchEvent(paramMotionEvent);
+    }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
 }
 

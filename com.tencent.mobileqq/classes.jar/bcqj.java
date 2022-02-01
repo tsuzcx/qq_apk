@@ -1,26 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadTraceHelper.Proxy;
 
-class bcqj
-  extends RecyclerView.ViewHolder
+public final class bcqj
+  implements IMCoreProxyRoute.ThreadTraceHelper.Proxy
 {
-  protected ImageView a;
-  protected TextView a;
-  protected String a;
-  protected ImageView b;
-  protected TextView b;
-  protected ImageView c;
-  
-  public bcqj(bcqi parambcqi, View paramView)
+  public void addWaitingTransThread(long paramLong, String paramString)
   {
-    super(paramView);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365025));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367516));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370977));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367534));
-    this.c = ((ImageView)paramView.findViewById(2131375551));
+    bctw.b(paramLong, paramString);
+  }
+  
+  public void removeWaitingTransThread(long paramLong)
+  {
+    bctw.a(paramLong);
+  }
+  
+  public void setCurrentTransThread(long paramLong, String paramString)
+  {
+    bctw.a(paramLong, paramString);
   }
 }
 

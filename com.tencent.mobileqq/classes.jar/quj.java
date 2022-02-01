@@ -1,10 +1,24 @@
-public abstract interface quj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class quj
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  quj(qui paramqui) {}
+  
+  public void onClick(View paramView)
+  {
+    spb localspb = this.a.jdField_a_of_type_Snh.a();
+    if (localspb != null) {
+      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     quj
  * JD-Core Version:    0.7.0.1
  */

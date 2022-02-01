@@ -1,30 +1,43 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.text.TextUtils;
+import android.util.Log;
+import java.io.File;
 
-public class bmzj
-  implements TextWatcher
+class bmzj
+  implements bmzr
 {
-  public bmzj(bmzh parambmzh) {}
+  bmzj(bmzf parambmzf, bmzs parambmzs, int paramInt) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(String paramString, long paramLong, float paramFloat)
   {
-    String str = xrc.a(paramEditable.toString(), 30);
-    if (str.length() < paramEditable.length()) {
-      paramEditable.replace(0, paramEditable.length(), str);
-    }
-    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
+    bmzd localbmzd = new bmzd();
+    localbmzd.c = paramString;
+    localbmzd.jdField_a_of_type_Int = 2;
+    localbmzd.jdField_b_of_type_Long = (paramFloat);
+    localbmzd.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Bmzs.a(paramString, this.jdField_a_of_type_Int, localbmzd, false);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
   {
-    paramCharSequence = paramCharSequence.toString();
-    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
-    wxe.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
-    if (this.a.jdField_a_of_type_Bmzk != null) {
-      this.a.jdField_a_of_type_Bmzk.a(this.a.jdField_a_of_type_JavaLangString);
+    Log.e("WyDownloader", "download finish:" + paramString1 + " successed:" + paramBoolean + "errorCode:" + paramInt);
+    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists())) {}
+    bmzd localbmzd;
+    for (int i = 1;; i = 0)
+    {
+      localbmzd = new bmzd();
+      localbmzd.jdField_b_of_type_JavaLangString = paramString2;
+      localbmzd.c = paramString1;
+      localbmzd.jdField_b_of_type_Int = paramInt;
+      localbmzd.jdField_a_of_type_JavaLangString = paramString3;
+      if (i == 0) {
+        break;
+      }
+      localbmzd.jdField_a_of_type_Int = 4;
+      this.jdField_a_of_type_Bmzs.a(paramString1, this.jdField_a_of_type_Int, localbmzd, true);
+      return;
     }
+    localbmzd.jdField_a_of_type_Int = 5;
+    this.jdField_a_of_type_Bmzs.a(paramString1, this.jdField_a_of_type_Int, localbmzd, true);
   }
 }
 

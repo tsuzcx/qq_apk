@@ -10,12 +10,12 @@ final class MiniAppController$6
   
   public void run()
   {
-    QQToast.a(this.val$context, 2131694063, 0).a();
+    QQToast.a(this.val$context, 2131693359, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppController.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,28 @@
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class qgj
-  implements View.OnClickListener
+public class qgj
+  implements ViewBase.OnClickListener
 {
-  qgj(qgi paramqgi, boolean paramBoolean, yqz paramyqz, String paramString, int paramInt1, int paramInt2, ViewGroup paramViewGroup) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public void onClick(View paramView)
+  public qgj(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    this.jdField_a_of_type_Qgi.b();
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Yqz != null))
-    {
-      paramView = new Bundle();
-      paramView.putString("from", String.valueOf(16));
-      paramView.putString("redpackid", this.jdField_a_of_type_JavaLangString);
-      paramView.putInt("redpack_type", this.jdField_a_of_type_Int);
-      paramView.putInt("plat_source", this.b);
-      paramView.putBoolean("open_readinjoy_tab", true);
-      this.jdField_a_of_type_Yqz.a(127, paramView);
-      return;
-    }
-    bkbq.e(1);
-    bkbq.a(true);
-    bkbq.a(true);
-    paramView = this.jdField_a_of_type_AndroidViewViewGroup.getContext();
-    Intent localIntent = nxu.a(paramView, 16);
-    localIntent.putExtra("redpackid", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("redpack_type", this.jdField_a_of_type_Int);
-    localIntent.putExtra("plat_source", this.b);
-    paramView.startActivity(localIntent);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    qhk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qgj
  * JD-Core Version:    0.7.0.1
  */

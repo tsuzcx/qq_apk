@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import alud;
 import android.annotation.TargetApi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import apfe;
-import ayzs;
-import azdg;
-import betn;
+import anni;
+import arib;
+import bbyw;
+import bcef;
+import biaj;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -36,7 +36,7 @@ public class MessageForShortVideo
   public static final int BUSI_TYPE_SHORT_VIDEO = 1;
   public static final int BUSI_TYPE_SHORT_VIDEO_PTV = 2;
   public static final int BUSI_TYPE_VIDEO = 0;
-  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new apfe();
+  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new arib();
   public static final int EXTRA_FLAG_FORWARD = 2;
   public static final int EXTRA_FLAG_UPLOAD = 1;
   public static final int FORWARD_CHAT_TYPE_DISCUS = 2;
@@ -76,7 +76,7 @@ public class MessageForShortVideo
   public long lastModified;
   public String mLocalMd5;
   public boolean mPreUpload;
-  public betn mProgressPie;
+  public biaj mProgressPie;
   public Runnable mShowProgressTask;
   public String mThumbFilePath;
   public String mVideoFileSourceDir;
@@ -281,11 +281,11 @@ public class MessageForShortVideo
     }
     else
     {
-      if (!"1".equals(getExtInfoFromExtStr(ayzs.n))) {
+      if (!"1".equals(getExtInfoFromExtStr(bbyw.n))) {
         break label728;
       }
       this.syncToStory = true;
-      this.sendRawVideo = "1".equals(getExtInfoFromExtStr(ayzs.z));
+      this.sendRawVideo = "1".equals(getExtInfoFromExtStr(bbyw.C));
       return;
     }
   }
@@ -301,22 +301,22 @@ public class MessageForShortVideo
     return this.msgData;
   }
   
-  public azdg getDownloadInfo(int paramInt)
+  public bcef getDownloadInfo(int paramInt)
   {
-    azdg localazdg = new azdg();
-    localazdg.jdField_a_of_type_Int = paramInt;
-    localazdg.jdField_a_of_type_Long = this.uniseq;
-    localazdg.jdField_b_of_type_Int = this.istroop;
-    localazdg.jdField_b_of_type_JavaLangString = this.selfuin;
-    localazdg.jdField_c_of_type_JavaLangString = this.frienduin;
-    localazdg.jdField_d_of_type_JavaLangString = this.senderuin;
-    localazdg.jdField_a_of_type_JavaLangString = this.uuid;
-    localazdg.e = this.md5;
-    localazdg.jdField_c_of_type_Int = this.videoFileTime;
-    localazdg.jdField_d_of_type_Int = this.videoFileFormat;
-    localazdg.jdField_c_of_type_Int = this.videoFileTime;
-    localazdg.g = this.thumbMD5;
-    return localazdg;
+    bcef localbcef = new bcef();
+    localbcef.jdField_a_of_type_Int = paramInt;
+    localbcef.jdField_a_of_type_Long = this.uniseq;
+    localbcef.jdField_b_of_type_Int = this.istroop;
+    localbcef.jdField_b_of_type_JavaLangString = this.selfuin;
+    localbcef.jdField_c_of_type_JavaLangString = this.frienduin;
+    localbcef.jdField_d_of_type_JavaLangString = this.senderuin;
+    localbcef.jdField_a_of_type_JavaLangString = this.uuid;
+    localbcef.e = this.md5;
+    localbcef.jdField_c_of_type_Int = this.videoFileTime;
+    localbcef.jdField_d_of_type_Int = this.videoFileFormat;
+    localbcef.jdField_c_of_type_Int = this.videoFileTime;
+    localbcef.g = this.thumbMD5;
+    return localbcef;
   }
   
   public String getMd5()
@@ -476,7 +476,7 @@ public class MessageForShortVideo
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return alud.a(2131707008);
+      return anni.a(2131705399);
     }
     return this.msg;
   }
@@ -723,7 +723,7 @@ public class MessageForShortVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForShortVideo
  * JD-Core Version:    0.7.0.1
  */

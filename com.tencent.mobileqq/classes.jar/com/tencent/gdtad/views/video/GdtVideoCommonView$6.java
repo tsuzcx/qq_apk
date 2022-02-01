@@ -1,11 +1,11 @@
 package com.tencent.gdtad.views.video;
 
-import aase;
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdhb;
+import bgmg;
+import com.tencent.qphone.base.util.QLog;
 
 class GdtVideoCommonView$6
   implements Runnable
@@ -14,7 +14,7 @@ class GdtVideoCommonView$6
   
   public void run()
   {
-    aase.a("GdtVideoCommonView", "showTisJob " + GdtVideoCommonView.a(this.this$0));
+    QLog.i("GdtVideoCommonView", 1, "showTisJob " + GdtVideoCommonView.a(this.this$0));
     if (GdtVideoCommonView.a(this.this$0)) {
       return;
     }
@@ -25,8 +25,8 @@ class GdtVideoCommonView$6
     GdtVideoCommonView.c(this.this$0).setVisibility(0);
     if (GdtVideoCommonView.b(this.this$0) > 0L)
     {
-      String str = bdhb.a(GdtVideoCommonView.b(this.this$0));
-      str = String.format(GdtVideoCommonView.a(this.this$0).getString(2131689626), new Object[] { str });
+      String str = bgmg.a(GdtVideoCommonView.b(this.this$0));
+      str = String.format(GdtVideoCommonView.a(this.this$0).getString(2131689548), new Object[] { str });
       GdtVideoCommonView.b(this.this$0).setText(str);
       GdtVideoCommonView.b(this.this$0).setVisibility(0);
       GdtVideoCommonView.b(this.this$0).setVisibility(8);
@@ -38,7 +38,7 @@ class GdtVideoCommonView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,16 @@
 package com.tencent.mobileqq.startup.step;
 
-import alzc;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
-import bdnh;
-import bdns;
-import biqy;
+import android.util.Log;
+import anrj;
+import bgsj;
+import bgsu;
+import blfs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.logcathook.LogcatHook;
 import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
 import com.tencent.mobileqq.statistics.UEC;
 import mqq.app.Foreground;
@@ -33,34 +35,34 @@ public class OldApplication
     }
     for (;;)
     {
-      IPluginAdapterProxy.setProxy(new biqy());
+      IPluginAdapterProxy.setProxy(new blfs());
       BaseApplicationImpl.sApplication.superOnCreate();
-      SoLoadUtilNew.setReport(new bdnh());
-      bdns.a();
-      BaseApplicationImpl.appnewmsgicon = 2130841132;
-      BaseApplicationImpl.appnewavmsgicon = 2130841786;
-      BaseApplicationImpl.qqlaunchicon = 2130840158;
-      BaseApplicationImpl.qqWifiLayout = 2131561659;
-      BaseApplicationImpl.qqWifiStateIconViewId = 2131380233;
-      BaseApplicationImpl.qqWifiStateTextViewId = 2131380234;
-      BaseApplicationImpl.qqWifiOperationTextViewId = 2131380225;
-      BaseApplicationImpl.qqWifiSettingViewId = 2131380232;
-      BaseApplicationImpl.qqWifiStateTextSingleLine = 2131380235;
-      BaseApplicationImpl.qqWifiTextDoubleLine = 2131380236;
-      BaseApplicationImpl.qqWifiRedTouchViewId = 2131380226;
-      BaseApplicationImpl.qqWifiConnecticon3 = 2130846488;
-      BaseApplicationImpl.qqWifiNoSignal = 2130846489;
-      BaseApplicationImpl.qqWifiUserful = 2130846494;
-      BaseApplicationImpl.qqWifiSettings = 2130846493;
-      BaseApplicationImpl.qqWifiOperation = 2130846487;
-      BaseApplicationImpl.qqwifinotifyusefulicon = 2130846492;
-      BaseApplicationImpl.qqwifinotifynoneicon = 2130846491;
-      BaseApplicationImpl.qqwifinotifyconnectedicon = 2130846490;
-      BaseApplicationImpl.qqwifinotifydivide = 2131166253;
+      SoLoadUtilNew.setReport(new bgsj());
+      bgsu.a();
+      BaseApplicationImpl.appnewmsgicon = 2130841393;
+      BaseApplicationImpl.appnewavmsgicon = 2130842092;
+      BaseApplicationImpl.qqlaunchicon = 2130840337;
+      BaseApplicationImpl.qqWifiLayout = 2131561896;
+      BaseApplicationImpl.qqWifiStateIconViewId = 2131381218;
+      BaseApplicationImpl.qqWifiStateTextViewId = 2131381219;
+      BaseApplicationImpl.qqWifiOperationTextViewId = 2131381210;
+      BaseApplicationImpl.qqWifiSettingViewId = 2131381217;
+      BaseApplicationImpl.qqWifiStateTextSingleLine = 2131381220;
+      BaseApplicationImpl.qqWifiTextDoubleLine = 2131381221;
+      BaseApplicationImpl.qqWifiRedTouchViewId = 2131381211;
+      BaseApplicationImpl.qqWifiConnecticon3 = 2130846926;
+      BaseApplicationImpl.qqWifiNoSignal = 2130846927;
+      BaseApplicationImpl.qqWifiUserful = 2130846932;
+      BaseApplicationImpl.qqWifiSettings = 2130846931;
+      BaseApplicationImpl.qqWifiOperation = 2130846925;
+      BaseApplicationImpl.qqwifinotifyusefulicon = 2130846930;
+      BaseApplicationImpl.qqwifinotifynoneicon = 2130846929;
+      BaseApplicationImpl.qqwifinotifyconnectedicon = 2130846928;
+      BaseApplicationImpl.qqwifinotifydivide = 2131166324;
       BaseApplicationImpl.defaultNotifSoundResourceId = 2131230721;
-      BaseApplicationImpl.devlockQuickloginIcon = 2130843834;
+      BaseApplicationImpl.devlockQuickloginIcon = 2130844220;
       Foreground.init(BaseApplicationImpl.sApplication, ThreadManager.getSubThreadLooper(), BaseApplicationImpl.processName);
-      if ((Build.VERSION.SDK_INT >= 15) && ("Success".equals(BaseApplicationImpl.sInjectResult)) && (alzc.a()))
+      if ((Build.VERSION.SDK_INT >= 15) && ("Success".equals(BaseApplicationImpl.sInjectResult)) && (anrj.a()))
       {
         MobileQQActivityLifeCycle localMobileQQActivityLifeCycle = new MobileQQActivityLifeCycle(BaseApplicationImpl.sApplication, ThreadManager.getSubThreadLooper(), BaseApplicationImpl.processName);
         UEC.a().a(localMobileQQActivityLifeCycle);
@@ -68,26 +70,40 @@ public class OldApplication
       try
       {
         Class.forName("android.os.AsyncTask");
-        if (BaseApplicationImpl.sProcessId == 1)
-        {
-          return true;
-          if ((BaseApplicationImpl.sProcessId == 4) || (BaseApplicationImpl.sProcessId != 2)) {
-            continue;
-          }
-          l = System.currentTimeMillis();
-          BaseApplicationImpl.sLaunchTime = l;
-          BaseApplicationImpl.sShowTime = l;
-          BaseApplicationImpl.appStartTime = BaseApplicationImpl.sLaunchTime;
-        }
       }
       catch (ClassNotFoundException localClassNotFoundException)
       {
-        for (;;)
+        try
         {
-          localClassNotFoundException.printStackTrace();
+          for (;;)
+          {
+            LogcatHook.a();
+            if (BaseApplicationImpl.sProcessId != 1) {
+              break label317;
+            }
+            return true;
+            if ((BaseApplicationImpl.sProcessId == 4) || (BaseApplicationImpl.sProcessId != 2)) {
+              break;
+            }
+            l = System.currentTimeMillis();
+            BaseApplicationImpl.sLaunchTime = l;
+            BaseApplicationImpl.sShowTime = l;
+            BaseApplicationImpl.appStartTime = BaseApplicationImpl.sLaunchTime;
+            break;
+            localClassNotFoundException = localClassNotFoundException;
+            localClassNotFoundException.printStackTrace();
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            Log.e("LogcatHook", "LogcatHook start failed !!", localThrowable);
+          }
         }
       }
     }
+    label317:
     return false;
   }
 }

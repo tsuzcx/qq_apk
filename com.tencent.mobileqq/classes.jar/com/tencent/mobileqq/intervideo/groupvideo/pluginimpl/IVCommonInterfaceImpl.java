@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
-import amdp;
 import android.content.Intent;
 import android.os.Bundle;
+import anvy;
 import com.tencent.mobileqq.intervideo.groupvideo.plugininterface.IVHostCallback;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
@@ -35,7 +35,7 @@ public class IVCommonInterfaceImpl
   
   public Future<Bundle> getLocation(String paramString)
   {
-    return amdp.a(16).submit(new IVCommonInterfaceImpl.1(this, paramString));
+    return anvy.a(16).submit(new IVCommonInterfaceImpl.1(this, paramString));
   }
   
   public void onHostActivityBackPress()
@@ -101,7 +101,7 @@ public class IVCommonInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVCommonInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

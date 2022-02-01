@@ -1,29 +1,14 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil.19;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-public class syg
-  implements bckx
+public abstract interface syg
 {
-  public syg(PublicAccountUtil.19 param19) {}
+  public abstract BaseData a();
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
-  {
-    if (paramJSONObject != null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result :" + paramJSONObject);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result null");
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     syg
  * JD-Core Version:    0.7.0.1
  */

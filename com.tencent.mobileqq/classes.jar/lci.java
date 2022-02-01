@@ -1,48 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.Socket;
-import java.security.KeyStore;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
+import com.tencent.av.VideoController;
+import java.util.Comparator;
 
 public class lci
-  extends org.apache.http.conn.ssl.SSLSocketFactory
+  implements Comparator<lco>
 {
-  private SSLContext a = SSLContext.getInstance("TLS");
+  public lci(VideoController paramVideoController) {}
   
-  public lci(KeyStore paramKeyStore)
+  public int a(lco paramlco1, lco paramlco2)
   {
-    super(paramKeyStore);
-    try
-    {
-      paramKeyStore = new lck();
-      this.a.init(null, new TrustManager[] { paramKeyStore }, null);
-      return;
-    }
-    catch (Exception paramKeyStore)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Translator", 2, "[cancel] cancel task" + paramKeyStore);
-        }
-        paramKeyStore = null;
-      }
-    }
-  }
-  
-  public Socket createSocket()
-  {
-    return this.a.getSocketFactory().createSocket();
-  }
-  
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    return this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
+    return (int)(paramlco1.d - paramlco2.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lci
  * JD-Core Version:    0.7.0.1
  */

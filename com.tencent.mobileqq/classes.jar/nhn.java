@@ -1,22 +1,20 @@
-import android.util.Pair;
-import java.net.URL;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapClickListener;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 public class nhn
+  implements TencentMap.OnMapClickListener
 {
-  public Pair<Integer, Integer> a;
-  public URL a;
+  public nhn(PoiMapActivity paramPoiMapActivity) {}
   
-  public static nhn a(URL paramURL, Pair<Integer, Integer> paramPair)
+  public void onMapClick(LatLng paramLatLng)
   {
-    nhn localnhn = new nhn();
-    localnhn.jdField_a_of_type_JavaNetURL = paramURL;
-    localnhn.jdField_a_of_type_AndroidUtilPair = paramPair;
-    return localnhn;
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nhn
  * JD-Core Version:    0.7.0.1
  */

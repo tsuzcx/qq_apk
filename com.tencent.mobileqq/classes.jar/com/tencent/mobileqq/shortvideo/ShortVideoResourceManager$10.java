@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azef;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.widget.QQToast;
 
 final class ShortVideoResourceManager$10
   implements Runnable
 {
-  ShortVideoResourceManager$10(QQAppInterface paramQQAppInterface, List paramList, azef paramazef, String paramString) {}
+  ShortVideoResourceManager$10(String paramString) {}
   
   public void run()
   {
-    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Azef, this.jdField_a_of_type_JavaLangString);
+    QQToast.a(VideoEnvironment.a(), "" + this.a, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.10
  * JD-Core Version:    0.7.0.1
  */

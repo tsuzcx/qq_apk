@@ -1,52 +1,21 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
-public class awvr
-  extends GestureDetector.SimpleOnGestureListener
+class awvr
+  extends RecyclerView.ViewHolder
 {
-  public awvr(ProfileTagView paramProfileTagView) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public awvr(awvo paramawvo, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll invoked");
-    }
-    this.a.d = true;
-    paramFloat1 = paramFloat2;
-    if (paramMotionEvent1 != null)
-    {
-      paramFloat1 = paramFloat2;
-      if (paramMotionEvent2 != null) {
-        paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
-    }
-    if (Math.abs(paramFloat1) > ProfileTagView.a(this.a))
-    {
-      if ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Boolean)) {
-        if (this.a.a())
-        {
-          this.a.f();
-          this.a.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.b(null);
-        }
-      }
-      while ((paramFloat1 >= 0.0F) || (this.a.jdField_a_of_type_Boolean)) {
-        return true;
-      }
-      this.a.a();
-      return true;
-    }
-    return false;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379979));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvr
  * JD-Core Version:    0.7.0.1
  */

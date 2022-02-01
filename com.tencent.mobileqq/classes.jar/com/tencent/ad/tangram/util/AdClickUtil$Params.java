@@ -18,6 +18,7 @@ public class AdClickUtil$Params
   public int componentID = -2147483648;
   public boolean enableAutoDownload = false;
   public Bundle extrasForIntent;
+  public boolean halfScreenPageEnabled = false;
   public Rect mediaViewLocationRect = null;
   public boolean reportForClick = true;
   public int sceneID = -2147483648;
@@ -35,7 +36,7 @@ public class AdClickUtil$Params
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.util.AdClickUtil.Params
  * JD-Core Version:    0.7.0.1
  */

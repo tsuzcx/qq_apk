@@ -1,29 +1,17 @@
-public abstract class arpx
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
+
+public class arpx
 {
-  private arpw a;
+  public View a;
+  public ImageView a;
+  public URLImageView a;
+  public View b;
+  public ImageView b;
+  public View c;
   
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramString3);
-    return localStringBuilder.toString();
-  }
-  
-  public arpw a()
-  {
-    return this.a;
-  }
-  
-  public abstract String a();
-  
-  public void a(arpw paramarpw)
-  {
-    this.a = paramarpw;
-  }
+  public arpx(arpp paramarpp) {}
 }
 
 

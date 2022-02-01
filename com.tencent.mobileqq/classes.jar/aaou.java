@@ -1,15 +1,12 @@
 class aaou
-  implements aaqs
+  implements bmre
 {
-  aaou(aaot paramaaot) {}
+  aaou(aaor paramaaor, anwd paramanwd, String paramString1, int paramInt, String paramString2) {}
   
-  public void a(aaqw paramaaqw, aaqx paramaaqx)
+  public void a(int paramInt)
   {
-    if (paramaaqx != null) {}
-    for (boolean bool = paramaaqx.a;; bool = false)
-    {
-      aase.b("GdtInterstitialPreDownloader", String.format("predownload.onCallback %b", new Object[] { Boolean.valueOf(bool) }));
-      return;
+    if ((paramInt == 0) && (this.jdField_a_of_type_Anwd != null)) {
+      this.jdField_a_of_type_Anwd.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 510, 0, this.jdField_a_of_type_Int, this.b);
     }
   }
 }

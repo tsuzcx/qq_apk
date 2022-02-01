@@ -1,20 +1,21 @@
 package com.tencent.pts.ui;
 
 import android.text.TextUtils;
+import com.tencent.pts.utils.PTSLog;
 import java.util.HashMap;
 import java.util.List;
 import org.json.JSONObject;
 
 public class PTSNodeInfo$Builder
 {
-  private PTSNodeAttribute attributes;
+  private PTSNodeAttribute attributes = new PTSNodeAttribute();
   private List<PTSNodeInfo> children;
   private String content;
-  private HashMap<String, String> eventInfo;
+  private HashMap<String, String> eventInfo = new HashMap();
   private boolean isRootNode;
   private String nodeType;
   private String parentID;
-  private PTSNodeStyle style;
+  private PTSNodeStyle style = new PTSNodeStyle();
   private String uniqueID;
   
   private void check(PTSNodeInfo paramPTSNodeInfo)
@@ -32,8 +33,21 @@ public class PTSNodeInfo$Builder
   
   public PTSNodeInfo build()
   {
-    if ((TextUtils.isEmpty(this.nodeType)) || (TextUtils.isEmpty(this.uniqueID))) {
-      throw new IllegalArgumentException("PTSNode info is wrong, there is no id or nodeType.");
+    if (TextUtils.isEmpty(this.nodeType))
+    {
+      PTSLog.e("PTSNodeInfo", "[build] PTSNodeInfo is not valid, nodeType is empty.");
+      if (PTSLog.isDebug()) {
+        throw new IllegalArgumentException("[build] PTSNodeInfo is not valid, nodeType is empty.");
+      }
+      this.nodeType = "view";
+    }
+    if (TextUtils.isEmpty(this.uniqueID))
+    {
+      PTSLog.e("PTSNodeInfo", "[build] PTSNodeInfo is not valid, id is empty.");
+      if (PTSLog.isDebug()) {
+        throw new IllegalArgumentException("[build] PTSNodeInfo is not valid, id is empty.");
+      }
+      this.uniqueID = ("pts_uid_" + System.currentTimeMillis());
     }
     PTSNodeInfo localPTSNodeInfo = new PTSNodeInfo(null);
     PTSNodeInfo.access$402(localPTSNodeInfo, this.nodeType);
@@ -117,7 +131,7 @@ public class PTSNodeInfo$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.PTSNodeInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

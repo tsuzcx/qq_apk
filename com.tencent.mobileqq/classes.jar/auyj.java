@@ -1,21 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-
-public class auyj
-  implements DialogInterface.OnClickListener
+class auyj
 {
-  public auyj(GameRoomInviteActivity paramGameRoomInviteActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    auzg.a(this.a, 10);
-    GameRoomInviteActivity.b(this.a);
-  }
+  private static final auyg a = new auyg(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auyj
  * JD-Core Version:    0.7.0.1
  */

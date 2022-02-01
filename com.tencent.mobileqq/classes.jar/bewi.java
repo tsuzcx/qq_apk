@@ -1,22 +1,38 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.VoteViewV2;
-import com.tencent.mobileqq.widget.VoteViewV2.1;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 public class bewi
-  implements View.OnClickListener
+  implements Callable<List<bbgl>>
 {
-  public bewi(VoteViewV2.1 param1) {}
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onClick(View paramView)
+  public bewi(bewh parambewh, Context paramContext, QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    paramView = new Intent(VoteViewV2.a(this.a.this$0), QQBrowserActivity.class);
-    String str = bdtg.a(VoteViewV2.a(this.a.this$0), "praise", "");
-    VasWebviewUtil.openQQBrowserWithoutAD(VoteViewV2.a(this.a.this$0), str, 536870912L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(null, "thumbup", "others_click", null, 1, 0, 0, null, "0", null);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public List<bbgl> a()
+  {
+    long l = System.currentTimeMillis();
+    ArrayList localArrayList = new ArrayList();
+    if (bbgl.E == this.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Bewh.a = this.jdField_a_of_type_Bewh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true);
+      localArrayList.addAll(this.jdField_a_of_type_Bewh.a);
+      this.jdField_a_of_type_Bewh.b = this.jdField_a_of_type_Bewh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "CallableForSearchData time = " + (System.currentTimeMillis() - l));
+    }
+    return localArrayList;
   }
 }
 

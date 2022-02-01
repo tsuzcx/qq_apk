@@ -1,34 +1,71 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0xc90.RspBody;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-class pef
-  extends mzz
+public class pef
+  extends ViewBase
 {
-  pef(ped paramped, sec paramsec) {}
+  private ReadInJoyCommentLikeView a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public pef(VafContext paramVafContext)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    super(paramVafContext);
+    this.a = new ReadInJoyCommentLikeView(paramVafContext.getContext());
+  }
+  
+  public void a(pex parampex)
+  {
+    this.a.setOnLikeListener(parampex);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setVisibility(0);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      paramBundle = new oidb_0xc90.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (this.jdField_a_of_type_Sec != null) {
-        this.jdField_a_of_type_Sec.a(true, paramInt, paramBundle);
-      }
-      return;
+    default: 
+      return super.setAttribute(paramInt, paramObject);
     }
-    catch (Exception paramArrayOfByte)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(ped.a, 2, "requestNewCommunityMsg onResult(), exception = " + QLog.getStackTraceString(paramArrayOfByte));
+    if (((paramObject instanceof pay)) && (((pay)paramObject).a != null)) {
+      this.a.a(((pay)paramObject).a);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pef
  * JD-Core Version:    0.7.0.1
  */

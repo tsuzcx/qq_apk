@@ -1,547 +1,259 @@
-import android.content.res.Resources;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Build.VERSION;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.ListView;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unite.search.DynamicTabSearch.SubHotWord;
+import android.graphics.Point;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import com.tencent.mobileqq.ocr.view.gesture.Settings;
 
 public class ayjv
-  extends amfd
 {
-  public ayjv(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
+  private static final Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
+  private static final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect;
+  private static final RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private static final ayju jdField_a_of_type_Ayju = new ayju();
+  private float jdField_a_of_type_Float;
+  private final ayjq jdField_a_of_type_Ayjq;
+  private final ayjs jdField_a_of_type_Ayjs;
+  private final Settings jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3, long[] paramArrayOfLong)
+  static
   {
-    if (!this.a.isAdded()) {
-      QLog.e(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 1, "Unify handleTabSearchError, fragment is detached ..., reqKeyword=" + paramString1 + " isFirstReq=" + paramBoolean + " reqTime=" + paramString2 + " resultCode=" + paramInt + " errorMsg=" + paramString3);
-    }
-    while ((!TextUtils.equals(paramString2, this.a.jdField_d_of_type_JavaLangString)) || (!ActiveEntitySearchFragment.a(this.a.jdField_a_of_type_ArrayOfLong, paramArrayOfLong)) || (!this.a.jdField_b_of_type_JavaLangString.equals(paramString1))) {
-      return;
-    }
-    this.a.jdField_e_of_type_AndroidViewView.setVisibility(8);
-    this.a.jdField_e_of_type_Boolean = false;
-    this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      this.a.g.setVisibility(0);
-      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {}
-    }
+    jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  }
+  
+  public ayjv(Settings paramSettings)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings = paramSettings;
+    this.jdField_a_of_type_Ayjs = new ayjs(paramSettings);
+    this.jdField_a_of_type_Ayjq = new ayjq(paramSettings);
+  }
+  
+  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
+  {
+    if (paramFloat5 == 1.0F) {}
     for (;;)
     {
-      try
+      return paramFloat1;
+      float f = paramFloat3 / paramFloat5;
+      if ((paramFloat1 < paramFloat3) && (paramFloat1 < paramFloat2)) {
+        paramFloat3 = (paramFloat3 - paramFloat1) / (paramFloat3 - f);
+      }
+      while (paramFloat3 != 0.0F)
       {
-        this.a.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(this.a.getResources(), 2130841985);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131700156));
-        this.a.g.setOnClickListener(new ayjx(this));
-        if (!QLog.isColorLevel()) {
-          break;
+        return paramFloat1 + (float)Math.sqrt(paramFloat3) * (paramFloat2 - paramFloat1);
+        if ((paramFloat1 > paramFloat4) && (paramFloat1 > paramFloat2)) {
+          paramFloat3 = (paramFloat1 - paramFloat4) / (paramFloat4 * paramFloat5 - paramFloat4);
+        } else {
+          paramFloat3 = 0.0F;
         }
-        QLog.w(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 2, "Unify handleTabSearchError code=" + paramInt + " mask;" + Arrays.toString(paramArrayOfLong) + " key=" + paramString1 + " name=" + this.a.jdField_e_of_type_JavaLangString);
-        return;
       }
-      catch (OutOfMemoryError paramString2)
-      {
-        QLog.e(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 1, paramString2, new Object[0]);
-        continue;
-      }
-      this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new ayjy(this));
     }
   }
   
-  public void a(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List<aynt> paramList, long[] paramArrayOfLong, String paramString3, List<DynamicTabSearch.SubHotWord> paramList1, boolean paramBoolean3, String paramString4)
+  private float b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
-    if (!this.a.isAdded())
+    float f1 = 1.0F;
+    if (paramFloat5 == 0.0F) {}
+    for (;;)
     {
-      QLog.e(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 1, "Unify handleTabSearchResult, fragment is detached ..., reqKeyword=" + paramString1 + " keyword=" + this.a.jdField_b_of_type_JavaLangString + " reqTime=" + paramString2 + " lastReqTime=" + this.a.jdField_d_of_type_JavaLangString + " isEnd1=" + paramBoolean2);
-      return;
-    }
-    if (!TextUtils.equals(paramString2, this.a.jdField_d_of_type_JavaLangString))
-    {
-      QLog.d(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 2, "Unify handleTabSearchResult. reqKeyword=" + paramString1 + " keyword=" + this.a.jdField_b_of_type_JavaLangString + " reqTime=" + paramString2 + " lastReqTime=" + this.a.jdField_d_of_type_JavaLangString + " isEnd1=" + paramBoolean2);
-      return;
-    }
-    if ((!ActiveEntitySearchFragment.a(this.a.jdField_a_of_type_ArrayOfLong, paramArrayOfLong)) || (!paramString1.equals(this.a.jdField_b_of_type_JavaLangString)))
-    {
-      QLog.d(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 2, "Unify handleTabSearchResult. masks=" + this.a.jdField_a_of_type_ArrayOfLong + " reqMasks=" + paramArrayOfLong + " reqKeyword=" + paramString1 + " keyword=" + this.a.jdField_b_of_type_JavaLangString + " isEnd1=" + paramBoolean2);
-      return;
-    }
-    if (paramList == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 2, "Unify handleTabSearchResult result=" + paramList);
+      return paramFloat1;
+      float f2 = (paramFloat1 + paramFloat2) * 0.5F;
+      if ((f2 < paramFloat3) && (paramFloat1 < paramFloat2)) {
+        paramFloat3 = (paramFloat3 - f2) / paramFloat5;
       }
-      a(paramString1, paramBoolean1, paramString2, -1, "result = null", paramArrayOfLong);
-      return;
-    }
-    paramString2 = new HashSet();
-    Object localObject1 = paramList.iterator();
-    long l1 = -1L;
-    long l2 = -1L;
-    int j = 0;
-    label363:
-    Object localObject2;
-    Object localObject3;
-    Object localObject4;
-    label510:
-    int i;
-    label572:
-    long l3;
-    if (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (aynt)((Iterator)localObject1).next();
-      if (((aynt)localObject2).a() == null) {
-        break label3403;
-      }
-      if (!(localObject2 instanceof aymr)) {
-        break label3400;
-      }
-      localObject3 = (aymr)localObject2;
-      localObject4 = ((aymr)localObject3).a();
-      Iterator localIterator = ((List)localObject4).iterator();
-      while (localIterator.hasNext())
+      while (paramFloat3 != 0.0F)
       {
-        Object localObject5 = (aynu)localIterator.next();
-        if ((localObject5 instanceof ayms))
-        {
-          localObject5 = (ayms)localObject5;
-          if (ActiveEntitySearchActivity.b) {
-            ((ayms)localObject5).l = 1;
-          }
-          paramString2.add(Long.valueOf(((ayms)localObject5).d()));
+        if (paramFloat3 > 1.0F) {
+          paramFloat3 = f1;
         }
+        for (;;)
+        {
+          return paramFloat1 - (float)Math.sqrt(paramFloat3) * (paramFloat1 - paramFloat2);
+          if ((f2 <= paramFloat4) || (paramFloat1 <= paramFloat2)) {
+            break label98;
+          }
+          paramFloat3 = (f2 - paramFloat4) / paramFloat5;
+          break;
+        }
+        label98:
+        paramFloat3 = 0.0F;
       }
-      if (l1 != -1L) {
-        break label3397;
-      }
-      l1 = ((aymr)localObject3).a;
-      l2 = ((aymr)localObject3).a;
-      if ((((List)localObject4).size() > 0) && (((aymr)localObject3).a == 1001L))
-      {
-        azqs.b(null, "dc00898", "", "", "0X800A339", "0X800A339", 1, 0, "", "", "", "");
-        i = j + ((aynt)localObject2).a().size();
-        l3 = l1;
-        l1 = l2;
-        l2 = l3;
+    }
+  }
+  
+  public ayju a(ayju paramayju, float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_Ayjs.a(paramayju);
+    float f2 = this.jdField_a_of_type_Ayjs.c();
+    float f1;
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.c() > 0.0F)
+    {
+      f1 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.c();
+      if (paramayju.c() >= 0.5F * (f2 + f1)) {
+        break label82;
       }
     }
     for (;;)
     {
-      l3 = l1;
-      l1 = l2;
-      l2 = l3;
-      j = i;
-      break label363;
-      if ((((List)localObject4).size() > 0) && (((aymr)localObject3).a == 1002L)) {
-        azqs.b(null, "dc00898", "", "", "0X800A339", "0X800A339", 2, 0, "", "", "", "");
-      }
-      break label572;
-      this.a.jdField_b_of_type_JavaUtilList.addAll(paramString2);
-      ActiveEntitySearchFragment.a(this.a, paramString3);
-      ActiveEntitySearchFragment.a(this.a, paramList1);
-      if (!paramBoolean1)
-      {
-        paramString3 = new ArrayList();
-        paramString3.addAll(paramString2);
-        ayvm.a("sub_result", "load_result", new String[] { this.a.jdField_b_of_type_JavaLangString, ayvm.a(paramString3), "", ayvm.a("dynamic_tab_search.1", this.a.jdField_a_of_type_ArrayOfLong) });
-      }
-      paramString2 = this.a.jdField_a_of_type_JavaUtilList;
-      boolean bool1;
-      label892:
-      boolean bool2;
-      if (!paramBoolean1)
-      {
-        bool1 = true;
-        ayvh.a(paramString2, paramList, bool1, this.a.jdField_a_of_type_ArrayOfLong, this.a.jdField_e_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString);
-        if (j != 0) {
-          break label1347;
-        }
-        if ((this.a.getActivity() instanceof ayhy)) {}
-        switch (((ayhy)this.a.getActivity()).a())
-        {
-        case 2: 
-        default: 
-          if (QLog.isColorLevel()) {
-            QLog.i(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 2, "Unify handleTabSearchResult isFirstReq==" + paramBoolean1 + " newSearchDataCount:" + this.a.jdField_b_of_type_Int + "   newSearchIndex:" + this.a.jdField_a_of_type_Int + " result.size():" + j);
-          }
-          this.a.jdField_e_of_type_AndroidViewView.setVisibility(8);
-          this.a.jdField_f_of_type_AndroidViewView.setVisibility(8);
-          this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-          this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-          this.a.jdField_e_of_type_Boolean = false;
-          this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-          this.a.jdField_d_of_type_Boolean = paramBoolean2;
-          bool2 = false;
-          paramArrayOfByte = "";
-          if (!TextUtils.isEmpty(paramString4))
-          {
-            paramString2 = paramArrayOfByte;
-            bool1 = bool2;
-          }
-          break;
-        }
-      }
-      int k;
-      for (;;)
-      {
-        try
-        {
-          paramString3 = new JSONObject(paramString4);
-          paramString2 = paramArrayOfByte;
-          bool1 = bool2;
-          bool2 = paramString3.optBoolean("buttonShow");
-          paramString2 = paramArrayOfByte;
-          bool1 = bool2;
-          paramArrayOfByte = paramString3.optString("buttonText");
-          paramString2 = paramArrayOfByte;
-          bool1 = bool2;
-          paramString3 = paramString3.optString("buttonJmpUrl");
-          bool1 = bool2;
-          paramString2 = paramString3;
-        }
-        catch (JSONException paramArrayOfByte)
-        {
-          label1347:
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 2, "Unify handleTabSearchResult extension parse error! " + QLog.getStackTraceString(paramArrayOfByte));
-          paramString3 = "";
-          paramArrayOfByte = paramString2;
-          paramString2 = paramString3;
-          continue;
-        }
-        if (!paramBoolean2) {
-          break label1662;
-        }
-        this.a.c.setVisibility(0);
-        if ((this.a.jdField_a_of_type_ArrayOfLong == null) || (this.a.jdField_a_of_type_ArrayOfLong.length != 2)) {
-          break label1662;
-        }
-        paramString3 = new ArrayList();
-        paramList1 = this.a.jdField_a_of_type_ArrayOfLong;
-        k = paramList1.length;
-        i = 0;
-        if (i >= k) {
-          break label1618;
-        }
-        paramString3.add(Long.valueOf(paramList1[i]));
-        i += 1;
-        continue;
-        bool1 = false;
-        break;
-        ayvm.a("sub_result", "no_result", new String[] { this.a.jdField_b_of_type_JavaLangString, ayvm.a(this.a.jdField_a_of_type_ArrayOfLong), "", ayvm.a("dynamic_tab_search.1", paramArrayOfLong) });
-        break label892;
-        ayvm.a("all_result", "exp_tab_empty", new String[] { this.a.jdField_b_of_type_JavaLangString, ayvm.a(this.a.jdField_a_of_type_ArrayOfLong), "", ayvm.a("dynamic_tab_search.1", paramArrayOfLong) });
-        break label892;
-        if ((this.a.jdField_a_of_type_ArrayOfByte != null) || (!(this.a.getActivity() instanceof ayhy))) {
-          break label892;
-        }
-        paramString2 = (ayhy)this.a.getActivity();
-        switch (paramString2.a())
-        {
-        case 2: 
-        default: 
-          break;
-        case 1: 
-          ayvm.a("all_result", "exp_tab_page", new String[] { this.a.jdField_b_of_type_JavaLangString, ayvm.a(this.a.jdField_b_of_type_JavaUtilList), "", ayvm.a("UnifySearch.Unite", paramString2.a()) });
-          break;
-        case 3: 
-          ayvm.a("sub_result", "exp_result", new String[] { paramString2.a(), ayvm.a(this.a.jdField_b_of_type_JavaUtilList), "", ayvm.a("dynamic_tab_search.1", paramString2.a()) });
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.i(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 2, "Unify handleTabSearchResult extension is null");
-          }
-          bool1 = false;
-          paramString2 = "";
-          paramArrayOfByte = "";
-        }
-      }
-      label1618:
-      if ((paramString3.contains(Long.valueOf(1001L))) && (paramString3.contains(Long.valueOf(1002L)))) {
-        this.a.c.setVisibility(8);
-      }
-      label1662:
-      int m;
-      if ((!TextUtils.isEmpty(ActiveEntitySearchFragment.a(this.a))) && (ActiveEntitySearchFragment.a(this.a).size() > 0))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ActiveEntitySearchFragment.a(this.a));
-        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-        paramString3 = this.a.getActivity();
-        if ((paramString3 == null) || (paramString3.isFinishing()))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 2, "Unify activity is finished. in handleTabSearchResult.");
-          return;
-        }
-        k = bdaq.a(paramString3, 8.0F);
-        m = bdaq.a(paramString3, 10.0F);
-        int n = bdaq.a(paramString3, 2.0F);
-        paramList1 = new GradientDrawable();
-        paramList1.setCornerRadius(bdaq.a(this.a.getActivity(), 15.0F));
-        i = Color.parseColor("#E2E2E2");
-        bool2 = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
-        if (bool2) {
-          i = Color.parseColor("#5a86bb");
-        }
-        paramList1.setStroke(1, i);
-        paramString4 = ActiveEntitySearchFragment.a(this.a).iterator();
-        while (paramString4.hasNext())
-        {
-          localObject1 = (DynamicTabSearch.SubHotWord)paramString4.next();
-          localObject2 = ((DynamicTabSearch.SubHotWord)localObject1).show_word.get().toStringUtf8();
-          if (!TextUtils.isEmpty((CharSequence)localObject2))
-          {
-            localObject3 = new TextView(paramString3);
-            localObject4 = new LinearLayout.LayoutParams(-2, -2);
-            ((LinearLayout.LayoutParams)localObject4).rightMargin = k;
-            ((TextView)localObject3).setPadding(m, n, m, n);
-            i = Color.parseColor("#000000");
-            if (bool2) {
-              i = Color.parseColor("#5a86bb");
-            }
-            ((TextView)localObject3).setTextColor(i);
-            if (Build.VERSION.SDK_INT < 16) {
-              ((TextView)localObject3).setBackgroundDrawable(paramList1.mutate());
-            }
-            for (;;)
-            {
-              ((TextView)localObject3).setText((CharSequence)localObject2);
-              ((TextView)localObject3).setGravity(17);
-              ((TextView)localObject3).setTextSize(1, 14.0F);
-              ((TextView)localObject3).setContentDescription((CharSequence)localObject2);
-              ((TextView)localObject3).setOnClickListener(this.a);
-              ((TextView)localObject3).setTag(2131367772, localObject1);
-              this.a.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
-              break;
-              ((TextView)localObject3).setBackground(paramList1.mutate());
-            }
-          }
-        }
-        if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() == 0)
-        {
-          this.a.jdField_d_of_type_AndroidViewView.setVisibility(8);
-          if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {
-            break label2628;
-          }
-          paramString2 = ayif.a(paramList, paramBoolean1, this.a.jdField_f_of_type_Boolean);
-          if ((paramBoolean1) || (l1 != ActiveEntitySearchFragment.a(this.a)) || (paramBoolean3) || (paramString2 == null) || (paramString2.size() <= 0)) {
-            break label2428;
-          }
-          paramArrayOfByte = (ayns)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_JavaUtilList.size() - 1);
-          paramString2.remove(0);
-          k = 0;
-          i = 0;
-          label2222:
-          if (i >= paramString2.size()) {
-            break label3390;
-          }
-          if (!((ayns)paramString2.get(i) instanceof aynb)) {
-            break label2415;
-          }
-        }
-      }
-      for (;;)
-      {
-        if ((paramArrayOfByte instanceof aynu))
-        {
-          paramArrayOfByte = (aynu)paramArrayOfByte;
-          k = paramArrayOfByte.a();
-          ayvp.a(paramArrayOfByte, k + i, k - 1);
-        }
-        for (;;)
-        {
-          m = 0;
-          for (;;)
-          {
-            if (m < i)
-            {
-              paramArrayOfByte = (ayns)paramString2.get(m);
-              if ((paramArrayOfByte instanceof aynu)) {
-                ayvp.a((aynu)paramArrayOfByte, k + i, k + m);
-              }
-              m += 1;
-              continue;
-              if (((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) && ((paramList == null) || (paramList.isEmpty()))) {
-                break;
-              }
-              this.a.jdField_d_of_type_AndroidViewView.setVisibility(0);
-              break;
-              this.a.jdField_d_of_type_AndroidViewView.setVisibility(8);
-              break;
-              label2415:
-              k = i;
-              i += 1;
-              break label2222;
-            }
-          }
-          label2428:
-          this.a.jdField_a_of_type_JavaUtilList.addAll(paramString2);
-          this.a.jdField_a_of_type_Ayju.a(this.a.jdField_a_of_type_JavaUtilList);
-          ActiveEntitySearchFragment.a(this.a, l2);
-          if (!this.a.jdField_d_of_type_Boolean)
-          {
-            paramString2 = this.a;
-            paramString2.jdField_b_of_type_Int += j;
-            paramString2 = this.a;
-            paramString2.jdField_a_of_type_Int += 1;
-            if (this.a.jdField_b_of_type_Int > 10)
-            {
-              this.a.jdField_a_of_type_Int = 0;
-              this.a.jdField_b_of_type_Int = 0;
-            }
-          }
-          else
-          {
-            label2538:
-            if (!paramBoolean2) {
-              break label3301;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 2, "Unify handleTabSearchResult isEnd = true mask;" + Arrays.toString(paramArrayOfLong) + " key=" + paramString1 + " name=" + this.a.jdField_e_of_type_JavaLangString + "  fragmentMask=" + Arrays.toString(this.a.jdField_a_of_type_ArrayOfLong));
-            }
-          }
-          for (;;)
-          {
-            ActiveEntitySearchActivity.a = true;
-            return;
-            label2628:
-            if ((paramList == null) || (paramList.isEmpty()))
-            {
-              this.a.g.setVisibility(0);
-              paramString3 = (alwd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159);
-              if ((!bool1) && (paramString3.jdField_d_of_type_Boolean)) {
-                if (this.a.jdField_a_of_type_Ahex == null)
-                {
-                  this.a.jdField_a_of_type_Ahex = new ahfb(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.getActivity(), this.a.jdField_b_of_type_ComTencentWidgetXListView, null);
-                  paramString2 = this.a.jdField_a_of_type_Ahex.a();
-                  paramArrayOfByte = new TextView(this.a.getActivity());
-                  paramArrayOfByte.setGravity(17);
-                  paramArrayOfByte.setLayoutParams(new AbsListView.LayoutParams(-1, aepi.a(105.0F, this.a.getResources())));
-                  paramArrayOfByte.setTextColor(this.a.getResources().getColor(2131166981));
-                  paramArrayOfByte.setTextSize(1, 17.0F);
-                  paramArrayOfByte.setText(alud.a(2131700158));
-                  paramArrayOfByte.setBackgroundResource(2130838593);
-                  paramString2.addHeaderView(paramArrayOfByte);
-                  paramArrayOfByte = new TextView(this.a.getActivity());
-                  paramArrayOfByte.setTextColor(this.a.getResources().getColor(2131166981));
-                  paramArrayOfByte.setTextSize(1, 14.0F);
-                  paramArrayOfByte.setGravity(16);
-                  paramArrayOfByte.setPadding(aepi.a(15.0F, this.a.getResources()), 0, 0, 0);
-                  paramArrayOfByte.setLayoutParams(new AbsListView.LayoutParams(-1, aepi.a(40.0F, this.a.getResources())));
-                  paramArrayOfByte.setText(alud.a(2131700164));
-                  paramArrayOfByte.setBackgroundResource(2130838593);
-                  paramString2.addHeaderView(paramArrayOfByte);
-                  this.a.jdField_b_of_type_ComTencentWidgetXListView.setVisibility(0);
-                  this.a.c.setVisibility(8);
-                }
-              }
-            }
-            for (;;)
-            {
-              for (;;)
-              {
-                label2965:
-                label2976:
-                paramString2 = ayif.a(paramList, paramBoolean1, this.a.jdField_f_of_type_Boolean);
-                this.a.jdField_a_of_type_JavaUtilList = paramString2;
-                this.a.jdField_a_of_type_Ayju.a(this.a.jdField_a_of_type_JavaUtilList);
-                break;
-                this.a.jdField_a_of_type_Ahex.b();
-                break label2965;
-                this.a.jdField_b_of_type_ComTencentWidgetXListView.setVisibility(8);
-                if (this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-                try
-                {
-                  if (this.a.isAdded())
-                  {
-                    this.a.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(this.a.getResources(), 2130841985);
-                    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-                  }
-                  this.a.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131700153));
-                  if (bool1)
-                  {
-                    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-                    this.a.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ayjw(this, paramString2));
-                    if (TextUtils.isEmpty(paramArrayOfByte)) {
-                      break label2976;
-                    }
-                    this.a.jdField_a_of_type_AndroidWidgetButton.setText(paramArrayOfByte);
-                    this.a.jdField_b_of_type_AndroidWidgetTextView.setPadding(0, bdaq.a(this.a.jdField_b_of_type_AndroidWidgetTextView.getContext(), 15.0F), 0, 0);
-                  }
-                }
-                catch (OutOfMemoryError paramString3)
-                {
-                  for (;;)
-                  {
-                    QLog.e(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 1, paramString3, new Object[0]);
-                  }
-                  this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-                }
-              }
-              break label2976;
-              this.a.g.setVisibility(8);
-            }
-            if (this.a.jdField_a_of_type_Int >= 3)
-            {
-              this.a.jdField_d_of_type_Boolean = true;
-              break label2538;
-            }
-            this.a.b(this.a.jdField_b_of_type_JavaLangString);
-            break label2538;
-            label3301:
-            if (QLog.isColorLevel()) {
-              QLog.i(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 2, "Unify handleTabSearchResult isEnd = false mask;" + Arrays.toString(paramArrayOfLong) + " key=" + paramString1 + " name=" + this.a.jdField_e_of_type_JavaLangString + "  fragmentMask=" + Arrays.toString(this.a.jdField_a_of_type_ArrayOfLong));
-            }
-          }
-          k = 0;
-        }
-        label3390:
-        i = k;
-      }
-      label3397:
-      break label510;
-      label3400:
-      break label572;
-      label3403:
-      l3 = l2;
-      i = j;
-      l2 = l1;
-      l1 = l3;
+      paramayju = paramayju.a();
+      paramayju.b(f1, paramFloat1, paramFloat2);
+      return paramayju;
+      f1 = this.jdField_a_of_type_Ayjs.b();
+      break;
+      label82:
+      f1 = f2;
     }
+  }
+  
+  public ayju a(ayju paramayju1, ayju paramayju2, float paramFloat1, float paramFloat2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    jdField_a_of_type_Ayju.a(paramayju1);
+    if (a(jdField_a_of_type_Ayju, paramayju2, paramFloat1, paramFloat2, paramBoolean1, paramBoolean2, paramBoolean3)) {
+      return jdField_a_of_type_Ayju.a();
+    }
+    return null;
+  }
+  
+  public void a(ayju paramayju)
+  {
+    if (this.jdField_a_of_type_Float > 0.0F) {
+      paramayju.a(paramayju.a(), paramayju.b(), paramayju.c() * this.jdField_a_of_type_Float, paramayju.d());
+    }
+  }
+  
+  public void a(ayju paramayju, RectF paramRectF)
+  {
+    this.jdField_a_of_type_Ayjq.a(paramayju).a(paramRectF);
+  }
+  
+  public boolean a(ayju paramayju)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return b(paramayju);
+  }
+  
+  public boolean a(ayju paramayju1, ayju paramayju2, float paramFloat1, float paramFloat2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.i()) {
+      return false;
+    }
+    float f2;
+    float f1;
+    if (!Float.isNaN(paramFloat1))
+    {
+      f2 = paramFloat1;
+      f1 = paramFloat2;
+      if (!Float.isNaN(paramFloat2)) {}
+    }
+    else
+    {
+      ayjw.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings, jdField_a_of_type_AndroidGraphicsPoint);
+      f2 = jdField_a_of_type_AndroidGraphicsPoint.x;
+      f1 = jdField_a_of_type_AndroidGraphicsPoint.y;
+    }
+    if ((paramBoolean3) && (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.f()))
+    {
+      paramFloat1 = Math.round(paramayju1.d() / 90.0F) * 90.0F;
+      if (!ayju.a(paramFloat1, paramayju1.d())) {
+        paramayju1.d(paramFloat1, f2, f1);
+      }
+    }
+    label233:
+    label491:
+    label500:
+    for (paramBoolean3 = true;; paramBoolean3 = false)
+    {
+      this.jdField_a_of_type_Ayjs.a(paramayju1);
+      float f5 = this.jdField_a_of_type_Ayjs.a();
+      float f4 = this.jdField_a_of_type_Ayjs.b();
+      float f3;
+      if (paramBoolean2)
+      {
+        paramFloat1 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d();
+        f3 = this.jdField_a_of_type_Ayjs.a(paramayju1.c(), paramFloat1);
+        paramFloat2 = f3;
+        if (paramayju2 != null) {
+          paramFloat2 = a(f3, paramayju2.c(), f5, f4, paramFloat1);
+        }
+        if (ayju.a(paramFloat2, paramayju1.c())) {
+          break label510;
+        }
+        paramayju1.b(paramFloat2, f2, f1);
+      }
+      label247:
+      label510:
+      for (paramBoolean2 = true;; paramBoolean2 = paramBoolean3)
+      {
+        if (paramBoolean1)
+        {
+          f1 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e();
+          if (!paramBoolean1) {
+            break label491;
+          }
+          f2 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.f();
+          this.jdField_a_of_type_Ayjq.a(paramayju1);
+          this.jdField_a_of_type_Ayjq.a(paramayju1.a(), paramayju1.b(), f1, f2, jdField_a_of_type_AndroidGraphicsPointF);
+          f4 = jdField_a_of_type_AndroidGraphicsPointF.x;
+          f3 = jdField_a_of_type_AndroidGraphicsPointF.y;
+          if (paramFloat2 >= f5) {
+            break label500;
+          }
+          paramFloat1 = (float)Math.sqrt((paramFloat2 * paramFloat1 / f5 - 1.0F) / (paramFloat1 - 1.0F));
+          this.jdField_a_of_type_Ayjq.a(f4, f3, jdField_a_of_type_AndroidGraphicsPointF);
+          paramFloat2 = jdField_a_of_type_AndroidGraphicsPointF.x;
+          f5 = jdField_a_of_type_AndroidGraphicsPointF.y;
+          paramFloat2 += (f4 - paramFloat2) * paramFloat1;
+        }
+        for (paramFloat1 = (f3 - f5) * paramFloat1 + f5;; paramFloat1 = f3)
+        {
+          f4 = paramFloat1;
+          f3 = paramFloat2;
+          if (paramayju2 != null)
+          {
+            this.jdField_a_of_type_Ayjq.a(jdField_a_of_type_AndroidGraphicsRectF);
+            f3 = b(paramFloat2, paramayju2.a(), jdField_a_of_type_AndroidGraphicsRectF.left, jdField_a_of_type_AndroidGraphicsRectF.right, f1);
+            f4 = b(paramFloat1, paramayju2.b(), jdField_a_of_type_AndroidGraphicsRectF.top, jdField_a_of_type_AndroidGraphicsRectF.bottom, f2);
+          }
+          if ((!ayju.a(f3, paramayju1.a())) || (!ayju.a(f4, paramayju1.b())))
+          {
+            paramayju1.b(f3, f4);
+            return true;
+            paramFloat1 = 1.0F;
+            break;
+            f1 = 0.0F;
+            break label233;
+            f2 = 0.0F;
+            break label247;
+          }
+          return paramBoolean2;
+          paramFloat2 = f4;
+        }
+      }
+    }
+  }
+  
+  public boolean b(ayju paramayju)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramayju.a(0.0F, 0.0F, this.jdField_a_of_type_Ayjs.a(paramayju).c(), 0.0F);
+      ayjw.a(paramayju, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings, jdField_a_of_type_AndroidGraphicsRect);
+      paramayju.b(jdField_a_of_type_AndroidGraphicsRect.left, jdField_a_of_type_AndroidGraphicsRect.top);
+      if ((!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.k()) || (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.l())) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.jdField_a_of_type_Boolean = bool;
+        if (this.jdField_a_of_type_Boolean) {
+          break;
+        }
+        return true;
+      }
+      return false;
+    }
+    a(paramayju, paramayju, (0.0F / 0.0F), (0.0F / 0.0F), false, false, true);
+    return false;
   }
 }
 

@@ -1,57 +1,44 @@
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.widget.XListView;
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
+import com.tencent.mobileqq.ark.ArkTopGestureLayout;
 
 public class appp
-  implements appl
+  extends TopGestureLayout.TopGestureDetector
 {
-  private int jdField_a_of_type_Int = -16777216;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  
-  public appp(XListView paramXListView)
+  public appp(ArkTopGestureLayout paramArkTopGestureLayout, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    super(paramArkTopGestureLayout, paramContext);
   }
   
-  public View a(int paramInt)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetXListView.getHeaderViewsCount() + paramInt - this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition());
-    if (localView == null) {}
+    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {}
     do
     {
-      return null;
-      localView.setPressed(false);
-      localView.setDrawingCacheEnabled(true);
-    } while (localView.getDrawingCache() == null);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(localView.getDrawingCache());
-    localView.setDrawingCacheEnabled(false);
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_ComTencentWidgetXListView.getContext());
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(new ViewGroup.LayoutParams(localView.getWidth(), localView.getHeight()));
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public void a(View paramView)
-  {
-    ((ImageView)paramView).setImageDrawable(null);
-    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-  }
-  
-  public void a(View paramView, Point paramPoint1, Point paramPoint2) {}
-  
-  public void f(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+            paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+            if (!this.a.hasGestureFlag(1)) {
+              break;
+            }
+          } while ((paramFloat1 >= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
+          this.a.setGestureFlag(-1);
+        } while (ArkTopGestureLayout.a(this.a));
+        this.a.mOnFlingGesture.flingLToR();
+        return false;
+      } while ((!this.a.hasGestureFlag(2)) || (paramFloat1 <= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
+      this.a.setGestureFlag(-1);
+    } while (ArkTopGestureLayout.b(this.a));
+    this.a.mOnFlingGesture.flingRToL();
+    return false;
   }
 }
 

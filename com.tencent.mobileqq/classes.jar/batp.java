@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import android.media.MediaFormat;
 
-class batp
-  implements ITransCallbackForReport
+public abstract interface batp
 {
-  batp(batn parambatn) {}
+  public abstract void a(MediaFormat paramMediaFormat);
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a("actRichMediaNetMonitor_pttUp", false, paramInt, paramString1, paramString2, this.a.c, this.a.l, null);
-  }
+  public abstract void a(batm parambatm);
+  
+  public abstract void k();
 }
 
 

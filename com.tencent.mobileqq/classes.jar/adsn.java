@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class adsn
-  extends alqh
+public final class adsn
+  implements QQPermissionCallback
 {
-  public adsn(QQSettingMe paramQQSettingMe) {}
+  public adsn(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
-    if (this.a.c) {
-      this.a.o();
-    }
+    QLog.w("ChatActivityUtils", 1, "checkQAVPermission, deny, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.a.onClick(null, 0);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.w("ChatActivityUtils", 1, "checkQAVPermission, grant, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.a.onClick(null, 1);
   }
 }
 

@@ -1,24 +1,37 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.IBaseActionListener.Stub;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
+import java.util.Comparator;
 
-@Deprecated
-public abstract class aohc
-  extends IBaseActionListener.Stub
+public class aohc
+  implements Comparator<aohd>
 {
-  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg);
+  private int a;
   
-  public void onActionResult(FromServiceMsg paramFromServiceMsg) {}
-  
-  public void onRecvFromMsg(FromServiceMsg paramFromServiceMsg)
+  public aohc(int paramInt)
   {
-    a((ToServiceMsg)paramFromServiceMsg.attributes.get(FromServiceMsg.class.getSimpleName()), paramFromServiceMsg);
+    this.a = paramInt;
+  }
+  
+  public int a(aohd paramaohd1, aohd paramaohd2)
+  {
+    if (this.a == 2) {
+      if (paramaohd1.b <= paramaohd2.b) {}
+    }
+    while (paramaohd1.a > paramaohd2.a)
+    {
+      return -1;
+      if (paramaohd1.b < paramaohd2.b) {
+        return 1;
+      }
+      return 0;
+    }
+    if (paramaohd1.a < paramaohd2.a) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohc
  * JD-Core Version:    0.7.0.1
  */

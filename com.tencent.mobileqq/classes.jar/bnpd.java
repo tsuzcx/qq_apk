@@ -1,16 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.google.gson.reflect.TypeToken;
+import java.util.ArrayList;
 
 final class bnpd
-  implements DialogInterface.OnClickListener
-{
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bljn.b("PtuTemplateManager", "【Camera is in Prepareing】toast show: choose cancel");
-    bnpa.a = null;
-    paramDialogInterface.cancel();
-  }
-}
+  extends TypeToken<ArrayList<bnpj>>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

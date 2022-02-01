@@ -1,23 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.VirtualInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public final class bfra
-  implements Parcelable.Creator<VirtualInfo>
+public class bfra
 {
-  public VirtualInfo a(Parcel paramParcel)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, niv paramniv)
   {
-    return new VirtualInfo(paramParcel);
+    if (paramLong <= 0L) {
+      return;
+    }
+    mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.1,3,4680");
+    localGetPublicAccountDetailInfoRequest.version.set(1);
+    localGetPublicAccountDetailInfoRequest.seqno.set(0);
+    localGetPublicAccountDetailInfoRequest.luin.set(paramLong);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("uin", paramLong);
+    nir.a(paramQQAppInterface, paramniv, localGetPublicAccountDetailInfoRequest.toByteArray(), "PubAccountSvc.get_detail_info", localBundle);
   }
   
-  public VirtualInfo[] a(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, niv paramniv, Bundle paramBundle)
   {
-    return new VirtualInfo[paramInt];
+    mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
+    localFollowRequest.luin.set(paramLong);
+    localFollowRequest.ext.set("0");
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    nir.a(paramQQAppInterface, paramniv, localFollowRequest.toByteArray(), "PubAccountSvc.follow", localBundle);
+    oat.a(paramQQAppInterface, "" + paramLong, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfra
  * JD-Core Version:    0.7.0.1
  */

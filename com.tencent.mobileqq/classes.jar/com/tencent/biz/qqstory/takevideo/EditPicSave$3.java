@@ -1,21 +1,21 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.app.Dialog;
-import wym;
+import yrx;
 
 public class EditPicSave$3
   implements Runnable
 {
-  public EditPicSave$3(wym paramwym) {}
+  public EditPicSave$3(yrx paramyrx) {}
   
   public void run()
   {
-    wym.a(this.this$0).show();
+    yrx.a(this.this$0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditPicSave.3
  * JD-Core Version:    0.7.0.1
  */

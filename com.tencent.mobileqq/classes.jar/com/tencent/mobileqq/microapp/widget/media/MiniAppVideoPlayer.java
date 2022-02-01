@@ -14,22 +14,24 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bdin;
-import bdnn;
+import bgnt;
+import bgsp;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.microapp.R.id;
 import com.tencent.mobileqq.microapp.R.layout;
+import com.tencent.mobileqq.microapp.a.c;
+import com.tencent.mobileqq.microapp.appbrand.b.b;
 import com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.microapp.appbrand.ui.AppBrandUI;
-import com.tencent.mobileqq.microapp.appbrand.utils.b;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
 import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 import java.util.Properties;
 import org.json.JSONException;
@@ -109,15 +111,15 @@ public class MiniAppVideoPlayer
   private void a(Context paramContext)
   {
     this.z = paramContext;
-    this.r = LayoutInflater.from(paramContext).inflate(R.layout.h, null);
-    this.t = ((FrameLayout)this.r.findViewById(R.id.ac));
-    this.y = ((FrameLayout)this.r.findViewById(R.id.bh));
-    this.w = ((ImageView)this.r.findViewById(R.id.bg));
-    this.x = ((ImageView)this.r.findViewById(R.id.ap));
+    this.r = LayoutInflater.from(paramContext).inflate(R.layout.b, null);
+    this.t = ((FrameLayout)this.r.findViewById(R.id.j));
+    this.y = ((FrameLayout)this.r.findViewById(R.id.r));
+    this.w = ((ImageView)this.r.findViewById(R.id.q));
+    this.x = ((ImageView)this.r.findViewById(R.id.k));
     this.x.setOnClickListener(this);
     addView(this.r);
     this.q = new MiniAppVideoPlayer.a(this);
-    com.tencent.mobileqq.microapp.c.a.a().a(new i(this));
+    com.tencent.mobileqq.microapp.a.a.a().a(new i(this));
   }
   
   private void b(Context paramContext)
@@ -149,7 +151,7 @@ public class MiniAppVideoPlayer
     this.s.setXYaxis(2);
     if (!this.i)
     {
-      if (bdnn.a(this.e)) {
+      if (bgsp.a(this.e)) {
         break label468;
       }
       paramContext = URLDrawable.getDrawable(this.e, null);
@@ -191,7 +193,7 @@ public class MiniAppVideoPlayer
       this.t.removeAllViews();
       this.t.addView(this.ab);
       this.t.setBackgroundColor(-16777216);
-      if ((this.ac <= 0L) || (!bdin.h(this.z))) {
+      if ((this.ac <= 0L) || (!bgnt.h(this.z))) {
         break;
       }
       if (QLog.isColorLevel()) {
@@ -199,8 +201,8 @@ public class MiniAppVideoPlayer
       }
       a(this.ac);
       return;
-      if (!bdnn.a(this.l)) {
-        com.tencent.mobileqq.microapp.b.a.a(this.l, new j(this));
+      if (!bgsp.a(this.l)) {
+        c.a(this.l, new j(this));
       }
     }
   }
@@ -236,7 +238,7 @@ public class MiniAppVideoPlayer
   
   public void a(long paramLong)
   {
-    if (bdnn.a(this.l)) {
+    if (bgsp.a(this.l)) {
       return;
     }
     this.f = true;
@@ -277,7 +279,7 @@ public class MiniAppVideoPlayer
   public void a(String paramString)
   {
     if (paramString.startsWith("wxfile")) {
-      this.l = b.a().d(paramString);
+      this.l = b.a().c(paramString);
     }
     while ((!paramString.startsWith("http")) && (!paramString.startsWith("https"))) {
       return;
@@ -300,7 +302,7 @@ public class MiniAppVideoPlayer
     paramJSONObject.optBoolean("showCenterPlayBtn");
     paramJSONObject.optBoolean("showFullScreenBtn");
     paramJSONObject.optBoolean("enableProgressGesture");
-    if (bdnn.a(this.e)) {
+    if (bgsp.a(this.e)) {
       this.e = paramJSONObject.optString("poster");
     }
     paramJSONObject.optInt("initialTime");
@@ -399,14 +401,15 @@ public class MiniAppVideoPlayer
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == R.id.ap) {
+    if (paramView.getId() == R.id.k) {
       a(e());
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.MiniAppVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

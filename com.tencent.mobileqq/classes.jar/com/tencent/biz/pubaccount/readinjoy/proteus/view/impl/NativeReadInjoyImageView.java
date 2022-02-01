@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
@@ -13,20 +14,20 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import orc;
-import ptm;
-import sfd;
-import sfg;
+import pgk;
+import qlo;
+import tdt;
+import tdw;
+import twz;
 
 public class NativeReadInjoyImageView
   extends KandianUrlImageView
   implements IView
 {
+  private static final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
   private static Map<String, Drawable> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private static final Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
-  private URL jdField_a_of_type_JavaNetURL;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -36,13 +37,19 @@ public class NativeReadInjoyImageView
   public NativeReadInjoyImageView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Sfd.a(false);
+    this.mController.a(false);
   }
   
   public NativeReadInjoyImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Sfd.a(false);
+    this.mController.a(false);
+  }
+  
+  public NativeReadInjoyImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+    this.mController.a(false);
   }
   
   public String a()
@@ -73,8 +80,8 @@ public class NativeReadInjoyImageView
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    sfg localsfg = this.jdField_a_of_type_Sfd.a();
-    if ((localsfg == null) || (localsfg.jdField_a_of_type_Boolean)) {
+    tdw localtdw = this.mController.a();
+    if (((localtdw == null) || (localtdw.jdField_a_of_type_Boolean)) && (this.jdField_a_of_type_JavaLangString != null)) {
       setImageSrc(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -100,8 +107,8 @@ public class NativeReadInjoyImageView
   public void onFinishTemporaryDetach()
   {
     super.onFinishTemporaryDetach();
-    sfg localsfg = this.jdField_a_of_type_Sfd.a();
-    if ((localsfg == null) || (localsfg.jdField_a_of_type_Boolean)) {
+    tdw localtdw = this.mController.a();
+    if (((localtdw == null) || (localtdw.jdField_a_of_type_Boolean)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
       setImageSrc(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -129,43 +136,51 @@ public class NativeReadInjoyImageView
   
   public void setImageSrc(String paramString)
   {
-    for (;;)
+    try
     {
-      try
+      Object localObject;
+      if (this.jdField_b_of_type_Boolean)
       {
-        if (this.jdField_b_of_type_Boolean)
+        localObject = (Drawable)jdField_a_of_type_JavaUtilMap.get(paramString);
+        if (localObject != null)
         {
-          Drawable localDrawable = (Drawable)jdField_a_of_type_JavaUtilMap.get(paramString);
-          if (localDrawable != null)
-          {
-            setImageDrawable(localDrawable);
-            return;
-          }
-        }
-        if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) || (this.jdField_a_of_type_JavaNetURL == null))
-        {
-          this.jdField_a_of_type_JavaLangString = paramString;
-          this.jdField_a_of_type_JavaNetURL = new URL(this.jdField_a_of_type_JavaLangString);
-          QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | current path changed ");
-          QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | mPathUrl :" + this.jdField_a_of_type_JavaNetURL);
-          orc.a(this, this.jdField_a_of_type_JavaNetURL, getContext());
+          setImageDrawable((Drawable)localObject);
           return;
         }
       }
-      catch (MalformedURLException paramString)
+      if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)))
       {
-        this.jdField_a_of_type_JavaNetURL = null;
-        return;
+        this.jdField_a_of_type_JavaLangString = paramString;
+        QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | current path changed ");
       }
-      QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | current path unchanged ");
+      for (;;)
+      {
+        URL localURL = twz.a.a(this.jdField_a_of_type_JavaLangString);
+        localObject = localURL;
+        if (localURL == null)
+        {
+          localObject = new URL(paramString);
+          twz.a.a((URL)localObject);
+        }
+        QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | mPathUrl :" + this.jdField_a_of_type_JavaLangString);
+        if (!pgk.a(getContext(), (URL)localObject)) {
+          break;
+        }
+        setImageResource(2130841680);
+        return;
+        QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | current path unchanged ");
+      }
+      setImage((URL)localObject);
+      return;
     }
+    catch (MalformedURLException paramString) {}
   }
   
   public void setIsCacheIcon(boolean paramBoolean)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
     if (paramBoolean) {
-      setPublicAccountImageDownListener(new ptm(null));
+      setPublicAccountImageDownListener(new qlo(null));
     }
   }
   
@@ -173,7 +188,7 @@ public class NativeReadInjoyImageView
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (paramBoolean) {
-      a(jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+      setImagePlaceHolder(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
   }
 }

@@ -1,23 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.olympic.OlyimpicConfig;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class awag
-  implements Parcelable.Creator<OlyimpicConfig>
+class awag
+  implements View.OnClickListener
 {
-  public OlyimpicConfig a(Parcel paramParcel)
-  {
-    return new OlyimpicConfig(paramParcel);
-  }
+  awag(awac paramawac, avzs paramavzs) {}
   
-  public OlyimpicConfig[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new OlyimpicConfig[paramInt];
+    if (this.jdField_a_of_type_Awac.jdField_a_of_type_Avzs.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!paramView.isSelected())
+      {
+        this.jdField_a_of_type_Awac.a(paramView);
+        this.jdField_a_of_type_Awac.jdField_a_of_type_Int = 2;
+        avzs.a(this.jdField_a_of_type_Awac.jdField_a_of_type_Avzs, Integer.valueOf(2));
+        bcst.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 3, 0, "0", "0", "0", "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awag
  * JD-Core Version:    0.7.0.1
  */

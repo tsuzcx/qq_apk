@@ -1,22 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bmkj
-  implements View.OnClickListener
+public class bmkj
+  implements bmki
 {
-  bmkj(bmki parambmki) {}
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static ConcurrentHashMap<String, bmkj> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private int jdField_a_of_type_Int = -1;
+  private bmki jdField_a_of_type_Bmki;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  private bmkj(String paramString)
   {
-    paramView = this.a;
-    if (!bmki.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bmki.a(paramView, bool);
-      bmki.a(this.a, bmki.a(this.a));
-      uvt.d(bmki.a(this.a));
-      return;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bmki = bmko.a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public static bmkj a(String paramString)
+  {
+    Object localObject1 = (bmkj)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (localObject1 == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        bmkj localbmkj = (bmkj)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        localObject1 = localbmkj;
+        if (localbmkj == null)
+        {
+          localObject1 = new bmkj(paramString);
+          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
+        }
+        return localObject1;
+      }
     }
+    return localObject1;
+  }
+  
+  public void a(Handler paramHandler)
+  {
+    this.jdField_a_of_type_Bmki.a(paramHandler);
   }
 }
 

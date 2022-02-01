@@ -1,59 +1,153 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aikl
-  extends bead
 {
-  public aikl(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  public void onDone(beae parambeae)
+  private static aiki a(aikj paramaikj)
   {
-    super.onDone(parambeae);
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantActivity", 2, "download onDone status=" + parambeae.a() + ",errCode=" + parambeae.jdField_a_of_type_Int);
+    if ((paramaikj == null) || (paramaikj.jdField_a_of_type_JavaLangString == null)) {
+      return null;
     }
-    int i = parambeae.jdField_a_of_type_JavaLangString.indexOf("?");
-    String str;
-    if (i == -1)
+    if (paramaikj.jdField_a_of_type_JavaLangString.equalsIgnoreCase("redpacket_id001")) {
+      return new aikg(paramaikj);
+    }
+    return new aiki(paramaikj);
+  }
+  
+  private static aiki a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return null;
+    }
+    Object localObject2 = paramJSONObject.optString("scene", "");
+    String str3 = paramJSONObject.optString("title", "");
+    String str4 = paramJSONObject.optString("sceneId", "");
+    String str5 = paramJSONObject.optString("kvo", "");
+    String str1 = paramJSONObject.optString("startDate", "");
+    String str2 = paramJSONObject.optString("expiryDate", "");
+    int i = paramJSONObject.optInt("switch");
+    Object localObject1 = paramJSONObject.optJSONArray("keywords");
+    aikj localaikj = new aikj();
+    localaikj.jdField_a_of_type_Int = i;
+    localaikj.jdField_a_of_type_JavaLangString = str4;
+    localaikj.c = ((String)localObject2);
+    localaikj.jdField_b_of_type_JavaLangString = str3;
+    localaikj.d = str5;
+    if ((!bgsp.a(str1)) && (!bgsp.a(str2))) {
+      localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+    }
+    try
     {
-      str = parambeae.jdField_a_of_type_JavaLangString;
-      if (!bdfp.jdField_a_of_type_JavaLangString.equals(str)) {
-        break label290;
+      localaikj.jdField_a_of_type_JavaUtilDate = ((SimpleDateFormat)localObject2).parse(str1);
+      localaikj.jdField_b_of_type_JavaUtilDate = ((SimpleDateFormat)localObject2).parse(str2);
+      if (localObject1 != null)
+      {
+        localaikj.jdField_a_of_type_JavaUtilList = new ArrayList();
+        i = 0;
+        while (i < ((JSONArray)localObject1).length())
+        {
+          str1 = ((JSONArray)localObject1).optString(i);
+          if (!bgsp.a(str1)) {
+            localaikj.jdField_a_of_type_JavaUtilList.add(str1);
+          }
+          i += 1;
+        }
       }
-      if ((parambeae.jdField_a_of_type_Int != 0) || (parambeae.f != 200)) {
-        break label237;
-      }
-      str = bdfp.b + "/icon.zip";
-      localFile = new File(bdfp.c);
-      if (beag.a(new File(str), localFile, false)) {
-        break label215;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "unzip avatarPendantMarketIcon fail: " + parambeae.f + ", url: " + parambeae.jdField_a_of_type_JavaLangString);
-      }
-      bdhb.a(bdfp.b);
     }
-    label215:
-    label237:
-    while (!QLog.isColorLevel())
+    catch (Exception localException)
     {
-      File localFile;
-      return;
-      str = parambeae.jdField_a_of_type_JavaLangString.substring(0, i);
-      break;
-      AvatarPendantActivity.b(this.a);
-      this.a.a.sendEmptyMessage(1000);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "download avatarPendantMarketIcon fail: " + parambeae.f + ", url: " + parambeae.jdField_a_of_type_JavaLangString);
+      for (;;)
+      {
+        QLog.d("ScenesRecommendUtils", 2, "parse invalidTime failed!", localException);
       }
-      bdhb.a(bdfp.b);
+      localObject1 = a(localaikj);
+      if (localObject1 == null) {
+        return null;
+      }
+      if (!paramJSONObject.has("extra")) {}
+    }
+    try
+    {
+      ((aiki)localObject1).a(paramJSONObject.getJSONObject("extra"));
+      return new aiki(localaikj);
+    }
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
+      {
+        paramJSONObject.printStackTrace();
+      }
+    }
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences("MOBILEQQ_SCENESRECOMMEND_CONFIG", 4).getString("SCENESRECOMMEND_CONTEXT" + paramQQAppInterface.getCurrentAccountUin(), "");
+  }
+  
+  public static List<aiki> a(String paramString)
+  {
+    Object localObject1;
+    if (bgsp.a(paramString)) {
+      localObject1 = null;
+    }
+    for (;;)
+    {
+      return localObject1;
+      if (QLog.isColorLevel()) {
+        QLog.d("ScenesRecommendUtils", 2, "parseJson  strJson = " + paramString);
+      }
+      localArrayList = new ArrayList();
+      try
+      {
+        Object localObject2 = new JSONObject(paramString);
+        localObject1 = localArrayList;
+        if (!((JSONObject)localObject2).has("scenes")) {
+          continue;
+        }
+        localObject2 = ((JSONObject)localObject2).getJSONArray("scenes");
+        int i = 0;
+        for (;;)
+        {
+          localObject1 = localArrayList;
+          if (i >= ((JSONArray)localObject2).length()) {
+            break;
+          }
+          localObject1 = a(((JSONArray)localObject2).getJSONObject(i));
+          if (localObject1 != null) {
+            localArrayList.add(localObject1);
+          }
+          i += 1;
+        }
+        return localArrayList;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        QLog.e("ScenesRecommendUtils", 2, "parseJson has exception strJson = " + paramString, localJSONException);
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (paramString == null) {
       return;
     }
-    label290:
-    QLog.e("AvatarPendantActivity", 2, "onDone unkonw url: " + parambeae.jdField_a_of_type_JavaLangString + ",errCode:" + parambeae.jdField_a_of_type_Int + ",httpCode:" + parambeae.f);
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("MOBILEQQ_SCENESRECOMMEND_CONFIG", 4).edit();
+    localEditor.putString("SCENESRECOMMEND_CONTEXT" + paramQQAppInterface.getCurrentAccountUin(), paramString);
+    localEditor.apply();
   }
 }
 

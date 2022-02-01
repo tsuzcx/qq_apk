@@ -1,25 +1,11 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-
 class ajhp
-  implements View.OnClickListener
+  implements ajkt
 {
-  ajhp(ajgb paramajgb) {}
+  ajhp(ajhk paramajhk) {}
   
-  public void onClick(View paramView)
+  public long a()
   {
-    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
-    {
-      this.a.k();
-      return;
-    }
-    paramView = new Intent(ajgb.a(this.a), QRLoginMgrActivity.class);
-    paramView.putExtra("qrlogin_position", this.a.b);
-    paramView.putExtra("qrlogin_appid", this.a.a);
-    ajgb.a(this.a).startActivity(paramView);
+    return ajhk.a(this.a);
   }
 }
 

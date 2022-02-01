@@ -1,28 +1,32 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.1;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.2;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.3;
+import java.net.URL;
 
-public class atoq
+public abstract interface atoq
 {
-  public static void a(int paramInt1, int paramInt2)
-  {
-    ThreadManager.post(new QQMusicPlayReport.2(paramInt1, paramInt2), 5, null, false);
-  }
+  public abstract int a();
   
-  public static void a(boolean paramBoolean, int paramInt)
-  {
-    ThreadManager.post(new QQMusicPlayReport.1(paramBoolean, paramInt), 5, null, false);
-  }
+  public abstract String a();
   
-  public static void b(boolean paramBoolean, int paramInt)
-  {
-    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, bdin.b(null), paramInt), 5, null, false);
-  }
+  public abstract URL a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atoq
  * JD-Core Version:    0.7.0.1
  */

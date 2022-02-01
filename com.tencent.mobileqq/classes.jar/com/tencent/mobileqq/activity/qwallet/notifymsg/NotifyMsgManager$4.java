@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.notifymsg;
 
-import aizu;
-import aizw;
-import ajeu;
+import akrn;
+import akrp;
+import akww;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
@@ -16,28 +16,28 @@ public final class NotifyMsgManager$4
   {
     do
     {
-      synchronized (aizw.jdField_a_of_type_JavaLangObject)
+      synchronized (akrp.jdField_a_of_type_JavaLangObject)
       {
-        if (aizw.jdField_a_of_type_Aizu == null) {
-          aizw.jdField_a_of_type_Aizu = new aizu(BaseApplicationImpl.getContext());
+        if (akrp.jdField_a_of_type_Akrn == null) {
+          akrp.jdField_a_of_type_Akrn = new akrn(BaseApplicationImpl.getContext());
         }
-        ??? = ajeu.a();
+        ??? = akww.a();
         if (??? == null) {
           return;
         }
       }
-    } while (aizw.jdField_a_of_type_Aizu == null);
+    } while (akrp.jdField_a_of_type_Akrn == null);
     if (this.jdField_a_of_type_Boolean)
     {
-      aizw.jdField_a_of_type_Aizu.b(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
+      akrp.jdField_a_of_type_Akrn.b(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
       return;
     }
-    aizw.jdField_a_of_type_Aizu.c(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
+    akrp.jdField_a_of_type_Akrn.c(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.4
  * JD-Core Version:    0.7.0.1
  */

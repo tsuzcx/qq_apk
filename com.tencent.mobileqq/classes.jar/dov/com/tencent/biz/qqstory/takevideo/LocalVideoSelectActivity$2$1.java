@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.widget.ImageView;
-import bmpi;
+import bpgo;
 
 public class LocalVideoSelectActivity$2$1
   implements Runnable
 {
-  public LocalVideoSelectActivity$2$1(bmpi parambmpi) {}
+  public LocalVideoSelectActivity$2$1(bpgo parambpgo) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class LocalVideoSelectActivity$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

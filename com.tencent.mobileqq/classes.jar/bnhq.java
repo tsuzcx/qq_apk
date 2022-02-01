@@ -1,89 +1,23 @@
-import com.tencent.maxvideo.common.MessageStruct;
-import com.tencent.maxvideo.mediadevice.AVCodec.AVCodecCallback;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import dov.com.qq.im.ae.camera.core.AECameraManager.8;
 
-public abstract class bnhq
+public class bnhq
+  implements bcit
 {
-  public abstract void a();
+  public bnhq(AECameraManager.8 param8) {}
   
-  public void a(bnql parambnql, boolean paramBoolean, int paramInt1, int paramInt2) {}
-  
-  public void a(AVCodec.AVCodecCallback paramAVCodecCallback, MessageStruct paramMessageStruct) {}
-  
-  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RMVideoState", 2, "[@] notify called eventId=" + paramInt);
+      QLog.d("AECameraManager", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
     }
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if ((paramObject instanceof AudioCapture)) {
-      switch (paramInt)
-      {
-      }
-    }
-    label304:
-    label332:
-    do
+    if (paramBoolean1)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            localRMVideoStateMgr.c();
-            return;
-          } while (!(paramObject instanceof azhu));
-          QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM eventId" + paramInt + ", rmStateMgr:" + localRMVideoStateMgr);
-          if (localRMVideoStateMgr == null) {
-            break label392;
-          }
-          switch (paramInt)
-          {
-          default: 
-            return;
-          case 2: 
-            if ((paramVarArgs == null) || (localRMVideoStateMgr.a == null)) {
-              break label332;
-            }
-            if (!(paramVarArgs[0] instanceof azhj)) {
-              break label304;
-            }
-            paramObject = (azhj)paramVarArgs[0];
-            try
-            {
-              localRMVideoStateMgr.a.a(paramObject.a, paramObject.b);
-              QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[success]");
-              return;
-            }
-            catch (NullPointerException paramObject)
-            {
-              paramObject.printStackTrace();
-            }
-          }
-        } while (localRMVideoStateMgr == null);
-        QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM:rmStateMgr=" + localRMVideoStateMgr + " viewST=" + localRMVideoStateMgr.a);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("faceuu", 2, "RMVideoState viewST:" + localRMVideoStateMgr.a);
-        }
-      } while (localRMVideoStateMgr.a == null);
-      localRMVideoStateMgr.a.h();
+      bnho.a(this.a.this$0, true);
       return;
-      QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM: no CustomSize obj[0]=" + paramVarArgs[0]);
-      return;
-      QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[2]:obj=" + paramVarArgs);
-    } while (localRMVideoStateMgr == null);
-    QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[2]:viewST=" + localRMVideoStateMgr.a);
-    return;
-    label392:
-    QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM  rmStateMgr==null");
+    }
+    bnho.a(this.a.this$0).g();
   }
-  
-  public void e() {}
 }
 
 

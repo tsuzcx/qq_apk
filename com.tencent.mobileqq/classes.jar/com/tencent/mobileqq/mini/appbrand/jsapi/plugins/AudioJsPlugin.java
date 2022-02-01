@@ -9,10 +9,10 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
-import auqr;
-import auqt;
-import bdgk;
-import bdnn;
+import awxx;
+import awxz;
+import bgln;
+import bgsp;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder;
@@ -64,14 +64,14 @@ public class AudioJsPlugin
   private JSONObject mBgAudioState;
   private BridgeInfo mBgMusicBridge;
   private volatile AudioJsPlugin.BgMusicManager mBgMusicManager;
-  private auqr mCallback = new AudioJsPlugin.2(this);
-  private ServiceConnection mConn = new AudioJsPlugin.1(this);
+  private awxx mCallback = new AudioJsPlugin.3(this);
+  private ServiceConnection mConn = new AudioJsPlugin.2(this);
   private int mCurrentSongDuration = -1;
   private SongInfo mCurrentSongInfo;
   private int mCurrentSongPosition = -1;
   private volatile SparseArray<AudioJsPlugin.InnerAudioManager> mInnerAudioManagers = new SparseArray();
   private int mPlayState;
-  private auqt mService;
+  private awxz mService;
   
   public AudioJsPlugin()
   {
@@ -144,7 +144,7 @@ public class AudioJsPlugin
     {
       if (i != 0)
       {
-        localObject = bdgk.b();
+        localObject = bgln.b();
         if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
         {
           return bool;
@@ -154,14 +154,14 @@ public class AudioJsPlugin
           i = 0;
           continue;
         }
-        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.mActivity.getString(2131719552));
+        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.mActivity.getString(2131717591));
       }
     }
     for (;;)
     {
       bool = false;
       break;
-      QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.mActivity.getString(2131694853));
+      QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.mActivity.getString(2131694003));
     }
   }
   
@@ -379,7 +379,7 @@ public class AudioJsPlugin
   
   private LameMp3Recorder getLameMp3Recorder()
   {
-    return AudioJsPlugin.AudioManager.access$900(getAudioManager());
+    return AudioJsPlugin.AudioManager.access$1100(getAudioManager());
   }
   
   private String getMyToken()
@@ -652,7 +652,7 @@ public class AudioJsPlugin
     try
     {
       paramString = new JSONObject(paramString).optString("filePath");
-      if (!bdnn.a(paramString))
+      if (!bgsp.a(paramString))
       {
         paramString = MiniAppFileManager.getInstance().getAbsolutePath(paramString);
         getAudioManager().playVoice(paramString, paramBridgeInfo);
@@ -672,24 +672,14 @@ public class AudioJsPlugin
   {
     try
     {
-      Object localObject = new JSONObject(paramString);
-      getInnerAudioManager((JSONObject)localObject).setAudioContext((JSONObject)localObject);
-      String str = ((JSONObject)localObject).optString("src");
-      if (!bdnn.a(str))
+      JSONObject localJSONObject = new JSONObject(paramString);
+      getInnerAudioManager(localJSONObject).setAudioContext(localJSONObject);
+      String str = localJSONObject.optString("src");
+      if (!bgsp.a(str))
       {
-        ((JSONObject)localObject).put("src", MiniAppFileManager.getInstance().getAbsolutePath(str));
-        boolean bool = ((JSONObject)localObject).optBoolean("autoplay");
-        AudioJsPlugin.InnerAudioManager.access$800(getInnerAudioManager((JSONObject)localObject), bool);
-        paramString = getInnerAudioManager((JSONObject)localObject).getAudioContext();
-        localObject = getInnerAudioManager((JSONObject)localObject);
-        int i = AudioJsPlugin.InnerAudioManager.access$000((AudioJsPlugin.InnerAudioManager)localObject);
-        double d = AudioJsPlugin.InnerAudioManager.access$100((AudioJsPlugin.InnerAudioManager)localObject);
-        bool = AudioJsPlugin.InnerAudioManager.access$200((AudioJsPlugin.InnerAudioManager)localObject);
-        paramString.put("duration", i);
-        paramString.put("currentTime", d);
-        paramString.put("paused", bool);
-        paramString.put("buffered", i);
-        handleNativeResponseOk("setAudioState", paramBridgeInfo, paramString);
+        localJSONObject.put("src", MiniAppFileManager.getInstance().getAbsolutePath(str));
+        boolean bool = localJSONObject.optBoolean("autoplay");
+        AudioJsPlugin.InnerAudioManager.access$1000(getInnerAudioManager(localJSONObject), bool, new AudioJsPlugin.1(this, localJSONObject, paramBridgeInfo));
         return;
       }
       QLog.e("[mini] AudioJsPlugin", 2, "setAudioState err" + paramString);
@@ -710,7 +700,7 @@ public class AudioJsPlugin
       JSONObject localJSONObject = new JSONObject(paramString);
       String str = localJSONObject.optString("src");
       Log.i("[mini] AudioJsPlugin", "setBackgroundAudioState: " + paramString);
-      if (!bdnn.a(str))
+      if (!bgsp.a(str))
       {
         localJSONObject.put("src", MiniAppFileManager.getInstance().getAbsolutePath(str));
         this.mBgAudioState = localJSONObject;
@@ -989,7 +979,7 @@ public class AudioJsPlugin
       }
       if (i > this.mInnerAudioManagers.size())
       {
-        AudioJsPlugin.InnerAudioManager.access$3600((AudioJsPlugin.InnerAudioManager)this.mInnerAudioManagers.valueAt(i));
+        AudioJsPlugin.InnerAudioManager.access$3700((AudioJsPlugin.InnerAudioManager)this.mInnerAudioManagers.valueAt(i));
         i += 1;
       }
       else
@@ -1048,7 +1038,7 @@ public class AudioJsPlugin
       return;
     }
     Log.i("[mini] AudioJsPlugin", "onResume: resume play");
-    AudioJsPlugin.BgMusicManager.access$3700(getBgMusicManager(), this.lastPlayData.jsonObject, this.lastPlayData.bridgeInfo);
+    AudioJsPlugin.BgMusicManager.access$3800(getBgMusicManager(), this.lastPlayData.jsonObject, this.lastPlayData.bridgeInfo);
   }
   
   public Set<String> supportedEvents()
@@ -1058,7 +1048,7 @@ public class AudioJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AudioJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.bless;
 
-import ahck;
+import aiox;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.mobileqq.widget.QQVideoView;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class BlessActivity$7$1
   implements Runnable
 {
-  public BlessActivity$7$1(ahck paramahck) {}
+  public BlessActivity$7$1(aiox paramaiox) {}
   
   public void run()
   {
@@ -22,13 +22,13 @@ public class BlessActivity$7$1
     if (BlessActivity.a(this.a.a) != null) {
       BlessActivity.a(this.a.a).bringToFront();
     }
-    this.a.a.findViewById(2131368670).bringToFront();
-    this.a.a.findViewById(2131377938).bringToFront();
+    this.a.a.findViewById(2131368994).bringToFront();
+    this.a.a.findViewById(2131378776).bringToFront();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

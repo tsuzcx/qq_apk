@@ -1,53 +1,41 @@
-import VIP.GetQzoneMusicInfoRsp;
-import VIP.MusicInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
 
-class awsx
-  implements alpg
+public class awsx
+  extends awtf
 {
-  awsx(awsw paramawsw) {}
+  private final MultiAIOBaseViewPager a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public awsx(MultiAIOBaseViewPager paramMultiAIOBaseViewPager)
   {
-    if ((paramBoolean) && ((paramObject instanceof GetQzoneMusicInfoRsp)))
+    this.a = paramMultiAIOBaseViewPager;
+  }
+  
+  public int a(View paramView1, View paramView2)
+  {
+    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
     {
-      paramObject = (GetQzoneMusicInfoRsp)paramObject;
-      if ((awsw.a(this.a)) || (!paramObject.mMusicList.containsKey(awsw.a(this.a).g))) {
-        break label101;
+      if (paramView1.a) {
+        return 1;
       }
-      awsw.a(this.a).b = ((MusicInfo)paramObject.mMusicList.get(awsw.a(this.a).g)).sSongUrl;
-      this.a.a(BaseApplicationImpl.getContext(), awsw.a(this.a));
+      return -1;
     }
-    for (;;)
-    {
-      return;
-      label101:
-      SongInfo[] arrayOfSongInfo = QQPlayerService.a();
-      if (arrayOfSongInfo != null)
-      {
-        paramInt = 0;
-        while (paramInt < arrayOfSongInfo.length)
-        {
-          if (paramObject.mMusicList.containsKey(arrayOfSongInfo[paramInt].g))
-          {
-            arrayOfSongInfo[paramInt].b = ((MusicInfo)paramObject.mMusicList.get(arrayOfSongInfo[paramInt].g)).sSongUrl;
-            if (QLog.isColorLevel()) {
-              QLog.d("ProfileMusicBoxController", 2, "requestMusicSongUrl mid:" + arrayOfSongInfo[paramInt].g + " url:" + arrayOfSongInfo[paramInt].b);
-            }
-          }
-          paramInt += 1;
-        }
-      }
+    int i = this.a.a();
+    if (i == paramView1.b) {
+      return 1;
     }
+    if (i == paramView2.b) {
+      return -1;
+    }
+    return paramView1.b - paramView2.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awsx
  * JD-Core Version:    0.7.0.1
  */

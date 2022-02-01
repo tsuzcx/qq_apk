@@ -1,67 +1,40 @@
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import pb.unite.search.DynamicAssociationWord.SuggestUrlItem;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class ayiv
-  extends amfg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ayiv(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  public ayiv(ScanOcrView paramScanOcrView) {}
   
-  public void a(String paramString, int paramInt, List<AssociateSearchWordsFragment.AssociateItem> paramList, List<DynamicAssociationWord.SuggestUrlItem> paramList1, DynamicAssociationWord.SuggestUrlItem paramSuggestUrlItem)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleSuggestUrlResult keyword=" + paramString + " activity keyword=" + this.a.jdField_a_of_type_JavaLangString + " size=" + paramList1.size());
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int j = (int)(this.a.a.a * f);
+    int i = (int)(f * this.a.a.jdField_b_of_type_Int);
+    int m = j - this.a.a.a;
+    int k = i - this.a.a.jdField_b_of_type_Int;
+    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
+    i = j;
+    if (j > 255) {
+      i = 255;
     }
-    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString))
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment = new AssociateSearchWordsFragment();
-      }
-      paramList1 = new ArrayList();
-      paramSuggestUrlItem = new AssociateSearchWordsFragment.AssociateItem();
-      paramSuggestUrlItem.jdField_a_of_type_Int = 1;
-      StringBuilder localStringBuilder = new StringBuilder("");
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        paramInt = 0;
-        if (paramInt < paramList.size())
-        {
-          String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).jdField_a_of_type_JavaLangString;
-          AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
-          localAssociateItem.jdField_a_of_type_JavaLangString = str;
-          localAssociateItem.jdField_a_of_type_Int = 3;
-          localAssociateItem.d = (paramInt + 1);
-          paramList1.add(localAssociateItem);
-          if (paramInt != paramList.size() - 1)
-          {
-            paramList1.add(paramSuggestUrlItem);
-            localStringBuilder.append(str).append("::");
-          }
-          for (;;)
-          {
-            paramInt += 1;
-            break;
-            localStringBuilder.append(str);
-          }
-        }
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramList1);
-      aysc.a(null, new ReportModelDC02528().module("subweb_search").action("exp_thinkword_list").obj1(ayvm.a(this.a.jdField_a_of_type_ArrayOfLong)).ver1(this.a.a()).ver4(localStringBuilder.toString()).ver7("{experiment_id:" + aysc.b + "}"));
+    j = i;
+    if (i < 0) {
+      j = 0;
     }
-  }
-  
-  public void a(String paramString1, Integer paramInteger, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleAssociateResultError keyword=" + paramString1 + "  resultCode=" + paramInteger + "  errorMsg=" + paramString2);
-    }
+    i = this.a.a.jdField_b_of_type_AndroidGraphicsRect.left;
+    int n = m / 2;
+    int i1 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.top;
+    int i2 = k / 2;
+    int i3 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.right;
+    m /= 2;
+    int i4 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.bottom;
+    k /= 2;
+    this.a.a.e = j;
+    this.a.a.c.set(i - n, i1 - i2, m + i3, k + i4);
+    this.a.invalidate();
   }
 }
 

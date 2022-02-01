@@ -7,6 +7,7 @@ public class FaceInfo
 {
   public int age;
   public float[] angles = new float[3];
+  public int curGender;
   public float[] denseFaceModel;
   public float[] expressionWeights;
   public float[] eyeEulerAngle;
@@ -29,7 +30,7 @@ public class FaceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.facedetect.FaceInfo
  * JD-Core Version:    0.7.0.1
  */

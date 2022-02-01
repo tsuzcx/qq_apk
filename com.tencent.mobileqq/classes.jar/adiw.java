@@ -1,45 +1,40 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
 public class adiw
-  implements GestureDetector.OnDoubleTapListener
+  implements View.OnFocusChangeListener
 {
-  public adiw(MainFragment paramMainFragment) {}
+  public adiw(AddAccountActivity paramAddAccountActivity) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainFragment", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
+      if (true == paramBoolean)
+      {
+        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
+          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
+        }
+        if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
+      }
     }
-    paramMotionEvent = (Conversation)this.a.a(Conversation.class);
-    if (paramMotionEvent != null) {}
-    for (int i = paramMotionEvent.d;; i = 0)
+    while ((paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText) || (true != paramBoolean))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DynimiIcon", 2, "onDoubleTap() unReadCount = " + i);
-      }
-      paramMotionEvent = this.a.b();
-      if ((paramMotionEvent instanceof Conversation)) {
-        ((Conversation)paramMotionEvent).c();
-      }
-      if (i == 0) {
-        MainFragment.d(this.a);
-      }
-      return false;
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_AndroidWidgetImageView == null) || (!this.a.jdField_a_of_type_AndroidWidgetImageView.isShown()));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      return;
     }
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.getText().length());
   }
 }
 

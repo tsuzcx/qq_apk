@@ -1,19 +1,20 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.database.DataSetObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class swa
+  extends DataSetObserver
 {
-  private static boolean a = true;
+  public swa(FastWebActivity paramFastWebActivity) {}
   
-  public static void a(FromServiceMsg paramFromServiceMsg) {}
-  
-  public static void a(ToServiceMsg paramToServiceMsg) {}
-  
-  public static void a(byte[] paramArrayOfByte, String paramString) {}
+  public void onChanged()
+  {
+    super.onChanged();
+    if (FastWebActivity.a(this.a) == null) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     swa
  * JD-Core Version:    0.7.0.1
  */

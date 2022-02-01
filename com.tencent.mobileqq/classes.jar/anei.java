@@ -1,88 +1,73 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-class anei
-  implements aufb
+public class anei
+  implements amkh, amkj
 {
-  anei(aneh paramaneh, Rect paramRect, long paramLong, Object paramObject, auey paramauey, boolean[] paramArrayOfBoolean, Bitmap paramBitmap) {}
+  public WeakReference<BaseChatPie> a;
+  private WeakReference<amkh> b;
   
-  public void a(int paramInt)
+  public anei(BaseChatPie paramBaseChatPie)
   {
-    if ((this.jdField_a_of_type_Auey != null) && (aneh.a(this.jdField_a_of_type_Aneh) != null)) {
-      this.jdField_a_of_type_ArrayOfBoolean[0] = this.jdField_a_of_type_Auey.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Long);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniCodeController", 2, "detectSync onDetectReady exec=" + this.jdField_a_of_type_ArrayOfBoolean[0]);
-      }
-      if (this.jdField_a_of_type_ArrayOfBoolean[0] == 0) {}
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.notifyAll();
-        return;
-        this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-      }
+    if (((paramBaseChatPie instanceof ahzy)) || ((paramBaseChatPie instanceof TroopChatPie)) || ((paramBaseChatPie instanceof ahzo)) || ((paramBaseChatPie instanceof aibv))) {
+      this.a = new WeakReference(paramBaseChatPie);
     }
   }
   
-  public void a(long paramLong) {}
-  
-  public void a(List<aned> arg1, long paramLong)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    int i = 0;
-    label55:
-    boolean bool;
-    label68:
-    int j;
-    int k;
-    int m;
-    if (i < ???.size())
-    {
-      if (((aned)???.get(i)).jdField_a_of_type_Int != 2) {
-        break label217;
-      }
-      ??? = (aned)???.get(i);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(???.jdField_a_of_type_AndroidGraphicsRect);
-      if (QLog.isColorLevel())
-      {
-        if (??? == null) {
-          break label226;
-        }
-        bool = true;
-        i = this.jdField_a_of_type_AndroidGraphicsRect.left;
-        j = this.jdField_a_of_type_AndroidGraphicsRect.top;
-        k = this.jdField_a_of_type_AndroidGraphicsRect.width();
-        m = this.jdField_a_of_type_AndroidGraphicsRect.height();
-        if (??? == null) {
-          break label232;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloBackgroundViewListener", 2, "onCompleteRender");
     }
-    label217:
-    label226:
-    label232:
-    for (float f = ???.jdField_a_of_type_Float;; f = 0.0F)
-    {
-      QLog.i("MiniRecog.MiniCodeController", 2, String.format("detectSync onDetectResult=%b [left,top,w,h,score]=[%d, %d, %d, %d]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f) }));
-      if (paramLong == this.jdField_a_of_type_Long)
-      {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
-        {
-          this.jdField_a_of_type_JavaLangObject.notifyAll();
-          return;
-        }
-        ??? = null;
-        break label55;
-      }
-      return;
-      i += 1;
-      break;
-      bool = false;
-      break label68;
+    if ((this.b != null) && (this.b.get() != null)) {
+      ((amkh)this.b.get()).a(paramInt1, paramInt2, paramString);
     }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloBackgroundViewListener", 2, "onStartRender");
+    }
+    if ((this.b != null) && (this.b.get() != null)) {
+      ((amkh)this.b.get()).a(paramInt, paramString);
+    }
+  }
+  
+  public void a(amkh paramamkh)
+  {
+    this.b = new WeakReference(paramamkh);
+  }
+  
+  public void onNotifyLongTouch(String paramString) {}
+  
+  public void onNotifyStatusChanged(int paramInt, String paramString) {}
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
+  {
+    Object localObject2 = (BaseChatPie)this.a.get();
+    if ((localObject2 == null) || (((BaseChatPie)localObject2).jdField_a_of_type_Amje == null)) {}
+    Object localObject1;
+    do
+    {
+      do
+      {
+        return;
+        localObject1 = ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localObject2 = ((BaseChatPie)localObject2).jdField_a_of_type_Amje.a();
+      } while ((localObject1 == null) || (localObject2 == null));
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloBackgroundViewListener", 2, "surfaceView.getWidth():" + ((ApolloTextureView)localObject2).getWidth());
+      }
+      ((ApolloTextureView)localObject2).getRenderImpl().a(1, null, 0, 1.0F, 250.0F, 0.0F);
+      ((ApolloTextureView)localObject2).getRenderImpl().a(1000L);
+      localObject1 = ((amul)((AppInterface)localObject1).getManager(249)).a();
+    } while (localObject1 == null);
+    ((amuc)localObject1).b();
   }
 }
 

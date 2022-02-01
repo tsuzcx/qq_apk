@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.AccountDetail.model;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import nig;
+import nqx;
 
 public final class AccountDetailVideoManager$5
   implements Runnable
@@ -12,7 +12,7 @@ public final class AccountDetailVideoManager$5
   {
     try
     {
-      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication().getApplicationContext(), new nig(this));
+      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication().getApplicationContext(), new nqx(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -24,7 +24,7 @@ public final class AccountDetailVideoManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.5
  * JD-Core Version:    0.7.0.1
  */

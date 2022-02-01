@@ -1,43 +1,34 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCleanPlayView;
+import com.tencent.superplayer.api.ISuperPlayer;
+import java.util.HashMap;
 
-final class vsd
-  extends AnimatorListenerAdapter
+class vsd
+  extends vuq
 {
-  vsd(Animator.AnimatorListener paramAnimatorListener, ViewGroup paramViewGroup, ImageView paramImageView) {}
+  vsd(vsc paramvsc, vzj paramvzj, QCircleFeedCleanPlayView paramQCircleFeedCleanPlayView, String paramString1, String paramString2) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    super.onAnimationCancel(paramAnimator);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
+    vsc.a(this.jdField_a_of_type_Vsc, this.jdField_a_of_type_Vzj, false);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(ISuperPlayer paramISuperPlayer)
   {
-    wxe.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation, onAnimationEnd");
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
-    paramAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
-    paramAnimator.setStartDelay(400L);
-    paramAnimator.setDuration(400L);
-    paramAnimator.addUpdateListener(new vse(this));
-    paramAnimator.addListener(new vsf(this));
-    paramAnimator.start();
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCleanPlayView.d();
+    vrc.a(8, 4, vsc.a(this.jdField_a_of_type_Vsc, this.jdField_a_of_type_JavaLangString), vsc.a(this.jdField_a_of_type_Vsc));
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    super.onAnimationStart(paramAnimator);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
+    paramString = (Long)vsc.a(this.jdField_a_of_type_Vsc).get(this.b);
+    if ((paramString == null) || (paramString.longValue() <= paramInt2) || (paramInt1 == paramString.longValue()) || (Math.abs(paramInt1 - paramString.longValue()) <= 100L)) {
+      vsc.a(this.jdField_a_of_type_Vsc).put(this.b, Long.valueOf(paramInt2));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vsd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
-
-public class aiaj
-  implements DialogInterface.OnClickListener
+class aiaj
+  extends bdix
 {
-  public aiaj(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, acnt paramacnt) {}
+  aiaj(ahzy paramahzy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_Acnt.a(true);
+    bdjg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ahzy.e(this.a), paramBoolean, paramArrayOfObject);
+  }
+  
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    bdjg.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ahzy.f(this.a), paramBoolean, paramArrayOfObject);
   }
 }
 

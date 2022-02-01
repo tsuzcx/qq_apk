@@ -1,26 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.Context;
+import android.os.Build.VERSION;
 
-public class nlk
-  implements Animation.AnimationListener
+public final class nlk
 {
-  public nlk(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  @TargetApi(11)
+  public static void a(Context paramContext, String paramString)
   {
-    this.a.setResult(-1);
-    PublicAccountAdvertisementActivity.g(this.a);
-    PublicAccountAdvertisementActivity.a(this.a, 0, 0);
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
+      return;
+    }
+    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nlk
  * JD-Core Version:    0.7.0.1
  */

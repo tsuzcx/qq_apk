@@ -6,6 +6,7 @@ import android.opengl.GLES20;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.aekit.plugin.core.AIAttrProvider;
@@ -16,14 +17,16 @@ import com.tencent.aekit.plugin.core.AIInput;
 import com.tencent.aekit.plugin.core.AIInput.DataSize;
 import com.tencent.aekit.plugin.core.AIParam;
 import com.tencent.aekit.plugin.core.IDetect;
-import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.api.ApiHelper;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.baseutils.report.ReportUtil;
 import com.tencent.ttpic.baseutils.thread.HandlerThreadManager;
 import com.tencent.ttpic.model.SizeI;
+import com.tencent.ttpic.openapi.PTEmotionAttr;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTFaceDetector;
+import com.tencent.ttpic.openapi.PTGenderAttr;
+import com.tencent.ttpic.openapi.ai.PTFaceAttrPro;
 import com.tencent.ttpic.openapi.facedetect.FaceDetector;
 import com.tencent.ttpic.openapi.facedetect.FaceParams;
 import com.tencent.ttpic.openapi.filter.SimpleGLThread;
@@ -35,6 +38,7 @@ import com.tencent.ttpic.openapi.util.FaceDetectUtil;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager.DATA_TYPE;
 import com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector;
+import com.tencent.view.RendererUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -49,7 +53,7 @@ public class AEDetector
   private static final String TAG = "AEDetector";
   private AIDataStorage aiDataStorage = new AIDataStorage();
   private SimpleGLThread aiDetectGLThread;
-  private BaseFilter copyFilter;
+  private VideoFilterBase copyFilter;
   private Frame[] copyFrames = new Frame[2];
   private AIAttr curAIAttr = null;
   private SizeI curTextureSize = new SizeI(-1, -1);
@@ -63,6 +67,7 @@ public class AEDetector
   private List<IDetect> detectors = new ArrayList();
   private SimpleGLThread faceDetectGLThread;
   private int frameIdx = 0;
+  private boolean isFaceDetectorInited = false;
   private boolean isFirstDet = true;
   private boolean isInited = false;
   private AIAttr lastAIAttr = null;
@@ -72,8 +77,13 @@ public class AEDetector
   private int mDetectBeforeId;
   private int mDetectDoneId;
   private PTFaceDetector mFaceDetector;
+  private IDetect mWeishiEmotionDetecctor;
+  private PTFaceDetector mWeishiFaceDetector;
+  private IDetect mWeishiGenderDetector;
   private Map<Float, byte[]> scaledBytes = new Hashtable();
   private Map<AIInput.DataSize, byte[]> sizedBytes = new Hashtable();
+  private SimpleGLThread weishiEmotionDetectGLThread;
+  private SimpleGLThread weishiGenderDetectGLThread;
   
   private void clearActionCounter()
   {
@@ -102,6 +112,56 @@ public class AEDetector
       }
     }
     return localHashMap;
+  }
+  
+  private void initWeishiFaceDetect()
+  {
+    if (this.mWeishiFaceDetector == null)
+    {
+      this.mWeishiFaceDetector = new PTFaceDetector();
+      this.mWeishiFaceDetector.init(true);
+    }
+    if (this.mWeishiEmotionDetecctor == null) {}
+    try
+    {
+      localIterator = AIManager.getDetectorSet().iterator();
+      while (localIterator.hasNext())
+      {
+        localIDetect = (IDetect)((Class)localIterator.next()).newInstance();
+        if (localIDetect.getModuleType().equals(AEDetectorType.EMOTION.value)) {
+          if (localIDetect.init())
+          {
+            this.mWeishiEmotionDetecctor = localIDetect;
+            this.weishiEmotionDetectGLThread = new SimpleGLThread(EGL14.eglGetCurrentContext(), "FaceDetectGLThread" + System.currentTimeMillis());
+          }
+        }
+      }
+    }
+    catch (Exception localException2)
+    {
+      Iterator localIterator;
+      IDetect localIDetect;
+      label131:
+      break label131;
+    }
+    if (this.mWeishiGenderDetector == null) {}
+    try
+    {
+      localIterator = AIManager.getDetectorSet().iterator();
+      while (localIterator.hasNext())
+      {
+        localIDetect = (IDetect)((Class)localIterator.next()).newInstance();
+        if (localIDetect.getModuleType().equals(AEDetectorType.GENDER_DETECT.value)) {
+          if (localIDetect.init())
+          {
+            this.mWeishiGenderDetector = localIDetect;
+            this.weishiGenderDetectGLThread = new SimpleGLThread(EGL14.eglGetCurrentContext(), "FaceDetectGLThread" + System.currentTimeMillis());
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception localException1) {}
   }
   
   private void resetModuleRecord(String paramString)
@@ -301,7 +361,7 @@ public class AEDetector
       arrayOfInt[0] = this.mBufferTextureIdA;
       arrayOfInt[1] = this.mBufferTextureIdB;
       GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-      this.copyFilter.ClearGLSL();
+      this.copyFilter.clearGLSLSelf();
       if (!this.copyFrames[0].unlock()) {
         this.copyFrames[0].clear();
       }
@@ -335,16 +395,100 @@ public class AEDetector
     }
   }
   
+  public PTFaceAttrPro detectFaceInBitmap(Bitmap paramBitmap)
+  {
+    return detectFaceInBitmap(paramBitmap, 0.1666667F);
+  }
+  
+  public PTFaceAttrPro detectFaceInBitmap(Bitmap paramBitmap, float paramFloat)
+  {
+    int i = RendererUtils.createTexture(paramBitmap);
+    paramBitmap = new Frame(0, i, paramBitmap.getWidth(), paramBitmap.getHeight());
+    PTFaceAttrPro localPTFaceAttrPro = detectFaceInFrame(paramBitmap, paramFloat);
+    paramBitmap.clear();
+    RendererUtils.clearTexture(i);
+    return localPTFaceAttrPro;
+  }
+  
+  public PTFaceAttrPro detectFaceInFrame(Frame paramFrame)
+  {
+    return detectFaceInFrame(paramFrame, 0.1666667F);
+  }
+  
+  public PTFaceAttrPro detectFaceInFrame(Frame paramFrame, float paramFloat)
+  {
+    AEDetector.WeishiDetectRunnable localWeishiDetectRunnable = null;
+    initWeishiFaceDetect();
+    PTFaceAttrPro localPTFaceAttrPro = new PTFaceAttrPro();
+    AIParam localAIParam = new AIParam();
+    localAIParam.update(paramFrame.width, paramFrame.height, 0);
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "phoneRoll", Float.valueOf(90.0F));
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "scale", Float.valueOf(paramFloat));
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "allFrameDetect", Boolean.valueOf(true));
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "enableAgeDetect", Boolean.valueOf(true));
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "enableGenderDetect", Boolean.valueOf(true));
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "syncAgeDetect", Boolean.valueOf(true));
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "expressionDetectForEveryFace", Boolean.valueOf(true));
+    localAIParam.setModuleParam(AEDetectorType.FACE.value, "reset", Boolean.valueOf(true));
+    PTFaceAttr localPTFaceAttr = this.mWeishiFaceDetector.detectFrame(paramFrame, 0, localAIParam);
+    localPTFaceAttrPro.setFaceAttr(localPTFaceAttr);
+    AIInput localAIInput;
+    AIAttr localAIAttr;
+    if ((localPTFaceAttr != null) && (localPTFaceAttr.getFaceCount() > 0))
+    {
+      localAIInput = new AIInput();
+      localAIInput.setBytes(paramFloat, localPTFaceAttr.getData());
+      localAIInput.setInput("frame", paramFrame);
+      localAIAttr = new AIAttr(new AIAttrProvider(null));
+      localAIAttr.setFaceAttr(localPTFaceAttr);
+      localAIParam.setAIAttr(localAIAttr);
+      if (this.mWeishiEmotionDetecctor == null) {
+        break label487;
+      }
+      localAIParam.setModuleParam(AEDetectorType.EMOTION.value, "scale", Float.valueOf(paramFloat));
+      localAIParam.setModuleParam(AEDetectorType.EMOTION.value, "expressionDetectForEveryFace", Boolean.valueOf(true));
+      paramFrame = new AEDetector.WeishiDetectRunnable(this, this.mWeishiEmotionDetecctor, localAIInput, localAIParam);
+      this.weishiEmotionDetectGLThread.postJob(paramFrame);
+    }
+    for (;;)
+    {
+      if (this.mWeishiGenderDetector != null)
+      {
+        localAIParam.setModuleParam(AEDetectorType.GENDER_DETECT.value, "scale", Float.valueOf(paramFloat));
+        localAIParam.setModuleParam(AEDetectorType.GENDER_DETECT.value, "faceInfoList", localPTFaceAttr);
+        localAIParam.setModuleParam(AEDetectorType.GENDER_DETECT.value, "resetGender", Boolean.valueOf(true));
+        localWeishiDetectRunnable = new AEDetector.WeishiDetectRunnable(this, this.mWeishiGenderDetector, localAIInput, localAIParam);
+        this.weishiGenderDetectGLThread.postJob(localWeishiDetectRunnable);
+      }
+      if (paramFrame != null)
+      {
+        this.weishiEmotionDetectGLThread.waitDone();
+        this.mWeishiEmotionDetecctor.updateAIAttr(localAIAttr);
+        localPTFaceAttrPro.setEmotionAttr((PTEmotionAttr)paramFrame.getDetectResult());
+      }
+      if (localWeishiDetectRunnable != null)
+      {
+        this.weishiGenderDetectGLThread.waitDone();
+        localPTFaceAttrPro.setGenderAttr((PTGenderAttr)localWeishiDetectRunnable.getDetectResult());
+      }
+      return localPTFaceAttrPro;
+      label487:
+      paramFrame = null;
+    }
+  }
+  
   public AIAttr detectFrame(AIInput paramAIInput, AIParam paramAIParam, AICtrl paramAICtrl)
   {
-    if ((!paramAICtrl.hasModuleOn()) || (!ApiHelper.hasJellyBeanMR1()))
+    if ((!this.isInited) || (!paramAICtrl.hasModuleOn()) || (!ApiHelper.hasJellyBeanMR1()))
     {
       LogUtils.i("AEDetector", "AEDetector detectFrame hasNoModuleOn");
       return null;
     }
     this.lastAIAttr = this.curAIAttr;
-    this.lastAIAttr.setNextSurfaceTime(paramAIParam.getSurfaceTime());
-    if (this.lastAIAttr.getOutTexture() < 0)
+    if (this.lastAIAttr != null) {
+      this.lastAIAttr.setNextSurfaceTime(paramAIParam.getSurfaceTime());
+    }
+    if ((this.lastAIAttr != null) && (this.lastAIAttr.getOutTexture() < 0))
     {
       this.lastAIAttr.setOutTexture(paramAIInput.getInputTexture());
       this.lastAIAttr.setTexWidthAndHeight(paramAIParam.getWidth(), paramAIParam.getHeight());
@@ -436,7 +580,7 @@ public class AEDetector
         this.faceDetectGLThread = new SimpleGLThread(EGL14.eglGetCurrentContext(), "FaceDetectGLThread" + System.currentTimeMillis());
       }
       this.mFaceDetector = new PTFaceDetector();
-      this.mFaceDetector.init();
+      this.isFaceDetectorInited = this.mFaceDetector.init();
       clearActionCounter();
       this.detectors.clear();
       localObject = new int[2];
@@ -445,7 +589,7 @@ public class AEDetector
       this.mBufferTextureIdB = localObject[1];
       this.mDetectDoneId = this.mBufferTextureIdB;
       this.mDetectBeforeId = -1;
-      this.copyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+      this.copyFilter = new VideoFilterBase("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
       this.copyFilter.apply();
       this.copyFrames[0] = new Frame();
       this.copyFrames[1] = new Frame();
@@ -480,17 +624,22 @@ public class AEDetector
       AEGlobalBoard.writeBoard((AEGlobalBoard.PTStatus)localObject, i);
       LogUtils.i("AEDetector", "AEDetector init ret = " + this.isInited);
       if (!this.isInited) {
-        break label384;
+        break label387;
       }
       return 0;
     }
-    label384:
+    label387:
     return -1;
+  }
+  
+  public void setIsFirstDet(boolean paramBoolean)
+  {
+    this.isFirstDet = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.api.standard.ai.AEDetector
  * JD-Core Version:    0.7.0.1
  */

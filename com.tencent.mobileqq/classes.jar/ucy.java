@@ -1,22 +1,15 @@
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
 
 public class ucy
-  implements ucd
+  implements uvc
 {
-  public ucy(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, FeedCloudMeta.StComment paramStComment) {}
+  public ucy(WSHomeFragment paramWSHomeFragment) {}
   
-  public void a()
-  {
-    tzs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get(), QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44);
-    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get());
-  }
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ucy
  * JD-Core Version:    0.7.0.1
  */

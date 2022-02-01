@@ -1,51 +1,52 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.ksong.KSongView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class bidy
-  extends GestureDetector.SimpleOnGestureListener
+public class bidy
+  extends Handler
 {
-  bidy(bidr parambidr) {}
+  WeakReference<KSongView> a;
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public bidy(KSongView paramKSongView)
   {
-    return true;
+    this.a = new WeakReference(paramKSongView);
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = this.a.findChildView(paramMotionEvent);
-    if (localObject != null)
+    if (paramMessage.what == 0)
     {
-      localObject = this.a.mRecyclerView.getChildViewHolder((View)localObject);
-      if ((localObject != null) && (this.a.mCallback.hasDragFlag(this.a.mRecyclerView, (RecyclerView.ViewHolder)localObject))) {
-        break label57;
+      paramMessage = (KSongView)this.a.get();
+      if ((paramMessage != null) && (1 == paramMessage.a())) {
+        break label31;
       }
     }
-    label57:
+    label31:
     do
     {
-      do
+      return;
+      long l = System.currentTimeMillis() - KSongView.a(paramMessage) - paramMessage.a;
+      bidu localbidu = paramMessage.a();
+      paramMessage.a(l);
+      if (l >= localbidu.d) {
+        KSongView.a(paramMessage, l);
+      }
+      QLog.i("KSongView", 2, "real_duration = " + l);
+      if (l < localbidu.e)
       {
+        sendEmptyMessageDelayed(0, 50L);
         return;
-      } while (paramMotionEvent.getPointerId(0) != this.a.mActivePointerId);
-      int i = paramMotionEvent.findPointerIndex(this.a.mActivePointerId);
-      float f1 = paramMotionEvent.getX(i);
-      float f2 = paramMotionEvent.getY(i);
-      this.a.mInitialTouchX = f1;
-      this.a.mInitialTouchY = f2;
-      paramMotionEvent = this.a;
-      this.a.mDy = 0.0F;
-      paramMotionEvent.mDx = 0.0F;
-    } while (!this.a.mCallback.isLongPressDragEnabled());
-    this.a.select((RecyclerView.ViewHolder)localObject, 2);
+      }
+      KSongView.a(paramMessage, 3);
+    } while (KSongView.a(paramMessage) == null);
+    KSongView.a(paramMessage).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bidy
  * JD-Core Version:    0.7.0.1
  */

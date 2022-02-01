@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahto
-  extends altm
+class ahto
+  implements DialogInterface.OnClickListener
 {
-  public ahto(PublicAccountFragment paramPublicAccountFragment) {}
+  ahto(ahtk paramahtk, int paramInt) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      this.a.i();
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Int != 0) {
+        break label47;
+      }
+      this.jdField_a_of_type_Ahtk.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
+    }
+    for (;;)
+    {
+      ahtk.b(this.jdField_a_of_type_Ahtk, null);
+      return;
+      label47:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Ahtk.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
+      }
     }
   }
 }

@@ -1,33 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class bngm
-  implements View.OnClickListener
+  implements atve
 {
-  bngm(bngl parambngl) {}
+  bngm(bngh parambngh) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (!bngl.a(this.a).f)
-    {
-      bngl.a(this.a);
-      return;
-    }
-    if (bngl.a(this.a).p)
-    {
-      bflz.a().a(2131718658);
-      bngl.a(this.a).p = false;
-      bngl.a(this.a).setSelected(false);
-      bngl.a(this.a).m = false;
-      bngl.a(this.a).d(3008);
-      return;
-    }
-    bflz.a().a(2131718660);
-    bngl.a(this.a).p = true;
-    bngl.a(this.a).setSelected(true);
-    bngl.a(this.a).m = true;
-    bngl.a(this.a).d(3007);
+    this.a.i();
   }
+  
+  public void b() {}
 }
 
 

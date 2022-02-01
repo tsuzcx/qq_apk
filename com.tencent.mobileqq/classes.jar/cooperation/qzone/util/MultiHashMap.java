@@ -1,6 +1,6 @@
 package cooperation.qzone.util;
 
-import bjuj;
+import bmit;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -38,7 +38,7 @@ public class MultiHashMap<K, V>
     }
   }
   
-  public final Collection<K> get(K paramK, bjuj<K> parambjuj)
+  public final Collection<K> get(K paramK, bmit<K> parambmit)
   {
     if (paramK == null) {
       try
@@ -47,7 +47,7 @@ public class MultiHashMap<K, V>
       }
       finally {}
     }
-    if (parambjuj == null) {
+    if (parambmit == null) {
       throw new NullPointerException("keyMatcher == null");
     }
     Object localObject = keySet();
@@ -62,7 +62,7 @@ public class MultiHashMap<K, V>
           break;
         }
         localObject = localIterator.next();
-        if (parambjuj.a(paramK, localObject)) {
+        if (parambmit.a(paramK, localObject)) {
           localArrayList.add(localObject);
         }
       }
@@ -82,7 +82,7 @@ public class MultiHashMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.MultiHashMap
  * JD-Core Version:    0.7.0.1
  */

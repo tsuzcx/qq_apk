@@ -1,20 +1,6 @@
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpParams;
-import org.apache.http.protocol.HttpContext;
-
-public class batw
-  extends DefaultHttpClient
+public abstract interface batw
 {
-  public batw(ClientConnectionManager paramClientConnectionManager, HttpParams paramHttpParams)
-  {
-    super(paramClientConnectionManager, null);
-  }
-  
-  public HttpContext createHttpContext()
-  {
-    return super.createHttpContext();
-  }
+  public abstract void a();
 }
 
 

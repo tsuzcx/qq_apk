@@ -58,25 +58,28 @@ public class d
     localObject = l.matcher((CharSequence)localObject);
     if (((Matcher)localObject).find())
     {
-      if (((Matcher)localObject).group(1) != null) {
+      if (((Matcher)localObject).group(1) != null)
+      {
         paramString.n = ((Matcher)localObject).group(1);
+        if (TextUtils.equals("https", paramString.n)) {
+          paramString.n = "http";
+        }
       }
       if (((Matcher)localObject).group(2) != null)
       {
         paramString.o = ((Matcher)localObject).group(2);
         if ((!paramString.o.startsWith("[")) || (!paramString.o.endsWith("]"))) {
-          break label303;
+          break label321;
         }
         paramString.o = paramString.o.substring(1, paramString.o.length() - 1);
         paramString.q = 2;
         paramString.p = false;
       }
       if (((Matcher)localObject).group(4) == null) {
-        break label363;
+        break label418;
       }
     }
-    label303:
-    label363:
+    label418:
     for (paramString.r = Integer.parseInt(((Matcher)localObject).group(4));; paramString.r = 80)
     {
       for (;;)
@@ -104,6 +107,13 @@ public class d
         }
         paramString.a(paramString.h.equals("00000"));
         return paramString;
+        label321:
+        if (("msfwifiv6.3g.qq.com".equals(paramString.o)) || ("msfxgv6.3g.qq.com".equals(paramString.o)))
+        {
+          paramString.q = 2;
+          paramString.p = true;
+          break;
+        }
         if (!m.matcher(paramString.o).matches()) {
           bool = true;
         }

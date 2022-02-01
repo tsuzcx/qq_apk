@@ -30,7 +30,7 @@ class DesktopDataManager$23
       }
       if (localStringBuilder.length() > 0)
       {
-        QLog.d("DesktopDataManager-Recommend", 2, "updateRecommendExposureSp : " + localStringBuilder.toString());
+        QLog.d("DesktopDataManager-Recommend", 2, "updateRecommendExposureSp : " + localStringBuilder.toString() + ", recommendAppList size: " + this.val$recommendAppInfoList.size());
         localSharedPreferences.edit().putString("app_recommend_exposure", localStringBuilder.toString()).commit();
       }
     }
@@ -38,7 +38,7 @@ class DesktopDataManager$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.23
  * JD-Core Version:    0.7.0.1
  */

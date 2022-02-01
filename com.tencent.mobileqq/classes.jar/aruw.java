@@ -1,14 +1,16 @@
-class aruw
-  implements bezx
+import com.tencent.mobileqq.data.EmoticonResp;
+import java.lang.ref.WeakReference;
+
+public class aruw
 {
-  aruw(arut paramarut) {}
+  WeakReference<anlb> a;
   
-  public void a(int paramInt)
+  public aruw(arup paramarup, anlb paramanlb)
   {
-    if (paramInt == 2) {
-      this.a.c();
-    }
+    this.a = new WeakReference(paramanlb);
   }
+  
+  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp) {}
 }
 
 

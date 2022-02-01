@@ -1,33 +1,25 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class atiu
-  implements yrb
+  implements View.OnClickListener
 {
-  atiu(atir paramatir) {}
+  atiu(atis paramatis, bbmy parambbmy) {}
   
-  public void callback(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    int i = paramBundle.getInt("state", 0);
-    int j = paramBundle.getInt("percentage", 0);
-    long l = paramBundle.getLong("errCode", 0L);
-    try
-    {
-      paramBundle = new JSONObject();
-      paramBundle.put("state", i);
-      paramBundle.put("percentage", j);
-      paramBundle.put("errCode", l);
-      this.a.callJs(this.a.g, new String[] { paramBundle.toString() });
-      return;
+    atir localatir = (atir)this.jdField_a_of_type_Bbmy;
+    localatir.a(paramView);
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131366568);
+    if (localCheckBox.getVisibility() == 0) {
+      localCheckBox.setChecked(localatir.b());
     }
-    catch (Exception paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TroopApiPlugin", 2, "huanjiDownload exp", paramBundle);
-      }
-      this.a.callJs(this.a.g, new String[] { "{\"errCode\":-10,\"message\":\"request fail\"}" });
+    if (atis.a(this.jdField_a_of_type_Atis) != null) {
+      atis.a(this.jdField_a_of_type_Atis).a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

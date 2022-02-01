@@ -20,7 +20,9 @@ import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.ad.tangram.canvas.views.xijing.AdTextData;
+import com.tencent.ad.tangram.canvas.views.xijing.a;
 import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.ad.tangram.util.AdUIUtils;
 
 public class f
   extends TextView
@@ -90,14 +92,14 @@ public class f
       this.progressBgColor = paramc.button.backgroundColor;
       this.fontColor = paramc.button.text.color;
       this.width = paramc.width;
-      this.borderCornerRadius = com.tencent.ad.tangram.canvas.views.a.dp2px(paramc.button.borderCornerRadius, paramContext.getResources());
+      this.borderCornerRadius = AdUIUtils.dp2px(paramc.button.borderCornerRadius, paramContext.getResources());
       this.borderWidth = paramc.button.borderWidth;
       int i = paramc.height;
       setSingleLine(false);
       setLines(1);
       setGravity(17);
       setEllipsize(TextUtils.TruncateAt.END);
-      int j = com.tencent.ad.tangram.canvas.views.a.dp2px(5.0F, paramContext.getResources());
+      int j = AdUIUtils.dp2px(5.0F, paramContext.getResources());
       setPadding(j, 0, j, 0);
       if (!TextUtils.isEmpty(this.textContent)) {
         setText(this.textContent);
@@ -223,7 +225,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.f
  * JD-Core Version:    0.7.0.1
  */

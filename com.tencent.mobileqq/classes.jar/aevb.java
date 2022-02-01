@@ -1,19 +1,30 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-class aevb
-  extends AnimatorListenerAdapter
+public class aevb
+  extends anry
 {
-  aevb(aeva paramaeva) {}
+  public aevb(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    this.a.d();
+    if (paramInt == 0) {
+      this.a.c();
+    }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    this.a.d();
+    if (paramInt == 0) {
+      this.a.c();
+    }
+  }
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
   }
 }
 

@@ -1,31 +1,22 @@
-import android.view.View;
-import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
 public class yqa
-  implements bhuk
+  implements bklc
 {
-  public yqa(FollowTextView paramFollowTextView, bhuf parambhuf) {}
+  public yqa(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (!FollowTextView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView)) {
-      return;
+    if (StoryHomeHorizontalListView.a(this.a) != null) {
+      StoryHomeHorizontalListView.a(this.a).a(paramInt, paramBoolean);
     }
-    FollowTextView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView, false);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.a(false);
-    }
+    yqp.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yqa
  * JD-Core Version:    0.7.0.1
  */

@@ -3,15 +3,15 @@ package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awge;
-import bntc;
+import bqjq;
+import com.tencent.mobileqq.persistence.Entity;
 import org.json.JSONObject;
 
 public class ShortVideoTravellerManager$TravellerVideoItem
-  extends awge
+  extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<TravellerVideoItem> CREATOR = new bntc();
+  public static final Parcelable.Creator<TravellerVideoItem> CREATOR = new bqjq();
   public static final String TRAVELLER_PROVIDER_CATEGORY = "category";
   public static final String TRAVELLER_PROVIDER_ITEM_ID = "item_id";
   public static final String TRAVELLER_PROVIDER_TYPE = "type";
@@ -102,7 +102,7 @@ public class ShortVideoTravellerManager$TravellerVideoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.videoconverter.ShortVideoTravellerManager.TravellerVideoItem
  * JD-Core Version:    0.7.0.1
  */

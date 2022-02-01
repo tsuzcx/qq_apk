@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.webview.webso.WebSoService;
+import android.net.Uri;
 
-public class bekr
+public abstract interface bekr
 {
-  public static void a(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    if ((belc.b(paramString)) && (!belc.d(paramString)) && (aovt.c().b > 0))
-    {
-      WebSoService.a().a(paramString, null, true);
-      belc.a("preload spned time = " + (System.currentTimeMillis() - l));
-    }
-  }
+  public abstract void a(Uri paramUri);
 }
 
 

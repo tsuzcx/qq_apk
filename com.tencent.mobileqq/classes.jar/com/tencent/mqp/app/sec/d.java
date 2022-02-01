@@ -3,9 +3,9 @@ package com.tencent.mqp.app.sec;
 import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.provider.Settings.Secure;
+import android.provider.Settings.System;
 import android.text.TextUtils;
-import bhmt;
+import bkab;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -65,14 +65,14 @@ public class d
     BaseApplication localBaseApplication = BaseApplication.getContext();
     String str1 = "";
     if (localBaseApplication != null) {
-      str1 = Settings.Secure.getString(localBaseApplication.getContentResolver(), "android_id");
+      str1 = Settings.System.getString(localBaseApplication.getContentResolver(), "android_id");
     }
     if (TextUtils.isEmpty(str1)) {
       str1 = "";
     }
     for (;;)
     {
-      String str2 = bhmt.b(2);
+      String str2 = bkab.b(2);
       if (str2 == null) {
         str2 = "";
       }
@@ -90,12 +90,12 @@ public class d
           if (localObject1 != null) {}
           for (localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();; localObject1 = "")
           {
-            Object localObject3 = bhmt.b(1);
+            Object localObject3 = bkab.b(1);
             Object localObject2 = localObject3;
             if (localObject3 == null) {
               localObject2 = "";
             }
-            Object localObject4 = bhmt.b(3);
+            Object localObject4 = bkab.b(3);
             localObject3 = localObject4;
             if (localObject4 == null) {
               localObject3 = "";
@@ -126,7 +126,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mqp.app.sec.d
  * JD-Core Version:    0.7.0.1
  */

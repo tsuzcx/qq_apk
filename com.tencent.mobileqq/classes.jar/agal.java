@@ -1,173 +1,183 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.12.1;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.12.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleImageView;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleLinearLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XPanelContainer;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class agal
-  implements VideoPlayerCallback
+  extends BaseAdapter
 {
-  agal(agai paramagai) {}
+  private float jdField_a_of_type_Float = 1.25F;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private ArrayList<aihw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
-  
-  public void onDownloadComplete(long paramLong)
+  public agal(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ShortVideoItemBuilder", 2, "onDownloadComplete, id = " + paramLong);
-    }
-    if (agai.a(this.a) == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoItemBuilder", 2, "onDownloadComplete , mListView is null.");
-      }
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        localObject = aepi.a(paramLong, agai.a(this.a).getAdapter());
-      } while (!(localObject instanceof MessageForShortVideo));
-      localObject = (MessageForShortVideo)localObject;
-    } while (((((MessageForShortVideo)localObject).fileType != 6) && (((MessageForShortVideo)localObject).fileType != 17) && (((MessageForShortVideo)localObject).fileType != 9)) || (((MessageForShortVideo)localObject).videoFileStatus == 2003));
-    ((MessageForShortVideo)localObject).videoFileStatus = 2003;
-    ((MessageForShortVideo)localObject).transferedSize = 0;
-    ((MessageForShortVideo)localObject).videoFileProgress = 100;
-    ((MessageForShortVideo)localObject).serial();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageForShortVideo)localObject).frienduin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, ((MessageForShortVideo)localObject).uniseq, ((MessageForShortVideo)localObject).msgData);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841465);
   }
   
-  public void onDownloadProgress(long paramLong1, long paramLong2) {}
-  
-  public void onLoopBack(long paramLong1, long paramLong2)
+  private int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "onLoopBack, id = " + paramLong1 + " ,position = " + paramLong2);
-    }
-    MessageForShortVideo localMessageForShortVideo = bdew.a().a(Long.valueOf(paramLong1));
-    agai.a(this.a, localMessageForShortVideo, paramLong2);
+    return 4;
   }
   
-  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public Drawable a(String paramString)
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append("onPlayError , id = ").append(paramLong);
-      localStringBuilder1.append(" , errorCode = ").append(paramInt3);
-      StringBuilder localStringBuilder2 = localStringBuilder1.append(" , exInfo =");
-      if (paramString != null)
-      {
-        localStringBuilder2.append(paramString);
-        QLog.e("ShortVideoItemBuilder", 2, localStringBuilder1.toString());
-      }
-    }
-    else
-    {
-      if ((paramInt3 == 14011001) && (agai.a(this.a) != null)) {
-        break label98;
-      }
-    }
-    label98:
-    do
-    {
-      return;
-      paramString = "null";
-      break;
-      paramString = aepi.a(paramLong, agai.a(this.a).getAdapter());
-    } while (!(paramString instanceof MessageForShortVideo));
-    paramString = (MessageForShortVideo)paramString;
-    paramString.videoFileStatus = 5002;
-    paramString.serial();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramString.uniseq, paramString.msgData);
-    agai.a(this.a).post(new ShortVideoItemBuilder.12.2(this, paramString));
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localURLDrawableOptions.mPlayGifImage = true;
+    return URLDrawable.getDrawable(new File(paramString), localURLDrawableOptions);
   }
   
-  public void onPlayProgress(long paramLong1, long paramLong2) {}
-  
-  public void onStateChange(long paramLong, int paramInt)
+  public void a(List<aihw> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "onStateChange , state = " + paramInt + ", msgUniseq=" + paramLong);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if ((paramList != null) && (paramList.size() > 0)) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
     }
-    if (paramInt == 4)
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      localObject = bdew.a().a(Long.valueOf(paramLong));
-      if ((!bdew.a().a(Long.valueOf(paramLong))) && (localObject != null))
-      {
-        ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E51", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
-        if (!bdew.a().b(Long.valueOf(((MessageForShortVideo)localObject).uniseq)))
-        {
-          bdew.a().a(Long.valueOf(((MessageForShortVideo)localObject).uniseq));
-          ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E50", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
-        }
-        bdew.a().a(Long.valueOf(paramLong), true);
-      }
+      int i = a();
+      return (this.jdField_a_of_type_JavaUtilArrayList.size() + i - 1) / i;
     }
-    Object localObject = agai.a(this.a, paramLong);
-    if (localObject == null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ShortVideoItemBuilder", 2, "holder == null, msgUniseq=" + paramLong);
-      }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)) {
+      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
-    boolean bool;
-    do
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int k = a();
+    int i = (XPanelContainer.jdField_a_of_type_Int - afur.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) - afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 2) / 3;
+    int j;
+    if (i >= 0)
     {
-      do
-      {
-        do
-        {
-          return;
-          if (((MessageForShortVideo)((agas)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage).videoFileTime <= 8) {}
-          for (bool = true; paramInt == 5; bool = false)
-          {
-            agai.a(this.a).postDelayed(new ShortVideoItemBuilder.12.1(this, bool, (agas)localObject), 1200L);
-            return;
-          }
-          if ((paramInt != 7) && (paramInt != 8)) {
-            break;
-          }
-          agai.a(this.a).removeCallbacksAndMessages(null);
-          ((agas)localObject).d.setVisibility(8);
-          ((agas)localObject).jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(0);
-          this.a.b((agas)localObject);
-          ((agas)localObject).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-          ((agas)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        } while (paramInt != 8);
-        localObject = bdew.a().a(Long.valueOf(paramLong));
-      } while (localObject == null);
-      agai.a(this.a, (MessageForShortVideo)localObject, ((MessageForShortVideo)localObject).videoFileTime * 1000);
-      return;
-    } while (paramInt != 4);
-    agai.a(this.a).removeCallbacksAndMessages(null);
-    if (bool) {
-      ((agas)localObject).d.setVisibility(8);
+      j = afur.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      if (i >= j) {
+        break label611;
+      }
+      i = j;
     }
+    label419:
+    label576:
+    label585:
+    label611:
     for (;;)
     {
-      this.a.a((agas)localObject);
-      ((agas)localObject).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      ((agas)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      localObject = bdew.a().a(Long.valueOf(paramLong));
-      if (localObject == null) {
+      j = (this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 4) / 8;
+      Object localObject2;
+      Object localObject3;
+      if (paramView == null)
+      {
+        localObject1 = new StickerBubbleLinearLayout(this.jdField_a_of_type_AndroidContentContext);
+        ((LinearLayout)localObject1).setMinimumHeight(afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + i);
+        ((LinearLayout)localObject1).setOrientation(0);
+        j = 0;
+        for (;;)
+        {
+          paramView = (View)localObject1;
+          if (j >= k) {
+            break;
+          }
+          paramView = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+          paramView.setGravity(17);
+          localObject2 = new LinearLayout.LayoutParams(-2, -2);
+          if (j == 0) {}
+          paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
+          localObject2 = new LinearLayout.LayoutParams(afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+          ((LinearLayout.LayoutParams)localObject2).topMargin = (i / 2);
+          ((LinearLayout.LayoutParams)localObject2).bottomMargin = (i / 2);
+          localObject3 = new StickerBubbleImageView(this.jdField_a_of_type_AndroidContentContext);
+          ((View)localObject3).setPadding(14, 14, 14, 14);
+          int m = afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          int n = afur.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ShapeDrawable localShapeDrawable = new ShapeDrawable(new OvalShape());
+          localShapeDrawable.setIntrinsicHeight(m);
+          localShapeDrawable.setIntrinsicWidth(n);
+          localShapeDrawable.getPaint().setColor(1728053247);
+          ((View)localObject3).setBackgroundDrawable(localShapeDrawable);
+          ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          paramView.addView((View)localObject3);
+          ((LinearLayout)localObject1).addView(paramView);
+          j += 1;
+        }
+        i = 0;
         break;
       }
-      agai.a(this.a, (MessageForShortVideo)localObject, 0L);
-      return;
-      ((agas)localObject).d.setVisibility(0);
+      Object localObject1 = (ViewGroup)paramView;
+      if (paramInt == 0)
+      {
+        ((ViewGroup)localObject1).setPadding(0, i / 2, 0, 0);
+        i = 0;
+        if (i >= k) {
+          break label585;
+        }
+        j = k * paramInt + i;
+        localObject2 = ((ViewGroup)((ViewGroup)localObject1).getChildAt(i)).getChildAt(0);
+        if (j >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+          break label576;
+        }
+        ((View)localObject2).setVisibility(0);
+        localObject3 = (aihw)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        if (localObject3 != null) {
+          ((ImageView)localObject2).setImageDrawable(a(((aihw)localObject3).jdField_a_of_type_JavaLangString));
+        }
+        ((View)localObject2).setTag(Integer.valueOf(j));
+        if (AppSetting.c) {
+          ((View)localObject2).setContentDescription(aihx.a(((aihw)localObject3).jdField_a_of_type_Int) + anni.a(2131707091));
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break label419;
+        ((ViewGroup)localObject1).setPadding(0, 0, 0, 0);
+        break;
+        ((View)localObject2).setVisibility(4);
+      }
+      paramView.setOnLongClickListener(null);
+      bgfz.a(paramView, false);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
     }
   }
 }

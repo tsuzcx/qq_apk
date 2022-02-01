@@ -1,34 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.mobileqq.jsp.IdentificationApiPlugin.1.1;
-import com.tencent.mobileqq.jsp.IdentificationApiPlugin.1.2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
 
-public class athp
-  implements asxk
+public final class athp
+  implements Parcelable.Creator<OfflineFileInfo>
 {
-  athp(atho paramatho) {}
-  
-  public void a(int paramInt, String paramString)
+  public OfflineFileInfo a(Parcel paramParcel)
   {
-    QLog.e("IdentificationApiPlugin", 1, "getAppConf error, code : " + paramInt + " errorMsg : " + paramString);
-    if (atho.a(this.a) == null)
-    {
-      QLog.e("IdentificationApiPlugin", 1, "getConfFailed, activity is null");
-      return;
-    }
-    ThreadManager.getUIHandler().post(new IdentificationApiPlugin.1.2(this, paramString));
+    return new OfflineFileInfo(paramParcel);
   }
   
-  public void a(FaceDetectForThirdPartyManager.AppConf paramAppConf)
+  public OfflineFileInfo[] a(int paramInt)
   {
-    if (atho.a(this.a) == null)
-    {
-      QLog.e("IdentificationApiPlugin", 1, "getConfSuccess, activity is null");
-      return;
-    }
-    ThreadManager.getUIHandler().post(new IdentificationApiPlugin.1.1(this, paramAppConf));
+    return new OfflineFileInfo[paramInt];
   }
 }
 

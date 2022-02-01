@@ -1,17 +1,13 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahoy
-  implements BusinessObserver
+public class ahoy
+  implements ahor
 {
-  ahoy(ahox paramahox) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RecommendTroopAdapter", 4, "delRecommendTroop");
-    }
+    paramagup.a(paramMessageRecord, paramagwc, paramString);
   }
 }
 

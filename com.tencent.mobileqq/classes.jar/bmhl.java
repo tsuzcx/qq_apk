@@ -1,18 +1,12 @@
-import com.tribe.async.dispatch.Dispatcher;
-
-class bmhl
-  extends bfxf
+final class bmhl
+  extends bmhk
 {
-  bmhl(bmhk parambmhk) {}
-  
-  public void a()
+  public int a(String paramString, int paramInt)
   {
-    umc.a().dispatch(new bmhm(1, true));
-  }
-  
-  public void b()
-  {
-    umc.a().dispatch(new bmhm(1, false));
+    if ((paramString == null) || (paramString.length() == 0) || (paramInt < 1)) {
+      return -1;
+    }
+    return 0;
   }
 }
 

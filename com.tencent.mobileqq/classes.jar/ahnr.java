@@ -1,61 +1,49 @@
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.TriangleView;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class ahnr
+  implements Animator.AnimatorListener
 {
-  public ImageView a;
-  public TextView a;
-  public TriangleView a;
-  public ImageView b;
-  public TextView b;
+  private ahnr(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public ahnr(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371121));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371118));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371122));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371120));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView = ((TriangleView)paramView.findViewById(2131378285));
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(true);
+    if (UnlimitedBladeWorks.a(this.a).a)
+    {
+      if (UnlimitedBladeWorks.a(this.a) != 2.0D) {
+        break label55;
+      }
+      UnlimitedBladeWorks.a(this.a);
+      UnlimitedBladeWorks.a(this.a, 5);
     }
-    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(true);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(true);
-    }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setSelected(true);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView.setVisibility(0);
+    for (;;)
+    {
+      UnlimitedBladeWorks.a(this.a).setImageDrawable(null);
+      return;
+      label55:
+      UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+      UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
+      UnlimitedBladeWorks.a(this.a).a(new ahns(this));
+      UnlimitedBladeWorks.a(this.a).c();
+      UnlimitedBladeWorks.a(this.a, 1);
     }
   }
   
-  public void b()
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(false);
+    if (UnlimitedBladeWorks.a(this.a))
+    {
+      UnlimitedBladeWorks.a(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+      return;
     }
-    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(false);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(false);
-    }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setSelected(false);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView.setVisibility(4);
-    }
+    UnlimitedBladeWorks.a(this.a).setImageBitmap(UnlimitedBladeWorks.a(this.a));
   }
 }
 

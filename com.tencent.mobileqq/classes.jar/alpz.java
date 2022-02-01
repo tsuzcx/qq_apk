@@ -1,24 +1,67 @@
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import java.util.Comparator;
+import android.graphics.Color;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import java.util.ArrayList;
 
-class alpz
-  implements Comparator<BaseAddress>
+public class alpz
+  extends Animation
 {
-  alpz(alpy paramalpy) {}
+  private int jdField_a_of_type_Int;
+  private alqa jdField_a_of_type_Alqa;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
   
-  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
+  public alpz(ArrayList<Integer> paramArrayList)
   {
-    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
-    int i = j;
-    if (j == 0) {
-      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
+    a(paramArrayList);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(ArrayList<Integer> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
+      return;
     }
-    return i;
+    float f = 1.0F / (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    int i = (int)(paramFloat / f);
+    f = (paramFloat - i * f) / f;
+    if (i == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
+      i = this.jdField_a_of_type_JavaUtilArrayList.size() - 2;
+    }
+    for (;;)
+    {
+      int k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
+      int j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i + 1)).intValue();
+      i = j;
+      if (paramFloat < 1.0F)
+      {
+        i = (int)(Color.alpha(k) + (Color.alpha(j) - Color.alpha(k)) * f);
+        int m = (int)(Color.red(k) + (Color.red(j) - Color.red(k)) * f);
+        int n = (int)(Color.green(k) + (Color.green(j) - Color.green(k)) * f);
+        paramFloat = Color.blue(k);
+        i = Color.argb(i, m, n, (int)((Color.blue(j) - Color.blue(k)) * f + paramFloat));
+      }
+      this.jdField_a_of_type_Int = i;
+      if (this.jdField_a_of_type_Alqa == null) {
+        break;
+      }
+      this.jdField_a_of_type_Alqa.a(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alpz
  * JD-Core Version:    0.7.0.1
  */

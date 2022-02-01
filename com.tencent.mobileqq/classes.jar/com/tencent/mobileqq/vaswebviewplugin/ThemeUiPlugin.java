@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import alud;
 import android.content.Intent;
 import android.os.Handler;
-import bdzd;
-import begz;
+import anni;
+import bhge;
+import bhod;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -55,7 +55,7 @@ public class ThemeUiPlugin
   {
     reportTimes = 0;
     if (reportHandler == null) {
-      reportHandler = new bdzd(BaseApplication.getContext().getMainLooper());
+      reportHandler = new bhge(BaseApplication.getContext().getMainLooper());
     }
     reportHandler.removeMessages(1);
     initDownloadedThemeNumForReport = 0;
@@ -65,7 +65,7 @@ public class ThemeUiPlugin
   
   void OnActivityResume()
   {
-    this.activity.setTitle(alud.a(2131715319));
+    this.activity.setTitle(anni.a(2131713618));
   }
   
   protected long getPluginBusiness()
@@ -108,7 +108,7 @@ public class ThemeUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin
  * JD-Core Version:    0.7.0.1
  */

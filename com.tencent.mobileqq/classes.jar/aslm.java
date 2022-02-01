@@ -1,35 +1,66 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aslm
-  implements Parcelable.Creator<GameCenterSessionInfo>
+public class aslm
+  extends asll
 {
-  public GameCenterSessionInfo a(Parcel paramParcel)
+  public final String b;
+  
+  aslm(asln paramasln, int paramInt)
   {
-    GameCenterSessionInfo localGameCenterSessionInfo = new GameCenterSessionInfo();
-    localGameCenterSessionInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.e = paramParcel.readString();
-    localGameCenterSessionInfo.f = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localGameCenterSessionInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.g = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localGameCenterSessionInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.h = paramParcel.readString();
-    localGameCenterSessionInfo.i = paramParcel.readString();
-    localGameCenterSessionInfo.j = paramParcel.readString();
-    return localGameCenterSessionInfo;
+    super(paramasln, paramInt);
+    this.jdField_b_of_type_JavaLangString = "ExtendFriendLimitChatIdleStateHandler";
   }
   
-  public GameCenterSessionInfo[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new GameCenterSessionInfo[paramInt];
+    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "requestMatch id" + paramInt);
+    Object localObject = new ashh();
+    ((ashh)localObject).jdField_b_of_type_Int = paramInt;
+    this.a.a(101, (ashh)localObject);
+    localObject = (asfs)this.a.a.a(127);
+    if (localObject != null)
+    {
+      int i = askk.a(this.a.a);
+      ((asfs)localObject).a(this.a.a.getCurrentAccountUin(), i, paramInt);
+    }
+  }
+  
+  void a(boolean paramBoolean)
+  {
+    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onCancelMatchMsg 取消匹配: " + paramBoolean);
+  }
+  
+  void a(boolean paramBoolean, int paramInt, ashh paramashh, String paramString)
+  {
+    if ((paramBoolean) && (paramashh != null))
+    {
+      QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onCSRequestMsg 请求匹配 " + paramInt + paramashh.toString());
+      return;
+    }
+    paramashh = paramString;
+    if (paramString == null) {
+      paramashh = "";
+    }
+    QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onCSRequestMsg 请求匹配失败 suc:" + paramBoolean + " ret:" + paramInt + " errMsg : " + paramashh);
+  }
+  
+  void a(boolean paramBoolean, ashh paramashh)
+  {
+    if (paramashh == null)
+    {
+      QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg null indo");
+      return;
+    }
+    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
+    if (paramBoolean)
+    {
+      a(paramashh.jdField_b_of_type_JavaLangString, paramashh.jdField_a_of_type_JavaLangString, paramashh.jdField_a_of_type_ArrayOfByte);
+      c(paramashh);
+      a(paramashh.jdField_b_of_type_JavaLangString, paramashh.e);
+      return;
+    }
+    QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
   }
 }
 

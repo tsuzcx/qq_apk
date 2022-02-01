@@ -1,114 +1,120 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contacts.mayknow.ContactReportUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import org.json.JSONObject;
 
-public abstract class ajju
+public class ajju
+  extends aqkz<ajjp>
 {
-  public static final int[] a;
-  public static final int[] b = { 2130839329, 2130839328, 2130839328, 2130839328, 2130839330, 2130839330, 2130839330, 2130839328, 2130839328, 2130839330 };
-  public static final int[] c = { 2131370198, 2131370219, 2131370192, 2131370212, 2131370209, 2131370210, 2131370222, 2131370218, 2131370217, 2131370191 };
-  protected ajit a;
-  protected bibh a;
-  
-  static
+  @NonNull
+  public ajjp a(int paramInt)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131691562, 2131691340, 2131691310, 2131691314, 2131691311, 2131691312, 2131694602, 2131693304, 2131693302, 2131691309 };
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public abstract View a(int paramInt, Object paramObject, ajjp paramajjp, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajlm paramajlm);
-  
-  public final View a(Context paramContext, int paramInt, ajjw paramajjw)
-  {
-    View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
-    if ((this.jdField_a_of_type_Ajit != null) && (this.jdField_a_of_type_Ajit.a()))
-    {
-      if (this.jdField_a_of_type_Bibh == null) {
-        this.jdField_a_of_type_Bibh = a(paramContext);
-      }
-      return this.jdField_a_of_type_Bibh.a(paramContext, localView, paramajjw, -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldOrDefaultContent");
     }
-    paramajjw.g = localView;
-    paramajjw.a = null;
-    return localView;
+    return new ajjp();
   }
   
-  public bibh a(Context paramContext)
+  @Nullable
+  public ajjp a(aqlg[] paramArrayOfaqlg)
   {
-    int i = paramContext.getResources().getDimensionPixelSize(2131298631);
-    int j = paramContext.getResources().getDimensionPixelSize(2131298632);
-    int k = a();
-    paramContext = c;
-    int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
-    int[] arrayOfInt2 = b;
-    return new ajjv(this, k, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
-  }
-  
-  public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
-  {
+    int j;
+    int i;
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ReportExposeConfigProcessor", 2, "onParsed :" + paramArrayOfaqlg);
+      if (paramArrayOfaqlg != null)
+      {
+        j = paramArrayOfaqlg.length;
+        i = 0;
+        while (i < j)
+        {
+          localObject1 = paramArrayOfaqlg[i];
+          if (localObject1 != null) {
+            QLog.d("ReportExposeConfigProcessor", 2, "onParsed item: " + ((aqlg)localObject1).a);
+          }
+          i += 1;
+        }
+      }
+    }
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
+    {
+      j = paramArrayOfaqlg.length;
+      i = 0;
+      while (i < j)
+      {
+        Object localObject2 = paramArrayOfaqlg[i];
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((aqlg)localObject2).a))) {
+          try
+          {
+            localObject1 = new ajjp();
+            localObject2 = new JSONObject(((aqlg)localObject2).a);
+            if (((JSONObject)localObject2).has("enable")) {
+              ((ajjp)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).getBoolean("enable");
+            }
+            if (((JSONObject)localObject2).has("interval")) {
+              ((ajjp)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("interval");
+            }
+            return localObject1;
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("ReportExposeConfigProcessor", 1, localThrowable, new Object[0]);
+          }
+        }
+        i += 1;
+      }
+    }
     return null;
   }
   
-  public void a(ajit paramajit)
+  public void a(ajjp paramajjp)
   {
-    this.jdField_a_of_type_Ajit = paramajit;
-  }
-  
-  public void a(Context paramContext, View paramView, int paramInt, Object paramObject, ajjw paramajjw, View.OnClickListener paramOnClickListener)
-  {
-    if (this.jdField_a_of_type_Bibh != null) {}
-    for (int i = this.jdField_a_of_type_Bibh.a(paramContext, paramView, paramInt, paramObject, paramajjw, paramOnClickListener);; i = 0)
-    {
-      int j = paramView.getScrollX();
-      if ((paramInt >= 0) && (this.jdField_a_of_type_Ajit != null) && (this.jdField_a_of_type_Ajit.a == paramInt))
-      {
-        paramView.scrollTo(i, 0);
-        if ((j != 0) && (QLog.isDevelopLevel())) {
-          if (this.jdField_a_of_type_Ajit != null) {
-            break label123;
-          }
-        }
-      }
-      label123:
-      for (paramContext = null;; paramContext = Integer.valueOf(this.jdField_a_of_type_Ajit.a))
-      {
-        auwz.a("updateItemMenuView", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramContext });
-        return;
-        if (j == 0) {
-          break;
-        }
-        paramView.scrollTo(0, 0);
-        break;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "onUpdate");
+    }
+    if (paramajjp != null) {
+      ContactReportUtils.a(paramajjp);
     }
   }
   
-  protected void a(View paramView)
+  public Class<ajjp> clazz()
   {
-    if ((paramView instanceof DynamicAvatarView))
-    {
-      paramView = (DynamicAvatarView)paramView;
-      if (paramView.a == null) {
-        paramView.a = new bibv();
-      }
-      paramView.a.a(true);
+    return ajjp.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
     }
   }
   
-  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable) {}
+  public int type()
+  {
+    return 438;
+  }
 }
 
 

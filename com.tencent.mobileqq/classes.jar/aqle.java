@@ -1,88 +1,41 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqle
-  implements RadioGroup.OnCheckedChangeListener
+  implements aqkr
 {
-  public aqle(FMActivity paramFMActivity) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aqkq paramaqkq)
   {
-    int i = 1;
-    if (this.a.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    if ((paramaqkq != null) && ("smart_devices_discovery_config".equals(paramString))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnSmartDeviceDiscoveryCfgListener", 2, "handleConfigForTag smartDeviceDiscoverCfg content = " + paramaqkq.a);
+      }
     }
-    this.a.g();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(0);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView != null)
+    try
     {
-      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = null;
-      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView);
-    }
-    if ((paramInt == 2131375393) && (this.a.jdField_b_of_type_AndroidWidgetRadioButton.isChecked()))
-    {
-      this.a.a().f();
-      FMActivity.d(this.a);
-      this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
-      this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
-      this.a.i(false);
-      FMActivity.a(this.a, 1);
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      paramRadioGroup = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-      paramRadioGroup.putInt("last_select_tab_type", paramInt);
-      paramRadioGroup.commit();
+      paramInt = new JSONObject(paramaqkq.a).optInt("smart_device_discovery_config_switch");
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", paramInt).apply();
       return;
-      if ((paramInt == 2131369801) && (this.a.jdField_a_of_type_AndroidWidgetRadioButton.isChecked()))
-      {
-        this.a.a().e();
-        FMActivity.e(this.a);
-        if ((this.a.h == 0) && (this.a.d)) {
-          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        }
-        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
-        this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
-        this.a.i(false);
-        FMActivity.a(this.a, 2);
-        paramInt = i;
-      }
-      else if ((paramInt == 2131364374) && (this.a.jdField_c_of_type_AndroidWidgetRadioButton.isChecked()))
-      {
-        this.a.a().d();
-        FMActivity.b(this.a, 2);
-        this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
-        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
-        this.a.i(false);
-        FMActivity.a(this.a, 0);
-        paramInt = 2;
-      }
-      else
-      {
-        paramInt = -1;
-      }
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      return;
+    }
+    catch (Exception paramString) {}finally
+    {
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", 1).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqle
  * JD-Core Version:    0.7.0.1
  */

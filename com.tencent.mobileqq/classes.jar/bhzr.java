@@ -1,16 +1,29 @@
 import android.view.View;
-import android.widget.ExpandableListAdapter;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
 
-public abstract interface bhzr
-  extends ExpandableListAdapter
+public class bhzr
+  implements View.OnLayoutChangeListener
 {
-  public abstract int a();
+  public bhzr(ProfileCardExtendFriendView paramProfileCardExtendFriendView) {}
   
-  public abstract void a(View paramView, int paramInt);
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    if (!ProfileCardExtendFriendView.a(this.a)) {
+      this.a.removeOnLayoutChangeListener(this);
+    }
+    while ((!ProfileCardExtendFriendView.a(this.a)) || (!ProfileCardExtendFriendView.b(this.a)) || (ProfileCardExtendFriendView.a(this.a) != 0) || (ProfileCardExtendFriendView.b(this.a) != 0)) {
+      return;
+    }
+    ProfileCardExtendFriendView.a(this.a, Math.max(paramInt4 - paramInt2, paramInt8 - paramInt6));
+    ProfileCardExtendFriendView.b(this.a, Math.min(paramInt4 - paramInt2, paramInt8 - paramInt6));
+    this.a.removeOnLayoutChangeListener(this);
+    ProfileCardExtendFriendView.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhzr
  * JD-Core Version:    0.7.0.1
  */

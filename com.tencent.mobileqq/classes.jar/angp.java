@@ -1,38 +1,17 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.data.ApolloActionPackage;
+import java.util.List;
 
-public class angp
+public abstract interface angp
 {
-  private Bundle a;
+  public abstract angy a(int paramInt);
   
-  public angp(Bundle paramBundle)
-  {
-    this.a = paramBundle;
-  }
+  public abstract void a();
   
-  public Bundle a()
-  {
-    return this.a;
-  }
+  public abstract void a(int paramInt);
   
-  public void a(long paramLong)
-  {
-    this.a.putLong("downloadItems", paramLong);
-  }
+  public abstract void a(List<angy> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean);
   
-  public void a(boolean paramBoolean)
-  {
-    this.a.putBoolean("NoLimitParams", paramBoolean);
-  }
-  
-  public void b(long paramLong)
-  {
-    this.a.putLong("recognitionMask", paramLong);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.a.putBoolean("arTransferPromotion", paramBoolean);
-  }
+  public abstract boolean a(int paramInt);
 }
 
 

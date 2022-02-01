@@ -1,112 +1,97 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Shader.TileMode;
-import android.support.annotation.NonNull;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.subaccount.SubAccountProtocManager.2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
-public final class bdee
+public class bdee
+  implements Manager
 {
-  public static final DownloadParams.DecodeHandler a = new bdef();
-  public static final DownloadParams.DecodeHandler b = new bdeg(bcyz.s, a);
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
+  private static byte[] jdField_c_of_type_ArrayOfByte = new byte[0];
+  private anvp jdField_a_of_type_Anvp = new bdef(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new SubAccountProtocManager.2(this);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean jdField_c_of_type_Boolean;
+  private boolean d;
   
-  public static Bitmap a(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
+  public bdee(QQAppInterface paramQQAppInterface)
   {
-    try
-    {
-      paramConfig = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
-      return paramConfig;
-    }
-    catch (Exception paramConfig)
-    {
-      return null;
-    }
-    catch (OutOfMemoryError paramConfig) {}
-    return null;
-  }
-  
-  public static Bitmap a(@NonNull Bitmap paramBitmap)
-  {
-    return a(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
-  }
-  
-  public static Bitmap a(@NonNull Bitmap paramBitmap, int paramInt1, int paramInt2)
-  {
-    if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0) || ((paramInt1 <= 0) && (paramInt2 <= 0))) {}
-    Bitmap localBitmap;
-    do
-    {
-      return paramBitmap;
-      localBitmap = a(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-    } while (localBitmap == null);
-    return a(paramBitmap, localBitmap, paramInt1, paramInt2);
-  }
-  
-  public static Bitmap a(@NonNull Bitmap paramBitmap1, @NonNull Bitmap paramBitmap2, int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return paramBitmap1;
-    }
-    paramBitmap2.setDensity((int)bdoo.c());
-    Canvas localCanvas = new Canvas(paramBitmap2);
-    Path localPath = a(paramInt1, paramInt2);
-    BitmapShader localBitmapShader = new BitmapShader(paramBitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-    localBitmapShader.setLocalMatrix(a(paramBitmap1.getWidth(), paramBitmap1.getHeight(), paramInt1, paramInt2));
-    paramBitmap1 = new Paint();
-    paramBitmap1.setShader(localBitmapShader);
-    paramBitmap1.setAntiAlias(true);
-    localCanvas.drawPath(localPath, paramBitmap1);
-    return paramBitmap2;
-  }
-  
-  @NonNull
-  private static Matrix a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    float f1 = 0.0F;
-    Matrix localMatrix = new Matrix();
-    if ((paramInt1 == paramInt3) && (paramInt2 == paramInt4)) {
-      return localMatrix;
-    }
-    float f3;
-    float f2;
-    if (paramInt1 * paramInt4 > paramInt3 * paramInt2)
-    {
-      f3 = paramInt4 / paramInt2;
-      f2 = (paramInt3 - paramInt1 * f3) * 0.5F;
-    }
-    for (;;)
-    {
-      localMatrix.setScale(f3, f3);
-      localMatrix.postTranslate(Math.round(f2), Math.round(f1));
-      return localMatrix;
-      f3 = paramInt3 / paramInt1;
-      f1 = paramInt4;
-      float f4 = paramInt2;
-      f2 = 0.0F;
-      f1 = (f1 - f4 * f3) * 0.5F;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.d = false;
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Anvp);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.subaccount.SubAccountProtocManager", 2, "SubAccountProtocManager: manager init");
     }
   }
   
-  @NonNull
-  public static Path a(int paramInt1, int paramInt2)
+  public void a()
   {
-    Path localPath = new Path();
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return localPath;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
     }
-    float f1 = Math.min(paramInt1 * 0.0618F, paramInt2 * 0.0618F);
-    float f2 = paramInt1 / 2.0F;
-    float f3 = paramInt2 / 2.0F;
-    localPath.moveTo(0.0F, f3);
-    localPath.cubicTo(0.0F, f1, f1, 0.0F, f2, 0.0F);
-    localPath.cubicTo(paramInt1 - f1, 0.0F, paramInt1, f1, paramInt1, f3);
-    localPath.cubicTo(paramInt1, paramInt2 - f1, paramInt1 - f1, paramInt2, f2, paramInt2);
-    localPath.cubicTo(f1, paramInt2, 0.0F, paramInt2 - f1, 0.0F, f3);
-    return localPath;
+    synchronized (jdField_c_of_type_ArrayOfByte)
+    {
+      if (this.jdField_c_of_type_Boolean) {
+        return;
+      }
+    }
+    this.jdField_c_of_type_Boolean = true;
+    ((anvn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a();
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
+    }
+    synchronized (jdField_b_of_type_ArrayOfByte)
+    {
+      if (this.jdField_b_of_type_Boolean) {
+        return;
+      }
+    }
+    this.jdField_b_of_type_Boolean = true;
+    ((anvn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
+    }
+    synchronized (jdField_a_of_type_ArrayOfByte)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        return;
+      }
+    }
+    this.jdField_a_of_type_Boolean = true;
+    ((anvn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a(paramString1, paramString2, paramString3);
+  }
+  
+  public boolean a()
+  {
+    synchronized (jdField_c_of_type_ArrayOfByte)
+    {
+      boolean bool = this.d;
+      return bool;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anvp);
+    if (ThreadManager.getSubThreadHandler() != null) {
+      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    }
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import apeq;
+import arhn;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MessageForEnterTroop
   extends ChatMessage
 {
-  public List<apeq> mList = new ArrayList();
+  public List<arhn> mList = new ArrayList();
   
   protected void doParse() {}
 }

@@ -1,21 +1,32 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aduz
-  extends MqqHandler
+  implements atve
 {
-  public aduz(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public aduz(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aszd paramaszd) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
+    atvf.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692439));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-    default: 
-      return;
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        if (bgmg.b(localFileManagerEntity.getFilePath())) {
+          this.jdField_a_of_type_Aszd.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+        } else {
+          this.jdField_a_of_type_Aszd.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+        }
+      }
     }
-    this.a.finish();
   }
+  
+  public void b() {}
 }
 
 

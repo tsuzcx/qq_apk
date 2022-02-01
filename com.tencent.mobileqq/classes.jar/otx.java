@@ -1,36 +1,61 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.common.app.BaseApplicationImpl;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class otx
-  implements AladdinConfigHandler
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  private JSONObject a = new JSONObject();
+  
+  public String a()
   {
-    paramString = osq.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      if (TextUtils.equals("check_period_ms", str1)) {
-        bkbq.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(str2));
-      } else if (TextUtils.equals("time_out_threshold_ms", str1)) {
-        bkbq.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(str2));
-      } else if (TextUtils.equals("thread_pool_monitor_enable", str1)) {
-        bkbq.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      }
-    }
-    return true;
+    return this.a.toString();
   }
   
-  public void onWipeConfig(int paramInt) {}
+  public otx a()
+  {
+    try
+    {
+      this.a.put("network", pfe.a(BaseApplicationImpl.getApplication().getApplicationContext()));
+      this.a.put("version", och.a);
+      this.a.put("os", "1");
+      this.a.put("uin", pha.a());
+      this.a.put("city", pfe.b());
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public otx a(int paramInt)
+  {
+    int i = 0;
+    if (paramInt == 41516) {
+      i = 3;
+    }
+    for (;;)
+    {
+      try
+      {
+        this.a.put("source", i);
+        return this;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      if (paramInt == 41522) {
+        i = 16;
+      }
+    }
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     otx
  * JD-Core Version:    0.7.0.1
  */

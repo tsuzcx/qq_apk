@@ -10,19 +10,19 @@ import io.flutter.embedding.engine.FlutterShellArgs;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.embedding.engine.dart.DartExecutor.DartEntrypoint;
 import io.flutter.embedding.engine.systemchannels.NavigationChannel;
-import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.view.FlutterMain;
 
 public class FlutterBoost
 {
+  private static boolean sInit;
   static FlutterBoost sInstance;
   private long FlutterPostFrameCallTime = 0L;
   private Application.ActivityLifecycleCallbacks mActivityLifecycleCallbacks;
   private Activity mCurrentActiveActivity;
   private FlutterEngine mEngine;
+  private boolean mEnterActivityCreate = false;
   private FlutterViewContainerManager mManager;
   private Platform mPlatform;
-  private PluginRegistry mRegistry;
   
   private FlutterEngine createEngine()
   {
@@ -53,17 +53,7 @@ public class FlutterBoost
       this.mPlatform.lifecycleListener.onEngineDestroy();
     }
     this.mEngine = null;
-    this.mRegistry = null;
     this.mCurrentActiveActivity = null;
-  }
-  
-  public void boostPluginRegistry()
-  {
-    if ((this.mRegistry != null) && (!this.mRegistry.hasPlugin("boostPluginRegistry")))
-    {
-      this.mPlatform.registerPlugins(this.mRegistry);
-      this.mRegistry.registrarFor("boostPluginRegistry");
-    }
   }
   
   public FlutterBoostPlugin channel()
@@ -88,6 +78,9 @@ public class FlutterBoost
     do
     {
       return;
+      if (this.mPlatform.lifecycleListener != null) {
+        this.mPlatform.lifecycleListener.beforeCreateEngine();
+      }
       localFlutterEngine = createEngine();
       if (this.mPlatform.lifecycleListener != null) {
         this.mPlatform.lifecycleListener.onEngineCreated();
@@ -98,7 +91,6 @@ public class FlutterBoost
     }
     DartExecutor.DartEntrypoint localDartEntrypoint = new DartExecutor.DartEntrypoint(FlutterMain.findAppBundlePath(), "main");
     localFlutterEngine.getDartExecutor().executeDartEntrypoint(localDartEntrypoint);
-    this.mRegistry = new BoostPluginRegistry(createEngine());
   }
   
   public FlutterEngine engineProvider()
@@ -116,13 +108,13 @@ public class FlutterBoost
     return this.FlutterPostFrameCallTime;
   }
   
-  public PluginRegistry getPluginRegistry()
-  {
-    return this.mRegistry;
-  }
-  
   public void init(Platform paramPlatform)
   {
+    if (sInit)
+    {
+      Debuger.log("FlutterBoost is alread inited. Do not init twice");
+      return;
+    }
     this.mPlatform = paramPlatform;
     this.mManager = new FlutterViewContainerManager();
     this.mActivityLifecycleCallbacks = new FlutterBoost.1(this);
@@ -130,6 +122,7 @@ public class FlutterBoost
     if (this.mPlatform.whenEngineStart() == FlutterBoost.ConfigBuilder.IMMEDIATELY) {
       doInitialFlutter();
     }
+    sInit = true;
   }
   
   public Platform platform()
@@ -144,7 +137,7 @@ public class FlutterBoost
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.FlutterBoost
  * JD-Core Version:    0.7.0.1
  */

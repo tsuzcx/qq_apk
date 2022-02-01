@@ -1,93 +1,90 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.beacon.event.UserAction;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Comparator;
+import java.util.List;
 
 public class ljt
 {
-  static long jdField_a_of_type_Long;
-  static String jdField_a_of_type_JavaLangString = "EffectFilterTools";
-  static boolean jdField_a_of_type_Boolean;
+  public static final Object a;
+  public static final Comparator<ljt> a;
+  private static ljt b;
+  private static int c;
+  public int a;
+  public bdoa a;
+  private ljt a;
+  public int b;
   
-  public static void a(VideoAppInterface paramVideoAppInterface)
+  static
   {
-    if (paramVideoAppInterface.a(1))
-    {
-      paramVideoAppInterface = (FilterItem)((ljs)paramVideoAppInterface.a(1)).a();
-      a(paramVideoAppInterface);
-      lek.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + paramVideoAppInterface + "|" + jdField_a_of_type_Boolean);
-      if (!jdField_a_of_type_Boolean) {
-        break label77;
-      }
-    }
-    label77:
-    for (paramVideoAppInterface = "0X80076B2";; paramVideoAppInterface = "0X80076B1")
-    {
-      a(paramVideoAppInterface);
-      return;
-    }
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_JavaUtilComparator = new lju();
   }
   
-  static void a(FilterItem paramFilterItem)
+  private ljt(bdoa parambdoa, int paramInt1, int paramInt2)
   {
-    long l1 = System.currentTimeMillis();
-    lek.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + paramFilterItem + "|" + jdField_a_of_type_Long);
-    if ((paramFilterItem != null) && (!paramFilterItem.isEmptyFilter()))
+    this.jdField_a_of_type_Bdoa = parambdoa;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public static ljt a(bdoa parambdoa, int paramInt1, int paramInt2)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (jdField_a_of_type_Long != 0L)
+      if (jdField_b_of_type_Ljt != null)
       {
-        long l2 = l1 - jdField_a_of_type_Long;
-        lek.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + l2);
-        if (l2 > 5000L)
-        {
-          jdField_a_of_type_Boolean = true;
-          a(paramFilterItem, l2 / 1000L);
-        }
+        ljt localljt = jdField_b_of_type_Ljt;
+        jdField_b_of_type_Ljt = localljt.jdField_a_of_type_Ljt;
+        localljt.a(parambdoa, paramInt1, paramInt2);
+        c -= 1;
+        return localljt;
       }
-      lek.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter 33:" + jdField_a_of_type_Long);
+      return new ljt(parambdoa, paramInt1, paramInt2);
     }
-    jdField_a_of_type_Long = l1;
   }
   
-  public static void a(FilterItem paramFilterItem, long paramLong)
+  private void a(bdoa parambdoa, int paramInt1, int paramInt2)
   {
-    paramFilterItem = paramFilterItem.getId();
-    lek.c(jdField_a_of_type_JavaLangString, "DataReport onStateReport:" + paramFilterItem + "|" + paramLong);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("filterName", paramFilterItem);
-    localHashMap.put("duration", String.valueOf(paramLong));
-    UserAction.onUserAction("actAVFunChatFilter", true, -1L, -1L, localHashMap, true);
-    try
+    this.jdField_a_of_type_Ljt = null;
+    this.jdField_a_of_type_Bdoa = parambdoa;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public static void a(List<ljt> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
     {
-      UserAction.flushObjectsToDB(true);
       return;
-    }
-    catch (Exception paramFilterItem)
-    {
-      lek.e(jdField_a_of_type_JavaLangString, paramFilterItem.getMessage());
+      int i = paramList.size() - 1;
+      while (i >= 0)
+      {
+        ljt localljt = (ljt)paramList.remove(i);
+        if (localljt != null) {
+          localljt.a();
+        }
+        i -= 1;
+      }
     }
   }
   
-  public static void a(String paramString)
+  public void a()
   {
-    azqs.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    lek.c(jdField_a_of_type_JavaLangString, "DataReport onSupport:" + paramBoolean);
-    if (paramBoolean) {}
-    for (String str = "0X80076AF";; str = "0X80076B0")
+    a(null, -1, -1);
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      a(str);
+      if (c < 50)
+      {
+        this.jdField_a_of_type_Ljt = jdField_b_of_type_Ljt;
+        jdField_b_of_type_Ljt = this;
+        c += 1;
+      }
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ljt
  * JD-Core Version:    0.7.0.1
  */

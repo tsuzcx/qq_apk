@@ -1,271 +1,136 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.sdk.CmShowSpriteAioScript.1;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-public class alce
-  implements akrq
+class alce
+  extends bkov
 {
-  protected int a;
-  protected albj a;
-  protected alcc a;
-  public alcg a;
-  protected String a;
-  protected boolean a;
-  protected String b;
-  
-  public alce(int paramInt, alcg paramalcg, alcc paramalcc)
+  alce(alcd paramalcd, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = ("cmshow_script_" + paramInt + ".js");
-    this.jdField_a_of_type_Alcg = paramalcg;
-    this.jdField_a_of_type_Alcc = paramalcc;
-    QLog.i("CmShow_SpriteAioScript", 1, "[create script object], bid:" + paramInt + ",scriptName:" + this.b);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public alce(int paramInt, String paramString, alcg paramalcg, alcc paramalcc)
+  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString;
-    this.jdField_a_of_type_Alcg = paramalcg;
-    this.jdField_a_of_type_Alcc = paramalcc;
-    QLog.i("CmShow_SpriteAioScript", 1, "[create script object], bid:" + paramInt + ",scriptName:" + this.b);
-  }
-  
-  public int a()
-  {
-    return 300;
-  }
-  
-  public akra a()
-  {
-    if (this.jdField_a_of_type_Alcg == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_Alcg.a();
-  }
-  
-  public akrw a(long paramLong, String paramString1, String paramString2)
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(aliu.av).append(this.b);
-    return localStringBuilder.toString();
-  }
-  
-  public void a() {}
-  
-  public void a(albj paramalbj)
-  {
-    this.jdField_a_of_type_Albj = paramalbj;
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, 0, false);
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_Alcg == null)) {
-      QLog.w("CmShow_SpriteAioScript", 1, "[execScriptInRenderThread], script is null.");
-    }
-    akra localakra;
-    do
-    {
-      return;
-      localakra = this.jdField_a_of_type_Alcg.a();
-    } while (localakra == null);
-    localakra.runRenderTask(new CmShowSpriteAioScript.1(this, paramString, localakra, paramInt, paramBoolean));
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      QLog.w("CmShow_SpriteAioScript", 2, "[checkDressRsc], script is NOT ready.");
-    }
-    while ((TextUtils.isEmpty(paramString)) || (!"0".equals(paramString))) {
+    if ((paramArrayOfbkou == null) || (paramArrayOfbkou.length <= 0)) {
       return;
     }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    if ((paramObject instanceof RecentBaseData)) {}
+    label146:
+    label407:
+    label433:
+    for (int k = ((RecentBaseData)paramObject).mMenuFlag;; k = 0)
     {
-      QLog.i("CmShow_SpriteAioScript", 1, "script is already read, scriptName:" + this.b);
-      return true;
-    }
-    this.jdField_a_of_type_Boolean = b();
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(Activity paramActivity)
-  {
-    return false;
-  }
-  
-  protected boolean a(String paramString)
-  {
-    boolean bool = true;
-    if (!new alkx(paramString + ".sig", paramString).a(1))
-    {
-      QLog.w("CmShow_SpriteAioScript", 1, "verify fails, path:" + paramString);
-      e();
-      bool = false;
-    }
-    return bool;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b() {}
-  
-  public boolean b()
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_Int == 0) && (!TextUtils.isEmpty(aknx.e)))
+      if (((paramObject instanceof RecentBaseData)) && ((((RecentBaseData)paramObject).getRecentUserType() == 1008) || (((RecentBaseData)paramObject).getRecentUserType() == 7220)))
       {
-        this.jdField_a_of_type_JavaLangString = aknx.e;
-        QLog.i("CmShow_SpriteAioScript", 1, "Succeed to read script 0 from cache");
-        return true;
-      }
-      String str = a();
-      if (TextUtils.isEmpty(str)) {
-        return false;
-      }
-      localFile = new File(str);
-      if (!localFile.exists())
-      {
-        QLog.w("CmShow_SpriteAioScript", 1, "Fail to read script file. " + localFile.getAbsolutePath());
-        f();
-        if (TextUtils.isEmpty(aliu.au)) {
-          alhp.a(this.jdField_a_of_type_Alcg.a(), 300, 202, new Object[] { "Fail to read script file:", str });
-        } else {
-          alhp.a(this.jdField_a_of_type_Alcg.a(), 300, 200, new Object[] { "Fail to read script file:", str });
+        if ((!alcv.a(((RecentBaseData)paramObject).getRecentUserUin())) || (!aldb.a().a()) || (aldb.a().a(((RecentBaseData)paramObject).getRecentUserUin()))) {
+          break label473;
         }
+        paramArrayOfbkou[0].b = 6;
+        paramArrayOfbkou[0].a = 1;
       }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      File localFile;
-      QLog.e("CmShow_SpriteAioScript", 1, "[loadScript],OOM:", localOutOfMemoryError);
-      alhp.a(this.jdField_a_of_type_Alcg.a(), 300, 150, new Object[] { "loadScript:", localOutOfMemoryError });
-      return false;
-      if (!a(localOutOfMemoryError))
+      label203:
+      label467:
+      label473:
+      for (int i = 1;; i = 0)
       {
-        alhp.a(this.jdField_a_of_type_Alcg.a(), 300, 201, new Object[] { "Fail to verify script file:", localOutOfMemoryError });
-        return false;
-      }
-      this.jdField_a_of_type_JavaLangString = bdhb.b(localFile);
-      QLog.i("CmShow_SpriteAioScript", 1, "Succeed to read script file, bid:" + this.jdField_a_of_type_Int);
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("CmShow_SpriteAioScript", 1, "[loadScript]:", localThrowable);
-      alhp.a(this.jdField_a_of_type_Alcg.a(), 300, 30, new Object[] { "loadScript:", localThrowable });
-      return false;
-    }
-    return false;
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_SpriteAioScript", 2, new Object[] { "[loadScript], mIsLoaded:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-        if (100 == this.jdField_a_of_type_Int)
+        paramInt = i;
+        if (i < paramArrayOfbkou.length)
         {
-          QLog.d("CmShow_SpriteAioScript", 1, "sava TraceReport CmShowStatUtil commitJS:(cmshow_0)");
-          a(this.jdField_a_of_type_JavaLangString, 5, false);
-          b();
-          return;
+          paramArrayOfbkou[i].b = 0;
+          paramArrayOfbkou[i].a = 0;
+          paramInt = i + 1;
         }
-        if (this.jdField_a_of_type_Int == 0)
+        while (paramInt < paramArrayOfbkou.length)
         {
-          QLog.d("CmShow_SpriteAioScript", 1, "sava TraceReport CmShowStatUtil commitJS:(cmshow_0)");
-          a(this.jdField_a_of_type_JavaLangString, 3, false);
+          paramArrayOfbkou[paramInt].b = -1;
+          paramArrayOfbkou[paramInt].a = -1;
+          paramInt += 1;
           continue;
+          paramInt = k & 0xF0;
+          if (paramInt != 32) {
+            break label407;
+          }
+          paramArrayOfbkou[0].b = 2;
+          paramArrayOfbkou[0].a = 1;
+          i = 1;
         }
-        localStringBuilder = new StringBuilder();
+        for (;;)
+        {
+          paramInt = i;
+          int j;
+          if (i < paramArrayOfbkou.length)
+          {
+            paramInt = i;
+            if ((paramObject instanceof RecentBaseData))
+            {
+              paramInt = i;
+              if (((RecentBaseData)paramObject).isUnreadMsgNumInTabNum())
+              {
+                j = 0xF0000 & k;
+                if (j != 65536) {
+                  break label433;
+                }
+                paramArrayOfbkou[i].b = 4;
+                paramArrayOfbkou[i].a = 1;
+                paramInt = i + 1;
+              }
+            }
+          }
+          for (;;)
+          {
+            i = paramInt;
+            if (paramInt < paramArrayOfbkou.length)
+            {
+              i = paramInt;
+              if ((0xF000000 & k) == 16777216)
+              {
+                paramArrayOfbkou[paramInt].b = 9;
+                paramArrayOfbkou[paramInt].a = 1;
+                i = paramInt + 1;
+              }
+            }
+            j = i;
+            if (i < paramArrayOfbkou.length)
+            {
+              j = i;
+              if ((k & 0xF) == 1)
+              {
+                paramArrayOfbkou[i].b = 0;
+                paramArrayOfbkou[i].a = 0;
+                j = i + 1;
+              }
+            }
+            paramInt = j;
+            if (j >= paramArrayOfbkou.length) {
+              break label146;
+            }
+            paramInt = j;
+            if ((k & 0x300000) != 2097152) {
+              break label146;
+            }
+            paramArrayOfbkou[j].b = 6;
+            paramArrayOfbkou[j].a = 1;
+            paramInt = j + 1;
+            break label146;
+            break;
+            if (paramInt != 16) {
+              break label467;
+            }
+            paramArrayOfbkou[0].b = 3;
+            paramArrayOfbkou[0].a = 0;
+            i = 1;
+            break label203;
+            paramInt = i;
+            if (j == 131072)
+            {
+              paramArrayOfbkou[i].b = 5;
+              paramArrayOfbkou[i].a = 1;
+              paramInt = i + 1;
+            }
+          }
+          i = 0;
+        }
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("CmShow_SpriteAioScript", 1, localThrowable, new Object[0]);
-        return;
-      }
-      StringBuilder localStringBuilder;
-      localStringBuilder.append("(function(){").append(this.jdField_a_of_type_JavaLangString).append(";registerFunction(\"playAction_bid_").append(this.jdField_a_of_type_Int).append("\", playSpriteAction);").append("registerFunction(\"sendMsg_bid_").append(this.jdField_a_of_type_Int).append("\", sendSpriteMsg);").append("registerFunction(\"stopAction_bid_").append(this.jdField_a_of_type_Int).append("\", stopSpriteAction);").append("})();");
-      a(localStringBuilder.toString());
     }
-  }
-  
-  public boolean c()
-  {
-    if (TextUtils.isEmpty(aliu.au)) {}
-    while (new File(aliu.av + "cm3d.js").exists()) {
-      return true;
-    }
-    return false;
-  }
-  
-  public void d()
-  {
-    ApolloCmdChannel.getChannelFromOtherProcess(ApolloUtil.a()).addCmdHandler(this);
-  }
-  
-  public void e()
-  {
-    QLog.w("CmShow_SpriteAioScript", 1, "[onVerifyFailure], check base.zip");
-    QQAppInterface localQQAppInterface = ApolloUtil.a();
-    if (localQQAppInterface != null)
-    {
-      amqn.a(localQQAppInterface);
-      return;
-    }
-    QLog.e("CmShow_SpriteAioScript", 1, "onVerifyFailure app is null");
-  }
-  
-  public void f()
-  {
-    QLog.w("CmShow_SpriteAioScript", 1, "[onScriptNotExists], redownload base.zip");
-    QQAppInterface localQQAppInterface = ApolloUtil.a();
-    if (localQQAppInterface != null)
-    {
-      amqn.a(localQQAppInterface);
-      return;
-    }
-    QLog.e("CmShow_SpriteAioScript", 1, "onVerifyFailure app is null");
-  }
-  
-  public void g()
-  {
-    ApolloCmdChannel localApolloCmdChannel = ApolloCmdChannel.getChannelFromOtherProcess(ApolloUtil.a());
-    if (localApolloCmdChannel != null) {
-      localApolloCmdChannel.removeCmdHandler(this);
-    }
-    this.jdField_a_of_type_Albj = null;
-    this.jdField_a_of_type_Boolean = false;
   }
 }
 

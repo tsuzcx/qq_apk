@@ -1,19 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public final class alcb
-  implements Parcelable.Creator<CmShowRenderView.PlayActionConfig>
+final class alcb
+  implements Animation.AnimationListener
 {
-  public CmShowRenderView.PlayActionConfig a(Parcel paramParcel)
+  alcb(View paramView, Animation paramAnimation) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new CmShowRenderView.PlayActionConfig(paramParcel);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  public CmShowRenderView.PlayActionConfig[] a(int paramInt)
-  {
-    return new CmShowRenderView.PlayActionConfig[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

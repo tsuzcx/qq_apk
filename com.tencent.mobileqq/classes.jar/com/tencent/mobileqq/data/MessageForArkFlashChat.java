@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import alud;
+import anni;
 import com.tencent.ark.ark;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
@@ -31,7 +31,7 @@ public class MessageForArkFlashChat
     if (this.ark_app_message != null) {
       return this.ark_app_message.getSummery();
     }
-    return alud.a(2131707010);
+    return anni.a(2131705401);
   }
   
   public boolean isSupportReply()

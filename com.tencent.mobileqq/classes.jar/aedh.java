@@ -1,17 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class aedh
-  implements DialogInterface.OnDismissListener
+class aedh
+  implements DialogInterface.OnClickListener
 {
-  public aedh(TroopInfoActivity paramTroopInfoActivity) {}
+  aedh(aedf paramaedf) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
+    this.a.a.a.sendEmptyMessage(259);
+    paramDialogInterface.dismiss();
   }
 }
 

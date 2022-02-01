@@ -1,18 +1,36 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import java.util.ArrayList;
 
-final class bect
-  implements MediaPlayer.OnPreparedListener
+public class bect
+  extends becx
 {
-  bect(becx parambecx) {}
+  public int a;
+  public String a;
+  public ArrayList<bdyf> a;
+  public byte[] a;
+  public ArrayList<bdyf> b;
+  public byte[] b;
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public bect()
   {
-    paramMediaPlayer.start();
-    paramMediaPlayer.setLooping(true);
-    if (this.a != null) {
-      this.a.a();
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" urlParam:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" msgUkey:");
+    localStringBuilder.append(this.jdField_b_of_type_ArrayOfByte);
+    localStringBuilder.append(" ipList:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(" mIpv6List:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList);
+    localStringBuilder.append(" resId:");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
+    return localStringBuilder.toString();
   }
 }
 

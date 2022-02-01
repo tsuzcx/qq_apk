@@ -1,50 +1,36 @@
-import android.graphics.Bitmap;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
-
 public class bbyw
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  private bbyw(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    BaseScaleAndMoveBitmapView.a(this.a, false);
-    BaseScaleAndMoveBitmapView localBaseScaleAndMoveBitmapView = this.a;
-    localBaseScaleAndMoveBitmapView.c *= paramScaleGestureDetector.getScaleFactor();
-    this.a.c = Math.max(BaseScaleAndMoveBitmapView.a(this.a), Math.min(this.a.c, BaseScaleAndMoveBitmapView.b(this.a)));
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c <= this.a.getHeight())
-    {
-      this.a.b = ((this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c);
-      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c > this.a.getWidth()) {
-        break label323;
-      }
-      this.a.jdField_a_of_type_Float = ((this.a.getWidth() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c) / 2.0F);
-    }
-    for (;;)
-    {
-      wxe.a("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "onScale %f", Float.valueOf(this.a.c));
-      this.a.invalidate();
-      return true;
-      if (this.a.b(0.0F) >= 0.0F)
-      {
-        this.a.b = 0.0F;
-        break;
-      }
-      if (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) > this.a.getHeight()) {
-        break;
-      }
-      this.a.b = (this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      break;
-      label323:
-      if (this.a.a(0.0F) >= 0.0F) {
-        this.a.jdField_a_of_type_Float = 0.0F;
-      } else if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) <= this.a.getWidth()) {
-        this.a.jdField_a_of_type_Float = (this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
-      }
-    }
-  }
+  public static String A = "service_msg_remind_type";
+  public static String B = "service_msg_name";
+  public static String C = "key_send_raw_video";
+  public static String D = "key_troop_important_msg_type";
+  public static String E = "key_troop_important_msg_enum";
+  public static String a = "key_recv_queue_wait_length";
+  public static String b = "key_add_queue_time";
+  public static String c = "holiday_active_flag";
+  public static String d = "ark_at_babyq_flag";
+  public static String e = "ark_show_as_sdk_flag";
+  public static String f = "ark_babyq_gray_tip_flag";
+  public static String g = "ark_babyq_report_recv_flag";
+  public static String h = "is_redbag_video";
+  public static String i = "troop_at_info_list";
+  public static String j = "disc_at_info_list";
+  public static String k = "at_info";
+  public static String l = "is_troop";
+  public static String m = "pic_sync_story";
+  public static String n = "video_sync_story";
+  public static String o = "is_sync_qzone";
+  public static String p = "batch_id_qzone";
+  public static String q = "album_id_qzone";
+  public static String r = "aio_send_qzone_pic_flag";
+  public static String s = "aio_send_qzone_pic_url";
+  public static String t = "aio_send_qzone_pic_size";
+  public static String u = "aio_light_video_read_flag";
+  public static String v = "ark_msg_process_state";
+  public static String w = "ark_msg_open_sdk_share_error_code";
+  public static String x = "ark_msg_open_sdk_share_wording";
+  public static String y = "ark_msg_open_sdk_share_info";
+  public static String z = "service_msg_type";
 }
 
 

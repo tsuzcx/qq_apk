@@ -1,59 +1,86 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.TimeManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.SingleLineTextView;
+import java.util.List;
 
-final class beoq
-  implements bene
+class beoq
+  extends BaseAdapter
 {
-  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  List<bfhn> jdField_a_of_type_JavaUtilList;
+  
+  beoq(List<bfhn> paramList)
   {
-    float f1 = 0.0F;
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
-    }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    if (i == j)
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    beor localbeor;
+    bfhn localbfhn;
+    if (paramView == null)
     {
-      f1 = paramInt2 / j;
-      localMatrix.setScale(f1, f1);
-      return localMatrix;
-    }
-    float f2;
-    if ((i <= paramInt1) || (j <= paramInt2))
-    {
-      f2 = paramInt1 - i;
-      f1 = paramInt2 - j;
-      if (f1 < 0.0F) {}
-      for (f1 *= 0.1F;; f1 *= 0.5F)
-      {
-        localMatrix.postTranslate((int)(f2 * 0.5F + 0.5F), (int)(f1 + 0.5F));
-        break;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_Beop.getContext()).inflate(2131560583, null);
+      localbeor = new beor(this.jdField_a_of_type_Beop);
+      localbeor.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131371539));
+      localbeor.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367877));
+      localbeor.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369522));
+      localbeor.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369846);
+      paramView.setOnClickListener(this.jdField_a_of_type_Beop);
+      paramView.setTag(localbeor);
+      localbfhn = (bfhn)getItem(paramInt);
+      localbeor.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localbfhn.a.getTroopName());
+      if (localbfhn.a.lastMsgTime == 0L) {
+        break label298;
+      }
+      localbeor.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      localbeor.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131706339) + TimeManager.getInstance().getMsgDisplayTime(localbfhn.a.troopuin, localbfhn.a.lastMsgTime));
+      label200:
+      if (!localbfhn.a.hasSetTroopHead()) {
+        break label387;
       }
     }
-    float f3;
-    if (i * paramInt2 > paramInt1 * j)
+    label387:
+    for (int i = 4;; i = 113)
     {
-      f3 = paramInt2 / j;
-      f2 = (paramInt1 - i * f3) * 0.5F;
-    }
-    for (;;)
-    {
-      localMatrix.setScale(f3, f3);
-      localMatrix.postTranslate((int)(f2 + 0.5F), (int)(f1 + 0.5F));
+      aoch localaoch = aoch.a(this.jdField_a_of_type_Beop.a, i, localbfhn.a.troopuin, 3, aoch.a(4, 3), aoch.a(4, 3));
+      localbeor.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localaoch);
+      localbeor.jdField_a_of_type_JavaLangString = localbfhn.a.troopuin;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localbeor = (beor)paramView.getTag();
       break;
-      f3 = paramInt1 / i;
-      f1 = (paramInt2 - j) * f3;
-      if (f1 < 0.0F)
+      label298:
+      if (localbfhn.a.troopCreateTime != 0L)
       {
-        f2 = 0.0F;
-        f1 *= 0.1F;
+        localbeor.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        localbeor.jdField_a_of_type_AndroidWidgetTextView.setText(anni.a(2131706344) + TimeManager.getInstance().getMsgDisplayTime(localbfhn.a.troopuin, localbfhn.a.troopCreateTime));
+        break label200;
       }
-      else
-      {
-        f2 = 0.0F;
-        f1 *= 0.5F;
-      }
+      localbeor.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      break label200;
     }
   }
 }

@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
+import kotlin.Metadata;
 
-class acmy
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+public final class acmy
+  implements DialogInterface.OnClickListener
 {
-  acmy(acms paramacms, MessageRecord paramMessageRecord) {}
+  public acmy(GdtMotiveBrowsingFragment paramGdtMotiveBrowsingFragment) {}
   
-  public void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Acms.a.a, zjc.a(paramView));
+    GdtMotiveBrowsingFragment.b(this.a);
   }
 }
 

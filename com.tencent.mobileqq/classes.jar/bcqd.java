@@ -1,35 +1,18 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
-import java.util.ArrayList;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.StatisticCollector.Proxy;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
-public abstract class bcqd
-  extends Observable
+public final class bcqd
+  implements IMCoreProxyRoute.StatisticCollector.Proxy
 {
-  protected TroopUploadingThread a;
-  
-  public ArrayList<bcqb> a()
+  public void collectPerformance(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
   {
-    if (this.a != null) {
-      return this.a.a();
-    }
-    return null;
+    bctj.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3);
   }
   
-  public abstract void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList);
-  
-  public void a(Observer paramObserver)
+  public void collectPerformance(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
   {
-    super.deleteObserver(paramObserver);
-  }
-  
-  public void notifyObservers(Object paramObject)
-  {
-    super.setChanged();
-    super.notifyObservers(paramObject);
+    bctj.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
   }
 }
 

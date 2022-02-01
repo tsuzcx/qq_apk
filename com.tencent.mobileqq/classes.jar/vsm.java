@@ -1,30 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqcircle.style.QCircleWebViewTitleStyle;
 
-public class vsm
-  extends QQUIEventReceiver<vsk, vdn>
+public final class vsm
+  implements Parcelable.Creator<QCircleWebViewTitleStyle>
 {
-  public vsm(@NonNull vsk paramvsk)
+  public QCircleWebViewTitleStyle a(Parcel paramParcel)
   {
-    super(paramvsk);
+    return new QCircleWebViewTitleStyle(paramParcel);
   }
   
-  public void a(@NonNull vsk paramvsk, @NonNull vdn paramvdn)
+  public QCircleWebViewTitleStyle[] a(int paramInt)
   {
-    wxe.b("InteractWidgetPageHolder", "receive poll info event.");
-    if (paramvsk.d()) {
-      paramvsk.a(paramvsk.jdField_a_of_type_Int, paramvsk.b, paramvsk.jdField_a_of_type_Vtt, paramvsk.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vdn.class;
+    return new QCircleWebViewTitleStyle[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vsm
  * JD-Core Version:    0.7.0.1
  */

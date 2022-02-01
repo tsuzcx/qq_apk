@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bnjs
-  implements DialogInterface.OnClickListener
+class bnjs
+  implements Observer<bnuq>
 {
-  public bnjs(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bnjs(bnjl parambnjl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@Nullable bnuq parambnuq)
   {
-    if (this.a.a != null) {
-      this.a.a.pauseDownload();
+    if (parambnuq == null) {}
+    while (parambnuq.b != AECaptureMode.PLAY) {
+      return;
     }
+    bnjl.a(this.a);
   }
 }
 

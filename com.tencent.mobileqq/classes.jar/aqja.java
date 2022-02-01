@@ -1,6 +1,15 @@
-public abstract interface aqja
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+
+public class aqja
+  implements bkpq
 {
-  public abstract void a(aqda paramaqda);
+  public aqja(TimeSelectView paramTimeSelectView) {}
+  
+  public void a(View paramView, int paramInt)
+  {
+    TimeSelectView.a(this.a, paramView, 1);
+  }
 }
 
 

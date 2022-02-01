@@ -2,12 +2,12 @@ package io.flutter.embedding.android;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public class FlutterActivity$CachedEngineIntentBuilder
 {
   private final Class<? extends FlutterActivity> activityClass;
-  private String backgroundMode = FlutterActivity.DEFAULT_BACKGROUND_MODE;
+  private String backgroundMode = FlutterActivityLaunchConfigs.DEFAULT_BACKGROUND_MODE;
   private final String cachedEngineId;
   private boolean destroyEngineWithActivity = false;
   
@@ -18,7 +18,7 @@ public class FlutterActivity$CachedEngineIntentBuilder
   }
   
   @NonNull
-  public CachedEngineIntentBuilder backgroundMode(@NonNull FlutterActivity.BackgroundMode paramBackgroundMode)
+  public CachedEngineIntentBuilder backgroundMode(@NonNull FlutterActivityLaunchConfigs.BackgroundMode paramBackgroundMode)
   {
     this.backgroundMode = paramBackgroundMode.name();
     return this;
@@ -38,7 +38,7 @@ public class FlutterActivity$CachedEngineIntentBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterActivity.CachedEngineIntentBuilder
  * JD-Core Version:    0.7.0.1
  */

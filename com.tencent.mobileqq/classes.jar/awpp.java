@@ -1,27 +1,17 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.GlowCountRecyclerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
 
 public class awpp
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public GlowCountRecyclerView a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  View c;
-  public ImageView c;
-  public View d;
-  public ImageView d;
-  View e;
+  public awpp(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpp
  * JD-Core Version:    0.7.0.1
  */

@@ -7,20 +7,20 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
-import azqs;
-import bejh;
-import bejk;
+import bcst;
+import bhql;
+import bhqo;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
-import ndq;
-import nlo;
-import nlq;
+import nmj;
+import nuk;
+import nun;
 
 public class WebpageFragment
   extends WebViewFragment
 {
-  private nlo a;
+  private nuk a;
   
   public static WebpageFragment a(Intent paramIntent)
   {
@@ -31,37 +31,15 @@ public class WebpageFragment
     return localWebpageFragment;
   }
   
-  public void a(nlo paramnlo)
+  public void a(nuk paramnuk)
   {
-    this.jdField_a_of_type_Nlo = paramnlo;
-  }
-  
-  public boolean a()
-  {
-    ndq.a("Web_qqbrowser_ShowPreview");
-    long l = System.nanoTime();
-    this.jdField_a_of_type_Bejh.a(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_Bejk.c = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_Bejh.jdField_a_of_type_Bejk.D);
-    this.p = true;
-    this.q = false;
-    G();
-    if (QLog.isColorLevel()) {
-      QLog.d("WebpageFragment", 2, "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
-    }
-    this.jdField_a_of_type_Bejh.c = true;
-    this.jdField_a_of_type_Bejh.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_Bejh.a(this.g);
-    this.jdField_a_of_type_Bejh.b = false;
-    ndq.b("Web_qqbrowser_ShowPreview");
-    return true;
+    this.a = paramnuk;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    azqs.a(null, "dc00898", "", this.jdField_a_of_type_Nlo.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", "", this.jdField_a_of_type_Nlo.a.b);
+    bcst.a(null, "dc00898", "", this.a.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.a.a.c, "", "", this.a.a.b);
   }
   
   public void onResume()
@@ -73,6 +51,28 @@ public class WebpageFragment
       int i = localFragmentActivity.getWindow().getDecorView().getSystemUiVisibility();
       localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(i & 0xFFFFFFFD);
     }
+  }
+  
+  public boolean showPreview()
+  {
+    nmj.a("Web_qqbrowser_ShowPreview");
+    long l = System.nanoTime();
+    this.mUIStyleHandler.a(this.intent);
+    this.mUIStyle.c = 0L;
+    this.contentView.a(this.mUIStyleHandler.jdField_a_of_type_Bhqo.D);
+    this.mNeedStatusTrans = true;
+    this.mActNeedImmersive = false;
+    setImmersiveStatus();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebpageFragment", 2, "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
+    }
+    this.mUIStyleHandler.c = true;
+    this.mUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar = this.contentView.jdField_a_of_type_AndroidWidgetProgressBar;
+    this.contentView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    this.mUIStyleHandler.a(this.mUrl);
+    this.mUIStyleHandler.b = false;
+    nmj.b("Web_qqbrowser_ShowPreview");
+    return true;
   }
 }
 

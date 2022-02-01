@@ -1,53 +1,34 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.EffectSettingUi.2.1;
-import com.tencent.av.ui.EffectSettingUi.2.2;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 
 public class mft
-  implements mry
+  implements View.OnClickListener
 {
-  public mft(EffectSettingUi paramEffectSettingUi) {}
+  public mft(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("EffectSettingUi", 4, "onGetConfig, enable[" + paramBoolean + "]");
-    }
-    if (paramBoolean)
+    if (this.a.h()) {}
+    for (;;)
     {
-      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
-      if (localObject != null)
-      {
-        localObject = (AVActivity)((WeakReference)localObject).get();
-        if (localObject != null) {
-          ((AVActivity)localObject).runOnUiThread(new EffectSettingUi.2.1(this));
-        }
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      QLog.d(this.a.d, 1, "onClick R.id.qav_btn_accept_video");
+      mqw.b(bgnt.h((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()), this.a.jdField_a_of_type_ComTencentAvVideoController.a().D);
+      this.a.e();
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a().aq = true;
     }
-    this.a.jdField_a_of_type_Mry = null;
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isDevelopLevel()) {
-      QLog.w("EffectSettingUi", 1, "onStatusChanged, seq[" + l + "]");
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new EffectSettingUi.2.2(this, l, paramBoolean3, paramBoolean1, paramBoolean2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mft
  * JD-Core Version:    0.7.0.1
  */

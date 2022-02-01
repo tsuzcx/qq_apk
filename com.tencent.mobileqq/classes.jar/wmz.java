@@ -1,21 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-
 public class wmz
+  extends weu
 {
-  public static boolean a(QQUserUIItem paramQQUserUIItem)
-  {
-    return (paramQQUserUIItem != null) && (paramQQUserUIItem.isVip()) && (!paramQQUserUIItem.isMe()) && (!paramQQUserUIItem.isFriend()) && (!paramQQUserUIItem.isSubscribe());
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals("0_1000", paramString));
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wmz
  * JD-Core Version:    0.7.0.1
  */

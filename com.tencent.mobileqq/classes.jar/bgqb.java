@@ -1,22 +1,30 @@
-import android.os.Looper;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
 
-public final class bgqb
+class bgqb
+  implements arxm
 {
-  public static final bgqc a;
+  bgqb(bgpw parambgpw) {}
   
-  static
+  public boolean a(KeyEvent paramKeyEvent)
   {
-    if (Looper.getMainLooper() != null) {}
-    for (Looper localLooper = Looper.getMainLooper();; localLooper = Looper.myLooper())
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
     {
-      a = new bgqc(localLooper);
-      return;
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+      this.a.c = false;
+      paramKeyEvent = this.a.getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      this.a.getWindow().setAttributes(paramKeyEvent);
+      bgpw.a(this.a);
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgqb
  * JD-Core Version:    0.7.0.1
  */

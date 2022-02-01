@@ -1,30 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import friendlist.GetOnlineInfoResp;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDelFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class wlv
-  extends altm
+public class wlv
+  extends wnn
 {
-  wlv(wlu paramwlu) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  wnp jdField_a_of_type_Wnp;
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public wlv(CommentEntry paramCommentEntry, wnp paramwnp)
   {
-    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
-    while (wlu.a(this.a) == null) {
-      return;
-    }
-    paramString = wlu.a(this.a);
-    if (paramGetOnlineInfoResp.eIconType == 11) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    this.jdField_a_of_type_JavaLangString = paramCommentEntry.feedId;
+    this.jdField_a_of_type_Int = paramCommentEntry.commentId;
+    this.jdField_a_of_type_Wnp = paramwnp;
+  }
+  
+  public String a()
+  {
+    return wlr.b;
+  }
+  
+  public wno a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspDelFeedComment localRspDelFeedComment = new qqstory_service.RspDelFeedComment();
+    try
     {
-      paramString.b(paramBoolean);
-      return;
+      localRspDelFeedComment.mergeFrom(paramArrayOfByte);
+      return new wlw(localRspDelFeedComment, this.jdField_a_of_type_Wnp);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqDelFeedComment localReqDelFeedComment = new qqstory_service.ReqDelFeedComment();
+    localReqDelFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqDelFeedComment.comment_id.set(this.jdField_a_of_type_Int);
+    return localReqDelFeedComment.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wlv
  * JD-Core Version:    0.7.0.1
  */

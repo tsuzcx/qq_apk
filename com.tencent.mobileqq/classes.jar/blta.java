@@ -1,14 +1,18 @@
-import com.tribe.async.dispatch.Dispatcher;
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.QZoneShareData;
 
-public class blta
-  implements axqu
+public final class blta
+  implements Parcelable.Creator<QZoneShareData>
 {
-  public blta(CaptureModeController paramCaptureModeController) {}
-  
-  public void a()
+  public QZoneShareData a(Parcel paramParcel)
   {
-    umc.a().dispatch(new bmhm(2, true));
+    return new QZoneShareData(paramParcel, null);
+  }
+  
+  public QZoneShareData[] a(int paramInt)
+  {
+    return new QZoneShareData[paramInt];
   }
 }
 

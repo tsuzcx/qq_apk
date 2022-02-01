@@ -1,36 +1,46 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.7.1;
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aqpg
-  extends aqru
 {
-  public aqpg(FileAssistantActivity paramFileAssistantActivity) {}
+  public int a = 0;
+  public int b = 0;
   
-  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public static aqpg a(aqlg[] paramArrayOfaqlg)
   {
-    super.a(paramLong1, paramLong2, paramString, paramInt);
-    this.a.a.a();
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (FileAssistantActivity.a(this.a)) {
-      return;
+    aqpg localaqpg = new aqpg();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaqlg != null) {
+      localObject1 = localObject2;
     }
-    this.a.runOnUiThread(new FileAssistantActivity.7.1(this, paramBoolean));
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    if (!FileAssistantActivity.a(this.a)) {
-      arri.a(paramString);
+    try
+    {
+      if (paramArrayOfaqlg.length > 0) {
+        localObject1 = paramArrayOfaqlg[0].a;
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        QLog.i("LebaQzoneStyleBean", 1, "content is empty");
+        return localaqpg;
+      }
+      paramArrayOfaqlg = new JSONObject((String)localObject1);
+      localaqpg.a = paramArrayOfaqlg.optInt("ifnewstyle", 0);
+      localaqpg.b = paramArrayOfaqlg.optInt("sequenceadjust", 0);
+      QLog.i("LebaQzoneStyleBean", 1, "parse config=" + (String)localObject1 + ",style=" + localaqpg.a + ",sequenceAdjust=" + localaqpg.b);
+      return localaqpg;
     }
+    catch (Exception paramArrayOfaqlg)
+    {
+      QLog.i("LebaQzoneStyleBean", 1, "handleLebaConfig parse", paramArrayOfaqlg);
+    }
+    return localaqpg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqpg
  * JD-Core Version:    0.7.0.1
  */

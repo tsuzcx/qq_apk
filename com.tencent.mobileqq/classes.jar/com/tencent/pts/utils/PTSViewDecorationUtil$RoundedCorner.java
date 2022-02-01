@@ -2,6 +2,7 @@ package com.tencent.pts.utils;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.PorterDuff.Mode;
@@ -12,21 +13,23 @@ import android.os.Build.VERSION;
 import android.view.View;
 import com.tencent.pts.ui.PTSNodeInfo;
 import com.tencent.pts.ui.PTSNodeStyle;
-import com.tencent.pts.ui.vnode.PTSNodeVirtual;
 
 public final class PTSViewDecorationUtil$RoundedCorner
 {
+  private Paint borderPaint;
+  private float[] borderRadii = new float[4];
+  private float borderWidth = 0.0F;
   private boolean hasSetOutline = false;
-  private PTSNodeVirtual nodeVirtual;
   private Paint paint;
   private Path path;
   private float[] radii = new float[8];
   private RectF rectF;
+  private View view;
   private Xfermode xfermode;
   
-  public PTSViewDecorationUtil$RoundedCorner(PTSNodeVirtual paramPTSNodeVirtual)
+  public PTSViewDecorationUtil$RoundedCorner(View paramView)
   {
-    this.nodeVirtual = paramPTSNodeVirtual;
+    this.view = paramView;
     init();
   }
   
@@ -74,6 +77,8 @@ public final class PTSViewDecorationUtil$RoundedCorner
     this.rectF = new RectF();
     this.paint = new Paint(5);
     this.xfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
+    this.borderPaint = new Paint(1);
+    this.borderPaint.setStyle(Paint.Style.STROKE);
   }
   
   private boolean shouldClipPath()
@@ -86,11 +91,21 @@ public final class PTSViewDecorationUtil$RoundedCorner
     if (shouldClipPath())
     {
       this.path.reset();
-      View localView = this.nodeVirtual.getView();
+      View localView = this.view;
       this.rectF.set(0.0F, 0.0F, localView.getWidth(), localView.getHeight());
       this.path.addRoundRect(this.rectF, this.radii, Path.Direction.CW);
       paramCanvas.clipPath(this.path);
     }
+  }
+  
+  public void drawBorder(Canvas paramCanvas)
+  {
+    if ((this.borderWidth <= 0.0F) || (paramCanvas == null) || (this.view == null)) {
+      return;
+    }
+    int i = this.view.getWidth();
+    int j = this.view.getHeight();
+    PTSViewDecorationUtil.drawBorderImp(paramCanvas, this.borderPaint, i, j, this.borderWidth, this.borderRadii[0], this.borderRadii[1], this.borderRadii[2], this.borderRadii[3]);
   }
   
   public void drawCorner(Canvas paramCanvas, int paramInt)
@@ -99,7 +114,7 @@ public final class PTSViewDecorationUtil$RoundedCorner
       return;
     }
     this.path.reset();
-    View localView = this.nodeVirtual.getView();
+    View localView = this.view;
     this.rectF.set(0.0F, 0.0F, localView.getWidth(), localView.getHeight());
     this.path.addRoundRect(this.rectF, this.radii, Path.Direction.CW);
     this.paint.setXfermode(this.xfermode);
@@ -122,24 +137,32 @@ public final class PTSViewDecorationUtil$RoundedCorner
     do
     {
       return;
-      paramPTSNodeInfo = paramPTSNodeInfo.getStyle().getBorderRadii();
+      paramPTSNodeInfo = paramPTSNodeInfo.getStyle();
+      this.borderRadii = paramPTSNodeInfo.getBorderRadii();
       int i = 0;
       while (i < 4)
       {
-        this.radii[(i * 2)] = paramPTSNodeInfo[i];
-        this.radii[(i * 2 + 1)] = paramPTSNodeInfo[i];
+        this.radii[(i * 2)] = this.borderRadii[i];
+        this.radii[(i * 2 + 1)] = this.borderRadii[i];
         i += 1;
       }
-      paramPTSNodeInfo = this.nodeVirtual.getView();
-    } while ((!hasRoundedCorner()) || (!hasSameCorner()) || (Build.VERSION.SDK_INT < 21));
-    paramPTSNodeInfo.setOutlineProvider(new PTSViewDecorationUtil.RoundedCorner.1(this));
-    paramPTSNodeInfo.setClipToOutline(true);
-    this.hasSetOutline = true;
+      View localView = this.view;
+      if ((hasRoundedCorner()) && (hasSameCorner()) && (Build.VERSION.SDK_INT >= 21))
+      {
+        localView.setOutlineProvider(new PTSViewDecorationUtil.RoundedCorner.1(this));
+        localView.setClipToOutline(true);
+        this.hasSetOutline = true;
+      }
+      this.borderWidth = PTSValueConvertUtil.getFloat(paramPTSNodeInfo.get("border-width"));
+      paramPTSNodeInfo = PTSValueConvertUtil.getString(paramPTSNodeInfo.get("border-color"));
+    } while (this.borderWidth <= 0.0F);
+    this.borderPaint.setStrokeWidth(this.borderWidth);
+    this.borderPaint.setColor(PTSValueConvertUtil.getColor(paramPTSNodeInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.utils.PTSViewDecorationUtil.RoundedCorner
  * JD-Core Version:    0.7.0.1
  */

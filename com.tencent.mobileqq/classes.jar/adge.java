@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.activity.Leba;
-
-public class adge
-  extends alzr
+class adge
+  implements adez
 {
-  public adge(Leba paramLeba) {}
+  adge(adgd paramadgd) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(awlp paramawlp, int paramInt)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (Leba.a(this.a) != null)) {
-      Leba.a(this.a).b();
-    }
+    adgd.a(this.a, paramawlp);
+    adgd.a(this.a, paramInt);
   }
 }
 

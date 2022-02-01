@@ -1,45 +1,42 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.album.tools.PhotoSelecter;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class ukh
-  implements Comparable<ukh>
+class ukh
+  implements Handler.Callback
 {
-  public int a;
-  Bitmap a;
-  public uja a;
+  ukh(ukg paramukg) {}
   
-  public int a(@NonNull ukh paramukh)
+  public boolean handleMessage(Message paramMessage)
   {
-    return (int)(this.jdField_a_of_type_Uja.b - paramukh.jdField_a_of_type_Uja.b);
-  }
-  
-  public Bitmap a(Context paramContext)
-  {
-    BitmapFactory.Options localOptions;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      localOptions = new BitmapFactory.Options();
-    }
-    try
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Uja.a(paramContext, 1, localOptions);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = uki.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      return this.jdField_a_of_type_AndroidGraphicsBitmap;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
+    default: 
+    case 0: 
+    case 1: 
+      do
       {
-        wxe.c(PhotoSelecter.a, "get thumbnail failed!", paramContext);
-      }
+        do
+        {
+          return true;
+          ukg.a(this.a, false);
+          ukg.a(this.a).removeMessages(0);
+        } while (ukg.a(this.a) == null);
+        ukg.a(this.a).a(true);
+        return true;
+        ukg.a(this.a, false);
+        ukg.a(this.a).removeMessages(1);
+      } while (ukg.a(this.a) == null);
+      ukg.a(this.a).a(false);
+      return true;
     }
+    ukg.a(this.a, true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ukh
  * JD-Core Version:    0.7.0.1
  */

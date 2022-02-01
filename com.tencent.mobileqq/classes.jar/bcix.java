@@ -1,36 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bcix
-  implements bhuk
 {
-  public bcix(VisitorTroopCardFragment paramVisitorTroopCardFragment, bhuf parambhuf) {}
+  int jdField_a_of_type_Int;
+  public bcij a;
+  public AtomicBoolean a;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  bcij jdField_b_of_type_Bcij;
+  int c;
   
-  public void OnClick(View paramView, int paramInt)
+  public bcix()
   {
-    if (VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) == null) {
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, new beub(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity()));
-    }
-    paramView = (amdu)this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if ((bdin.d(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramView != null))
-    {
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(0, 2131692290, 0);
-      paramView.k(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-    }
-    for (;;)
-    {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Bhuf.cancel();
-      return;
-      if (paramView != null) {
-        VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(2, 2131694831, 1500);
-      } else {
-        VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(2, 2131692289, 1500);
-      }
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 

@@ -1,37 +1,43 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.os.Handler;
+import android.support.v4.app.Fragment;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.viola.core.ViolaInstance;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class tsp
-  implements View.OnClickListener
+public class tsp
+  implements View.OnLayoutChangeListener
 {
-  tsp(tsk paramtsk) {}
+  public tsp(ViolaBaseView paramViolaBaseView) {}
   
-  public void onClick(View paramView)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (tsk.a(this.a)) {
-      return;
+    if (ViolaBaseView.a(this.a) != null) {
+      ViolaBaseView.a(this.a).setSize(paramView.getWidth(), paramView.getHeight());
     }
-    tsk.a(this.a, true);
-    tsk.a(this.a).setImageResource(2130843610);
-    tsk.a(this.a, (AnimationDrawable)tsk.a(this.a).getDrawable());
-    tsk.a(this.a).start();
-    if (tsk.b(this.a)) {
-      tsk.c(this.a);
+    if ((ViolaBaseView.a(this.a) != null) && (ViolaBaseView.a(this.a).getActivity() != null) && (this.a.a.contains("v_check_nav=1"))) {
+      paramView = new JSONObject();
     }
-    for (;;)
+    try
     {
-      tzv.a("", 19, 5L);
+      paramView.put("navigationBarHeight", bgtn.c(CommonSuspensionGestureLayout.a(ViolaBaseView.a(this.a).getActivity())));
+      ViolaBaseView.a(this.a).updateInstance(paramView.toString());
       return;
-      tsk.a(this.a).postDelayed(tsk.a(this.a), 5000L);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tsp
  * JD-Core Version:    0.7.0.1
  */

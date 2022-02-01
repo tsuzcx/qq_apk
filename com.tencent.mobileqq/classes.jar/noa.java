@@ -1,29 +1,27 @@
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import java.net.URL;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
 
 public class noa
-  implements tpv
+  extends Handler
 {
-  public noa(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public noa(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable)
+  public void handleMessage(Message paramMessage)
   {
-    ReadInJoyNativeAdFragment.b(this.a, 3);
-  }
-  
-  public void a(URL paramURL, sfc paramsfc)
-  {
-    ReadInJoyNativeAdFragment.b(this.a, 2);
-    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
-    ReadInJoyNativeAdFragment.a(this.a, null);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (Bundle)paramMessage.obj;
+    this.a.jdField_a_of_type_Aanz.a(17, paramMessage, this.a.jdField_a_of_type_Anil);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     noa
  * JD-Core Version:    0.7.0.1
  */

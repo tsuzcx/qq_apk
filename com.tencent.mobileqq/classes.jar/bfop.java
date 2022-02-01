@@ -1,26 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadLogInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadLogListener;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutFragment;
 
-class bfop
-  implements ITMAssistantDownloadLogListener
+public class bfop
+  extends TroopAppShortcutContainer
 {
-  SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
-  
-  bfop(bfok parambfok) {}
-  
-  public void onLog(ArrayList<TMAssistantDownloadLogInfo> paramArrayList)
+  public bfop(TroopAppShortcutFragment paramTroopAppShortcutFragment, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString, int paramInt)
   {
-    if ((paramArrayList == null) && (QLog.isColorLevel())) {
-      QLog.i("DownloadManager_", 2, "logList is null");
-    }
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString, paramInt);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfop
  * JD-Core Version:    0.7.0.1
  */

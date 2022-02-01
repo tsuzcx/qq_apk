@@ -2,6 +2,8 @@ package com.tencent.qapmsdk.resource;
 
 import android.app.Application;
 import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.os.Process;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,8 +13,6 @@ import com.tencent.qapmsdk.base.config.DefaultPluginConfig.ResourcePlugin.Resour
 import com.tencent.qapmsdk.base.config.PluginCombination;
 import com.tencent.qapmsdk.base.config.RuntimeConfig;
 import com.tencent.qapmsdk.base.config.SDKConfig;
-import com.tencent.qapmsdk.base.listener.IMonitorListener;
-import com.tencent.qapmsdk.base.listener.ListenerManager;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
 import com.tencent.qapmsdk.base.meta.SceneMeta;
 import com.tencent.qapmsdk.base.monitorplugin.PluginController;
@@ -31,40 +31,84 @@ import com.tencent.qapmsdk.resource.reflect.ReflectTraceModule;
 import com.tencent.qapmsdk.resource.runnable.DumpSampleFileRunnable;
 import com.tencent.qapmsdk.resource.runnable.MonitorRunnable;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ResourceMonitor
   extends QAPMMonitorPlugin
+  implements Handler.Callback
 {
+  private static final int MSG_ENDSCENE = 2;
+  private static final int MSG_STARTSCENE = 1;
   private static final String TAG = "QAPM_resource_PerfCollector";
   private static final double TIME_TOLERANCE = 5.0D;
   private static final double TIME_UNIT = 1000.0D;
-  private static volatile String gExtraInfo = "";
-  private static volatile String gStage;
+  private static volatile String currentExtraInfo;
+  private static volatile String currentStage;
   private static volatile boolean hasInit;
   @NonNull
   public static Vector<PerfItem> immediatePerfItems;
   @Nullable
-  private static volatile PerfItem lastPerfItem = null;
+  private static volatile PerfItem lastPerfItem;
   @NonNull
   public static Vector<TagItem> manualTagItems;
-  private static long memPageSize;
+  private static long memPageSize = DeviceMemory.getScPageSize(0L);
+  static ResourceListener monitorListener;
   @Nullable
-  private static volatile ResourceMonitor perfCollector = null;
-  private static int pid = ;
+  private static volatile ResourceMonitor perfCollector;
+  private static int pid;
+  static boolean resourceMonitorPublicMode = false;
   private DataCollector dataCollector = new DataCollector();
+  private Handler innerHandler = new Handler(ThreadManager.getMonitorThreadLooper(), this);
   private ReflectIoModule ioModule = new ReflectIoModule();
   private ConcurrentHashMap<String, TagItem> tagInfoCache = new ConcurrentHashMap();
   private ReflectTraceModule traceModule = new ReflectTraceModule();
   
   static
   {
-    memPageSize = DeviceMemory.getScPageSize(0L);
     immediatePerfItems = new Vector(900);
     manualTagItems = new Vector(100);
+    lastPerfItem = null;
+    perfCollector = null;
     hasInit = false;
-    gStage = "";
+    currentStage = "";
+    currentExtraInfo = "";
+    pid = Process.myPid();
+  }
+  
+  private void endSceneInMonitorThread(Message paramMessage)
+  {
+    paramMessage = (TagItem)paramMessage.obj;
+    TagItem localTagItem = paramMessage.lastTagItem;
+    if (!isPublicMode()) {
+      tidyStopTagItem(localTagItem, paramMessage);
+    }
+    for (;;)
+    {
+      manualTagItems.add(paramMessage);
+      this.tagInfoCache.remove(paramMessage.tagKey);
+      if (manualTagItems.size() > 100) {
+        DumpSampleFileRunnable.getInstance().run();
+      }
+      if (currentStage.equals(paramMessage.stage))
+      {
+        currentStage = "";
+        if (currentExtraInfo.equals(paramMessage.extraInfo)) {
+          currentExtraInfo = "";
+        }
+      }
+      return;
+      MonitorRunnable.getInstance().collectPerfItemRightNow();
+      if (monitorListener != null)
+      {
+        SceneMeta localSceneMeta = localTagItem.sceneMeta;
+        localSceneMeta.duration = (System.currentTimeMillis() - localTagItem.eventTimeMills);
+        localSceneMeta.stage = localTagItem.stage;
+        monitorListener.onMetaGet(localSceneMeta);
+      }
+    }
   }
   
   @Nullable
@@ -102,6 +146,29 @@ public class ResourceMonitor
   private void registerForeBack()
   {
     LifecycleCallback.INSTANCE.register(new ResourceMonitor.1(this));
+  }
+  
+  public static void setPublicMode(boolean paramBoolean)
+  {
+    resourceMonitorPublicMode = paramBoolean;
+  }
+  
+  public static void setResourceListener(ResourceListener paramResourceListener)
+  {
+    monitorListener = paramResourceListener;
+  }
+  
+  private void startSceneInMonitorThread(Message paramMessage)
+  {
+    paramMessage = (TagItem)paramMessage.obj;
+    tidyStartTagItem(paramMessage);
+    currentStage = paramMessage.stage;
+    currentExtraInfo = paramMessage.extraInfo;
+    if (!isPublicMode()) {
+      tidyStartTagItem(paramMessage);
+    }
+    this.tagInfoCache.put(paramMessage.tagKey, paramMessage);
+    manualTagItems.add(paramMessage);
   }
   
   private void tidyCpuItem(@NonNull PerfItem paramPerfItem)
@@ -328,16 +395,30 @@ public class ResourceMonitor
     }
   }
   
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      startSceneInMonitorThread(paramMessage);
+      continue;
+      endSceneInMonitorThread(paramMessage);
+    }
+  }
+  
   public boolean isPublicMode()
   {
-    return RuntimeConfig.resouceMonitorPublicMode;
+    return resourceMonitorPublicMode;
   }
   
   @NonNull
   public PerfItem samplePerfValue(@NonNull PerfItem paramPerfItem)
   {
-    paramPerfItem.stage = gStage;
-    paramPerfItem.extraInfo = gExtraInfo;
+    paramPerfItem.stage = currentStage;
+    paramPerfItem.extraInfo = currentExtraInfo;
     paramPerfItem.eventTime = (System.currentTimeMillis() / 1000.0D);
     tidyStatInfo(paramPerfItem);
     if ((lastPerfItem != null) && (paramPerfItem.eventTime - lastPerfItem.eventTime < 5.0D))
@@ -349,9 +430,22 @@ public class ResourceMonitor
         tidyNetFlowItem(paramPerfItem);
         tidyIoItem(paramPerfItem);
       }
-      return paramPerfItem;
     }
-    initializeItem(paramPerfItem);
+    while (isPublicMode())
+    {
+      Iterator localIterator = this.tagInfoCache.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (String)localIterator.next();
+        localObject = (TagItem)this.tagInfoCache.get(localObject);
+        if (localObject != null)
+        {
+          ((TagItem)localObject).sceneMeta.cpu = Math.max(((TagItem)localObject).sceneMeta.cpu, paramPerfItem.cpuRate);
+          ((TagItem)localObject).sceneMeta.memory = Math.max(((TagItem)localObject).sceneMeta.memory, paramPerfItem.memory);
+        }
+      }
+      initializeItem(paramPerfItem);
+    }
     return paramPerfItem;
   }
   
@@ -365,57 +459,44 @@ public class ResourceMonitor
       registerForeBack();
       hasInit = true;
     }
-    if ((RuntimeConfig.globalMonitorCount == 0) && ((SDKConfig.RES_TYPE & DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_RESOURCE.getValue()) > 0)) {
-      try
-      {
-        if (RuntimeConfig.globalMonitorCount == 0)
-        {
-          Logger.INSTANCE.i(new String[] { "QAPM_resource_PerfCollector", "SAMPLE: start global monitor to collect resource" });
-          new Handler(ThreadManager.getMonitorThreadLooper()).post(MonitorRunnable.getInstance(true));
-        }
-        RuntimeConfig.globalMonitorCount += 1;
-        return;
-      }
-      finally {}
+    if (resourceMonitorPublicMode) {}
+    while ((RuntimeConfig.globalMonitorCount != 0) || ((SDKConfig.RES_TYPE & DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_RESOURCE.getValue()) <= 0)) {
+      return;
     }
+    try
+    {
+      if (RuntimeConfig.globalMonitorCount == 0)
+      {
+        Logger.INSTANCE.i(new String[] { "QAPM_resource_PerfCollector", "SAMPLE: start global monitor to collect resource" });
+        MonitorRunnable.getInstance().start();
+      }
+      RuntimeConfig.globalMonitorCount += 1;
+      return;
+    }
+    finally {}
   }
   
   public void start(String paramString1, String paramString2)
   {
     long l = System.currentTimeMillis();
-    if ((TextUtils.isEmpty(paramString1)) || ((!PluginController.INSTANCE.canCollect(PluginCombination.resourcePlugin.plugin)) && (!"QAPM_APPLAUNCH".equals(paramString1)))) {}
-    String str;
-    do
-    {
+    if ((TextUtils.isEmpty(paramString1)) || ((!PluginController.INSTANCE.canCollect(PluginCombination.resourcePlugin.plugin)) && (!"QAPM_APPLAUNCH".equals(paramString1)))) {
       return;
-      if ("QAPM_APPLAUNCH".equals(paramString1))
-      {
-        this.traceModule.pushProxy(paramString1, paramString2, l);
-        return;
-      }
-      str = paramString1 + paramString2;
-    } while ((TagItem)this.tagInfoCache.get(str) != null);
+    }
+    if ("QAPM_APPLAUNCH".equals(paramString1))
+    {
+      this.traceModule.pushProxy(paramString1, paramString2, l);
+      return;
+    }
+    String str = paramString1 + paramString2;
     TagItem localTagItem = new TagItem();
+    localTagItem.tagKey = str;
+    localTagItem.eventTimeMills = l;
     localTagItem.eventTime = (l / 1000.0D);
     localTagItem.stage = paramString1;
     localTagItem.extraInfo = paramString2;
     localTagItem.tagId = l;
     localTagItem.type = 0;
-    if (!isPublicMode()) {
-      tidyStartTagItem(localTagItem);
-    }
-    for (;;)
-    {
-      gStage = paramString1;
-      gExtraInfo = paramString2;
-      this.tagInfoCache.put(str, localTagItem);
-      manualTagItems.add(localTagItem);
-      return;
-      PerfItem localPerfItem = MonitorRunnable.getInstance(true).forceSampleOnce();
-      localTagItem.sceneMeta.cpu = localPerfItem.cpuRate;
-      localTagItem.sceneMeta.memory = localPerfItem.memory;
-      start();
-    }
+    Message.obtain(this.innerHandler, 1, localTagItem).sendToTarget();
   }
   
   public void stop()
@@ -428,7 +509,7 @@ public class ResourceMonitor
           if (RuntimeConfig.globalMonitorCount == 1)
           {
             Logger.INSTANCE.i(new String[] { "QAPM_resource_PerfCollector", "SAMPLE: stop global monitor to collect resource" });
-            new Handler(ThreadManager.getMonitorThreadLooper()).removeCallbacks(MonitorRunnable.getInstance(false));
+            MonitorRunnable.getInstance().stop();
             immediatePerfItems.clear();
           }
           RuntimeConfig.globalMonitorCount -= 1;
@@ -441,14 +522,7 @@ public class ResourceMonitor
   
   public void stop(String paramString1, String paramString2)
   {
-    if (gStage.equals(paramString1))
-    {
-      gStage = "";
-      if (gExtraInfo.equals(paramString2)) {
-        gExtraInfo = "";
-      }
-    }
-    if ((TextUtils.isEmpty(paramString1)) || ((!PluginController.INSTANCE.canCollect(PluginCombination.resourcePlugin.plugin)) && (!"QAPM_APPLAUNCH".equals(paramString1)))) {}
+    if ((TextUtils.isEmpty(paramString1)) && (!"QAPM_APPLAUNCH".equals(paramString1))) {}
     String str;
     TagItem localTagItem1;
     do
@@ -463,36 +537,18 @@ public class ResourceMonitor
       localTagItem1 = (TagItem)this.tagInfoCache.get(str);
     } while (localTagItem1 == null);
     TagItem localTagItem2 = new TagItem();
+    localTagItem2.lastTagItem = localTagItem1;
+    localTagItem2.tagKey = str;
     localTagItem2.stage = paramString1;
     localTagItem2.extraInfo = paramString2;
     localTagItem2.tagId = localTagItem1.tagId;
     localTagItem2.type = 1;
-    if (!isPublicMode()) {
-      tidyStopTagItem(localTagItem1, localTagItem2);
-    }
-    for (;;)
-    {
-      manualTagItems.add(localTagItem2);
-      this.tagInfoCache.remove(str);
-      if (manualTagItems.size() <= 100) {
-        break;
-      }
-      new Handler(ThreadManager.getMonitorThreadLooper()).post(DumpSampleFileRunnable.getInstance());
-      return;
-      paramString1 = MonitorRunnable.getInstance(true).forceSampleOnce();
-      localTagItem1.sceneMeta.cpu = Math.max(localTagItem1.sceneMeta.cpu, paramString1.cpuRate);
-      localTagItem1.sceneMeta.memory = Math.max(localTagItem1.sceneMeta.memory, paramString1.memory);
-      localTagItem1.sceneMeta.duration = (System.currentTimeMillis() - localTagItem1.tagId);
-      localTagItem1.sceneMeta.stage = localTagItem1.stage;
-      if (ListenerManager.monitorListener != null) {
-        ListenerManager.monitorListener.onMetaGet(localTagItem1.sceneMeta);
-      }
-    }
+    Message.obtain(this.innerHandler, 2, localTagItem2).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.resource.ResourceMonitor
  * JD-Core Version:    0.7.0.1
  */

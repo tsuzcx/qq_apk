@@ -1,58 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
 public class aorx
 {
-  public aosq a;
-  public boolean a;
+  public int a;
+  public int b;
+  public int c;
   
-  public aorx()
+  public aorx(aorw paramaorw, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Aosq = new aosq();
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
-  public static aorx a(String paramString)
+  public boolean a()
   {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        aorx localaorx = new aorx();
-        paramString = new JSONObject(paramString);
-        localaorx.jdField_a_of_type_Boolean = paramString.optBoolean("showTogetherWatchInTroopSettingCard", false);
-        paramString = paramString.optJSONObject("watchTogether");
-        if (paramString != null)
-        {
-          aosq localaosq = new aosq();
-          localaosq.a(paramString.optInt("version"));
-          localaosq.b(paramString.optInt("jumpType"));
-          localaosq.a(paramString.optString("jumpUrl"));
-          localaosq.b(paramString.optString("jumpExtensionInfo"));
-          localaorx.jdField_a_of_type_Aosq = localaosq;
-        }
-        QLog.d("TogetherBusinessConfProcessor", 2, "confBean = " + localaorx.toString());
-        return localaorx;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("TogetherBusinessConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    return this.c == 1;
   }
   
-  public String toString()
+  public boolean b()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("TogetherConfigureBean{showTogetherWatchInTroopSettingCard=").append(this.jdField_a_of_type_Boolean).append(", watchTogether=");
-    if (this.jdField_a_of_type_Aosq == null) {}
-    for (String str = "null";; str = this.jdField_a_of_type_Aosq.toString()) {
-      return str + '}';
-    }
+    return this.c == 2;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aorx
  * JD-Core Version:    0.7.0.1
  */

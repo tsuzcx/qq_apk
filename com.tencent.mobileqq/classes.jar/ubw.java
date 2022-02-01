@@ -1,23 +1,32 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
+import java.util.List;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.IdlePushWakeParam;
 
-class ubw
-  implements zac<FeedCloudRead.StGetBusiInfoRsp>
+public class ubw
+  implements pnh
 {
-  ubw(ubv paramubv, QCircleGetTabListRequest paramQCircleGetTabListRequest) {}
+  private static ubw a = new ubw();
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
+  public static void a()
   {
-    boolean bool = VSNetworkHelper.a(paramString);
-    QLog.d("QCircleTabViewModel", 1, "requestTabData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isCache:" + bool);
-    this.jdField_a_of_type_Ubv.a(paramBoolean, paramLong, paramString, paramStGetBusiInfoRsp);
+    pnc.a(a);
   }
+  
+  public static void a(int paramInt) {}
+  
+  public static void a(List<oidb_cmd0x80a.IdlePushWakeParam> paramList) {}
+  
+  public static void b()
+  {
+    pnc.b(a);
+  }
+  
+  public void l() {}
+  
+  public void m() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ubw
  * JD-Core Version:    0.7.0.1
  */

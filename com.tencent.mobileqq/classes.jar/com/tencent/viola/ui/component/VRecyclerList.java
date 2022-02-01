@@ -681,6 +681,11 @@ public class VRecyclerList
     }
   }
   
+  public boolean disableAutoScroll()
+  {
+    return (this.mDomObj != null) && (ViolaUtils.getBoolean(this.mDomObj.getAttributes().get("disableAutoScroll")));
+  }
+  
   public ViewGroup.LayoutParams getChildLayoutParams(VComponent paramVComponent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     if ((paramVComponent instanceof VCell))
@@ -797,13 +802,13 @@ public class VRecyclerList
       DomObject localDomObject = paramVCell.getDomObject();
       try
       {
-        if ((((DomObjectCell)localDomObject).isRegisterDidAppear()) && (this.mOrientation != 0) && (getHostView() != null) && (((VRecyclerView)getHostView()).indexOfChild((View)((VFrameLayout)paramVCell.getHostView()).getParent()) != -1))
+        if ((((DomObjectCell)localDomObject).isRegisterDidAppear()) && (getHostView() != null) && (((VRecyclerView)getHostView()).indexOfChild((View)((VFrameLayout)paramVCell.getHostView()).getParent()) != -1))
         {
           VRecyclerView localVRecyclerView = (VRecyclerView)getHostView();
-          if (("refresh".equals(getDomObject().getChild(0).getType())) || ("kdrefresh".equals(getDomObject().getChild(0).getType()))) {}
+          if (ViolaUtils.isRefresh(getDomObject().getChild(0))) {}
           for (int i = getDomObject().getChildPosition(localDomObject) - 1;; i = getDomObject().getChildPosition(localDomObject))
           {
-            localVRecyclerView.traverseDomObjectCell(i, ((View)((VFrameLayout)paramVCell.getHostView()).getParent()).getY(), true, true);
+            localVRecyclerView.traverseDomObjectCell(i, (View)((VFrameLayout)paramVCell.getHostView()).getParent(), true, true);
             return;
           }
         }
@@ -861,25 +866,21 @@ public class VRecyclerList
     if ((paramVH == null) || (paramVH.mVCell == null) || (paramVH.mVCell.getDomObject() == null)) {
       return;
     }
-    Object localObject = paramVH.mVCell.getDomObject();
-    if ((!this.mCellAppearSet.contains(((DomObject)localObject).getRef())) && (((DomObject)localObject).getEvents().contains("appear")))
+    DomObject localDomObject = paramVH.mVCell.getDomObject();
+    if ((!this.mCellAppearSet.contains(localDomObject.getRef())) && (localDomObject.getEvents().contains("appear")))
     {
-      customFireEvent("appear", ((DomObject)localObject).getRef());
-      this.mCellAppearSet.add(((DomObject)localObject).getRef());
-      ViolaLogUtils.d("VRecyclerList", "appear position: " + paramVH.position + ", ref: " + ((DomObject)localObject).getRef());
+      customFireEvent("appear", localDomObject.getRef());
+      this.mCellAppearSet.add(localDomObject.getRef());
+      ViolaLogUtils.d("VRecyclerList", "appear position: " + paramVH.position + ", ref: " + localDomObject.getRef());
     }
     for (;;)
     {
       try
       {
-        if ((((DomObjectCell)localObject).isRegisterDidAppear()) && (this.mOrientation != 0) && (getHostView() != null) && (paramVH.itemView.getY() >= 0.0F))
+        if ((((DomObjectCell)localDomObject).isRegisterDidAppear()) && (getHostView() != null))
         {
-          localObject = (VRecyclerView)getHostView();
-          int i = paramVH.position;
-          if ((paramVH.itemView.getY() == 0.0F) || (paramVH.itemView.getY() % paramVH.mVCell.getDomObject().getLayoutHeight() == 0.0F))
-          {
-            f = paramVH.mVCell.getDomObject().getLayoutY() - this.mRealParentView.getHeaderViewHeight();
-            ((VRecyclerView)localObject).traverseDomObjectCell(i, f, true, false);
+          if ((this.mOrientation != 0) && (paramVH.itemView.getY() == 0.0F)) {
+            ((VRecyclerView)getHostView()).traverseDomObjectCell(paramVH.position, paramVH.mVCell.getDomObject().getLayoutY() - this.mRealParentView.getHeaderViewHeight(), true, false);
           }
         }
         else
@@ -896,7 +897,9 @@ public class VRecyclerList
         ViolaLogUtils.e("VRecyclerList", "onCellAppear error:" + paramVH.getMessage());
         return;
       }
-      float f = paramVH.itemView.getY();
+      if ((this.mOrientation == 0) && (paramVH.itemView.getX() == 0.0F)) {
+        ((VRecyclerView)getHostView()).traverseDomObjectCell(paramVH.position, paramVH.mVCell.getDomObject().getLayoutX() - this.mRealParentView.getHeaderViewWidth(), true, false);
+      }
     }
   }
   
@@ -914,8 +917,8 @@ public class VRecyclerList
         customFireEvent("disappear", localDomObject.getRef());
         ViolaLogUtils.d("VRecyclerList", "disAppear position: " + paramVH.position + ", ref: " + localDomObject.getRef());
       }
-    } while (getInstance() == null);
-    ((DomObjectCell)localDomObject).resetComponentState(getInstance().getInstanceId());
+    } while ((getInstance() == null) || (getHostView() == null));
+    ((DomObjectCell)localDomObject).resetComponentState(getInstance().getInstanceId(), paramVH.position, paramVH.itemView, ((VRecyclerView)getHostView()).isScrollDown());
   }
   
   public void onDispatchTouchEvent(int paramInt1, MotionEvent paramMotionEvent, int paramInt2)
@@ -1329,7 +1332,7 @@ public class VRecyclerList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VRecyclerList
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 public class avtj
-  extends Handler
+  implements avvh
 {
-  public avtj(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
+  public Object a;
+  
+  private avtj(ListenTogetherManager paramListenTogetherManager)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaLangObject = new Object();
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a() > 1)
+    if (this.jdField_a_of_type_JavaLangObject == null) {}
+    while (paramInt == 0) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      paramMessage = this.a;
-      paramMessage.f += 1;
-      this.a.f %= this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.f, true);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), this.a.e);
+      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avtj
  * JD-Core Version:    0.7.0.1
  */

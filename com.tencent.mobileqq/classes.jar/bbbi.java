@@ -1,9 +1,17 @@
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+
 public class bbbi
+  implements gf
 {
-  public String c;
-  public String d;
-  public String e;
-  public int f;
+  public bbbi(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void a()
+  {
+    Message localMessage = SignatureHistoryFragment.a(this.a).obtainMessage(1);
+    SignatureHistoryFragment.a(this.a).sendMessage(localMessage);
+  }
 }
 
 

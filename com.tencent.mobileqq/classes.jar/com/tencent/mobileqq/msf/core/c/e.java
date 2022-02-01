@@ -17,7 +17,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.utils.MonitorSocketStat;
 import com.tencent.mobileqq.msf.sdk.utils.b;
@@ -479,7 +479,7 @@ public class e
       {
         ((PrintWriter)localObject2).print("header|");
         ((PrintWriter)localObject2).print(localObject5 + "|");
-        ((PrintWriter)localObject2).print("fd2cc8f9|");
+        ((PrintWriter)localObject2).print("2703aac4|");
         ((PrintWriter)localObject2).print("pub" + "|");
         ((PrintWriter)localObject2).print((String)localObject4 + "|");
         ((PrintWriter)localObject2).print(Build.MANUFACTURER + "|");

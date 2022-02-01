@@ -1,39 +1,43 @@
-import cooperation.qqreader.QRBridgeUtil;
-import java.util.Map;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import mqq.manager.WtloginManager;
+import mqq.observer.SSOAccountObserver;
 
-public final class biyv
-  implements WtTicketPromise
+class biyv
+  extends SSOAccountObserver
 {
-  public biyv(String paramString) {}
+  biyv(biyp parambiyp, OpenSDKAppInterface paramOpenSDKAppInterface, biyx parambiyx) {}
   
-  public void Done(Ticket paramTicket)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (paramTicket != null)
+    if (paramBundle == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramBundle.getInt("code")))
     {
-      bjbl.d("QRBridgeUtil", "preGetKeyInPreloadService : Done");
-      paramTicket = (byte[])paramTicket._pskey_map.get(this.a);
-      if (paramTicket != null) {
-        QRBridgeUtil.access$000().put(this.a, new String(paramTicket));
-      }
+      QLog.d("SSOAccountObserver", 1, new Object[] { "-->getTicketNoPasswd onFailed", ", action", Integer.valueOf(paramInt1), ", code=", localObject });
+      this.jdField_a_of_type_Biyx.a(paramString, paramBundle);
+      return;
     }
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
-    bjbl.d("QRBridgeUtil", "preGetKeyInPreloadService failed " + paramErrMsg);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    bjbl.d("QRBridgeUtil", "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    QLog.d("SSOAccountObserver", 1, "-->getTicketNoPasswd onGetTicketNoPasswd");
+    if ((!paramBundle.getBoolean("fake_callback")) && (paramInt == 4096)) {
+      bivh.a(paramString, System.currentTimeMillis());
+    }
+    WtloginManager localWtloginManager = (WtloginManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(1);
+    biyc localbiyc = new biyc();
+    localbiyc.jdField_b_of_type_JavaLangString = new String(paramArrayOfByte);
+    localbiyc.jdField_a_of_type_JavaLangString = Long.toString(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(localWtloginManager, paramString));
+    localbiyc.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp");
+    localbiyc.jdField_b_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp_key");
+    this.jdField_a_of_type_Biyx.a(localbiyc);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     biyv
  * JD-Core Version:    0.7.0.1
  */

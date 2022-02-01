@@ -39,6 +39,7 @@ import com.tencent.mobileqq.activity.fling.ScreenCapture;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Constructor;
@@ -602,10 +603,12 @@ public abstract class PluginProxyActivity
     if (sActivityDispatchCallback != null) {
       sActivityDispatchCallback.disaptchTouchEventCallback(this, paramMotionEvent);
     }
-    if (this.mPluginActivity != null) {
-      return this.mPluginActivity.IDispatchTouchEvent(paramMotionEvent);
+    if (this.mPluginActivity != null) {}
+    for (boolean bool = this.mPluginActivity.IDispatchTouchEvent(paramMotionEvent);; bool = super.dispatchTouchEvent(paramMotionEvent))
+    {
+      EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+      return bool;
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   protected boolean enablePatternLock()
@@ -761,6 +764,7 @@ public abstract class PluginProxyActivity
     if ((isWrapContent()) && (this.mFlingHandler != null)) {
       this.mFlingHandler.onConfigurationChanged(paramConfiguration);
     }
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   protected void onCreate(Bundle paramBundle)

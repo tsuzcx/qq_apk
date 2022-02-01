@@ -1,77 +1,49 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.data.AccountDetail;
 
-class nrk
-  implements BusinessObserver
+public class nrk
+  implements bkhw
 {
-  nrk(nrc paramnrc, NewIntent paramNewIntent, Context paramContext, String paramString, BusinessObserver paramBusinessObserver, QQAppInterface paramQQAppInterface) {}
+  nrk(nre paramnre, nyl paramnyl, bkho parambkho) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject1 = null;
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (!paramBoolean) {
+    int i = 1;
+    if (this.jdField_a_of_type_Nre.f) {
       return;
     }
+    this.jdField_a_of_type_Nre.f = true;
+    if (paramInt + 1 == 1)
+    {
+      if (!anhk.aR.equals(this.jdField_a_of_type_Nre.jdField_a_of_type_JavaLangString)) {
+        break label209;
+      }
+      oat.a(null, "", "0X8009947", "0X8009947", 0, 0, "", "", "", "", false);
+      i = 1;
+    }
+    label209:
     for (;;)
     {
-      try
+      this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Nre.jdField_a_of_type_Aoqn);
+      this.jdField_a_of_type_Nre.jdField_a_of_type_Aoqn = new aoqn(new nrl(this, i));
+      this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Nre.jdField_a_of_type_Aoqn);
+      aoqs.a(this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, paramInt);
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      int j = 3;
+      i = j;
+      if (anhk.aR.equals(this.jdField_a_of_type_Nre.jdField_a_of_type_JavaLangString))
       {
-        localObject2 = paramBundle.getByteArray("data");
-        paramBundle = new mobileqq_mp.SendMenuEventResponse();
+        oat.a(null, "", "0X8009943", "0X8009943", 0, 0, "", "", "", "", false);
+        i = j;
       }
-      catch (Exception paramBundle)
-      {
-        try
-        {
-          paramBundle.mergeFrom((byte[])localObject2);
-          Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0);
-          localObject1 = paramBundle;
-          if (((SharedPreferences)localObject2).contains(this.jdField_a_of_type_JavaLangString))
-          {
-            localObject1 = paramBundle;
-            if (paramBundle.seqno.has())
-            {
-              localObject1 = paramBundle;
-              if (paramBundle.seqno.get() != ((SharedPreferences)localObject2).getInt(this.jdField_a_of_type_JavaLangString, 0))
-              {
-                if (this.jdField_a_of_type_MqqObserverBusinessObserver != null) {
-                  this.jdField_a_of_type_Nrc.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverBusinessObserver, true);
-                }
-                localObject1 = ((SharedPreferences)localObject2).edit();
-                ((SharedPreferences.Editor)localObject1).putInt(this.jdField_a_of_type_JavaLangString, paramBundle.seqno.get());
-                ((SharedPreferences.Editor)localObject1).commit();
-                localObject1 = paramBundle;
-              }
-            }
-          }
-          if (localObject1 != null) {
-            break;
-          }
-          return;
-        }
-        catch (Exception localException)
-        {
-          break label187;
-        }
-        paramBundle = paramBundle;
-        paramBundle = (Bundle)localObject1;
-      }
-      label187:
-      localObject1 = paramBundle;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nrk
  * JD-Core Version:    0.7.0.1
  */

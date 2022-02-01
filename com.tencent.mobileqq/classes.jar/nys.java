@@ -1,20 +1,25 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
 
 public class nys
-  implements View.OnClickListener
+  extends bkfi
 {
-  public nys(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  public nys(PublicAccountBrowser paramPublicAccountBrowser, boolean paramBoolean, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyChannelActivity.a(this.a);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nys
  * JD-Core Version:    0.7.0.1
  */

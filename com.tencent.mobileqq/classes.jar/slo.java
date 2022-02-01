@@ -1,148 +1,113 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ac.ArticleCenter.GetVidByUrlResponse;
+import com.tencent.mobileqq.ac.ArticleCenter.RetInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 class slo
+  implements BusinessObserver
 {
-  private final int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final Map<Character, Integer> jdField_a_of_type_JavaUtilMap;
-  private final char[] jdField_a_of_type_ArrayOfChar;
+  slo(slm paramslm, long paramLong, NewIntent paramNewIntent, slq paramslq, String paramString) {}
   
-  slo(String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramString.contains(Character.toString('\000'))) {
-      throw new IllegalArgumentException("You cannot include TickerUtils.EMPTY_CHAR in the character list.");
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID time : " + (l1 - l2));
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    paramString = paramString.toCharArray();
-    int k = paramString.length;
-    this.jdField_a_of_type_Int = k;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap(k);
-    int i = 0;
-    while (i < k)
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (!paramBoolean)
     {
-      this.jdField_a_of_type_JavaUtilMap.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
-      i += 1;
-    }
-    this.jdField_a_of_type_ArrayOfChar = new char[k * 2 + 1];
-    this.jdField_a_of_type_ArrayOfChar[0] = '\000';
-    i = j;
-    while (i < k)
-    {
-      this.jdField_a_of_type_ArrayOfChar[(i + 1)] = paramString[i];
-      this.jdField_a_of_type_ArrayOfChar[(k + 1 + i)] = paramString[i];
-      i += 1;
-    }
-  }
-  
-  private int a(char paramChar)
-  {
-    if (paramChar == 0) {
-      return 0;
-    }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Character.valueOf(paramChar))) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilMap.get(Character.valueOf(paramChar))).intValue() + 1;
-    }
-    return -1;
-  }
-  
-  String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  Set<Character> a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap.keySet();
-  }
-  
-  slp a(char paramChar1, char paramChar2, int paramInt)
-  {
-    int j = a(paramChar1);
-    int k = a(paramChar2);
-    if ((j < 0) || (k < 0)) {
-      return null;
-    }
-    int i;
-    switch (paramInt)
-    {
-    default: 
-      i = j;
-      paramInt = k;
-    }
-    for (;;)
-    {
-      return new slp(this, i, paramInt);
-      if (paramChar2 == 0)
-      {
-        paramInt = this.jdField_a_of_type_ArrayOfChar.length;
-        i = j;
+      if (this.jdField_a_of_type_Slq != null) {
+        this.jdField_a_of_type_Slq.a(this.jdField_a_of_type_JavaLangString, "error");
       }
-      else
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID notSuccess!");
+      }
+    }
+    label299:
+    do
+    {
+      do
       {
-        paramInt = k;
-        i = j;
-        if (k < j)
+        do
         {
-          paramInt = k + this.jdField_a_of_type_Int;
-          i = j;
-          continue;
-          paramInt = k;
-          i = j;
-          if (j < k)
+          for (;;)
           {
-            i = j + this.jdField_a_of_type_Int;
-            paramInt = k;
-            continue;
-            paramInt = k;
-            i = j;
-            if (paramChar1 != 0)
+            return;
+            paramBundle = paramBundle.getByteArray("data");
+            if ((paramBundle == null) || (paramBundle.length <= 0))
             {
-              paramInt = k;
-              i = j;
-              if (paramChar2 != 0) {
-                if (k < j)
-                {
-                  paramInt = k;
-                  i = j;
-                  if (this.jdField_a_of_type_Int - j + k < j - k)
-                  {
-                    paramInt = k + this.jdField_a_of_type_Int;
-                    i = j;
-                  }
+              if (this.jdField_a_of_type_Slq != null) {
+                this.jdField_a_of_type_Slq.a(this.jdField_a_of_type_JavaLangString, "error");
+              }
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID empty data!");
+              }
+            }
+            else
+            {
+              try
+              {
+                localObject = new ArticleCenter.GetVidByUrlResponse();
+                ((ArticleCenter.GetVidByUrlResponse)localObject).mergeFrom(paramBundle);
+                if (((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.ret_code.get() == 0) {
+                  break label299;
                 }
-                else
+                if (this.jdField_a_of_type_Slq != null) {
+                  this.jdField_a_of_type_Slq.a(this.jdField_a_of_type_JavaLangString, "error");
+                }
+                if (QLog.isColorLevel())
                 {
-                  paramInt = k;
-                  i = j;
-                  if (j < k)
-                  {
-                    paramInt = k;
-                    i = j;
-                    if (this.jdField_a_of_type_Int - k + j < k - j)
-                    {
-                      i = j + this.jdField_a_of_type_Int;
-                      paramInt = k;
-                    }
-                  }
+                  QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID error:" + ((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.ret_code.get() + ", " + ((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.err_info.get());
+                  return;
+                }
+              }
+              catch (Exception paramBundle)
+              {
+                if (this.jdField_a_of_type_Slq != null) {
+                  this.jdField_a_of_type_Slq.a(this.jdField_a_of_type_JavaLangString, "error");
                 }
               }
             }
           }
+        } while (!QLog.isColorLevel());
+        QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID exception!");
+        return;
+        paramBundle = ((ArticleCenter.GetVidByUrlResponse)localObject).vid.get();
+        if (paramBundle == null) {
+          break;
         }
+        Object localObject = paramBundle.toStringUtf8();
+        paramBundle = (Bundle)localObject;
+        if (this.jdField_a_of_type_Slq != null)
+        {
+          paramBundle = (Bundle)localObject;
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            paramBundle = "error";
+          }
+          this.jdField_a_of_type_Slq.a(this.jdField_a_of_type_JavaLangString, paramBundle);
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID vid:" + paramBundle);
+      return;
+      if (this.jdField_a_of_type_Slq != null) {
+        this.jdField_a_of_type_Slq.a(this.jdField_a_of_type_JavaLangString, "error");
       }
-    }
-  }
-  
-  char[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfChar;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID null vid!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     slo
  * JD-Core Version:    0.7.0.1
  */

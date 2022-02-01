@@ -1,22 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class nzg
-  implements bicq
 {
-  public nzg(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
-  
-  public void a()
-  {
-    if ((!this.a.a) && (this.a.b))
-    {
-      this.a.a = true;
-      syp.a("subscribe_tab_cost", null);
-    }
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public nze a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzg
  * JD-Core Version:    0.7.0.1
  */

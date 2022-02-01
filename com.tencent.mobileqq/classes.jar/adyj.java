@@ -1,25 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
-class adyj
-  implements View.OnClickListener
+public class adyj
+  implements adsx
 {
-  adyj(adyg paramadyg, int paramInt) {}
+  public adyj(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (!adyd.a(this.jdField_a_of_type_Adyg.a)) {}
-    do
-    {
-      return;
-      paramView = azmf.b[this.jdField_a_of_type_Adyg.a(this.jdField_a_of_type_Int).jdField_a_of_type_Int];
-    } while (banm.a(adyd.a(this.jdField_a_of_type_Adyg.a), paramView, new adyk(this)));
-    adyg.a(this.jdField_a_of_type_Adyg, this.jdField_a_of_type_Int);
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adyj
  * JD-Core Version:    0.7.0.1
  */

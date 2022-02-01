@@ -1,39 +1,55 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 
-class atmn
-  implements EIPCResultCallback
+public abstract interface atmn
 {
-  atmn(atmm paramatmm) {}
+  public abstract int a();
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    int i = 0;
-    JSONObject localJSONObject;
-    if (!TextUtils.isEmpty(atmm.a(this.a))) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      if (paramEIPCResult.data.getBoolean("result")) {}
-      for (;;)
-      {
-        localJSONObject.put("result", i);
-        this.a.callJs(atmm.a(this.a), new String[] { localJSONObject.toString() });
-        return;
-        i = 1;
-      }
-      return;
-    }
-    catch (JSONException paramEIPCResult)
-    {
-      paramEIPCResult.printStackTrace();
-    }
-  }
+  public abstract long a();
+  
+  public abstract FileManagerEntity a();
+  
+  public abstract WeiYunFileInfo a();
+  
+  public abstract String a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract String b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract int c();
+  
+  public abstract long c();
+  
+  public abstract String c();
+  
+  public abstract int d();
+  
+  public abstract String d();
+  
+  public abstract int e();
+  
+  public abstract String e();
+  
+  public abstract String f();
+  
+  public abstract String g();
+  
+  public abstract String h();
+  
+  public abstract String i();
 }
 
 

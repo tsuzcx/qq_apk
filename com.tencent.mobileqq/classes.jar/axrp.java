@@ -1,25 +1,46 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView.1.1;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class axrp
-  implements SurfaceTexture.OnFrameAvailableListener
+class axrp
+  implements URLDrawable.URLDrawableListener
 {
-  public axrp(FollowCaptureView paramFollowCaptureView) {}
+  axrp(axro paramaxro, ImageView paramImageView) {}
   
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    FollowCaptureView.a(this.a, paramSurfaceTexture);
-    this.a.queueEvent(new FollowCaptureView.1.1(this, paramSurfaceTexture));
-    if (!FollowCaptureView.a(this.a)) {
-      FollowCaptureView.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadCanceled");
     }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadFialed");
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadProgressed");
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote headImage success");
+    }
+    this.jdField_a_of_type_Axro.a.a(this.jdField_a_of_type_AndroidWidgetImageView, paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axrp
  * JD-Core Version:    0.7.0.1
  */

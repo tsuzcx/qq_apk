@@ -1,8 +1,8 @@
 package cooperation.comic.jsp;
 
-import bino;
+import blbd;
 import com.tencent.qphone.base.util.QLog;
-import ey;
+import fd;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
@@ -10,21 +10,21 @@ import org.json.JSONObject;
 public class QQComicJsPlugin$4
   implements Runnable
 {
-  public QQComicJsPlugin$4(bino parambino) {}
+  public QQComicJsPlugin$4(blbd paramblbd) {}
   
   public void run()
   {
-    Object localObject = bino.a();
+    Object localObject = blbd.a();
     if (localObject != null)
     {
       long l1 = System.currentTimeMillis();
-      ey.a(new File((String)localObject));
+      fd.a(new File((String)localObject));
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("QQComicJsPlugin", 2, "clean cache cost " + (l2 - l1) + " ms");
       }
     }
-    bino.a().set(false);
+    blbd.a().set(false);
     localObject = new JSONObject();
     try
     {
@@ -34,7 +34,7 @@ public class QQComicJsPlugin$4
       localJSONObject.put("size", this.this$0.a());
       ((JSONObject)localObject).put("data", localJSONObject);
       label137:
-      this.this$0.callJs(bino.b(), new String[] { ((JSONObject)localObject).toString() });
+      this.this$0.callJs(blbd.b(), new String[] { ((JSONObject)localObject).toString() });
       return;
     }
     catch (Exception localException)
@@ -45,7 +45,7 @@ public class QQComicJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.comic.jsp.QQComicJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

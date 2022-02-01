@@ -1,23 +1,21 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import android.view.View;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
 
 public class aumc
-  extends GestureDetector.SimpleOnGestureListener
+  implements bkhw
 {
-  public aumc(MultiAIOViewPager paramMultiAIOViewPager) {}
+  public aumc(LangSettingFragment paramLangSettingFragment, int paramInt) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (MultiAIOViewPager.a(this.a) != null) {
-      this.a.performClick();
+    if (paramInt == 0) {
+      LangSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
     }
-    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aumc
  * JD-Core Version:    0.7.0.1
  */

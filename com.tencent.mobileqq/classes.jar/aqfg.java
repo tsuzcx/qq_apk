@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
 
-public abstract class aqfg
-  extends PublicBaseFragment
+public class aqfg
+  implements DialogInterface.OnCancelListener
 {
-  protected aqeb a;
-  protected int j = -1;
+  public aqfg(ColorNoteSmallScreenPermissionDialogFragment paramColorNoteSmallScreenPermissionDialogFragment) {}
   
-  public void a(aqeb paramaqeb)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a = paramaqeb;
-  }
-  
-  public void i() {}
-  
-  public void i(int paramInt)
-  {
-    this.j = paramInt;
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
+    bcst.b(null, "dc00898", "", "", "0X800AB3B", "0X800AB3B", 0, 0, "", "", "", "");
   }
 }
 

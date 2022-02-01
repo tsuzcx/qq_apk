@@ -19,6 +19,7 @@ public class UiHelper
   private boolean mHasSwapChain;
   private Object mNativeWindow;
   private boolean mOpaque = true;
+  private boolean mOverlay = false;
   private UiHelper.RendererCallback mRenderCallback;
   private UiHelper.RenderSurface mRenderSurface;
   
@@ -59,15 +60,29 @@ public class UiHelper
   
   public void attachTo(@NonNull SurfaceView paramSurfaceView)
   {
-    int i = -3;
+    boolean bool;
     if (attach(paramSurfaceView))
     {
-      if (!isOpaque())
-      {
-        paramSurfaceView.setZOrderOnTop(true);
-        paramSurfaceView.getHolder().setFormat(-3);
+      if (isOpaque()) {
+        break label154;
       }
-      this.mRenderSurface = new UiHelper.SurfaceViewHandler(this, paramSurfaceView);
+      bool = true;
+      if (!isMediaOverlay()) {
+        break label159;
+      }
+      paramSurfaceView.setZOrderMediaOverlay(bool);
+      label29:
+      if (!isOpaque()) {
+        break label167;
+      }
+    }
+    label154:
+    label159:
+    label167:
+    for (int i = -1;; i = -3)
+    {
+      paramSurfaceView.getHolder().setFormat(i);
+      this.mRenderSurface = new UiHelper.SurfaceViewHandler(paramSurfaceView);
       UiHelper.1 local1 = new UiHelper.1(this);
       paramSurfaceView = paramSurfaceView.getHolder();
       paramSurfaceView.addCallback(local1);
@@ -76,11 +91,13 @@ public class UiHelper
       if ((localSurface != null) && (localSurface.isValid()))
       {
         local1.surfaceCreated(paramSurfaceView);
-        if (isOpaque()) {
-          i = -1;
-        }
         local1.surfaceChanged(paramSurfaceView, i, paramSurfaceView.getSurfaceFrame().width(), paramSurfaceView.getSurfaceFrame().height());
       }
+      return;
+      bool = false;
+      break;
+      paramSurfaceView.setZOrderOnTop(bool);
+      break label29;
     }
   }
   
@@ -129,6 +146,11 @@ public class UiHelper
     return 1L;
   }
   
+  public boolean isMediaOverlay()
+  {
+    return this.mOverlay;
+  }
+  
   public boolean isOpaque()
   {
     return this.mOpaque;
@@ -148,6 +170,11 @@ public class UiHelper
     }
   }
   
+  public void setMediaOverlay(boolean paramBoolean)
+  {
+    this.mOverlay = paramBoolean;
+  }
+  
   public void setOpaque(boolean paramBoolean)
   {
     this.mOpaque = paramBoolean;
@@ -160,7 +187,7 @@ public class UiHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.google.android.filament.android.UiHelper
  * JD-Core Version:    0.7.0.1
  */

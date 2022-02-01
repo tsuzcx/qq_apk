@@ -1,66 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.DcReportUtil.1;
-import com.tencent.mobileqq.statistics.DcReportUtil.2;
+import android.graphics.PointF;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicLong;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class azps
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "measuredWidth", "", "measuredHeight", "onMeasured", "com/tencent/mobileqq/profilecard/vas/component/background/VasProfileSimpleBackgroundComponent$updateDiyText$1$1"}, k=3, mv={1, 1, 16})
+final class azps
+  implements afrc
 {
-  private static AtomicLong a = new AtomicLong(0L);
+  azps(azpr paramazpr) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public final void a(int paramInt1, int paramInt2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    Object localObject = azpr.a(this.a);
+    if (localObject == null) {
+      Intrinsics.throwNpe();
+    }
+    ((SingleTouchLayout)localObject).setActualViewSize(paramInt1, paramInt2);
+    localObject = azpr.a(this.a);
+    if (localObject == null) {
+      Intrinsics.throwNpe();
+    }
+    ((SingleTouchLayout)localObject).invalidate();
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DcReportUtil", 2, "reportDCEvent tag or detail is null: " + paramString1 + ", " + paramString2);
+      localObject = this.a.b();
+      StringBuilder localStringBuilder = new StringBuilder().append("updateDiyText: x=");
+      SingleTouchLayout localSingleTouchLayout = azpr.a(this.a);
+      if (localSingleTouchLayout == null) {
+        Intrinsics.throwNpe();
       }
-      return;
-    }
-    if (paramQQAppInterface == null)
-    {
-      ThreadManager.post(new DcReportUtil.2(paramString1, paramString2), 5, null, true);
-      return;
-    }
-    a(paramQQAppInterface, paramString1, paramString2, 1);
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    if (paramString2 != null)
-    {
-      azqs localazqs = paramQQAppInterface.a();
-      if (localazqs != null)
-      {
-        String str = paramString2;
-        if (paramString2.contains("${uin_unknown}")) {
-          str = paramString2.replace("${uin_unknown}", paramQQAppInterface.getCurrentAccountUin());
-        }
-        localazqs.a(paramString1, str, paramInt);
+      localStringBuilder = localStringBuilder.append(localSingleTouchLayout.a().x).append(',').append("y=");
+      localSingleTouchLayout = azpr.a(this.a);
+      if (localSingleTouchLayout == null) {
+        Intrinsics.throwNpe();
       }
+      QLog.d((String)localObject, 2, localSingleTouchLayout.a().y + ',' + "width=" + paramInt1 + ',' + "height=" + paramInt2);
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    String str = "${count_unknown}|" + paramString2;
-    paramString2 = str;
-    if (!paramBoolean)
-    {
-      long l = a.incrementAndGet();
-      paramString2 = "${report_seq_prefix}" + l + "|" + str;
-    }
-    if (paramQQAppInterface == null)
-    {
-      ThreadManager.post(new DcReportUtil.1(paramString1, paramString2), 5, null, true);
-      return;
-    }
-    a(paramQQAppInterface, paramString1, paramString2, 1);
   }
 }
 

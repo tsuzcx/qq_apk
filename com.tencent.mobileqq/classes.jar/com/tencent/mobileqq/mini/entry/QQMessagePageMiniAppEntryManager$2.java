@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry;
 
-import amru;
+import aoql;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class QQMessagePageMiniAppEntryManager$2
@@ -11,19 +11,19 @@ class QQMessagePageMiniAppEntryManager$2
   public void run()
   {
     if (this.val$app == null) {}
-    amru localamru;
+    aoql localaoql;
     do
     {
       return;
-      localamru = (amru)this.val$app.a(148);
-    } while (localamru == null);
-    localamru.a();
-    localamru.c();
+      localaoql = (aoql)this.val$app.a(148);
+    } while (localaoql == null);
+    localaoql.a();
+    localaoql.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.QQMessagePageMiniAppEntryManager.2
  * JD-Core Version:    0.7.0.1
  */

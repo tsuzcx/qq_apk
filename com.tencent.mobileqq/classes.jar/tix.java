@@ -1,35 +1,12 @@
-import android.os.Parcel;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class tix
+public abstract interface tix
 {
-  public String mAbTest;
-  public int mType;
-  
-  protected tix(Parcel paramParcel)
-  {
-    this.mType = paramParcel.readInt();
-    this.mAbTest = paramParcel.readString();
-  }
-  
-  protected tix(JSONObject paramJSONObject)
-  {
-    this.mType = paramJSONObject.optInt("type");
-    this.mAbTest = paramJSONObject.optString("qq_abtest");
-    parseJson(paramJSONObject);
-  }
-  
-  protected void parseJson(JSONObject paramJSONObject) {}
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    paramParcel.writeInt(this.mType);
-    paramParcel.writeString(this.mAbTest);
-  }
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tix
  * JD-Core Version:    0.7.0.1
  */

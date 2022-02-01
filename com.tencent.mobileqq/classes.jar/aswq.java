@@ -1,23 +1,17 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aswq
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+public class aswq
+  implements View.OnClickListener
 {
-  aswq(aswm paramaswm) {}
+  public aswq(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    aswm.a(this.a, true);
-    if (this.a.c == 3) {}
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      this.a.c = 2;
-    } while (aswm.a(this.a) == null);
-    aswm.a(this.a).j();
+    this.a.h();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

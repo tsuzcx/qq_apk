@@ -1,73 +1,29 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class sly<T>
+class sly
+  implements Animator.AnimatorListener
 {
-  private T jdField_a_of_type_JavaLangObject;
-  private List<slz<T>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  sly(slw paramslw) {}
   
-  public sly(T paramT)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
+    QLog.d("TabBarView", 4, "onAnimationEnd");
+    slw.b(this.a);
+    this.a.b.clearAnimation();
   }
   
-  public T a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a()
-  {
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((slz)localIterator.next()).a(this);
-      }
-    }
-    finally {}
-  }
-  
-  public void a(T paramT)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    a();
-  }
-  
-  public void a(slz<T> paramslz)
-  {
-    try
-    {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramslz)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramslz);
-      }
-      return;
-    }
-    finally
-    {
-      paramslz = finally;
-      throw paramslz;
-    }
-  }
-  
-  public void b(slz<T> paramslz)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramslz);
-      return;
-    }
-    finally
-    {
-      paramslz = finally;
-      throw paramslz;
-    }
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sly
  * JD-Core Version:    0.7.0.1
  */

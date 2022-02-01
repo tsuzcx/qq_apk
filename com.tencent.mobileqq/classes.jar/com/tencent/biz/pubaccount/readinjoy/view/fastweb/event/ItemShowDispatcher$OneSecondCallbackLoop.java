@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import mqq.os.MqqHandler;
 
-class ItemShowDispatcher$OneSecondCallbackLoop
+public class ItemShowDispatcher$OneSecondCallbackLoop
   implements Runnable
 {
   private int jdField_a_of_type_Int;
@@ -28,7 +28,7 @@ class ItemShowDispatcher$OneSecondCallbackLoop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher.OneSecondCallbackLoop
  * JD-Core Version:    0.7.0.1
  */

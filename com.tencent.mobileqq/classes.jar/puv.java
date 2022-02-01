@@ -1,28 +1,73 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.support.annotation.NonNull;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
-import com.tencent.image.URLDrawable;
+import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptMonitor.1;
+import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptMonitor.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.os.MqqHandler;
 
-class puv
-  implements Drawable.Callback
+public class puv
 {
-  puv(puu parampuu, DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
-  
-  public void invalidateDrawable(@NonNull Drawable paramDrawable)
+  public static void a()
   {
-    QLog.i("Q.readinjoy.proteus", 1, "invalidateDrawable: ");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    Object localObject = tdv.a().a();
+    if (localObject != null)
+    {
+      QLog.d("RIJImageOptMonitor", 1, "executing jobs size: " + ((CopyOnWriteArrayList)localObject).size());
+      if (((CopyOnWriteArrayList)localObject).size() > 0)
+      {
+        localObject = ((CopyOnWriteArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          QLog.d("RIJImageOptMonitor", 1, new Object[] { (tdw)((Iterator)localObject).next() });
+        }
+      }
+    }
   }
   
-  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
+  public static void a(tdw paramtdw)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new RIJImageOptMonitor.1(paramtdw), puu.a.a());
+  }
   
-  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
+  public static String[] a(String paramString)
+  {
+    try
+    {
+      InetAddress[] arrayOfInetAddress = InetAddress.getAllByName(paramString);
+      if ((arrayOfInetAddress != null) && (arrayOfInetAddress.length > 0))
+      {
+        String[] arrayOfString = new String[arrayOfInetAddress.length];
+        int i = 0;
+        for (;;)
+        {
+          paramString = arrayOfString;
+          if (i >= arrayOfInetAddress.length) {
+            break;
+          }
+          arrayOfString[i] = arrayOfInetAddress[i].getHostAddress();
+          i += 1;
+        }
+        return paramString;
+      }
+    }
+    catch (UnknownHostException paramString)
+    {
+      QLog.e("RIJImageOptMonitor", 1, paramString.getMessage());
+      paramString = null;
+    }
+    return null;
+  }
+  
+  public static void b(tdw paramtdw)
+  {
+    ThreadManager.post(new RIJImageOptMonitor.2(paramtdw), 2, null, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     puv
  * JD-Core Version:    0.7.0.1
  */

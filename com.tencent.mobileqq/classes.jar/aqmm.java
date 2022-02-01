@@ -1,37 +1,74 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqmm
-  implements TextWatcher
+  extends aqkz<aqml>
 {
-  public aqmm(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public static void a()
   {
-    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
-      arri.a(BaseApplicationImpl.getContext().getString(2131694541));
-    }
-    while (TextUtils.isEmpty(paramEditable)) {
-      return;
-    }
-    MPFileVerifyPwdView.b(this.a).setEnabled(true);
-    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
+    aqml localaqml = (aqml)aqlk.a().a(430);
+    aqml.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localaqml);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  @NonNull
+  public aqml a(int paramInt)
+  {
+    return new aqml();
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  @Nullable
+  public aqml a(aqlg[] paramArrayOfaqlg)
+  {
+    return aqml.a(paramArrayOfaqlg);
+  }
+  
+  public void a(aqml paramaqml)
+  {
+    QLog.w("ApolloConfig_GrayProcessor", 1, "onUpdate");
+    aqml.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramaqml);
+  }
+  
+  public Class<aqml> clazz()
+  {
+    return aqml.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.e("ApolloConfig_GrayProcessor", 1, "onReqFailed: " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 430;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmm
  * JD-Core Version:    0.7.0.1
  */

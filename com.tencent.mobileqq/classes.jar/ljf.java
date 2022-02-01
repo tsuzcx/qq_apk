@@ -1,32 +1,59 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 public class ljf
+  extends BroadcastReceiver
 {
-  public int a;
-  public CharSequence a;
-  public String a;
-  public boolean a;
-  public CharSequence b;
+  public ljf(CameraUtils paramCameraUtils) {}
   
-  public ljf(String paramString, CharSequence paramCharSequence1, CharSequence paramCharSequence2, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence1;
-    this.b = paramCharSequence2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 2;
-  }
-  
-  public String toString()
-  {
-    return "SentenceInfo{uin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", src_text='" + this.jdField_a_of_type_JavaLangCharSequence + '\'' + ", tra_text='" + this.b + '\'' + ", status=" + this.jdField_a_of_type_Int + '}';
+    if (paramIntent == null) {
+      return;
+    }
+    paramContext = paramIntent.getStringExtra("camera_id");
+    int i = paramIntent.getIntExtra("availability", 1);
+    long l = mtl.a(paramIntent);
+    CameraUtils.a(this.a).put(paramContext, Integer.valueOf(i));
+    if ((i == 1) && (this.a.b(l)))
+    {
+      paramContext = CameraUtils.a(this.a).entrySet().iterator();
+      do
+      {
+        if (!paramContext.hasNext()) {
+          break;
+        }
+      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
+    }
+    for (boolean bool = false;; bool = true)
+    {
+      if (AudioHelper.f()) {
+        QLog.w("CameraUtils", 1, "CameraAvailabilityReceiver, sendReopenCameraMsg, result[" + bool + "], seq[" + l + "]");
+      }
+      if (!bool) {
+        break;
+      }
+      CameraUtils.a(this.a).a("CameraAvailabilityReceiver", l, -1, -1);
+      return;
+      if (AudioHelper.f()) {
+        QLog.w("CameraUtils", 1, "CameraAvailabilityReceiver, removeReopenCameraMsg, seq[" + i + "]");
+      }
+      CameraUtils.a(this.a).a(l);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ljf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.biz.qqcircle.requests;
 
 import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
 import com.tencent.biz.qqcircle.QCircleInitBean;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -14,14 +15,15 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudMeta.StGPSV2;
+import feedcloud.FeedCloudMeta.StPoiInfoV2;
 import feedcloud.FeedCloudMeta.StTagInfo;
 import feedcloud.FeedCloudMeta.StUser;
 import feedcloud.FeedCloudRead.StGetFeedListReq;
 import feedcloud.FeedCloudRead.StGetFeedListRsp;
 import java.util.List;
 import qqcircle.QQCircleFeedBase.StFeedListBusiReqData;
-import tra;
-import tsa;
+import uxx;
+import uzo;
 
 public class QCircleGetFeedListRequest
   extends QCircleBaseRequest
@@ -31,23 +33,32 @@ public class QCircleGetFeedListRequest
   public FeedCloudRead.StGetFeedListReq mRequest;
   private FeedCloudRead.StGetFeedListReq mTabRequest;
   
-  public QCircleGetFeedListRequest(int paramInt, String paramString)
+  public QCircleGetFeedListRequest(QCircleInitBean paramQCircleInitBean, String paramString)
   {
     this.mRequest = new FeedCloudRead.StGetFeedListReq();
+    FeedCloudMeta.StFeed localStFeed = uxx.a(paramQCircleInitBean.getFeed());
+    if (paramString == null)
+    {
+      this.mRequest.feed.set(localStFeed);
+      this.mRequest.feed.busiTranparent.set(paramQCircleInitBean.getFeed().busiTranparent.get());
+    }
+    this.mRequest.source.set(17);
+    this.mRequest.listNum.set(this.mListNum);
     if (paramString != null) {
       this.mRequest.feedAttchInfo.set(paramString);
     }
-    this.mRequest.listNum.set(this.mListNum);
-    this.mRequest.from.set(0);
-    this.mRequest.source.set(paramInt);
+    paramQCircleInitBean = paramQCircleInitBean.getFeedListBusiReq();
+    paramQCircleInitBean.detailFeed.set(localStFeed);
+    this.mRequest.busiReqData.set(ByteStringMicro.copyFrom(paramQCircleInitBean.toByteArray()));
   }
   
-  public QCircleGetFeedListRequest(QCircleInitBean paramQCircleInitBean, String paramString1, String paramString2)
+  public QCircleGetFeedListRequest(QCircleInitBean paramQCircleInitBean, String paramString1, String paramString2, String paramString3)
   {
     this.mRequest = new FeedCloudRead.StGetFeedListReq();
+    FeedCloudMeta.StFeed localStFeed = uxx.a(paramQCircleInitBean.getFeed());
     if (paramString1 == null)
     {
-      this.mRequest.feed.set(tra.a(paramQCircleInitBean.getFeed()));
+      this.mRequest.feed.set(localStFeed);
       this.mRequest.feed.busiTranparent.set(paramQCircleInitBean.getFeed().busiTranparent.get());
     }
     this.mRequest.source.set(covertToProtocolSource(paramQCircleInitBean.getExtraTypeInfo().sourceType));
@@ -60,15 +71,24 @@ public class QCircleGetFeedListRequest
     }
     paramString1 = paramQCircleInitBean.getFeedListBusiReq();
     paramString1.isReqLayer.set(true);
+    paramString1.detailFeed.set(localStFeed);
     if ((paramQCircleInitBean.getFeed().tagInfos.has()) && (paramQCircleInitBean.getFeed().tagInfos.get().size() > 0))
     {
       paramString1.tagId.set(((FeedCloudMeta.StTagInfo)paramQCircleInitBean.getFeed().tagInfos.get().get(0)).tagId.get());
       paramString1.tagName.set(((FeedCloudMeta.StTagInfo)paramQCircleInitBean.getFeed().tagInfos.get().get(0)).tagName.get());
     }
+    if (paramQCircleInitBean.getPoiInfo().has()) {
+      paramString1.tagName.set(paramQCircleInitBean.getPoiInfo().name.get());
+    }
+    if (paramString3 != null)
+    {
+      paramString1.refreshAttachInfo.set(paramString3);
+      QLog.d("QCircleGetFeedListRequest", 0, "QCircleGetFeedListRequest RefreshAttachInfo:" + paramString3);
+    }
     this.mRequest.busiReqData.set(ByteStringMicro.copyFrom(paramString1.toByteArray()));
   }
   
-  public QCircleGetFeedListRequest(String paramString1, String paramString2)
+  public QCircleGetFeedListRequest(String paramString1, String paramString2, String paramString3)
   {
     this.mRequest = new FeedCloudRead.StGetFeedListReq();
     if (paramString2 != null) {
@@ -82,9 +102,21 @@ public class QCircleGetFeedListRequest
     localStUser.id.set(paramString1);
     paramString2.poster.set(localStUser);
     this.mRequest.feed.set(paramString2);
+    paramString1 = new QQCircleFeedBase.StFeedListBusiReqData();
+    if (paramString3 != null)
+    {
+      paramString1.refreshAttachInfo.set(paramString3);
+      QLog.d("QCircleGetFeedListRequest", 0, "QCircleGetFeedListRequest RefreshAttachInfo:" + paramString3);
+    }
+    this.mRequest.busiReqData.set(ByteStringMicro.copyFrom(paramString1.toByteArray()));
   }
   
-  public QCircleGetFeedListRequest(String paramString1, String paramString2, String paramString3)
+  public QCircleGetFeedListRequest(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this(paramString1, paramString2, false, paramString3, paramString4);
+  }
+  
+  public QCircleGetFeedListRequest(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4)
   {
     this.mRequest = new FeedCloudRead.StGetFeedListReq();
     if (paramString3 != null) {
@@ -100,36 +132,47 @@ public class QCircleGetFeedListRequest
     if (!TextUtils.isEmpty(paramString2)) {
       paramString3.tagName.set(paramString2);
     }
+    if (paramString4 != null)
+    {
+      paramString3.refreshAttachInfo.set(paramString4);
+      QLog.d("QCircleGetFeedListRequest", 0, "QCircleGetFeedListRequest RefreshAttachInfo:" + paramString4);
+    }
+    paramString3.isReqLayer.set(paramBoolean);
     this.mRequest.busiReqData.set(ByteStringMicro.copyFrom(paramString3.toByteArray()));
   }
   
-  public QCircleGetFeedListRequest(tsa paramtsa, String paramString, FeedCloudMeta.StGPSV2 paramStGPSV2)
+  public QCircleGetFeedListRequest(uzo paramuzo, String paramString1, String paramString2, FeedCloudMeta.StGPSV2 paramStGPSV2)
   {
     this.mIsTabRequest = true;
     this.mRequest = new FeedCloudRead.StGetFeedListReq();
-    if (paramString != null) {
-      this.mRequest.feedAttchInfo.set(paramString);
+    if (paramString1 != null) {
+      this.mRequest.feedAttchInfo.set(paramString1);
     }
     this.mRequest.listNum.set(this.mListNum);
     this.mRequest.from.set(0);
-    this.mRequest.source.set(paramtsa.b());
+    this.mRequest.source.set(paramuzo.b());
     this.mTabRequest = new FeedCloudRead.StGetFeedListReq();
     try
     {
       this.mTabRequest.mergeFrom(this.mRequest.toByteArray());
-      paramString = new QQCircleFeedBase.StFeedListBusiReqData();
-      paramString.tabAttachInfo.set(paramtsa.b());
-      if (paramStGPSV2 != null) {
-        paramString.gpsInfo.set(paramStGPSV2);
+      paramString1 = new QQCircleFeedBase.StFeedListBusiReqData();
+      paramString1.tabAttachInfo.set(paramuzo.b());
+      if (paramString2 != null)
+      {
+        paramString1.refreshAttachInfo.set(paramString2);
+        QLog.d("QCircleGetFeedListRequest", 0, "QCircleGetFeedListRequest RefreshAttachInfo:" + paramString2);
       }
-      this.mRequest.busiReqData.set(ByteStringMicro.copyFrom(paramString.toByteArray()));
+      if (paramStGPSV2 != null) {
+        paramString1.gpsInfo.set(paramStGPSV2);
+      }
+      this.mRequest.busiReqData.set(ByteStringMicro.copyFrom(paramString1.toByteArray()));
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramString)
+    catch (InvalidProtocolBufferMicroException paramString1)
     {
       for (;;)
       {
-        paramString.printStackTrace();
+        paramString1.printStackTrace();
       }
     }
   }
@@ -138,7 +181,6 @@ public class QCircleGetFeedListRequest
   {
     switch (paramInt)
     {
-    case 2: 
     default: 
       return -1;
     case 1: 
@@ -157,8 +199,13 @@ public class QCircleGetFeedListRequest
       return 9;
     case 10: 
       return 10;
+    case 8: 
+    case 11: 
+      return 8;
+    case 12: 
+      return 16;
     }
-    return 8;
+    return 17;
   }
   
   public MessageMicro decode(byte[] paramArrayOfByte)
@@ -188,7 +235,7 @@ public class QCircleGetFeedListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,119 +1,91 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.Reporting;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.oidb.cmd0xe13.oidb_cmd0xe13.ReportInfo;
-import tencent.im.oidb.cmd0xe13.oidb_cmd0xe13.ReqBody;
-import tencent.im.oidb.cmd0xe13.oidb_cmd0xe13.RspBody;
+import com.tencent.widget.XPanelContainer;
 
 public class oun
-  extends pgp
-  implements azqu
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(new Random().nextInt(10000));
+  public oun(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public oun()
+  public void onGlobalLayout()
   {
-    super(null, null, null, puz.a(), null);
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
-  {
-    paramToServiceMsg.extraData.putInt("request_req", paramInt1);
-    paramToServiceMsg.extraData.putInt("request_retry_time", paramInt2);
-    paramToServiceMsg.extraData.putByteArray("request_report_datas", paramArrayOfByte);
-    paramToServiceMsg.setTimeout(30000L);
-  }
-  
-  private void a(ArrayList<String> paramArrayList)
-  {
-    oidb_cmd0xe13.ReqBody localReqBody = new oidb_cmd0xe13.ReqBody();
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-    Object localObject = paramArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
+    Object localObject = new Rect();
+    ReadInJoyDeliverBiuActivity.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = ReadInJoyDeliverBiuActivity.b(this.a).getRootView().getHeight();
+    int j = i - ((Rect)localObject).height();
+    boolean bool;
+    if (j > 100)
     {
-      String str = (String)((Iterator)localObject).next();
-      oidb_cmd0xe13.ReportInfo localReportInfo = new oidb_cmd0xe13.ReportInfo();
-      localReportInfo.uint64_time.set(l);
-      localReportInfo.bytes_report.set(ByteStringMicro.copyFromUtf8(str));
-      localReqBody.msg_report_info.add(localReportInfo);
-    }
-    localReqBody.uint32_seq.set(i);
-    localObject = pvb.a("OidbSvc.0xe13", 3603, 0, localReqBody.toByteArray());
-    a((ToServiceMsg)localObject, i, 0, localReqBody.toByteArray());
-    a((ToServiceMsg)localObject);
-    QLog.d("RIJNewReporter", 1, "send report data to servlet, size : " + paramArrayList.size() + ", seq : " + i + ", contents : " + paramArrayList);
-  }
-  
-  public void a()
-  {
-    QLog.d("RIJNewReporter", 1, "notifyCurrentReportLoopFinish");
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-    {
-      a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-  }
-  
-  public void a(Reporting paramReporting)
-  {
-    if ((paramReporting == null) || (TextUtils.isEmpty(paramReporting.mDetail))) {}
-    do
-    {
-      return;
-      String str = paramReporting.mDetail.replace("${count_unknown}", String.valueOf(paramReporting.mCount));
-      paramReporting = str;
-      if (str.startsWith("${report_seq_prefix}")) {
-        paramReporting = str.substring(str.indexOf("|") + 1);
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout screenHeight:" + i + ", ExternalPanelheight:" + j + ", isShowKeybroad:" + bool);
       }
-      QLog.d("RIJNewReporter", 1, "report data : " + paramReporting);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramReporting);
-    } while (this.jdField_a_of_type_JavaUtilArrayList.size() < 20);
-    a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int i = paramToServiceMsg.extraData.getInt("request_req");
-    int j = paramToServiceMsg.extraData.getInt("request_retry_time");
-    QLog.d("RIJNewReporter", 1, "receive servlet oxe13 resp ! seq : " + i + ", retryTime : " + j);
-    oidb_cmd0xe13.RspBody localRspBody = new oidb_cmd0xe13.RspBody();
-    int k = pvb.a(paramFromServiceMsg, paramObject, localRspBody);
-    if (k == 0)
-    {
-      QLog.d("RIJNewReporter", 1, "receive servlet oxe13 resp success !  businessCode : " + localRspBody.uint32_result.get());
-      return;
+      i = ReadInJoyDeliverBiuActivity.a(this.a).getHeight();
+      if (bool == ReadInJoyDeliverBiuActivity.a(this.a)) {
+        break label394;
+      }
+      if (j > ReadInJoyDeliverBiuActivity.a(this.a)) {
+        ReadInJoyDeliverBiuActivity.a(this.a, j);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + ReadInJoyDeliverBiuActivity.b(this.a));
+      }
+      j = i - ReadInJoyDeliverBiuActivity.c(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.d(this.a) + ", maxHeight:" + j);
+      }
+      ReadInJoyDeliverBiuActivity.a(this.a).setMaxHeight(j);
+      ReadInJoyDeliverBiuActivity.a(this.a, bool);
+      localObject = this.a;
+      if (i >= ReadInJoyDeliverBiuActivity.e(this.a)) {
+        break label372;
+      }
+      j = i;
+      label283:
+      ReadInJoyDeliverBiuActivity.b((ReadInJoyDeliverBiuActivity)localObject, j);
+      localObject = this.a;
+      if (i <= ReadInJoyDeliverBiuActivity.f(this.a)) {
+        break label383;
+      }
+      label307:
+      ReadInJoyDeliverBiuActivity.c((ReadInJoyDeliverBiuActivity)localObject, i);
     }
-    if (j < 2)
+    for (;;)
     {
-      paramToServiceMsg = paramToServiceMsg.extraData.getByteArray("request_report_datas");
-      paramFromServiceMsg = pvb.a("OidbSvc.0xe13", 3603, 0, paramToServiceMsg);
-      a(paramFromServiceMsg, i, j + 1, paramToServiceMsg);
-      a(paramFromServiceMsg);
-      QLog.d("RIJNewReporter", 1, "receive servlet oxe13 resp error ! code : " + k + ", toRertry ：" + true);
+      ReadInJoyDeliverBiuActivity.d(this.a, ReadInJoyDeliverBiuActivity.h(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mExternalPanelheight:" + ReadInJoyDeliverBiuActivity.g(this.a));
+      }
       return;
+      bool = false;
+      break;
+      label372:
+      j = ReadInJoyDeliverBiuActivity.e(this.a);
+      break label283;
+      label383:
+      i = ReadInJoyDeliverBiuActivity.f(this.a);
+      break label307;
+      label394:
+      if ((ReadInJoyDeliverBiuActivity.g(this.a) != ReadInJoyDeliverBiuActivity.h(this.a)) && (i == ReadInJoyDeliverBiuActivity.f(this.a)))
+      {
+        i -= ReadInJoyDeliverBiuActivity.h(this.a);
+        j = i - ReadInJoyDeliverBiuActivity.i(this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.j(this.a) + ", maxHeight:" + j);
+        }
+        ReadInJoyDeliverBiuActivity.b(this.a).setMaxHeight(j);
+      }
     }
-    QLog.d("RIJNewReporter", 1, "receive servlet oxe13 resp error ! code : " + k + ", toRertry ：" + false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oun
  * JD-Core Version:    0.7.0.1
  */

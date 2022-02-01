@@ -1,24 +1,48 @@
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.util.SparseArray;
 
-class bcge
-  implements amek
+public class bcge
 {
-  bcge(bcgc parambcgc, String paramString1, String paramString2, bcgf parambcgf) {}
+  public float a;
+  public int a;
+  public SparseArray<bcgd> a;
+  public boolean a;
+  public int[] a;
+  public int b = 30;
+  public boolean b;
+  public int[] b;
+  public int c = 8;
+  public boolean c;
+  public int[] c;
+  public int d = 640;
+  public boolean d;
+  public int[] d;
+  public int e = 480;
+  public int[] e;
+  public int f = 550000;
+  public int[] f;
+  public int g = 100000;
+  public int[] g;
+  public int h = 35;
+  public int i = 3;
+  public int j = 3;
+  public int k = 1;
+  public int l = 1;
+  public int m;
+  public int n;
+  public int o;
+  public int p;
+  public int q;
+  public int r;
+  public int s = -1;
+  public int t = -1;
+  public int u = 2;
+  public int v = 3;
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public bcge()
   {
-    List localList = null;
-    if (paramTroopMemberInfo != null) {
-      localList = this.jdField_a_of_type_Bcgc.a(paramTroopMemberInfo.honorList);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, localList }));
-    }
-    if (this.jdField_a_of_type_Bcgf != null) {
-      this.jdField_a_of_type_Bcgf.a(localList);
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_Float = 1.0F;
   }
 }
 

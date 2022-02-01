@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.miniapp.ui;
 
-import android.support.v4.app.Fragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 
 public class MiniAppBaseFragment
-  extends Fragment
+  extends ReportV4Fragment
 {
   protected String a()
   {
@@ -12,7 +12,7 @@ public class MiniAppBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.ui.MiniAppBaseFragment
  * JD-Core Version:    0.7.0.1
  */

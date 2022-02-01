@@ -1,17 +1,12 @@
+import java.util.Observable;
+
 public class blcb
+  extends Observable
 {
-  private Boolean a;
-  public String a;
-  
-  public blcb(String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
+    setChanged();
+    notifyObservers();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import alax;
-import albf;
+import amud;
+import amul;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -41,9 +41,9 @@ final class ApolloUtil$4
           }
         } while (i <= 0);
         this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.saveExtInfoToExtStr("is_share_ark_message_action_played", "2");
-        localObject2 = ((albf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249)).a();
+        localObject2 = ((amul)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249)).a();
         if (localObject2 != null) {
-          ((alax)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, i);
+          ((amud)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, i);
         }
       } while (localObject1 == null);
       localObject1 = (QQMessageFacade)((AppRuntime)localObject1).getManager(20);
@@ -53,7 +53,7 @@ final class ApolloUtil$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloUtil.4
  * JD-Core Version:    0.7.0.1
  */

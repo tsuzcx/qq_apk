@@ -1,45 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adlu
-  extends BroadcastReceiver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adlu(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adlu(AssistantSettingActivity paramAssistantSettingActivity, TroopManager paramTroopManager) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
-    {
-      paramContext = paramIntent.getStringExtra("uin");
-      NotifyPushSettingActivity.a(this.a, paramContext);
-    }
-    do
-    {
-      boolean bool;
-      do
-      {
-        return;
-        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
-          break;
-        }
-        paramContext = paramIntent.getStringExtra("uin");
-        bool = paramIntent.getBooleanExtra("configPCActive", false);
-      } while (!this.a.app.getAccount().equals(paramContext));
-      if (true == bool)
-      {
-        NotifyPushSettingActivity.g(this.a).setVisibility(0);
-        return;
-      }
-      NotifyPushSettingActivity.g(this.a).setVisibility(8);
-      return;
-    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
-    paramContext = paramIntent.getStringExtra("uin");
-    NotifyPushSettingActivity.b(this.a, paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

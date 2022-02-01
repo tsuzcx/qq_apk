@@ -1,258 +1,108 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.net.URL;
+import java.util.HashMap;
 
 public class bedi
-  extends VasWebviewJsPlugin
 {
-  public bedi()
-  {
-    this.mPluginNameSpace = "gift";
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  boolean b;
+  public int c;
+  public long c;
+  public String c;
+  boolean c;
+  public int d;
+  private boolean d;
   
-  private void a()
+  public bedi(bdvs parambdvs, bdwt parambdwt)
   {
-    Activity localActivity = this.mRuntime.a();
-    if (localActivity != null) {
-      localActivity.finish();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    boolean bool;
+    if (parambdwt.jdField_a_of_type_Int == 0) {
+      bool = true;
     }
-  }
-  
-  private void a(String paramString)
-  {
-    int i = 0;
-    Activity localActivity = this.mRuntime.a();
-    if (localActivity == null) {}
     for (;;)
     {
-      return;
-      if (this.mRuntime.a() != null) {
-        try
-        {
-          Object localObject = new JSONObject(paramString);
-          paramString = ((JSONObject)localObject).optString("url");
-          localObject = ((JSONObject)localObject).optJSONObject("options");
-          int j;
-          if (localObject != null)
-          {
-            j = ((JSONObject)localObject).optInt("style");
-            i = ((JSONObject)localObject).optInt("animation");
-            label75:
-            if (TextUtils.isEmpty(paramString)) {
-              continue;
-            }
-            localObject = localActivity.getIntent().getExtras();
-            ((Bundle)localObject).putString("leftViewText", "");
-            switch (j)
-            {
-            }
-          }
-          for (;;)
-          {
-            Intent localIntent = new Intent(localActivity, QQBrowserActivity.class);
-            localIntent.putExtras((Bundle)localObject);
-            localIntent.putExtra("url", paramString);
-            localIntent.setFlags(0);
-            localActivity.startActivityForResult(localIntent, 100);
-            switch (i)
-            {
-            case 0: 
-            case 1: 
-              localActivity.overridePendingTransition(0, 0);
-              return;
-              ((Bundle)localObject).putBoolean("hide_more_button", false);
-              ((Bundle)localObject).putBoolean("hide_operation_bar", true);
-              continue;
-              ((Bundle)localObject).putBoolean("hide_more_button", true);
-              ((Bundle)localObject).putBoolean("hide_operation_bar", true);
-              continue;
-              ((Bundle)localObject).putBoolean("hide_more_button", false);
-              ((Bundle)localObject).putBoolean("hide_operation_bar", false);
-              ((Bundle)localObject).putString("webStyle", "");
-              continue;
-              ((Bundle)localObject).putBoolean("hide_more_button", true);
-              ((Bundle)localObject).putBoolean("hide_operation_bar", false);
-              ((Bundle)localObject).putString("webStyle", "");
-              break;
-            case 2: 
-              localActivity.overridePendingTransition(2130772293, 0);
-              return;
-              j = 0;
-              break label75;
-            }
-          }
-          return;
-        }
-        catch (JSONException paramString) {}
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VipGiftPlugin", 2, "method:" + paramString1 + ", json:" + paramString2);
-    }
-    callJs(paramString1, new String[] { paramString2 });
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if (paramLong == 8589934595L)
-    {
-      paramString = this.mRuntime.a();
-      if (paramString != null) {
-        break label22;
-      }
-    }
-    label22:
-    while (!paramString.getClass().getSimpleName().equals("VipGiftBrowserActivity")) {
-      return false;
-    }
-    paramString.finish();
-    return false;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ("gift".equals(paramString2))
-    {
-      if (("openUrl".equals(paramString3)) && (paramVarArgs.length == 1))
-      {
-        a(paramVarArgs[0]);
-        a();
-      }
-      do
-      {
-        return true;
-        if (("close".equals(paramString3)) && (paramVarArgs.length == 1)) {
-          try
-          {
-            paramString1 = new JSONObject(paramVarArgs[0]);
-            paramJsBridgeListener = paramString1.getString("callback");
-            long l = paramString1.getLong("version");
-            paramString1 = new Bundle();
-            paramString1.putLong("version", l);
-            sendRemoteReq(apml.a("close_version", paramJsBridgeListener, this.mOnRemoteResp.key, paramString1), false, false);
-            return true;
-          }
-          catch (Exception paramJsBridgeListener)
-          {
-            return true;
-          }
-        }
-        if ("isFlowerVisible".equals(paramString3)) {
-          try
-          {
-            paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-            paramString1 = new Bundle();
-            sendRemoteReq(apml.a("getFlowerVisibility", paramJsBridgeListener, this.mOnRemoteResp.key, paramString1), false, false);
-            return true;
-          }
-          catch (JSONException paramJsBridgeListener)
-          {
-            paramJsBridgeListener.printStackTrace();
-            return true;
-          }
-        }
-      } while (!"setFlowerVisibility".equals(paramString3));
-      paramString1 = null;
-      paramJsBridgeListener = paramString1;
-      for (;;)
-      {
-        try
-        {
-          paramString2 = new JSONObject(paramVarArgs[0]);
-          paramJsBridgeListener = paramString1;
-          paramString1 = paramString2.optString("callback");
-          paramJsBridgeListener = paramString1;
-          int i = paramString2.getInt("isVisible");
-          paramJsBridgeListener = paramString1;
-          paramString2 = new Bundle();
-          if (i != 1) {
-            break label322;
-          }
-          bool = true;
-          paramJsBridgeListener = paramString1;
-          paramString2.putBoolean("isVisible", bool);
-          paramJsBridgeListener = paramString1;
-          sendRemoteReq(apml.a("setFlowerVisibility", paramString1, this.mOnRemoteResp.key, paramString2), false, false);
-          return true;
-        }
-        catch (JSONException paramString1) {}
-        if (TextUtils.isEmpty(paramJsBridgeListener)) {
-          break;
-        }
-        callJs(paramJsBridgeListener, new String[] { String.format("{\"result\": -2, \"message\":\"%s\"}", new Object[] { paramString1 }) });
-        return true;
-        label322:
-        boolean bool = false;
-      }
-    }
-    return false;
-  }
-  
-  public void onResponse(Bundle paramBundle)
-  {
-    JSONObject localJSONObject;
-    String str2;
-    String str1;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.mOnRemoteResp.key))
-    {
-      localJSONObject = new JSONObject();
-      str2 = paramBundle.getString("cmd");
-      str1 = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response");
-      if (str2 != null)
-      {
-        if (!"close_version".equals(str2)) {
-          break label111;
-        }
-        i = paramBundle.getInt("result");
-      }
-    }
-    label111:
-    do
-    {
+      this.jdField_d_of_type_Boolean = bool;
+      this.jdField_a_of_type_Long = parambdwt.g;
+      this.jdField_b_of_type_Long = parambdwt.h;
+      this.jdField_a_of_type_JavaLangString = parambdvs.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_JavaLangString != null) {}
       try
       {
-        localJSONObject.put("result", i);
-        a(str1, localJSONObject.toString());
-        a();
+        this.jdField_b_of_type_JavaLangString = new URL(this.jdField_a_of_type_JavaLangString).getHost();
+        label79:
+        this.jdField_a_of_type_Boolean = parambdvs.f;
+        this.jdField_a_of_type_Int = parambdvs.jdField_a_of_type_Int;
+        this.jdField_b_of_type_Int = parambdwt.jdField_b_of_type_Int;
+        this.jdField_c_of_type_JavaLangString = parambdwt.jdField_a_of_type_JavaLangString;
+        this.jdField_c_of_type_Int = parambdwt.jdField_c_of_type_Int;
+        this.jdField_d_of_type_Int = parambdwt.jdField_d_of_type_Int;
+        this.jdField_c_of_type_Long = parambdwt.jdField_b_of_type_Long;
+        this.jdField_b_of_type_Boolean = parambdvs.i;
+        this.jdField_c_of_type_Boolean = parambdvs.jdField_b_of_type_Boolean;
         return;
+        bool = false;
       }
-      catch (JSONException paramBundle)
+      catch (Exception localException)
       {
-        for (;;)
-        {
-          paramBundle.printStackTrace();
-        }
+        break label79;
       }
-      if ("getFlowerVisibility".equals(str2))
-      {
-        if (paramBundle.getBoolean("result")) {}
-        for (i = 1;; i = 0)
-        {
-          callJs(str1, new String[] { String.format("{\"result\":0, \"data\":{\"isVisible\":%d}}", new Object[] { Integer.valueOf(i) }) });
-          return;
-        }
-      }
-    } while (!"setFlowerVisibility".equals(str2));
-    int i = paramBundle.getInt("result");
-    if (i == 0) {}
-    for (paramBundle = "{\"result\":0}";; paramBundle = String.format("{\"result\": %d, \"message\":\"Unknown error\"}", new Object[] { Integer.valueOf(i) }))
-    {
-      callJs(str1, new String[] { paramBundle });
-      return;
     }
+  }
+  
+  private HashMap<String, String> a()
+  {
+    int j = 1;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("isSuccess", String.valueOf(this.jdField_d_of_type_Boolean));
+    localHashMap.put("param_time_cost", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("param_inQueueCost", "" + this.jdField_b_of_type_Long);
+    localHashMap.put("param_url", this.jdField_a_of_type_JavaLangString);
+    localHashMap.put("param_Host", this.jdField_b_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = 1;
+      localHashMap.put("param_isHttps", String.valueOf(i));
+      localHashMap.put("param_method", String.valueOf(this.jdField_a_of_type_Int));
+      localHashMap.put("param_FailCode", String.valueOf(this.jdField_b_of_type_Int));
+      localHashMap.put("param_errorDesc", this.jdField_c_of_type_JavaLangString);
+      localHashMap.put("param_HttpCode", String.valueOf(this.jdField_c_of_type_Int));
+      localHashMap.put("param_tryTimes", String.valueOf(this.jdField_d_of_type_Int));
+      localHashMap.put("param_fileTransSize", String.valueOf(this.jdField_c_of_type_Long));
+      if (!this.jdField_b_of_type_Boolean) {
+        break label237;
+      }
+      i = 1;
+      label199:
+      localHashMap.put("param_IsSync", String.valueOf(i));
+      if (!this.jdField_c_of_type_Boolean) {
+        break label242;
+      }
+    }
+    label237:
+    label242:
+    for (int i = j;; i = 0)
+    {
+      localHashMap.put("param_IsInnerDns", String.valueOf(i));
+      return localHashMap;
+      i = 0;
+      break;
+      i = 0;
+      break label199;
+    }
+  }
+  
+  public void a()
+  {
+    HashMap localHashMap = a();
+    bctj.a(BaseApplication.getContext()).a(null, "actHttpEngineTrans", this.jdField_d_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_c_of_type_Long, localHashMap, "");
   }
 }
 

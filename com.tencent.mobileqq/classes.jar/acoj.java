@@ -1,40 +1,22 @@
-import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.ChatHistoryViewBase.1;
 
-public abstract class acoj
+public class acoj
 {
-  public ChatHistoryFileActivity a;
-  public boolean i = true;
+  public float a;
+  public float b;
+  public View f;
+  public View g;
+  public View h;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  public int o;
   
-  public abstract View a();
-  
-  public void a(int paramInt) {}
-  
-  public void a(long paramLong) {}
-  
-  public void b() {}
-  
-  public abstract boolean b();
-  
-  public void c() {}
-  
-  protected boolean c()
+  public String toString()
   {
-    return this.i;
-  }
-  
-  public void d() {}
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  protected void k()
-  {
-    this.i = false;
-    new Handler().postDelayed(new ChatHistoryViewBase.1(this), 1500L);
+    return " \nvideoViewScaleXby " + this.a + " videoViewScaleYby " + this.b + " videoViewXBy " + this.l + " videoViewYBy " + this.m + " btnTopMarginOffset " + this.j + " btnLeftMarginOffset " + this.k;
   }
 }
 

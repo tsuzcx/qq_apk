@@ -6,9 +6,13 @@ public final class eFeedType
   implements Serializable
 {
   private static eFeedType[] __values;
+  public static final int _eFeedTypeFriendFeeds = 4;
   public static final int _eFeedTypePerson = 1;
+  public static final int _eFeedTypeSplitBlock = 3;
   public static final int _eFeedTypeVideo = 2;
+  public static final eFeedType eFeedTypeFriendFeeds;
   public static final eFeedType eFeedTypePerson;
+  public static final eFeedType eFeedTypeSplitBlock;
   public static final eFeedType eFeedTypeVideo;
   private String __T = new String();
   private int __value;
@@ -19,9 +23,11 @@ public final class eFeedType
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      __values = new eFeedType[2];
+      __values = new eFeedType[4];
       eFeedTypePerson = new eFeedType(0, 1, "eFeedTypePerson");
       eFeedTypeVideo = new eFeedType(1, 2, "eFeedTypeVideo");
+      eFeedTypeSplitBlock = new eFeedType(2, 3, "eFeedTypeSplitBlock");
+      eFeedTypeFriendFeeds = new eFeedType(3, 4, "eFeedTypeFriendFeeds");
       return;
     }
   }

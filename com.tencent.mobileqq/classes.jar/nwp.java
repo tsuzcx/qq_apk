@@ -1,20 +1,23 @@
-import com.tencent.biz.widgets.TabLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
 
-class nwp
-  implements bhxs
+public final class nwp
+  implements Parcelable.Creator<EncryptUinInfo>
 {
-  nwp(nwm paramnwm) {}
-  
-  public void onScrollStateChanged(int paramInt)
+  public EncryptUinInfo a(Parcel paramParcel)
   {
-    if (paramInt == 4098) {
-      nwm.a(this.a).setOverScrollMode(0);
-    }
+    return new EncryptUinInfo(paramParcel);
+  }
+  
+  public EncryptUinInfo[] a(int paramInt)
+  {
+    return new EncryptUinInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nwp
  * JD-Core Version:    0.7.0.1
  */

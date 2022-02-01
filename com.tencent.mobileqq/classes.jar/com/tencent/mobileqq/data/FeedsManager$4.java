@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import awgf;
 import com.tencent.mobileqq.data.qzone.FeedInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 
 class FeedsManager$4
@@ -15,7 +15,7 @@ class FeedsManager$4
     {
       if (FeedsManager.access$000(this.this$0) != null)
       {
-        boolean bool = FeedsManager.access$000(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqDataQzoneFeedInfo);
+        boolean bool = FeedsManager.access$000(this.this$0).update(this.jdField_a_of_type_ComTencentMobileqqDataQzoneFeedInfo);
         if (QLog.isColorLevel()) {
           QLog.e("FeedsManager", 2, "setFeedInfoRead  :" + this.jdField_a_of_type_JavaLangString + " ,success:" + bool);
         }

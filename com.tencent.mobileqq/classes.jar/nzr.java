@@ -1,40 +1,21 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class nzr
-  implements row
+  implements DialogInterface.OnCancelListener
 {
-  public nzr(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public nzr(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
-  public void a(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((ReadInJoyNewFeedsActivity.a(this.a).a(paramInt) != null) && (ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a() != null)) {
-      ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a().k();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == paramInt2) {
-      szp.a(false);
-    }
-    if (paramInt2 == 1) {
-      this.a.getIntent().putExtra("channel_from", 7);
-    }
-    if ((paramInt1 == paramInt2) && (paramInt2 == 0) && ((this.a.a() instanceof ReadInJoySubChannelFragment)))
-    {
-      this.a.a().f();
-      return;
-    }
-    this.a.a(paramInt2, 256, null, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzr
  * JD-Core Version:    0.7.0.1
  */

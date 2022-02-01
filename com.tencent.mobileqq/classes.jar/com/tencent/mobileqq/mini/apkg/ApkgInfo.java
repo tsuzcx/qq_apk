@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.app.AuthorizeCenter;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
-import com.tencent.mobileqq.mini.http.MiniOkHttpClientFactory;
+import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.util.ImageUtil;
 import com.tencent.mobileqq.mini.utils.FileUtils;
@@ -400,7 +400,7 @@ public class ApkgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgInfo
  * JD-Core Version:    0.7.0.1
  */

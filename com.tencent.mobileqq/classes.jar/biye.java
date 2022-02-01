@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqpim.QQPimBridgeActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.CreateVirtualResult;
 
-public class biye
-  implements DialogInterface.OnDismissListener
+public final class biye
+  implements Parcelable.Creator<CreateVirtualResult>
 {
-  public biye(QQPimBridgeActivity paramQQPimBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public CreateVirtualResult a(Parcel paramParcel)
   {
-    this.a.finish();
+    return new CreateVirtualResult(paramParcel);
+  }
+  
+  public CreateVirtualResult[] a(int paramInt)
+  {
+    return new CreateVirtualResult[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biye
  * JD-Core Version:    0.7.0.1
  */

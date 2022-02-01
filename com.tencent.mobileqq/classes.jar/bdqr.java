@@ -1,153 +1,98 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.SparseBooleanArray;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.BeancurdMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
-public final class bdqr
+public class bdqr
 {
-  static final bdqu jdField_a_of_type_Bdqu = new bdqs();
-  private final SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray;
-  @Nullable
-  private final bdqv jdField_a_of_type_Bdqv;
-  private final bdqw<bdqx, bdqv> jdField_a_of_type_Bdqw;
-  private final List<bdqv> jdField_a_of_type_JavaUtilList;
-  private final List<bdqx> b;
-  
-  bdqr(List<bdqv> paramList, List<bdqx> paramList1)
+  private static void a(QQAppInterface paramQQAppInterface, BeancurdMsg paramBeancurdMsg)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramList1;
-    this.jdField_a_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray();
-    this.jdField_a_of_type_Bdqw = new bdqw();
-    this.jdField_a_of_type_Bdqv = b();
+    paramQQAppInterface = paramQQAppInterface.a().a(paramBeancurdMsg.frienduin, 0, null);
+    int i = paramQQAppInterface.size();
+    long l;
+    if (i > 0)
+    {
+      paramQQAppInterface = (MessageRecord)paramQQAppInterface.get(i - 1);
+      if (paramQQAppInterface != null) {
+        l = paramQQAppInterface.time - 1L;
+      }
+    }
+    for (;;)
+    {
+      QLog.d("Tofu_TofuHelper", 1, String.format("fixTofuMsgTimeAtTop insertAtTop old.size=%d msgTime=%d", new Object[] { Integer.valueOf(i), Long.valueOf(l) }));
+      paramBeancurdMsg.msgTime = l;
+      return;
+      l = -1L;
+      continue;
+      l = -1L;
+    }
   }
   
-  private float a(bdqv parambdqv, bdqx parambdqx)
+  public static void a(QQAppInterface paramQQAppInterface, BeancurdMsg paramBeancurdMsg, boolean paramBoolean1, boolean paramBoolean2)
   {
-    float f3 = 0.0F;
-    float[] arrayOfFloat = parambdqv.a();
-    int i;
-    if (this.jdField_a_of_type_Bdqv != null)
-    {
-      i = this.jdField_a_of_type_Bdqv.b();
-      if (parambdqx.g() <= 0.0F) {
-        break label135;
-      }
-      f1 = parambdqx.g();
+    boolean bool = ((anmw)paramQQAppInterface.getManager(51)).b(paramBeancurdMsg.frienduin);
+    QLog.d("Tofu_TofuHelper", 1, String.format("insertTofuMsg prefUpdate=%b [%s,%d] isFrd=%b", new Object[] { Boolean.valueOf(paramBoolean1), MobileQQ.getShortUinStr(paramBeancurdMsg.frienduin), Integer.valueOf(paramBeancurdMsg.busiid), Boolean.valueOf(bool) }));
+    if (!bool) {}
+    while ((paramBoolean1) && (a(paramQQAppInterface, paramBeancurdMsg))) {
+      return;
     }
-    label135:
-    for (float f1 = (1.0F - Math.abs(arrayOfFloat[1] - parambdqx.b())) * f1;; f1 = 0.0F)
+    afwx localafwx = (afwx)paramQQAppInterface.getManager(282);
+    if (paramBoolean2) {
+      a(paramQQAppInterface, paramBeancurdMsg);
+    }
+    localafwx.a(paramBeancurdMsg);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Tofu_TofuHelper", 2, "onDelFriend " + paramString);
+    }
+    ((bdqs)paramQQAppInterface.getManager(368)).a(paramString);
+    ((afwx)paramQQAppInterface.getManager(282)).b(paramString);
+  }
+  
+  private static boolean a(QQAppInterface paramQQAppInterface, BeancurdMsg paramBeancurdMsg)
+  {
+    boolean bool = false;
+    int i = ((afwx)paramQQAppInterface.getManager(282)).a(paramBeancurdMsg.busiid);
+    Object localObject = paramQQAppInterface.a().a(paramBeancurdMsg.frienduin, 0, new int[] { i });
+    QLog.d("Tofu_TofuHelper", 1, new Object[] { "insertTofuMsg_updateWhenMsgExists old size=", Integer.valueOf(((List)localObject).size()) });
+    if (((List)localObject).size() > 0)
     {
-      if (parambdqx.h() > 0.0F) {
-        f2 = parambdqx.h();
-      }
-      for (float f2 = (1.0F - Math.abs(arrayOfFloat[2] - parambdqx.e())) * f2;; f2 = 0.0F)
+      MessageRecord localMessageRecord = (MessageRecord)((List)localObject).get(((List)localObject).size() - 1);
+      if (localMessageRecord != null) {}
+      for (long l = localMessageRecord.time;; l = bbyp.a())
       {
-        if (parambdqx.i() > 0.0F) {
-          f3 = parambdqx.i() * (parambdqv.b() / i);
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+          if (localMessageRecord != null)
+          {
+            paramQQAppInterface.a().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.msgtype, localMessageRecord.uniseq);
+            paramQQAppInterface.a().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+          }
         }
-        return f1 + f2 + f3;
-        i = 1;
-        break;
       }
-    }
-  }
-  
-  @NonNull
-  public static bdqt a(@NonNull Bitmap paramBitmap)
-  {
-    return new bdqt(paramBitmap);
-  }
-  
-  @Nullable
-  private bdqv a(bdqx parambdqx)
-  {
-    bdqv localbdqv = b(parambdqx);
-    if ((localbdqv != null) && (parambdqx.a())) {
-      this.jdField_a_of_type_AndroidUtilSparseBooleanArray.append(localbdqv.a(), true);
-    }
-    return localbdqv;
-  }
-  
-  private boolean a(bdqv parambdqv, bdqx parambdqx)
-  {
-    float[] arrayOfFloat = parambdqv.a();
-    return (arrayOfFloat[1] >= parambdqx.a()) && (arrayOfFloat[1] <= parambdqx.c()) && (arrayOfFloat[2] >= parambdqx.d()) && (arrayOfFloat[2] <= parambdqx.f()) && (!this.jdField_a_of_type_AndroidUtilSparseBooleanArray.get(parambdqv.a()));
-  }
-  
-  @Nullable
-  private bdqv b()
-  {
-    int i = -2147483648;
-    Object localObject = null;
-    int k = this.jdField_a_of_type_JavaUtilList.size();
-    int j = 0;
-    if (j < k)
-    {
-      bdqv localbdqv = (bdqv)this.jdField_a_of_type_JavaUtilList.get(j);
-      if (localbdqv.b() <= i) {
-        break label67;
+      localObject = "";
+      if ((paramBeancurdMsg.buffer instanceof String)) {
+        localObject = paramBeancurdMsg.buffer;
       }
-      i = localbdqv.b();
-      localObject = localbdqv;
-    }
-    label67:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return localObject;
-    }
-  }
-  
-  @Nullable
-  private bdqv b(bdqx parambdqx)
-  {
-    float f1 = 0.0F;
-    Object localObject = null;
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    if (i < j)
-    {
-      bdqv localbdqv = (bdqv)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (!a(localbdqv, parambdqx)) {
-        break label89;
+      localMessageRecord = bbzh.a(i);
+      localMessageRecord.init(paramQQAppInterface.getAccount(), paramBeancurdMsg.frienduin, paramBeancurdMsg.frienduin, (String)localObject, l, i, 0, l);
+      localMessageRecord.msg = paramBeancurdMsg.buffer;
+      localMessageRecord.isread = true;
+      if (!anqc.a(paramQQAppInterface, localMessageRecord, false)) {
+        paramQQAppInterface.a().a(localMessageRecord, localMessageRecord.selfuin);
       }
-      float f2 = a(localbdqv, parambdqx);
-      if ((localObject != null) && (f2 <= f1)) {
-        break label89;
-      }
-      f1 = f2;
-      localObject = localbdqv;
+      bool = true;
     }
-    label89:
-    for (;;)
-    {
-      i += 1;
-      break;
-      return localObject;
-    }
-  }
-  
-  @Nullable
-  public bdqv a()
-  {
-    return this.jdField_a_of_type_Bdqv;
-  }
-  
-  void a()
-  {
-    int j = this.b.size();
-    int i = 0;
-    while (i < j)
-    {
-      bdqx localbdqx = (bdqx)this.b.get(i);
-      localbdqx.a();
-      this.jdField_a_of_type_Bdqw.b(localbdqx, a(localbdqx));
-      i += 1;
-    }
-    this.jdField_a_of_type_AndroidUtilSparseBooleanArray.clear();
+    return bool;
   }
 }
 

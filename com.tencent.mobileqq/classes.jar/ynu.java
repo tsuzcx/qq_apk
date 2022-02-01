@@ -1,32 +1,13 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-
-public class ynu
-  extends ahhg
+class ynu
+  implements bkhy
 {
-  public ynu(Context paramContext, String paramString)
-  {
-    super(paramContext, paramString);
-  }
+  ynu(ynm paramynm) {}
   
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = getWindow();
-    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
-    localLayoutParams.width = -2;
-    localLayoutParams.height = -2;
-    localLayoutParams.gravity = 17;
-    localLayoutParams.y -= getContext().getResources().getDimensionPixelOffset(2131298994);
-    paramBundle.setAttributes(localLayoutParams);
-  }
+  public void onDismiss() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ynu
  * JD-Core Version:    0.7.0.1
  */

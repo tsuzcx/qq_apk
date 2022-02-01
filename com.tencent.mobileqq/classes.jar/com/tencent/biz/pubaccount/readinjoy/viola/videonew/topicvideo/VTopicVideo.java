@@ -15,9 +15,9 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONObject;
-import sqb;
-import sqc;
-import sqn;
+import trj;
+import trk;
+import trv;
 
 public class VTopicVideo
   extends VVideo
@@ -27,7 +27,7 @@ public class VTopicVideo
   private static final int TOPIC_VIDEO_CONTROL_PLAY = 2;
   private static final int TOPIC_VIDEO_CONTROL_REPLAY = 5;
   private static final int TOPIC_VIDEO_CONTROL_STOP = 4;
-  private IObserver mVideoAppearEventObserver = new sqn(this);
+  private IObserver mVideoAppearEventObserver = new trv(this);
   
   public VTopicVideo(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -42,7 +42,7 @@ public class VTopicVideo
     }
   }
   
-  public sqc getVideoLifeCycleChangeListener()
+  public trk getVideoLifeCycleChangeListener()
   {
     if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
       return ((VVideoView)getHostView()).a();
@@ -55,7 +55,7 @@ public class VTopicVideo
     paramContext = new VVideoView(paramContext, this);
     paramContext.a(this);
     paramContext.a = 2;
-    paramContext.a(0, 0);
+    paramContext.a(0, 0, null, true);
     JSONObject localJSONObject;
     Map.Entry localEntry;
     String str;
@@ -68,7 +68,7 @@ public class VTopicVideo
         for (;;)
         {
           if (!localIterator.hasNext()) {
-            break label206;
+            break label207;
           }
           localEntry = (Map.Entry)localIterator.next();
           str = (String)localEntry.getKey();
@@ -99,7 +99,7 @@ public class VTopicVideo
       }
       localJSONObject.put(str, localEntry.getValue());
       break;
-      label206:
+      label207:
       paramContext.a().a(paramContext, localJSONObject);
     }
   }
@@ -147,7 +147,7 @@ public class VTopicVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo
  * JD-Core Version:    0.7.0.1
  */

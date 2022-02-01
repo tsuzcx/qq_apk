@@ -1,43 +1,55 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.RelativeLayout.LayoutParams;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class lds
-  extends Animation
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private int b;
-  private int c;
-  private int d;
+  public static String a;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  ldt jdField_a_of_type_Ldt;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public lds(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  static
   {
-    setDuration(paramInt1);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)paramView.getLayoutParams());
-    this.b = paramView.getMeasuredHeight();
-    this.jdField_a_of_type_Int = paramView.getMeasuredWidth();
-    this.d = (this.b + paramInt3);
-    this.c = (this.jdField_a_of_type_Int + paramInt2);
+    jdField_a_of_type_JavaLangString = "AccountReceiver";
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public lds(VideoAppInterface paramVideoAppInterface)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if (paramFloat < 1.0F)
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Ldt = new ldt(paramVideoAppInterface);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height = (this.b + (int)((this.d - this.b) * paramFloat));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = (this.jdField_a_of_type_Int + (int)((this.c - this.jdField_a_of_type_Int) * paramFloat));
-      this.jdField_a_of_type_AndroidViewView.requestLayout();
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Ldt);
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQ Account Receiver, Declare permissions");
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
+    localIntentFilter.addAction("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
+    localIntentFilter.addAction("tencent.video.q2v.membersChange");
+    localIntentFilter.addAction("mqq.intent.action.LOGOUT");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Ldt, localIntentFilter, "com.tencent.msg.permission.pushnotify", null) != null) {
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lds
  * JD-Core Version:    0.7.0.1
  */

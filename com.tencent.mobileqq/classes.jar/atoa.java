@@ -1,34 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
-
 class atoa
-  implements Animator.AnimatorListener
+  implements atng
 {
-  atoa(atnw paramatnw, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  atoa(atny paramatny) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
-    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
-    this.jdField_a_of_type_Atnw.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    this.a.a(true, atul.a(this.a.a.a()), this.a.c(), new atob(this));
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void b()
   {
-    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
-    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_Atnw.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
-    this.jdField_a_of_type_Atnw.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    atny.b(this.a);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

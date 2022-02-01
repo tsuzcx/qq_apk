@@ -1,7 +1,14 @@
-public class albd
+import com.tencent.widget.XListView;
+
+class albd
+  implements wxd
 {
-  public int a;
-  public int b;
+  albd(albc paramalbc) {}
+  
+  public void a()
+  {
+    this.a.a.invalidateViews();
+  }
 }
 
 

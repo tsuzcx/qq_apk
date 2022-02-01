@@ -1,35 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import android.os.Bundle;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ArkViewModelBase.AppInfo;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper.2.1;
 
-class agrd
-  implements bemh<oidb_0x8ed.RspBody>
+public class agrd
+  extends audo
 {
-  agrd(agrc paramagrc) {}
+  public agrd(ArkFlashChatContainerWrapper paramArkFlashChatContainerWrapper) {}
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a.jdField_a_of_type_JavaLangString, 2, "exitRoom: errorCode = " + paramInt);
-    }
-    if ((paramInt == 0) || (paramInt == 1285))
-    {
-      if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
-        this.a.a.d.dismiss();
-      }
-      new Intent().putExtra("isNeedFinish", true);
-      bdne.f(this.a.a.a(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-      auxp.a().d();
-      this.a.a.ab = true;
-      this.a.a.b(1);
-      return;
-    }
-    if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
-      this.a.a.d.dismiss();
-    }
-    QQToast.a(this.a.a.a(), 1, alud.a(2131705464), 0).b(this.a.a.a());
+    ArkDispatchTask.getInstance().postDelayed(ArkFlashChatContainerWrapper.a(this.a).name, new ArkFlashChatContainerWrapper.2.1(this, paramBoolean, paramBundle), 1000L);
   }
 }
 

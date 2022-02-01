@@ -1,53 +1,42 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.RequiresApi;
-import com.tencent.youtufacetrack.YoutuFaceTracker;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asxm
+  implements View.OnClickListener
 {
-  protected asxe a;
-  public asxw a;
-  public YoutuFaceTracker a;
-  public AtomicInteger a;
-  protected String[] a;
+  public asxm(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public asxm()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libopencv_world.so", "libYTCommon.so", "libYTFaceTrackPro2.so", "libYTAGReflectLiveCheck.so", "libYTPoseDetect.so" };
-  }
-  
-  @RequiresApi(api=18)
-  public static asxm a(int paramInt, Intent paramIntent, asxw paramasxw)
-  {
-    return new asxr(paramIntent, paramasxw);
-  }
-  
-  public int a(Context paramContext, String paramString)
-  {
-    return -1;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Asxe != null) {
-      this.jdField_a_of_type_Asxe.a();
+    if (paramView == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
+      }
     }
-    if (this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker != null)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker.destroy();
-      this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker = null;
-      YoutuFaceTracker.GlobalRelease();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.getTag();
+      if (localFileManagerEntity != null)
+      {
+        if (this.a.jdField_a_of_type_Asti != null) {
+          this.a.jdField_a_of_type_Asti.a(null);
+        }
+        this.a.jdField_a_of_type_Long = localFileManagerEntity.nSessionId;
+        if (QfileBaseRecentFileTabView.m(this.a).a().b(this.a.jdField_a_of_type_Long)) {
+          this.a.a(localFileManagerEntity);
+        }
+      }
+      this.a.jdField_a_of_type_Asti.a(Integer.valueOf(-1));
+      paramView.setVisibility(4);
+      this.a.g();
     }
-  }
-  
-  public void a(boolean paramBoolean, Activity paramActivity) {}
-  
-  public boolean a(String paramString)
-  {
-    return false;
   }
 }
 

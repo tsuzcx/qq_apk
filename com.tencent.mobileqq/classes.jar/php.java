@@ -1,12 +1,36 @@
-import java.util.List;
+import androidx.annotation.NonNull;
 
-public abstract interface php<BEAN>
+public class php<V>
 {
-  public abstract void a(boolean paramBoolean, List<BEAN> paramList, int paramInt1, Boolean paramBoolean1, int paramInt2, String paramString);
+  private V a;
+  
+  public php(V paramV)
+  {
+    this.a = paramV;
+  }
+  
+  public V a()
+  {
+    return this.a;
+  }
+  
+  public void a(V paramV)
+  {
+    this.a = paramV;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    if (this.a != null) {
+      return this.a.toString();
+    }
+    return "null";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     php
  * JD-Core Version:    0.7.0.1
  */

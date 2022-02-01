@@ -2,9 +2,9 @@ package cooperation.qzone.widget;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.util.LruCache;
-import bjua;
-import bkas;
-import bkat;
+import bmik;
+import bmpd;
+import bmpe;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -50,7 +50,7 @@ public class FastAnimationDrawable$LoopReadWriteRunnable
             QLog.d("FastAnimationDrawable", 2, "LoopReadWriteRunnable decodeBitmap index:" + FastAnimationDrawable.a(this.this$0).get() + " cost:" + l + " delay:" + FastAnimationDrawable.a(this.this$0));
           }
           this.this$0.a.put(Integer.valueOf(FastAnimationDrawable.a(this.this$0).get()), localBitmapDrawable);
-          if ((this.this$0.a.size() == FastAnimationDrawable.a(this.this$0).size()) && (FastAnimationDrawable.a(this.this$0) != null) && (this.this$0.a.size() <= bjua.a().a())) {
+          if ((this.this$0.a.size() == FastAnimationDrawable.a(this.this$0).size()) && (FastAnimationDrawable.a(this.this$0) != null) && (this.this$0.a.size() <= bmik.a().a())) {
             FastAnimationDrawable.a(this.this$0).a(this.this$0.a);
           }
           if (!FastAnimationDrawable.a(this.this$0).hasMessages(0)) {
@@ -67,7 +67,7 @@ public class FastAnimationDrawable$LoopReadWriteRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.widget.FastAnimationDrawable.LoopReadWriteRunnable
  * JD-Core Version:    0.7.0.1
  */

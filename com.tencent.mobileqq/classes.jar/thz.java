@@ -1,43 +1,96 @@
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class thz
+  implements AbsListView.OnScrollListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public long g;
-  public String g;
-  public long h;
-  public String h;
-  public long i;
-  public String i;
-  public long j;
-  public long k;
-  public long l;
-  public long m;
-  public long n;
+  private int jdField_a_of_type_Int = -1;
+  private int b = -1;
+  private int c;
+  private int d;
+  private int e;
   
-  public String toString()
+  public thz(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  
+  private void c()
   {
-    return "WSPlayerReportData{mPlayScene='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mVideoId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mVideoFormat='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mVideoFileSize=" + this.jdField_a_of_type_Long + ", mActualWidth=" + this.jdField_a_of_type_Int + ", mActualHeight=" + this.jdField_b_of_type_Int + ", mVideoBitRate=" + this.jdField_b_of_type_Long + ", mIsHitCache=" + this.jdField_a_of_type_Boolean + ", mSecondBufferTime=" + this.jdField_c_of_type_Long + ", mSecondBufferCount=" + this.jdField_c_of_type_Int + ", mListSpeedKbs='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mMaxSpeedKbs=" + this.jdField_d_of_type_Long + ", mMinSpeedKbs=" + this.jdField_e_of_type_Long + ", mAverageSpeedKbs=" + this.jdField_f_of_type_Long + ", mDownloadedDuration=" + this.jdField_g_of_type_Long + ", mHttpDNSTime=" + this.jdField_h_of_type_Long + ", mHttpRedirectTime=" + this.jdField_i_of_type_Long + ", mHttpFirstReceiveTime=" + this.j + ", mHttpConnectTime=" + this.k + ", mMp4HeaderParseTime=" + this.l + ", mCacheFrameTime=" + this.m + ", mVideoPrepareTime=" + this.n + ", mPreparePerformanceJson='" + this.jdField_e_of_type_JavaLangString + '\'' + ", mSkipFramesTotalCount=" + this.jdField_d_of_type_Int + ", mErrorCode='" + this.jdField_f_of_type_JavaLangString + '\'' + ", mErrorDetailInfo='" + this.jdField_g_of_type_JavaLangString + '\'' + ", mHWCodecErrorCode='" + this.jdField_h_of_type_JavaLangString + '\'' + ", mIsChangeHWBackup=" + this.jdField_b_of_type_Boolean + "\nmHttpConnectQualityJson=" + this.jdField_i_of_type_JavaLangString + '}';
+    if ((this.d > 0) && (this.e == 0))
+    {
+      if ((!ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) || (!ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView))) {
+        break label42;
+      }
+      ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+    }
+    label42:
+    while (!ReadInJoyNinePicDeliverDynamicGridView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) {
+      return;
+    }
+    ReadInJoyNinePicDeliverDynamicGridView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+  }
+  
+  public void a()
+  {
+    if ((this.c != this.jdField_a_of_type_Int) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != -1L))
+    {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView));
+      ReadInJoyNinePicDeliverDynamicGridView.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.c + this.d != this.jdField_a_of_type_Int + this.b) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != -1L))
+    {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView));
+      ReadInJoyNinePicDeliverDynamicGridView.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    if (this.jdField_a_of_type_Int == -1)
+    {
+      i = this.c;
+      this.jdField_a_of_type_Int = i;
+      if (this.b != -1) {
+        break label111;
+      }
+    }
+    label111:
+    for (int i = this.d;; i = this.b)
+    {
+      this.b = i;
+      a();
+      b();
+      this.jdField_a_of_type_Int = this.c;
+      this.b = this.d;
+      if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != null) {
+        ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      }
+      return;
+      i = this.jdField_a_of_type_Int;
+      break;
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    this.e = paramInt;
+    ReadInJoyNinePicDeliverDynamicGridView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, paramInt);
+    c();
+    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView).onScrollStateChanged(paramAbsListView, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     thz
  * JD-Core Version:    0.7.0.1
  */

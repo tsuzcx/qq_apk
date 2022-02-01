@@ -1,21 +1,16 @@
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class afvo
-  implements aufz<MarkFaceMessage, Void>
+final class afvo
+  implements afvp
 {
-  afvo(afvg paramafvg, afvu paramafvu) {}
-  
-  public Void a(MarkFaceMessage paramMarkFaceMessage)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    paramMarkFaceMessage = ((aufn)this.jdField_a_of_type_Afvg.a.getManager(14)).a(paramMarkFaceMessage);
-    this.jdField_a_of_type_Afvu.jdField_a_of_type_Apxv = paramMarkFaceMessage;
-    if ((paramMarkFaceMessage != null) && (paramMarkFaceMessage.a != null)) {
-      this.jdField_a_of_type_Afvu.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = ((aufn)this.jdField_a_of_type_Afvg.a.getManager(14)).a(paramMarkFaceMessage.a.epId);
-    }
-    atzj.a();
-    return null;
+    paramString = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 46);
+    paramString.h = bglf.c(paramQQAppInterface, paramMessageRecord.frienduin, paramMessageRecord.senderuin);
+    return paramString;
   }
 }
 

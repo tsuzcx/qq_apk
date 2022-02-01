@@ -1,11 +1,20 @@
-import android.view.animation.Interpolator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajii
-  implements Interpolator
+  implements View.OnClickListener
 {
-  public float getInterpolation(float paramFloat)
+  public ajii(SimpleSlidingIndicator paramSimpleSlidingIndicator, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e >= 0) && (SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator) != null)) {
+      SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator).b(this.jdField_a_of_type_Int);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a(this.jdField_a_of_type_Int, true, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

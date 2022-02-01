@@ -1,24 +1,35 @@
 import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vmx
-  extends wrj
+class vmx
+  implements View.OnClickListener
 {
-  public vmx(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  vmx(vms paramvms) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
+  public void onClick(View paramView)
   {
-    if ((paramObject instanceof QQUserUIItem))
+    if (this.a.a != null) {
+      this.a.a.callOnClick();
+    }
+    uzk localuzk = vms.a(this.a);
+    StringBuilder localStringBuilder = new StringBuilder().append("tvTime getFeedCommentInfo is");
+    if (localuzk != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramView = (QQUserUIItem)paramObject;
-      uqn.a(this.a.a, 10, paramView.uid);
+      QLog.d("QCircleReplyMessagePresenter", 1, bool);
+      if (localuzk != null) {
+        vms.a(this.a, localuzk, 2);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vmx
  * JD-Core Version:    0.7.0.1
  */

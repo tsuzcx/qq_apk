@@ -1,28 +1,55 @@
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ajfj
-  implements mpv
+public class ajfj
+  extends MqqHandler
 {
-  ajfj(ajfi paramajfi) {}
+  public ajfj(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onError " + paramInt);
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+      return;
+    case 1012: 
+      if (this.a.jdField_a_of_type_Ajdv != null) {
+        if (this.a.c == 0) {
+          break label160;
+        }
+      }
+      for (this.a.jdField_a_of_type_Ajdv.a = 0;; this.a.jdField_a_of_type_Ajdv.a = bdgn.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      {
+        this.a.jdField_a_of_type_Ajdv.notifyDataSetChanged();
+        this.a.jdField_a_of_type_Antq.c = bdgn.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.a.c(ajfn.a());
+        this.a.b(ajfn.b());
+        this.a.a(false, 1);
+        this.a.a(false, 2);
+        if (TroopNotifyAndRecommendView.a(this.a) == null) {
+          break;
+        }
+        TroopNotifyAndRecommendView.a(this.a).notifyDataSetChanged();
+        return;
+      }
+    case 1014: 
+      label160:
+      this.a.j();
+      return;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onStart " + paramString);
+    paramMessage = paramMessage.obj;
+    try
+    {
+      this.a.a((List)paramMessage);
+      return;
     }
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onFinish " + paramString);
+    catch (Exception paramMessage)
+    {
+      QLog.e("TroopNotifyAndRecommendView", 1, "handleRecommendData wrong");
     }
   }
 }

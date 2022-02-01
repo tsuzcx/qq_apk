@@ -1,10 +1,14 @@
-import com.tencent.mobileqq.data.TroopInfo;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahof
+  implements ahor
 {
-  public int a;
-  public TroopInfo a;
-  public String a;
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramagup.c(paramMessageRecord, paramagwc, paramString);
+  }
 }
 
 

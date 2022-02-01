@@ -1,42 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.content.res.Resources;
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public class akiu
-  implements ValueAnimator.AnimatorUpdateListener
+class akiu
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public akiu(ForwardRecentItemView paramForwardRecentItemView, RelativeLayout.LayoutParams paramLayoutParams) {}
+  akiu(akit paramakit) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b - this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_Int);
-    if (AppSetting.c)
+    if (bpwu.a(this.a.mActivity, paramLocalMediaInfo))
     {
-      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.getResources();
-      if (!this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label124;
-      }
-    }
-    label124:
-    for (int i = 2131690852;; i = 2131721201)
-    {
-      paramValueAnimator = paramValueAnimator.getString(i);
-      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString + paramValueAnimator);
+      akit.a(this.a, paramLocalMediaInfo);
+      aaxb.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
       return;
     }
+    ((NewPhotoListActivity)this.a.mActivity).cancleProgressDailog();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akiu
  * JD-Core Version:    0.7.0.1
  */

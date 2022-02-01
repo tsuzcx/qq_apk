@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import bdne;
-import com.tencent.common.app.BaseApplicationImpl;
+import bcrg;
 
 class LoadDex$1
   implements Runnable
@@ -10,7 +9,7 @@ class LoadDex$1
   
   public void run()
   {
-    bdne.b(BaseApplicationImpl.context);
+    bcrg.b(16, this.this$0.mDirector, null).step();
   }
 }
 

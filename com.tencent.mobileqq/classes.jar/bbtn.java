@@ -1,76 +1,26 @@
-import java.util.UUID;
+import com.tencent.mobileqq.search.searchengine.MiniProgramSearchEngine;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class bbtn
+  implements Comparator<bbnd>
 {
-  public int a;
-  public long a;
-  public String a;
-  public UUID a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public String j;
+  public bbtn(MiniProgramSearchEngine paramMiniProgramSearchEngine) {}
   
-  public bbtn()
+  public int a(bbnd parambbnd1, bbnd parambbnd2)
   {
-    this.jdField_b_of_type_Int = 7;
-  }
-  
-  public bbtn(bbtn parambbtn)
-  {
-    a(parambbtn);
-  }
-  
-  public void a(bbtn parambbtn)
-  {
-    this.jdField_b_of_type_Int = 7;
-    if (parambbtn != null)
+    int i = parambbnd2.a[2] - parambbnd1.a[2];
+    if (i != 0) {}
+    int j;
+    do
     {
-      this.jdField_a_of_type_JavaUtilUUID = parambbtn.jdField_a_of_type_JavaUtilUUID;
-      this.jdField_a_of_type_Int = parambbtn.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Long = parambbtn.jdField_a_of_type_Long;
-      this.jdField_b_of_type_Long = parambbtn.jdField_b_of_type_Long;
-      this.jdField_b_of_type_Int = parambbtn.jdField_b_of_type_Int;
-      this.jdField_c_of_type_Int = parambbtn.jdField_c_of_type_Int;
-      this.jdField_c_of_type_Long = parambbtn.jdField_c_of_type_Long;
-      this.jdField_d_of_type_Long = parambbtn.jdField_d_of_type_Long;
-      this.jdField_a_of_type_JavaLangString = parambbtn.jdField_a_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = parambbtn.jdField_b_of_type_JavaLangString;
-      this.jdField_c_of_type_JavaLangString = parambbtn.jdField_c_of_type_JavaLangString;
-      this.jdField_d_of_type_JavaLangString = parambbtn.jdField_d_of_type_JavaLangString;
-      this.jdField_e_of_type_Int = parambbtn.jdField_e_of_type_Int;
-      this.f = parambbtn.f;
-      this.jdField_g_of_type_Int = parambbtn.jdField_g_of_type_Int;
-      this.jdField_e_of_type_JavaLangString = parambbtn.jdField_e_of_type_JavaLangString;
-      this.jdField_g_of_type_JavaLangString = parambbtn.jdField_g_of_type_JavaLangString;
-      this.jdField_h_of_type_Int = parambbtn.jdField_h_of_type_Int;
-      this.jdField_h_of_type_JavaLangString = parambbtn.jdField_h_of_type_JavaLangString;
-      this.jdField_i_of_type_JavaLangString = parambbtn.jdField_i_of_type_JavaLangString;
-      this.jdField_b_of_type_Boolean = parambbtn.jdField_b_of_type_Boolean;
-      this.j = parambbtn.j;
-      this.jdField_i_of_type_Int = parambbtn.jdField_i_of_type_Int;
-      this.jdField_c_of_type_Boolean = parambbtn.jdField_c_of_type_Boolean;
-    }
+      return i;
+      j = parambbnd1.a[0] - parambbnd2.a[0];
+      i = j;
+    } while (j != 0);
+    parambbnd1 = parambbnd1.c().substring(parambbnd1.a[0] + parambbnd1.a[1]);
+    parambbnd2 = parambbnd2.c().substring(parambbnd2.a[0] + parambbnd2.a[1]);
+    return ChnToSpell.a(parambbnd1, 2).compareTo(ChnToSpell.a(parambbnd2, 2));
   }
 }
 

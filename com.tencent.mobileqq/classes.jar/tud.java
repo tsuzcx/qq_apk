@@ -1,37 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.SingleLineTextView;
 
 class tud
-  implements bhuk
+  extends bkot
 {
-  tud(tuc paramtuc, bhuf parambhuf) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+  String jdField_a_of_type_JavaLangString;
+  Button jdField_b_of_type_AndroidWidgetButton;
+  SingleLineTextView jdField_b_of_type_ComTencentWidgetSingleLineTextView;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (!yxv.a("showEnterAuthActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      if (tuc.a(this.jdField_a_of_type_Tuc) != null)
-      {
-        tqs.a(this.jdField_a_of_type_Tuc.a(), tqr.a(tuc.a(this.jdField_a_of_type_Tuc).a.urlInfo.get(), "authSchoolUrl"));
-        continue;
-        if (tuc.a(this.jdField_a_of_type_Tuc) != null) {
-          tqs.a(this.jdField_a_of_type_Tuc.a(), tqr.a(tuc.a(this.jdField_a_of_type_Tuc).a.urlInfo.get(), "authCampanyUrl"));
-        }
-      }
-    }
-  }
+  tud(ttz paramttz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tud
  * JD-Core Version:    0.7.0.1
  */

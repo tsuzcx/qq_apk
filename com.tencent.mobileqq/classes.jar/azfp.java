@@ -1,8 +1,14 @@
-public abstract interface azfp
+import android.view.View;
+
+class azfp
+  implements bkhw
 {
-  public abstract void a(int paramInt);
+  azfp(azfn paramazfn) {}
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public void OnClick(View paramView, int paramInt)
+  {
+    azfn.a(this.a, paramInt);
+  }
 }
 
 

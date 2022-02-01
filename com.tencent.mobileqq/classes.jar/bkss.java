@@ -1,16 +1,8 @@
-import android.graphics.SurfaceTexture;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
 public abstract interface bkss
 {
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(SurfaceTexture paramSurfaceTexture);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract void g();
-  
-  public abstract void i();
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 

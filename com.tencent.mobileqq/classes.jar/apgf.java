@@ -1,18 +1,29 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
 
-class apgf
-  implements DialogInterface.OnClickListener
+public class apgf
+  extends AnimatorListenerAdapter
 {
-  apgf(apgd paramapgd) {}
+  public apgf(QRScanEntryView paramQRScanEntryView, View paramView, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDialogInterface.cancel();
-    paramDialogInterface = new Intent("android.settings.INTERNAL_STORAGE_SETTINGS");
-    this.a.a.startActivity(paramDialogInterface);
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
   }
 }
 

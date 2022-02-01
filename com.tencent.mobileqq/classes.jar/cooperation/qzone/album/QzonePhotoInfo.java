@@ -3,14 +3,14 @@ package cooperation.qzone.album;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjhj;
+import blvp;
 import java.util.HashMap;
 import java.util.Map;
 
 public class QzonePhotoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<QzonePhotoInfo> CREATOR = new bjhj();
+  public static final Parcelable.Creator<QzonePhotoInfo> CREATOR = new blvp();
   public int a;
   public long a;
   public String a;
@@ -61,7 +61,7 @@ public class QzonePhotoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.album.QzonePhotoInfo
  * JD-Core Version:    0.7.0.1
  */

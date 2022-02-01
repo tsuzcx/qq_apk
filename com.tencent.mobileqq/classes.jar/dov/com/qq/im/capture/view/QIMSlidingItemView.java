@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.view;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,14 +9,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bmbj;
+import boun;
 
 public class QIMSlidingItemView
   extends LinearLayout
 {
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bmbj jdField_a_of_type_Bmbj;
+  boun jdField_a_of_type_Boun;
   
   public QIMSlidingItemView(@NonNull Context paramContext)
   {
@@ -42,12 +42,12 @@ public class QIMSlidingItemView
     setGravity(16);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(aepi.a(13.0F, getResources()), aepi.a(12.0F, getResources()));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(afur.a(13.0F, getResources()), afur.a(12.0F, getResources()));
     localLayoutParams.gravity = 17;
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.leftMargin = aepi.a(4.0F, getResources());
+    localLayoutParams.leftMargin = afur.a(4.0F, getResources());
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
   }
   
@@ -71,27 +71,27 @@ public class QIMSlidingItemView
       }
     }
     label41:
-    for (paramInt = this.jdField_a_of_type_Bmbj.b;; paramInt = this.jdField_a_of_type_Bmbj.jdField_a_of_type_Int)
+    for (paramInt = this.jdField_a_of_type_Boun.b;; paramInt = this.jdField_a_of_type_Boun.jdField_a_of_type_Int)
     {
       localImageView.setImageResource(paramInt);
       return;
     }
   }
   
-  public void setData(bmbj parambmbj)
+  public void setData(boun paramboun)
   {
-    this.jdField_a_of_type_Bmbj = parambmbj;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bmbj.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Bmbj.jdField_a_of_type_Int != 0)
+    this.jdField_a_of_type_Boun = paramboun;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Boun.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Boun.jdField_a_of_type_Int != 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_Bmbj.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_Boun.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QIMSlidingItemView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.intervideo.now.dynamic;
 
 import android.os.Bundle;
-import atei;
+import avkv;
 import com.tencent.intervideo.nowproxy.customized_interface.DownloadCallback;
 import com.tencent.qphone.base.util.QLog;
 
 public class PluginManagerInterfaceImpl$2$1
   implements Runnable
 {
-  public PluginManagerInterfaceImpl$2$1(atei paramatei) {}
+  public PluginManagerInterfaceImpl$2$1(avkv paramavkv) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class PluginManagerInterfaceImpl$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.PluginManagerInterfaceImpl.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,87 @@
-import android.graphics.drawable.Drawable;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.1;
+import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.2;
+import com.tencent.mobileqq.earlydownload.xmldata.PokeResData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class aroh
-  implements bhvx
+public class aroh
+  extends arnz
 {
-  aroh(arog paramarog) {}
+  private boolean d;
   
-  public void F()
+  public aroh(QQAppInterface paramQQAppInterface)
   {
-    arog.a(this.a, false);
-    this.a.jdField_a_of_type_Aroe.o();
+    super("qq.android.poke.res_0625", paramQQAppInterface);
   }
   
-  public void G()
+  public int a()
   {
-    arog.a(this.a, false);
-    if (arog.a(this.a)) {
-      this.a.b(true);
-    }
-    if (arog.b(this.a)) {
-      this.a.a(true);
-    }
+    return 10044;
   }
   
-  public void H() {}
-  
-  public void a(float paramFloat)
+  public Class<? extends XmlData> a()
   {
-    arog.a(this.a, true);
-    if (arog.a(this.a) != null)
-    {
-      Drawable localDrawable = arog.a(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
-      }
+    return PokeResData.class;
+  }
+  
+  public String a()
+  {
+    return "PokeResHandler_0625";
+  }
+  
+  public void a()
+  {
+    BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).edit().putBoolean("ready", true);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess:" + paramString);
     }
-    if (paramFloat < 0.8F)
+    if (!new File(paramString).exists())
     {
-      if (arog.a(this.a) != null) {
-        arog.a(this.a).setVisibility(8);
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess sorse not exists");
       }
-      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      }
+      return;
     }
+    String str = bhgg.a(aheh.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess imagePath=" + str);
+    }
+    ThreadManager.post(new PokeResHandler.1(this, str, paramString), 8, null, true);
+    super.a(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    ThreadManager.executeOnSubThread(new PokeResHandler.2(this));
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean g()
+  {
+    if (!this.d) {
+      this.d = BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).getBoolean("ready", false);
+    }
+    return super.g() & this.d;
   }
 }
 

@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class acvx
-  implements View.OnLongClickListener
+class acvx
+  implements Comparator<MessageRecord>
 {
-  public acvx(EditInfoActivity paramEditInfoActivity) {}
+  acvx(acvt paramacvt) {}
   
-  public boolean onLongClick(View paramView)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    return true;
+    return (int)(paramMessageRecord2.time - paramMessageRecord1.time);
   }
 }
 

@@ -1,213 +1,68 @@
-import UserGrowth.stNotificationRedDot;
-import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.PopupWindow;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.weishi_new.view.RedDotBubblePopupWindow.1;
-import java.util.ArrayList;
-import java.util.ArrayList<LUserGrowth.stNotificationRedDot;>;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Iterator;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class tnu
-  extends PopupWindow
-  implements View.OnClickListener
+  implements rqa
 {
-  private static final int jdField_a_of_type_Int = bdoo.a(8.0F);
-  private Context jdField_a_of_type_AndroidContentContext;
-  public Handler a;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private tnv jdField_a_of_type_Tnv;
-  private TextView b;
-  private TextView c;
+  public tnu(BridgeModule paramBridgeModule, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString2) {}
   
-  public tnu(Context paramContext, tnv paramtnv)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Tnv = paramtnv;
-  }
-  
-  private void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = 0;
-    int j;
-    if (localIterator.hasNext())
+    Object localObject = paramList.iterator();
+    UgcVideo localUgcVideo;
+    do
     {
-      Object localObject = (View)localIterator.next();
-      if (((View)localObject).getVisibility() != 0) {
-        break label87;
+      if (!((Iterator)localObject).hasNext()) {
+        break;
       }
-      localObject = ((View)localObject).getLayoutParams();
-      if ((localObject instanceof ViewGroup.MarginLayoutParams))
-      {
-        localObject = (ViewGroup.MarginLayoutParams)localObject;
-        if (i == 0)
-        {
-          j = 0;
-          label66:
-          ((ViewGroup.MarginLayoutParams)localObject).leftMargin = j;
-        }
-      }
-      else
-      {
-        i += 1;
-      }
-    }
-    label87:
+      localUgcVideo = (UgcVideo)((Iterator)localObject).next();
+    } while (!TextUtils.equals(localUgcVideo.seqId, this.jdField_a_of_type_JavaLangString));
     for (;;)
     {
-      break;
-      j = jdField_a_of_type_Int;
-      break label66;
-      return;
-    }
-  }
-  
-  private void b(View paramView, ArrayList<stNotificationRedDot> paramArrayList)
-  {
-    paramView.findViewById(2131369696).setOnClickListener(this);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131369433));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131365993));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131371480));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369440));
-    this.b = ((TextView)paramView.findViewById(2131365996));
-    this.c = ((TextView)paramView.findViewById(2131371481));
-    String str = "";
-    Object localObject1 = "";
-    paramView = "";
-    Object localObject2 = paramView;
-    Object localObject3 = localObject1;
-    Object localObject4 = str;
-    if (paramArrayList != null)
-    {
-      Iterator localIterator = paramArrayList.iterator();
-      paramArrayList = str;
-      localObject2 = paramView;
-      localObject3 = localObject1;
-      localObject4 = paramArrayList;
-      if (localIterator.hasNext())
+      if (localUgcVideo != null)
       {
-        localObject2 = (stNotificationRedDot)localIterator.next();
-        if (((stNotificationRedDot)localObject2).type == 2)
-        {
-          localObject2 = ((stNotificationRedDot)localObject2).text;
-          paramArrayList = (ArrayList<stNotificationRedDot>)localObject1;
-          localObject1 = localObject2;
+        localObject = rjh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localUgcVideo.publicType).a();
+        if (localUgcVideo.status == UgcVideo.STATUS_PAUSE) {
+          oat.a("0X800AC62", (String)localObject);
         }
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      localObject1 = paramArrayList;
-      paramArrayList = (ArrayList<stNotificationRedDot>)localObject2;
-      break;
-      if (((stNotificationRedDot)localObject2).type == 3)
-      {
-        localObject2 = ((stNotificationRedDot)localObject2).text;
-        localObject1 = paramArrayList;
-        paramArrayList = (ArrayList<stNotificationRedDot>)localObject2;
-      }
-      else if (((stNotificationRedDot)localObject2).type == 1)
-      {
-        paramView = ((stNotificationRedDot)localObject2).text;
-        localObject2 = paramArrayList;
-        paramArrayList = (ArrayList<stNotificationRedDot>)localObject1;
-        localObject1 = localObject2;
-        continue;
-        if (TextUtils.isEmpty((CharSequence)localObject4))
+        while ((bgnt.b(BaseApplicationImpl.getContext())) && (BaseActivity.sTopActivity != null))
         {
-          ((View)this.jdField_a_of_type_JavaUtilArrayList.get(0)).setVisibility(8);
-          if (!TextUtils.isEmpty(localObject3)) {
-            break label344;
+          long l = rjh.a(localUgcVideo);
+          if (l > 0L)
+          {
+            rjh.a(BaseActivity.sTopActivity, l, new tnv(this, localUgcVideo, paramList), null);
+            return;
+            if (localUgcVideo.status == UgcVideo.STATUS_FAILED) {
+              oat.a("0X800AC63", (String)localObject);
+            }
           }
-          ((View)this.jdField_a_of_type_JavaUtilArrayList.get(1)).setVisibility(8);
-        }
-        for (;;)
-        {
-          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label371;
+          else
+          {
+            rps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localUgcVideo, true);
+            BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+            return;
           }
-          ((View)this.jdField_a_of_type_JavaUtilArrayList.get(2)).setVisibility(8);
-          return;
-          ((View)this.jdField_a_of_type_JavaUtilArrayList.get(0)).setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject4);
-          break;
-          label344:
-          ((View)this.jdField_a_of_type_JavaUtilArrayList.get(1)).setVisibility(0);
-          this.b.setText(localObject3);
         }
-        label371:
-        ((View)this.jdField_a_of_type_JavaUtilArrayList.get(2)).setVisibility(0);
-        this.c.setText((CharSequence)localObject2);
+        rps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localUgcVideo, true);
+        BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+        return;
       }
-      else
-      {
-        localObject2 = paramArrayList;
-        paramArrayList = (ArrayList<stNotificationRedDot>)localObject1;
-        localObject1 = localObject2;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (isShowing()) {
-      dismiss();
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    this.jdField_a_of_type_AndroidViewView = null;
-  }
-  
-  public void a(View paramView, ArrayList<stNotificationRedDot> paramArrayList)
-  {
-    if (isShowing()) {
-      dismiss();
-    }
-    if (paramView == null) {
+      BridgeModule.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, -1, "ugcVideo not exist");
       return;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      setBackgroundDrawable(new BitmapDrawable());
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559849, null);
-      b(this.jdField_a_of_type_AndroidViewView, paramArrayList);
-      setContentView(this.jdField_a_of_type_AndroidViewView);
-      setWidth(-2);
-      setHeight(-2);
-      b();
-    }
-    paramView.post(new RedDotBubblePopupWindow.1(this, paramView));
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131369696)
-    {
-      if (this.jdField_a_of_type_Tnv != null) {
-        this.jdField_a_of_type_Tnv.a();
-      }
-      a();
+      localUgcVideo = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tnu
  * JD-Core Version:    0.7.0.1
  */

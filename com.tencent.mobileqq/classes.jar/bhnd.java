@@ -1,25 +1,19 @@
-import com.tencent.qqprotect.qsec.QSecFramework;
-
-class bhnd
-  implements bhoa
+public class bhnd
 {
-  protected long a;
+  public int a;
+  public String a;
+  public int[] a;
   
-  public bhnd(bhmz parambhmz, long paramLong)
+  public bhnd(int[] paramArrayOfInt, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    if (this.jdField_a_of_type_Long != 0L) {
-      QSecFramework.a(7L, this.jdField_a_of_type_Long, paramInt, 0L, paramArrayOfByte1, paramArrayOfByte2, null, null);
-    }
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhnd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,135 +1,76 @@
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
-public class biwl
+class biwl
+  implements DialogInterface.OnClickListener
 {
-  private final HashSet<WeakReference<biwm>> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private final ConcurrentHashMap<Integer, HashSet<WeakReference<biwm>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  biwl(biwe parambiwe, boolean paramBoolean1, DialogInterface.OnClickListener paramOnClickListener, Bundle paramBundle, int paramInt1, boolean paramBoolean2, Activity paramActivity, String paramString1, boolean paramBoolean3, boolean paramBoolean4, String paramString2, int paramInt2) {}
   
-  public void a(int paramInt, Object paramObject, Object... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject1 = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    bisy.c("MyAppApi", "---onConfirm--onClick");
+    if (!this.jdField_a_of_type_Biwe.b())
     {
-      HashSet localHashSet = (HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-      if (localHashSet != null) {
-        ((ArrayList)localObject1).addAll(localHashSet);
-      }
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      ((ArrayList)localObject1).addAll(this.jdField_a_of_type_JavaUtilHashSet);
-      localObject1 = ((ArrayList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+      this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp = new biwp(this.jdField_a_of_type_Biwe);
+      this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+      this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidOsBundle;
+      this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      if (this.jdField_b_of_type_Boolean)
       {
-        ??? = (biwm)((WeakReference)((Iterator)localObject1).next()).get();
-        if (??? != null)
-        {
-          ((biwm)???).a(paramInt, paramObject, paramVarArgs);
-          continue;
-          paramObject = finally;
-          throw paramObject;
+        this.jdField_a_of_type_Biwe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
+        if ((this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws != null) && (this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws.isShowing())) {
+          this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws.a(0, 1);
         }
       }
     }
-  }
-  
-  public void a(biwm parambiwm)
-  {
-    if (parambiwm == null) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator;
-    Object localObject2;
-    Object localObject3;
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject2 = (WeakReference)localIterator.next();
-        localObject3 = (biwm)((WeakReference)localObject2).get();
-        if ((localObject3 == null) || (parambiwm == localObject3)) {
-          localArrayList.add(localObject2);
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilHashSet.removeAll(localArrayList);
+    label636:
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bivp.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.d);
+      this.jdField_a_of_type_Biwe.c = true;
+      biuh.a("201", biuh.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.jdField_b_of_type_JavaLangString);
+      paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 100 + "|" + paramDialogInterface;
+      bipx.a().a(25, paramDialogInterface);
+      bcst.b(null, "dc00898", "", "", "0X8008F7D", "0X8008F7D", 0, 0, "", "", "", "");
+      if (this.jdField_b_of_type_Int == 1)
       {
-        localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        int i = ((Integer)localIterator.next()).intValue();
-        localObject2 = (HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-        localArrayList.clear();
-        localObject3 = ((HashSet)localObject2).iterator();
-        if (((Iterator)localObject3).hasNext())
-        {
-          WeakReference localWeakReference = (WeakReference)((Iterator)localObject3).next();
-          biwm localbiwm = (biwm)localWeakReference.get();
-          if ((localbiwm != null) && (parambiwm != localbiwm)) {
-            continue;
-          }
-          localArrayList.add(localWeakReference);
-        }
+        paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString("pageId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString("moduleId") + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bivp.d);
+        bisp.b("6006", "1", "0", this.jdField_a_of_type_JavaLangString, paramDialogInterface);
       }
-      ((HashSet)localObject2).removeAll(localArrayList);
-    }
-  }
-  
-  public void a(biwm parambiwm, int... arg2)
-  {
-    if (parambiwm == null) {
-      return;
-    }
-    a(parambiwm);
-    parambiwm = new WeakReference(parambiwm);
-    if ((??? == null) || (???.length == 0)) {
-      synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-      {
-        this.jdField_a_of_type_JavaUtilHashSet.add(parambiwm);
-        return;
-      }
-    }
-    for (;;)
-    {
-      int i;
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-      {
-        int j = ???.length;
-        i = 0;
-        if (i < j)
-        {
-          int k = ???[i];
-          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(k)))
-          {
-            ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(k))).add(parambiwm);
-          }
-          else
-          {
-            HashSet localHashSet = new HashSet();
-            localHashSet.add(parambiwm);
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(k), localHashSet);
-          }
-        }
+      if (("ANDROID.QQ.YYBXZGAMECENTER".equals(this.jdField_a_of_type_JavaLangString)) || ("ANDROID.QQ.NEWYYBXZGAMECENTER".equals(this.jdField_a_of_type_JavaLangString))) {
+        aceh.a(null, "765", "205010", this.jdField_b_of_type_JavaLangString, "76501", "1", "156");
       }
       return;
-      i += 1;
+      new biwo(this.jdField_a_of_type_Biwe, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Biwe.jdField_a_of_type_Biwp).execute(new Void[0]);
+      continue;
+      if ((bivk.h()) || (this.c)) {
+        if (this.jdField_a_of_type_Int == 0) {
+          this.jdField_a_of_type_Biwe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.d);
+        }
+      }
+      for (;;)
+      {
+        if ((this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws == null) || (!this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws.isShowing())) {
+          break label636;
+        }
+        this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws.dismiss();
+        break;
+        this.jdField_a_of_type_Biwe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.d);
+        continue;
+        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biwl
  * JD-Core Version:    0.7.0.1
  */

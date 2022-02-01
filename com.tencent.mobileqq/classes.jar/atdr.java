@@ -1,11 +1,14 @@
-class atdr
-  implements atdz
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
+
+final class atdr
+  implements SDKInitListener
 {
-  atdr(atdh paramatdh, atfe paramatfe) {}
-  
-  public void a(int paramInt, String paramString)
+  public void onSDKInited(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Atfe.a(paramInt, paramString);
+    if (!paramBoolean) {
+      QLog.e("FileVideoDownloadManager<FileAssistant>XOXO", 1, "initSDKAsync failed!");
+    }
   }
 }
 

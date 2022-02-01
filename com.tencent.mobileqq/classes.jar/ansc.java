@@ -1,24 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import java.util.Comparator;
 
-public class ansc
-  implements alpg
+class ansc
+  implements Comparator<QIMNotifyAddFriend>
 {
-  public void a(boolean paramBoolean, int paramInt, long paramLong) {}
+  ansc(ansb paramansb) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public int a(QIMNotifyAddFriend paramQIMNotifyAddFriend1, QIMNotifyAddFriend paramQIMNotifyAddFriend2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArMapObserver", 2, new Object[] { "onUpdate, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (!(paramObject instanceof Object[]));
-    paramObject = (Object[])paramObject;
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Long)paramObject[1]).longValue());
+    return (int)(paramQIMNotifyAddFriend2.pushTime - paramQIMNotifyAddFriend1.pushTime);
   }
 }
 

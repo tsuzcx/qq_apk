@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import nrt;
-import ntd;
-import rjk;
-import rkp;
+import oat;
+import och;
+import sey;
+import sfq;
 
 public class VideoUIManager$6
   implements Runnable
 {
-  public VideoUIManager$6(rkp paramrkp) {}
+  public VideoUIManager$6(sfq paramsfq) {}
   
   public void run()
   {
-    if ((rkp.a(this.this$0) != null) && (rkp.a(this.this$0).a != null)) {
-      nrt.a(null, "", "0X8008ACD", "0X8008ACD", 0, 0, "", "", "", ntd.a(rkp.a(this.this$0).a.mVideoVid, rkp.a(this.this$0).a.innerUniqueID, (int)rkp.a(this.this$0).a.mChannelID, null), false);
+    if ((sfq.a(this.this$0) != null) && (sfq.a(this.this$0).a != null)) {
+      oat.a(null, "", "0X8008ACD", "0X8008ACD", 0, 0, "", "", "", och.a(sfq.a(this.this$0).a.mVideoVid, sfq.a(this.this$0).a.innerUniqueID, (int)sfq.a(this.this$0).a.mChannelID, null), false);
     }
   }
 }

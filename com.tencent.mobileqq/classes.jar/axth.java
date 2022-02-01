@@ -1,64 +1,74 @@
-import java.util.HashMap;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.qphone.base.util.QLog;
 
-public class axth
-  extends axtf
+class axth
+  implements ViewPager.OnPageChangeListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public int i;
-  public int j = -1;
-  public int k = -1;
-  public int l = 1001;
-  public int m = -1;
+  axth(axsd paramaxsd) {}
   
-  public axth()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Long = 0L;
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public HashMap<String, String> a(String paramString)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if ("ShortVideo.Send".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_DetailUrl", this.jdField_a_of_type_JavaLangString);
-      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_isForward", this.jdField_a_of_type_Boolean + "");
-      paramString.put("param_isExist", this.jdField_b_of_type_Boolean + "");
-      paramString.put("param_forwardSourceUinType", this.jdField_a_of_type_Int + "");
-      paramString.put("param_forwardSourceGroupMemberCount", this.i + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_userType", this.l + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_shortVideoSourceType", this.j + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_fileInterval", this.k + "");
-      paramString.put("param_netType", this.h + "");
-      paramString.put("param_md5", this.jdField_b_of_type_JavaLangString);
-      paramString.put("param_fileSize", this.jdField_a_of_type_Long + "");
-      paramString.put("param_duration", this.jdField_b_of_type_Long + "");
-      paramString.put("param_status", this.m + "");
-      return paramString;
+    if (QLog.isColorLevel()) {
+      axei.a("onPageSelected", new Object[] { Integer.valueOf(paramInt) });
     }
-    return null;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
+    Object localObject = (NearbyBaseFragment)this.a.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag("android:switcher:2131381064:" + paramInt);
+    if (localObject != null) {
+      ((NearbyBaseFragment)localObject).aP_();
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2)
+    {
+      if (paramInt == 0) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+    }
+    else
+    {
+      if (paramInt != 0) {
+        break label289;
+      }
+      localbcsy = new bcsy(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("datatab_exp");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 2) {
+        break label283;
+      }
+    }
+    label283:
+    for (localObject = "1";; localObject = "2")
+    {
+      localbcsy.a(new String[] { localObject }).a();
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localbcsy = new bcsy(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("exp_pub").e(axsd.a(this.a).uin);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
+      for (localObject = "1";; localObject = "2")
+      {
+        localbcsy.a(new String[] { localObject }).a();
+        break;
+      }
+    }
+    label289:
+    bcsy localbcsy = new bcsy(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("feedtab_exp").e(axsd.a(this.a).uin);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
+    for (localObject = "1";; localObject = "2")
+    {
+      localbcsy.a(new String[] { localObject }).a();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axth
  * JD-Core Version:    0.7.0.1
  */

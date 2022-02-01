@@ -1,113 +1,45 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.opengl.GLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
 
-public class aoue
-  extends aokh<aotz>
+public final class aoue
 {
-  final String a = "QfileFileAssistantTipsConfigProcessor<FileAssistant>";
-  
-  public int a()
+  public static aoty a(aoua paramaoua, aouc paramaouc, GLSurfaceView paramGLSurfaceView)
   {
-    return 606;
-  }
-  
-  @NonNull
-  public aotz a(int paramInt)
-  {
-    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
-    return new aotz();
-  }
-  
-  @Nullable
-  public aotz a(aoko[] paramArrayOfaoko)
-  {
-    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaoko != null) {
-      try
-      {
-        if (paramArrayOfaoko.length > 0)
-        {
-          paramArrayOfaoko = (aotz)aolc.a(paramArrayOfaoko[0].a, aotz.class);
-          return paramArrayOfaoko;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfaoko) {}
+    if (paramaouc == null) {
+      return null;
     }
-    return null;
-  }
-  
-  public Class<aotz> a()
-  {
-    return aotz.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public void a(aotz paramaotz)
-  {
-    if (paramaotz == null)
+    switch (paramaouc.a)
     {
-      QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onUpdate: newConf is null.");
-      return;
+    default: 
+      return null;
+    case 0: 
+      paramaoua = new aoun(paramaoua, (aouo)paramaouc);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_3D here " + paramaouc.toString());
+      return paramaoua;
+    case 2: 
+    case 3: 
+      paramaoua = new aouv(paramaoua, (aoux)paramaouc);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_NORAML_2D_VIDEO here" + paramaouc.toString());
+      return paramaoua;
+    case 4: 
+      paramaoua = new aouy(paramaoua, (aova)paramaouc);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_ONLINE_VIDEO here" + paramaouc.toString());
+      return paramaoua;
+    case 5: 
+      paramaoua = new aouu(paramaoua, (aout)paramaouc);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_MULTI_ANIM here" + paramaouc.toString());
+      return paramaoua;
+    case 100: 
+      paramaoua = new aour(paramaoua, (aous)paramaouc, paramGLSurfaceView);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_BINHAI_3D here" + paramaouc.toString());
+      return paramaoua;
     }
-    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "QfileFileAssistantTipsConfigProcessor onUpdate");
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject == null)
-      {
-        QLog.e("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "app is null!!!");
-        return;
-      }
-      if (paramaotz == null) {
-        break;
-      }
-      if (TextUtils.isEmpty(paramaotz.a)) {
-        paramaotz.a = "{}";
-      }
-      SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("qfile_file_assistant_tips" + ((QQAppInterface)localObject).c(), 0).edit();
-      localEditor.putString("qfile_file_assistant_tips", paramaotz.a);
-      localEditor.apply();
-      QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "save FileAssistantTips config [" + paramaotz.a + "]");
-      localObject = (aqud)((QQAppInterface)localObject).getManager(317);
-      if (localObject == null) {
-        break;
-      }
-      ((aqud)localObject).a(paramaotz);
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return new aouh(paramaoua, (aouj)paramaouc);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoue
  * JD-Core Version:    0.7.0.1
  */

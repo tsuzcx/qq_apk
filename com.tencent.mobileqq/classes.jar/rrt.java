@@ -1,12 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import kotlin.Metadata;
 
-public abstract interface rrt
-{
-  public abstract void a(ReadInJoyBaseListView paramReadInJoyBaseListView);
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rrt {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rrt
  * JD-Core Version:    0.7.0.1
  */

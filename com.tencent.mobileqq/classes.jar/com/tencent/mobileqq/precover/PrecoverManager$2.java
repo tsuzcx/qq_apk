@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.precover;
 
 import android.text.TextUtils;
-import awnq;
-import awnr;
-import awns;
-import awnw;
+import azcg;
+import azch;
+import azci;
+import azcm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PrecoverResource;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ import java.util.Set;
 public class PrecoverManager$2
   implements Runnable
 {
-  public PrecoverManager$2(awnq paramawnq, String paramString) {}
+  public PrecoverManager$2(azcg paramazcg, String paramString) {}
   
   public void run()
   {
@@ -28,11 +28,11 @@ public class PrecoverManager$2
     Object localObject3;
     for (;;)
     {
-      synchronized (awnq.a(this.this$0))
+      synchronized (azcg.a(this.this$0))
       {
         if (TextUtils.isEmpty(this.a))
         {
-          Object localObject1 = awnq.a(this.this$0).keySet();
+          Object localObject1 = azcg.a(this.this$0).keySet();
           localObject4 = new ArrayList();
           localObject1 = ((Set)localObject1).iterator();
           if (!((Iterator)localObject1).hasNext()) {
@@ -42,7 +42,7 @@ public class PrecoverManager$2
           if (QLog.isColorLevel()) {
             QLog.d("PrecoverManager", 2, new Object[] { "startDownload, download business=", localObject5 });
           }
-          localObject5 = (List)awnq.a(this.this$0).get(localObject5);
+          localObject5 = (List)azcg.a(this.this$0).get(localObject5);
           if ((localObject5 == null) || (((List)localObject5).size() <= 0)) {
             continue;
           }
@@ -52,15 +52,15 @@ public class PrecoverManager$2
       localObject3 = new HashSet();
       ((Set)localObject3).add(this.a);
     }
-    if ((this.a == null) && (awnw.a(awnq.a(this.this$0).getApp(), "res_cover"))) {}
+    if ((this.a == null) && (azcm.a(azcg.a(this.this$0).getApp(), "res_cover"))) {}
     for (;;)
     {
       if (bool1)
       {
-        awnw.a(awnq.a(this.this$0).getApp(), "res_cover");
-        awnq.a(this.this$0, true);
-        awnq.a(this.this$0, new HashSet());
-        awnq.a(this.this$0).a(this.this$0);
+        azcm.a(azcg.a(this.this$0).getApp(), "res_cover");
+        azcg.a(this.this$0, true);
+        azcg.a(this.this$0, new HashSet());
+        azcg.a(this.this$0).a(this.this$0);
       }
       if (QLog.isColorLevel()) {
         QLog.d("PrecoverManager", 2, new Object[] { "startDownload, needReport=", Boolean.valueOf(bool1), ", resToDownload.size=", Integer.valueOf(((List)localObject4).size()) });
@@ -71,26 +71,26 @@ public class PrecoverManager$2
         localObject4 = (PrecoverResource)((Iterator)localObject3).next();
         if ((localObject4 != null) && (((PrecoverResource)localObject4).isValid()))
         {
-          if ((bool1) && (awnq.a(this.this$0) != null)) {
-            awnq.a(this.this$0).add(localObject4);
+          if ((bool1) && (azcg.a(this.this$0) != null)) {
+            azcg.a(this.this$0).add(localObject4);
           }
-          boolean bool2 = awnq.a(this.this$0).a((PrecoverResource)localObject4, null, true, false);
-          if ((bool1) && (awnq.a(this.this$0) != null) && (!bool2)) {
-            awnq.a(this.this$0).remove(localObject4);
+          boolean bool2 = azcg.a(this.this$0).a((PrecoverResource)localObject4, null, true, false);
+          if ((bool1) && (azcg.a(this.this$0) != null) && (!bool2)) {
+            azcg.a(this.this$0).remove(localObject4);
           }
           if (QLog.isColorLevel()) {
             QLog.d("PrecoverManager", 2, "startDownload, res=" + localObject4 + ", started=" + bool2);
           }
         }
       }
-      if ((bool1) && (awnq.a(this.this$0) != null) && (awnq.a(this.this$0).size() == 0))
+      if ((bool1) && (azcg.a(this.this$0) != null) && (azcg.a(this.this$0).size() == 0))
       {
         if (QLog.isColorLevel()) {
           QLog.d("PrecoverManager", 2, "startDownload, nothing need download, doing report");
         }
-        awnq.a(this.this$0, false);
-        awnq.a(this.this$0).b(this.this$0);
-        awnq.a(this.this$0).a();
+        azcg.a(this.this$0, false);
+        azcg.a(this.this$0).b(this.this$0);
+        azcg.a(this.this$0).a();
       }
       return;
       bool1 = false;
@@ -99,7 +99,7 @@ public class PrecoverManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.precover.PrecoverManager.2
  * JD-Core Version:    0.7.0.1
  */

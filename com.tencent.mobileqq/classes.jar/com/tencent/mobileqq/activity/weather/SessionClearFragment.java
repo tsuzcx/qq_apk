@@ -1,20 +1,17 @@
 package com.tencent.mobileqq.activity.weather;
 
-import adpo;
-import agki;
-import agkj;
-import akgg;
-import akgh;
-import akgi;
-import akgj;
-import akgk;
-import akgl;
-import akgo;
-import akgp;
-import akgr;
-import alud;
-import ammf;
-import ammn;
+import aevw;
+import ahul;
+import ahum;
+import alzf;
+import alzg;
+import alzh;
+import alzi;
+import alzj;
+import alzk;
+import alzn;
+import alzo;
+import alzq;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -37,18 +34,22 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import ansn;
-import apkp;
-import bdhb;
-import bdhj;
-import bety;
-import blqh;
+import anni;
+import aohd;
+import aohl;
+import apss;
+import arnj;
+import bgmg;
+import bgmo;
+import biau;
+import bojl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.util.BinderWarpper;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.URL;
@@ -57,12 +58,11 @@ import java.util.List;
 
 public class SessionClearFragment
   extends PublicBaseFragment
-  implements adpo
+  implements aevw
 {
   private int jdField_a_of_type_Int = 0;
-  private agki jdField_a_of_type_Agki;
-  private akgr jdField_a_of_type_Akgr;
-  private ammn jdField_a_of_type_Ammn;
+  private ahul jdField_a_of_type_Ahul;
+  private alzq jdField_a_of_type_Alzq;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
@@ -73,23 +73,24 @@ public class SessionClearFragment
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ansn jdField_a_of_type_Ansn;
-  private bety jdField_a_of_type_Bety;
+  private aohl jdField_a_of_type_Aohl;
+  private apss jdField_a_of_type_Apss;
+  private biau jdField_a_of_type_Biau;
   private PeakAppInterface jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface;
-  List<ammf> jdField_a_of_type_JavaUtilList;
+  List<aohd> jdField_a_of_type_JavaUtilList;
   private int jdField_b_of_type_Int;
   private Button jdField_b_of_type_AndroidWidgetButton;
-  private ansn jdField_b_of_type_Ansn;
+  private apss jdField_b_of_type_Apss;
   private int jdField_c_of_type_Int;
-  private ansn jdField_c_of_type_Ansn;
+  private apss jdField_c_of_type_Apss;
   
   public static Drawable a(String paramString, int paramInt1, int paramInt2)
   {
-    apkp localapkp = new apkp(Color.rgb(214, 214, 214), paramInt1, paramInt2);
+    arnj localarnj = new arnj(Color.rgb(214, 214, 214), paramInt1, paramInt2);
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localapkp, localapkp);
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localarnj, localarnj);
         if (localURLDrawable.getStatus() != 1) {
           localURLDrawable.downloadImediatly();
         }
@@ -102,19 +103,19 @@ public class SessionClearFragment
         }
       }
     }
-    return localapkp;
+    return localarnj;
   }
   
   private void a(int paramInt)
   {
     if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131714246));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(anni.a(2131712616));
     }
     for (;;)
     {
       this.jdField_a_of_type_Int = paramInt;
       return;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131714234));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(anni.a(2131712604));
     }
   }
   
@@ -135,25 +136,25 @@ public class SessionClearFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376472));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131376340));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377262));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131377123));
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376901));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365082));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363414));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377715));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365319));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363608));
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getActivity());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131365724));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131365966));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Akgr = new akgr(this, new ArrayList());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Akgr);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new akgk(this));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new akgl(this));
-    paramView.findViewById(2131364337).setOnClickListener(new akgo(this));
+    this.jdField_a_of_type_Alzq = new alzq(this, new ArrayList());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Alzq);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new alzj(this));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new alzk(this));
+    paramView.findViewById(2131364548).setOnClickListener(new alzn(this));
   }
   
   private void a(String paramString, int paramInt1, int paramInt2, ImageView paramImageView, int paramInt3)
   {
-    if (bdhb.b(paramString))
+    if (bgmg.b(paramString))
     {
       paramString = ShortVideoUtils.a(paramString);
       if (paramString != null)
@@ -177,21 +178,21 @@ public class SessionClearFragment
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     int i = 0;
-    if (i < this.jdField_a_of_type_Akgr.getItemCount())
+    if (i < this.jdField_a_of_type_Alzq.getItemCount())
     {
-      if (this.jdField_a_of_type_Akgr.a(i).a) {
-        localArrayList1.add(this.jdField_a_of_type_Akgr.a(i));
+      if (this.jdField_a_of_type_Alzq.a(i).a) {
+        localArrayList1.add(this.jdField_a_of_type_Alzq.a(i));
       }
       for (;;)
       {
         i += 1;
         break;
-        localArrayList2.add(this.jdField_a_of_type_Akgr.a(i));
+        localArrayList2.add(this.jdField_a_of_type_Alzq.a(i));
       }
     }
     if (localArrayList1.size() > 0)
     {
-      this.jdField_a_of_type_Ammn.a(localArrayList1);
+      this.jdField_a_of_type_Aohl.a(localArrayList1);
       if ((localArrayList2 != null) && (localArrayList2.size() != 0)) {
         break label149;
       }
@@ -199,10 +200,10 @@ public class SessionClearFragment
     }
     for (;;)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, 2131691570, 0).b(getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, 2131691328, 0).b(getResources().getDimensionPixelSize(2131298998));
       return;
       label149:
-      this.jdField_a_of_type_Akgr.a(localArrayList2);
+      this.jdField_a_of_type_Alzq.a(localArrayList2);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       a(0);
     }
@@ -210,25 +211,25 @@ public class SessionClearFragment
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bety == null) {
-      this.jdField_a_of_type_Bety = new bety(this.jdField_a_of_type_AndroidAppActivity, getResources().getDimensionPixelSize(2131298914));
+    if (this.jdField_a_of_type_Biau == null) {
+      this.jdField_a_of_type_Biau = new biau(this.jdField_a_of_type_AndroidAppActivity, getResources().getDimensionPixelSize(2131298998));
     }
-    this.jdField_a_of_type_Bety.setCancelable(false);
-    this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bety.a(alud.a(2131714241));
-    this.jdField_a_of_type_Bety.show();
-    this.jdField_a_of_type_Bety.a(new akgp(this));
+    this.jdField_a_of_type_Biau.setCancelable(false);
+    this.jdField_a_of_type_Biau.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Biau.a(anni.a(2131712611));
+    this.jdField_a_of_type_Biau.show();
+    this.jdField_a_of_type_Biau.a(new alzo(this));
   }
   
-  public void a(List<ammf> paramList)
+  public void a(List<aohd> paramList)
   {
-    this.jdField_a_of_type_Akgr.a(paramList);
+    this.jdField_a_of_type_Alzq.a(paramList);
   }
   
   protected void b()
   {
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
-      this.jdField_a_of_type_Bety.dismiss();
+    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
+      this.jdField_a_of_type_Biau.dismiss();
     }
   }
   
@@ -259,33 +260,33 @@ public class SessionClearFragment
       }
       this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)blqh.a());
-    if (this.jdField_a_of_type_Agki == null)
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)bojl.a());
+    if (this.jdField_a_of_type_Ahul == null)
     {
       paramBundle = (BinderWarpper)this.jdField_a_of_type_AndroidAppActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
       if (paramBundle == null) {
         break label336;
       }
-      this.jdField_a_of_type_Agki = agkj.a(paramBundle.a);
+      this.jdField_a_of_type_Ahul = ahum.a(paramBundle.a);
       if (QLog.isColorLevel()) {
-        QLog.d("SessionClearFragment", 2, "IAIOImageProvider is " + this.jdField_a_of_type_Agki);
+        QLog.d("SessionClearFragment", 2, "IAIOImageProvider is " + this.jdField_a_of_type_Ahul);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)blqh.a());
-    this.jdField_a_of_type_Ammn = ((ammn)this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface.getManager(4));
-    this.jdField_a_of_type_Ammn.a(new akgg(this));
-    this.jdField_a_of_type_Ammn.a(this.jdField_a_of_type_Agki);
-    this.jdField_a_of_type_Ansn = new ansn(this.jdField_a_of_type_AndroidAppActivity, 1);
-    this.jdField_a_of_type_Ansn.a();
-    this.jdField_a_of_type_Ansn.a(new akgh(this));
-    this.jdField_b_of_type_Ansn = new ansn(this.jdField_a_of_type_AndroidAppActivity, 4);
-    this.jdField_b_of_type_Ansn.a();
-    this.jdField_b_of_type_Ansn.a(new akgi(this));
-    this.jdField_c_of_type_Ansn = new ansn(this.jdField_a_of_type_AndroidAppActivity, 101);
-    this.jdField_c_of_type_Ansn.a();
-    this.jdField_c_of_type_Ansn.a(new akgj(this));
-    this.jdField_a_of_type_Ammn.b();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)bojl.a());
+    this.jdField_a_of_type_Aohl = ((aohl)this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface.getManager(4));
+    this.jdField_a_of_type_Aohl.a(new alzf(this));
+    this.jdField_a_of_type_Aohl.a(this.jdField_a_of_type_Ahul);
+    this.jdField_a_of_type_Apss = new apss(this.jdField_a_of_type_AndroidAppActivity, 1);
+    this.jdField_a_of_type_Apss.a();
+    this.jdField_a_of_type_Apss.a(new alzg(this));
+    this.jdField_b_of_type_Apss = new apss(this.jdField_a_of_type_AndroidAppActivity, 4);
+    this.jdField_b_of_type_Apss.a();
+    this.jdField_b_of_type_Apss.a(new alzh(this));
+    this.jdField_c_of_type_Apss = new apss(this.jdField_a_of_type_AndroidAppActivity, 101);
+    this.jdField_c_of_type_Apss.a();
+    this.jdField_c_of_type_Apss.a(new alzi(this));
+    this.jdField_a_of_type_Aohl.b();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bgmo.a();
     return;
     label336:
     throw new IllegalArgumentException("can't find Binder in Intent..");
@@ -293,27 +294,28 @@ public class SessionClearFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131562643, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131562881, paramViewGroup, false);
     a(paramLayoutInflater);
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Ammn.onDestroy();
-    this.jdField_a_of_type_Ansn.b();
-    this.jdField_b_of_type_Ansn.b();
-    this.jdField_c_of_type_Ansn.b();
-    if (this.jdField_a_of_type_Bety != null) {
-      this.jdField_a_of_type_Bety.dismiss();
+    this.jdField_a_of_type_Aohl.onDestroy();
+    this.jdField_a_of_type_Apss.b();
+    this.jdField_b_of_type_Apss.b();
+    this.jdField_c_of_type_Apss.b();
+    if (this.jdField_a_of_type_Biau != null) {
+      this.jdField_a_of_type_Biau.dismiss();
     }
     this.jdField_a_of_type_AndroidAppActivity = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.SessionClearFragment
  * JD-Core Version:    0.7.0.1
  */

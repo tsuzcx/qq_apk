@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Timer;
 import java.util.TimerTask;
-import lid;
+import ley;
 
 class DoubleVideoCtrlUI$5
   extends TimerTask
@@ -18,13 +18,13 @@ class DoubleVideoCtrlUI$5
   public void run()
   {
     if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) || (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null)) {}
-    lid locallid;
+    ley localley;
     do
     {
       return;
-      locallid = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-    } while (locallid == null);
-    if (locallid.R <= 0)
+      localley = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+    } while (localley == null);
+    if (localley.S <= 0)
     {
       if (this.this$0.jdField_a_of_type_JavaUtilTimer != null)
       {
@@ -48,8 +48,8 @@ class DoubleVideoCtrlUI$5
           break;
         }
         l3 = l2 - l1;
-        QLog.w(this.this$0.d, 1, "StartGlassCheck, interval[" + l3 + "], mCheck[" + this.a + "], mCurrentDoubleVideoGlassSwitch[" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().Q + "]");
-        if ((l3 > this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R * 1000) && (this.a))
+        QLog.w(this.this$0.d, 1, "StartGlassCheck, interval[" + l3 + "], mCheck[" + this.a + "], mCurrentDoubleVideoGlassSwitch[" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R + "]");
+        if ((l3 > this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().S * 1000) && (this.a))
         {
           this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new DoubleVideoCtrlUI.5.1(this, l2, l1));
           return;
@@ -61,7 +61,7 @@ class DoubleVideoCtrlUI$5
         l1 = 0L;
         continue;
       }
-      if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().Q == 0) || (l3 >= 1000L)) {
+      if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R == 0) || (l3 >= 1000L)) {
         break;
       }
       this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new DoubleVideoCtrlUI.5.2(this));
@@ -73,7 +73,7 @@ class DoubleVideoCtrlUI$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.5
  * JD-Core Version:    0.7.0.1
  */

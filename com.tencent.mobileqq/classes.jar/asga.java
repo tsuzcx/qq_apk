@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class asga
-  implements FileFilter
+class asga
+  implements asmh
 {
-  public asga(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  asga(asfu paramasfu) {}
   
-  public boolean accept(File paramFile)
+  public void a(boolean paramBoolean, asgr paramasgr)
   {
-    if (paramFile.getName().endsWith(".png")) {}
-    while (paramFile.getName().endsWith(".jpg")) {
-      return true;
+    if (asfu.a(this.a) == null)
+    {
+      QLog.e("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo null");
+      return;
     }
-    return false;
+    if (!paramBoolean) {
+      QLog.e("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo NOT suc");
+    }
+    int i = askk.a(asfu.a(this.a));
+    ((asfs)asfu.a(this.a).a(127)).a(i, paramasgr);
+    QLog.i("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo  suc:" + paramBoolean);
   }
 }
 

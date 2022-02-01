@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afmy;
-import afnf;
+import agtx;
+import ague;
 
 public class GivingHeartItemBuilder$4$1
   implements Runnable
 {
-  public GivingHeartItemBuilder$4$1(afnf paramafnf) {}
+  public GivingHeartItemBuilder$4$1(ague paramague) {}
   
   public void run()
   {
-    afmy.a(this.a.a);
+    agtx.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.4.1
  * JD-Core Version:    0.7.0.1
  */

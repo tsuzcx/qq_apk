@@ -1,25 +1,88 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import org.json.JSONObject;
 
-final class alze
-  implements DialogInterface.OnClickListener
+public class alze
+  implements MediaPlayer.OnPreparedListener
 {
-  alze(DialogInterface.OnClickListener paramOnClickListener) {}
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public alze(alyz paramalyz, JSONObject paramJSONObject, String paramString, boolean paramBoolean)
   {
-    alzc.a("1");
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
+      this.jdField_a_of_type_Alyz.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+      return;
     }
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
+    catch (Exception localException1)
+    {
+      alyz.a(this.jdField_a_of_type_Alyz, "-->handleJsRequest exception:" + localException1.toString());
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("code", 2);
+        localJSONObject.put("errorMessage", "exception");
+        this.jdField_a_of_type_Alyz.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+  }
+  
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    if (alyz.a(this.jdField_a_of_type_Alyz).a()) {}
+    try
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        alyz.a(this.jdField_a_of_type_Alyz, "-->play failed");
+        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
+        this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Alyz.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+        return;
+        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      alyz.a(this.jdField_a_of_type_Alyz, "-->handleJsRequest exception:" + paramMediaPlayer.toString());
+      try
+      {
+        paramMediaPlayer = new JSONObject();
+        paramMediaPlayer.put("code", 2);
+        paramMediaPlayer.put("errorMessage", "exception");
+        this.jdField_a_of_type_Alyz.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
+        return;
+      }
+      catch (Exception paramMediaPlayer)
+      {
+        paramMediaPlayer.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alze
  * JD-Core Version:    0.7.0.1
  */

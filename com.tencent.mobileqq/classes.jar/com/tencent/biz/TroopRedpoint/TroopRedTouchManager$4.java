@@ -1,17 +1,17 @@
 package com.tencent.biz.TroopRedpoint;
 
-import bdfr;
-import bdhb;
+import bgku;
+import bgmg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.MobileQQ;
-import nan;
+import njg;
 
 public class TroopRedTouchManager$4
   implements Runnable
 {
-  public TroopRedTouchManager$4(nan paramnan, String paramString) {}
+  public TroopRedTouchManager$4(njg paramnjg, String paramString) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class TroopRedTouchManager$4
     {
       try
       {
-        bdhb.a(str, bdfr.encode(this.a.getBytes(), 0), false);
+        bgmg.a(str, bgku.encode(this.a.getBytes(), 0), false);
         return;
       }
       catch (Exception localException)
@@ -37,7 +37,7 @@ public class TroopRedTouchManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.TroopRedpoint.TroopRedTouchManager.4
  * JD-Core Version:    0.7.0.1
  */

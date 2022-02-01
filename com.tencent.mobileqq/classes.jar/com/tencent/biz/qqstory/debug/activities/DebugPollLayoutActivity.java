@@ -1,25 +1,44 @@
 package com.tencent.biz.qqstory.debug.activities;
 
+import Override;
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import xrr;
-import xrs;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import zlc;
+import zld;
 
 public class DebugPollLayoutActivity
   extends Activity
 {
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131558441);
-    paramBundle = xrr.a(this, 1, 1, null);
-    ((FrameLayout)findViewById(2131364736)).addView(paramBundle.a());
+    setContentView(2131558446);
+    paramBundle = zlc.a(this, 1, 1, null);
+    ((FrameLayout)findViewById(2131364961)).addView(paramBundle.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.debug.activities.DebugPollLayoutActivity
  * JD-Core Version:    0.7.0.1
  */

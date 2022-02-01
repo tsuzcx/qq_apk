@@ -1,55 +1,69 @@
-import com.tencent.biz.pubaccount.weishi_new.event.FollowEvent;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class tep
+  implements teq
 {
-  public static tep a()
+  private AssetManager jdField_a_of_type_AndroidContentResAssetManager;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public tep(Context paramContext, String paramString)
   {
-    return new tep();
+    this.jdField_a_of_type_AndroidContentResAssetManager = paramContext.getAssets();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private tgt a(String paramString, int paramInt)
+  public InputStream a(String paramString)
   {
-    return new ter(this, paramInt, paramString);
+    return this.jdField_a_of_type_AndroidContentResAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
   }
   
-  private void c(String paramString, int paramInt)
+  public List<String> a()
   {
-    FollowEvent localFollowEvent = new FollowEvent();
-    localFollowEvent.setPersonId(paramString);
-    if (paramInt == 1) {
-      localFollowEvent.setIsFollow(1);
+    try
+    {
+      localList = tez.a(this.jdField_a_of_type_AndroidContentResAssetManager, this.jdField_a_of_type_JavaLangString);
+      if (localList == null) {
+        break label28;
+      }
     }
+    catch (Exception localException)
+    {
+      label28:
+      do
+      {
+        List localList;
+        QLog.d("ReadAssetFile", 1, "tryLoadTemplateFromAssets fileList size: ", localException);
+        arrayOfString = this.jdField_a_of_type_AndroidContentResAssetManager.list(this.jdField_a_of_type_JavaLangString);
+        localArrayList = new ArrayList();
+        localObject = localArrayList;
+      } while (arrayOfString == null);
+      j = arrayOfString.length;
+      i = 0;
+    }
+    return localList;
     for (;;)
     {
-      tff.a().a(localFollowEvent);
-      return;
-      localFollowEvent.setIsFollow(2);
+      String[] arrayOfString;
+      ArrayList localArrayList;
+      int j;
+      int i;
+      Object localObject = localArrayList;
+      if (i >= j) {
+        break;
+      }
+      localArrayList.add(arrayOfString[i]);
+      i += 1;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    tlo.b("WSUserBusiness", "[actionBlockRecommendPerson] personID : " + paramString);
-    paramString = new the(new tkb(paramString), null, new teq(this), 4006);
-    tgx.a().a(paramString);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    b(paramString, paramInt);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    tlo.b("WSUserBusiness", "[actionChangeFollow] personID : " + paramString + "  followStatus:" + paramInt);
-    c(paramString, paramInt);
-    paramString = new the(new tkc(paramString, paramInt), null, a(paramString, paramInt), 4005);
-    tgx.a().a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tep
  * JD-Core Version:    0.7.0.1
  */

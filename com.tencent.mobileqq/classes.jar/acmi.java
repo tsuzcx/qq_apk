@@ -1,37 +1,19 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialStatus;
 
-public class acmi
-  implements aepr
+public final class acmi
+  implements Parcelable.Creator<GdtInterstitialStatus>
 {
-  public acmi(ChatHistory paramChatHistory) {}
-  
-  public void a(AudioPlayer paramAudioPlayer)
+  public GdtInterstitialStatus a(Parcel paramParcel)
   {
-    this.a.p();
-    if (this.a.jdField_a_of_type_Acnd != null) {
-      this.a.jdField_a_of_type_Acnd.d();
-    }
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    return new GdtInterstitialStatus(paramParcel);
   }
   
-  public void a(AudioPlayer paramAudioPlayer, int paramInt)
+  public GdtInterstitialStatus[] a(int paramInt)
   {
-    this.a.b(2131695365);
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    return new GdtInterstitialStatus[paramInt];
   }
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.setVolumeControlStream(paramInt);
-  }
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

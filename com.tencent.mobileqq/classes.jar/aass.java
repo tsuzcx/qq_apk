@@ -1,23 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
+import android.widget.TextView;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.image.URLDrawable.DownloadListener;
 
 public class aass
+  implements URLDrawable.DownloadListener
 {
-  public static void a(int paramInt, String paramString1, String paramString2)
+  public aass(TroopGiftPanel paramTroopGiftPanel, TextView paramTextView) {}
+  
+  public void onFileDownloadFailed(int paramInt)
   {
-    aasq.a("http://t.gdt.qq.com/conv/src/50/conv?" + "click_id={$clickid$}&product_id={$appid$}&conv_type={$convtype$}&conv_time={$convtime$}".replace("{$clickid$}", paramString1).replace("{$appid$}", paramString2).replace("{$convtype$}", new StringBuilder().append(paramInt).append("").toString()).replace("{$convtime$}", new StringBuilder().append(System.currentTimeMillis() / 1000L).append("").toString()));
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
   }
   
-  public static void a(Ad paramAd, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramAd.getUrlForEffect()))
-    {
-      aase.d("GdtTraceReporter", String.format("report %d error", new Object[] { Integer.valueOf(paramInt) }));
-      return;
-    }
-    aase.b("GdtTraceReporter", String.format("report %d", new Object[] { Integer.valueOf(paramInt) }));
-    aasq.a(paramAd.getUrlForEffect().replaceAll("__CLICK_ID__", paramAd.getTraceId()).replaceAll("__ACTION_ID__", String.valueOf(paramInt)));
-  }
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

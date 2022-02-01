@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.nio.ByteBuffer;
 
-class alnd
-  implements DialogInterface.OnClickListener
+public abstract interface alnd
 {
-  alnd(alnc paramalnc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(long paramLong, ByteBuffer paramByteBuffer);
 }
 
 

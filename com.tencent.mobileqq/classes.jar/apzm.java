@@ -1,16 +1,18 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class apzm
   implements View.OnClickListener
 {
-  public apzm(AIOEmotionBaseFragment paramAIOEmotionBaseFragment) {}
+  public apzm(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.getActivity().finish();
+    apzo localapzo = (apzo)paramView.getTag();
+    this.a.a(localapzo.jdField_a_of_type_JavaLangString, localapzo.b, localapzo.jdField_a_of_type_Boolean);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

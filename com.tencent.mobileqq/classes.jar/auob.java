@@ -1,32 +1,24 @@
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.mobileqq.multicard.RecommendPerson;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auob
-  extends auov
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public auob(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  public auob(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onGetTroopMemRecommendCards, success = " + paramBoolean + ",troopUin = " + paramString + ",notifySource = " + paramInt);
-    }
-    if ((MultiCardRecommendFragment.a(this.a) != null) && (MultiCardRecommendFragment.a(this.a).equals(paramString)))
-    {
-      MultiCardRecommendFragment.a(this.a).a.clear();
-      MultiCardRecommendFragment.a(this.a).a.putAll(paramMap);
-      this.a.a.removeMessages(1);
-      this.a.a.sendEmptyMessage(1);
-    }
+    ((awhm)this.a.a.getManager(303)).a((short)-23308, paramBoolean, true);
+    bcst.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 1, 1, "", "", "", "");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auob
  * JD-Core Version:    0.7.0.1
  */

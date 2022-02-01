@@ -1,27 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+
 public class afbw
-  extends afbz
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b;
+  public afbw(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public afbw(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.b = paramInt1;
-    this.a = paramInt2;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof afbw));
-      paramObject = (afbw)paramObject;
-    } while ((this.b != paramObject.b) || (this.a != paramObject.a));
-    return true;
+    this.a.a(this.a.a);
   }
 }
 

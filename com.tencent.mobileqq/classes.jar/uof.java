@@ -1,33 +1,84 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import UserGrowth.stGlobalConfig;
+import UserGrowth.stJumpInfo;
+import UserGrowth.stPopWindowsConfig;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-class uof
-  extends SimpleJob<Void>
+public class uof
 {
-  uof(uoe paramuoe, String paramString)
+  private static int a = -1;
+  
+  private static void a()
   {
-    super(paramString);
+    a = -1;
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public static void a(stGlobalConfig paramstGlobalConfig)
   {
-    boolean bool = xrg.a(500L);
-    if (this.a.a(bool)) {
-      uoe.a(this.a, bool);
+    if (paramstGlobalConfig == null) {}
+    do
+    {
+      return;
+      a();
+      paramstGlobalConfig = paramstGlobalConfig.jumpinfo;
+    } while ((paramstGlobalConfig == null) || (paramstGlobalConfig.index < 0) || (paramstGlobalConfig.id <= 0));
+    a = paramstGlobalConfig.index;
+    upe.a("BlockPageHelper", "全屏阻断页是第" + a + "个,id为：" + paramstGlobalConfig.id);
+  }
+  
+  public static void a(WSVerticalPageFragment paramWSVerticalPageFragment, int paramInt)
+  {
+    if (paramWSVerticalPageFragment == null) {}
+    stJumpInfo localstJumpInfo;
+    do
+    {
+      return;
+      localstJumpInfo = ugb.a().a();
+    } while (localstJumpInfo == null);
+    String str2 = localstJumpInfo.schema_url;
+    if (localstJumpInfo.h5url != null) {}
+    for (String str1 = localstJumpInfo.h5url;; str1 = localstJumpInfo.url)
+    {
+      upe.b("BlockPageHelper", "schemaUrl:" + str2 + ",h5url:" + str1 + ",jumpurl:" + localstJumpInfo.url);
+      String str3 = paramWSVerticalPageFragment.a();
+      String str4 = paramWSVerticalPageFragment.b();
+      ups.a(paramWSVerticalPageFragment.getActivity(), str2, str1, "", 5, new uog(paramWSVerticalPageFragment, str3, str4, localstJumpInfo, paramInt));
+      a();
+      upe.b("BlockPageHelper", "reportBlockPage, id:" + localstJumpInfo.id + " ,pageType:" + 5);
+      return;
     }
-    return null;
   }
   
-  public int getJobType()
+  public static boolean a(int paramInt)
   {
-    return 4;
+    return a == paramInt;
+  }
+  
+  private static void b(String paramString1, String paramString2, stJumpInfo paramstJumpInfo, int paramInt)
+  {
+    uut.a(paramString1, paramString2, paramInt, paramstJumpInfo);
+    paramString1 = ugb.a().a();
+    int i;
+    if (paramString1 != null)
+    {
+      paramInt = paramString1.type;
+      i = paramString1.windowsid;
+    }
+    for (;;)
+    {
+      if (paramstJumpInfo == null) {}
+      for (paramString1 = "";; paramString1 = paramstJumpInfo.url)
+      {
+        unh.c(paramString1, paramInt, i);
+        return;
+      }
+      i = -1;
+      paramInt = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uof
  * JD-Core Version:    0.7.0.1
  */

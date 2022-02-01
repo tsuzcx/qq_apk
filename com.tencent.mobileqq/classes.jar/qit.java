@@ -1,109 +1,216 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import org.json.JSONObject;
 
 public class qit
-  extends qir
+  extends ViewBase
 {
-  public qit(AppInterface paramAppInterface)
+  private int jdField_a_of_type_Int = Utils.dp2px(233.0D);
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private TextView b;
+  
+  public qit(VafContext paramVafContext)
   {
-    super(paramAppInterface);
+    super(paramVafContext);
+    a(paramVafContext);
   }
   
-  public int a(int paramInt)
+  private int a(String paramString, int paramInt)
   {
-    int i = -1;
-    try
+    int i = Utils.dp2px(paramInt);
+    paramInt = i;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)))
     {
-      paramInt = this.jdField_a_of_type_Awgf.a(GuideData.class.getSimpleName(), "source=?", new String[] { String.valueOf(paramInt) });
-      return paramInt;
+      paramString = Utils.toDouble(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString));
+      paramInt = i;
+      if (paramString != null) {
+        paramInt = Utils.dp2px(paramString.doubleValue());
+      }
     }
-    catch (Exception localException)
-    {
-      do
-      {
-        paramInt = i;
-      } while (!QLog.isColorLevel());
-      QLog.e("ReadInJoyOperationManager", 2, localException, new Object[0]);
-    }
-    return -1;
+    return paramInt;
   }
   
-  public BaseResData a(String paramString)
+  private void a(VafContext paramVafContext)
   {
-    String str1 = paramString;
-    if (paramString == null) {
-      str1 = "";
-    }
-    if ("operation_guide".equals(str1)) {}
-    for (paramString = GuideData.class;; paramString = null)
+    qiu localqiu = new qiu(paramVafContext.getContext());
+    localqiu.c(10);
+    localqiu.d(10);
+    localqiu.a(10);
+    localqiu.b(10);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = localqiu;
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramVafContext.getContext());
+    this.b = new TextView(paramVafContext.getContext());
+    this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+    this.b.setMaxLines(1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
+    this.b.setIncludeFontPadding(false);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
+    paramVafContext = new LinearLayout.LayoutParams(Utils.dp2px(20.0D), Utils.dp2px(20.0D));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(16);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramVafContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.b);
+  }
+  
+  private void a(String paramString, TextView paramTextView, int paramInt)
+  {
+    paramTextView.setTextSize(0, a(paramString, paramInt));
+    a();
+  }
+  
+  private void b()
+  {
+    b("setLocationTextColorString:", this.jdField_a_of_type_AndroidWidgetTextView, Color.parseColor("#4D7CAF"));
+    a("setLocationTextSizeString:", this.jdField_a_of_type_AndroidWidgetTextView, 12);
+    b("setDistanceTextColorString:", this.b, Color.parseColor("#737373"));
+    a("setDistanceTextSizeString:", this.b, 12);
+    int i;
+    Object localObject;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString("setMidMarginString:")))
     {
-      if (paramString == null) {}
-      do
-      {
-        return null;
-        String str2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-        paramString = this.jdField_a_of_type_Awgf.a(paramString, paramString.getSimpleName(), true, "uin=? and showTime!=0 and business=?", new String[] { str2, str1 }, null, null, "showTime desc", "1");
-      } while ((paramString == null) || (paramString.size() <= 0));
-      return (BaseResData)paramString.get(0);
+      i = Utils.dp2px(3.0D);
+      localObject = Utils.toInteger(this.jdField_a_of_type_OrgJsonJSONObject.optString("setMidMarginString:"));
+      if (localObject == null) {
+        break label186;
+      }
+      i = Utils.dp2px(((Integer)localObject).intValue());
+    }
+    label186:
+    for (;;)
+    {
+      localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+      ((LinearLayout.LayoutParams)localObject).rightMargin = i;
+      this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      i = a("setTopPaddingString:", 6);
+      int j = a("setBottomPaddingString:", 6);
+      int k = a("setLeftPaddingString:", 7);
+      int m = a("setRightPaddingString:", 7);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(k, i, m, j);
+      a();
+      return;
     }
   }
   
-  public List<GuideData> a(String paramString1, String paramString2)
+  private void b(String paramString, TextView paramTextView, int paramInt)
   {
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)))
+    {
+      paramTextView.setTextColor(Utils.parseColor(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)));
+      return;
     }
-    int i = (int)(System.currentTimeMillis() / 1000L);
-    paramString1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    return this.jdField_a_of_type_Awgf.a(GuideData.class, GuideData.class.getSimpleName(), true, "uin=? and showTime=? and business=? and endTime>? and id=?", new String[] { paramString1, "0", str, String.valueOf(i), paramString2 }, null, null, "seq desc", null);
+    paramTextView.setTextColor(paramInt);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Awgf != null)
+    float f1 = this.b.getPaint().measureText(this.b.getText().toString());
+    int i = this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingLeft();
+    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingRight();
+    int k = ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams()).rightMargin;
+    float f2 = this.jdField_a_of_type_Int;
+    float f3 = i;
+    float f4 = j;
+    float f5 = k;
+    this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth((int)(f2 - f1 - f3 - f4 - f5));
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.measure(paramInt1, paramInt2);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Awgf.a(GuideData.class);
-      return;
+    default: 
+      bool1 = false;
     }
-    QLog.e("ReadInJoyOperationManager", 1, "[clearGuideDataInDatabase] entity manager is null");
-  }
-  
-  public void a(String paramString, BaseResData paramBaseResData)
-  {
-    paramBaseResData.isReady = true;
-    paramBaseResData.business = paramString;
-    this.jdField_a_of_type_Awgf.b(paramBaseResData);
-  }
-  
-  public void a(String[] paramArrayOfString) {}
-  
-  public boolean a(String paramString, BaseResData paramBaseResData)
-  {
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return bool1;
+              bool1 = bool2;
+            } while (paramObject == null);
+            bool1 = bool2;
+          } while (!(paramObject instanceof JSONObject));
+          this.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)paramObject);
+          bool1 = bool2;
+        } while (this.jdField_a_of_type_OrgJsonJSONObject == null);
+        b();
+        return true;
+        bool1 = bool2;
+      } while (paramObject == null);
+      bool1 = bool2;
+    } while (!(paramObject instanceof JSONObject));
+    paramObject = (JSONObject)paramObject;
+    String str = paramObject.optString("ad_Location_content");
+    if (!TextUtils.isEmpty(str))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    for (;;)
+    {
+      paramObject = paramObject.optString("ad_Location");
+      if (TextUtils.isEmpty(paramObject)) {
+        break;
+      }
+      this.b.setText(paramObject);
+      this.b.setVisibility(0);
+      a();
+      return true;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    this.b.setVisibility(8);
     return true;
   }
-  
-  public void b(String paramString, BaseResData paramBaseResData)
-  {
-    paramBaseResData.showTime = ((int)(System.currentTimeMillis() / 1000L));
-    paramBaseResData.setStatus(1000);
-    this.jdField_a_of_type_Awgf.b(paramBaseResData);
-  }
-  
-  public boolean b(String paramString, BaseResData paramBaseResData)
-  {
-    return bady.a(new File(b(paramString, paramBaseResData.id)));
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qit
  * JD-Core Version:    0.7.0.1
  */

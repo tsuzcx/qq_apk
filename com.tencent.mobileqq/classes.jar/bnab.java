@@ -1,17 +1,41 @@
-import android.graphics.Bitmap;
-import java.util.List;
-
-public abstract interface bnab
+public class bnab
 {
-  public abstract void a();
+  private static bdvu jdField_a_of_type_Bdvu;
+  private static bguy jdField_a_of_type_Bguy = new bnac();
+  private static bdvu jdField_b_of_type_Bdvu;
+  private static bguy jdField_b_of_type_Bguy = new bnad();
   
-  public abstract void a(int paramInt);
+  public static bdvu a()
+  {
+    if (jdField_a_of_type_Bdvu == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bdvu == null)
+      {
+        bgut localbgut = new bgut(jdField_a_of_type_Bguy, 128);
+        localbgut.a();
+        jdField_a_of_type_Bdvu = new bdwv(localbgut, true);
+      }
+      return jdField_a_of_type_Bdvu;
+    }
+    finally {}
+  }
   
-  public abstract void a(int paramInt, long paramLong, Bitmap paramBitmap);
-  
-  public abstract void a(List<Long> paramList);
-  
-  public abstract void a(boolean paramBoolean);
+  public static bdvu b()
+  {
+    if (jdField_b_of_type_Bdvu == null) {}
+    try
+    {
+      if (jdField_b_of_type_Bdvu == null)
+      {
+        bgut localbgut = new bgut(jdField_b_of_type_Bguy, 128);
+        localbgut.a();
+        jdField_b_of_type_Bdvu = new bdwv(localbgut, true);
+      }
+      return jdField_b_of_type_Bdvu;
+    }
+    finally {}
+  }
 }
 
 

@@ -1,26 +1,22 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
 
-public final class aznw
-  implements QQPermissionCallback
+class aznw
+  extends aniz
 {
-  public aznw(aznz paramaznz, Activity paramActivity) {}
+  aznw(aznv paramaznv) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void onGetQZonePhotoWall(boolean paramBoolean, String paramString1, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp, String paramString2)
   {
-    bdgm.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aznz);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Aznz != null) {
-      this.jdField_a_of_type_Aznz.a();
+    if ((aznv.a(this.a)) && (!aznv.b(this.a)) && (!aznv.c(this.a)))
+    {
+      aznv.a(this.a, true);
+      aznv.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aznw
  * JD-Core Version:    0.7.0.1
  */

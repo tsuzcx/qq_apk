@@ -1,71 +1,95 @@
-import android.text.Editable;
-import android.text.Spanned;
-import android.text.TextWatcher;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public class sgz
-  implements TextWatcher
+class sgz
+  extends shb
 {
-  private sgy a;
+  private final float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private final ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
+  private shc jdField_a_of_type_Shc;
+  private int b;
   
-  public void afterTextChanged(Editable paramEditable)
+  public sgz(float paramFloat)
   {
-    QLog.d("DeleteAsAWholeWatcher", 2, "afterTextChanged: s: " + paramEditable);
-    if (this.a != null)
-    {
-      int i = paramEditable.getSpanStart(this.a);
-      int j = paramEditable.getSpanEnd(this.a);
-      if ((i >= 0) && (j <= paramEditable.length()))
-      {
-        paramEditable.delete(i, j);
-        this.a = null;
-      }
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.b = 500;
+    this.jdField_a_of_type_Shc = new shc((int)paramFloat);
+    a(this.jdField_a_of_type_Shc);
+  }
+  
+  private void c()
+  {
+    int i = (int)(Math.sqrt(this.jdField_a_of_type_Shc.a) * this.jdField_a_of_type_Float);
+    if (i > 0) {
+      this.b = i;
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public long a(long paramLong)
   {
-    int i = 0;
-    int j = paramInt1 + paramInt3;
-    if (paramInt3 >= paramInt2) {
-      break label15;
-    }
-    for (;;)
+    long l2 = 0L;
+    double d = Math.sqrt(paramLong);
+    long l1;
+    while ((this.jdField_a_of_type_Int + d > this.b) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      label15:
-      return;
-      if ((paramCharSequence instanceof Spanned))
+      l1 = ((Long)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).longValue();
+      this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int - Math.sqrt(l1)));
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
+    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int + d));
+    int i = this.b / 2;
+    Object localObject = (List)this.jdField_a_of_type_JavaUtilArrayList.clone();
+    Collections.sort((List)localObject);
+    Long localLong;
+    if (this.jdField_a_of_type_Int > i)
+    {
+      localObject = ((List)localObject).iterator();
+      l1 = 0L;
+      do
       {
-        Spanned localSpanned = (Spanned)paramCharSequence;
-        paramCharSequence = (sgy[])localSpanned.getSpans(0, paramCharSequence.length(), sgy.class);
-        if ((paramCharSequence == null) || (paramCharSequence.length <= 0)) {
+        paramLong = l2;
+        if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        paramInt2 = paramCharSequence.length;
-        paramInt1 = i;
-        while (paramInt1 < paramInt2)
-        {
-          paramInt3 = localSpanned.getSpanStart(paramCharSequence[paramInt1]);
-          i = localSpanned.getSpanEnd(paramCharSequence[paramInt1]);
-          if ((paramInt3 <= j) && (j < i))
-          {
-            this.a = paramCharSequence[paramInt1];
-            return;
-          }
-          paramInt1 += 1;
-        }
+        localLong = (Long)((Iterator)localObject).next();
+        paramLong = (l1 + Math.sqrt(localLong.longValue()));
+        l1 = paramLong;
+      } while (paramLong <= i);
+    }
+    for (paramLong = localLong.longValue();; paramLong = ((Long)((List)localObject).get(((List)localObject).size() - 1)).longValue())
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Float) {
+        c();
       }
+      return paramLong;
     }
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    QLog.d("DeleteAsAWholeWatcher", 2, "onTextChanged: s: " + paramCharSequence + " start: " + paramInt1 + " before: " + paramInt2 + " count: " + paramInt3);
+    c();
+    super.a();
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    return "ExoPredictor(" + this.b + ')';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sgz
  * JD-Core Version:    0.7.0.1
  */

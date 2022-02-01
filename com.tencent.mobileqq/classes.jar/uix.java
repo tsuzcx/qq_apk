@@ -1,118 +1,74 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import NS_KING_INTERFACE.stPostFeedDingRsp;
+import com.tencent.biz.pubaccount.weishi_new.event.LikeRspEvent;
 
-public class uix
-  extends uit
+class uix
+  implements ujj
 {
-  public uix(int paramInt, ujn paramujn)
+  uix(uiw paramuiw, String paramString, int paramInt, boolean paramBoolean) {}
+  
+  public void a(uju paramuju)
   {
-    super(2);
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter";
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject = new ujs();
-    ((ujs)localObject).a(paramInt);
-    ((ujs)localObject).a(paramujn);
-    a((ujo)localObject);
-    paramujn = new ujr();
-    localObject = ((uio)uwa.a(30)).c();
-    if (localObject != null)
+    int j = 0;
+    int i = 0;
+    LikeRspEvent localLikeRspEvent = new LikeRspEvent(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if ((paramuju == null) || (paramuju.a == null))
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      upe.a("WSLikeAnimationManger", "点赞失败:-1");
+      paramuju = this.jdField_a_of_type_Uiw;
+      str = this.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_Boolean)
       {
-        ujy localujy = (ujy)((Iterator)localObject).next();
-        switch (localujy.a)
+        i = 0;
+        uiw.a(paramuju, str, localLikeRspEvent, i);
+      }
+    }
+    for (;;)
+    {
+      uhd.a().a(localLikeRspEvent);
+      return;
+      i = 1;
+      break;
+      if (!(paramuju.a instanceof stPostFeedDingRsp)) {
+        break label189;
+      }
+      paramuju = (stPostFeedDingRsp)paramuju.a;
+      if (paramuju == null)
+      {
+        upe.a("WSLikeAnimationManger", "服务器失败！！！");
+        paramuju = this.jdField_a_of_type_Uiw;
+        str = this.jdField_a_of_type_JavaLangString;
+        if (this.jdField_a_of_type_Boolean) {}
+        for (;;)
         {
-        default: 
+          uiw.a(paramuju, str, localLikeRspEvent, i);
           break;
-        case 2: 
-          paramujn.a(localujy);
-          break;
-        case 4: 
-          paramujn.b(localujy);
-          break;
-        case 3: 
-          paramujn.c(localujy);
+          i = 1;
         }
       }
+      i = paramuju.is_ding;
+      localLikeRspEvent.setRpsStatus(4301);
+      localLikeRspEvent.setRspIsDing(i);
+      if (i == 0) {
+        upe.a("WSLikeAnimationManger", "请求后变成：没有点赞-by微视");
+      } else {
+        upe.a("WSLikeAnimationManger", "请求后变成：已经点赞-by微视");
+      }
     }
-    paramujn.a(new ujw());
-    a(paramujn);
-  }
-  
-  private static boolean a(String paramString1, String paramString2)
-  {
-    return (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString2));
-  }
-  
-  public static boolean a(@NonNull uiz paramuiz, int paramInt)
-  {
-    Object localObject = paramuiz.a();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    label189:
+    upe.a("WSLikeAnimationManger", "点赞失败:-2");
+    paramuju = this.jdField_a_of_type_Uiw;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (i = j;; i = 1)
     {
-      AddressItem localAddressItem = ((uja)((List)localObject).get(0)).a;
-      localObject = ((uja)((List)localObject).get(((List)localObject).size() - 1)).a;
-      if ((localAddressItem == null) || (localObject == null))
-      {
-        wxe.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "initAlbumNameByPOI find no poi item :" + paramuiz);
-        paramuiz.b = "";
-        return false;
-      }
-      if ((paramInt <= 5) && (a(localAddressItem.building, ((AddressItem)localObject).building)))
-      {
-        paramuiz.b = localAddressItem.building;
-        return true;
-      }
-      if ((paramInt <= 4) && (a(localAddressItem.district, ((AddressItem)localObject).district)))
-      {
-        paramuiz.b = localAddressItem.district;
-        return true;
-      }
-      if ((paramInt <= 3) && (a(localAddressItem.city, ((AddressItem)localObject).city)))
-      {
-        paramuiz.b = localAddressItem.city;
-        return true;
-      }
-      if ((paramInt <= 2) && (a(localAddressItem.province, ((AddressItem)localObject).province)))
-      {
-        paramuiz.b = localAddressItem.province;
-        return true;
-      }
-      if ((paramInt <= 1) && (a(localAddressItem.country, ((AddressItem)localObject).country)))
-      {
-        paramuiz.b = localAddressItem.country;
-        return true;
-      }
+      uiw.a(paramuju, str, localLikeRspEvent, i);
+      break;
     }
-    paramuiz.b = "";
-    return false;
   }
-  
-  protected List<uja> a()
-  {
-    wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get start Pic list=" + super.a().size());
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = super.a().iterator();
-    while (localIterator.hasNext())
-    {
-      uja localuja = (uja)localIterator.next();
-      if (localuja.a != null) {
-        localArrayList.add(localuja);
-      }
-    }
-    wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get end Pic list=" + localArrayList.size());
-    return localArrayList;
-  }
-  
-  protected void c(List<uiz> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uix
  * JD-Core Version:    0.7.0.1
  */

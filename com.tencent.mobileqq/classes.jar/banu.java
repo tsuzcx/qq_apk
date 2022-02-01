@@ -1,59 +1,65 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import mqq.app.AppActivity;
+import mqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-class banu
-  implements bans
+public class banu
+  implements QQPermissionCallback
 {
-  private IBinder a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private banv jdField_a_of_type_Banv;
   
-  banu(IBinder paramIBinder)
+  public banu(Activity paramActivity, banv parambanv)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Banv = parambanv;
   }
   
-  public IBinder asBinder()
+  public void a()
   {
-    return this.a;
-  }
-  
-  public void onComplete(String paramString, int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
+    if (Build.VERSION.SDK_INT < 23) {
+      if (this.jdField_a_of_type_Banv != null) {
+        this.jdField_a_of_type_Banv.a();
+      }
+    }
+    label119:
+    do
     {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
+      do
+      {
+        do
+        {
+          return;
+        } while (this.jdField_a_of_type_AndroidAppActivity == null);
+        if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {}
+        for (int i = 1;; i = 0)
+        {
+          if (i != 0) {
+            break label119;
+          }
+          if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
+            break;
+          }
+          ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+          return;
+        }
+      } while (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity));
+      ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
       return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    } while (this.jdField_a_of_type_Banv == null);
+    this.jdField_a_of_type_Banv.a();
   }
   
-  public void onProgress(String paramString, long paramLong1, long paramLong2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
-      localParcel1.writeString(paramString);
-      localParcel1.writeLong(paramLong1);
-      localParcel1.writeLong(paramLong2);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
+    bglp.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (this.jdField_a_of_type_Banv != null) {
+      this.jdField_a_of_type_Banv.a();
     }
   }
 }

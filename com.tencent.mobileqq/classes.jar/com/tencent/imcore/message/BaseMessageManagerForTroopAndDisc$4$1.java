@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import absl;
-import abti;
+import acvk;
+import acwh;
 import java.util.Map;
 
 class BaseMessageManagerForTroopAndDisc$4$1
@@ -11,14 +11,14 @@ class BaseMessageManagerForTroopAndDisc$4$1
   
   public void run()
   {
-    if (this.a.this$0.a.b.containsKey(abti.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      this.a.this$0.a.b.remove(abti.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
+    if (this.a.this$0.a.b.containsKey(acwh.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
+      this.a.this$0.a.b.remove(acwh.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManagerForTroopAndDisc.4.1
  * JD-Core Version:    0.7.0.1
  */

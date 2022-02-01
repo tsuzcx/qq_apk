@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.listentogether.data;
 
-import alud;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import atmv;
-import atox;
-import bdgc;
+import anni;
+import avtu;
+import avvw;
+import bglf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -24,7 +24,7 @@ import tencent.aio.media.aio_media.Song;
 public class MusicInfo
   implements ISong
 {
-  public static final Parcelable.Creator<MusicInfo> CREATOR = new atmv();
+  public static final Parcelable.Creator<MusicInfo> CREATOR = new avtu();
   public int a;
   public long a;
   public String a;
@@ -66,7 +66,7 @@ public class MusicInfo
     default: 
       return 0;
     }
-    return 2130840339;
+    return 2130840518;
   }
   
   public static MusicInfo a(aio_media.Song paramSong)
@@ -152,7 +152,7 @@ public class MusicInfo
     case 1: 
       return "QQ音乐";
     }
-    return alud.a(2131707418);
+    return anni.a(2131705809);
   }
   
   public static String a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, long paramLong)
@@ -161,7 +161,7 @@ public class MusicInfo
       return "";
     }
     if (paramInt == 2) {}
-    for (paramQQAppInterface = bdgc.b(paramQQAppInterface, String.valueOf(paramLong), true);; paramQQAppInterface = bdgc.h(paramQQAppInterface, paramString, String.valueOf(paramLong)))
+    for (paramQQAppInterface = bglf.b(paramQQAppInterface, String.valueOf(paramLong), true);; paramQQAppInterface = bglf.h(paramQQAppInterface, paramString, String.valueOf(paramLong)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AioShareMusic", 2, " getSourceStr() type = " + paramInt + " sessionUin = " + paramString + " shareUin =" + paramLong + " nickName =" + paramQQAppInterface);
@@ -221,7 +221,7 @@ public class MusicInfo
   
   public String c()
   {
-    return atox.a(this.jdField_a_of_type_JavaLangString);
+    return avvw.a(this.jdField_a_of_type_JavaLangString);
   }
   
   public String d()
@@ -283,7 +283,7 @@ public class MusicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.data.MusicInfo
  * JD-Core Version:    0.7.0.1
  */

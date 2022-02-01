@@ -1,13 +1,13 @@
-import android.view.View;
-
-class aydr
-  implements bhvm
+public class aydr
 {
-  aydr(aydq paramaydq, View paramView) {}
-  
-  public void a()
+  public static int a()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    return 0;
+  }
+  
+  public static String a()
+  {
+    return bgln.c();
   }
 }
 

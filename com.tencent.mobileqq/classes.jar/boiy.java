@@ -1,0 +1,43 @@
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
+
+final class boiy
+  implements bocb
+{
+  boiy(boiz paramboiz, AEEditorTextBean paramAEEditorTextBean) {}
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Boiz != null) {
+      this.jdField_a_of_type_Boiz.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, (int)(66.0D + 0.34D * paramInt));
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_a_of_type_Boiz != null)) {
+      this.jdField_a_of_type_Boiz.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, 100);
+    }
+    boiz localboiz;
+    AEEditorTextBean localAEEditorTextBean;
+    if (this.jdField_a_of_type_Boiz != null)
+    {
+      localboiz = this.jdField_a_of_type_Boiz;
+      localAEEditorTextBean = this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean;
+      if (!paramBoolean) {
+        break label62;
+      }
+    }
+    label62:
+    for (String str = "SUCCESS_FONT_DOWNLOAD_SUCCEEDED";; str = "ERROR_FONT_DOWNLOAD_FAILED")
+    {
+      localboiz.a(localAEEditorTextBean, paramBoolean, str);
+      return;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     boiy
+ * JD-Core Version:    0.7.0.1
+ */

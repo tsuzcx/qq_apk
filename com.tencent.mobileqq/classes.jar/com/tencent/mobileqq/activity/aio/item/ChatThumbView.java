@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aeqh;
+import afwq;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -16,7 +16,7 @@ import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
 public class ChatThumbView
   extends URLImageView
-  implements aeqh
+  implements afwq
 {
   public boolean a;
   public boolean b = true;
@@ -177,7 +177,7 @@ public class ChatThumbView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ChatThumbView
  * JD-Core Version:    0.7.0.1
  */

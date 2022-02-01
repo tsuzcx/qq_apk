@@ -1,1215 +1,378 @@
-import EncounterSvc.ReqGetEncounterV2;
-import EncounterSvc.RespGetEncounterV2;
-import EncounterSvc.UserData;
-import NearbyPubAcct.ReqGetNearbyPubAcctInfo;
-import NeighborComm.LocalInfoType;
-import NeighborComm.RespHeader;
-import NeighborComm.SOSO_Cell;
-import NeighborComm.SOSO_Wifi;
-import NeighborSvc.ReqGetPoint;
-import NeighborSvc.RespGetPoint;
-import NeighborSvc.UserDetailLocalInfo;
-import QQService.ReqFavorite;
-import QQService.ReqHead;
-import QQService.RespFavorite;
-import QQService.RespHead;
-import android.os.Bundle;
-import android.os.RemoteException;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.text.TextUtils;
-import appoint.define.appoint_define.InterestTag;
-import appoint.define.appoint_define.LocaleInfo;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
-import com.tencent.mobileqq.dating.DatingFilters;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.IBaseActionListener;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x5fb.ReqInfo;
-import tencent.im.oidb.cmd0x682.ChatInfo;
-import tencent.im.oidb.cmd0x682.ReqBody;
-import tencent.im.oidb.cmd0x682.RspBody;
-import tencent.im.oidb.cmd0x686.Oidb_0x686.CharmEvent;
-import tencent.im.oidb.cmd0x686.Oidb_0x686.NearbyCharmNotify;
-import tencent.im.oidb.cmd0x686.Oidb_0x686.NearbyFeedConfig;
-import tencent.im.oidb.cmd0x686.Oidb_0x686.NearbyRankConfig;
-import tencent.im.oidb.cmd0x686.Oidb_0x686.RspBody;
-import tencent.im.oidb.cmd0x9c7.cmd0x9c7.ReqBody;
-import tencent.im.oidb.cmd0x9c7.cmd0x9c7.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
 
 public class alxl
+  extends AsyncTask<String, Void, Integer>
 {
-  public static int a(ToServiceMsg paramToServiceMsg)
+  Activity jdField_a_of_type_AndroidAppActivity;
+  biau jdField_a_of_type_Biau;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  String c;
+  
+  public alxl(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Activity paramActivity)
   {
-    int j = 0;
-    int i = j;
-    if (paramToServiceMsg != null)
-    {
-      int k = paramToServiceMsg.extraData.getByte("neighbor_interest_id");
-      long l = paramToServiceMsg.extraData.getLong("neighbor_sub_interest_id");
-      i = j;
-      if (k != 0)
-      {
-        i = j;
-        if (l != 0L) {
-          i = 1;
-        }
-      }
-    }
-    return i;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Biau = new biau(paramActivity);
   }
   
-  private static NearbyPubAcct.LBSInfo a(NearbyGroup.LBSInfo paramLBSInfo)
+  /* Error */
+  protected Integer a(String... paramVarArgs)
   {
-    Object localObject1 = null;
-    if (paramLBSInfo != null)
-    {
-      localObject1 = new NearbyPubAcct.GPS(paramLBSInfo.stGps.iLat, paramLBSInfo.stGps.iLon, paramLBSInfo.stGps.iAlt, paramLBSInfo.stGps.eType);
-      NearbyPubAcct.Attr localAttr = new NearbyPubAcct.Attr(paramLBSInfo.stAttr.strImei, paramLBSInfo.stAttr.strImsi, paramLBSInfo.stAttr.strPhonenum);
-      ArrayList localArrayList = new ArrayList();
-      Object localObject2 = paramLBSInfo.vWifis.iterator();
-      Object localObject3;
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (NearbyGroup.Wifi)((Iterator)localObject2).next();
-        localArrayList.add(new NearbyPubAcct.Wifi(((NearbyGroup.Wifi)localObject3).lMac, ((NearbyGroup.Wifi)localObject3).shRssi));
-      }
-      localObject2 = new ArrayList();
-      paramLBSInfo = paramLBSInfo.vCells.iterator();
-      while (paramLBSInfo.hasNext())
-      {
-        localObject3 = (NearbyGroup.Cell)paramLBSInfo.next();
-        ((ArrayList)localObject2).add(new NearbyPubAcct.Cell(((NearbyGroup.Cell)localObject3).shMcc, ((NearbyGroup.Cell)localObject3).shMnc, ((NearbyGroup.Cell)localObject3).iLac, ((NearbyGroup.Cell)localObject3).iCellId, ((NearbyGroup.Cell)localObject3).shRssi));
-      }
-      localObject1 = new NearbyPubAcct.LBSInfo((NearbyPubAcct.GPS)localObject1, localArrayList, (ArrayList)localObject2, localAttr);
-    }
-    return localObject1;
+    // Byte code:
+    //   0: aload_1
+    //   1: iconst_0
+    //   2: aaload
+    //   3: astore 13
+    //   5: aload 13
+    //   7: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   10: ifne +10 -> 20
+    //   13: aload_0
+    //   14: getfield 21	alxl:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   17: ifnonnull +8 -> 25
+    //   20: iconst_m1
+    //   21: invokestatic 44	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   24: areturn
+    //   25: aload_0
+    //   26: aload 13
+    //   28: putfield 46	alxl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   31: new 48	java/io/File
+    //   34: dup
+    //   35: new 50	java/lang/StringBuilder
+    //   38: dup
+    //   39: invokespecial 51	java/lang/StringBuilder:<init>	()V
+    //   42: getstatic 56	anhk:ba	Ljava/lang/String;
+    //   45: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: ldc 62
+    //   50: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokespecial 69	java/io/File:<init>	(Ljava/lang/String;)V
+    //   59: astore_1
+    //   60: aload_1
+    //   61: invokevirtual 73	java/io/File:exists	()Z
+    //   64: ifne +8 -> 72
+    //   67: aload_1
+    //   68: invokevirtual 76	java/io/File:mkdirs	()Z
+    //   71: pop
+    //   72: invokestatic 82	java/lang/System:currentTimeMillis	()J
+    //   75: lstore 6
+    //   77: aload_0
+    //   78: getfield 21	alxl:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   81: iconst_0
+    //   82: iconst_0
+    //   83: invokestatic 87	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Landroid/content/Context;II)Z
+    //   86: istore 12
+    //   88: aload 13
+    //   90: ldc 89
+    //   92: invokevirtual 95	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   95: istore_2
+    //   96: iload_2
+    //   97: iconst_m1
+    //   98: if_icmpne +8 -> 106
+    //   101: iconst_m1
+    //   102: invokestatic 44	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   105: areturn
+    //   106: iconst_m1
+    //   107: istore_3
+    //   108: aload_0
+    //   109: aload 13
+    //   111: aload 13
+    //   113: iload_2
+    //   114: iconst_1
+    //   115: iadd
+    //   116: invokevirtual 99	java/lang/String:substring	(I)Ljava/lang/String;
+    //   119: invokestatic 104	com/tencent/mobileqq/shortvideo/ShortVideoUtils:c	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   122: putfield 106	alxl:b	Ljava/lang/String;
+    //   125: iload 12
+    //   127: ifeq +161 -> 288
+    //   130: aload 13
+    //   132: invokestatic 109	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)Lbcmd;
+    //   135: pop
+    //   136: getstatic 115	com/tencent/mobileqq/activity/shortvideo/ShortVideoPreviewActivity:i	I
+    //   139: iconst_m1
+    //   140: if_icmpne +255 -> 395
+    //   143: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   146: ifeq +11 -> 157
+    //   149: ldc 122
+    //   151: iconst_2
+    //   152: ldc 124
+    //   154: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   157: aload_0
+    //   158: aload_0
+    //   159: getfield 46	alxl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   162: putfield 106	alxl:b	Ljava/lang/String;
+    //   165: iconst_0
+    //   166: istore_2
+    //   167: invokestatic 82	java/lang/System:currentTimeMillis	()J
+    //   170: lstore 8
+    //   172: new 48	java/io/File
+    //   175: dup
+    //   176: aload 13
+    //   178: invokespecial 69	java/io/File:<init>	(Ljava/lang/String;)V
+    //   181: invokevirtual 131	java/io/File:length	()J
+    //   184: lstore 10
+    //   186: lconst_0
+    //   187: lstore 4
+    //   189: aload_0
+    //   190: getfield 106	alxl:b	Ljava/lang/String;
+    //   193: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   196: ifne +19 -> 215
+    //   199: new 48	java/io/File
+    //   202: dup
+    //   203: aload_0
+    //   204: getfield 106	alxl:b	Ljava/lang/String;
+    //   207: invokespecial 69	java/io/File:<init>	(Ljava/lang/String;)V
+    //   210: invokevirtual 131	java/io/File:length	()J
+    //   213: lstore 4
+    //   215: iload_2
+    //   216: istore_3
+    //   217: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   220: ifeq +68 -> 288
+    //   223: ldc 133
+    //   225: iconst_2
+    //   226: new 50	java/lang/StringBuilder
+    //   229: dup
+    //   230: invokespecial 51	java/lang/StringBuilder:<init>	()V
+    //   233: ldc 135
+    //   235: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: iload_2
+    //   239: invokevirtual 138	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   242: ldc 140
+    //   244: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: lload 8
+    //   249: lload 6
+    //   251: lsub
+    //   252: invokevirtual 143	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   255: ldc 145
+    //   257: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   260: lload 10
+    //   262: invokevirtual 143	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   265: ldc 147
+    //   267: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   270: lload 4
+    //   272: invokevirtual 143	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   275: ldc 149
+    //   277: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   280: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   283: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   286: iload_2
+    //   287: istore_3
+    //   288: aload_0
+    //   289: getfield 21	alxl:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   292: aload 13
+    //   294: invokestatic 152	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Landroid/content/Context;Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   297: astore 14
+    //   299: aload 14
+    //   301: ifnull +89 -> 390
+    //   304: new 48	java/io/File
+    //   307: dup
+    //   308: aload_1
+    //   309: new 50	java/lang/StringBuilder
+    //   312: dup
+    //   313: invokespecial 51	java/lang/StringBuilder:<init>	()V
+    //   316: lload 6
+    //   318: invokestatic 155	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   321: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   324: ldc 157
+    //   326: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   329: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   332: invokespecial 160	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   335: astore_1
+    //   336: aload_1
+    //   337: invokevirtual 163	java/io/File:createNewFile	()Z
+    //   340: ifeq +233 -> 573
+    //   343: aload_0
+    //   344: aload_1
+    //   345: invokevirtual 166	java/io/File:getPath	()Ljava/lang/String;
+    //   348: putfield 168	alxl:c	Ljava/lang/String;
+    //   351: new 170	java/io/FileOutputStream
+    //   354: dup
+    //   355: aload_1
+    //   356: invokevirtual 166	java/io/File:getPath	()Ljava/lang/String;
+    //   359: invokespecial 171	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   362: astore 13
+    //   364: aload 13
+    //   366: astore_1
+    //   367: aload 14
+    //   369: getstatic 177	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   372: bipush 100
+    //   374: aload 13
+    //   376: invokevirtual 183	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   379: pop
+    //   380: aload 13
+    //   382: ifnull +8 -> 390
+    //   385: aload 13
+    //   387: invokevirtual 186	java/io/FileOutputStream:close	()V
+    //   390: iload_3
+    //   391: invokestatic 44	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   394: areturn
+    //   395: new 188	java/util/HashMap
+    //   398: dup
+    //   399: invokespecial 189	java/util/HashMap:<init>	()V
+    //   402: pop
+    //   403: aload 13
+    //   405: aload_0
+    //   406: getfield 21	alxl:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   409: invokestatic 192	com/tencent/mobileqq/activity/shortvideo/ShortVideoPreviewActivity:a	(Ljava/lang/String;Landroid/content/Context;)Ljava/util/HashMap;
+    //   412: astore 14
+    //   414: aload 14
+    //   416: ldc 194
+    //   418: invokevirtual 198	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   421: checkcast 91	java/lang/String
+    //   424: invokestatic 201	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   427: istore_2
+    //   428: aload_0
+    //   429: aload 14
+    //   431: ldc 203
+    //   433: invokevirtual 198	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   436: checkcast 91	java/lang/String
+    //   439: putfield 106	alxl:b	Ljava/lang/String;
+    //   442: invokestatic 120	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   445: ifeq +41 -> 486
+    //   448: ldc 122
+    //   450: iconst_2
+    //   451: new 50	java/lang/StringBuilder
+    //   454: dup
+    //   455: invokespecial 51	java/lang/StringBuilder:<init>	()V
+    //   458: ldc 205
+    //   460: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   463: aload 13
+    //   465: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   468: ldc 207
+    //   470: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   473: aload_0
+    //   474: getfield 106	alxl:b	Ljava/lang/String;
+    //   477: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   480: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   483: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   486: goto -319 -> 167
+    //   489: astore 14
+    //   491: aconst_null
+    //   492: astore 13
+    //   494: aload 13
+    //   496: astore_1
+    //   497: ldc 133
+    //   499: iconst_1
+    //   500: new 50	java/lang/StringBuilder
+    //   503: dup
+    //   504: invokespecial 51	java/lang/StringBuilder:<init>	()V
+    //   507: ldc 209
+    //   509: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   512: aload 14
+    //   514: invokevirtual 212	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   517: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   520: invokestatic 214	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   523: aload 13
+    //   525: ifnull -135 -> 390
+    //   528: aload 13
+    //   530: invokevirtual 186	java/io/FileOutputStream:close	()V
+    //   533: goto -143 -> 390
+    //   536: astore_1
+    //   537: goto -147 -> 390
+    //   540: astore 13
+    //   542: aconst_null
+    //   543: astore_1
+    //   544: aload_1
+    //   545: ifnull +7 -> 552
+    //   548: aload_1
+    //   549: invokevirtual 186	java/io/FileOutputStream:close	()V
+    //   552: aload 13
+    //   554: athrow
+    //   555: astore_1
+    //   556: goto -166 -> 390
+    //   559: astore_1
+    //   560: goto -8 -> 552
+    //   563: astore 13
+    //   565: goto -21 -> 544
+    //   568: astore 14
+    //   570: goto -76 -> 494
+    //   573: aconst_null
+    //   574: astore 13
+    //   576: goto -196 -> 380
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	579	0	this	alxl
+    //   0	579	1	paramVarArgs	String[]
+    //   95	333	2	i	int
+    //   107	284	3	j	int
+    //   187	84	4	l1	long
+    //   75	242	6	l2	long
+    //   170	78	8	l3	long
+    //   184	77	10	l4	long
+    //   86	40	12	bool	boolean
+    //   3	526	13	localObject1	java.lang.Object
+    //   540	13	13	localObject2	java.lang.Object
+    //   563	1	13	localObject3	java.lang.Object
+    //   574	1	13	localObject4	java.lang.Object
+    //   297	133	14	localObject5	java.lang.Object
+    //   489	24	14	localException1	java.lang.Exception
+    //   568	1	14	localException2	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   336	364	489	java/lang/Exception
+    //   528	533	536	java/lang/Exception
+    //   336	364	540	finally
+    //   385	390	555	java/lang/Exception
+    //   548	552	559	java/lang/Exception
+    //   367	380	563	finally
+    //   497	523	563	finally
+    //   367	380	568	java/lang/Exception
   }
   
-  public static Object a(AppInterface paramAppInterface, FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg, zhu paramzhu)
+  protected void a(Integer paramInteger)
   {
-    RespHeader localRespHeader = (RespHeader)a(paramFromServiceMsg.getWupBuffer(), "RespHeader", new RespHeader());
-    UserData localUserData;
-    boolean bool;
-    int i;
-    if (localRespHeader != null)
-    {
-      atvd.a("LBS", "CMD_GET_ENCOUNTER eReplyCode:" + localRespHeader.eReplyCode);
-      localUserData = null;
-      bool = false;
-      if (localRespHeader == null) {
-        break label488;
-      }
-      i = localRespHeader.eReplyCode;
-      if ((i != 0) && (i != 300)) {
-        break label416;
-      }
-      paramFromServiceMsg = (RespGetEncounterV2)a(paramFromServiceMsg.getWupBuffer(), "RespGetEncounterV2", new RespGetEncounterV2());
-      if (paramFromServiceMsg == null) {
-        break label497;
-      }
-      localUserData = paramFromServiceMsg.stUserData;
-      i = a(paramToServiceMsg);
-      if (!(paramzhu instanceof ayzi)) {
-        break label385;
-      }
-      ((ayzi)paramzhu).a[i] = localUserData;
-      label140:
-      if (auwz.b())
-      {
-        if (localUserData != null) {
-          break label407;
-        }
-        paramAppInterface = "user data is null";
-        label154:
-        auwz.a("NearbyCmdHelper", new Object[] { "decodeGetEncounter", Integer.valueOf(i), paramAppInterface });
-      }
-      if (localUserData != null)
-      {
-        aphy.a(paramToServiceMsg.extraData.getString("account"), localUserData.iLon, localUserData.iLat, localUserData.lTime);
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyCmdHelper", 2, "respone stUserData.lTime=" + localUserData.lTime + " iLat=" + localUserData.iLat + " iLon" + localUserData.iLon + " lOriginGrid=" + localUserData.lOriginGrid + " lNextGrid=" + localUserData.lNextGrid + " strProvince=" + localUserData.strProvince + " strCookie" + localUserData.strCookie);
-        }
-      }
-      bool = true;
-      paramAppInterface = paramFromServiceMsg;
+    int i = 10485760;
+    super.onPostExecute(paramInteger);
+    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
+      this.jdField_a_of_type_Biau.dismiss();
     }
-    for (;;)
+    String str;
+    if (TextUtils.isEmpty(this.b))
     {
-      return new Object[] { localRespHeader, paramAppInterface, Boolean.valueOf(bool) };
-      atvd.a("LBS", "CMD_GET_ENCOUNTER eReplyCode:" + null);
+      str = this.jdField_a_of_type_JavaLangString;
+      long l = new File(str).length();
+      if (this.jdField_a_of_type_AndroidAppActivity != null) {
+        i = this.jdField_a_of_type_AndroidAppActivity.getIntent().getIntExtra("size_after_compress", 10485760);
+      }
+      if (l <= i) {
+        break label144;
+      }
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, anni.a(2131712849), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity.getTitleBarHeight());
+      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.jdField_a_of_type_AndroidAppActivity = null;
+    }
+    label144:
+    while ((this.jdField_a_of_type_AndroidAppActivity == null) || (paramInteger.intValue() != 0))
+    {
+      return;
+      str = this.b;
       break;
-      label385:
-      if (!(paramzhu instanceof ayzg)) {
-        break label140;
-      }
-      ((ayzg)paramzhu).a[i] = localUserData;
-      break label140;
-      label407:
-      paramAppInterface = localUserData.strProvince;
-      break label154;
-      label416:
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyCmdHelper", 2, "cmd = " + paramFromServiceMsg.getServiceCmd() + " ReplyCode = " + i + ",strResult=" + localRespHeader.strResult);
-      }
-      alxp.a(paramAppInterface, i);
-      paramAppInterface = localUserData;
-      continue;
-      label488:
-      alxp.a(paramAppInterface, -1111);
-      return null;
-      label497:
-      bool = true;
-      paramAppInterface = paramFromServiceMsg;
     }
+    paramInteger = new Intent();
+    paramInteger.putExtra("video_dir", str);
+    paramInteger.putExtra("thumb_dir", this.c);
+    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramInteger);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.jdField_a_of_type_AndroidAppActivity = null;
   }
   
-  public static Object a(zhu paramzhu, FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  protected void onPreExecute()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby", 2, "LBSService --> decodeGetPointInfo(), isSuccess: " + paramFromServiceMsg.isSuccess());
-    }
-    if (paramFromServiceMsg.isSuccess())
-    {
-      paramzhu = (RespGetPoint)paramzhu.a(paramFromServiceMsg.getWupBuffer(), "RespGetPoint", new RespGetPoint());
-      if (paramzhu != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.nearby", 2, "LBSService --> decodeGetPointInfo(), url: " + new String(paramzhu.stUDLinfo.SOSOUrl) + " , cityId = " + paramzhu.stUDLinfo.cityId);
-        }
-        return paramzhu;
-      }
-    }
-    return null;
-  }
-  
-  public static final <T> T a(byte[] paramArrayOfByte, String paramString, T paramT)
-  {
-    UniPacket localUniPacket = new UniPacket(true);
-    try
-    {
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      return localUniPacket.getByClass(paramString, paramT);
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      return null;
-    }
-    catch (RuntimeException paramArrayOfByte) {}
-    return null;
-  }
-  
-  public static void a(alpd paramalpd, byte paramByte)
-  {
-    try
-    {
-      long l = Long.parseLong(paramalpd.getCurrentAccountUin());
-      Object localObject = new byte[13];
-      bdqa.a((byte[])localObject, 0, l);
-      localObject[4] = 0;
-      bdqa.a((byte[])localObject, 5, (short)1);
-      bdqa.a((byte[])localObject, 7, 40493);
-      bdqa.a((byte[])localObject, 9, (short)2);
-      bdqa.a((byte[])localObject, 11, (short)paramByte);
-      localObject = paramalpd.makeOIDBPkg("OidbSvc.0x4ff_9", 1279, 9, (byte[])localObject);
-      ((ToServiceMsg)localObject).extraData.putByte("session_switch_value", paramByte);
-      ((ToServiceMsg)localObject).extraData.putBoolean("reqFromDatingHandler", true);
-      paramalpd.sendPbReq((ToServiceMsg)localObject);
-      apib.a("send_oidb_0x4ff_9", new Object[] { Byte.valueOf(paramByte) });
-      return;
-    }
-    catch (Exception paramalpd)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("Q.dating", 2, "send_oidb_0x4ff_9 error", paramalpd);
-    }
-  }
-  
-  public static void a(alpd paramalpd, int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    ByteBuffer localByteBuffer = null;
-    boolean bool1 = paramToServiceMsg.extraData.getBoolean("req_street_view");
-    boolean bool2 = paramToServiceMsg.extraData.getBoolean("req_current_loc");
-    if ((paramObject != null) && (paramFromServiceMsg.isSuccess()))
-    {
-      paramFromServiceMsg = (RespGetPoint)paramObject;
-      paramObject = paramFromServiceMsg.stUDLinfo;
-      if (bool1) {
-        if ((paramObject != null) && (paramObject.SOSOUrl.length > 0)) {
-          paramalpd.notifyUI(paramInt, true, paramObject.SOSOUrl);
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!bool2);
-      paramToServiceMsg = localByteBuffer;
-      if (paramObject.cityId != null)
-      {
-        paramToServiceMsg = localByteBuffer;
-        if (paramObject.cityId.length == 16)
-        {
-          localByteBuffer = ByteBuffer.wrap(paramObject.cityId);
-          paramToServiceMsg = new String[4];
-          paramToServiceMsg[0] = alpy.a(localByteBuffer.getInt());
-          paramToServiceMsg[1] = alpy.a(localByteBuffer.getInt());
-          paramToServiceMsg[2] = alpy.a(localByteBuffer.getInt());
-          paramToServiceMsg[3] = "0";
-        }
-      }
-      paramalpd.notifyUI(paramInt, true, new Object[] { "", paramObject.strProvince, paramObject.strCity, paramObject.strDistrict, paramObject.strTown, "", paramObject.strRoad, "", Integer.valueOf(paramFromServiceMsg.stGps.iLat), Integer.valueOf(paramFromServiceMsg.stGps.iLon), Integer.valueOf(paramFromServiceMsg.stGps.iAlt), paramToServiceMsg });
-      return;
-      if (bool1)
-      {
-        paramalpd.notifyUI(paramInt, false, null);
-        return;
-      }
-    } while (!bool2);
-    paramalpd.notifyUI(paramInt, false, null);
-  }
-  
-  public static void a(alpd paramalpd, int paramInt1, List<avau> paramList, int paramInt2, int paramInt3)
-  {
-    if (paramList == null)
-    {
-      c(paramalpd, paramInt1, null, null, null);
-      return;
-    }
-    cmd0x9c7.ReqBody localReqBody = new cmd0x9c7.ReqBody();
-    localReqBody.uint32_set_mode.set(paramInt2);
-    localReqBody.uint32_test_mode.set(paramInt3);
-    paramInt1 = 0;
-    while (paramInt1 < paramList.size())
-    {
-      avau localavau = (avau)paramList.get(paramInt1);
-      if (localavau != null) {
-        localReqBody.rpt_msg_tags.add(localavau.a());
-      }
-      paramInt1 += 1;
-    }
-    paramList = paramalpd.makeOIDBPkg("OidbSvc.0x9c7_0", 2503, 0, localReqBody.toByteArray());
-    paramList.extraData.putInt("set_mode", paramInt2);
-    paramList.extraData.putInt("test_mode", paramInt3);
-    paramalpd.sendPbReq(paramList);
-  }
-  
-  public static void a(alpd paramalpd, long paramLong, int paramInt, byte[] paramArrayOfByte)
-  {
-    Object localObject = new cmd0x682.ReqBody();
-    ((cmd0x682.ReqBody)localObject).rpt_uint64_touinlist.add(Long.valueOf(paramLong));
-    localObject = paramalpd.makeOIDBPkg("OidbSvc.0x682", 1666, 0, ((cmd0x682.ReqBody)localObject).toByteArray());
-    ((ToServiceMsg)localObject).extraData.putByteArray("showlove_chat_sig", paramArrayOfByte);
-    paramalpd.sendPbReq((ToServiceMsg)localObject);
-    a(paramalpd.mApp, paramInt);
-    apib.c("getShowLove", new Object[] { "from type " + paramInt });
-  }
-  
-  public static void a(alpd paramalpd, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
-  {
-    if ((!paramBoolean1) && (!paramBoolean2)) {
-      return;
-    }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramalpd.getCurrentAccountUin(), "NeighborSvc.ReqGetPoint");
-    if ((paramInt1 != 0) && (paramInt2 != 0))
-    {
-      localToServiceMsg.extraData.putInt("lat", paramInt1);
-      localToServiceMsg.extraData.putInt("lon", paramInt2);
-    }
-    if (paramBoolean1) {
-      localToServiceMsg.extraData.putBoolean("req_street_view", true);
-    }
-    for (;;)
-    {
-      paramalpd.send(localToServiceMsg);
-      return;
-      localToServiceMsg.extraData.putBoolean("req_current_loc", true);
-    }
-  }
-  
-  private static void a(AppInterface paramAppInterface, int paramInt)
-  {
-    String str = "";
-    if ((paramInt & 0x4) == 4)
-    {
-      str = "0X8005283";
-      paramAppInterface.reportClickEvent("CliOper", "", "", str, str, 0, 0, "", "", "", "");
-      apib.c("getShowLove", new Object[] { "report value ", str });
-      str = "";
-      if ((paramInt & 0x1) != 1) {
-        break label184;
-      }
-      str = "0X8005288";
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(str))
-      {
-        paramAppInterface.reportClickEvent("CliOper", "", "", str, str, 0, 0, "", "", "", "");
-        apib.c("getShowLove", new Object[] { "report value2 ", str });
-      }
-      return;
-      if ((paramInt & 0x8) == 8)
-      {
-        str = "0X8005284";
-        break;
-      }
-      if ((paramInt & 0x10) == 16)
-      {
-        str = "0X8005285";
-        break;
-      }
-      if ((paramInt & 0x20) != 32) {
-        break;
-      }
-      str = "0X8005281";
-      break;
-      label184:
-      if ((paramInt & 0x2) == 2) {
-        str = "0X8005289";
-      }
-    }
-  }
-  
-  public static void a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
-  {
-    paramToServiceMsg = (RespFavorite)a(paramFromServiceMsg.getWupBuffer(), "RespFavorite", new RespFavorite());
-    paramFromServiceMsg.getAttributes().put("result", paramToServiceMsg);
-    switch (paramToServiceMsg.stHeader.iReplyCode)
-    {
-    default: 
-      paramFromServiceMsg.setMsgFail();
-      return;
-    }
-    paramFromServiceMsg.setMsgSuccess();
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket, zhu paramzhu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyCmdHelper", 2, "handleGetEncounter start...");
-    }
-    if (paramToServiceMsg.extraData.getBoolean("isCheckInReq", false)) {
-      return b(paramAppInterface, paramToServiceMsg, paramUniPacket, paramzhu);
-    }
-    int i = a(paramToServiceMsg);
-    if ((paramzhu instanceof ayzi)) {
-      paramzhu = ((ayzi)paramzhu).a[i];
-    }
-    label155:
-    label1454:
-    for (;;)
-    {
-      Object localObject1;
-      label75:
-      int m;
-      int n;
-      int j;
-      boolean bool1;
-      boolean bool3;
-      NeighborComm.ReqHeader localReqHeader;
-      EncounterSvc.ReqUserInfo localReqUserInfo1;
-      label319:
-      EncounterSvc.ReqUserInfo localReqUserInfo2;
-      int k;
-      boolean bool2;
-      if (auwz.b())
-      {
-        if (paramzhu == null)
-        {
-          localObject1 = "user data is null";
-          auwz.a("NearbyCmdHelper", new Object[] { "handleGetEncounter", Integer.valueOf(i), localObject1 });
-        }
-      }
-      else
-      {
-        m = paramToServiceMsg.extraData.getInt("lat");
-        n = paramToServiceMsg.extraData.getInt("lon");
-        j = paramToServiceMsg.extraData.getInt("roamMode");
-        if ((m == 0) || (n == 0)) {
-          break label613;
-        }
-        localObject1 = null;
-        bool1 = true;
-        if ((localObject1 == null) && (!bool1)) {
-          break label1784;
-        }
-        bool3 = paramToServiceMsg.extraData.getBoolean("first");
-        localReqHeader = new NeighborComm.ReqHeader();
-        localReqHeader.shVersion = 3;
-        localReqHeader.lMID = zhu.a(Long.parseLong(paramToServiceMsg.getUin()));
-        localReqHeader.iAppID = AppSetting.a();
-        localReqHeader.eBusiType = 0;
-        localReqHeader.eMqqSysType = 2;
-        localReqUserInfo1 = new EncounterSvc.ReqUserInfo();
-        localReqUserInfo1.strAuthName = "B1_QQ_Neighbor_android";
-        localReqUserInfo1.strAuthPassword = "NzVK_qGE";
-        localReqUserInfo1.eListType = 0;
-        if (!bool1) {
-          break label658;
-        }
-        localReqUserInfo1.vCells = new ArrayList(1);
-        localReqUserInfo1.vMacs = new ArrayList(1);
-        localReqUserInfo1.eLocalInfo = LocalInfoType.LocalInfoType_Decode.value();
-        localReqUserInfo1.stGps = new EncounterSvc.GPS(m, n, 0, 1);
-        localReqUserInfo2 = new EncounterSvc.ReqUserInfo();
-        i = paramToServiceMsg.extraData.getInt("localLat");
-        k = paramToServiceMsg.extraData.getInt("localLon");
-        if ((i != 0) && (k != 0))
-        {
-          localReqUserInfo2.vCells = new ArrayList(1);
-          localReqUserInfo2.vMacs = new ArrayList(1);
-          localReqUserInfo2.eLocalInfo = LocalInfoType.LocalInfoType_Decode.value();
-          localReqUserInfo2.stGps = new EncounterSvc.GPS(i, k, 0, 1);
-        }
-        if ((paramzhu != null) && (!bool3)) {
-          break label1919;
-        }
-        if (QLog.isColorLevel())
-        {
-          localObject2 = new StringBuilder().append("temp==ull:");
-          if (paramzhu != null) {
-            break label946;
-          }
-          bool2 = true;
-          label454:
-          QLog.i("NearbyCmdHelper", 2, bool2 + " first:" + bool3);
-        }
-      }
-      label613:
-      label1777:
-      label1784:
-      label1919:
-      for (Object localObject2 = new UserData();; localObject2 = paramzhu)
-      {
-        k = paramToServiceMsg.extraData.getInt("gender");
-        Object localObject5 = paramToServiceMsg.extraData.getLongArray("tags");
-        Object localObject4 = null;
-        Object localObject3 = localObject4;
-        if (localObject5 != null)
-        {
-          localObject3 = localObject4;
-          if (localObject5.length > 0)
-          {
-            localObject4 = new ArrayList();
-            i = 0;
-            for (;;)
-            {
-              localObject3 = localObject4;
-              if (i >= localObject5.length) {
-                break;
-              }
-              ((ArrayList)localObject4).add(Long.valueOf(localObject5[i]));
-              i += 1;
-            }
-            if (!(paramzhu instanceof ayzg)) {
-              break label1925;
-            }
-            paramzhu = ((ayzg)paramzhu).a[i];
-            break;
-            localObject1 = paramzhu.strProvince;
-            break label75;
-            l1 = System.currentTimeMillis();
-            SosoInterface.a(60000L, "NearbyProtocolCoder.Encounter");
-            localObject1 = SosoInterface.a();
-            l2 = System.currentTimeMillis();
-            paramToServiceMsg.extraData.putLong("lbsTime", l2 - l1);
-            bool1 = false;
-            break label155;
-            localReqUserInfo1.eLocalInfo = LocalInfoType.LocalInfoType_SOSO.value();
-            localReqUserInfo1.stGps = new EncounterSvc.GPS((int)(((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.c * 1000000.0D), (int)(((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.d * 1000000.0D), -1, 0);
-            if (QLog.isColorLevel()) {
-              QLog.i("NearbyCmdHelper", 2, "mLat_84=" + ((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.c + ",mLon_84" + ((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.d);
-            }
-            localReqUserInfo1.vSOSOCells = new ArrayList();
-            if (((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_JavaUtilArrayList != null)
-            {
-              localObject2 = ((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_JavaUtilArrayList.iterator();
-              while (((Iterator)localObject2).hasNext())
-              {
-                localObject3 = (SosoInterface.SosoCell)((Iterator)localObject2).next();
-                localReqUserInfo1.vSOSOCells.add(new SOSO_Cell((short)((SosoInterface.SosoCell)localObject3).jdField_a_of_type_Int, (short)((SosoInterface.SosoCell)localObject3).jdField_b_of_type_Int, ((SosoInterface.SosoCell)localObject3).c, ((SosoInterface.SosoCell)localObject3).d, (short)((SosoInterface.SosoCell)localObject3).e));
-              }
-            }
-            localReqUserInfo1.vSOSOMac = new ArrayList();
-            if (((SosoInterface.SosoLbsInfo)localObject1).b == null) {
-              break label319;
-            }
-            localObject2 = ((SosoInterface.SosoLbsInfo)localObject1).b.iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              localObject3 = (SosoInterface.SosoWifi)((Iterator)localObject2).next();
-              localReqUserInfo1.vSOSOMac.add(new SOSO_Wifi(((SosoInterface.SosoWifi)localObject3).jdField_a_of_type_Long, (short)((SosoInterface.SosoWifi)localObject3).jdField_a_of_type_Int));
-            }
-            break label319;
-            bool2 = false;
-            break label454;
-          }
-        }
-        localObject4 = a(m, n, bool3);
-        byte b1 = paramToServiceMsg.extraData.getByte("constellation");
-        byte b2 = paramToServiceMsg.extraData.getByte("neighbor_interest_id");
-        m = paramToServiceMsg.extraData.getInt("timeInterval");
-        byte b3 = paramToServiceMsg.extraData.getByte("ageLow");
-        byte b4 = paramToServiceMsg.extraData.getByte("ageUp");
-        n = paramToServiceMsg.extraData.getInt("careerID");
-        int i1 = paramToServiceMsg.extraData.getInt("hometownCountry");
-        int i2 = paramToServiceMsg.extraData.getInt("hometownProvince");
-        int i3 = paramToServiceMsg.extraData.getInt("hometownCity");
-        localObject5 = paramToServiceMsg.extraData.getString("adExtra");
-        long l1 = paramToServiceMsg.extraData.getLong("adCtrl");
-        byte b5 = paramToServiceMsg.extraData.getByte("rankListNum");
-        int i4 = paramToServiceMsg.extraData.getInt("neighbor_list_source");
-        long l2 = paramToServiceMsg.extraData.getLong("neighbor_sub_interest_id");
-        if ((QLog.isColorLevel()) && (paramzhu != null)) {
-          QLog.d("NearbyCmdHelper", 2, "request stUserData.lTime=" + paramzhu.lTime + " iLat=" + paramzhu.iLat + " iLon" + paramzhu.iLon + " lOriginGrid=" + paramzhu.lOriginGrid + " lNextGrid=" + paramzhu.lNextGrid + " strProvince=" + paramzhu.strProvince + " strCookie" + paramzhu.strCookie);
-        }
-        if (auwz.b()) {
-          auwz.a("NearbyCmdHelper", "handleGetEncounter interest", new Object[] { Byte.valueOf(b2), Long.valueOf(l2) });
-        }
-        paramToServiceMsg = (DatingFilters)paramToServiceMsg.extraData.getParcelable("datingFilter");
-        paramzhu = new cmd0x5fb.ReqInfo();
-        if (paramToServiceMsg != null)
-        {
-          paramzhu.uint32_time.set(paramToServiceMsg.jdField_b_of_type_Int);
-          paramzhu.uint32_subject.set(paramToServiceMsg.d);
-          paramzhu.uint32_gender.set(paramToServiceMsg.jdField_a_of_type_Int);
-          paramzhu.uint32_age_low.set(DatingFilters.jdField_b_of_type_ArrayOfInt[paramToServiceMsg.e]);
-          paramzhu.uint32_age_up.set(DatingFilters.jdField_a_of_type_ArrayOfInt[paramToServiceMsg.e]);
-          PBUInt32Field localPBUInt32Field = paramzhu.uint32_profession;
-          if (paramToServiceMsg.f >= 0) {
-            break label1687;
-          }
-          i = 0;
-          localPBUInt32Field.set(i);
-          paramzhu.bytes_cookie.set(ByteStringMicro.copyFrom(new byte[0]));
-          if ((paramToServiceMsg.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo != null) && (paramToServiceMsg.d == 5)) {
-            paramzhu.msg_destination.set(paramToServiceMsg.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo);
-          }
-        }
-        if (((Boolean)auwq.a(paramAppInterface.getAccount(), "is_nearby_novice", Boolean.valueOf(false))).booleanValue())
-        {
-          i = 1;
-          if (QLog.isColorLevel()) {
-            QLog.i("NearbyCmdHelper", 2, "handleGetEncounter isNearbyNovice: " + i);
-          }
-          if (!bool1) {
-            break label1702;
-          }
-          paramToServiceMsg = new ReqGetEncounterV2(localReqUserInfo1, (UserData)localObject2, k, -1, (ArrayList)localObject3, new byte[1], (byte)j, 2000, -1, 0, null, (byte[])localObject4, 0, (byte)1, b1, b3, b4, m, n, i2, i3, (byte)1, i1, localReqUserInfo2, 15, paramzhu.toByteArray(), (byte)0, (byte)0, b2, (String)localObject5, l1, 0L, b5, i, i4, l2);
-          paramUniPacket.setEncodeName("utf-8");
-          paramUniPacket.setServantName("EncounterObj");
-          paramUniPacket.setFuncName("CMD_GET_ENCOUNTERV2");
-          paramUniPacket.put("ReqHeader", localReqHeader);
-          paramUniPacket.put("ReqGetEncounterV2", paramToServiceMsg);
-          paramUniPacket = new HashMap();
-          if (localObject1 == null) {
-            break label1777;
-          }
-        }
-        for (paramToServiceMsg = "lbs is not null";; paramToServiceMsg = "isUseGps is true")
-        {
-          paramUniPacket.put("param_reason", paramToServiceMsg);
-          paramUniPacket.put("param_NetType", bdin.a(null) + "");
-          azri.a(BaseApplicationImpl.getContext()).a(paramAppInterface.getCurrentAccountUin(), "GET_ENCOUNTER_LOCATION", true, 0L, 0L, paramUniPacket, "");
-          return true;
-          i = paramToServiceMsg.f;
-          break;
-          i = 0;
-          break label1454;
-          paramToServiceMsg = new ReqGetEncounterV2(localReqUserInfo1, (UserData)localObject2, k, -1, (ArrayList)localObject3, new byte[1], (byte)0, 2000, -1, 0, null, (byte[])localObject4, 0, (byte)1, b1, b3, b4, m, n, i2, i3, (byte)1, i1, null, 15, paramzhu.toByteArray(), (byte)0, (byte)0, b2, (String)localObject5, l1, 0L, b5, i, i4, l2);
-          break label1567;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyCmdHelper", 2, "handleGetEncounter lbsInfo=" + localObject1 + ", isUseGps=" + bool1);
-        }
-        if (localObject1 == null) {
-          paramToServiceMsg.extraData.putBoolean("isLbsInfoNull", true);
-        }
-        paramToServiceMsg = new HashMap();
-        paramToServiceMsg.put("param_reason", "all is null");
-        paramToServiceMsg.put("param_NetType", bdin.a(null) + "");
-        azri.a(BaseApplicationImpl.getContext()).a(paramAppInterface.getCurrentAccountUin(), "GET_ENCOUNTER_LOCATION", false, 0L, 0L, paramToServiceMsg, "");
-        return false;
-      }
-      label946:
-      paramzhu = null;
-    }
-  }
-  
-  public static boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    long l1 = paramToServiceMsg.extraData.getLong("selfUin");
-    long l2 = paramToServiceMsg.extraData.getLong("targetUin");
-    Object localObject = paramToServiceMsg.extraData.getByteArray("vCookies");
-    int i = paramToServiceMsg.extraData.getInt("favoriteSource");
-    int j = paramToServiceMsg.extraData.getInt("iCount");
-    localObject = new ReqFavorite(new ReqHead(l1, (short)1, paramUniPacket.getRequestId(), (byte)1, (byte)0, (byte[])localObject), l2, 0, i, j);
-    paramUniPacket.setServantName("VisitorSvc");
-    paramUniPacket.setFuncName("ReqFavorite");
-    paramUniPacket.put("ReqFavorite", localObject);
-    paramToServiceMsg.setTimeout(10000L);
-    paramToServiceMsg.setServiceCmd("VisitorSvc.ReqFavorite");
-    return true;
-  }
-  
-  public static boolean a(zhu paramzhu, ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    boolean bool1 = false;
-    int j = 0;
-    boolean bool2 = paramToServiceMsg.extraData.getBoolean("req_street_view");
-    boolean bool3 = paramToServiceMsg.extraData.getBoolean("req_current_loc");
-    int i = paramToServiceMsg.extraData.getInt("lat");
-    int k = paramToServiceMsg.extraData.getInt("lon");
-    if (((bool2) && (i != 0) && (k != 0)) || (bool3))
-    {
-      paramzhu = new NeighborSvc.ReqHeader();
-      paramzhu.shVersion = 2;
-      paramzhu.lMID = zhu.a(Long.parseLong(paramToServiceMsg.getUin()));
-      paramzhu.iAppID = AppSetting.a();
-      paramzhu.eBusiType = 0;
-      paramzhu.eMqqSysType = 2;
-      Object localObject1 = new NeighborSvc.ReqUserInfo();
-      ((NeighborSvc.ReqUserInfo)localObject1).strAuthName = "B1_QQ_Neighbor_android";
-      ((NeighborSvc.ReqUserInfo)localObject1).strAuthPassword = "NzVK_qGE";
-      ((NeighborSvc.ReqUserInfo)localObject1).eListType = 0;
-      if (bool2)
-      {
-        ((NeighborSvc.ReqUserInfo)localObject1).vCells = new ArrayList(1);
-        ((NeighborSvc.ReqUserInfo)localObject1).vMacs = new ArrayList(1);
-        ((NeighborSvc.ReqUserInfo)localObject1).stGps = new NeighborSvc.GPS(i, k, 0, 1);
-        ((NeighborSvc.ReqUserInfo)localObject1).eLocalInfo = LocalInfoType.LocalInfoType_Decode.value();
-        if (!bool2) {
-          break label467;
-        }
-      }
-      label297:
-      label467:
-      for (i = 1;; i = 0) {
-        for (;;)
-        {
-          byte b = (byte)i;
-          i = j;
-          if (bool3) {
-            i = 1;
-          }
-          localObject1 = new ReqGetPoint((NeighborSvc.ReqUserInfo)localObject1, b, (byte)i);
-          paramUniPacket.setServantName("NeighborObj");
-          paramUniPacket.setFuncName("CMD_GET_POINT");
-          paramUniPacket.put("ReqHeader", paramzhu);
-          paramUniPacket.put("ReqGetPoint", localObject1);
-          paramToServiceMsg.setTimeout(30000L);
-          paramToServiceMsg.setServiceCmd("NeighborSvc.ReqGetPoint");
-          bool1 = true;
-          return bool1;
-          if ((bool3 == true) && (i != 0) && (k != 0))
-          {
-            ((NeighborSvc.ReqUserInfo)localObject1).vCells = new ArrayList(1);
-            ((NeighborSvc.ReqUserInfo)localObject1).vMacs = new ArrayList(1);
-            ((NeighborSvc.ReqUserInfo)localObject1).stGps = new NeighborSvc.GPS(i, k, 0, 1);
-            break;
-          }
-          ampk.a(new alxm("LBSService.Point", paramToServiceMsg));
-          try
-          {
-            paramToServiceMsg.wait();
-            Object localObject2 = auuf.a(true, ampk.a("LBSService.Point"));
-            if (localObject2 == null) {
-              break label297;
-            }
-            if (((NearbyGroup.LBSInfo)localObject2).stGps == null) {
-              break;
-            }
-            localObject2 = ((NearbyGroup.LBSInfo)localObject2).stGps;
-            ((NeighborSvc.ReqUserInfo)localObject1).stGps = new NeighborSvc.GPS(((NearbyGroup.GPS)localObject2).iLat, ((NearbyGroup.GPS)localObject2).iLon, ((NearbyGroup.GPS)localObject2).iAlt, ((NearbyGroup.GPS)localObject2).eType);
-            break;
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            for (;;)
-            {
-              localInterruptedException.printStackTrace();
-            }
-          }
-          finally {}
-        }
-      }
-    }
-    paramzhu = new FromServiceMsg(paramToServiceMsg.getUin(), paramToServiceMsg.getServiceCmd());
-    paramzhu.setMsgFail();
-    try
-    {
-      paramToServiceMsg.actionListener.onActionResult(paramzhu);
-      return false;
-    }
-    catch (RemoteException paramzhu) {}
-    return false;
-  }
-  
-  private static byte[] a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    Object localObject = null;
-    if (paramBoolean)
-    {
-      if ((paramInt1 == 0) || (paramInt2 == 0)) {
-        break label100;
-      }
-      localObject = new NearbyPubAcct.LBSInfo();
-      ((NearbyPubAcct.LBSInfo)localObject).stGps = new NearbyPubAcct.GPS(paramInt1, paramInt2, 0, 1);
-    }
-    for (;;)
-    {
-      localObject = new ReqGetNearbyPubAcctInfo((short)2, new byte[0], 2, (NearbyPubAcct.LBSInfo)localObject);
-      UniPacket localUniPacket = new UniPacket(true);
-      localUniPacket.setRequestId(1);
-      localUniPacket.setServantName("PubAccountSvc.nearby_pubacct");
-      localUniPacket.setFuncName("nearby_pubacct");
-      localUniPacket.put("nearby_pubacct", localObject);
-      localObject = localUniPacket.encode();
-      return localObject;
-      label100:
-      localObject = a(auuf.a());
-    }
-  }
-  
-  public static void b(alpd paramalpd, int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool2 = false;
-    int i = -1;
-    try
-    {
-      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-      paramFromServiceMsg.mergeFrom((byte[])paramObject);
-      boolean bool1 = bool2;
-      int j;
-      if (paramFromServiceMsg != null)
-      {
-        j = paramFromServiceMsg.uint32_result.get();
-        i = j;
-        bool1 = bool2;
-        if (j == 0)
-        {
-          bool1 = true;
-          i = j;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby", 2, "rspNearbyCharmEvent,result code：" + i + ",isSuccess:" + bool1);
-      }
-      if (bool1)
-      {
-        Oidb_0x686.RspBody localRspBody = new Oidb_0x686.RspBody();
-        i = paramFromServiceMsg.uint32_service_type.get();
-        localRspBody.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-        if (localRspBody.uint32_config_seq.has())
-        {
-          j = localRspBody.uint32_config_seq.get();
-          auwq.a(paramalpd.mApp.getAccount(), "toplist_hide_boygod_seq", Integer.valueOf(j));
-        }
-        if (localRspBody.uint32_config_time.has())
-        {
-          j = localRspBody.uint32_config_time.get();
-          auwq.a(paramalpd.mApp.getAccount(), "key_last_config_time", Integer.valueOf(j));
-        }
-        paramFromServiceMsg = null;
-        paramObject = null;
-        Object localObject3 = null;
-        Object localObject4 = null;
-        if (localRspBody.msg_rank_config.has()) {
-          paramFromServiceMsg = (Oidb_0x686.NearbyRankConfig)localRspBody.msg_rank_config.get();
-        }
-        if (localRspBody.msg_feed_config.has()) {
-          paramObject = (Oidb_0x686.NearbyFeedConfig)localRspBody.msg_feed_config.get();
-        }
-        Object localObject1;
-        Object localObject2;
-        if ((i == 2) && (localRspBody.msg_charm_event.has()))
-        {
-          localObject1 = (Oidb_0x686.CharmEvent)localRspBody.msg_charm_event.get();
-          localObject2 = localObject4;
-          if (!(paramalpd.mApp instanceof NearbyAppInterface)) {
-            break label600;
-          }
-        }
-        int k;
-        int m;
-        int n;
-        int i1;
-        for (;;)
-        {
-          if ((localObject1 == null) || (((Oidb_0x686.CharmEvent)localObject1).uint32_pop_flag.get() != 1)) {
-            break label637;
-          }
-          i = ((Oidb_0x686.CharmEvent)localObject1).uint32_old_charm.get();
-          j = ((Oidb_0x686.CharmEvent)localObject1).uint32_old_charm_level.get();
-          k = ((Oidb_0x686.CharmEvent)localObject1).uint32_new_charm.get();
-          m = ((Oidb_0x686.CharmEvent)localObject1).uint32_new_charm_level.get();
-          n = ((Oidb_0x686.CharmEvent)localObject1).uint32_cur_level_threshold.get();
-          i1 = ((Oidb_0x686.CharmEvent)localObject1).uint32_next_level_threshold.get();
-          paramFromServiceMsg = ((Oidb_0x686.CharmEvent)localObject1).str_tips_content.get();
-          paramToServiceMsg = paramFromServiceMsg;
-          if (paramFromServiceMsg == null) {
-            paramToServiceMsg = "";
-          }
-          paramalpd.notifyUI(paramInt, true, new Object[] { Boolean.valueOf(false), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), paramToServiceMsg });
-          paramToServiceMsg = "0X80052B1";
-          if (k - i < 0) {
-            paramToServiceMsg = "0X80052B2";
-          }
-          paramalpd.mApp.reportClickEvent("CliOper", "", "", paramToServiceMsg, paramToServiceMsg, 0, 0, "", "", "", "");
-          return;
-          localObject1 = localObject3;
-          localObject2 = localObject4;
-          if (i != 1) {
-            break;
-          }
-          localObject1 = localObject3;
-          localObject2 = localObject4;
-          if (!localRspBody.msg_notify_event.has()) {
-            break;
-          }
-          localObject2 = (Oidb_0x686.NearbyCharmNotify)localRspBody.msg_notify_event.get();
-          localObject1 = localObject3;
-          break;
-          label600:
-          if ((paramalpd.mApp instanceof QQAppInterface)) {
-            ((QQAppInterface)paramalpd.mApp).a().a(paramToServiceMsg.getUin(), paramFromServiceMsg, paramObject, (Oidb_0x686.CharmEvent)localObject1, (Oidb_0x686.NearbyCharmNotify)localObject2);
-          }
-        }
-        label637:
-        if ((localObject2 != null) && (((Oidb_0x686.NearbyCharmNotify)localObject2).uint32_pop_flag.get() == 1))
-        {
-          i = ((Oidb_0x686.NearbyCharmNotify)localObject2).uint32_old_charm.get();
-          j = ((Oidb_0x686.NearbyCharmNotify)localObject2).uint32_old_charm_level.get();
-          k = ((Oidb_0x686.NearbyCharmNotify)localObject2).uint32_new_charm.get();
-          m = ((Oidb_0x686.NearbyCharmNotify)localObject2).uint32_new_charm_level.get();
-          n = ((Oidb_0x686.NearbyCharmNotify)localObject2).uint32_cur_level_threshold.get();
-          i1 = ((Oidb_0x686.NearbyCharmNotify)localObject2).uint32_next_level_threshold.get();
-          int i2 = ((Oidb_0x686.NearbyCharmNotify)localObject2).uint32_old_prof_percent.get();
-          int i3 = ((Oidb_0x686.NearbyCharmNotify)localObject2).uint32_new_prof_percent.get();
-          paramFromServiceMsg = ((Oidb_0x686.NearbyCharmNotify)localObject2).str_tips_content.get();
-          paramToServiceMsg = paramFromServiceMsg;
-          if (paramFromServiceMsg == null) {
-            paramToServiceMsg = "";
-          }
-          paramalpd.notifyUI(paramInt, true, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), paramToServiceMsg });
-          paramToServiceMsg = "0X80052AE";
-          if (k - i < 0) {
-            paramToServiceMsg = "0X80052AF";
-          }
-          paramalpd.mApp.reportClickEvent("CliOper", "", "", paramToServiceMsg, paramToServiceMsg, 0, 0, "", "", "", "");
-        }
-      }
-      return;
-    }
-    catch (Exception paramalpd) {}
-  }
-  
-  protected static boolean b(AppInterface paramAppInterface, ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket, zhu paramzhu)
-  {
-    int i = paramToServiceMsg.extraData.getInt("localLat");
-    int j = paramToServiceMsg.extraData.getInt("localLon");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.hotChatDistance", 2, "NearbyCmdHelper.handleCheckIn,  lat=" + i + ", lon=" + j);
-    }
-    if ((i != 0) && (j != 0))
-    {
-      paramAppInterface = new NeighborComm.ReqHeader();
-      paramAppInterface.shVersion = 3;
-      paramAppInterface.lMID = zhu.a(Long.parseLong(paramToServiceMsg.getUin()));
-      paramAppInterface.iAppID = AppSetting.a();
-      paramAppInterface.eBusiType = 0;
-      paramAppInterface.eMqqSysType = 2;
-      paramToServiceMsg = new EncounterSvc.ReqUserInfo();
-      paramToServiceMsg.strAuthName = "B1_QQ_Neighbor_android";
-      paramToServiceMsg.strAuthPassword = "NzVK_qGE";
-      paramToServiceMsg.eListType = 0;
-      paramToServiceMsg.vCells = new ArrayList(1);
-      paramToServiceMsg.vMacs = new ArrayList(1);
-      paramToServiceMsg.eLocalInfo = LocalInfoType.LocalInfoType_Decode.value();
-      paramToServiceMsg.stGps = new EncounterSvc.GPS(i, j, 0, 1);
-      paramzhu = new ReqGetEncounterV2();
-      paramzhu.stUserData = new UserData();
-      paramzhu.stUserInfo = paramToServiceMsg;
-      paramzhu.eNewListType = 100;
-      paramzhu.neighbor_list_source = 4;
-      paramUniPacket.setEncodeName("utf-8");
-      paramUniPacket.setServantName("EncounterObj");
-      paramUniPacket.setFuncName("CMD_GET_ENCOUNTERV2");
-      paramUniPacket.put("ReqHeader", paramAppInterface);
-      paramUniPacket.put("ReqGetEncounterV2", paramzhu);
-      return true;
-    }
-    return false;
-  }
-  
-  public static void c(alpd paramalpd, int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
-    {
-      paramalpd.notifyUI(paramInt, false, new Object[] { "", null, alud.a(2131707514), Integer.valueOf(-1), Integer.valueOf(-1) });
-      return;
-    }
-    int i;
-    int j;
-    label72:
-    cmd0x9c7.RspBody localRspBody;
-    int m;
-    if (paramToServiceMsg.extraData == null)
-    {
-      i = -1;
-      if (paramToServiceMsg.extraData != null) {
-        break label227;
-      }
-      j = -1;
-      localRspBody = new cmd0x9c7.RspBody();
-      m = alpd.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-      if (m != 0) {
-        break label472;
-      }
-      if (!localRspBody.str_test_result_url.has()) {
-        break label242;
-      }
-      paramToServiceMsg = localRspBody.str_test_result_url.get();
-      label116:
-      if (!localRspBody.rpt_msg_tags.has()) {
-        break label249;
-      }
-    }
-    label227:
-    label242:
-    label249:
-    for (paramFromServiceMsg = localRspBody.rpt_msg_tags.get();; paramFromServiceMsg = null)
-    {
-      paramObject = new ArrayList();
-      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.size() <= 0)) {
-        break label254;
-      }
-      int k = 0;
-      while (k < paramFromServiceMsg.size())
-      {
-        avau localavau = avau.a((appoint_define.InterestTag)paramFromServiceMsg.get(k));
-        if (localavau != null) {
-          paramObject.add(localavau);
-        }
-        k += 1;
-      }
-      i = paramToServiceMsg.extraData.getInt("set_mode");
-      break;
-      j = paramToServiceMsg.extraData.getInt("test_mode");
-      break label72;
-      paramToServiceMsg = "";
-      break label116;
-    }
-    label254:
-    if (paramObject.size() <= 0)
-    {
-      paramalpd.notifyUI(4, false, new Object[] { "", null, alud.a(2131707515), Integer.valueOf(i), Integer.valueOf(j) });
-      auwz.a("Q.nearby_people_card.", "handle_oidb_0x9c7_0", new Object[] { Integer.valueOf(m), Boolean.valueOf(true), null, paramToServiceMsg });
-      return;
-    }
-    if ((paramalpd.mApp instanceof NearbyAppInterface)) {
-      ((NearbyAppInterface)paramalpd.mApp).a().a(localRspBody);
-    }
-    for (;;)
-    {
-      paramalpd.notifyUI(paramInt, true, new Object[] { paramToServiceMsg, paramObject, "", Integer.valueOf(i), Integer.valueOf(j) });
-      auwz.a("Q.nearby_people_card.", "handle_oidb_0x9c7_0", new Object[] { Integer.valueOf(m), Boolean.valueOf(true), paramObject, paramToServiceMsg });
-      return;
-      if (paramalpd.app != null) {
-        paramalpd.app.a().a(localRspBody);
-      }
-    }
-    label472:
-    if (localRspBody.str_error.has()) {}
-    for (paramToServiceMsg = localRspBody.str_error.get();; paramToServiceMsg = "")
-    {
-      paramalpd.notifyUI(paramInt, false, new Object[] { "", null, paramToServiceMsg, Integer.valueOf(i), Integer.valueOf(j) });
-      return;
-    }
-  }
-  
-  public static void d(alpd paramalpd, int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-    {
-      paramObject = new oidb_sso.OIDBSSOPkg();
-      try
-      {
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
-        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.has()))
-        {
-          int i = paramFromServiceMsg.uint32_result.get();
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.dating", 2, "handle_oidb_0x4ff_9 ret=" + i);
-          }
-          if ((i == 0) && (paramFromServiceMsg.bytes_bodybuffer.has()) && (paramFromServiceMsg.bytes_bodybuffer.get() != null))
-          {
-            paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
-            if (4 <= paramFromServiceMsg.length)
-            {
-              paramFromServiceMsg = String.valueOf(bdqa.a(paramFromServiceMsg, 0));
-              if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.equals(paramalpd.getCurrentAccountUin())))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.w("Q.dating", 2, "handle_oidb_0x4ff_9 uin error");
-                }
-                return;
-              }
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        for (;;)
-        {
-          paramFromServiceMsg.printStackTrace();
-          paramFromServiceMsg = paramObject;
-        }
-        bool1 = true;
-      }
-    }
-    for (;;)
-    {
-      if ((paramalpd.mApp instanceof QQAppInterface)) {
-        if (paramInt == 7)
-        {
-          paramInt = paramToServiceMsg.extraData.getByte("session_switch_value", (byte)0).byteValue();
-          if (bool1)
-          {
-            paramToServiceMsg = ((QQAppInterface)paramalpd.mApp).a();
-            if (paramInt != 0) {
-              break label294;
-            }
-            paramToServiceMsg.a(bool2);
-          }
-          paramalpd.notifyUI(7, bool1, null);
-        }
-      }
-      for (;;)
-      {
-        if (!QLog.isColorLevel()) {
-          break label364;
-        }
-        QLog.d("Q.dating", 2, "handle_oidb_0x4ff_9, isSuccess:" + bool1);
-        return;
-        label294:
-        bool2 = false;
-        break;
-        if ((paramalpd.mApp instanceof NearbyAppInterface))
-        {
-          paramFromServiceMsg = (NearbyAppInterface)paramalpd.mApp;
-          if (paramInt == 10)
-          {
-            byte b = paramToServiceMsg.extraData.getByte("session_switch_value", (byte)0).byteValue();
-            if (bool1) {
-              paramFromServiceMsg.a().a(b);
-            }
-            paramalpd.notifyUI(10, bool1, null);
-          }
-        }
-      }
-      label364:
-      break;
-      bool1 = true;
-      continue;
-      bool1 = false;
-    }
-  }
-  
-  public static void e(alpd paramalpd, int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    cmd0x682.RspBody localRspBody = new cmd0x682.RspBody();
-    int i = alpd.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    apib.a("getShowLove", new Object[] { "handleGetShowLoveLimit result = " + i });
-    int n;
-    if ((i == 0) && (localRspBody.rpt_msg_chatinfo.has()) && (localRspBody.rpt_msg_chatinfo.size() > 0))
-    {
-      paramObject = (cmd0x682.ChatInfo)localRspBody.rpt_msg_chatinfo.get(0);
-      long l = paramObject.uint64_touin.get();
-      paramInt = paramObject.uint32_chatflag.get();
-      int j = paramObject.uint32_goldflag.get();
-      int k = paramObject.uint32_totalexpcount.get();
-      int m = paramObject.uint32_curexpcount.get();
-      n = paramObject.uint32_totalFlag.get();
-      int i1 = paramObject.uint32_curdayFlag.get();
-      paramFromServiceMsg = paramObject.express_tips_msg.get().toStringUtf8();
-      paramObject = paramObject.express_msg.get().toStringUtf8();
-      boolean bool1 = false;
-      boolean bool3 = false;
-      paramToServiceMsg = paramToServiceMsg.extraData.getByteArray("showlove_chat_sig");
-      if (((paramInt & 0x2) == 2) || (j == 2)) {
-        bool1 = true;
-      }
-      boolean bool2 = bool3;
-      if (j == 1)
-      {
-        bool2 = bool3;
-        if (n == 0)
-        {
-          bool2 = bool3;
-          if (i1 == 0) {
-            bool2 = true;
-          }
-        }
-      }
-      if ((paramalpd instanceof auxh)) {
-        paramalpd.notifyUI(9, true, new Object[] { Long.valueOf(l), Boolean.valueOf(bool1), Boolean.valueOf(bool2), paramToServiceMsg, paramFromServiceMsg, paramObject });
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DatingSayHello", 2, "toUin:" + l + ",chatFlag:" + paramInt + ",godFlag:" + j + ",totalCount:" + k + ",curCount" + m + ",totalFlag:" + n + ",curdayFlag:" + i1 + ",canChat:" + bool1 + ",canShowLove:" + bool2 + ",wordStr:" + paramFromServiceMsg + "showloveStr: " + paramObject);
-      }
-      if (i1 == 1) {
-        paramalpd.mApp.reportClickEvent("CliOper", "", "", "0X8005290", "0X8005290", 0, 0, "", "", "", "");
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_bank", 2, "handleGetShowLoveLimit,result：" + i);
-      }
-      return;
-      if (n == 1)
-      {
-        paramalpd.mApp.reportClickEvent("CliOper", "", "", "0X8005291", "0X8005291", 0, 0, "", "", "", "");
-        continue;
-        paramalpd.notifyUI(paramInt, false, null);
-      }
-    }
+    super.onPreExecute();
+    this.jdField_a_of_type_Biau.a(anni.a(2131712820));
+    this.jdField_a_of_type_Biau.setCancelable(false);
+    this.jdField_a_of_type_Biau.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alxl
  * JD-Core Version:    0.7.0.1
  */

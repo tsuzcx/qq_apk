@@ -1,23 +1,46 @@
-import Wallet.SkinInfo;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.UsualHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public class aiyv
-  implements aizo
+class aiyv
+  implements awna
 {
-  public aiyv(UsualHbFragment paramUsualHbFragment) {}
+  aiyv(aiyr paramaiyr) {}
   
-  public void a(aize paramaize)
+  public void a(int paramInt)
   {
-    if ((paramaize.jdField_a_of_type_WalletSkinInfo.skin_id == 0) || (paramaize.jdField_a_of_type_WalletSkinInfo.skin_id == -2))
-    {
-      paramaize = aizd.a(this.a.channel, this.a.a, this.a.mActivity.a(), paramaize.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
-      this.a.c.setHint(paramaize);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
     }
-    this.a.c.setHint(paramaize.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
+    this.a.d();
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
+    }
+    this.a.d();
+  }
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
+    }
+    if ((paramInt & 0x1) != 0) {
+      synchronized (aiyr.a(this.a))
+      {
+        Iterator localIterator = aiyr.a(this.a).iterator();
+        if (localIterator.hasNext()) {
+          ((aiyx)localIterator.next()).b();
+        }
+      }
+    }
   }
 }
 

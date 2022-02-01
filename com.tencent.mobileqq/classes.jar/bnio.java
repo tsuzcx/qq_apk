@@ -1,8 +1,15 @@
-import android.graphics.Bitmap;
-
-public abstract interface bnio
+public class bnio
+  extends bnim
 {
-  public abstract void a(Bitmap paramBitmap);
+  public int a(int paramInt)
+  {
+    return paramInt * -1;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return paramInt < 0;
+  }
 }
 
 

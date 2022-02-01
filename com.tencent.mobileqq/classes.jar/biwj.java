@@ -1,31 +1,42 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2.1;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
-public class biwj
-  implements ServiceConnection
+class biwj
+  implements DialogInterface.OnClickListener
 {
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    this.a.jdField_a_of_type_Biwf = biwg.a(paramIBinder);
-    if (this.a.jdField_a_of_type_Biwf != null)
-    {
-      paramComponentName = new QfavRemoteProxyForQQ.2.1(this);
-      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
-      paramComponentName.start();
-    }
-  }
+  biwj(biwe parambiwe, Bundle paramBundle, boolean paramBoolean, Activity paramActivity, String paramString1, DialogInterface.OnClickListener paramOnClickListener, String paramString2) {}
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Biwf = null;
-    this.a.jdField_a_of_type_Boolean = false;
+    bisy.c("MyAppApi", "---onConfirm--onClick");
+    if (!this.jdField_a_of_type_Biwe.b())
+    {
+      this.jdField_a_of_type_Biwe.a = new biwp(this.jdField_a_of_type_Biwe);
+      this.jdField_a_of_type_Biwe.a.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Biwe.a.b = true;
+      this.jdField_a_of_type_Biwe.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+      this.jdField_a_of_type_Biwe.a.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidOsBundle;
+      this.jdField_a_of_type_Biwe.a.jdField_a_of_type_Int = 2;
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Biwe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Biwe.c = true;
+      biuh.a("201", biuh.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+      return;
+      new biwo(this.jdField_a_of_type_Biwe, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Biwe.a).execute(new Void[0]);
+      continue;
+      this.jdField_a_of_type_Biwe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biwj
  * JD-Core Version:    0.7.0.1
  */

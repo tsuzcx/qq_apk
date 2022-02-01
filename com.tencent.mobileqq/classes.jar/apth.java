@@ -1,67 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-
-class apth
-  implements View.OnClickListener
+public class apth
 {
-  apth(aptg paramaptg, apvt paramapvt) {}
-  
-  public void onClick(View paramView)
+  public static float[] a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    paramView = new Intent();
-    label80:
-    String str1;
-    label106:
-    int i;
-    if (this.jdField_a_of_type_Apvt.jdField_a_of_type_Boolean)
+    if ((paramArrayOfFloat1 != null) && (paramArrayOfFloat2 != null) && (paramArrayOfFloat1.length == paramArrayOfFloat2.length))
     {
-      paramView.putExtra("emoji_to_dressup", true);
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Aptg.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aptg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Aptg.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, paramView, false);
-      if (this.jdField_a_of_type_Aptg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label243;
-      }
-      paramView = "";
-      String str2 = this.jdField_a_of_type_Aptg.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
-      if (!this.jdField_a_of_type_Apvt.jdField_a_of_type_Boolean) {
-        break label257;
-      }
-      str1 = "1";
-      VasWebviewUtil.reportCommercialDrainage(paramView, "ep_mall", "0X8007192", null, 1, 0, 0, null, str2, str1);
-      if ((this.jdField_a_of_type_Aptg.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) <= 0) {
-        break label264;
-      }
-      i = 3;
-    }
-    for (;;)
-    {
-      azqs.b(this.jdField_a_of_type_Aptg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.jdField_a_of_type_Aptg.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, i + "", "");
-      return;
-      if ((this.jdField_a_of_type_Aptg.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) != 0) {}
-      for (boolean bool = true;; bool = false)
+      int i = 0;
+      while (i < paramArrayOfFloat1.length)
       {
-        paramView.putExtra("emoji_is_original", bool);
-        paramView.putExtra("emoji_author_id", this.jdField_a_of_type_Apvt.jdField_a_of_type_Int);
-        break;
-      }
-      label243:
-      paramView = this.jdField_a_of_type_Aptg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      break label80;
-      label257:
-      str1 = "2";
-      break label106;
-      label264:
-      if (this.jdField_a_of_type_Aptg.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.subType == 4) {
-        i = 4;
-      } else {
-        i = 1;
+        paramArrayOfFloat1[i] = (paramArrayOfFloat2[i] * 0.9F + paramArrayOfFloat1[i] * 0.1F);
+        i += 1;
       }
     }
+    return paramArrayOfFloat1;
   }
 }
 

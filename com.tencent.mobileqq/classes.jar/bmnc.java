@@ -1,18 +1,31 @@
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+
 public class bmnc
+  extends bmmk
 {
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  
-  public bmnc(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  private void a(WebViewPlugin paramWebViewPlugin, bhod parambhod, String[] paramArrayOfString)
   {
-    this.a = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
-    this.e = paramBoolean5;
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0) || (parambhod == null)) {
+      return;
+    }
+    QLog.i("QzoneReactMessageDeliverPlugin", 1, paramArrayOfString[0]);
+    paramWebViewPlugin = new Intent("ReactNativeMsgDeliver");
+    paramWebViewPlugin.putExtra("args", paramArrayOfString[0]);
+    BaseApplication.getContext().sendBroadcast(paramWebViewPlugin);
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!"Qzone".equals(paramString2)) || (this.a == null) || (this.a.mRuntime == null)) {}
+    while (!"deliverMsg".equalsIgnoreCase(paramString3)) {
+      return false;
+    }
+    a(this.a, this.a.mRuntime, paramVarArgs);
+    return true;
   }
 }
 

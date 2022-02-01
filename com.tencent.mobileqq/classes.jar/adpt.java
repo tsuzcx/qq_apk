@@ -1,19 +1,13 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class adpt
-  implements View.OnClickListener
+public class adpt
+  extends bgzm
 {
-  adpt(adpq paramadpq, SharedPreferences paramSharedPreferences, String paramString) {}
+  public adpt(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-    this.jdField_a_of_type_Adpq.a.a.sendEmptyMessageDelayed(1010, 1000L);
+    ((agky)this.a.a.a(8)).a(paramBoolean, paramObject);
   }
 }
 

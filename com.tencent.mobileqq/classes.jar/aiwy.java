@@ -1,20 +1,34 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.AddFriendBlockedInfo;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aiwy
-  extends altm
+  extends aiww
 {
-  public aiwy(TransactionActivity paramTransactionActivity) {}
+  public aiwy(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString)
   {
-    if ((!paramBoolean) || (paramString == null)) {
+    if (QLog.isColorLevel()) {
+      QLog.i("BlockedListFragment", 2, "onGetAddFriendBlockedList, success=" + paramBoolean);
+    }
+    if ((!paramBoolean) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a).isFinishing()) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a) == null)) {
       return;
     }
-    TransactionActivity.c(this.a, bdgc.c(this.a.app, TransactionActivity.c(this.a), false));
-    paramString = ajeu.a(TransactionActivity.a(this.a), TransactionActivity.d(this.a), aepi.a(TransactionActivity.c(this.a), TransactionActivity.a(this.a).getResources()), TransactionActivity.c(this.a).getPaint());
-    TransactionActivity.c(this.a).setText(paramString + "(" + TransactionActivity.c(this.a) + ")");
+    this.a.a.removeMessages(1);
+    this.a.a.sendEmptyMessage(1);
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      this.a.a.removeMessages(1);
+      this.a.a.sendEmptyMessage(1);
+    }
   }
 }
 

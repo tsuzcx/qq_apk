@@ -5,15 +5,15 @@ import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import umc;
-import uvx;
-import vei;
-import vej;
+import wfo;
+import wpj;
+import wxu;
+import wxv;
 
 public class StoryManager$1
   implements Runnable
 {
-  public StoryManager$1(uvx paramuvx, String paramString) {}
+  public StoryManager$1(wpj paramwpj, String paramString) {}
   
   public void run()
   {
@@ -22,17 +22,17 @@ public class StoryManager$1
     {
       localObject = new ArrayList(1);
       ((List)localObject).add(this.a);
-      new vei((List)localObject, true).a();
+      new wxu((List)localObject, true).a();
       return;
     }
-    vej localvej = new vej();
-    localvej.a = Collections.singletonList(localObject);
-    umc.a().dispatch(localvej);
+    wxv localwxv = new wxv();
+    localwxv.a = Collections.singletonList(localObject);
+    wfo.a().dispatch(localwxv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryManager.1
  * JD-Core Version:    0.7.0.1
  */

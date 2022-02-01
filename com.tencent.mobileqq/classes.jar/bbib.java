@@ -1,22 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bbib
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public bbib(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public bbib(MixSearchWebFragment paramMixSearchWebFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.m = false;
-    paramAnimation.setAnimationListener(null);
-    this.a.finish();
+    this.a.a(3);
+    this.a.doOnBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

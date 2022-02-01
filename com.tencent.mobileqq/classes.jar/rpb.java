@@ -1,47 +1,32 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.VideoMeasureScaleView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class rpb
-  implements rpc
+public abstract interface rpb
 {
-  public rpb(CaptureOperateTouchLayout paramCaptureOperateTouchLayout, TextView paramTextView, VideoMeasureScaleView paramVideoMeasureScaleView, ImageView paramImageView) {}
+  public abstract void a();
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719004);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView.setVisibility(0);
-    int i = CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout);
-    CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, this.jdField_a_of_type_AndroidWidgetImageView.getX() / CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout));
-    CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, i);
-    if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout) != null) {
-      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).a(i, CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, CaptureOperateTouchLayout.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout)));
-    }
-  }
+  public abstract void a(int paramInt);
   
-  public void a(boolean paramBoolean)
-  {
-    if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout) != null) {
-      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).a();
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718880);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView.setVisibility(4);
-  }
+  public abstract void a(@Nullable ColumnInfo paramColumnInfo);
   
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719046);
-  }
+  public abstract void a(@NotNull ColumnInfo paramColumnInfo, boolean paramBoolean);
   
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView.setVisibility(4);
-  }
+  public abstract void a(@NotNull String paramString);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void b();
+  
+  public abstract void b(@NotNull ColumnInfo paramColumnInfo, boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rpb
  * JD-Core Version:    0.7.0.1
  */

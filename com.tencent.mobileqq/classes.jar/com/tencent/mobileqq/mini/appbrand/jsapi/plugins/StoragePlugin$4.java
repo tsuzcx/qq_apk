@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bhsz;
+import bkgj;
 import com.tencent.mobileqq.mini.cache.Storage;
 import com.tencent.mobileqq.mini.cache.Util;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -28,7 +28,7 @@ class StoragePlugin$4
       {
         localObject = ((Set)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          localHashSet.add(bhsz.b((String)((Iterator)localObject).next()));
+          localHashSet.add(bkgj.b((String)((Iterator)localObject).next()));
         }
       }
       localException.put("keys", Util.setToJSONArray(localHashSet));
@@ -44,7 +44,7 @@ class StoragePlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.StoragePlugin.4
  * JD-Core Version:    0.7.0.1
  */

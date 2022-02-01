@@ -38,7 +38,7 @@ public abstract class JceStruct
   public byte[] toByteArray(String paramString)
   {
     b localb = new b();
-    localb.a = paramString;
+    localb.d = paramString;
     writeTo(localb);
     return localb.b();
   }
@@ -47,7 +47,7 @@ public abstract class JceStruct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.wup.JceStruct
  * JD-Core Version:    0.7.0.1
  */

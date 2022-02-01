@@ -1,25 +1,9 @@
 import android.os.Bundle;
 
 class atde
-  implements yrb
+  implements atdk
 {
-  atde(atdd paramatdd) {}
-  
-  public void callback(Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("msg");
-    if (i == 90)
-    {
-      atdd.a(this.a, paramBundle.getInt("state"));
-      atdd.a(this.a, atdd.a(this.a), atdd.b(this.a));
-    }
-    while (i != 91) {
-      return;
-    }
-    i = paramBundle.getInt("errCode");
-    paramBundle = paramBundle.getString("desc");
-    atdd.a(this.a, i, paramBundle);
-  }
+  atde(atdc paramatdc, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle) {}
 }
 
 

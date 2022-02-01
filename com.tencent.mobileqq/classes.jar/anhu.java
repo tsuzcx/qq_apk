@@ -1,15 +1,36 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-
 public class anhu
-  implements CompoundButton.OnCheckedChangeListener
+  implements anil
 {
-  public anhu(QRScanEntryView paramQRScanEntryView) {}
+  protected void a() {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(Object paramObject) {}
+  
+  protected void a(boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    auew.b = paramBoolean;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      a(paramObject);
+      return;
+    case 3: 
+      a();
+      return;
+    case 4: 
+      b(paramBoolean, paramObject);
+      return;
+    }
+    a(paramBoolean);
   }
 }
 

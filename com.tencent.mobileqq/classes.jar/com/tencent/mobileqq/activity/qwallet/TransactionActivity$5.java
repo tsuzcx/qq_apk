@@ -9,12 +9,12 @@ class TransactionActivity$5
   
   public void run()
   {
-    TransactionActivity.b(this.this$0).setText(this.this$0.getString(2131697307));
+    TransactionActivity.b(this.this$0).setText(this.this$0.getString(2131696136));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.TransactionActivity.5
  * JD-Core Version:    0.7.0.1
  */

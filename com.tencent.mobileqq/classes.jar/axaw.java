@@ -1,13 +1,12 @@
-import com.tencent.mobileqq.data.QCallRecent;
-import java.util.List;
-
-public abstract interface axaw
+public class axaw
 {
-  public abstract void a(List<QCallRecent> paramList);
+  public int a;
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axaw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public class aiiu
+public abstract interface aiiu
 {
-  public static void a(String paramString)
-  {
-    a(paramString, "");
-  }
+  public abstract List<? extends aiit> a(String paramString, SessionInfo paramSessionInfo);
   
-  public static void a(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    azqs.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d(aike.a + ".report", 2, "tag=" + paramString1 + ",extra1=" + paramString2 + ",extra2=" + paramString3);
-    }
-  }
+  public abstract boolean a(QQAppInterface paramQQAppInterface, String paramString);
 }
 
 

@@ -1,11 +1,22 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class aimy
+class aimy
+  extends anqd
 {
-  public ImageView a;
-  public TextView a;
-  public bdjc a;
+  aimy(aimx paramaimx) {}
+  
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  {
+    super.a(paramBoolean1, paramList, paramBoolean2);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpComingMsgLogic.AIOUpComingMsgHelper", 4, "onMsgRevokeNotice isSuccess=" + paramBoolean1);
+    }
+    if ((paramBoolean1) && (paramList != null) && (!paramList.isEmpty())) {
+      aimx.a(this.a, (MessageRecord)paramList.get(0));
+    }
+  }
 }
 
 

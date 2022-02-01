@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaGifView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
 
 public class pts
-  implements View.OnClickListener
 {
-  public pts(NativeUsersCommentsView paramNativeUsersCommentsView) {}
-  
-  public void onClick(View paramView)
+  public static ptr a(int paramInt, Context paramContext)
   {
-    this.a.callOnClick();
+    switch (paramInt)
+    {
+    default: 
+      return new MediaGifView(paramContext);
+    case 0: 
+      return new MediaGifView(paramContext);
+    }
+    return new MediaVideoView(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pts
  * JD-Core Version:    0.7.0.1
  */

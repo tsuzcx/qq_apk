@@ -1,35 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
 public class nzs
-  implements rue
 {
-  private WeakReference<ReadInJoyNewBaseActivity> a;
+  public nzs(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString, long paramLong) {}
   
-  public nzs(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    this.a = new WeakReference(paramReadInJoyNewBaseActivity);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
   }
   
-  public void a()
+  @QQPermissionGrant(1)
+  public void grant()
   {
-    ReadInJoyNewFeedsActivity localReadInJoyNewFeedsActivity = (ReadInJoyNewFeedsActivity)this.a.get();
-    if (localReadInJoyNewFeedsActivity == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNewFeedsActivity", 2, "NaviMaskTouchListenerImpl. activity has destoryed");
-      }
+    SosoInterface.a(new nzy(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel()) {
+      QLog.d("PAjs.location", 2, "SosoInterface.startLocation");
     }
-    while ((ReadInJoyNewFeedsActivity.a(localReadInJoyNewFeedsActivity) != 0) || (localReadInJoyNewFeedsActivity.a == null)) {
-      return;
-    }
-    localReadInJoyNewFeedsActivity.a.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzs
  * JD-Core Version:    0.7.0.1
  */

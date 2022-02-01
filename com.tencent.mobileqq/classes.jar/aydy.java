@@ -1,77 +1,130 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
 
-class aydy
-  implements EIPCResultCallback
+public class aydy
 {
-  aydy(aydw paramaydw) {}
+  public static aydy a;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private long b;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public static long a()
   {
-    Object localObject = paramEIPCResult.data;
-    if (localObject == null) {}
+    AppInterface localAppInterface = a();
+    if (localAppInterface == null) {
+      return 0L;
+    }
+    return localAppInterface.getLongAccountUin();
+  }
+  
+  public static aydy a()
+  {
+    if (jdField_a_of_type_Aydy == null) {
+      jdField_a_of_type_Aydy = new aydy();
+    }
+    return jdField_a_of_type_Aydy;
+  }
+  
+  public static AppInterface a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  public static String a()
+  {
+    AppInterface localAppInterface = a();
+    if (localAppInterface == null) {
+      return "";
+    }
+    return localAppInterface.getCurrentAccountUin();
+  }
+  
+  public static TicketManager a()
+  {
+    AppInterface localAppInterface = a();
+    if (localAppInterface == null) {}
+    while (TextUtils.isEmpty(localAppInterface.getCurrentAccountUin())) {
+      return null;
+    }
+    return (TicketManager)localAppInterface.getManager(2);
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_Aydy = null;
+  }
+  
+  public static String b()
+  {
+    Object localObject = a();
+    if (localObject == null) {
+      localObject = "";
+    }
+    String str;
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            switch (((Bundle)localObject).getInt("notify_type"))
-            {
-            case 6: 
-            case 7: 
-            default: 
-              return;
-            case 4: 
-              paramEIPCResult = ((Bundle)localObject).getSerializable("my_signature");
-            }
-          } while (!(paramEIPCResult instanceof RichStatus));
-          aydw.c(this.a);
-          localObject = new ArrayList();
-          ((ArrayList)localObject).add(Integer.valueOf(5));
-          ((ArrayList)localObject).add(paramEIPCResult);
-          this.a.notifyObservers(localObject);
-          return;
-          localObject = new HashMap();
-          ((HashMap)localObject).put("change_status_callback_data", paramEIPCResult.data);
-          i = paramEIPCResult.data.getInt("result");
-          int j = paramEIPCResult.data.getInt("type");
-          aydw.d(this.a);
-          paramEIPCResult = new ArrayList();
-          paramEIPCResult.add(Integer.valueOf(6));
-          paramEIPCResult.add(Integer.valueOf(i));
-          paramEIPCResult.add(localObject);
-          paramEIPCResult.add(Integer.valueOf(j));
-          this.a.notifyObservers(paramEIPCResult);
-          return;
-          ((Bundle)localObject).getLong("bid");
-          paramEIPCResult = ((Bundle)localObject).getString("scid");
-        } while (TextUtils.isEmpty(paramEIPCResult));
-        i = ((Bundle)localObject).getInt("download_result");
-      } while ((!paramEIPCResult.startsWith("signature.sticker.")) || (i != 0));
-      paramEIPCResult = paramEIPCResult.substring("signature.sticker.".length(), paramEIPCResult.length() - 4);
-    } while (!TextUtils.isDigitsOnly(paramEIPCResult));
-    int i = Integer.parseInt(paramEIPCResult);
-    aydw.e(this.a);
-    paramEIPCResult = new ArrayList();
-    paramEIPCResult.add(Integer.valueOf(7));
-    paramEIPCResult.add(Integer.valueOf(i));
-    this.a.notifyObservers(paramEIPCResult);
-    return;
-    i = ((Bundle)localObject).getInt("key_history_signature_num");
-    aydw.f(this.a);
-    paramEIPCResult = new ArrayList();
-    paramEIPCResult.add(Integer.valueOf(8));
-    paramEIPCResult.add(Integer.valueOf(i));
-    this.a.notifyObservers(paramEIPCResult);
+      return localObject;
+      str = ((TicketManager)localObject).getSkey(a());
+      localObject = str;
+    } while (!TextUtils.isEmpty(str));
+    return "";
+  }
+  
+  public static String c()
+  {
+    Object localObject = a();
+    if (localObject == null) {
+      localObject = "";
+    }
+    String str;
+    do
+    {
+      return localObject;
+      str = ((TicketManager)localObject).getA2(a());
+      localObject = str;
+    } while (!TextUtils.isEmpty(str));
+    return "";
+  }
+  
+  void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  void b(long paramLong)
+  {
+    this.b = paramLong;
+  }
+  
+  public long c()
+  {
+    return this.b;
+  }
+  
+  public String d()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return "";
+    }
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

@@ -1,18 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.applets.data.AppletItem;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.process.data.CmGameScreenRotate.1;
 
-public final class amsc
-  implements Parcelable.Creator<AppletItem>
+public class amsc
 {
-  public AppletItem a(Parcel paramParcel)
+  public int a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private ApolloSurfaceView jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView;
+  private CmGameInitParams jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams;
+  
+  public amsc(ApolloSurfaceView paramApolloSurfaceView, CmGameInitParams paramCmGameInitParams, Activity paramActivity)
   {
-    return new AppletItem(paramParcel);
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = paramApolloSurfaceView;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = paramCmGameInitParams;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public AppletItem[] a(int paramInt)
+  public static int a(int paramInt)
   {
-    return new AppletItem[paramInt];
+    if (paramInt == 1) {}
+    do
+    {
+      return 1;
+      if (paramInt == 3) {
+        return 0;
+      }
+    } while (paramInt != 2);
+    return 8;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new CmGameScreenRotate.1(this, paramInt));
+    }
   }
 }
 

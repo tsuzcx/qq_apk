@@ -1,27 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.2;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class akvb
-  implements View.OnClickListener
+  implements OnCompositionLoadedListener
 {
-  public akvb(CmGameLoadingView.2 param2) {}
+  public akvb(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void onClick(View paramView)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-    this.a.this$0.setProgressViewVisibility(true);
-    if (this.a.jdField_a_of_type_Aksj != null) {
-      this.a.jdField_a_of_type_Aksj.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mLoadingOnMainProcess)) {
-      ApolloGameUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    if (DrawRedpacketPannelPreviewFragment.e(this.a) != null)
+    {
+      DrawRedpacketPannelPreviewFragment.e(this.a).setImageDrawable(localLottieDrawable);
+      akms.a(this.a.getActivity().app.getCurrentAccountUin(), "", true);
     }
   }
 }

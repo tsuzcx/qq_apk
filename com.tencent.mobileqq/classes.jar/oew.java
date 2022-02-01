@@ -1,51 +1,108 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-class oew
-  implements ofd
+public class oew
 {
-  oew(oev paramoev) {}
-  
-  public void a(GiftServiceBean paramGiftServiceBean)
+  public static int a(AppRuntime paramAppRuntime, String paramString)
   {
-    Object localObject = oev.a(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!((String)localObject).equals(paramGiftServiceBean.t)))
+    try
     {
-      oev.a(this.a, paramGiftServiceBean);
-      oev.a(this.a).setText(paramGiftServiceBean.t);
-      oev.b(this.a, null);
-      if (oev.a(this.a)) {
-        oev.c(this.a, null);
-      }
-      oev.b(this.a).setText("");
-      oev.c(this.a).setText("");
-      oev.a(this.a, new ArrayList());
-      localObject = oev.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        GiftServiceBean localGiftServiceBean = (GiftServiceBean)((Iterator)localObject).next();
-        if ((!TextUtils.isEmpty(localGiftServiceBean.ck)) && (localGiftServiceBean.ck.equals(paramGiftServiceBean.ck)) && (localGiftServiceBean.c.equals(paramGiftServiceBean.v))) {
-          oev.b(this.a).add(localGiftServiceBean);
-        }
-      }
-      if (oev.b(this.a).size() <= 0)
-      {
-        paramGiftServiceBean = new GiftServiceBean();
-        paramGiftServiceBean.t = alud.a(2131705666);
-        paramGiftServiceBean.v = "0";
-        oev.b(this.a).add(paramGiftServiceBean);
-      }
-      oev.a(this.a);
+      int i = paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).getInt(paramString, 0);
+      return i;
     }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[getValueFromSP] fail.", paramAppRuntime);
+    }
+    return 0;
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, String paramString)
+  {
+    try
+    {
+      paramAppRuntime = paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).getString(paramString, "");
+      return paramAppRuntime;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
+    }
+    return "";
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString)
+  {
+    try
+    {
+      paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).edit().remove(paramString).apply();
+      return;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt)
+  {
+    try
+    {
+      paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).edit().putInt(paramString, paramInt).apply();
+      return;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
+  {
+    try
+    {
+      paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).edit().putString(paramString1, paramString2).apply();
+      return;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).edit().putBoolean(paramString, paramBoolean).apply();
+      return;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
+    }
+  }
+  
+  public static boolean a(AppRuntime paramAppRuntime, String paramString)
+  {
+    try
+    {
+      boolean bool = paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).getBoolean(paramString, false);
+      return bool;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[getValueFromSP] fail.", paramAppRuntime);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oew
  * JD-Core Version:    0.7.0.1
  */

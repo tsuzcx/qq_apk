@@ -1,59 +1,48 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v4.util.SparseArrayCompat;
 
-class apwh
-  implements URLDrawable.URLDrawableListener
+public class apwh
 {
-  apwh(apwf paramapwf) {}
+  private static final apwh jdField_a_of_type_Apwh = new apwh();
+  private int jdField_a_of_type_Int;
+  private final SparseArrayCompat<apvt> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public static apwh a()
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
-    if (QLog.isColorLevel())
+    return jdField_a_of_type_Apwh;
+  }
+  
+  public int a(apvt paramapvt)
+  {
+    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
     {
-      paramURLDrawable = paramURLDrawable.getTag();
-      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
+      do
       {
-        paramURLDrawable = (Emoticon)paramURLDrawable;
-        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadCanceled eId = " + paramURLDrawable.eId);
-      }
+        this.jdField_a_of_type_Int += 1;
+      } while ((this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_Int) != null) || (this.jdField_a_of_type_Int == 0));
+      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_Int, paramapvt);
+      int i = this.jdField_a_of_type_Int;
+      return i;
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(int paramInt)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
-    if (QLog.isColorLevel())
+    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
     {
-      paramURLDrawable = paramURLDrawable.getTag();
-      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
-      {
-        paramURLDrawable = (Emoticon)paramURLDrawable;
-        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadFialed eId = " + paramURLDrawable.eId);
-      }
+      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.delete(paramInt);
+      return;
     }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
-    paramURLDrawable = paramURLDrawable.getTag();
-    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
+    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
     {
-      paramURLDrawable = (Emoticon)paramURLDrawable;
-      if (!this.a.jdField_a_of_type_JavaUtilList.contains(paramURLDrawable)) {
-        this.a.jdField_a_of_type_JavaUtilList.add(paramURLDrawable);
+      apvt localapvt = (apvt)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt1);
+      if (localapvt != null) {
+        localapvt.a(paramInt1, paramInt2);
       }
-      this.a.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener downloadSucess eId = " + paramURLDrawable.eId);
-      }
+      return;
     }
   }
 }

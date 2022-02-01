@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import bnqj;
+import bqgx;
 
 final class RMVideoStateMgr$4
   implements Runnable
@@ -9,7 +9,7 @@ final class RMVideoStateMgr$4
   
   public void run()
   {
-    String str = bnqj.a();
+    String str = bqgx.a();
     if ((str != null) && (!"".equals(str)) && (str.contains("/Android/data/com.tencent.mobileqq/qq/video"))) {
       RMVideoStateMgr.a(str, this.a, false);
     }
@@ -17,7 +17,7 @@ final class RMVideoStateMgr$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr.4
  * JD-Core Version:    0.7.0.1
  */

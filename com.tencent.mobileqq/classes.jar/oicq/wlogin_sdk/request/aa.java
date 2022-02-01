@@ -34,12 +34,12 @@ public class aa
       boolean bool;
       try
       {
-        int i = t.w;
+        int i = t.x;
         int k = 0;
         int j = 0;
         Object localObject = paramTransReqContext._body;
         long l1 = System.currentTimeMillis() / 1000L;
-        long l2 = t.ae;
+        long l2 = t.af;
         if (localObject == null)
         {
           localObject = new byte[0];
@@ -60,7 +60,7 @@ public class aa
                 break label355;
               }
               paramTransReqContext.requestEm = oicq_request.EncryptionMethod.EM_ECDH;
-              t.as.attr_api(2413503);
+              t.at.attr_api(2413503);
               util.LOGI("using wt st encrypt body but no st key", "" + paramLong1);
               break label355;
               a(paramLong1, a((byte[])localObject, bool, paramArrayOfByte1, paramLong2, paramLong3, paramTransReqContext), paramTransReqContext.requestEm);
@@ -113,14 +113,14 @@ public class aa
       byte[] arrayOfByte2;
       try
       {
-        i = t.w;
+        i = t.x;
         l = paramTransReqContext._body.length;
         j = this.G;
         this.G = (j + 1);
-        arrayOfByte1 = a(l, j, String.valueOf(paramLong1).getBytes(), paramLong2, paramLong2, paramArrayOfByte3, new String("wtlogin_conn_trans").getBytes(), new byte[8], 0, 0L, t.A);
+        arrayOfByte1 = a(l, j, String.valueOf(paramLong1).getBytes(), paramLong2, paramLong2, paramArrayOfByte3, new String("wtlogin_conn_trans").getBytes(), new byte[8], 0, 0L, t.B);
         arrayOfByte2 = paramTransReqContext._body;
         l = System.currentTimeMillis() / 1000L;
-        l = t.ae + l;
+        l = t.af + l;
         if (arrayOfByte2 == null)
         {
           paramArrayOfByte3 = new byte[0];
@@ -176,13 +176,13 @@ public class aa
     {
       try
       {
-        i = t.w;
+        i = t.x;
         long l1 = System.currentTimeMillis() / 1000L;
-        long l2 = t.ae;
-        t.as.commit(Build.VERSION.RELEASE, new String(t.G), "", util.buf_to_string(util.get_ksid(t.t)), new String(t.E), new String(t.Q), new String(t.I), new String(t.H), util.get_release_time(), "6.0.0.2424");
+        long l2 = t.af;
+        t.at.commit(Build.VERSION.RELEASE, new String(t.H), "", util.buf_to_string(util.get_ksid(t.u)), new String(t.F), new String(t.R), new String(t.J), new String(t.I), util.get_release_time(), "6.0.0.2432");
         try
         {
-          paramArrayOfByte1 = t.as.toJasonObj().toString().getBytes();
+          paramArrayOfByte1 = t.at.toJasonObj().toString().getBytes();
           if (paramArrayOfByte1 != null)
           {
             int j = paramArrayOfByte1.length;
@@ -216,7 +216,7 @@ public class aa
         if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
           break label350;
         }
-        report_t.delete_file(t.t);
+        report_t.delete_file(t.u);
         paramArrayOfByte1 = a(paramArrayOfByte1, paramArrayOfByte2, paramLong2, 85L, 0);
         a(this.i, this.t, this.j, paramLong1, this.m, this.n, i, this.p, paramArrayOfByte1);
         i = a(String.valueOf(paramLong1), true, paramWUserSigInfo);
@@ -225,7 +225,7 @@ public class aa
           if (i == 0) {
             break label335;
           }
-          report_t.write_tofile(t.as, t.t);
+          report_t.write_tofile(t.at, t.u);
           continue;
         }
         i = b();
@@ -233,7 +233,7 @@ public class aa
       finally {}
       continue;
       label335:
-      t.as.clear_t2();
+      t.at.clear_t2();
       continue;
       label344:
       int i = 0;
@@ -291,7 +291,7 @@ public class aa
           i = j;
           if (j < 0)
           {
-            t.as.attr_api(2494911);
+            t.at.attr_api(2494911);
             util.LOGI("use session key decrypt_body failed", "");
             i = -1025;
           }
@@ -331,7 +331,7 @@ public class aa
     if (paramInt2 > 0)
     {
       this.x.m = 2;
-      this.x.r = paramTransReqContext.get_data();
+      this.x.s = paramTransReqContext.get_data();
       util.LOGI("request_transport get rollback sig");
       paramInt1 = i;
     }
@@ -340,7 +340,7 @@ public class aa
   
   public void a(Socket paramSocket)
   {
-    this.x.ap = paramSocket;
+    this.x.aq = paramSocket;
   }
   
   byte[] a(long paramLong1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt, long paramLong5, byte[] paramArrayOfByte5)
@@ -395,12 +395,12 @@ public class aa
     {
       byte[] arrayOfByte2 = new byte[0];
       paramArrayOfByte2 = arrayOfByte2;
-      if (this.x.r != null)
+      if (this.x.s != null)
       {
         paramArrayOfByte2 = arrayOfByte2;
-        if (this.x.r.length > 0)
+        if (this.x.s.length > 0)
         {
-          arrayOfByte2 = new tlv_t172().get_tlv_172(this.x.r);
+          arrayOfByte2 = new tlv_t172().get_tlv_172(this.x.s);
           paramArrayOfByte2 = new byte[arrayOfByte2.length + 2];
           util.int16_to_buf(paramArrayOfByte2, 0, 1);
           System.arraycopy(arrayOfByte2, 0, paramArrayOfByte2, 2, arrayOfByte2.length);
@@ -438,12 +438,12 @@ public class aa
     {
       byte[] arrayOfByte2 = new byte[0];
       byte[] arrayOfByte1 = arrayOfByte2;
-      if (this.x.r != null)
+      if (this.x.s != null)
       {
         arrayOfByte1 = arrayOfByte2;
-        if (this.x.r.length > 0)
+        if (this.x.s.length > 0)
         {
-          arrayOfByte2 = new tlv_t172().get_tlv_172(this.x.r);
+          arrayOfByte2 = new tlv_t172().get_tlv_172(this.x.s);
           arrayOfByte1 = new byte[arrayOfByte2.length + 2];
           util.int16_to_buf(arrayOfByte1, 0, 1);
           System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 2, arrayOfByte2.length);
@@ -488,12 +488,12 @@ public class aa
   
   public Socket d()
   {
-    if (this.x.ap != null) {
-      util.LOGD("_transport_sk", "_transport_sk" + this.x.ap.toString());
+    if (this.x.aq != null) {
+      util.LOGD("_transport_sk", "_transport_sk" + this.x.aq.toString());
     }
     for (;;)
     {
-      return this.x.ap;
+      return this.x.aq;
       util.LOGD("_transport_sk", "_transport_sk null");
     }
   }

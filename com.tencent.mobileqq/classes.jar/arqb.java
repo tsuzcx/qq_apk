@@ -1,10 +1,21 @@
-public abstract interface arqb
+import java.util.ArrayList;
+import java.util.List;
+
+class arqb
+  implements arpf
 {
-  public abstract void a(int paramInt);
+  arqb(arpz paramarpz) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public void a(List<arxg> paramList)
+  {
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
+    }
+    if (this.a.a != null) {
+      this.a.a.a((List)localObject);
+    }
+  }
 }
 
 

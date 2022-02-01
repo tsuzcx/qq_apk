@@ -12,13 +12,14 @@ public class NowProxyConstants$Action
   public static final int ACTION_PRELOAD = 2;
   public static final int ACTION_PRELOAD_COMMON = 10;
   public static final int ACTION_PUSH_MESSAGE = 11;
+  public static final int ACTION_UPDATE_FREE_FLOW = 13;
   public static final int ACTION_UPDATE_LOGIN_DATA = 3;
   
   public NowProxyConstants$Action(NowProxyConstants paramNowProxyConstants) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.NowProxyConstants.Action
  * JD-Core Version:    0.7.0.1
  */

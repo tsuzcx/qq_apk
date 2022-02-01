@@ -1,50 +1,120 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.TextHook;
+import android.support.annotation.VisibleForTesting;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.highway.ipv6.Ipv6Config;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
+import java.util.ArrayList;
 
-final class bdvz
-  extends azmj
+public class bdvz
 {
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  public static boolean a = true;
+  
+  public static ArrayList a(ArrayList paramArrayList1, ArrayList paramArrayList2)
   {
-    paramInt = 0;
-    Object localObject1;
-    if (paramBoolean1)
+    return a(paramArrayList1, paramArrayList2, NetConnInfoCenter.getActiveNetIpFamily(true), false);
+  }
+  
+  @VisibleForTesting
+  public static ArrayList a(ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Ipv6Strategy", 0, "selectIpList netType = " + paramInt);
+    }
+    if (paramInt == 2) {
+      return paramArrayList1;
+    }
+    if (paramInt == 3) {
+      return a(paramArrayList1, paramArrayList2, paramBoolean);
+    }
+    return paramArrayList2;
+  }
+  
+  private static ArrayList a(ArrayList paramArrayList1, ArrayList paramArrayList2, boolean paramBoolean)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (a(paramBoolean))
     {
-      localObject1 = BaseApplicationImpl.getApplication().getApplicationContext();
-      if (!azmk.b()) {
-        break label48;
+      if ((paramArrayList1 != null) && (paramArrayList1.size() > 0)) {
+        localArrayList.add(paramArrayList1.get(0));
       }
-      localObject2 = TextHook.getFontPath((Context)localObject1);
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        bdvy.a((Context)localObject1, (String)localObject2);
-        bdvy.a(false);
+      if ((paramArrayList2 != null) && (paramArrayList2.size() > 0)) {
+        localArrayList.addAll(paramArrayList2);
       }
     }
-    label48:
     do
     {
-      return;
-      localObject1 = bdvy.a((Context)localObject1);
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    Object localObject2 = arrr.a((String)localObject1).split("\\.");
-    try
-    {
-      int i = Integer.parseInt(localObject2[0]);
-      if (localObject2.length > 2) {
-        paramInt = Integer.parseInt(localObject2[1]);
+      return localArrayList;
+      if ((paramArrayList2 != null) && (paramArrayList2.size() > 0)) {
+        localArrayList.addAll(paramArrayList2);
       }
-      bdvy.b(i, paramInt);
-      return;
+    } while ((paramArrayList1 == null) || (paramArrayList1.size() <= 0));
+    localArrayList.add(paramArrayList1.get(0));
+    return localArrayList;
+  }
+  
+  public static boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Ipv6Strategy", 0, "isIpv6Selected ");
     }
-    catch (NumberFormatException localNumberFormatException)
+    int i = NetConnInfoCenter.getActiveNetIpFamily(true);
+    if (i == 2) {
+      return true;
+    }
+    if (i == 3) {
+      return c();
+    }
+    return false;
+  }
+  
+  private static boolean a(boolean paramBoolean)
+  {
+    boolean bool1 = true;
+    boolean bool2 = false;
+    if (paramBoolean) {
+      paramBoolean = a;
+    }
+    do
     {
-      QLog.e("ThemeFontAdapter", 1, "switchFont  prePath:" + (String)localObject1, localNumberFormatException);
-      localNumberFormatException.printStackTrace();
+      do
+      {
+        return paramBoolean;
+        if (d()) {
+          break;
+        }
+        paramBoolean = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.d("Ipv6Strategy", 0, "isIpv6DownFirst, getRichmediaIpv6Switch is false");
+      return false;
+      if (Ipv6Config.getInstance().mRMDownStrategy == 2) {
+        return true;
+      }
+      paramBoolean = bool2;
+    } while (Ipv6Config.getInstance().mRMDownStrategy != 3);
+    if (MsfServiceSdk.get().getConnectedIPFamily() == 2) {}
+    for (paramBoolean = bool1;; paramBoolean = false) {
+      return paramBoolean;
     }
+  }
+  
+  public static boolean b()
+  {
+    int i = NetConnInfoCenter.getActiveNetIpFamily(true);
+    return (i == 2) || (i == 3);
+  }
+  
+  public static boolean c()
+  {
+    return a(false);
+  }
+  
+  private static boolean d()
+  {
+    aqtl localaqtl = (aqtl)aqlk.a().a(538);
+    if (localaqtl != null) {
+      return localaqtl.c;
+    }
+    return false;
   }
 }
 

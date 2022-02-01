@@ -1,16 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class aeyn
-  implements View.OnTouchListener
+  implements bdov
 {
-  public aeyn(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  public aeyn(QQSettingMe paramQQSettingMe) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCancel() {}
+  
+  public void onConfirm()
   {
-    return true;
+    QQSettingMe.d(this.a);
   }
 }
 

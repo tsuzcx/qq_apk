@@ -1,50 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.viola.ui.view.VRefreshLayout;
-import com.tencent.viola.ui.view.VRefreshLayout.onRefreshStateChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class snj
-  implements VRefreshLayout.onRefreshStateChangeListener
+  implements View.OnClickListener
 {
-  snj(sni paramsni, RefreshAnimView paramRefreshAnimView, VRefreshLayout paramVRefreshLayout) {}
+  snj(snh paramsnh, String paramString) {}
   
-  public void onRefreshMove(int paramInt)
+  public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentViolaUiViewVRefreshLayout.getHeaderHeight();
-    if ((paramInt <= i) && (!sni.a(this.jdField_a_of_type_Sni)))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / i);
-    }
-  }
-  
-  public void onStateEnd()
-  {
-    sni.a(this.jdField_a_of_type_Sni, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
-  }
-  
-  public void onStateFinish(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
-  }
-  
-  public void onStateIdel()
-  {
-    sni.a(this.jdField_a_of_type_Sni, false);
-  }
-  
-  public void onStatePulling() {}
-  
-  public void onStateRefreshing()
-  {
-    sni.a(this.jdField_a_of_type_Sni, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
+    oat.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     snj
  * JD-Core Version:    0.7.0.1
  */

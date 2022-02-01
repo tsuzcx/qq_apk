@@ -1,52 +1,23 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import kotlin.Metadata;
+import kotlin.Unit;
+import org.jetbrains.annotations.Nullable;
 
-class arnm
-  implements SeekBar.OnSeekBarChangeListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/dt/QQDtReporter$Companion;", "", "()V", "INSTANCT", "Lcom/tencent/mobileqq/dt/QQDtReporter;", "instance", "instance$annotations", "getInstance", "()Lcom/tencent/mobileqq/dt/QQDtReporter;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class arnm
 {
-  arnm(arnb paramarnb) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  @Nullable
+  public final arnl a()
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null))
+    if (arnl.a() == null) {}
+    try
     {
-      arnb.a(this.a, arnb.b(this.a, paramInt));
-      this.a.jdField_a_of_type_Aron.b(arnb.a(this.a));
-      if (QLog.isDevelopLevel()) {
-        QLog.d("#@#@", 1, "onProgressChanged userPos[" + arnb.a(this.a) + "]");
+      if (arnl.a() == null) {
+        arnl.a(new arnl(null));
       }
+      Unit localUnit = Unit.INSTANCE;
+      return arnl.a();
     }
-  }
-  
-  @TargetApi(16)
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    arnb.c(this.a);
-    arnb.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.jdField_a_of_type_Boolean = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying();
-    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
-    this.a.jdField_a_of_type_Aron.a(null);
-    arnb.a(this.a, true);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
-      return;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("##########", 1, "mMediaPlayer sekTo [" + arnb.a(this.a) + "]");
-    }
-    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo(arnb.a(this.a));
+    finally {}
   }
 }
 

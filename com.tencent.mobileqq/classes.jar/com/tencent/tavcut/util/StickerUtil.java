@@ -2,23 +2,51 @@ package com.tencent.tavcut.util;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
+import com.tencent.tavcut.bean.SolidData;
+import com.tencent.tavcut.bean.TextEditorData;
 import com.tencent.tavcut.bean.TextItem;
 import com.tencent.tavsticker.exception.StickerInitializationException;
 import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.tavsticker.model.TAVStickerMoveLimit;
+import com.tencent.tavsticker.model.TAVStickerSolidItem;
 import com.tencent.tavsticker.model.TAVStickerTextItem;
+import com.tencent.tavsticker.utils.CollectionUtil;
 import com.tencent.tavsticker.utils.TimeRangeUtil;
+import com.tencent.weseevideo.editor.sticker.music.WSLyricSticker;
 import com.tencent.weseevideo.model.effect.StickerModel;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class StickerUtil
 {
   private static final String TAG = StickerUtil.class.getSimpleName();
   private static final int TIME_SCALE = 1000;
+  
+  private static TAVStickerSolidItem findSolidItemByName(TAVSticker paramTAVSticker, String paramString)
+  {
+    if (paramTAVSticker == null) {
+      return null;
+    }
+    paramTAVSticker = paramTAVSticker.getStickerSolidItems();
+    if (paramTAVSticker == null) {
+      return null;
+    }
+    paramTAVSticker = paramTAVSticker.iterator();
+    while (paramTAVSticker.hasNext())
+    {
+      TAVStickerSolidItem localTAVStickerSolidItem = (TAVStickerSolidItem)paramTAVSticker.next();
+      if ((paramString != null) && (paramString.equals(localTAVStickerSolidItem.getLayerName()))) {
+        return localTAVStickerSolidItem;
+      }
+    }
+    return null;
+  }
   
   @Nullable
   public static TAVSticker genTavSticker(@NonNull StickerModel paramStickerModel)
@@ -40,29 +68,75 @@ public class StickerUtil
     }
   }
   
+  public static TextEditorData stickerModel2EditorData(TAVSticker paramTAVSticker)
+  {
+    int i = 0;
+    Object localObject = null;
+    if (!CollectionUtil.isEmptyCollection(paramTAVSticker.getStickerTextItems())) {
+      localObject = (TAVStickerTextItem)paramTAVSticker.getStickerTextItems().get(0);
+    }
+    if (localObject == null) {
+      localObject = new TAVStickerTextItem();
+    }
+    for (;;)
+    {
+      TAVStickerSolidItem localTAVStickerSolidItem = findSolidItemByName(paramTAVSticker, "bgcolor");
+      String str1 = paramTAVSticker.getStickerId();
+      String str2 = paramTAVSticker.getExtras();
+      int j = ((TAVStickerTextItem)localObject).getTextColor();
+      String str3 = ((TAVStickerTextItem)localObject).getText();
+      String str4 = paramTAVSticker.getFilePath();
+      localObject = ((TAVStickerTextItem)localObject).getFontPath();
+      if (localTAVStickerSolidItem == null) {}
+      for (;;)
+      {
+        localObject = new TextEditorData(str1, str2, j, str3, str4, (String)localObject, i);
+        if ((paramTAVSticker instanceof WSLyricSticker)) {
+          ((TextEditorData)localObject).setStickerType("sticker_lyric");
+        }
+        return localObject;
+        i = localTAVStickerSolidItem.getColor();
+      }
+    }
+  }
+  
   public static TAVSticker stickerModel2TavSticker(StickerModel paramStickerModel)
   {
-    CMTimeRange localCMTimeRange = new CMTimeRange(new CMTime(paramStickerModel.getStartTime(), 1000), new CMTime(((float)paramStickerModel.getEndTime() - paramStickerModel.getStartTime()), 1000));
-    Object localObject = localCMTimeRange;
-    if (!TimeRangeUtil.isValidTimeRange(localCMTimeRange)) {
-      localObject = null;
+    int k = 0;
+    Object localObject2 = new CMTimeRange(new CMTime(paramStickerModel.getStartTime(), 1000), new CMTime(((float)paramStickerModel.getEndTime() - paramStickerModel.getStartTime()), 1000));
+    Object localObject1 = localObject2;
+    if (!TimeRangeUtil.isValidTimeRange((CMTimeRange)localObject2)) {
+      localObject1 = null;
     }
-    localObject = new TAVSticker().setStickerId(paramStickerModel.getStickerId()).setFilePath(paramStickerModel.getFilePath()).setAssetFilePath(paramStickerModel.getAssetFilePath()).setLayerIndex(paramStickerModel.getLayerIndex()).setScale(paramStickerModel.getScale()).setRotate(paramStickerModel.getRotate()).setCenterX(paramStickerModel.getCenterX()).setCenterY(paramStickerModel.getCenterY()).setEditable(paramStickerModel.isEditable()).setMinScale(paramStickerModel.getMinScale()).setMaxScale(paramStickerModel.getMaxScale()).setTimeRange((CMTimeRange)localObject);
+    localObject1 = new TAVSticker().setExtras(paramStickerModel.getMaterialId()).setFilePath(paramStickerModel.getFilePath()).setAssetFilePath(paramStickerModel.getAssetFilePath()).setLayerIndex(paramStickerModel.getLayerIndex()).setScale(paramStickerModel.getScale()).setRotate(paramStickerModel.getRotate()).setCenterX(paramStickerModel.getCenterX()).setCenterY(paramStickerModel.getCenterY()).setEditable(paramStickerModel.isEditable()).setMinScale(paramStickerModel.getMinScale()).setMaxScale(paramStickerModel.getMaxScale()).setTimeRange((CMTimeRange)localObject1);
+    if (!TextUtils.isEmpty(paramStickerModel.getUniqueId())) {
+      ((TAVSticker)localObject1).setStickerId(paramStickerModel.getUniqueId());
+    }
+    int j;
+    Object localObject3;
     try
     {
-      ((TAVSticker)localObject).init();
+      ((TAVSticker)localObject1).init();
       int i = 0;
       for (;;)
       {
+        j = k;
         if (i >= paramStickerModel.getTextItems().size()) {
-          break label291;
+          break label389;
         }
-        if (i >= ((TAVSticker)localObject).getStickerTextItems().size()) {
+        if (i >= ((TAVSticker)localObject1).getStickerTextItems().size()) {
           break;
         }
-        ((TAVStickerTextItem)((TAVSticker)localObject).getStickerTextItems().get(i)).setText(((TextItem)paramStickerModel.getTextItems().get(i)).text);
-        ((TAVStickerTextItem)((TAVSticker)localObject).getStickerTextItems().get(i)).setTextColor(((TextItem)paramStickerModel.getTextItems().get(i)).textColor);
-        ((TAVStickerTextItem)((TAVSticker)localObject).getStickerTextItems().get(i)).setFontPath(((TextItem)paramStickerModel.getTextItems().get(i)).fontPath);
+        ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(i)).setText(((TextItem)paramStickerModel.getTextItems().get(i)).text);
+        ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(i)).setTextColor(((TextItem)paramStickerModel.getTextItems().get(i)).textColor);
+        localObject2 = ((TextItem)paramStickerModel.getTextItems().get(i)).fontPath;
+        localObject3 = ((TextItem)paramStickerModel.getTextItems().get(i)).assetFontPath;
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(i)).setFontPath((String)localObject2);
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+          ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(i)).setAssetFontPath((String)localObject3);
+        }
         i += 1;
       }
     }
@@ -74,22 +148,51 @@ public class StickerUtil
         continue;
         Logger.w(TAG, "sticker.stickerTextItems is not correct");
       }
-      label291:
-      ((TAVSticker)localObject).setStickerId(((TAVSticker)localObject).getStickerId());
-      ((TAVSticker)localObject).updateTextData();
     }
-    return localObject;
+    for (;;)
+    {
+      j += 1;
+      label389:
+      if (j < paramStickerModel.getSolidItems().size())
+      {
+        localObject3 = ((TAVSticker)localObject1).getStickerSolidItems();
+        if (!CollectionUtil.isEmptyList((List)localObject3)) {
+          break label430;
+        }
+      }
+      label430:
+      Map localMap;
+      do
+      {
+        ((TAVSticker)localObject1).updateTextData();
+        ((TAVSticker)localObject1).updateLayerColor();
+        return localObject1;
+        localMap = paramStickerModel.getSolidItems();
+      } while (CollectionUtil.isEmptyMap(localMap));
+      localObject3 = ((List)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        TAVStickerSolidItem localTAVStickerSolidItem = (TAVStickerSolidItem)((Iterator)localObject3).next();
+        SolidData localSolidData = (SolidData)localMap.get(localTAVStickerSolidItem.getLayerName());
+        if (localSolidData != null) {
+          localTAVStickerSolidItem.setColor(localSolidData.getColor());
+        }
+      }
+    }
   }
   
   public static StickerModel tavSticker2StickerModel(TAVSticker paramTAVSticker)
   {
     long l2 = 0L;
     StickerModel localStickerModel = new StickerModel();
-    localStickerModel.setStickerId(paramTAVSticker.getStickerId());
+    localStickerModel.setUniqueId(paramTAVSticker.getStickerId());
+    localStickerModel.setMaterialId(paramTAVSticker.getExtras());
     localStickerModel.setFilePath(paramTAVSticker.getFilePath());
     localStickerModel.setAssetFilePath(paramTAVSticker.getAssetFilePath());
     if (paramTAVSticker.getTimeRange() != null) {}
     ArrayList localArrayList;
+    Object localObject2;
+    Object localObject3;
     for (long l1 = paramTAVSticker.getTimeRange().getStartUs();; l1 = 0L)
     {
       localStickerModel.setStartTime((float)l1 * 1.0F / 1000.0F);
@@ -109,24 +212,42 @@ public class StickerUtil
       localStickerModel.setMinScale(paramTAVSticker.getMinScale());
       localStickerModel.setMaxScale(paramTAVSticker.getMaxScale());
       localArrayList = new ArrayList();
-      paramTAVSticker = paramTAVSticker.getStickerTextItems().iterator();
-      while (paramTAVSticker.hasNext())
+      localObject1 = paramTAVSticker.getStickerTextItems().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        TAVStickerTextItem localTAVStickerTextItem = (TAVStickerTextItem)paramTAVSticker.next();
-        TextItem localTextItem = new TextItem();
-        localTextItem.fontPath = localTAVStickerTextItem.getFontPath();
-        localTextItem.text = localTAVStickerTextItem.getText();
-        localTextItem.textColor = localTAVStickerTextItem.getTextColor();
-        localArrayList.add(localTextItem);
+        localObject2 = (TAVStickerTextItem)((Iterator)localObject1).next();
+        localObject3 = new TextItem();
+        ((TextItem)localObject3).fontPath = ((TAVStickerTextItem)localObject2).getFontPath();
+        ((TextItem)localObject3).assetFontPath = ((TAVStickerTextItem)localObject2).getAssetFontPath();
+        ((TextItem)localObject3).text = ((TAVStickerTextItem)localObject2).getText();
+        ((TextItem)localObject3).textColor = ((TAVStickerTextItem)localObject2).getTextColor();
+        localArrayList.add(localObject3);
       }
     }
-    localStickerModel.setTextItems(localArrayList);
-    return localStickerModel;
+    Object localObject1 = new HashMap();
+    paramTAVSticker = paramTAVSticker.getStickerSolidItems().iterator();
+    for (;;)
+    {
+      if (paramTAVSticker.hasNext())
+      {
+        localObject2 = (TAVStickerSolidItem)paramTAVSticker.next();
+        if (localObject2 != null) {}
+      }
+      else
+      {
+        localStickerModel.setTextItems(localArrayList);
+        localStickerModel.setSolidItems((Map)localObject1);
+        return localStickerModel;
+      }
+      localObject3 = new SolidData();
+      ((SolidData)localObject3).setColor(((TAVStickerSolidItem)localObject2).getColor());
+      ((Map)localObject1).put(((TAVStickerSolidItem)localObject2).getLayerName(), localObject3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.util.StickerUtil
  * JD-Core Version:    0.7.0.1
  */

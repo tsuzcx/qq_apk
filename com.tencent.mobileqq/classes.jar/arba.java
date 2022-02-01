@@ -1,121 +1,59 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyOfflineFileGetListMsgRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.OfflineFileInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arba
-  implements bkkj<WeiyunPB.CrossBidProxyOfflineFileGetListMsgRsp>
+public class arba
 {
-  arba(arau paramarau, int paramInt) {}
+  public String a;
+  public boolean a;
+  public String[] a;
+  public String b;
+  public String c;
   
-  public void a(int paramInt, String paramString, WeiyunPB.CrossBidProxyOfflineFileGetListMsgRsp paramCrossBidProxyOfflineFileGetListMsgRsp)
+  public arba(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryOfflineFileList onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
+    try
+    {
+      String str = paramJSONObject.getString("extension");
+      if (str != null) {
+        this.jdField_a_of_type_ArrayOfJavaLangString = str.split("\\|");
+      }
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("text");
+      this.b = paramJSONObject.getString("tShow");
+      this.c = paramJSONObject.getString("tPress");
+      return;
     }
-    arau.a(this.jdField_a_of_type_Arau).a().a(false, 32, new Object[] { Integer.valueOf(paramInt), paramString });
+    catch (JSONException paramJSONObject)
+    {
+      QLog.e("TencentDocLocalCooperationBean", 1, paramJSONObject.getLocalizedMessage(), paramJSONObject);
+    }
   }
   
-  public void a(WeiyunPB.CrossBidProxyOfflineFileGetListMsgRsp paramCrossBidProxyOfflineFileGetListMsgRsp)
+  public boolean a(String paramString)
   {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 2)) {}
-    for (int i = paramCrossBidProxyOfflineFileGetListMsgRsp.rpt_msg_recv_offline_file.size() + 0;; i = 0)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int i;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
     {
-      int j;
-      if (this.jdField_a_of_type_Int != 1)
-      {
-        j = i;
-        if (this.jdField_a_of_type_Int != 2) {}
+      bool1 = bool2;
+      if (paramString != null) {
+        i = 0;
       }
-      else
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
       {
-        j = i + paramCrossBidProxyOfflineFileGetListMsgRsp.rpt_msg_send_offline_file.size();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "queryOfflineFileList onSucceed, num[" + j + "]");
-      }
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator;
-      WeiyunPB.OfflineFileInfo localOfflineFileInfo;
-      OfflineFileInfo localOfflineFileInfo1;
-      if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 2))
-      {
-        localIterator = paramCrossBidProxyOfflineFileGetListMsgRsp.rpt_msg_recv_offline_file.get().iterator();
-        while (localIterator.hasNext())
-        {
-          localOfflineFileInfo = (WeiyunPB.OfflineFileInfo)localIterator.next();
-          localOfflineFileInfo1 = new OfflineFileInfo();
-          localOfflineFileInfo1.jdField_a_of_type_Boolean = false;
-          localOfflineFileInfo1.jdField_a_of_type_Int = localOfflineFileInfo.uint32_danger_evel.get();
-          localOfflineFileInfo1.jdField_b_of_type_Long = localOfflineFileInfo.uint64_file_size.get();
-          localOfflineFileInfo1.c = (ayzl.a() * 1000L + localOfflineFileInfo.uint32_life_time.get() * 1000L);
-          localOfflineFileInfo1.d = (localOfflineFileInfo.uint32_upload_time.get() * 1000L);
-          localOfflineFileInfo1.jdField_b_of_type_JavaLangString = localOfflineFileInfo.str_file_name.get();
-          localOfflineFileInfo1.jdField_a_of_type_JavaLangString = new String(localOfflineFileInfo.bytes_uuid.get().toByteArray());
-          localOfflineFileInfo1.jdField_a_of_type_Long = localOfflineFileInfo.uint64_uin.get();
-          localArrayList.add(localOfflineFileInfo1);
-          if (QLog.isColorLevel()) {
-            QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "OfflineFileInfo[" + localOfflineFileInfo1.toString() + "]");
-          }
+        if (paramString.equals(this.jdField_a_of_type_ArrayOfJavaLangString[i])) {
+          bool1 = true;
         }
       }
-      if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2))
-      {
-        localIterator = paramCrossBidProxyOfflineFileGetListMsgRsp.rpt_msg_send_offline_file.get().iterator();
-        while (localIterator.hasNext())
-        {
-          localOfflineFileInfo = (WeiyunPB.OfflineFileInfo)localIterator.next();
-          localOfflineFileInfo1 = new OfflineFileInfo();
-          localOfflineFileInfo1.jdField_a_of_type_Boolean = true;
-          localOfflineFileInfo1.jdField_a_of_type_Int = localOfflineFileInfo.uint32_danger_evel.get();
-          localOfflineFileInfo1.jdField_b_of_type_Long = localOfflineFileInfo.uint64_file_size.get();
-          localOfflineFileInfo1.c = (ayzl.a() * 1000L + localOfflineFileInfo.uint32_life_time.get() * 1000L);
-          localOfflineFileInfo1.d = (localOfflineFileInfo.uint32_upload_time.get() * 1000L);
-          localOfflineFileInfo1.jdField_b_of_type_JavaLangString = localOfflineFileInfo.str_file_name.get();
-          localOfflineFileInfo1.jdField_a_of_type_JavaLangString = new String(localOfflineFileInfo.bytes_uuid.get().toByteArray());
-          localOfflineFileInfo1.jdField_a_of_type_Long = localOfflineFileInfo.uint64_uin.get();
-          localArrayList.add(localOfflineFileInfo1);
-          if (QLog.isColorLevel()) {
-            QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "OfflineFileInfo[" + localOfflineFileInfo1.toString() + "]");
-          }
-        }
+      else {
+        return bool1;
       }
-      boolean bool;
-      if (this.jdField_a_of_type_Int == 0) {
-        if (paramCrossBidProxyOfflineFileGetListMsgRsp.uint32_recv_list_end.get() == 1) {
-          bool = true;
-        }
-      }
-      for (;;)
-      {
-        arau.a(this.jdField_a_of_type_Arau).a().a(true, 32, new Object[] { Boolean.valueOf(bool), localArrayList });
-        return;
-        bool = false;
-        continue;
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          if (paramCrossBidProxyOfflineFileGetListMsgRsp.uint32_send_list_end.get() == 1) {
-            bool = true;
-          } else {
-            bool = false;
-          }
-        }
-        else if ((paramCrossBidProxyOfflineFileGetListMsgRsp.uint32_recv_list_end.get() == 1) && (paramCrossBidProxyOfflineFileGetListMsgRsp.uint32_send_list_end.get() == 1)) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-      }
+      i += 1;
     }
   }
 }

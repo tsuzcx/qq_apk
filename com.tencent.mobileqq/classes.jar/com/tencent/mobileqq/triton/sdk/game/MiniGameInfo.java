@@ -58,12 +58,19 @@ public class MiniGameInfo
   
   public boolean needOpenDebugSocket()
   {
-    return (!TextUtils.isEmpty(this.gameId)) && (this.debugInfo != null) && (this.debugInfo.isValid());
+    if (!TextUtils.isEmpty(this.gameId))
+    {
+      GameDebugInfo localGameDebugInfo = this.debugInfo;
+      if ((localGameDebugInfo != null) && (localGameDebugInfo.isValid())) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.sdk.game.MiniGameInfo
  * JD-Core Version:    0.7.0.1
  */

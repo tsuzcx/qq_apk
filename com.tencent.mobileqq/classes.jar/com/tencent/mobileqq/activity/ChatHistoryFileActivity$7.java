@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aqsb;
-import arri;
-import arrp;
-import bahm;
+import aszd;
+import atvf;
+import atvm;
+import bdiq;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -68,21 +68,21 @@ class ChatHistoryFileActivity$7
     for (;;)
     {
       return;
-      localObject2 = ((bahm)this.this$0.app.a(122)).a(localJSONException);
+      localObject2 = ((bdiq)this.this$0.app.a(122)).a(localJSONException);
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryFIleActivity", 1, localJSONException.toString());
       }
       if (((JSONObject)localObject2).getInt("retcode") == 0) {
-        arrp.a("0X8009AA0");
+        atvm.a("0X8009AA0");
       } else {
-        arri.a(((JSONObject)localObject2).getString("msg"));
+        atvf.a(((JSONObject)localObject2).getString("msg"));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.7
  * JD-Core Version:    0.7.0.1
  */

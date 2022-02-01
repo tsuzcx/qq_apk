@@ -31,7 +31,7 @@ public class BlackWhite4Filter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.filter.ttpic.BlackWhite4Filter
  * JD-Core Version:    0.7.0.1
  */

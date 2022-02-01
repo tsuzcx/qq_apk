@@ -1,9 +1,4 @@
-public class bbbx
-  extends bbbz
-{
-  public byte[] a;
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbbx

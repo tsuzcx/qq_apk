@@ -1,35 +1,60 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 
-class avht
-  implements avrg
+public class avht
+  implements avid
 {
-  avht(avhs paramavhs) {}
+  public avht(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(boolean paramBoolean)
   {
-    if (paramBoolean)
+    int k = 1;
+    IVPluginDataReporter localIVPluginDataReporter;
+    int j;
+    if (!bgnt.a(GroupVideoLoadingFragment.a(this.a)))
     {
-      avrb localavrb = (avrb)this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263);
-      if (localavrb != null) {
-        localavrb.d(paramString);
+      i = 1;
+      if (!paramBoolean) {
+        break label80;
       }
-      avhf.a(this.a.a.a, paramString);
-      if ((this.a.a.a.jdField_a_of_type_AndroidViewView.getContext() instanceof Activity)) {
-        ((BaseActivity)this.a.a.a.jdField_a_of_type_AndroidViewView.getContext()).finish();
+      GroupVideoLoadingFragment.a(this.a, false);
+      localIVPluginDataReporter = GroupVideoLoadingFragment.a(this.a).opType("enterPage");
+      if (!paramBoolean) {
+        break label111;
       }
-      return;
+      j = 1;
+      label50:
+      localIVPluginDataReporter = localIVPluginDataReporter.opIn(j);
+      if (i == 0) {
+        break label116;
+      }
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131708650), 0).a();
+    label80:
+    label111:
+    label116:
+    for (int i = k;; i = 0)
+    {
+      localIVPluginDataReporter.opResult(i).report();
+      return;
+      i = 0;
+      break;
+      if (i != 0) {
+        GroupVideoLoadingFragment.a(this.a, true);
+      }
+      for (;;)
+      {
+        avjb.b("2880338");
+        break;
+        GroupVideoLoadingFragment.a(this.a, false);
+      }
+      j = 0;
+      break label50;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avht
  * JD-Core Version:    0.7.0.1
  */

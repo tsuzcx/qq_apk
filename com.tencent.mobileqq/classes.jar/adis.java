@@ -1,28 +1,27 @@
-import android.util.Pair;
-import android.view.View;
-import com.tencent.mobileqq.activity.MainFragment;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adis
-  implements bhuk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adis(MainFragment paramMainFragment, List paramList, bhuf parambhuf) {}
+  public adis(AccountManageActivity paramAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.e();
-    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return;
-    }
-    try
+    SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), null, "qqsetting_subaccount_notify", paramBoolean);
+    ((bdeh)this.a.app.getManager(61)).a(this.a.app);
+    QQAppInterface localQQAppInterface = this.a.app;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
     {
-      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (adiz)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
-      this.jdField_a_of_type_Bhuf.dismiss();
+      bcst.b(localQQAppInterface, "dc00898", "", "", "0X800AC3A", "0X800AC3A", 0, 0, i + "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-    }
-    catch (Throwable paramView)
-    {
-      paramView.printStackTrace();
     }
   }
 }

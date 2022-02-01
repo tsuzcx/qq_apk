@@ -1,84 +1,45 @@
-import android.os.SystemClock;
-import com.tencent.beacon.event.UserAction;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 
 public class lof
 {
-  private long jdField_a_of_type_Long;
-  private loc jdField_a_of_type_Loc;
-  public boolean a;
-  private boolean b;
+  public int a;
+  public String a;
+  public int b;
+  public int c;
   
-  public lof(loc paramloc)
+  public static lof a()
   {
-    this.jdField_a_of_type_Loc = paramloc;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    ljz localljz = lfh.a(BaseApplicationImpl.getContext());
+    if (!localljz.a())
     {
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      return;
+      lof locallof = new lof();
+      if (locallof.a(localljz)) {}
+      return locallof;
     }
-    b(this.jdField_a_of_type_Loc.a);
+    return null;
   }
   
-  private void b(int paramInt)
+  public boolean a(ljz paramljz)
   {
-    if (this.jdField_a_of_type_Long != 0L)
+    try
     {
-      long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-      if (l > 3000L)
-      {
-        HashMap localHashMap = new HashMap();
-        String str1 = Integer.toHexString(paramInt);
-        String str2 = String.valueOf(l);
-        localHashMap.put("color", str1);
-        localHashMap.put("duration", str2);
-        UserAction.onUserAction("actAVFunChatDrawing", true, -1L, -1L, localHashMap, true);
-        if (QLog.isColorLevel()) {
-          QLog.d("DoodleReportController", 2, "onUserAction colorString = " + str1 + ", durationString = " + str2);
-        }
-        this.b = true;
+      this.jdField_a_of_type_Int = paramljz.a("OpenGLBlowUp/IsOpen", 0);
+      this.b = paramljz.a("OpenGLBlowUp/width", 0);
+      this.c = paramljz.a("OpenGLBlowUp/level", 0);
+      this.jdField_a_of_type_JavaLangString = paramljz.a("OpenGLBlowUp/versionname", "");
+      if (QLog.isColorLevel()) {
+        QLog.i("RendererConfig", 2, "OpenGLSharpenConfig isOpen: " + this.jdField_a_of_type_Int + " width: " + this.b + " level: " + this.c + " versionName: " + this.jdField_a_of_type_JavaLangString);
       }
+      return true;
     }
-  }
-  
-  public void a()
-  {
-    a(false);
-    if (this.b)
-    {
-      log.a("0X80077C2");
-      return;
-    }
-    log.a("0X80077C1");
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (paramInt != this.jdField_a_of_type_Loc.a))
-    {
-      b(paramInt);
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      b();
-    }
+    catch (Exception paramljz) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lof
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,22 @@
-public abstract interface atyz
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class atyz
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a(String paramString);
+  public atyz(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public abstract void b(String paramString);
-  
-  public abstract void c(String paramString);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    atcq.a().d(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atyz
  * JD-Core Version:    0.7.0.1
  */

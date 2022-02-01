@@ -1,42 +1,16 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-class aigg
-  implements TextWatcher
+public class aigg
+  implements DialogInterface.OnClickListener
 {
-  aigg(aigf paramaigf) {}
+  public aigg(TroopChatPie paramTroopChatPie) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (paramEditable.length() == 0)
-    {
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.findViewById(2131367817).setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_a_of_type_Aige.a();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
-    }
-    this.a.jdField_b_of_type_JavaLangString = paramEditable;
-    this.a.findViewById(2131367817).setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    this.a.a();
+    this.a.I();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

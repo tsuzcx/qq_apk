@@ -1,568 +1,348 @@
-import android.content.SharedPreferences;
-import android.os.Looper;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.StrangerHandler.1;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.Switch;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0x5d2.oidb_0x5d2.ReqBody;
-import tencent.im.oidb.cmd0x5d2.oidb_0x5d2.ReqGetList;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.ReqBody;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class amdc
-  extends alpd
+  extends BaseAdapter
 {
-  public amdc(QQAppInterface paramQQAppInterface)
+  int jdField_a_of_type_Int;
+  private amdg jdField_a_of_type_Amdg;
+  private amdh jdField_a_of_type_Amdh;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  protected LayoutInflater a;
+  private View.AccessibilityDelegate jdField_a_of_type_AndroidViewView$AccessibilityDelegate = new amdf(this);
+  protected QQAppInterface a;
+  protected HashMap<String, Drawable> a;
+  protected List<Object> a;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  
+  public amdc(QQAppInterface paramQQAppInterface, Context paramContext, List<arcs> paramList, amdg paramamdg, amdh paramamdh)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    this.jdField_a_of_type_Amdg = paramamdg;
+    this.jdField_a_of_type_Amdh = paramamdh;
+    b();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845327);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845338);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
   }
   
-  private static oidb_sso.OIDBSSOPkg a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void a(RedTouch paramRedTouch, arcs paramarcs, boolean paramBoolean)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
-      paramToServiceMsg = null;
-    }
-    for (;;)
+    if (paramBoolean) {}
+    for (byte b1 = 0;; b1 = 1)
     {
-      return paramToServiceMsg;
-      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-      try
-      {
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.get() == 0))
-        {
-          paramToServiceMsg = paramFromServiceMsg;
-          if (paramFromServiceMsg.bytes_bodybuffer.get() != null) {
-            continue;
-          }
-        }
-        return null;
-      }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("StrangerHandler", 2, "parseSSOPkg: oidb_sso parseFrom byte InvalidProtocolBufferMicroException ");
-          }
-        }
-      }
-    }
-  }
-  
-  /* Error */
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: aload_2
-    //   2: aload_3
-    //   3: invokestatic 66	amdc:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;)Ltencent/im/oidb/oidb_sso$OIDBSSOPkg;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: ifnonnull +25 -> 33
-    //   11: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   14: ifeq +11 -> 25
-    //   17: ldc 56
-    //   19: iconst_2
-    //   20: ldc 68
-    //   22: invokestatic 62	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   25: aload_0
-    //   26: iconst_2
-    //   27: iconst_0
-    //   28: aconst_null
-    //   29: invokevirtual 72	amdc:notifyUI	(IZLjava/lang/Object;)V
-    //   32: return
-    //   33: new 74	tencent/im/oidb/cmd0x5d2/oidb_0x5d2$RspBody
-    //   36: dup
-    //   37: invokespecial 75	tencent/im/oidb/cmd0x5d2/oidb_0x5d2$RspBody:<init>	()V
-    //   40: astore 6
-    //   42: aconst_null
-    //   43: astore_3
-    //   44: aload 6
-    //   46: aload_2
-    //   47: getfield 43	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   50: invokevirtual 48	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   53: invokevirtual 81	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   56: invokevirtual 82	tencent/im/oidb/cmd0x5d2/oidb_0x5d2$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   59: pop
-    //   60: aload_1
-    //   61: ldc 84
-    //   63: invokevirtual 90	com/tencent/qphone/base/remote/ToServiceMsg:getAttribute	(Ljava/lang/String;)Ljava/lang/Object;
-    //   66: checkcast 92	java/lang/Integer
-    //   69: invokevirtual 95	java/lang/Integer:intValue	()I
-    //   72: istore 4
-    //   74: aload 6
-    //   76: getfield 99	tencent/im/oidb/cmd0x5d2/oidb_0x5d2$RspBody:rsp_get_list	Ltencent/im/oidb/cmd0x5d2/oidb_0x5d2$RspGetList;
-    //   79: getfield 104	tencent/im/oidb/cmd0x5d2/oidb_0x5d2$RspGetList:seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   82: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   85: istore 5
-    //   87: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   90: ifeq +39 -> 129
-    //   93: ldc 56
-    //   95: iconst_2
-    //   96: new 106	java/lang/StringBuilder
-    //   99: dup
-    //   100: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   103: ldc 109
-    //   105: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: iload 4
-    //   110: invokevirtual 116	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   113: ldc 118
-    //   115: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: iload 5
-    //   120: invokevirtual 116	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   123: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   126: invokestatic 62	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   129: iload 4
-    //   131: iload 5
-    //   133: if_icmpeq +474 -> 607
-    //   136: aload 6
-    //   138: getfield 99	tencent/im/oidb/cmd0x5d2/oidb_0x5d2$RspBody:rsp_get_list	Ltencent/im/oidb/cmd0x5d2/oidb_0x5d2$RspGetList;
-    //   141: getfield 126	tencent/im/oidb/cmd0x5d2/oidb_0x5d2$RspGetList:list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   144: invokevirtual 131	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   147: astore_1
-    //   148: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   151: ifeq +53 -> 204
-    //   154: ldc 56
-    //   156: iconst_2
-    //   157: new 106	java/lang/StringBuilder
-    //   160: dup
-    //   161: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   164: ldc 109
-    //   166: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   169: iload 4
-    //   171: invokevirtual 116	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   174: ldc 118
-    //   176: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   179: iload 5
-    //   181: invokevirtual 116	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   184: ldc 133
-    //   186: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: aload_1
-    //   190: invokeinterface 138 1 0
-    //   195: invokevirtual 116	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   198: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   201: invokestatic 62	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   204: aload_0
-    //   205: getfield 142	amdc:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   208: invokevirtual 148	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lawgg;
-    //   211: invokevirtual 154	awgg:createEntityManager	()Lawgf;
-    //   214: astore_2
-    //   215: aload_2
-    //   216: ldc 156
-    //   218: invokevirtual 161	awgf:a	(Ljava/lang/Class;)Ljava/util/List;
-    //   221: astore 6
-    //   223: aload 6
-    //   225: ifnonnull +432 -> 657
-    //   228: new 163	java/util/ArrayList
-    //   231: dup
-    //   232: invokespecial 164	java/util/ArrayList:<init>	()V
-    //   235: astore 6
-    //   237: aload_1
-    //   238: invokeinterface 168 1 0
-    //   243: astore 8
-    //   245: aconst_null
-    //   246: astore_1
-    //   247: aload 8
-    //   249: invokeinterface 173 1 0
-    //   254: ifeq +193 -> 447
-    //   257: aload 8
-    //   259: invokeinterface 177 1 0
-    //   264: checkcast 179	tencent/im/oidb/cmd0x5d2/oidb_0x5d2$FriendList
-    //   267: astore_3
-    //   268: aload_3
-    //   269: getfield 183	tencent/im/oidb/cmd0x5d2/oidb_0x5d2$FriendList:uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   272: invokevirtual 188	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   275: invokestatic 194	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   278: astore 9
-    //   280: aload_3
-    //   281: getfield 197	tencent/im/oidb/cmd0x5d2/oidb_0x5d2$FriendList:nick	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   284: invokevirtual 48	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   287: invokevirtual 200	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   290: astore 10
-    //   292: aload_2
-    //   293: ldc 156
-    //   295: aload 9
-    //   297: invokevirtual 203	awgf:a	(Ljava/lang/Class;Ljava/lang/String;)Lawge;
-    //   300: checkcast 156	com/tencent/mobileqq/data/Stranger
-    //   303: astore 7
-    //   305: aload 7
-    //   307: ifnonnull +62 -> 369
-    //   310: new 156	com/tencent/mobileqq/data/Stranger
-    //   313: dup
-    //   314: invokespecial 204	com/tencent/mobileqq/data/Stranger:<init>	()V
-    //   317: astore_3
-    //   318: aload_3
-    //   319: aload 9
-    //   321: putfield 207	com/tencent/mobileqq/data/Stranger:uin	Ljava/lang/String;
-    //   324: aload_3
-    //   325: aload 10
-    //   327: putfield 210	com/tencent/mobileqq/data/Stranger:name	Ljava/lang/String;
-    //   330: aload_2
-    //   331: aload_3
-    //   332: invokevirtual 213	awgf:a	(Lawge;)V
-    //   335: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   338: ifeq +322 -> 660
-    //   341: ldc 56
-    //   343: iconst_2
-    //   344: new 106	java/lang/StringBuilder
-    //   347: dup
-    //   348: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   351: ldc 215
-    //   353: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   356: aload_3
-    //   357: invokevirtual 218	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   360: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   363: invokestatic 62	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   366: goto +294 -> 660
-    //   369: aload 7
-    //   371: aload 10
-    //   373: putfield 210	com/tencent/mobileqq/data/Stranger:name	Ljava/lang/String;
-    //   376: aload_2
-    //   377: aload 7
-    //   379: invokevirtual 221	awgf:a	(Lawge;)Z
-    //   382: pop
-    //   383: aload 6
-    //   385: invokeinterface 168 1 0
-    //   390: astore 9
-    //   392: aload_1
-    //   393: astore_3
-    //   394: aload 9
-    //   396: invokeinterface 173 1 0
-    //   401: ifeq +29 -> 430
-    //   404: aload 9
-    //   406: invokeinterface 177 1 0
-    //   411: checkcast 156	com/tencent/mobileqq/data/Stranger
-    //   414: astore_3
-    //   415: aload_3
-    //   416: getfield 207	com/tencent/mobileqq/data/Stranger:uin	Ljava/lang/String;
-    //   419: aload 7
-    //   421: getfield 207	com/tencent/mobileqq/data/Stranger:uin	Ljava/lang/String;
-    //   424: invokestatic 227	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   427: ifeq -35 -> 392
-    //   430: aload 6
-    //   432: aload_3
-    //   433: invokeinterface 231 2 0
-    //   438: pop
-    //   439: aload_3
-    //   440: astore_1
-    //   441: aload 7
-    //   443: astore_3
-    //   444: goto -109 -> 335
-    //   447: aload 6
-    //   449: invokeinterface 168 1 0
-    //   454: astore_3
-    //   455: aload_3
-    //   456: invokeinterface 173 1 0
-    //   461: ifeq +78 -> 539
-    //   464: aload_3
-    //   465: invokeinterface 177 1 0
-    //   470: checkcast 156	com/tencent/mobileqq/data/Stranger
-    //   473: astore_1
-    //   474: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   477: ifeq +28 -> 505
-    //   480: ldc 56
-    //   482: iconst_2
-    //   483: new 106	java/lang/StringBuilder
-    //   486: dup
-    //   487: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   490: ldc 233
-    //   492: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   495: aload_1
-    //   496: invokevirtual 218	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   499: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   502: invokestatic 62	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   505: aload_2
-    //   506: aload_1
-    //   507: invokevirtual 235	awgf:b	(Lawge;)Z
-    //   510: pop
-    //   511: goto -56 -> 455
-    //   514: astore_3
-    //   515: aload_2
-    //   516: astore_1
-    //   517: aload_3
-    //   518: astore_2
-    //   519: aload_2
-    //   520: invokevirtual 238	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
-    //   523: aload_1
-    //   524: ifnull +7 -> 531
-    //   527: aload_1
-    //   528: invokevirtual 240	awgf:a	()V
-    //   531: aload_0
-    //   532: iconst_2
-    //   533: iconst_0
-    //   534: aconst_null
-    //   535: invokevirtual 72	amdc:notifyUI	(IZLjava/lang/Object;)V
-    //   538: return
-    //   539: aload_0
-    //   540: getfield 142	amdc:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   543: invokevirtual 244	com/tencent/mobileqq/app/QQAppInterface:getPreferences	()Landroid/content/SharedPreferences;
-    //   546: invokeinterface 250 1 0
-    //   551: astore_1
-    //   552: aload_1
-    //   553: ldc 252
-    //   555: iload 5
-    //   557: invokeinterface 258 3 0
-    //   562: pop
-    //   563: aload_1
-    //   564: invokeinterface 261 1 0
-    //   569: pop
-    //   570: aload_2
-    //   571: ldc 156
-    //   573: invokevirtual 161	awgf:a	(Ljava/lang/Class;)Ljava/util/List;
-    //   576: astore_3
-    //   577: aload_3
-    //   578: astore_1
-    //   579: aload_3
-    //   580: ifnonnull +11 -> 591
-    //   583: new 163	java/util/ArrayList
-    //   586: dup
-    //   587: invokespecial 164	java/util/ArrayList:<init>	()V
-    //   590: astore_1
-    //   591: aload_0
-    //   592: iconst_2
-    //   593: iconst_1
-    //   594: aload_1
-    //   595: invokevirtual 72	amdc:notifyUI	(IZLjava/lang/Object;)V
-    //   598: aload_2
-    //   599: ifnull -567 -> 32
-    //   602: aload_2
-    //   603: invokevirtual 240	awgf:a	()V
-    //   606: return
-    //   607: aload_0
-    //   608: iconst_2
-    //   609: iconst_1
-    //   610: aconst_null
-    //   611: invokevirtual 72	amdc:notifyUI	(IZLjava/lang/Object;)V
-    //   614: iconst_0
-    //   615: ifeq -583 -> 32
-    //   618: new 263	java/lang/NullPointerException
-    //   621: dup
-    //   622: invokespecial 264	java/lang/NullPointerException:<init>	()V
-    //   625: athrow
-    //   626: astore_1
-    //   627: aconst_null
-    //   628: astore_2
-    //   629: aload_2
-    //   630: ifnull +7 -> 637
-    //   633: aload_2
-    //   634: invokevirtual 240	awgf:a	()V
-    //   637: aload_1
-    //   638: athrow
-    //   639: astore_1
-    //   640: goto -11 -> 629
-    //   643: astore_3
-    //   644: aload_1
-    //   645: astore_2
-    //   646: aload_3
-    //   647: astore_1
-    //   648: goto -19 -> 629
-    //   651: astore_2
-    //   652: aload_3
-    //   653: astore_1
-    //   654: goto -135 -> 519
-    //   657: goto -420 -> 237
-    //   660: goto -413 -> 247
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	663	0	this	amdc
-    //   0	663	1	paramToServiceMsg	ToServiceMsg
-    //   0	663	2	paramFromServiceMsg	FromServiceMsg
-    //   0	663	3	paramObject	Object
-    //   72	98	4	i	int
-    //   85	471	5	j	int
-    //   40	408	6	localObject1	Object
-    //   303	139	7	localStranger	com.tencent.mobileqq.data.Stranger
-    //   243	15	8	localIterator	Iterator
-    //   278	127	9	localObject2	Object
-    //   290	82	10	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   215	223	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   228	237	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   237	245	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   247	305	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   310	335	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   335	366	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   369	392	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   394	430	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   430	439	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   447	455	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   455	505	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   505	511	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   539	577	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   583	591	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   591	598	514	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   44	129	626	finally
-    //   136	204	626	finally
-    //   204	215	626	finally
-    //   607	614	626	finally
-    //   215	223	639	finally
-    //   228	237	639	finally
-    //   237	245	639	finally
-    //   247	305	639	finally
-    //   310	335	639	finally
-    //   335	366	639	finally
-    //   369	392	639	finally
-    //   394	430	639	finally
-    //   430	439	639	finally
-    //   447	455	639	finally
-    //   455	505	639	finally
-    //   505	511	639	finally
-    //   539	577	639	finally
-    //   583	591	639	finally
-    //   591	598	639	finally
-    //   519	523	643	finally
-    //   44	129	651	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   136	204	651	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   204	215	651	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   607	614	651	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StrangerHandler", 2, "getListLocal ");
-    }
-    StrangerHandler.1 local1 = new StrangerHandler.1(this);
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      this.app.a(local1);
-      return;
-    }
-    local1.run();
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    paramFromServiceMsg = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    if (paramFromServiceMsg == null)
-    {
-      notifyUI(4, false, null);
+      paramarcs.jdField_a_of_type_Byte = b1;
       if (QLog.isColorLevel()) {
-        QLog.d("StrangerHandler", 2, "handleDeleteStranger: ssoPkg parse failed");
+        QLog.i("LebaListMgrAdapter", 2, "name: " + paramarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName + "  cCurFlag:" + paramarcs.jdField_a_of_type_Byte);
       }
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      ajvi.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId, paramBoolean, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+      ((antt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(paramarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), paramBoolean, l);
+      if (paramBoolean)
+      {
+        baif localbaif = (baif)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36);
+        l = paramarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId;
+        localbaif.b("100600." + (100000000L + l) + "");
+        if (paramRedTouch != null) {
+          paramRedTouch.d();
+        }
+      }
+      b();
+      notifyDataSetChanged();
+      if (this.jdField_a_of_type_Amdh != null) {
+        this.jdField_a_of_type_Amdh.a(paramarcs);
+      }
+      return;
     }
-    for (;;)
+  }
+  
+  private void a(RedTouch paramRedTouch, String paramString)
+  {
+    paramString = ((baif)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).a(paramString);
+    paramRedTouch.a(paramString);
+    a(paramString);
+  }
+  
+  private void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    ((baif)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).a(paramAppInfo);
+  }
+  
+  private void a(ArrayList<arcs> paramArrayList)
+  {
+    int i = 1;
+    if (paramArrayList.size() > 0) {}
+    switch (paramArrayList.size())
+    {
+    default: 
+      ((arcs)paramArrayList.get(0)).jdField_a_of_type_Int = 1;
+      while (i < paramArrayList.size() - 1)
+      {
+        ((arcs)paramArrayList.get(i)).jdField_a_of_type_Int = 3;
+        i += 1;
+      }
+    case 1: 
+      ((arcs)paramArrayList.get(0)).jdField_a_of_type_Int = 0;
+      return;
+    }
+    ((arcs)paramArrayList.get(0)).jdField_a_of_type_Int = 1;
+    ((arcs)paramArrayList.get(1)).jdField_a_of_type_Int = 2;
+    return;
+    ((arcs)paramArrayList.get(paramArrayList.size() - 1)).jdField_a_of_type_Int = 2;
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Amdg == null) {}
+    ArrayList localArrayList;
+    do
     {
       return;
-      paramToServiceMsg = new oidb_0x5d4.RspBody();
-      try
+      this.jdField_b_of_type_Int = 0;
+      localArrayList = new ArrayList();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        paramToServiceMsg.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-        paramObject = this.app.a().a();
-        paramFromServiceMsg = paramToServiceMsg.result.get().iterator();
-        while (paramFromServiceMsg.hasNext())
+        Object localObject = localIterator.next();
+        if ((localObject instanceof arcs))
         {
-          Object localObject = (oidb_0x5d4.DelResult)paramFromServiceMsg.next();
-          if (((oidb_0x5d4.DelResult)localObject).res.get() == 0)
+          localObject = (arcs)localObject;
+          if ((this.jdField_a_of_type_Amdg.a((arcs)localObject)) && (((arcs)localObject).jdField_a_of_type_Boolean) && (((arcs)localObject).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.cCanChangeState != 0)) {
+            localArrayList.add(localObject);
+          } else {
+            this.jdField_b_of_type_Int += 1;
+          }
+        }
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+    } while (localArrayList.size() <= 0);
+    Collections.sort(localArrayList, new anoz());
+    this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+    a(localArrayList);
+  }
+  
+  public void a() {}
+  
+  public void a(List<arcs> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    b();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    notifyDataSetChanged();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    arcs localarcs = (arcs)getItem(paramInt);
+    Object localObject1;
+    Object localObject2;
+    if ((localarcs == null) || (localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null))
+    {
+      localObject1 = paramView;
+      localObject2 = paramView;
+      paramView = (View)localObject1;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject2;
+    }
+    label173:
+    label206:
+    RedTouch localRedTouch;
+    label254:
+    String str;
+    label362:
+    label379:
+    int i;
+    if (paramView == null)
+    {
+      localObject2 = new amdi();
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559094, paramViewGroup, false);
+      ((amdi)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369724));
+      ((amdi)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369788));
+      ((amdi)localObject2).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369787));
+      ((amdi)localObject2).jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131363933));
+      if (ThemeUtil.isDefaultTheme())
+      {
+        ((amdi)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130850222);
+        ((amdi)localObject2).jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166993));
+        paramView = new RedTouch(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), paramView).c(100).a();
+        paramView.setTag(localObject2);
+        localRedTouch = (RedTouch)paramView;
+        ((amdi)localObject2).jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+        if (localarcs.jdField_a_of_type_Byte != 0) {
+          break label777;
+        }
+        ((amdi)localObject2).jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
+        ((amdi)localObject2).jdField_a_of_type_ComTencentWidgetSwitch.setContentDescription(localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+        ((amdi)localObject2).jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new amdd(this, localRedTouch, localarcs));
+        if (QLog.isColorLevel()) {
+          QLog.i("LebaListMgrAdapter", 2, "getview name: " + localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName + "  cCurFlag:" + localarcs.jdField_a_of_type_Byte);
+        }
+        ((amdi)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+        ((amdi)localObject2).jdField_a_of_type_Arcs = localarcs;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label805;
+        }
+        localObject1 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label814;
+        }
+        str = localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strGridIconUrl;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label827;
+        }
+        i = afur.a(32.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        label401:
+        Object localObject3 = (RelativeLayout.LayoutParams)((amdi)localObject2).jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject3).width = i;
+        ((RelativeLayout.LayoutParams)localObject3).height = i;
+        ((amdi)localObject2).jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+        localObject3 = localObject1;
+        if (localarcs != null)
+        {
+          localObject3 = localObject1;
+          if (localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null)
           {
-            localObject = paramObject.b(String.valueOf(((oidb_0x5d4.DelResult)localObject).uin.get()), 0);
-            if (localObject != null) {
-              paramObject.b((RecentUser)localObject);
+            localObject3 = localObject1;
+            if (!TextUtils.isEmpty(str))
+            {
+              localObject3 = URLDrawable.URLDrawableOptions.obtain();
+              ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = i;
+              ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth;
+              ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject1);
+              ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject1);
+              localObject3 = URLDrawable.getDrawable(str, (URLDrawable.URLDrawableOptions)localObject3);
+              ((URLDrawable)localObject3).setTargetDensity(this.jdField_a_of_type_Int);
+              if (((URLDrawable)localObject3).getStatus() == 2) {
+                ((URLDrawable)localObject3).restartDownload();
+              }
+              ((Drawable)localObject3).setColorFilter(-1, PorterDuff.Mode.DST_IN);
             }
           }
         }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-        if (0 != 0) {
-          throw new NullPointerException();
+        ((amdi)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject3);
+        if (localObject3 != null) {
+          ThemeUtil.setThemeFilter((Drawable)localObject3, ThemeUtil.curThemeId);
         }
-        notifyUI(4, false, null);
-        return;
-        notifyUI(4, true, paramToServiceMsg.result);
-      }
-      finally
-      {
-        if (0 != 0) {
-          throw new NullPointerException();
+        if (localarcs.jdField_a_of_type_Byte != 1) {
+          break label845;
         }
+        long l = localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId;
+        a((RedTouch)paramView, "100600." + (100000000L + l) + "");
       }
     }
-  }
-  
-  public boolean a(List<Long> paramList)
-  {
-    Object localObject = new oidb_0x5d4.ReqBody();
-    ((oidb_0x5d4.ReqBody)localObject).uin_list.set(paramList);
-    paramList = new oidb_sso.OIDBSSOPkg();
-    paramList.uint32_command.set(1492);
-    paramList.uint32_result.set(0);
-    paramList.uint32_service_type.set(0);
-    paramList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x5d4.ReqBody)localObject).toByteArray()));
-    localObject = createToServiceMsg("OidbSvc.0x5d4_0");
-    ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
-    ((ToServiceMsg)localObject).setTimeout(60000L);
-    QLog.d("StrangerHandler", 2, "deleteStrangers request = " + ((ToServiceMsg)localObject).toString());
-    sendPbReq((ToServiceMsg)localObject);
-    return true;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StrangerHandler", 2, "getListRemote force = " + paramBoolean);
+    for (;;)
+    {
+      if (AppSetting.c)
+      {
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          bgfz.a(((amdi)localObject2).jdField_a_of_type_AndroidWidgetTextView, false);
+          bgfz.a(((amdi)localObject2).jdField_a_of_type_ComTencentWidgetSwitch, false);
+          bgfz.a(((amdi)localObject2).jdField_a_of_type_AndroidWidgetImageView, false);
+          ((amdi)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setContentDescription(((amdi)localObject2).jdField_a_of_type_AndroidWidgetTextView.getText());
+        }
+        if (Build.VERSION.SDK_INT >= 14) {
+          ((amdi)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setAccessibilityDelegate(this.jdField_a_of_type_AndroidViewView$AccessibilityDelegate);
+        }
+        ((amdi)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new amde(this, localRedTouch, localarcs));
+      }
+      localObject2 = paramView;
+      break;
+      ((amdi)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130850219);
+      ((amdi)localObject2).jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166986));
+      break label173;
+      localObject2 = (amdi)paramView.getTag();
+      break label206;
+      label777:
+      ((amdi)localObject2).jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
+      ((amdi)localObject2).jdField_a_of_type_ComTencentWidgetSwitch.setContentDescription(localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+      break label254;
+      label805:
+      localObject1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      break label362;
+      label814:
+      str = localarcs.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResURL;
+      break label379;
+      label827:
+      i = afur.a(26.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      break label401;
+      label845:
+      ((RedTouch)paramView).d();
     }
-    int i = this.app.getPreferences().getInt("strange_oidb_get_list_seq_id", 0);
-    if (paramBoolean) {
-      i = 0;
-    }
-    Object localObject = new oidb_0x5d2.ReqBody();
-    ((oidb_0x5d2.ReqBody)localObject).sub_cmd.set(1);
-    ((oidb_0x5d2.ReqBody)localObject).req_get_list.setHasFlag(true);
-    ((oidb_0x5d2.ReqBody)localObject).req_get_list.seq.set(i);
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    localOIDBSSOPkg.uint32_command.set(1490);
-    localOIDBSSOPkg.uint32_service_type.set(0);
-    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x5d2.ReqBody)localObject).toByteArray()));
-    localObject = createToServiceMsg("OidbSvc.0x5d2_0");
-    ((ToServiceMsg)localObject).addAttribute("StrangerHandlerSubCmd", Integer.valueOf(1));
-    ((ToServiceMsg)localObject).addAttribute("StrangerHandlerSeqId", Integer.valueOf(i));
-    ((ToServiceMsg)localObject).putWupBuffer(localOIDBSSOPkg.toByteArray());
-    ((ToServiceMsg)localObject).setTimeout(60000L);
-    QLog.d("StrangerHandler", 2, "getListRemote request = " + ((ToServiceMsg)localObject).toString());
-    sendPbReq((ToServiceMsg)localObject);
-    return true;
-  }
-  
-  protected Class<? extends alpg> observerClass()
-  {
-    return amdd.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if ("OidbSvc.0x5d4_0".equalsIgnoreCase(str)) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    while ((!"OidbSvc.0x5d2_0".equalsIgnoreCase(str)) || (((Integer)paramToServiceMsg.getAttribute("StrangerHandlerSubCmd", Integer.valueOf(1))).intValue() != 1)) {
-      return;
-    }
-    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amdc
  * JD-Core Version:    0.7.0.1
  */

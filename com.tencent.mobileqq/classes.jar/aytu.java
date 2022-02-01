@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.os.Bundle;
+import org.jetbrains.annotations.Nullable;
 
-public class aytu
-  extends ayuf
+class aytu
+  extends aysj
 {
-  public aytu(GroupSearchEngine paramGroupSearchEngine, ayug paramayug, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramayug, paramString, paramInt);
-  }
+  aytu(aytt paramaytt) {}
   
-  public aynt a(List<aynu> paramList, String paramString)
+  public void a(boolean paramBoolean, @Nullable Bundle paramBundle)
   {
-    return new biwb(paramList, paramString);
+    super.a(paramBoolean, paramBundle);
+    if (paramBundle != null) {
+      aytt.a(this.a, paramBundle.getString("key_today_constellation_trend"));
+    }
+    this.a.a();
+    if ((aytt.a(this.a)) && (aytt.a(this.a) != null)) {
+      aytt.b(this.a).a();
+    }
   }
 }
 

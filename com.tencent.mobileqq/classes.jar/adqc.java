@@ -1,24 +1,19 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import mqq.app.QQPermissionCallback;
 
 public class adqc
-  implements axqc
+  implements QQPermissionCallback
 {
-  public adqc(QQIdentiferActivity paramQQIdentiferActivity) {}
+  public adqc(BaseChatPie paramBaseChatPie) {}
   
-  public void a(float paramFloat)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramFloat < 0.0F)
-    {
-      this.a.a(this.a.getString(2131694580));
-      return;
-    }
-    if (paramFloat > 175.0F)
-    {
-      this.a.a(this.a.getString(2131694579));
-      return;
-    }
-    QQIdentiferActivity.a(this.a).setText("");
+    bglp.a(this.a.a(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.bi();
   }
 }
 

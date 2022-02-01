@@ -1,23 +1,19 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 
 public class aumx
-  extends GestureDetector.SimpleOnGestureListener
+  implements bkhy
 {
-  public aumx(MultiCardCustomLayout paramMultiCardCustomLayout) {}
+  public aumx(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onLongPress(MotionEvent paramMotionEvent)
+  public void onDismiss()
   {
-    if (MultiCardCustomLayout.a(this.a) != null) {
-      MultiCardCustomLayout.a(this.a).onLongClick(this.a);
-    }
+    this.a.a = null;
+    this.a.o();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aumx
  * JD-Core Version:    0.7.0.1
  */

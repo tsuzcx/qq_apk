@@ -1,38 +1,22 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
 
-public abstract interface spx
-  extends sqi
+public class spx
+  implements pde
 {
-  public abstract ViewGroup a();
+  public spx(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView, pde parampde) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(VideoPlayManager paramVideoPlayManager);
-  
-  public abstract void a(sqh paramsqh);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void setControlType(int paramInt);
-  
-  public abstract void setEndWithLastFrame(boolean paramBoolean);
-  
-  public abstract void setEventListener(spy paramspy);
-  
-  public abstract void setFullScreenDisable(boolean paramBoolean);
+  public void a(int paramInt)
+  {
+    ReadInJoyFastWebBottomSocialView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialView).setVisibility(8);
+    if (this.jdField_a_of_type_Pde != null) {
+      this.jdField_a_of_type_Pde.a(paramInt);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     spx
  * JD-Core Version:    0.7.0.1
  */

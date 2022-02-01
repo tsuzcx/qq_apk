@@ -1,17 +1,15 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.widget.XListView;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class aedn
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  public aedn(TroopInfoActivity paramTroopInfoActivity, XListView paramXListView) {}
+  public aedn(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView.removeHeaderView(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b = null;
+    return true;
   }
 }
 

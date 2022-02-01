@@ -1,144 +1,103 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import android.app.Dialog;
+import android.content.Context;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.AIOJubaoDialogHelper.3;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import mqq.os.MqqHandler;
 
 public class agjr
-  extends aqru
+  implements agld, agma
 {
-  public agjr(AIOImageProviderService paramAIOImageProviderService, QQAppInterface paramQQAppInterface) {}
+  Dialog jdField_a_of_type_AndroidAppDialog;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private final SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  Dialog b;
+  public Dialog c;
+  public Dialog d;
   
-  protected void a(arcg paramarcg)
+  public agjr(aglu paramaglu, BaseChatPie paramBaseChatPie)
   {
-    long l = paramarcg.a;
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l);
-    if (localFileManagerEntity == null) {}
-    agkl localagkl;
-    do
-    {
-      return;
-      localagkl = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Agkl;
-    } while (localagkl == null);
-    int i = 18;
-    if (paramarcg.jdField_b_of_type_Int == 5) {
-      i = 16;
-    }
-    if (arso.a(paramarcg.jdField_b_of_type_JavaLangString))
-    {
-      localagkl.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 1, paramarcg.jdField_b_of_type_JavaLangString, false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, paramarcg.jdField_b_of_type_JavaLangString);
-      return;
-    }
-    paramarcg = "";
-    try
-    {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("errorType", "thumb_download");
-      ((JSONObject)localObject).put("errorCode", localFileManagerEntity.thumbInvalidCode);
-      localObject = ((JSONObject)localObject).toString();
-      paramarcg = (arcg)localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-    localagkl.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 2, paramarcg, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, "I:E");
+    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    paramaglu.a(this);
   }
   
-  protected void a(arcg paramarcg, int paramInt)
+  public Dialog a(int paramInt)
   {
-    long l = paramarcg.a;
-    paramarcg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l);
-    if (paramarcg == null) {}
-    agkl localagkl;
-    do
+    switch (paramInt)
     {
+    default: 
+      return null;
+    case 230: 
+      this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131755823);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559009);
+      localTextView1 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365479);
+      localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365475);
+      TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365464);
+      TextView localTextView3 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365470);
+      localTextView1.setText(2131717322);
+      ((TextView)localObject).setText(2131717320);
+      localTextView3.setText(2131717321);
+      localTextView3.setOnClickListener(new agjs(this));
+      localTextView2.setText(2131690582);
+      localTextView2.setOnClickListener(new agjt(this));
+      return this.jdField_a_of_type_AndroidAppDialog;
+    case 231: 
+      this.b = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131755823);
+      this.b.setContentView(2131558434);
+      ((TextView)this.b.findViewById(2131365475)).setText(2131717323);
+      return this.b;
+    case 232: 
+      this.c = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131755823);
+      this.c.setContentView(2131562970);
+      localTextView1 = (TextView)this.c.findViewById(2131378459);
+      localObject = (ImageView)this.c.findViewById(2131368269);
+      localTextView1.setText(2131690605);
+      ((ImageView)localObject).setImageResource(2130839584);
+      return this.c;
+    }
+    this.d = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131755823);
+    this.d.setContentView(2131562970);
+    TextView localTextView1 = (TextView)this.d.findViewById(2131378459);
+    Object localObject = (ImageView)this.d.findViewById(2131368269);
+    localTextView1.setText(2131690603);
+    ((ImageView)localObject).setImageResource(2130839571);
+    return this.d;
+  }
+  
+  public void a()
+  {
+    if ((this.b != null) && (this.b.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(231);
+    }
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, Dialog paramDialog)
+  {
+    switch (paramInt)
+    {
+    default: 
       return;
-      localagkl = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Agkl;
-    } while ((localagkl == null) || (paramarcg == null));
-    localagkl.a(paramarcg.uniseq, paramarcg.status, 18, paramInt, paramarcg.fileSize, false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().postDelayed(new AIOJubaoDialogHelper.3(this), 1000L);
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public int[] a()
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
-    if (paramString == null) {}
-    agkl localagkl;
-    do
-    {
-      do
-      {
-        return;
-        localagkl = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Agkl;
-      } while ((localagkl == null) || (paramString == null));
-      if (paramString.nFileType == 0)
-      {
-        localagkl.a(paramLong1, 0, 20, (int)(paramString.fProgress * 10000.0F), paramString.fileSize, false);
-        return;
-      }
-    } while (paramString.nFileType != 2);
-    localagkl.a(paramLong1, 0, 1, (int)(paramString.fProgress * 10000.0F), paramString.fileSize, false);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
-    if (paramString1 == null) {}
-    agkl localagkl;
-    label176:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localagkl = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Agkl;
-        } while (localagkl == null);
-        if (!paramBoolean) {
-          break;
-        }
-        if (paramString1.nFileType == 0)
-        {
-          localagkl.a(paramLong1, paramString1.status, 20, 1, paramString1.getFilePath(), false);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(paramLong1, paramString1.status, 20, paramString1.getFilePath());
-          return;
-        }
-      } while (paramString1.nFileType != 2);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong1)))
-      {
-        paramString2 = BaseApplicationImpl.sApplication.getBaseContext();
-        if (paramString2 == null) {
-          break label176;
-        }
-        arrr.a(paramString2, paramString1.getFilePath());
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(paramLong1));
-        localagkl.a(paramLong1, paramString1.status, 269484034, 1, paramString1.getFilePath(), false);
-        return;
-        QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [c2c file save album].");
-      }
-      if ((paramInt2 == -7003) || (paramInt2 == -6101)) {
-        paramString1.status = 16;
-      }
-      if (paramString1.nFileType == 0)
-      {
-        localagkl.a(paramLong1, paramString1.status, 20, 2, paramString2, false);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(paramLong1, paramString1.status, 20, "I:E");
-        return;
-      }
-    } while (paramString1.nFileType != 2);
-    localagkl.a(paramLong1, paramString1.status, 269484034, 2, paramString2, false);
+    return new int[0];
   }
 }
 

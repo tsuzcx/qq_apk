@@ -1,15 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbga
-  implements bhuw
+class bbga
+  implements View.OnClickListener
 {
-  public bbga(MediaPreviewActivity paramMediaPreviewActivity) {}
+  bbga(bbfs parambbfs) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    this.a.onBackPressed();
+    if (bbfs.a(this.a) != null)
+    {
+      bbfs.a(this.a).findViewById(2131365328).setVisibility(8);
+      bbfs.a(this.a).findViewById(2131365329).setVisibility(0);
+      bbfs.a(this.a).a(bbfs.a(this.a).a(), false);
+      bbfs.a(this.a).notifyDataSetChanged();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

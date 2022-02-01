@@ -1,67 +1,27 @@
-import android.os.Handler;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import java.util.List;
 
 public class rjs
-  implements TVK_SDKMgr.InstallListener
+  implements AdapterView.OnItemLongClickListener
 {
-  private Handler a;
+  public rjs(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public rjs(Handler paramHandler)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = paramHandler;
-  }
-  
-  public void onInstallProgress(float paramFloat)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(2);
+    if (!ReadInJoyDeliverUGCActivity.a(this.a).a().get(paramInt).equals(ReadInJoyDeliverUGCActivity.a(this.a))) {
+      ReadInJoyDeliverUGCActivity.a(this.a).a(paramInt);
     }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("version", "8.3.5");
-      localJSONObject.put("error_code", paramInt);
-      label25:
-      nrt.a(null, null, "0X8009752", "0X8009752", 0, 0, "0", rae.a(false), String.valueOf(paramInt), localJSONObject.toString(), false);
-      nrt.a(null, null, "0X8009753", "0X8009753", 0, 0, "0", rae.a(false), String.valueOf(paramInt), localJSONObject.toString(), false);
-      if (this.a != null) {
-        this.a.sendEmptyMessage(1);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label25;
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("version", "8.3.5");
-      label17:
-      nrt.a(null, null, "0X8009753", "0X8009753", 0, 0, "1", rae.a(false), "", localJSONObject.toString(), false);
-      if (this.a != null) {
-        this.a.sendEmptyMessage(0);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label17;
-    }
+    ReadInJoyDeliverUGCActivity.a(this.a, false);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rjs
  * JD-Core Version:    0.7.0.1
  */

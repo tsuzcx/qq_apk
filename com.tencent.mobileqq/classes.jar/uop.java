@@ -1,26 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
 
-final class uop
-  extends SimpleJob<Void>
+public class uop
+  implements DialogInterface.OnClickListener
 {
-  uop(String paramString1, String paramString2)
-  {
-    super(paramString1);
-  }
+  public uop(OuterInterceptManager.1 param1) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = uom.a();
-    wxe.d("Q.qqstory.publish.upload:StoryVideoUploadManager", this.a + " : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
-    return null;
+    if (this.a.a != null) {
+      this.a.a.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uop
  * JD-Core Version:    0.7.0.1
  */

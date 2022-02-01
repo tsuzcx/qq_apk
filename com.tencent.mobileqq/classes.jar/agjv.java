@@ -1,27 +1,32 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agjv
-  implements aqxm
+class agjv
+  implements bowl
 {
-  public agjv(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2, arit paramarit) {}
+  agjv(agju paramagju) {}
   
-  public void a(int paramInt, String paramString)
+  public Activity a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E", new String[] { String.valueOf(paramInt), paramString }, null, null, -1);
-    }
+    return agju.a(this.a).jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   }
   
-  public void a(String paramString1, String paramString2)
+  public SessionInfo a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Arit.b(), new String[] { paramString1 }, paramString2, null, -1);
-    }
+    return agju.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   }
   
-  public void aG_() {}
+  public QQAppInterface a()
+  {
+    return agju.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  }
   
-  public void aH_() {}
+  public boolean a()
+  {
+    return agju.a(this.a).c();
+  }
 }
 
 

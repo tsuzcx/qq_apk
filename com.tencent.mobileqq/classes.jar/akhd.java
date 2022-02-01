@@ -1,18 +1,8 @@
-import android.view.View;
-
-public class akhd
-  extends akhe
+public abstract interface akhd
 {
-  public akhe a;
-  public View a;
-  public akhe b;
-  public View b;
-  public View c;
+  public abstract void a(long paramLong, float paramFloat, String paramString);
   
-  public akhd(akhc paramakhc)
-  {
-    super(paramakhc);
-  }
+  public abstract void b(long paramLong);
 }
 
 

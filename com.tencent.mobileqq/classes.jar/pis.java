@@ -1,168 +1,136 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class pis
+  implements AladdinConfigHandler
 {
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
-  private volatile pit jdField_a_of_type_Pit;
-  
-  public pis(ExecutorService paramExecutorService)
+  pxs a(String paramString, List<pxs> paramList)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = paramExecutorService;
-  }
-  
-  public static pis a()
-  {
-    Object localObject = (QQAppInterface)ors.a();
-    if (localObject != null)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      localObject = ((oxd)((QQAppInterface)localObject).getManager(163)).a();
-      if (localObject != null) {
-        return ((owy)localObject).a();
+      pxs localpxs = (pxs)paramList.next();
+      if (localpxs.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        return localpxs;
       }
     }
     return null;
   }
   
-  private boolean a(List<Long> paramList1, List<Long> paramList2)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramList1 == null) || (paramList2 == null)) {
-      if (paramList1 == paramList2) {
-        bool1 = true;
-      }
-    }
-    do
-    {
-      for (;;)
-      {
-        return bool1;
-        bool1 = false;
-      }
-      bool1 = bool2;
-    } while (paramList1.size() != paramList2.size());
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramList1.size()) {
-        break label93;
-      }
-      bool1 = bool2;
-      if (!((Long)paramList1.get(i)).equals(paramList2.get(i))) {
-        break;
-      }
-      i += 1;
-    }
-    label93:
-    return true;
-  }
-  
-  pit a(pve parampve)
-  {
-    if (parampve != null) {}
-    for (;;)
-    {
+    QLog.d("KandianDailySettingConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    Map localMap = phv.a(paramString);
+    Object localObject4 = localMap.keySet();
+    Object localObject1 = ReadInJoyMMapKvStorage.getInstance().getValeForKey("KANDIAN_DAILY_SETTING_CONFIG");
+    paramString = new JSONArray();
+    ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
       try
       {
-        if ((this.jdField_a_of_type_Pit != null) && (this.jdField_a_of_type_Pit.a != null))
+        localObject1 = new JSONArray((String)localObject1);
+        if (localObject1 != null) {}
+        Object localObject5;
+        String[] arrayOfString;
+        Object localObject3;
+        Object localObject2;
+        for (;;) {}
+      }
+      catch (JSONException localJSONException1)
+      {
+        for (;;)
         {
-          Object localObject = this.jdField_a_of_type_Pit.a;
-          Long localLong1 = (Long)((ToServiceMsg)localObject).getAttribute(pgp.d);
-          Long localLong2 = (Long)((ToServiceMsg)localObject).getAttribute(pgp.e);
-          long l1;
-          if (localLong1 != null)
+          try
           {
-            l1 = localLong1.longValue();
-            if (localLong2 != null)
+            QLog.d("KandianDailySettingConfigHandler", 2, "old data: " + localObject1);
+            paramInt1 = 0;
+            if (paramInt1 < ((JSONArray)localObject1).length())
             {
-              l2 = localLong2.longValue();
-              QLog.d("FeedsPreloadDataModule", 1, new Object[] { "isReqEqual: ", "cache bSeq = ", Long.valueOf(l1), ", request bSeq = ", Long.valueOf(parampve.a), "\n", "cache eSeq = ", Long.valueOf(l2), ", request eSeq = ", Long.valueOf(parampve.jdField_b_of_type_Long) });
-              if ((l1 == parampve.a) && (l2 == parampve.jdField_b_of_type_Long)) {
-                continue;
-              }
-              QLog.d("FeedsPreloadDataModule", 1, "getCache, the seq is not equal.");
-              parampve = null;
-              return parampve;
+              localArrayList.add(pxs.a(((JSONArray)localObject1).optJSONObject(paramInt1)));
+              paramInt1 += 1;
+              continue;
             }
+            paramString = (String)localObject1;
+            localObject4 = ((Set)localObject4).iterator();
+            if (!((Iterator)localObject4).hasNext()) {
+              continue;
+            }
+            localObject5 = (String)((Iterator)localObject4).next();
+            localObject1 = (String)localMap.get(localObject5);
+            QLog.d("KandianDailySettingConfigHandler", 2, "[onReceiveConfig] key=" + (String)localObject5 + ", value=" + (String)localObject1);
+            arrayOfString = ((String)localObject1).split("\\|");
+            if (arrayOfString.length != 3) {
+              continue;
+            }
+            paramInt1 = 1;
+            localObject3 = a((String)localObject5, localArrayList);
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              paramInt1 = 0;
+              localObject1 = new pxs();
+            }
+            ((pxs)localObject1).jdField_b_of_type_JavaLangString = arrayOfString[0];
+            ((pxs)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject5);
+            localObject3 = arrayOfString[1].split(",");
+            localObject5 = arrayOfString[2].split(",");
+            ((pxs)localObject1).jdField_b_of_type_JavaUtilList = new ArrayList();
+            ((pxs)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+            ((pxs)localObject1).jdField_b_of_type_JavaUtilList.add("");
+            ((pxs)localObject1).jdField_a_of_type_JavaUtilList.add("");
+            paramInt2 = 0;
+            if (paramInt2 >= localObject3.length) {
+              continue;
+            }
+            ((pxs)localObject1).jdField_a_of_type_JavaUtilList.add(localObject3[paramInt2]);
+            paramInt2 += 1;
+            continue;
+            localJSONException1 = localJSONException1;
           }
-          else
+          catch (JSONException localJSONException2)
           {
-            l1 = -1L;
+            paramString = localJSONException1;
+            localObject2 = localJSONException2;
             continue;
           }
-          long l2 = -1L;
+          localJSONException1.printStackTrace();
           continue;
-          parampve = parampve.jdField_b_of_type_JavaUtilList;
-          localObject = (List)((ToServiceMsg)localObject).getAttribute("SubscriptionArticles");
-          if ((parampve != null) && (parampve.size() > 0))
+          paramInt2 = 0;
+          if (paramInt2 < localObject5.length)
           {
-            if (a(parampve, (List)localObject))
-            {
-              QLog.d("FeedsPreloadDataModule", 1, "two subscriptionLists are the same.");
-              parampve = this.jdField_a_of_type_Pit.a();
-              continue;
-            }
-            QLog.d("FeedsPreloadDataModule", 1, "two subscriptionList are different.");
+            localJSONException1.jdField_b_of_type_JavaUtilList.add(localObject5[paramInt2]);
+            paramInt2 += 1;
           }
-          else
+          else if (paramInt1 == 0)
           {
-            if ((localObject == null) || (((List)localObject).size() == 0))
-            {
-              QLog.d("FeedsPreloadDataModule", 1, "two subscriptionLists both are empty.");
-              parampve = this.jdField_a_of_type_Pit.a();
-              continue;
-            }
-            QLog.d("FeedsPreloadDataModule", 1, "cache subscriptionList is not empty.");
+            paramString.put(localJSONException1.a());
           }
         }
+        QLog.d("KandianDailySettingConfigHandler", 2, "new data: " + paramString.toString());
+        ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", paramString.toString());
+        return true;
       }
-      finally {}
-      parampve = null;
     }
   }
   
-  public void a()
+  public void onWipeConfig(int paramInt)
   {
-    this.jdField_a_of_type_Pit = null;
-  }
-  
-  public void a(pit parampit)
-  {
-    if (parampit != null) {}
-    try
-    {
-      this.jdField_a_of_type_Pit = parampit;
-      return;
-    }
-    finally
-    {
-      parampit = finally;
-      throw parampit;
-    }
-  }
-  
-  void b()
-  {
-    try
-    {
-      QLog.d("FeedsPreloadDataModule", 2, "clearCache.");
-      this.jdField_a_of_type_Pit = null;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    QLog.d("KandianDailySettingConfigHandler", 2, "[onWipeConfig]");
+    ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pis
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,73 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-class akog
-  extends bead
+public class akog
+  implements TextWatcher
 {
-  akog(aknx paramaknx) {}
+  public akog(TransactionActivity paramTransactionActivity) {}
   
-  public void onDone(beae parambeae)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloManager", 2, "download onDone");
-    }
-    if (parambeae.a() == 3) {
-      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_download_success", 0, 0, new String[0]);
-    }
-    if (this.a.jdField_a_of_type_Alkm != null) {
-      this.a.jdField_a_of_type_Alkm.b();
-    }
-  }
-  
-  public void onDoneFile(beae parambeae)
-  {
-    if (parambeae == null) {}
-    label314:
-    label320:
-    for (;;)
+    for (boolean bool = true;; bool = false)
     {
-      return;
-      String str1 = parambeae.c;
-      parambeae = parambeae.a();
-      if (parambeae != null)
+      try
       {
-        parambeae = (ApolloActionData)parambeae.getSerializable(str1);
-        if (parambeae == null)
-        {
-          QLog.e("ApolloManager", 1, "action res onDoneFile but action data is null");
-          return;
+        Button localButton = TransactionActivity.a(this.a);
+        if (TextUtils.isEmpty(paramEditable.toString())) {
+          continue;
         }
-        String str2 = ApolloUtil.a(parambeae, 4);
-        if (str1.equals(ApolloUtil.a(parambeae, 5)))
+        localButton.setEnabled(bool);
+        float f = Float.parseFloat(paramEditable.toString());
+        int i = TransactionActivity.a(this.a).getText().length();
+        paramEditable = TransactionActivity.a(this.a, f);
+        if (bgsp.a(paramEditable))
         {
-          try
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloManager", 2, "action res zip done acitonid=" + parambeae.actionId + " action name =" + parambeae.actionName);
-            }
-            if (!ApolloUtil.a(parambeae.actionId, parambeae.personNum))
-            {
-              bdhb.a(str2, ApolloUtil.a(parambeae, 6), false);
-              bdhb.d(str2);
-              this.a.a(parambeae);
-            }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("ApolloManager", 2, "uncompressZip fail zip file: " + str2, localException);
-              }
-            }
-          }
-          if (parambeae.compoundType <= 0) {
-            break label314;
-          }
+          TransactionActivity.a(this.a).setVisibility(0);
+          TransactionActivity.a(this.a).setVisibility(8);
+          TransactionActivity.a(this.a).setVisibility(8);
         }
-        for (boolean bool = ApolloUtil.a(parambeae.actionId, 1, parambeae.personNum, false);; bool = ApolloUtil.a(parambeae))
+        while ((i > 0) && (!TransactionActivity.a(this.a).getText().toString().startsWith(".")) && (!TransactionActivity.a(this.a).getText().toString().endsWith(".")) && (TransactionActivity.a(this.a, TransactionActivity.a(this.a).getText().toString())))
         {
-          if ((!bool) || (this.a.jdField_a_of_type_Alkm == null)) {
-            break label320;
+          if ((TransactionActivity.a(this.a) > 0) && (!TextUtils.isEmpty(TransactionActivity.a(this.a))) && (f * 100.0F >= TransactionActivity.a(this.a)) && (!TextUtils.isEmpty(TransactionActivity.a(this.a)))) {
+            this.a.a(TransactionActivity.a(this.a));
           }
-          parambeae.status = 1;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-            ((aliw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).b(parambeae);
+          if (TransactionActivity.a(this.a).isEnabled()) {
+            break label406;
           }
-          this.a.jdField_a_of_type_Alkm.a(parambeae);
+          TransactionActivity.a(this.a).setEnabled(true);
+          this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.enable", "", "", TransactionActivity.b(this.a), "");
           return;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("ApolloManager", 2, "onDoneFile panelView actionId = " + parambeae.actionId + " action name =" + parambeae.actionName);
-          break;
+          TransactionActivity.a(this.a).setVisibility(8);
+          TransactionActivity.a(this.a).setVisibility(0);
+          TransactionActivity.a(this.a).setVisibility(0);
+          TransactionActivity.a(this.a).setText(paramEditable);
+        }
+        if (!TransactionActivity.a(this.a).isEnabled()) {
+          break label406;
         }
       }
+      catch (Exception paramEditable)
+      {
+        paramEditable.printStackTrace();
+        return;
+      }
+      TransactionActivity.a(this.a).setEnabled(false);
+      this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.disable", "", "", TransactionActivity.b(this.a), "");
+      label406:
+      return;
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

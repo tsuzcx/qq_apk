@@ -1,6 +1,6 @@
 package com.tencent.mfsdk.reporter;
 
-import abvw;
+import addo;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
@@ -11,17 +11,17 @@ public class JsonUploadRunnable
   extends BaseUploadRunnable
 {
   private int jdField_a_of_type_Int;
-  private abvw jdField_a_of_type_Abvw;
+  private addo jdField_a_of_type_Addo;
   private URL jdField_a_of_type_JavaNetURL;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   private int b = -1;
   
-  public JsonUploadRunnable(URL paramURL, JSONObject paramJSONObject, abvw paramabvw, int paramInt, MqqHandler paramMqqHandler)
+  public JsonUploadRunnable(URL paramURL, JSONObject paramJSONObject, addo paramaddo, int paramInt, MqqHandler paramMqqHandler)
   {
     this.jdField_a_of_type_JavaNetURL = paramURL;
     this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Abvw = paramabvw;
+    this.jdField_a_of_type_Addo = paramaddo;
     this.b = paramInt;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     if (QLog.isColorLevel()) {
@@ -182,483 +182,484 @@ public class JsonUploadRunnable
     //   224: aload_2
     //   225: invokevirtual 151	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   228: invokespecial 154	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   231: invokestatic 159	abwm:a	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   234: astore 7
-    //   236: aload_2
-    //   237: astore 5
-    //   239: aload_3
-    //   240: astore 4
-    //   242: aload_0
-    //   243: aload 7
-    //   245: invokevirtual 161	com/tencent/mfsdk/reporter/JsonUploadRunnable:a	(Ljava/lang/String;)Z
-    //   248: istore_1
-    //   249: aload_2
-    //   250: astore 5
-    //   252: aload_3
-    //   253: astore 4
-    //   255: invokestatic 32	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   258: ifeq +44 -> 302
-    //   261: aload_2
-    //   262: astore 5
-    //   264: aload_3
-    //   265: astore 4
-    //   267: ldc 137
-    //   269: iconst_2
-    //   270: new 163	java/lang/StringBuilder
-    //   273: dup
-    //   274: invokespecial 164	java/lang/StringBuilder:<init>	()V
-    //   277: ldc 166
-    //   279: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   282: iload_1
-    //   283: invokevirtual 173	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   286: ldc 175
-    //   288: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   291: aload 7
-    //   293: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   296: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   299: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   302: iload_1
-    //   303: ifeq +68 -> 371
-    //   306: aload_3
-    //   307: ifnull +512 -> 819
-    //   310: aload_2
-    //   311: astore 5
-    //   313: aload_3
-    //   314: astore 4
+    //   231: sipush 8192
+    //   234: invokestatic 160	com/tencent/qapmsdk/common/util/FileUtil:readStream	(Ljava/io/InputStream;I)Ljava/lang/String;
+    //   237: astore 7
+    //   239: aload_2
+    //   240: astore 5
+    //   242: aload_3
+    //   243: astore 4
+    //   245: aload_0
+    //   246: aload 7
+    //   248: invokevirtual 162	com/tencent/mfsdk/reporter/JsonUploadRunnable:a	(Ljava/lang/String;)Z
+    //   251: istore_1
+    //   252: aload_2
+    //   253: astore 5
+    //   255: aload_3
+    //   256: astore 4
+    //   258: invokestatic 32	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   261: ifeq +44 -> 305
+    //   264: aload_2
+    //   265: astore 5
+    //   267: aload_3
+    //   268: astore 4
+    //   270: ldc 137
+    //   272: iconst_2
+    //   273: new 164	java/lang/StringBuilder
+    //   276: dup
+    //   277: invokespecial 165	java/lang/StringBuilder:<init>	()V
+    //   280: ldc 167
+    //   282: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   285: iload_1
+    //   286: invokevirtual 174	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   289: ldc 176
+    //   291: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: aload 7
+    //   296: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   302: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   305: iload_1
+    //   306: ifeq +68 -> 374
+    //   309: aload_3
+    //   310: ifnull +512 -> 822
+    //   313: aload_2
+    //   314: astore 5
     //   316: aload_3
-    //   317: invokevirtual 182	java/io/DataOutputStream:close	()V
-    //   320: aload 6
-    //   322: astore_3
-    //   323: aload_3
-    //   324: astore 4
-    //   326: aload_0
-    //   327: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Abvw	Labvw;
-    //   330: ifnull +483 -> 813
-    //   333: aload_3
-    //   334: astore 4
-    //   336: aload_0
-    //   337: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Abvw	Labvw;
-    //   340: aload_0
-    //   341: getfield 18	com/tencent/mfsdk/reporter/JsonUploadRunnable:b	I
-    //   344: invokeinterface 186 2 0
-    //   349: aload_3
-    //   350: astore 6
-    //   352: aload 6
-    //   354: ifnull +8 -> 362
-    //   357: aload 6
-    //   359: invokevirtual 182	java/io/DataOutputStream:close	()V
-    //   362: aload_2
-    //   363: ifnull +7 -> 370
-    //   366: aload_2
-    //   367: invokevirtual 189	java/net/HttpURLConnection:disconnect	()V
-    //   370: return
-    //   371: aload_2
-    //   372: astore 5
-    //   374: aload_3
-    //   375: astore 4
-    //   377: aload_0
-    //   378: getfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
-    //   381: ifle +115 -> 496
-    //   384: aload_2
-    //   385: astore 5
-    //   387: aload_3
-    //   388: astore 4
-    //   390: aload_0
-    //   391: aload_0
-    //   392: getfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
-    //   395: iconst_1
-    //   396: isub
-    //   397: putfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
-    //   400: aload_2
-    //   401: astore 5
-    //   403: aload_3
-    //   404: astore 4
-    //   406: aload_0
-    //   407: getfield 26	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   410: aload_0
-    //   411: ldc2_w 190
-    //   414: invokevirtual 197	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   417: pop
-    //   418: aload_3
-    //   419: astore 6
-    //   421: goto -69 -> 352
-    //   424: astore 5
-    //   426: aload_2
-    //   427: astore 4
-    //   429: aload_3
-    //   430: astore_2
-    //   431: aload 4
-    //   433: astore_3
-    //   434: invokestatic 32	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   437: ifeq +13 -> 450
-    //   440: ldc 137
-    //   442: iconst_2
-    //   443: ldc 199
-    //   445: aload 5
-    //   447: invokestatic 203	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   450: aload_0
-    //   451: getfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
-    //   454: ifle +113 -> 567
-    //   457: aload_0
-    //   458: aload_0
-    //   459: getfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
-    //   462: iconst_1
-    //   463: isub
-    //   464: putfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
-    //   467: aload_0
-    //   468: getfield 26	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   471: aload_0
-    //   472: ldc2_w 190
-    //   475: invokevirtual 197	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   478: pop
-    //   479: aload_2
-    //   480: ifnull +7 -> 487
-    //   483: aload_2
-    //   484: invokevirtual 182	java/io/DataOutputStream:close	()V
-    //   487: aload_3
-    //   488: ifnull -118 -> 370
-    //   491: aload_3
-    //   492: invokevirtual 189	java/net/HttpURLConnection:disconnect	()V
-    //   495: return
-    //   496: aload_3
-    //   497: astore 6
-    //   499: aload_2
-    //   500: astore 5
-    //   502: aload_3
-    //   503: astore 4
-    //   505: aload_0
-    //   506: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Abvw	Labvw;
-    //   509: ifnull -157 -> 352
-    //   512: aload_2
-    //   513: astore 5
-    //   515: aload_3
-    //   516: astore 4
-    //   518: aload_0
-    //   519: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Abvw	Labvw;
-    //   522: aload_0
-    //   523: getfield 18	com/tencent/mfsdk/reporter/JsonUploadRunnable:b	I
-    //   526: invokeinterface 186 2 0
-    //   531: aload_3
-    //   532: astore 6
-    //   534: goto -182 -> 352
-    //   537: astore 4
-    //   539: aload_2
-    //   540: astore 5
-    //   542: aload_3
-    //   543: astore 4
-    //   545: aload_0
-    //   546: iconst_0
-    //   547: putfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
-    //   550: aload_3
-    //   551: ifnull +7 -> 558
-    //   554: aload_3
-    //   555: invokevirtual 182	java/io/DataOutputStream:close	()V
-    //   558: aload_2
-    //   559: ifnull -189 -> 370
-    //   562: aload_2
-    //   563: invokevirtual 189	java/net/HttpURLConnection:disconnect	()V
-    //   566: return
-    //   567: aload_0
-    //   568: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Abvw	Labvw;
-    //   571: ifnull -92 -> 479
-    //   574: aload_0
-    //   575: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Abvw	Labvw;
-    //   578: aload_0
-    //   579: getfield 18	com/tencent/mfsdk/reporter/JsonUploadRunnable:b	I
-    //   582: invokeinterface 186 2 0
-    //   587: goto -108 -> 479
-    //   590: astore 5
-    //   592: aload_2
-    //   593: astore 4
-    //   595: aload 5
-    //   597: astore_2
-    //   598: aload 4
-    //   600: ifnull +8 -> 608
-    //   603: aload 4
-    //   605: invokevirtual 182	java/io/DataOutputStream:close	()V
-    //   608: aload_3
-    //   609: ifnull +7 -> 616
-    //   612: aload_3
-    //   613: invokevirtual 189	java/net/HttpURLConnection:disconnect	()V
-    //   616: aload_2
-    //   617: athrow
-    //   618: astore 5
-    //   620: aconst_null
-    //   621: astore 4
-    //   623: aload_3
-    //   624: astore_2
-    //   625: aload_0
-    //   626: iconst_0
-    //   627: putfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
-    //   630: invokestatic 32	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   633: ifeq +13 -> 646
-    //   636: ldc 137
-    //   638: iconst_2
-    //   639: ldc 205
-    //   641: aload 5
-    //   643: invokestatic 203	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   646: aload 4
-    //   648: ifnull +8 -> 656
-    //   651: aload 4
-    //   653: invokevirtual 182	java/io/DataOutputStream:close	()V
-    //   656: aload_2
-    //   657: ifnull -287 -> 370
-    //   660: aload_2
-    //   661: invokevirtual 189	java/net/HttpURLConnection:disconnect	()V
-    //   664: return
-    //   665: astore_3
-    //   666: goto -304 -> 362
-    //   669: astore_2
-    //   670: goto -183 -> 487
-    //   673: astore_3
-    //   674: goto -116 -> 558
-    //   677: astore_3
-    //   678: goto -22 -> 656
-    //   681: astore 4
-    //   683: goto -75 -> 608
-    //   686: astore_2
-    //   687: aconst_null
-    //   688: astore_3
-    //   689: aconst_null
-    //   690: astore 4
-    //   692: goto -94 -> 598
-    //   695: astore_3
-    //   696: aconst_null
-    //   697: astore 5
-    //   699: aload_2
-    //   700: astore 4
-    //   702: aload_3
-    //   703: astore_2
-    //   704: aload 4
-    //   706: astore_3
-    //   707: aload 5
-    //   709: astore 4
-    //   711: goto -113 -> 598
-    //   714: astore_2
-    //   715: aload 5
-    //   717: astore_3
-    //   718: goto -120 -> 598
-    //   721: astore 5
-    //   723: aload_3
-    //   724: astore 4
-    //   726: aload 5
-    //   728: astore_3
-    //   729: aload_2
-    //   730: astore 5
-    //   732: aload_3
-    //   733: astore_2
-    //   734: aload 5
-    //   736: astore_3
-    //   737: goto -139 -> 598
-    //   740: astore 5
-    //   742: aload_2
-    //   743: astore_3
-    //   744: aload 5
-    //   746: astore_2
-    //   747: goto -149 -> 598
-    //   750: astore 5
-    //   752: aconst_null
-    //   753: astore 4
-    //   755: goto -130 -> 625
-    //   758: astore 5
-    //   760: aload_3
-    //   761: astore 4
-    //   763: goto -138 -> 625
-    //   766: astore 5
-    //   768: aload_3
-    //   769: astore 4
-    //   771: goto -146 -> 625
-    //   774: astore_2
-    //   775: aconst_null
-    //   776: astore_2
-    //   777: aconst_null
-    //   778: astore_3
-    //   779: goto -240 -> 539
-    //   782: astore_3
-    //   783: aconst_null
-    //   784: astore_3
-    //   785: goto -246 -> 539
-    //   788: astore 4
-    //   790: goto -251 -> 539
-    //   793: astore 5
-    //   795: aconst_null
-    //   796: astore_3
-    //   797: aload 4
-    //   799: astore_2
-    //   800: goto -366 -> 434
-    //   803: astore 5
-    //   805: aload_2
-    //   806: astore_3
-    //   807: aload 4
-    //   809: astore_2
-    //   810: goto -376 -> 434
-    //   813: aload_3
-    //   814: astore 6
-    //   816: goto -464 -> 352
-    //   819: goto -496 -> 323
+    //   317: astore 4
+    //   319: aload_3
+    //   320: invokevirtual 183	java/io/DataOutputStream:close	()V
+    //   323: aload 6
+    //   325: astore_3
+    //   326: aload_3
+    //   327: astore 4
+    //   329: aload_0
+    //   330: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   333: ifnull +483 -> 816
+    //   336: aload_3
+    //   337: astore 4
+    //   339: aload_0
+    //   340: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   343: aload_0
+    //   344: getfield 18	com/tencent/mfsdk/reporter/JsonUploadRunnable:b	I
+    //   347: invokeinterface 187 2 0
+    //   352: aload_3
+    //   353: astore 6
+    //   355: aload 6
+    //   357: ifnull +8 -> 365
+    //   360: aload 6
+    //   362: invokevirtual 183	java/io/DataOutputStream:close	()V
+    //   365: aload_2
+    //   366: ifnull +7 -> 373
+    //   369: aload_2
+    //   370: invokevirtual 190	java/net/HttpURLConnection:disconnect	()V
+    //   373: return
+    //   374: aload_2
+    //   375: astore 5
+    //   377: aload_3
+    //   378: astore 4
+    //   380: aload_0
+    //   381: getfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
+    //   384: ifle +115 -> 499
+    //   387: aload_2
+    //   388: astore 5
+    //   390: aload_3
+    //   391: astore 4
+    //   393: aload_0
+    //   394: aload_0
+    //   395: getfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
+    //   398: iconst_1
+    //   399: isub
+    //   400: putfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
+    //   403: aload_2
+    //   404: astore 5
+    //   406: aload_3
+    //   407: astore 4
+    //   409: aload_0
+    //   410: getfield 26	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   413: aload_0
+    //   414: ldc2_w 191
+    //   417: invokevirtual 198	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   420: pop
+    //   421: aload_3
+    //   422: astore 6
+    //   424: goto -69 -> 355
+    //   427: astore 5
+    //   429: aload_2
+    //   430: astore 4
+    //   432: aload_3
+    //   433: astore_2
+    //   434: aload 4
+    //   436: astore_3
+    //   437: invokestatic 32	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   440: ifeq +13 -> 453
+    //   443: ldc 137
+    //   445: iconst_2
+    //   446: ldc 200
+    //   448: aload 5
+    //   450: invokestatic 204	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   453: aload_0
+    //   454: getfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
+    //   457: ifle +113 -> 570
+    //   460: aload_0
+    //   461: aload_0
+    //   462: getfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
+    //   465: iconst_1
+    //   466: isub
+    //   467: putfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
+    //   470: aload_0
+    //   471: getfield 26	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   474: aload_0
+    //   475: ldc2_w 191
+    //   478: invokevirtual 198	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   481: pop
+    //   482: aload_2
+    //   483: ifnull +7 -> 490
+    //   486: aload_2
+    //   487: invokevirtual 183	java/io/DataOutputStream:close	()V
+    //   490: aload_3
+    //   491: ifnull -118 -> 373
+    //   494: aload_3
+    //   495: invokevirtual 190	java/net/HttpURLConnection:disconnect	()V
+    //   498: return
+    //   499: aload_3
+    //   500: astore 6
+    //   502: aload_2
+    //   503: astore 5
+    //   505: aload_3
+    //   506: astore 4
+    //   508: aload_0
+    //   509: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   512: ifnull -157 -> 355
+    //   515: aload_2
+    //   516: astore 5
+    //   518: aload_3
+    //   519: astore 4
+    //   521: aload_0
+    //   522: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   525: aload_0
+    //   526: getfield 18	com/tencent/mfsdk/reporter/JsonUploadRunnable:b	I
+    //   529: invokeinterface 187 2 0
+    //   534: aload_3
+    //   535: astore 6
+    //   537: goto -182 -> 355
+    //   540: astore 4
+    //   542: aload_2
+    //   543: astore 5
+    //   545: aload_3
+    //   546: astore 4
+    //   548: aload_0
+    //   549: iconst_0
+    //   550: putfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
+    //   553: aload_3
+    //   554: ifnull +7 -> 561
+    //   557: aload_3
+    //   558: invokevirtual 183	java/io/DataOutputStream:close	()V
+    //   561: aload_2
+    //   562: ifnull -189 -> 373
+    //   565: aload_2
+    //   566: invokevirtual 190	java/net/HttpURLConnection:disconnect	()V
+    //   569: return
+    //   570: aload_0
+    //   571: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   574: ifnull -92 -> 482
+    //   577: aload_0
+    //   578: getfield 24	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Addo	Laddo;
+    //   581: aload_0
+    //   582: getfield 18	com/tencent/mfsdk/reporter/JsonUploadRunnable:b	I
+    //   585: invokeinterface 187 2 0
+    //   590: goto -108 -> 482
+    //   593: astore 5
+    //   595: aload_2
+    //   596: astore 4
+    //   598: aload 5
+    //   600: astore_2
+    //   601: aload 4
+    //   603: ifnull +8 -> 611
+    //   606: aload 4
+    //   608: invokevirtual 183	java/io/DataOutputStream:close	()V
+    //   611: aload_3
+    //   612: ifnull +7 -> 619
+    //   615: aload_3
+    //   616: invokevirtual 190	java/net/HttpURLConnection:disconnect	()V
+    //   619: aload_2
+    //   620: athrow
+    //   621: astore 5
+    //   623: aconst_null
+    //   624: astore 4
+    //   626: aload_3
+    //   627: astore_2
+    //   628: aload_0
+    //   629: iconst_0
+    //   630: putfield 34	com/tencent/mfsdk/reporter/JsonUploadRunnable:jdField_a_of_type_Int	I
+    //   633: invokestatic 32	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   636: ifeq +13 -> 649
+    //   639: ldc 137
+    //   641: iconst_2
+    //   642: ldc 206
+    //   644: aload 5
+    //   646: invokestatic 204	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   649: aload 4
+    //   651: ifnull +8 -> 659
+    //   654: aload 4
+    //   656: invokevirtual 183	java/io/DataOutputStream:close	()V
+    //   659: aload_2
+    //   660: ifnull -287 -> 373
+    //   663: aload_2
+    //   664: invokevirtual 190	java/net/HttpURLConnection:disconnect	()V
+    //   667: return
+    //   668: astore_3
+    //   669: goto -304 -> 365
+    //   672: astore_2
+    //   673: goto -183 -> 490
+    //   676: astore_3
+    //   677: goto -116 -> 561
+    //   680: astore_3
+    //   681: goto -22 -> 659
+    //   684: astore 4
+    //   686: goto -75 -> 611
+    //   689: astore_2
+    //   690: aconst_null
+    //   691: astore_3
+    //   692: aconst_null
+    //   693: astore 4
+    //   695: goto -94 -> 601
+    //   698: astore_3
+    //   699: aconst_null
+    //   700: astore 5
+    //   702: aload_2
+    //   703: astore 4
+    //   705: aload_3
+    //   706: astore_2
+    //   707: aload 4
+    //   709: astore_3
+    //   710: aload 5
+    //   712: astore 4
+    //   714: goto -113 -> 601
+    //   717: astore_2
+    //   718: aload 5
+    //   720: astore_3
+    //   721: goto -120 -> 601
+    //   724: astore 5
+    //   726: aload_3
+    //   727: astore 4
+    //   729: aload 5
+    //   731: astore_3
+    //   732: aload_2
+    //   733: astore 5
+    //   735: aload_3
+    //   736: astore_2
+    //   737: aload 5
+    //   739: astore_3
+    //   740: goto -139 -> 601
+    //   743: astore 5
+    //   745: aload_2
+    //   746: astore_3
+    //   747: aload 5
+    //   749: astore_2
+    //   750: goto -149 -> 601
+    //   753: astore 5
+    //   755: aconst_null
+    //   756: astore 4
+    //   758: goto -130 -> 628
+    //   761: astore 5
+    //   763: aload_3
+    //   764: astore 4
+    //   766: goto -138 -> 628
+    //   769: astore 5
+    //   771: aload_3
+    //   772: astore 4
+    //   774: goto -146 -> 628
+    //   777: astore_2
+    //   778: aconst_null
+    //   779: astore_2
+    //   780: aconst_null
+    //   781: astore_3
+    //   782: goto -240 -> 542
+    //   785: astore_3
+    //   786: aconst_null
+    //   787: astore_3
+    //   788: goto -246 -> 542
+    //   791: astore 4
+    //   793: goto -251 -> 542
+    //   796: astore 5
+    //   798: aconst_null
+    //   799: astore_3
+    //   800: aload 4
+    //   802: astore_2
+    //   803: goto -366 -> 437
+    //   806: astore 5
+    //   808: aload_2
+    //   809: astore_3
+    //   810: aload 4
+    //   812: astore_2
+    //   813: goto -376 -> 437
+    //   816: aload_3
+    //   817: astore 6
+    //   819: goto -464 -> 355
+    //   822: goto -496 -> 326
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	822	0	this	JsonUploadRunnable
-    //   248	55	1	bool	boolean
-    //   21	640	2	localObject1	java.lang.Object
-    //   669	1	2	localIOException1	java.io.IOException
-    //   686	14	2	localObject2	java.lang.Object
-    //   703	1	2	localObject3	java.lang.Object
-    //   714	16	2	localObject4	java.lang.Object
-    //   733	14	2	localObject5	java.lang.Object
-    //   774	1	2	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   776	34	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   4	620	3	localObject6	java.lang.Object
-    //   665	1	3	localIOException2	java.io.IOException
-    //   673	1	3	localIOException3	java.io.IOException
-    //   677	1	3	localIOException4	java.io.IOException
-    //   688	1	3	localObject7	java.lang.Object
-    //   695	8	3	localObject8	java.lang.Object
-    //   706	73	3	localObject9	java.lang.Object
-    //   782	1	3	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   784	30	3	localObject10	java.lang.Object
-    //   1	516	4	localObject11	java.lang.Object
-    //   537	1	4	localOutOfMemoryError4	java.lang.OutOfMemoryError
-    //   543	109	4	localObject12	java.lang.Object
-    //   681	1	4	localIOException5	java.io.IOException
-    //   690	80	4	localObject13	java.lang.Object
-    //   788	20	4	localOutOfMemoryError5	java.lang.OutOfMemoryError
-    //   6	396	5	localObject14	java.lang.Object
-    //   424	22	5	localException1	Exception
-    //   500	41	5	localObject15	java.lang.Object
-    //   590	6	5	localObject16	java.lang.Object
-    //   618	24	5	localThrowable1	java.lang.Throwable
-    //   697	19	5	localObject17	java.lang.Object
-    //   721	6	5	localObject18	java.lang.Object
-    //   730	5	5	localObject19	java.lang.Object
-    //   740	5	5	localObject20	java.lang.Object
-    //   750	1	5	localThrowable2	java.lang.Throwable
-    //   758	1	5	localThrowable3	java.lang.Throwable
-    //   766	1	5	localThrowable4	java.lang.Throwable
-    //   793	1	5	localException2	Exception
-    //   803	1	5	localException3	Exception
-    //   9	806	6	localObject21	java.lang.Object
-    //   135	157	7	localObject22	java.lang.Object
+    //   0	825	0	this	JsonUploadRunnable
+    //   251	55	1	bool	boolean
+    //   21	643	2	localObject1	java.lang.Object
+    //   672	1	2	localIOException1	java.io.IOException
+    //   689	14	2	localObject2	java.lang.Object
+    //   706	1	2	localObject3	java.lang.Object
+    //   717	16	2	localObject4	java.lang.Object
+    //   736	14	2	localObject5	java.lang.Object
+    //   777	1	2	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   779	34	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   4	623	3	localObject6	java.lang.Object
+    //   668	1	3	localIOException2	java.io.IOException
+    //   676	1	3	localIOException3	java.io.IOException
+    //   680	1	3	localIOException4	java.io.IOException
+    //   691	1	3	localObject7	java.lang.Object
+    //   698	8	3	localObject8	java.lang.Object
+    //   709	73	3	localObject9	java.lang.Object
+    //   785	1	3	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   787	30	3	localObject10	java.lang.Object
+    //   1	519	4	localObject11	java.lang.Object
+    //   540	1	4	localOutOfMemoryError4	java.lang.OutOfMemoryError
+    //   546	109	4	localObject12	java.lang.Object
+    //   684	1	4	localIOException5	java.io.IOException
+    //   693	80	4	localObject13	java.lang.Object
+    //   791	20	4	localOutOfMemoryError5	java.lang.OutOfMemoryError
+    //   6	399	5	localObject14	java.lang.Object
+    //   427	22	5	localException1	Exception
+    //   503	41	5	localObject15	java.lang.Object
+    //   593	6	5	localObject16	java.lang.Object
+    //   621	24	5	localThrowable1	java.lang.Throwable
+    //   700	19	5	localObject17	java.lang.Object
+    //   724	6	5	localObject18	java.lang.Object
+    //   733	5	5	localObject19	java.lang.Object
+    //   743	5	5	localObject20	java.lang.Object
+    //   753	1	5	localThrowable2	java.lang.Throwable
+    //   761	1	5	localThrowable3	java.lang.Throwable
+    //   769	1	5	localThrowable4	java.lang.Throwable
+    //   796	1	5	localException2	Exception
+    //   806	1	5	localException3	Exception
+    //   9	809	6	localObject21	java.lang.Object
+    //   135	160	7	localObject22	java.lang.Object
     // Exception table:
     //   from	to	target	type
-    //   127	137	424	java/lang/Exception
-    //   143	160	424	java/lang/Exception
-    //   166	171	424	java/lang/Exception
-    //   177	183	424	java/lang/Exception
-    //   189	214	424	java/lang/Exception
-    //   220	236	424	java/lang/Exception
-    //   242	249	424	java/lang/Exception
-    //   255	261	424	java/lang/Exception
-    //   267	302	424	java/lang/Exception
-    //   316	320	424	java/lang/Exception
-    //   377	384	424	java/lang/Exception
-    //   390	400	424	java/lang/Exception
-    //   406	418	424	java/lang/Exception
-    //   505	512	424	java/lang/Exception
-    //   518	531	424	java/lang/Exception
-    //   127	137	537	java/lang/OutOfMemoryError
-    //   143	160	537	java/lang/OutOfMemoryError
-    //   166	171	537	java/lang/OutOfMemoryError
-    //   177	183	537	java/lang/OutOfMemoryError
-    //   189	214	537	java/lang/OutOfMemoryError
-    //   220	236	537	java/lang/OutOfMemoryError
-    //   242	249	537	java/lang/OutOfMemoryError
-    //   255	261	537	java/lang/OutOfMemoryError
-    //   267	302	537	java/lang/OutOfMemoryError
-    //   316	320	537	java/lang/OutOfMemoryError
-    //   377	384	537	java/lang/OutOfMemoryError
-    //   390	400	537	java/lang/OutOfMemoryError
-    //   406	418	537	java/lang/OutOfMemoryError
-    //   505	512	537	java/lang/OutOfMemoryError
-    //   518	531	537	java/lang/OutOfMemoryError
-    //   434	450	590	finally
-    //   450	479	590	finally
-    //   567	587	590	finally
-    //   11	22	618	java/lang/Throwable
-    //   357	362	665	java/io/IOException
-    //   483	487	669	java/io/IOException
-    //   554	558	673	java/io/IOException
-    //   651	656	677	java/io/IOException
-    //   603	608	681	java/io/IOException
-    //   11	22	686	finally
-    //   26	33	695	finally
-    //   37	44	695	finally
-    //   48	53	695	finally
-    //   57	62	695	finally
-    //   66	71	695	finally
-    //   75	81	695	finally
-    //   85	93	695	finally
-    //   97	105	695	finally
-    //   109	121	695	finally
-    //   127	137	714	finally
-    //   143	160	714	finally
-    //   166	171	714	finally
-    //   177	183	714	finally
-    //   189	214	714	finally
-    //   220	236	714	finally
-    //   242	249	714	finally
-    //   255	261	714	finally
-    //   267	302	714	finally
-    //   316	320	714	finally
-    //   377	384	714	finally
-    //   390	400	714	finally
-    //   406	418	714	finally
-    //   505	512	714	finally
-    //   518	531	714	finally
-    //   545	550	714	finally
-    //   326	333	721	finally
-    //   336	349	721	finally
-    //   625	646	740	finally
-    //   26	33	750	java/lang/Throwable
-    //   37	44	750	java/lang/Throwable
-    //   48	53	750	java/lang/Throwable
-    //   57	62	750	java/lang/Throwable
-    //   66	71	750	java/lang/Throwable
-    //   75	81	750	java/lang/Throwable
-    //   85	93	750	java/lang/Throwable
-    //   97	105	750	java/lang/Throwable
-    //   109	121	750	java/lang/Throwable
-    //   127	137	758	java/lang/Throwable
-    //   143	160	758	java/lang/Throwable
-    //   166	171	758	java/lang/Throwable
-    //   177	183	758	java/lang/Throwable
-    //   189	214	758	java/lang/Throwable
-    //   220	236	758	java/lang/Throwable
-    //   242	249	758	java/lang/Throwable
-    //   255	261	758	java/lang/Throwable
-    //   267	302	758	java/lang/Throwable
-    //   316	320	758	java/lang/Throwable
-    //   377	384	758	java/lang/Throwable
-    //   390	400	758	java/lang/Throwable
-    //   406	418	758	java/lang/Throwable
-    //   505	512	758	java/lang/Throwable
-    //   518	531	758	java/lang/Throwable
-    //   326	333	766	java/lang/Throwable
-    //   336	349	766	java/lang/Throwable
-    //   11	22	774	java/lang/OutOfMemoryError
-    //   26	33	782	java/lang/OutOfMemoryError
-    //   37	44	782	java/lang/OutOfMemoryError
-    //   48	53	782	java/lang/OutOfMemoryError
-    //   57	62	782	java/lang/OutOfMemoryError
-    //   66	71	782	java/lang/OutOfMemoryError
-    //   75	81	782	java/lang/OutOfMemoryError
-    //   85	93	782	java/lang/OutOfMemoryError
-    //   97	105	782	java/lang/OutOfMemoryError
-    //   109	121	782	java/lang/OutOfMemoryError
-    //   326	333	788	java/lang/OutOfMemoryError
-    //   336	349	788	java/lang/OutOfMemoryError
-    //   11	22	793	java/lang/Exception
-    //   26	33	803	java/lang/Exception
-    //   37	44	803	java/lang/Exception
-    //   48	53	803	java/lang/Exception
-    //   57	62	803	java/lang/Exception
-    //   66	71	803	java/lang/Exception
-    //   75	81	803	java/lang/Exception
-    //   85	93	803	java/lang/Exception
-    //   97	105	803	java/lang/Exception
-    //   109	121	803	java/lang/Exception
-    //   326	333	803	java/lang/Exception
-    //   336	349	803	java/lang/Exception
+    //   127	137	427	java/lang/Exception
+    //   143	160	427	java/lang/Exception
+    //   166	171	427	java/lang/Exception
+    //   177	183	427	java/lang/Exception
+    //   189	214	427	java/lang/Exception
+    //   220	239	427	java/lang/Exception
+    //   245	252	427	java/lang/Exception
+    //   258	264	427	java/lang/Exception
+    //   270	305	427	java/lang/Exception
+    //   319	323	427	java/lang/Exception
+    //   380	387	427	java/lang/Exception
+    //   393	403	427	java/lang/Exception
+    //   409	421	427	java/lang/Exception
+    //   508	515	427	java/lang/Exception
+    //   521	534	427	java/lang/Exception
+    //   127	137	540	java/lang/OutOfMemoryError
+    //   143	160	540	java/lang/OutOfMemoryError
+    //   166	171	540	java/lang/OutOfMemoryError
+    //   177	183	540	java/lang/OutOfMemoryError
+    //   189	214	540	java/lang/OutOfMemoryError
+    //   220	239	540	java/lang/OutOfMemoryError
+    //   245	252	540	java/lang/OutOfMemoryError
+    //   258	264	540	java/lang/OutOfMemoryError
+    //   270	305	540	java/lang/OutOfMemoryError
+    //   319	323	540	java/lang/OutOfMemoryError
+    //   380	387	540	java/lang/OutOfMemoryError
+    //   393	403	540	java/lang/OutOfMemoryError
+    //   409	421	540	java/lang/OutOfMemoryError
+    //   508	515	540	java/lang/OutOfMemoryError
+    //   521	534	540	java/lang/OutOfMemoryError
+    //   437	453	593	finally
+    //   453	482	593	finally
+    //   570	590	593	finally
+    //   11	22	621	java/lang/Throwable
+    //   360	365	668	java/io/IOException
+    //   486	490	672	java/io/IOException
+    //   557	561	676	java/io/IOException
+    //   654	659	680	java/io/IOException
+    //   606	611	684	java/io/IOException
+    //   11	22	689	finally
+    //   26	33	698	finally
+    //   37	44	698	finally
+    //   48	53	698	finally
+    //   57	62	698	finally
+    //   66	71	698	finally
+    //   75	81	698	finally
+    //   85	93	698	finally
+    //   97	105	698	finally
+    //   109	121	698	finally
+    //   127	137	717	finally
+    //   143	160	717	finally
+    //   166	171	717	finally
+    //   177	183	717	finally
+    //   189	214	717	finally
+    //   220	239	717	finally
+    //   245	252	717	finally
+    //   258	264	717	finally
+    //   270	305	717	finally
+    //   319	323	717	finally
+    //   380	387	717	finally
+    //   393	403	717	finally
+    //   409	421	717	finally
+    //   508	515	717	finally
+    //   521	534	717	finally
+    //   548	553	717	finally
+    //   329	336	724	finally
+    //   339	352	724	finally
+    //   628	649	743	finally
+    //   26	33	753	java/lang/Throwable
+    //   37	44	753	java/lang/Throwable
+    //   48	53	753	java/lang/Throwable
+    //   57	62	753	java/lang/Throwable
+    //   66	71	753	java/lang/Throwable
+    //   75	81	753	java/lang/Throwable
+    //   85	93	753	java/lang/Throwable
+    //   97	105	753	java/lang/Throwable
+    //   109	121	753	java/lang/Throwable
+    //   127	137	761	java/lang/Throwable
+    //   143	160	761	java/lang/Throwable
+    //   166	171	761	java/lang/Throwable
+    //   177	183	761	java/lang/Throwable
+    //   189	214	761	java/lang/Throwable
+    //   220	239	761	java/lang/Throwable
+    //   245	252	761	java/lang/Throwable
+    //   258	264	761	java/lang/Throwable
+    //   270	305	761	java/lang/Throwable
+    //   319	323	761	java/lang/Throwable
+    //   380	387	761	java/lang/Throwable
+    //   393	403	761	java/lang/Throwable
+    //   409	421	761	java/lang/Throwable
+    //   508	515	761	java/lang/Throwable
+    //   521	534	761	java/lang/Throwable
+    //   329	336	769	java/lang/Throwable
+    //   339	352	769	java/lang/Throwable
+    //   11	22	777	java/lang/OutOfMemoryError
+    //   26	33	785	java/lang/OutOfMemoryError
+    //   37	44	785	java/lang/OutOfMemoryError
+    //   48	53	785	java/lang/OutOfMemoryError
+    //   57	62	785	java/lang/OutOfMemoryError
+    //   66	71	785	java/lang/OutOfMemoryError
+    //   75	81	785	java/lang/OutOfMemoryError
+    //   85	93	785	java/lang/OutOfMemoryError
+    //   97	105	785	java/lang/OutOfMemoryError
+    //   109	121	785	java/lang/OutOfMemoryError
+    //   329	336	791	java/lang/OutOfMemoryError
+    //   339	352	791	java/lang/OutOfMemoryError
+    //   11	22	796	java/lang/Exception
+    //   26	33	806	java/lang/Exception
+    //   37	44	806	java/lang/Exception
+    //   48	53	806	java/lang/Exception
+    //   57	62	806	java/lang/Exception
+    //   66	71	806	java/lang/Exception
+    //   75	81	806	java/lang/Exception
+    //   85	93	806	java/lang/Exception
+    //   97	105	806	java/lang/Exception
+    //   109	121	806	java/lang/Exception
+    //   329	336	806	java/lang/Exception
+    //   339	352	806	java/lang/Exception
   }
 }
 

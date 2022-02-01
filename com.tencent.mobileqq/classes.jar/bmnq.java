@@ -1,7 +1,20 @@
-public abstract interface bmnq
-  extends bmni
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
+
+class bmnq
+  implements QQPermissionCallback
 {
-  public abstract int a();
+  bmnq(bmnp parambmnp, String[] paramArrayOfString, Activity paramActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bglp.b(bmnp.a(this.jdField_a_of_type_AndroidAppActivity));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bmnp.a(this.jdField_a_of_type_Bmnp, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+  }
 }
 
 

@@ -3,12 +3,14 @@ package com.tencent.aekit.api.standard.filter;
 import com.tencent.aekit.openrender.internal.AEChainI;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.ttpic.openapi.PTFaceAttr;
+import com.tencent.ttpic.openapi.filter.BlurEffectFilter;
 import com.tencent.ttpic.openapi.filter.TTBeautyV5PrefixFilterGroup;
 
 public class AESmooth
   extends AEChainI
 {
   private static final String TAG = "AESmoothV5";
+  private BlurEffectFilter blurEffectFilter = new BlurEffectFilter();
   private int exposureLevel;
   private boolean isOverall = false;
   private float lookUpIntensity;
@@ -47,6 +49,7 @@ public class AESmooth
       return;
     }
     this.mSmoothFilter.apply();
+    this.blurEffectFilter.ApplyGLSLFilter();
     this.mSmoothFilter.setLookUpLeftIntensity(0.0F);
     this.mSmoothFilter.setLookUpRightIntensity(0.0F);
     this.mIsApplied = true;
@@ -56,6 +59,9 @@ public class AESmooth
   {
     if (this.mSmoothFilter != null) {
       this.mSmoothFilter.clear();
+    }
+    if (this.blurEffectFilter != null) {
+      this.blurEffectFilter.ClearGLSL();
     }
     this.mIsApplied = false;
   }
@@ -71,7 +77,20 @@ public class AESmooth
       return paramFrame;
     }
     configFilter();
-    return this.mSmoothFilter.render(paramFrame, this.mFaceAttr);
+    paramFrame = this.mSmoothFilter.render(paramFrame, this.mFaceAttr);
+    if (this.blurEffectFilter.getStrength() > 0.0D)
+    {
+      Frame localFrame = this.blurEffectFilter.render(paramFrame);
+      if (paramFrame != localFrame)
+      {
+        paramFrame.unlock();
+        paramFrame = localFrame;
+      }
+    }
+    for (;;)
+    {
+      return paramFrame;
+    }
   }
   
   public void setExposureLevel(int paramInt)
@@ -88,6 +107,13 @@ public class AESmooth
   public void setFaceAttr(PTFaceAttr paramPTFaceAttr)
   {
     this.mFaceAttr = paramPTFaceAttr;
+  }
+  
+  public void setFilterBlurStrength(double paramDouble)
+  {
+    if (this.blurEffectFilter != null) {
+      this.blurEffectFilter.updateFilterBlurStrength(paramDouble);
+    }
   }
   
   public void setIsVeryLowEndDevice(boolean paramBoolean)
@@ -147,7 +173,7 @@ public class AESmooth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AESmooth
  * JD-Core Version:    0.7.0.1
  */

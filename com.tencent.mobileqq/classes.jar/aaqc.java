@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class aaqc
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
   aaqc(aaqa paramaaqa) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    aase.b("GdtMvViewController", " DialogInterface onClick confirm");
-    aaqa.a(this.a, false);
-    aaqa.b(this.a);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Besj + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Besk);
+    }
+    if (this.a.jdField_a_of_type_Besk != null) {
+      this.a.a(this.a.jdField_a_of_type_Besk);
+    }
+    this.a.a();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import com.tencent.mobileqq.mini.http.HttpCmdResult;
+import com.tencent.mobileqq.mini.network.http.HttpCmdResult;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -21,7 +21,7 @@ class MiniAppCmdUtil$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil.5
  * JD-Core Version:    0.7.0.1
  */

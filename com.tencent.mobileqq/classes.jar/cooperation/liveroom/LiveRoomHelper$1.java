@@ -3,7 +3,7 @@ package cooperation.liveroom;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
-import ndd;
+import nlw;
 
 final class LiveRoomHelper$1
   implements Runnable
@@ -14,8 +14,8 @@ final class LiveRoomHelper$1
   {
     try
     {
-      String str = "http://lme.gamefeeds.qq.com/LmeProxyCgi?data=" + URLEncoder.encode(new StringBuilder().append("{\"module\":\"LME.ReportChannelSvr.ReportChannelObj\",\"method\":\"SdkPluginReport\",\"param\":{\"req\":{\"report\":").append(this.val$reportStr).append("}}}").toString());
-      ndd.a(BaseApplicationImpl.getApplication(), str, "GET", null, null);
+      String str = "https://lme.gamefeeds.qq.com/LmeProxyCgi?data=" + URLEncoder.encode(new StringBuilder().append("{\"module\":\"LME.ReportChannelSvr.ReportChannelObj\",\"method\":\"SdkPluginReport\",\"param\":{\"req\":{\"report\":").append(this.val$reportStr).append("}}}").toString());
+      nlw.a(BaseApplicationImpl.getApplication(), str, "GET", null, null);
       return;
     }
     catch (Exception localException)
@@ -27,7 +27,7 @@ final class LiveRoomHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomHelper.1
  * JD-Core Version:    0.7.0.1
  */

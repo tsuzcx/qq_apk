@@ -1,115 +1,90 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.regex.Pattern;
-import mqq.app.ISecurityFileHelper;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
+import tencent.im.oidb.oidb_0xb60.RspBody;
 
 public class bioo
-  implements ISecurityFileHelper
+  extends niv
 {
-  private FilenameFilter jdField_a_of_type_JavaIoFilenameFilter = new biop(this);
-  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\d{5,}");
+  public bioo(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
   
-  public String declareBusinessFileName()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return "QQComicOffline";
-  }
-  
-  public boolean doMigrate(File paramFile)
-  {
-    boolean bool2 = false;
-    File localFile1 = new File(alof.aW, "/tencent/MobileQQ/qqcomic/offline/");
-    String[] arrayOfString = localFile1.list(this.jdField_a_of_type_JavaIoFilenameFilter);
-    boolean bool1;
-    if ((arrayOfString == null) || (arrayOfString.length == 0))
-    {
-      bool1 = true;
-      return bool1;
+    QLog.i("TroopAbility.PreVerification", 1, "onResult type=" + this.a.a + ", appid=" + this.a.c + ", code=" + paramInt);
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {
+      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
+        break label441;
+      }
     }
-    int j = arrayOfString.length;
-    int i = 0;
     for (;;)
     {
-      if (i >= j) {
-        break label220;
-      }
-      Object localObject = arrayOfString[i];
-      File localFile2 = new File(localFile1, (String)localObject);
-      localObject = new File(paramFile.getAbsolutePath() + File.separator + (String)localObject + File.separator + declareBusinessFileName());
-      int k = bdhb.a(localFile2.getAbsolutePath(), ((File)localObject).getAbsolutePath());
-      QLog.d("VipComicSecurityFileHelper", 2, "doMigrate：" + declareBusinessFileName() + " result = " + k + " fromFile = " + localFile2.getAbsolutePath() + " targetFile = " + ((File)localObject).getAbsolutePath());
-      bool1 = bool2;
-      if (k != 0) {
-        break;
-      }
-      i += 1;
-    }
-    label220:
-    return true;
-  }
-  
-  public boolean needMigration()
-  {
-    Object localObject = new File(alof.aW, "/tencent/MobileQQ/qqcomic/offline/").list(this.jdField_a_of_type_JavaIoFilenameFilter);
-    boolean bool;
-    StringBuilder localStringBuilder;
-    if ((localObject != null) && (localObject.length > 0))
-    {
-      bool = true;
-      localStringBuilder = new StringBuilder().append("needMigration: uinDirs.len=");
-      if (localObject != null) {
-        break label74;
-      }
-    }
-    label74:
-    for (localObject = Integer.valueOf(0);; localObject = localObject.length + " needMigration=" + bool)
-    {
-      QLog.i("VipComicSecurityFileHelper", 2, localObject);
-      return bool;
-      bool = false;
-      break;
-    }
-  }
-  
-  public File oldBusinessDir(String paramString)
-  {
-    return new File(new File(alof.aW, "/tencent/MobileQQ/qqcomic/offline/"), paramString);
-  }
-  
-  public boolean oldBusinessDirExist(String paramString)
-  {
-    paramString = oldBusinessDir(paramString);
-    return (paramString.isDirectory()) && (paramString.exists());
-  }
-  
-  public String[] reportHistoryFileInfo()
-  {
-    long l2 = 0L;
-    String[] arrayOfString1 = new String[2];
-    File localFile = new File(alof.aW, "/tencent/MobileQQ/qqcomic/offline/");
-    String[] arrayOfString2 = localFile.list(this.jdField_a_of_type_JavaIoFilenameFilter);
-    if ((arrayOfString2 != null) && (arrayOfString2.length > 0))
-    {
-      int j = arrayOfString2.length;
-      int i = 0;
-      long l1 = 0L;
-      while (i < j)
+      try
       {
-        String str = arrayOfString2[i];
-        l2 += bdhb.b(new File(localFile, str).getAbsolutePath());
-        l1 += bdhb.c(new File(localFile, str).getAbsolutePath());
-        i += 1;
+        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
+        localObject = new StringBuilder().append("req error code=").append(paramInt);
+        if (paramArrayOfByte == null)
+        {
+          paramArrayOfByte = ", data=null";
+          QLog.i("TroopAbility.PreVerification", 1, paramArrayOfByte);
+          this.a.c(anni.a(2131713810));
+          return;
+        }
       }
-      arrayOfString1[0] = Long.toString(l2);
-      arrayOfString1[1] = Long.toString(l1);
-      QLog.d("VipComicSecurityFileHelper", 2, "reportHistoryFileInfo:" + declareBusinessFileName() + " fileAmount = " + l1 + " fileSize = " + l2);
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        paramBundle = "";
+        continue;
+        paramArrayOfByte = ", msg=" + paramBundle;
+        continue;
+      }
+      paramBundle = new oidb_0xb60.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((!paramBundle.get_privilege_rsp.api_groups.has()) || (!paramBundle.get_privilege_rsp.next_req_duration.has()))
+        {
+          QLog.i("TroopAbility.PreVerification", 1, "rsp invalid");
+          this.a.c(anni.a(2131713802));
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("TroopAbility.PreVerification", 1, "parse rsp error", paramArrayOfByte);
+        this.a.c(anni.a(2131713807));
+        return;
+      }
+      TroopAbilityPreVerificationFragment.a(paramBundle);
+      QLog.d("TroopAbility.PreVerification", 1, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
+      paramArrayOfByte = new HashSet();
+      Object localObject = paramBundle.get_privilege_rsp.api_groups.get().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        paramArrayOfByte.add((Integer)((Iterator)localObject).next());
+      }
+      boolean bool = this.a.a(paramArrayOfByte);
+      QLog.i("TroopAbility.PreVerification", 1, "check permission result:" + bool);
+      this.a.a(bool);
+      TroopAbilityPreVerificationFragment.a(paramBundle.get_privilege_rsp.next_req_duration.get());
+      TroopAbilityPreVerificationFragment.b(NetConnInfoCenter.getServerTime());
+      return;
+      label441:
+      paramBundle = "";
     }
-    return arrayOfString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bioo
  * JD-Core Version:    0.7.0.1
  */

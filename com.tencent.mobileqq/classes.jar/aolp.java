@@ -1,94 +1,48 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzonePluginProxyActivity;
 
 public class aolp
-  extends aokh<aolq>
+  extends aojs
 {
-  public int a()
+  public aolp(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    return 597;
+    super(paramQQAppInterface, paramContext);
   }
   
-  @NonNull
-  public aolq a(int paramInt)
+  private boolean C()
   {
-    return new aolq();
-  }
-  
-  @Nullable
-  public aolq a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
-    {
-      aolq localaolq = aolq.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("AppletNotificationConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
-      }
-      return localaolq;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletNotificationConfProcessor", 2, "onParsed is null");
-    }
-    ajfv.a(true);
-    return null;
-  }
-  
-  public Class<aolq> a()
-  {
-    return aolq.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletNotificationConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-    ajfv.a(true);
-  }
-  
-  public void a(aolq paramaolq)
-  {
-    if (paramaolq == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppletNotificationConfProcessor", 2, "onUpdate but newConf==null");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletNotificationConfProcessor", 2, "onUpdate " + paramaolq.toString());
-    }
-    ajfv.a(true);
+    Intent localIntent = new Intent();
+    QzonePluginProxyActivity.a(localIntent, "com.qzone.common.activities.QzoneDialogActivity");
+    localIntent.addFlags(805306368);
+    blsb.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localIntent, -1);
+    return true;
   }
   
   public boolean a()
   {
-    return false;
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletNotificationConfProcessor", 2, "migrateOldVersion");
+    try
+    {
+      boolean bool = C();
+      return bool;
     }
-    ajfv.a(true);
-    return 0;
-  }
-  
-  public boolean b()
-  {
+    catch (Exception localException)
+    {
+      QLog.e("QzoneDialogAction", 1, "doAction error: " + localException.getMessage());
+      a("QzoneDialogAction");
+    }
     return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aolp
  * JD-Core Version:    0.7.0.1
  */

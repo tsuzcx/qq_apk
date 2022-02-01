@@ -1,11 +1,23 @@
-public abstract interface blpt
-  extends blpp
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+
+public final class blpt
 {
-  public abstract void l();
+  public static String a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("SETTING", 0).getString("debug_h5_test_env", null);
+  }
   
-  public abstract void q();
+  public static void a(Context paramContext, boolean paramBoolean, String paramString)
+  {
+    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("debug_h5_test_mode", paramBoolean).putString("debug_h5_test_env", paramString).apply();
+  }
   
-  public abstract void r();
+  public static boolean a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("debug_h5_test_mode", false);
+  }
 }
 
 

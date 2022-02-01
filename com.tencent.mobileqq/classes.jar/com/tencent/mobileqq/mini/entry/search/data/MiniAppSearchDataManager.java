@@ -3,6 +3,8 @@ package com.tencent.mobileqq.mini.entry.search.data;
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import NS_STORE_APP_CLIENT.STORE_APP_CLIENT.StoreAppInfo;
+import NS_STORE_APP_SEARCH.MiniAppSearch.StGetHotSearchAppsRsp;
+import NS_STORE_APP_SEARCH.MiniAppSearch.StHotWatching;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -10,8 +12,14 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.entry.search.comm.ItemInfo;
+import com.tencent.mobileqq.mini.entry.search.comm.LiveInfo;
 import com.tencent.mobileqq.mini.entry.search.comm.SearchInfo;
+import com.tencent.mobileqq.mini.entry.search.comm.TitleInfo;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -20,7 +28,7 @@ import java.util.LinkedList;
 import java.util.List;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import ndk;
+import nmd;
 
 public class MiniAppSearchDataManager
   implements Manager
@@ -33,7 +41,7 @@ public class MiniAppSearchDataManager
   private volatile COMM.StCommonExt mExtInfo;
   private LinkedList<String> mHistorySearchList = new LinkedList();
   private MiniAppSearchDataManager.HotSearchDataChangedListener mHotSearchDataChangedListener;
-  private List<SearchInfo> mHotSearchList = new ArrayList();
+  private List<ItemInfo> mHotSearchList = new ArrayList();
   private Object mLock = new Object();
   private MiniAppSearchDataManager.SearchResultDataChangedListener mResultDataChangedListener;
   private List<SearchInfo> mSearchResultList = new ArrayList();
@@ -60,7 +68,7 @@ public class MiniAppSearchDataManager
   
   private void checkNetwork()
   {
-    if ((!ndk.a(BaseApplicationImpl.getContext())) && (this.mResultDataChangedListener != null))
+    if ((!nmd.a(BaseApplicationImpl.getContext())) && (this.mResultDataChangedListener != null))
     {
       this.mSearchResultList.clear();
       this.mResultDataChangedListener.onResultDataChanged();
@@ -68,24 +76,73 @@ public class MiniAppSearchDataManager
     }
   }
   
-  private void updateHotSearchData(List<STORE_APP_CLIENT.StoreAppInfo> paramList, String paramString)
+  private void updateHotSearchData(MiniAppSearch.StGetHotSearchAppsRsp paramStGetHotSearchAppsRsp)
   {
-    if ((paramList == null) || (paramList.size() <= 0))
+    int j = 0;
+    if (paramStGetHotSearchAppsRsp == null)
     {
-      QLog.d("MiniAppSearchDataManager", 1, "updateHotSearchData, data is null!");
+      QLog.e("MiniAppSearchDataManager", 1, "updateHotSearchData, response is null!");
       return;
     }
-    this.mTitle = paramString;
-    paramString = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    this.mTitle = paramStGetHotSearchAppsRsp.title.get();
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    Object localObject1 = paramStGetHotSearchAppsRsp.appList.get();
+    int i;
+    Object localObject2;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      STORE_APP_CLIENT.StoreAppInfo localStoreAppInfo = (STORE_APP_CLIENT.StoreAppInfo)paramList.next();
-      if ((localStoreAppInfo != null) && (localStoreAppInfo.userAppInfo.get() != null)) {
-        paramString.add(new SearchInfo(localStoreAppInfo));
+      localArrayList1.add(new TitleInfo(paramStGetHotSearchAppsRsp.title.get()));
+      localObject1 = ((List)localObject1).iterator();
+      i = 0;
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (STORE_APP_CLIENT.StoreAppInfo)((Iterator)localObject1).next();
+        if ((localObject2 == null) || (((STORE_APP_CLIENT.StoreAppInfo)localObject2).userAppInfo.get() == null)) {
+          break label369;
+        }
+        localObject2 = new SearchInfo((STORE_APP_CLIENT.StoreAppInfo)localObject2);
+        ((SearchInfo)localObject2).setPosition(i);
+        localArrayList1.add(localObject2);
+        i += 1;
       }
     }
-    runOnMainThread(new MiniAppSearchDataManager.4(this, paramString));
+    label369:
+    for (;;)
+    {
+      break;
+      localObject1 = paramStGetHotSearchAppsRsp.watchingList.get();
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        localArrayList2.add(new TitleInfo(paramStGetHotSearchAppsRsp.watchTitle.get()));
+        localObject1 = ((List)localObject1).iterator();
+        i = j;
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (MiniAppSearch.StHotWatching)((Iterator)localObject1).next();
+          if (localObject2 != null)
+          {
+            localObject2 = new LiveInfo((MiniAppSearch.StHotWatching)localObject2);
+            ((LiveInfo)localObject2).setPosition(i);
+            localArrayList2.add(localObject2);
+            i += 1;
+          }
+        }
+      }
+      localObject1 = new ArrayList();
+      if (paramStGetHotSearchAppsRsp.sort.get() == 2)
+      {
+        ((List)localObject1).addAll(localArrayList2);
+        ((List)localObject1).addAll(localArrayList1);
+      }
+      for (;;)
+      {
+        runOnMainThread(new MiniAppSearchDataManager.4(this, (List)localObject1));
+        return;
+        ((List)localObject1).addAll(localArrayList1);
+        ((List)localObject1).addAll(localArrayList2);
+      }
+    }
   }
   
   private void updateSearchResultData(List<STORE_APP_CLIENT.StoreAppInfo> paramList, List<String> paramList1)
@@ -154,7 +211,7 @@ public class MiniAppSearchDataManager
     return this.mHistorySearchList;
   }
   
-  public List<SearchInfo> getHotSearchData()
+  public List<ItemInfo> getHotSearchData()
   {
     return this.mHotSearchList;
   }
@@ -246,7 +303,7 @@ public class MiniAppSearchDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager
  * JD-Core Version:    0.7.0.1
  */

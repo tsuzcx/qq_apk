@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.proxy.fts;
 
-import amog;
+import aonn;
 import java.util.ArrayList;
 
 public class FTSTroopOperator$2
   implements Runnable
 {
-  public FTSTroopOperator$2(amog paramamog, ArrayList paramArrayList) {}
+  public FTSTroopOperator$2(aonn paramaonn, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class FTSTroopOperator$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.fts.FTSTroopOperator.2
  * JD-Core Version:    0.7.0.1
  */

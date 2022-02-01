@@ -24,6 +24,7 @@ public class VideoPreDownloadMgr$PreDownloadNotAlreadyVideoTask
       }
     }
     VideoPreDownloadMgr.a(this.this$0, null);
+    VideoPreDownloadMgr.a(this.this$0, null);
     VideoPreDownloadMgr.b(this.this$0);
   }
 }

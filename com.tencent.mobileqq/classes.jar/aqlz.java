@@ -1,41 +1,166 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqlz
-  implements bhuw
 {
-  public aqlz(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public aqlz()
   {
-    paramAdapterView = (FileInfo)this.a.b.get(paramInt);
-    if (paramAdapterView.c()) {
-      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
+    a();
+  }
+  
+  public static aqlz a(String paramString)
+  {
+    QLog.d("TroopNotificationConfig.config", 1, "onUpdate, newConf = " + paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    while (!this.a.f()) {
-      return;
-    }
-    if (arbs.a(paramAdapterView)) {
-      arbs.b(paramAdapterView);
-    }
+    int i = 0;
+    int j = 0;
+    long l2 = 0L;
+    int k = 0;
+    n = 0;
+    l4 = 0L;
+    int i4 = 0;
+    l1 = l4;
+    m = n;
+    i1 = k;
+    long l3 = l2;
+    int i2 = j;
+    int i3 = i;
     for (;;)
     {
-      this.a.l();
-      LocalFileBrowserActivity.a(this.a);
-      return;
-      if (this.a.f) {
-        arbs.b();
+      try
+      {
+        paramString = new JSONObject(paramString);
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        i = paramString.optInt("globalOpen", 0);
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        j = paramString.optInt("totalRemindCntOfOneWeak", 0);
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        l2 = paramString.optLong("intervelShowTime", 0L);
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        k = paramString.optInt("totalRemindCntOfOneDay");
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        n = paramString.optInt("todoGroupVerifyMsgLevel", 0);
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        l4 = paramString.optLong("cleanExpiredTime", 0L);
+        l1 = l4;
+        m = n;
+        i1 = k;
+        l3 = l2;
+        i2 = j;
+        i3 = i;
+        int i5 = paramString.optInt("maxFetchMsgCnt", 300);
+        m = i5;
+        paramString.printStackTrace();
       }
-      arbs.a(paramAdapterView);
+      catch (JSONException paramString)
+      {
+        try
+        {
+          i1 = paramString.optInt("showUnreadBk", 0);
+          i3 = n;
+          l1 = l4;
+          i2 = m;
+          n = i1;
+          paramString = new aqlz();
+          if (i != 1) {
+            break label423;
+          }
+          bool = true;
+          paramString.jdField_a_of_type_Boolean = bool;
+          paramString.jdField_a_of_type_Int = j;
+          paramString.jdField_a_of_type_Long = l2;
+          paramString.jdField_b_of_type_Int = k;
+          paramString.c = i3;
+          paramString.jdField_b_of_type_Long = l1;
+          paramString.d = i2;
+          paramString.e = n;
+          return paramString;
+        }
+        catch (JSONException paramString)
+        {
+          for (;;)
+          {
+            boolean bool;
+            i1 = m;
+            l1 = l4;
+            m = n;
+          }
+        }
+        paramString = paramString;
+        n = 0;
+        i = i3;
+        j = i2;
+        l2 = l3;
+        k = i1;
+        i1 = n;
+      }
+      n = i4;
+      i2 = i1;
+      i3 = m;
+      continue;
+      label423:
+      bool = false;
     }
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_a_of_type_Long = 60L;
+    this.jdField_b_of_type_Int = 100;
+    this.c = 10;
+    this.jdField_b_of_type_Long = 1209600L;
+    this.d = 300;
+    this.e = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqlz
  * JD-Core Version:    0.7.0.1
  */

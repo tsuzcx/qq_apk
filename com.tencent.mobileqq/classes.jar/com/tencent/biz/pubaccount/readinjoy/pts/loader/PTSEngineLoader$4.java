@@ -1,41 +1,41 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import bdhb;
+import bgmg;
 import com.tencent.qphone.base.util.QLog;
-import pvy;
-import pwc;
+import qoi;
+import qom;
 
 public class PTSEngineLoader$4
   implements Runnable
 {
-  public PTSEngineLoader$4(pvy parampvy) {}
+  public PTSEngineLoader$4(qoi paramqoi) {}
   
   public void run()
   {
-    if (!bdhb.a(pvy.a(this.this$0)))
+    if (!bgmg.a(qoi.a(this.this$0)))
     {
       QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], offline dir does not exist.");
       return;
     }
-    if (!pwc.a(pvy.a(this.this$0), "3980"))
+    if (!qom.a(qoi.a(this.this$0), "3980"))
     {
       QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], offline dir is not valid.");
       return;
     }
-    if (!pwc.a(pvy.a(this.this$0) + "/" + "pts_config.json"))
+    if (!qom.a(qoi.a(this.this$0) + "/" + "pts_config.json"))
     {
       QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], offline dir version is not valid.");
       return;
     }
-    if (bdhb.a(pvy.b(this.this$0)))
+    if (bgmg.a(qoi.b(this.this$0)))
     {
-      QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], delete inner dir, dir = " + pvy.b(this.this$0));
-      bdhb.a(pvy.b(this.this$0));
+      QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], delete inner dir, dir = " + qoi.b(this.this$0));
+      bgmg.a(qoi.b(this.this$0));
     }
     try
     {
-      boolean bool1 = bdhb.d(pvy.a(this.this$0) + "/" + "libpts.so", pvy.b(this.this$0) + "/" + "libpts.so");
-      boolean bool2 = bdhb.d(pvy.a(this.this$0) + "/" + "pts_config.json", pvy.b(this.this$0) + "/" + "pts_config.json");
+      boolean bool1 = bgmg.d(qoi.a(this.this$0) + "/" + "libpts.so", qoi.b(this.this$0) + "/" + "libpts.so");
+      boolean bool2 = bgmg.d(qoi.a(this.this$0) + "/" + "pts_config.json", qoi.b(this.this$0) + "/" + "pts_config.json");
       QLog.i("PTSEngineLoader", 1, "[handleDownloadPTSEngine], copySoSuccess = " + bool1 + ", copyConfigSuccess = " + bool2);
       return;
     }

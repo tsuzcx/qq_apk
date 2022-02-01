@@ -1,48 +1,34 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment.1.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class alzf
-  extends ClickableSpan
+public class alzf
+  implements aohj
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public alzf(SessionClearFragment paramSessionClearFragment) {}
   
-  public alzf(Context paramContext, String paramString1, String paramString2)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = paramString1;
-  }
-  
-  public void onClick(View paramView)
-  {
-    try
+    if (QLog.isColorLevel())
     {
-      paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      QLog.d("PrivacyPolicyHelper", 1, "no system browser exp=", paramView);
+      QLog.d("SessionClearFragment", 2, "onLoadStart");
+      this.a.a();
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(List<aohd> paramList)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("SessionClearFragment", 2, "onLoadFinish");
+    }
+    SessionClearFragment.a(this.a).runOnUiThread(new SessionClearFragment.1.1(this, paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alzf
  * JD-Core Version:    0.7.0.1
  */

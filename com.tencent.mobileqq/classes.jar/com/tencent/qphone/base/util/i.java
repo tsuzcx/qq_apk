@@ -1,7 +1,6 @@
 package com.tencent.qphone.base.util;
 
 import android.os.Environment;
-import com.tencent.mobileqq.msf.core.h;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -60,7 +59,7 @@ final class i
           i = 1;
           continue;
           if (this.a) {
-            h.a(localArrayList);
+            com.tencent.mobileqq.msf.core.i.a(localArrayList);
           }
           QLog.access$702(QLog.access$700().replace(":", "_"));
           localObject1 = QLog.access$600() + QLog.access$700() + "_" + QLog.getReportLevel(QLog.getUIN_REPORTLOG_LEVEL()) + ".zip";
@@ -69,8 +68,8 @@ final class i
           try
           {
             ((File)localObject2).createNewFile();
-            h.a(localArrayList, (String)localObject1);
-            h.a(this.b, (String)localObject1, this.c, this.d, this.e, this.f);
+            com.tencent.mobileqq.msf.core.i.a(localArrayList, (String)localObject1);
+            com.tencent.mobileqq.msf.core.i.a(this.b, (String)localObject1, this.c, this.d, this.e, this.f);
             ((File)localObject2).delete();
             if (this.a)
             {

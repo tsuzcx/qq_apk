@@ -1,28 +1,10 @@
-import android.animation.AnimatorSet;
-import android.graphics.Rect;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class anwx
+public final class anwx
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public AnimatorSet a;
-  public Rect a;
-  public View a;
-  public ImageView a;
-  public MessageRecord a;
-  public HashMap<String, anxk> a;
-  public long b;
-  public Rect b;
-  public MessageRecord b;
-  
-  public anwx()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

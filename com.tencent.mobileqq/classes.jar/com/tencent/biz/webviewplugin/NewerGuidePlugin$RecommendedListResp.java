@@ -1,16 +1,16 @@
 package com.tencent.biz.webviewplugin;
 
+import abbb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
 import java.util.List;
-import zei;
 
 public final class NewerGuidePlugin$RecommendedListResp
   implements Parcelable
 {
-  public static final Parcelable.Creator<RecommendedListResp> CREATOR = new zei();
+  public static final Parcelable.Creator<RecommendedListResp> CREATOR = new abbb();
   public int a;
   public long a;
   public List<NewerGuidePlugin.PhoneInfo> a;
@@ -45,7 +45,7 @@ public final class NewerGuidePlugin$RecommendedListResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp
  * JD-Core Version:    0.7.0.1
  */

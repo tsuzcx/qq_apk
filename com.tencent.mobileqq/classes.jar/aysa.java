@@ -1,49 +1,50 @@
-import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aysa
-  extends ayqe
 {
-  public aysa(bdbb parambdbb, ayqi paramayqi)
+  public aypi a;
+  public String a;
+  public List<aysb> a;
+  public aypi b;
+  public List<ayse> b;
+  
+  public aysa()
   {
-    super(parambdbb, paramayqi);
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void b(aynu paramaynu, aywd paramaywd)
+  public aysa(List<aysb> paramList, aypi paramaypi1, List<ayse> paramList1, String paramString, aypi paramaypi2)
   {
-    super.b(paramaynu, paramaywd);
-    if (TextUtils.isEmpty(paramaynu.c()))
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Aypi = paramaypi1;
+    this.jdField_b_of_type_JavaUtilList = paramList1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Aypi = paramaypi2;
+  }
+  
+  public List<aysb> a(boolean paramBoolean)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return localArrayList;
+    }
+    if (paramBoolean)
     {
-      paramaywd.c().setVisibility(8);
-      ((ayxw)paramaywd).a().setVisibility(0);
-      if (paramaywd.b() != null)
-      {
-        paramaynu = ((aype)paramaynu).d();
-        if (!TextUtils.isEmpty(paramaynu)) {
-          break label127;
-        }
-        paramaywd.b().setVisibility(8);
+      localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+      return localArrayList;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      aysb localaysb = (aysb)localIterator.next();
+      if (!localaysb.a) {
+        localArrayList.add(localaysb);
       }
     }
-    for (;;)
-    {
-      paramaywd.d().setVisibility(8);
-      return;
-      paramaywd.c().setVisibility(0);
-      paramaywd.c().setText(paramaynu.c());
-      ((ayxw)paramaywd).a().setVisibility(8);
-      break;
-      label127:
-      paramaywd.b().setVisibility(0);
-      paramaywd.b().setText(paramaynu);
-    }
-  }
-  
-  protected void c(aynu paramaynu, aywd paramaywd)
-  {
-    super.c(paramaynu, paramaywd);
-    ((ayxw)paramaywd).a().setOnClickListener(new aysb(this, paramaynu));
+    return localArrayList;
   }
 }
 

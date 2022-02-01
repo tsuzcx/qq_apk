@@ -1,19 +1,29 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-public abstract class bbpc
+class bbpc
+  implements begx
 {
-  public static final int ITEM_TYPE_AUDIO = 2;
-  public static final int ITEM_TYPE_MUSIC = 3;
-  public static final int ITEM_TYPE_NONE = 0;
-  public static final int ITEM_TYPE_PIC = 1;
-  public static final int ITEM_TYPE_VIDEO = 4;
-  protected static final String TAG = "publish_mediaInfo";
+  bbpc(bboz parambboz, bblw parambblw) {}
   
-  public abstract String getJsonText();
-  
-  public abstract View getView(Context paramContext, View.OnClickListener paramOnClickListener);
+  public void a(String paramString, int paramInt)
+  {
+    if ((this.jdField_a_of_type_Bblw.b != null) && (this.jdField_a_of_type_Bblw.b.equals(paramString)))
+    {
+      if (paramInt != 3) {
+        break label45;
+      }
+      this.jdField_a_of_type_Bblw.k = 2;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bboz.a();
+      return;
+      label45:
+      if ((paramInt == 2) || (paramInt == 4)) {
+        this.jdField_a_of_type_Bblw.k = 1;
+      } else if (paramInt == 1) {
+        this.jdField_a_of_type_Bblw.k = 0;
+      }
+    }
+  }
 }
 
 

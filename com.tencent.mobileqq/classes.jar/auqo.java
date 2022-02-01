@@ -1,38 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-
-class auqo
-  implements arqb
+public class auqo
+  implements anil
 {
-  auqo(auqc paramauqc, String paramString, aupx paramaupx) {}
+  public void a() {}
   
-  public void a(int paramInt)
+  public void a(auqr paramauqr) {}
+  
+  protected void a(boolean paramBoolean, auqr paramauqr) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((this.jdField_a_of_type_Aupx != null) && (this.jdField_a_of_type_Aupx.a != null))
+    switch (paramInt)
     {
-      String str = this.jdField_a_of_type_Aupx.a.a();
-      aupy localaupy = this.jdField_a_of_type_Auqc.a(str);
-      if ((localaupy != null) && (!localaupy.a))
-      {
-        localaupy.c = paramInt;
-        this.jdField_a_of_type_Auqc.a(str, localaupy);
-        auqc.a(this.jdField_a_of_type_Auqc, localaupy, paramInt);
-      }
+    default: 
+      return;
     }
+    a(paramBoolean, (auqr)paramObject);
   }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadFile key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramBoolean);
-    }
-    auqc.a(this.jdField_a_of_type_Auqc, this.jdField_a_of_type_Aupx, paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auqo
  * JD-Core Version:    0.7.0.1
  */

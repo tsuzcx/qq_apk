@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.utils;
 
-import alww;
-import amrd;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anqc;
+import aopu;
 import java.util.Arrays;
 
 public class FriendsStatusUtil$UpdateFriendStatusItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<UpdateFriendStatusItem> CREATOR = new amrd();
+  public static final Parcelable.Creator<UpdateFriendStatusItem> CREATOR = new aopu();
   public int a;
   public long a;
   public String a;
@@ -55,10 +55,10 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
         return 0L;
       }
       if (this.jdField_a_of_type_ArrayOfByte.length == 4) {
-        return alww.a(this.jdField_a_of_type_ArrayOfByte);
+        return anqc.a(this.jdField_a_of_type_ArrayOfByte);
       }
     } while (this.jdField_a_of_type_ArrayOfByte.length != 8);
-    return alww.a(Arrays.copyOfRange(this.jdField_a_of_type_ArrayOfByte, 0, 4));
+    return anqc.a(Arrays.copyOfRange(this.jdField_a_of_type_ArrayOfByte, 0, 4));
   }
   
   public void a(long paramLong)
@@ -136,7 +136,7 @@ public class FriendsStatusUtil$UpdateFriendStatusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.FriendsStatusUtil.UpdateFriendStatusItem
  * JD-Core Version:    0.7.0.1
  */

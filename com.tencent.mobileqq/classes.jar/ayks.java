@@ -1,22 +1,20 @@
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayks
+class ayks
   implements View.OnClickListener
 {
-  public ayks(GroupSearchFragment paramGroupSearchFragment) {}
+  ayks(ayko paramayko, ayld paramayld) {}
   
   public void onClick(View paramView)
   {
-    this.a.g = 1;
-    if (UniteSearchActivity.a(GroupSearchFragment.b(this.a), GroupSearchFragment.a(this.a))) {
-      this.a.g = 1;
-    }
-    this.a.h();
-    this.a.b.setVisibility(8);
+    ayko.a(this.jdField_a_of_type_Ayko).removeMessages(101);
+    ayko.a(this.jdField_a_of_type_Ayko).obtainMessage(101).sendToTarget();
+    this.jdField_a_of_type_Ayld.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

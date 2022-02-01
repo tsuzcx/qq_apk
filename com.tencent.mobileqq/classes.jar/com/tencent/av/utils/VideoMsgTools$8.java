@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mtq;
+import mqw;
 
 final class VideoMsgTools$8
   extends ResultReceiver
@@ -56,7 +56,7 @@ final class VideoMsgTools$8
     }
     for (;;)
     {
-      mtq.d(bool2, bool3);
+      mqw.d(bool2, bool3);
       localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       localObject = new VideoMsgTools.MygetGroupInfoRunnable(this.jdField_a_of_type_Long, (QQAppInterface)localObject, this.jdField_a_of_type_JavaLangString);
       new Handler(Looper.getMainLooper()).postDelayed((Runnable)localObject, 1000L);
@@ -78,7 +78,7 @@ final class VideoMsgTools$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.utils.VideoMsgTools.8
  * JD-Core Version:    0.7.0.1
  */

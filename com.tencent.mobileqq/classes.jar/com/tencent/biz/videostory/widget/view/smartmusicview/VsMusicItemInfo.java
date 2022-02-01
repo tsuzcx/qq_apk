@@ -1,7 +1,7 @@
 package com.tencent.biz.videostory.widget.view.smartmusicview;
 
 import NS_QQ_STORY_META.META.StMusic;
-import alud;
+import anni;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -15,7 +15,7 @@ public class VsMusicItemInfo
   public String a;
   public boolean a;
   public String b;
-  public String c = alud.a(2131717262);
+  public String c = anni.a(2131715539);
   
   public VsMusicItemInfo()
   {
@@ -77,7 +77,7 @@ public class VsMusicItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo
  * JD-Core Version:    0.7.0.1
  */

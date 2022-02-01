@@ -8,9 +8,7 @@ class asro
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    asrm.a(this.a, null);
-    asrm.b(this.a, null);
-    paramDialogInterface.dismiss();
+    atvm.a("0X80052CF");
   }
 }
 

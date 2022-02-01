@@ -1,21 +1,8 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import android.view.KeyEvent;
 
-class bkpv
-  extends GestureDetector.SimpleOnGestureListener
+public abstract interface bkpv
 {
-  private bkpv(bkpl parambkpl) {}
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    if ((bkpl.b(this.a) != AECaptureMode.GIF) && (System.currentTimeMillis() - bkpl.a(this.a) > 5000L))
-    {
-      bkpl.a(this.a).a(196614, new Object[0]);
-      bkpl.a(this.a, System.currentTimeMillis());
-      this.a.d(0);
-    }
-  }
+  public abstract boolean a(KeyEvent paramKeyEvent);
 }
 
 

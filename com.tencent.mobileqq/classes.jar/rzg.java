@@ -1,44 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class rzg
-  implements INetInfoHandler
+final class rzg
+  extends AnimatorListenerAdapter
 {
-  public rzg(FastWebActivity paramFastWebActivity) {}
+  rzg(View paramView) {}
   
-  public void onNetMobile2None()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    FastWebActivity.o(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    FastWebActivity.o(this.a);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    FastWebActivity.o(this.a);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    FastWebActivity.o(this.a);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    FastWebActivity.o(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    FastWebActivity.o(this.a);
+    this.a.setLayerType(0, null);
+    this.a.setVisibility(8);
+    this.a.setTranslationY(0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rzg
  * JD-Core Version:    0.7.0.1
  */

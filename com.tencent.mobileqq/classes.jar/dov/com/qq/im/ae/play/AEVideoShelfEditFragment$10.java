@@ -1,20 +1,20 @@
 package dov.com.qq.im.ae.play;
 
-import blie;
+import bnxr;
 
 class AEVideoShelfEditFragment$10
   implements Runnable
 {
-  AEVideoShelfEditFragment$10(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, FaceImageViewer paramFaceImageViewer, blie paramblie) {}
+  AEVideoShelfEditFragment$10(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, FaceImageViewer paramFaceImageViewer, bnxr parambnxr) {}
   
   public void run()
   {
-    AEVideoShelfEditFragment.a(this.this$0, this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer, this.jdField_a_of_type_Blie);
+    AEVideoShelfEditFragment.a(this.this$0, this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer, this.jdField_a_of_type_Bnxr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.play.AEVideoShelfEditFragment.10
  * JD-Core Version:    0.7.0.1
  */

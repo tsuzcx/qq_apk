@@ -1,35 +1,23 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.5;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.profile.CoverDetailFragment;
 
 public class azct
-  implements baug
+  implements URLDrawable.URLDrawableListener
 {
-  public azct(PtvTemplateManager.5 param5) {}
+  public azct(CoverDetailFragment paramCoverDetailFragment) {}
   
-  public void onResp(bavf parambavf)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.a.a.resurl + " resultcode: " + parambavf.c);
-    }
-    this.a.a.usable = this.a.this$0.a(this.a.a);
-    if (this.a.a.usable) {}
-    try
-    {
-      ndr.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.a.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (IOException parambavf)
-    {
-      while (!QLog.isColorLevel()) {}
-      parambavf.printStackTrace();
-    }
+    CoverDetailFragment.b(this.a).setImageDrawable(this.a.a(paramURLDrawable));
   }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

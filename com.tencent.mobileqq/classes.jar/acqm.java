@@ -1,43 +1,36 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acqm
-  implements bkcu
+class acqm
+  implements acke
 {
-  public acqm(ChatSettingForTroop paramChatSettingForTroop) {}
+  acqm(acql paramacql) {}
   
-  public void a(int paramInt)
+  public void onResponse(ackd paramackd)
   {
-    int i = 0;
-    boolean bool;
-    Object localObject;
-    if (paramInt == 0)
-    {
-      this.a.b = true;
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim();
-      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[5];
-      if (localObject != null) {
-        if (!bool) {
-          break label88;
-        }
-      }
-    }
-    label88:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      ((View)localObject).setVisibility(paramInt);
-      localObject = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[6];
-      if (localObject != null)
-      {
-        paramInt = i;
-        if (bool) {
-          paramInt = 3;
-        }
-        ((FormSimpleItem)localObject).setBgType(paramInt);
-      }
+    if ((paramackd == null) || (paramackd.a() == null) || (acql.a(this.a) == null) || (acql.a(this.a).get() == null)) {
       return;
+    }
+    String str = (String)acql.a(this.a).get(paramackd);
+    acql.a(this.a).remove(paramackd);
+    Object localObject1 = acqx.a(paramackd.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
+    Object localObject2 = acqx.a(paramackd.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
+    paramackd = new JSONObject();
+    try
+    {
+      paramackd.put("request", localObject1);
+      paramackd.put("response", localObject2);
+      ((acpp)acql.a(this.a).get()).callJs(str, new String[] { paramackd.toString() });
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

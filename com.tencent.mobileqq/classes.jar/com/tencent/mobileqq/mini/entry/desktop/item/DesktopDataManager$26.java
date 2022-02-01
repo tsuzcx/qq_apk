@@ -11,7 +11,7 @@ class DesktopDataManager$26
   public void run()
   {
     DesktopAppInfo localDesktopAppInfo = new DesktopAppInfo(3, this.val$appInfo);
-    int i = DesktopDataManager.access$3300(this.this$0);
+    int i = DesktopDataManager.access$3200(this.this$0);
     if (i == -1) {
       DesktopDataManager.access$1600(this.this$0).add(localDesktopAppInfo);
     }
@@ -28,7 +28,7 @@ class DesktopDataManager$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.26
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.nativemodule.IPTSAllInOneJump;
+import com.tencent.qphone.base.util.QLog;
 
 public class qoq
-  implements QQPermissionCallback
+  implements IPTSAllInOneJump
 {
-  public qoq(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void allInOneJump(String paramString)
   {
-    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.p();
+    QLog.i("PTSAllInOneJumpModule", 1, "[allInOneJump], url = " + paramString);
+    if (BaseActivity.sTopActivity != null) {
+      pha.a(BaseActivity.sTopActivity, paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qoq
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public final class ilive_feeds_read$ReadFollowFeedsRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_read.ReadFollowFeedsRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bflq;
+import bisz;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -24,12 +24,12 @@ class OtherJsPlugin$10
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("result", str);
       localJSONObject2.put("scanType", paramIntent);
-      localJSONObject2.put("rawData", bflq.a(str));
+      localJSONObject2.put("rawData", bisz.a(str));
       localJSONObject2.put("charSet", "utf-8");
       localJSONObject1.put("detail", localJSONObject2);
       localJSONObject1.put("result", str);
       localJSONObject1.put("scanType", paramIntent);
-      localJSONObject1.put("rawData", bflq.a(str));
+      localJSONObject1.put("rawData", bisz.a(str));
       localJSONObject1.put("charSet", "utf-8");
       this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webView, "scanCode", localJSONObject1, this.val$callbackId);
       paramContext.unregisterReceiver(OtherJsPlugin.access$700(this.this$0));
@@ -47,7 +47,7 @@ class OtherJsPlugin$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.OtherJsPlugin.10
  * JD-Core Version:    0.7.0.1
  */

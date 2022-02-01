@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ugt
-  implements View.OnClickListener
+final class ugt
+  implements DialogInterface.OnClickListener
 {
-  ugt(ugs paramugs) {}
+  ugt(int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Ugr.a.a(16);
-    tqs.a(this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.get(), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get());
+    paramDialogInterface.dismiss();
+    umw.b(112, 2, 0);
+    umq.a(117, this.a, this.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ugt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import ssp;
+import tue;
 
 public final class PublicAccountManager$15
   implements Runnable
@@ -10,7 +10,7 @@ public final class PublicAccountManager$15
   
   public void run()
   {
-    ssp.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    tue.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
   }
 }
 

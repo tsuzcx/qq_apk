@@ -1,25 +1,21 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
-public class adsb
-  extends BroadcastReceiver
+public final class adsb
+  implements DialogInterface.OnClickListener
 {
-  public adsb(QQSettingMe paramQQSettingMe) {}
+  public adsb(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean, Map paramMap) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
-    }
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
-      }
-      this.a.x();
+    ChatActivityUtils.a(-1034L, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_JavaUtilMap);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

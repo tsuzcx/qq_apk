@@ -1,7 +1,14 @@
-class awab {}
+import android.graphics.Bitmap;
+
+class awab
+{
+  long jdField_a_of_type_Long;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  long b;
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awab
  * JD-Core Version:    0.7.0.1
  */

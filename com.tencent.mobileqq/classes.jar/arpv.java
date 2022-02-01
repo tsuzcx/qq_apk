@@ -1,22 +1,19 @@
-import android.os.Bundle;
+import mqq.app.QQPermissionCallback;
 
 class arpv
-  implements arpw
+  implements QQPermissionCallback
 {
-  arpv(arpu paramarpu) {}
+  arpv(arpp paramarpp) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramInt3);
-    }
+    bglp.b(this.a.a);
   }
   
-  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean);
-    }
+    arpp.b(this.a);
+    bcst.b(arpp.a(this.a), "CliOper", "", "", "0X800A6D6", "0X800A6D6", 0, 0, "", "", "", "");
   }
 }
 

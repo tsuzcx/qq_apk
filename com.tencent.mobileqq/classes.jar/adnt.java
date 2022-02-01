@@ -1,20 +1,16 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
 public class adnt
-  implements ScaleGestureDetector.OnScaleGestureListener
+  extends CharacterStyle
 {
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
+  public adnt(AuthDevActivity paramAuthDevActivity) {}
   
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return true;
+    paramTextPaint.setColor(-5855578);
   }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

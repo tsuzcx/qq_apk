@@ -1,117 +1,36 @@
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
 
-public class qko
-  implements qla
+class qko
+  extends NativeTextImp
 {
-  protected BaseArticleInfo a;
-  protected URL a;
-  
-  public qko(BaseArticleInfo paramBaseArticleInfo)
+  qko(qkn paramqkn, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+    super(paramContext);
   }
   
-  protected Pair<Integer, Integer> a(boolean paramBoolean)
+  public void draw(Canvas paramCanvas)
   {
-    if (paramBoolean) {
-      return orc.g();
-    }
-    return orc.f();
-  }
-  
-  public int getCommentCount()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCommentCount;
-  }
-  
-  public String getInnerUniqueID()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID;
-  }
-  
-  public String getShareUrl()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleContentUrl;
-  }
-  
-  public String getSubscribeName()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeName;
-  }
-  
-  public String getSubscribeUin()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID;
-  }
-  
-  public URL getVideoCoverURL()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSinglePicture != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSinglePicture;
-    }
-    return ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mFirstPagePicUrl);
-  }
-  
-  public URL getVideoCoverUrlWithSmartCut(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaNetURL == null)
+    if (!TextUtils.isEmpty(getText()))
     {
-      Pair localPair = a(paramBoolean);
-      this.jdField_a_of_type_JavaNetURL = getVideoCoverWithSmartCut(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue());
+      this.a.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
+      this.a.b.set(0.0F, 0.0F, getWidth() * qkn.a(this.a) / 100.0F, getHeight());
+      this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(qkn.a(this.a)));
+      paramCanvas.drawRoundRect(this.a.jdField_a_of_type_AndroidGraphicsRectF, afur.a(2.0F, getResources()), afur.a(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
+      this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(qkn.b(this.a)));
+      paramCanvas.drawRoundRect(this.a.b, afur.a(2.0F, getResources()), afur.a(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    return this.jdField_a_of_type_JavaNetURL;
-  }
-  
-  public URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2)
-  {
-    if (getVideoCoverURL() != null)
-    {
-      String str2 = getVideoCoverURL().toString();
-      String str1 = str2;
-      if (!TextUtils.isEmpty(str2))
-      {
-        str1 = str2;
-        if (str2.startsWith("pubaccountimage:")) {
-          str1 = str2.replaceFirst("pubaccountimage:", "");
-        }
-      }
-      return ors.a(ors.a(str1, paramInt1, paramInt2));
-    }
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
-  }
-  
-  public int getVideoDuration()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoDuration;
-    }
-    return 0;
-  }
-  
-  public int getVideoHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoJsonHeight;
-  }
-  
-  public String getVideoVid()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoVid;
-  }
-  
-  public int getVideoWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoJsonWidth;
+    super.draw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qko
  * JD-Core Version:    0.7.0.1
  */

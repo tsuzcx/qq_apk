@@ -1,42 +1,76 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bccu
-  implements bhuk
+  extends MSFServlet
 {
-  public bccu(SearchReciteArticleFragment paramSearchReciteArticleFragment, bhuf parambhuf, bccy parambccy, int paramInt) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Bhuf.dismiss();
-    int i = paramInt;
-    if (this.jdField_a_of_type_Bccy.jdField_a_of_type_Int == 2) {
-      i = paramInt + 1;
-    }
-    switch (i)
+    paramIntent.getStringExtra("key_cmd_string");
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
-    default: 
-      return;
-    case 0: 
-      SelectReciteParagraphFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bccy.c, SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment));
-      bdes.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, "0", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Bccy.jdField_a_of_type_Int) });
-      return;
-    }
-    bdes.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, "1", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Bccy.jdField_a_of_type_Int) });
-    bdes.a("Grp_edu", "Grp_recite", "Clk_Success", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Bccy.jdField_a_of_type_Int) });
-    try
-    {
-      SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment, bcea.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bccy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bccy.c, null));
-      SearchReciteArticleFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
+      paramIntent = paramFromServiceMsg.getWupBuffer();
+      arrayOfInt = new int[1];
+      paramIntent = blsy.a(paramIntent, (QQAppInterface)getAppRuntime(), arrayOfInt);
+      if (paramIntent != null)
       {
-        paramView.printStackTrace();
+        paramFromServiceMsg = new Bundle();
+        paramFromServiceMsg.putSerializable("data", paramIntent);
+        notifyObserver(null, 1001, true, paramFromServiceMsg, ayev.class);
       }
+    }
+    while (paramFromServiceMsg == null)
+    {
+      int[] arrayOfInt;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneFeedsServlet", 2, new Object[] { "inform QZoneFeedsServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
+      }
+      notifyObserver(null, 1001, false, new Bundle(), ayev.class);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneFeedsServlet", 2, "inform QZoneFeedsServlet resultcode fail.");
+    }
+    notifyObserver(null, 1001, false, new Bundle(), ayev.class);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null) {}
+    long l1;
+    do
+    {
+      return;
+      l1 = paramIntent.getLongExtra("selfuin", 0L);
+      localObject1 = paramIntent.getLongArrayExtra("hostuin");
+    } while (localObject1 == null);
+    Object localObject2 = new ArrayList(localObject1.length);
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      ((ArrayList)localObject2).add(Long.valueOf(localObject1[i]));
+      i += 1;
+    }
+    long l2 = paramIntent.getLongExtra("lasttime", 0L);
+    i = paramIntent.getIntExtra("src", 0);
+    localObject2 = new blsy(l1, (ArrayList)localObject2, l2, paramIntent.getStringExtra("refer"), i);
+    Object localObject1 = ((blsy)localObject2).encode();
+    paramIntent.putExtra("key_cmd_string", ((blsy)localObject2).getCmdString());
+    if (localObject1 == null) {}
+    for (paramIntent = new byte[4];; paramIntent = (Intent)localObject1)
+    {
+      paramPacket.setTimeout(60000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + "getAIONewestFeed");
+      paramPacket.putSendData(paramIntent);
+      return;
     }
   }
 }

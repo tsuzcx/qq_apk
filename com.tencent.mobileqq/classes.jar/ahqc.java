@@ -1,25 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahqc
-  implements bhuk
+  implements ahor
 {
-  public ahqc(TroopSuspiciousFragment paramTroopSuspiciousFragment, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a.sendEmptyMessage(1014);
-      }
-    }
+    paramagup.d(paramMessageRecord, paramagwc, paramString);
   }
 }
 

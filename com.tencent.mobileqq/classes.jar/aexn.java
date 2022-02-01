@@ -1,29 +1,35 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import java.util.WeakHashMap;
+import android.graphics.Paint;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-class aexn
-  implements OnCompositionLoadedListener
+public class aexn
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aexn(aexk paramaexk) {}
+  public aexn(QQMapActivity paramQQMapActivity) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void onGlobalLayout()
   {
-    if (aexk.a(this.a) == null) {
-      return;
-    }
-    if (paramLottieComposition != null)
+    int i = this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getWidth();
+    if (i > 0)
     {
-      aexk.a(this.a).setComposition(paramLottieComposition);
-      aexk.a(this.a).loop(false);
-      aexk.a(this.a).setVisibility(0);
-      aexk.a(this.a).playAnimation();
-      return;
+      int j = bggq.a(this.a, 10.0F);
+      Object localObject = new Paint();
+      ((Paint)localObject).setTextSize(bggq.a(this.a, 14.0F));
+      ((Paint)localObject).setAntiAlias(true);
+      int k = (int)(((Paint)localObject).measureText(this.a.e.getText().toString()) + 1.0F);
+      ((Paint)localObject).setTextSize(bggq.a(this.a, 20.0F));
+      if ((int)(((Paint)localObject).measureText(this.a.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) + 1.0F) + (k + j) > i)
+      {
+        localObject = this.a.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).width = (i - j - k);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-    aexk.a(this.a).clear();
-    this.a.a();
   }
 }
 

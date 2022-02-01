@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import abvb;
-import adpn;
-import ajmz;
-import ajna;
-import alsm;
+import Override;
+import aevv;
+import alfp;
+import alfq;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -18,24 +18,25 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import aozn;
-import asag;
-import awia;
-import azaw;
-import azqh;
-import azqs;
-import azri;
-import bdgk;
-import bdhk;
-import bdib;
-import bdne;
-import bfbj;
-import bhtb;
-import bidh;
-import bjdt;
+import anlu;
+import arcn;
+import auhk;
+import aywm;
+import bcbv;
+import bcsi;
+import bcst;
+import bctj;
+import bgln;
+import bgmp;
+import bgng;
+import bgsg;
+import biij;
+import bkqt;
+import blsb;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
@@ -44,6 +45,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI;
+import com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil;
 import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.startup.step.RecordTracer;
@@ -51,44 +53,48 @@ import com.tencent.open.agent.BindGroupActivity;
 import com.tencent.open.agent.BindTroopPreVerificationFragment;
 import com.tencent.open.agent.JoinTroopPreVerificationFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.trackrecordlib.core.RecordManager;
+import com.tencent.util.VersionUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.qqreader.QRBridgeActivity;
 import cooperation.qwallet.plugin.PatternLockUtils;
 import mqq.app.AppRuntime;
 import mqq.app.Constants.LogoutReason;
 import mqq.os.MqqHandler;
-import owy;
-import oxd;
+import pmh;
+import pmm;
 
 public class LoginActivity
   extends FragmentActivity
-  implements ajmz, Handler.Callback
+  implements alfp, Handler.Callback
 {
   private static LoginActivity jdField_a_of_type_ComTencentMobileqqActivityLoginActivity;
   private long jdField_a_of_type_Long;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private GuideBaseFragment jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment;
   MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(this);
-  oxd jdField_a_of_type_Oxd;
+  pmm jdField_a_of_type_Pmm;
   boolean jdField_a_of_type_Boolean = true;
   private boolean b;
   private boolean c;
   private boolean d;
   private boolean e;
+  private boolean f;
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
     ThreadManager.postImmediately(new LoginActivity.1(paramQQAppInterface, paramString), null, false);
     try
     {
-      azri.a(BaseApplicationImpl.sApplication).a(paramString);
-      azqh.a(BaseApplicationImpl.sApplication).a(paramString);
+      bctj.a(BaseApplicationImpl.sApplication).a(paramString);
+      bcsi.a(BaseApplicationImpl.sApplication).a(paramString);
       if (QLog.isColorLevel()) {
         QLog.d("login", 2, "loginSuccess set CURRENT_ACCOUNT: " + paramString);
       }
-      bdne.a(BaseApplicationImpl.sApplication, paramString, true);
+      bgsg.a(BaseApplicationImpl.sApplication, paramString, true);
       BaseApplicationImpl.sApplication.refreAccountList();
+      ThreadManager.getSubThreadHandler().post(new LoginActivity.2(paramString));
       return;
     }
     catch (Throwable paramQQAppInterface)
@@ -102,15 +108,106 @@ public class LoginActivity
     }
   }
   
-  private void a(String paramString)
+  private boolean a(String paramString)
   {
-    bfbj.a().a(paramString);
+    boolean bool = getIntent().getBooleanExtra("key_gesture_from_authority", false);
+    this.jdField_a_of_type_Boolean = true;
+    if (bool)
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("uin", paramString);
+      setResult(-1, (Intent)localObject);
+      return true;
+    }
+    if ((JumpActivity.jdField_a_of_type_Boolean) || (JumpActivity.b))
+    {
+      setResult(-1);
+      return true;
+    }
+    paramString = getIntent().getStringExtra("scheme_content");
+    if (getIntent().getBooleanExtra("isActionSend", false))
+    {
+      setResult(-1);
+      return true;
+    }
+    Object localObject = getIntent().getStringExtra("pkg_name");
+    if ((paramString != null) && (paramString.length() > 0))
+    {
+      bgmp localbgmp = bgng.a(this.app, this, paramString);
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) || ("web".equals(localbgmp.b("src_type"))) || (localbgmp.m()) || (localbgmp.n()))
+      {
+        localbgmp.c((String)localObject);
+        if ((localbgmp.m()) || (MiniProgramOpenSdkUtil.asyncShareMiniProgram(localbgmp))) {
+          this.jdField_a_of_type_Boolean = false;
+        }
+        localbgmp.a();
+        return true;
+      }
+      if (("h5".equalsIgnoreCase(localbgmp.b("jump_from"))) && (localbgmp.l()))
+      {
+        getIntent().putExtra("package_from_h5", "pakage_from_h5");
+        getIntent().putExtra("jump_action_from_h5", paramString);
+        b();
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private boolean a(String paramString, boolean paramBoolean)
+  {
+    boolean bool = false;
+    this.jdField_a_of_type_Boolean = false;
+    if (getIntent().getBooleanExtra("authority_start_qq_login", false))
+    {
+      Intent localIntent = new Intent("action_login_sucess");
+      localIntent.putExtra("login_success_uin", paramString);
+      localIntent.putExtra("forbid_quick_login_after", paramBoolean);
+      sendBroadcast(localIntent);
+      ThreadManager.getUIHandler().postDelayed(new LoginActivity.4(this, paramString), 1000L);
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private void b()
+  {
+    Intent localIntent = new Intent(this, SplashActivity.class);
+    Object localObject = getIntent().getStringExtra("key_action");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((BindGroupActivity.class.getSimpleName().equals(localObject)) || (ChatSettingForTroop.class.getSimpleName().equals(localObject)) || (AddFriendLogicActivity.class.getSimpleName().equals(localObject)) || (auhk.class.getSimpleName().equals(localObject)) || (anlu.class.getSimpleName().equals(localObject)))) {
+      localIntent.putExtras(getIntent().getExtras());
+    }
+    localIntent.addFlags(67108864);
+    localIntent.putExtra("k_from_login", true);
+    localObject = getIntent().getExtras();
+    if (localObject != null)
+    {
+      if (((Bundle)localObject).containsKey("tab_index")) {
+        localIntent.putExtra("tab_index", getIntent().getExtras().getInt("tab_index"));
+      }
+      if (((Bundle)localObject).containsKey("main_tab_id")) {
+        localIntent.putExtra("main_tab_id", ((Bundle)localObject).getInt("main_tab_id"));
+      }
+      if (((Bundle)localObject).containsKey("jump_action_from_h5")) {
+        localIntent.putExtra("jump_action_from_h5", getIntent().getExtras().getString("jump_action_from_h5"));
+      }
+      if (((Bundle)localObject).containsKey("package_from_h5")) {
+        localIntent.putExtra("package_from_h5", getIntent().getExtras().getString("package_from_h5"));
+      }
+    }
+    startActivity(localIntent);
+    overridePendingTransition(2130772072, 0);
+  }
+  
+  private void b(String paramString)
+  {
+    biij.a().a(paramString);
     int i;
     if ((getIntent().getFlags() & 0x100000) != 0)
     {
       i = 1;
-      if (!d()) {
-        break label46;
+      if (!c()) {
+        break label47;
       }
     }
     for (;;)
@@ -121,8 +218,8 @@ public class LoginActivity
       return;
       i = 0;
       break;
-      label46:
-      if (((i != 0) || (!c())) && ((i != 0) || (!a(paramString))) && (!g()) && (!a()) && (!f()) && (!e())) {
+      label47:
+      if (((i != 0) || (!a(paramString, false))) && ((i != 0) || (!a(paramString))) && (!f()) && (!a()) && (!e()) && (!d())) {
         if (getIntent().getParcelableExtra("shortcut_jump_key") != null)
         {
           paramString = (Intent)getIntent().getParcelableExtra("shortcut_jump_key");
@@ -173,7 +270,7 @@ public class LoginActivity
             localIntent.putExtras(paramString);
             startActivity(localIntent);
           }
-          else if ((!h()) && (!i()) && (!j()))
+          else if ((!g()) && (!h()) && (!i()))
           {
             setResult(-1);
             if (!this.c) {
@@ -185,84 +282,9 @@ public class LoginActivity
     }
   }
   
-  private boolean a(String paramString)
-  {
-    boolean bool = getIntent().getBooleanExtra("key_gesture_from_authority", false);
-    this.jdField_a_of_type_Boolean = true;
-    if (bool)
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("uin", paramString);
-      setResult(-1, (Intent)localObject);
-      return true;
-    }
-    if ((JumpActivity.jdField_a_of_type_Boolean) || (JumpActivity.b))
-    {
-      setResult(-1);
-      return true;
-    }
-    paramString = getIntent().getStringExtra("scheme_content");
-    if (getIntent().getBooleanExtra("isActionSend", false))
-    {
-      setResult(-1);
-      return true;
-    }
-    Object localObject = getIntent().getStringExtra("pkg_name");
-    if ((paramString != null) && (paramString.length() > 0))
-    {
-      bdhk localbdhk = bdib.a(this.app, this, paramString);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) || ("web".equals(localbdhk.b("src_type"))) || (localbdhk.g()) || (localbdhk.h()))
-      {
-        localbdhk.b((String)localObject);
-        if (localbdhk.g()) {
-          this.jdField_a_of_type_Boolean = false;
-        }
-        localbdhk.c();
-        return true;
-      }
-      if (("h5".equalsIgnoreCase(localbdhk.b("jump_from"))) && (localbdhk.f()))
-      {
-        getIntent().putExtra("package_from_h5", "pakage_from_h5");
-        getIntent().putExtra("jump_action_from_h5", paramString);
-        b();
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private void b()
-  {
-    Intent localIntent = new Intent(this, SplashActivity.class);
-    Object localObject = getIntent().getStringExtra("key_action");
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((BindGroupActivity.class.getSimpleName().equals(localObject)) || (ChatSettingForTroop.class.getSimpleName().equals(localObject)) || (AddFriendLogicActivity.class.getSimpleName().equals(localObject)) || (asag.class.getSimpleName().equals(localObject)) || (alsm.class.getSimpleName().equals(localObject)))) {
-      localIntent.putExtras(getIntent().getExtras());
-    }
-    localIntent.addFlags(67108864);
-    localIntent.putExtra("k_from_login", true);
-    localObject = getIntent().getExtras();
-    if (localObject != null)
-    {
-      if (((Bundle)localObject).containsKey("tab_index")) {
-        localIntent.putExtra("tab_index", getIntent().getExtras().getInt("tab_index"));
-      }
-      if (((Bundle)localObject).containsKey("main_tab_id")) {
-        localIntent.putExtra("main_tab_id", ((Bundle)localObject).getInt("main_tab_id"));
-      }
-      if (((Bundle)localObject).containsKey("jump_action_from_h5")) {
-        localIntent.putExtra("jump_action_from_h5", getIntent().getExtras().getString("jump_action_from_h5"));
-      }
-      if (((Bundle)localObject).containsKey("package_from_h5")) {
-        localIntent.putExtra("package_from_h5", getIntent().getExtras().getString("package_from_h5"));
-      }
-    }
-    startActivity(localIntent);
-    overridePendingTransition(2130772071, 0);
-  }
-  
   private boolean b()
   {
-    if (("Meizu".equalsIgnoreCase(bdgk.h())) && (Build.VERSION.SDK_INT < 24))
+    if (("Meizu".equalsIgnoreCase(bgln.h())) && (Build.VERSION.SDK_INT < 24))
     {
       if (QLog.isColorLevel()) {
         QLog.d("LoginActivity", 2, "onMultiWindowModeChanged meizu < 7.0 not support!");
@@ -277,61 +299,53 @@ public class LoginActivity
     if (QLog.isColorLevel()) {
       QLog.e("LoginActivity", 2, "only kandian tab switch, login delayTime:" + (NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long));
     }
-    if (awia.a().a()) {
+    if (aywm.a().a()) {
       return;
     }
-    ThreadManager.postImmediately(new LoginActivity.2(this), null, false);
-    a(this.app.getAccount());
-    if (!isFinishing()) {}
+    ThreadManager.postImmediately(new LoginActivity.3(this), null, false);
     try
     {
-      dismissDialog(0);
-      PatternLockUtils.setFirstEnterAfterLoginState(this, this.app.getAccount(), true);
-      return;
+      b(this.app.getAccount());
+      if (isFinishing()) {}
     }
-    catch (Exception localException)
+    catch (Exception localException1)
     {
-      for (;;)
+      try
       {
-        localException.printStackTrace();
+        dismissDialog(0);
+        PatternLockUtils.setFirstEnterAfterLoginState(this, this.app.getAccount(), true);
+        return;
+        localException1 = localException1;
+        QLog.e("LoginActivity", 1, "loginSuccess error: " + localException1.getMessage());
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          localException2.printStackTrace();
+        }
       }
     }
   }
   
   private boolean c()
   {
-    boolean bool = false;
-    this.jdField_a_of_type_Boolean = false;
-    if (getIntent().getBooleanExtra("authority_start_qq_login", false))
-    {
-      Intent localIntent = new Intent("action_login_sucess");
-      String str = this.app.getAccount();
-      localIntent.putExtra("login_success_uin", str);
-      sendBroadcast(localIntent);
-      ThreadManager.getUIHandler().postDelayed(new LoginActivity.3(this, str), 1000L);
-      bool = true;
-    }
-    return bool;
-  }
-  
-  private boolean d()
-  {
     Object localObject = getIntent().getStringExtra("scheme_content");
     String str = getIntent().getStringExtra("pkg_name");
     if ((localObject != null) && ((((String)localObject).startsWith("mqqopensdkapi://bizAgent/")) || (((String)localObject).startsWith("http://qm.qq.com/cgi-bin/")) || (((String)localObject).startsWith("mqq://shop/")) || (((String)localObject).startsWith("mqqapi://wallet/open")) || (((String)localObject).startsWith("mqqmdpass://wallet/modify_pass")) || (((String)localObject).startsWith("mqqapi://qqdataline/openqqdataline")) || (((String)localObject).startsWith("mqqapi://dating/")) || (((String)localObject).startsWith("mqqapi://qlink/openqlink")) || (((String)localObject).startsWith("mqqapi://qqc2b/callc2bphone"))))
     {
-      localObject = bdib.a(this.app, this, (String)localObject);
+      localObject = bgng.a(this.app, this, (String)localObject);
       if (localObject != null)
       {
-        ((bdhk)localObject).b(str);
-        ((bdhk)localObject).c();
+        ((bgmp)localObject).c(str);
+        ((bgmp)localObject).a();
         return true;
       }
     }
     return false;
   }
   
-  private boolean e()
+  private boolean d()
   {
     Bundle localBundle = getIntent().getBundleExtra("key_params");
     if (getIntent().getBooleanExtra("fromThirdAppByOpenSDK", false))
@@ -340,18 +354,18 @@ public class LoginActivity
       localIntent.putExtra("key_params", localBundle);
       int i = localBundle.getInt("action");
       if (i == 3) {
-        adpn.a(this, localIntent, PublicTransFragmentActivity.class, JoinTroopPreVerificationFragment.class);
+        aevv.a(this, localIntent, PublicTransFragmentActivity.class, JoinTroopPreVerificationFragment.class);
       }
       while (i != 1) {
         return true;
       }
-      adpn.a(this, localIntent, PublicTransFragmentActivity.class, BindTroopPreVerificationFragment.class);
+      aevv.a(this, localIntent, PublicTransFragmentActivity.class, BindTroopPreVerificationFragment.class);
       return true;
     }
     return false;
   }
   
-  private boolean f()
+  private boolean e()
   {
     Object localObject = getIntent().getStringExtra("scheme_content");
     String str = getIntent().getStringExtra("pkg_name");
@@ -360,15 +374,15 @@ public class LoginActivity
     }
     if ((localObject != null) && (((String)localObject).startsWith("mqqapi://od")))
     {
-      localObject = bdib.a(this.app, this, (String)localObject);
-      ((bdhk)localObject).b(str);
-      ((bdhk)localObject).c();
+      localObject = bgng.a(this.app, this, (String)localObject);
+      ((bgmp)localObject).c(str);
+      ((bgmp)localObject).a();
       return true;
     }
     return false;
   }
   
-  private boolean g()
+  private boolean f()
   {
     boolean bool = getIntent().getBooleanExtra("key_req_by_contact_sync", false);
     if (bool)
@@ -384,7 +398,7 @@ public class LoginActivity
     return bool;
   }
   
-  private boolean h()
+  private boolean g()
   {
     Object localObject = getIntent().getStringExtra("scheme_content");
     String str = getIntent().getStringExtra("pkg_name");
@@ -393,15 +407,15 @@ public class LoginActivity
     }
     if ((localObject != null) && (((String)localObject).startsWith("mqqapi://schedule/showDetail?")))
     {
-      localObject = bdib.a(this.app, this, (String)localObject);
-      ((bdhk)localObject).b(str);
-      ((bdhk)localObject).c();
+      localObject = bgng.a(this.app, this, (String)localObject);
+      ((bgmp)localObject).c(str);
+      ((bgmp)localObject).a();
       return true;
     }
     return false;
   }
   
-  private boolean i()
+  private boolean h()
   {
     boolean bool2 = false;
     boolean bool3 = getIntent().getBooleanExtra("is_from_king_moment", false);
@@ -420,9 +434,9 @@ public class LoginActivity
         localIntent.putExtra("arg_is_from_wang_zhe", true);
         localIntent.putExtra("arg_wang_zhe_app_id", l);
         startActivity(localIntent);
-        this.jdField_a_of_type_Oxd = ((oxd)this.app.getManager(163));
-        if (this.jdField_a_of_type_Oxd != null) {
-          this.jdField_a_of_type_Oxd.a().a(str, this.app.c());
+        this.jdField_a_of_type_Pmm = ((pmm)this.app.getManager(163));
+        if (this.jdField_a_of_type_Pmm != null) {
+          this.jdField_a_of_type_Pmm.a().a(str, this.app.c());
         }
         bool1 = true;
       }
@@ -430,13 +444,13 @@ public class LoginActivity
     return bool1;
   }
   
-  private boolean j()
+  private boolean i()
   {
     boolean bool = false;
     if (getIntent().getBooleanExtra("UploadPhoto.key_from_album_shortcut", false))
     {
       Bundle localBundle = getIntent().getExtras();
-      bjdt.a(this, localBundle.getString("UploadPhoto.key_album_id"), localBundle.getLong("UploadPhoto.key_album_owner_uin", 0L), String.valueOf(getAppRuntime().getLongAccountUin()));
+      blsb.a(this, localBundle.getString("UploadPhoto.key_album_id"), localBundle.getLong("UploadPhoto.key_album_owner_uin", 0L), String.valueOf(getAppRuntime().getLongAccountUin()));
       finish();
       bool = true;
     }
@@ -453,7 +467,7 @@ public class LoginActivity
   {
     Object localObject = getSupportFragmentManager();
     FragmentTransaction localFragmentTransaction = ((FragmentManager)localObject).beginTransaction();
-    localObject = ((FragmentManager)localObject).findFragmentById(2131367400);
+    localObject = ((FragmentManager)localObject).findFragmentById(2131367708);
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment != null) || (localObject != null))
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment == null) && (localObject != null) && ((localObject instanceof GuideBaseFragment))) {
@@ -462,8 +476,8 @@ public class LoginActivity
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment.a(null);
       }
-      localFragmentTransaction.replace(2131367400, paramGuideBaseFragment);
-      if (bhtb.e()) {
+      localFragmentTransaction.replace(2131367708, paramGuideBaseFragment);
+      if (VersionUtils.isHoneycomb()) {
         localFragmentTransaction.commitAllowingStateLoss();
       }
     }
@@ -474,13 +488,25 @@ public class LoginActivity
       return;
       localFragmentTransaction.commit();
       continue;
-      localFragmentTransaction.add(2131367400, paramGuideBaseFragment);
-      if (bhtb.e()) {
+      localFragmentTransaction.add(2131367708, paramGuideBaseFragment);
+      if (VersionUtils.isHoneycomb()) {
         localFragmentTransaction.commitAllowingStateLoss();
       } else {
         localFragmentTransaction.commit();
       }
     }
+  }
+  
+  public void a(String paramString)
+  {
+    if ((getIntent().getFlags() & 0x100000) != 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      QLog.d("LoginActivity", 1, "launchedFromHistory is true, return");
+      return;
+    }
+    QLog.d("LoginActivity", 1, "handleSdkLoginAuthority");
+    a(paramString, true);
   }
   
   protected boolean a()
@@ -501,6 +527,14 @@ public class LoginActivity
     if ((this.c) && (this.app != null) && (GesturePWDUtils.getGesturePWDState(getActivity(), this.app.getCurrentAccountUin()) == 2) && (GesturePWDUtils.getGesturePWDMode(getActivity(), this.app.getCurrentAccountUin()) == 21)) {
       startUnlockActivity();
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -524,7 +558,7 @@ public class LoginActivity
     this.e = getIntent().getBooleanExtra("from_register_choose", false);
     this.d = getIntent().getBooleanExtra("login_from_account_change", false);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
-      bidh.a(this);
+      bkqt.a(this);
     }
     if (jdField_a_of_type_ComTencentMobileqqActivityLoginActivity != null) {
       jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.finish();
@@ -537,10 +571,10 @@ public class LoginActivity
         QLog.d("LoginActivity", 2, "LoginActivity app is " + this.app);
       }
       this.jdField_a_of_type_Boolean = true;
-      super.setContentView(2131562567);
+      super.setContentView(2131562805);
       if (paramBundle != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment = ((GuideBaseFragment)getSupportFragmentManager().findFragmentById(2131367400));
+        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment = ((GuideBaseFragment)getSupportFragmentManager().findFragmentById(2131367708));
         if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment != null) {
           this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment.a(this);
         }
@@ -554,9 +588,9 @@ public class LoginActivity
     {
       QLog.d("LoginActivity", 1, new Object[] { Boolean.valueOf(bool) });
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment == null) {
-        a(ajna.a(this, this.app));
+        a(alfq.a(this, this.app));
       }
-      if (azaw.a(1, BaseApplicationImpl.processName))
+      if (bcbv.a(1, BaseApplicationImpl.processName))
       {
         long l1 = System.currentTimeMillis();
         paramBundle = BaseActivity.sTopActivity;
@@ -570,10 +604,10 @@ public class LoginActivity
       }
       if ((this.c) && (this.d))
       {
-        azqs.b(this.app, "CliOper", "", "", "0X800664D", "0X800664D", 0, 0, "", "", "", "");
-        azqs.b(this.app, "dc00898", "", "", "0X800735D", "0X800735D", 0, 0, "", "", "", "");
-        azqs.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
-        azqs.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 3, 0, "", "", "", "");
+        bcst.b(this.app, "CliOper", "", "", "0X800664D", "0X800664D", 0, 0, "", "", "", "");
+        bcst.b(this.app, "dc00898", "", "", "0X800735D", "0X800735D", 0, 0, "", "", "", "");
+        bcst.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
+        bcst.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 3, 0, "", "", "", "");
       }
       return true;
       localObject = getAppRuntime();
@@ -599,7 +633,15 @@ public class LoginActivity
     if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(20140326);
     }
-    abvb.a(this);
+    try
+    {
+      dismissDialog(0);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("LoginActivity", 1, new Object[] { "dismiss progress dialog error : ", localException.getMessage() });
+    }
   }
   
   public void doOnNewIntent(Intent paramIntent)
@@ -621,6 +663,17 @@ public class LoginActivity
     if (QLog.isColorLevel()) {
       QLog.d("main", 2, "onResume in LoginActivity");
     }
+    if (this.f) {}
+    try
+    {
+      showDialog(0);
+      this.f = false;
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("LoginActivity", 1, new Object[] { "show progress dialog error : ", localException.getMessage() });
+    }
   }
   
   @TargetApi(16)
@@ -629,34 +682,38 @@ public class LoginActivity
     switch (paramMessage.what)
     {
     }
-    for (;;)
+    do
     {
-      return true;
-      if (!isFinishing())
+      do
       {
-        try
-        {
-          dismissDialog(0);
-        }
-        catch (Exception paramMessage)
-        {
-          paramMessage.printStackTrace();
-        }
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("LoginActivity", 2, "recv message FINISH_ACTIVITY.. finish activity");
-        }
-        finish();
-        continue;
-        if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
-          this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(20140326);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("LoginActivity", 2, "handleMessage  LOGIN_DO_NEXT");
-        }
-        c();
+        return true;
+      } while (isFinishing());
+      try
+      {
+        dismissDialog(0);
+        return true;
       }
-    }
+      catch (Exception paramMessage)
+      {
+        paramMessage.printStackTrace();
+        return true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginActivity", 2, "recv message FINISH_ACTIVITY.. finish activity");
+      }
+      finish();
+      return true;
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(20140326);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginActivity", 2, "handleMessage  LOGIN_DO_NEXT");
+      }
+      c();
+      return true;
+    } while (isFinishing());
+    this.f = true;
+    return true;
   }
   
   public boolean isWrapContent()
@@ -678,7 +735,7 @@ public class LoginActivity
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       if (!((String)localObject).equalsIgnoreCase(this.app.getCurrentAccountUin())) {
-        bdne.a(BaseApplicationImpl.sApplication, (String)localObject, true);
+        bgsg.a(BaseApplicationImpl.sApplication, (String)localObject, true);
       }
       PatternLockUtils.setFirstEnterAfterLoginState(this, (String)localObject, true);
     }
@@ -686,12 +743,12 @@ public class LoginActivity
     ((Message)localObject).what = 20140326;
     this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed((Message)localObject, 800L);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (!aozn.a(getAppRuntime(), getClass(), this.jdField_a_of_type_Long))
+    if (!arcn.a(getAppRuntime(), getClass(), this.jdField_a_of_type_Long))
     {
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(20140326);
       c();
     }
-    azqs.a(this.app, "dc00898", "", "", "0X800AC0B", "0X800AC0B", 0, 0, "", "", "", "");
+    bcst.a(this.app, "dc00898", "", "", "0X800AC0B", "0X800AC0B", 0, 0, "", "", "", "");
     MiniAppSecurityUtil.doClearAfterLoginSuccess();
   }
   
@@ -758,6 +815,13 @@ public class LoginActivity
     }
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   protected Dialog onCreateDialog(int paramInt)
   {
     Dialog localDialog = null;
@@ -801,7 +865,7 @@ public class LoginActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginActivity
  * JD-Core Version:    0.7.0.1
  */

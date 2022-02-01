@@ -1,28 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akuc
-  implements Observer
+  implements View.OnClickListener
 {
-  public akuc(ApolloGameStateMachine paramApolloGameStateMachine) {}
+  public akuc(ChooseItemView paramChooseItemView, View.OnClickListener paramOnClickListener) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramObject != null) && ((paramObject instanceof Bundle)))
-    {
-      paramObservable = (Bundle)paramObject;
-      long l1 = paramObservable.getLong("START_TIME_KEY");
-      long l2 = paramObservable.getLong("END_TIME_KEY");
-      paramObject = paramObservable.getString("MESSAGE");
-      int i = paramObservable.getInt("FROM");
-      int j = paramObservable.getInt("TO");
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameStateMachine", 2, new Object[] { "[pipLineObserver] cost:[", Long.valueOf(l2 - l1), "ms] message:[", paramObject, "] from:[", Integer.valueOf(i), "] to:[", Integer.valueOf(j), "] start:[", Long.valueOf(l1), "] end:[", Long.valueOf(l2), "]" });
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a.a(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

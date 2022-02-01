@@ -1,34 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-
 class xdq
-  implements Animator.AnimatorListener
+  extends xcc
 {
-  xdq(xdo paramxdo) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  xdq(xcu paramxcu, String paramString1, String paramString2, boolean paramBoolean, xeb paramxeb)
   {
-    this.a.a = false;
+    super(paramString1, paramString2, paramBoolean);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean b()
   {
-    this.a.a = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
+    this.jdField_a_of_type_Xeb.e = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xdq
  * JD-Core Version:    0.7.0.1
  */

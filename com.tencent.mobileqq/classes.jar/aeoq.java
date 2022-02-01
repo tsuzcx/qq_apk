@@ -1,6 +1,21 @@
-public abstract interface aeoq
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import mqq.os.MqqHandler;
+
+public class aeoq
+  extends MqqHandler
 {
-  public abstract void a();
+  public aeoq(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
+  }
 }
 
 

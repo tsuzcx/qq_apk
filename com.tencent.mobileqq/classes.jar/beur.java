@@ -1,6 +1,18 @@
-public abstract interface beur
+import android.content.Context;
+import android.widget.ScrollView;
+
+class beur
+  extends ScrollView
 {
-  public abstract void a(float paramFloat);
+  beur(beuq parambeuq, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
+  }
 }
 
 

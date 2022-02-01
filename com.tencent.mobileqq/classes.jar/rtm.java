@@ -1,38 +1,67 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.35.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
-import pb.unite.search.RequestSearchWord.Rcmd;
-
 public class rtm
-  implements amff
 {
-  public rtm(ReadInJoyListViewGroup paramReadInJoyListViewGroup, ArticleInfo paramArticleInfo, int paramInt1, int paramInt2) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
+  private String e;
   
-  public void a(PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField)
+  private rtm(rto paramrto)
   {
-    if ((paramPBRepeatMessageField == null) || (paramPBRepeatMessageField.size() <= 0)) {
-      return;
-    }
-    if (ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).containsKey(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime)) {
-      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).put(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime, Integer.valueOf(this.jdField_a_of_type_Int + 1));
-    }
-    for (;;)
-    {
-      bdne.a("search_word_prefix_show_times", bdne.b("search_word_prefix_show_times") + 1L);
-      ThreadManager.getUIHandler().post(new ReadInJoyListViewGroup.35.1(this, paramPBRepeatMessageField, paramPBStringField));
-      return;
-      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).put(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime, Integer.valueOf(1));
-    }
+    this.jdField_a_of_type_JavaLangString = rto.a(paramrto);
+    this.jdField_b_of_type_JavaLangString = rto.b(paramrto);
+    this.c = rto.c(paramrto);
+    this.d = rto.d(paramrto);
+    this.jdField_a_of_type_Long = rto.a(paramrto);
+    this.e = rto.e(paramrto);
+    this.jdField_b_of_type_Long = rto.b(paramrto);
+  }
+  
+  public static rto a()
+  {
+    return new rto(null);
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public long b()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rtm
  * JD-Core Version:    0.7.0.1
  */

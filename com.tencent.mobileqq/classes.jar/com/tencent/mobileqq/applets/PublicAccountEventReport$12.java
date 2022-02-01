@@ -1,42 +1,20 @@
 package com.tencent.mobileqq.applets;
 
-import bkgp;
-import bkgq;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import mqq.app.AppRuntime;
+import bcst;
 
 public final class PublicAccountEventReport$12
   implements Runnable
 {
-  public PublicAccountEventReport$12(String paramString, int paramInt1, int paramInt2) {}
+  public PublicAccountEventReport$12(String paramString, long paramLong) {}
   
   public void run()
   {
-    bkgq localbkgq = new bkgq();
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    String str = "";
-    if (localAppRuntime != null) {
-      str = localAppRuntime.getAccount();
-    }
-    long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localbkgq.jdField_e_of_type_JavaLangString = "vab_push";
-    localbkgq.jdField_f_of_type_JavaLangString = "vab_push";
-    localbkgq.b = (str + "_" + l);
-    localbkgq.jdField_a_of_type_Int = 1;
-    localbkgq.g = this.jdField_a_of_type_JavaLangString;
-    localbkgq.h = "";
-    localbkgq.jdField_a_of_type_Long = l;
-    localbkgq.d = this.jdField_a_of_type_Int;
-    localbkgq.k = Integer.toString(this.b);
-    localbkgq.jdField_e_of_type_Int = 1;
-    localbkgq.jdField_f_of_type_Int = 1;
-    bkgp.a().a(localbkgq);
+    bcst.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800A306", "0X800A306", 0, 0, "", "", this.jdField_a_of_type_Long + "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport.12
  * JD-Core Version:    0.7.0.1
  */

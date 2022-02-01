@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import agzh;
-import agzi;
-import ahap;
+import ailb;
+import ailc;
+import aimj;
 
 public class ComicTipsBar$1$1
   implements Runnable
 {
-  public ComicTipsBar$1$1(agzi paramagzi) {}
+  public ComicTipsBar$1$1(ailc paramailc) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ComicTipsBar$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.ComicTipsBar.1.1
  * JD-Core Version:    0.7.0.1
  */

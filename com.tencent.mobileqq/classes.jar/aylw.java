@@ -1,14 +1,22 @@
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import mqq.app.QQPermissionCallback;
+
 public class aylw
+  implements QQPermissionCallback
 {
-  public String a;
-  public String b;
+  public aylw(ScanTorchActivity paramScanTorchActivity) {}
   
-  public aylw() {}
-  
-  public aylw(String paramString1, String paramString2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission deny i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
+    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission grant i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
   }
 }
 

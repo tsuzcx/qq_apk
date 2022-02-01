@@ -1,28 +1,24 @@
-import android.content.Context;
-import android.view.View;
-
-class wdh
-  implements bhuk
+public class wdh
 {
-  wdh(wdg paramwdg, bhuf parambhuf, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_Bhuf.e();
     switch (paramInt)
     {
+    case 1: 
+    case 2: 
+    case 5: 
+    case 6: 
     default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_Wdg.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
-      return;
+      return 6;
+    case 4: 
+      return 10;
     }
-    this.jdField_a_of_type_Wdg.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
+    return 10;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wdh
  * JD-Core Version:    0.7.0.1
  */

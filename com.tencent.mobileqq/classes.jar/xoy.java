@@ -1,12 +1,14 @@
-import android.widget.ImageView;
-
-class xoy
+public class xoy
 {
-  public ImageView a;
+  public float a;
+  public int a;
+  public Object a;
+  public boolean a;
+  public float b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xoy
  * JD-Core Version:    0.7.0.1
  */

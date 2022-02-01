@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:id="@id/li3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:keepScreenOn="true"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/dys" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <com.tencent.image.URLImageView android:id="@id/dys" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
     <LinearLayout android:gravity="center" android:layout_gravity="left" android:orientation="vertical" android:id="@id/eed" android:layout_width="100.0dip" android:layout_height="fill_parent" android:alpha="0.0">
         <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cc8" android:rotation="180.0" />
         <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="快退10s" />

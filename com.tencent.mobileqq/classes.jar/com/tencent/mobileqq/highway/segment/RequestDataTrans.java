@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.highway.segment;
 
 import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.config.ConfigManager;
 import com.tencent.mobileqq.highway.conn.ConnManager;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.LoginSigHead;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.SegHead;
@@ -108,26 +107,26 @@ public class RequestDataTrans
         localTransaction.mTransReport.connNum = paramRequestWorker.engine.mConnManager.getCurrentConnNum();
         TransReport localTransReport = localTransaction.mTransReport;
         if (this.protoType != 1) {
-          break label442;
+          break label451;
         }
         localObject = "TCP";
         localTransReport.protoType = ((String)localObject);
         localTransaction.mTransReport.ipIndex = this.endpoint.ipIndex;
         localTransaction.mTransReport.isIpv6 = paramHwResponse.isIpv6;
-        paramRequestWorker = ConfigManager.getInstance(paramRequestWorker.engine.getAppContext(), paramRequestWorker.engine);
-        localTransaction.mTransReport.netIpType = paramRequestWorker.mCurnetIptype;
+        localTransaction.mTransReport.mHasIpv6List = paramRequestWorker.engine.mConnManager.mHasIpv6List;
+        localTransaction.mTransReport.mIPv6Fast = paramRequestWorker.engine.mConnManager.isIpv6Fast();
       }
       if (paramHwResponse.retCode != 0) {
-        break label680;
+        break label689;
       }
       if (paramHwResponse.segmentResp.uint32_flag.has()) {
         if ((paramHwResponse.segmentResp.uint32_flag.get() & 0x1) != 1) {
-          break label450;
+          break label459;
         }
       }
     }
-    label442:
-    label450:
+    label451:
+    label459:
     for (boolean bool = true;; bool = false)
     {
       paramHwResponse.isFinish = bool;
@@ -136,30 +135,30 @@ public class RequestDataTrans
         localTransaction.mTransReport.firstRange = paramHwResponse.range;
       }
       if (!paramHwResponse.needReUpload) {
-        break label547;
+        break label556;
       }
       if (localTransaction.reUploadTransaction) {
-        break label455;
+        break label464;
       }
       localTransaction.onTransReUpload(getHwSeq());
       return;
       localObject = "HTTP";
       break;
     }
-    label455:
+    label464:
     BdhLogUtil.LogEvent("T", "B_ID:" + localTransaction.mBuzCmdId + "\tT_ID:" + localTransaction.getTransationId() + " ReUpload twice,transaction fail");
     localTransaction.TRACKER.logStep("REUPLOAD", "ReUpload twice");
     localTransaction.onTransFailed(9304, "ReUpload twice", paramHwResponse.retCode, paramHwResponse.buzRetCode, this.retryCount, paramHwResponse.mBuExtendinfo);
     return;
-    label547:
+    label556:
     if ((paramHwResponse.range > localTransaction.transferedSizeBDH) && (getHwSeq() > localTransaction.reUploadHwSeq))
     {
       if (paramHwResponse.range <= localTransaction.totalLength) {
-        break label660;
+        break label669;
       }
       BdhLogUtil.LogEvent("T", "B_ID:" + localTransaction.mBuzCmdId + "\tT_ID:" + localTransaction.getTransationId() + " ReturnServerRangeError");
     }
-    label660:
+    label669:
     for (localTransaction.transferedSizeBDH = 0; paramHwResponse.isFinish; localTransaction.transferedSizeBDH = paramHwResponse.range)
     {
       localTransaction.onTransSuccess(this.mInfo, paramHwResponse.mBuExtendinfo);
@@ -167,7 +166,7 @@ public class RequestDataTrans
     }
     localTransaction.onTransProgress(this, paramHwResponse);
     return;
-    label680:
+    label689:
     BdhLogUtil.LogEvent("R", "HandleResp : RespError :" + dumpBaseInfo());
     Object localObject = localTransaction.mTransReport;
     if (this.protoType == 1) {}

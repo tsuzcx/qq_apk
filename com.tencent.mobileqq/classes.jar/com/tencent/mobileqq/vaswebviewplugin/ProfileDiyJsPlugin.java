@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import apmh;
-import begz;
+import arpd;
+import bhod;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -105,7 +105,7 @@ public class ProfileDiyJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ProfileDiyJsPlugin
  * JD-Core Version:    0.7.0.1
  */

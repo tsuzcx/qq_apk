@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import apmh;
-import apml;
-import bapa;
+import arpd;
+import arph;
+import bdqe;
 import org.json.JSONObject;
 
 class ThemeJsPlugin$2
-  implements bapa
+  implements bdqe
 {
   ThemeJsPlugin$2(ThemeJsPlugin paramThemeJsPlugin) {}
   
@@ -23,7 +23,7 @@ class ThemeJsPlugin$2
   
   public void downloadBgPic(String paramString, Bundle paramBundle)
   {
-    paramString = apml.a("chatbackground_startDownload", paramString, this.this$0.mOnRemoteResp.key, paramBundle);
+    paramString = arph.a("chatbackground_startDownload", paramString, this.this$0.mOnRemoteResp.key, paramBundle);
     this.this$0.sendRemoteReq(paramString, false, true);
   }
   
@@ -34,7 +34,7 @@ class ThemeJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

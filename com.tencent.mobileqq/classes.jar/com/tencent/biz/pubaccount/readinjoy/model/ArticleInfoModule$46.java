@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import opy;
+import pfr;
 
 public final class ArticleInfoModule$46
   implements Runnable
@@ -10,7 +10,7 @@ public final class ArticleInfoModule$46
   
   public void run()
   {
-    opy.a(this.a);
+    pfr.a(this.a);
   }
 }
 

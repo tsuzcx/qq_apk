@@ -1,18 +1,22 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.mobileqq.gamecenter.view.QQGameIndicator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class asod
-  extends RadioButton
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class asod
+  implements View.OnClickListener
 {
-  public asod(QQGameIndicator paramQQGameIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
+  asod(asnz paramasnz) {}
   
-  public boolean performClick()
+  public final void onClick(View paramView)
   {
-    return true;
+    if (this.a.isShowing())
+    {
+      this.a.dismiss();
+      bcst.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 2, 0, "", "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

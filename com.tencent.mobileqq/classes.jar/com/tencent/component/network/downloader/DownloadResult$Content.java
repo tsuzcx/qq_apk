@@ -11,6 +11,7 @@ public final class DownloadResult$Content
   public String clientip;
   public Object content;
   public String encoding;
+  public boolean isGzip;
   public String lastModified;
   public long length;
   public String md5;
@@ -84,7 +85,7 @@ public final class DownloadResult$Content
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.component.network.downloader.DownloadResult.Content
  * JD-Core Version:    0.7.0.1
  */

@@ -1,119 +1,50 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.highway.api.IRequestCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.ShortVideoRspExtInfo;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.ShortVideoSureRspInfo;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.VideoInfo;
-import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.SegHead;
-import com.tencent.mobileqq.highway.segment.HwRequest;
-import com.tencent.mobileqq.highway.segment.HwResponse;
-import com.tencent.mobileqq.highway.utils.BdhLogUtil;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
 
-class baur
-  implements IRequestCallback
+public class baur
 {
-  baur(bauo parambauo) {}
+  private static final String a = avik.class.getSimpleName();
   
-  public void onFailed(int paramInt)
+  public static void a(Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer  onFailed  erroCode : " + paramInt);
-    }
-    this.a.f(paramInt);
-  }
-  
-  public void onResponse(HwResponse paramHwResponse)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer onResponse retCode : " + paramHwResponse.retCode + " htCost:" + paramHwResponse.htCost + " front:" + paramHwResponse.cacheCost);
-    }
-    int i;
-    if (paramHwResponse.retCode == 0)
+    Throwable localThrowable = new Throwable(paramThrowable);
+    try
     {
-      if (paramHwResponse.segmentResp.uint32_cache_addr.has())
+      arrayOfField = Class.forName("java.lang.Throwable").getDeclaredFields();
+      j = arrayOfField.length;
+      i = 0;
+    }
+    catch (Throwable paramThrowable)
+    {
+      for (;;)
       {
-        i = paramHwResponse.segmentResp.uint32_cache_addr.get();
-        if (i != 0)
-        {
-          BdhLogUtil.LogEvent("R", "RequestAck onResponse : cache_addr res from server is : " + i + " ( " + HwRequest.intToIP(i) + " )");
-          if (bauo.a(this.a) == 0) {
-            bauo.a(this.a, i);
-          }
-          if ((bauo.a(this.a) != 0) && (bauo.a(this.a) != i)) {
-            BdhLogUtil.LogEvent("R", "RequestAck onResponse : cache ip Diff !");
-          }
-        }
-      }
-      Object localObject1 = paramHwResponse.mBuExtendinfo;
-      if ((localObject1 != null) && (localObject1.length > 0)) {
-        try
-        {
-          localObject2 = new Bdh_extinfo.ShortVideoRspExtInfo();
-          ((Bdh_extinfo.ShortVideoRspExtInfo)localObject2).mergeFrom((byte[])localObject1);
-          if (!((Bdh_extinfo.ShortVideoRspExtInfo)localObject2).msg_shortvideo_sure_rsp.has())
-          {
-            if ((bauo.jdField_a_of_type_Boolean) || (!QLog.isColorLevel())) {
-              return;
-            }
-            QLog.e("LightVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer onResponse error : rspExtInfo.msg_shortvideo_sure_rsp is null");
-            return;
-          }
-          localObject1 = new Bdh_extinfo.ShortVideoSureRspInfo();
-          ((Bdh_extinfo.ShortVideoSureRspInfo)localObject1).mergeFrom(((Bdh_extinfo.ShortVideoRspExtInfo)localObject2).msg_shortvideo_sure_rsp.toByteArray());
-          if (((Bdh_extinfo.ShortVideoSureRspInfo)localObject1).msg_videoinfo.has()) {
-            break label326;
-          }
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.e("LightVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer onResponse error : rspInfo.msg_videoinfo is null");
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("LightVideoUploadProcessor", 2, "sendAckToBDHServer onResponse ", localInvalidProtocolBufferMicroException);
-          }
-        }
+        Field[] arrayOfField;
+        int j;
+        int i;
+        Field localField;
+        label110:
+        QLog.e(a, 2, "addStackTag failed", paramThrowable);
+        continue;
+        i += 1;
       }
     }
-    this.a.f(paramHwResponse.retCode);
-    return;
-    label326:
-    Object localObject2 = (Bdh_extinfo.VideoInfo)localInvalidProtocolBufferMicroException.msg_videoinfo.get();
-    if (!((Bdh_extinfo.VideoInfo)localObject2).bytes_bin_md5.has())
+    if (i < j)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("LightVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer onResponse error : videoInfo.bytes_bin_md5 is null");
+      localField = arrayOfField[i];
+      if (!localField.getName().equals("detailMessage")) {
+        break label155;
       }
+      localField.setAccessible(true);
+      if ((paramThrowable.getCause() == null) || (localThrowable.getCause() == null)) {
+        break label110;
+      }
+      localField.set(localThrowable.getCause(), "ShortVideoCatchedException:" + paramThrowable.getCause().getMessage());
     }
-    else
+    for (;;)
     {
-      Object localObject3 = ((Bdh_extinfo.VideoInfo)localObject2).bytes_bin_md5.get().toByteArray();
-      i = ((Bdh_extinfo.VideoInfo)localObject2).uint32_size.get();
-      int j = ((Bdh_extinfo.VideoInfo)localObject2).uint32_time.get();
-      ((Bdh_extinfo.VideoInfo)localObject2).uint32_format.get();
-      bdif.a(String.valueOf(this.a.jdField_a_of_type_Bayk.a), "svrcomp_r", "sendAckToBDHServer success!  MD5:" + HexUtil.bytes2HexStr((byte[])localObject3));
-      this.a.jdField_a_of_type_Bayk.f = HexUtil.bytes2HexStr((byte[])localObject3);
-      this.a.jdField_a_of_type_Bayk.i = ShortVideoUtils.a(bauo.a(this.a), "mp4");
-      this.a.c = this.a.jdField_a_of_type_Bayk.f;
-      this.a.f = localInvalidProtocolBufferMicroException.bytes_fileid.get().toStringUtf8();
-      this.a.q = i;
-      bauo.a(this.a, j);
-      bass localbass = this.a.jdField_a_of_type_Bass;
-      localObject2 = this.a.jdField_a_of_type_Bass;
-      localObject3 = this.a;
-      long l = this.a.q;
-      ((bauo)localObject3).s = l;
-      ((bass)localObject2).e = l;
-      localbass.a = l;
-      this.a.d(1007);
-      this.a.b(false);
+      bcrp.a(localThrowable, "ShortVideo Fail");
+      return;
+      localField.set(localThrowable, "ShortVideoCatchedException:" + paramThrowable.getMessage());
     }
   }
 }

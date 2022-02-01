@@ -1,24 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class ahgx
-  extends oxe
+public abstract interface ahgx
 {
-  public ahgx(ClassificationSearchActivity paramClassificationSearchActivity) {}
-  
-  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
-  {
-    if (paramBoolean)
-    {
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        this.a.c.clear();
-        this.a.c.addAll(paramList);
-      }
-      ClassificationSearchActivity.b(this.a, true);
-    }
-  }
+  public abstract void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString);
 }
 
 

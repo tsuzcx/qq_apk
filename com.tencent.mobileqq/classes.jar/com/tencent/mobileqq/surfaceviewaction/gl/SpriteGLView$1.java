@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import baeq;
+import bdfu;
 import java.util.List;
 
 public class SpriteGLView$1
@@ -17,8 +17,8 @@ public class SpriteGLView$1
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((localObject instanceof baeq)) {
-        ((baeq)localObject).a();
+      if ((localObject instanceof bdfu)) {
+        ((bdfu)localObject).a();
       }
       i += 1;
     }
@@ -27,7 +27,7 @@ public class SpriteGLView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView.1
  * JD-Core Version:    0.7.0.1
  */

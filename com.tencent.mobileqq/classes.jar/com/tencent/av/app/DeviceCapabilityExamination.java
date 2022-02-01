@@ -1,23 +1,24 @@
 package com.tencent.av.app;
 
-import alud;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
-import aoks;
-import baub;
-import baue;
-import bdhb;
-import bdin;
+import anni;
+import aqlk;
+import bdvs;
+import bdvu;
+import bgmg;
+import bgnt;
 import com.tencent.av.VideoController;
 import com.tencent.av.video.call.ClientLogReport;
 import com.tencent.av.videoeffect.VideoEffectTest;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.startup.step.AVSoUtils;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -28,27 +29,27 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import lel;
-import lep;
-import ler;
-import les;
-import lgp;
-import lgq;
-import lgr;
-import lgs;
-import lgu;
-import lgv;
-import lgw;
-import lgx;
-import lnc;
-import lno;
-import lra;
-import mxi;
-import mxp;
+import lbd;
+import lbi;
+import lbk;
+import lbl;
+import ldj;
+import ldk;
+import ldl;
+import ldm;
+import ldo;
+import ldp;
+import ldq;
+import ldr;
+import ljz;
+import lkl;
+import lnx;
+import muq;
+import mux;
 
 public class DeviceCapabilityExamination
 {
-  public static lgv a;
+  public static ldp a;
   public VideoAppInterface a;
   
   public DeviceCapabilityExamination(VideoAppInterface paramVideoAppInterface)
@@ -77,14 +78,14 @@ public class DeviceCapabilityExamination
     return "DT_" + paramInt + "_" + paramString;
   }
   
-  public static String a(int paramInt, ler paramler)
+  public static String a(int paramInt, lbk paramlbk)
   {
-    String str = "enc_[w" + paramler.jdField_a_of_type_Int + "h" + paramler.jdField_b_of_type_Int + "fYUV420]_";
-    paramler = c(paramler.jdField_a_of_type_JavaLangString) + str + paramler.jdField_c_of_type_Int + "_" + paramler.d + "_" + paramler.jdField_a_of_type_Int + "x" + paramler.jdField_b_of_type_Int;
+    String str = "enc_[w" + paramlbk.jdField_a_of_type_Int + "h" + paramlbk.jdField_b_of_type_Int + "fYUV420]_";
+    paramlbk = c(paramlbk.jdField_a_of_type_JavaLangString) + str + paramlbk.jdField_c_of_type_Int + "_" + paramlbk.d + "_" + paramlbk.jdField_a_of_type_Int + "x" + paramlbk.jdField_b_of_type_Int;
     if ((paramInt == 1) || (paramInt == 2)) {
-      return paramler + ".264";
+      return paramlbk + ".264";
     }
-    return paramler + ".265";
+    return paramlbk + ".265";
   }
   
   public static String a(String paramString)
@@ -152,17 +153,17 @@ public class DeviceCapabilityExamination
     return localTreeMap;
   }
   
-  public static lgx a(int paramInt1, int paramInt2, long paramLong1, String paramString1, String paramString2, int paramInt3, long paramLong2)
+  public static ldr a(int paramInt1, int paramInt2, long paramLong1, String paramString1, String paramString2, int paramInt3, long paramLong2)
   {
-    lgx locallgx = new lgx();
-    locallgx.jdField_a_of_type_Long = Long.parseLong(VideoController.a().jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-    locallgx.jdField_b_of_type_Int = paramInt1;
-    locallgx.g = paramString2;
-    locallgx.h = paramString1;
-    locallgx.jdField_c_of_type_Int = paramInt2;
-    locallgx.d = ((int)paramLong2);
-    locallgx.e = ((int)paramLong1);
-    return locallgx;
+    ldr localldr = new ldr();
+    localldr.jdField_a_of_type_Long = Long.parseLong(VideoController.a().jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+    localldr.jdField_b_of_type_Int = paramInt1;
+    localldr.g = paramString2;
+    localldr.h = paramString1;
+    localldr.jdField_c_of_type_Int = paramInt2;
+    localldr.d = ((int)paramLong2);
+    localldr.e = ((int)paramLong1);
+    return localldr;
   }
   
   private void a()
@@ -178,7 +179,7 @@ public class DeviceCapabilityExamination
     Object localObject1 = a().edit();
     ((SharedPreferences.Editor)localObject1).putLong(a(paramInt, "doneTime"), l);
     ((SharedPreferences.Editor)localObject1).commit();
-    int i = aoks.a().a(431, "");
+    int i = aqlk.a().a(431, "");
     localObject1 = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject1 instanceof VideoAppInterface))
     {
@@ -187,12 +188,12 @@ public class DeviceCapabilityExamination
       ((HashMap)localObject1).put("uin", ((VideoAppInterface)localObject2).getCurrentAccountUin());
       ((HashMap)localObject1).put("ver", i + "");
       ((HashMap)localObject1).put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-      localObject2 = lep.a(paramInt);
+      localObject2 = lbi.a(paramInt);
       if (localObject2 != null)
       {
-        i = lra.a((les)localObject2);
+        i = lnx.a((lbl)localObject2);
         ((HashMap)localObject1).put("test" + paramInt, "1");
-        ((HashMap)localObject1).put("test" + paramInt + "_ver", ((les)localObject2).e + "");
+        ((HashMap)localObject1).put("test" + paramInt + "_ver", ((lbl)localObject2).e + "");
         ((HashMap)localObject1).put("test" + paramInt + "_flag", i + "");
       }
       UserAction.onUserAction("qav_codec_done", true, -1L, -1L, (Map)localObject1, true, true);
@@ -209,14 +210,14 @@ public class DeviceCapabilityExamination
   
   public static void a(int paramInt, VideoAppInterface paramVideoAppInterface)
   {
-    mxi.a(paramVideoAppInterface);
-    mxi.a("DeviceCapabilityExamination", paramVideoAppInterface);
+    muq.a(paramVideoAppInterface);
+    muq.a("DeviceCapabilityExamination", paramVideoAppInterface);
     ThreadManager.excute(new DeviceCapabilityExamination.1(paramInt, paramVideoAppInterface), 16, null, true);
   }
   
   static void a(int paramInt, String paramString)
   {
-    if (AudioHelper.d())
+    if (AudioHelper.e())
     {
       QLog.w("DeviceCapabilityExamination", 1, "delSampleFile, 测试版本不删除样本, codec[" + paramInt + "], md5[" + paramString + "]");
       return;
@@ -224,19 +225,19 @@ public class DeviceCapabilityExamination
     b(paramInt, paramString);
   }
   
-  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface, int paramInt, ler paramler, lgq paramlgq)
+  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface, int paramInt, lbk paramlbk, ldk paramldk)
   {
     long l = System.currentTimeMillis();
     VideoController localVideoController = paramVideoAppInterface.a();
-    lgr locallgr = new lgr();
-    locallgr.jdField_a_of_type_Int = paramInt;
-    locallgr.jdField_a_of_type_JavaLangString = paramler.jdField_a_of_type_JavaLangString;
-    locallgr.jdField_b_of_type_JavaLangString = a(paramler.jdField_a_of_type_JavaLangString);
-    locallgr.d = a(paramInt, paramler);
-    locallgr.jdField_c_of_type_Int = paramler.jdField_c_of_type_Int;
-    locallgr.jdField_b_of_type_Int = paramler.d;
-    locallgr.jdField_c_of_type_JavaLangString = paramler.jdField_c_of_type_JavaLangString;
-    lgp.a(paramLong, localVideoController, locallgr, new lgs(l, paramInt, locallgr, paramler, paramVideoAppInterface, paramLong, paramlgq));
+    ldl localldl = new ldl();
+    localldl.jdField_a_of_type_Int = paramInt;
+    localldl.jdField_a_of_type_JavaLangString = paramlbk.jdField_a_of_type_JavaLangString;
+    localldl.jdField_b_of_type_JavaLangString = a(paramlbk.jdField_a_of_type_JavaLangString);
+    localldl.d = a(paramInt, paramlbk);
+    localldl.jdField_c_of_type_Int = paramlbk.jdField_c_of_type_Int;
+    localldl.jdField_b_of_type_Int = paramlbk.d;
+    localldl.jdField_c_of_type_JavaLangString = paramlbk.jdField_c_of_type_JavaLangString;
+    ldj.a(paramLong, localVideoController, localldl, new ldm(l, paramInt, localldl, paramlbk, paramVideoAppInterface, paramLong, paramldk));
   }
   
   public static void a(VideoAppInterface paramVideoAppInterface)
@@ -269,50 +270,50 @@ public class DeviceCapabilityExamination
     QLog.w("DeviceCapabilityExamination", 1, "testHWCodecIfNeed, no");
   }
   
-  public static void a(les paramles, String paramString1, String paramString2)
+  public static void a(lbl paramlbl, String paramString1, String paramString2)
   {
-    if (!bdin.h(null))
+    if (!bgnt.h(null))
     {
       QLog.w("DeviceCapabilityExamination", 1, "startDownloadTestResource, no wifi");
       return;
     }
     try
     {
-      if (jdField_a_of_type_Lgv == null) {
-        jdField_a_of_type_Lgv = new lgv();
+      if (jdField_a_of_type_Ldp == null) {
+        jdField_a_of_type_Ldp = new ldp();
       }
-      if (jdField_a_of_type_Lgv.a(paramString1, paramString2))
+      if (jdField_a_of_type_Ldp.a(paramString1, paramString2))
       {
         QLog.w("DeviceCapabilityExamination", 1, "startDownloadTestResource, 下载中 , md5[" + paramString1 + "]");
         return;
       }
     }
     finally {}
-    if (AudioHelper.e()) {
+    if (AudioHelper.f()) {
       QLog.w("DeviceCapabilityExamination", 1, "startDownloadTestResource, md5[" + paramString1 + "]");
     }
-    paramles = new baub();
-    paramles.jdField_a_of_type_Baug = new lgw();
-    paramles.jdField_a_of_type_JavaLangString = paramString2;
-    paramles.jdField_a_of_type_Int = 0;
-    paramles.jdField_c_of_type_JavaLangString = (c(paramString1) + "sample.zip");
-    paramles.e = paramString1;
-    paramles.a(paramString1);
-    lel.a().a(paramles);
+    paramlbl = new bdvs();
+    paramlbl.jdField_a_of_type_Bdvw = new ldq();
+    paramlbl.jdField_a_of_type_JavaLangString = paramString2;
+    paramlbl.jdField_a_of_type_Int = 0;
+    paramlbl.jdField_c_of_type_JavaLangString = (c(paramString1) + "sample.zip");
+    paramlbl.e = paramString1;
+    paramlbl.a(paramString1);
+    lbd.a().a(paramlbl);
   }
   
-  public static void a(lgx paramlgx, int paramInt1, int paramInt2)
+  public static void a(ldr paramldr, int paramInt1, int paramInt2)
   {
-    ClientLogReport.instance().callbackSendLog(paramlgx.jdField_a_of_type_Long, 5274, paramlgx.a().getBytes());
-    AudioHelper.c(alud.a(2131703559) + paramInt1 + "], resultCode:" + paramInt2);
+    ClientLogReport.instance().callbackSendLog(paramldr.jdField_a_of_type_Long, 5274, paramldr.a().getBytes());
+    AudioHelper.c(anni.a(2131701956) + paramInt1 + "], resultCode:" + paramInt2);
     a(paramInt1, paramInt2);
-    a(paramInt1, paramlgx.h);
+    a(paramInt1, paramldr.h);
   }
   
   static boolean a(int paramInt)
   {
-    les localles = lep.a(paramInt);
-    if ((localles == null) || (System.currentTimeMillis() > localles.jdField_a_of_type_Long)) {}
+    lbl locallbl = lbi.a(paramInt);
+    if ((locallbl == null) || (System.currentTimeMillis() > locallbl.jdField_a_of_type_Long)) {}
     SharedPreferences localSharedPreferences;
     long l1;
     do
@@ -320,45 +321,50 @@ public class DeviceCapabilityExamination
       do
       {
         return false;
-        b(localles.jdField_b_of_type_Int, localles.e);
+        b(locallbl.jdField_b_of_type_Int, locallbl.e);
         localSharedPreferences = a();
         l1 = localSharedPreferences.getLong(a(paramInt, "doneTime"), 0L);
         if (l1 != 0L) {
           break;
         }
-      } while (!a(localles, true));
-      a(localles.jdField_b_of_type_Int);
+      } while (!a(locallbl, true));
+      if (((paramInt == 8) || (paramInt == 2)) && (TextUtils.isEmpty(AVSoUtils.d())))
+      {
+        QLog.w("DeviceCapabilityExamination", 1, "runTest, cannot find libTcHevcDec2.so for hardware encode detect!!");
+        return false;
+      }
+      a(locallbl.jdField_b_of_type_Int);
       return true;
-    } while (!AudioHelper.e());
+    } while (!AudioHelper.f());
     int i = localSharedPreferences.getInt(a(paramInt, "result"), -99);
     long l2 = localSharedPreferences.getLong(a(paramInt, "finishTime"), 0L);
     QLog.w("DeviceCapabilityExamination", 1, "runTest, done, codec[" + paramInt + "], result[" + i + "], doneFlagTime[" + l1 + "], finishFlagTime[" + l2 + "]");
     return false;
   }
   
-  public static boolean a(les paramles, boolean paramBoolean)
+  public static boolean a(lbl paramlbl, boolean paramBoolean)
   {
-    if (paramles == null) {}
-    ler localler;
+    if (paramlbl == null) {}
+    lbk locallbk;
     do
     {
       do
       {
         return false;
-      } while (lra.a(paramles) == 0);
-      localler = b(paramles);
-      if (localler == null)
+      } while (lnx.a(paramlbl) == 0);
+      locallbk = b(paramlbl);
+      if (locallbk == null)
       {
-        QLog.w("DeviceCapabilityExamination", 1, "checkCondition, 无样本, codec[" + paramles.jdField_b_of_type_Int + "]");
+        QLog.w("DeviceCapabilityExamination", 1, "checkCondition, 无样本, codec[" + paramlbl.jdField_b_of_type_Int + "]");
         return false;
       }
-      String str = a(localler.jdField_a_of_type_JavaLangString);
+      String str = a(locallbk.jdField_a_of_type_JavaLangString);
       if (new File(str).exists()) {
         break;
       }
-      QLog.w("DeviceCapabilityExamination", 1, "checkCondition, 样本未下载, codec[" + paramles.jdField_b_of_type_Int + "], path[" + str + "], downloadRes[" + paramBoolean + "]");
+      QLog.w("DeviceCapabilityExamination", 1, "checkCondition, 样本未下载, codec[" + paramlbl.jdField_b_of_type_Int + "], path[" + str + "], downloadRes[" + paramBoolean + "]");
     } while (!paramBoolean);
-    a(paramles, localler.jdField_a_of_type_JavaLangString, localler.jdField_b_of_type_JavaLangString);
+    a(paramlbl, locallbk.jdField_a_of_type_JavaLangString, locallbk.jdField_b_of_type_JavaLangString);
     return false;
     return true;
   }
@@ -369,14 +375,14 @@ public class DeviceCapabilityExamination
     return (Integer[])paramTreeMap.get((int)(System.currentTimeMillis() % paramTreeMap.size()));
   }
   
-  private static ler b(les paramles)
+  private static lbk b(lbl paramlbl)
   {
     Object localObject1 = null;
     Object localObject3 = null;
     Object localObject2 = localObject3;
-    if (paramles.jdField_a_of_type_JavaUtilHashMap != null)
+    if (paramlbl.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      if (paramles.jdField_a_of_type_JavaUtilHashMap.size() != 0) {
+      if (paramlbl.jdField_a_of_type_JavaUtilHashMap.size() != 0) {
         break label30;
       }
       localObject2 = localObject3;
@@ -386,38 +392,38 @@ public class DeviceCapabilityExamination
     {
       return localObject2;
       localObject3 = a();
-      localObject2 = ((SharedPreferences)localObject3).getString(a(paramles.jdField_b_of_type_Int, "md5"), null);
+      localObject2 = ((SharedPreferences)localObject3).getString(a(paramlbl.jdField_b_of_type_Int, "md5"), null);
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = (ler)paramles.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
+        localObject1 = (lbk)paramlbl.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
       }
       if (localObject1 == null) {
         break;
       }
       localObject2 = localObject1;
-    } while (!TextUtils.isEmpty(((ler)localObject1).jdField_b_of_type_JavaLangString));
-    int i = paramles.jdField_a_of_type_JavaUtilHashMap.size();
+    } while (!TextUtils.isEmpty(((lbk)localObject1).jdField_b_of_type_JavaLangString));
+    int i = paramlbl.jdField_a_of_type_JavaUtilHashMap.size();
     i = (int)(System.currentTimeMillis() % i);
-    localObject1 = (String)paramles.jdField_a_of_type_JavaUtilHashMap.keySet().toArray()[i];
-    localObject2 = (ler)paramles.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+    localObject1 = (String)paramlbl.jdField_a_of_type_JavaUtilHashMap.keySet().toArray()[i];
+    localObject2 = (lbk)paramlbl.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
     localObject3 = ((SharedPreferences)localObject3).edit();
-    ((SharedPreferences.Editor)localObject3).putString(a(paramles.jdField_b_of_type_Int, "md5"), (String)localObject1);
+    ((SharedPreferences.Editor)localObject3).putString(a(paramlbl.jdField_b_of_type_Int, "md5"), (String)localObject1);
     ((SharedPreferences.Editor)localObject3).commit();
     return localObject2;
   }
   
   private void b()
   {
-    if (AudioHelper.e()) {
+    if (AudioHelper.f()) {
       QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed");
     }
-    Object localObject = lno.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+    Object localObject = lkl.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      if (AudioHelper.e()) {
+      if (AudioHelper.f()) {
         QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed test config: \n" + (String)localObject);
       }
-      localObject = new lnc((String)localObject);
-      if (new mxp().a((lnc)localObject) == 1)
+      localObject = new ljz((String)localObject);
+      if (new mux().a((ljz)localObject) == 1)
       {
         localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getSharedPreferences("qav_sp_video_effect", 0);
         if (((SharedPreferences)localObject).getBoolean("qav_key_test_executed", false)) {
@@ -426,16 +432,16 @@ public class DeviceCapabilityExamination
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putBoolean("qav_key_test_executed", true);
         ((SharedPreferences.Editor)localObject).commit();
-        new VideoEffectTest(new lgu(this)).a();
+        new VideoEffectTest(new ldo(this)).a();
       }
     }
     label161:
-    while (!AudioHelper.e())
+    while (!AudioHelper.f())
     {
       do
       {
         return;
-      } while (!AudioHelper.e());
+      } while (!AudioHelper.f());
       QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed test executed.");
       return;
     }
@@ -474,7 +480,7 @@ public class DeviceCapabilityExamination
       String str = c(paramString);
       File localFile = new File(str);
       boolean bool = localFile.exists();
-      bdhb.a(str);
+      bgmg.a(str);
       QLog.w("DeviceCapabilityExamination", 1, "delSampleFile, codec[" + paramInt + "], md5[" + paramString + "], exists[" + bool + "->" + localFile.exists() + "]");
       return;
     }
@@ -488,7 +494,7 @@ public class DeviceCapabilityExamination
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.app.DeviceCapabilityExamination
  * JD-Core Version:    0.7.0.1
  */

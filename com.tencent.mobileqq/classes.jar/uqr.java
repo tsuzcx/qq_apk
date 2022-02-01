@@ -1,16 +1,21 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uqr
+class uqr
+  implements View.OnClickListener
 {
-  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
+  uqr(uqp paramuqp) {}
+  
+  public void onClick(View paramView)
   {
-    return urk.a(paramQQStoryAutoPlayView, paramMotionEvent);
+    uqp.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uqr
  * JD-Core Version:    0.7.0.1
  */

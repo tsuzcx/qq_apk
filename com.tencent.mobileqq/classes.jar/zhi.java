@@ -1,23 +1,40 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class zhi
-  implements View.OnClickListener
+public class zhi
 {
-  zhi(zhh paramzhh, DialogInterface.OnClickListener paramOnClickListener) {}
+  public final int a;
+  public final String a;
+  public final boolean a;
+  public final String b;
+  public final String c;
+  public final String d;
   
-  public void onClick(View paramView)
+  public zhi(qqstory_struct.CompInfoBase paramCompInfoBase)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Zhh, -2);
+    this.jdField_a_of_type_JavaLangString = paramCompInfoBase.title.get();
+    this.b = paramCompInfoBase.backgroud_url.get();
+    this.c = paramCompInfoBase.compared_vid.get();
+    if (paramCompInfoBase.is_compared_able.get() == 1) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.d = paramCompInfoBase.icon_url.get();
+      this.jdField_a_of_type_Int = paramCompInfoBase.oa_task_id.get();
+      return;
+      bool = false;
     }
-    this.jdField_a_of_type_Zhh.dismiss();
+  }
+  
+  public String toString()
+  {
+    return "CompInfoBase{title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", linkUrl='" + this.b + '\'' + ", comparedVid='" + this.c + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.d + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zhi
  * JD-Core Version:    0.7.0.1
  */

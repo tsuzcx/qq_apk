@@ -221,10 +221,10 @@ public class HackVm
   
   protected boolean doStep()
   {
-    if ((Build.VERSION.SDK_INT <= 20) && ((this.mId == 41) || (this.mId == 43))) {
+    if ((Build.VERSION.SDK_INT <= 20) && ((this.mId == 42) || (this.mId == 44))) {
       a();
     }
-    if ((Build.VERSION.SDK_INT < 24) && ((this.mId == 42) || (this.mId == 43))) {
+    if ((Build.VERSION.SDK_INT < 24) && ((this.mId == 43) || (this.mId == 44))) {
       a();
     }
     return true;

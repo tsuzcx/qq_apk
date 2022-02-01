@@ -1,27 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class avhy
-  implements View.OnTouchListener
+  implements mrm
 {
-  avhy(avhf paramavhf) {}
+  avhy(avhx paramavhx, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131376566).setAlpha(0.5F);
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
     }
-    for (;;)
+    mrf.a().a();
+    if (paramInt == 1)
     {
-      return false;
-      this.a.a.findViewById(2131376566).setAlpha(1.0F);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("roomCodeType", 1);
+      localBundle.putLong("roomid", Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
+      avhx.a(this.jdField_a_of_type_Avhx, localBundle, 1001L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avhy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import org.json.JSONObject;
 
-public class bitu
-  implements DialogInterface.OnDismissListener
+public abstract interface bitu
 {
-  public bitu(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  public abstract void a(Exception paramException);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (QlinkShareJumpActivity.a(this.a))
-    {
-      QlinkShareJumpActivity.a(this.a, false);
-      this.a.finish();
-    }
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bitu
  * JD-Core Version:    0.7.0.1
  */

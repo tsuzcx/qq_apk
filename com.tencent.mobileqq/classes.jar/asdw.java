@@ -1,21 +1,36 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel;
 import com.tencent.qphone.base.util.QLog;
 
-final class asdw
-  implements DialogInterface.OnClickListener
+public class asdw
+  implements asdm
 {
-  asdw(long paramLong, int paramInt, Activity paramActivity, BaseChatPie paramBaseChatPie) {}
+  public asdw(RelatedEmotionPanel paramRelatedEmotionPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void a(float paramFloat)
+  {
+    if (RelatedEmotionPanel.a(this.a) != null) {
+      RelatedEmotionPanel.a(this.a).a(paramFloat);
+    }
+  }
+  
+  public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ForwardShareByServerHelper", 2, "qbShowShareResultDialog back");
+      QLog.d("RelatedEmotionPanel", 4, "dismiss type: " + paramInt);
     }
-    asdt.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+    if (paramInt > -1) {
+      bcst.b(RelatedEmotionPanel.a(this.a), "dc00898", "", this.a.a, "0X800B11A", "0X800B11A", paramInt, 0, "", "", "", "");
+    }
+    this.a.a();
+    if (paramInt == 2) {
+      AbstractGifImage.resumeAll();
+    }
   }
+  
+  public void b() {}
 }
 
 

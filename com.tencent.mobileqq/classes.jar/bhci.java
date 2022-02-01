@@ -1,27 +1,32 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.List;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import androidx.annotation.Nullable;
 
-class bhci
-  implements AsyncResult
+public class bhci
 {
-  bhci(bhch parambhch, List paramList) {}
+  String a;
+  String b;
+  String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public boolean equals(@Nullable Object paramObject)
   {
-    if (paramBoolean)
+    if ((paramObject instanceof bhci))
     {
-      QMLog.d("MiniProgramReporter", "onDcReport() called with: isSuc = [true], ret = [" + paramJSONObject + "]");
-      return;
+      paramObject = (bhci)paramObject;
+      return (TextUtils.equals(paramObject.a, this.a)) && (TextUtils.equals(paramObject.b, this.b)) && (TextUtils.equals(paramObject.c, this.c));
     }
-    QMLog.e("MiniProgramReporter", "performReportViaSSO onDcReport: sso command failed, try again");
-    this.jdField_a_of_type_Bhch.a(this.jdField_a_of_type_JavaUtilList);
+    return super.equals(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhci
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class EventStrategyBean
 {
-  private static EventStrategyBean mInstance;
+  private static volatile EventStrategyBean mInstance;
   private boolean acceleEnable = true;
   private int comDelayDB = UploadStrategy.DEFAULT_COMMON_DELAY;
   private int comNumDB = UploadStrategy.DEFAULT_COM_NUM_DB;
@@ -33,6 +33,7 @@ public class EventStrategyBean
   private boolean sensorEnable = UploadStrategy.DEFAULT_SENSOR_ENABLE;
   private boolean strategyQuerySuccessDaxMax = false;
   private int strategyQuerySuccessDayMaxTimes = 1;
+  private int uploadErrorBound = UploadStrategy.defaultErrorRandomBound;
   private boolean zeroPeakOnOff = false;
   private float zeroPeakRate = 1.0F;
   
@@ -93,27 +94,72 @@ public class EventStrategyBean
   
   public int getConsuming()
   {
-    return this.consuming;
+    try
+    {
+      int i = this.consuming;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public int getDailyConsumeLimit()
   {
-    return this.dailyConsumeLimit;
+    try
+    {
+      int i = this.dailyConsumeLimit;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public int getGatherCount()
   {
-    return this.gatherCount;
+    try
+    {
+      int i = this.gatherCount;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public long getGatherDur()
   {
-    return this.gatherDur;
+    try
+    {
+      long l = this.gatherDur;
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public int getHertzCount()
   {
-    return this.hertzCount;
+    try
+    {
+      int i = this.hertzCount;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public int getRealDelayUpload()
@@ -146,39 +192,85 @@ public class EventStrategyBean
   
   public int getStrategyQuerySuccessDayMaxTimes()
   {
-    return this.strategyQuerySuccessDayMaxTimes;
+    try
+    {
+      int i = this.strategyQuerySuccessDayMaxTimes;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public boolean isAcceleEnable()
   {
-    return this.acceleEnable;
+    try
+    {
+      boolean bool = this.acceleEnable;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public boolean isComPollUp()
   {
-    return this.comPollUp;
+    try
+    {
+      boolean bool = this.comPollUp;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public boolean isGyroEnable()
   {
-    return this.gyroEnable;
+    try
+    {
+      boolean bool = this.gyroEnable;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public boolean isHeartbeatUsable()
   {
-    return this.heartbeatUsable;
+    try
+    {
+      boolean bool = this.heartbeatUsable;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public boolean isInPreventEventCode(String paramString)
   {
     boolean bool2 = false;
-    boolean bool1 = bool2;
     try
     {
-      if (this.preventEventCode != null)
+      Set localSet = this.preventEventCode;
+      boolean bool1 = bool2;
+      if (localSet != null)
       {
         bool1 = bool2;
-        if (this.preventEventCode.size() > 0) {
+        if (localSet.size() > 0) {
           bool1 = this.preventEventCode.contains(paramString);
         }
       }
@@ -189,27 +281,72 @@ public class EventStrategyBean
   
   public boolean isLaunchEventSimple()
   {
-    return this.isLaunchEventSimple;
+    try
+    {
+      boolean bool = this.isLaunchEventSimple;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public boolean isMagneticEnable()
   {
-    return this.magneticEnable;
+    try
+    {
+      boolean bool = this.magneticEnable;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public boolean isSensorEnable()
   {
-    return this.sensorEnable;
+    try
+    {
+      boolean bool = this.sensorEnable;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public boolean isStrategyQuerySuccessDaxMax()
   {
-    return this.strategyQuerySuccessDaxMax;
+    try
+    {
+      boolean bool = this.strategyQuerySuccessDaxMax;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public boolean isTidyEventFields()
   {
-    return this.isTidyEventFields;
+    try
+    {
+      boolean bool = this.isTidyEventFields;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public boolean isUploadByRate(String paramString)
@@ -218,10 +355,11 @@ public class EventStrategyBean
     {
       try
       {
+        Object localObject = this.sampleEvent;
         boolean bool;
-        if (this.sampleEvent != null)
+        if (localObject != null)
         {
-          Object localObject = this.sampleEvent.get(paramString);
+          localObject = ((Map)localObject).get(paramString.toLowerCase());
           if (localObject != null) {}
         }
         else
@@ -323,312 +461,390 @@ public class EventStrategyBean
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: ifnull +637 -> 640
+    //   3: ifnull +713 -> 716
     //   6: aload_0
     //   7: aload_1
-    //   8: ldc 233
-    //   10: invokeinterface 161 2 0
+    //   8: ldc 239
+    //   10: invokeinterface 173 2 0
     //   15: checkcast 163	java/lang/String
     //   18: aload_0
-    //   19: getfield 49	com/tencent/beacon/core/event/EventStrategyBean:realNumUpload	I
+    //   19: getfield 50	com/tencent/beacon/core/event/EventStrategyBean:realNumUpload	I
     //   22: iconst_1
     //   23: bipush 50
-    //   25: invokestatic 239	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;III)I
-    //   28: putfield 49	com/tencent/beacon/core/event/EventStrategyBean:realNumUpload	I
+    //   25: invokestatic 245	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;III)I
+    //   28: putfield 50	com/tencent/beacon/core/event/EventStrategyBean:realNumUpload	I
     //   31: aload_0
     //   32: aload_1
-    //   33: ldc 241
-    //   35: invokeinterface 161 2 0
+    //   33: ldc 247
+    //   35: invokeinterface 173 2 0
     //   40: checkcast 163	java/lang/String
     //   43: aload_0
-    //   44: getfield 54	com/tencent/beacon/core/event/EventStrategyBean:realDelayUpload	I
+    //   44: getfield 55	com/tencent/beacon/core/event/EventStrategyBean:realDelayUpload	I
     //   47: bipush 10
     //   49: sipush 600
-    //   52: invokestatic 239	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;III)I
-    //   55: putfield 54	com/tencent/beacon/core/event/EventStrategyBean:realDelayUpload	I
+    //   52: invokestatic 245	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;III)I
+    //   55: putfield 55	com/tencent/beacon/core/event/EventStrategyBean:realDelayUpload	I
     //   58: aload_0
     //   59: aload_1
-    //   60: ldc 242
-    //   62: invokeinterface 161 2 0
+    //   60: ldc 248
+    //   62: invokeinterface 173 2 0
     //   67: checkcast 163	java/lang/String
     //   70: aload_0
-    //   71: getfield 59	com/tencent/beacon/core/event/EventStrategyBean:comNumDB	I
+    //   71: getfield 60	com/tencent/beacon/core/event/EventStrategyBean:comNumDB	I
     //   74: iconst_1
     //   75: bipush 50
-    //   77: invokestatic 239	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;III)I
-    //   80: putfield 59	com/tencent/beacon/core/event/EventStrategyBean:comNumDB	I
+    //   77: invokestatic 245	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;III)I
+    //   80: putfield 60	com/tencent/beacon/core/event/EventStrategyBean:comNumDB	I
     //   83: aload_0
     //   84: aload_1
-    //   85: ldc 243
-    //   87: invokeinterface 161 2 0
+    //   85: ldc 249
+    //   87: invokeinterface 173 2 0
     //   92: checkcast 163	java/lang/String
     //   95: aload_0
-    //   96: getfield 64	com/tencent/beacon/core/event/EventStrategyBean:comDelayDB	I
+    //   96: getfield 65	com/tencent/beacon/core/event/EventStrategyBean:comDelayDB	I
     //   99: bipush 30
     //   101: sipush 600
-    //   104: invokestatic 239	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;III)I
-    //   107: putfield 64	com/tencent/beacon/core/event/EventStrategyBean:comDelayDB	I
+    //   104: invokestatic 245	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;III)I
+    //   107: putfield 65	com/tencent/beacon/core/event/EventStrategyBean:comDelayDB	I
     //   110: aload_0
     //   111: aload_1
-    //   112: ldc 245
-    //   114: invokeinterface 161 2 0
+    //   112: ldc 251
+    //   114: invokeinterface 173 2 0
     //   119: checkcast 163	java/lang/String
     //   122: aload_0
-    //   123: getfield 69	com/tencent/beacon/core/event/EventStrategyBean:comNumUpload	I
+    //   123: getfield 70	com/tencent/beacon/core/event/EventStrategyBean:comNumUpload	I
     //   126: iconst_1
     //   127: bipush 100
-    //   129: invokestatic 239	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;III)I
-    //   132: putfield 69	com/tencent/beacon/core/event/EventStrategyBean:comNumUpload	I
+    //   129: invokestatic 245	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;III)I
+    //   132: putfield 70	com/tencent/beacon/core/event/EventStrategyBean:comNumUpload	I
     //   135: aload_0
     //   136: aload_1
-    //   137: ldc 247
-    //   139: invokeinterface 161 2 0
+    //   137: ldc 253
+    //   139: invokeinterface 173 2 0
     //   144: checkcast 163	java/lang/String
     //   147: aload_0
-    //   148: getfield 76	com/tencent/beacon/core/event/EventStrategyBean:heartbeatUsable	Z
-    //   151: invokestatic 250	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;Z)Z
-    //   154: putfield 76	com/tencent/beacon/core/event/EventStrategyBean:heartbeatUsable	Z
+    //   148: getfield 77	com/tencent/beacon/core/event/EventStrategyBean:heartbeatUsable	Z
+    //   151: invokestatic 256	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;Z)Z
+    //   154: putfield 77	com/tencent/beacon/core/event/EventStrategyBean:heartbeatUsable	Z
     //   157: aload_0
     //   158: aload_1
-    //   159: ldc 252
-    //   161: invokeinterface 161 2 0
-    //   166: checkcast 163	java/lang/String
-    //   169: aload_0
-    //   170: getfield 82	com/tencent/beacon/core/event/EventStrategyBean:isTidyEventFields	Z
-    //   173: invokestatic 250	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;Z)Z
-    //   176: putfield 82	com/tencent/beacon/core/event/EventStrategyBean:isTidyEventFields	Z
-    //   179: aload_0
-    //   180: aload_1
-    //   181: ldc 254
-    //   183: invokeinterface 161 2 0
-    //   188: checkcast 163	java/lang/String
-    //   191: aload_0
-    //   192: getfield 84	com/tencent/beacon/core/event/EventStrategyBean:isLaunchEventSimple	Z
-    //   195: invokestatic 250	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;Z)Z
-    //   198: putfield 84	com/tencent/beacon/core/event/EventStrategyBean:isLaunchEventSimple	Z
-    //   201: aload_0
-    //   202: aload_1
-    //   203: ldc 255
-    //   205: invokeinterface 161 2 0
-    //   210: checkcast 163	java/lang/String
-    //   213: aload_0
-    //   214: getfield 74	com/tencent/beacon/core/event/EventStrategyBean:comPollUp	Z
-    //   217: invokestatic 250	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;Z)Z
-    //   220: putfield 74	com/tencent/beacon/core/event/EventStrategyBean:comPollUp	Z
-    //   223: aload_0
-    //   224: aload_1
-    //   225: ldc_w 257
-    //   228: invokeinterface 161 2 0
-    //   233: checkcast 163	java/lang/String
-    //   236: aload_0
-    //   237: getfield 87	com/tencent/beacon/core/event/EventStrategyBean:dailyConsumeLimit	I
-    //   240: ldc_w 258
-    //   243: ldc 85
-    //   245: invokestatic 239	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;III)I
-    //   248: putfield 87	com/tencent/beacon/core/event/EventStrategyBean:dailyConsumeLimit	I
-    //   251: aload_1
-    //   252: ldc_w 260
-    //   255: invokeinterface 161 2 0
-    //   260: checkcast 163	java/lang/String
-    //   263: getstatic 265	com/tencent/beacon/core/d/b:b	Z
-    //   266: invokestatic 250	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;Z)Z
-    //   269: putstatic 265	com/tencent/beacon/core/d/b:b	Z
-    //   272: aload_0
-    //   273: aload_1
-    //   274: ldc_w 266
-    //   277: invokeinterface 161 2 0
-    //   282: checkcast 163	java/lang/String
-    //   285: aload_0
-    //   286: getfield 89	com/tencent/beacon/core/event/EventStrategyBean:zeroPeakOnOff	Z
-    //   289: invokestatic 250	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;Z)Z
-    //   292: putfield 89	com/tencent/beacon/core/event/EventStrategyBean:zeroPeakOnOff	Z
-    //   295: aload_1
-    //   296: ldc_w 267
-    //   299: invokeinterface 161 2 0
-    //   304: checkcast 163	java/lang/String
-    //   307: astore_3
-    //   308: aload_3
-    //   309: ifnull +53 -> 362
-    //   312: aload_3
-    //   313: invokevirtual 270	java/lang/String:trim	()Ljava/lang/String;
-    //   316: astore_3
-    //   317: aload_3
-    //   318: invokevirtual 273	java/lang/String:length	()I
-    //   321: ifle +41 -> 362
-    //   324: aload_3
-    //   325: ldc 214
-    //   327: invokevirtual 218	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   330: astore_3
-    //   331: aload_3
-    //   332: arraylength
-    //   333: istore_2
-    //   334: iload_2
-    //   335: iconst_2
-    //   336: if_icmpne +26 -> 362
-    //   339: aload_0
-    //   340: aload_3
-    //   341: iconst_0
-    //   342: aaload
-    //   343: invokestatic 222	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   346: invokevirtual 173	java/lang/Float:floatValue	()F
-    //   349: aload_3
-    //   350: iconst_1
-    //   351: aaload
-    //   352: invokestatic 222	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   355: invokevirtual 173	java/lang/Float:floatValue	()F
-    //   358: fdiv
-    //   359: putfield 91	com/tencent/beacon/core/event/EventStrategyBean:zeroPeakRate	F
-    //   362: aload_0
-    //   363: aload_1
-    //   364: ldc_w 275
-    //   367: invokeinterface 161 2 0
-    //   372: checkcast 163	java/lang/String
-    //   375: aload_0
-    //   376: getfield 114	com/tencent/beacon/core/event/EventStrategyBean:strategyQuerySuccessDaxMax	Z
-    //   379: invokestatic 250	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;Z)Z
-    //   382: putfield 114	com/tencent/beacon/core/event/EventStrategyBean:strategyQuerySuccessDaxMax	Z
-    //   385: aload_0
-    //   386: aload_1
-    //   387: ldc_w 277
-    //   390: invokeinterface 161 2 0
-    //   395: checkcast 163	java/lang/String
-    //   398: aload_0
-    //   399: getfield 116	com/tencent/beacon/core/event/EventStrategyBean:strategyQuerySuccessDayMaxTimes	I
-    //   402: iconst_1
-    //   403: ldc_w 278
-    //   406: invokestatic 239	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;III)I
-    //   409: putfield 116	com/tencent/beacon/core/event/EventStrategyBean:strategyQuerySuccessDayMaxTimes	I
-    //   412: aload_0
-    //   413: getfield 54	com/tencent/beacon/core/event/EventStrategyBean:realDelayUpload	I
-    //   416: getstatic 52	com/tencent/beacon/upload/UploadStrategy:DEFAULT_REAL_TIME_DELAY	I
-    //   419: if_icmpeq +9 -> 428
-    //   422: invokestatic 283	com/tencent/beacon/core/event/TunnelModule:getInstance	()Lcom/tencent/beacon/core/event/TunnelModule;
-    //   425: invokevirtual 286	com/tencent/beacon/core/event/TunnelModule:updateSchedule	()V
-    //   428: aload_0
-    //   429: getfield 64	com/tencent/beacon/core/event/EventStrategyBean:comDelayDB	I
-    //   432: getstatic 62	com/tencent/beacon/upload/UploadStrategy:DEFAULT_COMMON_DELAY	I
-    //   435: if_icmpeq +9 -> 444
-    //   438: invokestatic 283	com/tencent/beacon/core/event/TunnelModule:getInstance	()Lcom/tencent/beacon/core/event/TunnelModule;
-    //   441: invokevirtual 286	com/tencent/beacon/core/event/TunnelModule:updateSchedule	()V
-    //   444: aload_0
-    //   445: aload_1
-    //   446: ldc_w 287
-    //   449: invokeinterface 161 2 0
-    //   454: checkcast 163	java/lang/String
-    //   457: aload_0
-    //   458: getfield 96	com/tencent/beacon/core/event/EventStrategyBean:sensorEnable	Z
-    //   461: invokestatic 250	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;Z)Z
-    //   464: putfield 96	com/tencent/beacon/core/event/EventStrategyBean:sensorEnable	Z
-    //   467: aload_0
-    //   468: aload_1
-    //   469: ldc_w 288
-    //   472: invokeinterface 161 2 0
-    //   477: checkcast 163	java/lang/String
-    //   480: aload_0
-    //   481: getfield 98	com/tencent/beacon/core/event/EventStrategyBean:acceleEnable	Z
-    //   484: invokestatic 250	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;Z)Z
-    //   487: putfield 98	com/tencent/beacon/core/event/EventStrategyBean:acceleEnable	Z
-    //   490: aload_0
-    //   491: aload_1
-    //   492: ldc_w 289
-    //   495: invokeinterface 161 2 0
-    //   500: checkcast 163	java/lang/String
-    //   503: aload_0
-    //   504: getfield 100	com/tencent/beacon/core/event/EventStrategyBean:gyroEnable	Z
-    //   507: invokestatic 250	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;Z)Z
-    //   510: putfield 100	com/tencent/beacon/core/event/EventStrategyBean:gyroEnable	Z
-    //   513: aload_0
-    //   514: aload_1
-    //   515: ldc_w 290
-    //   518: invokeinterface 161 2 0
-    //   523: checkcast 163	java/lang/String
-    //   526: aload_0
-    //   527: getfield 102	com/tencent/beacon/core/event/EventStrategyBean:magneticEnable	Z
-    //   530: invokestatic 250	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;Z)Z
-    //   533: putfield 102	com/tencent/beacon/core/event/EventStrategyBean:magneticEnable	Z
-    //   536: aload_0
-    //   537: aload_1
-    //   538: ldc_w 291
-    //   541: invokeinterface 161 2 0
-    //   546: checkcast 163	java/lang/String
-    //   549: aload_0
-    //   550: getfield 104	com/tencent/beacon/core/event/EventStrategyBean:gatherCount	I
-    //   553: iconst_1
-    //   554: bipush 50
-    //   556: invokestatic 239	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;III)I
-    //   559: putfield 104	com/tencent/beacon/core/event/EventStrategyBean:gatherCount	I
-    //   562: aload_0
-    //   563: aload_1
-    //   564: ldc_w 292
-    //   567: invokeinterface 161 2 0
-    //   572: checkcast 163	java/lang/String
-    //   575: aload_0
-    //   576: getfield 108	com/tencent/beacon/core/event/EventStrategyBean:gatherDur	J
-    //   579: invokestatic 295	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;J)J
-    //   582: putfield 108	com/tencent/beacon/core/event/EventStrategyBean:gatherDur	J
-    //   585: aload_0
-    //   586: aload_1
-    //   587: ldc_w 296
-    //   590: invokeinterface 161 2 0
-    //   595: checkcast 163	java/lang/String
-    //   598: aload_0
-    //   599: getfield 110	com/tencent/beacon/core/event/EventStrategyBean:hertzCount	I
-    //   602: bipush 20
-    //   604: bipush 100
-    //   606: invokestatic 239	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;III)I
-    //   609: putfield 110	com/tencent/beacon/core/event/EventStrategyBean:hertzCount	I
-    //   612: aload_0
-    //   613: aload_1
-    //   614: ldc_w 297
-    //   617: invokeinterface 161 2 0
-    //   622: checkcast 163	java/lang/String
-    //   625: aload_0
-    //   626: getfield 112	com/tencent/beacon/core/event/EventStrategyBean:consuming	I
-    //   629: bipush 60
-    //   631: ldc_w 298
-    //   634: invokestatic 239	com/tencent/beacon/core/d/i:a	(Ljava/lang/String;III)I
-    //   637: putfield 112	com/tencent/beacon/core/event/EventStrategyBean:consuming	I
-    //   640: aload_0
-    //   641: monitorexit
-    //   642: return
-    //   643: astore_1
-    //   644: aload_1
-    //   645: invokestatic 301	com/tencent/beacon/core/d/b:a	(Ljava/lang/Throwable;)V
-    //   648: goto -8 -> 640
-    //   651: astore_1
-    //   652: aload_0
-    //   653: monitorexit
-    //   654: aload_1
-    //   655: athrow
-    //   656: astore_3
-    //   657: goto -295 -> 362
+    //   159: ldc_w 258
+    //   162: invokeinterface 173 2 0
+    //   167: checkcast 163	java/lang/String
+    //   170: aload_0
+    //   171: getfield 83	com/tencent/beacon/core/event/EventStrategyBean:isTidyEventFields	Z
+    //   174: invokestatic 256	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;Z)Z
+    //   177: putfield 83	com/tencent/beacon/core/event/EventStrategyBean:isTidyEventFields	Z
+    //   180: aload_0
+    //   181: aload_1
+    //   182: ldc_w 260
+    //   185: invokeinterface 173 2 0
+    //   190: checkcast 163	java/lang/String
+    //   193: aload_0
+    //   194: getfield 85	com/tencent/beacon/core/event/EventStrategyBean:isLaunchEventSimple	Z
+    //   197: invokestatic 256	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;Z)Z
+    //   200: putfield 85	com/tencent/beacon/core/event/EventStrategyBean:isLaunchEventSimple	Z
+    //   203: aload_0
+    //   204: aload_1
+    //   205: ldc_w 261
+    //   208: invokeinterface 173 2 0
+    //   213: checkcast 163	java/lang/String
+    //   216: aload_0
+    //   217: getfield 75	com/tencent/beacon/core/event/EventStrategyBean:comPollUp	Z
+    //   220: invokestatic 256	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;Z)Z
+    //   223: putfield 75	com/tencent/beacon/core/event/EventStrategyBean:comPollUp	Z
+    //   226: aload_0
+    //   227: aload_1
+    //   228: ldc_w 263
+    //   231: invokeinterface 173 2 0
+    //   236: checkcast 163	java/lang/String
+    //   239: aload_0
+    //   240: getfield 88	com/tencent/beacon/core/event/EventStrategyBean:dailyConsumeLimit	I
+    //   243: ldc_w 264
+    //   246: ldc 86
+    //   248: invokestatic 245	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;III)I
+    //   251: putfield 88	com/tencent/beacon/core/event/EventStrategyBean:dailyConsumeLimit	I
+    //   254: aload_1
+    //   255: ldc_w 266
+    //   258: invokeinterface 173 2 0
+    //   263: checkcast 163	java/lang/String
+    //   266: invokestatic 270	com/tencent/beacon/core/e/d:a	()Z
+    //   269: invokestatic 256	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;Z)Z
+    //   272: invokestatic 273	com/tencent/beacon/core/e/d:a	(Z)V
+    //   275: aload_0
+    //   276: aload_1
+    //   277: ldc_w 274
+    //   280: invokeinterface 173 2 0
+    //   285: checkcast 163	java/lang/String
+    //   288: aload_0
+    //   289: getfield 90	com/tencent/beacon/core/event/EventStrategyBean:zeroPeakOnOff	Z
+    //   292: invokestatic 256	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;Z)Z
+    //   295: putfield 90	com/tencent/beacon/core/event/EventStrategyBean:zeroPeakOnOff	Z
+    //   298: aload_1
+    //   299: ldc_w 275
+    //   302: invokeinterface 173 2 0
+    //   307: checkcast 163	java/lang/String
+    //   310: astore_3
+    //   311: aload_3
+    //   312: ifnull +55 -> 367
+    //   315: aload_3
+    //   316: invokevirtual 278	java/lang/String:trim	()Ljava/lang/String;
+    //   319: astore_3
+    //   320: aload_3
+    //   321: invokevirtual 281	java/lang/String:length	()I
+    //   324: istore_2
+    //   325: iload_2
+    //   326: ifle +41 -> 367
+    //   329: aload_3
+    //   330: ldc 220
+    //   332: invokevirtual 224	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   335: astore_3
+    //   336: aload_3
+    //   337: arraylength
+    //   338: istore_2
+    //   339: iload_2
+    //   340: iconst_2
+    //   341: if_icmpne +26 -> 367
+    //   344: aload_0
+    //   345: aload_3
+    //   346: iconst_0
+    //   347: aaload
+    //   348: invokestatic 228	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   351: invokevirtual 179	java/lang/Float:floatValue	()F
+    //   354: aload_3
+    //   355: iconst_1
+    //   356: aaload
+    //   357: invokestatic 228	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   360: invokevirtual 179	java/lang/Float:floatValue	()F
+    //   363: fdiv
+    //   364: putfield 92	com/tencent/beacon/core/event/EventStrategyBean:zeroPeakRate	F
+    //   367: aload_0
+    //   368: aload_1
+    //   369: ldc_w 283
+    //   372: invokeinterface 173 2 0
+    //   377: checkcast 163	java/lang/String
+    //   380: aload_0
+    //   381: getfield 120	com/tencent/beacon/core/event/EventStrategyBean:strategyQuerySuccessDaxMax	Z
+    //   384: invokestatic 256	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;Z)Z
+    //   387: putfield 120	com/tencent/beacon/core/event/EventStrategyBean:strategyQuerySuccessDaxMax	Z
+    //   390: aload_0
+    //   391: aload_1
+    //   392: ldc_w 285
+    //   395: invokeinterface 173 2 0
+    //   400: checkcast 163	java/lang/String
+    //   403: aload_0
+    //   404: getfield 122	com/tencent/beacon/core/event/EventStrategyBean:strategyQuerySuccessDayMaxTimes	I
+    //   407: iconst_1
+    //   408: ldc_w 286
+    //   411: invokestatic 245	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;III)I
+    //   414: putfield 122	com/tencent/beacon/core/event/EventStrategyBean:strategyQuerySuccessDayMaxTimes	I
+    //   417: aload_0
+    //   418: getfield 55	com/tencent/beacon/core/event/EventStrategyBean:realDelayUpload	I
+    //   421: getstatic 53	com/tencent/beacon/upload/UploadStrategy:DEFAULT_REAL_TIME_DELAY	I
+    //   424: if_icmpeq +9 -> 433
+    //   427: invokestatic 291	com/tencent/beacon/core/event/TunnelModule:getInstance	()Lcom/tencent/beacon/core/event/TunnelModule;
+    //   430: invokevirtual 294	com/tencent/beacon/core/event/TunnelModule:updateSchedule	()V
+    //   433: aload_0
+    //   434: getfield 65	com/tencent/beacon/core/event/EventStrategyBean:comDelayDB	I
+    //   437: getstatic 63	com/tencent/beacon/upload/UploadStrategy:DEFAULT_COMMON_DELAY	I
+    //   440: if_icmpeq +9 -> 449
+    //   443: invokestatic 291	com/tencent/beacon/core/event/TunnelModule:getInstance	()Lcom/tencent/beacon/core/event/TunnelModule;
+    //   446: invokevirtual 294	com/tencent/beacon/core/event/TunnelModule:updateSchedule	()V
+    //   449: aload_0
+    //   450: aload_1
+    //   451: ldc_w 295
+    //   454: invokeinterface 173 2 0
+    //   459: checkcast 163	java/lang/String
+    //   462: aload_0
+    //   463: getfield 97	com/tencent/beacon/core/event/EventStrategyBean:sensorEnable	Z
+    //   466: invokestatic 256	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;Z)Z
+    //   469: putfield 97	com/tencent/beacon/core/event/EventStrategyBean:sensorEnable	Z
+    //   472: aload_0
+    //   473: aload_1
+    //   474: ldc_w 296
+    //   477: invokeinterface 173 2 0
+    //   482: checkcast 163	java/lang/String
+    //   485: aload_0
+    //   486: getfield 99	com/tencent/beacon/core/event/EventStrategyBean:acceleEnable	Z
+    //   489: invokestatic 256	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;Z)Z
+    //   492: putfield 99	com/tencent/beacon/core/event/EventStrategyBean:acceleEnable	Z
+    //   495: aload_0
+    //   496: aload_1
+    //   497: ldc_w 297
+    //   500: invokeinterface 173 2 0
+    //   505: checkcast 163	java/lang/String
+    //   508: aload_0
+    //   509: getfield 101	com/tencent/beacon/core/event/EventStrategyBean:gyroEnable	Z
+    //   512: invokestatic 256	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;Z)Z
+    //   515: putfield 101	com/tencent/beacon/core/event/EventStrategyBean:gyroEnable	Z
+    //   518: aload_0
+    //   519: aload_1
+    //   520: ldc_w 298
+    //   523: invokeinterface 173 2 0
+    //   528: checkcast 163	java/lang/String
+    //   531: aload_0
+    //   532: getfield 103	com/tencent/beacon/core/event/EventStrategyBean:magneticEnable	Z
+    //   535: invokestatic 256	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;Z)Z
+    //   538: putfield 103	com/tencent/beacon/core/event/EventStrategyBean:magneticEnable	Z
+    //   541: aload_0
+    //   542: aload_1
+    //   543: ldc_w 299
+    //   546: invokeinterface 173 2 0
+    //   551: checkcast 163	java/lang/String
+    //   554: aload_0
+    //   555: getfield 105	com/tencent/beacon/core/event/EventStrategyBean:gatherCount	I
+    //   558: iconst_1
+    //   559: bipush 50
+    //   561: invokestatic 245	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;III)I
+    //   564: putfield 105	com/tencent/beacon/core/event/EventStrategyBean:gatherCount	I
+    //   567: aload_0
+    //   568: aload_1
+    //   569: ldc_w 300
+    //   572: invokeinterface 173 2 0
+    //   577: checkcast 163	java/lang/String
+    //   580: aload_0
+    //   581: getfield 109	com/tencent/beacon/core/event/EventStrategyBean:gatherDur	J
+    //   584: ldc2_w 301
+    //   587: ldc2_w 303
+    //   590: invokestatic 307	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;JJJ)J
+    //   593: putfield 109	com/tencent/beacon/core/event/EventStrategyBean:gatherDur	J
+    //   596: aload_0
+    //   597: aload_1
+    //   598: ldc_w 308
+    //   601: invokeinterface 173 2 0
+    //   606: checkcast 163	java/lang/String
+    //   609: aload_0
+    //   610: getfield 111	com/tencent/beacon/core/event/EventStrategyBean:hertzCount	I
+    //   613: bipush 20
+    //   615: bipush 100
+    //   617: invokestatic 245	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;III)I
+    //   620: putfield 111	com/tencent/beacon/core/event/EventStrategyBean:hertzCount	I
+    //   623: aload_0
+    //   624: aload_1
+    //   625: ldc_w 309
+    //   628: invokeinterface 173 2 0
+    //   633: checkcast 163	java/lang/String
+    //   636: aload_0
+    //   637: getfield 113	com/tencent/beacon/core/event/EventStrategyBean:consuming	I
+    //   640: bipush 60
+    //   642: ldc_w 310
+    //   645: invokestatic 245	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;III)I
+    //   648: putfield 113	com/tencent/beacon/core/event/EventStrategyBean:consuming	I
+    //   651: aload_1
+    //   652: ldc_w 312
+    //   655: invokeinterface 173 2 0
+    //   660: checkcast 163	java/lang/String
+    //   663: iconst_1
+    //   664: invokestatic 256	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;Z)Z
+    //   667: putstatic 315	com/tencent/beacon/upload/UploadStrategy:DEFAULT_BEACON_ID_ENABLE	Z
+    //   670: aload_1
+    //   671: ldc_w 317
+    //   674: invokeinterface 173 2 0
+    //   679: checkcast 163	java/lang/String
+    //   682: astore_1
+    //   683: aload_1
+    //   684: ifnull +32 -> 716
+    //   687: invokestatic 322	com/tencent/beacon/core/d/i:a	()Lcom/tencent/beacon/core/d/i;
+    //   690: aload_1
+    //   691: aload_0
+    //   692: getfield 118	com/tencent/beacon/core/event/EventStrategyBean:uploadErrorBound	I
+    //   695: bipush 100
+    //   697: sipush 20000
+    //   700: invokestatic 245	com/tencent/beacon/core/e/b:a	(Ljava/lang/String;III)I
+    //   703: invokevirtual 325	com/tencent/beacon/core/d/i:a	(I)V
+    //   706: invokestatic 322	com/tencent/beacon/core/d/i:a	()Lcom/tencent/beacon/core/d/i;
+    //   709: aload_0
+    //   710: getfield 118	com/tencent/beacon/core/event/EventStrategyBean:uploadErrorBound	I
+    //   713: invokevirtual 325	com/tencent/beacon/core/d/i:a	(I)V
+    //   716: aload_0
+    //   717: monitorexit
+    //   718: return
+    //   719: astore_1
+    //   720: aload_1
+    //   721: invokestatic 328	com/tencent/beacon/core/e/d:a	(Ljava/lang/Throwable;)V
+    //   724: goto -8 -> 716
+    //   727: astore_1
+    //   728: aload_0
+    //   729: monitorexit
+    //   730: aload_1
+    //   731: athrow
+    //   732: astore_3
+    //   733: goto -366 -> 367
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	660	0	this	EventStrategyBean
-    //   0	660	1	paramMap	Map<String, String>
-    //   333	4	2	i	int
-    //   307	43	3	localObject	Object
-    //   656	1	3	localException	Exception
+    //   0	736	0	this	EventStrategyBean
+    //   0	736	1	paramMap	Map<String, String>
+    //   324	18	2	i	int
+    //   310	45	3	localObject	Object
+    //   732	1	3	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   6	308	643	java/lang/Exception
-    //   312	334	643	java/lang/Exception
-    //   362	428	643	java/lang/Exception
-    //   428	444	643	java/lang/Exception
-    //   444	640	643	java/lang/Exception
-    //   6	308	651	finally
-    //   312	334	651	finally
-    //   339	362	651	finally
-    //   362	428	651	finally
-    //   428	444	651	finally
-    //   444	640	651	finally
-    //   644	648	651	finally
-    //   339	362	656	java/lang/Exception
+    //   6	31	719	java/lang/Exception
+    //   31	58	719	java/lang/Exception
+    //   58	83	719	java/lang/Exception
+    //   83	110	719	java/lang/Exception
+    //   110	135	719	java/lang/Exception
+    //   135	157	719	java/lang/Exception
+    //   157	180	719	java/lang/Exception
+    //   180	203	719	java/lang/Exception
+    //   203	226	719	java/lang/Exception
+    //   226	254	719	java/lang/Exception
+    //   254	275	719	java/lang/Exception
+    //   275	298	719	java/lang/Exception
+    //   298	311	719	java/lang/Exception
+    //   315	325	719	java/lang/Exception
+    //   329	339	719	java/lang/Exception
+    //   367	390	719	java/lang/Exception
+    //   390	433	719	java/lang/Exception
+    //   433	449	719	java/lang/Exception
+    //   449	472	719	java/lang/Exception
+    //   472	495	719	java/lang/Exception
+    //   495	518	719	java/lang/Exception
+    //   518	541	719	java/lang/Exception
+    //   541	567	719	java/lang/Exception
+    //   567	596	719	java/lang/Exception
+    //   596	623	719	java/lang/Exception
+    //   623	651	719	java/lang/Exception
+    //   651	670	719	java/lang/Exception
+    //   670	683	719	java/lang/Exception
+    //   687	716	719	java/lang/Exception
+    //   6	31	727	finally
+    //   31	58	727	finally
+    //   58	83	727	finally
+    //   83	110	727	finally
+    //   110	135	727	finally
+    //   135	157	727	finally
+    //   157	180	727	finally
+    //   180	203	727	finally
+    //   203	226	727	finally
+    //   226	254	727	finally
+    //   254	275	727	finally
+    //   275	298	727	finally
+    //   298	311	727	finally
+    //   315	325	727	finally
+    //   329	339	727	finally
+    //   344	367	727	finally
+    //   367	390	727	finally
+    //   390	433	727	finally
+    //   433	449	727	finally
+    //   449	472	727	finally
+    //   472	495	727	finally
+    //   495	518	727	finally
+    //   518	541	727	finally
+    //   541	567	727	finally
+    //   567	596	727	finally
+    //   596	623	727	finally
+    //   623	651	727	finally
+    //   651	670	727	finally
+    //   670	683	727	finally
+    //   687	716	727	finally
+    //   720	724	727	finally
+    //   344	367	732	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.event.EventStrategyBean
  * JD-Core Version:    0.7.0.1
  */

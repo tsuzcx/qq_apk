@@ -1,27 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import cooperation.qzone.share.QZoneShareActivity;
+import mqq.app.QQPermissionCallback;
 
 public class bmga
-  extends AnimatorListenerAdapter
+  implements QQPermissionCallback
 {
-  public bmga(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  public bmga(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive mProgressView 50ms delay=90ms end");
-    }
+    bglp.b(this.a);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.setStatus(false);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive mProgressView begin");
-    }
+    QZoneShareActivity.a(this.a);
   }
 }
 

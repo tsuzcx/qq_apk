@@ -49,8 +49,8 @@ public class HardCodeIpList
       localArrayList1.add(new HardCodeIpList.Candiate(this, "123.151.137.126"));
       localArrayList1.add(new HardCodeIpList.Candiate(this, "101.89.38.28"));
       Collections.sort(localArrayList1, new HardCodeIpList.CustomComparator(this));
-      localArrayList4.add(new HardCodeIpList.Candiate(this, "103.7.30.143"));
-      localArrayList4.add(new HardCodeIpList.Candiate(this, "203.205.140.60"));
+      localArrayList4.add(new HardCodeIpList.Candiate(this, "203.205.234.15"));
+      localArrayList4.add(new HardCodeIpList.Candiate(this, "203.205.234.144"));
       Collections.sort(localArrayList4, new HardCodeIpList.CustomComparator(this));
       this.mHcIpCandicateListWifi = new CopyOnWriteArrayList();
       this.mHcIpCandicateListWifi.add(((HardCodeIpList.Candiate)localArrayList1.get(0)).ip);
@@ -107,8 +107,8 @@ public class HardCodeIpList
     if (this.mHcIpCandicateListOverseas == null)
     {
       this.mHcIpCandicateListOverseas = new CopyOnWriteArrayList();
-      this.mHcIpCandicateListOverseas.add("103.7.30.143");
-      this.mHcIpCandicateListOverseas.add("203.205.140.60");
+      this.mHcIpCandicateListOverseas.add("203.205.234.15");
+      this.mHcIpCandicateListOverseas.add("203.205.234.144");
     }
   }
   

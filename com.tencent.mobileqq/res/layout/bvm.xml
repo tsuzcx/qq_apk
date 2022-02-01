@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="29.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/ir7" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/ir8" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="2.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/ir7" android:layout_width="wrap_content" android:layout_height="29.0dip" android:layout_marginTop="10.0dip">
+        <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/ir8" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="2.0dip" />
         <TextView android:textSize="14.0dip" android:layout_gravity="center_vertical" android:id="@id/iru" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:singleLine="true" />
         <TextView android:textSize="8.0dip" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:id="@id/irt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-12.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="8.0dip" android:includeFontPadding="false" />
     </LinearLayout>

@@ -1,71 +1,95 @@
-import android.annotation.TargetApi;
-import android.media.MediaMetadataRetriever;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import javax.annotation.Nonnull;
 
-@TargetApi(18)
 public class bnsf
+  extends RecyclerView.Adapter<bnsh>
 {
-  public static int a(String paramString, bnsg parambnsg)
+  private static List<bnrl> jdField_a_of_type_JavaUtilList;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  
+  public bnsf(Context paramContext, RecyclerView paramRecyclerView)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    label227:
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    a();
+    this.jdField_a_of_type_JavaLangString = ((bnrl)jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).jdField_a_of_type_JavaLangString;
+    this.b = ((bnrl)jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).b;
+  }
+  
+  private void a()
+  {
+    jdField_a_of_type_JavaUtilList = bnrk.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NonNull
+  public bnsh a(@NonNull ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
+    }
+    return new bnsh(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558575, paramViewGroup, false));
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = ((bnrl)jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
+    this.b = ((bnrl)jdField_a_of_type_JavaUtilList.get(paramInt)).b;
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+  }
+  
+  public void a(@NonNull bnsh parambnsh, int paramInt)
+  {
+    parambnsh.a(((bnrl)jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString);
+    if (paramInt == this.jdField_a_of_type_Int) {
+      parambnsh.a(true);
+    }
     for (;;)
     {
-      String str1;
-      String str2;
-      String str3;
-      try
-      {
-        localMediaMetadataRetriever.setDataSource(paramString);
-        str1 = localMediaMetadataRetriever.extractMetadata(18);
-        str2 = localMediaMetadataRetriever.extractMetadata(19);
-        paramString = localMediaMetadataRetriever.extractMetadata(24);
-        str3 = localMediaMetadataRetriever.extractMetadata(9);
-        localMediaMetadataRetriever.release();
-        if ((paramString != null) && (!"".equals(paramString)) && (!"null".equals(paramString))) {
-          break label227;
-        }
-        paramString = "0";
-        if ((str1 == null) || (str2 == null))
-        {
-          QLog.e("MediaMetadataUtils", 1, "extractMetadata:width=" + str1 + " height=" + str2);
-          return -102;
-        }
-      }
-      catch (RuntimeException paramString)
-      {
-        QLog.e("MediaMetadataUtils", 1, "setDataSource", paramString);
-        return -101;
-      }
-      for (;;)
-      {
-        try
-        {
-          parambnsg.a[0] = Integer.parseInt(str1);
-          parambnsg.a[1] = Integer.parseInt(str2);
-          parambnsg.a[3] = Integer.parseInt(str3);
-          i = 0;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          QLog.e("MediaMetadataUtils", 1, "parseInt", localNumberFormatException);
-          int i = -103;
-          continue;
-        }
-        try
-        {
-          parambnsg.a[2] = Integer.parseInt(paramString);
-          parambnsg.a[4] = 0;
-          return i;
-        }
-        catch (NumberFormatException paramString)
-        {
-          QLog.e("MediaMetadataUtils", 1, "parseInt", paramString);
-          parambnsg.a[2] = 0;
-          return i;
-        }
-      }
+      parambnsh.itemView.setOnClickListener(new bnsg(this, paramInt, parambnsh));
+      EventCollector.getInstance().onRecyclerBindViewHolder(parambnsh, paramInt, getItemId(paramInt));
+      return;
+      parambnsh.a(false);
     }
+  }
+  
+  @Nonnull
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public int getItemCount()
+  {
+    return jdField_a_of_type_JavaUtilList.size();
   }
 }
 

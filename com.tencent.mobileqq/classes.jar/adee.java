@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
-public class adee
-  implements DialogInterface.OnDismissListener
+public abstract class adee
 {
-  public adee(GroupManagerActivity paramGroupManagerActivity) {}
+  protected aded a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a() {}
+  
+  public final void a(aded paramaded)
   {
-    GroupManagerActivity.a(this.a, null);
+    this.a = paramaded;
+    a();
   }
+  
+  public abstract boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adea paramadea);
+  
+  public void b() {}
 }
 
 

@@ -1,21 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.widget.QQBlurView;
 
-public class ailw
-  implements DialogInterface.OnClickListener
+class ailw
+  implements View.OnAttachStateChangeListener
 {
-  public ailw(BindVerifyActivity paramBindVerifyActivity) {}
+  ailw(ailv paramailv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onViewAttachedToWindow(View paramView) {}
+  
+  public void onViewDetachedFromWindow(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindVerifyActivity", 2, "new user guild confirm unbind");
+    if (ailv.a(this.a) != null) {
+      ailv.a(this.a).d();
     }
-    this.a.a.b(BindVerifyActivity.a(this.a), BindVerifyActivity.b(this.a), 0, BindVerifyActivity.a(this.a), BindVerifyActivity.b(this.a));
-    this.a.a(2131719785, 1000L, true);
+    if (ailv.a(this.a) != null)
+    {
+      ailv.a(this.a).c();
+      ailv.a(this.a, null);
+    }
+    ailv.a(this.a).removeOnAttachStateChangeListener(this);
   }
 }
 

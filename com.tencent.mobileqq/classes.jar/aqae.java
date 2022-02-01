@@ -1,63 +1,19 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
 
-public abstract class aqae
+public final class aqae
+  implements Parcelable.Creator<CardOCRInfo>
 {
-  public static aqae a(Bundle paramBundle)
+  public CardOCRInfo a(Parcel paramParcel)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    int i;
-    if (paramBundle != null)
-    {
-      localObject1 = localObject2;
-      if (paramBundle.containsKey("cur_data_source_type"))
-      {
-        QLog.d("EmoticonPreviewData", 1, "restoreSaveInstanceState execute");
-        i = paramBundle.getInt("cur_data_source_type");
-        if (i != 0) {
-          break label53;
-        }
-        localObject1 = new aqap(null).b(paramBundle);
-      }
-    }
-    label53:
-    do
-    {
-      return localObject1;
-      localObject1 = localObject2;
-    } while (i != 1);
-    return new aqan(null).b(paramBundle);
+    return new CardOCRInfo(paramParcel);
   }
   
-  public abstract int a(List<aqae> paramList);
-  
-  public abstract long a();
-  
-  public abstract Drawable a(Context paramContext);
-  
-  public abstract apuf a();
-  
-  public abstract CustomEmotionData a();
-  
-  public void a(Bundle paramBundle, int paramInt)
+  public CardOCRInfo[] a(int paramInt)
   {
-    paramBundle.putInt("cur_data_source_type", paramInt);
+    return new CardOCRInfo[paramInt];
   }
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(aqae paramaqae);
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
 }
 
 

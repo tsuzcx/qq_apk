@@ -82,7 +82,6 @@ public class TVKVideoInfoEnum
   public static final int HLS_LIVE = 3;
   public static final int HLS_MULTI = 8;
   public static final int HLS_VOD = 2;
-  public static final String HOST = "{\"httpproxy_config\":{\"time_cgi_host\":\"http://vv.play.ott.video.qq.com/checktime\",\"time_cgi_host_bk\":\"http://vv.play.ott.video.qq.com/checktime\",\"vkey_cgi_host\":\"http://vv.play.ott.video.qq.com/getvkey\",\"vkey_cgi_host_bk\":\"http://vv.play.ott.video.qq.com/getvkey\",\"bkey_cgi_host\":\"http://vv.play.ott.video.qq.com/getvbkey\",\"bkey_cgi_host_bk\":\"http://vv.play.ott.video.qq.com/getvbkey\",\"vinfo_cgi_host\":\"http://vv.play.ott.video.qq.com/getvinfo\",\"vinfo_cgi_host_bk\":\"http://vv.play.ott.video.qq.com/getvinfo\",\"btrace_boss_cgi\":\"http://btrace.play.ott.video.qq.com/kvcollect\",\"tpt_server_address\":\"http://downloadtpt.play.ott.video.qq.com\",\"tpt_server_address_bk\":\"http://bk-downloadtpt.play.ott.video.qq.com\",\"redirect_server_address\":\"http://ps-p2p.play.ott.video.qq.com\",\"redirect_server_address_bk\":\"http://bk-ps.play.ott.video.qq.com\",\"stun_server_address\":\"http://stun.play.ott.video.qq.com\",\"stun_server_address_bk\":\"http://bk-stun.play.ott.video.qq.com\",\"punch_server_address\":\"http://punch-p2p.play.ott.video.qq.com\",\"punch_server_address_bk\":\"http://bk-punch.play.ott.video.qq.com\",\"uptest_server_address\":\"http://uptest.play.ott.video.qq.com\",\"video_dispatch\":\"http://video-dispatch.play.ott.video.qq.com\",\"mdevstat_address\":\"mdevstat.conn.ott.video.qq.com\"}}";
   public static final int HTTP = 1;
   public static final String HTTPPROXY_CONFIG = "httpproxy_config";
   public static final String KEY_PARAM_XML_SWITCH = "xmlparse";
@@ -226,7 +225,7 @@ public class TVKVideoInfoEnum
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoEnum
  * JD-Core Version:    0.7.0.1
  */

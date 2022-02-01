@@ -1,35 +1,20 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class adqa
-  implements axqs
+  implements biao
 {
-  public adqa(QQIdentiferActivity paramQQIdentiferActivity) {}
+  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131372835);
   
-  public void a() {}
+  public adqa(BaseChatPie paramBaseChatPie) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(axqw paramaxqw) {}
-  
-  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public boolean a()
   {
-    if (!paramBoolean)
-    {
-      bdgm.a(this.a, 230, this.a.getString(2131698770), alud.a(2131710746), new adqb(this), null).show();
-      return;
-    }
-    QQIdentiferActivity.a(this.a).set(false);
-    QQIdentiferActivity.a(this.a).a();
+    return (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.isDirty()) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
   }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

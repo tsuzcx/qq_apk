@@ -1,26 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelBottomBanner;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class slb
-  implements slg
+class slb
+  extends skd
 {
-  public slb(ChannelBottomBanner paramChannelBottomBanner) {}
+  slb(ske paramske) {}
   
-  public void a(int paramInt)
+  public int a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    return 19;
+  }
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    ske.a(this.a, false);
+    ske.a(this.a, ske.a(this.a), paramActionSheetItem.uin, paramActionSheetItem.uinType, paramActionSheetItem.label);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public int c()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     slb
  * JD-Core Version:    0.7.0.1
  */

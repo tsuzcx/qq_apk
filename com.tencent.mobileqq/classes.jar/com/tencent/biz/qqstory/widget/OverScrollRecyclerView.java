@@ -5,34 +5,44 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.util.AttributeSet;
-import xxm;
+import zqx;
 
 public class OverScrollRecyclerView
   extends RecyclerView
 {
-  protected final xxm a = new xxm(this);
+  protected final zqx a = new zqx(this);
   
   public OverScrollRecyclerView(Context paramContext)
   {
     super(paramContext);
-    a();
+    c();
   }
   
   public OverScrollRecyclerView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    c();
   }
   
   public OverScrollRecyclerView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
+    c();
   }
   
-  private void a()
+  private void c()
   {
     this.a.a();
+  }
+  
+  public void a()
+  {
+    this.a.c();
+  }
+  
+  public void b()
+  {
+    this.a.b();
   }
   
   public void onDetachedFromWindow()
@@ -46,10 +56,19 @@ public class OverScrollRecyclerView
     super.setLayoutManager(paramLayoutManager);
     this.a.a(paramLayoutManager);
   }
+  
+  public void setTouchDragRatio(float paramFloat1, float paramFloat2)
+  {
+    if (this.a.a != null)
+    {
+      this.a.a.a = paramFloat1;
+      this.a.a.b = paramFloat2;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.widget.OverScrollRecyclerView
  * JD-Core Version:    0.7.0.1
  */

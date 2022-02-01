@@ -1,150 +1,36 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.FavoriteCKVData.KandianFavoriteBizData;
-import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteReqBody;
-import tencent.im.oidb.cmd0xb40.oidb_0xb40.ReqBody;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
-public class pej
+class pej
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static final String a;
-  static HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap;
-  public static pej a;
-  public static final String b;
-  public static final String c;
-  public static final String d;
-  private pfc jdField_a_of_type_Pfc = new pfc();
+  String jdField_a_of_type_JavaLangString = peh.a(this.jdField_a_of_type_Peh).a.commentId;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "Q.readinjoy.atlas.." + pej.class.getSimpleName();
-    b = alud.a(2131713293);
-    c = alud.a(2131713204);
-    d = alud.a(2131713364);
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), b);
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2), c);
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3), d);
-  }
+  pej(peh parampeh, View paramView) {}
   
-  public static pej a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (jdField_a_of_type_Pej == null) {}
-    try
+    if ((peh.a(this.jdField_a_of_type_Peh) == null) || (peh.a(this.jdField_a_of_type_Peh).a == null) || (this.jdField_a_of_type_JavaLangString == null))
     {
-      if (jdField_a_of_type_Pej == null) {
-        jdField_a_of_type_Pej = new pej();
-      }
-      return jdField_a_of_type_Pej;
-    }
-    finally {}
-  }
-  
-  private void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, ArrayList<byte[]> paramArrayList)
-  {
-    new biva(6).a("nLinkType", 0).b("sTitle", paramString2).b("sUrl", paramString6).a("bAppShare", false).a("lAppId", 0L).b("sPublisher", paramString4).b("sBrief", paramString3).b("sPath", paramString5).b("sResUrl", paramString6).a("lCategory", 8L).b("sBizDataList", paramArrayList).b(paramActivity, paramString1, -1, null);
-  }
-  
-  public static boolean a(Context paramContext, boolean paramBoolean)
-  {
-    boolean bool = false;
-    if (ors.a(BaseApplicationImpl.getApplication().getRuntime(), "Key_First_ReadInJoy_Favorite", true) == null)
-    {
-      ors.a("Key_First_ReadInJoy_Favorite", Integer.valueOf(1), true);
-      if (!paramBoolean) {
-        bdgm.a(paramContext, 230, paramContext.getString(2131692443), "你可在看点内点击“我的”找到“我的收藏”。\n收藏的内容将会上传保存，在其他手机上登录QQ，也可以在看点内找到你收藏的内容。\n", 2131690648, 2131692441, new pel(), null).setMessageCount(null).show();
-      }
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public void a(Activity paramActivity, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Bundle paramBundle)
-  {
-    FavoriteCKVData.KandianFavoriteBizData localKandianFavoriteBizData = new FavoriteCKVData.KandianFavoriteBizData();
-    localKandianFavoriteBizData.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(paramString2));
-    localKandianFavoriteBizData.uint32_type.set(paramInt);
-    ArrayList localArrayList = new ArrayList();
-    if (paramBundle != null)
-    {
-      paramInt = paramBundle.getInt("videoDuration");
-      localKandianFavoriteBizData.uint32_video_duration.set(paramInt);
-      paramInt = paramBundle.getInt("picNum");
-      localKandianFavoriteBizData.uint32_pic_num.set(paramInt);
-      long l = paramBundle.getLong("publishAccountUin");
-      localKandianFavoriteBizData.uint64_account_id.set(l);
-      paramString2 = paramBundle.getString("publishAccountName");
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        localKandianFavoriteBizData.bytes_account_name.set(ByteStringMicro.copyFromUtf8(paramString2));
-        l = paramBundle.getLong("feedsId");
-        localKandianFavoriteBizData.uint64_feeds_id.set(l);
-        paramInt = paramBundle.getInt("feedsType");
-        localKandianFavoriteBizData.uint32_feeds_type.set(paramInt);
-        paramInt = paramBundle.getInt("videoType");
-        localKandianFavoriteBizData.uint32_video_type.set(paramInt);
-      }
-    }
-    for (;;)
-    {
-      localArrayList.add(localKandianFavoriteBizData.toByteArray());
-      a(paramActivity, paramString1, paramString3, paramString4, paramString2, paramString5, paramString6, localArrayList);
-      return;
-      paramString2 = "";
-      break;
-      paramString2 = "";
-    }
-  }
-  
-  public void a(Activity paramActivity, String paramString1, int paramInt, String paramString2, ArrayList<String> paramArrayList)
-  {
-    FavoriteCKVData.KandianFavoriteBizData localKandianFavoriteBizData = new FavoriteCKVData.KandianFavoriteBizData();
-    localKandianFavoriteBizData.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(paramString2));
-    localKandianFavoriteBizData.uint32_type.set(paramInt);
-    paramString2 = new ArrayList();
-    paramString2.add(localKandianFavoriteBizData.toByteArray());
-    new biva(6).a("sCIDListToBeDelete", paramArrayList).b("sBizDataList", paramString2).a(paramActivity, paramString1, -1, null);
-  }
-  
-  public void a(List<String> paramList, pem parampem)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getAtlasFavoriteStatus, rowKeyList = " + paramList + ", callback = " + parampem);
-    }
-    oidb_0xb40.ReqBody localReqBody = new oidb_0xb40.ReqBody();
-    oidb_0xb40.CheckFavoriteReqBody localCheckFavoriteReqBody = new oidb_0xb40.CheckFavoriteReqBody();
-    if (paramList == null) {
+      peh.a(this.jdField_a_of_type_Peh, this.jdField_a_of_type_AndroidViewView);
       return;
     }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (!this.jdField_a_of_type_JavaLangString.equals(peh.a(this.jdField_a_of_type_Peh).a.commentId))
     {
-      String str = (String)paramList.next();
-      if (!TextUtils.isEmpty(str)) {
-        localCheckFavoriteReqBody.rpt_bytes_rowkey.add(ByteStringMicro.copyFromUtf8(str));
-      }
+      peh.a(this.jdField_a_of_type_Peh, this.jdField_a_of_type_AndroidViewView);
+      return;
     }
-    localReqBody.msg_check_favorite_req.set(localCheckFavoriteReqBody);
-    paramList = new Bundle();
-    mzy.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new pek(this, parampem), localReqBody.toByteArray(), "OidbSvc.0xb40", 2880, 1, paramList, 0L);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    peh.a(this.jdField_a_of_type_Peh).setAlpha(i);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(peh.a(this.jdField_a_of_type_Peh));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pej
  * JD-Core Version:    0.7.0.1
  */

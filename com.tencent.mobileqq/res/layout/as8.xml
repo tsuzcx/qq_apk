@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:id="@id/cix" android:layout_width="68.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/jm9" android:background="@drawable/cjo" android:layout_width="fill_parent" android:layout_height="300.0dip" android:alpha="0.4" />
+    <View android:id="@id/jm9" android:background="@drawable/cjo" android:layout_width="fill_parent" android:layout_height="290.0dip" android:alpha="0.4" />
     <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/d4m" android:layout_width="fill_parent" android:layout_height="42.0dip">
-            <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="center_horizontal" android:id="@id/lkr" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" />
-            <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/lkh" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center_horizontal" android:id="@id/d46" android:focusable="true" android:layout_width="36.0dip" android:layout_height="36.0dip" />
+        <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/d4m" android:layout_width="fill_parent" android:layout_height="60.0dip">
+            <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/lkh" android:layout_width="56.0dip" android:layout_height="56.0dip">
+                <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:foreground="@drawable/di7">
+                    <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center" android:id="@id/d46" android:focusable="true" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+                </FrameLayout>
+                <ImageView android:layout_gravity="center" android:id="@id/mp0" android:background="@drawable/g3p" android:paddingLeft="3.0dip" android:paddingTop="1.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="56.0dip" android:layout_height="56.0dip" android:src="@drawable/g3o" />
             </FrameLayout>
-            <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFollowImageView android:layout_gravity="center_horizontal" android:id="@id/fjs" android:layout_width="25.0dip" android:layout_height="17.0dip" android:layout_marginTop="25.0dip" android:src="@drawable/cjl" android:contentDescription="@string/pz7" />
+            <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTiktokFollowBtn android:layout_gravity="center_horizontal" android:id="@id/fjs" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="38.0dip" android:src="@drawable/cjl" android:contentDescription="@string/pz7" />
         </FrameLayout>
-        <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/cis" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip">
-            <ImageView android:layout_gravity="center_horizontal" android:id="@id/cir" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/cjn" android:scaleType="center" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:layout_gravity="center_horizontal" android:id="@id/ciu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" />
+        <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/cis" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/cir" android:padding="5.0dip" android:layout_width="42.0dip" android:layout_height="42.0dip" android:src="@drawable/cjn" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ciu" android:layout_width="wrap_content" android:layout_height="21.0dip" android:layout_marginTop="34.0dip" />
         </FrameLayout>
-        <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/lij" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip">
-            <ImageView android:layout_gravity="center_horizontal" android:id="@id/lig" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/cjh" android:scaleType="center" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:layout_gravity="center_horizontal" android:id="@id/cin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" />
+        <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/lij" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/lig" android:padding="5.0dip" android:layout_width="42.0dip" android:layout_height="42.0dip" android:src="@drawable/cjh" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/cin" android:layout_width="wrap_content" android:layout_height="21.0dip" android:layout_marginTop="34.0dip" />
         </FrameLayout>
-        <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/bvd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_marginBottom="15.0dip">
-            <ImageView android:layout_gravity="center_horizontal" android:id="@id/cil" android:visibility="visible" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/cjg" android:scaleType="center" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:layout_gravity="center_horizontal" android:id="@id/fhq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" />
+        <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/bvd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginBottom="10.0dip">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/cil" android:padding="5.0dip" android:visibility="visible" android:layout_width="42.0dip" android:layout_height="42.0dip" android:src="@drawable/cjg" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/fhq" android:layout_width="wrap_content" android:layout_height="21.0dip" android:layout_marginTop="34.0dip" />
         </FrameLayout>
         <View android:id="@id/a6" android:focusable="true" android:visibility="gone" android:layout_width="1.0px" android:layout_height="1.0px" android:contentDescription="@string/q0w" />
     </LinearLayout>

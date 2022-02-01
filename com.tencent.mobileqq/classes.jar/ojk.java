@@ -1,33 +1,30 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.5;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ojk
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  public ojk(CommentInfo paramCommentInfo1, CommentInfo paramCommentInfo2, BaseActivity paramBaseActivity) {}
+  public ojk(ReadInJoyNewFeedsActivity.5 param5, FrameLayout paramFrameLayout) {}
   
   public void onClick(View paramView)
   {
-    olt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.toUin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    paramView = new olw(this.b.articleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo).a(ola.a).b(this.b.area).c(0).a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.toUin).a();
-    nrt.a(null, olt.a(this.b.articleInfo), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.b.articleInfo.mArticleID), String.valueOf(this.b.articleInfo.mAlgorithmID), this.b.articleInfo.innerUniqueID, paramView, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
-    paramTextPaint.setUnderlineText(false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a.a();
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a);
+    if (261 == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.a) {
+      bgsg.s(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.app.getCurrentAccountUin(), null);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ojk
  * JD-Core Version:    0.7.0.1
  */

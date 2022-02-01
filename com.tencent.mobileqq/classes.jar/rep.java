@@ -1,37 +1,63 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.articlesummary.AnswerDetail;
 
-class rep
-  implements View.OnClickListener
+public class rep
 {
-  rep(rem paramrem) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c = "";
   
-  public void onClick(View paramView)
+  public rep()
   {
-    if (rem.a(this.a) != null) {
-      rem.a(this.a).a(rem.a(this.a));
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public static rep a(articlesummary.AnswerDetail paramAnswerDetail)
+  {
+    rep localrep = new rep();
+    if (paramAnswerDetail.question_rowkey.has()) {
+      localrep.jdField_a_of_type_JavaLangString = paramAnswerDetail.question_rowkey.get();
     }
-    rem.a(this.a).c.setVisibility(8);
-    paramView = new JSONObject();
-    try
-    {
-      paramView.put("uin", rem.a(this.a).getCurrentAccountUin());
-      label67:
-      nrt.a(null, null, "0X8009BF1", "0X8009BF1", 0, 0, "", "", "", ntd.a(null, null, rem.a(this.a).a.a.a, rem.a(this.a).a.a.g, paramView), false);
-      return;
+    if (paramAnswerDetail.question_title.has()) {
+      localrep.jdField_b_of_type_JavaLangString = paramAnswerDetail.question_title.get();
     }
-    catch (Exception localException)
-    {
-      break label67;
+    if (paramAnswerDetail.answer_content.has()) {
+      localrep.c = paramAnswerDetail.answer_content.get();
     }
+    if (paramAnswerDetail.agreed_num.has()) {
+      localrep.jdField_a_of_type_Int = paramAnswerDetail.agreed_num.get();
+    }
+    if (paramAnswerDetail.card_style.has()) {
+      localrep.jdField_b_of_type_Int = paramAnswerDetail.card_style.get();
+    }
+    return localrep;
+  }
+  
+  public articlesummary.AnswerDetail a()
+  {
+    articlesummary.AnswerDetail localAnswerDetail = new articlesummary.AnswerDetail();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localAnswerDetail.question_rowkey.set(this.jdField_a_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localAnswerDetail.question_title.set(this.jdField_b_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localAnswerDetail.answer_content.set(this.c);
+    }
+    localAnswerDetail.agreed_num.set(this.jdField_a_of_type_Int);
+    localAnswerDetail.card_style.set(this.jdField_b_of_type_Int);
+    return localAnswerDetail;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rep
  * JD-Core Version:    0.7.0.1
  */

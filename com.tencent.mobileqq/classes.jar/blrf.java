@@ -1,6 +1,12 @@
-public abstract interface blrf
+import cooperation.qzone.util.QZLog;
+
+final class blrf
+  implements blrg
 {
-  public abstract void a(int paramInt);
+  public void a(String paramString, Throwable paramThrowable)
+  {
+    QZLog.e("QZLog", paramString, paramThrowable);
+  }
 }
 
 

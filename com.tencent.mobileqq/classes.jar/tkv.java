@@ -1,16 +1,10 @@
-import android.text.SpannableStringBuilder;
-
-public class tkv
-  extends SpannableStringBuilder
+public abstract interface tkv<T>
 {
-  tkv(CharSequence paramCharSequence)
-  {
-    super(paramCharSequence);
-  }
+  public abstract void a(tku<T> paramtku);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tkv
  * JD-Core Version:    0.7.0.1
  */

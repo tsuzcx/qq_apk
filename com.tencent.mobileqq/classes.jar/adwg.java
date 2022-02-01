@@ -1,16 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class adwg
-  implements View.OnClickListener
+  extends antn
 {
-  public adwg(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public adwg(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a(Object paramObject)
   {
-    this.a.getActivity().finish();
+    if (paramObject != null) {
+      ((Integer)paramObject).intValue();
+    }
   }
 }
 

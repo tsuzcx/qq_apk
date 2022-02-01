@@ -1,27 +1,12 @@
-public class bfli
-  extends bflj
+import com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgItem;
+
+public abstract interface bfli
 {
-  private String n;
-  
-  public static bfli a()
-  {
-    return new bfli();
-  }
-  
-  public bfli a(String paramString)
-  {
-    this.n = paramString;
-    return this;
-  }
-  
-  public String a()
-  {
-    return b() + "|" + c() + "|" + this.n;
-  }
+  public abstract void a(long paramLong, ImportantMsgItem paramImportantMsgItem);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfli
  * JD-Core Version:    0.7.0.1
  */

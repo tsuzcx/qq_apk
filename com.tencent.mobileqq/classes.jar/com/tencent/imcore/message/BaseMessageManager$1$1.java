@@ -1,6 +1,6 @@
 package com.tencent.imcore.message;
 
-import absi;
+import acvh;
 import java.util.Map;
 
 class BaseMessageManager$1$1
@@ -17,7 +17,7 @@ class BaseMessageManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManager.1.1
  * JD-Core Version:    0.7.0.1
  */

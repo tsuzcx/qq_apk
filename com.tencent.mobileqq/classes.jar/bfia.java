@@ -1,38 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import java.util.Comparator;
 
 class bfia
-  extends Handler
+  implements Comparator<Long>
 {
-  bfia(bfhz parambfhz, Looper paramLooper)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+    int i = 0;
+    if (paramLong1.longValue() - paramLong2.longValue() > 0L) {
+      i = 1;
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      bfhz localbfhz = this.a;
-      if (paramMessage.obj == null) {}
-      for (String str = null;; str = (String)paramMessage.obj)
-      {
-        localbfhz.a(str);
-        break;
-      }
-      this.a.a();
+    while (paramLong1.longValue() - paramLong2.longValue() >= 0L) {
+      return i;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfia
  * JD-Core Version:    0.7.0.1
  */

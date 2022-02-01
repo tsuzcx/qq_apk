@@ -1,12 +1,19 @@
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLazyLoadDelegate;
 
-public abstract interface rzu
+public class rzu
+  extends ocg
 {
-  public abstract void a(int paramInt, View paramView);
+  public rzu(VideoFeedsLazyLoadDelegate paramVideoFeedsLazyLoadDelegate) {}
+  
+  protected void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.a.a(paramBoolean, paramBundle);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rzu
  * JD-Core Version:    0.7.0.1
  */

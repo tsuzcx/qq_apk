@@ -1,18 +1,28 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-final class bgwn
-  implements AsyncResult
+class bgwn
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  bgwn(bgwm parambgwm) {}
+  
+  public int getSpanSize(int paramInt)
   {
-    QMLog.d("GameGrowthGuardianManager", "onReceived() called with: success = [" + paramBoolean + "], stReportExecuteRsp = [" + paramJSONObject + "]");
+    int i = 3;
+    switch (this.a.getItemViewType(paramInt))
+    {
+    default: 
+      i = 1;
+    case 1: 
+    case 2: 
+    case 4: 
+      return i;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgwn
  * JD-Core Version:    0.7.0.1
  */

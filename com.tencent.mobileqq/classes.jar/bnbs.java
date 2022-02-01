@@ -1,63 +1,83 @@
-import android.os.Process;
-import android.support.annotation.NonNull;
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.troop.widget.RedDotImageView;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class bnbs
+  extends Handler
 {
-  private static int a;
-  
-  public static String a(int paramInt)
+  public bnbs(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, Looper paramLooper)
   {
-    String str;
-    if (paramInt == 1)
-    {
-      bdhb.c(ulg.e + ".nomedia");
-      str = ulg.e + b(paramInt) + "/";
-    }
-    for (;;)
-    {
-      a(str);
-      return str;
-      str = alof.bo + "edit_video/business_" + paramInt + "/" + b(paramInt) + "/";
-      bdhb.c(str + ".nomedia");
-    }
+    super(paramLooper);
   }
   
-  @NonNull
-  public static String a(int paramInt, String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramString1 == null) {
-      throw new IllegalArgumentException("folderPath should not be null");
-    }
-    String str = paramString1;
-    if (!paramString1.endsWith("/")) {
-      str = paramString1 + "/";
-    }
-    return str + System.currentTimeMillis() + "_" + b(paramInt) + paramString2;
-  }
-  
-  private static void a(String paramString)
-  {
-    paramString = new File(paramString);
-    boolean bool;
-    if (paramString.isFile())
+    switch (paramMessage.what)
     {
-      bool = paramString.delete();
-      wxe.d("Q.qqstory.publish.edit.PublishFileManager", "delete file : " + bool);
+    default: 
+    case 1000: 
+      for (;;)
+      {
+        super.handleMessage(paramMessage);
+        return;
+        QIMEffectCameraCaptureUnit.d(this.a).setVisibility(8);
+        if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue()))
+        {
+          QIMEffectCameraCaptureUnit.f(this.a, false);
+          this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.z();
+        }
+      }
     }
-    if (!paramString.exists())
+    boolean bool1;
+    label104:
+    boolean bool2;
+    label134:
+    Object localObject;
+    if (paramMessage.arg1 == 1)
     {
-      bool = paramString.mkdirs();
-      wxe.d("Q.qqstory.publish.edit.PublishFileManager", "create folder : " + bool);
+      bool1 = true;
+      if ((!this.a.u) || (this.a.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a() == 0) || (!bool1)) {
+        break label237;
+      }
+      bool2 = true;
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView;
+      if (!bool2) {
+        break label243;
+      }
+      i = 0;
+      label150:
+      ((RedDotImageView)localObject).setVisibility(i);
+      localObject = this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager;
+      if (!bool1) {
+        break label248;
+      }
     }
-  }
-  
-  private static String b(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("T").append(System.currentTimeMillis()).append("B").append(paramInt).append("P").append(Process.myPid()).append("T").append(Process.myTid()).append("I");
-    paramInt = a;
-    a = paramInt + 1;
-    return paramInt;
+    label237:
+    label243:
+    label248:
+    for (int i = 0;; i = 4)
+    {
+      ((VideoFilterViewPager)localObject).setVisibility(i);
+      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.setEnabled(bool1);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("QIMEffectCameraCaptureUnit", 2, new Object[] { "checkEffectButton ", Boolean.valueOf(bool2), " filter So exists:", Boolean.valueOf(bool1) });
+      break;
+      bool1 = false;
+      break label104;
+      bool2 = false;
+      break label134;
+      i = 4;
+      break label150;
+    }
   }
 }
 

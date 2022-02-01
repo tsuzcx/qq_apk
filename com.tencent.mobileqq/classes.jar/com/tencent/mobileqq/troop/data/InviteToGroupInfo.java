@@ -3,13 +3,13 @@ package com.tencent.mobileqq.troop.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bboz;
+import bepn;
 import java.util.ArrayList;
 
 public class InviteToGroupInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<InviteToGroupInfo> CREATOR = new bboz();
+  public static final Parcelable.Creator<InviteToGroupInfo> CREATOR = new bepn();
   public int a;
   public String a;
   public ArrayList<InviteToGroupInfo.UinInfo> a;
@@ -52,7 +52,7 @@ public class InviteToGroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.InviteToGroupInfo
  * JD-Core Version:    0.7.0.1
  */

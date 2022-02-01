@@ -1,133 +1,147 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
-import android.support.v7.widget.RecyclerView;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.TopRecommendBannerAdapter.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONObject;
 
 public class ycw
-  extends yci
+  implements yda
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private boolean jdField_a_of_type_Boolean;
-  private List<ydn> b = new ArrayList();
+  public static final String a;
+  public static final String b = anni.a(2131701931);
+  public static final String c = anni.a(2131701933);
+  public static final String d = anni.a(2131701932);
+  public static final String e = anni.a(2131701934);
+  public static final String f = anni.a(2131701930);
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+  private ycx jdField_a_of_type_Ycx;
   
-  public ycw(@NotNull RecyclerView paramRecyclerView)
+  static
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    jdField_a_of_type_JavaLangString = anni.a(2131701929);
   }
   
-  private void a()
+  public ycw(Context paramContext, int paramInt, CommentLikeFeedItem paramCommentLikeFeedItem, ycx paramycx)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
-    {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
-        ThreadManager.getUIHandler().postDelayed(new TopRecommendBannerAdapter.1(this), 500L);
-      }
-    }
-    else {
-      return;
-    }
-    notifyDataSetChanged();
-  }
-  
-  private void b()
-  {
-    this.b.clear();
-    this.b.addAll(this.jdField_a_of_type_JavaUtilList.subList(0, 10));
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(10, this.jdField_a_of_type_JavaUtilList.size());
-  }
-  
-  public List<ydn> a()
-  {
-    return this.b;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt < this.b.size())
-    {
-      this.b.remove(paramInt);
-      notifyItemRemoved(a() + paramInt);
-      notifyItemRangeChanged(a() + paramInt, this.b.size() - paramInt);
-    }
-  }
-  
-  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<ydn> paramList)
-  {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_JavaUtilList != null)
-      {
-        if (this.jdField_a_of_type_JavaUtilList.size() < 10) {
-          break;
-        }
-        b();
-        a();
-      }
-      return;
-      this.jdField_a_of_type_JavaUtilList = paramList;
-    }
-    this.b.addAll(paramList);
-    this.jdField_a_of_type_JavaUtilList.clear();
-    a();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.jdField_a_of_type_Ycx = paramycx;
   }
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 10))
+    yqp.c("Q.qqstory.detail.DetailGeneralCommentEventProxy", "on comment button click.");
+    if (!bgnt.d(this.jdField_a_of_type_AndroidContentContext))
     {
-      b();
-      a();
-      return true;
+      QQToast.a(BaseApplication.getContext(), 1, anni.a(2131701935), 0).a();
+      return false;
     }
-    return false;
+    return true;
   }
   
-  public boolean b()
+  public boolean a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
   {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() < 10);
-  }
-  
-  public boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    boolean bool;
+    if (paramCommentEntry.commentType == 5)
     {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        this.b.add(this.jdField_a_of_type_JavaUtilList.remove(0));
-        notifyItemInserted(this.b.size());
-        bool1 = true;
+      paramCommentEntry = new OpenPlayerBuilder(new VidListPlayInfo(paramCommentEntry.togetherFeedId, paramCommentEntry.togetherVid), 126);
+      xho.a(this.jdField_a_of_type_AndroidContentContext, paramCommentEntry.a(), null);
+      yqu.a("play_video", "multishoot_icon", 0, 0, new String[0]);
+      bool = false;
+      paramInt1 = yqu.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
+        break label330;
       }
     }
-    return bool1;
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.b != null) {
-      return this.b.size() + a();
+    label330:
+    for (paramCommentEntry = "1";; paramCommentEntry = "2")
+    {
+      yqu.a("home_page", "clk_content", paramInt1, 0, new String[] { paramCommentEntry, yqu.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      return bool;
+      Object localObject;
+      if (paramCommentEntry.commentType == 4)
+      {
+        localObject = paramCommentEntry.getExtraJson().optString("vid");
+        paramCommentEntry = paramCommentEntry.getExtraJson().optString("feedid");
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramCommentEntry))) {
+          xho.b(this.jdField_a_of_type_AndroidContentContext, (String)localObject, paramCommentEntry, 74);
+        }
+        bool = false;
+        break;
+      }
+      if (!bgnt.d(this.jdField_a_of_type_AndroidContentContext))
+      {
+        QQToast.a(BaseApplication.getContext(), 1, anni.a(2131701928), 0).a();
+        bool = false;
+        break;
+      }
+      if (QQStoryContext.a().a(paramCommentEntry.authorUnionId))
+      {
+        localObject = bkho.a(this.jdField_a_of_type_AndroidContentContext);
+        if (paramCommentEntry.status == 2) {
+          ((bkho)localObject).c(d);
+        }
+        for (;;)
+        {
+          ((bkho)localObject).a(jdField_a_of_type_JavaLangString, 3);
+          ((bkho)localObject).d(f);
+          ((bkho)localObject).a(new ycy((bkho)localObject, paramCommentEntry, paramInt1, this.jdField_a_of_type_Ycx));
+          ((bkho)localObject).show();
+          bool = false;
+          break;
+          ((bkho)localObject).c(e);
+        }
+      }
+      bool = true;
+      break;
     }
-    return a();
+  }
+  
+  public boolean b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  {
+    bkho localbkho = bkho.a(this.jdField_a_of_type_AndroidContentContext);
+    if (QQStoryContext.a().a(paramCommentEntry.authorUnionId)) {
+      if (paramCommentEntry.status == 2)
+      {
+        localbkho.c(d);
+        localbkho.a(jdField_a_of_type_JavaLangString, 3);
+      }
+    }
+    for (;;)
+    {
+      localbkho.d(f);
+      localbkho.a(new ycy(localbkho, paramCommentEntry, paramInt1, this.jdField_a_of_type_Ycx));
+      localbkho.show();
+      return false;
+      localbkho.c(e);
+      break;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe())
+      {
+        if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isVip()) || (paramInt2 == 2)) {
+          localbkho.a(jdField_a_of_type_JavaLangString, 3);
+        }
+        localbkho.c(c);
+        localbkho.c(e);
+      }
+      else
+      {
+        localbkho.c(c);
+        localbkho.c(e);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ycw
  * JD-Core Version:    0.7.0.1
  */

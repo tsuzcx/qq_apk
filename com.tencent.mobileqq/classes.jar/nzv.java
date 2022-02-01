@@ -1,28 +1,21 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class nzv
-  implements bhuk
+  implements DialogInterface.OnCancelListener
 {
-  public nzv(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public nzv(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return;
-      ReadInJoySettingActivity.a(this.a, false);
-      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzv
  * JD-Core Version:    0.7.0.1
  */

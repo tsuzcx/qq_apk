@@ -1,44 +1,45 @@
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class lek
 {
-  @Deprecated
-  public static void a(String paramString1, String paramString2)
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public lek(VideoAppInterface paramVideoAppInterface)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(paramString1, 4, paramString2);
-    }
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lel(this);
   }
   
-  @Deprecated
-  public static void b(String paramString1, String paramString2)
+  public void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.e(paramString1, 4, paramString2);
+    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
+    localIntentFilter.addAction("tencent.video.q2v.AnnimateDownloadFinish");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
     }
-  }
-  
-  @Deprecated
-  public static void c(String paramString1, String paramString2)
-  {
     if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
+      QLog.d("GVipFunCallMonitor", 2, "regist vipFunCall " + this.jdField_a_of_type_Boolean);
     }
   }
   
-  public static void d(String paramString1, String paramString2)
+  public void b()
   {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lek
  * JD-Core Version:    0.7.0.1
  */

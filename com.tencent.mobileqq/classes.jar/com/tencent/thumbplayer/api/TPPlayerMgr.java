@@ -48,7 +48,7 @@ public class TPPlayerMgr
   
   public static String getThumbPlayerVersion()
   {
-    return "1.3.0.1023";
+    return "2.5.0.1084";
   }
   
   public static void initSdk(Context paramContext, String paramString, int paramInt)
@@ -97,7 +97,7 @@ public class TPPlayerMgr
   
   public static void postEvent(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    TPGlobalEventNofication.getInstance().postGlobalEvent(paramInt1, paramInt2, paramInt3, paramObject);
+    TPGlobalEventNofication.postGlobalEvent(paramInt1, paramInt2, paramInt3, paramObject);
   }
   
   public static void setDebugEnable(boolean paramBoolean)
@@ -145,7 +145,7 @@ public class TPPlayerMgr
   {
     TPPlayerConfig.setUserUpc(paramString);
     TPPlayerConfig.setUserUpcState(paramInt);
-    TPGlobalEventNofication.getInstance().postGlobalEvent(100003, paramInt, 0, paramString);
+    TPGlobalEventNofication.postGlobalEvent(100003, paramInt, 0, paramString);
   }
   
   public static void setUserInfo(String paramString, boolean paramBoolean)
@@ -156,7 +156,7 @@ public class TPPlayerMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPlayerMgr
  * JD-Core Version:    0.7.0.1
  */

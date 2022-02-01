@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public class bcco
-  implements DialogInterface.OnClickListener
+final class bcco
+  implements bccq
 {
-  public bcco(ReciteRecordLayout paramReciteRecordLayout) {}
+  bcco(BusinessObserver paramBusinessObserver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    paramDialogInterface.dismiss();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("dataErrorMsg", paramString);
+    localBundle.putInt("dataErrorCode", paramInt);
+    this.a.onReceive(0, false, localBundle);
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("data", paramString.getBytes());
+    localBundle.putString("cmd", "getAppConfig");
+    this.a.onReceive(0, true, localBundle);
   }
 }
 

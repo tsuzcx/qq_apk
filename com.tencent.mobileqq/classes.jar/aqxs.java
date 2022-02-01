@@ -1,44 +1,53 @@
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 
-class aqxs
-  implements aqxm
+public class aqxs
+  extends aqwr<aqxr>
 {
-  aqxs(aqxo paramaqxo, aqxm paramaqxm) {}
-  
-  public void a(int paramInt, String paramString)
+  @NonNull
+  public aqxr a()
   {
-    this.jdField_a_of_type_Aqxm.a(paramInt, paramString);
-    aqxi.a(this.jdField_a_of_type_Aqxo.jdField_a_of_type_Arit.a());
+    return new aqxr();
   }
   
-  public void a(String paramString1, String paramString2)
+  @NonNull
+  public aqxr a(aqlg[] paramArrayOfaqlg)
   {
-    this.jdField_a_of_type_Aqxo.b = paramString1;
-    this.jdField_a_of_type_Aqxo.d = paramString2;
-    aqxo.c(this.jdField_a_of_type_Aqxo);
-    this.jdField_a_of_type_Aqxo.jdField_a_of_type_Int = this.jdField_a_of_type_Aqxo.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.startPlayWithSavePath(20160714, this.jdField_a_of_type_Aqxo.b, arrr.a(this.jdField_a_of_type_Aqxo.c), 0L, 0, this.jdField_a_of_type_Aqxo.c, 0);
-    this.jdField_a_of_type_Aqxo.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.setPlayerState(20160714, this.jdField_a_of_type_Aqxo.jdField_a_of_type_Int, 6);
-    paramString1 = this.jdField_a_of_type_Aqxo.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.buildPlayURLMp4(this.jdField_a_of_type_Aqxo.jdField_a_of_type_Int);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramArrayOfaqlg = paramArrayOfaqlg[0].a;
+    bhgz.a().a(localQQAppInterface.getApplication(), paramArrayOfaqlg, localQQAppInterface.getCurrentAccountUin());
     if (QLog.isColorLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_Aqxo.hashCode() + "][" + this.jdField_a_of_type_Aqxo.jdField_a_of_type_Arit.a() + "]getDiscPlayUrl, mPlayId[" + this.jdField_a_of_type_Aqxo.jdField_a_of_type_Int + "]");
+      QLog.d("QVipKeywordsProcessor", 2, "receiveAllConfigs|type: 76,content: " + paramArrayOfaqlg);
     }
-    this.jdField_a_of_type_Aqxm.a(paramString1, paramString2);
+    return new aqxr();
   }
   
-  public void aG_()
+  @NonNull
+  public aqxr b()
   {
-    this.jdField_a_of_type_Aqxm.aG_();
+    return new aqxr();
   }
   
-  public void aH_()
+  public Class<aqxr> clazz()
   {
-    this.jdField_a_of_type_Aqxm.aH_();
+    return aqxr.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public int type()
+  {
+    return 76;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxs
  * JD-Core Version:    0.7.0.1
  */

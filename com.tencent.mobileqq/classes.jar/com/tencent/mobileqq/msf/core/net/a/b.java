@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.core.net.a;
 
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.core.push.g;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;

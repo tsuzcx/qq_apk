@@ -50,7 +50,7 @@ public final class c
     parama = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
     this.s = new e(paramContext, this.p, this.u, parama);
     this.t = NativeCrashHandler.getInstance(paramContext, parama, this.p, this.u, paramw, paramBoolean, paramString);
-    parama.G = this.t;
+    parama.F = this.t;
     this.w = new com.tencent.bugly.crashreport.crash.anr.b(paramContext, this.u, parama, paramw, this.p);
   }
   

@@ -1,27 +1,31 @@
 package com.tencent.mobileqq.apollo.store;
 
-import akuf;
-import akwd;
-import akyg;
+import Override;
+import amnl;
+import ampj;
+import amrk;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aprh;
+import arui;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.emosm.Client;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.SystemBarCompact;
 
 public class ApolloFloatActivity
@@ -34,7 +38,7 @@ public class ApolloFloatActivity
   private int d = 1500;
   private int e;
   
-  private void d()
+  private void b()
   {
     if (this.c == 1)
     {
@@ -51,6 +55,14 @@ public class ApolloFloatActivity
       return;
     }
     ApolloUtil.a(this, 1, 1);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnBackPressed()
@@ -75,17 +87,17 @@ public class ApolloFloatActivity
     if (localIntent != null)
     {
       this.e = localIntent.getIntExtra("extra_key_gameid", -1);
-      akyg localakyg = akwd.a(this.e);
+      amrk localamrk = ampj.a(this.e);
       i = localIntent.getIntExtra("extra_key_taskid", 0);
-      if (localakyg != null)
+      if (localamrk != null)
       {
-        localakyg.a(this, i);
+        localamrk.a(this, i);
         this.c = localIntent.getIntExtra("extra_key_from", -1);
         if (this.c != 1) {
           break label478;
         }
         getWindow().getDecorView().setSystemUiVisibility(5894);
-        i = akwd.a(localIntent.getIntExtra("extra_key_entratation", 1));
+        i = ampj.a(localIntent.getIntExtra("extra_key_entratation", 1));
         setRequestedOrientation(i);
         localIntent.getIntExtra("extra_key_transparent", 1);
         this.d = 0;
@@ -118,7 +130,7 @@ public class ApolloFloatActivity
       localObject = super.getResources();
       if (this.mSystemBarComp != null)
       {
-        i = ((Resources)localObject).getColor(2131167140);
+        i = ((Resources)localObject).getColor(2131167224);
         this.mSystemBarComp.setStatusColor(i);
         this.mSystemBarComp.setStatusBarColor(i);
       }
@@ -129,8 +141,8 @@ public class ApolloFloatActivity
       if (!this.jdField_a_of_type_Boolean) {
         super.hideTitleBar();
       }
-      if (!aprh.a().a()) {
-        aprh.a().a().doBindService(paramBundle.getContext().getApplicationContext());
+      if (!arui.a().a()) {
+        arui.a().a().doBindService(paramBundle.getContext().getApplicationContext());
       }
       this.h = (System.currentTimeMillis() - this.jdField_a_of_type_Long);
       return false;
@@ -162,7 +174,7 @@ public class ApolloFloatActivity
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     if (this.c == 1) {
-      akuf.a(this);
+      amnl.a(this);
     }
     super.doOnWindowFocusChanged(paramBoolean);
   }
@@ -179,8 +191,16 @@ public class ApolloFloatActivity
     {
       super.onBackEvent();
       finish();
-      d();
+      b();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void requestWindowFeature(Intent paramIntent)
@@ -194,7 +214,7 @@ public class ApolloFloatActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloFloatActivity
  * JD-Core Version:    0.7.0.1
  */

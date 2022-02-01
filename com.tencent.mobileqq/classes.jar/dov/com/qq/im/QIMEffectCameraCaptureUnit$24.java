@@ -1,10 +1,10 @@
 package dov.com.qq.im;
 
 import android.widget.RelativeLayout;
-import blqk;
-import blqr;
-import blra;
-import bnpl;
+import bojo;
+import bojv;
+import boke;
+import bqgc;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 
 class QIMEffectCameraCaptureUnit$24
@@ -22,15 +22,15 @@ class QIMEffectCameraCaptureUnit$24
     if (this.this$0.d) {
       this.this$0.b.setVisibility(0);
     }
-    ((bnpl)blqr.a(3)).a("0", blra.b, "");
-    blra.c = 0;
-    this.this$0.jdField_a_of_type_Blqk.x();
+    ((bqgc)bojv.a(3)).a("0", boke.b, "");
+    boke.c = 0;
+    this.this$0.jdField_a_of_type_Bojo.x();
     this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.QIMEffectCameraCaptureUnit.24
  * JD-Core Version:    0.7.0.1
  */

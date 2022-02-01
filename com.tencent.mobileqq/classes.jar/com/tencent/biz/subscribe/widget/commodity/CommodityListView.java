@@ -4,7 +4,12 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import alud;
+import aaaf;
+import aakz;
+import aalm;
+import aaln;
+import aalp;
+import aaxb;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +18,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
+import anni;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -21,23 +27,17 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
-import ybu;
-import yod;
-import yop;
-import yoq;
-import yos;
-import zaj;
 
 public class CommodityListView
   extends BaseWidgetView<ArrayList>
 {
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+  private aaln jdField_a_of_type_Aaln;
+  private aalp jdField_a_of_type_Aalp;
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private yoq jdField_a_of_type_Yoq;
-  private yos jdField_a_of_type_Yos;
   private boolean jdField_a_of_type_Boolean;
   private TextView b;
   
@@ -53,7 +53,7 @@ public class CommodityListView
   
   public int a()
   {
-    return 2131558701;
+    return 2131558767;
   }
   
   public String a()
@@ -93,40 +93,40 @@ public class CommodityListView
     return localStringBuilder.toString();
   }
   
+  public void a()
+  {
+    if (this.jdField_a_of_type_Aaln != null)
+    {
+      this.jdField_a_of_type_Aaln.clearData();
+      this.jdField_a_of_type_Aaln.notifyDataSetChanged();
+    }
+  }
+  
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376097));
-    this.b = ((TextView)paramView.findViewById(2131379043));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378978));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379483);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376853));
+    this.b = ((TextView)paramView.findViewById(2131379957));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379876));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380413);
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Yoq = new yoq(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Yoq);
+    this.jdField_a_of_type_Aaln = new aaln(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aaln);
   }
   
   protected void a(ArrayList paramArrayList) {}
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_Yoq != null)
-    {
-      this.jdField_a_of_type_Yoq.clearData();
-      this.jdField_a_of_type_Yoq.notifyDataSetChanged();
-    }
-  }
-  
   public void setData(ArrayList paramArrayList)
   {
     super.setData(paramArrayList);
-    if (this.jdField_a_of_type_Yoq != null) {
-      this.jdField_a_of_type_Yoq.setDatas(paramArrayList);
+    if (this.jdField_a_of_type_Aaln != null) {
+      this.jdField_a_of_type_Aaln.setDatas(paramArrayList);
     }
   }
   
-  public void setOnDataChangeListener(yos paramyos)
+  public void setOnDataChangeListener(aalp paramaalp)
   {
-    this.jdField_a_of_type_Yos = paramyos;
+    this.jdField_a_of_type_Aalp = paramaalp;
   }
   
   public void setOrientation(int paramInt)
@@ -197,26 +197,26 @@ public class CommodityListView
     String str;
     if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (localStUser.youZhan.size() > 0) && (((CertifiedAccountMeta.StYouZanShop)localStUser.youZhan.get(0)).goodNum.get() > 0))
     {
-      zaj.a(localStUser.id.get(), "auth_" + yod.a(a()), "exp_shop", 0, 0, new String[0]);
+      aaxb.a(localStUser.id.get(), "auth_" + aakz.a(a()), "exp_shop", 0, 0, new String[0]);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      str = alud.a(2131720477);
-      if (!ybu.a(localStUser.attr.get())) {
+      str = anni.a(2131718322);
+      if (!aaaf.a(localStUser.attr.get())) {
         break label164;
       }
     }
     label164:
-    for (paramStFeed = alud.a(2131702605);; paramStFeed = localStUser.nick.get())
+    for (paramStFeed = anni.a(2131701025);; paramStFeed = localStUser.nick.get())
     {
       localTextView.setText(String.format(str, new Object[] { paramStFeed }));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new yop(this, localStUser));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aalm(this, localStUser));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityListView
  * JD-Core Version:    0.7.0.1
  */

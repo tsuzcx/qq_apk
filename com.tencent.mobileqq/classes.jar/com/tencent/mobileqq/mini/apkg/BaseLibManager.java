@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.apkg;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import arso;
-import bflr;
+import atwl;
+import bita;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -29,9 +29,7 @@ import org.json.JSONObject;
 @SuppressLint({"WrongConstant"})
 public class BaseLibManager
 {
-  public static final String BASE_ENGINE_PATH_DIR;
   private static int MINI_APP_INNER_BASELIB_RETRY_COUNT_DEFAULT = 2;
-  public static final String PATH_WXGPKG_ROOT = BaseApplicationImpl.getApplication().getFilesDir().getPath() + "/minigame/";
   public static final int RET_CODE_DOWNLOAD_FAIL = 1101;
   public static final int RET_CODE_NO_UPDATE = 1;
   public static final int RET_CODE_OTHER = 1103;
@@ -40,26 +38,12 @@ public class BaseLibManager
   public static final int RET_CODE_UPDATE_CMD_ERROR = 1100;
   private static final String TAG = "miniapp-process_BaseLibManager[MiniEng]";
   private static BaseLibManager instance;
-  private static byte[] lock;
+  private static byte[] lock = new byte[0];
   private boolean isFirstTimeUpdateBaseLib;
   private boolean isUpdatingBaseLib;
   private List<BaseLibManager.UpdateListener> mListeners = new ArrayList();
   private List<String> miniAppBaseLibFiles = Arrays.asList(new String[] { "QView.js", "QLogic.js", "QVConsole.js", "QRemoteDebug.js", "QWebview.js" });
   private List<String> miniGameBaseLibFiles = Arrays.asList(new String[] { "QGame.js", "QGameOpenDataContext.js", "QGameWorkerContext.js" });
-  
-  static
-  {
-    BASE_ENGINE_PATH_DIR = PATH_WXGPKG_ROOT + ".baseengine";
-    lock = new byte[0];
-  }
-  
-  private BaseLibManager()
-  {
-    File localFile = new File(BASE_ENGINE_PATH_DIR);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-  }
   
   public static BaseLibManager g()
   {
@@ -71,14 +55,6 @@ public class BaseLibManager
       }
       return instance;
     }
-  }
-  
-  private List<String> getInnerBaseLibFiles()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.miniAppBaseLibFiles);
-    localArrayList.addAll(this.miniGameBaseLibFiles);
-    return localArrayList;
   }
   
   private boolean isBaseLibDirValid(File paramFile, String[] paramArrayOfString)
@@ -124,7 +100,7 @@ public class BaseLibManager
     if (paramBaseLibInfo == null) {
       return Boolean.valueOf(false);
     }
-    String str = StorageUtil.getPreference().getString("version", "1.14.0.00225");
+    String str = StorageUtil.getPreference().getString("version", "1.17.0.00206");
     return Boolean.valueOf(BaseLibInfo.needUpdateVersion(paramBaseLibInfo.baseLibVersion, str));
   }
   
@@ -143,74 +119,63 @@ public class BaseLibManager
     finally {}
   }
   
-  private boolean verifyBaselib(File paramFile)
+  public static boolean verifyBaselib(File paramFile)
   {
-    boolean bool2 = true;
+    boolean bool = true;
     if ((paramFile == null) || (!paramFile.exists()) || (paramFile.isFile())) {
-      bool1 = false;
+      bool = false;
     }
-    for (;;)
+    label76:
+    do
     {
-      return bool1;
+      return bool;
       try
       {
         localObject1 = new File(paramFile, "verify.json");
-        bool1 = bool2;
-        if (((File)localObject1).exists())
-        {
-          bool1 = bool2;
-          if (((File)localObject1).isFile())
-          {
-            localObject1 = new JSONObject(FileUtils.readFileToString((File)localObject1));
-            bool1 = bool2;
-            if (((JSONObject)localObject1).has("verify_list"))
-            {
-              localObject1 = ((JSONObject)localObject1).getJSONArray("verify_list");
-              i = 0;
-            }
-          }
+        if ((((File)localObject1).exists()) && (((File)localObject1).isFile())) {
+          break label76;
         }
+        QLog.w("miniapp-process_BaseLibManager[MiniEng]", 1, "BaselibManager--verifyBaselib verify.json is not exist!");
+        return true;
       }
       catch (Exception paramFile)
       {
-        for (;;)
-        {
-          Object localObject1;
-          int i;
-          Object localObject2;
-          String str;
-          int j;
-          long l;
-          QLog.e("miniapp-start", 1, "ApkgManager--verifyBaselib exception.", paramFile);
-          bool1 = false;
-          continue;
-          bool1 = true;
-          continue;
-          i += 1;
-        }
+        QLog.e("miniapp-start", 1, "BaselibManager--verifyBaselib exception.", paramFile);
+        bool = false;
       }
-    }
-    if (i < ((JSONArray)localObject1).length())
+      return bool;
+      localObject1 = new JSONObject(FileUtils.readFileToString((File)localObject1));
+    } while (!((JSONObject)localObject1).has("verify_list"));
+    Object localObject1 = ((JSONObject)localObject1).getJSONArray("verify_list");
+    int i = 0;
+    for (;;)
     {
-      if (((JSONArray)localObject1).get(i) == null)
+      if (i < ((JSONArray)localObject1).length())
       {
-        QLog.e("miniapp-start", 1, "配置文件格式异常！！请使用json工具检测");
-        break label290;
-      }
-      localObject2 = (JSONObject)((JSONArray)localObject1).get(i);
-      str = ((JSONObject)localObject2).getString("name");
-      j = ((JSONObject)localObject2).getInt("length");
-      localObject2 = new File(paramFile, str);
-      QLog.i("miniapp-start", 1, "ApkgManager--verifyBaselib file: " + str + " config_length=" + j + " local_length=" + ((File)localObject2).length());
-      if ((((File)localObject2).exists()) && (((File)localObject2).isFile()))
-      {
-        l = ((File)localObject2).length();
-        if (l == j) {
-          break label290;
+        if (((JSONArray)localObject1).get(i) == null)
+        {
+          QLog.e("miniapp-start", 1, "配置文件格式异常！！请使用json工具检测");
+          break label272;
         }
+        Object localObject2 = (JSONObject)((JSONArray)localObject1).get(i);
+        String str = ((JSONObject)localObject2).getString("name");
+        int j = ((JSONObject)localObject2).getInt("length");
+        localObject2 = new File(paramFile, str);
+        QLog.i("miniapp-start", 1, "BaselibManager--verifyBaselib file: " + str + " config_length=" + j + " local_length=" + ((File)localObject2).length());
+        if ((((File)localObject2).exists()) && (((File)localObject2).isFile()))
+        {
+          long l = ((File)localObject2).length();
+          if (l == j) {
+            break label272;
+          }
+        }
+        bool = false;
+        break;
       }
-      bool1 = false;
-      return bool1;
+      bool = true;
+      break;
+      label272:
+      i += 1;
     }
   }
   
@@ -243,7 +208,7 @@ public class BaseLibManager
     }
     try
     {
-      paramString1 = AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bflr.d(paramString1) + "_" + paramString2 + File.separator;
+      paramString1 = AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bita.d(paramString1) + "_" + paramString2 + File.separator;
       return paramString1;
     }
     catch (Throwable paramString1)
@@ -257,7 +222,7 @@ public class BaseLibManager
   {
     BaseLibInfo localBaseLibInfo = new BaseLibInfo();
     String str = StorageUtil.getPreference().getString("downloadUrl", null);
-    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.14.0.00225");
+    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.17.0.00206");
     localBaseLibInfo.baseLibUrl = str;
     return localBaseLibInfo;
   }
@@ -267,36 +232,51 @@ public class BaseLibManager
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return null;
     }
-    return AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bflr.d(paramString1) + "_" + paramString2 + ".zip";
+    return AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bita.d(paramString1) + "_" + paramString2 + ".zip";
   }
   
-  public boolean installInnerBaseLib()
+  public String installMiniGameInnerJsLib()
   {
-    String str = g().getBaseLibDir("mini", "1.14.0.00225");
-    if (g().isBaseLibDirValid(str))
+    for (;;)
     {
-      QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng]installInnerBaseLib, inner baseLib already installed, version:1.14.0.00225");
-      return true;
-    }
-    int j = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_inner_baselib_retry_count", MINI_APP_INNER_BASELIB_RETRY_COUNT_DEFAULT);
-    QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng]installInnerBaseLib, version:1.14.0.00225, totalCount:" + j);
-    int i = 0;
-    while (i < j)
-    {
-      boolean bool = AssetsUtil.copyFileOrDir(BaseApplicationImpl.getContext(), "mini", str, getInnerBaseLibFiles());
-      if ((bool) && (g().isBaseLibDirValid(str)))
+      try
       {
-        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] install inner baseLib success, from mini to " + str + ", tryCount:" + i + ", totalCount:" + j);
-        return bool;
+        String str = g().getBaseLibDir("mini", "1.17.0.00206");
+        if (g().isBaseLibDirValid4MiniGame(str))
+        {
+          QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib, inner baseLib already installed, version:1.17.0.00206");
+          return str;
+        }
+        int j = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_inner_baselib_retry_count", MINI_APP_INNER_BASELIB_RETRY_COUNT_DEFAULT);
+        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib, version:1.17.0.00206, totalCount:" + j);
+        int i = 0;
+        boolean bool;
+        if (i < j)
+        {
+          i += 1;
+          bool = AssetsUtil.copyFileOrDir(BaseApplicationImpl.getContext(), "mini", str, this.miniGameBaseLibFiles);
+          if ((bool) && (g().isBaseLibDirValid4MiniGame(str)))
+          {
+            QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib success? " + bool + ", from " + "mini" + " to " + str + ", tryCount:" + i);
+            if (!bool) {
+              str = null;
+            }
+          }
+          else
+          {
+            File localFile = new File(str);
+            if (localFile.exists()) {
+              atwl.a(localFile);
+            }
+          }
+        }
+        else
+        {
+          bool = false;
+        }
       }
-      File localFile = new File(str);
-      if (localFile.exists()) {
-        arso.a(localFile);
-      }
-      QLog.w("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] install inner baseLib fail, from mini to " + str + ", tryCount:" + i + ", totalCount:" + j);
-      i += 1;
+      finally {}
     }
-    return false;
   }
   
   public boolean isBaseLibDirValid(File paramFile)
@@ -374,20 +354,6 @@ public class BaseLibManager
     return false;
   }
   
-  public boolean isBaseLibExists(String paramString1, String paramString2)
-  {
-    paramString1 = getBaseLibDir(paramString1, paramString2);
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      paramString1 = new File(paramString1 + "soTest/");
-      if ((paramString1.exists()) && (paramString1.isDirectory())) {
-        return true;
-      }
-      QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "baselib directory is not exist!");
-    }
-    return false;
-  }
-  
   public void updateBaseLib(BaseLibManager.UpdateListener paramUpdateListener)
   {
     try
@@ -409,24 +375,24 @@ public class BaseLibManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 89	com/tencent/mobileqq/mini/apkg/BaseLibManager:mListeners	Ljava/util/List;
+    //   3: getfield 53	com/tencent/mobileqq/mini/apkg/BaseLibManager:mListeners	Ljava/util/List;
     //   6: aload_3
-    //   7: invokeinterface 502 2 0
+    //   7: invokeinterface 462 2 0
     //   12: pop
-    //   13: ldc 27
+    //   13: ldc 25
     //   15: iconst_1
-    //   16: new 44	java/lang/StringBuilder
+    //   16: new 254	java/lang/StringBuilder
     //   19: dup
-    //   20: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   23: ldc_w 504
-    //   26: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: invokespecial 255	java/lang/StringBuilder:<init>	()V
+    //   23: ldc_w 464
+    //   26: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: aload_0
-    //   30: getfield 148	com/tencent/mobileqq/mini/apkg/BaseLibManager:isUpdatingBaseLib	Z
-    //   33: invokevirtual 507	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   36: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   39: invokestatic 313	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   30: getfield 102	com/tencent/mobileqq/mini/apkg/BaseLibManager:isUpdatingBaseLib	Z
+    //   33: invokevirtual 418	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 278	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   39: invokestatic 281	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   42: aload_0
-    //   43: getfield 148	com/tencent/mobileqq/mini/apkg/BaseLibManager:isUpdatingBaseLib	Z
+    //   43: getfield 102	com/tencent/mobileqq/mini/apkg/BaseLibManager:isUpdatingBaseLib	Z
     //   46: istore 4
     //   48: iload 4
     //   50: ifeq +6 -> 56
@@ -435,18 +401,18 @@ public class BaseLibManager
     //   55: return
     //   56: aload_0
     //   57: iconst_1
-    //   58: putfield 148	com/tencent/mobileqq/mini/apkg/BaseLibManager:isUpdatingBaseLib	Z
-    //   61: new 509	com/tencent/mobileqq/mini/apkg/BaseLibManager$2
+    //   58: putfield 102	com/tencent/mobileqq/mini/apkg/BaseLibManager:isUpdatingBaseLib	Z
+    //   61: new 466	com/tencent/mobileqq/mini/apkg/BaseLibManager$2
     //   64: dup
     //   65: aload_0
     //   66: iload_2
     //   67: aload_1
     //   68: aload_3
-    //   69: invokespecial 512	com/tencent/mobileqq/mini/apkg/BaseLibManager$2:<init>	(Lcom/tencent/mobileqq/mini/apkg/BaseLibManager;ZLjava/lang/String;Lcom/tencent/mobileqq/mini/apkg/BaseLibManager$UpdateListener;)V
+    //   69: invokespecial 469	com/tencent/mobileqq/mini/apkg/BaseLibManager$2:<init>	(Lcom/tencent/mobileqq/mini/apkg/BaseLibManager;ZLjava/lang/String;Lcom/tencent/mobileqq/mini/apkg/BaseLibManager$UpdateListener;)V
     //   72: bipush 16
     //   74: aconst_null
     //   75: iconst_0
-    //   76: invokestatic 374	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   76: invokestatic 340	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   79: goto -26 -> 53
     //   82: astore_1
     //   83: aload_0
@@ -468,7 +434,7 @@ public class BaseLibManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.BaseLibManager
  * JD-Core Version:    0.7.0.1
  */

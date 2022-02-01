@@ -86,7 +86,7 @@ public class CircleGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.CircleGuideView
  * JD-Core Version:    0.7.0.1
  */

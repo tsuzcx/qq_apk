@@ -1,17 +1,6 @@
-import java.util.List;
-
-public class arez
+public abstract interface arez
 {
-  public int a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public byte[] a;
-  public byte[] b;
-  public byte[] c;
-  public byte[] d;
-  
-  public arez(arey paramarey) {}
+  public abstract boolean a();
 }
 
 

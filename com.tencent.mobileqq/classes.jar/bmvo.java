@@ -1,91 +1,234 @@
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler.RenderPoint;
-import com.tencent.view.RendererUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.support.annotation.Nullable;
 
 public class bmvo
-  extends bmur
+  extends Drawable
 {
-  Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  public String a;
-  ArrayList<DoodleMagicAlgoHandler.RenderPoint> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  CopyOnWriteArrayList<PointF> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  volatile boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  volatile boolean jdField_b_of_type_Boolean;
-  public int c;
-  volatile boolean c;
-  int jdField_d_of_type_Int;
-  boolean jdField_d_of_type_Boolean;
-  boolean e = false;
+  private int jdField_a_of_type_Int = -1;
+  private bmvp jdField_a_of_type_Bmvp;
+  private int b = -1;
   
-  public bmvo(int paramInt1, String paramString, int paramInt2)
+  public bmvo()
   {
-    super(paramInt1);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_Bmvp = new bmvp();
   }
   
-  public Frame a(int paramInt1, int paramInt2)
+  public bmvo(bmvp parambmvp)
   {
-    this.d = RendererUtils.createTexture();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-    GLES20.glBindTexture(3553, this.d);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.d, paramInt1, paramInt2, 1.0D);
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    GLES20.glClear(16640);
-    GLES20.glFlush();
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  }
-  
-  public JSONObject a()
-  {
-    try
+    this.jdField_a_of_type_Bmvp = parambmvp;
+    if (parambmvp != null)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("mode", this.jdField_a_of_type_Int);
-      localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("subType", this.jdField_c_of_type_Int);
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext())
+      h(parambmvp.d);
+      h(parambmvp.b);
+      h(parambmvp.c);
+      h(parambmvp.e);
+      h(parambmvp.f);
+      h(parambmvp.g);
+      h(parambmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
+  }
+  
+  private void a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  {
+    if (paramDrawable != null) {
+      paramDrawable.setBounds(paramDrawable.getBounds().left + paramInt1, paramDrawable.getBounds().top + paramInt2, paramDrawable.getBounds().right + paramInt1, paramDrawable.getBounds().bottom + paramInt2);
+    }
+  }
+  
+  private void h(Drawable paramDrawable)
+  {
+    if (paramDrawable != null)
+    {
+      paramDrawable = paramDrawable.getBounds();
+      Rect localRect = getBounds();
+      if ((localRect != null) && (paramDrawable != null))
       {
-        PointF localPointF = (PointF)localIterator.next();
-        localJSONArray.put(localPointF.x);
-        localJSONArray.put(localPointF.y);
+        localRect.left = Math.min(paramDrawable.left, localRect.left);
+        localRect.right = Math.max(paramDrawable.right, localRect.right);
+        localRect.top = Math.min(paramDrawable.top, localRect.top);
+        localRect.bottom = Math.max(paramDrawable.bottom, localRect.bottom);
+        setBounds(localRect);
+        this.jdField_a_of_type_Int = Math.max(this.jdField_a_of_type_Int, localRect.right - localRect.left);
+        this.b = Math.max(this.b, localRect.bottom - localRect.top);
       }
-      localJSONObject.put("points", localJSONArray);
-      return localJSONObject;
     }
-    catch (Exception localException) {}
-    return null;
   }
   
-  public void a()
+  public int a()
   {
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null) && (!this.e))
+    if ((this.jdField_a_of_type_Bmvp != null) && (this.jdField_a_of_type_Bmvp.b != null)) {
+      return Math.abs(this.jdField_a_of_type_Bmvp.b.getBounds().left - getBounds().left);
+    }
+    return 0;
+  }
+  
+  public Drawable.ConstantState a()
+  {
+    return this.jdField_a_of_type_Bmvp;
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    if (this.jdField_a_of_type_Bmvp != null)
     {
-      this.e = true;
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-      RendererUtils.clearTexture(this.d);
+      this.jdField_a_of_type_Bmvp.b = paramDrawable;
+      h(paramDrawable);
     }
   }
   
-  public void b()
+  public boolean a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.b = true;
+    if ((this.jdField_a_of_type_Bmvp != null) && (this.jdField_a_of_type_Bmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {}
+    while ((this.jdField_a_of_type_Bmvp != null) && ((this.jdField_a_of_type_Bmvp.d != null) || (this.jdField_a_of_type_Bmvp.f != null) || (this.jdField_a_of_type_Bmvp.e != null) || (this.jdField_a_of_type_Bmvp.c != null))) {
+      return false;
+    }
+    return true;
   }
+  
+  public int b()
+  {
+    if ((this.jdField_a_of_type_Bmvp != null) && (this.jdField_a_of_type_Bmvp.b != null)) {
+      return Math.abs(this.jdField_a_of_type_Bmvp.b.getBounds().top - getBounds().top);
+    }
+    return 0;
+  }
+  
+  public void b(Drawable paramDrawable)
+  {
+    if (this.jdField_a_of_type_Bmvp != null)
+    {
+      this.jdField_a_of_type_Bmvp.c = paramDrawable;
+      h(paramDrawable);
+    }
+  }
+  
+  public void c(Drawable paramDrawable)
+  {
+    if (this.jdField_a_of_type_Bmvp != null)
+    {
+      this.jdField_a_of_type_Bmvp.d = paramDrawable;
+      h(paramDrawable);
+    }
+  }
+  
+  public void d(Drawable paramDrawable)
+  {
+    if (this.jdField_a_of_type_Bmvp != null)
+    {
+      this.jdField_a_of_type_Bmvp.e = paramDrawable;
+      h(paramDrawable);
+    }
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    bmvp localbmvp = this.jdField_a_of_type_Bmvp;
+    if (localbmvp != null)
+    {
+      if (localbmvp.d != null) {
+        localbmvp.d.draw(paramCanvas);
+      }
+      if (localbmvp.f != null) {
+        localbmvp.f.draw(paramCanvas);
+      }
+      if (localbmvp.g != null) {
+        localbmvp.g.draw(paramCanvas);
+      }
+      if (localbmvp.e != null) {
+        localbmvp.e.draw(paramCanvas);
+      }
+      if (localbmvp.b != null) {
+        localbmvp.b.draw(paramCanvas);
+      }
+      if (localbmvp.c != null) {
+        localbmvp.c.draw(paramCanvas);
+      }
+      if (localbmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+        localbmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      }
+    }
+  }
+  
+  public void e(Drawable paramDrawable)
+  {
+    if (this.jdField_a_of_type_Bmvp != null)
+    {
+      this.jdField_a_of_type_Bmvp.f = paramDrawable;
+      h(paramDrawable);
+    }
+  }
+  
+  public void f(Drawable paramDrawable)
+  {
+    if (this.jdField_a_of_type_Bmvp != null)
+    {
+      this.jdField_a_of_type_Bmvp.g = paramDrawable;
+      h(paramDrawable);
+    }
+  }
+  
+  public void g(Drawable paramDrawable)
+  {
+    if (this.jdField_a_of_type_Bmvp != null)
+    {
+      this.jdField_a_of_type_Bmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      h(paramDrawable);
+    }
+  }
+  
+  public int getChangingConfigurations()
+  {
+    return super.getChangingConfigurations() | this.jdField_a_of_type_Bmvp.jdField_a_of_type_Int;
+  }
+  
+  public final Drawable.ConstantState getConstantState()
+  {
+    this.jdField_a_of_type_Bmvp.jdField_a_of_type_Int = getChangingConfigurations();
+    return this.jdField_a_of_type_Bmvp;
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.b;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (getBounds() != null)
+    {
+      int i = getBounds().left;
+      int j = getBounds().top;
+      if ((i != paramInt1) || (j != paramInt2))
+      {
+        a(this.jdField_a_of_type_Bmvp.d, paramInt1 - i, paramInt2 - j);
+        a(this.jdField_a_of_type_Bmvp.e, paramInt1 - i, paramInt2 - j);
+        a(this.jdField_a_of_type_Bmvp.f, paramInt1 - i, paramInt2 - j);
+        a(this.jdField_a_of_type_Bmvp.b, paramInt1 - i, paramInt2 - j);
+        a(this.jdField_a_of_type_Bmvp.c, paramInt1 - i, paramInt2 - j);
+        a(this.jdField_a_of_type_Bmvp.g, paramInt1 - i, paramInt2 - j);
+        a(this.jdField_a_of_type_Bmvp.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramInt1 - i, paramInt2 - j);
+      }
+    }
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 

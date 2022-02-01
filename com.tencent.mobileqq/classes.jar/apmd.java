@@ -1,17 +1,16 @@
-import java.util.List;
+import android.content.Context;
 
-class apmd
-  implements apmj
+public abstract interface apmd
 {
-  apmd(apmb paramapmb, apmj paramapmj) {}
+  public abstract void attachArkView(apow paramapow, appa paramappa, int paramInt);
   
-  public void a(List<apuf> paramList)
-  {
-    this.jdField_a_of_type_Apmb.a(paramList);
-    if (this.jdField_a_of_type_Apmj != null) {
-      this.jdField_a_of_type_Apmj.a(paramList);
-    }
-  }
+  public abstract void clickTail(appa paramappa, agqe paramagqe, Context paramContext);
+  
+  public abstract void destroyContainerByRemove();
+  
+  public abstract apmd extendArkCardByOpen(agpq paramagpq, String paramString1, String paramString2);
+  
+  public abstract String[] getArkAppNameAndPath();
 }
 
 

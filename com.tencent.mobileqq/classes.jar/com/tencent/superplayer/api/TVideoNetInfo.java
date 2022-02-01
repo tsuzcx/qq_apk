@@ -4,12 +4,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class TVideoNetInfo
+  implements Cloneable
 {
   private TVideoNetInfo.DefinitionInfo mCurrentDefinition;
   private ArrayList<TVideoNetInfo.DefinitionInfo> mDefinitionList;
   private boolean mHasWatermark = false;
+  private long mUpdateTimeMillis;
   private long mVideoDurationMs;
   private long mVideoSize;
+  
+  public Object clone()
+  {
+    return super.clone();
+  }
   
   public TVideoNetInfo.DefinitionInfo getCurrentDefinition()
   {
@@ -42,6 +49,11 @@ public class TVideoNetInfo
     return localArrayList;
   }
   
+  public long getUpdateTimeMillis()
+  {
+    return this.mUpdateTimeMillis;
+  }
+  
   public long getVideoDuration()
   {
     return this.mVideoDurationMs;
@@ -72,6 +84,11 @@ public class TVideoNetInfo
     this.mHasWatermark = paramBoolean;
   }
   
+  public void setUpdateTimeMillis(long paramLong)
+  {
+    this.mUpdateTimeMillis = paramLong;
+  }
+  
   public void setVideoDuration(long paramLong)
   {
     this.mVideoDurationMs = paramLong;
@@ -84,7 +101,7 @@ public class TVideoNetInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.api.TVideoNetInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,23 @@
-public abstract interface srk
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.qphone.base.util.QLog;
+
+public class srk
+  extends anmu
 {
-  public abstract void a();
+  public srk(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void b(int paramInt);
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
+    {
+      QLog.d("ReadInJoyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
+      this.a.p();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     srk
  * JD-Core Version:    0.7.0.1
  */

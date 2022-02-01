@@ -1,36 +1,50 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import QC.GetConciseThemeRsp;
+import QC.ItemDisDetail;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class afeo
-  implements affa
+class afeo
+  implements anil
 {
-  private BaseChatPie a;
+  afeo(afen paramafen) {}
   
-  public afeo(BaseChatPie paramBaseChatPie)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  private void a()
-  {
-    if ((this.a != null) && (this.a.a != null)) {
-      ((auqc)this.a.a.getManager(324)).onDestroy();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    if ((paramBoolean) && ((paramObject instanceof GetConciseThemeRsp)))
     {
-    default: 
-      return;
+      paramObject = (GetConciseThemeRsp)paramObject;
+      int i = Integer.decode(bcnj.a(bcnj.c())).intValue();
+      bcnj.a.clear();
+      afen.a().clear();
+      paramInt = 0;
+      while (paramInt < paramObject.vItems.size())
+      {
+        ItemDisDetail localItemDisDetail = (ItemDisDetail)paramObject.vItems.get(paramInt);
+        afeq localafeq = new afeq(this.a, localItemDisDetail.itemId + "", localItemDisDetail.image, paramInt);
+        if (i == localItemDisDetail.itemId) {
+          localafeq.a = true;
+        }
+        afen.a(this.a, null, localafeq);
+        bcnj.a.add(localItemDisDetail.itemId + "");
+        if (TextUtils.equals("2920", localItemDisDetail.itemId + "")) {
+          bcnj.c = paramInt;
+        }
+        afen.a().add(localafeq);
+        blyl.a().a(bcnj.a(localItemDisDetail.itemId), "4", "platform898", "4", "1", 101, 1, System.currentTimeMillis());
+        bcst.b(afen.a(this.a).app, "dc00898", "", "", "qq_vip", "0X800B15B", Integer.decode(bcnj.a(localItemDisDetail.itemId)).intValue(), 0, "", "", "", "");
+        paramInt += 1;
+      }
+      paramInt = bcnj.a(i + "");
+      bcnj.a(afen.a(this.a).getCurrentAccountUin(), paramInt, 3);
+      afen.a(this.a).a(afen.a());
+      afen.a(this.a).notifyDataSetChanged();
+      if (paramInt < bcnj.a.size()) {
+        afen.a(this.a).scrollToPosition(paramInt);
+      }
     }
-    a();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 11 };
   }
 }
 

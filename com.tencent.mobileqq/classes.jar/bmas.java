@@ -1,41 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
 
-final class bmas
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+public class bmas
+  implements ModuleDownloadListener
 {
-  final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  final View jdField_a_of_type_AndroidViewView;
+  public void onDownloadCanceled(String paramString) {}
   
-  bmas(View paramView, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
+  public void onDownloadFailed(String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public void onDownloadProgress(String paramString, float paramFloat) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_AndroidViewView);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setScaleX(f);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(f);
-  }
+  public void onDownloadSucceed(String paramString) {}
 }
 
 

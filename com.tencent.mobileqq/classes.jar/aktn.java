@@ -1,32 +1,104 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONArray;
 
 public class aktn
-  extends aktk
 {
-  public aktn(QQAppInterface paramQQAppInterface)
+  private static volatile aktn jdField_a_of_type_Aktn;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { anni.a(2131712092), anni.a(2131712082), anni.a(2131712063) };
+  private static final String[] b = { anni.a(2131712088), anni.a(2131712083), anni.a(2131712068) };
+  
+  public static aktn a()
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Int = 0;
+    if (jdField_a_of_type_Aktn == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aktn == null) {
+        jdField_a_of_type_Aktn = new aktn();
+      }
+      return jdField_a_of_type_Aktn;
+    }
+    finally {}
   }
   
-  public void a(albr paramalbr, Context paramContext, QQAppInterface paramQQAppInterface) {}
-  
-  public void a(albr paramalbr, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public int a()
   {
-    if ((this.jdField_a_of_type_Boolean) || (!this.c)) {}
-    SharedPreferences localSharedPreferences;
-    do
+    Object localObject = akww.a();
+    if (localObject != null)
     {
-      return;
-      this.b = true;
-      localSharedPreferences = paramContext.getSharedPreferences("apollo_sp", 0);
-    } while (!localSharedPreferences.getBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", true));
-    albi.a(paramalbr, alud.a(2131704999), 7, 0);
-    localSharedPreferences.edit().putBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", false).commit();
-    a(paramContext, paramQQAppInterface);
+      localObject = (akpd)((QQAppInterface)localObject).getManager(245);
+      if (localObject != null) {
+        return ((akpd)localObject).a("hb_exclusive", 1, new String[] { "ani_queue_max" });
+      }
+    }
+    return 1;
+  }
+  
+  public String a(int paramInt)
+  {
+    Object localObject1 = akww.a();
+    Object localObject2;
+    JSONArray localJSONArray;
+    if (localObject1 != null)
+    {
+      localObject2 = (akpd)((QQAppInterface)localObject1).getManager(245);
+      if (localObject2 != null) {
+        if (paramInt == 0)
+        {
+          localObject1 = "ask_text_list";
+          localJSONArray = ((akpd)localObject2).a("hb_exclusive", new String[] { "aio_red", localObject1 });
+          if (paramInt != 0) {
+            break label110;
+          }
+          localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
+          label59:
+          localObject2 = localObject1;
+          if (localJSONArray != null)
+          {
+            if (localJSONArray.length() != 0) {
+              break label117;
+            }
+            localObject2 = localObject1;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      if ((localObject2 != null) && (localObject2.length > 0))
+      {
+        return localObject2[(new java.util.Random().nextInt(localObject2.length + 0) + 0)];
+        localObject1 = "thx_text_list";
+        break;
+        label110:
+        localObject1 = b;
+        break label59;
+        label117:
+        localObject2 = new String[localJSONArray.length()];
+        paramInt = 0;
+      }
+      while (paramInt < localJSONArray.length())
+      {
+        localObject2[paramInt] = localJSONArray.optString(paramInt);
+        paramInt += 1;
+        continue;
+        return null;
+      }
+      continue;
+      localObject2 = null;
+    }
+  }
+  
+  public boolean a()
+  {
+    Object localObject = akww.a();
+    if (localObject != null)
+    {
+      localObject = (akpd)((QQAppInterface)localObject).getManager(245);
+      if (localObject != null) {
+        return ((akpd)localObject).a("hb_exclusive", 1, new String[] { "is_display_all" }) == 1;
+      }
+    }
+    return true;
   }
 }
 

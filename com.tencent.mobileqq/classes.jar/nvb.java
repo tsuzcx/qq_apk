@@ -1,42 +1,71 @@
-public class nvb
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+
+class nvb
+  implements INetInfoHandler
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g;
+  nuy a;
   
-  public nvb()
+  public nvb(nuy paramnuy1, nuy paramnuy2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this.a = paramnuy2;
   }
   
-  public boolean equals(Object paramObject)
+  public void a()
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (nvb)paramObject;
-    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
-    return false;
+    this.a = null;
   }
   
-  public int hashCode()
+  public void onNetMobile2None()
   {
-    return this.jdField_a_of_type_Int;
+    nuy.c("onNetMobile2None");
+    if (this.a != null) {
+      nuy.b(this.a);
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    nuy.c("onNetMobile2Wifi");
+    if (this.a != null) {
+      nuy.b(this.a);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    nuy.c("onNetNone2Mobile");
+    if (this.a != null) {
+      nuy.b(this.a);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    nuy.c("onNetNone2Wifi");
+    if (this.a != null) {
+      nuy.b(this.a);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    nuy.c("onNetWifi2Mobile");
+    if (this.a != null) {
+      nuy.b(this.a);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    nuy.c("onNetWifi2None");
+    if (this.a != null) {
+      nuy.b(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvb
  * JD-Core Version:    0.7.0.1
  */

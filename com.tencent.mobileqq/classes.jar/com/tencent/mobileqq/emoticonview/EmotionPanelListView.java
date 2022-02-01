@@ -3,16 +3,16 @@ package com.tencent.mobileqq.emoticonview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import apvn;
-import apww;
-import aswk;
-import bhtv;
+import aryt;
+import asag;
+import avdt;
+import bkhe;
 import com.tencent.widget.ListView;
 
 public class EmotionPanelListView
   extends ListView
 {
-  private apww jdField_a_of_type_Apww;
+  private asag jdField_a_of_type_Asag;
   private boolean jdField_a_of_type_Boolean;
   
   public EmotionPanelListView(Context paramContext)
@@ -40,9 +40,9 @@ public class EmotionPanelListView
     if ((!this.jdField_a_of_type_Boolean) || (paramMotionEvent.getAction() != 0)) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
-    bhtv localbhtv = getOnScrollListener();
-    if ((localbhtv instanceof apvn)) {
-      ((apvn)localbhtv).onTouch(this, paramMotionEvent);
+    bkhe localbkhe = getOnScrollListener();
+    if ((localbkhe instanceof aryt)) {
+      ((aryt)localbkhe).onTouch(this, paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -52,9 +52,9 @@ public class EmotionPanelListView
     if (!this.jdField_a_of_type_Boolean) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    bhtv localbhtv = getOnScrollListener();
-    if ((localbhtv instanceof apvn)) {
-      ((apvn)localbhtv).onTouch(this, paramMotionEvent);
+    bkhe localbkhe = getOnScrollListener();
+    if ((localbkhe instanceof aryt)) {
+      ((aryt)localbkhe).onTouch(this, paramMotionEvent);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -64,19 +64,19 @@ public class EmotionPanelListView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnScrollListener(bhtv parambhtv)
+  public void setOnScrollListener(bkhe parambkhe)
   {
-    if ((this.jdField_a_of_type_Boolean) && (!(parambhtv instanceof apvn)) && (parambhtv != null))
+    if ((this.jdField_a_of_type_Boolean) && (!(parambkhe instanceof aryt)) && (parambkhe != null))
     {
-      super.setOnScrollListener(new apvn(this, this.jdField_a_of_type_Apww, parambhtv));
+      super.setOnScrollListener(new aryt(this, this.jdField_a_of_type_Asag, parambkhe));
       return;
     }
-    super.setOnScrollListener(parambhtv);
+    super.setOnScrollListener(parambkhe);
   }
   
-  public void setPullAndFastScrollListener(apww paramapww)
+  public void setPullAndFastScrollListener(asag paramasag)
   {
-    this.jdField_a_of_type_Apww = paramapww;
+    this.jdField_a_of_type_Asag = paramasag;
   }
   
   public boolean trackMotionScroll(int paramInt1, int paramInt2)
@@ -85,16 +85,16 @@ public class EmotionPanelListView
       return super.trackMotionScroll(paramInt1, paramInt2);
     }
     boolean bool = super.trackMotionScroll(paramInt1, paramInt2);
-    bhtv localbhtv = getOnScrollListener();
-    if ((!bool) && ((localbhtv instanceof apvn)) && (paramInt2 < 0)) {
-      ((apvn)localbhtv).a().a(Math.abs(paramInt2));
+    bkhe localbkhe = getOnScrollListener();
+    if ((!bool) && ((localbkhe instanceof aryt)) && (paramInt2 < 0)) {
+      ((aryt)localbkhe).a().a(Math.abs(paramInt2));
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelListView
  * JD-Core Version:    0.7.0.1
  */

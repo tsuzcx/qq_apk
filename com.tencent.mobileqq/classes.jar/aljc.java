@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-class aljc
-  implements Comparator<ApolloActionData>
+public class aljc
+  implements View.OnLayoutChangeListener
 {
-  aljc(aliw paramaliw) {}
+  public aljc(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
-    }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.addOnLayoutChangeListener(new aljd(this));
   }
 }
 

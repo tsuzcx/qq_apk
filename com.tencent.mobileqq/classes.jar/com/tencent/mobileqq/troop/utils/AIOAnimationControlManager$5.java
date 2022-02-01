@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bcka;
+import bfos;
 
 public class AIOAnimationControlManager$5
   implements Runnable
 {
-  public AIOAnimationControlManager$5(bcka parambcka, boolean paramBoolean) {}
+  public AIOAnimationControlManager$5(bfos parambfos, boolean paramBoolean) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class AIOAnimationControlManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.5
  * JD-Core Version:    0.7.0.1
  */

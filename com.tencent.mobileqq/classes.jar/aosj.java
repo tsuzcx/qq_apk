@@ -1,78 +1,62 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.TreeMap;
 
 public class aosj
-  extends aokh<aosi>
 {
-  public int a()
+  public long a;
+  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+  public String a;
+  public HashMap<Integer, String> a;
+  private final TreeMap<Integer, aosk> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
+  public boolean a;
+  public long b;
+  public String b;
+  public long c = 0L;
+  
+  public aosj()
   {
-    return 585;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  @NonNull
-  public aosi a(int paramInt)
+  public ArCloudConfigInfo a()
   {
-    return new aosi();
+    return this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
   }
   
-  @Nullable
-  public aosi a(aoko[] paramArrayOfaoko)
+  public String a(int paramInt)
   {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public TreeMap<Integer, aosk> a()
+  {
+    return this.jdField_a_of_type_JavaUtilTreeMap;
+  }
+  
+  public String toString()
+  {
+    String str = "id[" + this.jdField_a_of_type_JavaLangString + "], recoglizeMask[" + this.c + "]";
+    Object localObject = str;
+    if (QLog.isDevelopLevel())
     {
-      aosi localaosi = aosi.a(paramArrayOfaoko[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      localObject = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        aosk localaosk = (aosk)((Iterator)localObject).next();
+        str = str + "\n" + localaosk;
       }
-      return localaosi;
+      localObject = str + ", begin[" + this.jdField_a_of_type_Long + "], end[" + this.jdField_b_of_type_Long + "], title[" + this.jdField_b_of_type_JavaLangString + "], tips[" + this.jdField_a_of_type_JavaUtilHashMap.size() + "]";
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public Class<aosi> a()
-  {
-    return aosi.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(aosi paramaosi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onUpdate " + paramaosi.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aosj
  * JD-Core Version:    0.7.0.1
  */

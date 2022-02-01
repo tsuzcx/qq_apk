@@ -1,18 +1,16 @@
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import mqq.app.QQPermissionCallback;
+
 public class bega
+  implements QQPermissionCallback
 {
-  public int a;
-  public String a;
-  public String[] a;
-  public int b;
-  public String b;
+  public bega(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public bega(int paramInt1, int paramInt2, String paramString1, String paramString2, String... paramVarArgs)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramVarArgs;
+    this.a.a(this.a, this.a);
   }
 }
 

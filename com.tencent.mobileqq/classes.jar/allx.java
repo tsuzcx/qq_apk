@@ -1,46 +1,22 @@
-import android.app.Activity;
-import android.os.Looper;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.4.1;
 
 public class allx
+  implements wom<woh>
 {
-  public static void a(boolean paramBoolean, Activity paramActivity, ahap paramahap, AppInterface paramAppInterface, String paramString, ally paramally)
-  {
-    a(paramBoolean, paramActivity, paramahap, paramAppInterface, paramString, paramally, true);
-  }
+  public allx(P2VEditMusicDialog paramP2VEditMusicDialog) {}
   
-  public static void a(boolean paramBoolean1, Activity paramActivity, ahap paramahap, AppInterface paramAppInterface, String paramString, ally paramally, boolean paramBoolean2)
+  public void a(boolean paramBoolean, woh paramwoh)
   {
-    if (paramally == null)
+    yqp.b(P2VEditMusicDialog.a(), "onAddressUpdate.");
+    if ((paramBoolean) && (paramwoh != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame listener is null");
-      }
+      yqp.a(P2VEditMusicDialog.a(), "onAddressUpdate success, address=%s", paramwoh);
+      this.a.a.post(new P2VEditMusicDialog.4.1(this, paramwoh));
       return;
     }
-    if ((paramActivity == null) || (paramAppInterface == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame activity is null OR appInterface is null");
-      }
-      paramally.a(false, null);
-      return;
-    }
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      paramahap = akyn.a(paramString);
-      if ((paramahap == null) || (paramahap.a == null) || (paramahap.a.get() != paramActivity))
-      {
-        paramally.a(false, paramahap);
-        return;
-      }
-      paramally.a(true, paramahap);
-      return;
-    }
-    paramActivity.runOnUiThread(new ApolloGameWrapper.1(paramString, paramActivity, paramally));
+    yqp.e(P2VEditMusicDialog.a(), "onAddressUpdate failed.");
   }
 }
 

@@ -9,70 +9,70 @@ class EditVideoActivity$2
   public void run()
   {
     // Byte code:
-    //   0: invokestatic 29	azkt:a	()Z
+    //   0: invokestatic 29	bnpy:c	()Z
     //   3: pop
     //   4: ldc 31
     //   6: aload_0
     //   7: getfield 12	dov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2:this$0	Ldov/com/tencent/biz/qqstory/takevideo/EditVideoActivity;
     //   10: invokevirtual 37	dov/com/tencent/biz/qqstory/takevideo/EditVideoActivity:getApplicationContext	()Landroid/content/Context;
-    //   13: invokestatic 42	com/tencent/mobileqq/shortvideo/VideoEnvironment:a	(Ljava/lang/String;Landroid/content/Context;)I
+    //   13: invokestatic 43	com/tencent/mobileqq/shortvideo/VideoEnvironment:a	(Ljava/lang/String;Landroid/content/Context;)I
     //   16: ifeq +25 -> 41
-    //   19: ldc 44
-    //   21: ldc 46
-    //   23: invokestatic 52	wxe:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   26: invokestatic 58	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   29: new 60	dov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2$1
+    //   19: ldc 45
+    //   21: ldc 47
+    //   23: invokestatic 53	yqp:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   26: invokestatic 59	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
+    //   29: new 61	dov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2$1
     //   32: dup
     //   33: aload_0
-    //   34: invokespecial 63	dov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2$1:<init>	(Ldov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2;)V
-    //   37: invokevirtual 69	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   34: invokespecial 64	dov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2$1:<init>	(Ldov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2;)V
+    //   37: invokevirtual 70	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   40: pop
     //   41: iconst_1
-    //   42: invokestatic 75	com/tencent/mobileqq/shortvideo/hwcodec/VideoSourceHelper:nativeSetPlayStepFrameCount	(I)V
+    //   42: invokestatic 76	com/tencent/mobileqq/shortvideo/hwcodec/VideoSourceHelper:nativeSetPlayStepFrameCount	(I)V
     //   45: iconst_1
-    //   46: invokestatic 78	com/tencent/mobileqq/shortvideo/hwcodec/VideoSourceHelper:nativeSetPlayGapFrameCount	(I)V
-    //   49: invokestatic 81	wxk:a	()Z
+    //   46: invokestatic 79	com/tencent/mobileqq/shortvideo/hwcodec/VideoSourceHelper:nativeSetPlayGapFrameCount	(I)V
+    //   49: invokestatic 83	yqv:a	()Z
     //   52: ifeq +25 -> 77
-    //   55: invokestatic 85	com/tencent/mobileqq/shortvideo/VideoEnvironment:b	()I
+    //   55: invokestatic 87	com/tencent/mobileqq/shortvideo/VideoEnvironment:b	()I
     //   58: istore_1
     //   59: iload_1
     //   60: bipush 21
     //   62: if_icmplt +15 -> 77
     //   65: iconst_3
-    //   66: invokestatic 89	com/tencent/mobileqq/shortvideo/hwcodec/VideoSourceHelper:nativeSetMaxPhotoFrameCount	(I)I
+    //   66: invokestatic 91	com/tencent/mobileqq/shortvideo/hwcodec/VideoSourceHelper:nativeSetMaxPhotoFrameCount	(I)I
     //   69: pop
-    //   70: ldc 44
-    //   72: ldc 91
-    //   74: invokestatic 93	wxe:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   70: ldc 45
+    //   72: ldc 93
+    //   74: invokestatic 95	yqp:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   77: return
     //   78: astore_2
-    //   79: ldc 44
+    //   79: ldc 45
     //   81: iconst_1
-    //   82: ldc 95
+    //   82: ldc 97
     //   84: aload_2
-    //   85: invokestatic 101	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   85: invokestatic 103	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   88: goto -39 -> 49
     //   91: astore_2
-    //   92: ldc 44
-    //   94: ldc 46
+    //   92: ldc 45
+    //   94: ldc 47
     //   96: aload_2
-    //   97: invokestatic 105	wxe:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   100: invokestatic 58	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   103: new 107	dov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2$2
+    //   97: invokestatic 106	yqp:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   100: invokestatic 59	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
+    //   103: new 108	dov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2$2
     //   106: dup
     //   107: aload_0
-    //   108: invokespecial 108	dov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2$2:<init>	(Ldov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2;)V
-    //   111: invokevirtual 69	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   108: invokespecial 109	dov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2$2:<init>	(Ldov/com/tencent/biz/qqstory/takevideo/EditVideoActivity$2;)V
+    //   111: invokevirtual 70	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   114: pop
     //   115: return
     //   116: astore_2
-    //   117: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   117: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   120: ifeq -43 -> 77
-    //   123: ldc 44
+    //   123: ldc 45
     //   125: iconst_2
-    //   126: ldc 113
+    //   126: ldc 114
     //   128: aload_2
-    //   129: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   129: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   132: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -95,7 +95,7 @@ class EditVideoActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity.2
  * JD-Core Version:    0.7.0.1
  */

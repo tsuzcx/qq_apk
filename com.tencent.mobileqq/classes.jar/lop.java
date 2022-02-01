@@ -1,87 +1,47 @@
-import java.io.BufferedReader;
-
 public class lop
-  extends lor
 {
-  private static float[] b;
-  float[] a;
-  private float[] c = { 1.0F, 1.0F, 1.0F };
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  public mrd a;
+  boolean jdField_a_of_type_Boolean;
+  byte[] jdField_a_of_type_ArrayOfByte;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  int jdField_c_of_type_Int;
+  long jdField_c_of_type_Long;
+  int d;
+  int e;
+  public int f;
+  public int g;
   
-  static
+  lop() {}
+  
+  public lop(long paramLong1, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, long paramLong2, long paramLong3)
   {
-    jdField_b_of_type_ArrayOfFloat = new float[4];
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Long = paramLong3;
+    this.jdField_c_of_type_Long = paramLong1;
+    this.f = 0;
+    this.g = 0;
   }
   
-  public lop()
+  lop(lop paramlop)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F };
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(BufferedReader paramBufferedReader)
-  {
-    int j = 0;
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      return;
-      this.c = new float[loo.a(paramBufferedReader, "colorsCount")];
-      int i = 0;
-      while (i < this.c.length)
-      {
-        this.c[i] = loo.a(paramBufferedReader, "colors" + i);
-        i += 1;
-      }
-      this.jdField_a_of_type_ArrayOfFloat = new float[loo.a(paramBufferedReader, "timelineCount")];
-      i = j;
-      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
-      {
-        this.jdField_a_of_type_ArrayOfFloat[i] = loo.a(paramBufferedReader, "timeline" + i);
-        i += 1;
-      }
-    }
-  }
-  
-  public float[] a(float paramFloat)
-  {
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-    int k = arrayOfFloat.length;
-    int i = 1;
-    int j = 0;
-    if (i < k) {
-      if (arrayOfFloat[i] <= paramFloat) {}
-    }
-    for (;;)
-    {
-      float f4 = arrayOfFloat[j];
-      j *= 3;
-      float f1 = this.c[j];
-      float f2 = this.c[(j + 1)];
-      float f3 = this.c[(j + 2)];
-      if (i == -1)
-      {
-        jdField_b_of_type_ArrayOfFloat[0] = f1;
-        jdField_b_of_type_ArrayOfFloat[1] = f2;
-        jdField_b_of_type_ArrayOfFloat[2] = f3;
-        return jdField_b_of_type_ArrayOfFloat;
-        j = i;
-        i += 1;
-        break;
-      }
-      paramFloat = (paramFloat - f4) / (arrayOfFloat[i] - f4);
-      i *= 3;
-      jdField_b_of_type_ArrayOfFloat[0] = ((this.c[i] - f1) * paramFloat + f1);
-      jdField_b_of_type_ArrayOfFloat[1] = ((this.c[(i + 1)] - f2) * paramFloat + f2);
-      jdField_b_of_type_ArrayOfFloat[2] = ((this.c[(i + 2)] - f3) * paramFloat + f3);
-      return jdField_b_of_type_ArrayOfFloat;
-      i = -1;
-    }
+    this(paramlop.jdField_c_of_type_Long, paramlop.jdField_a_of_type_ArrayOfByte, paramlop.jdField_a_of_type_Int, paramlop.jdField_b_of_type_Int, paramlop.jdField_c_of_type_Int, paramlop.d, paramlop.e, paramlop.jdField_a_of_type_Boolean, paramlop.jdField_a_of_type_Long, paramlop.jdField_b_of_type_Long);
+    this.f = paramlop.f;
+    this.g = paramlop.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lop
  * JD-Core Version:    0.7.0.1
  */

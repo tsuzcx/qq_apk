@@ -1,45 +1,50 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
 
-class baqv
-  implements ITransactionCallback
+public class baqv
+  extends Handler
 {
-  baqv(baqu parambaqu) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public baqv(LiteTcpConnection paramLiteTcpConnection, Looper paramLooper)
   {
-    this.a.d = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms");
-    }
-    this.a.jdField_a_of_type_Bass.a = paramArrayOfByte;
-    if (this.a.b != -1) {
-      this.a.a(paramInt, "uploadImgError");
+    super(paramLooper);
+  }
+  
+  public void a()
+  {
+    if (LiteTcpConnection.a(this.a) != null) {
+      LiteTcpConnection.a(this.a).sendEmptyMessage(3);
     }
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void b()
   {
-    this.a.d = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms ,fileSize:" + this.a.q);
+    baqv localbaqv = LiteTcpConnection.a(this.a);
+    if (localbaqv != null) {
+      localbaqv.sendEmptyMessage(2);
     }
-    if (this.a.jdField_a_of_type_Xcy.b.equals(this.a.jdField_a_of_type_Xda.a))
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      LiteTcpConnection.a(this.a, LiteTcpConnection.a(this.a));
+    }
+    do
     {
-      this.a.jdField_a_of_type_Xcy.a = this.a.d;
-      if (this.a.b != -1) {
-        this.a.aO_();
+      return;
+      if (paramMessage.what == 2)
+      {
+        LiteTcpConnection.a(this.a);
+        return;
       }
-    }
+    } while (paramMessage.what != 3);
+    LiteTcpConnection.a(this.a).quit();
+    LiteTcpConnection.a(this.a, null);
+    LiteTcpConnection.a(this.a, null);
   }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
 }
 
 

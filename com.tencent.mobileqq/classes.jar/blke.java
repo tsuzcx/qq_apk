@@ -1,11 +1,38 @@
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xd68.oidb_cmd0xd68.RspBody;
 
-public class blke
+class blke
+  extends Handler
 {
-  public static final String a = bkpi.a + File.separator + "ae_editor";
-  public static final String b = a + File.separator + "resources";
-  public static final String c = a + File.separator + "generated_images";
-  public static final String d = a + File.separator + "generated_videos";
+  blke(blkd paramblkd, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    int i = paramMessage.what;
+    if (paramMessage.arg1 == 1) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QfavFileForwardManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
+      }
+      if (bool) {
+        break;
+      }
+      return;
+      bool = false;
+    }
+    paramMessage = (oidb_cmd0xd68.RspBody)paramMessage.obj;
+    switch (i)
+    {
+    }
+  }
 }
 
 

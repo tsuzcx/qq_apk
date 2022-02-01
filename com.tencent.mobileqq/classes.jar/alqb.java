@@ -1,49 +1,35 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.DownloadTask.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import protocol.KQQConfig.GetResourceRespInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class alqb
-  extends bazx
+  extends alqj
 {
-  public File a;
-  public GetResourceRespInfo a;
+  protected final BaseChatPie a;
   
-  public alqb(QQAppInterface paramQQAppInterface, String paramString, GetResourceRespInfo paramGetResourceRespInfo, File paramFile)
+  public alqb(BaseChatPie paramBaseChatPie)
   {
-    super(paramQQAppInterface, paramString);
-    this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo = paramGetResourceRespInfo;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.a = paramBaseChatPie;
   }
   
-  protected void realCancel()
+  void a(bguh parambguh, View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realCancel");
+    if ((parambguh != null) && (parambguh.a() > 0))
+    {
+      if (this.a == null) {
+        break label43;
+      }
+      if (this.a.h() < 8) {
+        a(paramView, paramInt1, paramInt2, parambguh, paramInt3, false);
+      }
     }
-  }
-  
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realStart");
-    }
-    String str = this.key;
-    QQAppInterface localQQAppInterface = this.app;
-    GetResourceRespInfo localGetResourceRespInfo = this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo;
-    ThreadManagerV2.excute(new ConditionSearchManager.DownloadTask.1(this, str, this.jdField_a_of_type_JavaIoFile, localQQAppInterface, localGetResourceRespInfo), 128, null, true);
-  }
-  
-  public String toString()
-  {
-    return "[DownloadTask] url=" + this.key;
+    return;
+    label43:
+    a(paramView, paramInt1, paramInt2, parambguh, paramInt3, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alqb
  * JD-Core Version:    0.7.0.1
  */

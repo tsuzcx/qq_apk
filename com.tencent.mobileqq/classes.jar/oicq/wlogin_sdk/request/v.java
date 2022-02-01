@@ -77,10 +77,10 @@ public class v
   public int b(long paramLong1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2)
   {
     long l = System.currentTimeMillis();
-    t.as.commit(Build.VERSION.RELEASE, new String(t.G), "", util.buf_to_string(util.get_ksid(t.t)), new String(t.E), new String(t.Q), new String(t.I), new String(t.H), util.get_release_time(), "6.0.0.2424");
+    t.at.commit(Build.VERSION.RELEASE, new String(t.H), "", util.buf_to_string(util.get_ksid(t.u)), new String(t.F), new String(t.R), new String(t.J), new String(t.I), util.get_release_time(), "6.0.0.2432");
     try
     {
-      paramArrayOfByte1 = t.as.toJasonObj().toString().getBytes();
+      paramArrayOfByte1 = t.at.toJasonObj().toString().getBytes();
       if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
         return 0;
       }
@@ -101,15 +101,15 @@ public class v
       util.int16_to_buf(arrayOfByte, 2, paramArrayOfByte1.length);
       System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 4, paramArrayOfByte1.length);
       paramArrayOfByte1 = a(arrayOfByte, paramLong1, paramLong2, l, 0);
-      report_t.delete_file(t.t);
+      report_t.delete_file(t.u);
       int i = b(a(a(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2)));
       util.LOGI("request_report_error(0) rsp: ret=" + i);
       if (i != 0)
       {
-        report_t.write_tofile(t.as, t.t);
+        report_t.write_tofile(t.at, t.u);
         return i;
       }
-      t.as.clear_t2();
+      t.at.clear_t2();
       return i;
     }
   }
@@ -127,12 +127,12 @@ public class v
       Calendar localCalendar = Calendar.getInstance();
       int j = this.a.d.get_bitmap();
       int k = this.a.d.get_network();
-      util.LOGI("bitmap:" + j + " network:" + k + " local network:" + util.get_network_type(t.t));
+      util.LOGI("bitmap:" + j + " network:" + k + " local network:" + util.get_network_type(t.u));
       int i = 0;
       if (i < 32)
       {
         if ((1 << i & j) == 0) {}
-        while ((k != 0) && ((k != 1) || (util.get_network_type(t.t) != 2)))
+        while ((k != 0) && ((k != 1) || (util.get_network_type(t.u) != 2)))
         {
           i += 1;
           break;
@@ -140,7 +140,7 @@ public class v
         l1 = l3 - 86400000 * i;
         localCalendar.setTimeInMillis(l1);
         str = localSimpleDateFormat.format(localCalendar.getTime());
-        l2 = util.getLogModifyTime(t.t, str);
+        l2 = util.getLogModifyTime(t.u, str);
         if (l2 != 0L) {
           break label339;
         }
@@ -148,7 +148,7 @@ public class v
     }
     for (;;)
     {
-      paramArrayOfByte1 = util.readLog(t.t, str);
+      paramArrayOfByte1 = util.readLog(t.u, str);
       if (paramArrayOfByte1 == null) {}
       for (paramArrayOfByte1 = new byte[0];; paramArrayOfByte1 = a(paramArrayOfByte1, paramLong1, paramLong2, l1, 1))
       {

@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
+import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.List;
-import pew;
+import pwb;
 
 public class ArticleInfoModule$26
   implements Runnable
 {
-  public ArticleInfoModule$26(pew parampew) {}
+  public ArticleInfoModule$26(pwb parampwb) {}
   
   public void run()
   {
-    List localList = this.this$0.a.a(ChannelTopCookie.class, true, null, null, null, null, null, null);
+    List localList = this.this$0.a.query(ChannelTopCookie.class, true, null, null, null, null, null, null);
     this.this$0.a(localList);
   }
 }

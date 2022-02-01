@@ -24,26 +24,26 @@ public class AddFollowTextView
   
   protected void a()
   {
-    setBackgroundResource(2130838722);
+    setBackgroundResource(2130838973);
     setGravity(17);
     setOnClickListener(this);
   }
   
   protected void b()
   {
-    setBackgroundResource(2130838724);
+    setBackgroundResource(2130838975);
     postDelayed(new AddFollowTextView.1(this), 2000L);
   }
   
   protected void c()
   {
-    setBackgroundResource(2130838722);
+    setBackgroundResource(2130838973);
     setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.AddFollowTextView
  * JD-Core Version:    0.7.0.1
  */

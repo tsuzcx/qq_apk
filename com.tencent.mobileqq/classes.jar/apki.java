@@ -1,19 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.PathMeasure;
-import com.tencent.mobileqq.doutu.combo.ComboMasterView;
+import android.os.Bundle;
+import java.util.ArrayList;
 
-public class apki
-  implements ValueAnimator.AnimatorUpdateListener
+final class apki
+  extends apll
 {
-  public apki(ComboMasterView paramComboMasterView, PathMeasure paramPathMeasure, float[] paramArrayOfFloat) {}
+  apki(ArrayList paramArrayList) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f, this.jdField_a_of_type_ArrayOfFloat, null);
-    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationX(this.jdField_a_of_type_ArrayOfFloat[0]);
-    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationY(this.jdField_a_of_type_ArrayOfFloat[1]);
+    if (paramBoolean)
+    {
+      int i = paramBundle.getInt("mode", -1);
+      this.a.add(Integer.valueOf(i));
+    }
   }
 }
 

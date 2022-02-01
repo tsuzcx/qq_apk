@@ -1,10 +1,27 @@
-import com.tencent.mobileqq.teamwork.PadInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bagc
+class bagc
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(PadInfo paramPadInfo);
+  boolean jdField_a_of_type_Boolean = false;
   
-  public abstract void b(PadInfo paramPadInfo);
+  bagc(baga parambaga) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    QLog.i("QzoneGiftManager", 1, "onAnimationEnd");
+    if (this.jdField_a_of_type_Boolean) {
+      baga.a(this.jdField_a_of_type_Baga, 8);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    QLog.i("QzoneGiftManager", 1, "onAnimationStart");
+    this.jdField_a_of_type_Boolean = true;
+  }
 }
 
 

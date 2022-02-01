@@ -1,28 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AssistantSettingActivity.31.1;
+import com.tencent.widget.HeightAdaptableListView;
 
 public class admi
-  extends BroadcastReceiver
+  implements ajlc
 {
-  WeakReference<PayBridgeActivity> a;
+  public admi(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public admi(PayBridgeActivity paramPayBridgeActivity)
+  public void a()
   {
-    this.a = new WeakReference(paramPayBridgeActivity);
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))) && (this.a != null))
-    {
-      paramContext = (PayBridgeActivity)this.a.get();
-      if (paramContext != null) {
-        paramContext.b = true;
-      }
-    }
+    this.a.a.post(new AssistantSettingActivity.31.1(this));
+    AssistantSettingActivity.c(this.a);
   }
 }
 

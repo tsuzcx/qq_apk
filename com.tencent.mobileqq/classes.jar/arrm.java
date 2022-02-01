@@ -1,12 +1,26 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import android.text.TextUtils;
 
-final class arrm
-  implements Comparator<FileInfo>
+public class arrm
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  public static int a = 300;
+  public static int b = 300;
+  
+  public static String a(String paramString)
   {
-    return (int)(paramFileInfo2.b() / 1000L - paramFileInfo1.b() / 1000L);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return anhk.bl + aopp.a(paramString);
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("https://p.qpic.cn/");
+    localStringBuilder.append(paramString2).append("/").append(paramString3).append("/").append(paramString1).append("/0");
+    return localStringBuilder.toString();
   }
 }
 

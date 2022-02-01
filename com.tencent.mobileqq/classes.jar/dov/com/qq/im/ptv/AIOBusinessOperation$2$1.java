@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import bmfd;
+import bowj;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import java.util.HashMap;
 
@@ -21,16 +21,16 @@ class AIOBusinessOperation$2$1
       for (Object localObject = new SkinnableBitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);; localObject = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap))
       {
         this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        bmfd.a().put(this.this$0.jdField_a_of_type_JavaLangString, localObject);
+        bowj.a().put(this.this$0.jdField_a_of_type_JavaLangString, localObject);
         return;
       }
     }
-    bmfd.a().put(this.this$0.jdField_a_of_type_JavaLangString, null);
+    bowj.a().put(this.this$0.jdField_a_of_type_JavaLangString, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ptv.AIOBusinessOperation.2.1
  * JD-Core Version:    0.7.0.1
  */

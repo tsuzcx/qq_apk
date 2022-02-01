@@ -1,41 +1,77 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
-import mqq.os.MqqHandler;
 
-class sul
-  extends stx
+public class sul
+  extends Handler
 {
-  sul(suk paramsuk) {}
+  public sul(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  protected void a(boolean paramBoolean, List<suc> paramList)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptObserver", 2, "onGetRecommendList isSuccess: " + paramBoolean + " | data: " + paramList + " | isShowRecommend: " + this.a.jdField_a_of_type_Boolean);
-    }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Boolean))
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      if ((paramList == null) || (paramList.isEmpty())) {
-        break label145;
+    default: 
+      return;
+    case 1: 
+      i = paramMessage.arg1;
+      if (i > 0)
+      {
+        paramMessage = new BusinessInfoCheckUpdate.RedTypeInfo();
+        paramMessage.red_content.set(String.valueOf(i));
+        paramMessage.red_desc.set("{'cn':'#FF0000'}");
+        paramMessage.red_type.set(5);
+        ReadinjoyTabFrame.a(this.a).a(paramMessage);
+        ReadinjoyTabFrame.a(this.a).invalidate();
       }
-      this.a.a(paramList);
-      paramList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-      if ((paramList != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity))) {
-        paramList.sendEmptyMessage(1004);
+      for (;;)
+      {
+        QLog.d("Q.readinjoy.4tab", 2, "update self icon red point, value : " + i);
+        return;
+        ReadinjoyTabFrame.a(this.a).d();
+        ReadinjoyTabFrame.a(this.a).invalidate();
+      }
+    case 3: 
+      if (paramMessage.arg1 > 0)
+      {
+        paramMessage = new BusinessInfoCheckUpdate.RedTypeInfo();
+        paramMessage.red_type.set(0);
+        ReadinjoyTabFrame.a(this.a).a(paramMessage);
+        ReadinjoyTabFrame.a(this.a).invalidate();
+      }
+      for (;;)
+      {
+        QLog.d("Q.readinjoy.4tab", 2, "update self icon red point for coin campaign");
+        return;
+        ReadinjoyTabFrame.a(this.a).d();
+        ReadinjoyTabFrame.a(this.a).invalidate();
       }
     }
-    label145:
-    while (!QLog.isColorLevel()) {
+    int i = paramMessage.arg1;
+    int j = paramMessage.arg2;
+    if ((i <= 0) || ((j == 2131376089) && ((this.a.a() instanceof ReadInJoyVideoChannelFragment))))
+    {
+      ReadinjoyTabFrame.a(this.a).a(j);
       return;
     }
-    QLog.d("SubscriptObserver", 2, "onGetRecommendList data is null or empty");
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+    localRedTypeInfo.red_type.set(0);
+    localRedTypeInfo.red_content.set(String.valueOf(i));
+    localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
+    QLog.d("Q.readinjoy.4tab", 2, "update indicator red point , index : " + paramMessage.obj + ", value : " + i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sul
  * JD-Core Version:    0.7.0.1
  */

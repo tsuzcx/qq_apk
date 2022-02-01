@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/enp" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout android:id="@id/bk4" android:background="#ffffffff" android:layout_width="296.0dip" android:layout_height="wrap_content" app:round_rect_radius="6.0dip">
+            <LinearLayout android:orientation="vertical" android:id="@id/nlg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="24.0dip" android:src="@drawable/h0t" />
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                    <TextView android:textSize="16.0dip" android:textColor="#ff262626" android:ellipsize="end" android:id="@id/nli" android:layout_width="150.0dip" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:maxLines="2" android:includeFontPadding="false" android:layout_centerVertical="true" android:lineSpacingExtra="2.0dip" />
+                    <com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout android:background="@drawable/e8n" android:layout_width="76.5dip" android:layout_height="76.5dip" android:layout_marginRight="30.0dip" android:layout_alignParentRight="true" app:round_rect_radius="4.0dip">
+                        <com.tencent.mobileqq.widget.presseffect.PressEffectImageView android:id="@id/nlb" android:layout_width="75.0dip" android:layout_height="75.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+                    </com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
+            <com.tencent.mobileqq.activity.aio.RightLinearLayout android:orientation="horizontal" android:id="@id/nnx" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="30.0dip" android:layout_below="@id/nlg" android:layout_centerHorizontal="true">
+                <TextView android:textSize="14.0dip" android:textColor="#ff4e525e" android:gravity="center" android:id="@id/nw4" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="1.0dip" android:text="@string/x5p" android:includeFontPadding="false" />
+                <TextView android:textSize="14.0dip" android:textColor="#ff4e525e" android:ellipsize="end" android:gravity="center" android:id="@id/nr0" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="" android:lines="1" android:includeFontPadding="false" />
+            </com.tencent.mobileqq.activity.aio.RightLinearLayout>
+            <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/ezz" android:background="@drawable/e8h" android:layout_width="236.0dip" android:layout_height="41.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="25.0dip" android:text="@string/x54" android:layout_below="@id/nnx" android:layout_centerHorizontal="true" />
+        </com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout>
+        <com.tencent.mobileqq.widget.presseffect.PressEffectImageView android:layout_gravity="center_horizontal" android:id="@id/azb" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:src="@drawable/h0s" android:scaleType="centerCrop" />
+    </LinearLayout>
+</RelativeLayout>

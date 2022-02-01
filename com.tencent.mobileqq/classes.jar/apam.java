@@ -1,88 +1,47 @@
-import android.accounts.Account;
-import android.annotation.SuppressLint;
-import android.content.AbstractThreadedSyncAdapter;
-import android.content.ContentProviderClient;
-import android.content.Context;
-import android.content.SyncResult;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 public class apam
-  extends AbstractThreadedSyncAdapter
 {
-  private Context a;
+  public float a;
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c = -1;
   
-  public apam(Context paramContext, boolean paramBoolean)
+  public apam()
   {
-    super(paramContext, paramBoolean);
-    this.a = paramContext;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
   }
   
-  public void onPerformSync(Account paramAccount, Bundle paramBundle, String paramString, ContentProviderClient paramContentProviderClient, SyncResult paramSyncResult)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync");
+    try
+    {
+      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
+      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
     }
-    if (!"Success".equals(BaseApplicationImpl.sInjectResult)) {}
-    do
+    catch (Exception localException)
     {
       for (;;)
       {
-        return;
-        try
-        {
-          paramAccount = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-          if ((paramAccount == null) || (!paramAccount.isLogin()))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync | app is null or not login, " + paramAccount);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("ARCloudSceneRecogResult", 2, "toString error, msg:" + localException.getMessage());
         }
-        catch (Throwable paramAccount)
-        {
-          for (;;)
-          {
-            QLog.e("ContactSync.SyncAdapter", 1, "onPerformSync exception", paramAccount);
-            paramAccount = null;
-          }
-          try
-          {
-            ((apac)paramAccount.getManager(41)).a();
-            return;
-          }
-          catch (Throwable paramAccount) {}
-        }
+        String str2 = "";
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync | syncAllContacts exception", paramAccount);
-  }
-  
-  @SuppressLint({"NewApi"})
-  public void onSyncCanceled()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.SyncAdapter", 2, "onSyncCanceled()");
     }
-    super.onSyncCanceled();
-  }
-  
-  @SuppressLint({"NewApi"})
-  public void onSyncCanceled(Thread paramThread)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.SyncAdapter", 2, "onSyncCanceled(thread)");
-    }
-    super.onSyncCanceled(paramThread);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apam
  * JD-Core Version:    0.7.0.1
  */

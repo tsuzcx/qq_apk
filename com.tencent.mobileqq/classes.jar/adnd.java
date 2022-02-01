@@ -1,13 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adnd
   implements View.OnClickListener
 {
-  public adnd(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public adnd(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(View paramView)
+  {
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

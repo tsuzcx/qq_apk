@@ -1,37 +1,38 @@
-import NS_MOBILE_PHOTO.operation_red_touch_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class axbh
-  extends QzoneExternalRequest
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"setBackgroundDrawableCompat", "", "Landroid/view/View;", "background", "Landroid/graphics/drawable/Drawable;", "setOnClickListener", "listener", "Lkotlin/Function0;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class axbh
 {
-  public JceStruct a;
-  
-  public axbh(long paramLong, operation_red_touch_req paramoperation_red_touch_req)
+  public static final void a(@NotNull View paramView, @Nullable Drawable paramDrawable)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.a = paramoperation_red_touch_req;
+    Intrinsics.checkParameterIsNotNull(paramView, "$this$setBackgroundDrawableCompat");
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramView.setBackground(paramDrawable);
+      return;
+    }
+    paramView.setBackgroundDrawable(paramDrawable);
   }
   
-  public String getCmdString()
+  public static final void a(@NotNull View paramView, @NotNull Function0<Unit> paramFunction0)
   {
-    return "QzoneNewService.asy_photo.OperationRedTouch";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "OperationRedTouch";
+    Intrinsics.checkParameterIsNotNull(paramView, "$this$setOnClickListener");
+    Intrinsics.checkParameterIsNotNull(paramFunction0, "listener");
+    paramView.setOnClickListener((View.OnClickListener)new axbi(paramFunction0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axbh
  * JD-Core Version:    0.7.0.1
  */

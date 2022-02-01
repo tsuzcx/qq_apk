@@ -1,44 +1,29 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.StoryCoverView;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class wvt
-  extends wrj
+  extends SimpleJob<Object>
 {
-  wvt(wvq paramwvq, boolean paramBoolean) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
+  wvt(wvs paramwvs, String paramString)
   {
-    if (paramView == paramwtq.a()) {
-      wvq.a(this.jdField_a_of_type_Wvq, paramInt, (StoryVideoItem)wvq.a(this.jdField_a_of_type_Wvq).a().get(paramInt), paramView);
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (this.a.jdField_a_of_type_Wvv == null) {
+      this.a.jdField_a_of_type_Wvv = new wvv(this.a, this.a.d);
     }
-    do
-    {
-      return;
-      if (paramView == paramwtq.a(2131373820))
-      {
-        paramView = (StoryCoverView)paramwtq.a(2131373819);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          wvq.a(this.jdField_a_of_type_Wvq, paramInt, (StoryVideoItem)wvq.a(this.jdField_a_of_type_Wvq).a().get(paramInt), paramView);
-          return;
-        }
-        wvq.b(this.jdField_a_of_type_Wvq, paramInt, (StoryVideoItem)wvq.a(this.jdField_a_of_type_Wvq).a().get(paramInt), paramView);
-        return;
-      }
-      if ((paramView == paramwtq.a(2131373875)) || (paramView == paramwtq.a(2131373822)))
-      {
-        wvq.a(this.jdField_a_of_type_Wvq, paramInt, (StoryVideoItem)wvq.a(this.jdField_a_of_type_Wvq).a().get(paramInt));
-        return;
-      }
-    } while (paramView != paramwtq.a(2131373871));
-    this.jdField_a_of_type_Wvq.a(paramwtq, paramInt);
+    this.a.jdField_a_of_type_JavaLangString = "";
+    wvs.a(this.a);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wvt
  * JD-Core Version:    0.7.0.1
  */

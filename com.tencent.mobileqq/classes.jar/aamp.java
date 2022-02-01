@@ -1,12 +1,6 @@
-import com.tencent.ad.tangram.version.AdVersionAdapter;
-
-public class aamp
-  implements AdVersionAdapter
+public abstract interface aamp
 {
-  public String getAppVersion()
-  {
-    return aash.a();
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

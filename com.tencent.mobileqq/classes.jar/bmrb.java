@@ -1,27 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager;
 
-class bmrb
-  implements ValueAnimator.AnimatorUpdateListener
+public class bmrb
+  extends Handler
 {
-  bmrb(bmqz parambmqz) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bmrb(TroopPluginManager paramTroopPluginManager, Looper paramLooper)
   {
-    if (this.a.a.b == null) {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
       return;
     }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.s = (this.a.d + this.a.f * (1.0F - f));
-    this.a.t = (this.a.e + this.a.g * (1.0F - f));
-    this.a.q = (this.a.b + this.a.h * (1.0F - f));
-    this.a.r = (this.a.c + this.a.i * (1.0F - f));
-    if (f == 1.0F)
-    {
-      this.a.a.b = null;
-      this.a.a.b(4);
-    }
-    bmqw.b(this.a.a);
+    ((bmre)paramMessage.obj).a(paramMessage.arg1);
   }
 }
 

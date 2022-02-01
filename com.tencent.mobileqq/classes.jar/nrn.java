@@ -1,57 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendPublicAccountMessageReceiptResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
 
 class nrn
-  implements BusinessObserver
+  implements bkhw
 {
-  nrn(nrc paramnrc, NewIntent paramNewIntent) {}
+  nrn(nre paramnre, bkho parambkho) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      mobileqq_mp.SendPublicAccountMessageReceiptResponse localSendPublicAccountMessageReceiptResponse = new mobileqq_mp.SendPublicAccountMessageReceiptResponse();
-      localSendPublicAccountMessageReceiptResponse.mergeFrom(paramBundle);
-      boolean bool = paramBoolean;
-      if (localSendPublicAccountMessageReceiptResponse.ret_info.has())
-      {
-        bool = paramBoolean;
-        if (localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.has())
-        {
-          paramInt = localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.get();
-          bool = paramBoolean;
-          if (paramInt != 0L) {
-            bool = false;
-          }
-        }
-      }
+    if (this.jdField_a_of_type_Nre.f) {
       return;
     }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(false));
-      return;
+    this.jdField_a_of_type_Nre.f = true;
+    if (paramInt == 0) {
+      this.jdField_a_of_type_Nre.jdField_a_of_type_Int = 0;
     }
-    finally
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(paramBoolean));
+      this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Nre.jdField_a_of_type_Aoqn);
+      this.jdField_a_of_type_Nre.jdField_a_of_type_Aoqn = new aoqn(new nro(this));
+      this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Nre.jdField_a_of_type_Aoqn);
+      aoqs.a(this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Nre.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nre.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      if (paramInt == 1) {
+        this.jdField_a_of_type_Nre.jdField_a_of_type_Int = 2;
+      } else if (paramInt == 2) {
+        this.jdField_a_of_type_Nre.jdField_a_of_type_Int = 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nrn
  * JD-Core Version:    0.7.0.1
  */

@@ -17,6 +17,7 @@ public class ComponentConstant
   public static final String CMP_TYPE_IMG = "img";
   public static final String CMP_TYPE_INDICATE_LOADING = "indicate-loading";
   public static final String CMP_TYPE_INPUT = "input";
+  public static final String CMP_TYPE_KB_REFRESH = "kbrefresh";
   public static final String CMP_TYPE_KD_REFRESH = "kdrefresh";
   public static final String CMP_TYPE_LIST = "list";
   public static final String CMP_TYPE_LOADING = "loading";
@@ -43,7 +44,7 @@ public class ComponentConstant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.ComponentConstant
  * JD-Core Version:    0.7.0.1
  */

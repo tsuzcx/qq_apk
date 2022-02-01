@@ -1,35 +1,27 @@
-import android.content.Context;
-import android.graphics.Paint;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class afew
-  implements afez
+  extends RecyclerView.ItemDecoration
 {
-  private Paint a;
+  private int jdField_a_of_type_Int;
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
+  public afew(afen paramafen, int paramInt)
   {
-    azqs.b(paramQQAppInterface, "dc00898", "", "", "0X8008C70", "0X8008C70", ahbf.a(paramInt), 0, "", "", "", "");
-    paramString = assg.a(paramString);
-    if ((paramString != null) && (paramString.length() > 20))
-    {
-      QQToast.a(paramContext, alud.a(2131705852), 0).a();
-      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800932C", "0X800932C", 0, 0, "", "", "", "");
-      return false;
-    }
-    return true;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public boolean a(Context paramContext, String paramString, EditText paramEditText)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (this.a == null) {
-      this.a = new Paint();
+    paramRect.right = this.jdField_a_of_type_Int;
+    paramRect.bottom = this.jdField_a_of_type_Int;
+    paramRect.left = this.jdField_a_of_type_Int;
+    if (paramRecyclerView.getChildPosition(paramView) != 0) {
+      paramRect.right = this.jdField_a_of_type_Int;
     }
-    this.a.setTypeface(paramEditText.getTypeface());
-    this.a.setTextSize(paramEditText.getTextSize());
-    return (paramString.length() < 200) && (!paramString.contains("\n")) && ((int)this.a.measureText(paramString) + aepi.a(45.0F, paramContext.getResources()) + paramEditText.getPaddingLeft() < paramEditText.getMeasuredWidth());
   }
 }
 

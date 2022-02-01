@@ -1,39 +1,26 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import java.util.Iterator;
-import java.util.List;
+import com.dataline.activities.LiteActivity.9.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class ce
-  extends AsyncTask<Bundle, Integer, Void>
+  implements View.OnTouchListener
 {
   public ce(LiteActivity paramLiteActivity) {}
   
-  protected Void a(Bundle... paramVarArgs)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = paramVarArgs[0].getStringArrayList("PhotoConst.PHOTO_PATHS");
-    if (localObject == null) {}
-    for (;;)
-    {
-      return null;
-      paramVarArgs = (alqo)this.a.app.a(8);
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-        localDataLineMsgRecord.path = str;
-        localDataLineMsgRecord.msgtype = -2009;
-        paramVarArgs.a(localDataLineMsgRecord, false);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(LiteActivity.jdField_a_of_type_JavaLangString, 2, "ontouch--fcc----: " + paramMotionEvent.getAction());
     }
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.a.a(false);
+    this.a.q();
+    LiteActivity.a(this.a, false);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.postDelayed(new LiteActivity.9.1(this), 200L);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

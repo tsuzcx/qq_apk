@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
 
-class bivy
-  implements View.OnClickListener
+public abstract interface bivy
 {
-  bivy(bivx parambivx, biwb parambiwb) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Biwb.a(paramView);
-  }
+  public abstract void a(List<DownloadInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bivy
  * JD-Core Version:    0.7.0.1
  */

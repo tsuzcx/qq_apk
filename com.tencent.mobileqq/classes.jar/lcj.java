@@ -1,29 +1,19 @@
-import java.io.InputStream;
-import java.util.zip.GZIPInputStream;
-import org.apache.http.HttpEntity;
-import org.apache.http.entity.HttpEntityWrapper;
+import com.tencent.av.VideoController;
+import java.util.Comparator;
 
-class lcj
-  extends HttpEntityWrapper
+public class lcj
+  implements Comparator<lco>
 {
-  public lcj(HttpEntity paramHttpEntity)
-  {
-    super(paramHttpEntity);
-  }
+  public lcj(VideoController paramVideoController) {}
   
-  public InputStream getContent()
+  public int a(lco paramlco1, lco paramlco2)
   {
-    return new GZIPInputStream(this.wrappedEntity.getContent());
-  }
-  
-  public long getContentLength()
-  {
-    return -1L;
+    return (int)(paramlco1.d - paramlco2.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lcj
  * JD-Core Version:    0.7.0.1
  */

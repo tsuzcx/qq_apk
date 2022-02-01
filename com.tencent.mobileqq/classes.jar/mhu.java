@@ -1,20 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavPanel;
 
 public class mhu
-  implements DialogInterface.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public mhu(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, long paramLong) {}
+  public mhu(QavPanel paramQavPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.l(this.jdField_a_of_type_Long);
+    if (QavPanel.a(this.a))
+    {
+      paramAnimator = this.a.a.a().a();
+      paramAnimator.a("tryPlayBtnMuteAnimation onAnimationEnd", true);
+      paramAnimator.b("tryPlayBtnMuteAnimation onAnimationEnd", 1);
+      this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
+      return;
+    }
+    this.a.a.a().h("tryPlayBtnMuteAnimation onAnimationEnd", 1);
+    this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
+    QavPanel.a(this.a).a(false, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    QavPanel.a(this.a).a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mhu
  * JD-Core Version:    0.7.0.1
  */

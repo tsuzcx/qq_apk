@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
+import android.view.View;
+import cooperation.qzone.contentbox.model.MQMsg;
 
-public final class blxm
-  implements Parcelable.Creator<DynamicTextItem.TextMap>
+public abstract interface blxm
 {
-  public DynamicTextItem.TextMap a(Parcel paramParcel)
-  {
-    return new DynamicTextItem.TextMap(paramParcel);
-  }
-  
-  public DynamicTextItem.TextMap[] a(int paramInt)
-  {
-    return new DynamicTextItem.TextMap[paramInt];
-  }
+  public abstract void a(MQMsg paramMQMsg, View paramView, int paramInt);
 }
 
 

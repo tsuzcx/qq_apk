@@ -1,70 +1,32 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.1;
-import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class bddl
-  extends altm
+class bddl
+  implements Callable<File>
 {
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetHeadInfo ").append(paramBoolean).append(" ");
-      if (paramSetting == null) {
-        break label99;
-      }
-    }
-    label99:
-    for (String str = paramSetting.uin;; str = "")
-    {
-      QLog.i("QQAvatarFHDDecoder", 2, str);
-      if ((paramSetting != null) && (paramSetting.uin != null) && (paramSetting.uin.equals(bddk.a(this.a)))) {
-        ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.1(this, paramSetting), 128, null, true);
-      }
-      return;
-    }
-  }
+  bddl(bddk parambddk) {}
   
-  public void onGetHeadInfoEmpty(boolean paramBoolean, int paramInt, List<String> paramList)
+  public File a()
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    try
     {
-      localStringBuilder = new StringBuilder().append("onGetHeadInfoEmpty ").append(paramBoolean).append(" ").append(paramInt).append(" ");
-      if (paramList == null) {
-        break label138;
+      boolean bool = bddk.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("studyroom.CdnPmUpdater", 2, "isNeedDownload:" + bool);
       }
-    }
-    label138:
-    for (String str = paramList.toString();; str = "")
-    {
-      QLog.i("QQAvatarFHDDecoder", 2, str);
-      if (paramList != null)
+      if (!bool)
       {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          str = (String)paramList.next();
-          if ((str != null) && (str.equals(bddk.a(this.a))))
-          {
-            if (!paramBoolean) {
-              break label145;
-            }
-            ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.2(this, str), 128, null, true);
-          }
-        }
+        localFile = this.a.getLatest();
+        return localFile;
       }
-      return;
+      File localFile = this.a.a();
+      return localFile;
     }
-    label145:
-    bddk.a(this.a).obtainMessage(1).sendToTarget();
+    finally
+    {
+      bddk.a(this.a, false);
+    }
   }
 }
 

@@ -1,29 +1,123 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class pnr
-  implements View.OnClickListener
+public class pnr
 {
-  pnr(pnh parampnh, pgd parampgd, Container paramContainer, rqj paramrqj) {}
+  private int jdField_a_of_type_Int;
+  private ArrayList<pnq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  private void i()
   {
-    Object localObject = this.jdField_a_of_type_Pgd.a();
-    ((ArticleInfo)localObject).click_area = 8;
-    ors.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), (ArticleInfo)localObject, (int)((ArticleInfo)localObject).mChannelID);
-    QLog.d("PgcShortContentProteusItem", 1, "click single image blank area");
-    localObject = this.jdField_a_of_type_Rqj.a();
-    if (localObject != null) {
-      ((rro)localObject).a(paramView, this.jdField_a_of_type_Pgd.a(), 2);
+    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      pnq localpnq = (pnq)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localpnq.h();
+        return;
+      }
+      localpnq.g();
+      return;
     }
+    QLog.d("RIJPopupAutomator", 2, "startNext currentIndex out of bound");
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((pnq)localIterator.next()).a();
+    }
+  }
+  
+  void a(pnq parampnq, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJPopupAutomator", 2, "finishStep(" + parampnq.toString() + "): isShown = " + paramBoolean);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    if (!paramBoolean)
+    {
+      this.jdField_a_of_type_Int += 1;
+      i();
+    }
+  }
+  
+  public void a(pnq... paramVarArgs)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(Arrays.asList(paramVarArgs));
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((pnq)localIterator.next()).b();
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((pnq)localIterator.next()).c();
+    }
+  }
+  
+  public void d()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((pnq)localIterator.next()).d();
+    }
+  }
+  
+  public void e()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((pnq)localIterator.next()).e();
+    }
+  }
+  
+  public void f()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((pnq)localIterator.next()).f();
+    }
+  }
+  
+  public void g()
+  {
+    QLog.d("RIJPopupAutomator", 1, "startStepFromOnResume");
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    i();
+  }
+  
+  public void h()
+  {
+    QLog.d("RIJPopupAutomator", 1, "startStepFromOnShowSelf");
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
+    i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pnr
  * JD-Core Version:    0.7.0.1
  */

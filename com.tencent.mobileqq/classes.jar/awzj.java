@@ -1,339 +1,170 @@
-import BOSSStrategyCenter.tAdvDesc;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.io.File;
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashMap<Ljava.lang.String;Ljava.lang.String;>;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import tencent.im.oidb.qqmusic.MusicSongInfoMatch.CMsgRequest;
+import tencent.im.oidb.qqmusic.MusicSongInfoMatch.CMsgResponse;
+import tencent.im.oidb.qqmusic.MusicSongInfoMatch.ParamPair;
 
 public class awzj
+  extends anii
 {
-  private static volatile awzj a;
-  public static final String a;
-  
-  static
+  public awzj(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaLangString = alof.aX + "qbdownres";
+    super(paramQQAppInterface);
   }
   
-  public static SharedPreferences a(String paramString)
+  private long a()
   {
-    return BaseApplicationImpl.getContext().getSharedPreferences("qboss_pre_download_pref_" + paramString, 0);
-  }
-  
-  public static awzj a()
-  {
-    if (jdField_a_of_type_Awzj == null) {}
+    long l = 0L;
+    String str;
+    if (!TextUtils.isEmpty("8.4.1")) {
+      str = "8.4.1".replace(".", "");
+    }
     try
     {
-      if (jdField_a_of_type_Awzj == null) {
-        jdField_a_of_type_Awzj = new awzj();
-      }
-      return jdField_a_of_type_Awzj;
+      l = Long.parseLong(str);
+      return l;
     }
-    finally {}
+    catch (NumberFormatException localNumberFormatException) {}
+    return 0L;
   }
   
-  private static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    return jdField_a_of_type_JavaLangString + File.separator + b(paramString);
-  }
-  
-  private void a(String paramString1, String paramString2)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     try
     {
-      Object localObject = a(paramString1);
-      paramString1 = ((SharedPreferences)localObject).edit();
-      paramString1.remove("download_url" + paramString2);
-      paramString1.remove("end_time" + paramString2);
-      paramString1.remove("trace_info" + paramString2);
-      localObject = new HashSet(((SharedPreferences)localObject).getStringSet("packagenames", new HashSet()));
-      if (((Set)localObject).remove(paramString2)) {
-        paramString1.putStringSet("packagenames", (Set)localObject);
-      }
-      paramString1.apply();
-      QLog.i("QbossPreDownloadManager", 1, "cleanConfig2Sp packageName:" + paramString2);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("QbossPreDownloadManager", 1, "cleanConfig2Sp exception", paramString1);
-    }
-  }
-  
-  private void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    try
-    {
-      SharedPreferences localSharedPreferences = a(paramString1);
-      paramString1 = localSharedPreferences.edit();
-      paramString1.putString("download_url" + paramString2, paramString4);
-      paramString1.putString("end_time" + paramString2, paramString3);
-      paramString1.putString("trace_info" + paramString2, paramString3);
-      paramString3 = new HashSet(localSharedPreferences.getStringSet("packagenames", new HashSet()));
-      if (paramString3.add(paramString2)) {
-        paramString1.putStringSet("packagenames", paramString3);
-      }
-      paramString1.apply();
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("QbossPreDownloadManager", 1, "saveConfig2Sp exception", paramString1);
-    }
-  }
-  
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    try
-    {
-      if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
+      if (paramFromServiceMsg.getResultCode() == 1000)
       {
-        azri.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString, true, 0L, 0L, paramHashMap, null, false);
-        if (QLog.isColorLevel()) {
-          QLog.i("QbossPreDownloadManager", 2, "reportQbossPreDownloadBeacon, tagName  " + paramString);
-        }
+        paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+        paramToServiceMsg = new MusicSongInfoMatch.CMsgResponse();
+        paramToServiceMsg.mergeFrom(paramFromServiceMsg);
+        paramFromServiceMsg = new String(paramToServiceMsg.data.get().toByteArray());
+      }
+      switch (paramToServiceMsg.reqtype.get())
+      {
+      case 1: 
+        notifyUI(81, true, paramFromServiceMsg);
+        return;
+      case 2: 
+        notifyUI(82, true, paramFromServiceMsg);
+        return;
+      case 3: 
+        notifyUI(83, true, paramFromServiceMsg);
+        return;
+        notifyUI(81, false, null);
+        return;
       }
       return;
     }
-    catch (Exception paramString)
-    {
-      QLog.e("QbossPreDownloadManager", 1, paramString, new Object[0]);
-    }
+    catch (Exception paramToServiceMsg) {}
   }
   
-  public static boolean a(Context paramContext, HashMap<String, String> paramHashMap)
+  public void a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    if ((paramContext == null) || (paramHashMap == null) || (paramHashMap.isEmpty())) {
-      return false;
-    }
-    try
+    QLog.d("MusicPlayerHandler", 4, new Object[] { "requestMatchSongInfo ", String.valueOf(paramString1), " ", String.valueOf(paramString2), " ", String.valueOf(paramString3), " ", String.valueOf(paramString4), " ", String.valueOf(paramString5), " ", String.valueOf(paramInt) });
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", String.valueOf(paramLong), "MusicSongInfoMatchSvc.songquery");
+    MusicSongInfoMatch.CMsgRequest localCMsgRequest = new MusicSongInfoMatch.CMsgRequest();
+    if (!TextUtils.isEmpty(paramString1))
     {
-      Object localObject = a((String)paramHashMap.get("downloadurl"));
-      if ((QzoneConfig.getInstance().getConfig("Schema", "jump_installapp_scheme_enable", 0) == 0) && (arso.b((String)localObject)))
-      {
-        QLog.i("QbossPreDownloadManager", 1, "loadPreDownloadRes installApkFile faifilePath:" + (String)localObject);
-        FileProvider7Helper.installApkFile(paramContext, (String)localObject);
-      }
-      else
-      {
-        localObject = (String)paramHashMap.get("jumpurl");
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          QLog.e("QbossPreDownloadManager", 1, "loadPreDownloadRes jumpurl is empty");
-          return false;
-        }
-        paramHashMap = (HashMap<String, String>)localObject;
-        if (!((String)localObject).contains("http://"))
-        {
-          paramHashMap = (HashMap<String, String>)localObject;
-          if (!((String)localObject).contains("https://")) {
-            paramHashMap = "https://" + (String)localObject;
-          }
-        }
-        localObject = new Intent(paramContext, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", paramHashMap);
-        ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_vip");
-        paramContext.startActivity((Intent)localObject);
-        QLog.i("QbossPreDownloadManager", 1, "loadPreDownloadRes jump browser url:" + paramHashMap);
-        return true;
-      }
+      MusicSongInfoMatch.ParamPair localParamPair = new MusicSongInfoMatch.ParamPair();
+      localParamPair.key.set(ByteStringMicro.copyFromUtf8("songname"));
+      localParamPair.value.set(ByteStringMicro.copyFromUtf8(paramString1));
+      localCMsgRequest.urlparams.add(localParamPair);
     }
-    catch (Exception paramContext)
+    if (!TextUtils.isEmpty(paramString2))
     {
-      QLog.e("QbossPreDownloadManager", 1, paramContext, new Object[0]);
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("singername"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(paramString2));
+      localCMsgRequest.urlparams.add(paramString1);
     }
-    return true;
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("albumname"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(paramString3));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString4))
+    {
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("songid"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(paramString4));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString5))
+    {
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("summary"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(paramString5));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    if (paramInt > 0)
+    {
+      paramInt /= 1000;
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("duration"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramInt)));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    localCMsgRequest.reqtype.set(1);
+    localCMsgRequest.uin.set(paramLong);
+    localCMsgRequest.ct.set(1008L);
+    localCMsgRequest.cv.set(a());
+    localToServiceMsg.putWupBuffer(localCMsgRequest.toByteArray());
+    sendPbReq(localToServiceMsg);
   }
   
-  private boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  public void a(String paramString, long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3))) {
-      return false;
+    QLog.d("MusicPlayerHandler", 4, new Object[] { "requestLikeSong ", String.valueOf(paramString), " ", String.valueOf(paramLong1), " ", String.valueOf(paramLong2), " ", String.valueOf(paramBoolean) });
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", String.valueOf(paramLong1), "MusicSongInfoMatchSvc.songquery");
+    MusicSongInfoMatch.CMsgRequest localCMsgRequest = new MusicSongInfoMatch.CMsgRequest();
+    MusicSongInfoMatch.ParamPair localParamPair1 = new MusicSongInfoMatch.ParamPair();
+    localParamPair1.key.set(ByteStringMicro.copyFromUtf8("songid"));
+    localParamPair1.value.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramLong2)));
+    MusicSongInfoMatch.ParamPair localParamPair2 = new MusicSongInfoMatch.ParamPair();
+    localParamPair2.key.set(ByteStringMicro.copyFromUtf8("OpenUDID"));
+    localParamPair2.value.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString)));
+    localCMsgRequest.urlparams.add(localParamPair1);
+    localCMsgRequest.urlparams.add(localParamPair2);
+    if (paramBoolean) {
+      localCMsgRequest.reqtype.set(2);
     }
-    if (bjqo.a(paramString1).booleanValue())
-    {
-      QLog.e("QbossPreDownloadManager", 1, "handleQbossPreDownloadConfig package:" + paramString1 + " is installed");
-      bjqm.a().d(paramString4, null);
-      a(paramQQAppInterface.getAccount(), paramString1);
-      paramQQAppInterface = new HashMap();
-      paramQQAppInterface.put("Qboss_PreDownload_PackageName", paramString1);
-      a("Qboss_PreDownload_App_Installed", paramQQAppInterface);
-      return false;
-    }
-    String str = a(paramString3);
-    if (a(str, paramString2))
-    {
-      a(paramQQAppInterface, paramString1, paramString3, str, paramString4);
-      return true;
-    }
-    QLog.e("QbossPreDownloadManager", 1, "handleQbossPreDownloadConfig shouldDownloadRes return false");
-    if (awzq.a(paramString2))
-    {
-      a(paramQQAppInterface.getAccount(), paramString1);
-      arso.c(str);
-      return false;
-    }
-    bjqm.a().c(paramString4, null);
-    return false;
-  }
-  
-  private static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = Uri.parse(paramString);
-    return Utils.Crc64String(paramString.getHost() + paramString.getPath());
-  }
-  
-  private static void b(String paramString1, SoftReference<QQAppInterface> paramSoftReference, String paramString2, String paramString3)
-  {
-    if (paramSoftReference != null) {}
-    try
-    {
-      paramSoftReference = (QQAppInterface)paramSoftReference.get();
-      if (paramSoftReference != null)
-      {
-        paramSoftReference = (bbaa)paramSoftReference.getManager(193);
-        if (paramSoftReference.a()) {
-          paramSoftReference.a(paramString1, -1L);
-        }
-      }
-      paramString1 = new HashMap();
-      paramString1.put("Qboss_PreDownload_PackageName", paramString2);
-      paramString1.put("Qboss_PreDownload_FailCode", paramString3);
-      a("Qboss_PreDownload_Fail", paramString1);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("QbossPreDownloadManager", 1, paramString1, new Object[0]);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
     for (;;)
     {
+      localCMsgRequest.uin.set(paramLong1);
+      localCMsgRequest.ct.set(1008L);
+      localCMsgRequest.cv.set(a());
+      localToServiceMsg.putWupBuffer(localCMsgRequest.toByteArray());
+      sendPbReq(localToServiceMsg);
       return;
-      SharedPreferences localSharedPreferences = a(paramQQAppInterface.getAccount());
-      Object localObject = localSharedPreferences.getStringSet("packagenames", null);
-      if ((localObject != null) && (((Set)localObject).size() > 0))
-      {
-        localObject = ((Set)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str1 = (String)((Iterator)localObject).next();
-          if (!TextUtils.isEmpty(str1))
-          {
-            String str2 = localSharedPreferences.getString("download_url" + str1, "");
-            a(paramQQAppInterface, str1, localSharedPreferences.getString("end_time" + str1, ""), str2, localSharedPreferences.getString("trace_info" + str1, ""));
-          }
-        }
-      }
+      localCMsgRequest.reqtype.set(3);
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  protected Class<? extends anil> observerClass()
   {
-    try
-    {
-      bbaa localbbaa = (bbaa)paramQQAppInterface.getManager(193);
-      if (localbbaa.a())
-      {
-        QLog.i("QbossPreDownloadManager", 1, "downloadRes request packagename:" + paramString1);
-        paramString3 = paramString3 + ".qbtemp";
-        localbbaa.a(10088, "vas", paramString2, 0, paramString2, paramString3, 1, 2, true, new awzk(this, paramQQAppInterface, "qboss_pre_download_res", paramString1, paramString3, paramString2, paramString4));
-        return;
-      }
-      QLog.i("QbossPreDownloadManager", 1, "ctrl.isEnable() = false");
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("QbossPreDownloadManager", 1, paramQQAppInterface, new Object[0]);
-    }
+    return awzg.class;
   }
   
-  public void a(ArrayList<tAdvDesc> paramArrayList, QQAppInterface paramQQAppInterface)
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    Object localObject1;
-    String str1;
-    if ((paramQQAppInterface != null) && (paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      localObject1 = (tAdvDesc)paramArrayList.get(0);
-      if ((localObject1 != null) && (!TextUtils.isEmpty(((tAdvDesc)localObject1).res_data)))
-      {
-        QLog.i("QbossPreDownloadManager", 4, "handleQbossPreDownloadConfig data = " + ((tAdvDesc)localObject1).res_data);
-        paramArrayList = paramQQAppInterface.getAccount();
-        str1 = ((tAdvDesc)localObject1).res_traceinfo;
-        localObject1 = ((tAdvDesc)localObject1).res_data;
-      }
+    if ("MusicSongInfoMatchSvc.songquery".equals(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
-    else
-    {
-      try
-      {
-        Object localObject2 = new JSONObject((String)localObject1);
-        localObject1 = ((JSONObject)localObject2).getString("packagename");
-        String str2 = ((JSONObject)localObject2).getString("endtime");
-        localObject2 = ((JSONObject)localObject2).getString("apkurl");
-        if (a(paramQQAppInterface, (String)localObject1, str2, (String)localObject2, str1)) {
-          a(paramArrayList, (String)localObject1, str2, (String)localObject2);
-        }
-        return;
-      }
-      catch (Exception paramArrayList)
-      {
-        QLog.e("QbossPreDownloadManager", 1, paramArrayList, new Object[0]);
-        return;
-      }
-    }
-    QLog.e("QbossPreDownloadManager", 1, "handleQbossPreDownloadConfig data = null");
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!arso.b(paramString1))
-    {
-      bool1 = bool2;
-      if (!awzq.a(paramString2)) {
-        bool1 = true;
-      }
-    }
-    QLog.i("QbossPreDownloadManager", 1, "filePath [" + paramString1 + "] shouldRequestRes result = " + bool1);
-    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awzj
  * JD-Core Version:    0.7.0.1
  */

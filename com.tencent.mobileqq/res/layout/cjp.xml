@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/gdy" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/ik9" android:background="@drawable/skin_searchbar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:clickable="true" layout="@layout/b1x" />
-    </LinearLayout>
-    <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/mk3" android:layout_width="fill_parent" android:layout_height="3.0dip" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.biz.ui.TouchWebView android:id="@id/mx4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <View android:id="@id/mwo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
+    <ImageView android:id="@id/avk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" />
+    <TextView android:textSize="17.0dip" android:textColor="#ff03081a" android:id="@id/dxz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/wom" android:layout_below="@id/avk" />
 </LinearLayout>

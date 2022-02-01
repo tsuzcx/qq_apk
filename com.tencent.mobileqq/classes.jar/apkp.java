@@ -1,33 +1,16 @@
-import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import java.util.ArrayList;
 
-public class apkp
-  extends ColorDrawable
+final class apkp
+  extends aplq
 {
-  private int a;
-  private int b;
+  apkp(ArrayList paramArrayList) {}
   
-  public apkp(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    super(0);
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public apkp(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1);
-    this.a = paramInt2;
-    this.b = paramInt3;
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.b;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.a;
+    if ((paramBoolean) && (paramBundle != null)) {
+      this.a.add(paramBundle.getString("SKey", ""));
+    }
   }
 }
 

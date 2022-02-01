@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import java.util.ArrayList;
 
 public class alsv
-  extends awen
+  implements DialogInterface.OnClickListener
 {
-  public alsv(FrameHelperActivity paramFrameHelperActivity) {}
+  public alsv(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onBatteryChanged updateOnlineStatusItem");
-    }
-    FrameHelperActivity localFrameHelperActivity = this.a;
-    if (paramInt > 0) {
-      i = 1;
-    }
-    FrameHelperActivity.a(localFrameHelperActivity, i);
-    this.a.v();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(this.jdField_a_of_type_JavaUtilArrayList);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alsv
  * JD-Core Version:    0.7.0.1
  */

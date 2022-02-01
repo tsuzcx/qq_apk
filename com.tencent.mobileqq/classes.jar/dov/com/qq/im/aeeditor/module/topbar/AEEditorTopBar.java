@@ -1,24 +1,28 @@
 package dov.com.qq.im.aeeditor.module.topbar;
 
-import alud;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import blpv;
+import anni;
+import bnzc;
+import boiu;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.view.AECompoundButton;
 
 public class AEEditorTopBar
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private blpv jdField_a_of_type_Blpv;
+  private boiu jdField_a_of_type_Boiu;
+  private AECompoundButton jdField_a_of_type_DovComQqImAeViewAECompoundButton;
+  private boolean jdField_a_of_type_Boolean;
   private TextView b;
   private TextView c;
+  private TextView d;
   
   public AEEditorTopBar(Context paramContext)
   {
@@ -40,25 +44,28 @@ public class AEEditorTopBar
   
   private void a(Context paramContext)
   {
-    paramContext = View.inflate(paramContext, 2131558538, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131362178));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362179));
-    this.b = ((TextView)paramContext.findViewById(2131362181));
-    this.c = ((TextView)paramContext.findViewById(2131362180));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_Boolean = bnzc.a();
+    paramContext = View.inflate(paramContext, 2131558562, this);
+    this.jdField_a_of_type_DovComQqImAeViewAECompoundButton = ((AECompoundButton)paramContext.findViewById(2131362246));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362247));
+    this.b = ((TextView)paramContext.findViewById(2131362250));
+    this.c = ((TextView)paramContext.findViewById(2131362248));
+    this.d = ((TextView)paramContext.findViewById(2131362249));
+    this.jdField_a_of_type_DovComQqImAeViewAECompoundButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.c.setOnClickListener(this);
+    this.d.setOnClickListener(this);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_DovComQqImAeViewAECompoundButton.setVisibility(0);
     this.c.setVisibility(0);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.jdField_a_of_type_DovComQqImAeViewAECompoundButton.setVisibility(4);
     this.c.setVisibility(4);
   }
   
@@ -67,30 +74,37 @@ public class AEEditorTopBar
     switch (paramView.getId())
     {
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Blpv == null);
-      this.jdField_a_of_type_Blpv.aS_();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    } while (this.jdField_a_of_type_Blpv == null);
-    this.jdField_a_of_type_Blpv.aT_();
+      if (this.jdField_a_of_type_Boiu != null)
+      {
+        this.jdField_a_of_type_Boiu.aQ_();
+        continue;
+        if (this.jdField_a_of_type_Boiu != null) {
+          this.jdField_a_of_type_Boiu.aR_();
+        }
+      }
+    }
   }
   
   public void setLeftButtonAsBackArray()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_DovComQqImAeViewAECompoundButton.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.c.setText(alud.a(2131689803));
+    this.c.setVisibility(0);
+    this.d.setVisibility(4);
+    this.c.setText(anni.a(2131689700));
   }
   
   public void setStyleAsCancelAndFinish()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.c.setText(alud.a(2131689800));
+    this.jdField_a_of_type_DovComQqImAeViewAECompoundButton.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.c.setVisibility(4);
+    this.d.setVisibility(0);
+    this.d.setText(anni.a(2131689692));
   }
   
   public void setTitle(String paramString)
@@ -98,14 +112,14 @@ public class AEEditorTopBar
     this.b.setText(paramString);
   }
   
-  public void setTopBarClickListener(blpv paramblpv)
+  public void setTopBarClickListener(boiu paramboiu)
   {
-    this.jdField_a_of_type_Blpv = paramblpv;
+    this.jdField_a_of_type_Boiu = paramboiu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar
  * JD-Core Version:    0.7.0.1
  */

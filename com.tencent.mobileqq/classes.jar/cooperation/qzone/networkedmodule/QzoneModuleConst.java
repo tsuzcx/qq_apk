@@ -2,7 +2,7 @@ package cooperation.qzone.networkedmodule;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bjmm;
+import bmav;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.io.File;
@@ -37,15 +37,15 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_AR_TAR_ENGINE_SO_MD5 = "lib_tar_so_md5";
   public static final String QZONE_MODULE_AR_TAR_ENGINE_SO_VERSION = "version";
   public static final String QZONE_MODULE_AR_TAR_ENGINE_SO_VERSION_DEFAULT = "1";
-  public static final String QZONE_MODULE_CONFIG_ANTISHAKE_SO_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20170410195647_4697/pictureMarkerSo.so";
+  public static final String QZONE_MODULE_CONFIG_ANTISHAKE_SO_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20170410195647_4697/pictureMarkerSo.so";
   public static final String QZONE_MODULE_CONFIG_LIVE_AUDIO_DEFAULT_MD5 = "73bf723be02a6b71b17a0d47888c4e04";
-  public static final String QZONE_MODULE_CONFIG_LIVE_AUDIO_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20160803113848_6187/qzoneliveaudio.jar";
+  public static final String QZONE_MODULE_CONFIG_LIVE_AUDIO_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20160803113848_6187/qzoneliveaudio.jar";
   public static final String QZONE_MODULE_CONFIG_LIVE_FILTERBUNDLE_DEFAULT_MD5 = "b11e343a1096d3b6331b32e2b1bada88";
-  public static final String QZONE_MODULE_CONFIG_LIVE_FILTERBUNDLE_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20171105201346_3221/filterengine.bundle_qzone_7.6.jar";
+  public static final String QZONE_MODULE_CONFIG_LIVE_FILTERBUNDLE_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20171105201346_3221/filterengine.bundle_qzone_7.6.jar";
   public static final String QZONE_MODULE_CONFIG_LIVE_PTU_DM_DEFAULT_MD5 = "1cdaf8508cc7343f796ef21b5e65c2b6";
   public static final String QZONE_MODULE_CONFIG_LIVE_PTU_DM_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20191226133414_2167/res1_yt_facedetect.so";
   public static final String QZONE_MODULE_CONFIG_LIVE_SEG_AND_HAND_DETECT_DEFAULT_MD5 = "586bcad62ef42fc352676e485dc38d96";
-  public static final String QZONE_MODULE_CONFIG_LIVE_SEG_AND_HAND_DETECT_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20180110162244_5632/res1_yt_seg_and_hand.so";
+  public static final String QZONE_MODULE_CONFIG_LIVE_SEG_AND_HAND_DETECT_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20180110162244_5632/res1_yt_seg_and_hand.so";
   public static final String QZONE_MODULE_CONFIG_MODULE_CLASS_IDS = "module_class_ids";
   public static final String QZONE_MODULE_CONFIG_MODULE_FILE_LENGTH = "module_file_length";
   public static final String QZONE_MODULE_CONFIG_MODULE_ID = "module_id";
@@ -57,11 +57,11 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_CONFIG_MODULE_VERSION = "module_version";
   public static final String QZONE_MODULE_CONFIG_NETWORKED_MODULE = "qzone_networked_modules";
   public static final String QZONE_MODULE_CONFIG_PTU_ALGORITHM_JNI_SO_DEFAULT_MD5 = "3dcc7162dd785eb4bfa4fb6689efd7e9";
-  public static final String QZONE_MODULE_CONFIG_PTU_ALGORITHM_JNI_SO_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20170117162505_7464/libalgo_rithm_jni.so";
+  public static final String QZONE_MODULE_CONFIG_PTU_ALGORITHM_JNI_SO_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20170117162505_7464/libalgo_rithm_jni.so";
   public static final String QZONE_MODULE_CONFIG_PTU_ALGORITHM_JNI_SO_MD5_SECONDARY_KEY = "libAlgorithmJniSoMD5";
   public static final String QZONE_MODULE_CONFIG_PTU_ALGORITHM_JNI_SO_URL_SECONDARY_KEY = "libAlgorithmJniSoUrl";
   public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_DEFAULT_MD5 = "4d5cfa42acc64e9fadecff38bdde6cbd";
-  public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20170117164907_3213/filterengine.bundle.jar";
+  public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20170117164907_3213/filterengine.bundle.jar";
   public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_MD5_SECONDARY_KEY = "libFilterEngineJarMD5";
   public static final String QZONE_MODULE_CONFIG_PTU_FILTER_ENGINE_JAR_URL_SECONDARY_KEY = "libFilterEngineJarUrl";
   public static final String QZONE_MODULE_CONFIG_SUPER_RESOLUTION_JAR_64_DEFAULT_MD5 = "f12dae831c929686229d1666fffcb012";
@@ -88,7 +88,7 @@ public class QzoneModuleConst
   public static final int QZONE_MODULE_MAX_CRASH_COUNT = 2;
   private static final String QZONE_MODULE_OSKPLAYER_JAR_CRASH_KEY_WORDS_0 = "Exo2MediaPlayer";
   public static final String QZONE_MODULE_OSK_PLAYER = "osk_exoplayer2_bundle.jar";
-  public static final String QZONE_MODULE_OSK_PLAYER_CONFIG_DEFAULT = "http://d3g.qq.com/sngapp/app/update/20170728155227_6686/osk_exoplayer2_bundle.jar|f9d35ec8e90af758354bb174abc12df4";
+  public static final String QZONE_MODULE_OSK_PLAYER_CONFIG_DEFAULT = "https://d3g.qq.com/sngapp/app/update/20170728155227_6686/osk_exoplayer2_bundle.jar|f9d35ec8e90af758354bb174abc12df4";
   public static final String QZONE_MODULE_OSK_PLAYER_CONFIG_SECONDARY_KEY = "libOskPlayerJarConfig";
   public static final String QZONE_MODULE_PIC_BEAUTY_SO = "libandroidndkbeauty.so";
   public static final String QZONE_MODULE_PTU_ALGORITHM_JNI_SO = "libalgo_rithm_jni.so";
@@ -96,7 +96,7 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_SUPER_RESOLUTION_JAR = "libsuperresolution.jar";
   public static final String QZONE_MODULE_TAGCLASSIFY_DEFAULT_MD5 = "6b5338544a7c9baff2af16413d3d5119";
   public static final String QZONE_MODULE_TAGCLASSIFY_DEFAULT_MD5_SECONDARY_KEY = "photo_classify_file_md5";
-  public static final String QZONE_MODULE_TAGCLASSIFY_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20180329102523_4877/pic_tag_sdk.jar";
+  public static final String QZONE_MODULE_TAGCLASSIFY_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20180329102523_4877/pic_tag_sdk.jar";
   public static final String QZONE_MODULE_TAGCLASSIFY_DEFAULT_URL_SECONDARY_KEY = "photo_tag_classify_file";
   public static final String QZONE_MODULE_TAGCLASSIFY_SO = "tag_classify.jar";
   public static final String QZONE_MODULE_TEST_ID = "test_log.dex";
@@ -111,7 +111,7 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_VOICE_SHUOSHUO_ANIMATION = "frameanimation.jar";
   public static final String QZONE_MODULE_XMP_CORE_DEFAULT_MD5 = "a0c5ac44fc2d0e35187f0c1479db48b2";
   public static final String QZONE_MODULE_XMP_CORE_DEFAULT_MD5_SECONDARY_KEY = "XMPcoreJarMD5";
-  public static final String QZONE_MODULE_XMP_CORE_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20171220130606_8640/xmpcore.jar";
+  public static final String QZONE_MODULE_XMP_CORE_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20171220130606_8640/xmpcore.jar";
   public static final String QZONE_MODULE_XMP_CORE_DEFAULT_URL_SECONDARY_KEY = "xmpcoreUrl";
   public static final String QZONE_MODULE_XMP_CORE_JAR = "xmpcore.jar";
   private static final String QZONE_MOMULE_CRASH_TAG = "QzoneModuleCrash";
@@ -145,9 +145,9 @@ public class QzoneModuleConst
     }
   }
   
-  public static String getModuleSavePath(Context paramContext, bjmm parambjmm)
+  public static String getModuleSavePath(Context paramContext, bmav parambmav)
   {
-    return new File(paramContext.getApplicationContext().getDir(QZONE_NETWORKED_MODULE_FILE_PATH, 0), parambjmm.e.toLowerCase() + "_" + parambjmm.a).getAbsolutePath();
+    return new File(paramContext.getApplicationContext().getDir(QZONE_NETWORKED_MODULE_FILE_PATH, 0), parambmav.e.toLowerCase() + "_" + parambmav.a).getAbsolutePath();
   }
   
   private static String getSpKeyById(String paramString)

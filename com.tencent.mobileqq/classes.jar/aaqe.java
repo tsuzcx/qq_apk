@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class aaqe
-  implements DialogInterface.OnKeyListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   aaqe(aaqa paramaaqa) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onGlobalLayout()
   {
-    return (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0);
+    int i = this.a.d.getMeasuredWidth();
+    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - bgme.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
+    this.a.c.setMaxWidth(i);
+    this.a.c.setText(new bdnf(this.a.jdField_a_of_type_Besj.h, 16).a());
   }
 }
 

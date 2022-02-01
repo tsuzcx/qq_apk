@@ -1,30 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.guide.GuideHelper;
-import java.lang.ref.WeakReference;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.qphone.base.util.QLog;
 
 public class mfv
-  implements View.OnClickListener
+  implements mru
 {
-  public mfv(EffectSettingUi paramEffectSettingUi) {}
+  public mfv(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onClick(View paramView)
+  private void b()
   {
-    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1007L);
-    this.a.b(-1007L, true);
-    meb.b();
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().ac) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().ad)) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramView = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      paramView.a.a(-1007L, paramView, 99, 0);
+      VideoMsgTools.a(this.a, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g), bool, false);
+      return;
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "MultiVideoMembersClickListener , Uin = " + paramLong + " , videoScr = " + paramInt1 + " , isNeedRequest " + paramBoolean + " , positon = " + paramInt2);
+    }
+    if ((paramInt2 == 7) && (paramBoolean)) {
+      b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mfv
  * JD-Core Version:    0.7.0.1
  */

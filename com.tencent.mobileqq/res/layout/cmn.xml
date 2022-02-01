@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/mih" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.utils.QCircleSlidBottomView android:orientation="vertical" android:id="@id/n8e" android:background="#66000000" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/mie" app:qcircleBottomPaddingHeight="69.0dip" app:qcircleControllerHeight="68.0dip" app:qcircleControllerImgWidth="56.0dip" app:qcircleShowRate="0.5" app:qcircleTopHeight="50.0dip">
+        <FrameLayout android:id="@id/n8b" android:background="@drawable/dqp" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/n8c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="68.0dip" />
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/n8f" android:layout_width="56.0dip" android:layout_height="16.0dip" android:layout_marginTop="7.0dip" android:src="@drawable/a4w" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            <include android:id="@id/mij" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="29.0dip" layout="@layout/cmo" />
+            <include android:id="@id/b42" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="180.0dip" layout="@layout/eu" />
+        </FrameLayout>
+    </com.tencent.biz.qqcircle.utils.QCircleSlidBottomView>
+    <include android:id="@id/mie" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/cmm" />
+    <com.tencent.biz.qqcircle.widgets.QCircleRocketView android:id="@id/mig" android:layout_width="115.0dip" android:layout_height="210.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="-22.0dip" android:layout_above="@id/mie" android:layout_alignParentRight="true" />
+</RelativeLayout>

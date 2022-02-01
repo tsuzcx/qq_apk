@@ -1,16 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 class akzt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  akzt(akzr paramakzr, akzz paramakzz) {}
+  akzt(akyh paramakyh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Akzz != null) {
-      this.jdField_a_of_type_Akzz.a(this.jdField_a_of_type_Akzr.a(), "sc.xy_alert_show_success.local", "{\"confirm\":1}");
-    }
+    Intent localIntent = new Intent(akyh.a(this.a), GuideBindPhoneActivity.class);
+    localIntent.putExtra("fromKeyForContactBind", 4);
+    akyh.a(this.a).startActivity(localIntent);
+    akyh.a(this.a).getSharedPreferences("contact_bind_info" + akyh.a(this.a).app.getAccount(), 0).edit().putBoolean("key_show_contact_banner", false).commit();
+    this.a.a(16, 0);
+    akyh.a(this.a).removeMessages(11);
+    bcst.a(akyh.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 13, 0, "", "", "", "");
+    bcst.b(akyh.a(this.a).app, "CliOper", "", "", "0X80053D9", "0X80053D9", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,17 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import android.widget.TextView;
-import rdm;
-import riw;
+import sek;
 
 public class VideoFeedsVideoUIDelegate$7
   implements Runnable
 {
-  public VideoFeedsVideoUIDelegate$7(riw paramriw, TextView paramTextView) {}
+  public VideoFeedsVideoUIDelegate$7(sek paramsek, int paramInt, String paramString) {}
   
   public void run()
   {
-    rdm.a(this.a, 8);
+    sek.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

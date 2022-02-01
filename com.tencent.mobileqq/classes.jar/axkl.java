@@ -1,51 +1,72 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class axkl
-  extends alwx
+class axkl
+  implements axkz
 {
-  public axkl(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  axkl(axkk paramaxkk) {}
   
-  public void a(long paramLong1, int paramInt, long paramLong2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (ReceiptMessageDetailFragment.c(this.a) == paramLong1)
-    {
-      if (paramInt != 0) {
-        break label109;
-      }
-      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c succs with readtime: " + paramLong2);
-      if (paramLong2 > 0L) {
-        ReceiptMessageDetailFragment.a(this.a, 1, 1, true);
-      }
-      if (this.a.isAdded())
-      {
-        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = this.a;
-        if (paramLong2 <= 0L) {
-          break label104;
-        }
-        paramInt = 1;
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, true);
-      }
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+    boolean bool = true;
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i(axkk.a(this.a), 2, "errorCode:   " + paramInt);
     }
-    label104:
-    label109:
-    do
+    if (paramArrayOfByte != null) {
+      paramBundle = new oidb_0xada.RspBody();
+    }
+    try
     {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.i(axkk.a(this.a), 2, "err_msg:   " + paramBundle.err_msg.get());
+      }
+      if (paramBundle.busi_buf.has())
+      {
+        paramArrayOfByte = new FeedsProtocol.GetMediaDetailRsp();
+        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+        if (QLog.isColorLevel()) {
+          QLog.i(axkk.a(this.a), 2, "GetMediaDetailRsp  error_code:   " + paramArrayOfByte.err_code.get() + ",err_msg:     " + paramArrayOfByte.err_msg.get().toStringUtf8() + ",total:  " + paramArrayOfByte.total.get());
+        }
+        paramBundle = this.a;
+        if (paramArrayOfByte.is_end.get() == 0) {
+          break label309;
+        }
+      }
+      for (;;)
+      {
+        paramBundle.jdField_a_of_type_Boolean = bool;
+        this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
+        axkk.a(this.a, paramArrayOfByte);
+        axkk.a(this.a, axkk.a(this.a) + 10);
+        paramBundle = this.a.jdField_a_of_type_Axjx;
+        paramInt = i;
+        if (paramArrayOfByte.err_code.has()) {
+          paramInt = paramArrayOfByte.err_code.get();
+        }
+        paramBundle.a(1, paramInt);
+        return;
+        label309:
+        bool = false;
+      }
       return;
-      paramInt = 0;
-      break;
-      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c fail with reply code: " + paramInt);
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
-    } while (!this.a.isAdded());
-    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(20);
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axkl
  * JD-Core Version:    0.7.0.1
  */

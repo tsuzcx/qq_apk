@@ -1,40 +1,83 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class anhw
-  implements MiniAppLauncher.MiniAppLaunchListener
+  extends annh
 {
-  public anhw(QRScanEntryView paramQRScanEntryView, String paramString, Activity paramActivity) {}
-  
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  protected void a()
   {
-    if (paramBoolean)
+    super.a();
+    float f2 = MemoryManager.a().a();
+    float f1;
+    if (MagnifierSDK.a().a().d > 0.0F)
     {
-      paramBundle = new Intent();
-      paramBundle.putExtra("detectType", 2);
-      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
-      this.jdField_a_of_type_AndroidAppActivity.setResult(13, paramBundle);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
-      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, null);
-      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, 0L);
+      f1 = MagnifierSDK.a().a().d;
+      if ((f2 >= f1) && (MagnifierSDK.a().a().b) && (this.a.a == null))
+      {
+        MemoryManager.a().a(2L);
+        System.exit(-1);
+      }
+      if (this.d != GuardManager.c * 50 - 1) {
+        break label236;
+      }
+      l = MemoryManager.a(Process.myPid());
+      localHashMap = new HashMap();
+      localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
+      localHashMap.put("ramSize", String.valueOf(bgln.d() / 1024L));
+      localHashMap.put("heapSize", String.valueOf(Runtime.getRuntime().totalMemory() / 1024L));
+      localHashMap.put("maxHeapSize", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
+      this.a.a("GM_reborn", localHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuardManager", 2, "suicide to free memory! suicide_factor=" + GuardManager.c);
+      }
+    }
+    label236:
+    while (((this.d != GuardManager.c * 50) && (this.d != GuardManager.c * 50 + 1)) || (this.a.a != null))
+    {
+      long l;
+      HashMap localHashMap;
       return;
+      f1 = 0.95F;
+      break;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 1 false " + this.jdField_a_of_type_JavaLangString);
+    System.exit(-1);
+  }
+  
+  protected void a(String paramString)
+  {
+    this.a.a(3, paramString);
+  }
+  
+  protected void b()
+  {
+    this.a.a(4, "fake_p_msg");
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.c(false);
+    if (!"trick_p_msg".equals(paramString)) {
+      this.a.a(false, new String[] { paramString });
     }
-    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, this.jdField_a_of_type_JavaLangString);
-    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, System.currentTimeMillis());
-    ((anfy)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.a).b(false);
+    long l = MemoryManager.a(Process.myPid());
+    if (annf.a().a(l) != 2) {
+      this.a.c();
+    }
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(2, annf.a().a, 0L);
+    CoreService.stopCoreService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anhw
  * JD-Core Version:    0.7.0.1
  */

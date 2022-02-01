@@ -1,6 +1,10 @@
+import com.tencent.mobileqq.music.SongInfo;
+
 public abstract interface azht
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(SongInfo paramSongInfo, boolean paramBoolean);
 }
 
 

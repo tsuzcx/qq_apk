@@ -11,9 +11,9 @@ import android.content.SharedPreferences.Editor;
 import android.graphics.drawable.Drawable;
 import android.service.wallpaper.WallpaperService;
 import android.service.wallpaper.WallpaperService.Engine;
-import bdwz;
-import bdxa;
-import bdxb;
+import bhdv;
+import bhdw;
+import bhdx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -22,9 +22,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class VipWallpaperService
   extends WallpaperService
 {
-  private bdxa a = new bdxa(null);
+  private bhdw a = new bhdw(null);
   
-  public static SharedPreferences a(Context paramContext)
+  static SharedPreferences a(Context paramContext)
   {
     return paramContext.getApplicationContext().getSharedPreferences("qqvip_wallpaper", 4);
   }
@@ -41,41 +41,32 @@ public final class VipWallpaperService
     return null;
   }
   
-  public static bdxb a(Context paramContext, boolean paramBoolean)
+  public static bhdx a(Context paramContext, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (bdxa.a(paramContext))) {
+    if ((!paramBoolean) || (bhdw.a(paramContext))) {
       return a(a(paramContext));
     }
-    return new bdxb();
+    return new bhdx();
   }
   
-  public static bdxb a(SharedPreferences paramSharedPreferences)
+  public static bhdx a(SharedPreferences paramSharedPreferences)
   {
-    return new bdxb(paramSharedPreferences.getString("wallpaper_item_id", ""), paramSharedPreferences.getString("wallpaper_path_img", ""), paramSharedPreferences.getString("wallpaper_path_video", ""));
-  }
-  
-  public static File a(Context paramContext)
-  {
-    paramContext = new File(paramContext.getFilesDir(), "vas/wallpaper");
-    if (!paramContext.exists()) {
-      paramContext.mkdirs();
-    }
-    return paramContext;
+    return new bhdx(paramSharedPreferences.getString("wallpaper_item_id", ""), paramSharedPreferences.getString("wallpaper_path_img", ""), paramSharedPreferences.getString("wallpaper_path_video", ""));
   }
   
   @SuppressLint({"ApplySharedPref"})
-  public static void a(Activity paramActivity, bdxb parambdxb, AtomicBoolean paramAtomicBoolean)
+  public static void a(Activity paramActivity, bhdx parambhdx, AtomicBoolean paramAtomicBoolean)
   {
-    QLog.i("VipWallpaper", 1, "set wallpaper = " + parambdxb.toString());
-    a(paramActivity).edit().putString("wallpaper_item_id", parambdxb.a).putString("wallpaper_path_img", parambdxb.b).putString("wallpaper_path_video", parambdxb.c).commit();
-    if ((parambdxb.a != null) && (!parambdxb.a.equals("0"))) {
+    QLog.i("VipWallpaper", 1, "set wallpaper = " + parambhdx.toString());
+    a(paramActivity).edit().putString("wallpaper_item_id", parambhdx.a).putString("wallpaper_path_img", parambhdx.b).putString("wallpaper_path_video", parambhdx.c).commit();
+    if ((parambhdx.a != null) && (!parambhdx.a.equals("0"))) {
       a(paramActivity, paramAtomicBoolean);
     }
   }
   
   private static void a(Activity paramActivity, AtomicBoolean paramAtomicBoolean)
   {
-    if (!bdxa.a(paramActivity))
+    if (!bhdw.a(paramActivity))
     {
       localIntent = new Intent("android.service.wallpaper.CHANGE_LIVE_WALLPAPER");
       localIntent.putExtra("android.service.wallpaper.extra.LIVE_WALLPAPER_COMPONENT", new ComponentName(paramActivity, VipWallpaperService.class));
@@ -93,6 +84,15 @@ public final class VipWallpaperService
     paramAtomicBoolean.set(false);
   }
   
+  private static File b(Context paramContext)
+  {
+    paramContext = new File(paramContext.getFilesDir(), "vas/wallpaper");
+    if (!paramContext.exists()) {
+      paramContext.mkdirs();
+    }
+    return paramContext;
+  }
+  
   public void onCreate()
   {
     super.onCreate();
@@ -102,7 +102,7 @@ public final class VipWallpaperService
   
   public WallpaperService.Engine onCreateEngine()
   {
-    return new bdwz(this, null);
+    return new bhdv(this, null);
   }
   
   public void onDestroy()
@@ -114,7 +114,7 @@ public final class VipWallpaperService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.VipWallpaperService
  * JD-Core Version:    0.7.0.1
  */

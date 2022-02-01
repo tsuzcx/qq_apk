@@ -1,36 +1,15 @@
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bncd
-  implements Comparator<RecentUser>
+class bncd
+  implements View.OnTouchListener
 {
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  bncd(bnbz parambnbz) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    long l2 = Math.max(paramRecentUser1.lastmsgtime, paramRecentUser1.lastmsgdrafttime);
-    long l3 = Math.max(paramRecentUser2.lastmsgtime, paramRecentUser2.lastmsgdrafttime);
-    long l1 = l2;
-    if (paramRecentUser1.lastmsgtime <= 0L)
-    {
-      l1 = l2;
-      if (paramRecentUser1.lastmsgdrafttime <= 0L) {
-        l1 = Math.max(l2, paramRecentUser1.opTime);
-      }
-    }
-    l2 = l3;
-    if (paramRecentUser2.lastmsgtime <= 0L)
-    {
-      l2 = l3;
-      if (paramRecentUser2.lastmsgdrafttime <= 0L) {
-        l2 = Math.max(l3, paramRecentUser2.opTime);
-      }
-    }
-    if (l1 > l2) {
-      return -1;
-    }
-    if (l1 < l2) {
-      return 1;
-    }
-    return 0;
+    return true;
   }
 }
 

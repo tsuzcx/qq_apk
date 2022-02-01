@@ -1,38 +1,41 @@
-import android.os.Handler;
-import com.tencent.biz.qqcircle.report.QCircleLpReportDc05504.1;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-public class tzv
+final class tzv
+  extends aoqo
 {
-  public static void a(String paramString, int paramInt, long paramLong)
+  tzv(anry paramanry, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
+  
+  public int a()
   {
-    a(paramString, paramInt, paramLong, 0L, "", "", "", "", "");
+    return 4;
   }
   
-  public static void a(String paramString, int paramInt, long paramLong1, long paramLong2)
+  public void a(Object paramObject)
   {
-    a(paramString, paramInt, paramLong1, paramLong2, "", "", "", "", "");
+    if (this.jdField_a_of_type_Anry != null) {
+      this.jdField_a_of_type_Anry.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    }
+    tzo.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
   
-  public static void a(String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
   {
-    a(paramString1, paramInt, paramLong1, paramLong2, "", "", "", "", paramString2);
+    if (this.jdField_a_of_type_Anry != null) {
+      this.jdField_a_of_type_Anry.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      tzo.a(this.jdField_a_of_type_AndroidContentContext, 2131694617);
+    }
   }
   
-  public static void a(String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    int i = tzy.a().a();
-    int j = tzy.a().b();
-    uab.a().a().post(new QCircleLpReportDc05504.1(paramString1, paramInt, paramLong1, paramLong2, i, j, paramString2, paramString3, paramString4, paramString5, paramString6));
-  }
-  
-  private static int b()
-  {
-    return 5504;
-  }
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzv
  * JD-Core Version:    0.7.0.1
  */

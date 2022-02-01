@@ -1,27 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import java.util.Observable;
 
 public class bfpf
-  implements DialogInterface.OnCancelListener
+  extends Observable
 {
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  private static bfpf a;
   
-  public bfpf(bfox parambfox, String paramString1, String paramString2)
+  public static bfpf a()
   {
-    this.jdField_a_of_type_JavaLangString = bfmy.a(paramString1, "NEWYYB");
-    this.b = paramString2;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bfpf();
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void setChanged()
   {
-    this.jdField_a_of_type_Bfox.a(this.b);
-    bfmy.a("720", this.jdField_a_of_type_JavaLangString, this.b);
+    super.setChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfpf
  * JD-Core Version:    0.7.0.1
  */

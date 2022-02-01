@@ -1,26 +1,51 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.api.banner.letter.GdtBannerViewWithLetterStyle;
+import com.tencent.gdtad.api.banner.rectangle.GdtBannerViewWithRectangleStyle;
+import java.lang.ref.WeakReference;
 
 public final class aclj
-  implements DialogInterface.OnClickListener
 {
-  public aclj(QQAppInterface paramQQAppInterface, aclo paramaclo, long paramLong, Context paramContext, acln paramacln) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static int a(int paramInt1, int paramInt2)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Aclo.jdField_a_of_type_Int, this.jdField_a_of_type_Aclo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aclo.jdField_c_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_Aclo.jdField_a_of_type_Boolean) {
-      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
+    if (paramInt1 == 0) {
+      return Double.valueOf(1.0D * paramInt2 / 1026.0D * 249.0D).intValue();
     }
-    this.jdField_a_of_type_Aclo.b = false;
-    this.jdField_a_of_type_Aclo.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Aclo.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acln, this.jdField_a_of_type_Aclo);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    acqy.d("GdtBannerViewBuilder", "getHeight error");
+    return -2147483648;
+  }
+  
+  public static acli a(aclh paramaclh)
+  {
+    if ((paramaclh == null) || (!paramaclh.a()) || (!paramaclh.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a()))
+    {
+      acqy.d("GdtBannerViewBuilder", "build error");
+      return null;
+    }
+    Object localObject;
+    if (paramaclh.jdField_a_of_type_Int == 0) {
+      if (paramaclh.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd.isBannerWithRectangleStyle()) {
+        localObject = new GdtBannerViewWithRectangleStyle((Context)paramaclh.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramaclh.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
+      }
+    }
+    for (;;)
+    {
+      if ((localObject != null) && (((acli)localObject).a() != null) && (acli.a != null))
+      {
+        ((acli)localObject).a().setOnTouchListener(new aclk((acli)localObject));
+        ((acli)localObject).a().setOnClickListener(new acll((acli)localObject, paramaclh));
+      }
+      if (localObject != null) {
+        ((acli)localObject).setSize(paramaclh.b, paramaclh.c);
+      }
+      AdReporterForAnalysis.reportForBanner((Context)paramaclh.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramaclh.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+      return localObject;
+      localObject = new GdtBannerViewWithLetterStyle((Context)paramaclh.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramaclh.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+      continue;
+      localObject = null;
     }
   }
 }

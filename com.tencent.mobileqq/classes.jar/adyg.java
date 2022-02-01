@@ -1,106 +1,124 @@
-import android.graphics.drawable.Animatable;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import java.util.List;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class adyg
-  extends RecyclerView.Adapter<adye>
+  extends BaseAdapter
+  implements aobv
 {
-  private int jdField_a_of_type_Int;
-  List<adyf> jdField_a_of_type_JavaUtilList;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private boolean jdField_a_of_type_Boolean;
   
-  public adyg(List<adyf> paramList)
+  public adyg(ContactBindedActivity paramContactBindedActivity, Context paramContext)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-    this.jdField_a_of_type_Int = azmk.c();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844946);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  private void a(int paramInt)
+  public PhoneContact a(int paramInt)
   {
-    adyf localadyf = a(paramInt);
-    if (!localadyf.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
+    return (PhoneContact)ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).get(paramInt);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (a(localadyf, paramInt, bool)) {
-        adyd.a(this.jdField_a_of_type_Adyd).a(localadyf.jdField_a_of_type_Int);
+      if ((ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity) != null) && (ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size() > 0))
+      {
+        PhoneContact localPhoneContact = (PhoneContact)ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).get(ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size() - 1);
+        ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity, localPhoneContact, false);
       }
+      this.jdField_a_of_type_Boolean = false;
       return;
     }
+    this.jdField_a_of_type_Boolean = true;
+    super.notifyDataSetChanged();
   }
   
-  public adye a(ViewGroup paramViewGroup, int paramInt)
+  public int getCount()
   {
-    paramViewGroup = adyd.a(this.jdField_a_of_type_Adyd).getLayoutInflater().inflate(2131562651, paramViewGroup, false);
-    return new adye(this.jdField_a_of_type_Adyd, paramViewGroup);
+    return ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size();
   }
   
-  public adyf a(int paramInt)
+  public long getItemId(int paramInt)
   {
-    return (adyf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return 0L;
   }
   
-  public void a(adye paramadye, int paramInt)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    adyf localadyf = a(paramInt);
-    if (localadyf.jdField_a_of_type_Boolean)
-    {
-      paramadye.b.setVisibility(0);
-      ViewCompat.setAccessibilityDelegate(paramadye.jdField_a_of_type_ComTencentImageURLImageView, new adyh(this));
-      paramadye.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(azmf.c[paramInt]);
-      adyd.a(this.jdField_a_of_type_Adyd, paramadye.jdField_a_of_type_ComTencentImageURLImageView, localadyf);
-      if (!localadyf.b) {
-        break label134;
-      }
-      paramadye.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((Animatable)paramadye.jdField_a_of_type_AndroidViewView.getBackground()).start();
+    Bitmap localBitmap = null;
+    PhoneContact localPhoneContact = a(paramInt);
+    if (paramView == null) {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity.getLayoutInflater().inflate(2131559281, null);
     }
     for (;;)
     {
-      paramadye.itemView.setOnClickListener(new adyj(this, paramInt));
-      return;
-      paramadye.b.setVisibility(8);
-      ViewCompat.setAccessibilityDelegate(paramadye.jdField_a_of_type_ComTencentImageURLImageView, new adyi(this));
-      break;
-      label134:
-      paramadye.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      ((Animatable)paramadye.jdField_a_of_type_AndroidViewView.getBackground()).stop();
+      paramView.setTag(localPhoneContact);
+      ImageView localImageView = (ImageView)paramView.findViewById(2131366164);
+      Object localObject = localBitmap;
+      if (paramInt == getCount() - 1)
+      {
+        localObject = localBitmap;
+        if (this.jdField_a_of_type_Boolean) {
+          localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        }
+      }
+      localImageView.setImageDrawable((Drawable)localObject);
+      localBitmap = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).a(11, localPhoneContact.unifiedCode);
+      localObject = localBitmap;
+      if (localBitmap == null)
+      {
+        ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).a(localPhoneContact.unifiedCode, 11, true, (byte)0);
+        localObject = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity);
+      }
+      localImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject));
+      if (AppSetting.c) {
+        localImageView.setContentDescription(localPhoneContact.name);
+      }
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
     }
   }
   
-  public boolean a(adyf paramadyf, int paramInt, boolean paramBoolean)
+  public void notifyDataSetChanged()
   {
-    if (this.jdField_a_of_type_Int == paramInt)
+    this.jdField_a_of_type_Boolean = false;
+    super.notifyDataSetChanged();
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if (ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity) == null) {}
+    for (;;)
     {
-      notifyItemChanged(paramInt);
-      return false;
-    }
-    paramadyf.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramadyf.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_Int >= 0) {
-        break label46;
+      return;
+      paramInt1 = 0;
+      while (paramInt1 < ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).getChildCount())
+      {
+        View localView = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).getChildAt(paramInt1);
+        Object localObject = localView.getTag();
+        if ((localObject != null) && ((localObject instanceof PhoneContact)) && (paramString.equals(((PhoneContact)localObject).unifiedCode))) {
+          ((ImageView)localView.findViewById(2131366164)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+        }
+        paramInt1 += 1;
       }
     }
-    for (this.jdField_a_of_type_Int = paramInt;; this.jdField_a_of_type_Int = paramInt)
-    {
-      notifyItemChanged(paramInt);
-      return true;
-      label46:
-      paramadyf = a(this.jdField_a_of_type_Int);
-      paramadyf.jdField_a_of_type_Boolean = false;
-      paramadyf.b = false;
-      notifyItemChanged(this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

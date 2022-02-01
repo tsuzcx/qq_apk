@@ -1,10 +1,13 @@
-public abstract interface bhsy<T>
+public abstract interface bhsy
+  extends bhni
 {
-  public abstract void a(T paramT);
+  public abstract int b();
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhsy
  * JD-Core Version:    0.7.0.1
  */

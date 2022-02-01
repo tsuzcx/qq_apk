@@ -1,26 +1,49 @@
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.1;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.2;
+import android.content.Context;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class aphs
-  extends altm
+class aphs
+  implements INetInfoHandler
 {
-  public aphs(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
+  aphs(aphi paramaphi) {}
   
-  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
+  public void onNetMobile2None()
   {
-    if (!this.a.a) {
-      return;
-    }
-    this.a.runOnUiThread(new BaseMsgBoxActivity.1.2(this, paramBoolean, paramString1, paramString2));
+    QLog.e("ark.download.module", 1, "onNetMobile2None");
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (!this.a.a) {
-      return;
+    QLog.e("ark.download.module", 1, new Object[] { "onNetMobile2Wifi", paramString });
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    QLog.e("ark.download.module", 1, new Object[] { "ark.dctrl.onNetNone2Mobile", paramString });
+    paramString = BaseActivity.sTopActivity;
+    if ((aphi.a(this.a)) && (!aphi.b(this.a)) && (paramString != null))
+    {
+      paramString = paramString.getString(2131690118);
+      if (aphi.a(this.a, paramString)) {
+        aphi.b(this.a, true);
+      }
     }
-    this.a.runOnUiThread(new BaseMsgBoxActivity.1.1(this, paramBoolean, paramString));
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    QLog.e("ark.download.module", 1, new Object[] { "onNetNone2Wifi", paramString });
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    QLog.e("ark.download.module", 1, new Object[] { "onNetWifi2Mobile", paramString });
+  }
+  
+  public void onNetWifi2None()
+  {
+    QLog.e("ark.download.module", 1, "onNetWifi2None");
   }
 }
 

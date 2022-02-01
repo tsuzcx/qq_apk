@@ -1,11 +1,38 @@
-public abstract interface aysq
-  extends aywd
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+
+public class aysq
 {
-  public abstract ayso a();
+  private volatile CameraPosition jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition;
+  private String jdField_a_of_type_JavaLangString;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public abstract void e();
+  public aysq(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
-  public abstract void f();
+  public CameraPosition a()
+  {
+    return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition;
+  }
+  
+  public void a(CameraPosition paramCameraPosition)
+  {
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition = paramCameraPosition;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(10);
+    localStringBuilder.append("mLastCameraPosition:").append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition);
+    localStringBuilder.append(" mMapZoomKey:").append(this.jdField_a_of_type_Boolean);
+    return localStringBuilder.toString();
+  }
 }
 
 

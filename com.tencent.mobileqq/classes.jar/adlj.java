@@ -1,41 +1,73 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
 public class adlj
-  implements CompoundButton.OnCheckedChangeListener
+  extends ClickableSpan
 {
-  public adlj(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public int a;
+  public Bundle a;
+  public String a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public adlj(AddRequestActivity paramAddRequestActivity, int paramInt, String paramString, Bundle paramBundle)
   {
-    if (AppSetting.c) {
-      NotifyPushSettingActivity.f(this.a).setContentDescription(alud.a(2131708045));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView != null) {}
+    for (paramView = paramView.getContext(); paramView == null; paramView = null) {
+      return;
     }
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131719121), "qqsetting_receivemsg_whenexit_key", paramBoolean);
-    SyncService.a(this.a, paramBoolean);
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
+    Object localObject;
+    switch (this.jdField_a_of_type_Int)
     {
-      i = 1;
-      if (!paramBoolean) {
-        break label107;
+    default: 
+      return;
+    case 1: 
+      bfup.a(paramView, this.jdField_a_of_type_AndroidOsBundle, 2);
+      return;
+    case 2: 
+      try
+      {
+        localObject = new Intent(paramView, DiscussionInfoCardActivity.class);
+        ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
+        paramView.startActivity((Intent)localObject);
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
       }
     }
-    label107:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    try
     {
-      azqs.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, paramCompoundButton, "", "", "");
+      localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_AndroidOsBundle.getString("key_profile_uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_pa", 25));
+      ((ProfileActivity.AllInOne)localObject).h = 109;
+      ((ProfileActivity.AllInOne)localObject).d = this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_chatability");
+      ProfileActivity.b(paramView, (ProfileActivity.AllInOne)localObject);
       return;
-      i = 0;
-      break;
     }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

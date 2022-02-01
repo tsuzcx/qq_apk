@@ -1,35 +1,67 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenDialogActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class mbm
-  extends BroadcastReceiver
 {
-  public mbm(SmallScreenDialogActivity paramSmallScreenDialogActivity) {}
+  private static String a = "QAVPreSetting";
+  private static String b = "BeautyFeature";
+  private static String c = "BeautyValue";
+  private static String d = "BeautyConfig";
+  private static String e = "BeautyResetGuide";
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static int a(String paramString)
   {
-    if (paramIntent.getAction().equals("tencent.video.v2q.SmallScreenState"))
-    {
-      int i = paramIntent.getIntExtra("SmallScreenState", -1);
-      long l = mwd.a(paramIntent);
-      boolean bool = mbt.c(this.a.a.getApp());
-      if ((AudioHelper.e()) || (bool)) {
-        QLog.w(SmallScreenDialogActivity.a(this.a), 1, "Receiver ACTION_SMALL_SCREEN_STATE, isFloatWindowOpAllowed[" + bool + "], state[" + i + "], seq[" + l + "]");
-      }
-      if (bool) {
-        this.a.finish();
+    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getInt(c + paramString, -1);
+  }
+  
+  public static String a(String paramString)
+  {
+    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getString(d + paramString, "");
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
+    paramString = e + paramString;
+    localSharedPreferences.edit().putInt(paramString, paramInt).apply();
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
+    paramString1 = d + paramString1;
+    localSharedPreferences.edit().putString(paramString1, paramString2).apply();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    paramString = BaseApplicationImpl.getApplication().getSharedPreferences(a, 0);
+    String str = b;
+    int j = paramString.getInt(str, -1);
+    int i = j;
+    if (j == -1) {
+      if (!lkw.d()) {
+        break label67;
       }
     }
+    label67:
+    for (i = 1;; i = 0)
+    {
+      paramString.edit().putInt(str, i).commit();
+      return i >= 1;
+    }
+  }
+  
+  public static int b(String paramString)
+  {
+    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getInt(e + paramString, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mbm
  * JD-Core Version:    0.7.0.1
  */

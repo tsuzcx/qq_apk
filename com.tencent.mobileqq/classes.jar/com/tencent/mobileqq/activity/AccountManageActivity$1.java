@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import alto;
+import anmw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,9 +15,9 @@ class AccountManageActivity$1
     {
       if (this.this$0.app != null)
       {
-        alto localalto = (alto)this.this$0.app.getManager(51);
-        if (localalto != null) {
-          AccountManageActivity.a(this.this$0, localalto.b(this.this$0.app.getCurrentAccountUin()));
+        anmw localanmw = (anmw)this.this$0.app.getManager(51);
+        if (localanmw != null) {
+          AccountManageActivity.a(this.this$0, localanmw.b(this.this$0.app.getCurrentAccountUin()));
         }
       }
       return;

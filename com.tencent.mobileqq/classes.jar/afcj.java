@@ -1,72 +1,37 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class afcj
-  implements bepk
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  afcj(afcg paramafcg) {}
+  afcg jdField_a_of_type_Afcg;
+  Button jdField_a_of_type_AndroidWidgetButton;
   
-  public void a(int paramInt)
+  public afcj(afci paramafci, View paramView, afcg paramafcg)
   {
-    if ((!afcg.a(this.a)) && (paramInt == 1)) {
-      this.a.a();
-    }
+    super(paramView);
+    this.jdField_a_of_type_Afcg = paramafcg;
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374702));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
-  public void a(int paramInt, float paramFloat)
+  public void onClick(View paramView)
   {
-    if (afcg.a(this.a)) {
-      this.a.a(paramInt, paramFloat);
+    if (this.jdField_a_of_type_Afcg != null) {
+      this.jdField_a_of_type_Afcg.a(paramView, getPosition());
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    afcg.a(this.a);
-    if (afcg.a(this.a)) {
-      this.a.b(paramInt);
-    }
-  }
-  
-  public void f()
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.an();
-    }
-    if (afcg.a(this.a)) {
-      this.a.f();
-    }
-    if (!alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      if (i != 0) {
-        alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", true);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-  }
-  
-  public void g()
-  {
-    if (afcg.a(this.a)) {
-      this.a.g();
-    }
-  }
-  
-  public void h()
-  {
-    if (afcg.a(this.a)) {
-      this.a.h();
-    }
-  }
-  
-  public void i()
-  {
-    afcg.b(this.a);
-    if (afcg.a(this.a)) {
-      this.a.i();
-    }
-    if (alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", false);
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
+      }
     }
   }
 }

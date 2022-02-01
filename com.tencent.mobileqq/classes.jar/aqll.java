@@ -1,41 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1;
-
-public class aqll
-  implements aruq
+final class aqll
 {
-  public aqll(FilePreviewActivity paramFilePreviewActivity) {}
+  public final int a;
+  public final long a;
+  public final Object a;
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b()
+  aqll(long paramLong, int paramInt, Object paramObject)
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.f)) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_Arca != null)
-    {
-      this.a.jdField_a_of_type_Arca.l = "3";
-      this.a.jdField_a_of_type_Arca.e = System.currentTimeMillis();
-    }
-    this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqll
  * JD-Core Version:    0.7.0.1
  */

@@ -1,109 +1,147 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-final class agjf
-  extends AsyncTask<Void, Void, Integer>
+public class agjf
 {
-  agjf(Context paramContext, int paramInt, URLDrawable paramURLDrawable, QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, PicMessageExtraData paramPicMessageExtraData) {}
+  private static agjf jdField_a_of_type_Agjf;
+  private SparseArray<agje> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  protected Integer a(Void... paramVarArgs)
+  private agje a(long paramLong, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly(false);
-    }
-    URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getTag() == null) {
-      return Integer.valueOf(1);
-    }
-    paramVarArgs = ((MessageForPic)this.jdField_a_of_type_ComTencentImageURLDrawable.getTag()).path;
-    paramVarArgs = agjb.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs);
-    if (paramVarArgs != null)
+    int i = this.jdField_a_of_type_AndroidUtilSparseArray.size() - 1;
+    while (i >= 0)
     {
-      agjb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, paramVarArgs);
-      return Integer.valueOf(2);
+      agje localagje = (agje)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if ((localagje != null) && (localagje.a(paramLong, paramBoolean))) {
+        return localagje;
+      }
+      i -= 1;
     }
-    paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
-    if (!baqn.b(paramVarArgs))
+    return null;
+  }
+  
+  public static agjf a()
+  {
+    if (jdField_a_of_type_Agjf == null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryUtils", 2, "addCustomEmotionFromDownLoad fail, has file");
+      if (jdField_a_of_type_Agjf == null) {
+        jdField_a_of_type_Agjf = new agjf();
       }
-      return Integer.valueOf(1);
+      return jdField_a_of_type_Agjf;
     }
-    File localFile = baqn.a(paramVarArgs);
-    if (localFile != null) {}
-    for (paramVarArgs = SecUtil.getFileMd5(localFile.getAbsolutePath());; paramVarArgs = null)
-    {
-      if ((paramVarArgs == null) || ("".equals(paramVarArgs)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOGalleryUtils", 2, "addCustomEmotionFromDownLoad fail, md5 is null");
-        }
-        return Integer.valueOf(1);
-      }
-      bdhb.c(alof.bi + ".nomedia");
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      int i;
-      StringBuilder localStringBuilder;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData != null) && (this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.isDiyDouTu()))
-      {
-        i = 1;
-        if (i == 0) {
-          break label364;
-        }
-        localStringBuilder = new StringBuilder().append("_diydoutu@");
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId)) {
-          break label353;
-        }
-        str1 = "0";
-      }
-      label266:
-      label353:
-      label364:
-      for (String str1 = str1;; str1 = "")
-      {
-        paramVarArgs = alof.bi + amqy.a(str2) + paramVarArgs + str1 + ".jpg";
-        try
-        {
-          bdhb.a(localFile, new File(paramVarArgs));
-          return Integer.valueOf(agjb.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData));
-        }
-        catch (Exception paramVarArgs)
-        {
-          QLog.d("AIOGalleryUtils", 1, paramVarArgs, new Object[0]);
-          return Integer.valueOf(1);
-        }
-        i = 0;
-        break;
-        str1 = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId;
-        break label266;
-      }
+    finally {}
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "mapUniSeqId:: newSeq -> " + paramLong1 + ", originSeq -> " + paramLong2 + ", id -> " + paramInt);
+    }
+    agje localagje = (agje)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localagje != null) {
+      localagje.a(paramLong1, paramLong2);
     }
   }
   
-  protected void a(Integer paramInteger)
+  public void a(SessionInfo paramSessionInfo, String paramString, int paramInt)
   {
-    if (paramInteger.intValue() == 1)
+    a(paramSessionInfo, paramString, new ArrayList(), 1, paramInt);
+  }
+  
+  public void a(SessionInfo paramSessionInfo, String paramString, List<MessageRecord> paramList, int paramInt1, int paramInt2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2131695342, 0).b(this.jdField_a_of_type_Int);
-      aufn.c("2004", 1);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        localArrayList.add(Long.valueOf(localMessageRecord.uniseq));
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardOrderManager", 2, "onPreForward :: mr.uniseq -> " + localMessageRecord.uniseq + ", forwardID -> " + paramInt2);
+        }
+      }
     }
-    while (paramInteger.intValue() != 2) {
+    if (paramInt1 == 1) {}
+    for (paramList = new agjl();; paramList = new agjg())
+    {
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt2, paramList.a(paramSessionInfo, paramString, localArrayList, paramInt2));
       return;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, 2131689688, 0).b(this.jdField_a_of_type_Int);
-    aufn.c("2003", 1);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "onSendResult newSeq -> " + paramLong + ", mForwardEntities.size() => " + this.jdField_a_of_type_AndroidUtilSparseArray.size());
+    }
+    agje localagje = a(paramLong, false);
+    if ((localagje != null) && (localagje.a(paramQQAppInterface, paramLong))) {
+      this.jdField_a_of_type_AndroidUtilSparseArray.remove(localagje.a);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  {
+    agje localagje = (agje)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localagje != null) {
+      localagje.a(paramQQAppInterface, paramLong);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    try
+    {
+      agje localagje = a(paramMessageRecord.uniseq, true);
+      if (localagje != null) {
+        localagje.a(paramQQAppInterface, paramMessageRecord);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, List<MessageRecord> paramList)
+  {
+    if (paramList != null) {
+      try
+      {
+        if (paramList.size() > 0)
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext()) {
+            a(paramQQAppInterface, (MessageRecord)paramList.next());
+          }
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public void a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, int paramInt)
+  {
+    try
+    {
+      ((agje)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).b(paramMessageRecord1.uniseq, paramMessageRecord2.uniseq);
+      return;
+    }
+    finally {}
   }
 }
 

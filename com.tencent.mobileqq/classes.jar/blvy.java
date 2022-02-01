@@ -1,31 +1,16 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.View;
 
 class blvy
-  extends uxx
+  implements aevu
 {
-  blvy(blvx paramblvx, String paramString)
+  public View a(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(paramString);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    super.onLocationFinish(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.a.jdField_a_of_type_Blvw.jdField_a_of_type_Double = paramSosoLbsInfo.a.jdField_a_of_type_Double;
-      this.a.jdField_a_of_type_Blvw.b = paramSosoLbsInfo.a.b;
-      wxe.b("FacePoiManager", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Blvw.jdField_a_of_type_Double + " longitude=" + this.a.jdField_a_of_type_Blvw.b);
-      if (this.a.jdField_a_of_type_Boolean) {
-        this.a.jdField_a_of_type_Blvw.a();
-      }
-      return;
+    if (!"com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView".equals(paramString)) {
+      return null;
     }
-    this.a.jdField_a_of_type_Blvw.jdField_a_of_type_Double = 0.0D;
-    this.a.jdField_a_of_type_Blvw.b = 0.0D;
-    wxe.b("FacePoiManager", "onLocationUpdate() error");
-    this.a.jdField_a_of_type_Blvw.jdField_a_of_type_Blvz.a(false, false, null, null);
+    return blvu.a(paramContext, paramAttributeSet);
   }
 }
 

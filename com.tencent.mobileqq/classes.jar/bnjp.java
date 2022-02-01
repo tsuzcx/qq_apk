@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class bnjp
-  implements DialogInterface.OnClickListener
+class bnjp
+  implements bnjg
 {
-  public bnjp(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bnjp(bnjl parambnjl, AtomicReference paramAtomicReference) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(bnjk parambnjk)
   {
-    this.a.a();
+    baoq localbaoq = (baoq)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localbaoq != null) {
+      localbaoq.a(parambnjk);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    baoq localbaoq = (baoq)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localbaoq != null) {
+      localbaoq.a(paramString);
+    }
   }
 }
 

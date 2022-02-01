@@ -1,141 +1,64 @@
 import android.content.Context;
-import android.os.Build;
-import android.os.Handler;
-import android.view.View;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.core.widget.QQToast.ProtectedToast.1;
-import com.tencent.qqmini.sdk.log.QMLog;
+import android.content.SharedPreferences;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 public class bgro
-  extends Toast
 {
-  private static WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  private static Class jdField_a_of_type_JavaLangClass;
-  private static Field jdField_a_of_type_JavaLangReflectField;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static Field jdField_b_of_type_JavaLangReflectField;
-  private static Method jdField_b_of_type_JavaLangReflectMethod;
-  public Runnable a;
-  
-  public bgro(Context paramContext)
+  public static SharedPreferences a(Context paramContext, String paramString)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaLangRunnable = new QQToast.ProtectedToast.1(this);
-  }
-  
-  public void cancel()
-  {
+    if ((paramContext == null) || (paramString == null) || (paramString.length() <= 0)) {
+      return null;
+    }
     try
     {
-      QMLog.d("QQToast", "cancel!");
-      ThreadManager.c().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      if (!bgrm.a(getView().getContext(), false))
+      Class localClass = Class.forName("android.content.Context");
+      i = ((Integer)localClass.getField("MODE_MULTI_PROCESS").get(localClass)).intValue();
+      int j = i;
+      if (i == -1) {
+        j = 0;
+      }
+      return paramContext.getSharedPreferences(paramString, j);
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      for (;;)
       {
-        super.cancel();
-        return;
+        i = -1;
       }
-      Object localObject = jdField_a_of_type_JavaLangReflectField.get(this);
-      if (jdField_b_of_type_JavaLangReflectMethod == null)
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      for (;;)
       {
-        jdField_b_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("hide", new Class[0]);
-        jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
-      }
-      jdField_b_of_type_JavaLangReflectMethod.invoke(localObject, new Object[0]);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QMLog.d("QQToast", "", localThrowable);
-      if ((localThrowable instanceof NoSuchMethodException)) {
-        super.cancel();
+        i = -1;
       }
     }
-  }
-  
-  public void show()
-  {
-    try
+    catch (IllegalArgumentException localIllegalArgumentException)
     {
-      if (getView() == null) {
-        throw new RuntimeException("setView must have been called");
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      QMLog.d("QQToast", "", localThrowable);
-      if (((localThrowable instanceof NoSuchMethodException)) || ((localThrowable instanceof NoSuchFieldException))) {
-        super.show();
-      }
-      return;
-    }
-    if (jdField_a_of_type_JavaLangReflectField == null)
-    {
-      jdField_a_of_type_JavaLangReflectField = Toast.class.getDeclaredField("mTN");
-      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
-    }
-    Object localObject1 = jdField_a_of_type_JavaLangReflectField.get(this);
-    Object localObject2;
-    if (bgrm.a())
-    {
-      localObject2 = localObject1.getClass().getDeclaredField("mParams");
-      ((Field)localObject2).setAccessible(true);
-      jdField_a_of_type_AndroidViewWindowManager$LayoutParams = (WindowManager.LayoutParams)((Field)localObject2).get(localObject1);
-      jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 40;
-      jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131755769;
-    }
-    for (;;)
-    {
-      try
+      for (;;)
       {
-        if (("" + Build.MANUFACTURER).equalsIgnoreCase("SAMSUNG")) {
-          jdField_a_of_type_AndroidViewWindowManager$LayoutParams.getClass().getField("layoutInDisplayCutoutMode").setInt(jdField_a_of_type_AndroidViewWindowManager$LayoutParams, 1);
-        }
-        localObject2 = (TextView)getView().findViewById(2131378113);
-        if ((localObject2 != null) && (((TextView)localObject2).getText().length() < 6))
-        {
-          l = 900L;
-          ThreadManager.c().postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
-          QMLog.d("QQToast", "show");
-          if (!bgrm.a(getView().getContext(), false))
-          {
-            super.show();
-            return;
-          }
-        }
+        i = -1;
       }
-      catch (Exception localException)
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      for (;;)
       {
-        QMLog.e("QQToast", localException.getMessage(), localException);
-        continue;
-        if (jdField_a_of_type_JavaLangClass == null) {
-          jdField_a_of_type_JavaLangClass = Class.forName("android.widget.Toast$TN");
-        }
-        if (jdField_b_of_type_JavaLangReflectField == null)
-        {
-          jdField_b_of_type_JavaLangReflectField = jdField_a_of_type_JavaLangClass.getDeclaredField("mNextView");
-          jdField_b_of_type_JavaLangReflectField.setAccessible(true);
-        }
-        jdField_b_of_type_JavaLangReflectField.set(localObject1, getView());
-        if (jdField_a_of_type_JavaLangReflectMethod == null)
-        {
-          jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("show", new Class[0]);
-          jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
-        }
-        jdField_a_of_type_JavaLangReflectMethod.invoke(localObject1, new Object[0]);
-        return;
+        i = -1;
       }
-      long l = 1900L;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgro
  * JD-Core Version:    0.7.0.1
  */

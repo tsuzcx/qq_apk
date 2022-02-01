@@ -1,37 +1,21 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class axpo
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  axpo(axop paramaxop) {}
   
-  public axpo(axpn paramaxpn, String paramString, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.b * 100 / this.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public void a()
-  {
-    this.b += 1;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int += 1;
+    this.a.e(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axpo
  * JD-Core Version:    0.7.0.1
  */

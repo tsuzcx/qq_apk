@@ -1,97 +1,99 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class xpy
+  implements Cloneable
 {
-  public View a;
-  public TextView a;
-  public View b;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<Integer> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
   
-  public xpy(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public xpy()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378117));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365013));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370703));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379657));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369465);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369467);
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131369468);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131369466);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
+  public xpy(xpy paramxpy)
   {
-    Object localObject = xqz.a(paramTroopStoryItemInfo.publishTime);
-    if (TextUtils.isEmpty(localObject[0]))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localObject[1]);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      if ((paramInt > 0) && (((TroopStoryItemInfo)this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.get(paramInt - 1)).itemType == 0))
-      {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-      while (paramTroopStoryItemInfo.publishCount == 0)
-      {
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(alud.a(2131716182));
-        return;
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramxpy.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_JavaLangString = paramxpy.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramxpy.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Long = paramxpy.jdField_a_of_type_Long;
+    this.jdField_b_of_type_JavaLangString = paramxpy.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramxpy.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramxpy.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Long = paramxpy.jdField_b_of_type_Long;
+    this.jdField_c_of_type_JavaLangString = paramxpy.jdField_c_of_type_JavaLangString;
+    this.jdField_c_of_type_Long = paramxpy.jdField_c_of_type_Long;
+    this.d = paramxpy.d;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
+      return ((Integer)Collections.max(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(localObject[1]);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(localObject[0]);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    if ((paramInt > 0) && (((TroopStoryItemInfo)this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.get(paramInt - 1)).itemType == 0))
-    {
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(0);
+    return -1L;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_c_of_type_Long = 0L;
+    this.d = null;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
+      return ((Integer)Collections.min(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
     }
-    for (;;)
-    {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      break;
-      this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    return -1L;
+  }
+  
+  public long c()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() < 3) {
+      return -1L;
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramTroopStoryItemInfo.publishCount).append("个小视频");
-    if (paramTroopStoryItemInfo.dayCommentCount > 0)
+    int k = Math.min(this.jdField_a_of_type_JavaUtilArrayList.size(), 10);
+    int i = 0;
+    int j = 0;
+    while (i < k)
     {
-      ((StringBuilder)localObject).append(" 评论").append(paramTroopStoryItemInfo.dayCommentCount);
-      if (paramTroopStoryItemInfo.dayLikeCount > 0) {
-        ((StringBuilder)localObject).append("·");
-      }
+      j += ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
+      i += 1;
     }
-    if (paramTroopStoryItemInfo.dayLikeCount > 0)
-    {
-      if (paramTroopStoryItemInfo.dayCommentCount <= 0) {
-        ((StringBuilder)localObject).append(" ");
-      }
-      ((StringBuilder)localObject).append("赞").append(paramTroopStoryItemInfo.dayLikeCount);
-    }
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(((StringBuilder)localObject).toString());
+    return j / k;
+  }
+  
+  public String toString()
+  {
+    return " " + this.jdField_a_of_type_JavaLangString + " " + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_Int + " " + this.jdField_b_of_type_Int + " " + this.jdField_b_of_type_Long + " " + this.jdField_a_of_type_Boolean + " " + c() + " " + b() + " " + a() + " " + this.jdField_b_of_type_JavaLangString + " " + this.jdField_c_of_type_JavaLangString + " " + this.jdField_c_of_type_Long + " " + this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xpy
  * JD-Core Version:    0.7.0.1
  */

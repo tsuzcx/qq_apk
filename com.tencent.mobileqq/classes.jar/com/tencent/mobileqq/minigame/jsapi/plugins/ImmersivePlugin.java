@@ -3,8 +3,8 @@ package com.tencent.mobileqq.minigame.jsapi.plugins;
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
+import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.minigame.api.ApiUtil;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import java.util.Set;
@@ -79,7 +79,7 @@ public class ImmersivePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.ImmersivePlugin
  * JD-Core Version:    0.7.0.1
  */

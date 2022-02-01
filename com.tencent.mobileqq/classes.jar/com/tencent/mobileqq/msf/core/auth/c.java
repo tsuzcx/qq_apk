@@ -6,7 +6,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.msf.service.protocol.e.h;

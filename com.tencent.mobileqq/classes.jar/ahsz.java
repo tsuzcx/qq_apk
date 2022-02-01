@@ -1,40 +1,20 @@
-import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.RecommendFriendFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import java.io.File;
+import java.util.Locale;
+import mqq.os.MqqHandler;
 
-public class ahsz
+class ahsz
+  implements DialogInterface.OnClickListener
 {
-  public static ContactsBaseFragment a(int paramInt)
+  ahsz(ahsy paramahsy, File paramFile) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject;
-    switch (paramInt)
-    {
-    default: 
-      localObject = new FriendFragment();
-    }
-    for (;;)
-    {
-      ((ContactsBaseFragment)localObject).d(paramInt);
-      return localObject;
-      localObject = new RecommendFriendFragment();
-      continue;
-      localObject = new FriendFragment();
-      continue;
-      localObject = new TroopFragment();
-      continue;
-      localObject = new PublicAccountFragment();
-      continue;
-      localObject = new DeviceFragment();
-      continue;
-      localObject = new PhoneContactFragment();
-      continue;
-      localObject = new AlphabetFriendFragment();
-    }
+    paramDialogInterface = this.jdField_a_of_type_JavaIoFile.getParentFile().getName().toLowerCase(Locale.US) + ".mp4";
+    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Ahsy.a.a, paramDialogInterface, true));
   }
 }
 

@@ -1,15 +1,13 @@
-import android.view.View;
-
 class armu
-  implements arsg
+  implements bkle
 {
   armu(armt paramarmt) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(int paramInt)
   {
-    int i = arsx.b(this.a.a.e());
-    azqs.b(null, "dc00898", "", "", "0X800A689", "0X800A689", 0, 0, i + "", "", "", "");
-    this.a.a.g();
+    if (paramInt == 4097) {
+      bcst.b(armt.a(this.a), "dc00898", "", "", "0X8007FAA", "0X8007FAA", 0, 0, "", "", "", "");
+    }
   }
 }
 

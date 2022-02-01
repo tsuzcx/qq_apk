@@ -1,86 +1,120 @@
-import SummaryCardTaf.SSummaryCardRsp;
-import android.util.Pair;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.13.1;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype2;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acyz
-  extends alpq
+  extends aczg
 {
-  public acyz(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder)
   {
-    if ((paramString != null) && (this.a.jdField_a_of_type_Awqt != null) && (this.a.jdField_a_of_type_Awqt.a != null) && (this.a.jdField_a_of_type_Awqt.a.a != null) && (paramString.equals(this.a.jdField_a_of_type_Awqt.a.a))) {
-      if ((paramBoolean1) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(paramBoolean2);
-      }
+    if (QLog.isColorLevel()) {
+      paramStringBuilder.append("elemType:PokeMsg;\n");
     }
-    for (;;)
+    paramList = paramList.iterator();
+    do
     {
-      QLog.d("FriendProfileCardActivity", 2, " isSuccess" + paramBoolean1 + " isAllow" + paramBoolean2);
-      return;
-      QLog.e("FriendProfileCardActivity", 2, "onGetAllowSeeLoginDays uin empty");
+      if (!paramList.hasNext()) {
+        break;
+      }
+      paramStringBuilder = (im_msg_body.Elem)paramList.next();
+    } while (!paramStringBuilder.common_elem.has());
+    for (paramList = (im_msg_body.CommonElem)paramStringBuilder.common_elem.get();; paramList = null)
+    {
+      if (paramList == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PokeMsg", 2, "decodePBMsgElems_PokeMsg null commomElem!");
+        }
+        return;
+      }
+      paramStringBuilder = new MessageForPoke();
+      paramStringBuilder.msgtype = -5012;
+      if (paramList.uint32_business_type.has()) {
+        paramStringBuilder.interactType = paramList.uint32_business_type.get();
+      }
+      hummer_commelem.MsgElemInfo_servtype2 localMsgElemInfo_servtype2;
+      if (paramList.bytes_pb_elem.has()) {
+        localMsgElemInfo_servtype2 = new hummer_commelem.MsgElemInfo_servtype2();
+      }
+      for (;;)
+      {
+        try
+        {
+          localMsgElemInfo_servtype2.mergeFrom(paramList.bytes_pb_elem.get().toByteArray());
+          paramStringBuilder.msg = localMsgElemInfo_servtype2.bytes_poke_summary.get().toStringUtf8();
+          paramStringBuilder.doubleHitState = localMsgElemInfo_servtype2.uint32_double_hit.get();
+          if (!localMsgElemInfo_servtype2.uint32_vaspoke_id.has()) {
+            continue;
+          }
+          i = localMsgElemInfo_servtype2.uint32_vaspoke_id.get();
+          paramStringBuilder.subId = i;
+          if (!localMsgElemInfo_servtype2.bytes_vaspoke_name.has()) {
+            continue;
+          }
+          paramList = localMsgElemInfo_servtype2.bytes_vaspoke_name.get().toStringUtf8();
+          paramStringBuilder.name = paramList;
+          if (!localMsgElemInfo_servtype2.bytes_vaspoke_minver.has()) {
+            continue;
+          }
+          paramList = localMsgElemInfo_servtype2.bytes_vaspoke_minver.get().toStringUtf8();
+          paramStringBuilder.minVersion = paramList;
+          paramStringBuilder.strength = localMsgElemInfo_servtype2.uint32_poke_strength.get();
+          if (!localMsgElemInfo_servtype2.uint32_poke_flag.has()) {
+            continue;
+          }
+          i = localMsgElemInfo_servtype2.uint32_poke_flag.get();
+          paramStringBuilder.flag = i;
+          if (paramStringBuilder.interactType == 126) {
+            VasWebviewUtil.reportCommercialDrainage("", "poke", "receive", "", 0, 0, 0, "", String.valueOf(paramStringBuilder.subId), "none", "", "", "", "", 0, 0, 0, 0);
+          }
+        }
+        catch (Exception paramList)
+        {
+          int i;
+          QLog.d("PokeMsg", 1, "decodePBMsgElems_PokeMsg exception!", paramList);
+          continue;
+        }
+        paramList1.add(paramStringBuilder);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("PokeMsg", 2, "decodePbElems, common_elem type 2, interactType:" + paramStringBuilder.interactType + " ,doubleHitState:" + paramStringBuilder.doubleHitState);
+        return;
+        i = -1;
+        continue;
+        paramList = anni.a(2131705439);
+        continue;
+        paramList = "";
+        continue;
+        i = 0;
+      }
     }
   }
   
-  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
+  public int a()
   {
-    for (;;)
-    {
-      try
-      {
-        if (this.a.isFinishing()) {
-          break;
-        }
-        this.a.jdField_b_of_type_Bhtd.removeCallbacks(this.a.jdField_b_of_type_JavaLangRunnable);
-        this.a.A();
-        if ((!paramBoolean) || (paramObject == null)) {
-          break;
-        }
-        if ((paramObject instanceof Card))
-        {
-          ThreadManager.post(new FriendProfileCardActivity.13.1(this, (Card)paramObject), 5, null, true);
-          return;
-        }
-        if (!(paramObject instanceof Pair)) {
-          break;
-        }
-        paramObject = (Pair)paramObject;
-        if (((Integer)paramObject.first).intValue() == 101107)
-        {
-          this.a.d = 1;
-          this.a.B();
-          return;
-        }
-      }
-      catch (Exception paramObject)
-      {
-        paramObject.printStackTrace();
-        return;
-      }
-      if (((Integer)paramObject.first).intValue() == 101108)
-      {
-        this.a.d = 2;
-      }
-      else if (((Integer)paramObject.first).intValue() == 101111)
-      {
-        this.a.d = 3;
-      }
-      else if (((Integer)paramObject.first).intValue() == 12002)
-      {
-        this.a.d = 4;
-      }
-      else
-      {
-        this.a.d = 5;
-        this.a.a((SSummaryCardRsp)paramObject.second);
-      }
-    }
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    a(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (2 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

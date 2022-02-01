@@ -1,37 +1,38 @@
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class aosi
+class aosi
+  implements ServiceConnection
 {
-  public int a;
+  aosi(aosg paramaosg) {}
   
-  public static aosi a(String paramString)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    aosi localaosi = new aosi();
+    QLog.w(aost.a, 1, "onServiceConnected, name[" + paramComponentName + "]");
     try
     {
-      localaosi.a = new JSONObject(paramString).optInt("preloadPskey", 0);
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localaosi.toString());
-      return localaosi;
+      this.a.a = aoxy.a(paramIBinder);
+      this.a.a.a(aosg.a(this.a));
+      this.a.a.c();
+      return;
     }
-    catch (Exception paramString)
+    catch (Exception paramComponentName)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+      QLog.w(aost.a, 1, "onServiceConnected, Exception", paramComponentName);
     }
-    return localaosi;
   }
   
-  public String toString()
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("preloadPskey:").append(this.a);
-    return localStringBuilder.toString();
+    QLog.w(aost.a, 1, "onServiceDisconnected, name[" + paramComponentName + "]");
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aosi
  * JD-Core Version:    0.7.0.1
  */

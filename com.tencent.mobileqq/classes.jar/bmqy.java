@@ -1,24 +1,15 @@
-import android.graphics.PointF;
+import android.app.Activity;
 
-public class bmqy
+public final class bmqy
+  implements blfn
 {
-  public final float a;
-  public final PointF a;
-  public final float b;
-  public final float c;
-  public final float d;
-  public final float e;
-  public final float f;
+  public bmqy(Activity paramActivity) {}
   
-  public bmqy(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.b = paramFloat4;
-    this.c = paramFloat5;
-    this.d = paramFloat6;
-    this.e = paramFloat7;
-    this.f = paramFloat8;
+    if (!paramBoolean) {
+      this.a.finish();
+    }
   }
 }
 

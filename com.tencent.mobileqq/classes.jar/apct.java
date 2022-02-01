@@ -1,38 +1,14 @@
-import android.graphics.Canvas;
-import android.text.TextPaint;
-
 public class apct
-  extends apcq
 {
-  private TextPaint a = new TextPaint();
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  private String a(apbq paramapbq)
+  public String toString()
   {
-    return String.valueOf(paramapbq.a());
-  }
-  
-  public apdo a(apbq paramapbq)
-  {
-    apcp localapcp = apbz.a();
-    float f1 = apdr.a(localapcp.c(), a(paramapbq)) + localapcp.f() + localapcp.f();
-    float f2 = apdr.a(localapcp.c());
-    f2 = localapcp.e() * 2.0F + f2;
-    paramapbq.a(f2);
-    paramapbq.b(f1);
-    return new apdo(f1, f2);
-  }
-  
-  public boolean a(apbq paramapbq)
-  {
-    return true;
-  }
-  
-  public void b(Canvas paramCanvas, apbq paramapbq, apbz paramapbz, float paramFloat1, float paramFloat2)
-  {
-    paramapbz = apbz.a();
-    this.a.setTextSize(paramapbz.c());
-    this.a.setColor(-1);
-    paramCanvas.drawText(a(paramapbq), paramapbz.f() + paramFloat1, paramapbz.e() + paramFloat2 - this.a.ascent(), this.a);
+    return "SearchQuestionResult{errCode=" + this.jdField_a_of_type_Int + ", errMsg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", questionId=" + this.jdField_a_of_type_Long + ", questionText='" + this.b + '\'' + ", questionUrl='" + this.c + '\'' + '}';
   }
 }
 

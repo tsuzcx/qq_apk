@@ -1,45 +1,32 @@
 package com.tencent.beacon.core.d;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.io.IOException;
+import org.apache.http.NoHttpResponseException;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpRequestRetryHandler;
+import org.apache.http.protocol.HttpContext;
 
-public final class e
+class e
+  implements HttpRequestRetryHandler
 {
-  public static int a(String paramString1, Object paramObject, String paramString2)
-  {
-    try
-    {
-      Field localField = Class.forName(paramString1).getDeclaredField(paramString2);
-      localField.setAccessible(true);
-      int i = localField.getInt(paramObject);
-      return i;
-    }
-    catch (Exception paramObject)
-    {
-      b.d("[core] ref get %s.%s failed.", new Object[] { paramString1, paramString2 });
-    }
-    return -1;
-  }
+  e(f.a parama) {}
   
-  public static Object a(String paramString1, String paramString2, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
+  public boolean retryRequest(IOException paramIOException, int paramInt, HttpContext paramHttpContext)
   {
-    try
+    if (paramInt >= 3) {}
+    do
     {
-      paramArrayOfClass = Class.forName(paramString1).getDeclaredMethod(paramString2, paramArrayOfClass);
-      paramArrayOfClass.setAccessible(true);
-      paramArrayOfClass = paramArrayOfClass.invoke(null, paramArrayOfObject);
-      return paramArrayOfClass;
-    }
-    catch (Exception paramArrayOfClass)
-    {
-      b.d("[core] ref call %s#%s failed.", new Object[] { paramString1, paramString2 });
-    }
-    return null;
+      return false;
+      if ((paramIOException instanceof NoHttpResponseException)) {
+        return true;
+      }
+    } while (!(paramIOException instanceof ClientProtocolException));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.d.e
  * JD-Core Version:    0.7.0.1
  */

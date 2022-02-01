@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-
-public abstract interface atff
+class atff
+  extends atfq
 {
-  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
+  public atff(atfe paramatfe)
+  {
+    super(paramatfe);
+  }
   
-  public abstract void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
-  
-  public abstract void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
+  protected String a()
+  {
+    return "StateAcceptByPC";
+  }
 }
 
 

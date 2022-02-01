@@ -1,89 +1,57 @@
-import android.opengl.GLES20;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 public class hj
 {
-  public static int a(int paramInt, String paramString)
+  private static final FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = hk.a(jdField_a_of_type_ArrayOfFloat);
+  public static float[] a;
+  private static final FloatBuffer jdField_b_of_type_JavaNioFloatBuffer = hk.a(jdField_b_of_type_ArrayOfFloat);
+  private static final float[] jdField_b_of_type_ArrayOfFloat;
+  private int jdField_a_of_type_Int = jdField_a_of_type_ArrayOfFloat.length / this.jdField_b_of_type_Int;
+  private int jdField_b_of_type_Int = 2;
+  private int jdField_c_of_type_Int = this.jdField_b_of_type_Int * 4;
+  private FloatBuffer jdField_c_of_type_JavaNioFloatBuffer = jdField_a_of_type_JavaNioFloatBuffer;
+  private int jdField_d_of_type_Int = 8;
+  private FloatBuffer jdField_d_of_type_JavaNioFloatBuffer = jdField_b_of_type_JavaNioFloatBuffer;
+  
+  static
   {
-    int i = GLES20.glCreateShader(paramInt);
-    a("glCreateShader type=" + paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
-    paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
-    if (paramString[0] == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("GlUtil", 2, "Could not compile shader " + paramInt + ":" + GLES20.glGetShaderInfoLog(i));
-      }
-      GLES20.glDeleteShader(i);
-      return 0;
-    }
-    return i;
+    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+    jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
   }
   
-  public static int a(String paramString1, String paramString2)
+  public int a()
   {
-    int i = a(35633, paramString1);
-    if (i == 0) {}
-    int j;
-    do
-    {
-      return 0;
-      j = a(35632, paramString2);
-    } while (j == 0);
-    int k = GLES20.glCreateProgram();
-    a("glCreateProgram");
-    if ((k == 0) && (QLog.isColorLevel())) {
-      QLog.e("GlUtil", 2, "Could not create program");
-    }
-    GLES20.glAttachShader(k, i);
-    a("glAttachShader");
-    GLES20.glAttachShader(k, j);
-    a("glAttachShader");
-    GLES20.glLinkProgram(k);
-    paramString1 = new int[1];
-    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
-    if (paramString1[0] != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("GlUtil", 2, "Could not link program:" + GLES20.glGetProgramInfoLog(k));
-      }
-      GLES20.glDeleteProgram(k);
-      return 0;
-    }
-    return k;
+    return this.jdField_a_of_type_Int;
   }
   
-  public static FloatBuffer a(float[] paramArrayOfFloat)
+  public FloatBuffer a()
   {
-    Object localObject = ByteBuffer.allocateDirect(paramArrayOfFloat.length * 4);
-    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-    localObject = ((ByteBuffer)localObject).asFloatBuffer();
-    ((FloatBuffer)localObject).put(paramArrayOfFloat);
-    ((FloatBuffer)localObject).position(0);
-    return localObject;
+    return this.jdField_c_of_type_JavaNioFloatBuffer;
   }
   
-  public static void a(String paramString)
+  public int b()
   {
-    int i = GLES20.glGetError();
-    if (i != 0)
-    {
-      paramString = paramString + ": glError 0x" + Integer.toHexString(i);
-      if (QLog.isColorLevel()) {
-        QLog.e("GlUtil", 2, paramString);
-      }
-      throw new RuntimeException(paramString);
-    }
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public FloatBuffer b()
+  {
+    return this.jdField_d_of_type_JavaNioFloatBuffer;
+  }
+  
+  public int c()
+  {
+    return this.jdField_d_of_type_Int;
+  }
+  
+  public int d()
+  {
+    return this.jdField_b_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     hj
  * JD-Core Version:    0.7.0.1
  */

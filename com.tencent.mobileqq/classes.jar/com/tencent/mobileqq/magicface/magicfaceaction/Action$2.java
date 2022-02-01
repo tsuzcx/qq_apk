@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.magicface.magicfaceaction;
 
-import atxy;
+import awfh;
 import java.util.TimerTask;
 
 public class Action$2
   extends TimerTask
 {
-  public Action$2(atxy paramatxy) {}
+  public Action$2(awfh paramawfh) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class Action$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.magicfaceaction.Action.2
  * JD-Core Version:    0.7.0.1
  */

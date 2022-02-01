@@ -1,100 +1,29 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.os.Handler;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public abstract class axnk
-  extends Binder
-  implements axnj
+class axnk
+  implements axnt
 {
-  public axnk()
-  {
-    attachInterface(this, "com.tencent.mobileqq.richmedia.ICallBack");
-  }
+  axnk(axnh paramaxnh) {}
   
-  public static axnj a(IBinder paramIBinder)
+  public void a(axns paramaxns)
   {
-    if (paramIBinder == null) {
-      return null;
+    if (this.a.jdField_a_of_type_Axnq != null) {
+      this.a.jdField_a_of_type_Axnq.a();
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.richmedia.ICallBack");
-    if ((localIInterface != null) && ((localIInterface instanceof axnj))) {
-      return (axnj)localIInterface;
-    }
-    return new axnl(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    Object localObject2 = null;
-    Object localObject3 = null;
-    Object localObject1 = null;
-    switch (paramInt1)
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
+    paramaxns = axnh.a(this.a).a;
+    if (this.a.c()) {}
+    for (int i = 1;; i = 2)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.richmedia.ICallBack");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
-      paramInt1 = paramParcel1.readInt();
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramParcel1 = a(paramInt1, (Bundle)localObject1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
-      localObject1 = localObject2;
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (CompressInfo)CompressInfo.CREATOR.createFromParcel(paramParcel1);
-      }
-      a((CompressInfo)localObject1);
-      paramParcel2.writeNoException();
-      if (localObject1 != null)
-      {
-        paramParcel2.writeInt(1);
-        ((CompressInfo)localObject1).writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
+      axlr.a(paramaxns, i);
+      return;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
-    paramInt1 = paramParcel1.readInt();
-    localObject1 = localObject3;
-    if (paramParcel1.readInt() != 0) {
-      localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-    }
-    a(paramInt1, (Bundle)localObject1);
-    paramParcel2.writeNoException();
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axnk
  * JD-Core Version:    0.7.0.1
  */

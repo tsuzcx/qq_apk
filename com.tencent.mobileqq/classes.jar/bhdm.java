@@ -1,70 +1,41 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetTCBTicketReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetTCBTicketRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.vas.update.callback.ICmdManager;
+import com.tencent.vas.update.callback.listener.ICmdListener;
+import java.lang.ref.WeakReference;
 
 public class bhdm
-  extends bhdw
+  implements ICmdManager
 {
-  private INTERFACE.StGetTCBTicketReq a = new INTERFACE.StGetTCBTicketReq();
+  private ICmdListener jdField_a_of_type_ComTencentVasUpdateCallbackListenerICmdListener;
+  WeakReference<VasExtensionHandler> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bhdm(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
+  public ICmdListener a()
   {
-    this.a.appid.set(paramString1);
-    this.a.envId.set(paramString2);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
+    return this.jdField_a_of_type_ComTencentVasUpdateCallbackListenerICmdListener;
   }
   
-  protected String a()
+  public void a(WeakReference<VasExtensionHandler> paramWeakReference)
   {
-    return "mini_app_info";
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  public boolean sendPbRequest(String paramString1, String paramString2, ICmdListener paramICmdListener)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetTCBTicketRsp localStGetTCBTicketRsp = new INTERFACE.StGetTCBTicketRsp();
-    try
+    this.jdField_a_of_type_ComTencentVasUpdateCallbackListenerICmdListener = paramICmdListener;
+    paramICmdListener = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (paramICmdListener != null)
     {
-      localStGetTCBTicketRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetTCBTicketRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("ticket", localStGetTCBTicketRsp.ticket.get());
-        paramArrayOfByte.put("createTime", localStGetTCBTicketRsp.createTime.get());
-        paramArrayOfByte.put("period", localStGetTCBTicketRsp.period.get());
-        return paramArrayOfByte;
+      paramICmdListener = (VasExtensionHandler)paramICmdListener.get();
+      if (paramICmdListener != null) {
+        return paramICmdListener.a(paramString1, paramString2);
       }
-      QMLog.d("GetTcbTicketRequest", "onResponse fail.rsp = null");
-      return null;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("GetTcbTicketRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetTCBTicket";
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhdm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,32 @@
 package com.idlefish.flutterboost.containers;
 
+import Override;
 import android.app.Activity;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LifecycleRegistry;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView.ScaleType;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Lifecycle.Event;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LifecycleRegistry;
 import com.idlefish.flutterboost.FlutterBoost;
 import com.idlefish.flutterboost.XFlutterView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import io.flutter.Log;
 import io.flutter.embedding.android.DrawableSplashScreen;
 import io.flutter.embedding.android.FlutterView.RenderMode;
@@ -138,12 +142,22 @@ public class BoostFlutterActivity
     return new BoostFlutterActivity.NewEngineIntentBuilder(BoostFlutterActivity.class);
   }
   
+  public void cleanUpFlutterEngine(@NonNull FlutterEngine paramFlutterEngine) {}
+  
   public void configureFlutterEngine(@NonNull FlutterEngine paramFlutterEngine) {}
   
   @NonNull
   protected View createFlutterView()
   {
     return this.delegate.onCreateView(null, null, null);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   @NonNull
@@ -232,6 +246,13 @@ public class BoostFlutterActivity
   public void onBackPressed()
   {
     this.delegate.onBackPressed();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   protected void onCreate(@Nullable Bundle paramBundle)
@@ -340,7 +361,7 @@ public class BoostFlutterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.containers.BoostFlutterActivity
  * JD-Core Version:    0.7.0.1
  */

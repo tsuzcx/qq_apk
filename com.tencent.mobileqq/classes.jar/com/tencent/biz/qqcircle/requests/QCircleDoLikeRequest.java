@@ -11,6 +11,7 @@ import feedcloud.FeedCloudCommon.Entry;
 import feedcloud.FeedCloudCommon.StCommonExt;
 import feedcloud.FeedCloudMeta.StComment;
 import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StImage;
 import feedcloud.FeedCloudMeta.StLike;
 import feedcloud.FeedCloudMeta.StReply;
 import feedcloud.FeedCloudMeta.StUser;
@@ -20,16 +21,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import qqcircle.QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData;
-import tqg;
-import tra;
-import tzy;
+import uxc;
+import uxx;
 
 public class QCircleDoLikeRequest
   extends QCircleBaseRequest
 {
+  private boolean mIsReward;
   private FeedCloudWrite.StDoLikeReq mReq;
   
-  public QCircleDoLikeRequest(FeedCloudMeta.StFeed paramStFeed, int paramInt, FeedCloudMeta.StLike paramStLike, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
+  public QCircleDoLikeRequest(FeedCloudMeta.StFeed paramStFeed, int paramInt, FeedCloudMeta.StLike paramStLike, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply, boolean paramBoolean)
   {
     if (paramStFeed == null)
     {
@@ -37,12 +38,12 @@ public class QCircleDoLikeRequest
       return;
     }
     this.mReq = new FeedCloudWrite.StDoLikeReq();
-    this.mReq.feed.set(tra.a(paramStFeed));
+    this.mReq.feed.set(uxx.a(paramStFeed));
     this.mReq.likeType.set(paramInt);
     if (paramStLike != null)
     {
-      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { tqg.a() }));
-      paramStLike.postUser.set(tqg.a());
+      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { uxc.a() }));
+      paramStLike.postUser.set(uxc.a());
       this.mReq.like.set(paramStLike);
     }
     if (paramStComment != null) {
@@ -53,7 +54,7 @@ public class QCircleDoLikeRequest
     }
     paramStFeed = new FeedCloudCommon.Entry();
     paramStFeed.key.set("ext_source");
-    if (((tzy.a().c(61)) && (tzy.a().d(57))) || (tzy.a().c(57))) {
+    if (paramBoolean) {
       paramStFeed.value.set("2");
     }
     for (;;)
@@ -68,20 +69,23 @@ public class QCircleDoLikeRequest
     }
   }
   
-  public QCircleDoLikeRequest(FeedCloudMeta.StFeed paramStFeed, int paramInt, FeedCloudMeta.StLike paramStLike, QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData paramStDoLikeReqDoPolyLikeBusiReqData)
+  public QCircleDoLikeRequest(FeedCloudMeta.StFeed paramStFeed, int paramInt, FeedCloudMeta.StLike paramStLike, QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData paramStDoLikeReqDoPolyLikeBusiReqData, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramStFeed == null)
     {
       QLog.w("VSBaseRequest", 1, "stfeed is null");
       return;
     }
+    this.mIsReward = paramBoolean2;
     this.mReq = new FeedCloudWrite.StDoLikeReq();
-    this.mReq.feed.set(tra.a(paramStFeed));
+    this.mReq.feed.set(uxx.a(paramStFeed));
+    this.mReq.feed.cover.set(paramStFeed.cover.get());
+    this.mReq.feed.images.set(paramStFeed.images.get());
     this.mReq.likeType.set(paramInt);
     if (paramStLike != null)
     {
-      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { tqg.a() }));
-      paramStLike.postUser.set(tqg.a());
+      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { uxc.a() }));
+      paramStLike.postUser.set(uxc.a());
       this.mReq.like.set(paramStLike);
     }
     if (paramStDoLikeReqDoPolyLikeBusiReqData != null) {
@@ -89,7 +93,7 @@ public class QCircleDoLikeRequest
     }
     paramStFeed = new FeedCloudCommon.Entry();
     paramStFeed.key.set("ext_source");
-    if (((tzy.a().c(61)) && (tzy.a().d(57))) || (tzy.a().c(57))) {
+    if (paramBoolean1) {
       paramStFeed.value.set("2");
     }
     for (;;)
@@ -113,6 +117,9 @@ public class QCircleDoLikeRequest
   
   public String getCmdName()
   {
+    if (this.mIsReward) {
+      return "FeedCloudSvr.trpc.feedcloud.commwriter.ComWriter.DoReward";
+    }
     return "FeedCloudSvr.trpc.feedcloud.commwriter.ComWriter.DoLike";
   }
   
@@ -123,7 +130,7 @@ public class QCircleDoLikeRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleDoLikeRequest
  * JD-Core Version:    0.7.0.1
  */

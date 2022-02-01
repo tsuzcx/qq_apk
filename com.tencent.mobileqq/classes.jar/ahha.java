@@ -1,10 +1,17 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
-public class ahha
+class ahha
+  implements bbab
 {
-  public ProgressBar a;
-  public TextView a;
+  public WeakReference<ahgy> a;
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3)
+  {
+    if (this.a.get() != null) {
+      ahgy.a((ahgy)this.a.get(), paramInt1, paramInt2, paramBitmap, paramInt3);
+    }
+  }
 }
 
 

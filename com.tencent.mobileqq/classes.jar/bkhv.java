@@ -1,6 +1,20 @@
-public abstract interface bkhv
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bkhv
+  implements View.OnClickListener
 {
-  public abstract void a();
+  bkhv(bkho parambkho) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    if (bkho.a(this.a) != null) {
+      bkho.a(this.a).onDismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

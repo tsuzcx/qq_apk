@@ -1,33 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tgpa.vendorpd.GameCallback;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
-public final class aahg
-  implements GameCallback
+class aahg
+  implements zxa<CertifiedAccountRead.StGetMainPageRsp>
 {
-  public aahg(JSONObject paramJSONObject) {}
+  aahg(aahf paramaahf, aacp paramaacp) {}
   
-  public int getPreDownloadVersionInfo(String paramString)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterCheck", 2, "checkGameRes.getGameVersionUpdateInfo res =" + paramString);
-    }
-    try
+    boolean bool = true;
+    List localList;
+    COMM.StCommonExt localStCommonExt;
+    if ((paramBoolean) && (paramStGetMainPageRsp != null))
     {
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("ret") == 0)
-      {
-        paramString = paramString.optJSONObject("data");
-        bkjb.a().a(paramString, this.a);
+      paramString = this.jdField_a_of_type_Aacp;
+      localList = paramStGetMainPageRsp.vecFeed.get();
+      localStCommonExt = paramStGetMainPageRsp.extInfo;
+      if (paramStGetMainPageRsp.isFinish.get() != 1) {
+        break label61;
       }
-      return 0;
     }
-    catch (Throwable paramString)
+    label61:
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      for (;;)
-      {
-        QLog.e("GameCenterCheck", 1, "checkGameRes.getPreDownloadVersionInfo e=" + paramString.toString());
-      }
+      paramString.b(localList, localStCommonExt, paramBoolean);
+      return;
     }
   }
 }

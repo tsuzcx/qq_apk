@@ -1,14 +1,20 @@
-public abstract interface rdf
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
+
+class rdf
+  extends rcs
 {
-  public abstract long a();
+  rdf(rdd paramrdd, AppInterface paramAppInterface) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract long b();
+  public Drawable a()
+  {
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_mine_selected");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rdf
  * JD-Core Version:    0.7.0.1
  */

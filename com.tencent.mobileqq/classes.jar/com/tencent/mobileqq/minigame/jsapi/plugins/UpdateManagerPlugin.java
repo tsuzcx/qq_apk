@@ -2,8 +2,8 @@ package com.tencent.mobileqq.minigame.jsapi.plugins;
 
 import android.support.annotation.NonNull;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
+import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.minigame.api.ApiUtil;
 import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
 import com.tencent.mobileqq.minigame.jsapi.manager.JsApiUpdateManager;
 import com.tencent.qphone.base.util.QLog;
@@ -57,7 +57,7 @@ public class UpdateManagerPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.UpdateManagerPlugin
  * JD-Core Version:    0.7.0.1
  */

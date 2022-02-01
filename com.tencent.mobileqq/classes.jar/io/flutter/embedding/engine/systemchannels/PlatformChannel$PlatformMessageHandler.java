@@ -1,13 +1,17 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.Rect;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract interface PlatformChannel$PlatformMessageHandler
 {
   @Nullable
   public abstract CharSequence getClipboardData(@Nullable PlatformChannel.ClipboardContentFormat paramClipboardContentFormat);
+  
+  public abstract List<Rect> getSystemGestureExclusionRects();
   
   public abstract void playSystemSound(@NonNull PlatformChannel.SoundType paramSoundType);
   
@@ -21,6 +25,8 @@ public abstract interface PlatformChannel$PlatformMessageHandler
   
   public abstract void setPreferredOrientations(int paramInt);
   
+  public abstract void setSystemGestureExclusionRects(@NonNull ArrayList<Rect> paramArrayList);
+  
   public abstract void setSystemUiOverlayStyle(@NonNull PlatformChannel.SystemChromeStyle paramSystemChromeStyle);
   
   public abstract void showSystemOverlays(@NonNull List<PlatformChannel.SystemUiOverlay> paramList);
@@ -29,7 +35,7 @@ public abstract interface PlatformChannel$PlatformMessageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformChannel.PlatformMessageHandler
  * JD-Core Version:    0.7.0.1
  */

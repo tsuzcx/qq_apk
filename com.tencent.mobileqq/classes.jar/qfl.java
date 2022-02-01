@@ -1,40 +1,40 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.protofile.cmd0xe19.cmd0xe19.RspBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.PgcSmallView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qfl
-  extends nac
+class qfl
+  implements View.OnClickListener
 {
-  public qfl(RIJRedPacketManager paramRIJRedPacketManager, qfr paramqfr) {}
+  qfl(qfa paramqfa, pxk parampxk, PgcSmallView paramPgcSmallView, Container paramContainer) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    QLog.i("RIJRedPacketManager", 1, "yyy_0xe19 error code = " + paramInt);
-    if ((BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin() == 2436410075L) || (BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin() == 3451242434L))
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pxk.a();
+    localArticleInfo.clickArea = 11;
+    QLog.d("PgcShortContentProteusItem", 1, "click short content small image");
+    if (this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a.jdField_a_of_type_Int == 3)
     {
-      paramInt = 0;
-      paramArrayOfByte = new cmd0xe19.RspBody();
-      paramArrayOfByte.button_wording.set("获取更多现金红包");
-      paramArrayOfByte.detail_wording.set("已存入看点红包，点击查看");
-      paramArrayOfByte.money.set(545L);
-      paramArrayOfByte = paramArrayOfByte.toByteArray();
+      localArticleInfo.clickJumpTarget = qib.a(this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a.jdField_a_of_type_Rhp.h, "-1");
+      pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPgcSmallView.getContext(), this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a.jdField_a_of_type_Rhp.h, null);
     }
-    if (paramInt == 0)
+    for (;;)
     {
-      RIJRedPacketManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRedpacketRIJRedPacketManager, paramArrayOfByte, this.jdField_a_of_type_Qfr);
+      pha.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localArticleInfo, (int)localArticleInfo.mChannelID);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      localArticleInfo.clickJumpTarget = qib.a(this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a.jdField_a_of_type_Rgw.c, "-1");
+      pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPgcSmallView.getContext(), this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a.jdField_a_of_type_Rgw.c, null);
     }
-    this.jdField_a_of_type_Qfr.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qfl
  * JD-Core Version:    0.7.0.1
  */

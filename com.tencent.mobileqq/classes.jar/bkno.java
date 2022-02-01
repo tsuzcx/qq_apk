@@ -1,52 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQEmojiRedPackFilter;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.widget.ProgressPieView;
 
-class bkno
-  implements blsa
+public class bkno
+  extends Handler
 {
-  bkno(bknm parambknm) {}
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean;
   
-  public void a(blsn paramblsn) {}
+  public bkno(ProgressPieView paramProgressPieView) {}
   
-  public void a(blsn paramblsn, boolean paramBoolean, int paramInt, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onComboApply: success:" + paramBoolean + ",errorCode=" + paramInt);
-    }
-    if ((paramBoolean) && ((this.a.a instanceof EffectsCameraCaptureView))) {
-      paramBundle = (EffectsCameraCaptureView)this.a.a;
-    }
-    try
+    if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b > this.jdField_a_of_type_Int)
     {
-      paramBundle = (QQEmojiRedPackFilter)paramBundle.a().getQQFilterByType(185);
-      if (paramBundle != null)
+      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.b - 1);
+      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
+    }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b < this.jdField_a_of_type_Int)
       {
-        paramblsn = bknm.a(this.a, paramblsn);
-        paramBundle.setWatermarkPath(paramblsn);
-        if (QLog.isColorLevel()) {
-          QLog.i("QIMEmojiRedPacketCameraCapture", 2, "redPackFilter setWatermarkPath:" + paramblsn);
+        int i = this.jdField_a_of_type_ComTencentWidgetProgressPieView.b + this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Int;
+        if (i <= this.jdField_a_of_type_Int) {
+          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
+        }
+        for (;;)
+        {
+          sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
+          return;
+          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_Int);
         }
       }
-      return;
-    }
-    catch (Throwable paramblsn)
-    {
-      QLog.e("QIMEmojiRedPacketCameraCapture", 2, paramblsn.getStackTrace());
-    }
-  }
-  
-  public void a(blsq paramblsq, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void a(blsx paramblsx, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void a(bnhc parambnhc)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onComboFilterDataUpdated");
-    }
+      removeMessages(0);
+    } while (!this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setVisibility(4);
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setShowImage(false);
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

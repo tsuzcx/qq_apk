@@ -1,48 +1,100 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
-class aunt
-  extends altm
+public class aunt
+  extends BaseAdapter
 {
-  protected void onAddFriend(String paramString)
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public List<String> a;
+  
+  public aunt(SDKSetEmotionPreviewFragment paramSDKSetEmotionPreviewFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardManager", 2, "onAddFriend " + paramString);
-    }
-    ArrayList localArrayList;
-    if ((!auno.a(this.a)) && (auno.a(this.a) != null))
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramSDKSetEmotionPreviewFragment.getActivity().getLayoutInflater();
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if (paramList == null)
     {
-      localArrayList = (ArrayList)auno.a(this.a).get(Long.valueOf(auno.a(this.a)));
-      if (localArrayList == null) {}
-    }
-    try
-    {
-      long l = Long.parseLong(paramString);
-      if (localArrayList.indexOf(Long.valueOf(l)) != -1)
+      if (this.jdField_a_of_type_JavaUtilList.size() != 0)
       {
-        paramString = new ArrayList(1);
-        paramString.add(Long.valueOf(l));
-        localArrayList = new ArrayList(1);
-        localArrayList.add(Long.valueOf(auno.a(this.a)));
-        HashMap localHashMap = new HashMap(5);
-        localHashMap.put("notRequest", paramString);
-        localHashMap.put("groupUin", localArrayList);
-        ((asig)auno.a(this.a).a(153)).a(auno.a(this.a), paramString, localHashMap);
+        this.jdField_a_of_type_JavaUtilList.clear();
+        notifyDataSetChanged();
       }
       return;
     }
-    catch (Exception paramString)
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MultiCardManager", 2, "onAddFriend error " + paramString.toString());
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559125, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(SDKSetEmotionPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment), SDKSetEmotionPreviewFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment)));
+      paramView = new aunv(this);
+      paramView.a = ((URLImageView)localView.findViewById(2131365888));
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      Object localObject1 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = bdzx.a;
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = bdzx.a;
+      ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = ayzh.a((String)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject2).mUseAutoScaleParams = true;
+      localObject2 = URLDrawable.getFileDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+      paramView.a.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      paramView.a.setImageDrawable((Drawable)localObject2);
+      localObject2 = paramView.a;
+      paramView.a.setOnClickListener(new aunu(this, (String)localObject1, (View)localObject2));
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject1 = (aunv)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aunt
  * JD-Core Version:    0.7.0.1
  */

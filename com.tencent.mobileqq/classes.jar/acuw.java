@@ -1,18 +1,120 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.kingkong.UpdateManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.net.patch.PatchChecker;
+import com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil;
+import com.tencent.mobileqq.msf.core.net.patch.PatchReporter;
+import com.tencent.mobileqq.vas.LzmaUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class acuw
-  implements View.OnTouchListener
 {
-  public acuw(DiscussionMemberActivity paramDiscussionMemberActivity, InputMethodManager paramInputMethodManager) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private static void a()
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    acvd localacvd = acve.a(BaseApplicationImpl.sApplication, "Native");
+    if (localacvd != null) {
+      UpdateManager.a(localacvd.e());
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    b(paramQQAppInterface);
+    a();
+  }
+  
+  public static boolean a(acvd paramacvd)
+  {
+    int j = 701;
+    String str1 = paramacvd.c();
+    Object localObject = PatchCommonUtil.getPatchPath(str1);
+    String str2 = PatchCommonUtil.getPatchPath("");
+    try
+    {
+      i = LzmaUtils.a(BaseApplicationImpl.sApplication, (String)localObject, str2);
+      if (i != 0) {
+        break label136;
+      }
+      i = 700;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        label136:
+        int i = 702;
+        QLog.d("PatchLogTag", 1, "PatchFileManager un7zNPatchFile throwable=" + localThrowable);
+        continue;
+        i = j;
+        if (((File)localObject).exists())
+        {
+          i = 703;
+          ((File)localObject).delete();
+        }
+      }
+    }
+    localObject = new File((String)localObject);
+    if (((File)localObject).exists()) {
+      ((File)localObject).delete();
+    }
+    if (700 == i)
+    {
+      localObject = new File(PatchCommonUtil.getPatchPath(paramacvd.b()));
+      if ((((File)localObject).exists()) && (((File)localObject).length() == paramacvd.b())) {
+        i = 700;
+      }
+    }
+    for (;;)
+    {
+      PatchReporter.reportPatchEvent(BaseApplicationImpl.sApplication, "", "actPatchUnzip", i, str1);
+      if (700 == i)
+      {
+        return true;
+        i = 701;
+        break;
+      }
+      return false;
+    }
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface)
+  {
+    int j = 1;
+    acvd localacvd = acve.a(BaseApplicationImpl.sApplication, "dex");
+    if ((localacvd != null) && (localacvd.a(BaseApplicationImpl.sApplication, null)))
+    {
+      String str = localacvd.b();
+      File localFile = new File(PatchCommonUtil.getPatchPath(str));
+      int i;
+      if ((!localFile.exists()) || (localFile.length() != localacvd.b()))
+      {
+        i = j;
+        if (localFile.exists())
+        {
+          localFile.delete();
+          i = j;
+        }
+      }
+      for (;;)
+      {
+        if (i != 0) {
+          ((acuu)paramQQAppInterface.getManager(120)).a(0, "dex", localacvd);
+        }
+        return;
+        if (!PatchChecker.checkPatchValid("dex", str))
+        {
+          localFile.delete();
+          i = j;
+        }
+        else
+        {
+          i = 0;
+          abev.c();
+        }
+      }
+    }
+    abev.c();
   }
 }
 

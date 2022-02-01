@@ -1,16 +1,70 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
-class bmud
-  implements bmum
+public class bmud
+  extends bmuf
 {
-  bmud(bmuc parambmuc, boolean paramBoolean) {}
-  
-  public void a()
+  public bmud(String paramString, View paramView)
   {
-    if (DoodleLayout.a(this.jdField_a_of_type_Bmuc.a) != null) {
-      DoodleLayout.a(this.jdField_a_of_type_Bmuc.a).c(true);
+    super(paramString, paramView);
+  }
+  
+  private int b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
     }
-    this.jdField_a_of_type_Bmuc.a.a().b(this.jdField_a_of_type_Boolean);
+    if ("center".equals(paramString)) {
+      return 13;
+    }
+    if ("center_horizontal".equals(paramString)) {
+      return 14;
+    }
+    if ("center_vertical".equals(paramString)) {
+      return 15;
+    }
+    return 9;
+  }
+  
+  protected ViewGroup.LayoutParams a(int paramInt1, int paramInt2)
+  {
+    return new RelativeLayout.LayoutParams(paramInt1, paramInt2);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!(this.a instanceof RelativeLayout)) {}
+  }
+  
+  protected void a(String paramString1, String paramString2, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    super.a(paramString1, paramString2, paramLayoutParams);
+    paramLayoutParams = (RelativeLayout.LayoutParams)paramLayoutParams;
+    if ("gravity".equals(paramString1)) {
+      paramLayoutParams.addRule(b(paramString2));
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!"relative".equals(paramString1));
+        paramString1 = paramString2.split(" ");
+      } while ((paramString1 == null) || (paramString1.length != 2));
+      if ("bottom".equals(paramString1[1]))
+      {
+        paramLayoutParams.addRule(3, Integer.parseInt(paramString1[0]));
+        paramLayoutParams.addRule(5, Integer.parseInt(paramString1[0]));
+        return;
+      }
+    } while (!"right".equals(paramString1[1]));
+    paramLayoutParams.addRule(6, Integer.parseInt(paramString1[0]));
   }
 }
 

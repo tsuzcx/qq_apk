@@ -1,35 +1,72 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.subscribe.comment.CommentEditText;
+import android.os.Bundle;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.1;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.2;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.3;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.4;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.5;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.6;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class tuv
-  extends uce
+  extends MqqHandler
 {
-  public tuv(Activity paramActivity)
+  public tuv(SubscriptFeedsActivity paramSubscriptFeedsActivity, Looper paramLooper)
   {
-    super(paramActivity);
+    super(paramLooper);
   }
   
-  protected int a()
+  public void handleMessage(Message paramMessage)
   {
-    return 2131560520;
-  }
-  
-  protected void a(View paramView)
-  {
-    if (this.a != null) {
-      this.a.a();
+    if (this.a.isFinishing()) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 1002: 
+            try
+            {
+              paramMessage = twi.a().b(this.a.app);
+              this.a.runOnUiThread(new SubscriptFeedsActivity.14.1(this, paramMessage));
+              return;
+            }
+            catch (Exception paramMessage) {}
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("SubscriptFeedsActivity", 2, paramMessage.toString());
+        return;
+        this.a.runOnUiThread(new SubscriptFeedsActivity.14.2(this));
+        return;
+        paramMessage = paramMessage.getData();
+      } while ((paramMessage == null) || (!bmqa.a()));
+      paramMessage = paramMessage.getSerializable("ReadInJoyArticleList");
+    } while ((paramMessage == null) || (!(paramMessage instanceof ArrayList)));
+    if ((!SubscriptFeedsActivity.a(this.a, (ArrayList)paramMessage)) && (QLog.isColorLevel())) {
+      QLog.d("SubscriptFeedsActivity", 2, "onGetRecommendReadInJoyArticleList data save to sp fail");
     }
-  }
-  
-  protected void b()
-  {
-    super.b();
+    this.a.runOnUiThread(new SubscriptFeedsActivity.14.3(this, paramMessage));
+    return;
+    this.a.runOnUiThread(new SubscriptFeedsActivity.14.4(this));
+    return;
+    this.a.runOnUiThread(new SubscriptFeedsActivity.14.5(this));
+    return;
+    this.a.runOnUiThread(new SubscriptFeedsActivity.14.6(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tuv
  * JD-Core Version:    0.7.0.1
  */

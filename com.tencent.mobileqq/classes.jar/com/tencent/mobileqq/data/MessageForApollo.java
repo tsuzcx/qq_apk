@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import amrf;
 import android.text.TextUtils;
+import aopw;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -56,6 +56,7 @@ public class MessageForApollo
   public MessageForArkApp mApolloGameArkMsg;
   public ApolloMessage mApolloMessage;
   public int mGameMode;
+  public int mSendSrc;
   public int msgType;
   public int overType;
   public List<Long> playerList = new ArrayList();
@@ -70,7 +71,7 @@ public class MessageForApollo
   {
     try
     {
-      this.mApolloMessage = ((ApolloMessage)amrf.a(this.msgData));
+      this.mApolloMessage = ((ApolloMessage)aopw.a(this.msgData));
       this.hasPlayed = this.mApolloMessage.isPlayed;
       this.msg = ApolloUtil.a(this);
       if (!TextUtils.isEmpty(this.mApolloMessage.extStr))
@@ -221,7 +222,7 @@ public class MessageForApollo
     try
     {
       this.mApolloMessage.isPlayed = this.hasPlayed;
-      this.msgData = amrf.a(this.mApolloMessage);
+      this.msgData = aopw.a(this.mApolloMessage);
       return;
     }
     catch (Exception localException)

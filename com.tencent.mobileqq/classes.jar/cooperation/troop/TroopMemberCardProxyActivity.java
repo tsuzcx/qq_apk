@@ -1,26 +1,30 @@
 package cooperation.troop;
 
+import Override;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import azqs;
-import biqn;
-import biqw;
-import bkcv;
+import android.content.res.Configuration;
+import android.view.MotionEvent;
+import bcst;
+import blfh;
+import blfq;
+import bmrf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class TroopMemberCardProxyActivity
   extends TroopBaseProxyActivity
 {
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, Class paramClass, Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString3, String paramString4, int paramInt)
   {
-    paramQQAppInterface = new bkcv(paramQQAppInterface);
+    paramQQAppInterface = new bmrf(paramQQAppInterface);
     PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
     if (localPluginCommunicationHandler != null) {
       localPluginCommunicationHandler.register(paramQQAppInterface);
     }
-    paramQQAppInterface = new biqw(1);
+    paramQQAppInterface = new blfq(1);
     paramQQAppInterface.jdField_b_of_type_JavaLangString = paramString1;
     paramQQAppInterface.d = paramString2;
     paramQQAppInterface.jdField_a_of_type_JavaLangString = paramString4;
@@ -34,18 +38,33 @@ public class TroopMemberCardProxyActivity
     paramQQAppInterface.jdField_b_of_type_Int = paramInt;
     paramQQAppInterface.c = 10000;
     paramQQAppInterface.f = null;
-    biqn.a(paramActivity, paramQQAppInterface);
-    azqs.b(null, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "load_plugin", 0, 0, null, null, null, null);
+    blfh.a(paramActivity, paramQQAppInterface);
+    bcst.b(null, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "load_plugin", 0, 0, null, null, null, null);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public String getPluginID()
   {
     return null;
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop.TroopMemberCardProxyActivity
  * JD-Core Version:    0.7.0.1
  */

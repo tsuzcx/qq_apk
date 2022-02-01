@@ -1,25 +1,20 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class ancg
-  extends ancs
+class ancg
+  implements Comparator<ApolloActionData>
 {
-  public long a;
-  public ArrayList<amxp> a;
-  public boolean a;
+  ancg(ancd paramancd) {}
   
-  public ancg()
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    this.b = 4L;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("ARLocalFaceRecogResult{recogType = ").append(this.b).append(",isTimeOut = ").append(this.jdField_a_of_type_Boolean).append(",frameIdx = ").append(this.jdField_a_of_type_Long).append(", faceDatas.size = ");
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
-    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size();; i = 0) {
-      return i + '}';
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
     }
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
+    }
+    return -1;
   }
 }
 

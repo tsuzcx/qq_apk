@@ -1,27 +1,9 @@
-import android.util.Property;
+import java.io.File;
 
-class bndv
-  extends Property<bnds, Float>
+public class bndv
 {
-  bndv(bnds parambnds, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
-  
-  public Float a(bnds parambnds)
-  {
-    if (parambnds != null) {
-      return Float.valueOf(bnds.a(parambnds));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(bnds parambnds, Float paramFloat)
-  {
-    if (parambnds != null) {
-      bnds.a(parambnds, paramFloat.floatValue());
-    }
-  }
+  public static final String a = bndu.b + File.separator + "ae";
+  public static final String b = bndu.a + File.separator + "ae";
 }
 
 

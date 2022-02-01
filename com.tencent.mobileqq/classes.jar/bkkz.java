@@ -1,23 +1,70 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import java.util.HashMap;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.widget.HongBaoListView;
 
-class bkkz
-  implements ThreadPool.Job<Void>
+public class bkkz
+  implements Handler.Callback
 {
-  bkkz(bkks parambkks, Long paramLong, bave parambave) {}
+  public bkkz(HongBaoListView paramHongBaoListView) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramJobContext = (bkkp)bkks.a(this.jdField_a_of_type_Bkks).get(this.jdField_a_of_type_JavaLangLong);
-    if ((paramJobContext == null) || (paramJobContext.d())) {
-      bkks.a(this.jdField_a_of_type_Bkks, this.jdField_a_of_type_JavaLangLong.longValue());
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      return null;
-      bkks.b(this.jdField_a_of_type_Bkks).a(this.jdField_a_of_type_Bave);
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            this.a.setIsShowingPreguide(true);
+            this.a.jdField_a_of_type_Azbj.a(this.a.d / 5, 300L);
+            this.a.springBackTo(-this.a.d);
+            if (this.a.jdField_a_of_type_Bkla != null) {
+              this.a.jdField_a_of_type_Bkla.b(false);
+            }
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 2000L);
+            this.a.invalidate();
+            return false;
+            this.a.a(300L);
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
+          } while (this.a.jdField_a_of_type_Bkla == null);
+          this.a.jdField_a_of_type_Bkla.a(false);
+          return false;
+          this.a.setIsShowingPreguide(true);
+          i = this.a.d / 2;
+          this.a.setSpringbackOffset(-this.a.d);
+          if (paramMessage.arg1 != 0) {
+            i = paramMessage.arg1;
+          }
+          this.a.springBackTo(-i);
+          this.a.jdField_a_of_type_Azbj.a(this.a.d / 5, 300L);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 2000L);
+        } while (this.a.jdField_a_of_type_Bkla == null);
+        this.a.jdField_a_of_type_Bkla.b(false);
+        return false;
+        this.a.a(300L);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
+      } while (this.a.jdField_a_of_type_Bkla == null);
+      this.a.jdField_a_of_type_Bkla.a(false);
+      return false;
+      this.a.setIsShowingPreguide(false);
+      this.a.setSpringbackOffset(0);
+      return false;
+      if (!this.a.isStackFromBottom()) {
+        this.a.setStackFromBottom(true);
+      }
+      this.a.setStackFromBottom(false);
+    } while (this.a.k);
+    int i = (int)this.a.getResources().getDimension(2131298126);
+    this.a.springBackTo(-i);
+    return false;
   }
 }
 

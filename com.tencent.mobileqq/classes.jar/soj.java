@@ -1,25 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.widget.AbsListView;
 
-public class soj
-  implements nbs
+class soj
+  implements bkhe
 {
-  public soj(BridgeModule paramBridgeModule, String paramString) {}
+  soj(snh paramsnh) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramInt == 0)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
+    default: 
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramString);
+    snh.b(this.a, paramAbsListView);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     soj
  * JD-Core Version:    0.7.0.1
  */

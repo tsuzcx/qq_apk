@@ -1,139 +1,118 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.Stranger;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class awhd
-  extends awgq
 {
-  public awhd()
+  private static awhd jdField_a_of_type_Awhd;
+  private int jdField_a_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  private awhd()
   {
-    this.a = 9;
+    if (NetConnInfoCenter.socketConnState == 4) {
+      this.jdField_a_of_type_Int = 2;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadingStateManager", 2, "LoadingStateManager init loadingstate = " + this.jdField_a_of_type_Int);
+    }
   }
   
-  public awge a(awge paramawge, Cursor paramCursor, boolean paramBoolean, awgp paramawgp)
+  public static awhd a()
   {
-    paramawge = (Stranger)paramawge;
-    if (paramawgp == null)
-    {
-      paramawge.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
-      paramawge.name = paramCursor.getString(paramCursor.getColumnIndex("name"));
-      paramawge.age = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("age")));
-      paramawge.remark = paramCursor.getString(paramCursor.getColumnIndex("remark"));
-      paramawge.gender = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("gender")));
-      paramawge.groupName = paramCursor.getString(paramCursor.getColumnIndex("groupName"));
-      paramawge.login = paramCursor.getString(paramCursor.getColumnIndex("login"));
-      paramawge.loginId = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("loginId")));
-      paramawge.time = paramCursor.getLong(paramCursor.getColumnIndex("time"));
-      return paramawge;
+    if (jdField_a_of_type_Awhd == null) {
+      jdField_a_of_type_Awhd = new awhd();
     }
-    int i = paramCursor.getColumnIndex("uin");
-    if (i == -1)
-    {
-      paramawgp.a(new NoColumnError("uin", String.class));
-      i = paramCursor.getColumnIndex("name");
-      if (i != -1) {
-        break label504;
-      }
-      paramawgp.a(new NoColumnError("name", String.class));
-      label245:
-      i = paramCursor.getColumnIndex("age");
-      if (i != -1) {
-        break label519;
-      }
-      paramawgp.a(new NoColumnError("age", Byte.TYPE));
-      label280:
-      i = paramCursor.getColumnIndex("remark");
-      if (i != -1) {
-        break label535;
-      }
-      paramawgp.a(new NoColumnError("remark", String.class));
-      label314:
-      i = paramCursor.getColumnIndex("gender");
-      if (i != -1) {
-        break label550;
-      }
-      paramawgp.a(new NoColumnError("gender", Byte.TYPE));
-      label349:
-      i = paramCursor.getColumnIndex("groupName");
-      if (i != -1) {
-        break label566;
-      }
-      paramawgp.a(new NoColumnError("groupName", String.class));
-      label383:
-      i = paramCursor.getColumnIndex("login");
-      if (i != -1) {
-        break label581;
-      }
-      paramawgp.a(new NoColumnError("login", String.class));
-      label417:
-      i = paramCursor.getColumnIndex("loginId");
-      if (i != -1) {
-        break label596;
-      }
-      paramawgp.a(new NoColumnError("loginId", Byte.TYPE));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("time");
-      if (i != -1) {
-        break label612;
-      }
-      paramawgp.a(new NoColumnError("time", Long.TYPE));
-      return paramawge;
-      paramawge.uin = paramCursor.getString(i);
-      break;
-      label504:
-      paramawge.name = paramCursor.getString(i);
-      break label245;
-      label519:
-      paramawge.age = ((byte)paramCursor.getShort(i));
-      break label280;
-      label535:
-      paramawge.remark = paramCursor.getString(i);
-      break label314;
-      label550:
-      paramawge.gender = ((byte)paramCursor.getShort(i));
-      break label349;
-      label566:
-      paramawge.groupName = paramCursor.getString(i);
-      break label383;
-      label581:
-      paramawge.login = paramCursor.getString(i);
-      break label417;
-      label596:
-      paramawge.loginId = ((byte)paramCursor.getShort(i));
-    }
-    label612:
-    paramawge.time = paramCursor.getLong(i);
-    return paramawge;
+    return jdField_a_of_type_Awhd;
   }
   
-  public String a(String paramString)
+  public int a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT ,name TEXT ,age INTEGER ,remark TEXT ,gender INTEGER ,groupName TEXT ,login TEXT ,loginId INTEGER ,time INTEGER,UNIQUE(uin) ON CONFLICT IGNORE)");
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(awge paramawge, ContentValues paramContentValues)
+  public void a()
   {
-    paramawge = (Stranger)paramawge;
-    paramContentValues.put("uin", paramawge.uin);
-    paramContentValues.put("name", paramawge.name);
-    paramContentValues.put("age", Byte.valueOf(paramawge.age));
-    paramContentValues.put("remark", paramawge.remark);
-    paramContentValues.put("gender", Byte.valueOf(paramawge.gender));
-    paramContentValues.put("groupName", paramawge.groupName);
-    paramContentValues.put("login", paramawge.login);
-    paramContentValues.put("loginId", Byte.valueOf(paramawge.loginId));
-    paramContentValues.put("time", Long.valueOf(paramawge.time));
+    jdField_a_of_type_Awhd = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(FromServiceMsg paramFromServiceMsg, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getAttribute("_tag_socket") == null)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("LoadingStateManager", 2, "notifyIsNotIllegalNetWork mShowIllegalNetworkBar=" + this.jdField_a_of_type_Boolean);
+            QLog.d("LoadingStateManager", 2, "changeConversationLoadingState mShowErrorNetworkBar=" + this.b);
+          }
+        } while ((!this.jdField_a_of_type_Boolean) && (!this.b));
+        if (!this.b) {
+          break;
+        }
+        paramFromServiceMsg = paramQQAppInterface.getHandler(Conversation.class);
+      } while (paramFromServiceMsg == null);
+      paramFromServiceMsg.obtainMessage(10002, null).sendToTarget();
+      return;
+      if (!c()) {
+        a(0);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("LoadingStateManager", 2, "notifyIsNotIllegalNetWork");
+      }
+      paramFromServiceMsg = paramQQAppInterface.getHandler(Conversation.class);
+    } while (paramFromServiceMsg == null);
+    paramFromServiceMsg.obtainMessage(1134012, null).sendToTarget();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2);
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Int == 3;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Int == 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awhd
  * JD-Core Version:    0.7.0.1
  */

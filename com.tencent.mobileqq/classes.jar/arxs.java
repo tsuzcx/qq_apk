@@ -1,45 +1,28 @@
-import com.tencent.qflutter.utils.FLog.Log;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class arxs
-  implements FLog.Log
+class arxs
+  implements View.OnClickListener
 {
-  public void d(String paramString1, String paramString2)
+  arxs(arxr paramarxr) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d(paramString1, 4, paramString2);
+    long l = System.currentTimeMillis();
+    if (l - arxr.a(this.a) > 1000L)
+    {
+      arxr.a(this.a, l);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("AECAMERA_MODE", 202);
+      localBundle.putInt("VIDEO_STORY_FROM_TYPE", bnqb.i.a());
+      bnqf.a((BaseActivity)this.a.a.a, 120, localBundle);
+      bcst.b(((BaseActivity)this.a.a.a).app, "dc00898", "", "", "0X800A36E", "0X800A36E", 0, 0, "", "", "", "");
     }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

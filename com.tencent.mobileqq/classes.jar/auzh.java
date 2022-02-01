@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class auzh
-  implements DialogInterface.OnClickListener
+public class auzh
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public String a;
+  public int[] a;
+  public int[] b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auzh
  * JD-Core Version:    0.7.0.1
  */

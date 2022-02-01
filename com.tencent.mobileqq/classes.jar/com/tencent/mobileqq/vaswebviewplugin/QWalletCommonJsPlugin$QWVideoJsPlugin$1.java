@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import ajah;
+import aksa;
 import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class QWalletCommonJsPlugin$QWVideoJsPlugin$1
-  implements ajah
+  implements aksa
 {
   QWalletCommonJsPlugin$QWVideoJsPlugin$1(QWalletCommonJsPlugin.QWVideoJsPlugin paramQWVideoJsPlugin, String paramString) {}
   
@@ -50,7 +50,7 @@ class QWalletCommonJsPlugin$QWVideoJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.QWVideoJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

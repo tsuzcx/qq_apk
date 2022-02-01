@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import bdjz;
+import bgpa;
 
 class AuthorityAccountView$DelAccountRunnable$1
   implements Runnable
@@ -28,7 +28,7 @@ class AuthorityAccountView$DelAccountRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityAccountView.DelAccountRunnable.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,89 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import java.util.List;
+import android.app.Activity;
+import android.content.IntentFilter;
+import android.view.KeyEvent;
+import cooperation.qzone.util.QZLog;
 
 public class blvm
-  extends QQUIEventReceiver<blvi, bmsb>
 {
-  public blvm(@NonNull blvi paramblvi)
+  public static String a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  public blvo a;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  private boolean d;
+  
+  static
   {
-    super(paramblvi);
+    jdField_a_of_type_JavaLangString = "WatchActivityManager";
   }
   
-  public void a(@NonNull blvi paramblvi, @NonNull bmsb parambmsb)
+  public blvm()
   {
-    paramblvi = paramblvi.a;
-    if (paramblvi != null)
+    this.jdField_a_of_type_Blvo = new blvo(this, null);
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.c = false;
+    this.d = false;
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
     {
-      Object localObject = paramblvi.a(parambmsb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.pack_id);
-      if (!(localObject instanceof bmwf))
-      {
-        wxe.d(this.TAG, "DoodleEmojiDownloadEventReceiver no FacePackage found by pack id = " + parambmsb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.pack_id);
-        return;
-      }
-      localObject = (bmwf)localObject;
-      if (parambmsb.jdField_a_of_type_Int == 0)
-      {
-        if (parambmsb.jdField_a_of_type_Boolean)
-        {
-          wxe.b(this.TAG, "notify ui we finish downloading");
-          ((bmwf)localObject).jdField_b_of_type_Boolean = false;
-          ((bmwf)localObject).g = parambmsb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.getLocalEmojiFolderPath();
-          ((bmwf)localObject).c = 0;
-          ((bmwf)localObject).d = 0;
-          paramblvi.a((bmvv)localObject);
-          return;
-        }
-        wxe.b(this.TAG, "notify ui we new progress : " + parambmsb.jdField_b_of_type_Long + " / " + parambmsb.jdField_a_of_type_Long);
-        ((bmwf)localObject).jdField_b_of_type_Boolean = true;
-        ((bmwf)localObject).g = null;
-        ((bmwf)localObject).c = ((int)parambmsb.jdField_a_of_type_Long);
-        ((bmwf)localObject).d = ((int)parambmsb.jdField_b_of_type_Long);
-        paramblvi.a((bmvv)localObject);
-        return;
-      }
-      if (parambmsb.jdField_b_of_type_Boolean)
-      {
-        blvi.a((bmwf)localObject, parambmsb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem);
-        ((bmwf)localObject).a.clear();
-        paramblvi.a((bmvv)localObject);
-        return;
-      }
-      ((bmwf)localObject).jdField_b_of_type_Boolean = false;
-      ((bmwf)localObject).g = null;
-      ((bmwf)localObject).c = 0;
-      ((bmwf)localObject).d = 0;
-      paramblvi.a((bmvv)localObject);
-      wxe.e(this.TAG, "DoodleEmojiDownloadEventReceiver download error = " + parambmsb.jdField_a_of_type_Int);
-      wxk.a("0X80076C9");
-      wxk.b("0X80075DE");
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_Blvo, localIntentFilter);
+    }
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_Blvo);
+    }
+  }
+  
+  public void a()
+  {
+    d();
+  }
+  
+  public void a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    switch (paramInt)
+    {
+    default: 
       return;
     }
-    wxe.b(this.TAG, "DoodleEmojiDownloadEventReceiver adapter is null");
+    this.c = true;
   }
   
-  public Class acceptEventClass()
+  public void a(Activity paramActivity)
   {
-    return bmsb.class;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    e();
+  }
+  
+  public boolean a()
+  {
+    QZLog.i(jdField_a_of_type_JavaLangString, 4, "ljh, mActivityStopped = " + this.d + ", mPressScreenOff = " + this.jdField_a_of_type_Boolean + ", mPressMenuKey = " + this.c + ", mPressHomeKey = " + this.b);
+    return (this.d) && (!this.jdField_a_of_type_Boolean) && (!this.c) && (!this.b);
+  }
+  
+  public void b()
+  {
+    this.d = true;
+  }
+  
+  public void c()
+  {
+    f();
   }
 }
 

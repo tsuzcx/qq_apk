@@ -1,16 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
-
 public class bbny
-  implements View.OnClickListener
 {
-  public bbny(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  public int a;
+  public CharSequence a;
+  public String a;
   
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-  }
+  public bbny(bbnx parambbnx) {}
 }
 
 

@@ -1,95 +1,81 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
 public class arcw
-  implements aynt
 {
-  public static final String a;
-  public static final String b = alud.a(2131705776);
-  int jdField_a_of_type_Int = -1;
-  List<aynu> jdField_a_of_type_JavaUtilList;
-  String c;
+  protected byte a;
+  protected int a;
+  protected long a;
+  protected String a;
+  protected short a;
+  protected boolean a;
+  protected byte[] a;
+  public String b;
+  protected String c;
+  protected String d;
+  protected String e = "";
+  protected String f = "";
   
-  static
+  public arcw(arcv paramarcv)
   {
-    jdField_a_of_type_JavaLangString = arcw.class.getSimpleName();
+    this.jdField_a_of_type_Byte = 3;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public arcw(List<aynu> paramList, String paramString, int paramInt)
+  public void a(DataInputStream paramDataInputStream)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.c = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramDataInputStream.readLong();
+    this.jdField_a_of_type_JavaLangString = paramDataInputStream.readUTF();
+    this.b = paramDataInputStream.readUTF();
+    this.d = paramDataInputStream.readUTF();
+    this.jdField_a_of_type_Byte = paramDataInputStream.readByte();
+    this.c = paramDataInputStream.readUTF();
+    this.e = paramDataInputStream.readUTF();
+    this.jdField_a_of_type_Short = paramDataInputStream.readShort();
   }
   
-  public int a()
+  public void a(DataOutputStream paramDataOutputStream)
   {
-    return 3;
-  }
-  
-  public String a()
-  {
-    return alud.a(2131705758);
-  }
-  
-  public List<aynu> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    ayig localayig;
-    QQAppInterface localQQAppInterface;
-    JSONObject localJSONObject;
-    if (((paramView.getContext() instanceof UniteSearchActivity)) && (ayif.b.containsKey(this)))
-    {
-      localayig = (ayig)ayif.b.get(this);
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localJSONObject = new JSONObject();
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = "";
     }
-    try
-    {
-      localJSONObject.put("project", aysc.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localayig.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "native");
-      aysc.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localayig.jdField_a_of_type_Long + "").obj2(localayig.b).ver1(localayig.jdField_a_of_type_JavaLangString).ver2(aysc.a(UniteSearchActivity.d)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + ayif.jdField_a_of_type_Long));
-      ayvm.a(this.c, 100, 0, paramView);
-      arrp.a("0X8006061");
-      aysc.a(null, 0, this.jdField_a_of_type_Int, "0x8009D5B", 0, 0, null, null);
-      FileSearchActivity.a(paramView.getContext(), this.c, this.jdField_a_of_type_JavaUtilList, true, this.jdField_a_of_type_Int);
-      return;
+    if (this.b == null) {
+      this.b = "";
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
-      }
+    if (this.d == null) {
+      this.d = "";
     }
+    if (this.c == null) {
+      this.c = "";
+    }
+    paramDataOutputStream.writeLong(this.jdField_a_of_type_Long);
+    paramDataOutputStream.writeUTF(this.jdField_a_of_type_JavaLangString);
+    paramDataOutputStream.writeUTF(this.b);
+    paramDataOutputStream.writeUTF(this.d);
+    paramDataOutputStream.writeByte(this.jdField_a_of_type_Byte);
+    paramDataOutputStream.writeUTF(this.c);
+    paramDataOutputStream.writeUTF(this.e);
+    paramDataOutputStream.writeShort(this.jdField_a_of_type_Short);
   }
   
-  public String b()
+  public void b(DataInputStream paramDataInputStream)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > a()) {
-      aysc.a(null, 0, this.jdField_a_of_type_Int, "0x8009D5A", 0, 0, null, null);
+    a(paramDataInputStream);
+    this.f = paramDataInputStream.readUTF();
+  }
+  
+  public void b(DataOutputStream paramDataOutputStream)
+  {
+    a(paramDataOutputStream);
+    if (this.f == null) {
+      this.f = "";
     }
-    return this.c;
+    paramDataOutputStream.writeUTF(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcw
  * JD-Core Version:    0.7.0.1
  */

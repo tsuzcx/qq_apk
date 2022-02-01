@@ -1,47 +1,45 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.QzoneExternalRequest;
+import cooperation.vip.manager.CommonRequestManager.1;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import mqq.os.MqqHandler;
 
-public class bmuj
-  implements bmrl
+public abstract class bmuj
+  extends MSFServlet
 {
-  ArrayList<bmri> a = null;
-  
-  public bmuj(bmri... paramVarArgs)
+  protected long a()
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      throw new IllegalArgumentException("layers should not be null or empty");
-    }
-    this.a = new ArrayList(paramVarArgs.length);
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      bmri localbmri = paramVarArgs[i];
-      if (localbmri != null) {
-        this.a.add(localbmri);
-      }
-      i += 1;
-    }
+    return 10000L;
   }
   
-  public bmri a(String paramString)
+  public abstract QzoneExternalRequest a(Intent paramIntent);
+  
+  public void a(Intent paramIntent)
   {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
-    {
-      if (((bmri)this.a.get(i)).a().equals(paramString)) {
-        return (bmri)this.a.get(i);
-      }
-      i += 1;
-    }
-    return null;
+    ThreadManager.getSubThreadHandler().post(new CommonRequestManager.1(this, paramIntent));
   }
   
-  public void a(List<bmri> paramList, DoodleView paramDoodleView)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    paramList.addAll(this.a);
+    QzoneExternalRequest localQzoneExternalRequest = a(paramIntent);
+    if (localQzoneExternalRequest == null)
+    {
+      QLog.i("CommonRequestManager", 1, " onSend request = null");
+      return;
+    }
+    byte[] arrayOfByte = localQzoneExternalRequest.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null)
+    {
+      QLog.e("CommonRequestManager", 1, "onSend request encode result is null.cmd=" + localQzoneExternalRequest.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(a());
+    paramPacket.setSSOCommand("SQQzoneSvc." + localQzoneExternalRequest.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

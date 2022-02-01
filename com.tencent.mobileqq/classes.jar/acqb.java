@@ -1,79 +1,37 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-public class acqb
-  extends alpa
+class acqb
+  implements aaob
 {
-  public acqb(ChatSettingForTroop paramChatSettingForTroop) {}
+  acqb(acqa paramacqa, acpp paramacpp, String paramString, String[] paramArrayOfString, aanz paramaanz) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void callback(Bundle paramBundle)
   {
-    if ((paramInt2 != 0) && (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramString1)))
+    String str1 = paramBundle.getString("phone");
+    String str2 = paramBundle.getString("name");
+    String str3 = paramBundle.getString("city");
+    String str4 = paramBundle.getString("area");
+    paramBundle = new JSONObject();
+    try
     {
-      if ((!this.a.isFinishing()) && (this.a.isResume()))
-      {
-        paramString1 = paramString2;
-        if (TextUtils.isEmpty(paramString2)) {
-          paramString1 = this.a.getResources().getString(2131695087);
-        }
-        QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
-      }
-      ChatSettingForTroop.m(this.a);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    boolean bool = true;
-    super.a(paramBoolean, paramString1, paramString2, paramString3, paramInt);
-    if (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramString1))
-    {
-      this.a.p();
-      if (!paramBoolean) {
-        break label171;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName = true;
-      this.a.a(paramString2);
-      if ((this.a.isResume()) && (this.a.e))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop = false;
-        bcpx.a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.a, new acqc(this));
-        this.a.e = false;
-      }
-      paramString1 = this.a;
-      if ((this.a.d) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop)) {
-        break label166;
-      }
-      paramBoolean = bool;
-      ChatSettingForTroop.b(paramString1, paramBoolean);
-    }
-    label166:
-    label171:
-    do
-    {
+      paramBundle.put("phone", str1);
+      paramBundle.put("name", str2);
+      paramBundle.put("city", str3);
+      paramBundle.put("area", str4);
+      paramBundle = paramBundle.toString();
+      acqy.a("GdtGetUserInfoHandler", "handleJsCallRequest() called with: webPlugin = [" + this.jdField_a_of_type_Acpp + "], callback = [" + this.jdField_a_of_type_JavaLangString + "], args = [" + this.jdField_a_of_type_ArrayOfJavaLangString + "], result = [" + paramBundle + "]");
+      this.jdField_a_of_type_Acpp.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      this.jdField_a_of_type_Aanz.b();
       return;
-      paramBoolean = false;
-      break;
-      if (paramInt == 1328) {
-        ChatSettingForTroop.n(this.a);
-      }
-      paramString1 = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        paramString1 = alud.a(2131702131);
-      }
-      QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.getTroopName();
-        this.a.e();
+        acqy.d("GdtGetUserInfoHandler", localException.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.chatopttroop", 2, paramString1);
+    }
   }
 }
 

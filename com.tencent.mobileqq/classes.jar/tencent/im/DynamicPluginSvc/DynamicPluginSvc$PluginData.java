@@ -23,7 +23,7 @@ public final class DynamicPluginSvc$PluginData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.DynamicPluginSvc.DynamicPluginSvc.PluginData
  * JD-Core Version:    0.7.0.1
  */

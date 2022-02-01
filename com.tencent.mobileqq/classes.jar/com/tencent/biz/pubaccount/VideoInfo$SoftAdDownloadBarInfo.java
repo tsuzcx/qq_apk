@@ -4,18 +4,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import nsv;
+import obz;
+import omv;
 
 public class VideoInfo$SoftAdDownloadBarInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoInfo.DownloadBarInfo> CREATOR = new nsv();
+  public static final Parcelable.Creator<VideoInfo.DownloadBarInfo> CREATOR = new obz();
   public int a;
   public UrlJumpInfo a;
   public String a;
+  public omv a;
+  public int b;
   public String b;
   public String c;
   public String d;
+  public String e;
   
   public int describeContents()
   {
@@ -24,17 +28,19 @@ public class VideoInfo$SoftAdDownloadBarInfo
   
   public String toString()
   {
-    return "SoftAdDownloadBarInfo{title=" + this.jdField_a_of_type_JavaLangString + ", subTitle='" + this.b + '\'' + ", smallIconUrl='" + this.c + '\'' + ", bigIconUrl='" + this.d + '\'' + ", changeBiggerPositionPercent='" + this.jdField_a_of_type_Int + '\'' + ", urlJumpInfo=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo + '}';
+    return "SoftAdDownloadBarInfo{title=" + this.jdField_a_of_type_JavaLangString + ", subTitle='" + this.jdField_b_of_type_JavaLangString + '\'' + ", smallIconUrl='" + this.c + '\'' + ", bigIconUrl='" + this.d + '\'' + ", changeBiggerPositionPercent='" + this.jdField_a_of_type_Int + '\'' + ", urlJumpInfo=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
     paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo, paramInt);
+    paramParcel.writeString(this.e);
+    paramParcel.writeInt(this.jdField_b_of_type_Int);
   }
 }
 

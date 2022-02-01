@@ -1,16 +1,21 @@
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface vzi
+class vzi
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  vzi(vzh paramvzh) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vzi
  * JD-Core Version:    0.7.0.1
  */

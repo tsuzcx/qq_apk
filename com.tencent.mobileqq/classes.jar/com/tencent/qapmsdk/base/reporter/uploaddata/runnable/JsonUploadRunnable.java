@@ -77,427 +77,432 @@ public final class JsonUploadRunnable
     //   66: ldc 156
     //   68: invokeinterface 152 3 0
     //   73: pop
-    //   74: getstatic 102	com/tencent/qapmsdk/base/reporter/authorization/Authorization:isAuthorize	Z
-    //   77: ifeq +18 -> 95
-    //   80: aload_1
-    //   81: checkcast 144	java/util/Map
-    //   84: ldc 158
-    //   86: getstatic 107	com/tencent/qapmsdk/base/meta/BaseInfo:token	Ljava/lang/String;
-    //   89: invokeinterface 152 3 0
-    //   94: pop
-    //   95: aload_0
-    //   96: aload_1
-    //   97: invokevirtual 162	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:connectionBuilder	(Ljava/util/HashMap;)Ljava/net/HttpURLConnection;
-    //   100: astore_3
-    //   101: aload_3
-    //   102: ifnull +323 -> 425
-    //   105: new 164	java/util/zip/GZIPOutputStream
-    //   108: dup
-    //   109: new 166	java/io/DataOutputStream
-    //   112: dup
-    //   113: aload_3
-    //   114: invokevirtual 172	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   117: invokespecial 175	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   120: checkcast 177	java/io/OutputStream
-    //   123: invokespecial 178	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   126: checkcast 180	java/io/Closeable
-    //   129: astore 4
-    //   131: aconst_null
-    //   132: checkcast 96	java/lang/Throwable
-    //   135: astore_2
-    //   136: aload_2
-    //   137: astore_1
-    //   138: aload 4
-    //   140: checkcast 164	java/util/zip/GZIPOutputStream
-    //   143: astore 5
-    //   145: aload_2
-    //   146: astore_1
-    //   147: aload_0
-    //   148: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   151: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
-    //   154: invokevirtual 192	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   157: astore 6
-    //   159: aload_2
-    //   160: astore_1
-    //   161: aload 6
-    //   163: ldc 194
-    //   165: invokestatic 197	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   168: aload_2
-    //   169: astore_1
-    //   170: ldc 199
-    //   172: invokestatic 205	java/nio/charset/Charset:forName	(Ljava/lang/String;)Ljava/nio/charset/Charset;
-    //   175: astore 7
-    //   177: aload_2
-    //   178: astore_1
-    //   179: aload 7
-    //   181: ldc 207
-    //   183: invokestatic 197	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   186: aload 6
-    //   188: ifnonnull +111 -> 299
-    //   191: aload_2
-    //   192: astore_1
-    //   193: new 209	kotlin/TypeCastException
-    //   196: dup
-    //   197: ldc 211
-    //   199: invokespecial 214	kotlin/TypeCastException:<init>	(Ljava/lang/String;)V
-    //   202: athrow
-    //   203: astore_2
-    //   204: aload_2
-    //   205: astore_1
-    //   206: aload_2
-    //   207: athrow
-    //   208: astore_2
-    //   209: aload 4
-    //   211: aload_1
-    //   212: invokestatic 220	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   215: aload_2
-    //   216: athrow
-    //   217: astore_1
-    //   218: aload_0
-    //   219: iconst_0
-    //   220: invokevirtual 82	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:setRetry	(I)V
-    //   223: aload_0
-    //   224: getfield 70	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   227: astore_2
-    //   228: aload_2
-    //   229: ifnull +15 -> 244
-    //   232: aload_2
-    //   233: sipush 600
-    //   236: ldc 222
-    //   238: iconst_0
-    //   239: invokeinterface 228 4 0
-    //   244: getstatic 233	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   247: ldc 41
-    //   249: new 235	java/lang/StringBuilder
-    //   252: dup
-    //   253: invokespecial 236	java/lang/StringBuilder:<init>	()V
-    //   256: aload_1
-    //   257: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   260: ldc 242
-    //   262: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   265: aload_0
-    //   266: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   269: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
-    //   272: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   275: ldc 247
-    //   277: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   280: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   283: aload_1
-    //   284: checkcast 96	java/lang/Throwable
-    //   287: invokevirtual 252	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   290: aload_3
-    //   291: ifnull -254 -> 37
-    //   294: aload_3
-    //   295: invokevirtual 255	java/net/HttpURLConnection:disconnect	()V
-    //   298: return
-    //   299: aload_2
-    //   300: astore_1
-    //   301: aload 6
-    //   303: aload 7
-    //   305: invokevirtual 261	java/lang/String:getBytes	(Ljava/nio/charset/Charset;)[B
-    //   308: astore 6
-    //   310: aload_2
-    //   311: astore_1
-    //   312: aload 6
-    //   314: ldc_w 263
-    //   317: invokestatic 197	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   320: aload_2
-    //   321: astore_1
-    //   322: aload 5
-    //   324: aload 6
-    //   326: invokevirtual 267	java/util/zip/GZIPOutputStream:write	([B)V
-    //   329: aload_2
-    //   330: astore_1
-    //   331: aload 5
-    //   333: invokevirtual 270	java/util/zip/GZIPOutputStream:finish	()V
-    //   336: aload_2
-    //   337: astore_1
-    //   338: getstatic 275	kotlin/Unit:INSTANCE	Lkotlin/Unit;
-    //   341: astore 5
-    //   343: aload 4
-    //   345: aload_2
-    //   346: invokestatic 220	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   349: getstatic 280	com/tencent/qapmsdk/common/util/FileUtil:Companion	Lcom/tencent/qapmsdk/common/util/FileUtil$Companion;
-    //   352: new 282	java/io/BufferedInputStream
-    //   355: dup
-    //   356: aload_3
-    //   357: invokevirtual 286	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   360: invokespecial 289	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   363: checkcast 291	java/io/InputStream
-    //   366: sipush 8192
-    //   369: invokevirtual 297	com/tencent/qapmsdk/common/util/FileUtil$Companion:readStream	(Ljava/io/InputStream;I)Ljava/lang/String;
-    //   372: astore_1
-    //   373: getstatic 233	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   376: iconst_2
-    //   377: anewarray 257	java/lang/String
-    //   380: dup
-    //   381: iconst_0
-    //   382: ldc 41
-    //   384: aastore
-    //   385: dup
-    //   386: iconst_1
-    //   387: aload_1
-    //   388: aastore
-    //   389: invokevirtual 301	com/tencent/qapmsdk/common/logger/Logger:i	([Ljava/lang/String;)V
-    //   392: aload_0
-    //   393: aload_1
-    //   394: invokevirtual 305	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:isSucceeded	(Ljava/lang/String;)Z
-    //   397: ifeq +37 -> 434
-    //   400: aload_0
-    //   401: getfield 70	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   404: astore_1
-    //   405: aload_1
-    //   406: ifnull +19 -> 425
-    //   409: aload_1
-    //   410: sipush 200
+    //   74: aload_1
+    //   75: checkcast 144	java/util/Map
+    //   78: ldc 158
+    //   80: getstatic 107	com/tencent/qapmsdk/base/meta/BaseInfo:token	Ljava/lang/String;
+    //   83: invokeinterface 152 3 0
+    //   88: pop
+    //   89: aload_0
+    //   90: aload_1
+    //   91: invokevirtual 162	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:connectionBuilder	(Ljava/util/HashMap;)Ljava/net/HttpURLConnection;
+    //   94: astore_3
+    //   95: aload_3
+    //   96: ifnull +342 -> 438
+    //   99: new 164	java/util/zip/GZIPOutputStream
+    //   102: dup
+    //   103: new 166	java/io/DataOutputStream
+    //   106: dup
+    //   107: aload_3
+    //   108: invokevirtual 172	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   111: invokespecial 175	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   114: checkcast 177	java/io/OutputStream
+    //   117: invokespecial 178	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   120: checkcast 180	java/io/Closeable
+    //   123: astore 4
+    //   125: aconst_null
+    //   126: checkcast 96	java/lang/Throwable
+    //   129: astore_2
+    //   130: aload_2
+    //   131: astore_1
+    //   132: aload 4
+    //   134: checkcast 164	java/util/zip/GZIPOutputStream
+    //   137: astore 5
+    //   139: aload_2
+    //   140: astore_1
+    //   141: aload_0
+    //   142: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   145: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
+    //   148: invokevirtual 192	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   151: astore 6
+    //   153: aload_2
+    //   154: astore_1
+    //   155: aload 6
+    //   157: ldc 194
+    //   159: invokestatic 197	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   162: aload_2
+    //   163: astore_1
+    //   164: ldc 199
+    //   166: invokestatic 205	java/nio/charset/Charset:forName	(Ljava/lang/String;)Ljava/nio/charset/Charset;
+    //   169: astore 7
+    //   171: aload_2
+    //   172: astore_1
+    //   173: aload 7
+    //   175: ldc 207
+    //   177: invokestatic 197	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   180: aload 6
+    //   182: ifnonnull +111 -> 293
+    //   185: aload_2
+    //   186: astore_1
+    //   187: new 209	kotlin/TypeCastException
+    //   190: dup
+    //   191: ldc 211
+    //   193: invokespecial 214	kotlin/TypeCastException:<init>	(Ljava/lang/String;)V
+    //   196: athrow
+    //   197: astore_2
+    //   198: aload_2
+    //   199: astore_1
+    //   200: aload_2
+    //   201: athrow
+    //   202: astore_2
+    //   203: aload 4
+    //   205: aload_1
+    //   206: invokestatic 220	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   209: aload_2
+    //   210: athrow
+    //   211: astore_1
+    //   212: aload_0
+    //   213: iconst_0
+    //   214: invokevirtual 82	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:setRetry	(I)V
+    //   217: aload_0
+    //   218: getfield 70	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   221: astore_2
+    //   222: aload_2
+    //   223: ifnull +15 -> 238
+    //   226: aload_2
+    //   227: sipush 600
+    //   230: ldc 222
+    //   232: iconst_0
+    //   233: invokeinterface 228 4 0
+    //   238: getstatic 233	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   241: ldc 41
+    //   243: new 235	java/lang/StringBuilder
+    //   246: dup
+    //   247: invokespecial 236	java/lang/StringBuilder:<init>	()V
+    //   250: aload_1
+    //   251: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   254: ldc 242
+    //   256: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: aload_0
+    //   260: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   263: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
+    //   266: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   269: ldc 247
+    //   271: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   274: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   277: aload_1
+    //   278: checkcast 96	java/lang/Throwable
+    //   281: invokevirtual 252	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   284: aload_3
+    //   285: ifnull -248 -> 37
+    //   288: aload_3
+    //   289: invokevirtual 255	java/net/HttpURLConnection:disconnect	()V
+    //   292: return
+    //   293: aload_2
+    //   294: astore_1
+    //   295: aload 6
+    //   297: aload 7
+    //   299: invokevirtual 261	java/lang/String:getBytes	(Ljava/nio/charset/Charset;)[B
+    //   302: astore 6
+    //   304: aload_2
+    //   305: astore_1
+    //   306: aload 6
+    //   308: ldc_w 263
+    //   311: invokestatic 197	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   314: aload_2
+    //   315: astore_1
+    //   316: aload 5
+    //   318: aload 6
+    //   320: invokevirtual 267	java/util/zip/GZIPOutputStream:write	([B)V
+    //   323: aload_2
+    //   324: astore_1
+    //   325: aload 5
+    //   327: invokevirtual 270	java/util/zip/GZIPOutputStream:finish	()V
+    //   330: aload_2
+    //   331: astore_1
+    //   332: getstatic 275	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   335: astore 5
+    //   337: aload 4
+    //   339: aload_2
+    //   340: invokestatic 220	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   343: getstatic 280	com/tencent/qapmsdk/common/util/FileUtil:Companion	Lcom/tencent/qapmsdk/common/util/FileUtil$Companion;
+    //   346: new 282	java/io/BufferedInputStream
+    //   349: dup
+    //   350: aload_3
+    //   351: invokevirtual 286	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   354: invokespecial 289	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   357: checkcast 291	java/io/InputStream
+    //   360: sipush 8192
+    //   363: invokevirtual 297	com/tencent/qapmsdk/common/util/FileUtil$Companion:readStream	(Ljava/io/InputStream;I)Ljava/lang/String;
+    //   366: astore_1
+    //   367: getstatic 233	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   370: iconst_2
+    //   371: anewarray 257	java/lang/String
+    //   374: dup
+    //   375: iconst_0
+    //   376: ldc 41
+    //   378: aastore
+    //   379: dup
+    //   380: iconst_1
+    //   381: new 235	java/lang/StringBuilder
+    //   384: dup
+    //   385: invokespecial 236	java/lang/StringBuilder:<init>	()V
+    //   388: ldc_w 299
+    //   391: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   394: aload_1
+    //   395: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   398: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   401: aastore
+    //   402: invokevirtual 303	com/tencent/qapmsdk/common/logger/Logger:i	([Ljava/lang/String;)V
+    //   405: aload_0
+    //   406: aload_1
+    //   407: invokevirtual 307	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:isSucceeded	(Ljava/lang/String;)Z
+    //   410: ifeq +37 -> 447
     //   413: aload_0
-    //   414: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   417: invokevirtual 308	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getDbId	()I
-    //   420: invokeinterface 312 3 0
-    //   425: aload_3
-    //   426: ifnull -389 -> 37
-    //   429: aload_3
-    //   430: invokevirtual 255	java/net/HttpURLConnection:disconnect	()V
-    //   433: return
-    //   434: aload_0
-    //   435: invokevirtual 78	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:getRetry	()I
-    //   438: ifle +88 -> 526
-    //   441: aload_0
-    //   442: invokestatic 318	java/lang/Math:random	()D
-    //   445: iconst_5
-    //   446: i2d
-    //   447: dmul
-    //   448: iconst_2
-    //   449: i2d
-    //   450: dadd
-    //   451: d2l
-    //   452: sipush 1000
-    //   455: i2l
-    //   456: lmul
-    //   457: invokespecial 320	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:reSend	(J)V
-    //   460: goto -35 -> 425
-    //   463: astore_1
-    //   464: getstatic 233	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   467: ldc 41
-    //   469: new 235	java/lang/StringBuilder
-    //   472: dup
-    //   473: invokespecial 236	java/lang/StringBuilder:<init>	()V
-    //   476: aload_1
-    //   477: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   480: ldc 242
-    //   482: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   485: aload_0
-    //   486: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   489: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
-    //   492: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   495: ldc 247
-    //   497: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   500: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   503: aload_1
-    //   504: checkcast 96	java/lang/Throwable
-    //   507: invokevirtual 252	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   510: aload_0
-    //   511: ldc2_w 321
-    //   514: invokespecial 320	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:reSend	(J)V
-    //   517: aload_3
-    //   518: ifnull -481 -> 37
-    //   521: aload_3
-    //   522: invokevirtual 255	java/net/HttpURLConnection:disconnect	()V
-    //   525: return
-    //   526: aload_0
-    //   527: aload_0
-    //   528: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   531: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
-    //   534: ldc_w 324
-    //   537: invokevirtual 328	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   540: aload_3
-    //   541: invokevirtual 331	java/net/HttpURLConnection:getResponseCode	()I
-    //   544: aload_1
-    //   545: aload_0
-    //   546: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   549: invokevirtual 334	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getEventName	()Ljava/lang/String;
-    //   552: invokevirtual 338	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:addLost	(IILjava/lang/String;Ljava/lang/String;)V
-    //   555: aload_0
-    //   556: getfield 70	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   559: astore_2
-    //   560: aload_2
-    //   561: ifnull -136 -> 425
-    //   564: aload_2
-    //   565: sipush 700
-    //   568: aload_1
-    //   569: aload_0
-    //   570: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   573: invokevirtual 308	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getDbId	()I
-    //   576: invokeinterface 228 4 0
-    //   581: goto -156 -> 425
-    //   584: astore_1
-    //   585: getstatic 233	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   588: ldc 41
-    //   590: new 235	java/lang/StringBuilder
-    //   593: dup
-    //   594: invokespecial 236	java/lang/StringBuilder:<init>	()V
-    //   597: aload_1
-    //   598: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   601: ldc 242
-    //   603: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   606: aload_0
-    //   607: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   610: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
-    //   613: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   616: ldc 247
-    //   618: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   621: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   624: aload_1
-    //   625: invokevirtual 252	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   628: aload_0
-    //   629: iconst_0
-    //   630: invokevirtual 82	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:setRetry	(I)V
-    //   633: aload_3
-    //   634: ifnull -597 -> 37
-    //   637: aload_3
-    //   638: invokevirtual 255	java/net/HttpURLConnection:disconnect	()V
-    //   641: return
-    //   642: astore_1
-    //   643: getstatic 233	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   646: ldc 41
-    //   648: new 235	java/lang/StringBuilder
-    //   651: dup
-    //   652: invokespecial 236	java/lang/StringBuilder:<init>	()V
-    //   655: aload_1
-    //   656: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   659: ldc 242
-    //   661: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   664: aload_0
-    //   665: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   668: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
-    //   671: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   674: ldc 247
-    //   676: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   679: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   682: aload_1
-    //   683: checkcast 96	java/lang/Throwable
-    //   686: invokevirtual 252	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   689: goto -399 -> 290
-    //   692: astore_1
-    //   693: aload_3
-    //   694: ifnull +7 -> 701
-    //   697: aload_3
-    //   698: invokevirtual 255	java/net/HttpURLConnection:disconnect	()V
-    //   701: aload_1
-    //   702: athrow
-    //   703: astore_1
-    //   704: getstatic 233	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   707: ldc 41
-    //   709: new 235	java/lang/StringBuilder
-    //   712: dup
-    //   713: invokespecial 236	java/lang/StringBuilder:<init>	()V
-    //   716: aload_1
-    //   717: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   720: ldc 242
-    //   722: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   725: aload_0
-    //   726: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   729: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
-    //   732: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   735: ldc 247
-    //   737: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   740: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   743: aload_1
-    //   744: checkcast 96	java/lang/Throwable
-    //   747: invokevirtual 252	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   750: goto -460 -> 290
+    //   414: getfield 70	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   417: astore_1
+    //   418: aload_1
+    //   419: ifnull +19 -> 438
+    //   422: aload_1
+    //   423: sipush 200
+    //   426: aload_0
+    //   427: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   430: invokevirtual 310	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getDbId	()I
+    //   433: invokeinterface 314 3 0
+    //   438: aload_3
+    //   439: ifnull -402 -> 37
+    //   442: aload_3
+    //   443: invokevirtual 255	java/net/HttpURLConnection:disconnect	()V
+    //   446: return
+    //   447: aload_0
+    //   448: invokevirtual 78	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:getRetry	()I
+    //   451: ifle +88 -> 539
+    //   454: aload_0
+    //   455: invokestatic 320	java/lang/Math:random	()D
+    //   458: iconst_5
+    //   459: i2d
+    //   460: dmul
+    //   461: iconst_2
+    //   462: i2d
+    //   463: dadd
+    //   464: d2l
+    //   465: sipush 1000
+    //   468: i2l
+    //   469: lmul
+    //   470: invokespecial 322	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:reSend	(J)V
+    //   473: goto -35 -> 438
+    //   476: astore_1
+    //   477: getstatic 233	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   480: ldc 41
+    //   482: new 235	java/lang/StringBuilder
+    //   485: dup
+    //   486: invokespecial 236	java/lang/StringBuilder:<init>	()V
+    //   489: aload_1
+    //   490: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   493: ldc 242
+    //   495: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   498: aload_0
+    //   499: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   502: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
+    //   505: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   508: ldc 247
+    //   510: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   513: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   516: aload_1
+    //   517: checkcast 96	java/lang/Throwable
+    //   520: invokevirtual 252	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   523: aload_0
+    //   524: ldc2_w 323
+    //   527: invokespecial 322	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:reSend	(J)V
+    //   530: aload_3
+    //   531: ifnull -494 -> 37
+    //   534: aload_3
+    //   535: invokevirtual 255	java/net/HttpURLConnection:disconnect	()V
+    //   538: return
+    //   539: aload_0
+    //   540: aload_0
+    //   541: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   544: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
+    //   547: ldc_w 326
+    //   550: invokevirtual 330	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   553: aload_3
+    //   554: invokevirtual 333	java/net/HttpURLConnection:getResponseCode	()I
+    //   557: aload_1
+    //   558: aload_0
+    //   559: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   562: invokevirtual 336	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getEventName	()Ljava/lang/String;
+    //   565: invokevirtual 340	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:addLost	(IILjava/lang/String;Ljava/lang/String;)V
+    //   568: aload_0
+    //   569: getfield 70	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   572: astore_2
+    //   573: aload_2
+    //   574: ifnull -136 -> 438
+    //   577: aload_2
+    //   578: sipush 700
+    //   581: aload_1
+    //   582: aload_0
+    //   583: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   586: invokevirtual 310	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getDbId	()I
+    //   589: invokeinterface 228 4 0
+    //   594: goto -156 -> 438
+    //   597: astore_1
+    //   598: getstatic 233	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   601: ldc 41
+    //   603: new 235	java/lang/StringBuilder
+    //   606: dup
+    //   607: invokespecial 236	java/lang/StringBuilder:<init>	()V
+    //   610: aload_1
+    //   611: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   614: ldc 242
+    //   616: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   619: aload_0
+    //   620: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   623: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
+    //   626: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   629: ldc 247
+    //   631: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   634: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   637: aload_1
+    //   638: invokevirtual 252	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   641: aload_0
+    //   642: iconst_0
+    //   643: invokevirtual 82	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:setRetry	(I)V
+    //   646: aload_3
+    //   647: ifnull -610 -> 37
+    //   650: aload_3
+    //   651: invokevirtual 255	java/net/HttpURLConnection:disconnect	()V
+    //   654: return
+    //   655: astore_1
+    //   656: getstatic 233	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   659: ldc 41
+    //   661: new 235	java/lang/StringBuilder
+    //   664: dup
+    //   665: invokespecial 236	java/lang/StringBuilder:<init>	()V
+    //   668: aload_1
+    //   669: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   672: ldc 242
+    //   674: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   677: aload_0
+    //   678: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   681: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
+    //   684: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   687: ldc 247
+    //   689: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   692: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   695: aload_1
+    //   696: checkcast 96	java/lang/Throwable
+    //   699: invokevirtual 252	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   702: goto -418 -> 284
+    //   705: astore_1
+    //   706: aload_3
+    //   707: ifnull +7 -> 714
+    //   710: aload_3
+    //   711: invokevirtual 255	java/net/HttpURLConnection:disconnect	()V
+    //   714: aload_1
+    //   715: athrow
+    //   716: astore_1
+    //   717: getstatic 233	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   720: ldc 41
+    //   722: new 235	java/lang/StringBuilder
+    //   725: dup
+    //   726: invokespecial 236	java/lang/StringBuilder:<init>	()V
+    //   729: aload_1
+    //   730: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   733: ldc 242
+    //   735: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   738: aload_0
+    //   739: getfield 68	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/JsonUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   742: invokevirtual 186	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
+    //   745: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   748: ldc 247
+    //   750: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   753: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   756: aload_1
+    //   757: checkcast 96	java/lang/Throwable
+    //   760: invokevirtual 252	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   763: goto -479 -> 284
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	753	0	this	JsonUploadRunnable
-    //   45	167	1	localObject1	java.lang.Object
-    //   217	67	1	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   300	110	1	localObject2	java.lang.Object
-    //   463	106	1	localException1	java.lang.Exception
-    //   584	41	1	localThrowable1	java.lang.Throwable
-    //   642	41	1	localException2	java.lang.Exception
-    //   692	10	1	localObject3	java.lang.Object
-    //   703	41	1	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   135	57	2	localThrowable2	java.lang.Throwable
-    //   203	4	2	localThrowable3	java.lang.Throwable
-    //   208	8	2	localObject4	java.lang.Object
-    //   227	338	2	localReportResultCallback	IReporter.ReportResultCallback
-    //   100	598	3	localHttpURLConnection	java.net.HttpURLConnection
-    //   129	215	4	localCloseable	java.io.Closeable
-    //   143	199	5	localObject5	java.lang.Object
-    //   157	168	6	localObject6	java.lang.Object
-    //   175	129	7	localCharset	java.nio.charset.Charset
+    //   0	766	0	this	JsonUploadRunnable
+    //   45	161	1	localObject1	java.lang.Object
+    //   211	67	1	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   294	129	1	localObject2	java.lang.Object
+    //   476	106	1	localException1	java.lang.Exception
+    //   597	41	1	localThrowable1	java.lang.Throwable
+    //   655	41	1	localException2	java.lang.Exception
+    //   705	10	1	localObject3	java.lang.Object
+    //   716	41	1	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   129	57	2	localThrowable2	java.lang.Throwable
+    //   197	4	2	localThrowable3	java.lang.Throwable
+    //   202	8	2	localObject4	java.lang.Object
+    //   221	357	2	localReportResultCallback	IReporter.ReportResultCallback
+    //   94	617	3	localHttpURLConnection	java.net.HttpURLConnection
+    //   123	215	4	localCloseable	java.io.Closeable
+    //   137	199	5	localObject5	java.lang.Object
+    //   151	168	6	localObject6	java.lang.Object
+    //   169	129	7	localCharset	java.nio.charset.Charset
     // Exception table:
     //   from	to	target	type
-    //   138	145	203	java/lang/Throwable
-    //   147	159	203	java/lang/Throwable
-    //   161	168	203	java/lang/Throwable
-    //   170	177	203	java/lang/Throwable
-    //   179	186	203	java/lang/Throwable
-    //   193	203	203	java/lang/Throwable
-    //   301	310	203	java/lang/Throwable
-    //   312	320	203	java/lang/Throwable
-    //   322	329	203	java/lang/Throwable
-    //   331	336	203	java/lang/Throwable
-    //   338	343	203	java/lang/Throwable
-    //   138	145	208	finally
-    //   147	159	208	finally
-    //   161	168	208	finally
-    //   170	177	208	finally
-    //   179	186	208	finally
-    //   193	203	208	finally
-    //   206	208	208	finally
-    //   301	310	208	finally
-    //   312	320	208	finally
-    //   322	329	208	finally
-    //   331	336	208	finally
-    //   338	343	208	finally
-    //   105	136	217	java/lang/OutOfMemoryError
-    //   209	217	217	java/lang/OutOfMemoryError
-    //   343	405	217	java/lang/OutOfMemoryError
-    //   409	425	217	java/lang/OutOfMemoryError
-    //   434	460	217	java/lang/OutOfMemoryError
-    //   526	560	217	java/lang/OutOfMemoryError
-    //   564	581	217	java/lang/OutOfMemoryError
-    //   105	136	463	java/lang/Exception
-    //   209	217	463	java/lang/Exception
-    //   343	405	463	java/lang/Exception
-    //   409	425	463	java/lang/Exception
-    //   434	460	463	java/lang/Exception
-    //   526	560	463	java/lang/Exception
-    //   564	581	463	java/lang/Exception
-    //   105	136	584	java/lang/Throwable
-    //   209	217	584	java/lang/Throwable
-    //   343	405	584	java/lang/Throwable
-    //   409	425	584	java/lang/Throwable
-    //   434	460	584	java/lang/Throwable
-    //   526	560	584	java/lang/Throwable
-    //   564	581	584	java/lang/Throwable
-    //   223	228	642	java/lang/Exception
-    //   232	244	642	java/lang/Exception
-    //   244	290	642	java/lang/Exception
-    //   105	136	692	finally
-    //   209	217	692	finally
-    //   218	223	692	finally
-    //   223	228	692	finally
-    //   232	244	692	finally
-    //   244	290	692	finally
-    //   343	405	692	finally
-    //   409	425	692	finally
-    //   434	460	692	finally
-    //   464	517	692	finally
-    //   526	560	692	finally
-    //   564	581	692	finally
-    //   585	633	692	finally
-    //   643	689	692	finally
-    //   704	750	692	finally
-    //   223	228	703	java/lang/OutOfMemoryError
-    //   232	244	703	java/lang/OutOfMemoryError
-    //   244	290	703	java/lang/OutOfMemoryError
+    //   132	139	197	java/lang/Throwable
+    //   141	153	197	java/lang/Throwable
+    //   155	162	197	java/lang/Throwable
+    //   164	171	197	java/lang/Throwable
+    //   173	180	197	java/lang/Throwable
+    //   187	197	197	java/lang/Throwable
+    //   295	304	197	java/lang/Throwable
+    //   306	314	197	java/lang/Throwable
+    //   316	323	197	java/lang/Throwable
+    //   325	330	197	java/lang/Throwable
+    //   332	337	197	java/lang/Throwable
+    //   132	139	202	finally
+    //   141	153	202	finally
+    //   155	162	202	finally
+    //   164	171	202	finally
+    //   173	180	202	finally
+    //   187	197	202	finally
+    //   200	202	202	finally
+    //   295	304	202	finally
+    //   306	314	202	finally
+    //   316	323	202	finally
+    //   325	330	202	finally
+    //   332	337	202	finally
+    //   99	130	211	java/lang/OutOfMemoryError
+    //   203	211	211	java/lang/OutOfMemoryError
+    //   337	418	211	java/lang/OutOfMemoryError
+    //   422	438	211	java/lang/OutOfMemoryError
+    //   447	473	211	java/lang/OutOfMemoryError
+    //   539	573	211	java/lang/OutOfMemoryError
+    //   577	594	211	java/lang/OutOfMemoryError
+    //   99	130	476	java/lang/Exception
+    //   203	211	476	java/lang/Exception
+    //   337	418	476	java/lang/Exception
+    //   422	438	476	java/lang/Exception
+    //   447	473	476	java/lang/Exception
+    //   539	573	476	java/lang/Exception
+    //   577	594	476	java/lang/Exception
+    //   99	130	597	java/lang/Throwable
+    //   203	211	597	java/lang/Throwable
+    //   337	418	597	java/lang/Throwable
+    //   422	438	597	java/lang/Throwable
+    //   447	473	597	java/lang/Throwable
+    //   539	573	597	java/lang/Throwable
+    //   577	594	597	java/lang/Throwable
+    //   217	222	655	java/lang/Exception
+    //   226	238	655	java/lang/Exception
+    //   238	284	655	java/lang/Exception
+    //   99	130	705	finally
+    //   203	211	705	finally
+    //   212	217	705	finally
+    //   217	222	705	finally
+    //   226	238	705	finally
+    //   238	284	705	finally
+    //   337	418	705	finally
+    //   422	438	705	finally
+    //   447	473	705	finally
+    //   477	530	705	finally
+    //   539	573	705	finally
+    //   577	594	705	finally
+    //   598	646	705	finally
+    //   656	702	705	finally
+    //   717	763	705	finally
+    //   217	222	716	java/lang/OutOfMemoryError
+    //   226	238	716	java/lang/OutOfMemoryError
+    //   238	284	716	java/lang/OutOfMemoryError
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.runnable.JsonUploadRunnable
  * JD-Core Version:    0.7.0.1
  */

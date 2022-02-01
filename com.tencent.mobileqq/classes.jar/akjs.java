@@ -1,21 +1,22 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.ThemeImageView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class akjs
+  extends akhu
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public aozs a;
-  public ThemeImageView a;
+  public akjs(NewPhotoListActivity paramNewPhotoListActivity)
+  {
+    super(paramNewPhotoListActivity);
+  }
   
-  public akjs(akjr paramakjr) {}
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjs
  * JD-Core Version:    0.7.0.1
  */

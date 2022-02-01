@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.data.Friends;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class akau
+public class akau
+  extends akaj
 {
-  public int a;
-  public Friends a;
-  
-  public akau(Friends paramFriends, int paramInt)
+  public akau(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
+  }
+  
+  protected void y()
+  {
+    this.a = "MiniPieForNearby";
   }
 }
 

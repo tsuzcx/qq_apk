@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class agex
-  extends aget
+public abstract interface agex
 {
-  public agex(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void setSttNetFinish();
 }
 
 

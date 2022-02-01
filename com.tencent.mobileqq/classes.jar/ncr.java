@@ -1,24 +1,23 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.Context;
-import android.os.Build.VERSION;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.avgame.gameroom.video.AVGameControlUIImpl;
 
-public final class ncr
+public class ncr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  @TargetApi(11)
-  public static void a(Context paramContext, String paramString)
+  public ncr(AVGameControlUIImpl paramAVGameControlUIImpl) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
-      return;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if ((AVGameControlUIImpl.a(this.a)) && (this.a.a != null)) {
+      this.a.a.a(i);
     }
-    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ncr
  * JD-Core Version:    0.7.0.1
  */

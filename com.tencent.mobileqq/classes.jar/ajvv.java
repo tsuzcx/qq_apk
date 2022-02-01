@@ -1,6 +1,14 @@
-public abstract interface ajvv
+import com.tencent.biz.qqcircle.list.bizblocks.QCircleObserver;
+
+class ajvv
+  extends QCircleObserver
 {
-  public abstract void a();
+  ajvv(ajvr paramajvr) {}
+  
+  public void onUpdateRedPoint(int paramInt)
+  {
+    this.a.g();
+  }
 }
 
 

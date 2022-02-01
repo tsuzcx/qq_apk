@@ -1,24 +1,6 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import mqq.observer.BusinessObserver;
-
 public class aizy
-  implements BusinessObserver
-{
-  public void a(int paramInt, String paramString, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramInt == 1) && (paramBundle != null))
-    {
-      paramInt = paramBundle.getInt("btype");
-      String str = paramBundle.getString("bid");
-      if ((aizw.a(paramInt)) && (!TextUtils.isEmpty(str))) {
-        a(paramInt, str, paramBundle);
-      }
-    }
-  }
-}
+  extends aiyk
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

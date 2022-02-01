@@ -1,20 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
-final class alum
-  implements View.OnClickListener
+public class alum
+  extends amcl
 {
-  alum(Dialog paramDialog) {}
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public ImageView b;
+  public TextView b;
   
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
+  public alum(aluh paramaluh) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alum
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.DialogInterface;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
-final class xfz
-  implements ValueAnimator.AnimatorUpdateListener
+public class xfz
+  extends bgmc
 {
-  xfz(xgb paramxgb) {}
+  public xfz(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xfz
  * JD-Core Version:    0.7.0.1
  */

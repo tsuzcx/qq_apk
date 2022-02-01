@@ -34,7 +34,6 @@ import java.util.Set;
 public class AESimpleSticker
   extends AEChainI
 {
-  public static final String PERF_LOG = "[showPreview]";
   private AIAttr aiAttr;
   private BaseFilter mCopyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private Frame mCopyFrame = new Frame();
@@ -171,9 +170,9 @@ public class AESimpleSticker
         paramFrame = this.mVideoFilters.updateAndRenderStaticStickers(paramPTSegAttr, paramPTFaceAttr);
       }
     }
-    BenchUtil.benchStart("[showPreview]updateAndRender - DO_NOT_RENDER_FACE_OFF_FILTER");
+    BenchUtil.benchStart(BenchUtil.SHOWPREVIEW_BENCH_TAG + "updateAndRender - DO_NOT_RENDER_FACE_OFF_FILTER");
     paramPTSegAttr = this.mVideoFilters.updateAndRenderDynamicStickers(paramFrame, paramPTFaceAttr, paramAIAttr);
-    BenchUtil.benchEnd("[showPreview]updateAndRender - DO_NOT_RENDER_FACE_OFF_FILTER");
+    BenchUtil.benchEnd(BenchUtil.SHOWPREVIEW_BENCH_TAG + "updateAndRender - DO_NOT_RENDER_FACE_OFF_FILTER");
     paramFrame = paramPTSegAttr;
     if (!this.mVideoFilters.renderStaticStickerFirst())
     {
@@ -275,7 +274,7 @@ public class AESimpleSticker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AESimpleSticker
  * JD-Core Version:    0.7.0.1
  */

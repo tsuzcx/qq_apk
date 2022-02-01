@@ -7,7 +7,7 @@ import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.baseutils.device.YearClass;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.offlineset.beans.AIBeautyParamsJsonBean;
-import com.tencent.ttpic.offlineset.beans.VLowDeviceModelListJsonBean;
+import com.tencent.ttpic.offlineset.beans.DeviceModelListJsonBean;
 import com.tencent.ttpic.offlineset.enumclass.PhoneType;
 import com.tencent.ttpic.offlineset.enumclass.ScaleMode;
 import com.tencent.ttpic.openapi.offlineset.utils.FileOfflineUtil;
@@ -18,18 +18,19 @@ import java.util.List;
 
 public class OfflineConfig
 {
-  public static final int DEVICE_PERF_LEVERL_HIGH = 4;
+  public static final int DEVICE_PERF_LEVERL_HIGH = 5;
   public static final int DEVICE_PERF_LEVERL_LOW = 2;
   public static final int DEVICE_PERF_LEVERL_MIDDLE = 3;
+  public static final int DEVICE_PERF_LEVERL_MIDDLE_HIGH = 4;
   public static final int DEVICE_PERF_LEVERL_VERYLOW = 1;
   private static final String TAG = "OfflineConfig";
   private static final String TAG_DEVICE_PERF_LEVERL_HIGH = "benchmark/high/";
   private static final String TAG_DEVICE_PERF_LEVERL_LOW = "benchmark/low/";
   private static final String TAG_DEVICE_PERF_LEVERL_MIDDLE = "benchmark/middle/";
+  private static final String TAG_DEVICE_PERF_LEVERL_MIDDLE_HIGH = "benchmark/mhigh/";
   private static final String TAG_DEVICE_PERF_LEVERL_VERYLOW = "benchmark/vlow/";
   public static String sAIBeautyParamFilePath;
   public static AIBeautyParamsJsonBean sAIBeautyParamJsonBean;
-  private static List<String> sDeviceListFromAsserts;
   public static int sDevicePerfLevel = -1;
   protected static float sGauLowMaxSize;
   protected static int sGauLowPhoneYear;
@@ -51,6 +52,7 @@ public class OfflineConfig
   protected static boolean sNotSupportRealTimePag;
   protected static int sPagNeedScaleStatus;
   protected static float sPagScaleVaue;
+  protected static int sPhonePerfLevel = -1;
   protected static int sRapidnetSkipMode;
   protected static boolean sUpdateGaussSetting;
   private static long sVLowRAM;
@@ -62,7 +64,7 @@ public class OfflineConfig
   {
     sIsHardDecodeEnable = false;
     sVLowYear = 2013;
-    sVLowRAM = 0L;
+    sVLowRAM = 4294967296L;
     sVeryLowFrequency = 1500000L;
     sGauSuperPhoneYear = 2017;
     sGauMidderPhoneYear = 2015;
@@ -90,24 +92,35 @@ public class OfflineConfig
   
   private static List<String> getBenchMarkDeviceList(String paramString)
   {
-    sDeviceListFromAsserts = new ArrayList();
-    String str = Build.BRAND.toLowerCase();
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = Build.BRAND.toLowerCase();
     if ("honor".equals(Build.BRAND.toLowerCase())) {
-      str = "huawei";
+      localObject = "huawei";
     }
-    paramString = paramString + str + ".json";
-    if (paramString == null) {
-      return null;
+    String str = FileOfflineUtil.readStringFromAssets(paramString + (String)localObject + ".json");
+    localObject = str;
+    if (str == null)
+    {
+      paramString = FileOfflineUtil.readStringFromAssets(paramString + "misc.json");
+      localObject = paramString;
+      if (paramString == null) {
+        return null;
+      }
     }
-    paramString = FileOfflineUtil.readStringFromAssets(paramString);
-    if (paramString == null) {
-      return null;
+    paramString = (DeviceModelListJsonBean)GsonUtils.json2Obj((String)localObject, new OfflineConfig.1().getType());
+    if ((paramString != null) && (paramString.modelList != null)) {}
+    try
+    {
+      localArrayList.addAll(paramString.modelList);
+      return localArrayList;
     }
-    paramString = (VLowDeviceModelListJsonBean)GsonUtils.json2Obj(paramString, new OfflineConfig.1().getType());
-    if ((paramString != null) && (paramString.modelList != null)) {
-      sDeviceListFromAsserts.addAll(paramString.modelList);
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        LogUtils.e("OfflineConfig", "getBenchMarkDeviceList:" + paramString.getMessage());
+      }
     }
-    return sDeviceListFromAsserts;
   }
   
   private static String getDeviceTAG(int paramInt)
@@ -122,6 +135,8 @@ public class OfflineConfig
       return "benchmark/low/";
     case 3: 
       return "benchmark/middle/";
+    case 4: 
+      return "benchmark/mhigh/";
     }
     return "benchmark/high/";
   }
@@ -184,25 +199,34 @@ public class OfflineConfig
   public static int getPhonePerfLevel()
   {
     int i = 2;
+    if (sPhonePerfLevel != -1) {
+      return sPhonePerfLevel;
+    }
     if (isVeryLowDeviceByBenchmark()) {
       i = 1;
     }
-    while (isMatchPerfLever(2)) {
-      return i;
+    for (;;)
+    {
+      sPhonePerfLevel = i;
+      return sPhonePerfLevel;
+      if (!isMatchPerfLever(2)) {
+        if (isMatchPerfLever(3)) {
+          i = 3;
+        } else if (isMatchPerfLever(4)) {
+          i = 4;
+        } else if (isMatchPerfLever(5)) {
+          i = 5;
+        } else {
+          i = getPhoneType(YearClass.get(AEModule.getContext()));
+        }
+      }
     }
-    if (isMatchPerfLever(3)) {
-      return 3;
-    }
-    if (isMatchPerfLever(4)) {
-      return 4;
-    }
-    return getPhoneType(YearClass.get(AEModule.getContext()));
   }
   
   public static int getPhoneType(int paramInt)
   {
     if (paramInt >= sGauSuperPhoneYear) {
-      return 4;
+      return 5;
     }
     if (paramInt >= sGauMidderPhoneYear) {
       return 3;
@@ -240,25 +264,42 @@ public class OfflineConfig
   
   private static boolean isMatchPerfLever(int paramInt)
   {
-    boolean bool = true;
+    bool1 = true;
     if (sDevicePerfLevel >= 0) {
       return sDevicePerfLevel == paramInt;
     }
-    List localList = getBenchMarkDeviceList(getDeviceTAG(paramInt));
-    if ((localList != null) && (localList.contains(Build.MODEL.toLowerCase())))
-    {
-      LogUtils.i("OfflineConfig", "DeviceByBenchmark:model:" + paramInt + Build.MODEL.toLowerCase() + " isInList:" + bool);
-      if (!bool) {
-        break label105;
-      }
-    }
     for (;;)
     {
-      sDevicePerfLevel = paramInt;
-      return bool;
-      bool = false;
-      break;
-      label105:
+      try
+      {
+        List localList = getBenchMarkDeviceList(getDeviceTAG(paramInt));
+        if (localList == null) {
+          continue;
+        }
+        boolean bool2 = localList.contains(Build.MODEL.toLowerCase());
+        if (!bool2) {
+          continue;
+        }
+        try
+        {
+          LogUtils.i("OfflineConfig", "DeviceByBenchmark:model:" + paramInt + Build.MODEL.toLowerCase() + " isInList:" + bool1);
+          if (!bool1) {
+            continue;
+          }
+          sDevicePerfLevel = paramInt;
+          return bool1;
+        }
+        catch (Exception localException1) {}
+      }
+      catch (Exception localException2)
+      {
+        bool1 = false;
+        continue;
+      }
+      LogUtils.e("OfflineConfig", "isMatchPerfLever:" + localException1.getMessage());
+      return bool1;
+      bool1 = false;
+      continue;
       paramInt = -1;
     }
   }
@@ -290,20 +331,16 @@ public class OfflineConfig
     if (sDevicePerfLevel >= 0) {
       return sDevicePerfLevel == 1;
     }
-    Object localObject = getBenchMarkDeviceList("benchmark/vlow/");
-    if ((localObject != null) && (((List)localObject).contains(Build.MODEL.toLowerCase()))) {}
-    for (boolean bool1 = true;; bool1 = false)
+    boolean bool1 = isMatchPerfLever(1);
+    LogUtils.i("OfflineConfig", "isVeryLowDeviceByBenchmark:model:" + Build.MODEL.toLowerCase() + " isInList:" + bool1);
+    if (bool1)
     {
-      LogUtils.i("OfflineConfig", "isVeryLowDeviceByBenchmark:model:" + Build.MODEL.toLowerCase() + " isInList:" + bool1);
-      if (!bool1) {
-        break;
-      }
       sDevicePerfLevel = 1;
       return true;
     }
-    localObject = AEModule.getContext();
-    int j = YearClass.get((Context)localObject);
-    long l1 = DeviceUtils.getTotalRamMemory((Context)localObject);
+    Context localContext = AEModule.getContext();
+    int j = YearClass.get(localContext);
+    long l1 = DeviceUtils.getTotalRamMemory(localContext);
     long l2 = DeviceUtils.getMaxCpuFreq();
     if (j > sVLowYear)
     {
@@ -341,7 +378,7 @@ public class OfflineConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.offlineset.OfflineConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -7,13 +7,10 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({java.lang.annotation.ElementType.TYPE})
-public @interface TTNativeModule
-{
-  String name();
-}
+public @interface TTNativeModule {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.triton.jni.TTNativeModule
  * JD-Core Version:    0.7.0.1
  */

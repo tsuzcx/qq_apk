@@ -12,10 +12,10 @@ import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.EditText;
-import ayby;
-import aybz;
-import ayca;
-import benx;
+import bbah;
+import bbai;
+import bbaj;
+import bhvb;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.os.MqqHandler;
@@ -26,9 +26,9 @@ public class RichStatusEditText
   private static float jdField_a_of_type_Float = 1.0F;
   int jdField_a_of_type_Int = -1;
   private Context jdField_a_of_type_AndroidContentContext;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ayby(this);
-  private ayca jdField_a_of_type_Ayca;
-  private benx jdField_a_of_type_Benx;
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new bbah(this);
+  private bbaj jdField_a_of_type_Bbaj;
+  private bhvb jdField_a_of_type_Bhvb;
   public boolean a;
   int b = -1;
   
@@ -79,15 +79,15 @@ public class RichStatusEditText
     paramInt = i;
     if (i == 0)
     {
-      benx localbenx = a(i, true, false);
+      bhvb localbhvb = a(i, true, false);
       paramInt = i;
-      if (localbenx != null)
+      if (localbhvb != null)
       {
         paramInt = i;
-        if (this.jdField_a_of_type_Ayca != null)
+        if (this.jdField_a_of_type_Bbaj != null)
         {
           paramInt = i;
-          if (!this.jdField_a_of_type_Ayca.a(localbenx)) {
+          if (!this.jdField_a_of_type_Bbaj.a(localbhvb)) {
             paramInt = i + 1;
           }
         }
@@ -101,76 +101,76 @@ public class RichStatusEditText
     return getText();
   }
   
-  private benx a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  private bhvb a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = 0;
-    benx[] arrayOfbenx = (benx[])a().getSpans(0, getText().length(), benx.class);
-    while (i < arrayOfbenx.length)
+    bhvb[] arrayOfbhvb = (bhvb[])a().getSpans(0, getText().length(), bhvb.class);
+    while (i < arrayOfbhvb.length)
     {
-      benx localbenx = arrayOfbenx[i];
-      int j = a().getSpanStart(localbenx);
-      int k = a().getSpanEnd(localbenx);
+      bhvb localbhvb = arrayOfbhvb[i];
+      int j = a().getSpanStart(localbhvb);
+      int k = a().getSpanEnd(localbhvb);
       if ((paramInt > j) && (paramInt < k)) {
-        return localbenx;
+        return localbhvb;
       }
       if ((paramBoolean1) && (paramInt == j)) {
-        return localbenx;
+        return localbhvb;
       }
       if ((paramBoolean2) && (paramInt == k)) {
-        return localbenx;
+        return localbhvb;
       }
       i += 1;
     }
     return null;
   }
   
-  private benx a(benx parambenx)
+  private bhvb a(bhvb parambhvb)
   {
-    if (parambenx != null) {
-      parambenx.b(this);
+    if (parambhvb != null) {
+      parambhvb.b(this);
     }
-    return parambenx;
+    return parambhvb;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_Benx != null)
+    if (this.jdField_a_of_type_Bhvb != null)
     {
-      this.jdField_a_of_type_Benx.a(this);
-      this.jdField_a_of_type_Benx = null;
+      this.jdField_a_of_type_Bhvb.a(this);
+      this.jdField_a_of_type_Bhvb = null;
     }
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    benx[] arrayOfbenx = (benx[])a().getSpans(paramInt1, paramInt1 + paramInt2, benx.class);
+    bhvb[] arrayOfbhvb = (bhvb[])a().getSpans(paramInt1, paramInt1 + paramInt2, bhvb.class);
     paramInt1 = 0;
-    while (paramInt1 < arrayOfbenx.length)
+    while (paramInt1 < arrayOfbhvb.length)
     {
-      benx localbenx = arrayOfbenx[paramInt1];
-      if (this.jdField_a_of_type_Ayca != null) {
-        this.jdField_a_of_type_Ayca.a(localbenx);
+      bhvb localbhvb = arrayOfbhvb[paramInt1];
+      if (this.jdField_a_of_type_Bbaj != null) {
+        this.jdField_a_of_type_Bbaj.a(localbhvb);
       }
-      if (localbenx == this.jdField_a_of_type_Benx) {
-        this.jdField_a_of_type_Benx = null;
+      if (localbhvb == this.jdField_a_of_type_Bhvb) {
+        this.jdField_a_of_type_Bhvb = null;
       }
-      a().removeSpan(localbenx);
+      a().removeSpan(localbhvb);
       paramInt1 += 1;
     }
   }
   
   private int b(int paramInt, float paramFloat1, float paramFloat2)
   {
-    benx localbenx1 = a(paramInt, false, true);
-    benx localbenx2 = a(paramInt, true, false);
+    bhvb localbhvb1 = a(paramInt, false, true);
+    bhvb localbhvb2 = a(paramInt, true, false);
     int j;
-    if (localbenx1 != null)
+    if (localbhvb1 != null)
     {
-      j = a().getSpanEnd(localbenx1);
+      j = a().getSpanEnd(localbhvb1);
       if (paramInt != j) {
         return paramInt;
       }
-      if ((j != getText().length()) && (localbenx2 == null)) {
+      if ((j != getText().length()) && (localbhvb2 == null)) {
         break label276;
       }
       this.jdField_a_of_type_Boolean = false;
@@ -188,14 +188,14 @@ public class RichStatusEditText
       if (k == j) {
         return k - 1;
       }
-      if (localbenx2 == null) {
+      if (localbhvb2 == null) {
         break;
       }
-      i = a().getSpanStart(localbenx2);
+      i = a().getSpanStart(localbhvb2);
       if (paramInt != i) {
         break;
       }
-      if ((i == 0) || (localbenx1 != null))
+      if ((i == 0) || (localbhvb1 != null))
       {
         this.jdField_a_of_type_Boolean = false;
         getText().insert(i, " ");
@@ -215,11 +215,11 @@ public class RichStatusEditText
     }
   }
   
-  public aybz a(int paramInt)
+  public bbai a(int paramInt)
   {
     int k = getText().length();
     if ((paramInt < 0) || (paramInt > k)) {
-      return new aybz(k, k);
+      return new bbai(k, k);
     }
     ImageSpan[] arrayOfImageSpan = (ImageSpan[])a().getSpans(0, k, ImageSpan.class);
     int i1 = arrayOfImageSpan.length;
@@ -243,7 +243,7 @@ public class RichStatusEditText
       {
         k = m;
         continue;
-        return new aybz(i, k);
+        return new bbai(i, k);
       }
     }
   }
@@ -254,39 +254,39 @@ public class RichStatusEditText
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(benx parambenx1, benx parambenx2)
+  public void a(bhvb parambhvb1, bhvb parambhvb2)
   {
-    if (parambenx1 == this.jdField_a_of_type_Benx) {
-      this.jdField_a_of_type_Benx = parambenx2;
+    if (parambhvb1 == this.jdField_a_of_type_Bhvb) {
+      this.jdField_a_of_type_Bhvb = parambhvb2;
     }
-    int i = a().getSpanStart(parambenx1);
-    int j = a().getSpanEnd(parambenx1);
+    int i = a().getSpanStart(parambhvb1);
+    int j = a().getSpanEnd(parambhvb1);
     if ((i == -1) || (j == -1)) {
       return;
     }
-    a(parambenx1, false, false);
-    setSpan(parambenx2, i, j);
+    a(parambhvb1, false, false);
+    setSpan(parambhvb2, i, j);
   }
   
-  public void a(benx parambenx, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(bhvb parambhvb, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_Ayca != null) && (paramBoolean2)) {
-      this.jdField_a_of_type_Ayca.a(parambenx);
+    if ((this.jdField_a_of_type_Bbaj != null) && (paramBoolean2)) {
+      this.jdField_a_of_type_Bbaj.a(parambhvb);
     }
-    if (this.jdField_a_of_type_Benx == parambenx) {
-      this.jdField_a_of_type_Benx = null;
+    if (this.jdField_a_of_type_Bhvb == parambhvb) {
+      this.jdField_a_of_type_Bhvb = null;
     }
     if (!paramBoolean1) {
-      a().removeSpan(parambenx);
+      a().removeSpan(parambhvb);
     }
     int i;
     int j;
     do
     {
       return;
-      i = a().getSpanStart(parambenx);
-      j = a().getSpanEnd(parambenx);
-      a().removeSpan(parambenx);
+      i = a().getSpanStart(parambhvb);
+      j = a().getSpanEnd(parambhvb);
+      a().removeSpan(parambhvb);
     } while (i == -1);
     getText().replace(i, j, "", 0, 0);
   }
@@ -314,15 +314,15 @@ public class RichStatusEditText
   {
     if ((paramInt == 67) && (paramKeyEvent.getAction() == 0))
     {
-      if (this.jdField_a_of_type_Benx != null)
+      if (this.jdField_a_of_type_Bhvb != null)
       {
-        paramInt = a().getSpanStart(this.jdField_a_of_type_Benx);
-        a(this.jdField_a_of_type_Benx, true, true);
-        this.jdField_a_of_type_Benx = null;
+        paramInt = a().getSpanStart(this.jdField_a_of_type_Bhvb);
+        a(this.jdField_a_of_type_Bhvb, true, true);
+        this.jdField_a_of_type_Bhvb = null;
         setSelection(paramInt);
         setCursorVisible(true);
       }
-      benx localbenx;
+      bhvb localbhvb;
       do
       {
         return true;
@@ -331,30 +331,30 @@ public class RichStatusEditText
           a(getSelectionStart(), getSelectionEnd() - getSelectionStart());
           return super.onKeyDown(paramInt, paramKeyEvent);
         }
-        localbenx = a(getSelectionStart(), false, true);
-        if (localbenx == null) {
+        localbhvb = a(getSelectionStart(), false, true);
+        if (localbhvb == null) {
           break;
         }
-      } while (!localbenx.a());
-      this.jdField_a_of_type_Benx = a(localbenx);
+      } while (!localbhvb.a());
+      this.jdField_a_of_type_Bhvb = a(localbhvb);
       setCursorVisible(false);
       return true;
     }
     if ((paramInt == 21) && (paramKeyEvent.getAction() == 0))
     {
-      if (this.jdField_a_of_type_Benx != null)
+      if (this.jdField_a_of_type_Bhvb != null)
       {
         setCursorVisible(true);
-        paramInt = a().getSpanStart(this.jdField_a_of_type_Benx);
+        paramInt = a().getSpanStart(this.jdField_a_of_type_Bhvb);
         setSelection(paramInt, paramInt);
         a();
         return true;
       }
     }
-    else if ((paramInt == 22) && (paramKeyEvent.getAction() == 0) && (this.jdField_a_of_type_Benx != null))
+    else if ((paramInt == 22) && (paramKeyEvent.getAction() == 0) && (this.jdField_a_of_type_Bhvb != null))
     {
       setCursorVisible(true);
-      paramInt = a().getSpanEnd(this.jdField_a_of_type_Benx);
+      paramInt = a().getSpanEnd(this.jdField_a_of_type_Bhvb);
       setSelection(paramInt, paramInt);
       a();
       return true;
@@ -375,14 +375,14 @@ public class RichStatusEditText
   {
     Object localObject;
     int i;
-    if ((paramInt1 != paramInt2) && (((benx[])a().getSpans(Math.min(paramInt1, paramInt2), Math.max(paramInt1, paramInt2), benx.class)).length != 0))
+    if ((paramInt1 != paramInt2) && (((bhvb[])a().getSpans(Math.min(paramInt1, paramInt2), Math.max(paramInt1, paramInt2), bhvb.class)).length != 0))
     {
       if ((paramInt1 != 0) || (paramInt2 != getText().length())) {
         break label207;
       }
       localObject = a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = ((aybz)localObject).jdField_a_of_type_Int;
-      this.b = ((aybz)localObject).b;
+      this.jdField_a_of_type_Int = ((bbai)localObject).jdField_a_of_type_Int;
+      this.b = ((bbai)localObject).b;
       i = 1;
     }
     for (;;)
@@ -407,7 +407,7 @@ public class RichStatusEditText
       if ((paramInt1 == paramInt2) && (paramInt1 == 0))
       {
         localObject = a(0, true, false);
-        if ((localObject != null) && (this.jdField_a_of_type_Ayca != null) && (!this.jdField_a_of_type_Ayca.a((benx)localObject)))
+        if ((localObject != null) && (this.jdField_a_of_type_Bbaj != null) && (!this.jdField_a_of_type_Bbaj.a((bhvb)localObject)))
         {
           i = 1;
           continue;
@@ -449,24 +449,24 @@ public class RichStatusEditText
     Object localObject = a(i, false, false);
     if (k == 0)
     {
-      if (this.jdField_a_of_type_Benx != null) {
+      if (this.jdField_a_of_type_Bhvb != null) {
         a();
       }
-      this.jdField_a_of_type_Benx = ((benx)localObject);
-      if (this.jdField_a_of_type_Benx != null) {
+      this.jdField_a_of_type_Bhvb = ((bhvb)localObject);
+      if (this.jdField_a_of_type_Bhvb != null) {
         setCursorVisible(false);
       }
     }
     for (;;)
     {
-      if ((localObject == null) && (this.jdField_a_of_type_Benx != null)) {
+      if ((localObject == null) && (this.jdField_a_of_type_Bhvb != null)) {
         paramMotionEvent.setAction(3);
       }
-      if (this.jdField_a_of_type_Benx != null)
+      if (this.jdField_a_of_type_Bhvb != null)
       {
-        bool = this.jdField_a_of_type_Benx.a(this, paramMotionEvent);
+        bool = this.jdField_a_of_type_Bhvb.a(this, paramMotionEvent);
         if ((k == 1) || (k == 3)) {
-          this.jdField_a_of_type_Benx = null;
+          this.jdField_a_of_type_Bhvb = null;
         }
       }
       if (k == 1)
@@ -489,15 +489,15 @@ public class RichStatusEditText
   
   public boolean performLongClick()
   {
-    if (this.jdField_a_of_type_Benx != null) {
+    if (this.jdField_a_of_type_Bhvb != null) {
       return true;
     }
     return super.performLongClick();
   }
   
-  public void setEditListener(ayca paramayca)
+  public void setEditListener(bbaj parambbaj)
   {
-    this.jdField_a_of_type_Ayca = paramayca;
+    this.jdField_a_of_type_Bbaj = parambbaj;
   }
   
   public void setSpan(ImageSpan paramImageSpan, int paramInt1, int paramInt2)
@@ -507,7 +507,7 @@ public class RichStatusEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.RichStatusEditText
  * JD-Core Version:    0.7.0.1
  */

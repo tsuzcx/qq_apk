@@ -1,24 +1,44 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class rlp
-  implements Animation.AnimationListener
+public class rlp
+  extends rlq
 {
-  rlp(rlo paramrlo) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public rlp(@NonNull Context paramContext, int paramInt)
   {
-    rlo.a(this.a).startAnimation(rlo.a(this.a));
+    super(paramContext, paramInt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public boolean a()
+  {
+    return getCount() == 5;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean a(@NonNull TagInfo paramTagInfo)
+  {
+    int i = getCount();
+    super.a(paramTagInfo);
+    return i != getCount();
+  }
+  
+  @NonNull
+  public View getView(int paramInt, @Nullable View paramView, @NonNull ViewGroup paramViewGroup)
+  {
+    View localView = super.getView(paramInt, paramView, paramViewGroup);
+    localView.setSelected(true);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rlp
  * JD-Core Version:    0.7.0.1
  */

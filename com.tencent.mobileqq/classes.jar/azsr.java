@@ -1,276 +1,81 @@
-import android.os.Bundle;
-import android.os.SystemClock;
-import android.util.Pair;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.Transformation;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qphone.base.util.QLog.ILogCallback;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
-class azsr
-  extends azsl
-  implements QLog.ILogCallback
+public class azsr
+  extends ScaleAnimation
 {
-  private int jdField_a_of_type_Int = 20;
-  private long jdField_a_of_type_Long = 2000L;
-  private aztb jdField_a_of_type_Aztb;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private int jdField_b_of_type_Int = 50;
-  private long jdField_b_of_type_Long;
-  private Map<String, HashSet<Pair<Long, Integer>>> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private int jdField_c_of_type_Int = 100;
-  private Map<String, HashSet<Pair<Long, Integer>>> jdField_c_of_type_JavaUtilMap = new HashMap();
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+  private azsu jdField_a_of_type_Azsu;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
   
-  public azsr(azsk paramazsk, String paramString)
+  public azsr(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6, azsu paramazsu)
   {
-    super(paramazsk, paramString);
-    QLog.setLogCallback(this);
-    if ((this.jdField_a_of_type_Array2dOfJavaLangString.length >= 1) && (this.jdField_a_of_type_Array2dOfJavaLangString[0].length >= 4))
-    {
-      this.jdField_a_of_type_Long = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][0]).intValue() * 1000L);
-      this.jdField_b_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][1]).intValue();
-      this.jdField_c_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][2]).intValue();
-      this.jdField_a_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][3]).intValue();
-    }
-    this.jdField_a_of_type_Aztb = new aztb(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_JavaUtilMap.put("MSF.D.MonitorSocket", Integer.valueOf(0));
-    this.jdField_a_of_type_JavaUtilMap.put("Q.msg.MsgProxy|addMsgQueue", Integer.valueOf(0));
-    this.jdField_a_of_type_JavaUtilMap.put("Q.db.Cache|writeRunable", Integer.valueOf(0));
-    this.jdField_a_of_type_JavaUtilMap.put("Q.msg.MsgProxy|writeRunable", Integer.valueOf(0));
-    this.jdField_a_of_type_JavaUtilMap.put("Q.db.Cache|addMsgQueue", Integer.valueOf(0));
-    this.jdField_a_of_type_JavaUtilMap.put("SQLiteOpenHelper| getWritableDatabase", Integer.valueOf(0));
-    this.jdField_a_of_type_JavaUtilMap.put("SQLiteOpenHelper| getReadableDatabase", Integer.valueOf(0));
+    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = (paramFloat2 - paramFloat1);
+    this.jdField_a_of_type_Azsu = paramazsu;
   }
   
-  public void a(Bundle paramBundle)
+  public void a(GradientDrawable paramGradientDrawable, int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (paramBundle.getInt("key_action") != 6) {
-      return;
-    }
-    String str = paramBundle.getString("key_log");
-    int i = paramBundle.getInt("key_count");
-    if (QLog.isColorLevel()) {
-      QLog.d("BatteryStats", 2, "LOG.onOtherProcReport：" + str + ", count:" + i);
-    }
-    synchronized (this.jdField_b_of_type_JavaUtilMap)
-    {
-      HashSet localHashSet;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localHashSet = (HashSet)this.jdField_b_of_type_JavaUtilMap.get(str);
-        paramBundle = localHashSet;
-        if (localHashSet == null)
-        {
-          paramBundle = new HashSet();
-          this.jdField_b_of_type_JavaUtilMap.put(str, paramBundle);
-        }
-        paramBundle.add(new Pair(Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i)));
-      }
-      if ((this.jdField_c_of_type_Boolean) && (this.d))
-      {
-        localHashSet = (HashSet)this.jdField_c_of_type_JavaUtilMap.get(str);
-        paramBundle = localHashSet;
-        if (localHashSet == null)
-        {
-          paramBundle = new HashSet();
-          this.jdField_c_of_type_JavaUtilMap.put(str, paramBundle);
-        }
-        paramBundle.add(new Pair(Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i)));
-      }
-      return;
+    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = paramGradientDrawable;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS setColorChanger: " + paramInt1 + " --> " + paramInt2);
     }
   }
   
-  public void b()
+  public void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    super.b();
-    synchronized (this.jdField_b_of_type_JavaUtilMap)
-    {
-      this.jdField_c_of_type_JavaUtilMap.clear();
-      return;
+    super.applyTransformation(paramFloat, paramTransformation);
+    if ((this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener != null) && ((this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener instanceof azst))) {
+      ((azst)this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener).a(this, paramFloat);
     }
-  }
-  
-  public void e()
-  {
-    super.e();
-    if ((azsk.a()) && (this.jdField_a_of_type_Boolean)) {}
-    label290:
-    for (;;)
-    {
-      synchronized (this.jdField_b_of_type_JavaUtilMap)
-      {
-        Iterator localIterator1 = this.jdField_b_of_type_JavaUtilMap.values().iterator();
-        int i = 0;
-        if (localIterator1.hasNext())
-        {
-          i = ((HashSet)localIterator1.next()).size() + i;
-          continue;
-        }
-        azsk.b(this.jdField_b_of_type_Azsk, new String[] { "fg30LogCount", "|", String.valueOf(i) });
-        localIterator1 = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
-        if (localIterator1.hasNext())
-        {
-          String str = (String)localIterator1.next();
-          StringBuilder localStringBuilder = azsh.a();
-          HashSet localHashSet = (HashSet)this.jdField_b_of_type_JavaUtilMap.get(str);
-          Iterator localIterator2 = localHashSet.iterator();
-          i = 0;
-          if (localIterator2.hasNext())
-          {
-            Pair localPair = (Pair)localIterator2.next();
-            localStringBuilder.append(localPair.first).append(",").append(localPair.second);
-            i += 1;
-            if (i >= localHashSet.size()) {
-              break label290;
-            }
-            localStringBuilder.append("#");
-            break label290;
-          }
-          azsk.b(this.jdField_b_of_type_Azsk, new String[] { "fg30LogAlarm", "|", str, "|", localStringBuilder.toString() });
-        }
-      }
-      this.jdField_b_of_type_JavaUtilMap.clear();
-      return;
-    }
-  }
-  
-  public void f()
-  {
-    super.f();
-    if ((azsk.a()) && (this.jdField_a_of_type_Boolean)) {}
-    label292:
-    for (;;)
-    {
-      synchronized (this.jdField_b_of_type_JavaUtilMap)
-      {
-        Iterator localIterator1 = this.jdField_c_of_type_JavaUtilMap.values().iterator();
-        int i = 0;
-        if (localIterator1.hasNext())
-        {
-          i = ((HashSet)localIterator1.next()).size() + i;
-          continue;
-        }
-        azsk.b(this.jdField_b_of_type_Azsk, new String[] { "bg5LogCount", "|", String.valueOf(i) });
-        localIterator1 = this.jdField_c_of_type_JavaUtilMap.keySet().iterator();
-        if (localIterator1.hasNext())
-        {
-          String str = (String)localIterator1.next();
-          HashSet localHashSet = (HashSet)this.jdField_c_of_type_JavaUtilMap.get(str);
-          StringBuilder localStringBuilder = azsh.a();
-          Iterator localIterator2 = localHashSet.iterator();
-          i = 0;
-          if (localIterator2.hasNext())
-          {
-            Pair localPair = (Pair)localIterator2.next();
-            localStringBuilder.append(localPair.first).append(",").append(localPair.second);
-            i += 1;
-            if (i >= localHashSet.size()) {
-              break label292;
-            }
-            localStringBuilder.append("#");
-            break label292;
-          }
-          azsk.b(this.jdField_b_of_type_Azsk, new String[] { "bg5LogAlarm", "|", str, "|", localStringBuilder.toString() });
-        }
-      }
-      this.jdField_c_of_type_JavaUtilMap.clear();
-      return;
-    }
-  }
-  
-  public void onWriteLog(String paramString1, String paramString2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Aztb.a();
-    }
-    do
-    {
-      return;
-      if (this.jdField_b_of_type_Long == 0L) {
-        this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-      }
-      this.jdField_a_of_type_Aztb.a(paramString1 + "|" + paramString2);
-    } while (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long <= this.jdField_a_of_type_Long);
-    Map localMap = this.jdField_a_of_type_Aztb.a();
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Aztb.a();
-    Object localObject;
-    if (localMap != null)
-    {
-      paramString1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (paramString1.hasNext())
-      {
-        paramString2 = (String)paramString1.next();
-        localObject = localMap.keySet().iterator();
-        while (((Iterator)localObject).hasNext()) {
-          if (((String)((Iterator)localObject).next()).contains(paramString2)) {
-            ((Iterator)localObject).remove();
-          }
-        }
-      }
+    this.jdField_a_of_type_Azsu.jdField_a_of_type_Float = (this.jdField_a_of_type_Float + this.jdField_b_of_type_Float * paramFloat);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS applyTransformation: " + paramFloat + " F: " + this.jdField_a_of_type_Azsu.jdField_a_of_type_Float);
     }
     int i;
-    if ((localMap != null) && (localMap.size() > 0))
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable != null)
     {
-      localObject = new StringBuilder(localMap.size() * 20 + 10);
-      paramString1 = null;
-      Iterator localIterator = localMap.keySet().iterator();
-      i = 0;
-      if (localIterator.hasNext())
-      {
-        paramString2 = (String)localIterator.next();
-        if (((StringBuilder)localObject).length() > 0) {
-          ((StringBuilder)localObject).append("#");
-        }
-        ((StringBuilder)localObject).append("[").append(paramString2).append(",").append(localMap.get(paramString2)).append("]");
-        if (((Integer)localMap.get(paramString2)).intValue() <= i) {
-          break label549;
-        }
-        i = ((Integer)localMap.get(paramString2)).intValue();
-        paramString1 = paramString2;
+      i = this.jdField_b_of_type_Int;
+      if (paramFloat >= 1.0F) {
+        break label296;
       }
+      i = Color.argb((int)(Color.alpha(this.jdField_a_of_type_Int) + (Color.alpha(this.jdField_b_of_type_Int) - Color.alpha(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.red(this.jdField_a_of_type_Int) + (Color.red(this.jdField_b_of_type_Int) - Color.red(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.green(this.jdField_a_of_type_Int) + (Color.green(this.jdField_b_of_type_Int) - Color.green(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.blue(this.jdField_a_of_type_Int) + (Color.blue(this.jdField_b_of_type_Int) - Color.blue(this.jdField_a_of_type_Int)) * paramFloat));
+      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(i);
     }
-    label549:
     for (;;)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_action", 6);
-      localBundle.putString("key_log", paramString2);
-      localBundle.putInt("key_count", ((Integer)localMap.get(paramString2)).intValue());
-      if (!azsk.a()) {
-        azsf.a().a(localBundle);
+      this.jdField_a_of_type_Azsu.jdField_a_of_type_Int = i;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("LsRecord", 4, "LS applyTransformation: " + paramFloat + " CLR: " + this.jdField_a_of_type_Azsu.jdField_a_of_type_Int);
       }
-      for (;;)
-      {
-        break;
-        a(localBundle);
-      }
-      azsk.a(this.jdField_b_of_type_Azsk, new String[] { "log|", ((StringBuilder)localObject).toString() });
-      paramString2 = this.jdField_b_of_type_Azsk;
-      if (i > this.jdField_c_of_type_Int) {}
-      for (int j = 1;; j = 0)
-      {
-        azsk.a(paramString2, 2, 0, j, alud.a(2131701462) + paramString1, "2秒钟日志打印次数：" + i);
-        return;
-      }
-      if ((azsk.a(this.jdField_b_of_type_Azsk) == null) || (!QLog.isColorLevel())) {
-        break;
-      }
-      azsk.a(this.jdField_b_of_type_Azsk, "No high frequnecy log in last 2seconds");
       return;
+      label296:
+      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(i);
+      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = null;
     }
   }
   
-  public void onWriteLog(String paramString, byte[] paramArrayOfByte) {}
+  public void setAnimationListener(Animation.AnimationListener paramAnimationListener)
+  {
+    super.setAnimationListener(paramAnimationListener);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = paramAnimationListener;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azsr
  * JD-Core Version:    0.7.0.1
  */

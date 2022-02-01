@@ -1,17 +1,15 @@
-public class bdrf
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bdrf
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public int e;
-  public int f;
+  bdrf(bdrb parambdrb) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

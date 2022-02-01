@@ -1,36 +1,42 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class qar
   implements View.OnClickListener
 {
-  qar(qap paramqap, ArticleInfo paramArticleInfo, qnm paramqnm) {}
+  qar(qam paramqam, ArticleInfo paramArticleInfo) {}
   
   public void onClick(View paramView)
   {
-    ors.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    ors.a(this.jdField_a_of_type_Qap.a, this.jdField_a_of_type_Qnm.b.b);
+    int i = 0;
+    ohp.a(qam.a(this.jdField_a_of_type_Qam), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
+    }
     try
     {
-      paramView = new JSONObject();
-      paramView.put("folder_status", ors.d);
-      paramView.put("kandian_mode", "" + ors.e());
-      paramView.put("tab_source", "" + ors.d());
-      nrt.a(null, "", "0X8008277", "0X8008277", 0, 0, "", "", "", paramView.toString(), false);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("feeds_channel_entrance", i);
+      oat.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", localJSONObject.toString(), false);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (JSONException paramView)
+    catch (JSONException localJSONException)
     {
-      paramView.printStackTrace();
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qar
  * JD-Core Version:    0.7.0.1
  */

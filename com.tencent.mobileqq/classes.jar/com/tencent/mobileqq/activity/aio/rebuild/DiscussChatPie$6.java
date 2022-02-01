@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agpi;
+import ahzo;
 import com.tencent.widget.PatchedButton;
 import com.tencent.widget.XEditTextEx;
 
 public class DiscussChatPie$6
   implements Runnable
 {
-  public DiscussChatPie$6(agpi paramagpi) {}
+  public DiscussChatPie$6(ahzo paramahzo) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class DiscussChatPie$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie.6
  * JD-Core Version:    0.7.0.1
  */

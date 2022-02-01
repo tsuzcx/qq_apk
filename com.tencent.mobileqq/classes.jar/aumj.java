@@ -1,27 +1,27 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
 
 public class aumj
-  extends GestureDetector.SimpleOnGestureListener
+  implements TextWatcher
 {
-  public aumj(TabPageIndicator paramTabPageIndicator) {}
+  public aumj(MsgBackupSettingFragment paramMsgBackupSettingFragment, TextView paramTextView1, TextView paramTextView2) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
-    }
-    if (TabPageIndicator.a(this.a) != null) {
-      this.a.performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    paramEditable = paramEditable.toString();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(MsgBackupSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
+    this.b.setText(String.format(MsgBackupSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aumj
  * JD-Core Version:    0.7.0.1
  */

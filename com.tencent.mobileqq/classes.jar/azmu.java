@@ -1,65 +1,22 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import java.util.Iterator;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azmu
-  implements azmp
+  implements View.OnClickListener
 {
-  private azmp jdField_a_of_type_Azmp;
-  private LoadExtResult jdField_a_of_type_ComTencentMobileqqSoloadLoadExtResult;
+  public azmu(AbsProfileHeaderView paramAbsProfileHeaderView, View paramView) {}
   
-  private azms a(azms paramazms, azmt paramazmt)
+  public void onClick(View paramView)
   {
-    azms localazms = new azms();
-    localazms.jdField_a_of_type_JavaUtilList.add(paramazmt);
-    localazms.jdField_a_of_type_Long = paramazms.jdField_a_of_type_Long;
-    localazms.d = paramazms.d;
-    return localazms;
-  }
-  
-  private void a(azms paramazms, azmw paramazmw, int paramInt)
-  {
-    azms localazms = a(paramazms, (azmt)paramazms.jdField_a_of_type_JavaUtilList.get(paramInt));
-    this.jdField_a_of_type_Azmp = new azml();
-    this.jdField_a_of_type_Azmp.a(localazms, new azmv(this, paramInt, paramazms, paramazmw));
-  }
-  
-  public LoadExtResult a(azms paramazms)
-  {
-    Object localObject = null;
-    Iterator localIterator = paramazms.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      localObject = a(paramazms, (azmt)localIterator.next());
-      this.jdField_a_of_type_Azmp = new azml();
-      LoadExtResult localLoadExtResult = LoadExtResult.mergeExtResult(this.jdField_a_of_type_Azmp.a((azms)localObject), this.jdField_a_of_type_ComTencentMobileqqSoloadLoadExtResult);
-      this.jdField_a_of_type_ComTencentMobileqqSoloadLoadExtResult = localLoadExtResult;
-      localObject = localLoadExtResult;
-      if (localLoadExtResult.getResultCode() != 0) {
-        localObject = localLoadExtResult;
-      }
-    }
-    return localObject;
-  }
-  
-  public void a(azms paramazms, azmw paramazmw)
-  {
-    a(paramazms, paramazmw, 0);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Azmp != null) {
-      this.jdField_a_of_type_Azmp.a(paramString);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_Azmp != null) {
-      return this.jdField_a_of_type_Azmp.a(paramString);
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a.getCurrentAccountUin(), 0).edit().putBoolean("common_topic_friend_list_should_show", false).apply();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

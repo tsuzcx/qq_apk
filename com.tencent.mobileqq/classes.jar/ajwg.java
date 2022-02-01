@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajwg
-  implements Comparable<ajwg>
+class ajwg
+  extends anty
 {
-  public int a;
-  public long a;
-  public int b;
+  ajwg(ajvr paramajvr) {}
   
-  public ajwg(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "RedpointObserver, onUpdateSettingMe");
+    }
+    this.a.e();
   }
   
-  public int a(ajwg paramajwg)
+  public void b(boolean paramBoolean)
   {
-    return -(int)(this.jdField_a_of_type_Long - paramajwg.jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "RedpointObserver, onNotifyLebaRedTouch");
+    }
+    this.a.g();
   }
 }
 

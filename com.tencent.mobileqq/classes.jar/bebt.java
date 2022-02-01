@@ -1,88 +1,53 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.Locale;
-import mqq.observer.WtloginObserver;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
-class bebt
-  extends WtloginObserver
+public abstract class bebt
+  extends bebf
 {
-  final Intent jdField_a_of_type_AndroidContentIntent;
-  final bebu jdField_a_of_type_Bebu;
-  final String jdField_a_of_type_JavaLangString;
-  
-  bebt(Intent paramIntent, String paramString, bebu parambebu)
+  public void a(bdxf parambdxf, bdxe parambdxe)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bebu = parambebu;
-  }
-  
-  public void OnRegGetSMSVerifyLoginAccountWithLhSig(int paramInt, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
-    if (paramArrayOfByte3 != null) {}
-    label295:
-    label310:
-    label323:
-    label329:
+    FromServiceMsg localFromServiceMsg = parambdxf.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+    Object localObject = parambdxf.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
+    bebv localbebv = (bebv)parambdxe.a;
+    beck localbeck = localbebv.a;
+    anqe localanqe = parambdxf.jdField_a_of_type_Anqe;
+    int i;
+    if (localFromServiceMsg.getResultCode() != 1000)
+    {
+      parambdxf = (String)localFromServiceMsg.getAttribute("_tag_socket_connerror", "");
+      if ((parambdxf.equals("conSucc")) || (parambdxf.equals("")))
+      {
+        i = localFromServiceMsg.getResultCode();
+        if ((i == 1002) || (i == 1013))
+        {
+          localObject = MessageHandler.b(localFromServiceMsg);
+          parambdxe = localFromServiceMsg.getBusinessFailMsg();
+          parambdxf = parambdxe;
+          if (parambdxe == null) {
+            parambdxf = "";
+          }
+          a(-1, 9311, (String)localObject, parambdxf, localanqe, localbeck.a);
+        }
+      }
+    }
     for (;;)
     {
-      try
-      {
-        paramArrayOfByte1 = new String(paramArrayOfByte3, "utf-8");
-        if (QLog.isDevelopLevel()) {
-          QLog.i("LHLoginMng", 4, String.format(Locale.getDefault(), "OnRegGetSMSVerifyLoginAccountWithLhSig ret: %s, uin: %s, error: %s, contactssig: %s, lhsig: %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), paramArrayOfByte1, MD5.toMD5(paramArrayOfByte2), MD5.toMD5(paramArrayOfByte4) }));
-        }
-        if (paramInt != 0) {
-          break label323;
-        }
-        bool = true;
-        paramArrayOfByte3 = String.valueOf(paramLong);
-        if ((!TextUtils.isEmpty(paramArrayOfByte3)) && (paramArrayOfByte3.equals(this.jdField_a_of_type_JavaLangString))) {
-          break label295;
-        }
-        bool = false;
-        if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.length != 0)) {
-          break label310;
-        }
-        bool = false;
-        if (!TextUtils.isEmpty(paramArrayOfByte1)) {
-          break label329;
-        }
-        paramArrayOfByte1 = BaseApplicationImpl.getContext().getString(2131717527);
-        localIntent.putExtra("key_register_prompt_info", paramArrayOfByte1);
-        if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0)) {
-          localIntent.putExtra("key_register_lhsig", paramArrayOfByte4);
-        }
-        if (QLog.isDevelopLevel()) {
-          bebv.a("LHLoginMng -- OnRegGetSMSVerifyLoginAccountWithLhSig", localIntent);
-        }
-        if (this.jdField_a_of_type_Bebu != null) {
-          this.jdField_a_of_type_Bebu.a(localIntent, bool, this.jdField_a_of_type_JavaLangString, paramArrayOfByte4, paramArrayOfByte1);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "OnRegGetSMSVerifyLoginAccountWithLhSig, lhUin: %s, isSuc: %s, error: %s, ret: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool), paramArrayOfByte1, Integer.valueOf(paramInt) }));
-        }
-        return;
+      bedb.a(localbebv, localbeck);
+      return;
+      parambdxe = localFromServiceMsg.getBusinessFailMsg();
+      parambdxf = parambdxe;
+      if (parambdxe == null) {
+        parambdxf = "";
       }
-      catch (UnsupportedEncodingException paramArrayOfByte1)
-      {
-        paramArrayOfByte1.printStackTrace();
-      }
-      paramArrayOfByte1 = null;
+      a(-1, 9044, String.valueOf(i), parambdxf, localanqe, localbeck.a);
       continue;
-      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+      a(-1, 9313, parambdxf, localFromServiceMsg.getBusinessFailMsg(), localanqe, localbeck.a);
       continue;
-      localIntent.putExtra("key_register_sign", paramArrayOfByte2);
-      continue;
-      boolean bool = false;
+      a(localFromServiceMsg, (byte[])localObject, localbebv, localbeck, localanqe, parambdxf, parambdxe);
     }
   }
+  
+  protected abstract void a(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, bebv parambebv, beck parambeck, anqe paramanqe, bdxf parambdxf, bdxe parambdxe);
 }
 
 

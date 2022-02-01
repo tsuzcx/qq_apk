@@ -1,13 +1,8 @@
-public class bcob
+import com.tencent.mobileqq.soload.LoadExtResult;
+
+public abstract interface bcob
 {
-  public long a;
-  public String a;
-  
-  public bcob(bcnu parambcnu, String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public abstract void a(int paramInt, LoadExtResult paramLoadExtResult);
 }
 
 

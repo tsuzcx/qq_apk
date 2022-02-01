@@ -1,24 +1,76 @@
-import NS_KING_SOCIALIZE_META.stMetaComment;
-import NS_KING_SOCIALIZE_META.stMetaReply;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class tdz
-  implements View.OnClickListener
+public class tdz<T>
 {
-  tdz(tdu paramtdu, stMetaComment paramstMetaComment, stMetaReply paramstMetaReply) {}
+  public static final String a;
+  private int jdField_a_of_type_Int;
+  private T jdField_a_of_type_JavaLangObject;
+  private final tea<T> jdField_a_of_type_Tea;
   
-  public void onClick(View paramView)
+  static
   {
-    this.jdField_a_of_type_Tdu.a.a().a(tdn.a(this.jdField_a_of_type_Tdu.a), this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply);
-    this.jdField_a_of_type_Tdu.a.a = true;
-    tlo.d("comment", "6 mCommentListChanged:" + this.jdField_a_of_type_Tdu.a.a);
-    tdn.a(this.jdField_a_of_type_Tdu.a).dismiss();
+    jdField_a_of_type_JavaLangString = "zimage." + tdz.class.getSimpleName();
+  }
+  
+  public tdz(T paramT, tea<T> paramtea)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.jdField_a_of_type_Tea = paramtea;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public T a()
+  {
+    try
+    {
+      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+      return localObject1;
+    }
+    finally
+    {
+      localObject2 = finally;
+      throw localObject2;
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_Int += 1;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_Int -= 1;
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        if (QLog.isColorLevel()) {
+          ted.a("Reference", " decReference 0 " + this.jdField_a_of_type_JavaLangObject);
+        }
+        if (this.jdField_a_of_type_JavaLangObject != null)
+        {
+          this.jdField_a_of_type_Tea.a(this.jdField_a_of_type_JavaLangObject);
+          this.jdField_a_of_type_JavaLangObject = null;
+        }
+      }
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tdz
  * JD-Core Version:    0.7.0.1
  */

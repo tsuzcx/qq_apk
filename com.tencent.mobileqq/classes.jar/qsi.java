@@ -1,60 +1,24 @@
-import android.support.v4.util.Pools.SynchronizedPool;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qsi
-  extends qsg<qsm, qsl, qsk>
+class qsi
+  implements View.OnClickListener
 {
-  private static final Pools.SynchronizedPool<qsk> jdField_a_of_type_AndroidSupportV4UtilPools$SynchronizedPool = new Pools.SynchronizedPool(10);
-  private static final qsh<qsm, qsl, qsk> jdField_a_of_type_Qsh = new qsj();
+  qsi(qsh paramqsh) {}
   
-  public qsi()
+  public void onClick(View paramView)
   {
-    super(jdField_a_of_type_Qsh);
-  }
-  
-  private static qsk a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    qsk localqsk2 = (qsk)jdField_a_of_type_AndroidSupportV4UtilPools$SynchronizedPool.acquire();
-    qsk localqsk1 = localqsk2;
-    if (localqsk2 == null) {
-      localqsk1 = new qsk();
+    spb localspb = this.a.jdField_a_of_type_Snh.a();
+    if (localspb != null) {
+      localspb.a(null, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    localqsk1.a = paramInt1;
-    localqsk1.c = paramInt2;
-    localqsk1.b = paramInt3;
-    return localqsk1;
-  }
-  
-  public void a(qsl paramqsl, int paramInt1, int paramInt2)
-  {
-    a(paramqsl, 1, a(paramInt1, 0, paramInt2));
-  }
-  
-  public void a(qsl paramqsl, int paramInt, qsk paramqsk)
-  {
-    try
-    {
-      super.a(paramqsl, paramInt, paramqsk);
-      if (paramqsk != null) {
-        jdField_a_of_type_AndroidSupportV4UtilPools$SynchronizedPool.release(paramqsk);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void b(qsl paramqsl, int paramInt1, int paramInt2)
-  {
-    a(paramqsl, 2, a(paramInt1, 0, paramInt2));
-  }
-  
-  public void c(qsl paramqsl, int paramInt1, int paramInt2)
-  {
-    a(paramqsl, 4, a(paramInt1, 0, paramInt2));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qsi
  * JD-Core Version:    0.7.0.1
  */

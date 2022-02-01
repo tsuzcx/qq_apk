@@ -1,58 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.ResultReceiver;
+import com.tencent.qphone.base.util.QLog;
 
 class acnx
-  implements View.OnClickListener
+  implements acpf
 {
-  acnx(acnu paramacnu) {}
+  acnx(acnw paramacnw) {}
   
-  public void onClick(View paramView)
+  public Activity a()
   {
-    paramView = (akib)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      arrr.c(localFileManagerEntity);
-    }
-    switch (paramView.jdField_a_of_type_Int)
+    return acnw.a(this.a);
+  }
+  
+  public void a()
+  {
+    this.a.dismiss();
+  }
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    if (acnw.a(this.a) == null)
     {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Akia.notifyDataSetChanged();
+      QLog.i("GdtMotiveVideoDialog", 1, "mResultReceiver == null");
       return;
-      if (!bdin.d(BaseApplication.getContext()))
-      {
-        arri.a(2131692747);
-        return;
-      }
-      arqo.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_AndroidContentContext, new acny(this, localFileManagerEntity));
-      continue;
-      this.a.a(localFileManagerEntity);
-      continue;
-      if (localFileManagerEntity.getCloudType() == 0)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-      }
-      else if (localFileManagerEntity.getCloudType() == 6)
-      {
-        ((alqo)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(0, localFileManagerEntity.uniseq, false);
-      }
-      else
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-        continue;
-        if (!bdin.d(BaseApplication.getContext()))
-        {
-          arri.a(2131692747);
-          return;
-        }
-        boolean bool = localFileManagerEntity.isSend();
-        arqo.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_AndroidContentContext, new acnz(this, localFileManagerEntity));
-      }
     }
+    acnw.a(this.a).send(paramInt, paramIntent.getExtras());
   }
 }
 

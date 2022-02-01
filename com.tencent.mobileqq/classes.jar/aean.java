@@ -1,20 +1,29 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aean
-  implements TextView.OnEditorActionListener
+  extends anty
 {
-  public aean(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  private WeakReference<Conversation> a;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public aean(Conversation paramConversation)
   {
-    if ((paramInt == 1) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0))) {
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).callJs("onTabKeyDown()");
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "cameraRedTouchObserver notify dataChanged");
     }
-    return false;
+    Conversation localConversation = (Conversation)this.a.get();
+    if (localConversation != null)
+    {
+      localConversation.f(false);
+      Conversation.j(localConversation);
+      localConversation.p();
+    }
   }
 }
 

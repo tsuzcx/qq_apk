@@ -1,98 +1,104 @@
 import android.os.Bundle;
-import appoint.define.appoint_define.PublisherInfo;
-import com.tencent.mobileqq.data.StrangerInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x66b.Oidb_0x66b.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class avpq
-  extends nac
+  implements aaob
 {
-  public avpq(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public avpq(UiApiPlugin paramUiApiPlugin, Map paramMap) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void callback(Bundle paramBundle)
   {
-    if (paramInt == 0)
+    String str = paramBundle.getString("action");
+    if ("onCommentSend".equals(str)) {}
+    Object localObject1;
+    do
     {
-      paramBundle = new oidb_sso.OIDBSSOPkg();
+      Object localObject2;
+      Object localObject3;
       try
       {
-        paramArrayOfByte = (oidb_sso.OIDBSSOPkg)paramBundle.mergeFrom((byte[])paramArrayOfByte);
-        if (paramArrayOfByte != null)
-        {
-          paramInt = paramArrayOfByte.uint32_result.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso.OIDBSSOPkg.result " + paramInt);
-          }
-        }
-        paramBundle = new Oidb_0x66b.RspBody();
+        str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
+        localObject1 = paramBundle.getString("commentId", "");
+        localObject2 = paramBundle.getString("rowKey", "");
+        localObject3 = paramBundle.getString("commentContent", "");
+        int i = paramBundle.getInt("firstLevelComment");
+        paramBundle = new JSONObject();
+        paramBundle.put("commentId", localObject1);
+        paramBundle.put("rowKey", localObject2);
+        paramBundle.put("commentContent", localObject3);
+        paramBundle.put("firstLevelComment", i + 1 + "");
+        paramBundle.put("result", "success");
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { paramBundle.toString() });
+        return;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      catch (JSONException paramBundle)
       {
+        paramBundle.printStackTrace();
+        return;
+      }
+      if ("onCommentLike".equals(str)) {
         try
         {
-          paramBundle.mergeFrom(paramArrayOfByte.bytes_bodybuffer.get().toByteArray());
-          paramArrayOfByte = new NearbyMyTabCard();
-          if (!paramBundle.rpt_msg_vistor_info.has()) {
-            break label307;
-          }
-          paramArrayOfByte.visitors.clear();
-          paramBundle = paramBundle.rpt_msg_vistor_info.get().iterator();
-          while (paramBundle.hasNext())
-          {
-            Object localObject = (appoint_define.PublisherInfo)paramBundle.next();
-            if (localObject != null)
-            {
-              localObject = StrangerInfo.convertFrom((appoint_define.PublisherInfo)localObject);
-              if (localObject != null) {
-                paramArrayOfByte.visitors.add(localObject);
-              }
-            }
-          }
-          paramArrayOfByte = paramArrayOfByte;
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso parseFrom byte " + paramArrayOfByte.toString());
-          }
-          paramArrayOfByte = paramBundle;
+          str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
+          localObject1 = paramBundle.getString("commentId", "");
+          localObject2 = paramBundle.getString("rowKey", "");
+          paramBundle = paramBundle.getString("likeStatus", "");
+          localObject3 = new JSONObject();
+          ((JSONObject)localObject3).put("commentId", localObject1);
+          ((JSONObject)localObject3).put("rowKey", localObject2);
+          ((JSONObject)localObject3).put("likeStatus", paramBundle);
+          ((JSONObject)localObject3).put("result", "success");
+          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { ((JSONObject)localObject3).toString() });
+          return;
         }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        catch (JSONException paramBundle)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso parseFrom byte " + paramArrayOfByte.toString());
-          }
+          paramBundle.printStackTrace();
+          return;
         }
       }
-    }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTab visitor info is: " + paramArrayOfByte.visitors.toString());
-    }
-    for (;;)
-    {
-      NearbyProfileFragment.a(this.a, paramArrayOfByte.visitors);
-      return;
-      label307:
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTay has no visitor info.");
+      if ("onCommentDelete".equals(str)) {
+        try
+        {
+          str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
+          localObject1 = paramBundle.getString("commentId", "");
+          paramBundle = paramBundle.getString("rowKey", "");
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("commentId", localObject1);
+          ((JSONObject)localObject2).put("rowKey", paramBundle);
+          ((JSONObject)localObject2).put("result", "success");
+          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { ((JSONObject)localObject2).toString() });
+          return;
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+          return;
+        }
       }
+    } while (!"onPanelClose".equals(str));
+    try
+    {
+      str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
+      paramBundle = paramBundle.getString("rowKey", "");
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("rowKey", paramBundle);
+      ((JSONObject)localObject1).put("result", "success");
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { ((JSONObject)localObject1).toString() });
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avpq
  * JD-Core Version:    0.7.0.1
  */

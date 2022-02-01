@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 public class aeeb
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aeeb(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
+  public aeeb(EmosmActivity paramEmosmActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    if (this.a.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (arpm.a(this.a))
+      {
+        this.a.jdField_a_of_type_Boolean = true;
+        EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 2);
+        bcst.b(this.a.app, "CliOper", "", "", "EmosSetting", "ForwardEmojiHome", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

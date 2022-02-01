@@ -1,69 +1,183 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class bfnf
-  extends SQLiteOpenHelper
+class bfnf
+  implements bfpo
 {
-  public bfnf(bfne parambfne, Context paramContext, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
-  {
-    super(paramContext, paramString, paramCursorFactory, paramInt);
-  }
+  bfnf(bfmz parambfmz) {}
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    try
+    switch (paramInt)
     {
-      bflp.b("cgi_report_debug", "ReportDataModal onCreate sql1 = create table if not exists newdata_report(id integer primary key,apn text,frequency text,commandid text,resultcode text,tmcost text,reqsize text,rspsize text,touin text,deviceinfo text,detail text,appid text)");
-      paramSQLiteDatabase.execSQL("create table if not exists newdata_report(id integer primary key,apn text,frequency text,commandid text,resultcode text,tmcost text,reqsize text,rspsize text,touin text,deviceinfo text,detail text,appid text)");
-      bflp.b("cgi_report_debug", "ReportDataModal onCreate sql2 = create table if not exists olddata_report(id integer primary key,apn text,frequency text,commandid text,resultcode text,tmcost text,reqsize text,rspsize text,touin text,deviceinfo text,detail text,appid text)");
-      paramSQLiteDatabase.execSQL("create table if not exists olddata_report(id integer primary key,apn text,frequency text,commandid text,resultcode text,tmcost text,reqsize text,rspsize text,touin text,deviceinfo text,detail text,appid text)");
-      return;
     }
-    catch (Exception paramSQLiteDatabase)
+    label295:
+    label820:
+    do
     {
-      bflp.e("cgi_report_debug", "ReportDataModal onCreate failed");
+      for (;;)
+      {
+        return;
+        if (paramJSONObject != null)
+        {
+          try
+          {
+            paramInt = ((Integer)paramJSONObject.get("retcode")).intValue();
+            paramJSONObject = (JSONObject)paramJSONObject.get("result");
+            if ((paramInt != 0) || (paramJSONObject == null)) {
+              continue;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult. retCode = " + paramInt + "\n");
+            }
+            paramBundle = (JSONObject)paramJSONObject.get("basics");
+            Object localObject2;
+            String str;
+            int i;
+            Object localObject1;
+            if (paramBundle != null)
+            {
+              paramBundle = (JSONArray)paramBundle.get("datas");
+              if (paramBundle != null)
+              {
+                paramInt = 0;
+                if (paramInt < paramBundle.length())
+                {
+                  localObject2 = (JSONObject)paramBundle.get(paramInt);
+                  str = (String)((JSONObject)localObject2).get("name");
+                  i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
+                  localObject1 = (String)((JSONObject)localObject2).get("api");
+                  localObject2 = (String)((JSONObject)localObject2).get("msg");
+                  if (!QLog.isColorLevel()) {
+                    break label1008;
+                  }
+                  QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, basics name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg = " + (String)localObject2 + "\n");
+                  break label1008;
+                }
+              }
+            }
+            paramBundle = (JSONObject)paramJSONObject.get("friendlink");
+            if (paramBundle != null)
+            {
+              paramBundle = (JSONArray)paramBundle.get("datas");
+              if (paramBundle != null)
+              {
+                paramInt = 0;
+                if (paramInt < paramBundle.length())
+                {
+                  localObject2 = (JSONObject)paramBundle.get(paramInt);
+                  str = (String)((JSONObject)localObject2).get("name");
+                  i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
+                  localObject1 = (String)((JSONObject)localObject2).get("api");
+                  localObject2 = (String)((JSONObject)localObject2).get("msg");
+                  if (("add_group".equals(localObject1)) && (i != 1)) {
+                    bfmz.a(this.a).b();
+                  }
+                  if (!QLog.isColorLevel()) {
+                    break label1015;
+                  }
+                  QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, friendlink name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg= " + (String)localObject2 + "\n");
+                  break label1015;
+                }
+              }
+            }
+            paramInt = ((Integer)paramJSONObject.get("appid")).intValue();
+            if (QLog.isColorLevel()) {
+              QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, appid =" + paramInt + "\n");
+            }
+            paramJSONObject = (JSONObject)paramJSONObject.get("qqpay");
+            if (paramJSONObject == null) {
+              continue;
+            }
+            paramJSONObject = (JSONArray)paramJSONObject.get("datas");
+            if (paramJSONObject == null) {
+              continue;
+            }
+            paramInt = 0;
+            while (paramInt < paramJSONObject.length())
+            {
+              localObject1 = (JSONObject)paramJSONObject.get(paramInt);
+              paramBundle = (String)((JSONObject)localObject1).get("name");
+              i = ((Integer)((JSONObject)localObject1).get("state")).intValue();
+              str = (String)((JSONObject)localObject1).get("api");
+              localObject1 = (String)((JSONObject)localObject1).get("msg");
+              if (QLog.isColorLevel()) {
+                QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, qqpay name = " + paramBundle + " state = " + i + " api = " + str + " msg= " + (String)localObject1 + "\n");
+              }
+              paramInt += 1;
+            }
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+          }
+          catch (Exception paramJSONObject) {}
+          QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult " + paramJSONObject.toString());
+          return;
+          if ((bfmz.a(this.a) != null) && (paramJSONObject != null)) {
+            try
+            {
+              paramJSONObject = (JSONObject)paramJSONObject.get("data");
+              if (paramJSONObject != null)
+              {
+                paramJSONObject = (JSONObject)paramJSONObject.get("key");
+                if (paramJSONObject != null)
+                {
+                  paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
+                  paramBundle = (String)paramJSONObject.get("retMsg");
+                  if (paramInt != 0) {
+                    break label921;
+                  }
+                  if (bfmz.a(this.a) != null) {
+                    bfmz.a(this.a).a(true);
+                  }
+                  bfng.a(9, new Object());
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "joinGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
+                    return;
+                  }
+                }
+              }
+            }
+            catch (Exception paramJSONObject)
+            {
+              bfmz.a(this.a).d(bfmz.a(this.a).getString(2131718768));
+            }
+          }
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "joinGroup onResult " + paramJSONObject.toString());
+    return;
+    label921:
+    paramJSONObject = bfmz.a(this.a).getString(2131718768);
+    switch (paramInt)
+    {
     }
-  }
-  
-  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    try
+    for (;;)
     {
-      paramSQLiteDatabase.execSQL("drop table if exists newdata_report");
-      paramSQLiteDatabase.execSQL("drop table if exists olddata_report");
-      onCreate(paramSQLiteDatabase);
-      bflp.b("cgi_report_debug", "ReportDataModal onUpgrade success");
-      return;
-    }
-    catch (Exception paramSQLiteDatabase)
-    {
-      bflp.e("cgi_report_debug", "ReportDataModal onUpgrade failed");
-    }
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    bflp.b("cgi_report_debug", "ReportDataModal onUpgrade oldVersion=" + paramInt1 + "  newVersion=" + paramInt2 + "");
-    if (paramInt1 != paramInt2) {}
-    try
-    {
-      paramSQLiteDatabase.execSQL("drop table if exists newdata_report");
-      paramSQLiteDatabase.execSQL("drop table if exists olddata_report");
-      onCreate(paramSQLiteDatabase);
-      bflp.b("cgi_report_debug", "ReportDataModal onUpgrade success");
-      return;
-    }
-    catch (Exception paramSQLiteDatabase)
-    {
-      bflp.e("cgi_report_debug", "ReportDataModal onUpgrade failed");
+      bfmz.a(this.a).d(paramJSONObject);
+      break label820;
+      paramJSONObject = bfmz.a(this.a).getString(2131718763);
+      continue;
+      paramJSONObject = bfmz.a(this.a).getString(2131718769);
+      continue;
+      label1008:
+      paramInt += 1;
+      break;
+      label1015:
+      paramInt += 1;
+      break label295;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfnf
  * JD-Core Version:    0.7.0.1
  */

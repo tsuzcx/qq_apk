@@ -1,71 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.ark.open.ArkAppMgr;
 
 public class aplu
-  extends apld
 {
-  public aplu(QQAppInterface paramQQAppInterface)
+  public static void a(String paramString1, String paramString2, String paramString3, apip paramapip)
   {
-    super("qq.android.qav.video", paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 10049;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QavVideoData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadVideoDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString3)) && (apkd.a() != null)) {
+      ArkAppMgr.getInstance().getAppPathByNameTimeout(3000L, paramString1, paramString2, "0.0.0.1", null, new aplv(paramString1, paramString3, paramapip));
     }
-    try
-    {
-      bdhb.a(paramString, mum.c(), false);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QavVideoData localQavVideoData = (QavVideoData)a();
-    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
-    {
-      localQavVideoData.autoDownload = true;
-      apkr.a(localQavVideoData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    return ((QavVideoData)a()).autoDownload;
   }
 }
 

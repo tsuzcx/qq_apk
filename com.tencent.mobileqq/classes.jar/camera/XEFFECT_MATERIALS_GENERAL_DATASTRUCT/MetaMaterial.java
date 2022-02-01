@@ -10,8 +10,10 @@ public final class MetaMaterial
   extends JceStruct
 {
   static Map<String, String> cache_additionalFields;
+  static MetaAdditionalPackage cache_additionalPackage = new MetaAdditionalPackage();
   static MetaSdkInfo cache_sdkInfo = new MetaSdkInfo();
   public Map<String, String> additionalFields;
+  public MetaAdditionalPackage additionalPackage;
   public String id = "";
   public String packageMd5 = "";
   public String packageUrl = "";
@@ -28,7 +30,7 @@ public final class MetaMaterial
   
   public MetaMaterial() {}
   
-  public MetaMaterial(String paramString1, MetaSdkInfo paramMetaSdkInfo, String paramString2, int paramInt1, int paramInt2, String paramString3, Map<String, String> paramMap, String paramString4)
+  public MetaMaterial(String paramString1, MetaSdkInfo paramMetaSdkInfo, String paramString2, int paramInt1, int paramInt2, String paramString3, Map<String, String> paramMap, String paramString4, MetaAdditionalPackage paramMetaAdditionalPackage)
   {
     this.id = paramString1;
     this.sdkInfo = paramMetaSdkInfo;
@@ -38,6 +40,7 @@ public final class MetaMaterial
     this.packageUrl = paramString3;
     this.additionalFields = paramMap;
     this.packageMd5 = paramString4;
+    this.additionalPackage = paramMetaAdditionalPackage;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -50,6 +53,7 @@ public final class MetaMaterial
     this.packageUrl = paramJceInputStream.readString(5, false);
     this.additionalFields = ((Map)paramJceInputStream.read(cache_additionalFields, 6, false));
     this.packageMd5 = paramJceInputStream.readString(7, false);
+    this.additionalPackage = ((MetaAdditionalPackage)paramJceInputStream.read(cache_additionalPackage, 8, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -73,6 +77,9 @@ public final class MetaMaterial
     }
     if (this.packageMd5 != null) {
       paramJceOutputStream.write(this.packageMd5, 7);
+    }
+    if (this.additionalPackage != null) {
+      paramJceOutputStream.write(this.additionalPackage, 8);
     }
   }
 }

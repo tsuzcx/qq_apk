@@ -1,21 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class quu
-  implements quw
+  implements View.OnClickListener
 {
-  quu(qun paramqun, long paramLong, quv paramquv) {}
+  quu(qus paramqus) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    List localList = qun.a(this.jdField_a_of_type_Qun, this.jdField_a_of_type_Long, qun.a(this.jdField_a_of_type_Qun));
-    this.jdField_a_of_type_Quv.a(localList);
-    qun.b(this.jdField_a_of_type_Qun).remove(this);
+    pha.a(this.a.jdField_a_of_type_AndroidContentContext, ((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
+    snh.a(((pxk)this.a.jdField_a_of_type_JavaLangObject).a(), ((pxk)this.a.jdField_a_of_type_JavaLangObject).e());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     quu
  * JD-Core Version:    0.7.0.1
  */

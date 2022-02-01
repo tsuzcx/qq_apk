@@ -1,76 +1,152 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.portal.RedPacketServlet;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class azbv
-  extends MSFServlet
+  extends BroadcastReceiver
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    paramIntent.getStringExtra("key_cmd_string");
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-    {
-      paramIntent = paramFromServiceMsg.getWupBuffer();
-      arrayOfInt = new int[1];
-      paramIntent = bjes.a(paramIntent, (QQAppInterface)getAppRuntime(), arrayOfInt);
-      if (paramIntent != null)
-      {
-        paramFromServiceMsg = new Bundle();
-        paramFromServiceMsg.putSerializable("data", paramIntent);
-        notifyObserver(null, 1001, true, paramFromServiceMsg, avvd.class);
-      }
-    }
-    while (paramFromServiceMsg == null)
-    {
-      int[] arrayOfInt;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneFeedsServlet", 2, new Object[] { "inform QZoneFeedsServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
-      }
-      notifyObserver(null, 1001, false, new Bundle(), avvd.class);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFeedsServlet", 2, "inform QZoneFeedsServlet resultcode fail.");
-    }
-    notifyObserver(null, 1001, false, new Bundle(), avvd.class);
-  }
+  private azbv(PortalManager paramPortalManager) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    long l1;
-    do
-    {
-      return;
-      l1 = paramIntent.getLongExtra("selfuin", 0L);
-      localObject1 = paramIntent.getLongArrayExtra("hostuin");
-    } while (localObject1 == null);
-    Object localObject2 = new ArrayList(localObject1.length);
-    int j = localObject1.length;
-    int i = 0;
-    while (i < j)
-    {
-      ((ArrayList)localObject2).add(Long.valueOf(localObject1[i]));
-      i += 1;
+    int j = 1;
+    int i = 1;
+    int k = paramIntent.getIntExtra("portal_type_key", -1);
+    int m = paramIntent.getIntExtra("bc_seq", -1);
+    paramContext = paramIntent.getStringExtra("portal_agrs");
+    if (QLog.isColorLevel()) {
+      QLog.i("PortalManager", 2, "PortalSwictherReceiver, " + paramIntent.getExtras());
     }
-    long l2 = paramIntent.getLongExtra("lasttime", 0L);
-    i = paramIntent.getIntExtra("src", 0);
-    localObject2 = new bjes(l1, (ArrayList)localObject2, l2, paramIntent.getStringExtra("refer"), i);
-    Object localObject1 = ((bjes)localObject2).encode();
-    paramIntent.putExtra("key_cmd_string", ((bjes)localObject2).getCmdString());
-    if (localObject1 == null) {}
-    for (paramIntent = new byte[4];; paramIntent = (Intent)localObject1)
+    Object localObject;
+    int n;
+    switch (k)
     {
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + "getAIONewestFeed");
-      paramPacket.putSendData(paramIntent);
+    default: 
+    case 1010: 
+    case 1011: 
+      do
+      {
+        return;
+        try
+        {
+          paramContext = new JSONObject();
+          paramIntent = paramContext.put("errorCode", 0);
+          if (this.a.a() != -1)
+          {
+            paramIntent.put("result", i);
+            PortalManager.a(this.a, k, paramContext.toString(), m);
+            return;
+          }
+        }
+        catch (JSONException paramContext)
+        {
+          for (;;)
+          {
+            paramContext.printStackTrace();
+            try
+            {
+              paramContext = new JSONObject();
+              paramContext.put("errorCode", -1);
+              PortalManager.a(this.a, k, paramContext.toString(), m);
+              return;
+            }
+            catch (JSONException paramContext)
+            {
+              paramContext.printStackTrace();
+              return;
+            }
+            i = 0;
+          }
+          if (!TextUtils.isEmpty(paramContext)) {
+            break;
+          }
+          PortalManager.a(this.a, k, m, null, -1, "params is null");
+          return;
+        }
+        catch (Exception paramContext) {}
+      } while (!QLog.isColorLevel());
+      QLog.e("PortalManager", 2, "", paramContext);
       return;
+      paramContext = new JSONObject(paramContext);
+      paramIntent = paramContext.getString("key");
+      localObject = azby.b(paramIntent);
+      localObject = bglf.l(PortalManager.a(this.a), (String)localObject);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        paramContext.put("errorCode", 0).put("result", localObject).put("key", paramIntent);
+      }
+      for (;;)
+      {
+        PortalManager.a(this.a, k, paramContext.toString(), m);
+        return;
+        paramContext.put("errorCode", -1).put("key", paramIntent);
+      }
+    case 1008: 
+      if (TextUtils.isEmpty(paramContext))
+      {
+        PortalManager.a(this.a, k, m, null, -1, "params is null");
+        return;
+      }
+      paramContext = new JSONObject(paramContext);
+      int i1 = paramContext.getInt("type");
+      n = paramContext.getInt("count");
+      i = j;
+      switch (i1)
+      {
+      }
+      break;
+    }
+    for (;;)
+    {
+      RedPacketServlet.a(PortalManager.a(this.a), i, n, k, m);
+      return;
+      if (TextUtils.isEmpty(paramContext))
+      {
+        PortalManager.a(this.a, k, m, null, -1, "params is null");
+        return;
+      }
+      paramContext = new JSONObject(paramContext).getString("key");
+      if (!TextUtils.isEmpty(paramContext))
+      {
+        paramIntent = azby.b(paramContext);
+        localObject = PortalManager.a(this.a).a(paramIntent, false);
+        if (localObject != null)
+        {
+          paramIntent = azby.a((Bitmap)localObject);
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("errorCode", 0);
+          ((JSONObject)localObject).put("key", paramContext);
+          ((JSONObject)localObject).put("result", paramIntent);
+          PortalManager.a(this.a, k, ((JSONObject)localObject).toString(), m);
+          return;
+        }
+        localObject = new azbu();
+        ((azbu)localObject).jdField_a_of_type_JavaLangString = paramContext;
+        ((azbu)localObject).b = k;
+        ((azbu)localObject).jdField_a_of_type_Int = m;
+        this.a.a.put(paramIntent, localObject);
+        if ((PortalManager.a(this.a).a(paramIntent, true) != null) || (!QLog.isColorLevel())) {
+          break;
+        }
+        paramIntent = bglf.j(PortalManager.a(this.a), String.valueOf(paramIntent));
+        QLog.d("PortalManager", 2, "昵称为" + paramIntent + "，本地不存在头像，key = " + paramContext);
+        return;
+      }
+      PortalManager.a(this.a, k, m, null, -1, "key is null");
+      return;
+      i = j;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
     }
   }
 }

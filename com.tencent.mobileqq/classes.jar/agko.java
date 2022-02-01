@@ -1,14 +1,15 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface agko
-  extends IInterface
+class agko
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(CompressInfo paramCompressInfo);
+  agko(agki paramagki) {}
   
-  public abstract void b(CompressInfo paramCompressInfo);
-  
-  public abstract void c(CompressInfo paramCompressInfo);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

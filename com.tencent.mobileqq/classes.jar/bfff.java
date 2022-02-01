@@ -1,29 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.qqfav.util.HandlerPlus;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class bfff
-  implements bffx
+class bfff
+  extends BroadcastReceiver
 {
-  public bfff(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  bfff(bffd parambffd) {}
   
-  public void a(long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onDeleteVirtual vid=", Long.valueOf(paramLong) });
-    if (!bdin.g(BaseApplicationImpl.getApplication()))
-    {
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.post(this.a.jdField_a_of_type_JavaLangRunnable);
+    paramContext = paramIntent.getAction();
+    if ("com.tencent.mobileqq.activity.ai.audiopanel.startrecord_action".equals(paramContext)) {
+      this.a.b(bffd.a(this.a));
+    }
+    while (!"com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video".equals(paramContext)) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a), paramLong, this.a.jdField_a_of_type_Bfrs);
+    this.a.b(bffd.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfff
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,44 @@
-public final class aatb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
+import java.lang.ref.WeakReference;
+
+public class aatb
+  implements DialogInterface.OnClickListener
 {
-  public final int a;
-  public final long a;
-  final String jdField_a_of_type_JavaLangString;
-  final Throwable jdField_a_of_type_JavaLangThrowable;
-  final String b;
+  public aatb(TroopGiftPanel paramTroopGiftPanel, int paramInt) {}
   
-  private aatb(String paramString1, String paramString2, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this(paramString1, paramString2, paramInt, paramLong, null);
-  }
-  
-  private aatb(String paramString1, String paramString2, int paramInt, long paramLong, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+    if ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aasj != null) && (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aasj.a != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aasj.a.c)))
+    {
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c();
+      if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.j == 2) {
+        bcst.b(null, "dc00899", "Grp_flower", "", "C2C", "Clk_topay", 0, 0, "", "", "", "");
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.j == 6)
+    {
+      bcst.b(null, "dc00899", "Grp_flower", "", "discuss_grp", "Clk_topay", 0, 0, "", "", "", "");
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.j == 7)
+    {
+      bcst.b(null, "dc00899", "Grp_flower", "", "temp_c2c", "Clk_topay", 0, 0, "", "", "", "");
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
+    {
+      anqt.a("gift_store", "pay_tip", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
+      return;
+    }
+    bcst.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_topay", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + muc.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
 }
 

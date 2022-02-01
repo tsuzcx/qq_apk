@@ -3,7 +3,7 @@ package com.tencent.mqp.app.sec;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bfam;
+import bihn;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class MQPSensitiveMsgUtil$5
@@ -12,7 +12,7 @@ public final class MQPSensitiveMsgUtil$5
   public void run()
   {
     int i = 0;
-    Object localObject = "sp_confirmed_sensmsg_" + bfam.a();
+    Object localObject = "sp_confirmed_sensmsg_" + bihn.a();
     localObject = BaseApplication.getContext().getSharedPreferences((String)localObject, 0);
     Bundle localBundle = new Bundle();
     if (i < 10)
@@ -30,14 +30,14 @@ public final class MQPSensitiveMsgUtil$5
       }
     }
     if (localBundle.size() > 0) {
-      bfam.a(localBundle.size() - 1);
+      bihn.a(localBundle.size() - 1);
     }
-    bfam.a().putBundle(bfam.a(), localBundle);
+    bihn.a().putBundle(bihn.a(), localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mqp.app.sec.MQPSensitiveMsgUtil.5
  * JD-Core Version:    0.7.0.1
  */

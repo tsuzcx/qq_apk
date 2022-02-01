@@ -1,15 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnHoverListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileBaseFavFileTabView;
 
-class asvc
-  implements View.OnHoverListener
+public class asvc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  asvc(asvb paramasvb) {}
+  public asvc(QfileBaseFavFileTabView paramQfileBaseFavFileTabView) {}
   
-  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
+  public void onGlobalLayout()
   {
-    return true;
+    this.a.p();
   }
 }
 

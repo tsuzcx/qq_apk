@@ -2,11 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.ugc;
 
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
-import awkj;
-import baqy;
-import bayf;
-import bayk;
-import bdhj;
+import ayyz;
+import bdsp;
+import bdzi;
+import bdzn;
+import bgmo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.hotpic.HotPicData;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -14,11 +14,11 @@ import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.List;
-import nrt;
-import ors;
-import owy;
-import qpa;
-import qpb;
+import oat;
+import pha;
+import pmh;
+import rjx;
+import rjy;
 
 class ReadInJoyDeliverUGCActivity$15
   implements Runnable
@@ -66,7 +66,7 @@ class ReadInJoyDeliverUGCActivity$15
                 while (ReadInJoyDeliverUGCActivity.d(this.this$0) == ReadInJoyDeliverUGCActivity.a(this.this$0))
                 {
                   ReadInJoyDeliverUGCActivity.d(this.this$0, true);
-                  owy.a().a(this.this$0.app.c(), ReadInJoyDeliverUGCActivity.c(this.this$0), ReadInJoyDeliverUGCActivity.b(this.this$0), ReadInJoyDeliverUGCActivity.e(this.this$0), ReadInJoyDeliverUGCActivity.a(this.this$0), ReadInJoyDeliverUGCActivity.d(this.this$0), ReadInJoyDeliverUGCActivity.a(this.this$0).a(), ReadInJoyDeliverUGCActivity.a(this.this$0).a(), ReadInJoyDeliverUGCActivity.a(this.this$0).b(), ReadInJoyDeliverUGCActivity.a(this.this$0).b(), ReadInJoyDeliverUGCActivity.d(this.this$0), ReadInJoyDeliverUGCActivity.a(this.this$0), ReadInJoyDeliverUGCActivity.d(this.this$0), ReadInJoyDeliverUGCActivity.a(this.this$0), ReadInJoyDeliverUGCActivity.a(this.this$0), ReadInJoyDeliverUGCActivity.g(this.this$0));
+                  pmh.a().a(this.this$0.app.c(), ReadInJoyDeliverUGCActivity.c(this.this$0), ReadInJoyDeliverUGCActivity.b(this.this$0), ReadInJoyDeliverUGCActivity.e(this.this$0), ReadInJoyDeliverUGCActivity.a(this.this$0), ReadInJoyDeliverUGCActivity.d(this.this$0), ReadInJoyDeliverUGCActivity.a(this.this$0).a(), ReadInJoyDeliverUGCActivity.a(this.this$0).a(), ReadInJoyDeliverUGCActivity.a(this.this$0).b(), ReadInJoyDeliverUGCActivity.a(this.this$0).b(), ReadInJoyDeliverUGCActivity.d(this.this$0), ReadInJoyDeliverUGCActivity.a(this.this$0), ReadInJoyDeliverUGCActivity.d(this.this$0), ReadInJoyDeliverUGCActivity.a(this.this$0), ReadInJoyDeliverUGCActivity.a(this.this$0), ReadInJoyDeliverUGCActivity.g(this.this$0));
                   return;
                   ReadInJoyDeliverUGCActivity.c(this.this$0, false);
                   this.this$0.m();
@@ -81,13 +81,13 @@ class ReadInJoyDeliverUGCActivity$15
               break label458;
             }
             this.this$0.m();
-            ReadInJoyDeliverUGCActivity.a(this.this$0, 1, this.this$0.getString(2131718859));
+            ReadInJoyDeliverUGCActivity.a(this.this$0, 1, this.this$0.getString(2131716990));
             this.this$0.j();
           } while (!QLog.isColorLevel());
           QLog.d("ReadInJoyDeliverUGCActivity", 2, "startUploadPic empty path!");
           return;
           this.this$0.m();
-          ReadInJoyDeliverUGCActivity.b(this.this$0, 1, this.this$0.getString(2131718859));
+          ReadInJoyDeliverUGCActivity.b(this.this$0, 1, this.this$0.getString(2131716990));
           this.this$0.j();
         } while (!QLog.isColorLevel());
         QLog.d("ReadInJoyDeliverUGCActivity", 2, "startUploadPic oncommon error!");
@@ -98,7 +98,7 @@ class ReadInJoyDeliverUGCActivity$15
         }
         ReadInJoyDeliverUGCActivity.e(this.this$0, true);
         this.this$0.m();
-        ReadInJoyDeliverUGCActivity.c(this.this$0, 1, this.this$0.getString(2131718859));
+        ReadInJoyDeliverUGCActivity.c(this.this$0, 1, this.this$0.getString(2131716990));
         this.this$0.j();
       } while (!QLog.isColorLevel());
       QLog.d("ReadInJoyDeliverUGCActivity", 2, "startUploadPic file not exist, path=" + str2);
@@ -116,7 +116,7 @@ class ReadInJoyDeliverUGCActivity$15
         try
         {
           ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-          bdhj.a(str2, (BitmapFactory.Options)localObject);
+          bgmo.a(str2, (BitmapFactory.Options)localObject);
           if (((BitmapFactory.Options)localObject).outHeight <= ((BitmapFactory.Options)localObject).outWidth) {
             continue;
           }
@@ -129,9 +129,9 @@ class ReadInJoyDeliverUGCActivity$15
         {
           int i;
           boolean bool2;
-          bayf localbayf;
-          qpb localqpb;
-          bayk localbayk;
+          bdzi localbdzi;
+          rjy localrjy;
+          bdzn localbdzn;
           QLog.d("ReadInJoyDeliverUGCActivity", 2, "isNeedCompress error" + localException2.toString());
           continue;
           ReadInJoyDeliverUGCActivity.b(this.this$0).add(localCompressInfo.jdField_e_of_type_JavaLangString);
@@ -151,7 +151,7 @@ class ReadInJoyDeliverUGCActivity$15
         if (!ReadInJoyDeliverUGCActivity.c(this.this$0)) {
           break;
         }
-        bool2 = awkj.a(localCompressInfo);
+        bool2 = ayyz.a(localCompressInfo);
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyDeliverUGCActivity", 2, "compress result= " + bool2);
         }
@@ -177,28 +177,28 @@ class ReadInJoyDeliverUGCActivity$15
           QLog.d("ReadInJoyDeliverUGCActivity", 2, "afterCompress picture: w:" + localCompressInfo.d + "  h:" + localCompressInfo.jdField_e_of_type_Int + " size:" + l2 / 1024L + "kb");
         }
         ReadInJoyDeliverUGCActivity.a(this.this$0).d(this.jdField_a_of_type_Int, NetConnInfoCenter.getServerTimeMillis());
-        localbayf = this.this$0.app.a();
-        localqpb = new qpb(this.this$0, this.this$0.getMainLooper());
-        localbayk = new bayk();
+        localbdzi = this.this$0.app.a();
+        localrjy = new rjy(this.this$0, this.this$0.getMainLooper());
+        localbdzn = new bdzn();
         if (!ReadInJoyDeliverUGCActivity.c(this.this$0)) {
           break;
         }
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyDeliverUGCActivity", 2, "doStartUploadPicposition" + this.jdField_a_of_type_Int);
         }
-        localqpb.addFilter(new Class[] { baqy.class });
-        localbayf.a(localqpb);
-        localbayk.jdField_a_of_type_Boolean = true;
-        localbayk.jdField_c_of_type_Int = 10;
-        localbayk.i = ((String)localObject);
-        localbayk.jdField_a_of_type_Long = this.jdField_a_of_type_Int;
-        localbayk.jdField_c_of_type_JavaLangString = "0";
-        localbayk.b = 24;
-        localbayk.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
-        localbayf.a(localbayk);
-        localqpb.jdField_a_of_type_Boolean = true;
-        ReadInJoyDeliverUGCActivity.d(this.this$0).add(localqpb);
-        ReadInJoyDeliverUGCActivity.e(this.this$0).add(localbayk);
+        localrjy.addFilter(new Class[] { bdsp.class });
+        localbdzi.a(localrjy);
+        localbdzn.jdField_a_of_type_Boolean = true;
+        localbdzn.jdField_c_of_type_Int = 10;
+        localbdzn.i = ((String)localObject);
+        localbdzn.jdField_a_of_type_Long = this.jdField_a_of_type_Int;
+        localbdzn.jdField_c_of_type_JavaLangString = "0";
+        localbdzn.b = 24;
+        localbdzn.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
+        localbdzi.a(localbdzn);
+        localrjy.jdField_a_of_type_Boolean = true;
+        ReadInJoyDeliverUGCActivity.d(this.this$0).add(localrjy);
+        ReadInJoyDeliverUGCActivity.e(this.this$0).add(localbdzn);
         ReadInJoyDeliverUGCActivity.a(this.this$0).e(this.jdField_a_of_type_Int, NetConnInfoCenter.getServerTimeMillis());
         if (!bool1) {
           break;
@@ -209,7 +209,7 @@ class ReadInJoyDeliverUGCActivity$15
           if (l2 != l1) {
             break label1481;
           }
-          nrt.a(null, "", "0X800951E", "0X800951E", 0, 0, String.valueOf(localCompressInfo.d), String.valueOf(localCompressInfo.jdField_e_of_type_Int), (String)localObject, ors.a(0), false);
+          oat.a(null, "", "0X800951E", "0X800951E", 0, 0, String.valueOf(localCompressInfo.d), String.valueOf(localCompressInfo.jdField_e_of_type_Int), (String)localObject, pha.a(0), false);
           return;
         }
         catch (Exception localException1) {}
@@ -221,7 +221,7 @@ class ReadInJoyDeliverUGCActivity$15
         i = localException1.outWidth;
       }
     } while (l2 <= l1);
-    nrt.a(null, "", "0X800951E", "0X800951E", 0, 0, String.valueOf(localCompressInfo.d), String.valueOf(localCompressInfo.jdField_e_of_type_Int), str1, ors.a(1), false);
+    oat.a(null, "", "0X800951E", "0X800951E", 0, 0, String.valueOf(localCompressInfo.d), String.valueOf(localCompressInfo.jdField_e_of_type_Int), str1, pha.a(1), false);
   }
 }
 

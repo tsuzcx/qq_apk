@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.main;
 
-import aiev;
-import aiey;
-import alvr;
-import aoiq;
-import auau;
-import avsm;
-import avsq;
-import axlx;
-import azmk;
-import bems;
-import bkcd;
+import ajvn;
+import ajvq;
+import anoy;
+import aqji;
+import awie;
+import axzw;
+import ayaa;
+import baif;
+import bcnj;
+import bhtw;
+import bmqn;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -22,14 +22,14 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.util.Collections;
 import java.util.Map;
-import nan;
-import nga;
+import njg;
+import noq;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class LebaTabRedTouch$1
   implements Runnable
 {
-  public LebaTabRedTouch$1(aiev paramaiev, aiey paramaiey) {}
+  public LebaTabRedTouch$1(ajvn paramajvn, ajvq paramajvq) {}
   
   public void run()
   {
@@ -70,7 +70,7 @@ public class LebaTabRedTouch$1
         int k;
         int m;
         int i7;
-        bkcd localbkcd;
+        bmqn localbmqn;
         int i3;
         int i2;
         label800:
@@ -96,7 +96,7 @@ public class LebaTabRedTouch$1
         if (i4 > 0) {
           continue;
         }
-        j = aiev.b(this.this$0);
+        j = ajvn.b(this.this$0);
         int i = j;
         if (j > 0) {
           continue;
@@ -121,7 +121,7 @@ public class LebaTabRedTouch$1
         ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(0);
         ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content.set("");
         ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.set("");
-        aiev.a(i7, i);
+        ajvn.a(i7, i);
         QLog.i("MainAssistObserver.LebaTabRedTouch", 1, "updateTabLebaNotify hasReddot; redpointMums = " + i4 + ",isReadinjoyNotifyNeedsDisplay" + bool3 + ",nearbyHasRedPoint = " + bool2 + ", allPeopleVotePointCount=" + i2 + ", finalConfessShowRedDot=" + bool4);
         continue;
       }
@@ -132,8 +132,8 @@ public class LebaTabRedTouch$1
         }
         this.a.a();
       }
-      localObject5 = (nan)this.this$0.a.app.getManager(70);
-      localRedDotInfo = ((nan)localObject5).a();
+      localObject5 = (njg)this.this$0.a.app.getManager(70);
+      localRedDotInfo = ((njg)localObject5).a();
       i = -1;
       if (localRedDotInfo != null) {
         i = localRedDotInfo.uint32_appid.get();
@@ -154,49 +154,49 @@ public class LebaTabRedTouch$1
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("mIsShowNewLeba=").append(this.this$0.a.app.q);
-        bool6 = azmk.a();
+        bool6 = bcnj.a();
         localObject1 = Collections.emptyMap();
         if (bool6)
         {
           localObject1 = this.this$0.a();
-          i = ((nan)localObject5).a(this.this$0.a.app);
-          k = ((nan)localObject5).a();
-          if (!alvr.a(this.this$0.a.app, 826L, bool6, (Map)localObject1))
+          i = ((njg)localObject5).a(this.this$0.a.app);
+          k = ((njg)localObject5).a();
+          if (!anoy.a(this.this$0.a.app, 826L, bool6, (Map)localObject1))
           {
             i = 0;
             k = 0;
             localStringBuilder.append("troop red point-->redPointNums= ").append(i).append(", redNumPointNums=").append(k).append(", isBuluoEntryShow=").append(k);
-            ((avsm)this.this$0.a.app.getManager(160)).a(100510);
-            localObject5 = ((nan)localObject5).a(((nan)localObject5).a(), false);
-            if (((avsq)localObject5).a != -1)
+            ((axzw)this.this$0.a.app.getManager(160)).a(100510);
+            localObject5 = ((njg)localObject5).a(((njg)localObject5).a(), false);
+            if (((ayaa)localObject5).a != -1)
             {
               bool1 = true;
-              m = ((avsq)localObject5).b;
-              bool3 = alvr.a(this.this$0.a.app, 7719L, bool6, (Map)localObject1);
+              m = ((ayaa)localObject5).b;
+              bool3 = anoy.a(this.this$0.a.app, 7719L, bool6, (Map)localObject1);
               if (bool3) {
                 break label1529;
               }
               bool2 = false;
               m = 0;
               localStringBuilder.append("nearby red point-->nearbyNum= ").append(m).append(", nearbyHasRedPoint=").append(bool2).append(", isNearbyEntryShow=").append(bool3);
-              localObject5 = ((axlx)this.this$0.a.app.getManager(36)).a(this.this$0.a.app, bool6, (Map)localObject1);
+              localObject5 = ((baif)this.this$0.a.app.getManager(36)).a(this.this$0.a.app, bool6, (Map)localObject1);
               if ((localObject5 == null) || (((BusinessInfoCheckUpdate.RedTypeInfo)localObject5).red_type.get() != 5)) {
                 break label1523;
               }
               n = Integer.parseInt(((BusinessInfoCheckUpdate.RedTypeInfo)localObject5).red_content.get());
               localStringBuilder.append("business red point-->numRedTouch=").append(n);
-              i7 = aiev.a(this.this$0);
+              i7 = ajvn.a(this.this$0);
               localStringBuilder.append("QZone red point-->qzonMsgCount=").append(i7);
-              localbkcd = aiev.a(this.this$0);
-              if (localbkcd == null) {
+              localbmqn = ajvn.a(this.this$0);
+              if (localbmqn == null) {
                 continue;
               }
-              j = localbkcd.a();
-              if ((localbkcd == null) || (!localbkcd.a())) {
+              j = localbmqn.a();
+              if ((localbmqn == null) || (!localbmqn.a())) {
                 continue;
               }
               bool1 = true;
-              bool4 = alvr.a(this.this$0.a.app, 1130L, bool6, (Map)localObject1);
+              bool4 = anoy.a(this.this$0.a.app, 1130L, bool6, (Map)localObject1);
               if (bool4) {
                 break label1516;
               }
@@ -207,18 +207,18 @@ public class LebaTabRedTouch$1
                 break label1510;
               }
               i1 = localRedDotInfo.uint32_number.get();
-              i3 = bems.a(this.this$0.a.app, true);
-              i2 = bems.a(this.this$0.a.app, false);
-              if (alvr.a(this.this$0.a.app, 770L, bool6, (Map)localObject1)) {
+              i3 = bhtw.a(this.this$0.a.app, true);
+              i2 = bhtw.a(this.this$0.a.app, false);
+              if (anoy.a(this.this$0.a.app, 770L, bool6, (Map)localObject1)) {
                 break label1507;
               }
               i2 = 0;
               i3 = 0;
-              bool7 = aoiq.a(this.this$0.a.app, "redpoint_leba_show");
+              bool7 = aqji.a(this.this$0.a.app, "redpoint_leba_show");
               if (!bool7) {
                 break label1498;
               }
-              bool5 = alvr.a(this.this$0.a.app, 7759L, bool6, (Map)localObject1);
+              bool5 = anoy.a(this.this$0.a.app, 7759L, bool6, (Map)localObject1);
               if ((!bool7) || (!bool5)) {
                 continue;
               }
@@ -232,11 +232,11 @@ public class LebaTabRedTouch$1
     for (;;)
     {
       localStringBuilder.append("confessRedPoit").append(bool4).append(",").append(bool7).append(",").append(bool1);
-      if (alvr.a(this.this$0.a.app, 7720L, bool6, (Map)localObject1)) {}
-      for (int i5 = auau.a(this.this$0.a.app);; i5 = 0)
+      if (anoy.a(this.this$0.a.app, 7720L, bool6, (Map)localObject1)) {}
+      for (int i5 = awie.a(this.this$0.a.app);; i5 = 0)
       {
         localStringBuilder.append("matchChatRedNum,").append(i5);
-        localObject1 = aiev.a(this.this$0);
+        localObject1 = ajvn.a(this.this$0);
         int i6;
         int i4;
         if (localObject1 == null)
@@ -260,7 +260,7 @@ public class LebaTabRedTouch$1
           ((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_type.set(5);
           ((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_content.set(i5 + "");
           ((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_desc.set("{'cn':'#FF0000'}");
-          aiev.a(i7, 0);
+          ajvn.a(i7, 0);
           break;
         }
         label1275:
@@ -297,7 +297,7 @@ public class LebaTabRedTouch$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.LebaTabRedTouch.1
  * JD-Core Version:    0.7.0.1
  */

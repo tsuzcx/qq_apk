@@ -63,6 +63,7 @@ public class MsfConstants
   public static final String ATTRIBUTE_RESP_REGISTER_PROMPTINFO = "resp_register_promptinfo";
   public static final String ATTRIBUTE_RESP_REGISTER_RESENDTIME = "resp_register_shNextResendTime";
   public static final String ATTRIBUTE_RESP_REGISTER_RESULTCODE = "resp_register_resultcode";
+  public static final String ATTRIBUTE_RESP_REGISTER_SUPER_SIG = "resp_register_supersig";
   public static final String ATTRIBUTE_RESP_REGISTER_TIMEOVER = "resp_register_shTotalTimeOver";
   public static final String ATTRIBUTE_RESP_REGISTER_UIN = "resp_register_uin";
   public static final String ATTRIBUTE_RESP_SERVERCONFIGPUSH_CONTENT = "resp_serverConfigPush_content";

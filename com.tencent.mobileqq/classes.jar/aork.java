@@ -1,88 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
 
-public class aork
-  extends aokh<aorl>
+class aork
+  implements Animation.AnimationListener
 {
-  public int a()
+  aork(aorh paramaorh) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return 538;
+    this.a.a.setVisibility(8);
+    this.a.dismiss();
   }
   
-  @NonNull
-  public aorl a(int paramInt)
-  {
-    return new aorl();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  @Nullable
-  public aorl a(aoko[] paramArrayOfaoko)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed");
-    }
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
-    {
-      paramArrayOfaoko = paramArrayOfaoko[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed, content:" + paramArrayOfaoko);
-      }
-      return aorl.a(paramArrayOfaoko);
-    }
-    return new aorl();
-  }
-  
-  public Class a()
-  {
-    return aorl.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onReqFailed");
-    }
-  }
-  
-  public void a(aorl paramaorl)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichmediaIpv6ConifgProcessor", 2, "onUpdate");
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localQQAppInterface != null)
-    {
-      localQQAppInterface.a().a = paramaorl;
-      localQQAppInterface.getHwEngine().ipv6Switch = paramaorl.a;
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aork
  * JD-Core Version:    0.7.0.1
  */

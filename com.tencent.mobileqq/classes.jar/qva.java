@@ -1,108 +1,201 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 
 public class qva
-  extends ohl
 {
-  @Nullable
-  private quj jdField_a_of_type_Quj;
-  @NotNull
-  private quk jdField_a_of_type_Quk;
-  @NotNull
-  private qun jdField_a_of_type_Qun;
-  @NotNull
-  private qxf jdField_a_of_type_Qxf;
-  private volatile boolean jdField_a_of_type_Boolean;
+  public pxk a;
+  public qrb a;
   
-  public qva(QQAppInterface paramQQAppInterface, @NotNull quk paramquk, @Nullable quj paramquj, @NotNull qxf paramqxf)
+  public static boolean a(ArticleInfo paramArticleInfo)
   {
-    super(paramquk, true, "UploadVideoTaskStep");
-    this.jdField_a_of_type_Qun = ((qun)paramQQAppInterface.getManager(356));
-    this.jdField_a_of_type_Quk = paramquk;
-    this.jdField_a_of_type_Quj = paramquj;
-    this.jdField_a_of_type_Qxf = paramqxf;
+    return qyo.a(paramArticleInfo);
   }
   
-  private void b()
+  public static boolean a(pxk parampxk)
   {
-    this.jdField_a_of_type_Boolean = false;
-    UgcVideo localUgcVideo = this.jdField_a_of_type_Quk.a();
-    QLog.e("RIJUGC.UploadVideoTaskStep", 1, "pauseUpload, ugcVideo.status=" + localUgcVideo.status);
-    if ((localUgcVideo.status == UgcVideo.STATUS_UPLOADING) || (localUgcVideo.status == UgcVideo.STATUS_PAUSE))
+    return (parampxk.a() == 49) || (parampxk.a() == 62) || (parampxk.a() == 63);
+  }
+  
+  public static boolean b(ArticleInfo paramArticleInfo)
+  {
+    return qyo.b(paramArticleInfo);
+  }
+  
+  public static boolean b(pxk parampxk)
+  {
+    return (parampxk.a() == 39) || (parampxk.a() == 116) || (parampxk.a() == 66) || (parampxk.a() == 115) || (parampxk.a() == 122);
+  }
+  
+  public static boolean c(ArticleInfo paramArticleInfo)
+  {
+    int i = snh.c(paramArticleInfo);
+    return (i == 23) || (i == 26) || (i == 56) || (i == 59);
+  }
+  
+  public static boolean c(pxk parampxk)
+  {
+    switch (parampxk.a())
     {
-      if (!TextUtils.isEmpty(localUgcVideo.videoUploadKey)) {
-        this.jdField_a_of_type_Qxf.a();
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean d(pxk parampxk)
+  {
+    return parampxk.c() == 3;
+  }
+  
+  public static boolean e(pxk parampxk)
+  {
+    return parampxk.a() == 10;
+  }
+  
+  public static boolean f(pxk parampxk)
+  {
+    return parampxk.a() == 11;
+  }
+  
+  public static boolean g(pxk parampxk)
+  {
+    return parampxk.a() == 12;
+  }
+  
+  public static boolean h(pxk parampxk)
+  {
+    return parampxk.a() == 27;
+  }
+  
+  public static boolean i(pxk parampxk)
+  {
+    return parampxk.a() == 28;
+  }
+  
+  public static boolean j(pxk parampxk)
+  {
+    return qyo.b(parampxk.a());
+  }
+  
+  public static boolean k(pxk parampxk)
+  {
+    return qyo.a(parampxk.a());
+  }
+  
+  public int a()
+  {
+    if ((m()) && ((this.jdField_a_of_type_Pxk.a() instanceof AdvertisementInfo))) {
+      return AdvertisementInfo.getBigAppAdStyle((AdvertisementInfo)this.jdField_a_of_type_Pxk.a());
+    }
+    return 0;
+  }
+  
+  public long a()
+  {
+    if ((this.jdField_a_of_type_Pxk != null) && (this.jdField_a_of_type_Pxk.a() != null) && (this.jdField_a_of_type_Pxk.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a != null)) {}
+    try
+    {
+      long l = this.jdField_a_of_type_Pxk.a().mSocialFeedInfo.a.a;
+      return l;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      localNumberFormatException.printStackTrace();
+      return 0L;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
       }
     }
-    else {
-      return;
-    }
-    QLog.e("RIJUGC.UploadVideoTaskStep", 1, "videoUploadKey is Empty");
   }
   
-  public void a()
+  public pxk a()
   {
-    super.a();
-    this.jdField_a_of_type_Quk.a().lastUploadSizeUpdateTime = 0L;
-    b();
+    return this.jdField_a_of_type_Pxk;
+  }
+  
+  public void a(pxk parampxk)
+  {
+    this.jdField_a_of_type_Pxk = parampxk;
+  }
+  
+  public void a(qrb paramqrb)
+  {
+    this.jdField_a_of_type_Qrb = paramqrb;
   }
   
   public boolean a()
   {
-    UgcVideo localUgcVideo = this.jdField_a_of_type_Quk.a();
-    String str2 = localUgcVideo.compressPath;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    if ((localUgcVideo.url.length() == 0) && (new File(str1).exists()) && (localUgcVideo.status == UgcVideo.STATUS_UPLOADING)) {}
-    for (int i = 1; (super.a()) && (i != 0); i = 0) {
-      return true;
-    }
-    return false;
+    return d(this.jdField_a_of_type_Pxk);
   }
   
   public boolean b()
   {
-    UgcVideo localUgcVideo = this.jdField_a_of_type_Quk.a();
-    String str1 = localUgcVideo.compressPath;
-    String str2;
-    if ((!this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(str1)))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Quk.a().status = UgcVideo.STATUS_UPLOADING;
-      QLog.i("RIJUGC.UploadVideoTaskStep", 1, "onStep begin upload video, filePath=" + str1);
-      localUgcVideo.startUploadingTime = System.currentTimeMillis();
-      if (localUgcVideo.startUserWaitingTime > 0L) {
-        localUgcVideo.startUserWaitingTime = System.currentTimeMillis();
-      }
-      this.jdField_a_of_type_Qun.d(localUgcVideo);
-      str2 = localUgcVideo.videoUploadKey;
-      localUgcVideo.lastUploadSizeUpdateTime = System.currentTimeMillis();
-      qvb localqvb = new qvb(this, localUgcVideo);
-      this.jdField_a_of_type_Qxf.a(localqvb);
-      if (!TextUtils.isEmpty(str2)) {
-        break label161;
-      }
-      this.jdField_a_of_type_Qxf.a(str1);
-    }
-    for (;;)
-    {
-      localUgcVideo.uploadVideoStatus = UgcVideo.SUBSTATUS_UPLOADING_VIDEO;
-      return false;
-      label161:
-      this.jdField_a_of_type_Qxf.b(str2);
-    }
+    return e(this.jdField_a_of_type_Pxk);
+  }
+  
+  public boolean c()
+  {
+    return f(this.jdField_a_of_type_Pxk);
+  }
+  
+  public boolean d()
+  {
+    return g(this.jdField_a_of_type_Pxk);
+  }
+  
+  public boolean e()
+  {
+    return h(this.jdField_a_of_type_Pxk);
+  }
+  
+  public boolean f()
+  {
+    return (this.jdField_a_of_type_Pxk.a() == 50) || (this.jdField_a_of_type_Pxk.a() == 51) || (this.jdField_a_of_type_Pxk.a() == 52);
+  }
+  
+  public boolean g()
+  {
+    return i(this.jdField_a_of_type_Pxk);
+  }
+  
+  public boolean h()
+  {
+    return a(this.jdField_a_of_type_Pxk);
+  }
+  
+  public boolean i()
+  {
+    return j(this.jdField_a_of_type_Pxk);
+  }
+  
+  public boolean j()
+  {
+    return k(this.jdField_a_of_type_Pxk);
+  }
+  
+  public boolean k()
+  {
+    return c(this.jdField_a_of_type_Pxk);
+  }
+  
+  public boolean l()
+  {
+    return this.jdField_a_of_type_Pxk.a() == 16;
+  }
+  
+  public boolean m()
+  {
+    return b(this.jdField_a_of_type_Pxk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qva
  * JD-Core Version:    0.7.0.1
  */

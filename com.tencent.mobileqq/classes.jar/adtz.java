@@ -1,21 +1,33 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class adtz
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public adtz(RegisterActivity paramRegisterActivity, String paramString) {}
+  public adtz(ChatHistory paramChatHistory, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.a.sendEmptyMessage(1);
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    paramDialogInterface = (ajye)paramDialogInterface;
+    int i = paramDialogInterface.a();
+    boolean bool = paramDialogInterface.a();
+    ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory, i);
+    if (bool)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690563));
+      return;
+    }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getIntent().getExtras().getString("leftViewText");
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(paramDialogInterface);
   }
 }
 

@@ -1,18 +1,33 @@
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ubs
-  implements zac<FeedCloudRead.StGetFeedListRsp>
+  extends anke
 {
-  ubs(ubq paramubq, boolean paramBoolean) {}
+  ubs(ubr paramubr) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
   {
-    this.jdField_a_of_type_Ubq.a(paramBoolean, paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(ubr.a(this.a))))
+    {
+      paramLong = BaseApplicationImpl.getApplication().getBaseContext();
+      if (paramBoolean) {
+        QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131717757, 0).b(paramLong.getResources().getDimensionPixelSize(2131298998));
+      }
+    }
+    else
+    {
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131717746, 0).b(paramLong.getResources().getDimensionPixelSize(2131298998));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ubs
  * JD-Core Version:    0.7.0.1
  */

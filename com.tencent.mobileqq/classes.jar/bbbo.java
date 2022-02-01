@@ -1,35 +1,22 @@
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+
 public class bbbo
-  extends bbbz
+  implements View.OnLayoutChangeListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b = false;
-  public String c;
-  public String d;
+  public bbbo(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public bbbo()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" mResid:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" isExist:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" blockSize:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" netChg:");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" startOffset:").append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
+    if ((paramInt2 < paramInt6) && (this.a.a != null))
+    {
+      paramInt1 = SignatureHistoryFragment.a(this.a, this.a.a);
+      paramInt3 = this.a.a.getHeight();
+      if (paramInt1 + paramInt3 > paramInt2) {
+        SignatureHistoryFragment.a(this.a, paramInt1, paramInt3, false);
+      }
+    }
   }
 }
 

@@ -1,24 +1,8 @@
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
-
-class azmm
-  implements aznf
+public abstract interface azmm
 {
-  azmm(azml paramazml) {}
+  public abstract void a();
   
-  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
-  {
-    azml.a(this.a, paramInt);
-    long l = azml.a(this.a).a;
-    StringBuilder localStringBuilder = new StringBuilder().append("is64bit=");
-    if (azmx.a()) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      VACDReportUtil.a(l, null, "load.item.getconfig.end", paramInt + "&v=" + azml.a() + "&f=" + azml.a(this.a).d, SoConfig.SoInfo.getReportCode(paramSoInfo), null);
-      azml.a(this.a, azml.a(this.a), paramSoInfo);
-      return;
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

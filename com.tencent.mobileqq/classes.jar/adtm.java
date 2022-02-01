@@ -1,31 +1,13 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import mqq.observer.AccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class adtm
-  extends AccountObserver
+  implements DialogInterface.OnClickListener
 {
-  public adtm(QuickLoginActivity paramQuickLoginActivity) {}
+  public adtm(ChatHistory paramChatHistory) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

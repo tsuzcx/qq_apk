@@ -1,22 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONObject;
+import android.util.LruCache;
+import com.tencent.mobileqq.data.MessageForPoke;
 
 class agty
-  implements bckx
+  extends LruCache<Long, MessageForPoke>
 {
-  agty(agti paramagti) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  agty(agtx paramagtx, int paramInt)
   {
-    if (paramJSONObject == null) {}
-    while (paramJSONObject.optInt("retcode", -1) != 0) {
-      return;
+    super(paramInt);
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
+  {
+    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
+    {
+      paramMessageForPoke1.setPlayed(this.a.b);
+      paramMessageForPoke1.mFrameState.a = false;
+      paramMessageForPoke1.mFrameState.c = true;
+      paramMessageForPoke1.mUnlimitedState.a = false;
+      paramMessageForPoke1.mUnlimitedState.b = true;
     }
-    paramJSONObject = (bcml)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
-    paramInt = paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, paramInt & 0xF);
   }
 }
 

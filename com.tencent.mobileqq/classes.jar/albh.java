@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class albh
-  implements Parcelable.Creator<SpriteTaskParam>
+class albh
+  implements DialogInterface.OnClickListener
 {
-  public SpriteTaskParam a(Parcel paramParcel)
-  {
-    return new SpriteTaskParam(paramParcel);
-  }
+  albh(albc paramalbc) {}
   
-  public SpriteTaskParam[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new SpriteTaskParam[paramInt];
+    paramDialogInterface.dismiss();
   }
 }
 

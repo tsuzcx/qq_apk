@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
 
 class QfileBaseLocalFileTabView$10
@@ -9,14 +10,15 @@ class QfileBaseLocalFileTabView$10
   
   public void run()
   {
-    if ((this.this$0.a != null) && (QfileBaseLocalFileTabView.c(this.this$0))) {
-      this.this$0.a.a(this.a);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.this$0);
+    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView != null) && (QfileBaseLocalFileTabView.c(this.this$0))) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.10
  * JD-Core Version:    0.7.0.1
  */

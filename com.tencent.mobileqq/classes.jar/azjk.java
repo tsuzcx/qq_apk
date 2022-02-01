@@ -1,17 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.12.1;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class azjk
-  implements afkw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  azjk(azjh paramazjh) {}
+  public azjk(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (azjh.a(this.a) == null) {
-      azjh.a(this.a, new Handler());
-    }
-    azjh.a(this.a).postDelayed(new RedBagVideoManager.12.1(this), 1000L);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds((Rect)paramValueAnimator.getAnimatedValue());
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate();
   }
 }
 

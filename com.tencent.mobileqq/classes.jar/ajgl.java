@@ -1,24 +1,29 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class ajgl
-  implements View.OnClickListener
+public class ajgl
+  extends aupb
 {
-  ajgl(ajgb paramajgb) {}
+  public ajgl(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, ArrayList<ajep> paramArrayList)
   {
-    if (bhtb.e()) {
-      ajgb.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
+    if (TroopWithCommonFriendsFragment.a(this.a) != null) {
+      TroopWithCommonFriendsFragment.a(this.a).dismiss();
     }
-    for (;;)
+    if (!paramBoolean)
     {
-      azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 1, 0, "", "", "", "");
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1014);
       return;
-      ajgb.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
     }
+    ajgo.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramArrayList);
+    ajgo.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramInt);
+    this.a.b = paramInt;
+    this.a.jdField_a_of_type_JavaUtilList = ajgo.a(paramArrayList, TroopWithCommonFriendsFragment.a(this.a));
+    TroopWithCommonFriendsFragment.a(this.a).a();
+    TroopWithCommonFriendsFragment.a(this.a).a(this.a.jdField_a_of_type_JavaUtilList);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1012);
   }
 }
 

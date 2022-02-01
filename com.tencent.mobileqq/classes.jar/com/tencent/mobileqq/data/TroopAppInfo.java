@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="appId")
 public class TroopAppInfo
-  extends awge
+  extends Entity
 {
   public String AppTipIcon;
   public int AppTipIconTimeStamp;
@@ -40,7 +40,7 @@ public class TroopAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopAppInfo
  * JD-Core Version:    0.7.0.1
  */

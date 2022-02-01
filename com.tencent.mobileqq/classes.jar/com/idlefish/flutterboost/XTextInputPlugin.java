@@ -1,8 +1,6 @@
 package com.idlefish.flutterboost;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.Editable.Factory;
 import android.text.Selection;
@@ -11,6 +9,8 @@ import android.view.inputmethod.BaseInputConnection;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.flutter.embedding.engine.systemchannels.TextInputChannel;
 import io.flutter.embedding.engine.systemchannels.TextInputChannel.Configuration;
 import io.flutter.embedding.engine.systemchannels.TextInputChannel.InputType;
@@ -194,19 +194,22 @@ public class XTextInputPlugin
   
   public InputConnection createInputConnection(View paramView, EditorInfo paramEditorInfo)
   {
-    if (this.inputTarget.type == XTextInputPlugin.InputTarget.Type.NO_TARGET)
-    {
+    if (this.inputTarget.type == XTextInputPlugin.InputTarget.Type.NO_TARGET) {
       this.lastInputConnection = null;
-      return null;
     }
-    if (this.inputTarget.type == XTextInputPlugin.InputTarget.Type.PLATFORM_VIEW)
+    do
     {
+      return null;
+      if (this.inputTarget.type != XTextInputPlugin.InputTarget.Type.PLATFORM_VIEW) {
+        break;
+      }
       if (this.isInputConnectionLocked) {
         return this.lastInputConnection;
       }
-      this.lastInputConnection = this.platformViewsController.getPlatformViewById(Integer.valueOf(this.inputTarget.id)).onCreateInputConnection(paramEditorInfo);
-      return this.lastInputConnection;
-    }
+      paramView = this.platformViewsController.getPlatformViewById(Integer.valueOf(this.inputTarget.id));
+    } while (paramView == null);
+    this.lastInputConnection = paramView.onCreateInputConnection(paramEditorInfo);
+    return this.lastInputConnection;
     paramEditorInfo.inputType = inputTypeFromTextInputType(this.configuration.inputType, this.configuration.obscureText, this.configuration.autocorrect, this.configuration.textCapitalization);
     paramEditorInfo.imeOptions = 33554432;
     int i;
@@ -275,7 +278,7 @@ public class XTextInputPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.XTextInputPlugin
  * JD-Core Version:    0.7.0.1
  */

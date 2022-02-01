@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qef
-  implements DialogInterface.OnDismissListener
+class qef
+  implements ViewBase.OnClickListener
 {
-  public qef(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  qef(qec paramqec, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void onClick(ViewBase paramViewBase)
+  {
+    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
+    if (paramViewBase != null)
+    {
+      ryx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+      qec.a(this.jdField_a_of_type_Qec, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, paramViewBase.e, "");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qef
  * JD-Core Version:    0.7.0.1
  */

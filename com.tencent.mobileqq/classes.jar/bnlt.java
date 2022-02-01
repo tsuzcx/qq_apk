@@ -1,50 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bnlt
-  extends AnimatorListenerAdapter
+class bnlt
+  implements View.OnClickListener
 {
-  public bnlt(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  bnlt(bnls parambnls) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
-    }
-    if (!this.a.b.get())
-    {
-      this.a.a.set(true);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
-      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
-      return;
-      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
-      CameraCaptureButtonLayout.a(this.a);
-      CameraCaptureButtonLayout.a(this.a, 1.0F);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
-    }
+    bnls.a(this.a).a(655364, new Object[] { "热门玩法", "vt_pag_jiaopiangushi" });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

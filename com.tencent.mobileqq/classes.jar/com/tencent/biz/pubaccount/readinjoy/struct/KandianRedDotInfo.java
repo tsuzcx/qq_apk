@@ -13,7 +13,7 @@ import java.util.List;
 import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ors;
+import pha;
 
 public class KandianRedDotInfo
   implements Serializable
@@ -105,7 +105,7 @@ public class KandianRedDotInfo
           QLog.d("KandianRedDotInfo", 2, "createRedDotFromMessageRecord | exception " + paramString.getMessage());
         }
       }
-      paramMessageRecord = ors.a(paramMessageRecord);
+      paramMessageRecord = pha.a(paramMessageRecord);
       if ((paramMessageRecord != null) && (!paramMessageRecord.isEmpty()))
       {
         paramMessageRecord = paramMessageRecord.iterator();
@@ -138,7 +138,7 @@ public class KandianRedDotInfo
   
   public static KandianRedDotInfo getRedDotFromDisk(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
   {
-    return (KandianRedDotInfo)ors.a(paramAppRuntime, paramString, paramBoolean);
+    return (KandianRedDotInfo)pha.a(paramAppRuntime, paramString, paramBoolean);
   }
   
   public MessageRecord getMessageRecord()
@@ -174,12 +174,12 @@ public class KandianRedDotInfo
   
   public void removeFromDiskAsync(boolean paramBoolean)
   {
-    ors.a(this.type, paramBoolean);
+    pha.a(this.type, paramBoolean);
   }
   
   public void saveToDiskAsync(boolean paramBoolean)
   {
-    ors.a(this.type, this, true);
+    pha.a(this.type, this, true);
   }
   
   public boolean shouldRemoveFloatingRedPntArticleId()

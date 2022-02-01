@@ -1,39 +1,163 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.text.TextUtils;
+import android.util.Log;
+import android.util.SparseArray;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.module.common.NetworkState.NetworkStateListener;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.tmassistant.common.jce.StatItem;
+import com.tencent.tmassistant.common.jce.StatReportRequest;
+import com.tencent.tmassistant.common.jce.StatReportResponse;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bipx
-  implements ServiceConnection
+public class bipx
+  implements bipv, NetworkState.NetworkStateListener
 {
-  bipx(bipv parambipv) {}
+  private static bipx jdField_a_of_type_Bipx;
+  private long jdField_a_of_type_Long = 1800000L;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private SparseArray<ArrayList<StatItem>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private bipu jdField_a_of_type_Bipu = new bipu();
+  private Map<Integer, ArrayList<String>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private SparseArray<ArrayList<StatItem>> b = new SparseArray();
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  private bipx()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service connected!");
-    }
-    this.a.jdField_a_of_type_Lqr = lqs.a(paramIBinder);
-    if ((this.a.jdField_a_of_type_Lqr != null) && (this.a.jdField_a_of_type_Bipw != null)) {
-      this.a.jdField_a_of_type_Bipw.a(this.a);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null or mOnReadyListener == null");
+    this.jdField_a_of_type_Bipu.a(this);
+    a();
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public static bipx a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service disconnected!");
+    try
+    {
+      if (jdField_a_of_type_Bipx == null) {
+        jdField_a_of_type_Bipx = new bipx();
+      }
+      bipx localbipx = jdField_a_of_type_Bipx;
+      return localbipx;
     }
-    this.a.jdField_a_of_type_Lqr = null;
+    finally {}
+  }
+  
+  private void a()
+  {
+    HandlerThread localHandlerThread = new HandlerThread("thread_report");
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new bipy(this, localHandlerThread.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+  }
+  
+  public void a(int paramInt, DownloadInfo paramDownloadInfo)
+  {
+    if (BaseApplicationImpl.sProcessId == 7) {}
+    for (int i = 1; (paramDownloadInfo == null) || (i == 0); i = 0) {
+      return;
+    }
+    long l = System.currentTimeMillis() / 1000L;
+    a(9, l + "|" + paramDownloadInfo.jdField_c_of_type_JavaLangString + "|" + paramDownloadInfo.b + "|" + paramDownloadInfo.e + "|" + paramDownloadInfo.jdField_c_of_type_Int + "|" + paramInt + "|" + paramDownloadInfo.jdField_c_of_type_Long + "|" + paramDownloadInfo.h);
+  }
+  
+  public void a(int paramInt1, StatReportRequest paramStatReportRequest, StatReportResponse paramStatReportResponse, int paramInt2)
+  {
+    Log.i("selfupdeReport", "circleTest reportLog onReportFinish errorCode = " + paramInt2);
+    paramStatReportRequest = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+    if (paramStatReportRequest == null) {
+      paramStatReportRequest = (ArrayList)this.b.get(paramInt1);
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (paramInt2 != 0)
+      {
+        if ((paramStatReportRequest != null) && (paramStatReportRequest.size() > 0) && (i == 0))
+        {
+          SparseArray localSparseArray = new SparseArray();
+          Iterator localIterator = paramStatReportRequest.iterator();
+          while (localIterator.hasNext())
+          {
+            StatItem localStatItem = (StatItem)localIterator.next();
+            paramStatReportResponse = (List)localSparseArray.get(localStatItem.type);
+            paramStatReportRequest = paramStatReportResponse;
+            if (paramStatReportResponse == null)
+            {
+              paramStatReportRequest = new ArrayList();
+              localSparseArray.put(localStatItem.type, paramStatReportRequest);
+            }
+            paramStatReportRequest.addAll(localStatItem.records);
+          }
+          i = localSparseArray.size();
+          paramInt2 = 0;
+          while (paramInt2 < i)
+          {
+            int j = localSparseArray.keyAt(paramInt2);
+            paramStatReportResponse = (List)localSparseArray.get(j);
+            paramStatReportRequest = new ArrayList();
+            paramStatReportResponse = paramStatReportResponse.iterator();
+            while (paramStatReportResponse.hasNext()) {
+              paramStatReportRequest.add((String)paramStatReportResponse.next());
+            }
+            paramStatReportResponse = bipk.a().a(String.valueOf(j));
+            if (paramStatReportResponse != null) {
+              paramStatReportRequest.addAll(paramStatReportResponse);
+            }
+            bipk.a().a(String.valueOf(j), paramStatReportRequest);
+            paramInt2 += 1;
+          }
+        }
+      }
+      else if ((i != 0) && (paramStatReportRequest != null) && (paramStatReportRequest.size() > 0))
+      {
+        paramStatReportRequest = paramStatReportRequest.iterator();
+        while (paramStatReportRequest.hasNext())
+        {
+          paramStatReportResponse = (StatItem)paramStatReportRequest.next();
+          bipk.a().a(String.valueOf(paramStatReportResponse.type));
+        }
+      }
+      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt1);
+      this.b.delete(paramInt1);
+      return;
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((paramInt >= 0) && (!TextUtils.isEmpty(paramString)))
+    {
+      ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      ArrayList localArrayList1 = localArrayList2;
+      if (localArrayList2 == null)
+      {
+        localArrayList1 = new ArrayList();
+        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localArrayList1);
+      }
+      localArrayList1.add(paramString);
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 500L);
+    }
+  }
+  
+  public void onNetworkConnect(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      }
+    }
+    while (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bipx
  * JD-Core Version:    0.7.0.1
  */

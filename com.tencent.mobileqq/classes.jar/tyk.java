@@ -1,51 +1,60 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnItemTouchListener;
-import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.CustomWebView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class tyk
-  implements RecyclerView.OnItemTouchListener
+  implements bgub
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
   tyk(tyj paramtyj) {}
   
-  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    switch (paramMotionEvent.getAction())
+    paramString = new JSONObject();
+    if (paramInt1 == 8) {}
+    for (;;)
     {
+      try
+      {
+        paramString.put("retCode", -1);
+        paramString.put("msg", "fail");
+        paramString.put("localId", this.a.d());
+        if (this.a.jdField_a_of_type_Bhod.a() != null) {
+          this.a.jdField_a_of_type_Bhod.a().callJs(tym.h, new String[] { paramString.toString() });
+        }
+        bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2F", "0X8005D2F", 0, 0, "1", "", "", "");
+        if (this.a.jdField_a_of_type_Bgua != null) {
+          this.a.jdField_a_of_type_Bgua.e();
+        }
+        this.a.jdField_a_of_type_Bgua = null;
+        return;
+      }
+      catch (JSONException localJSONException1)
+      {
+        localJSONException1.printStackTrace();
+        continue;
+      }
+      if (paramInt1 == 4) {
+        try
+        {
+          paramString.put("retCode", 0);
+          paramString.put("msg", anni.a(2131707547) + this.a.d() + anni.a(2131707541));
+          paramString.put("localId", this.a.d());
+        }
+        catch (JSONException localJSONException2)
+        {
+          localJSONException2.printStackTrace();
+        }
+      }
     }
-    int j;
-    int k;
-    do
-    {
-      return false;
-      this.b = ((int)(paramMotionEvent.getX() + 0.5F));
-      this.jdField_a_of_type_Int = ((int)(paramMotionEvent.getY() + 0.5F));
-      return false;
-      j = (int)(paramMotionEvent.getX() + 0.5F);
-      i = (int)(paramMotionEvent.getY() + 0.5F);
-      j -= this.b;
-      k = i - this.jdField_a_of_type_Int;
-      i = (int)((i - this.jdField_a_of_type_Int) * 0.6F);
-    } while (tyj.a(this.jdField_a_of_type_Tyj, paramMotionEvent));
-    if ((Math.abs(j) > tyj.a(this.jdField_a_of_type_Tyj)) && (Math.abs(j) >= Math.abs(i))) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      tyj.a(this.jdField_a_of_type_Tyj, j, k);
-      return false;
-    }
-    tyj.b(this.jdField_a_of_type_Tyj, j, k);
-    return false;
   }
   
-  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
+  public void a(String paramString, int paramInt1, int paramInt2) {}
   
-  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
+  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tyk
  * JD-Core Version:    0.7.0.1
  */

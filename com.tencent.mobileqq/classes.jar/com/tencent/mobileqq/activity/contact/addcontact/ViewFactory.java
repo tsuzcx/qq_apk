@@ -1,15 +1,28 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import alud;
+import afur;
+import aitv;
 import android.content.Context;
 import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import aobu;
+import bbhd;
+import bbio;
+import bbir;
+import bbmx;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
+import java.util.List;
 
 public class ViewFactory
 {
@@ -25,37 +38,57 @@ public class ViewFactory
     switch (paramInt)
     {
     default: 
-      return 2131689740;
+      return 2131689643;
     case 80000000: 
-      return 2131689715;
+      return 2131689626;
     case 80000001: 
-      return 2131689771;
+      return 2131689658;
     case 80000002: 
       if (UniteSearchActivity.d == 12) {
-        return 2131689767;
+        return 2131689656;
       }
-      return 2131689765;
+      return 2131689655;
     case 80000003: 
-      return 2131689722;
+      return 2131689632;
     }
-    return 2131720579;
+    return 2131718385;
   }
   
   private View a(Context paramContext)
   {
+    RelativeLayout localRelativeLayout = new RelativeLayout(paramContext);
+    localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
-    localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+    localLayoutParams.addRule(13);
     localLinearLayout.setOrientation(1);
+    ImageView localImageView = new ImageView(paramContext);
+    localImageView.setId(2131367412);
+    localImageView.setImageResource(2130842283);
+    LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(-2, -2);
+    localLayoutParams1.gravity = 1;
     TextView localTextView = new TextView(paramContext);
-    localTextView.setText(alud.a(2131716854));
-    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131298848));
-    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131298207), 0, 0);
-    localTextView.setTextColor(paramContext.getResources().getColor(2131166978));
-    paramContext = new LinearLayout.LayoutParams(-2, -2);
-    paramContext.gravity = 1;
-    localLinearLayout.addView(localTextView, paramContext);
-    localLinearLayout.setContentDescription(alud.a(2131716855));
-    return localLinearLayout;
+    localTextView.setText(paramContext.getString(2131717615));
+    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131298931));
+    localTextView.setPadding(0, afur.a(30.0F, paramContext.getResources()), 0, 0);
+    localTextView.setTextColor(paramContext.getResources().getColor(2131167061));
+    LinearLayout.LayoutParams localLayoutParams2 = new LinearLayout.LayoutParams(-2, -2);
+    localLayoutParams2.gravity = 1;
+    localLinearLayout.addView(localImageView, localLayoutParams1);
+    localLinearLayout.addView(localTextView, localLayoutParams2);
+    localRelativeLayout.addView(localLinearLayout, localLayoutParams);
+    localRelativeLayout.setContentDescription(paramContext.getString(2131717615));
+    return localRelativeLayout;
+  }
+  
+  private View a(Context paramContext, WeakReference<aobu> paramWeakReference, List<bbmx> paramList)
+  {
+    paramContext = (ListView)LayoutInflater.from(paramContext).inflate(2131563038, null);
+    paramContext.setOnTouchListener(new aitv(this));
+    paramWeakReference = new bbir(paramContext, (aobu)paramWeakReference.get(), null, -1);
+    paramContext.setAdapter(paramWeakReference);
+    paramWeakReference.a(bbhd.a(paramList, true));
+    return paramContext;
   }
   
   public static ViewFactory a()
@@ -88,42 +121,66 @@ public class ViewFactory
   
   private View b(Context paramContext)
   {
+    LinearLayout localLinearLayout = new LinearLayout(paramContext);
+    localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
+    localLinearLayout.setOrientation(1);
+    TextView localTextView = new TextView(paramContext);
+    localTextView.setText(paramContext.getString(2131717617));
+    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131298931));
+    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131298289), 0, 0);
+    localTextView.setTextColor(paramContext.getResources().getColor(2131167061));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    localLayoutParams.gravity = 1;
+    localLinearLayout.addView(localTextView, localLayoutParams);
+    localLinearLayout.setContentDescription(paramContext.getString(2131717617));
+    return localLinearLayout;
+  }
+  
+  private View c(Context paramContext)
+  {
     return new ViewFactory.GuideView(paramContext);
   }
   
-  public View a(int paramInt, Context paramContext, boolean paramBoolean)
+  public View a(int paramInt, Context paramContext, boolean paramBoolean, aobu paramaobu, List<bbmx> paramList)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewFactory", 2, "type = " + paramInt);
+    }
     int j = 0;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
+    Object localObject1 = null;
+    Object localObject2 = localObject1;
     int i = j;
     if (paramBoolean)
     {
-      localObject1 = localObject2;
+      localObject2 = localObject1;
       i = j;
       if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)) != null)
       {
-        localObject1 = (View)((WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).get();
+        localObject2 = (View)((WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).get();
         i = 1;
       }
     }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
+    localObject1 = localObject2;
+    if (localObject2 == null) {
       switch (paramInt)
       {
       default: 
-        localObject2 = localObject1;
+        localObject1 = localObject2;
       }
     }
     for (;;)
     {
       if ((paramBoolean) && (i == 0)) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(localObject2));
+        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(localObject1));
       }
-      return localObject2;
-      localObject2 = b(paramContext);
+      return localObject1;
+      localObject1 = c(paramContext);
       continue;
-      localObject2 = a(paramContext);
+      localObject1 = b(paramContext);
+      continue;
+      localObject1 = a(paramContext);
+      continue;
+      localObject1 = a(paramContext, new WeakReference(paramaobu), paramList);
     }
   }
   
@@ -136,7 +193,7 @@ public class ViewFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ViewFactory
  * JD-Core Version:    0.7.0.1
  */

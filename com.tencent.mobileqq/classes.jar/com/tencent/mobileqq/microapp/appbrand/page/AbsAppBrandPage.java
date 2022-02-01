@@ -3,13 +3,11 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
-import com.tencent.mobileqq.microapp.apkg.f;
-import com.tencent.mobileqq.microapp.appbrand.ui.SwipeBackLayout;
+import com.tencent.mobileqq.microapp.appbrand.a;
 import com.tencent.mobileqq.microapp.sdk.LaunchParam;
-import com.tencent.mobileqq.microapp.ui.NavigationBar;
 import com.tencent.mobileqq.microapp.widget.TabBarView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -18,26 +16,23 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class AbsAppBrandPage
-  extends SwipeBackLayout
 {
   public static final String TAG = "AbsAppBrandPage";
-  protected f apkgInfo;
+  protected c apkgInfo$5475ea27;
   protected AppBrandPageContainer appBrandPageContainer;
   private boolean isShow;
   
   public AbsAppBrandPage(Context paramContext, AppBrandPageContainer paramAppBrandPageContainer)
   {
-    super(paramContext);
     this.appBrandPageContainer = paramAppBrandPageContainer;
-    this.apkgInfo = paramAppBrandPageContainer.appBrandRuntime.c;
-    setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    this.apkgInfo$5475ea27 = paramAppBrandPageContainer.appBrandRuntime.c;
   }
   
   private void dispatch(String paramString1, String paramString2)
   {
     Object localObject1 = new HashMap();
-    Object localObject2 = com.tencent.mobileqq.microapp.b.a.a(paramString2);
-    Map localMap = com.tencent.mobileqq.microapp.b.a.b(paramString2);
+    Object localObject2 = c.l(paramString2);
+    Map localMap = c.m(paramString2);
     ((HashMap)localObject1).put("path", localObject2);
     ((HashMap)localObject1).put("query", localMap);
     if (paramString1 != null) {
@@ -45,16 +40,16 @@ public abstract class AbsAppBrandPage
     }
     if ("appLaunch".equals(paramString1))
     {
-      ((HashMap)localObject1).put("scene", Integer.valueOf(this.apkgInfo.f.launchParam.scene));
-      if (!TextUtils.isEmpty(this.apkgInfo.f.launchParam.navigateExtData)) {}
+      ((HashMap)localObject1).put("scene", Integer.valueOf(this.apkgInfo$5475ea27.f.launchParam.scene));
+      if (!TextUtils.isEmpty(this.apkgInfo$5475ea27.f.launchParam.navigateExtData)) {}
     }
     try
     {
       localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("appId", this.apkgInfo.d);
-      ((JSONObject)localObject2).put("extraData", this.apkgInfo.f.launchParam.navigateExtData);
+      ((JSONObject)localObject2).put("appId", this.apkgInfo$5475ea27.d);
+      ((JSONObject)localObject2).put("extraData", this.apkgInfo$5475ea27.f.launchParam.navigateExtData);
       ((HashMap)localObject1).put("referrerInfo", ((JSONObject)localObject2).toString());
-      com.tencent.mobileqq.microapp.b.a.b((Map)localObject1);
+      c.a((Map)localObject1);
       localObject1 = new JSONObject((Map)localObject1);
       localObject2 = getWebView(paramString2);
       if (QLog.isColorLevel())
@@ -95,7 +90,6 @@ public abstract class AbsAppBrandPage
     if (QLog.isColorLevel()) {
       QLog.d("AbsAppBrandPage", 4, "cleanup");
     }
-    this.appBrandPageContainer.removeView(this);
   }
   
   public abstract View createContentView();
@@ -114,11 +108,6 @@ public abstract class AbsAppBrandPage
   
   public abstract WebviewContainer getCurrentWebviewContainer();
   
-  public NavigationBar getNavBar()
-  {
-    return null;
-  }
-  
   public abstract TabBarView getTabBar();
   
   public abstract String getUrl();
@@ -131,9 +120,6 @@ public abstract class AbsAppBrandPage
   {
     if (QLog.isColorLevel()) {
       QLog.d("AbsAppBrandPage", 4, "hide isShow=" + this.isShow);
-    }
-    if (this.isShow) {
-      setVisibility(4);
     }
   }
   
@@ -155,12 +141,7 @@ public abstract class AbsAppBrandPage
     dispatch(paramString1, paramString2);
   }
   
-  public void onCreate()
-  {
-    this.mContentView = createContentView();
-    addView(this.mContentView, new ViewGroup.LayoutParams(-1, -1));
-    this.appBrandPageContainer.addView(this);
-  }
+  public void onCreate() {}
   
   public void onPageBackground()
   {
@@ -176,7 +157,6 @@ public abstract class AbsAppBrandPage
       QLog.d("AbsAppBrandPage", 4, "onPageForeground");
     }
     this.isShow = true;
-    setVisibility(0);
   }
   
   public void showToastView(String paramString1, String paramString2, CharSequence paramCharSequence, int paramInt, boolean paramBoolean) {}
@@ -190,7 +170,7 @@ public abstract class AbsAppBrandPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.AbsAppBrandPage
  * JD-Core Version:    0.7.0.1
  */

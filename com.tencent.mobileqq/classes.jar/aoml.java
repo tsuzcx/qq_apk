@@ -1,53 +1,55 @@
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aoml
-  implements aokj<String>
+  extends aojs
 {
-  public HashMap<String, String> a = new HashMap();
-  
-  public void a(String paramString)
+  public aoml(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      ArkAppCenter.c("ArkAIKeyWordSDKShareConfig", "onParse,fileOrRes is null");
-    }
-    for (;;)
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    try
     {
-      return;
-      try
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      if (TextUtils.isEmpty(arag.a().h())) {}
+      for (String str = "https://docs.qq.com/desktop/m/index.html?_from=1";; str = arag.a().h())
       {
-        paramString = new JSONObject(paramString).optJSONArray("ark_ai_keyword_sdk_share_app_info");
-        if (paramString != null)
-        {
-          int i = 0;
-          while (i < paramString.length())
-          {
-            Object localObject = (JSONObject)paramString.get(i);
-            String str = ((JSONObject)localObject).getString("appID");
-            localObject = ((JSONObject)localObject).getString("appName");
-            QLog.i("ArkAIKeyWordSDKShareConfig", 1, "onParse ark_ai_keyword_sdk_share_app_info id=" + str + ", name=" + (String)localObject);
-            this.a.put(str, localObject);
-            i += 1;
-          }
-        }
-        ArkAppCenter.c("ArkAIKeyWordSDKShareConfig", "getArkShareConfig,ark_ai_keyword_sdk_share_app_info is empty");
-        return;
+        this.a.startActivity(localIntent.putExtra("url", str));
+        break;
       }
-      catch (JSONException paramString)
-      {
-        QLog.e("ArkAIKeyWordSDKShareConfig", 1, "onParse error e = ", paramString);
-      }
+      return true;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("TeamWorkListAction", 1, "doAction error: " + localException.getMessage());
+      a("TeamWorkListAction");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoml
  * JD-Core Version:    0.7.0.1
  */

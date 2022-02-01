@@ -1,247 +1,126 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity.11.1;
+import com.tencent.mobileqq.activity.TroopAssistantActivity.11.2;
+import com.tencent.mobileqq.activity.TroopAssistantActivity.11.3;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForApproval;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class afif
-  extends BaseBubbleBuilder
-  implements aesa
+  extends anmu
 {
-  Handler b = new Handler();
+  public afif(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public afif(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public void a(String paramString)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-  }
-  
-  private void a(afig paramafig, MessageForApproval paramMessageForApproval, View paramView, aetk paramaetk)
-  {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramafig.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)paramafig.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    if (paramMessageForApproval.isSend())
-    {
-      localLayoutParams.leftMargin = 0;
-      localLayoutParams.rightMargin = ((int)(this.jdField_a_of_type_Float * 6.0F));
-    }
-    for (localLayoutParams1.leftMargin = ((int)(16.0F * this.jdField_a_of_type_Float));; localLayoutParams1.leftMargin = ((int)(24.0F * this.jdField_a_of_type_Float)))
-    {
-      paramafig.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
-      paramafig.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams1);
-      paramafig.jdField_a_of_type_AndroidWidgetLinearLayout.invalidate();
-      paramafig.jdField_a_of_type_AndroidWidgetTextView.invalidate();
-      paramView.setOnLongClickListener(paramaetk);
-      paramView.setOnTouchListener(paramaetk);
-      paramView.setOnClickListener(this);
+    if (!paramString.equals(this.a.app.getAccount())) {
       return;
-      localLayoutParams.leftMargin = ((int)(this.jdField_a_of_type_Float * 6.0F));
-      localLayoutParams.rightMargin = 0;
+    }
+    this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1).sendToTarget();
+    this.a.runOnUiThread(new TroopAssistantActivity.11.1(this));
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
     }
   }
   
-  private void a(MessageForApproval paramMessageForApproval, afig paramafig)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    for (;;)
+    if ((paramMap == null) || (paramMap.size() == 0)) {}
+    label129:
+    do
     {
+      return;
       int i;
-      Object localObject5;
-      Object localObject3;
-      Object localObject4;
-      try
+      if (("batch_setting".equals(this.a.b)) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0) && (this.a.jdField_a_of_type_Bgrs != null))
       {
-        paramafig.d.setText(paramMessageForApproval.summary);
-        String[] arrayOfString = paramMessageForApproval.title.split("\002");
-        if (arrayOfString.length == 1)
-        {
-          paramafig.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageForApproval.title.substring(3));
-          paramafig.c.setVisibility(8);
-          return;
-        }
-        localObject1 = alud.a(2131701010);
-        int j = arrayOfString.length;
-        String str1 = "";
-        paramMessageForApproval = "";
-        localObject2 = "";
         i = 0;
-        if (i < j)
+        for (;;)
         {
-          String str2 = arrayOfString[i];
-          if (str2.startsWith("000"))
-          {
-            localObject5 = (String)localObject1 + str2.substring(3);
-            localObject3 = paramMessageForApproval;
-            localObject4 = localObject2;
+          if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+            break label129;
           }
-          else if (str2.startsWith("001"))
-          {
-            localObject4 = str2.substring(3);
-            localObject3 = paramMessageForApproval;
-            localObject5 = localObject1;
+          paramMap = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
+          if (((Boolean)this.a.jdField_a_of_type_Bgrs.c.get(paramMap)).booleanValue()) {
+            break;
           }
-          else if (str2.startsWith("002"))
-          {
-            localObject3 = str2.substring(3);
-            localObject4 = localObject2;
-            localObject5 = localObject1;
-          }
-          else
-          {
-            localObject3 = paramMessageForApproval;
-            localObject4 = localObject2;
-            localObject5 = localObject1;
-            if (str2.startsWith("003"))
-            {
-              str1 = str2.substring(3);
-              localObject3 = paramMessageForApproval;
-              localObject4 = localObject2;
-              localObject5 = localObject1;
-            }
-          }
+          i += 1;
         }
-        else
-        {
-          localObject3 = paramMessageForApproval;
-          if ("1".equalsIgnoreCase(str1) == true) {
-            localObject3 = paramMessageForApproval + alud.a(2131701007);
-          }
-          paramafig.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-          paramafig.c.setText((String)localObject2 + (String)localObject3);
-          return;
-        }
-      }
-      catch (Exception paramMessageForApproval)
-      {
-        if (QLog.isDevelopLevel())
-        {
-          paramafig.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131701011));
-          paramafig.c.setText(alud.a(2131701008));
-        }
-        QLog.e("ApprovalMsgBuilder", 1, paramMessageForApproval.toString());
+        QQToast.a(this.a.app.getApp(), 2, anni.a(2131713880), 0).b(this.a.getTitleBarHeight());
+        TroopAssistantActivity.a(this.a);
         return;
       }
-      i += 1;
-      paramMessageForApproval = (MessageForApproval)localObject3;
-      Object localObject2 = localObject4;
-      Object localObject1 = localObject5;
-    }
-  }
-  
-  private void d(View paramView)
-  {
-    paramView = (MessageForApproval)aepi.a(paramView);
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
-  }
-  
-  public aeqi a()
-  {
-    return new afig(this);
-  }
-  
-  public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, aetk paramaetk)
-  {
-    paramChatMessage = (ViewGroup)super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramaetk);
-    paramView = (afig)paramChatMessage.getTag();
-    paramView.jdField_a_of_type_AndroidViewView.getLayoutParams().width = BaseChatItemLayout.d;
-    if (e) {}
-    try
+      paramMap = paramMap.entrySet().iterator();
+      if (paramMap.hasNext())
+      {
+        String str = (String)((Map.Entry)paramMap.next()).getKey();
+        i = this.a.app.b(str);
+        if ((i == 1) || (i == 4)) {
+          awhv.a().c(str, this.a.app);
+        }
+        for (;;)
+        {
+          this.a.c();
+          break;
+          if (i == 3) {
+            awhv.a().b(str, this.a.app);
+          }
+        }
+      }
+    } while (!this.a.isResume());
+    if (paramBoolean)
     {
-      paramView.jdField_b_of_type_JavaLangStringBuilder.append(paramView.jdField_b_of_type_AndroidWidgetTextView.getText());
-      paramView.jdField_b_of_type_JavaLangStringBuilder.append(paramView.c.getText());
-      paramView.jdField_b_of_type_JavaLangStringBuilder.append("审批");
-      paramChatMessage.setContentDescription(paramView.jdField_b_of_type_JavaLangStringBuilder.toString());
-      return paramChatMessage;
-    }
-    catch (Exception paramView) {}
-    return paramChatMessage;
-  }
-  
-  public View a(ChatMessage paramChatMessage, aeqi paramaeqi, View paramView, BaseChatItemLayout paramBaseChatItemLayout, aetk paramaetk)
-  {
-    paramaeqi = (afig)paramaeqi;
-    paramBaseChatItemLayout = (MessageForApproval)paramChatMessage;
-    paramBaseChatItemLayout.parse();
-    paramChatMessage = paramView;
-    if (paramView == null)
-    {
-      paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558761, null);
-      paramaeqi.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131370040));
-      paramaeqi.c = ((TextView)paramChatMessage.findViewById(2131377267));
-      paramaeqi.d = ((TextView)paramChatMessage.findViewById(2131377276));
-      paramaeqi.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramChatMessage.findViewById(2131370837));
-      paramaeqi.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131368598));
-    }
-    a(paramaeqi, paramBaseChatItemLayout, paramChatMessage, paramaetk);
-    a(paramBaseChatItemLayout, paramaeqi);
-    return paramChatMessage;
-  }
-  
-  public String a(ChatMessage paramChatMessage)
-  {
-    if (bdil.a(paramChatMessage.issend)) {
-      return alud.a(2131701009);
-    }
-    return alud.a(2131701012);
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
-  {
-    switch (paramInt)
-    {
-    default: 
+      QQToast.a(this.a.app.getApp(), 2, this.a.getString(2131718834), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    acjm.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+    QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131718833), 0).b(this.a.getTitleBarHeight());
   }
   
-  public void a(View paramView) {}
-  
-  public void a(View paramView, bass parambass, int paramInt1, int paramInt2)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    paramView = (afig)aepi.a(paramView);
-    a((MessageForApproval)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("head", 2, "ContactsActivity.onUpdateCustomHead: uin:" + paramString + ", success :" + paramBoolean);
+    }
   }
   
-  public bdpk[] a(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    paramView = new bdpi();
-    acjm.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    super.c(paramView, this.jdField_a_of_type_AndroidContentContext);
-    super.e(paramView, this.jdField_a_of_type_AndroidContentContext);
-    return paramView.a();
-  }
-  
-  public void onClick(View paramView)
-  {
-    aepi.n = true;
-    if (super.a()) {
+    if (!paramBoolean) {
       return;
     }
-    super.onClick(paramView);
-    switch (paramView.getId())
+    if ((this.a.app.getCurrentAccountUin() != null) && (this.a.app.getCurrentAccountUin().equals(paramString)))
     {
-    case 2131364181: 
-    default: 
+      ThreadManager.post(new TroopAssistantActivity.11.2(this, paramString), 8, null, true);
       return;
     }
-    d(paramView);
+    this.a.c();
   }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if (paramBoolean) {
+      ThreadManager.post(new TroopAssistantActivity.11.3(this), 5, null, true);
+    }
+  }
+  
+  protected void onUpdateRecentList()
+  {
+    this.a.c();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString) {}
 }
 
 

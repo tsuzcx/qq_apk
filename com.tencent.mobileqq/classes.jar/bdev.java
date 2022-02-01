@@ -1,86 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.qphone.base.util.QLog;
-
 public class bdev
+  extends bdes
 {
-  public static CardProfile a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  private float d;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
+  
+  public bdev(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat)
   {
-    boolean bool = true;
-    CardProfile localCardProfile = null;
-    awgf localawgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramQQAppInterface = localCardProfile;
-    if (localawgf != null)
-    {
-      localCardProfile = (CardProfile)localawgf.a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(paramInt) });
-      paramQQAppInterface = localCardProfile;
-      if (QLog.isColorLevel())
-      {
-        paramQQAppInterface = new StringBuilder().append("readFromDb. uin:").append(paramLong).append(" find:");
-        if (localCardProfile == null) {
-          break label111;
-        }
-      }
-    }
-    for (;;)
-    {
-      QLog.i("VoteUtil", 2, bool);
-      paramQQAppInterface = localCardProfile;
-      return paramQQAppInterface;
-      label111:
-      bool = false;
-    }
+    super(paramInt1, 11, 0);
+    this.f = paramInt2;
+    this.g = paramInt3;
+    this.h = paramInt4;
+    this.i = paramInt5;
+    this.d = paramFloat;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  protected void a(int paramInt, float paramFloat)
   {
-    Object localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    CardProfile localCardProfile;
-    if (localObject != null)
-    {
-      paramQQAppInterface = (CardProfile)((awgf)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(2) });
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface.bAvailableCnt -= paramInt;
-        paramQQAppInterface.bTodayVotedCnt += paramInt;
-        if (paramQQAppInterface.getStatus() != 1000) {
-          break label238;
-        }
-        ((awgf)localObject).b(paramQQAppInterface);
-      }
-      localCardProfile = (CardProfile)((awgf)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(3) });
-      if (localCardProfile != null)
-      {
-        localCardProfile.bAvailableCnt -= paramInt;
-        localCardProfile.bTodayVotedCnt += paramInt;
-        localCardProfile.bVoteCnt = ((short)(int)localCardProfile.bTodayVotedCnt);
-        if (localCardProfile.getStatus() != 1000) {
-          break label248;
-        }
-        ((awgf)localObject).b(localCardProfile);
-      }
-      label180:
-      ((awgf)localObject).a();
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("updateProfileCardVote. uin:").append(paramLong).append(" find:");
-        if (paramQQAppInterface == null) {
-          break label259;
-        }
-      }
+    this.jdField_c_of_type_Float = (paramInt * 0.8F / this.jdField_c_of_type_Int);
+    if (this.jdField_c_of_type_Float > 0.8F) {
+      this.jdField_c_of_type_Float = 0.8F;
     }
-    label259:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("VoteUtil", 2, bool);
-      return;
-      label238:
-      ((awgf)localObject).a(paramQQAppInterface);
-      break;
-      label248:
-      ((awgf)localObject).a(localCardProfile);
-      break label180;
-    }
+    this.jdField_b_of_type_Int = ((int)(360.0F * paramInt * paramInt / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int)));
+    this.a = (this.f + (this.h - this.f) * paramInt / this.jdField_c_of_type_Int);
+    this.jdField_b_of_type_Float = ((int)(this.g + this.i * Math.sin(this.d * this.a)));
+    super.a(paramInt, paramFloat);
   }
 }
 

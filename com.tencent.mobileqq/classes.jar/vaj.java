@@ -1,31 +1,26 @@
-import com.tencent.mobileqq.widget.QQToast;
-
 class vaj
-  extends ulw
+  implements vpo
 {
-  vaj(vai paramvai) {}
+  vaj(vab paramvab) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public void a()
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
-    if ((paramBoolean1) && (paramBoolean2)) {
-      QQToast.a(this.a.a.a, 2, alud.a(2131707353), 0).a();
-    }
-    do
+    vab.a(this.a, 54);
+  }
+  
+  public void b()
+  {
+    if (vab.a(this.a))
     {
+      vrg.a(55, 3, vab.a(this.a), this.a.a());
       return;
-      if ((!paramBoolean1) && (paramBoolean2))
-      {
-        QQToast.a(this.a.a.a, 1, alud.a(2131707358), 0).a();
-        return;
-      }
-    } while ((paramBoolean1) || (paramBoolean2));
-    QQToast.a(this.a.a.a, 1, alud.a(2131707354), 0).a();
+    }
+    vrc.a(55, 3, vab.a(this.a), this.a.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vaj
  * JD-Core Version:    0.7.0.1
  */

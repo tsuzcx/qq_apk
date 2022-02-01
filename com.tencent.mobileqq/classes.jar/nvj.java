@@ -1,39 +1,26 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopTabFragment;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class nvj
-  extends nvi
+class nvj
+  extends Handler
 {
-  public nvj(EcshopTabFragment paramEcshopTabFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView, String paramString)
+  nvj(nvi paramnvi, Looper paramLooper)
   {
-    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView, paramString);
+    super(paramLooper);
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    super.onPageFinished(paramWebView, paramString);
-    EcshopTabFragment.a(this.a).setVisibility(0);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return super.shouldOverrideUrlLoading(paramWebView, paramString);
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvj
  * JD-Core Version:    0.7.0.1
  */

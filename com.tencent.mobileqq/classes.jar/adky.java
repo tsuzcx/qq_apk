@@ -1,43 +1,29 @@
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import mqq.util.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class adky
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public WeakReference<NotificationActivity> a;
+  public adky(AddRequestActivity paramAddRequestActivity) {}
   
-  public adky(String paramString, WeakReference<NotificationActivity> paramWeakReference)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
+    boolean bool = true;
+    paramDialogInterface = this.a;
+    if (paramInt == 1) {}
+    for (;;)
     {
-      paramView = (NotificationActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      paramView.startActivity(localIntent);
+      AddRequestActivity.b(paramDialogInterface, bool);
+      bcst.b(this.a.app, "dc00898", "", "", "0X800B084", "0X800B084", 0, 0, "", "", "", "");
+      return;
+      bool = false;
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adky
  * JD-Core Version:    0.7.0.1
  */

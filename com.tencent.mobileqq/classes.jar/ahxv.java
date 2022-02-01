@@ -1,76 +1,20 @@
-import android.graphics.Color;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
 
-public class ahxv
-  extends RecyclerView.Adapter
+class ahxv
+  implements aauj
 {
-  public List<String> a = new ArrayList();
+  ahxv(ahxt paramahxt) {}
   
-  public ahxv(List<String> paramList)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (paramList != null)
-    {
-      this.a.clear();
-      this.a.addAll(paramList);
-    }
-  }
-  
-  public int getItemCount()
-  {
-    if (this.a != null) {
-      return this.a.size();
-    }
-    return 0;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    paramViewHolder = ((ahxw)paramViewHolder).a;
-    if (!TextUtils.isEmpty((String)this.a.get(paramInt)))
-    {
-      if (paramInt != 0) {
-        break label92;
-      }
-      String str = (String)this.a.get(paramInt);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mFailedDrawable = bayu.a;
-      localURLDrawableOptions.mLoadingDrawable = bayu.a;
-      localURLDrawableOptions.mPlayGifImage = awkr.a(str);
-      localURLDrawableOptions.mUseAutoScaleParams = true;
-      paramViewHolder.setImageDrawable(URLDrawable.getFileDrawable(str, localURLDrawableOptions));
-    }
-    label92:
-    do
-    {
-      return;
-      if (paramInt == 1)
-      {
-        paramViewHolder.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        paramViewHolder.setPadding(0, 0, 0, 0);
-        paramViewHolder.setImageDrawable(null);
-        paramViewHolder.setBackgroundColor(Color.parseColor("#9A989EB4"));
-        return;
-      }
-    } while (paramInt != 2);
-    paramViewHolder.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    paramViewHolder.setPadding(0, 0, 0, 0);
-    paramViewHolder.setImageDrawable(null);
-    paramViewHolder.setBackgroundColor(Color.parseColor("#48989EB4"));
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new ahxw(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559059, paramViewGroup, false));
+    afur.n = true;
+    this.a.o.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
+    StructMsg.ButtonInfo localButtonInfo = this.a.a(paramInt1);
+    asfi.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramString, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), localButtonInfo);
+    bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.a(), paramInt1 + "", "", "");
   }
 }
 

@@ -1,98 +1,181 @@
-import android.content.Context;
-import android.graphics.Rect;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract class mll
+public class mll
 {
-  Context a;
-  public VideoAppInterface a;
+  static int jdField_a_of_type_Int;
+  static long jdField_a_of_type_Long;
+  public static String a;
+  static boolean jdField_a_of_type_Boolean;
+  static int jdField_b_of_type_Int;
+  static String jdField_b_of_type_JavaLangString = "0";
+  static boolean jdField_b_of_type_Boolean;
+  static int jdField_c_of_type_Int;
+  static String jdField_c_of_type_JavaLangString = "actAVFunChatVoiceChange";
+  static boolean jdField_c_of_type_Boolean;
+  static boolean d;
   
-  protected mll(Context paramContext, VideoAppInterface paramVideoAppInterface)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    QLog.d("ScreenLayout", 1, "ScreenLayout. onCreate." + this);
+    jdField_a_of_type_JavaLangString = "VoiceChangeDataReport";
   }
   
-  public static mll a(Context paramContext, VideoAppInterface paramVideoAppInterface, int paramInt, boolean paramBoolean)
+  public static void a(int paramInt, long paramLong)
   {
-    Object localObject = null;
-    switch (paramInt)
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("typeid", paramInt + "");
+    localHashMap.put("duration", paramLong + "");
+    UserAction.onUserAction(jdField_c_of_type_JavaLangString, true, -1L, -1L, localHashMap, true);
+    lbc.a(jdField_a_of_type_JavaLangString, String.format("reportVoiceChange voiceType = %s, duration = %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    lbc.a(jdField_a_of_type_JavaLangString, String.format("onConnected sessionType = %s, roomid = %s", new Object[] { Integer.valueOf(paramInt), paramString }));
+    d = true;
+    jdField_b_of_type_JavaLangString = paramString;
+    if ((paramInt == 1) || (paramInt == 3))
     {
-    default: 
-      paramContext = localObject;
+      if (jdField_a_of_type_Int != 0) {
+        jdField_b_of_type_Int = jdField_a_of_type_Int;
+      }
+      jdField_a_of_type_Boolean = true;
+    }
+    while ((paramInt != 2) && (paramInt != 4)) {
+      return;
+    }
+    if (jdField_a_of_type_Int != 0) {
+      jdField_c_of_type_Int = jdField_a_of_type_Int;
+    }
+    jdField_b_of_type_Boolean = true;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    lbc.a(jdField_a_of_type_JavaLangString, String.format("reportClickEvent key = %s, type = %s, roomid = %s", new Object[] { paramString1, paramString2, jdField_b_of_type_JavaLangString }));
+    bcst.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, "", jdField_b_of_type_JavaLangString, "");
+  }
+  
+  public static void a(ley paramley)
+  {
+    if ((!jdField_c_of_type_Boolean) || (!d)) {
+      return;
+    }
+    if ((paramley.d == 1) || (paramley.d == 2)) {
+      if (jdField_a_of_type_Boolean)
+      {
+        if (jdField_b_of_type_Int == 0) {
+          a("0X8007DC3", "");
+        }
+      }
+      else if (jdField_b_of_type_Boolean)
+      {
+        if (jdField_c_of_type_Int != 0) {
+          break label115;
+        }
+        a("0X8007DC5", "");
+      }
     }
     for (;;)
     {
-      return paramContext;
-      if (paramBoolean)
-      {
-        try
+      a(paramley, 0);
+      jdField_c_of_type_Boolean = false;
+      d = false;
+      jdField_b_of_type_JavaLangString = "0";
+      return;
+      a("0X8007DC2", jdField_b_of_type_Int + "");
+      break;
+      label115:
+      a("0X8007DC4", jdField_c_of_type_Int + "");
+      continue;
+      if ((paramley.d == 3) || (paramley.d == 4)) {
+        if (paramley.D == 1)
         {
-          paramContext = new mlr(paramContext, paramVideoAppInterface);
-          continue;
-        }
-        finally {}
-      }
-      else
-      {
-        paramContext = new mlo(paramContext, paramVideoAppInterface);
-        continue;
-        if (paramBoolean)
-        {
-          paramContext = new mlq(paramContext, paramVideoAppInterface);
-        }
-        else
-        {
-          paramContext = new mlm(paramContext, paramVideoAppInterface);
-          continue;
-          if (paramBoolean)
+          if (jdField_a_of_type_Boolean)
           {
-            paramContext = new mlr(paramContext, paramVideoAppInterface);
-          }
-          else
-          {
-            paramContext = new mln(paramContext, paramVideoAppInterface);
-            continue;
-            if (paramBoolean) {
-              paramContext = new mlr(paramContext, paramVideoAppInterface);
-            } else {
-              paramContext = new mlp(paramContext, paramVideoAppInterface);
+            if (jdField_b_of_type_Int != 0) {
+              break label209;
             }
+            a("0X8007E67", "");
           }
+          for (;;)
+          {
+            if (!jdField_b_of_type_Boolean) {
+              break label236;
+            }
+            if (jdField_c_of_type_Int != 0) {
+              break label238;
+            }
+            a("0X8007E69", "");
+            break;
+            label209:
+            a("0X8007E68", jdField_b_of_type_Int + "");
+          }
+          label236:
+          continue;
+          label238:
+          a("0X8007E6A", jdField_c_of_type_Int + "");
+        }
+        else if (paramley.D == 10)
+        {
+          if (jdField_a_of_type_Boolean)
+          {
+            if (jdField_b_of_type_Int != 0) {
+              break label317;
+            }
+            a("0X8007E63", "");
+          }
+          for (;;)
+          {
+            if (!jdField_b_of_type_Boolean) {
+              break label344;
+            }
+            if (jdField_c_of_type_Int != 0) {
+              break label346;
+            }
+            a("0X8007E65", "");
+            break;
+            label317:
+            a("0X8007E64", jdField_b_of_type_Int + "");
+          }
+          label344:
+          continue;
+          label346:
+          a("0X8007E66", jdField_c_of_type_Int + "");
         }
       }
     }
   }
   
-  public abstract int a();
-  
-  public void a()
+  public static void a(ley paramley, int paramInt)
   {
-    QLog.d("ScreenLayout", 1, "ScreenLayout. onDestroy." + this);
-    this.jdField_a_of_type_AndroidContentContext = null;
-  }
-  
-  public void a(int paramInt, Rect paramRect1, Rect paramRect2, ConcurrentHashMap<Long, moa> paramConcurrentHashMap) {}
-  
-  public void a(lid paramlid, mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4) {}
-  
-  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
-  
-  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
-  
-  public abstract boolean a();
-  
-  public boolean b()
-  {
-    return a() == 2;
+    lbc.a(jdField_a_of_type_JavaLangString, String.format("updateReportData sessionType = %d, voiceType = %d", new Object[] { Integer.valueOf(paramley.d), Integer.valueOf(paramInt) }));
+    long l = System.currentTimeMillis();
+    if (jdField_a_of_type_Int != 0) {
+      a(jdField_a_of_type_Int, (l - jdField_a_of_type_Long) / 1000L);
+    }
+    jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_Long = l;
+    if ((paramley.d == 1) || (paramley.d == 3))
+    {
+      if (jdField_a_of_type_Int != 0) {
+        jdField_b_of_type_Int = jdField_a_of_type_Int;
+      }
+      jdField_a_of_type_Boolean = true;
+    }
+    while ((paramley.d != 2) && (paramley.d != 4)) {
+      return;
+    }
+    if (jdField_a_of_type_Int != 0) {
+      jdField_c_of_type_Int = jdField_a_of_type_Int;
+    }
+    jdField_b_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mll
  * JD-Core Version:    0.7.0.1
  */

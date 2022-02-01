@@ -1,18 +1,15 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.Emoticon;
 
-public class adpv
+class adpv
+  implements awnc<Emoticon>
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
+  adpv(adpu paramadpu, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(Emoticon paramEmoticon)
+  {
+    ahch.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Adpu.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adpu.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adpu.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+  }
 }
 
 

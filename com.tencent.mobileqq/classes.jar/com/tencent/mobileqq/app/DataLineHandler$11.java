@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import alqo;
+import anjx;
 import com.tencent.litetransfersdk.FTNInfo;
 import com.tencent.litetransfersdk.NFCInfo;
 import com.tencent.litetransfersdk.Session;
@@ -8,16 +8,16 @@ import com.tencent.litetransfersdk.Session;
 public class DataLineHandler$11
   implements Runnable
 {
-  public DataLineHandler$11(alqo paramalqo, Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo) {}
+  public DataLineHandler$11(anjx paramanjx, Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo) {}
   
   public void run()
   {
-    alqo.a(this.this$0, this.jdField_a_of_type_ComTencentLitetransfersdkSession, this.jdField_a_of_type_ComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ComTencentLitetransfersdkFTNInfo, false);
+    anjx.a(this.this$0, this.jdField_a_of_type_ComTencentLitetransfersdkSession, this.jdField_a_of_type_ComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ComTencentLitetransfersdkFTNInfo, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.11
  * JD-Core Version:    0.7.0.1
  */

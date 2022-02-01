@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.bizdapters;
 
-import yef;
+import aacm;
 
 public class FakerFeedsAdapter$3
   implements Runnable
 {
-  public FakerFeedsAdapter$3(yef paramyef, int paramInt) {}
+  public FakerFeedsAdapter$3(aacm paramaacm, int paramInt) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class FakerFeedsAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.FakerFeedsAdapter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,16 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agcv
-  implements Animation.AnimationListener
+class agcv
+  implements View.OnClickListener
 {
-  public agcv(StructingMsgItemBuilder paramStructingMsgItemBuilder, agcx paramagcx) {}
+  agcv(agcu paramagcu) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Agcx.a.setVisibility(0);
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

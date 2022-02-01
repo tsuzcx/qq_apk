@@ -12,19 +12,19 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bbyk;
-import bbyl;
-import bbyt;
-import wxe;
-import xsm;
+import beyv;
+import beyw;
+import beze;
+import yqp;
+import zlx;
 
 public class ArithResultView
   extends BaseScaleAndMoveBitmapView
 {
   public int a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private bbyk jdField_a_of_type_Bbyk;
-  private bbyt jdField_a_of_type_Bbyt;
+  private beyv jdField_a_of_type_Beyv;
+  private beze jdField_a_of_type_Beze;
   private int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   
@@ -45,17 +45,17 @@ public class ArithResultView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(xsm.a(paramContext, 1.0F));
-    this.jdField_b_of_type_Int = xsm.a(paramContext, 1.0F);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(zlx.a(paramContext, 1.0F));
+    this.jdField_b_of_type_Int = zlx.a(paramContext, 1.0F);
     this.jdField_a_of_type_Int = (this.jdField_b_of_type_Int * 5);
     try
     {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130845767);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130846187);
       return;
     }
     catch (OutOfMemoryError paramContext)
     {
-      wxe.e("QQ.Troop.homework.ArithResultView", "create the mark bitmap out of memory:" + paramContext.toString());
+      yqp.e("QQ.Troop.homework.ArithResultView", "create the mark bitmap out of memory:" + paramContext.toString());
     }
   }
   
@@ -70,10 +70,10 @@ public class ArithResultView
     }
   }
   
-  private void a(bbyl parambbyl)
+  private void a(beyw parambeyw)
   {
-    if (this.jdField_a_of_type_Bbyt != null) {
-      this.jdField_a_of_type_Bbyt.a(parambbyl);
+    if (this.jdField_a_of_type_Beze != null) {
+      this.jdField_a_of_type_Beze.a(parambeyw);
     }
   }
   
@@ -82,9 +82,9 @@ public class ArithResultView
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
     int i = 0;
-    if (i < this.jdField_a_of_type_Bbyk.a())
+    if (i < this.jdField_a_of_type_Beyv.a())
     {
-      paramMotionEvent = this.jdField_a_of_type_Bbyk.a(i);
+      paramMotionEvent = this.jdField_a_of_type_Beyv.a(i);
       if (paramMotionEvent.a) {}
       float f3;
       float f4;
@@ -112,22 +112,22 @@ public class ArithResultView
     paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
     paramCanvas.save();
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Bbyk != null)
+    if (this.jdField_a_of_type_Beyv != null)
     {
       int i = 0;
-      if (i < this.jdField_a_of_type_Bbyk.a())
+      if (i < this.jdField_a_of_type_Beyv.a())
       {
-        bbyl localbbyl = this.jdField_a_of_type_Bbyk.a(i);
-        if (localbbyl.a) {}
+        beyw localbeyw = this.jdField_a_of_type_Beyv.a(i);
+        if (localbeyw.a) {}
         for (;;)
         {
           i += 1;
           break;
-          int j = (int)(localbbyl.jdField_b_of_type_Int + this.jdField_a_of_type_Float - this.jdField_b_of_type_Int);
-          int k = (int)(localbbyl.c + this.jdField_b_of_type_Float - this.jdField_b_of_type_Int);
-          int m = localbbyl.d;
+          int j = (int)(localbeyw.jdField_b_of_type_Int + this.jdField_a_of_type_Float - this.jdField_b_of_type_Int);
+          int k = (int)(localbeyw.c + this.jdField_b_of_type_Float - this.jdField_b_of_type_Int);
+          int m = localbeyw.d;
           int n = this.jdField_b_of_type_Int;
-          int i1 = localbbyl.e;
+          int i1 = localbeyw.e;
           a(j, k, m + n * 2, this.jdField_b_of_type_Int * 2 + i1, paramCanvas);
         }
       }
@@ -135,20 +135,20 @@ public class ArithResultView
     paramCanvas.restore();
   }
   
-  public void setData(bbyk parambbyk)
+  public void setData(beyv parambeyv)
   {
-    this.jdField_a_of_type_Bbyk = parambbyk;
+    this.jdField_a_of_type_Beyv = parambeyv;
     invalidate();
   }
   
-  public void setOnItemClickListener(bbyt parambbyt)
+  public void setOnItemClickListener(beze parambeze)
   {
-    this.jdField_a_of_type_Bbyt = parambbyt;
+    this.jdField_a_of_type_Beze = parambeze;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithResultView
  * JD-Core Version:    0.7.0.1
  */

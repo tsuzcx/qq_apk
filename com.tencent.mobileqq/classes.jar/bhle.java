@@ -1,89 +1,151 @@
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class bhle
-  implements InvocationHandler
 {
-  public bhle(bhky parambhky) {}
+  public static long a;
+  public static WebViewPluginEngine a;
+  public static final Object a;
+  public static HashMap<Integer, bhlg> a;
+  public static volatile boolean a;
+  public static WebViewPluginEngine b;
+  public static HashMap<Integer, bhlg> b;
+  public static volatile boolean b;
+  public static volatile boolean c;
+  public static volatile boolean d;
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  static
   {
-    QMLog.e("TXLivePlayerJSAdapter", "InnerTXLivePlayListenerImpl invoke:" + paramMethod.getName());
-    if (Object.class.equals(paramMethod.getDeclaringClass())) {
-      try
-      {
-        paramObject = paramMethod.invoke(this, paramArrayOfObject);
-        return paramObject;
-      }
-      catch (Throwable paramObject)
-      {
-        paramObject.printStackTrace();
-      }
-    }
-    for (;;)
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    b = new HashMap();
+    jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public static void a()
+  {
+    if (System.currentTimeMillis() - jdField_a_of_type_Long > 3600000L)
     {
-      return null;
-      if ("onPlayEvent".equals(paramMethod.getName()))
+      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      bhlg localbhlg;
+      HashMap localHashMap;
+      while (localIterator.hasNext())
       {
-        if (paramArrayOfObject.length == 2)
-        {
-          paramMethod = (Integer)paramArrayOfObject[0];
-          paramArrayOfObject = (Bundle)paramArrayOfObject[1];
-          if ((paramMethod.equals(Integer.valueOf(2006))) || (paramMethod.equals(Integer.valueOf(-2301)))) {
-            this.a.a("stop", null);
-          }
-          if ((paramMethod.intValue() == 2012) && (paramArrayOfObject != null))
-          {
-            paramObject = paramArrayOfObject.getByteArray("EVT_GET_MSG");
-            if ((paramObject == null) || (paramObject.length <= 0)) {
-              break label261;
-            }
-          }
-          for (;;)
-          {
-            try
-            {
-              paramObject = new String(paramObject, "UTF-8");
-              paramArrayOfObject.putString("EVT_MSG", paramObject);
-              if ((bhky.a(this.a)) && (bhky.a(this.a) != null)) {
-                bhky.a(this.a).a(paramMethod.intValue(), paramArrayOfObject);
-              }
-              if (paramArrayOfObject == null) {
-                break;
-              }
-              paramObject = paramArrayOfObject.getString("EVT_MSG");
-              QMLog.d("TXLivePlayerJSAdapter", "onPlayEvent: event = " + paramMethod + " message = " + paramObject);
-            }
-            catch (UnsupportedEncodingException paramObject)
-            {
-              paramObject.printStackTrace();
-            }
-            label261:
-            paramObject = "";
-          }
-        }
+        localbhlg = (bhlg)localIterator.next();
+        localHashMap = new HashMap(4);
+        localHashMap.put("type", String.valueOf(localbhlg.a));
+        localHashMap.put("totalNum", String.valueOf(localbhlg.b));
+        localHashMap.put("hasProc", String.valueOf(localbhlg.c));
+        localHashMap.put("noProc", String.valueOf(localbhlg.d));
+        bctj.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actPreloadWebview", true, 0L, 0L, localHashMap, null);
       }
-      else if (("onNetStatus".equals(paramMethod.getName())) && (paramArrayOfObject.length == 1))
+      localIterator = b.values().iterator();
+      while (localIterator.hasNext())
       {
-        paramObject = (Bundle)paramArrayOfObject[0];
-        if (bhky.a(this.a) != null) {
-          bhky.a(this.a).a(paramObject);
-        }
-        if (QMLog.isColorLevel())
-        {
-          paramObject = String.format("%-16s %-16s %-16s %-12s %-12s %-12s %-12s %-14s %-14s %-14s %-16s %-16s", new Object[] { "CPU:" + paramObject.getString("CPU_USAGE"), "RES:" + paramObject.getInt("VIDEO_WIDTH") + "*" + paramObject.getInt("VIDEO_HEIGHT"), "SPD:" + paramObject.getInt("NET_SPEED") + "Kbps", "JIT:" + paramObject.getInt("NET_JITTER"), "FPS:" + paramObject.getInt("VIDEO_FPS"), "GOP:" + paramObject.getInt("VIDEO_GOP") + "s", "ARA:" + paramObject.getInt("AUDIO_BITRATE") + "Kbps", "QUE:" + paramObject.getInt("AUDIO_CACHE") + " | " + paramObject.getInt("VIDEO_CACHE") + "," + paramObject.getInt("V_SUM_CACHE_SIZE") + "," + paramObject.getInt("V_DEC_CACHE_SIZE") + " | " + paramObject.getInt("AV_RECV_INTERVAL") + "," + paramObject.getInt("AV_PLAY_INTERVAL") + "," + String.format("%.1f", new Object[] { Float.valueOf(paramObject.getFloat("AUDIO_CACHE_THRESHOLD")) }).toString(), "VRA:" + paramObject.getInt("VIDEO_BITRATE") + "Kbps", "DRP:" + paramObject.getInt("AUDIO_DROP") + "|" + paramObject.getInt("VIDEO_DROP"), "SVR:" + paramObject.getString("SERVER_IP"), "AUDIO:" + paramObject.getString("AUDIO_PLAY_INFO") });
-          QMLog.d("TXLivePlayerJSAdapter", "onNetStatus:" + paramObject);
-        }
+        localbhlg = (bhlg)localIterator.next();
+        localHashMap = new HashMap(4);
+        localHashMap.put("type", String.valueOf(localbhlg.a));
+        localHashMap.put("totalNum", String.valueOf(localbhlg.b));
+        localHashMap.put("hasProc", String.valueOf(localbhlg.c));
+        localHashMap.put("noProc", String.valueOf(localbhlg.d));
+        bctj.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actJumpWebview", true, 0L, 0L, localHashMap, null);
+      }
+      jdField_a_of_type_JavaUtilHashMap.clear();
+      b.clear();
+      jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadService", 2, "reportInterval...");
       }
     }
+  }
+  
+  public static void a(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_accelerator_mode_", 3);
+    localBundle.putInt("from", paramInt);
+    bhrb.a().a(localBundle);
+  }
+  
+  public static boolean a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null) {
+      return false;
+    }
+    return paramAppRuntime.getClass().getSimpleName().equals("ReaderRuntime");
+  }
+  
+  public static void b(int paramInt)
+  {
+    int j = 0;
+    Object localObject = (aqup)aqlk.a().a(158);
+    if ((localObject != null) && (((aqup)localObject).b == 1)) {
+      return;
+    }
+    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+    if (!bool)
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("from", 305);
+      ((Intent)localObject).setAction("com.tencent.mobileqq.webprocess.preload_web_process");
+      ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
+      ((Intent)localObject).putExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
+      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadService", 2, "preloadWebview...");
+      }
+    }
+    localObject = new bhlg(paramInt);
+    if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+      localObject = (bhlg)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    }
+    ((bhlg)localObject).b += 1;
+    int k = ((bhlg)localObject).c;
+    if (bool)
+    {
+      i = 1;
+      label184:
+      ((bhlg)localObject).c = (i + k);
+      k = ((bhlg)localObject).d;
+      if (!bool) {
+        break label244;
+      }
+    }
+    label244:
+    for (int i = j;; i = 1)
+    {
+      ((bhlg)localObject).d = (k + i);
+      jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
+      if (((bhlg)localObject).b <= 3) {
+        break;
+      }
+      a();
+      return;
+      i = 0;
+      break label184;
+    }
+  }
+  
+  public static boolean b(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null) {
+      return false;
+    }
+    return paramAppRuntime.getClass().getSimpleName().equals("VipComicPluginRuntime");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhle
  * JD-Core Version:    0.7.0.1
  */

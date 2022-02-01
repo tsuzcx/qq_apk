@@ -1,90 +1,127 @@
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class neb
-  extends nec
+  extends lox
 {
-  protected int a;
-  protected int b;
+  private final int jdField_a_of_type_Int;
+  private final lon jdField_a_of_type_Lon = new lon();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b = true;
   
-  public static neb a(ByteBuffer paramByteBuffer)
+  public neb()
   {
-    return a(paramByteBuffer, new neb());
+    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+    this.jdField_a_of_type_Lon.a("BEAUTY_SKIN", 60);
+    this.jdField_a_of_type_Lpb = new lpb(this.jdField_a_of_type_AndroidContentContext, null, this.jdField_a_of_type_Lon);
+    int i = nge.a();
+    if (i == 3) {}
+    for (this.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Int = 1)
+    {
+      this.jdField_a_of_type_Boolean = GraphicRenderMgr.soloadedPTV;
+      if (QLog.isColorLevel()) {
+        QLog.i("AVGameEffectCtrl", 2, "AVGameEffectCtrl, line[" + i + "], mode[" + this.jdField_a_of_type_Int + "], PtvSoReady[" + this.jdField_a_of_type_Boolean + "]");
+      }
+      return;
+    }
   }
   
-  public static neb a(ByteBuffer paramByteBuffer, neb paramneb)
+  public int a()
   {
-    paramByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-    if (paramByteBuffer.capacity() < paramByteBuffer.position() + 4) {
-      return null;
-    }
-    return paramneb.a(paramByteBuffer.getInt(paramByteBuffer.position()) + paramByteBuffer.position(), paramByteBuffer);
-  }
-  
-  private int b(int paramInt)
-  {
-    paramInt = (paramInt + 2) * 2;
-    if (paramInt < this.b) {
-      return this.jdField_a_of_type_JavaNioByteBuffer.getShort(paramInt + this.jdField_a_of_type_Int);
-    }
     return 0;
   }
   
-  public long a(int paramInt, long paramLong)
+  public void a(int paramInt) {}
+  
+  protected void a(lop paramlop, lpq paramlpq)
   {
-    paramInt = b(paramInt);
-    if (paramInt != 0) {
-      paramLong = this.jdField_a_of_type_JavaNioByteBuffer.getLong(paramInt + this.c);
+    paramlpq.a();
+    if (!paramlpq.c) {
+      paramlpq.c = this.jdField_a_of_type_Boolean;
     }
-    return paramLong;
   }
   
-  public String a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramInt = b(paramInt);
-    if (paramInt != 0) {
-      return b(paramInt + this.c);
+    if (QLog.isColorLevel()) {
+      QLog.i("AVGameEffectCtrl", 2, "destroy, exit[" + paramBoolean + "]");
     }
-    return null;
+    d();
   }
   
-  public nea a(int paramInt)
+  public boolean a()
   {
-    return a(paramInt, new nea());
+    return this.b;
   }
   
-  public nea a(int paramInt, nea paramnea)
+  public boolean a(AVGameAppInterface paramAVGameAppInterface)
   {
-    paramInt = b(paramInt);
-    if (paramInt != 0) {
-      return paramnea.a(a(paramInt + this.c), this.jdField_a_of_type_JavaNioByteBuffer);
+    if (paramAVGameAppInterface == null) {
+      return this.jdField_a_of_type_Boolean;
     }
-    return null;
-  }
-  
-  public neb a(int paramInt, ByteBuffer paramByteBuffer)
-  {
-    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
-      paramByteBuffer = null;
-    }
-    do
+    if (!this.jdField_a_of_type_Boolean)
     {
-      return paramByteBuffer;
-      this.c = paramInt;
-      this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
-      this.jdField_a_of_type_Int = (this.c - this.jdField_a_of_type_JavaNioByteBuffer.getInt(this.c));
-      if (!a(this.jdField_a_of_type_Int, 2)) {
-        return null;
+      paramAVGameAppInterface = paramAVGameAppInterface.a();
+      if (paramAVGameAppInterface != null) {
+        this.jdField_a_of_type_Boolean = paramAVGameAppInterface.a();
       }
-      this.b = this.jdField_a_of_type_JavaNioByteBuffer.getShort(this.jdField_a_of_type_Int);
-      paramByteBuffer = this;
-    } while (a(this.jdField_a_of_type_Int, this.b));
+      while (!this.jdField_a_of_type_Boolean)
+      {
+        QLog.w("AVGameEffectCtrl", 1, "isLoadedSO, load ptv so fail, proxy[" + paramAVGameAppInterface + "]");
+        return this.jdField_a_of_type_Boolean;
+        g();
+      }
+    }
+    return g();
+  }
+  
+  protected byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2, short paramShort3, short paramShort4)
+  {
     return null;
+  }
+  
+  protected int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b(int paramInt) {}
+  
+  public boolean f()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean g()
+  {
+    boolean bool2;
+    if (!GraphicRenderMgr.soloadedPTV)
+    {
+      GraphicRenderMgr.loadPtuSO();
+      QLog.w("AVGameEffectCtrl", 1, "isLoadedSO, loadPtvSoRet[" + GraphicRenderMgr.soloadedPTV + "]");
+      bool2 = GraphicRenderMgr.soloadedPTV;
+      bool1 = bool2;
+      if (bool2)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        b();
+      }
+    }
+    for (boolean bool1 = bool2;; bool1 = true)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AVGameEffectCtrl", 2, "loadPtvSo, ret[" + bool1 + "]");
+      }
+      return bool1;
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     neb
  * JD-Core Version:    0.7.0.1
  */

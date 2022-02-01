@@ -1,0 +1,53 @@
+package com.tencent.autotemplate;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.util.Log;
+import com.tencent.autotemplate.utils.JsonUtils;
+import java.io.File;
+
+public class TAVAutomaticTemplateParse
+{
+  private static final String TAG = TAVAutomaticTemplateParse.class.getCanonicalName();
+  
+  public static TAVAutomaticTemplate parseAutomaticTemplate(@NonNull Context paramContext, @NonNull String paramString1, @NonNull String paramString2)
+  {
+    paramString2 = (TAVAutomaticTemplate)JsonUtils.parseObjectFromFile(paramContext, paramString1 + File.separator + paramString2, TAVAutomaticTemplate.class);
+    if (paramString2 != null)
+    {
+      paramString2.setContext(paramContext);
+      paramString2.setTemplateDir(paramString1);
+      return paramString2;
+    }
+    Log.d(TAG, "parseAutomaticTemplate error, TAVAutomaticTemplate Object is null, Please template config file.");
+    return paramString2;
+  }
+  
+  public static TAVAutomaticTemplate parseAutomaticTemplate(@NonNull String paramString)
+  {
+    return (TAVAutomaticTemplate)JsonUtils.parseObjectFromFile(null, paramString, TAVAutomaticTemplate.class);
+  }
+  
+  public static TAVAutomaticTemplate parseAutomaticTemplate(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    paramString2 = (TAVAutomaticTemplate)JsonUtils.parseObjectFromFile(null, paramString1 + "/" + paramString2, TAVAutomaticTemplate.class);
+    paramString2.setTemplateDir(paramString1);
+    return paramString2;
+  }
+  
+  public static TAVRhythmAutomaticTemplate parseRhythmAutomaticTemplate(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    paramString2 = (TAVRhythmAutomaticTemplate)JsonUtils.parseObjectFromFile(null, paramString1 + "/" + paramString2, TAVRhythmAutomaticTemplate.class);
+    if (paramString2 == null) {
+      return null;
+    }
+    paramString2.setTemplateDir(paramString1);
+    return paramString2;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.autotemplate.TAVAutomaticTemplateParse
+ * JD-Core Version:    0.7.0.1
+ */

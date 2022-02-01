@@ -1,60 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGetGroupHotRankVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import qqcircle.QQCirclePrivateMsgShow.StGetPMSettingRsp;
 
-public class vcr
-  extends uub
+class vcr
+  implements Observer<vup<QQCirclePrivateMsgShow.StGetPMSettingRsp>>
 {
-  boolean jdField_a_of_type_Boolean = false;
+  vcr(vcq paramvcq) {}
   
-  public vcr(vcq paramvcq, boolean paramBoolean)
+  public void a(@Nullable vup<QQCirclePrivateMsgShow.StGetPMSettingRsp> paramvup)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String a()
-  {
-    return uqn.a("StoryGroupSvc.get_hot_rank_video_list");
-  }
-  
-  public uuc a(byte[] paramArrayOfByte)
-  {
-    qqstory_group.RspGetGroupHotRankVideo localRspGetGroupHotRankVideo = new qqstory_group.RspGetGroupHotRankVideo();
-    try
-    {
-      localRspGetGroupHotRankVideo.mergeFrom(paramArrayOfByte);
-      return new vcs(this.jdField_a_of_type_Vcq, localRspGetGroupHotRankVideo, this.jdField_a_of_type_Boolean);
+    if ((paramvup != null) && (paramvup.a() == 3)) {
+      vcq.a(this.a, (QQCirclePrivateMsgShow.StGetPMSettingRsp)paramvup.a());
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wxe.d("GetHotSortVideoHandler", "" + paramArrayOfByte);
+    while ((paramvup == null) || (paramvup.a() != 4)) {
+      return;
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_group.ReqGetGroupHotRankVideo localReqGetGroupHotRankVideo = new qqstory_group.ReqGetGroupHotRankVideo();
-    localReqGetGroupHotRankVideo.union_id.set(ByteStringMicro.copyFromUtf8(vcq.a(this.jdField_a_of_type_Vcq)));
-    localReqGetGroupHotRankVideo.size.set(10);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localReqGetGroupHotRankVideo.seq.set(vcq.a(this.jdField_a_of_type_Vcq));
-      if (!TextUtils.isEmpty(vcq.b(this.jdField_a_of_type_Vcq))) {
-        localReqGetGroupHotRankVideo.start_cookie.set(ByteStringMicro.copyFromUtf8(vcq.b(this.jdField_a_of_type_Vcq)));
-      }
-    }
-    return localReqGetGroupHotRankVideo.toByteArray();
+    vcq.a(this.a, paramvup.a(), paramvup.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vcr
  * JD-Core Version:    0.7.0.1
  */

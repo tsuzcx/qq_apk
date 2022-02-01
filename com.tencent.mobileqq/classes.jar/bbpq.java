@@ -1,29 +1,54 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import java.util.List;
 
-class bbpq
-  implements Animation.AnimationListener
+public class bbpq
+  extends bbqm
 {
-  bbpq(bbpo parambbpo) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public bbpq(aobu paramaobu)
   {
-    if (bbpo.a(this.a) != null) {
-      bbpo.a(this.a).a.clearAnimation();
-    }
-    bbpo.a(this.a);
-    if ((bbpo.a(this.a) != null) && (!bbpo.a(this.a).isSend())) {
-      ((bbpw)this.a.a.getManager(225)).a(this.a.a.getCurrentAccountUin(), bbpo.a(this.a).getExtInfoFromExtStr("key_aio_keyword"), Integer.valueOf(bbpo.a(this.a).ruleId));
-    }
+    super(paramaobu, 268435456);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(bbmw parambbmw, bbvf parambbvf)
+  {
+    Object localObject1 = (bbmx)parambbmw;
+    parambbmw = ((bbvd)parambbvf).a();
+    if (parambbmw != null)
+    {
+      List localList = ((bbmx)localObject1).a();
+      if (localList != null)
+      {
+        parambbmw.removeAllViews();
+        int j = Math.min(localList.size(), ((bbmx)localObject1).a());
+        int i = 0;
+        while (i < j)
+        {
+          localObject1 = new bbwo(((bbvd)parambbvf).a(), 268435456);
+          Object localObject2 = ((bbwo)localObject1).a();
+          bbmy localbbmy = (bbmy)localList.get(i);
+          ((View)localObject2).setTag(2131380929, localbbmy);
+          ((View)localObject2).setTag(2131380935, localObject1);
+          ((View)localObject2).setTag(2131380930, Integer.valueOf(i));
+          ((View)localObject2).setTag(2131380928, Integer.valueOf(localList.size()));
+          ((View)localObject2).setTag(2131380931, this.a);
+          if ((localbbmy instanceof bblw)) {
+            bbus.a((bblw)localbbmy, j, i);
+          }
+          localObject2 = new LinearLayout.LayoutParams(-1, -2);
+          parambbmw.addView(((bbwo)localObject1).a(), (ViewGroup.LayoutParams)localObject2);
+          this.a.a(localbbmy, (bbvh)localObject1);
+          i += 1;
+        }
+      }
+    }
+    if (parambbvf.b() != null) {
+      parambbvf.b().setVisibility(8);
+    }
+  }
 }
 
 

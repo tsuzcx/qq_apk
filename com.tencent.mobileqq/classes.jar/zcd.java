@@ -1,42 +1,35 @@
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
-class zcd
-  implements zao
+public abstract class zcd
 {
-  zcd(zby paramzby) {}
+  public final int a;
+  public final String a;
+  public final int b;
+  public String b;
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  public zcd(int paramInt1, String paramString, int paramInt2)
   {
-    if ((!paramBoolean) || (paramArrayList == null))
-    {
-      this.a.a(alud.a(2131704264));
-      QLog.w("EditVideoSmartMusicPart", 1, "extractFrame failed  data is null");
-    }
-    zby localzby;
-    StringBuilder localStringBuilder;
-    if (zby.a(this.a) != null)
-    {
-      localzby = this.a;
-      localStringBuilder = new StringBuilder().append(alud.a(2131704150)).append(zby.a(this.a).a()).append("ms\n抽取图片数：");
-      if (paramArrayList != null) {
-        break label133;
-      }
-    }
-    label133:
-    for (int i = 0;; i = paramArrayList.size())
-    {
-      localzby.a(i + "\n抽帧字节数：" + zby.a(this.a).b() + "KB");
-      zby.a(this.a, paramArrayList);
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
+  
+  @NonNull
+  public abstract Class<? extends zce> a();
+  
+  @NonNull
+  public abstract zce a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zcd
  * JD-Core Version:    0.7.0.1
  */

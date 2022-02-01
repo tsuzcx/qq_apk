@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import bjdm;
+import blru;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -65,10 +65,10 @@ public class LpReport_ShuoshuoBehavior_dc02478
       if (!TextUtils.isEmpty(this.version)) {
         break label198;
       }
-      str = "8.3.5";
+      str = "8.4.1";
       label52:
       LpReportUtils.safePut(localHashMap, "version", str);
-      LpReportUtils.safePut(localHashMap, "qua", bjdm.a());
+      LpReportUtils.safePut(localHashMap, "qua", blru.a());
       if (!TextUtils.isEmpty(this.client_time)) {
         break label206;
       }
@@ -127,7 +127,7 @@ public class LpReport_ShuoshuoBehavior_dc02478
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_ShuoshuoBehavior_dc02478
  * JD-Core Version:    0.7.0.1
  */

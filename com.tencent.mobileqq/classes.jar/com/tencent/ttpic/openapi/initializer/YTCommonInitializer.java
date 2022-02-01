@@ -14,32 +14,99 @@ public class YTCommonInitializer
   extends Feature
 {
   private static final String TAG = YTCommonInitializer.class.getSimpleName();
-  private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("nnpack"), new SharedLibraryInfo("YTCommon") };
+  private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("YTCommon") };
+  private int authMode = 0;
+  
+  private String getErrorMessage(int paramInt)
+  {
+    String str;
+    switch (paramInt)
+    {
+    default: 
+      str = "内部错误";
+    }
+    for (;;)
+    {
+      return "[" + paramInt + "]" + str;
+      str = "授权成功";
+      continue;
+      str = "网络连接失败";
+      continue;
+      str = "网络初始化错误";
+      continue;
+      str = "证书下载失败";
+      continue;
+      str = "证书保存失败";
+      continue;
+      str = "没有写权限";
+      continue;
+      str = "证书文件为空";
+      continue;
+      str = "授权文件解析失败.";
+      continue;
+      str = "设备信息不匹配";
+      continue;
+      str = "package name不匹配";
+      continue;
+      str = "package name为空";
+      continue;
+      str = "证书已经过期(累计时间)";
+      continue;
+      str = "证书已过期";
+      continue;
+      str = "license版本不匹配";
+      continue;
+      str = "设备序列号无效";
+      continue;
+      str = "没有权限获取序列号.";
+      continue;
+      str = "请求字段中参数错误";
+      continue;
+      str = "设备时间和服务器不符";
+      continue;
+      str = "序列号信息为空";
+      continue;
+      str = "该设备续期次数超过限制";
+      continue;
+      str = "授权时间无效";
+      continue;
+      str = "appid没有匹配到设备";
+      continue;
+      str = "授权已过期";
+    }
+  }
   
   private boolean initAuth()
   {
     int i;
-    if (TextUtils.isEmpty(AEModule.getLicense()))
-    {
-      logForInitAuth(AEModule.getContext(), "com_tencent_2118.lic", 0);
-      i = YTCommonInterface.initAuth(AEModule.getContext(), "com_tencent_2118.lic", 0);
-      if (i != 0) {
-        break label76;
+    String str;
+    if (this.authMode == 0) {
+      if (TextUtils.isEmpty(AEModule.getLicense()))
+      {
+        logForInitAuth(AEModule.getContext(), "com_tencent_2118.lic", 0);
+        i = YTCommonInterface.initAuth(AEModule.getContext(), "com_tencent_2118.lic", 0);
+        str = getErrorMessage(i);
+        LogUtils.i("AEKitFeature", str);
+        if (i != 0) {
+          break label104;
+        }
       }
     }
-    label76:
+    label104:
     for (boolean bool = true;; bool = false)
     {
-      AEOpenRenderConfig.checkStrictMode(bool, "youtu auth failed");
+      AEOpenRenderConfig.checkStrictMode(bool, str);
       if (i != 0) {
-        break label81;
+        break label109;
       }
       return true;
       logForInitAuth(AEModule.getContext(), AEModule.getLicense(), AEModule.getLicenseInitType());
       i = YTCommonInterface.initAuth(AEModule.getContext(), AEModule.getLicense(), AEModule.getLicenseInitType());
       break;
+      i = YTCommonInterface.initAuthForQQ(AEModule.getContext());
+      break;
     }
-    label81:
+    label109:
     return false;
   }
   
@@ -79,10 +146,15 @@ public class YTCommonInitializer
   {
     return (loadAllSoFiles()) && (initAuth());
   }
+  
+  public void setAuthMode(int paramInt)
+  {
+    this.authMode = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.YTCommonInitializer
  * JD-Core Version:    0.7.0.1
  */

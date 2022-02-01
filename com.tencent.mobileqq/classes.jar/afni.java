@@ -1,21 +1,18 @@
-import android.graphics.drawable.StateListDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin;
 
-class afni
-  implements URLDrawable.URLDrawableListener
+public final class afni
+  implements Parcelable.Creator<TroopMemberListActivity.TroopAdmin>
 {
-  afni(afmy paramafmy, StateListDrawable paramStateListDrawable) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public TroopMemberListActivity.TroopAdmin a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable.invalidateSelf();
+    return new TroopMemberListActivity.TroopAdmin(paramParcel, null);
+  }
+  
+  public TroopMemberListActivity.TroopAdmin[] a(int paramInt)
+  {
+    return new TroopMemberListActivity.TroopAdmin[paramInt];
   }
 }
 

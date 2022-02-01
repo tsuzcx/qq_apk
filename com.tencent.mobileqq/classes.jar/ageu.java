@@ -1,29 +1,32 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class ageu
-  extends agem
+  implements Animation.AnimationListener
 {
-  public ageu(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
+  public ageu(PressToSpeakPanel paramPressToSpeakPanel) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
+    }
   }
   
-  public aeqi a()
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    return new agew(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    }
   }
   
-  public View a(BaseChatItemLayout paramBaseChatItemLayout)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562754, paramBaseChatItemLayout, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationStart is called,time is:" + System.currentTimeMillis());
+    }
   }
 }
 

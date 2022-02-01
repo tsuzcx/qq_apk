@@ -6,15 +6,16 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import noy;
-import npd;
-import odj;
-import odl;
-import odv;
+import nxw;
+import nya;
+import olk;
+import opg;
+import opi;
+import opz;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sfq;
-import swu;
+import teh;
+import tyc;
 
 public class ProteusBannerBigPicItemData
   extends AdData
@@ -42,14 +43,14 @@ public class ProteusBannerBigPicItemData
     String str1 = null;
     JSONObject localJSONObject = new JSONObject();
     Object localObject1;
-    if (odv.b(this)) {
-      localObject1 = odl.a(localJSONObject, this);
+    if (opz.b(this)) {
+      localObject1 = opi.a(localJSONObject, this);
     }
     for (;;)
     {
       return localObject1;
-      if (odv.a(this)) {
-        return odj.a(localJSONObject, this);
+      if (opz.a(this)) {
+        return opg.a(localJSONObject, this);
       }
       localObject1 = str1;
       Object localObject5;
@@ -76,13 +77,13 @@ public class ProteusBannerBigPicItemData
           StringBuilder localStringBuilder;
           label212:
           label348:
-          label763:
+          label500:
           long l;
-          label540:
-          label728:
+          label644:
+          label685:
+          label697:
+          label732:
           localJSONException.printStackTrace();
-          label775:
-          label810:
           break;
           localJSONObject.put("style_ID", "ReadInjoy_ad_banner_large_pic_cell");
           continue;
@@ -111,8 +112,8 @@ public class ProteusBannerBigPicItemData
       try
       {
         localObject1 = this.e;
-        d1 = npd.a(this.d, 0.0D);
-        d2 = npd.a((String)localObject1, 0.0D);
+        d1 = nya.a(this.d, 0.0D);
+        d2 = nya.a((String)localObject1, 0.0D);
         if (d2 == 0.0D)
         {
           localObject1 = str1;
@@ -129,13 +130,13 @@ public class ProteusBannerBigPicItemData
       {
         Object localObject3 = localObject5;
         break label133;
-        label1014:
+        label934:
         localObject3 = "";
         localObject4 = str1;
         break label212;
         break label348;
-        break label540;
-        break label728;
+        break label500;
+        break label644;
       }
     }
     if (localObject1 == null)
@@ -145,20 +146,20 @@ public class ProteusBannerBigPicItemData
       localObject5 = this.b;
       str1 = this.f;
       str2 = this.jdField_c_of_type_JavaLangString;
-      i = npd.a((String)localObject1, 3000);
+      i = nya.a((String)localObject1, 3000);
       if (d1 > 0.0D) {
-        break label763;
+        break label685;
       }
       localObject1 = "";
       d1 = 0.0D;
       localStringBuilder = new StringBuilder();
       if (d1 == 0.0D) {
-        break label1014;
+        break label934;
       }
       if (d1 <= i) {
-        break label775;
+        break label697;
       }
-      break label1014;
+      break label934;
     }
     do
     {
@@ -177,7 +178,7 @@ public class ProteusBannerBigPicItemData
           localObject1 = new JSONObject();
           ((JSONObject)localObject1).put("text", this.j);
         }
-        switch (this.p)
+        switch (this.jdField_q_of_type_Int)
         {
         case 1: 
           ((JSONObject)localObject1).put("bottom_line_number", "2");
@@ -185,53 +186,44 @@ public class ProteusBannerBigPicItemData
           localJSONObject.put("id_tv_title", localObject1);
           if (!TextUtils.isEmpty(this.l))
           {
-            localObject1 = swu.a(this.l, 4);
+            localObject1 = tyc.a(this.l, 4);
             localObject4 = new JSONObject();
             ((JSONObject)localObject4).put("image_url", ((URL)localObject1).toString());
             localJSONObject.put("id_ad_banner_bottom_imge", localObject4);
-          }
-          localObject1 = new JSONObject();
-          if (!TextUtils.isEmpty(this.L))
-          {
-            ((JSONObject)localObject1).put("text", this.L);
-            localJSONObject.put("id_ad_dislike_button", localObject1);
           }
           if (QLog.isColorLevel()) {
             QLog.d("ProteusBannerBigPicItemData", 2, "detail ad Bottom Pic adInconText:" + this.L);
           }
           localObject1 = new JSONObject();
-          switch (this.p)
+          switch (this.jdField_q_of_type_Int)
           {
           case 1: 
             ((JSONObject)localObject1).put("bottom_background_color", "#f8f8f8");
             localJSONObject.put("id_operate_area", localObject1);
-            localJSONObject.put("id_separator", new JSONObject());
-            localObject1 = new JSONObject();
-            ((JSONObject)localObject1).put("article_model", this);
-            localJSONObject.put("id_view_AdDownloadView", localObject1);
             localJSONObject.put("id_ad_title", new JSONObject());
             localJSONObject.put("id_ad_title_rl", new JSONObject());
-            if (TextUtils.isEmpty(this.q)) {
-              break label1034;
+            if (!TextUtils.isEmpty(this.jdField_q_of_type_JavaLangString))
+            {
+              localObject1 = new JSONObject();
+              if ((this.jdField_a_of_type_Boolean) && (this.jdField_q_of_type_JavaLangString.length() > 8)) {
+                this.jdField_q_of_type_JavaLangString = this.jdField_q_of_type_JavaLangString.substring(0, 8).concat("...");
+              }
+              ((JSONObject)localObject1).put("text", this.jdField_q_of_type_JavaLangString);
             }
-            localObject1 = new JSONObject();
-            if ((this.jdField_a_of_type_Boolean) && (this.q.length() > 8)) {
-              this.q = this.q.substring(0, 8).concat("...");
-            }
-            ((JSONObject)localObject1).put("text", this.q);
-            switch (this.p)
+            switch (this.jdField_q_of_type_Int)
             {
             case 1: 
               ((JSONObject)localObject1).put("text_color", "#000000");
               localJSONObject.put("id_tv_author", localObject1);
-              break label1034;
-              d1 = noy.a((double[])localObject1, BaseApplicationImpl.getContext());
+              olk.a(this, localJSONObject);
+              break label954;
+              d1 = nxw.a((double[])localObject1, BaseApplicationImpl.getContext());
               break label140;
               d1 = Math.ceil(d1);
               localObject1 = localObject4;
               break label186;
               if (d1 >= 1000.0D) {
-                break label810;
+                break label732;
               }
               localStringBuilder.append((int)d1).append('m');
               localObject1 = localStringBuilder.toString();
@@ -255,13 +247,13 @@ public class ProteusBannerBigPicItemData
       break;
       localStringBuilder.append("999km");
     }
-    label1034:
+    label954:
     return localJSONObject;
   }
   
   private boolean a(ProteusBannerBigPicItemData paramProteusBannerBigPicItemData)
   {
-    return (!TextUtils.isEmpty(this.j)) && (!TextUtils.isEmpty(this.l)) && (!TextUtils.isEmpty(this.q));
+    return (!TextUtils.isEmpty(this.j)) && (!TextUtils.isEmpty(this.l)) && (!TextUtils.isEmpty(this.jdField_q_of_type_JavaLangString));
   }
   
   public void a()
@@ -270,10 +262,10 @@ public class ProteusBannerBigPicItemData
     this.jdField_c_of_type_OrgJsonJSONObject = a();
     try
     {
-      sfq localsfq = sfq.a("native_article", true);
+      teh localteh = teh.a("native_article", true);
       localObject1 = localObject3;
-      if (localsfq != null) {
-        localObject1 = localsfq.getTemplateBean(this.jdField_c_of_type_OrgJsonJSONObject);
+      if (localteh != null) {
+        localObject1 = localteh.getTemplateBean(this.jdField_c_of_type_OrgJsonJSONObject);
       }
     }
     catch (JSONException localJSONException)

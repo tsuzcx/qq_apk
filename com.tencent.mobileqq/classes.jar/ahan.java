@@ -1,11 +1,18 @@
-import android.view.View;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface ahan
-  extends ahar
+class ahan
+  extends ahbl
 {
-  public abstract int a();
+  ahan(agwz paramagwz)
+  {
+    super(paramagwz, null);
+  }
   
-  public abstract View a(Object... paramVarArgs);
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agoy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

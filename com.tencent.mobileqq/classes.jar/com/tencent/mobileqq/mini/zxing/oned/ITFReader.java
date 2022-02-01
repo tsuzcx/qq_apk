@@ -26,26 +26,11 @@ public final class ITFReader
   static
   {
     END_PATTERN_REVERSED = new int[][] { { 1, 1, 2 }, { 1, 1, 3 } };
-    int[] arrayOfInt1 = { 1, 1, 2, 2, 1 };
-    int[] arrayOfInt2 = { 1, 2, 1, 1, 2 };
-    int[] arrayOfInt3 = { 2, 2, 1, 1, 1 };
-    int[] arrayOfInt4 = { 1, 1, 2, 1, 2 };
-    int[] arrayOfInt5 = { 2, 1, 2, 1, 1 };
-    int[] arrayOfInt6 = { 1, 2, 2, 1, 1 };
-    int[] arrayOfInt7 = { 1, 1, 1, 2, 2 };
-    int[] arrayOfInt8 = { 2, 1, 1, 2, 1 };
-    int[] arrayOfInt9 = { 1, 2, 1, 2, 1 };
-    int[] arrayOfInt10 = { 1, 1, 3, 3, 1 };
-    int[] arrayOfInt11 = { 3, 1, 1, 1, 3 };
-    int[] arrayOfInt12 = { 1, 3, 1, 1, 3 };
-    int[] arrayOfInt13 = { 3, 3, 1, 1, 1 };
-    int[] arrayOfInt14 = { 1, 1, 3, 1, 3 };
-    int[] arrayOfInt15 = { 3, 1, 3, 1, 1 };
-    int[] arrayOfInt16 = { 1, 3, 3, 1, 1 };
-    int[] arrayOfInt17 = { 1, 1, 1, 3, 3 };
-    int[] arrayOfInt18 = { 3, 1, 1, 3, 1 };
-    int[] arrayOfInt19 = { 1, 3, 1, 3, 1 };
-    PATTERNS = new int[][] { arrayOfInt1, { 2, 1, 1, 1, 2 }, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, arrayOfInt10, arrayOfInt11, arrayOfInt12, arrayOfInt13, arrayOfInt14, arrayOfInt15, arrayOfInt16, arrayOfInt17, arrayOfInt18, arrayOfInt19 };
+    int[] arrayOfInt1 = { 2, 2, 1, 1, 1 };
+    int[] arrayOfInt2 = { 1, 1, 2, 1, 2 };
+    int[] arrayOfInt3 = { 1, 1, 3, 3, 1 };
+    int[] arrayOfInt4 = { 1, 3, 3, 1, 1 };
+    PATTERNS = new int[][] { { 1, 1, 2, 2, 1 }, { 2, 1, 1, 1, 2 }, { 1, 2, 1, 1, 2 }, arrayOfInt1, arrayOfInt2, { 2, 1, 2, 1, 1 }, { 1, 2, 2, 1, 1 }, { 1, 1, 1, 2, 2 }, { 2, 1, 1, 2, 1 }, { 1, 2, 1, 2, 1 }, arrayOfInt3, { 3, 1, 1, 1, 3 }, { 1, 3, 1, 1, 3 }, { 3, 3, 1, 1, 1 }, { 1, 1, 3, 1, 3 }, { 3, 1, 3, 1, 1 }, arrayOfInt4, { 1, 1, 1, 3, 3 }, { 3, 1, 1, 3, 1 }, { 1, 3, 1, 3, 1 } };
   }
   
   private static int decodeDigit(int[] paramArrayOfInt)
@@ -342,7 +327,7 @@ public final class ITFReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.ITFReader
  * JD-Core Version:    0.7.0.1
  */

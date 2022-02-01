@@ -1,16 +1,42 @@
-import android.view.animation.Interpolator;
+import android.content.Context;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.widget.SingleLineTextView;
 
-public class bgtq
-  implements Interpolator
+public final class bgtq
+  implements URLDrawable.URLDrawableListener
 {
-  public float getInterpolation(float paramFloat)
+  public bgtq(boolean paramBoolean, SingleLineTextView paramSingleLineTextView, Context paramContext) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return (float)Math.tan((paramFloat * 2.0F - 1.0F) / 4.0F * 3.141592653589793D) / 2.0F + 0.5F;
+    if (this.jdField_a_of_type_Boolean) {
+      if (paramURLDrawable.getCurrDrawable() != null) {
+        paramURLDrawable.getCurrDrawable().setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, VipUtils.a(afur.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), paramURLDrawable));
+      return;
+      if (paramURLDrawable.getCurrDrawable() != null) {
+        paramURLDrawable.getCurrDrawable().setColorFilter(null);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgtq
  * JD-Core Version:    0.7.0.1
  */

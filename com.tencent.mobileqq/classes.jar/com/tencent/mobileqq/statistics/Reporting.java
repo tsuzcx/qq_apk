@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.statistics;
 
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="mTag, mDetail")
 public class Reporting
-  extends awge
+  extends Entity
   implements Cloneable
 {
   public int mCount;
@@ -29,7 +29,7 @@ public class Reporting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.Reporting
  * JD-Core Version:    0.7.0.1
  */

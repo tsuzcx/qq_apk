@@ -22,12 +22,14 @@ public class TransReport
   public static final String rep_dwFlow_Xg = "dwFlow_Xg";
   public static final String rep_dwFlow_wifi = "dwFlow_WiFi";
   public static final String rep_finLost = "param_fin_lost";
+  public static final String rep_has_ipv6_list = "param_hasV6List";
   public static final String rep_has_net = "hasNet";
   public static final String rep_heart_resp = "param_heart_resp";
   public static final String rep_ip = "ip";
+  public static final String rep_ip_type = "param_ipType";
+  public static final String rep_ipv6_first = "param_ipv6First";
   public static final String rep_isPreConnExist = "PreConn:";
   public static final String rep_is_ipv6 = "param_is_ipv6";
-  public static final String rep_net_ip_type = "param_net_ip_type";
   public static final String rep_net_type = "net:";
   public static final String rep_port = "port";
   public static final String rep_progress = "progress";
@@ -62,13 +64,14 @@ public class TransReport
   public boolean isConnected;
   public boolean isIpv6;
   public HashMap<Integer, AtomicInteger> mDataFlowOfChannel = new HashMap();
+  public boolean mHasIpv6List;
+  public boolean mIPv6Fast;
   public boolean mIsPreConnExist;
   public int mRetryCode;
   public int mRetryTimes_SegsMax;
   public int mRetryTimes_SegsNum;
   public int mRetryTimes_SegsTotal;
   public int mTransferedSize = -1;
-  public int netIpType;
   public int netType;
   public String port = "";
   public String protoType;
@@ -79,15 +82,15 @@ public class TransReport
   
   public HashMap<String, String> getReportInfo()
   {
-    int j = 0;
+    int j = 1;
     HashMap localHashMap = new HashMap();
+    String str;
     switch (this.netType)
     {
     default: 
       str = "UnKnow";
     }
     StringBuilder localStringBuilder;
-    int i;
     for (;;)
     {
       localStringBuilder = new StringBuilder("");
@@ -135,7 +138,7 @@ public class TransReport
       ((StringBuilder)localObject1).append("proto").append(":").append(this.protoType).append(";");
       localObject2 = ((StringBuilder)localObject1).append("hasNet").append(":");
       if (!this.bHasNet) {
-        break label911;
+        break label936;
       }
       str = "true";
       label499:
@@ -153,13 +156,10 @@ public class TransReport
       localHashMap.put("param_conf_connNum", String.valueOf(this.confConnNum));
       localHashMap.put("segspercnt", localStringBuilder.toString());
       if (!this.bFINLost) {
-        break label918;
+        break label943;
       }
-    }
-    label911:
-    label918:
-    for (String str = String.valueOf(true);; str = String.valueOf(false))
-    {
+      str = String.valueOf(true);
+      label722:
       localHashMap.put("param_fin_lost", str);
       localHashMap.put("param_retry_seg_count", String.valueOf(this.mRetryTimes_SegsNum));
       localHashMap.put("param_total_retry_times", String.valueOf(this.mRetryTimes_SegsTotal));
@@ -170,17 +170,41 @@ public class TransReport
       localHashMap.put("ip", String.valueOf(this.ipAddr));
       localHashMap.put("port", this.port);
       localHashMap.put("param_BDH_Cache_Diff", String.valueOf(this.bCacheDiff));
-      i = j;
-      if (this.isIpv6) {
-        i = 1;
+      if (!this.isIpv6) {
+        break label951;
       }
+      i = 1;
+      label872:
       localHashMap.put("param_is_ipv6", String.valueOf(i));
-      localHashMap.put("param_net_ip_type", String.valueOf(this.netIpType));
+      if (!this.mIPv6Fast) {
+        break label956;
+      }
+      i = 1;
+      label893:
+      localHashMap.put("param_ipv6First", String.valueOf(i));
+      if (!this.mHasIpv6List) {
+        break label961;
+      }
+    }
+    label936:
+    label943:
+    label951:
+    label956:
+    label961:
+    for (int i = j;; i = 0)
+    {
+      localHashMap.put("param_hasV6List", String.valueOf(i));
       return localHashMap;
       str = "0";
       break;
       str = "false";
       break label499;
+      str = String.valueOf(false);
+      break label722;
+      i = 0;
+      break label872;
+      i = 0;
+      break label893;
     }
   }
   

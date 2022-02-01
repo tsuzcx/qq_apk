@@ -1,25 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1.1.1;
 
 public class bfzd
-  implements bfyg
+  implements bdet
 {
-  public bfzd(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public bfzd(TroopGiftAnimationController.1 param1) {}
   
-  public void a(bfzs parambfzs)
+  public void a()
   {
-    if (parambfzs != null)
-    {
-      parambfzs = parambfzs.b;
-      if (!TextUtils.isEmpty(parambfzs)) {
-        QidianProfileCardActivity.a(this.a, parambfzs);
-      }
-    }
+    this.a.this$0.a.post(new TroopGiftAnimationController.1.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfzd
  * JD-Core Version:    0.7.0.1
  */

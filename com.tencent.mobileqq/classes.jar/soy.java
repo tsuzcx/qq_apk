@@ -1,21 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-class soy
-  implements quv
+public abstract interface soy
 {
-  soy(sox paramsox, String paramString) {}
-  
-  public void a(@NotNull List<UgcVideo> paramList)
-  {
-    BridgeModule.access$1000(this.jdField_a_of_type_Sox.a, 0L, paramList, this.jdField_a_of_type_JavaLangString, 0, "", true);
-  }
+  public abstract void a(Context paramContext, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     soy
  * JD-Core Version:    0.7.0.1
  */

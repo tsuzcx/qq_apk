@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
 
-public final class allv
+public class allv
+  implements zdm
 {
-  View jdField_a_of_type_AndroidViewView;
-  ViewGroup[] jdField_a_of_type_ArrayOfAndroidViewViewGroup = new ViewGroup[3];
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[3];
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
-  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView = new URLImageView[3];
-  ImageView[] b = new ImageView[3];
+  public allv(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  
+  public void a() {}
+  
+  public void a(zdw paramzdw)
+  {
+    this.a.b(paramzdw);
+  }
+  
+  public void b()
+  {
+    this.a.a();
+  }
 }
 
 

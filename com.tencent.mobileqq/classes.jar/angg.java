@@ -1,47 +1,64 @@
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class angg
-  implements TVK_SDKMgr.OnLogListener
+  implements angq
 {
-  public int d(String paramString1, String paramString2)
+  public angg(ApolloPanel paramApolloPanel) {}
+  
+  public void a(ApolloPanelGuideView paramApolloPanelGuideView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    if (paramApolloPanelGuideView.a() == 0)
+    {
+      ApolloPanel.f(this.a);
+      if (!ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip"))
+      {
+        ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip");
+        ApolloPanel.a(this.a, ApolloPanel.a(this.a), 49, this.a.getResources().getString(2131690035), 5, null);
+      }
     }
-    return 0;
+    for (;;)
+    {
+      QLog.i("ApolloPanel", 1, "mGuideClickCallback onClose");
+      return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aJ();
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+        VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "clk_panelnewuser_close", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b()), 0, new String[] { "", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+      }
+    }
   }
   
-  public int e(String paramString1, String paramString2)
+  public void b(ApolloPanelGuideView paramApolloPanelGuideView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    if (paramApolloPanelGuideView.a() == 0)
+    {
+      ApolloPanel.f(this.a);
+      paramApolloPanelGuideView = (VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
+      paramApolloPanelGuideView.a(new angh(this, paramApolloPanelGuideView));
+      paramApolloPanelGuideView.c("guide_page", 1);
+      return;
     }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)) {
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "exp_panelnewuser_open", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b()), ApolloPanel.b, new String[] { "", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
     }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    paramApolloPanelGuideView = (VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
+    paramApolloPanelGuideView.a(new angi(this, paramApolloPanelGuideView));
+    if (ApolloPanel.b == 0) {}
+    for (int i = 0;; i = 1)
+    {
+      paramApolloPanelGuideView.c("guide_open_cmshow", i);
+      return;
     }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
   }
 }
 

@@ -1,15 +1,35 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
-import java.util.List;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface awpa
+public class awpa
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public abstract void a(long paramLong, awoz paramawoz);
+  public awpa(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public abstract void a(List<PersonalityLabelPhoto> paramList, long paramLong);
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "checkedId = " + paramInt);
+    }
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      MsgBackupDateFragment.a(this.a, 1);
+      continue;
+      MsgBackupDateFragment.a(this.a, 2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpa
  * JD-Core Version:    0.7.0.1
  */

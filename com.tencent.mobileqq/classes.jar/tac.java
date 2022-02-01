@@ -1,48 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-public class tac
+class tac
+  implements View.OnClickListener
 {
-  private alqv jdField_a_of_type_Alqv;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  tac(tab paramtab) {}
   
-  public tac(AppInterface paramAppInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Alqv = new tad(this);
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Alqv);
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Alqv);
-    }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    alqo localalqo;
-    do
+    try
     {
-      do
+      ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setText(this.a.a.c.getString("id_attribute_text"));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        return;
-      } while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null);
-      localalqo = (alqo)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(8);
-    } while (localalqo == null);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    localalqo.a(paramString, 0);
+        QLog.d("WebProteusViewCreator", 1, "showAsDropDown error,msg:" + localException.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tac
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.subscribe.widget.ShadowCardView android:layout_gravity="center" android:id="@id/n8q" android:layout_width="100.0dip" android:layout_height="36.0dip" app:shadowBlur="8.0dip" app:shadowBottomHeight="0.0dip" app:shadowCardColor="#b3000000" app:shadowCardOffsetX="0.0dip" app:shadowCardOffsetY="0.0dip" app:shadowRightHeight="0.0dip" app:shadowRound="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="14.0dip" android:textColor="#e6ffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/mk1" android:layout_width="100.0dip" android:layout_height="36.0dip" android:text="@string/wqn" />
+</com.tencent.biz.subscribe.widget.ShadowCardView>

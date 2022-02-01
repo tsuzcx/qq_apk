@@ -1,21 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1;
 
-final class aftj
-  implements afug
+public class aftj
+  implements aftz
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public aftj(ReminderListFragment.5.1 param1) {}
+  
+  public void a()
   {
-    if ((((MessageForStructing)paramChatMessage).structingMsg instanceof StructMsgSubImageVideo)) {
-      return 111;
-    }
-    if (RIJRedPacketManager.a().a(paramChatMessage)) {
-      return 114;
-    }
-    return 5;
+    ReminderListFragment.a(this.a.a.a, anni.a(2131712156));
   }
 }
 

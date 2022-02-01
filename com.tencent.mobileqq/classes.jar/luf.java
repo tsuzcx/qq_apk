@@ -1,57 +1,46 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.opengl.texture.YUVTexture;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class luf
-  extends Handler
+  extends luj
 {
-  public luf(YUVTexture paramYUVTexture, Looper paramLooper)
+  public int b;
+  
+  public luf()
   {
-    super(paramLooper);
+    this.jdField_b_of_type_Int = 667;
+    this.c = new luv[8];
+    this.jdField_b_of_type_Long = 1250L;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(long paramLong)
   {
-    int i = paramMessage.what;
-    this.a.d = true;
-    switch (i)
-    {
+    super.a(paramLong);
+    long l = this.a;
+    int i = 0;
+    if (paramLong - l <= this.jdField_b_of_type_Long) {
+      i = 255;
     }
-    do
+    a(i);
+  }
+  
+  public void a(AVRedPacketManager paramAVRedPacketManager)
+  {
+    int i = 0;
+    while (i < this.c.length)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (YUVTexture.a(this.a) == null);
-          YUVTexture.a(this.a).c();
-          return;
-        } while (YUVTexture.a(this.a) == null);
-        YUVTexture.a(this.a).b();
-        return;
-      } while (YUVTexture.a(this.a) == null);
-      YUVTexture.a(this.a).a();
-      return;
-    } while (YUVTexture.a(this.a) == null);
-    if (YUVTexture.a(this.a) == null) {
-      YUVTexture.a(this.a, new lrb('=', ';'));
+      this.c[i] = new luv(paramAVRedPacketManager.a("qav_redpacket_excellent_" + i * 2 + ".png"));
+      i += 1;
     }
-    paramMessage = (String)paramMessage.obj;
-    YUVTexture.a(this.a).a(paramMessage);
-    i = YUVTexture.a(this.a).a("width");
-    int j = YUVTexture.a(this.a).a("height");
-    int k = YUVTexture.a(this.a).a("angle");
-    int m = YUVTexture.a(this.a).a("rotation", -1);
-    YUVTexture.a(this.a).a(i, j, k, m);
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(0, 0, paramInt1, this.jdField_b_of_type_Int * paramInt1 / 750);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     luf
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ class UnlimitedBladeWorks$6
     do
     {
       return;
-      localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131362208);
+      localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131362279);
       localAnimationSet = UnlimitedBladeWorks.a(this.this$0, this.jdField_a_of_type_Int);
     } while (localView == null);
     localView.startAnimation(localAnimationSet);
@@ -28,7 +28,7 @@ class UnlimitedBladeWorks$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.6
  * JD-Core Version:    0.7.0.1
  */

@@ -10,10 +10,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
-import betr;
-import bets;
-import bett;
-import betu;
+import bian;
+import biao;
+import biap;
+import biaq;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(19)
@@ -21,8 +21,8 @@ public class QQBlurView
   extends View
 {
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ViewTreeObserver.OnPreDrawListener jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener = new betu(this);
-  private betr jdField_a_of_type_Betr = new betr();
+  private ViewTreeObserver.OnPreDrawListener jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener = new biaq(this);
+  private bian jdField_a_of_type_Bian = new bian();
   private boolean jdField_a_of_type_Boolean = true;
   
   public QQBlurView(Context paramContext)
@@ -55,37 +55,37 @@ public class QQBlurView
     if (QLog.isColorLevel()) {
       QLog.d("QQBlurView", 2, "onResume() called " + Integer.toHexString(System.identityHashCode(this)));
     }
-    this.jdField_a_of_type_Betr.b();
+    this.jdField_a_of_type_Bian.b();
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Betr.a(paramFloat);
+    this.jdField_a_of_type_Bian.a(paramFloat);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Betr.a(paramInt);
+    this.jdField_a_of_type_Bian.a(paramInt);
   }
   
   public void a(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Betr.a(paramDrawable);
+    this.jdField_a_of_type_Bian.a(paramDrawable);
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_Betr.a(paramView);
+    this.jdField_a_of_type_Bian.a(paramView);
   }
   
-  public void a(bett parambett)
+  public void a(biap parambiap)
   {
-    this.jdField_a_of_type_Betr.a(parambett);
+    this.jdField_a_of_type_Bian.a(parambiap);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Betr.c();
+    return this.jdField_a_of_type_Bian.c();
   }
   
   public void b()
@@ -93,17 +93,17 @@ public class QQBlurView
     if (QLog.isColorLevel()) {
       QLog.d("QQBlurView", 2, "onPause() called" + Integer.toHexString(System.identityHashCode(this)));
     }
-    this.jdField_a_of_type_Betr.a();
+    this.jdField_a_of_type_Bian.a();
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Betr.b(paramInt);
+    this.jdField_a_of_type_Bian.b(paramInt);
   }
   
   public void b(View paramView)
   {
-    this.jdField_a_of_type_Betr.b(paramView);
+    this.jdField_a_of_type_Bian.b(paramView);
   }
   
   public void c()
@@ -112,12 +112,12 @@ public class QQBlurView
       QLog.d("QQBlurView", 2, "onDestroy() called" + Integer.toHexString(System.identityHashCode(this)));
     }
     getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
-    this.jdField_a_of_type_Betr.c();
+    this.jdField_a_of_type_Bian.c();
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_Betr.c(paramInt);
+    this.jdField_a_of_type_Bian.c(paramInt);
   }
   
   public void d()
@@ -127,8 +127,8 @@ public class QQBlurView
     }
     getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
     getViewTreeObserver().addOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
-    if (!this.jdField_a_of_type_Betr.a()) {
-      this.jdField_a_of_type_Betr.a();
+    if (!this.jdField_a_of_type_Bian.a()) {
+      this.jdField_a_of_type_Bian.a();
     }
   }
   
@@ -146,7 +146,7 @@ public class QQBlurView
       super.draw(paramCanvas);
       return;
     }
-    this.jdField_a_of_type_Betr.d();
+    this.jdField_a_of_type_Bian.d();
   }
   
   protected void onAttachedToWindow()
@@ -157,7 +157,7 @@ public class QQBlurView
     }
     getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
     getViewTreeObserver().addOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
-    if (this.jdField_a_of_type_Betr != null) {
+    if (this.jdField_a_of_type_Bian != null) {
       a();
     }
   }
@@ -169,7 +169,7 @@ public class QQBlurView
       QLog.d("QQBlurView", 2, "onDetachedFromWindow() called " + Integer.toHexString(System.identityHashCode(this)));
     }
     getViewTreeObserver().removeOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
-    if (this.jdField_a_of_type_Betr != null) {
+    if (this.jdField_a_of_type_Bian != null) {
       b();
     }
   }
@@ -181,7 +181,7 @@ public class QQBlurView
       if (this.jdField_a_of_type_Boolean)
       {
         setBackgroundDrawable(null);
-        this.jdField_a_of_type_Betr.a(this, paramCanvas);
+        this.jdField_a_of_type_Bian.a(this, paramCanvas);
         super.onDraw(paramCanvas);
       }
     }
@@ -194,12 +194,12 @@ public class QQBlurView
   
   public void setDebugTag(String paramString)
   {
-    this.jdField_a_of_type_Betr.a(paramString);
+    this.jdField_a_of_type_Bian.a(paramString);
   }
   
-  public void setDirtyListener(bets parambets)
+  public void setDirtyListener(biao parambiao)
   {
-    this.jdField_a_of_type_Betr.a(parambets);
+    this.jdField_a_of_type_Bian.a(parambiao);
   }
   
   public void setDisableBlurDrawableRes(int paramInt)
@@ -214,7 +214,7 @@ public class QQBlurView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQBlurView
  * JD-Core Version:    0.7.0.1
  */

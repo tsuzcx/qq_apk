@@ -1,42 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.dataline.activities.PrinterSubOptionActivity;
-import java.util.List;
+import com.dataline.activities.PrinterOptionActivity;
 
-class cw
-  implements View.OnClickListener
+public class cw
+  implements dn
 {
-  cw(cv paramcv) {}
+  public cw(PrinterOptionActivity paramPrinterOptionActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    paramView = (TextView)paramView.findViewById(2131364023);
-    cu localcu;
-    if (paramView != null)
-    {
-      localcu = (cu)this.a.a.b.get(((Integer)paramView.getTag()).intValue());
-      if (localcu.jdField_a_of_type_Long == 0L) {
-        break label143;
-      }
-    }
-    label143:
-    for (paramView = this.a.a.a.a.a(localcu.jdField_a_of_type_Long);; paramView = this.a.a.a.a.b(localcu.jdField_a_of_type_JavaLangString))
-    {
-      this.a.a.a.a.a = paramView;
-      paramView = new Intent();
-      paramView.putExtra("sPrinterName", localcu.jdField_a_of_type_JavaLangString);
-      paramView.putExtra("sPrintDin", localcu.jdField_a_of_type_Long);
-      this.a.a.setResult(-1, paramView);
-      this.a.a.finish();
-      return;
-    }
+    PrinterOptionActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cw
  * JD-Core Version:    0.7.0.1
  */

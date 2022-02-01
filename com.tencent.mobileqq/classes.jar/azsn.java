@@ -1,182 +1,301 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.SparseArray;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import common.config.service.QzoneConfig;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import kotlin.Metadata;
+import kotlin.NoWhenBranchMatchedException;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class azsn
-  extends azsl
-  implements Handler.Callback
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileSettingUtils$Companion;", "", "()V", "findProfileDisplaySettingItem", "Lcom/tencent/mobileqq/profilesetting/ProfileDisplaySettingItem;", "fieldId", "", "settingItems", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getProfileDisplaySettingItem", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "configHelper", "Lcom/tencent/mobileqq/widget/ProfileConfigHelper;", "card", "Lcom/tencent/mobileqq/data/Card;", "type", "item", "", "cache", "(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/widget/ProfileConfigHelper;Lcom/tencent/mobileqq/data/Card;I[Ljava/lang/Object;Lcom/tencent/mobileqq/profilesetting/ProfileDisplaySettingItem;)Lcom/tencent/mobileqq/profilesetting/ProfileDisplaySettingItem;", "getProfileDisplaySettingItems", "", "outItems", "getProfileDisplaySettingStateFromCard", "fieldID", "hasDisplayItemStateChanged", "", "isNeedReqGetDisplaySettingItemStateFromServer", "isSpecDefaultClosedFieldId", "setProfileDisplaySettingStateToCard", "toState", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azsn
 {
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long = 300000L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-  private Map<Integer, azso> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private long jdField_b_of_type_Long = 1800000L;
-  private long c = 3600000L;
-  private long d = 300000L;
-  private long jdField_e_of_type_Long = 180000L;
-  private boolean jdField_e_of_type_Boolean = true;
-  private long f;
-  private long g;
-  private long h;
-  private long i;
-  private long j;
-  
-  public azsn(azsk paramazsk, String paramString)
+  public final int a(int paramInt, @NotNull Card paramCard, @Nullable QQAppInterface paramQQAppInterface)
   {
-    super(paramazsk, paramString);
-    if ((this.jdField_a_of_type_Array2dOfJavaLangString.length >= 1) && (this.jdField_a_of_type_Array2dOfJavaLangString[0].length >= 3))
+    int i = 1;
+    Intrinsics.checkParameterIsNotNull(paramCard, "card");
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Long = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][0]).intValue() * 60 * 1000L);
-      this.jdField_b_of_type_Long = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][1]).intValue() * 60 * 1000L);
-      this.c = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][2]).intValue() * 60 * 1000L);
+    default: 
+      paramCard = paramCard.profileDisplaySettingStates.get(paramInt, Integer.valueOf(-1));
+      Intrinsics.checkExpressionValueIsNotNull(paramCard, "card.profileDisplaySetti…gConstants.INVALID_STATE)");
+      paramInt = ((Number)paramCard).intValue();
     }
-    if ((this.jdField_a_of_type_Array2dOfJavaLangString.length >= 2) && (this.jdField_a_of_type_Array2dOfJavaLangString[1].length >= 2))
+    do
     {
-      this.d = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[1][0]).intValue() * 60 * 1000L);
-      this.jdField_e_of_type_Boolean = this.jdField_a_of_type_Array2dOfJavaLangString[1][1].equals("1");
-    }
-    if ((this.jdField_a_of_type_Array2dOfJavaLangString.length >= 3) && (this.jdField_a_of_type_Array2dOfJavaLangString[2].length >= 1))
-    {
-      this.d = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[2][0]).intValue() * 60 * 1000L);
-      this.jdField_a_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[2][1]).intValue();
-    }
+      do
+      {
+        return paramInt;
+        paramInt = i;
+      } while (paramCard.medalSwitchDisable);
+      return 0;
+      return paramCard.switch_life_achievement;
+      return paramCard.switch_musicbox;
+      return paramCard.switch_sticky_note;
+      return paramCard.switch_qqcircle;
+      return paramCard.switchWeishi;
+      paramInt = i;
+    } while (!paramCard.isShowCard);
+    return 0;
   }
   
-  public void a()
+  @Nullable
+  public final azsj a(int paramInt, @NotNull ArrayList<azsj> paramArrayList)
   {
-    this.f = alzh.a("-1");
-    if (azsk.a())
+    Intrinsics.checkParameterIsNotNull(paramArrayList, "settingItems");
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      this.g = alzh.a("-2");
-      localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, Long.valueOf(this.jdField_a_of_type_Long));
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Long);
-      localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, Long.valueOf(this.jdField_b_of_type_Long));
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_b_of_type_Long);
-      localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, Long.valueOf(this.c));
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.c);
+      azsj localazsj = (azsj)paramArrayList.next();
+      if (localazsj.b() == paramInt) {
+        return localazsj;
+      }
+    }
+    return null;
+  }
+  
+  @Nullable
+  public final azsj a(@NotNull QQAppInterface paramQQAppInterface, @NotNull biab parambiab, @NotNull Card paramCard, int paramInt, @NotNull Object[] paramArrayOfObject, @Nullable azsj paramazsj)
+  {
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    Intrinsics.checkParameterIsNotNull(parambiab, "configHelper");
+    Intrinsics.checkParameterIsNotNull(paramCard, "card");
+    Intrinsics.checkParameterIsNotNull(paramArrayOfObject, "item");
+    if (paramArrayOfObject.length <= 1) {
+      return null;
+    }
+    Object localObject = paramArrayOfObject[0];
+    if (localObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+    }
+    int j = ((Integer)localObject).intValue();
+    paramArrayOfObject = paramArrayOfObject[1];
+    if (paramArrayOfObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+    }
+    int k = ((Integer)paramArrayOfObject).intValue();
+    paramArrayOfObject = (Integer)azsk.a.a().get(j, Integer.valueOf(-1));
+    if (paramArrayOfObject == null) {}
+    while (paramArrayOfObject.intValue() != -1)
+    {
+      Intrinsics.checkExpressionValueIsNotNull(paramArrayOfObject, "config");
+      if (parambiab.a(paramArrayOfObject.intValue())) {
+        break;
+      }
+      return null;
+    }
+    if ((j == 42356) && (!blvu.b())) {
+      return null;
+    }
+    if ((j == 42361) && (!QzoneConfig.isQQCircleShowProfileCardEntrance())) {
+      return null;
+    }
+    if (j == 42172)
+    {
+      parambiab = paramQQAppInterface.getManager(264);
+      if (parambiab == null) {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.extendfriend.ExtendFriendManager");
+      }
+      parambiab = (asfu)parambiab;
+      if ((paramCard.extendFriendEntryAddFriend != 1) || (!parambiab.d())) {
+        return null;
+      }
+    }
+    if ((j == 42075) && (bgsg.W((Context)paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1)) {
+      return null;
+    }
+    if (paramazsj != null) {}
+    for (int i = 1; i == 1; i = 0)
+    {
+      paramazsj.c(((azsn)this).a(j, paramCard, paramQQAppInterface));
+      return paramazsj;
+    }
+    if (i == 0) {
+      return new azsj(paramInt, j, ((azsn)this).a(j, paramCard, paramQQAppInterface), k);
+    }
+    throw new NoWhenBranchMatchedException();
+  }
+  
+  public final void a(int paramInt1, int paramInt2, @NotNull Card paramCard, @NotNull QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    Intrinsics.checkParameterIsNotNull(paramCard, "card");
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    paramCard.profileDisplaySettingStates.put(paramInt1, Integer.valueOf(paramInt2));
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 42075: 
+      bool2 = ayah.a(paramQQAppInterface);
+      if (paramInt2 == 1) {}
+      for (;;)
+      {
+        paramCard.medalSwitchDisable = bool1;
+        SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("medal_wall_" + paramCard.uin, 4).edit();
+        localEditor.putBoolean("medal_switch_disable", paramCard.medalSwitchDisable);
+        localEditor.commit();
+        bool1 = ayah.a(paramQQAppInterface);
+        if (bool2 == bool1) {
+          break;
+        }
+        ayah.a(paramQQAppInterface, bool1);
+        return;
+        bool1 = false;
+      }
+    case 42367: 
+      paramCard.switch_life_achievement = ((short)paramInt2);
+      return;
+    case 42340: 
+      paramCard.switch_musicbox = ((short)paramInt2);
+      return;
+    case 42356: 
+      paramCard.switch_sticky_note = ((short)paramInt2);
+      return;
+    case 42361: 
+      paramCard.switch_qqcircle = ((short)paramInt2);
+      return;
+    case 42377: 
+      paramCard.switchWeishi = ((short)paramInt2);
       return;
     }
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, Long.valueOf(this.jdField_e_of_type_Long));
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_e_of_type_Long);
+    if (paramInt2 == 0) {}
+    for (bool1 = bool2;; bool1 = false)
+    {
+      paramCard.isShowCard = bool1;
+      return;
+    }
   }
   
-  public void a(Bundle paramBundle)
+  public final void a(@NotNull QQAppInterface paramQQAppInterface, @NotNull Card paramCard, @NotNull biab parambiab, @NotNull ArrayList<azsj> paramArrayList)
   {
-    super.a(paramBundle);
-    if (paramBundle.getInt("key_action") == 0)
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    Intrinsics.checkParameterIsNotNull(paramCard, "card");
+    Intrinsics.checkParameterIsNotNull(parambiab, "configHelper");
+    Intrinsics.checkParameterIsNotNull(paramArrayList, "outItems");
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new azsj(5, 2131694472));
+    Integer[][] arrayOfInteger = azsk.a.a();
+    int j = arrayOfInteger.length;
+    int i = 0;
+    Object localObject;
+    azsj localazsj;
+    if (i < j)
     {
-      int k = paramBundle.getInt("key_process_id");
-      long l = paramBundle.getLong("key_cpu_usage");
-      int m = paramBundle.getInt("key_monitor_secs");
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
-      {
-        azso localazso = (azso)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(k));
-        paramBundle = localazso;
-        if (localazso == null)
+      localObject = arrayOfInteger[i];
+      localazsj = ((azsn)this).a(localObject[0].intValue(), paramArrayList);
+      localObject = ((azsn)this).a(paramQQAppInterface, parambiab, paramCard, 1, (Object[])localObject, localazsj);
+      if (localObject != null) {
+        switch (((azsj)localObject).b())
         {
-          paramBundle = new azso(this, null);
-          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), paramBundle);
+        default: 
+          ((azsj)localObject).d(2);
         }
-        paramBundle.jdField_a_of_type_Long = (l + paramBundle.jdField_a_of_type_Long);
-        paramBundle.jdField_a_of_type_Int += m;
-        return;
+      }
+      for (;;)
+      {
+        localArrayList.add(localObject);
+        i += 1;
+        break;
+        ((azsj)localObject).d(1);
+        continue;
+        ((azsj)localObject).d(3);
       }
     }
-  }
-  
-  public void b()
-  {
-    super.b();
-    if ((azsk.a()) && (this.jdField_a_of_type_Int > 0))
+    localArrayList.add(new azsj(5, 2131694474));
+    arrayOfInteger = azsk.a.b();
+    j = arrayOfInteger.length;
+    i = 0;
+    if (i < j)
     {
-      this.j = System.currentTimeMillis();
-      this.h = alzh.a("-1");
-      this.i = alzh.a("-2");
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, this.d);
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (azsk.a()) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    long l1;
-    long l2;
-    int k;
-    if (paramMessage.what == 0)
-    {
-      l1 = alzh.a("-1");
-      if (azsk.a())
-      {
-        l2 = alzh.a("-2");
-        StringBuilder localStringBuilder = azsh.a();
-        synchronized (this.jdField_a_of_type_JavaUtilMap)
+      localObject = arrayOfInteger[i];
+      localazsj = ((azsn)this).a(localObject[0].intValue(), paramArrayList);
+      localazsj = ((azsn)this).a(paramQQAppInterface, parambiab, paramCard, 2, (Object[])localObject, localazsj);
+      if (localazsj != null) {
+        switch (localazsj.b())
         {
-          localStringBuilder.ensureCapacity(this.jdField_a_of_type_JavaUtilMap.size() * 10);
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-          if (localIterator.hasNext())
+        default: 
+          localazsj.d(2);
+          label318:
+          switch (localObject[0].intValue())
           {
-            Integer localInteger = (Integer)localIterator.next();
-            if (localStringBuilder.length() > 0) {
-              localStringBuilder.append("#");
-            }
-            localStringBuilder.append("[").append(localInteger).append(",").append(((azso)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).jdField_a_of_type_Int).append(",").append(((azso)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).jdField_a_of_type_Long).append("]");
           }
-        }
-        k = (int)(((Long)paramMessage.obj).longValue() / 1000L);
-        azsk.a(this.jdField_b_of_type_Azsk, "cpu, onStartup " + k + "sec: " + (l1 - this.f) + "|" + (l2 - this.g) + "|" + localStringBuilder.toString(), true);
-        azsk.a(this.jdField_b_of_type_Azsk, new String[] { "cpu|fg|", String.valueOf(k), "|", String.valueOf(l1 - this.f), "|", String.valueOf(l2 - this.g), "|", localStringBuilder.toString() });
-        if (k == 1800) {
-          azsk.b(this.jdField_b_of_type_Azsk, new String[] { "fg30Cpu", "|", String.valueOf(l1 - this.f), "|", String.valueOf(l2 - this.g), "|", localStringBuilder.toString() });
+          break;
         }
       }
+      for (;;)
+      {
+        localArrayList.add(localazsj);
+        i += 1;
+        break;
+        localazsj.d(1);
+        break label318;
+        localazsj.d(3);
+        break label318;
+        localArrayList.add(new azsj(4));
+        localazsj.a(3);
+        localazsj.b(2131709449);
+        localazsj.d(0);
+      }
     }
+    paramArrayList.clear();
+    paramArrayList.addAll((Collection)localArrayList);
+    localArrayList.clear();
+  }
+  
+  public final boolean a(int paramInt)
+  {
+    boolean bool2 = false;
+    Integer[] arrayOfInteger = azsk.a.a();
+    int j = arrayOfInteger.length;
+    int i = 0;
     for (;;)
     {
-      return false;
-      k = (int)(((Long)paramMessage.obj).longValue() / 1000L);
-      paramMessage = new Bundle();
-      paramMessage.putInt("key_action", 0);
-      paramMessage.putLong("key_cpu_usage", l1 - this.f);
-      paramMessage.putInt("key_monitor_secs", k);
-      azsf.a().a(paramMessage);
-      if (this.jdField_e_of_type_Boolean)
+      boolean bool1 = bool2;
+      if (i < j)
       {
-        this.f = l1;
-        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, Long.valueOf(this.jdField_e_of_type_Long));
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, this.jdField_e_of_type_Long);
-        continue;
-        this.jdField_a_of_type_Int -= 1;
-        if (System.currentTimeMillis() - this.j < this.d + 5000L)
-        {
-          l1 = alzh.a("-1");
-          l2 = alzh.a("-2");
-          k = (int)(this.d / 1000L);
-          azsk.a(this.jdField_b_of_type_Azsk, "cpu, bg" + k + "sec: " + (l1 - this.h) + "/" + (l2 - this.i), true);
-          azsk.a(this.jdField_b_of_type_Azsk, new String[] { "cpu|bg|", String.valueOf(k), "|", String.valueOf(l1 - this.h), "|", String.valueOf(l2 - this.i) });
-          if (k == 300) {
-            azsk.b(this.jdField_b_of_type_Azsk, new String[] { "bg5Cpu", "|", String.valueOf(l1 - this.f), "|", String.valueOf(l2 - this.g) });
-          }
+        if (arrayOfInteger[i].intValue() == paramInt) {
+          bool1 = true;
         }
       }
+      else {
+        return bool1;
+      }
+      i += 1;
     }
+  }
+  
+  public final boolean a(@NotNull ArrayList<azsj> paramArrayList)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayList, "settingItems");
+    return true;
+  }
+  
+  public final boolean b(@NotNull ArrayList<azsj> paramArrayList)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayList, "settingItems");
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      if (((azsj)paramArrayList.next()).a()) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azsn
  * JD-Core Version:    0.7.0.1
  */

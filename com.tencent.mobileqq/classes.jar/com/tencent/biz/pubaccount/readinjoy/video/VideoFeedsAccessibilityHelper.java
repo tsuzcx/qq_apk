@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import alud;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bczz;
+import anni;
+import bgfz;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 import com.tencent.common.config.AppSetting;
-import rbi;
-import rbs;
-import rbt;
-import rdm;
-import ruf;
+import rxl;
+import rxv;
+import rxy;
+import ryx;
+import ssb;
 
 public class VideoFeedsAccessibilityHelper
 {
@@ -26,7 +26,7 @@ public class VideoFeedsAccessibilityHelper
     do
     {
       return paramView;
-      localView = paramView.findViewById(2131361821);
+      localView = paramView.findViewById(2131361855);
       paramView = localView;
     } while (localView == null);
     localView.setVisibility(0);
@@ -39,13 +39,13 @@ public class VideoFeedsAccessibilityHelper
     do
     {
       return;
-      if ((paramViewHolder instanceof rbi))
+      if ((paramViewHolder instanceof rxl))
       {
-        bczz.a(((rbi)paramViewHolder).c);
+        bgfz.a(((rxl)paramViewHolder).c);
         return;
       }
-    } while (!(paramViewHolder instanceof rbt));
-    bczz.a(((rbt)paramViewHolder).B);
+    } while (!(paramViewHolder instanceof rxy));
+    bgfz.a(((rxy)paramViewHolder).z);
   }
   
   public static void a(RecyclerView paramRecyclerView)
@@ -61,20 +61,7 @@ public class VideoFeedsAccessibilityHelper
     if (!AppSetting.c) {
       return;
     }
-    a(paramView, rdm.a(paramInt, alud.a(2131716569)));
-  }
-  
-  public static void a(View paramView, int paramInt, boolean paramBoolean)
-  {
-    if (!AppSetting.c) {
-      return;
-    }
-    String str2 = rdm.a(paramInt, alud.a(2131716542));
-    String str1 = str2;
-    if (paramBoolean) {
-      str1 = str2 + alud.a(2131716537);
-    }
-    a(paramView, str1);
+    a(paramView, ryx.a(paramInt, anni.a(2131714846)));
   }
   
   public static void a(View paramView, long paramLong)
@@ -86,11 +73,11 @@ public class VideoFeedsAccessibilityHelper
       do
       {
         return;
-        localObject = rdm.a(paramLong);
+        localObject = ryx.a(paramLong);
       } while (localObject == null);
       localObject = ((StringBuilder)localObject).toString();
     } while (TextUtils.isEmpty((CharSequence)localObject));
-    a(paramView, alud.a(2131716567) + (String)localObject);
+    a(paramView, anni.a(2131714844) + (String)localObject);
   }
   
   public static void a(View paramView, String paramString)
@@ -107,36 +94,28 @@ public class VideoFeedsAccessibilityHelper
       return;
     }
     if (paramBoolean) {}
-    for (String str = alud.a(2131716604);; str = alud.a(2131716606))
+    for (String str = anni.a(2131714881);; str = anni.a(2131714883))
     {
       a(paramView, str);
       return;
     }
   }
   
-  public static void a(ReadInJoyNickNameTextView paramReadInJoyNickNameTextView, ruf paramruf)
+  public static void a(ReadInJoyNickNameTextView paramReadInJoyNickNameTextView, ssb paramssb)
   {
     if ((!AppSetting.c) || (paramReadInJoyNickNameTextView == null)) {
       return;
     }
-    paramReadInJoyNickNameTextView.setOnSetNickNameListener(paramruf);
+    paramReadInJoyNickNameTextView.setOnSetNickNameListener(paramssb);
   }
   
-  public static void a(rbs paramrbs, View.OnClickListener paramOnClickListener)
+  public static void a(rxv paramrxv, View.OnClickListener paramOnClickListener)
   {
-    if ((!AppSetting.c) || (paramrbs == null) || (paramrbs.b == null)) {
+    if ((!AppSetting.c) || (paramrxv == null) || (paramrxv.b == null)) {
       return;
     }
-    paramrbs.b.setOnClickListener(paramOnClickListener);
-    paramrbs.b.setTag(paramrbs);
-  }
-  
-  public static void b(View paramView, int paramInt)
-  {
-    if (!AppSetting.c) {
-      return;
-    }
-    a(paramView, rdm.a(paramInt, alud.a(2131716572)));
+    paramrxv.b.setOnClickListener(paramOnClickListener);
+    paramrxv.b.setTag(paramrxv);
   }
   
   public static void b(View paramView, String paramString)
@@ -144,7 +123,7 @@ public class VideoFeedsAccessibilityHelper
     if ((TextUtils.isEmpty(paramString)) || (!AppSetting.c)) {
       return;
     }
-    a(paramView, alud.a(2131716586) + paramString);
+    a(paramView, anni.a(2131714863) + paramString);
   }
   
   public static void c(View paramView, String paramString)
@@ -152,7 +131,7 @@ public class VideoFeedsAccessibilityHelper
     if ((!AppSetting.c) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    a(paramView, paramString + alud.a(2131716582));
+    a(paramView, paramString + anni.a(2131714859));
   }
 }
 

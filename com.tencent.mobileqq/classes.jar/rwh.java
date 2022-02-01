@@ -1,36 +1,24 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class rwh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class rwh
+  implements View.OnClickListener
 {
-  public rwh(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
+  rwh(rvx paramrvx, VideoInfo paramVideoInfo, rxv paramrxv) {}
   
-  @SuppressLint({"NewApi"})
-  public void onGlobalLayout()
+  public final void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      ReadinjoySlidingIndicator.a(this.a, ReadinjoySlidingIndicator.a(this.a));
-      View localView = ReadinjoySlidingIndicator.a(this.a).getChildAt(ReadinjoySlidingIndicator.a(this.a));
-      ReadinjoySlidingIndicator.a(this.a, localView.getLeft());
-      this.a.invalidate();
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    rvx.a(this.jdField_a_of_type_Rvx, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_Rxv);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rwh
  * JD-Core Version:    0.7.0.1
  */

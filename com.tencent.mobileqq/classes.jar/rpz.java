@@ -1,14 +1,21 @@
-import android.os.Bundle;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface rpz
+class rpz
+  implements rqb
 {
-  public abstract void a(Bundle paramBundle);
+  rpz(rps paramrps, long paramLong, rqa paramrqa) {}
   
-  public abstract void a(String paramString, Bundle paramBundle);
+  public void a()
+  {
+    List localList = rps.a(this.jdField_a_of_type_Rps, this.jdField_a_of_type_Long, rps.a(this.jdField_a_of_type_Rps));
+    this.jdField_a_of_type_Rqa.a(localList);
+    rps.b(this.jdField_a_of_type_Rps).remove(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rpz
  * JD-Core Version:    0.7.0.1
  */

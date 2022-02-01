@@ -1,60 +1,66 @@
-import android.os.Handler;
-import android.os.HandlerThread;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.gif.video.PngsTextDrawer.1;
-import dov.com.qq.im.ae.gif.video.PngsTextDrawer.2;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import cooperation.photoplus.PhotoPlusManager;
+import cooperation.photoplus.PhotoPlusModule.1;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
 public class blfa
+  extends QIPCModule
 {
-  private static String jdField_a_of_type_JavaLangString = bleo.class.getSimpleName();
-  private int jdField_a_of_type_Int = 320;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private blce jdField_a_of_type_Blce;
-  private blfb jdField_a_of_type_Blfb;
-  private int jdField_b_of_type_Int = 320;
-  private String jdField_b_of_type_JavaLangString = bkpc.jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int d;
+  private static blfa a;
   
-  public blfa(String paramString)
+  private blfa()
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    paramString = new HandlerThread("PngsTextDrawerHT" + System.currentTimeMillis());
-    paramString.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
+    super("PhotoPlusModule");
   }
   
-  private List<String> a(String paramString)
+  public static blfa a()
   {
-    String[] arrayOfString = new File(paramString).list();
-    Arrays.sort(arrayOfString);
-    ArrayList localArrayList = new ArrayList();
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    if (a == null) {}
+    try
     {
-      String str = arrayOfString[i];
-      localArrayList.add(paramString + File.separator + str);
-      i += 1;
+      if (a == null) {
+        a = new blfa();
+      }
+      return a;
     }
-    return localArrayList;
+    finally {}
   }
   
-  public void a(blfb paramblfb)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    this.jdField_a_of_type_Blfb = paramblfb;
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "start add text to png");
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsTextDrawer.2(this, paramblfb));
-  }
-  
-  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsTextDrawer.1(this, paramFloat3, paramFloat4, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramFloat1, paramFloat2));
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPlusModule", 2, "[onCall] action = " + paramString + ", params = " + paramBundle + ", callbackId=" + paramInt);
+    }
+    paramBundle = BaseApplicationImpl.sApplication.getRuntime();
+    if (!QQAppInterface.class.isInstance(paramBundle)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("PhotoPlusModule", 2, "[onCall] get app failed.");
+      }
+    }
+    do
+    {
+      return null;
+      paramBundle = (PhotoPlusManager)paramBundle.getManager(169);
+      if ("action_get_sticker_templates".equals(paramString))
+      {
+        paramBundle.b(true);
+        ThreadManager.postImmediately(new PhotoPlusModule.1(this, paramBundle, paramInt), null, true);
+        return null;
+      }
+      if ("action_exit_sticker".equals(paramString))
+      {
+        paramBundle.b(false);
+        return null;
+      }
+    } while (!"action_jump_to_shortvideo".equals(paramString));
+    paramBundle.c(true);
+    return null;
   }
 }
 

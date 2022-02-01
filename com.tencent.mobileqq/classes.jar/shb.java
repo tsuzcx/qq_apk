@@ -1,36 +1,65 @@
-import android.view.View;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class shb
-  extends psx
+abstract class shb
 {
-  private final String a;
+  protected long a;
+  private ArrayList<shb> a;
+  protected long b;
   
-  public shb(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  shb()
   {
-    super(paramInt1, paramInt2, paramInt3);
-    this.a = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public shb(String paramString, int paramInt)
+  abstract long a(long paramLong);
+  
+  public void a()
   {
-    super(-12084769, paramInt, 860716207);
-    this.a = paramString;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((shb)localIterator.next()).a();
+    }
+    this.b = 0L;
   }
   
-  public String a()
+  public void a(long paramLong)
   {
-    return this.a;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((shb)localIterator.next()).a(paramLong);
+    }
+    this.b = a(paramLong);
+    if (this.b < 0L) {
+      this.b = 0L;
+    }
+    if ((float)Math.abs(this.b - this.jdField_a_of_type_Long) / (float)this.jdField_a_of_type_Long < 0.2F)
+    {
+      this.jdField_a_of_type_Long = Math.max(this.b, this.jdField_a_of_type_Long);
+      return;
+    }
+    this.jdField_a_of_type_Long = this.b;
   }
   
-  public void onClick(View paramView)
+  protected void a(shb paramshb)
   {
-    super.onClick(paramView);
-    ors.a(paramView.getContext(), this.a);
+    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramshb) < 0) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramshb);
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((shb)localIterator.next()).b();
+    }
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     shb
  * JD-Core Version:    0.7.0.1
  */

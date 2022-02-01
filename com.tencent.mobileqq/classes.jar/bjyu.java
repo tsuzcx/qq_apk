@@ -1,19 +1,21 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.ShareProxyImpl.5.2;
 
-class bjyu
-  implements bjyw
+public class bjyu
+  implements DialogInterface.OnClickListener
 {
-  bjyu(bjys parambjys) {}
+  public bjyu(ShareProxyImpl.5.2 param2) {}
   
-  public void a(JSONObject paramJSONObject, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramJSONObject.put("status", paramBundle.getInt("status", 1));
+    QLog.e("ShareProxyImpl", 1, "dialog click ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjyu
  * JD-Core Version:    0.7.0.1
  */

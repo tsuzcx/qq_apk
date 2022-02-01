@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.view.pullrefresh;
 
 import android.widget.ImageView;
-import bdaq;
+import bggq;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
-import sgw;
+import tfn;
 
 public class RefreshAnimView$3$2
   implements Runnable
 {
-  public RefreshAnimView$3$2(sgw paramsgw) {}
+  public RefreshAnimView$3$2(tfn paramtfn) {}
   
   public void run()
   {
-    float f = bdaq.a(this.a.a.getContext(), 44.0F) / 88.0F;
+    float f = bggq.a(this.a.a.getContext(), 44.0F) / 88.0F;
     LottieDrawable localLottieDrawable = new LottieDrawable();
     localLottieDrawable.setComposition(RefreshAnimView.a(this.a.a));
     localLottieDrawable.loop(false);
@@ -27,7 +27,7 @@ public class RefreshAnimView$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView.3.2
  * JD-Core Version:    0.7.0.1
  */

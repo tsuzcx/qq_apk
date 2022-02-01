@@ -1,18 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.1;
 
 public class adcx
   implements DialogInterface.OnClickListener
 {
-  public adcx(GeneralSettingActivity paramGeneralSettingActivity, Runnable paramRunnable) {}
+  public adcx(MemoryDumpHelper.1 param1) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramDialogInterface instanceof bdjz)) {
-      ((bdjz)paramDialogInterface).setOnDismissListener(null);
-    }
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    adcw.a(this.a.this$0);
+    adcw.a(this.a.this$0, false, null, this.a.b, this.a.a, false);
+    adcw.b(this.a.this$0);
   }
 }
 

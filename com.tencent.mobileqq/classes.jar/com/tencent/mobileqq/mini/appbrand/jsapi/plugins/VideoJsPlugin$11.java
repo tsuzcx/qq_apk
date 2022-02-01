@@ -21,6 +21,7 @@ class VideoJsPlugin$11
     {
       this.val$videoFile.deleteOnExit();
       VideoJsPlugin.access$600(this.this$0, VideoJsPlugin.access$500(this.this$0), "chooseVideo", null);
+      MiniAppController.getInstance().removeActivityResultListener(this);
       return true;
     }
     VideoJsPlugin.access$1500(this.this$0, this.val$videoFile, this.val$compress);
@@ -30,7 +31,7 @@ class VideoJsPlugin$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.VideoJsPlugin.11
  * JD-Core Version:    0.7.0.1
  */

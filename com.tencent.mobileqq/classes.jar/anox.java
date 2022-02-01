@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 public class anox
+  implements anik
 {
-  protected static boolean a = false;
-  
-  public static void a()
+  public List<String> a(AppInterface paramAppInterface)
   {
-    if (!a) {
-      a = true;
+    if ((paramAppInterface instanceof QQAppInterface))
+    {
+      boolean bool = ((QQAppInterface)paramAppInterface).a().a();
+      paramAppInterface = aqxw.c();
+      if ((bool) && (paramAppInterface.a()))
+      {
+        paramAppInterface = new ArrayList();
+        paramAppInterface.add("150000");
+        paramAppInterface.add("150000.150100");
+        return paramAppInterface;
+      }
     }
-  }
-  
-  public static void a(anoz paramanoz)
-  {
-    ThreadManager.post(new ArkMessageServerLogic.1(paramanoz), 5, null, true);
+    return null;
   }
 }
 

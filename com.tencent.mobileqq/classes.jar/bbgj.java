@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
+import com.tencent.image.URLImageView;
+import java.lang.ref.SoftReference;
 
-public final class bbgj
-  implements Parcelable.Creator<MediaPreviewInfo>
+class bbgj
+  implements GifDrawable.OnGIFPlayOnceListener
 {
-  public MediaPreviewInfo a(Parcel paramParcel)
-  {
-    MediaPreviewInfo localMediaPreviewInfo = new MediaPreviewInfo();
-    localMediaPreviewInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localMediaPreviewInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localMediaPreviewInfo.b = paramParcel.readString();
-    localMediaPreviewInfo.c = paramParcel.readString();
-    return localMediaPreviewInfo;
-  }
+  bbgj(bbgi parambbgi, AbstractGifImage paramAbstractGifImage) {}
   
-  public MediaPreviewInfo[] a(int paramInt)
+  public void onPlayOnce()
   {
-    return new MediaPreviewInfo[paramInt];
+    this.jdField_a_of_type_ComTencentImageAbstractGifImage.setStrongGIFPlayOnceListener(null);
+    if (this.jdField_a_of_type_Bbgi.jdField_a_of_type_Bbgk != null) {
+      this.jdField_a_of_type_Bbgi.jdField_a_of_type_Bbgk.b();
+    }
+    if (this.jdField_a_of_type_Bbgi.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {
+      return;
+    }
+    AbstractGifImage.pauseAll();
+    ((URLImageView)this.jdField_a_of_type_Bbgi.jdField_a_of_type_JavaLangRefSoftReference.get()).setVisibility(8);
   }
 }
 

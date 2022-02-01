@@ -1,58 +1,58 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgListHeadNode;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class xbi
-  implements uxy
+public class xbi
+  extends wla
 {
-  xbi(xbg paramxbg, String paramString) {}
+  private String jdField_a_of_type_JavaLangString;
+  private List<wrs> jdField_a_of_type_JavaUtilList;
   
-  public void a(int paramInt, uxz paramuxz, List<TroopBarPOI> paramList)
+  public xbi(@NonNull qqstory_service.RspMsgListHeadNode paramRspMsgListHeadNode)
   {
-    this.jdField_a_of_type_Xbg.jdField_a_of_type_Uxz = paramuxz;
-    if (!this.jdField_a_of_type_Xbg.isValidate()) {
-      return;
-    }
-    if (paramInt == 0) {
-      if (paramuxz.a()) {
-        break label210;
-      }
-    }
-    label210:
-    for (boolean bool = true;; bool = false)
+    super(paramRspMsgListHeadNode.result);
+    this.jdField_a_of_type_JavaLangString = paramRspMsgListHeadNode.list_seq.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilList = a(paramRspMsgListHeadNode.node_list.get());
+  }
+  
+  private static List<wrs> a(List<qqstory_service.MsgTabNodeInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      this.jdField_a_of_type_Xbg.d.setVisibility(0);
-      this.jdField_a_of_type_Xbg.a(bool);
-      if (this.jdField_a_of_type_Xbg.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_Xbg.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      if (this.jdField_a_of_type_Xbg.jdField_a_of_type_Uxz.b()) {
-        this.jdField_a_of_type_Xbg.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_Xbg.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (this.jdField_a_of_type_Xbg.jdField_a_of_type_Xky != null)
-      {
-        this.jdField_a_of_type_Xbg.jdField_a_of_type_Xky.a(this.jdField_a_of_type_Xbg.jdField_a_of_type_JavaUtilArrayList, null);
-        this.jdField_a_of_type_Xbg.jdField_a_of_type_Xky.notifyDataSetChanged();
-        if (this.jdField_a_of_type_Xbg.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          this.jdField_a_of_type_Xbg.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_Xbg.d.setVisibility(4);
-        }
-      }
-      int i = paramInt;
-      if (paramInt == 0) {
-        i = 0;
-      }
-      wxj.b("edit_video", "poi_list_success", 0, i, new String[0]);
-      return;
+      qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramList.next();
+      wrs localwrs = new wrs();
+      localwrs.a(localMsgTabNodeInfo);
+      localArrayList.add(localwrs);
     }
+    return localArrayList;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<wrs> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public String toString()
+  {
+    return "RecentTabHaloResponse{mSeq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMsgTabNodeInfos=" + this.jdField_a_of_type_JavaUtilList + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xbi
  * JD-Core Version:    0.7.0.1
  */

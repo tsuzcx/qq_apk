@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import android.os.Handler;
-import bdhb;
+import bgmg;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import pwa;
-import pwx;
+import mqq.os.MqqHandler;
+import qok;
+import qpk;
 
 public class PTSJSCLoader$2
   implements Runnable
 {
-  public PTSJSCLoader$2(pwa parampwa, Runnable paramRunnable) {}
+  public PTSJSCLoader$2(qok paramqok, Runnable paramRunnable) {}
   
   public void run()
   {
@@ -18,32 +18,32 @@ public class PTSJSCLoader$2
     {
       QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], jsc has loaded, no need to load again.");
       if (this.a != null) {
-        ThreadManager.b().post(this.a);
+        ThreadManager.getFileThreadHandler().post(this.a);
       }
     }
     for (;;)
     {
       return;
-      String str = pwa.a(this.this$0) + "/" + "libjsc.so";
+      String str = qok.a(this.this$0) + "/" + "libjsc.so";
       QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], jscSoFullPath = " + str);
       try
       {
-        if (bdhb.a(str))
+        if (bgmg.a(str))
         {
           System.load(str);
-          pwa.a(this.this$0, true);
+          qok.a(this.this$0, true);
           QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], load jsc so success");
-          pwx.b("[loadPTSJSC] succeed", "1");
+          qpk.b("[loadPTSJSC] succeed", "1");
           if (this.a == null) {
             continue;
           }
-          ThreadManager.b().post(this.a);
+          ThreadManager.getFileThreadHandler().post(this.a);
         }
       }
       catch (Throwable localThrowable)
       {
         QLog.e("PTSJSCLoader", 1, "[loadPTSJSC] error, t = " + localThrowable);
-        pwx.a(localThrowable.toString(), "1");
+        qpk.a(localThrowable.toString(), "1");
         return;
       }
     }

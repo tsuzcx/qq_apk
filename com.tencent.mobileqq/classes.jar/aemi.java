@@ -1,34 +1,21 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
 public class aemi
-  extends amcd
+  implements ViewSwitcher.ViewFactory
 {
-  public aemi(VisitorsActivity paramVisitorsActivity) {}
+  public aemi(Leba paramLeba) {}
   
-  public void a()
+  public View makeView()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorsActivity", 2, "onVipStatusChanged: ");
-    }
-    if ((this.a.app != null) && (VipUtils.b(this.a.app)))
-    {
-      this.a.a(true);
-      this.a.b(true);
-      if (VisitorsActivity.b(this.a).compareAndSet(true, false))
-      {
-        if (VisitorsActivity.a(this.a).get())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VisitorsActivity", 2, "onVipStatusChanged: showDialog");
-          }
-          bdgm.a(this.a, 232, null, alud.a(2131717211), null, alud.a(2131717208), new aemj(this), null).show();
-        }
-        this.a.removeObserver(VisitorsActivity.a(this.a));
-      }
-    }
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 

@@ -1,44 +1,18 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.support.annotation.NonNull;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.JoinGroupInfo;
 
-public class bepp
-  extends beqn
+public final class bepp
+  implements Parcelable.Creator<JoinGroupInfo>
 {
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-  private int d = -872415232;
-  private int e = 0;
-  private int f;
-  
-  public void a(float paramFloat)
+  public JoinGroupInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    return new JoinGroupInfo(paramParcel);
   }
   
-  public void a(int paramInt)
+  public JoinGroupInfo[] a(int paramInt)
   {
-    this.f = paramInt;
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
-  {
-    Rect localRect = getBounds();
-    paramCanvas.save();
-    int i = localRect.centerX();
-    int j = this.f;
-    paramCanvas.clipRect(localRect);
-    paramCanvas.drawColor(this.d);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-    paramCanvas.drawCircle(i, this.jdField_a_of_type_Float, j, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.restore();
+    return new JoinGroupInfo[paramInt];
   }
 }
 

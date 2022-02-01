@@ -1,20 +1,267 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public class xyo
-  implements DialogInterface.OnDismissListener
+public abstract class xyo
+  extends BaseAdapter
 {
-  public xyo(QRCardActivity paramQRCardActivity) {}
+  private final int a;
+  protected Context a;
+  protected ArrayList<VideoCollectionItem> a;
+  protected xys a;
+  protected ygn a;
+  protected ygq a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public xyo(Context paramContext)
   {
-    this.a.c = false;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Ygn = new ygn();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = (paramContext.getResources().getDisplayMetrics().heightPixels - zlx.a(this.jdField_a_of_type_AndroidContentContext, 60.0F));
+    a(true);
+  }
+  
+  private VideoCollectionItem a(int paramInt)
+  {
+    yqp.c("Q.qqstory.home.BaseStoryTimeLineAdapter", "getSimpleFakeItem");
+    VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+    localVideoCollectionItem.collectionId = String.valueOf(paramInt);
+    localVideoCollectionItem.collectionTime = -1L;
+    localVideoCollectionItem.key = "local_empty_item";
+    localVideoCollectionItem.isEmptyFakeItem = true;
+    return localVideoCollectionItem;
+  }
+  
+  protected abstract View a(int paramInt, ViewGroup paramViewGroup);
+  
+  public VideoCollectionItem a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
+      VideoCollectionItem localVideoCollectionItem2 = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+      VideoCollectionItem localVideoCollectionItem1;
+      if (localVideoCollectionItem2.isEmptyFakeItem)
+      {
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 2)
+        {
+          localVideoCollectionItem1 = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 2);
+          if (TextUtils.isEmpty(localVideoCollectionItem1.collectionId)) {}
+        }
+      }
+      else {
+        do
+        {
+          return localVideoCollectionItem1;
+          localVideoCollectionItem1 = localVideoCollectionItem2;
+        } while (!TextUtils.isEmpty(localVideoCollectionItem2.collectionId));
+      }
+    }
+    return null;
+  }
+  
+  public ArrayList<VideoCollectionItem> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a()
+  {
+    b();
+    a(VideoCollectionItem.getProfilePlaceholderItem(QQStoryContext.a().b()));
+  }
+  
+  protected void a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    yqp.a("Q.qqstory.home.BaseStoryTimeLineAdapter", "bindview. postion=%d", Integer.valueOf(paramInt));
+    paramViewGroup = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    ((xyp)paramView.getTag()).a(paramViewGroup, paramView, paramInt);
+  }
+  
+  protected void a(VideoCollectionItem paramVideoCollectionItem)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramVideoCollectionItem) > 0) {
+      yqp.b("Q.qqstory.home.BaseStoryTimeLineAdapter", "data already exist, id=%s, time=%d", paramVideoCollectionItem.collectionId, Long.valueOf(paramVideoCollectionItem.collectionTime));
+    }
+    do
+    {
+      return;
+      i = Collections.binarySearch(this.jdField_a_of_type_JavaUtilArrayList, paramVideoCollectionItem, this.jdField_a_of_type_Ygn);
+    } while (i >= 0);
+    int i = -i;
+    this.jdField_a_of_type_JavaUtilArrayList.add(i - 1, paramVideoCollectionItem);
+  }
+  
+  public abstract void a(String paramString, List<ygo> paramList);
+  
+  public void a(List<VideoCollectionItem> paramList, boolean paramBoolean)
+  {
+    yqp.a("Q.qqstory.home.BaseStoryTimeLineAdapter", "setData, dataList size=%d", Integer.valueOf(paramList.size()));
+    b();
+    b(paramList, paramBoolean);
+    notifyDataSetChanged();
+  }
+  
+  public void a(ygq paramygq, xys paramxys)
+  {
+    this.jdField_a_of_type_Ygq = paramygq;
+    this.jdField_a_of_type_Xys = paramxys;
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    a(VideoCollectionItem.getProfilePlaceholderItem(QQStoryContext.a().b()));
+    if ((a()) && (paramBoolean))
+    {
+      a(VideoCollectionItem.getCurrentYearFakeItem(QQStoryContext.a().b()));
+      a(VideoCollectionItem.getTodayFakeItem(QQStoryContext.a().b()));
+      int i = this.jdField_a_of_type_Int;
+      int j = zlx.a(this.jdField_a_of_type_AndroidContentContext, 100.0F);
+      int k = zlx.a(this.jdField_a_of_type_AndroidContentContext, 65.0F);
+      int m = zlx.a(this.jdField_a_of_type_AndroidContentContext, 150.0F);
+      this.jdField_a_of_type_JavaUtilArrayList.add(a(i - j - k - m));
+    }
+  }
+  
+  protected abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean);
+  
+  protected void b()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  protected void b(List<VideoCollectionItem> paramList, boolean paramBoolean)
+  {
+    if (paramList.size() == 0) {
+      a(true);
+    }
+    int j;
+    int i;
+    do
+    {
+      return;
+      a(false);
+      j = this.jdField_a_of_type_Int - zlx.a(this.jdField_a_of_type_AndroidContentContext, 100.0F);
+      Iterator localIterator = paramList.iterator();
+      i = j;
+      while (localIterator.hasNext())
+      {
+        VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)localIterator.next();
+        a(localVideoCollectionItem);
+        if (paramList.size() <= 3)
+        {
+          if (localVideoCollectionItem.collectionType == 0) {
+            i -= zlx.a(this.jdField_a_of_type_AndroidContentContext, 65.0F);
+          }
+          for (;;)
+          {
+            break;
+            if (!TextUtils.isEmpty(zkk.a(localVideoCollectionItem.collectionTime)[0])) {
+              i -= zlx.a(this.jdField_a_of_type_AndroidContentContext, 190.0F);
+            } else {
+              i -= zlx.a(this.jdField_a_of_type_AndroidContentContext, 150.0F);
+            }
+          }
+        }
+      }
+    } while ((a(paramBoolean)) || (i == j) || (i <= 0));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(i));
+  }
+  
+  public void c(List<VideoCollectionItem> paramList, boolean paramBoolean)
+  {
+    d(paramList, paramBoolean);
+    notifyDataSetChanged();
+  }
+  
+  protected void d(List<VideoCollectionItem> paramList, boolean paramBoolean)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
+      VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+      localObject1 = localObject2;
+      if (localVideoCollectionItem.isEmptyFakeItem)
+      {
+        yqp.d("Q.qqstory.home.BaseStoryTimeLineAdapter", "addData, has fake");
+        this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+        localObject1 = localVideoCollectionItem;
+      }
+    }
+    yqp.a("Q.qqstory.home.BaseStoryTimeLineAdapter", "addData, new dataList=%s", paramList);
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a((VideoCollectionItem)paramList.next());
+    }
+    if (localObject1 != null)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+      yqp.b("Q.qqstory.home.BaseStoryTimeLineAdapter", "add fake item.");
+    }
+    a(paramBoolean);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return ((VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).collectionType;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = a(paramInt, paramViewGroup);
+    }
+    for (;;)
+    {
+      if (paramView != null) {
+        a(paramInt, paramView, paramViewGroup);
+      }
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return VideoCollectionItem.TYPE_ORDER.length;
+  }
+  
+  public boolean isEmpty()
+  {
+    return getCount() <= 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xyo
  * JD-Core Version:    0.7.0.1
  */

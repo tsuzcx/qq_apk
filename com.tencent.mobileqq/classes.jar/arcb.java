@@ -1,23 +1,46 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class arcb
-  implements Parcelable.Creator<ForwardFileInfo>
+public class arcb
 {
-  public ForwardFileInfo a(Parcel paramParcel)
+  private int a;
+  
+  public static arcb a(aqlg paramaqlg)
   {
-    return new ForwardFileInfo(paramParcel, null);
+    localarcb = new arcb();
+    if (paramaqlg != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SuspiciousTroopConfBean", 2, "parse taskid->" + paramaqlg.jdField_a_of_type_Int + " content->" + paramaqlg.jdField_a_of_type_JavaLangString);
+      }
+      try
+      {
+        if (paramaqlg.jdField_a_of_type_JavaLangString == null) {}
+        for (paramaqlg = "";; paramaqlg = paramaqlg.jdField_a_of_type_JavaLangString)
+        {
+          localarcb.jdField_a_of_type_Int = new JSONObject(paramaqlg).optInt("suspiciousSwitch", 0);
+          return localarcb;
+        }
+        return localarcb;
+      }
+      catch (JSONException paramaqlg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SuspiciousTroopConfBean", 2, "parse error->" + paramaqlg.toString());
+        }
+      }
+    }
   }
   
-  public ForwardFileInfo[] a(int paramInt)
+  public boolean a()
   {
-    return new ForwardFileInfo[paramInt];
+    return this.jdField_a_of_type_Int == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcb
  * JD-Core Version:    0.7.0.1
  */

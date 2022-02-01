@@ -1,20 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import java.io.File;
 
-public class aqla
-  implements View.OnClickListener
+public abstract interface aqla<RESULT, PARAM>
 {
-  public aqla(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.i();
-  }
+  public abstract RESULT a(File paramFile, PARAM paramPARAM);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqla
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
 import java.util.Comparator;
 
-class bbtw
-  implements Comparator<MessageRecord>
+public final class bbtw
+  implements Comparator<bboc>
 {
-  bbtw(bbtv parambbtv) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public int a(bboc parambboc1, bboc parambboc2)
   {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+    int j = Long.signum(parambboc2.b() - parambboc1.b());
+    int i = j;
+    if (j == 0) {
+      i = Long.signum(parambboc2.a() - parambboc1.a());
+    }
+    j = i;
+    if (i == 0) {
+      j = PublicAccountSearchEngine.a(parambboc1, parambboc2);
+    }
+    return j;
   }
 }
 

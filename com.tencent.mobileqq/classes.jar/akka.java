@@ -1,132 +1,72 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.util.List;
-import mqq.util.WeakReference;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
-final class akka
-  extends altm
+public class akka
+  extends akif
 {
-  WeakReference<akjt> a;
+  private final String a;
   
-  akka(akjt paramakjt)
+  akka(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    this.a = new WeakReference(paramakjt);
+    super(paramNewPhotoPreviewActivity);
+    this.jdField_a_of_type_JavaLangString = "PhotoPreviewLogicAEPlay";
   }
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  private void c(String paramString)
   {
-    akjt localakjt;
-    if (paramBoolean)
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Akic.lastTimeShowToast >= 700L)
     {
-      localakjt = (akjt)this.a.get();
-      if (localakjt == null) {
-        break label71;
-      }
-      paramString = akjt.a(localakjt, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("MayKnowAdapter", 2, "onCancelMayKnowRecommend target：" + paramString);
-      }
-      if (paramString != null) {
-        akjt.a(localakjt, paramString);
-      }
+      this.jdField_a_of_type_Akic.lastTimeShowToast = l;
+      QQToast.a(this.mActivity, paramString, 0).b(((NewPhotoPreviewActivity)this.mActivity).getResources().getDimensionPixelSize(2131298998));
     }
-    else
+  }
+  
+  private boolean c()
+  {
+    return this.mPhotoCommonData.selectedPhotoList.size() < this.mPhotoCommonData.maxSelectNum;
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new akkb(this));
+  }
+  
+  public void onSelectClick(View paramView)
+  {
+    if ((!this.mPhotoCommonData.selectedIndex.contains(Integer.valueOf(((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion()))) && (this.mPhotoCommonData.selectedPhotoList.size() >= this.mPhotoCommonData.maxSelectNum))
     {
+      c(String.format(((NewPhotoPreviewActivity)this.mActivity).getString(2131689725), new Object[] { Integer.valueOf(this.mPhotoCommonData.maxSelectNum) }));
       return;
     }
-    akjt.a(localakjt);
-    return;
-    label71:
-    QLog.d("MayKnowAdapter", 1, "onCancelMayKnowRecommend  adapter is null!");
+    super.onSelectClick(paramView);
   }
   
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  public void updateButton()
   {
-    if (paramBoolean)
+    super.updateButton();
+    String str = ((NewPhotoPreviewActivity)this.mActivity).getString(2131715745);
+    int i = this.mPhotoCommonData.selectedPhotoList.size();
+    str = str + " " + i + "/" + this.mPhotoCommonData.maxSelectNum;
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setText(str);
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setEnabled(true);
+    if (c())
     {
-      paramBundle = (akjt)this.a.get();
-      if (paramBundle != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MayKnowAdapter", 2, "onGetMayKnowRecommend ");
-        }
-        akjt.a(paramBundle);
-      }
-    }
-    else
-    {
+      ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setBackgroundResource(2130849758);
       return;
     }
-    QLog.d("MayKnowAdapter", 1, "onGetMayKnowRecommend adapter is null!");
-  }
-  
-  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
-  {
-    super.onMayKnowListPushAdd(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushAdd");
-    }
-    if (paramBoolean)
-    {
-      paramList = (akjt)this.a.get();
-      if (paramList != null) {
-        akjt.a(paramList);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushAdd adapter is null!");
-  }
-  
-  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
-  {
-    super.onMayKnowListPushDel(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushDel");
-    }
-    if (paramBoolean)
-    {
-      paramList = (akjt)this.a.get();
-      if (paramList != null) {
-        akjt.a(paramList);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushDel adapter is null!");
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      akjt localakjt = (akjt)this.a.get();
-      if (localakjt == null) {
-        break label60;
-      }
-      if (akjt.a(localakjt) != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MayKnowAdapter", 2, "onMayknowStateChanged");
-        }
-        localakjt.notifyDataSetChanged();
-        akjt.a(localakjt).postDelayed(localakjt.a, 1600L);
-      }
-    }
-    return;
-    label60:
-    QLog.d("MayKnowAdapter", 1, "onMayknowStateChanged adapter is null!");
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setBackgroundResource(2130837953);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akka
  * JD-Core Version:    0.7.0.1
  */

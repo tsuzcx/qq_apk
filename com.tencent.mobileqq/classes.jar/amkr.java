@@ -1,51 +1,35 @@
-import IMMsgBodyPack.SlaveMasterMsg;
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.content.Context;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class amkr
-  extends absm
+  extends albc
 {
-  public amkr(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  public amkr(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, alav paramalav, int paramInt)
   {
-    super(paramQQAppInterface, paramMessageHandler);
+    super(paramContext, paramQQAppInterface, paramXListView, paramalav, paramInt);
   }
   
-  private boolean a(MsgInfo paramMsgInfo)
+  public void a(RecentBaseData paramRecentBaseData, String paramString)
   {
-    JceInputStream localJceInputStream = new JceInputStream(paramMsgInfo.vMsg);
-    SlaveMasterMsg localSlaveMasterMsg = new SlaveMasterMsg();
-    localSlaveMasterMsg.readFrom(localJceInputStream);
-    if (((int)localSlaveMasterMsg.uMsgType == 529) && (4L == localSlaveMasterMsg.uCmd))
-    {
-      azad.a(this.a.a(), paramMsgInfo, localSlaveMasterMsg);
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
   }
   
-  public abto a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public void b(RecentBaseData paramRecentBaseData, String paramString)
   {
-    boolean bool = false;
-    switch (paramInt)
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-    }
-    for (;;)
-    {
-      return new abto(null, bool);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
-        bool = a(paramMsgInfo);
-      } else {
-        a(getClass().getName(), paramInt);
-      }
+      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
+      notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amkr
  * JD-Core Version:    0.7.0.1
  */

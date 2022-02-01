@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awge;
-import qls;
+import com.tencent.mobileqq.persistence.Entity;
+import rge;
 
 public class RecommendFollowInfoTitle
-  extends awge
+  extends Entity
   implements Parcelable
 {
-  public static Parcelable.Creator<RecommendFollowInfoTitle> CREATOR = new qls();
+  public static Parcelable.Creator<RecommendFollowInfoTitle> CREATOR = new rge();
   public boolean isAllFollowed;
   public String title;
   

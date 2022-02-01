@@ -1,23 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 class akki
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  akki(akkd paramakkd) {}
+  akki(akkh paramakkh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "cancel click");
-    }
-    azqs.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 1, 0, "", "", "", "");
+    AIOLongShotHelper.a(this.a.mActivity, (String)akkh.a(this.a).selectedPhotoList.get(0), new akkj(this));
+    AIOLongShotHelper.a("0X8009DEE");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akki
  * JD-Core Version:    0.7.0.1
  */

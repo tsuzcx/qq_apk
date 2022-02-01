@@ -1,26 +1,57 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-class avmm
-  implements View.OnClickListener
+public class avmm
+  implements awjk
 {
-  avmm(avmf paramavmf) {}
+  private WeakReference<IVideoOuterStatusListener> a;
   
-  public void onClick(View paramView)
+  public avmm(WeakReference<IVideoOuterStatusListener> paramWeakReference)
   {
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://buluo.qq.com/mobile/xxq_setting.html?_wv=1027&uin=" + this.a.a.app.c());
-    paramView.putExtra("reqType", 1);
-    this.a.a.startActivity(paramView);
+    this.a = paramWeakReference;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if ((this.a == null) || (this.a.get() == null)) {
+      return;
+    }
+    IVideoOuterStatusListener localIVideoOuterStatusListener = (IVideoOuterStatusListener)this.a.get();
+    if (paramBoolean)
+    {
+      localIVideoOuterStatusListener.onVideoStop();
+      return;
+    }
+    localIVideoOuterStatusListener.onVideoStart(-1);
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_GAIN");
+      avmi.a().a(false);
+      a(false);
+      return;
+    }
+    QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_LOSS");
+    avmi.a().a(true);
+    a(true);
+  }
+  
+  public void a(WeakReference<IVideoOuterStatusListener> paramWeakReference)
+  {
+    this.a = paramWeakReference;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avmm
  * JD-Core Version:    0.7.0.1
  */

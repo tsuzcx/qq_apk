@@ -1,29 +1,40 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.7.1;
-import com.tencent.mobileqq.widget.QQVideoView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-public class ahck
-  implements MediaPlayer.OnPreparedListener
+final class ahck
+  implements DialogInterface.OnClickListener
 {
-  public ahck(BlessActivity paramBlessActivity) {}
+  ahck(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
+    {
+      bool = true;
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
+      if (ahch.a != null)
+      {
+        if (7 != this.jdField_a_of_type_Int) {
+          break label80;
+        }
+        ahch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ahch.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
+      }
     }
-    if (BlessActivity.a(this.a) != null) {
-      BlessActivity.a(this.a).start();
+    label80:
+    while (6 != this.jdField_a_of_type_Int)
+    {
+      return;
+      bool = false;
+      break;
     }
-    BlessActivity.a(this.a).postDelayed(new BlessActivity.7.1(this), 800L);
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
-    }
-    azqs.b(this.a.app, "CliOper", "", "", "0X800632D", "0X800632D", 0, 0, "", "", "", "");
+    ahch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ahch.a.frienduin, "ep_mall", "Clk_collect_more", 0);
   }
 }
 

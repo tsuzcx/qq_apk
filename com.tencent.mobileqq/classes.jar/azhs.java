@@ -1,16 +1,47 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
+import VIP.GetQzoneMusicInfoRsp;
+import VIP.MusicInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 class azhs
-  implements Camera.AutoFocusCallback
+  implements anil
 {
   azhs(azhr paramazhr) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraProxy", 2, "Request Focus onAutoFocus");
+    if ((paramBoolean) && ((paramObject instanceof GetQzoneMusicInfoRsp)))
+    {
+      paramObject = (GetQzoneMusicInfoRsp)paramObject;
+      if ((azhr.a(this.a)) || (!paramObject.mMusicList.containsKey(azhr.a(this.a).g))) {
+        break label101;
+      }
+      azhr.a(this.a).b = ((MusicInfo)paramObject.mMusicList.get(azhr.a(this.a).g)).sSongUrl;
+      this.a.a(BaseApplicationImpl.getContext(), azhr.a(this.a));
+    }
+    for (;;)
+    {
+      return;
+      label101:
+      SongInfo[] arrayOfSongInfo = QQPlayerService.a();
+      if (arrayOfSongInfo != null)
+      {
+        paramInt = 0;
+        while (paramInt < arrayOfSongInfo.length)
+        {
+          if (paramObject.mMusicList.containsKey(arrayOfSongInfo[paramInt].g))
+          {
+            arrayOfSongInfo[paramInt].b = ((MusicInfo)paramObject.mMusicList.get(arrayOfSongInfo[paramInt].g)).sSongUrl;
+            if (QLog.isColorLevel()) {
+              QLog.d("ProfileMusicBoxController", 2, "requestMusicSongUrl mid:" + arrayOfSongInfo[paramInt].g + " url:" + arrayOfSongInfo[paramInt].b);
+            }
+          }
+          paramInt += 1;
+        }
+      }
     }
   }
 }

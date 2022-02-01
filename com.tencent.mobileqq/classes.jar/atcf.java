@@ -1,32 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.UUID;
 
 class atcf
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  atcf(atca paramatca) {}
+  atcf(atcd paramatcd, long paramLong, UUID paramUUID, ChatMessage paramChatMessage, Activity paramActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    int i;
-    if ((paramContext.equals(atav.a(atca.b(this.a)))) || (paramContext.equals(atav.d(atca.b(this.a)))))
-    {
-      i = paramIntent.getIntExtra("key_state", -1);
-      paramContext = atca.a(this.a, i);
-    }
-    switch (i)
+    switch (paramInt)
     {
     default: 
       return;
-    case 9: 
-    case 100: 
-      this.a.callJs("notifyJsCallback", new String[] { paramContext.toString() });
+    case 0: 
+      paramDialogInterface = bfrm.a(this.jdField_a_of_type_Atcd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
+      this.jdField_a_of_type_Atcd.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      this.jdField_a_of_type_Atcd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_Atcd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atcd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
       return;
     }
-    atcg.a.a = 0L;
+    new besy(this.jdField_a_of_type_Long, this.jdField_a_of_type_Atcd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 

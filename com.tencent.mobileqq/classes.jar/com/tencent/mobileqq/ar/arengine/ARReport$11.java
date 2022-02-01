@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import ando;
-import azri;
+import apcf;
+import bctj;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$11
   implements Runnable
 {
-  public ARReport$11(ando paramando, long paramLong, boolean paramBoolean) {}
+  public ARReport$11(apcf paramapcf, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ARReport$11
     }
     for (;;)
     {
-      azri.a(BaseApplication.getContext()).a("", "ARLocalMarkerRecoglSo", true, 0L, 0L, localHashMap, "");
+      bctj.a(BaseApplication.getContext()).a("", "ARLocalMarkerRecoglSo", true, 0L, 0L, localHashMap, "");
       return;
       localHashMap.put("result", "1");
     }
@@ -27,7 +27,7 @@ public class ARReport$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.11
  * JD-Core Version:    0.7.0.1
  */

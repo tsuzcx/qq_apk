@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ar;
 
-import amyg;
-import amyr;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aztc;
+import aowx;
+import aoxi;
+import bcuj;
 import com.tencent.qphone.base.util.QLog;
 
 public class NeonControl$1
   implements Runnable
 {
-  public NeonControl$1(amyg paramamyg, SharedPreferences paramSharedPreferences, boolean paramBoolean) {}
+  public NeonControl$1(aowx paramaowx, SharedPreferences paramSharedPreferences, boolean paramBoolean) {}
   
   public void run()
   {
     boolean bool1 = true;
-    ??? = new aztc();
-    ((aztc)???).a();
-    boolean bool2 = ((aztc)???).a();
+    ??? = new bcuj();
+    ((bcuj)???).a();
+    boolean bool2 = ((bcuj)???).a();
     this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sp_cpu_neon_support", bool2).apply();
-    boolean bool3 = amyr.a().e;
+    boolean bool3 = aoxi.a().e;
     int i;
     int j;
     if (QLog.isColorLevel())
@@ -46,7 +46,7 @@ public class NeonControl$1
       if (this.jdField_a_of_type_Boolean) {
         synchronized (this.this$0.a)
         {
-          amyg.a(this.this$0, bool2);
+          aowx.a(this.this$0, bool2);
           return;
         }
       }
@@ -54,10 +54,10 @@ public class NeonControl$1
       {
         synchronized (this.this$0.a)
         {
-          amyg localamyg = this.this$0;
+          aowx localaowx = this.this$0;
           if ((bool3) && (bool2))
           {
-            amyg.a(localamyg, bool1);
+            aowx.a(localaowx, bool1);
             return;
           }
         }
@@ -72,7 +72,7 @@ public class NeonControl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.NeonControl.1
  * JD-Core Version:    0.7.0.1
  */

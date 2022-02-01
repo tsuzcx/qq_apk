@@ -1,25 +1,24 @@
 package com.tencent.tmediacodec.pools;
 
+import com.tencent.tmediacodec.callback.CodecCallback;
 import com.tencent.tmediacodec.codec.ReuseCodecWrapper;
-import com.tencent.tmediacodec.util.LogUtils;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/tmediacodec/pools/CodecWrapperManager$1", "Lcom/tencent/tmediacodec/pools/PoolActionCallback;", "onErase", "", "codecWrapper", "Lcom/tencent/tmediacodec/codec/ReuseCodecWrapper;", "tmediacodec_lib_debug"}, k=1, mv={1, 1, 15})
-public final class CodecWrapperManager$1
-  implements PoolActionCallback
+class CodecWrapperManager$1
+  implements Runnable
 {
-  public void onErase(@NotNull ReuseCodecWrapper paramReuseCodecWrapper)
+  CodecWrapperManager$1(CodecWrapperManager paramCodecWrapperManager, ReuseCodecWrapper paramReuseCodecWrapper) {}
+  
+  public void run()
   {
-    Intrinsics.checkParameterIsNotNull(paramReuseCodecWrapper, "codecWrapper");
-    LogUtils.INSTANCE.d("CodecWrapperManager", "onErase codecWrapper:" + paramReuseCodecWrapper);
-    paramReuseCodecWrapper.recycle();
+    CodecCallback localCodecCallback = this.val$codecWrapper.getCallback();
+    if (localCodecCallback != null) {
+      localCodecCallback.onTransToRunningPool();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.pools.CodecWrapperManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,40 @@
-import android.content.Intent;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.CompressInfo;
-import java.util.ArrayList;
+import java.util.Locale;
 
-public abstract interface awiv
+class awiv
 {
-  public abstract awjf a(Intent paramIntent);
+  public static int a;
+  public float a;
+  public long a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public int d;
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  public float i;
+  public float j;
+  public float k;
+  public float l;
   
-  public abstract awjf a(MessageForPic paramMessageForPic, int paramInt, String paramString1, String paramString2, String paramString3);
+  public awiv()
+  {
+    int m = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = m + 1;
+    this.jdField_b_of_type_Int = m;
+  }
   
-  public abstract awju a(Intent paramIntent);
-  
-  public abstract CompressInfo a(Intent paramIntent);
-  
-  public abstract ArrayList<awjf> a(MessageForMixedMsg paramMessageForMixedMsg, int paramInt, String paramString1, String paramString2, String paramString3);
+  public String toString()
+  {
+    return String.format(Locale.getDefault(), "[id:%d, start: %d, x: %f, y: %f, vx: %f, vy: %f, size: %d", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Float.valueOf(this.c), Float.valueOf(this.jdField_d_of_type_Float), Integer.valueOf(this.jdField_d_of_type_Int) });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awiv
  * JD-Core Version:    0.7.0.1
  */

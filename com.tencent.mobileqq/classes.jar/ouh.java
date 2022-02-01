@@ -1,63 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 public class ouh
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public static int a()
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("ViolaSusAutoPlayConfig", 1, "[onReceiveConfig] " + paramString);
-    for (;;)
-    {
-      String str1;
-      try
-      {
-        paramString = osq.a(paramString);
-        Iterator localIterator = paramString.keySet().iterator();
-        if (localIterator.hasNext())
-        {
-          str1 = (String)localIterator.next();
-          String str2 = (String)paramString.get(str1);
-          if (!TextUtils.isEmpty(str2))
-          {
-            QLog.d("ViolaSusAutoPlayConfig", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-            if (!TextUtils.equals(str1, "autoplay_disable")) {
-              continue;
-            }
-            bkbq.p(Integer.parseInt(str2));
-          }
-        }
-        else
-        {
-          return true;
-        }
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ViolaSusAutoPlayConfig", 2, "error in parse video_feeds_Type config: " + paramString.getMessage());
-        }
-      }
-      QLog.d("ViolaSusAutoPlayConfig", 2, "key: " + str1 + " of value is null");
-    }
+    return ((Integer)bmqa.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
   }
   
-  public void onWipeConfig(int paramInt)
+  public static void a()
   {
-    super.onWipeConfig(paramInt);
-    bkbq.p(0);
+    bmqa.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bmqa.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
+  }
+  
+  public static int b()
+  {
+    return ((Integer)bmqa.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ouh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,17 @@
-import android.view.View;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public abstract interface aezu
+public class aezu
+  implements BusinessObserver
 {
-  public abstract void a(View paramView, int paramInt);
+  protected void a() {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramInt == 10000) {
+      a();
+    }
+  }
 }
 
 

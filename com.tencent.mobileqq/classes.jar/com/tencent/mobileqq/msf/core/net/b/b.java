@@ -82,9 +82,8 @@ public class b
     }
     catch (Throwable localThrowable)
     {
-      localThrowable.printStackTrace();
       if (QLog.isColorLevel()) {
-        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " connect " + this.i + " failed.");
+        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " connect " + this.i + " failed.", localThrowable);
       }
       if (this.m != null) {
         this.m.disconnect();
@@ -136,9 +135,8 @@ public class b
     }
     catch (Throwable localThrowable)
     {
-      localThrowable.printStackTrace();
       if (QLog.isColorLevel()) {
-        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " echo failed");
+        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " echo failed", localThrowable);
       }
     }
   }

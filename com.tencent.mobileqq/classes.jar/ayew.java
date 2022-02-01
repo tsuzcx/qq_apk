@@ -1,6 +1,10 @@
-public abstract interface ayew
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
+public class ayew
+  implements BusinessObserver
 {
-  public abstract void a(String paramString);
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

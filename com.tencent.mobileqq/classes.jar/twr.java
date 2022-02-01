@@ -1,27 +1,24 @@
-import android.support.v7.widget.RecyclerView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
+import android.support.annotation.Nullable;
 
-public class twr
-  implements ViewTreeObserver.OnPreDrawListener
+public abstract class twr
 {
-  public twr(QCircleBaseTabFragment paramQCircleBaseTabFragment, RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
+  public abstract int a();
   
-  public boolean onPreDraw()
+  @Nullable
+  public Object a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount() > 0)
-    {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
-      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBaseTabFragment.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_Int, this.b);
-      return true;
-    }
-    return false;
+    return null;
   }
+  
+  public abstract boolean a(int paramInt1, int paramInt2);
+  
+  public abstract int b();
+  
+  public abstract boolean b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     twr
  * JD-Core Version:    0.7.0.1
  */

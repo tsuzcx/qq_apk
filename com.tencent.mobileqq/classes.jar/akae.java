@@ -1,58 +1,48 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.16.1;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 public class akae
-  extends Handler
+  implements akah
 {
-  public akae(SelectMemberActivity paramSelectMemberActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public akae(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(RecentBaseData paramRecentBaseData)
   {
-    switch (paramMessage.what)
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (paramRecentBaseData.getRecentUserUin().equals("0"))
     {
+      MiniMsgTabFragment.a(this.a).findViewById(2131378947).performClick();
+      return;
     }
-    do
+    MiniChatActivity.a(localFragmentActivity, paramRecentBaseData.getRecentUserType(), paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getTitleName(), false, MiniMsgTabFragment.b(this.a));
+    ajzn.a("0X8009C2D");
+    if (MiniMsgTabFragment.a(this.a) == null) {
+      MiniMsgTabFragment.a(this.a, AnimationUtils.loadAnimation(this.a.getActivity(), 2130771995));
+    }
+    MiniMsgTabFragment.b(this.a).startAnimation(MiniMsgTabFragment.a(this.a));
+    MiniMsgTabFragment.a(this.a).setAnimationListener(new akaf(this, localFragmentActivity));
+    MiniMsgTabFragment.b(this.a).setVisibility(8);
+    int i = paramRecentBaseData.getRecentUserType();
+    if (acwh.d(i)) {
+      i = 1;
+    }
+    for (;;)
     {
-      do
-      {
-        return;
-      } while ((this.a.b == null) || (!this.a.b.isShowing()));
-      this.a.b.dismiss();
-      paramMessage = new Intent();
-      paramMessage.putExtra("select_member_add_request_ok", true);
-      this.a.setResult(-1, paramMessage);
-      if (!TextUtils.isEmpty(this.a.g))
-      {
-        paramMessage = this.a.g;
-        QQToast.a(this.a, 2, paramMessage, 1500).b(this.a.getTitleBarHeight());
-        postDelayed(new SelectMemberActivity.16.1(this), 1500L);
-        return;
+      bcst.b(null, "dc00898", "", "", "0X800A0F7", "0X800A0F7", MiniMsgTabFragment.b(this.a), 1, "" + i, "", "", "");
+      return;
+      if (i == 1) {
+        i = 2;
+      } else if (i == 3000) {
+        i = 4;
+      } else {
+        i = 5;
       }
-      if (this.a.c) {}
-      for (int i = 2131693785;; i = 2131693784)
-      {
-        paramMessage = this.a.getResources().getString(i);
-        break;
-      }
-    } while ((this.a.b == null) || (!this.a.b.isShowing()));
-    this.a.b.dismiss();
-    String str = (String)paramMessage.obj;
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131693783);
     }
-    QQToast.a(this.a, 1, paramMessage, 1500).b(this.a.getTitleBarHeight());
   }
 }
 

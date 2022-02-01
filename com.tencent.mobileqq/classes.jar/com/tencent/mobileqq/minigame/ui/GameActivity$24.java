@@ -1,29 +1,32 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.os.Bundle;
-import aobz;
+import aqck;
+import aqcs;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class GameActivity$24
-  extends aobz
+  implements aqck
 {
   GameActivity$24(GameActivity paramGameActivity) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public ColorNote getColorNote()
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    QLog.e("[minigame] GameActivity", 1, "[ColorNote exit]");
-    if (this.this$0.doNotMoveTaskToBackThisTime)
+    if ((this.this$0.mGameAppConfig == null) || (this.this$0.mGameAppConfig.config == null))
     {
-      this.this$0.doNotMoveTaskToBackThisTime = false;
-      return;
+      QLog.e("[minigame] GameActivity", 1, "getColorNote, appConfig: " + this.this$0.mGameAppConfig);
+      return null;
     }
-    this.this$0.doOnBackPressed();
+    byte[] arrayOfByte = MiniAppUtils.packMiniAppInfo(this.this$0.mGameAppConfig.config);
+    return new aqcs().a(16842752).a(this.this$0.mGameAppConfig.config.appId).b(this.this$0.mGameAppConfig.config.name).c(this.this$0.mGameAppConfig.config.desc).d(this.this$0.mGameAppConfig.config.iconUrl).a(arrayOfByte).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.24
  * JD-Core Version:    0.7.0.1
  */

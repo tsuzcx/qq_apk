@@ -1,35 +1,8 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.SystemClock;
-import android.view.View;
-
-class bkei
-  extends View
+public class bkei
 {
-  private View jdField_a_of_type_AndroidViewView;
+  public long a;
   
-  public bkei(bkeh parambkeh, Context paramContext, View paramView, Drawable paramDrawable)
-  {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    setBackgroundDrawable(paramDrawable);
-  }
-  
-  public void invalidateDrawable(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidViewView.invalidate();
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_AndroidViewView.postDelayed(paramRunnable, paramLong - l);
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramRunnable);
-  }
+  public bkei(bkeh parambkeh) {}
 }
 
 

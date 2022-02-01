@@ -1,93 +1,102 @@
+import android.text.TextUtils;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class amxy
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b;
+  public int a;
+  public long a;
+  public String a;
+  public final HashMap<Integer, amya> a;
+  public final List<amya> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public List<amxz> b;
+  public long c;
+  public String c;
+  public List<amxz> c;
+  public String d;
+  public String e;
   
-  public amxy(int paramInt)
+  public amxy()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private int a(float paramFloat)
+  public static String a(int paramInt)
   {
-    if ((paramFloat > 1.0F) || (paramFloat <= 0.0F)) {
-      throw new IndexOutOfBoundsException("the percent out of index");
+    if (paramInt > 999999) {
+      return String.valueOf(999999) + "+";
     }
-    int j = (int)(this.jdField_a_of_type_JavaUtilArrayList.size() * paramFloat - 1.0F);
-    int i = j;
-    if (j < 0) {
-      i = 0;
-    }
-    return i;
+    return String.valueOf(paramInt);
   }
   
-  public int a()
+  public static String b(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    if (paramInt > 99999) {
+      return String.valueOf(99999) + "+";
+    }
+    return String.valueOf(paramInt);
   }
   
-  public amxz a()
+  public static String c(int paramInt)
   {
-    long l1;
-    long l2;
-    long l3;
-    long l4;
-    long l5;
-    double d;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
-      {
-        localObject = new amxz(-1L, -1L, -1L, -1L, -1L, -1.0D, null, 0);
-        return localObject;
-      }
-      Object localObject = new long[this.jdField_a_of_type_JavaUtilArrayList.size()];
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        localObject[i] = ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(i)).longValue();
-        i += 1;
-      }
-      Arrays.sort((long[])localObject);
-      l1 = localObject[a(0.9F)];
-      l2 = localObject[a(0.8F)];
-      l3 = localObject[a(0.7F)];
-      l4 = localObject[0];
-      l5 = localObject[(localObject.length - 1)];
-      d = 0.0D;
-      i = 0;
-      if (i < localObject.length)
-      {
-        d += localObject[i];
-        i += 1;
-      }
+    if (paramInt > 9999) {
+      return String.valueOf(9999) + "+";
     }
-    return new amxz(l1, l2, l3, l4, l5, d / arrayOfLong.length, arrayOfLong, this.b);
+    return String.valueOf(paramInt);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.b = 0;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.isEmpty())) {
+      return;
+    }
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    label40:
+    amxz localamxz;
+    amya localamya;
+    for (;;)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+      if (localIterator.hasNext())
+      {
+        localamxz = (amxz)localIterator.next();
+        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(localamxz.jdField_a_of_type_Long))))
+        {
+          if (localamxz.jdField_a_of_type_Short > 4) {
+            break label165;
+          }
+          localamya = (amya)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
+          if (localamya != null)
+          {
+            localamya.c += 1;
+            this.jdField_b_of_type_Int += 1;
+          }
+        }
       }
     }
-    if (!this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong))) {
-      return false;
+    for (;;)
+    {
+      if (this.c == null) {
+        this.c = new ArrayList();
+      }
+      this.c.add(localamxz);
+      break label40;
+      break;
+      label165:
+      localamya = (amya)this.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(localamxz.jdField_a_of_type_Short));
+      if (localamya != null)
+      {
+        localamya.c += localamxz.f;
+        this.jdField_b_of_type_Int += localamxz.f;
+      }
     }
-    this.b += 1;
-    return true;
   }
 }
 

@@ -25,6 +25,7 @@ public final class SvcRespRegister
   public String strClientIP = "";
   public String strResult = "";
   public long timeStamp = 0L;
+  public long uClientAutoStatusInterval = 600L;
   public long uClientBatteryGetInterval = 86400L;
   public long uExtOnlineStatus = 0L;
   
@@ -35,7 +36,7 @@ public final class SvcRespRegister
   
   public SvcRespRegister() {}
   
-  public SvcRespRegister(long paramLong1, long paramLong2, byte paramByte1, String paramString1, long paramLong3, byte paramByte2, byte paramByte3, byte paramByte4, long paramLong4, byte paramByte5, String paramString2, int paramInt1, int paramInt2, long paramLong5, byte paramByte6, byte[] paramArrayOfByte, long paramLong6, long paramLong7)
+  public SvcRespRegister(long paramLong1, long paramLong2, byte paramByte1, String paramString1, long paramLong3, byte paramByte2, byte paramByte3, byte paramByte4, long paramLong4, byte paramByte5, String paramString2, int paramInt1, int paramInt2, long paramLong5, byte paramByte6, byte[] paramArrayOfByte, int paramInt3, long paramLong6, long paramLong7, long paramLong8)
   {
     this.lUin = paramLong1;
     this.lBid = paramLong2;
@@ -53,9 +54,10 @@ public final class SvcRespRegister
     this.iLargeSeq = paramLong5;
     this.bLargeSeqUpdate = paramByte6;
     this.bytes_0x769_rspbody = paramArrayOfByte;
-    this.iStatus = this.iStatus;
+    this.iStatus = paramInt3;
     this.uExtOnlineStatus = paramLong6;
     this.uClientBatteryGetInterval = paramLong7;
+    this.uClientAutoStatusInterval = paramLong8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -79,6 +81,7 @@ public final class SvcRespRegister
     this.iStatus = paramJceInputStream.read(this.iStatus, 16, false);
     this.uExtOnlineStatus = paramJceInputStream.read(this.uExtOnlineStatus, 17, false);
     this.uClientBatteryGetInterval = paramJceInputStream.read(this.uClientBatteryGetInterval, 18, false);
+    this.uClientAutoStatusInterval = paramJceInputStream.read(this.uClientAutoStatusInterval, 19, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -106,6 +109,7 @@ public final class SvcRespRegister
     paramJceOutputStream.write(this.iStatus, 16);
     paramJceOutputStream.write(this.uExtOnlineStatus, 17);
     paramJceOutputStream.write(this.uClientBatteryGetInterval, 18);
+    paramJceOutputStream.write(this.uClientAutoStatusInterval, 19);
   }
 }
 

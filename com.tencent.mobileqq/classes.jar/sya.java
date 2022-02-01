@@ -1,12 +1,12 @@
-class sya
+public class sya
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public int a;
+  public long a;
+  public Long a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sya
  * JD-Core Version:    0.7.0.1
  */

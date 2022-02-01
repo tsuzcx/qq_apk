@@ -1,42 +1,24 @@
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.events.QCircleSelectTabEvent;
+import com.tencent.biz.qqcircle.fragments.main.QCircleFolderFollowTabFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class vlz
-  implements bhuk
+public class vlz
+  implements View.OnClickListener
 {
-  vlz(StoryVideoItem paramStoryVideoItem, bhuf parambhuf) {}
+  public vlz(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((uwm)uwa.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
-      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-        new vdw().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      wxe.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
-    }
+    vrf.a("", 22, 13);
+    zwp.a().a(new QCircleSelectTabEvent(6));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vlz
  * JD-Core Version:    0.7.0.1
  */

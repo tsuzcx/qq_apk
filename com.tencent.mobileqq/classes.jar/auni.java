@@ -1,39 +1,31 @@
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auni
-  implements aulr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public auni(MultiCardFragment paramMultiCardFragment) {}
+  public auni(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (MultiCardFragment.a(this.a) != null)
+    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131694401), "qqsetting_auto_receive_magic_face_key", paramBoolean);
+    QQAppInterface localQQAppInterface = QQSettingAutoDownloadAndSaveFragment.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      MultiCardFragment.a(this.a).setViewPagerBusy(false);
-      MultiCardFragment.a(this.a).setScrollState(2);
-      MultiCardFragment.a(this.a).fling(-paramInt);
+      bcst.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
-  }
-  
-  public boolean a()
-  {
-    if (MultiCardFragment.a(this.a) != null) {
-      return MultiCardFragment.a(this.a).a();
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auni
  * JD-Core Version:    0.7.0.1
  */

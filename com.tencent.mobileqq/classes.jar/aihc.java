@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-
-class aihc
-  implements View.OnClickListener
+public abstract interface aihc
 {
-  aihc(aiha paramaiha) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.setText("");
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
-public class wtk
-  implements DialogInterface.OnDismissListener
+class wtk
+  implements Comparator<xfb>
 {
-  public wtk(StoryListPresenter.4.1 param1) {}
+  wtk(wtj paramwtj) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public int a(xfb paramxfb1, xfb paramxfb2)
+  {
+    return wtq.a(paramxfb1.a.mCreateTime, paramxfb2.a.mCreateTime);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wtk
  * JD-Core Version:    0.7.0.1
  */

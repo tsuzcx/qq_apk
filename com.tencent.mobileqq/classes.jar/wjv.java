@@ -1,19 +1,21 @@
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
 public class wjv
-  extends xwf
+  implements wjl
 {
-  public wjv(StoryDetailFragment paramStoryDetailFragment) {}
+  public wjv(StoryVideoUploadTask paramStoryVideoUploadTask) {}
   
-  public boolean a(boolean paramBoolean)
+  public void a(wjk paramwjk)
   {
-    this.a.d();
-    return true;
+    ((wjr)this.a.a).j = ((wjf)paramwjk).b;
+    yqp.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "make video thumbnail finish:%s", ((wjr)this.a.a).j);
+    this.a.a(1, new ErrorMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wjv
  * JD-Core Version:    0.7.0.1
  */

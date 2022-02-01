@@ -1,36 +1,24 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.WordNavView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class skx
-  extends GestureDetector.SimpleOnGestureListener
+class skx
+  extends skd
 {
-  private skx(WordNavView paramWordNavView) {}
+  skx(ske paramske) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public int a()
   {
-    float f = paramMotionEvent.getY();
-    Iterator localIterator = WordNavView.a(this.a).entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if ((f >= ((Float)localEntry.getKey()).floatValue() - this.a.getHeight() / WordNavView.a(this.a).size() / 2) && (f <= ((Float)localEntry.getKey()).floatValue() + this.a.getHeight() / WordNavView.a(this.a).size() / 2)) {
-        if (WordNavView.a(this.a) != null) {
-          WordNavView.a(this.a).a((String)localEntry.getValue());
-        }
-      }
-    }
-    return super.onSingleTapUp(paramMotionEvent);
+    return 2;
+  }
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    ske.a(this.a).d(paramString + "&sourcefrom=6");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     skx
  * JD-Core Version:    0.7.0.1
  */

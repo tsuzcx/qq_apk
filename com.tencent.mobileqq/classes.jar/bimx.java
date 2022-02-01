@@ -1,28 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.widget.AdapterView;
+import java.util.Iterator;
+import java.util.List;
 
 public class bimx
-  implements bioh
+  implements bkij
 {
-  private WeakReference<Handler> a;
+  public bimx(OpenCardContainer paramOpenCardContainer) {}
   
-  public bimx(Handler paramHandler)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = new WeakReference(paramHandler);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    Handler localHandler = (Handler)this.a.get();
-    if (localHandler != null) {
-      localHandler.obtainMessage(1001, paramInt, 0, paramString).sendToTarget();
+    paramAdapterView = bine.a(this.a.jdField_a_of_type_Bine).iterator();
+    while (paramAdapterView.hasNext()) {
+      ((binh)paramAdapterView.next()).a = false;
     }
+    ((binh)bine.a(this.a.jdField_a_of_type_Bine).get(paramInt)).a = true;
+    this.a.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(false);
+    this.a.jdField_a_of_type_Bine.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bimx
  * JD-Core Version:    0.7.0.1
  */

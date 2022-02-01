@@ -1,10 +1,10 @@
-import java.util.ArrayList;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-public abstract interface ajqi
+class ajqi
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

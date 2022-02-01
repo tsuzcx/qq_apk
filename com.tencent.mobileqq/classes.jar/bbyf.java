@@ -1,22 +1,48 @@
-import java.util.List;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
 
-public class bbyf
+class bbyf
+  extends Handler
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<Long> a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  
-  public String toString()
+  bbyf(bbyc parambbyc, Looper paramLooper, Context paramContext, String paramString1, int paramInt, AppInterface paramAppInterface, String paramString2, String paramString3)
   {
-    return "HomeworkInfo{content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", group_id=" + this.jdField_a_of_type_Long + ", uin=" + this.jdField_b_of_type_Long + ", title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", need_feedback=" + this.jdField_a_of_type_Boolean + ", course_name=" + this.jdField_d_of_type_JavaLangString + ", syncgids=" + this.jdField_a_of_type_JavaUtilList + ", hw_id=" + this.jdField_d_of_type_Long + '}';
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_Bbyc.b = true;
+      if (this.jdField_a_of_type_Bbyc.jdField_a_of_type_MqqAppNewIntent != null)
+      {
+        this.jdField_a_of_type_Bbyc.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+        this.jdField_a_of_type_Bbyc.jdField_a_of_type_MqqAppNewIntent = null;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "lauchApp time out");
+      }
+      paramMessage = bbyc.a(this.jdField_a_of_type_Bbyc.jdField_a_of_type_JavaLangString);
+      biub.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramMessage, this.jdField_a_of_type_Int);
+      bbyc.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    this.jdField_a_of_type_Bbyc.b = true;
+    if (this.jdField_a_of_type_Bbyc.jdField_a_of_type_MqqAppNewIntent != null)
+    {
+      this.jdField_a_of_type_Bbyc.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+      this.jdField_a_of_type_Bbyc.jdField_a_of_type_MqqAppNewIntent = null;
+    }
+    bbyc.a(this.jdField_a_of_type_Bbyc, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, this.c, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,27 +1,36 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class smf
-  implements Animation.AnimationListener
+  implements bkle
 {
-  public smf(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt1, int paramInt2) {}
+  public smf(ChannelClassificationListView paramChannelClassificationListView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onScrollStateChanged(int paramInt)
   {
-    CommonSuspensionGestureLayout.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).setVisibility(8);
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(true, this.jdField_a_of_type_Int, this.b);
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, this.b);
+    JSONObject localJSONObject;
+    if (paramInt == 4098) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("channelid", ChannelClassificationListView.a(this.a));
+      oat.a(null, pha.a() + "", "0X8009934", "0X8009934", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     smf
  * JD-Core Version:    0.7.0.1
  */

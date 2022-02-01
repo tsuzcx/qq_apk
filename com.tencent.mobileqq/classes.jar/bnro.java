@@ -1,11 +1,15 @@
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+
 class bnro
-  implements bnrm
+  extends RecyclerView.OnScrollListener
 {
   bnro(bnrn parambnrn) {}
   
-  public boolean a(double paramDouble)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return bnrn.a(this.a);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    bnrn.a(this.a).notifyDataSetChanged();
   }
 }
 

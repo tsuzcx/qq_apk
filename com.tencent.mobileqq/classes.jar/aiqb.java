@@ -1,14 +1,23 @@
-public abstract interface aiqb
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.book.BookEditText;
+
+public class aiqb
+  implements InputFilter
 {
-  public abstract void a();
+  public aiqb(BookEditText paramBookEditText) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(ainn paramainn);
-  
-  public abstract void a(ainn paramainn, bcpw parambcpw);
-  
-  public abstract void b(ainn paramainn);
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    this.a.a(paramSpanned.toString());
+    if (this.a.a(paramCharSequence.toString()) == 0) {
+      BookEditText.a(this.a);
+    }
+    while (!bdnt.a(paramCharSequence.toString())) {
+      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
+    }
+    return "";
+  }
 }
 
 

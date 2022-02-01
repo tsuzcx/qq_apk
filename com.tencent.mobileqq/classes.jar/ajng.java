@@ -1,26 +1,16 @@
-import android.view.MotionEvent;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
 
 public class ajng
-  implements View.OnTouchListener
+  extends RecyclerView.ViewHolder
 {
-  public ajng(LoginView paramLoginView) {}
+  TextView a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  ajng(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.LoginView", 2, "mScrollRootView.setOnTouch action=" + paramMotionEvent.getAction() + " im:" + LoginView.a(this.a));
-    }
-    if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
-      LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
-    }
-    return true;
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131380084));
   }
 }
 

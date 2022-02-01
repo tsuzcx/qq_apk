@@ -1,40 +1,82 @@
+import android.graphics.Rect;
+import android.os.Build.VERSION;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
 
-class niw
-  implements bhuk
+public class niw
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  niw(nin paramnin, bhuf parambhuf) {}
+  private final int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private nix jdField_a_of_type_Nix;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void OnClick(View paramView, int paramInt)
+  public niw(View paramView, nix paramnix)
   {
-    if (this.jdField_a_of_type_Nin.f) {
+    this(paramView, paramnix, zlx.a(paramView.getContext(), 160.0F));
+  }
+  
+  public niw(View paramView, nix paramnix, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Nix = paramnix;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Nix = null;
+    try
+    {
+      if (Build.VERSION.SDK_INT >= 16) {
+        this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      }
       return;
     }
-    this.jdField_a_of_type_Nin.f = true;
-    if (paramInt == 0) {
-      this.jdField_a_of_type_Nin.jdField_a_of_type_Int = 0;
-    }
+    catch (Throwable localThrowable) {}
+  }
+  
+  public void onGlobalLayout()
+  {
+    boolean bool = true;
+    Rect localRect = new Rect();
     for (;;)
     {
-      this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Nin.jdField_a_of_type_Amrw);
-      this.jdField_a_of_type_Nin.jdField_a_of_type_Amrw = new amrw(new nix(this));
-      this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Nin.jdField_a_of_type_Amrw);
-      amsb.a(this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nin.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      if (paramInt == 1) {
-        this.jdField_a_of_type_Nin.jdField_a_of_type_Int = 2;
-      } else if (paramInt == 2) {
-        this.jdField_a_of_type_Nin.jdField_a_of_type_Int = 1;
+      try
+      {
+        this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+        int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+        int j = localRect.bottom;
+        int k = localRect.top;
+        if (this.jdField_a_of_type_Nix != null)
+        {
+          if (i - (j - k) < this.jdField_a_of_type_Int) {
+            break label113;
+          }
+          if (bool != this.jdField_a_of_type_Boolean)
+          {
+            this.jdField_a_of_type_Boolean = bool;
+            this.jdField_a_of_type_Nix.a(bool, localRect.right, localRect.bottom);
+          }
+        }
+        return;
       }
+      catch (NullPointerException localNullPointerException)
+      {
+        QLog.e("SoftKeyboardObserver", 1, "getWindowVisibleDisplayFrame error", localNullPointerException);
+        return;
+      }
+      label113:
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     niw
  * JD-Core Version:    0.7.0.1
  */

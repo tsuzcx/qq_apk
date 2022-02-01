@@ -1,17 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
+import android.view.View;
 
 class aswu
-  implements TVK_IMediaPlayer.OnVideoPreparingListener
+  implements bkiz
 {
-  aswu(aswm paramaswm) {}
+  aswu(aswr paramaswr, View paramView) {}
   
-  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
-    }
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

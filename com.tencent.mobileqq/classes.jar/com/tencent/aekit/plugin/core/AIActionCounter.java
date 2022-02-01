@@ -14,12 +14,10 @@ public class AIActionCounter
   
   private static void clearAction(int paramInt)
   {
-    AIActionCounter.ActionCounter localActionCounter2 = (AIActionCounter.ActionCounter)actionCounterList.get(Integer.valueOf(paramInt));
-    AIActionCounter.ActionCounter localActionCounter1 = localActionCounter2;
-    if (localActionCounter2 == null) {
-      localActionCounter1 = new AIActionCounter.ActionCounter(0, -1L);
+    AIActionCounter.ActionCounter localActionCounter = (AIActionCounter.ActionCounter)actionCounterList.get(Integer.valueOf(paramInt));
+    if (localActionCounter != null) {
+      localActionCounter.clear();
     }
-    localActionCounter1.clear();
   }
   
   public static void clearAction(AEDetectorType paramAEDetectorType)
@@ -52,12 +50,10 @@ public class AIActionCounter
   
   private static void clearAction(String paramString)
   {
-    AIActionCounter.ActionCounter localActionCounter = (AIActionCounter.ActionCounter)commonActionCounterMap.get(paramString);
-    paramString = localActionCounter;
-    if (localActionCounter == null) {
-      paramString = new AIActionCounter.ActionCounter(0, -1L);
+    paramString = (AIActionCounter.ActionCounter)commonActionCounterMap.get(paramString);
+    if (paramString != null) {
+      paramString.clear();
     }
-    paramString.clear();
   }
   
   public static void clearAll()
@@ -128,12 +124,10 @@ public class AIActionCounter
   
   private static void lockAction(int paramInt)
   {
-    AIActionCounter.ActionCounter localActionCounter2 = (AIActionCounter.ActionCounter)actionCounterList.get(Integer.valueOf(paramInt));
-    AIActionCounter.ActionCounter localActionCounter1 = localActionCounter2;
-    if (localActionCounter2 == null) {
-      localActionCounter1 = new AIActionCounter.ActionCounter(0, -1L);
+    AIActionCounter.ActionCounter localActionCounter = (AIActionCounter.ActionCounter)actionCounterList.get(Integer.valueOf(paramInt));
+    if (localActionCounter != null) {
+      localActionCounter.lockCounter();
     }
-    localActionCounter1.lockCounter();
   }
   
   public static void lockAction(AEDetectorType paramAEDetectorType)
@@ -166,12 +160,10 @@ public class AIActionCounter
   
   private static void lockAction(String paramString)
   {
-    AIActionCounter.ActionCounter localActionCounter = (AIActionCounter.ActionCounter)commonActionCounterMap.get(paramString);
-    paramString = localActionCounter;
-    if (localActionCounter == null) {
-      paramString = new AIActionCounter.ActionCounter(0, -1L);
+    paramString = (AIActionCounter.ActionCounter)commonActionCounterMap.get(paramString);
+    if (paramString != null) {
+      paramString.lockCounter();
     }
-    paramString.lockCounter();
   }
   
   public static void updateAction(int paramInt)
@@ -214,7 +206,7 @@ public class AIActionCounter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aekit.plugin.core.AIActionCounter
  * JD-Core Version:    0.7.0.1
  */

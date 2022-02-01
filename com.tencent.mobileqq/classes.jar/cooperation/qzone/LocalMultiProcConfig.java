@@ -41,6 +41,7 @@ public class LocalMultiProcConfig
   public static final String QZONE_ENABLE_FPS_MONITOR = "qzone_enable_fps_monitor";
   public static final String QZONE_FEED_CUSTOM_BROWSER_DECO_SWITCH = "qzone_feed_custom_browser_deco_switch";
   public static final String QZONE_FEED_SKIN_ENABLE = "qzone_feed_skin_enable";
+  public static final String QZONE_FLUTTER_PREDOWNLOAD_SUCCESS = "qzone_flutter_predownload_success";
   public static final String QZONE_FONT_ENABLED = "qzone_font_enabled";
   public static final String QZONE_FONT_RED_DOT = "qzone_font_red_dot";
   public static final String QZONE_FONT_SAVE_DATA = "qzone_font_save_data";

@@ -1,23 +1,45 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
+import mqq.app.AppRuntime;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.json.JSONObject;
 
 public class aqek
-  implements View.OnClickListener
+  extends bdvl
 {
-  public aqek(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
-  
-  public void onClick(View paramView)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if (this.a.getActivity() != null)
+    String str;
+    for (Object localObject = paramDownloadParams.url.getHost();; str = "")
     {
-      paramView = "";
-      if (this.a.getActivity().app != null) {
-        paramView = ((aqbg)this.a.getActivity().app.getManager(264)).f();
+      try
+      {
+        localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { BaseApplicationImpl.getApplication().getRuntime().getAccount(), localObject });
+        localObject = nlw.a(BaseApplicationImpl.getApplication(), (String)localObject, null, "GET", null, null, 5000, 5000);
+        if ((localObject == null) || (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200)) {
+          continue;
+        }
+        localObject = nlw.a((HttpResponse)localObject);
+        localObject = new JSONObject((String)localObject);
+        if (Integer.parseInt(((JSONObject)localObject).getString("ret")) == 0)
+        {
+          localObject = ((JSONObject)localObject).getString("thumbUrl");
+          paramDownloadParams.url = new URL((String)localObject);
+          paramDownloadParams.urlStr = ((String)localObject);
+          localObject = super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+          return localObject;
+        }
       }
-      aqgz.b(this.a.getActivity(), paramView);
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      return super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
     }
   }
 }

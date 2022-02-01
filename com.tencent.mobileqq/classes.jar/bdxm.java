@@ -1,23 +1,8 @@
-import android.graphics.Canvas;
-import android.view.SurfaceHolder;
-
-public class bdxm
-  extends bdxl
+public abstract interface bdxm
 {
-  public bdxm(SurfaceHolder paramSurfaceHolder)
-  {
-    super(paramSurfaceHolder);
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  Canvas a(SurfaceHolder paramSurfaceHolder)
-  {
-    return paramSurfaceHolder.lockCanvas();
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
+  public abstract void a(String paramString);
 }
 
 

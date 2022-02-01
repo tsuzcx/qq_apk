@@ -1,40 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
-class xjw
-  extends uya
+public class xjw
+  extends Subscriber.SingleEventSubscriberNoRefect<wor>
 {
-  xjw(xjv paramxjv, umx paramumx, long paramLong)
+  xjt a;
+  
+  public xjw(@NonNull xjt paramxjt)
   {
-    super(paramumx);
+    this.a = paramxjt;
   }
   
-  protected void a(uyd paramuyd)
+  protected void a(@NonNull wor paramwor)
   {
-    if (paramuyd.jdField_a_of_type_Int == 0)
-    {
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
-      }
-      xjv.a().sendMessage(Message.obtain(xjv.a(), 1, null));
+    if (paramwor.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramwor.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
-    {
-      xjv.a(this.jdField_a_of_type_Xjv);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramuyd.jdField_a_of_type_Int + ", errMsg:" + paramuyd.jdField_a_of_type_JavaLangString);
-      }
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wor.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xjw
  * JD-Core Version:    0.7.0.1
  */

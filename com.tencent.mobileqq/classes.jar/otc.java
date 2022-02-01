@@ -1,62 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class otc
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+  implements TVK_SDKMgr.InstallListener
 {
-  public static String a = "CommentFamilyConfigHandler";
+  public otc(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void onInstallProgress(float paramFloat)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = osq.a(paramString);
-    Object localObject = paramString.keySet();
-    for (;;)
-    {
-      String str1;
-      String str2;
-      try
-      {
-        localObject = ((Set)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          str1 = (String)((Iterator)localObject).next();
-          str2 = (String)paramString.get(str1);
-          if (TextUtils.equals(str1, "rij_comment_family_entrance_switch")) {
-            bkbq.n(Integer.parseInt(str2));
-          }
-        }
-        else
-        {
-          return true;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
-      if (TextUtils.equals(str1, "rij_small_zhitiao_entrance_switch")) {
-        bkbq.a("readinjjoy_notes_config", Integer.valueOf(Integer.parseInt(str2)));
-      }
-    }
+    acqy.a("ReadInJoyArticleBottomVideoView", "installSDK onInstallProgress arg0=");
   }
   
-  public void onWipeConfig(int paramInt)
+  public void onInstalledFailed(int paramInt)
   {
-    super.onWipeConfig(paramInt);
-    bkbq.n(0);
+    acqy.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledFailed arg0=");
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    acqy.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledSuccessed");
+    if ((ReadInJoyArticleBottomVideoView.b()) && (ReadInJoyArticleBottomVideoView.a(this.a) != null)) {
+      ReadInJoyArticleBottomVideoView.a(this.a).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(this.a, 4));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     otc
  * JD-Core Version:    0.7.0.1
  */

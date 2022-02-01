@@ -3,22 +3,22 @@ package com.tencent.biz.pubaccount.readinjoy.ad.handlers;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
-import obq;
+import ong;
 
 public class AdHandler$3
   implements Runnable
 {
-  public AdHandler$3(obq paramobq, View paramView, AbsListView paramAbsListView, int paramInt1, int paramInt2) {}
+  public AdHandler$3(ong paramong, View paramView, AbsListView paramAbsListView, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_AndroidViewView.getBottom() - this.jdField_a_of_type_ComTencentWidgetAbsListView.getBottom() - this.jdField_a_of_type_ComTencentWidgetAbsListView.getPaddingBottom() + obq.a(this.this$0);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.setInterpolator(obq.a(this.this$0));
+    int i = this.jdField_a_of_type_AndroidViewView.getBottom() - this.jdField_a_of_type_ComTencentWidgetAbsListView.getBottom() - this.jdField_a_of_type_ComTencentWidgetAbsListView.getPaddingBottom() + ong.a(this.this$0);
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.setInterpolator(ong.a(this.this$0));
     if (QLog.isColorLevel()) {
       QLog.d("AdHandler", 2, "adjust scroll Before:" + (this.jdField_a_of_type_Int - i) + ", After:" + this.b / 1);
     }
     i = i + this.b / 1 + 1;
-    int j = (int)(obq.a(this.this$0) * 1000.0F * 2.0F * i / this.jdField_a_of_type_ComTencentWidgetAbsListView.getFlingVelocityY());
+    int j = (int)(ong.a(this.this$0) * 1000.0F * 2.0F * i / this.jdField_a_of_type_ComTencentWidgetAbsListView.getFlingVelocityY());
     this.jdField_a_of_type_ComTencentWidgetAbsListView.smoothScrollByImmediately(i, j);
   }
 }

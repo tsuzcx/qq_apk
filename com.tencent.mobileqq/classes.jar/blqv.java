@@ -1,61 +1,51 @@
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class blqv
 {
-  public int a;
-  String a;
-  String b;
+  public static final List<String> a = new ArrayList(Arrays.asList(new String[] { "4", "5", "7" }));
+  public static final List<String> b = new ArrayList(Arrays.asList(new String[] { "1", "4", "5", "7" }));
+  public static final List<String> c = new ArrayList(Arrays.asList(new String[] { "2", "3", "6", "", null }));
+  public static final List<String> d = new ArrayList(Arrays.asList(new String[] { "2", "3", "", null }));
+  public static final List<String> e = new ArrayList(Arrays.asList(new String[] { "2", "3" }));
+  public static final List<String> f = new ArrayList(Arrays.asList(new String[] { "6" }));
   
-  public blqv(int paramInt)
+  public static void a(Bundle paramBundle, blqw paramblqw)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    switch (paramInt)
-    {
-    case 3: 
-    case 6: 
-    case 8: 
-    case 9: 
-    default: 
-      return;
-    case 5: 
-      this.jdField_a_of_type_JavaLangString = alud.a(2131701745);
-      this.b = alud.a(2131701742);
-      return;
-    case 1: 
-      this.jdField_a_of_type_JavaLangString = alud.a(2131701744);
-      this.b = this.jdField_a_of_type_JavaLangString;
-      return;
-    case 0: 
-      this.jdField_a_of_type_JavaLangString = alud.a(2131701747);
-      this.b = this.jdField_a_of_type_JavaLangString;
-      return;
-    case 2: 
-      this.jdField_a_of_type_JavaLangString = alud.a(2131701746);
-      this.b = this.jdField_a_of_type_JavaLangString;
-      return;
-    case 4: 
-      this.jdField_a_of_type_JavaLangString = alud.a(2131701748);
-      this.b = this.jdField_a_of_type_JavaLangString;
-      return;
-    case 7: 
-      bmhq localbmhq = (bmhq)blqr.a(17);
-      return;
+    ArrayList localArrayList = new ArrayList();
+    for (Object localObject = paramblqw.getClass(); localObject != null; localObject = ((Class)localObject).getSuperclass()) {
+      localArrayList.addAll(Arrays.asList(((Class)localObject).getDeclaredFields()));
     }
-    this.jdField_a_of_type_JavaLangString = alud.a(2131701743);
-    this.b = this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    int i = 0;
+    if (i < localArrayList.size())
+    {
+      localObject = (Field)localArrayList.get(i);
+      String str1 = ((Field)localObject).getName();
+      String str2 = ((Field)localObject).getType().getSimpleName();
+      QLog.i("HbInfo", 2, "key = " + str1 + " tname = " + str2);
+      String str3 = paramBundle.getString(str1);
+      if (str3 == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          QLog.i("HbInfo", 2, "set " + str1 + " = " + str3);
+          if (str2.equals("String")) {
+            ((Field)localObject).set(paramblqw, str3);
+          }
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
+      }
+    }
   }
 }
 

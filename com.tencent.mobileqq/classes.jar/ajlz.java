@@ -1,66 +1,24 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajlz
-  extends ajlr
-  implements Cloneable
+class ajlz
+  implements View.OnClickListener
 {
-  public ajlz(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699977);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  ajlz(ajlx paramajlx) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    QLog.d("TroopConfessToMeMsg", 2, "deSerialize");
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      if ((this.c != null) && (this.c.length() != 0)) {
-        this.jdField_a_of_type_Bbpe.a(this.c);
-      }
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Bbpe != null) {
-        this.c = this.jdField_a_of_type_Bbpe.a();
-      }
-      localJSONObject.put("messageNavInfo", this.c);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-    return localJSONObject.toString().getBytes();
+    anpk localanpk = (anpk)this.a.a.getManager(159);
+    Intent localIntent = new Intent(ajlx.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", localanpk.a);
+    ajlx.b(this.a).startActivity(localIntent);
+    bcst.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_skip_page", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aell
-  implements aelt
+  extends aelh
 {
-  public aell(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public aell(JumpActivity paramJumpActivity)
   {
-    this.a.a.setActualViewSize(paramInt1, paramInt2);
-    this.a.a.invalidate();
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aell
  * JD-Core Version:    0.7.0.1
  */

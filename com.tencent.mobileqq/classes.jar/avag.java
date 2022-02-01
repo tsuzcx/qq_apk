@@ -1,28 +1,72 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.MotionEvent;
+import com.tencent.image.AbstractGifImage;
 
 public class avag
-  implements bhuk
+  extends RecyclerView.OnScrollListener
+  implements avdu
 {
-  public avag(NearbyGuideActivity paramNearbyGuideActivity, bhuf parambhuf) {}
+  private int jdField_a_of_type_Int = 0;
+  private asag jdField_a_of_type_Asag;
+  private avdt jdField_a_of_type_Avdt = new avdt(200, this);
   
-  public void OnClick(View paramView, int paramInt)
+  public avag(asag paramasag)
   {
-    this.jdField_a_of_type_Bhuf.cancel();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.h();
-      return;
+    this.jdField_a_of_type_Asag = paramasag;
+  }
+  
+  public boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
+    if (i == 0) {
+      this.jdField_a_of_type_Avdt.a(true);
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.i();
+    for (;;)
+    {
+      return false;
+      if ((i == 1) && (((GridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() == 0) && (this.jdField_a_of_type_Asag != null)) {
+        this.jdField_a_of_type_Asag.n();
+      }
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_a_of_type_Asag != null))
+    {
+      this.jdField_a_of_type_Asag.m();
+      this.jdField_a_of_type_Avdt.a(false);
+    }
+  }
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if (paramInt == 0) {
+      AbstractGifImage.resumeAll();
+    }
+    for (;;)
+    {
+      if ((paramInt == 0) && (this.jdField_a_of_type_Int == 2) && (((GridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() == 0) && (this.jdField_a_of_type_Asag != null)) {
+        this.jdField_a_of_type_Asag.n();
+      }
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+      AbstractGifImage.pauseAll();
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 > 0) {
+      this.jdField_a_of_type_Avdt.a(paramInt2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avag
  * JD-Core Version:    0.7.0.1
  */

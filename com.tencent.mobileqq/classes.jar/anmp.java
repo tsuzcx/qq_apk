@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class anmp
-  implements anmy
+public abstract interface anmp
 {
-  anmp(anmm paramanmm, anmw paramanmw, anmy paramanmy) {}
+  public abstract ViewGroup a();
   
-  public void a(boolean paramBoolean)
-  {
-    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Anmw.a }));
-    if (paramBoolean) {}
-    this.jdField_a_of_type_Anmy.a(paramBoolean);
-  }
+  public abstract bkpm a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(Configuration paramConfiguration);
+  
+  public abstract void a(QQAppInterface paramQQAppInterface);
+  
+  public abstract void a(String paramString, bkpm parambkpm);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

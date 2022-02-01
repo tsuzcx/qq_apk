@@ -3,7 +3,7 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.os.Build.VERSION;
-import befe;
+import bhmg;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.smtt.sdk.WebSettings;
@@ -13,7 +13,7 @@ public class ProgressWebView
   extends TouchWebView
 {
   public int htmlId;
-  public befe mWebViewDirector;
+  public bhmg mWebViewDirector;
   
   public ProgressWebView(Context paramContext)
   {
@@ -57,7 +57,7 @@ public class ProgressWebView
         BaseActivity localBaseActivity = (BaseActivity)((MutableContextWrapper)paramContext).getBaseContext();
         if (localBaseActivity != null)
         {
-          this.mWebViewDirector = new befe(new ProgressWebView.MiniAppWebviewBuilder(paramContext, localBaseActivity, localBaseActivity.getAppInterface(), this));
+          this.mWebViewDirector = new bhmg(new ProgressWebView.MiniAppWebviewBuilder(paramContext, localBaseActivity, localBaseActivity.getAppInterface(), this));
           this.mWebViewDirector.a(null, localBaseActivity.app, localBaseActivity.getIntent());
         }
         return;
@@ -74,7 +74,7 @@ public class ProgressWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.ProgressWebView
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo.NotifyI
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import tzo;
 
 public class ReadinjoySPEventReport$9
   implements Runnable
@@ -35,7 +35,7 @@ public class ReadinjoySPEventReport$9
     }
     for (int i = 17;; i = 16)
     {
-      syb.a(i, localArrayList);
+      tzo.a(i, localArrayList);
       return;
     }
   }

@@ -1,62 +1,43 @@
-import com.tencent.av.VideoController;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class appy
-  extends bfzo
+class appy
+  implements View.OnClickListener
 {
-  public appy(MessengerService paramMessengerService) {}
+  appy(appw paramappw) {}
   
-  protected void h(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void onClick(View paramView)
   {
-    try
+    appw.a(this.a).put(appw.a(this.a).a, Integer.valueOf(1));
+    Activity localActivity = appw.a(this.a).a();
+    if (!bgnw.a(localActivity, appw.a(this.a).c))
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.j(this.a);
-      if (localQQAppInterface != null)
+      if (!TextUtils.isEmpty(appw.a(this.a).g))
       {
-        localQQAppInterface.removeObserver(this);
-        if ((paramBoolean) && (paramHashMap != null) && (!paramHashMap.isEmpty()) && (paramHashMap.containsKey("sigmsg")) && (paramHashMap.containsKey("request_type")) && (paramHashMap.containsKey("uin")))
-        {
-          Object localObject = (byte[])paramHashMap.get("sigmsg");
-          String str1 = String.valueOf(paramHashMap.get("request_type"));
-          String str2 = String.valueOf(paramHashMap.get("uin"));
-          if (localObject != null) {
-            localQQAppInterface.a().c(str2, (byte[])localObject);
-          }
-          int j = ndv.b(localQQAppInterface, str2);
-          localObject = "";
-          if (j == 0) {
-            localObject = bdgc.i(localQQAppInterface, str2);
-          }
-          for (;;)
-          {
-            int i = j;
-            if (j != 1024)
-            {
-              i = j;
-              if (j != 1025) {
-                i = VideoController.a(j, false, 1);
-              }
-            }
-            paramBoolean = str1.equals("audio");
-            ChatActivityUtils.a(localQQAppInterface, localQQAppInterface.getApp(), i, str2, (String)localObject, "", paramBoolean, null, true, true, null, "from_internal", null);
-            return;
-            if (paramHashMap.containsKey("nickname")) {
-              localObject = String.valueOf(paramHashMap.get("nickname"));
-            }
-          }
-        }
+        Intent localIntent = new Intent(localActivity, QQBrowserActivity.class);
+        localIntent.putExtra("url", appw.a(this.a).g);
+        localIntent.putExtra("fromArkAppDownload", true);
+        localActivity.startActivity(localIntent);
       }
-      return;
+      adhh.a(appw.a(this.a), -4, "need to download");
     }
-    catch (Exception paramHashMap)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MessengerService", 2, "onGetSigmsg ", paramHashMap);
-      }
+      appw.a(this.a).a();
+      appw.a(this.a).dismiss();
+      appw.a(this.a, null);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      appw.a(this.a, appw.a(this.a).a, appw.a(this.a).b, appw.a(this.a).c, appw.a(this.a).d, appw.a(this.a).e, appw.a(this.a).f);
+      adhh.a(appw.a(this.a), adec.a);
     }
   }
 }

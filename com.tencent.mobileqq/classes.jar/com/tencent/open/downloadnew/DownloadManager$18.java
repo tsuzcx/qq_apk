@@ -3,10 +3,10 @@ package com.tencent.open.downloadnew;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bfbm;
-import bflp;
-import bfok;
-import bfpz;
+import biip;
+import bisy;
+import bivr;
+import bixg;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,14 +14,14 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DownloadManager$18
   implements Runnable
 {
-  public DownloadManager$18(bfok parambfok) {}
+  public DownloadManager$18(bivr parambivr) {}
   
   public void run()
   {
     DownloadInfo localDownloadInfo;
     try
     {
-      if (!bfbm.a().a().getSharedPreferences("opensdk_config", 0).getBoolean("download_clear_unuse", false))
+      if (!biip.a().a().getSharedPreferences("opensdk_config", 0).getBoolean("download_clear_unuse", false))
       {
         Iterator localIterator = this.this$0.a.values().iterator();
         for (;;)
@@ -41,7 +41,7 @@ public class DownloadManager$18
           if (this.this$0.a(str) == null)
           {
             this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-            bfpz.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+            bixg.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
           }
         }
       }
@@ -49,7 +49,7 @@ public class DownloadManager$18
     }
     catch (Exception localException)
     {
-      bflp.c("DownloadManager_", "checkDownloadList>>>", localException);
+      bisy.c("DownloadManager_", "checkDownloadList>>>", localException);
     }
     label134:
     label173:
@@ -61,17 +61,17 @@ public class DownloadManager$18
         break;
       }
       this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-      bfpz.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+      bixg.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
       break;
     } while (this.this$0.a.size() <= 200);
-    Object localObject = bfbm.a().a().getSharedPreferences("opensdk_config", 0).edit();
+    Object localObject = biip.a().a().getSharedPreferences("opensdk_config", 0).edit();
     ((SharedPreferences.Editor)localObject).putBoolean("download_clear_unuse", true);
     ((SharedPreferences.Editor)localObject).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.18
  * JD-Core Version:    0.7.0.1
  */

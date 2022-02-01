@@ -1,20 +1,36 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.ocr.ui.SearchSougouResultItemBuilder.UrlDownloadListener.1;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-class ayim
-  implements View.OnClickListener
+public class ayim
+  implements URLDrawable.URLDrawableListener
 {
-  ayim(ayik paramayik, besf parambesf) {}
+  ayim(ayil paramayil) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    ((amch)ayii.a(this.jdField_a_of_type_Ayik.jdField_a_of_type_Ayii).getManager(299)).a();
-    this.jdField_a_of_type_Besf.dismiss();
-    ayii.a(this.jdField_a_of_type_Ayik.jdField_a_of_type_Ayii);
-    aysc.a(this.jdField_a_of_type_Ayik.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ReportModelDC02528().module("all_result").action("clk_his_del").ver2(aysc.a(this.jdField_a_of_type_Ayik.jdField_a_of_type_Ayii.b)).ver7("{experiment_id:" + aysc.b + "}"));
+    if ((this.a.a == null) || (paramURLDrawable == null) || (paramURLDrawable.getURL() == null)) {}
+    do
+    {
+      return;
+      paramThrowable = this.a.a.findViewWithTag(paramURLDrawable.getURL().toString());
+      if ((paramThrowable != null) && ((paramThrowable instanceof ImageView))) {
+        paramThrowable.post(new SearchSougouResultItemBuilder.UrlDownloadListener.1(this, paramThrowable));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "UrlDownloadListener image fail," + paramURLDrawable.getURL());
   }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

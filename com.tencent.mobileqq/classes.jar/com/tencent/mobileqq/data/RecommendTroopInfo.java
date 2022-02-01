@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecommendTroopInfo
-  extends awge
+  extends Entity
   implements Cloneable
 {
   public int authType;
@@ -29,7 +29,7 @@ public class RecommendTroopInfo
   public short option;
   public String ownerUin;
   public String tag;
-  @awhs
+  @unique
   public String uin;
   
   public Object clone()
@@ -52,7 +52,7 @@ public class RecommendTroopInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecommendTroopInfo
  * JD-Core Version:    0.7.0.1
  */

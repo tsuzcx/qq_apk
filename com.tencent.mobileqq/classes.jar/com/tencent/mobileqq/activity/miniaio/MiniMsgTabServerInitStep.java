@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import bhth;
+import bkgq;
 import com.tencent.commonsdk.util.notification.NotificationLimiterUtil;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 
@@ -15,10 +15,10 @@ public class MiniMsgTabServerInitStep
     jdField_b_of_type_JavaLangString = "MiniMsgTabServerInitStep";
   }
   
-  private void b()
+  private void a()
   {
     a = true;
-    NotificationLimiterUtil.setLimiter(new bhth());
+    NotificationLimiterUtil.setLimiter(new bkgq());
   }
   
   public int a()
@@ -29,13 +29,13 @@ public class MiniMsgTabServerInitStep
     for (;;)
     {
       return 7;
-      b();
+      a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgTabServerInitStep
  * JD-Core Version:    0.7.0.1
  */

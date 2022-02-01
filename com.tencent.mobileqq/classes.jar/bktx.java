@@ -1,21 +1,15 @@
-import android.support.annotation.Nullable;
+import android.os.IInterface;
 
-class bktx
-  implements bmeo<bkya>
+public abstract interface bktx
+  extends IInterface
 {
-  bktx(bktp parambktp) {}
+  public abstract String a();
   
-  public void a(@Nullable bkya parambkya)
-  {
-    bktp.a(this.a, parambkya);
-    if (bktp.a(this.a) != null) {
-      bktp.a(this.a).a(bktp.a(this.a).a(), bktp.a(this.a));
-    }
-  }
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bktx
  * JD-Core Version:    0.7.0.1
  */

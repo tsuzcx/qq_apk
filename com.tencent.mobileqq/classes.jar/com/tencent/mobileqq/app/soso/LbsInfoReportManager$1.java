@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.app.soso;
 
-import ampj;
 import android.os.SystemClock;
-import awgf;
-import awgg;
+import aooq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.LbsReportInfo;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class LbsInfoReportManager$1
   implements Runnable
 {
-  public LbsInfoReportManager$1(ampj paramampj, double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  public LbsInfoReportManager$1(aooq paramaooq, double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
@@ -30,15 +30,15 @@ public class LbsInfoReportManager$1
     localLbsReportInfo.city = this.d;
     localLbsReportInfo.district = this.e;
     localLbsReportInfo.createContent();
-    ampj.a(this.this$0).add(localLbsReportInfo);
-    ampj.a(this.this$0, this.jdField_a_of_type_Double);
-    ampj.b(this.this$0, this.jdField_b_of_type_Double);
-    ampj.a(this.this$0, SystemClock.elapsedRealtime());
+    aooq.a(this.this$0).add(localLbsReportInfo);
+    aooq.a(this.this$0, this.jdField_a_of_type_Double);
+    aooq.b(this.this$0, this.jdField_b_of_type_Double);
+    aooq.a(this.this$0, SystemClock.elapsedRealtime());
     if (QLog.isColorLevel()) {
-      QLog.i("LBSReport", 2, "onReceiveLbsInfo cache size : " + ampj.a(this.this$0).size() + " lastReportTime: " + ampj.a(this.this$0) + " currentTime: " + NetConnInfoCenter.getServerTime());
+      QLog.i("LBSReport", 2, "onReceiveLbsInfo cache size : " + aooq.a(this.this$0).size() + " lastReportTime: " + aooq.a(this.this$0) + " currentTime: " + NetConnInfoCenter.getServerTime());
     }
     int i;
-    if ((ampj.a(this.this$0).a != null) && (!ampj.a(this.this$0).a.b()))
+    if ((aooq.a(this.this$0).a != null) && (!aooq.a(this.this$0).a.b()))
     {
       i = 1;
       if (i != 0) {
@@ -51,28 +51,28 @@ public class LbsInfoReportManager$1
       return;
       i = 0;
       break;
-      if (!ampj.a(this.this$0)) {
-        ampj.a(this.this$0);
+      if (!aooq.a(this.this$0)) {
+        aooq.a(this.this$0);
       }
-      if ((ampj.a(this.this$0).size() >= 20) || (NetConnInfoCenter.getServerTime() - ampj.a(this.this$0) >= 1200L))
+      if ((aooq.a(this.this$0).size() >= 20) || (NetConnInfoCenter.getServerTime() - aooq.a(this.this$0) >= 1200L))
       {
-        this.this$0.a(ampj.a(this.this$0), 0);
-        if (!ampj.b(this.this$0)) {
-          this.this$0.a(ampj.a(this.this$0, ampj.a(this.this$0)), LbsReportInfo.convert2StrList(ampj.a(this.this$0)), ampj.a(this.this$0), 0);
+        this.this$0.a(aooq.a(this.this$0), 0);
+        if (!aooq.b(this.this$0)) {
+          this.this$0.a(aooq.a(this.this$0, aooq.a(this.this$0)), LbsReportInfo.convert2StrList(aooq.a(this.this$0)), aooq.a(this.this$0), 0);
         }
-        ampj.a(this.this$0).clear();
-        ampj.a(this.this$0).getEntityManagerFactory().createEntityManager().a(LbsReportInfo.class.getSimpleName(), null, null);
-        ampj.b(this.this$0, NetConnInfoCenter.getServerTime());
+        aooq.a(this.this$0).clear();
+        aooq.a(this.this$0).a().createEntityManager().delete(LbsReportInfo.class.getSimpleName(), null, null);
+        aooq.b(this.this$0, NetConnInfoCenter.getServerTime());
         return;
       }
-      ampj.a(this.this$0).getEntityManagerFactory().createEntityManager().a(localLbsReportInfo);
+      aooq.a(this.this$0).a().createEntityManager().persist(localLbsReportInfo);
     } while (!QLog.isColorLevel());
     QLog.d("LBSReport", 2, "update db");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.soso.LbsInfoReportManager.1
  * JD-Core Version:    0.7.0.1
  */

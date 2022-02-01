@@ -1,69 +1,41 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.friends.intimate.MiniGamePlayTogetherHandler.1.1;
+import com.tencent.mobileqq.friends.intimate.MiniGamePlayTogetherHandler.1.2;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.im.msg.im_msg_body.RichText;
+import org.json.JSONObject;
 
-class aupk
-  implements awkh
+public final class aupk
+  implements MiniAppCmdInterface
 {
-  int jdField_a_of_type_Int;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  aupk(Context paramContext, String paramString) {}
   
-  public aupk(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString, int paramInt)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
-  {
-    return null;
-  }
-  
-  public void a(awki paramawki) {}
-  
-  public void b(awki paramawki)
-  {
-    if (paramawki.jdField_a_of_type_Int == 0)
+    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+    if (paramJSONObject != null)
     {
-      MessageForStructing localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      localMessageForStructing.structingMsg.mResid = paramawki.c;
-      localMessageForStructing.structingMsg.mFileName = String.valueOf(localMessageForStructing.uniseq);
-      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localMessageForStructing.uniseq, localMessageForStructing.structingMsg.getBytes());
-      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "send real struct msg done, cost : " + (System.currentTimeMillis() - aupg.b()));
+      int i = paramJSONObject.optInt("retCode");
+      String str = paramJSONObject.optString("errMsg");
+      if (i == 0)
+      {
+        localActivity.startActivity(afur.a(new Intent(localActivity, SplashActivity.class), new int[] { 2 }).putExtra("uin", this.jdField_a_of_type_JavaLangString).putExtra("uintype", 0));
+        return;
       }
+      localActivity.runOnUiThread(new MiniGamePlayTogetherHandler.1.1(this, localActivity, str));
+      QLog.e("MiniGamePlayTogetherHandler", 1, new Object[] { "createUpdatableMsg fail, retCode=", Integer.valueOf(i), ", errMsg=", str, ",ret=", paramJSONObject.toString() });
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG", 2, "upload multi msg pack failed, result.errStr=" + paramawki.b + ",result.errStr=" + paramawki.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
-    ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    paramawki = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    if ((paramawki != null) && (paramawki.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)) {
-      paramawki.extraflag = 32768;
-    }
-    paramawki = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
-    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
-    ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0)).notifyUI(MessageHandler.a(this.jdField_a_of_type_Int), false, new Object[] { paramawki, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+    localActivity.runOnUiThread(new MiniGamePlayTogetherHandler.1.2(this, localActivity));
+    QLog.e("MiniGamePlayTogetherHandler", 1, new Object[] { "createUpdatableMsg fail, isSuc=", Boolean.valueOf(paramBoolean), ", ret=", paramJSONObject });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aupk
  * JD-Core Version:    0.7.0.1
  */

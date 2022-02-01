@@ -1,32 +1,73 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.2.1;
-import com.tencent.widget.XListView;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.widget.Button;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
+import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 
 public class awpi
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public awpi(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  public awpi(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://ti.qq.com/cgi-node/specialtag/zanlist?_wv=1027&asyncMode=3");
-    this.a.startActivity(paramView);
-    paramView = PersonalityLabelGalleryActivity.a(this.a);
-    paramView.praiseCount += PersonalityLabelGalleryActivity.a(this.a).unreadCount;
-    PersonalityLabelGalleryActivity.a(this.a).unreadCount = 0;
-    PersonalityLabelGalleryActivity.a(this.a).postDelayed(new PersonalityLabelGalleryActivity.2.1(this), 500L);
-    azqs.b(this.a.app, "dc00898", "", "", "0X8007FCF", "0X8007FCF", 0, 0, "", "", "", "");
+    if (paramMessage.what == 1)
+    {
+      if (this.a.getActivity() == null) {
+        return true;
+      }
+      if (MsgBackupPCAuthFragment.a(this.a) > 0)
+      {
+        if (MsgBackupPCAuthFragment.a(this.a) == 60)
+        {
+          MsgBackupPCAuthFragment.a(this.a, 1);
+          MsgBackupPCAuthFragment.a(this.a).setLeftBackVisible(0);
+          MsgBackupPCAuthFragment.b(this.a).setRightViewTextVisible(8);
+        }
+        MsgBackupPCAuthFragment.b(this.a);
+        this.a.b.setText(this.a.getString(2131690472, new Object[] { Integer.valueOf(MsgBackupPCAuthFragment.a(this.a)) }));
+        if (AppSetting.c) {
+          this.a.b.setContentDescription(this.a.getString(2131690472));
+        }
+        MsgBackupPCAuthFragment.a(this.a).sendEmptyMessageDelayed(1, 1000L);
+        return true;
+      }
+      MsgBackupPCAuthFragment.a(this.a).removeCallbacksAndMessages(null);
+      MsgBackupPCAuthFragment.a(this.a, 60);
+      MsgBackupPCAuthFragment.a(this.a, false);
+      if (bgnt.a(this.a.getActivity()) == 1)
+      {
+        i = 1;
+        label205:
+        paramMessage = this.a;
+        if (i == 0) {
+          break label288;
+        }
+      }
+      label288:
+      for (int i = 0;; i = 2)
+      {
+        MsgBackupPCAuthFragment.a(paramMessage, i);
+        MsgBackupPCAuthFragment.c(this.a).setLeftBackVisible(0);
+        MsgBackupPCAuthFragment.d(this.a).setRightViewTextVisible(8);
+        this.a.b.setText(2131690462);
+        if (!AppSetting.c) {
+          break;
+        }
+        this.a.b.setContentDescription(this.a.getString(2131690462));
+        return true;
+        i = 0;
+        break label205;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpi
  * JD-Core Version:    0.7.0.1
  */

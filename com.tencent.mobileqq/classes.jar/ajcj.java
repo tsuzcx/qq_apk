@@ -1,16 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
 public class ajcj
-  implements View.OnClickListener
+  extends ajcf
 {
-  public ajcj(ChooseItemView paramChooseItemView, View.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public ajcj(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    super(paramContext, paramQQAppInterface, paramBoolean);
+  }
+  
+  protected int a()
+  {
+    return 10028;
+  }
+  
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.a(paramRecommendTroopItem);
+    bcst.b(null, "dc00899", "Grp_find_new", "", "grptab", "Clk_join", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int b()
+  {
+    return 21;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.b(paramRecommendTroopItem);
+    bcst.b(null, "dc00899", "Grp_recom", "", "search", "recom_clk_add", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int c()
+  {
+    return 10003;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.c(paramRecommendTroopItem);
+    bcst.b(null, "dc00899", "Grp_find_new", "", "grptab", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
   }
 }
 

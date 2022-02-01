@@ -1,35 +1,28 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.TroopInfo;
 
 class begu
-  implements bejp
+  extends anxg
 {
   begu(begt parambegt) {}
   
-  public int a(Bundle paramBundle)
+  protected void a(int paramInt1, int paramInt2)
   {
-    int j = this.a.a;
-    int i = -1;
-    long l = System.currentTimeMillis();
-    switch (this.a.a)
-    {
-    }
-    for (;;)
-    {
-      QLog.i("WebViewModule", 1, "CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost" + (System.currentTimeMillis() - l) + " ms.");
-      return i;
-      i = this.a.a(paramBundle);
-      continue;
-      i = this.a.b(paramBundle);
-      continue;
-      i = this.a.c(paramBundle);
-      continue;
-      i = this.a.d(paramBundle);
-      continue;
-      i = this.a.e(paramBundle);
-      continue;
-      i = this.a.f(paramBundle);
-    }
+    begt.a(this.a, false, paramInt1, paramInt2, null);
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    begt.a(this.a, true, paramInt1, paramInt2, paramString);
+  }
+  
+  protected void a(String paramString)
+  {
+    begt.a(this.a, paramString);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    begt.a(this.a, paramBoolean, paramLong, paramTroopInfo);
   }
 }
 

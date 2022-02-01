@@ -2,16 +2,16 @@ package com.tencent.mobileqq.webview.swift.component;
 
 import android.app.Activity;
 import android.content.Intent;
-import beir;
+import bhpv;
 import com.tencent.mobileqq.bigbrother.TeleScreenRunnable;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import ybk;
+import zvc;
 
 public class SwiftBrowserShareMenuHandler$1
   implements TeleScreenRunnable
 {
-  public SwiftBrowserShareMenuHandler$1(beir parambeir, WeakReference paramWeakReference, Intent paramIntent) {}
+  public SwiftBrowserShareMenuHandler$1(bhpv parambhpv, WeakReference paramWeakReference, Intent paramIntent) {}
   
   public void run()
   {
@@ -30,13 +30,13 @@ public class SwiftBrowserShareMenuHandler$1
     }
     catch (Throwable localThrowable)
     {
-      ybk.a(1, 2131695733);
+      zvc.a(1, 2131694621);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,33 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class alhd
+  implements View.OnClickListener
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "0";
-  public String g = "0";
+  public alhd(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (EditLocalVideoActivity.a(this.a).isPlaying())
+    {
+      EditLocalVideoActivity.b(this.a, false);
+      EditLocalVideoActivity.a(this.a).pause();
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      EditLocalVideoActivity.b(this.a, true);
+      EditLocalVideoActivity.b(this.a).setVisibility(8);
+      EditLocalVideoActivity.a(this.a).start();
+      EditLocalVideoActivity.a(this.a).setVisibility(4);
+    }
+  }
 }
 
 

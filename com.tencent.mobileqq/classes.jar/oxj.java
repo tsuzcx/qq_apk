@@ -1,51 +1,33 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class oxj
-  implements oxn
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initCommentContentClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxj
+  implements owp
 {
-  oxj(oxi paramoxi) {}
-  
-  public int a(Bundle paramBundle)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
   {
-    int j = this.a.a;
-    int i = -1;
-    long l = System.currentTimeMillis();
-    switch (this.a.a)
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    if ((paramViewBase instanceof peh))
     {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost[" + (System.currentTimeMillis() - l) + "ms]" + " timestamps[" + System.currentTimeMillis() + "]");
+      ((peh)paramViewBase).a(parampan, (View)paramContainer);
+      if (opu.a(parampay)) {
+        paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oxk(parampan, paramContainer, parampay));
       }
-      ors.a(ors.a(), true, j, System.currentTimeMillis() - l);
-      return i;
-      i = this.a.b(paramBundle);
-      continue;
-      i = this.a.c(paramBundle);
-      continue;
-      i = this.a.d(paramBundle);
-      continue;
-      i = this.a.e(paramBundle);
-      continue;
-      i = this.a.f(paramBundle);
-      continue;
-      i = this.a.g(paramBundle);
-      continue;
-      i = this.a.h(paramBundle);
-      continue;
-      i = this.a.i(paramBundle);
-      continue;
-      i = this.a.j(paramBundle);
-      continue;
-      i = this.a.k(paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oxj
  * JD-Core Version:    0.7.0.1
  */

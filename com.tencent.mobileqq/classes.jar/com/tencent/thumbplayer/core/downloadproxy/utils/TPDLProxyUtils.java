@@ -1,5 +1,8 @@
 package com.tencent.thumbplayer.core.downloadproxy.utils;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class TPDLProxyUtils
 {
   private static final String FILE_NAME = "TPDLProxyUtils";
@@ -20,6 +23,70 @@ public class TPDLProxyUtils
       {
         TPDLProxyLog.e("TPDLProxyUtils", 0, "tpdlnative", "byteArrayToString failed, error:" + paramArrayOfByte.toString());
         paramArrayOfByte = "";
+      }
+    }
+  }
+  
+  public static String losePackageCheck(int paramInt)
+  {
+    label220:
+    label223:
+    for (;;)
+    {
+      try
+      {
+        Object localObject1 = "ping -c " + paramInt + " www.qq.com";
+        BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec((String)localObject1).getInputStream()));
+        Object localObject2 = "";
+        localObject1 = "";
+        String str;
+        Object localObject5;
+        Object localObject3;
+        int i;
+        Object localObject4;
+      }
+      catch (Throwable localThrowable1)
+      {
+        try
+        {
+          str = localBufferedReader.readLine();
+          localObject5 = localObject2;
+          localObject3 = localObject1;
+          if (str != null)
+          {
+            if (!str.contains(" packet loss")) {
+              break label223;
+            }
+            paramInt = str.indexOf("received, ");
+            i = str.indexOf("%");
+            localObject3 = str.substring(paramInt + "received, ".length(), i + 1);
+            localObject1 = localObject3;
+          }
+        }
+        catch (Throwable localThrowable2)
+        {
+          continue;
+        }
+        try
+        {
+          if (!str.contains("avg")) {
+            break label220;
+          }
+          paramInt = str.indexOf("/", 20);
+          localObject3 = str.substring(paramInt + 1, str.indexOf(".", paramInt));
+          localObject2 = localObject3;
+        }
+        catch (Throwable localThrowable3)
+        {
+          continue;
+        }
+        localThrowable1 = localThrowable1;
+        localObject2 = "";
+        localObject1 = "";
+        localThrowable1.printStackTrace();
+        localObject4 = localObject1;
+        localObject5 = localObject2;
+        return localObject4 + ";" + localObject5;
       }
     }
   }
@@ -68,34 +135,34 @@ public class TPDLProxyUtils
     //   3: astore 4
     //   5: aconst_null
     //   6: astore 5
-    //   8: new 72	java/io/ByteArrayOutputStream
+    //   8: new 145	java/io/ByteArrayOutputStream
     //   11: dup
-    //   12: invokespecial 73	java/io/ByteArrayOutputStream:<init>	()V
+    //   12: invokespecial 146	java/io/ByteArrayOutputStream:<init>	()V
     //   15: astore_1
     //   16: aload_1
     //   17: astore_2
     //   18: aload 4
     //   20: astore_3
-    //   21: new 75	java/io/ObjectOutputStream
+    //   21: new 148	java/io/ObjectOutputStream
     //   24: dup
     //   25: aload_1
-    //   26: invokespecial 78	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   26: invokespecial 151	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   29: astore 4
     //   31: aload 4
     //   33: aload_0
-    //   34: invokevirtual 82	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   34: invokevirtual 155	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   37: aload_1
-    //   38: ldc 84
-    //   40: invokevirtual 87	java/io/ByteArrayOutputStream:toString	(Ljava/lang/String;)Ljava/lang/String;
+    //   38: ldc 157
+    //   40: invokevirtual 160	java/io/ByteArrayOutputStream:toString	(Ljava/lang/String;)Ljava/lang/String;
     //   43: astore_0
     //   44: aload 4
     //   46: ifnull +8 -> 54
     //   49: aload 4
-    //   51: invokevirtual 90	java/io/ObjectOutputStream:close	()V
+    //   51: invokevirtual 163	java/io/ObjectOutputStream:close	()V
     //   54: aload_1
     //   55: ifnull +3 -> 58
     //   58: aload_1
-    //   59: invokevirtual 91	java/io/ByteArrayOutputStream:close	()V
+    //   59: invokevirtual 164	java/io/ByteArrayOutputStream:close	()V
     //   62: aload_0
     //   63: areturn
     //   64: astore_2
@@ -105,7 +172,7 @@ public class TPDLProxyUtils
     //   70: new 30	java/lang/StringBuilder
     //   73: dup
     //   74: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   77: ldc 93
+    //   77: ldc 166
     //   79: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   82: aload_2
     //   83: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -120,7 +187,7 @@ public class TPDLProxyUtils
     //   104: new 30	java/lang/StringBuilder
     //   107: dup
     //   108: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   111: ldc 95
+    //   111: ldc 168
     //   113: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: aload_1
     //   117: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -144,7 +211,7 @@ public class TPDLProxyUtils
     //   148: new 30	java/lang/StringBuilder
     //   151: dup
     //   152: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   155: ldc 97
+    //   155: ldc 170
     //   157: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   160: aload_0
     //   161: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -154,11 +221,11 @@ public class TPDLProxyUtils
     //   173: aload 4
     //   175: ifnull +8 -> 183
     //   178: aload 4
-    //   180: invokevirtual 90	java/io/ObjectOutputStream:close	()V
+    //   180: invokevirtual 163	java/io/ObjectOutputStream:close	()V
     //   183: aload_1
     //   184: ifnull +3 -> 187
     //   187: aload_1
-    //   188: invokevirtual 91	java/io/ByteArrayOutputStream:close	()V
+    //   188: invokevirtual 164	java/io/ByteArrayOutputStream:close	()V
     //   191: ldc 19
     //   193: areturn
     //   194: astore_0
@@ -168,7 +235,7 @@ public class TPDLProxyUtils
     //   200: new 30	java/lang/StringBuilder
     //   203: dup
     //   204: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   207: ldc 93
+    //   207: ldc 166
     //   209: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   212: aload_0
     //   213: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -183,7 +250,7 @@ public class TPDLProxyUtils
     //   234: new 30	java/lang/StringBuilder
     //   237: dup
     //   238: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   241: ldc 95
+    //   241: ldc 168
     //   243: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   246: aload_0
     //   247: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -197,11 +264,11 @@ public class TPDLProxyUtils
     //   265: aload_3
     //   266: ifnull +7 -> 273
     //   269: aload_3
-    //   270: invokevirtual 90	java/io/ObjectOutputStream:close	()V
+    //   270: invokevirtual 163	java/io/ObjectOutputStream:close	()V
     //   273: aload_1
     //   274: ifnull +3 -> 277
     //   277: aload_1
-    //   278: invokevirtual 91	java/io/ByteArrayOutputStream:close	()V
+    //   278: invokevirtual 164	java/io/ByteArrayOutputStream:close	()V
     //   281: aload_0
     //   282: athrow
     //   283: astore_2
@@ -211,7 +278,7 @@ public class TPDLProxyUtils
     //   289: new 30	java/lang/StringBuilder
     //   292: dup
     //   293: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   296: ldc 93
+    //   296: ldc 166
     //   298: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   301: aload_2
     //   302: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -226,7 +293,7 @@ public class TPDLProxyUtils
     //   323: new 30	java/lang/StringBuilder
     //   326: dup
     //   327: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   330: ldc 95
+    //   330: ldc 168
     //   332: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   335: aload_1
     //   336: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -286,37 +353,37 @@ public class TPDLProxyUtils
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
-    //   3: new 101	java/io/ByteArrayInputStream
+    //   3: new 174	java/io/ByteArrayInputStream
     //   6: dup
     //   7: aload_0
-    //   8: ldc 84
-    //   10: invokevirtual 105	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   13: invokespecial 108	java/io/ByteArrayInputStream:<init>	([B)V
+    //   8: ldc 157
+    //   10: invokevirtual 178	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   13: invokespecial 181	java/io/ByteArrayInputStream:<init>	([B)V
     //   16: astore_1
-    //   17: new 110	java/io/ObjectInputStream
+    //   17: new 183	java/io/ObjectInputStream
     //   20: dup
     //   21: aload_1
-    //   22: invokespecial 113	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   22: invokespecial 184	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   25: astore_0
     //   26: aload_0
     //   27: astore_3
     //   28: aload_1
     //   29: astore_2
     //   30: aload_0
-    //   31: invokevirtual 117	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   31: invokevirtual 188	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   34: astore 4
     //   36: aload 4
     //   38: astore_2
     //   39: aload_0
     //   40: ifnull +7 -> 47
     //   43: aload_0
-    //   44: invokevirtual 118	java/io/ObjectInputStream:close	()V
+    //   44: invokevirtual 189	java/io/ObjectInputStream:close	()V
     //   47: aload_2
     //   48: astore_0
     //   49: aload_1
     //   50: ifnull +9 -> 59
     //   53: aload_1
-    //   54: invokevirtual 119	java/io/ByteArrayInputStream:close	()V
+    //   54: invokevirtual 190	java/io/ByteArrayInputStream:close	()V
     //   57: aload_2
     //   58: astore_0
     //   59: aload_0
@@ -328,7 +395,7 @@ public class TPDLProxyUtils
     //   67: new 30	java/lang/StringBuilder
     //   70: dup
     //   71: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   74: ldc 121
+    //   74: ldc 192
     //   76: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: aload_0
     //   80: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -343,7 +410,7 @@ public class TPDLProxyUtils
     //   101: new 30	java/lang/StringBuilder
     //   104: dup
     //   105: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   108: ldc 123
+    //   108: ldc 194
     //   110: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   113: aload_0
     //   114: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -367,7 +434,7 @@ public class TPDLProxyUtils
     //   143: new 30	java/lang/StringBuilder
     //   146: dup
     //   147: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   150: ldc 125
+    //   150: ldc 196
     //   152: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: aload 4
     //   157: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -377,13 +444,13 @@ public class TPDLProxyUtils
     //   169: aload_0
     //   170: ifnull +7 -> 177
     //   173: aload_0
-    //   174: invokevirtual 118	java/io/ObjectInputStream:close	()V
+    //   174: invokevirtual 189	java/io/ObjectInputStream:close	()V
     //   177: aload 5
     //   179: astore_0
     //   180: aload_1
     //   181: ifnull -122 -> 59
     //   184: aload_1
-    //   185: invokevirtual 119	java/io/ByteArrayInputStream:close	()V
+    //   185: invokevirtual 190	java/io/ByteArrayInputStream:close	()V
     //   188: aconst_null
     //   189: areturn
     //   190: astore_0
@@ -393,7 +460,7 @@ public class TPDLProxyUtils
     //   196: new 30	java/lang/StringBuilder
     //   199: dup
     //   200: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   203: ldc 123
+    //   203: ldc 194
     //   205: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   208: aload_0
     //   209: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -409,7 +476,7 @@ public class TPDLProxyUtils
     //   229: new 30	java/lang/StringBuilder
     //   232: dup
     //   233: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   236: ldc 121
+    //   236: ldc 192
     //   238: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   241: aload_0
     //   242: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -425,11 +492,11 @@ public class TPDLProxyUtils
     //   262: aload_3
     //   263: ifnull +7 -> 270
     //   266: aload_3
-    //   267: invokevirtual 118	java/io/ObjectInputStream:close	()V
+    //   267: invokevirtual 189	java/io/ObjectInputStream:close	()V
     //   270: aload_1
     //   271: ifnull +7 -> 278
     //   274: aload_1
-    //   275: invokevirtual 119	java/io/ByteArrayInputStream:close	()V
+    //   275: invokevirtual 190	java/io/ByteArrayInputStream:close	()V
     //   278: aload_0
     //   279: athrow
     //   280: astore_2
@@ -439,7 +506,7 @@ public class TPDLProxyUtils
     //   286: new 30	java/lang/StringBuilder
     //   289: dup
     //   290: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   293: ldc 121
+    //   293: ldc 192
     //   295: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   298: aload_2
     //   299: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -454,7 +521,7 @@ public class TPDLProxyUtils
     //   320: new 30	java/lang/StringBuilder
     //   323: dup
     //   324: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   327: ldc 123
+    //   327: ldc 194
     //   329: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   332: aload_1
     //   333: invokevirtual 41	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -509,7 +576,7 @@ public class TPDLProxyUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyUtils
  * JD-Core Version:    0.7.0.1
  */

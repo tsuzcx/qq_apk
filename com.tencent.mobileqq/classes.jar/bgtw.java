@@ -1,28 +1,57 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-
-class bgtw
-  implements Handler.Callback
+public class bgtw
 {
-  bgtw(bgtv parambgtv) {}
+  static final bgtw jdField_a_of_type_Bgtw = new bgtw(0);
+  static final bgtw b = new bgtw(1);
+  static final bgtw c = new bgtw(257);
+  static final bgtw d = new bgtw(2);
+  static final bgtw e = new bgtw(258);
+  static final bgtw f = new bgtw(3);
+  static final bgtw g = new bgtw(259);
+  final int jdField_a_of_type_Int;
   
-  public boolean handleMessage(Message paramMessage)
+  public bgtw(int paramInt)
   {
-    int i = paramMessage.what;
-    paramMessage.getData().setClassLoader(bgtv.a(this.a).getClassLoader());
-    MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramMessage.getData().getParcelable("KEY_APPINFO");
-    ResultReceiver localResultReceiver = (ResultReceiver)paramMessage.getData().getParcelable("receiver");
-    bgtv.a(this.a, i, paramMessage.getData(), localMiniAppInfo, localResultReceiver);
-    return false;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static bgtw a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return jdField_a_of_type_Bgtw;
+    case 1: 
+      return b;
+    case 2: 
+      return d;
+    case 3: 
+      return f;
+    case 257: 
+      return c;
+    case 258: 
+      return e;
+    }
+    return g;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int & 0xF) == 1;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Int & 0xF) == 3;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Int > 15;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgtw
  * JD-Core Version:    0.7.0.1
  */

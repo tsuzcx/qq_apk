@@ -1,52 +1,34 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-import java.lang.reflect.Field;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.qzone.panorama.widget.PanoramaLoadingBall;
 
 public class bmcc
-  extends Scroller
+  extends Handler
 {
-  private int a = 750;
-  
-  public bmcc(Context paramContext)
+  public bmcc(PanoramaLoadingBall paramPanoramaLoadingBall, Looper paramLooper)
   {
-    super(paramContext);
+    super(paramLooper);
   }
   
-  public bmcc(Context paramContext, Interpolator paramInterpolator)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramContext, paramInterpolator);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public void a(ViewPager paramViewPager)
-  {
-    try
+    super.handleMessage(paramMessage);
+    if ((paramMessage.what == 291) && (Build.VERSION.SDK_INT >= 11))
     {
-      Field localField = ViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      localField.set(paramViewPager, this);
+      if (PanoramaLoadingBall.a(this.a)) {
+        PanoramaLoadingBall.a(this.a, 60.0F);
+      }
+      if (PanoramaLoadingBall.a(this.a) == 0) {
+        this.a.setRotationX(PanoramaLoadingBall.a(this.a));
+      }
+    }
+    else
+    {
       return;
     }
-    catch (Exception paramViewPager)
-    {
-      paramViewPager.printStackTrace();
-    }
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+    this.a.setRotationY(PanoramaLoadingBall.a(this.a));
   }
 }
 

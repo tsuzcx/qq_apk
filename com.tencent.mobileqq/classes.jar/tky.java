@@ -1,37 +1,23 @@
-import UserGrowth.stCallInfo;
-import UserGrowth.stGlobalConfig;
-import android.app.Activity;
-import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class tky
+  implements View.OnClickListener
 {
-  public static void a(Activity paramActivity, tlc paramtlc)
-  {
-    stGlobalConfig localstGlobalConfig = tee.a().a();
-    if ((localstGlobalConfig != null) && (localstGlobalConfig.callinfo != null) && (localstGlobalConfig.callinfo.switch_call_live))
-    {
-      tlo.e("OuterInterceptManager", "stGlobalConfig.callinfo: " + localstGlobalConfig.callinfo);
-      if (paramtlc != null) {
-        paramtlc.b();
-      }
-      b(paramActivity, paramtlc);
-    }
-    while (paramtlc == null) {
-      return;
-    }
-    paramtlc.a();
-  }
+  public tky(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
   
-  private static void b(Activity paramActivity, tlc paramtlc)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new OuterInterceptManager.1(paramActivity, paramtlc));
+    CommonSuspensionGestureLayout.a(this.a).a(true, 0, 5);
+    CommonSuspensionGestureLayout.a(this.a, 5);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tky
  * JD-Core Version:    0.7.0.1
  */

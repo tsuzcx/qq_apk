@@ -1,14 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import androidx.annotation.NonNull;
 
-class ayqw
-  implements View.OnClickListener
+public class ayqw
 {
-  ayqw(ayqv paramayqv) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public ayqw(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    ayqv.a(this.a).a(paramView);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  private boolean a(String[] paramArrayOfString)
+  {
+    String str = null;
+    if (paramArrayOfString.length >= this.jdField_b_of_type_Int) {
+      str = paramArrayOfString[(this.jdField_b_of_type_Int - 1)];
+    }
+    return (str != null) && (str.equals(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "Category [statusId=" + this.jdField_a_of_type_Int + ", displayName=" + this.jdField_b_of_type_JavaLangString + ", detectName=" + this.jdField_a_of_type_JavaLangString + ", level=" + this.jdField_b_of_type_Int + "]";
   }
 }
 

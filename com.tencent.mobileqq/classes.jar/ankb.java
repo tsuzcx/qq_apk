@@ -1,6 +1,33 @@
-public abstract interface ankb
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+
+class ankb
+  implements INetInfoHandler
 {
-  public abstract void a(boolean paramBoolean);
+  ankb(anjx paramanjx) {}
+  
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    this.a.b();
+  }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.b();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.c();
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.c();
+  }
 }
 
 

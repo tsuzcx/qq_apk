@@ -1,24 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
-final class bdfj
-  implements auca
+public abstract interface bdfj
 {
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    AppRuntime localAppRuntime;
-    do
-    {
-      return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(localAppRuntime instanceof QQAppInterface));
-    MediaPlayerManager.a((QQAppInterface)localAppRuntime).a(false);
-  }
+  public abstract int a(int paramInt1, int paramInt2, int paramInt3, String paramString, Paint paramPaint);
+  
+  public abstract String a(bdep parambdep, String paramString);
+  
+  public abstract void a(int paramInt, String paramString, Paint paramPaint);
+  
+  public abstract boolean a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2, Paint paramPaint);
 }
 
 

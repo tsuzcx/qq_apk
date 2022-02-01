@@ -1,43 +1,64 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import VIP.AIOKeyWordReq;
+import VIP.AIOSendReq;
+import VIP.AIOSendRes;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class bbxn
-  extends yud
+public class bbxn
+  extends aber
 {
-  bbxn(bbxl parambbxl) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if ((!paramBoolean) || (paramFileInfo == null)) {}
-    Object localObject2;
-    Object localObject1;
-    do
+    if ((anxx.a.equals(paramToServiceMsg.getServiceCmd())) || (anxx.b.equals(paramToServiceMsg.getServiceCmd())))
     {
-      do
+      if (paramFromServiceMsg == null) {
+        return null;
+      }
+      paramToServiceMsg = new UniPacket(true);
+      try
       {
-        do
-        {
-          do
-          {
-            return;
-            localObject2 = paramFileInfo.str_file_id.get();
-          } while (TextUtils.isEmpty((CharSequence)localObject2));
-          localObject1 = localObject2;
-          if (!((String)localObject2).startsWith("/")) {
-            localObject1 = "/" + (String)localObject2;
-          }
-        } while (!((String)localObject1).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath));
-        bbvl.c("TroopFileUploadFeedsSender", bbvl.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onGetOneFileResult. bus_id:" + paramFileInfo.uint32_bus_id.get() + " dead_time:" + paramFileInfo.uint32_dead_time.get());
-        localObject2 = bbvj.a(this.a.d);
-      } while (localObject2 == null);
-      localObject1 = ((bcmu)localObject2).a((String)localObject1);
-    } while (localObject1 == null);
-    ((bbsa)localObject1).a = paramFileInfo.uint32_bus_id.get();
-    ((bbsa)localObject1).c = paramFileInfo.uint32_dead_time.get();
-    ((bcmu)localObject2).d((bbsa)localObject1);
+        paramToServiceMsg.setEncodeName("utf-8");
+        paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+        paramToServiceMsg = (AIOSendRes)paramToServiceMsg.getByClass("response", new AIOSendRes());
+        return paramToServiceMsg;
+      }
+      catch (RuntimeException paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+        return null;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        return null;
+      }
+    }
+    return null;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("VIP.AIOSendTipsServer.AIOSendTipsObj");
+    if (anxx.a.equals(paramToServiceMsg.getServiceCmd()))
+    {
+      paramUniPacket.setFuncName("CheckPopGrayStips");
+      paramUniPacket.put("request", (AIOSendReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
+    }
+    for (;;)
+    {
+      return true;
+      if (anxx.b.equals(paramToServiceMsg.getServiceCmd()))
+      {
+        paramUniPacket.setFuncName("getUserKeyWordStips");
+        paramUniPacket.put("request", (AIOKeyWordReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
+      }
+    }
+  }
+  
+  public String[] a()
+  {
+    return new String[] { "AIOSendSvc" };
   }
 }
 

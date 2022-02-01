@@ -1,52 +1,116 @@
-import android.os.Handler;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import android.content.res.Resources;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.listentogether.ui.MusicPanelView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.QQBlurView;
 import com.tencent.qphone.base.util.QLog;
 
 public class ailu
-  extends awhw
+  extends aimm
 {
-  public ailu(BindVerifyActivity paramBindVerifyActivity) {}
+  MusicPanelView a;
   
-  protected void c(boolean paramBoolean, int paramInt)
+  public ailu(BaseChatPie paramBaseChatPie, View.OnClickListener paramOnClickListener)
   {
+    super(paramBaseChatPie, paramOnClickListener);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    return super.a(paramVarArgs);
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378965));
+    c();
     if (QLog.isColorLevel()) {
-      QLog.i("BindVerifyActivity", 2, "onVerifyBindSms [" + paramBoolean + ", " + paramInt + "]");
+      QLog.d("ListenTogetherTipBar", 2, "showBlurView() called mBlurBgView = " + Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
     }
-    BindVerifyActivity.a(this.a, false);
-    BindVerifyActivity.a(this.a).removeMessages(4);
-    this.a.b();
-    if (!paramBoolean)
-    {
-      this.a.a("dc00898", "0X8009F19", 0);
-      this.a.a(1, this.a.getString(2131719233));
+    QLog.d("ListenTogetherTipBar", 1, new Object[] { "stack......\n", Log.getStackTraceString(new Throwable()) });
+    if (bdpd.a().c()) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(8);
     }
-    for (;;)
+    View localView;
+    do
     {
-      this.a.app.unRegistObserver(BindVerifyActivity.b(this.a));
-      BindVerifyActivity.b(this.a, null);
       return;
-      if ((paramInt == 0) || (paramInt == 106))
-      {
-        this.a.a();
+      localView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372056);
+      if ((!ThemeUtil.isDefaultOrDIYTheme(false)) && (!ThemeUtil.isSimpleDayTheme(false))) {
+        break;
       }
-      else if (paramInt == 213)
-      {
-        this.a.a("dc00898", "0X8009F19", 0);
-        this.a.a(1, alud.a(2131701528));
-        BindVerifyActivity.a(this.a).setEnabled(true);
-      }
-      else
-      {
-        this.a.a("dc00898", "0X8009F19", 0);
-        String str = alud.a(2131701523);
-        if (paramInt == 107) {
-          str = alud.a(2131701525);
-        }
-        this.a.a(alud.a(2131701529), str);
-      }
+      localView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
+    } while (!QLog.isColorLevel());
+    QLog.d("ListenTogetherTipBar", 2, "showBlurView() visibility called mBlurBgView = " + Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+    return;
+    localView.setBackgroundColor(this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166960));
+    localView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogetherTipBar", 2, "showBlurView() gone called mBlurBgView = " + Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
     }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    super.a(paramInt, paramVarArgs);
+  }
+  
+  protected void a(FrameLayout.LayoutParams paramLayoutParams)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView = new MusicPanelView(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setLayoutParams(paramLayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setId(c());
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.jdField_a_of_type_AndroidViewView$OnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setOnTouchListener(mue.a);
+    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView);
+  }
+  
+  public void a(bdrn parambdrn, QQAppInterface paramQQAppInterface)
+  {
+    super.a(parambdrn, paramQQAppInterface);
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 26;
+  }
+  
+  protected void b()
+  {
+    super.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView != null) {}
+  }
+  
+  public int c()
+  {
+    return 2131369963;
   }
 }
 

@@ -1,29 +1,13 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public class acta
-  extends ambp
+class acta
+  extends AdHttp.Params
 {
-  private WeakReference<Conversation> a;
+  public int a = -2147483648;
   
-  public acta(Conversation paramConversation)
+  public boolean isSuccess()
   {
-    this.a = new WeakReference(paramConversation);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "cameraRedTouchObserver notify dataChanged");
-    }
-    Conversation localConversation = (Conversation)this.a.get();
-    if (localConversation != null)
-    {
-      localConversation.f(false);
-      Conversation.h(localConversation);
-      localConversation.q();
-    }
+    return (super.isSuccess()) && (this.responseData != null);
   }
 }
 

@@ -1,6 +1,26 @@
-public abstract interface alkp
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class alkp
+  implements Handler.Callback
 {
-  public abstract void a(int paramInt);
+  alkp(alko paramalko) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a(null);
+      continue;
+      if (alko.a(this.a) != null) {
+        alko.a(this.a).j();
+      }
+    }
+  }
 }
 
 

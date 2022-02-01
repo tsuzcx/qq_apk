@@ -1,19 +1,21 @@
-import android.opengl.GLES20;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class amwi
-  implements anfd
+  implements andm
 {
   amwi(amwh paramamwh) {}
   
-  public void a()
-  {
-    GLES20.glUniform1i(amwh.a(this.a), amwh.b(this.a));
-  }
-  
   public void a(int paramInt)
   {
-    amwh.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
-    amwp.a("glGetUniformLocation uDisplayType");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.b, 2, new Object[] { "createShortcut result:", Integer.valueOf(paramInt) });
+    }
+    if (this.a.jdField_a_of_type_Andl != null) {
+      this.a.jdField_a_of_type_Andl.a(paramInt);
+    }
+    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, paramInt, new String[] { String.valueOf(this.a.jdField_a_of_type_Int) });
   }
 }
 

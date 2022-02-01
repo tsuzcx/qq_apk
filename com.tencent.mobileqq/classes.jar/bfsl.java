@@ -1,96 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.open.wadl.WadlJsBridge;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
 import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-public class bfsl
+class bfsl
+  extends anxg
 {
-  private bfsm jdField_a_of_type_Bfsm = new bfsm();
-  private WadlJsBridge jdField_a_of_type_ComTencentOpenWadlWadlJsBridge = new WadlJsBridge(null, null, this.jdField_a_of_type_Bfsm);
+  bfsl(bfsk parambfsk) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.doOnDestroy();
-    this.jdField_a_of_type_Bfsm = null;
-  }
-  
-  public void a(bfsn parambfsn)
-  {
-    this.jdField_a_of_type_Bfsm.a(parambfsn);
-  }
-  
-  public void a(String paramString)
-  {
-    try
+    if (QLog.isColorLevel())
     {
-      JSONArray localJSONArray = new JSONArray();
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("appid", paramString);
-      localJSONArray.put(localJSONObject);
-      this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.a().a(localJSONArray.toString(), null);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder(150);
+      localStringBuilder.append("onOIDB0X899_0_Ret").append("| isSuccess = ").append(paramBoolean).append("| troopuin = ").append(paramLong1).append("| nFlag = ").append(paramInt1).append("| strErorMsg = ").append(paramString);
+      QLog.i("TroopGagMgr", 2, localStringBuilder.toString());
     }
-    catch (Exception paramString)
+    if (((paramInt1 == 6) || (paramInt1 == 3)) && (paramBoolean))
     {
-      QLog.e("WadlMainBridge", 1, paramString, new Object[0]);
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject, int paramInt)
-  {
-    if (paramJSONObject == null) {
-      return;
-    }
-    if (paramInt == 2) {}
-    try
-    {
-      String str = paramJSONObject.optString("appId");
-      if (!TextUtils.isEmpty(str)) {
-        bkis.a().c(7, str);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        paramString = (oidb_0x899.memberlist)paramList.next();
+        if ((paramString != null) && (paramString.uint64_member_uin.has()) && (paramString.uint32_shutup_timestap.has()))
+        {
+          paramLong2 = paramString.uint32_shutup_timestap.get();
+          long l = paramString.uint64_member_uin.get();
+          ((TroopManager)this.a.a.getManager(52)).b(paramLong1 + "", l + "", paramLong2);
+        }
       }
-      paramJSONObject.put("actionCode", paramInt);
-      this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.a().a(paramJSONObject.toString(), false, 7, null);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      QLog.e("WadlMainBridge", 1, paramJSONObject, new Object[0]);
-    }
-  }
-  
-  public boolean a(String paramString1, String paramString2, int paramInt, ArrayList<WadlResult> paramArrayList)
-  {
-    boolean bool2;
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
-      bool2 = true;
-    }
-    boolean bool1;
-    do
-    {
-      return bool2;
-      paramArrayList = paramArrayList.iterator();
-      bool1 = true;
-      bool2 = bool1;
-    } while (!paramArrayList.hasNext());
-    WadlResult localWadlResult = (WadlResult)paramArrayList.next();
-    WadlParams localWadlParams = localWadlResult.a;
-    if ((paramString1.equals(localWadlParams.a)) && (paramString2.equals(localWadlParams.b)) && (paramInt == localWadlParams.f) && (!TextUtils.isEmpty(localWadlResult.b)) && (arso.a(localWadlResult.b))) {
-      bool1 = false;
-    }
-    for (;;)
-    {
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfsl
  * JD-Core Version:    0.7.0.1
  */

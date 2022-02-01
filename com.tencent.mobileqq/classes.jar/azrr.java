@@ -1,83 +1,31 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.NotNull;
 
-public class azrr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileBaseHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileBaseSettingItem", "Lcom/tencent/mobileqq/widget/FormSimpleItem;", "getProfileBaseSettingItem", "()Lcom/tencent/mobileqq/widget/FormSimpleItem;", "setProfileBaseSettingItem", "(Lcom/tencent/mobileqq/widget/FormSimpleItem;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azrr
+  extends RecyclerView.ViewHolder
 {
-  public static int a(Context paramContext, String paramString)
+  @NotNull
+  private FormSimpleItem a;
+  
+  public azrr(@NotNull View paramView)
   {
-    return a(paramContext, paramString, "Click_grp_asst");
+    super(paramView);
+    paramView = paramView.findViewById(2131368855);
+    if (paramView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSimpleItem");
+    }
+    this.a = ((FormSimpleItem)paramView);
   }
   
-  public static int a(Context paramContext, String paramString1, String paramString2)
+  @NotNull
+  public final FormSimpleItem a()
   {
-    paramString1 = paramString1 + paramString2;
-    return paramContext.getSharedPreferences("mobileQQ", 0).getInt(paramString1, 0);
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 0).edit();
-    paramContext.putInt(paramString + "Click_grp_asst", 0);
-    paramContext.putInt(paramString + "grp_setting_asst", 0);
-    paramContext.putInt(paramString + "grp_setting_msg", 0);
-    paramContext.putInt(paramString + "grp_msg_equ", 0);
-    paramContext.putInt(paramString + "grp_msg_dec", 0);
-    paramContext.putInt(paramString + "grp_msg_inc", 0);
-    paramContext.commit();
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    paramString1 = paramString1 + paramString2;
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
-    int i = paramContext.getInt(paramString1, 0);
-    paramContext.edit().putInt(paramString1, i + 1).commit();
-  }
-  
-  public static int b(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_setting_asst");
-  }
-  
-  public static void b(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_setting_asst");
-  }
-  
-  public static int c(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_setting_msg");
-  }
-  
-  public static void c(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_msg_equ");
-  }
-  
-  public static int d(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_msg_equ");
-  }
-  
-  public static void d(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_msg_dec");
-  }
-  
-  public static int e(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_msg_dec");
-  }
-  
-  public static void e(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_msg_inc");
-  }
-  
-  public static int f(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_msg_inc");
+    return this.a;
   }
 }
 

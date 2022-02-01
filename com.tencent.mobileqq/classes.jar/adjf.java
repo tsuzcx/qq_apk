@@ -1,63 +1,28 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
 public class adjf
-  extends alxq
+  implements TextWatcher
 {
-  public adjf(NearbyActivity paramNearbyActivity) {}
+  public adjf(AddAccountActivity paramAddAccountActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth isSuccess=" + paramBoolean + ", checkRet=" + paramInt + ", checkMsg=" + paramString + ", isFinishing=" + this.a.isFinishing() + ", isStopHeartBeat=" + this.a.c);
-    if ((paramBoolean) && (paramInt != 0)) {
-      if (!this.a.isFinishing()) {}
+    if (paramCharSequence.length() > 0) {
+      if (this.a.a != null) {
+        this.a.a.setVisibility(0);
+      }
     }
-    while ((this.a.isFinishing()) || (this.a.c))
-    {
-      do
-      {
-        return;
-        try
-        {
-          bdjz localbdjz = bdgm.a(this.a, 230);
-          localbdjz.setCancelable(false);
-          String str = paramString;
-          if (TextUtils.isEmpty(paramString)) {
-            str = alud.a(2131707489);
-          }
-          localbdjz.setMessage(str);
-          localbdjz.setNegativeButton(alud.a(2131707490), new adjg(this));
-          localbdjz.show();
-          new azqx(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_exp").e(this.a.a.getCurrentAccountUin()).a();
-          return;
-        }
-        catch (Exception paramString) {}
-      } while (!QLog.isColorLevel());
-      QLog.d("nearby.NearbyActivity", 2, "onCheckNearbyUserAuth exp:" + paramString.toString());
+    while ((this.a.a == null) || (!this.a.a.isShown())) {
       return;
     }
-    this.a.e();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
-    }
-    if ("OidbSvc.0xafc_1".equals(paramString))
-    {
-      if (paramBoolean) {
-        this.a.n = paramLong;
-      }
-      if (!this.a.c)
-      {
-        this.a.b.removeMessages(this.a.i);
-        this.a.b.sendEmptyMessageDelayed(this.a.i, this.a.n);
-      }
-    }
+    this.a.a.setVisibility(8);
   }
 }
 

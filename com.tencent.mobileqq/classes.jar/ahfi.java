@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class ahfi
-  implements View.OnClickListener
+public class ahfi
+  extends ahfe
 {
-  ahfi(ahfh paramahfh, int paramInt) {}
+  public RelativeLayout a;
+  public BubbleImageView a;
+  public MessageProgressView a;
+  public RelativeLayout b;
+  public int e;
+  public int f;
   
-  public void onClick(View paramView)
+  public ahfi(ahfh paramahfh)
   {
-    if (this.jdField_a_of_type_Ahfh.a != null) {
-      this.jdField_a_of_type_Ahfh.a.a(paramView, this.jdField_a_of_type_Int);
-    }
+    super(paramahfh);
   }
 }
 

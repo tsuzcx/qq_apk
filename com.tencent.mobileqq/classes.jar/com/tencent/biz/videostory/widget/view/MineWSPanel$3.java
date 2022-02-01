@@ -1,42 +1,46 @@
 package com.tencent.biz.videostory.widget.view;
 
-import awgf;
-import awgg;
+import aayj;
 import com.tencent.biz.videostory.db.WSPersonalEntity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import zbr;
 
 public class MineWSPanel$3
   implements Runnable
 {
-  public MineWSPanel$3(zbr paramzbr, byte[] paramArrayOfByte) {}
+  public MineWSPanel$3(aayj paramaayj, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    if (zbr.a(this.this$0) == null)
+    if (aayj.a(this.this$0) == null)
     {
       QLog.i("MineWSPanel", 2, "mBaseActivity is null");
       return;
     }
-    awgf localawgf = zbr.a(this.this$0).app.getEntityManagerFactory().createEntityManager();
-    WSPersonalEntity localWSPersonalEntity = new WSPersonalEntity();
-    localWSPersonalEntity.updateWeiShiFeedListEntity(zbr.a(this.this$0), this.a);
-    if (localWSPersonalEntity.getStatus() == 1000) {
-      localawgf.a(localWSPersonalEntity);
+    EntityManager localEntityManager = aayj.a(this.this$0).app.a().createEntityManager();
+    WSPersonalEntity localWSPersonalEntity2 = (WSPersonalEntity)localEntityManager.find(WSPersonalEntity.class, aayj.a(this.this$0));
+    WSPersonalEntity localWSPersonalEntity1 = localWSPersonalEntity2;
+    if (localWSPersonalEntity2 == null) {
+      localWSPersonalEntity1 = new WSPersonalEntity();
+    }
+    localWSPersonalEntity1.updateWeiShiFeedListEntity(aayj.a(this.this$0), this.a);
+    if (localWSPersonalEntity1.getStatus() == 1000) {
+      localEntityManager.persist(localWSPersonalEntity1);
     }
     for (;;)
     {
-      localawgf.a();
+      localEntityManager.close();
       return;
-      localawgf.a(localWSPersonalEntity);
+      localEntityManager.update(localWSPersonalEntity1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.MineWSPanel.3
  * JD-Core Version:    0.7.0.1
  */

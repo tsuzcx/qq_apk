@@ -1,103 +1,147 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Intent;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseIntArray;
+import com.tencent.biz.pubaccount.weishi_new.event.WSItemExposeEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSVideoPlayEvent;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class uui<M, VH extends uuh<M>>
-  extends RecyclerView.Adapter<uuh<M>>
+public class uui
+  extends uuf
 {
-  protected Context a;
-  protected View a;
-  protected uuf a;
-  protected uug a;
-  protected View b;
+  private Intent a;
   
-  public uui(Context paramContext)
+  public uui(uqu paramuqu)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramuqu);
   }
   
-  public int a()
+  private List<uru> a(List<stSimpleMetaFeed> paramList)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      i = 1;
-    }
-    int j = i;
-    if (this.b != null) {
-      j = i + 1;
-    }
-    return j;
-  }
-  
-  public final uuh a(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (paramInt == 1024) {
-      paramViewGroup = new uuh(this.jdField_a_of_type_AndroidViewView);
-    }
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      if (this.jdField_a_of_type_Uuf != null) {
-        paramViewGroup.itemView.setOnClickListener(new uuj(this, paramViewGroup));
-      }
-      if (this.jdField_a_of_type_Uug != null) {
-        paramViewGroup.itemView.setOnLongClickListener(new uuk(this, paramViewGroup));
-      }
-      return paramViewGroup;
-      if (paramInt == 1025) {
-        paramViewGroup = new uuh(this.b);
-      } else {
-        paramViewGroup = b(paramViewGroup, paramInt);
+      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramList.next();
+      if (localstSimpleMetaFeed != null)
+      {
+        uru localuru = new uru();
+        localuru.a(localstSimpleMetaFeed);
+        localArrayList.add(localuru);
       }
     }
+    return localArrayList;
   }
   
-  public void a(View paramView)
+  private void a(boolean paramBoolean1, boolean paramBoolean2, ure paramure, long paramLong)
   {
-    if (paramView == null)
+    ugj.a().a(paramBoolean2, paramBoolean1, "", 10, new uuj(this, paramLong, paramBoolean2, paramure, paramBoolean1));
+  }
+  
+  public int a(int paramInt)
+  {
+    return ugj.a().jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt) + 1;
+  }
+  
+  public List<uru> a(ArrayList paramArrayList)
+  {
+    Object localObject = ugj.a().jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      Log.w("HeaderAndFooterAdapter", "add the header view is null");
+      paramArrayList = new ArrayList();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)((Iterator)localObject).next();
+        uru localuru = new uru();
+        localuru.a(localstSimpleMetaFeed);
+        paramArrayList.add(localuru);
+      }
+      return paramArrayList;
+    }
+    return null;
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.a(paramViewHolder, paramInt);
+    paramViewHolder = a();
+    if (paramViewHolder == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    notifyDataSetChanged();
+    if (this.jdField_a_of_type_AndroidContentIntent == null) {
+      this.jdField_a_of_type_AndroidContentIntent = new Intent();
+    }
+    this.jdField_a_of_type_AndroidContentIntent.putExtra("key_feed_position", paramInt);
+    this.jdField_a_of_type_AndroidContentIntent.putExtra("key_from", paramViewHolder.a());
+    this.jdField_a_of_type_AndroidContentIntent.putExtra("key_play_scene", paramViewHolder.b());
+    paramViewHolder.a(8193, this.jdField_a_of_type_AndroidContentIntent);
+    paramViewHolder = new WSItemExposeEvent((stSimpleMetaFeed)((uru)paramViewHolder.a().a(paramInt)).a());
+    uhd.a().a(paramViewHolder);
   }
   
-  public void a(uuf paramuuf)
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    this.jdField_a_of_type_Uuf = paramuuf;
+    if (paramBoolean2) {
+      return false;
+    }
+    a(paramBoolean1, false, this, System.currentTimeMillis());
+    return true;
   }
   
-  public void a(uug paramuug)
+  public boolean c()
   {
-    this.jdField_a_of_type_Uug = paramuug;
+    return false;
   }
   
-  public final void a(uuh paramuuh, int paramInt)
+  public void e()
   {
-    switch (paramuuh.getItemViewType())
+    Object localObject = a();
+    if ((this.jdField_a_of_type_Boolean) && (localObject != null))
     {
-    default: 
-      b(paramuuh, paramInt);
+      upe.b("WSVerticalForFollowPresenter", "onPause() back to follow page");
+      localObject = ((uqu)localObject).a().a();
+      if ((localObject != null) && ((((utw)localObject).a instanceof usp)))
+      {
+        localObject = (usp)((utw)localObject).a;
+        if ((((usp)localObject).a() instanceof utm)) {
+          ((utm)((usp)localObject).a()).a(0, 100);
+        }
+      }
+      return;
     }
+    super.e();
   }
   
-  public int b()
+  public void f()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return 0;
-    }
-    return 1;
+    super.f();
+    Object localObject = a();
+    if (localObject == null) {}
+    do
+    {
+      do
+      {
+        return;
+        localObject = ((uqu)localObject).a();
+      } while (localObject == null);
+      localObject = ((WSPlayerManager)localObject).a();
+    } while (localObject == null);
+    ((ukb)localObject).jdField_a_of_type_Ujv = null;
+    ((ukb)localObject).jdField_a_of_type_AndroidViewViewGroup = null;
+    ugj.a().a((ukb)localObject);
+    localObject = new WSVideoPlayEvent();
+    ((WSVideoPlayEvent)localObject).mCurrentPosition = this.jdField_a_of_type_Int;
+    uhd.a().a((WSSimpleBaseEvent)localObject);
   }
-  
-  public abstract VH b(ViewGroup paramViewGroup, int paramInt);
-  
-  public abstract void b(VH paramVH, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uui
  * JD-Core Version:    0.7.0.1
  */

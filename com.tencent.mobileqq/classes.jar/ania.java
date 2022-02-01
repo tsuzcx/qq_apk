@@ -1,20 +1,35 @@
-import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
+import android.os.Message;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BaseActivity.MyShakeListener.1;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ania
-  implements anib
+  extends anuu
 {
-  public ania(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
-  
-  public void a(int paramInt)
+  public void a()
   {
-    if (ScanEntryProviderContainerView.a(this.a) != null) {
-      ScanEntryProviderContainerView.a(this.a).c(paramInt);
+    Object localObject = BaseActivity.sTopActivity;
+    if (localObject == null) {
+      ScreenShot.a("MyShakeListener - top activity is null");
     }
+    do
+    {
+      return;
+      if (!((BaseActivity)localObject).mCurrentActivityShakeFlag)
+      {
+        ScreenShot.a("MyShakeListener - shake flag is false");
+        return;
+      }
+    } while (ThreadManager.getSubThreadHandler().hasMessages(1001));
+    localObject = ThreadManager.getSubThreadHandler().obtainMessage(1001, new BaseActivity.MyShakeListener.1(this, (BaseActivity)localObject));
+    ThreadManager.getSubThreadHandler().sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ania
  * JD-Core Version:    0.7.0.1
  */

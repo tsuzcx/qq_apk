@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class xfu
-  implements View.OnFocusChangeListener
+public class xfu
+  extends weu
 {
-  xfu(xfr paramxfr) {}
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public xfu(ErrorMessage paramErrorMessage, String paramString)
   {
-    wxe.b("EditTextDialog", "onFocusChange:" + paramBoolean);
+    this.a = paramErrorMessage;
+    this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xfu
  * JD-Core Version:    0.7.0.1
  */

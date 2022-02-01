@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.theme.diy;
 
 import android.text.TextUtils;
-import azqs;
-import bevu;
+import bcst;
+import bics;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class ThemeDIYActivity$2
-  implements bevu
+  implements bics
 {
   ThemeDIYActivity$2(ThemeDIYActivity paramThemeDIYActivity) {}
   
@@ -24,7 +24,7 @@ class ThemeDIYActivity$2
       if (3 == paramInt2)
       {
         localObject1 = "diy_clickstyle";
-        azqs.b((QQAppInterface)localObject2, "CliOper", "", str, "theme_mall", (String)localObject1, 0, 1, "", "", "", "");
+        bcst.b((QQAppInterface)localObject2, "CliOper", "", str, "theme_mall", (String)localObject1, 0, 1, "", "", "", "");
       }
     }
     else
@@ -139,7 +139,7 @@ class ThemeDIYActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYActivity.2
  * JD-Core Version:    0.7.0.1
  */

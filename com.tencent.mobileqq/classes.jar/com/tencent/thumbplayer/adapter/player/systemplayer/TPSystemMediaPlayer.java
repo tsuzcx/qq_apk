@@ -9,10 +9,14 @@ import android.media.MediaPlayer.TrackInfo;
 import android.media.PlaybackParams;
 import android.net.Uri;
 import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Surface;
+import android.view.SurfaceHolder;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBase;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnAudioPcmOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnCompletionListener;
@@ -21,6 +25,7 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnInfoListe
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnPreparedListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSeekCompleteListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
@@ -38,6 +43,7 @@ import com.tencent.thumbplayer.core.imagegenerator.TPImageGeneratorParams;
 import com.tencent.thumbplayer.utils.TPLogUtil;
 import com.tencent.thumbplayer.utils.TPThreadUtil;
 import java.io.FileDescriptor;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -45,6 +51,7 @@ import java.util.Map;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class TPSystemMediaPlayer
   implements ITPPlayerBase
@@ -52,9 +59,11 @@ public class TPSystemMediaPlayer
   private static final int CHECK_BUFFER_FREQUENT = 3;
   private static final int RESET_TYPE_SEL_AUDIO_TRACK = 2;
   private static final int RESET_TYPE_SWITCH_URL = 1;
+  private static final String STAG = "TPThumbPlayer[TPSystemMediaPlayer.java]";
   private static final int START_AUTO_SEEK_DELAY_TIME = 2000;
-  private static final String TAG = "TPThumbPlayer[TPSystemMediaPlayer.java]";
   private static final int mIntervalCheckBuffering = 400;
+  private static AtomicInteger mPlayerIndex = new AtomicInteger();
+  private String TAG = "TPThumbPlayer[TPSystemMediaPlayer.java]";
   private float mAudioGain = 1.0F;
   private List<TPSystemMediaPlayer.ExternalTrackInfo> mAudioTrackInfo = new ArrayList();
   private long mBaseDuration = 0L;
@@ -63,18 +72,17 @@ public class TPSystemMediaPlayer
   private int mCgiVideoHeight = -1;
   private int mCgiVideoWidth = -1;
   private Future<?> mCheckBufferTimeOutBySystemInfoTimer = null;
-  private Object mCheckBufferTimerOutByInfoLock = new Object();
+  private final Object mCheckBufferTimerOutByInfoLock = new Object();
   private int mCheckBufferTimeroutFrequent = 30;
   private Future<?> mCheckBuffingTimer = null;
   private final Object mCheckBuffingTimerLock = new Object();
-  private Object mCheckPrepareTimeoutLock = new Object();
+  private final Object mCheckPrepareTimeoutLock = new Object();
   private Future<?> mCheckPrepareTimeoutTask = null;
-  private Context mContext = null;
+  private Context mContext;
   private int mCurAudioTrackIndex = 0;
   private int mCurInnerAudioTrackIndex = -1;
   private TPSystemMediaPlayer.EventHandler mEventHandler;
   private FileDescriptor mFd;
-  private boolean mFirstAutoSeek;
   private Map<String, String> mHeader;
   private TPSystemMediaPlayer.InnerPlayerListener mInnerPlayerListener;
   private long mIntervalCheckPreparingTimeOut = 25000L;
@@ -83,12 +91,12 @@ public class TPSystemMediaPlayer
   private boolean mIsLive = false;
   private boolean mIsLoopback = false;
   private boolean mIsNotSeekable = false;
-  private boolean mIsStartGetCurrentPosChange = false;
-  private long mLastCheckPos = 0L;
+  private long mLastCheckPos = -1L;
   private TPSystemMediaPlayer.ResetActionInfo mLastestAction = null;
   private long mLoopEndPositionMs = 0L;
   private long mLoopStartPositionMs = 0L;
   private MediaPlayer mMediaPlayer;
+  private boolean mMute = false;
   private ITPPlayerBaseListener.IOnCompletionListener mOnCompletionListener;
   private ITPPlayerBaseListener.IOnErrorListener mOnErrorListener;
   private ITPPlayerBaseListener.IOnInfoListener mOnInfoListener;
@@ -96,13 +104,17 @@ public class TPSystemMediaPlayer
   private ITPPlayerBaseListener.IOnSeekCompleteListener mOnSeekCompleteListener;
   private ITPPlayerBaseListener.IOnSubtitleDataListener mOnSubtitleDataListener;
   @TargetApi(16)
-  private MediaPlayer.OnTimedTextListener mOnTimedTextListener = new TPSystemMediaPlayer.5(this);
+  private MediaPlayer.OnTimedTextListener mOnTimedTextListener = new TPSystemMediaPlayer.4(this);
   private ITPPlayerBaseListener.IOnVideoSizeChangedListener mOnVideoSizeChangedListener;
   private float mPlaySpeed = 1.0F;
+  private long mPlayableDurationMs = 0L;
   private int mSelectSubtitleIndex = -1;
   private long mSkipEndPositionMs = -1L;
   private int mStartPositionMs = 0;
   private TPSystemMediaPlayer.PlayerState mState;
+  private List<TPSystemMediaPlayer.ExternalTrackInfo> mSubTrackInfo = new ArrayList();
+  private Object mSurfaceObj;
+  private boolean mSuspend = false;
   private TPSystemCapture mTpSystemCapture;
   private String mUrl;
   private int mVideoHeight = 0;
@@ -111,6 +123,8 @@ public class TPSystemMediaPlayer
   
   public TPSystemMediaPlayer(Context paramContext)
   {
+    int i = mPlayerIndex.incrementAndGet();
+    this.TAG = (this.TAG + "_" + i);
     this.mContext = paramContext;
     this.mInnerPlayerListener = new TPSystemMediaPlayer.InnerPlayerListener(this, null);
     paramContext = new TPSystemMediaPlayer.ExternalTrackInfo(null);
@@ -129,7 +143,7 @@ public class TPSystemMediaPlayer
     if (this.mState != TPSystemMediaPlayer.PlayerState.STARTED) {
       if ((this.mState == TPSystemMediaPlayer.PlayerState.PAUSED) && (this.mIsBuffering))
       {
-        TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "checkBuffingEvent, pause state and send end buffering");
+        TPLogUtil.i(this.TAG, "checkBuffingEvent, pause state and send end buffering");
         this.mIsBuffering = false;
         this.mcheckBufferPosNoChangeCount = 0;
         if (this.mOnInfoListener != null) {
@@ -143,7 +157,7 @@ public class TPSystemMediaPlayer
       if (this.mIsLoopback) {
         if ((this.mLoopEndPositionMs > 0L) && (l1 >= this.mLoopEndPositionMs) && (!this.mIsNotSeekable))
         {
-          TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "checkBuffingEvent, skip end, curPosition:" + l1 + ", mSkipEndPositionMs:" + this.mSkipEndPositionMs);
+          TPLogUtil.i(this.TAG, "checkBuffingEvent, skip end, curPosition:" + l1 + ", mSkipEndPositionMs:" + this.mSkipEndPositionMs);
           this.mMediaPlayer.seekTo((int)this.mLoopStartPositionMs);
         }
       }
@@ -156,7 +170,7 @@ public class TPSystemMediaPlayer
           if ((i >= 3) && (!this.mIsBuffering))
           {
             this.mIsBuffering = true;
-            TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "checkBuffingEvent, position no change,send start buffering");
+            TPLogUtil.i(this.TAG, "checkBuffingEvent, position no change,send start buffering");
             if (this.mOnInfoListener != null) {
               this.mOnInfoListener.onInfo(200, 0L, 0L, null);
             }
@@ -164,8 +178,9 @@ public class TPSystemMediaPlayer
           if (this.mcheckBufferPosNoChangeCount < this.mCheckBufferTimeroutFrequent) {
             break;
           }
-          TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "checkBuffingEvent post error");
-          this.mMediaPlayer.stop();
+          TPLogUtil.e(this.TAG, "checkBuffingEvent post error");
+          this.mMediaPlayer.reset();
+          this.mMediaPlayer.release();
           this.mState = TPSystemMediaPlayer.PlayerState.ERROR;
           this.mIsBuffering = false;
           destroyCheckBuffingTimer();
@@ -178,7 +193,8 @@ public class TPSystemMediaPlayer
             try
             {
               this.mMediaPlayer.pause();
-              this.mMediaPlayer.stop();
+              this.mMediaPlayer.reset();
+              this.mMediaPlayer.release();
               this.mState = TPSystemMediaPlayer.PlayerState.COMPLETE;
               destroyCheckBuffingTimer();
               if (this.mOnCompletionListener == null) {
@@ -191,7 +207,7 @@ public class TPSystemMediaPlayer
             {
               for (;;)
               {
-                TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", localException);
+                TPLogUtil.e(this.TAG, localException);
               }
             }
           }
@@ -200,14 +216,13 @@ public class TPSystemMediaPlayer
     }
     if (this.mIsBuffering)
     {
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "checkBuffingEvent, position change, send end buffering");
+      TPLogUtil.i(this.TAG, "checkBuffingEvent, position change, send end buffering");
       if (this.mOnInfoListener != null) {
         this.mOnInfoListener.onInfo(201, 0L, 0L, null);
       }
     }
     this.mIsBuffering = false;
     this.mcheckBufferPosNoChangeCount = 0;
-    this.mIsStartGetCurrentPosChange = true;
   }
   
   /* Error */
@@ -217,21 +232,21 @@ public class TPSystemMediaPlayer
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 151	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBufferTimerOutByInfoLock	Ljava/lang/Object;
+    //   3: getfield 166	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBufferTimerOutByInfoLock	Ljava/lang/Object;
     //   6: astore_1
     //   7: aload_1
     //   8: monitorenter
     //   9: aload_0
-    //   10: getfield 153	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBufferTimeOutBySystemInfoTimer	Ljava/util/concurrent/Future;
+    //   10: getfield 168	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBufferTimeOutBySystemInfoTimer	Ljava/util/concurrent/Future;
     //   13: ifnull +19 -> 32
     //   16: aload_0
-    //   17: getfield 153	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBufferTimeOutBySystemInfoTimer	Ljava/util/concurrent/Future;
+    //   17: getfield 168	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBufferTimeOutBySystemInfoTimer	Ljava/util/concurrent/Future;
     //   20: iconst_1
-    //   21: invokeinterface 414 2 0
+    //   21: invokeinterface 446 2 0
     //   26: pop
     //   27: aload_0
     //   28: aconst_null
-    //   29: putfield 153	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBufferTimeOutBySystemInfoTimer	Ljava/util/concurrent/Future;
+    //   29: putfield 168	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBufferTimeOutBySystemInfoTimer	Ljava/util/concurrent/Future;
     //   32: aload_1
     //   33: monitorexit
     //   34: aload_0
@@ -268,21 +283,21 @@ public class TPSystemMediaPlayer
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 147	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBuffingTimerLock	Ljava/lang/Object;
+    //   3: getfield 162	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBuffingTimerLock	Ljava/lang/Object;
     //   6: astore_1
     //   7: aload_1
     //   8: monitorenter
     //   9: aload_0
-    //   10: getfield 145	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBuffingTimer	Ljava/util/concurrent/Future;
+    //   10: getfield 160	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBuffingTimer	Ljava/util/concurrent/Future;
     //   13: ifnull +19 -> 32
     //   16: aload_0
-    //   17: getfield 145	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBuffingTimer	Ljava/util/concurrent/Future;
+    //   17: getfield 160	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBuffingTimer	Ljava/util/concurrent/Future;
     //   20: iconst_1
-    //   21: invokeinterface 414 2 0
+    //   21: invokeinterface 446 2 0
     //   26: pop
     //   27: aload_0
     //   28: aconst_null
-    //   29: putfield 145	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBuffingTimer	Ljava/util/concurrent/Future;
+    //   29: putfield 160	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckBuffingTimer	Ljava/util/concurrent/Future;
     //   32: aload_1
     //   33: monitorexit
     //   34: aload_0
@@ -319,21 +334,21 @@ public class TPSystemMediaPlayer
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 139	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckPrepareTimeoutLock	Ljava/lang/Object;
+    //   3: getfield 154	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckPrepareTimeoutLock	Ljava/lang/Object;
     //   6: astore_1
     //   7: aload_1
     //   8: monitorenter
     //   9: aload_0
-    //   10: getfield 137	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckPrepareTimeoutTask	Ljava/util/concurrent/Future;
+    //   10: getfield 152	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckPrepareTimeoutTask	Ljava/util/concurrent/Future;
     //   13: ifnull +19 -> 32
     //   16: aload_0
-    //   17: getfield 137	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckPrepareTimeoutTask	Ljava/util/concurrent/Future;
+    //   17: getfield 152	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckPrepareTimeoutTask	Ljava/util/concurrent/Future;
     //   20: iconst_1
-    //   21: invokeinterface 414 2 0
+    //   21: invokeinterface 446 2 0
     //   26: pop
     //   27: aload_0
     //   28: aconst_null
-    //   29: putfield 137	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckPrepareTimeoutTask	Ljava/util/concurrent/Future;
+    //   29: putfield 152	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCheckPrepareTimeoutTask	Ljava/util/concurrent/Future;
     //   32: aload_1
     //   33: monitorexit
     //   34: aload_0
@@ -385,39 +400,21 @@ public class TPSystemMediaPlayer
     TPPlayerMsg.TPAudioTrackInfo localTPAudioTrackInfo = new TPPlayerMsg.TPAudioTrackInfo();
     localTPAudioTrackInfo.audioTrackUrl = localExternalTrackInfo.url;
     localTPAudioTrackInfo.keyId = localExternalTrackInfo.keyId;
+    TPLogUtil.i(this.TAG, "handleDataSource, audioTrack url:" + localTPAudioTrackInfo.audioTrackUrl + ", keyId:" + localTPAudioTrackInfo.keyId);
     localIOnInfoListener.onInfo(1011, 0L, 0L, localTPAudioTrackInfo);
   }
   
   private void initMediaPlayer()
   {
-    this.mMediaPlayer = new TPMediaPlayer();
-    this.mMediaPlayer.setOnPreparedListener(this.mInnerPlayerListener);
-    this.mMediaPlayer.setOnCompletionListener(this.mInnerPlayerListener);
-    this.mMediaPlayer.setOnErrorListener(this.mInnerPlayerListener);
-    this.mMediaPlayer.setOnInfoListener(this.mInnerPlayerListener);
-    this.mMediaPlayer.setOnBufferingUpdateListener(this.mInnerPlayerListener);
-    this.mMediaPlayer.setOnSeekCompleteListener(this.mInnerPlayerListener);
-    this.mMediaPlayer.setOnVideoSizeChangedListener(this.mInnerPlayerListener);
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.mMediaPlayer.setOnTimedTextListener(this.mOnTimedTextListener);
-    }
-    Looper localLooper;
-    if (Build.VERSION.SDK_INT >= 26)
-    {
-      this.mMediaPlayer.setAudioAttributes(new AudioAttributes.Builder().setUsage(1).setContentType(4).build());
-      localLooper = Looper.myLooper();
-      if (localLooper == null) {
-        break label180;
-      }
+    this.mMediaPlayer = mediaPlayerCreate();
+    Looper localLooper = Looper.myLooper();
+    if (localLooper != null) {
       this.mEventHandler = new TPSystemMediaPlayer.EventHandler(localLooper, this);
     }
     for (;;)
     {
       this.mState = TPSystemMediaPlayer.PlayerState.IDLE;
       return;
-      this.mMediaPlayer.setAudioStreamType(3);
-      break;
-      label180:
       localLooper = Looper.getMainLooper();
       if (localLooper != null) {
         this.mEventHandler = new TPSystemMediaPlayer.EventHandler(localLooper, this);
@@ -436,6 +433,100 @@ public class TPSystemMediaPlayer
     return this.mIsAllowCheckBuffingByPosition;
   }
   
+  private MediaPlayer mediaPlayerCreate()
+  {
+    TPMediaPlayer localTPMediaPlayer = new TPMediaPlayer();
+    if (Build.VERSION.SDK_INT <= 19) {
+      mediaPlayerExceptionHook(localTPMediaPlayer);
+    }
+    localTPMediaPlayer.setOnPreparedListener(this.mInnerPlayerListener);
+    localTPMediaPlayer.setOnCompletionListener(this.mInnerPlayerListener);
+    localTPMediaPlayer.setOnErrorListener(this.mInnerPlayerListener);
+    localTPMediaPlayer.setOnInfoListener(this.mInnerPlayerListener);
+    localTPMediaPlayer.setOnBufferingUpdateListener(this.mInnerPlayerListener);
+    localTPMediaPlayer.setOnSeekCompleteListener(this.mInnerPlayerListener);
+    localTPMediaPlayer.setOnVideoSizeChangedListener(this.mInnerPlayerListener);
+    if (Build.VERSION.SDK_INT >= 16) {
+      localTPMediaPlayer.setOnTimedTextListener(this.mOnTimedTextListener);
+    }
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      localTPMediaPlayer.setAudioAttributes(new AudioAttributes.Builder().setUsage(1).setContentType(4).build());
+      return localTPMediaPlayer;
+    }
+    localTPMediaPlayer.setAudioStreamType(3);
+    return localTPMediaPlayer;
+  }
+  
+  private void mediaPlayerExceptionHook(MediaPlayer paramMediaPlayer)
+  {
+    try
+    {
+      Field localField = MediaPlayer.class.getDeclaredField("mEventHandler");
+      localField.setAccessible(true);
+      paramMediaPlayer = (Handler)localField.get(paramMediaPlayer);
+      localField = Handler.class.getDeclaredField("mCallback");
+      localField.setAccessible(true);
+      if ((Handler.Callback)localField.get(paramMediaPlayer) == null) {
+        localField.set(paramMediaPlayer, new TPSystemMediaPlayer.HookCallback(paramMediaPlayer));
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      TPLogUtil.e(this.TAG, "mediaPlayerExceptionHook, " + Log.getStackTraceString(paramMediaPlayer));
+    }
+  }
+  
+  private void mediaPlayerReset()
+  {
+    destroyCheckPrepareTimeoutTimer();
+    destroyCheckBuffingTimer();
+    destroyCheckBufferTimeOutByInfo();
+    unRegisterListener();
+    this.mMediaPlayer.reset();
+    this.mMediaPlayer.release();
+    TPMediaPlayer localTPMediaPlayer = new TPMediaPlayer();
+    if (Build.VERSION.SDK_INT <= 19) {
+      mediaPlayerExceptionHook(localTPMediaPlayer);
+    }
+    localTPMediaPlayer.setOnPreparedListener(this.mInnerPlayerListener);
+    localTPMediaPlayer.setOnCompletionListener(this.mInnerPlayerListener);
+    localTPMediaPlayer.setOnErrorListener(this.mInnerPlayerListener);
+    localTPMediaPlayer.setOnInfoListener(this.mInnerPlayerListener);
+    localTPMediaPlayer.setOnBufferingUpdateListener(this.mInnerPlayerListener);
+    localTPMediaPlayer.setOnSeekCompleteListener(this.mInnerPlayerListener);
+    localTPMediaPlayer.setOnVideoSizeChangedListener(this.mInnerPlayerListener);
+    if (Build.VERSION.SDK_INT >= 16) {
+      localTPMediaPlayer.setOnTimedTextListener(this.mOnTimedTextListener);
+    }
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      localTPMediaPlayer.setAudioAttributes(new AudioAttributes.Builder().setUsage(1).setContentType(4).build());
+      if (!this.mMute) {
+        break label219;
+      }
+      this.mMediaPlayer.setVolume(0.0F, 0.0F);
+    }
+    for (;;)
+    {
+      if (this.mPlaySpeed != 1.0D) {
+        setPlaySpeedRatio(this.mPlaySpeed);
+      }
+      if (this.mIsLoopback) {
+        this.mMediaPlayer.setLooping(this.mIsLoopback);
+      }
+      this.mMediaPlayer = localTPMediaPlayer;
+      return;
+      localTPMediaPlayer.setAudioStreamType(3);
+      break;
+      label219:
+      if (this.mAudioGain != 1.0F) {
+        this.mMediaPlayer.setVolume(this.mAudioGain, this.mAudioGain);
+      }
+    }
+  }
+  
   private void playerResetEnd()
   {
     for (;;)
@@ -443,8 +534,9 @@ public class TPSystemMediaPlayer
       try
       {
         Object localObject1 = this.mLastestAction;
-        if (localObject1 == null) {
-          break label325;
+        TPLogUtil.i(this.TAG, "playerResetEnd, actionInfo:" + localObject1 + ", mSuspend:" + this.mSuspend);
+        if ((localObject1 == null) || (!this.mSuspend)) {
+          break label427;
         }
         ITPPlayerBaseListener.IOnInfoListener localIOnInfoListener = this.mOnInfoListener;
         int i;
@@ -464,19 +556,21 @@ public class TPSystemMediaPlayer
             }
           }
           if ((((TPSystemMediaPlayer.ResetActionInfo)localObject1).position > 0L) && (!this.mIsNotSeekable)) {
-            TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "onPrepared(), and seekto:" + this.mStartPositionMs);
+            TPLogUtil.i(this.TAG, "playerResetEnd, onPrepared(), and seek to:" + ((TPSystemMediaPlayer.ResetActionInfo)localObject1).position);
           }
         }
         try
         {
           this.mMediaPlayer.seekTo((int)((TPSystemMediaPlayer.ResetActionInfo)localObject1).position);
+          TPLogUtil.i(this.TAG, "playerResetEnd, restore state:" + ((TPSystemMediaPlayer.ResetActionInfo)localObject1).state);
           if ((((TPSystemMediaPlayer.ResetActionInfo)localObject1).state == TPSystemMediaPlayer.PlayerState.IDLE) || (((TPSystemMediaPlayer.ResetActionInfo)localObject1).state == TPSystemMediaPlayer.PlayerState.INITIALIZED) || (((TPSystemMediaPlayer.ResetActionInfo)localObject1).state == TPSystemMediaPlayer.PlayerState.PREPARING))
           {
+            this.mState = TPSystemMediaPlayer.PlayerState.PREPARED;
             localObject1 = this.mOnPreparedListener;
             if (localObject1 != null) {
               ((ITPPlayerBaseListener.IOnPreparedListener)localObject1).onPrepared();
             }
-            this.mState = TPSystemMediaPlayer.PlayerState.PREPARED;
+            this.mSuspend = false;
             this.mLastestAction = null;
             return;
             i = 4;
@@ -484,36 +578,39 @@ public class TPSystemMediaPlayer
         }
         catch (Exception localException2)
         {
-          TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", localException2);
+          TPLogUtil.e(this.TAG, localException2);
           continue;
         }
         if (localObject2.state == TPSystemMediaPlayer.PlayerState.PREPARED) {
-          break label248;
+          break label334;
         }
       }
       finally {}
       if (localObject2.state == TPSystemMediaPlayer.PlayerState.PAUSED)
       {
-        label248:
+        label334:
         this.mState = localObject2.state;
         continue;
       }
       if (localObject2.state == TPSystemMediaPlayer.PlayerState.STARTED)
       {
+        TPLogUtil.i(this.TAG, "playerResetEnd,  MediaPlayer.start().");
         this.mMediaPlayer.start();
         this.mState = localObject2.state;
+        startCheckBufferingTimer();
         continue;
       }
       this.mState = TPSystemMediaPlayer.PlayerState.ERROR;
-      TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "illegal state, state:" + localObject2.state);
+      TPLogUtil.e(this.TAG, "illegal state, state:" + localObject2.state);
       continue;
-      label325:
+      label427:
       if ((this.mStartPositionMs > 0) && (!this.mIsNotSeekable)) {
-        TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "onPrepared(), and seekto:" + this.mStartPositionMs);
+        TPLogUtil.i(this.TAG, "onPrepared(), and seekto:" + this.mStartPositionMs);
       }
       try
       {
         this.mMediaPlayer.seekTo(this.mStartPositionMs);
+        this.mState = TPSystemMediaPlayer.PlayerState.PREPARED;
         ITPPlayerBaseListener.IOnPreparedListener localIOnPreparedListener = this.mOnPreparedListener;
         if (localIOnPreparedListener == null) {
           continue;
@@ -524,7 +621,7 @@ public class TPSystemMediaPlayer
       {
         for (;;)
         {
-          TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", localException1);
+          TPLogUtil.e(this.TAG, localException1);
         }
       }
     }
@@ -534,36 +631,30 @@ public class TPSystemMediaPlayer
   {
     for (;;)
     {
-      Object localObject;
-      float f1;
-      float f2;
+      int i;
       try
       {
-        localObject = paramResetActionInfo.url;
+        Object localObject = paramResetActionInfo.url;
         paramResetActionInfo.position = getCurrentPositionMs();
         paramResetActionInfo.state = this.mState;
         paramResetActionInfo.innerAudioTrackIndex = this.mCurInnerAudioTrackIndex;
         paramResetActionInfo.innerSubtitleTrackIndex = this.mSelectSubtitleIndex;
-        f1 = this.mAudioGain;
-        f2 = this.mPlaySpeed;
-        boolean bool = this.mIsLoopback;
-        this.mMediaPlayer.reset();
+        TPLogUtil.i(this.TAG, "playerResetStart, pos:" + paramResetActionInfo.position + ", state:" + paramResetActionInfo.state);
+        this.mSuspend = true;
+        mediaPlayerReset();
         if (this.mFd != null)
         {
           this.mMediaPlayer.setDataSource(this.mFd);
-          break label337;
-          this.mMediaPlayer.setVolume(this.mAudioGain, this.mAudioGain);
-          break label352;
-          setPlaySpeedRatio(f2);
-          if (bool) {
-            this.mMediaPlayer.setLooping(bool);
+          if (this.mSurfaceObj != null) {
+            break label328;
           }
+          this.mMediaPlayer.setDisplay(null);
           localObject = this.mLastestAction;
           if ((localObject != null) && (((TPSystemMediaPlayer.ResetActionInfo)localObject).mResetType != paramResetActionInfo.mResetType))
           {
             ITPPlayerBaseListener.IOnInfoListener localIOnInfoListener = this.mOnInfoListener;
             if (((TPSystemMediaPlayer.ResetActionInfo)localObject).mResetType != 1) {
-              break label331;
+              break label382;
             }
             i = 3;
             if (localIOnInfoListener != null) {
@@ -576,7 +667,8 @@ public class TPSystemMediaPlayer
           if ((paramResetActionInfo.state == TPSystemMediaPlayer.PlayerState.PREPARING) || (paramResetActionInfo.state == TPSystemMediaPlayer.PlayerState.PREPARED) || (paramResetActionInfo.state == TPSystemMediaPlayer.PlayerState.STARTED) || (paramResetActionInfo.state == TPSystemMediaPlayer.PlayerState.PAUSED))
           {
             this.mMediaPlayer.prepareAsync();
-            startCheckBufferingTimer();
+            this.mState = TPSystemMediaPlayer.PlayerState.PREPARING;
+            startCheckPrepareTimeoutTimer();
           }
           return;
         }
@@ -585,20 +677,63 @@ public class TPSystemMediaPlayer
         {
           localObject = Uri.parse((String)localObject);
           this.mMediaPlayer.setDataSource(this.mContext, (Uri)localObject, this.mHeader);
+          continue;
         }
+        this.mMediaPlayer.setDataSource((String)localObject);
       }
       finally {}
-      this.mMediaPlayer.setDataSource((String)localObject);
-      break label337;
-      label331:
-      int i = 4;
       continue;
-      label337:
-      if ((f1 <= 1.0F) && (f1 >= 1.0F)) {
-        label352:
-        if (f2 <= 1.0F) {
-          if (f2 >= 1.0F) {}
+      label328:
+      if ((this.mSurfaceObj instanceof SurfaceHolder))
+      {
+        this.mMediaPlayer.setDisplay((SurfaceHolder)this.mSurfaceObj);
+      }
+      else if ((this.mSurfaceObj instanceof Surface))
+      {
+        this.mMediaPlayer.setSurface((Surface)this.mSurfaceObj);
+        continue;
+        label382:
+        i = 4;
+      }
+    }
+  }
+  
+  private void seekToComm(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    if (Build.VERSION.SDK_INT < 26)
+    {
+      TPLogUtil.i(this.TAG, "os ver is too low, current sdk int:" + Build.VERSION.SDK_INT + ", is less than " + 26 + ", use seekTo(int positionMs) instead");
+      paramMediaPlayer.seekTo(paramInt1);
+      return;
+    }
+    if (paramInt2 == 1) {}
+    for (;;)
+    {
+      long l = paramInt1;
+      try
+      {
+        paramMediaPlayer.seekTo(l, i);
+        return;
+      }
+      catch (Exception localException)
+      {
+        TPLogUtil.e(this.TAG, localException);
+        try
+        {
+          paramMediaPlayer.seekTo(paramInt1);
+          return;
         }
+        catch (Exception paramMediaPlayer)
+        {
+          TPLogUtil.e(this.TAG, paramMediaPlayer);
+          return;
+        }
+      }
+      if (paramInt2 == 2) {
+        i = 1;
+      } else if (paramInt2 == 3) {
+        i = 2;
       }
     }
   }
@@ -618,7 +753,7 @@ public class TPSystemMediaPlayer
     synchronized (this.mCheckBufferTimerOutByInfoLock)
     {
       if (this.mCheckBufferTimeOutBySystemInfoTimer == null) {
-        this.mCheckBufferTimeOutBySystemInfoTimer = TPThreadUtil.getScheduledExecutorServiceInstance().schedule(new TPSystemMediaPlayer.4(this), 1200L, TimeUnit.MILLISECONDS);
+        this.mCheckBufferTimeOutBySystemInfoTimer = TPThreadUtil.getScheduledExecutorServiceInstance().schedule(new TPSystemMediaPlayer.3(this), 1200L, TimeUnit.MILLISECONDS);
       }
       return;
     }
@@ -630,11 +765,11 @@ public class TPSystemMediaPlayer
     {
       if (!isAllowCheckBufferByPosition())
       {
-        TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "startCheckBufferingTimer, forbidden check buffer by position");
+        TPLogUtil.e(this.TAG, "startCheckBufferingTimer, forbidden check buffer by position");
         return;
       }
       if (this.mCheckBuffingTimer == null) {
-        this.mCheckBuffingTimer = TPThreadUtil.getScheduledExecutorServiceInstance().scheduleAtFixedRate(new TPSystemMediaPlayer.3(this), 0L, 400L, TimeUnit.MILLISECONDS);
+        this.mCheckBuffingTimer = TPThreadUtil.getScheduledExecutorServiceInstance().scheduleAtFixedRate(new TPSystemMediaPlayer.2(this), 0L, 400L, TimeUnit.MILLISECONDS);
       }
       return;
     }
@@ -642,11 +777,11 @@ public class TPSystemMediaPlayer
   
   private void startCheckPrepareTimeoutTimer()
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "startCheckPrepareTimeoutTimer");
+    TPLogUtil.i(this.TAG, "startCheckPrepareTimeoutTimer");
     synchronized (this.mCheckPrepareTimeoutLock)
     {
       if (this.mCheckPrepareTimeoutTask == null) {
-        this.mCheckPrepareTimeoutTask = TPThreadUtil.getScheduledExecutorServiceInstance().schedule(new TPSystemMediaPlayer.2(this), this.mIntervalCheckPreparingTimeOut, TimeUnit.MILLISECONDS);
+        this.mCheckPrepareTimeoutTask = TPThreadUtil.getScheduledExecutorServiceInstance().schedule(new TPSystemMediaPlayer.1(this), this.mIntervalCheckPreparingTimeOut, TimeUnit.MILLISECONDS);
       }
       return;
     }
@@ -668,82 +803,59 @@ public class TPSystemMediaPlayer
   
   private void unRegisterListener()
   {
-    this.mOnPreparedListener = null;
-    this.mOnCompletionListener = null;
-    this.mOnInfoListener = null;
-    this.mOnErrorListener = null;
-    this.mOnSeekCompleteListener = null;
-    this.mOnVideoSizeChangedListener = null;
-    this.mOnSubtitleDataListener = null;
+    this.mMediaPlayer.setOnPreparedListener(null);
+    this.mMediaPlayer.setOnCompletionListener(null);
+    this.mMediaPlayer.setOnErrorListener(null);
+    this.mMediaPlayer.setOnInfoListener(null);
+    this.mMediaPlayer.setOnBufferingUpdateListener(null);
+    this.mMediaPlayer.setOnSeekCompleteListener(null);
+    this.mMediaPlayer.setOnVideoSizeChangedListener(null);
   }
   
   public void addAudioTrackSource(String paramString1, String paramString2, List<TPOptionalParam> paramList)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "addAudioTrackSource, illegal argument.");
+      TPLogUtil.e(this.TAG, "addAudioTrackSource, illegal argument.");
     }
     TPTrackInfo localTPTrackInfo = new TPTrackInfo();
     localTPTrackInfo.name = paramString2;
     localTPTrackInfo.isExclusive = true;
     localTPTrackInfo.isInternal = false;
     localTPTrackInfo.isSelected = false;
-    paramString2 = new TPSystemMediaPlayer.ExternalTrackInfo(null);
-    paramString2.info = localTPTrackInfo;
-    paramString2.url = paramString1;
+    localTPTrackInfo.trackType = 2;
+    TPSystemMediaPlayer.ExternalTrackInfo localExternalTrackInfo = new TPSystemMediaPlayer.ExternalTrackInfo(null);
+    localExternalTrackInfo.info = localTPTrackInfo;
+    localExternalTrackInfo.url = paramString1;
     paramString1 = paramList.iterator();
     while (paramString1.hasNext())
     {
       paramList = (TPOptionalParam)paramString1.next();
       if (paramList.getKey() == 6) {
-        paramString2.keyId = paramList.getParamString().value;
+        localExternalTrackInfo.keyId = paramList.getParamString().value;
       }
     }
-    this.mAudioTrackInfo.add(paramString2);
+    TPLogUtil.i(this.TAG, "addAudioTrackSource, name:" + localTPTrackInfo.name + ", url:" + paramString2);
+    this.mAudioTrackInfo.add(localExternalTrackInfo);
   }
   
-  @TargetApi(16)
   public void addSubtitleSource(String paramString1, String paramString2, String paramString3)
   {
-    if (Build.VERSION.SDK_INT < 16)
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)))
     {
-      TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "addSubtitleSource android mediaplayer not support ");
+      TPLogUtil.e(this.TAG, "addSubtitleSource, illegal argument.");
       return;
     }
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      String str = "";
-      if (paramString2.equals("text/x-subrip"))
-      {
-        paramString3 = "application/x-subrip";
-        if (Build.VERSION.SDK_INT >= 28) {
-          paramString3 = "application/x-subrip";
-        }
-      }
-      while (TextUtils.isEmpty(paramString3))
-      {
-        TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "addTimedTextSource, mimeType no support.");
-        return;
-        paramString3 = str;
-        if (paramString2.equals("text/vtt"))
-        {
-          paramString3 = str;
-          if (Build.VERSION.SDK_INT >= 28) {
-            paramString3 = "application/x-subrip";
-          }
-        }
-      }
-      try
-      {
-        this.mMediaPlayer.addTimedTextSource(this.mContext, Uri.parse(paramString1), paramString3);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", paramString1, "addTimedTextSource error");
-        return;
-      }
-    }
-    TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "addTimedTextSource, mimeType no support.");
+    paramString2 = new TPTrackInfo();
+    paramString2.name = paramString3;
+    paramString2.isExclusive = true;
+    paramString2.isInternal = false;
+    paramString2.isSelected = false;
+    paramString2.trackType = 3;
+    TPSystemMediaPlayer.ExternalTrackInfo localExternalTrackInfo = new TPSystemMediaPlayer.ExternalTrackInfo(null);
+    localExternalTrackInfo.info = paramString2;
+    localExternalTrackInfo.url = paramString1;
+    TPLogUtil.i(this.TAG, "addSubtitleSource, name:" + paramString2.name + ", url:" + paramString3);
+    this.mSubTrackInfo.add(localExternalTrackInfo);
   }
   
   public void captureVideo(TPCaptureParams paramTPCaptureParams, TPCaptureCallBack paramTPCaptureCallBack)
@@ -767,20 +879,25 @@ public class TPSystemMediaPlayer
   {
     if (Build.VERSION.SDK_INT < 16)
     {
-      TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "deselectTrack, android mediaplayer not support ");
+      TPLogUtil.e(this.TAG, "deselectTrack, android mediaplayer not support ");
       return;
     }
     this.mMediaPlayer.deselectTrack(paramInt);
   }
   
-  public long getBufferedDurationMs()
-  {
-    return this.mBufferMs;
-  }
-  
   public long getCurrentPositionMs()
   {
-    if ((this.mMediaPlayer == null) || (this.mState == TPSystemMediaPlayer.PlayerState.IDLE) || (this.mState == TPSystemMediaPlayer.PlayerState.INITIALIZED) || (this.mState == TPSystemMediaPlayer.PlayerState.PREPARING) || (this.mState == TPSystemMediaPlayer.PlayerState.STOPPED) || (this.mState == TPSystemMediaPlayer.PlayerState.PREPARED)) {
+    if (this.mIsLive) {
+      return 0L;
+    }
+    if ((this.mSuspend) || (this.mState == TPSystemMediaPlayer.PlayerState.ERROR))
+    {
+      if (this.mLastCheckPos == -1L) {
+        return this.mStartPositionMs;
+      }
+      return this.mLastCheckPos;
+    }
+    if ((this.mState == TPSystemMediaPlayer.PlayerState.IDLE) || (this.mState == TPSystemMediaPlayer.PlayerState.INITIALIZED) || (this.mState == TPSystemMediaPlayer.PlayerState.PREPARING) || (this.mState == TPSystemMediaPlayer.PlayerState.STOPPED) || (this.mState == TPSystemMediaPlayer.PlayerState.PREPARED)) {
       return this.mStartPositionMs;
     }
     return this.mMediaPlayer.getCurrentPosition();
@@ -788,24 +905,38 @@ public class TPSystemMediaPlayer
   
   public long getDurationMs()
   {
+    if (this.mIsLive) {
+      return 0L;
+    }
+    if (this.mSuspend) {
+      return this.mBaseDuration;
+    }
     if ((this.mState != TPSystemMediaPlayer.PlayerState.PREPARED) && (this.mState != TPSystemMediaPlayer.PlayerState.STARTED) && (this.mState != TPSystemMediaPlayer.PlayerState.PAUSED)) {
       return -1L;
     }
     if (this.mBaseDuration <= 0L) {
       this.mBaseDuration = this.mMediaPlayer.getDuration();
     }
-    if (this.mCgiDuration > 0L) {
+    if (this.mCgiDuration > 0L)
+    {
       if (this.mBaseDuration > 0L) {
-        break label86;
+        break label107;
+      }
+      this.mBaseDuration = this.mCgiDuration;
+    }
+    for (;;)
+    {
+      return this.mBaseDuration;
+      label107:
+      if (Math.abs(this.mCgiDuration - this.mBaseDuration) * 100L / this.mCgiDuration > 1L) {
+        this.mBaseDuration = this.mCgiDuration;
       }
     }
-    for (this.mBaseDuration = this.mCgiDuration;; this.mBaseDuration = this.mCgiDuration) {
-      label86:
-      do
-      {
-        return this.mBaseDuration;
-      } while ((this.mBaseDuration <= 0L) || (Math.abs(this.mCgiDuration - this.mBaseDuration) * 100L / this.mCgiDuration <= 1L));
-    }
+  }
+  
+  public long getPlayableDurationMs()
+  {
+    return this.mPlayableDurationMs;
   }
   
   public TPProgramInfo[] getProgramInfo()
@@ -834,24 +965,24 @@ public class TPSystemMediaPlayer
       try
       {
         MediaPlayer.TrackInfo[] arrayOfTrackInfo = this.mMediaPlayer.getTrackInfo();
-        if ((arrayOfTrackInfo != null) || (!this.mAudioTrackInfo.isEmpty())) {
+        if ((arrayOfTrackInfo != null) || (!this.mAudioTrackInfo.isEmpty()) || (!this.mSubTrackInfo.isEmpty())) {
           break;
         }
         return new TPTrackInfo[0];
       }
       catch (Exception localException)
       {
-        TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "getTrackInfo, android getTrackInfo crash");
+        TPLogUtil.e(this.TAG, "getTrackInfo, android getTrackInfo crash");
       }
       localObject = null;
     }
     int k = this.mAudioTrackInfo.size();
+    int m = this.mSubTrackInfo.size();
     if (localObject == null) {}
     TPTrackInfo[] arrayOfTPTrackInfo;
-    Iterator localIterator;
     for (int i = 0;; i = localObject.length)
     {
-      arrayOfTPTrackInfo = new TPTrackInfo[i + k];
+      arrayOfTPTrackInfo = new TPTrackInfo[i + (m + k)];
       localIterator = this.mAudioTrackInfo.iterator();
       i = 0;
       while (localIterator.hasNext())
@@ -859,6 +990,12 @@ public class TPSystemMediaPlayer
         arrayOfTPTrackInfo[i] = ((TPSystemMediaPlayer.ExternalTrackInfo)localIterator.next()).info;
         i += 1;
       }
+    }
+    Iterator localIterator = this.mSubTrackInfo.iterator();
+    while (localIterator.hasNext())
+    {
+      arrayOfTPTrackInfo[i] = ((TPSystemMediaPlayer.ExternalTrackInfo)localIterator.next()).info;
+      i += 1;
     }
     if (localObject == null) {
       return arrayOfTPTrackInfo;
@@ -879,43 +1016,76 @@ public class TPSystemMediaPlayer
   
   public int getVideoHeight()
   {
-    if (this.mVideoHeight <= 0) {
-      this.mVideoHeight = this.mMediaPlayer.getVideoHeight();
-    }
-    if ((this.mVideoHeight <= 0) && (this.mCgiVideoHeight > 0) && ((this.mState == TPSystemMediaPlayer.PlayerState.PREPARED) || (this.mState == TPSystemMediaPlayer.PlayerState.STARTED) || (this.mState == TPSystemMediaPlayer.PlayerState.PAUSED))) {
-      this.mVideoHeight = this.mCgiVideoHeight;
-    }
+    TPLogUtil.i(this.TAG, "getVideoHeight, height:" + this.mVideoHeight);
     return this.mVideoHeight;
   }
   
   public int getVideoWidth()
   {
-    if (this.mVideoWidth <= 0) {
-      this.mVideoWidth = this.mMediaPlayer.getVideoWidth();
-    }
-    if (((this.mState == TPSystemMediaPlayer.PlayerState.PREPARED) || (this.mState == TPSystemMediaPlayer.PlayerState.STARTED) || (this.mState == TPSystemMediaPlayer.PlayerState.PAUSED)) && (this.mVideoWidth <= 0) && (this.mCgiVideoWidth > 0)) {
-      this.mVideoWidth = this.mCgiVideoWidth;
-    }
+    TPLogUtil.i(this.TAG, "getVideoWidth, width:" + this.mVideoWidth);
     return this.mVideoWidth;
   }
   
+  /* Error */
   public void pause()
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "pause ");
-    this.mMediaPlayer.pause();
-    this.mState = TPSystemMediaPlayer.PlayerState.PAUSED;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 122	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:TAG	Ljava/lang/String;
+    //   6: ldc_w 961
+    //   9: invokestatic 380	com/tencent/thumbplayer/utils/TPLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   12: aload_0
+    //   13: getfield 172	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mSuspend	Z
+    //   16: ifeq +33 -> 49
+    //   19: aload_0
+    //   20: getfield 203	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mLastestAction	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$ResetActionInfo;
+    //   23: ifnull +13 -> 36
+    //   26: aload_0
+    //   27: getfield 203	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mLastestAction	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$ResetActionInfo;
+    //   30: getstatic 372	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState:PAUSED	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   33: putfield 656	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$ResetActionInfo:state	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   36: aload_0
+    //   37: getfield 122	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:TAG	Ljava/lang/String;
+    //   40: ldc_w 963
+    //   43: invokestatic 966	com/tencent/thumbplayer/utils/TPLogUtil:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: return
+    //   49: aload_0
+    //   50: getfield 341	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   53: invokevirtual 427	android/media/MediaPlayer:pause	()V
+    //   56: aload_0
+    //   57: getstatic 372	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState:PAUSED	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   60: putfield 333	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mState	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   63: goto -17 -> 46
+    //   66: astore_1
+    //   67: aload_0
+    //   68: monitorexit
+    //   69: aload_1
+    //   70: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	71	0	this	TPSystemMediaPlayer
+    //   66	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	36	66	finally
+    //   36	46	66	finally
+    //   49	63	66	finally
   }
   
   public void prepare()
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "prepare ");
+    TPLogUtil.i(this.TAG, "prepare ");
     this.mState = TPSystemMediaPlayer.PlayerState.PREPARING;
     this.mMediaPlayer.prepare();
   }
   
   public void prepareAsync()
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "prepareAsync ");
+    TPLogUtil.i(this.TAG, "prepareAsync ");
     this.mState = TPSystemMediaPlayer.PlayerState.PREPARING;
     this.mMediaPlayer.prepareAsync();
     startCheckPrepareTimeoutTimer();
@@ -923,89 +1093,103 @@ public class TPSystemMediaPlayer
   
   public void release()
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "release ");
-    this.mIsStartGetCurrentPosChange = false;
-    destroyCheckPrepareTimeoutTimer();
-    destroyCheckBuffingTimer();
-    destroyCheckBufferTimeOutByInfo();
-    this.mMediaPlayer.reset();
-    this.mMediaPlayer.release();
-    unRegisterListener();
-    this.mEventHandler = null;
-    this.mState = TPSystemMediaPlayer.PlayerState.RELEASE;
+    try
+    {
+      TPLogUtil.i(this.TAG, "release ");
+      destroyCheckPrepareTimeoutTimer();
+      destroyCheckBuffingTimer();
+      destroyCheckBufferTimeOutByInfo();
+      unRegisterListener();
+      this.mMediaPlayer.reset();
+      this.mMediaPlayer.release();
+      this.mOnPreparedListener = null;
+      this.mOnCompletionListener = null;
+      this.mOnInfoListener = null;
+      this.mOnErrorListener = null;
+      this.mOnSeekCompleteListener = null;
+      this.mOnVideoSizeChangedListener = null;
+      this.mOnSubtitleDataListener = null;
+      this.mEventHandler = null;
+      this.mState = TPSystemMediaPlayer.PlayerState.RELEASE;
+      this.mSurfaceObj = null;
+      TPLogUtil.i(this.TAG, "release over.");
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public void reset()
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "reset ");
-    this.mIsStartGetCurrentPosChange = false;
-    this.mMediaPlayer.reset();
-    destroyCheckPrepareTimeoutTimer();
-    destroyCheckBuffingTimer();
-    destroyCheckBufferTimeOutByInfo();
-    this.mState = TPSystemMediaPlayer.PlayerState.IDLE;
+    try
+    {
+      TPLogUtil.i(this.TAG, "reset ");
+      this.mMediaPlayer.reset();
+      destroyCheckPrepareTimeoutTimer();
+      destroyCheckBuffingTimer();
+      destroyCheckBufferTimeOutByInfo();
+      this.mState = TPSystemMediaPlayer.PlayerState.IDLE;
+      TPLogUtil.i(this.TAG, "reset over.");
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public void seekTo(int paramInt)
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "seekTo, position: " + paramInt);
-    if (this.mIsNotSeekable)
+    TPLogUtil.i(this.TAG, "seekTo, position: " + paramInt);
+    if (this.mIsNotSeekable) {
+      TPLogUtil.i(this.TAG, "current media is not seekable, ignore");
+    }
+    do
     {
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "current media is not seekable, ignore");
+      return;
+      if (!this.mSuspend) {
+        break;
+      }
+    } while (this.mLastestAction == null);
+    this.mLastestAction.position = paramInt;
+    return;
+    try
+    {
+      this.mMediaPlayer.seekTo(paramInt);
       return;
     }
-    this.mMediaPlayer.seekTo(paramInt);
+    catch (IllegalStateException localIllegalStateException)
+    {
+      TPLogUtil.e(this.TAG, "seekTo illegalStateException, e = " + localIllegalStateException.toString());
+    }
   }
   
   @TargetApi(26)
   public void seekTo(int paramInt1, int paramInt2)
   {
-    int i = 0;
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "seekTo, position: " + paramInt1 + ", mode: " + paramInt2);
-    if (this.mIsNotSeekable)
+    TPLogUtil.i(this.TAG, "seekTo, position: " + paramInt1 + ", mode: " + paramInt2);
+    if (this.mIsNotSeekable) {
+      TPLogUtil.i(this.TAG, "current media is not seekable, ignore");
+    }
+    do
     {
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "current media is not seekable, ignore");
       return;
-    }
-    if (Build.VERSION.SDK_INT < 26)
-    {
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "os ver is too low, current sdk int:" + Build.VERSION.SDK_INT + ", is less than " + 26 + ", use seekTo(int positionMs) instead");
-      this.mMediaPlayer.seekTo(paramInt1);
-      return;
-    }
-    if (paramInt2 == 1) {}
-    for (;;)
-    {
-      try
-      {
-        this.mMediaPlayer.seekTo(paramInt1, i);
-        return;
+      if (!this.mSuspend) {
+        break;
       }
-      catch (Exception localException1)
-      {
-        TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", localException1);
-        try
-        {
-          this.mMediaPlayer.seekTo(paramInt1);
-          return;
-        }
-        catch (Exception localException2)
-        {
-          TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", localException2);
-          return;
-        }
-      }
-      if (paramInt2 == 2) {
-        i = 1;
-      } else if (paramInt2 == 3) {
-        i = 2;
-      }
-    }
+    } while (this.mLastestAction == null);
+    this.mLastestAction.position = paramInt1;
+    return;
+    seekToComm(this.mMediaPlayer, paramInt1, paramInt2);
   }
   
   public void selectProgram(int paramInt, long paramLong)
   {
-    TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "selectProgram, android mediaplayer not support");
+    TPLogUtil.e(this.TAG, "selectProgram, android mediaplayer not support");
   }
   
   public void selectTrack(int paramInt, long paramLong)
@@ -1013,7 +1197,7 @@ public class TPSystemMediaPlayer
     int i = this.mAudioTrackInfo.size();
     ITPPlayerBaseListener.IOnInfoListener localIOnInfoListener = this.mOnInfoListener;
     if ((paramInt >= 0) && (paramInt < i)) {}
-    label360:
+    label368:
     do
     {
       for (;;)
@@ -1028,7 +1212,7 @@ public class TPSystemMediaPlayer
         }
         catch (Exception localException1)
         {
-          TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", localException1);
+          TPLogUtil.e(this.TAG, localException1);
           if (localIOnInfoListener == null) {
             continue;
           }
@@ -1038,7 +1222,7 @@ public class TPSystemMediaPlayer
         paramInt -= i;
         if (Build.VERSION.SDK_INT < 16)
         {
-          TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "selectTrack, android mediaplayer not support ");
+          TPLogUtil.e(this.TAG, "selectTrack, android mediaplayer not support ");
           if (localIOnInfoListener != null) {
             localIOnInfoListener.onInfo(4, formatErrorCode(-10001), 0L, Long.valueOf(paramLong));
           }
@@ -1047,7 +1231,7 @@ public class TPSystemMediaPlayer
         {
           if ((this.mState != TPSystemMediaPlayer.PlayerState.PREPARED) && (this.mState != TPSystemMediaPlayer.PlayerState.STARTED) && (this.mState != TPSystemMediaPlayer.PlayerState.PAUSED))
           {
-            TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "selectTrack, illegal state:" + this.mState);
+            TPLogUtil.e(this.TAG, "selectTrack, illegal state:" + this.mState);
             return;
           }
           Object localObject = null;
@@ -1067,7 +1251,7 @@ public class TPSystemMediaPlayer
           {
             for (;;)
             {
-              TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", "getTrackInfo, android getTrackInfo crash");
+              TPLogUtil.e(this.TAG, "getTrackInfo, android getTrackInfo crash");
             }
             localObject = localObject[paramInt];
             if (localObject.getTrackType() == 2) {
@@ -1082,7 +1266,7 @@ public class TPSystemMediaPlayer
               localIOnInfoListener.onInfo(4, 1000L, 0L, Long.valueOf(paramLong));
               return;
               if (localObject.getTrackType() != 4) {
-                break label360;
+                break label368;
               }
               this.mSelectSubtitleIndex = paramInt;
             }
@@ -1095,7 +1279,7 @@ public class TPSystemMediaPlayer
   
   public void setAudioGainRatio(float paramFloat)
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setAudioGainRatio, : " + paramFloat);
+    TPLogUtil.i(this.TAG, "setAudioGainRatio, : " + paramFloat);
     this.mAudioGain = paramFloat;
     try
     {
@@ -1106,21 +1290,18 @@ public class TPSystemMediaPlayer
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setAudioGainRatio ex : " + localIllegalStateException.toString());
+      TPLogUtil.i(this.TAG, "setAudioGainRatio ex : " + localIllegalStateException.toString());
     }
   }
   
   public void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    if (paramParcelFileDescriptor == null) {
-      try
-      {
-        TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setDataSource pfd is null ");
-        throw new IllegalArgumentException("pfd is null");
-      }
-      finally {}
+    if (paramParcelFileDescriptor == null)
+    {
+      TPLogUtil.i(this.TAG, "setDataSource pfd is null ");
+      throw new IllegalArgumentException("pfd is null");
     }
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setDataSource pfd， pfd: " + paramParcelFileDescriptor.toString());
+    TPLogUtil.i(this.TAG, "setDataSource pfd， pfd: " + paramParcelFileDescriptor.toString());
     this.mFd = paramParcelFileDescriptor.getFileDescriptor();
     this.mMediaPlayer.setDataSource(paramParcelFileDescriptor.getFileDescriptor());
     this.mTpSystemCapture = new TPSystemCapture(paramParcelFileDescriptor.getFileDescriptor());
@@ -1134,7 +1315,7 @@ public class TPSystemMediaPlayer
   
   public void setDataSource(String paramString)
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setDataSource， url: " + paramString);
+    TPLogUtil.i(this.TAG, "setDataSource， url: " + paramString);
     this.mUrl = paramString;
     this.mMediaPlayer.setDataSource(paramString);
     this.mTpSystemCapture = new TPSystemCapture(paramString);
@@ -1143,7 +1324,7 @@ public class TPSystemMediaPlayer
   
   public void setDataSource(String paramString, Map<String, String> paramMap)
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setDataSource httpHeader， url: " + paramString);
+    TPLogUtil.i(this.TAG, "setDataSource httpHeader, url: " + paramString);
     this.mUrl = paramString;
     this.mHeader = paramMap;
     paramMap = Uri.parse(this.mUrl);
@@ -1154,31 +1335,21 @@ public class TPSystemMediaPlayer
   
   public void setLoopback(boolean paramBoolean)
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setLoopback, : " + paramBoolean);
+    TPLogUtil.i(this.TAG, "setLoopback, : " + paramBoolean);
     this.mIsLoopback = paramBoolean;
     this.mMediaPlayer.setLooping(paramBoolean);
   }
   
   public void setLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    long l2 = 0L;
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setLoopback, : " + paramBoolean + ", loopStart: " + paramLong1 + ", loopEnd: " + paramLong2);
-    if (this.mState == TPSystemMediaPlayer.PlayerState.ERROR) {
-      throw new IllegalStateException("state error, current state is error state");
+    TPLogUtil.i(this.TAG, "setLoopback, : " + paramBoolean + ", loopStart: " + paramLong1 + ", loopEnd: " + paramLong2);
+    if ((paramLong1 < 0L) || (paramLong1 > this.mBaseDuration) || (paramLong2 > this.mBaseDuration)) {
+      throw new IllegalArgumentException("position error, must more than 0 and less than duration");
     }
     this.mIsLoopback = paramBoolean;
-    long l1 = paramLong1;
-    if (paramLong1 < 0L) {
-      l1 = 0L;
-    }
-    this.mLoopStartPositionMs = l1;
-    if (paramLong2 < 0L) {}
-    for (paramLong1 = l2;; paramLong1 = paramLong2)
-    {
-      this.mLoopEndPositionMs = paramLong1;
-      this.mMediaPlayer.setLooping(paramBoolean);
-      return;
-    }
+    this.mLoopStartPositionMs = paramLong1;
+    this.mLoopEndPositionMs = paramLong2;
+    this.mMediaPlayer.setLooping(paramBoolean);
   }
   
   public void setOnAudioPcmOutputListener(ITPPlayerBaseListener.IOnAudioPcmOutListener paramIOnAudioPcmOutListener)
@@ -1216,6 +1387,11 @@ public class TPSystemMediaPlayer
     this.mOnSubtitleDataListener = paramIOnSubtitleDataListener;
   }
   
+  public void setOnSubtitleFrameOutListener(ITPPlayerBaseListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener)
+  {
+    throw new IllegalStateException("system Mediaplayer now not support subtitle frame out");
+  }
+  
   public void setOnVideoFrameOutListener(ITPPlayerBaseListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener)
   {
     throw new IllegalStateException("system Mediaplayer cannot support video frame out");
@@ -1228,41 +1404,36 @@ public class TPSystemMediaPlayer
   
   public void setOutputMute(boolean paramBoolean)
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setOutputMute, : " + paramBoolean);
-    if (this.mMediaPlayer == null)
+    TPLogUtil.i(this.TAG, "setOutputMute, : " + paramBoolean);
+    this.mMute = paramBoolean;
+    if (paramBoolean) {}
+    try
     {
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setOutputMute, player is null");
+      this.mMediaPlayer.setVolume(0.0F, 0.0F);
+      TPLogUtil.i(this.TAG, "setOutputMute, true");
       return;
     }
-    if (paramBoolean) {
-      try
-      {
-        this.mMediaPlayer.setVolume(0.0F, 0.0F);
-        TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setOutputMute, true");
-        return;
-      }
-      catch (Exception localException)
-      {
-        TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setOutputMute, Exception: " + localException.toString());
-        return;
-      }
+    catch (Exception localException)
+    {
+      TPLogUtil.i(this.TAG, "setOutputMute, Exception: " + localException.toString());
     }
     this.mMediaPlayer.setVolume(this.mAudioGain, this.mAudioGain);
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setOutputMute, false, mAudioGain: " + this.mAudioGain);
+    TPLogUtil.i(this.TAG, "setOutputMute, false, mAudioGain: " + this.mAudioGain);
+    return;
   }
   
   @TargetApi(23)
   public void setPlaySpeedRatio(float paramFloat)
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setPlaySpeedRatio, : " + paramFloat);
+    TPLogUtil.i(this.TAG, "setPlaySpeedRatio, : " + paramFloat);
     if (Build.VERSION.SDK_INT < 23) {
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "os version is too low: " + Build.VERSION.SDK_INT);
+      TPLogUtil.i(this.TAG, "os version is too low: " + Build.VERSION.SDK_INT);
     }
     for (;;)
     {
       return;
       this.mPlaySpeed = paramFloat;
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "setPlaySpeedRatio play speed:" + paramFloat);
+      TPLogUtil.i(this.TAG, "setPlaySpeedRatio play speed:" + paramFloat);
       try
       {
         PlaybackParams localPlaybackParams = this.mMediaPlayer.getPlaybackParams();
@@ -1275,7 +1446,7 @@ public class TPSystemMediaPlayer
       }
       catch (Exception localException)
       {
-        TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", localException);
+        TPLogUtil.e(this.TAG, localException);
       }
     }
   }
@@ -1288,78 +1459,173 @@ public class TPSystemMediaPlayer
       return;
     case 100: 
       this.mStartPositionMs = ((int)paramTPOptionalParam.getParamLong().value);
+      TPLogUtil.i(this.TAG, "setPlayerOptionalParam, start position:" + this.mStartPositionMs);
       return;
     case 500: 
       this.mSkipEndPositionMs = paramTPOptionalParam.getParamLong().value;
+      TPLogUtil.i(this.TAG, "setPlayerOptionalParam, skip end position:" + this.mSkipEndPositionMs);
       return;
     case 1: 
       this.mCgiDuration = paramTPOptionalParam.getParamLong().value;
       return;
     case 2: 
       this.mCgiVideoWidth = ((int)paramTPOptionalParam.getParamLong().value);
+      TPLogUtil.i(this.TAG, "setPlayerOptionalParam, video width:" + this.mCgiVideoWidth);
       return;
     case 3: 
       this.mCgiVideoHeight = ((int)paramTPOptionalParam.getParamLong().value);
+      TPLogUtil.i(this.TAG, "setPlayerOptionalParam, video height:" + this.mCgiVideoHeight);
       return;
     case 4: 
       this.mIsLive = paramTPOptionalParam.getParamBoolean().value;
+      this.mIsNotSeekable = true;
+      TPLogUtil.i(this.TAG, "setPlayerOptionalParam, is live:" + this.mIsLive);
       return;
     case 5: 
       this.mIsAllowCheckBuffingByPosition = paramTPOptionalParam.getParamBoolean().value;
       return;
     case 207: 
       this.mIntervalCheckPreparingTimeOut = paramTPOptionalParam.getParamLong().value;
+      TPLogUtil.i(this.TAG, "setPlayerOptionalParam, prepare timeout:" + this.mIntervalCheckPreparingTimeOut + "(ms)");
       return;
     }
     this.mCheckBufferTimeroutFrequent = ((int)((paramTPOptionalParam.getParamLong().value + 400L) / 400L));
+    TPLogUtil.i(this.TAG, "setPlayerOptionalParam, buffer timeout:" + paramTPOptionalParam.getParamLong().value + "(ms)");
   }
   
   public void setSurface(Surface paramSurface)
   {
-    this.mMediaPlayer.setSurface(paramSurface);
+    TPLogUtil.i(this.TAG, "setSurface, surface: " + paramSurface);
+    this.mSurfaceObj = paramSurface;
+    try
+    {
+      this.mMediaPlayer.setSurface(paramSurface);
+      TPLogUtil.i(this.TAG, "setSurface over, surface: " + paramSurface);
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      for (;;)
+      {
+        TPLogUtil.e(this.TAG, "setSurface error, " + localIllegalStateException.toString());
+      }
+    }
   }
   
   public void start()
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "start ");
-    this.mIsStartGetCurrentPosChange = false;
+    TPLogUtil.i(this.TAG, "start ");
+    if (this.mSuspend)
+    {
+      if (this.mLastestAction != null) {
+        this.mLastestAction.state = TPSystemMediaPlayer.PlayerState.STARTED;
+      }
+      TPLogUtil.w(this.TAG, "system player is busy.");
+      return;
+    }
+    if ((this.mState != TPSystemMediaPlayer.PlayerState.PREPARED) && (this.mState != TPSystemMediaPlayer.PlayerState.PAUSED))
+    {
+      TPLogUtil.w(this.TAG, "start(), illegal state, state:" + this.mState);
+      return;
+    }
     this.mMediaPlayer.start();
     this.mState = TPSystemMediaPlayer.PlayerState.STARTED;
     if (this.mPlaySpeed != 1.0D) {
       setPlaySpeedRatio(this.mPlaySpeed);
     }
     startCheckBufferingTimer();
-    if ((this.mStartPositionMs == 0) && (!this.mIsNotSeekable)) {
-      this.mEventHandler.postDelayed(new TPSystemMediaPlayer.1(this), 2000L);
-    }
   }
   
+  /* Error */
   public void stop()
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "stop ");
-    destroyCheckPrepareTimeoutTimer();
-    destroyCheckBuffingTimer();
-    destroyCheckBufferTimeOutByInfo();
-    this.mMediaPlayer.stop();
-    this.mState = TPSystemMediaPlayer.PlayerState.STOPPED;
-    this.mCurAudioTrackIndex = 0;
-    this.mSelectSubtitleIndex = -1;
-    this.mCurInnerAudioTrackIndex = -1;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 122	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:TAG	Ljava/lang/String;
+    //   6: ldc_w 1159
+    //   9: invokestatic 380	com/tencent/thumbplayer/utils/TPLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   12: aload_0
+    //   13: invokespecial 345	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:destroyCheckPrepareTimeoutTimer	()V
+    //   16: aload_0
+    //   17: invokespecial 288	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:destroyCheckBuffingTimer	()V
+    //   20: aload_0
+    //   21: invokespecial 276	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:destroyCheckBufferTimeOutByInfo	()V
+    //   24: aload_0
+    //   25: getfield 333	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mState	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   28: getstatic 489	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState:IDLE	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   31: if_acmpeq +43 -> 74
+    //   34: aload_0
+    //   35: getfield 333	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mState	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   38: getstatic 659	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState:INITIALIZED	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   41: if_acmpeq +33 -> 74
+    //   44: aload_0
+    //   45: getfield 333	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mState	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   48: getstatic 662	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState:PREPARING	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   51: if_acmpeq +23 -> 74
+    //   54: aload_0
+    //   55: getfield 333	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mState	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   58: getstatic 415	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState:ERROR	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   61: if_acmpeq +13 -> 74
+    //   64: aload_0
+    //   65: getfield 333	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mState	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   68: getstatic 978	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState:RELEASE	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   71: if_acmpne +50 -> 121
+    //   74: aload_0
+    //   75: getfield 341	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   78: invokevirtual 409	android/media/MediaPlayer:reset	()V
+    //   81: aload_0
+    //   82: getstatic 909	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState:STOPPED	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   85: putfield 333	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mState	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$PlayerState;
+    //   88: aload_0
+    //   89: iconst_0
+    //   90: putfield 192	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCurAudioTrackIndex	I
+    //   93: aload_0
+    //   94: aconst_null
+    //   95: putfield 203	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mLastestAction	Lcom/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer$ResetActionInfo;
+    //   98: aload_0
+    //   99: iconst_m1
+    //   100: putfield 190	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mSelectSubtitleIndex	I
+    //   103: aload_0
+    //   104: iconst_m1
+    //   105: putfield 194	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mCurInnerAudioTrackIndex	I
+    //   108: aload_0
+    //   109: getfield 122	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:TAG	Ljava/lang/String;
+    //   112: ldc_w 1161
+    //   115: invokestatic 380	com/tencent/thumbplayer/utils/TPLogUtil:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   118: aload_0
+    //   119: monitorexit
+    //   120: return
+    //   121: aload_0
+    //   122: getfield 341	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemMediaPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   125: invokevirtual 1163	android/media/MediaPlayer:stop	()V
+    //   128: goto -47 -> 81
+    //   131: astore_1
+    //   132: aload_0
+    //   133: monitorexit
+    //   134: aload_1
+    //   135: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	136	0	this	TPSystemMediaPlayer
+    //   131	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	74	131	finally
+    //   74	81	131	finally
+    //   81	118	131	finally
+    //   121	128	131	finally
   }
   
   public void switchDefinition(ITPMediaAsset paramITPMediaAsset, int paramInt, long paramLong) {}
   
   public void switchDefinition(String paramString, int paramInt, long paramLong)
   {
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "switchDefinition, defUrl: " + paramString);
-    if (this.mMediaPlayer == null)
-    {
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "switchDefinition, player is null");
-      return;
-    }
+    TPLogUtil.i(this.TAG, "switchDefinition, defUrl: " + paramString);
     if (TextUtils.isEmpty(paramString))
     {
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "switchDefinition, defUrl is null");
+      TPLogUtil.i(this.TAG, "switchDefinition, defUrl is null");
       return;
     }
     this.mUrl = paramString;
@@ -1381,7 +1647,7 @@ public class TPSystemMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPSystemMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 class aruu
-  implements View.OnClickListener
+  extends arvd
 {
-  aruu(arut paramarut) {}
+  aruu(arup paramarup, String paramString, Object paramObject) {}
   
-  public void onClick(View paramView)
+  public void a(EmoticonPackage arg1, int paramInt, Bundle paramBundle)
   {
-    if (!this.a.a) {
-      return;
-    }
-    int i = 4;
-    if (arut.a(this.a) == 1)
-    {
-      i = 2;
-      if (!arut.a(this.a).equals(alof.z)) {
-        break label131;
-      }
-      i = 3;
-    }
-    label131:
-    for (;;)
-    {
-      long l = arbs.b();
-      azqs.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", i, 0, "" + l, "0", "", "");
-      if (arut.a(this.a) == 1)
+    if (???.epId.equals(this.jdField_a_of_type_JavaLangString)) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        arut.a(this.a);
+        this.jdField_a_of_type_JavaLangObject.notify();
         return;
-        if (arut.a(this.a) != 0) {
-          break;
-        }
-        i = 1;
-        break;
       }
-      arut.b(this.a);
-      return;
     }
   }
 }

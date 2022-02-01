@@ -1,17 +1,18 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeci
-  extends bayj
+  implements View.OnClickListener
 {
-  public aeci(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public aeci(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.c();
-    }
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

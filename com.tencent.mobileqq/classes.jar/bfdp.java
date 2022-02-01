@@ -1,18 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.open.agent.CardContainer;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import com.tencent.widget.AdapterView;
+import java.util.Set;
 
 public class bfdp
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bkij
 {
-  public bfdp(CardContainer paramCardContainer, ImageView paramImageView) {}
+  public bfdp(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    if (this.a.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
+      this.a.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bfdr.notifyDataSetChanged();
+      this.a.e();
+      return;
+      this.a.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
+    }
   }
 }
 

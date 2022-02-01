@@ -1,22 +1,36 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import java.lang.ref.WeakReference;
 
 public class stf
-  implements bicq
+  implements Handler.Callback
 {
-  public stf(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  private WeakReference<ReadInJoyXListView> a;
   
-  public void a()
+  public stf(ReadInJoyXListView paramReadInJoyXListView)
   {
-    if ((!this.a.c) && (this.a.d))
+    this.a = new WeakReference(paramReadInJoyXListView);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.a.c = true;
-      syp.a("SUBSCRIPT_FEEDS_COST", null);
+    default: 
+      return false;
     }
+    if ((this.a != null) && (this.a.get() != null))
+    {
+      ((ReadInJoyXListView)this.a.get()).i();
+      return true;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     stf
  * JD-Core Version:    0.7.0.1
  */

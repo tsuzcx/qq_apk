@@ -1,16 +1,17 @@
-import android.net.Uri;
-import android.provider.ContactsContract.Data;
-
-class apag
+public class apag
 {
-  public static final Uri a;
-  public static final String[] a;
-  public static final String[] b = { "raw_contact_id", "data1" };
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  static
+  public String toString()
   {
-    jdField_a_of_type_AndroidNetUri = ContactsContract.Data.CONTENT_URI;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "_id", "mimetype", "data1" };
+    return "StarInfo{faceID=" + this.jdField_a_of_type_Int + ", uin=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pinyin_name='" + this.b + '\'' + ", wiki='" + this.c + '\'' + ", wikiTitle='" + this.d + '\'' + ", wikiURL='" + this.e + '\'' + ", confidence='" + this.jdField_a_of_type_Float + '\'' + '}';
   }
 }
 

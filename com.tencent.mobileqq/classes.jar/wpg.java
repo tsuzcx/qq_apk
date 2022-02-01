@@ -1,54 +1,25 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wpg
-  extends wqp<GeneralFeedItem>
+class wpg
+  implements wld<wyo, xam>
 {
-  public boolean a;
+  wpg(wpf paramwpf, long paramLong) {}
   
-  public wpg(@NonNull GeneralFeedItem paramGeneralFeedItem)
+  public void a(@NonNull wyo paramwyo, @Nullable xam paramxam, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramGeneralFeedItem);
-  }
-  
-  public GeneralFeedItem a()
-  {
-    return (GeneralFeedItem)super.a();
-  }
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
-  {
-    Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_feed.get();
-    ((GeneralFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
-    ((GeneralFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    wxe.a("Q.qqstory.home.data.GeneralHomeFeed", "GeneralHomeFeed convertFrom, feedSourceType:%s, feedId:%s", Integer.valueOf(((GeneralFeedItem)this.a).feedSourceTagType), ((GeneralFeedItem)this.a).feedId);
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
+    if (paramxam != null)
     {
-      qqstory_struct.FeedVideoInfo localFeedVideoInfo = (qqstory_struct.FeedVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.GeneralHomeFeed", localFeedVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
+      this.jdField_a_of_type_Wpf.b("qqstory_black_status", Integer.valueOf(paramxam.b));
+      this.jdField_a_of_type_Wpf.b("qqstory_black_status_update_interval", Integer.valueOf(paramxam.c));
+      this.jdField_a_of_type_Wpf.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
     }
-    c(paramStoryFeed, true);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wpg
  * JD-Core Version:    0.7.0.1
  */

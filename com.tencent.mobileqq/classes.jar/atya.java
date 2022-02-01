@@ -1,66 +1,27 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData.1;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atya
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public atyb a;
-  public atye a;
-  public String a;
-  TimerTask a;
-  public boolean a;
-  public int b;
-  public String b = "non-ver";
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public boolean e = true;
-  public int f = 50;
-  public String f;
-  public boolean f;
-  public int g = 30;
-  public String g;
-  public boolean g;
-  public int h = 0;
-  public String h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
+  public atya(SendBottomBar paramSendBottomBar) {}
   
-  public atya()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "send";
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilTimerTask = new ActionGlobalData.1(this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Float = this.jdField_c_of_type_Int;
-    ThreadManager.getTimer().schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 100L);
-  }
-  
-  public void a(atyb paramatyb)
-  {
-    this.jdField_a_of_type_Atyb = paramatyb;
+    if (this.a.a.isShowing()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a.show();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atya
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,20 @@
-import java.io.File;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.net.Uri;
 
-public class blkb
+public abstract interface blkb
 {
-  public static final String a = bkpi.a + File.separator + "ae_editor" + File.separator + "lottie/aiscene";
-  public static final String b = a + File.separator + "res";
-  public static final String c = b + File.separator + "AutoAISceneAni";
-  public static final String d = c + File.separator + "AILottie";
-  public static final String e = c + File.separator + "AILottie" + File.separator + "ProcessAnimation.zip";
+  public abstract int delete(Uri paramUri, String paramString, String[] paramArrayOfString);
+  
+  public abstract Uri insert(Uri paramUri, ContentValues paramContentValues);
+  
+  public abstract Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2);
+  
+  public abstract int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blkb
  * JD-Core Version:    0.7.0.1
  */

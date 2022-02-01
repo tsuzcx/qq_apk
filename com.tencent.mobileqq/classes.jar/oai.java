@@ -1,65 +1,46 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
+import com.tencent.biz.pubaccount.PublicAccountManager.4;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class oai
-  extends alzr
+  extends aopa
 {
-  public oai(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void a(boolean paramBoolean, int paramInt, long paramLong)
+  public oai(PublicAccountManager.4 param4, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, boolean paramBoolean5)
   {
-    if (paramLong != 2171946401L) {
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
+    try
+    {
+      if (paramSosoLbsInfo.a != null)
+      {
+        double d1 = paramSosoLbsInfo.a.jdField_a_of_type_Double;
+        double d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
+        String str1 = "";
+        if (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null) {
+          str1 = "" + paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
+        }
+        String str2 = str1;
+        if (paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString != null) {
+          str2 = str1 + paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString;
+        }
+        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$4.this$0.a(true, d1, d2, str2, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      }
       return;
     }
-    Object localObject = this.a;
-    ((ReadInJoySettingActivity)localObject).jdField_a_of_type_Int -= 1;
-    if ((this.a.jdField_a_of_type_Int == 0) && (this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
-      this.a.jdField_a_of_type_Bety.dismiss();
-    }
-    boolean bool;
-    if (paramInt == this.a.b)
+    catch (Exception paramSosoLbsInfo)
     {
-      bool = ReadInJoySettingActivity.a(this.a);
-      if (!paramBoolean) {
-        break label202;
-      }
-      localObject = ReadInJoySettingActivity.a(this.a);
-      if (bool) {
-        break label168;
-      }
-      paramBoolean = true;
-      ((Switch)localObject).setChecked(paramBoolean);
-      if (!bool) {
-        break label173;
-      }
-      nrt.a(null, "CliOper", "", "", "0X80067D5", "0X80067D5", 0, 0, "", "", "", ors.c(), false);
-      label147:
-      ReadInJoySettingActivity.a(this.a).a(bool);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-      label168:
-      paramBoolean = false;
-      break;
-      label173:
-      nrt.a(null, "CliOper", "", "", "0X800676D", "0X800676D", 0, 0, "", "", "", ors.c(), false);
-      break label147;
-      label202:
-      QQToast.a(this.a.getApplicationContext(), 2131700044, 0).a();
-      this.a.c = true;
-      ReadInJoySettingActivity.a(this.a).setChecked(bool);
-      QLog.d("ReadInJoySettingActivity", 1, "handle setkandian recomm failed");
+      paramSosoLbsInfo.printStackTrace();
+      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$4.this$0.a(false, 0.0D, 0.0D, null, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oai
  * JD-Core Version:    0.7.0.1
  */

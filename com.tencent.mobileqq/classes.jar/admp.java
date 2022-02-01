@@ -1,25 +1,43 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class admp
-  implements aybu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public admp(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public admp(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      PermisionPrivacyActivity.a(this.a, 2131719884);
+    if (AppSetting.c) {
+      this.a.f.setContentDescription(anni.a(2131699586));
     }
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), PermisionPrivacyActivity.a(this.a).b());
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
+    {
+      i = 1;
+      bcst.b(localQQAppInterface, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131694390), "qqsetting_screenshot_key", paramBoolean);
+      if (!paramBoolean) {
+        break label106;
+      }
+      this.a.turnOnShake();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 0;
+      break;
+      label106:
+      this.a.turnOffShake();
+    }
   }
 }
 

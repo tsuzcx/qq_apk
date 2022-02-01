@@ -2,11 +2,11 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 
 import android.content.Context;
 import android.widget.FrameLayout;
-import bety;
+import biau;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.microapp.apkg.f;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.appbrand.a;
-import com.tencent.mobileqq.microapp.appbrand.utils.p;
+import com.tencent.mobileqq.microapp.appbrand.b.h;
 import com.tencent.mobileqq.microapp.widget.TabBarView.b;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -40,7 +40,6 @@ public final class AppBrandPageContainer
     }
     this.pageLinkedList.remove(paramAbsAppBrandPage);
     this.pageLinkedList.push(paramAbsAppBrandPage);
-    paramAbsAppBrandPage.bringToFront();
     requestLayout();
     invalidate();
     paramAbsAppBrandPage.onPageForeground();
@@ -49,11 +48,11 @@ public final class AppBrandPageContainer
   private void executeDownSubPack(String paramString1, String paramString2)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    bety localbety = new bety(getContext());
-    localbety.a("正在加载模块...");
-    localbety.setCancelable(false);
-    localbety.show();
-    this.appBrandRuntime.c.a(paramString1, new AppBrandPageContainer.1(this, localWeakReference, paramString2, paramString1, localbety));
+    biau localbiau = new biau(getContext());
+    localbiau.a("正在加载模块...");
+    localbiau.setCancelable(false);
+    localbiau.show();
+    this.appBrandRuntime.c.a(paramString1, new AppBrandPageContainer.1(this, localWeakReference, paramString2, paramString1, localbiau));
   }
   
   private boolean isUrlResReady(String paramString)
@@ -69,7 +68,7 @@ public final class AppBrandPageContainer
       AbsAppBrandPage localAbsAppBrandPage = (AbsAppBrandPage)localIterator.next();
       if ((!paramBoolean) || (!localAbsAppBrandPage.isTabPage()))
       {
-        p.a().a(localAbsAppBrandPage.getCurrentPageWebview(), BaseApplicationImpl.sApplication);
+        h.a().a(localAbsAppBrandPage.getCurrentPageWebview(), BaseApplicationImpl.sApplication);
         localAbsAppBrandPage.cleanup();
         localIterator.remove();
       }
@@ -202,8 +201,7 @@ public final class AppBrandPageContainer
       {
         AbsAppBrandPage localAbsAppBrandPage = (AbsAppBrandPage)((Iterator)localObject).next();
         QLog.d("AppBrandPageContainer", 4, "navigateBack clearPage=" + localAbsAppBrandPage);
-        p.a().a(localAbsAppBrandPage.getCurrentPageWebview(), BaseApplicationImpl.sApplication);
-        localAbsAppBrandPage.setVisibility(8);
+        h.a().a(localAbsAppBrandPage.getCurrentPageWebview(), BaseApplicationImpl.sApplication);
         localAbsAppBrandPage.cleanup();
         ((Iterator)localObject).remove();
       }
@@ -280,7 +278,7 @@ public final class AppBrandPageContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer
  * JD-Core Version:    0.7.0.1
  */

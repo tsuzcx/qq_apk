@@ -1,171 +1,101 @@
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.widget.PAHighLightImageView;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
+import java.net.URL;
+import java.util.HashMap;
 
-public class bcxw
-  extends InputStream
+class bcxw
+  extends URLDrawableDownListener.Adapter
 {
-  private int jdField_a_of_type_Int;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  bcxw(bcxv parambcxv) {}
   
-  public bcxw(InputStream paramInputStream)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsgItemCover", 2, "onLoadCancelled");
+    }
   }
   
-  private static int a(InputStream paramInputStream)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramInputStream == null) {
-      return -1;
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsgItemCover", 2, "onLoadFailed ,cause = " + paramThrowable);
     }
-    int i = 0;
-    for (;;)
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null))
     {
-      if (i != -1)
+      paramThrowable = paramURLDrawable.getURL().toString();
+      if (paramThrowable.startsWith("http://url.cn"))
       {
-        int j = paramInputStream.read();
-        if (j == 123)
+        paramThrowable = paramThrowable.replace("http://", "https://");
+        try
         {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("ChunkedInputStream", 1, "Server did not return any chunk");
-          return -1;
+          paramThrowable = URLDrawable.getDrawable(new URL(paramThrowable), (URLDrawable.URLDrawableOptions)paramURLDrawable.getTag());
+          paramThrowable.setAutoDownload(true);
+          ((PAHighLightImageView)paramView).setImageDrawable(paramThrowable);
+          return;
         }
-        switch (i)
+        catch (Exception paramThrowable)
         {
-        default: 
-          break;
-        case 0: 
-          if (j == 13) {
-            i = 1;
-          } else {
-            localStringBuilder.append((char)j);
-          }
-          break;
-        case 1: 
-          if (j == 10) {
-            i = -1;
-          } else {
-            throw new IOException("Read CRLF invalid!");
-          }
-          break;
+          paramThrowable.printStackTrace();
         }
       }
     }
-    return Integer.parseInt(localStringBuilder.toString(), 16);
+    try
+    {
+      paramThrowable = new HashMap();
+      paramThrowable.put("param_Url", paramURLDrawable.getURL().toString());
+      bctj.a(BaseApplication.getContext()).a(null, "StructMsgPicShow", false, 0L, 0L, paramThrowable, null);
+      label152:
+      this.a.a(paramView, 0, 1001);
+      return;
+    }
+    catch (Exception paramURLDrawable)
+    {
+      break label152;
+    }
   }
   
-  private boolean a()
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = b();; bool = false)
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsgItemCover", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {
+      return;
+    }
+    paramView.setBackgroundDrawable(null);
+    if ((paramView instanceof ImageView)) {
+      ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
+    }
+    try
     {
-      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_JavaIoInputStream);
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Int = 0;
-      if (this.jdField_a_of_type_Int == 0) {
-        this.jdField_b_of_type_Boolean = true;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_Url", paramURLDrawable.getURL().toString());
+      bctj.a(BaseApplication.getContext()).a(null, "StructMsgPicShow", true, 0L, 0L, localHashMap, null);
+      label66:
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsgItemCover", 2, "onLoadSuccessed");
       }
-      return (this.jdField_a_of_type_Int >= 0) && (bool);
+      this.a.a(paramView, 1, 1001);
+      return;
     }
-  }
-  
-  private boolean b()
-  {
-    int i = this.jdField_a_of_type_JavaIoInputStream.read();
-    int j = this.jdField_a_of_type_JavaIoInputStream.read();
-    return (i == 13) && (j == 10);
-  }
-  
-  public byte[] a()
-  {
-    boolean bool = true;
-    if (!this.jdField_a_of_type_Boolean) {
-      bool = b();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_JavaIoInputStream == null) {
-      return new byte[0];
-    }
-    this.jdField_a_of_type_Int = a(this.jdField_a_of_type_JavaIoInputStream);
-    if (4 == this.jdField_a_of_type_Int) {
-      read(new byte[4], 0, 4);
-    }
-    if ((this.jdField_a_of_type_Int <= 0) || (!bool)) {
-      return new byte[0];
-    }
-    byte[] arrayOfByte = new byte[this.jdField_a_of_type_Int];
-    int i = this.jdField_a_of_type_Int;
-    int j;
-    do
+    catch (Exception paramURLDrawable)
     {
-      j = read(arrayOfByte, this.jdField_b_of_type_Int, i);
-      if (j < 0) {
-        return new byte[0];
-      }
-      j = i - j;
-      i = j;
-    } while (j > 0);
-    return arrayOfByte;
-  }
-  
-  public int read()
-  {
-    if (this.c) {
-      throw new IOException("Attempted read from closed stream.");
+      break label66;
     }
-    if (this.jdField_b_of_type_Boolean) {}
-    do
-    {
-      return -1;
-      if (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) {
-        break;
-      }
-      a();
-    } while (this.jdField_b_of_type_Boolean);
-    this.jdField_b_of_type_Int += 1;
-    return this.jdField_a_of_type_JavaIoInputStream.read();
-  }
-  
-  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    int j = -1;
-    if (this.c) {
-      throw new IOException("Attempted read from closed stream.");
-    }
-    int i;
-    if (this.jdField_b_of_type_Boolean) {
-      i = j;
-    }
-    do
-    {
-      boolean bool;
-      do
-      {
-        do
-        {
-          return i;
-          if (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) {
-            break;
-          }
-          bool = a();
-          i = j;
-        } while (this.jdField_b_of_type_Boolean);
-        i = j;
-      } while (!bool);
-      paramInt2 = Math.min(paramInt2, this.jdField_a_of_type_Int - this.jdField_b_of_type_Int);
-      paramInt1 = this.jdField_a_of_type_JavaIoInputStream.read(paramArrayOfByte, paramInt1, paramInt2);
-      this.jdField_b_of_type_Int += paramInt1;
-      i = paramInt1;
-    } while (this.jdField_b_of_type_Int != this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Int = 0;
-    return paramInt1;
   }
 }
 

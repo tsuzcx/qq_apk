@@ -1,102 +1,109 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.etrump.mixlayout.EMEmoticon;
-import com.etrump.mixlayout.ETEngine;
-import com.etrump.mixlayout.ETFont;
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class asss
-  extends Handler
+public class asss
+  implements bfpo
 {
-  public asss(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public asss(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, List paramList, String paramString1, FileManagerEntity paramFileManagerEntity, boolean paramBoolean1, String paramString2, boolean paramBoolean2, String paramString3, String paramString4, short paramShort, String paramString5, int paramInt, String paramString6, aaqv paramaaqv) {}
   
-  public void handleMessage(Message arg1)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    assu localassu;
-    int i;
-    ETEngine localETEngine;
-    Object localObject1;
-    switch (???.what)
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramJSONObject != null) {}
+    try
     {
-    case 259: 
-    default: 
-    case 258: 
-      do
+      atsc localatsc;
+      if (!paramJSONObject.isNull("dirs"))
       {
-        do
+        paramBundle = paramJSONObject.getJSONArray("dirs");
+        paramInt = 0;
+        while (paramInt < paramBundle.length())
         {
-          return;
-          localassu = (assu)???.obj;
-        } while (localassu == null);
-        i = assu.a(localassu).getWidth();
-        int j = assu.a(localassu).getHeight();
-        if ((HiBoomTextView.a() != null) && ((HiBoomTextView.a().getWidth() < i) || (HiBoomTextView.a().getHeight() < j)))
-        {
-          HiBoomTextView.a().recycle();
-          HiBoomTextView.a(null);
+          localatsc = new atsc();
+          localatsc.jdField_a_of_type_Boolean = true;
+          localatsc.jdField_a_of_type_JavaLangString = paramBundle.getString(paramInt);
+          this.jdField_a_of_type_JavaUtilList.add(localatsc);
+          paramInt += 1;
         }
-        if (HiBoomTextView.a() != null) {
-          break;
-        }
-        HiBoomTextView.a(Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888));
-        localETEngine = asry.a().b;
-        String str = assu.a(localassu) + assu.a(localassu).getId() + assu.a(localassu) + assu.a(localassu).getSize();
-        localObject1 = (EMEmoticon)HiBoomTextView.a().get(str);
-        ??? = (Message)localObject1;
-        if (localObject1 == null)
+      }
+      if ((paramJSONObject != null) && (!paramJSONObject.isNull("files")))
+      {
+        paramBundle = paramJSONObject.getJSONArray("files");
+        paramInt = 0;
+        if (paramInt < paramBundle.length())
         {
-          localObject1 = EMEmoticon.createEmoticon(localETEngine, assu.a(localassu), assu.a(localassu), assu.a(localassu));
-          ??? = (Message)localObject1;
-          if (localObject1 != null)
+          localatsc = new atsc();
+          paramJSONObject = paramBundle.getJSONObject(paramInt);
+          localatsc.jdField_a_of_type_JavaLangString = paramJSONObject.getString("filename");
+          localatsc.jdField_a_of_type_Long = paramJSONObject.getLong("size");
+          label186:
+          FileManagerEntity localFileManagerEntity;
+          if (this.jdField_a_of_type_JavaLangString.equals("/"))
           {
-            HiBoomTextView.a().put(str, localObject1);
-            ??? = (Message)localObject1;
+            paramJSONObject = "/" + localatsc.jdField_a_of_type_JavaLangString;
+            localFileManagerEntity = new FileManagerEntity();
+            localFileManagerEntity.fileName = localatsc.jdField_a_of_type_JavaLangString;
+            localFileManagerEntity.nRelatedSessionId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
+            localFileManagerEntity.fileSize = localatsc.jdField_a_of_type_Long;
+            localFileManagerEntity.mContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
+            localFileManagerEntity.nSessionId = atvo.a().longValue();
+            if (this.jdField_a_of_type_Boolean)
+            {
+              localFileManagerEntity.WeiYunFileId = this.jdField_b_of_type_JavaLangString;
+              localFileManagerEntity.mContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
+              localFileManagerEntity.nRelatedSessionId = atvo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
+            }
+            localFileManagerEntity.zipFileId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
+            if (localFileManagerEntity.mContext == null) {
+              QLog.i("IphoneTitleBarActivity", 1, "zip list file content is empty. zipSessionId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] zipIsWeiyunFile[" + this.jdField_a_of_type_Boolean + "] zipCouldType[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType + "] fileSessionId[" + localFileManagerEntity.nSessionId + "]");
+            }
+            if ((this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean) || (TextUtils.isEmpty(this.c))) {
+              break label691;
+            }
+            localFileManagerEntity.strServerPath = ("https://" + this.d + ":" + this.jdField_a_of_type_Short + "/ftn_compress_getfile/rkey=" + this.e + "&filetype=" + this.jdField_a_of_type_Int + "&path=" + bkgj.a(paramJSONObject) + "&");
+            localFileManagerEntity.httpsDomain = this.c;
+          }
+          for (;;)
+          {
+            localFileManagerEntity.zipFileId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
+            localFileManagerEntity.zipInnerPath = paramJSONObject;
+            localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
+            localFileManagerEntity.peerUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
+            localFileManagerEntity.peerType = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
+            localFileManagerEntity.busId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
+            localFileManagerEntity.cloudType = 1;
+            localFileManagerEntity.isZipInnerFile = true;
+            localFileManagerEntity.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
+            localFileManagerEntity.zipType = this.jdField_a_of_type_Int;
+            localFileManagerEntity.TroopUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
+            localatsc.b = localFileManagerEntity.nSessionId;
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app.a().a(localFileManagerEntity);
+            this.jdField_a_of_type_JavaUtilList.add(localatsc);
+            paramInt += 1;
+            break;
+            paramJSONObject = this.jdField_a_of_type_JavaLangString + "/" + localatsc.jdField_a_of_type_JavaLangString;
+            break label186;
+            label691:
+            localFileManagerEntity.strServerPath = ("http://" + this.d + ":" + this.f + "/ftn_compress_getfile/rkey=" + this.e + "&filetype=" + this.jdField_a_of_type_Int + "&path=" + bkgj.a(paramJSONObject) + "&");
           }
         }
-      } while (??? == null);
-      ???.gotoFrame(assu.b(localassu));
-      ???.drawFrame(HiBoomTextView.a());
-      localObject1 = assu.a(localassu);
-      if (assu.a(localassu).get() == null) {
-        break;
       }
-    }
-    for (;;)
-    {
-      synchronized (((HiBoomTextView)assu.a(localassu).get()).jdField_a_of_type_Asst)
-      {
-        if ((((Bitmap)localObject1).isRecycled()) || (HiBoomTextView.a((HiBoomTextView)assu.a(localassu).get()) != assu.a(localassu))) {
-          break label417;
-        }
-        ((Bitmap)localObject1).eraseColor(0);
-        localETEngine.native_cloneBitmap(HiBoomTextView.a(), (Bitmap)localObject1);
-        i = 1;
-        if (i == 0) {
-          break;
-        }
-        new Message().what = 259;
-        HiBoomTextView.jdField_a_of_type_Assv.obtainMessage(259, localassu).sendToTarget();
-        return;
-        HiBoomTextView.a().eraseColor(0);
-      }
-      if (HiBoomTextView.a() == null) {
-        break;
-      }
-      HiBoomTextView.a().recycle();
-      HiBoomTextView.a(null);
       return;
-      label417:
-      i = 0;
-      continue;
-      i = 0;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      if (this.jdField_a_of_type_Aaqv != null) {
+        this.jdField_a_of_type_Aaqv.a(this.jdField_a_of_type_JavaUtilList);
+      }
     }
   }
 }

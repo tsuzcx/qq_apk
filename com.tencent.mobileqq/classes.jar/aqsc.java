@@ -1,20 +1,11 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.concurrent.Executor;
-
 class aqsc
-  implements arrn
+  implements bosh
 {
-  aqsc(aqsb paramaqsb, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
+  aqsc(aqsb paramaqsb) {}
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString;
-    arsd.a().execute(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString;
+    ((booy)bojv.a(1)).a(paramString);
   }
 }
 

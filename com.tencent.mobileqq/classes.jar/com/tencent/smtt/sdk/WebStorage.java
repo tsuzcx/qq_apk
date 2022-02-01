@@ -4,16 +4,16 @@ import java.util.Map;
 
 public class WebStorage
 {
-  private static WebStorage mInstance;
+  private static WebStorage a;
   
-  private static WebStorage createInstance()
+  private static WebStorage a()
   {
     try
     {
-      if (mInstance == null) {
-        mInstance = new WebStorage();
+      if (a == null) {
+        a = new WebStorage();
       }
-      WebStorage localWebStorage = mInstance;
+      WebStorage localWebStorage = a;
       return localWebStorage;
     }
     finally {}
@@ -21,15 +21,15 @@ public class WebStorage
   
   public static WebStorage getInstance()
   {
-    return createInstance();
+    return a();
   }
   
   public void deleteAllData()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    v localv = v.a();
+    if ((localv != null) && (localv.b()))
     {
-      localX5CoreEngine.wizard().webStorageDeleteAllData();
+      localv.c().n();
       return;
     }
     android.webkit.WebStorage.getInstance().deleteAllData();
@@ -37,10 +37,10 @@ public class WebStorage
   
   public void deleteOrigin(String paramString)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    v localv = v.a();
+    if ((localv != null) && (localv.b()))
     {
-      localX5CoreEngine.wizard().webStorageDeleteOrigin(paramString);
+      localv.c().e(paramString);
       return;
     }
     android.webkit.WebStorage.getInstance().deleteOrigin(paramString);
@@ -48,10 +48,10 @@ public class WebStorage
   
   public void getOrigins(ValueCallback<Map> paramValueCallback)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    v localv = v.a();
+    if ((localv != null) && (localv.b()))
     {
-      localX5CoreEngine.wizard().webStorageGetOrigins(paramValueCallback);
+      localv.c().a(paramValueCallback);
       return;
     }
     android.webkit.WebStorage.getInstance().getOrigins(paramValueCallback);
@@ -59,10 +59,10 @@ public class WebStorage
   
   public void getQuotaForOrigin(String paramString, ValueCallback<Long> paramValueCallback)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    v localv = v.a();
+    if ((localv != null) && (localv.b()))
     {
-      localX5CoreEngine.wizard().webStorageGetQuotaForOrigin(paramString, paramValueCallback);
+      localv.c().b(paramString, paramValueCallback);
       return;
     }
     android.webkit.WebStorage.getInstance().getQuotaForOrigin(paramString, paramValueCallback);
@@ -70,10 +70,10 @@ public class WebStorage
   
   public void getUsageForOrigin(String paramString, ValueCallback<Long> paramValueCallback)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    v localv = v.a();
+    if ((localv != null) && (localv.b()))
     {
-      localX5CoreEngine.wizard().webStorageGetUsageForOrigin(paramString, paramValueCallback);
+      localv.c().a(paramString, paramValueCallback);
       return;
     }
     android.webkit.WebStorage.getInstance().getUsageForOrigin(paramString, paramValueCallback);
@@ -82,10 +82,10 @@ public class WebStorage
   @Deprecated
   public void setQuotaForOrigin(String paramString, long paramLong)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    v localv = v.a();
+    if ((localv != null) && (localv.b()))
     {
-      localX5CoreEngine.wizard().webStorageSetQuotaForOrigin(paramString, paramLong);
+      localv.c().a(paramString, paramLong);
       return;
     }
     android.webkit.WebStorage.getInstance().setQuotaForOrigin(paramString, paramLong);
@@ -93,7 +93,7 @@ public class WebStorage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebStorage
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.OverloadTipsActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adme
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adme(OverloadTipsActivity paramOverloadTipsActivity) {}
+  public adme(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.finish();
+    AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean);
+    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
+    if (paramBoolean) {
+      bcst.b(this.a.app, "dc00898", "", "", "0X8009C0C", "0X8009C0C", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bcst.b(this.a.app, "dc00898", "", "", "0X8009C0D", "0X8009C0D", 0, 0, "", "", "", "");
+    }
   }
 }
 

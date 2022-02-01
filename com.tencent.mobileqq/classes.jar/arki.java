@@ -1,389 +1,393 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.3;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.4;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import android.view.Display;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class arki
+public class arki
+  implements View.OnTouchListener
 {
-  protected int a;
-  public Activity a;
-  public Bundle a;
-  private aneh a;
-  protected aqlx a;
-  protected aqxd a;
-  public arhw a;
-  protected arip a;
-  protected arir a;
-  protected aris a;
-  public arkn a;
-  public arko a;
-  protected arkp a;
-  protected ArrayList<ShareActionSheetBuilder.ActionSheetItem> a;
-  protected HashMap<String, ArrayList<ShareActionSheetBuilder.ActionSheetItem>> a;
-  public int b;
-  protected String f;
+  private static arki jdField_a_of_type_Arki;
+  public static boolean a;
+  private int jdField_a_of_type_Int;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new arkk(this);
+  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private DataReportViewer jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer;
+  private ArrayList<arjk> jdField_a_of_type_JavaUtilArrayList;
+  private HashMap<String, arkl> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean b;
+  private boolean c;
+  private boolean d;
   
-  public arki(Activity paramActivity)
+  static
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.b = 0;
+    jdField_a_of_type_Boolean = true;
   }
   
-  public abstract float a();
-  
-  public int a()
+  /* Error */
+  public static arki a()
   {
-    int i = 3;
-    int j = e();
-    if ((d() == 3) && (arrr.c(d())) && (b() != 16))
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 46	arki:jdField_a_of_type_Arki	Larki;
+    //   6: ifnonnull +19 -> 25
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: new 2	arki
+    //   15: dup
+    //   16: invokespecial 47	arki:<init>	()V
+    //   19: putstatic 46	arki:jdField_a_of_type_Arki	Larki;
+    //   22: ldc 2
+    //   24: monitorexit
+    //   25: ldc 2
+    //   27: monitorexit
+    //   28: getstatic 46	arki:jdField_a_of_type_Arki	Larki;
+    //   31: areturn
+    //   32: astore_0
+    //   33: ldc 2
+    //   35: monitorexit
+    //   36: aload_0
+    //   37: athrow
+    //   38: astore_0
+    //   39: ldc 2
+    //   41: monitorexit
+    //   42: aload_0
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   32	5	0	localObject1	Object
+    //   38	5	0	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	25	32	finally
+    //   33	36	32	finally
+    //   3	12	38	finally
+    //   25	28	38	finally
+    //   36	38	38	finally
+    //   39	42	38	finally
+  }
+  
+  public ArrayList<arjk> a()
+  {
+    Object localObject1;
+    if (this.jdField_a_of_type_JavaUtilArrayList == null)
     {
-      switch (j)
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+      localObject1 = BaseApplication.getContext().getFileStreamPath("DataReportConfigs");
+      if ((localObject1 != null) && (((File)localObject1).exists())) {
+        localObject1 = bgmg.a((File)localObject1);
+      }
+    }
+    for (;;)
+    {
+      int i;
+      try
       {
-      case 3: 
-      default: 
-        i = 1;
-      case 5: 
-        return i;
-      case 1: 
-        return 4;
-      case 2: 
-        return 2;
-      case 0: 
-        return 6;
+        localObject1 = new JSONArray((String)localObject1);
+        i = 0;
+        if (i < ((JSONArray)localObject1).length())
+        {
+          Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+          if (TextUtils.isEmpty(((JSONObject)localObject2).optString("group")))
+          {
+            localObject2 = arkl.a((JSONObject)localObject2);
+            this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+            this.jdField_a_of_type_JavaUtilHashMap.put(((arkl)localObject2).b, localObject2);
+          }
+          else
+          {
+            localObject2 = arkm.a((JSONObject)localObject2);
+            this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+            localObject2 = ((arkm)localObject2).jdField_a_of_type_JavaUtilArrayList.iterator();
+            if (((Iterator)localObject2).hasNext())
+            {
+              arkl localarkl = (arkl)((Iterator)localObject2).next();
+              this.jdField_a_of_type_JavaUtilHashMap.put(localarkl.b, localarkl);
+              continue;
+            }
+          }
+        }
+        else
+        {
+          return this.jdField_a_of_type_JavaUtilArrayList;
+        }
       }
-      if (h()) {
-        return 5;
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
       }
-      return 1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("FileBrowserModelBase", 2, "getCreateFileType error : this is a local file, but is invalid, may be can not find file path");
-    }
-    return 0;
-  }
-  
-  public Intent a()
-  {
-    return null;
-  }
-  
-  public aocf a()
-  {
-    return new arij();
-  }
-  
-  public abstract arip a();
-  
-  public abstract arir a();
-  
-  public abstract aris a();
-  
-  public arit a()
-  {
-    return null;
-  }
-  
-  public abstract TeamWorkFileImportInfo a();
-  
-  public String a()
-  {
-    return "";
-  }
-  
-  public abstract List<arkl> a();
-  
-  protected abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, arkl paramarkl);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(arhw paramarhw)
-  {
-    this.jdField_a_of_type_Arhw = paramarhw;
-  }
-  
-  public abstract void a(arkm paramarkm);
-  
-  public void a(arkn paramarkn)
-  {
-    this.jdField_a_of_type_Arkn = paramarkn;
-  }
-  
-  public void a(arko paramarko)
-  {
-    this.jdField_a_of_type_Arko = paramarko;
-  }
-  
-  public void a(arkp paramarkp)
-  {
-    this.jdField_a_of_type_Arkp = paramarkp;
-  }
-  
-  public void a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem) {}
-  
-  public void a(String paramString)
-  {
-    if (bdhb.b(paramString)) {
-      arsx.a(this.jdField_a_of_type_AndroidAppActivity, paramString, new arkk(this));
+      i += 1;
     }
   }
   
-  public void a(String paramString, Bundle paramBundle) {}
-  
-  public void a(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  public void a()
   {
-    if (paramList == null) {}
-    Object localObject;
-    do
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    if (this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer == null)
     {
+      this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)localBaseApplication.getSystemService("window"));
+      this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer = new arkj(this, localBaseApplication, localBaseApplication);
+      this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.setOnTouchListener(this);
+    }
+    if (!this.b) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer);
+      label66:
+      int i;
+      if (Build.VERSION.SDK_INT >= 26) {
+        i = 2038;
+      }
+      for (;;)
+      {
+        WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
+        localLayoutParams.gravity = 51;
+        localLayoutParams.x = 0;
+        localLayoutParams.y = bggq.a(localBaseApplication, 72.0F);
+        try
+        {
+          this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer, localLayoutParams);
+          this.b = true;
+          return;
+          i = 2003;
+        }
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            QQToast.a(localBaseApplication, 1, anni.a(2131701563), 0).a();
+          }
+        }
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label66;
+    }
+  }
+  
+  public void a(Context paramContext, boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putBoolean("DataReportViewerFloatViewHelper", paramBoolean);
+    paramContext.apply();
+  }
+  
+  public void a(arjk paramarjk)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramarjk);
+    e();
+    if ((paramarjk instanceof arkl)) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(((arkl)paramarjk).b, (arkl)paramarjk);
+    }
+  }
+  
+  public void a(ArrayList<arjk> paramArrayList)
+  {
+    int k = 0;
+    HashMap localHashMap = new HashMap();
+    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject2;
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (arjk)((Iterator)localObject1).next();
+      localHashMap.put(((arjk)localObject2).jdField_a_of_type_JavaLangString, Boolean.valueOf(((arjk)localObject2).jdField_a_of_type_Boolean));
+    }
+    int i = 0;
+    int j = k;
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      localObject1 = (arjk)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      j = i;
+      if (!((arjk)localObject1).a())
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        i -= 1;
+        if (!(localObject1 instanceof arkl)) {
+          break label150;
+        }
+        this.jdField_a_of_type_JavaUtilHashMap.remove(((arkl)localObject1).b);
+        j = i;
+      }
+      label150:
       do
       {
-        return;
-        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-        }
-        localObject = e();
-      } while (!bdhb.b((String)localObject));
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject)) {
+        i = j + 1;
         break;
+        j = i;
+      } while (!(localObject1 instanceof arkm));
+      localObject1 = ((arkm)localObject1).jdField_a_of_type_JavaUtilArrayList.iterator();
+      for (;;)
+      {
+        j = i;
+        if (!((Iterator)localObject1).hasNext()) {
+          break;
+        }
+        localObject2 = (arkl)((Iterator)localObject1).next();
+        this.jdField_a_of_type_JavaUtilHashMap.remove(((arkl)localObject2).b);
       }
-      localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-    } while ((localObject == null) || (((ArrayList)localObject).isEmpty()));
-    paramList.addAll((Collection)localObject);
-    return;
-    arsx.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, new arkj(this, (String)localObject));
-  }
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public boolean a(arkm paramarkm)
-  {
-    if (paramarkm != null) {
-      paramarkm.aF_();
     }
-    return false;
-  }
-  
-  public abstract ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract String b();
-  
-  protected abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public void b(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-      paramList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    }
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-  }
-  
-  public abstract boolean b();
-  
-  public abstract ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] b();
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_Int < 0) {
-      return 0;
-    }
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public abstract long c();
-  
-  public abstract String c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract long d();
-  
-  public abstract String d();
-  
-  protected abstract void d();
-  
-  public abstract void d(int paramInt);
-  
-  public abstract boolean d();
-  
-  public abstract int e();
-  
-  public String e()
-  {
-    return "";
-  }
-  
-  public abstract void e();
-  
-  public void e(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public abstract boolean e();
-  
-  public abstract int f();
-  
-  public abstract String f();
-  
-  public abstract void f();
-  
-  protected void f(int paramInt)
-  {
-    switch (paramInt)
+    if (j < paramArrayList.size())
     {
-    default: 
-      return;
-    case 118: 
-      azqs.b(null, "dc00898", "", "", "0X800ADBC", "0X800ADBC", 0, 0, "", "", "", "");
-      return;
-    case 52: 
-      azqs.b(null, "dc00898", "", "", "0X800ADBD", "0X800ADBD", 0, 0, "", "", "", "");
-      return;
-    case 55: 
-      azqs.b(null, "dc00898", "", "", "0X800ADBE", "0X800ADBE", 0, 0, "", "", "", "");
-      return;
+      localObject1 = (arjk)paramArrayList.get(j);
+      if (localHashMap.containsKey(((arjk)localObject1).jdField_a_of_type_JavaLangString))
+      {
+        ((arjk)localObject1).jdField_a_of_type_Boolean = ((Boolean)localHashMap.get(((arjk)localObject1).jdField_a_of_type_JavaLangString)).booleanValue();
+        label265:
+        if (!(localObject1 instanceof arkl)) {
+          break label310;
+        }
+        this.jdField_a_of_type_JavaUtilHashMap.put(((arkl)localObject1).b, (arkl)localObject1);
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        ((arjk)localObject1).jdField_a_of_type_Boolean = true;
+        break label265;
+        label310:
+        if ((localObject1 instanceof arkm))
+        {
+          localObject1 = ((arkm)localObject1).jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (arkl)((Iterator)localObject1).next();
+            this.jdField_a_of_type_JavaUtilHashMap.put(((arkl)localObject2).b, localObject2);
+          }
+        }
+      }
     }
-    azqs.b(null, "dc00898", "", "", "0X800ADBF", "0X800ADBF", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    e();
   }
   
-  public abstract boolean f();
-  
-  public void f_()
+  public boolean a()
   {
+    return this.d;
+  }
+  
+  public void b()
+  {
+    if (this.b) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer);
+      label20:
+      this.b = false;
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label20;
+    }
+  }
+  
+  public void b(arjk paramarjk)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.remove(paramarjk);
+    e();
+    if ((paramarjk instanceof arkl)) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(((arkl)paramarjk).b);
+    }
+    for (;;)
+    {
+      return;
+      if ((paramarjk instanceof arkm))
+      {
+        paramarjk = ((arkm)paramarjk).jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (paramarjk.hasNext())
+        {
+          arkl localarkl = (arkl)paramarjk.next();
+          this.jdField_a_of_type_JavaUtilHashMap.remove(localarkl.b);
+        }
+      }
+    }
+  }
+  
+  public void c()
+  {
+    this.d = true;
+    IntentFilter localIntentFilter = new IntentFilter("action.data.report.viewer");
+    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    a(BaseApplicationImpl.getApplication(), true);
+  }
+  
+  public void d()
+  {
+    this.d = false;
+    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
     b();
-    if (this.jdField_a_of_type_Arko != null) {
-      this.jdField_a_of_type_Arko = null;
+    a(BaseApplicationImpl.getApplication(), false);
+  }
+  
+  public void e()
+  {
+    JSONArray localJSONArray = new JSONArray();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localJSONArray.put(((arjk)localIterator.next()).a());
     }
-    if (this.jdField_a_of_type_Arkn != null) {
-      this.jdField_a_of_type_Arkn = null;
+    bgmg.a(BaseApplication.getContext().getFileStreamPath("DataReportConfigs").getAbsolutePath(), localJSONArray.toString());
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    paramView = this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getContext();
+    int i = paramMotionEvent.getAction();
+    int j = (int)paramMotionEvent.getRawY();
+    if (i == 0) {
+      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
     }
-    if (this.jdField_a_of_type_Arkp != null) {
-      this.jdField_a_of_type_Arkp = null;
-    }
-    n();
-  }
-  
-  public abstract int g();
-  
-  public abstract String g();
-  
-  public abstract void g();
-  
-  public abstract boolean g();
-  
-  public abstract int h();
-  
-  public abstract String h();
-  
-  public abstract boolean h();
-  
-  public abstract int i();
-  
-  public String i()
-  {
-    return null;
-  }
-  
-  public void i()
-  {
-    a();
-    m();
-  }
-  
-  public abstract boolean i();
-  
-  public int j()
-  {
-    return 0;
-  }
-  
-  public String j()
-  {
-    return "";
-  }
-  
-  public void j()
-  {
-    if (this.jdField_a_of_type_Arko != null) {
-      this.jdField_a_of_type_Arko = null;
-    }
-    if (this.jdField_a_of_type_Arkn != null) {
-      this.jdField_a_of_type_Arkn = null;
-    }
-    if (this.jdField_a_of_type_Arkp != null) {
-      this.jdField_a_of_type_Arkp = null;
-    }
-  }
-  
-  public abstract boolean j();
-  
-  public int k()
-  {
-    return this.b;
-  }
-  
-  public String k()
-  {
-    return null;
-  }
-  
-  public boolean k()
-  {
-    return this.b != 12;
-  }
-  
-  public int l()
-  {
-    if (this.jdField_a_of_type_Arhw != null) {
-      return this.jdField_a_of_type_Arhw.a();
-    }
-    return 0;
-  }
-  
-  public void l() {}
-  
-  protected void m()
-  {
-    if (this.jdField_a_of_type_Aneh != null) {
-      return;
-    }
-    ThreadManagerV2.executeOnSubThread(new FileBrowserModelBase.3(this));
-  }
-  
-  protected void n()
-  {
-    if (this.jdField_a_of_type_Aneh == null) {
-      return;
-    }
-    ThreadManagerV2.executeOnSubThread(new FileBrowserModelBase.4(this));
+    label146:
+    do
+    {
+      return false;
+      if (i == 2)
+      {
+        if ((this.c) || (Math.abs(paramMotionEvent.getY() - this.jdField_a_of_type_Int) > bggq.a(paramView, 10.0F)))
+        {
+          this.c = true;
+          paramMotionEvent = (WindowManager.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getLayoutParams();
+          paramMotionEvent.y = (j - this.jdField_a_of_type_Int - zby.b(paramView, 0.0F));
+          i = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getHeight();
+          if (paramMotionEvent.y >= 0) {
+            break label146;
+          }
+          paramMotionEvent.y = 0;
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer, paramMotionEvent);
+          return true;
+          if (paramMotionEvent.y > i - this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getHeight()) {
+            paramMotionEvent.y = (i - this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getHeight());
+          }
+        }
+      }
+    } while ((i != 1) && (i != 3));
+    return false;
   }
 }
 

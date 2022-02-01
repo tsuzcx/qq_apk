@@ -1,52 +1,39 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.res.Resources;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import mqq.os.MqqHandler;
 
-class ajgn
-  implements View.OnClickListener
+public class ajgn
+  extends MqqHandler
 {
-  ajgn(ajgb paramajgb, axlx paramaxlx, axmd paramaxmd, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
+  public ajgn(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Axlx.b("200001");
-    if ((this.jdField_a_of_type_Axmd.d == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Axmd.d)))
+    switch (paramMessage.what)
     {
-      paramView = this.jdField_a_of_type_Axmd.c;
-      if (paramView == null)
+    case 1013: 
+    case 1015: 
+    case 1017: 
+    default: 
+    case 1012: 
+      do
       {
-        paramView = "";
-        switch (this.jdField_a_of_type_Axmd.jdField_a_of_type_Int)
-        {
-        }
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ajgb.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.jdField_a_of_type_Axmd.jdField_a_of_type_JavaLangString, 3);
-      ajgb.a(this.jdField_a_of_type_Ajgb).removeMessages(9);
-      ajgb.a(this.jdField_a_of_type_Ajgb).sendEmptyMessage(9);
+        return;
+      } while (TroopWithCommonFriendsFragment.a(this.a) == null);
+      TroopWithCommonFriendsFragment.a(this.a).notifyDataSetChanged();
       return;
-      paramView = paramView.replace(" ", "_");
-      break;
-      VipUtils.a(ajgb.a(this.jdField_a_of_type_Ajgb), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeivip%s", new Object[] { paramView }));
-      continue;
-      VipUtils.b(ajgb.a(this.jdField_a_of_type_Ajgb), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeisvip%s", new Object[] { paramView }));
-      continue;
-      VipUtils.a(ajgb.a(this.jdField_a_of_type_Ajgb), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeivip%s", new Object[] { paramView }));
-      continue;
-      VipUtils.b(ajgb.a(this.jdField_a_of_type_Ajgb), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeisvip%s", new Object[] { paramView }));
-      continue;
-      paramView = new Intent(ajgb.a(this.jdField_a_of_type_Ajgb), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_Axmd.d);
-      ajgb.a(this.jdField_a_of_type_Ajgb).startActivity(paramView);
+    case 1014: 
+      paramMessage = this.a.a.getResources().getString(2131718381);
+      QQToast.a(this.a.a, 1, paramMessage, 0).b(this.a.a());
+      return;
+    case 1016: 
+      QQToast.a(this.a.a, this.a.getString(2131717757), 0).b(this.a.a());
+      return;
     }
+    QQToast.a(this.a.a, this.a.getString(2131717746), 0).b(this.a.a());
   }
 }
 

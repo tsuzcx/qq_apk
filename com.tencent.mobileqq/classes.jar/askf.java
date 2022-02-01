@@ -1,17 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
-class askf
-  extends RecyclerView.ViewHolder
+public abstract class askf
+  extends PublicBaseFragment
 {
-  askf(askd paramaskd, View paramView)
+  protected asja a;
+  protected int j = -1;
+  
+  public void a(asja paramasja)
   {
-    super(paramView);
+    this.a = paramasja;
   }
   
-  public String toString()
+  public void i() {}
+  
+  public void i(int paramInt)
   {
-    return super.toString();
+    this.j = paramInt;
   }
 }
 

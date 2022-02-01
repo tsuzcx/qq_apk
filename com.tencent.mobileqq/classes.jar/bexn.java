@@ -1,6 +1,6 @@
 public abstract interface bexn
 {
-  public abstract void b();
+  public abstract void a(String paramString, boolean paramBoolean, int paramInt, bexl parambexl);
 }
 
 

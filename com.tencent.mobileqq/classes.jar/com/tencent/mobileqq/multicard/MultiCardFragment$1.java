@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multicard;
 
-import aumw;
+import awua;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -77,9 +77,9 @@ class MultiCardFragment$1
         ((StringBuilder)localObject2).append(" ");
         break label279;
         QLog.d("MultiCardFragment", 2, ((StringBuilder)localObject2).toString());
-        localObject2 = ((aumw)localObject1).a(this.jdField_a_of_type_JavaUtilList);
-        localObject3 = ((aumw)localObject1).a(this.jdField_a_of_type_JavaUtilMap);
-        localObject1 = ((aumw)localObject1).b(this.b);
+        localObject2 = ((awua)localObject1).a(this.jdField_a_of_type_JavaUtilList);
+        localObject3 = ((awua)localObject1).a(this.jdField_a_of_type_JavaUtilMap);
+        localObject1 = ((awua)localObject1).b(this.b);
         if ((localObject2 != null) && (localObject3 == null))
         {
           MultiCardFragment.a(this.this$0, -1);
@@ -111,7 +111,7 @@ class MultiCardFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.1
  * JD-Core Version:    0.7.0.1
  */

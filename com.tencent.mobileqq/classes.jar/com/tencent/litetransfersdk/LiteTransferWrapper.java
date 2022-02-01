@@ -2,14 +2,14 @@ package com.tencent.litetransfersdk;
 
 import android.os.Handler;
 import android.os.Looper;
-import arqx;
-import bavg;
+import atut;
+import bdwu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
-import ec;
-import ee;
+import eh;
+import ej;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -31,21 +31,42 @@ public class LiteTransferWrapper
     {
       SoLoadUtil.a(BaseApplicationImpl.getContext(), "xplatform", 0, false);
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
     {
-      for (;;)
+      try
+      {
+        SoLoadUtil.a(BaseApplicationImpl.getContext(), "mbedtlsall", 0, false);
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
       {
         try
         {
-          SoLoadUtil.a(BaseApplicationImpl.getContext(), "litetransfer", 0, false);
-          return;
+          for (;;)
+          {
+            SoLoadUtil.a(BaseApplicationImpl.getContext(), "xphttpclientex", 0, false);
+            try
+            {
+              SoLoadUtil.a(BaseApplicationImpl.getContext(), "litetransfer", 0, false);
+              return;
+            }
+            catch (UnsatisfiedLinkError localUnsatisfiedLinkError4)
+            {
+              localUnsatisfiedLinkError4.printStackTrace();
+            }
+            localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
+            localUnsatisfiedLinkError1.printStackTrace();
+            continue;
+            localUnsatisfiedLinkError2 = localUnsatisfiedLinkError2;
+            localUnsatisfiedLinkError2.printStackTrace();
+          }
         }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError3)
         {
-          localUnsatisfiedLinkError2.printStackTrace();
+          for (;;)
+          {
+            localUnsatisfiedLinkError3.printStackTrace();
+          }
         }
-        localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
-        localUnsatisfiedLinkError1.printStackTrace();
       }
     }
   }
@@ -91,7 +112,7 @@ public class LiteTransferWrapper
   
   public static int getNetType()
   {
-    return bavg.a().a();
+    return bdwu.a().a();
   }
   
   public void CancelAll(int paramInt, boolean paramBoolean)
@@ -242,11 +263,11 @@ public class LiteTransferWrapper
   
   public void SetProxyToJni()
   {
-    ee localee = ec.a();
-    if (localee != null) {
+    ej localej = eh.a();
+    if (localej != null) {
       try
       {
-        setGlobalProxyInfo(1, localee.jdField_a_of_type_JavaLangString, (short)localee.jdField_a_of_type_Int, "", "");
+        setGlobalProxyInfo(1, localej.jdField_a_of_type_JavaLangString, (short)localej.jdField_a_of_type_Int, "", "");
         return;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
@@ -390,26 +411,26 @@ public class LiteTransferWrapper
   {
     try
     {
-      File localFile = new File(arqx.a().b());
+      File localFile = new File(atut.a().b());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetDefaultPath(arqx.a().b());
-      localFile = new File(arqx.a().d());
+      SetDefaultPath(atut.a().b());
+      localFile = new File(atut.a().d());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbPath(arqx.a().d());
-      localFile = new File(arqx.a().c());
+      SetThumbPath(atut.a().d());
+      localFile = new File(atut.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetTempPath(arqx.a().c());
-      localFile = new File(arqx.a().c());
+      SetTempPath(atut.a().c());
+      localFile = new File(atut.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbTempPath(arqx.a().c());
+      SetThumbTempPath(atut.a().c());
       return;
     }
     catch (Exception localException) {}
@@ -481,7 +502,7 @@ public class LiteTransferWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.litetransfersdk.LiteTransferWrapper
  * JD-Core Version:    0.7.0.1
  */

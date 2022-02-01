@@ -1,27 +1,39 @@
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.webviewplugin.Hole;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
 class befp
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ayyt
 {
-  befp(befo parambefo, View paramView, DisplayMetrics paramDisplayMetrics) {}
+  befp(befo parambefo) {}
   
-  public void onGlobalLayout()
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
+    return null;
+  }
+  
+  public void a(ayyu paramayyu) {}
+  
+  public void b(ayyu paramayyu)
+  {
+    if (paramayyu.jdField_b_of_type_Int == 0)
     {
-      this.jdField_a_of_type_Befo.jdField_a_of_type_ComTencentBizWebviewpluginHole.setHole((this.jdField_a_of_type_Befo.jdField_a_of_type_AndroidViewView.getLeft() + this.jdField_a_of_type_Befo.jdField_a_of_type_AndroidViewView.getRight()) / 2 - 1, (this.jdField_a_of_type_Befo.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_Befo.jdField_a_of_type_AndroidViewView.getBottom()) / 2 - 1, (int)(30.0F * this.jdField_a_of_type_AndroidUtilDisplayMetrics.density));
-      this.jdField_a_of_type_Befo.jdField_a_of_type_ComTencentBizWebviewpluginHole.invalidate();
+      this.a.a.c = paramayyu.jdField_b_of_type_JavaLangString;
+      this.a.a.a = paramayyu.c;
+      befo.a(this.a);
+      befo.a(this.a, new ErrorMessage());
       return;
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
+    if ((paramayyu.jdField_b_of_type_Int == bdza.a(940010)) && (befo.a(this.a).getAndIncrement() < 2))
+    {
+      befo.b(this.a);
+      yqp.d("tribe_publish_TribeVideoFileObject", "retry load file");
+      return;
+    }
+    befo.c(this.a);
+    paramayyu = new ErrorMessage(paramayyu.jdField_b_of_type_Int, paramayyu.a);
+    befo.a(this.a, paramayyu);
   }
 }
 

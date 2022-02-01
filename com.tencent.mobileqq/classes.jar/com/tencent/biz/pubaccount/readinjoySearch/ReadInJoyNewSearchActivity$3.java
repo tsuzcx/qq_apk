@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoySearch;
 
-import awge;
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,8 +16,8 @@ class ReadInJoyNewSearchActivity$3
   
   public void run()
   {
-    awgf localawgf = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    List localList = localawgf.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
+    EntityManager localEntityManager = this.this$0.app.a().createEntityManager();
+    List localList = localEntityManager.query(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
     ReadInJoySearchHistoryEntity localReadInJoySearchHistoryEntity;
     if (localList != null)
     {
@@ -26,7 +26,7 @@ class ReadInJoyNewSearchActivity$3
       {
         localReadInJoySearchHistoryEntity = (ReadInJoySearchHistoryEntity)localIterator.next();
         if (localReadInJoySearchHistoryEntity.keyWord.equals(this.a)) {
-          localawgf.b(localReadInJoySearchHistoryEntity);
+          localEntityManager.remove(localReadInJoySearchHistoryEntity);
         }
       }
     }
@@ -37,7 +37,7 @@ class ReadInJoyNewSearchActivity$3
       }
       if (localList.size() == 20)
       {
-        localawgf.b((awge)localList.get(localList.size() - 1));
+        localEntityManager.remove((Entity)localList.get(localList.size() - 1));
         localList.remove(localList.size() - 1);
       }
       for (;;)
@@ -45,8 +45,8 @@ class ReadInJoyNewSearchActivity$3
         localReadInJoySearchHistoryEntity = new ReadInJoySearchHistoryEntity();
         localReadInJoySearchHistoryEntity.keyWord = this.a;
         localReadInJoySearchHistoryEntity.timestamp = System.currentTimeMillis();
-        localawgf.a(localReadInJoySearchHistoryEntity);
-        localawgf.a();
+        localEntityManager.persist(localReadInJoySearchHistoryEntity);
+        localEntityManager.close();
         return;
         new ArrayList();
       }
@@ -56,7 +56,7 @@ class ReadInJoyNewSearchActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.3
  * JD-Core Version:    0.7.0.1
  */

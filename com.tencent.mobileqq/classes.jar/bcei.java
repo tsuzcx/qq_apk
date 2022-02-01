@@ -1,24 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public abstract class bcei
-  extends bcdy
+public class bcei
 {
-  public List<Integer> b = new ArrayList();
-  public int g = 0;
-  
-  public bcei()
-  {
-    this.b.add(Integer.valueOf(0));
-    this.b.add(Integer.valueOf(3));
-    this.b.add(Integer.valueOf(1));
-    this.b.add(Integer.valueOf(2));
-  }
-  
-  public int e()
-  {
-    return this.g;
-  }
+  public long a;
+  public long b;
+  public long c;
 }
 
 

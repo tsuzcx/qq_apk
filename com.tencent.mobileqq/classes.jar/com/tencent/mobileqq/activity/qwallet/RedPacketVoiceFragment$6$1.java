@@ -10,13 +10,13 @@ class RedPacketVoiceFragment$6$1
   public void run()
   {
     if (!this.a.this$0.c()) {
-      this.a.this$0.a(this.a.this$0.getResources().getString(2131695799));
+      this.a.this$0.a(this.a.this$0.getResources().getString(2131694676));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment.6.1
  * JD-Core Version:    0.7.0.1
  */

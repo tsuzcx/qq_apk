@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 import android.text.TextUtils;
-import areh;
-import bdep;
+import atjl;
+import bgjq;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -13,25 +13,20 @@ public class ExcitingTransferNativeCallMe
 {
   public static boolean getConfigFromServer()
   {
-    return areh.a().e();
+    return atjl.a().e();
   }
   
   public static long getFreeSpaceForFile(String paramString)
   {
-    if (bdep.a()) {
-      return bdep.a() * 1024L;
+    if (bgjq.a()) {
+      return bgjq.a() * 1024L;
     }
-    return bdep.b() * 1024L;
+    return bgjq.b() * 1024L;
   }
   
   public static long getLastModifyTime(String paramString)
   {
     return new File(paramString).lastModified();
-  }
-  
-  public static ExcitingTransferDownloadConfig getMuiltDownloadConfig()
-  {
-    return areh.a().a();
   }
   
   public static short getProxyType()
@@ -51,7 +46,7 @@ public class ExcitingTransferNativeCallMe
   
   public static long getSelfUin()
   {
-    return areh.a().e();
+    return atjl.a().e();
   }
   
   public static String getVersion()
@@ -107,7 +102,7 @@ public class ExcitingTransferNativeCallMe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferNativeCallMe
  * JD-Core Version:    0.7.0.1
  */

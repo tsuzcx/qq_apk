@@ -1,44 +1,43 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class ylu
-  implements TopGestureLayout.InterceptTouchEventListener
+public class ylu
+  extends wlf<ylv>
 {
-  ylu(ylt paramylt, Rect paramRect) {}
+  public static final String a = wjz.a("StorySvc.get_user_guide");
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public String a()
   {
-    switch (paramMotionEvent.getAction())
+    return a;
+  }
+  
+  public ylv a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetUserGuide localRspGetUserGuide = new qqstory_service.RspGetUserGuide();
+    try
     {
+      localRspGetUserGuide.mergeFrom(paramArrayOfByte);
+      return new ylv(localRspGetUserGuide);
     }
-    int i;
-    int j;
-    do
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      while (!paramMotionEvent.hasNext())
+      for (;;)
       {
-        do
-        {
-          return true;
-          i = (int)(paramMotionEvent.getX() + 0.5F);
-          j = (int)(paramMotionEvent.getY() + 0.5F);
-        } while (ylt.a(this.jdField_a_of_type_Ylt) == null);
-        paramMotionEvent = ylt.a(this.jdField_a_of_type_Ylt).iterator();
+        paramArrayOfByte.printStackTrace();
+        yqp.c("Q.qqstory.home.GetUserGuideInfoStep", "decodeResponse error=%s", paramArrayOfByte);
       }
-      ((View)paramMotionEvent.next()).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-    } while (!this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j));
-    return false;
+    }
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetUserGuide().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ylu
  * JD-Core Version:    0.7.0.1
  */

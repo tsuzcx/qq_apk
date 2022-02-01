@@ -1,65 +1,33 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAdLoader.1;
-import com.tencent.gdtad.aditem.GdtAdLoader.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.lang.ref.WeakReference;
-import tencent.gdt.qq_ad_get.QQAdGet;
-import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
+import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class aamt
+  implements URLDrawable.URLDrawableListener
 {
-  private aamv jdField_a_of_type_Aamv;
-  private WeakReference<aamu> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<AsyncRichTextView> a;
   
-  public aamt(aamv paramaamv, WeakReference<aamu> paramWeakReference)
+  public aamt(AsyncRichTextView paramAsyncRichTextView)
   {
-    this.jdField_a_of_type_Aamv = paramaamv;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.a = new WeakReference(paramAsyncRichTextView);
   }
   
-  private void a()
-  {
-    new Handler(Looper.getMainLooper()).post(new GdtAdLoader.2(this));
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  private void b(WeakReference<Context> paramWeakReference)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((this.jdField_a_of_type_Aamv == null) || (this.jdField_a_of_type_Aamv.a == null))
-    {
-      aase.d("GdtAdLoader", "reportForAnalysis error");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AsyncRichTextView", 4, "onLoadSuccessed ");
     }
-    int i = 0;
-    label27:
-    if (i < this.jdField_a_of_type_Aamv.a.position_info.size()) {
-      if (paramWeakReference == null) {
-        break label90;
-      }
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((AsyncRichTextView)this.a.get()).invalidate();
     }
-    label90:
-    for (Context localContext = (Context)paramWeakReference.get();; localContext = null)
-    {
-      AdReporterForAnalysis.reportForLoadAd(localContext, ((qq_ad_get.QQAdGet.PositionInfo)this.jdField_a_of_type_Aamv.a.position_info.get(i)).pos_id.get());
-      i += 1;
-      break label27;
-      break;
-    }
-  }
-  
-  public aamv a()
-  {
-    return this.jdField_a_of_type_Aamv;
-  }
-  
-  public void a(WeakReference<Context> paramWeakReference)
-  {
-    ThreadManager.post(new GdtAdLoader.1(this, paramWeakReference), 5, null, true);
-    b(paramWeakReference);
   }
 }
 

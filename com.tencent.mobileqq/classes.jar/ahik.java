@@ -1,20 +1,17 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class ahik
-  implements ahkn
+  implements bhye
 {
-  public ahik(SearchContactsFragment paramSearchContactsFragment) {}
+  public ahik(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, ahin paramahin) {}
   
   public void a(String paramString)
   {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = 80000001;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_label", 0, 0, "", "", paramString, "");
-      this.a.d = false;
-      this.a.a(paramString, false);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
     }
   }
 }

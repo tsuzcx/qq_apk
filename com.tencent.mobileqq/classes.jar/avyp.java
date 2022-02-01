@@ -1,29 +1,41 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
-import com.tencent.mobileqq.ocr.ui.SearchResultViewPagerAdapter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-public class avyp
-  implements ViewPager.OnPageChangeListener
+class avyp
+  implements avzo
 {
-  public avyp(SearchResultFragment paramSearchResultFragment) {}
+  avyp(avyo paramavyo, String paramString) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a(List<LocationRoom.Venue> paramList)
   {
-    this.a.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setCurrentTab(paramInt);
-    if (this.a.jdField_a_of_type_Int != paramInt) {
-      this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramInt);
+    if ((avyo.a(this.jdField_a_of_type_Avyo) != null) && (avyo.a(this.jdField_a_of_type_Avyo).size() > 0)) {}
+    for (int i = 1;; i = 0)
+    {
+      avyo.a(this.jdField_a_of_type_Avyo, paramList);
+      this.jdField_a_of_type_Avyo.notifyDataSetChanged();
+      avyo.a(this.jdField_a_of_type_Avyo, TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+      if ((avyo.a(this.jdField_a_of_type_Avyo).size() > 0) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        if (i == 0) {
+          this.jdField_a_of_type_Avyo.a(0);
+        }
+      }
+      while (avyo.a(this.jdField_a_of_type_Avyo) == null) {
+        return;
+      }
+      paramList = avyo.a(this.jdField_a_of_type_Avyo);
+      if (avyo.a(this.jdField_a_of_type_Avyo).size() > 0) {}
+      for (i = 3;; i = 2)
+      {
+        paramList.a(i);
+        return;
+      }
     }
-    this.a.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avyp
  * JD-Core Version:    0.7.0.1
  */

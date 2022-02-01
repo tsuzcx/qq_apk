@@ -1,33 +1,23 @@
-import UserGrowth.stSimpleMetaFeed;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-class tnp
-  implements teo<stSimpleMetaFeed>
+public class tnp
+  implements View.OnClickListener
 {
-  tnp(tno paramtno, tmr paramtmr) {}
+  public tnp(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void a(boolean paramBoolean1, List<stSimpleMetaFeed> paramList, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    paramList = tno.a(this.jdField_a_of_type_Tno, paramList);
-    if (this.jdField_a_of_type_Tmr != null) {
-      this.jdField_a_of_type_Tmr.a(paramList);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
-  {
-    if (!paramBoolean2)
-    {
-      if (this.jdField_a_of_type_Tmr != null) {
-        this.jdField_a_of_type_Tmr.a(-1, "task failed.");
-      }
-      this.jdField_a_of_type_Tno.a(-1, "task failed.");
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tnp
  * JD-Core Version:    0.7.0.1
  */

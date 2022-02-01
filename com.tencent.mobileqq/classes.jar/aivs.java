@@ -1,17 +1,27 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.4.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
 
 public class aivs
-  implements ajal
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public aivs(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  public aivs(TroopView paramTroopView) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.4.1(this, paramInt, paramPathResult));
+    if (bdch.a()) {}
+    while (paramInt != 1) {
+      return;
+    }
+    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (bdch.a()) {
+      return;
+    }
+    TroopView.a(this.a, paramInt);
   }
 }
 

@@ -1,25 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-class aggt
-  implements View.OnClickListener
+public class aggt
+  implements DialogInterface.OnClickListener
 {
-  aggt(aggq paramaggq) {}
+  public aggt(DoodlePanel paramDoodlePanel) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (aggq.a(this.a) != null)
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("NavigateBarManager", 2, String.format("onClick barId: %s", new Object[] { Integer.valueOf(aggq.a(this.a).a) }));
-      }
-      paramView = aggq.a(this.a);
-      aggq.a(this.a);
-      if (paramView != null) {
-        paramView.a();
-      }
+    default: 
+      return;
+    case 0: 
+      bcst.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+      return;
     }
+    bcst.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+    DoodlePanel.a(this.a).b(1);
   }
 }
 

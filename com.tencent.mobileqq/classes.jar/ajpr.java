@@ -1,39 +1,58 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
 public class ajpr
-  extends BroadcastReceiver
+  extends AccountObserver
 {
-  public ajpr(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public ajpr(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, boolean paramBoolean) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    int j = 1;
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 == null)
+      {
+        i = 0;
+        QLog.d("Q.history.C2CAllFragment", 2, i);
       }
-      paramContext = BaseActivity2.$(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366501);
-      if (paramContext != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
+    }
+    else
+    {
+      if ((!paramBoolean) || (TextUtils.isEmpty(paramString2))) {
+        break label133;
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
+      i = 1;
+      label67:
+      paramString1 = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(39);
+      if (i == 0) {
+        break label139;
       }
-      if (this.a.e) {
-        this.a.l();
+      i = 1;
+      label88:
+      paramString1.arg1 = i;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label145;
       }
-      if ((this.a.f) && (this.a.c)) {
-        this.a.c(false);
-      }
-      this.a.b();
+    }
+    label133:
+    label139:
+    label145:
+    for (int i = j;; i = 0)
+    {
+      paramString1.arg2 = i;
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramString1);
+      return;
+      i = paramString2.length();
+      break;
+      i = 0;
+      break label67;
+      i = 0;
+      break label88;
     }
   }
 }

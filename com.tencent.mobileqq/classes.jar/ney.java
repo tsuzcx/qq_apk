@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.data.TroopAppInfo;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface ney
+class ney
+  implements View.OnClickListener
 {
-  public abstract void a();
+  ney(new paramnew) {}
   
-  public abstract void a(ArrayList<TroopAppInfo> paramArrayList);
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ney
  * JD-Core Version:    0.7.0.1
  */

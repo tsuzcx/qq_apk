@@ -1,33 +1,47 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.util.SparseIntArray;
+import com.tencent.util.VersionUtils;
 
 public class vhi
-  extends uro
 {
-  public final String a;
-  public final String c;
-  public final String d;
-  public final String e;
-  public final String f;
-  
-  public vhi(qqstory_service.RspGetLocation paramRspGetLocation)
+  public static String a(String paramString)
   {
-    this.a = paramRspGetLocation.country.get().toStringUtf8();
-    this.c = paramRspGetLocation.province.get().toStringUtf8();
-    this.d = paramRspGetLocation.city.get().toStringUtf8();
-    this.e = paramRspGetLocation.district.get().toStringUtf8();
-    this.f = paramRspGetLocation.street.get().toStringUtf8();
-  }
-  
-  public String toString()
-  {
-    return "GetLocationResponse{mCountry='" + this.a + '\'' + ", mProvince='" + this.c + '\'' + ", mCity='" + this.d + '\'' + ", mDistrict='" + this.e + '\'' + ", mStreet='" + this.f + '\'' + '}';
+    if (VersionUtils.isIceScreamSandwich()) {
+      return paramString;
+    }
+    if (paramString == null) {
+      return "";
+    }
+    if (paramString.length() <= 0) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int k = paramString.length();
+    int i = 0;
+    if (i < k)
+    {
+      int m = paramString.codePointAt(i);
+      if (bdnh.a.get(m, -1) != -1)
+      {
+        int j = i;
+        if (m > 65535) {
+          j = i + 1;
+        }
+        localStringBuilder.append("*");
+        i = j;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localStringBuilder.append(paramString.charAt(i));
+      }
+    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vhi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.animation.Animation;
-
-class riy
-  extends bhry
+public abstract interface riy<T, E>
 {
-  riy(riw paramriw) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.s.setVisibility(8);
-  }
+  public abstract E a(T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     riy
  * JD-Core Version:    0.7.0.1
  */

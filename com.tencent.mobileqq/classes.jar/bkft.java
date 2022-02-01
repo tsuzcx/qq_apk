@@ -1,65 +1,69 @@
-import SWEET_NEW_BASE.sweet_rsp_comm;
-import SWEET_NEW_PAIR.sweet_pair_check_rsp;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
+import android.app.Activity;
+import android.content.Context;
+import android.provider.Settings.Secure;
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class bkft
-  extends bkfv
 {
-  public QQAppInterface a()
+  public static void a(Activity paramActivity)
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
-  }
-  
-  public QzoneExternalRequest a(Intent paramIntent)
-  {
-    return new bkfu(this, paramIntent);
-  }
-  
-  public void a(long paramLong)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("currentUin", paramLong);
-    a(localIntent);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    boolean bool = false;
-    paramIntent = a();
-    if (paramIntent != null)
+    try
     {
-      paramIntent = (alwb)paramIntent.a(172);
-      if (paramIntent != null) {
-        if (paramFromServiceMsg == null) {
-          break label90;
+      InputMethodManager localInputMethodManager = (InputMethodManager)paramActivity.getSystemService("input_method");
+      if (localInputMethodManager.isActive()) {
+        localInputMethodManager.hideSoftInputFromWindow(paramActivity.getWindow().getDecorView().getWindowToken(), 0);
+      }
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      while (!QLog.isDevelopLevel()) {}
+      paramActivity.printStackTrace();
+    }
+  }
+  
+  public static void a(View paramView)
+  {
+    ((InputMethodManager)paramView.getContext().getSystemService("input_method")).showSoftInput(paramView, 0);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool2 = false;
+    try
+    {
+      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "default_input_method");
+      bool1 = bool2;
+      if (paramContext != null) {
+        if ((!paramContext.contains("com.sohu.inputmethod.sogou")) && (!paramContext.contains("com.tencent.qqpinyin")))
+        {
+          bool1 = bool2;
+          if (!paramContext.contains("com.sogou.zhuyininput")) {}
+        }
+        else
+        {
+          bool1 = true;
         }
       }
     }
-    label90:
-    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
+    catch (NullPointerException paramContext)
     {
-      paramFromServiceMsg = (sweet_pair_check_rsp)bjur.a(paramFromServiceMsg.getWupBuffer(), "getPairState");
-      if (paramFromServiceMsg == null) {
-        break;
-      }
-      sweet_rsp_comm localsweet_rsp_comm = paramFromServiceMsg.rsp_comm;
-      if (localsweet_rsp_comm == null) {
-        break;
-      }
-      if (localsweet_rsp_comm.retcode == 0) {
-        bool = true;
-      }
-      paramIntent.a(bool, paramFromServiceMsg);
-      return;
+      do
+      {
+        boolean bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.d("InputMethodUtil", 2, "checkSogouInputDefault(), e = " + paramContext.getStackTrace());
     }
-    paramIntent.a(false, null);
+    return bool1;
+    return false;
+  }
+  
+  public static void b(View paramView)
+  {
+    ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
   }
 }
 

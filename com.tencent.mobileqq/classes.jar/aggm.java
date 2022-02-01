@@ -1,11 +1,16 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-class aggm
-  extends aeqi
+public class aggm
+  implements agie
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public aggm(DoodlePanel paramDoodlePanel) {}
   
-  aggm(aggj paramaggj) {}
+  public void a(agid paramagid)
+  {
+    this.a.a(paramagid);
+    paramagid = "" + paramagid.a + ";" + paramagid.b + ";" + paramagid.c;
+    bgjb.a(this.a.getContext(), "aio_doodle_colorpicker_select", paramagid);
+  }
 }
 
 

@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 
 public class ApolloActionPackage
-  extends awge
+  extends Entity
 {
   public static final int PACKAGE_ID_3D_SEGMENT = 300;
   public static final int PACKAGE_ID_COLLECT = 4;
@@ -12,16 +13,19 @@ public class ApolloActionPackage
   public static final int PACKAGE_ID_ENHANCE = 7;
   public static final int PACKAGE_ID_GAME = 100;
   public static final int PACKAGE_ID_GUIDE = 400;
+  public static final int PACKAGE_ID_RECOMMEND = 8;
   public static final int PACKAGE_ID_SINGLE = 0;
   public static final int PACKAGE_ID_SINGLE_3D = 300;
   public static final int PACKAGE_ID_SLAVE = 6;
   public static final int PACKAGE_ID_WORLD = 5;
   public String endVersion;
+  @notColumn
+  public boolean isRecommendTabClick;
   public boolean isUpdate;
   public String mIconSelectedUrl;
   public String mIconUnselectedUrl;
   public String name;
-  @awhs
+  @unique
   public int packageId;
   public int redFlowId;
   public long redInterval;
@@ -54,7 +58,7 @@ public class ApolloActionPackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloActionPackage
  * JD-Core Version:    0.7.0.1
  */

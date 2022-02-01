@@ -1,61 +1,25 @@
-import android.app.Activity;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.core.proxy.ShareProxy;
-import com.tencent.qqmini.sdk.launcher.model.ShareState;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.utils.QUAUtil;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bgqy
-  implements bgqx
+class bgqy
+  implements View.OnClickListener
 {
-  protected bglv a;
-  protected ShareProxy a;
+  bgqy(bgqu parambgqu, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public bgqy(bglv parambglv)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bglv = parambglv;
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyShareProxy = ((ShareProxy)ProxyManager.get(ShareProxy.class));
-  }
-  
-  public void a()
-  {
-    QMLog.i("CapsuleButton", "on close click");
-    Activity localActivity = this.jdField_a_of_type_Bglv.a();
-    if ((localActivity != null) && (!localActivity.isFinishing()))
-    {
-      if (!localActivity.moveTaskToBack(true))
-      {
-        QMLog.e("CapsuleButton", "moveTaskToBack failed, finish the activity.");
-        localActivity.finish();
-      }
-      this.jdField_a_of_type_Bglv.a(bgmd.a(60));
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgqu, 1);
     }
-    if (this.jdField_a_of_type_Bglv.a() != null) {
-      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonCloseClick(new bglw(this.jdField_a_of_type_Bglv));
-    }
-  }
-  
-  public void b()
-  {
-    QMLog.i("CapsuleButton", "on more click");
-    ShareState localShareState = bgmj.a(this.jdField_a_of_type_Bglv);
-    if (localShareState != null)
-    {
-      localShareState.fromShareMenuBtn = 0;
-      localShareState.stagingJsonParams = null;
-    }
-    if (!QUAUtil.isQQApp()) {
-      bhmo.a(this.jdField_a_of_type_Bglv);
-    }
-    if (this.jdField_a_of_type_Bglv.a() != null) {
-      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonMoreClick(new bglw(this.jdField_a_of_type_Bglv));
-    }
+    this.jdField_a_of_type_Bgqu.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgqy
  * JD-Core Version:    0.7.0.1
  */

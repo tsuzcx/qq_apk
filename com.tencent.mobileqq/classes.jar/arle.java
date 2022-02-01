@@ -1,14 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.dating.MsgBoxListActivity.6.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class arle
-  implements View.OnClickListener
+public class arle
+  implements axkz
 {
-  arle(arkz paramarkz) {}
+  public arle(MsgBoxListActivity paramMsgBoxListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    arrr.a(this.a.a, this.a.d());
+    if (QLog.isColorLevel()) {
+      QLog.i("MsgBoxListActivity", 2, "follow onReceive errorCode = [" + paramInt + "]");
+    }
+    this.a.b.post(new MsgBoxListActivity.6.1(this, paramInt));
   }
 }
 

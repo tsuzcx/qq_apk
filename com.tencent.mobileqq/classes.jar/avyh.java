@@ -1,36 +1,23 @@
 import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.9;
 
 public class avyh
-  extends FlingGestureHandler
+  implements DialogInterface.OnClickListener
 {
-  boolean a = true;
+  public avyh(LocationDialogUtil.9 param9) {}
   
-  public avyh(Activity paramActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramActivity);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-    if (!b()) {
-      a();
-    }
-    this.mTopLayout.setInterceptTouchFlag(paramBoolean);
-  }
-  
-  public void flingLToR()
-  {
-    if (this.a) {
-      super.flingLToR();
+    if (avxq.a(this.a.a)) {
+      this.a.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avyh
  * JD-Core Version:    0.7.0.1
  */

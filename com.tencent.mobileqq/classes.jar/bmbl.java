@@ -1,17 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMSlidingTabView;
-
-public class bmbl
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bmbl
 {
-  public bmbl(QIMSlidingTabView paramQIMSlidingTabView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    QIMSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
-  }
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

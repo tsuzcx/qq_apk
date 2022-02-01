@@ -1,19 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
-public final class ajuf
-  implements Parcelable.Creator<BarrageParcelItem>
+public class ajuf
 {
-  public BarrageParcelItem a(Parcel paramParcel)
-  {
-    return new BarrageParcelItem(paramParcel);
-  }
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public TextView b;
   
-  public BarrageParcelItem[] a(int paramInt)
-  {
-    return new BarrageParcelItem[paramInt];
-  }
+  public ajuf(ajue paramajue) {}
 }
 
 

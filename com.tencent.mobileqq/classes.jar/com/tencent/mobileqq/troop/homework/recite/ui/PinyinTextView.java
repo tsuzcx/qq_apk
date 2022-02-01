@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -13,8 +12,9 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View.MeasureSpec;
 import android.widget.TextView;
-import bcbl;
-import bdgz;
+import anni;
+import bfbz;
+import bgme;
 import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
 import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -29,14 +29,14 @@ public class PinyinTextView
   int jdField_a_of_type_Int = 1;
   private Paint.FontMetrics jdField_a_of_type_AndroidGraphicsPaint$FontMetrics;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
-  bcbl jdField_a_of_type_Bcbl = new bcbl(this);
+  bfbz jdField_a_of_type_Bfbz = new bfbz(this);
   ReciteDisplayView jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView;
   private final String jdField_a_of_type_JavaLangString = "shuang";
   protected List<WordInfo> a;
   float jdField_b_of_type_Float = 0.0F;
   public int b;
   private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint(1);
-  private final String jdField_b_of_type_JavaLangString = alud.a(2131708572);
+  private final String jdField_b_of_type_JavaLangString = anni.a(2131706948);
   float jdField_c_of_type_Float = 0.0F;
   private int jdField_c_of_type_Int = 20;
   float jdField_d_of_type_Float = 0.0F;
@@ -80,16 +80,16 @@ public class PinyinTextView
     if (a()) {
       this.jdField_c_of_type_Int = 24;
     }
-    this.i = bdgz.a(getContext(), 10.0F);
+    this.i = bgme.a(getContext(), 10.0F);
     if (a()) {
-      this.j = bdgz.a(getContext(), 18.6F);
+      this.j = bgme.a(getContext(), 18.6F);
     }
-    for (this.k = bdgz.a(getContext(), 18.0F);; this.k = bdgz.a(getContext(), 12.0F))
+    for (this.k = bgme.a(getContext(), 18.0F);; this.k = bgme.a(getContext(), 12.0F))
     {
       this.g = this.k;
       a();
       return;
-      this.j = bdgz.a(getContext(), 0.5F);
+      this.j = bgme.a(getContext(), 0.5F);
     }
   }
   
@@ -130,9 +130,9 @@ public class PinyinTextView
     } while (f2 >= this.h * 2.0F);
     f1 = f2 + this.j;
     if (f1 < this.h) {
-      return bdgz.a(getContext(), f1 / 2.0F) + (this.jdField_a_of_type_Float + this.j);
+      return bgme.a(getContext(), f1 / 2.0F) + (this.jdField_a_of_type_Float + this.j);
     }
-    return bdgz.a(getContext(), f1 / 2.0F);
+    return bgme.a(getContext(), f1 / 2.0F);
   }
   
   public float a(String paramString)
@@ -149,9 +149,9 @@ public class PinyinTextView
     this.jdField_b_of_type_AndroidTextTextPaint.setColor(WordInfo.COLOR_DEFAULT_PINYIN);
     float f1 = getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_AndroidTextTextPaint.setStrokeWidth(f1 * 2.0F);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(bdgz.a(getContext(), this.jdField_c_of_type_Int));
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(bgme.a(getContext(), this.jdField_c_of_type_Int));
     this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(f1);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(bdgz.a(getContext(), this.jdField_c_of_type_Int) / 2.0F);
+    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(bgme.a(getContext(), this.jdField_c_of_type_Int) / 2.0F);
     Rect localRect = new Rect();
     this.jdField_a_of_type_AndroidTextTextPaint.getTextBounds(this.jdField_b_of_type_JavaLangString, 0, this.jdField_b_of_type_JavaLangString.length(), localRect);
     if (localRect.width() > localRect.height()) {}
@@ -171,11 +171,11 @@ public class PinyinTextView
     }
   }
   
-  public void a(int paramInt, bcbl parambcbl)
+  public void a(int paramInt, bfbz parambfbz)
   {
     boolean bool3 = false;
     if ((this.jdField_e_of_type_Int == 1) && (paramInt == 0)) {
-      parambcbl.jdField_a_of_type_Float += 2.0F * (this.jdField_a_of_type_Float + this.j);
+      parambfbz.jdField_a_of_type_Float += 2.0F * (this.jdField_a_of_type_Float + this.j);
     }
     WordInfo localWordInfo2 = (WordInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     WordInfo localWordInfo1 = null;
@@ -183,7 +183,7 @@ public class PinyinTextView
     if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
       localWordInfo1 = (WordInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    float f1 = parambcbl.jdField_a_of_type_Float;
+    float f1 = parambfbz.jdField_a_of_type_Float;
     float f2 = a(localWordInfo2.text) + f1;
     float f3 = this.j;
     boolean bool1;
@@ -192,7 +192,7 @@ public class PinyinTextView
     if (localWordInfo1 == null)
     {
       f1 = this.jdField_a_of_type_Float;
-      if (f1 + (f2 + f3) - this.j <= parambcbl.jdField_a_of_type_Int - this.l) {
+      if (f1 + (f2 + f3) - this.j <= parambfbz.jdField_a_of_type_Int - this.l) {
         break label321;
       }
       bool1 = c(localWordInfo2.text);
@@ -206,7 +206,7 @@ public class PinyinTextView
     }
     for (;;)
     {
-      if ((f2 - this.j > parambcbl.jdField_a_of_type_Int - this.l) || (bool2) || (bool3) || (bool1))
+      if ((f2 - this.j > parambfbz.jdField_a_of_type_Int - this.l) || (bool2) || (bool3) || (bool1))
       {
         f2 = this.l;
         if (!a()) {
@@ -216,8 +216,8 @@ public class PinyinTextView
       label302:
       for (f1 = this.jdField_a_of_type_Float * 0.0F;; f1 = 0.0F)
       {
-        parambcbl.jdField_a_of_type_Float = (f1 + f2);
-        parambcbl.jdField_b_of_type_Float = (parambcbl.jdField_b_of_type_Float + this.k + this.jdField_a_of_type_Float + this.jdField_c_of_type_Float + this.i);
+        parambfbz.jdField_a_of_type_Float = (f1 + f2);
+        parambfbz.jdField_b_of_type_Float = (parambfbz.jdField_b_of_type_Float + this.k + this.jdField_a_of_type_Float + this.jdField_c_of_type_Float + this.i);
         return;
         f1 = a(localWordInfo1.text);
         break;
@@ -243,7 +243,7 @@ public class PinyinTextView
     return ((paramString1.equalsIgnoreCase("…")) && (paramString2.equalsIgnoreCase("…"))) || ((paramString1.equalsIgnoreCase("─")) && (paramString2.equalsIgnoreCase("─"))) || ((paramString1.equalsIgnoreCase("-")) && (paramString2.equalsIgnoreCase("-")));
   }
   
-  public void b(int paramInt, bcbl parambcbl)
+  public void b(int paramInt, bfbz parambfbz)
   {
     WordInfo localWordInfo2 = (WordInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     WordInfo localWordInfo1 = null;
@@ -251,9 +251,9 @@ public class PinyinTextView
     if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
       localWordInfo1 = (WordInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    parambcbl.jdField_a_of_type_Float = (parambcbl.jdField_a_of_type_Float + a(localWordInfo2.text) + this.j);
+    parambfbz.jdField_a_of_type_Float = (parambfbz.jdField_a_of_type_Float + a(localWordInfo2.text) + this.j);
     if (((localWordInfo2.text.equalsIgnoreCase("…")) || (localWordInfo2.text.equalsIgnoreCase("─")) || (localWordInfo2.text.equalsIgnoreCase("-"))) && (localWordInfo1 != null) && (localWordInfo1.text.equalsIgnoreCase(localWordInfo2.text))) {
-      parambcbl.jdField_a_of_type_Float = (parambcbl.jdField_a_of_type_Float - this.j - a(localWordInfo2.text) + this.jdField_b_of_type_Float);
+      parambfbz.jdField_a_of_type_Float = (parambfbz.jdField_a_of_type_Float - this.j - a(localWordInfo2.text) + this.jdField_b_of_type_Float);
     }
   }
   
@@ -290,35 +290,35 @@ public class PinyinTextView
     float f1 = 0.0F;
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      bcbl.a(this.jdField_a_of_type_Bcbl);
-      this.jdField_a_of_type_Bcbl.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + this.k + this.jdField_c_of_type_Float + this.i);
-      this.jdField_a_of_type_Bcbl.jdField_a_of_type_Int = getWidth();
-      Object localObject = this.jdField_a_of_type_Bcbl;
+      bfbz.a(this.jdField_a_of_type_Bfbz);
+      this.jdField_a_of_type_Bfbz.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + this.k + this.jdField_c_of_type_Float + this.i);
+      this.jdField_a_of_type_Bfbz.jdField_a_of_type_Int = getWidth();
+      Object localObject = this.jdField_a_of_type_Bfbz;
       float f2 = this.l;
       if (a()) {
         f1 = 0.0F * this.jdField_a_of_type_Float;
       }
-      ((bcbl)localObject).jdField_a_of_type_Float = (f1 + f2);
+      ((bfbz)localObject).jdField_a_of_type_Float = (f1 + f2);
       int m = 0;
       while (m < this.jdField_a_of_type_JavaUtilList.size())
       {
         localObject = (WordInfo)this.jdField_a_of_type_JavaUtilList.get(m);
         this.jdField_a_of_type_AndroidTextTextPaint.setColor(((WordInfo)localObject).color);
         this.jdField_b_of_type_AndroidTextTextPaint.setColor(((WordInfo)localObject).colorPinyin);
-        a(m, this.jdField_a_of_type_Bcbl);
+        a(m, this.jdField_a_of_type_Bfbz);
         if (!TextUtils.isEmpty(((WordInfo)localObject).text))
         {
           if ((((WordInfo)localObject).isNormalWord()) && (a()))
           {
             f2 = this.jdField_b_of_type_AndroidTextTextPaint.measureText(((WordInfo)localObject).pinyin2Display);
-            f1 = this.jdField_a_of_type_Bcbl.jdField_a_of_type_Float;
+            f1 = this.jdField_a_of_type_Bfbz.jdField_a_of_type_Float;
             f2 = (this.jdField_a_of_type_Float - f2) / 2.0F;
-            paramCanvas.drawText(((WordInfo)localObject).pinyin2Display.substring(0, ((WordInfo)localObject).pinyin2Display.length()), f2 + f1, this.jdField_a_of_type_Bcbl.jdField_b_of_type_Float - this.jdField_a_of_type_Float - this.i, this.jdField_b_of_type_AndroidTextTextPaint);
+            paramCanvas.drawText(((WordInfo)localObject).pinyin2Display.substring(0, ((WordInfo)localObject).pinyin2Display.length()), f2 + f1, this.jdField_a_of_type_Bfbz.jdField_b_of_type_Float - this.jdField_a_of_type_Float - this.i, this.jdField_b_of_type_AndroidTextTextPaint);
           }
-          paramCanvas.drawText(((WordInfo)localObject).text, this.jdField_a_of_type_Bcbl.jdField_a_of_type_Float, this.jdField_a_of_type_Bcbl.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidTextTextPaint);
-          b(m, this.jdField_a_of_type_Bcbl);
+          paramCanvas.drawText(((WordInfo)localObject).text, this.jdField_a_of_type_Bfbz.jdField_a_of_type_Float, this.jdField_a_of_type_Bfbz.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidTextTextPaint);
+          b(m, this.jdField_a_of_type_Bfbz);
           WordInfo localWordInfo = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.a();
-          f1 = getTop() + this.jdField_a_of_type_Bcbl.jdField_b_of_type_Float + this.jdField_c_of_type_Float + this.i + this.jdField_a_of_type_Float;
+          f1 = getTop() + this.jdField_a_of_type_Bfbz.jdField_b_of_type_Float + this.jdField_c_of_type_Float + this.i + this.jdField_a_of_type_Float;
           int n = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.getBottom() * 2 / 3;
           if ((localWordInfo != null) && (localWordInfo.paragraphPos == ((WordInfo)localObject).paragraphPos) && (localWordInfo.wordPos == ((WordInfo)localObject).wordPos) && (this.f != f1) && (f1 > n))
           {
@@ -363,10 +363,10 @@ public class PinyinTextView
           if (!a())
           {
             this.l = a(m);
-            bcbl.a(this.jdField_a_of_type_Bcbl);
-            this.jdField_a_of_type_Bcbl.jdField_a_of_type_Int = m;
-            this.jdField_a_of_type_Bcbl.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + this.k + this.jdField_c_of_type_Float + this.i);
-            localObject = this.jdField_a_of_type_Bcbl;
+            bfbz.a(this.jdField_a_of_type_Bfbz);
+            this.jdField_a_of_type_Bfbz.jdField_a_of_type_Int = m;
+            this.jdField_a_of_type_Bfbz.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + this.k + this.jdField_c_of_type_Float + this.i);
+            localObject = this.jdField_a_of_type_Bfbz;
             f2 = this.l;
             if (!a()) {
               break label385;
@@ -375,12 +375,12 @@ public class PinyinTextView
           label385:
           for (float f1 = this.jdField_a_of_type_Float * 0.0F;; f1 = 0.0F)
           {
-            ((bcbl)localObject).jdField_a_of_type_Float = (f1 + f2);
+            ((bfbz)localObject).jdField_a_of_type_Float = (f1 + f2);
             paramInt1 = 0;
             while (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
             {
-              a(paramInt1, this.jdField_a_of_type_Bcbl);
-              b(paramInt1, this.jdField_a_of_type_Bcbl);
+              a(paramInt1, this.jdField_a_of_type_Bfbz);
+              b(paramInt1, this.jdField_a_of_type_Bfbz);
               paramInt1 += 1;
             }
             f1 = paramInt1;
@@ -395,7 +395,7 @@ public class PinyinTextView
             break;
           }
           Object localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-          f1 = this.jdField_a_of_type_Bcbl.jdField_b_of_type_Float;
+          f1 = this.jdField_a_of_type_Bfbz.jdField_b_of_type_Float;
           paramInt1 = (int)(((Paint.FontMetrics)localObject).descent + f1);
           continue;
         }
@@ -468,7 +468,7 @@ public class PinyinTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView
  * JD-Core Version:    0.7.0.1
  */

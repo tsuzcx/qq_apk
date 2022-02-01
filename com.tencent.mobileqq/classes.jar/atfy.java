@@ -1,39 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
-public class atfy
-  extends Handler
+class atfy
+  extends atfq
 {
-  WeakReference<WatchTogetherFloatingView> a;
-  
-  public atfy(WatchTogetherFloatingView paramWatchTogetherFloatingView)
+  public atfy(atfe paramatfe)
   {
-    this.a = new WeakReference(paramWatchTogetherFloatingView);
+    super(paramatfe);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected String a()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      sendEmptyMessageDelayed(2, 20000L);
-      return;
-      removeMessages(2);
-      return;
-      try
-      {
-        ((WatchTogetherFloatingView)this.a.get()).a();
-        return;
-      }
-      catch (NullPointerException paramMessage) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("WatchTogetherFloatingView", 2, "MESSAGE_WAIT_LOADING END, but View missing");
+    return "StateRefuseByPC";
   }
 }
 

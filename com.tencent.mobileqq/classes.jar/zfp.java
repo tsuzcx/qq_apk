@@ -1,20 +1,26 @@
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-class zfp
-  implements QzoneZipCacheHelperCallBack
+public class zfp
+  implements Comparator<RecentUser>
 {
-  zfp(zfn paramzfn, String paramString1, String paramString2, String paramString3) {}
+  public zfp(ShareToActivity paramShareToActivity) {}
   
-  public void onResult(boolean paramBoolean)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    zfn.a(this.jdField_a_of_type_Zfn, paramBoolean, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
+      return -1;
+    }
+    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
+      return 1;
+    }
+    return 0;
   }
-  
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zfp
  * JD-Core Version:    0.7.0.1
  */

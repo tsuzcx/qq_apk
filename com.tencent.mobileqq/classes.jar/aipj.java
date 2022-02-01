@@ -1,17 +1,14 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-final class aipj
+class aipj
   implements DialogInterface.OnClickListener
 {
-  aipj(Activity paramActivity) {}
+  aipj(aiph paramaiph) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {
-      this.a.finish();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,28 +1,8 @@
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.graphics.Canvas;
 
-class arfr
-  implements ShareActionSheet.OnItemClickListener
+public abstract interface arfr
 {
-  arfr(arfp paramarfp) {}
-  
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
-  {
-    if (paramActionSheetItem == null) {}
-    do
-    {
-      return;
-      arfp.a(this.a).dismiss();
-      if (paramActionSheetItem.listener != null)
-      {
-        paramActionSheetItem.listener.onClick(null);
-        return;
-      }
-    } while (arfp.a(this.a) == null);
-    arfp.a(this.a).a(paramActionSheetItem);
-  }
+  public abstract void a(Canvas paramCanvas, arew paramarew, long paramLong);
 }
 
 

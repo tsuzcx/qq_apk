@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import aknm;
-import akwd;
-import akxb;
-import akxe;
-import akyg;
-import alhb;
+import amgs;
+import ampj;
+import amqf;
+import amqi;
+import amrk;
+import anai;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import com.tencent.TMG.opengl.GraphicRendererMgr;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class CmGameAvHandler$15$1
   implements Runnable
 {
-  public CmGameAvHandler$15$1(akxe paramakxe, int paramInt) {}
+  public CmGameAvHandler$15$1(amqi paramamqi, int paramInt) {}
   
   public void run()
   {
@@ -26,14 +26,14 @@ public class CmGameAvHandler$15$1
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("res", "ok");
-      akxb.c(this.jdField_a_of_type_Akxe.a, true);
-      this.jdField_a_of_type_Akxe.a.a = new aknm(akwd.b(akxb.a(this.jdField_a_of_type_Akxe.a)).a(), akxb.a(this.jdField_a_of_type_Akxe.a));
-      this.jdField_a_of_type_Akxe.a.a.a();
+      amqf.c(this.jdField_a_of_type_Amqi.a, true);
+      this.jdField_a_of_type_Amqi.a.a = new amgs(ampj.b(amqf.a(this.jdField_a_of_type_Amqi.a)).a(), amqf.a(this.jdField_a_of_type_Amqi.a));
+      this.jdField_a_of_type_Amqi.a.a.a();
       GraphicRendererMgr localGraphicRendererMgr = GraphicRendererMgr.getInstance();
-      SurfaceHolder localSurfaceHolder = this.jdField_a_of_type_Akxe.a.a.a.getHolder();
+      SurfaceHolder localSurfaceHolder = this.jdField_a_of_type_Amqi.a.a.a.getHolder();
       QLog.e("onSDKEnterRoom", 1, "onSDKEnterRoom mgr=" + String.valueOf(localGraphicRendererMgr));
-      alhb.a(BaseApplicationImpl.getContext()).a().setRenderMgrAndHolder(localGraphicRendererMgr, localSurfaceHolder);
-      akwd.a().callbackFromRequest(akxb.a(this.jdField_a_of_type_Akxe.a), this.jdField_a_of_type_Int, "cs.audioRoom_enter.local", localJSONObject.toString());
+      anai.a(BaseApplicationImpl.getContext()).a().setRenderMgrAndHolder(localGraphicRendererMgr, localSurfaceHolder);
+      ampj.a().callbackFromRequest(amqf.a(this.jdField_a_of_type_Amqi.a), this.jdField_a_of_type_Int, "cs.audioRoom_enter.local", localJSONObject.toString());
       return;
     }
     catch (Exception localException) {}
@@ -41,7 +41,7 @@ public class CmGameAvHandler$15$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.15.1
  * JD-Core Version:    0.7.0.1
  */

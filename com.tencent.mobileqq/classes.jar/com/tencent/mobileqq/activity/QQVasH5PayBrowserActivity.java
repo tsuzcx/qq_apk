@@ -1,9 +1,13 @@
 package com.tencent.mobileqq.activity;
 
+import Override;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.vip.manager.MonitorManager;
 
 public class QQVasH5PayBrowserActivity
@@ -12,6 +16,14 @@ public class QQVasH5PayBrowserActivity
   public QQVasH5PayBrowserActivity()
   {
     this.a = QQVasH5PayBrowserActivity.QQVasH5PayBrowserFragment.class;
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -37,17 +49,24 @@ public class QQVasH5PayBrowserActivity
     overridePendingTransition(0, 0);
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public boolean showPreview()
   {
     boolean bool = super.showPreview();
-    getWindow().setBackgroundDrawableResource(2131167140);
-    findViewById(2131363457).setBackgroundResource(2131167140);
+    getWindow().setBackgroundDrawableResource(2131167224);
+    findViewById(2131363653).setBackgroundResource(2131167224);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

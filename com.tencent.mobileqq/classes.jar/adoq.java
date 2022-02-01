@@ -1,29 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.List;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class adoq
-  implements View.OnClickListener
+  extends aywi
 {
-  adoq(adop paramadop) {}
+  adoq(adoo paramadoo) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    paramView = paramView.getTag();
-    if ((paramView instanceof adoo))
-    {
-      paramView = (adoo)paramView;
-      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
-      {
-        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
-        this.a.a.a(this.a.a.a.size());
-        this.a.notifyDataSetChanged();
-        adop.a(this.a, paramView);
-        azqs.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "onUploadContact  isSuccess = " + paramBoolean);
     }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
+    }
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        adoo.a(this.a, true);
+        adoo.b(this.a);
+      }
+      do
+      {
+        return;
+        if ((!paramBoolean3) || (TextUtils.isEmpty(paramString))) {
+          break;
+        }
+        adoo.a(this.a);
+      } while (adoo.a(this.a) == null);
+      Intent localIntent = new Intent(adoo.a(this.a), VerifyPhoneNumActivity.class);
+      localIntent.putExtra("phonenum", this.a.a);
+      localIntent.putExtra("key", this.a.b);
+      localIntent.putExtra("uin", adoo.a(this.a));
+      localIntent.putExtra("key_register_sign", adoo.a(this.a));
+      localIntent.putExtra("key_register_binduin", paramString);
+      adoo.a(this.a).startActivity(localIntent);
+      adoo.a(this.a).finish();
+      return;
+      adoo.b(this.a);
+      return;
+    }
+    adoo.b(this.a);
   }
 }
 

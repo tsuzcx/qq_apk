@@ -1,159 +1,46 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class szi
-  extends syt
+  implements ViewBase.OnClickListener
 {
-  szi(szc paramszc) {}
+  szi(szh paramszh) {}
   
-  protected boolean a(Integer paramInteger)
+  public void onClick(ViewBase paramViewBase)
   {
-    szh localszh = szc.a(this.a, paramInteger.intValue());
-    if (localszh == null) {
-      return false;
-    }
-    if (localszh.jdField_a_of_type_Boolean)
-    {
-      this.a.b(localszh.jdField_a_of_type_JavaLangString);
-      return true;
-    }
-    if (paramInteger.intValue() == 1) {
-      this.a.b(localszh.jdField_a_of_type_JavaLangString);
+    int i;
+    if ((szg.a(this.a.jdField_a_of_type_Szg) instanceof AdData)) {
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+      {
+      default: 
+        i = -1;
+      }
     }
     for (;;)
     {
-      return super.a(paramInteger);
-      if (paramInteger.intValue() == 2)
-      {
-        szc.a(this.a, paramInteger.intValue());
-      }
-      else if (paramInteger.intValue() == 3)
-      {
-        szc.a(this.a, paramInteger.intValue());
-      }
-      else if (paramInteger.intValue() == 4)
-      {
-        szc.a(this.a, paramInteger.intValue());
-      }
-      else if (paramInteger.intValue() == 5)
-      {
-        szc.a(this.a, paramInteger.intValue());
-      }
-      else if (paramInteger.intValue() == 6)
-      {
-        szc.a(this.a, paramInteger.intValue());
-      }
-      else if (paramInteger.intValue() == 7)
-      {
-        szc.a(this.a).a(szc.a(this.a).c);
-        szc.a(this.a, localszh.jdField_a_of_type_JavaLangString, true);
-      }
-      else if (paramInteger.intValue() == 8)
-      {
-        szc.a(this.a).b(szc.a(this.a).c);
-        szc.a(this.a, localszh.jdField_a_of_type_JavaLangString, true);
-      }
-      else if (paramInteger.intValue() == 9)
-      {
-        szc.a(this.a).c();
-        szc.a(this.a, localszh.jdField_a_of_type_JavaLangString, true);
-      }
-      else if (paramInteger.intValue() == 10)
-      {
-        szc.a(this.a).a(this.a);
-        szc.a(this.a, localszh.jdField_a_of_type_JavaLangString, true);
-      }
-      else if (paramInteger.intValue() == 12)
-      {
-        szc.a(this.a);
-        szc.a(this.a, localszh.jdField_a_of_type_JavaLangString, true);
-      }
-      else if (paramInteger.intValue() == 28)
-      {
-        if (!TextUtils.isEmpty(szc.a(this.a).c))
-        {
-          bagk.a(1, 3);
-          bagk.a(szc.a(this.a).c, szc.a(this.a).jdField_a_of_type_JavaLangString);
-          szc.a(this.a, localszh.jdField_a_of_type_JavaLangString, true);
-        }
-      }
-      else if (paramInteger.intValue() == 13)
-      {
-        if (!TextUtils.isEmpty(szc.a(this.a).c)) {
-          this.a.a.d(szc.a(this.a).c, new szj(this, localszh));
-        }
-      }
-      else if (paramInteger.intValue() == 14)
-      {
-        szc.a(this.a).c(szc.a(this.a).c);
-        szc.a(this.a, localszh.jdField_a_of_type_JavaLangString, true);
-      }
-      else if (paramInteger.intValue() == 20)
-      {
-        szc.b(this.a);
-        szc.a(this.a, localszh.jdField_a_of_type_JavaLangString, true);
-      }
-      else if (paramInteger.intValue() == 19)
-      {
-        this.a.b("not_care");
-      }
-      else
-      {
-        Intent localIntent;
-        if (paramInteger.intValue() == 17)
-        {
-          if (!TextUtils.isEmpty(szc.a(this.a).e))
-          {
-            localIntent = AddFriendLogicActivity.a(this.a.a(), 1, szc.a(this.a).e + "", null, 3096, 1, szc.a(this.a).f, null, null, null, null);
-            this.a.a().startActivity(localIntent);
-          }
-          szc.a(this.a, localszh.jdField_a_of_type_JavaLangString, true);
-        }
-        else if (paramInteger.intValue() == 16)
-        {
-          if (!TextUtils.isEmpty(szc.a(this.a).e))
-          {
-            localIntent = aepi.a(new Intent(this.a.a(), SplashActivity.class), null);
-            localIntent.putExtra("uin", szc.a(this.a).e);
-            localIntent.putExtra("uintype", 0);
-            this.a.a().startActivity(localIntent);
-            szc.a(this.a, localszh.jdField_a_of_type_JavaLangString, true);
-          }
-        }
-        else if (paramInteger.intValue() == 21)
-        {
-          if (!TextUtils.isEmpty(szc.a(this.a).e))
-          {
-            localIntent = new Intent(this.a.a(), AccountDetailActivity.class);
-            localIntent.putExtra("uin", szc.a(this.a).e);
-            localIntent.putExtra("from_js", true);
-            this.a.a().startActivity(localIntent);
-            szc.a(this.a, localszh.jdField_a_of_type_JavaLangString, true);
-          }
-        }
-        else if (paramInteger.intValue() == 22)
-        {
-          this.a.b("personal_c2c");
-        }
-        else if (paramInteger.intValue() == 23)
-        {
-          this.a.b("unfollow");
-        }
-        else
-        {
-          this.a.b(localszh.jdField_a_of_type_JavaLangString);
-        }
-      }
+      tbe.a(this.a.jdField_a_of_type_AndroidContentContext, oqk.a((AdData)szg.a(this.a.jdField_a_of_type_Szg)), true, true, i);
+      return;
+      tby.a(szg.a(this.a.jdField_a_of_type_Szg), paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+      return;
+      i = 4;
+      continue;
+      i = 3;
+      continue;
+      i = 5;
+      continue;
+      i = 8;
+      continue;
+      i = 1;
+      continue;
+      i = 1000;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     szi
  * JD-Core Version:    0.7.0.1
  */

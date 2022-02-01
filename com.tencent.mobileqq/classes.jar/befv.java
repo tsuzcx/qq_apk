@@ -1,21 +1,32 @@
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class befv
-  implements TouchWebView.OnScrollChangedListener
+  implements View.OnClickListener
 {
-  befv(beft parambeft) {}
+  private befw jdField_a_of_type_Befw;
+  private befx jdField_a_of_type_Befx;
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public befv(befx parambefx)
   {
-    this.a.b = paramInt2;
-    this.a.a(this.a.b, this.a.f);
-    paramView = this.a.a.a();
-    if ((paramView != null) && (!TextUtils.isEmpty(this.a.d))) {
-      paramView.callJs(this.a.d, new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2), String.valueOf(paramInt3), String.valueOf(paramInt4) });
+    this.jdField_a_of_type_Befx = parambefx;
+  }
+  
+  public void a(befw parambefw)
+  {
+    this.jdField_a_of_type_Befw = parambefw;
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = ((Integer)paramView.getTag()).intValue();
+    befx.a(this.jdField_a_of_type_Befx, i);
+    if (this.jdField_a_of_type_Befw != null) {
+      this.jdField_a_of_type_Befw.a((befy)befx.a(this.jdField_a_of_type_Befx).get(i));
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

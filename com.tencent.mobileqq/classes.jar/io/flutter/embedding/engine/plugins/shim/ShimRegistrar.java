@@ -2,9 +2,8 @@ package io.flutter.embedding.engine.plugins.shim;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.Log;
-import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
@@ -17,7 +16,6 @@ import io.flutter.plugin.common.PluginRegistry.RequestPermissionsResultListener;
 import io.flutter.plugin.common.PluginRegistry.UserLeaveHintListener;
 import io.flutter.plugin.common.PluginRegistry.ViewDestroyListener;
 import io.flutter.plugin.platform.PlatformViewRegistry;
-import io.flutter.plugin.platform.PlatformViewsController;
 import io.flutter.view.FlutterMain;
 import io.flutter.view.FlutterView;
 import io.flutter.view.TextureRegistry;
@@ -155,7 +153,7 @@ class ShimRegistrar
   public BinaryMessenger messenger()
   {
     if (this.pluginBinding != null) {
-      return this.pluginBinding.getFlutterEngine().getDartExecutor();
+      return this.pluginBinding.getBinaryMessenger();
     }
     return null;
   }
@@ -193,6 +191,7 @@ class ShimRegistrar
       ((PluginRegistry.ViewDestroyListener)paramFlutterPluginBinding.next()).onViewDestroy(null);
     }
     this.pluginBinding = null;
+    this.activityPluginBinding = null;
   }
   
   public void onReattachedToActivityForConfigChanges(@NonNull ActivityPluginBinding paramActivityPluginBinding)
@@ -205,7 +204,7 @@ class ShimRegistrar
   public PlatformViewRegistry platformViewRegistry()
   {
     if (this.pluginBinding != null) {
-      return this.pluginBinding.getFlutterEngine().getPlatformViewsController().getRegistry();
+      return this.pluginBinding.getPlatformViewRegistry();
     }
     return null;
   }
@@ -219,7 +218,7 @@ class ShimRegistrar
   public TextureRegistry textures()
   {
     if (this.pluginBinding != null) {
-      return this.pluginBinding.getFlutterEngine().getRenderer();
+      return this.pluginBinding.getTextureRegistry();
     }
     return null;
   }
@@ -231,7 +230,7 @@ class ShimRegistrar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.plugins.shim.ShimRegistrar
  * JD-Core Version:    0.7.0.1
  */

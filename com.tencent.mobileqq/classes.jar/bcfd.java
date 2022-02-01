@@ -1,12 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-final class bcfd
-  implements DialogInterface.OnClickListener
+public class bcfd
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a;
+  bdvs jdField_a_of_type_Bdvs;
+  public String a;
+  public ArrayList<bcfe> a;
+  public int b = 0;
+  
+  public bcfd(ShortVideoResourceManager paramShortVideoResourceManager, bdvs parambdvs)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    this.jdField_a_of_type_Bdvs = parambdvs;
+    this.b = 0;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoResourceManager", 2, "HttpEngineTask[start]: " + this);
+    }
+    this.b = 1;
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager).getNetEngine(0).a(this.jdField_a_of_type_Bdvs);
   }
 }
 

@@ -1,40 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10.1.1;
+import com.tencent.biz.widgets.TabLayout;
 
 public class ogj
-  implements rjw
+  implements Animator.AnimatorListener
 {
-  private WeakReference<ReadInJoyArticleBottomVideoView> a;
+  public ogj(ReadInJoyChannelViewPagerController.10 param10) {}
   
-  public ogj(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
+    ogh.b(this.a.this$0, false);
+    ogh.a(this.a.this$0, ogh.a, 0.0F, 0);
+    ogh.a(this.a.this$0).postDelayed(new ReadInJoyChannelViewPagerController.10.1.1(this), 0L);
   }
   
-  public List<rjx> a(int paramInt, boolean paramBoolean)
-  {
-    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
-    ArrayList localArrayList = new ArrayList();
-    if (localReadInJoyArticleBottomVideoView != null) {
-      localArrayList.add(new rjx(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).d, "", 5, (int)ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).a));
-    }
-    return localArrayList;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public boolean a()
-  {
-    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (localReadInJoyArticleBottomVideoView == null) {
-      return false;
-    }
-    return bdin.h(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView));
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ogj
  * JD-Core Version:    0.7.0.1
  */

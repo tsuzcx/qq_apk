@@ -1,363 +1,873 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Process;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.view.ViewGroup;
-import android.view.Window;
-import com.tencent.qqmini.sdk.core.widget.CapsuleButton;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
-import com.tencent.qqmini.sdk.launcher.BaseUIProxy.2;
-import com.tencent.qqmini.sdk.launcher.BaseUIProxy.3;
-import com.tencent.qqmini.sdk.launcher.IUIProxy;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
-import com.tencent.qqmini.sdk.log.QMLog;
+import android.text.style.ForegroundColorSpan;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchActivity;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
+import com.tencent.mobileqq.utils.fts.FTSMessageCodec;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public abstract class bguq
-  implements IUIProxy
+public class bguq
 {
-  protected static final String TAG = "UIProxy";
-  private static volatile boolean mIgnorePreload;
-  protected bgun mActivatedRuntimeLoader;
-  public Activity mActivity;
-  protected Handler mMainHandler;
-  public MiniAppInfo mMiniAppInfo;
-  public ViewGroup mRootLayout;
-  public bgls mRuntime;
+  private static int a;
+  public static boolean a;
+  private static int jdField_b_of_type_Int;
+  private static boolean jdField_b_of_type_Boolean;
+  private static int c;
+  private static int d;
+  private static int e;
+  private static int f;
   
-  private bgup createRuntimeLoaderListener()
+  static
   {
-    return new bgur(this);
+    jdField_a_of_type_Int = -1;
+    jdField_b_of_type_Int = -1;
+    jdField_c_of_type_Int = -1;
+    jdField_d_of_type_Int = -1;
+    jdField_e_of_type_Int = -1;
+    jdField_f_of_type_Int = -1;
   }
   
-  public static final boolean shouldIgnorePreload()
+  private static int a(Context paramContext)
   {
-    return mIgnorePreload;
-  }
-  
-  private void start(MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
-  {
-    if (paramMiniAppInfo == null) {
-      QMLog.e("UIProxy", "Failed to start. miniAppInfo is null");
+    int i = 0;
+    paramContext = (Activity)paramContext;
+    if ((paramContext instanceof FTSEntitySearchActivity)) {
+      i = 2;
     }
+    while (!(paramContext instanceof FTSEntitySearchDetailActivity)) {
+      return i;
+    }
+    return 3;
+  }
+  
+  public static int a(BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    if (jdField_d_of_type_Int == -1) {
+      jdField_d_of_type_Int = paramBaseApplicationImpl.getSharedPreferences("fts_sp_file", 0).getInt("fts_notify_flag" + paramBaseApplicationImpl.getRuntime().getAccount(), 0);
+    }
+    return jdField_d_of_type_Int;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getInt("support_fts4_flag" + paramQQAppInterface.getCurrentAccountUin(), -1);
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putInt("fts_upgrade_tables" + paramQQAppInterface.getCurrentAccountUin(), paramInt1 + paramInt2);
+    int i = paramInt1;
+    if (localEditor.commit()) {
+      i = paramInt1 + paramInt2;
+    }
+    return i;
+  }
+  
+  public static int a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      return;
-      mIgnorePreload = true;
-      bgun localbgun = AppRuntimeLoaderManager.g().queryAppRunTimeLoader(paramMiniAppInfo);
-      if (localbgun == null) {
-        break;
-      }
-      QMLog.i("UIProxy", "start().Resume the existing runtime of existing runtime loader = " + localbgun);
-      AppRuntimeLoaderManager.g().notifyRuntimeEvent(20, new Object[0]);
-      if ((!paramMiniAppInfo.isShortcutFakeApp()) && (!paramMiniAppInfo.isFakeAppInfo())) {
-        this.mMiniAppInfo = paramMiniAppInfo;
-      }
-      if (localbgun.isLoadSucceed()) {
-        resumeRuntime(localbgun);
-      }
-      this.mMiniAppInfo.dump();
-    } while ((this.mMiniAppInfo == null) || (TextUtils.isEmpty(this.mMiniAppInfo.appId)));
-    if (paramBundle != null) {}
-    for (int i = paramBundle.getInt("start_mode", 3);; i = 3)
-    {
-      if (i != 3) {
-        break label279;
-      }
-      bhbu.d(this.mMiniAppInfo.appId, false);
-      return;
-      showLoading(paramMiniAppInfo);
-      bhck.a(paramMiniAppInfo, 1013, "1");
-      this.mMiniAppInfo = paramMiniAppInfo;
-      this.mActivatedRuntimeLoader = AppRuntimeLoaderManager.g().createAppRuntimeLoader(paramMiniAppInfo, createRuntimeLoaderListener(), paramBundle);
-      QMLog.i("UIProxy", "start(). Create a new runtime loader = " + this.mActivatedRuntimeLoader);
-      AppRuntimeLoaderManager.g().notifyRuntimeEvent(20, new Object[0]);
-      if (!paramMiniAppInfo.isEngineTypeMiniApp()) {
-        break;
-      }
-      QMLog.i("UIProxy", "start(). Start " + this.mActivatedRuntimeLoader);
-      this.mActivatedRuntimeLoader.start();
-      break;
-    }
-    label279:
-    bhbu.d(this.mMiniAppInfo.appId, true);
+      return 0;
+      paramString = paramString.split(" ");
+    } while (paramString == null);
+    return paramString.length;
   }
   
-  public MiniAppInfo getMiniAppInfo()
+  public static long a(QQAppInterface paramQQAppInterface)
   {
-    return this.mMiniAppInfo;
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getLong("fts_upgrade_cost" + paramQQAppInterface.getCurrentAccountUin(), 0L);
   }
   
-  protected MiniAppInfo getMiniAppInfoFromIntent(Intent paramIntent)
+  public static long a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
   {
-    if (paramIntent == null)
-    {
-      if (this.mMiniAppInfo != null)
-      {
-        bhcn.a(this.mMiniAppInfo, "1", null, "load_fail", "start_no_intent");
-        bhbs.a("2launch_fail", "start_no_intent", null, this.mMiniAppInfo);
-      }
-      paramIntent = null;
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putLong("fts_upgrade_cost" + paramQQAppInterface.getCurrentAccountUin(), paramLong1 + paramLong2);
+    long l = paramLong1;
+    if (localEditor.commit()) {
+      l = paramLong1 + paramLong2;
     }
-    MiniAppInfo localMiniAppInfo;
-    do
-    {
-      return paramIntent;
-      localMiniAppInfo = (MiniAppInfo)paramIntent.getParcelableExtra("KEY_APPINFO");
-      paramIntent = localMiniAppInfo;
-    } while (localMiniAppInfo != null);
-    QMLog.w("UIProxy", "handleNewIntent. Do nothing, mini app info is null");
+    return l;
+  }
+  
+  public static Pair<CharSequence, CharSequence> a(bbmu parambbmu)
+  {
+    if ((parambbmu instanceof bblj)) {
+      return ((bblj)parambbmu).a();
+    }
+    if ((parambbmu instanceof bbli)) {
+      return ((bbli)parambbmu).a();
+    }
     return null;
   }
   
-  protected bgls getRuntime()
+  public static FTSMessage a(ContentValues paramContentValues, MessageRecord paramMessageRecord)
   {
-    return this.mRuntime;
-  }
-  
-  protected abstract void hideLoading();
-  
-  /* Error */
-  protected boolean isRuntimeLoaderValid(bgun parambgun)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 148	bguq:mActivatedRuntimeLoader	Lbgun;
-    //   8: ifnonnull +12 -> 20
-    //   11: aload_0
-    //   12: aload_1
-    //   13: putfield 148	bguq:mActivatedRuntimeLoader	Lbgun;
-    //   16: aload_0
-    //   17: monitorexit
-    //   18: iload_2
-    //   19: ireturn
-    //   20: aload_0
-    //   21: getfield 148	bguq:mActivatedRuntimeLoader	Lbgun;
-    //   24: aload_1
-    //   25: if_acmpeq -9 -> 16
-    //   28: ldc 10
-    //   30: new 62	java/lang/StringBuilder
-    //   33: dup
-    //   34: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   37: ldc 199
-    //   39: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: aload_1
-    //   43: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 190	com/tencent/qqmini/sdk/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   52: iconst_0
-    //   53: istore_2
-    //   54: goto -38 -> 16
-    //   57: astore_1
-    //   58: aload_0
-    //   59: monitorexit
-    //   60: aload_1
-    //   61: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	62	0	this	bguq
-    //   0	62	1	parambgun	bgun
-    //   1	53	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   4	16	57	finally
-    //   20	52	57	finally
-  }
-  
-  public void onActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    QMLog.i("UIProxy", "onActivityResult requestCode=" + paramInt1 + " resultCode=" + paramInt2);
-    bgnk.a().a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public boolean onBackPressed(Activity paramActivity)
-  {
-    QMLog.i("UIProxy", "onBackPressed");
-    if (this.mRuntime != null) {}
-    for (boolean bool = this.mRuntime.d();; bool = false)
-    {
-      AppRuntimeLoaderManager.g().notifyRuntimeEvent(25, new Object[0]);
-      return bool;
-    }
-  }
-  
-  public void onCreate(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup)
-  {
-    QMLog.i("UIProxy", "onCreate " + this + ", pid:" + Process.myPid());
-    paramBundle = paramActivity.getWindow();
-    if (paramBundle != null) {
-      paramBundle.setSoftInputMode(18);
-    }
-    this.mMainHandler = new Handler(Looper.getMainLooper());
-    this.mActivity = paramActivity;
-    this.mRootLayout = paramViewGroup;
-    paramActivity = paramActivity.getIntent();
-    paramBundle = getMiniAppInfoFromIntent(paramActivity);
-    start(paramBundle, paramActivity.getExtras());
-    AppLoaderFactory.g().getAppBrandProxy().onAppStart(paramBundle, null);
-    bhbx.a();
-  }
-  
-  public void onDestroy(Activity paramActivity)
-  {
-    QMLog.i("UIProxy", "onDestroy");
-    if (this.mActivity == paramActivity)
-    {
-      this.mActivity = null;
-      this.mRootLayout = null;
-      if (this.mRuntime != null)
-      {
-        this.mRuntime.e();
-        this.mRuntime.a(paramActivity);
-      }
-    }
-    AppRuntimeLoaderManager.g().notifyRuntimeEvent(62, new Object[0]);
-  }
-  
-  public void onNewIntent(Activity paramActivity, Intent paramIntent)
-  {
-    QMLog.i("UIProxy", "onNewIntent");
-    start(getMiniAppInfoFromIntent(paramIntent), paramIntent.getExtras());
-    bhbx.a();
-  }
-  
-  public void onPause(Activity paramActivity)
-  {
-    QMLog.i("UIProxy", "onPause");
-    AppRuntimeLoaderManager.g().notifyRuntimeEvent(24, new Object[0]);
-    bgwl.b(paramActivity, this.mMiniAppInfo);
-    if (this.mRuntime != null) {
-      this.mRuntime.c();
-    }
-  }
-  
-  public void onRefreshMiniBadge(Activity paramActivity, Bundle paramBundle)
-  {
-    QMLog.i("UIProxy", "onRefreshMiniBadge");
-    if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
-      QMLog.e("UIProxy", "Failed to refreshMiniBadge, runtime or miniappinfo is null");
-    }
     for (;;)
     {
-      return;
-      if (paramBundle != null)
+      try
       {
-        paramActivity = paramBundle.getString("KEY_APPID");
-        if (QMLog.isColorLevel()) {
-          QMLog.d("TAG", "onRefreshMiniBadge appID : " + paramActivity);
-        }
-        if (!this.mRuntime.a().appId.equals(paramActivity)) {
-          break;
-        }
-        int i = paramBundle.getInt("KEY_BADGE_COUNT");
-        if (QMLog.isColorLevel()) {
-          QMLog.e("UIProxy", "onRefreshMiniBadge badge : " + i);
-        }
-        paramActivity = this.mRuntime.a();
-        if (paramActivity != null) {}
-        for (paramActivity = paramActivity.a(); paramActivity != null; paramActivity = null)
+        if (paramContentValues.containsKey("msgData"))
         {
-          paramActivity.setUnReadCount(i, false);
-          return;
+          arrayOfByte = paramContentValues.getAsByteArray("msgData");
+          if (arrayOfByte != null) {
+            continue;
+          }
+          paramMessageRecord.msg = null;
         }
       }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        byte[] arrayOfByte;
+        localUnsupportedEncodingException.printStackTrace();
+        paramMessageRecord.msg = null;
+        continue;
+      }
+      if (paramContentValues.containsKey("time")) {
+        paramMessageRecord.time = paramContentValues.getAsLong("time").longValue();
+      }
+      if (paramContentValues.containsKey("shmsgseq")) {
+        paramMessageRecord.shmsgseq = paramContentValues.getAsLong("shmsgseq").longValue();
+      }
+      return FTSMessageCodec.a(paramMessageRecord);
+      paramMessageRecord.msg = new String(arrayOfByte, "UTF-8");
     }
   }
   
-  public void onRequestPermissionsResult(Activity paramActivity, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static String a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, int paramInt, String paramString2)
   {
-    QMLog.i("UIProxy", "onRequestPermissionsResult requestCode=" + paramInt + " permissions=" + paramArrayOfString + "grantResults=" + paramArrayOfInt);
-    bgnk.a().a(paramInt, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void onResume(Activity paramActivity)
-  {
-    QMLog.i("UIProxy", "onResume");
-    if (this.mRuntime != null) {
-      this.mRuntime.a(this.mMiniAppInfo, false);
-    }
-    AppLoaderFactory.g().getAppBrandProxy().onAppForeground(this.mMiniAppInfo, null);
-    AppRuntimeLoaderManager.g().notifyRuntimeEvent(21, new Object[0]);
-    bgwl.a(paramActivity, this.mMiniAppInfo);
-  }
-  
-  protected void onRuntimeFail(int paramInt, String paramString)
-  {
-    QMLog.e("UIProxy", "onRuntimeFail. Whoops, failed to load the runtime, retCode = " + paramInt + ", msg = " + paramString);
-    this.mMainHandler.postDelayed(new BaseUIProxy.3(this, paramInt, paramString), 1000L);
-  }
-  
-  protected void onRuntimeReady()
-  {
-    QMLog.i("UIProxy", "onRuntimeReady. Here we go, start the runtime lifecycle");
-    this.mMiniAppInfo = this.mActivatedRuntimeLoader.getMiniAppInfo();
-    this.mRuntime = this.mActivatedRuntimeLoader.getRuntime();
-    if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId())
-    {
-      this.mRuntime.a(this.mActivity, this.mRootLayout);
-      this.mRuntime.a(this.mMiniAppInfo, null);
-      this.mRuntime.a(this.mMiniAppInfo, false);
-      return;
-    }
-    this.mMainHandler.post(new BaseUIProxy.2(this));
-  }
-  
-  public void onStart(Activity paramActivity)
-  {
-    QMLog.i("UIProxy", "onStart");
-  }
-  
-  public void onStop(Activity paramActivity)
-  {
-    QMLog.i("UIProxy", "onStop");
-    if (this.mRuntime != null) {
-      this.mRuntime.d();
-    }
-    AppLoaderFactory.g().getAppBrandProxy().onAppBackground(this.mMiniAppInfo, null);
-    AppRuntimeLoaderManager.g().notifyRuntimeEvent(22, new Object[0]);
-    AppRuntimeLoaderManager.g().preloadRuntime();
-  }
-  
-  public void quit()
-  {
-    if (this.mActivity != null) {
-      this.mActivity.finish();
-    }
-  }
-  
-  protected void resumeRuntime(bgun parambgun)
-  {
-    if (this.mActivity == null) {
-      QMLog.w("UIProxy", "Failed to resumeRuntime. Activity is null");
-    }
+    if ((paramQQAppInterface == null) || (paramContext == null)) {}
     do
     {
-      return;
-      if (!isRuntimeLoaderValid(parambgun))
+      return paramString1;
+      switch (paramInt)
       {
-        QMLog.w("UIProxy", "Failed to resumeRuntime. runtime loader is valid");
-        return;
+      default: 
+        return bglf.a(paramQQAppInterface, paramString1, paramInt);
       }
-      this.mMiniAppInfo = this.mActivatedRuntimeLoader.getMiniAppInfo();
-      this.mRuntime = this.mActivatedRuntimeLoader.getRuntime();
-      hideLoading();
-    } while (this.mRuntime == null);
-    this.mRuntime.a(this.mActivity, this.mRootLayout);
+      if (anhk.G.equals(paramString1)) {
+        return paramContext.getString(2131718367);
+      }
+      if (anhk.J.equals(paramString1)) {
+        return paramContext.getString(2131718366);
+      }
+      if (anhk.E.equals(paramString1)) {
+        return paramContext.getString(2131718398);
+      }
+      if (paramInt != 1000) {
+        break;
+      }
+      paramContext = (TroopManager)paramQQAppInterface.getManager(52);
+    } while (paramContext == null);
+    return bglf.a(paramQQAppInterface, paramString1, paramContext.b(paramString2), paramString2, true, null);
+    if (paramInt == 1004)
+    {
+      paramContext = bglf.c(paramQQAppInterface, paramString2, paramString1);
+      if ((paramContext != null) && (paramContext.equals(paramString1))) {
+        return bglf.b(paramQQAppInterface, paramString1, true);
+      }
+    }
+    else
+    {
+      return bglf.a(paramQQAppInterface, paramString1, paramInt);
+    }
+    return paramContext;
   }
   
-  protected abstract void showLoading(MiniAppInfo paramMiniAppInfo);
+  public static String a(String paramString)
+  {
+    Object localObject = null;
+    for (;;)
+    {
+      try
+      {
+        localStringBuilder = new StringBuilder(64);
+        localaupz = new aupz(new StringReader(paramString), paramString.length());
+        paramString = null;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder;
+        aupz localaupz;
+        aupw localaupw;
+        localThrowable.printStackTrace();
+        paramString = localObject;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q.fts.utils", 2, "tokenSegment: failure", localThrowable);
+      }
+      try
+      {
+        localaupw = localaupz.a();
+        if (localaupw != null) {
+          continue;
+        }
+        if ((paramString != null) && (TextUtils.equals(paramString.b(), "double")) && (!TextUtils.isEmpty(paramString.a())))
+        {
+          localStringBuilder.append(paramString.a().charAt(paramString.a().length() - 1));
+          localStringBuilder.append("*");
+        }
+      }
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q.fts.utils", 2, "tokenSegment: failure", paramString);
+        continue;
+      }
+      paramString = localStringBuilder.toString();
+      return paramString;
+      if ((paramString != null) && (TextUtils.equals(paramString.b(), "double")) && ((!TextUtils.equals(localaupw.b(), "double")) || (paramString.b() < localaupw.a())) && (!TextUtils.isEmpty(paramString.a())))
+      {
+        localStringBuilder.append(paramString.a().charAt(paramString.a().length() - 1));
+        localStringBuilder.append("*");
+        localStringBuilder.append(' ');
+      }
+      if ((!TextUtils.isEmpty(localaupw.a())) && ((!TextUtils.equals(localaupw.b(), "double")) || (localaupw.a().length() != 1)))
+      {
+        localStringBuilder.append(localaupw.a());
+        localStringBuilder.append(' ');
+      }
+      paramString = localaupw;
+    }
+    return null;
+  }
+  
+  public static ArrayList<bgus> a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    long l1 = System.nanoTime();
+    int m = paramString.length();
+    int j = 0;
+    int k = 0;
+    int i;
+    if (k < m)
+    {
+      if (paramString.charAt(k) < '') {}
+      for (i = j + 1;; i = j + 2)
+      {
+        k += 1;
+        j = i;
+        break;
+      }
+    }
+    m = j / 2 + 2;
+    ArrayList localArrayList;
+    Object localObject1;
+    Object localObject2;
+    if (j >= 3)
+    {
+      k = j * 2;
+      localArrayList = new ArrayList();
+      i = m;
+      if (j >= 3)
+      {
+        localObject1 = paramQQAppInterface.getCurrentAccountUin();
+        localObject2 = bglf.b(paramQQAppInterface, (String)localObject1, true);
+        if (!((String)localObject2).toLowerCase().startsWith(paramString.toLowerCase())) {
+          break label429;
+        }
+        localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
+        ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131167124)), 0, paramString.length(), 17);
+        localArrayList.add(new bgus((String)localObject1, 0, new Pair(localObject2, null)));
+        i = m + 1;
+      }
+      label193:
+      paramQQAppInterface = new bbsj(paramQQAppInterface, 10001, 29, null);
+      paramQQAppInterface.a();
+      paramQQAppInterface = paramQQAppInterface.a(new bbtx(paramString));
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.isEmpty())) {
+        break label923;
+      }
+      j = 0;
+      localObject1 = paramQQAppInterface.iterator();
+    }
+    label349:
+    label369:
+    for (;;)
+    {
+      label248:
+      if (((Iterator)localObject1).hasNext())
+      {
+        paramString = (bbmu)((Iterator)localObject1).next();
+        if ((paramString.b() & 0xFFFFFFFF & 0xFF000000) >> 24 != 2L) {
+          if (localArrayList.size() < i)
+          {
+            if ((paramString.d() == 0) || (paramString.d() == 1004))
+            {
+              m = j + 1;
+              paramQQAppInterface = a(paramString);
+              localArrayList.add(new bgus(paramString.b(), paramString.d(), paramQQAppInterface));
+              j = m;
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              if (paramString.b() != null) {
+                break label767;
+              }
+              paramQQAppInterface = "null";
+              j = paramString.d();
+              if (paramString.a() != null) {
+                break label775;
+              }
+            }
+            for (paramString = "null";; paramString = paramString.a())
+            {
+              QLog.d("Q.fts.utils", 2, String.format("contactSearchForTopN, contact uin: %s, uinType: %d, matchTitle: %s", new Object[] { paramQQAppInterface, Integer.valueOf(j), paramString }));
+              j = m;
+              break label248;
+              k = -1;
+              break;
+              if (((String)localObject1).toLowerCase().startsWith(paramString.toLowerCase()))
+              {
+                localObject3 = new SpannableStringBuilder("(" + (String)localObject1 + ")");
+                ((SpannableStringBuilder)localObject3).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131167124)), 1, paramString.length() + 1, 17);
+                localArrayList.add(new bgus((String)localObject1, 0, new Pair(localObject2, localObject3)));
+                i = m + 1;
+                break label193;
+              }
+              Object localObject3 = bbup.a((String)localObject2, paramString, 1);
+              if (localObject3[0] == 0)
+              {
+                i = localObject3[1];
+                localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
+                ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131167124)), 0, i, 17);
+                localArrayList.add(new bgus((String)localObject1, 0, new Pair(localObject2, null)));
+                i = m + 1;
+                break label193;
+              }
+              localObject3 = bbup.a((String)localObject2, paramString, 2);
+              i = m;
+              if (localObject3[0] != 0) {
+                break label193;
+              }
+              i = localObject3[1];
+              localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
+              ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131167124)), 0, i, 17);
+              localArrayList.add(new bgus((String)localObject1, 0, new Pair(localObject2, null)));
+              i = m + 1;
+              break label193;
+              localArrayList.add(new bgus(paramString.b(), paramString.d(), null));
+              m = j;
+              break label349;
+              label767:
+              paramQQAppInterface = paramString.b();
+              break label369;
+            }
+          }
+          else if (j < k)
+          {
+            if ((paramString.d() == 0) || (paramString.d() == 1004))
+            {
+              paramQQAppInterface = a(paramString);
+              localArrayList.add(new bgus(paramString.b(), paramString.d(), paramQQAppInterface));
+              if (QLog.isColorLevel())
+              {
+                if (paramString.b() != null) {
+                  break label907;
+                }
+                paramQQAppInterface = "null";
+                m = paramString.d();
+                if (paramString.a() != null) {
+                  break label915;
+                }
+              }
+              for (paramString = "null";; paramString = paramString.a())
+              {
+                QLog.d("Q.fts.utils", 2, String.format("contactSearchForTopN, contact uin: %s, uinType: %d, matchTitle: %s", new Object[] { paramQQAppInterface, Integer.valueOf(m), paramString }));
+                j += 1;
+                break;
+                paramQQAppInterface = paramString.b();
+                break label850;
+              }
+            }
+          }
+        }
+      }
+    }
+    label429:
+    label850:
+    long l2 = System.nanoTime();
+    label775:
+    label907:
+    label915:
+    label923:
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.fts.utils", 2, "contactSearchForTopN, cost: " + (l2 - l1) / 1000000L + "ms size: " + localArrayList.size() + " contactNum: " + i + " friendNum: " + k);
+      i = 0;
+      while (i < localArrayList.size())
+      {
+        QLog.i("Q.fts.utils", 2, "index = " + i + ", contactInfo = " + localArrayList.get(i));
+        i += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static ArrayList<String> a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    paramString = paramString.replaceAll("[^A-Za-z0-9\\u4e00-\\u9fa5]", " ").split("\\s");
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramString.length)
+    {
+      String str = paramString[i].trim();
+      if ((str != null) && (!TextUtils.isEmpty(str))) {
+        localArrayList.add(str);
+      }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public static void a(View paramView)
+  {
+    HashMap localHashMap = new HashMap();
+    bgur.jdField_c_of_type_Int = a(paramView.getContext());
+    paramView = (Integer)paramView.getTag(2131380930);
+    if (paramView != null) {}
+    for (int i = paramView.intValue();; i = -1)
+    {
+      bgur.jdField_e_of_type_Int = i + 1;
+      if (bgur.jdField_f_of_type_Int == 1)
+      {
+        bgur.jdField_a_of_type_Long = bgur.jdField_d_of_type_Long + (System.nanoTime() - bgur.jdField_c_of_type_Long) / 1000000L;
+        bgur.jdField_b_of_type_Long = bgur.jdField_f_of_type_Long + (System.nanoTime() - bgur.jdField_e_of_type_Long) / 1000000L;
+      }
+      if (bgur.jdField_d_of_type_Int == 1)
+      {
+        bgur.h = -1;
+        bgur.i = -1;
+        bgur.j = -1;
+      }
+      localHashMap.put("keyNum", String.valueOf(bgur.jdField_a_of_type_Int));
+      localHashMap.put("firstKeyLen", String.valueOf(bgur.jdField_b_of_type_Int));
+      localHashMap.put("itemPage", String.valueOf(bgur.jdField_c_of_type_Int));
+      localHashMap.put("itemSearchStrategy", String.valueOf(bgur.jdField_d_of_type_Int));
+      localHashMap.put("itemPosition", String.valueOf(bgur.jdField_e_of_type_Int));
+      localHashMap.put("itemType", String.valueOf(bgur.jdField_f_of_type_Int));
+      localHashMap.put("itemUinType", String.valueOf(bgur.g));
+      if (bgur.jdField_f_of_type_Int == 1)
+      {
+        localHashMap.put("totalCost", String.valueOf(bgur.jdField_a_of_type_Long));
+        localHashMap.put("searchCost", String.valueOf(bgur.jdField_b_of_type_Long));
+      }
+      localHashMap.put("senderNum", String.valueOf(bgur.h));
+      localHashMap.put("friendNum", String.valueOf(bgur.i));
+      localHashMap.put("friendIndex", String.valueOf(bgur.j));
+      bctj.a(BaseApplicationImpl.getApplication()).a(null, "actFtsItemClickEvent", true, bgur.jdField_a_of_type_Long, bgur.jdField_b_of_type_Long, localHashMap, "", false);
+      if ((bgur.jdField_f_of_type_Int == 1) && (QLog.isColorLevel())) {
+        QLog.d("Q.fts.utils", 2, "actFtsItemClickEvent: totalCost = " + bgur.jdField_a_of_type_Long + ", searchCost = " + bgur.jdField_b_of_type_Long);
+      }
+      return;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putInt("support_fts4_flag" + paramQQAppInterface.getCurrentAccountUin(), paramInt);
+    localEditor.commit();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Object localObject = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0);
+    paramQQAppInterface = ((SharedPreferences)localObject).edit();
+    localObject = ((SharedPreferences)localObject).getAll().keySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      String str = (String)((Iterator)localObject).next();
+      if (str.endsWith(paramString)) {
+        paramQQAppInterface.remove(str);
+      }
+    }
+    paramQQAppInterface.commit();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("fts_upgrade_log_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = false;
+    PackageManager localPackageManager = BaseApplicationImpl.getApplication().getPackageManager();
+    try
+    {
+      int i = localPackageManager.getApplicationInfo(BaseApplicationImpl.getApplication().getPackageName(), 0).flags;
+      if ((i & 0x40000) != 0) {
+        bool = true;
+      }
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.e("Q.fts.utils", 2, "isInstallOnSDCard: failure", localException);
+    }
+    return bool;
+    return false;
+  }
+  
+  public static boolean a(ContentValues paramContentValues)
+  {
+    if ((paramContentValues.containsKey("msgtype")) && (paramContentValues.getAsInteger("msgtype").intValue() == -2006)) {}
+    while ((paramContentValues.containsKey("isValid")) && (!paramContentValues.getAsBoolean("isValid").booleanValue())) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return (b(paramQQAppInterface) == 1) && (!b());
+  }
+  
+  public static String[] a(String paramString)
+  {
+    int j = 0;
+    Object localObject = a(paramString);
+    if (localObject == null) {
+      return null;
+    }
+    paramString = new ArrayList();
+    int i = 0;
+    while (i < ((ArrayList)localObject).size())
+    {
+      String str = a((String)((ArrayList)localObject).get(i));
+      if (!TextUtils.isEmpty(str)) {
+        paramString.add(str.trim());
+      }
+      i += 1;
+    }
+    if (paramString.size() == 0) {
+      return null;
+    }
+    localObject = new String[paramString.size()];
+    i = j;
+    while (i < paramString.size())
+    {
+      localObject[i] = ((String)paramString.get(i));
+      i += 1;
+    }
+    return localObject;
+  }
+  
+  public static int b(QQAppInterface paramQQAppInterface)
+  {
+    int i = a(paramQQAppInterface);
+    if (i == -1)
+    {
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        a(paramQQAppInterface, 1);
+        return 1;
+      }
+      a(paramQQAppInterface, 0);
+      return 0;
+    }
+    return i;
+  }
+  
+  public static int b(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putInt("fts_upgrade_msgs" + paramQQAppInterface.getCurrentAccountUin(), paramInt1 + paramInt2);
+    int i = paramInt1;
+    if (localEditor.commit()) {
+      i = paramInt1 + paramInt2;
+    }
+    return i;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    paramQQAppInterface = BaseApplicationImpl.sApplication.getSystemSharedPreferences("fts_sp_file", 0).edit();
+    paramQQAppInterface.putInt("fts_crash_count_by_hook", paramInt);
+    paramQQAppInterface.commit();
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("fts_upgrade_table_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean b()
+  {
+    if (jdField_a_of_type_Boolean) {
+      return jdField_b_of_type_Boolean;
+    }
+    jdField_a_of_type_Boolean = true;
+    if (a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.utils", 2, "QQ install on SDCard");
+      }
+      if (!e((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))
+      {
+        localObject1 = new HashMap();
+        ((HashMap)localObject1).put("param_ROM", bgln.j());
+        bctj.a(BaseApplication.getContext()).a(null, "actQQInstallExternal", true, -1L, 0L, (HashMap)localObject1, null, false);
+        c((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
+      }
+    }
+    Object localObject1 = bgln.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.fts.utils", 2, "Rom total size: " + localObject1[0] + " MB, Rom available size: " + localObject1[1] + " MB");
+    }
+    if (localObject1[0] == -1L)
+    {
+      jdField_b_of_type_Boolean = true;
+      return true;
+    }
+    try
+    {
+      Object localObject2 = BaseApplicationImpl.getApplication().getFilesDir().getPath();
+      long l = Math.ceil(new File(((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("/")) + "/databases", BaseApplicationImpl.getApplication().getRuntime().getAccount() + ".db").length() / 1048576.0D);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.fts.utils", 2, "uin.db size: " + l + " MB");
+      }
+      if (localObject1[1] > 5L * l)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.fts.utils", 2, "NOT Low Rom For FTS");
+        }
+        jdField_b_of_type_Boolean = false;
+        return false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.fts.utils", 2, "IS Low Rom For FTS");
+      }
+      if (!f((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))
+      {
+        localObject2 = new HashMap();
+        ((HashMap)localObject2).put("param_ROM", bgln.j());
+        ((HashMap)localObject2).put("param_totalrom", String.valueOf(localObject1[0]));
+        ((HashMap)localObject2).put("param_availrom", String.valueOf(localObject1[1]));
+        ((HashMap)localObject2).put("param_dbsize", String.valueOf(l));
+        bctj.a(BaseApplication.getContext()).a(null, "actLowRomForFTS", true, -1L, 0L, (HashMap)localObject2, null, false);
+        d((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
+      }
+      jdField_b_of_type_Boolean = true;
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.fts.utils", 2, "isLowRomForFTS: failure", localException);
+      }
+      jdField_b_of_type_Boolean = true;
+    }
+    return true;
+  }
+  
+  public static boolean b(ContentValues paramContentValues)
+  {
+    if (paramContentValues.containsKey("msgData")) {}
+    while ((paramContentValues.containsKey("time")) || (paramContentValues.containsKey("shmsgseq"))) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("fts_upgrade_log_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public static String[] b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    localObject = new StringBuilder(32);
+    paramString = new auqa(new StringReader(paramString));
+    try
+    {
+      for (;;)
+      {
+        aupw localaupw = paramString.a();
+        if (localaupw == null) {
+          break;
+        }
+        if (!TextUtils.isEmpty(localaupw.a()))
+        {
+          ((StringBuilder)localObject).append(localaupw.a());
+          ((StringBuilder)localObject).append(' ');
+        }
+      }
+      int i;
+      return localObject;
+    }
+    catch (IOException paramString)
+    {
+      ((StringBuilder)localObject).setLength(0);
+      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.fts.utils", 2, "keywordSegment: failure", paramString);
+      }
+      paramString = new ArrayList();
+      if (((StringBuilder)localObject).length() > 0) {
+        paramString.add(((StringBuilder)localObject).toString().trim());
+      }
+      if (paramString.size() == 0) {
+        return null;
+      }
+      localObject = new String[paramString.size()];
+      i = 0;
+      while (i < paramString.size())
+      {
+        localObject[i] = ((String)paramString.get(i));
+        i += 1;
+      }
+    }
+  }
+  
+  public static int c(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getInt("fts_upgrade_tables" + paramQQAppInterface.getCurrentAccountUin(), 0);
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("install_external_report_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("fts_upgrade_table_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public static int d(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getInt("fts_upgrade_msgs" + paramQQAppInterface.getCurrentAccountUin(), 0);
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("low_rom_for_fts_report_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean d(QQAppInterface paramQQAppInterface)
+  {
+    return (b(paramQQAppInterface)) && (c(paramQQAppInterface));
+  }
+  
+  public static int e(QQAppInterface paramQQAppInterface)
+  {
+    if (jdField_a_of_type_Int == -1) {
+      jdField_a_of_type_Int = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getInt("fts_compare_flag" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    }
+    return jdField_a_of_type_Int;
+  }
+  
+  public static void e(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("hardware_support_fts_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean e(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("install_external_report_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public static int f(QQAppInterface paramQQAppInterface)
+  {
+    return BaseApplicationImpl.sApplication.getSystemSharedPreferences("fts_sp_file", 0).getInt("fts_crash_count_by_hook", 0);
+  }
+  
+  public static void f(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("fts_first_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean f(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("low_rom_for_fts_report_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public static int g(QQAppInterface paramQQAppInterface)
+  {
+    if (jdField_b_of_type_Int == -1) {
+      jdField_b_of_type_Int = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getInt("fts_extension_flag" + paramQQAppInterface.getCurrentAccountUin(), 1);
+    }
+    return jdField_b_of_type_Int;
+  }
+  
+  public static boolean g(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("hardware_support_fts_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public static int h(QQAppInterface paramQQAppInterface)
+  {
+    if (jdField_c_of_type_Int == -1) {
+      jdField_c_of_type_Int = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getInt("fts_extension_conversation_flag" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    }
+    return jdField_c_of_type_Int;
+  }
+  
+  public static boolean h(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("fts_first_flag" + paramQQAppInterface.getCurrentAccountUin(), true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bguq
  * JD-Core Version:    0.7.0.1
  */

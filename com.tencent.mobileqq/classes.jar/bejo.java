@@ -1,62 +1,27 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.14;
+import com.tencent.qphone.base.util.QLog;
 
 public class bejo
-  implements Handler.Callback
+  implements wiw
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final bejp jdField_a_of_type_Bejp;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  public bejo(TroopBarPublishActivity.14 param14) {}
   
-  public bejo(bejp parambejp)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Bejp = parambejp;
-    this.jdField_a_of_type_AndroidOsHandler = new bhtd(Looper.getMainLooper(), this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.b = false;
-    do
+    if (paramInt != 0)
     {
-      while (!this.b) {
-        switch (this.jdField_a_of_type_Bejp.a(paramBundle))
-        {
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("tribe_publish_TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
       }
+      this.a.this$0.a(null, this.a.a);
       return;
-    } while (!this.jdField_a_of_type_Boolean);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    localMessage.setData(paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    this.b = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
     }
-    if (!this.b) {
-      a(paramMessage.getData());
-    }
-    return true;
+    this.a.this$0.jdField_a_of_type_Bedt.b = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
+    this.a.this$0.jdField_a_of_type_Bedt.c = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
+    this.a.this$0.jdField_a_of_type_Bedt.a = ((int)this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
+    this.a.this$0.a(paramString2, this.a.a);
   }
 }
 

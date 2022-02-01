@@ -10,6 +10,7 @@ public class FaceStatus
   public int height;
   public double illumination_score;
   public int left_eye_open;
+  public long nativeFaceAlignmentPtr;
   public float pitch;
   public int right_eye_open;
   public float roll;
@@ -23,12 +24,12 @@ public class FaceStatus
   
   public String toString()
   {
-    return "FaceStatus{ pitch=" + this.pitch + ", yaw=" + this.yaw + ", roll=" + this.roll + ", illumination_score=" + this.illumination_score + ", x=" + this.x + ", y=" + this.y + ", width=" + this.width + ", height=" + this.height + '}';
+    return "FaceStatus{ pitch=" + this.pitch + ", yaw=" + this.yaw + ", roll=" + this.roll + ", illumination_score=" + this.illumination_score + ", nativeFaceAlignmentPtr=" + this.nativeFaceAlignmentPtr + ", x=" + this.x + ", y=" + this.y + ", width=" + this.width + ", height=" + this.height + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.YTFace.model.FaceStatus
  * JD-Core Version:    0.7.0.1
  */

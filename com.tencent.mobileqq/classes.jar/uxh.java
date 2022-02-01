@@ -1,54 +1,123 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserId;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.MQLruCache;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import mqq.util.WeakReference;
+import org.jetbrains.annotations.NotNull;
 
 public class uxh
-  implements ulj
 {
-  public String a;
-  public String b;
-  
-  public uxh(String paramString1, String paramString2)
+  @NotNull
+  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public qqstory_struct.UserId a()
-  {
-    qqstory_struct.UserId localUserId = new qqstory_struct.UserId();
-    if (!TextUtils.isEmpty(this.a)) {
-      localUserId.uid.set(Long.valueOf(this.a).longValue());
-    }
-    localUserId.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localUserId;
-  }
-  
-  public boolean a()
-  {
-    return (QQStoryContext.a().a(this.b)) || (QQStoryContext.a().b(this.a));
-  }
-  
-  public void copy(Object paramObject)
-  {
-    if ((paramObject instanceof uxh))
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846601);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844002);
+    if (paramURLImageView.getLayoutParams() != null)
     {
-      this.a = ((uxh)paramObject).a;
-      this.b = ((uxh)paramObject).b;
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+    }
+    return localURLDrawableOptions;
+  }
+  
+  public static void a()
+  {
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      BaseApplicationImpl.sImageCache.evict(0);
+      return;
+    }
+    BaseApplicationImpl.sImageCache.evictAll();
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView)
+  {
+    a(paramString, paramURLImageView, null, false);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, Drawable paramDrawable)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = b(paramURLImageView);
+    localURLDrawableOptions.mLoadingDrawable = paramDrawable;
+    a(paramString, paramURLImageView, localURLDrawableOptions, false);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
+  {
+    a(paramString, paramURLImageView, paramURLDrawableOptions, paramBoolean, null);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean, URLDrawableDownListener paramURLDrawableDownListener)
+  {
+    WeakReference localWeakReference = new WeakReference(paramURLImageView);
+    Object localObject = paramURLDrawableOptions;
+    if (paramURLDrawableOptions == null) {}
+    for (;;)
+    {
+      try
+      {
+        localObject = a(paramURLImageView);
+        long l = 0L;
+        if (paramBoolean)
+        {
+          paramURLDrawableOptions = URLDrawable.getFileDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
+          if ((paramURLDrawableOptions == null) || (localWeakReference.get() == null)) {
+            break label158;
+          }
+          paramURLImageView.setURLDrawableDownListener(new uxi(paramURLDrawableDownListener, l, paramString));
+          ((ImageView)localWeakReference.get()).setImageDrawable(paramURLDrawableOptions);
+          return;
+        }
+        localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
+        paramURLDrawableOptions = (URLDrawable.URLDrawableOptions)localObject;
+        switch (((URLDrawable)localObject).getStatus())
+        {
+        case 1: 
+        case 3: 
+          l = System.currentTimeMillis();
+          ((URLDrawable)localObject).startDownload();
+          paramURLDrawableOptions = (URLDrawable.URLDrawableOptions)localObject;
+          break;
+        case 2: 
+          l = System.currentTimeMillis();
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      ((URLDrawable)localObject).restartDownload();
+      paramURLDrawableOptions = (URLDrawable.URLDrawableOptions)localObject;
+      continue;
+      label158:
+      return;
     }
   }
   
-  public String toString()
+  public static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
   {
-    return "UserID{qq=" + this.a + ", unionId='" + this.b + '\'' + '}';
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841613);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844002);
+    if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
+    {
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+    }
+    return localURLDrawableOptions;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uxh
  * JD-Core Version:    0.7.0.1
  */

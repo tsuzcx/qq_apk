@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeme
-  implements bevu
+  implements View.OnClickListener
 {
-  public aeme(VisitorsActivity paramVisitorsActivity) {}
+  public aeme(LbsBaseActivity paramLbsBaseActivity) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.a.a(paramInt2);
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      this.a.a(LbsBaseActivity.a(this.a));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

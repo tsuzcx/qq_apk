@@ -1,55 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahbk
-  extends Handler
+  extends ahbl
 {
-  ahbk(ahbf paramahbf, Looper paramLooper)
+  ahbk(agwz paramagwz)
   {
-    super(paramLooper);
+    super(paramagwz, null);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    switch (paramMessage.what)
-    {
-    }
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramMessage = (ahbw)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituManager", 2, ahbf.a(paramMessage.d, "main handler", paramMessage.a, "all img process is finished, now is in main thread"));
-          }
-          this.a.e(paramMessage);
-          return;
-          paramMessage = (String)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituManager", 2, "response is empty, errorMsg is " + paramMessage);
-          }
-        } while (this.a.jdField_a_of_type_Ahbr == null);
-        this.a.jdField_a_of_type_Ahbr.a(paramMessage);
-        return;
-        i = paramMessage.arg1;
-        paramMessage = (String)paramMessage.obj;
-        if (paramMessage.equals(this.a.a())) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ZhituManager", 2, ahbf.a(paramMessage, "main handler", "reqKey is outdated, skip"));
-      return;
-      if (this.a.jdField_a_of_type_Ahbu != null) {
-        this.a.jdField_a_of_type_Ahbu.a(i, paramMessage);
-      }
-    } while (this.a.jdField_a_of_type_Ahbr == null);
-    this.a.jdField_a_of_type_Ahbr.a(i, paramMessage);
+    return new ahlt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

@@ -1,55 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable;
+import org.apache.http.Header;
 
-class bhah
-  extends BroadcastReceiver
+public class bhah
 {
-  final String jdField_a_of_type_JavaLangString = "reason";
-  final String b = "globalactions";
-  final String c = "recentapps";
-  final String d = "homekey";
+  public int a;
+  public String a;
+  public Header[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  bhah(bhag parambhag) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bhah(VasResDrawable paramVasResDrawable)
   {
-    if (paramIntent == null) {}
-    for (;;)
-    {
-      return;
-      paramContext = paramIntent.getAction();
-      if ("action.qq.miniapp.show.monitorview".equals(paramContext))
-      {
-        boolean bool = paramIntent.getBooleanExtra("show", true);
-        bhag.a(this.jdField_a_of_type_Bhag).a(bool);
-      }
-      if ("android.intent.action.CLOSE_SYSTEM_DIALOGS".equals(paramContext))
-      {
-        paramIntent = paramIntent.getStringExtra("reason");
-        if ((paramIntent != null) && (bhag.a(this.jdField_a_of_type_Bhag) != null))
-        {
-          if (!paramIntent.equals("homekey")) {
-            break label113;
-          }
-          bhag.a(this.jdField_a_of_type_Bhag).a();
-        }
-      }
-      while ("android.intent.action.SCREEN_OFF".equals(paramContext))
-      {
-        bhag.a(this.jdField_a_of_type_Bhag).c();
-        return;
-        label113:
-        if (paramIntent.equals("recentapps")) {
-          bhag.a(this.jdField_a_of_type_Bhag).b();
-        }
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhah
  * JD-Core Version:    0.7.0.1
  */

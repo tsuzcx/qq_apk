@@ -1,53 +1,93 @@
-import android.support.annotation.NonNull;
-import com.tencent.image.URLDrawable;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Intent;
+import android.os.Bundle;
+import java.util.Iterator;
+import java.util.Set;
 
-class xsq
+public class xsq
+  extends xmr
 {
-  public static ConcurrentHashMap<xso, Boolean> a;
-  private static volatile xsq a;
+  public xsq(xso paramxso) {}
   
-  static
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public static xsq a()
-  {
-    if (jdField_a_of_type_Xsq == null) {}
-    try
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
     {
-      if (jdField_a_of_type_Xsq == null) {
-        jdField_a_of_type_Xsq = new xsq();
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xli)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
       }
-      return jdField_a_of_type_Xsq;
     }
-    finally {}
   }
   
-  public static void a(URLDrawable paramURLDrawable, String paramString)
+  public void a(Bundle paramBundle1, Bundle paramBundle2)
   {
-    paramString = new xso(a(), paramURLDrawable, paramString);
-    paramURLDrawable.setDownloadListener(paramString);
-    paramURLDrawable.setURLDrawableListener(paramString);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(true));
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xli)localIterator.next()).a(paramBundle1, paramBundle2);
+      }
+    }
   }
   
-  public void a(@NonNull xso paramxso)
+  public void c()
   {
-    boolean bool = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramxso);
-    wxe.a("Q.qqstory.UIUtils", "remove(), contains %b", Boolean.valueOf(bool));
-    if (!bool) {
-      azpo.a(xsh.a(alud.a(2131716261), null), "Story.UIUtils.monitor " + paramxso.toString());
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xli)localIterator.next()).c();
+      }
     }
-    paramxso.a.setDownloadListener(null);
-    paramxso.a.setURLDrawableListener(null);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramxso);
+  }
+  
+  public void d()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xli)localIterator.next()).d();
+      }
+    }
+  }
+  
+  public void e()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xli)localIterator.next()).e();
+      }
+    }
+  }
+  
+  public void f()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xli)localIterator.next()).f();
+      }
+    }
+  }
+  
+  public void g()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xli)localIterator.next()).g();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xsq
  * JD-Core Version:    0.7.0.1
  */

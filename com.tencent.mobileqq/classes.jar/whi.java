@@ -1,27 +1,28 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
+import java.util.List;
 
-class whi
-  implements whl
+@TargetApi(14)
+public class whi
+  implements whh
 {
-  whi(whh paramwhh, PublishParam paramPublishParam, String paramString, int paramInt) {}
+  public whi(whg paramwhg) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    wxe.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
-    whh.a(this.jdField_a_of_type_Whh, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void b()
-  {
-    wxe.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
-    whh.a(this.jdField_a_of_type_Whh).finish();
-    whh.a(this.jdField_a_of_type_Whh).overridePendingTransition(0, 0);
+    int i = paramInt + 1;
+    if (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    {
+      PreloadQueue localPreloadQueue = (PreloadQueue)this.a.jdField_a_of_type_JavaUtilList.get(i);
+      yqp.b("Q.qqstory.download.preload.PreloadDownloaderManager", "queue " + paramInt + " download completed , turn to " + localPreloadQueue.getId());
+      this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localPreloadQueue);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     whi
  * JD-Core Version:    0.7.0.1
  */

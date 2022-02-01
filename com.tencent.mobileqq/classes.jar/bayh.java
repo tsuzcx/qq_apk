@@ -1,17 +1,16 @@
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.richmediabrowser.view.IBrowserViewHolder;
+
 public class bayh
+  extends IBrowserViewHolder
 {
-  public int a;
-  public String a;
+  public BaseVideoView a;
   
-  public bayh()
-  {
-    this.jdField_a_of_type_Int = -99999;
-    this.jdField_a_of_type_JavaLangString = "unkown error";
-  }
+  public bayh(bayd parambayd) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bayh
  * JD-Core Version:    0.7.0.1
  */

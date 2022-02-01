@@ -1,138 +1,196 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.os.Process;
 import android.text.TextUtils;
-import android.text.format.Time;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.av.business.manager.pendant.AVEffectPendantReport.1;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.Foreground;
-import mqq.app.MobileQQ;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class lhj
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lhk(this);
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  private static int jdField_a_of_type_Int;
+  private static ArrayList<PendantItem> jdField_a_of_type_JavaUtilArrayList;
+  private static int b;
   
-  public lhj(VideoAppInterface paramVideoAppInterface)
+  private static Class<?> a()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    return PendantItem.class;
   }
   
-  private String a(Context paramContext)
+  private static String a()
   {
-    try
-    {
-      int i = Process.myPid();
-      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-      while (paramContext.hasNext())
+    return "content";
+  }
+  
+  private static String a(PendantItem paramPendantItem)
+  {
+    String str = null;
+    if (paramPendantItem != null) {
+      str = lbf.c() + paramPendantItem.getName();
+    }
+    return str;
+  }
+  
+  private static ArrayList<PendantItem> a(String paramString)
+  {
+    localArrayList = new ArrayList();
+    b = 0;
+    jdField_a_of_type_Int = 0;
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-        if (localRunningAppProcessInfo.pid == i)
+        paramString = new JSONObject(paramString);
+        int j = mue.b();
+        Object localObject = a();
+        if (paramString.has((String)localObject))
         {
-          paramContext = localRunningAppProcessInfo.processName;
-          return paramContext;
+          paramString = paramString.getJSONArray((String)localObject);
+          localObject = a();
+          int i = 0;
+          while (i < paramString.length())
+          {
+            PendantItem localPendantItem = (PendantItem)bghp.a((JSONObject)paramString.get(i), (Class)localObject);
+            if ((localPendantItem != null) && (!TextUtils.isEmpty(localPendantItem.getId())) && (localPendantItem.isShow()))
+            {
+              int k = localPendantItem.getPlatform();
+              if ((k == 0) || (j >= k))
+              {
+                boolean bool = b(localPendantItem);
+                localPendantItem.setUsable(bool);
+                localArrayList.add(localPendantItem);
+                b += 1;
+                if (bool) {
+                  jdField_a_of_type_Int += 1;
+                }
+              }
+            }
+            i += 1;
+          }
         }
+        return localArrayList;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
       }
     }
-    catch (Exception paramContext) {}
-    return null;
   }
   
-  private String a(ArrayList<String> paramArrayList, boolean paramBoolean)
+  public static void a()
   {
-    Time localTime = new Time();
-    localTime.setToNow();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("com.tencent.process.exit");
-    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
-    localStringBuilder.append(localTime.hour);
-    if (paramBoolean)
-    {
-      localStringBuilder.append(localTime.minute - 1);
-      if (paramArrayList != null) {
-        break label142;
-      }
-    }
-    label142:
-    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
-    {
-      localStringBuilder.append(paramArrayList);
-      paramArrayList = MD5.toMD5(localStringBuilder.toString());
-      return MD5.toMD5(paramArrayList + localStringBuilder.toString());
-      localStringBuilder.append(localTime.minute);
-      break;
-    }
+    bgsg.b(jdField_a_of_type_Int, b);
+    lbc.c("AVEffectPendantReport", "setAVPendantDownloadInfo()  mTotalCount = " + b + "  mDownloadCount = " + jdField_a_of_type_Int);
   }
   
-  private boolean a(String paramString, ArrayList<String> paramArrayList)
+  private static String b()
   {
-    if (Foreground.sCountActivity > 0) {}
-    while ((paramString == null) || (paramString.length() == 0) || ((!paramString.equals(a(paramArrayList, false))) && (!paramString.equals(a(paramArrayList, true))))) {
-      return false;
-    }
-    return true;
+    return lbq.b(e()).a;
   }
   
-  private boolean a(ArrayList<String> paramArrayList)
+  public static void b()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      bool1 = true;
+    bgsg.c();
+    lbc.c("AVEffectPendantReport", "setAVPendantUseInfo()  time = " + System.currentTimeMillis());
+  }
+  
+  private static boolean b(PendantItem paramPendantItem)
+  {
+    if ((e() <= 0) || (paramPendantItem == null) || (TextUtils.isEmpty(paramPendantItem.getId()))) {
+      lbc.e("AVEffectPendantReport", "isTemplateUsable:" + e() + "|");
     }
-    String str;
     do
     {
-      return bool1;
-      str = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication());
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(str));
-    int i = 0;
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i >= paramArrayList.size()) {
-        break;
-      }
-      if (str.equals(paramArrayList.get(i))) {
+      return false;
+      if (TextUtils.isEmpty(paramPendantItem.getResurl())) {
         return true;
       }
-      i += 1;
-    }
+    } while (!new File(a(paramPendantItem)).exists());
+    System.currentTimeMillis();
+    String str = SecUtil.getFileMd5(a(paramPendantItem));
+    System.currentTimeMillis();
+    return paramPendantItem.getMd5().equalsIgnoreCase(str);
   }
   
-  public void a()
+  public static void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GKillProcessMonitor", 2, "regist QQ Process Exit Receiver");
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.process.exit");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    ThreadManager.getFileThreadHandler().post(new AVEffectPendantReport.1());
   }
   
-  public void b()
+  public static void d()
   {
-    if (this.jdField_a_of_type_Boolean)
+    String str = b();
+    jdField_a_of_type_JavaUtilArrayList = null;
+    jdField_a_of_type_JavaUtilArrayList = a(str);
+  }
+  
+  private static int e()
+  {
+    return 106;
+  }
+  
+  public static void e()
+  {
+    long l1 = -1L;
+    try
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      localHashMap = new HashMap();
+      bool = bgsg.b();
+      arrayOfInt = bgsg.b();
+      l2 = bgsg.b();
+      if ((!bool) && (arrayOfInt[1] <= 0))
+      {
+        bamd.a().b(false);
+        bgsg.d();
+      }
+      if (l2 <= 0L) {
+        break label380;
+      }
+      l1 = (System.currentTimeMillis() - l2) / 1000L;
     }
+    catch (Throwable localThrowable)
+    {
+      int[] arrayOfInt;
+      do
+      {
+        HashMap localHashMap;
+        boolean bool;
+        long l2;
+        BigDecimal localBigDecimal;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("AVEffectPendantReport", 2, "reportAVPendantDownloadInfo", localThrowable);
+        return;
+        if ((arrayOfInt[0] <= 0) && (arrayOfInt[1] <= 0)) {
+          break;
+        }
+      } while (arrayOfInt[0] <= arrayOfInt[1]);
+    }
+    localBigDecimal = new BigDecimal(arrayOfInt[0] * 1.0F / arrayOfInt[1]);
+    localHashMap.put("filter_download", String.valueOf(arrayOfInt[0]));
+    localHashMap.put("filter_total", String.valueOf(arrayOfInt[1]));
+    localHashMap.put("filter_ratio", String.valueOf(localBigDecimal.setScale(2, 4).floatValue()));
+    localHashMap.put("filter_spacing", String.valueOf(l1));
+    if (QLog.isColorLevel()) {
+      QLog.d("DailyReport", 2, "reportAVPendantDownloadInfo filter_download = " + arrayOfInt[0] + ",filter_total = " + arrayOfInt[1] + ",filter_spacing" + l1);
+    }
+    bool = UserAction.onUserAction("AVFunChatExpression", true, -1L, -1L, localHashMap, true);
+    UserAction.flushObjectsToDB(true);
+    lbc.c("AVEffectPendantReport", "reportAVPendantDownloadInfo, filter_download[" + (String)localHashMap.get("filter_download") + "], filter_total[" + (String)localHashMap.get("filter_total") + "],filter_total[" + (String)localHashMap.get("filter_ratio") + "],filter_ratio[" + (String)localHashMap.get("filter_spacing") + "], lastUserTime = " + l2 + "    ret[" + bool + "]");
+    return;
+    label380:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lhj
  * JD-Core Version:    0.7.0.1
  */

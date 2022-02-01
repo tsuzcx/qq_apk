@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class tyo
-  implements View.OnClickListener
+  implements tom
 {
-  tyo(tyn paramtyn) {}
+  tyo(tym paramtym) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, String paramString2)
   {
-    tyn.a(this.a, false);
-    this.a.b();
-    if (tyn.a(this.a) != null) {
-      tyn.a(this.a).a();
-    }
+    this.a.callJs(paramString1, new String[] { paramString2 });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tyo
  * JD-Core Version:    0.7.0.1
  */

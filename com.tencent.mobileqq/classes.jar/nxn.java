@@ -1,34 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-
-class nxn
-  extends Handler
+public class nxn
 {
-  private WeakReference<nxl> a;
-  
-  public nxn(nxl paramnxl)
-  {
-    this.a = new WeakReference(paramnxl);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    nxl localnxl = (nxl)this.a.get();
-    if ((localnxl == null) || (!localnxl.b())) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    localnxl.b();
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nxn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.Log;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -47,50 +47,60 @@ class PlatformChannel$1
     if (((String)localObject).equals("SystemChrome.setPreferredOrientations"))
     {
       i = 2;
-      break label840;
+      break label986;
       if (((String)localObject).equals("SystemChrome.setEnabledSystemUIOverlays"))
       {
         i = 4;
-        break label840;
+        break label986;
         if (((String)localObject).equals("Clipboard.getData"))
         {
-          i = 8;
-          break label840;
+          i = 10;
+          break label986;
           if (((String)localObject).equals("SystemChrome.setSystemUIOverlayStyle"))
           {
             i = 6;
-            break label840;
+            break label986;
             if (((String)localObject).equals("SystemChrome.restoreSystemUIOverlays"))
             {
               i = 5;
-              break label840;
-              if (((String)localObject).equals("SystemSound.play"))
+              break label986;
+              if (((String)localObject).equals("SystemGestures.setSystemGestureExclusionRects"))
               {
-                i = 0;
-                break label840;
-                if (((String)localObject).equals("HapticFeedback.vibrate"))
+                i = 9;
+                break label986;
+                if (((String)localObject).equals("SystemGestures.getSystemGestureExclusionRects"))
                 {
-                  i = 1;
-                  break label840;
-                  if (((String)localObject).equals("SystemChrome.setApplicationSwitcherDescription"))
+                  i = 8;
+                  break label986;
+                  if (((String)localObject).equals("SystemSound.play"))
                   {
-                    i = 3;
-                    break label840;
-                    if (((String)localObject).equals("Clipboard.setData"))
+                    i = 0;
+                    break label986;
+                    if (((String)localObject).equals("HapticFeedback.vibrate"))
                     {
-                      i = 9;
-                      break label840;
-                      if (((String)localObject).equals("SystemNavigator.pop"))
+                      i = 1;
+                      break label986;
+                      if (((String)localObject).equals("SystemChrome.setApplicationSwitcherDescription"))
                       {
-                        i = 7;
-                        break label840;
-                        paramMethodCall = ((JSONObject)paramMethodCall).getString("text");
-                        PlatformChannel.access$000(this.this$0).setClipboardData(paramMethodCall);
-                        paramResult.success(null);
-                        return;
-                        localObject = (String)paramMethodCall;
-                        if (localObject == null) {
-                          break label899;
+                        i = 3;
+                        break label986;
+                        if (((String)localObject).equals("Clipboard.setData"))
+                        {
+                          i = 11;
+                          break label986;
+                          if (((String)localObject).equals("SystemNavigator.pop"))
+                          {
+                            i = 7;
+                            break label986;
+                            paramMethodCall = ((JSONObject)paramMethodCall).getString("text");
+                            PlatformChannel.access$000(this.this$0).setClipboardData(paramMethodCall);
+                            paramResult.success(null);
+                            return;
+                            localObject = (String)paramMethodCall;
+                            if (localObject == null) {
+                              break label1051;
+                            }
+                          }
                         }
                       }
                     }
@@ -124,6 +134,24 @@ class PlatformChannel$1
         paramResult.error("error", paramMethodCall.toString(), null);
       }
       paramResult.success(null);
+      return;
+      if (!(paramMethodCall instanceof JSONArray))
+      {
+        paramResult.error("inputTypeError", "Input type is incorrect. Ensure that a List<Map<String, int>> is passed as the input for SystemGestureExclusionRects.setSystemGestureExclusionRects.", null);
+        return;
+      }
+      paramMethodCall = (JSONArray)paramMethodCall;
+      paramMethodCall = PlatformChannel.access$600(this.this$0, paramMethodCall);
+      PlatformChannel.access$000(this.this$0).setSystemGestureExclusionRects(paramMethodCall);
+      paramResult.success(null);
+      return;
+      paramMethodCall = PlatformChannel.access$000(this.this$0).getSystemGestureExclusionRects();
+      if (paramMethodCall == null)
+      {
+        paramResult.error("error", "Exclusion rects only exist for Android API 29+.", null);
+        return;
+      }
+      paramResult.success(PlatformChannel.access$500(this.this$0, paramMethodCall));
       return;
       PlatformChannel.access$000(this.this$0).popSystemNavigator();
       paramResult.success(null);
@@ -203,34 +231,34 @@ class PlatformChannel$1
           }
           catch (NoSuchFieldException paramMethodCall)
           {
-            break label726;
+            break label872;
           }
         }
         catch (NoSuchFieldException paramMethodCall)
         {
-          label726:
-          break label630;
+          label776:
+          break label776;
         }
       }
       catch (NoSuchFieldException paramMethodCall)
       {
-        label562:
-        label630:
-        break label562;
+        label708:
+        label872:
+        break label708;
       }
-      label840:
+      label986:
       switch (i)
       {
       }
       break;
-      label899:
+      label1051:
       paramMethodCall = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformChannel.1
  * JD-Core Version:    0.7.0.1
  */

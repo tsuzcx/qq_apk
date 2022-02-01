@@ -1,8 +1,16 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
-public abstract interface afai
+public class afai
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(Bitmap paramBitmap, aezq paramaezq, int paramInt);
+  public afai(RegisterActivity paramRegisterActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

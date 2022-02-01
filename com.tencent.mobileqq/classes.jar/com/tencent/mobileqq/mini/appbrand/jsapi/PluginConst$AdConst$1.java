@@ -16,11 +16,12 @@ final class PluginConst$AdConst$1
     put(Integer.valueOf(1006), PluginConst.AdConst.ERROR_MSG_REJECTED);
     put(Integer.valueOf(1007), PluginConst.AdConst.ERROR_MSG_BANNED);
     put(Integer.valueOf(1008), PluginConst.AdConst.ERROR_MSG_CLOSED);
+    put(Integer.valueOf(1009), PluginConst.AdConst.ERROR_MSG_INVALID_POSITION);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst.1
  * JD-Core Version:    0.7.0.1
  */

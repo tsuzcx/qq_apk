@@ -1,37 +1,47 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
 public class aewx
-  implements badp
+  implements bkij
 {
-  public aewx(FriendShipWaveView paramFriendShipWaveView) {}
+  public aewx(QQLSActivity paramQQLSActivity) {}
   
-  public void a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    badw localbadw = new badw(500, 0.0F, 1.0F);
-    this.a.d.jdField_a_of_type_Int = 255;
-    this.a.d.a(new bado[] { localbadw });
-    localbadw.a(new aewy(this));
-    this.a.e = new baes();
-    this.a.e.a(FriendShipWaveView.a(this.a));
-    this.a.e.a(this.a.jdField_a_of_type_Int / 2 + bdaq.a(this.a.jdField_a_of_type_AndroidContentContext, 120.0F), this.a.b.d + 30.0F);
-    this.a.a(this.a.e);
-    localbadw = new badw(500, 0.0F, 1.0F);
-    this.a.e.a(new bado[] { localbadw });
-    localbadw.a(new aewz(this));
-    this.a.f = new baes();
-    this.a.f.a(FriendShipWaveView.b(this.a));
-    this.a.f.a(this.a.jdField_a_of_type_Int / 2 - bdaq.a(this.a.jdField_a_of_type_AndroidContentContext, 142.0F), this.a.c.d - 50.0F);
-    this.a.a(this.a.f);
-    localbadw = new badw(500, 0.0F, 1.0F);
-    this.a.f.a(new bado[] { localbadw });
-    localbadw.a(new aexa(this));
-    this.a.g = new baes();
-    this.a.g.a(FriendShipWaveView.c(this.a));
-    this.a.g.a(this.a.jdField_a_of_type_Int / 2 + bdaq.a(this.a.jdField_a_of_type_AndroidContentContext, 140.0F), this.a.c.d);
-    this.a.a(this.a.g);
-    localbadw = new badw(500, 0.0F, 1.0F);
-    this.a.g.a(new bado[] { localbadw });
-    localbadw.a(new aexb(this));
+    paramView = (RecentBaseData)QQLSActivity.a(this.a).getItem(paramInt);
+    paramLong = paramAdapterView.getAdapter().getItemId(paramInt);
+    if ((paramLong == QQLSActivity.a(this.a)) && (Math.abs(QQLSActivity.b(this.a) - System.currentTimeMillis()) < 300L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLSActivity", 2, "mRecentList is double click");
+      }
+      QQLSActivity.a(this.a, -1L);
+      QQLSActivity.b(this.a, 0L);
+      QQLSActivity.a(this.a, paramView);
+      QQLSActivity.a(this.a, true);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("QQLSActivity", 2, "mRecentList  click once");
+    }
+    QQLSActivity.a(this.a, paramLong);
+    QQLSActivity.b(this.a, System.currentTimeMillis());
+    if (QQLSActivity.a(this.a)) {
+      QQLSActivity.a(this.a).setText(2131698050);
+    }
+    for (;;)
+    {
+      paramAdapterView = QQLSActivity.a(this.a).obtainMessage(6);
+      QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
+      return;
+      QQLSActivity.a(this.a).setText(2131698049);
+    }
   }
 }
 

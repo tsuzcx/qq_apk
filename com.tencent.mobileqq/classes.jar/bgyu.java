@@ -1,117 +1,73 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.ApkgBaseInfo;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.io.File;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
+import android.os.RemoteException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bgyu
-  extends ApkgBaseInfo
+  implements IBinder.DeathRecipient, bgyv
 {
-  public HashMap<String, String> a;
-  public JSONObject a;
+  private long jdField_a_of_type_Long;
+  private bdow jdField_a_of_type_Bdow;
+  private String jdField_a_of_type_JavaLangString;
   
-  public bgyu(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo)
+  private bgyu(long paramLong, String paramString, bdow parambdow)
   {
-    super(paramString, paramMiniAppBaseInfo);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static bgyu a(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (!new File(paramString1).exists())) {
-      return null;
-    }
-    paramString1 = new bgyu(paramString1, paramMiniAppInfo);
-    paramString1.init(paramString2);
-    return paramString1;
-  }
-  
-  private static HashMap<String, String> a(JSONArray paramJSONArray)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramJSONArray != null)
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bdow = parambdow;
+    try
     {
-      int i = 0;
-      while (i < paramJSONArray.length())
-      {
-        Object localObject = paramJSONArray.optJSONObject(i);
-        if (localObject != null)
-        {
-          String str = ((JSONObject)localObject).optString("name");
-          localObject = ((JSONObject)localObject).optString("root");
-          if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-            localHashMap.put(str, localObject);
-          }
-        }
-        i += 1;
-      }
+      parambdow.asBinder().linkToDeath(this, 0);
+      return;
     }
-    return localHashMap;
-  }
-  
-  public void a(MiniAppInfo paramMiniAppInfo, String paramString, bgyt parambgyt)
-  {
-    bgyk.a(paramMiniAppInfo, this, paramString, parambgyt);
-  }
-  
-  public String getRootPath(String paramString)
-  {
-    if (bgpv.a(paramString)) {
-      return "";
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    catch (RemoteException paramString)
     {
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
-        return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsValue(paramString)) {
-        return paramString;
-      }
+      QLog.e("QuickUpdateIPCModule", 1, "linkToDeath fail: " + this, paramString);
     }
-    return "";
   }
   
-  public String getWorkerPath(String paramString1, String paramString2)
+  public void binderDied()
   {
-    return null;
+    QLog.e("QuickUpdateIPCModule", 1, "binderDied: " + this);
+    bhcg.a(this.jdField_a_of_type_Long).removeListener(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this);
   }
   
-  public void init(String paramString)
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    if (paramString != null) {}
-    for (;;)
+    QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + paramInt1 + ", " + this);
+    try
     {
-      try
-      {
-        this.mConfigStr = bgpc.b(new File(getApkgFolderPath() + "/" + paramString, "game.json"));
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(this.mConfigStr);
-        JSONArray localJSONArray = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("subpackages");
-        paramString = localJSONArray;
-        if (localJSONArray == null) {
-          paramString = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("subPackages");
-        }
-        this.jdField_a_of_type_JavaUtilHashMap = a(paramString);
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
-      this.mConfigStr = bgpc.b(new File(getApkgFolderPath(), "game.json"));
+      this.jdField_a_of_type_Bdow.onComplete(paramString1, paramInt1);
+      return;
+    }
+    catch (RemoteException paramQQAppInterface)
+    {
+      QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + this, paramQQAppInterface);
     }
   }
   
-  public boolean isUrlResReady(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo)
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
   {
-    return false;
+    try
+    {
+      this.jdField_a_of_type_Bdow.onProgress(paramString1, paramLong2, paramLong3);
+      return;
+    }
+    catch (RemoteException paramQQAppInterface)
+    {
+      QLog.e("QuickUpdateIPCModule", 1, "onProgress: " + this, paramQQAppInterface);
+    }
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString + "," + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgyu
  * JD-Core Version:    0.7.0.1
  */

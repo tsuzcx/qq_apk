@@ -1,51 +1,83 @@
-class ampm
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
+
+public class ampm
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  private int a;
   
-  public ampm(String paramString, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public ampm(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
+    this.a = paramInt;
   }
   
-  public int a()
+  private void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Int == 5) {
-      return 0;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("bannerId", paramInt1);
+      localJSONObject.put("errCode", paramInt3);
+      ampj.a().callbackFromRequest(paramLong, paramInt2, "sc.game_ad_banner_load.local", localJSONObject.toString());
+      return;
     }
-    if (this.jdField_a_of_type_Int == 4) {
-      return 60000;
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameBannerAds", 1, localThrowable, new Object[0]);
     }
-    if (this.jdField_a_of_type_Int == 3) {
-      return 180000;
-    }
-    if (this.jdField_a_of_type_Int == 2) {
-      return 600000;
-    }
-    return 1800000;
   }
   
-  public String toString()
+  public void a() {}
+  
+  public void a(long paramLong, int paramInt1, int paramInt2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("businessId: ").append(this.jdField_a_of_type_JavaLangString).append(",").append("reqLonAndLat: ").append(this.jdField_a_of_type_Boolean).append(",").append("realTimeRequirement: ").append(this.jdField_a_of_type_Int).append(",").append("requestDataLevel: ").append(this.jdField_b_of_type_Int).append(",").append("reqGoon: ").append(this.jdField_b_of_type_Boolean).append(",").append("canUseGps: ").append(this.c);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameBannerAds", 2, new Object[] { "[loadBannerAd], bannerId:", Integer.valueOf(paramInt2), ",viewId:", Integer.valueOf(paramInt1) });
+    }
+    ThreadManager.getUIHandler().post(new CmGameBannerAds.1(this, paramLong, paramInt2));
+  }
+  
+  public void a(long paramLong, String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {}
+    boolean bool;
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          try
+          {
+            paramString2 = new JSONObject(paramString2);
+            int i = paramString2.optInt("bannerId");
+            if (!"cs.game_ad_banner_close.local".equals(paramString1)) {
+              if ("cs.game_ad_banner_load.local".equals(paramString1))
+              {
+                a(paramLong, paramString2.optInt("viewId"), i);
+                return;
+              }
+            }
+          }
+          catch (Throwable paramString1)
+          {
+            QLog.e("cmgame_process.CmGameBannerAds", 1, paramString1, new Object[0]);
+            return;
+          }
+        }
+      } while (("cs.game_ad_banner_show.local".equals(paramString1)) || ("cs.game_ad_banner_hide.local".equals(paramString1)));
+      bool = "cs.game_ad_banner_resize.local".equals(paramString1);
+    } while (!bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampm
  * JD-Core Version:    0.7.0.1
  */

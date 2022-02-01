@@ -1,27 +1,31 @@
 package com.tencent.mobileqq.search.activity;
 
-import aepi;
-import alrk;
+import Override;
+import afur;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdgc;
+import ankw;
+import bglf;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class MessageSearchDetailActivity
   extends IphoneTitleBarActivity
@@ -47,7 +51,7 @@ public class MessageSearchDetailActivity
       }
       return;
     }
-    int i = ((alrk)this.app.getManager(53)).a(paramString2);
+    int i = ((ankw)this.app.getManager(53)).a(paramString2);
     if (i <= 0)
     {
       paramTextView.setText(paramString1);
@@ -55,7 +59,7 @@ public class MessageSearchDetailActivity
     }
     int j = getResources().getDisplayMetrics().widthPixels;
     paramString2 = (RelativeLayout.LayoutParams)((View)paramTextView.getParent()).getLayoutParams();
-    int k = aepi.a(207.0F, getResources());
+    int k = afur.a(207.0F, getResources());
     TextPaint localTextPaint = paramTextView.getPaint();
     float f2 = j - k - localTextPaint.measureText(String.format("(%d人)", new Object[] { Integer.valueOf(i) })) - 4.0F * getResources().getDisplayMetrics().density;
     String str = paramString1;
@@ -105,6 +109,14 @@ public class MessageSearchDetailActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
@@ -114,23 +126,23 @@ public class MessageSearchDetailActivity
       finish();
       return false;
     }
-    super.setContentView(2131558857);
+    super.setContentView(2131558929);
     if (this.b.user.getType() == 3000) {
-      a(bdgc.a(this.app, this.b.user.uin, this.b.user.getType()), this.b.user.uin, this.centerView);
+      a(bglf.a(this.app, this.b.user.uin, this.b.user.getType()), this.b.user.uin, this.centerView);
     }
     for (;;)
     {
       Object localObject = super.getSupportFragmentManager();
       paramBundle = MessageSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
       localObject = ((FragmentManager)localObject).beginTransaction();
-      ((FragmentTransaction)localObject).replace(2131364785, paramBundle);
+      ((FragmentTransaction)localObject).replace(2131365013, paramBundle);
       ((FragmentTransaction)localObject).commit();
       this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver = new MessageSearchDetailActivity.CancelReceiver(this);
       paramBundle = new IntentFilter();
       paramBundle.addAction("com.tencent.mobileqq.search.cancel");
       super.registerReceiver(this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver, paramBundle);
       return true;
-      super.setTitle(bdgc.a(this.app, this.b.user.uin, this.b.user.getType()));
+      super.setTitle(bglf.a(this.app, this.b.user.uin, this.b.user.getType()));
     }
   }
   
@@ -143,10 +155,17 @@ public class MessageSearchDetailActivity
       this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver = null;
     }
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.MessageSearchDetailActivity
  * JD-Core Version:    0.7.0.1
  */

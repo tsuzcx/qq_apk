@@ -1,47 +1,50 @@
-import android.view.MotionEvent;
+import android.os.SystemClock;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.widget.ScrollView;
-import com.tencent.widget.XEditTextEx;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awtm
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public awtm(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public awtm(TabPageIndicator paramTabPageIndicator) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (StickyNotePublishFragment.a(this.a))
-    {
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      bhsj.b(StickyNotePublishFragment.a(this.a));
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
     }
-    if (StickyNotePublishFragment.a(this.a) == 0)
+    TabPageIndicator.a(this.a, SystemClock.uptimeMillis());
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof awtp)) {}
+    for (localObject = (awtp)localObject;; localObject = null)
     {
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      StickyNotePublishFragment.a(this.a).setVisibility(0);
-      StickyNotePublishFragment.a(this.a).requestFocus();
-      bhsj.a(StickyNotePublishFragment.a(this.a));
-      return false;
+      if (localObject == null) {}
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        int i = TabPageIndicator.a(this.a).a();
+        int j = ((awtp)localObject).jdField_a_of_type_Int;
+        this.a.setCurrentItem(j);
+        ((awtp)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        TabPageIndicator.a(this.a).setCurrentItem(j);
+        if ((i == j) && (TabPageIndicator.a(this.a) != null)) {
+          TabPageIndicator.a(this.a).a(j);
+        }
+        if (TabPageIndicator.a(this.a) != null) {
+          TabPageIndicator.a(this.a).a(j);
+        }
+      }
     }
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a, 0);
-    this.a.a(false);
-    this.a.b(false);
-    this.a.c(true);
-    this.a.c(0, 0);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtm
  * JD-Core Version:    0.7.0.1
  */

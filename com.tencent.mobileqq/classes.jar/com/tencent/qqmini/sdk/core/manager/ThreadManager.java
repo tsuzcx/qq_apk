@@ -3,69 +3,63 @@ package com.tencent.qqmini.sdk.core.manager;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
-import bgnz;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
+import com.tencent.qqmini.sdk.core.utils.thread.ThreadPools;
+import java.util.concurrent.Executor;
 
+@MiniKeep
 public class ThreadManager
 {
-  private static volatile Handler jdField_a_of_type_AndroidOsHandler;
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private static volatile Handler jdField_b_of_type_AndroidOsHandler;
-  private static HandlerThread jdField_b_of_type_AndroidOsHandlerThread;
-  private static volatile Handler c;
+  private static volatile Handler SUB_HANDLER;
+  private static volatile Handler UI_HANDLER;
   
-  public static Handler a()
+  public static void executeOnComputationThreadPool(Runnable paramRunnable)
   {
-    if (jdField_b_of_type_AndroidOsHandler == null) {}
+    ThreadPools.getComputationThreadPool().execute(paramRunnable);
+  }
+  
+  public static void executeOnDiskIOThreadPool(Runnable paramRunnable)
+  {
+    ThreadPools.getDiskIOThreadPool().execute(paramRunnable);
+  }
+  
+  public static void executeOnNetworkIOThreadPool(Runnable paramRunnable)
+  {
+    ThreadPools.getNetworkIOThreadPool().execute(paramRunnable);
+  }
+  
+  public static Handler getSubThreadHandler()
+  {
+    if (SUB_HANDLER == null) {}
     try
     {
-      if (jdField_b_of_type_AndroidOsHandler == null)
+      if (SUB_HANDLER == null)
       {
-        jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MINIAPP_SUB", 0);
-        jdField_a_of_type_AndroidOsHandlerThread.start();
-        jdField_b_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+        HandlerThread localHandlerThread = new HandlerThread("MINIAPP_SUB", 10);
+        localHandlerThread.start();
+        SUB_HANDLER = new Handler(localHandlerThread.getLooper());
       }
-      return jdField_b_of_type_AndroidOsHandler;
+      return SUB_HANDLER;
     }
     finally {}
   }
   
-  public static void a(Runnable paramRunnable, int paramInt, bgnz parambgnz, boolean paramBoolean)
+  public static Handler getUIHandler()
   {
-    new Thread(new ThreadManager.Job(paramRunnable, parambgnz)).start();
-  }
-  
-  public static Handler b()
-  {
-    if (c == null) {}
+    if (UI_HANDLER == null) {}
     try
     {
-      if (c == null)
-      {
-        jdField_b_of_type_AndroidOsHandlerThread = new HandlerThread("MINIAPP_FILE", 0);
-        jdField_b_of_type_AndroidOsHandlerThread.start();
-        c = new Handler(jdField_b_of_type_AndroidOsHandlerThread.getLooper());
+      if (UI_HANDLER == null) {
+        UI_HANDLER = new Handler(Looper.getMainLooper());
       }
-      return c;
-    }
-    finally {}
-  }
-  
-  public static Handler c()
-  {
-    if (jdField_a_of_type_AndroidOsHandler == null) {}
-    try
-    {
-      if (jdField_a_of_type_AndroidOsHandler == null) {
-        jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-      }
-      return jdField_a_of_type_AndroidOsHandler;
+      return UI_HANDLER;
     }
     finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.ThreadManager
  * JD-Core Version:    0.7.0.1
  */

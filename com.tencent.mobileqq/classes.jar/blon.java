@@ -1,38 +1,137 @@
-public final class blon
-  implements baug
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import cooperation.qqreader.QRBridgeUtil;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONObject;
+
+public class blon
+  extends QIPCModule
 {
-  public blon(bloo parambloo, bloh parambloh, String paramString) {}
+  private static blon a;
   
-  public void onResp(bavf parambavf)
+  public blon(String paramString)
   {
-    boolean bool2 = true;
-    bliu localbliu;
-    if ((parambavf != null) && (parambavf.a == 0))
+    super(paramString);
+  }
+  
+  public static blon a()
+  {
+    if (a == null) {}
+    try
     {
-      bool1 = true;
-      bljn.b("AEEditorMusicHelper", "[downloadMusic], onResp, succeeded=" + bool1);
-      if (this.jdField_a_of_type_Bloo != null) {
-        this.jdField_a_of_type_Bloo.a(this.jdField_a_of_type_Bloh, bool1, this.jdField_a_of_type_JavaLangString);
+      if (a == null) {
+        a = new blon("ReaderIPCModule");
       }
-      if (parambavf != null)
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    blpu.e("ReaderIPCModule", "action = " + paramString);
+    if (paramBundle == null)
+    {
+      blpu.e("ReaderIPCModule", "Err params = null, action = " + paramString);
+      return null;
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface))
+    {
+      blpu.e("ReaderIPCModule", "onRemoteInvoke cannot get QQAppInterface");
+      return null;
+    }
+    localObject = (QQAppInterface)localObject;
+    if ("getRedTouchInfo".equals(paramString))
+    {
+      paramString = (baif)((QQAppInterface)localObject).getManager(36);
+      localObject = paramBundle.getStringArrayList("pathList");
+      if ((paramString != null) && (localObject != null))
       {
-        localbliu = bliu.a();
-        if (parambavf.a != 0) {
-          break label113;
+        paramBundle = new ArrayList();
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          BusinessInfoCheckUpdate.AppInfo localAppInfo = paramString.a((String)((Iterator)localObject).next());
+          if (localAppInfo != null) {
+            paramBundle.add(baij.a(localAppInfo));
+          }
+        }
+        paramString = new Bundle();
+        paramString.putParcelableArrayList("redTouchInfoList", paramBundle);
+        return EIPCResult.createResult(0, paramString);
+      }
+    }
+    else if ("getSingleRedTouchInfo".equals(paramString))
+    {
+      paramString = (baif)((QQAppInterface)localObject).getManager(36);
+      if (paramString != null)
+      {
+        paramString = paramString.a(paramBundle.getString("path"));
+        if (paramString != null)
+        {
+          paramString = baij.a(paramString);
+          paramBundle = new Bundle();
+          paramBundle.putParcelable("redTouchInfo", paramString);
+          if ((paramString != null) && (paramString.b() == 1)) {
+            blpu.e("ReaderIPCModule", "path=" + paramString.b());
+          }
+          return EIPCResult.createResult(0, paramBundle);
         }
       }
     }
-    label113:
-    for (boolean bool1 = bool2;; bool1 = false)
+    else
     {
-      localbliu.a(bool1, 5, "AEEditorMusicDownload", this.jdField_a_of_type_Bloh.a(), parambavf.b, parambavf.h);
-      return;
-      bool1 = false;
-      break;
+      if (!"reportRedTouchClick".equals(paramString)) {
+        break label396;
+      }
+      paramString = (baif)((QQAppInterface)localObject).getManager(36);
+      if (paramString != null)
+      {
+        paramBundle = paramBundle.getString("path");
+        paramString.b(paramBundle);
+      }
     }
+    label396:
+    do
+    {
+      try
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("service_type", 2);
+        ((JSONObject)localObject).put("act_id", 1002);
+        paramString.c(paramString.a(paramBundle), ((JSONObject)localObject).toString());
+        return null;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
+      if ("download_reader_plugin".equals(paramString))
+      {
+        blnk.a().a(((QQAppInterface)localObject).getApp());
+        return EIPCResult.createResult(0, new Bundle());
+      }
+      if ("get_skey".equals(paramString))
+      {
+        paramString = new Bundle();
+        paramString.putString("get_skey_value", QRBridgeUtil.getSKey((QQAppInterface)localObject));
+        return EIPCResult.createResult(0, paramString);
+      }
+    } while (!"action_get_account".equals(paramString));
+    paramString = new Bundle();
+    paramString.putString("key_get_account", ((QQAppInterface)localObject).getAccount());
+    return EIPCResult.createResult(0, paramString);
   }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

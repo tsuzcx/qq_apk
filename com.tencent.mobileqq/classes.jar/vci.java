@@ -1,29 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import androidx.annotation.RequiresApi;
 
 class vci
-  extends SimpleJob<Object>
+  extends AnimatorListenerAdapter
 {
-  vci(vcg paramvcg, String paramString)
-  {
-    super(paramString);
-  }
+  vci(vcb paramvcb) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  @RequiresApi(api=16)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.jdField_a_of_type_Vcj == null) {
-      this.a.jdField_a_of_type_Vcj = new vcj(this.a, this.a.d);
-    }
-    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Vcj.jdField_a_of_type_JavaLangString;
-    vcg.a(this.a);
-    return null;
+    super.onAnimationEnd(paramAnimator);
+    vcb.a(this.a).setAlpha(1.0F);
+    vcb.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vci
  * JD-Core Version:    0.7.0.1
  */

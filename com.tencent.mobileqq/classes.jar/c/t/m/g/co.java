@@ -380,11 +380,11 @@ public final class co
     return false;
   }
   
-  public static boolean a(File paramFile, byte[] paramArrayOfByte, boolean paramBoolean)
+  public static boolean a(File paramFile, byte[] paramArrayOfByte)
   {
     try
     {
-      paramFile = new FileOutputStream(paramFile, paramBoolean);
+      paramFile = new FileOutputStream(paramFile, false);
       paramFile.write(paramArrayOfByte);
       dt.a(paramFile);
       return true;

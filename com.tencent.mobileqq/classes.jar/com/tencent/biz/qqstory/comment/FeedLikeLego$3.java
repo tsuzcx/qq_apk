@@ -5,18 +5,18 @@ import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
-import utl;
-import uvm;
+import wmx;
 import woy;
+import yij;
 
 public class FeedLikeLego$3
   implements Runnable
 {
-  public FeedLikeLego$3(utl paramutl, String paramString) {}
+  public FeedLikeLego$3(wmx paramwmx, String paramString) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Woy.a(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+    this.this$0.jdField_a_of_type_Yij.a(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
     if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount > 0)
     {
       CommentLikeFeedItem localCommentLikeFeedItem = this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
@@ -27,7 +27,7 @@ public class FeedLikeLego$3
     {
       if (((LikeEntry)this.this$0.jdField_a_of_type_JavaUtilList.get(i)).unionId.equals(this.a))
       {
-        this.this$0.jdField_a_of_type_Uvm.b((LikeEntry)this.this$0.jdField_a_of_type_JavaUtilList.get(i));
+        this.this$0.jdField_a_of_type_Woy.b((LikeEntry)this.this$0.jdField_a_of_type_JavaUtilList.get(i));
         this.this$0.jdField_a_of_type_JavaUtilList.remove(i);
       }
       i += 1;
@@ -37,7 +37,7 @@ public class FeedLikeLego$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeLego.3
  * JD-Core Version:    0.7.0.1
  */

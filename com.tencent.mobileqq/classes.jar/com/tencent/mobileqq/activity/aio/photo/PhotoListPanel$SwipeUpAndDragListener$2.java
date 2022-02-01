@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agln;
+import ahvq;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PhotoListPanel$SwipeUpAndDragListener$2
   implements Runnable
 {
-  public PhotoListPanel$SwipeUpAndDragListener$2(agln paramagln) {}
+  public PhotoListPanel$SwipeUpAndDragListener$2(ahvq paramahvq) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class PhotoListPanel$SwipeUpAndDragListener$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,19 @@
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.1;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
+
 public class alkt
+  implements bcdv
 {
-  public static final int a;
-  public static final long a;
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public long b;
-  public long c;
-  public long d;
-  
-  static
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = bdgk.i();
-    b = bdgk.e();
-    c = bdgk.g();
-    jdField_a_of_type_Int = bdgk.b();
-    jdField_a_of_type_Long = bdgk.a();
+    this.a.a.post(new PtvTemplateAdapter.5.2(this, paramPtvTemplateInfo, paramInt));
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    this.a.a.post(new PtvTemplateAdapter.5.1(this, paramPtvTemplateInfo, paramBoolean));
   }
 }
 

@@ -1,28 +1,38 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class advu
-  implements advw
+  implements adwk
 {
-  public advu(ScoreQAVFragment paramScoreQAVFragment) {}
+  public advu(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void a(Activity paramActivity)
   {
-    paramView = (Button)paramView.findViewById(2131373980);
-    if (paramView.isSelected())
-    {
-      paramView.setSelected(false);
-      this.a.a(paramInt);
-      if (this.a.a.size() != 0) {}
+    QQToast.a(this.a, 2, 2131691324, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 1, 0, "", "", "", "");
     }
-    do
-    {
+    while (paramInt != 1) {
       return;
-      paramView.setSelected(true);
-      this.a.a.add(Integer.valueOf(paramInt));
-    } while (this.a.a.size() <= 0);
+    }
+    bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 1, 0, "", "", "", "");
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 1, 0, "", "", "", "");
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 1, 0, "", "", "", "");
   }
 }
 

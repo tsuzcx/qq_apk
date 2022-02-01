@@ -1,132 +1,167 @@
 import android.content.Context;
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.bgprobe.BackgroundException;
+import com.tencent.mobileqq.bgprobe.BackgroundProbeManager.1;
+import com.tencent.mobileqq.bgprobe.BackgroundProbeManager.2;
+import com.tencent.mobileqq.bgprobe.BackgroundService;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
-public abstract class apvq
-  extends apvz
+public class apvq
 {
-  private static apvs a;
-  public int a;
-  protected Context a;
-  protected SparseArray<View> a;
+  private static final long jdField_a_of_type_Long = TimeUnit.DAYS.toMillis(1L);
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean jdField_b_of_type_Boolean;
+  private static boolean c;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.context;
+  private long jdField_b_of_type_Long = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getLong("KEY_LAST_PROBE_SERVICE_START_TIME_MS", 0L);
   
-  public apvq(Context paramContext, int paramInt1, int paramInt2)
+  private apvq()
   {
-    super(paramInt1);
-    if (paramContext == null) {
-      throw new IllegalArgumentException("Context MUST NOT be null!!!");
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  }
-  
-  private boolean a(int paramInt)
-  {
-    switch (paramInt)
+    if (new Random(System.currentTimeMillis()).nextInt(100000) == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_Apvs != null)
-    {
-      jdField_a_of_type_Apvs.a();
-      jdField_a_of_type_Apvs = null;
+      c = bool;
+      return;
     }
   }
   
-  protected abstract int a(int paramInt);
-  
-  protected View a(int paramInt)
+  private static int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelViewBinder", 2, " createEmoticonPanelView, type=" + paramInt);
-    }
-    long l = System.currentTimeMillis();
-    Object localObject;
-    switch (paramInt)
+    Object localObject = BaseApplicationImpl.getApplication().getPackageManager();
+    try
     {
-    default: 
-      localObject = null;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelViewBinder", 2, "[Performance] createEmoticonPanelView, type=" + paramInt + ",duration=" + (System.currentTimeMillis() - l));
-      }
-      return localObject;
-      localObject = new EmoticonLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
-      ((EmoticonLinearLayout)localObject).setPanelViewType(paramInt);
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContext = null;
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {}
-    View localView;
-    do
-    {
-      do
+      localObject = ((PackageManager)localObject).getApplicationInfo("com.tencent.mobileqq", 128);
+      if (localObject != null)
       {
-        do
-        {
-          return;
-          localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-        } while (localView == null);
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-        paramInt = a(paramInt);
-      } while (!a(paramInt));
-      if (jdField_a_of_type_Apvs == null) {
-        jdField_a_of_type_Apvs = new apvs();
+        int i = ((ApplicationInfo)localObject).targetSdkVersion;
+        return i;
       }
-    } while (jdField_a_of_type_Apvs.a(paramInt, localView));
+    }
+    catch (Throwable localThrowable) {}
+    return 0;
   }
   
-  protected abstract void a(View paramView, int paramInt);
-  
-  public View b(int paramInt)
+  public static apvq a()
   {
+    return apvr.a();
+  }
+  
+  public static void a()
+  {
+    apvq localapvq = a();
+    BackgroundProbeManager.1 local1 = new BackgroundProbeManager.1(localapvq);
+    BackgroundProbeManager.2 local2 = new BackgroundProbeManager.2(localapvq);
+    boolean bool = localapvq.a();
     if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelViewBinder", 2, "getEmoticonPanelView, pageIndex=" + paramInt + ",viewBinder=" + this);
+      QLog.i("BackgroundProbeManager", 2, "onRunningBackground: invoked.  probeEnabled: " + bool);
     }
-    int i = a(paramInt);
-    View localView1 = null;
-    if (jdField_a_of_type_Apvs != null) {
-      localView1 = jdField_a_of_type_Apvs.a(i);
+    if (bool) {
+      bend.a(local1, 180000L);
     }
-    View localView2 = localView1;
-    if (localView1 == null) {
-      localView2 = a(i);
-    }
-    if (localView2 != null)
+    bend.a(local2, 181000L);
+  }
+  
+  public static void a(Intent paramIntent)
+  {
+    if (new Random(System.currentTimeMillis()).nextInt(400) == 0) {}
+    for (int i = 1;; i = 0)
     {
-      if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-        this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+      if ((c) && (b()) && (!jdField_b_of_type_Boolean) && (i != 0) && (paramIntent.getComponent() == null))
+      {
+        BackgroundException localBackgroundException = new BackgroundException("Implicit Broadcast");
+        bcrp.a(localBackgroundException, "intent: " + paramIntent.toString());
+        jdField_b_of_type_Boolean = true;
+        if (QLog.isColorLevel()) {
+          QLog.i("BackgroundProbeManager", 2, "reportImplicitBroadcast: invoked.  exception: " + localBackgroundException);
+        }
       }
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView2);
-      a(localView2, paramInt);
+      return;
     }
-    return localView2;
+  }
+  
+  private boolean a()
+  {
+    if (System.currentTimeMillis() - this.jdField_b_of_type_Long > jdField_a_of_type_Long) {}
+    for (int i = 1; (b()) && (i != 0); i = 0) {
+      return true;
+    }
+    return false;
+  }
+  
+  private void b()
+  {
+    try
+    {
+      if (!jdField_a_of_type_Boolean)
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
+        this.jdField_a_of_type_AndroidContentContext.startService(localIntent);
+        this.jdField_b_of_type_Long = System.currentTimeMillis();
+        jdField_a_of_type_Boolean = true;
+        PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit().putLong("KEY_LAST_PROBE_SERVICE_START_TIME_MS", this.jdField_b_of_type_Long).apply();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      bcrp.a(new BackgroundException("startProbeService failed"));
+    }
+  }
+  
+  private static boolean b()
+  {
+    int i;
+    if (a() >= 26)
+    {
+      i = 1;
+      if (Build.VERSION.SDK_INT < 24) {
+        break label35;
+      }
+    }
+    label35:
+    for (int j = 1;; j = 0)
+    {
+      if ((i == 0) || (j == 0)) {
+        break label40;
+      }
+      return true;
+      i = 0;
+      break;
+    }
+    label40:
+    return false;
+  }
+  
+  private void c()
+  {
+    try
+    {
+      if (jdField_a_of_type_Boolean)
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
+        this.jdField_a_of_type_AndroidContentContext.stopService(localIntent);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("BackgroundProbeManager", 2, "stopProbeService: failed. ", localThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apvq
  * JD-Core Version:    0.7.0.1
  */

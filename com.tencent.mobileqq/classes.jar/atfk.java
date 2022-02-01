@@ -1,71 +1,29 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
-import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
 
-public class atfk
-  extends QIPCModule
+class atfk
+  extends atfi
 {
-  private static volatile atfk a;
-  
-  public atfk(String paramString)
+  public atfk(atfe paramatfe)
   {
-    super(paramString);
+    super(paramatfe);
   }
   
-  public static atfk a()
+  protected String a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new atfk("TogetherBusinessIPCModule");
-      }
-      return a;
-    }
-    finally {}
+    return "StateCancelUploadWhenPause";
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  protected void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessIPCModule", 2, "call TogetherBusinessIPCModule action=" + paramString);
-    }
-    if ("action_open_identify".equals(paramString)) {
-      TogetherBusinessServlet.a("QQAIOMediaSvc.open_identify", (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramBundle, new atfl(this, paramInt));
-    }
-    do
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      boolean bool2;
-      do
-      {
-        do
-        {
-          return null;
-          if ("action_open_start".equals(paramString))
-          {
-            TogetherBusinessServlet.a("QQAIOMediaSvc.open_start", (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramBundle, new atfl(this, paramInt));
-            return null;
-          }
-        } while (!"action_set_floating".equals(paramString));
-        boolean bool1 = paramBundle.getBoolean("BUNDLE_SET_STATUS");
-        paramString = paramBundle.getString("BUNDLE_SET_KEY_UIN", "");
-        paramInt = paramBundle.getInt("BUNDLE_SET_KEY_SESSION_TYPE", -1);
-        bool2 = paramBundle.getBoolean("BUNDLE_SET_KEY_REFRESH_UI", true);
-        atfm.a(bool1, paramString, paramInt, bool2);
-        if (QLog.isColorLevel()) {
-          QLog.d("TogetherBusinessIPCModule", 2, "ACTION_SET_FLOATING " + " isShow=" + bool1 + " uin=" + paramString + " sessionType=" + paramInt + " refresh=" + bool2);
-        }
-      } while (!bool2);
-      paramBundle = (baph)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(339);
-      paramString = (WatchTogetherSession)paramBundle.a(2, paramInt, paramString);
-    } while (paramString == null);
-    paramBundle.a(true, paramString, 1002, "");
-    return null;
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atfe.b(this.jdField_a_of_type_Atfe, 11, 9);
+    atfe.c(this.jdField_a_of_type_Atfe, 11, 9);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateCancelUploadWhenRecv)");
+    this.jdField_a_of_type_Atfi = new atfl(this.jdField_a_of_type_Atfe);
   }
 }
 

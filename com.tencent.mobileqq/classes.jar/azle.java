@@ -1,13 +1,27 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class azle
-  implements FileFilter
+class azle
+  extends bgtm
 {
-  public boolean accept(File paramFile)
+  azle(azla paramazla, int paramInt)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    super(paramInt);
+  }
+  
+  public void a()
+  {
+    if (this.a.a.a == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (azla.a(this.a) != null) {
+        azla.a(this.a).a(bool);
+      }
+      VasWebviewUtil.reportCommercialDrainage(azla.f(this.a).getCurrentAccountUin(), "defaultcard", "click_customized", "", 1, 0, 0, "", "", "");
+      azla.a(this.a, 3);
+      return;
+    }
   }
 }
 

@@ -1,21 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-
-class bhji
-  implements DialogInterface.OnClickListener
+public class bhji
 {
-  bhji(bhje parambhje, JsResult paramJsResult) {}
+  public String a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bhji(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
-    paramDialogInterface.dismiss();
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "LiangHaoUinData{" + "hide" + ", light='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhji
  * JD-Core Version:    0.7.0.1
  */

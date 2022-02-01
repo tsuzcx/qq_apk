@@ -1,45 +1,27 @@
-public class wst<T>
-  extends wss
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+
+public class wst
+  extends wla
 {
-  public T a;
-  public String a;
-  public wsv<T> a;
+  public long a;
+  public int b;
   
-  public wst(wsv<T> paramwsv)
+  public wst(qqstory_service.RspCheckActivity paramRspCheckActivity)
   {
-    this.jdField_a_of_type_JavaLangString = "GetResultSimpleStep";
-    this.jdField_a_of_type_Wsv = paramwsv;
+    super(paramRspCheckActivity.result);
+    this.b = paramRspCheckActivity.is_activity.get();
+    this.a = paramRspCheckActivity.next_check_time.get();
   }
   
-  public Object a()
+  public String toString()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return "MsgTabCheckActiveResponse{active=" + this.b + ", nextCheckTime=" + this.a + '}';
   }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Wsv != null) {
-      this.jdField_a_of_type_Wsv.a(this.jdField_a_of_type_JavaLangObject);
-    }
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wst
  * JD-Core Version:    0.7.0.1
  */

@@ -1,427 +1,280 @@
-import android.os.Handler;
-import android.os.RemoteCallbackList;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.ArConfigManagerStub.1;
-import com.tencent.mobileqq.ar.ArConfigService.ArConfigManagerStub.2;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class amwz
-  extends amzh
+  extends bdsh
 {
-  WeakReference<ArConfigService> a;
+  public static int a;
+  public static int b = 2;
+  public static int c = 3;
   
-  public amwz(ArConfigService paramArConfigService)
+  static
   {
-    QLog.d("ArConfig_ArConfigService", 1, "ArConfigManagerStub constructor");
-    this.a = new WeakReference(paramArConfigService);
+    jdField_a_of_type_Int = 1;
   }
   
-  public ARCommonConfigInfo a()
+  public static URLDrawable a(String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2)
   {
-    if (this.a != null) {}
-    for (Object localObject = (ArConfigService)this.a.get();; localObject = null)
+    return a(false, paramString1, paramURLDrawableOptions, paramString2);
+  }
+  
+  public static URLDrawable a(String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2, boolean paramBoolean)
+  {
+    return a(false, paramString1, paramURLDrawableOptions, paramString2, paramBoolean);
+  }
+  
+  public static URLDrawable a(boolean paramBoolean, String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2)
+  {
+    return a(paramBoolean, paramString1, paramURLDrawableOptions, paramString2, false);
+  }
+  
+  public static URLDrawable a(boolean paramBoolean1, String paramString1, URLDrawable.URLDrawableOptions paramURLDrawableOptions, String paramString2, boolean paramBoolean2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return null;
+    }
+    if (!paramBoolean1) {}
+    for (String str = ancb.k + "boxcard/" + paramString1;; str = paramString1)
     {
-      if (localObject == null)
+      File localFile = new File(str);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = paramURLDrawableOptions;
+      if (paramURLDrawableOptions == null)
       {
-        QLog.d("ArConfig_ArConfigService", 1, "getARCommonConfigInfo error arConfigService is null");
-        return null;
+        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mExtraInfo = null;
       }
-      if (((ArConfigService)localObject).jdField_a_of_type_Amsk != null) {}
-      for (localObject = ((ArConfigService)localObject).jdField_a_of_type_Amsk.a();; localObject = null)
+      if (localURLDrawableOptions.mLoadingDrawable == null) {
+        localURLDrawableOptions.mLoadingDrawable = bdzx.a;
+      }
+      if (localURLDrawableOptions.mFailedDrawable == null) {
+        localURLDrawableOptions.mFailedDrawable = bdzx.a;
+      }
+      if (localURLDrawableOptions.mExtraInfo == null) {
+        localURLDrawableOptions.mExtraInfo = new amxa();
+      }
+      paramBoolean1 = paramBoolean2;
+      if ((localURLDrawableOptions.mExtraInfo instanceof amxa))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, String.format("getARCommonConfigInfo arCommonConfigInfo=%s", new Object[] { localObject }));
+        paramURLDrawableOptions = (amxa)localURLDrawableOptions.mExtraInfo;
+        if (!TextUtils.isEmpty(str)) {
+          paramURLDrawableOptions.jdField_a_of_type_JavaLangString = str;
         }
-        return localObject;
-      }
-    }
-  }
-  
-  public ArConfigInfo a()
-  {
-    if (this.a != null) {}
-    for (Object localObject = (ArConfigService)this.a.get();; localObject = null)
-    {
-      if (localObject == null)
-      {
-        QLog.d("ArConfig_ArConfigService", 1, "getArConfigInfo error arConfigService is null");
-        return null;
-      }
-      if (((ArConfigService)localObject).jdField_a_of_type_Amxm != null) {}
-      for (localObject = ((ArConfigService)localObject).jdField_a_of_type_Amxm.a();; localObject = null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "getArConfigInfo | mConfigInfo = " + localObject);
+        if (!TextUtils.isEmpty(paramString2)) {
+          paramURLDrawableOptions.jdField_b_of_type_JavaLangString = paramString2;
         }
-        return localObject;
-      }
-    }
-  }
-  
-  public ArEffectConfig a()
-  {
-    if (this.a != null) {}
-    for (Object localObject = (ArConfigService)this.a.get();; localObject = null)
-    {
-      if (localObject == null)
-      {
-        QLog.d("ArConfig_ArConfigService", 1, "getArEffectConfig error arConfigService is null");
-        return null;
-      }
-      if (((ArConfigService)localObject).jdField_a_of_type_Amxm != null) {}
-      for (localObject = ((ArConfigService)localObject).jdField_a_of_type_Amxm.a();; localObject = null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "getArEffectConfig|mEffectConfig=" + localObject);
+        if (paramURLDrawableOptions.jdField_a_of_type_Int != jdField_a_of_type_Int)
+        {
+          paramBoolean1 = paramBoolean2;
+          if (!paramURLDrawableOptions.jdField_b_of_type_Boolean) {}
         }
-        return localObject;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.a != null) {}
-    for (ArConfigService localArConfigService = (ArConfigService)this.a.get();; localArConfigService = null)
-    {
-      if (localArConfigService == null) {
-        QLog.d("ArConfig_ArConfigService", 1, "downloadResource error arConfigService is null");
-      }
-      while (localArConfigService.jdField_a_of_type_Amxm == null) {
-        return;
-      }
-      localArConfigService.jdField_a_of_type_Amxm.a(false, false);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("click_download", "1");
-      azri.a(BaseApplicationImpl.getContext()).a(localArConfigService.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ar_client_download_times", true, 0L, 0L, localHashMap, null);
-      return;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "downloadFaceResource error arConfigService is null");
-    }
-    while (!(ArConfigService.a(localArConfigService) instanceof QQAppInterface)) {
-      return;
-    }
-    amxq.a(paramInt, (QQAppInterface)ArConfigService.b(localArConfigService));
-  }
-  
-  public void a(amzj paramamzj)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "registerFaceCallback error arConfigService is null");
-    }
-    while ((paramamzj == null) || (ArConfigService.b(localArConfigService) == null)) {
-      return;
-    }
-    ArConfigService.b(localArConfigService).register(paramamzj);
-  }
-  
-  public void a(amzp paramamzp)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "registerMiniCallback error arConfigService is null");
-    }
-    while ((paramamzp == null) || (ArConfigService.c(localArConfigService) == null)) {
-      return;
-    }
-    ArConfigService.c(localArConfigService).register(paramamzp);
-  }
-  
-  public void a(amzs paramamzs)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "registerArCallback error arConfigService is null");
-    }
-    while ((paramamzs == null) || (ArConfigService.a(localArConfigService) == null)) {
-      return;
-    }
-    ArConfigService.a(localArConfigService).register(paramamzs);
-  }
-  
-  public void a(amzv paramamzv)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "registerArSoCallback error arConfigService is null");
-    }
-    while (paramamzv == null) {
-      return;
-    }
-    ArConfigService.d(localArConfigService).register(paramamzv);
-  }
-  
-  public void a(ArConfigInfo paramArConfigInfo)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "handleNewConfig error arConfigService is null");
-    }
-    while (localArConfigService.jdField_a_of_type_Amxm == null) {
-      return;
-    }
-    localArConfigService.jdField_a_of_type_Amxm.a(paramArConfigInfo);
-  }
-  
-  public boolean a()
-  {
-    if (this.a != null) {}
-    for (ArConfigService localArConfigService = (ArConfigService)this.a.get();; localArConfigService = null)
-    {
-      if (localArConfigService == null)
-      {
-        QLog.d("ArConfig_ArConfigService", 1, "isFaceResConfigReady error arConfigService is null");
-        return false;
-      }
-      if ((ArConfigService.c(localArConfigService) instanceof QQAppInterface))
-      {
-        boolean bool = amxq.a((QQAppInterface)ArConfigService.d(localArConfigService));
-        if (!bool) {
-          amxq.a((QQAppInterface)ArConfigService.e(localArConfigService));
+        else
+        {
+          paramBoolean1 = true;
         }
-        return bool;
       }
-      return false;
-    }
-  }
-  
-  public void b()
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "cancelDownload error arConfigService is null");
-    }
-    while (localArConfigService.jdField_a_of_type_Amxm == null) {
-      return;
-    }
-    localArConfigService.jdField_a_of_type_Amxm.a.a();
-  }
-  
-  public void b(int paramInt)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "downloadMiniResource error arConfigService is null");
-    }
-    while (!(ArConfigService.f(localArConfigService) instanceof QQAppInterface)) {
-      return;
-    }
-    aneo.a(paramInt, (QQAppInterface)ArConfigService.g(localArConfigService));
-  }
-  
-  public void b(amzj paramamzj)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "unregisterFaceCallback error arConfigService is null");
-    }
-    while ((paramamzj == null) || (ArConfigService.b(localArConfigService) == null)) {
-      return;
-    }
-    ArConfigService.b(localArConfigService).unregister(paramamzj);
-  }
-  
-  public void b(amzp paramamzp)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "unregisterMiniCallback error arConfigService is null");
-    }
-    while ((paramamzp == null) || (ArConfigService.c(localArConfigService) == null)) {
-      return;
-    }
-    ArConfigService.c(localArConfigService).unregister(paramamzp);
-  }
-  
-  public void b(amzs paramamzs)
-  {
-    QLog.d("ArConfig_ArConfigService", 1, "unregisterCallback");
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "unregisterCallback error arConfigService is null");
-    }
-    while ((paramamzs == null) || (ArConfigService.a(localArConfigService) == null)) {
-      return;
-    }
-    ArConfigService.a(localArConfigService).unregister(paramamzs);
-  }
-  
-  public void b(amzv paramamzv)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "unregisterArSoCallback error arConfigService is null");
-    }
-    while (paramamzv == null) {
-      return;
-    }
-    ArConfigService.d(localArConfigService).unregister(paramamzv);
-  }
-  
-  public boolean b()
-  {
-    if (this.a != null) {}
-    for (ArConfigService localArConfigService = (ArConfigService)this.a.get();; localArConfigService = null)
-    {
-      if (localArConfigService == null)
+      if ((!paramBoolean1) && (localFile.exists()))
       {
-        QLog.d("ArConfig_ArConfigService", 1, "isMiniResConfigReady error arConfigService is null");
-        return false;
+        paramURLDrawableOptions = URLDrawable.getDrawable(localFile, localURLDrawableOptions);
+        paramString1 = paramURLDrawableOptions;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ApolloImageDownloader", 2, "getDrawable file exsit path->" + str + ",url:" + paramString2);
+          paramString1 = paramURLDrawableOptions;
+        }
       }
-      if ((ArConfigService.h(localArConfigService) instanceof QQAppInterface))
+      for (;;)
       {
-        boolean bool = aneo.a(true, (QQAppInterface)ArConfigService.i(localArConfigService));
-        if (!bool) {
-          aneo.a(true, (QQAppInterface)ArConfigService.j(localArConfigService));
+        return paramString1;
+        try
+        {
+          paramString1 = URLDrawable.getDrawable(new URL("apollo_image", "", paramString1), localURLDrawableOptions);
         }
-        if (!aneo.a(false, (QQAppInterface)ArConfigService.k(localArConfigService))) {
-          aneo.a(false, (QQAppInterface)ArConfigService.l(localArConfigService));
+        catch (Exception paramString1)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloImageDownloader", 2, paramString1.getMessage());
+          }
+          paramString1 = null;
         }
-        return bool;
       }
-      return false;
     }
   }
   
-  public void c()
+  public static final String a(int paramInt1, int paramInt2)
   {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
+    if (paramInt1 == 3) {
+      return "https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramInt2 + "/task_detail.gif";
     }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "downloadArSo error arConfigService is null");
-    }
-    int i;
+    return "https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_item_" + paramInt2 + "/task_detail.png";
+  }
+  
+  public static final String a(String paramString)
+  {
+    return "https://cmshow.gtimg.cn/client/img/" + paramString;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
+      return false;
+      String str = ancb.k + paramString.substring(paramString.lastIndexOf("/") + 1);
+      if (new File(str).exists()) {
+        return true;
+      }
+      paramString = a(true, str, null, paramString, true);
+    } while (paramString == null);
+    paramString.startDownload();
+    return false;
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if (paramURLDrawableHandler != null) {
+      paramURLDrawableHandler.onFileDownloadStarted();
+    }
+    if ((paramDownloadParams.mExtraInfo != null) && ((paramDownloadParams.mExtraInfo instanceof amxa)))
+    {
+      paramOutputStream = (amxa)paramDownloadParams.mExtraInfo;
+      paramDownloadParams = paramOutputStream.jdField_a_of_type_JavaLangString;
+      paramOutputStream = paramOutputStream.jdField_b_of_type_JavaLangString;
+      paramDownloadParams = new File(paramDownloadParams);
+      if (paramDownloadParams.exists())
+      {
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.length());
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloImageDownloader", 2, "downloadImage file exsit url->" + paramOutputStream);
+        }
+      }
+      int i;
       do
       {
-        return;
-        ArConfigService.a(localArConfigService, false);
-        ArConfigService.a(localArConfigService);
-        ArConfigService.b(localArConfigService);
-        ArConfigService.c(localArConfigService);
-        ArConfigService.d(localArConfigService);
-        ArConfigService.e(localArConfigService);
-      } while (ArConfigService.e(localArConfigService));
-      i = (ArConfigService.a(localArConfigService) + ArConfigService.b(localArConfigService) + ArConfigService.c(localArConfigService) + ArConfigService.d(localArConfigService) + ArConfigService.e(localArConfigService)) / 5;
-      ArConfigService.a(localArConfigService).post(new ArConfigService.ArConfigManagerStub.1(this, localArConfigService, i));
-    } while (i != 100);
-    ArConfigService.a(localArConfigService).post(new ArConfigService.ArConfigManagerStub.2(this, localArConfigService));
+        return paramDownloadParams;
+        paramDownloadParams.getParentFile().mkdirs();
+        if ((BaseApplicationImpl.sApplication != null) && (!bgnt.g(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
+          paramURLDrawableHandler.onFileDownloadFailed(0);
+        }
+        bhhf localbhhf = new bhhf(paramOutputStream, paramDownloadParams);
+        localbhhf.b = 1;
+        localbhhf.p = false;
+        localbhhf.q = true;
+        localbhhf.r = true;
+        i = bhhh.a(localbhhf, null);
+        if (i != 0) {
+          break;
+        }
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.length());
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ApolloImageDownloader", 2, "url->" + paramOutputStream + " result->0");
+      return paramDownloadParams;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloImageDownloader", 2, "url->" + paramOutputStream + " result->" + i);
+      }
+    }
+    if (paramURLDrawableHandler != null) {
+      paramURLDrawableHandler.onFileDownloadFailed(0);
+    }
+    return null;
   }
   
-  public void c(int paramInt)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    Object localObject = null;
-    if (this.a != null) {
-      localObject = (ArConfigService)this.a.get();
-    }
-    if (localObject == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "onToolScannerActivityStateChanged error arConfigService is null");
-    }
-    do
+    Bitmap localBitmap = null;
+    amxa localamxa;
+    if ((paramFile != null) && (paramDownloadParams.mExtraInfo != null) && ((paramDownloadParams.mExtraInfo instanceof amxa)))
     {
-      return;
-      localObject = (yau)ArConfigService.m((ArConfigService)localObject).getManager(243);
-    } while (localObject == null);
-    ((yau)localObject).a(paramInt);
-  }
-  
-  public boolean c()
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
+      localamxa = (amxa)paramDownloadParams.mExtraInfo;
+      if (localamxa.jdField_a_of_type_Int != jdField_a_of_type_Int) {
+        break label102;
+      }
     }
-    if (localArConfigService == null)
+    for (;;)
     {
-      QLog.d("ArConfig_ArConfigService", 1, "isArSoReady error arConfigService is null");
-      return false;
+      try
+      {
+        localBitmap = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath());
+        localBitmap = bgmo.a(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+        paramFile = localBitmap;
+        return paramFile;
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloImageDownloader", 2, localThrowable.getMessage());
+        }
+      }
+      label102:
+      do
+      {
+        return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
+      } while (localamxa.jdField_a_of_type_Int != b);
+      if (paramFile.exists())
+      {
+        paramURLDrawableHandler = new BitmapFactory.Options();
+        paramURLDrawableHandler.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(paramFile.getPath(), paramURLDrawableHandler);
+        paramURLDrawableHandler.inSampleSize = bgmo.a(paramURLDrawableHandler, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight);
+        paramURLDrawableHandler.inJustDecodeBounds = false;
+        paramURLDrawableHandler.inPreferredConfig = Bitmap.Config.RGB_565;
+        try
+        {
+          paramFile = BitmapFactory.decodeFile(paramFile.getPath(), paramURLDrawableHandler);
+          if (paramFile != null) {
+            if (localamxa.jdField_a_of_type_Boolean)
+            {
+              i = 2130849989;
+              paramDownloadParams = bgmo.a(paramFile, i, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, true);
+              paramFile = paramDownloadParams;
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.d("ApolloImageDownloader", 2, "ApolloItemBuilder decodeFile bgBitmap:" + paramDownloadParams);
+              return paramDownloadParams;
+            }
+          }
+        }
+        catch (OutOfMemoryError paramFile)
+        {
+          for (;;)
+          {
+            QLog.e("ApolloImageDownloader", 1, "decode server pic oom!!");
+            System.gc();
+            paramFile = localThrowable;
+            continue;
+            int i = 2130849813;
+          }
+          paramDownloadParams = paramFile;
+        }
+      }
     }
-    if ((ArConfigService.a()) && (ArConfigService.a(localArConfigService)) && (ArConfigService.b(localArConfigService)) && (ArConfigService.c(localArConfigService)) && (ArConfigService.d(localArConfigService))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public void d()
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null)
+    for (;;)
     {
-      QLog.d("ArConfig_ArConfigService", 1, "downloadArCoreSo error arConfigService is null");
-      return;
+      paramFile = paramDownloadParams;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ApolloImageDownloader", 2, "ApolloItemBuilder decodeFile bgBitmap:" + paramDownloadParams);
+      return paramDownloadParams;
+      paramDownloadParams = null;
     }
-    ArConfigService.d(localArConfigService);
-  }
-  
-  public boolean d()
-  {
-    ArConfigService localArConfigService = null;
-    if (this.a != null) {
-      localArConfigService = (ArConfigService)this.a.get();
-    }
-    if (localArConfigService == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "isArCoreSoReady error arConfigService is null");
-      return false;
-    }
-    return ArConfigService.c(localArConfigService);
   }
 }
 

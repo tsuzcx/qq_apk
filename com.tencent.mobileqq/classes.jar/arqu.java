@@ -1,43 +1,37 @@
-import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-
-class arqu
-  implements aqxn
+public class arqu
 {
-  arqu(arqo paramarqo, Activity paramActivity, int paramInt) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = true;
+  int b;
+  int c = 0;
   
-  public void a() {}
-  
-  public void b()
+  public arqu(int paramInt)
   {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface == null)
-      {
-        QLog.e("FileModel<FileAssistant>", 1, "Start VideoActivity is not in QQ!");
-        return;
-      }
+    this(paramInt, null);
+  }
+  
+  public arqu(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    if (bgsp.a(this.jdField_a_of_type_JavaLangString)) {}
+    for (boolean bool = bgsp.a(paramString); (1 != 0) && (bool); bool = this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) {
+      return true;
     }
-    catch (Exception localException)
-    {
-      Object localObject;
-      for (;;)
-      {
-        localObject = null;
-      }
-      if (((arqo.a(this.jdField_a_of_type_Arqo).status == 0) || (arqo.a(this.jdField_a_of_type_Arqo).status == 3)) && (((this.jdField_a_of_type_AndroidAppActivity instanceof ChatActivity)) || ((this.jdField_a_of_type_AndroidAppActivity instanceof SplashActivity))) && (!arqo.a(this.jdField_a_of_type_Arqo).bSend))
-      {
-        localObject.a().a(arqo.a(this.jdField_a_of_type_Arqo).nSessionId);
-        return;
-      }
-      arqo.a(this.jdField_a_of_type_Arqo, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, 10004);
+    return false;
+  }
+  
+  public boolean a(arqu paramarqu)
+  {
+    if (paramarqu == null) {
+      return false;
     }
+    return a(paramarqu.jdField_a_of_type_Int, paramarqu.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,166 +1,195 @@
-import android.content.Intent;
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import android.text.TextUtils;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.av.service.RecvGVideoLevelInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.opengl.GLES20;
+import com.tencent.av.opengl.program.TextureProgram;
+import com.tencent.av.opengl.texture.YUVTexture;
+import com.tencent.av.opengl.utils.AVGLUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
 public class lzw
-  extends ameq
 {
-  public lzw(QQServiceForAV paramQQServiceForAV) {}
+  private int jdField_a_of_type_Int;
+  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private int jdField_b_of_type_Int;
+  private int[] jdField_b_of_type_ArrayOfInt;
+  private int c;
   
-  protected void a(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
+  private void a(int paramInt1, int paramInt2)
   {
-    QLog.w("QQServiceForAV", 1, "onOIDB0X899_0_Ret, isSuccess[" + paramBoolean + "], troopuin[" + paramLong1 + "], nFlag[" + paramInt1 + "], lStartUin[" + paramLong2 + "], result[" + paramInt2 + "], strErrorMsg[" + paramString + "]");
-    paramString = (QQAppInterface)this.a.a();
-    if ((paramBoolean) && (paramInt1 == 2))
+    if ((paramInt1 == 0) || (paramInt2 == 0) || ((this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2))) {
+      return;
+    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    if (this.jdField_a_of_type_JavaNioByteBuffer != null) {
+      this.jdField_a_of_type_JavaNioByteBuffer.clear();
+    }
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    if (this.c != -1)
     {
-      if (TextUtils.isEmpty(this.a.c)) {
-        this.a.c = paramString.getCurrentAccountUin();
-      }
-      paramLong2 = Long.valueOf(this.a.c).longValue();
-      label152:
-      oidb_0x899.memberlist localmemberlist;
-      if (paramList == null)
+      GLES20.glDeleteFramebuffers(0, new int[] { this.c }, 0);
+      this.c = -1;
+    }
+    this.c = AVGLUtils.initFrameBuffer(paramInt2, paramInt1, this.jdField_b_of_type_ArrayOfInt[0]);
+    b();
+  }
+  
+  private void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < this.jdField_a_of_type_Int * this.jdField_b_of_type_Int * 3 / 2) || (this.jdField_a_of_type_JavaNioByteBuffer == null) || (this.jdField_a_of_type_JavaNioByteBuffer.capacity() < this.jdField_a_of_type_Int * this.jdField_b_of_type_Int * 3 / 2)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    this.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte, 0, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    GLES20.glBindFramebuffer(36160, 0);
+    lpy.a(false);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    GLES20.glTexImage2D(3553, 0, 6409, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 6409, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    this.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int / 2);
+    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    lqy[] arrayOflqy;
+    if (paramInt1 == 0)
+    {
+      GLES20.glActiveTexture(33985);
+      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[1]);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glTexImage2D(3553, 0, 6409, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, 0, 6409, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+      this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+      this.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int + this.jdField_a_of_type_Int * this.jdField_b_of_type_Int / 4, this.jdField_a_of_type_Int * this.jdField_b_of_type_Int / 4);
+      this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+      GLES20.glActiveTexture(33986);
+      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[2]);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glTexImage2D(3553, 0, 6409, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, 0, 6409, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+      GLES20.glBindFramebuffer(36160, this.c);
+      GLES20.glViewport(0, 0, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+      GLES20.glClear(16640);
+      paramArrayOfByte = lqw.a(1);
+      arrayOflqy = paramArrayOfByte.a();
+      GLES20.glUseProgram(paramArrayOfByte.a());
+      GLES20.glUniform1f(arrayOflqy[2].jdField_a_of_type_Int, 1.0F);
+      GLES20.glUniform1f(arrayOflqy[7].jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+      GLES20.glUniform1f(arrayOflqy[8].jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      GLES20.glUniformMatrix4fv(arrayOflqy[9].jdField_a_of_type_Int, 1, false, YUVTexture.a, 0);
+      GLES20.glUniform1i(arrayOflqy[10].jdField_a_of_type_Int, paramInt1);
+      GLES20.glUniform1i(arrayOflqy[11].jdField_a_of_type_Int, 0);
+      GLES20.glDisable(3042);
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
+      GLES20.glUniform1i(arrayOflqy[4].jdField_a_of_type_Int, 0);
+      GLES20.glActiveTexture(33985);
+      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[1]);
+      GLES20.glUniform1i(arrayOflqy[5].jdField_a_of_type_Int, 1);
+      if (paramInt1 == 0)
       {
-        paramInt1 = 0;
-        paramInt2 = 0;
-        if (paramInt2 >= paramInt1) {
-          break label237;
-        }
-        localmemberlist = (oidb_0x899.memberlist)paramList.get(paramInt2);
-        if ((localmemberlist != null) && (localmemberlist.uint64_member_uin.has())) {
-          break label210;
-        }
+        GLES20.glActiveTexture(33986);
+        GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[2]);
+        GLES20.glUniform1i(arrayOflqy[6].jdField_a_of_type_Int, 2);
       }
-      for (;;)
-      {
-        paramInt2 += 1;
-        break label152;
-        paramInt1 = paramList.size();
+      if (paramInt2 % 4 != 1) {
+        break label925;
+      }
+      GLES20.glUniformMatrix4fv(arrayOflqy[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate90, 0);
+    }
+    for (;;)
+    {
+      GLES20.glUniformMatrix4fv(arrayOflqy[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
+      GLES20.glVertexAttribPointer(arrayOflqy[0].jdField_a_of_type_Int, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioFloatBuffer);
+      GLES20.glEnableVertexAttribArray(arrayOflqy[0].jdField_a_of_type_Int);
+      GLES20.glDrawArrays(5, 0, 4);
+      GLES20.glDisableVertexAttribArray(arrayOflqy[0].jdField_a_of_type_Int);
+      GLES20.glBindFramebuffer(36160, 0);
+      return;
+      if ((paramInt1 != 1) && (paramInt1 != 2) && (paramInt1 != 3)) {
         break;
-        label210:
-        if (localmemberlist.uint64_member_uin.get() == paramLong2) {
-          this.a.a(paramLong1, paramLong2);
-        }
       }
-      label237:
-      paramList = paramString;
-      if (paramString == null) {
-        paramList = (QQAppInterface)this.a.a();
-      }
-      paramList.removeObserver(this.a.jdField_a_of_type_Ameq);
+      GLES20.glActiveTexture(33985);
+      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[1]);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glTexImage2D(3553, 0, 6410, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, 0, 6410, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+      break;
+      label925:
+      GLES20.glUniformMatrix4fv(arrayOflqy[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate270, 0);
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4, int paramInt5, long paramLong)
+  private void b()
   {
-    paramString3 = (QQAppInterface)this.a.a();
-    if (paramBoolean)
-    {
-      paramString4 = new Intent();
-      paramString4.setAction("tencent.video.v2q.hide.webConfig");
-      paramString4.putExtra("troopUin", paramString1);
-      paramString4.putExtra("color", paramInt1);
-      paramString4.putExtra("url", paramString2);
-      paramString4.putExtra("grayFlag", paramInt2);
-      paramString3.getApp().sendBroadcast(paramString4);
-    }
-    paramString3.removeObserver(this.a.jdField_a_of_type_Ameq);
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, int paramInt1, boolean paramBoolean2, boolean paramBoolean3, int paramInt2, int paramInt3)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    String str = localQQAppInterface.getApp().getString(paramInt1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, String.format("onJoinOrExitOpenTroop --> success: %b, troopUin: %s, errorTips: %s isJoin: %b , visitorSpeakEnabled: %b, speakInterval: %d, startSpeakInterval: %d", new Object[] { Boolean.valueOf(paramBoolean1), paramString, str, Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
-    }
-    if (paramBoolean2)
-    {
-      Intent localIntent = new Intent();
-      localIntent.setAction("tencent.video.q2v.JoinOpenGroup");
-      localIntent.putExtra("troopUin", paramString);
-      localIntent.putExtra("success", paramBoolean1);
-      localIntent.putExtra("errorTips", str);
-      localIntent.putExtra("visitorSpeakEnabled", paramBoolean3);
-      localIntent.putExtra("speakInterval", paramInt2);
-      localIntent.putExtra("startSpeakInterval", paramInt3);
-      localQQAppInterface.getApp().sendBroadcast(localIntent);
-    }
-    localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ameq);
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.video.follow", 2, "QQServiceForAV, onGetFollowStatus:" + paramBoolean1 + "," + paramString + "," + paramBoolean2);
-    }
-    synchronized (this.a.jdField_a_of_type_AndroidOsRemoteCallbackList)
-    {
-      int j = this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.beginBroadcast();
-      int i = 0;
-      if (i < j)
-      {
-        if (paramBoolean2) {}
-        for (String str = "1";; str = "2") {
-          try
-          {
-            ((lzd)this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a(paramBoolean1, paramString, str, "getFollowStatus");
-            i += 1;
-          }
-          catch (RemoteException paramString)
-          {
-            if (!QLog.isColorLevel()) {
-              break label168;
-            }
-            QLog.e("nearby.video.follow", 2, "QQServiceForAV, onGetFollowStatus:" + paramString.toString());
-          }
-        }
-      }
-      label168:
-      this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.finishBroadcast();
+    if (this.jdField_a_of_type_JavaNioFloatBuffer != null) {
       return;
     }
+    float[] arrayOfFloat = new float[8];
+    arrayOfFloat[0] = (-0.5F + 0.0F);
+    arrayOfFloat[1] = (-0.5F + 0.0F);
+    arrayOfFloat[2] = (0.5F + 0.0F);
+    arrayOfFloat[3] = (-0.5F + 0.0F);
+    arrayOfFloat[4] = (-0.5F + 0.0F);
+    arrayOfFloat[5] = (0.5F + 0.0F);
+    arrayOfFloat[6] = (0.5F + 0.0F);
+    arrayOfFloat[7] = (0.5F + 0.0F);
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
+    this.jdField_a_of_type_JavaNioFloatBuffer.put(arrayOfFloat);
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
   }
   
-  protected void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
+  int a()
   {
-    synchronized (this.a.jdField_a_of_type_AndroidOsRemoteCallbackList)
+    return this.jdField_b_of_type_ArrayOfInt[0];
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaNioByteBuffer != null)
     {
-      int j = this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.beginBroadcast();
-      int i = 0;
-      for (;;)
-      {
-        if (i < j) {
-          try
-          {
-            ((lzd)this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a(paramArrayOfRecvGVideoLevelInfo);
-            i += 1;
-          }
-          catch (RemoteException paramArrayOfRecvGVideoLevelInfo)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("QQServiceForAV", 2, "callBack RemoteException", paramArrayOfRecvGVideoLevelInfo);
-            }
-          }
-        }
+      this.jdField_a_of_type_JavaNioByteBuffer.clear();
+      this.jdField_a_of_type_JavaNioByteBuffer = null;
+    }
+    if (this.c != -1)
+    {
+      GLES20.glDeleteFramebuffers(0, new int[] { this.c }, 0);
+      this.c = -1;
+    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
+  {
+    if (paramArrayOfByte != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SwitchFaceYUVRender", 2, "WL_DEBUG onDrawFrame width = " + paramInt1 + ", height = " + paramInt2 + ", frameFormat = " + paramInt3 + ", data.length = " + paramArrayOfByte.length + ", inFrameAngle = " + paramInt4);
       }
-      this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.finishBroadcast();
-      return;
+      a(paramInt1, paramInt2);
+      a(paramInt3, paramArrayOfByte, paramInt4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lzw
  * JD-Core Version:    0.7.0.1
  */

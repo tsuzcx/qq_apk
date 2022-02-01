@@ -1,8 +1,10 @@
+import android.view.View;
+
 public abstract interface bklf
 {
-  public abstract void a(String paramString);
+  public abstract void a(View paramView);
   
-  public abstract void a(String paramString, long paramLong, bkkq parambkkq, boolean paramBoolean);
+  public abstract void b(View paramView);
 }
 
 

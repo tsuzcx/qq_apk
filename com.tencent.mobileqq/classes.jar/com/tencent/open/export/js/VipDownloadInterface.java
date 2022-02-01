@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bflp;
-import bfmu;
-import bfmv;
-import bfod;
-import bfok;
-import bfpq;
-import bfpr;
-import bfqe;
-import bfqf;
-import bfqg;
+import bisy;
+import biud;
+import biue;
+import bivl;
+import bivr;
+import biwx;
+import biwy;
+import bixl;
+import bixm;
+import bixn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -30,11 +30,11 @@ import org.json.JSONObject;
 
 public class VipDownloadInterface
   extends BaseInterface
-  implements bfmu
+  implements biud
 {
   protected final Activity a;
   protected Handler a;
-  protected bfpr a;
+  protected biwy a;
   protected final WebView a;
   public final String a;
   protected String b = "";
@@ -42,7 +42,7 @@ public class VipDownloadInterface
   public VipDownloadInterface(Activity paramActivity, WebView paramWebView)
   {
     this.jdField_a_of_type_JavaLangString = VipDownloadInterface.class.getSimpleName();
-    bflp.c(this.jdField_a_of_type_JavaLangString, "init in");
+    bisy.c(this.jdField_a_of_type_JavaLangString, "init in");
     this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
@@ -51,9 +51,9 @@ public class VipDownloadInterface
     }
     for (;;)
     {
-      bfok.a().a(paramActivity);
-      bfok.a();
-      bflp.c(this.jdField_a_of_type_JavaLangString, "init out");
+      bivr.a().a(paramActivity);
+      bivr.a();
+      bisy.c(this.jdField_a_of_type_JavaLangString, "init out");
       return;
       paramActivity = localObject;
       if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {
@@ -72,7 +72,7 @@ public class VipDownloadInterface
     if (!hasRight()) {
       return false;
     }
-    bfod.a(paramString1, paramString2, true);
+    bivl.a(paramString1, paramString2, true);
     return true;
   }
   
@@ -81,7 +81,7 @@ public class VipDownloadInterface
     if (!hasRight()) {
       return;
     }
-    bfok.a().a(paramString);
+    bivr.a().a(paramString);
   }
   
   public void checkUpdate(String paramString)
@@ -91,7 +91,7 @@ public class VipDownloadInterface
   
   public void checkUpdate(String paramString1, String paramString2)
   {
-    bflp.c(this.jdField_a_of_type_JavaLangString, "enter checkUpdate json=" + paramString1);
+    bisy.c(this.jdField_a_of_type_JavaLangString, "enter checkUpdate json=" + paramString1);
     if (!hasRight()) {
       return;
     }
@@ -113,26 +113,26 @@ public class VipDownloadInterface
           i += 1;
         }
       }
-      if (this.jdField_a_of_type_Bfpr == null)
+      if (this.jdField_a_of_type_Biwy == null)
       {
-        this.jdField_a_of_type_Bfpr = new bfqg(this, paramString1);
-        bfpq.a().a(this.jdField_a_of_type_Bfpr);
+        this.jdField_a_of_type_Biwy = new bixn(this, paramString1);
+        biwx.a().a(this.jdField_a_of_type_Biwy);
       }
-      bfpq.a().a(paramString2);
+      biwx.a().a(paramString2);
       return;
     }
     catch (JSONException paramString1)
     {
-      bflp.c(this.jdField_a_of_type_JavaLangString, "httpRequest JSONException", paramString1);
+      bisy.c(this.jdField_a_of_type_JavaLangString, "httpRequest JSONException", paramString1);
     }
   }
   
   public void destroy()
   {
-    bflp.c(this.jdField_a_of_type_JavaLangString, "destroy");
-    bfmv.a().b(this);
-    if (bfpq.a()) {
-      bfpq.a().b(this.jdField_a_of_type_Bfpr);
+    bisy.c(this.jdField_a_of_type_JavaLangString, "destroy");
+    biue.a().b(this);
+    if (biwx.a()) {
+      biwx.a().b(this.jdField_a_of_type_Biwy);
     }
   }
   
@@ -152,7 +152,7 @@ public class VipDownloadInterface
     //   19: aload_1
     //   20: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   26: invokestatic 217	bflp:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   26: invokestatic 217	bisy:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   29: aload_0
     //   30: invokevirtual 109	com/tencent/open/export/js/VipDownloadInterface:hasRight	()Z
     //   33: ifne +4 -> 37
@@ -171,7 +171,7 @@ public class VipDownloadInterface
     //   60: invokevirtual 226	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   63: istore_2
     //   64: aload 7
-    //   66: getstatic 231	bfoh:B	Ljava/lang/String;
+    //   66: getstatic 231	bivp:B	Ljava/lang/String;
     //   69: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   72: astore 4
     //   74: aload 4
@@ -191,47 +191,47 @@ public class VipDownloadInterface
     //   108: aload 4
     //   110: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   113: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   116: invokestatic 217	bflp:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   116: invokestatic 217	bisy:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   119: iload_2
     //   120: ifne +225 -> 345
     //   123: aload 6
-    //   125: getstatic 241	bfoh:b	Ljava/lang/String;
+    //   125: getstatic 241	bivp:b	Ljava/lang/String;
     //   128: aload 7
     //   130: ldc 243
     //   132: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   135: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   138: aload 6
-    //   140: getstatic 249	bfoh:j	Ljava/lang/String;
+    //   140: getstatic 249	bivp:j	Ljava/lang/String;
     //   143: aload 7
     //   145: ldc 251
     //   147: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   150: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   153: aload 6
-    //   155: getstatic 254	bfoh:f	Ljava/lang/String;
+    //   155: getstatic 254	bivp:f	Ljava/lang/String;
     //   158: aload 7
     //   160: ldc_w 256
     //   163: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   166: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   169: aload 6
-    //   171: getstatic 259	bfoh:k	Ljava/lang/String;
+    //   171: getstatic 259	bivp:k	Ljava/lang/String;
     //   174: aload 7
     //   176: ldc_w 261
     //   179: invokevirtual 226	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   182: invokevirtual 265	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   185: aload 6
-    //   187: getstatic 268	bfoh:i	Ljava/lang/String;
+    //   187: getstatic 268	bivp:i	Ljava/lang/String;
     //   190: aload 7
     //   192: ldc_w 270
     //   195: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   198: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   201: aload 6
-    //   203: getstatic 273	bfoh:l	Ljava/lang/String;
+    //   203: getstatic 273	bivp:l	Ljava/lang/String;
     //   206: aload 7
     //   208: ldc_w 275
     //   211: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   214: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   217: aload 6
-    //   219: getstatic 231	bfoh:B	Ljava/lang/String;
+    //   219: getstatic 231	bivp:B	Ljava/lang/String;
     //   222: aload 4
     //   224: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   227: aload 7
@@ -266,28 +266,28 @@ public class VipDownloadInterface
     //   293: invokevirtual 290	org/json/JSONObject:toString	()Ljava/lang/String;
     //   296: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   299: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   302: invokestatic 217	bflp:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   302: invokestatic 217	bisy:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   305: aload_0
     //   306: getfield 42	com/tencent/open/export/js/VipDownloadInterface:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   309: aload 6
     //   311: aload 4
     //   313: aconst_null
     //   314: iconst_0
-    //   315: invokestatic 293	bfod:a	(Landroid/app/Activity;Landroid/os/Bundle;Ljava/lang/String;Lcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
+    //   315: invokestatic 293	bivl:a	(Landroid/app/Activity;Landroid/os/Bundle;Ljava/lang/String;Lcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
     //   318: return
     //   319: astore_1
     //   320: aload_0
     //   321: getfield 26	com/tencent/open/export/js/VipDownloadInterface:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   324: ldc_w 295
     //   327: aload_1
-    //   328: invokestatic 194	bflp:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   328: invokestatic 194	bisy:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   331: return
     //   332: astore_1
     //   333: aload_0
     //   334: getfield 26	com/tencent/open/export/js/VipDownloadInterface:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   337: ldc_w 297
     //   340: aload_1
-    //   341: invokestatic 194	bflp:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   341: invokestatic 194	bisy:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   344: return
     //   345: new 136	org/json/JSONObject
     //   348: dup
@@ -295,56 +295,56 @@ public class VipDownloadInterface
     //   350: invokespecial 138	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   353: astore 7
     //   355: aload 6
-    //   357: getstatic 241	bfoh:b	Ljava/lang/String;
+    //   357: getstatic 241	bivp:b	Ljava/lang/String;
     //   360: aload 7
     //   362: ldc 243
     //   364: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   367: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   370: aload 6
-    //   372: getstatic 249	bfoh:j	Ljava/lang/String;
+    //   372: getstatic 249	bivp:j	Ljava/lang/String;
     //   375: aload 7
     //   377: ldc 251
     //   379: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   382: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   385: aload 6
-    //   387: getstatic 254	bfoh:f	Ljava/lang/String;
+    //   387: getstatic 254	bivp:f	Ljava/lang/String;
     //   390: aload 7
     //   392: ldc_w 256
     //   395: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   398: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   401: aload 6
-    //   403: getstatic 259	bfoh:k	Ljava/lang/String;
+    //   403: getstatic 259	bivp:k	Ljava/lang/String;
     //   406: aload 7
     //   408: ldc_w 261
     //   411: invokevirtual 226	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   414: invokevirtual 265	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   417: aload 6
-    //   419: getstatic 268	bfoh:i	Ljava/lang/String;
+    //   419: getstatic 268	bivp:i	Ljava/lang/String;
     //   422: aload 7
     //   424: ldc_w 270
     //   427: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   430: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   433: aload 6
-    //   435: getstatic 273	bfoh:l	Ljava/lang/String;
+    //   435: getstatic 273	bivp:l	Ljava/lang/String;
     //   438: aload 7
     //   440: ldc_w 275
     //   443: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   446: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   449: aload 6
-    //   451: getstatic 300	bfoh:r	Ljava/lang/String;
+    //   451: getstatic 300	bivp:r	Ljava/lang/String;
     //   454: aload 7
     //   456: ldc_w 302
     //   459: invokevirtual 226	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   462: invokestatic 306	com/tencent/open/appcommon/js/DownloadInterface:changeIntToBoolean	(I)Z
     //   465: invokevirtual 310	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   468: aload 6
-    //   470: getstatic 313	bfoh:p	Ljava/lang/String;
+    //   470: getstatic 313	bivp:p	Ljava/lang/String;
     //   473: aload 7
     //   475: ldc_w 315
     //   478: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   481: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   484: aload 6
-    //   486: getstatic 231	bfoh:B	Ljava/lang/String;
+    //   486: getstatic 231	bivp:B	Ljava/lang/String;
     //   489: aload 4
     //   491: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   494: aload 7
@@ -372,7 +372,7 @@ public class VipDownloadInterface
     //   544: invokestatic 306	com/tencent/open/appcommon/js/DownloadInterface:changeIntToBoolean	(I)Z
     //   547: istore_3
     //   548: aload 6
-    //   550: getstatic 320	bfoh:o	Ljava/lang/String;
+    //   550: getstatic 320	bivp:o	Ljava/lang/String;
     //   553: iload_3
     //   554: invokevirtual 310	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   557: aload 7
@@ -445,39 +445,39 @@ public class VipDownloadInterface
     //   711: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   714: putfield 362	com/tencent/apkupdate/logic/data/ApkUpdateDetail:url	Ljava/lang/String;
     //   717: aload 6
-    //   719: getstatic 364	bfoh:c	Ljava/lang/String;
+    //   719: getstatic 364	bivp:c	Ljava/lang/String;
     //   722: aload 7
     //   724: ldc_w 366
     //   727: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   730: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   733: aload 6
-    //   735: getstatic 369	bfoh:d	Ljava/lang/String;
+    //   735: getstatic 369	bivp:d	Ljava/lang/String;
     //   738: aload 7
     //   740: ldc_w 371
     //   743: invokevirtual 150	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   746: invokevirtual 246	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   749: aload 6
-    //   751: getstatic 374	bfoh:e	Ljava/lang/String;
+    //   751: getstatic 374	bivp:e	Ljava/lang/String;
     //   754: aload 7
     //   756: ldc_w 376
     //   759: bipush 246
     //   761: invokevirtual 379	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   764: invokevirtual 265	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   767: aload 6
-    //   769: getstatic 382	bfoh:n	Ljava/lang/String;
+    //   769: getstatic 382	bivp:n	Ljava/lang/String;
     //   772: aload 7
     //   774: ldc_w 384
     //   777: invokevirtual 226	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   780: invokevirtual 265	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   783: aload 6
-    //   785: getstatic 387	bfoh:g	Ljava/lang/String;
+    //   785: getstatic 387	bivp:g	Ljava/lang/String;
     //   788: aload 7
     //   790: ldc_w 389
     //   793: invokevirtual 226	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   796: invokestatic 306	com/tencent/open/appcommon/js/DownloadInterface:changeIntToBoolean	(I)Z
     //   799: invokevirtual 310	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   802: aload 6
-    //   804: getstatic 392	bfoh:h	Ljava/lang/String;
+    //   804: getstatic 392	bivp:h	Ljava/lang/String;
     //   807: aload 7
     //   809: ldc_w 394
     //   812: invokevirtual 226	org/json/JSONObject:optInt	(Ljava/lang/String;)I
@@ -507,21 +507,21 @@ public class VipDownloadInterface
     //   871: invokevirtual 290	org/json/JSONObject:toString	()Ljava/lang/String;
     //   874: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   877: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   880: invokestatic 38	bflp:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   880: invokestatic 38	bisy:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   883: aload_0
     //   884: getfield 42	com/tencent/open/export/js/VipDownloadInterface:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   887: aload 6
     //   889: aload 4
     //   891: aload_1
     //   892: iload_2
-    //   893: invokestatic 293	bfod:a	(Landroid/app/Activity;Landroid/os/Bundle;Ljava/lang/String;Lcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
+    //   893: invokestatic 293	bivl:a	(Landroid/app/Activity;Landroid/os/Bundle;Ljava/lang/String;Lcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
     //   896: return
     //   897: astore_1
     //   898: aload_0
     //   899: getfield 26	com/tencent/open/export/js/VipDownloadInterface:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   902: ldc_w 297
     //   905: aload_1
-    //   906: invokestatic 194	bflp:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   906: invokestatic 194	bisy:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   909: return
     //   910: astore_1
     //   911: aconst_null
@@ -529,14 +529,14 @@ public class VipDownloadInterface
     //   913: aload_0
     //   914: getfield 26	com/tencent/open/export/js/VipDownloadInterface:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   917: ldc_w 396
-    //   920: invokestatic 38	bflp:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   920: invokestatic 38	bisy:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   923: goto -206 -> 717
     //   926: astore_1
     //   927: aload_0
     //   928: getfield 26	com/tencent/open/export/js/VipDownloadInterface:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   931: ldc_w 295
     //   934: aload_1
-    //   935: invokestatic 194	bflp:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   935: invokestatic 194	bisy:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   938: return
     //   939: astore 4
     //   941: goto -28 -> 913
@@ -587,7 +587,7 @@ public class VipDownloadInterface
   
   public String getDownloadVersion()
   {
-    return bfod.a() + "";
+    return bivl.a() + "";
   }
   
   public String getInterfaceName()
@@ -602,7 +602,7 @@ public class VipDownloadInterface
   
   public void getQueryDownloadAction(String paramString)
   {
-    bflp.b(this.jdField_a_of_type_JavaLangString, "enter getQueryDownloadAction = " + paramString);
+    bisy.b(this.jdField_a_of_type_JavaLangString, "enter getQueryDownloadAction = " + paramString);
     try
     {
       Object localObject = new JSONObject(paramString);
@@ -623,18 +623,18 @@ public class VipDownloadInterface
         localArrayList.add(localDownloadInfo);
         i += 1;
       }
-      bfod.a(localArrayList, new bfqe(this, (String)localObject));
+      bivl.a(localArrayList, new bixl(this, (String)localObject));
       return;
     }
     catch (JSONException paramString)
     {
-      bflp.c(this.jdField_a_of_type_JavaLangString, "getQueryDownloadAction>>>", paramString);
+      bisy.c(this.jdField_a_of_type_JavaLangString, "getQueryDownloadAction>>>", paramString);
     }
   }
   
   public void getQueryDownloadAction(String paramString1, String paramString2)
   {
-    bflp.a(this.jdField_a_of_type_JavaLangString, "enter getQueryDownloadAction = " + paramString1);
+    bisy.a(this.jdField_a_of_type_JavaLangString, "enter getQueryDownloadAction = " + paramString1);
     if (!hasRight()) {
       return;
     }
@@ -651,12 +651,12 @@ public class VipDownloadInterface
         paramString2.add(localDownloadInfo);
         i += 1;
       }
-      bfod.a(paramString2, new bfqf(this));
+      bivl.a(paramString2, new bixm(this));
       return;
     }
     catch (JSONException paramString1)
     {
-      bflp.c(this.jdField_a_of_type_JavaLangString, "getQueryDownloadAction>>>", paramString1);
+      bisy.c(this.jdField_a_of_type_JavaLangString, "getQueryDownloadAction>>>", paramString1);
     }
   }
   
@@ -667,13 +667,13 @@ public class VipDownloadInterface
   
   public void registerDownloadCallBackListener(String paramString)
   {
-    bfmv.a().a(this);
+    biue.a().a(this);
     this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.export.js.VipDownloadInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,28 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class actf
-  extends aluu
+public class actf
+  implements View.OnClickListener
 {
-  actf(acte paramacte, BaseActivity paramBaseActivity) {}
+  public actf(GdtBaseHalfScreenFragment paramGdtBaseHalfScreenFragment) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this);
-    if (paramBoolean)
+    if ((GdtBaseHalfScreenFragment.a(this.a) != null) && (GdtBaseHalfScreenFragment.a(this.a).canGoBack())) {
+      GdtBaseHalfScreenFragment.a(this.a).goBack();
+    }
+    for (;;)
     {
-      if ((this.jdField_a_of_type_Acte.a != null) && (this.jdField_a_of_type_Acte.a.isShowing())) {
-        this.jdField_a_of_type_Acte.a.dismiss();
-      }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, alud.a(2131702987), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (this.a.getActivity() != null) {
+        this.a.getActivity().finish();
+      }
     }
-    if ((this.jdField_a_of_type_Acte.a != null) && (this.jdField_a_of_type_Acte.a.isShowing())) {
-      this.jdField_a_of_type_Acte.a.dismiss();
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, alud.a(2131702988), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
 }
 

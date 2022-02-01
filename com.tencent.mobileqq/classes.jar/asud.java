@@ -1,6 +1,18 @@
-public abstract interface asud
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
+class asud
+  implements atve
 {
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  asud(asuc paramasuc, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void a()
+  {
+    QfileBaseCloudFileTabView.e(this.jdField_a_of_type_Asuc.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+  }
+  
+  public void b() {}
 }
 
 

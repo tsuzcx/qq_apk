@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.10.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahps
-  extends ameq
+  implements ahor
 {
-  public ahps(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (1 == paramInt1) {
-      ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.10.1(this, paramString));
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
-  {
-    if ((paramBoolean) && (paramList != null)) {
-      this.a.a(paramList);
-    }
+    paramagup.f(paramagwc.b);
   }
 }
 

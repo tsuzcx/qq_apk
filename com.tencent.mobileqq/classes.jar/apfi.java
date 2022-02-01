@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.PrecoverResource;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
-public final class apfi
-  implements Parcelable.Creator<PrecoverResource>
+public class apfi
+  implements View.OnTouchListener
 {
-  public PrecoverResource a(Parcel paramParcel)
-  {
-    return new PrecoverResource(paramParcel);
-  }
+  public apfi(ARScanEntryView paramARScanEntryView) {}
   
-  public PrecoverResource[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new PrecoverResource[paramInt];
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

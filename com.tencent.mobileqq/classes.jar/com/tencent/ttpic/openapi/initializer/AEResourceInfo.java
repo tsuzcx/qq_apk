@@ -26,7 +26,7 @@ public class AEResourceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.AEResourceInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package cooperation.qzone.webviewplugin;
 
-import bjyj;
+import bmmu;
 
 public class QzoneQunFeedJsPlugin$6
   implements Runnable
 {
-  public QzoneQunFeedJsPlugin$6(bjyj parambjyj) {}
+  public QzoneQunFeedJsPlugin$6(bmmu parambmmu) {}
   
   public void run()
   {
-    bjyj.a(this.this$0, bjyj.a(this.this$0));
+    bmmu.a(this.this$0, bmmu.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

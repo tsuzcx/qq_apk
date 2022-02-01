@@ -1,38 +1,30 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
-final class bekb
-  implements ValueCallback<String>
+public class bekb
+  extends ClickableSpan
 {
-  bekb(WebViewFragment paramWebViewFragment) {}
+  public bekb(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SwiftWebViewUtils", 2, "evaluateJavascript: " + paramString);
-    }
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (String str = paramString.trim();; str = "")
+    TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, 2002, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.t);
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.getVisibility() == 0)) {}
+    for (int i = 2;; i = 1)
     {
-      if (!TextUtils.isEmpty(str))
-      {
-        paramString = str;
-        if (str.startsWith("\"")) {
-          paramString = str.replaceFirst("\"", "");
-        }
-        str = paramString;
-        if (paramString.endsWith("\"")) {
-          str = paramString.substring(0, paramString.length() - 1);
-        }
-        localBundle.putString("banner_wording", String.format(alud.a(2131715091), new Object[] { str }));
-      }
-      this.a.d(localBundle);
+      bcst.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_add_topic", i, 0, "", "", "", "");
       return;
     }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

@@ -1,25 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
 
-public class aykv
-  implements ruy
+class aykv
+  extends AnimatorListenerAdapter
 {
-  public aykv(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  aykv(ayko paramayko) {}
   
-  public void a(String paramString)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      FragmentActivity localFragmentActivity = this.a.getActivity();
-      if ((localFragmentActivity instanceof ActiveEntitySearchActivity))
-      {
-        ((ActiveEntitySearchActivity)localFragmentActivity).b(paramString);
-        if (this.a.a != null) {
-          ayvm.a("sub_result", "clk_hot", new String[] { paramString, ayvm.a(this.a.a) });
-        }
-      }
+    if (ayko.a(this.a) != null) {
+      ayko.a(this.a).setVisibility(0);
     }
   }
 }

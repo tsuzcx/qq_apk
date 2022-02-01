@@ -1,161 +1,93 @@
-import com.tencent.qphone.base.util.Cryptor;
+import android.os.Vibrator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.CountDownLatch;
 
-public class awfi
+class awfi
+  implements awfu
 {
-  public int a;
-  public long a;
-  private Cryptor jdField_a_of_type_ComTencentQphoneBaseUtilCryptor;
-  public String a;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  public long b;
-  public String b;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private int c;
-  public String c;
-  private int d;
-  private int e;
+  awfi(awfh paramawfh) {}
   
-  public awfi(awfh paramawfh)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramawfh.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramawfh.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramawfh.jdField_a_of_type_Int;
-    this.d = paramawfh.jdField_b_of_type_Int;
-    this.e = paramawfh.jdField_c_of_type_Int;
-    if (paramawfh.jdField_b_of_type_Boolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("Action", 2, "fun startMagicPlay begins, sumPlayTimes:" + this.a.jdField_c_of_type_Int + ",actionGlobalData.openSound:" + this.a.jdField_a_of_type_Awfj.d);
+    }
+    Object localObject;
+    if (this.a.jdField_c_of_type_Int == 0)
     {
-      this.jdField_a_of_type_Long = paramawfh.d;
-      this.jdField_a_of_type_ArrayOfByte = a(paramawfh.jdField_c_of_type_Long);
-      this.jdField_b_of_type_Long = paramawfh.jdField_b_of_type_Long;
-      this.jdField_b_of_type_ArrayOfByte = a(paramawfh.jdField_a_of_type_Long);
+      this.a.b();
+      if ((this.a.jdField_a_of_type_Awfx.c != null) && (this.a.jdField_a_of_type_Awfx.c.length() > 0) && (this.a.jdField_a_of_type_Awfj.d))
+      {
+        if (this.a.jdField_a_of_type_Awfx.e > 0)
+        {
+          localObject = this.a.jdField_a_of_type_Awfx;
+          ((awfx)localObject).e -= 1;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Action", 2, "fun startMagicPlay begins, start play Sound.");
+        }
+        this.a.jdField_a_of_type_Awgj.a(this.a.jdField_a_of_type_Awfx.c, this.a.jdField_a_of_type_Awfx.e);
+      }
+      if (this.a.jdField_a_of_type_Awfx.a)
+      {
+        this.a.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)BaseApplicationImpl.getContext().getSystemService("vibrator"));
+        if (this.a.jdField_a_of_type_Awfx.h != -1) {
+          break label311;
+        }
+        this.a.jdField_a_of_type_AndroidOsVibrator.vibrate(new long[] { 0L, 1000L }, 0);
+      }
+    }
+    for (;;)
+    {
+      localObject = this.a;
+      ((awfh)localObject).jdField_c_of_type_Int += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("Action", 2, "fun startMagicPlay ends, sumPlayTimes:" + this.a.jdField_c_of_type_Int);
+      }
       return;
+      label311:
+      this.a.jdField_a_of_type_AndroidOsVibrator.vibrate(this.a.jdField_a_of_type_Awfx.h * 1000);
     }
-    this.jdField_a_of_type_Long = paramawfh.jdField_b_of_type_Long;
-    this.jdField_a_of_type_ArrayOfByte = a(paramawfh.jdField_a_of_type_Long);
   }
   
-  private byte[] a(long paramLong)
+  public void b()
   {
-    for (Object localObject = this.jdField_a_of_type_JavaLangString; ((String)localObject).length() < 16; localObject = (String)localObject + (String)localObject) {}
-    byte[] arrayOfByte1 = ((String)localObject).getBytes();
-    byte[] arrayOfByte2 = String.valueOf(paramLong).getBytes();
-    if (arrayOfByte1.length > arrayOfByte2.length) {}
-    for (localObject = arrayOfByte1;; localObject = arrayOfByte2)
+    if (QLog.isColorLevel()) {
+      QLog.d("Action", 2, "func endMagicPlay begins, isStop:" + this.a.jdField_c_of_type_Boolean + ",timeout:" + this.a.jdField_a_of_type_Int + ",playTimes:" + this.a.jdField_b_of_type_Int + ",sumPlayTimes:" + this.a.jdField_c_of_type_Int + ",isTimeout:" + this.a.jdField_b_of_type_Boolean);
+    }
+    if (this.a.jdField_c_of_type_Boolean) {
+      this.a.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    }
+    do
     {
-      int i = 0;
-      while (i < Math.min(arrayOfByte1.length, arrayOfByte2.length))
+      return;
+      if (this.a.jdField_a_of_type_Int == -1)
       {
-        localObject[i] = ((byte)(arrayOfByte1[i] ^ arrayOfByte2[i]));
-        i += 1;
+        if (this.a.jdField_b_of_type_Int == -1)
+        {
+          this.a.jdField_a_of_type_Awgj.a(this.a.jdField_a_of_type_Awfx);
+          return;
+        }
+        if (this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int)
+        {
+          this.a.jdField_a_of_type_Awgj.a(this.a.jdField_a_of_type_Awfx);
+          return;
+        }
+        if (this.a.jdField_b_of_type_Int == this.a.jdField_c_of_type_Int)
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+          return;
+        }
       }
-    }
-    if (this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor == null)
-    {
-      this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor = new Cryptor();
-      this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor.enableResultRandom(false);
-    }
-    return localObject;
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String a(String paramString)
-  {
-    Object localObject = null;
-    try
-    {
-      paramString = bdhe.a(this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor.encrypt(paramString.getBytes(), this.jdField_a_of_type_ArrayOfByte));
-      return paramString;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        paramString = localObject;
-      } while (!QLog.isColorLevel());
-      QLog.d("OpenApi.App", 2, "encrypt", localException);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_b_of_type_Int = (this.d & paramInt1);
-    this.jdField_c_of_type_Int = (this.e & paramInt2);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (this.jdField_a_of_type_Int & paramInt) > 0;
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    return ((this.e & paramInt1) > 0) && ((this.d & paramInt2) > 0);
-  }
-  
-  public int b()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String b(String paramString)
-  {
-    try
-    {
-      paramString = bdhe.a(paramString);
-      paramString = new String(this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor.decrypt(paramString, this.jdField_a_of_type_ArrayOfByte));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenApi.App", 2, "decrypt", paramString);
-      }
-    }
-    return null;
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return ((this.jdField_c_of_type_Int & paramInt) > 0) && ((this.jdField_b_of_type_Int & 0x40000000) > 0);
-  }
-  
-  public boolean b(int paramInt1, int paramInt2)
-  {
-    return ((this.jdField_c_of_type_Int & paramInt1) > 0) && ((this.jdField_b_of_type_Int & paramInt2) > 0);
-  }
-  
-  public String c(String paramString)
-  {
-    try
-    {
-      paramString = bdhe.a(paramString);
-      paramString = new String(this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor.decrypt(paramString, this.jdField_b_of_type_ArrayOfByte));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenApi.App", 2, "decryptLastData", paramString);
-      }
-    }
-    return null;
-  }
-  
-  public boolean c(int paramInt)
-  {
-    return (this.e & paramInt) > 0;
+    } while (this.a.jdField_b_of_type_Boolean);
+    this.a.jdField_a_of_type_Awgj.a(this.a.jdField_a_of_type_Awfx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awfi
  * JD-Core Version:    0.7.0.1
  */

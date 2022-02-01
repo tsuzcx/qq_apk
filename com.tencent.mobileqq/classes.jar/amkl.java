@@ -1,64 +1,68 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import android.view.ViewGroup;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.SettingMeApolloViewController;
+import com.tencent.mobileqq.apollo.SettingMeApolloViewController.5.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.GrayTipsSpan;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class amkl
+  implements amur
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddMessageHelper", 2, "-----addDatingSafetyGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bdeu.a(paramString2));
-    }
-    long l = ayzl.a();
-    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)azaf.a(-1028);
-    localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, -1028, paramInt, l);
-    localMessageForGrayTips.isread = true;
-    if (!alww.a(paramQQAppInterface, localMessageForGrayTips)) {
-      paramQQAppInterface.a().a(localMessageForGrayTips, paramQQAppInterface.getCurrentAccountUin());
-    }
-  }
+  public amkl(SettingMeApolloViewController paramSettingMeApolloViewController) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, ArrayList<GrayTipsSpan> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bdeu.a(paramString2));
-    }
-    if ((paramBoolean1) && (abti.e(paramInt)) && (QLog.isColorLevel())) {
-      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage faild : no troop uin");
-    }
-    long l = ayzl.a();
-    if (paramBoolean1) {}
-    for (int i = -5001;; i = -5000)
+    if (this.a.jdField_a_of_type_Ammo == null) {}
+    Object localObject;
+    ViewGroup localViewGroup;
+    do
     {
-      QQMessageFacade.Message localMessage = paramQQAppInterface.a().a(paramString1, paramInt);
-      MessageForNewGrayTips localMessageForNewGrayTips = (MessageForNewGrayTips)azaf.a(i);
-      localMessageForNewGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, i, paramInt, l);
-      if (localMessage != null) {
-        localMessageForNewGrayTips.shmsgseq = localMessage.shmsgseq;
-      }
-      localMessageForNewGrayTips.isread = paramBoolean3;
-      localMessageForNewGrayTips.spans = paramArrayList;
-      localMessageForNewGrayTips.updateMsgData();
-      if ((!paramBoolean2) || (!alww.a(paramQQAppInterface, localMessageForNewGrayTips, false))) {
-        paramQQAppInterface.a().a(localMessageForNewGrayTips, paramQQAppInterface.getCurrentAccountUin());
-      }
-      return;
-    }
+      do
+      {
+        do
+        {
+          return;
+          localObject = (QQSettingMe)SettingMeApolloViewController.a(this.a).get();
+        } while (localObject == null);
+        localObject = ((QQSettingMe)localObject).a();
+      } while (localObject == null);
+      localViewGroup = (ViewGroup)SettingMeApolloViewController.b(this.a).get();
+    } while ((localViewGroup == null) || (this.a.jdField_a_of_type_Ammo.a(SettingMeApolloViewController.a(this.a), this.a.jdField_a_of_type_Int, (AppInterface)localObject, localViewGroup.getContext()) != 0));
+    this.a.jdField_a_of_type_Ammo.a(SettingMeApolloViewController.a(this.a), localViewGroup.getContext(), (QQAppInterface)localObject, this.a.jdField_a_of_type_Int);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    a(paramQQAppInterface, paramString1, paramString2, paramInt, null, paramBoolean1, paramBoolean2, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("SettingMeApolloViewController", 2, new Object[] { "[onApolloClick] ", "apolloStatus:", Integer.valueOf(paramInt1), ",clickPart:", Integer.valueOf(paramInt2), ",apolloId:", paramString });
+    }
+    Object localObject = (QQSettingMe)SettingMeApolloViewController.a(this.a).get();
+    if (localObject == null) {}
+    ViewGroup localViewGroup;
+    do
+    {
+      do
+      {
+        return;
+        localObject = ((QQSettingMe)localObject).a();
+      } while (localObject == null);
+      localViewGroup = (ViewGroup)SettingMeApolloViewController.b(this.a).get();
+    } while ((localViewGroup == null) || (paramInt1 == 0));
+    ThreadManager.getUIHandler().post(new SettingMeApolloViewController.5.1(this, paramInt2, localViewGroup, (QQAppInterface)localObject, paramString));
+  }
+  
+  public void b()
+  {
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amkl
  * JD-Core Version:    0.7.0.1
  */

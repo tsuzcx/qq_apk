@@ -1,29 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.profile.like.PraiseManager;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-class aprb
-  implements awst
+public class aprb
+  extends akif
 {
-  aprb(apqh paramapqh) {}
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  public void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
+  public aprb(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    MessengerService localMessengerService = (MessengerService)this.a.a.get();
-    if (localMessengerService != null)
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_ark_app_res_path");
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
+    this.b = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new aprc(this));
+  }
+  
+  public void onBackPressed(boolean paramBoolean)
+  {
+    if ("FROM_PHOTO_LIST".equals(this.jdField_a_of_type_Akic.from))
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("id", paramInt2);
-      localBundle.putInt("code", paramInt1);
-      localBundle.putString("url", paramString);
-      paramBundle.putBundle("response", localBundle);
-      localMessengerService.a(paramBundle);
-      if ((paramInt1 == 0) && (MessengerService.e(localMessengerService) != null) && ((MessengerService.f(localMessengerService) instanceof QQAppInterface))) {
-        ((PraiseManager)((QQAppInterface)MessengerService.g(localMessengerService)).getManager(209)).a(paramInt2, true, "from_praise_mall");
-      }
+      Intent localIntent = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
+      localIntent.putExtra("PhotoConst.ALWAYS_SHOW_NUMBER_WHEN_ONLY_ONE_IMAGE", true);
+      localIntent.putExtra("key_ark_app_res_path", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
+      localIntent.putExtra("key_ark_app_engine_res_dir", this.b);
+      localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
+      localIntent.putExtra("enter_from", 3);
     }
+    super.onBackPressed(paramBoolean);
   }
 }
 

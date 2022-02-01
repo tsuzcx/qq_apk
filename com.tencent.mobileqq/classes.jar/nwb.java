@@ -1,27 +1,23 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 class nwb
-  implements ViewBase.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  nwb(nvz paramnvz) {}
+  nwb(nvu paramnvu, JsResult paramJsResult, Context paramContext) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramViewBase.getEventAttachedData() == null) {
-      return;
-    }
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramViewBase.getEventAttachedData()));
-    paramViewBase.getNativeView().getContext().startActivity(localIntent);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nwb
  * JD-Core Version:    0.7.0.1
  */

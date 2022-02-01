@@ -1,34 +1,26 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.widget.ksong.KSongView;
 
-class aknc
-  implements DialogInterface.OnClickListener
+public class aknc
+  extends bidv
 {
-  aknc(aknb paramaknb) {}
+  public aknc(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(aknb.a(this.a), 2, "On Click Left Button! ");
-    }
-    if (this.a.mRuntime.a() != null) {
-      this.a.mRuntime.a().finish();
-    }
-    for (;;)
-    {
-      aknb.a(this.a, 1);
-      return;
-      if (QLog.isDevelopLevel()) {
-        QLog.d(aknb.a(this.a), 4, "Call back object is null!");
-      }
-    }
+    super.a();
+    this.a.b = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a();
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130847297));
+    this.a.c.setText(anni.a(2131712076));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aknc
  * JD-Core Version:    0.7.0.1
  */

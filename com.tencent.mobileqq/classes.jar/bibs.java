@@ -1,43 +1,47 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.widget.TCWNumberPicker;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class bibs
-  implements InputFilter
+class bibs
+  extends Animation
 {
-  private bibs(TCWNumberPicker paramTCWNumberPicker) {}
+  private int jdField_a_of_type_Int;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public bibs(View paramView)
   {
-    int i = 0;
-    if (TCWNumberPicker.a(this.a) == null)
-    {
-      paramCharSequence = TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      return paramCharSequence;
-    }
-    String str = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
-    paramSpanned = String.valueOf(String.valueOf(paramSpanned.subSequence(0, paramInt3)) + str + paramSpanned.subSequence(paramInt4, paramSpanned.length())).toLowerCase();
-    String[] arrayOfString = TCWNumberPicker.a(this.a);
-    paramInt2 = arrayOfString.length;
-    paramInt1 = i;
-    for (;;)
-    {
-      if (paramInt1 >= paramInt2) {
-        break label154;
-      }
-      paramCharSequence = str;
-      if (arrayOfString[paramInt1].toLowerCase().startsWith(paramSpanned)) {
-        break;
-      }
-      paramInt1 += 1;
-    }
-    label154:
-    return "";
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    this.jdField_a_of_type_AndroidGraphicsCamera.save();
+    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(90.0F * paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, -this.b / 2);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int / 2, this.b / 2);
+    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bibs
  * JD-Core Version:    0.7.0.1
  */

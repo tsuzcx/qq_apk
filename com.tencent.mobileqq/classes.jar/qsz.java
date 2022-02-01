@@ -1,54 +1,107 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
-import java.util.ArrayList;
+import android.content.Context;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmall;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qsz
-  extends BaseAdapter
+  extends qqt
 {
-  public qsz(EditVideoFragment paramEditVideoFragment) {}
-  
-  public ColumnInfo a(int paramInt)
+  public qsz(Context paramContext, aobu paramaobu, snh paramsnh)
   {
-    return (ColumnInfo)EditVideoFragment.a(this.a).get(paramInt);
+    super(paramContext, paramaobu, paramsnh);
   }
   
-  public int getCount()
+  public qqt a()
   {
-    return EditVideoFragment.a(this.a).size();
+    this.jdField_a_of_type_Boolean = true;
+    return c(this.jdField_a_of_type_Snh, this.jdField_a_of_type_Aobu).q().l().n().h().g().j();
   }
   
-  public long getItemId(int paramInt)
+  public qqt d()
   {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramViewGroup = LayoutInflater.from(this.a.getActivity()).inflate(2131560009, paramViewGroup, false);
-      paramView = new qta(this.a.getActivity(), (ViewGroup)paramViewGroup);
-      paramViewGroup.setTag(paramView);
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    for (;;)
-    {
-      if (EditVideoFragment.a(this.a) != null) {
-        paramView.a(a(paramInt), EditVideoFragment.a(this.a).columnID);
-      }
-      return paramViewGroup;
-      qta localqta = (qta)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = localqta;
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish);
     }
+    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentSmall)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
+    {
+      RelativeLayout localRelativeLayout1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      localRelativeLayout1.setPadding(afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      RelativeLayout localRelativeLayout2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      localRelativeLayout2.setBackgroundResource(2130842837);
+      localRelativeLayout2.setLayoutParams(new RelativeLayout.LayoutParams(-1, afur.a(79.0F, this.jdField_a_of_type_AndroidContentContext.getResources())));
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(afur.a(104.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -1);
+      localLayoutParams.addRule(11);
+      ((ComponentContentSmall)this.jdField_a_of_type_Qqs).setLayoutParams(localLayoutParams);
+      ((ComponentContentSmall)this.jdField_a_of_type_Qqs).setId(1);
+      localRelativeLayout2.addView((ComponentContentSmall)this.jdField_a_of_type_Qqs);
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+      localLayoutParams.addRule(9);
+      localLayoutParams.addRule(15);
+      localLayoutParams.addRule(0, ((ComponentContentSmall)this.jdField_a_of_type_Qqs).getId());
+      localLayoutParams.setMargins(afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, afur.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
+      localRelativeLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      localRelativeLayout1.addView(localRelativeLayout2);
+      localRelativeLayout2.setOnClickListener(new qta(this));
+      localLinearLayout.addView(localRelativeLayout1);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public qqt e()
+  {
+    return null;
+  }
+  
+  public qqt g()
+  {
+    this.jdField_a_of_type_Qqs = new ComponentContentSmall(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public qqt o()
+  {
+    super.o();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qsz
  * JD-Core Version:    0.7.0.1
  */

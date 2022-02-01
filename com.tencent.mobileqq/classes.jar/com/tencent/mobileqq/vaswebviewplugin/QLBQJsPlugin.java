@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.text.TextUtils;
-import begz;
+import bhod;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -44,7 +44,7 @@ public class QLBQJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QLBQJsPlugin
  * JD-Core Version:    0.7.0.1
  */

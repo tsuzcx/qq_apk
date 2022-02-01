@@ -1,54 +1,47 @@
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class stk
-  implements bhtv
+class stk
+  implements AdapterView.OnItemClickListener
 {
-  public stk(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  stk(stj paramstj, Context paramContext) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramInt)
+    pyk localpyk = (pyk)this.jdField_a_of_type_Stj.getItem(paramInt);
+    Object localObject;
+    if ((localpyk != null) && (!TextUtils.isEmpty(localpyk.b)))
     {
-    default: 
-      abvl.a().a("list_subscript");
+      if (!localpyk.b.startsWith("mqq://")) {
+        break label178;
+      }
+      localObject = bgng.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, localpyk.b);
+      if (localObject != null) {
+        ((bgmp)localObject).a();
+      }
     }
     for (;;)
     {
-      return;
-      abvl.a().a("list_subscript", false);
-      paramInt = 0;
-      while (paramInt <= paramAbsListView.getChildCount())
-      {
-        Object localObject = paramAbsListView.getChildAt(paramInt);
-        if ((localObject != null) && ((((View)localObject).getTag() instanceof stp)))
-        {
-          localObject = (stp)((View)localObject).getTag();
-          Drawable localDrawable = ((stp)localObject).b.getDrawable();
-          if ((localDrawable != null) && ((localDrawable instanceof URLDrawable)) && (!((URLDrawable)localDrawable).isDownloadStarted()))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("SubscriptFeedsActivity", 2, "list child view start download pic!  uin : " + ((stp)localObject).a);
-            }
-            ((URLDrawable)localDrawable).startDownload();
-            ((URLDrawable)localDrawable).setAutoDownload(true);
-          }
-        }
-        paramInt += 1;
+      localObject = new phi().b().a();
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        oat.a(null, "CliOper", "", "", "0X80092FE", "0X80092FE", 0, 0, "" + localpyk.c, "" + localpyk.a, "", (String)localObject, false);
       }
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      label178:
+      pha.b(stj.a(this.jdField_a_of_type_Stj), localpyk.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     stk
  * JD-Core Version:    0.7.0.1
  */

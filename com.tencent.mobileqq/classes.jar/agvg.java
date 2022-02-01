@@ -1,16 +1,30 @@
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
 
 class agvg
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  agvg(agvf paramagvf) {}
+  agvg(agup paramagup) {}
   
   public void onClick(View paramView)
   {
-    if (!this.a.N) {
-      acjm.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = bkho.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131718656);
+      paramView.c(2131690582);
+      paramView.a(new agvh(this));
+      paramView.a(new agvi(this, paramView));
+      paramView.show();
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
     }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

@@ -1,22 +1,10 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.image.URLImageView;
 
-public class akfr
-  implements Animation.AnimationListener
+class akfr
 {
-  public akfr(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public URLImageView a;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  private akfr(akfp paramakfp) {}
 }
 
 

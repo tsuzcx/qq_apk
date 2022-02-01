@@ -1,63 +1,71 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import java.lang.ref.WeakReference;
 
 public class otb
-  implements AladdinConfigHandler
+  implements ota
 {
-  private static final boolean a;
-  private static boolean b;
+  public otb(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
   
-  static
+  public void a(View paramView, int paramInt)
   {
-    if (((Integer)bkbq.a("readinjoy_channel_mode", Integer.valueOf(-1))).intValue() == 2) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramInt == nxw.aA) && (opz.g(ReadInJoyArticleBottomVideoView.a(this.a))))
     {
-      a = bool;
-      b = true;
+      opz.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), ReadInJoyArticleBottomVideoView.a(this.a), paramInt);
       return;
     }
-  }
-  
-  public static boolean a()
-  {
-    return false;
-  }
-  
-  public static boolean b()
-  {
-    return b;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("ChannelModeConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = osq.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    if (paramInt == nxw.aB)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("ChannelModeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "channel_mode")) {
-        bkbq.a("readinjoy_channel_mode", Integer.valueOf(Integer.valueOf(str2).intValue()));
+      nxw.a(new omp().a(ReadInJoyArticleBottomVideoView.a(this.a)).a(ReadInJoyArticleBottomVideoView.a(this.a)).a(nxw.a).b(ReadInJoyArticleBottomVideoView.a(this.a)).a(ReadInJoyArticleBottomVideoView.a(this.a)).d(paramInt).a());
+      ReadInJoyArticleBottomVideoView.a(this.a);
+      return;
+    }
+    Object localObject;
+    boolean bool1;
+    boolean bool2;
+    if (ReadInJoyArticleBottomVideoView.a(this.a) != null) {
+      if (ReadInJoyArticleBottomVideoView.a(this.a).D != null)
+      {
+        localObject = ReadInJoyArticleBottomVideoView.a(this.a).D;
+        bool1 = bgnw.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);
+        long l = ReadInJoyArticleBottomVideoView.a(this.a).c;
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          bool2 = nxp.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);
+        }
       }
     }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("ChannelModeConfigHandler", 1, "[onWipeConfig]");
-    bkbq.a("readinjoy_channel_mode", Integer.valueOf(-1));
+    for (;;)
+    {
+      if ((bool1) || (bool2)) {
+        if (bool1) {
+          break label307;
+        }
+      }
+      label307:
+      for (localObject = new oml(false);; localObject = null)
+      {
+        ubb.c(paramView.getContext(), oqk.a(ReadInJoyArticleBottomVideoView.a(this.a)), null, 2, true, (oml)localObject);
+        olm.a(true, (Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), oqk.a(ReadInJoyArticleBottomVideoView.a(this.a)), 2, nxw.a, 3);
+        return;
+        ReadInJoyArticleBottomVideoView.a(this.a, paramView, true, paramInt);
+        return;
+      }
+      bool2 = false;
+      continue;
+      bool1 = false;
+      localObject = "";
+      break;
+      bool2 = false;
+      bool1 = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     otb
  * JD-Core Version:    0.7.0.1
  */

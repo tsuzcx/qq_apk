@@ -1,24 +1,72 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
-class bbec
-  implements BusinessObserver
+public class bbec
+  extends aqkz<bbed>
 {
-  bbec(bbea parambbea, bbej parambbej) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  @NonNull
+  public bbed a(int paramInt)
   {
-    if (paramBoolean)
+    return new bbed();
+  }
+  
+  @Nullable
+  public bbed a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-      this.jdField_a_of_type_Bbej.k = 1;
-      this.jdField_a_of_type_Bbea.a.a(1, 1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ScreenShotConfigProcessor", 2, "onParsed : " + paramArrayOfaqlg[0].a);
+      }
+      return bbed.a(paramArrayOfaqlg[0].a);
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    return new bbed();
+  }
+  
+  public void a(bbed parambbed)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + parambbed);
     }
-    QLog.d("TribeVideoListPlayerFragment", 2, "dianZan failed!!!");
+    bben.a(parambbed);
+  }
+  
+  public Class<bbed> clazz()
+  {
+    return bbed.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 485;
   }
 }
 

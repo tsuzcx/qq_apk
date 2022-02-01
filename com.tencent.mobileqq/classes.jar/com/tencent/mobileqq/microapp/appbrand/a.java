@@ -1,30 +1,26 @@
 package com.tencent.mobileqq.microapp.appbrand;
 
 import Wallet.ApkgConfig;
-import ajem;
+import akwm;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Base64;
-import bdna;
-import bdnn;
+import bgsc;
+import bgsp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.microapp.MiniAppInterface;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
-import com.tencent.mobileqq.microapp.appbrand.a.a.y;
 import com.tencent.mobileqq.microapp.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.microapp.appbrand.page.AppBrandServiceEventInterface;
 import com.tencent.mobileqq.microapp.appbrand.page.PageWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
-import com.tencent.mobileqq.microapp.appbrand.ui.AppBrandUI;
-import com.tencent.mobileqq.microapp.appbrand.utils.p;
 import com.tencent.mobileqq.microapp.sdk.LaunchParam;
 import com.tencent.mobileqq.microapp.sdk.MiniAppException;
 import com.tencent.mobileqq.microapp.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.microapp.ui.NavigationBar;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
@@ -37,34 +33,34 @@ public final class a
 {
   public String a;
   public int b;
-  public volatile com.tencent.mobileqq.microapp.apkg.f c;
+  public volatile com.tencent.mobileqq.microapp.a.c c;
   public BaseActivity d;
   public MiniAppInterface e;
   public k f;
   public AppBrandPageContainer g;
-  public y h;
+  public com.tencent.mobileqq.microapp.appbrand.a.a.f h;
   public ServiceWebview i;
   public boolean j;
   boolean k;
   public long l = -1L;
   
-  public a(BaseActivity paramBaseActivity, k paramk, com.tencent.mobileqq.microapp.apkg.f paramf)
+  public a(BaseActivity paramBaseActivity, k paramk, com.tencent.mobileqq.microapp.a.c paramc)
   {
     this.d = paramBaseActivity;
-    this.c = paramf;
+    this.c = paramc;
     this.f = paramk;
     this.g = new AppBrandPageContainer(paramBaseActivity, this);
     AppInterface localAppInterface = paramBaseActivity.getAppInterface();
     if ((localAppInterface instanceof MiniAppInterface)) {
       this.e = ((MiniAppInterface)localAppInterface);
     }
-    if ((this.e == null) || (paramk == null) || (paramf == null) || (paramf.f == null) || (paramf.b == null)) {
-      throw new MiniAppException("app params error, apkgInfo=" + paramf + ",appId=" + this.a + ",appInterface=" + this.e + ",appBrandRuntimeContainer=" + paramk);
+    if ((this.e == null) || (paramk == null) || (paramc == null) || (paramc.f == null) || (paramc.b == null)) {
+      throw new MiniAppException("app params error, apkgInfo=" + paramc + ",appId=" + this.a + ",appInterface=" + this.e + ",appBrandRuntimeContainer=" + paramk);
     }
-    this.b = paramf.f.getRuntimeType();
-    this.a = paramf.d;
-    this.h = new y(paramBaseActivity, this);
-    com.tencent.mobileqq.microapp.appbrand.utils.c.a();
+    this.b = paramc.f.getRuntimeType();
+    this.a = paramc.d;
+    this.h = new com.tencent.mobileqq.microapp.appbrand.a.a.f(paramBaseActivity, this);
+    com.tencent.mobileqq.microapp.appbrand.b.c.a();
   }
   
   public String a(String paramString1, String paramString2, BaseAppBrandWebview paramBaseAppBrandWebview, int paramInt)
@@ -85,7 +81,17 @@ public final class a
     }
     this.g.cleanup(false);
     this.h.f();
-    p.a().a(this.i, this.d);
+    com.tencent.mobileqq.microapp.appbrand.b.h.a().a(this.i, this.d);
+  }
+  
+  public final void a(com.tencent.mobileqq.microapp.a.c paramc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppBrandRuntime", 4, "updateApkgInfo. apkgInfo=" + paramc + " | " + this);
+    }
+    if (paramc != null) {
+      this.c = paramc;
+    }
   }
   
   public final void a(MiniAppConfig paramMiniAppConfig)
@@ -97,22 +103,15 @@ public final class a
     this.h.d();
     this.g.setVisibility(0);
     this.g.bringToFront();
-    Object localObject = (AbsAppBrandPage)this.g.pageLinkedList.peek();
-    if (localObject != null)
-    {
-      localObject = ((AbsAppBrandPage)localObject).getNavBar();
-      if (localObject != null) {
-        ((NavigationBar)localObject).d();
-      }
-    }
-    localObject = new JSONObject();
+    this.g.pageLinkedList.peek();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("scene", paramMiniAppConfig.launchParam.scene);
-      ((JSONObject)localObject).put("appId", this.a);
-      a("onAppEnterForeground", ((JSONObject)localObject).toString());
+      localJSONObject.put("scene", paramMiniAppConfig.launchParam.scene);
+      localJSONObject.put("appId", this.a);
+      a("onAppEnterForeground", localJSONObject.toString());
       this.c.a(paramMiniAppConfig);
-      com.tencent.mobileqq.microapp.appbrand.utils.b.a().b(this.c);
+      com.tencent.mobileqq.microapp.appbrand.b.b.a().a(this.c);
       com.tencent.mobileqq.microapp.app.b.a().a("resumePlayer");
       f();
       d();
@@ -124,16 +123,6 @@ public final class a
       {
         localJSONException.printStackTrace();
       }
-    }
-  }
-  
-  public final void a(com.tencent.mobileqq.microapp.apkg.f paramf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "updateApkgInfo. apkgInfo=" + paramf + " | " + this);
-    }
-    if (paramf != null) {
-      this.c = paramf;
     }
   }
   
@@ -240,7 +229,7 @@ public final class a
       try
       {
         ((JSONObject)localObject2).put("appId", this.a);
-        ((JSONObject)localObject2).put("entryPathInConfig", this.c.b.b);
+        ((JSONObject)localObject2).put("entryPathInConfig", this.c.b.f);
         paramString2 = paramString1;
         if (!TextUtils.isEmpty(paramString3))
         {
@@ -255,7 +244,7 @@ public final class a
       }
     }
     paramString2 = ((JSONObject)localObject2).toString();
-    bdna.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
+    bgsc.a(this.d, 1001, 1, "web_share", "", str4, str2, (String)localObject1, str3, paramString1, "web", paramString2, "micro_app", (String)localObject3, null, null, null, null, null, null, null, null, 7, null, -1L);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -269,23 +258,23 @@ public final class a
     this.h.c();
     String str = paramString;
     if (!this.c.k(paramString)) {
-      str = this.c.b.b;
+      str = this.c.b.f;
     }
-    this.i = p.a().a(this.a);
-    if (this.i.apkgInfo == null) {
-      this.i.apkgInfo = this.c;
+    this.i = com.tencent.mobileqq.microapp.appbrand.b.h.a().a(this.a);
+    if (this.i.apkgInfo$5475ea27 == null) {
+      this.i.apkgInfo$5475ea27 = this.c;
     }
     this.i.appBrandEventInterface = this;
     if (!paramBoolean)
     {
-      this.i.initService(this.c, null);
+      this.i.initService$cfb2ece(this.c, null);
       this.g.launch(str, "appLaunch");
     }
     for (;;)
     {
       com.tencent.mobileqq.microapp.app.b.a().a("resetPlayer");
       return;
-      this.i.initService(this.c, new b(this, str));
+      this.i.initService$cfb2ece(this.c, new b(this, str));
     }
   }
   
@@ -344,7 +333,7 @@ public final class a
     {
       localJSONObject1.put("miniAppId", this.c.d);
       localJSONObject1.put("scene", this.c.f.launchParam.scene);
-      localJSONObject2.put("page", com.tencent.mobileqq.microapp.b.a.c(this.g.getCurrentPage().getUrl()));
+      localJSONObject2.put("page", com.tencent.mobileqq.microapp.a.c.n(this.g.getCurrentPage().getUrl()));
       this.l = VACDReportUtil.a(localJSONObject1.toString(), "MiniAppStat", "MiniAppVisitReport", "PageVisit", localJSONObject2.toString(), 0, null);
       return;
     }
@@ -358,26 +347,13 @@ public final class a
   
   public void f()
   {
-    ajem.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
-  }
-  
-  public final void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 4, "moveAppBrandToBack. | " + this);
-    }
-    if ((this.d instanceof AppBrandUI))
-    {
-      ((AppBrandUI)this.d).a(true, true);
-      return;
-    }
-    this.d.moveTaskToBack(true);
+    akwm.a(this.c.f.launchParam, this.c.f.config.mini_version, new c(this));
   }
   
   public void onServiceEvent(String paramString1, String paramString2, int[] paramArrayOfInt)
   {
     if ("custom_event_onAppRouteDone".equals(paramString1)) {
-      com.tencent.mobileqq.microapp.appbrand.utils.a.a(new d(this));
+      com.tencent.mobileqq.microapp.appbrand.b.a.a(new d(this));
     }
     int n = paramArrayOfInt.length;
     int m = 0;
@@ -416,21 +392,21 @@ public final class a
           if (TextUtils.isEmpty(paramString1)) {
             break label584;
           }
-          com.tencent.mobileqq.microapp.appbrand.utils.a.a(new e(this, paramString1));
+          com.tencent.mobileqq.microapp.appbrand.b.a.a(new e(this, paramString1));
           break label584;
         }
         if (!"navigateTo".equals(paramString1)) {
           break;
         }
         paramString1 = new JSONObject(paramString2).optString("url", "");
-        paramString2 = com.tencent.mobileqq.microapp.b.a.a(paramString1, "url");
+        paramString2 = com.tencent.mobileqq.microapp.a.c.b(paramString1, "url");
         if (QLog.isColorLevel()) {
           QLog.i("AppBrandRuntime", 2, "forwardUrl>>>>>>>>>> " + paramString2);
         }
-        if ((!com.tencent.mobileqq.microapp.apkg.f.a(this.c)) || (!paramString1.startsWith("page/QQ/forward.html"))) {
+        if ((!com.tencent.mobileqq.microapp.a.c.a(this.c)) || (!paramString1.startsWith("page/QQ/forward.html"))) {
           break label407;
         }
-        boolean bool = bdnn.a(paramString2);
+        boolean bool = bgsp.a(paramString2);
         if (bool) {
           break label407;
         }
@@ -471,14 +447,14 @@ public final class a
       continue;
       label407:
       if (!TextUtils.isEmpty(paramString1)) {
-        com.tencent.mobileqq.microapp.appbrand.utils.a.a(new f(this, paramString1));
+        com.tencent.mobileqq.microapp.appbrand.b.a.a(new f(this, paramString1));
       }
     }
     if ("navigateBack".equals(paramString1))
     {
       paramInt = new JSONObject(paramString2).optInt("delta", 0);
       if (paramInt > 0) {
-        com.tencent.mobileqq.microapp.appbrand.utils.a.a(new g(this, paramInt));
+        com.tencent.mobileqq.microapp.appbrand.b.a.a(new g(this, paramInt));
       }
     }
     else
@@ -489,14 +465,14 @@ public final class a
         if (TextUtils.isEmpty(paramString1)) {
           break label590;
         }
-        com.tencent.mobileqq.microapp.appbrand.utils.a.a(new h(this, paramString1));
+        com.tencent.mobileqq.microapp.appbrand.b.a.a(new h(this, paramString1));
         break label590;
       }
       if ("reLaunch".equals(paramString1))
       {
         paramString1 = new JSONObject(paramString2).optString("url", "");
         if (!TextUtils.isEmpty(paramString1)) {
-          com.tencent.mobileqq.microapp.appbrand.utils.a.a(new i(this, paramString1));
+          com.tencent.mobileqq.microapp.appbrand.b.a.a(new i(this, paramString1));
         }
         return "";
       }
@@ -516,7 +492,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.a
  * JD-Core Version:    0.7.0.1
  */

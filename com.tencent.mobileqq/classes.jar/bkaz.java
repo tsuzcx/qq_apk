@@ -1,9 +1,8 @@
-public class bkaz
+public abstract interface bkaz
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

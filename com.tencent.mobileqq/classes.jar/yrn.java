@@ -1,24 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public class yrn
-  extends altm
+class yrn
+  implements zcw<Boolean, zdc>
 {
-  public yrn(TroopMemberApiService paramTroopMemberApiService) {}
+  yrn(yrm paramyrm) {}
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public Void a(Boolean paramBoolean, zdc paramzdc)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 30);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramString });
-    localBundle.putSerializable("observer_type", Integer.valueOf(2));
-    this.a.a(3, localBundle);
+    if (paramBoolean.booleanValue())
+    {
+      yqp.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramzdc.b.size(), paramzdc.jdField_a_of_type_JavaUtilList.size())));
+      this.a.a.setEnabled(true);
+    }
+    for (;;)
+    {
+      return null;
+      yqp.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramzdc.jdField_a_of_type_Int);
+      QQToast.a(this.a.a(), 1, anni.a(2131702435) + paramzdc.jdField_a_of_type_Int, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yrn
  * JD-Core Version:    0.7.0.1
  */

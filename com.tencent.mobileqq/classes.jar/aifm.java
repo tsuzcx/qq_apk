@@ -1,42 +1,14 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class aifm
-  extends ndm
+  implements Comparator<MessageRecord>
 {
-  aifm(aiez paramaiez) {}
+  aifm(aifl paramaifl) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MainAssistObserver", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString() + " mOpenId = " + this.a.jdField_b_of_type_JavaLangString);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) || (this.a.c)) {}
-    do
-    {
-      do
-      {
-        return;
-        if (this.a.jdField_a_of_type_Bety != null) {
-          this.a.jdField_a_of_type_Bety.hide();
-        }
-        if (this.a.jdField_b_of_type_AndroidOsHandler != null) {
-          this.a.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        }
-        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MainAssistObserver", 2, "openIdObserver success");
-        }
-      } while ((TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) || (paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString)));
-      this.a.i();
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("MainAssistObserver", 2, "openIdObserver fail");
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

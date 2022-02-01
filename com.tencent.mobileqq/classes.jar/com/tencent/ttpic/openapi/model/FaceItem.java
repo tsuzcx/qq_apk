@@ -4,6 +4,7 @@ import com.tencent.ttpic.model.CharmRange;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FaceItem
@@ -20,8 +21,7 @@ public class FaceItem
   public boolean disable3DCorrect = false;
   public String externalTriggerWords;
   public String faceExchangeImage;
-  public boolean faceExchangeImageDisableOpacity = false;
-  public boolean faceExchangeImageFullFace = false;
+  public boolean faceExchangeImageDisableFaceCrop = false;
   public List<Float> facePoints;
   public int featureStatType;
   public StickerItem.ValueRange featureStatValueRange;
@@ -41,6 +41,7 @@ public class FaceItem
   public int playCount;
   public int preTriggerType;
   public int randomGroupNum;
+  public ArrayList<String> triggerState;
   private String triggerType = String.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value);
   public int width;
   
@@ -48,19 +49,13 @@ public class FaceItem
   
   public FaceItem(String paramString, float paramFloat, int paramInt1, int paramInt2, List<Float> paramList)
   {
-    this(paramString, false, false, paramFloat, paramInt1, paramInt2, paramList);
+    this(paramString, false, paramFloat, paramInt1, paramInt2, paramList);
   }
   
   public FaceItem(String paramString, boolean paramBoolean, float paramFloat, int paramInt1, int paramInt2, List<Float> paramList)
   {
-    this(paramString, paramBoolean, false, paramFloat, paramInt1, paramInt2, paramList);
-  }
-  
-  public FaceItem(String paramString, boolean paramBoolean1, boolean paramBoolean2, float paramFloat, int paramInt1, int paramInt2, List<Float> paramList)
-  {
     this.faceExchangeImage = paramString;
-    this.faceExchangeImageFullFace = paramBoolean1;
-    this.faceExchangeImageDisableOpacity = paramBoolean2;
+    this.faceExchangeImageDisableFaceCrop = paramBoolean;
     this.blendAlpha = paramFloat;
     this.grayScale = paramInt1;
     this.featureType = FaceOffUtil.getFeatureType(paramInt2);
@@ -92,7 +87,7 @@ public class FaceItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.FaceItem
  * JD-Core Version:    0.7.0.1
  */

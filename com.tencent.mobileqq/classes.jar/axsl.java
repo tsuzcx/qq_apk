@@ -1,199 +1,144 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 class axsl
-  extends BaseAdapter
+  implements axkz
 {
-  private int jdField_a_of_type_Int;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private axsm jdField_a_of_type_Axsm;
-  private List<ShareActionSheetBuilder.ActionSheetItem> jdField_a_of_type_JavaUtilList;
+  axsl(axsd paramaxsd) {}
   
-  public axsl(Context paramContext, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
-  
-  public ShareActionSheetBuilder.ActionSheetItem a(int paramInt)
-  {
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0))
+    if (paramInt == 0)
     {
-      localActionSheetItem = null;
-      return localActionSheetItem;
-    }
-    int j = -1;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label89;
-      }
-      localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)this.jdField_a_of_type_JavaUtilList.get(i);
-      int k = j;
-      if (localActionSheetItem != null)
+      localObject = new oidb_0xada.RspBody();
+      try
       {
-        k = j;
-        if (localActionSheetItem.visibility == 0) {
-          k = j + 1;
+        ((oidb_0xada.RspBody)localObject).mergeFrom(paramArrayOfByte);
+        if (((oidb_0xada.RspBody)localObject).busi_buf.has())
+        {
+          paramBundle = new ilive_new_anchor_follow_interface.FollowActionRsp();
+          paramBundle.mergeFrom(((oidb_0xada.RspBody)localObject).busi_buf.get().toByteArray());
+          if (paramBundle.ret.has())
+          {
+            paramInt = paramBundle.ret.get();
+            if (paramInt != 0) {}
+          }
         }
       }
-      if (k == paramInt) {
-        break;
-      }
-      i += 1;
-      j = k;
-    }
-    label89:
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)localIterator.next();
-      if ((localActionSheetItem == null) || (localActionSheetItem.visibility != 0)) {
-        break label60;
-      }
-      i += 1;
-    }
-    label60:
-    for (;;)
-    {
-      break;
-      return i;
-    }
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidContentResResources == null) {
-      this.jdField_a_of_type_AndroidContentResResources = paramViewGroup.getContext().getResources();
-    }
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131296685));
-    }
-    if (this.jdField_a_of_type_Axsm == null) {
-      this.jdField_a_of_type_Axsm = new axsm(paramViewGroup.getContext());
-    }
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558862, paramViewGroup, false);
-      paramViewGroup = new bdmy();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376561));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376562));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem = a(paramInt);
-      if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem != null) {
-        break;
-      }
-      QLog.e("ShareActionSheet", 2, "ShareActionSheet.ActionSheetItemAdapter.getView() getItem(" + paramInt + ") == null !!!");
-      return paramView;
-      paramViewGroup = (bdmy)paramView.getTag();
-    }
-    paramView.setId(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.id);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(axsj.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.label, 6));
-    paramInt = -8947849;
-    Object localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
-    if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.enable)
-    {
-      ((TextView)localObject).setTextColor(paramInt);
-      if (!paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconNeedBg) {
-        break label454;
-      }
-      if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable == null) {
-        break label397;
-      }
-      localObject = paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable;
-      label262:
-      paramInt = ((Drawable)localObject).getIntrinsicWidth();
-      int j = ((Drawable)localObject).getIntrinsicHeight();
-      if (this.jdField_a_of_type_Int <= paramInt) {
-        break label416;
-      }
-      paramInt = (int)((this.jdField_a_of_type_Int - paramInt) / 2.0F);
-      label294:
-      if (this.jdField_a_of_type_Int > j) {
-        i = (int)((this.jdField_a_of_type_Int - j) / 2.0F);
-      }
-      localObject = this.jdField_a_of_type_Axsm.a((Drawable)localObject, paramInt, i);
-      if (!paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.enable) {
-        break label421;
-      }
-      Drawable localDrawable = axsm.a(this.jdField_a_of_type_Axsm, (Drawable)localObject);
-      localObject = this.jdField_a_of_type_Axsm.a((Drawable)localObject, localDrawable);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    }
-    for (;;)
-    {
-      if (Build.VERSION.SDK_INT < 16) {
-        break label444;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackground(null);
-      return paramView;
-      paramInt = 2138535799;
-      break;
-      label397:
-      localObject = this.jdField_a_of_type_AndroidContentResResources.getDrawable(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.icon);
-      break label262;
-      label416:
-      paramInt = 0;
-      break label294;
-      label421:
-      localObject = axsm.b(this.jdField_a_of_type_Axsm, (Drawable)localObject);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    }
-    label444:
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-    return paramView;
-    label454:
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837550);
-    if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable != null)
-    {
-      if (Build.VERSION.SDK_INT >= 16)
+      catch (InvalidProtocolBufferMicroException paramBundle)
       {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackground(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable);
-        return paramView;
+        boolean bool;
+        label159:
+        label465:
+        paramArrayOfByte = "";
+        paramInt = 0;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable);
-      return paramView;
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.icon);
-    return paramView;
+    try
+    {
+      ((axby)this.a.a.app.getManager(106)).d.put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
+      paramArrayOfByte = this.a;
+      if (axsd.a(this.a)) {
+        break label465;
+      }
+      bool = true;
+      axsd.a(paramArrayOfByte, bool);
+      axsd.a(this.a, 1, 60);
+      paramArrayOfByte = "";
+      paramInt = 1;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      for (;;)
+      {
+        paramArrayOfByte = "";
+        paramInt = 1;
+      }
+      break label159;
+    }
+    if (paramInt != 0)
+    {
+      ((axby)this.a.a.app.getManager(106)).d.put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
+      paramBundle = this.a.a;
+      if (axsd.a(this.a)) {}
+      for (paramArrayOfByte = anni.a(2131706158);; paramArrayOfByte = anni.a(2131706095))
+      {
+        for (;;)
+        {
+          QQToast.a(paramBundle, 2, paramArrayOfByte, 1).a();
+          if (!TextUtils.isEmpty(axsd.a(this.a).uin)) {
+            ((axja)this.a.a.app.a(119)).notifyUI(1000, true, new Object[] { Boolean.valueOf(axsd.a(this.a)), axsd.a(this.a).uin });
+          }
+          if ((!axsd.a(this.a)) && (axsd.a(this.a).getChildAt(2).getVisibility() != 0))
+          {
+            paramArrayOfByte = (Button)axsd.a(this.a).getChildAt(1).findViewById(2131380031);
+            paramArrayOfByte.setTextColor(this.a.a.getResources().getColor(2131167017));
+            paramArrayOfByte.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130845518));
+          }
+          if (axsd.a(this.a))
+          {
+            paramArrayOfByte = (Button)axsd.a(this.a).getChildAt(1).findViewById(2131380031);
+            paramArrayOfByte.setTextColor(this.a.a.getResources().getColor(2131167019));
+            paramArrayOfByte.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130845519));
+          }
+          return;
+          bool = false;
+          break;
+          paramArrayOfByte = paramBundle.msg.get();
+          try
+          {
+            QLog.i("NearbyProfileDisplayPanel", 1, "follow, followRsp.ret=" + paramBundle.ret.get() + ",errMsg=" + paramArrayOfByte);
+            paramInt = 0;
+          }
+          catch (InvalidProtocolBufferMicroException paramBundle)
+          {
+            for (;;)
+            {
+              paramInt = 0;
+            }
+            paramArrayOfByte = "";
+            paramInt = 0;
+          }
+        }
+        QLog.i("NearbyProfileDisplayPanel", 1, "follow, followRsp.ret not has ");
+        break label648;
+        QLog.i("NearbyProfileDisplayPanel", 1, "follow, rspBody.busi_buf not has ");
+        break label648;
+        paramBundle.printStackTrace();
+        break label159;
+        QLog.i("NearbyProfileDisplayPanel", 1, "follow, errorCode=" + paramInt);
+        break label648;
+      }
+    }
+    Object localObject = this.a.a;
+    paramBundle = paramArrayOfByte;
+    if (TextUtils.isEmpty(paramArrayOfByte)) {
+      paramBundle = anni.a(2131706143);
+    }
+    QQToast.a((Context)localObject, 1, paramBundle, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axsl
  * JD-Core Version:    0.7.0.1
  */

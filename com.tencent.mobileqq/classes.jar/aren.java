@@ -1,122 +1,533 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.support.annotation.CallSuper;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.PriorityQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class aren
+public abstract class aren<DATA, CONFIG extends arfh>
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private String b;
-  private String c;
-  private String d;
+  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+  protected float a;
+  protected final int a;
+  protected long a;
+  protected Bitmap a;
+  protected Canvas a;
+  protected areo a;
+  protected arew a;
+  protected CONFIG a;
+  protected argf a;
+  private DATA jdField_a_of_type_JavaLangObject;
+  private HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap;
+  protected final PriorityQueue<arer> a;
+  protected boolean a;
+  protected float b;
+  protected int b;
+  protected long b;
+  protected boolean b;
+  protected float c;
+  protected int c;
+  protected boolean c;
+  private float d;
+  protected int d;
+  protected boolean d;
+  private float jdField_e_of_type_Float = -1.0F;
+  protected int e;
+  private volatile boolean jdField_e_of_type_Boolean = true;
+  protected int f;
+  private volatile boolean f;
+  protected int g;
+  
+  public aren(arew paramarew)
+  {
+    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_b_of_type_Float = -1.0F;
+    this.jdField_f_of_type_Int = -1;
+    this.jdField_d_of_type_Float = -1.0F;
+    this.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_Arew = paramarew;
+    this.jdField_a_of_type_JavaUtilPriorityQueue = new PriorityQueue();
+    j();
+    e();
+  }
+  
+  private void j()
+  {
+    try
+    {
+      this.jdField_a_of_type_Arfh = this.jdField_a_of_type_Arew.a(a());
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!ardw.a().a().a()) {}
+      throw new RuntimeException("IDanmakuUIConfig should been provided by IDanmakuUIConfigCreator in DanmakuContext");
+    }
+  }
+  
+  private void k()
+  {
+    this.jdField_a_of_type_JavaUtilPriorityQueue.clear();
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_b_of_type_Float = -1.0F;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_e_of_type_Int = 0;
+    this.g = 0;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_f_of_type_Boolean = true;
+    this.jdField_d_of_type_Float = -1.0F;
+    this.jdField_e_of_type_Float = -1.0F;
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = localIterator.next();
+        if ((localObject instanceof arep)) {
+          ((arep)localObject).a();
+        }
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaUtilHashMap = null;
+    }
+  }
+  
+  public abstract float a();
+  
+  public abstract int a();
+  
+  public int a(int paramInt)
+  {
+    if (this.g > paramInt) {
+      return paramInt - 1;
+    }
+    return this.g;
+  }
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
+    return this.jdField_a_of_type_Argf.a();
   }
   
-  public String a()
+  public Bitmap a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
-  public List<ExcitingTransferHostInfo> a()
+  public Canvas a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.jdField_a_of_type_AndroidGraphicsCanvas;
   }
   
-  public void a(long paramLong)
+  public arga a(argk paramargk)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    return new arga(-1);
   }
   
-  public void a(String paramString)
+  public DATA a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return this.jdField_a_of_type_JavaLangObject;
   }
   
-  public void a(List<ExcitingTransferHostInfo> paramList)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    a(new argf(arew.a().d()));
+    b();
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_e_of_type_Float = paramFloat;
+  }
+  
+  public abstract void a(float paramFloat1, float paramFloat2, long paramLong1, long paramLong2);
+  
+  public void a(int paramInt)
+  {
+    this.jdField_e_of_type_Int = paramInt;
+  }
+  
+  public abstract void a(long paramLong);
+  
+  public final void a(long paramLong1, long paramLong2)
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      this.jdField_a_of_type_Long += paramLong1;
+    }
+    a(paramLong2);
+    if (!this.jdField_a_of_type_JavaUtilPriorityQueue.isEmpty())
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilPriorityQueue.iterator();
+      while (localIterator.hasNext())
+      {
+        arer localarer = (arer)localIterator.next();
+        localarer.jdField_a_of_type_Long -= paramLong1;
+        if (localarer.jdField_a_of_type_Long <= 0L)
+        {
+          localIterator.remove();
+          localarer.jdField_a_of_type_Areq.a(this);
+        }
+      }
+    }
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_AndroidGraphicsCanvas = paramCanvas;
+    c(true);
+  }
+  
+  public void a(argf paramargf)
+  {
+    this.jdField_a_of_type_Argf = paramargf;
+  }
+  
+  public void a(DATA paramDATA)
+  {
+    if ((ardw.a().a().a()) && (paramDATA == null)) {
+      throw new RuntimeException("Danmaku data should been null");
+    }
+    this.jdField_a_of_type_JavaLangObject = paramDATA;
+    c(true);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean)
+    {
+      this.jdField_d_of_type_Int = 1;
+      return;
+    }
+    this.jdField_d_of_type_Int = 0;
   }
   
   public boolean a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFilePath is null");
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    boolean bool = true;
+    float[] arrayOfFloat = b(paramLong);
+    if (arrayOfFloat == null) {
       return false;
     }
-    if (0L == this.jdField_a_of_type_Long)
+    if ((arrayOfFloat[0] <= paramFloat1) && (paramFloat1 <= arrayOfFloat[2] + paramFloat3) && (arrayOfFloat[1] <= paramFloat2) && (paramFloat2 <= arrayOfFloat[3])) {}
+    for (;;)
     {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFileSize is 0");
-      return false;
+      return bool;
+      bool = false;
     }
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if ((h()) || (this.jdField_e_of_type_Int - paramInt >= 0))
     {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "hostList is null");
-      return false;
+      this.jdField_e_of_type_Int -= paramInt;
+      this.jdField_a_of_type_Long += paramInt;
+      return true;
     }
-    if (TextUtils.isEmpty(this.b))
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "serverPath is null");
-      return false;
-    }
-    if (TextUtils.isEmpty(this.c))
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "strCookie is null");
+    return false;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    if (this.jdField_c_of_type_Boolean) {}
+    while (paramLong - this.jdField_b_of_type_Long < this.jdField_a_of_type_Argf.a()) {
       return false;
     }
     return true;
   }
   
-  public byte[] a()
+  public abstract float[] a(long paramLong);
+  
+  public abstract float b();
+  
+  public int b()
   {
-    return this.jdField_a_of_type_ArrayOfByte;
+    return this.jdField_b_of_type_Int;
   }
   
-  public String b()
+  public int b(int paramInt)
   {
-    return this.b;
+    if (this.jdField_f_of_type_Int >= paramInt) {
+      return paramInt - 1;
+    }
+    return this.jdField_f_of_type_Int;
   }
   
-  public void b(String paramString)
+  public long b()
   {
-    this.b = paramString;
+    return this.jdField_a_of_type_Long + a();
+  }
+  
+  protected void b() {}
+  
+  public void b(float paramFloat)
+  {
+    this.jdField_d_of_type_Float = paramFloat;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return (this.jdField_a_of_type_Float >= 0.0F) && (this.jdField_b_of_type_Float >= 0.0F) && (!g());
   }
   
-  public String c()
+  public boolean b(long paramLong)
   {
-    return this.c;
+    return (this.jdField_a_of_type_Long > 0L) && (paramLong - this.jdField_a_of_type_Long >= this.jdField_a_of_type_Argf.a());
   }
   
-  public void c(String paramString)
+  public abstract float[] b(long paramLong);
+  
+  public abstract float c();
+  
+  public int c()
   {
-    this.c = paramString;
+    return this.jdField_c_of_type_Int;
   }
   
-  public String d()
+  public long c()
   {
-    return this.d;
+    return this.jdField_a_of_type_Int;
   }
   
-  public void d(String paramString)
+  public void c()
   {
-    this.d = paramString;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void c(float paramFloat)
+  {
+    this.jdField_a_of_type_Argf.a(paramFloat);
+  }
+  
+  public void c(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.jdField_f_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_d_of_type_Int == 1;
+  }
+  
+  public boolean c(long paramLong)
+  {
+    return (this.jdField_a_of_type_Long > 0L) && (paramLong - this.jdField_a_of_type_Long < 0L);
+  }
+  
+  public abstract float d();
+  
+  public int d()
+  {
+    return arew.a().c();
+  }
+  
+  public long d()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public void d()
+  {
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public void d(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    this.jdField_e_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean d()
+  {
+    return arew.a().b();
+  }
+  
+  public abstract float e();
+  
+  public int e()
+  {
+    return this.jdField_e_of_type_Int;
+  }
+  
+  public long e()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  @CallSuper
+  public void e()
+  {
+    arfm localarfm = arew.a();
+    f(localarfm.a());
+    b(localarfm.c());
+    k();
+    a();
+  }
+  
+  public void e(float paramFloat)
+  {
+    this.jdField_b_of_type_Float = paramFloat;
+  }
+  
+  public void e(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean e()
+  {
+    return (this.jdField_a_of_type_Boolean) && (arfm.a());
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (aren)paramObject;
+      if (this.jdField_a_of_type_JavaLangObject != null) {
+        return this.jdField_a_of_type_JavaLangObject.equals(paramObject.jdField_a_of_type_JavaLangObject);
+      }
+    } while (paramObject.jdField_a_of_type_JavaLangObject == null);
+    return false;
+  }
+  
+  public float f()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public int f()
+  {
+    return arew.a().e();
+  }
+  
+  public void f()
+  {
+    float f1 = b();
+    if ((!this.jdField_d_of_type_Boolean) && (f1 < f()))
+    {
+      argp.c("BaseDanmaku", "onFirstExposure, danmaku = " + toString());
+      i();
+      this.jdField_d_of_type_Boolean = true;
+    }
+    if ((this.jdField_a_of_type_Areo != null) && (f1 <= 0.0F))
+    {
+      this.jdField_a_of_type_Areo.a(this);
+      this.jdField_a_of_type_Areo = null;
+    }
+  }
+  
+  public void f(float paramFloat)
+  {
+    this.jdField_c_of_type_Float = paramFloat;
+  }
+  
+  public boolean f()
+  {
+    return this.jdField_f_of_type_Boolean;
+  }
+  
+  public float g()
+  {
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public int g()
+  {
+    return arew.a().f();
+  }
+  
+  @CallSuper
+  public void g()
+  {
+    d(false);
+  }
+  
+  public boolean g()
+  {
+    return this.jdField_e_of_type_Boolean;
+  }
+  
+  public float h()
+  {
+    return b() + arew.a().g();
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(null);
+  }
+  
+  public boolean h()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaLangObject.hashCode();
+  }
+  
+  public float i()
+  {
+    return c() + d();
+  }
+  
+  protected void i()
+  {
+    if (this.jdField_a_of_type_Arew != null) {
+      this.jdField_a_of_type_Arew.a(this);
+    }
+  }
+  
+  public String toString()
+  {
+    return "BaseDanmaku" + this.jdField_a_of_type_Int + "[left:" + b() + ",top:" + c() + ",right:" + d() + ",bottom:" + e() + ", time:" + this.jdField_b_of_type_Long + ", mData=" + String.valueOf(this.jdField_a_of_type_JavaLangObject) + ", mType=" + a() + ", playerTime=" + this.jdField_a_of_type_Arew.a() + "]";
   }
 }
 

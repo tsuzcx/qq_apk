@@ -1,51 +1,40 @@
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.os.CountDownTimer;
 import android.widget.TextView;
-import com.tencent.open.agent.BindGroupActivity;
-import java.util.List;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfcy
-  extends bfhp
+  extends CountDownTimer
 {
-  public bfcy(BindGroupActivity paramBindGroupActivity) {}
-  
-  public int getCount()
+  public bfcy(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
+    super(paramLong1, paramLong2);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void onFinish()
   {
-    Object localObject;
-    if ((paramView != null) && (paramView.getTag() != null))
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.b())
     {
-      localObject = (bfcz)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
-    }
-    for (;;)
-    {
-      localObject = (bfcx)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((bfcx)localObject).b);
-      paramView.jdField_a_of_type_JavaLangString = ((bfcx)localObject).c;
-      Bitmap localBitmap = bfhv.a().a(((bfcx)localObject).c);
-      if (localBitmap == null) {
-        break;
+      this.a.d();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
+      {
+        bgpa localbgpa = bglp.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131696723).setNegativeButton(2131696759, new bfda(this)).setPositiveButton(2131696751, new bfcz(this));
+        localbgpa.setCancelable(false);
+        localbgpa.show();
       }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-      return paramViewGroup;
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562628, paramViewGroup, false);
-      paramView = new bfcz();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131365912));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131378468));
-      paramViewGroup.setTag(paramView);
     }
-    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840313);
-    bfhv.a().a(((bfcx)localObject).c, this.a);
-    return paramViewGroup;
+  }
+  
+  public void onTick(long paramLong)
+  {
+    int i = (int)(paramLong / 1000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReciteRecordLayout", 2, "onTick remainSecond = " + i);
+    }
+    if (i == 5) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131696715);
+    }
   }
 }
 

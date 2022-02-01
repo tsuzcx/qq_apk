@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class ahil
-  implements ahjg
+  implements bhye
 {
-  public ahil(SearchContactsFragment paramSearchContactsFragment) {}
+  public ahil(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, ahin paramahin) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = paramInt;
-    if (paramInt == 80000001) {
-      ayvm.a("add_page", "search", "clk_search_grp", this.a.d + 1, 0, new String[] { "", "", paramString, "" });
-    }
-    this.a.a(paramString, false);
   }
 }
 

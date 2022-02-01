@@ -1,32 +1,49 @@
-import com.tencent.biz.subscribe.SubscribeUtils.1;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Iterator;
+import java.util.List;
 
-public class ybv
-  implements baug
+class ybv
+  implements wld<wyv, xas>
 {
-  public ybv(SubscribeUtils.1 param1) {}
+  ybv(ybu paramybu, JobContext paramJobContext, String paramString) {}
   
-  public void onResp(bavf parambavf)
+  public void a(@NonNull wyv paramwyv, @Nullable xas paramxas, @NonNull ErrorMessage paramErrorMessage)
   {
-    QLog.i("DownLoadZipFile", 1, "download  onResp url:  resultcode: " + parambavf.c);
-    try
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      QLog.d("DownLoadZipFile", 4, "start unzip file to folderPath:" + this.a.jdField_a_of_type_JavaLangString);
-      ndr.a(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
-      bdhb.a(this.a.jdField_a_of_type_JavaIoFile);
+      yqp.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "segment cancel on net respond");
       return;
     }
-    catch (Exception parambavf)
+    if ((paramxas == null) || (paramErrorMessage.isFail()))
     {
-      QLog.i("DownLoadZipFile", 1, "unzip file failed" + parambavf);
+      yqp.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for feature request");
+      ybu.a(this.jdField_a_of_type_Ybu, paramErrorMessage);
+      return;
+    }
+    if (paramxas.a != null)
+    {
+      paramwyv = paramxas.a.iterator();
+      do
+      {
+        if (!paramwyv.hasNext()) {
+          break;
+        }
+        paramxas = (wqp)paramwyv.next();
+      } while (!paramxas.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString));
+    }
+    for (int i = paramxas.c;; i = 0)
+    {
+      ybu.a(this.jdField_a_of_type_Ybu, Integer.valueOf(i));
+      return;
     }
   }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ybv
  * JD-Core Version:    0.7.0.1
  */

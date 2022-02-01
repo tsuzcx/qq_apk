@@ -1,32 +1,15 @@
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-class blbg
-  implements bmeo<blfi>
+public abstract interface blbg
 {
-  blbg(blbe paramblbe) {}
+  public abstract HashMap<String, String> a();
   
-  public void a(@Nullable blfi paramblfi)
-  {
-    if (paramblfi == null) {}
-    do
-    {
-      return;
-      paramblfi = paramblfi.a;
-      if (paramblfi == AECaptureMode.NORMAL)
-      {
-        blbe.a(this.a).setVisibility(8);
-        return;
-      }
-      if (paramblfi == AECaptureMode.GIF)
-      {
-        blbe.a(this.a);
-        return;
-      }
-    } while (paramblfi != AECaptureMode.PLAY);
-    blbe.a(this.a).setVisibility(8);
-  }
+  public abstract void a();
+  
+  public abstract boolean a(String paramString, JSONObject paramJSONObject);
+  
+  public abstract void b();
 }
 
 

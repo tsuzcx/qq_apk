@@ -1,12 +1,11 @@
 class bawt
+  implements atwo
 {
-  int jdField_a_of_type_Int;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  bawt(bawr parambawr, bayd parambayd) {}
   
-  bawt(int paramInt, String[] paramArrayOfString)
+  public void a()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bayd.i();
   }
 }
 

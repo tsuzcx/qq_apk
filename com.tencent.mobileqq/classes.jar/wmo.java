@@ -1,21 +1,25 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class wmo
-  extends uli
+class wmo
+  extends xbu
 {
-  public List<MomeriesYearNode> a;
-  public boolean a;
+  wmo(wmm paramwmm) {}
   
-  public wmo(wml paramwml, ErrorMessage paramErrorMessage)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    super.a();
+    wml.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    yqu.a("home_page", "suc_share", 1, paramInt, new String[] { yqu.b(this.a.a.a) + "", yqu.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wmo
  * JD-Core Version:    0.7.0.1
  */

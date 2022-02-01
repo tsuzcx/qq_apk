@@ -1,10 +1,6 @@
-import android.os.Bundle;
-
 public abstract interface baok
 {
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void b(Bundle paramBundle);
+  public abstract boolean a();
 }
 
 

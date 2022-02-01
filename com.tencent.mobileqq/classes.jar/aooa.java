@@ -1,61 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
 
-public class aooa
-  extends aokh<aonz>
+class aooa
+  implements aoog
 {
-  public int a()
-  {
-    return 614;
-  }
+  aooa(aonz paramaonz) {}
   
-  @NonNull
-  public aonz a(int paramInt)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, oidb_cmd0xe27.RspBody paramRspBody)
   {
-    return new aonz();
-  }
-  
-  @Nullable
-  public aonz a(aoko[] paramArrayOfaoko)
-  {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onParsed] config");
-    return aonz.a(paramArrayOfaoko);
-  }
-  
-  public Class<aonz> a()
-  {
-    return aonz.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onReqFailed] failCode=" + paramInt);
-  }
-  
-  public void a(aonz paramaonz)
-  {
-    QLog.i("LebaQzoneStyleProcessor", 1, "[onUpdate]");
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    long l = paramRspBody.uint32_test_keep_silence_sec.get();
+    paramToServiceMsg = this.a;
+    if (l <= 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      aonz.a(paramToServiceMsg, bool);
+      if (l > 0L)
+      {
+        aonz.a(this.a).removeMessages(6);
+        aonz.a(this.a).sendEmptyMessageDelayed(6, l);
+        if (QLog.isColorLevel()) {
+          QLog.d("FrontBackReportManager", 2, "receive keep silence");
+        }
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aooa
  * JD-Core Version:    0.7.0.1
  */

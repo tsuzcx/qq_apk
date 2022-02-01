@@ -36,7 +36,7 @@ public final class Authorization
   public static final Authorization.Companion Companion = new Authorization.Companion(null);
   private static final String TAG = "QAPM_base_Authorization";
   @JvmField
-  public static boolean isAuthorize;
+  public static boolean isAuthorize = true;
   @NotNull
   private String appKey = "";
   
@@ -247,7 +247,7 @@ public final class Authorization
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.authorization.Authorization
  * JD-Core Version:    0.7.0.1
  */

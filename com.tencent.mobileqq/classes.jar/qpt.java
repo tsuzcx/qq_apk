@@ -1,98 +1,21 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-import java.util.List;
+import kotlin.Lazy;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class qpt
-  extends BaseAdapter
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager;", "getInstance", "()Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager;", "instance$delegate", "Lkotlin/Lazy;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qpt
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<Long> jdField_a_of_type_JavaUtilList;
-  
-  public qpt(Context paramContext, List<Long> paramList)
+  @NotNull
+  public final qps a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt)) {
-      return null;
-    }
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560090, paramViewGroup, false);
-      paramViewGroup = new qpu();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376044));
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131368796));
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131378902));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      if (paramViewGroup != null)
-      {
-        long l = ((Long)this.jdField_a_of_type_JavaUtilList.get(paramInt)).longValue();
-        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(l);
-        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setNickNameByUin(l);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131375338, Integer.valueOf(paramInt));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-      }
-      return paramView;
-      if ((paramView.getTag() instanceof qpu)) {
-        paramViewGroup = (qpu)paramView.getTag();
-      } else {
-        paramViewGroup = null;
-      }
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while (paramView.getTag(2131375338) == null);
-      i = ((Integer)paramView.getTag(2131375338)).intValue();
-    } while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= i));
-    olt.a(String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)), this.jdField_a_of_type_AndroidContentContext);
+    Lazy localLazy = qps.a();
+    qpt localqpt = qps.a;
+    return (qps)localLazy.getValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qpt
  * JD-Core Version:    0.7.0.1
  */

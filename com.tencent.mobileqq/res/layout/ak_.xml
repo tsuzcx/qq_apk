@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#66000000" android:paddingBottom="@dimen/b6_" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/mhk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <ProgressBar android:id="@id/g1f" android:layout_width="30.0dip" android:layout_height="30.0dip" style="@style/l8" />
-            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/jfb" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="10.0dip" android:text="@string/w9p" android:maxLines="1" android:singleLine="true" />
-        </LinearLayout>
-        <Button android:textSize="14.0sp" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/k8m" android:background="@drawable/bx0" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/cancel" android:layout_below="@id/mhk" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</RelativeLayout>
+<FrameLayout android:id="@id/cfi" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center|left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="5.0dip">
+        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/aot" android:background="@drawable/b0w" android:layout_width="50.0dip" android:layout_height="50.0dip" app:foregroundResource="@drawable/ef2" />
+        <dov.com.qq.im.capture.view.PressScaleTextView android:textSize="17.0dip" android:textColor="@color/if" android:gravity="center" android:id="@id/cancel" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cancel" android:shadowColor="@color/by" android:shadowRadius="3.0" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center|right" android:orientation="horizontal" android:id="@id/lbh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.5dip">
+        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/bdd" android:background="@drawable/b0w" android:focusable="true" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:contentDescription="@string/j6h" app:foregroundHeight="35.0dip" app:foregroundResource="@drawable/a0g" app:foregroundWidth="35.0dip" />
+        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/njb" android:background="@drawable/b0w" android:focusable="true" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:contentDescription="@string/fox" app:foregroundHeight="35.0dip" app:foregroundResource="@drawable/yc" app:foregroundWidth="35.0dip" />
+        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/m__" android:background="@drawable/b0w" android:focusable="true" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:contentDescription="@string/j6d" app:foregroundHeight="49.0dip" app:foregroundResource="@drawable/gx8" app:foregroundWidth="49.0dip" />
+        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/ban" android:background="@drawable/b0w" android:focusable="true" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:contentDescription="@string/j6i" app:foregroundHeight="49.0dip" app:foregroundResource="@drawable/gx0" app:foregroundWidth="49.0dip" />
+        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/ccr" android:background="@drawable/b0w" android:focusable="true" android:layout_width="50.0dip" android:layout_height="50.0dip" android:contentDescription="@string/j6k" app:foregroundHeight="35.0dip" app:foregroundResource="@drawable/a0h" app:foregroundWidth="35.0dip" />
+        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/l_x" android:background="@drawable/b0w" android:focusable="true" android:layout_width="50.0dip" android:layout_height="50.0dip" android:contentDescription="@string/j6n" app:foregroundHeight="35.0dip" app:foregroundResource="@drawable/eem" app:foregroundWidth="35.0dip" />
+        <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/at2" android:background="@drawable/b0w" android:focusable="true" android:layout_width="50.0dip" android:layout_height="50.0dip" android:contentDescription="@string/j6b" app:foregroundHeight="35.0dip" app:foregroundResource="@drawable/efd" app:foregroundWidth="35.0dip" />
+    </LinearLayout>
+</FrameLayout>

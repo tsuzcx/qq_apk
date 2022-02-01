@@ -1,28 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class axxv
-  implements Parcelable.Creator<AIOBrowserBaseData>
+public class axxv
+  extends axxt
 {
-  public AIOBrowserBaseData a(Parcel paramParcel)
-  {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = AIOBrowserBaseData.a((String)localObject);
-      ((AIOBrowserBaseData)localObject).readFromParcel(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
-    }
-  }
+  public View e;
+  public ImageView e;
+  public View f;
+  public ImageView f;
+  public TextView g;
   
-  public AIOBrowserBaseData[] a(int paramInt)
+  public axxv(axxu paramaxxu)
   {
-    return new AIOBrowserBaseData[paramInt];
+    super(paramaxxu);
   }
 }
 

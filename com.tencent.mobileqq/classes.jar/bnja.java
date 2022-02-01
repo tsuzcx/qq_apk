@@ -1,60 +1,23 @@
-import java.util.ArrayList;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
 
 class bnja
+  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
 {
-  int jdField_a_of_type_Int = 3;
-  long jdField_a_of_type_Long = 0L;
-  bnja jdField_a_of_type_Bnja = null;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-  boolean jdField_a_of_type_Boolean = false;
+  bnja(bniq parambniq) {}
   
-  static bnja a()
+  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    bnja localbnja = new bnja();
-    localbnja.a();
-    return localbnja;
-  }
-  
-  String a()
-  {
-    switch (this.jdField_a_of_type_Int)
+    if (paramRatio == null) {
+      return;
+    }
+    if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.R_1_1) {}
+    for (paramRatio = bnzg.a;; paramRatio = bnzg.b)
     {
-    default: 
-      return "LBS_REQ_OK";
-    case 1: 
-      return "LBS_REQ_PENDING";
+      bniq.a(this.a, paramRatio);
+      return;
     }
-    return "LBS_REQ_PERM_OK";
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_Bnja == null) {
-      this.jdField_a_of_type_Bnja = new bnja();
-    }
-  }
-  
-  boolean a(String paramString)
-  {
-    bniy.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.jdField_a_of_type_JavaUtilArrayList.toString() }), null);
-    return this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
-  }
-  
-  void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  void c()
-  {
-    this.jdField_a_of_type_Bnja.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Bnja.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Bnja.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Bnja.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Bnja.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
   }
 }
 

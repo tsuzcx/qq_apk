@@ -1,7 +1,7 @@
 package com.tencent.qqprotect.qsec;
 
-import bhoc;
-import bhod;
+import bkbk;
+import bkbl;
 
 public abstract interface ICloudAVEngine
 {
@@ -10,13 +10,13 @@ public abstract interface ICloudAVEngine
   public static final int EVENT_SERVER_REPLY = 3;
   public static final int EVENT_WAIT_TIMEOUT = 2;
   
-  public abstract int cloudDetect(bhoc parambhoc, boolean paramBoolean1, boolean paramBoolean2, bhod parambhod);
+  public abstract int cloudDetect(bkbk parambkbk, boolean paramBoolean1, boolean paramBoolean2, bkbl parambkbl);
   
   public abstract void flushRequest();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.ICloudAVEngine
  * JD-Core Version:    0.7.0.1
  */

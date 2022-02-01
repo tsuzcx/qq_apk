@@ -1,16 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aava
+class aava
   implements View.OnClickListener
 {
-  public aava(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
+  aava(aauz paramaauz, aavc paramaavc) {}
   
   public void onClick(View paramView)
   {
-    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
-      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    if (aauy.a(aauz.class.getName() + "clickFeed")) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aauz.a(this.jdField_a_of_type_Aauz).a(this.jdField_a_of_type_Aavc);
     }
   }
 }

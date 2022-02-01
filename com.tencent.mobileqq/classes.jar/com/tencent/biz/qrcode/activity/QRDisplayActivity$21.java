@@ -1,24 +1,23 @@
 package com.tencent.biz.qrcode.activity;
 
-import android.view.View;
-import bczz;
-import xye;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+import zvc;
 
 class QRDisplayActivity$21
   implements Runnable
 {
-  QRDisplayActivity$21(QRDisplayActivity paramQRDisplayActivity) {}
+  QRDisplayActivity$21(QRDisplayActivity paramQRDisplayActivity, String paramString) {}
   
   public void run()
   {
-    xye localxye = new xye(this.this$0.d, this.this$0);
-    this.this$0.d.setAccessibilityDelegate(localxye);
-    bczz.a(this.this$0.a, false);
+    String str = zvc.a(this.this$0, this.a, this.this$0.b);
+    ThreadManager.getUIHandler().post(new QRDisplayActivity.21.1(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.21
  * JD-Core Version:    0.7.0.1
  */

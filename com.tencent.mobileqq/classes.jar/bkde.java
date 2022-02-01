@@ -1,8 +1,56 @@
-public abstract interface bkde
+import java.util.ArrayList;
+import java.util.List;
+
+public class bkde
 {
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3);
+  public int a;
+  public long a;
+  public String a;
+  public List<bkdd> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public List<bkdd> b;
+  public boolean b;
+  public long c;
+  public String c;
+  public List<bkdd> c;
+  public boolean c;
+  public long d;
+  public String d = "";
+  public long e;
+  public String e = "";
+  public long f;
+  public String f;
+  public long g;
+  public String g;
   
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  public bkde()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_f_of_type_Long = 0L;
+    this.jdField_g_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 6;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 6;
+  }
 }
 
 

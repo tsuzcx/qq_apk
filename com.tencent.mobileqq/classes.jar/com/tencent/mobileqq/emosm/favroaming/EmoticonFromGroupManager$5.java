@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import apob;
-import apod;
-import apoh;
-import apon;
-import apoo;
+import arrc;
+import arre;
+import arri;
+import arro;
+import arrp;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
@@ -19,16 +19,16 @@ import java.util.List;
 public class EmoticonFromGroupManager$5
   implements Runnable
 {
-  public EmoticonFromGroupManager$5(apod paramapod, List paramList) {}
+  public EmoticonFromGroupManager$5(arre paramarre, List paramList) {}
   
   public void run()
   {
-    apon localapon = (apon)apod.a(this.this$0).getManager(149);
-    apoo localapoo = (apoo)apod.a(this.this$0).getManager(103);
+    arro localarro = (arro)arre.a(this.this$0).getManager(149);
+    arrp localarrp = (arrp)arre.a(this.this$0).getManager(103);
     if (QLog.isColorLevel()) {
       QLog.i("EmoticonFromGroup_Manager", 2, "Call getEmoticonDataList from onUploadPic.");
     }
-    Object localObject1 = localapon.a();
+    Object localObject1 = localarro.a();
     ArrayList localArrayList = new ArrayList(30);
     if (localObject1 != null)
     {
@@ -56,7 +56,7 @@ public class EmoticonFromGroupManager$5
         break;
       }
       localObject1 = new CustomEmotionData();
-      ((CustomEmotionData)localObject1).uin = apod.a(this.this$0).c();
+      ((CustomEmotionData)localObject1).uin = arre.a(this.this$0).c();
       j += 1;
       ((CustomEmotionData)localObject1).emoId = j;
       localArrayList.add(localObject1);
@@ -79,8 +79,8 @@ public class EmoticonFromGroupManager$5
         }
         else if (1 != localURLDrawable.getStatus())
         {
-          apod.a(this.this$0).a.add(localURLDrawable);
-          localURLDrawable.setURLDrawableListener(new apoh(this, localURLDrawable, (CustomEmotionData)localObject1, localapoo, localapon));
+          arre.a(this.this$0).a.add(localURLDrawable);
+          localURLDrawable.setURLDrawableListener(new arri(this, localURLDrawable, (CustomEmotionData)localObject1, localarrp, localarro));
           localURLDrawable.startDownload();
         }
       }
@@ -92,7 +92,7 @@ public class EmoticonFromGroupManager$5
       if (this.this$0.a((String)localObject2)) {
         return;
       }
-      String str = apod.a(this.this$0, (String)localObject2);
+      String str = arre.a(this.this$0, (String)localObject2);
       if (!"".equals(str))
       {
         ((CustomEmotionData)localObject1).emoPath = str;
@@ -104,8 +104,8 @@ public class EmoticonFromGroupManager$5
               QLog.i("EmoticonFromGroup_Manager", 4, "normal upload emo " + (String)localObject2);
             }
             localURLDrawable.saveTo(str);
-            localapoo.d((CustomEmotionData)localObject1);
-            localapon.c((CustomEmotionBase)localObject1);
+            localarrp.d((CustomEmotionData)localObject1);
+            localarro.c((CustomEmotionBase)localObject1);
           }
           catch (IOException localIOException)
           {
@@ -119,7 +119,7 @@ public class EmoticonFromGroupManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.5
  * JD-Core Version:    0.7.0.1
  */

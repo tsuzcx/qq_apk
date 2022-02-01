@@ -1,104 +1,78 @@
-import com.tencent.beacon.event.UserAction;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.app.Activity;
+import java.lang.ref.WeakReference;
+import java.net.URLDecoder;
+import org.json.JSONObject;
 
 public class bdjl
+  implements anil
 {
-  public static void a()
+  public WeakReference<Activity> a;
+  
+  public bdjl(Activity paramActivity)
   {
-    a("0X8008CC3");
+    this.a = new WeakReference(paramActivity);
   }
   
-  public static void a(int paramInt)
-  {
-    if (paramInt == 4) {
-      a("0X8009187");
-    }
-    while (paramInt != 2) {
-      return;
-    }
-    a("0X8009188");
-  }
+  public void a() {}
   
-  public static void a(int paramInt, boolean paramBoolean)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString1, String paramString2) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("QAVGroupConfig", 1, "reportAVGroupNum, num[" + paramInt + "], isVideo[" + paramBoolean + "]");
-    }
-    HashMap localHashMap;
-    if (paramBoolean)
+    switch (paramInt)
     {
-      localHashMap = new HashMap();
-      localHashMap.put("num", String.valueOf(paramInt));
-      UserAction.onUserAction("reportAVGroupNum_video", true, -1L, -1L, localHashMap, true);
     }
-    for (;;)
+    do
     {
-      localHashMap = new HashMap();
-      localHashMap.put("isVideo", String.valueOf(paramBoolean));
-      localHashMap.put("num", String.valueOf(paramInt));
-      UserAction.onUserAction("reportAVGroupNum", true, -1L, -1L, localHashMap, true);
-      return;
-      localHashMap = new HashMap();
-      localHashMap.put("num", String.valueOf(paramInt));
-      UserAction.onUserAction("reportAVGroupNum_audio", true, -1L, -1L, localHashMap, true);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (!QLog.isDevelopLevel()) {}
-    for (;;)
-    {
-      azqs.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-      return;
-      QLog.w("QAVGroupConfig", 1, "reportClickEvent, key[" + paramString + "]");
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a("0X8008CC7");
-      return;
-    }
-    a("0X8008CC8");
-  }
-  
-  public static void b()
-  {
-    a("0X8008CC4");
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a("0X8008CBA");
-      return;
-    }
-    a("0X8008CB5");
-  }
-  
-  public static void c()
-  {
-    a("0X8008CC5");
-  }
-  
-  public static void c(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a("0X8008E7D");
-      return;
-    }
-    a("0X8008E7E");
-  }
-  
-  public static void d()
-  {
-    a("0X8008CC6");
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 2);
+            a((String)paramObject[0], (String)paramObject[1]);
+            return;
+            a();
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 1);
+        try
+        {
+          paramObject = (JSONObject)paramObject[0];
+          String str = paramObject.optString("url");
+          paramInt = paramObject.optInt("ret");
+          paramObject = URLDecoder.decode(str, "UTF-8");
+          if ((paramInt == 0) && (paramObject.length() > 0))
+          {
+            a(paramBoolean, paramObject);
+            return;
+          }
+        }
+        catch (Exception paramObject)
+        {
+          paramObject.printStackTrace();
+          a(paramObject.toString(), "");
+          return;
+        }
+        a(paramInt + "", "");
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
 }
 

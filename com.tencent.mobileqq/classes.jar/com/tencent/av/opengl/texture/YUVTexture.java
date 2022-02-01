@@ -8,19 +8,18 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import java.nio.ByteBuffer;
-import lrb;
-import lsv;
-import lsy;
-import ltw;
-import lty;
-import luf;
-import lug;
-import lux;
-import mvh;
+import lny;
+import lpx;
+import lqa;
+import lqy;
+import lra;
+import lrh;
+import lri;
+import lrz;
+import msn;
 
 public abstract class YUVTexture
-  extends lty
+  extends lra
 {
   public static float[] a;
   static boolean jdField_b_of_type_Boolean;
@@ -28,9 +27,9 @@ public abstract class YUVTexture
   private long jdField_a_of_type_Long;
   protected Context a;
   private final String jdField_a_of_type_JavaLangString;
-  private lrb jdField_a_of_type_Lrb;
-  private luf jdField_a_of_type_Luf;
-  private lug jdField_a_of_type_Lug;
+  private lny jdField_a_of_type_Lny;
+  private lrh jdField_a_of_type_Lrh;
+  private lri jdField_a_of_type_Lri;
   boolean jdField_a_of_type_Boolean = false;
   public float b;
   private long jdField_b_of_type_Long;
@@ -59,7 +58,7 @@ public abstract class YUVTexture
     this.jdField_b_of_type_Float = 1.93F;
     this.jdField_d_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_c_of_type_Boolean = mvh.g();
+    this.jdField_c_of_type_Boolean = msn.h();
     QLog.d("YUVTexture", 1, "ray debug,YUVTexture, initial from config,upLoadWhenGetNewData = " + this.jdField_c_of_type_Boolean);
     if (AudioHelper.a(22) == 1) {
       this.jdField_c_of_type_Boolean = true;
@@ -75,12 +74,12 @@ public abstract class YUVTexture
         jdField_b_of_type_Boolean = true;
         Looper localLooper1 = Looper.myLooper();
         if (localLooper1 != null) {
-          this.jdField_a_of_type_Luf = new luf(this, localLooper1);
+          this.jdField_a_of_type_Lrh = new lrh(this, localLooper1);
         }
         try
         {
           if (jdField_b_of_type_Boolean) {
-            Init(lux.a(paramContext), new WeakReference(this), paramLong);
+            Init(lrz.a(paramContext), new WeakReference(this), paramLong);
           }
           return;
         }
@@ -112,9 +111,9 @@ public abstract class YUVTexture
           continue;
           localLooper2 = Looper.getMainLooper();
           if (localLooper2 != null) {
-            this.jdField_a_of_type_Luf = new luf(this, localLooper2);
+            this.jdField_a_of_type_Lrh = new lrh(this, localLooper2);
           } else {
-            this.jdField_a_of_type_Luf = null;
+            this.jdField_a_of_type_Lrh = null;
           }
         }
       }
@@ -285,25 +284,25 @@ public abstract class YUVTexture
   
   public void a(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (this.jdField_a_of_type_Luf != null)
+    if (this.jdField_a_of_type_Lrh != null)
     {
-      paramObject = this.jdField_a_of_type_Luf.obtainMessage(paramInt1, 0, 0, paramObject);
+      paramObject = this.jdField_a_of_type_Lrh.obtainMessage(paramInt1, 0, 0, paramObject);
       if (paramInt2 == 0) {
-        this.jdField_a_of_type_Luf.sendMessage(paramObject);
+        this.jdField_a_of_type_Lrh.sendMessage(paramObject);
       }
     }
     while (!QLog.isColorLevel())
     {
       return;
-      this.jdField_a_of_type_Luf.sendMessageDelayed(paramObject, paramInt2);
+      this.jdField_a_of_type_Lrh.sendMessageDelayed(paramObject, paramInt2);
       return;
     }
     QLog.e(this.jdField_a_of_type_JavaLangString, 2, "notifyUpdateUI|mEventHandler == null");
   }
   
-  public void a(lug paramlug)
+  public void a(lri paramlri)
   {
-    this.jdField_a_of_type_Lug = paramlug;
+    this.jdField_a_of_type_Lri = paramlri;
   }
   
   public void a(boolean paramBoolean)
@@ -314,7 +313,7 @@ public abstract class YUVTexture
     this.jdField_e_of_type_Boolean = paramBoolean;
   }
   
-  public boolean a(lsv paramlsv)
+  public boolean a(lpx paramlpx)
   {
     if (AudioHelper.jdField_b_of_type_Boolean) {
       this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -328,7 +327,7 @@ public abstract class YUVTexture
       i = 0;
       while (i < this.jdField_a_of_type_ArrayOfInt.length)
       {
-        this.jdField_a_of_type_ArrayOfInt[i] = paramlsv.a().a();
+        this.jdField_a_of_type_ArrayOfInt[i] = paramlpx.a().a();
         i += 1;
       }
     }
@@ -339,7 +338,7 @@ public abstract class YUVTexture
         if (this.jdField_c_of_type_Boolean)
         {
           if (!this.jdField_d_of_type_Boolean) {
-            break label293;
+            break label234;
           }
           this.jdField_d_of_type_Boolean = false;
           i = 1;
@@ -355,31 +354,24 @@ public abstract class YUVTexture
           if (i != -1) {
             this.k = i;
           }
-          for (;;)
+          if (this.k != -1) {
+            GLES20.glUniform1i(localTextureProgram.a()[10].jdField_a_of_type_Int, this.k);
+          }
+          this.jdField_b_of_type_Int = 1;
+          if ((this.jdField_a_of_type_Boolean) && (this.m == -1))
           {
-            if (this.k != -1) {
-              GLES20.glUniform1i(localTextureProgram.a()[10].jdField_a_of_type_Int, this.k);
-            }
-            this.jdField_b_of_type_Int = 1;
-            if ((this.jdField_a_of_type_Boolean) && (this.m == -1))
-            {
-              this.m = paramlsv.a().a();
-              this.m = a(2130840081, this.m);
-            }
-            if (this.k == -1) {
-              break label286;
-            }
+            this.m = paramlpx.a().a();
+            this.m = a(2130840260, this.m);
+          }
+          if (this.k != -1)
+          {
             return true;
             i = 1;
             break;
-            if (QLog.isColorLevel()) {
-              QLog.w(this.jdField_a_of_type_JavaLangString, 2, "onBind, uploadContent fail, mYuvFormat[" + this.k + "], isBind[" + this.jdField_e_of_type_Boolean + "]");
-            }
           }
-          label286:
           return false;
         }
-        label293:
+        label234:
         i = 0;
       }
     }
@@ -390,10 +382,10 @@ public abstract class YUVTexture
     return getFrameTexture();
   }
   
-  public ltw[] a(lsv paramlsv)
+  public lqy[] a(lpx paramlpx)
   {
     TextureProgram localTextureProgram = a();
-    paramlsv = super.a(paramlsv);
+    paramlpx = super.a(paramlpx);
     try
     {
       GLES20.glUniform1f(localTextureProgram.a()[7].jdField_a_of_type_Int, getImgWidth());
@@ -404,23 +396,19 @@ public abstract class YUVTexture
         GLES20.glEnable(3042);
         GLES20.glBlendFunc(770, 771);
         GLES20.glActiveTexture(33987);
-        lux.a();
+        lrz.a();
         GLES20.glBindTexture(g(), this.m);
-        lux.a();
+        lrz.a();
         GLES20.glUniform1i(localTextureProgram.a()[11].jdField_a_of_type_Int, 3);
-        lux.a();
+        lrz.a();
         GLES20.glUniform1i(localTextureProgram.a()[12].jdField_a_of_type_Int, 1);
-        lux.a();
+        lrz.a();
       }
-      return paramlsv;
+      return paramlpx;
     }
     catch (Exception localException) {}
-    return paramlsv;
+    return paramlpx;
   }
-  
-  public native boolean addYUVFrame(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9);
-  
-  public native boolean addYuvFrame(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
   public boolean b()
   {
@@ -441,11 +429,11 @@ public abstract class YUVTexture
   
   public void e()
   {
-    if (this.jdField_a_of_type_Lug != null)
+    if (this.jdField_a_of_type_Lri != null)
     {
       byte[] arrayOfByte = getFaceFeature();
       if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {
-        this.jdField_a_of_type_Lug.a(arrayOfByte);
+        this.jdField_a_of_type_Lri.a(arrayOfByte);
       }
     }
   }
@@ -465,10 +453,6 @@ public abstract class YUVTexture
   native byte[] getCaptureFrameTexture();
   
   native byte[] getFaceFeature();
-  
-  native int getFrameCount();
-  
-  native int getFrameIndex();
   
   native byte[] getFrameTexture();
   
@@ -522,7 +506,7 @@ public abstract class YUVTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.opengl.texture.YUVTexture
  * JD-Core Version:    0.7.0.1
  */

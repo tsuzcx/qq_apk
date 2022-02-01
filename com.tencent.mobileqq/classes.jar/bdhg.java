@@ -1,6 +1,10 @@
+import com.tencent.mobileqq.teamwork.PadInfo;
+
 public abstract interface bdhg
 {
-  public abstract boolean a(aprk paramaprk);
+  public abstract void a(PadInfo paramPadInfo);
+  
+  public abstract void b(PadInfo paramPadInfo);
 }
 
 

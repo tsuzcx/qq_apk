@@ -1,51 +1,34 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
 
-class ntz
-  extends bead
+public class ntz
+  implements bkhw
 {
-  private WeakReference<ntw> a;
+  public ntz(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  ntz(ntw paramntw)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = new WeakReference(paramntw);
-  }
-  
-  public void onDone(beae parambeae)
-  {
-    super.onDone(parambeae);
-    if (this.a != null)
+    PublicAccountAdvertisementActivity.a(this.a).dismiss();
+    if (paramView != null)
     {
-      Object localObject = (ntw)this.a.get();
-      if (localObject != null)
+      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
+      }
+      if ((!TextUtils.isEmpty(paramView)) && (paramView.equals(this.a.getResources().getString(2131692941))))
       {
-        QQAppInterface localQQAppInterface = ((ntw)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if ((parambeae.a == 0) && (localQQAppInterface != null))
-        {
-          localQQAppInterface.getPreferences().edit().putLong("last_modified_time", parambeae.i).commit();
-          ((ntw)localObject).b();
-        }
-        if (QLog.isColorLevel())
-        {
-          localObject = new File(ntw.jdField_a_of_type_JavaLangString);
-          long l = 0L;
-          if (((File)localObject).exists()) {
-            l = ((File)localObject).lastModified();
-          }
-          QLog.d("EcShopAssistantManager", 2, "download onDone status=" + parambeae.a() + ",errCode=" + parambeae.a + ",httpCode=" + parambeae.f + ",local lastModify=" + l + ",server lastModify=" + parambeae.i);
-        }
+        avfs.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
+        bcst.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ntz
  * JD-Core Version:    0.7.0.1
  */

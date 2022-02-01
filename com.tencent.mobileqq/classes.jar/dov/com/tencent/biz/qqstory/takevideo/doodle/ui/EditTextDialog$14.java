@@ -1,18 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui;
 
-import bmsi;
+import bpjo;
 import dov.com.qq.im.capture.text.DynamicTextItem;
 import dov.com.qq.im.capture.text.EditTextPreView;
 
 public class EditTextDialog$14
   implements Runnable
 {
-  public EditTextDialog$14(bmsi parambmsi) {}
+  public EditTextDialog$14(bpjo parambpjo) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
-    if (bmsi.d(this.this$0) != 1) {
+    if (bpjo.d(this.this$0) != 1) {
       this.this$0.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(this.this$0.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b(), true);
     }
     this.this$0.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.invalidate();
@@ -20,7 +20,7 @@ public class EditTextDialog$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.14
  * JD-Core Version:    0.7.0.1
  */

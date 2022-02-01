@@ -20,8 +20,8 @@ public final class ag
   {
     this.e = paramContext;
     b = at.a(this.e, 20001, null);
-    this.c = ax.a(au.a(this.e));
-    this.d = ax.a(au.c(this.e));
+    this.c = az.a(au.a(this.e));
+    this.d = az.a(au.c(this.e));
   }
   
   public static String a(int paramInt)
@@ -40,14 +40,14 @@ public final class ag
     {
       this.h = new h();
       this.h.a(this.c);
-      this.h.b(ax.a(au.b(this.e)));
+      this.h.b(az.a(au.b(this.e)));
       this.h.c(this.d);
-      this.h.d(ax.a(au.d(this.e)));
-      this.h.e(ax.a(au.d()));
+      this.h.d(az.a(au.d(this.e)));
+      this.h.e(az.a(au.d()));
       this.h.a(au.c());
-      this.h.f(ax.a(au.a()));
-      this.h.g(ax.a(au.b()));
-      this.h.h(ax.a(av.a(this.e)));
+      this.h.f(az.a(au.a()));
+      this.h.g(az.a(au.b()));
+      this.h.h(az.a(av.a(this.e)));
       this.h.i(b);
     }
     for (;;)
@@ -80,8 +80,8 @@ public final class ag
   
   private boolean g()
   {
-    String str1 = ax.a(au.a(this.e));
-    String str2 = ax.a(au.c(this.e));
+    String str1 = az.a(au.a(this.e));
+    String str2 = az.a(au.c(this.e));
     this.c = at.a(this.e, 20002, str1);
     this.d = at.a(this.e, 20003, str2);
     boolean bool = false;
@@ -116,11 +116,11 @@ public final class ag
       this.i.b(i.a(at.a(this.e, 30003, 6)).toString());
       this.i.c(at.a(this.e, 30001, "0.0.0"));
       this.i.d(this.c);
-      this.i.e(ax.a(au.b(this.e)));
+      this.i.e(az.a(au.b(this.e)));
       this.i.a(2);
       this.i.h("" + au.c());
       this.i.b(201);
-      this.i.i(ax.a(au.a()));
+      this.i.i(az.a(au.a()));
       this.i.l(at.a(this.e, 30002, ""));
       p localp = this.i;
       if (as.a(this.e))
@@ -149,14 +149,14 @@ public final class ag
       this.g.a(this.c);
       this.g.e("0000000000000000");
       this.g.f(at.a(this.e, 30002, ""));
-      this.g.g(ax.a(au.a()));
+      this.g.g(az.a(au.a()));
       this.g.b(at.a(this.e, 30003, 6));
       localObject = at.a(this.e, 30001, "0.0.0").trim().split("[\\.]");
       if (localObject.length >= 3) {
         this.g.a(new n(Integer.parseInt(localObject[0]), Integer.parseInt(localObject[1]), Integer.parseInt(localObject[2])));
       }
       this.g.h(b);
-      this.g.i(ax.a(au.b(this.e)));
+      this.g.i(az.a(au.b(this.e)));
       localObject = this.g;
       if (af.c(this.e) == af.a.a)
       {
@@ -224,7 +224,7 @@ public final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.ag
  * JD-Core Version:    0.7.0.1
  */

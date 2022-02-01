@@ -1,23 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import common.config.service.QzoneConfig;
 
-public class vmm
-  implements DialogInterface.OnCancelListener
+class vmm
+  implements View.OnClickListener
 {
-  public vmm(FollowCaptureLauncher paramFollowCaptureLauncher) {}
+  vmm(vmk paramvmk) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    FollowCaptureLauncher.a(this.a, true);
-    FollowCaptureLauncher.a(this.a);
-    FollowCaptureLauncher.a(this.a, false);
-    wxj.a("FollowLaunchCancel", true, System.currentTimeMillis() - FollowCaptureLauncher.a(this.a), new String[] { "dialog_cancel" });
+    boolean bool = false;
+    QCircleInitBean localQCircleInitBean = vmk.a(this.a, false);
+    if (localQCircleInitBean != null)
+    {
+      vrf.a("", 17, 3);
+      localQCircleInitBean.mFromReportBean = this.a.a().clone().setElementIdStr("portraitlist");
+      if (QzoneConfig.getInstance().getConfig("qqcircle", "qqcircle_push_feeddetail_recom", 0) == 0) {
+        bool = true;
+      }
+      localQCircleInitBean.isSingleFeed = bool;
+      uxo.a(localQCircleInitBean);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vmm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,26 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ScrollView;
+import com.tencent.widget.XEditTextEx;
 
 public class azig
+  implements View.OnClickListener
 {
-  public static azig a;
-  public static String a;
-  private azgb a;
+  public azig(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Azig = new azig();
-  }
-  
-  private azig()
-  {
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  }
-  
-  public static azig a()
-  {
-    return jdField_a_of_type_Azig;
-  }
-  
-  public azgb a()
-  {
-    if (this.jdField_a_of_type_Azgb == null) {
-      this.jdField_a_of_type_Azgb = new azgb(40, azib.c);
-    }
-    return this.jdField_a_of_type_Azgb;
-  }
-  
-  public azge a()
-  {
-    return azge.a();
-  }
-  
-  public AVCodec a()
-  {
-    return AVCodec.get();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Azgb = null;
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(0);
+    StickyNotePublishFragment.a(this.a).requestFocus();
+    bkft.a(StickyNotePublishFragment.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

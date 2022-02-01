@@ -10,19 +10,19 @@ class MoviePlayer$2
   
   public void onUpdated(Player paramPlayer, boolean paramBoolean)
   {
-    paramPlayer.setVolume(MoviePlayer.access$1100(this.this$0));
+    paramPlayer.setVolume(MoviePlayer.access$1200(this.this$0));
     if ((this.val$autoPlay) && (paramBoolean))
     {
-      this.this$0.seekToTime(MoviePlayer.access$1200(this.this$0));
+      this.this$0.seekToTime(MoviePlayer.access$1300(this.this$0));
       this.this$0.play();
     }
-    MoviePlayer.access$1300(this.this$0);
-    MoviePlayer.access$1402(this.this$0, false);
+    MoviePlayer.access$1400(this.this$0);
+    MoviePlayer.access$1502(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.player.MoviePlayer.2
  * JD-Core Version:    0.7.0.1
  */

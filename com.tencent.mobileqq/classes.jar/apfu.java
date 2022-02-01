@@ -1,69 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
-import com.tencent.mobileqq.data.IPSiteModel.Comic;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
-import com.tencent.mobileqq.data.IPSiteModel.Video;
-import com.tencent.mobileqq.data.VipIPSiteInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.qphone.base.util.QLog;
 
-public final class apfu
-  implements Parcelable.Creator
+public class apfu
+  implements apes
 {
-  public VipIPSiteInfo a(Parcel paramParcel)
+  public apfu(ARScanEntryView paramARScanEntryView) {}
+  
+  public void a()
   {
-    VipIPSiteInfo localVipIPSiteInfo = new VipIPSiteInfo();
-    localVipIPSiteInfo.ipID = paramParcel.readInt();
-    localVipIPSiteInfo.ipName = paramParcel.readString();
-    localVipIPSiteInfo.ipDesc = paramParcel.readString();
-    localVipIPSiteInfo.ipUrl = paramParcel.readString();
-    localVipIPSiteInfo.itemSize = paramParcel.readInt();
-    localVipIPSiteInfo.strType = paramParcel.readString();
-    localVipIPSiteInfo.extId = paramParcel.readInt();
-    localVipIPSiteInfo.extStr = paramParcel.readString();
-    localVipIPSiteInfo.ipLogo = paramParcel.readString();
-    localVipIPSiteInfo.ipContent = paramParcel.readString();
-    if (localVipIPSiteInfo.ipList == null) {
-      localVipIPSiteInfo.ipList = new ArrayList();
+    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResDownloadComplete ;" + this.a.m);
+    if (!this.a.m) {
+      return;
     }
-    localVipIPSiteInfo.ipList.clear();
-    if ("gxzb".equals(localVipIPSiteInfo.strType)) {
-      paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Gxzb.class.getClassLoader());
-    }
-    do
-    {
-      return localVipIPSiteInfo;
-      if ("game".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Game.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-      if ("goods".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Goods.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-      if ("video".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Video.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-      if ("book".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Book.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-    } while (!"comic".equals(localVipIPSiteInfo.strType));
-    paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Comic.class.getClassLoader());
-    return localVipIPSiteInfo;
+    ARScanEntryView.a(this.a, 100);
+    ARScanEntryView.a(this.a).removeMessages(324);
+    ARScanEntryView.a(this.a).sendEmptyMessage(324);
+    this.a.k();
   }
   
-  public VipIPSiteInfo[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new VipIPSiteInfo[paramInt];
+    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResUpdateProgress " + paramInt + ";" + this.a.m);
+    if (!this.a.m) {
+      return;
+    }
+    ARScanEntryView.a(this.a, paramInt);
+    ARScanEntryView.a(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.k();
   }
 }
 

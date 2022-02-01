@@ -1,84 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.concurrent.ConcurrentHashMap;
 
 class akkl
-  extends alrl
+  extends akif
 {
-  akkl(akkd paramakkd) {}
-  
-  public void a(long paramLong)
+  protected akkl(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if (paramLong == 0L) {}
-    String str1;
-    String str2;
-    do
-    {
-      do
-      {
-        return;
-      } while (!this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)));
-      str1 = (String)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-      str2 = bdgc.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong));
-      if ((!TextUtils.isEmpty(str2)) && (!str2.equals(str1))) {
-        akkd.a(this.a, false);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "checkIfNeedUpdate [uin: %d, pre: %s, cur: %s]", new Object[] { Long.valueOf(paramLong), str1, str2 }));
+    super(paramNewPhotoPreviewActivity);
   }
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  public void initData(Intent paramIntent)
   {
-    if (paramBoolean) {
-      a(paramLong);
-    }
+    super.initData(paramIntent);
+    this.a.customSendBtnText = ((NewPhotoPreviewActivity)this.mActivity).getString(2131694304);
   }
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void initUI()
   {
-    if (paramBoolean) {
-      if (!(paramObject instanceof ArrayList)) {
-        break label70;
-      }
-    }
-    label70:
-    for (paramObject = (ArrayList)paramObject;; paramObject = null)
-    {
-      if ((paramObject != null) && (paramObject.size() > 0))
-      {
-        paramObject = paramObject.iterator();
-        while (paramObject.hasNext())
-        {
-          Object localObject = paramObject.next();
-          if ((localObject instanceof Long)) {
-            a(((Long)localObject).longValue());
-          }
-        }
-      }
-      return;
-    }
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new akkm(this));
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  public boolean needShowMultiPhoto()
   {
-    if (paramBoolean) {}
-    try
-    {
-      a(Long.parseLong(paramString));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkl
  * JD-Core Version:    0.7.0.1
  */

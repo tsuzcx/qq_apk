@@ -1,13 +1,23 @@
-import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public final class bdmt
+class bdmt
+  implements View.OnTouchListener
 {
-  public static int a()
+  bdmt(bdmq parambdmq) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (Build.VERSION.SDK_INT > 10) {
-      return 4;
+    switch (paramMotionEvent.getAction())
+    {
     }
-    return 0;
+    for (;;)
+    {
+      return false;
+      bkft.b(paramView);
+      this.a.d();
+    }
   }
 }
 

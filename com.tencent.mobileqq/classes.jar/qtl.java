@@ -1,26 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.AbsPublishColumnFragment;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallGallery;
 
 public class qtl
-  implements URLDrawable.URLDrawableListener
+  extends qtm
 {
-  public qtl(AbsPublishColumnFragment paramAbsPublishColumnFragment) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public qtl(Context paramContext, aobu paramaobu, snh paramsnh)
   {
-    AbsPublishColumnFragment.b(this.a);
+    super(paramContext, paramaobu, paramsnh);
+  }
+  
+  public qqt g()
+  {
+    this.jdField_a_of_type_Qqs = new ComponentContentSmallGallery(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qtl
  * JD-Core Version:    0.7.0.1
  */

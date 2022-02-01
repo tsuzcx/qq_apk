@@ -1,47 +1,47 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetCollectListEventReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
 
 public class wlw
-  extends QQUIEventReceiver<wlu, vck>
+  extends wno
 {
-  public wlw(@NonNull wlu paramwlu)
+  qqstory_service.RspDelFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment;
+  wnp jdField_a_of_type_Wnp;
+  
+  public wlw(qqstory_service.RspDelFeedComment paramRspDelFeedComment, wnp paramwnp)
   {
-    super(paramwlu);
+    super(paramRspDelFeedComment.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment = paramRspDelFeedComment;
+    this.jdField_a_of_type_Wnp = paramwnp;
   }
   
-  public void a(@NonNull wlu paramwlu, @NonNull vck paramvck)
+  public wlw(wnp paramwnp)
   {
-    if (paramvck.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      wxe.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramvck.jdField_a_of_type_Int));
-      if ((TextUtils.isEmpty(paramvck.b)) || (paramvck.b.equals(paramwlu.jdField_a_of_type_JavaLangString))) {
-        break label49;
-      }
-    }
-    label49:
-    do
-    {
-      return;
-      if (paramvck.jdField_a_of_type_Int != -1) {
-        wlu.a(paramwlu, paramvck.jdField_a_of_type_Int);
-      }
-    } while (paramwlu.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
-    paramwlu.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = wlu.a(paramwlu);
-    ThreadManager.post(new MemoriesProfilePresenter.GetCollectListEventReceiver.1(this, paramwlu), 5, null, false);
+    this.jdField_a_of_type_Wnp = paramwnp;
   }
   
-  public Class acceptEventClass()
+  public void a()
   {
-    return vck.class;
+    this.jdField_a_of_type_Wnp.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Wnp.a(paramInt, paramBundle);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Wnp.a(paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Wnp.a(paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wlw
  * JD-Core Version:    0.7.0.1
  */

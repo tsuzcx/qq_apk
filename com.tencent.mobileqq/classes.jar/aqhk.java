@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.RoundImageView;
 
-final class aqhk
-  implements DialogInterface.OnClickListener
+class aqhk
+  extends arfy
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ETTextView a;
+  public RoundImageView a;
+  
+  public aqhk(aqhh paramaqhh, View paramView)
   {
-    paramDialogInterface.dismiss();
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131368138));
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)paramView.findViewById(2131364725));
   }
 }
 

@@ -1,110 +1,62 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.ViolaBizLibData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
-public class aplw
-  extends apld
+class aplw
 {
-  public static final String[] a = { "libviola.so" };
+  private double jdField_a_of_type_Double;
+  private long jdField_a_of_type_Long;
+  private long b;
+  private long c;
   
-  public aplw(QQAppInterface paramQQAppInterface)
+  public aplw(long paramLong1, long paramLong2)
   {
-    super("android.qq.readinjoy.viola_biz_810", paramQQAppInterface);
-  }
-  
-  public static void a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (apks)((QQAppInterface)localObject).getManager(77);
-      if (localObject != null)
-      {
-        localObject = (aplw)((apks)localObject).a("android.qq.readinjoy.viola_biz_810");
-        if (localObject != null)
-        {
-          ((aplw)localObject).a(true);
-          QLog.i("viola.ViolaBizLibHandler", 1, "restartDownloadLib");
-        }
-      }
-    }
-  }
-  
-  public static boolean i()
-  {
-    String str = oxo.a();
-    int i = 0;
-    while (i < a.length)
-    {
-      File localFile = new File(str, a[i]);
-      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
-        return false;
-      }
-      i += 1;
-    }
-    return true;
-  }
-  
-  public int a()
-  {
-    return 10079;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return ViolaBizLibData.class;
-  }
-  
-  public String a()
-  {
-    return "viola.ViolaBizLibHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
-    XmlData localXmlData = a();
-    if (localXmlData != null) {
-      QLog.i("viola.ViolaBizLibHandler", 1, "version:" + localXmlData.Version);
-    }
-    if (new File(paramString).exists())
-    {
-      if (oxo.a(paramString)) {
-        break label124;
-      }
-      if (localXmlData != null)
-      {
-        localXmlData.loadState = 0;
-        localXmlData.Version = 0;
-        apkr.a(localXmlData, new String[] { "loadState", "Version" });
-      }
-      QLog.e("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess],unzip android.qq.readinjoy.viola_biz_810 lib failed!");
-    }
-    label124:
-    do
-    {
-      return;
-      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
-      if (paramString != null) {
-        paramString.edit().putString("res_name", "android.qq.readinjoy.viola_biz_810").commit();
-      }
-    } while (!aplx.i());
-    oxi.a("biz doOnDownloadSuccess");
+    this.b = paramLong2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Double = paramLong1;
+    this.c = System.currentTimeMillis();
   }
   
   public boolean a()
   {
-    return true;
+    if (this.jdField_a_of_type_Long == -1L) {
+      return true;
+    }
+    if (this.b > 0L)
+    {
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Double = Math.min(this.jdField_a_of_type_Double + (l - this.c) * this.jdField_a_of_type_Long / this.b, this.jdField_a_of_type_Long);
+      this.c = l;
+      if (this.jdField_a_of_type_Double >= 1.0D)
+      {
+        this.jdField_a_of_type_Double -= 1.0D;
+        return true;
+      }
+    }
+    return false;
   }
   
-  public String b()
+  public boolean equals(Object paramObject)
   {
-    return null;
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (aplw)paramObject;
+      if (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) {
+        return false;
+      }
+    } while (this.b == paramObject.b);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32) * 31 + (int)(this.b ^ this.b >>> 32);
+  }
+  
+  public String toString()
+  {
+    return String.format("TokenBucket:mTimes:%d,mPeriod:%d,mTokenCount:%f,mLastTimestamp:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), Double.valueOf(this.jdField_a_of_type_Double), Long.valueOf(this.c) });
   }
 }
 

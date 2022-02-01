@@ -2,8 +2,8 @@ package com.tencent.mobileqq.teamwork;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
-import baqn;
-import bdhj;
+import bdsh;
+import bgmo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -15,10 +15,10 @@ public class TeamWorkForceShare$2
   
   public void run()
   {
-    String str = baqn.d(TeamWorkForceShare.a(this.this$0));
+    String str = bdsh.d(TeamWorkForceShare.a(this.this$0));
     Object localObject = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-    localObject = bdhj.a(str, (BitmapFactory.Options)localObject);
+    localObject = bgmo.a(str, (BitmapFactory.Options)localObject);
     if ((localObject == null) || (((Bitmap)localObject).isRecycled()))
     {
       QLog.d(TeamWorkForceShare.a(), 1, "share to wx, image decode failed, url = " + TeamWorkForceShare.a(this.this$0));
@@ -29,7 +29,7 @@ public class TeamWorkForceShare$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.2
  * JD-Core Version:    0.7.0.1
  */

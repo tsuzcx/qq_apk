@@ -1,27 +1,18 @@
-import android.support.annotation.NonNull;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
-public class bmwh
-  implements Comparable
+class bmwh
+  implements View.OnKeyListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  bmwh(bmwe parambmwe) {}
   
-  public bmwh(String paramString1, String paramString2, int paramInt, String paramString3)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = paramString3;
-  }
-  
-  public int compareTo(@NonNull Object paramObject)
-  {
-    if ((paramObject instanceof bmwh)) {
-      return this.b.compareTo(((bmwh)paramObject).b);
+    if ((paramKeyEvent.getAction() == 0) && (paramInt == 4)) {
+      this.a.d();
     }
-    return 0;
+    return false;
   }
 }
 

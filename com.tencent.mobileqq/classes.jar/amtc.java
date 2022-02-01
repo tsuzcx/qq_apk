@@ -1,17 +1,20 @@
-import java.io.File;
+import android.content.Context;
 
-public final class amtc
+public abstract class amtc
 {
-  public static String a = "_model.zip";
+  abstract int a(Context paramContext);
   
-  public static String a()
-  {
-    return andq.a() + "ar_cloud_marker_model/" + 8 + File.separator;
-  }
+  abstract String a();
   
-  public static String b()
+  abstract void a();
+  
+  void a(String paramString1, String paramString2, amtd paramamtd)
   {
-    return andq.a() + "ar_cloud_transfer/";
+    if (("destroy".equals(paramString2)) && (paramamtd != null))
+    {
+      a();
+      paramamtd.a(this);
+    }
   }
 }
 

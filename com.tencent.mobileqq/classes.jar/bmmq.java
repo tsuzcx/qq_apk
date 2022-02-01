@@ -1,21 +1,22 @@
-import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class bmmq
-  extends bmpw
+  implements blxz
 {
-  public Bitmap a;
-  public Bitmap b;
+  bmmq(bmmp parambmmp) {}
   
-  public bmmq(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
-  }
-  
-  public bmmq(bmpw parambmpw, Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    this(parambmpw.jdField_c_of_type_Int, parambmpw.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
+    }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      bmmp.a(this.a, paramString2, -2, "font download failed.");
+      return;
+    }
+    bmmp.a(this.a, paramString2, 0, "success");
   }
 }
 

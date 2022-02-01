@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import oze;
+import por;
 
 public class ReadInJoyChannelPanelFragment$DynamicGridViewAdapter$1
   implements Runnable
 {
-  public ReadInJoyChannelPanelFragment$DynamicGridViewAdapter$1(oze paramoze, TabChannelCoverInfo paramTabChannelCoverInfo) {}
+  public ReadInJoyChannelPanelFragment$DynamicGridViewAdapter$1(por parampor, TabChannelCoverInfo paramTabChannelCoverInfo) {}
   
   public void run()
   {
-    ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_Oze.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo);
+    ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_Por.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo);
   }
 }
 

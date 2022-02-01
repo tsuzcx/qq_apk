@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.doutu;
 
-import apjt;
-import apjy;
+import armo;
+import armt;
 
 public class DoutuManager$6
   implements Runnable
 {
-  public DoutuManager$6(apjy paramapjy, long paramLong) {}
+  public DoutuManager$6(armt paramarmt, long paramLong) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class DoutuManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuManager.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,49 @@
 package com.tencent.mobileqq.businessCard.activity;
 
-import aepi;
-import alof;
-import alud;
-import alxa;
-import amca;
-import amcd;
+import Override;
+import afur;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import angs;
-import anzl;
-import anzm;
-import anzn;
-import anzo;
-import anzp;
-import anzq;
-import anzr;
-import anzs;
-import anzt;
-import anzu;
-import anzv;
-import aryv;
-import azqs;
-import bddf;
-import bdgm;
-import bdjz;
-import bdoo;
-import bhuf;
-import biva;
-import bivo;
+import anhk;
+import anni;
+import anqg;
+import anuk;
+import anun;
+import apfg;
+import apzq;
+import apzr;
+import apzs;
+import apzt;
+import apzu;
+import apzv;
+import apzw;
+import apzx;
+import apzy;
+import apzz;
+import aqaa;
+import aufz;
+import bcst;
+import bghy;
+import bglp;
+import bgpa;
+import bgtn;
+import bkho;
+import bljl;
+import bljv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -51,6 +54,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.Gallery;
 import java.io.File;
 import java.io.IOException;
@@ -63,13 +67,13 @@ public class CardPicGalleryActivity
 {
   public int a;
   long jdField_a_of_type_Long;
-  private amcd jdField_a_of_type_Amcd = new anzn(this);
   public Drawable a;
   View jdField_a_of_type_AndroidViewView;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new anzm(this);
+  BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new apzr(this);
   public ImageView a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
+  private anun jdField_a_of_type_Anun = new apzs(this);
   Gallery jdField_a_of_type_ComTencentWidgetGallery;
   String jdField_a_of_type_JavaLangString;
   public ArrayList<String> a;
@@ -89,7 +93,7 @@ public class CardPicGalleryActivity
   
   private void b(URLDrawable paramURLDrawable, String paramString)
   {
-    new anzv(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new aqaa(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   private void c(URLDrawable paramURLDrawable)
@@ -103,7 +107,7 @@ public class CardPicGalleryActivity
     {
       if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
       {
-        requestPermissions(new anzs(this, paramURLDrawable), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+        requestPermissions(new apzx(this, paramURLDrawable), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
         return;
       }
       b(paramURLDrawable);
@@ -141,15 +145,15 @@ public class CardPicGalleryActivity
             } while (this.jdField_a_of_type_ComTencentWidgetGallery == null);
             localObject = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
           } while (localObject == null);
-          localObject = ((ImageView)((View)localObject).findViewById(2131364001)).getDrawable();
+          localObject = ((ImageView)((View)localObject).findViewById(2131364202)).getDrawable();
         } while ((localObject == null) || (!(localObject instanceof URLDrawable)));
         localObject = (URLDrawable)localObject;
       } while ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (((URLDrawable)localObject).getStatus() != 1));
-      bhuf localbhuf = bhuf.a(this);
-      a(localbhuf);
-      localbhuf.a(new anzq(this, (URLDrawable)localObject, localbhuf));
-      localbhuf.a(new anzr(this, localbhuf));
-      localbhuf.show();
+      bkho localbkho = bkho.a(this);
+      a(localbkho);
+      localbkho.a(new apzv(this, (URLDrawable)localObject, localbkho));
+      localbkho.a(new apzw(this, localbkho));
+      localbkho.show();
     } while (2 != this.d);
     if (this.app != null) {}
     for (Object localObject = this.app.getCurrentAccountUin();; localObject = "")
@@ -172,27 +176,27 @@ public class CardPicGalleryActivity
     c(paramInt, paramURLDrawable);
   }
   
-  protected void a(bhuf parambhuf)
+  protected void a(bkho parambkho)
   {
     switch (this.d)
     {
     default: 
       return;
     case 1: 
-      parambhuf.b(2131698949);
+      parambkho.b(2131697804);
       if (this.jdField_c_of_type_Boolean) {
-        parambhuf.a(2131698931, 3);
+        parambkho.a(2131697791, 3);
       }
-      parambhuf.c(2131690648);
+      parambkho.c(2131690582);
       return;
     }
     if ((this.jdField_c_of_type_Int > 0) && (!this.jdField_b_of_type_Boolean)) {
-      parambhuf.b(2131693501);
+      parambkho.b(2131692961);
     }
-    parambhuf.b(2131693487);
-    parambhuf.b(2131693497);
-    parambhuf.b(2131693485);
-    parambhuf.c(2131690648);
+    parambkho.b(2131692953);
+    parambkho.b(2131692959);
+    parambkho.b(2131692951);
+    parambkho.c(2131690582);
   }
   
   void a(URLDrawable paramURLDrawable)
@@ -200,8 +204,8 @@ public class CardPicGalleryActivity
     paramURLDrawable = a(paramURLDrawable);
     try
     {
-      biva.b(paramURLDrawable).a(this, this.app.getCurrentAccountUin());
-      bivo.a(null, 40, 3);
+      bljl.b(paramURLDrawable).a(this, this.app.getCurrentAccountUin());
+      bljv.a(null, 40, 3);
       return;
     }
     catch (Exception paramURLDrawable)
@@ -209,7 +213,7 @@ public class CardPicGalleryActivity
       if (QLog.isColorLevel()) {
         QLog.e("qqBaseActivity", 2, "", paramURLDrawable);
       }
-      QQToast.a(this, getString(2131692988), 0).a();
+      QQToast.a(this, getString(2131692513), 0).a();
     }
   }
   
@@ -225,7 +229,7 @@ public class CardPicGalleryActivity
     localBundle.putString("forward_extra", str);
     paramURLDrawable = new Intent();
     paramURLDrawable.putExtras(localBundle);
-    aryv.a(this, paramURLDrawable, 21);
+    aufz.a(this, paramURLDrawable, 21);
   }
   
   protected void b(int paramInt, URLDrawable paramURLDrawable)
@@ -251,8 +255,8 @@ public class CardPicGalleryActivity
     for (;;)
     {
       return;
-      new File(alof.bd).mkdirs();
-      str = alof.bd + Utils.Crc64String(paramURLDrawable.getURL().toString());
+      new File(anhk.bg).mkdirs();
+      str = anhk.bg + Utils.Crc64String(paramURLDrawable.getURL().toString());
       File localFile = new File(str);
       if (!localFile.exists()) {
         try
@@ -265,12 +269,12 @@ public class CardPicGalleryActivity
         }
         catch (IOException paramURLDrawable)
         {
-          QQToast.a(this, getString(2131695350), 0).a();
+          QQToast.a(this, getString(2131694327), 0).a();
           return;
         }
       }
     }
-    bdgm.a(this, 230).setTitle(getString(2131719335)).setMessage(getString(2131695343)).setPositiveButton(getString(2131719209), new anzu(this, paramURLDrawable, str)).setNegativeButton(getString(2131694806), new anzt(this)).show();
+    bglp.a(this, 230).setTitle(getString(2131717422)).setMessage(getString(2131694323)).setPositiveButton(getString(2131717317), new apzz(this, paramURLDrawable, str)).setNegativeButton(getString(2131693977), new apzy(this)).show();
   }
   
   protected void c(int paramInt, URLDrawable paramURLDrawable)
@@ -295,12 +299,12 @@ public class CardPicGalleryActivity
       if (this.jdField_b_of_type_Boolean) {}
       for (paramURLDrawable = "1";; paramURLDrawable = "2")
       {
-        azqs.b(localQQAppInterface, "dc00898", "", "", "0X800A88C", "0X800A88C", paramInt, 0, paramURLDrawable, "", "", "");
+        bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A88C", "0X800A88C", paramInt, 0, paramURLDrawable, "", "", "");
         return;
         if ((this.app == null) || (this.jdField_c_of_type_Int <= 0)) {
           break label370;
         }
-        ((amca)this.app.a(13)).g(this.jdField_c_of_type_Int);
+        ((anuk)this.app.a(13)).g(this.jdField_c_of_type_Int);
         if (this.app != null) {}
         for (paramURLDrawable = this.app.getCurrentAccountUin();; paramURLDrawable = "")
         {
@@ -338,6 +342,14 @@ public class CardPicGalleryActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
@@ -345,7 +357,7 @@ public class CardPicGalleryActivity
     while ((paramInt1 != 21) || (paramInt2 != -1)) {
       return;
     }
-    Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = afur.a(new Intent(this, SplashActivity.class), null);
     localIntent.putExtras(new Bundle(paramIntent.getExtras()));
     startActivity(localIntent);
     finish();
@@ -356,7 +368,7 @@ public class CardPicGalleryActivity
     this.mNeedStatusTrans = false;
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560866);
+    super.setContentView(2131561071);
     paramBundle = getIntent();
     this.jdField_a_of_type_JavaUtilArrayList = paramBundle.getStringArrayListExtra("business_card_pics");
     this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("is_edit_mode", false);
@@ -365,20 +377,20 @@ public class CardPicGalleryActivity
     this.jdField_c_of_type_Boolean = paramBundle.getBooleanExtra("is_from_profile", false);
     this.jdField_c_of_type_Int = paramBundle.getIntExtra("default_card_id", 0);
     this.jdField_b_of_type_Boolean = paramBundle.getBooleanExtra("is_from_mine_profile", false);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131378035);
-    angs.a(this, this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363024));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131378879);
+    apfg.a(this, this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363209));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131367020));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367026));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131367288));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367294));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     if ((this.d == 1) && (!this.jdField_a_of_type_Boolean)) {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297026));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297079));
     this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new anzl(this));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131364000));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new apzq(this));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131364201));
     Object localObject2;
     Object localObject1;
     label536:
@@ -386,22 +398,22 @@ public class CardPicGalleryActivity
     if (this.d == 2)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new anzo(this));
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new anzp(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new apzt(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new apzu(this));
       this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
       paramBundle = BaseApplicationImpl.getApplication().getSharedPreferences("profile_sp", 0);
       this.jdField_a_of_type_Long = paramBundle.getLong("recommend_id", 0L);
       this.jdField_a_of_type_JavaLangString = paramBundle.getString("recommend_url", "");
       this.jdField_b_of_type_JavaLangString = paramBundle.getString("recommend_desc", "");
-      localObject2 = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377642);
-      paramBundle = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368101);
-      localObject1 = getResources().getDrawable(2130850137);
+      localObject2 = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378481);
+      paramBundle = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368427);
+      localObject1 = getResources().getDrawable(2130850731);
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
       {
         ((TextView)localObject2).setText(this.jdField_b_of_type_JavaLangString);
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = bdoo.a(75.0F);
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = bdoo.a(80.0F);
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = bgtn.a(75.0F);
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = bgtn.a(80.0F);
         ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
         ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
         paramBundle.setImageDrawable(URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2));
@@ -413,21 +425,21 @@ public class CardPicGalleryActivity
           break label637;
         }
         paramBundle = this.app.getCurrentAccountUin();
-        azqs.b((QQAppInterface)localObject1, "CliOper", "", paramBundle, "card_mall", "0X8007B2A", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
+        bcst.b((QQAppInterface)localObject1, "CliOper", "", paramBundle, "card_mall", "0X8007B2A", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
         paramBundle = this.app;
         if (!this.jdField_b_of_type_Boolean) {
           break label643;
         }
         i = 1;
         label581:
-        azqs.b(paramBundle, "dc00898", "", "", "0X800A88B", "0X800A88B", i, 0, "", "", "", "");
+        bcst.b(paramBundle, "dc00898", "", "", "0X800A88B", "0X800A88B", i, 0, "", "", "", "");
       }
     }
     for (;;)
     {
-      addObserver(this.jdField_a_of_type_Amcd);
+      addObserver(this.jdField_a_of_type_Anun);
       return true;
-      ((TextView)localObject2).setText(alud.a(2131701841));
+      ((TextView)localObject2).setText(anni.a(2131700261));
       paramBundle.setImageDrawable((Drawable)localObject1);
       break;
       label637:
@@ -443,16 +455,16 @@ public class CardPicGalleryActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if ((this.app != null) && (((alxa)this.app.getManager(92)).a(hashCode()))) {
+    if ((this.app != null) && (((anqg)this.app.getManager(92)).a(hashCode()))) {
       this.app.removeHandler(getClass());
     }
-    removeObserver(this.jdField_a_of_type_Amcd);
+    removeObserver(this.jdField_a_of_type_Anun);
   }
   
   public boolean onBackEvent()
   {
     finish();
-    overridePendingTransition(0, 2130772345);
+    overridePendingTransition(0, 2130772356);
     return true;
   }
   
@@ -463,31 +475,42 @@ public class CardPicGalleryActivity
     }
     do
     {
-      return;
-      if (paramView == this.jdField_a_of_type_AndroidWidgetTextView)
+      for (;;)
       {
-        onBackEvent();
+        EventCollector.getInstance().onViewClicked(paramView);
         return;
+        if (paramView != this.jdField_a_of_type_AndroidWidgetTextView) {
+          break;
+        }
+        onBackEvent();
       }
     } while (paramView != this.jdField_a_of_type_AndroidViewViewGroup);
-    bddf.a(this, this.app.getCurrentAccountUin(), "inside.friendCardBackground", 1, 1, 1, "recommendId=" + this.jdField_a_of_type_Long, false);
+    bghy.a(this, this.app.getCurrentAccountUin(), "inside.friendCardBackground", 1, 1, 1, "recommendId=" + this.jdField_a_of_type_Long, false);
     QQAppInterface localQQAppInterface = this.app;
     if (this.app != null)
     {
-      paramView = this.app.getCurrentAccountUin();
-      azqs.b(localQQAppInterface, "CliOper", "", paramView, "card_mall", "0X8004DC0", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
+      str = this.app.getCurrentAccountUin();
+      label105:
+      bcst.b(localQQAppInterface, "CliOper", "", str, "card_mall", "0X8004DC0", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
       if (this.app == null) {
-        break label169;
+        break label180;
       }
     }
-    label169:
-    for (paramView = this.app.getCurrentAccountUin();; paramView = "")
+    label180:
+    for (String str = this.app.getCurrentAccountUin();; str = "")
     {
-      VasWebviewUtil.reportCommercialDrainage(paramView, "defaultcard", "click_card_others", "", 1, 0, 0, "", "", "");
-      return;
-      paramView = "";
+      VasWebviewUtil.reportCommercialDrainage(str, "defaultcard", "click_card_others", "", 1, 0, 0, "", "", "");
       break;
+      str = "";
+      break label105;
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -502,7 +525,7 @@ public class CardPicGalleryActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,72 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.biz.troopgift.AIOGiftPanelContainer.2;
-import com.tencent.biz.troopgift.AIOGiftPanelContainer.2.1.1.1;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
+import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
 
-public class yuw
-  extends bead
+class yuw
+  extends SimpleObserver<zem>
 {
-  yuw(yuv paramyuv, long paramLong, String paramString, int paramInt) {}
+  yuw(yuv paramyuv, zem paramzem) {}
   
-  public void onDone(beae parambeae)
+  public void a(zem paramzem)
   {
-    long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGiftPanel.time", 2, "onDone, time=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Long));
-    }
-    if (parambeae.jdField_a_of_type_Int == 0) {
-      localObject = parambeae.a().getString("filePath");
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        Object localObject;
-        parambeae = new File((String)localObject);
-        String str = bdhb.b(parambeae);
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOGiftPanelContainer", 2, "onDone() content =  " + str + ", filePath = " + (String)localObject);
-        }
-        if (!TextUtils.isEmpty(str))
-        {
-          localObject = new yvk(new JSONObject(str), this.jdField_a_of_type_JavaLangString);
-          ((yvk)localObject).a(this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
-          this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_Yvk = ((yvk)localObject);
-          this.jdField_a_of_type_Yuv.jdField_a_of_type_Bcod.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
-          this.jdField_a_of_type_Yuv.jdField_a_of_type_Bcod.a(false);
-          if (!this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
-            this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_AndroidOsHandler.post(new AIOGiftPanelContainer.2.1.1.1(this));
-          }
-          parambeae.deleteOnExit();
-        }
-        yuu.a(this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0, true);
-        this.jdField_a_of_type_Yuv.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.a(0);
-        return;
+    super.onNext(paramzem);
+    this.jdField_a_of_type_Yuv.a(5);
+    paramzem = this.jdField_a_of_type_Zem.a;
+    yqp.b("EditVideoSave", "publishParam = " + paramzem);
+    Intent localIntent;
+    int j;
+    int i;
+    if (this.jdField_a_of_type_Yuv.jdField_a_of_type_Yvj.getActivity() != null)
+    {
+      localIntent = this.jdField_a_of_type_Yuv.jdField_a_of_type_Yvj.getActivity().getIntent();
+      if (localIntent == null) {
+        break label212;
       }
-      catch (IOException parambeae)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("AIOGiftPanelContainer", 2, QLog.getStackTraceString(parambeae));
-        return;
-      }
-      catch (JSONException parambeae)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("AIOGiftPanelContainer", 2, QLog.getStackTraceString(parambeae));
-        return;
-      }
+      j = localIntent.getIntExtra("sv_total_frame_count", 0);
+      i = localIntent.getIntExtra("sv_total_record_time", 0);
     }
-    QLog.d("AIOGiftPanelContainer", 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Yuv.jdField_a_of_type_Long) + ", errorCode = " + parambeae.jdField_a_of_type_Int);
+    for (;;)
+    {
+      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_Yuv.jdField_a_of_type_Yvj.a(), paramzem.b, i, j, this.jdField_a_of_type_Yuv.jdField_a_of_type_Yty.a.a());
+      yuv.a(this.jdField_a_of_type_Yuv, paramzem.b);
+      this.jdField_a_of_type_Yuv.jdField_a_of_type_Yvj.getActivity().startActivityForResult(localIntent, 111);
+      this.jdField_a_of_type_Yuv.jdField_a_of_type_Int = 5;
+      this.jdField_a_of_type_Yuv.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Yuv.b = ((int)(7000.0D / paramzem.a * 4.0D));
+      this.jdField_a_of_type_Yuv.f();
+      return;
+      label212:
+      i = 0;
+      j = 0;
+    }
   }
   
-  public boolean onStart(beae parambeae)
+  public void onCancel()
   {
-    return super.onStart(parambeae);
+    super.onCancel();
+    yqp.d("EditVideoSave", "saveVideo cancel !");
+    this.jdField_a_of_type_Yuv.jdField_a_of_type_Yty.a(0);
+    this.jdField_a_of_type_Yuv.g();
+    QQToast.a(this.jdField_a_of_type_Yuv.jdField_a_of_type_Yvj.a(), anni.a(2131702621), 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    yqp.e("EditVideoSave", "saveVideo error ：" + paramError);
+    this.jdField_a_of_type_Yuv.jdField_a_of_type_Yty.a(0);
+    QQToast.a(this.jdField_a_of_type_Yuv.jdField_a_of_type_Yvj.a(), 1, anni.a(2131702556) + paramError, 0).a();
+    this.jdField_a_of_type_Yuv.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yuw
  * JD-Core Version:    0.7.0.1
  */

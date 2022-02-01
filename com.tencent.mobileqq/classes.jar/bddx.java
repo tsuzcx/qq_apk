@@ -1,66 +1,128 @@
-import android.animation.AnimatorSet;
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.QQPlayerService;
+import cooperation.qwallet.plugin.PatternLockUtils;
+import mqq.os.MqqHandler;
 
-final class bddx
-  implements bddy<T>
+public class bddx
 {
-  bddx(AtomicBoolean paramAtomicBoolean, avzj paramavzj, bddy parambddy, WebView paramWebView, AnimatorSet paramAnimatorSet) {}
-  
-  public T a(Bitmap paramBitmap)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (paramQQAppInterface == null) {}
+    do
     {
-      QLog.e("ScreenShotUtil", 1, "onScreenshotFinish isCanceled");
-      this.jdField_a_of_type_Avzj.dismiss();
-      return null;
-    }
-    if (paramBitmap == null)
-    {
-      QLog.e("ScreenShotUtil", 1, "onScreenshotFinish bitmap is null");
-      this.jdField_a_of_type_Avzj.dismiss();
-      return null;
-    }
-    return this.jdField_a_of_type_Bddy.a(paramBitmap);
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(SubAccountUgActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessage(1980);
   }
   
-  public void a(Exception paramException)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    this.jdField_a_of_type_Bddy.a(paramException);
-    this.jdField_a_of_type_Avzj.dismiss();
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(SubAccountBindActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessageDelayed(1990, paramLong);
   }
   
-  public void a(T paramT, Bitmap paramBitmap)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      QLog.e("ScreenShotUtil", 1, "postBitmap isCanceled");
-      this.jdField_a_of_type_Avzj.dismiss();
+    if ((paramQQAppInterface == null) || (paramContext == null) || (!paramQQAppInterface.isRunning()) || (paramContext.getApplicationContext() == null)) {
       return;
     }
-    if (paramT == null)
+    paramContext = paramContext.getApplicationContext();
+    if (QQPlayerService.a())
     {
-      QLog.e("ScreenShotUtil", 1, "postBitmap t is null");
-      this.jdField_a_of_type_Avzj.dismiss();
+      Intent localIntent = new Intent();
+      localIntent.setAction("qqplayer_exit_action");
+      paramContext.sendBroadcast(localIntent);
+    }
+    PatternLockUtils.setFirstEnterAfterLoginState(paramContext, paramQQAppInterface.getCurrentAccountUin(), true);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  {
+    if (paramQQAppInterface == null) {
       return;
     }
-    if (paramBitmap == null)
+    paramQQAppInterface = new Intent(paramContext, AssociatedAccountActivity.class);
+    paramQQAppInterface.putExtra("subAccount", paramString);
+    paramContext.startActivity(paramQQAppInterface);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
     {
-      QLog.e("ScreenShotUtil", 1, "postBitmap bitmap is null");
-      this.jdField_a_of_type_Avzj.dismiss();
-      this.jdField_a_of_type_Bddy.a(new NullPointerException("postBitmap bitmap is null"));
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(SubAccountBindActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessage(1981);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (!paramQQAppInterface.isRunning()) || (paramContext.getApplicationContext() == null)) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext() != null) && (this.jdField_a_of_type_Avzj.isShowing()))
+    paramContext = paramContext.getApplicationContext();
+    LoginActivity.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin());
+    bftr.a();
+    alxx.a(true);
+    biij.a().a(paramQQAppInterface.getCurrentAccountUin());
+    PatternLockUtils.setFirstEnterAfterLoginState(paramContext, paramQQAppInterface.getCurrentAccountUin(), true);
+    arcn.a(paramQQAppInterface, paramContext.getClass(), System.currentTimeMillis(), false);
+    paramQQAppInterface = paramContext.getSharedPreferences("qrcode", 0).edit();
+    paramQQAppInterface.clear();
+    paramQQAppInterface.commit();
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
     {
-      if (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning()) {
-        this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
-      }
-      this.jdField_a_of_type_Avzj.dismiss();
-    }
-    this.jdField_a_of_type_Bddy.a(paramT, paramBitmap);
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(SubLoginActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessage(1982);
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (!paramQQAppInterface.isRunning()) || (paramContext.getApplicationContext() == null)) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramContext.getApplicationContext();
+    } while (!QQPlayerService.a());
+    paramContext = new Intent();
+    paramContext.setAction("qqplayer_exit_action");
+    paramQQAppInterface.sendBroadcast(paramContext);
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(LoginPhoneNumActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.sendEmptyMessage(2014);
   }
 }
 

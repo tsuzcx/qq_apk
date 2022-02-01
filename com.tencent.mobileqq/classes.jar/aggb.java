@@ -1,23 +1,46 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public class aggb
-  implements afkw
+class aggb
 {
-  public aggb(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  
+  aggb(agfz paramagfz) {}
   
   public void a()
   {
-    UnlimitedBladeWorks.a(this.a).b = true;
-    UnlimitedBladeWorks.a(this.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a) != null)
+    if (this.jdField_a_of_type_AndroidOsHandler == null)
     {
-      UnlimitedBladeWorks.a(this.a).a();
-      if (UnlimitedBladeWorks.b(this.a))
-      {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
-        UnlimitedBladeWorks.a(this.a, 0);
-      }
+      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("DoodleDrawerThread", 0);
+      localHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    }
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if ((paramRunnable == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler.getLooper().quit();
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
   }
 }

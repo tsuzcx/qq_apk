@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqpim.QQPimBridgeActivity;
 
 public class blmp
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public blmp(AEEditorCommonEditFragment paramAEEditorCommonEditFragment) {}
+  public blmp(QQPimBridgeActivity paramQQPimBridgeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a().a(this.a.getActivity());
+    this.a.finish();
   }
 }
 

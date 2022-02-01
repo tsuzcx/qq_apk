@@ -26,7 +26,7 @@ public class TroopFileTransferManager$TaskHttpDownloadThumbnail
     //   11: invokestatic 52	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   14: new 54	java/io/File
     //   17: dup
-    //   18: getstatic 59	alof:bp	Ljava/lang/String;
+    //   18: getstatic 59	anhk:bs	Ljava/lang/String;
     //   21: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
     //   24: astore 12
     //   26: aload 12
@@ -56,8 +56,8 @@ public class TroopFileTransferManager$TaskHttpDownloadThumbnail
     //   82: aload_0
     //   83: getfield 71	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownloadThumbnail:jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   86: getfield 100	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
-    //   89: invokestatic 105	arso:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   92: invokestatic 110	arrr:a	(Ljava/lang/String;)I
+    //   89: invokestatic 105	atwl:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   92: invokestatic 110	atvo:a	(Ljava/lang/String;)I
     //   95: istore 6
     //   97: iload 6
     //   99: iconst_2
@@ -1129,7 +1129,7 @@ public class TroopFileTransferManager$TaskHttpDownloadThumbnail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskHttpDownloadThumbnail
  * JD-Core Version:    0.7.0.1
  */

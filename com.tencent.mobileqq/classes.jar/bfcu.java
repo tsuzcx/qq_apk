@@ -1,42 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bfcu
-  extends ndm
+  implements DialogInterface.OnClickListener
 {
-  public bfcu(BindGroupActivity paramBindGroupActivity) {}
+  public bfcu(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupActivity", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString());
+    this.a.e();
+    if (ReciteRecordLayout.a(this.a) != null) {
+      ReciteRecordLayout.a(this.a).e();
     }
-    if ((this.a.isFinishing()) || (this.a.jdField_c_of_type_Boolean)) {}
-    do
-    {
-      return;
-      this.a.jdField_b_of_type_Bety.hide();
-      if (this.a.a != null) {
-        this.a.a.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BindGroupActivity", 2, "openIdObserver success");
-        }
-        this.a.jdField_c_of_type_JavaLangString = paramOpenID.openID;
-        if (!paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString))
-        {
-          this.a.b();
-          return;
-        }
-        this.a.a();
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("BindGroupActivity", 2, "openIdObserver fail");
+    paramDialogInterface.dismiss();
   }
 }
 

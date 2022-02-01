@@ -1,101 +1,42 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-public class nvd
+class nvd
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  public static nva a()
-  {
-    nva localnva2 = nvc.a();
-    nva localnva1 = localnva2;
-    if (localnva2 == null) {
-      localnva1 = new nva();
-    }
-    return localnva1;
-  }
+  private nvd(nuy paramnuy) {}
   
-  public static nvb a(int paramInt)
+  public void onComplete(String paramString1, String paramString2)
   {
-    Object localObject = a().jdField_a_of_type_JavaUtilArrayList;
-    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+    for (;;)
     {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      synchronized (nuy.a(this.a))
       {
-        nvb localnvb = (nvb)((Iterator)localObject).next();
-        if (localnvb.jdField_a_of_type_Int == paramInt) {
-          return localnvb;
+        nuy.c("onPreloadComplete vid:" + paramString1 + ", detail:" + paramString2);
+        paramString2 = new File(nuy.b(paramString1));
+        if (paramString2.exists()) {
+          paramString2.renameTo(new File(nuy.a(paramString1)));
+        }
+        bcst.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", nuy.a(this.a).mVideoVid, String.valueOf(nuy.a(this.a).mSource));
+        paramString2 = (QQAppInterface)nuy.a(this.a).get();
+        if (paramString2 != null)
+        {
+          paramString2 = paramString2.getCurrentAccountUin();
+          nuv.b(paramString2, paramString1);
+          nuy.a(this.a, nuy.a(this.a));
+          return;
         }
       }
+      paramString2 = "";
     }
-    return new nvb();
-  }
-  
-  public static boolean a()
-  {
-    nva localnva = nvc.a();
-    if (localnva == null) {}
-    for (String str = "false";; str = localnva.jdField_a_of_type_Int + "")
-    {
-      QLog.i("EcshopEcshopConfUtil", 2, str);
-      if (localnva != null) {
-        break;
-      }
-      return false;
-    }
-    if (localnva.jdField_a_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public static boolean a(nva paramnva)
-  {
-    return a(paramnva, 1, 1);
-  }
-  
-  public static boolean a(nva paramnva, int paramInt1, int paramInt2)
-  {
-    if ((paramnva == null) || (paramnva.jdField_a_of_type_JavaUtilArrayList == null) || (paramnva.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-      return false;
-    }
-    paramnva = paramnva.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (paramnva.hasNext())
-    {
-      nvb localnvb = (nvb)paramnva.next();
-      if ((localnvb.b == paramInt1) && (localnvb.jdField_a_of_type_Int == paramInt2)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean b()
-  {
-    nva localnva = nvc.a();
-    if (localnva == null) {}
-    for (String str = "false";; str = localnva.b + "")
-    {
-      QLog.i("EcshopEcshopConfUtil", 2, str);
-      if (localnva != null) {
-        break;
-      }
-      return false;
-    }
-    if (localnva.b == 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public static boolean c()
-  {
-    return (a()) && (a(nvc.a()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,8 @@
-import android.util.Log;
-import java.io.Writer;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 
-public class bmvh
-  extends Writer
+public abstract interface bmvh
 {
-  private StringBuilder a = new StringBuilder();
-  
-  private void a()
-  {
-    if (this.a.length() > 0)
-    {
-      Log.v("GLTextureView", this.a.toString());
-      this.a.delete(0, this.a.length());
-    }
-  }
-  
-  public void close()
-  {
-    a();
-  }
-  
-  public void flush()
-  {
-    a();
-  }
-  
-  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
-    {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.a.append(c);
-      }
-    }
-  }
+  public abstract void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp);
 }
 
 

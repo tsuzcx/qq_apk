@@ -1,52 +1,40 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.Vector;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aufi
-  implements aufk
+class aufi
+  implements EIPCResultCallback
 {
-  public aufi(ChatBackgroundManager paramChatBackgroundManager, Context paramContext) {}
+  aufi(aufh paramaufh) {}
   
-  public void a(boolean paramBoolean, Vector<Integer> paramVector)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
+    boolean bool;
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
     {
-      paramVector = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-      if ((paramVector != null) && (paramVector.a() != null) && (paramVector.a().a != null))
+      bool = true;
+      if (!bool)
       {
-        ChatXListView localChatXListView = paramVector.a().a;
-        int i = localChatXListView.getFirstVisiblePosition();
-        int j = localChatXListView.getLastVisiblePosition();
-        while (i <= j)
-        {
-          Object localObject = aepi.a(localChatXListView, i);
-          if ((localObject != null) && (((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof aeqi)))
-          {
-            localObject = (aeqi)((View)localObject).getTag();
-            if ((((aeqi)localObject).jdField_a_of_type_Anwo != null) && (!((aeqi)localObject).jdField_a_of_type_Anwo.a) && (((aeqi)localObject).jdField_a_of_type_Anwo.b))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ChatBackgroundManager", 2, "BgThemeColorExtractListener.onBgThemeColorExtracted: success=true, refresh AIO.");
-              }
-              paramVector.a().a(((aeqi)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage, 1);
-            }
-          }
-          i += 1;
+        if (paramEIPCResult != null) {
+          break label57;
         }
+        QLog.d("FlutterMainQIPCModule", 1, "ipc callback, result == null");
       }
+    }
+    for (;;)
+    {
+      QLog.d("FlutterMainQIPCModule", 1, new Object[] { "ipc callback , isSuccess: %s", Boolean.valueOf(bool) });
+      return;
+      bool = false;
+      break;
+      label57:
+      QLog.d("FlutterMainQIPCModule", 1, "ipc callback, errCode: " + paramEIPCResult.code);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aufi
  * JD-Core Version:    0.7.0.1
  */

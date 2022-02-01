@@ -1,529 +1,284 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.biz.qqstory.widget.StoryCoverView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
+import android.database.Cursor;
+import com.tencent.biz.qqstory.database.CardEntry;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry;
+import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
+import com.tencent.biz.qqstory.database.FeedEntry;
+import com.tencent.biz.qqstory.database.HotTopicEntry;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.database.LiveVideoEntry;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tencent.biz.qqstory.database.MsgTabNodeEntity;
+import com.tencent.biz.qqstory.database.OfficialRecommendEntry;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.database.ReportWatchVideoEntry;
+import com.tencent.biz.qqstory.database.ShareGroupListEntry;
+import com.tencent.biz.qqstory.database.StoryAlbumEntry;
+import com.tencent.biz.qqstory.database.StoryAlbumPicEntry;
+import com.tencent.biz.qqstory.database.StoryEntry;
+import com.tencent.biz.qqstory.database.StoryVideoEntry;
+import com.tencent.biz.qqstory.database.StoryVideoListEntry;
+import com.tencent.biz.qqstory.database.StoryVideoSimpleInfoEntity;
+import com.tencent.biz.qqstory.database.TopicInfoEntry;
+import com.tencent.biz.qqstory.database.TroopStoryEntry;
+import com.tencent.biz.qqstory.database.UnionIdMapEntity;
+import com.tencent.biz.qqstory.database.UserEntry;
+import com.tencent.biz.qqstory.database.VideoCollectionEntry;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabHaloEntity;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeRecommendActivityReadEntity;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVidListEntity;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.OGEntityManager;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import com.tencent.mobileqq.utils.SecurityUtile;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class woc
-  extends BaseAdapter
-  implements View.OnClickListener
+  extends EntityManagerFactory
 {
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(BaseApplication.getContext());
-  wod jdField_a_of_type_Wod = new wod();
-  int[] jdField_a_of_type_ArrayOfInt = bcyz.b(xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getApplicationContext(), 50.0F), xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getApplicationContext(), 70.0F), xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getApplicationContext(), 3.0F));
-  
-  public woc(StoryMessageListActivity paramStoryMessageListActivity) {}
-  
-  public wns a(int paramInt)
+  public woc(String paramString)
   {
-    if (a(paramInt)) {
-      return (wns)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a.get(paramInt);
-    }
-    return null;
+    super(paramString);
   }
   
-  public boolean a(int paramInt)
+  public static void a(String paramString, android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
-    return paramInt < this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a.size();
-  }
-  
-  public int getCount()
-  {
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a.size();
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_c_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_c_of_type_Int == 3))
+    long l = System.currentTimeMillis();
+    Cursor localCursor1 = paramSQLiteDatabase.rawQuery("select distinct tbl_name from Sqlite_master", null);
+    ArrayList localArrayList = new ArrayList();
+    if (localCursor1 != null)
     {
-      if ((i != 0) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Int != 2)) {}
-    }
-    else {
-      while (((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_c_of_type_Int == 0) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_c_of_type_Int == 2)) && (((i == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Int != 2)) || ((!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Int == 2)))) {
-        return i;
-      }
-    }
-    return i + 1;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (a(paramInt)) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    boolean bool;
-    label210:
-    int i;
-    if (a(paramInt))
-    {
-      if (paramView == null)
+      while (localCursor1.moveToNext())
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561505, paramViewGroup, false);
-        paramViewGroup = new wob(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, paramView);
-        paramView = this.jdField_a_of_type_Wod.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, paramView, paramViewGroup, -1);
-        paramView.setTag(paramViewGroup);
-      }
-      wns localwns;
-      for (;;)
-      {
-        localwns = a(paramInt);
-        if (localwns != null) {
-          break;
-        }
-        return paramView;
-        paramViewGroup = (wob)paramView.getTag();
-      }
-      localObject1 = localwns.jdField_a_of_type_JavaLangString;
-      Object localObject2;
-      if ((localObject1 != null) && (!((String)localObject1).equals(paramViewGroup.jdField_a_of_type_JavaLangString)))
-      {
-        localObject2 = ((uwm)uwa.a(2)).b((String)localObject1);
-        if (localObject2 == null) {
-          break label618;
-        }
-        paramViewGroup.jdField_a_of_type_JavaLangString = ((String)localObject1);
-        if (((localwns.jdField_a_of_type_Int == 14) || (localwns.jdField_a_of_type_Int == 13) || (localwns.jdField_a_of_type_Int == 16) || (localwns.jdField_a_of_type_Int == 17)) && (QQUserUIItem.isNotDovUser(String.valueOf(localwns.b)))) {
-          ((QQUserUIItem)localObject2).qq = String.valueOf(localwns.b);
-        }
-      }
-      for (;;)
-      {
-        if (localwns.jdField_f_of_type_Int == 4)
-        {
-          bool = true;
-          Resources localResources = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getResources();
-          ImageView localImageView = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-          float f1 = 50;
-          TextView localTextView = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
-          float f2 = 13;
-          float f3 = 5;
-          if (!bool) {
-            break label632;
-          }
-          localObject1 = String.valueOf(localwns.b);
-          label260:
-          vls.a(localResources, (QQUserUIItem)localObject2, localImageView, f1, localTextView, f2, f3, bool, (String)localObject1);
-          if (localwns.jdField_a_of_type_Int != 1) {
-            break label638;
-          }
-          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-          paramViewGroup.c.setVisibility(8);
-          paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          label316:
-          paramViewGroup.d.setText(localwns.a());
-          if (localwns.jdField_f_of_type_Int != 4) {
-            break label1862;
-          }
-          localObject1 = bdgc.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.app, String.valueOf(localwns.b), true);
-          paramViewGroup.e.setText((CharSequence)localObject1);
-          paramViewGroup.e.setVisibility(0);
-          paramViewGroup.f.setVisibility(8);
-          label384:
-          if ((!TextUtils.isEmpty(localwns.b())) && (!localwns.b().equals(paramViewGroup.jdField_b_of_type_JavaLangString)))
+        String str = SecurityUtile.decode(localCursor1.getString(0));
+        Cursor localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str });
+        if (localCursor2 != null) {
+          for (;;)
           {
-            paramViewGroup.jdField_b_of_type_JavaLangString = localwns.b();
-            localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getResources().getDrawable(2130846447);
-          }
-        }
-        try
-        {
-          localObject2 = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
-          ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
-          ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "story_message";
-          localObject2 = URLDrawable.getDrawable(localwns.b(), (URLDrawable.URLDrawableOptions)localObject2);
-          ((URLDrawable)localObject2).setTag(this.jdField_a_of_type_ArrayOfInt);
-          ((URLDrawable)localObject2).setDecodeHandler(bcyz.i);
-          paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setImageDrawable((Drawable)localObject2);
-          if (localwns.jdField_a_of_type_Uxk != null) {
-            paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setPollLayout(localwns.jdField_a_of_type_Uxk, -1, null);
-          }
-          if (localwns.jdField_a_of_type_Uxj != null) {
-            paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setRateLayout(localwns.jdField_a_of_type_Uxj, -1, -1L, -1);
-          }
-          localObject1 = paramViewGroup.jdField_b_of_type_AndroidViewView;
-          if (paramInt == this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a.size() - 1) {
-            if (getCount() == this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a.size())
+            try
             {
-              i = 0;
-              ((View)localObject1).setVisibility(i);
-              this.jdField_a_of_type_Wod.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, paramView, paramInt, localwns, paramViewGroup, this);
-              paramViewGroup.a(paramInt);
-              return paramView;
-              label618:
-              paramViewGroup.jdField_a_of_type_JavaLangString = null;
+              if (!str.equals(UserEntry.class.getSimpleName())) {
+                continue;
+              }
+              localObject = UserEntry.class;
+              OGEntityManager.extractedStatementByReflect(localArrayList, str, localCursor2, (Class)localObject);
+            }
+            catch (ClassNotFoundException localClassNotFoundException)
+            {
+              Object localObject;
+              yqp.b("Q.qqstory.QQStoryEntityManagerFactory", "checkColumnChange", localClassNotFoundException);
               continue;
-              bool = false;
-              break label210;
-              label632:
-              localObject1 = null;
-              break label260;
-              label638:
-              if ((localwns.jdField_a_of_type_Int == 2) || (localwns.jdField_a_of_type_Int == 3))
-              {
-                if (localwns.jdField_a_of_type_Boolean)
-                {
-                  paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-                  paramViewGroup.c.setVisibility(0);
-                  paramViewGroup.c.setText(alud.a(2131714919));
-                  paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                  break label316;
-                }
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(localwns));
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                paramViewGroup.c.setVisibility(8);
-                paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                break label316;
-              }
-              if (localwns.jdField_a_of_type_Int == 4)
-              {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131714911));
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                if (localwns.jdField_a_of_type_Boolean)
-                {
-                  paramViewGroup.c.setVisibility(0);
-                  paramViewGroup.c.setText(alud.a(2131714897));
-                }
-                for (;;)
-                {
-                  paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                  break;
-                  paramViewGroup.c.setVisibility(8);
-                }
-              }
-              if (localwns.jdField_a_of_type_Int == 12)
-              {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.c(localwns));
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                if (localwns.jdField_a_of_type_Boolean)
-                {
-                  paramViewGroup.c.setVisibility(0);
-                  paramViewGroup.c.setText(alud.a(2131714898));
-                }
-                for (;;)
-                {
-                  paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                  break;
-                  paramViewGroup.c.setVisibility(8);
-                }
-              }
-              if ((localwns.jdField_a_of_type_Int == 14) || (localwns.jdField_a_of_type_Int == 13))
-              {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.d(localwns));
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                if (localwns.jdField_a_of_type_Boolean)
-                {
-                  paramViewGroup.c.setVisibility(0);
-                  paramViewGroup.c.setText(alud.a(2131714899));
-                }
-                for (;;)
-                {
-                  paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                  break;
-                  paramViewGroup.c.setVisibility(8);
-                }
-              }
-              if (localwns.jdField_a_of_type_Int == 15)
-              {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.e(localwns));
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                if (localwns.jdField_a_of_type_Boolean)
-                {
-                  paramViewGroup.c.setVisibility(0);
-                  paramViewGroup.c.setText(alud.a(2131714920));
-                }
-                for (;;)
-                {
-                  paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                  break;
-                  paramViewGroup.c.setVisibility(8);
-                }
-              }
-              if ((localwns.jdField_a_of_type_Int == 16) || (localwns.jdField_a_of_type_Int == 17))
-              {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.f(localwns));
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                if (localwns.jdField_a_of_type_Boolean)
-                {
-                  paramViewGroup.c.setVisibility(0);
-                  paramViewGroup.c.setText(alud.a(2131714917));
-                }
-                for (;;)
-                {
-                  paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                  break;
-                  paramViewGroup.c.setVisibility(8);
-                }
-              }
-              if (localwns.jdField_a_of_type_Int == 5)
-              {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localwns.j);
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                paramViewGroup.c.setVisibility(8);
-                paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                break label316;
-              }
-              if (localwns.jdField_a_of_type_Int == 6)
-              {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localwns.jdField_e_of_type_JavaLangString);
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                paramViewGroup.c.setVisibility(8);
-                paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                break label316;
-              }
-              if (localwns.jdField_a_of_type_Int == 7)
-              {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localwns.jdField_e_of_type_JavaLangString);
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                paramViewGroup.c.setVisibility(8);
-                paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                break label316;
-              }
-              if (localwns.jdField_a_of_type_Int == 8)
-              {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(2131700092);
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                paramViewGroup.c.setVisibility(8);
-                paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                break label316;
-              }
-              if (localwns.jdField_a_of_type_Int == 9)
-              {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localwns.jdField_e_of_type_JavaLangString);
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                paramViewGroup.c.setVisibility(8);
-                paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                break label316;
-              }
-              if (localwns.jdField_a_of_type_Int == 10)
-              {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localwns.jdField_e_of_type_JavaLangString);
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                paramViewGroup.c.setVisibility(8);
-                paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                break label316;
-              }
-              if (localwns.jdField_a_of_type_Int == 11)
-              {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localwns.jdField_e_of_type_JavaLangString);
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                paramViewGroup.c.setVisibility(8);
-                paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                break label316;
-              }
-              if (localwns.jdField_a_of_type_Int == 18)
-              {
-                i = localwns.jdField_e_of_type_Int;
-                localObject1 = null;
-                if (i > 0) {
-                  localObject1 = new SimpleDateFormat("HH:mm").format(Long.valueOf(i * 1000L));
-                }
-                if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-                for (localObject1 = alud.a(2131714916);; localObject1 = "@" + (String)localObject1 + alud.a(2131714913))
-                {
-                  paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-                  paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                  paramViewGroup.c.setVisibility(8);
-                  paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                  break;
-                }
-              }
-              if (localwns.jdField_a_of_type_Int == 19)
-              {
-                if (localwns.g)
-                {
-                  paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-                  paramViewGroup.c.setVisibility(0);
-                  paramViewGroup.c.setText(alud.a(2131714912));
-                }
-                for (;;)
-                {
-                  paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-                  break;
-                  if (localwns.jdField_f_of_type_Boolean)
-                  {
-                    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-                    paramViewGroup.c.setVisibility(0);
-                    paramViewGroup.c.setText(alud.a(2131714904));
-                  }
-                  else
-                  {
-                    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.b(localwns));
-                    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                    paramViewGroup.c.setVisibility(8);
-                  }
-                }
-              }
-              paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-              paramViewGroup.c.setVisibility(8);
-              paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-              break label316;
-              label1862:
-              if (((localwns.jdField_f_of_type_Int == 99) || (localwns.jdField_f_of_type_Int == 104)) && (localwns.jdField_a_of_type_Int != 6) && (localwns.jdField_a_of_type_Int != 9))
-              {
-                paramViewGroup.e.setText(localwns.k);
-                paramViewGroup.e.setVisibility(0);
-                paramViewGroup.f.setVisibility(8);
-                break label384;
-              }
-              if (((localwns.jdField_a_of_type_Int == 13) || (localwns.jdField_a_of_type_Int == 14) || (localwns.jdField_a_of_type_Int == 16) || (localwns.jdField_a_of_type_Int == 17)) && (!TextUtils.isEmpty(localwns.p)))
-              {
-                if ("QQ好友".equals(localwns.p)) {
-                  paramViewGroup.e.setVisibility(8);
-                }
-                for (;;)
-                {
-                  paramViewGroup.f.setVisibility(8);
-                  break;
-                  paramViewGroup.e.setText(localwns.p);
-                  paramViewGroup.e.setVisibility(0);
-                }
-              }
-              paramViewGroup.e.setVisibility(8);
-              paramViewGroup.f.setVisibility(8);
+            }
+            localCursor2.close();
+            break;
+            if (str.equals(StoryEntry.class.getSimpleName())) {
+              localObject = StoryEntry.class;
+            } else if (str.equals(StoryVideoEntry.class.getSimpleName())) {
+              localObject = StoryVideoEntry.class;
+            } else if (str.equals(StoryVideoListEntry.class.getSimpleName())) {
+              localObject = StoryVideoListEntry.class;
+            } else if (str.startsWith(PublishVideoEntry.class.getSimpleName())) {
+              localObject = PublishVideoEntry.class;
+            } else if (str.equals(HotTopicEntry.class.getSimpleName())) {
+              localObject = HotTopicEntry.class;
+            } else {
+              localObject = Class.forName(paramString + "." + str);
             }
           }
         }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setImageDrawable((Drawable)localObject1);
-            continue;
-            i = 8;
-            continue;
-            i = 0;
-          }
-        }
       }
+      localCursor1.close();
     }
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561506, paramViewGroup, false);
-      paramViewGroup = new woa(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, paramView);
-      paramView.setTag(paramViewGroup);
-      switch (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Int)
-      {
-      }
-    }
-    for (;;)
-    {
-      paramViewGroup.a(paramInt);
-      return paramView;
-      paramViewGroup = (woa)paramView.getTag();
-      break;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Boolean = false;
-        paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(2131700077);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.msgList", 2, "list - load more");
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a();
-      }
-      else
-      {
-        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        QQStoryContext.a();
-        bool = ThemeUtil.isInNightMode(QQStoryContext.a());
-        localObject1 = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-        if (bool) {}
-        for (i = 2130846058;; i = 2130846057)
-        {
-          ((ImageView)localObject1).setImageResource(i);
-          break;
-        }
-        paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(2131700077);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.msgList", 2, "pull to load more");
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a();
-        continue;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Boolean)
-        {
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Boolean = false;
-          paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(2131700077);
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a();
-        }
-        else
-        {
-          paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131714900));
-          continue;
-          paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(2131700077);
-        }
-      }
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i;
+    com.tencent.mobileqq.app.SQLiteDatabase.beginTransactionLog();
+    paramSQLiteDatabase.beginTransaction();
     try
     {
-      i = Integer.parseInt(String.valueOf(paramView.getTag(-1)));
-      if (i == -1) {
-        return;
+      paramString = localArrayList.iterator();
+      while (paramString.hasNext()) {
+        paramSQLiteDatabase.execSQL((String)paramString.next());
       }
+      paramSQLiteDatabase.setTransactionSuccessful();
     }
-    catch (Exception localException)
+    finally
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.qqstory.msgList", 2, localException, new Object[0]);
-        }
-        i = -1;
-      }
-      switch (paramView.getId())
-      {
-      default: 
-        return;
-      }
+      paramSQLiteDatabase.endTransaction();
+      com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(i);
-    wxj.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
+    paramSQLiteDatabase.endTransaction();
+    com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+    yqp.a("Q.qqstory.QQStoryEntityManagerFactory", "checkColumnChange take time:%d", Long.valueOf(System.currentTimeMillis() - l));
+  }
+  
+  public void a()
+  {
+    a(this.mInnerDbHelper.getWritableDatabase());
+    createDatabase(this.mInnerDbHelper.getWritableDatabase());
+  }
+  
+  protected void a(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(StoryEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(StoryVideoEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(StoryVideoListEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(UserEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(PublishVideoEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(ReportWatchVideoEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(VideoCollectionEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MemoryInfoEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(StoryVideoSimpleInfoEntity.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(TroopStoryEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(CardEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(TopicInfoEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(UnionIdMapEntity.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(ShareGroupListEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(DiscoverBannerVideoEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MsgTabNodeEntity.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MsgTabHaloEntity.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MsgTabNodeVidListEntity.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(DownloadingUrlEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(StoryAlbumPicEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(StoryAlbumEntry.class.getSimpleName()));
+  }
+  
+  public SQLiteOpenHelper build(String paramString)
+  {
+    if (this.dbHelper == null)
+    {
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "qqstory_" + paramString + ".db", null, 180);
+      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
+    }
+    return this.dbHelper;
+  }
+  
+  public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new UserEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryVideoEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryVideoListEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new PublishVideoEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new ReportWatchVideoEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new VideoCollectionEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MemoryInfoEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryVideoSimpleInfoEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new TroopStoryEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new CardEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new TopicInfoEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new UnionIdMapEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new ShareGroupListEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new DiscoverBannerVideoEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MsgTabNodeEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MsgTabHaloEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MsgTabNodeVidListEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new DownloadingUrlEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MsgTabNodeRecommendActivityReadEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryAlbumPicEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryAlbumEntry()));
+  }
+  
+  public String getPackageName()
+  {
+    return getClass().getPackage().getName();
+  }
+  
+  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 > paramInt2)
+    {
+      a(paramSQLiteDatabase);
+      createDatabase(paramSQLiteDatabase);
+      yqp.d("Q.qqstory.QQStoryEntityManagerFactory", "Version %d turn to %d ,clear all data", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      return;
+    }
+    if (paramInt1 < 29)
+    {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(PublishVideoEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new PublishVideoEntry()));
+    }
+    if (paramInt1 < 70) {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement("FirstVideoEntry"));
+    }
+    if (paramInt1 < 90)
+    {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(TopicInfoEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new TopicInfoEntry()));
+    }
+    if (paramInt1 < 98)
+    {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(LikeEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new LikeEntry()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(LiveVideoEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new LiveVideoEntry()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MemoryInfoEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MemoryInfoEntry()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(OfficialRecommendEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new OfficialRecommendEntry()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(ReportWatchVideoEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new ReportWatchVideoEntry()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(UserEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new UserEntry()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(StoryEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryEntry()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(StoryVideoListEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryVideoListEntry()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(VideoCollectionEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new VideoCollectionEntry()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(UnionIdMapEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new UnionIdMapEntity()));
+    }
+    if (paramInt1 < 102)
+    {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(CommentEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new CommentEntry()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(TroopStoryEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new TroopStoryEntry()));
+    }
+    if (paramInt1 < 112)
+    {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(CardEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new CardEntry()));
+    }
+    if (paramInt1 < 134)
+    {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(FeedEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new FeedEntry()));
+    }
+    if (paramInt1 < 138)
+    {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(StoryVideoEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryVideoEntry()));
+    }
+    if (paramInt1 < 138)
+    {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MemoryInfoEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MemoryInfoEntry()));
+    }
+    if (paramInt1 < 158)
+    {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MsgTabNodeRecommendActivityReadEntity.TABLE_NAME));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MsgTabNodeRecommendActivityReadEntity()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MsgTabNodeEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MsgTabNodeEntity()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MsgTabNodeVidListEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MsgTabNodeVidListEntity()));
+    }
+    if (paramInt1 < 178)
+    {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(StoryVideoEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryVideoEntry()));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(StoryAlbumEntry.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new StoryAlbumEntry()));
+    }
+    a("com.tencent.biz.qqstory.database", paramSQLiteDatabase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     woc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.gamecenter.activities.GameCenterActivity;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class acea
-  implements afil
+  implements SDKInitListener
 {
-  public acea(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public acea(GameCenterActivity paramGameCenterActivity) {}
   
-  public boolean a(afii paramafii)
+  public void onSDKInited(boolean paramBoolean)
   {
-    this.a.finish();
-    if (ArkFullScreenAppActivity.a(this.a)) {
-      this.a.overridePendingTransition(2130771997, 2130772001);
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterActivity", 1, "QQVideo Inited:" + paramBoolean);
     }
-    return false;
-  }
-  
-  public boolean a(afii paramafii, String paramString1, String paramString2)
-  {
-    return false;
   }
 }
 

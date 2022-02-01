@@ -1,29 +1,28 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
-class ygu
-  implements View.OnClickListener
+public class ygu
+  extends ypu
 {
-  ygu(ygq paramygq, CertifiedAccountMeta.StReply paramStReply) {}
-  
-  public void onClick(View paramView)
+  public ygu(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    paramView = (ClipboardManager)ygg.i(this.jdField_a_of_type_Ygq.a).getSystemService("clipboard");
-    if (paramView != null)
+    super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
+  }
+  
+  protected void U_()
+  {
+    zpa localzpa = a().a("FeedSegment");
+    if ((localzpa != null) && (localzpa.a() == 0))
     {
-      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.content.get()));
-      ygg.a(this.jdField_a_of_type_Ygq.a).dismiss();
+      this.a = true;
+      return;
     }
+    this.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ygu
  * JD-Core Version:    0.7.0.1
  */

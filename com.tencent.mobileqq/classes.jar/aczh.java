@@ -1,16 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.SourceMsg;
 
 public class aczh
-  implements bhuk
+  extends aczg
 {
-  public aczh(FriendProfileCardActivity paramFriendProfileCardActivity, ArrayList paramArrayList, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public int a()
   {
-    ((bdon)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
-    this.jdField_a_of_type_Bhuf.e();
+    return super.a() + 3;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    new bbzc().h(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.src_msg.has();
   }
 }
 

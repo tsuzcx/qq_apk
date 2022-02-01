@@ -1,31 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import java.lang.ref.WeakReference;
 
 public class mmt
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public mmt(VideoInviteActivity paramVideoInviteActivity, long paramLong, boolean paramBoolean) {}
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public mmt(EffectFilterPanel paramEffectFilterPanel, View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isFinishing()) {}
-    while ((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isDestroyed())) {
-      return;
-    }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c(this.jdField_a_of_type_Long);
-      return;
-    }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, this.jdField_a_of_type_Boolean, new mmu(this));
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    lbc.c("EffectFilterPanel", "MyTextAlphaAnimationListener onAnimationEnd :" + localView + "|" + paramAnimation);
+    if (localView != null) {
+      localView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mmt
  * JD-Core Version:    0.7.0.1
  */

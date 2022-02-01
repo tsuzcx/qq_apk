@@ -1,30 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-
-public abstract class amsp
-  implements alpg
+public abstract interface amsp
 {
-  public abstract void a(anau paramanau);
+  public abstract String a(int paramInt, String paramString);
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARLBSObserver", 2, "type=" + paramInt + ", isSuccess=" + paramBoolean);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    try
-    {
-      a((anau)paramObject);
-      return;
-    }
-    catch (Exception paramObject)
-    {
-      a(new anau());
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(amlp paramamlp, long paramLong);
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 

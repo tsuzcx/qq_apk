@@ -1,29 +1,24 @@
-import android.support.annotation.NonNull;
-
 public class wqh
-  extends umf<wpr, uvf>
 {
-  public wqh(wpr paramwpr)
-  {
-    super(paramwpr);
-  }
+  @zkv(a="id")
+  public int a;
+  @zkv(a="name")
+  public String a;
+  @zkv(a="items")
+  public wqj[] a;
   
-  public void a(@NonNull wpr paramwpr, @NonNull uvf paramuvf)
+  public String toString()
   {
-    wxe.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramuvf);
-    wpr.a(paramwpr, paramuvf.a);
+    StringBuilder localStringBuilder = new StringBuilder().append("FilterConfig{id=").append(this.jdField_a_of_type_Int).append(", name='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", items-size=");
+    if (this.jdField_a_of_type_ArrayOfWqj != null) {}
+    for (int i = this.jdField_a_of_type_ArrayOfWqj.length;; i = 0) {
+      return i + '}';
+    }
   }
-  
-  public Class acceptEventClass()
-  {
-    return uvf.class;
-  }
-  
-  public void b(@NonNull wpr paramwpr, @NonNull uvf paramuvf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wqh
  * JD-Core Version:    0.7.0.1
  */

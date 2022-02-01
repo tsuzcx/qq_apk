@@ -1,35 +1,28 @@
-import java.nio.ByteBuffer;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqcircle.widgets.QCircleLottileAnimView;
+import com.tencent.biz.qqcircle.widgets.QCirclePushToastView;
+import com.tencent.biz.qqcircle.widgets.QCirclePushToastView.1;
 
 public class vxx
+  implements Animator.AnimatorListener
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  public boolean a;
-  public boolean b;
+  public vxx(QCirclePushToastView.1 param1) {}
   
-  public vxx()
-  {
-    a();
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
   
-  public String toString()
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
+    QCirclePushToastView.a(this.a.this$0).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vxx
  * JD-Core Version:    0.7.0.1
  */

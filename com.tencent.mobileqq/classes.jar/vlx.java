@@ -1,40 +1,24 @@
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.events.QCircleSelectTabEvent;
+import com.tencent.biz.qqcircle.fragments.main.QCircleAggregationFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class vlx
-  implements bhuk
+public class vlx
+  implements View.OnClickListener
 {
-  vlx(QQUserUIItem paramQQUserUIItem, bhuf parambhuf) {}
+  public vlx(QCircleAggregationFragment paramQCircleAggregationFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramView = "16384";
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq))) {
-        new vdw().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      wxe.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
-    }
+    vrf.a("", 22, 13);
+    zwp.a().a(new QCircleSelectTabEvent(6));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vlx
  * JD-Core Version:    0.7.0.1
  */

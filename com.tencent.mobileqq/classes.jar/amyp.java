@@ -1,41 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONArray;
 
 class amyp
-  extends amzw
+  implements amxn
 {
-  amyp(amyk paramamyk) {}
+  amyp(amyl paramamyl, String paramString1, File paramFile, JSONArray paramJSONArray, int[] paramArrayOfInt, String paramString2) {}
   
-  public void a()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
+    QLog.d("ApolloPluginRscLoader", 1, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
+    Object localObject = this.jdField_a_of_type_Amyl;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_JavaIoFile.exists()) {}
+    for (paramInt = 0;; paramInt = 2)
+    {
+      localObject = amyl.a((amyl)localObject, 6, str, paramInt);
+      this.jdField_a_of_type_OrgJsonJSONArray.put(localObject);
+      if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0)) {
+        break;
+      }
+      this.jdField_a_of_type_Amyl.a(this.b, anni.a(2131699311), this.jdField_a_of_type_OrgJsonJSONArray);
+      return;
     }
-    Message localMessage = amyk.a(this.a).obtainMessage();
-    localMessage.what = 100;
-    localMessage.sendToTarget();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
-    }
-    Message localMessage = amyk.a(this.a).obtainMessage();
-    localMessage.what = 102;
-    localMessage.arg1 = paramInt;
-    localMessage.sendToTarget();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
-    }
-    Message localMessage = amyk.a(this.a).obtainMessage();
-    localMessage.what = 101;
-    localMessage.sendToTarget();
+    amyl.a(this.jdField_a_of_type_Amyl, this.jdField_a_of_type_ArrayOfInt, this.b, this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 

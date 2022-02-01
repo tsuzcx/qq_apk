@@ -1,73 +1,61 @@
-import android.annotation.TargetApi;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import java.io.File;
-import java.io.IOException;
+import java.net.URL;
 
-@TargetApi(14)
-public class upt
-  extends upy
+final class upt
+  implements uwv
 {
-  private final bayf jdField_a_of_type_Bayf;
-  public String a;
-  private final boolean jdField_a_of_type_Boolean;
-  public String b;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = System.currentTimeMillis();
   
-  public upt(boolean paramBoolean)
+  upt(String paramString, KandianUrlImageView paramKandianUrlImageView) {}
+  
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    QQStoryContext.a();
-    this.jdField_a_of_type_Bayf = QQStoryContext.a().a();
+    upe.d("WeishiUtils", "url = " + paramURL + ", onLoadFailed!!!");
+    if (this.jdField_a_of_type_Int < 2)
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      upe.d("WeishiUtils", "");
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImage(paramURL);
+      return;
+    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  private void c()
+  public void a(URL paramURL, tds paramtds)
   {
-    bayk localbayk = new bayk();
-    localbayk.jdField_a_of_type_Awkh = new upu(this);
-    localbayk.i = this.jdField_a_of_type_JavaLangString;
-    localbayk.jdField_a_of_type_Boolean = true;
-    localbayk.jdField_b_of_type_Int = 196610;
-    QQStoryContext.a();
-    localbayk.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
-    localbayk.c = "";
-    localbayk.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    this.jdField_a_of_type_Bayf.a(localbayk);
-  }
-  
-  protected void a()
-  {
-    File localFile2 = new File(this.jdField_a_of_type_JavaLangString);
-    if ((!localFile2.exists()) || (localFile2.length() == 0L)) {
-      wxe.e("Q.qqstory.publish.upload:ImageFileObject", "file not exit %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    }
-    Object localObject;
-    if ((this.jdField_a_of_type_Boolean) && (PngQuantUtils.a())) {
-      localObject = null;
-    }
-    try
+    upe.b("WeishiUtils", "onLoadSuccess!!!");
+    this.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_Long > 0L)
     {
-      File localFile1 = File.createTempFile("temp", "png", localFile2.getParentFile());
-      localObject = localFile1;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      if (paramURL != null)
       {
-        wxe.b("Q.qqstory.publish.upload:ImageFileObject", "create file", localIOException);
+        uha.b(1, paramURL.toString());
+        long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+        paramtds = bdsh.a(paramURL.toString());
+        if (paramtds != null)
+        {
+          String str = paramtds.getAbsolutePath();
+          long l2 = paramtds.length();
+          upe.c("actWsFeedPicReqDuration", "--successTime:" + System.currentTimeMillis() + ", downloadCost:" + l1 + ", length:" + l2 + ", url = " + paramURL.toString() + "\n--absolutePath = " + str);
+          if ("feeds".equals(this.jdField_a_of_type_JavaLangString)) {
+            unb.a().a(true, l1, l2);
+          }
+          unb.a().a(true, l1, l2, paramURL.toString(), this.jdField_a_of_type_JavaLangString);
+        }
       }
+      this.jdField_a_of_type_Long = 0L;
     }
-    if (PngQuantUtils.a(localFile2, localObject))
-    {
-      localFile2.delete();
-      localObject.renameTo(localFile2);
-    }
-    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     upt
  * JD-Core Version:    0.7.0.1
  */

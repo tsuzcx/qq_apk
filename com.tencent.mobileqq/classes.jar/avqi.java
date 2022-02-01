@@ -1,16 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.MD5;
+import org.json.JSONObject;
 
-class avqi
-  implements DialogInterface.OnClickListener
+public class avqi
+  implements bbuq
 {
-  avqi(avqc paramavqc) {}
+  public avqi(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(String paramString)
+  {
+    if (paramString == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        byte[] arrayOfByte = bgmg.a(paramString);
+        if (arrayOfByte == null) {
+          break;
+        }
+        localJSONObject.put("code", 0);
+        StringBuilder localStringBuilder = new StringBuilder("data:");
+        if (ayzh.a(paramString))
+        {
+          str = "image/gif;";
+          localStringBuilder.append(str);
+          localStringBuilder.append("base64,");
+          localStringBuilder.append(bgku.encodeToString(arrayOfByte, 0));
+          localJSONObject.put("imgData", localStringBuilder);
+          localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
+          localJSONObject.put("imagePath", paramString);
+          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+        return;
+      }
+      String str = "image/jpg;";
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avqi
  * JD-Core Version:    0.7.0.1
  */

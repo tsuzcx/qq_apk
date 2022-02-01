@@ -1,48 +1,51 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.TeamWorkFileExportHandler.1;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.manager.TicketManager;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bagr
-  extends alpd
-  implements Handler.Callback
+  implements URLDrawableDownListener
 {
-  private String[] a = { "docs.qq.com" };
+  public bagr(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public bagr(QQAppInterface paramQQAppInterface)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    super(paramQQAppInterface);
-  }
-  
-  private void a(Runnable paramRunnable)
-  {
-    if (this.app == null) {}
-    while (((TicketManager)this.app.getManager(2)).GetPskey(this.app.getCurrentAccountUin(), 16L, this.a, new bags(this, paramRunnable)) == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadCancelled: ");
     }
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    a(new TeamWorkFileExportHandler.1(this, paramString1, paramString2, paramString3, paramString4));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadFailed: ");
+    }
+    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadInterrupted: ");
+    }
   }
   
-  protected Class<? extends alpg> observerClass()
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    return bagp.class;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadProgressed: " + paramURLDrawable + " / " + paramInt);
+    }
+    ReceiptMessageDetailFragment.a(this.a).setLevel(paramInt);
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
+    ReceiptMessageDetailFragment.a(this.a, paramURLDrawable);
+    ReceiptMessageDetailFragment.b(this.a);
+  }
 }
 
 

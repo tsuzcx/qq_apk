@@ -1,27 +1,43 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-final class ajev
-  implements Comparator<File>
+public class ajev
+  extends bfrb
 {
-  private int a(String paramString)
-  {
-    try
-    {
-      int i = paramString.lastIndexOf('.');
-      if (i == -1) {
-        return Integer.parseInt(paramString);
-      }
-      i = Integer.parseInt(paramString.substring(0, i));
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
-  }
+  public ajev(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public int a(File paramFile1, File paramFile2)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    return a(paramFile1.getName()) - a(paramFile2.getName());
+    if ((paramBoolean) && (paramBundle != null)) {}
+    while (this.a.jdField_a_of_type_Biau == null) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("structMsg");
+        structmsg.StructMsg localStructMsg = new structmsg.StructMsg();
+        localStructMsg.mergeFrom(paramBundle);
+        TroopNotifyAndRecommendView.a(this.a, 1, localStructMsg);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        do
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopNotifyAndRecommendView", 2, "structMsg merge error");
+          }
+        } while (this.a.jdField_a_of_type_Biau == null);
+        this.a.jdField_a_of_type_Biau.dismiss();
+        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131696653), 0).b(this.a.a());
+        return;
+      }
+    }
+    this.a.jdField_a_of_type_Biau.dismiss();
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131696653), 0).b(this.a.a());
   }
 }
 

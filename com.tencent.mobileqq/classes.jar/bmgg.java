@@ -1,25 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.RelativeLayout;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bmgg
-  extends AnimatorListenerAdapter
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bmgg(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bmgg(QZoneShareActivity paramQZoneShareActivity, RelativeLayout paramRelativeLayout) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onGlobalLayout()
   {
-    this.a.a.d = 5;
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView 190ms all end");
+    int i = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) - i > 150) {
+      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(0);
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView begin");
+    for (;;)
+    {
+      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, i);
+      return;
+      if ((i - QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) > 150) && (!this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.d)) {
+        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(4);
+      }
     }
   }
 }

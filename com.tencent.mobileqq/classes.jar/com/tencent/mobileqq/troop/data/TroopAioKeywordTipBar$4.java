@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.data;
 
-import aeqo;
+import afwy;
 import android.util.Pair;
-import bbpo;
-import bbps;
-import bbpu;
-import bbpw;
+import beqc;
+import beqg;
+import beqi;
+import beqk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -17,17 +17,17 @@ import java.util.List;
 public class TroopAioKeywordTipBar$4
   implements Runnable
 {
-  public TroopAioKeywordTipBar$4(bbpo parambbpo) {}
+  public TroopAioKeywordTipBar$4(beqc parambeqc) {}
   
   public void run()
   {
-    bbpo.b(this.this$0, false);
-    if (!bbpo.c(this.this$0)) {
+    beqc.b(this.this$0, false);
+    if (!beqc.c(this.this$0)) {
       if (QLog.isColorLevel()) {
         QLog.i("TroopAioKeywordTipBar", 2, "checkMsgForShow, mIsCanCheck = false");
       }
     }
-    bbpw localbbpw;
+    beqk localbeqk;
     ArrayList localArrayList1;
     do
     {
@@ -41,13 +41,13 @@ public class TroopAioKeywordTipBar$4
           return;
           i = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition() - this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
           j = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() - this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
-          localbbpw = (bbpw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(225);
+          localbeqk = (beqk)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(225);
         } while ((i < 0) || (j < 0));
         localArrayList1 = new ArrayList(10);
         localArrayList2 = new ArrayList(10);
         if (i <= j)
         {
-          localObject = (MessageRecord)this.this$0.jdField_a_of_type_Aeqo.getItem(i);
+          localObject = (MessageRecord)this.this$0.jdField_a_of_type_Afwy.getItem(i);
           if (localObject == null) {}
           for (;;)
           {
@@ -63,24 +63,24 @@ public class TroopAioKeywordTipBar$4
         if (localArrayList2.size() <= 0) {
           break;
         }
-      } while ((bbpo.b(this.this$0) != null) && (bbpo.b(this.this$0) == localArrayList2.get(0)));
-      Object localObject = localbbpw.a(localArrayList2, bbpo.a(this.this$0), 1);
-      if ((bbpo.a(this.this$0)) && ((((Pair)localObject).second == null) || ((bbpo.a(this.this$0) != null) && (bbpo.a(this.this$0).ruleId != ((Integer)((Pair)localObject).second).intValue())))) {
-        bbpo.a(this.this$0, false);
+      } while ((beqc.b(this.this$0) != null) && (beqc.b(this.this$0) == localArrayList2.get(0)));
+      Object localObject = localbeqk.a(localArrayList2, beqc.a(this.this$0), 1);
+      if ((beqc.a(this.this$0)) && ((((Pair)localObject).second == null) || ((beqc.a(this.this$0) != null) && (beqc.a(this.this$0).ruleId != ((Integer)((Pair)localObject).second).intValue())))) {
+        beqc.a(this.this$0, false);
       }
       for (;;)
       {
-        localbbpw.a(localArrayList2, bbpo.a(this.this$0), 1, new bbps(this, localArrayList1, localbbpw));
+        localbeqk.a(localArrayList2, beqc.a(this.this$0), 1, new beqg(this, localArrayList1, localbeqk));
         return;
-        bbpo.b(this.this$0, (MessageRecord)localArrayList2.get(0));
+        beqc.b(this.this$0, (MessageRecord)localArrayList2.get(0));
       }
-    } while ((localArrayList1.size() <= 0) || (bbpo.a(this.this$0)));
-    localbbpw.a(localArrayList1, null, 2, new bbpu(this));
+    } while ((localArrayList1.size() <= 0) || (beqc.a(this.this$0)));
+    localbeqk.a(localArrayList1, null, 2, new beqi(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4
  * JD-Core Version:    0.7.0.1
  */

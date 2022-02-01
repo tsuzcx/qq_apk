@@ -2,7 +2,6 @@ package com.tencent.mobileqq.microapp.appbrand.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.mobileqq.microapp.appbrand.a;
 import com.tencent.mobileqq.microapp.appbrand.j;
 import com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer;
@@ -23,7 +22,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.ui.c
  * JD-Core Version:    0.7.0.1
  */

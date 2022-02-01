@@ -1,34 +1,46 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import android.content.Intent;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.PatchedButton;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
 public class agju
-  extends azer
+  implements agma, agmn
 {
-  public agju(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2) {}
+  private BaseChatPie a;
+  protected PatchedButton a;
+  public AIOLongCaptureCtrl a;
+  
+  agju(BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+  }
   
   public void a(int paramInt)
   {
-    agkl localagkl = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
-    if (localagkl != null) {
-      localagkl.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, 0L, true);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131380577));
+      this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl = new AIOLongCaptureCtrl(new agjv(this));
+      bowj.a(this.jdField_a_of_type_ComTencentWidgetPatchedButton, this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl);
+      return;
+    }
+    bowj.b(this.jdField_a_of_type_ComTencentWidgetPatchedButton, this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl != null) {
+      this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  public void a(int paramInt, azej paramazej)
+  public int[] a()
   {
-    agkl localagkl = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
-    if (paramazej.jdField_a_of_type_Int == 0)
-    {
-      paramazej = (awir)paramazej.jdField_a_of_type_JavaLangObject;
-      if (localagkl != null) {
-        localagkl.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 1, paramazej.b, false);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramazej.b);
-      return;
-    }
-    if (localagkl != null) {
-      localagkl.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 2, "step:" + paramazej.jdField_a_of_type_Awjh.a + ", desc:" + paramazej.jdField_a_of_type_Awjh.b, false);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E");
+    return new int[] { 0, 8 };
   }
 }
 

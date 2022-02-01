@@ -1,70 +1,81 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.os.Build.VERSION;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
 
 public class bkfp
-  extends bkfr
 {
-  public bkfp(String paramString, View paramView)
+  public static Camera a()
   {
-    super(paramString, paramView);
+    return a(-1, 5);
   }
   
-  private int b(String paramString)
+  public static Camera a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
-    }
-    if ("center".equals(paramString)) {
-      return 13;
-    }
-    if ("center_horizontal".equals(paramString)) {
-      return 14;
-    }
-    if ("center_vertical".equals(paramString)) {
-      return 15;
-    }
-    return 9;
+    return a(paramInt, 5);
   }
   
-  protected ViewGroup.LayoutParams a(int paramInt1, int paramInt2)
+  @TargetApi(9)
+  public static Camera a(int paramInt1, int paramInt2)
   {
-    return new RelativeLayout.LayoutParams(paramInt1, paramInt2);
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    super.a(paramString1, paramString2);
-    if (!(this.a instanceof RelativeLayout)) {}
-  }
-  
-  protected void a(String paramString1, String paramString2, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    super.a(paramString1, paramString2, paramLayoutParams);
-    paramLayoutParams = (RelativeLayout.LayoutParams)paramLayoutParams;
-    if ("gravity".equals(paramString1)) {
-      paramLayoutParams.addRule(b(paramString2));
+    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+      paramInt2 = 1;
     }
-    do
+    int i = 0;
+    Camera localCamera1 = null;
+    Camera localCamera3;
+    for (;;)
     {
-      do
+      localCamera3 = localCamera1;
+      if (i < paramInt2)
       {
-        do
+        Camera localCamera2 = localCamera1;
+        try
         {
-          return;
-        } while (!"relative".equals(paramString1));
-        paramString1 = paramString2.split(" ");
-      } while ((paramString1 == null) || (paramString1.length != 2));
-      if ("bottom".equals(paramString1[1]))
-      {
-        paramLayoutParams.addRule(3, Integer.parseInt(paramString1[0]));
-        paramLayoutParams.addRule(5, Integer.parseInt(paramString1[0]));
-        return;
+          if ((Build.VERSION.SDK_INT >= 9) && (paramInt1 != -1)) {
+            localCamera2 = localCamera1;
+          }
+          for (localCamera1 = Camera.open(paramInt1);; localCamera1 = Camera.open())
+          {
+            localCamera2 = localCamera1;
+            localCamera3 = localCamera1;
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            localCamera2 = localCamera1;
+            QLog.d("CameraUtil", 2, "openCameraWithRetry successfully.  retry times = " + i + ", max retry times = " + paramInt2);
+            return localCamera1;
+            localCamera2 = localCamera1;
+          }
+        }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("CameraUtil", 2, "openCameraWithRetry. Fail to open camera. error msg: " + localException.getMessage() + ", retry times = " + i + ", max retry times = " + paramInt2);
+          }
+          i += 1;
+          if (i < paramInt2) {
+            try
+            {
+              Thread.currentThread();
+              Thread.sleep(500);
+              Object localObject = localCamera2;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                localInterruptedException.printStackTrace();
+              }
+            }
+          } else {
+            throw new RuntimeException(localInterruptedException);
+          }
+        }
       }
-    } while (!"right".equals(paramString1[1]));
-    paramLayoutParams.addRule(6, Integer.parseInt(paramString1[0]));
+    }
+    return localCamera3;
   }
 }
 

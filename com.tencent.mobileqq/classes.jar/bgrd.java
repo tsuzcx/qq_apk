@@ -1,30 +1,35 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class bgrd
-  implements View.OnClickListener
+  extends Handler
 {
-  bgrd(bgrb parambgrb, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  bgrd(bgrb parambgrb, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgrb, 0);
-    }
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    synchronized (this.a)
     {
-      if (this.jdField_a_of_type_Bgrb.isShowing()) {
-        this.jdField_a_of_type_Bgrb.dismiss();
+      if (bgrb.a(this.a) != null) {
+        bgrb.a(this.a).a(bgrb.a(this.a));
       }
-      return;
+      while (!QLog.isDevelopLevel())
+      {
+        super.handleMessage(paramMessage);
+        return;
+      }
+      QLog.d("QQLSActivity", 4, "QQLSSensor handler callback=null");
     }
-    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgrd
  * JD-Core Version:    0.7.0.1
  */

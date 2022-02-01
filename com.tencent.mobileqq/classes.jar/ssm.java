@@ -1,60 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
 
-class ssm
-  implements BusinessObserver
+public class ssm
+  implements bkqc
 {
-  ssm(ssk paramssk, ssj paramssj) {}
+  public ssm(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_Ssj.a + ", success:" + String.valueOf(paramBoolean));
-    }
-    if ((ssk.a(this.jdField_a_of_type_Ssk) != null) && (ssk.a(this.jdField_a_of_type_Ssk).isResume())) {
-      ssk.a(this.jdField_a_of_type_Ssk).b(false);
-    }
-    if (!paramBoolean) {
-      ssk.a(this.jdField_a_of_type_Ssk);
-    }
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-          localUnFollowResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() == 0)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
-            }
-            ssk.b(this.jdField_a_of_type_Ssk, this.jdField_a_of_type_Ssj);
-            StructLongMessageDownloadProcessor.a(ssk.a(this.jdField_a_of_type_Ssk), this.jdField_a_of_type_Ssj.a);
-            ((bcml)ssk.a(this.jdField_a_of_type_Ssk).getManager(132)).a(this.jdField_a_of_type_Ssj.a);
-            return;
-          }
-          ssk.a(this.jdField_a_of_type_Ssk);
-          return;
-        }
-      }
-      catch (Exception paramBundle) {}
-    }
+    this.a.a(new ssn(this, "onListViewDrawFinished"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ssm
  * JD-Core Version:    0.7.0.1
  */

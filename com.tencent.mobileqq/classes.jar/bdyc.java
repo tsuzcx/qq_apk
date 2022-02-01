@@ -1,585 +1,311 @@
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.hardware.SensorManager;
-import android.location.LocationManager;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.TextUtils;
+import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import com.tencent.mobileqq.vashealth.PathTraceService;
-import com.tencent.mobileqq.vashealth.TracePathData;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.config.HwServlet;
+import com.tencent.mobileqq.highway.openup.SessionInfo;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.app.AppActivity;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.HashMap;
 
 public class bdyc
-  extends WebViewPlugin
+  extends bdtc
 {
-  public Activity a;
-  private LocationManager a;
-  public AppInterface a;
-  public boolean a;
+  anqd jdField_a_of_type_Anqd = new bdye(this);
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction;
+  private String jdField_a_of_type_JavaLangString = "";
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private byte[] e;
   
-  public bdyc()
+  public bdyc(bdsv parambdsv, bdzn parambdzn)
   {
-    this.mPluginNameSpace = "healthpathtrace";
+    super(parambdsv, parambdzn);
+    this.jdField_a_of_type_Bduk.jdField_a_of_type_Bdsx = this;
+    this.jdField_a_of_type_Bduk.jdField_a_of_type_ArrayOfByte = parambdzn.jdField_a_of_type_ArrayOfByte;
   }
   
-  public static boolean a(String paramString)
+  private void a(MessageForScribble paramMessageForScribble)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.contains("__page=run"));
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    Object localObject = (PathTraceManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(210);
-    this.jdField_a_of_type_Boolean = a(paramString);
-    if (!this.jdField_a_of_type_Boolean) {
-      bool2 = false;
-    }
-    do
+    if (paramMessageForScribble != null)
     {
-      return bool2;
-      ((PathTraceManager)localObject).a(this);
-    } while ((paramLong != 8589934597L) && (paramLong != 2L) && (paramLong != 32L));
-    if ((paramLong == 8589934597L) && (((PathTraceManager)localObject).b() == 0))
-    {
-      ((PathTraceManager)localObject).b(0);
-      paramString = "pause";
-      bool1 = true;
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (TextUtils.isEmpty(paramString)) {
-        break;
-      }
-      QLog.i("PathTraceManager.Plugin", 1, "webview event type:" + paramLong + ", event name: " + paramString);
-      return bool1;
-      if ((paramLong == 2L) && (((PathTraceManager)localObject).b() == 0))
-      {
-        if (Build.VERSION.SDK_INT >= 23) {
-          if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0) {
-            if ((this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
-              ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-            }
-          }
-        }
-        for (;;)
-        {
-          paramString = "resume";
-          bool1 = true;
-          break;
-          ((PathTraceManager)localObject).a(0);
-          continue;
-          ((PathTraceManager)localObject).a(0);
-        }
-      }
-      if (paramLong == 32L)
-      {
-        paramString = Uri.parse(paramString);
-        label334:
-        float f2;
-        float f1;
-        if (paramString.getQuery() != null) {
-          if (paramString.getQueryParameter("runningState") != null)
-          {
-            paramString = String.valueOf(paramMap.get("url")).replace("runningState=" + paramString.getQueryParameter("runningState"), "runningState=" + ((PathTraceManager)localObject).a());
-            localObject = BaseApplicationImpl.getApplication().getSharedPreferences(this.mRuntime.a().getCurrentAccountUin(), 0);
-            f2 = 0.0F;
-            f1 = 0.0F;
-            long l = ((SharedPreferences)localObject).getLong("search_lbs_timestamp", 0L);
-            if (System.currentTimeMillis() - l < 10800000L)
-            {
-              f2 = ((SharedPreferences)localObject).getFloat("search_lbs_logitude", 0.0F);
-              f1 = ((SharedPreferences)localObject).getFloat("search_lbs_latitude", 0.0F);
-            }
-            if (!paramString.contains("lati")) {
-              break label665;
-            }
-            paramString = paramString.replace("lati=" + Uri.parse(paramString).getQueryParameter("lati"), "lati=" + f1);
-            label469:
-            if (!paramString.contains("logi")) {
-              break label693;
-            }
-          }
-        }
-        label665:
-        label693:
-        for (paramString = paramString.replace("logi=" + Uri.parse(paramString).getQueryParameter("logi"), "logi=" + f2);; paramString = paramString + "&logi=" + f2)
-        {
-          paramMap.put("url", paramString);
-          if (QLog.isColorLevel()) {
-            QLog.d("PathTraceManager.Plugin", 2, "Intercep url:" + paramString);
-          }
-          bool1 = false;
-          paramString = "";
-          break;
-          paramString = String.valueOf(paramMap.get("url")) + "&runningState=" + ((PathTraceManager)localObject).a();
-          break label334;
-          paramString = String.valueOf(paramMap.get("url")) + "?runningState=" + ((PathTraceManager)localObject).a();
-          break label334;
-          paramString = paramString + "&lati=" + f1;
-          break label469;
-        }
-      }
-      paramString = "";
+      paramMessageForScribble.prewrite();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private void g()
   {
-    if ((paramString1 == null) || (!"healthpathtrace".equals(paramString2)) || (paramString3 == null)) {
-      return false;
-    }
-    JSONObject localJSONObject;
     try
     {
-      localJSONObject = WebViewPlugin.getJsonFromJSBridge(paramString1);
-      if (localJSONObject == null) {
-        break label2556;
-      }
-      paramJsBridgeListener = localJSONObject.getString("callback");
-      QLog.i("PathTraceManager.Plugin", 1, "handleJsRequest method: " + paramString3 + ", args: " + localJSONObject.toString());
-      paramString1 = paramVarArgs[0];
-      if (TextUtils.isEmpty(paramJsBridgeListener))
+      if (SessionInfo.getInstance(this.jdField_a_of_type_Bdzn.b).getHttpconn_sig_session() != null)
       {
-        QLog.e("PathTraceManager.Plugin", 1, "need callback");
-        return true;
+        int i = SessionInfo.getInstance(this.jdField_a_of_type_Bdzn.b).getHttpconn_sig_session().length;
+        this.jdField_a_of_type_ArrayOfByte = new byte[i];
+        System.arraycopy(SessionInfo.getInstance(this.jdField_a_of_type_Bdzn.b).getHttpconn_sig_session(), 0, this.jdField_a_of_type_ArrayOfByte, 0, i);
       }
-      paramVarArgs = (PathTraceManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(210);
-      if ("PathTraceStatus".equals(paramString3))
-      {
-        paramString2 = new JSONObject();
-        paramString2.put("retCode", 1);
-        paramString2.put("runningState", paramVarArgs.a());
-        if (paramVarArgs.a() != 0)
-        {
-          paramString1 = paramVarArgs.a();
-          if (paramString1 != null) {
-            break label2553;
-          }
-          paramString1 = paramVarArgs.b();
-          label182:
-          if (paramString1 == null) {
-            break label217;
-          }
-          paramString2.put("type", paramString1.type);
-        }
-        for (;;)
-        {
-          super.callJs(paramJsBridgeListener, new String[] { paramString2.toString() });
-          break;
-          label217:
-          QLog.i("PathTraceManager.Plugin", 1, "pathtrace type err");
-        }
+      if (this.jdField_a_of_type_ArrayOfByte == null) {
+        HwServlet.getConfig(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Bdzn.b);
       }
-      if (!"PathTraceInit".equals(paramString3)) {
-        break label391;
-      }
+      return;
     }
-    catch (Exception paramJsBridgeListener)
+    finally {}
+  }
+  
+  private void h()
+  {
+    if (!f())
     {
-      QLog.i("PathTraceManager.Plugin", 1, "HandleJs Err:" + paramJsBridgeListener.toString());
+      d("<BDH_LOG> sendMsg() do not send message, due to mIsCancel=true || mIsPause=true, current channel = " + this.w);
+      return;
     }
-    paramString1 = new JSONObject();
-    if (!this.jdField_a_of_type_AndroidLocationLocationManager.isProviderEnabled("gps")) {
-      paramString1.put("retCode", -2);
+    MessageForScribble localMessageForScribble = (MessageForScribble)this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (localMessageForScribble != null)
+    {
+      localMessageForScribble.combineFileUrl = this.jdField_a_of_type_JavaLangString;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ScribblePicUploadProcessor", 2, "mPicUrl: " + this.jdField_a_of_type_JavaLangString);
+        QLog.d("ScribblePicUploadProcessor", 2, "TestPicSend finish upload,currentTime = " + System.currentTimeMillis() + ",processor = " + this);
+      }
+      this.c.a();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageForScribble, this.jdField_a_of_type_Anqd);
+      QLog.i("SCRIBBLEMSG", 2, "!!!sendMessage uniseq:" + localMessageForScribble.uniseq);
+      return;
+    }
+    a(-1, "MessageForScribble IS NULL", "", this.jdField_b_of_type_Bdsz);
+    d();
+  }
+  
+  protected long a(long paramLong)
+  {
+    paramLong = this.q - paramLong;
+    if (!this.d) {}
+    for (paramLong = Math.min(paramLong, this.jdField_a_of_type_Bktt.a(BaseApplication.getContext(), this.q, this.s, -1));; paramLong = Math.min(paramLong, 14600L)) {
+      return Math.min(paramLong, 131072L);
+    }
+  }
+  
+  protected void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
+  {
+    if (paramLong1 != 0L) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 1, this.jdField_a_of_type_Bduk.b, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, paramLong1);
+    }
+    if (paramLong2 != 0L) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 1, this.jdField_a_of_type_Bduk.b, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, paramLong2);
+    }
+    if (paramLong3 != 0L) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 0, this.jdField_a_of_type_Bduk.b, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, paramLong3);
+    }
+    if (paramLong4 != 0L) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 0, this.jdField_a_of_type_Bduk.b, this.jdField_a_of_type_Bdzn.jdField_a_of_type_Int, paramLong4);
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if ((!paramBoolean) && (bdxr.a(this.jdField_j_of_type_Int))) {}
+    while ((this.jdField_j_of_type_Boolean) || ((paramBoolean) && ((this.m & 0x2) > 0)) || ((!paramBoolean) && ((this.m & 0x1) > 0))) {
+      return;
+    }
+    int j = this.m;
+    int i;
+    long l;
+    String str;
+    if (paramBoolean)
+    {
+      i = 2;
+      this.m = (i | j);
+      this.jdField_l_of_type_Long = System.currentTimeMillis();
+      l = (System.nanoTime() - this.k) / 1000000L;
+      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+      if (this.jdField_a_of_type_ArrayOfByte != null) {
+        break label156;
+      }
+      str = "null";
+      label105:
+      localHashMap.put("param_sessionKey", str);
+      if (!paramBoolean) {
+        break label168;
+      }
+      bctj.a(BaseApplication.getContext()).a(null, "scribble_upload", true, l, this.q, this.jdField_a_of_type_JavaUtilHashMap, "");
     }
     for (;;)
     {
-      callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+      m();
+      return;
+      i = 1;
       break;
-      paramString1.put("retCode", 1);
-      if ((paramVarArgs != null) && (paramVarArgs.b() != null))
-      {
-        paramString1.put("retCode", -7);
-        paramString1.put("startTime", paramVarArgs.b().startTime);
-        paramString1.put("records", paramVarArgs.a(null).toString());
+      label156:
+      str = bgva.a(this.jdField_a_of_type_ArrayOfByte);
+      break label105;
+      label168:
+      if (this.jdField_j_of_type_Int != -9527) {
+        this.jdField_a_of_type_JavaUtilHashMap.remove("param_rspHeader");
       }
-    }
-    label391:
-    if ("PathTraceOriginLocation".equals(paramString3))
-    {
-      if ((paramVarArgs != null) && (paramVarArgs.b() > 0))
-      {
-        paramString1 = new JSONObject();
-        paramString1.put("retCode", -4);
-        super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-      }
-      else
-      {
-        paramString1 = new JSONObject();
-        if (Build.VERSION.SDK_INT >= 23)
-        {
-          if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
-          {
-            if ((this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity))
-            {
-              ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-              paramString1.put("retCode", -4);
-              super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-              if (paramVarArgs != null) {
-                paramVarArgs.a(0);
-              }
-            }
-          }
-          else
-          {
-            paramString1.put("retCode", 1);
-            super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-            if (paramVarArgs != null) {
-              paramVarArgs.a(0);
-            }
-          }
-        }
-        else
-        {
-          paramString1.put("retCode", 1);
-          super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-          if (paramVarArgs != null) {
-            paramVarArgs.a(0);
-          }
-        }
-      }
-    }
-    else if ("PathTraceStart".equals(paramString3))
-    {
-      paramString1 = new JSONObject();
-      if (!this.jdField_a_of_type_AndroidLocationLocationManager.isProviderEnabled("gps"))
-      {
-        paramString1.put("retCode", -2);
-        super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-        return false;
-      }
-      if (Build.VERSION.SDK_INT < 19)
-      {
-        paramString1.put("stepAuth", 1);
-        label706:
-        paramString2 = new Bundle();
-        paramString2.putString("cmd", "qq_sport_banner");
-        paramString2.putBoolean("showParameter", true);
-        aprh.a().b(paramString2);
-        if (Build.VERSION.SDK_INT < 23) {
-          break label882;
-        }
-        if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
-        {
-          if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
-            break label2561;
-          }
-          ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-          paramString1.put("retCode", -2);
-          super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-          break label2561;
-        }
-      }
-      else
-      {
-        if (((SensorManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("sensor")).getDefaultSensor(19) != null) {
-          break label2563;
-        }
-      }
-    }
-    label2561:
-    label2563:
-    for (int i = 1;; i = 0)
-    {
-      paramString1.put("stepAuth", i);
-      break label706;
-      paramVarArgs.a(localJSONObject);
-      super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-      break label2561;
-      label882:
-      paramVarArgs.a(localJSONObject);
-      super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-      break label2561;
-      if ("PathTracePause".equals(paramString3))
-      {
-        paramString1 = new JSONObject();
-        paramVarArgs.c();
-        paramString1.put("retCode", 1);
-        super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-      }
-      else
-      {
-        if ("PathTraceResume".equals(paramString3))
-        {
-          paramString1 = new JSONObject();
-          if (!this.jdField_a_of_type_AndroidLocationLocationManager.isProviderEnabled("gps"))
-          {
-            paramString1.put("retCode", -2);
-            super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-            return false;
-          }
-          if (paramVarArgs.a() == null)
-          {
-            paramString1.put("retCode", -12);
-            paramString1.put("message", "invalid startTime");
-          }
-          for (;;)
-          {
-            super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-            break;
-            paramString2 = new Bundle();
-            paramString2.putString("cmd", "qq_sport_banner");
-            paramString2.putBoolean("showParameter", true);
-            aprh.a().b(paramString2);
-            if (Build.VERSION.SDK_INT >= 23)
-            {
-              if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
-              {
-                if ((this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity))
-                {
-                  ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-                  paramString1.put("retCode", -2);
-                  super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-                }
-              }
-              else
-              {
-                paramVarArgs.d();
-                paramString1.put("retCode", 1);
-              }
-            }
-            else
-            {
-              paramVarArgs.d();
-              paramString1.put("retCode", 1);
-            }
-          }
-        }
-        if ("PathTraceEnd".equals(paramString3))
-        {
-          paramString3 = new JSONObject();
-          paramString2 = paramVarArgs.a();
-          paramString1 = paramString2;
-          if (paramString2 == null) {
-            paramString1 = paramVarArgs.b();
-          }
-          if (paramString1 == null)
-          {
-            paramString3.put("retCode", -8);
-            QLog.e("PathTraceManager.Plugin", 1, "PathTraceEnd Err");
-          }
-          for (;;)
-          {
-            paramString1 = new Bundle();
-            paramString1.putString("cmd", "qq_sport_banner");
-            paramString1.putBoolean("showParameter", false);
-            aprh.a().b(paramString1);
-            QLog.d("PathTraceManager.Plugin", 1, "end result data:" + paramString3.toString());
-            super.callJs(paramJsBridgeListener, new String[] { paramString3.toString() });
-            break;
-            long l1 = localJSONObject.optLong("totalTime", paramString1.totalTime);
-            long l2;
-            float f;
-            if (paramVarArgs.a(l1))
-            {
-              paramString3.put("retCode", 1);
-              paramString3.put("startTime", paramString1.startTime);
-              paramString2 = new JSONArray();
-              paramVarArgs = BaseApplicationImpl.getApplication().getSharedPreferences(String.valueOf(paramString1.startTime), 0);
-              l2 = paramVarArgs.getLong(String.valueOf(PathTraceManager.a), 0L);
-              f = paramVarArgs.getFloat(String.valueOf(PathTraceManager.jdField_b_of_type_Int), 0.0F);
-              if (l1 - l2 <= 0L) {
-                break label1747;
-              }
-              paramVarArgs.edit().putString(String.valueOf((int)(paramString1.distance / 1000.0D + 1.0D)), String.valueOf((int)((l1 - l2) / ((paramString1.distance - f) / Float.valueOf(1000.0F).floatValue()))) + ",0,0").commit();
-              QLog.d("PathTraceManager.Plugin", 1, ">0 toalTime:" + l1 + ",lastspeedtime:" + l2 + ",distance:" + paramString1.distance + ",lastdistance:" + f);
-            }
-            for (;;)
-            {
-              i = 1;
-              for (paramString1 = paramVarArgs.getString(String.valueOf(1), null); paramString1 != null; paramString1 = paramVarArgs.getString(String.valueOf(i), null))
-              {
-                paramString1 = paramString1.split(",");
-                localJSONObject = new JSONObject();
-                localJSONObject.put("km", String.valueOf(i));
-                localJSONObject.put("time", paramString1[0]);
-                localJSONObject.put("latitude", paramString1[1]);
-                localJSONObject.put("longitude", paramString1[2]);
-                paramString2.put(localJSONObject);
-                i += 1;
-              }
-              paramString3.put("retCode", -5);
-              break;
-              label1747:
-              if (paramString1.totalTime - l2 > 0L)
-              {
-                paramVarArgs.edit().putString(String.valueOf((int)(paramString1.distance / 1000.0D + 1.0D)), String.valueOf((int)((paramString1.totalTime - l2) / ((paramString1.distance - f) / Float.valueOf(1000.0F).floatValue()))) + ",0,0").commit();
-                QLog.d("PathTraceManager.Plugin", 1, "<0 toalTime:" + l1 + ",lastspeedtime:" + l2 + ",distance:" + paramString1.distance + ",lastdistance:" + f);
-              }
-              else
-              {
-                QLog.d("PathTraceManager.Plugin", 1, "<>0exception toalTime:" + l1 + ",lastspeedtime:" + l2 + ",distance:" + paramString1.distance + ",lastdistance:" + f);
-              }
-            }
-            paramString3.put("kmrecords", paramString2);
-          }
-        }
-        if ("PathTraceUpload".equals(paramString3))
-        {
-          paramString1 = new JSONObject();
-          if (!localJSONObject.has("startTime"))
-          {
-            paramString1.put("retCode", -12);
-            paramString1.put("message", "invalid startTime");
-            super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-          }
-          else
-          {
-            paramVarArgs.a(localJSONObject.optLong("startTime"), paramJsBridgeListener);
-          }
-        }
-        else if ("PathTraceBack".equals(paramString3))
-        {
-          paramString1 = new JSONObject();
-          paramString1.put("retCode", 1);
-          super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-        }
-        else
-        {
-          if ("PathTraceQueryOne".equals(paramString3))
-          {
-            paramString2 = new JSONObject();
-            if (!TextUtils.isEmpty(paramJsBridgeListener))
-            {
-              paramString1 = paramVarArgs.a(paramString1);
-              paramString2.put("retCode", 1);
-              paramString2.put("records", paramString1.toString());
-            }
-            for (;;)
-            {
-              super.callJs(paramJsBridgeListener, new String[] { paramString2.toString() });
-              break;
-              paramString2.put("retCode", -8);
-            }
-          }
-          if ("PathTraceQuery".equals(paramString3))
-          {
-            super.callJs(paramJsBridgeListener, new String[] { paramVarArgs.a().toString() });
-          }
-          else if ("PathTraceDelete".equals(paramString3))
-          {
-            paramString1 = Long.valueOf(new JSONObject(paramString1).optLong("startTime"));
-            paramJsBridgeListener = paramString1;
-            if (paramString1.longValue() == 0L)
-            {
-              paramJsBridgeListener = paramString1;
-              if (paramVarArgs.b() != null) {
-                paramJsBridgeListener = Long.valueOf(paramVarArgs.b().startTime);
-              }
-            }
-            paramVarArgs.a(paramJsBridgeListener);
-          }
-          else
-          {
-            if ("PathTraceVoiceControl".equals(paramString3))
-            {
-              i = new JSONObject(paramString1).optInt("mute");
-              if (i == 1) {
-                paramVarArgs.d = true;
-              }
-              for (;;)
-              {
-                paramString1 = new JSONObject();
-                paramString1.put("retCode", 1);
-                super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-                break;
-                if (i == 0) {
-                  paramVarArgs.d = false;
-                }
-              }
-            }
-            if ("PathTraceIgnoreSpeed".equals(paramString3))
-            {
-              if (new JSONObject(paramString1).optInt("ignoreSpeed") == 1) {}
-              for (paramVarArgs.jdField_b_of_type_Boolean = true;; paramVarArgs.jdField_b_of_type_Boolean = false)
-              {
-                paramString1 = new JSONObject();
-                paramString1.put("retCode", 1);
-                super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-                break;
-              }
-            }
-            if ("PathTraceGpsAuth".equals(paramString3))
-            {
-              paramString1 = new JSONObject();
-              if (!this.jdField_a_of_type_AndroidLocationLocationManager.isProviderEnabled("gps")) {
-                paramString1.put("retCode", -2);
-              }
-              for (;;)
-              {
-                super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-                break;
-                paramString1.put("retCode", 1);
-              }
-              label2553:
-              break label182;
-              label2556:
-              paramJsBridgeListener = null;
-              break;
-            }
-          }
-        }
-      }
-      return false;
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.jdField_j_of_type_Int));
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.jdField_j_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_picSize", String.valueOf(this.q));
+      bctj.a(BaseApplication.getContext()).a(null, "scribble_upload", false, l, this.q, this.jdField_a_of_type_JavaUtilHashMap, "");
     }
   }
   
-  public void onCreate()
+  byte[] a(int paramInt1, int paramInt2)
   {
-    super.onCreate();
-    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
-    this.jdField_a_of_type_AndroidLocationLocationManager = ((LocationManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("location"));
-    PathTraceManager localPathTraceManager = (PathTraceManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(210);
-    if (this.mRuntime.a() != null) {}
-    for (String str = this.mRuntime.a().g;; str = null)
+    return super.a(paramInt1, paramInt2);
+  }
+  
+  public void aL_()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribblePicUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.sendFile()");
+    }
+    this.jdField_b_of_type_Bdsz.a();
+    Object localObject = new bdyd(this, SystemClock.uptimeMillis());
+    this.jdField_a_of_type_Bduk.jdField_c_of_type_Int = 41;
+    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Bduk.jdField_c_of_type_Int, this.jdField_a_of_type_Bdzn.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, (ITransactionCallback)localObject, this.jdField_a_of_type_Bduk.jdField_a_of_type_ArrayOfByte);
+    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
+    localObject = HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte);
+    String str = HexUtil.bytes2HexStr(this.e);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction submit RetCode:" + i + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " UniSeq:" + this.jdField_a_of_type_Bdzn.jdField_a_of_type_Long + " MD51:" + (String)localObject + " MD52:" + str + " uuid:" + this.jdField_l_of_type_JavaLangString + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + this.jdField_a_of_type_Bduk.jdField_c_of_type_Int);
+    }
+    if (i != 0)
     {
-      this.jdField_a_of_type_Boolean = a(str);
-      if (this.jdField_a_of_type_Boolean) {
-        localPathTraceManager.a(this);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PathTraceManager.Plugin", 2, "OnCreate isRunningPage: " + this.jdField_a_of_type_Boolean);
-      }
-      return;
+      a(i, "SubmitError.", "", this.jdField_b_of_type_Bdsz);
+      d();
     }
   }
   
-  public void onDestroy()
+  public void aN_()
   {
-    try
+    this.jdField_a_of_type_JavaLangString = "";
+    super.aN_();
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribblePicUploadProcessor", 2, "ScriblePicUploadProcessor.start()");
+    }
+    g();
+    MessageForScribble localMessageForScribble = (MessageForScribble)this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (this.jdField_b_of_type_ArrayOfByte == null)
     {
-      PathTraceManager localPathTraceManager = (PathTraceManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(210);
-      if (this.mRuntime.a() != null) {
-        String str = this.mRuntime.a().g;
-      }
-      if ((localPathTraceManager != null) && (localPathTraceManager.b() == 0) && (this.jdField_a_of_type_Boolean))
+      this.e = HexUtil.hexStr2Bytes(localMessageForScribble.combineFileMd5);
+      if (!h())
       {
-        QLog.d("PathTraceManager.Plugin", 1, "here stop");
-        localPathTraceManager.b(-1);
-        PathTraceService.c();
+        d();
+        return;
       }
-      QLog.d("PathTraceManager.Plugin", 1, "onDestroy isRunningPage: " + this.jdField_a_of_type_Boolean);
+      localMessageForScribble.combineFileMd5 = HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte);
+    }
+    if (this.jdField_a_of_type_ArrayOfByte != null)
+    {
+      aL_();
       return;
     }
-    catch (Exception localException)
+    QLog.e("ScribblePicUploadProcessor", 2, "ScribblePicUploadProcessor get null BDHsession key.");
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribblePicUploadProcessor", 2, "ScribblePicUploadProcessor.resume()");
+    }
+    f();
+    aL_();
+    return 0;
+  }
+  
+  public int c()
+  {
+    String str = this.jdField_a_of_type_Bdzn.i;
+    if (TextUtils.isEmpty(str))
     {
-      QLog.e("PathTraceManager.Plugin", 1, "onDestroy Err:", localException);
+      b(9302, a(new Exception("filePath null")));
+      d();
+      return -1;
+    }
+    File localFile = new File(str);
+    if (!localFile.exists())
+    {
+      b(9042, a(new Exception("sendFile not exist " + str)));
+      d();
+      return -1;
+    }
+    if (!localFile.canRead())
+    {
+      b(9070, a(new Exception("sendFile not readable " + this.jdField_a_of_type_Bduk.jdField_c_of_type_JavaLangString)));
+      d();
+      return -1;
+    }
+    long l = localFile.length();
+    this.jdField_a_of_type_Bduk.jdField_a_of_type_Long = l;
+    this.q = l;
+    if (l <= 0L)
+    {
+      b(9071, a(new Exception("file size 0 " + str)));
+      d();
+      return -1;
+    }
+    return super.c();
+  }
+  
+  void d()
+  {
+    super.d();
+    d(1005);
+    Object localObject = (MessageForScribble)this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (localObject != null) {
+      ((MessageForScribble)localObject).fileUploadStatus = 2;
+    }
+    a((MessageForScribble)localObject);
+    QLog.e("ScribblePicUploadProcessor", 2, "onError()---- errCode: " + this.jdField_j_of_type_Int + ", errDesc:" + this.jdField_j_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Bdzn.jdField_a_of_type_Ayyt != null)
+    {
+      localObject = new ayyu();
+      ((ayyu)localObject).jdField_a_of_type_Int = -1;
+      ((ayyu)localObject).b = this.jdField_j_of_type_Int;
+      ((ayyu)localObject).jdField_a_of_type_JavaLangString = this.jdField_j_of_type_JavaLangString;
+      this.jdField_a_of_type_Bdzn.jdField_a_of_type_Ayyt.b((ayyu)localObject);
+    }
+  }
+  
+  protected void d(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribblePicUploadProcessor", 2, paramString);
+    }
+  }
+  
+  void e()
+  {
+    super.e();
+    d(1003);
+    Object localObject = (MessageForScribble)this.jdField_a_of_type_Bdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (localObject != null) {
+      ((MessageForScribble)localObject).fileUploadStatus = 1;
+    }
+    a((MessageForScribble)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribblePicUploadProcessor", 2, "onSuccess().");
+    }
+    if (this.jdField_a_of_type_Bdzn.jdField_a_of_type_Ayyt != null)
+    {
+      localObject = new ayyu();
+      ((ayyu)localObject).jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Bdzn.jdField_a_of_type_Ayyt.b((ayyu)localObject);
+    }
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().cancelTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
     }
   }
 }

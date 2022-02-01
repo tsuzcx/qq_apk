@@ -1,44 +1,38 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.widget.AddedRobotView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.TableBuilder.Proxy;
+import com.tencent.mobileqq.persistence.Entity;
 
-public class bcqg
-  implements bdbc
+public final class bcqg
+  implements IMCoreProxyRoute.TableBuilder.Proxy
 {
-  public bcqg(AddedRobotView paramAddedRobotView) {}
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public String createIndexSQLStatement(Entity paramEntity)
   {
-    QLog.i("AddedRobotView", 1, "onDecodeTaskCompleted uin: " + paramString);
-    if (AddedRobotView.a(this.a) == null) {}
-    for (;;)
+    if ((paramEntity instanceof MessageRecord))
     {
-      return;
-      if (!AddedRobotView.a(this.a).a())
+      MessageRecord localMessageRecord = (MessageRecord)paramEntity;
+      paramEntity = localMessageRecord.getTableName();
+      StringBuilder localStringBuilder = new StringBuilder("CREATE INDEX IF NOT EXISTS ");
+      localStringBuilder.append(paramEntity).append("_idx");
+      localStringBuilder.append(" ON ");
+      localStringBuilder.append(paramEntity);
+      paramEntity = "time";
+      switch (localMessageRecord.istroop)
       {
-        paramInt2 = AddedRobotView.a(this.a).getChildCount();
-        paramInt1 = 0;
-        while (paramInt1 < paramInt2)
-        {
-          Object localObject = AddedRobotView.a(this.a).getChildViewHolder(AddedRobotView.a(this.a).getChildAt(paramInt1));
-          if ((localObject instanceof bcqj))
-          {
-            localObject = (bcqj)localObject;
-            if ((!TextUtils.isEmpty(((bcqj)localObject).jdField_a_of_type_JavaLangString)) && (((bcqj)localObject).jdField_a_of_type_JavaLangString.equals(paramString))) {
-              ((bcqj)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-            }
-          }
-          else
-          {
-            QLog.i("AddedRobotView", 2, "onDecodeTaskCompleted viewHolder correct uin not found ! ");
-          }
-          paramInt1 += 1;
-        }
+      }
+      for (;;)
+      {
+        localStringBuilder.append("(").append(paramEntity).append(", _id)");
+        return localStringBuilder.toString();
+        paramEntity = "shmsgseq";
       }
     }
+    return null;
+  }
+  
+  public Class[] getNeedPrivateFieldsClass()
+  {
+    return new Class[] { RecentUser.class };
   }
 }
 

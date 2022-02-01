@@ -1,19 +1,24 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
 
-class awdz
+public class awdz
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
-  View c;
-  View d;
+  private static final awej<Handler, Void> a = new awea();
+  private static awej<TimerTaskManager, Void> b = new aweb();
+  
+  public static Handler a()
+  {
+    return (Handler)a.b(null);
+  }
+  
+  public static TimerTaskManager a()
+  {
+    return (TimerTaskManager)b.b(null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awdz
  * JD-Core Version:    0.7.0.1
  */

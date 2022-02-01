@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.olympic.activity;
 
-import amts;
-import amty;
 import android.animation.ObjectAnimator;
 import android.widget.ImageView;
-import awbs;
+import aosj;
+import aosp;
+import aylk;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
@@ -16,8 +16,8 @@ import java.lang.ref.WeakReference;
 public class PromotionEntry$UpdateOperateBtnStatusRunnable
   implements Runnable
 {
-  amts jdField_a_of_type_Amts = null;
   public ObjectAnimator a;
+  aosj jdField_a_of_type_Aosj = null;
   public LottieDrawable a;
   OnCompositionLoadedListener jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = null;
   private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
@@ -48,13 +48,13 @@ public class PromotionEntry$UpdateOperateBtnStatusRunnable
     do
     {
       return;
-      if (this.jdField_a_of_type_Amts == null)
+      if (this.jdField_a_of_type_Aosj == null)
       {
         QLog.w(PromotionEntry.a, 1, "createShowOperateBtnAnim, promotionItem为空");
         return;
       }
     } while (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null);
-    Object localObject = amty.a(this.jdField_a_of_type_Amts);
+    Object localObject = aosp.a(this.jdField_a_of_type_Aosj);
     a((String)localObject);
     try
     {
@@ -70,7 +70,7 @@ public class PromotionEntry$UpdateOperateBtnStatusRunnable
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new awbs(this, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new aylk(this, paramString);
   }
   
   public void run()
@@ -109,7 +109,7 @@ public class PromotionEntry$UpdateOperateBtnStatusRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class aekm
-  implements DialogInterface.OnDismissListener
+  implements Animation.AnimationListener
 {
-  public aekm(UpgradeActivity paramUpgradeActivity) {}
+  public aekm(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

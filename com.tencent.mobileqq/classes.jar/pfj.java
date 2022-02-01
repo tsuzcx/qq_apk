@@ -1,16 +1,43 @@
-class pfj
-  implements oxc
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+
+public class pfj
+  implements INetInfoHandler
 {
-  pfj(pfi parampfi, int paramInt, String paramString) {}
+  public void onNetMobile2None() {}
   
-  public void a(oxe paramoxe)
+  public void onNetMobile2Wifi(String paramString)
   {
-    paramoxe.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    QLog.d("KBPreDownloadUtils", 2, "[onNetMobile2Wifi] ");
+    AppNetConnInfo.unregisterNetInfoHandler(pfh.a());
+    pfh.a();
+  }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    QLog.d("KBPreDownloadUtils", 2, "[onNetNone2Wifi] ");
+    AppNetConnInfo.unregisterNetInfoHandler(pfh.a());
+    pfh.a();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2Mobile] pause download");
+    bivr.a().a("101480433");
+  }
+  
+  public void onNetWifi2None()
+  {
+    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2None] pause download");
+    bivr.a().a("101480433");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pfj
  * JD-Core Version:    0.7.0.1
  */

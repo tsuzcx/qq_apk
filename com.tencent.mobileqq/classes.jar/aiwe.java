@@ -1,9 +1,26 @@
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+
 public class aiwe
+  implements njk
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public aiwe(GroupSearchRecommendView paramGroupSearchRecommendView) {}
+  
+  public void a()
+  {
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
+    }
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void b()
+  {
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
+    }
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(3);
+  }
 }
 
 

@@ -1,132 +1,153 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Typeface;
-import android.os.Build.VERSION;
-import android.text.TextPaint;
-import android.view.animation.LinearInterpolator;
+import android.content.SharedPreferences;
+import android.net.NetworkInfo;
+import android.os.Build;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
-import java.util.Random;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBDoubleField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.HostInterface;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
+import com.tencent.weiyun.transmission.upload.UploadFile;
+import com.tencent.weiyun.transmission.upload.UploadType;
+import cooperation.weiyun.channel.pb.WeiyunPB.DiskPicBackupReq;
+import cooperation.weiyun.channel.pb.WeiyunPB.FileExtInfo;
+import cooperation.weiyun.channel.pb.WeiyunPB.QqSdkFileUploadMsgReq;
+import mqq.app.AppRuntime;
 
-public class bmxz
+class bmxz
+  implements WeiyunTransmissionGlobal.HostInterface
 {
-  public int a;
-  public TextPaint a;
-  public ArrayList<bmxs> a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  private final String a;
   
-  public bmxz(int paramInt1, int paramInt2, Typeface paramTypeface, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  bmxz(String paramString)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    if (Build.VERSION.SDK_INT >= 21) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
-    }
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramInt2);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-    this.jdField_a_of_type_Int = paramInt3;
-    this.b = paramInt4;
-    this.c = paramInt5;
-    this.d = paramInt6;
+    this.a = paramString;
   }
   
-  public static int a()
+  public void fetchUploadServerInfo(UploadFile paramUploadFile, UploadType paramUploadType, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback)
   {
-    Random localRandom = new Random();
-    int i = localRandom.nextInt(5);
-    int j = localRandom.nextInt(9);
-    return localRandom.nextInt(9) + (i * 100 + j * 10);
-  }
-  
-  public static bmxz a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Typeface paramTypeface, bmxh parambmxh)
-  {
-    paramTypeface = new bmxz(paramInt1, paramInt2, paramTypeface, paramInt3, paramInt4, paramInt5, paramInt6);
-    paramTypeface.f = 1;
-    paramTypeface.a(paramCharSequence, parambmxh);
-    return paramTypeface;
-  }
-  
-  public static void a(int paramInt, Paint paramPaint)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
+    if (paramUploadFile.cmdType == 1)
     {
-      if (paramInt == 255) {
-        paramPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
+      localObject = new WeiyunPB.DiskPicBackupReq();
+      if (paramUploadFile.fileName != null) {
+        ((WeiyunPB.DiskPicBackupReq)localObject).filename.set(paramUploadFile.fileName);
       }
-    }
-    else {
-      return;
-    }
-    paramPaint.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
-  }
-  
-  public void a(CharSequence paramCharSequence, bmxh parambmxh)
-  {
-    a(paramCharSequence, parambmxh, 0);
-  }
-  
-  public void a(CharSequence paramCharSequence, bmxh parambmxh, int paramInt)
-  {
-    this.e = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramCharSequence, 0, paramCharSequence.length()));
-    if ((paramInt != 0) && (paramInt > this.e)) {}
-    for (int j = (paramInt - this.e) / (paramCharSequence.length() - 1);; j = 0)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      int k = 0;
-      paramInt = 0;
-      while (k < paramCharSequence.length())
+      ((WeiyunPB.DiskPicBackupReq)localObject).file_exist_option.set(paramUploadType.ordinal());
+      ((WeiyunPB.DiskPicBackupReq)localObject).upload_type.set(0);
+      ((WeiyunPB.DiskPicBackupReq)localObject).auto_create_user.set(false);
+      ((WeiyunPB.DiskPicBackupReq)localObject).auto_flag.set(paramUploadFile.autoBackupFlag);
+      ((WeiyunPB.DiskPicBackupReq)localObject).backup_dir_name.set(Build.MODEL);
+      if ((paramUploadFile.isCompress) && (!TextUtils.isEmpty(paramUploadFile.compressedPath)))
       {
-        int i = paramCharSequence.charAt(k);
-        if (i == 32)
-        {
-          paramInt = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText("0", 0, 1) + paramInt;
-          k += 1;
+        if (paramUploadFile.compressedSha != null) {
+          ((WeiyunPB.DiskPicBackupReq)localObject).file_sha.set(bnau.a(paramUploadFile.compressedSha));
         }
-        else
+        ((WeiyunPB.DiskPicBackupReq)localObject).file_size.set(paramUploadFile.compressedSize);
+        ((WeiyunPB.DiskPicBackupReq)localObject).first_256k_crc.set((int)bnan.a(paramUploadFile.compressedPath, 262144L));
+        if (!TextUtils.isEmpty(paramUploadFile.mimeType))
         {
-          bmxs localbmxs = new bmxs();
-          String str = new String(new char[] { i });
-          int m = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str, 0, str.length());
-          Object localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-          float f1 = ((Paint.FontMetrics)localObject).bottom;
-          float f2 = ((Paint.FontMetrics)localObject).top;
-          float f3 = Math.abs(((Paint.FontMetrics)localObject).ascent);
-          localObject = Bitmap.createBitmap(m, (int)(f1 - f2), Bitmap.Config.ARGB_8888);
-          Canvas localCanvas = new Canvas((Bitmap)localObject);
-          BaseApplicationImpl.getContext();
-          localCanvas.drawText(str, 0.0F, f3, this.jdField_a_of_type_AndroidTextTextPaint);
-          if (this.f == 0)
-          {
-            localbmxs.b = parambmxh.a("", this.c + a(), this.d, 0, 255, new LinearInterpolator());
-            label282:
-            localbmxs.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
-            if (k != 0) {
-              break label374;
-            }
-            localbmxs.jdField_a_of_type_Int = paramInt;
+          paramUploadType = new WeiyunPB.FileExtInfo();
+          paramUploadType.take_time.set(paramUploadFile.takenTime);
+          paramUploadType.latitude.set(paramUploadFile.latitude);
+          paramUploadType.longitude.set(paramUploadFile.longitude);
+          if (!paramUploadFile.mimeType.startsWith("image")) {
+            break label311;
           }
-          for (paramInt = localbmxs.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + paramInt;; paramInt = localbmxs.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + j + paramInt)
-          {
-            this.jdField_a_of_type_JavaUtilArrayList.add(localbmxs);
-            break;
-            localbmxs.b = parambmxh.a("", this.c + this.d * k / paramCharSequence.length(), this.d, 0, 255, new LinearInterpolator());
-            break label282;
-            label374:
-            localbmxs.jdField_a_of_type_Int = (paramInt + j);
-          }
+          paramUploadType.group_id.set(1);
+          ((WeiyunPB.DiskPicBackupReq)localObject).ext_info.set(paramUploadType);
         }
+        bmyx.a((WeiyunPB.DiskPicBackupReq)localObject, new bmya(this, paramUploadServerInfoCallback, paramUploadFile));
       }
-      return;
     }
+    label311:
+    while (paramUploadFile.cmdType != 0) {
+      for (;;)
+      {
+        return;
+        if (paramUploadFile.sha != null) {
+          ((WeiyunPB.DiskPicBackupReq)localObject).file_sha.set(bnau.a(paramUploadFile.sha));
+        }
+        ((WeiyunPB.DiskPicBackupReq)localObject).file_size.set(paramUploadFile.fileSize);
+        ((WeiyunPB.DiskPicBackupReq)localObject).first_256k_crc.set((int)bnan.a(paramUploadFile.localPath, 262144L));
+        continue;
+        if (!paramUploadFile.mimeType.startsWith("video")) {}
+      }
+    }
+    Object localObject = new WeiyunPB.QqSdkFileUploadMsgReq();
+    if (paramUploadFile.fileName != null) {
+      ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).filename.set(paramUploadFile.fileName);
+    }
+    ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).file_exist_option.set(paramUploadType.ordinal());
+    ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).upload_type.set(0);
+    ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).auto_create_user.set(false);
+    ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).pdir_key.set(bnau.a(paramUploadFile.pDirKey));
+    ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).ppdir_key.set(bnau.a(paramUploadFile.pPDirKey));
+    ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).use_mutil_channel.set(WeiyunTransmissionGlobal.getInstance().isNativeUpload());
+    if ((paramUploadFile.isCompress) && (!TextUtils.isEmpty(paramUploadFile.compressedPath)))
+    {
+      if (paramUploadFile.compressedSha != null) {
+        ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).file_sha.set(bnau.a(paramUploadFile.compressedSha));
+      }
+      ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).file_size.set(paramUploadFile.compressedSize);
+      if (!TextUtils.isEmpty(paramUploadFile.mimeType))
+      {
+        paramUploadType = new WeiyunPB.FileExtInfo();
+        paramUploadType.take_time.set(paramUploadFile.takenTime);
+        paramUploadType.latitude.set(paramUploadFile.latitude);
+        paramUploadType.longitude.set(paramUploadFile.longitude);
+        if (!paramUploadFile.mimeType.startsWith("image")) {
+          break label619;
+        }
+        paramUploadType.group_id.set(1);
+      }
+    }
+    for (;;)
+    {
+      ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).ext_info.set(paramUploadType);
+      bmyx.a((WeiyunPB.QqSdkFileUploadMsgReq)localObject, new bmyb(this, paramUploadServerInfoCallback, paramUploadFile));
+      return;
+      if (paramUploadFile.sha != null) {
+        ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).file_sha.set(bnau.a(paramUploadFile.sha));
+      }
+      ((WeiyunPB.QqSdkFileUploadMsgReq)localObject).file_size.set(paramUploadFile.fileSize);
+      break;
+      label619:
+      if (!paramUploadFile.mimeType.startsWith("video")) {}
+    }
+  }
+  
+  public int getCurrentIsp()
+  {
+    return 0;
+  }
+  
+  public String getCurrentUid()
+  {
+    return this.a + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+  }
+  
+  public long getCurrentUin()
+  {
+    return BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+  }
+  
+  public NetworkInfo getRecentNetworkInfo()
+  {
+    return AppNetConnInfo.getRecentNetworkInfo();
+  }
+  
+  public SharedPreferences getSharedPreferences(String paramString, int paramInt)
+  {
+    return SharedPreferencesProxyManager.getInstance().getProxy(paramString, paramInt);
   }
 }
 

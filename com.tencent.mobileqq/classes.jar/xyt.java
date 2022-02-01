@@ -1,18 +1,29 @@
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
 
-class xyt
-  implements bhvm
+public class xyt
+  implements zpp
 {
-  xyt(xys paramxys, View paramView) {}
+  public xyt(ShareGroupInnerListView paramShareGroupInnerListView) {}
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if ((this.a.jdField_a_of_type_Xyu != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
+      this.a.jdField_a_of_type_Xyu.a(this.a.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_Xyu != null) {
+      return this.a.jdField_a_of_type_Xyu.a(this.a.jdField_a_of_type_JavaLangString);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xyt
  * JD-Core Version:    0.7.0.1
  */

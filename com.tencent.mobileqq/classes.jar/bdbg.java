@@ -1,7 +1,19 @@
-class bdbg {}
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.PAVideoView;
+
+public class bdbg
+{
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public PAVideoView a;
+  public TextView b;
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdbg
  * JD-Core Version:    0.7.0.1
  */

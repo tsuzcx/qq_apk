@@ -1,26 +1,24 @@
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import mqq.util.WeakReference;
 
-class bakb
-  implements URLDrawable.DownloadListener
+public class bakb
+  implements DialogInterface.OnDismissListener
 {
-  bakb(baka parambaka, String paramString) {}
+  WeakReference<DialogInterface.OnDismissListener> jdField_a_of_type_MqqUtilWeakReference;
   
-  public void onFileDownloadFailed(int paramInt)
+  bakb(baka parambaka, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    if (!baka.a(this.jdField_a_of_type_Baka).contains(this.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupPadTemplateAdapter", 2, "onFileDownloadFailed url: " + this.jdField_a_of_type_JavaLangString);
-      }
-      baka.a(this.jdField_a_of_type_Baka).add(this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramOnDismissListener);
   }
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss(paramDialogInterface);
+    }
+  }
 }
 
 

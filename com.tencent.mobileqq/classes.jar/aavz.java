@@ -1,297 +1,262 @@
-import android.os.Build;
-import android.os.Build.VERSION;
+import NS_QQ_STORY_CONFIG.CONFIG.StIntConf;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.GetStoryConfigRequest;
+import com.tencent.biz.videostory.config.VSConfigManager.1;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
 
-public abstract class aavz
+public class aavz
+  implements Manager
 {
-  protected int a;
-  protected String a;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean;
-  protected String b;
-  private Set<Integer> jdField_b_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_b_of_type_Boolean;
-  private Set<String> c = new HashSet();
+  private static aavz jdField_a_of_type_Aavz;
+  public static String a;
+  public static String b = "1";
+  public static final String c = anni.a(2131715538);
+  protected SharedPreferences a;
+  private ConcurrentHashMap<String, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public static aavz a(String paramString, JSONObject paramJSONObject)
+  static
   {
-    if ("dex".equals(paramString))
-    {
-      if (!a(paramJSONObject)) {}
-      do
-      {
-        return null;
-        if (PatchCommonUtil.isDalvik()) {
-          return new aawc(paramJSONObject);
-        }
-        if (PatchCommonUtil.isArtLM()) {
-          return new aawb(paramJSONObject);
-        }
-      } while (!PatchCommonUtil.isArtGeN());
-      return new aawa(paramJSONObject);
-    }
-    if ("Native".equals(paramString)) {
-      return new aawd(paramJSONObject);
-    }
-    QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig createPatchItemConfig invalid patchType=" + paramString);
-    return null;
+    jdField_a_of_type_JavaLangString = "0";
   }
   
-  private static boolean a(JSONObject paramJSONObject)
+  private aavz()
   {
-    boolean bool = true;
-    if (paramJSONObject == null) {
-      return false;
+    c();
+  }
+  
+  public static aavz a()
+  {
+    if (jdField_a_of_type_Aavz == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aavz == null) {
+        jdField_a_of_type_Aavz = new aavz();
+      }
+      return jdField_a_of_type_Aavz;
     }
-    Object localObject = paramJSONObject.optString("systemVersion", "");
-    int i;
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      i = 1;
+    finally {}
+  }
+  
+  private String a()
+  {
+    return BaseApplicationImpl.getApplication().getRuntime().getAccount();
+  }
+  
+  private void a(List<CONFIG.StIntConf> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      int i = 0;
+      while (i < paramList.size())
+      {
+        CONFIG.StIntConf localStIntConf = (CONFIG.StIntConf)paramList.get(i);
+        if ((localStIntConf != null) && (localStIntConf.key != null))
+        {
+          String str = localStIntConf.key.get();
+          if ((!TextUtils.isEmpty(str)) && (("SmartMatchMusicSwitch".equals(str)) || ("SmartCutPicSpacing".equals(str)) || ("SmartCutPicWidth".equals(str)) || ("SmartCutPicMaxByte".equals(str)) || ("ShootingResolution".equals(str)) || ("SmartCutPicCount".equals(str)) || ("SmartCutPicQuality_And".equals(str)))) {
+            a(str, Long.valueOf(localStIntConf.value.get()));
+          }
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  private <V> V b(@NonNull String paramString, @NonNull V paramV)
+  {
+    Object localObject;
+    if (paramV.getClass() == Integer.class) {
+      localObject = Integer.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, ((Integer)paramV).intValue()));
     }
     for (;;)
     {
-      localObject = paramJSONObject.optString("deviceInfo", "");
-      int j;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        j = 1;
+      QLog.i("Q.videostory.config.VSConfigManager", 2, "get value from sp success : K:" + paramString + ", V : " + localObject);
+      if ((localObject == null) || (localObject.getClass() != paramV.getClass())) {
+        return paramV;
       }
-      for (;;)
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
+      return localObject;
+      if (paramV.getClass() == Long.class)
       {
-        if ((i != 0) && (j != 0)) {}
-        for (;;)
-        {
-          return bool;
-          j = Build.VERSION.SDK_INT;
-          localObject = ((String)localObject).split(";");
-          if ((localObject == null) || (localObject.length <= 0)) {
-            break label214;
-          }
-          int k = localObject.length;
-          i = 0;
-          for (;;)
-          {
-            if (i >= k) {
-              break label214;
-            }
-            if (String.valueOf(j).equals(localObject[i]))
-            {
-              i = 1;
-              break;
-            }
-            i += 1;
-          }
-          paramJSONObject = Build.BRAND + "-" + Build.MODEL;
-          localObject = ((String)localObject).split(";");
-          if ((localObject == null) || (localObject.length <= 0)) {
-            break label209;
-          }
-          k = localObject.length;
-          j = 0;
-          for (;;)
-          {
-            if (j >= k) {
-              break label209;
-            }
-            if (paramJSONObject.equals(localObject[j]))
-            {
-              j = 1;
-              break;
-            }
-            j += 1;
-          }
-          bool = false;
-        }
-        label209:
-        j = 0;
+        localObject = Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(paramString, ((Long)paramV).longValue()));
       }
-      label214:
-      i = 0;
+      else if (paramV.getClass() == String.class)
+      {
+        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, (String)paramV);
+      }
+      else
+      {
+        if (paramV.getClass() != Boolean.class) {
+          break;
+        }
+        localObject = Boolean.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, ((Boolean)paramV).booleanValue()));
+      }
     }
+    throw new IllegalArgumentException("defValue class is not support : " + paramV.getClass());
+    return paramV;
   }
   
-  public String a()
+  private <V> void b(String paramString, V paramV)
   {
-    Iterator localIterator;
-    Object localObject;
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("relaxEnable", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("nPatchEnable", this.jdField_b_of_type_Boolean);
-      localStringBuilder = new StringBuilder("");
-      if ((this.jdField_a_of_type_JavaUtilSet != null) && (this.jdField_a_of_type_JavaUtilSet.size() > 0))
-      {
-        localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject = (String)localIterator.next();
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            localStringBuilder.append((String)localObject).append(";");
-          }
-        }
-      }
-      localJSONException.put("process", localStringBuilder.toString());
+    boolean bool;
+    if (paramV.getClass() == Integer.class) {
+      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, ((Integer)paramV).intValue()).commit();
     }
-    catch (JSONException localJSONException)
+    while (!bool)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PatchLogTag", 2, "AbscractPatchItemConfig writeToJsonString", localJSONException);
-      }
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("");
-    if ((this.jdField_b_of_type_JavaUtilSet != null) && (this.jdField_b_of_type_JavaUtilSet.size() > 0))
-    {
-      localIterator = this.jdField_b_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (Integer)localIterator.next();
-        if (localObject != null) {
-          localStringBuilder.append(((Integer)localObject).toString()).append(";");
-        }
+      QLog.e("Q.videostory.config.VSConfigManager", 2, "set value into sp error : K:" + paramString + ", V : " + paramV);
+      return;
+      if (paramV.getClass() == Long.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong(paramString, ((Long)paramV).longValue()).commit();
+      } else if (paramV.getClass() == String.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString, (String)paramV).commit();
+      } else if (paramV.getClass() == Boolean.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(paramString, ((Boolean)paramV).booleanValue()).commit();
+      } else {
+        throw new IllegalArgumentException("value class is not support : " + paramV.getClass());
       }
     }
-    localJSONException.put("systemVersion", localStringBuilder.toString());
-    localStringBuilder = new StringBuilder("");
-    if ((this.c != null) && (this.c.size() > 0))
-    {
-      localIterator = this.c.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (String)localIterator.next();
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          localStringBuilder.append((String)localObject).append(";");
-        }
-      }
-    }
-    localJSONException.put("deviceInfo", localStringBuilder.toString());
-    String str = localJSONException.toString();
-    return str;
+    QLog.i("Q.videostory.config.VSConfigManager", 2, "set value into sp success : K:" + paramString + ", V : " + paramV);
   }
   
-  protected void a(JSONObject paramJSONObject)
+  private void c()
   {
-    int k = 0;
-    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("relaxEnable", false);
-    this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("nPatchEnable", false);
-    String[] arrayOfString = paramJSONObject.optString("process", "").split(";");
-    int j;
-    int i;
-    String str;
-    if ((arrayOfString != null) && (arrayOfString.length > 0))
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("videostory_config", 4);
+    ThreadManager.executeOnSubThread(new VSConfigManager.1(this));
+  }
+  
+  public <V> V a(@NonNull String paramString, @NonNull V paramV)
+  {
+    Object localObject = paramString + "_" + a();
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject)))
     {
-      j = arrayOfString.length;
-      i = 0;
-      while (i < j)
-      {
-        str = arrayOfString[i];
-        if (!TextUtils.isEmpty(str)) {
-          this.jdField_a_of_type_JavaUtilSet.add(str);
-        }
-        i += 1;
-      }
+      localObject = b((String)localObject, paramV);
+      return localObject;
     }
-    arrayOfString = paramJSONObject.optString("systemVersion", "").split(";");
-    if ((arrayOfString != null) && (arrayOfString.length > 0))
+    if (paramV.getClass() == Integer.class) {
+      paramString = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+    }
+    for (;;)
     {
-      int m = arrayOfString.length;
-      i = 0;
-      for (;;)
+      QLog.i("Q.videostory.config.VSConfigManager", 2, "get value : K : " + (String)localObject + ", V : " + paramString);
+      if (paramString != null)
       {
-        if (i < m)
-        {
-          str = arrayOfString[i];
-          try
-          {
-            j = Integer.parseInt(str);
-            if (j > 0) {
-              this.jdField_b_of_type_JavaUtilSet.add(Integer.valueOf(j));
-            }
-            i += 1;
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            for (;;)
-            {
-              j = 0;
-            }
-          }
+        localObject = paramString;
+        if (paramString.getClass() == paramV.getClass()) {
+          break;
         }
       }
-    }
-    paramJSONObject = paramJSONObject.optString("deviceInfo", "").split(";");
-    if ((paramJSONObject != null) && (paramJSONObject.length > 0))
-    {
-      j = paramJSONObject.length;
-      i = k;
-      while (i < j)
+      return paramV;
+      if (paramV.getClass() == Long.class)
       {
-        arrayOfString = paramJSONObject[i];
-        if (!TextUtils.isEmpty(arrayOfString)) {
-          this.c.add(arrayOfString);
+        paramString = (Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      }
+      else if (paramV.getClass() == String.class)
+      {
+        paramString = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      }
+      else
+      {
+        if (paramV.getClass() != Boolean.class) {
+          break label214;
         }
-        i += 1;
+        paramString = (Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
       }
     }
+    label214:
+    throw new IllegalArgumentException("defValue class is not support : " + paramV.getClass());
+  }
+  
+  public void a()
+  {
+    VSNetworkHelper.a().a(new GetStoryConfigRequest(), new aawa(this));
+  }
+  
+  public <V> void a(String paramString, V paramV)
+  {
+    paramString = paramString + "_" + a();
+    if (paramV.getClass() == Integer.class) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (Integer)paramV);
+    }
+    for (;;)
+    {
+      QLog.i("Q.videostory.config.VSConfigManager", 2, "set value into map success :  K:" + paramString + ", V : " + paramV);
+      bnzb.b("Q.videostory.config.VSConfigManager", "set value into map success :  K:" + paramString + ", V : " + paramV);
+      b(paramString, paramV);
+      return;
+      if (paramV.getClass() == Long.class)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (Long)paramV);
+      }
+      else if (paramV.getClass() == String.class)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (String)paramV);
+      }
+      else
+      {
+        if (paramV.getClass() != Boolean.class) {
+          break;
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (Boolean)paramV);
+      }
+    }
+    QLog.e("Q.videostory.config.VSConfigManager", 2, "set value into map error : K:" + paramString + ", V : " + paramV);
+    throw new IllegalArgumentException("value class is not support : " + paramV.getClass());
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    boolean bool = ((Boolean)a().a("KEY_BOOLEAN_APPLY_STYLE_CONFIG", Boolean.valueOf(false))).booleanValue();
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "isApplyStyleConfig:" + bool);
+    return bool;
   }
   
-  public boolean a(boolean paramBoolean)
+  public boolean a(String paramString)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilSet.size() > 0) && (!this.jdField_a_of_type_JavaUtilSet.contains(BaseApplicationImpl.processName)))
+    boolean bool2 = ((Boolean)a().a(paramString, Boolean.valueOf(true))).booleanValue();
+    if (LocalMultiProcConfig.getLong4Uin("need_show_story_tips", 0L, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()) == 1L) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig isValidConfig process not match");
-      return false;
+      bool2 = bool1 & bool2;
+      QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "needShowGuideTips:" + bool2);
+      return bool2;
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig isValidConfig patchName is null");
-      return false;
-    }
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-    {
-      QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig isValidConfig patchUrl is null");
-      return false;
-    }
-    if (this.jdField_a_of_type_Int <= 0)
-    {
-      QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig isValidConfig patchSize is invalid");
-      return false;
-    }
-    if ((this.jdField_b_of_type_JavaUtilSet.size() > 0) && (!this.jdField_b_of_type_JavaUtilSet.contains(Integer.valueOf(Build.VERSION.SDK_INT))))
-    {
-      QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig isValidConfig system version not match");
-      return false;
-    }
-    if ((this.c.size() > 0) && (!this.c.contains(Build.BRAND + "-" + Build.MODEL)))
-    {
-      QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig isValidConfig device info not match");
-      return false;
-    }
-    QLog.d("PatchLogTag", 1, "AbscractPatchItemConfig isValidConfig return true");
-    return true;
+  }
+  
+  public void b()
+  {
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "resetApplyWidgetConfig");
+    a().a("KEY_BOOLEAN_APPLY_WIDGET_CONFIG", Boolean.valueOf(false));
   }
   
   public boolean b()
   {
-    return this.jdField_b_of_type_Boolean;
+    boolean bool = ((Boolean)a().a("KEY_BOOLEAN_APPLY_WIDGET_CONFIG", Boolean.valueOf(false))).booleanValue();
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "isApplyWidgetConfig:" + bool);
+    return bool;
+  }
+  
+  public void onDestroy()
+  {
+    QLog.i("Q.videostory.config.VSConfigManager", 2, "onDestory");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aavz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
-class oju
-  implements ViewBase.OnClickListener
+public class oju
+  implements bkhw
 {
-  oju(ojn paramojn) {}
+  public oju(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_Omg.a() == null) || (this.a.jdField_a_of_type_Omt.a == null)) {}
-    do
+    switch (paramInt)
     {
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.b(this.a).cancel();
       return;
-      ors.a(this.a.jdField_a_of_type_Omg.a().getContext(), this.a.jdField_a_of_type_Omt.a.activityJumpUrl);
-    } while (this.a.jdField_a_of_type_Omg.a() == null);
-    this.a.jdField_a_of_type_Omg.a().e(this.a.jdField_a_of_type_Omt);
+      ReadInJoySettingActivity.e(this.a, false);
+      ReadInJoySettingActivity.e(this.a, ReadInJoySettingActivity.d(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oju
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity.selectmember;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bdeu;
-import bdgc;
+import bgjw;
+import bglf;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.qphone.base.util.QLog;
@@ -39,7 +39,7 @@ class TroopAddFrdsInnerFrame$4
           label127:
           return;
         }
-        if (((!this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.p) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(localTroopMemberInfo.memberuin))) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d.contains(localTroopMemberInfo.memberuin)) || (!bdeu.d(localTroopMemberInfo.memberuin))) {
+        if (((!this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.p) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(localTroopMemberInfo.memberuin))) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d.contains(localTroopMemberInfo.memberuin)) || (!bgjw.d(localTroopMemberInfo.memberuin))) {
           continue;
         }
       }
@@ -56,7 +56,7 @@ class TroopAddFrdsInnerFrame$4
             localObject1 = null;
             if (this.this$0.f == TroopAddFrdsInnerFrame.d)
             {
-              localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.a(bdgc.h(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
+              localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.a(bglf.h(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
               if ((localTroopMemberInfo.displayedNamePinyinFirst == null) || (localTroopMemberInfo.displayedNamePinyinFirst.length() == 0))
               {
                 localObject1 = "#";
@@ -126,7 +126,7 @@ class TroopAddFrdsInnerFrame$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame.4
  * JD-Core Version:    0.7.0.1
  */

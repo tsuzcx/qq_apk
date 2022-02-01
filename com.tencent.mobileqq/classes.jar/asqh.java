@@ -1,21 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class asqh
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  asqh(asqf paramasqf) {}
+  asqh(asqe paramasqe, int paramInt, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    anwc.a().a(this.a.jdField_a_of_type_Int, -1);
-    if (this.a.jdField_a_of_type_JavaLangString == null) {}
-    for (paramDialogInterface = "";; paramDialogInterface = this.a.jdField_a_of_type_JavaLangString)
-    {
-      azqs.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramDialogInterface, "");
-      return;
-    }
+    this.jdField_a_of_type_Asqe.jdField_a_of_type_Float = this.jdField_a_of_type_Asqe.b;
+    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Asqe.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

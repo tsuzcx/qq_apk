@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ancp
+final class ancp
+  implements amxk
 {
-  public ArCloudConfigInfo a;
-  public String a = "";
-  public boolean a;
-  public String b = "";
-  public boolean b;
+  ancp(ancr paramancr, long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, amls paramamls, int[] paramArrayOfInt) {}
+  
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Ancr != null) {
+      this.jdField_a_of_type_Ancr.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Amls.a, this.jdField_a_of_type_ArrayOfInt, 22);
+    }
+  }
 }
 
 

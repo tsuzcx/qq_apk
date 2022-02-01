@@ -1,40 +1,162 @@
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.widget.ScrollView;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.os.Looper;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public class yxs
+public abstract class yxs
+  implements yxw
 {
-  private static final String jdField_a_of_type_JavaLangString = yxs.class.getSimpleName();
-  private float jdField_a_of_type_Float;
-  public int a;
-  public bhzg a;
-  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
-  public boolean a;
+  protected float a;
+  public Context a;
+  public Rect a;
+  protected DoodleView a;
+  protected yxt a;
+  protected boolean b;
+  protected Paint e;
+  protected Paint f;
+  protected int l;
+  protected int m;
+  protected int n;
+  protected int o;
   
-  public yxs(ScrollView paramScrollView, TouchWebView paramTouchWebView)
+  public yxs(DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
-    this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
+    if (paramDoodleView == null) {
+      throw new IllegalStateException("DoodleView can not be null.");
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView = paramDoodleView;
+    b();
   }
   
-  public void a(float paramFloat)
+  private void b()
+  {
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.e = new Paint();
+    this.e.setAntiAlias(true);
+    this.f = new Paint();
+    this.f.setAntiAlias(true);
+    this.f.setStyle(Paint.Style.STROKE);
+    this.f.setStrokeWidth(5.0F);
+    this.f.setColor(-16776961);
+    this.b = false;
+  }
+  
+  public abstract String a();
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      throw new IllegalArgumentException("illegal width or height, width=" + paramInt1 + ",height=" + paramInt2);
+    }
+    yqp.b("BaseLayer", "layer size,width=" + paramInt1 + ",height=" + paramInt2);
+    this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
+    this.jdField_a_of_type_AndroidGraphicsRect.right = paramInt1;
+    this.jdField_a_of_type_AndroidGraphicsRect.top = 0;
+    this.jdField_a_of_type_AndroidGraphicsRect.bottom = paramInt2;
+    this.n = this.jdField_a_of_type_AndroidGraphicsRect.left;
+    this.o = this.jdField_a_of_type_AndroidGraphicsRect.right;
+    this.l = this.jdField_a_of_type_AndroidGraphicsRect.top;
+    this.m = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
+  }
+  
+  protected abstract void a(Canvas paramCanvas);
+  
+  public void a(yxt paramyxt)
+  {
+    this.jdField_a_of_type_Yxt = paramyxt;
+  }
+  
+  protected abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRect.width();
+  }
+  
+  public void b(float paramFloat)
   {
     this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public void a(int paramInt)
+  public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_ComTencentWidgetScrollView == null) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
-    while ((this.jdField_a_of_type_Float <= 0.0F) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView.canScrollVertically(-1)) || (paramInt != 0) || (!this.jdField_a_of_type_ComTencentWidgetScrollView.canScrollVertically(-1))) {
+    if (paramBoolean) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.setActiveLayer(this);
+    }
+    for (;;)
+    {
+      g();
+      return;
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.d();
+    }
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRect.height();
+  }
+  
+  public abstract boolean c(MotionEvent paramMotionEvent);
+  
+  public final void d(Canvas paramCanvas)
+  {
+    a(paramCanvas);
+  }
+  
+  public boolean d()
+  {
+    return this.b;
+  }
+  
+  public boolean d(MotionEvent paramMotionEvent)
+  {
+    return f(paramMotionEvent);
+  }
+  
+  public void f()
+  {
+    yqp.b("BaseLayer", getClass().getName() + " onDestroy.");
+  }
+  
+  public final boolean f(MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Yxt != null) {
+      this.jdField_a_of_type_Yxt.a(this, paramMotionEvent);
+    }
+    g();
+    return a(paramMotionEvent);
+  }
+  
+  public void g()
+  {
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetScrollView.fling((int)-this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.postInvalidate();
+  }
+  
+  public void h()
+  {
+    yqp.b("BaseLayer", getClass().getName() + " onPause.");
+    this.b = false;
+  }
+  
+  public void i()
+  {
+    yqp.b("BaseLayer", getClass().getName() + " onResume.");
+    this.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yxs
  * JD-Core Version:    0.7.0.1
  */

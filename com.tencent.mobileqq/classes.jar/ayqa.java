@@ -1,78 +1,67 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import org.jetbrains.annotations.NotNull;
 
 public class ayqa
-  extends ayrj
 {
-  public ayqa(bdbb parambdbb)
+  public int a;
+  private long a;
+  
+  public ayqa(int paramInt)
   {
-    super(parambdbb);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  protected ayqo<aynu, aywd> a(bdbb parambdbb)
+  private boolean a()
   {
-    return new ayqe(parambdbb);
+    return System.currentTimeMillis() - this.jdField_a_of_type_Long > ayqi.O;
   }
   
-  public void a(ayns paramayns, aywc paramaywc)
+  public void a()
   {
-    paramayns = (aynt)paramayns;
-    LinearLayout localLinearLayout = ((ayvv)paramaywc).a();
-    if (localLinearLayout != null)
+    this.jdField_a_of_type_Int = 40001;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoStatus", 2, "[status] resetIfDead from: " + paramString + " hasDead: " + bool + " status: " + toString());
+    }
+    if (bool) {
+      a();
+    }
+    return bool;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      List localList = paramayns.a();
-      if (localList != null)
-      {
-        localLinearLayout.removeAllViews();
-        int k = Math.min(localList.size(), paramayns.a());
-        int i = 0;
-        if (i < k)
-        {
-          aynu localaynu = (aynu)localList.get(i);
-          View localView = LayoutInflater.from(paramaywc.a().getContext()).inflate(2131562604, null);
-          ayvx localayvx = new ayvx(localView);
-          localView.setTag(2131379971, localaynu);
-          localView.setTag(2131379976, localayvx);
-          localView.setTag(2131379972, Integer.valueOf(i));
-          localView.setTag(2131379970, Integer.valueOf(localList.size()));
-          localView.setTag(2131379973, this.a);
-          ayvp.a(localaynu, k, i);
-          int m = localaynu.a();
-          int n = localaynu.b();
-          if ((localaynu instanceof aynv)) {}
-          for (int j = ((aynv)localaynu).r;; j = 0)
-          {
-            ayvp.a(m, n, localView, j);
-            localLinearLayout.addView(localView);
-            this.a.a(localaynu, localayvx);
-            i += 1;
-            break;
-          }
-        }
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-    }
-    if (paramaywc.b() != null) {
-      paramaywc.b().setVisibility(8);
-    }
-    if ((paramayns instanceof ayne))
-    {
-      paramayns = ((ayne)paramayns).a();
-      paramaywc = ((ayvv)paramaywc).a();
-      if (paramaywc != null)
-      {
-        if (paramayns == null) {
-          break label325;
-        }
-        paramaywc.a().setVisibility(0);
-        this.a.a(paramayns, paramaywc);
-      }
-    }
-    return;
-    label325:
-    paramaywc.a().setVisibility(8);
+      paramObject = (ayqa)paramObject;
+    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
+    return false;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "AutoStatus{status=" + ayqi.a(this.jdField_a_of_type_Int) + ", updateTime=" + new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)) + '}';
   }
 }
 

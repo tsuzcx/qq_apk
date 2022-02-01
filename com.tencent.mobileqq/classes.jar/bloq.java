@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.aeeditor.module.music.AEEditorMusicPanelDialog.1.1;
+import android.text.TextUtils;
+import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
+import cooperation.qqreader.proxy.ReaderJsCallback;
 
-public class bloq
-  implements Animation.AnimationListener
+class bloq
+  implements ReaderJsCallback
 {
   bloq(blop paramblop) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCallback(String paramString1, String paramString2)
   {
-    blop.a(this.a, false);
-    blop.a(this.a).post(new AEEditorMusicPanelDialog.1.1(this));
+    if (!TextUtils.isEmpty(paramString1)) {
+      blop.a(this.a, paramString1, new String[] { paramString2 });
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
   {
-    blop.a(this.a, true);
+    if (paramReaderBaseWebViewPlugin != null) {
+      paramReaderBaseWebViewPlugin.init(this.a.mRuntime, blop.a(this.a));
+    }
   }
 }
 

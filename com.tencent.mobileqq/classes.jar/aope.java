@@ -1,19 +1,23 @@
-public class aope
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+
+public final class aope
+  implements Parcelable.Creator<SosoInterface.SosoLocation>
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public String toString()
+  public SosoInterface.SosoLocation a(Parcel paramParcel)
   {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("nickName:").append(this.a).append(",headID:").append(this.b).append(",headURL:").append(this.c).append("}");
-    return localStringBuilder.toString();
+    return new SosoInterface.SosoLocation(paramParcel);
+  }
+  
+  public SosoInterface.SosoLocation[] a(int paramInt)
+  {
+    return new SosoInterface.SosoLocation[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aope
  * JD-Core Version:    0.7.0.1
  */

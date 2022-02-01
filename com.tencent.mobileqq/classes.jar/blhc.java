@@ -1,13 +1,19 @@
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.RecvMsg;
 
-public class blhc
-  implements betp
+public final class blhc
+  implements Parcelable.Creator<RecvMsg>
 {
-  public blhc(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  public RecvMsg a(Parcel paramParcel)
+  {
+    return new RecvMsg(paramParcel);
+  }
   
-  public void a(betn parambetn) {}
-  
-  public void a(betn parambetn, int paramInt1, int paramInt2) {}
+  public RecvMsg[] a(int paramInt)
+  {
+    return new RecvMsg[paramInt];
+  }
 }
 
 

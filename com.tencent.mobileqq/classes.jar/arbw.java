@@ -1,63 +1,78 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
 public class arbw
+  extends aqkz<String>
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b = true;
-  public int c;
-  public String c;
-  public boolean c = false;
-  public int d;
-  public int e;
-  public int f;
-  
-  public static int a(int paramInt)
+  @NonNull
+  public String a(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 12: 
-    case 13: 
-    case 14: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    case 21: 
-    case 22: 
-    default: 
-      return 2131692504;
-    case 2: 
-      return 2131692572;
-    case 3: 
-      return 2131692495;
-    case 4: 
-      return 2131692475;
-    case 5: 
-      return 2131692512;
-    case 6: 
-      return 2131692518;
-    case 7: 
-      return 2131692503;
-    case 8: 
-      return 2131692530;
-    case 11: 
-      return 2131692529;
-    case 9: 
-      return 2131692516;
-    case 10: 
-      return 2131692515;
+    return "";
+  }
+  
+  @Nullable
+  public String a(aqlg[] paramArrayOfaqlg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onParsed");
     }
-    return 2131692491;
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length == 0)) {
+      paramArrayOfaqlg = null;
+    }
+    String str;
+    do
+    {
+      return paramArrayOfaqlg;
+      str = paramArrayOfaqlg[0].a;
+      paramArrayOfaqlg = str;
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoDrawConfProcessor", 2, " onParsed, content:" + str);
+    return str;
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onUpdate");
+    }
+  }
+  
+  public Class<String> clazz()
+  {
+    return String.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onReqFailed");
+    }
+  }
+  
+  public int type()
+  {
+    return 462;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbw
  * JD-Core Version:    0.7.0.1
  */

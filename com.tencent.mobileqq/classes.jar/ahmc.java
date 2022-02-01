@@ -1,30 +1,21 @@
+import android.os.Handler;
+import android.os.Message;
+
 class ahmc
-  extends bibk
+  extends Handler
 {
-  ahmc(ahma paramahma, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
+  ahmc(ahmb paramahmb) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    paramInt = 0;
-    if ((paramArrayOfbibj == null) || (paramArrayOfbibj.length <= 0)) {}
+    if (paramMessage.what == ahmb.b()) {}
     for (;;)
     {
+      super.handleMessage(paramMessage);
       return;
-      if (paramArrayOfbibj.length < 0)
-      {
-        paramArrayOfbibj[0].b = 0;
-        paramArrayOfbibj[0].a = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfbibj.length)
-      {
-        paramArrayOfbibj[paramInt].b = -1;
-        paramArrayOfbibj[paramInt].a = -1;
-        paramInt += 1;
-      }
+      if (paramMessage.what != ahmb.c()) {}
     }
   }
 }

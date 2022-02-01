@@ -1,88 +1,57 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class xjn
+class xjn
+  extends SimpleObserver<List<xfb>>
 {
-  public Handler a;
-  public HandlerThread a;
-  public xjo a;
+  xjn(xjm paramxjm, xjf paramxjf) {}
   
-  public xjn()
+  public void a(List<xfb> paramList)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MediaCodecThumbnailGenerator");
-  }
-  
-  private float a(Bitmap paramBitmap)
-  {
-    int i1 = paramBitmap.getHeight() / 16;
-    int i2 = paramBitmap.getWidth() / 9;
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    while (k < paramBitmap.getHeight())
+    ArrayList localArrayList = new ArrayList();
+    xiy localxiy = new xiy(xjm.a(this.jdField_a_of_type_Xjm));
+    localxiy.jdField_a_of_type_JavaUtilList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      int m = 0;
-      if (m < paramBitmap.getWidth())
-      {
-        int n = paramBitmap.getPixel(m, k);
-        if (((n >> 16 & 0xFF) < 10) && ((n >> 8 & 0xFF) < 10) && ((n & 0xFF) < 10))
-        {
-          n = j + 1;
-          j = i;
-        }
-        for (i = n;; i = n)
-        {
-          n = m + i2;
-          m = i;
-          i = j;
-          j = m;
-          m = n;
-          break;
-          n = j;
-          j = i + 1;
-        }
-      }
-      k += i1;
+      xfb localxfb = (xfb)localIterator.next();
+      String str = localxfb.jdField_a_of_type_JavaLangString;
+      localxiy.jdField_a_of_type_JavaUtilMap.put(localxfb.b, str);
+      localxiy.jdField_a_of_type_JavaUtilList.add(localxfb.b);
     }
-    float f = j / (i + j);
-    wxe.c("MediaCodecThumbnailGen", "whitePixelCount = " + i + " blackPixelCount = " + j);
-    return f;
+    paramList = xjk.a(paramList);
+    if ((paramList != null) && (!xjm.a(this.jdField_a_of_type_Xjm).a())) {
+      localxiy.jdField_a_of_type_JavaLangString = paramList.b;
+    }
+    localArrayList.add(localxiy);
+    paramList = this.jdField_a_of_type_Xjf;
+    if (!xjm.a(this.jdField_a_of_type_Xjm).a()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramList.a(localArrayList, bool);
+      return;
+    }
   }
   
-  public void a()
+  public void onError(@NonNull Error paramError)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Xjo = new xjo(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.myLooper());
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2, xjl<Boolean, xjr> paramxjl, xjl<Boolean, xjq> paramxjl1)
-  {
-    xjp localxjp = new xjp();
-    localxjp.jdField_a_of_type_JavaLangString = paramString1;
-    localxjp.jdField_b_of_type_JavaLangString = paramString2;
-    localxjp.jdField_a_of_type_Boolean = paramBoolean1;
-    localxjp.jdField_a_of_type_Int = paramInt1;
-    localxjp.jdField_b_of_type_Int = paramInt2;
-    localxjp.c = paramInt3;
-    localxjp.d = paramInt4;
-    localxjp.jdField_b_of_type_Boolean = paramBoolean2;
-    localxjp.jdField_b_of_type_Xjl = paramxjl;
-    localxjp.jdField_a_of_type_Xjl = paramxjl1;
-    Message.obtain(this.jdField_a_of_type_Xjo, 1, localxjp).sendToTarget();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+    int i = 0;
+    if ((paramError instanceof ErrorMessage)) {
+      i = ((ErrorMessage)paramError).errorCode;
+    }
+    paramError = new ArrayList();
+    paramError.add(xjm.a(this.jdField_a_of_type_Xjm));
+    this.jdField_a_of_type_Xjf.a(new ErrorMessage(i, "fail"), paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xjn
  * JD-Core Version:    0.7.0.1
  */

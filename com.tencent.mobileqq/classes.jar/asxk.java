@@ -1,10 +1,16 @@
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import java.util.Comparator;
 
-public abstract interface asxk
+public class asxk
+  implements Comparator<OfflineFileInfo>
 {
-  public abstract void a(int paramInt, String paramString);
+  public asxk(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public abstract void a(FaceDetectForThirdPartyManager.AppConf paramAppConf);
+  public int a(OfflineFileInfo paramOfflineFileInfo1, OfflineFileInfo paramOfflineFileInfo2)
+  {
+    return Long.valueOf(paramOfflineFileInfo1.c).compareTo(Long.valueOf(paramOfflineFileInfo2.c));
+  }
 }
 
 

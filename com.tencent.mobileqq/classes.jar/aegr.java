@@ -1,25 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.20.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aegr
-  implements View.OnClickListener
+  implements biac
 {
-  public aegr(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aegr(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    this.a.jdField_d_of_type_Boolean = true;
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.findViewById(2131368626));
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setText(alud.a(2131716032));
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new aegs(this));
-    TroopMemberListActivity.a(this.a);
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, String.format("onConfigUpdate configId=%s tag=%s", new Object[] { Integer.valueOf(paramInt), paramString }));
     }
+    this.a.runOnUiThread(new FriendProfileCardActivity.20.1(this, paramString));
   }
 }
 

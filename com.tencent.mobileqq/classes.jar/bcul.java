@@ -1,145 +1,72 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import pttcenterservice.PttShortVideo.PttShortVideoFileInfo;
-import pttcenterservice.PttShortVideo.PttShortVideoUploadReq;
-
 public class bcul
-  extends bcuj
+  extends bcum
 {
-  private ITransactionCallback b;
-  protected Transaction b;
-  protected boolean b;
-  protected String c;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
   
-  public bcul(bcug parambcug, int paramInt)
+  public bcul()
   {
-    super(parambcug, paramInt);
-    this.jdField_b_of_type_ComTencentMobileqqHighwayApiITransactionCallback = new bcum(this);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
   }
   
-  public void a()
+  public String a(int paramInt)
   {
-    String str1 = this.jdField_a_of_type_Bcug.jdField_b_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_Bcug.jdField_a_of_type_JavaLangString;
-    boolean bool2 = a(str1);
-    boolean bool1 = false;
-    if (bool2) {
-      bool1 = b(str2);
-    }
-    if ((bool2) && (bool1)) {
-      return;
-    }
-    e();
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean)) {
-      c();
-    }
-  }
-  
-  protected boolean b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadVideo path= " + paramString);
-    }
-    ITransactionCallback localITransactionCallback = this.jdField_b_of_type_ComTencentMobileqqHighwayApiITransactionCallback;
-    QQAppInterface localQQAppInterface = a();
-    String str = localQQAppInterface.c();
-    byte[] arrayOfByte;
-    File localFile;
-    if (localQQAppInterface != null)
-    {
-      arrayOfByte = amzy.a(paramString);
-      localFile = new File(paramString);
-      if (arrayOfByte != null) {
-        break label93;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadVideo md5 null ");
-      }
-    }
-    label93:
-    int i;
-    do
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "uploadVideo,file length " + new File(paramString).length());
-      }
-      PttShortVideo.PttShortVideoUploadReq localPttShortVideoUploadReq = new PttShortVideo.PttShortVideoUploadReq();
-      localPttShortVideoUploadReq.setHasFlag(true);
-      localPttShortVideoUploadReq.uint64_fromuin.set(Long.parseLong(str));
-      localPttShortVideoUploadReq.uint64_touin.set(Long.parseLong(str));
-      localPttShortVideoUploadReq.uint32_chat_type.set(1);
-      localPttShortVideoUploadReq.uint32_client_type.set(1);
-      localPttShortVideoUploadReq.uint64_group_code.set(Long.parseLong(str));
-      localPttShortVideoUploadReq.uint32_agent_type.set(0);
-      localPttShortVideoUploadReq.uint32_business_type.set(3001);
-      localPttShortVideoUploadReq.uint32_flag_support_large_size.set(1);
-      PttShortVideo.PttShortVideoFileInfo localPttShortVideoFileInfo = new PttShortVideo.PttShortVideoFileInfo();
-      localPttShortVideoFileInfo.str_file_name.set(localFile.getName());
-      localPttShortVideoFileInfo.bytes_file_md5.set(ByteStringMicro.copyFrom(arrayOfByte));
-      localPttShortVideoFileInfo.bytes_thumb_file_md5.set(ByteStringMicro.copyFrom(arrayOfByte));
-      localPttShortVideoFileInfo.uint64_file_size.set(localFile.length());
-      localPttShortVideoFileInfo.uint32_file_res_length.set(0);
-      localPttShortVideoFileInfo.uint32_file_res_width.set(0);
-      localPttShortVideoFileInfo.uint32_file_format.set(3);
-      localPttShortVideoFileInfo.uint32_file_time.set((int)this.jdField_a_of_type_Bcug.jdField_a_of_type_Long);
-      localPttShortVideoFileInfo.uint64_thumb_file_size.set(0L);
-      localPttShortVideoUploadReq.msg_PttShortVideoFileInfo.set(localPttShortVideoFileInfo);
-      paramString = new Transaction(str, 74, paramString, 0, arrayOfByte, localITransactionCallback, localPttShortVideoUploadReq.toByteArray(), false);
-      i = localQQAppInterface.getHwEngine().submitTransactionTask(paramString);
-      if (i == 0)
-      {
-        this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = paramString;
-        return true;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadVideo submitTransactionTask  retCode= " + i);
-    return false;
-  }
-  
-  public void c()
-  {
-    boolean bool = true;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("isVideo", 1);
-    if ((this.jdField_b_of_type_JavaLangString != null) && (this.c != null))
-    {
-      localBundle.putInt("result", 1);
-      localBundle.putString("url", this.jdField_b_of_type_JavaLangString);
-      localBundle.putString("vid", this.c);
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append(this.jdField_b_of_type_Long).append("|");
+    localStringBuilder.append(this.i).append("|");
+    localStringBuilder.append(this.j).append("|");
+    localStringBuilder.append(this.k).append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Int).append("|");
+    if (paramInt == 0) {
+      localStringBuilder.append("${count_unknown}").append("|");
     }
     for (;;)
     {
-      bcuh.a().a(bool, this.jdField_a_of_type_Int, localBundle);
-      return;
-      localBundle.putInt("result", 0);
-      localBundle.putString("error", "");
-      bool = false;
+      localStringBuilder.append(this.jdField_a_of_type_Long).append("|");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append("|");
+      localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append("|");
+      localStringBuilder.append(this.d).append("|");
+      localStringBuilder.append(this.e).append("|");
+      localStringBuilder.append(this.f).append("|");
+      localStringBuilder.append(this.g).append("|");
+      localStringBuilder.append(this.h).append("|");
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_c_of_type_Int).append("|");
     }
   }
   
-  public void d()
+  public String toString()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
-    }
-    if (this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
-    }
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.jdField_b_of_type_Long).append("|");
+    localStringBuffer.append(this.i).append("|");
+    localStringBuffer.append(this.j).append("|");
+    localStringBuffer.append(this.k).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_b_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_c_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Long).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.jdField_b_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.jdField_c_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    localStringBuffer.append(this.h).append("|");
+    return localStringBuffer.toString();
   }
 }
 

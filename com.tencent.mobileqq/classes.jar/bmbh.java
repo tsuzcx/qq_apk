@@ -1,6 +1,6 @@
 public abstract interface bmbh
 {
-  public abstract void U();
+  public abstract void onPanoramaClick();
 }
 
 

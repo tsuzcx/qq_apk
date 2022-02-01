@@ -17,10 +17,14 @@ final class ActivityWatcher$1
   }
   
   public void onForeground(@NonNull Activity paramActivity) {}
+  
+  public void onResume(@NonNull Activity paramActivity) {}
+  
+  public void onStop(@NonNull Activity paramActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.memory.leakdetect.ActivityWatcher.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:background="@drawable/diw" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/nuj" android:background="@drawable/b9s" android:layout_width="154.0dip" android:layout_height="230.0dip" android:layout_marginLeft="13.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="13.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/nuk" android:background="@drawable/b9s" android:layout_width="154.0dip" android:layout_height="230.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="13.0dip" android:layout_toRightOf="@id/nuj" />
+    <ImageView android:id="@id/msu" android:layout_width="74.0dip" android:layout_height="29.0dip" android:layout_marginTop="66.0dip" android:layout_marginRight="25.0dip" android:src="@drawable/g9h" android:scaleType="fitCenter" android:layout_alignTop="@id/nuj" android:layout_alignRight="@id/nuj" />
+    <ImageView android:id="@id/msv" android:layout_width="74.0dip" android:layout_height="29.0dip" android:layout_marginTop="66.0dip" android:layout_marginRight="25.0dip" android:src="@drawable/g9h" android:scaleType="fitCenter" android:layout_alignTop="@id/nuk" android:layout_alignRight="@id/nuk" />
+</merge>

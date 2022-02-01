@@ -2,9 +2,9 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import apmh;
-import apml;
-import begz;
+import arpd;
+import arph;
+import bhod;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -78,7 +78,7 @@ public class IndividualRedPacketJsPlugin
           paramJsBridgeListener = paramString1;
           continue;
         }
-        super.sendRemoteReq(apml.a(paramJsBridgeListener, paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+        super.sendRemoteReq(arph.a(paramJsBridgeListener, paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
         return true;
         if ("setFlag".equals(paramString3))
         {
@@ -220,7 +220,7 @@ public class IndividualRedPacketJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.IndividualRedPacketJsPlugin
  * JD-Core Version:    0.7.0.1
  */

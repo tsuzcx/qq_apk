@@ -1,14 +1,31 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface asww
+public class asww
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public asww(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public abstract void a(int paramInt1, TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt2, int paramInt3, int paramInt4, String paramString, Object paramObject);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void j();
+  public void onClick(View paramView)
+  {
+    asxd localasxd = (asxd)paramView.getTag();
+    FileInfo localFileInfo = (FileInfo)localasxd.jdField_a_of_type_JavaLangObject;
+    switch (localasxd.c)
+    {
+    }
+    for (;;)
+    {
+      this.a.i();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a.a().Z();
+      this.a.a(localFileInfo, localasxd.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
+    }
+  }
 }
 
 

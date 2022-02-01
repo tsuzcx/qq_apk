@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import mqq.app.AppRuntime;
 
 public class aqdo
-  implements DialogInterface.OnClickListener
+  implements aqdf
 {
-  public aqdo(ExtendFriendEditFragment paramExtendFriendEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private QQAppInterface a()
   {
-    ExtendFriendEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendEditFragment, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  public void a(Context paramContext, ColorNote paramColorNote)
+  {
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface != null) {
+      ((ainf)localQQAppInterface.getManager(365)).a(paramContext, paramColorNote);
+    }
   }
 }
 

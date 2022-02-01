@@ -8,7 +8,7 @@ class UiHelper$SurfaceViewHandler
 {
   private SurfaceView mSurfaceView;
   
-  UiHelper$SurfaceViewHandler(UiHelper paramUiHelper, SurfaceView paramSurfaceView)
+  UiHelper$SurfaceViewHandler(SurfaceView paramSurfaceView)
   {
     this.mSurfaceView = paramSurfaceView;
   }
@@ -22,7 +22,7 @@ class UiHelper$SurfaceViewHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.google.android.filament.android.UiHelper.SurfaceViewHandler
  * JD-Core Version:    0.7.0.1
  */

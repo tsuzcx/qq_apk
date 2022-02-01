@@ -1,23 +1,52 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
 public class aijg
 {
-  public int a;
-  private String a;
-  private String b;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
   
-  public aijg(String paramString1, String paramString2)
+  public static aijg a(String paramString)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    aijg localaijg = new aijg();
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if ((paramString.has("useRecommendedSticker")) && (paramString.has("maxMatchLength")))
+      {
+        localaijg.a(paramString.getBoolean("useRecommendedSticker"));
+        localaijg.a(paramString.getInt("maxMatchLength"));
+      }
+      return localaijg;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("StickerRecConfigBean", 2, paramString.getMessage());
+    }
+    return localaijg;
   }
   
-  public String a()
+  public int a()
   {
-    return this.a;
+    return this.jdField_a_of_type_Int;
   }
   
-  public String b()
+  public void a(int paramInt)
   {
-    return this.b;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -1,19 +1,27 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wuf
-  implements bhum
+public class wuf
+  extends QQUIEventReceiver<wtu, wue>
 {
-  wuf(wub paramwub, int paramInt) {}
-  
-  public void onDismiss()
+  public wuf(@NonNull wtu paramwtu)
   {
-    wqn localwqn = (wqn)this.jdField_a_of_type_Wub.a.a().get(this.jdField_a_of_type_Int);
-    wub.a(this.jdField_a_of_type_Wub, localwqn, "clk_hide");
+    super(paramwtu);
+  }
+  
+  public void a(@NonNull wtu paramwtu, @NonNull wue paramwue)
+  {
+    wtu.a(paramwtu, paramwue.jdField_a_of_type_Xix, paramwue.jdField_a_of_type_JavaLangString);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wue.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wuf
  * JD-Core Version:    0.7.0.1
  */

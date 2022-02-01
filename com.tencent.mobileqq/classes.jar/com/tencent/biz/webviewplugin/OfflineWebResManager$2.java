@@ -1,28 +1,28 @@
 package com.tencent.biz.webviewplugin;
 
-import awge;
-import awgf;
+import abbj;
 import com.tencent.mobileqq.data.OfflineWebRes;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
-import zeq;
 
 public class OfflineWebResManager$2
   implements Runnable
 {
-  public OfflineWebResManager$2(zeq paramzeq, int paramInt) {}
+  public OfflineWebResManager$2(abbj paramabbj, int paramInt) {}
   
   public void run()
   {
     try
     {
       Thread.sleep(this.a * 1000);
-      if (!zeq.jdField_a_of_type_Boolean)
+      if (!abbj.jdField_a_of_type_Boolean)
       {
-        zeq.c();
-        if (!zeq.b)
+        abbj.c();
+        if (!abbj.b)
         {
-          this.this$0.jdField_a_of_type_Awgf.a(OfflineWebRes.class.getSimpleName());
+          this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.drop(OfflineWebRes.class.getSimpleName());
           return;
         }
       }
@@ -33,19 +33,19 @@ public class OfflineWebResManager$2
       {
         localException.printStackTrace();
       }
-      zeq.jdField_a_of_type_Boolean = this.this$0.jdField_a_of_type_Awgf.d(OfflineWebRes.class.getSimpleName());
+      abbj.jdField_a_of_type_Boolean = this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.tabbleIsExist(OfflineWebRes.class.getSimpleName());
       Object localObject;
-      if (!zeq.jdField_a_of_type_Boolean)
+      if (!abbj.jdField_a_of_type_Boolean)
       {
         localObject = new OfflineWebRes();
         ((OfflineWebRes)localObject).fileName = "test";
         ((OfflineWebRes)localObject).hashName = "test";
         ((OfflineWebRes)localObject).md5 = "test_md5";
-        this.this$0.jdField_a_of_type_Awgf.a((awge)localObject);
+        this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persist((Entity)localObject);
       }
-      while (!zeq.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
+      while (!abbj.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
       {
-        localObject = (String)zeq.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+        localObject = (String)abbj.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
         this.this$0.b((String)localObject);
       }
       this.this$0.a();
@@ -55,7 +55,7 @@ public class OfflineWebResManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflineWebResManager.2
  * JD-Core Version:    0.7.0.1
  */

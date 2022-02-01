@@ -1,22 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class xbn
-  implements betp
+public class xbn
+  extends wla
 {
-  xbn(xbk paramxbk) {}
+  public int b;
   
-  public void a(betn parambetn)
+  public xbn(qqstory_service.RspWatchVideo paramRspWatchVideo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambetn);
-    }
+    super(paramRspWatchVideo.result);
+    this.b = paramRspWatchVideo.unread_count.get();
   }
   
-  public void a(betn parambetn, int paramInt1, int paramInt2) {}
+  public String toString()
+  {
+    return "WatchVideoResponse{unReadCount=" + this.b + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xbn
  * JD-Core Version:    0.7.0.1
  */

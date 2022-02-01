@@ -1,8 +1,6 @@
 public abstract interface bkle
 {
-  public abstract void a(String paramString, long paramLong, float paramFloat);
-  
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt);
+  public abstract void onScrollStateChanged(int paramInt);
 }
 
 

@@ -1,38 +1,29 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
 
 public class adyn
-  implements CompoundButton.OnCheckedChangeListener
+  extends aywi
 {
-  public adyn(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public adyn(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = 1;
-    if (paramBoolean)
+    if (paramBoolean1)
     {
-      this.a.app.d(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
+      int i = ContactSyncJumpActivity.a(this.a).d();
+      if ((i == 1) || (i == 5))
+      {
+        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
+        this.a.finish();
       }
-    }
-    for (;;)
-    {
-      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
-      return;
-      this.a.app.d(0);
-      break;
-      label68:
-      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adyn
  * JD-Core Version:    0.7.0.1
  */

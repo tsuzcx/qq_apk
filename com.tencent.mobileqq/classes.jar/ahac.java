@@ -1,26 +1,17 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.QQBlurView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahac
-  implements View.OnAttachStateChangeListener
+  extends ahbl
 {
-  ahac(ahab paramahab) {}
-  
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
+  ahac(agwz paramagwz)
   {
-    if (ahab.a(this.a) != null) {
-      ahab.a(this.a).d();
-    }
-    if (ahab.a(this.a) != null)
-    {
-      ahab.a(this.a).c();
-      ahab.a(this.a, null);
-    }
-    ahab.a(this.a).removeOnAttachStateChangeListener(this);
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahmk(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, agwz.a(this.a));
   }
 }
 

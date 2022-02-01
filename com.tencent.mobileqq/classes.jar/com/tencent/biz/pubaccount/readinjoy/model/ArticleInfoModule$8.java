@@ -1,151 +1,108 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import ors;
-import oxb;
-import pew;
+import pha;
+import pve;
+import pwb;
+import qqk;
 
 public class ArticleInfoModule$8
   implements Runnable
 {
-  public ArticleInfoModule$8(pew parampew, boolean paramBoolean1, List paramList1, List paramList2, int paramInt, boolean paramBoolean2) {}
+  public ArticleInfoModule$8(pwb parampwb, long paramLong1, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, List paramList1, boolean paramBoolean2, long paramLong2, List paramList2, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    boolean bool3 = false;
+    boolean bool1;
+    Object localObject;
+    if (this.jdField_a_of_type_Long == -1L)
     {
-      if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() != 1) || (this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.isEmpty())) {
-        if (QLog.isColorLevel()) {
-          QLog.e("ArticleInfoModule", 2, "###onGetVideoRealtimeReplaceList: reqArticleList  szie != 1 or articleInfoList is empty.");
+      bool1 = true;
+      this.this$0.a(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ArrayOfByte);
+      this.this$0.c(this.jdField_a_of_type_Int);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label705;
+      }
+      localObject = (ConcurrentHashMap)pwb.b(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
+      if (localObject != null) {
+        break label817;
+      }
+      localObject = new ConcurrentHashMap();
+    }
+    label817:
+    for (;;)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("\n");
+      if (this.jdField_a_of_type_JavaUtilList != null)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        int i = 0;
+        label119:
+        if (localIterator.hasNext())
+        {
+          ArticleInfo localArticleInfo = (ArticleInfo)localIterator.next();
+          localStringBuilder.append("article【" + i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + pha.d(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " rowkey : " + localArticleInfo.innerUniqueID + ", mFeedType : " + localArticleInfo.mFeedType + " feeedCookie : " + localArticleInfo.mFeedCookie + ", mFeedID : " + localArticleInfo.mFeedId + " algorithmID : " + localArticleInfo.mAlgorithmID + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName + " commentShareUrl : " + localArticleInfo.commentShareUrl);
+          SocializeFeedsInfo localSocializeFeedsInfo;
+          if (localArticleInfo.mSocialFeedInfo != null)
+          {
+            localSocializeFeedsInfo = localArticleInfo.mSocialFeedInfo;
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder.append(" " + localSocializeFeedsInfo);
+              localStringBuilder.append("\n");
+            }
+          }
+          for (;;)
+          {
+            if ((pha.o(localArticleInfo)) && (!((ConcurrentHashMap)localObject).containsKey(Long.valueOf(localArticleInfo.mRecommendSeq)))) {
+              ((ConcurrentHashMap)localObject).put(Long.valueOf(localArticleInfo.mRecommendSeq), Boolean.valueOf(false));
+            }
+            i += 1;
+            break label119;
+            bool1 = false;
+            break;
+            localStringBuilder.append("SocialFeedInfo: mFeedId: " + localSocializeFeedsInfo.jdField_a_of_type_Long + " mFeedStatus: " + localSocializeFeedsInfo.k + " mFollowStatus: " + localSocializeFeedsInfo.h);
+            localStringBuilder.append("\n");
+            continue;
+            localStringBuilder.append("\n");
+          }
+        }
+        if (((ConcurrentHashMap)localObject).size() > 0) {
+          pwb.b(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
         }
       }
-      long l2;
-      Object localObject1;
-      do
+      localObject = new StringBuilder().append("handleRefreshChannel success=").append(this.jdField_a_of_type_Boolean).append(" channelId=").append(this.jdField_a_of_type_Int).append(" noMoreData=").append(this.jdField_b_of_type_Boolean).append(" beginRecommendSeq=").append(this.jdField_a_of_type_Long).append(" endRecommendSeq=").append(this.jdField_b_of_type_Long).append(" isInMsgTab : ");
+      boolean bool2 = bool3;
+      if (this.this$0.a != null)
       {
-        StringBuilder localStringBuilder;
-        Object localObject2;
-        long l1;
-        Object localObject3;
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              l2 = ((Long)this.jdField_a_of_type_JavaUtilList.get(0)).longValue();
-              localStringBuilder = new StringBuilder("\n");
-              localObject1 = this.jdField_b_of_type_JavaUtilList.iterator();
-              i = 0;
-              if (((Iterator)localObject1).hasNext())
-              {
-                localObject2 = (ArticleInfo)((Iterator)localObject1).next();
-                localStringBuilder.append("实时替换 article【" + i + "】 id : " + ((ArticleInfo)localObject2).mArticleID + " seq : " + ((ArticleInfo)localObject2).mRecommendSeq + " title : " + ors.c(((ArticleInfo)localObject2).mTitle) + " , groupID : " + ((ArticleInfo)localObject2).mGroupId + " algorithmID : " + ((ArticleInfo)localObject2).mAlgorithmID + " strategyId : " + ((ArticleInfo)localObject2).mStrategyId + " feedType: " + ((ArticleInfo)localObject2).mFeedType);
-                if (QLog.isColorLevel()) {
-                  if (((ArticleInfo)localObject2).mSocialFeedInfo != null)
-                  {
-                    localStringBuilder.append(" " + ((ArticleInfo)localObject2).mSocialFeedInfo);
-                    localStringBuilder.append("\n");
-                  }
-                }
-                for (;;)
-                {
-                  i += 1;
-                  break;
-                  localStringBuilder.append("\n");
-                  continue;
-                  localStringBuilder.append("\n");
-                }
-              }
-              QLog.i("ArticleInfoModule", 1, "###onGetVideoRealtimeReplaceList success=" + this.jdField_a_of_type_Boolean + " channelId=" + this.jdField_a_of_type_Int + ", reqArticleID: " + l2 + localStringBuilder.toString());
-              localObject1 = this.this$0.a(Integer.valueOf(this.jdField_a_of_type_Int));
-              if (localObject1 != null) {
-                break;
-              }
-            } while (!QLog.isColorLevel());
-            QLog.i("ArticleInfoModule", 1, "###onGetVideoRealtimeReplaceList fail, for currentSeqList is null, channelId=" + this.jdField_a_of_type_Int);
-            return;
-            localObject2 = ((List)localObject1).iterator();
-            l1 = -1L;
-            while (((Iterator)localObject2).hasNext())
-            {
-              localObject3 = (Long)((Iterator)localObject2).next();
-              ArticleInfo localArticleInfo = this.this$0.a(Integer.valueOf(this.jdField_a_of_type_Int), (Long)localObject3);
-              if (l2 == localArticleInfo.mArticleID)
-              {
-                l1 = ((Long)localObject3).longValue();
-                QLog.i("ArticleInfoModule", 1, "###onGetVideoRealtimeReplaceList find the original article seq：" + localObject3 + ", reqArticleID: " + l2 + ", title : " + ors.c(localArticleInfo.mTitle));
-              }
-            }
-          } while (l1 == -1L);
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder.setLength(0);
-            localStringBuilder.append("current seq list >>").append("\n");
-            i = 0;
-            while (i < ((List)localObject1).size())
-            {
-              localObject2 = this.this$0.a(Integer.valueOf(this.jdField_a_of_type_Int), (Long)((List)localObject1).get(i));
-              localStringBuilder.append("article [" + i + "] seq : " + ((List)localObject1).get(i) + ", id : " + ((ArticleInfo)localObject2).mArticleID + " title : " + ors.c(((ArticleInfo)localObject2).mTitle));
-              localStringBuilder.append("\n");
-              i += 1;
-            }
-            QLog.d("ArticleInfoModule", 2, localStringBuilder.toString());
-          }
-          localObject2 = (ConcurrentHashMap)pew.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
-        } while (localObject2 == null);
-        int k = ((List)localObject1).size();
-        int j = this.jdField_b_of_type_JavaUtilList.size();
-        int i = 0;
-        boolean bool;
-        while (i < k)
-        {
-          long l3 = ((Long)((List)localObject1).get(i)).longValue();
-          if (((0xFFFFFF00 & l1) == (0xFFFFFF00 & l3)) && (l3 >= l1))
-          {
-            localObject3 = this.this$0.a(Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l3));
-            ((ArticleInfo)localObject3).mRecommendSeq = (j + l3);
-            ((ConcurrentHashMap)localObject2).remove(Long.valueOf(l3));
-            bool = this.this$0.a(Long.valueOf(((ArticleInfo)localObject3).mArticleID));
-            pew.a(this.this$0, Integer.valueOf(this.jdField_a_of_type_Int), (ArticleInfo)localObject3, true, bool);
-          }
-          i += 1;
+        bool2 = bool3;
+        if ((this.this$0.a instanceof QQAppInterface)) {
+          bool2 = true;
         }
-        i = j - 1;
-        while (i >= 0)
-        {
-          localObject1 = (ArticleInfo)this.jdField_b_of_type_JavaUtilList.get(i);
-          ((ArticleInfo)localObject1).mRecommendSeq = (j + l1 - 1L - i);
-          bool = this.this$0.a(Long.valueOf(((ArticleInfo)localObject1).mArticleID));
-          pew.a(this.this$0, Integer.valueOf(this.jdField_a_of_type_Int), (ArticleInfo)localObject1, true, bool);
-          i -= 1;
-        }
-        localObject1 = this.this$0.a(Integer.valueOf(this.jdField_a_of_type_Int));
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder.setLength(0);
-          localStringBuilder.append("new seq list >>").append("\n");
-          i = 0;
-          while (i < ((List)localObject1).size())
-          {
-            localObject2 = this.this$0.a(Integer.valueOf(this.jdField_a_of_type_Int), (Long)((List)localObject1).get(i));
-            localStringBuilder.append("article [" + i + "] seq : " + ((List)localObject1).get(i) + ", id : " + ((ArticleInfo)localObject2).mArticleID + " title : " + ors.c(((ArticleInfo)localObject2).mTitle));
-            localStringBuilder.append("\n");
-            i += 1;
-          }
-          QLog.d("ArticleInfoModule", 2, localStringBuilder.toString());
-        }
-      } while (!this.jdField_b_of_type_Boolean);
-      oxb.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, l2, (List)localObject1, this.jdField_b_of_type_JavaUtilList);
+      }
+      QLog.i("ArticleInfoModule", 1, bool2 + " isRefresh : " + bool1 + ", " + localStringBuilder.toString());
+      pve.a(this.jdField_a_of_type_JavaUtilList);
+      label705:
+      qqk.a().a(this.jdField_a_of_type_JavaUtilList);
+      this.this$0.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+      if (bool1)
+      {
+        pwb.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
+        pwb.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
+        return;
+      }
+      pwb.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
       return;
     }
-    QLog.e("ArticleInfoModule", 1, "###onGetVideoRealtimeReplaceList failure");
   }
 }
 

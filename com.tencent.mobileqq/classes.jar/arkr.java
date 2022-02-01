@@ -1,249 +1,292 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.litetransfersdk.ReportItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import appoint.define.appoint_define.AppointID;
+import appoint.define.appoint_define.DateComment;
+import appoint.define.appoint_define.Elem;
+import appoint.define.appoint_define.Face;
+import appoint.define.appoint_define.ReplyInfo;
+import appoint.define.appoint_define.RichText;
+import appoint.define.appoint_define.StrangerInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.notColumn;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arkr
-  extends BroadcastReceiver
+public class arkr
 {
-  arkr(arkq paramarkq) {}
+  public int a;
+  public long a;
+  public arkv a;
+  public String a;
+  public arkv b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  @notColumn
+  public String f;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static arkr a(appoint_define.DateComment paramDateComment)
   {
-    paramContext = this.a.jdField_a_of_type_Arhz.a();
-    if (paramIntent == null) {}
-    Object localObject;
-    label420:
-    label452:
-    label505:
+    if ((paramDateComment == null) || (TextUtils.isEmpty(paramDateComment.str_comment_id.get()))) {
+      return null;
+    }
+    arkr localarkr = new arkr();
+    localarkr.jdField_a_of_type_JavaLangString = paramDateComment.str_comment_id.get();
+    localarkr.jdField_b_of_type_JavaLangString = arkw.a((appoint_define.AppointID)paramDateComment.msg_appoint_id.get());
+    localarkr.jdField_a_of_type_Long = paramDateComment.uint32_time.get();
+    appoint_define.RichText localRichText;
+    int i;
+    if (paramDateComment.msg_content.has())
+    {
+      localRichText = (appoint_define.RichText)paramDateComment.msg_content.get();
+      localarkr.c = a(localRichText);
+      localarkr.jdField_a_of_type_Arkv = arkv.a((appoint_define.StrangerInfo)paramDateComment.msg_publisher_info.get());
+      if (!paramDateComment.uint32_flag.has()) {
+        break label220;
+      }
+      i = paramDateComment.uint32_flag.get();
+      label131:
+      localarkr.jdField_a_of_type_Int = i;
+      if (!paramDateComment.msg_reply_info.has()) {
+        break label225;
+      }
+    }
+    label220:
+    label225:
+    for (paramDateComment = (appoint_define.ReplyInfo)paramDateComment.msg_reply_info.get();; paramDateComment = null)
+    {
+      if (paramDateComment != null)
+      {
+        localarkr.d = paramDateComment.str_comment_id.get();
+        localarkr.jdField_b_of_type_Arkv = arkv.a((appoint_define.StrangerInfo)paramDateComment.msg_stranger_info.get());
+      }
+      localarkr.f = arkw.a(localarkr.jdField_a_of_type_Long, true);
+      localarkr.e = arkw.a(localarkr.jdField_a_of_type_Long, false);
+      return localarkr;
+      localRichText = null;
+      break;
+      i = 0;
+      break label131;
+    }
+  }
+  
+  public static arkr a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return null;
+    }
+    arkr localarkr = new arkr();
+    try
+    {
+      localarkr.jdField_a_of_type_JavaLangString = paramJSONObject.getString("commentId");
+      localarkr.jdField_b_of_type_JavaLangString = paramJSONObject.getString("datingId");
+      localarkr.c = paramJSONObject.getString("content");
+      localarkr.jdField_a_of_type_Long = paramJSONObject.getLong("time");
+      localarkr.jdField_a_of_type_Arkv = arkv.a(paramJSONObject.getJSONObject("puber"));
+      localarkr.jdField_a_of_type_Int = paramJSONObject.getInt("flag");
+    }
+    catch (JSONException localJSONException1)
+    {
+      try
+      {
+        for (;;)
+        {
+          localarkr.d = paramJSONObject.getString("replyId");
+          try
+          {
+            localarkr.jdField_b_of_type_Arkv = arkv.a(paramJSONObject.getJSONObject("replyer"));
+            return localarkr;
+          }
+          catch (JSONException paramJSONObject)
+          {
+            paramJSONObject.printStackTrace();
+            return localarkr;
+          }
+          localJSONException1 = localJSONException1;
+          localJSONException1.printStackTrace();
+        }
+      }
+      catch (JSONException localJSONException2)
+      {
+        for (;;)
+        {
+          localJSONException2.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public static String a(appoint_define.RichText paramRichText)
+  {
+    if (paramRichText == null) {
+      return "";
+    }
+    if (paramRichText.rpt_msg_elems.has()) {}
+    for (paramRichText = paramRichText.rpt_msg_elems.get(); (paramRichText == null) || (paramRichText.isEmpty()); paramRichText = null) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = paramRichText.iterator();
+    label135:
+    label187:
+    label190:
+    label192:
+    label195:
+    while (localIterator.hasNext())
+    {
+      appoint_define.Elem localElem = (appoint_define.Elem)localIterator.next();
+      if (localElem != null)
+      {
+        if (localElem.str_content.has())
+        {
+          paramRichText = localElem.str_content.get();
+          label106:
+          localStringBuilder.append(paramRichText);
+          if (!localElem.msg_face_info.has()) {
+            break label187;
+          }
+          paramRichText = (appoint_define.Face)localElem.msg_face_info.get();
+          if (paramRichText == null) {
+            break label190;
+          }
+          if (!paramRichText.uint32_index.has()) {
+            break label192;
+          }
+        }
+        for (int i = paramRichText.uint32_index.get();; i = -1)
+        {
+          if (i < 0) {
+            break label195;
+          }
+          localStringBuilder.append('\024');
+          localStringBuilder.append((char)arvq.b(i));
+          break;
+          paramRichText = "";
+          break label106;
+          paramRichText = null;
+          break label135;
+          break;
+        }
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(List<arkr> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return "";
+    }
+    JSONArray localJSONArray = new JSONArray();
+    paramList = paramList.iterator();
+    int i = 0;
+    if (paramList.hasNext())
+    {
+      JSONObject localJSONObject = a((arkr)paramList.next());
+      if (localJSONObject == null) {
+        break label83;
+      }
+      localJSONArray.put(localJSONObject);
+      i += 1;
+    }
+    label83:
+    for (;;)
+    {
+      if (i >= 20) {
+        return localJSONArray.toString();
+      }
+      break;
+    }
+  }
+  
+  public static JSONObject a(arkr paramarkr)
+  {
+    if (paramarkr == null) {
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("commentId", paramarkr.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("datingId", paramarkr.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("content", paramarkr.c);
+      localJSONObject.put("time", paramarkr.jdField_a_of_type_Long);
+      localJSONObject.put("replyId", paramarkr.d);
+      localJSONObject.put("puber", arkv.a(paramarkr.jdField_a_of_type_Arkv));
+      localJSONObject.put("replyer", arkv.a(paramarkr.jdField_b_of_type_Arkv));
+      localJSONObject.put("flag", paramarkr.jdField_a_of_type_Int);
+      return localJSONObject;
+    }
+    catch (JSONException paramarkr)
+    {
+      paramarkr.printStackTrace();
+    }
+    return localJSONObject;
+  }
+  
+  public static void a(List<arkr> paramList, String paramString)
+  {
+    if ((paramList == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString = new JSONArray(paramString);
+        int j = paramString.length();
+        int i = 0;
+        while (i < j)
+        {
+          arkr localarkr = a(paramString.getJSONObject(i));
+          if (localarkr != null) {
+            paramList.add(localarkr);
+          }
+          i += 1;
+        }
+        return;
+      }
+      catch (JSONException paramList)
+      {
+        paramList.printStackTrace();
+      }
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
     do
     {
       do
       {
-        boolean bool;
-        int i;
-        do
-        {
-          long l1;
-          do
-          {
-            do
-            {
-              for (;;)
-              {
-                return;
-                localObject = paramIntent.getAction();
-                if (localObject != null)
-                {
-                  if (!((String)localObject).equals("com.dataline.mpfile.download_progress")) {
-                    break;
-                  }
-                  if (paramIntent.getLongExtra("token_task_id", 0L) == paramContext.uniseq)
-                  {
-                    l1 = paramIntent.getLongExtra("token_current_size", 0L);
-                    l2 = paramIntent.getLongExtra("token_total_size", 0L);
-                    paramContext.status = 2;
-                    if (l2 != 0L) {}
-                    for (paramContext.fProgress = ((float)l1 / (float)l2); this.a.jdField_a_of_type_Arko != null; paramContext.fProgress = 1.0F)
-                    {
-                      this.a.jdField_a_of_type_Arko.a(paramContext.fProgress);
-                      return;
-                    }
-                  }
-                }
-              }
-              if (!((String)localObject).equals("com.dataline.mpfile.download_completed")) {
-                break;
-              }
-              l1 = paramIntent.getLongExtra("token_task_id", 0L);
-            } while (l1 != paramContext.uniseq);
-            arkq.a(this.a, NetConnInfoCenter.getServerTimeMillis());
-            long l2 = paramIntent.getLongExtra("token_current_size", 0L);
-            bool = paramIntent.getBooleanExtra("token_is_success", false);
-            j = paramIntent.getIntExtra("token_http_code", 0);
-            QLog.d("MPcFileModel<FileAssistant>", 2, "BROADCAST_MPFILE_DOWNLOAD_COMPLETED , currentSize:" + l2 + ",isSucceed:" + bool + ",http_code:" + j);
-            paramIntent = new ReportItem();
-            paramIntent.uSessionID = l1;
-            paramIntent.uChannelType = 6;
-            paramIntent.bSend = false;
-            paramIntent.uNotifyTime = arkq.a(this.a);
-            paramIntent.uFileSize = l2;
-            paramIntent.bFileExist = false;
-            paramIntent.uStartPos = 0L;
-            paramIntent.uTaskStart = arkq.a(this.a);
-            paramIntent.uTaskEnd = arkq.b(this.a);
-            paramIntent.uDuration = (arkq.b(this.a) - arkq.a(this.a));
-            paramIntent.bUserRetry = false;
-            paramIntent.sSuffix = "";
-            if (bool)
-            {
-              i = 2;
-              paramIntent.emResult = i;
-              paramIntent.nFailCode = 0;
-              paramIntent.nUserCode = j;
-              localObject = ((alqo)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a().a();
-              if (localObject == null) {
-                break label631;
-              }
-              paramIntent.dwServerIP = dk.a(((biuo)localObject).jdField_a_of_type_JavaLangString);
-              paramIntent.wServerPort = ((short)((biuo)localObject).jdField_a_of_type_Int);
-              paramIntent.dwClientIP = dk.a(dk.a());
-              localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-              if (paramContext.peerDin != 0L) {
-                break label644;
-              }
-              i = eu.b;
-              eu.a((QQAppInterface)localObject, paramIntent, i);
-              if (bool) {
-                break label737;
-              }
-              paramContext.status = 3;
-              if ((j != 2) && (j != 3) && (j != 4) && (j != 5) && (j != 8)) {
-                break label651;
-              }
-              arri.a(2131694507);
-              if (this.a.jdField_a_of_type_Arko != null) {
-                this.a.jdField_a_of_type_Arko.g();
-              }
-            }
-            for (;;)
-            {
-              ((alqo)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a().a(paramContext.strDataLineMPFileID);
-              if (arkq.b(this.a)) {
-                break label841;
-              }
-              paramContext.mContext = "needMPFileC2C";
-              QLog.d("MPcFileModel<FileAssistant>", 2, "mConnPCSuc:" + arkq.b(this.a) + ",create mEntity.mContext");
-              return;
-              if (arkq.a(this.a))
-              {
-                i = 32;
-                break;
-              }
-              i = 41;
-              break;
-              paramIntent.dwServerIP = 0;
-              paramIntent.wServerPort = 0;
-              break label420;
-              i = eu.d;
-              break label452;
-              if (j == 1)
-              {
-                arri.a(2131694505);
-                break label505;
-              }
-              if (j == 1004)
-              {
-                arri.a(2131694506);
-                break label505;
-              }
-              if (j == 11)
-              {
-                QLog.d("MPcFileModel<FileAssistant>", 2, "cancel file download!");
-                break label505;
-              }
-              if (j == 12)
-              {
-                QLog.d("MPcFileModel<FileAssistant>", 2, "cancel file predownload!");
-                break label505;
-              }
-              arkq.a(this.a, j + 2100);
-              break label505;
-              paramContext.status = 1;
-              paramIntent = ((alqo)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a().b();
-              if (paramIntent == null) {
-                if (QLog.isColorLevel()) {
-                  QLog.d("MPcFileModel<FileAssistant>", 2, "doDownload , plugin service not started");
-                }
-              }
-              for (;;)
-              {
-                if (this.a.jdField_a_of_type_Arko == null) {
-                  break label839;
-                }
-                this.a.jdField_a_of_type_Arko.f();
-                break;
-                paramContext.setFilePath(String.format("%s/%s", new Object[] { paramIntent, paramContext.fileName }));
-                paramContext.setCloudType(3);
-              }
-            }
-            QLog.d("MPcFileModel<FileAssistant>", 2, "mConnPCSuc:" + arkq.b(this.a) + "mEntity.mContext = null");
-            paramContext.mContext = null;
-            return;
-            if (!bium.d.equalsIgnoreCase((String)localObject)) {
-              break;
-            }
-            paramContext = paramIntent.getExtras();
-            l1 = paramIntent.getLongExtra(bium.f, 0L);
-            i = paramContext.getInt(bium.e);
-            j = paramContext.getInt("result");
-            if ((i == 0) && (j == 0)) {
-              arkq.a(this.a, true);
-            }
-            QLog.d("MPcFileModel<FileAssistant>[MPFile]", 1, "mainReceiver MPFILE_ACTION_HOST_INFO_UPDATE,ret:" + i);
-          } while (arkq.c(this.a) != l1);
-          if (i != 0) {
-            break;
-          }
-          i = paramContext.getInt("result");
-          paramIntent = paramContext.getByteArray("bytes_json");
-          int j = paramContext.getInt("power");
-          arkq.b(this.a, j);
-          bool = paramContext.getBoolean("inputPwdError", false);
-          switch (i)
-          {
-          default: 
-            QLog.d("MPcFileModel<FileAssistant>", 1, "andorid 6.3.0 accept valid C2C response:" + i);
-            return;
-          case 0: 
-            this.a.r();
-            return;
-          case 1: 
-          case 2: 
-          case 3: 
-          case 4: 
-            arkq.a(this.a, i + 2000);
-          }
-        } while (this.a.jdField_a_of_type_Arhw == null);
-        this.a.jdField_a_of_type_Arhw.a(false);
-        return;
-        this.a.a(paramIntent, bool);
-        return;
-        this.a.a(paramIntent);
-        return;
-        this.a.s();
-        return;
-        this.a.t();
-        return;
-        if (i == 1013)
-        {
-          arri.a(2131694492);
-          return;
+        return false;
+        if (paramObject == this) {
+          return true;
         }
-        if (i == 1014)
-        {
-          arri.a(2131694534);
-          return;
-        }
-        arkq.a(this.a, i);
-      } while (this.a.jdField_a_of_type_Arhw == null);
-      this.a.jdField_a_of_type_Arhw.a(false);
-      return;
-    } while (!bium.g.equalsIgnoreCase((String)localObject));
-    label631:
-    arkq.a(this.a, false);
-    label644:
-    label651:
-    label737:
-    QLog.d("MPcFileModel<FileAssistant>[MPFile]", 1, "channelReceiver MPFILE_ACTION_CHANNEL_DISCONNECT!");
-    label839:
-    label841:
-    arri.a(2131694506);
+      } while (paramObject.getClass() != getClass());
+      paramObject = (arkr)paramObject;
+    } while (((this.jdField_a_of_type_JavaLangString != null) || (paramObject.jdField_a_of_type_JavaLangString != null)) && ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString))));
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return "".hashCode();
+    }
+    return this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_b_of_type_JavaLangString).append(",").append(this.c).append(",").append(this.jdField_a_of_type_Long).append(",").append(this.d).append(",").append(this.jdField_a_of_type_Arkv).append(",").append(this.jdField_b_of_type_Arkv).append(",").append(this.jdField_a_of_type_Int).append(",").append("]");
+    return localStringBuilder.toString();
   }
 }
 

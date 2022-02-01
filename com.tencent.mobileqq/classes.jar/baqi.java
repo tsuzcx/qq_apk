@@ -1,22 +1,6 @@
-class baqi
-  implements baqj
+public abstract interface baqi
 {
-  baqi(baqh parambaqh, baqk parambaqk) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Baqk.a.d();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Baqk.a.c();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Baqk.a.f();
-  }
+  public abstract void a(int paramInt);
 }
 
 

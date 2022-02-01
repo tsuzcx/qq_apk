@@ -1,81 +1,208 @@
-import android.content.Context;
-import android.util.Xml;
-import java.io.StringWriter;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.apache.http.Header;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.message.BasicNameValuePair;
-import org.xmlpull.v1.XmlSerializer;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-abstract class ldd
-  extends lcw
+class ldd
+  extends anqd
 {
-  private static String a(List<String> paramList, String paramString)
+  ldd(ldb paramldb) {}
+  
+  protected void a(String paramString)
   {
-    XmlSerializer localXmlSerializer;
-    StringWriter localStringWriter;
+    if (QLog.isColorLevel()) {
+      QLog.i(ldb.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError.bengin 同意添加好友失败 :" + paramString);
+    }
+    long l2 = bdgm.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString)) {}
     try
     {
-      localXmlSerializer = Xml.newSerializer();
-      localStringWriter = new StringWriter();
-      localXmlSerializer.setOutput(localStringWriter);
-      localXmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
-      localXmlSerializer.startTag("", "TranslateArrayRequest");
-      localXmlSerializer.startTag("", "AppId");
-      localXmlSerializer.endTag("", "AppId");
-      localXmlSerializer.startTag("", "Texts");
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      l1 = Long.parseLong(paramString);
+      if (bdgm.a().a(Long.valueOf(l1)) != null)
       {
-        String str = (String)paramList.next();
-        localXmlSerializer.startTag("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "string");
-        localXmlSerializer.text(str);
-        localXmlSerializer.endTag("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "string");
+        super.a(paramString);
+        return;
       }
-      localXmlSerializer.endTag("", "Texts");
     }
-    catch (Exception paramList)
+    catch (Exception localException)
     {
-      paramList.printStackTrace();
-      return null;
+      for (;;)
+      {
+        localException.printStackTrace();
+        l1 = l2;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i(ldb.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError structMsg = null");
+        }
+      }
     }
-    localXmlSerializer.startTag("", "To");
-    localXmlSerializer.text(paramString);
-    localXmlSerializer.endTag("", "To");
-    localXmlSerializer.endTag("", "TranslateArrayRequest");
-    localXmlSerializer.endDocument();
-    paramList = localStringWriter.toString();
-    return paramList;
   }
   
-  public static void a(Context paramContext, Header[] paramArrayOfHeader, List<String> paramList, String paramString, lcl paramlcl)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
   {
-    paramList = new StringEntity(a(paramList, paramString), "UTF-8");
-    a().a(paramContext, "http://api.microsofttranslator.com/V2/Http.svc/TranslateArray", paramArrayOfHeader, paramList, "application/xml", paramlcl);
+    if (QLog.isColorLevel()) {
+      QLog.i(ldb.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin 同意加对方好友回调 issuc" + paramBoolean + ",logStr=" + paramString1 + ";actionType=" + paramInt1 + ";msgDetail=" + paramString2 + ";resultCode=" + paramInt2 + ";respType=" + paramInt3 + ";msgFail=" + paramString3 + ";msgInvalidDecided=" + paramString4 + ";remarkRet=" + paramInt4);
+    }
+    long l2 = bdgm.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
+    {
+      l1 = Long.parseLong(paramString1);
+      structmsg.StructMsg localStructMsg = bdgm.a().a(Long.valueOf(l1));
+      if (localStructMsg != null)
+      {
+        l1 = localStructMsg.req_uin.get();
+        if (QLog.isColorLevel()) {
+          QLog.i(ldb.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin 同意加对方好友回调  uin=" + String.valueOf(l1));
+        }
+        super.a(paramBoolean, paramString1, paramInt1, paramString2, paramInt2, paramInt3, paramString3, paramString4, paramInt4);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        l1 = l2;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i(ldb.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin structMsg = null");
+        }
+      }
+    }
   }
   
-  public static void a(Context paramContext, Header[] paramArrayOfHeader, Map<String, String> paramMap, lcn paramlcn)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    ArrayList localArrayList = new ArrayList(4);
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      localArrayList.add(new BasicNameValuePair((String)localEntry.getKey(), (String)localEntry.getValue()));
+    if (QLog.isColorLevel()) {
+      QLog.i(ldb.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError.bengin, isSuccess=" + paramBoolean + ", uin" + paramString);
     }
-    paramMap = new UrlEncodedFormEntity(localArrayList);
-    a().a(paramContext, "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13", paramArrayOfHeader, paramMap, "application/x-www-form-urlencoded", paramlcn);
+    super.a(paramBoolean, paramString, paramLong);
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(ldb.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin.bengin");
+    }
+    if (paramBoolean1) {
+      if (QLog.isColorLevel()) {
+        QLog.i(ldb.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin.success");
+      }
+    }
+    for (;;)
+    {
+      Object localObject;
+      int i;
+      try
+      {
+        new ArrayList();
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(anhk.M, 0);
+        if (QLog.isColorLevel()) {
+          QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin mDataList size=" + ((List)localObject).size());
+        }
+        i = ((List)localObject).size() - 1;
+        if (i >= 0)
+        {
+          MessageForSystemMsg localMessageForSystemMsg = (MessageForSystemMsg)((List)localObject).get(i);
+          if (localMessageForSystemMsg == null) {
+            return;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "msg_type=" + localMessageForSystemMsg.structMsg.msg_type.get() + ", source id" + localMessageForSystemMsg.structMsg.msg.src_id.get() + "senderuin" + localMessageForSystemMsg.senderuin);
+            QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin " + localMessageForSystemMsg.senderuin + " 请求加好友");
+          }
+          if ((localMessageForSystemMsg.structMsg.msg.src_id.get() == 3023) || (localMessageForSystemMsg.structMsg.msg.src_id.get() == 2023) || (localMessageForSystemMsg.structMsg.msg.src_id.get() == 3025) || (localMessageForSystemMsg.structMsg.msg.src_id.get() == 2025)) {
+            break label358;
+          }
+          if (!QLog.isColorLevel()) {
+            break label659;
+          }
+          QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "no av talk src id");
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      label358:
+      int j;
+      for (;;)
+      {
+        super.a(paramBoolean1, paramBoolean2, paramList);
+        return;
+        if (localException.structMsg.msg_type.get() != 1) {
+          break label716;
+        }
+        String str = localException.senderuin;
+        j = localException.structMsg.msg.sub_type.get();
+        if (!QLog.isColorLevel()) {
+          break label660;
+        }
+        QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "systemMsg subType : " + j);
+        break label660;
+        if (this.a.a(str) == 4)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "already fiend :" + str);
+          return;
+        }
+        if (this.a.a(str) == 1)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(ldb.jdField_a_of_type_JavaLangString, 2, "recv add friend request when had send request, accept it automatically :" + str);
+          }
+          this.a.c(str);
+          return;
+        }
+        if (!this.a.jdField_a_of_type_JavaUtilHashMap.containsKey(str))
+        {
+          localObject = new lde(this.a);
+          this.a.jdField_a_of_type_JavaUtilHashMap.put(str, localObject);
+        }
+        ldb.a(this.a, str, 2);
+        this.a.a(localException.senderuin);
+        return;
+        if (this.a.a(str) != 2) {
+          break;
+        }
+        ldb.a(this.a, str, 0);
+        this.a.a(localException.senderuin);
+        return;
+        if ((paramBoolean2) && (QLog.isColorLevel())) {
+          QLog.e(ldb.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin bTimeout");
+        }
+      }
+      label659:
+      return;
+      label660:
+      switch (j)
+      {
+      }
+      label716:
+      i -= 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ldd
  * JD-Core Version:    0.7.0.1
  */

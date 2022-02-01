@@ -250,41 +250,12 @@ public abstract class AppRuntime
     return MobileQQ.sMobileQQ;
   }
   
-  /* Error */
   public int getBatteryCapacity()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
-    //   6: ifnull +15 -> 21
-    //   9: aload_0
-    //   10: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
-    //   13: invokevirtual 394	mqq/app/AppRuntime:getBatteryCapacity	()I
-    //   16: istore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: iload_1
-    //   20: ireturn
-    //   21: aload_0
-    //   22: getfield 396	mqq/app/AppRuntime:batteryCapacity	I
-    //   25: istore_1
-    //   26: goto -9 -> 17
-    //   29: astore_2
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_2
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	this	AppRuntime
-    //   16	10	1	i	int
-    //   29	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	29	finally
-    //   21	26	29	finally
+    if (this.parentRuntime != null) {
+      return this.parentRuntime.getBatteryCapacity();
+    }
+    return this.batteryCapacity;
   }
   
   public Intent getDevLockIntent()
@@ -295,41 +266,12 @@ public abstract class AppRuntime
     return this.mDevLockIntent;
   }
   
-  /* Error */
   public long getExtOnlineStatus()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
-    //   6: ifnull +15 -> 21
-    //   9: aload_0
-    //   10: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
-    //   13: invokevirtual 406	mqq/app/AppRuntime:getExtOnlineStatus	()J
-    //   16: lstore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: lload_1
-    //   20: lreturn
-    //   21: aload_0
-    //   22: getfield 108	mqq/app/AppRuntime:uExtOnlineStatus	J
-    //   25: lstore_1
-    //   26: goto -9 -> 17
-    //   29: astore_3
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_3
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	this	AppRuntime
-    //   16	10	1	l	long
-    //   29	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	29	finally
-    //   21	26	29	finally
+    if (this.parentRuntime != null) {
+      return this.parentRuntime.getExtOnlineStatus();
+    }
+    return this.uExtOnlineStatus;
   }
   
   public Intent getKickIntent()
@@ -434,41 +376,12 @@ public abstract class AppRuntime
     return this.onlineStatus;
   }
   
-  /* Error */
   public int getPowerConnect()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
-    //   6: ifnull +15 -> 21
-    //   9: aload_0
-    //   10: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
-    //   13: invokevirtual 462	mqq/app/AppRuntime:getPowerConnect	()I
-    //   16: istore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: iload_1
-    //   20: ireturn
-    //   21: aload_0
-    //   22: getfield 110	mqq/app/AppRuntime:powerConnect	I
-    //   25: istore_1
-    //   26: goto -9 -> 17
-    //   29: astore_2
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_2
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	this	AppRuntime
-    //   16	10	1	i	int
-    //   29	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	29	finally
-    //   21	26	29	finally
+    if (this.parentRuntime != null) {
+      return this.parentRuntime.getPowerConnect();
+    }
+    return this.powerConnect;
   }
   
   public final SharedPreferences getPreferences()
@@ -650,6 +563,18 @@ public abstract class AppRuntime
     localNewIntent.setObserver(paramAccountObserver);
     localNewIntent.putExtra("account", paramString);
     localNewIntent.putExtra("password", paramArrayOfByte);
+    localNewIntent.putExtra("action", 1001);
+    getServletContainer().forward(this, localNewIntent);
+  }
+  
+  public void login(String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, AccountObserver paramAccountObserver)
+  {
+    getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
+    NewIntent localNewIntent = new NewIntent(getApplication(), BuiltInServlet.class);
+    localNewIntent.setObserver(paramAccountObserver);
+    localNewIntent.putExtra("account", paramString);
+    localNewIntent.putExtra("password", paramArrayOfByte1);
+    localNewIntent.putExtra("resp_register_supersig", paramArrayOfByte2);
     localNewIntent.putExtra("action", 1001);
     getServletContainer().forward(this, localNewIntent);
   }
@@ -983,15 +908,10 @@ public abstract class AppRuntime
   
   public void setBatteryCapacity(int paramInt)
   {
-    try
-    {
-      if (this.parentRuntime != null) {
-        this.parentRuntime.setBatteryCapacity(paramInt);
-      }
-      this.batteryCapacity = paramInt;
-      return;
+    if (this.parentRuntime != null) {
+      this.parentRuntime.setBatteryCapacity(paramInt);
     }
-    finally {}
+    this.batteryCapacity = paramInt;
   }
   
   public void setCmdCallbacker()
@@ -1019,15 +939,10 @@ public abstract class AppRuntime
   
   public void setExtOnlineStatus(long paramLong)
   {
-    try
-    {
-      if (this.parentRuntime != null) {
-        this.parentRuntime.setExtOnlineStatus(paramLong);
-      }
-      this.uExtOnlineStatus = paramLong;
-      return;
+    if (this.parentRuntime != null) {
+      this.parentRuntime.setExtOnlineStatus(paramLong);
     }
-    finally {}
+    this.uExtOnlineStatus = paramLong;
   }
   
   public void setInterceptKickListener(AppRuntime.InterceptKickListener paramInterceptKickListener)
@@ -1066,15 +981,10 @@ public abstract class AppRuntime
   
   public void setPowerConnect(int paramInt)
   {
-    try
-    {
-      if (this.parentRuntime != null) {
-        this.parentRuntime.setPowerConnect(paramInt);
-      }
-      this.powerConnect = paramInt;
-      return;
+    if (this.parentRuntime != null) {
+      this.parentRuntime.setPowerConnect(paramInt);
     }
-    finally {}
+    this.powerConnect = paramInt;
   }
   
   public void setProxy(AppRuntime paramAppRuntime)
@@ -1089,6 +999,11 @@ public abstract class AppRuntime
   
   public void ssoGetA1WithA1(String paramString, byte[] paramArrayOfByte1, long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, SSOAccountObserver paramSSOAccountObserver)
   {
+    ssoGetA1WithA1(paramString, paramArrayOfByte1, paramLong1, paramLong2, paramLong3, paramArrayOfByte2, paramArrayOfByte3, paramSSOAccountObserver, null);
+  }
+  
+  public void ssoGetA1WithA1(String paramString, byte[] paramArrayOfByte1, long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, SSOAccountObserver paramSSOAccountObserver, Bundle paramBundle)
+  {
     getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
     NewIntent localNewIntent = new NewIntent(getApplication(), BuiltInServlet.class);
     localNewIntent.setObserver(paramSSOAccountObserver);
@@ -1100,10 +1015,20 @@ public abstract class AppRuntime
     localNewIntent.putExtra("dstAppVer", paramArrayOfByte2);
     localNewIntent.putExtra("dstAppSign", paramArrayOfByte3);
     localNewIntent.putExtra("action", 1102);
+    if (paramBundle != null)
+    {
+      localNewIntent.putExtra("process", getApplication().getQQProcessName());
+      localNewIntent.putExtra("extra", paramBundle);
+    }
     getServletContainer().forward(this, localNewIntent);
   }
   
   public void ssoGetTicketNoPasswd(String paramString, int paramInt, SSOAccountObserver paramSSOAccountObserver)
+  {
+    ssoGetTicketNoPasswd(paramString, paramInt, paramSSOAccountObserver, null);
+  }
+  
+  public void ssoGetTicketNoPasswd(String paramString, int paramInt, SSOAccountObserver paramSSOAccountObserver, Bundle paramBundle)
   {
     getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
     NewIntent localNewIntent = new NewIntent(getApplication(), BuiltInServlet.class);
@@ -1113,10 +1038,18 @@ public abstract class AppRuntime
     localNewIntent.putExtra("action", 1101);
     localNewIntent.putExtra("targetTicket", paramInt);
     localNewIntent.putExtra("from_where", "ssoAccountAction");
+    if (paramBundle != null) {
+      localNewIntent.putExtra("extra", paramBundle);
+    }
     getServletContainer().forward(this, localNewIntent);
   }
   
   public void ssoLogin(String paramString1, String paramString2, int paramInt, SSOAccountObserver paramSSOAccountObserver)
+  {
+    ssoLogin(paramString1, paramString2, paramInt, paramSSOAccountObserver, null);
+  }
+  
+  public void ssoLogin(String paramString1, String paramString2, int paramInt, SSOAccountObserver paramSSOAccountObserver, Bundle paramBundle)
   {
     getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
     NewIntent localNewIntent = new NewIntent(getApplication(), BuiltInServlet.class);
@@ -1126,6 +1059,9 @@ public abstract class AppRuntime
     localNewIntent.putExtra("ssoPassword", paramString2);
     localNewIntent.putExtra("action", 1100);
     localNewIntent.putExtra("targetTicket", paramInt);
+    if (paramBundle != null) {
+      localNewIntent.putExtra("extra", paramBundle);
+    }
     getServletContainer().forward(this, localNewIntent);
   }
   
@@ -1278,21 +1214,6 @@ public abstract class AppRuntime
       return;
     }
     this.observers.remove(new WeakReference(paramBusinessObserver));
-  }
-  
-  public void updateBatteryStatus(int paramInt1, int paramInt2)
-  {
-    NewIntent localNewIntent = new NewIntent(getApplication(), BuiltInServlet.class);
-    localNewIntent.putExtra("action", 2214);
-    localNewIntent.putExtra("batteryCapacity", paramInt1);
-    localNewIntent.putExtra("powerConnect", paramInt2);
-    localNewIntent.runNow = true;
-    startServlet(localNewIntent);
-    setBatteryCapacity(paramInt1);
-    setPowerConnect(paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("mqq", 2, new Object[] { "updateBatteryStatus ", Integer.valueOf(paramInt1), " powerStatus:", Integer.valueOf(paramInt2) });
-    }
   }
   
   public void updateSubAccountLogin(String paramString, boolean paramBoolean)

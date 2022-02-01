@@ -1,10 +1,16 @@
 package com.tencent.ttpic.util;
 
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.util.Log;
 import android.util.Pair;
+import android.view.MotionEvent;
 import com.tencent.aekit.openrender.util.GlUtil;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.facedetect.FaceStatus;
@@ -20,6 +26,8 @@ import java.util.Random;
 
 public class AlgoUtils
 {
+  private static final String TAG = "AlgoUtils";
+  private static int mAverageHistogram = -1;
   private static final Random mRandom = new Random(System.currentTimeMillis());
   
   public static native void RGBA2YUV420SP(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2);
@@ -383,6 +391,46 @@ public class AlgoUtils
     return GlUtil.ORIGIN_TEX_COORDS;
   }
   
+  public static void calcTransformMatrix(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat)
+  {
+    float f1 = (float)Math.cos(paramArrayOfFloat1[0]);
+    float f2 = (float)Math.sin(paramArrayOfFloat1[0]);
+    float f3 = (float)Math.cos(paramArrayOfFloat1[1]);
+    float f4 = (float)Math.sin(paramArrayOfFloat1[1]);
+    float f5 = (float)Math.cos(-paramArrayOfFloat1[2]);
+    float f6 = (float)Math.sin(-paramArrayOfFloat1[2]);
+    paramArrayOfFloat2[0] = (f3 * f5 + f2 * f4 * f6);
+    paramArrayOfFloat2[1] = (f1 * f6);
+    paramArrayOfFloat2[2] = (f3 * f2 * f6 - f5 * f4);
+    paramArrayOfFloat2[3] = 0.0F;
+    paramArrayOfFloat2[4] = (f5 * f2 * f4 - f3 * f6);
+    paramArrayOfFloat2[5] = (f1 * f5);
+    paramArrayOfFloat2[6] = (f5 * f3 * f2 + f6 * f4);
+    paramArrayOfFloat2[7] = 0.0F;
+    paramArrayOfFloat2[8] = (f4 * f1);
+    paramArrayOfFloat2[9] = (-f2);
+    paramArrayOfFloat2[10] = (f1 * f3);
+    paramArrayOfFloat2[11] = 0.0F;
+    paramArrayOfFloat2[12] = paramArrayOfFloat1[4];
+    paramArrayOfFloat2[13] = paramArrayOfFloat1[5];
+    paramArrayOfFloat2[14] = 0.0F;
+    paramArrayOfFloat2[15] = 1.0F;
+    int i = 0;
+    while (i < 15)
+    {
+      paramArrayOfFloat2[i] *= paramArrayOfFloat1[3];
+      i += 1;
+    }
+    paramArrayOfFloat2[0] /= paramFloat;
+    paramArrayOfFloat2[4] /= paramFloat;
+    paramArrayOfFloat2[8] /= paramFloat;
+    paramArrayOfFloat2[12] /= paramFloat;
+    paramArrayOfFloat2[1] /= paramFloat;
+    paramArrayOfFloat2[5] /= paramFloat;
+    paramArrayOfFloat2[9] /= paramFloat;
+    paramArrayOfFloat2[13] /= paramFloat;
+  }
+  
   private static double createBrightnessCurve(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
     double d1 = 0.0D;
@@ -506,9 +554,66 @@ public class AlgoUtils
     return (float)Math.sqrt((f3 - f1) * ((f3 - paramFloat) * f3) * (f3 - f2)) * 2.0F / paramFloat;
   }
   
+  public static float[] double2FloatArray(double[] paramArrayOfDouble)
+  {
+    float[] arrayOfFloat = new float[paramArrayOfDouble.length];
+    int i = 0;
+    while (i < paramArrayOfDouble.length)
+    {
+      arrayOfFloat[i] = ((float)paramArrayOfDouble[i]);
+      i += 1;
+    }
+    return arrayOfFloat;
+  }
+  
   public static PointF genVector(PointF paramPointF1, PointF paramPointF2)
   {
     return new PointF(paramPointF2.x - paramPointF1.x, paramPointF2.y - paramPointF1.y);
+  }
+  
+  public static int getAverageHistogram(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    int j = 0;
+    int m;
+    for (int k = 0; k < paramInt1; k = m)
+    {
+      int n = j;
+      m = 0;
+      j = i;
+      i = n;
+      while (m < paramInt2)
+      {
+        int i2 = (m * paramInt1 + k) * 4;
+        int i1 = i;
+        n = j;
+        if (i2 >= 0)
+        {
+          i1 = i;
+          n = j;
+          if (i2 + 2 < paramArrayOfByte.length)
+          {
+            n = paramArrayOfByte[i2];
+            i1 = paramArrayOfByte[(i2 + 1)];
+            i2 = paramArrayOfByte[(i2 + 2)];
+            double d = n & 0xFF;
+            n = j + (int)((i1 & 0xFF) * 0.587D + d * 0.299D + (i2 & 0xFF) * 0.114D);
+            i1 = i + 1;
+          }
+        }
+        m += 20;
+        i = i1;
+        j = n;
+      }
+      m = k + 20;
+      k = j;
+      j = i;
+      i = k;
+    }
+    paramInt1 = i / j;
+    Log.d("AlgoUtils", "getAverageHistogram:result:" + paramInt1);
+    mAverageHistogram = paramInt1;
+    return paramInt1;
   }
   
   public static PointF getBetweenPoint(PointF paramPointF1, PointF paramPointF2, float paramFloat)
@@ -517,6 +622,36 @@ public class AlgoUtils
       return new PointF();
     }
     return new PointF(paramPointF1.x * (1.0F - paramFloat) + paramPointF2.x * paramFloat, paramPointF1.y * (1.0F - paramFloat) + paramPointF2.y * paramFloat);
+  }
+  
+  public static int getBitmapHistogram(String paramString)
+  {
+    paramString = BitmapUtils.decodeBitmap(paramString, true);
+    int n = paramString.getWidth();
+    int i1 = paramString.getHeight();
+    int j = 0;
+    int k = 0;
+    int i = 0;
+    while (i < i1)
+    {
+      int m = 0;
+      while (m < n)
+      {
+        int i4 = paramString.getPixel(m, i);
+        int i2 = Color.red(i4);
+        int i3 = Color.green(i4);
+        i4 = Color.blue(i4);
+        double d1 = i2;
+        double d2 = i3;
+        k += (int)(i4 * 0.114D + (d2 * 0.587D + d1 * 0.299D));
+        j += 1;
+        m += 20;
+      }
+      i += 20;
+    }
+    i = k / j;
+    mAverageHistogram = i;
+    return i;
   }
   
   public static PointF getCrossPoint(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4)
@@ -909,6 +1044,11 @@ public class AlgoUtils
     return null;
   }
   
+  public static int getmAverageHistogram()
+  {
+    return mAverageHistogram;
+  }
+  
   public static boolean isFace3DPointsValid(float[] paramArrayOfFloat)
   {
     if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length < 9)) {}
@@ -1098,6 +1238,25 @@ public class AlgoUtils
     }
     arrayOfFloat[1] = ((i - j) / (2.0F - arrayOfFloat[2] * 2.0F) / 255.0F);
     return arrayOfFloat;
+  }
+  
+  public static Point rotate(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int j;
+    int i;
+    if (paramInt3 != 90)
+    {
+      j = paramInt1;
+      i = paramInt2;
+      if (paramInt3 != 270) {}
+    }
+    else
+    {
+      paramInt1 += paramInt2;
+      i = paramInt1 - paramInt2;
+      j = paramInt1 - i;
+    }
+    return new Point(j, i);
   }
   
   public static List<float[]> rotateAngles(List<float[]> paramList, int paramInt)
@@ -1435,6 +1594,17 @@ public class AlgoUtils
     return paramArrayOfInt1;
   }
   
+  public static double spacing(MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getPointerCount() == 2)
+    {
+      float f1 = paramMotionEvent.getX(0) - paramMotionEvent.getX(1);
+      float f2 = paramMotionEvent.getY(0) - paramMotionEvent.getY(1);
+      return Math.sqrt(f1 * f1 + f2 * f2);
+    }
+    return 0.0D;
+  }
+  
   public static List<Float> substract(List<Float> paramList, float[] paramArrayOfFloat)
   {
     ArrayList localArrayList = new ArrayList();
@@ -1452,7 +1622,7 @@ public class AlgoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.AlgoUtils
  * JD-Core Version:    0.7.0.1
  */

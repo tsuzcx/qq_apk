@@ -1,35 +1,36 @@
-import android.app.Activity;
-import android.content.Context;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yhq
-  extends yfg
+  extends QQUIEventReceiver<StoryMessageListActivity, wwx>
 {
-  protected WeakReference<Context> a;
-  
-  public yhq(Context paramContext, int paramInt)
+  public yhq(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    super(paramContext, paramInt);
-    this.a = new WeakReference(paramContext);
+    super(paramStoryMessageListActivity);
   }
   
-  public boolean a()
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull wwx paramwwx)
   {
-    Context localContext = (Context)this.a.get();
-    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
-  }
-  
-  public void show()
-  {
-    if (a()) {
-      return;
+    if (paramwwx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramwwx.jdField_a_of_type_JavaUtilList);
+      }
+      paramStoryMessageListActivity.g();
     }
-    super.show();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wwx.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yhq
  * JD-Core Version:    0.7.0.1
  */

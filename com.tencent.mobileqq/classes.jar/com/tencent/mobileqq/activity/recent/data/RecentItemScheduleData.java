@@ -5,7 +5,7 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class RecentItemScheduleData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public long time;
   
@@ -41,7 +41,7 @@ public class RecentItemScheduleData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemScheduleData
  * JD-Core Version:    0.7.0.1
  */

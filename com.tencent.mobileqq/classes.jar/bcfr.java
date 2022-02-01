@@ -1,21 +1,11 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import java.util.ArrayList;
 
-public class bcfr
-  extends bcfe
+public abstract class bcfr
+  implements bcfq
 {
-  public bcfr(View paramView)
-  {
-    super(paramView);
-  }
+  public void a(int paramInt, ArrayList<bcfj> paramArrayList) {}
   
-  protected void a()
-  {
-    this.a.setVisibility(4);
-    this.c.setVisibility(0);
-    this.b.setVisibility(4);
-  }
+  public void b(int paramInt, bcfj parambcfj) {}
 }
 
 

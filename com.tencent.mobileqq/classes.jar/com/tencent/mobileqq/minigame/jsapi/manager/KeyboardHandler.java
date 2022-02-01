@@ -5,7 +5,7 @@ import android.text.Editable;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import com.tencent.mobileqq.minigame.api.ApiUtil;
+import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.minigame.jsapi.callbacks.PluginResultCallback;
 import com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout;
 import com.tencent.mobileqq.minigame.utils.GameLog;
@@ -107,7 +107,7 @@ public class KeyboardHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.manager.KeyboardHandler
  * JD-Core Version:    0.7.0.1
  */

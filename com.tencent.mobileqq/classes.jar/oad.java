@@ -1,53 +1,37 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class oad
-  implements CompoundButton.OnCheckedChangeListener
+class oad
+  extends BroadcastReceiver
 {
-  public oad(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  oad(nzz paramnzz) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int j = 1;
-    int i;
-    if (paramBoolean) {
-      i = 0;
-    }
-    for (;;)
+    if (this.a.a == 2)
     {
-      syz.a(i);
-      paramCompoundButton = new JSONObject();
-      if (paramBoolean) {
-        i = j;
-      }
-      try
-      {
-        for (;;)
-        {
-          paramCompoundButton.put("click_opt", i);
-          nrt.a(null, "", "0X800A80B", "0X800A80B", 0, 0, "", "", "", paramCompoundButton.toString(), false);
-          return;
-          i = 1;
-          break;
-          i = 2;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
+      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
+      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
+      this.a.a(null, 0, 14, i, paramIntent);
+    }
+    try
+    {
+      paramContext.unregisterReceiver(this.a.b);
+      label50:
+      this.a.b = null;
+      this.a.a = 0;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label50;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oad
  * JD-Core Version:    0.7.0.1
  */

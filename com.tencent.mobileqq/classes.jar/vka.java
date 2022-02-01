@@ -1,22 +1,25 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
 
-class vka
-  extends vim
+public class vka
+  implements View.OnLongClickListener
 {
-  vka(vji paramvji, StoryVideoItem paramStoryVideoItem, vkr paramvkr)
-  {
-    super(paramStoryVideoItem);
-  }
+  public vka(QCircleContentImage paramQCircleContentImage) {}
   
-  public boolean b()
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_Vkr.e = ((String)a("result"));
-    return true;
+    paramView = ((Activity)paramView.getContext()).findViewById(2131369286);
+    if (paramView != null) {
+      paramView.callOnClick();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vka
  * JD-Core Version:    0.7.0.1
  */

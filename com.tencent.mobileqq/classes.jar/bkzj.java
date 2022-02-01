@@ -1,22 +1,50 @@
-import android.widget.DatePicker;
-import android.widget.EditText;
-import dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.buscard.BuscardPluginInstallActivity;
 
 public class bkzj
-  implements bkzi
+  implements OnPluginInstallListener
 {
-  public bkzj(WatermarkEditView paramWatermarkEditView) {}
+  public bkzj(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
   
-  public void a()
+  public IBinder asBinder()
   {
-    WatermarkEditView.a(this.a).setVisibility(8);
+    return null;
   }
   
-  public void a(int paramInt, String paramString, EditText paramEditText)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    paramString = paramString.split("-");
-    WatermarkEditView.a(this.a).init(Integer.parseInt(paramString[0]), Integer.parseInt(paramString[1]) - 1, Integer.parseInt(paramString[2]), WatermarkEditView.a(this.a));
-    WatermarkEditView.a(this.a).setVisibility(0);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("BuscardPluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
+    }
+    QQToast.a(this.a.getApplicationContext(), 2131694345, 0);
+    BuscardPluginInstallActivity.a(this.a, false);
+    this.a.finish();
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    BuscardPluginInstallActivity.a(this.a).append(" ==step8: onInstallFinish, cost=" + (l - this.a.a));
+    if (QLog.isDevelopLevel()) {
+      QLog.i("BuscardPluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
+    }
+    boolean bool = BuscardPluginInstallActivity.a(this.a).isPlugininstalled("BuscardPlugin.apk");
+    BuscardPluginInstallActivity.a(this.a).append(" ==step9: onInstallFinish, isPlugininstalled cost=" + (System.currentTimeMillis() - l));
+    if (bool)
+    {
+      BuscardPluginInstallActivity.a(this.a);
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 2131694345, 0);
+    BuscardPluginInstallActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 

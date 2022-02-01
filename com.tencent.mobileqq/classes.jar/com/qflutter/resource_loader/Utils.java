@@ -36,7 +36,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.qflutter.resource_loader.Utils
  * JD-Core Version:    0.7.0.1
  */

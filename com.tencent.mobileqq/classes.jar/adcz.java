@@ -1,21 +1,13 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.5;
 
 public class adcz
-  implements View.OnClickListener
+  implements adcb
 {
-  public adcz(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public adcz(MemoryDumpHelper.5 param5) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = new Intent();
-    paramView.putExtra("set_display_type", 1);
-    PublicFragmentActivity.a(this.a.getActivity(), paramView, QQSettingChatOperationFragment.class);
-    azqs.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
+    adcw.c(this.a.this$0);
   }
 }
 

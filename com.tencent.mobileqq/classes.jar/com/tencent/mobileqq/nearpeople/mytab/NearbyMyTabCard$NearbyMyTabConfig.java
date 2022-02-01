@@ -16,7 +16,7 @@ public class NearbyMyTabCard$NearbyMyTabConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard.NearbyMyTabConfig
  * JD-Core Version:    0.7.0.1
  */

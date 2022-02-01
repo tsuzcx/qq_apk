@@ -1,30 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
+import android.animation.ValueAnimator;
 
-class yzm
-  implements Animation.AnimationListener
+public abstract interface yzm
 {
-  yzm(yzj paramyzj) {}
+  public abstract void a(ValueAnimator paramValueAnimator);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (yzj.a(this.a) != null) {
-      yzj.a(this.a).setVisibility(4);
-    }
-    if (yzj.a(this.a) != null) {
-      yzj.a(this.a).setAlpha(1.0F);
-    }
-  }
+  public abstract void b(ValueAnimator paramValueAnimator);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void c(ValueAnimator paramValueAnimator);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void d(ValueAnimator paramValueAnimator);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yzm
  * JD-Core Version:    0.7.0.1
  */

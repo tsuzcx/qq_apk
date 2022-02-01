@@ -1,92 +1,29 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aoup
-  extends aouf<QQLevelIconConfig>
+  extends aouc
 {
-  public static QQLevelIconConfig c()
-  {
-    QQLevelIconConfig localQQLevelIconConfig2 = (QQLevelIconConfig)aoks.a().a(542);
-    QQLevelIconConfig localQQLevelIconConfig1 = localQQLevelIconConfig2;
-    if (localQQLevelIconConfig2 == null) {
-      localQQLevelIconConfig1 = new QQLevelIconConfig();
-    }
-    return localQQLevelIconConfig1;
-  }
+  public String b;
+  public String c;
   
-  public int a()
+  public aoup(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3)
   {
-    return 542;
-  }
-  
-  @NonNull
-  public QQLevelIconConfig a()
-  {
-    return new QQLevelIconConfig();
-  }
-  
-  @NonNull
-  public QQLevelIconConfig a(aoko[] paramArrayOfaoko)
-  {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLevelIconProcessor", 1, paramArrayOfaoko[0].a);
-    }
-    QQLevelIconConfig localQQLevelIconConfig = new QQLevelIconConfig();
-    paramArrayOfaoko = paramArrayOfaoko[0].a;
-    for (;;)
+    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    if (!TextUtils.isEmpty(paramString2))
     {
-      try
-      {
-        if (!TextUtils.isEmpty(paramArrayOfaoko))
-        {
-          paramArrayOfaoko = new JSONObject(paramArrayOfaoko);
-          if (paramArrayOfaoko.optInt("newguideswitch", 1) != 1) {
-            continue;
-          }
-          bool1 = true;
-          localQQLevelIconConfig.mIsEnableGuide = bool1;
-          bool1 = bool2;
-          if (paramArrayOfaoko.optInt("rushfeeswitch", 1) == 1) {
-            bool1 = true;
-          }
-          localQQLevelIconConfig.mIsNotifyPayment = bool1;
-          localQQLevelIconConfig.mNotifyPaymentText = paramArrayOfaoko.optString("rushfeetips", localQQLevelIconConfig.mNotifyPaymentText);
-          localQQLevelIconConfig.mExpiredNotifyPaymentText = paramArrayOfaoko.optString("expiredtips", localQQLevelIconConfig.mExpiredNotifyPaymentText);
-        }
+      paramString1 = paramString2.split("\\|");
+      if (paramString1.length > 0) {
+        this.b = paramString1[0];
       }
-      catch (JSONException paramArrayOfaoko)
-      {
-        boolean bool1;
-        wxe.e("QQLevelIconProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfaoko.getMessage());
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLevelIconProcessor", 1, " : " + localQQLevelIconConfig.toString());
-      }
-      return localQQLevelIconConfig;
-      bool1 = false;
     }
-  }
-  
-  public Class<QQLevelIconConfig> a()
-  {
-    return QQLevelIconConfig.class;
-  }
-  
-  @NonNull
-  public QQLevelIconConfig b()
-  {
-    return new QQLevelIconConfig();
+    this.c = paramString3;
+    QLog.d("GreetingCardResourceInfo", 2, String.format("GreetingCardResourceInfo mLuaScriptPath=%s mResourceDirPath=%s", new Object[] { this.b, this.c }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoup
  * JD-Core Version:    0.7.0.1
  */

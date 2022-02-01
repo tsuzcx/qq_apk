@@ -1,122 +1,150 @@
-import android.text.TextUtils;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class augs
-  implements augj
 {
-  public static String a;
+  private Dialog a;
   
-  static
+  public static void a(Activity paramActivity, Intent paramIntent)
   {
-    jdField_a_of_type_JavaLangString = "MsgBackup_MsgBackupMultiMsgProcessor";
+    if ((paramActivity == null) || (paramActivity.isFinishing())) {
+      QLog.e("ForwardDialogMgr", 1, "-->showMultShareDialog: (null == activity) || activity.isFinishing()");
+    }
+    String str;
+    QQAppInterface localQQAppInterface;
+    int i;
+    augt localaugt;
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramIntent.getBooleanExtra("sdk_mult_share", false));
+      aukw.b("KEY_STAGE_2_TOTAL");
+      paramIntent.removeExtra("sdk_mult_share");
+      str = Integer.toString(paramIntent.getIntExtra("sdk_mult_share_total_count", 0));
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (paramIntent.getBooleanExtra("sdk_mult_share_for_local", false))
+      {
+        QLog.d("ForwardDialogMgr", 1, "showMultShareDialog SDK_MULT_SHARE_FOR_LOCAL");
+        i = BaseApplication.getContext().getResources().getDimensionPixelSize(2131298998);
+        QQToast.a(localQQAppInterface.getApp(), 2, 2131692396, 0).b(i);
+        ForwardUtils.a(localQQAppInterface, "0X800A738", new String[] { str });
+        return;
+      }
+      i = paramIntent.getIntExtra("sdk_mult_share_result_code", -1);
+      localaugt = new augt(paramIntent, i, paramActivity, localQQAppInterface);
+      QLog.d("ForwardDialogMgr", 1, new Object[] { "-->showMultShareDialog--RESULT_CODE=", Integer.valueOf(i), ", count=", str });
+      if (901503 == i)
+      {
+        ForwardUtils.a(localQQAppInterface, "0X800A739", new String[] { str });
+        a(paramActivity, paramIntent.getStringExtra("sdk_mult_share_error_wording"), localaugt);
+        return;
+      }
+      if (i == 0)
+      {
+        ForwardUtils.a(localQQAppInterface, "0X800A738", new String[] { str });
+        a(paramActivity, paramIntent, anni.a(2131717871), localaugt);
+        return;
+      }
+      if (2 == i)
+      {
+        ForwardUtils.a(localQQAppInterface, "0X800A739", new String[] { str });
+        a(paramActivity, paramIntent, anni.a(2131717870), localaugt);
+        return;
+      }
+      if (1 == i)
+      {
+        ArrayList localArrayList = paramIntent.getParcelableArrayListExtra("sdk_mult_share_fail_record");
+        ForwardUtils.a(localQQAppInterface, "0X800A73A", new String[] { str, Integer.toString(localArrayList.size()) });
+        a(paramActivity, paramIntent, localArrayList, localaugt);
+        return;
+      }
+    } while (3 != i);
+    ForwardUtils.a(localQQAppInterface, "0X800A739", new String[] { str });
+    a(paramActivity, paramIntent.getStringExtra("sdk_mult_share_error_wording"), localaugt);
   }
   
-  public augs(QQAppInterface paramQQAppInterface) {}
-  
-  public static String a(String paramString, MessageRecord paramMessageRecord)
+  private static void a(Activity paramActivity, Intent paramIntent, String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
-    String str = ((MessageForStructing)paramMessageRecord).structingMsg.mFileName;
-    paramMessageRecord = new JSONObject();
+    paramActivity = bglp.a(paramActivity, 232, null, paramString, aukj.a(paramIntent.getStringExtra("sdk_mult_share_app_name")), anni.a(2131717866), paramOnClickListener, paramOnClickListener);
     try
     {
-      paramMessageRecord.put("selfuin", paramString);
-      paramMessageRecord.put("uuid", str);
-      paramMessageRecord.put("msgType", 4);
-      paramMessageRecord.put("msgSubType", 10);
-      return paramMessageRecord.toString();
+      paramActivity.show();
+      return;
     }
-    catch (JSONException paramString)
+    catch (Throwable paramActivity)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      QLog.e("ForwardDialogMgr", 1, "-->showShareResultDialog: failed. ", paramActivity);
     }
   }
   
-  public static List<MessageRecord> a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  private static void a(Activity paramActivity, Intent paramIntent, List<ResultRecord> paramList, DialogInterface.OnClickListener paramOnClickListener)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll((Collection)paramHashMap.get((String)localIterator.next()));
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    bgqg localbgqg = new bgqg(paramActivity, 2131755823);
+    localbgqg.setContentView(2131559017);
+    localbgqg.a(localQQAppInterface, paramActivity, paramList, false);
+    localbgqg.c(String.format(paramActivity.getResources().getString(2131717867), new Object[] { Integer.valueOf(paramList.size()) }));
+    localbgqg.c();
+    localbgqg.setNegativeButton(aukj.a(paramIntent.getStringExtra("sdk_mult_share_app_name")), paramOnClickListener);
+    localbgqg.setPositiveButton(anni.a(2131717866), paramOnClickListener);
+    localbgqg.findViewById(2131378794).setVisibility(8);
+    localbgqg.show();
+  }
+  
+  public static void a(Activity paramActivity, String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    QLog.d("ForwardDialogMgr", 1, new Object[] { "showOtherErrorDialog errorMsg=", paramString });
+    if ((paramActivity == null) || (paramActivity.isFinishing()))
+    {
+      QLog.e("ForwardDialogMgr", 1, "showOtherErrorDialog null == activity || activity.isFinishing()");
+      return;
     }
-    return localArrayList;
+    paramActivity = bglp.a(paramActivity, 230);
+    paramActivity.setMessage(paramString);
+    paramActivity.setPositiveButton(2131694081, paramOnClickListener);
+    paramActivity.show();
   }
   
-  public static String b(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  void a(Activity paramActivity)
   {
-    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
-      try
-      {
-        paramMessageRecord = aujq.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
-        return paramMessageRecord;
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
+    b(paramActivity);
+    this.a = new ReportDialog(paramActivity, 2131755823);
+    this.a.setCancelable(false);
+    this.a.setContentView(2131559567);
+    paramActivity = anni.a(2131717868);
+    ((TextView)this.a.findViewById(2131372466)).setText(paramActivity);
+    this.a.show();
+  }
+  
+  void b(Activity paramActivity)
+  {
+    if ((!paramActivity.isFinishing()) && (this.a != null) && (this.a.isShowing()))
+    {
+      this.a.dismiss();
+      this.a = null;
     }
-    return "";
   }
-  
-  public augw a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    augw localaugw = new augw();
-    localaugw.jdField_a_of_type_JavaLangString = a(paramMessageRecord, paramMsgBackupResEntity);
-    localaugw.jdField_a_of_type_Boolean = true;
-    return localaugw;
-  }
-  
-  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
-      try
-      {
-        paramMessageRecord = aujq.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
-        return paramMessageRecord;
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
-    }
-    return "";
-  }
-  
-  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof ChatMessage)) {
-      return aupn.a((ChatMessage)paramMessageRecord);
-    }
-    return false;
-  }
-  
-  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    return paramMsgBackupResEntity.msgType == 4;
-  }
-  
-  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     augs
  * JD-Core Version:    0.7.0.1
  */

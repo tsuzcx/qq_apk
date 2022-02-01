@@ -14,6 +14,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.accessibility.AccessibilityEvent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.BitSet;
 
@@ -2262,6 +2263,7 @@ public class StaggeredGridLayoutManager
     this.mPendingScrollPosition = paramInt;
     this.mPendingScrollPositionOffset = -2147483648;
     requestLayout();
+    EventCollector.getInstance().onRecyclerViewScrollToPosition(this);
   }
   
   public void scrollToPositionWithOffset(int paramInt1, int paramInt2)
@@ -2272,6 +2274,7 @@ public class StaggeredGridLayoutManager
     this.mPendingScrollPosition = paramInt1;
     this.mPendingScrollPositionOffset = paramInt2;
     requestLayout();
+    EventCollector.getInstance().onRecyclerViewScrollToPositionWithOffset(this);
   }
   
   public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)

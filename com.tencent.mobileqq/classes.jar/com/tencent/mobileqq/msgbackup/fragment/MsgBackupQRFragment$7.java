@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import augd;
-import augo;
+import awng;
+import awnr;
 
 class MsgBackupQRFragment$7
   implements Runnable
@@ -10,12 +10,12 @@ class MsgBackupQRFragment$7
   
   public void run()
   {
-    augo.a().a().a(false);
+    awnr.a().a().a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment.7
  * JD-Core Version:    0.7.0.1
  */

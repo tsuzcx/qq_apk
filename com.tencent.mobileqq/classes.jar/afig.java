@@ -1,16 +1,29 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import mqq.os.MqqHandler;
 
-class afig
-  extends aeqi
+public class afig
+  extends anxg
 {
-  public LinearLayout a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public afig(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  afig(afif paramafif) {}
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a.sendEmptyMessage(1);
+      }
+    }
+    while ((paramInt1 != 2) || (paramInt2 != 0)) {
+      return;
+    }
+    awhv.a().b(paramString, this.a.app);
+    this.a.c();
+  }
+  
+  protected void b(String paramString)
+  {
+    this.a.c();
+  }
 }
 
 

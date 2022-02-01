@@ -1,33 +1,43 @@
-import java.util.LinkedHashMap;
+import android.text.TextUtils;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.Utils;
+import java.io.File;
+import java.io.OutputStream;
+import org.apache.http.Header;
 
 public class annb
+  extends bdsh
 {
-  public String a;
-  public LinkedHashMap<String, String> a;
-  public String b = "";
-  public String c = "1.0.0.1";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  
-  public annb()
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
+    {
+      paramOutputStream = (String)paramDownloadParams.tag;
+      paramDownloadParams = anhk.bl;
+      paramDownloadParams = new File(paramDownloadParams + Utils.Crc64String(paramOutputStream));
+      if (paramDownloadParams.exists()) {
+        return paramDownloadParams;
+      }
+      if (bhhh.a(new bhhf(paramOutputStream, paramDownloadParams), null) == 0) {
+        return paramDownloadParams;
+      }
+    }
+    return null;
   }
   
-  public boolean equals(Object paramObject)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if (!(paramObject instanceof annb)) {}
-    do
+    paramURLDrawableHandler = paramDownloadParams.getHeader("funnypic_type");
+    if (paramURLDrawableHandler != null)
     {
-      return false;
-      paramObject = (annb)paramObject;
-    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.b.equals(paramObject.b)) || (!this.h.equals(paramObject.h)) || (!this.jdField_a_of_type_JavaUtilLinkedHashMap.equals(paramObject.jdField_a_of_type_JavaUtilLinkedHashMap)));
-    return true;
+      paramURLDrawableHandler = paramURLDrawableHandler.getValue();
+      float f = paramDownloadParams.mGifRoundCorner;
+      if ((!TextUtils.isEmpty(paramURLDrawableHandler)) && (Integer.valueOf(paramURLDrawableHandler).intValue() == 2)) {
+        return new bgyl(paramFile, true, f, 3);
+      }
+    }
+    return null;
   }
 }
 

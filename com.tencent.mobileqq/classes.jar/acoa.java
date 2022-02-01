@@ -1,21 +1,18 @@
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+
 class acoa
-  extends aqru
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  acoa(acnu paramacnu) {}
+  acoa(acnw paramacnw, ViewGroup paramViewGroup, View paramView) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void onGlobalLayout()
   {
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.a.notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    acqy.a("GdtMotiveVideoDialog", "onGlobalLayout: l=" + this.jdField_a_of_type_AndroidViewViewGroup.getLeft() + ",t=" + this.jdField_a_of_type_AndroidViewViewGroup.getTop() + ",r=" + this.jdField_a_of_type_AndroidViewViewGroup.getRight() + ",b=" + this.jdField_a_of_type_AndroidViewViewGroup.getBottom());
+    acqy.a("GdtMotiveVideoDialog", "onGlobalLayout: " + this.jdField_a_of_type_AndroidViewView);
   }
 }
 

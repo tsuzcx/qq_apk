@@ -1,41 +1,28 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-class avok
-  implements bhuk
+public class avok
+  extends WebViewPlugin
 {
-  avok(avoj paramavoj, View paramView, PicInfo paramPicInfo, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    int i = paramInt;
-    if (this.jdField_a_of_type_Avoj.jdField_a_of_type_Int == 0) {
-      i = paramInt + 1;
-    }
-    switch (i)
+    if (("nvPopToRoot".equals(paramString3)) && (paramVarArgs.length > 0))
     {
+      paramJsBridgeListener = this.mRuntime.a();
+      paramString1 = new Intent(paramJsBridgeListener, SplashActivity.class);
+      paramString1.setFlags(67108864);
+      paramJsBridgeListener.startActivity(paramString1);
+      return false;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.e();
-      return;
-      this.jdField_a_of_type_Avoj.jdField_a_of_type_Avnl.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Avoj.jdField_a_of_type_Avnl.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView, 0);
-      avnl.a(this.jdField_a_of_type_Avoj.jdField_a_of_type_Avnl);
-      avnl.b(this.jdField_a_of_type_Avoj.jdField_a_of_type_Avnl);
-      continue;
-      paramView = zjc.a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Avoj.jdField_a_of_type_Avnl.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(this.jdField_a_of_type_Avoj.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Avoj.jdField_a_of_type_Avnl.jdField_a_of_type_JavaUtilArrayList);
-      continue;
-      avnl.a(this.jdField_a_of_type_Avoj.jdField_a_of_type_Avnl, this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo, this.jdField_a_of_type_AndroidViewView);
-    }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avok
  * JD-Core Version:    0.7.0.1
  */

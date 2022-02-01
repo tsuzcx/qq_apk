@@ -1,36 +1,22 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.widget.XListView;
+import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class ahia
-  implements aybr
+class ahia
+  implements VideoDrawable.OnAudioPlayOnceListener
 {
-  public ahia(SearchBaseFragment paramSearchBaseFragment) {}
+  ahia(ahhy paramahhy) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onFinish()
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.e("ShortVideoPTVItemBuilder", 2, "VideoDrawable.OnAudioPlayOnceListener.onFinish");
+    }
+    if ((ahhy.a() != null) && (ahhy.a().get() != null))
     {
-      return;
-      if ((this.a.e == 0) && (this.a.a != null))
-      {
-        int i = this.a.a.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof ahid)))
-          {
-            paramBitmap = (ahid)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
-          }
-          paramInt2 += 1;
-        }
-      }
+      ahhy.a(ahhy.a(this.a), (ChatMessage)ahhy.a().get());
+      ahhy.a(null);
     }
   }
 }

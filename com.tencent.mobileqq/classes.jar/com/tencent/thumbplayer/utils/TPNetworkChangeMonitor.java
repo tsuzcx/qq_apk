@@ -8,6 +8,9 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Proxy;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.text.TextUtils;
 import androidx.annotation.RequiresApi;
 import java.util.ArrayList;
@@ -35,6 +38,7 @@ public class TPNetworkChangeMonitor
   private static int mNetStatus = 0;
   private static int mobileNetSubType;
   private ArrayList<TPNetworkChangeMonitor.OnNetStatusChangeListener> mListeners = null;
+  private HandlerThread mNetworkChangeInformThread;
   
   static
   {
@@ -206,6 +210,11 @@ public class TPNetworkChangeMonitor
     return "4G";
   }
   
+  private static boolean isMainThread()
+  {
+    return Looper.getMainLooper() == Looper.myLooper();
+  }
+  
   public static boolean isMobileNetwork()
   {
     return mNetStatus == 3;
@@ -273,12 +282,12 @@ public class TPNetworkChangeMonitor
     }
   }
   
-  private void registerReceiver(Context paramContext)
+  private void registerReceiver(Context paramContext, Handler paramHandler)
   {
     if (paramContext != null) {}
     try
     {
-      paramContext.registerReceiver(this, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+      paramContext.registerReceiver(this, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"), null, paramHandler);
       return;
     }
     finally
@@ -404,9 +413,19 @@ public class TPNetworkChangeMonitor
   
   public void init(Context paramContext)
   {
-    TPCommonUtils.requireNotNull(paramContext, "context can not be null!");
-    registerReceiver(paramContext);
-    updateNetStatus(paramContext);
+    try
+    {
+      TPCommonUtils.requireNotNull(paramContext, "context can not be null!");
+      if (this.mNetworkChangeInformThread == null)
+      {
+        this.mNetworkChangeInformThread = new HandlerThread("TP_NetInform");
+        this.mNetworkChangeInformThread.start();
+      }
+      registerReceiver(paramContext, new Handler(this.mNetworkChangeInformThread.getLooper()));
+      updateNetStatus(paramContext);
+      return;
+    }
+    finally {}
   }
   
   public boolean isCurrentUnicomWap()
@@ -427,14 +446,34 @@ public class TPNetworkChangeMonitor
   @RequiresApi(api=3)
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    TPLogUtil.d("TPNetworkChangeMonitor", "onReceive broadcast action and update net status ...");
-    updateNetStatus(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder().append("onReceive broadcast action and update net status,onReceive broadcast in ");
+    if (isMainThread()) {}
+    for (paramIntent = "main";; paramIntent = "work")
+    {
+      TPLogUtil.d("TPNetworkChangeMonitor", paramIntent + " thread.");
+      updateNetStatus(paramContext);
+      return;
+    }
   }
   
   public void release(Context paramContext)
   {
-    TPCommonUtils.requireNotNull(paramContext, "context can not be null!");
-    unregisterReceiver(paramContext);
+    try
+    {
+      TPCommonUtils.requireNotNull(paramContext, "context can not be null!");
+      unregisterReceiver(paramContext);
+      if (this.mNetworkChangeInformThread != null)
+      {
+        this.mNetworkChangeInformThread.quit();
+        this.mNetworkChangeInformThread = null;
+      }
+      return;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
   }
   
   public void removeOnNetStatusChangeListener(TPNetworkChangeMonitor.OnNetStatusChangeListener paramOnNetStatusChangeListener)
@@ -457,7 +496,7 @@ public class TPNetworkChangeMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.TPNetworkChangeMonitor
  * JD-Core Version:    0.7.0.1
  */

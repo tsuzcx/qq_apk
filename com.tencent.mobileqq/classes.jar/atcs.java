@@ -1,18 +1,26 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
-
-public abstract interface atcs
+public class atcs
 {
-  public abstract void a(DownloaderTask paramDownloaderTask);
+  public int a;
+  public String a;
   
-  public abstract void b(DownloaderTask paramDownloaderTask);
+  public atcs(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract void c(DownloaderTask paramDownloaderTask);
+  public String a()
+  {
+    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.startsWith("[")) && (this.jdField_a_of_type_JavaLangString.endsWith("]"))) {
+      return this.jdField_a_of_type_JavaLangString.substring(1, this.jdField_a_of_type_JavaLangString.length() - 1);
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract void d(DownloaderTask paramDownloaderTask);
-  
-  public abstract void e(DownloaderTask paramDownloaderTask);
-  
-  public abstract void f(DownloaderTask paramDownloaderTask);
+  public String toString()
+  {
+    return "" + this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int;
+  }
 }
 
 

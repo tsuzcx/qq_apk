@@ -1,43 +1,27 @@
 package com.tencent.mobileqq.activity;
 
-import acrh;
-import android.os.Message;
-import bdne;
+import adyo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import wsl;
+import wsm;
 
 public class Conversation$1$4
   implements Runnable
 {
-  public Conversation$1$4(acrh paramacrh) {}
+  public Conversation$1$4(adyo paramadyo) {}
   
   public void run()
   {
-    long l = bdne.a(this.a.a.a.getApplication(), this.a.a.a.getCurrentAccountUin());
-    if (System.currentTimeMillis() - l >= 86400000L)
+    if (((wsm)this.a.a.a.getManager(252)).a)
     {
-      localUpgradeTIMWrapper = UpgradeTIMWrapper.a();
-      if (localUpgradeTIMWrapper != null)
-      {
-        localMessage = this.a.a.b.obtainMessage(1134045);
-        localMessage.obj = localUpgradeTIMWrapper;
-        this.a.a.a(new Conversation.1.4.1(this, localMessage));
-      }
+      ((wsl)this.a.a.a.getManager(251)).a();
+      this.a.a.a(new Conversation.1.4.1(this));
     }
-    while (!QLog.isColorLevel())
-    {
-      UpgradeTIMWrapper localUpgradeTIMWrapper;
-      Message localMessage;
-      return;
-    }
-    QLog.e("UpgradeTIMWrapper", 2, "Conversation onReceiveShowTIMUpgradeTips smaller than 24 hours");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.1.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,15 @@
-import java.io.File;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class azlw
+public abstract interface azlw
+  extends azlx
 {
-  public float a;
-  public int a;
-  public long a = -1L;
-  public File a;
-  public boolean a;
-  public int b;
-  public long b = -1L;
-  public boolean b;
-  public int c = 1;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public int f = -1;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  public abstract azlv a(int paramInt);
+  
+  public abstract void a(azlv paramazlv);
+  
+  public abstract void a(BaseActivity paramBaseActivity);
+  
+  public abstract void b(azlv paramazlv);
 }
 
 

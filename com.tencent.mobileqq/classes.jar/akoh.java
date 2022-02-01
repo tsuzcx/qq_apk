@@ -1,6 +1,16 @@
-public abstract interface akoh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+
+public class akoh
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public akoh(TransactionActivity paramTransactionActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

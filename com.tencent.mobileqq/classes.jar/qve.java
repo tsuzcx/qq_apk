@@ -1,70 +1,116 @@
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.SimpleAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
 
 public class qve
-  extends SimpleAdapter
+  extends ClickableSpan
+  implements sth
 {
-  public qve(Context paramContext, List<? extends Map<String, ?>> paramList, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int a;
+  Context jdField_a_of_type_AndroidContentContext;
+  Resources jdField_a_of_type_AndroidContentResResources;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  qva jdField_a_of_type_Qva;
+  boolean jdField_a_of_type_Boolean;
+  private int b = -1;
+  
+  public qve(ArticleInfo paramArticleInfo, int paramInt, Context paramContext, Resources paramResources, qva paramqva)
   {
-    super(paramList, paramInt, paramArrayOfString, paramArrayOfInt, arrayOfInt);
+    this.jdField_a_of_type_Int = 16;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.b = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentResResources = paramResources;
+    this.jdField_a_of_type_Qva = paramqva;
   }
   
-  protected void a(View paramView, ResultRecord paramResultRecord) {}
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  private void a()
   {
-    Map localMap = (Map)getItem(paramInt);
-    ResultRecord localResultRecord = ResultRecord.a((String)localMap.get("key_uin"), (String)localMap.get("key_name"));
-    if (FollowingListFragment.a(this.a).contains(localResultRecord)) {
-      localMap.put("key_checked", Boolean.valueOf(true));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
+    {
+      int j = -1;
+      int i = j;
+      if (this.jdField_a_of_type_Qva != null)
+      {
+        i = j;
+        if (this.jdField_a_of_type_Qva.a != null) {
+          i = this.jdField_a_of_type_Qva.a.e();
+        }
+      }
+      snh.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, i);
+      return;
+    }
+    QLog.d("Q.readinjoy.ui", 1, "ComponentAccountSummary report click read article data, articleInfo is null!");
+  }
+  
+  private void a(ArticleInfo paramArticleInfo)
+  {
+    tch.b("fast_web_show_light_house_1");
+    pmh.a().a().a(paramArticleInfo.mArticleContentUrl, String.valueOf(paramArticleInfo.innerUniqueID), paramArticleInfo.mSubscribeID, 1, null);
+    a(paramArticleInfo, null);
+  }
+  
+  private void a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
+  {
+    pha.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramArticleInfo);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl))
+    {
+      if (!pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+        break label157;
+      }
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
     }
     for (;;)
     {
-      paramView = super.getView(paramInt, paramView, paramViewGroup);
-      a(paramView, localResultRecord);
-      return paramView;
-      localMap.put("key_checked", Boolean.valueOf(false));
+      a();
+      if ((pha.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (pha.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))) {
+        oat.a(null, pha.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), "0X8008A62", "0X8008A62", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), Integer.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessId + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), false);
+      }
+      return;
+      label157:
+      pha.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl);
     }
   }
   
-  public void setViewImage(ImageView paramImageView, String paramString)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    super.setViewImage(paramImageView, paramString);
-    if (paramImageView.getId() == 2131367819) {}
-    try
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-14132075);
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.b;; i = 16777215)
     {
-      Object localObject = this.a.getResources().getDrawable(2130840085);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localObject = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-      ((URLDrawable)localObject).setTag(bcyz.a(140, 140));
-      ((URLDrawable)localObject).setDecodeHandler(bcyz.o);
-      paramImageView.setImageDrawable((Drawable)localObject);
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(afur.a(2, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentResResources));
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
       return;
-    }
-    catch (Exception paramImageView)
-    {
-      QLog.e("FollowingListFragment", 2, "setViewImage: " + paramString, paramImageView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qve
  * JD-Core Version:    0.7.0.1
  */

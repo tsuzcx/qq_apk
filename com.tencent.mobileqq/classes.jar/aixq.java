@@ -1,17 +1,14 @@
-public class aixq
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class aixq
+  extends amcl
 {
-  public long a;
-  public String a;
-  public String b;
-  
-  public aixq() {}
-  
-  public aixq(String paramString1, String paramString2, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

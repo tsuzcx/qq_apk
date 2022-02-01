@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity;
 
-import adbt;
+import aehr;
 import android.os.Message;
 import android.text.TextUtils;
-import arso;
-import auwz;
-import awgf;
-import awgg;
-import bddf;
+import atwl;
+import axei;
+import bghy;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.persistence.EntityManager;
 import mqq.os.MqqHandler;
 
 public class FriendProfileImageAvatar$3
   implements Runnable
 {
-  public FriendProfileImageAvatar$3(adbt paramadbt, String paramString) {}
+  public FriendProfileImageAvatar$3(aehr paramaehr, String paramString) {}
   
   public void run()
   {
-    if (arso.a(bddf.b(String.valueOf(this.a)))) {
-      if (auwz.a()) {
-        auwz.a("Q.profilecard.Avatar", "downloadHDAvatar hd avatar file exist 1", new Object[0]);
+    if (atwl.a(bghy.b(String.valueOf(this.a)))) {
+      if (axei.a()) {
+        axei.a("Q.profilecard.Avatar", "downloadHDAvatar hd avatar file exist 1", new Object[0]);
       }
     }
     do
@@ -30,11 +30,11 @@ public class FriendProfileImageAvatar$3
       if (!this.this$0.c) {
         break;
       }
-    } while (!auwz.a());
-    auwz.a("Q.profilecard.Avatar", "downloadHDAvatar makingHDUrl return 2", new Object[0]);
+    } while (!axei.a());
+    axei.a("Q.profilecard.Avatar", "downloadHDAvatar makingHDUrl return 2", new Object[0]);
     return;
     this.this$0.c = true;
-    Setting localSetting = (Setting)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(Setting.class, this.a);
+    Setting localSetting = (Setting)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager().find(Setting.class, this.a);
     if ((localSetting != null) && (!TextUtils.isEmpty(localSetting.url)))
     {
       Message localMessage = Message.obtain();
@@ -47,10 +47,10 @@ public class FriendProfileImageAvatar$3
     for (;;)
     {
       this.this$0.c = false;
-      if (!auwz.a()) {
+      if (!axei.a()) {
         break;
       }
-      auwz.a("Q.profilecard.Avatar", "downloadHDAvatar end of makingHDUrl", new Object[0]);
+      axei.a("Q.profilecard.Avatar", "downloadHDAvatar end of makingHDUrl", new Object[0]);
       return;
       this.this$0.jdField_a_of_type_Boolean = true;
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.e(this.a);
@@ -59,7 +59,7 @@ public class FriendProfileImageAvatar$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageAvatar.3
  * JD-Core Version:    0.7.0.1
  */

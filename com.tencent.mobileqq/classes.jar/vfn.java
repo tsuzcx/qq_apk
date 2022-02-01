@@ -1,59 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFriendStoryFeedVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqcircle.bizparts.danmaku.text.CellTextView;
 
 public class vfn
-  extends urt<vhh>
+  extends Handler
 {
-  public String a = "";
-  public String b = "";
-  public int c;
-  
-  public String a()
+  public vfn(CellTextView paramCellTextView, Looper paramLooper)
   {
-    return uqn.a("StorySvc.homepage_feed_loadmore_720");
+    super(paramLooper);
   }
   
-  public uro a(byte[] paramArrayOfByte)
+  public void handleMessage(Message paramMessage)
   {
-    qqstory_service.RspFriendStoryFeedVideoList localRspFriendStoryFeedVideoList = new qqstory_service.RspFriendStoryFeedVideoList();
-    try
-    {
-      localRspFriendStoryFeedVideoList.mergeFrom(paramArrayOfByte);
-      return new vhh(localRspFriendStoryFeedVideoList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wxe.d("Q.qqstory:GetFeedVideoListRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
-    if (!TextUtils.isEmpty(this.a)) {
-      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    localReqFriendStoryFeedVideoList.pull_type.set(this.c);
-    return localReqFriendStoryFeedVideoList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetFeedVideoListRequest{, feedId='" + this.b + '\'' + ", startCookie='" + this.a + '\'' + ", pullType=" + this.c + '}';
+    this.a.b = true;
+    this.a.a(6, paramMessage.arg1, paramMessage.arg2, 0);
+    paramMessage = this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextTextCell;
+    this.a.a();
+    this.a.jdField_a_of_type_Vgl.g();
+    this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextTextCell = paramMessage;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vfn
  * JD-Core Version:    0.7.0.1
  */

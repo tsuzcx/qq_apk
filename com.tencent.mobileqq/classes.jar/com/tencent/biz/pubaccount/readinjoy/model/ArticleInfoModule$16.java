@@ -1,22 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import android.os.Handler;
-import java.util.List;
-import pew;
+import pwb;
 
 public class ArticleInfoModule$16
   implements Runnable
 {
-  public ArticleInfoModule$16(pew parampew, int paramInt1, List paramList, int paramInt2, long paramLong, boolean paramBoolean) {}
+  public ArticleInfoModule$16(pwb parampwb, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    pew.a(this.this$0, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (List localList = pew.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean); this.this$0.a == null; localList = this.jdField_a_of_type_JavaUtilList) {
-      return;
-    }
-    this.this$0.a.post(new ArticleInfoModule.16.1(this, localList));
+    pwb.a(this.this$0, this.jdField_a_of_type_Int);
+    pwb.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,21 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqmy
-  implements View.OnClickListener
+  extends aqmv
 {
-  public aqmy(UniformDownloadActivity paramUniformDownloadActivity) {}
-  
-  public void onClick(View paramView)
+  public aqmp a(String paramString)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
+    try
+    {
+      aqnj localaqnj = (aqnj)aqlu.a(paramString, aqnj.class);
+      return new aqms(paramString, localaqnj);
+    }
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      for (;;)
+      {
+        QLog.i("ArkConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        Object localObject = null;
+      }
+    }
+  }
+  
+  public int type()
+  {
+    return 250;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmy
  * JD-Core Version:    0.7.0.1
  */

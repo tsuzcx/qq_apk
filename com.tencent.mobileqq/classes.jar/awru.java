@@ -1,41 +1,43 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class awru
-  extends Handler
+  extends awte
 {
-  public awru(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public awru(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    if (!this.a.a(paramMessage)) {}
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "onPageSelected() called with: position = [" + paramInt + "]");
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "ViewPager onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+    }
+    switch (paramInt)
     {
-    case 5: 
-    case 8: 
     default: 
       return;
-    case 6: 
-      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
-      {
-        Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
-        return;
-      }
-      Toast.makeText(this.a.a.getApplicationContext(), 2131695640, 0).show();
+    case 0: 
+      MultiAIOFragment.a(this.a, MultiAIOFragment.a(this.a).a());
+      MultiAIOFragment.a(this.a).setViewPagerBusy(false);
       return;
-    case 7: 
-      Toast.makeText(this.a.a.getApplicationContext(), 2131695594, 0).show();
+    case 1: 
+      MultiAIOFragment.c(this.a);
       return;
     }
-    this.a.d();
+    MultiAIOFragment.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awru
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import android.content.Context;
 
-public final class aqcn
-  implements Parcelable.Creator<MiniAppRecommInfo>
+public abstract interface aqcn
 {
-  public MiniAppRecommInfo a(Parcel paramParcel)
-  {
-    return new MiniAppRecommInfo(paramParcel);
-  }
+  public abstract void a(int paramInt);
   
-  public MiniAppRecommInfo[] a(int paramInt)
-  {
-    return new MiniAppRecommInfo[paramInt];
-  }
+  public abstract void a(Context paramContext, int paramInt1, int paramInt2);
+  
+  public abstract void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void stop();
 }
 
 

@@ -8,14 +8,14 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Matrix;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bjhx;
-import bjhz;
-import bjts;
-import bjuc;
-import bjup;
-import bjvw;
-import bjxe;
-import bjyd;
+import blwf;
+import blwh;
+import bmic;
+import bmim;
+import bmiz;
+import bmkg;
+import bmlo;
+import bmmo;
 import com.tencent.component.network.utils.Base64;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -30,7 +30,7 @@ import org.json.JSONArray;
 public class GifCoder
 {
   private static boolean jdField_a_of_type_Boolean;
-  private int jdField_a_of_type_Int = bjvw.b();
+  private int jdField_a_of_type_Int = bmkg.b();
   private long jdField_a_of_type_Long;
   private GifCoder.EncodingType jdField_a_of_type_CooperationQzoneUtilGifCoder$EncodingType = GifCoder.EncodingType.ENCODING_TYPE_SIMPLE_FAST;
   private final int jdField_b_of_type_Int = 0;
@@ -269,11 +269,11 @@ public class GifCoder
   
   public static void a()
   {
-    if (bjts.a().a(bjts.a, true)) {
+    if (bmic.a().a(bmic.a, true)) {
       try
       {
         System.loadLibrary("c++_shared");
-        a(bjts.a().b(bjts.a));
+        a(bmic.a().b(bmic.a));
         return;
       }
       catch (Throwable localThrowable)
@@ -284,7 +284,7 @@ public class GifCoder
         }
       }
     }
-    bjts.a().a();
+    bmic.a().a();
   }
   
   private static boolean a()
@@ -292,7 +292,7 @@ public class GifCoder
     boolean[] arrayOfBoolean = new boolean[1];
     arrayOfBoolean[0] = false;
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    bjts.a().b(new bjuc(arrayOfBoolean, localCountDownLatch));
+    bmic.a().b(new bmim(arrayOfBoolean, localCountDownLatch));
     try
     {
       localCountDownLatch.await(30L, TimeUnit.SECONDS);
@@ -509,7 +509,7 @@ public class GifCoder
       str = (String)localIterator.next();
       if (this.jdField_c_of_type_Boolean)
       {
-        localObject2 = bjup.a(str, (Bitmap)localObject1);
+        localObject2 = bmiz.a(str, (Bitmap)localObject1);
         label98:
         if (localObject1 != null) {
           break label361;
@@ -520,7 +520,7 @@ public class GifCoder
     label361:
     for (;;)
     {
-      int j = bjup.a(str);
+      int j = bmiz.a(str);
       if (this.jdField_c_of_type_Boolean) {}
       for (;;)
       {
@@ -534,7 +534,7 @@ public class GifCoder
         }
         QLog.i("GifCoder", 1, "decode bitmap is NULL,decode pic = " + str);
         break;
-        localObject2 = bjup.a(str, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, (Bitmap)localObject1);
+        localObject2 = bmiz.a(str, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, (Bitmap)localObject1);
         break label98;
         localObject2 = a((Bitmap)localObject2, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, j, this.jdField_b_of_type_Boolean);
       }
@@ -587,12 +587,12 @@ public class GifCoder
       if (paramBoolean2)
       {
         localObject2 = paramJSONArray.optString(i);
-        if (!bjxe.a((String)localObject2))
+        if (!bmlo.a((String)localObject2))
         {
           QLog.e("GifCoder", 1, "file name is invalid. name=" + (String)localObject2);
           return false;
         }
-        localObject2 = bjhx.b().a((String)localObject2);
+        localObject2 = blwf.b().a((String)localObject2);
         localObject3 = new File((String)localObject2);
         if (!((File)localObject3).exists())
         {
@@ -605,7 +605,7 @@ public class GifCoder
     {
       try
       {
-        localObject3 = bjyd.a((File)localObject3);
+        localObject3 = bmmo.a((File)localObject3);
         if ((localObject3 == null) || (((String)localObject3).length() == 0))
         {
           QLog.e("GifCoder", 1, "file is empty: " + (String)localObject2);
@@ -719,7 +719,7 @@ public class GifCoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.GifCoder
  * JD-Core Version:    0.7.0.1
  */

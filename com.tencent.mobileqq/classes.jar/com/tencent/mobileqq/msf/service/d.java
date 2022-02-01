@@ -17,7 +17,7 @@ class d
     if (this.a.k)
     {
       String str = MsfCore.sCore.getAccountCenter().i();
-      t.a(BaseApplication.getContext(), this.a.g, str, this.a.h, 0, 1, null);
+      u.a(BaseApplication.getContext(), this.a.g, str, this.a.h, 0, 1, null);
     }
     this.a.k = false;
   }

@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.AsyncTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class adcf
-  implements alqc
+class adcf
+  extends AsyncTask<Void, Void, Void>
 {
-  public adcf(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  adcf(adce paramadce) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  protected Void a(Void... paramVarArgs)
   {
-    if ((this.a.a == 1) || (this.a.a == 2))
-    {
-      if (paramBoolean) {
-        break label55;
-      }
-      FriendProfileMoreInfoActivity.a(this.a);
-      QQToast.a(this.a, 2131691082, 0).b(this.a.getTitleBarHeight());
+    paramVarArgs = adce.a(this.a).iterator();
+    while (paramVarArgs.hasNext()) {
+      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
     }
-    label55:
-    while (paramInt != 2) {
-      return;
-    }
-    FriendProfileMoreInfoActivity.a(this.a);
-    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
+    adce.a(this.a).clear();
+    return null;
   }
 }
 

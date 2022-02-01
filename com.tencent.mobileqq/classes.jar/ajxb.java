@@ -1,10 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajxb
+class ajxb
+  implements View.OnClickListener
 {
-  public int a;
+  ajxb(ajwy paramajwy) {}
   
-  private ajxb(GLVideoClipUtil paramGLVideoClipUtil) {}
+  public void onClick(View paramView)
+  {
+    this.a.a = null;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

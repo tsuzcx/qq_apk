@@ -1,41 +1,35 @@
-import android.media.Image;
-import android.media.Image.Plane;
-import android.media.ImageReader;
-import android.media.ImageReader.OnImageAvailableListener;
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
-import java.nio.ByteBuffer;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class azfj
-  implements ImageReader.OnImageAvailableListener
+class azfj
+  implements AdapterView.OnItemClickListener
 {
-  public azfj(Camera2Control paramCamera2Control) {}
+  azfj(azfh paramazfh) {}
   
-  public void onImageAvailable(ImageReader paramImageReader)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    try
-    {
-      azfu.a(1, "[Camera2]Image Capture cost:" + (float)(System.currentTimeMillis() - Camera2Control.a(this.a)) / 1000.0F);
-      azft.a(2, Camera2Control.a(this.a).a * Camera2Control.a(this.a).b, System.currentTimeMillis() - Camera2Control.a(this.a));
-      paramImageReader = paramImageReader.acquireNextImage();
-      if (paramImageReader != null)
-      {
-        ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
-        byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
-        localByteBuffer.get(arrayOfByte);
-        if ((Camera2Control.a(this.a) != null) && (Camera2Control.a(this.a) != null))
-        {
-          Camera2Control.a(this.a).a = Camera2Control.a(this.a).a;
-          Camera2Control.a(this.a).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.a)));
-        }
-        paramImageReader.close();
-      }
-      return;
+    if (azfh.a(this.a).isShowing()) {
+      azfh.a(this.a).dismiss();
     }
-    catch (Exception paramImageReader)
+    int i = -1;
+    switch ((int)paramLong)
     {
-      azfu.a(1, "[Camera2] onImageAvailable mImageReader exception:" + paramImageReader);
+    }
+    for (;;)
+    {
+      if (azfh.a(this.a) != null) {
+        azfh.a(this.a).a(i, azfh.a(this.a));
+      }
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      azfh.a(this.a);
+      i = 0;
+      continue;
+      azfh.b(this.a);
+      i = 2;
     }
   }
 }

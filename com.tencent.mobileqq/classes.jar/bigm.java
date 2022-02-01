@@ -1,54 +1,50 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import MWIFI.SCGet3rdCloudCheck;
+import android.content.Context;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public abstract class bigm
-  extends Binder
-  implements bigl
+final class bigm
+  extends bigx
 {
-  public static bigl a(IBinder paramIBinder)
+  bigm(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, anyo paramanyo) {}
+  
+  public void a(int paramInt)
   {
-    if (paramIBinder == null) {
-      return null;
+    if ((1 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anyo);
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
-    if ((localIInterface != null) && ((localIInterface instanceof bigl))) {
-      return (bigl)localIInterface;
-    }
-    return new bign(paramIBinder);
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      paramParcel2.writeString(paramParcel1);
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, result: " + paramSCGet3rdCloudCheck);
     }
-    paramParcel1.enforceInterface("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
-    boolean bool = a();
-    paramParcel2.writeNoException();
-    if (bool) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
+    if (paramSCGet3rdCloudCheck != null)
     {
-      paramParcel2.writeInt(paramInt1);
-      return true;
+      if (paramSCGet3rdCloudCheck.delayHour > 24) {
+        bihb.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramSCGet3rdCloudCheck.delayHour);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, tips: " + paramSCGet3rdCloudCheck.tips + " tipsType: " + paramSCGet3rdCloudCheck.tipsType + " delayHour: " + paramSCGet3rdCloudCheck.delayHour + " URL: " + paramSCGet3rdCloudCheck.h5);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        Message localMessage = localMqqHandler.obtainMessage(1134063);
+        localMessage.obj = paramSCGet3rdCloudCheck;
+        localMqqHandler.sendMessage(localMessage);
+        bigl.b(this.jdField_a_of_type_AndroidContentContext, 398677);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bigm
  * JD-Core Version:    0.7.0.1
  */

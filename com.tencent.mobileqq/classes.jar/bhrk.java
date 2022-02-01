@@ -1,27 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.Transformation;
 
-public class bhrk
-  implements PtuFilterResource
+class bhrk
+  implements bgtg<Integer>
 {
-  public boolean checkPendantVersionOK()
-  {
-    return azkt.d();
-  }
+  bhrk(bhri parambhri, int paramInt) {}
   
-  public String getPortraitPathDir()
+  public void a(bgta<Integer> parambgta, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    return getSoPathDir();
-  }
-  
-  public String getSoPathDir()
-  {
-    return azkt.b(BaseApplicationImpl.getContext());
+    if (!this.jdField_a_of_type_Bhri.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Bhri.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
+      this.jdField_a_of_type_Bhri.jdField_a_of_type_Int = paramInteger.intValue();
+    } while (this.jdField_a_of_type_Bhri.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bhri.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhrk
  * JD-Core Version:    0.7.0.1
  */

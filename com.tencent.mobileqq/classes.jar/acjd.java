@@ -1,52 +1,41 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2;
+import com.tencent.ad.tangram.halfScreen.AdHalfScreenAdapter;
+import com.tencent.ad.tangram.halfScreen.AdHalfScreenAdapter.Params;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.jsbridge.GdtBaseHalfScreenFragmentForJs;
+import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
+import java.lang.ref.WeakReference;
 
 public class acjd
-  implements View.OnClickListener
+  implements AdHalfScreenAdapter
 {
-  public acjd(BaseChatPie paramBaseChatPie) {}
-  
-  public void onClick(View paramView)
+  public AdError show(AdHalfScreenAdapter.Params paramParams)
   {
-    switch (paramView.getId())
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
+      acqy.d("GdtHalfScreenAdapter", "show error");
+      return new AdError(4);
     }
-    BaseChatPie localBaseChatPie;
-    do
+    Object localObject = null;
+    if (paramParams.style == 2)
     {
-      do
+      AdCanvasData localAdCanvasData = AdCanvasDataBuilderV2.build((Context)paramParams.activity.get(), paramParams.ad, paramParams.autodownload);
+      if (localAdCanvasData != null)
       {
-        do
-        {
-          return;
-          paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373121);
-        } while (!(paramView instanceof bcit));
-        paramView = (bcit)paramView;
-      } while ((paramView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.aio.BaseChatPie", 2, "TextItemBuilder onClickListener: isReplyMsg = true, mSourceMsgSeq = " + paramView.a);
+        localObject = localAdCanvasData;
+        if (localAdCanvasData.isValid()) {}
       }
-      localBaseChatPie = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && ((localBaseChatPie instanceof agps)))
+      else
       {
-        ((agps)localBaseChatPie).a(22, paramView.d, paramView.c, null);
-        return;
+        return new AdError(4);
       }
-    } while (!localBaseChatPie.j());
-    QQMessageFacade.Message localMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    localBaseChatPie.a(22, paramView.a, (int)(localMessage.shmsgseq - paramView.a), null);
-    MessageForReplyText.reportReplyMsg(null, "typebox", "clk_original", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
+    }
+    GdtBaseHalfScreenFragment.a((Activity)paramParams.activity.get(), GdtBaseHalfScreenFragmentForJs.class, paramParams.ad, localObject, paramParams.webUrl, paramParams.style, paramParams.extrasForIntent);
+    return new AdError(0);
   }
 }
 

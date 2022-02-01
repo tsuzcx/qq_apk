@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.module.feedcomponent.ui.common.SuperLikeView android:id="@id/c7p" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ent" android:scaleType="fitXY" android:layout_centerVertical="true" />
-</LinearLayout>
+<com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" app:ratioH="1" app:ratioW="1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.image.URLImageView android:id="@id/duw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <FrameLayout android:id="@id/enp" android:background="@drawable/d0d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/g4p" />
+    </FrameLayout>
+</com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout>

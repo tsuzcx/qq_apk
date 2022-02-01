@@ -1,33 +1,23 @@
-class vwj
-  implements vwe
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StUser;
+
+public class vwj
+  implements vux
 {
-  public vwe a;
+  public vwj(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, FeedCloudMeta.StComment paramStComment) {}
   
-  private vwj(vwg paramvwg) {}
-  
-  public boolean a(vwa paramvwa, int paramInt, Object paramObject)
+  public void a()
   {
-    if (vwg.a(this.jdField_a_of_type_Vwg) != null)
-    {
-      if (paramInt != 2) {
-        break label54;
-      }
-      vwg.a(this.jdField_a_of_type_Vwg).c(vwg.a(this.jdField_a_of_type_Vwg));
-    }
-    while (this.jdField_a_of_type_Vwe != null)
-    {
-      return this.jdField_a_of_type_Vwe.a(paramvwa, paramInt, paramObject);
-      label54:
-      if (paramInt == 3) {
-        vwg.a(this.jdField_a_of_type_Vwg).b(vwg.a(this.jdField_a_of_type_Vwg));
-      }
-    }
-    return false;
+    vrc.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get(), QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.d());
+    uxo.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get(), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.a().clone().setElementIdStr("portrait"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vwj
  * JD-Core Version:    0.7.0.1
  */

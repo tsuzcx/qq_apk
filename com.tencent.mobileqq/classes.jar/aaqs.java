@@ -1,6 +1,12 @@
-public abstract interface aaqs
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class aaqs
+  extends amcl
 {
-  public abstract void a(aaqw paramaaqw, aaqx paramaaqx);
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

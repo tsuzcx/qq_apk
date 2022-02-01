@@ -1,16 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
 public class bnmv
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bomu
 {
-  public bnmv(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  public bnmv(AEMaterialProviderView paramAEMaterialProviderView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(this.a.c);
+    if (QLog.isColorLevel()) {
+      QLog.d("AEMaterialProviderView", 2, "material list updated!");
+    }
+    if (AEMaterialProviderView.a(this.a)) {
+      return;
+    }
+    this.a.a(true);
   }
 }
 

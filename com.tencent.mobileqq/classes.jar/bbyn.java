@@ -1,22 +1,51 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.util.SparseArray;
 
 public class bbyn
-  extends JobSegment<String, bbyr>
+  extends bbzk
 {
-  private bbyp jdField_a_of_type_Bbyp;
-  private String jdField_a_of_type_JavaLangString;
+  public int a;
+  public long a;
+  private SparseArray<Object> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c;
+  public long c;
+  public boolean c;
+  public int d;
+  public long d;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g = true;
+  public boolean h;
+  public boolean i;
   
-  public bbyn(bbyp parambbyp)
+  public bbyn(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    this.jdField_a_of_type_Bbyp = parambbyp;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.e = paramLong2;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public Object a(int paramInt)
   {
-    wxe.d("QQ.Troop.homework.SendArithHomeResultSegment", "runSegment " + paramString);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    urp.a().a(new bbyq(this.jdField_a_of_type_Bbyp, this.jdField_a_of_type_JavaLangString), new bbyo(this));
+    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
+      return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    }
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    }
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramObject);
   }
 }
 

@@ -1,18 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.TextParcelData;
+import cooperation.qzone.model.BusinessAlbumInfo;
 
-public final class blyy
-  implements Parcelable.Creator<TextParcelData>
+public class blyy
 {
-  public TextParcelData a(Parcel paramParcel)
+  public static String a(int paramInt)
   {
-    return new TextParcelData(paramParcel);
-  }
-  
-  public TextParcelData[] a(int paramInt)
-  {
-    return new TextParcelData[paramInt];
+    return BusinessAlbumInfo.a(paramInt);
   }
 }
 

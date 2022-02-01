@@ -1,124 +1,32 @@
-import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 class artv
-  implements artx
+  implements URLDrawable.URLDrawableListener
 {
-  artv(artu paramartu) {}
+  artv(arti paramarti, String paramString) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    boolean bool = this.a.c();
-    QLog.i(artu.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadStart. start:" + bool + "progress:" + paramInt);
-    if (bool) {}
-    for (;;)
-    {
-      return;
-      this.a.a(true);
-      Object localObject = artu.a(this.a);
-      if (paramBundle != null) {
-        paramBundle.putBundle("_CB_USERDATA", artu.a(this.a));
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        artx localartx = (artx)((Iterator)localObject).next();
-        if (localartx != null) {
-          localartx.a(paramInt, paramBundle);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.i(artu.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errcode:" + paramInt + "errStr:" + paramString);
-    if ((artu.b(this.a) < 1) && (1 == artu.a(this.a)))
-    {
-      QLog.i(artu.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errorRetry");
-      artu.c(this.a);
-      artu.a(this.a, paramInt, paramString, paramBundle);
-    }
-    for (;;)
-    {
-      return;
-      if (paramBundle != null) {
-        paramBundle.putBundle("_CB_USERDATA", artu.a(this.a));
-      }
-      Iterator localIterator = artu.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        artx localartx = (artx)localIterator.next();
-        if (localartx != null) {
-          localartx.a(paramInt, paramString, paramBundle);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url failed:" + this.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void a(String paramString, long paramLong, Bundle paramBundle)
-  {
-    QLog.i(artu.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadSucess. filePath:" + paramString);
-    paramBundle = new Bundle();
-    paramBundle.putInt("_CB_SID", artu.a(this.a));
-    paramBundle.putString("_CB_URL", artu.a(this.a));
-    paramBundle.putBundle("_CB_USERDATA", artu.a(this.a));
-    Iterator localIterator = artu.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      artx localartx = (artx)localIterator.next();
-      if (localartx != null) {
-        localartx.a(paramString, paramLong, paramBundle);
-      }
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void b(int paramInt, Bundle paramBundle)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (paramBundle != null) {
-      paramBundle.putBundle("_CB_USERDATA", artu.a(this.a));
-    }
-    Iterator localIterator = artu.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      artx localartx = (artx)localIterator.next();
-      if (localartx != null) {
-        localartx.b(paramInt, paramBundle);
-      }
-    }
-  }
-  
-  public void c(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(artu.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadPause. progress:" + paramInt);
-    if (paramBundle != null) {
-      paramBundle.putBundle("_CB_USERDATA", artu.a(this.a));
-    }
-    Iterator localIterator = artu.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      artx localartx = (artx)localIterator.next();
-      if (localartx != null) {
-        localartx.c(paramInt, paramBundle);
-      }
-    }
-  }
-  
-  public void d(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(artu.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadResume. progress:" + paramInt);
-    if (paramBundle != null) {
-      paramBundle.putBundle("_CB_USERDATA", artu.a(this.a));
-    }
-    Iterator localIterator = artu.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      artx localartx = (artx)localIterator.next();
-      if (localartx != null) {
-        localartx.d(paramInt, paramBundle);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url down:" + this.jdField_a_of_type_JavaLangString);
     }
   }
 }

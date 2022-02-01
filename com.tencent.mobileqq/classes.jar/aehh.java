@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity.14.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class aehh
-  extends altm
+  implements Animation.AnimationListener
 {
-  public aehh(TroopRequestActivity paramTroopRequestActivity) {}
+  public aehh(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((!paramBoolean) || (paramString == null)) {
-      return;
-    }
-    ThreadManager.post(new TroopRequestActivity.14.1(this, paramString), 5, null, true);
+    this.a.f = false;
+    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

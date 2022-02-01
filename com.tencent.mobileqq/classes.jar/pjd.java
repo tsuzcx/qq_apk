@@ -1,48 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import org.json.JSONException;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pjd
-  implements View.OnClickListener
+public class pjd
+  implements AladdinConfigHandler
 {
-  pjd(pja parampja) {}
-  
-  public void onClick(View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    RefreshData localRefreshData = qiu.b(pja.a(this.a), 0);
-    szp.a(false);
-    paramView = new orz();
-    paramView.h().b().e().a(pja.a(this.a).e()).f().g().d();
-    if ((pja.a(this.a).e() != 0) || (localRefreshData != null)) {}
-    for (;;)
+    paramString = phv.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      try
-      {
-        if (!localRefreshData.isAD) {
-          continue;
-        }
-        i = 1;
-        paramView.a("ad_page", i);
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if (TextUtils.equals("check_period_ms", str1)) {
+        bmqa.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(str2));
+      } else if (TextUtils.equals("time_out_threshold_ms", str1)) {
+        bmqa.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(str2));
+      } else if (TextUtils.equals("thread_pool_monitor_enable", str1)) {
+        bmqa.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(TextUtils.equals(str2, "1")));
       }
-      catch (JSONException localJSONException)
-      {
-        int i;
-        localJSONException.printStackTrace();
-        continue;
-      }
-      nrt.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, bkbq.a("default_feeds_proteus_offline_bid"), "", "", paramView.a(), false);
-      if (pja.a(this.a) != null) {
-        pja.a(this.a).c();
-      }
-      return;
-      i = 0;
     }
+    return true;
   }
+  
+  public void onWipeConfig(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pjd
  * JD-Core Version:    0.7.0.1
  */

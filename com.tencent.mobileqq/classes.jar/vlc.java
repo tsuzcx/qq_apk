@@ -1,26 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
 
-public class vlc
-  extends urs<vgo, vgp>
+class vlc
+  extends uzb
 {
-  public vlc(StoryShareEncryptHelper.2 param2, long paramLong, bety parambety) {}
+  vlc(vks paramvks) {}
   
-  public void a(@NonNull vgo paramvgo, @Nullable vgp paramvgp, @NonNull ErrorMessage paramErrorMessage)
+  public QCirclePolyLikeAniView a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramvgp);
+    return vks.a(this.a);
+  }
+  
+  public void a(String paramString, uzc paramuzc)
+  {
+    if (this.a.a() != null) {
+      this.a.a().a(paramString, paramuzc);
     }
-    wxj.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUtilStoryShareEncryptHelper$2.a.a(paramvgp, this.jdField_a_of_type_Bety);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vlc
  * JD-Core Version:    0.7.0.1
  */

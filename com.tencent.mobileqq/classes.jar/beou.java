@@ -1,40 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class beou
-  implements View.OnTouchListener
+class beou
+  implements Comparator<Map.Entry<String, beov>>
 {
-  public beou(CustomedTabWidget paramCustomedTabWidget) {}
+  beou(beos parambeos) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(Map.Entry<String, beov> paramEntry1, Map.Entry<String, beov> paramEntry2)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      i = 0;
-      if (i < this.a.getChildCount())
-      {
-        if (this.a.getChildAt(i) != paramView) {
-          break label57;
-        }
-        this.a.jdField_a_of_type_Int = i;
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.invalidate();
-      }
+    long l = ((beov)paramEntry2.getValue()).a - ((beov)paramEntry1.getValue()).a;
+    if (l > 0L) {
+      return 1;
     }
-    label57:
-    while (paramMotionEvent.getAction() != 1) {
-      for (;;)
-      {
-        int i;
-        return false;
-        i += 1;
-      }
+    if (l < 0L) {
+      return -1;
     }
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.invalidate();
-    return false;
+    return 0;
   }
 }
 

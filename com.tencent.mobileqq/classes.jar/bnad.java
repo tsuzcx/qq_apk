@@ -1,12 +1,7 @@
-import java.util.List;
-
-public abstract interface bnad
+final class bnad
+  implements bguy
 {
-  public abstract void a(long paramLong);
-  
-  public abstract void a(List<Long> paramList);
-  
-  public abstract void b(long paramLong);
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 

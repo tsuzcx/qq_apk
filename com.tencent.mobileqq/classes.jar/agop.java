@@ -1,34 +1,75 @@
 import android.content.Context;
-import android.graphics.Color;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.res.Resources;
+import android.os.Handler;
+import com.tencent.mobileqq.data.IntimateInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class agop
-  implements ViewTreeObserver.OnPreDrawListener
+  extends aupb
 {
-  agop(agoe paramagoe, agor paramagor) {}
+  agop(agol paramagol) {}
   
-  public boolean onPreDraw()
+  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject)
   {
-    agoe.a(this.jdField_a_of_type_Agoe).getViewTreeObserver().removeOnPreDrawListener(this);
-    if (this.jdField_a_of_type_Agor.b == 1)
-    {
-      agoe.a(this.jdField_a_of_type_Agoe).setBackgroundDrawable(new apkq(Color.parseColor("#1fa4fc"), 5.0F, aepi.a(14.0F, this.jdField_a_of_type_Agoe.a.getResources()), aepi.a(14.0F, this.jdField_a_of_type_Agoe.a.getResources())));
-      agoe.b(this.jdField_a_of_type_Agoe).setBackgroundDrawable(new apkq(Color.parseColor("#1fa4fc"), 5.0F, agoe.b(this.jdField_a_of_type_Agoe).getMeasuredWidth(), agoe.b(this.jdField_a_of_type_Agoe).getMeasuredHeight()));
-      agoe.a(this.jdField_a_of_type_Agoe).setImageResource(2130839034);
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos");
     }
-    for (;;)
-    {
-      agoe.a(this.jdField_a_of_type_Agoe).setBackgroundDrawable(new apkq(Color.parseColor("#b2b5bd"), 5.0F, agoe.a(this.jdField_a_of_type_Agoe).getMeasuredWidth(), agoe.a(this.jdField_a_of_type_Agoe).getMeasuredHeight()));
-      agoe.c(this.jdField_a_of_type_Agoe).setBackgroundDrawable(new apkq(Color.parseColor("#b2b5bd"), 5.0F, agoe.c(this.jdField_a_of_type_Agoe).getMeasuredWidth(), agoe.c(this.jdField_a_of_type_Agoe).getMeasuredHeight()));
-      return true;
-      agoe.a(this.jdField_a_of_type_Agoe).setBackgroundDrawable(new apkq(Color.parseColor("#ff5fb5"), 5.0F, aepi.a(14.0F, this.jdField_a_of_type_Agoe.a.getResources()), aepi.a(14.0F, this.jdField_a_of_type_Agoe.a.getResources())));
-      agoe.b(this.jdField_a_of_type_Agoe).setBackgroundDrawable(new apkq(Color.parseColor("#ff5fb5"), 5.0F, agoe.b(this.jdField_a_of_type_Agoe).getMeasuredWidth(), agoe.b(this.jdField_a_of_type_Agoe).getMeasuredHeight()));
-      agoe.a(this.jdField_a_of_type_Agoe).setImageResource(2130839033);
+    if ((this.a.jdField_a_of_type_Awuc != null) && (this.a.jdField_a_of_type_Awuc.a() == 1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, in card mode, return");
+      }
     }
+    do
+    {
+      return;
+      if (this.a.jdField_a_of_type_Awuc != null) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mViewDelegate == null :" + agol.a(this.a));
+      }
+    } while (agol.a(this.a));
+    paramObject = null;
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      long l1 = 0L;
+      try
+      {
+        long l2 = Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue();
+        l1 = l2;
+      }
+      catch (NumberFormatException paramObject)
+      {
+        for (;;)
+        {
+          QLog.e("intimate_relationship", 2, "valueOf string err ");
+        }
+      }
+    }
+    for (paramHashMap = (IntimateInfo)paramHashMap.get(Long.valueOf(l1));; paramHashMap = paramObject)
+    {
+      if (paramHashMap == null) {
+        break label272;
+      }
+      paramObject = agol.a(this.a).obtainMessage();
+      paramObject.what = 0;
+      paramObject.obj = paramHashMap;
+      agol.a(this.a).removeMessages(0);
+      agol.a(this.a).sendMessage(paramObject);
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mode: " + this.a.jdField_a_of_type_Awuc.a());
+      break;
+      QLog.e("intimate_relationship", 2, "onGetGroupIntimateInfos failed !");
+    }
+    label272:
+    paramHashMap = agol.a(this.a).obtainMessage();
+    paramHashMap.what = 1;
+    paramHashMap.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693081);
+    agol.a(this.a).sendMessage(paramHashMap);
   }
 }
 

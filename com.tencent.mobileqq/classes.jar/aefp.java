@@ -1,28 +1,26 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aefp
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public aefp(TroopMemberListActivity paramTroopMemberListActivity, int paramInt1, int paramInt2) {}
+  public aefp(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, TroopMemberListActivity.class);
-    paramView.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b);
-    paramView.putExtra("param_from", 15);
-    paramView.putExtra("param_seq_days", TroopMemberListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    paramView.putExtra("param_seq_name", TroopMemberListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    paramView.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.startActivityForResult(paramView, 4);
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, "" + this.b, "", "");
+    if (!this.a.isFinishing())
+    {
+      this.a.finish();
+      QLog.i("ForwardOption.ForwardEntranceActivity", 1, "ForwardRecentActivity has finished by broadcastReceiver.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aefp
  * JD-Core Version:    0.7.0.1
  */

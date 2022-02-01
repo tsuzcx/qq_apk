@@ -1,19 +1,17 @@
-public class azmo
+class azmo
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c = 0;
+  final String a;
+  final String b;
   
-  azmo()
+  azmo(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
   public String toString()
   {
-    return "FailInfo{lastFCode=" + this.jdField_a_of_type_Int + ", lastSubFCode=" + this.b + ", netType=" + this.c + ", lastFTime=" + this.jdField_a_of_type_Long + '}';
+    return String.format("CopyItem{mMenuTitle=%s mCopyContent=%s}", new Object[] { this.a, this.b });
   }
 }
 

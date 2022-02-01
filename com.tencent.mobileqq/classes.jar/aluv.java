@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.Comparator;
 
 public class aluv
+  implements Comparator<TroopMemberInfo>
 {
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.sendMessage(paramQQAppInterface.obtainMessage(1009));
-    }
-  }
+  private aluv(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    paramQQAppInterface = paramQQAppInterface.a().a();
-    paramString = paramQQAppInterface.b(paramString, 1);
-    if (paramString != null) {
-      paramQQAppInterface.b(paramString);
+    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
+      return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aluv
  * JD-Core Version:    0.7.0.1
  */

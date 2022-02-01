@@ -1,27 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class vat
-  extends QQUIEventReceiver<vai, vas>
+class vat
+  implements DialogInterface.OnClickListener
 {
-  public vat(@NonNull vai paramvai)
-  {
-    super(paramvai);
-  }
+  vat(vas paramvas, int paramInt) {}
   
-  public void a(@NonNull vai paramvai, @NonNull vas paramvas)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    vai.a(paramvai, paramvas.jdField_a_of_type_Vpm, paramvas.jdField_a_of_type_JavaLangString);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vas.class;
+    vab.a(this.jdField_a_of_type_Vas.jdField_a_of_type_Vab).a(this.jdField_a_of_type_Vas.jdField_a_of_type_Vab.a().hashCode(), vab.a(this.jdField_a_of_type_Vas.jdField_a_of_type_Vab), this.jdField_a_of_type_Vas.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Vas.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Int, vab.a(this.jdField_a_of_type_Vas.jdField_a_of_type_Vab));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vat
  * JD-Core Version:    0.7.0.1
  */

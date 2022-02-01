@@ -1,15 +1,15 @@
 package dov.com.qq.im.capture.control;
 
 import android.text.TextUtils;
-import awgf;
-import awgh;
-import blqh;
-import blqr;
+import bojl;
+import bojv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.app.automator.ParallGroup;
 import com.tencent.mobileqq.data.FlowMusic;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 import java.util.ArrayList;
@@ -25,17 +25,17 @@ import org.json.JSONObject;
 public class GetAllFullMusicInfoTask
   extends ParallGroup
 {
-  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)blqr.a(2);
+  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bojv.a(2);
   private List<FlowMusic> jdField_a_of_type_JavaUtilList;
   private List<FlowMusic> b = new ArrayList();
   private String jdField_c_of_type_JavaLangString;
   private List<FlowMusic> jdField_c_of_type_JavaUtilList = new ArrayList();
   
-  private void b()
+  private void a()
   {
     int k = 0;
     this.jdField_c_of_type_JavaLangString = ((String)this.jdField_a_of_type_ArrayOfJavaLangObject[0]);
-    Object localObject1 = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a.a(FlowMusic.class);
+    Object localObject1 = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a.query(FlowMusic.class);
     if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList((Collection)localObject1);
     }
@@ -136,30 +136,30 @@ public class GetAllFullMusicInfoTask
     }
   }
   
-  private void c()
+  private void b()
   {
     if (!this.b.isEmpty())
     {
-      localObject1 = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a.a();
+      localObject1 = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a.getTransaction();
       try
       {
-        ((awgh)localObject1).a();
+        ((EntityTransaction)localObject1).begin();
         Iterator localIterator = this.b.iterator();
         while (localIterator.hasNext())
         {
           FlowMusic localFlowMusic = (FlowMusic)localIterator.next();
-          this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a.b(localFlowMusic);
+          this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a.persistOrReplace(localFlowMusic);
         }
       }
       finally
       {
-        ((awgh)localObject1).b();
+        ((EntityTransaction)localObject1).end();
       }
-      ((awgh)localObject1).b();
+      ((EntityTransaction)localObject1).end();
       this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(4, true, this.b);
     }
     Object localObject1 = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager;
-    QIMMusicConfigManager.b(blqh.a().getCurrentAccountUin());
+    QIMMusicConfigManager.b(bojl.a().getCurrentAccountUin());
   }
   
   public int a()
@@ -184,13 +184,8 @@ public class GetAllFullMusicInfoTask
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b((AsyncStep)localObject);
       }
     }
-    c();
-    return 7;
-  }
-  
-  public void a()
-  {
     b();
+    return 7;
   }
   
   /* Error */
@@ -200,68 +195,68 @@ public class GetAllFullMusicInfoTask
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: instanceof 276
+    //   3: instanceof 282
     //   6: ifeq +34 -> 40
     //   9: aload_1
-    //   10: checkcast 276	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask
-    //   13: getfield 298	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask:b	Lcom/tencent/mobileqq/data/FlowMusic;
+    //   10: checkcast 282	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask
+    //   13: getfield 304	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask:b	Lcom/tencent/mobileqq/data/FlowMusic;
     //   16: astore_3
     //   17: aload_3
     //   18: ifnonnull +67 -> 85
     //   21: aload_1
-    //   22: checkcast 276	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask
-    //   25: getfield 300	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask:a	Lcom/tencent/mobileqq/data/FlowMusic;
+    //   22: checkcast 282	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask
+    //   25: getfield 306	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask:a	Lcom/tencent/mobileqq/data/FlowMusic;
     //   28: astore_1
     //   29: aload_0
     //   30: getfield 20	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:b	Ljava/util/List;
     //   33: aload_1
-    //   34: invokeinterface 301 2 0
+    //   34: invokeinterface 307 2 0
     //   39: pop
     //   40: aload_0
-    //   41: getfield 272	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:d	I
+    //   41: getfield 278	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:d	I
     //   44: iconst_1
     //   45: isub
     //   46: istore_2
     //   47: aload_0
     //   48: iload_2
-    //   49: putfield 272	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:d	I
+    //   49: putfield 278	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:d	I
     //   52: iload_2
     //   53: ifne +18 -> 71
     //   56: aload_0
-    //   57: invokespecial 293	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:c	()V
+    //   57: invokespecial 300	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:b	()V
     //   60: aload_0
     //   61: bipush 7
-    //   63: invokevirtual 304	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:a	(I)V
+    //   63: invokevirtual 310	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:a	(I)V
     //   66: aload_0
     //   67: aconst_null
-    //   68: putfield 307	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep	[Lcom/tencent/mobileqq/app/automator/AsyncStep;
+    //   68: putfield 313	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep	[Lcom/tencent/mobileqq/app/automator/AsyncStep;
     //   71: aload_0
-    //   72: getfield 287	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
+    //   72: getfield 293	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
     //   75: aload_0
-    //   76: getfield 307	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep	[Lcom/tencent/mobileqq/app/automator/AsyncStep;
-    //   79: invokevirtual 310	com/tencent/mobileqq/app/automator/Automator:a	([Lcom/tencent/mobileqq/app/automator/AsyncStep;)V
+    //   76: getfield 313	dov/com/qq/im/capture/control/GetAllFullMusicInfoTask:jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep	[Lcom/tencent/mobileqq/app/automator/AsyncStep;
+    //   79: invokevirtual 316	com/tencent/mobileqq/app/automator/Automator:a	([Lcom/tencent/mobileqq/app/automator/AsyncStep;)V
     //   82: aload_0
     //   83: monitorexit
     //   84: return
     //   85: aload_3
-    //   86: getfield 195	com/tencent/mobileqq/data/FlowMusic:songMid	Ljava/lang/String;
-    //   89: invokestatic 222	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   86: getfield 196	com/tencent/mobileqq/data/FlowMusic:songMid	Ljava/lang/String;
+    //   89: invokestatic 223	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   92: ifeq +17 -> 109
     //   95: aload_3
     //   96: aload_1
-    //   97: checkcast 276	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask
-    //   100: getfield 300	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask:a	Lcom/tencent/mobileqq/data/FlowMusic;
-    //   103: getfield 195	com/tencent/mobileqq/data/FlowMusic:songMid	Ljava/lang/String;
-    //   106: putfield 195	com/tencent/mobileqq/data/FlowMusic:songMid	Ljava/lang/String;
+    //   97: checkcast 282	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask
+    //   100: getfield 306	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask:a	Lcom/tencent/mobileqq/data/FlowMusic;
+    //   103: getfield 196	com/tencent/mobileqq/data/FlowMusic:songMid	Ljava/lang/String;
+    //   106: putfield 196	com/tencent/mobileqq/data/FlowMusic:songMid	Ljava/lang/String;
     //   109: aload_3
     //   110: aload_1
-    //   111: checkcast 276	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask
-    //   114: getfield 300	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask:a	Lcom/tencent/mobileqq/data/FlowMusic;
-    //   117: getfield 217	com/tencent/mobileqq/data/FlowMusic:storeTimeStamp	J
-    //   120: putfield 217	com/tencent/mobileqq/data/FlowMusic:storeTimeStamp	J
+    //   111: checkcast 282	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask
+    //   114: getfield 306	dov/com/qq/im/capture/control/GetSingleFullMusicInfoTask:a	Lcom/tencent/mobileqq/data/FlowMusic;
+    //   117: getfield 218	com/tencent/mobileqq/data/FlowMusic:storeTimeStamp	J
+    //   120: putfield 218	com/tencent/mobileqq/data/FlowMusic:storeTimeStamp	J
     //   123: aload_3
     //   124: iconst_1
-    //   125: putfield 213	com/tencent/mobileqq/data/FlowMusic:sourceType	I
+    //   125: putfield 214	com/tencent/mobileqq/data/FlowMusic:sourceType	I
     //   128: aload_3
     //   129: astore_1
     //   130: goto -101 -> 29
@@ -287,10 +282,15 @@ public class GetAllFullMusicInfoTask
     //   85	109	133	finally
     //   109	128	133	finally
   }
+  
+  public void c()
+  {
+    a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.control.GetAllFullMusicInfoTask
  * JD-Core Version:    0.7.0.1
  */

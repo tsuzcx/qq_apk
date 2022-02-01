@@ -1,8 +1,30 @@
-import android.view.View;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public abstract interface beph
+public class beph
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  public int a;
+  public String a;
+  public ArrayList<beph> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  
+  public beph() {}
+  
+  public beph(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = ((Integer)bepg.a().get(paramString)).intValue();
+  }
 }
 
 

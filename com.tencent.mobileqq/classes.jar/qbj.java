@@ -1,95 +1,41 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class qbj
-  extends pxl
 {
-  public qbj(Context paramContext, bdbb parambdbb, rqj paramrqj)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramContext, parambdbb, paramrqj);
-    if (QLog.isColorLevel()) {
-      QLog.d("FeedItemCellTypeUgcPlain", 2, "ugc plain create");
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    if (paramBaseArticleInfo.mSinglePicture != null) {}
+    for (Object localObject = paramBaseArticleInfo.mSinglePicture.getFile();; localObject = null)
+    {
+      localJSONObject2.put("article_large_imge_url", localObject);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      if (paramBaseArticleInfo.mGalleryPicNumber > 1)
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + anni.a(2131711666));
+        localJSONObject1.put("id_gallery_cnt", localObject);
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("gallery_icon", "qq_readinjoy_gallery_count");
+        localJSONObject1.put("id_gallery_img", localObject);
+        localJSONObject1.put("id_gallery_bg", new JSONObject());
+      }
+      qcd.a(paramBaseArticleInfo, localJSONObject1, true);
+      qcd.l(paramBaseArticleInfo, localJSONObject1);
+      qcd.i(paramBaseArticleInfo, localJSONObject1);
+      qcd.a(localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_gallery_channel_large_cell");
+      qcd.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
     }
-  }
-  
-  public pxl a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return d(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).q().l().g().n().j();
-  }
-  
-  public pxl d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FeedItemCellTypeUgcPlain", 2, "ugc plain layout");
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
-  }
-  
-  public pxl e()
-  {
-    return null;
-  }
-  
-  public pxl g()
-  {
-    return super.g();
-  }
-  
-  public pxl o()
-  {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
-  }
-  
-  public pxl p()
-  {
-    super.p();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_Pxt);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a(this.jdField_a_of_type_Pxt);
-    }
-    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qbj
  * JD-Core Version:    0.7.0.1
  */

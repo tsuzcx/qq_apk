@@ -1,93 +1,76 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aawc
-  extends aavz
+  extends aqkz<aawb>
 {
-  private ArrayList<String> a;
-  
-  public aawc(JSONObject paramJSONObject)
+  @NonNull
+  public aawb a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    a(paramJSONObject);
+    return new aawb();
   }
   
-  public String a()
+  @Nullable
+  public aawb a(aqlg[] paramArrayOfaqlg)
   {
-    String str1 = super.a();
-    try
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-      JSONObject localJSONObject = new JSONObject(str1);
-      localJSONObject.put("patchName", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("patchUrl", this.b);
-      localJSONObject.put("patchSize", this.jdField_a_of_type_Int);
-      StringBuilder localStringBuilder = new StringBuilder("");
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          String str3 = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str3)) {
-            localStringBuilder.append(str3).append(";");
-          }
-        }
-      }
-      localJSONException.put("classIdList", localStringBuilder.toString());
+      aawb localaawb = aawb.a(paramArrayOfaqlg[0].a);
+      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
+      a(localaawb);
+      return localaawb;
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik writeToJsonString", localJSONException);
-      return str1;
-    }
-    String str2 = localJSONException.toString();
-    return str2;
+    QLog.e("Q.videostory.config.VSEntranceProcessor", 2, "onParsed conf content is null!");
+    return null;
   }
   
-  public ArrayList<String> a()
+  public void a(aawb paramaawb)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    int i = 0;
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    paramJSONObject = paramJSONObject.optString("classIdList", "").split(";");
-    if ((paramJSONObject != null) && (paramJSONObject.length > 0))
+    if (paramaawb != null)
     {
-      int j = paramJSONObject.length;
-      while (i < j)
-      {
-        CharSequence localCharSequence = paramJSONObject[i];
-        if (!TextUtils.isEmpty(localCharSequence)) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localCharSequence);
-        }
-        i += 1;
-      }
+      aavz.a().a("mine_videostory_entrance", paramaawb.a());
+      aavz.a().a("enable_click_take_picture", paramaawb.b());
+      aavz.a().a("mine_videostory_drawer_entrance", paramaawb.c());
+      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onUpdate:" + paramaawb.toString());
     }
   }
   
-  public boolean a(boolean paramBoolean)
+  public Class<aawb> clazz()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik isValidConfig classIdList is empty");
-      return false;
-    }
-    return super.a(paramBoolean);
+    return aawb.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 411;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aawc
  * JD-Core Version:    0.7.0.1
  */

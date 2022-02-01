@@ -1,95 +1,95 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class awsh
 {
-  public static awsh a;
-  public SparseArray<awsi> a;
+  public String a;
+  public List<String> a;
+  public boolean a;
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public awsh()
   {
-    if (jdField_a_of_type_Awsh == null) {
-      return a(awsk.a(paramQQAppInterface.getApp()) + "xydata.json");
-    }
-    return true;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public static boolean a(String paramString)
+  public static awsh a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("VipWZRYTemplateConfig", 2, "configPath = " + paramString);
-      }
-      return false;
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
     }
-    Object localObject = new File(paramString);
     try
     {
-      localObject = bdhb.b((File)localObject);
-      if (TextUtils.isEmpty((CharSequence)localObject))
+      awsh localawsh = new awsh();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("mainswitch", 0) == 1) {}
+      for (;;)
       {
-        QLog.e("VipWZRYTemplateConfig", 1, paramString + " content is empty.");
-        return false;
+        localawsh.jdField_a_of_type_Boolean = bool;
+        localawsh.jdField_a_of_type_JavaLangString = paramString.optString("qmcf", "");
+        paramString = a(paramString.optJSONArray("black"));
+        localawsh.jdField_a_of_type_JavaUtilList.addAll(paramString);
+        return localawsh;
+        bool = false;
       }
+      return null;
     }
     catch (Exception paramString)
     {
-      QLog.e("VipWZRYTemplateConfig", 1, paramString.getMessage());
-      return false;
+      QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData parse error", paramString);
     }
-    paramString = new awsh();
-    localObject = new JSONObject((String)localObject).optJSONArray("cardWZResourceGrade");
-    int i;
-    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+  }
+  
+  private static List<String> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray != null)
     {
-      paramString.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < ((JSONArray)localObject).length())
+      int j = paramJSONArray.length();
+      int i = 0;
+      for (;;)
       {
-        JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
-        if (localJSONObject != null)
-        {
-          awsi localawsi = new awsi();
-          localawsi.jdField_a_of_type_Int = localJSONObject.optInt("wz_id");
-          localawsi.jdField_a_of_type_JavaLangString = localJSONObject.optString("wz_name");
-          localawsi.jdField_b_of_type_JavaLangString = localJSONObject.optString("wz_format");
-          localawsi.jdField_b_of_type_Int = localJSONObject.optInt("position_type", 1);
-          if (localJSONObject.has("wz_icon"))
+        if (i < j) {
+          try
           {
-            awsj localawsj = new awsj();
-            localJSONObject = localJSONObject.getJSONObject("wz_icon");
-            localawsj.jdField_a_of_type_JavaLangString = localJSONObject.optString("src");
-            localawsj.jdField_a_of_type_Int = localJSONObject.optInt("size");
-            localawsj.jdField_b_of_type_JavaLangString = localJSONObject.optString("md5");
-            localawsj.jdField_b_of_type_Int = localJSONObject.optInt("width");
-            localawsj.jdField_c_of_type_Int = localJSONObject.optInt("height");
-            localawsj.jdField_c_of_type_JavaLangString = localJSONObject.optString("mainColor");
-            localawsi.jdField_a_of_type_Awsj = localawsj;
+            localArrayList.add(paramJSONArray.getString(i).trim());
+            i += 1;
           }
-          paramString.jdField_a_of_type_AndroidUtilSparseArray.put(localawsi.jdField_a_of_type_Int, localawsi);
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData processJsonArray error", localException);
+            }
+          }
         }
       }
-      else
-      {
-        jdField_a_of_type_Awsh = paramString;
-        return true;
-      }
-      i += 1;
     }
+    return localArrayList;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awsh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class aphb
-  implements CompoundButton.OnCheckedChangeListener
+class aphb
+  implements apig
 {
-  public aphb(DataReportViewer paramDataReportViewer) {}
+  aphb(apha paramapha) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(long paramLong)
   {
-    this.a.a = paramBoolean;
-    if (this.a.a) {
-      this.a.a();
+    ark.VariantWrapper localVariantWrapper = this.a.jdField_a_of_type_Apgx.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    apgu.a(this.a.jdField_a_of_type_Apgx.a, this.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

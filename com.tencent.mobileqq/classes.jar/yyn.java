@@ -1,23 +1,27 @@
-import android.animation.AnimatorSet;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.support.annotation.NonNull;
 
-class yyn
-  implements ViewTreeObserver.OnPreDrawListener
+public class yyn
+  extends weu
 {
-  yyn(yyk paramyyk) {}
+  public final int a;
+  public final long a;
+  @NonNull
+  public final yyd a;
+  public final boolean a;
+  public final long b;
   
-  public boolean onPreDraw()
+  public yyn(@NonNull yyd paramyyd, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    yyk.a(this.a).start();
-    yyk.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    this.jdField_a_of_type_Yyd = paramyyd;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yyn
  * JD-Core Version:    0.7.0.1
  */

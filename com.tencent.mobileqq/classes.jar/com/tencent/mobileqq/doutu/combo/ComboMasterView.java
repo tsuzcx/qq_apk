@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import aepi;
+import afur;
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorSet;
@@ -20,11 +20,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import apki;
-import apkj;
-import apkk;
-import apkl;
-import apkm;
+import arnc;
+import arnd;
+import arne;
+import arnf;
+import arng;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(14)
@@ -35,9 +35,9 @@ public class ComboMasterView
   private int jdField_a_of_type_Int;
   AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public apkj a;
-  apkl jdField_a_of_type_Apkl;
-  private apkm jdField_a_of_type_Apkm;
+  public arnd a;
+  arnf jdField_a_of_type_Arnf;
+  private arng jdField_a_of_type_Arng;
   boolean jdField_a_of_type_Boolean = false;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   boolean jdField_b_of_type_Boolean = true;
@@ -82,8 +82,8 @@ public class ComboMasterView
         float f1 = (int)(getContext().getResources().getDisplayMetrics().density * 25.0F + 0.5D);
       }
     }
-    f1 = f1 + aepi.a(54.0F, getContext().getResources()) + getContext().getResources().getDimension(2131298914);
-    f2 = i - aepi.a(40.0F, getContext().getResources());
+    f1 = f1 + afur.a(54.0F, getContext().getResources()) + getContext().getResources().getDimension(2131298998);
+    f2 = i - afur.a(40.0F, getContext().getResources());
     f3 = i / 2.0F;
     f4 = j / 2.0F;
     f5 = f2 - f3;
@@ -99,41 +99,41 @@ public class ComboMasterView
     return new PathMeasure(localPath, false);
   }
   
-  private Drawable a(View paramView, apkl paramapkl)
+  private Drawable a(View paramView, arnf paramarnf)
   {
     paramView = paramView.getLayoutParams();
-    paramView.width = paramapkl.jdField_a_of_type_Int;
-    paramView.height = paramapkl.b;
-    return paramapkl.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramView.width = paramarnf.jdField_a_of_type_Int;
+    paramView.height = paramarnf.b;
+    return paramarnf.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
   
   private boolean a(int paramInt)
   {
-    apkl localapkl = apkk.c(paramInt);
-    if (localapkl == null)
+    arnf localarnf = arne.c(paramInt);
+    if (localarnf == null)
     {
       this.jdField_b_of_type_Boolean = false;
       return false;
     }
-    this.jdField_a_of_type_Apkl = localapkl;
+    this.jdField_a_of_type_Arnf = localarnf;
     return true;
   }
   
   private boolean a(ImageView paramImageView, int paramInt)
   {
-    apkl localapkl = apkk.b(paramInt);
-    if (localapkl == null)
+    arnf localarnf = arne.b(paramInt);
+    if (localarnf == null)
     {
       this.jdField_b_of_type_Boolean = false;
       return false;
     }
-    paramImageView.setImageDrawable(a(paramImageView, localapkl));
+    paramImageView.setImageDrawable(a(paramImageView, localarnf));
     return true;
   }
   
   public void a()
   {
-    setBackgroundDrawable(a(this, this.jdField_a_of_type_Apkl));
+    setBackgroundDrawable(a(this, this.jdField_a_of_type_Arnf));
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this, "scaleX", new float[] { 0.0F, 1.1F });
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this, "scaleY", new float[] { 0.0F, 1.1F });
     localObjectAnimator1.setDuration(200L);
@@ -144,7 +144,7 @@ public class ComboMasterView
     localObjectAnimator4.setDuration(200L);
     Object localObject = a();
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, ((PathMeasure)localObject).getLength() });
-    localValueAnimator.addUpdateListener(new apki(this, (PathMeasure)localObject, new float[2]));
+    localValueAnimator.addUpdateListener(new arnc(this, (PathMeasure)localObject, new float[2]));
     localValueAnimator.setDuration(400L);
     localObject = ObjectAnimator.ofFloat(this, "alpha", new float[] { 1.0F, 0.0F });
     ObjectAnimator localObjectAnimator5 = ObjectAnimator.ofFloat(this, "scaleX", new float[] { 1.0F, 0.27F });
@@ -177,18 +177,18 @@ public class ComboMasterView
     }
   }
   
-  public void a(apkm paramapkm)
+  public void a(arng paramarng)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362260));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362261));
-    this.c = ((ImageView)findViewById(2131362262));
-    this.jdField_a_of_type_Apkm = paramapkm;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362336));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362337));
+    this.c = ((ImageView)findViewById(2131362338));
+    this.jdField_a_of_type_Arng = paramarng;
   }
   
-  public boolean a(apkj paramapkj)
+  public boolean a(arnd paramarnd)
   {
-    this.jdField_a_of_type_Apkj = paramapkj;
-    int k = this.jdField_a_of_type_Apkj.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Arnd = paramarnd;
+    int k = this.jdField_a_of_type_Arnd.jdField_a_of_type_Int;
     int j = k / 10;
     int i;
     if (j != 0)
@@ -215,9 +215,9 @@ public class ComboMasterView
         }
         for (;;)
         {
-          setPadding(aepi.a(162.0F / apkk.a, getContext().getResources()), 0, 0, 0);
-          ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams()).setMargins(0, 0, 0 - aepi.a(20.0F / apkk.a, getContext().getResources()), 0);
-          ((LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams()).setMargins(0, 0, 0 - aepi.a(20.0F / apkk.a, getContext().getResources()), 0);
+          setPadding(afur.a(162.0F / arne.a, getContext().getResources()), 0, 0, 0);
+          ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams()).setMargins(0, 0, 0 - afur.a(20.0F / arne.a, getContext().getResources()), 0);
+          ((LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams()).setMargins(0, 0, 0 - afur.a(20.0F / arne.a, getContext().getResources()), 0);
           this.jdField_a_of_type_Int = k;
           return this.jdField_b_of_type_Boolean;
           this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -241,13 +241,13 @@ public class ComboMasterView
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_Apkm != null) && (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null))
+    if ((this.jdField_a_of_type_Arng != null) && (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null))
     {
       if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Apkm.a(paramAnimator, this);
+        this.jdField_a_of_type_Arng.a(paramAnimator, this);
       }
       paramAnimator.removeAllListeners();
-      this.jdField_a_of_type_Apkm = null;
+      this.jdField_a_of_type_Arng = null;
     }
   }
   
@@ -257,7 +257,7 @@ public class ComboMasterView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboMasterView
  * JD-Core Version:    0.7.0.1
  */

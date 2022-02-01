@@ -1,39 +1,35 @@
-import Wallet.RspWalletConfig;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.connections.OverlappingImgLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import com.tencent.widget.ThemeImageView;
+import java.util.List;
 
-class aixt
-  implements BusinessObserver
+public class aixt
+  implements aobv
 {
-  aixt(aixs paramaixs, long paramLong, aixv paramaixv, WeakReference paramWeakReference) {}
+  public aixt(OverlappingImgLayout paramOverlappingImgLayout) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((paramInt != 10) || (!paramBoolean)) {}
-    try
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletConfigManager", 2, "fail get rsp:" + this.jdField_a_of_type_Long);
-      }
-      aixs.a(this.jdField_a_of_type_Aixs, -1L);
       return;
-    }
-    catch (Throwable paramBundle)
-    {
-      for (;;)
+      paramInt1 = 0;
+      while (paramInt1 < OverlappingImgLayout.a(this.a).length)
       {
-        paramBundle.printStackTrace();
+        if ((paramInt1 < 3) && (paramString.equals(OverlappingImgLayout.a(this.a)[paramInt1])))
+        {
+          ((ThemeImageView)OverlappingImgLayout.a(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
+          if (QLog.isColorLevel()) {
+            QLog.d("OverlappingImgLayout", 2, "mDecodeTaskCompletionListener update");
+          }
+        }
+        paramInt1 += 1;
       }
-    }
-    paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletConfigManager", 2, "RspWalletConfig|" + paramBundle);
-    }
-    aixs.a(this.jdField_a_of_type_Aixs).handleRsp(paramBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_Aixv, (aixs)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    aixs.a(this.jdField_a_of_type_Aixs, -1L);
+    } while (!QLog.isColorLevel());
+    QLog.d("OverlappingImgLayout", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
   }
 }
 

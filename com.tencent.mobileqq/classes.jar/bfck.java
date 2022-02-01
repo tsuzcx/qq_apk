@@ -1,49 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Parcelable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
-import com.tencent.open.model.AppInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.Button;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class bfck
-  extends bfqu
+  implements Animation.AnimationListener
 {
-  public bfck(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
+  public bfck(ReciteFragment paramReciteFragment, Button paramButton) {}
   
-  protected void a(boolean paramBoolean, List<AppInfo> paramList)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorityControlAppDetailsActivity", 2, "onDelApp: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
-    }
-    Object localObject;
-    if (paramBoolean)
-    {
-      localObject = alud.a(2131701188) + AuthorityControlAppDetailsFragment.a(this.a).b() + alud.a(2131701186);
-      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 2, (CharSequence)localObject, 0).a();
-      localObject = new Intent();
-      if ((paramList != null) && (paramList.size() == 1))
-      {
-        ((Intent)localObject).putExtra("KEY_DELETED_INFO", (Parcelable)paramList.get(0));
-        AuthorityControlAppDetailsFragment.a(this.a).setResult(-1, (Intent)localObject);
-      }
-      AuthorityControlAppDetailsFragment.a(this.a).finish();
-      localObject = AuthorityControlAppDetailsFragment.a(this.a);
-      if (!paramBoolean) {
-        break label236;
-      }
-    }
-    label236:
-    for (paramList = "0";; paramList = "1")
-    {
-      azqs.b((QQAppInterface)localObject, "dc00898", "", "", "0X8009E1C", "0X8009E1C", 0, 0, paramList, "", String.valueOf(AuthorityControlAppDetailsFragment.a(this.a).a()), "");
-      return;
-      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 1, alud.a(2131701187), 0).a();
-      break;
-    }
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

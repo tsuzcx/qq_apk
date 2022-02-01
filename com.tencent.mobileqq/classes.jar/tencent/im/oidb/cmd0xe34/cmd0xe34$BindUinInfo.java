@@ -17,7 +17,7 @@ public final class cmd0xe34$BindUinInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe34.cmd0xe34.BindUinInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import toi;
-import tpf;
+import uvi;
+import uwf;
 
 public class PublicAccountImageCollectionMainActivity$3$10
   implements Runnable
 {
-  public PublicAccountImageCollectionMainActivity$3$10(tpf paramtpf) {}
+  public PublicAccountImageCollectionMainActivity$3$10(uwf paramuwf) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class PublicAccountImageCollectionMainActivity$3$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.10
  * JD-Core Version:    0.7.0.1
  */

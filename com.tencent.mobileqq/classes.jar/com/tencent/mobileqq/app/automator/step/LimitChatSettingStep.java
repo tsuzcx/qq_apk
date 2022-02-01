@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aqge;
+import asli;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 
@@ -9,7 +9,7 @@ public class LimitChatSettingStep
 {
   public int a()
   {
-    aqge.a(this.a.app);
+    asli.a(this.a.app);
     return super.a();
   }
 }

@@ -14,23 +14,23 @@ import android.os.Handler;
 import android.support.v4.util.LruCache;
 import android.text.TextUtils;
 import android.view.View;
-import aovs;
-import aovt;
-import ausf;
-import bayu;
-import bdhb;
-import bekl;
-import bekm;
-import bekn;
-import bekt;
-import bekv;
-import bekw;
-import bekx;
-import beky;
-import bekz;
-import bela;
-import belc;
-import bjdm;
+import aqyi;
+import aqyj;
+import awzl;
+import bdzx;
+import bgmg;
+import bhrp;
+import bhrq;
+import bhrr;
+import bhrx;
+import bhrz;
+import bhsa;
+import bhsb;
+import bhsc;
+import bhsd;
+import bhse;
+import bhsg;
+import blru;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -52,8 +52,10 @@ import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 import mqq.os.MqqHandler;
-import ndq;
+import nmj;
 import org.apache.http.util.EncodingUtils;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 import wns_proxy.EnumHttpMethod;
@@ -66,13 +68,13 @@ public class WebSoService
   private static volatile WebSoService jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService;
   private static Object jdField_a_of_type_JavaLangObject = new Object();
   private static String jdField_a_of_type_JavaLangString = "";
-  LruCache<String, WebSoService.WebSoState> jdField_a_of_type_AndroidSupportV4UtilLruCache = new bekt(this, 10);
+  LruCache<String, WebSoService.WebSoState> jdField_a_of_type_AndroidSupportV4UtilLruCache = new bhrx(this, 10);
   private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private boolean jdField_a_of_type_Boolean;
   
   private static Drawable a(String paramString)
   {
-    String str = belc.b(paramString);
+    String str = bhsg.b(paramString);
     if ((TextUtils.isEmpty(str)) || (!new File(str).exists())) {
       return null;
     }
@@ -87,9 +89,9 @@ public class WebSoService
         paramString = BitmapFactory.decodeFile(str, paramString);
         if (paramString == null)
         {
-          paramString = bayu.a;
+          paramString = bdzx.a;
           localURLDrawableOptions.mLoadingDrawable = paramString;
-          localURLDrawableOptions.mFailedDrawable = bayu.a;
+          localURLDrawableOptions.mFailedDrawable = bdzx.a;
           localURLDrawableOptions.mUseAutoScaleParams = false;
           return URLDrawable.getDrawable(new File(str), localURLDrawableOptions);
         }
@@ -112,6 +114,25 @@ public class WebSoService
     }
   }
   
+  @Nullable
+  private bhrp a(WebSoService.WebSoState paramWebSoState, HttpRsp paramHttpRsp, bhrp parambhrp)
+  {
+    if (paramHttpRsp != null) {
+      parambhrp = new bhrp(paramHttpRsp);
+    }
+    for (;;)
+    {
+      if (paramHttpRsp == null)
+      {
+        paramWebSoState.jdField_a_of_type_Int = 10002;
+        paramWebSoState.jdField_d_of_type_JavaLangString = "rsp is null";
+        a(paramWebSoState);
+        parambhrp = null;
+      }
+      return parambhrp;
+    }
+  }
+  
   public static WebSoService a()
   {
     if (jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService == null) {}
@@ -122,6 +143,16 @@ public class WebSoService
       }
       return jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService;
     }
+  }
+  
+  @NotNull
+  private String a(WebSoService.WebSoState paramWebSoState, String paramString)
+  {
+    paramString = paramString.split(":")[1].trim();
+    if (paramWebSoState.jdField_a_of_type_Bhrq.jdField_e_of_type_Int < 3) {
+      paramWebSoState.jdField_a_of_type_Bhrq.jdField_e_of_type_Int = 3;
+    }
+    return paramString;
   }
   
   private static String a(JSONObject paramJSONObject, WebSoService.WebSoState paramWebSoState)
@@ -172,7 +203,7 @@ public class WebSoService
   
   public static void a(Activity paramActivity, String paramString)
   {
-    if (aovt.c().jdField_c_of_type_Int <= 0) {}
+    if (aqyj.c().jdField_c_of_type_Int <= 0) {}
     do
     {
       do
@@ -180,7 +211,7 @@ public class WebSoService
         return;
         paramString = a(paramString);
       } while (paramString == null);
-      paramActivity = paramActivity.findViewById(2131370086);
+      paramActivity = paramActivity.findViewById(2131370529);
     } while (paramActivity == null);
     Drawable localDrawable = paramActivity.getBackground();
     paramActivity.setBackgroundDrawable(paramString);
@@ -199,8 +230,8 @@ public class WebSoService
       return;
       try
       {
-        long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-        localObject = belc.a(paramUri);
+        long l = bhsg.a();
+        localObject = bhsg.a(paramUri);
         if (!b().getString("templateTag_" + String.valueOf(l) + (String)localObject, "").equals(paramJSONObject.optString("template-tag")))
         {
           if (!QLog.isColorLevel()) {
@@ -216,7 +247,7 @@ public class WebSoService
         return;
       }
     }
-    paramUri = bdhb.b(new File(belc.d(paramUri) + "_data.txt"));
+    paramUri = bgmg.b(new File(bhsg.d(paramUri) + "_data.txt"));
     if (!TextUtils.isEmpty(paramUri)) {}
     for (paramUri = new JSONObject(paramUri);; paramUri = null)
     {
@@ -266,9 +297,26 @@ public class WebSoService
     }
   }
   
-  private void a(Uri paramUri, String paramString, File paramFile, WebSoService.WebSoState paramWebSoState, bela parambela)
+  private void a(Uri paramUri, String paramString, File paramFile, WebSoService.WebSoState paramWebSoState, bhse parambhse)
   {
-    ThreadManager.getFileThreadHandler().post(new WebSoService.3(this, paramFile, paramString, parambela, paramUri));
+    ThreadManager.getFileThreadHandler().post(new WebSoService.3(this, paramFile, paramString, parambhse, paramUri));
+  }
+  
+  private void a(Bundle paramBundle, WebSoService.WebSoState paramWebSoState, bhrp parambhrp, String paramString1, Uri paramUri, String paramString2, String paramString3, String paramString4)
+  {
+    if (TextUtils.isEmpty(paramString3))
+    {
+      if (QLog.isDebugVersion()) {
+        QLog.i("WebSoService", 1, "webso etag=" + paramString2 + ",url=" + paramBundle.getString("url"));
+      }
+      a(parambhrp, paramString2, paramString4, paramUri, paramWebSoState);
+      paramWebSoState.jdField_b_of_type_JavaLangString = paramString1;
+      paramWebSoState.jdField_a_of_type_Boolean = true;
+      paramWebSoState.f = false;
+      a(paramWebSoState);
+      return;
+    }
+    c(paramWebSoState, paramString1, paramUri, paramString2, paramString3, paramString4);
   }
   
   private void a(Handler paramHandler, WebSoService.WebSoState paramWebSoState)
@@ -285,7 +333,7 @@ public class WebSoService
     localBundle.putBoolean("key_wns_cache_hit", paramWebSoState.jdField_c_of_type_Boolean);
     if ((paramWebSoState.jdField_c_of_type_Boolean) && (TextUtils.isEmpty(paramWebSoState.jdField_b_of_type_JavaLangString)))
     {
-      paramWebSoState.jdField_b_of_type_JavaLangString = belc.d(paramWebSoState.jdField_a_of_type_JavaLangString);
+      paramWebSoState.jdField_b_of_type_JavaLangString = bhsg.d(paramWebSoState.jdField_a_of_type_JavaLangString);
       if (!TextUtils.isEmpty(paramWebSoState.jdField_b_of_type_JavaLangString)) {
         paramWebSoState.f = true;
       }
@@ -297,7 +345,7 @@ public class WebSoService
     localBundle.putInt("req_state", paramWebSoState.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
     localBundle.putBoolean("is_silent_mode", paramWebSoState.jdField_e_of_type_Boolean);
     localBundle.putParcelable("key_webso_3", paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
-    belc.a("send webso3 " + paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.toString());
+    bhsg.a("send webso3 " + paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.toString());
     paramWebSoState = paramHandler.obtainMessage(203);
     paramWebSoState.obj = localBundle;
     paramHandler.sendMessage(paramWebSoState);
@@ -310,101 +358,101 @@ public class WebSoService
     //   0: aconst_null
     //   1: astore_3
     //   2: aload_0
-    //   3: invokevirtual 474	android/view/View:getMeasuredWidth	()I
+    //   3: invokevirtual 508	android/view/View:getMeasuredWidth	()I
     //   6: aload_0
-    //   7: invokevirtual 477	android/view/View:getHeight	()I
-    //   10: getstatic 483	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   13: invokestatic 489	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   7: invokevirtual 511	android/view/View:getHeight	()I
+    //   10: getstatic 517	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   13: invokestatic 523	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   16: astore 4
     //   18: aload_0
-    //   19: new 491	android/graphics/Canvas
+    //   19: new 525	android/graphics/Canvas
     //   22: dup
     //   23: aload 4
-    //   25: invokespecial 492	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
-    //   28: invokevirtual 496	android/view/View:draw	(Landroid/graphics/Canvas;)V
+    //   25: invokespecial 526	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   28: invokevirtual 530	android/view/View:draw	(Landroid/graphics/Canvas;)V
     //   31: aload 4
-    //   33: invokestatic 501	bjua:a	(Landroid/graphics/Bitmap;)Ljava/lang/String;
+    //   33: invokestatic 535	bmik:a	(Landroid/graphics/Bitmap;)Ljava/lang/String;
     //   36: astore_0
     //   37: aload_0
     //   38: getstatic 26	com/tencent/mobileqq/webview/webso/WebSoService:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   41: invokestatic 504	bjua:a	(Ljava/lang/String;Ljava/lang/String;)I
+    //   41: invokestatic 538	bmik:a	(Ljava/lang/String;Ljava/lang/String;)I
     //   44: istore_2
-    //   45: new 282	java/lang/StringBuilder
+    //   45: new 305	java/lang/StringBuilder
     //   48: dup
-    //   49: invokespecial 283	java/lang/StringBuilder:<init>	()V
-    //   52: ldc_w 506
-    //   55: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: invokespecial 306	java/lang/StringBuilder:<init>	()V
+    //   52: ldc_w 540
+    //   55: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: aload_0
-    //   59: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: ldc_w 508
-    //   65: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: ldc_w 542
+    //   65: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: getstatic 26	com/tencent/mobileqq/webview/webso/WebSoService:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   71: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: ldc_w 510
-    //   77: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: ldc_w 544
+    //   77: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   80: iload_2
-    //   81: invokevirtual 513	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   84: invokevirtual 294	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: invokestatic 453	belc:a	(Ljava/lang/String;)V
+    //   81: invokevirtual 547	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 317	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokestatic 487	bhsg:a	(Ljava/lang/String;)V
     //   90: aload_0
-    //   91: ldc_w 515
-    //   94: invokevirtual 305	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   91: ldc_w 549
+    //   94: invokevirtual 328	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   97: ifne +128 -> 225
     //   100: aload_0
     //   101: putstatic 26	com/tencent/mobileqq/webview/webso/WebSoService:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   104: new 517	java/io/FileOutputStream
+    //   104: new 551	java/io/FileOutputStream
     //   107: dup
     //   108: aload_1
-    //   109: invokestatic 51	belc:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   112: invokespecial 518	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   109: invokestatic 51	bhsg:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   112: invokespecial 552	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   115: astore_1
     //   116: aload_1
     //   117: astore_0
     //   118: aload_1
     //   119: astore_3
     //   120: aload 4
-    //   122: getstatic 524	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   122: getstatic 558	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   125: bipush 70
     //   127: aload_1
-    //   128: invokevirtual 528	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   128: invokevirtual 562	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   131: pop
     //   132: aload_1
     //   133: astore_0
     //   134: aload_1
     //   135: astore_3
     //   136: aload_1
-    //   137: invokevirtual 531	java/io/FileOutputStream:close	()V
+    //   137: invokevirtual 565	java/io/FileOutputStream:close	()V
     //   140: aload_1
     //   141: astore_0
     //   142: aload_1
     //   143: astore_3
     //   144: aload 4
-    //   146: invokevirtual 534	android/graphics/Bitmap:recycle	()V
+    //   146: invokevirtual 568	android/graphics/Bitmap:recycle	()V
     //   149: aload_1
     //   150: astore_0
     //   151: aload_1
     //   152: astore_3
-    //   153: ldc_w 536
-    //   156: invokestatic 453	belc:a	(Ljava/lang/String;)V
+    //   153: ldc_w 570
+    //   156: invokestatic 487	bhsg:a	(Ljava/lang/String;)V
     //   159: aload_1
     //   160: ifnull +7 -> 167
     //   163: aload_1
-    //   164: invokevirtual 531	java/io/FileOutputStream:close	()V
+    //   164: invokevirtual 565	java/io/FileOutputStream:close	()V
     //   167: return
     //   168: astore_1
     //   169: aconst_null
     //   170: astore_3
     //   171: aload_3
     //   172: astore_0
-    //   173: ldc 131
+    //   173: ldc 173
     //   175: iconst_1
     //   176: aload_1
-    //   177: invokevirtual 539	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   180: invokestatic 541	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   177: invokevirtual 573	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   180: invokestatic 575	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   183: aload_3
     //   184: ifnull -17 -> 167
     //   187: aload_3
-    //   188: invokevirtual 531	java/io/FileOutputStream:close	()V
+    //   188: invokevirtual 565	java/io/FileOutputStream:close	()V
     //   191: return
     //   192: astore_0
     //   193: return
@@ -414,7 +462,7 @@ public class WebSoService
     //   197: aload_1
     //   198: ifnull +7 -> 205
     //   201: aload_1
-    //   202: invokevirtual 531	java/io/FileOutputStream:close	()V
+    //   202: invokevirtual 565	java/io/FileOutputStream:close	()V
     //   205: aload_0
     //   206: athrow
     //   207: astore_0
@@ -458,17 +506,131 @@ public class WebSoService
     //   153	159	221	java/lang/Throwable
   }
   
-  private static void a(bekl parambekl, String paramString1, String paramString2, Uri paramUri, WebSoService.WebSoState paramWebSoState)
+  private static void a(bhrp parambhrp, String paramString1, String paramString2, Uri paramUri, WebSoService.WebSoState paramWebSoState)
   {
-    ThreadManager.getFileThreadHandler().post(new WebSoService.10(parambekl, paramUri, paramString1, paramString2, paramWebSoState));
+    ThreadManager.getFileThreadHandler().post(new WebSoService.10(parambhrp, paramUri, paramString1, paramString2, paramWebSoState));
   }
   
   public static void a(CustomWebView paramCustomWebView)
   {
-    if (aovt.c().jdField_c_of_type_Int <= 0) {
+    if (aqyj.c().jdField_c_of_type_Int <= 0) {
       return;
     }
     paramCustomWebView.post(new WebSoService.13(paramCustomWebView));
+  }
+  
+  private void a(WebSoService.WebSoState paramWebSoState, Uri paramUri)
+  {
+    paramWebSoState.jdField_a_of_type_Int = 10503;
+    paramWebSoState.jdField_c_of_type_Boolean = false;
+    paramWebSoState.jdField_a_of_type_Boolean = true;
+    bhsg.b(paramUri);
+    a(paramWebSoState);
+  }
+  
+  private void a(WebSoService.WebSoState paramWebSoState, bhrp parambhrp, Uri paramUri, String paramString1, String paramString2)
+  {
+    bhsg.a("result = json");
+    paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_a_of_type_Boolean = true;
+    paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_a_of_type_JavaLangString = paramString1;
+    paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_b_of_type_JavaLangString = paramString2;
+    paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_c_of_type_JavaLangString = parambhrp.jdField_d_of_type_JavaLangString;
+    paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_d_of_type_JavaLangString = paramUri.toString();
+    paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_e_of_type_JavaLangString = "webso-data-json";
+    paramWebSoState.jdField_c_of_type_Boolean = true;
+    paramWebSoState.jdField_a_of_type_Bhrq.jdField_c_of_type_Boolean = true;
+    paramWebSoState.jdField_a_of_type_Bhrq.j = "json";
+    a(paramWebSoState);
+  }
+  
+  private void a(WebSoService.WebSoState paramWebSoState, bhrp parambhrp, String paramString1, Uri paramUri, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    paramWebSoState.jdField_e_of_type_Boolean = true;
+    paramWebSoState.jdField_a_of_type_Boolean = false;
+    paramWebSoState.f = false;
+    String str = "{\"code\":-1,\"data\":null}";
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject(paramString1).optJSONObject("data");
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("code", 1);
+      localJSONObject2.put("data", localJSONObject1);
+      localJSONObject2.put("type", paramString2);
+      paramString2 = localJSONObject2.toString();
+      paramWebSoState.jdField_b_of_type_JavaLangString = paramString2;
+      a(paramWebSoState);
+      if (TextUtils.isEmpty(paramString4))
+      {
+        a(parambhrp, paramString3, paramString5, paramUri, paramWebSoState);
+        paramWebSoState.jdField_e_of_type_Boolean = false;
+        return;
+      }
+    }
+    catch (JSONException paramString2)
+    {
+      for (;;)
+      {
+        paramString2.printStackTrace();
+        paramString2 = str;
+      }
+      System.currentTimeMillis();
+      a(paramString1, paramString3, paramString5, paramString4, paramUri, paramWebSoState, true, new bhsb(this, paramWebSoState));
+    }
+  }
+  
+  private void a(WebSoService.WebSoState paramWebSoState, String paramString)
+  {
+    try
+    {
+      paramWebSoState.jdField_a_of_type_Bhrq.jdField_d_of_type_JavaLangString = paramString.trim();
+      return;
+    }
+    catch (Exception paramWebSoState)
+    {
+      paramWebSoState.printStackTrace();
+    }
+  }
+  
+  private void a(WebSoService.WebSoState paramWebSoState, String paramString1, Uri paramUri, String paramString2, String paramString3, String paramString4)
+  {
+    if (TextUtils.isEmpty(paramString3))
+    {
+      paramWebSoState.jdField_b_of_type_JavaLangString = paramString1;
+      paramWebSoState.jdField_a_of_type_Boolean = true;
+      paramWebSoState.f = false;
+      paramWebSoState.jdField_a_of_type_Bhrq.jdField_d_of_type_Int = 0;
+      paramWebSoState.jdField_a_of_type_Bhrq.jdField_c_of_type_Int = 0;
+      a(paramWebSoState);
+    }
+    for (;;)
+    {
+      bhsg.a(paramUri);
+      return;
+      a(paramString1, paramString2, paramString4, paramString3, paramUri, paramWebSoState, false, new bhsa(this, paramWebSoState, System.currentTimeMillis()));
+    }
+  }
+  
+  private void a(WebSoService.WebSoState paramWebSoState, String[] paramArrayOfString, Uri paramUri, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      bhsg.a("result = 304");
+      paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_a_of_type_Boolean = true;
+      paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_a_of_type_JavaLangString = paramString1;
+      paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_b_of_type_JavaLangString = paramString2;
+      paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_c_of_type_JavaLangString = ("\"" + paramArrayOfString[0] + "\"");
+      paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_d_of_type_JavaLangString = paramUri.toString();
+      paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_e_of_type_JavaLangString = "webso-304";
+      paramWebSoState.jdField_c_of_type_Boolean = true;
+      paramWebSoState.jdField_a_of_type_Bhrq.jdField_c_of_type_Boolean = true;
+      paramWebSoState.jdField_a_of_type_Bhrq.j = "304";
+      a(paramWebSoState);
+      return;
+    }
+    QLog.i("WebSoService", 1, "now 304,so return! ");
+    paramWebSoState.jdField_c_of_type_Boolean = true;
+    paramWebSoState.jdField_a_of_type_Bhrq.jdField_c_of_type_Boolean = true;
+    a(paramWebSoState);
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, Uri paramUri)
@@ -476,9 +638,9 @@ public class WebSoService
     ThreadManager.getFileThreadHandler().post(new WebSoService.11(paramString1, paramUri, paramString2, paramString3));
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, Uri paramUri, WebSoService.WebSoState paramWebSoState, boolean paramBoolean, bela parambela)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, Uri paramUri, WebSoService.WebSoState paramWebSoState, boolean paramBoolean, bhse parambhse)
   {
-    ThreadManager.getFileThreadHandler().post(new WebSoService.9(paramString1, paramString2, paramString3, paramString4, paramUri, paramWebSoState, paramBoolean, parambela));
+    ThreadManager.getFileThreadHandler().post(new WebSoService.9(paramString1, paramString2, paramString3, paramString4, paramUri, paramWebSoState, paramBoolean, parambhse));
   }
   
   private void a(boolean paramBoolean, Bundle paramBundle)
@@ -487,7 +649,7 @@ public class WebSoService
     if (TextUtils.isEmpty(str)) {
       return;
     }
-    WebSoService.WebSoState localWebSoState = (WebSoService.WebSoState)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(belc.a(str));
+    WebSoService.WebSoState localWebSoState = (WebSoService.WebSoState)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(bhsg.a(str));
     localWebSoState.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
     localWebSoState.jdField_a_of_type_Int = 0;
     HttpRsp localHttpRsp = (HttpRsp)paramBundle.getSerializable("rsp_data");
@@ -498,308 +660,31 @@ public class WebSoService
     for (;;)
     {
       a(paramBoolean, paramBundle, localWebSoState);
-      QLog.i("WebSoService", 1, "onGetHttpData succed(" + paramBoolean + "), url:" + ndq.c(str, new String[0]));
+      QLog.i("WebSoService", 1, "onGetHttpData succed(" + paramBoolean + "), url:" + nmj.c(str, new String[0]));
       return;
       localBundle.putBoolean("key_rsp_succeed", true);
       localBundle.putString("url", paramBundle.getString("url"));
     }
   }
   
-  private void a(boolean paramBoolean, Bundle paramBundle, WebSoService.WebSoState paramWebSoState)
+  private boolean a(WebSoService.WebSoState paramWebSoState, String paramString1, String[] paramArrayOfString, Uri paramUri, String paramString2, String paramString3, String paramString4)
   {
-    if (paramWebSoState.jdField_a_of_type_Bekm == null)
-    {
-      paramWebSoState.jdField_a_of_type_Bekm = new bekm();
-      paramWebSoState.jdField_a_of_type_Bekm.jdField_a_of_type_Long = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-      paramWebSoState.jdField_a_of_type_Bekm.jdField_a_of_type_JavaLangString = paramWebSoState.jdField_a_of_type_JavaLangString;
-      paramWebSoState.jdField_a_of_type_Bekm.jdField_a_of_type_Boolean = true;
+    boolean bool = "json".equals(paramString4);
+    if (!bool) {
+      b(paramUri.toString());
     }
-    if (!paramBoolean) {
-      paramWebSoState.jdField_a_of_type_Bekm.jdField_f_of_type_Int = 1;
+    bhsg.a("receive header : " + Arrays.toString(paramArrayOfString));
+    bhsg.a("receive data : " + paramString1);
+    if (bool) {
+      bhsg.a("receive contentType = " + paramString4 + "  pageVersion = " + paramString3 + " etag = " + paramString2);
     }
-    paramWebSoState.jdField_a_of_type_Bekm.jdField_e_of_type_JavaLangString = paramBundle.getString("key_user_ip");
-    paramWebSoState.jdField_a_of_type_Bekm.h = paramBundle.getString("key_dns_result");
-    paramWebSoState.jdField_a_of_type_Bekm.jdField_f_of_type_JavaLangString = paramBundle.getString("key_server_ip");
-    paramWebSoState.jdField_a_of_type_Bekm.g = paramBundle.getString("key_server_port");
-    paramWebSoState.jdField_a_of_type_Bekm.jdField_a_of_type_Int = paramBundle.getInt("key_time_cost");
-    paramWebSoState.jdField_a_of_type_Bekm.jdField_b_of_type_Int = paramBundle.getInt("rsp_code");
-    paramWebSoState.jdField_a_of_type_Bekm.jdField_c_of_type_Int = 2;
-    paramWebSoState.jdField_a_of_type_Bekm.i = paramBundle.getString("key_detail_info");
-    paramWebSoState.jdField_e_of_type_Boolean = false;
-    paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.a();
-    if (!paramBoolean)
-    {
-      paramWebSoState.jdField_a_of_type_Int = 10001;
-      if (!TextUtils.isEmpty(paramWebSoState.jdField_b_of_type_JavaLangString)) {
-        paramWebSoState.jdField_c_of_type_Boolean = true;
-      }
-      a(paramWebSoState);
-      return;
-    }
-    paramWebSoState.jdField_a_of_type_Bekm.a();
-    Object localObject1 = (HttpRsp)paramBundle.getSerializable("rsp_data");
-    if (localObject1 != null) {}
-    for (bekl localbekl = new bekl((HttpRsp)localObject1);; localbekl = null)
-    {
-      if (localObject1 == null)
-      {
-        paramWebSoState.jdField_a_of_type_Int = 10002;
-        paramWebSoState.jdField_d_of_type_JavaLangString = "rsp is null";
-        a(paramWebSoState);
-        return;
-      }
-      localObject1 = ((HttpRsp)localObject1).rspinfo;
-      int i = ((String)localObject1).indexOf("\r\n\r\n");
-      String str5 = localbekl.jdField_d_of_type_JavaLangString;
-      if (i < 1) {
-        break;
-      }
-      String[] arrayOfString = ((String)localObject1).substring(0, i - 1).split("\r\n");
-      Uri localUri = Uri.parse(paramBundle.getString("url"));
-      localObject1 = arrayOfString[0].split(" ");
-      if (localObject1.length >= 2) {}
-      try
-      {
-        paramWebSoState.jdField_a_of_type_Bekm.jdField_d_of_type_JavaLangString = localObject1[1].trim();
-        paramWebSoState.jdField_c_of_type_Boolean = false;
-        str2 = null;
-        str3 = null;
-        localObject1 = null;
-        int j = arrayOfString.length;
-        str1 = null;
-        str4 = null;
-        i = 0;
-        for (;;)
-        {
-          if (i >= j) {
-            break label620;
-          }
-          localObject3 = arrayOfString[i].toLowerCase();
-          if (!((String)localObject3).contains("cache-offline")) {
-            break;
-          }
-          str4 = localObject3.split(":")[1].trim();
-          i += 1;
-        }
-      }
-      catch (Exception localException)
-      {
-        String str2;
-        String str3;
-        String str1;
-        String str4;
-        Object localObject3;
-        Object localObject2;
-        for (;;)
-        {
-          localException.printStackTrace();
-          continue;
-          if (((String)localObject3).contains("etag"))
-          {
-            str1 = localObject3.split(":")[1].trim();
-          }
-          else if (((String)localObject3).contains("template-tag"))
-          {
-            str2 = localObject3.split(":")[1].trim();
-          }
-          else if (((String)localObject3).contains("webso-page-version"))
-          {
-            str3 = localObject3.split(":")[1].trim();
-            if (paramWebSoState.jdField_a_of_type_Bekm.jdField_e_of_type_Int < 3) {
-              paramWebSoState.jdField_a_of_type_Bekm.jdField_e_of_type_Int = 3;
-            }
-          }
-          else if (((String)localObject3).contains("webso-content-type"))
-          {
-            localObject3 = localObject3.split(":")[1].trim();
-            localObject2 = localObject3;
-            if (paramWebSoState.jdField_a_of_type_Bekm.jdField_e_of_type_Int < 3)
-            {
-              paramWebSoState.jdField_a_of_type_Bekm.jdField_e_of_type_Int = 3;
-              localObject2 = localObject3;
-            }
-          }
-        }
-        label620:
-        paramBoolean = "json".equals(localObject2);
-        if (!paramBoolean) {
-          b(localUri.toString());
-        }
-        belc.a("receive header : " + Arrays.toString(arrayOfString));
-        belc.a("receive data : " + str5);
-        if (paramBoolean) {
-          belc.a("receive contentType = " + (String)localObject2 + "  pageVersion = " + str3 + " etag = " + str1);
-        }
-        paramWebSoState.jdField_a_of_type_Bekm.jdField_b_of_type_Long = str5.length();
-        if (arrayOfString[0].contains("304"))
-        {
-          if (paramBoolean)
-          {
-            belc.a("result = 304");
-            paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_a_of_type_Boolean = true;
-            paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_a_of_type_JavaLangString = str1;
-            paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_b_of_type_JavaLangString = str3;
-            paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_c_of_type_JavaLangString = ("\"" + arrayOfString[0] + "\"");
-            paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_d_of_type_JavaLangString = localUri.toString();
-            paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_e_of_type_JavaLangString = "webso-304";
-            paramWebSoState.jdField_c_of_type_Boolean = true;
-            paramWebSoState.jdField_a_of_type_Bekm.jdField_c_of_type_Boolean = true;
-            paramWebSoState.jdField_a_of_type_Bekm.j = "304";
-            a(paramWebSoState);
-            return;
-          }
-          QLog.i("WebSoService", 1, "now 304,so return! ");
-          paramWebSoState.jdField_c_of_type_Boolean = true;
-          paramWebSoState.jdField_a_of_type_Bekm.jdField_c_of_type_Boolean = true;
-          a(paramWebSoState);
-          return;
-        }
-        if ("http".equals(str4))
-        {
-          QLog.i("WebSoService", 1, "now 503, so start reLoadUrl");
-          paramWebSoState.jdField_a_of_type_Int = 10503;
-          paramWebSoState.jdField_c_of_type_Boolean = false;
-          paramWebSoState.jdField_a_of_type_Boolean = true;
-          belc.b(localUri);
-          a(paramWebSoState);
-          return;
-        }
-        if (paramBoolean)
-        {
-          belc.a("result = json");
-          paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_a_of_type_Boolean = true;
-          paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_a_of_type_JavaLangString = str1;
-          paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_b_of_type_JavaLangString = str3;
-          paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_c_of_type_JavaLangString = localbekl.jdField_d_of_type_JavaLangString;
-          paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_d_of_type_JavaLangString = localUri.toString();
-          paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.jdField_e_of_type_JavaLangString = "webso-data-json";
-          paramWebSoState.jdField_c_of_type_Boolean = true;
-          paramWebSoState.jdField_a_of_type_Bekm.jdField_c_of_type_Boolean = true;
-          paramWebSoState.jdField_a_of_type_Bekm.j = "json";
-          a(paramWebSoState);
-          return;
-        }
-        if ("true".equals(str4))
-        {
-          if (TextUtils.isEmpty(str2))
-          {
-            if (QLog.isDebugVersion()) {
-              QLog.i("WebSoService", 1, "webso etag=" + str1 + ",url=" + paramBundle.getString("url"));
-            }
-            a(localbekl, str1, str3, localUri, paramWebSoState);
-            paramWebSoState.jdField_b_of_type_JavaLangString = str5;
-            paramWebSoState.jdField_a_of_type_Boolean = true;
-            paramWebSoState.f = false;
-            a(paramWebSoState);
-            return;
-          }
-          a(str5, str1, str3, str2, localUri, paramWebSoState, true, new bekw(this, paramWebSoState, System.currentTimeMillis()));
-          return;
-        }
-        if ("store".equals(str4))
-        {
-          if ((a(paramWebSoState.jdField_a_of_type_JavaLangString)) && (paramWebSoState.jdField_a_of_type_ArrayOfBoolean != null) && (paramWebSoState.jdField_a_of_type_ArrayOfBoolean.length > 0) && (paramWebSoState.jdField_a_of_type_ArrayOfBoolean[0] != 0))
-          {
-            paramWebSoState.jdField_e_of_type_Boolean = true;
-            paramWebSoState.jdField_a_of_type_Boolean = false;
-            paramWebSoState.f = false;
-          }
-          try
-          {
-            paramBundle = new JSONObject(str5).optJSONObject("data");
-            localObject2 = new JSONObject();
-            ((JSONObject)localObject2).put("code", 1);
-            ((JSONObject)localObject2).put("data", paramBundle);
-            ((JSONObject)localObject2).put("type", str4);
-            paramWebSoState.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).toString();
-            a(paramWebSoState);
-            if (TextUtils.isEmpty(str2))
-            {
-              a(localbekl, str1, str3, localUri, paramWebSoState);
-              paramWebSoState.jdField_e_of_type_Boolean = false;
-              paramWebSoState.jdField_b_of_type_JavaLangString = str5;
-              paramWebSoState.jdField_a_of_type_Boolean = false;
-              paramWebSoState.f = false;
-              a(paramWebSoState);
-              return;
-            }
-          }
-          catch (Exception paramBundle)
-          {
-            for (;;)
-            {
-              paramBundle.printStackTrace();
-            }
-            a(str5, str1, str3, str2, localUri, paramWebSoState, true, new bekx(this, paramWebSoState, System.currentTimeMillis()));
-            return;
-          }
-        }
-        if ("silent".equals(str4))
-        {
-          paramWebSoState.jdField_e_of_type_Boolean = true;
-          paramWebSoState.jdField_a_of_type_Boolean = false;
-          paramWebSoState.f = false;
-          paramBundle = "{\"code\":-1,\"data\":null}";
-          try
-          {
-            localObject2 = new JSONObject(str5).optJSONObject("data");
-            localObject3 = new JSONObject();
-            ((JSONObject)localObject3).put("code", 1);
-            ((JSONObject)localObject3).put("data", localObject2);
-            ((JSONObject)localObject3).put("type", str4);
-            localObject2 = ((JSONObject)localObject3).toString();
-            paramBundle = (Bundle)localObject2;
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-            System.currentTimeMillis();
-            a(str5, str1, str3, str2, localUri, paramWebSoState, true, new beky(this, paramWebSoState));
-            return;
-          }
-          paramWebSoState.jdField_b_of_type_JavaLangString = paramBundle;
-          a(paramWebSoState);
-          if (TextUtils.isEmpty(str2))
-          {
-            a(localbekl, str1, str3, localUri, paramWebSoState);
-            paramWebSoState.jdField_e_of_type_Boolean = false;
-            return;
-          }
-        }
-        if ((str4 == null) || ("false".equals(str4)))
-        {
-          if (TextUtils.isEmpty(str2))
-          {
-            paramWebSoState.jdField_b_of_type_JavaLangString = str5;
-            paramWebSoState.jdField_a_of_type_Boolean = true;
-            paramWebSoState.f = false;
-            paramWebSoState.jdField_a_of_type_Bekm.jdField_d_of_type_Int = 0;
-            paramWebSoState.jdField_a_of_type_Bekm.jdField_c_of_type_Int = 0;
-            a(paramWebSoState);
-          }
-          for (;;)
-          {
-            belc.a(localUri);
-            return;
-            a(str5, str1, str3, str2, localUri, paramWebSoState, false, new bekz(this, paramWebSoState, System.currentTimeMillis()));
-          }
-        }
-        belc.a(localUri);
-        paramWebSoState.jdField_b_of_type_JavaLangString = str5;
-        paramWebSoState.jdField_a_of_type_Boolean = true;
-        paramWebSoState.f = false;
-        a(paramWebSoState);
-        return;
-      }
-    }
+    paramWebSoState.jdField_a_of_type_Bhrq.jdField_b_of_type_Long = paramString1.length();
+    return bool;
   }
   
   private static boolean a(JSONObject paramJSONObject, Uri paramUri, WebSoService.WebSoState paramWebSoState, boolean paramBoolean)
   {
-    Object localObject2 = belc.d(paramUri);
+    Object localObject2 = bhsg.d(paramUri);
     bool2 = true;
     if ((paramJSONObject == null) || (TextUtils.isEmpty((CharSequence)localObject2)))
     {
@@ -829,7 +714,7 @@ public class WebSoService
     {
       try
       {
-        belc.a(str.getBytes(), (String)localObject2 + "_template.txt");
+        bhsg.a(str.getBytes(), (String)localObject2 + "_template.txt");
         paramUri = (Uri)localObject1;
         bool1 = bool2;
       }
@@ -863,7 +748,7 @@ public class WebSoService
       if (TextUtils.isEmpty(paramJSONObject)) {
         break;
       }
-      belc.a(ausf.b(paramJSONObject.getBytes()), (String)localObject2 + ".patch");
+      bhsg.a(awzl.b(paramJSONObject.getBytes()), (String)localObject2 + ".patch");
       paramWebSoState = new File((String)localObject2 + "_template.txt");
       bool2 = bool1;
       if (!paramWebSoState.exists()) {}
@@ -928,7 +813,7 @@ public class WebSoService
       }
       try
       {
-        paramJSONObject.jdField_c_of_type_JavaLangString = bdhb.b(paramWebSoState);
+        paramJSONObject.jdField_c_of_type_JavaLangString = bgmg.b(paramWebSoState);
         bool2 = bool1;
       }
       catch (IOException paramUri)
@@ -964,9 +849,54 @@ public class WebSoService
     }
   }
   
+  private boolean a(boolean paramBoolean, Bundle paramBundle, WebSoService.WebSoState paramWebSoState)
+  {
+    if (paramWebSoState.jdField_a_of_type_Bhrq == null)
+    {
+      paramWebSoState.jdField_a_of_type_Bhrq = new bhrq();
+      paramWebSoState.jdField_a_of_type_Bhrq.jdField_a_of_type_Long = bhsg.a();
+      paramWebSoState.jdField_a_of_type_Bhrq.jdField_a_of_type_JavaLangString = paramWebSoState.jdField_a_of_type_JavaLangString;
+      paramWebSoState.jdField_a_of_type_Bhrq.jdField_a_of_type_Boolean = true;
+    }
+    if (!paramBoolean) {
+      paramWebSoState.jdField_a_of_type_Bhrq.jdField_f_of_type_Int = 1;
+    }
+    paramWebSoState.jdField_a_of_type_Bhrq.jdField_e_of_type_JavaLangString = paramBundle.getString("key_user_ip");
+    paramWebSoState.jdField_a_of_type_Bhrq.h = paramBundle.getString("key_dns_result");
+    paramWebSoState.jdField_a_of_type_Bhrq.jdField_f_of_type_JavaLangString = paramBundle.getString("key_server_ip");
+    paramWebSoState.jdField_a_of_type_Bhrq.g = paramBundle.getString("key_server_port");
+    paramWebSoState.jdField_a_of_type_Bhrq.jdField_a_of_type_Int = paramBundle.getInt("key_time_cost");
+    paramWebSoState.jdField_a_of_type_Bhrq.jdField_b_of_type_Int = paramBundle.getInt("rsp_code");
+    paramWebSoState.jdField_a_of_type_Bhrq.jdField_c_of_type_Int = 2;
+    paramWebSoState.jdField_a_of_type_Bhrq.i = paramBundle.getString("key_detail_info");
+    paramWebSoState.jdField_e_of_type_Boolean = false;
+    paramWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.a();
+    if (!paramBoolean)
+    {
+      paramWebSoState.jdField_a_of_type_Int = 10001;
+      if (!TextUtils.isEmpty(paramWebSoState.jdField_b_of_type_JavaLangString)) {
+        paramWebSoState.jdField_c_of_type_Boolean = true;
+      }
+      a(paramWebSoState);
+      return true;
+    }
+    paramWebSoState.jdField_a_of_type_Bhrq.a();
+    return false;
+  }
+  
   private static SharedPreferences b()
   {
     return BaseApplicationImpl.getContext().getSharedPreferences("wns_html_etags", 0);
+  }
+  
+  @NotNull
+  private String b(WebSoService.WebSoState paramWebSoState, String paramString)
+  {
+    paramString = paramString.split(":")[1].trim();
+    if (paramWebSoState.jdField_a_of_type_Bhrq.jdField_e_of_type_Int < 3) {
+      paramWebSoState.jdField_a_of_type_Bhrq.jdField_e_of_type_Int = 3;
+    }
+    return paramString;
   }
   
   private static String b(String paramString1, String paramString2, String paramString3, String paramString4, Uri paramUri, WebSoService.WebSoState paramWebSoState, boolean paramBoolean)
@@ -1019,7 +949,7 @@ public class WebSoService
             str3 = str2;
             str4 = str2;
             str5 = str2;
-            paramString1 = belc.d(paramUri);
+            paramString1 = bhsg.d(paramUri);
             str3 = str2;
             str4 = str2;
             str5 = str2;
@@ -1027,11 +957,11 @@ public class WebSoService
             str3 = str2;
             str4 = str2;
             str5 = str2;
-            l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+            l = bhsg.a();
             str3 = str2;
             str4 = str2;
             str5 = str2;
-            str1 = belc.a(paramUri);
+            str1 = bhsg.a(paramUri);
             str3 = str2;
             str4 = str2;
             str5 = str2;
@@ -1059,7 +989,7 @@ public class WebSoService
             str3 = str2;
             str4 = str2;
             str5 = str2;
-            paramWebSoState.jdField_c_of_type_JavaLangString = bdhb.b(paramString1);
+            paramWebSoState.jdField_c_of_type_JavaLangString = bgmg.b(paramString1);
           }
         }
       }
@@ -1102,7 +1032,7 @@ public class WebSoService
         str3 = str2;
         str4 = str2;
         str5 = str2;
-        belc.a(paramUri);
+        bhsg.a(paramUri);
         paramString1 = str2;
         continue;
       }
@@ -1189,7 +1119,7 @@ public class WebSoService
             str3 = str2;
             str4 = str2;
             str5 = str2;
-            if (!bekn.a(str6).equals(str2)) {
+            if (!bhrr.a(str6).equals(str2)) {
               continue;
             }
             str3 = str2;
@@ -1214,7 +1144,7 @@ public class WebSoService
               str3 = str2;
               str4 = str2;
               str5 = str2;
-              belc.a(str6.getBytes(), belc.b(paramUri));
+              bhsg.a(str6.getBytes(), bhsg.b(paramUri));
               paramString1 = str2;
               i = j;
               str1 = str6;
@@ -1238,11 +1168,11 @@ public class WebSoService
                   str3 = str2;
                   str4 = str2;
                   str5 = str2;
-                  paramWebSoState = belc.d(paramUri) + "_data.txt";
+                  paramWebSoState = bhsg.d(paramUri) + "_data.txt";
                   str3 = str2;
                   str4 = str2;
                   str5 = str2;
-                  belc.a(paramString1.toString().getBytes(), paramWebSoState);
+                  bhsg.a(paramString1.toString().getBytes(), paramWebSoState);
                   str1 = str6;
                   i = j;
                   paramString1 = str2;
@@ -1253,8 +1183,8 @@ public class WebSoService
         }
       }
       paramWebSoState = b().edit();
-      str2 = String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-      paramUri = belc.a(paramUri);
+      str2 = String.valueOf(bhsg.a());
+      paramUri = bhsg.a(paramUri);
       if ((i == 0) || (!paramBoolean)) {
         continue;
       }
@@ -1281,9 +1211,57 @@ public class WebSoService
     return str1;
   }
   
+  private void b(WebSoService.WebSoState paramWebSoState, bhrp parambhrp, String paramString1, Uri paramUri, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    if ((a(paramWebSoState.jdField_a_of_type_JavaLangString)) && (paramWebSoState.jdField_a_of_type_ArrayOfBoolean != null) && (paramWebSoState.jdField_a_of_type_ArrayOfBoolean.length > 0) && (paramWebSoState.jdField_a_of_type_ArrayOfBoolean[0] != 0))
+    {
+      paramWebSoState.jdField_e_of_type_Boolean = true;
+      paramWebSoState.jdField_a_of_type_Boolean = false;
+      paramWebSoState.f = false;
+    }
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject(paramString1).optJSONObject("data");
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("code", 1);
+      localJSONObject2.put("data", localJSONObject1);
+      localJSONObject2.put("type", paramString2);
+      paramWebSoState.jdField_b_of_type_JavaLangString = localJSONObject2.toString();
+      a(paramWebSoState);
+      if (TextUtils.isEmpty(paramString4))
+      {
+        a(parambhrp, paramString3, paramString5, paramUri, paramWebSoState);
+        paramWebSoState.jdField_e_of_type_Boolean = false;
+        paramWebSoState.jdField_b_of_type_JavaLangString = paramString1;
+        paramWebSoState.jdField_a_of_type_Boolean = false;
+        paramWebSoState.f = false;
+        a(paramWebSoState);
+        return;
+      }
+    }
+    catch (Exception paramString2)
+    {
+      for (;;)
+      {
+        paramString2.printStackTrace();
+      }
+      b(paramWebSoState, paramString1, paramUri, paramString3, paramString4, paramString5);
+    }
+  }
+  
+  private void b(WebSoService.WebSoState paramWebSoState, String paramString1, Uri paramUri, String paramString2, String paramString3, String paramString4)
+  {
+    a(paramString1, paramString2, paramString4, paramString3, paramUri, paramWebSoState, true, new bhsc(this, paramWebSoState, System.currentTimeMillis()));
+  }
+  
   private static void b(String paramString)
   {
-    bdhb.a(belc.b(paramString), false);
+    bgmg.a(bhsg.b(paramString), false);
+  }
+  
+  private void c(WebSoService.WebSoState paramWebSoState, String paramString1, Uri paramUri, String paramString2, String paramString3, String paramString4)
+  {
+    a(paramString1, paramString2, paramString4, paramString3, paramUri, paramWebSoState, true, new bhsd(this, paramWebSoState, System.currentTimeMillis()));
   }
   
   public String a(String paramString)
@@ -1301,7 +1279,7 @@ public class WebSoService
   
   public String a(String paramString, Handler paramHandler, boolean[] paramArrayOfBoolean)
   {
-    WebSoService.WebSoState localWebSoState = (WebSoService.WebSoState)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(belc.a(paramString));
+    WebSoService.WebSoState localWebSoState = (WebSoService.WebSoState)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(bhsg.a(paramString));
     if (!TextUtils.isEmpty(localWebSoState.jdField_a_of_type_JavaLangString))
     {
       if (QLog.isColorLevel()) {
@@ -1361,7 +1339,7 @@ public class WebSoService
     }
     a(localHandler, paramWebSoState);
     paramWebSoState.jdField_a_of_type_JavaLangRefWeakReference = null;
-    HybridWebReporter.a().a(paramWebSoState.jdField_a_of_type_Bekm);
+    HybridWebReporter.a().a(paramWebSoState.jdField_a_of_type_Bhrq);
   }
   
   public void a(String paramString)
@@ -1374,7 +1352,7 @@ public class WebSoService
   public void a(String paramString, Handler paramHandler)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while (!belc.a(Uri.parse(paramString))) {
+    while (!bhsg.a(Uri.parse(paramString))) {
       return;
     }
     a(paramString, paramHandler);
@@ -1385,6 +1363,141 @@ public class WebSoService
     this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
   }
   
+  public void a(boolean paramBoolean, Bundle paramBundle, WebSoService.WebSoState paramWebSoState)
+  {
+    if (a(paramBoolean, paramBundle, paramWebSoState)) {}
+    bhrp localbhrp;
+    String str2;
+    do
+    {
+      do
+      {
+        return;
+        localObject1 = (HttpRsp)paramBundle.getSerializable("rsp_data");
+        localbhrp = a(paramWebSoState, (HttpRsp)localObject1, null);
+      } while (localbhrp == null);
+      localObject1 = ((HttpRsp)localObject1).rspinfo;
+      i = ((String)localObject1).indexOf("\r\n\r\n");
+      str2 = localbhrp.jdField_d_of_type_JavaLangString;
+    } while (i < 1);
+    String[] arrayOfString = ((String)localObject1).substring(0, i - 1).split("\r\n");
+    Uri localUri = Uri.parse(paramBundle.getString("url"));
+    Object localObject1 = arrayOfString[0].split(" ");
+    if (localObject1.length >= 2) {
+      a(paramWebSoState, localObject1[1]);
+    }
+    paramWebSoState.jdField_c_of_type_Boolean = false;
+    localObject1 = null;
+    Object localObject4 = null;
+    Object localObject2 = null;
+    Object localObject3 = null;
+    String str1 = null;
+    int j = arrayOfString.length;
+    int i = 0;
+    if (i < j)
+    {
+      String str3 = arrayOfString[i].toLowerCase();
+      Object localObject8;
+      Object localObject7;
+      Object localObject6;
+      Object localObject5;
+      if (str3.contains("cache-offline"))
+      {
+        localObject8 = str3.split(":")[1].trim();
+        localObject7 = localObject2;
+        localObject6 = localObject3;
+        localObject5 = localObject4;
+      }
+      for (;;)
+      {
+        i += 1;
+        localObject4 = localObject5;
+        localObject3 = localObject6;
+        localObject2 = localObject7;
+        localObject1 = localObject8;
+        break;
+        if (str3.contains("etag"))
+        {
+          localObject5 = str3.split(":")[1].trim();
+          localObject6 = localObject3;
+          localObject7 = localObject2;
+          localObject8 = localObject1;
+        }
+        else if (str3.contains("template-tag"))
+        {
+          localObject7 = str3.split(":")[1].trim();
+          localObject5 = localObject4;
+          localObject6 = localObject3;
+          localObject8 = localObject1;
+        }
+        else if (str3.contains("webso-page-version"))
+        {
+          localObject6 = b(paramWebSoState, str3);
+          localObject5 = localObject4;
+          localObject7 = localObject2;
+          localObject8 = localObject1;
+        }
+        else
+        {
+          localObject5 = localObject4;
+          localObject6 = localObject3;
+          localObject7 = localObject2;
+          localObject8 = localObject1;
+          if (str3.contains("webso-content-type"))
+          {
+            str1 = a(paramWebSoState, str3);
+            localObject5 = localObject4;
+            localObject6 = localObject3;
+            localObject7 = localObject2;
+            localObject8 = localObject1;
+          }
+        }
+      }
+    }
+    paramBoolean = a(paramWebSoState, str2, arrayOfString, localUri, localObject4, localObject3, str1);
+    if (arrayOfString[0].contains("304"))
+    {
+      a(paramWebSoState, arrayOfString, localUri, localObject4, localObject3, paramBoolean);
+      return;
+    }
+    if ("http".equals(localObject1))
+    {
+      QLog.i("WebSoService", 1, "now 503, so start reLoadUrl");
+      a(paramWebSoState, localUri);
+      return;
+    }
+    if (paramBoolean)
+    {
+      a(paramWebSoState, localbhrp, localUri, localObject4, localObject3);
+      return;
+    }
+    if ("true".equals(localObject1))
+    {
+      a(paramBundle, paramWebSoState, localbhrp, str2, localUri, localObject4, localObject2, localObject3);
+      return;
+    }
+    if ("store".equals(localObject1))
+    {
+      b(paramWebSoState, localbhrp, str2, localUri, (String)localObject1, localObject4, localObject2, localObject3);
+      return;
+    }
+    if ("silent".equals(localObject1))
+    {
+      a(paramWebSoState, localbhrp, str2, localUri, (String)localObject1, localObject4, localObject2, localObject3);
+      return;
+    }
+    if ((localObject1 == null) || ("false".equals(localObject1)))
+    {
+      a(paramWebSoState, str2, localUri, localObject4, localObject2, localObject3);
+      return;
+    }
+    bhsg.a(localUri);
+    paramWebSoState.jdField_b_of_type_JavaLangString = str2;
+    paramWebSoState.jdField_a_of_type_Boolean = true;
+    paramWebSoState.f = false;
+    a(paramWebSoState);
+  }
+  
   public boolean a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
@@ -1392,7 +1505,7 @@ public class WebSoService
     {
       return false;
       paramString = Uri.parse(paramString);
-    } while ((paramString == null) || (!new File(belc.b(paramString)).exists()));
+    } while ((paramString == null) || (!new File(bhsg.b(paramString)).exists()));
     return true;
   }
   
@@ -1410,35 +1523,35 @@ public class WebSoService
       }
       return false;
     }
-    belc.a("startWebSoRequest");
+    bhsg.a("startWebSoRequest");
     a(paramString);
-    WebSoService.WebSoState localWebSoState = (WebSoService.WebSoState)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(belc.a(paramString));
+    WebSoService.WebSoState localWebSoState = (WebSoService.WebSoState)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(bhsg.a(paramString));
     localWebSoState.jdField_a_of_type_JavaLangString = paramString;
     localWebSoState.f = false;
     localWebSoState.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
     localWebSoState.jdField_a_of_type_Boolean = false;
     localWebSoState.jdField_c_of_type_Boolean = false;
-    localWebSoState.jdField_a_of_type_Bekm = new bekm();
-    localWebSoState.jdField_a_of_type_Bekm.jdField_a_of_type_Long = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-    localWebSoState.jdField_a_of_type_Bekm.jdField_a_of_type_JavaLangString = paramString;
-    localWebSoState.jdField_a_of_type_Bekm.jdField_a_of_type_Boolean = true;
-    localWebSoState.jdField_a_of_type_Bekm.jdField_d_of_type_Boolean = false;
-    localWebSoState.jdField_a_of_type_Bekm.a();
+    localWebSoState.jdField_a_of_type_Bhrq = new bhrq();
+    localWebSoState.jdField_a_of_type_Bhrq.jdField_a_of_type_Long = bhsg.a();
+    localWebSoState.jdField_a_of_type_Bhrq.jdField_a_of_type_JavaLangString = paramString;
+    localWebSoState.jdField_a_of_type_Bhrq.jdField_a_of_type_Boolean = true;
+    localWebSoState.jdField_a_of_type_Bhrq.jdField_d_of_type_Boolean = false;
+    localWebSoState.jdField_a_of_type_Bhrq.a();
     localWebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.a();
-    if (belc.a(paramString))
+    if (bhsg.a(paramString))
     {
       localWebSoState.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
       localWebSoState.g = false;
       localWebSoState.jdField_e_of_type_JavaLangString = "";
     }
-    while (belc.e(paramString))
+    while (bhsg.e(paramString))
     {
       return false;
       localWebSoState.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
     }
-    long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-    String str2 = bjdm.a();
-    String str1 = belc.a();
+    long l = bhsg.a();
+    String str2 = blru.a();
+    String str1 = bhsg.a();
     Object localObject2 = "";
     Object localObject1 = "";
     Object localObject3 = Uri.parse(paramString);
@@ -1446,15 +1559,15 @@ public class WebSoService
     {
       String str3 = String.valueOf(l);
       Object localObject4 = b();
-      String str4 = belc.a((Uri)localObject3);
+      String str4 = bhsg.a((Uri)localObject3);
       localObject2 = ((SharedPreferences)localObject4).getString("eTag_" + str3 + str4, "");
       localObject1 = ((SharedPreferences)localObject4).getString("pageVersion_" + str3 + str4, "");
       str3 = ((SharedPreferences)localObject4).getString("htmlSha1_" + str3 + str4, "");
-      localObject4 = new File(belc.b((Uri)localObject3));
+      localObject4 = new File(bhsg.b((Uri)localObject3));
       if ((TextUtils.isEmpty(str3)) || (!((File)localObject4).exists())) {
-        break label802;
+        break label790;
       }
-      a((Uri)localObject3, str3, (File)localObject4, localWebSoState, new bekv(this, System.currentTimeMillis(), localWebSoState, paramHandler, paramString));
+      a((Uri)localObject3, str3, (File)localObject4, localWebSoState, new bhrz(this, System.currentTimeMillis(), localWebSoState, paramHandler, paramString));
     }
     for (;;)
     {
@@ -1484,7 +1597,7 @@ public class WebSoService
         {
           ((JSONObject)localObject2).put("webso", "3.0");
           ((HttpRequestPackage)localObject1).addHeader(((JSONObject)localObject2).toString());
-          belc.a("send header = " + ((HttpRequestPackage)localObject1).getHeaderString());
+          bhsg.a("send header = " + ((HttpRequestPackage)localObject1).getHeaderString());
           localObject1 = new HttpReq(EnumHttpMethod.convert("e" + ((HttpRequestPackage)localObject1).method).value(), ((HttpRequestPackage)localObject1).getHeaderString(), ((HttpRequestPackage)localObject1).getBodyString(), ((HttpRequestPackage)localObject1).host);
           if (paramHandler != null) {
             localWebSoState.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
@@ -1497,9 +1610,9 @@ public class WebSoService
             this.jdField_a_of_type_Boolean = true;
           }
           BaseApplicationImpl.getApplication().getRuntime().startServlet(paramHandler);
-          belc.a("startServlet req");
+          bhsg.a("startServlet req");
           return true;
-          label802:
+          label790:
           if (QLog.isColorLevel()) {
             QLog.d("WebSoService", 2, "set eTag to get all data");
           }
@@ -1530,7 +1643,7 @@ public class WebSoService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.bean;
 
 import android.support.v4.util.ArrayMap;
+import android.text.TextUtils;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,6 +16,23 @@ public class ViewBean
   public ValueBean valueBean = new ValueBean();
   public String viewId;
   public String viewType;
+  
+  private static void addExtraData(JSONObject paramJSONObject, Map<String, Object> paramMap, String paramString)
+  {
+    if ((paramJSONObject == null) || (paramMap == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = paramJSONObject.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (!paramString.equalsIgnoreCase(str)) {
+          paramMap.put(str, paramJSONObject.opt(str));
+        }
+      }
+    }
+  }
   
   private boolean bindValueWithoutId(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
@@ -82,7 +100,9 @@ public class ViewBean
     if (localObject1 != null)
     {
       setVisible(true);
-      localObject1 = getKeyOriginValue((JSONObject)localObject1).entrySet().iterator();
+      localObject1 = getKeyOriginValue((JSONObject)localObject1);
+      addExtraData(paramJSONObject1, (Map)localObject1, this.viewId);
+      localObject1 = ((Map)localObject1).entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Map.Entry)((Iterator)localObject1).next();
@@ -106,11 +126,11 @@ public class ViewBean
       {
         localViewBean = arrayOfViewBean[i];
         if (localViewBean.valueBean.isVisibleDependeOnChilds()) {
-          break label423;
+          break label437;
         }
       }
     }
-    label423:
+    label437:
     for (String str = localViewBean.valueBean.getVisibleDependeOnBrotherViewId();; str = null)
     {
       localObject2 = localObject1;
@@ -246,7 +266,7 @@ public class ViewBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean
  * JD-Core Version:    0.7.0.1
  */

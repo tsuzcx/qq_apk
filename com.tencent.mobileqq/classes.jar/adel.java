@@ -1,15 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-
-public class adel
-  implements View.OnClickListener
+class adel
+  implements adez
 {
-  public adel(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  adel(adek paramadek) {}
   
-  public void onClick(View paramView)
+  public void a(awlp paramawlp, int paramInt)
   {
-    HongbaoShowerActivity.a(this.a);
+    this.a.a = paramawlp;
+    adek.a(this.a, paramInt);
   }
 }
 

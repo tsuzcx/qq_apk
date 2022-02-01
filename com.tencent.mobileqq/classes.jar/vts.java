@@ -1,39 +1,19 @@
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import java.util.LinkedList;
-
 public class vts
 {
-  private final SparseArray<LinkedList<Object>> a = new SparseArray();
-  
-  public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
+  public static String a(int paramInt)
   {
-    paramClass = (LinkedList)this.a.get(paramClass.hashCode());
-    if (paramClass != null)
-    {
-      paramClass = paramClass.poll();
-      if (paramClass != null) {}
-      return paramClass;
+    int i = paramInt / 1000 / 60;
+    paramInt = paramInt / 1000 % 60;
+    if (i < 10) {}
+    for (String str = "0" + i; paramInt < 10; str = String.valueOf(i)) {
+      return String.format("%s:0%s", new Object[] { str, Integer.valueOf(paramInt) });
     }
-    return null;
-  }
-  
-  public void a(@NonNull Object paramObject)
-  {
-    int i = paramObject.getClass().hashCode();
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(i);
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
-    {
-      localLinkedList1 = new LinkedList();
-      this.a.put(i, localLinkedList1);
-    }
-    localLinkedList1.offer(paramObject);
+    return String.format("%s:%s", new Object[] { str, Integer.valueOf(paramInt) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vts
  * JD-Core Version:    0.7.0.1
  */

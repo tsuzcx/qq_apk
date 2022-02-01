@@ -1,55 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-public class aidt
+class aidt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ArrayList<Object> a = new ArrayList();
+  aidt(aidp paramaidp, View paramView, int paramInt1, int paramInt2) {}
   
-  private boolean a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    boolean bool = false;
-    if (this.a != null) {}
-    for (int i = this.a.size() + 0;; i = 0)
-    {
-      if (i >= 20) {
-        bool = true;
-      }
-      if ((bool) && (QLog.isColorLevel())) {
-        QLog.d("Q.history.", 2, "isOverLimit");
-      }
-      return bool;
-    }
-  }
-  
-  public List<Object> a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (a(paramObject))
-    {
-      this.a.remove(paramObject);
+    if ((paramValueAnimator == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
       return;
     }
-    if (a())
-    {
-      arri.a(2131692640);
-      return;
-    }
-    this.a.add(paramObject);
-  }
-  
-  public boolean a(Object paramObject)
-  {
-    return this.a.contains(paramObject);
+    float f1 = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
+    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    float f2 = this.jdField_a_of_type_Int;
+    paramValueAnimator.height = ((int)(f1 * (this.b - this.jdField_a_of_type_Int) + f2));
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
 }
 

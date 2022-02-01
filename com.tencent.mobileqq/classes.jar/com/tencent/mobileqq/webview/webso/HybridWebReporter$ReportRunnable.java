@@ -2,9 +2,9 @@ package com.tencent.mobileqq.webview.webso;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bekm;
-import bjeb;
-import com.tencent.common.app.BaseApplicationImpl;
+import bhrq;
+import bhsg;
+import blsj;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.http.HttpBaseUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -14,7 +14,6 @@ import cooperation.qzone.LocalMultiProcConfig;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.zip.GZIPInputStream;
-import mqq.app.AppRuntime;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -29,12 +28,12 @@ class HybridWebReporter$ReportRunnable
 {
   int jdField_a_of_type_Int = 0;
   String jdField_a_of_type_JavaLangString;
-  ArrayList<bekm> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<bhrq> jdField_a_of_type_JavaUtilArrayList;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
   boolean jdField_b_of_type_Boolean = false;
   
-  public HybridWebReporter$ReportRunnable(ArrayList<bekm> paramArrayList)
+  public HybridWebReporter$ReportRunnable(ArrayList<bhrq> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -61,7 +60,7 @@ class HybridWebReporter$ReportRunnable
       {
         if (((Iterator)localObject2).hasNext())
         {
-          localJSONArray.put(((bekm)((Iterator)localObject2).next()).a());
+          localJSONArray.put(((bhrq)((Iterator)localObject2).next()).a());
           continue;
           if (localObject1 == null) {
             break;
@@ -89,7 +88,7 @@ class HybridWebReporter$ReportRunnable
   public void run()
   {
     Object localObject = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatCgiURL", "https://h5.qzone.qq.com/report/native");
-    String str2 = (String)localObject + "?uin=" + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    String str2 = (String)localObject + "?uin=" + bhsg.a();
     a();
     if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
       return;
@@ -97,7 +96,7 @@ class HybridWebReporter$ReportRunnable
     if (QLog.isColorLevel()) {
       QLog.i("HybridWebReporter", 2, "start report thread.");
     }
-    label85:
+    label79:
     if ((!this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Int <= 1)) {
       if (this.jdField_a_of_type_Int > 1)
       {
@@ -114,9 +113,9 @@ class HybridWebReporter$ReportRunnable
       {
         for (;;)
         {
-          localObject = bjeb.a(BaseApplication.getContext(), str2, new StringEntity(this.jdField_a_of_type_JavaLangString, "UTF-8"));
+          localObject = blsj.a(BaseApplication.getContext(), str2, new StringEntity(this.jdField_a_of_type_JavaLangString, "UTF-8"));
           if (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200) {
-            break label416;
+            break label410;
           }
           this.jdField_a_of_type_JavaUtilArrayList.clear();
           this.jdField_b_of_type_Boolean = true;
@@ -130,14 +129,14 @@ class HybridWebReporter$ReportRunnable
             if (i < k)
             {
               if (!arrayOfHeader[i].getValue().equals("gzip")) {
-                break label466;
+                break label460;
               }
               j = 1;
-              break label466;
+              break label460;
             }
             localObject = ((HttpResponse)localObject).getEntity();
             if (j == 0) {
-              break label406;
+              break label400;
             }
             localObject = HttpBaseUtil.a(new GZIPInputStream(((HttpEntity)localObject).getContent()));
             if (QLog.isColorLevel()) {
@@ -148,7 +147,7 @@ class HybridWebReporter$ReportRunnable
             }
             localObject = new JSONObject((String)localObject);
             if (!(((JSONObject)localObject).opt("urlPrefixConfig") instanceof JSONArray)) {
-              break label85;
+              break label79;
             }
             HybridWebReporter.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).toString();
             LocalMultiProcConfig.putString("urlPrefixConfig", HybridWebReporter.jdField_a_of_type_JavaLangString);
@@ -164,23 +163,23 @@ class HybridWebReporter$ReportRunnable
         this.jdField_a_of_type_Int += 1;
         QLog.w("HybridWebReporter", 1, "exception when report", localThrowable2);
       }
-      break label85;
-      label406:
+      break label79;
+      label400:
       String str1 = EntityUtils.toString(localThrowable2);
       continue;
-      label416:
+      label410:
       QLog.e("HybridWebReporter", 1, "HttpStatus error when report : " + str1.getStatusLine().getStatusCode());
       this.jdField_a_of_type_Int += 1;
-      break label85;
+      break label79;
       break;
-      label466:
+      label460:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.HybridWebReporter.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

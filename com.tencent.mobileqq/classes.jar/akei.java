@@ -1,19 +1,14 @@
-import android.media.AudioManager;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class akei
-  implements bdzl
 {
-  public akei(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
-  
-  public void a(bdzk parambdzk)
-  {
-    QLog.i("ShortVideoPreviewActivity", 1, "[onCompletion] ");
-    if (bhtb.b()) {
-      ((AudioManager)this.a.getSystemService("audio")).abandonAudioFocus(null);
-    }
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public boolean d;
+  public boolean e = true;
 }
 
 

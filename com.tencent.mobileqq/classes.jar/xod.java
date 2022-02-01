@@ -1,64 +1,85 @@
-import android.graphics.Color;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-class xod
+public class xod
+  extends JobSegment<xne, String>
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  TextView d;
+  private xod(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public xod(View paramView)
+  protected void a(JobContext paramJobContext, xne paramxne)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377427));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377449));
-    this.b = ((TextView)paramView.findViewById(2131377418));
-    this.c = ((TextView)paramView.findViewById(2131377417));
-    this.d = ((TextView)paramView.findViewById(2131377451));
-  }
-  
-  private void a(TextView paramTextView, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
+    yqp.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment runSegment");
+    if (this.a.jdField_a_of_type_Xne.a())
     {
-      paramTextView.setVisibility(8);
+      yqp.b(this.a.jdField_a_of_type_JavaLangString, "isLoadingData, show loading view");
+      VideoViewVideoHolder.a(this.a, 2);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+      this.a.jdField_a_of_type_Xpl.a(8);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.a.b.setVisibility(8);
+      notifyError(new ErrorMessage(0, "isLoadingData"));
       return;
     }
-    paramTextView.setVisibility(0);
-    paramTextView.setText(paramString);
-  }
-  
-  public void a(xoe paramxoe1, xoe paramxoe2)
-  {
-    a(this.jdField_a_of_type_AndroidWidgetTextView, paramxoe1.jdField_a_of_type_Xof.jdField_a_of_type_JavaLangString);
-    a(this.b, paramxoe1.jdField_a_of_type_Xof.b);
-    if (paramxoe1.jdField_a_of_type_Int <= 0) {
-      this.c.setVisibility(8);
-    }
-    for (;;)
+    if (this.a.jdField_a_of_type_Xne.b())
     {
-      a(this.d, paramxoe1.jdField_a_of_type_JavaLangString);
-      if (!paramxoe1.equals(paramxoe2)) {
-        break;
+      yqp.b(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is a error data = %s", this.a.jdField_a_of_type_Xne.a());
+      VideoViewVideoHolder.b(this.a, this.a.jdField_a_of_type_Xne.a().errorCode);
+      VideoViewVideoHolder.a(this.a, false);
+      yqp.d(this.a.jdField_a_of_type_JavaLangString, "isErrorData, hide loading view. subErrorCode=%d", new Object[] { Integer.valueOf(VideoViewVideoHolder.a(this.a)) });
+      if (VideoViewVideoHolder.a(this.a) == 97000000)
+      {
+        VideoViewVideoHolder.c(this.a, 4);
+        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "PLAY_DATA_NO_VID"));
+        return;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846393);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFA34B"));
+      VideoViewVideoHolder.c(this.a, 9);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "isErrorData"));
       return;
-      a(this.c, paramxoe1.jdField_a_of_type_Int + alud.a(2131711448));
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846397);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
+    if (StoryVideoItem.isFakeVid(this.a.jdField_a_of_type_Xne.jdField_a_of_type_JavaLangString))
+    {
+      paramJobContext = ((wpj)wpm.a(5)).b(this.a.jdField_a_of_type_Xne.jdField_a_of_type_JavaLangString);
+      if (paramJobContext != null)
+      {
+        VideoViewVideoHolder.a(this.a, paramJobContext);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        paramxne = (String)this.a.jdField_a_of_type_AndroidWidgetImageView.getTag();
+        if (!TextUtils.equals(this.a.jdField_a_of_type_Xne.jdField_a_of_type_JavaLangString, paramxne))
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(this.a.jdField_a_of_type_Xne.jdField_a_of_type_JavaLangString);
+          xfe.a(this.a.jdField_a_of_type_AndroidWidgetImageView, paramJobContext.mVideoLocalThumbnailPath, paramJobContext.getThumbUrl(), VideoViewVideoHolder.a(this.a), this.a.jdField_a_of_type_Xfq);
+        }
+        yqp.d(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is fake vid = %s", new Object[] { this.a.jdField_a_of_type_Xne.jdField_a_of_type_JavaLangString });
+        VideoViewVideoHolder.c(this.a, 5);
+        VideoViewVideoHolder.a(this.a, false);
+        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "isFakeData"));
+        return;
+      }
+      VideoViewVideoHolder.c(this.a, 11);
+      VideoViewVideoHolder.a(this.a, false);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "Fake Vid No Data"));
+      return;
+    }
+    notifyResult(this.a.jdField_a_of_type_Xne.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    yqp.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment onCancel");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xod
  * JD-Core Version:    0.7.0.1
  */

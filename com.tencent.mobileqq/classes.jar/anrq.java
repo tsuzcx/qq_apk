@@ -1,29 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
 public class anrq
-  implements CompoundButton.OnCheckedChangeListener
+  extends RecyclablePool.Recyclable
 {
-  public anrq(ArkAuthorityInfoActivity paramArkAuthorityInfoActivity, int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public long c;
+  public long d;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void recycle()
   {
-    paramCompoundButton = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
-    String str1 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      anke.a(paramCompoundButton, str1, str2, i);
-      return;
-    }
+    super.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anrq
  * JD-Core Version:    0.7.0.1
  */

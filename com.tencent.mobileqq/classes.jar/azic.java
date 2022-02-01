@@ -1,40 +1,20 @@
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.widget.XEditTextEx;
+
 public class azic
+  extends Editable.Factory
 {
-  public int a;
-  private int b;
-  private int c;
+  public azic(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public int a()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    int i = this.b;
-    this.b = (i + 1);
-    return i;
-  }
-  
-  public void a()
-  {
-    this.b = 0;
-    this.a = 0;
-    this.c = 0;
-  }
-  
-  public int b()
-  {
-    int i = this.c;
-    this.c = (i + 1);
-    return i;
-  }
-  
-  public void b()
-  {
-    this.b = 0;
-    this.a = 0;
-    this.c = 0;
-  }
-  
-  public int c()
-  {
-    return this.c;
+    if ((paramCharSequence instanceof bdoi)) {
+      return (Editable)paramCharSequence;
+    }
+    return new bdoi(paramCharSequence, 3, (int)(StickyNotePublishFragment.a(this.a).getTextSize() / StickyNotePublishFragment.a(this.a).getPaint().density));
   }
 }
 

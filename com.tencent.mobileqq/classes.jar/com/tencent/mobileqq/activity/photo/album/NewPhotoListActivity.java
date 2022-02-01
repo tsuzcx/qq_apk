@@ -1,45 +1,48 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import abvl;
-import aiqt;
-import aiqu;
-import aiqv;
-import aiqy;
-import aitd;
-import alof;
+import Override;
+import akho;
+import akhp;
+import akhq;
+import akjz;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aofm;
-import bdfa;
-import bdhb;
-import bnsf;
-import bnsg;
+import anhk;
+import aqfv;
+import bgkc;
+import bgmg;
+import bqit;
+import bqiu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.startup.step.CheckPermission;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GestureSelectGridView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.widget.PhotoGridView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import lmm;
+import ljj;
 
 public class NewPhotoListActivity
   extends AbstractPhotoListActivity
 {
-  public static aiqv a;
+  public akhq a;
   public Handler a;
   View a;
   public Button a;
@@ -49,14 +52,10 @@ public class NewPhotoListActivity
   public TextView c;
   TextView d;
   
-  static
-  {
-    jdField_a_of_type_Aiqv = new aiqv();
-  }
-  
   public NewPhotoListActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new aiqu(this);
+    this.jdField_a_of_type_AndroidOsHandler = new akhp(this);
+    this.jdField_a_of_type_Akhq = new akhq(this);
   }
   
   public int a(String paramString)
@@ -64,31 +63,31 @@ public class NewPhotoListActivity
     if ((TextUtils.isEmpty(paramString)) || (a(paramString) == null)) {
       return -1;
     }
-    return bdfa.getMediaType(a(paramString));
+    return bgkc.getMediaType(a(paramString));
   }
   
   public LocalMediaInfo a(String paramString)
   {
-    aiqy localaiqy = this.mPhotoListLogic.mPhotoCommonData;
+    PhotoCommonBaseData localPhotoCommonBaseData = this.mPhotoListLogic.mPhotoCommonData;
     LocalMediaInfo localLocalMediaInfo = null;
-    if (localaiqy.selectedMediaInfoHashMap != null) {
-      localLocalMediaInfo = (LocalMediaInfo)localaiqy.selectedMediaInfoHashMap.get(paramString);
+    if (localPhotoCommonBaseData.selectedMediaInfoHashMap != null) {
+      localLocalMediaInfo = (LocalMediaInfo)localPhotoCommonBaseData.selectedMediaInfoHashMap.get(paramString);
     }
-    if ((localLocalMediaInfo == null) && (localaiqy.allMediaInfoHashMap != null)) {
-      localLocalMediaInfo = (LocalMediaInfo)localaiqy.allMediaInfoHashMap.get(paramString);
+    if ((localLocalMediaInfo == null) && (localPhotoCommonBaseData.allMediaInfoHashMap != null)) {
+      localLocalMediaInfo = (LocalMediaInfo)localPhotoCommonBaseData.allMediaInfoHashMap.get(paramString);
     }
     for (;;)
     {
       if ((localLocalMediaInfo != null) && ((localLocalMediaInfo.mediaWidth == 0) || (localLocalMediaInfo.mediaHeight == 0)))
       {
-        bnsg localbnsg = new bnsg();
-        bnsf.a(paramString, localbnsg);
-        localLocalMediaInfo.mediaWidth = localbnsg.a[0];
-        localLocalMediaInfo.mediaHeight = localbnsg.a[1];
-        localLocalMediaInfo.rotation = localbnsg.a[2];
-        if (localaiqy.allMediaInfoHashMap != null)
+        bqiu localbqiu = new bqiu();
+        bqit.a(paramString, localbqiu);
+        localLocalMediaInfo.mediaWidth = localbqiu.a[0];
+        localLocalMediaInfo.mediaHeight = localbqiu.a[1];
+        localLocalMediaInfo.rotation = localbqiu.a[2];
+        if (localPhotoCommonBaseData.allMediaInfoHashMap != null)
         {
-          paramString = (LocalMediaInfo)localaiqy.allMediaInfoHashMap.get(paramString);
+          paramString = (LocalMediaInfo)localPhotoCommonBaseData.allMediaInfoHashMap.get(paramString);
           if ((paramString != null) && ((paramString.mediaWidth == 0) || (paramString.mediaHeight == 0)))
           {
             paramString.mediaWidth = localLocalMediaInfo.mediaWidth;
@@ -110,18 +109,18 @@ public class NewPhotoListActivity
       if (localFile.exists())
       {
         localObject = localFile.getName();
-        String str = alof.bk + (String)localObject;
+        String str = anhk.bn + (String)localObject;
         localObject = paramString;
         if (!str.equals(paramString))
         {
-          localObject = new File(alof.bk);
+          localObject = new File(anhk.bn);
           if (!((File)localObject).exists()) {
             ((File)localObject).mkdirs();
           }
           boolean bool2 = localFile.renameTo(new File(str));
           boolean bool1 = bool2;
           if (!bool2) {
-            bool1 = bdhb.b(paramString, str);
+            bool1 = bgmg.b(paramString, str);
           }
           QLog.d("PhotoListActivity", 2, new Object[] { "saveToDCIM rename to :", str });
           localObject = paramString;
@@ -141,7 +140,7 @@ public class NewPhotoListActivity
   
   public void a()
   {
-    if (lmm.b(BaseApplicationImpl.getContext())) {}
+    if (ljj.b(BaseApplicationImpl.getContext())) {}
     label27:
     do
     {
@@ -219,14 +218,21 @@ public class NewPhotoListActivity
   public void b()
   {
     if (((this.mPhotoListData.isShowCamera) && ("$RecentAlbumId".equals(this.mPhotoListLogic.mPhotoCommonData.albumId))) || ((this.mPhotoListData.showCameraInVideo) && ("$VideoAlbumId".equals(this.mPhotoListLogic.mPhotoCommonData.albumId)))) {
-      excuteQueryPhotoTask();
+      excuteQueryPhotoTask(true);
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    abvl.a().c();
     if (!CheckPermission.isHasStorageReadAndWritePermission(this)) {
       CheckPermission.requestStoreReadAndWritePermission(this, null);
     }
@@ -236,13 +242,13 @@ public class NewPhotoListActivity
   public void doOnPause()
   {
     super.doOnPause();
-    aofm.a(BaseApplicationImpl.getContext(), 2, true);
+    aqfv.a(BaseApplicationImpl.getContext(), 2, true);
   }
   
   protected PhotoListLogic generateLogic()
   {
     int i = getIntent().getIntExtra("enter_from", 0);
-    PhotoListLogic localPhotoListLogic = aitd.a(i, this);
+    PhotoListLogic localPhotoListLogic = akjz.a(i, this);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoListActivity", 2, "generateLogic:" + localPhotoListLogic.getClass().getName() + " enterFrom:" + i);
     }
@@ -256,9 +262,9 @@ public class NewPhotoListActivity
   
   protected Dialog getDialog()
   {
-    Dialog localDialog = new Dialog(this, 2131755801);
-    localDialog.setContentView(2131559437);
-    return localDialog;
+    ReportDialog localReportDialog = new ReportDialog(this, 2131755823);
+    localReportDialog.setContentView(2131559567);
+    return localReportDialog;
   }
   
   public Class getJumpActivity()
@@ -268,21 +274,21 @@ public class NewPhotoListActivity
   
   protected void initUI()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131376034);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131376788);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       localRelativeLayout.setFitsSystemWindows(true);
       localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367320);
-    this.d = ((TextView)findViewById(2131379383));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369993));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131373968));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373974));
-    this.b = ((TextView)findViewById(2131373969));
-    this.c = ((TextView)findViewById(2131368088));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367626);
+    this.d = ((TextView)findViewById(2131380309));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370435));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131374690));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374696));
+    this.b = ((TextView)findViewById(2131374691));
+    this.c = ((TextView)findViewById(2131368413));
     super.initUI();
-    this.mGridView.setOnScrollListener(new aiqt(this));
+    this.mGridView.addOnScrollListener(new akho(this));
   }
   
   public void onClick(View paramView)
@@ -290,10 +296,20 @@ public class NewPhotoListActivity
     super.onClick(paramView);
     switch (paramView.getId())
     {
-    default: 
-      return;
     }
-    this.mPhotoListLogic.onMagicStickClick(paramView, new Bundle(), 2, null);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.mPhotoListLogic.onMagicStickClick(paramView, new Bundle(), 2, null);
+    }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   void processNewIntent(Intent paramIntent)
@@ -311,7 +327,7 @@ public class NewPhotoListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity
  * JD-Core Version:    0.7.0.1
  */

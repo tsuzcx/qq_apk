@@ -1,14 +1,29 @@
-import android.content.DialogInterface;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public abstract interface yho
+public class yho
+  extends zqf
 {
-  public abstract void a(DialogInterface paramDialogInterface);
+  private static final int[] a = { 2131691320 };
+  private static final int[] f = { 2131165603 };
+  private static final int[] g = { 2131370639 };
+  private static int[] h = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298884) };
   
-  public abstract void m();
+  public yho()
+  {
+    super(1, 1, h, -1, g, a, f);
+  }
+  
+  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
+  {
+    paramArrayOfbkou[0].a = 0;
+    paramArrayOfbkou[0].b = 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yho
  * JD-Core Version:    0.7.0.1
  */

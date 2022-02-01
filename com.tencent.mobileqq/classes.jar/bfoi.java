@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bfoi
-  implements Parcelable.Creator<DownloadInfo>
+class bfoi
+  implements View.OnClickListener
 {
-  public DownloadInfo a(Parcel paramParcel)
-  {
-    return new DownloadInfo(paramParcel);
-  }
+  bfoi(bfoh parambfoh) {}
   
-  public DownloadInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new DownloadInfo[paramInt];
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfoi
  * JD-Core Version:    0.7.0.1
  */

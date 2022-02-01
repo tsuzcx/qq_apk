@@ -1,19 +1,30 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class arap
 {
-  public int a;
-  public long a;
-  public Bundle a;
   public String a;
-  public boolean a;
+  public String[] a;
   public String b;
+  public String[] b;
   
-  arap(araj paramaraj) {}
+  public arap(JSONObject paramJSONObject)
+  {
+    String str = paramJSONObject.optString("words");
+    if (!TextUtils.isEmpty(str)) {
+      this.jdField_a_of_type_ArrayOfJavaLangString = str.split("\\/");
+    }
+    str = paramJSONObject.optString("overlay");
+    if (!TextUtils.isEmpty(str)) {
+      this.jdField_b_of_type_ArrayOfJavaLangString = str.split("\\/");
+    }
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("optString");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("aioTips");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arap
  * JD-Core Version:    0.7.0.1
  */

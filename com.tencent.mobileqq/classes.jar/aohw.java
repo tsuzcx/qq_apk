@@ -1,24 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-public class aohw
-  extends alvn
+class aohw
+  implements View.OnTouchListener
 {
-  public aohw(LocationSelectActivity paramLocationSelectActivity) {}
+  aohw(aoht paramaoht, ImageView paramImageView) {}
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramLBSInfo != null) {}
-    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
+    int i;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
     {
-      this.a.a(paramBoolean, paramLBSInfo);
-      return;
+      if (paramMotionEvent.getAction() != 1) {
+        break label45;
+      }
+      i = 255;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label51;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
     }
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
-    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
+    for (;;)
+    {
+      return false;
+      label45:
+      i = 127;
+      break;
+      label51:
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+    }
   }
 }
 

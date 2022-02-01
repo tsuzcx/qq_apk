@@ -1,33 +1,42 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.List;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.widget.ViewPagerTabLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class akvz
-  implements alee
+public class akvz
+  implements View.OnClickListener
 {
-  akvz(akvv paramakvv, int paramInt) {}
+  public akvz(ViewPagerTabLayout paramViewPagerTabLayout) {}
   
-  public void a(boolean paramBoolean, String paramString, List<alec> paramList)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
+    int i = ViewPagerTabLayout.a(this.a).indexOfChild(paramView);
+    if (i != -1)
     {
-      paramString = EIPCResult.createResult(i, null);
-      this.jdField_a_of_type_Akvv.callbackResult(this.jdField_a_of_type_Int, paramString);
-      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
-      return;
+      if (ViewPagerTabLayout.a(this.a).getCurrentItem() == i) {
+        break label92;
+      }
+      if (ViewPagerTabLayout.a(this.a)) {
+        break label81;
+      }
+      this.a.setCurrentTab(i, false);
+      if (ViewPagerTabLayout.a(this.a) != null) {
+        ViewPagerTabLayout.a(this.a).a(i);
+      }
     }
-  }
-  
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
-  {
-    if (paramBoolean) {}
-    for (paramInt1 = 0;; paramInt1 = -1)
+    for (;;)
     {
-      paramString = EIPCResult.createResult(paramInt1, null);
-      this.jdField_a_of_type_Akvv.callbackResult(this.jdField_a_of_type_Int, paramString);
-      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label81:
+      this.a.setCurrentTab(i);
+      break;
+      label92:
+      if (ViewPagerTabLayout.a(this.a) != null) {
+        ViewPagerTabLayout.a(this.a).b(i);
+      }
     }
   }
 }

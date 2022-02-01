@@ -1,28 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.ClassLoaderCreator;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
 
-public final class aulz
-  implements Parcelable.ClassLoaderCreator<MultiAIOBaseViewPager.SavedState>
+public class aulz
+  extends BroadcastReceiver
 {
-  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel)
-  {
-    return new MultiAIOBaseViewPager.SavedState(paramParcel, null);
-  }
+  public aulz(HotChatFragment paramHotChatFragment) {}
   
-  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new MultiAIOBaseViewPager.SavedState(paramParcel, paramClassLoader);
-  }
-  
-  public MultiAIOBaseViewPager.SavedState[] a(int paramInt)
-  {
-    return new MultiAIOBaseViewPager.SavedState[paramInt];
+    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.mWebview != null)) {
+      this.a.a.refresh();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aulz
  * JD-Core Version:    0.7.0.1
  */

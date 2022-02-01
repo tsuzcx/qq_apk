@@ -19,16 +19,16 @@ class TVideoImpl$TVKPlayerCGICallback
   public void onGetLiveInfoFailed(int paramInt, TVKPlaybackInfo.RequestInfo paramRequestInfo, TVKLiveVideoInfo paramTVKLiveVideoInfo)
   {
     if (TVideoImpl.access$100(this.this$0) != null) {
-      TVideoImpl.access$100(this.this$0).onGetVInfoFailed((SuperPlayerVideoInfo)paramRequestInfo.tag(), -1, paramTVKLiveVideoInfo.getErrInfo());
+      TVideoImpl.access$100(this.this$0).onGetVInfoFailed((SuperPlayerVideoInfo)paramRequestInfo.tag(), 5002, 32000002, paramTVKLiveVideoInfo.getErrInfo());
     }
   }
   
   public void onGetLiveInfoSuccess(int paramInt, TVKPlaybackInfo.RequestInfo paramRequestInfo, TVKLiveVideoInfo paramTVKLiveVideoInfo)
   {
     paramRequestInfo = (SuperPlayerVideoInfo)paramRequestInfo.tag();
-    paramInt = 303;
+    paramInt = 403;
     if (paramTVKLiveVideoInfo.getStream() == 2) {
-      paramInt = 301;
+      paramInt = 401;
     }
     TVideoNetInfo localTVideoNetInfo;
     ArrayList localArrayList;
@@ -45,16 +45,18 @@ class TVideoImpl$TVKPlayerCGICallback
         localArrayList.add(new TVideoNetInfo.DefinitionInfo(localDefnInfo.getDefn(), localDefnInfo.getDefnName(), localDefnInfo.getDefnRate(), localDefnInfo.getDefnShowName()));
       }
       if (paramTVKLiveVideoInfo.getStream() == 1) {
-        paramInt = 302;
+        paramInt = 402;
       }
     }
     localTVideoNetInfo.setDefinitionList(localArrayList);
     localTVideoNetInfo.setCurrentDefinition(new TVideoNetInfo.DefinitionInfo(paramTVKLiveVideoInfo.getCurDefinition().getDefn(), paramTVKLiveVideoInfo.getCurDefinition().getDefnName(), paramTVKLiveVideoInfo.getCurDefinition().getDefnRate(), paramTVKLiveVideoInfo.getCurDefinition().getDefnShowName()));
+    localTVideoNetInfo.setUpdateTimeMillis(System.currentTimeMillis());
     if ((paramTVKLiveVideoInfo.getWatermarkInfos() == null) || (paramTVKLiveVideoInfo.getWatermarkInfos().size() == 0)) {}
     for (boolean bool = true;; bool = false)
     {
       localTVideoNetInfo.setHasWatermark(bool);
       paramRequestInfo.setTVideoNetInfo(localTVideoNetInfo);
+      VInfoCacheMgr.saveVInfoToCache(paramRequestInfo);
       if (TVideoImpl.access$100(this.this$0) != null) {
         TVideoImpl.access$100(this.this$0).onGetVInfoSuccess(paramRequestInfo);
       }
@@ -62,10 +64,24 @@ class TVideoImpl$TVKPlayerCGICallback
     }
   }
   
-  public void onGetVodInfoFailed(int paramInt1, TVKPlaybackInfo.RequestInfo paramRequestInfo, String paramString1, int paramInt2, String paramString2)
+  public void onGetVodInfoFailed(int paramInt1, TVKPlaybackInfo.RequestInfo paramRequestInfo, int paramInt2, String paramString1, int paramInt3, String paramString2)
   {
-    if (TVideoImpl.access$100(this.this$0) != null) {
-      TVideoImpl.access$100(this.this$0).onGetVInfoFailed((SuperPlayerVideoInfo)paramRequestInfo.tag(), paramInt2, paramString1);
+    if (TVideoImpl.access$100(this.this$0) != null)
+    {
+      if (paramInt2 != 101) {
+        break label45;
+      }
+      paramInt1 = 5000;
+    }
+    for (;;)
+    {
+      TVideoImpl.access$100(this.this$0).onGetVInfoFailed((SuperPlayerVideoInfo)paramRequestInfo.tag(), paramInt1, paramInt3, paramString1);
+      return;
+      label45:
+      paramInt1 = paramInt2;
+      if (paramInt2 == 103) {
+        paramInt1 = 5001;
+      }
     }
   }
   
@@ -73,15 +89,16 @@ class TVideoImpl$TVKPlayerCGICallback
   {
     paramRequestInfo = (SuperPlayerVideoInfo)paramRequestInfo.tag();
     Object localObject = paramTVKVideoInfo.getPlayUrl();
-    paramInt = 203;
+    paramInt = 303;
     if (paramTVKVideoInfo.getDownloadType() == 1) {
-      paramInt = 201;
+      paramInt = 301;
     }
     ArrayList localArrayList;
     for (;;)
     {
       paramRequestInfo.setPlayUrl((String)localObject);
       paramRequestInfo.setFormat(paramInt);
+      paramRequestInfo.setVideoDurationMs(paramTVKVideoInfo.getDuration() * 1000);
       localObject = new TVideoNetInfo();
       ((TVideoNetInfo)localObject).setVideoDuration(paramTVKVideoInfo.getDuration() * 1000);
       ((TVideoNetInfo)localObject).setVideoSize(paramTVKVideoInfo.getFileSize());
@@ -93,16 +110,18 @@ class TVideoImpl$TVKPlayerCGICallback
         localArrayList.add(new TVideoNetInfo.DefinitionInfo(localDefnInfo.getDefn(), localDefnInfo.getDefnName(), localDefnInfo.getDefnRate(), localDefnInfo.getDefnShowName()));
       }
       if (paramTVKVideoInfo.getDownloadType() == 3) {
-        paramInt = 202;
+        paramInt = 302;
       }
     }
     ((TVideoNetInfo)localObject).setDefinitionList(localArrayList);
     ((TVideoNetInfo)localObject).setCurrentDefinition(new TVideoNetInfo.DefinitionInfo(paramTVKVideoInfo.getCurDefinition().getDefn(), paramTVKVideoInfo.getCurDefinition().getDefnName(), paramTVKVideoInfo.getCurDefinition().getDefnRate(), paramTVKVideoInfo.getCurDefinition().getDefnShowName()));
+    ((TVideoNetInfo)localObject).setUpdateTimeMillis(System.currentTimeMillis());
     if ((paramTVKVideoInfo.getWatermarkInfos() == null) || (paramTVKVideoInfo.getWatermarkInfos().size() == 0)) {}
     for (boolean bool = true;; bool = false)
     {
       ((TVideoNetInfo)localObject).setHasWatermark(bool);
       paramRequestInfo.setTVideoNetInfo((TVideoNetInfo)localObject);
+      VInfoCacheMgr.saveVInfoToCache(paramRequestInfo);
       if (TVideoImpl.access$100(this.this$0) != null) {
         TVideoImpl.access$100(this.this$0).onGetVInfoSuccess(paramRequestInfo);
       }
@@ -112,7 +131,7 @@ class TVideoImpl$TVKPlayerCGICallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.superplayer.vinfo.TVideoImpl.TVKPlayerCGICallback
  * JD-Core Version:    0.7.0.1
  */

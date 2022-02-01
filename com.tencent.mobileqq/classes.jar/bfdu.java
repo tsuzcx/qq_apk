@@ -1,137 +1,65 @@
-import android.content.Intent;
-import android.widget.Toast;
-import com.tencent.open.agent.ChallengeBragBase;
-import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
-import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.SocketTimeoutException;
-import org.apache.http.conn.ConnectTimeoutException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
+import java.util.List;
 
-public class bfdu
-  implements bfml
+class bfdu
+  extends Handler
 {
-  public bfdu(ChallengeBragBase paramChallengeBragBase) {}
-  
-  protected void a(Intent paramIntent)
+  bfdu(bfdt parambfdt, Looper paramLooper)
   {
-    int i = paramIntent.getIntExtra("key_error_code", -6);
-    if (i != 0)
-    {
-      Toast.makeText(this.a, paramIntent.getStringExtra("key_error_msg"), 0).show();
-      bflp.e("qqBaseActivity", "onSendChallengeComplete error:{KEY_ERROR_CODE:" + i + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
-    }
-    this.a.setResult(-1, paramIntent);
-    this.a.finish();
+    super(paramLooper);
   }
   
-  public void a(Exception paramException)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.d();
-    bflp.c("qqBaseActivity", "SendChallenge exception." + paramException.getMessage(), paramException);
-    Intent localIntent = new Intent();
-    if ((paramException instanceof ConnectTimeoutException))
+    if (this.a.jdField_a_of_type_Bfdw == null) {}
+    WordInfo localWordInfo;
+    do
     {
-      localIntent.putExtra("key_error_code", -7);
-      localIntent.putExtra("key_error_msg", bfmt.e);
-    }
-    for (;;)
-    {
-      a(localIntent);
       return;
-      if ((paramException instanceof SocketTimeoutException))
+      switch (paramMessage.what)
       {
-        localIntent.putExtra("key_error_code", -8);
-        localIntent.putExtra("key_error_msg", bfmt.f);
-      }
-      else if ((paramException instanceof MalformedURLException))
-      {
-        localIntent.putExtra("key_error_code", -3);
-        localIntent.putExtra("key_error_msg", "访问url有误!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
-      {
-        localIntent.putExtra("key_error_code", -10);
-        localIntent.putExtra("key_error_msg", "Http返回码异常!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
-      {
-        localIntent.putExtra("key_error_code", -9);
-        localIntent.putExtra("key_error_msg", bfmt.g);
-      }
-      else if ((paramException instanceof IOException))
-      {
-        localIntent.putExtra("key_error_code", -2);
-        localIntent.putExtra("key_error_msg", bfmt.a);
-      }
-      else
-      {
-        localIntent.putExtra("key_error_code", -6);
-        localIntent.putExtra("key_error_msg", bfmt.d);
-      }
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    int i = 0;
-    try
-    {
-      this.a.d();
-      int j = paramJSONObject.getInt("ret");
-      String str = paramJSONObject.getString("msg");
-      Object localObject;
-      if (j == 0)
-      {
-        localObject = null;
-        if (!"action_brag".equals(this.a.p)) {
-          break label131;
-        }
-        localObject = "ANDROIDQQ.BRAG.ASSISTANT";
-        i = 2131690990;
-      }
-      for (;;)
-      {
-        if (localObject != null)
-        {
-          bfmy.a("400", (String)localObject, this.a.c);
-          Toast.makeText(this.a, i, 0).show();
-        }
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("key_error_code", j);
-        ((Intent)localObject).putExtra("key_error_msg", str);
-        ((Intent)localObject).putExtra("key_response", paramJSONObject.toString());
-        a((Intent)localObject);
+      default: 
         return;
-        label131:
-        if ("action_challenge".equals(this.a.p))
-        {
-          localObject = "ANDROIDQQ.PK.ASSISTANT";
-          i = 2131690991;
+      case 0: 
+        localWordInfo = (WordInfo)paramMessage.obj;
+        this.a.jdField_a_of_type_Bfdw.a(localWordInfo);
+        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo == null) {
+          this.a.a(localWordInfo);
         }
+        break;
       }
-      return;
-    }
-    catch (JSONException paramJSONObject)
+    } while ((!localWordInfo.isDetected) || (localWordInfo.paragraphPos != this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size() - 1));
+    paramMessage = ((ParagraphInfo)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.get(localWordInfo.paragraphPos)).generateOrGetWordInfoList(localWordInfo.paragraphPos);
+    int i = localWordInfo.wordPos + 1;
+    label148:
+    if (i < paramMessage.size())
     {
-      bflp.c("qqBaseActivity", "SendChallenge exception." + paramJSONObject.getMessage(), paramJSONObject);
-      paramJSONObject = new Intent();
-      paramJSONObject.putExtra("key_error_code", -4);
-      paramJSONObject.putExtra("key_error_msg", bfmt.b);
-      a(paramJSONObject);
-      return;
+      localWordInfo = (WordInfo)paramMessage.get(i);
+      if ((localWordInfo == null) || (!localWordInfo.isNormalWord())) {}
     }
-    catch (Exception paramJSONObject)
+    for (i = 0; i != 0; i = 1)
     {
-      a(paramJSONObject);
+      this.a.b();
+      return;
+      i += 1;
+      break label148;
+      this.a.jdField_a_of_type_Bfdw.g();
+      return;
+      this.a.jdField_a_of_type_Bfdw.a(this.a.jdField_a_of_type_Int, this.a.b, this.a.c);
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.c = 0;
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfdu
  * JD-Core Version:    0.7.0.1
  */

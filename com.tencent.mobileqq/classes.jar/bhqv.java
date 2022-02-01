@@ -1,30 +1,46 @@
-import android.annotation.TargetApi;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
+import android.os.MessageQueue.IdleHandler;
+import java.util.ArrayList;
 
-public class bhqv
-  implements AudioManager.OnAudioFocusChangeListener
+class bhqv
+  implements MessageQueue.IdleHandler
 {
-  public bhqv(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
+  bhqv(bhqu parambhqu) {}
   
-  @TargetApi(8)
-  public void onAudioFocusChange(int paramInt)
+  public boolean queueIdle()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TraeAudioManager", 2, "focusChange:" + paramInt + " _focusSteamType:" + this.a.c + " currMode:" + this.a.this$0.jdField_a_of_type_AndroidMediaAudioManager.getMode() + " _activeMode:" + this.a.this$0.jdField_a_of_type_Int);
+    Object localObject;
+    int i;
+    if (!bhqu.a().isEmpty())
+    {
+      localObject = (bhqx)bhqu.a().remove(0);
+      i = ((bhqx)localObject).a();
+      if (2 == i) {
+        bhqu.a().add(localObject);
+      }
     }
-    if (paramInt == -1) {}
-    while ((paramInt == -2) || (paramInt == -3) || (paramInt != 1)) {
-      return;
+    else
+    {
+      label38:
+      localObject = this.a;
+      if (bhqu.a().isEmpty()) {
+        break label75;
+      }
+    }
+    label75:
+    for (boolean bool = true;; bool = false)
+    {
+      ((bhqu)localObject).a = bool;
+      return this.a.a;
+      if (1 != i) {
+        break;
+      }
+      break label38;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqv
  * JD-Core Version:    0.7.0.1
  */

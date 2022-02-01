@@ -1,6 +1,17 @@
-public abstract interface ahva
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+
+public class ahva
+  extends RecyclerView.OnScrollListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public ahva(PhotoListPanel paramPhotoListPanel) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.l = paramInt;
+  }
 }
 
 

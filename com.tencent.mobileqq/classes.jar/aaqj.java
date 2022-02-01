@@ -1,37 +1,52 @@
-import android.content.Context;
-import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class aaqj
+class aaqj
+  implements bfpo
 {
-  private aaql jdField_a_of_type_Aaql;
-  private aaqm jdField_a_of_type_Aaqm;
-  private Context jdField_a_of_type_AndroidContentContext;
+  aaqj(aaqa paramaaqa) {}
   
-  public aaqj(Context paramContext)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aaql = new aaql(this, null);
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Aaql, localIntentFilter);
-  }
-  
-  public void a(aaqm paramaaqm)
-  {
-    this.jdField_a_of_type_Aaqm = paramaaqm;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Aaql != null) && (this.jdField_a_of_type_AndroidContentContext != null))
-    {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Aaql);
-      this.jdField_a_of_type_Aaqm = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("requstTroopNotifyAd", 2, "result = " + paramJSONObject + ", requestCode = " + paramInt);
     }
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = paramJSONObject.optJSONObject("data");
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = paramJSONObject.optJSONObject("8020205751015455");
+        if (paramJSONObject != null)
+        {
+          paramJSONObject = paramJSONObject.optJSONArray("list");
+          if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+          {
+            paramJSONObject = besk.a(paramJSONObject.optJSONObject(0));
+            if (paramJSONObject != null)
+            {
+              this.a.jdField_a_of_type_Besk = paramJSONObject;
+              this.a.d = true;
+              if (QLog.isColorLevel()) {
+                QLog.d("requstTroopNotifyAd", 2, "apurl = " + this.a.jdField_a_of_type_Besk.a + ", img = " + this.a.jdField_a_of_type_Besk.c + ", rl = " + this.a.jdField_a_of_type_Besk.b);
+              }
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result ready -----------");
+            }
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+            return;
+          }
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result null -----------");
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
   }
 }
 

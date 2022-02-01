@@ -1,21 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class ahfx
-  implements ValueAnimator.AnimatorUpdateListener
+public class ahfx
+  implements whe
 {
-  ahfx(ahfu paramahfu) {}
+  long jdField_a_of_type_Long;
+  ahfy jdField_a_of_type_Ahfy;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(ahfy paramahfy, String paramString, long paramLong)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.a.setLayoutParams(paramValueAnimator);
+    this.jdField_a_of_type_Ahfy = paramahfy;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
+  
+  public void a(String paramString1, String paramString2, int paramInt) {}
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.readinjoySearch;
 
 import android.os.Handler;
 import android.os.Message;
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
@@ -16,12 +16,12 @@ class ReadInJoyNewSearchActivity$4
   
   public void run()
   {
-    awgf localawgf = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    List localList = localawgf.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
+    EntityManager localEntityManager = this.this$0.app.a().createEntityManager();
+    List localList = localEntityManager.query(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
     Message localMessage = this.this$0.a.obtainMessage(1);
     localMessage.obj = localList;
     this.this$0.a.sendMessage(localMessage);
-    localawgf.a();
+    localEntityManager.close();
     if (localList != null) {
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyNewSearchActivity", 2, "lookupHistory size: " + localList.size());
@@ -35,7 +35,7 @@ class ReadInJoyNewSearchActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.4
  * JD-Core Version:    0.7.0.1
  */

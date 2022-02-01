@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
-public abstract interface awow
+public class awow
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public awow(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
   
-  public abstract void a(PersonalityLabel paramPersonalityLabel, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void setNick(String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awow
  * JD-Core Version:    0.7.0.1
  */

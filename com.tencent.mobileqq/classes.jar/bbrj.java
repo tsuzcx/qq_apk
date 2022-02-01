@@ -1,18 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import org.json.JSONObject;
-
-class bbrj
-  implements bckx
+public abstract interface bbrj
 {
-  bbrj(bbri parambbri, bcml parambcml, int paramInt) {}
+  public abstract void a();
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
-  {
-    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
-      this.jdField_a_of_type_Bcml.a(this.jdField_a_of_type_Bbri.a.a.a, 0, this.jdField_a_of_type_Int);
-    }
-  }
+  public abstract void a(String paramString, int paramInt, boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

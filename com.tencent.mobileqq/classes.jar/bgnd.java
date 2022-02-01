@@ -1,27 +1,50 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.sdk.core.cache.MiniCacheFreeManager.1;
+import QQWalletPay.RespCheckChangePwdAuth;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgnd
-  implements DialogInterface.OnClickListener
+class bgnd
+  extends Handler
 {
-  public bgnd(MiniCacheFreeManager.1 param1) {}
+  private bgnd(bgmp parambgmp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    bgnc.a(this.a.b, this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-    if (this.a.jdField_a_of_type_AndroidAppActivity != null) {
-      this.a.jdField_a_of_type_AndroidAppActivity.finish();
+    if (paramMessage.what != 1) {
+      return;
     }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (bgmp.a(this.a) != null)
+    {
+      bgmp.a(this.a).a();
+      this.a.a.removeObserver(bgmp.a(this.a));
     }
+    if (paramMessage.arg1 != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("JumpAction", 2, "msf return error ");
+      }
+      bgmp.a(this.a, 1);
+      return;
+    }
+    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
+    {
+      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
+      if (paramMessage.retCode == 0)
+      {
+        bgmp.b(this.a);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("JumpAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
+      }
+    }
+    bgmp.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgnd
  * JD-Core Version:    0.7.0.1
  */

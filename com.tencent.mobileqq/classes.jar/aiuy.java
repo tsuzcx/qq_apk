@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aiuy
-  extends bead
+class aiuy
+  implements View.OnClickListener
 {
-  aiuy(aiux paramaiux) {}
+  aiuy(aiux paramaiux, int paramInt) {}
   
-  public void onDone(beae parambeae)
+  public void onClick(View paramView)
   {
-    super.onDone(parambeae);
-    ThreadManager.getFileThreadHandler().post(new PreloadImgManager.1.1(this, parambeae));
+    if (this.jdField_a_of_type_Aiux.a != null) {
+      this.jdField_a_of_type_Aiux.a.a(paramView, this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,36 +1,20 @@
-import android.graphics.Bitmap;
-import android.util.Log;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
-
 class ayld
-  extends nnn
 {
-  ayld(aylc paramaylc, WebViewPluginEngine paramWebViewPluginEngine)
-  {
-    super(paramWebViewPluginEngine);
-  }
+  public int a;
+  public aykz a;
+  public ayla a;
+  public aylc a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b = true;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    this.a.onPageFinished(paramWebView, paramString);
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    this.a.onPageStarted(paramWebView, paramString, paramBitmap);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    Log.d("KDSearchResultBuilder", "shouldOverrideUrlLoading: setWebViewClient");
-    if (this.a.shouldOverrideUrlLoading(paramWebView, paramString)) {
-      return true;
-    }
-    return super.shouldOverrideUrlLoading(paramWebView, paramString);
-  }
+  private ayld(ayko paramayko) {}
 }
 
 

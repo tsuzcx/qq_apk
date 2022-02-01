@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.highway.segment;
 
 import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.config.ConfigManager;
 import com.tencent.mobileqq.highway.conn.ConnManager;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.LoginSigHead;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.QueryHoleRsp;
@@ -108,21 +107,21 @@ public class RequestInfoQuery
         this.mTrans.mTransReport.connNum = paramRequestWorker.engine.mConnManager.getCurrentConnNum();
         TransReport localTransReport = this.mTrans.mTransReport;
         if (this.protoType != 1) {
-          break label362;
+          break label373;
         }
         localObject = "TCP";
         label253:
         localTransReport.protoType = ((String)localObject);
         this.mTrans.mTransReport.ipIndex = this.endpoint.ipIndex;
         this.mTrans.mTransReport.isIpv6 = paramHwResponse.isIpv6;
-        paramRequestWorker = ConfigManager.getInstance(paramRequestWorker.engine.getAppContext(), paramRequestWorker.engine);
-        this.mTrans.mTransReport.netIpType = paramRequestWorker.mCurnetIptype;
+        this.mTrans.mTransReport.mHasIpv6List = paramRequestWorker.engine.mConnManager.mHasIpv6List;
+        this.mTrans.mTransReport.mIPv6Fast = paramRequestWorker.engine.mConnManager.isIpv6Fast();
       }
       if (paramHwResponse.retCode != 0) {
-        break label434;
+        break label445;
       }
       if (!paramHwResponse.isFinish) {
-        break label370;
+        break label381;
       }
       this.mTrans.onTransSuccess(null, paramHwResponse.mBuExtendinfo);
     }
@@ -132,10 +131,10 @@ public class RequestInfoQuery
       return;
       bool = false;
       break;
-      label362:
+      label373:
       localObject = "HTTP";
       break label253;
-      label370:
+      label381:
       localObject = paramHwResponse.mRespData;
       paramRequestWorker = new CSDataHighwayHead.RspBody();
       try
@@ -151,7 +150,7 @@ public class RequestInfoQuery
         }
       }
     }
-    label434:
+    label445:
     this.mTrans.onQuertHoleError(this.sentBitmap);
   }
   

@@ -1,66 +1,36 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.List;
 
-public class wqm
-  extends wqp<ShareGroupFeedItem>
+class wqm
+  implements wld<wqn, wqo>
 {
-  public wqm(@NonNull ShareGroupFeedItem paramShareGroupFeedItem)
-  {
-    super(paramShareGroupFeedItem);
-  }
+  private wqm(wqk paramwqk) {}
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public void a(@NonNull wqn paramwqn, @Nullable wqo paramwqo, @NonNull ErrorMessage paramErrorMessage)
   {
-    super.a(paramStoryVideoItem);
-    paramStoryVideoItem = (ShareGroupFeedItem)a();
-    paramStoryVideoItem.videoCount -= 1;
-    if (((ShareGroupFeedItem)a()).videoCount < 0) {
-      ((ShareGroupFeedItem)a()).videoCount = 0;
-    }
-  }
-  
-  public void a(StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
-  {
-    super.a(paramStoryVideoItem, paramBoolean);
-    paramStoryVideoItem = (ShareGroupFeedItem)a();
-    paramStoryVideoItem.videoCount += 1;
-    if (((ShareGroupFeedItem)a()).videoCount < 0) {
-      ((ShareGroupFeedItem)a()).videoCount = 0;
-    }
-  }
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
-  {
-    ((ShareGroupFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), paramStoryFeed);
-    ((ShareGroupFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    Object localObject = (qqstory_struct.ShareGroupFeed)paramStoryFeed.share_group_feed.get();
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.ShareGroupFeed)localObject).video_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
+    if ((paramwqo != null) && (paramwqo.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
     {
-      qqstory_struct.ShareGroupVideoInfo localShareGroupVideoInfo = (qqstory_struct.ShareGroupVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.VideoListHomeFeed", localShareGroupVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
+      this.a.jdField_a_of_type_JavaUtilList.addAll(paramwqo.jdField_a_of_type_JavaUtilList);
+      yqp.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramwqo.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramwqo.jdField_a_of_type_Boolean), paramwqo.jdField_a_of_type_JavaLangString });
+      if ((paramwqo.jdField_a_of_type_Boolean) || (paramwqo.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        yqp.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramwqo.b) });
+        this.a.a(true, paramwqo.b);
+        return;
+      }
+      this.a.c = paramwqo.jdField_a_of_type_JavaLangString;
+      this.a.c();
+      return;
     }
-    c(paramStoryFeed, true);
-    return true;
+    yqp.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
+    this.a.a(false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wqm
  * JD-Core Version:    0.7.0.1
  */

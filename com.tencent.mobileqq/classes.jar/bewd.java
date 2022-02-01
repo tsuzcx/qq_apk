@@ -1,26 +1,16 @@
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.VerticalCenterImageSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bewd
-  extends VerticalCenterImageSpan
+class bewd
+  implements View.OnClickListener
 {
-  private int a;
+  bewd(bewa parambewa) {}
   
-  public bewd(Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    super(paramDrawable, 0);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return super.getSize(paramPaint, paramCharSequence, paramInt1, paramInt2, paramFontMetricsInt) + this.a;
+    this.a.b(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,41 +1,55 @@
-import QzoneCombine.ClientOnlineNotfiyReq;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-
 public class bjcq
-  extends QzoneExternalRequest
 {
-  ClientOnlineNotfiyReq a;
+  private static bjcr a = new bjcr();
   
-  public bjcq(long paramLong, byte[] paramArrayOfByte)
+  public static void a(bjcr parambjcr)
   {
-    this.needCompress = false;
-    this.a = new ClientOnlineNotfiyReq(paramArrayOfByte, paramLong);
+    if (parambjcr != null)
+    {
+      a = parambjcr;
+      return;
+    }
+    a = new bjcr();
   }
   
-  public String getCmdString()
+  public static void a(String paramString1, String paramString2)
   {
-    return "QzoneNewService." + uniKey();
+    a.a(paramString1, paramString2);
   }
   
-  public byte[] getEncodedUniParameter()
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return bilr.a(this.a);
+    a.a(paramString1, paramString2, paramThrowable);
   }
   
-  public JceStruct getReq()
+  public static void b(String paramString1, String paramString2)
   {
-    return this.a;
+    a.b(paramString1, paramString2);
   }
   
-  public String uniKey()
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return "MqqOnlineNtf";
+    a.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    a.c(paramString1, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a.c(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    a.d(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjcq
  * JD-Core Version:    0.7.0.1
  */

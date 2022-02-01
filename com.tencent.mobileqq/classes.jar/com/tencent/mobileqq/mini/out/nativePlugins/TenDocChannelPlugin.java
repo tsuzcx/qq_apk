@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bagj;
-import bagq;
-import bajr;
+import bdhn;
+import bdhu;
+import bdkv;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
@@ -42,10 +42,10 @@ public class TenDocChannelPlugin
         localBundle.putBoolean("isSuccess", bool);
         localBundle.putString("url", str);
         localBundle.putString("fileName", paramString);
-        if ((!(paramActivity instanceof TeamWorkDocEditBrowserActivity)) || (((TeamWorkDocEditBrowserActivity)paramActivity).a() == null)) {
+        if ((!(paramActivity instanceof TeamWorkDocEditBrowserActivity)) || (((TeamWorkDocEditBrowserActivity)paramActivity).getHostWebView() == null)) {
           break label203;
         }
-        paramActivity = ((TeamWorkDocEditBrowserActivity)paramActivity).a().getUrl();
+        paramActivity = ((TeamWorkDocEditBrowserActivity)paramActivity).getHostWebView().getUrl();
         paramString = paramActivity;
         if (TextUtils.isEmpty(paramActivity)) {
           paramString = localJSONObject.optString("refer_url");
@@ -73,8 +73,8 @@ public class TenDocChannelPlugin
     {
       paramString = new JSONObject(paramString).optString("fileName");
       new Bundle().putString("fileName", paramString);
-      bagq.a(paramActivity, paramString, true);
-      bajr.a(null, "0X800A4B2");
+      bdhu.a(paramActivity, paramString, true);
+      bdkv.a(null, "0X800A4B2");
       return;
     }
     catch (Exception paramActivity)
@@ -93,7 +93,7 @@ public class TenDocChannelPlugin
     {
       paramString = new JSONObject(paramString).optString("folderId");
       Intent localIntent = new Intent(paramActivity, FMActivity.class);
-      localIntent.putExtra(bagj.f, true);
+      localIntent.putExtra(bdhn.f, true);
       localIntent.addFlags(536870912);
       localIntent.putExtra("selectMode", true);
       localIntent.putExtra("busiType", 9);
@@ -101,7 +101,7 @@ public class TenDocChannelPlugin
       localIntent.putExtra("enterfrom", 9);
       localIntent.putExtra("tab_tab_type", 7);
       localIntent.putExtra("only_show_local_tab", true);
-      localIntent.putExtra(bagj.g, paramString);
+      localIntent.putExtra(bdhn.g, paramString);
       localIntent.putExtra("smart_device_support_flag", 8);
       paramActivity.startActivity(localIntent);
       return;
@@ -150,7 +150,7 @@ public class TenDocChannelPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TenDocChannelPlugin
  * JD-Core Version:    0.7.0.1
  */

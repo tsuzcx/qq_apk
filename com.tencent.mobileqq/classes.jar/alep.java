@@ -1,16 +1,30 @@
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public abstract interface alep
+public class alep
+  extends aleq
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public alep(Context paramContext)
+  {
+    this.jdField_a_of_type_JavaLangString = anni.a(2131696526);
+    this.b = this.jdField_a_of_type_JavaLangString;
+  }
   
-  public abstract void a(int[] paramArrayOfInt, int paramInt);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(List<alen> paramList);
-  
-  public abstract void e();
+  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramObject instanceof alep))
+    {
+      paramObject = (alep)paramObject;
+      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
+      return paramObject;
+    }
+    paramObject = new alep(BaseApplication.getContext());
+    paramObject.a(paramMessageRecord.senderuin);
+    paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
+    return paramObject;
+  }
 }
 
 

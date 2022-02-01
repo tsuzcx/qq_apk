@@ -1,49 +1,121 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ailb
+  implements aimh
 {
-  public static List<ailc> a;
+  int jdField_a_of_type_Int = -1;
+  public aimj a;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  String b = "";
+  String c = "";
   
-  public static void a(JSONObject paramJSONObject)
+  public ailb(QQAppInterface paramQQAppInterface, aimj paramaimj, Activity paramActivity)
   {
-    int i = 2;
-    if ((paramJSONObject != null) && (paramJSONObject.has("entryList")))
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aimj = paramaimj;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public int a()
+  {
+    return 35;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558646, null);
+    localView.setOnClickListener(new ailc(this, localView));
+    TextView localTextView = (TextView)localView.findViewById(2131362491);
+    paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();
+    int j = (int)(localTextView.getPaint().measureText(this.c) / this.c.length());
+    int i;
+    if (paramVarArgs.widthPixels > paramVarArgs.heightPixels)
     {
-      paramJSONObject = paramJSONObject.optJSONArray("entryList");
-      ArrayList localArrayList = new ArrayList();
-      if (paramJSONObject.length() > 2) {}
-      for (;;)
-      {
-        int j = 0;
-        while (j < i)
-        {
-          JSONObject localJSONObject = paramJSONObject.optJSONObject(j);
-          ailc localailc = new ailc();
-          localailc.jdField_a_of_type_Int = localJSONObject.optInt("id");
-          Object localObject = localJSONObject.optJSONObject("image");
-          if (localObject != null)
-          {
-            localObject = ((JSONObject)localObject).optString("src");
-            if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              localailc.jdField_a_of_type_JavaLangString = ("https://gxh.vip.qq.com/xydata" + (String)localObject);
-            }
-          }
-          localailc.c = localJSONObject.optString("name");
-          localailc.d = localJSONObject.optString("desc");
-          localailc.jdField_b_of_type_JavaLangString = localJSONObject.optString("url");
-          localailc.jdField_a_of_type_Boolean = localJSONObject.optBoolean("isShow", true);
-          localailc.jdField_b_of_type_Int = localJSONObject.optInt("tag", 0);
-          localArrayList.add(localailc);
-          j += 1;
-        }
-        i = paramJSONObject.length();
+      i = paramVarArgs.heightPixels;
+      i = (int)((i - paramVarArgs.density * 65.0F) / j) - 8;
+      if (this.c.length() > i) {
+        this.c = (this.c.substring(0, i) + "...");
       }
-      a = localArrayList;
+      if ((this.jdField_a_of_type_Int < 100) || (this.jdField_a_of_type_Int > 300)) {
+        break label216;
+      }
     }
+    label216:
+    for (paramVarArgs = anni.a(2131700975);; paramVarArgs = anni.a(2131700976))
+    {
+      this.jdField_a_of_type_JavaLangString = String.format(paramVarArgs, new Object[] { this.c });
+      localTextView.setText(this.jdField_a_of_type_JavaLangString);
+      return localView;
+      i = paramVarArgs.widthPixels;
+      break;
+    }
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt != 1000) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (QLog.isColorLevel()) {
+              QLog.d("ComicTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
+            }
+            if ((this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_AndroidAppActivity.getIntent() != null)) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("ComicTipsBar", 2, "onAIOEvent() : intent is null");
+          return;
+          paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getIntent().getExtras();
+          if (paramVarArgs != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("ComicTipsBar", 2, "onAIOEvent() : data == null");
+        return;
+        this.jdField_a_of_type_Boolean = paramVarArgs.getBoolean("fromMessage", false);
+        this.b = paramVarArgs.getString("comicId");
+        this.c = paramVarArgs.getString("comicName");
+        this.jdField_a_of_type_Int = paramVarArgs.getInt("type", -1);
+        if (!TextUtils.isEmpty(this.c)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ComicTipsBar", 2, "onAIOEvent() : comicName is null");
+      return;
+      this.jdField_a_of_type_Aimj.a(this, new Object[0]);
+    } while (!QLog.isColorLevel());
+    QLog.d("ComicTipsBar", 2, "onAIOEvent() : show ReaderTipBar, bookName : " + this.c);
+  }
+  
+  public int[] a()
+  {
+    return new int[0];
+  }
+  
+  public int b()
+  {
+    return 13;
   }
 }
 

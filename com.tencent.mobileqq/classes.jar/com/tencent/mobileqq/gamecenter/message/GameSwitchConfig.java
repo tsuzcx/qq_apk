@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import asne;
-import awge;
-import awhs;
+import autn;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 
 public class GameSwitchConfig
-  extends awge
+  extends Entity
 {
-  public static final String TAG = asne.a + "GameSwitchConfig";
-  @awhs
+  public static final String TAG = autn.a + "GameSwitchConfig";
+  @unique
   public String mAppId;
   public int mBlockSwitch;
   public int mSyncSwitch;
@@ -25,7 +25,7 @@ public class GameSwitchConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.message.GameSwitchConfig
  * JD-Core Version:    0.7.0.1
  */

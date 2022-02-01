@@ -1,16 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.16.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.QQWalletMsg;
 
 public class aczc
-  extends avva
+  extends aczg
 {
-  public aczc(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int a()
   {
-    ThreadManager.post(new FriendProfileCardActivity.16.1(this), 5, null, false);
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    new bbzc().e(paramList, paramList1, paramStringBuilder, paramMsg, parambepr);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.qqwallet_msg.has();
   }
 }
 

@@ -1,36 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
 class bcfz
-  implements bhuk
+  implements bcgb
 {
-  bcfz(bcfy parambcfy, bhuf parambhuf, boolean paramBoolean, bcea parambcea) {}
+  bcfz(bcfy parambcfy) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat)
   {
-    this.jdField_a_of_type_Bhuf.dismiss();
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
-    }
-    switch (i)
-    {
-    default: 
-      paramView = "";
-    }
-    for (;;)
-    {
-      bdes.a("Grp_edu", "Grp_recite", "Blueword_Clk", 0, 0, new String[] { this.jdField_a_of_type_Bcea.f, paramView });
-      return;
-      SelectReciteParagraphFragment.a(paramView.getContext(), this.jdField_a_of_type_Bcea.f, this.jdField_a_of_type_Bcea.jdField_a_of_type_JavaLangString, new ArrayList(this.jdField_a_of_type_Bcea.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_Bcea.c);
-      paramView = "2";
-      continue;
-      SearchReciteArticleFragment.a(paramView.getContext(), this.jdField_a_of_type_Bcea.f, "", this.jdField_a_of_type_Bcea.c);
-      paramView = "0";
+    if (bcfy.a(this.a) != null) {
+      bcfy.a(this.a).a(this.a.a, paramFloat);
     }
   }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  {
+    QLog.d("VideoCompressProcessor", 1, "hardware compress finish code: " + paramInt);
+    if (bcfy.a(this.a) != null)
+    {
+      bcfy.a(this.a).a(this.a.a, 1.0F);
+      bcfy.a(this.a).a(this.a.a, 3);
+    }
+  }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean) {}
 }
 
 

@@ -1,83 +1,66 @@
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import org.json.JSONObject;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class bktz
+class bktz
+  implements bktx
 {
-  public static String a(long paramLong, int paramInt)
+  private IBinder a;
+  
+  bktz(IBinder paramIBinder)
   {
-    Object localObject = bfbm.a().f();
-    long l = bfbm.a().a();
-    localObject = "https://tu.qq.com/wspeed.qq.com/w.cgi?appid=1000322&commandid=pitu.qqsdk.AutoAIScene&releaseversion=" + (String)localObject + "&touin=" + l + "&frequency=1&resultcode=" + paramInt + "&timecost=" + paramLong;
-    try
-    {
-      localObject = (HttpURLConnection)new URL((String)localObject).openConnection();
-      ((HttpURLConnection)localObject).setConnectTimeout(5000);
-      ((HttpURLConnection)localObject).setRequestMethod("GET");
-      if (((HttpURLConnection)localObject).getResponseCode() == 200)
-      {
-        localObject = ((HttpURLConnection)localObject).getInputStream().toString();
-        return localObject;
-      }
-      return null;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return null;
+    this.a = paramIBinder;
   }
   
-  public static JSONObject a(String paramString1, String paramString2)
+  public String a()
   {
-    System.setProperty("sun.net.client.defaultConnectTimeout", "30000");
-    System.setProperty("sun.net.client.defaultReadTimeout", "30000");
-    HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString1).openConnection();
-    localHttpURLConnection.setRequestMethod("POST");
-    localHttpURLConnection.setRequestProperty("accept", "*/*");
-    localHttpURLConnection.setRequestProperty("content-type", "application/json");
-    localHttpURLConnection.setConnectTimeout(5000);
-    localHttpURLConnection.setReadTimeout(5000);
-    localHttpURLConnection.setDoOutput(true);
-    localHttpURLConnection.setDoInput(true);
-    localHttpURLConnection.setUseCaches(false);
-    localHttpURLConnection.setInstanceFollowRedirects(true);
-    localHttpURLConnection.connect();
-    paramString1 = new DataOutputStream(localHttpURLConnection.getOutputStream());
-    paramString1.write(paramString2.getBytes("utf-8"));
-    paramString1.flush();
-    paramString1.close();
-    if (200 == localHttpURLConnection.getResponseCode())
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      paramString1 = new BufferedReader(new InputStreamReader(localHttpURLConnection.getInputStream()));
-      paramString2 = new StringBuilder();
-      for (;;)
-      {
-        String str = paramString1.readLine();
-        if (str == null) {
-          break;
-        }
-        paramString2.append(new String(str.getBytes(), "utf-8"));
-      }
-      paramString1.close();
+      localParcel1.writeInterfaceToken("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      String str = localParcel2.readString();
+      return str;
     }
-    for (paramString1 = paramString2.toString();; paramString1 = null)
+    finally
     {
-      localHttpURLConnection.disconnect();
-      if (paramString1 != null) {
-        break;
-      }
-      return null;
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
-    return new JSONObject(paramString1);
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bktz
  * JD-Core Version:    0.7.0.1
  */

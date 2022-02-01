@@ -1,40 +1,59 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo;
-import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class spz
-  implements VComponentAdapter.OnVideoViewMethodListener
+class spz
+  implements ViewBase.OnClickListener
 {
-  public spz(VVideo paramVVideo) {}
+  spz(spy paramspy) {}
   
-  public void OnMethodError(String paramString, JSONObject paramJSONObject)
+  public void onClick(ViewBase paramViewBase)
   {
-    try
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", paramString);
-      localJSONObject.put("extra", paramJSONObject);
-      this.a.videoFireEvent("error", localJSONObject);
+      FastWebArticleInfo localFastWebArticleInfo;
+      try
+      {
+        String str = paramViewBase.getEventAttachedData();
+        int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+        paramViewBase = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b;
+        localFastWebArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
+        switch (i)
+        {
+        case 1004: 
+          if (TextUtils.isEmpty(str)) {
+            return;
+          }
+          pha.d(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, str);
+          return;
+        }
+      }
+      catch (Exception paramViewBase)
+      {
+        QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "findClickableViewListener error!  msg=" + paramViewBase);
+        return;
+      }
+      ReadInJoyFastWebBottomSocialViewNew.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
       return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void OnMethodSuccess(String paramString, Object paramObject)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      VVideo.access$000(this.a, paramString, paramObject);
+      ReadInJoyFastWebBottomSocialViewNew.b(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.c(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.d(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.e(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     spz
  * JD-Core Version:    0.7.0.1
  */

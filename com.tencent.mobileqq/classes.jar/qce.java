@@ -1,82 +1,56 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.net.URL;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class qce
-  extends BaseAdapter
+  implements qft
 {
-  String jdField_a_of_type_JavaLangString;
-  List<URL> jdField_a_of_type_JavaUtilList;
-  String jdField_b_of_type_JavaLangString;
-  List<rxv> jdField_b_of_type_JavaUtilList;
-  
-  public qce(ComponentContentGridImage paramComponentContentGridImage, qcf paramqcf)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    a(paramqcf);
+    return null;
   }
   
-  public String a()
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<URL> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(qcf paramqcf)
-  {
-    this.jdField_b_of_type_JavaUtilList = paramqcf.a();
-    this.jdField_a_of_type_JavaUtilList = paramqcf.b();
-    this.jdField_a_of_type_JavaLangString = paramqcf.a();
-    this.jdField_b_of_type_JavaLangString = paramqcf.b();
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_b_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_b_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramViewGroup.getContext();
-    if (paramView == null)
-    {
-      paramView = new SquareCornerTextImageView(paramViewGroup);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    long l2 = 0L;
+    if (paramBaseArticleInfo == null) {
+      return null;
     }
-    for (;;)
+    long l1 = l2;
+    if (paramBaseArticleInfo.mSocialFeedInfo != null)
     {
-      ((SquareCornerTextImageView)paramView).a((rxv)this.jdField_b_of_type_JavaUtilList.get(paramInt));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage.a(paramView);
-      return paramView;
+      l1 = l2;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
+      }
     }
+    return new qba().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).f(paramBaseArticleInfo).g(paramBaseArticleInfo).h(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).B(paramBaseArticleInfo).p(paramBaseArticleInfo).q(paramBaseArticleInfo).u(paramBaseArticleInfo).v(paramBaseArticleInfo).z(paramBaseArticleInfo).A(paramBaseArticleInfo).a("ReadInjoy_original_cell").E(paramBaseArticleInfo).D(paramBaseArticleInfo).G(paramBaseArticleInfo).H(paramBaseArticleInfo).a();
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pxk parampxk, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    qky.e(paramContainer, parampxk);
+    qih localqih = (qih)paramContainer.findViewBaseByName("id_article_comment");
+    if (localqih != null) {
+      localqih.a(parampxk);
+    }
+    qky.a(paramContainer, parampxk.a());
+    qcd.a(paramContainer, parampxk);
+    qky.b(paramContainer, parampxk);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pxk parampxk, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qce
  * JD-Core Version:    0.7.0.1
  */

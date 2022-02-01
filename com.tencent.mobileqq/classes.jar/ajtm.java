@@ -1,31 +1,27 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajtm
-  extends ajtq
+  implements View.OnClickListener
 {
-  public void a()
-  {
-    RMVideoStateMgr.a().a.p();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] initState end");
-    }
-  }
+  public ajtm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    RMVideoStateMgr.a().a("RMVideoIdleState");
-    return true;
-  }
-  
-  public void b()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
-    }
-    localRMVideoStateMgr.a.a(100);
-    localRMVideoStateMgr.a(3);
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bgzo.e, anni.a(2131700404));
+    localBundle.putString(bgzo.f, "CJCLUBT");
+    localBundle.putString(bgzo.d, "1450000516");
+    localBundle.putInt(bgzo.b, 3);
+    localBundle.putString(bgzo.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
+    localBundle.putString(bgzo.g, "svip");
+    localBundle.putString(bgzo.a, this.a.b.getCurrentAccountUin());
+    bgzo.a(this.a.b, this.a.getActivity(), localBundle);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

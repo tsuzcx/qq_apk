@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas;
 
 import android.text.TextUtils;
-import bdut;
+import bgzu;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class VasMonitorHandler$2
   implements Runnable
 {
-  public VasMonitorHandler$2(bdut parambdut, AppRuntime paramAppRuntime, boolean paramBoolean) {}
+  public VasMonitorHandler$2(bgzu parambgzu, AppRuntime paramAppRuntime, boolean paramBoolean) {}
   
   public void run()
   {
@@ -82,7 +82,7 @@ public class VasMonitorHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasMonitorHandler.2
  * JD-Core Version:    0.7.0.1
  */

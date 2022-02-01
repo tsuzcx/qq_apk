@@ -1,31 +1,15 @@
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class advb
-  extends MqqHandler
+  implements DialogInterface.OnClickListener
 {
-  public advb(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  public advb(ChatHistoryFileActivity paramChatHistoryFileActivity, advd paramadvd) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    case 107: 
-    default: 
-      return;
-    case 106: 
-      this.a.finish();
-      return;
-    }
-    int i = 0;
-    while (i < 6)
-    {
-      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
-      i += 1;
-    }
-    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
+    this.jdField_a_of_type_Advd.a(true);
   }
 }
 

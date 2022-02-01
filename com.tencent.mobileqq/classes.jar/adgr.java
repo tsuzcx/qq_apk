@@ -1,23 +1,54 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.LebaListMgrActivity.3.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import tencent.im.oidb.oidb_0xb6f.Identity;
+import tencent.im.oidb.oidb_0xb6f.ReportFreqRspBody;
+import tencent.im.oidb.oidb_0xb6f.RspBody;
 
-public class adgr
-  extends avva
+class adgr
+  extends niv
 {
-  public adgr(LebaListMgrActivity paramLebaListMgrActivity) {}
+  adgr(adgq paramadgq, String paramString1, String paramString2, int paramInt) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
+      QLog.i("DoraemonOpenAPI.report", 2, "onResult key=" + this.jdField_a_of_type_JavaLangString + ", api=" + this.b + ", count=" + this.jdField_a_of_type_Int + ", code=" + paramInt);
     }
-    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.report", 2, "req error");
+      }
+    }
+    do
     {
-      List localList = aieq.a().a();
-      this.a.runOnUiThread(new LebaListMgrActivity.3.1(this, localList));
-    }
+      for (;;)
+      {
+        return;
+        paramBundle = new oidb_0xb6f.RspBody();
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if (paramBundle.report_freq_rsp.has()) {
+            break label146;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.i("DoraemonOpenAPI.report", 2, "rsp invalid");
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("DoraemonOpenAPI.report", 2, "parse rsp error", paramArrayOfByte);
+    return;
+    label146:
+    adgq.a(this.jdField_a_of_type_Adgq, this.jdField_a_of_type_JavaLangString, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), paramBundle.report_freq_rsp.expire_time.get() * 1000L);
   }
 }
 

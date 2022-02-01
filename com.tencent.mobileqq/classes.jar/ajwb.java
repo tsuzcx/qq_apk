@@ -1,10 +1,18 @@
-public abstract interface ajwb
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+class ajwb
+  extends ayet
 {
-  public abstract int a(int paramInt1, int paramInt2, ajvu paramajvu);
+  ajwb(ajvr paramajvr) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
+  protected void a(Object paramObject)
+  {
+    this.a.g();
+    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
+      this.a.a.app.a().e();
+    }
+  }
 }
 
 

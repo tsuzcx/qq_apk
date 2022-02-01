@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import mqq.app.QQPermissionCallback;
+import java.util.Date;
+import java.util.List;
 
-class aikj
-  implements QQPermissionCallback
+public class aikj
 {
-  aikj(aiki paramaiki) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bdgm.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a.grant();
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  Date jdField_a_of_type_JavaUtilDate;
+  List<String> jdField_a_of_type_JavaUtilList;
+  String jdField_b_of_type_JavaLangString;
+  Date jdField_b_of_type_JavaUtilDate;
+  String c;
+  String d;
 }
 
 

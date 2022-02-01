@@ -1,64 +1,20 @@
-import android.content.Context;
-import android.os.SystemClock;
-import com.tencent.mobileqq.richmedia.dc.DataReport;
-import com.tencent.mobileqq.richmedia.dc.DataReport.ReportTask;
+import android.app.Dialog;
+import android.view.View;
 
-public class axsz
-  extends axtl
+class axsz
+  implements aybn
 {
-  private axtb a;
-  private boolean b;
+  axsz(axsd paramaxsd) {}
   
-  public axsz(Context paramContext)
+  public void a(Dialog paramDialog, View paramView, aybm paramaybm)
   {
-    super(paramContext);
-  }
-  
-  public void a()
-  {
-    if ((this.a != null) && (!this.b))
-    {
-      DataReport.ReportTask localReportTask = new DataReport.ReportTask("Pic.AioPreview.Progressive", this.a.a("Pic.AioPreview.Progressive"));
-      DataReport.a().a(localReportTask);
-      this.b = true;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((this.a == null) && (!this.b))
-    {
-      axtb localaxtb = new axtb(null);
-      axtb.a(localaxtb, paramBoolean);
-      axtb.a(localaxtb, SystemClock.uptimeMillis());
-      this.a = localaxtb;
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.a != null) && (!this.b)) {
-      axtb.b(this.a, SystemClock.uptimeMillis());
-    }
-  }
-  
-  public void c()
-  {
-    if ((this.a != null) && (!this.b)) {
-      axtb.c(this.a, SystemClock.uptimeMillis());
-    }
-  }
-  
-  public void d()
-  {
-    if ((this.a != null) && (!this.b)) {
-      axtb.b(this.a, true);
-    }
+    aybo.a(this.a.a, paramaybm, "data_card");
+    paramDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axsz
  * JD-Core Version:    0.7.0.1
  */

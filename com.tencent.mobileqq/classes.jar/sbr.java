@@ -1,99 +1,65 @@
-import android.content.Context;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusAnimationItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-class sbr
-  extends sah
+public class sbr
+  implements View.OnLayoutChangeListener
 {
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  public sbr(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  public sbr(sbq paramsbq, View paramView, BaseData paramBaseData)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    super(paramView, paramBaseData);
-    if ((paramView instanceof Container)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
-    }
-  }
-  
-  private void a(Context paramContext, ProteusItemData paramProteusItemData)
-  {
-    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new sbs(this, paramProteusItemData, paramContext));
-  }
-  
-  private void a(View paramView, BaseData paramBaseData)
-  {
-    if ((paramView == null) || (paramBaseData == null)) {}
-    for (;;)
+    this.a.removeOnLayoutChangeListener(this);
+    if ((VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a)))
     {
-      return;
-      try
+      paramInt1 = 0;
+      if (VideoFeedsRecyclerView.a(this.a) != 0) {
+        break label228;
+      }
+    }
+    label227:
+    label228:
+    label244:
+    do
+    {
+      paramInt1 = (int)(this.a.getHeight() * 0.3D);
+      break label227;
+      paramView = VideoFeedsRecyclerView.a(this.a).getLayoutParams();
+      paramView.height = paramInt1;
+      VideoFeedsRecyclerView.a(this.a).setLayoutParams(paramView);
+      if (VideoFeedsRecyclerView.a(this.a) == 0)
       {
-        ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
-        if (((ProteusItemData)paramBaseData).v == 1)
+        paramView = this.a.getLayoutManager().findViewByPosition(1);
+        if ((paramView != null) && (paramView.getHeight() > 0) && (VideoFeedsRecyclerView.b(this.a)))
         {
-          paramView.setOnLongClickListener(new sbu(this, paramView, localProteusItemData));
+          paramInt1 = paramView.getHeight();
+          paramInt1 = (int)(this.a.getHeight() / 2.0F - paramInt1 / 2.0F);
+          VideoFeedsRecyclerView.a(this.a, paramInt1);
+          if ((!VideoFeedsRecyclerView.a(this.a).a(1)) || (VideoFeedsRecyclerView.a(this.a).b() == 1)) {
+            break label244;
+          }
+        }
+        for (paramInt1 = 1;; paramInt1 = 0)
+        {
+          if ((paramInt1 == 0) && (VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a).b() != 1)) {
+            this.a.a(this.a.getChildViewHolder(paramView));
+          }
           return;
+          if (VideoFeedsRecyclerView.a(this.a) != 1) {
+            break;
+          }
+          paramInt1 = 0;
+          break;
         }
       }
-      catch (Exception paramView)
-      {
-        QLog.d("WebProteusViewCreator", 1, "addLongClickListener error,msg:" + paramView.toString());
-      }
-    }
-  }
-  
-  private boolean a()
-  {
-    return !bdiv.a(BaseApplicationImpl.getContext(), "com.tencent.reading").equals("0");
-  }
-  
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
-    for (;;)
-    {
-      return;
-      if (!(paramBaseData2 instanceof ProteusItemData)) {
-        continue;
-      }
-      paramBaseData1 = (ProteusItemData)paramBaseData2;
-      TemplateBean localTemplateBean = paramBaseData1.a;
-      if (localTemplateBean != null) {
-        sbq.a(this.jdField_a_of_type_Sbq, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-      }
-      try
-      {
-        localTemplateBean.bindData(paramBaseData1.c);
-        opy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), paramBaseData1.a.getViewBean());
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData1;
-        label77:
-        a(sbq.a(this.jdField_a_of_type_Sbq), paramBaseData1);
-        a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, paramBaseData2);
-        if (!(paramBaseData2 instanceof ProteusAnimationItemData)) {
-          continue;
-        }
-        ((ProteusAnimationItemData)paramBaseData2).a(this.jdField_a_of_type_AndroidViewView);
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label77;
-      }
-    }
+    } while (VideoFeedsRecyclerView.a(this.a) != 1);
+    VideoFeedsRecyclerView.a(this.a, VideoFeedsRecyclerView.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sbr
  * JD-Core Version:    0.7.0.1
  */

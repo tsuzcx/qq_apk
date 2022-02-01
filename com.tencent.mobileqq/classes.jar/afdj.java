@@ -1,19 +1,9 @@
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-
 public class afdj
-  implements afdp
 {
-  public afdj(AIOLongShotHelper paramAIOLongShotHelper) {}
+  public volatile long a;
+  public String a;
   
-  public void a()
-  {
-    this.a.b();
-  }
-  
-  public void b()
-  {
-    this.a.b();
-  }
+  protected afdj(afdc paramafdc) {}
 }
 
 

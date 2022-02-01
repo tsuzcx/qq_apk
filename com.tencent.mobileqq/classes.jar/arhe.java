@@ -1,32 +1,33 @@
-import com.tencent.kwstudio.office.base.Log;
-import com.tencent.kwstudio.office.preview.IHostInterface.IHttpListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Video;
 
 public final class arhe
-  implements baug
+  implements Parcelable.Creator
 {
-  private final IHostInterface.IHttpListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
-  private final String jdField_a_of_type_JavaLangString;
-  
-  private arhe(String paramString, IHostInterface.IHttpListener paramIHttpListener)
+  public IPSiteModel.Video a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener = paramIHttpListener;
+    IPSiteModel.Video localVideo = new IPSiteModel.Video();
+    localVideo.id = paramParcel.readString();
+    localVideo.buttonDesc = paramParcel.readString();
+    localVideo.content = paramParcel.readString();
+    localVideo.cover = paramParcel.readString();
+    localVideo.desc = paramParcel.readString();
+    localVideo.name = paramParcel.readString();
+    localVideo.endTime = paramParcel.readString();
+    localVideo.isShow = paramParcel.readInt();
+    localVideo.newStartTime = paramParcel.readLong();
+    localVideo.newEndTime = paramParcel.readLong();
+    localVideo.redirectUrl = paramParcel.readString();
+    localVideo.videoSource = paramParcel.readString();
+    localVideo.showDate = paramParcel.readString();
+    return localVideo;
   }
   
-  public void onResp(bavf parambavf)
+  public IPSiteModel.Video[] a(int paramInt)
   {
-    if ((parambavf.c == 200) || (parambavf.c == 206)) {}
-    for (String str = new String(parambavf.a);; str = null)
-    {
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(parambavf.c, str);
-      }
-      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + parambavf.c + ", rsp=" + str);
-      return;
-    }
+    return new IPSiteModel.Video[paramInt];
   }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

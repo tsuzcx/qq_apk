@@ -1,7 +1,7 @@
 package io.flutter.embedding.engine;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -10,10 +10,14 @@ import java.util.Set;
 
 public class FlutterShellArgs
 {
+  public static final String ARG_CACHE_SKSL = "--cache-sksl";
+  public static final String ARG_DART_FLAGS = "--dart-flags";
   public static final String ARG_DISABLE_SERVICE_AUTH_CODES = "--disable-service-auth-codes";
   public static final String ARG_DUMP_SHADER_SKP_ON_SHADER_COMPILATION = "--dump-skp-on-shader-compilation";
   public static final String ARG_ENABLE_DART_PROFILING = "--enable-dart-profiling";
   public static final String ARG_ENABLE_SOFTWARE_RENDERING = "--enable-software-rendering";
+  public static final String ARG_KEY_CACHE_SKSL = "cache-sksl";
+  public static final String ARG_KEY_DART_FLAGS = "dart-flags";
   public static final String ARG_KEY_DISABLE_SERVICE_AUTH_CODES = "disable-service-auth-codes";
   public static final String ARG_KEY_DUMP_SHADER_SKP_ON_SHADER_COMPILATION = "dump-skp-on-shader-compilation";
   public static final String ARG_KEY_ENABLE_DART_PROFILING = "enable-dart-profiling";
@@ -61,9 +65,10 @@ public class FlutterShellArgs
       localArrayList.add("--start-paused");
     }
     int i = paramIntent.getIntExtra("observatory-port", 0);
+    StringBuilder localStringBuilder;
     if (i > 0)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder = new StringBuilder();
       localStringBuilder.append("--observatory-port=");
       localStringBuilder.append(Integer.toString(i));
       localArrayList.add(localStringBuilder.toString());
@@ -87,10 +92,20 @@ public class FlutterShellArgs
       localArrayList.add("--trace-skia");
     }
     if (paramIntent.getBooleanExtra("dump-skp-on-shader-compilation", false)) {
-      localArrayList.add("dump-skp-on-shader-compilation");
+      localArrayList.add("--dump-skp-on-shader-compilation");
+    }
+    if (paramIntent.getBooleanExtra("cache-sksl", false)) {
+      localArrayList.add("--cache-sksl");
     }
     if (paramIntent.getBooleanExtra("verbose-logging", false)) {
       localArrayList.add("--verbose-logging");
+    }
+    if (paramIntent.hasExtra("dart-flags"))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--dart-flags=");
+      localStringBuilder.append(paramIntent.getStringExtra("dart-flags"));
+      localArrayList.add(localStringBuilder.toString());
     }
     return new FlutterShellArgs(localArrayList);
   }
@@ -114,7 +129,7 @@ public class FlutterShellArgs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterShellArgs
  * JD-Core Version:    0.7.0.1
  */

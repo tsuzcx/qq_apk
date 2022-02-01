@@ -1,170 +1,27 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.util.SparseIntArray;
-import java.util.HashMap;
-
-public class f
+public final class f
 {
-  private static SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private static HashMap<String, BitmapShader> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static SparseIntArray jdField_b_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private static HashMap<String, BitmapShader> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private static SparseIntArray jdField_c_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private static HashMap<String, Bitmap> jdField_c_of_type_JavaUtilHashMap = new HashMap();
-  private static SparseIntArray jdField_d_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private static HashMap<String, Bitmap> jdField_d_of_type_JavaUtilHashMap = new HashMap();
-  private static SparseIntArray e = new SparseIntArray();
-  private static SparseIntArray f = new SparseIntArray();
-  private static SparseIntArray g = new SparseIntArray();
-  
-  public static int a(int paramInt)
-  {
-    return jdField_c_of_type_AndroidUtilSparseIntArray.get(paramInt);
-  }
-  
-  public static Bitmap a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    return (Bitmap)jdField_c_of_type_JavaUtilHashMap.get(paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4);
-  }
-  
-  public static BitmapShader a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    return (BitmapShader)jdField_a_of_type_JavaUtilHashMap.get(paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4);
-  }
-  
-  public static void a(int paramInt)
-  {
-    int i = jdField_a_of_type_AndroidUtilSparseIntArray.indexOfKey(paramInt);
-    if (i >= 0) {
-      jdField_a_of_type_AndroidUtilSparseIntArray.removeAt(i);
-    }
-    i = jdField_b_of_type_AndroidUtilSparseIntArray.indexOfKey(paramInt);
-    if (i >= 0) {
-      jdField_b_of_type_AndroidUtilSparseIntArray.removeAt(i);
-    }
-    i = jdField_c_of_type_AndroidUtilSparseIntArray.indexOfKey(paramInt);
-    if (i >= 0) {
-      jdField_c_of_type_AndroidUtilSparseIntArray.removeAt(i);
-    }
-    i = jdField_d_of_type_AndroidUtilSparseIntArray.indexOfKey(paramInt);
-    if (i >= 0) {
-      jdField_d_of_type_AndroidUtilSparseIntArray.removeAt(i);
-    }
-    i = e.indexOfKey(paramInt);
-    if (i >= 0) {
-      e.removeAt(i);
-    }
-    i = f.indexOfKey(paramInt);
-    if (i >= 0) {
-      f.removeAt(i);
-    }
-    paramInt = g.indexOfKey(paramInt);
-    if (paramInt >= 0) {
-      g.removeAt(paramInt);
-    }
-  }
-  
-  public static void a(int paramInt1, int paramInt2)
-  {
-    jdField_c_of_type_AndroidUtilSparseIntArray.put(paramInt1, paramInt2);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Bitmap paramBitmap)
-  {
-    String str = paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4;
-    if ((!jdField_c_of_type_JavaUtilHashMap.containsKey(str)) && (paramBitmap != null)) {
-      jdField_c_of_type_JavaUtilHashMap.put(str, paramBitmap);
-    }
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, BitmapShader paramBitmapShader)
-  {
-    String str = paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4;
-    if ((!jdField_a_of_type_JavaUtilHashMap.containsKey(str)) && (paramBitmapShader != null)) {
-      jdField_a_of_type_JavaUtilHashMap.put(str, paramBitmapShader);
-    }
-  }
-  
-  public static int b(int paramInt)
-  {
-    return jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt, 0);
-  }
-  
-  public static Bitmap b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    return (Bitmap)jdField_d_of_type_JavaUtilHashMap.get(paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4);
-  }
-  
-  public static void b(int paramInt1, int paramInt2)
-  {
-    jdField_a_of_type_AndroidUtilSparseIntArray.put(paramInt1, paramInt2);
-  }
-  
-  public static void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Bitmap paramBitmap)
-  {
-    String str = paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4;
-    if ((!jdField_d_of_type_JavaUtilHashMap.containsKey(str)) && (paramBitmap != null)) {
-      jdField_d_of_type_JavaUtilHashMap.put(str, paramBitmap);
-    }
-  }
-  
-  public static int c(int paramInt)
-  {
-    return jdField_b_of_type_AndroidUtilSparseIntArray.get(paramInt, 0);
-  }
-  
-  public static void c(int paramInt1, int paramInt2)
-  {
-    jdField_b_of_type_AndroidUtilSparseIntArray.put(paramInt1, paramInt2);
-  }
-  
-  public static int d(int paramInt)
-  {
-    return e.get(paramInt, 256);
-  }
-  
-  public static void d(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 > 0) {
-      e.put(paramInt1, paramInt2);
-    }
-  }
-  
-  public static int e(int paramInt)
-  {
-    return jdField_d_of_type_AndroidUtilSparseIntArray.get(paramInt, 256);
-  }
-  
-  public static void e(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 > 0) {
-      jdField_d_of_type_AndroidUtilSparseIntArray.put(paramInt1, paramInt2);
-    }
-  }
-  
-  public static int f(int paramInt)
-  {
-    return f.get(paramInt, 0);
-  }
-  
-  public static void f(int paramInt1, int paramInt2)
-  {
-    f.put(paramInt1, paramInt2);
-  }
-  
-  public static int g(int paramInt)
-  {
-    return g.get(paramInt, 0);
-  }
-  
-  public static void g(int paramInt1, int paramInt2)
-  {
-    g.put(paramInt1, paramInt2);
-  }
+  public static final int a = 0;
+  public static final int[] a = { 16843173, 16843551, 2131034177 };
+  public static final int b = 1;
+  public static final int[] b = { 2131034472, 2131034473, 2131034474, 2131034475, 2131034476, 2131034477 };
+  public static final int c = 2;
+  public static final int[] c = { 16844082, 16844083, 16844095, 16844143, 16844144, 2131034471, 2131034478, 2131034479, 2131034480, 2131035186 };
+  public static final int d = 3;
+  public static final int[] d = { 16843165, 16843166, 16843169, 16843170, 16843171, 16843172, 16843265, 16843275, 16844048, 16844049, 16844050, 16844051 };
+  public static final int e = 4;
+  public static final int[] e = { 16843173, 16844052 };
+  public static final int f = 5;
+  public static final int[] f = { 16842948, 16842987, 16842993, 2131034438, 2131034439, 2131034440, 2131034441, 2131034442, 2131034581, 2131034911, 2131035020, 2131035025 };
+  public static final int g = 6;
+  public static final int h = 7;
+  public static final int i = 8;
+  public static final int j = 9;
+  public static final int k = 10;
+  public static final int l = 11;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,12 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.maxvideo.trim.TrimNative;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
-public class bnhx
+public abstract interface bnhx
 {
-  private static int a;
-  private static int b;
+  public abstract void onAETavSessionExportCompleted(String paramString, LocalMediaInfo paramLocalMediaInfo);
   
-  public static Bitmap a(long paramLong1, long paramLong2)
-  {
-    if ((a <= 0) || (b <= 0)) {}
-    Bitmap localBitmap;
-    do
-    {
-      return null;
-      localBitmap = Bitmap.createBitmap(a, b, Bitmap.Config.ARGB_8888);
-      if (TrimNative.getThumbnail(paramLong1, paramLong2, localBitmap) == 0) {
-        break;
-      }
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    localBitmap.recycle();
-    return null;
-    return localBitmap;
-  }
+  public abstract void onAETavSessionExportError(String paramString, int paramInt);
+  
+  public abstract void onAETavSessionExporting(String paramString, float paramFloat);
 }
 
 

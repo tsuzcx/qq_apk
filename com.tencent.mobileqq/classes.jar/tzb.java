@@ -1,39 +1,83 @@
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class tzb
-  implements URLDrawable.URLDrawableListener
+class tzb
+  implements aaob
 {
-  tzb(int[] paramArrayOfInt) {}
+  tzb(tym paramtym, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void callback(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(tyz.a, 2, "applyNormalPaster onLoadFialed");
+    String str2;
+    JSONObject localJSONObject;
+    if (paramBundle != null)
+    {
+      if (this.jdField_a_of_type_Tym.a != null) {
+        this.jdField_a_of_type_Tym.l();
+      }
+      str2 = paramBundle.getString("pic_local_id");
+      localJSONObject = new JSONObject();
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(tyz.a, 2, "urlDrawableListener onLoadSuccessed");
-    }
-    paramURLDrawable = paramURLDrawable.getCurrDrawable();
-    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramURLDrawable).getImage() != null)) {
-      ApngImage.playByTag(this.a[0]);
+    for (;;)
+    {
+      try
+      {
+        if (!"-1".equals(str2)) {
+          continue;
+        }
+        localJSONObject.put("retCode", -1);
+        localJSONObject.put("msg", "fail");
+        if (!this.jdField_a_of_type_Boolean) {
+          continue;
+        }
+        bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
+        paramBundle = str2;
+        localJSONObject.put("localId", paramBundle);
+      }
+      catch (JSONException paramBundle)
+      {
+        String str1;
+        paramBundle.printStackTrace();
+        continue;
+      }
+      this.jdField_a_of_type_Tym.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Tym.c(this.b);
+      }
+      return;
+      bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
+      paramBundle = str2;
+      continue;
+      str1 = str2;
+      if (this.jdField_a_of_type_Boolean) {
+        str1 = "mqqpa://resourceid/" + str2;
+      }
+      paramBundle = paramBundle.getString("pic_local_path");
+      tym.b.put(str1, paramBundle);
+      localJSONObject.put("retCode", 0);
+      localJSONObject.put("msg", anni.a(2131707539) + str1);
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountH5AbilityPlugin", 2, "下载成功，localld为  " + str1);
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, 0, "1", "", "", "");
+        paramBundle = str1;
+      }
+      else
+      {
+        bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, 0, "1", "", "", "");
+        paramBundle = str1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzb
  * JD-Core Version:    0.7.0.1
  */

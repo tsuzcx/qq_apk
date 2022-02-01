@@ -1,14 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.ad.tangram.analysis.AdAnalysisAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-class acit
-  implements DialogInterface.OnClickListener
+public class acit
+  implements AdAnalysisAdapter
 {
-  acit(acir paramacir) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String getAppVersion()
   {
-    paramDialogInterface.dismiss();
+    return acrb.a();
+  }
+  
+  public String getUIN()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
+    {
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    } while (localObject == null);
+    return ((AppRuntime)localObject).getAccount();
   }
 }
 

@@ -1,17 +1,52 @@
-import com.tencent.image.URLDrawable.DownloadListener;
+import VipRecommend.MQQ.CommPayInfo;
+import VipRecommend.MQQ.UserInfo;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class bcbr
-  implements URLDrawable.DownloadListener
+public class bcbr
+  extends aber
 {
-  bcbr(bcbo parambcbo) {}
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    bcbo.a(this.a);
+    if ("VipPayLogicServer.getCommPayInfo ".equals(paramToServiceMsg.getServiceCmd()))
+    {
+      if (paramFromServiceMsg == null) {
+        return null;
+      }
+      paramToServiceMsg = new UniPacket(true);
+      try
+      {
+        paramToServiceMsg.setEncodeName("utf-8");
+        paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+        paramToServiceMsg = (CommPayInfo)paramToServiceMsg.getByClass("payInfo", new CommPayInfo());
+        return paramToServiceMsg;
+      }
+      catch (RuntimeException paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+        return null;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        return null;
+      }
+    }
+    return null;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("MQQ.VipPayLogicServer.VipPayLogicObj");
+    paramUniPacket.setFuncName("getCommPayInfo");
+    paramUniPacket.put("userInfo", (UserInfo)paramToServiceMsg.extraData.getSerializable("VIPRecommendPayRequest"));
+    return true;
+  }
+  
+  public String[] a()
+  {
+    return new String[] { "VipPayLogicServer" };
   }
 }
 

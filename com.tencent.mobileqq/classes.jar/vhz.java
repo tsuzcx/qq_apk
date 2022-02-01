@@ -1,36 +1,20 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetCommentListRsp;
+import qqcircle.QQCircleFeedBase.StBusiInfoCommentListData;
 
-public class vhz
-  extends uro
+class vhz
+  implements zxa<FeedCloudRead.StGetCommentListRsp>
 {
-  public List<VideoCollectionItem> a = new ArrayList();
+  vhz(vhu paramvhu, int paramInt, FeedCloudMeta.StFeed paramStFeed, QQCircleFeedBase.StBusiInfoCommentListData paramStBusiInfoCommentListData) {}
   
-  public vhz(String paramString, qqstory_service.RspCollectionViewCount paramRspCollectionViewCount)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetCommentListRsp paramStGetCommentListRsp)
   {
-    super(paramRspCollectionViewCount.result);
-    paramRspCollectionViewCount = paramRspCollectionViewCount.collection_list.get();
-    if (paramRspCollectionViewCount != null)
-    {
-      paramRspCollectionViewCount = paramRspCollectionViewCount.iterator();
-      while (paramRspCollectionViewCount.hasNext())
-      {
-        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspCollectionViewCount.next();
-        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
-        localVideoCollectionItem.convertFrom("Q.qqstory.net:UpdateCollectionViewCountResponse", paramString, localDateVideoCollection);
-        this.a.add(localVideoCollectionItem);
-      }
-    }
+    vhu.a(this.jdField_a_of_type_Vhu, this.jdField_a_of_type_Int, paramBoolean, paramLong, paramString, paramStGetCommentListRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false, false, true, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StBusiInfoCommentListData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vhz
  * JD-Core Version:    0.7.0.1
  */

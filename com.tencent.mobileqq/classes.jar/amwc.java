@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class amwc
-  extends amvl
+class amwc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ArCloudConfigInfo a;
+  amwc(amwb paramamwb) {}
   
-  public amwc(String paramString, int paramInt1, int paramInt2, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public void onGlobalLayout()
   {
-    super(paramString, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("MultiFragmentAnimARResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.b);
-    localStringBuilder.append(", arResourceInfo=").append(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    amwb.a(this.a);
   }
 }
 

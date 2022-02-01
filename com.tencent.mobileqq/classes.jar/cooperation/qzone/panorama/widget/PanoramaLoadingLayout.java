@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdoo;
+import bgtn;
 
 public class PanoramaLoadingLayout
   extends RelativeLayout
@@ -25,8 +25,8 @@ public class PanoramaLoadingLayout
   
   static
   {
-    jdField_a_of_type_Int = bdoo.b(55.0F);
-    jdField_b_of_type_Int = bdoo.b(55.0F);
+    jdField_a_of_type_Int = bgtn.b(55.0F);
+    jdField_b_of_type_Int = bgtn.b(55.0F);
   }
   
   public PanoramaLoadingLayout(@NonNull Context paramContext)
@@ -76,14 +76,14 @@ public class PanoramaLoadingLayout
     if (this.jdField_a_of_type_AndroidWidgetTextView == null)
     {
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718395));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131716551));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 2.0F, 2.0F, -16777216);
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(14);
       localLayoutParams.addRule(3, this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground.getId());
-      localLayoutParams.topMargin = (bdoo.a(10.0F) + jdField_a_of_type_Int / 5);
+      localLayoutParams.topMargin = (bgtn.a(10.0F) + jdField_a_of_type_Int / 5);
       addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
     }
     if (paramBoolean1) {
@@ -133,7 +133,7 @@ public class PanoramaLoadingLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaLoadingLayout
  * JD-Core Version:    0.7.0.1
  */

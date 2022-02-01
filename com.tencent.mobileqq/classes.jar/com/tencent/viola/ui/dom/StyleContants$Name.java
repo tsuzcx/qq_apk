@@ -50,6 +50,9 @@ public abstract interface StyleContants$Name
   public static final String FONT_SIZE = "fontSize";
   public static final String FONT_STYLE = "fontStyle";
   public static final String FONT_WEIGHT = "fontWeight";
+  public static final String FROM_TRANSFORM = "fromTransform";
+  public static final String FROM_TRANSFORM_OPACITY = "fromTransformOpacity";
+  public static final String FROM_TRANSFORM_PARSE = "fromTransformParse";
   public static final String HEIGHT = "height";
   public static final String HIGHLIGHT_BACKGROUNDCOLOR = "highlightBackgroundColor";
   public static final String IMAGE_ALIGN = "imageAlign";
@@ -98,7 +101,7 @@ public abstract interface StyleContants$Name
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.StyleContants.Name
  * JD-Core Version:    0.7.0.1
  */

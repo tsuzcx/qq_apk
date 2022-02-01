@@ -1,36 +1,112 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public abstract class bdrp
-  extends RecyclerView.OnScrollListener
+public class bdrp
+  implements bdrq
 {
-  private boolean a;
+  avmp jdField_a_of_type_Avmp;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public abstract void a();
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public bdrp(QQAppInterface paramQQAppInterface)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
-    if (paramInt == 0)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public int a()
+  {
+    return 7;
+  }
+  
+  public avmp a()
+  {
+    if (this.jdField_a_of_type_Avmp == null) {
+      this.jdField_a_of_type_Avmp = ((avmp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(338));
+    }
+    return this.jdField_a_of_type_Avmp;
+  }
+  
+  public bgpa a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return bdra.b;
+  }
+  
+  public void a() {}
+  
+  public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, bdrn> paramMap, @Nullable Bundle paramBundle)
+  {
+    QLog.i("WatchTogetherManager", 1, "notifySessionChange  serviceType = " + paramInt1 + " from = " + paramInt3);
+  }
+  
+  public void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt)
+  {
+    if (paramInt == 5) {
+      a().a();
+    }
+  }
+  
+  public void a(bdrn parambdrn, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject)
+  {
+    QLog.i("WatchTogetherManager", 1, "onPushMessageReceive");
+    a().a((WatchTogetherSession)parambdrn, paramInt);
+  }
+  
+  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, Map<String, bdrn> paramMap, @Nullable Bundle paramBundle)
+  {
+    if (paramInt2 == 0) {}
+    for (paramContext = "2";; paramContext = "")
     {
-      paramInt = localGridLayoutManager.findLastCompletelyVisibleItemPosition();
-      if ((((bdrm)paramRecyclerView.getAdapter()).a(paramInt).a == 4) && (this.a)) {
-        a();
+      QLog.i("WatchTogetherManager", 1, "start  groupuin = " + paramString + " miniapp_from = " + paramContext);
+      WatchTogetherSession localWatchTogetherSession = (WatchTogetherSession)paramMap.get("2_1_" + paramString);
+      paramMap = localWatchTogetherSession;
+      if (localWatchTogetherSession == null) {}
+      try
+      {
+        paramMap = (WatchTogetherSession)bdro.a(2, 1, paramString);
+        a().a(paramContext, paramMap, paramBundle);
+        return false;
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          paramMap = localWatchTogetherSession;
+        }
       }
     }
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, bdrn> paramMap, @Nullable Bundle paramBundle)
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.a = bool;
-      return;
+    return true;
+  }
+  
+  public boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, Map<String, bdrn> paramMap, @Nullable Bundle paramBundle)
+  {
+    paramContext = (WatchTogetherSession)paramMap.get("2_1_" + paramString);
+    QLog.i("WatchTogetherManager", 1, "join  groupuin = " + paramString + " from = " + paramInt2);
+    if (paramInt2 == 2) {
+      a().a("4", paramContext, paramBundle);
     }
+    while (((paramInt2 != 1) && (paramInt2 != 8)) || (paramContext == null)) {
+      return false;
+    }
+    if ((!TextUtils.isEmpty(paramContext.a)) && (!paramContext.a.contains("fromid"))) {
+      paramContext.a = (paramContext.a + "&fromid=" + "10011");
+    }
+    a().a(paramContext, paramBundle);
+    return false;
   }
 }
 

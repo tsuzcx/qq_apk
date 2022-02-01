@@ -1,17 +1,97 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.ColorDrawable;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Window;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-class aftb
-  extends afuf
+public class aftb
+  extends ReportDialog
 {
-  aftb(afpy paramafpy)
+  Context jdField_a_of_type_AndroidContentContext = null;
+  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
+  
+  public aftb(Context paramContext)
   {
-    super(paramafpy, null);
+    super(paramContext);
+    a(paramContext);
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void a(Context paramContext)
   {
-    return new zxc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    super.requestWindowFeature(1);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    setContentView(LayoutInflater.from(paramContext).inflate(2131561001, null));
+    paramContext = getWindow();
+    if (paramContext != null)
+    {
+      paramContext.setLayout(-1, -1);
+      paramContext.setBackgroundDrawable(new ColorDrawable(0));
+      if (ImmersiveUtils.isSupporImmersive() == 1) {
+        paramContext.addFlags(67108864);
+      }
+    }
+    setCanceledOnTouchOutside(false);
+    paramContext = (ImageView)super.findViewById(2131373596);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
+    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+    localTranslateAnimation.setDuration(800L);
+    localTranslateAnimation.setRepeatCount(-1);
+    paramContext.startAnimation(localTranslateAnimation);
+    super.setCancelable(false);
+  }
+  
+  public void dismiss()
+  {
+    super.dismiss();
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
+    }
+  }
+  
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4) {
+      try
+      {
+        dismiss();
+        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+          ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+        }
+        return false;
+      }
+      catch (Exception paramKeyEvent)
+      {
+        for (;;)
+        {
+          if (QLog.isDevelopLevel()) {
+            paramKeyEvent.printStackTrace();
+          }
+        }
+      }
+    }
+    return super.onKeyDown(paramInt, paramKeyEvent);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    if (this.jdField_a_of_type_AndroidContentContext != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839406));
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
+      }
+    }
   }
 }
 

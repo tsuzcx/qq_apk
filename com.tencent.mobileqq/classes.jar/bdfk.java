@@ -1,14 +1,6 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-
-final class bdfk
-  implements MediaPlayer.OnCompletionListener
+public abstract interface bdfk
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    paramMediaPlayer.release();
-    bdfi.a = null;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

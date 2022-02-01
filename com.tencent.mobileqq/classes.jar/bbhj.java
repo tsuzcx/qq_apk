@@ -1,16 +1,16 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbhj
-  implements bhux
+class bbhj
+  implements View.OnClickListener
 {
-  public bbhj(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  bbhj(bbhi parambbhi, bhzm parambhzm) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    TroopAvatarWallEditActivity.a(this.a);
-    return true;
+    this.jdField_a_of_type_Bhzm.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

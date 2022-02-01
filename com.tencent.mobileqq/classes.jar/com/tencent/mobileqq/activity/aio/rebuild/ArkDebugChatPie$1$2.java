@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agnh;
-import alud;
+import ahxn;
+import anni;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ArkDebugChatPie$1$2
@@ -11,12 +11,12 @@ class ArkDebugChatPie$1$2
   
   public void run()
   {
-    QQToast.a(this.a.this$0.a, alud.a(2131701041), 0).a();
+    QQToast.a(this.a.this$0.a, anni.a(2131699466), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.2
  * JD-Core Version:    0.7.0.1
  */

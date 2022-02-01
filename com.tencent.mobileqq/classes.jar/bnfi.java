@@ -1,73 +1,158 @@
-import java.util.HashMap;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.SystemClock;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.PhotoListBaseData;
+import com.tencent.mobileqq.activity.photo.album.QAlbumCommonUtil;
+import com.tencent.mobileqq.activity.photo.album.QAlbumUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bnfi
+  extends RecyclerView.Adapter<bnfk>
+  implements URLDrawableDownListener
 {
-  public static int a = 0;
+  public ColorDrawable a;
+  public Drawable a;
+  public LayoutInflater a;
+  public ArrayList<LocalMediaInfo> a;
   
-  public static void a(int paramInt, String paramString1, String paramString2, HashMap<String, String> paramHashMap)
+  public bnfi(bnff parambnff)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(570425344);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = parambnff.getActivity().getLayoutInflater();
+  }
+  
+  public TextView a()
+  {
+    TextView localTextView = new TextView(this.jdField_a_of_type_Bnff.getActivity());
+    localTextView.setGravity(17);
+    localTextView.setTextSize(10.0F);
+    localTextView.setTextColor(-1);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setSize(QAlbumCommonUtil.dp2px(30.0F, this.jdField_a_of_type_Bnff.getResources()), QAlbumCommonUtil.dp2px(18.0F, this.jdField_a_of_type_Bnff.getResources()));
+    localGradientDrawable.setCornerRadii(new float[] { QAlbumCommonUtil.dp2px(2.0F, this.jdField_a_of_type_Bnff.getResources()), QAlbumCommonUtil.dp2px(2.0F, this.jdField_a_of_type_Bnff.getResources()), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F });
+    localGradientDrawable.setColor(1291845632);
+    localTextView.setBackgroundDrawable(localGradientDrawable);
+    return localTextView;
+  }
+  
+  public bnfk a(ViewGroup paramViewGroup, int paramInt)
   {
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    String str1 = paramString2;
-    String str2;
-    String str3;
-    if (paramHashMap != null)
+    do
     {
-      str2 = (String)paramHashMap.get("cameraType");
-      str3 = (String)paramHashMap.get("isTemplateMode");
-      paramHashMap = (String)paramHashMap.get("templateId");
-      if ((!String.valueOf(2).equals(str2)) || ((!String.valueOf(false).equals(str3)) && (paramHashMap != null))) {
-        break label99;
-      }
-      str1 = "0X8007819";
+      do
+      {
+        do
+        {
+          return null;
+        } while (this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a == null);
+        return new bnfk(this.jdField_a_of_type_Bnff, this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a.a());
+      } while (this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a == null);
+      return new bnfk(this.jdField_a_of_type_Bnff, this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a.b());
+    } while (this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a == null);
+    return new bnfk(this.jdField_a_of_type_Bnff, this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a.c());
+  }
+  
+  public LocalMediaInfo a(int paramInt)
+  {
+    return (LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public List<LocalMediaInfo> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(bnfk parambnfk, int paramInt)
+  {
+    bnfj localbnfj = new bnfj(this.jdField_a_of_type_Bnff);
+    switch (getItemViewType(paramInt))
+    {
     }
     for (;;)
     {
-      a(paramString1, str1);
+      EventCollector.getInstance().onRecyclerBindViewHolder(parambnfk, paramInt, getItemId(paramInt));
       return;
-      label99:
-      if ((String.valueOf(2).equals(str2)) && (String.valueOf(true).equals(str3)) && (paramHashMap != null))
+      if (this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a != null)
       {
-        str1 = "0X800781A";
-      }
-      else if ((String.valueOf(1).equals(str2)) && ((String.valueOf(false).equals(str3)) || (paramHashMap == null)))
-      {
-        str1 = "0X800781B";
-      }
-      else
-      {
-        str1 = paramString2;
-        if (String.valueOf(1).equals(str2))
+        this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a.a(paramInt, parambnfk, localbnfj);
+        continue;
+        if (this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a != null)
         {
-          str1 = paramString2;
-          if (String.valueOf(true).equals(str3))
-          {
-            str1 = paramString2;
-            if (paramHashMap != null) {
-              str1 = "0X800781C";
-            }
+          this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a.b(paramInt, parambnfk, localbnfj);
+          continue;
+          if (this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a != null) {
+            this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a.c(paramInt, parambnfk, localbnfj);
           }
         }
       }
     }
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(List<LocalMediaInfo> paramList)
   {
-    a(paramString1, paramString2, "");
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    if ((!this.jdField_a_of_type_Bnff.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoListBaseData.isShowCamera) && (QAlbumUtil.getMediaType((LocalMediaInfo)paramList.get(0)) == 2)) {
+      paramList.remove(0);
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.jdField_a_of_type_Bnff.jdField_a_of_type_Bnfu.a(this.jdField_a_of_type_JavaUtilArrayList);
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
+  public int getItemCount()
   {
-    azqs.b(null, "dc00898", paramString1, "", paramString2, paramString2, a, 0, paramString3, "", "", "");
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public int getItemViewType(int paramInt)
   {
-    azqs.b(null, "dc00898", paramString1, "", paramString2, paramString2, a, 0, paramString3, paramString4, paramString5, paramString6);
+    return QAlbumUtil.getMediaType((LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+  }
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    new Rect();
+    paramView = (LocalMediaInfo)paramURLDrawable.getTag();
+    int i = paramView.listViewPosition;
+    if ((i == -1) || (paramView.visableTime == 0L)) {}
+    long l1;
+    long l2;
+    do
+    {
+      return;
+      l1 = SystemClock.uptimeMillis();
+      l2 = paramView.visableTime;
+    } while (!QLog.isColorLevel());
+    QLog.d("PhotoListActivity", 2, "onLoadSuccessed,no next ,listViewPositon:" + i + " costTime:" + (l1 - l2) + " imageInfo;" + paramView);
   }
 }
 

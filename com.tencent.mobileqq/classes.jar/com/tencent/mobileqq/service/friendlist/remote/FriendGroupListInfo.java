@@ -3,17 +3,17 @@ package com.tencent.mobileqq.service.friendlist.remote;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ayyu;
-import ayyv;
+import bbxy;
+import bbxz;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FriendGroupListInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FriendGroupListInfo> CREATOR = new ayyv();
+  public static final Parcelable.Creator<FriendGroupListInfo> CREATOR = new bbxz();
   public int a;
-  public List<ayyu> a;
+  public List<bbxy> a;
   
   public FriendGroupListInfo()
   {
@@ -34,9 +34,9 @@ public class FriendGroupListInfo
     int i = 0;
     while (i < j)
     {
-      ayyu localayyu = new ayyu();
-      localayyu.b(paramParcel);
-      this.jdField_a_of_type_JavaUtilList.add(localayyu);
+      bbxy localbbxy = new bbxy();
+      localbbxy.b(paramParcel);
+      this.jdField_a_of_type_JavaUtilList.add(localbbxy);
       i += 1;
     }
   }
@@ -56,14 +56,14 @@ public class FriendGroupListInfo
     paramInt = 0;
     while (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      ((ayyu)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(paramParcel);
+      ((bbxy)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(paramParcel);
       paramInt += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo
  * JD-Core Version:    0.7.0.1
  */

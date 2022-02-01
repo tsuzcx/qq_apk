@@ -1,37 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-class blih
-  implements blan
+public class blih
+  implements DialogInterface.OnClickListener
 {
-  public void a(blab paramblab, int paramInt)
-  {
-    if (paramInt <= 1) {
-      return;
-    }
-    blig.a().a(paramblab.a, paramInt);
-  }
+  public blih(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void a(blab paramblab, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramblab == null) {
-      return;
-    }
-    paramblab.e = false;
-    if (paramBoolean) {
-      paramblab.d = true;
-    }
-    for (;;)
-    {
-      blig.a().a(paramblab, paramBoolean);
-      blig.a(blig.a(), paramblab.a);
-      return;
-      QLog.e("PlayDownloadManagerWrap", 1, "download failed with id: " + paramblab.a);
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blih
  * JD-Core Version:    0.7.0.1
  */

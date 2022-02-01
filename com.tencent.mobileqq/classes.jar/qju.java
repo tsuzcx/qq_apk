@@ -1,30 +1,21 @@
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class qju
-  extends NativeGifImage
+  implements ViewBase.OnClickListener
 {
-  qju(qjt paramqjt, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
-  {
-    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
-  }
+  qju(qjt paramqjt) {}
   
-  public void executeNewTask()
+  public void onClick(ViewBase paramViewBase)
   {
-    if (this.mCurrentLoop == 1) {
-      return;
-    }
-    super.executeNewTask();
-  }
-  
-  public void reset()
-  {
-    super.reset();
+    qjt.a(this.a, false);
+    qjt.a(this.a);
+    oat.a(null, pha.a() + "", "0X800984B", "0X800984B", 0, 0, "1", "", "", "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qju
  * JD-Core Version:    0.7.0.1
  */

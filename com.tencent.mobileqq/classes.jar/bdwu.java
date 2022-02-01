@@ -1,15 +1,41 @@
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+
 public class bdwu
 {
-  String a;
-  String b;
-  String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  public static bdwu a;
+  
+  public static bdwu a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bdwu();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public int a()
+  {
+    return bgnt.a(BaseApplication.getContext());
+  }
+  
+  public String a()
+  {
+    try
+    {
+      String str = AppNetConnInfo.getCurrentAPN();
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
 }
 
 

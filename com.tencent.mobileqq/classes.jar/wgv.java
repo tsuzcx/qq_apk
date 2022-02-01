@@ -1,65 +1,110 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import android.annotation.TargetApi;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import java.util.HashMap;
+import java.util.Map;
 
+@TargetApi(14)
 public class wgv
-  implements whf
 {
-  public wgv(QQStoryMainActivity paramQQStoryMainActivity) {}
+  public int a;
+  public long a;
+  public bdvs a;
+  public MessageForShortVideo a;
+  public String a;
+  public Map<String, Object> a;
+  public wgo a;
+  public wgu a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g = 1;
   
-  public View a()
+  public wgv()
   {
-    return QQStoryMainActivity.a(this.a);
+    this.jdField_d_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  public ImageView a()
+  public static String a(String paramString, int paramInt)
   {
-    return this.a.rightViewImg;
+    return paramInt + "_" + paramString;
   }
   
-  public TextView a()
+  public static wgv a(String paramString, int paramInt)
   {
-    return this.a.rightViewText;
+    return a(paramString, null, paramInt, false);
   }
   
-  public void a()
+  public static wgv a(String paramString, int paramInt, boolean paramBoolean)
   {
-    this.a.onBackEvent();
+    return a(paramString, null, paramInt, paramBoolean);
   }
   
-  public void a(String paramString)
+  private static wgv a(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    QQStoryMainActivity.a(this.a, paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    wgv localwgv = new wgv();
+    StoryVideoItem localStoryVideoItem = ((wpj)wpm.a(5)).a(paramString1);
+    if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine()))
     {
-      this.a.startTitleProgress();
-      return;
+      localwgv.e = wgw.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, false, false);
+      localwgv.f = wgw.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, true, false);
+      localwgv.jdField_b_of_type_Int = 0;
+      localwgv.jdField_b_of_type_JavaLangString = paramString1;
+      localwgv.jdField_a_of_type_Int = paramInt;
+      localwgv.jdField_a_of_type_JavaLangString = a(paramString1, paramInt);
+      if (!paramBoolean) {
+        break label159;
+      }
     }
-    this.a.stopTitleProgress();
-  }
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    label159:
+    for (paramString1 = "";; paramString1 = paramString2)
     {
-      QQStoryMainActivity.a(this.a, ulg.a, alud.a(2131711341));
-      return;
+      localwgv.jdField_c_of_type_JavaLangString = paramString1;
+      if (paramBoolean) {
+        paramString2 = "";
+      }
+      localwgv.jdField_d_of_type_JavaLangString = paramString2;
+      localwgv.jdField_c_of_type_Boolean = paramBoolean;
+      return localwgv;
+      localwgv.e = wgw.a(paramString1, paramInt, false, false);
+      localwgv.f = wgw.a(paramString1, paramInt, true, false);
+      break;
     }
-    a(ulg.a);
   }
   
-  public void c() {}
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof wgv))
+    {
+      paramObject = (wgv)paramObject;
+      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "DownloadTask{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", fileType=" + wes.a(this.jdField_a_of_type_Int) + ", status=" + this.jdField_b_of_type_Int + ", downloadUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", localPath='" + this.e + '\'' + ", localTmpPath='" + this.f + '\'' + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wgv
  * JD-Core Version:    0.7.0.1
  */

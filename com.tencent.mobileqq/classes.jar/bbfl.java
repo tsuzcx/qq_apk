@@ -1,33 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import java.util.List;
 
 public class bbfl
-  extends BroadcastReceiver
 {
-  public bbfl(AbsPublishActivity paramAbsPublishActivity) {}
+  public int a;
+  public String a;
+  public List<String> a;
+  public String b;
+  public String c;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bbfl(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
-    {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      this.a.a(i, 9);
-    }
-    do
-    {
-      return;
-      if ("key_audio_delete_action".equals(paramContext))
-      {
-        this.a.a(0);
-        this.a.a = null;
-        bcmc.a(this.a.o, this.a.p, "del_record", this.a.q, this.a.b, "", "");
-        return;
-      }
-    } while (!"key_audio_play_action".equals(paramContext));
-    bcmc.a(this.a.o, this.a.p, "preview_record", this.a.q, this.a.b, "", "");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public bbfl(int paramInt, String paramString1, String paramString2, String paramString3, List<String> paramList)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 

@@ -220,22 +220,30 @@ public class TAVStickerUtil
     RectF localRectF = new RectF();
     paramInt2 = paramTAVSticker.getWidth();
     int j = paramTAVSticker.getHeight();
-    float f2 = i * paramFloat;
+    float f3 = i * paramFloat;
     paramFloat = f1;
     if (paramInt2 > 0)
     {
       paramFloat = f1;
-      if (f2 > 0.0F) {
-        paramFloat = j * 1.0F / paramInt2 * f2;
+      if (f3 > 0.0F) {
+        paramFloat = j * 1.0F / paramInt2 * f3;
       }
     }
-    f1 = paramTAVSticker.getCenterX() * i - f2 / 2.0F;
-    float f3 = paramTAVSticker.getCenterY() * paramInt1 - paramFloat / 2.0F;
-    TLog.d(TAG, "getStickerRect -> parentWidth: " + i + ", parentHeight:" + paramInt1 + ", pagWidth: " + paramInt2 + ", pagHeight: " + j + ", StickerRect-left: " + f1 + ", top: " + f3 + ", bottom: " + (f3 + paramFloat) + ", right: " + (f1 + f2));
-    localRectF.left = ((float)Math.floor(f1));
+    float f2 = paramFloat;
+    f1 = f3;
+    if (paramTAVSticker.getScaleMode() == 1)
+    {
+      f2 = Math.max(i * 1.0F / f3, paramInt1 * 1.0F / paramFloat);
+      f1 = f3 * f2;
+      f2 = paramFloat * f2;
+    }
+    paramFloat = paramTAVSticker.getCenterX() * i - f1 / 2.0F;
+    f3 = paramTAVSticker.getCenterY() * paramInt1 - f2 / 2.0F;
+    TLog.d(TAG, "getStickerRect -> parentWidth: " + i + ", parentHeight:" + paramInt1 + ", pagWidth: " + paramInt2 + ", pagHeight: " + j + ", StickerRect-left: " + paramFloat + ", top: " + f3 + ", bottom: " + (f3 + f2) + ", right: " + (paramFloat + f1));
+    localRectF.left = ((float)Math.floor(paramFloat));
     localRectF.top = ((float)Math.floor(f3));
-    localRectF.bottom = ((float)Math.ceil(paramFloat + f3));
-    localRectF.right = ((float)Math.ceil(f1 + f2));
+    localRectF.bottom = ((float)Math.ceil(f2 + f3));
+    localRectF.right = ((float)Math.ceil(paramFloat + f1));
     TLog.d(TAG, "getStickerRect -> parentWidth: " + i + ", parentHeight:" + paramInt1 + ", StickerRect-left: " + localRectF.left + ", top: " + localRectF.top + ", bottom: " + localRectF.bottom + ", right: " + localRectF.right);
     return localRectF;
   }
@@ -295,7 +303,7 @@ public class TAVStickerUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.utils.TAVStickerUtil
  * JD-Core Version:    0.7.0.1
  */

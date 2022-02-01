@@ -7,14 +7,14 @@ import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import benh;
+import bhul;
 
 public class AutoFitTextView
   extends TextView
 {
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private benh jdField_a_of_type_Benh;
+  private bhul jdField_a_of_type_Bhul;
   
   public AutoFitTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -30,9 +30,9 @@ public class AutoFitTextView
     if (this.jdField_a_of_type_Float == 0.0F) {
       this.jdField_a_of_type_Float = getTextSize();
     }
-    if (this.jdField_a_of_type_Benh != null) {}
+    if (this.jdField_a_of_type_Bhul != null) {}
     float f1;
-    for (paramInt = this.jdField_a_of_type_Benh.a();; paramInt = getWidth())
+    for (paramInt = this.jdField_a_of_type_Bhul.a();; paramInt = getWidth())
     {
       int i = getPaddingLeft();
       int j = getPaddingRight();
@@ -58,14 +58,14 @@ public class AutoFitTextView
     a(getText().toString(), getWidth());
   }
   
-  public void setOnGetMaxWidthCallback(benh parambenh)
+  public void setOnGetMaxWidthCallback(bhul parambhul)
   {
-    this.jdField_a_of_type_Benh = parambenh;
+    this.jdField_a_of_type_Bhul = parambhul;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AutoFitTextView
  * JD-Core Version:    0.7.0.1
  */

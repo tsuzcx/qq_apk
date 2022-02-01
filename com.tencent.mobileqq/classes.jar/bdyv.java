@@ -1,71 +1,84 @@
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.sharpP.SharpPUtil;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
+import mqq.app.AppRuntime;
+import org.apache.http.Header;
 
-class bdyv
-  implements Handler.Callback
+public class bdyv
+  extends bdsh
 {
-  bdyv(bdys parambdys) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  private static String a(int paramInt, String paramString)
   {
-    if (paramMessage.what == 1)
-    {
-      paramMessage = bdys.a();
-      int i = paramMessage.getInt("timer2_interval", 0);
-      int m = paramMessage.getInt("timer2_retry_times", 0);
-      int j = paramMessage.getInt("timer2_start_hour", 0);
-      int k = paramMessage.getInt("timer2_end_hour", 0);
-      if ((bdyp.a == 0L) || (NetConnInfoCenter.getServerTimeMillis() - bdyp.a < i))
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i);
-        return true;
-      }
-      if (this.a.jdField_a_of_type_Int >= m)
-      {
-        QLog.i("SportManager", 2, "retry time enough cancel task.");
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        return true;
-      }
-      paramMessage = Calendar.getInstance();
-      paramMessage.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-      m = paramMessage.get(11);
-      if (m >= j)
-      {
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += 1;
-        this.a.a("timer2 callback report1");
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i + 2000);
-        return true;
-        if (m >= k) {
-          break;
-        }
-        paramMessage.set(11, 0);
-        paramMessage.set(12, 0);
-        paramMessage.set(13, 0);
-        paramMessage.set(14, 0);
-        if (bdyp.a - paramMessage.getTimeInMillis() > 0L)
-        {
-          QLog.i("SportManager", 2, "already report cancel task.");
-          this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          return true;
-        }
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += 1;
-        this.a.a("timer2 callback report2");
-      }
-      QLog.i("SportManager", 2, "over time cancel task.");
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      return true;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder("https://gxh.vip.qq.com/xydata/");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramURLDrawableHandler = paramDownloadParams.url.getFile();
+    paramOutputStream = paramURLDrawableHandler;
+    if (paramURLDrawableHandler.startsWith(File.separator)) {
+      paramOutputStream = paramURLDrawableHandler.substring(1);
+    }
+    String str = paramDownloadParams.url.getHost();
+    Object localObject = paramDownloadParams.getHeader("my_uin");
+    paramURLDrawableHandler = null;
+    if (localObject != null) {
+      paramURLDrawableHandler = ((Header)localObject).getValue();
+    }
+    paramURLDrawableHandler = BaseApplicationImpl.sApplication.getAppRuntime(paramURLDrawableHandler);
+    localObject = new File(bgyw.a(paramOutputStream, str));
+    if (((File)localObject).exists()) {
+      return localObject;
+    }
+    if (paramDownloadParams.useSharpPImage)
+    {
+      localObject = new File(bkdi.a((File)localObject));
+      if (((File)localObject).exists()) {
+        return localObject;
+      }
+    }
+    return a(paramURLDrawableHandler, paramOutputStream, str, paramDownloadParams.useSharpPImage);
+  }
+  
+  public File a(AppRuntime paramAppRuntime, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    String str = a(Integer.parseInt(paramString1), paramString2);
+    paramString2 = new File(bgyw.a(paramString1, paramString2));
+    bhhf localbhhf = new bhhf(str, paramString2);
+    localbhhf.k = paramBoolean;
+    if (paramAppRuntime != null)
+    {
+      if (bhhh.a(localbhhf, paramAppRuntime) != 0) {
+        break label102;
+      }
+      if ((!paramString2.exists()) || (SignatureManager.a(paramString2.getAbsolutePath()))) {
+        break label88;
+      }
+      paramString2.delete();
+    }
+    for (;;)
+    {
+      return new File(anhk.ba);
+      label88:
+      if (SharpPUtil.isSharpPFile(paramString2)) {
+        return bkdi.a(paramString2);
+      }
+      return paramString2;
+      label102:
+      bgzu.a(null, "individual_v2_signature_download_fail", "" + localbhhf.a, "error code = " + localbhhf.a + " errorMsg = " + localbhhf.b + "url = " + str, null, 0.0F);
+      bgzt.a("individual_v2_signature_download_fail", "tlpId:" + paramString1 + " errCode:" + localbhhf.a + " errMsg:" + localbhhf.b);
+    }
   }
 }
 

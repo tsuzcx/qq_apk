@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember;
 
-import aepi;
+import afur;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -20,34 +20,35 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import aynu;
+import bbmy;
 import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
 import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.HorizontalListView;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import owy;
-import qsm;
-import qvk;
-import qvl;
-import qvm;
-import qvn;
-import qvz;
-import qwa;
-import qwe;
-import qwg;
+import pmh;
+import rnp;
+import rqp;
+import rqq;
+import rqr;
+import rqs;
+import rre;
+import rrf;
+import rrj;
+import rrl;
 
 public class ReadInJoySelectMemberFragment
   extends IphoneTitleBarFragment
-  implements View.OnClickListener, qsm<ObservableArrayList<ResultRecord>>, qwg
+  implements View.OnClickListener, rnp<ObservableArrayList<ResultRecord>>, rrl
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new qvn(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new rqs(this);
   private View jdField_a_of_type_AndroidViewView;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   public ObservableArrayList<ResultRecord> a;
@@ -55,13 +56,13 @@ public class ReadInJoySelectMemberFragment
   private FriendListFragment jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFriendListFragment;
   private HybridSearchFragment jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment;
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  protected qvz a;
-  private qwa jdField_a_of_type_Qwa;
+  protected rre a;
+  private rrf jdField_a_of_type_Rrf;
   
   public ReadInJoySelectMemberFragment()
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList = new ObservableArrayList();
-    this.jdField_a_of_type_Qvz = new qvz();
+    this.jdField_a_of_type_Rre = new rre();
   }
   
   private static List<String> a(@NonNull ObservableArrayList<ResultRecord> paramObservableArrayList)
@@ -76,12 +77,12 @@ public class ReadInJoySelectMemberFragment
   
   private void a()
   {
-    owy.a().q();
+    pmh.a().p();
   }
   
   private void a(Bundle paramBundle)
   {
-    if (this.mContentView.findViewById(2131366799) != null)
+    if (this.mContentView.findViewById(2131367067) != null)
     {
       if (paramBundle != null) {
         return;
@@ -91,12 +92,12 @@ public class ReadInJoySelectMemberFragment
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFriendListFragment.b(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFriendListFragment.a(this);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFriendListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFriendListFragment.a(this.jdField_a_of_type_Qvz);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFriendListFragment.a(this.jdField_a_of_type_Rre);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFollowingListFragment = new FollowingListFragment();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFollowingListFragment.a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFollowingListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFollowingListFragment.a(this.jdField_a_of_type_Qvz);
-      getChildFragmentManager().beginTransaction().add(2131366799, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFriendListFragment).commit();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFollowingListFragment.a(this.jdField_a_of_type_Rre);
+      getChildFragmentManager().beginTransaction().add(2131367067, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFriendListFragment).commit();
     }
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.addOnListChangedCallback(this);
     j();
@@ -113,16 +114,16 @@ public class ReadInJoySelectMemberFragment
     Object localObject = getArguments();
     if (localObject != null)
     {
-      this.jdField_a_of_type_Qvz.a(((Bundle)localObject).getInt("opentype", 0));
-      this.jdField_a_of_type_Qvz.b(((Bundle)localObject).getInt("maxSelect", 10));
-      this.jdField_a_of_type_Qvz.c(((Bundle)localObject).getInt("maxCount", 30));
-      this.jdField_a_of_type_Qvz.b(((Bundle)localObject).getString("rowkey", ""));
-      this.jdField_a_of_type_Qvz.a(((Bundle)localObject).getString("callback", ""));
+      this.jdField_a_of_type_Rre.a(((Bundle)localObject).getInt("opentype", 0));
+      this.jdField_a_of_type_Rre.b(((Bundle)localObject).getInt("maxSelect", 10));
+      this.jdField_a_of_type_Rre.c(((Bundle)localObject).getInt("maxCount", 30));
+      this.jdField_a_of_type_Rre.b(((Bundle)localObject).getString("rowkey", ""));
+      this.jdField_a_of_type_Rre.a(((Bundle)localObject).getString("callback", ""));
       if (((Bundle)localObject).containsKey("filterUins"))
       {
         localObject = ((Bundle)localObject).getString("filterUins", "");
         if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).length() > 0)) {
-          this.jdField_a_of_type_Qvz.a(Arrays.asList(((String)localObject).split(",")));
+          this.jdField_a_of_type_Rre.a(Arrays.asList(((String)localObject).split(",")));
         }
       }
     }
@@ -132,10 +133,10 @@ public class ReadInJoySelectMemberFragment
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment = HybridSearchFragment.a();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment.a(this);
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131376221);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131376271));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new qvk(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new qvl(this));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131376991);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131377050));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new rqp(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new rqq(this));
   }
   
   private void i()
@@ -151,35 +152,35 @@ public class ReadInJoySelectMemberFragment
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       setRightViewTextDisable(1);
-      if (this.jdField_a_of_type_Qvz.a() != 1) {
+      if (this.jdField_a_of_type_Rre.a() != 1) {
         break label124;
       }
-      localTextView.setText(MessageFormat.format(getString(2131719024), new Object[] { Integer.valueOf(j) }));
+      localTextView.setText(MessageFormat.format(getString(2131717148), new Object[] { Integer.valueOf(j) }));
     }
     for (;;)
     {
       if (i == 0) {
         break label196;
       }
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLayoutParams().width = aepi.a(200.0F, getResources());
+      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLayoutParams().width = afur.a(200.0F, getResources());
       this.jdField_a_of_type_ComTencentWidgetHorizontalListView.requestLayout();
       this.jdField_a_of_type_ComTencentWidgetHorizontalListView.smoothScrollToPosition(j - 1);
       return;
       i = 0;
       break;
       label124:
-      localTextView.setText(MessageFormat.format(getString(2131719721), new Object[] { Integer.valueOf(j) }));
+      localTextView.setText(MessageFormat.format(getString(2131717721), new Object[] { Integer.valueOf(j) }));
     }
     label152:
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (this.jdField_a_of_type_Qvz.a() == 1) {
-      localTextView.setText(2131719021);
+    if (this.jdField_a_of_type_Rre.a() == 1) {
+      localTextView.setText(2131717145);
     }
     for (;;)
     {
       setRightViewTextDisable(0);
       break;
-      localTextView.setText(2131719720);
+      localTextView.setText(2131717720);
     }
     label196:
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLayoutParams().width = -2;
@@ -189,17 +190,17 @@ public class ReadInJoySelectMemberFragment
   private void j()
   {
     Resources localResources = getResources();
-    if (this.jdField_a_of_type_Qvz.a() == 1)
+    if (this.jdField_a_of_type_Rre.a() == 1)
     {
-      setTitle(localResources.getString(2131719019));
-      setRightButton(2131719021, this);
+      setTitle(localResources.getString(2131717143));
+      setRightButton(2131717145, this);
     }
     for (;;)
     {
       setRightViewTextDisable(0);
       return;
-      setTitle(localResources.getString(2131719704));
-      setRightButton(2131719720, this);
+      setTitle(localResources.getString(2131717708));
+      setRightButton(2131717720, this);
     }
   }
   
@@ -210,31 +211,31 @@ public class ReadInJoySelectMemberFragment
     }
   }
   
-  public void a(aynu paramaynu)
+  public void a(bbmy parambbmy)
   {
-    ResultRecord localResultRecord = ResultRecord.a(paramaynu.b(), paramaynu.a().toString());
-    if ((paramaynu instanceof qwe)) {
+    ResultRecord localResultRecord = ResultRecord.a(parambbmy.b(), parambbmy.a().toString());
+    if ((parambbmy instanceof rrj)) {
       localResultRecord.a(2);
     }
     for (;;)
     {
       if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.contains(localResultRecord))
       {
-        if ((this.jdField_a_of_type_Qvz.a() != 1) || (TextUtils.isEmpty(paramaynu.b())) || (this.jdField_a_of_type_Qvz.a() == null)) {
+        if ((this.jdField_a_of_type_Rre.a() != 1) || (TextUtils.isEmpty(parambbmy.b())) || (this.jdField_a_of_type_Rre.a() == null)) {
           break label194;
         }
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() < this.jdField_a_of_type_Qvz.b()) {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() < this.jdField_a_of_type_Rre.b()) {
           break;
         }
-        paramaynu = getActivity().getResources().getString(2131719026, new Object[] { String.valueOf(this.jdField_a_of_type_Qvz.c()) });
-        QQToast.a(getActivity(), paramaynu, 0).a();
+        parambbmy = getActivity().getResources().getString(2131717150, new Object[] { String.valueOf(this.jdField_a_of_type_Rre.c()) });
+        QQToast.a(getActivity(), parambbmy, 0).a();
       }
       return;
       localResultRecord.a(1);
     }
-    if (this.jdField_a_of_type_Qvz.a().contains(paramaynu.b()))
+    if (this.jdField_a_of_type_Rre.a().contains(parambbmy.b()))
     {
-      QQToast.a(getActivity(), getActivity().getResources().getString(2131719020), 0).a();
+      QQToast.a(getActivity(), getActivity().getResources().getString(2131717144), 0).a();
       return;
     }
     label194:
@@ -259,11 +260,11 @@ public class ReadInJoySelectMemberFragment
   public void b(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment.b_(a(paramObservableArrayList));
-    if (paramObservableArrayList.size() > this.jdField_a_of_type_Qvz.b())
+    if (paramObservableArrayList.size() > this.jdField_a_of_type_Rre.b())
     {
-      String str = String.format(getString(2131695096), new Object[] { Integer.valueOf(this.jdField_a_of_type_Qvz.b()) });
-      if (this.jdField_a_of_type_Qvz.a() == 1) {
-        str = getString(2131719026, new Object[] { String.valueOf(this.jdField_a_of_type_Qvz.c()) });
+      String str = String.format(getString(2131694162), new Object[] { Integer.valueOf(this.jdField_a_of_type_Rre.b()) });
+      if (this.jdField_a_of_type_Rre.a() == 1) {
+        str = getString(2131717150, new Object[] { String.valueOf(this.jdField_a_of_type_Rre.c()) });
       }
       paramObservableArrayList.subList(paramInt1, paramInt1 + paramInt2).clear();
       QQToast.a(getActivity(), str, 0).a();
@@ -290,11 +291,11 @@ public class ReadInJoySelectMemberFragment
   
   protected void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.mContentView.findViewById(2131376377));
-    this.jdField_a_of_type_Qwa = new qwa(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Qwa);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.mContentView.findViewById(2131377166));
+    this.jdField_a_of_type_Rrf = new rrf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Rrf);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(new qvm(this));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(new rqr(this));
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -331,7 +332,7 @@ public class ReadInJoySelectMemberFragment
   
   public int getContentLayoutId()
   {
-    return 2131560105;
+    return 2131560247;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -357,14 +358,16 @@ public class ReadInJoySelectMemberFragment
   {
     switch (paramView.getId())
     {
-    default: 
-      return;
-    case 2131368655: 
-      b();
-      return;
     }
-    e();
-    getChildFragmentManager().beginTransaction().setCustomAnimations(2130772047, 2130772048, 2130772043, 2130772044).hide(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFriendListFragment).add(2131366799, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFollowingListFragment).addToBackStack(FollowingListFragment.class.getName()).commit();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      b();
+      continue;
+      e();
+      getChildFragmentManager().beginTransaction().setCustomAnimations(2130772048, 2130772049, 2130772044, 2130772045).hide(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFriendListFragment).add(2131367067, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberFollowingListFragment).addToBackStack(FollowingListFragment.class.getName()).commit();
+    }
   }
   
   public void onFinish()

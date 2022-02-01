@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
-class bekf
-  implements View.OnClickListener
+public class bekf
+  implements bkhe
 {
-  bekf(beke parambeke) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onClick(View paramView)
+  public bekf(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "" });
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size() - 1))
+    {
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a(paramInt, false);
     }
   }
 }

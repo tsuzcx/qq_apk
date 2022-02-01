@@ -1,48 +1,47 @@
-import android.graphics.PointF;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class bnrq
+class bnrq
+  implements Observer<bnrb>
 {
-  public final int a;
-  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  private bnrs jdField_a_of_type_Bnrs;
-  private bnrt jdField_a_of_type_Bnrt = new bnrt(this, null);
-  public final int b;
-  private PointF jdField_b_of_type_AndroidGraphicsPointF = new PointF();
-  private bnrt jdField_b_of_type_Bnrt = new bnrt(this, null);
-  public final int c;
-  private PointF c;
-  public final int d;
-  private PointF d;
-  public final int e;
-  private PointF e;
-  public final int f = 5;
-  public final int g = 6;
-  public final int h = -1;
-  public final int i = 50;
-  public final int j = 0;
-  public final int k = 1;
-  public final int l = 2;
-  private final int m = 200;
-  private final int n = 200;
-  private final int o = 200;
-  private final int p = 30;
-  private final int q = 80;
-  private final int r = 400;
-  private final int s = 50;
-  private final int t = 30;
-  private final int u = 8;
+  bnrq(bnrn parambnrn) {}
   
-  bnrq(bnrs parambnrs)
+  public void a(@Nullable bnrb parambnrb)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_Int = 2;
-    this.jdField_d_of_type_Int = 3;
-    this.jdField_e_of_type_Int = 4;
-    this.jdField_c_of_type_AndroidGraphicsPointF = new PointF();
-    this.jdField_d_of_type_AndroidGraphicsPointF = new PointF();
-    this.jdField_e_of_type_AndroidGraphicsPointF = new PointF();
-    this.jdField_a_of_type_Bnrs = parambnrs;
+    bnrn.a(this.a).a().removeObservers(bnrn.a(this.a));
+    bnrb localbnrb;
+    if (parambnrb != null)
+    {
+      localbnrb = parambnrb;
+      if (parambnrb.jdField_a_of_type_JavaLangString != null) {}
+    }
+    else
+    {
+      localbnrb = new bnrb();
+      localbnrb.jdField_a_of_type_JavaLangString = "default";
+    }
+    parambnrb = (String)bnrn.a(this.a).get(localbnrb.jdField_a_of_type_JavaLangString);
+    if (!localbnrb.jdField_a_of_type_JavaLangString.equals("default")) {
+      parambnrb = anni.a(2131698806) + parambnrb + anni.a(2131698799);
+    }
+    for (;;)
+    {
+      bnrn.a(this.a).setText(parambnrb);
+      if ((bnrn.a(this.a).size() == 0) && (!bnrn.a(this.a)))
+      {
+        bnrn.a(this.a).addAll(localbnrb.jdField_a_of_type_JavaUtilList);
+        this.a.b();
+        bnrn.a(this.a, true);
+      }
+      return;
+      parambnrb = anni.a(2131698795);
+      localbnrb.jdField_a_of_type_JavaUtilList.addAll(bnrn.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 

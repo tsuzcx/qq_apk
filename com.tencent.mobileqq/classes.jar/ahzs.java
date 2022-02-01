@@ -1,16 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ahzs
-  implements View.OnClickListener
+  extends anif
 {
-  ahzs(ahzr paramahzr, ahzu paramahzu) {}
+  ahzs(ahzo paramahzo) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    paramView = String.valueOf(this.jdField_a_of_type_Ahzu.a.getText());
-    ahzr.a(this.jdField_a_of_type_Ahzr, paramView);
+    if (paramBoolean)
+    {
+      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())) {
+        ahzo.a(this.a);
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (paramBoolean1.booleanValue());
+        paramString1 = BaseActivity.sTopActivity;
+      } while (paramString1 == null);
+      bglp.a(paramString1, 230, paramString1.getString(2131689896), null, null, paramString1.getString(2131718062), new ahzt(this, paramString1), null).show();
+      return;
+    }
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramInt, 0).b(this.a.a());
   }
 }
 

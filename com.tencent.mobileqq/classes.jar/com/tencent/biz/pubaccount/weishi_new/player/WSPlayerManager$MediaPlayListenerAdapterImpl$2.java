@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import thf;
-import thj;
-import thl;
-import thm;
+import ujv;
+import ujz;
+import ukb;
+import ukc;
 
 public class WSPlayerManager$MediaPlayListenerAdapterImpl$2
   implements Runnable
 {
-  public WSPlayerManager$MediaPlayListenerAdapterImpl$2(thj paramthj) {}
+  public WSPlayerManager$MediaPlayListenerAdapterImpl$2(ujz paramujz) {}
   
   public void run()
   {
@@ -21,14 +21,14 @@ public class WSPlayerManager$MediaPlayListenerAdapterImpl$2
     {
       Iterator localIterator = WSPlayerManager.a(this.a.a).iterator();
       while (localIterator.hasNext()) {
-        ((thm)localIterator.next()).c(WSPlayerManager.b(this.a.a));
+        ((ukc)localIterator.next()).c(WSPlayerManager.b(this.a.a));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.MediaPlayListenerAdapterImpl.2
  * JD-Core Version:    0.7.0.1
  */

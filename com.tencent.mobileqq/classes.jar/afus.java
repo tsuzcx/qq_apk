@@ -1,12 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class afus
-  implements DialogInterface.OnClickListener
+final class afus
+  extends ThreadLocal<char[]>
 {
-  afus(afup paramafup) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected char[] a()
+  {
+    return new char[1024];
+  }
 }
 
 

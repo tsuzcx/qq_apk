@@ -1,19 +1,20 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adlo
   implements View.OnClickListener
 {
-  public adlo(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adlo(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
-    this.a.startActivity(paramView);
-    azqs.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
+    if (ArkFullScreenAppActivity.a(this.a) != null) {
+      apok.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, apok.c, 0, 0);
+    }
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

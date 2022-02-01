@@ -1,31 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.content.Intent;
+import java.util.ArrayList;
 
-public class atsf
-  implements View.OnTouchListener
+class atsf
+  implements atve
 {
-  public atsf(LocationPickFragment paramLocationPickFragment) {}
+  atsf(atse paramatse) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (1 == paramMotionEvent.getAction())
-    {
-      if (!LocationPickFragment.a(this.a).b())
-      {
-        LocationPickFragment.a(this.a).setDisplayFromType(3);
-        LocationPickFragment.a(this.a).a();
-      }
-      azqs.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
-    }
-    return false;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(athc.a());
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+    atsd.a(this.a.a, localIntent);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsf
  * JD-Core Version:    0.7.0.1
  */

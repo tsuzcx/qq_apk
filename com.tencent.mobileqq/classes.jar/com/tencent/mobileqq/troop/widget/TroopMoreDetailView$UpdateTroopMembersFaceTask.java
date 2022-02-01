@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.widget;
 
-import alud;
 import android.content.Context;
 import android.support.v4.view.ViewCompat;
 import android.util.DisplayMetrics;
@@ -8,14 +7,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bctb;
-import bdbk;
+import anni;
+import aoch;
+import bfxt;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import xsm;
+import zlx;
 
 public class TroopMoreDetailView$UpdateTroopMembersFaceTask
   implements Runnable
@@ -53,11 +53,11 @@ public class TroopMoreDetailView$UpdateTroopMembersFaceTask
       ((View)localObject3).setVisibility(8);
       return;
     }
-    ((LinearLayout)((View)localObject3).findViewById(2131365921)).setVisibility(0);
-    Object localObject2 = (TextView)((View)localObject3).findViewById(2131370145);
-    ((TextView)localObject2).setText(alud.a(2131716063) + k + alud.a(2131716056));
-    Object localObject3 = (TextView)((View)localObject3).findViewById(2131370149);
-    int j = (localTroopMoreDetailView.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - ((TextView)localObject3).getMeasuredWidth() - xsm.a((Context)localObject1, 27.0F) - ((TextView)localObject2).getMeasuredWidth() - xsm.a((Context)localObject1, 24.0F)) / xsm.a((Context)localObject1, 52.0F);
+    ((LinearLayout)((View)localObject3).findViewById(2131366173)).setVisibility(0);
+    Object localObject2 = (TextView)((View)localObject3).findViewById(2131370586);
+    ((TextView)localObject2).setText(anni.a(2131714344) + k + anni.a(2131714337));
+    Object localObject3 = (TextView)((View)localObject3).findViewById(2131370590);
+    int j = (localTroopMoreDetailView.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - ((TextView)localObject3).getMeasuredWidth() - zlx.a((Context)localObject1, 27.0F) - ((TextView)localObject2).getMeasuredWidth() - zlx.a((Context)localObject1, 24.0F)) / zlx.a((Context)localObject1, 52.0F);
     if (j > 6) {}
     for (;;)
     {
@@ -71,12 +71,12 @@ public class TroopMoreDetailView$UpdateTroopMembersFaceTask
         }
         localObject2 = (String)localTroopMoreDetailView.jdField_a_of_type_JavaUtilArrayList.get(j);
         ((ImageView)localObject1).setVisibility(0);
-        ((ImageView)localObject1).setBackgroundDrawable(bdbk.a(localQQAppInterface, 1, (String)localObject2, 3));
+        ((ImageView)localObject1).setBackgroundDrawable(aoch.a(localQQAppInterface, 1, (String)localObject2, 3));
         ((ImageView)localObject1).setTag(localObject2);
-        ((ImageView)localObject1).setOnClickListener(new bctb(this, localTroopMoreDetailView));
+        ((ImageView)localObject1).setOnClickListener(new bfxt(this, localTroopMoreDetailView));
         if (AppSetting.c)
         {
-          ((ImageView)localObject1).setContentDescription(alud.a(2131716054) + (j + 1));
+          ((ImageView)localObject1).setContentDescription(anni.a(2131714335) + (j + 1));
           ViewCompat.setImportantForAccessibility((View)localObject1, 1);
         }
       }
@@ -94,7 +94,7 @@ public class TroopMoreDetailView$UpdateTroopMembersFaceTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopMoreDetailView.UpdateTroopMembersFaceTask
  * JD-Core Version:    0.7.0.1
  */

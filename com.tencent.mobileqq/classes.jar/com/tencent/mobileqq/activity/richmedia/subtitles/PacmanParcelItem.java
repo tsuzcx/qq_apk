@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ajuv;
+import alnl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class PacmanParcelItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<PacmanParcelItem> CREATOR = new ajuv();
+  public static final Parcelable.Creator<PacmanParcelItem> CREATOR = new alnl();
   public float a;
   public int a;
   public int b;
@@ -36,7 +36,7 @@ public class PacmanParcelItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.subtitles.PacmanParcelItem
  * JD-Core Version:    0.7.0.1
  */

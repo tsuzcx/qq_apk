@@ -1,18 +1,18 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.support.annotation.NonNull;
-import bmnh;
-import bmnj;
-import bnaz;
+import bpen;
+import bpep;
+import bpsf;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import uvx;
-import uwa;
-import woy;
+import wpj;
+import wpm;
+import yij;
 
 public class EditVideoGame
-  extends bmnh
+  extends bpen
 {
   private StoryVideoItem jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
   private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
@@ -20,7 +20,7 @@ public class EditVideoGame
   
   private boolean b()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem = ((EditVideoGame.GameResultItem)this.jdField_a_of_type_Bmnj.a.a("story_game_result"));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem = ((EditVideoGame.GameResultItem)this.jdField_a_of_type_Bpep.a.a("story_game_result"));
     return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem != null;
   }
   
@@ -28,7 +28,7 @@ public class EditVideoGame
   {
     if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mDenyComment == 1))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = ((CommentLikeFeedItem)((woy)uwa.a(11)).a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem.c));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = ((CommentLikeFeedItem)((yij)wpm.a(11)).a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem.c));
       if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mDenyComment != 1)) {}
     }
     do
@@ -37,7 +37,7 @@ public class EditVideoGame
       {
         return;
       } while (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null);
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((uvx)uwa.a(5)).a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem.d);
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((wpj)wpm.a(5)).a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGame$GameResultItem.d);
     } while (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null);
   }
   
@@ -50,11 +50,11 @@ public class EditVideoGame
     ThreadManagerV2.excute(new EditVideoGame.1(this), 32, null, true);
   }
   
-  public void a(int paramInt, @NonNull bnaz parambnaz) {}
+  public void a(int paramInt, @NonNull bpsf parambpsf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoGame
  * JD-Core Version:    0.7.0.1
  */

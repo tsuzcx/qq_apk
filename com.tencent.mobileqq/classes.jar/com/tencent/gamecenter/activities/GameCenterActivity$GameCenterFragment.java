@@ -1,9 +1,10 @@
 package com.tencent.gamecenter.activities;
 
-import aahc;
-import aahd;
-import aahi;
-import aahx;
+import abbc;
+import aceb;
+import acec;
+import aceh;
+import acex;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -15,11 +16,11 @@ import android.view.Display;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
-import aslq;
-import asls;
-import asmr;
-import beft;
-import bflk;
+import aurw;
+import aury;
+import ausy;
+import bhmv;
+import bist;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
@@ -34,9 +35,8 @@ import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension
 import com.tencent.smtt.sdk.WebView;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import myl;
-import nbv;
-import zej;
+import nhe;
+import nko;
 
 public class GameCenterActivity$GameCenterFragment
   extends WebViewFragment
@@ -44,11 +44,11 @@ public class GameCenterActivity$GameCenterFragment
   public static int a;
   public static long a;
   public static long b;
-  private DisplayMetrics a;
+  private DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   protected String a;
   protected boolean a;
-  private AppInterface jdField_b_of_type_ComTencentCommonAppAppInterface;
-  private String jdField_b_of_type_JavaLangString = "";
+  private String b;
   public boolean b;
   public long c;
   private String jdField_c_of_type_JavaLangString = "";
@@ -57,7 +57,17 @@ public class GameCenterActivity$GameCenterFragment
   
   public GameCenterActivity$GameCenterFragment()
   {
+    this.jdField_b_of_type_JavaLangString = "";
     this.jdField_b_of_type_Boolean = true;
+  }
+  
+  private String a()
+  {
+    String str = "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=no_config&_wv=18950115&_wwv=393&plat=qq&_wv=5127";
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      str = "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=no_config&_wv=18950115&_wwv=393&plat=qq&_wv=5127" + "&" + this.jdField_c_of_type_JavaLangString;
+    }
+    return str + "&st=" + this.d;
   }
   
   private String a(String paramString)
@@ -77,9 +87,48 @@ public class GameCenterActivity$GameCenterFragment
     return null;
   }
   
+  private void a()
+  {
+    if (this.mApp == null) {
+      this.mApp = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
+    }
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mApp;
+    }
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    }
+    for (;;)
+    {
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.mUrl)) && (a(this.mUrl))) {}
+      try
+      {
+        String str = Uri.parse(this.mUrl).getQueryParameter("uin");
+        if (str == null)
+        {
+          this.mUrl = nko.a(this.mUrl, "uin=" + this.jdField_a_of_type_JavaLangString);
+          this.intent.putExtra("url", this.mUrl);
+        }
+        return;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("GameCenterFragment", 2, "GameCenterActivity..gcRuntime is null");
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+          Object localObject = null;
+        }
+      }
+    }
+  }
+  
   private void a(WebView paramWebView)
   {
-    if (!aahi.b("gamecenter_shot_switch")) {
+    if (!aceh.a("gamecenter_shot_switch")) {
       return;
     }
     QLog.i("GameCenterFragment", 1, "startMaskOpt murl=" + this.jdField_b_of_type_JavaLangString);
@@ -96,7 +145,31 @@ public class GameCenterActivity$GameCenterFragment
         QLog.e("GameCenterFragment", 1, "GAMECENTER_MASK_KEY error=" + localException.toString());
       }
     }
-    aahx.a().b(paramWebView, localObject, new aahc(this, paramWebView));
+    acex.a().b(paramWebView, localObject, new aceb(this, paramWebView));
+  }
+  
+  private boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    Object localObject = null;
+    try
+    {
+      paramString = Uri.parse(paramString).getQueryParameter("status");
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        paramString = localObject;
+      }
+    }
+    return true;
   }
   
   private void b(String paramString)
@@ -125,7 +198,7 @@ public class GameCenterActivity$GameCenterFragment
                 this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
                 super.getActivity().getWindowManager().getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
               }
-              str3 = bflk.a(super.getActivity().getApplicationContext());
+              str3 = bist.a(super.getActivity().getApplicationContext());
               String str4 = this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels + " * " + this.jdField_a_of_type_AndroidUtilDisplayMetrics.heightPixels;
               paramString = ReportInfoManager.getInstance().genClickReportInfo(this.jdField_a_of_type_JavaLangString, str1, paramString, str3, str4);
               ReportInfoManager.getInstance().postClickReportInfo(paramString);
@@ -145,218 +218,58 @@ public class GameCenterActivity$GameCenterFragment
     finally {}
   }
   
-  private String d()
-  {
-    String str = "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=no_config&_wv=18950115&_wwv=393&plat=qq&_wv=5127";
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      str = "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=no_config&_wv=18950115&_wwv=393&plat=qq&_wv=5127" + "&" + this.jdField_c_of_type_JavaLangString;
-    }
-    return str + "&st=" + this.d;
-  }
-  
-  private boolean d(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Object localObject = null;
-    try
-    {
-      paramString = Uri.parse(paramString).getQueryParameter("status");
-      if (TextUtils.isEmpty(paramString)) {
-        return false;
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = localObject;
-      }
-    }
-    return true;
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
-    }
-    if (this.jdField_b_of_type_ComTencentCommonAppAppInterface == null) {
-      this.jdField_b_of_type_ComTencentCommonAppAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-    }
-    if (this.jdField_b_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    }
-    for (;;)
-    {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.g)) && (d(this.g))) {}
-      try
-      {
-        String str = Uri.parse(this.g).getQueryParameter("uin");
-        if (str == null)
-        {
-          this.g = nbv.a(this.g, "uin=" + this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidContentIntent.putExtra("url", this.g);
-        }
-        return;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("GameCenterFragment", 2, "GameCenterActivity..gcRuntime is null");
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-          Object localObject = null;
-        }
-      }
-    }
-  }
-  
-  public int a(Bundle paramBundle)
-  {
-    int i = super.a(paramBundle);
-    if (this.jdField_a_of_type_Beft.b != null)
-    {
-      this.jdField_a_of_type_Beft.b.setVisibility(0);
-      if ((this.jdField_a_of_type_Beft.b instanceof TextView)) {
-        this.jdField_a_of_type_Beft.b.setText(2131690947);
-      }
-    }
-    return i;
-  }
-  
-  public String a()
-  {
-    return "gamecenter";
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    super.a();
-    if (myl.a().i(this.g)) {
-      i();
-    }
-    if (d(this.jdField_b_of_type_JavaLangString))
-    {
-      Object localObject2 = getWebView().getX5WebViewExtension();
-      if (localObject2 != null)
-      {
-        localObject1 = aslq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-        if ((((asls)localObject1).jdField_b_of_type_Long != 0L) && (((asls)localObject1).jdField_a_of_type_Long != ((asls)localObject1).jdField_b_of_type_Long))
-        {
-          if (!TextUtils.isEmpty(((asls)localObject1).jdField_a_of_type_JavaLangString))
-          {
-            ((IX5WebViewExtension)localObject2).updateServiceWorkerBackground(this.jdField_b_of_type_JavaLangString);
-            localObject2 = nbv.a(((asls)localObject1).jdField_a_of_type_JavaLangString, "jump_url=" + this.g);
-            this.g = ((String)localObject2);
-            this.jdField_b_of_type_JavaLangString = ((String)localObject2);
-            this.jdField_a_of_type_AndroidContentIntent.putExtra("url", this.g);
-            QLog.e("GameCenterFragment", 1, new Object[] { "doCreateLoopStep_InitWebView: replace url with: ", this.g });
-          }
-          aslq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, ((asls)localObject1).jdField_b_of_type_Long);
-        }
-      }
-      Object localObject1 = aslq.a(getActivity().getIntent());
-      if (localObject1 != null)
-      {
-        if ((((PadFaceAd)localObject1).isValid()) || (((PadFaceAd)localObject1).redPointId > 0)) {
-          i = 1;
-        }
-        if (i != 0) {
-          QQGamePadFaceFragment.a(getActivity(), (PadFaceAd)localObject1);
-        }
-      }
-    }
-  }
-  
-  public void a(WebView paramWebView, String paramString)
-  {
-    if ((this.jdField_b_of_type_Boolean) && (!this.i))
-    {
-      if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) || (!this.jdField_a_of_type_ComTencentBizUiTouchWebView.canGoBack()) || (this.jdField_a_of_type_Beft.a == null)) {
-        break label116;
-      }
-      this.jdField_a_of_type_Beft.a.setText(2131690382);
-    }
-    for (;;)
-    {
-      a(paramString);
-      this.jdField_b_of_type_Boolean = false;
-      if ((!TextUtils.isEmpty(paramString)) && (d(paramString)) && (aahx.a().a()))
-      {
-        aahx.a().a(paramWebView, new aahd(this));
-        aahx.a().b();
-      }
-      super.a(paramWebView, paramString);
-      return;
-      label116:
-      this.jdField_a_of_type_Beft.a(this.jdField_a_of_type_AndroidContentIntent);
-    }
-  }
-  
-  public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    if ((!this.jdField_c_of_type_Boolean) && (!TextUtils.isEmpty(paramString)) && (d(paramString)))
-    {
-      jdField_b_of_type_Long = System.currentTimeMillis();
-      a(paramWebView);
-    }
-    super.a(paramWebView, paramString, paramBitmap);
-  }
-  
   public void a(String paramString)
   {
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) {
+    if (this.webView == null) {
       localObject = null;
     }
     while ((!this.jdField_c_of_type_Boolean) && (!paramString.startsWith("data")) && (localObject != null))
     {
       localObject = ((WebViewPluginEngine)localObject).a("offline");
-      if ((localObject != null) && ((localObject instanceof zej)))
+      if ((localObject != null) && ((localObject instanceof abbc)))
       {
-        if (((zej)localObject).b == 0) {
+        if (((abbc)localObject).b == 0) {
           b("0");
         }
       }
       else
       {
         return;
-        localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
+        localObject = this.webView.getPluginEngine();
         continue;
       }
-      b(nbv.a(a(paramString)));
+      b(nko.a(a(paramString)));
       return;
     }
     this.jdField_c_of_type_Boolean = false;
   }
   
-  public boolean a(Bundle paramBundle)
+  public int doCreateLoopStep_Final(Bundle paramBundle)
+  {
+    return super.doCreateLoopStep_Final(paramBundle);
+  }
+  
+  public boolean doOnCreate(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("GameCenterFragment", 2, "game center fragment doOnCreate");
     }
     jdField_a_of_type_Int += 1;
     this.d = System.currentTimeMillis();
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    if (this.intent != null)
     {
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
-      this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("redTouch");
+      this.jdField_b_of_type_JavaLangString = this.intent.getStringExtra("url");
+      this.jdField_c_of_type_JavaLangString = this.intent.getStringExtra("redTouch");
       if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
       {
-        this.jdField_b_of_type_JavaLangString = d();
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("url", this.jdField_b_of_type_JavaLangString);
+        this.jdField_b_of_type_JavaLangString = a();
+        this.intent.putExtra("url", this.jdField_b_of_type_JavaLangString);
       }
       Object localObject;
-      if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (d(this.jdField_b_of_type_JavaLangString)))
+      if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (a(this.jdField_b_of_type_JavaLangString)))
       {
-        jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("plugin_start_time", 0L);
+        jdField_a_of_type_Long = this.intent.getLongExtra("plugin_start_time", 0L);
         if (jdField_a_of_type_Long == 0L) {
           localObject = null;
         }
@@ -379,11 +292,56 @@ public class GameCenterActivity$GameCenterFragment
     }
     for (;;)
     {
-      super.a(paramBundle);
+      super.doOnCreate(paramBundle);
       this.jdField_a_of_type_Boolean = false;
       return true;
-      Toast.makeText(super.getActivity().getApplicationContext(), 2131690945, 0).show();
+      Toast.makeText(super.getActivity().getApplicationContext(), 2131690787, 0).show();
       super.getActivity().finish();
+    }
+  }
+  
+  public String getUAMark()
+  {
+    return "gamecenter";
+  }
+  
+  public void initFinish()
+  {
+    int i = 0;
+    super.initFinish();
+    if (nhe.a().i(this.mUrl)) {
+      a();
+    }
+    if (a(this.jdField_b_of_type_JavaLangString))
+    {
+      Object localObject2 = getWebView().getX5WebViewExtension();
+      if (localObject2 != null)
+      {
+        localObject1 = aurw.a(this.mApp);
+        if ((((aury)localObject1).jdField_b_of_type_Long != 0L) && (((aury)localObject1).jdField_a_of_type_Long != ((aury)localObject1).jdField_b_of_type_Long))
+        {
+          if (!TextUtils.isEmpty(((aury)localObject1).jdField_a_of_type_JavaLangString))
+          {
+            ((IX5WebViewExtension)localObject2).updateServiceWorkerBackground(this.jdField_b_of_type_JavaLangString);
+            localObject2 = nko.a(((aury)localObject1).jdField_a_of_type_JavaLangString, "jump_url=" + this.mUrl);
+            this.mUrl = ((String)localObject2);
+            this.jdField_b_of_type_JavaLangString = ((String)localObject2);
+            this.intent.putExtra("url", this.mUrl);
+            QLog.e("GameCenterFragment", 1, new Object[] { "doCreateLoopStep_InitWebView: replace url with: ", this.mUrl });
+          }
+          aurw.a(this.mApp, ((aury)localObject1).jdField_b_of_type_Long);
+        }
+      }
+      Object localObject1 = aurw.a(getActivity().getIntent());
+      if (localObject1 != null)
+      {
+        if ((((PadFaceAd)localObject1).isValid()) || (((PadFaceAd)localObject1).redPointId > 0)) {
+          i = 1;
+        }
+        if (i != 0) {
+          QQGamePadFaceFragment.a(getActivity(), (PadFaceAd)localObject1);
+        }
+      }
     }
   }
   
@@ -400,14 +358,49 @@ public class GameCenterActivity$GameCenterFragment
       VipUtils.a(null, "vip", "0X8004BFB", "0X8004BFB", 0, 0, new String[] { String.valueOf(jdField_a_of_type_Long), String.valueOf(jdField_b_of_type_Long), String.valueOf(this.jdField_c_of_type_Long) });
     }
     super.onDestroy();
-    asmr.a().a();
+    ausy.a().a();
     System.gc();
-    aahx.a().a();
+    acex.a().a();
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    if ((this.jdField_b_of_type_Boolean) && (!this.isDestroyed))
+    {
+      if ((this.webView == null) || (!this.webView.canGoBack()) || (this.mSwiftTitleUI.a == null)) {
+        break label116;
+      }
+      this.mSwiftTitleUI.a.setText(2131690389);
+    }
+    for (;;)
+    {
+      a(paramString);
+      this.jdField_b_of_type_Boolean = false;
+      if ((!TextUtils.isEmpty(paramString)) && (a(paramString)) && (acex.a().a()))
+      {
+        acex.a().a(paramWebView, new acec(this));
+        acex.a().b();
+      }
+      super.onPageFinished(paramWebView, paramString);
+      return;
+      label116:
+      this.mSwiftTitleUI.a(this.intent);
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    if ((!this.jdField_c_of_type_Boolean) && (!TextUtils.isEmpty(paramString)) && (a(paramString)))
+    {
+      jdField_b_of_type_Long = System.currentTimeMillis();
+      a(paramWebView);
+    }
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -186,10 +186,24 @@ public class ViolaModuleManager
       }
     }
   }
+  
+  public static boolean registerOnlyNativeModule(String paramString, IModuleHolder paramIModuleHolder)
+  {
+    if ((paramString == null) || (paramIModuleHolder == null)) {
+      return false;
+    }
+    if (TextUtils.equals(paramString, "dom"))
+    {
+      ViolaLogUtils.e("ViolaModuleManager", "Cannot registered module with name 'dom'.");
+      return false;
+    }
+    ViolaBridgeManager.getInstance().post(new ViolaModuleManager.2(paramString, paramIModuleHolder));
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.module.ViolaModuleManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,26 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.widget.AbsListView;
 
 public class ozs
-  extends RecyclerView.OnScrollListener
+  extends ozu
 {
-  public ozs(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  public ozs(ReadInJoyCommentListView paramReadInJoyCommentListView) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      if (otb.a()) {
-        oxb.a().m();
-      }
-      return;
-      ReadInJoyPicWaterFallFragment.a(this.a);
-    }
+    super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    super.onScrollStateChanged(paramAbsListView, paramInt);
+    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ozs
  * JD-Core Version:    0.7.0.1
  */

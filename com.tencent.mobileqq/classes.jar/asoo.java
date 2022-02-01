@@ -1,25 +1,30 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.1.1;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1.1.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class asoo
-  implements EIPCResultCallback
+  implements OnCompositionLoadedListener
 {
-  public asoo(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  public asoo(MatchingView.1 param1) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    this.a.k = (System.currentTimeMillis() - this.a.a);
-    if (paramEIPCResult.code == 0)
+    if (paramLottieComposition == null)
     {
-      paramEIPCResult = paramEIPCResult.data;
-      if (paramEIPCResult != null) {
-        ThreadManagerV2.getUIHandlerV2().post(new QQGameFeedWebFragment.1.1(this, paramEIPCResult));
-      }
+      QLog.e("MatchingView", 1, "onCompositionLoaded lottieComposition is null");
+      return;
     }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    MatchingView.a(this.a.this$0, localLottieDrawable);
+    ThreadManager.getUIHandler().post(new MatchingView.1.1.1(this));
   }
 }
 

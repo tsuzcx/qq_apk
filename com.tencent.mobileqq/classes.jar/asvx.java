@@ -1,14 +1,16 @@
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
 
 public abstract interface asvx
-  extends View.OnTouchListener
 {
-  public abstract void a(View paramView, int paramInt);
+  public abstract View.OnClickListener a(TextView paramTextView);
   
-  public abstract void b(View paramView, int paramInt);
+  public abstract boolean a();
   
-  public abstract void c(asuq paramasuq, int paramInt);
+  public abstract boolean a(FavFileInfo paramFavFileInfo);
+  
+  public abstract boolean b();
 }
 
 

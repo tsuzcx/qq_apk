@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.cache;
 
-import alud;
 import android.app.Activity;
-import bdgm;
-import bdjz;
+import anni;
+import bglp;
+import bgpa;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
 
@@ -22,11 +22,11 @@ final class MiniCacheFreeManager$1
       return;
       try
       {
-        bdjz localbdjz = bdgm.a(this.val$activity, 230, null, this.val$dialogContext, alud.a(2131710614), alud.a(2131710615), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
-        localbdjz.setCanceledOnTouchOutside(false);
+        bgpa localbgpa = bglp.a(this.val$activity, 230, null, this.val$dialogContext, anni.a(2131708990), anni.a(2131708991), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
+        localbgpa.setCanceledOnTouchOutside(false);
         if ((this.val$activity != null) && (!this.val$activity.isFinishing()))
         {
-          localbdjz.show();
+          localbgpa.show();
           return;
         }
       }
@@ -39,7 +39,7 @@ final class MiniCacheFreeManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.cache.MiniCacheFreeManager.1
  * JD-Core Version:    0.7.0.1
  */

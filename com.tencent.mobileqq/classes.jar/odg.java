@@ -1,69 +1,73 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class odg
-  implements bhyl
+public class odg
+  extends MSFServlet
 {
-  odg(odf paramodf, int paramInt, VideoInfo paramVideoInfo) {}
-  
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    int i = 0;
-    if (paramInt == this.jdField_a_of_type_Int)
-    {
-      QQToast.a(odf.a(this.jdField_a_of_type_Odf), 0, 2131695687, 0).a();
-      odf.a(this.jdField_a_of_type_Odf).d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
-        break label349;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("EcShopServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
     }
-    label346:
-    label349:
-    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
     {
-      paramView = "";
-      paramInt = i;
-      if (paramInt < paramArrayList.size())
-      {
-        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
-        if (paramObject == null) {
-          break label346;
-        }
-        paramObject = paramView + paramObject.a;
-        paramView = paramObject;
-        if (paramInt != paramArrayList.size() - 1) {
-          paramView = paramObject + ",";
-        }
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bgva.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      new Bundle().putByteArray("data", arrayOfByte);
+      ode localode = (ode)((QQAppInterface)super.getAppRuntime()).a(68);
+      if (localode != null) {
+        localode.a(paramIntent, paramFromServiceMsg, arrayOfByte);
       }
-      for (;;)
-      {
-        paramInt += 1;
-        break;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a != null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f = l;
-          paramArrayList = noy.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
-          if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a(odf.a(this.jdField_a_of_type_Odf))) {
-            noy.a(new obk().a(odf.a(this.jdField_a_of_type_Odf)).a(noy.c).b(noy.P).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
-          }
-        }
-        else
-        {
-          return;
-        }
-        noy.a(new obk().a(odf.a(this.jdField_a_of_type_Odf)).a(noy.c).b(noy.N).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
-        return;
+      QLog.d("EcShopServlet", 2, "onReceive exit");
+      return;
+      arrayOfByte = null;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
+    {
+      paramPacket.setSSOCommand("SQQShopFolderSvc." + str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label135;
       }
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bgva.a(paramIntent, 0, arrayOfByte.length + 4);
+      bgva.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EcShopServlet", 2, "onSend exit cmd=" + str);
+      }
+      return;
+      label135:
+      paramIntent = new byte[4];
+      bgva.a(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     odg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,51 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class atic
-  implements nbg
+public class atic
+  extends bbip<bbmy, bbvg>
 {
-  atic(atib paramatib) {}
-  
-  public void a(Bundle paramBundle)
+  public atic(ListView paramListView, aobu paramaobu, List<bbmy> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (!TextUtils.isEmpty(this.a.a))
+    super(paramaobu, paramList);
+    if (paramString == null) {
+      return;
+    }
+    if (paramString.size() == 1)
     {
-      paramBundle = paramBundle.getString("info");
-      localJSONObject = new JSONObject();
-    }
-    while (!QLog.isColorLevel()) {
-      try
+      paramListView = (athz)paramString.get(0);
+      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
       {
-        JSONObject localJSONObject;
-        localJSONObject.put("data", paramBundle);
-        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
-        if (QLog.isColorLevel()) {
-          QLog.d("PushApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
+        paramaobu = new ArrayList();
+        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramList.hasNext())
+        {
+          paramString = (FileManagerEntity)paramList.next();
+          paramQQAppInterface = new athz();
+          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
+          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
+          paramaobu.add(paramQQAppInterface);
         }
-        return;
-      }
-      catch (Throwable paramBundle)
-      {
-        QLog.e("PushApiPlugin", 1, paramBundle, new Object[0]);
+        a(paramaobu);
         return;
       }
     }
-    QLog.d("PushApiPlugin", 2, "handleJsRequest callback is empty");
+    a(paramString);
+  }
+  
+  protected bbps<bbmy, bbvg> a(int paramInt)
+  {
+    return new atie(FileSearchFragment.a(this.a));
+  }
+  
+  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new atif(paramViewGroup);
   }
 }
 

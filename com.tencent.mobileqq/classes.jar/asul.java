@@ -1,17 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asul
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public asul(HotPicPageView paramHotPicPageView, asuq paramasuq) {}
+  public asul(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Asuq.a(-11);
-    QLog.d("HotPicManagerHotPicPageView", 2, "User disallowed downd");
+    if (!QfileBaseCloudFileTabView.a(this.a)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QfileBaseCloudFileTabView.a(this.a);
+      this.a.f();
+      if (this.a.jdField_a_of_type_Asti.getGroupCount() > 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_Asti.getGroupCount() - 1);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
+      QfileBaseCloudFileTabView.a(this.a, false);
+      this.a.h();
+    }
   }
 }
 

@@ -1,9 +1,10 @@
+import android.widget.CheckBox;
+import android.widget.TextView;
+
 class ajuq
 {
-  long jdField_a_of_type_Long;
-  ajus jdField_a_of_type_Ajus;
-  long jdField_b_of_type_Long;
-  ajus jdField_b_of_type_Ajus;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

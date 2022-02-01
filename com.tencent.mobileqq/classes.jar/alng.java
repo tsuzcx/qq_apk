@@ -1,19 +1,9 @@
-import android.view.View;
-
-public class alng
+class alng
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  
-  public alng(View paramView, int paramInt1, String paramString, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-  }
+  long jdField_a_of_type_Long;
+  alni jdField_a_of_type_Alni;
+  long jdField_b_of_type_Long;
+  alni jdField_b_of_type_Alni;
 }
 
 

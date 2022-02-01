@@ -1,78 +1,19 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.util.AdUriUtil;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
+import WEISHI_USER_GROWTH.WEISHI.stMetaFeed;
 
 public class aavc
-  extends aave
 {
-  public aavc(GdtVideoCeilingView paramGdtVideoCeilingView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  int jdField_a_of_type_Int;
+  WEISHI.stMetaFeed jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = null;
+  
+  aavc(WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
   {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+    this.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = paramstMetaFeed;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public int a()
   {
-    super.onPageFinished(paramWebView, paramString);
-    aase.b("GdtVideoCeilingView", "onPageFinished:" + paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    aase.b("GdtVideoCeilingView", "onPageStarted:" + paramString);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-    aase.b("GdtVideoCeilingView", "onReceivedTitle: " + paramString);
-    GdtVideoCeilingView.a(this.a).setWebBarTitle(paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    aase.b("GdtVideoCeilingView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    for (;;)
-    {
-      return true;
-      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      localObject = AdUriUtil.parse(paramString);
-      if (localObject != null) {}
-      for (paramString = ((Uri)localObject).getScheme(); myl.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
-      {
-        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
-        paramWebView.addFlags(268435456);
-        try
-        {
-          this.mContext.startActivity(paramWebView);
-          return true;
-        }
-        catch (ActivityNotFoundException paramWebView)
-        {
-          aase.d("GdtVideoCeilingView", paramWebView.toString());
-          return true;
-        }
-      }
-    }
+    return this.jdField_a_of_type_Int;
   }
 }
 

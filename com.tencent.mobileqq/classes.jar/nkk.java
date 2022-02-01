@@ -1,62 +1,44 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-public class nkk
-  implements bhuk
+class nkk
+  extends bhhe
 {
-  public nkk(AccountDetailActivity paramAccountDetailActivity) {}
+  nkk(nkj paramnkj) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDone(bhhf parambhhf)
   {
-    if (this.a.p) {
-      return;
+    if (parambhhf.a == 0) {
+      parambhhf = parambhhf.a().getString("file_path");
     }
-    this.a.p = true;
-    switch (paramInt)
-    {
-    }
-    label273:
-    label277:
-    for (;;)
-    {
-      this.a.b.dismiss();
-      return;
-      this.a.j = false;
-      this.a.x();
-      if (((ntw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88)).a(this.a.d)) {
-        ((nup)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a(134243868, this.a.d, null, null, null, 2L, false);
-      }
-      aepi.n = false;
-      if ("2290230341".equals(this.a.d))
+    while (!QLog.isColorLevel()) {
+      try
       {
-        azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80090E7", "0X80090E7", 0, 0, "", "", "", "");
-        label177:
-        if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
-          break label273;
+        File localFile = new File(parambhhf);
+        String str = bgmg.b(localFile);
+        if (QLog.isColorLevel()) {
+          QLog.d("CommonConfigBase", 2, "onDone() content =  " + str + ", filePath = " + parambhhf);
         }
+        localFile.delete();
+        this.a.b(str);
+        this.a.a(str);
+        return;
       }
-      for (paramView = this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name;; paramView = "")
+      catch (IOException parambhhf)
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
-          break label277;
-        }
-        ajkm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d, paramView);
-        break;
-        if (!TextUtils.equals(String.valueOf(2062433139L), this.a.d)) {
-          break label177;
-        }
-        nrt.a(null, null, "0X800929F", "0X800929F", 0, 0, "", "", "", ntd.a(null), false);
-        break label177;
+        while (!QLog.isColorLevel()) {}
+        QLog.d("CommonConfigBase", 2, QLog.getStackTraceString(parambhhf));
+        return;
       }
     }
+    QLog.d("CommonConfigBase", 2, "onError(), errorCode = " + parambhhf.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nkk
  * JD-Core Version:    0.7.0.1
  */

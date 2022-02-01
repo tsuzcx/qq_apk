@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendMultiLinesTagsView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class aqif
+  extends Handler
 {
-  public int a;
-  public String a;
+  public aqif(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public aqif(ExtendFriendMultiLinesTagsView paramExtendFriendMultiLinesTagsView, int paramInt, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramMessage.what == 1000) {
+      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
+    }
   }
 }
 

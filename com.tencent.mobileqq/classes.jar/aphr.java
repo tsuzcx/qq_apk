@@ -1,61 +1,76 @@
+import com.tencent.qphone.base.util.QLog;
+import cooperation.wadl.ipc.WadlParams;
+import cooperation.wadl.ipc.WadlResult;
 import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class aphr
-  extends apgp
+class aphr
+  implements bmxe
 {
-  public ArrayList<aphq> a;
+  aphr(aphi paramaphi) {}
   
-  public static aphr a(JSONObject paramJSONObject)
+  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
   {
-    aphr localaphr = new aphr();
-    localaphr.jdField_a_of_type_JavaLangString = paramJSONObject.optString("group");
-    paramJSONObject = paramJSONObject.optJSONArray("configs");
-    localaphr.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramJSONObject.length());
-    int i = 0;
-    while (i < paramJSONObject.length())
-    {
-      aphq localaphq = aphq.a(paramJSONObject.optJSONObject(i));
-      localaphq.a = localaphr;
-      localaphr.jdField_a_of_type_JavaUtilArrayList.add(localaphq);
-      i += 1;
+    if (paramArrayList != null) {
+      QLog.i("ark.download.module", 1, "ark.dctrl.onQueryCallback:" + paramArrayList.toString());
     }
-    return localaphr;
+    if (aphi.a(this.a) != null)
+    {
+      aceh.a(paramArrayList);
+      aphi.a(this.a).a(paramArrayList);
+    }
   }
   
-  public JSONObject a()
+  public void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    if (paramArrayList != null) {
+      QLog.i("ark.download.module", 1, "ark.dctrl.onQueryCallbackVia:" + paramArrayList.toString());
+    }
+    if (aphi.a(this.a) != null)
     {
-      localJSONObject.put("group", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        localJSONArray.put(((aphq)localIterator.next()).a());
+      aceh.a(paramArrayList);
+      aphi.a(this.a).a(paramArrayList);
+    }
+  }
+  
+  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
+  {
+    if (aphi.a(this.a) != null)
+    {
+      aceh.a(paramWadlResult);
+      aphi.a(this.a).a(paramWadlResult);
+      if (paramWadlResult != null) {}
+    }
+    else
+    {
+      return;
+    }
+    QLog.i("ark.download.module", 1, "ark.dctrl.onWadlTaskStatusChanged:" + paramWadlResult.toString());
+    if (paramWadlResult.a != null) {}
+    for (String str = paramWadlResult.a.a;; str = "") {
+      switch (paramWadlResult.b)
+      {
+      case 8: 
+      case 10: 
+      case 11: 
+      case 12: 
+      case 13: 
+      default: 
+        return;
+      case 6: 
+        bcst.a(null, "dc00898", "", "", "0X8009E14", "0X8009E14", 0, 0, "", "", str, "");
+        return;
       }
-      localJSONObject.put("configs", localJSONException);
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-      return localJSONObject;
-    }
-    return localJSONObject;
-  }
-  
-  public boolean a()
-  {
-    return false;
+    bcst.a(null, "dc00898", "", "", "0X8009E15", "0X8009E15", 0, 0, "", "", str, "");
+    return;
+    bcst.a(null, "dc00898", "", "", "0X8009E17", "0X8009E17", 0, 0, "", "", str, "");
+    return;
+    bcst.a(null, "dc00898", "", "", "0X8009E18", "0X8009E18", 0, 0, "", "", str, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aphr
  * JD-Core Version:    0.7.0.1
  */

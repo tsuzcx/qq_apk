@@ -1,18 +1,38 @@
-class aoke
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aoke
+  extends aojt
 {
-  public byte a;
-  public String a;
-  public byte b;
-  public String b = "";
-  
-  aoke(aokd paramaokd)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    paramQQAppInterface = new aokd(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "od";
+    paramQQAppInterface.c = "openroom";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoke
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.CreateVirtualResult;
+import java.util.Comparator;
 
 public final class bfqy
-  implements Parcelable.Creator<CreateVirtualResult>
+  implements Comparator<bfqz>
 {
-  public CreateVirtualResult a(Parcel paramParcel)
+  public int a(bfqz parambfqz1, bfqz parambfqz2)
   {
-    return new CreateVirtualResult(paramParcel);
-  }
-  
-  public CreateVirtualResult[] a(int paramInt)
-  {
-    return new CreateVirtualResult[paramInt];
+    return Long.signum(parambfqz2.a - parambfqz1.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfqy
  * JD-Core Version:    0.7.0.1
  */

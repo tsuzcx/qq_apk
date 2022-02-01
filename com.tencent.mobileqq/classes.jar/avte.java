@@ -1,43 +1,34 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.data.ISong;
 
-class avte
-  implements View.OnTouchListener
+public class avte
+  implements avvi
 {
-  private avte(avtc paramavtc) {}
+  public avte(ListenTogetherManager paramListenTogetherManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(ISong paramISong)
   {
-    boolean bool3 = true;
-    boolean bool2 = false;
-    int i = paramMotionEvent.getAction();
-    Object localObject = this.a;
-    boolean bool1 = bool3;
-    if (i != 1) {
-      if (i != 3) {
-        break label105;
-      }
-    }
-    label105:
-    for (bool1 = bool3;; bool1 = false)
+    if (paramISong != null)
     {
-      ((avtc)localObject).b = bool1;
-      if ((this.a.b) && (this.a.jdField_a_of_type_Int != 2)) {
-        this.a.a();
+      ListenTogetherManager.a(this.a, paramISong);
+      this.a.a(paramISong.a());
+      String str = (String)ListenTogetherManager.a(this.a).get(paramISong.a());
+      if (!TextUtils.isEmpty(str)) {
+        ListenTogetherManager.a(this.a, paramISong.a(), str);
       }
-      localObject = this.a.jdField_a_of_type_Avtb.a();
-      bool1 = bool2;
-      if (localObject != null) {
-        bool1 = ((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent);
-      }
-      return bool1;
     }
+    else
+    {
+      return;
+    }
+    ListenTogetherManager.a(this.a, paramISong.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avte
  * JD-Core Version:    0.7.0.1
  */

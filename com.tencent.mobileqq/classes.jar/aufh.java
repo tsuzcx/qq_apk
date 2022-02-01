@@ -1,26 +1,28 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class aufh
-  extends beak
+class aufh
+  implements aufb
 {
-  public aufh(ChatBackgroundManager paramChatBackgroundManager, String paramString, int paramInt1, int paramInt2) {}
+  aufh(aufg paramaufg, String paramString1, String paramString2) {}
   
-  public void a(long paramLong, int paramInt, Bundle paramBundle)
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
-    super.a(paramLong, paramInt, paramBundle);
-    paramBundle = ChatBackgroundManager.a(true, paramLong + "");
-    if (new File(paramBundle).exists()) {
-      aeqq.a(this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.c(), this.jdField_a_of_type_JavaLangString, paramBundle, this.jdField_a_of_type_Int, this.b);
-    }
+    QLog.d("FlutterMainQIPCModule", 1, String.format("onResult, isSuccess: %s, installDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("KEY_INSTALL_RESULT", paramBoolean1);
+    localBundle.putString("KEY_INSTALL_DIR", paramString);
+    localBundle.putBoolean("KEY_IS_APP_EXIST", paramBoolean3);
+    localBundle.putBoolean("KEY_IS_ENGINE_EXIST", paramBoolean2);
+    QIPCServerHelper.getInstance().callClient(this.jdField_a_of_type_JavaLangString, "FlutterSubQIPCModule", this.b, localBundle, new aufi(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aufh
  * JD-Core Version:    0.7.0.1
  */

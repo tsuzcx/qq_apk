@@ -1,28 +1,19 @@
-public class auhl
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class auhl
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public String c;
+  auhl(auhk paramauhk) {}
   
-  public auhl()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public String toString()
-  {
-    return "MsgBackupSessionTask[msg = " + this.jdField_a_of_type_JavaLangString + ", cmd = " + this.jdField_a_of_type_Int + ", isFileTask = " + this.jdField_a_of_type_Boolean + ", sessionId = " + this.jdField_a_of_type_Long + ", path = " + this.jdField_b_of_type_JavaLangString + ", url = " + this.c + ", retryTimes = " + this.jdField_a_of_type_Short + "]";
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auhl
  * JD-Core Version:    0.7.0.1
  */

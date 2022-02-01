@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import abuy;
+import adbn;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 
@@ -9,7 +9,7 @@ public class SignatureScan
 {
   public int a()
   {
-    new abuy(this.a.app).a(false);
+    new adbn(this.a.app).a(false);
     return 7;
   }
 }

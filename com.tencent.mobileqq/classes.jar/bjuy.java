@@ -1,24 +1,38 @@
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.mini.manager.MiniLoadingAdManager.CachedAdInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener;
 
-public final class bjuy
+public class bjuy
+  implements Downloader.DownloadListener
 {
-  public int a;
-  public Map<String, String> a;
+  public bjuy(AdProxyImpl paramAdProxyImpl, AdProxy.ILoadingAdListener paramILoadingAdListener, String paramString, long paramLong, MiniLoadingAdManager.CachedAdInfo paramCachedAdInfo) {}
   
-  public bjuy()
+  public void onDownloadCanceled(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " canceled");
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onDownloadAdEnd(null, -1L, null);
   }
   
-  public String toString()
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    return "ctrl:[cmd = " + this.jdField_a_of_type_Int + ", data = " + this.jdField_a_of_type_JavaUtilMap + "]";
+    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " failed");
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onDownloadAdEnd(null, -1L, null);
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " succeed");
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onDownloadAdEnd(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqMiniManagerMiniLoadingAdManager$CachedAdInfo.filePath);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjuy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,56 @@
 import android.content.Context;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import java.net.URL;
 
-public class aiir
-  extends afpy
+public abstract class aiir
+  implements aiit
 {
-  boolean a;
+  private boolean a;
   
-  public aiir(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
+  public URLDrawable.URLDrawableOptions a()
   {
-    super(paramContext, paramQQAppInterface, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
-    this.jdField_a_of_type_Boolean = false;
+    return URLDrawable.URLDrawableOptions.obtain();
   }
   
-  private boolean a(int paramInt)
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    return (paramInt == 62) || (paramInt == 96) || (paramInt == 75);
-  }
-  
-  public aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    if (a(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage))) {
-      if (this.jdField_a_of_type_Aiiv == null) {
-        this.jdField_a_of_type_Aiiv = new aiiv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-      }
+    if (paramURL == null) {
+      return null;
     }
-    for (paramChatMessage = a(this.jdField_a_of_type_Aiiv, paramBaseAdapter);; paramChatMessage = super.a(paramChatMessage, paramBaseAdapter))
-    {
-      if ((paramChatMessage instanceof BaseBubbleBuilder)) {
-        ((BaseBubbleBuilder)paramChatMessage).b = true;
-      }
-      return paramChatMessage;
-    }
+    return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
   }
   
-  public void a(boolean paramBoolean)
+  public String a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return null;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  {
+    this.a = true;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean b()
+  {
+    return this.a;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

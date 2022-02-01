@@ -1,111 +1,91 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
 
 public class biwo
+  extends bixc
 {
-  private static int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean = true;
-  private int b = 3;
+  biwp jdField_a_of_type_Biwp;
   
-  static
+  public biwo(biwe parambiwe, Activity paramActivity, biwp parambiwp)
   {
-    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-    int i = 0;
-    for (;;)
-    {
-      if (i < arrayOfStackTraceElement.length)
-      {
-        if (biwo.class.getName().equals(arrayOfStackTraceElement[i].getClassName())) {
-          jdField_a_of_type_Int = i;
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
-    }
+    super(paramActivity);
+    this.jdField_a_of_type_Biwp = parambiwp;
   }
   
-  private StringBuilder a(int paramInt)
+  protected void a(Boolean paramBoolean)
   {
-    return new StringBuilder();
-  }
-  
-  private void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
-  {
-    switch (paramInt1)
+    a();
+    if (paramBoolean.booleanValue())
     {
-    }
-    for (;;)
-    {
-      StringBuilder localStringBuilder;
-      try
+      if (bixb.a())
       {
-        localStringBuilder = a(paramInt3);
-        if (paramString2 != null) {
-          localStringBuilder.append(paramString2);
-        }
-        paramString2 = paramString1;
-        if (paramString1 == null) {
-          paramString2 = this.jdField_a_of_type_JavaLangString;
-        }
-        switch (paramInt2)
+        this.jdField_a_of_type_Biwe.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Biwe.jdField_b_of_type_Boolean = false;
+        long l = -1L;
+        switch (this.jdField_a_of_type_Biwp.jdField_a_of_type_Int)
         {
+        case 1: 
         default: 
-          return;
+          l = this.jdField_a_of_type_Biwe.a(this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Biwp.jdField_a_of_type_Boolean, this.jdField_a_of_type_Biwp.jdField_b_of_type_Boolean);
         }
-      }
-      finally {}
-      if (!QLog.isDevelopLevel())
-      {
-        continue;
-        if (!QLog.isColorLevel())
+        for (;;)
         {
-          continue;
-          QLog.e(paramString2, paramInt1, localStringBuilder.toString());
-          continue;
-          QLog.w(paramString2, paramInt1, localStringBuilder.toString());
-          continue;
-          QLog.i(paramString2, paramInt1, localStringBuilder.toString());
-          continue;
-          QLog.d(paramString2, paramInt1, localStringBuilder.toString());
+          this.jdField_a_of_type_Biwe.jdField_a_of_type_Long = l;
+          this.jdField_a_of_type_Biwe.jdField_b_of_type_Long = System.currentTimeMillis();
+          if ((paramBoolean.booleanValue()) && (this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle != null))
+          {
+            paramBoolean = biuh.a(this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle.getString(bivp.i), "NEWYYB");
+            biuh.a("311", paramBoolean, this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle.getString(bivp.b));
+            Context localContext = biip.a().a();
+            if (localContext != null) {
+              biuh.a(localContext, "312", paramBoolean, this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle.getString(bivp.b));
+            }
+          }
+          if ((this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws != null) && (this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws.isShowing())) {
+            this.jdField_a_of_type_Biwe.jdField_a_of_type_Biws.dismiss();
+          }
+          return;
+          this.jdField_a_of_type_Biwe.e = true;
+          if (this.jdField_a_of_type_Biwe.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
+          {
+            l = this.jdField_a_of_type_Biwe.a().addDownloadTaskFromAuthorize(this.jdField_a_of_type_Biwe.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
+          }
+          else
+          {
+            bisy.e("MyAppApi", "CopyAndInstallTask->onPostExecute mLastAuthorizeParam = null");
+            continue;
+            l = this.jdField_a_of_type_Biwe.b(this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Biwp.jdField_a_of_type_Boolean, this.jdField_a_of_type_Biwp.jdField_b_of_type_Boolean);
+            continue;
+            l = this.jdField_a_of_type_Biwe.b(this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidOsBundle);
+          }
         }
       }
+      if (this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+        this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+      }
+      this.jdField_a_of_type_Biwe.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+      return;
     }
+    if (this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+    }
+    this.jdField_a_of_type_Biwe.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
   }
   
-  public biwo a(String paramString)
+  protected void onCancelled()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public biwo a(String paramString1, int paramInt, String paramString2)
-  {
-    a(paramString1, paramInt, 6, paramString2, this.b);
-    return this;
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public biwo b(String paramString1, int paramInt, String paramString2)
-  {
-    a(paramString1, paramInt, 4, paramString2, this.b);
-    return this;
-  }
-  
-  public biwo c(String paramString1, int paramInt, String paramString2)
-  {
-    a(paramString1, paramInt, 3, paramString2, this.b);
-    return this;
+    super.onCancelled();
+    if (this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_Biwp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biwo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,34 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import java.util.Set;
 
 public class aged
-  extends aeqi
+  implements OnCompositionLoadedListener
 {
-  public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public URLImageView a;
-  public BubbleImageView a;
-  public TextView b;
+  public aged(AudioTransitionAnimManager.1 param1) {}
+  
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  {
+    if (paramLottieComposition == null)
+    {
+      QLog.e("AudioTransitionAnimManager", 2, "getDrawable onCompositionLoaded lottieComposition is null or mIsDestroyed:");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel getDrawable finish type" + this.a.jdField_a_of_type_Int);
+    }
+    agec.a(this.a.this$0).remove(Integer.valueOf(this.a.jdField_a_of_type_Int));
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    agei localagei = new agei(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_JavaLangString);
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.setImageAssetDelegate(localagei);
+    agec.a(this.a.this$0).put(this.a.jdField_a_of_type_JavaLangString, localLottieDrawable);
+    agec.a(this.a.this$0, localLottieDrawable, this.a.jdField_a_of_type_Int);
+  }
 }
 
 

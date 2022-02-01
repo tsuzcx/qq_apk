@@ -3,15 +3,15 @@ package com.tencent.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import bibv;
-import bibw;
+import bkpg;
+import bkph;
 import com.tencent.image.URLImageView;
 
 public class URLThemeImageView
   extends URLImageView
-  implements bibw
+  implements bkph
 {
-  public bibv a;
+  public bkpg a;
   
   public URLThemeImageView(Context paramContext)
   {
@@ -54,7 +54,7 @@ public class URLThemeImageView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bibv();
+        this.a = new bkpg();
       }
       this.a.a(true);
     }
@@ -66,7 +66,7 @@ public class URLThemeImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.URLThemeImageView
  * JD-Core Version:    0.7.0.1
  */

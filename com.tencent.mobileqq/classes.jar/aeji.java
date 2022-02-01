@@ -1,33 +1,71 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.Window;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.1;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.2;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.3;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.4;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
+import com.tencent.mobileqq.gesturelock.LockPatternView.DisplayMode;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aeji
-  implements DialogInterface.OnDismissListener
+  implements auws
 {
-  public aeji(TroopTransferActivity paramTroopTransferActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  public aeji(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a() {}
+  
+  public void a(List<auwr> paramList)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-      paramDialogInterface = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getSystemService("input_method");
-      if (paramDialogInterface != null) {
-        paramDialogInterface.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getWindow().peekDecorView().getWindowToken(), 0);
+    if (paramList != null) {
+      switch (this.a.jdField_a_of_type_Int)
+      {
       }
-      return;
     }
-    catch (Exception paramDialogInterface)
+    do
     {
-      paramDialogInterface.printStackTrace();
+      return;
+      if ((paramList != null) && (paramList.size() >= 3))
+      {
+        this.a.a(paramList);
+        this.a.jdField_a_of_type_JavaLangString = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.app.getCurrentAccountUin());
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131692620);
+        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.1(this), 500L);
+        this.a.jdField_a_of_type_Int = 1;
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
+      QQToast.a(this.a, 1, this.a.getString(2131692640), 0).b(this.a.getTitleBarHeight());
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.2(this), 500L);
+      return;
+      paramList = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.app.getCurrentAccountUin());
+      if ((this.a.jdField_a_of_type_JavaLangString == null) || (paramList == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramList))) {
+        break;
+      }
+      GesturePWDUtils.setGesturePWD(this.a, this.a.app.getCurrentAccountUin(), this.a.jdField_a_of_type_JavaLangString);
+      GesturePWDUtils.setGesturePWDState(this.a, this.a.app.getCurrentAccountUin(), 2);
+      bcst.b(this.a.app, "CliOper", "", "", "Setting_tab", "Gesture_password", 0, 1, "", "", "", "");
+      QQToast.a(this.a, 2, this.a.getString(2131692622), 0).b(this.a.getTitleBarHeight());
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.3(this), 300L);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.gesturelock.creat", 2, "gesture lock create success...");
+    return;
+    this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.4(this), 500L);
+    QQToast.a(this.a, 1, this.a.getString(2131692621), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void b() {}
+  
+  public void b(List<auwr> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.gesturelock.creat", 2, "celladd.");
     }
   }
 }

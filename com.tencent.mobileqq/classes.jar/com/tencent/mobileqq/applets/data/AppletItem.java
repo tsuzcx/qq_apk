@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.applets.data;
 
-import amsc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aoqt;
 
 public class AppletItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<AppletItem> CREATOR = new amsc();
+  public static final Parcelable.Creator<AppletItem> CREATOR = new aoqt();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
@@ -95,7 +95,7 @@ public class AppletItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.applets.data.AppletItem
  * JD-Core Version:    0.7.0.1
  */

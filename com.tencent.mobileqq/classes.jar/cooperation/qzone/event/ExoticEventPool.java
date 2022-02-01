@@ -2,8 +2,8 @@ package cooperation.qzone.event;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import bjho;
-import bjjk;
+import blvu;
+import blxs;
 import cooperation.qzone.util.QZLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -17,12 +17,12 @@ public class ExoticEventPool
   @NonNull
   public static ExoticEventPool getInstance()
   {
-    return bjjk.a();
+    return blxs.a();
   }
   
   public boolean onEventReceived(@Nullable ExoticEvent paramExoticEvent)
   {
-    if (bjho.d()) {
+    if (blvu.d()) {
       return false;
     }
     if (paramExoticEvent == null) {
@@ -57,7 +57,7 @@ public class ExoticEventPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.event.ExoticEventPool
  * JD-Core Version:    0.7.0.1
  */

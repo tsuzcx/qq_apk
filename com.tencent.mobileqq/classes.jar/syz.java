@@ -1,103 +1,70 @@
 import android.content.Context;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ImageData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class syz
+  implements syk
 {
-  public static int a()
+  public static String a(String paramString, ImageData paramImageData)
   {
-    return ((Integer)bkbq.a("readinjoy_user_data_switch", Integer.valueOf(0))).intValue();
-  }
-  
-  public static void a(int paramInt)
-  {
-    bkbq.a("readinjoy_user_data_switch", Integer.valueOf(paramInt));
-  }
-  
-  public static void a(Context paramContext, int paramInt, Runnable paramRunnable)
-  {
-    int k = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_switch", 0);
-    String str = Aladdin.getConfig(232).getString("user_data_alert_content", paramContext.getString(2131719089));
-    int j = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_interval", 1);
-    int i = ((Integer)bkbq.a("readinjoy_user_data_state", Integer.valueOf(0))).intValue();
-    long l1 = ((Long)bkbq.a("readinjoy_user_data_time", Long.valueOf(0L))).longValue();
-    int m = ((Integer)bkbq.a("readinjoy_user_data_switch", Integer.valueOf(1))).intValue();
-    long l2;
-    if ((k == 1) && (m == 1))
-    {
-      l2 = System.currentTimeMillis();
-      if (l2 - l1 < j * 86400000L) {
-        break label329;
-      }
-      i = 0;
+    if ((TextUtils.isEmpty(paramString)) || (!paramImageData.a)) {}
+    while (!((Boolean)bmqa.a("sp_native_web_sharpp_pic_switch", Boolean.valueOf(false))).booleanValue()) {
+      return paramString;
     }
-    label329:
+    if (paramString.contains("fmt=gif"))
+    {
+      paramImageData.a = false;
+      return paramString;
+    }
+    paramImageData = bkgj.a(paramString);
+    if (paramImageData.containsKey("tp"))
+    {
+      paramImageData = (String)paramImageData.get("tp");
+      paramString = paramString.replace("tp=" + paramImageData, "tp=sharp");
+    }
     for (;;)
     {
-      if ((1 << paramInt & i) == 0)
-      {
-        bkbq.a("readinjoy_user_data_time", Long.valueOf(l2));
-        bkbq.a("readinjoy_user_data_state", Integer.valueOf(i | 1 << paramInt));
-        bdjz localbdjz = bdgm.a(paramContext, 230);
-        localbdjz.setTitle(null);
-        localbdjz.setMessage(str);
-        localbdjz.setPositiveButton(paramContext.getString(2131721453), new sza(paramInt, j, paramRunnable));
-        localbdjz.setNegativeButton(paramContext.getString(2131721462), new szb(paramInt, j, paramRunnable));
-        localbdjz.show();
-        paramContext = new JSONObject();
-        if (paramInt == 1) {
-          paramInt = 0;
-        }
+      QLog.d(pwt.a, 2, "sharpSupport, url : " + paramString);
+      return paramString;
+      if (paramImageData.size() > 0) {
+        paramString = paramString + "&tp=sharp";
+      } else {
+        paramString = paramString + "?tp=sharp";
       }
-      do
-      {
-        do
-        {
-          try
-          {
-            for (;;)
-            {
-              paramContext.put("exp_src", paramInt);
-              paramContext.put("user_data_alert_interval", j);
-              nrt.a(null, "", "0X800A808", "0X800A808", 0, 0, "", "", "", paramContext.toString(), false);
-              return;
-              paramInt = 1;
-            }
-          }
-          catch (JSONException paramRunnable)
-          {
-            for (;;)
-            {
-              paramRunnable.printStackTrace();
-            }
-          }
-        } while (paramRunnable == null);
-        paramRunnable.run();
-        return;
-      } while (paramRunnable == null);
-      paramRunnable.run();
-      return;
     }
   }
   
-  public static int b()
+  public static boolean a(String paramString)
   {
-    int i = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_switch", 0);
-    int j = Aladdin.getConfig(232).getIntegerFromString("user_data_switch_switch", 0);
-    if ((i == 0) && (j == 0)) {
-      return 0;
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    if (a() == 0) {
-      return 1;
-    }
-    return 2;
+    return paramString.contains("tp=sharp");
+  }
+  
+  public int a(BaseData paramBaseData)
+  {
+    return 1;
+  }
+  
+  public syj a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    return new sza(LayoutInflater.from(paramContext).inflate(2131560165, null), paramBaseData);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.t == 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     syz
  * JD-Core Version:    0.7.0.1
  */

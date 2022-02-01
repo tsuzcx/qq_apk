@@ -1,62 +1,97 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.lang.reflect.Proxy;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webprocess.PreloadService.PreloadImpl.1;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class bhlf
 {
-  public static Object a(bhlg parambhlg)
+  private void a()
   {
-    try
+    int i = bhrb.a().a();
+    if ((i & 0x2) == 0)
     {
-      ClassLoader localClassLoader = bhkx.class.getClassLoader();
-      Class localClass = Class.forName("com.tencent.rtmp.ITXLivePushListener");
-      parambhlg = new bhll(parambhlg);
-      parambhlg = Proxy.newProxyInstance(localClassLoader, new Class[] { localClass }, parambhlg);
-      return parambhlg;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("_accelerator_mode_", i | 0x2);
+      bhrb.a().a(localBundle);
     }
-    catch (ClassNotFoundException parambhlg)
-    {
-      QMLog.e("TXLivePushListenerRefle", "newInstance", parambhlg);
-    }
+  }
+  
+  protected List<WebViewPlugin> a()
+  {
     return null;
   }
   
-  public static Object a(bhlh parambhlh)
+  public void a(AppInterface arg1)
   {
-    try
-    {
-      ClassLoader localClassLoader = bhkx.class.getClassLoader();
-      Class localClass = Class.forName("com.tencent.rtmp.TXLivePusher$ITXSnapshotListener");
-      parambhlh = new bhli(parambhlh);
-      parambhlh = Proxy.newProxyInstance(localClassLoader, new Class[] { localClass }, parambhlh);
-      return parambhlh;
+    if (((!bhle.jdField_a_of_type_Boolean) && (bhle.a(???))) || ((!bhle.jdField_b_of_type_Boolean) && (bhle.b(???)))) {}
+    label182:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PreloadService", 2, "preload webview engine");
+          }
+          l1 = System.currentTimeMillis();
+          if (!bhle.a(???)) {
+            break label182;
+          }
+          bhle.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(???, null, null, a());
+        }
+        catch (Exception ???)
+        {
+          long l1;
+          long l2;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("PreloadService", 2, "preload error:" + ???.toString());
+          return;
+        }
+        synchronized (bhle.jdField_a_of_type_JavaLangObject)
+        {
+          bhle.jdField_a_of_type_JavaLangObject.notifyAll();
+          bhle.jdField_a_of_type_Boolean = true;
+          l2 = System.currentTimeMillis();
+          if (QLog.isColorLevel()) {
+            QLog.i("QQBrowser", 2, "Pre_Load_async_create_webview_engine, cost=" + (l2 - l1));
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("PreloadService", 2, "asyncPreload end");
+          }
+          return;
+        }
+        if (bhle.b(???))
+        {
+          bhle.jdField_b_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(???, null, null, a());
+          bhle.jdField_b_of_type_Boolean = true;
+        }
+      }
     }
-    catch (ClassNotFoundException parambhlh)
-    {
-      QMLog.e("TXLivePushListenerRefle", "newInstance", parambhlh);
-    }
-    return null;
+    QLog.d("PreloadService", 2, "async preload:already inited.");
   }
   
-  public static Object a(bhlj parambhlj)
+  public void a(AppInterface paramAppInterface, Context paramContext, long paramLong)
   {
-    try
-    {
-      ClassLoader localClassLoader = bhkx.class.getClassLoader();
-      Class localClass = Class.forName("com.tencent.rtmp.TXLivePusher$OnBGMNotify");
-      parambhlj = new bhlk(parambhlj);
-      parambhlj = Proxy.newProxyInstance(localClassLoader, new Class[] { localClass }, parambhlj);
-      return parambhlj;
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadService", 2, "asyncPreload app = " + paramAppInterface);
     }
-    catch (ClassNotFoundException parambhlj)
-    {
-      QMLog.e("TXLivePushListenerRefle", "newInstance", parambhlj);
+    if (paramAppInterface == null) {
+      return;
     }
-    return null;
+    a();
+    ThreadManager.postImmediately(new PreloadService.PreloadImpl.1(this, paramAppInterface), null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhlf
  * JD-Core Version:    0.7.0.1
  */

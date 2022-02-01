@@ -1,266 +1,243 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.WebViewProgressBar;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.ArrayList;
 
 public class bewj
 {
-  private byte jdField_a_of_type_Byte = -1;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bewl(this);
-  protected WebViewProgressBar a;
-  public boolean a;
-  private byte jdField_b_of_type_Byte = 6;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 255;
-  private boolean jdField_b_of_type_Boolean;
-  private float c;
-  private float d;
-  private float e;
+  public String a;
+  public ArrayList<bevy> a;
+  public String b;
+  public ArrayList<bevy> b;
+  public String c;
+  public ArrayList<bevy> c;
+  public String d;
+  public ArrayList<bevy> d;
+  public String e;
+  public String f;
+  public String g;
   
-  public bewj()
+  public bewj(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private long a(long paramLong)
-  {
-    long l = paramLong;
-    if (paramLong > 30L) {
-      l = 30L;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.e = paramString3;
+    this.jdField_c_of_type_JavaLangString = ChnToSpell.a(paramString2, 1).toLowerCase();
+    this.jdField_d_of_type_JavaLangString = ChnToSpell.a(paramString2, 2).toLowerCase();
+    this.f = ChnToSpell.a(paramString3, 1).toLowerCase();
+    this.g = ChnToSpell.a(paramString3, 2).toLowerCase();
+    int j;
+    int i;
+    int k;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = paramString2.trim();
+      j = paramString1.length();
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
+      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(j);
+      i = 0;
+      while (i < j)
+      {
+        k = paramString1.charAt(i);
+        if ((k >= 19968) && (k <= 40869))
+        {
+          paramString2 = paramString1.substring(i, i + 1);
+          this.jdField_a_of_type_JavaUtilArrayList.add(new bevy(paramContext, paramString2, ChnToSpell.a(paramString2, 1).toLowerCase()));
+          this.jdField_b_of_type_JavaUtilArrayList.add(new bevy(paramContext, paramString2, ChnToSpell.a(paramString2, 2).toLowerCase()));
+        }
+        i += 1;
+      }
     }
-    return l;
-  }
-  
-  public byte a()
-  {
-    return this.jdField_b_of_type_Byte;
-  }
-  
-  public float a()
-  {
-    return this.e;
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void a()
-  {
-    int j = bewk.a(0).b();
-    int i = j;
-    if (j <= 0) {
-      i = bewk.a(0).a();
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = paramString3.trim();
+      j = paramString1.length();
+      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(j);
+      this.jdField_d_of_type_JavaUtilArrayList = new ArrayList(j);
+      i = 0;
+      while (i < j)
+      {
+        k = paramString1.charAt(i);
+        if ((k >= 19968) && (k <= 40869))
+        {
+          paramString2 = paramString1.substring(i, i + 1);
+          this.jdField_c_of_type_JavaUtilArrayList.add(new bevy(paramContext, paramString2, ChnToSpell.a(paramString2, 1).toLowerCase()));
+          this.jdField_d_of_type_JavaUtilArrayList.add(new bevy(paramContext, paramString2, ChnToSpell.a(paramString2, 2).toLowerCase()));
+        }
+        i += 1;
+      }
     }
-    this.c = (20.0F / i);
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Byte = 0;
-    this.e = this.d;
-    this.jdField_b_of_type_Int = 255;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(0);
-    }
-    e();
   }
   
-  public void a(byte paramByte)
+  protected static final int a(int paramInt, String paramString, bewj parambewj)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
+    int i = -1;
+    if (paramInt == 5) {
+      i = parambewj.f.indexOf(paramString);
+    }
     do
     {
-      return;
-      switch (paramByte)
+      return i;
+      if (paramInt == 6) {
+        return parambewj.g.indexOf(paramString);
+      }
+      if (paramInt == 2) {
+        return parambewj.jdField_c_of_type_JavaLangString.indexOf(paramString);
+      }
+    } while (paramInt != 3);
+    return parambewj.jdField_d_of_type_JavaLangString.indexOf(paramString);
+  }
+  
+  protected static int a(int paramInt, ArrayList<bevy> paramArrayList)
+  {
+    int k = paramArrayList.size();
+    int i = 0;
+    int j = 0;
+    for (;;)
+    {
+      bevy localbevy;
+      if (i < k)
       {
-      default: 
-        return;
+        localbevy = (bevy)paramArrayList.get(i);
+        if (localbevy.jdField_a_of_type_Int + j <= paramInt) {}
       }
-    } while (this.jdField_a_of_type_Byte == 0);
-    this.jdField_a_of_type_Byte = 0;
-    a();
-    return;
-    b();
-    return;
-    if ((this.jdField_a_of_type_Byte == 0) || (this.jdField_a_of_type_Byte == 1)) {
-      c();
-    }
-    this.jdField_a_of_type_Byte = 2;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(WebViewProgressBar paramWebViewProgressBar)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = paramWebViewProgressBar;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean == this.jdField_a_of_type_Boolean) {}
-    while (paramBoolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_Byte != 2) {
-      a((byte)2);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(8);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public byte b()
-  {
-    return this.jdField_a_of_type_Byte;
-  }
-  
-  public void b()
-  {
-    bewk.a(0).a();
-    int j = bewk.a(1).b();
-    int i = j;
-    if (j <= 0) {
-      i = bewk.a(1).a();
-    }
-    this.c = (60.0F / i);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Byte = 2;
-    this.jdField_a_of_type_Byte = 1;
-    e();
-  }
-  
-  public void c()
-  {
-    bewk.a(1).a();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Byte = 5;
-    this.c = 0.1333333F;
-    if (this.jdField_b_of_type_Float <= 60.0F) {
-      this.c = ((40.0F + (60.0F - this.jdField_b_of_type_Float) * 0.5F) / 300.0F);
-    }
-    for (this.jdField_a_of_type_Float = 0.8166667F;; this.jdField_a_of_type_Float = (245.0F * this.c / (100.0F - this.jdField_b_of_type_Float)))
-    {
-      e();
-      return;
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_b_of_type_Byte = 6;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.d = ((int)(this.jdField_b_of_type_Float * this.jdField_a_of_type_Int / 100.0F));
-    this.jdField_b_of_type_Int = 255;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void e()
-  {
-    long l1;
-    if (this.jdField_b_of_type_Byte != 6)
-    {
-      l1 = System.currentTimeMillis();
-      if (this.jdField_b_of_type_Float < 100.0F) {
-        break label66;
+      else
+      {
+        return j;
       }
-      d();
+      j += localbevy.jdField_a_of_type_Int;
+      i += 1;
+    }
+  }
+  
+  protected static final int a(String paramString, bewj parambewj)
+  {
+    int j = 0;
+    int i;
+    if ((parambewj.f != null) && (parambewj.f.indexOf(paramString) > -1)) {
+      i = 5;
+    }
+    do
+    {
+      do
+      {
+        return i;
+        if ((parambewj.g != null) && (parambewj.g.indexOf(paramString) > -1)) {
+          return 6;
+        }
+        if ((parambewj.jdField_c_of_type_JavaLangString != null) && (parambewj.jdField_c_of_type_JavaLangString.indexOf(paramString) > -1)) {
+          return 2;
+        }
+        i = j;
+      } while (parambewj.jdField_d_of_type_JavaLangString == null);
+      i = j;
+    } while (parambewj.jdField_d_of_type_JavaLangString.indexOf(paramString) <= -1);
+    return 3;
+  }
+  
+  protected static final String a(int paramInt1, int paramInt2, String paramString, bewj parambewj)
+  {
+    String str = null;
+    if (paramInt1 == 5) {
+      parambewj = parambewj.jdField_c_of_type_JavaUtilArrayList;
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(200);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(200, 20L);
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.invalidate();
-      }
-      return;
-      label66:
-      long l2;
-      float f;
-      switch (this.jdField_b_of_type_Byte)
+      if (parambewj != null)
       {
-      default: 
-        break;
-      case 0: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        f = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
-        this.jdField_a_of_type_Long = l1;
-        if (this.jdField_b_of_type_Float >= 20.0F)
-        {
-          this.jdField_a_of_type_Long = l1;
-          this.jdField_b_of_type_Byte = 1;
-          this.c /= 5.0F;
-        }
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        break;
-      case 1: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        f = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
-        this.jdField_a_of_type_Long = l1;
-        if (this.jdField_b_of_type_Float >= 98.0F)
-        {
-          this.jdField_a_of_type_Long = l1;
-          this.jdField_b_of_type_Byte = 4;
-          this.jdField_b_of_type_Float = 98.0F;
-          this.c = 0.0F;
-        }
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        break;
-      case 2: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        f = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
-        this.jdField_a_of_type_Long = l1;
-        if (this.jdField_b_of_type_Float >= 80.0F)
-        {
-          this.jdField_a_of_type_Long = l1;
-          this.jdField_b_of_type_Byte = 3;
-          this.c /= 20.0F;
-        }
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        break;
-      case 3: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        f = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
-        this.jdField_a_of_type_Long = l1;
-        if (this.jdField_b_of_type_Float >= 98.0F)
-        {
-          this.jdField_a_of_type_Long = l1;
-          this.jdField_b_of_type_Byte = 4;
-          this.c = 0.0F;
-        }
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        break;
-      case 5: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        this.jdField_b_of_type_Float += (float)l2 * this.c;
-        this.jdField_a_of_type_Long = l1;
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        if (this.jdField_b_of_type_Boolean)
-        {
-          if (this.e >= this.jdField_a_of_type_Int) {
-            this.e = this.jdField_a_of_type_Int;
-          }
-        }
-        else
-        {
-          this.jdField_b_of_type_Int -= (int)((float)l2 * this.jdField_a_of_type_Float);
-          if (this.jdField_b_of_type_Int <= 0)
-          {
-            d();
-            this.jdField_b_of_type_Int = 0;
-          }
-        }
-        break;
-      case 4: 
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
+        paramInt1 = paramString.length();
+        str = a(a(paramInt2, parambewj), b(paramInt1 + paramInt2, parambewj), parambewj);
+      }
+      return str;
+      if (paramInt1 == 6) {
+        parambewj = parambewj.jdField_d_of_type_JavaUtilArrayList;
+      } else if (paramInt1 == 2) {
+        parambewj = parambewj.jdField_a_of_type_JavaUtilArrayList;
+      } else if (paramInt1 == 3) {
+        parambewj = parambewj.jdField_b_of_type_JavaUtilArrayList;
+      } else {
+        parambewj = null;
       }
     }
+  }
+  
+  public static String a(int paramInt1, int paramInt2, ArrayList<bevy> paramArrayList)
+  {
+    int m = paramArrayList.size();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    for (;;)
+    {
+      bevy localbevy;
+      if (i < m)
+      {
+        localbevy = (bevy)paramArrayList.get(i);
+        if (j == paramInt1) {
+          k = 1;
+        }
+        if (j != paramInt2) {}
+      }
+      else
+      {
+        return localStringBuilder.toString();
+      }
+      if (k != 0) {
+        localStringBuilder.append(localbevy.jdField_a_of_type_JavaLangString);
+      }
+      j += localbevy.jdField_a_of_type_Int;
+      i += 1;
+    }
+  }
+  
+  public static final String a(String paramString, bewj parambewj)
+  {
+    int i = a(paramString, parambewj);
+    int j = a(i, paramString, parambewj);
+    String str = null;
+    if (((j == 0) && (i == 5) && (paramString.equalsIgnoreCase(parambewj.f))) || ((i == 6) && (paramString.equalsIgnoreCase(parambewj.g)))) {
+      str = parambewj.e;
+    }
+    do
+    {
+      return str;
+      if (((j == 0) && (i == 2) && (paramString.equalsIgnoreCase(parambewj.jdField_c_of_type_JavaLangString))) || ((i == 3) && (paramString.equalsIgnoreCase(parambewj.jdField_d_of_type_JavaLangString)))) {
+        return parambewj.jdField_b_of_type_JavaLangString;
+      }
+    } while (j <= -1);
+    return a(i, j, paramString, parambewj);
+  }
+  
+  protected static int b(int paramInt, ArrayList<bevy> paramArrayList)
+  {
+    int k = paramArrayList.size();
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      j = ((bevy)paramArrayList.get(i)).jdField_a_of_type_Int + j;
+      if (j >= paramInt) {
+        return j;
+      }
+      i += 1;
+    }
+    return j;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      localStringBuilder.append("uin = " + this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_b_of_type_JavaLangString != null) {
+      localStringBuilder.append(", name = " + this.jdField_b_of_type_JavaLangString);
+    }
+    if (this.e != null) {
+      localStringBuilder.append(", remark = " + this.e);
+    }
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,57 +1,23 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auhi
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  public auhi(ForwardFileOption paramForwardFileOption) {}
   
-  public auhi(int paramInt1, String paramString1, String paramString2, MsgBackupUserData paramMsgBackupUserData, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public MsgBackupUserData a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupQryStateRsp--");
-    localStringBuilder.append(",state:").append(this.jdField_a_of_type_Int).append(",token:").append(this.jdField_a_of_type_JavaLangString).append(",encryptKey:").append(this.jdField_b_of_type_JavaLangString).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_b_of_type_Int);
-    return localStringBuilder.toString();
+    this.a.E();
+    ForwardFileOption.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auhi
  * JD-Core Version:    0.7.0.1
  */

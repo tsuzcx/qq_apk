@@ -1,134 +1,58 @@
-import android.graphics.Color;
-import android.util.SparseArray;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bdux
+  extends bduq
 {
-  public SparseArray<List<bduw>> a;
-  bduw a;
-  public List<bduw> a;
+  private boolean a;
   
-  public bdux()
+  bdux(bdup parambdup)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_Bduw = bduw.a();
+    super(parambdup);
+    this.jdField_a_of_type_JavaLangString = "SendMsgByServerStep";
   }
   
-  public bduw a(int paramInt)
+  protected boolean a()
   {
-    bduw localbduw1 = this.jdField_a_of_type_Bduw;
-    int m = Color.red(paramInt);
-    int n = Color.green(paramInt);
-    int i1 = Color.blue(paramInt);
-    paramInt = 128;
-    byte b = 1;
-    while (b <= 8)
-    {
-      int i;
-      int j;
-      label55:
-      int k;
-      label65:
-      bduw localbduw2;
-      boolean bool;
-      if ((m & paramInt) == 0)
-      {
-        i = 0;
-        if ((n & paramInt) != 0) {
-          break label247;
-        }
-        j = 0;
-        if ((i1 & paramInt) != 0) {
-          break label253;
-        }
-        k = 0;
-        i = i * 4 + j * 2 + k;
-        if (localbduw1.jdField_a_of_type_AndroidUtilSparseArray == null) {
-          localbduw1.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-        }
-        if (localbduw1.jdField_a_of_type_AndroidUtilSparseArray.get(i) == null)
-        {
-          localbduw2 = bduw.a(i, b);
-          localbduw1.jdField_a_of_type_AndroidUtilSparseArray.put(i, localbduw2);
-          if (b != 8) {
-            break label259;
-          }
-          bool = true;
-          label136:
-          localbduw2.jdField_a_of_type_Boolean = bool;
-          if (!localbduw2.jdField_a_of_type_Boolean) {
-            break label265;
-          }
-          this.jdField_a_of_type_JavaUtilList.add(localbduw2);
-        }
-      }
-      for (;;)
-      {
-        localbduw1 = (bduw)localbduw1.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (!localbduw1.jdField_a_of_type_Boolean) {
-          break label313;
-        }
-        localbduw1.jdField_a_of_type_Long += m;
-        localbduw1.b += n;
-        localbduw1.c += i1;
-        localbduw1.jdField_a_of_type_Int += 1;
-        return localbduw1;
-        i = 1;
-        break;
-        label247:
-        j = 1;
-        break label55;
-        label253:
-        k = 1;
-        break label65;
-        label259:
-        bool = false;
-        break label136;
-        label265:
-        if (this.jdField_a_of_type_AndroidUtilSparseArray.get(b) == null) {
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(b, new ArrayList());
-        }
-        ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(b)).add(localbduw2);
-      }
-      label313:
-      b = (byte)(b + 1);
-      paramInt >>= 1;
-    }
-    return localbduw1;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public void a()
+  protected void d()
   {
-    int i = 7;
-    while ((i > 0) && (((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).isEmpty())) {
-      i -= 1;
-    }
-    Object localObject = (List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "SendMsgByServerStep|process");
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      bduw localbduw = (bduw)((List)localObject).get(((List)localObject).size() - 1);
-      ((List)localObject).remove(localbduw);
-      i = 0;
-      while (i < 8)
-      {
-        localObject = (bduw)localbduw.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (localObject != null)
-        {
-          localbduw.jdField_a_of_type_Long += ((bduw)localObject).jdField_a_of_type_Long;
-          localbduw.b += ((bduw)localObject).b;
-          localbduw.c += ((bduw)localObject).c;
-          localbduw.jdField_a_of_type_Int += ((bduw)localObject).jdField_a_of_type_Int;
-          this.jdField_a_of_type_JavaUtilList.remove(localObject);
-        }
-        i += 1;
-      }
-      localbduw.jdField_a_of_type_AndroidUtilSparseArray.clear();
-      localbduw.jdField_a_of_type_AndroidUtilSparseArray = null;
-      localbduw.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaUtilList.add(localbduw);
+      f();
+      return;
     }
+    if (!nmd.a(this.jdField_b_of_type_Bdup.jdField_a_of_type_AndroidContentContext))
+    {
+      QLog.w("Q.share.ForwardSdkShareProcessor", 1, "SendMsgByServerStep|no network");
+      if ((bdup.a(this.jdField_b_of_type_Bdup) > 0) || (!bdup.b(this.jdField_b_of_type_Bdup).get()) || (!bdup.c(this.jdField_b_of_type_Bdup).get()) || (bdup.a(this.jdField_b_of_type_Bdup).jdField_a_of_type_Int != 1))
+      {
+        this.jdField_b_of_type_Bdup.b(9004, "no network");
+        c();
+        return;
+      }
+    }
+    if ((this.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn != null) && (this.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.a != null))
+    {
+      ayyu localayyu = new ayyu();
+      String str2 = (String)bdup.a(this.jdField_b_of_type_Bdup).get("audioUrl");
+      String str3 = bdup.a(this.jdField_b_of_type_Bdup);
+      String str1 = str2;
+      if (TextUtils.isEmpty(str2)) {
+        str1 = bdup.h(this.jdField_b_of_type_Bdup);
+      }
+      localayyu.jdField_a_of_type_JavaLangObject = new String[] { str3, str1 };
+      localayyu.jdField_a_of_type_Int = 0;
+      this.jdField_b_of_type_Bdup.jdField_a_of_type_Bdzn.a.b(localayyu);
+    }
+    this.jdField_a_of_type_Boolean = true;
+    b();
+    this.jdField_b_of_type_Bdup.e();
   }
 }
 

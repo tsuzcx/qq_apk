@@ -1,25 +1,31 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.widget.QQToast;
 
 class qgz
-  extends nac
+  implements tht
 {
-  qgz(qgy paramqgy, qgs paramqgs) {}
+  qgz(qgy paramqgy) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    QLog.i(qgy.a(), 1, "yyy_0xe1a error code = " + paramInt);
-    if (paramInt == 0)
+    if ((paramBoolean) && ((qgw.a(this.a.a) instanceof Activity)))
     {
-      qgy.a(this.jdField_a_of_type_Qgy, paramArrayOfByte, this.jdField_a_of_type_Qgs);
+      if (qgw.a(this.a.a) == null) {
+        qgw.a(this.a.a, new tbm());
+      }
+      qgw.a(this.a.a).a(qgy.a(this.a), qgy.a(this.a, paramInt), (Activity)qgw.a(this.a.a), "", "", paramString2, "", 0, "");
       return;
     }
-    this.jdField_a_of_type_Qgs.a(-1, false, "", "", false);
+    QQToast.a(qgw.a(this.a.a), 1, 2131717027, 0).a();
   }
+  
+  public void b(boolean paramBoolean, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qgz
  * JD-Core Version:    0.7.0.1
  */

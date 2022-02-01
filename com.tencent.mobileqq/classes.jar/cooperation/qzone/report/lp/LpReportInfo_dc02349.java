@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bjdm;
+import blru;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -30,7 +30,7 @@ public class LpReportInfo_dc02349
     for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
     {
       localHashMap.put("uin", str);
-      LpReportUtils.safePut(localHashMap, "qua", bjdm.a());
+      LpReportUtils.safePut(localHashMap, "qua", blru.a());
       localHashMap.put("downloadType", String.valueOf(this.downloadType));
       localHashMap.put("isHttp2", String.valueOf(this.isHttp2));
       localHashMap.put("retCode", String.valueOf(this.retCode));
@@ -72,7 +72,7 @@ public class LpReportInfo_dc02349
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc02349
  * JD-Core Version:    0.7.0.1
  */

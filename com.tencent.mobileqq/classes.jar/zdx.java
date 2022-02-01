@@ -1,225 +1,346 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin.PhoneInfo;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class zdx
-  extends apmh
+  extends zef
 {
-  public zdx(NewerGuidePlugin paramNewerGuidePlugin) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<zea> jdField_a_of_type_JavaUtilList;
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public zdx(Context paramContext, String paramString, int paramInt, @NonNull List<zea> paramList, QQAppInterface paramQQAppInterface)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == NewerGuidePlugin.a(this.a).key) && ("ipc_newer_guide".equals(paramBundle.getString("cmd")))) {}
+    super(paramContext, paramString, paramInt);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private zeb a(int paramInt)
+  {
+    int i = c();
+    if ((paramInt < 0) || (paramInt >= i)) {
+      throw new IllegalStateException("getViewType Exception, innerPos:" + paramInt + ",LineCount:" + i);
+    }
+    Object localObject1;
+    if (paramInt == 0)
+    {
+      localObject1 = new zeb(null);
+      ((zeb)localObject1).jdField_a_of_type_Int = 1;
+      return localObject1;
+    }
+    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+    i = 0;
+    if (((Iterator)localObject2).hasNext())
+    {
+      localObject1 = (zea)((Iterator)localObject2).next();
+      i += 1;
+      if (i == paramInt)
+      {
+        localObject2 = new zeb(null);
+        ((zeb)localObject2).jdField_a_of_type_Int = 2;
+        ((zeb)localObject2).jdField_a_of_type_Zea = ((zea)localObject1);
+        return localObject2;
+      }
+      if (!zea.a((zea)localObject1)) {
+        break label253;
+      }
+      if (paramInt <= ((zea)localObject1).a().size() + i)
+      {
+        localObject2 = (zdz)((zea)localObject1).a().get(paramInt - i - 1);
+        zeb localzeb = new zeb(null);
+        localzeb.jdField_a_of_type_Int = 3;
+        localzeb.jdField_a_of_type_Zea = ((zea)localObject1);
+        localzeb.jdField_a_of_type_Zdz = ((zdz)localObject2);
+        return localzeb;
+      }
+      i = ((zea)localObject1).a().size() + i;
+    }
+    label253:
     for (;;)
     {
-      Object localObject3;
-      int i;
-      Object localObject4;
-      Object localObject5;
-      try
-      {
-        localObject3 = paramBundle.getBundle("request");
-        ((Bundle)localObject3).setClassLoader(NewerGuidePlugin.RecommendedListResp.class.getClassLoader());
-        paramBundle = ((Bundle)localObject3).getString("key_action");
-        if (QLog.isColorLevel()) {
-          QLog.d("NewerGuidePlugin", 2, "onResponse action=" + paramBundle);
-        }
-        if ("uploadContacts".equals(paramBundle))
-        {
-          paramBundle = new JSONObject();
-          paramBundle.put("result", ((Bundle)localObject3).getInt("result"));
-          this.a.callJs("respUploadContacts", new String[] { paramBundle.toString() });
-          paramBundle = null;
-          if ((paramBundle == null) || (localObject1 == null)) {
-            break label1139;
-          }
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("uin", paramBundle);
-          ((JSONObject)localObject2).put("result", 0);
-          this.a.callJs((String)localObject1, new String[] { ((JSONObject)localObject2).toString() });
-          return;
-        }
-        if ("getRecommendedList".equals(paramBundle))
-        {
-          paramBundle = new JSONObject();
-          localObject2 = ((Bundle)localObject3).getString("op_result");
-          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            paramBundle.put("result", new JSONArray((String)localObject2));
-          }
-          this.a.callJs("respRecommend", new String[] { paramBundle.toString() });
-          paramBundle = null;
-          continue;
-        }
-        if (!"getRecommendedListNew".equals(paramBundle)) {
-          break label552;
-        }
-        localObject2 = (NewerGuidePlugin.RecommendedListResp)((Bundle)localObject3).getParcelable("result");
-        if (localObject2 == null)
-        {
-          i = -1;
-          paramBundle = new JSONObject();
-          paramBundle.put("result", i);
-          if (i != 0) {
-            break label522;
-          }
-          paramBundle.put("uint32_end", ((NewerGuidePlugin.RecommendedListResp)localObject2).b);
-          paramBundle.put("uint32_next_index", ((NewerGuidePlugin.RecommendedListResp)localObject2).jdField_a_of_type_Long);
-          localObject4 = ((NewerGuidePlugin.RecommendedListResp)localObject2).jdField_a_of_type_JavaUtilList;
-          if ((localObject4 == null) || (((List)localObject4).isEmpty())) {
-            break label522;
-          }
-          localObject2 = new JSONArray();
-          localObject4 = ((List)localObject4).iterator();
-          if (!((Iterator)localObject4).hasNext()) {
-            break label513;
-          }
-          localObject5 = (NewerGuidePlugin.PhoneInfo)((Iterator)localObject4).next();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("str_phone", ((NewerGuidePlugin.PhoneInfo)localObject5).a);
-          localJSONObject.put("str_nick", ((NewerGuidePlugin.PhoneInfo)localObject5).b);
-          localJSONObject.put("str_long_nick", ((NewerGuidePlugin.PhoneInfo)localObject5).c);
-          localJSONObject.put("str_head_url", ((NewerGuidePlugin.PhoneInfo)localObject5).d);
-          ((JSONArray)localObject2).put(localJSONObject);
-          continue;
-        }
-        i = ((NewerGuidePlugin.RecommendedListResp)localObject2).jdField_a_of_type_Int;
+      break;
+      throw new IllegalStateException("can not find item with innerPos:" + paramInt);
+    }
+  }
+  
+  private void a(View paramView)
+  {
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131364225);
+    Object localObject = (ImageView)paramView.findViewById(2131364235);
+    TextView localTextView = (TextView)paramView.findViewById(2131364232);
+    paramView = paramView.findViewById(2131364226);
+    localTextView.setText(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      ((ImageView)localObject).setVisibility(0);
+      localObject = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+      if (!this.b) {
+        break label138;
       }
-      catch (Exception paramBundle)
-      {
-        QLog.d("NewerGuidePlugin", 1, "mOnRemoteResp fail", paramBundle);
-        return;
+      localCheckBox.setChecked(true);
+    }
+    for (((RelativeLayout.LayoutParams)localObject).leftMargin = zlx.a(this.jdField_a_of_type_AndroidContentContext, 32.0F);; ((RelativeLayout.LayoutParams)localObject).leftMargin = 0)
+    {
+      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      int i = -2170912;
+      QQStoryContext.a();
+      if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+        i = -16444373;
       }
-      continue;
-      label513:
-      paramBundle.put("phoneAddrBook", localObject2);
-      label522:
-      this.a.callJs(((Bundle)localObject3).getString("callback"), new String[] { paramBundle.toString() });
-      paramBundle = null;
-      continue;
-      label552:
-      if ("sayHi".equals(paramBundle))
+      paramView.setBackgroundColor(i);
+      return;
+      ((ImageView)localObject).setVisibility(4);
+      break;
+      label138:
+      localCheckBox.setChecked(false);
+    }
+  }
+  
+  private void a(View paramView, zea paramzea)
+  {
+    TextView localTextView1 = (TextView)paramView.findViewById(2131367657);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131367659);
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131367630);
+    paramView = (CheckBox)paramView.findViewById(2131367632);
+    localTextView1.setText(paramzea.a.group_name);
+    localTextView2.setText(String.format("(%s/%s)", new Object[] { Integer.valueOf(paramzea.a()), Integer.valueOf(paramzea.b()) }));
+    if (paramzea.b() == 0)
+    {
+      paramView.setVisibility(4);
+      if (!paramzea.a()) {
+        break label146;
+      }
+      paramView.setChecked(true);
+      label111:
+      if (!zea.a(paramzea)) {
+        break label154;
+      }
+      localCheckBox.setChecked(true);
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(new zdy(this, paramzea));
+      return;
+      paramView.setVisibility(0);
+      break;
+      label146:
+      paramView.setChecked(false);
+      break label111;
+      label154:
+      localCheckBox.setChecked(false);
+    }
+  }
+  
+  private void a(View paramView, zea paramzea, zdz paramzdz)
+  {
+    ImageView localImageView = (ImageView)paramView.findViewById(2131367182);
+    Object localObject1 = (TextView)paramView.findViewById(2131367202);
+    Object localObject2 = (CheckBox)paramView.findViewById(2131367165);
+    paramView = paramView.findViewById(2131367164);
+    ((TextView)localObject1).setText(paramzdz.jdField_a_of_type_ComTencentMobileqqDataFriends.remark);
+    if (paramzdz.jdField_a_of_type_Boolean)
+    {
+      ((CheckBox)localObject2).setChecked(true);
+      localObject1 = bgmo.b();
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+        break label226;
+      }
+      localObject2 = aoch.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramzdz.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, 3, (Drawable)localObject1, (Drawable)localObject1);
+      if (localObject2 == null) {
+        break label207;
+      }
+      localImageView.setImageDrawable((Drawable)localObject2);
+    }
+    for (;;)
+    {
+      paramView.setVisibility(4);
+      if (this.jdField_a_of_type_JavaUtilList.indexOf(paramzea) == this.jdField_a_of_type_JavaUtilList.size() - 1)
       {
-        paramBundle = ((Bundle)localObject3).getString("uin");
-        localObject1 = ((Bundle)localObject3).getByteArray("sig");
-        localObject4 = ((Bundle)localObject3).getString("nick");
-        localObject3 = ((Bundle)localObject3).getString("tinyId");
-        if ((!TextUtils.isEmpty(paramBundle)) && (localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject4)))
+        paramzea = paramzea.a();
+        if (paramzea.indexOf(paramzdz) == paramzea.size() - 1)
         {
-          localObject5 = new Intent(this.a.mRuntime.a(), ChatActivity.class);
-          ((Intent)localObject5).addFlags(67108864);
-          ((Intent)localObject5).putExtra("uin", paramBundle);
-          ((Intent)localObject5).putExtra("uintype", 1001);
-          ((Intent)localObject5).putExtra("aio_msg_source", 999);
-          ((Intent)localObject5).putExtra("rich_accost_sig", (byte[])localObject1);
-          ((Intent)localObject5).putExtra("uinname", (String)localObject4);
-          ((Intent)localObject5).putExtra("from_newer_guide", true);
-          ((Intent)localObject5).putExtra("tinyId", (String)localObject3);
-          this.a.startActivityForResult((Intent)localObject5, (byte)8);
-          paramBundle = null;
-          localObject1 = localObject2;
-        }
-        else
-        {
-          localObject1 = String.valueOf(localObject3);
-          paramBundle = "respSayHi";
+          int i = -2170912;
+          QQStoryContext.a();
+          if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+            i = -16444373;
+          }
+          paramView.setBackgroundColor(i);
+          paramView.setVisibility(0);
         }
       }
-      else
-      {
-        if ("joinTroop".equals(paramBundle))
-        {
-          paramBundle = ((Bundle)localObject3).getString("uin");
-          localObject2 = ((Bundle)localObject3).getString("name");
-          short s = ((Bundle)localObject3).getShort("option");
-          localObject4 = ((Bundle)localObject3).getString("question");
-          localObject5 = ((Bundle)localObject3).getString("answer");
-          localObject3 = ((Bundle)localObject3).getString("authSig");
-          if (s == 0) {
-            break label1153;
-          }
-          paramBundle = AddFriendLogicActivity.a(this.a.mRuntime.a(), paramBundle, (String)localObject2, s, 1, (String)localObject4, (String)localObject5, null, null, (String)localObject3);
-          paramBundle.putExtra("from_newer_guide", true);
-          this.a.startActivityForResult(paramBundle, (byte)6);
-          paramBundle = null;
-          continue;
-        }
-        if ("joinTroopByTap".equals(paramBundle))
-        {
-          i = ((Bundle)localObject3).getInt("result");
-          paramBundle = ((Bundle)localObject3).getString("uin");
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("uin", paramBundle);
-          ((JSONObject)localObject2).put("result", i);
-          this.a.callJs("respTroopByTap", new String[] { ((JSONObject)localObject2).toString() });
-          paramBundle = null;
-          continue;
-        }
-        if ("followPublicAccount".equals(paramBundle))
-        {
-          i = ((Bundle)localObject3).getInt("result");
-          paramBundle = ((Bundle)localObject3).getString("uin");
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("uin", paramBundle);
-          ((JSONObject)localObject2).put("result", i);
-          this.a.callJs("respFollow", new String[] { ((JSONObject)localObject2).toString() });
-          paramBundle = null;
-          continue;
-        }
-        if (!"setAvatar".equals(paramBundle)) {
-          break label1161;
-        }
-        if (((Bundle)localObject3).getInt("result") == 1)
-        {
-          paramBundle = ((Bundle)localObject3).getString("path");
-          NewerGuidePlugin.a(this.a, true, paramBundle);
-        }
-        while (NewerGuidePlugin.a(this.a) != null)
-        {
-          NewerGuidePlugin.a(this.a).dismiss();
-          break;
-          paramBundle = this.a.mRuntime.a();
-          i = paramBundle.getResources().getDimensionPixelSize(2131298914);
-          QQToast.a(paramBundle, 1, alud.a(2131707820), 0).b(i);
-        }
-        label1139:
-        return;
+      return;
+      ((CheckBox)localObject2).setChecked(false);
+      break;
+      label207:
+      yqp.e("Q.qqstory.publish.edit.ComplexPart", "FaceDrawable is null.");
+      localImageView.setImageDrawable((Drawable)localObject1);
+      continue;
+      label226:
+      yqp.e("Q.qqstory.publish.edit.ComplexPart", "QQAppInterface is null.");
+      localImageView.setImageDrawable((Drawable)localObject1);
+    }
+  }
+  
+  private void a(zeb paramzeb)
+  {
+    boolean bool;
+    if (this.jdField_a_of_type_Boolean) {
+      if (!this.b) {
+        bool = true;
       }
-      localObject2 = paramBundle;
-      paramBundle = (Bundle)localObject1;
-      localObject1 = localObject2;
-      continue;
-      label1153:
-      localObject1 = "respTroop";
-      continue;
-      label1161:
-      paramBundle = null;
+    }
+    for (this.b = bool;; this.b = true)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+      bool = false;
+      break;
+    }
+  }
+  
+  private void b(zeb paramzeb)
+  {
+    paramzeb.jdField_a_of_type_Zea.a();
+  }
+  
+  private int c()
+  {
+    if (!this.b) {
+      return 1;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 1;
+    if (localIterator.hasNext())
+    {
+      zea localzea = (zea)localIterator.next();
+      List localList = localzea.a();
+      i += 1;
+      if (!zea.a(localzea)) {
+        break label72;
+      }
+      i = localList.size() + i;
+    }
+    label72:
+    for (;;)
+    {
+      break;
+      return i;
+    }
+  }
+  
+  private void c(zeb paramzeb)
+  {
+    paramzeb.jdField_a_of_type_Zea.a(paramzeb.jdField_a_of_type_Zdz);
+  }
+  
+  public int a()
+  {
+    return c();
+  }
+  
+  public int a(int paramInt)
+  {
+    return a(paramInt).jdField_a_of_type_Int;
+  }
+  
+  public View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    switch (a(paramInt).jdField_a_of_type_Int)
+    {
+    default: 
+      return null;
+    case 1: 
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561756, null);
+    case 2: 
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561758, null);
+    }
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561757, null);
+  }
+  
+  @NonNull
+  public List<zdz> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.addAll(((zea)localIterator.next()).b());
+    }
+    return localArrayList;
+  }
+  
+  public void a(int paramInt)
+  {
+    zeb localzeb = a(paramInt);
+    switch (localzeb.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 1: 
+      a(localzeb);
+      return;
+    case 2: 
+      b(localzeb);
+      return;
+    }
+    c(localzeb);
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    zeb localzeb = a(paramInt);
+    switch (localzeb.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramView);
+      return;
+    case 2: 
+      a(paramView, localzeb.jdField_a_of_type_Zea);
+      return;
+    }
+    a(paramView, localzeb.jdField_a_of_type_Zea, localzeb.jdField_a_of_type_Zdz);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator1.hasNext())
+    {
+      zea localzea = (zea)localIterator1.next();
+      Iterator localIterator2 = localzea.a().iterator();
+      while (localIterator2.hasNext())
+      {
+        zdz localzdz = (zdz)localIterator2.next();
+        if (paramList.contains(localzdz.a())) {
+          localzea.b(localzdz);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zdx
  * JD-Core Version:    0.7.0.1
  */

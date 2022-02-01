@@ -1,12 +1,70 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
-public abstract interface bday
+public class bday
+  extends bcvs
 {
-  public abstract void a(AppInterface paramAppInterface, FaceInfo paramFaceInfo);
+  public int o;
   
-  public abstract void a(FaceInfo paramFaceInfo, Bitmap paramBitmap);
+  public bday()
+  {
+    this.a = "type";
+  }
+  
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return "type";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.o = paramObjectInput.readInt();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.o);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "type");
+    paramXmlSerializer.text(this.o + "");
+    paramXmlSerializer.endTag(null, "type");
+  }
+  
+  public boolean a(bcxj parambcxj)
+  {
+    if (parambcxj == null) {
+      return false;
+    }
+    try
+    {
+      this.o = Integer.valueOf(bbzj.a(bcwd.a(parambcxj), false)).intValue();
+      return true;
+    }
+    catch (Exception parambcxj)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("StructMsgItemType", 2, parambcxj, new Object[0]);
+        }
+      }
+    }
+  }
 }
 
 

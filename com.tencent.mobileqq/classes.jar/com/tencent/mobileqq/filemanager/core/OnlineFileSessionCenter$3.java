@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqyj;
+import atey;
 
 public class OnlineFileSessionCenter$3
   implements Runnable
 {
-  public OnlineFileSessionCenter$3(aqyj paramaqyj, int paramInt) {}
+  public OnlineFileSessionCenter$3(atey paramatey, int paramInt) {}
   
   public void run()
   {

@@ -1,24 +1,46 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
+import com.tencent.biz.qqcircle.widgets.QCircleFolderTabViewPager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class vnl
-  implements ViewTreeObserver.OnPreDrawListener
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public vnl(StoryPlayerActivity paramStoryPlayerActivity, View paramView) {}
+  public vnl(QCirclePersonalBottomView paramQCirclePersonalBottomView) {}
   
-  public boolean onPreDraw()
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    vrz.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity.a, new vnm(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    if (QCirclePersonalBottomView.a(this.a).getId() == paramInt)
+    {
+      QCirclePersonalBottomView.a(this.a).setCurrentItem(0);
+      QCirclePersonalBottomView.a(this.a, 0);
+      QCirclePersonalBottomView.a(this.a, 19, 6);
+    }
+    for (;;)
+    {
+      this.a.a();
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      if (QCirclePersonalBottomView.b(this.a).getId() == paramInt)
+      {
+        QCirclePersonalBottomView.a(this.a).setCurrentItem(1);
+        QCirclePersonalBottomView.a(this.a, 1);
+        QCirclePersonalBottomView.a(this.a, 20, 2);
+      }
+      else if (QCirclePersonalBottomView.c(this.a).getId() == paramInt)
+      {
+        QCirclePersonalBottomView.a(this.a).setCurrentItem(2);
+        QCirclePersonalBottomView.a(this.a, 2);
+        QCirclePersonalBottomView.a(this.a, 21, 2);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vnl
  * JD-Core Version:    0.7.0.1
  */

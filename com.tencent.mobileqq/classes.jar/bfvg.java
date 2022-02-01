@@ -1,89 +1,34 @@
-import com.tencent.common.app.AppInterface;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
 
 public class bfvg
-  extends bfve
+  extends Handler
 {
-  private static bfvg jdField_a_of_type_Bfvg;
-  private int jdField_a_of_type_Int;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  
-  public static bfvg a()
+  public bfvg(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
   {
-    if (jdField_a_of_type_Bfvg == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bfvg == null) {
-        jdField_a_of_type_Bfvg = new bfvg();
-      }
-      return jdField_a_of_type_Bfvg;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((AvatarWallViewPager.a(this.a)) || (!AvatarWallViewPager.b(this.a))) {}
+    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount() <= 1) {
+      return;
     }
-    finally {}
-  }
-  
-  protected long a()
-  {
-    long l = 0L;
-    if (this.jdField_a_of_type_MqqAppAppRuntime != null) {
-      l = this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin();
-    }
-    return l;
-  }
-  
-  public void a(AppRuntime paramAppRuntime)
-  {
-    int i = 0;
-    if ((paramAppRuntime instanceof AppInterface)) {
-      i = ((AppInterface)paramAppRuntime).getAppid();
-    }
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_Int = i;
-  }
-  
-  protected void b()
-  {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bfvi.class);
-    localNewIntent.putExtra("req_type", 5);
-    localNewIntent.putExtra("app_id", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
-  }
-  
-  protected void g(byte[] paramArrayOfByte)
-  {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bfvi.class);
-    localNewIntent.putExtra("req_type", 6);
-    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
-  }
-  
-  protected void h(byte[] paramArrayOfByte)
-  {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bfvi.class);
-    localNewIntent.putExtra("req_type", 2);
-    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
-  }
-  
-  protected void i(byte[] paramArrayOfByte)
-  {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bfvi.class);
-    localNewIntent.putExtra("req_type", 3);
-    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
-  }
-  
-  protected void j(byte[] paramArrayOfByte)
-  {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), bfvi.class);
-    localNewIntent.putExtra("req_type", 4);
-    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+    paramMessage = this.a;
+    paramMessage.b += 1;
+    this.a.b %= this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.b, true);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfvg
  * JD-Core Version:    0.7.0.1
  */

@@ -10,18 +10,18 @@ final class FlutterNativeView$EngineLifecycleListenerImpl
   
   public void onPreEngineRestart()
   {
-    if (FlutterNativeView.access$200(this.this$0) != null) {
-      FlutterNativeView.access$200(this.this$0).resetAccessibilityTree();
+    if (FlutterNativeView.access$000(this.this$0) != null) {
+      FlutterNativeView.access$000(this.this$0).resetAccessibilityTree();
     }
-    if (FlutterNativeView.access$300(this.this$0) == null) {
+    if (FlutterNativeView.access$200(this.this$0) == null) {
       return;
     }
-    FlutterNativeView.access$300(this.this$0).onPreEngineRestart();
+    FlutterNativeView.access$200(this.this$0).onPreEngineRestart();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.view.FlutterNativeView.EngineLifecycleListenerImpl
  * JD-Core Version:    0.7.0.1
  */

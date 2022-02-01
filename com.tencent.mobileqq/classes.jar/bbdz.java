@@ -1,12 +1,8 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 
-class bbdz
-  implements View.OnClickListener
+public abstract interface bbdz
 {
-  bbdz(bbdw parambbdw) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a(View paramView, int paramInt);
 }
 
 

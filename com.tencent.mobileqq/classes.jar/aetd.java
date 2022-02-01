@@ -1,22 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aetd
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bbad
 {
-  public aetd(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
+  public aetd(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f < 0.5F)
-    {
-      this.a.c.setAlpha(1.0F - f * 2.0F);
-      return;
+    PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean);
+  }
+  
+  public void b(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == -1) {
+      PermisionPrivacyActivity.a(this.a, 2131717834);
     }
-    this.a.c.setAlpha(f * 2.0F - 1.0F);
+    PermisionPrivacyActivity.a(this.a, this.a.h.a(), PermisionPrivacyActivity.a(this.a).b());
   }
 }
 

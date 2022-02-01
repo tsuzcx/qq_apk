@@ -1,40 +1,31 @@
-import android.content.res.Resources;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 
-final class autg
-  implements URLDrawable.URLDrawableListener
+public class autg
 {
-  autg(Resources paramResources, ImageView paramImageView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public static String a(MessageRecord paramMessageRecord)
   {
-    if (paramURLDrawable != null)
-    {
-      int i = aepi.a(21.0F, this.jdField_a_of_type_AndroidContentResResources);
-      int j = paramURLDrawable.getIntrinsicWidth() * i / paramURLDrawable.getIntrinsicHeight();
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      localLayoutParams.height = i;
-      localLayoutParams.width = j;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    TinyInfo localTinyInfo = new TinyInfo();
+    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
+    if (paramMessageRecord.isSend()) {
+      return localTinyInfo.fromRoleId;
     }
+    return localTinyInfo.toRoleId;
+  }
+  
+  public static String b(MessageRecord paramMessageRecord)
+  {
+    TinyInfo localTinyInfo = new TinyInfo();
+    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
+    if (paramMessageRecord.isSend()) {
+      return localTinyInfo.toRoleId;
+    }
+    return localTinyInfo.fromRoleId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     autg
  * JD-Core Version:    0.7.0.1
  */

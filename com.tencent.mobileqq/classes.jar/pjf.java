@@ -1,37 +1,70 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pjf
-  implements View.OnClickListener
+public class pjf
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pjf(pja parampja, ArticleInfo paramArticleInfo) {}
-  
-  public void onClick(View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    int i = 0;
-    nxu.a(pja.a(this.jdField_a_of_type_Pja), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
-    }
-    try
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoColumnHandler", 1, "[onReceiveConfig] " + paramString);
+    for (;;)
     {
-      paramView = new JSONObject();
-      paramView.put("feeds_channel_entrance", i);
-      nrt.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
-      return;
+      String str1;
+      String str2;
+      try
+      {
+        paramString = phv.a(paramString);
+        Iterator localIterator = paramString.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          str1 = (String)localIterator.next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.isEmpty(str2)) {
+            break label209;
+          }
+          QLog.d("VideoColumnHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+          if (TextUtils.equals(str1, "video_channel_feeds_type")) {
+            bmqa.a(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoColumnHandler", 2, "error in parse video_feeds_Type config: " + paramString.getMessage());
+        }
+      }
+      if (TextUtils.equals(str1, "multi_video_feeds_type"))
+      {
+        bmqa.b(Integer.parseInt(str2));
+        continue;
+        label209:
+        QLog.d("VideoColumnHandler", 2, "key: " + str1 + " of value is null");
+      }
     }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bmqa.a(1);
+    bmqa.b(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pjf
  * JD-Core Version:    0.7.0.1
  */

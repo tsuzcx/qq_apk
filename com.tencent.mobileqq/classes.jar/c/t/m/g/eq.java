@@ -1,172 +1,259 @@
 package c.t.m.g;
 
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.map.geolocation.internal.TencentLogImpl;
-import com.tencent.tencentmap.lbssdk.service.e;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.concurrent.LinkedBlockingQueue;
+import com.tencent.map.geolocation.TencentLocation;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
-final class eq
+public final class eq
 {
-  final LinkedBlockingQueue<eq.a> a;
-  final ea b;
-  long c;
-  long d;
-  long e;
-  long f;
-  volatile boolean g;
-  long h;
+  private int a = 10;
+  private int b = 4;
+  private LinkedList<eq.a> c = new LinkedList();
+  private dw d = new dw();
   
-  eq(ea paramea)
+  private boolean a(eq.a parama, ea paramea)
   {
-    this.b = paramea;
-    this.a = new LinkedBlockingQueue(3);
-  }
-  
-  static String a(byte[] paramArrayOfByte, int paramInt)
-  {
-    if ((!TencentLogImpl.isDebugEnabled()) && (paramArrayOfByte != null)) {}
-    try
+    if (paramea != null) {}
+    for (;;)
     {
-      if (e.o(paramArrayOfByte, 1) < 0) {
-        return eh.a(paramInt, 0);
+      int i;
+      boolean bool;
+      try
+      {
+        if (this.c != null)
+        {
+          i = this.c.size();
+          if (i != 0) {}
+        }
+        else
+        {
+          bool = true;
+          return bool;
+        }
+        if (parama.d == 3)
+        {
+          bool = true;
+          continue;
+        }
+        if ((parama.d == 1) && (!fq.a(paramea)) && (!fq.b(paramea)))
+        {
+          bool = true;
+          continue;
+        }
+        if (parama.c - ((eq.a)this.c.getLast()).c > 120000L)
+        {
+          this.c.clear();
+          bool = true;
+          continue;
+        }
+        if (this.c.size() < this.b) {
+          break label314;
+        }
+        i = 1;
+        if (i != 0)
+        {
+          i = 0;
+          int j = 0;
+          double d2 = 0.0D;
+          double d1 = 0.0D;
+          paramea = this.c.listIterator(this.c.size());
+          if (paramea.hasPrevious())
+          {
+            eq.a locala = (eq.a)paramea.previous();
+            d1 = fp.a(locala.a, locala.b, parama.a, parama.b) / ((Math.abs(locala.c - parama.c) + 1L) / 1000.0D);
+            d2 += d1;
+            if (d1 <= 50.0D) {
+              break label299;
+            }
+            i += 1;
+            j += 1;
+            if (j <= this.b) {
+              break label296;
+            }
+            break label302;
+            el.b().a(1, d2 / j, d1, parama.c);
+          }
+        }
+        else
+        {
+          bool = true;
+          continue;
+        }
       }
-      paramArrayOfByte = eh.a(paramInt, 1);
-      return paramArrayOfByte;
+      finally {}
+      label296:
+      continue;
+      label299:
+      continue;
+      label302:
+      if (i > 1)
+      {
+        bool = false;
+        continue;
+        label314:
+        i = 0;
+      }
     }
-    catch (UnsatisfiedLinkError paramArrayOfByte) {}
-    return null;
-  }
-  
-  /* Error */
-  private static byte[] a(byte[] paramArrayOfByte)
-  {
-    // Byte code:
-    //   0: new 59	java/io/ByteArrayOutputStream
-    //   3: dup
-    //   4: aload_0
-    //   5: arraylength
-    //   6: invokespecial 60	java/io/ByteArrayOutputStream:<init>	(I)V
-    //   9: astore_1
-    //   10: new 62	java/util/zip/GZIPOutputStream
-    //   13: dup
-    //   14: aload_1
-    //   15: invokespecial 65	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   18: astore_2
-    //   19: aload_2
-    //   20: aload_0
-    //   21: invokevirtual 69	java/util/zip/GZIPOutputStream:write	([B)V
-    //   24: aload_2
-    //   25: invokevirtual 72	java/util/zip/GZIPOutputStream:close	()V
-    //   28: aload_1
-    //   29: invokevirtual 76	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   32: astore_0
-    //   33: aload_1
-    //   34: invokevirtual 77	java/io/ByteArrayOutputStream:close	()V
-    //   37: aload_0
-    //   38: areturn
-    //   39: astore_1
-    //   40: aconst_null
-    //   41: astore_0
-    //   42: aload_1
-    //   43: invokevirtual 80	java/lang/Exception:printStackTrace	()V
-    //   46: aload_0
-    //   47: areturn
-    //   48: astore_1
-    //   49: aconst_null
-    //   50: astore_0
-    //   51: aload_1
-    //   52: invokevirtual 81	java/lang/Error:printStackTrace	()V
-    //   55: aload_0
-    //   56: areturn
-    //   57: astore_1
-    //   58: goto -7 -> 51
-    //   61: astore_1
-    //   62: goto -20 -> 42
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	65	0	paramArrayOfByte	byte[]
-    //   9	25	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   39	4	1	localException1	Exception
-    //   48	4	1	localError1	Error
-    //   57	1	1	localError2	Error
-    //   61	1	1	localException2	Exception
-    //   18	7	2	localGZIPOutputStream	java.util.zip.GZIPOutputStream
-    // Exception table:
-    //   from	to	target	type
-    //   0	33	39	java/lang/Exception
-    //   0	33	48	java/lang/Error
-    //   33	37	57	java/lang/Error
-    //   33	37	61	java/lang/Exception
-  }
-  
-  private void b()
-  {
-    this.c = 0L;
-    this.d = 0L;
-    this.e = 0L;
-    this.f = 0L;
   }
   
   public final void a()
   {
-    if (!this.g) {
+    try
+    {
+      this.c.clear();
+      this.d.a();
       return;
     }
-    this.g = false;
-    this.a.clear();
-    this.a.offer(eq.a.d);
-    this.h = 0L;
-    if (this.f != 0L)
+    finally
     {
-      long l1 = SystemClock.elapsedRealtime();
-      long l2 = this.f;
-      String.format(Locale.ENGLISH, "shutdown: duration=%ds, sent=%dB, recv=%dB, reqCount=%d", new Object[] { Long.valueOf((l1 - l2) / 1000L), Long.valueOf(this.d), Long.valueOf(this.e), Long.valueOf(this.c) });
+      localObject = finally;
+      throw localObject;
     }
-    b();
   }
   
-  final void a(eq.a parama)
+  public final void a(fi paramfi)
   {
-    eq.a.d(parama);
-    Iterator localIterator = this.a.iterator();
-    do
+    label1206:
+    for (;;)
     {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-    } while (eq.a.c((eq.a)localIterator.next()) != eq.a.c(parama));
-    for (int i = 1;; i = 0)
-    {
-      if ((eq.a.e(parama) > 0) && (i == 0) && (eq.a.c(parama) != 2))
+      dw localdw;
+      double d2;
+      double d3;
+      double d1;
+      long l3;
+      try
       {
-        new StringBuilder("retryIfNeed: times=").append(eq.a.e(parama));
-        this.a.offer(parama);
+        if (paramfi.getProvider().equalsIgnoreCase("gps"))
+        {
+          boolean bool = da.a().d("gps_kalman");
+          if (!bool) {
+            return;
+          }
+        }
+        if ((this.c == null) || ((this.c != null) && (this.c.size() == 0))) {
+          continue;
+        }
+        localdw = this.d;
+        d2 = paramfi.getLatitude();
+        d3 = paramfi.getLongitude();
+        d1 = paramfi.getAccuracy();
+        l3 = paramfi.getTime();
+        if (d1 >= 1.0D) {
+          break label1206;
+        }
+        d1 = 1.0D;
+        new StringBuilder("lat_me:").append(d2).append(",lng_me:").append(d3).append(",accuracy:").append(d1).append(",time:").append(l3).append(",lat:").append(localdw.d).append(",lng:").append(localdw.e);
+        if (l3 - localdw.c >= 20000L)
+        {
+          localdw.a();
+          new StringBuilder("Time:").append(l3).append(",last_time:").append(localdw.c);
+        }
+        localdw.a = ((float)(Math.abs(d2 - localdw.d) * 1000000.0D));
+        localdw.b = ((float)(Math.abs(d3 - localdw.e) * 1000000.0D));
+        new StringBuilder("Q:").append(localdw.a).append(",QLng:").append(localdw.b);
+        if (localdw.f < 0.0D)
+        {
+          localdw.c = l3;
+          localdw.d = d2;
+          localdw.e = d3;
+          localdw.f = (d1 * d1);
+          d1 = this.d.d;
+          d2 = this.d.e;
+          paramfi.b.a = (Math.round(d1 * 1000000.0D) / 1000000.0D);
+          paramfi.b.b = (Math.round(d2 * 1000000.0D) / 1000000.0D);
+          continue;
+        }
+        l2 = l3 - localdw.c;
       }
-      return;
+      finally {}
+      long l2;
+      long l1 = l2;
+      if (l2 < 1000L) {
+        l1 = 1000L;
+      }
+      if (l1 > 0L)
+      {
+        localdw.f += l1;
+        localdw.g += l1;
+      }
+      double d4 = localdw.f / (localdw.f + d1 * d1 + localdw.a * 5.0F);
+      double d5 = localdw.g / (localdw.g + d1 * d1 + localdw.b * 5.0F);
+      new StringBuilder("K:").append(d4).append(",KLng:").append(d5);
+      if ((d4 >= 0.4D) && (d5 >= 0.4D))
+      {
+        double d6 = localdw.d;
+        if (((localdw.h > 0.0D) && (d2 - localdw.d > 0.0D)) || ((localdw.h < 0.0D) && (d2 - localdw.d < 0.0D))) {
+          localdw.d += localdw.h * (l1 / 1000L);
+        }
+        localdw.d += (d2 - localdw.d) * d4;
+        new StringBuilder("lat:").append(localdw.d).append(",tmp:").append(d6).append(",timeInc:").append(l1);
+        localdw.h = ((localdw.d - d6) / (l1 / 1000L));
+        d6 = localdw.e;
+        if (((localdw.i > 0.0D) && (d3 - localdw.e > 0.0D)) || ((localdw.i < 0.0D) && (d3 - localdw.e < 0.0D))) {
+          localdw.e += localdw.i * (l1 / 1000L);
+        }
+        localdw.e += (d3 - localdw.e) * d5;
+        new StringBuilder("lng:").append(localdw.e).append(",tmp:").append(d6).append(",timeInc:").append(l1);
+        localdw.i = ((localdw.e - d6) / (l1 / 1000L));
+        localdw.f = ((1.0D - d4) * localdw.f);
+        localdw.g = ((1.0D - d5) * localdw.g);
+        localdw.c = l3;
+        new StringBuilder("last_metres_per_second:").append(localdw.h).append(",last_metres_per_second_lng:").append(localdw.i);
+      }
+      for (;;)
+      {
+        new StringBuilder("variance:").append(localdw.f).append(",vaLng:").append(localdw.g);
+        if ((d1 != 30.0D) || (d4 < 0.5D) || (d5 < 0.5D)) {
+          break;
+        }
+        localdw.d = d2;
+        localdw.e = d3;
+        localdw.c = l3;
+        localdw.h = 0.0D;
+        localdw.i = 0.0D;
+        localdw.f = (d1 * d1);
+        break;
+        if (((localdw.h > 0.0D) && (d2 - localdw.d > 0.0D)) || ((localdw.h < 0.0D) && (d2 - localdw.d < 0.0D))) {
+          localdw.d += localdw.h * (l1 / 1000L);
+        }
+        if (((localdw.i > 0.0D) && (d3 - localdw.e > 0.0D)) || ((localdw.i < 0.0D) && (d3 - localdw.e < 0.0D))) {
+          localdw.e += localdw.i * (l1 / 1000L);
+        }
+        localdw.f -= l1;
+        localdw.g -= l1;
+      }
     }
   }
   
-  public final void a(String paramString)
+  public final void a(TencentLocation paramTencentLocation)
   {
     try
     {
-      if (TextUtils.isEmpty(paramString)) {
-        return;
+      this.c.add(eq.a.a(paramTencentLocation));
+      if (this.c.size() > this.a) {
+        this.c.removeFirst();
       }
-      Object localObject = a(paramString.getBytes("UTF-8"));
-      e.o((byte[])localObject, 2);
-      localObject = new eq.a(2, (byte[])localObject, "https://ue.indoorloc.map.qq.com/", null);
-      ((eq.a)localObject).b = paramString;
-      if (eq.a.a((eq.a)localObject) != null)
-      {
-        this.a.offer(localObject);
-        return;
-      }
+      return;
     }
-    catch (Exception paramString) {}catch (Error paramString) {}
+    finally
+    {
+      paramTencentLocation = finally;
+      throw paramTencentLocation;
+    }
+  }
+  
+  public final boolean a(TencentLocation paramTencentLocation, ea paramea)
+  {
+    try
+    {
+      boolean bool = a(eq.a.a(paramTencentLocation), paramea);
+      return bool;
+    }
+    finally
+    {
+      paramTencentLocation = finally;
+      throw paramTencentLocation;
+    }
   }
 }
 

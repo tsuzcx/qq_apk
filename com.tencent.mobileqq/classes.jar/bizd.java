@@ -1,10 +1,17 @@
-public abstract interface bizd
+public class bizd
 {
-  public abstract void a();
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bizd
  * JD-Core Version:    0.7.0.1
  */

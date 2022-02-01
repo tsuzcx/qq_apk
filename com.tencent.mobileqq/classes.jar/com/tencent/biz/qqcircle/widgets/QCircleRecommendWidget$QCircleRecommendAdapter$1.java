@@ -1,11 +1,11 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import ufj;
+import vyg;
 
 public class QCircleRecommendWidget$QCircleRecommendAdapter$1
   implements Runnable
 {
-  public QCircleRecommendWidget$QCircleRecommendAdapter$1(ufj paramufj) {}
+  public QCircleRecommendWidget$QCircleRecommendAdapter$1(vyg paramvyg) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QCircleRecommendWidget$QCircleRecommendAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleRecommendWidget.QCircleRecommendAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package dov.com.qq.im;
 
-import bkof;
+import bncs;
 import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class QIMWebEffectCameraCaptureUnit$2
   implements Runnable
 {
-  public QIMWebEffectCameraCaptureUnit$2(bkof parambkof) {}
+  public QIMWebEffectCameraCaptureUnit$2(bncs parambncs) {}
   
   public void run()
   {
-    if ((bkof.a(this.this$0)) && (bkof.b(this.this$0))) {
-      this.this$0.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(102, bkof.a(this.this$0), bkof.b(this.this$0));
+    if ((bncs.a(this.this$0)) && (bncs.b(this.this$0))) {
+      this.this$0.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(102, bncs.a(this.this$0), bncs.b(this.this$0));
     }
     do
     {
       return;
-      if ((bkof.c(this.this$0)) && (bkof.d(this.this$0)))
+      if ((bncs.c(this.this$0)) && (bncs.d(this.this$0)))
       {
-        this.this$0.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(101, bkof.c(this.this$0), bkof.d(this.this$0));
+        this.this$0.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(101, bncs.c(this.this$0), bncs.d(this.this$0));
         return;
       }
       if ((this.this$0.jdField_a_of_type_Boolean) && (this.this$0.y))
@@ -32,7 +32,7 @@ public class QIMWebEffectCameraCaptureUnit$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.QIMWebEffectCameraCaptureUnit.2
  * JD-Core Version:    0.7.0.1
  */

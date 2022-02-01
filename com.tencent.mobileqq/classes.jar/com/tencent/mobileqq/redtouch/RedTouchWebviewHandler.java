@@ -3,12 +3,12 @@ package com.tencent.mobileqq.redtouch;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import apmh;
-import apml;
-import axlx;
-import axmc;
-import bdhb;
-import begz;
+import arpd;
+import arph;
+import baif;
+import baij;
+import bgmg;
+import bhod;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -20,6 +20,8 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.TimeRspBody;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -29,6 +31,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import mqq.app.MobileQQ;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,11 +69,50 @@ public class RedTouchWebviewHandler
     this.mPluginNameSpace = "redpoint";
   }
   
-  private void IPCItemClick(String paramString)
+  @NotNull
+  private JSONObject buidRedJson(List<BusinessInfoCheckUpdate.RedTypeInfo> paramList)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("path", paramString);
-    super.sendRemoteReq(apml.a("myIndividuationRedInfo", null, 0, localBundle), false, true);
+    JSONObject localJSONObject = new JSONObject();
+    if (paramList != null)
+    {
+      int i = 0;
+      while (i < paramList.size())
+      {
+        localJSONObject.put("red_type", ((BusinessInfoCheckUpdate.RedTypeInfo)paramList.get(i)).red_type.get());
+        localJSONObject.put("red_content", ((BusinessInfoCheckUpdate.RedTypeInfo)paramList.get(i)).red_content.get());
+        localJSONObject.put("red_desc", ((BusinessInfoCheckUpdate.RedTypeInfo)paramList.get(i)).red_desc.get());
+        i += 1;
+      }
+    }
+    return localJSONObject;
+  }
+  
+  private List<String> buildPaths(List<String> paramList, JSONArray paramJSONArray)
+  {
+    if (paramJSONArray != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      for (;;)
+      {
+        paramList = localArrayList;
+        if (i >= paramJSONArray.length()) {
+          break;
+        }
+        paramList = paramJSONArray.optString(i, "");
+        if (!TextUtils.isEmpty(paramList)) {
+          localArrayList.add(paramList);
+        }
+        i += 1;
+      }
+    }
+    return paramList;
+  }
+  
+  @NotNull
+  private JSONObject buildRedJson(List<BusinessInfoCheckUpdate.RedTypeInfo> paramList)
+  {
+    return buidRedJson(paramList);
   }
   
   private BusinessInfoCheckUpdate.AppInfo getAppInfoByPath(String paramString)
@@ -83,7 +125,7 @@ public class RedTouchWebviewHandler
       paramString = null;
     }
     Object localObject1;
-    label145:
+    label146:
     do
     {
       return paramString;
@@ -98,9 +140,9 @@ public class RedTouchWebviewHandler
       {
         try
         {
-          localObject1 = bdhb.a((File)localObject1);
+          localObject1 = bgmg.a((File)localObject1);
           if (localObject1 != null) {
-            break label145;
+            break label146;
           }
           if (QLog.isColorLevel()) {
             QLog.i(TAG, 2, "getappinfo body = null");
@@ -172,7 +214,7 @@ public class RedTouchWebviewHandler
         {
           try
           {
-            localObject1 = bdhb.a((File)localObject1);
+            localObject1 = bgmg.a((File)localObject1);
             if (localObject1 != null) {
               break label152;
             }
@@ -269,6 +311,42 @@ public class RedTouchWebviewHandler
     return null;
   }
   
+  private int getReddot(List<BusinessInfoCheckUpdate.AppInfo> paramList, int paramInt)
+  {
+    int i = paramInt;
+    if (this.mRuntime != null)
+    {
+      i = paramInt;
+      if (this.mRuntime.a() != null)
+      {
+        i = paramInt;
+        if (paramList != null)
+        {
+          i = paramInt;
+          if (!paramList.isEmpty())
+          {
+            Object localObject = new baif(this.mRuntime.a());
+            i = paramInt;
+            if (localObject != null)
+            {
+              localObject = ((baif)localObject).a();
+              paramList = ((BusinessInfoCheckUpdate.AppInfo)paramList.get(0)).path.get();
+              i = paramInt;
+              if (!TextUtils.isEmpty(paramList))
+              {
+                i = paramInt;
+                if (paramList.equals(localObject)) {
+                  i = 1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return i;
+  }
+  
   private String getReportBufferString(String paramString)
   {
     if (paramString == null) {
@@ -297,14 +375,14 @@ public class RedTouchWebviewHandler
           String str = (String)localIterator.next();
           localObject = paramString.getJSONObject(str);
           if (!((JSONObject)localObject).has("stat")) {
-            break label176;
+            break label174;
           }
           i = ((JSONObject)localObject).getInt("stat");
           if (i != 1) {
             continue;
           }
           if (!((JSONObject)localObject).has("content")) {
-            break label181;
+            break label179;
           }
           localObject = ((JSONObject)localObject).getString("content");
           localJSONObject2.put(str, localObject);
@@ -319,10 +397,10 @@ public class RedTouchWebviewHandler
         return "";
       }
       continue;
-      label176:
+      label174:
       int i = -1;
       continue;
-      label181:
+      label179:
       Object localObject = "";
     }
     localJSONObject1.put("msg", localJSONArray);
@@ -330,1031 +408,777 @@ public class RedTouchWebviewHandler
     return paramString;
   }
   
-  /* Error */
+  private void handleGetAppinfo(String paramString, Bundle paramBundle)
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    String str3 = paramBundle.getString("serial");
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = baij.a((RedAppInfo)paramBundle.getParcelable("redInfo"));
+    j = -2;
+    paramBundle = "";
+    i = 0;
+    String str2 = "";
+    localArrayList = new ArrayList();
+    localObject1 = str2;
+    localObject2 = paramBundle;
+    if (localAppInfo != null)
+    {
+      str1 = str2;
+      localBundle = paramBundle;
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject1 = localAppInfo.red_display_info.red_type_info.get();
+        str1 = str2;
+        localBundle = paramBundle;
+        str2 = localAppInfo.path.get();
+        str1 = str2;
+        localBundle = paramBundle;
+        if (localAppInfo.type.get() != -1) {
+          continue;
+        }
+        m = -3;
+        k = 0;
+        str1 = str2;
+        localBundle = paramBundle;
+        localArrayList.add("");
+        str1 = str2;
+        localBundle = paramBundle;
+        localJSONObject1.put("code", -3);
+        str1 = str2;
+        localBundle = paramBundle;
+        localJSONObject1.put("errorMessage", "appInfo not found");
+        localObject1 = str2;
+        i = k;
+        localObject2 = paramBundle;
+        j = m;
+        str1 = str2;
+        localBundle = paramBundle;
+        if (QLog.isColorLevel())
+        {
+          str1 = str2;
+          localBundle = paramBundle;
+          QLog.i(TAG, 2, "getAppInfo:" + localJSONObject1.toString());
+          j = m;
+          localObject2 = paramBundle;
+          i = k;
+          localObject1 = str2;
+        }
+      }
+      catch (JSONException paramBundle)
+      {
+        int m;
+        int k;
+        paramBundle.printStackTrace();
+        j = -4;
+        i = 0;
+        localArrayList.add("");
+        localObject1 = str1;
+        localObject2 = localBundle;
+        continue;
+      }
+      paramBundle = new baif(this.mRuntime.a()).a();
+      k = i;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        k = i;
+        if (((String)localObject1).equals(paramBundle)) {
+          k = 1;
+        }
+      }
+      paramBundle = new Bundle();
+      paramBundle.putString("ret", String.valueOf(j));
+      paramBundle.putString("buffer", (String)localObject2);
+      paramBundle.putString("red", String.valueOf(k));
+      paramBundle.putStringArrayList("missions", localArrayList);
+      paramBundle.putString("path", (String)localObject1);
+      paramBundle.putString("serial", str3);
+      paramBundle.putString("callback", paramString);
+      super.sendRemoteReq(arph.a("redTouch_getAppInfo_report", paramString, this.mOnRemoteResp.key, paramBundle), false, true);
+      if (QLog.isColorLevel()) {
+        QLog.i(TAG, 2, "getAppinfo response:" + localJSONObject1.toString());
+      }
+      callJs(paramString, new String[] { localJSONObject1.toString() });
+      return;
+      m = 0;
+      str1 = str2;
+      localBundle = paramBundle;
+      localJSONObject1.put("code", 0);
+      str1 = str2;
+      localBundle = paramBundle;
+      localJSONObject2.put("appID", localAppInfo.uiAppId.get());
+      str1 = str2;
+      localBundle = paramBundle;
+      localJSONObject2.put("iNewFlag", localAppInfo.iNewFlag.get());
+      str1 = str2;
+      localBundle = paramBundle;
+      k = localAppInfo.iNewFlag.get();
+      str1 = str2;
+      localBundle = paramBundle;
+      localObject2 = new JSONArray();
+      i = 0;
+      str1 = str2;
+      localBundle = paramBundle;
+      if (i < localAppInfo.missions.size())
+      {
+        str1 = str2;
+        localBundle = paramBundle;
+        ((JSONArray)localObject2).put(localAppInfo.missions.get(i));
+        str1 = str2;
+        localBundle = paramBundle;
+        localArrayList.add(localAppInfo.missions.get(i));
+        i += 1;
+      }
+      else
+      {
+        str1 = str2;
+        localBundle = paramBundle;
+        localJSONObject2.put("redInfo", buidRedJson((List)localObject1));
+        str1 = str2;
+        localBundle = paramBundle;
+        localJSONObject2.put("missions", localObject2);
+        str1 = str2;
+        localBundle = paramBundle;
+        localJSONObject2.put("type", localAppInfo.type.get());
+        str1 = str2;
+        localBundle = paramBundle;
+        localJSONObject2.put("buffer", localAppInfo.buffer.get());
+        str1 = str2;
+        localBundle = paramBundle;
+        localJSONObject2.put("path", localAppInfo.path.get());
+        str1 = str2;
+        localBundle = paramBundle;
+        localJSONObject2.put("appset", localAppInfo.appset.get());
+        str1 = str2;
+        localBundle = paramBundle;
+        localJSONObject2.put("modify_ts", localAppInfo.modify_ts.get());
+        str1 = str2;
+        localBundle = paramBundle;
+        localJSONObject2.put("num", localAppInfo.num.get());
+        str1 = str2;
+        localBundle = paramBundle;
+        localJSONObject2.put("push_red_ts", localAppInfo.push_red_ts.get());
+        str1 = str2;
+        localBundle = paramBundle;
+        localJSONObject1.put("data", localJSONObject2);
+        str1 = str2;
+        localBundle = paramBundle;
+        paramBundle = getReportBufferString(localAppInfo.buffer.get());
+      }
+    }
+  }
+  
+  private void handleGetRedpointShowInfo(String paramString, Bundle paramBundle)
+  {
+    int j = -1;
+    localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2;
+    if (paramBundle == null)
+    {
+      paramBundle = null;
+      localJSONObject2 = new JSONObject();
+    }
+    for (;;)
+    {
+      try
+      {
+        localJSONObject1.put("code", 0);
+        if (paramBundle == null) {
+          continue;
+        }
+        j = paramBundle.getRedType();
+        i = 1;
+        localJSONObject2.put("hintType", j);
+        localJSONObject2.put("number", 0);
+        localJSONObject2.put("isShow", i);
+        localJSONObject1.put("data", localJSONObject2);
+        if (QLog.isColorLevel()) {
+          QLog.i(TAG, 2, "getRedPointShowInfo:" + localJSONObject1.toString());
+        }
+      }
+      catch (JSONException paramBundle)
+      {
+        int i;
+        paramBundle.printStackTrace();
+        try
+        {
+          localJSONObject1.put("code", -1);
+          localJSONObject1.put("errorMessage", "missing callback");
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+        }
+        continue;
+      }
+      callJs(paramString, new String[] { localJSONObject1.toString() });
+      return;
+      paramBundle = (RedTypeInfo)paramBundle.getSerializable("redInfo");
+      break;
+      i = 0;
+    }
+  }
+  
+  private void handleLebaItemGet(String paramString, Bundle paramBundle)
+  {
+    int i = 1;
+    int j = -1;
+    if (paramBundle == null) {}
+    for (;;)
+    {
+      if (i == 0) {
+        j = paramBundle.getInt("type", -1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(TAG, 2, "get leba item result: " + i + ", type: " + j);
+      }
+      paramBundle = new JSONObject();
+      try
+      {
+        paramBundle.put("ret", i);
+        paramBundle.put("type", j);
+        if (i == 0) {
+          paramBundle.put("errorMessage", "success");
+        }
+        for (;;)
+        {
+          callJs(paramString, new String[] { paramBundle.toString() });
+          return;
+          i = paramBundle.getInt("ret");
+          break;
+          paramBundle.put("errorMessage", "data not prepared or cannot find the path, try again.");
+        }
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  private void handleLebaItemSet(String paramString, Bundle paramBundle)
+  {
+    int i = 1;
+    if (paramBundle == null) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(TAG, 2, "set leba item result: " + i);
+      }
+      paramBundle = new JSONObject();
+      try
+      {
+        paramBundle.put("ret", i);
+        if (i == 0) {
+          paramBundle.put("errorMessage", "success");
+        }
+        for (;;)
+        {
+          callJs(paramString, new String[] { paramBundle.toString() });
+          return;
+          i = paramBundle.getInt("ret");
+          break;
+          paramBundle.put("errorMessage", "failed");
+        }
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
   private void handleRedInfoResponse(String paramString, Bundle paramBundle)
   {
+    if (paramBundle == null) {}
+    String str;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramBundle.setClassLoader(RedAppInfo.class.getClassLoader());
+          str = paramBundle.getString("subCmd");
+        } while (str == null);
+        if ("redTouch_getIndividuationType".equals(str))
+        {
+          handlegetIndivationType(paramString, paramBundle);
+          return;
+        }
+      } while ("redTouch_reportRedTouch".equals(str));
+      if ("redTouch_reportBusinessRedTouch".equals(str))
+      {
+        handleReportRedtouch(paramString, paramBundle);
+        return;
+      }
+      if ("redTouch_getAppInfo".equals(str))
+      {
+        handleGetAppinfo(paramString, paramBundle);
+        return;
+      }
+    } while (!"redTouch_getRedPointShowInfo_path".equals(str));
+    handlegetRedpointShowInfoPath(paramString, paramBundle);
+  }
+  
+  /* Error */
+  private void handleReportRedtouch(String paramString, Bundle paramBundle)
+  {
     // Byte code:
-    //   0: aload_2
-    //   1: ldc_w 334
-    //   4: invokevirtual 340	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   7: invokevirtual 344	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
-    //   10: aload_2
-    //   11: ldc_w 346
-    //   14: invokevirtual 347	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   17: astore 8
-    //   19: aload 8
-    //   21: ifnull +191 -> 212
-    //   24: ldc_w 349
-    //   27: aload 8
-    //   29: invokevirtual 246	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   32: ifeq +232 -> 264
-    //   35: ldc_w 351
-    //   38: astore 9
-    //   40: new 290	org/json/JSONObject
-    //   43: dup
-    //   44: invokespecial 291	org/json/JSONObject:<init>	()V
-    //   47: astore 10
-    //   49: aload 9
-    //   51: astore 8
-    //   53: aload_2
-    //   54: ldc_w 353
-    //   57: invokevirtual 357	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   60: checkcast 334	com/tencent/mobileqq/redtouch/RedAppInfo
-    //   63: astore 11
-    //   65: aload 9
-    //   67: astore 8
-    //   69: aload_2
-    //   70: ldc 29
-    //   72: invokevirtual 347	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   75: astore 12
-    //   77: aload 9
-    //   79: astore_2
-    //   80: aload 11
-    //   82: ifnull +76 -> 158
-    //   85: aload 9
-    //   87: astore_2
-    //   88: aload 9
-    //   90: astore 8
-    //   92: aload 11
-    //   94: invokevirtual 360	com/tencent/mobileqq/redtouch/RedAppInfo:b	()I
-    //   97: ifeq +61 -> 158
-    //   100: aload 9
-    //   102: astore 8
-    //   104: aload_0
-    //   105: new 290	org/json/JSONObject
-    //   108: dup
-    //   109: aload 11
-    //   111: invokevirtual 362	com/tencent/mobileqq/redtouch/RedAppInfo:a	()Ljava/lang/String;
-    //   114: invokespecial 306	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   117: invokespecial 364	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:getRedBufferJson	(Lorg/json/JSONObject;)Lorg/json/JSONObject;
-    //   120: astore 13
-    //   122: aload 9
-    //   124: astore_2
-    //   125: aload 13
-    //   127: ifnull +31 -> 158
-    //   130: aload 9
-    //   132: astore 8
-    //   134: aload 13
-    //   136: ldc_w 366
-    //   139: invokevirtual 311	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   142: ifeq +71 -> 213
-    //   145: aload 9
-    //   147: astore 8
-    //   149: aload 13
-    //   151: ldc_w 366
-    //   154: invokevirtual 322	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   157: astore_2
-    //   158: aload_2
-    //   159: astore 8
-    //   161: aload 10
-    //   163: ldc_w 368
-    //   166: aload_2
-    //   167: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   170: pop
-    //   171: aload_2
-    //   172: astore 8
-    //   174: aload_0
-    //   175: aload 11
-    //   177: invokestatic 373	axmc:a	(Lcom/tencent/mobileqq/redtouch/RedAppInfo;)Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
-    //   180: sipush 1002
-    //   183: invokespecial 377	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:onReportRed	(Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;I)V
-    //   186: aload_2
-    //   187: astore 8
-    //   189: aload_0
-    //   190: aload 12
-    //   192: invokespecial 379	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:IPCItemClick	(Ljava/lang/String;)V
-    //   195: aload_0
-    //   196: aload_1
-    //   197: iconst_1
-    //   198: anewarray 242	java/lang/String
-    //   201: dup
-    //   202: iconst_0
-    //   203: aload 10
-    //   205: invokevirtual 330	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   208: aastore
-    //   209: invokevirtual 383	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   212: return
-    //   213: ldc_w 351
-    //   216: astore_2
-    //   217: goto -59 -> 158
-    //   220: astore_2
-    //   221: aload_2
-    //   222: invokevirtual 299	org/json/JSONException:printStackTrace	()V
-    //   225: aload 10
-    //   227: ldc_w 368
-    //   230: aload 8
-    //   232: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   235: pop
-    //   236: aload_0
-    //   237: aload_1
-    //   238: iconst_1
-    //   239: anewarray 242	java/lang/String
-    //   242: dup
-    //   243: iconst_0
-    //   244: aload 10
-    //   246: invokevirtual 330	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   249: aastore
-    //   250: invokevirtual 383	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   253: goto -58 -> 195
-    //   256: astore_2
-    //   257: aload_2
-    //   258: invokevirtual 299	org/json/JSONException:printStackTrace	()V
-    //   261: goto -66 -> 195
-    //   264: ldc_w 385
-    //   267: aload 8
-    //   269: invokevirtual 246	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   272: ifne -60 -> 212
-    //   275: ldc_w 387
-    //   278: aload 8
-    //   280: invokevirtual 246	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   283: ifeq +596 -> 879
-    //   286: new 290	org/json/JSONObject
-    //   289: dup
-    //   290: invokespecial 291	org/json/JSONObject:<init>	()V
-    //   293: astore 8
-    //   295: aload_2
-    //   296: ldc_w 353
-    //   299: invokevirtual 357	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   302: checkcast 334	com/tencent/mobileqq/redtouch/RedAppInfo
-    //   305: astore 11
-    //   307: aload_2
-    //   308: ldc 29
-    //   310: invokevirtual 347	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   313: astore 12
-    //   315: aload_2
-    //   316: ldc_w 389
-    //   319: invokevirtual 347	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   322: astore_2
-    //   323: new 290	org/json/JSONObject
-    //   326: dup
-    //   327: aload_2
-    //   328: invokespecial 306	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   331: astore 10
-    //   333: aload_0
-    //   334: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbegz;
-    //   337: invokevirtual 398	begz:a	()Landroid/app/Activity;
-    //   340: astore_2
-    //   341: new 400	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody
-    //   344: dup
-    //   345: invokespecial 401	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:<init>	()V
-    //   348: astore 9
-    //   350: aload 9
-    //   352: getfield 405	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   355: aload_0
-    //   356: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbegz;
-    //   359: invokevirtual 408	begz:a	()Lcom/tencent/common/app/AppInterface;
-    //   362: invokevirtual 167	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   365: invokestatic 414	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   368: invokevirtual 420	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
-    //   371: aload 9
-    //   373: getfield 423	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:clientver	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   376: ldc_w 425
-    //   379: invokevirtual 427	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
-    //   382: aload 9
-    //   384: getfield 431	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:platid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   387: bipush 109
-    //   389: invokevirtual 436	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   392: aload 9
-    //   394: getfield 439	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:appid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   397: aload 12
-    //   399: invokestatic 443	axlx:a	(Ljava/lang/String;)I
-    //   402: invokevirtual 436	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   405: aload 9
-    //   407: getfield 446	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:platver	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   410: new 156	java/lang/StringBuilder
-    //   413: dup
-    //   414: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   417: getstatic 451	android/os/Build$VERSION:SDK_INT	I
-    //   420: invokevirtual 262	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   423: ldc_w 301
-    //   426: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   429: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   432: invokevirtual 427	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
-    //   435: aload 11
-    //   437: invokevirtual 453	com/tencent/mobileqq/redtouch/RedAppInfo:a	()Ljava/util/List;
-    //   440: ifnull +16 -> 456
-    //   443: aload 9
-    //   445: getfield 457	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:missionid	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   448: aload 11
-    //   450: invokevirtual 453	com/tencent/mobileqq/redtouch/RedAppInfo:a	()Ljava/util/List;
-    //   453: invokevirtual 462	com/tencent/mobileqq/pb/PBRepeatField:set	(Ljava/util/List;)V
-    //   456: new 276	java/util/ArrayList
-    //   459: dup
-    //   460: invokespecial 277	java/util/ArrayList:<init>	()V
-    //   463: astore 11
-    //   465: aload 10
-    //   467: invokevirtual 298	org/json/JSONObject:keys	()Ljava/util/Iterator;
-    //   470: astore 12
-    //   472: aload 12
-    //   474: invokeinterface 227 1 0
-    //   479: ifeq +156 -> 635
-    //   482: aload 12
-    //   484: invokeinterface 231 1 0
-    //   489: checkcast 242	java/lang/String
-    //   492: astore 13
-    //   494: new 464	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportStaticsData
-    //   497: dup
-    //   498: invokespecial 465	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportStaticsData:<init>	()V
-    //   501: astore 14
-    //   503: aload 14
-    //   505: getfield 468	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportStaticsData:key	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   508: aload 13
-    //   510: invokevirtual 427	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
-    //   513: aload 14
-    //   515: getfield 471	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportStaticsData:value	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   518: aload 10
-    //   520: aload 13
-    //   522: invokevirtual 322	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   525: invokevirtual 427	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
-    //   528: aload 11
-    //   530: aload 14
-    //   532: invokeinterface 282 2 0
+    //   0: new 120	org/json/JSONObject
+    //   3: dup
+    //   4: invokespecial 121	org/json/JSONObject:<init>	()V
+    //   7: astore 5
+    //   9: aload_2
+    //   10: ldc_w 397
+    //   13: invokevirtual 401	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   16: checkcast 403	com/tencent/mobileqq/redtouch/RedAppInfo
+    //   19: astore 8
+    //   21: aload_2
+    //   22: ldc 29
+    //   24: invokevirtual 395	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   27: astore 9
+    //   29: aload_2
+    //   30: ldc_w 575
+    //   33: invokevirtual 395	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   36: astore_2
+    //   37: new 120	org/json/JSONObject
+    //   40: dup
+    //   41: aload_2
+    //   42: invokespecial 368	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   45: astore 7
+    //   47: aload_0
+    //   48: getfield 351	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbhod;
+    //   51: invokevirtual 578	bhod:a	()Landroid/app/Activity;
+    //   54: astore_2
+    //   55: new 580	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody
+    //   58: dup
+    //   59: invokespecial 581	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:<init>	()V
+    //   62: astore 6
+    //   64: aload 6
+    //   66: getfield 585	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   69: aload_0
+    //   70: getfield 351	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbhod;
+    //   73: invokevirtual 356	bhod:a	()Lcom/tencent/common/app/AppInterface;
+    //   76: invokevirtual 235	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   79: invokestatic 591	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   82: invokevirtual 597	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
+    //   85: aload 6
+    //   87: getfield 600	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:clientver	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   90: ldc_w 602
+    //   93: invokevirtual 604	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
+    //   96: aload 6
+    //   98: getfield 607	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:platid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   101: bipush 109
+    //   103: invokevirtual 610	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   106: aload 6
+    //   108: getfield 613	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:appid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   111: aload 9
+    //   113: invokestatic 615	baif:a	(Ljava/lang/String;)I
+    //   116: invokevirtual 610	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   119: aload 6
+    //   121: getfield 618	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:platver	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   124: new 225	java/lang/StringBuilder
+    //   127: dup
+    //   128: invokespecial 226	java/lang/StringBuilder:<init>	()V
+    //   131: getstatic 623	android/os/Build$VERSION:SDK_INT	I
+    //   134: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   137: ldc 176
+    //   139: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   145: invokevirtual 604	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
+    //   148: aload 8
+    //   150: invokevirtual 625	com/tencent/mobileqq/redtouch/RedAppInfo:a	()Ljava/util/List;
+    //   153: ifnull +16 -> 169
+    //   156: aload 6
+    //   158: getfield 628	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:missionid	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   161: aload 8
+    //   163: invokevirtual 625	com/tencent/mobileqq/redtouch/RedAppInfo:a	()Ljava/util/List;
+    //   166: invokevirtual 631	com/tencent/mobileqq/pb/PBRepeatField:set	(Ljava/util/List;)V
+    //   169: new 168	java/util/ArrayList
+    //   172: dup
+    //   173: invokespecial 169	java/util/ArrayList:<init>	()V
+    //   176: astore 8
+    //   178: aload 7
+    //   180: invokevirtual 346	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   183: astore 9
+    //   185: aload 9
+    //   187: invokeinterface 293 1 0
+    //   192: ifeq +156 -> 348
+    //   195: aload 9
+    //   197: invokeinterface 297 1 0
+    //   202: checkcast 303	java/lang/String
+    //   205: astore 10
+    //   207: new 633	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportStaticsData
+    //   210: dup
+    //   211: invokespecial 634	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportStaticsData:<init>	()V
+    //   214: astore 11
+    //   216: aload 11
+    //   218: getfield 636	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportStaticsData:key	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   221: aload 10
+    //   223: invokevirtual 604	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
+    //   226: aload 11
+    //   228: getfield 639	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportStaticsData:value	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   231: aload 7
+    //   233: aload 10
+    //   235: invokevirtual 384	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   238: invokevirtual 604	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
+    //   241: aload 8
+    //   243: aload 11
+    //   245: invokeinterface 190 2 0
+    //   250: pop
+    //   251: getstatic 645	java/lang/System:out	Ljava/io/PrintStream;
+    //   254: new 225	java/lang/StringBuilder
+    //   257: dup
+    //   258: invokespecial 226	java/lang/StringBuilder:<init>	()V
+    //   261: ldc_w 647
+    //   264: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: aload 11
+    //   269: getfield 636	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportStaticsData:key	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   272: invokevirtual 156	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   275: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   278: ldc_w 649
+    //   281: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: aload 11
+    //   286: getfield 639	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportStaticsData:value	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   289: invokevirtual 156	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   292: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   295: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   298: invokevirtual 654	java/io/PrintStream:println	(Ljava/lang/String;)V
+    //   301: goto -116 -> 185
+    //   304: astore_2
+    //   305: aload 5
+    //   307: ldc_w 422
+    //   310: iconst_m1
+    //   311: invokevirtual 146	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   314: pop
+    //   315: aload 5
+    //   317: ldc 26
+    //   319: ldc_w 656
+    //   322: invokevirtual 159	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   325: pop
+    //   326: aload_2
+    //   327: invokevirtual 347	org/json/JSONException:printStackTrace	()V
+    //   330: aload_0
+    //   331: aload_1
+    //   332: iconst_1
+    //   333: anewarray 303	java/lang/String
+    //   336: dup
+    //   337: iconst_0
+    //   338: aload 5
+    //   340: invokevirtual 388	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   343: aastore
+    //   344: invokevirtual 471	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   347: return
+    //   348: new 120	org/json/JSONObject
+    //   351: dup
+    //   352: invokespecial 121	org/json/JSONObject:<init>	()V
+    //   355: astore 7
+    //   357: aload 7
+    //   359: ifnull +13 -> 372
+    //   362: aload 7
+    //   364: ldc_w 658
+    //   367: iconst_5
+    //   368: invokevirtual 146	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   371: pop
+    //   372: aload 6
+    //   374: getfield 659	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:buffer	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   377: aload 7
+    //   379: invokevirtual 388	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   382: invokevirtual 604	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
+    //   385: aload 6
+    //   387: getfield 662	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:reportdata	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   390: aload 8
+    //   392: invokevirtual 663	com/tencent/mobileqq/pb/PBRepeatMessageField:set	(Ljava/util/List;)V
+    //   395: new 665	com/tencent/qphone/base/remote/ToServiceMsg
+    //   398: dup
+    //   399: ldc_w 667
+    //   402: aload_0
+    //   403: getfield 351	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbhod;
+    //   406: invokevirtual 356	bhod:a	()Lcom/tencent/common/app/AppInterface;
+    //   409: invokevirtual 235	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   412: ldc_w 669
+    //   415: invokespecial 672	com/tencent/qphone/base/remote/ToServiceMsg:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   418: astore 7
+    //   420: aload 7
+    //   422: aload 6
+    //   424: invokevirtual 676	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:toByteArray	()[B
+    //   427: invokevirtual 680	com/tencent/qphone/base/remote/ToServiceMsg:putWupBuffer	([B)V
+    //   430: aload 7
+    //   432: getfield 684	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   435: ldc_w 686
+    //   438: iconst_1
+    //   439: invokevirtual 690	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   442: aload 7
+    //   444: invokevirtual 693	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
+    //   447: arraylength
+    //   448: i2l
+    //   449: lstore_3
+    //   450: lload_3
+    //   451: l2i
+    //   452: iconst_4
+    //   453: iadd
+    //   454: newarray byte
+    //   456: astore 6
+    //   458: aload 6
+    //   460: iconst_0
+    //   461: ldc2_w 694
+    //   464: lload_3
+    //   465: ladd
+    //   466: invokestatic 700	bgva:a	([BIJ)V
+    //   469: aload 6
+    //   471: iconst_4
+    //   472: aload 7
+    //   474: invokevirtual 693	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
+    //   477: lload_3
+    //   478: l2i
+    //   479: invokestatic 703	bgva:a	([BI[BI)V
+    //   482: aload 7
+    //   484: aload 6
+    //   486: invokevirtual 680	com/tencent/qphone/base/remote/ToServiceMsg:putWupBuffer	([B)V
+    //   489: new 705	mqq/app/NewIntent
+    //   492: dup
+    //   493: aload_2
+    //   494: invokevirtual 710	android/app/Activity:getApplication	()Landroid/app/Application;
+    //   497: ldc_w 712
+    //   500: invokespecial 715	mqq/app/NewIntent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   503: astore_2
+    //   504: aload_2
+    //   505: ldc_w 665
+    //   508: invokevirtual 718	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   511: aload 7
+    //   513: invokevirtual 722	mqq/app/NewIntent:putExtra	(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
+    //   516: pop
+    //   517: aload_0
+    //   518: getfield 351	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbhod;
+    //   521: invokevirtual 356	bhod:a	()Lcom/tencent/common/app/AppInterface;
+    //   524: aload_2
+    //   525: invokevirtual 726	com/tencent/common/app/AppInterface:startServlet	(Lmqq/app/NewIntent;)V
+    //   528: aload 5
+    //   530: ldc_w 422
+    //   533: iconst_0
+    //   534: invokevirtual 146	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   537: pop
-    //   538: getstatic 477	java/lang/System:out	Ljava/io/PrintStream;
-    //   541: new 156	java/lang/StringBuilder
-    //   544: dup
-    //   545: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   548: ldc_w 479
-    //   551: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   554: aload 14
-    //   556: getfield 468	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportStaticsData:key	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   559: invokevirtual 240	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   562: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   565: ldc_w 481
-    //   568: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   571: aload 14
-    //   573: getfield 471	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportStaticsData:value	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   576: invokevirtual 240	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   579: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   582: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   585: invokevirtual 486	java/io/PrintStream:println	(Ljava/lang/String;)V
-    //   588: goto -116 -> 472
-    //   591: astore_2
-    //   592: aload 8
-    //   594: ldc_w 488
-    //   597: iconst_m1
-    //   598: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   601: pop
-    //   602: aload 8
-    //   604: ldc 26
-    //   606: ldc_w 493
-    //   609: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   612: pop
-    //   613: aload_2
-    //   614: invokevirtual 299	org/json/JSONException:printStackTrace	()V
-    //   617: aload_0
-    //   618: aload_1
-    //   619: iconst_1
-    //   620: anewarray 242	java/lang/String
-    //   623: dup
-    //   624: iconst_0
-    //   625: aload 8
-    //   627: invokevirtual 330	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   630: aastore
-    //   631: invokevirtual 383	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   634: return
-    //   635: new 290	org/json/JSONObject
-    //   638: dup
-    //   639: invokespecial 291	org/json/JSONObject:<init>	()V
-    //   642: astore 10
-    //   644: aload 10
-    //   646: ifnull +13 -> 659
-    //   649: aload 10
-    //   651: ldc_w 495
-    //   654: iconst_5
-    //   655: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   658: pop
-    //   659: aload 9
-    //   661: getfield 498	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:buffer	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   664: aload 10
-    //   666: invokevirtual 330	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   669: invokevirtual 427	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
-    //   672: aload 9
-    //   674: getfield 501	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:reportdata	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   677: aload 11
-    //   679: invokevirtual 502	com/tencent/mobileqq/pb/PBRepeatMessageField:set	(Ljava/util/List;)V
-    //   682: new 504	com/tencent/qphone/base/remote/ToServiceMsg
-    //   685: dup
-    //   686: ldc_w 506
-    //   689: aload_0
-    //   690: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbegz;
-    //   693: invokevirtual 408	begz:a	()Lcom/tencent/common/app/AppInterface;
-    //   696: invokevirtual 167	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   699: ldc_w 508
-    //   702: invokespecial 511	com/tencent/qphone/base/remote/ToServiceMsg:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   705: astore 10
-    //   707: aload 10
-    //   709: aload 9
-    //   711: invokevirtual 515	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$ReportReqBody:toByteArray	()[B
-    //   714: invokevirtual 519	com/tencent/qphone/base/remote/ToServiceMsg:putWupBuffer	([B)V
-    //   717: aload 10
-    //   719: getfield 523	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   722: ldc_w 525
-    //   725: iconst_1
-    //   726: invokevirtual 529	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   729: aload 10
-    //   731: invokevirtual 532	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
-    //   734: arraylength
-    //   735: i2l
-    //   736: lstore 6
-    //   738: lload 6
-    //   740: l2i
-    //   741: iconst_4
-    //   742: iadd
-    //   743: newarray byte
-    //   745: astore 9
-    //   747: aload 9
-    //   749: iconst_0
-    //   750: ldc2_w 533
-    //   753: lload 6
-    //   755: ladd
-    //   756: invokestatic 539	bdqa:a	([BIJ)V
-    //   759: aload 9
-    //   761: iconst_4
-    //   762: aload 10
-    //   764: invokevirtual 532	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
-    //   767: lload 6
-    //   769: l2i
-    //   770: invokestatic 542	bdqa:a	([BI[BI)V
-    //   773: aload 10
-    //   775: aload 9
-    //   777: invokevirtual 519	com/tencent/qphone/base/remote/ToServiceMsg:putWupBuffer	([B)V
-    //   780: new 544	mqq/app/NewIntent
-    //   783: dup
-    //   784: aload_2
-    //   785: invokevirtual 549	android/app/Activity:getApplication	()Landroid/app/Application;
-    //   788: ldc_w 551
-    //   791: invokespecial 554	mqq/app/NewIntent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   794: astore_2
-    //   795: aload_2
-    //   796: ldc_w 504
-    //   799: invokevirtual 557	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   802: aload 10
-    //   804: invokevirtual 561	mqq/app/NewIntent:putExtra	(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
-    //   807: pop
-    //   808: aload_0
-    //   809: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbegz;
-    //   812: invokevirtual 408	begz:a	()Lcom/tencent/common/app/AppInterface;
-    //   815: aload_2
-    //   816: invokevirtual 565	com/tencent/common/app/AppInterface:startServlet	(Lmqq/app/NewIntent;)V
-    //   819: aload 8
-    //   821: ldc_w 488
-    //   824: iconst_0
-    //   825: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   828: pop
-    //   829: invokestatic 134	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   832: ifeq -215 -> 617
-    //   835: getstatic 70	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:TAG	Ljava/lang/String;
-    //   838: iconst_2
-    //   839: new 156	java/lang/StringBuilder
-    //   842: dup
-    //   843: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   846: ldc_w 567
-    //   849: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   852: aload 8
-    //   854: invokevirtual 330	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   857: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   860: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   863: invokestatic 140	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   866: goto -249 -> 617
-    //   869: astore 9
-    //   871: aload 9
-    //   873: invokevirtual 299	org/json/JSONException:printStackTrace	()V
-    //   876: goto -263 -> 613
-    //   879: ldc_w 569
-    //   882: aload 8
-    //   884: invokevirtual 246	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   887: ifeq +914 -> 1801
-    //   890: new 290	org/json/JSONObject
-    //   893: dup
-    //   894: invokespecial 291	org/json/JSONObject:<init>	()V
-    //   897: astore 12
-    //   899: new 290	org/json/JSONObject
-    //   902: dup
-    //   903: invokespecial 291	org/json/JSONObject:<init>	()V
-    //   906: astore 11
-    //   908: aload_2
-    //   909: ldc_w 571
-    //   912: invokevirtual 347	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   915: astore 13
-    //   917: aload_2
-    //   918: ldc_w 353
-    //   921: invokevirtual 357	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   924: checkcast 334	com/tencent/mobileqq/redtouch/RedAppInfo
-    //   927: invokestatic 373	axmc:a	(Lcom/tencent/mobileqq/redtouch/RedAppInfo;)Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
-    //   930: astore 15
-    //   932: bipush 254
-    //   934: istore 4
-    //   936: ldc_w 301
-    //   939: astore_2
-    //   940: iconst_0
-    //   941: istore_3
-    //   942: ldc_w 301
-    //   945: astore 10
-    //   947: new 276	java/util/ArrayList
-    //   950: dup
-    //   951: invokespecial 277	java/util/ArrayList:<init>	()V
-    //   954: astore 14
-    //   956: aload 10
-    //   958: astore 8
-    //   960: aload_2
-    //   961: astore 9
-    //   963: aload 15
-    //   965: ifnull +137 -> 1102
-    //   968: aload 15
-    //   970: getfield 575	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:red_display_info	Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedDisplayInfo;
-    //   973: getfield 580	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedDisplayInfo:red_type_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   976: invokevirtual 216	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   979: astore 16
-    //   981: aload 15
-    //   983: getfield 236	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:path	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   986: invokevirtual 240	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   989: astore 9
-    //   991: aload_2
-    //   992: astore 8
-    //   994: aload 15
-    //   996: getfield 582	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   999: invokevirtual 583	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1002: iconst_m1
-    //   1003: if_icmpne +292 -> 1295
-    //   1006: bipush 253
-    //   1008: istore 4
-    //   1010: iconst_0
-    //   1011: istore_3
-    //   1012: aload_2
-    //   1013: astore 8
-    //   1015: aload 14
-    //   1017: ldc_w 301
-    //   1020: invokevirtual 584	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   1023: pop
-    //   1024: aload_2
-    //   1025: astore 8
-    //   1027: aload 12
-    //   1029: ldc_w 488
-    //   1032: bipush 253
-    //   1034: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1037: pop
-    //   1038: aload_2
-    //   1039: astore 8
-    //   1041: aload 12
-    //   1043: ldc 26
-    //   1045: ldc_w 586
-    //   1048: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1051: pop
-    //   1052: aload_2
-    //   1053: astore 8
-    //   1055: invokestatic 134	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1058: ifeq +37 -> 1095
-    //   1061: aload_2
-    //   1062: astore 8
-    //   1064: getstatic 70	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:TAG	Ljava/lang/String;
-    //   1067: iconst_2
-    //   1068: new 156	java/lang/StringBuilder
-    //   1071: dup
-    //   1072: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   1075: ldc_w 588
-    //   1078: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1081: aload 12
-    //   1083: invokevirtual 330	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   1086: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1089: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1092: invokestatic 140	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1095: aload 9
-    //   1097: astore 8
-    //   1099: aload_2
-    //   1100: astore 9
-    //   1102: new 441	axlx
-    //   1105: dup
-    //   1106: aload_0
-    //   1107: getfield 393	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mRuntime	Lbegz;
-    //   1110: invokevirtual 408	begz:a	()Lcom/tencent/common/app/AppInterface;
-    //   1113: invokespecial 591	axlx:<init>	(Lcom/tencent/common/app/AppInterface;)V
-    //   1116: invokevirtual 592	axlx:a	()Ljava/lang/String;
-    //   1119: astore_2
-    //   1120: iload_3
-    //   1121: istore 5
-    //   1123: aload 8
-    //   1125: invokestatic 128	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1128: ifne +18 -> 1146
-    //   1131: iload_3
-    //   1132: istore 5
-    //   1134: aload 8
-    //   1136: aload_2
-    //   1137: invokevirtual 246	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1140: ifeq +6 -> 1146
-    //   1143: iconst_1
-    //   1144: istore 5
-    //   1146: new 81	android/os/Bundle
-    //   1149: dup
-    //   1150: invokespecial 82	android/os/Bundle:<init>	()V
-    //   1153: astore_2
-    //   1154: aload_2
-    //   1155: ldc 32
-    //   1157: iload 4
-    //   1159: invokestatic 596	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   1162: invokevirtual 86	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1165: aload_2
-    //   1166: ldc_w 597
-    //   1169: aload 9
-    //   1171: invokevirtual 86	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1174: aload_2
-    //   1175: ldc_w 599
-    //   1178: iload 5
-    //   1180: invokestatic 596	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   1183: invokevirtual 86	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1186: aload_2
-    //   1187: ldc_w 601
-    //   1190: aload 14
-    //   1192: invokevirtual 605	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   1195: aload_2
-    //   1196: ldc 29
-    //   1198: aload 8
-    //   1200: invokevirtual 86	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1203: aload_2
-    //   1204: ldc_w 571
-    //   1207: aload 13
-    //   1209: invokevirtual 86	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1212: aload_2
-    //   1213: ldc 23
-    //   1215: aload_1
-    //   1216: invokevirtual 86	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1219: aload_0
-    //   1220: ldc_w 607
-    //   1223: aload_1
-    //   1224: aload_0
-    //   1225: getfield 611	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:mOnRemoteResp	Lapmh;
-    //   1228: getfield 615	apmh:key	I
-    //   1231: aload_2
-    //   1232: invokestatic 94	apml:a	(Ljava/lang/String;Ljava/lang/String;ILandroid/os/Bundle;)Landroid/os/Bundle;
-    //   1235: iconst_0
-    //   1236: iconst_1
-    //   1237: invokespecial 98	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:sendRemoteReq	(Landroid/os/Bundle;ZZ)V
-    //   1240: invokestatic 134	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1243: ifeq +34 -> 1277
-    //   1246: getstatic 70	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:TAG	Ljava/lang/String;
-    //   1249: iconst_2
-    //   1250: new 156	java/lang/StringBuilder
-    //   1253: dup
-    //   1254: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   1257: ldc_w 617
-    //   1260: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1263: aload 12
-    //   1265: invokevirtual 330	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   1268: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1271: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1274: invokestatic 140	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1277: aload_0
-    //   1278: aload_1
-    //   1279: iconst_1
-    //   1280: anewarray 242	java/lang/String
-    //   1283: dup
-    //   1284: iconst_0
-    //   1285: aload 12
-    //   1287: invokevirtual 330	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   1290: aastore
-    //   1291: invokevirtual 383	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   1294: return
-    //   1295: aload_2
-    //   1296: astore 8
-    //   1298: aload 12
-    //   1300: ldc_w 488
-    //   1303: iconst_0
-    //   1304: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1307: pop
-    //   1308: aload_2
-    //   1309: astore 8
-    //   1311: aload 11
-    //   1313: ldc_w 619
-    //   1316: aload 15
-    //   1318: getfield 622	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:uiAppId	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1321: invokevirtual 583	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1324: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1327: pop
-    //   1328: aload_2
-    //   1329: astore 8
-    //   1331: aload 11
-    //   1333: ldc_w 623
-    //   1336: aload 15
-    //   1338: getfield 254	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:iNewFlag	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   1341: invokevirtual 259	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   1344: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1347: pop
-    //   1348: aload_2
-    //   1349: astore 8
-    //   1351: aload 15
-    //   1353: getfield 254	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:iNewFlag	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   1356: invokevirtual 259	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   1359: istore 4
-    //   1361: aload_2
-    //   1362: astore 8
-    //   1364: new 303	org/json/JSONArray
-    //   1367: dup
-    //   1368: invokespecial 304	org/json/JSONArray:<init>	()V
-    //   1371: astore 10
-    //   1373: iconst_0
-    //   1374: istore_3
-    //   1375: aload_2
-    //   1376: astore 8
-    //   1378: iload_3
-    //   1379: aload 15
-    //   1381: getfield 625	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:missions	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   1384: invokevirtual 628	com/tencent/mobileqq/pb/PBRepeatField:size	()I
-    //   1387: if_icmpge +46 -> 1433
-    //   1390: aload_2
-    //   1391: astore 8
-    //   1393: aload 10
-    //   1395: aload 15
-    //   1397: getfield 625	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:missions	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   1400: iload_3
-    //   1401: invokevirtual 631	com/tencent/mobileqq/pb/PBRepeatField:get	(I)Ljava/lang/Object;
-    //   1404: invokevirtual 329	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   1407: pop
-    //   1408: aload_2
-    //   1409: astore 8
-    //   1411: aload 14
-    //   1413: aload 15
-    //   1415: getfield 625	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:missions	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   1418: iload_3
-    //   1419: invokevirtual 631	com/tencent/mobileqq/pb/PBRepeatField:get	(I)Ljava/lang/Object;
-    //   1422: invokevirtual 584	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   1425: pop
-    //   1426: iload_3
-    //   1427: iconst_1
-    //   1428: iadd
-    //   1429: istore_3
-    //   1430: goto -55 -> 1375
-    //   1433: aload_2
-    //   1434: astore 8
-    //   1436: new 290	org/json/JSONObject
-    //   1439: dup
-    //   1440: invokespecial 291	org/json/JSONObject:<init>	()V
-    //   1443: astore 17
-    //   1445: aload 16
-    //   1447: ifnull +113 -> 1560
-    //   1450: iconst_0
-    //   1451: istore_3
-    //   1452: aload_2
-    //   1453: astore 8
-    //   1455: iload_3
-    //   1456: aload 16
-    //   1458: invokeinterface 632 1 0
-    //   1463: if_icmpge +97 -> 1560
-    //   1466: aload_2
-    //   1467: astore 8
-    //   1469: aload 17
-    //   1471: ldc_w 634
-    //   1474: aload 16
-    //   1476: iload_3
-    //   1477: invokeinterface 635 2 0
-    //   1482: checkcast 637	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo
-    //   1485: getfield 639	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo:red_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1488: invokevirtual 583	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1491: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1494: pop
-    //   1495: aload_2
-    //   1496: astore 8
-    //   1498: aload 17
-    //   1500: ldc_w 641
-    //   1503: aload 16
-    //   1505: iload_3
-    //   1506: invokeinterface 635 2 0
-    //   1511: checkcast 637	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo
-    //   1514: getfield 643	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo:red_content	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1517: invokevirtual 240	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1520: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1523: pop
-    //   1524: aload_2
-    //   1525: astore 8
-    //   1527: aload 17
-    //   1529: ldc_w 645
-    //   1532: aload 16
-    //   1534: iload_3
-    //   1535: invokeinterface 635 2 0
-    //   1540: checkcast 637	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo
-    //   1543: getfield 647	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo:red_desc	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1546: invokevirtual 240	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1549: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1552: pop
-    //   1553: iload_3
-    //   1554: iconst_1
-    //   1555: iadd
-    //   1556: istore_3
-    //   1557: goto -105 -> 1452
-    //   1560: aload_2
-    //   1561: astore 8
-    //   1563: aload 11
-    //   1565: ldc_w 353
-    //   1568: aload 17
-    //   1570: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1573: pop
-    //   1574: aload_2
-    //   1575: astore 8
-    //   1577: aload 11
-    //   1579: ldc_w 601
-    //   1582: aload 10
-    //   1584: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1587: pop
-    //   1588: aload_2
-    //   1589: astore 8
-    //   1591: aload 11
-    //   1593: ldc 38
-    //   1595: aload 15
-    //   1597: getfield 582	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1600: invokevirtual 583	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1603: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1606: pop
-    //   1607: aload_2
-    //   1608: astore 8
-    //   1610: aload 11
-    //   1612: ldc_w 597
-    //   1615: aload 15
-    //   1617: getfield 648	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:buffer	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1620: invokevirtual 240	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1623: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1626: pop
-    //   1627: aload_2
-    //   1628: astore 8
-    //   1630: aload 11
-    //   1632: ldc 29
-    //   1634: aload 15
-    //   1636: getfield 236	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:path	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1639: invokevirtual 240	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1642: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1645: pop
-    //   1646: aload_2
-    //   1647: astore 8
-    //   1649: aload 11
-    //   1651: ldc_w 650
-    //   1654: aload 15
-    //   1656: getfield 652	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:appset	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   1659: invokevirtual 259	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   1662: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1665: pop
-    //   1666: aload_2
-    //   1667: astore 8
-    //   1669: aload 11
-    //   1671: ldc_w 654
-    //   1674: aload 15
-    //   1676: getfield 656	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:modify_ts	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1679: invokevirtual 583	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1682: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1685: pop
-    //   1686: aload_2
-    //   1687: astore 8
-    //   1689: aload 11
-    //   1691: ldc_w 658
-    //   1694: aload 15
-    //   1696: getfield 660	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:num	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   1699: invokevirtual 259	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   1702: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1705: pop
-    //   1706: aload_2
-    //   1707: astore 8
-    //   1709: aload 11
-    //   1711: ldc_w 662
-    //   1714: aload 15
-    //   1716: getfield 664	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:push_red_ts	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1719: invokevirtual 583	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1722: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1725: pop
-    //   1726: aload_2
-    //   1727: astore 8
-    //   1729: aload 12
-    //   1731: ldc_w 666
-    //   1734: aload 11
-    //   1736: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1739: pop
-    //   1740: aload_2
-    //   1741: astore 8
-    //   1743: aload_0
-    //   1744: aload 15
-    //   1746: getfield 648	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:buffer	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1749: invokevirtual 240	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1752: invokespecial 110	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:getReportBufferString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1755: astore_2
-    //   1756: iload 4
-    //   1758: istore_3
-    //   1759: iconst_0
-    //   1760: istore 4
-    //   1762: goto -710 -> 1052
-    //   1765: astore 11
-    //   1767: aload 10
-    //   1769: astore 9
-    //   1771: aload 11
-    //   1773: invokevirtual 299	org/json/JSONException:printStackTrace	()V
-    //   1776: bipush 252
-    //   1778: istore 4
-    //   1780: iconst_0
-    //   1781: istore_3
-    //   1782: aload 14
-    //   1784: ldc_w 301
-    //   1787: invokevirtual 584	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   1790: pop
-    //   1791: aload 9
-    //   1793: astore 8
-    //   1795: aload_2
-    //   1796: astore 9
-    //   1798: goto -696 -> 1102
-    //   1801: ldc_w 668
-    //   1804: aload 8
-    //   1806: invokevirtual 246	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1809: ifeq -1597 -> 212
-    //   1812: aload_2
-    //   1813: ldc_w 353
-    //   1816: invokevirtual 357	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   1819: checkcast 334	com/tencent/mobileqq/redtouch/RedAppInfo
-    //   1822: astore 8
-    //   1824: new 290	org/json/JSONObject
-    //   1827: dup
-    //   1828: invokespecial 291	org/json/JSONObject:<init>	()V
-    //   1831: astore_2
-    //   1832: new 290	org/json/JSONObject
-    //   1835: dup
-    //   1836: invokespecial 291	org/json/JSONObject:<init>	()V
-    //   1839: astore 9
-    //   1841: aload 8
-    //   1843: ifnonnull +75 -> 1918
-    //   1846: aload_2
-    //   1847: ldc_w 488
-    //   1850: iconst_m1
-    //   1851: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1854: pop
-    //   1855: aload_2
-    //   1856: ldc 26
-    //   1858: ldc_w 670
-    //   1861: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1864: pop
-    //   1865: invokestatic 134	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1868: ifeq +33 -> 1901
-    //   1871: getstatic 70	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:TAG	Ljava/lang/String;
-    //   1874: iconst_2
-    //   1875: new 156	java/lang/StringBuilder
-    //   1878: dup
-    //   1879: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   1882: ldc_w 672
-    //   1885: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1888: aload_2
-    //   1889: invokevirtual 330	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   1892: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1895: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1898: invokestatic 140	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1901: aload_0
-    //   1902: aload_1
-    //   1903: iconst_1
-    //   1904: anewarray 242	java/lang/String
-    //   1907: dup
-    //   1908: iconst_0
-    //   1909: aload_2
-    //   1910: invokevirtual 330	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   1913: aastore
-    //   1914: invokevirtual 383	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   1917: return
-    //   1918: aload 8
-    //   1920: invokevirtual 675	com/tencent/mobileqq/redtouch/RedAppInfo:c	()I
-    //   1923: iconst_m1
-    //   1924: if_icmpne +65 -> 1989
-    //   1927: aload_2
-    //   1928: ldc_w 488
-    //   1931: bipush 253
-    //   1933: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1936: pop
-    //   1937: aload_2
-    //   1938: ldc 26
-    //   1940: ldc_w 586
-    //   1943: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1946: pop
-    //   1947: goto -82 -> 1865
-    //   1950: astore 8
-    //   1952: aload 8
-    //   1954: invokevirtual 299	org/json/JSONException:printStackTrace	()V
-    //   1957: aload_2
-    //   1958: ldc_w 488
-    //   1961: iconst_m1
-    //   1962: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1965: pop
-    //   1966: aload_2
-    //   1967: ldc 26
-    //   1969: ldc_w 677
-    //   1972: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1975: pop
-    //   1976: goto -75 -> 1901
-    //   1979: astore 8
-    //   1981: aload 8
-    //   1983: invokevirtual 299	org/json/JSONException:printStackTrace	()V
-    //   1986: goto -85 -> 1901
-    //   1989: aload_2
-    //   1990: ldc_w 488
-    //   1993: iconst_0
-    //   1994: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   1997: pop
-    //   1998: aload 9
-    //   2000: ldc_w 679
-    //   2003: aload 8
-    //   2005: invokevirtual 675	com/tencent/mobileqq/redtouch/RedAppInfo:c	()I
-    //   2008: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   2011: pop
-    //   2012: aload 9
-    //   2014: ldc_w 681
-    //   2017: aload 8
-    //   2019: invokevirtual 684	com/tencent/mobileqq/redtouch/RedAppInfo:f	()I
-    //   2022: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   2025: pop
-    //   2026: aload 9
-    //   2028: ldc_w 686
-    //   2031: aload 8
-    //   2033: invokevirtual 360	com/tencent/mobileqq/redtouch/RedAppInfo:b	()I
-    //   2036: invokevirtual 491	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   2039: pop
-    //   2040: aload_2
-    //   2041: ldc_w 666
-    //   2044: aload 9
-    //   2046: invokevirtual 326	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   2049: pop
-    //   2050: goto -185 -> 1865
-    //   2053: astore 11
-    //   2055: aload 8
-    //   2057: astore_2
-    //   2058: goto -287 -> 1771
+    //   538: invokestatic 203	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   541: ifeq -211 -> 330
+    //   544: getstatic 70	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:TAG	Ljava/lang/String;
+    //   547: iconst_2
+    //   548: new 225	java/lang/StringBuilder
+    //   551: dup
+    //   552: invokespecial 226	java/lang/StringBuilder:<init>	()V
+    //   555: ldc_w 728
+    //   558: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   561: aload 5
+    //   563: invokevirtual 388	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   566: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   569: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   572: invokestatic 209	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   575: goto -245 -> 330
+    //   578: astore_2
+    //   579: invokestatic 203	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   582: ifeq -252 -> 330
+    //   585: getstatic 70	com/tencent/mobileqq/redtouch/RedTouchWebviewHandler:TAG	Ljava/lang/String;
+    //   588: iconst_2
+    //   589: new 225	java/lang/StringBuilder
+    //   592: dup
+    //   593: invokespecial 226	java/lang/StringBuilder:<init>	()V
+    //   596: ldc_w 728
+    //   599: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   602: aload_2
+    //   603: invokevirtual 729	java/lang/Exception:toString	()Ljava/lang/String;
+    //   606: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   609: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   612: invokestatic 209	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   615: goto -285 -> 330
+    //   618: astore 6
+    //   620: aload 6
+    //   622: invokevirtual 347	org/json/JSONException:printStackTrace	()V
+    //   625: goto -299 -> 326
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2061	0	this	RedTouchWebviewHandler
-    //   0	2061	1	paramString	String
-    //   0	2061	2	paramBundle	Bundle
-    //   941	841	3	i	int
-    //   934	845	4	j	int
-    //   1121	58	5	k	int
-    //   736	32	6	l	long
-    //   17	1902	8	localObject1	Object
-    //   1950	3	8	localJSONException1	JSONException
-    //   1979	77	8	localJSONException2	JSONException
-    //   38	738	9	localObject2	Object
-    //   869	3	9	localJSONException3	JSONException
-    //   961	1084	9	localObject3	Object
-    //   47	1721	10	localObject4	Object
-    //   63	1672	11	localObject5	Object
-    //   1765	7	11	localJSONException4	JSONException
-    //   2053	1	11	localJSONException5	JSONException
-    //   75	1655	12	localObject6	Object
-    //   120	1088	13	localObject7	Object
-    //   501	1282	14	localObject8	Object
-    //   930	815	15	localAppInfo	BusinessInfoCheckUpdate.AppInfo
-    //   979	554	16	localList	List
-    //   1443	126	17	localJSONObject	JSONObject
+    //   0	628	0	this	RedTouchWebviewHandler
+    //   0	628	1	paramString	String
+    //   0	628	2	paramBundle	Bundle
+    //   449	29	3	l	long
+    //   7	555	5	localJSONObject	JSONObject
+    //   62	423	6	localObject1	Object
+    //   618	3	6	localJSONException	JSONException
+    //   45	467	7	localObject2	Object
+    //   19	372	8	localObject3	Object
+    //   27	169	9	localObject4	Object
+    //   205	29	10	str	String
+    //   214	71	11	localReportStaticsData	com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.ReportStaticsData
     // Exception table:
     //   from	to	target	type
-    //   53	65	220	org/json/JSONException
-    //   69	77	220	org/json/JSONException
-    //   92	100	220	org/json/JSONException
-    //   104	122	220	org/json/JSONException
-    //   134	145	220	org/json/JSONException
-    //   149	158	220	org/json/JSONException
-    //   161	171	220	org/json/JSONException
-    //   174	186	220	org/json/JSONException
-    //   189	195	220	org/json/JSONException
-    //   225	253	256	org/json/JSONException
-    //   323	456	591	org/json/JSONException
-    //   456	472	591	org/json/JSONException
-    //   472	588	591	org/json/JSONException
-    //   635	644	591	org/json/JSONException
-    //   649	659	591	org/json/JSONException
-    //   659	866	591	org/json/JSONException
-    //   592	613	869	org/json/JSONException
-    //   968	991	1765	org/json/JSONException
-    //   1846	1865	1950	org/json/JSONException
-    //   1865	1901	1950	org/json/JSONException
-    //   1918	1947	1950	org/json/JSONException
-    //   1989	2050	1950	org/json/JSONException
-    //   1957	1976	1979	org/json/JSONException
-    //   994	1006	2053	org/json/JSONException
-    //   1015	1024	2053	org/json/JSONException
-    //   1027	1038	2053	org/json/JSONException
-    //   1041	1052	2053	org/json/JSONException
-    //   1055	1061	2053	org/json/JSONException
-    //   1064	1095	2053	org/json/JSONException
-    //   1298	1308	2053	org/json/JSONException
-    //   1311	1328	2053	org/json/JSONException
-    //   1331	1348	2053	org/json/JSONException
-    //   1351	1361	2053	org/json/JSONException
-    //   1364	1373	2053	org/json/JSONException
-    //   1378	1390	2053	org/json/JSONException
-    //   1393	1408	2053	org/json/JSONException
-    //   1411	1426	2053	org/json/JSONException
-    //   1436	1445	2053	org/json/JSONException
-    //   1455	1466	2053	org/json/JSONException
-    //   1469	1495	2053	org/json/JSONException
-    //   1498	1524	2053	org/json/JSONException
-    //   1527	1553	2053	org/json/JSONException
-    //   1563	1574	2053	org/json/JSONException
-    //   1577	1588	2053	org/json/JSONException
-    //   1591	1607	2053	org/json/JSONException
-    //   1610	1627	2053	org/json/JSONException
-    //   1630	1646	2053	org/json/JSONException
-    //   1649	1666	2053	org/json/JSONException
-    //   1669	1686	2053	org/json/JSONException
-    //   1689	1706	2053	org/json/JSONException
-    //   1709	1726	2053	org/json/JSONException
-    //   1729	1740	2053	org/json/JSONException
-    //   1743	1756	2053	org/json/JSONException
+    //   37	169	304	org/json/JSONException
+    //   169	185	304	org/json/JSONException
+    //   185	301	304	org/json/JSONException
+    //   348	357	304	org/json/JSONException
+    //   362	372	304	org/json/JSONException
+    //   372	575	304	org/json/JSONException
+    //   37	169	578	java/lang/Exception
+    //   169	185	578	java/lang/Exception
+    //   185	301	578	java/lang/Exception
+    //   348	357	578	java/lang/Exception
+    //   362	372	578	java/lang/Exception
+    //   372	575	578	java/lang/Exception
+    //   305	326	618	org/json/JSONException
+  }
+  
+  private void handleSetAppInfo(String paramString, Bundle paramBundle)
+  {
+    int i;
+    if (paramBundle == null)
+    {
+      i = -1;
+      paramBundle = new JSONObject();
+    }
+    for (;;)
+    {
+      try
+      {
+        paramBundle.put("code", i);
+        if (i != -3) {
+          continue;
+        }
+        paramBundle.put("errorMessage", "appInfo not found");
+        if (QLog.isColorLevel()) {
+          QLog.i(TAG, 2, "setAppInfo:" + paramBundle.toString());
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        continue;
+      }
+      callJs(paramString, new String[] { paramBundle.toString() });
+      return;
+      i = paramBundle.getInt("iret");
+      break;
+      if (i == -4) {
+        paramBundle.put("errorMessage", "failed to set appInfo");
+      }
+    }
+  }
+  
+  private void handlegetIndivationType(String paramString, Bundle paramBundle)
+  {
+    String str1 = "0";
+    localJSONObject1 = new JSONObject();
+    localObject = str1;
+    for (;;)
+    {
+      try
+      {
+        RedAppInfo localRedAppInfo = (RedAppInfo)paramBundle.getParcelable("redInfo");
+        localObject = str1;
+        String str2 = paramBundle.getString("path");
+        paramBundle = str1;
+        if (localRedAppInfo != null)
+        {
+          paramBundle = str1;
+          localObject = str1;
+          if (localRedAppInfo.b() != 0)
+          {
+            localObject = str1;
+            JSONObject localJSONObject2 = getRedBufferJson(new JSONObject(localRedAppInfo.a()));
+            paramBundle = str1;
+            if (localJSONObject2 != null)
+            {
+              localObject = str1;
+              if (!localJSONObject2.has("_red_ext_busi_")) {
+                continue;
+              }
+              localObject = str1;
+              paramBundle = localJSONObject2.getString("_red_ext_busi_");
+            }
+          }
+        }
+        localObject = paramBundle;
+        localJSONObject1.put("result", paramBundle);
+        localObject = paramBundle;
+        onReportRed(baij.a(localRedAppInfo), 1002);
+        localObject = paramBundle;
+        ipcItemClick(str2);
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        try
+        {
+          localJSONObject1.put("result", localObject);
+          callJs(paramString, new String[] { localJSONObject1.toString() });
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+        }
+        continue;
+      }
+      callJs(paramString, new String[] { localJSONObject1.toString() });
+      return;
+      paramBundle = "0";
+    }
+  }
+  
+  private void handlegetRedpointShowInfoPath(String paramString, Bundle paramBundle)
+  {
+    RedAppInfo localRedAppInfo = (RedAppInfo)paramBundle.getParcelable("redInfo");
+    paramBundle = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
+    if (localRedAppInfo == null) {}
+    try
+    {
+      paramBundle.put("code", -1);
+      paramBundle.put("errorMessage", "missing path");
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(TAG, 2, "getRedPointShowInfo:" + paramBundle.toString());
+        }
+        callJs(paramString, new String[] { paramBundle.toString() });
+        return;
+        if (localRedAppInfo.c() != -1) {
+          break;
+        }
+        paramBundle.put("code", -3);
+        paramBundle.put("errorMessage", "appInfo not found");
+      }
+    }
+    catch (JSONException localJSONException1)
+    {
+      for (;;)
+      {
+        localJSONException1.printStackTrace();
+        try
+        {
+          paramBundle.put("code", -1);
+          paramBundle.put("errorMessage", "missing callback");
+        }
+        catch (JSONException localJSONException2)
+        {
+          localJSONException2.printStackTrace();
+        }
+        continue;
+        paramBundle.put("code", 0);
+        localJSONObject.put("hintType", localJSONException2.c());
+        localJSONObject.put("number", localJSONException2.f());
+        localJSONObject.put("isShow", localJSONException2.b());
+        paramBundle.put("data", localJSONObject);
+      }
+    }
+  }
+  
+  private void ipcItemClick(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("path", paramString);
+    super.sendRemoteReq(arph.a("myIndividuationRedInfo", null, 0, localBundle), false, true);
   }
   
   private void onReportRed(BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt)
@@ -1370,7 +1194,7 @@ public class RedTouchWebviewHandler
       localJSONObject.put("obj_id", "");
       localJSONObject.put("pay_amt", 0);
       localJSONObject.put("service_id", 100005);
-      new axlx(this.mRuntime.a()).c(paramAppInfo, localJSONObject.toString());
+      new baif(this.mRuntime.a()).c(paramAppInfo, localJSONObject.toString());
       return;
     }
     catch (JSONException paramAppInfo)
@@ -1436,9 +1260,9 @@ public class RedTouchWebviewHandler
         paramString = str;
         Bundle localBundle = new Bundle();
         paramString = str;
-        localBundle.putInt("path", axlx.a(localObject.getString("path")));
+        localBundle.putInt("path", baif.a(localObject.getString("path")));
         paramString = str;
-        sendRemoteReq(apml.a("leba_item_get", str, this.mOnRemoteResp.key, localBundle), false, false);
+        sendRemoteReq(arph.a("leba_item_get", str, this.mOnRemoteResp.key, localBundle), false, false);
         return;
       }
       catch (Exception localException2)
@@ -1468,7 +1292,7 @@ public class RedTouchWebviewHandler
       Bundle localBundle = new Bundle();
       localBundle.putString("path", "100005.100022");
       localBundle.putString("subCmd", "redTouch_getIndividuationType");
-      super.sendRemoteReq(apml.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, localBundle), false, true);
+      super.sendRemoteReq(arph.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, localBundle), false, true);
       return;
     }
     catch (JSONException paramString)
@@ -1530,7 +1354,7 @@ public class RedTouchWebviewHandler
         str = paramString;
         ((Bundle)localObject2).putInt("setId", i);
         str = paramString;
-        super.sendRemoteReq(apml.a("redTouch_getRedPointShowInfo_set", paramString, this.mOnRemoteResp.key, (Bundle)localObject2), false, true);
+        super.sendRemoteReq(arph.a("redTouch_getRedPointShowInfo_set", paramString, this.mOnRemoteResp.key, (Bundle)localObject2), false, true);
         return;
         str = paramString;
         if (!((JSONObject)localObject3).isNull("path"))
@@ -1544,7 +1368,7 @@ public class RedTouchWebviewHandler
           str = paramString;
           ((Bundle)localObject3).putString("subCmd", "redTouch_getRedPointShowInfo_path");
           str = paramString;
-          super.sendRemoteReq(apml.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, (Bundle)localObject3), false, true);
+          super.sendRemoteReq(arph.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, (Bundle)localObject3), false, true);
           return;
         }
         str = paramString;
@@ -1642,7 +1466,7 @@ public class RedTouchWebviewHandler
         try
         {
           localObject = ((JSONObject)localObject).getString("path");
-          if (!new axlx(this.mRuntime.a()).a().equals(localObject))
+          if (!new baif(this.mRuntime.a()).a().equals(localObject))
           {
             localJSONObject.put("code", 0);
             localJSONObject.put("data", 0);
@@ -1701,167 +1525,40 @@ public class RedTouchWebviewHandler
   
   public void onResponse(Bundle paramBundle)
   {
-    int j = -1;
-    int i = 1;
     if (paramBundle == null) {}
     String str1;
-    Object localObject;
-    label169:
-    label210:
+    String str2;
     do
     {
       do
       {
         return;
       } while (paramBundle.getInt("respkey", 0) != this.mOnRemoteResp.key);
-      String str2 = paramBundle.getString("cmd");
-      str1 = paramBundle.getString("callbackid");
-      localObject = paramBundle.getBundle("response");
-      if ("leba_item_set".equals(str2))
+      str1 = paramBundle.getString("cmd");
+      str2 = paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("response");
+      if ("leba_item_set".equals(str1))
       {
-        if (localObject == null)
-        {
-          i = 1;
-          if (QLog.isColorLevel()) {
-            QLog.d(TAG, 2, "set leba item result: " + i);
-          }
-          paramBundle = new JSONObject();
-        }
-        for (;;)
-        {
-          try
-          {
-            paramBundle.put("ret", i);
-            if (i != 0) {
-              break label169;
-            }
-            paramBundle.put("errorMessage", "success");
-            callJs(str1, new String[] { paramBundle.toString() });
-            return;
-          }
-          catch (JSONException paramBundle)
-          {
-            paramBundle.printStackTrace();
-            return;
-          }
-          i = ((Bundle)localObject).getInt("ret");
-          break;
-          paramBundle.put("errorMessage", "failed");
-        }
+        handleLebaItemSet(str2, paramBundle);
+        return;
       }
-      if ("leba_item_get".equals(str2))
+      if ("leba_item_get".equals(str1))
       {
-        if (localObject == null)
-        {
-          if (i != 0) {
-            break label325;
-          }
-          j = ((Bundle)localObject).getInt("type", -1);
-          if (QLog.isColorLevel()) {
-            QLog.d(TAG, 2, "get leba item result: " + i + ", type: " + j);
-          }
-          paramBundle = new JSONObject();
-        }
-        for (;;)
-        {
-          try
-          {
-            paramBundle.put("ret", i);
-            paramBundle.put("type", j);
-            if (i != 0) {
-              break label330;
-            }
-            paramBundle.put("errorMessage", "success");
-            callJs(str1, new String[] { paramBundle.toString() });
-            return;
-          }
-          catch (JSONException paramBundle)
-          {
-            paramBundle.printStackTrace();
-            return;
-          }
-          i = ((Bundle)localObject).getInt("ret");
-          break;
-          j = -1;
-          break label210;
-          paramBundle.put("errorMessage", "data not prepared or cannot find the path, try again.");
-        }
+        handleLebaItemGet(str2, paramBundle);
+        return;
       }
-      if ("redTouch_setAppInfo".equals(str2))
+      if ("redTouch_setAppInfo".equals(str1))
       {
-        i = ((Bundle)localObject).getInt("iret");
-        paramBundle = new JSONObject();
-        for (;;)
-        {
-          try
-          {
-            paramBundle.put("code", i);
-            if (i != -3) {
-              continue;
-            }
-            paramBundle.put("errorMessage", "appInfo not found");
-            if (QLog.isColorLevel()) {
-              QLog.i(TAG, 2, "setAppInfo:" + paramBundle.toString());
-            }
-          }
-          catch (JSONException localJSONException1)
-          {
-            localJSONException1.printStackTrace();
-            continue;
-          }
-          callJs(str1, new String[] { paramBundle.toString() });
-          return;
-          if (i == -4) {
-            paramBundle.put("errorMessage", "failed to set appInfo");
-          }
-        }
+        handleSetAppInfo(str2, paramBundle);
+        return;
       }
-      if ("redTouch_getRedPointShowInfo_set".equals(localJSONException1))
+      if ("redTouch_getRedPointShowInfo_set".equals(str1))
       {
-        paramBundle = new JSONObject();
-        RedTypeInfo localRedTypeInfo = (RedTypeInfo)((Bundle)localObject).getSerializable("redInfo");
-        localObject = new JSONObject();
-        for (;;)
-        {
-          try
-          {
-            paramBundle.put("code", 0);
-            if (localRedTypeInfo == null) {
-              continue;
-            }
-            j = localRedTypeInfo.getRed_type();
-            i = 1;
-            ((JSONObject)localObject).put("hintType", j);
-            ((JSONObject)localObject).put("number", 0);
-            ((JSONObject)localObject).put("isShow", i);
-            paramBundle.put("data", localObject);
-            if (QLog.isColorLevel()) {
-              QLog.i(TAG, 2, "getRedPointShowInfo:" + paramBundle.toString());
-            }
-          }
-          catch (JSONException localJSONException2)
-          {
-            localJSONException2.printStackTrace();
-            try
-            {
-              paramBundle.put("code", -1);
-              paramBundle.put("errorMessage", "missing callback");
-            }
-            catch (JSONException localJSONException3)
-            {
-              localJSONException3.printStackTrace();
-            }
-            continue;
-          }
-          callJs(str1, new String[] { paramBundle.toString() });
-          return;
-          i = 0;
-        }
+        handleGetRedpointShowInfo(str2, paramBundle);
+        return;
       }
-    } while (!"redTouch_getRedInfo".equals(localJSONException3));
-    label325:
-    label330:
-    handleRedInfoResponse(str1, (Bundle)localObject);
+    } while (!"redTouch_getRedInfo".equals(str1));
+    handleRedInfoResponse(str2, paramBundle);
   }
   
   public void reportBusinessRedTouch(String paramString)
@@ -1889,7 +1586,7 @@ public class RedTouchWebviewHandler
       str1 = paramString;
       localBundle.putString("subCmd", "redTouch_reportBusinessRedTouch");
       str1 = paramString;
-      super.sendRemoteReq(apml.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, localBundle), false, true);
+      super.sendRemoteReq(arph.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, localBundle), false, true);
       return;
     }
     catch (Exception paramString)
@@ -1994,7 +1691,7 @@ public class RedTouchWebviewHandler
       localObject1 = paramString;
       ((Bundle)localObject3).putString("subCmd", "redTouch_reportRedTouch");
       localObject1 = paramString;
-      super.sendRemoteReq(apml.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, (Bundle)localObject3), false, true);
+      super.sendRemoteReq(arph.a("redTouch_getRedInfo", paramString, this.mOnRemoteResp.key, (Bundle)localObject3), false, true);
       localObject1 = paramString;
       localObject2 = new JSONObject();
       try
@@ -2072,9 +1769,9 @@ public class RedTouchWebviewHandler
       localObject1 = paramString;
       localObject3 = new Bundle();
       localObject1 = paramString;
-      ((Bundle)localObject3).putParcelable("red", axmc.a((BusinessInfoCheckUpdate.AppInfo)localObject2));
+      ((Bundle)localObject3).putParcelable("red", baij.a((BusinessInfoCheckUpdate.AppInfo)localObject2));
       localObject1 = paramString;
-      super.sendRemoteReq(apml.a("redTouch_setAppInfo", paramString, this.mOnRemoteResp.key, (Bundle)localObject3), false, true);
+      super.sendRemoteReq(arph.a("redTouch_setAppInfo", paramString, this.mOnRemoteResp.key, (Bundle)localObject3), false, true);
       return;
     }
     catch (Exception paramString)
@@ -2125,11 +1822,11 @@ public class RedTouchWebviewHandler
         paramString = str;
         Bundle localBundle = new Bundle();
         paramString = str;
-        localBundle.putInt("path", axlx.a(localObject.getString("path")));
+        localBundle.putInt("path", baif.a(localObject.getString("path")));
         paramString = str;
         localBundle.putInt("type", localObject.getInt("type"));
         paramString = str;
-        sendRemoteReq(apml.a("leba_item_set", str, this.mOnRemoteResp.key, localBundle), false, false);
+        sendRemoteReq(arph.a("leba_item_set", str, this.mOnRemoteResp.key, localBundle), false, false);
         return;
       }
       catch (Exception localException2)
@@ -2158,7 +1855,7 @@ public class RedTouchWebviewHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchWebviewHandler
  * JD-Core Version:    0.7.0.1
  */

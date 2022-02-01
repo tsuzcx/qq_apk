@@ -1,28 +1,38 @@
-import android.os.Bundle;
-import android.util.SparseArray;
+import java.io.InputStream;
 
-public abstract class axlo
+public class axlo
 {
-  protected static SparseArray<Class<?>> a = new SparseArray();
-  protected static SparseArray<Class<?>> b = new SparseArray();
-  
-  static
+  public static byte[] a(InputStream paramInputStream, int paramInt)
   {
-    a.put(1, axlq.class);
+    Object localObject;
+    if (paramInt <= 0) {
+      localObject = null;
+    }
+    for (;;)
+    {
+      return localObject;
+      int i = 0;
+      byte[] arrayOfByte = new byte[paramInt];
+      localObject = arrayOfByte;
+      if (i >= paramInt) {
+        continue;
+      }
+      try
+      {
+        int j = paramInputStream.read(arrayOfByte, i, paramInt - i);
+        localObject = arrayOfByte;
+        if (j <= 0) {
+          continue;
+        }
+        i += j;
+      }
+      finally {}
+    }
   }
-  
-  public abstract int a();
-  
-  public void a(Bundle paramBundle)
-  {
-    paramBundle.putInt("redpoint.fromReceiverIPCCode", a());
-  }
-  
-  public void b(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axlo
  * JD-Core Version:    0.7.0.1
  */

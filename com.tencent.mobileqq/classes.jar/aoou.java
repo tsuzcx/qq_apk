@@ -1,75 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class aoou
+public abstract class aoou
 {
-  private static final aoou jdField_a_of_type_Aoou = new aoou();
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
-  private String b = "";
+  public String businessId;
+  public boolean observerOnUiThread;
   
-  public static aoou a(aoko[] paramArrayOfaoko)
+  public aoou(String paramString)
   {
-    Object localObject;
-    if (paramArrayOfaoko == null) {
-      localObject = jdField_a_of_type_Aoou;
-    }
-    for (;;)
-    {
-      return localObject;
-      try
-      {
-        aoou localaoou = new aoou();
-        int j = paramArrayOfaoko.length;
-        int i = 0;
-        localObject = localaoou;
-        if (i >= j) {
-          continue;
-        }
-        localObject = new JSONObject(paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
-        if (((JSONObject)localObject).optInt("visible", 0) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localaoou.jdField_a_of_type_Boolean = bool;
-          localaoou.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("guideText", "");
-          localaoou.b = ((JSONObject)localObject).optString("guideHighlightText", "");
-          localaoou.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("showIntervalMs", 0L);
-          i += 1;
-          break;
-        }
-        return jdField_a_of_type_Aoou;
-      }
-      catch (Exception paramArrayOfaoko)
-      {
-        QLog.e("NotificationBannerBean", 1, "parse: failed. ", paramArrayOfaoko);
-      }
-    }
+    this.businessId = paramString;
   }
   
-  public long a()
+  public aoou(String paramString, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Long;
+    this.businessId = paramString;
+    this.observerOnUiThread = paramBoolean;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public void onConsecutiveFailure(int paramInt1, int paramInt2, boolean paramBoolean) {}
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public abstract void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
   
-  public String b()
-  {
-    return this.b;
-  }
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoou
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,22 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity.7.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class aerj
-  implements ajal
+  implements DialogInterface.OnClickListener
 {
-  public aerj(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
+  aerj(aeri paramaeri) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
-    {
-      paramPathResult = paramPathResult + File.separator;
-      this.a.a.specailBackgroundAnimInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult + "anim_bg");
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_SPECAIL_ANIM specailBackgroundAnimInfo=" + this.a.a.specailBackgroundAnimInfo);
-      }
-      CustomizeStrategyFactory.a().a(this.a.a);
-      return;
-    }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
+    ThreadManager.getSubThreadHandler().post(new NotificationActivity.7.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aerj
  * JD-Core Version:    0.7.0.1
  */

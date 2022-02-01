@@ -1,39 +1,53 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallbackTimeOut;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
 
-final class anjz
-  implements ArkAppMgr.IGetAppPathByNameCallbackTimeOut
+class anjz
+  implements auah
 {
-  anjz(String paramString1, String paramString2, ankb paramankb) {}
+  anjz(anjx paramanjx, long paramLong) {}
   
-  public void onGetAppPathByNameTimeout(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void a(int paramInt, String paramString)
   {
-    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null))
+    atvf.c(BaseApplicationImpl.getContext().getString(2131692336));
+    ((anjx)this.jdField_a_of_type_Anjx.app.a(8)).OnSessionComplete(this.jdField_a_of_type_Long, 41, paramInt);
+  }
+  
+  public void a(Object paramObject)
+  {
+    Object localObject = (String)paramObject;
+    paramObject = (anjx)this.jdField_a_of_type_Anjx.app.a(8);
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      paramObject.OnSessionComplete(this.jdField_a_of_type_Long, 0, -999);
+    }
+    DataLineMsgRecord localDataLineMsgRecord;
+    do
     {
-      paramString = ark.Application.Create(this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path);
-      if (paramString != null)
-      {
-        boolean bool = paramString.CheckShareUrlLegality(this.b);
-        paramString.Release();
-        if (bool)
-        {
-          this.jdField_a_of_type_Ankb.a(true);
-          ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality, url is in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-        }
-      }
-      else
+      do
       {
         return;
+        int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_Long);
+        localDataLineMsgRecord = this.jdField_a_of_type_Anjx.app.a().a(i).a(this.jdField_a_of_type_Long);
+      } while (localDataLineMsgRecord == null);
+      localDataLineMsgRecord.serverPath = ((String)localObject);
+      localDataLineMsgRecord.nOpType = 1;
+      localDataLineMsgRecord.bIsSended = true;
+      localDataLineMsgRecord.bIsTransfering = false;
+      if (localDataLineMsgRecord.entityID != 0L)
+      {
+        localObject = this.jdField_a_of_type_Anjx.app.a().a(localDataLineMsgRecord.entityID);
+        if (localObject != null)
+        {
+          ((FileManagerEntity)localObject).status = 1;
+          ((FileManagerEntity)localObject).Uuid = localDataLineMsgRecord.serverPath;
+        }
       }
-      this.jdField_a_of_type_Ankb.a(false);
-      ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality, url is not in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-      return;
-    }
-    this.jdField_a_of_type_Ankb.a(false);
-    anoe.a(anjy.a(), this.jdField_a_of_type_JavaLangString, "ArkCheckShareUrlLegality", paramInt, 0, 0L, 0L, 0L, "", "");
-    ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality,getAppInfo is failed and msg=%s", new Object[] { paramString }));
+    } while (!paramObject.a(localDataLineMsgRecord));
+    paramObject.a(localDataLineMsgRecord);
   }
 }
 

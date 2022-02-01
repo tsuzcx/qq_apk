@@ -1,46 +1,57 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqreader.QReaderHelper.1;
-import mqq.app.MobileQQ;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.wadl.WadlJsBridgeDownloadInfo;
 
-public class bizn
-  implements nbs
+public final class bizn
+  implements Parcelable.Creator<WadlJsBridgeDownloadInfo>
 {
-  public bizn(QReaderHelper.1 param1) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public WadlJsBridgeDownloadInfo a(Parcel paramParcel)
   {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.e("QReaderHelper", 2, "Load offline package finish, code = " + paramInt);
-    }
-    switch (paramInt)
+    boolean bool2 = true;
+    WadlJsBridgeDownloadInfo localWadlJsBridgeDownloadInfo = new WadlJsBridgeDownloadInfo();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.d = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Long = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.f = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.j = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.i = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    if (paramParcel.readByte() != 0)
     {
+      bool1 = true;
+      localWadlJsBridgeDownloadInfo.jdField_b_of_type_Boolean = bool1;
+      localWadlJsBridgeDownloadInfo.l = paramParcel.readString();
+      localWadlJsBridgeDownloadInfo.jdField_g_of_type_Int = paramParcel.readInt();
+      localWadlJsBridgeDownloadInfo.h = paramParcel.readInt();
+      localWadlJsBridgeDownloadInfo.m = paramParcel.readString();
+      if (paramParcel.readByte() == 0) {
+        break label203;
+      }
     }
-    for (int i = 0;; i = 1)
+    label203:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramString = this.a.a.getApplication().getSharedPreferences("qr_offline_fail", 0);
-      int k = paramString.getInt("offlinePkgDownloadFailCount", 0);
-      if (i != 0) {
-        j = k + 1;
-      }
-      if (j != k) {
-        paramString.edit().putInt("offlinePkgDownloadFailCount", j).commit();
-      }
-      if ((i != 0) && (QLog.isColorLevel())) {
-        QLog.e("QReaderHelper", 2, "offline package update failed:" + paramInt);
-      }
-      return;
+      localWadlJsBridgeDownloadInfo.jdField_c_of_type_Boolean = bool1;
+      return localWadlJsBridgeDownloadInfo;
+      bool1 = false;
+      break;
     }
   }
   
-  public void progress(int paramInt) {}
+  public WadlJsBridgeDownloadInfo[] a(int paramInt)
+  {
+    return new WadlJsBridgeDownloadInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bizn
  * JD-Core Version:    0.7.0.1
  */

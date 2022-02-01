@@ -3,27 +3,30 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awge;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
 import org.jetbrains.annotations.NotNull;
-import qkn;
-import qtm;
+import rey;
+import rop;
 import tencent.kandian.ugc.topic_info.TopicInfo;
 import tencent.kandian.ugc.topic_info.TopicInfoExt;
 
 public class ColumnInfo
-  extends awge
+  extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<ColumnInfo> CREATOR = new qkn();
+  public static final Parcelable.Creator<ColumnInfo> CREATOR = new rey();
   public static final int SOURCE_UGC = 5;
+  public static final int TYPE_ALLOW_SUBMIT = 1;
+  public static final int TYPE_FORBID_SUBMIT = 0;
   public int columnID;
   public int commentCount;
   public String coverUrl = "";
   public String intro = "";
   public int source;
+  public int submitPermission;
   public int subscribeCount;
   public String title = "";
   private long uid;
@@ -31,12 +34,13 @@ public class ColumnInfo
   
   public ColumnInfo() {}
   
-  public ColumnInfo(int paramInt, String paramString1, String paramString2, String paramString3)
+  public ColumnInfo(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2)
   {
-    this.columnID = paramInt;
+    this.columnID = paramInt1;
     this.coverUrl = paramString1;
     this.title = paramString2;
     this.intro = paramString3;
+    this.submitPermission = paramInt2;
   }
   
   public ColumnInfo(Parcel paramParcel)
@@ -45,6 +49,7 @@ public class ColumnInfo
     this.coverUrl = paramParcel.readString();
     this.title = paramParcel.readString();
     this.intro = paramParcel.readString();
+    this.submitPermission = paramParcel.readInt();
     this.source = paramParcel.readInt();
     this.uid = paramParcel.readLong();
     this.subscribeCount = paramParcel.readInt();
@@ -52,28 +57,28 @@ public class ColumnInfo
     this.videoCount = paramParcel.readInt();
   }
   
-  public ColumnInfo(qtm paramqtm)
+  public ColumnInfo(rop paramrop)
   {
-    String str;
-    if (paramqtm.a != null)
+    if (paramrop.jdField_a_of_type_JavaLangString != null)
     {
-      str = paramqtm.a;
+      str = paramrop.jdField_a_of_type_JavaLangString;
       this.coverUrl = str;
-      if (paramqtm.b == null) {
-        break label80;
+      if (paramrop.b == null) {
+        break label88;
       }
-      str = paramqtm.b;
+      str = paramrop.b;
       label51:
       this.title = str;
-      if (paramqtm.c == null) {
-        break label86;
+      if (paramrop.c == null) {
+        break label94;
       }
     }
-    label80:
-    label86:
-    for (paramqtm = paramqtm.c;; paramqtm = "")
+    label88:
+    label94:
+    for (String str = paramrop.c;; str = "")
     {
-      this.intro = paramqtm;
+      this.intro = str;
+      this.submitPermission = paramrop.jdField_a_of_type_Int;
       return;
       str = "";
       break;
@@ -94,6 +99,7 @@ public class ColumnInfo
     if (paramTopicInfo.intro.has()) {
       this.intro = paramTopicInfo.intro.get();
     }
+    this.submitPermission = paramTopicInfo.submit_permission.get();
     this.source = paramTopicInfo.source.get();
     this.uid = paramTopicInfo.creator_uid.get();
     this.subscribeCount = paramTopicInfo.ext.subscribe_num.get();
@@ -122,21 +128,22 @@ public class ColumnInfo
       localPBStringField.set(str);
       localPBStringField = localTopicInfo.title;
       if (this.title == null) {
-        break label157;
+        break label168;
       }
       str = this.title;
       label58:
       localPBStringField.set(str);
       localPBStringField = localTopicInfo.intro;
       if (this.intro == null) {
-        break label163;
+        break label174;
       }
     }
-    label157:
-    label163:
+    label168:
+    label174:
     for (String str = this.intro;; str = "")
     {
       localPBStringField.set(str);
+      localTopicInfo.submit_permission.set(this.submitPermission);
       localTopicInfo.source.set(this.source);
       localTopicInfo.creator_uid.set(this.uid);
       localTopicInfo.ext.subscribe_num.set(this.subscribeCount);
@@ -153,7 +160,7 @@ public class ColumnInfo
   @NotNull
   public String toString()
   {
-    return "ColumnInfo{columnID='" + this.columnID + '\'' + ", coverUrl='" + this.coverUrl + '\'' + ", title='" + this.title + '\'' + ", intro='" + this.intro + '\'' + ", source='" + this.source + '\'' + ", uid='" + this.uid + '\'' + ", subscribeCount='" + this.subscribeCount + '\'' + ", commentCount='" + this.commentCount + '\'' + ", videoCount='" + this.videoCount + '\'' + '}';
+    return "ColumnInfo{columnID='" + this.columnID + '\'' + ", coverUrl='" + this.coverUrl + '\'' + ", title='" + this.title + '\'' + ", intro='" + this.intro + '\'' + ", submitPermission='" + this.submitPermission + '\'' + ", source='" + this.source + '\'' + ", uid='" + this.uid + '\'' + ", subscribeCount='" + this.subscribeCount + '\'' + ", commentCount='" + this.commentCount + '\'' + ", videoCount='" + this.videoCount + '\'' + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -162,6 +169,7 @@ public class ColumnInfo
     paramParcel.writeString(this.coverUrl);
     paramParcel.writeString(this.title);
     paramParcel.writeString(this.intro);
+    paramParcel.writeInt(this.submitPermission);
     paramParcel.writeInt(this.source);
     paramParcel.writeLong(this.uid);
     paramParcel.writeInt(this.subscribeCount);

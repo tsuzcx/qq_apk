@@ -1,45 +1,43 @@
-import android.content.Intent;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.QzoneExternalRequest;
-import cooperation.vip.manager.CommonRequestManager.1;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
 
-public abstract class bkfv
-  extends MSFServlet
+public class bkfv
+  extends MqqHandler
 {
-  protected long a()
+  private WeakReference<Handler.Callback> a;
+  
+  public bkfv(Handler.Callback paramCallback)
   {
-    return 10000L;
+    this.a = new WeakReference(paramCallback);
   }
   
-  public abstract QzoneExternalRequest a(Intent paramIntent);
-  
-  public void a(Intent paramIntent)
+  public bkfv(Looper paramLooper, Handler.Callback paramCallback)
   {
-    ThreadManager.getSubThreadHandler().post(new CommonRequestManager.1(this, paramIntent));
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public bkfv(Looper paramLooper, Handler.Callback paramCallback, boolean paramBoolean)
   {
-    QzoneExternalRequest localQzoneExternalRequest = a(paramIntent);
-    if (localQzoneExternalRequest == null)
-    {
-      QLog.i("CommonRequestManager", 1, " onSend request = null");
-      return;
+    super(paramLooper, null, paramBoolean);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
     }
-    byte[] arrayOfByte = localQzoneExternalRequest.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null)
-    {
-      QLog.e("CommonRequestManager", 1, "onSend request encode result is null.cmd=" + localQzoneExternalRequest.uniKey());
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(a());
-    paramPacket.setSSOCommand("SQQzoneSvc." + localQzoneExternalRequest.uniKey());
-    paramPacket.putSendData(paramIntent);
+  }
+  
+  public String toString()
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    return super.toString() + " " + localCallback;
   }
 }
 

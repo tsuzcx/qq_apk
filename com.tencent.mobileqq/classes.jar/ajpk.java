@@ -1,23 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class ajpk
-  implements View.OnClickListener
+  extends asyw
 {
-  public ajpk(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
+  public ajpk(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(athr paramathr)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
-    if (((!QLog.isColorLevel()) || (!bdhb.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (ajpx.a == 1))
-    {
-      ajpy.b("", "0X8005F5B", "0");
+    if ((TextUtils.isEmpty(paramathr.a)) || (TextUtils.isEmpty(paramathr.b))) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.history.C2CAllFragment", 2, "OnThumbDownLoad error : [fileId] = " + paramathr.a + " [path] = " + paramathr.b);
+      }
+    }
+    while (this.a.a == null) {
       return;
     }
-    ajpy.b("", "0X8005F5B", "1");
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b()
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void d()
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

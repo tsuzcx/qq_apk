@@ -1,59 +1,32 @@
-import android.content.Context;
-import android.util.Pair;
-import com.rookery.translate.type.Language;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
 
-public class lda
-  extends lcx
+class lda
+  implements ServiceConnection
 {
-  private static lda a;
+  lda(lcz paramlcz) {}
   
-  public static lda a()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    try
-    {
-      if (a == null) {
-        a = new lda();
-      }
-      return a;
+    if (QLog.isColorLevel()) {
+      QLog.d(lcz.a(), 2, "AVServiceForQQ onServiceConnected");
     }
-    finally {}
+    this.a.a = lvz.a(paramIBinder);
   }
   
-  public void a(Context paramContext, List<String> paramList, Language paramLanguage, String paramString, Long paramLong, ldq paramldq)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (paramLanguage == null) {
-      paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d(lcz.a(), 2, "AVServiceForQQ onServiceDisconnected");
     }
-    Object localObject;
-    for (;;)
-    {
-      localObject = new ArrayList();
-      ((List)localObject).add(new Pair("key", paramString));
-      ((List)localObject).add(new Pair("target", paramLanguage));
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        ((List)localObject).add(new Pair("q", (String)paramList.next()));
-      }
-      localObject = paramLanguage.toString();
-      if (localObject != null)
-      {
-        paramLanguage = (Language)localObject;
-        if (((String)localObject).length() != 0) {}
-      }
-      else
-      {
-        paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
-      }
-    }
-    lcz.a(paramContext, null, (List)localObject, new ldb(this, paramldq, paramLong));
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lda
  * JD-Core Version:    0.7.0.1
  */

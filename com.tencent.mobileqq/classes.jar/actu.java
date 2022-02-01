@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.view.View;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
-public class actu
-  implements DialogInterface.OnDismissListener
+public abstract interface actu
 {
-  public actu(DialogActivity paramDialogActivity) {}
+  public abstract void a(View paramView);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public abstract void a(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void b(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void c(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void d(GdtVideoCommonView paramGdtVideoCommonView);
 }
 
 

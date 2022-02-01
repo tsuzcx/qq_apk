@@ -29,7 +29,7 @@
                     "setNumberOfLinesString:":"0",
                     "setTextColorString:":"#262626",
                     "setTextAlignmentString:": "$text_align",
-                     "setFontSizeString:": "$attribute_text_size",
+                    "setFontSizeString:ratio:":["16","$attribute_text_size_ratio"],
                      "setLineSpace:":"13"
                 }
             }

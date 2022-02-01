@@ -1,39 +1,18 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.support.v7.widget.RecyclerView.SmoothScroller.Action;
-import android.support.v7.widget.RecyclerView.State;
-import android.util.DisplayMetrics;
-import android.view.View;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastUrl;
 
-class bmad
-  extends LinearSmoothScroller
+public final class bmad
+  implements Parcelable.Creator<BroadcastUrl>
 {
-  bmad(bmab parambmab, Context paramContext)
+  public BroadcastUrl a(Parcel paramParcel)
   {
-    super(paramContext);
+    return new BroadcastUrl(paramParcel);
   }
   
-  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
+  public BroadcastUrl[] a(int paramInt)
   {
-    return 100.0F / paramDisplayMetrics.densityDpi;
-  }
-  
-  public PointF computeScrollVectorForPosition(int paramInt)
-  {
-    return null;
-  }
-  
-  public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
-  {
-    paramView = this.a.a(this.a.a.getLayoutManager(), paramView);
-    int i = paramView[0];
-    int j = paramView[1];
-    int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
-    if (k > 0) {
-      paramAction.update(i, j, k, this.mDecelerateInterpolator);
-    }
+    return new BroadcastUrl[paramInt];
   }
 }
 

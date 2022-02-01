@@ -1,28 +1,47 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.PagerAdapter;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class xuj
-  extends DataSetObserver
+class xuj
+  implements View.OnLongClickListener
 {
-  public xuj(EmptySupportViewPager paramEmptySupportViewPager) {}
+  xuj(xui paramxui) {}
   
-  public void onChanged()
+  public boolean onLongClick(View paramView)
   {
-    PagerAdapter localPagerAdapter = this.a.getAdapter();
-    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
+    int i = 0;
+    paramView = (wpf)wpm.a(10);
+    boolean bool;
+    if (!((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue())
     {
-      this.a.a(8);
-      EmptySupportViewPager.a(this.a, 0);
-      return;
+      bool = true;
+      paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
+      paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+      if (paramView != null)
+      {
+        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
+        if (paramView != null) {
+          if (!bool) {
+            break label90;
+          }
+        }
+      }
     }
-    this.a.a(0);
-    EmptySupportViewPager.b(this.a, 8);
+    for (;;)
+    {
+      paramView.a(i);
+      return true;
+      bool = false;
+      break;
+      label90:
+      i = 8;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xuj
  * JD-Core Version:    0.7.0.1
  */

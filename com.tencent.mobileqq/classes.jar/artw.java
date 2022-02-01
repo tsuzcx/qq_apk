@@ -1,22 +1,37 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public abstract interface artw
+class artw
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public abstract int a();
+  artw(arti paramarti, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public abstract int a(artx paramartx);
-  
-  public abstract int a(String paramString, Bundle paramBundle);
-  
-  public abstract int b();
-  
-  public abstract int c();
-  
-  public abstract int d();
-  
-  public abstract int e();
-  
-  public abstract int f();
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  {
+    Bundle localBundle;
+    if (paramBundle != null) {
+      localBundle = new Bundle();
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
+      if (!paramBoolean) {
+        localJSONObject.put("msg", paramBundle.getString("errMsg"));
+      }
+      localBundle.putString("result", localJSONObject.toString());
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    catch (Throwable paramBundle)
+    {
+      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
+    }
+  }
 }
 
 

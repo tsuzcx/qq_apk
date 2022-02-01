@@ -2,6 +2,7 @@ package com.tencent.ttpic.model;
 
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.model.StickerItem.ValueRange;
+import java.util.ArrayList;
 
 public class FaceMeshItem
 {
@@ -17,6 +18,7 @@ public class FaceMeshItem
   public String id;
   public int personID;
   public int playCount;
+  public ArrayList<String> triggerState;
   private String triggerType;
   
   public int getTriggerTypeInt()
@@ -42,7 +44,7 @@ public class FaceMeshItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.model.FaceMeshItem
  * JD-Core Version:    0.7.0.1
  */

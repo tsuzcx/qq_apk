@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -48,15 +48,15 @@ public class FlashPicBubbleView
   {
     super.onDraw(paramCanvas);
     Object localObject = getResources();
-    Drawable localDrawable1 = ((Resources)localObject).getDrawable(2130846781);
-    Drawable localDrawable2 = ((Resources)localObject).getDrawable(2130846782);
-    localDrawable1.setBounds(0, 0, getWidth(), aepi.a(95.0F, (Resources)localObject));
-    localDrawable2.setBounds(0, aepi.a(95.0F, (Resources)localObject), getWidth(), getHeight());
+    Drawable localDrawable1 = ((Resources)localObject).getDrawable(2130847231);
+    Drawable localDrawable2 = ((Resources)localObject).getDrawable(2130847232);
+    localDrawable1.setBounds(0, 0, getWidth(), afur.a(95.0F, (Resources)localObject));
+    localDrawable2.setBounds(0, afur.a(95.0F, (Resources)localObject), getWidth(), getHeight());
     LightingColorFilter localLightingColorFilter;
     if ((!this.c) && (!this.jdField_a_of_type_Boolean))
     {
-      localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166290));
-      localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131165508));
+      localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166361));
+      localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131165545));
     }
     for (;;)
     {
@@ -72,18 +72,18 @@ public class FlashPicBubbleView
       return;
       if ((!this.c) && (this.jdField_a_of_type_Boolean))
       {
-        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166291));
-        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166287));
+        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166362));
+        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166358));
       }
       else if ((this.c) && (!this.jdField_a_of_type_Boolean))
       {
-        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166288));
-        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131165508));
+        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166359));
+        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131165545));
       }
       else
       {
-        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166289));
-        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166287));
+        localLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166360));
+        localObject = new LightingColorFilter(Color.argb(255, 0, 0, 0), ((Resources)localObject).getColor(2131166358));
       }
     }
     paramCanvas.save();
@@ -104,7 +104,7 @@ public class FlashPicBubbleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FlashPicBubbleView
  * JD-Core Version:    0.7.0.1
  */

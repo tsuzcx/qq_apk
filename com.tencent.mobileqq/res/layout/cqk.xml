@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cqh" />
+    <com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:id="@id/ngp" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" qzone:ptrCoverMode="true" />
+</FrameLayout>

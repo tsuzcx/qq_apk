@@ -1,13 +1,38 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-
-class barr
-  implements ITransCallbackForReport
+public class barr
 {
-  barr(barp parambarp) {}
+  public int a;
+  public long a;
+  public bckv a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public long c;
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public barr()
   {
-    this.a.a(false, paramInt, paramString1, paramString2);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(barr parambarr)
+  {
+    if (parambarr == null) {
+      throw new NullPointerException();
+    }
+    this.jdField_a_of_type_JavaLangString = parambarr.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Bckv = parambarr.jdField_a_of_type_Bckv;
+    this.jdField_a_of_type_Boolean = parambarr.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Int = parambarr.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Boolean = parambarr.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_Long = parambarr.jdField_a_of_type_Long;
+    this.jdField_b_of_type_Long = parambarr.jdField_b_of_type_Long;
+    this.c = parambarr.c;
+  }
+  
+  public String toString()
+  {
+    return "AudioDecodeConfig=[audioFilePath:" + this.jdField_a_of_type_JavaLangString + " repeat:" + this.jdField_a_of_type_Boolean + " speedType:" + this.jdField_a_of_type_Int + " mMuteAudio:" + this.jdField_b_of_type_Boolean + " startTimeMs:" + this.jdField_a_of_type_Long + " endTimeMs:" + this.jdField_b_of_type_Long + " videoDuration:" + this.c + "]";
   }
 }
 

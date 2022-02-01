@@ -1,170 +1,299 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticon.SogouEmoji.3;
-import com.tencent.mobileqq.emoticon.SogouEmoji.4;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
 
 public class apss
 {
-  public static String a;
-  public static String b;
-  int jdField_a_of_type_Int = 0;
-  alrp jdField_a_of_type_Alrp;
-  alrq jdField_a_of_type_Alrq = new apsw(this);
-  public apro a;
-  public apsc a;
-  public apsx a;
-  public aufn a;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  public int b;
+  private byte jdField_a_of_type_Byte = 3;
+  protected float a;
+  protected int a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new apst(this);
+  protected Context a;
+  public Bitmap a;
+  protected Handler a;
+  protected LruCache<String, Bitmap> a;
+  protected ArrayList<String> a;
+  protected HashSet<String> a;
+  final List<apsw> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  protected Handler b;
+  protected LruCache<String, String> b;
   
-  static
+  public apss(Context paramContext, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "taskId";
-    jdField_b_of_type_JavaLangString = "exprId";
-  }
-  
-  public apss(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_Apsc = new apst(this);
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func SogouEmoji constructor begins");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_Aufn = ((aufn)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.getManager(14));
-    this.jdField_a_of_type_Apro = ((apro)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.getManager(43));
-    this.jdField_a_of_type_Alrp = ((alrp)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.a(12));
-    this.jdField_a_of_type_Apsx = new apsx(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func SogouEmoji constructor ends");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.addObserver(this.jdField_a_of_type_Alrq);
-  }
-  
-  private boolean a(String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app == null))
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(60);
+    this.jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(120);
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidOsHandler = new apsu(this, Looper.getMainLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new apsv(this, ThreadManager.getSubThreadLooper());
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_Int = paramInt;
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SogouEmoji", 2, "func" + paramString + " ends, maybe chatActivity is finished.");
-      }
-      return false;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = bgmo.a();
+      return;
     }
-    return true;
+    catch (OutOfMemoryError paramContext) {}
   }
   
-  public ArrayList<Emoticon> a(ArrayList<Emoticon> paramArrayList)
+  protected Bitmap a(Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func getInvalidKeyEmoticon begins");
-    }
-    ArrayList localArrayList = new ArrayList();
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return localArrayList;
-    }
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    float f2 = this.jdField_a_of_type_Float;
+    int i = paramBitmap.getWidth();
+    float f1 = f2;
+    if (i > 0)
     {
-      Emoticon localEmoticon = (Emoticon)paramArrayList.next();
-      if (!localEmoticon.hasEncryptKey()) {
-        localArrayList.add(localEmoticon);
+      f1 = f2;
+      if (i < 50 * f2) {
+        f1 = i / 50;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func getInvalidKeyEmoticon ends, size:" + localArrayList.size());
+    i = (int)(50 * f1);
+    int j = (int)(f1 * 50);
+    return bgmo.a(paramBitmap, i, i, j);
+  }
+  
+  public Bitmap a(String paramString, boolean paramBoolean)
+  {
+    return a(paramString, paramBoolean, this.jdField_a_of_type_AndroidGraphicsBitmap);
+  }
+  
+  public Bitmap a(String paramString, boolean paramBoolean, Bitmap paramBitmap)
+  {
+    try
+    {
+      localObject = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+      if (localObject != null)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("NonMainAppHeadLoader", 2, "getFaceBitmap, hit cache:" + paramString);
+          return localObject;
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NonMainAppHeadLoader", 2, "getFaceBitmap, not in cache:" + paramString);
+        }
+        if (!TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramString)))
+        {
+          localObject = new ArrayList(1);
+          Message localMessage = Message.obtain();
+          ((ArrayList)localObject).add(paramString);
+          localMessage.obj = localObject;
+          localMessage.what = 1001;
+          this.jdField_b_of_type_AndroidOsHandler.sendMessage(localMessage);
+        }
+        else if ((paramBoolean) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)))
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+          this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 50L);
+        }
+      }
     }
-    return localArrayList;
+    catch (Exception paramString)
+    {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("NonMainAppHeadLoader", 2, "getFaceBitmap, exception:" + paramString.toString());
+        return paramBitmap;
+        return localObject;
+      }
+    }
+    return paramBitmap;
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func SogouEmoji destructor begins");
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() != null))
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.qqhead.getheadresp");
+    try
     {
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app;
-      if (localQQAppInterface != null) {
-        localQQAppInterface.removeObserver(this.jdField_a_of_type_Alrq);
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.qqhead.permission.getheadresp", null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.d("NonMainAppHeadLoader", 1, "init register receiver fail!");
+    }
+  }
+  
+  public void a(byte paramByte)
+  {
+    this.jdField_a_of_type_Byte = paramByte;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(apsw paramapsw)
+  {
+    if (paramapsw == null) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramapsw)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramapsw);
+      }
+      return;
+    }
+  }
+  
+  protected void a(ArrayList<String> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NonMainAppHeadLoader", 2, "sendQQHeadRequest, reqSize:" + this.jdField_a_of_type_JavaUtilHashSet.size() + " cacheSize:" + this.jdField_a_of_type_AndroidSupportV4UtilLruCache.size() + " " + this.jdField_b_of_type_AndroidSupportV4UtilLruCache.size());
+    }
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList(paramArrayList.size());
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      String str = (String)paramArrayList.next();
+      if (!this.jdField_a_of_type_JavaUtilHashSet.contains(str)) {
+        localArrayList.add(str);
       }
     }
-    if (this.jdField_a_of_type_Apsx != null) {
-      this.jdField_a_of_type_Apsx.a();
-    }
-    aprn.a().b(this.jdField_a_of_type_Apsc);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func SogouEmoji destructor ends");
-    }
+    paramArrayList = new Intent("com.tencent.qqhead.getheadreq");
+    paramArrayList.setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
+    paramArrayList.putExtra("faceType", this.jdField_a_of_type_Int);
+    paramArrayList.putStringArrayListExtra("uinList", localArrayList);
+    this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramArrayList, "com.tencent.qqhead.permission.getheadresp");
+    this.jdField_a_of_type_JavaUtilHashSet.addAll(localArrayList);
   }
   
-  public void a(int paramInt, String paramString)
+  /* Error */
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func trySend begins, packId:" + paramInt + ",exprId:" + paramString);
+    // Byte code:
+    //   0: invokestatic 146	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 148
+    //   8: iconst_2
+    //   9: ldc_w 310
+    //   12: invokestatic 165	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: aload_0
+    //   16: getfield 92	apss:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   19: aload_0
+    //   20: getfield 65	apss:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   23: invokevirtual 314	android/content/Context:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
+    //   26: aload_0
+    //   27: getfield 56	apss:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   30: astore_1
+    //   31: aload_1
+    //   32: monitorenter
+    //   33: aload_0
+    //   34: getfield 56	apss:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   37: invokeinterface 317 1 0
+    //   42: aload_1
+    //   43: monitorexit
+    //   44: aload_0
+    //   45: getfield 43	apss:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
+    //   48: invokevirtual 318	java/util/HashSet:clear	()V
+    //   51: aload_0
+    //   52: getfield 78	apss:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   55: aconst_null
+    //   56: invokevirtual 322	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
+    //   59: aload_0
+    //   60: getfield 88	apss:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   63: aconst_null
+    //   64: invokevirtual 322	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
+    //   67: aload_0
+    //   68: getfield 38	apss:jdField_b_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
+    //   71: invokevirtual 325	android/support/v4/util/LruCache:evictAll	()V
+    //   74: aload_0
+    //   75: getfield 36	apss:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
+    //   78: invokevirtual 325	android/support/v4/util/LruCache:evictAll	()V
+    //   81: return
+    //   82: astore_1
+    //   83: invokestatic 146	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   86: ifeq -60 -> 26
+    //   89: ldc 148
+    //   91: iconst_2
+    //   92: new 150	java/lang/StringBuilder
+    //   95: dup
+    //   96: invokespecial 151	java/lang/StringBuilder:<init>	()V
+    //   99: ldc_w 327
+    //   102: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: aload_1
+    //   106: invokevirtual 328	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   109: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   115: invokestatic 217	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   118: goto -92 -> 26
+    //   121: astore_2
+    //   122: aload_1
+    //   123: monitorexit
+    //   124: aload_2
+    //   125: athrow
+    //   126: astore_1
+    //   127: invokestatic 146	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   130: ifeq -49 -> 81
+    //   133: ldc 148
+    //   135: iconst_2
+    //   136: new 150	java/lang/StringBuilder
+    //   139: dup
+    //   140: invokespecial 151	java/lang/StringBuilder:<init>	()V
+    //   143: ldc_w 327
+    //   146: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: aload_1
+    //   150: invokevirtual 214	java/lang/Exception:toString	()Ljava/lang/String;
+    //   153: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   159: invokestatic 217	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   162: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	163	0	this	apss
+    //   82	41	1	localThrowable	Throwable
+    //   126	24	1	localException	Exception
+    //   121	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   15	26	82	java/lang/Throwable
+    //   33	44	121	finally
+    //   122	124	121	finally
+    //   26	33	126	java/lang/Exception
+    //   44	81	126	java/lang/Exception
+    //   124	126	126	java/lang/Exception
+  }
+  
+  public void b(apsw paramapsw)
+  {
+    if (paramapsw == null) {
+      return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() != null) && (!bdin.d(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getApplicationContext())))
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131694766, 0).a();
+      this.jdField_a_of_type_JavaUtilList.remove(paramapsw);
       return;
     }
-    this.jdField_a_of_type_Aufn.a(Integer.toString(paramInt), paramString, new apsu(this, paramInt, paramString));
-  }
-  
-  void a(Emoticon paramEmoticon)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func sendEmoji begins, mCurTaskId:" + this.jdField_b_of_type_Int + ",emoticon:" + paramEmoticon);
-    }
-    this.jdField_a_of_type_Apsx.c();
-    this.jdField_a_of_type_Apsx.a(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Apsx.b();
-    if (!a("sendEmoji")) {
-      return;
-    }
-    apxv localapxv = new apxv(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.getCurrentAccountUin());
-    localapxv.c = 6;
-    localapxv.a = paramEmoticon;
-    this.jdField_a_of_type_Aufn.a(paramEmoticon.epId, new apsv(this, localapxv));
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    paramString1 = new SogouEmoji.3(this, paramString1, paramString2, paramBoolean);
-    ThreadManager.getFileThreadHandler().post(paramString1);
-  }
-  
-  public void a(String paramString, ArrayList<Emoticon> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func getPackEmojiKey begins, packId:" + paramString);
-    }
-    if (!a("getPackEmojiKey")) {}
-    do
-    {
-      return;
-      String str = Integer.toString(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int += 1;
-      if (apmq.a(paramString)) {
-        this.jdField_a_of_type_Alrp.a(Integer.parseInt(paramString), paramArrayList, str);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func getPackEmojiKey ends");
-  }
-  
-  public void a(List<String> paramList)
-  {
-    paramList = new SogouEmoji.4(this, paramList);
-    ThreadManager.getFileThreadHandler().post(paramList);
   }
 }
 

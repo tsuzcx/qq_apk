@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.automator.step;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdmh;
+import bgrj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -19,9 +19,9 @@ public class UpdateIcon
     {
       return 7;
       localSharedPreferences = this.a.app.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 0);
-    } while (!localSharedPreferences.getBoolean("updateShortcutIcon8.3.5.4555", true));
-    bdmh.a(this.a.app, "sid");
-    localSharedPreferences.edit().putBoolean("updateShortcutIcon8.3.5.4555", false).commit();
+    } while (!localSharedPreferences.getBoolean("updateShortcutIcon8.4.1.4680", true));
+    bgrj.a(this.a.app, "sid");
+    localSharedPreferences.edit().putBoolean("updateShortcutIcon8.4.1.4680", false).commit();
     return 7;
   }
 }

@@ -1,21 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class adfn
-  implements View.OnTouchListener
+public final class adfn
 {
-  public adfn(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public long a;
+  public String a;
+  public long b;
+  public String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public JSONObject a()
   {
-    if (!this.a.a)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      azqs.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
-      this.a.a = true;
+      localJSONObject.put("openid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("access_token", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("expire_in", this.jdField_a_of_type_Long);
+      localJSONObject.put("expire_time", this.jdField_b_of_type_Long);
+      return localJSONObject;
     }
-    return false;
+    catch (JSONException localJSONException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(adfk.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+    }
+    return localJSONObject;
+  }
+  
+  public String toString()
+  {
+    return "LoginInfo{, openid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", access_token='" + this.jdField_b_of_type_JavaLangString + '\'' + ", expireIn='" + this.jdField_a_of_type_Long + '\'' + ", expireTime='" + this.jdField_b_of_type_Long + '\'' + '}';
   }
 }
 

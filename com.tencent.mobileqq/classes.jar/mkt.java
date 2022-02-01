@@ -1,35 +1,21 @@
-import android.widget.RelativeLayout;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
+import com.tencent.av.ui.VideoLayerUI;
 
 public class mkt
-  implements mkx
+  implements lrx
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public mkt(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public mkt(QavPanel paramQavPanel) {}
-  
-  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
+  public void a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      mti.a("0X800A567", 0);
-    }
-    if ((paramRelativeLayout instanceof QavBeautyMenuPanel)) {
-      ((QavBeautyMenuPanel)paramRelativeLayout).a(paramLong, paramBoolean);
-    }
-  }
-  
-  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if ((paramRelativeLayout instanceof QavBeautyMenuPanel)) {
-      ((QavBeautyMenuPanel)paramRelativeLayout).b(paramLong, paramBoolean);
-    }
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].a(Boolean.valueOf(true));
+    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mkt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.MobileQQ;
 
-class bcph
-  extends nac
+public class bcph
+  extends URLDrawableParams
 {
-  bcph(bcpg parambcpg, bcpo parambcpo) {}
+  private ProtocolDownloader a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bcph(MobileQQ paramMobileQQ)
   {
-    paramBundle = new cmd0x934.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Bcpo.a(paramInt, paramBundle);
-      return;
+    super(paramMobileQQ);
+  }
+  
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  {
+    if ((("http".equals(paramString)) || ("https".equals(paramString))) && (this.a == null)) {
+      this.a = new bdvl();
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
-      }
-    }
+    return this.a;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return bgzd.a();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847826);
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847826);
   }
 }
 

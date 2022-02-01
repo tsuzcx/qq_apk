@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.servlet;
 
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.os.Bundle;
-import bdpd;
+import bguc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -45,7 +45,7 @@ public class MiniAppSSOCmdObserver
     {
       try
       {
-        localStQWebRsp.mergeFrom(bdpd.b(paramBundle.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bguc.b(paramBundle.getWupBuffer()));
         MiniAppSSOCmdHelper.MiniAppCmdCallbackInternal localMiniAppCmdCallbackInternal = (MiniAppSSOCmdHelper.MiniAppCmdCallbackInternal)CALLBACK_MAP.remove(Integer.valueOf((int)localStQWebRsp.Seq.get()));
         if (localMiniAppCmdCallbackInternal != null)
         {
@@ -102,7 +102,7 @@ public class MiniAppSSOCmdObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdObserver
  * JD-Core Version:    0.7.0.1
  */

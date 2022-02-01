@@ -246,34 +246,30 @@ public class NowRoomEntry
   
   public void doAction(String paramString, Bundle paramBundle, ActionCallback paramActionCallback)
   {
-    long l2 = 0L;
-    long l1 = l2;
-    if (!this.isInitBeacon)
+    String str;
+    if ((!this.isInitBeacon) && (!AppidConfig.isQQPlugin(this.mInitData.mAppID)) && (!this.mInitData.mAppID.equals("1005")))
     {
-      l1 = l2;
-      if (!AppidConfig.isQQPlugin(this.mInitData.mAppID))
+      XLog.i("NowPluginManager | NowRoomEntry", "nowsdk 灯塔初始化");
+      if (this.mInitData == null)
       {
-        l1 = l2;
-        if (!this.mInitData.mAppID.equals("1005"))
-        {
-          XLog.i("NowPluginManager | NowRoomEntry", "nowsdk 灯塔初始化");
-          if (this.mInitData != null) {
-            break label139;
-          }
-        }
+        str = "0";
+        BeaconAdapter.registerTunnel(new TunnelInfo("00000QCKA83QV1AA", "1.0.0", str));
+        this.isInitBeacon = true;
       }
     }
-    label139:
-    for (String str = "0";; str = this.mInitData.mAppID)
+    else
     {
-      BeaconAdapter.registerTunnel(new TunnelInfo("00000QCKA83QV1AA", "1.0.0", str));
-      this.isInitBeacon = true;
-      l1 = SdkBizAbilityImpl.getInstance().putActionCallback(paramActionCallback);
-      if (!AppidConfig.isQQPlugin(this.mInitData.mAppID)) {
-        l1 = SdkBizAbilityImpl.getInstance().putActionCallback(paramActionCallback);
+      if (AppidConfig.isQQPlugin(this.mInitData.mAppID)) {
+        break label127;
       }
-      NowSchemeUtil.doActionByScheme(this.mGlobalContext, paramString, paramBundle, l1);
+    }
+    label127:
+    for (long l = SdkBizAbilityImpl.getInstance().putActionCallback(paramActionCallback);; l = 0L)
+    {
+      NowSchemeUtil.doActionByScheme(this.mGlobalContext, paramString, paramBundle, l);
       return;
+      str = this.mInitData.mAppID;
+      break;
     }
   }
   
@@ -603,14 +599,31 @@ public class NowRoomEntry
       XLog.i("NowPluginManager | NowRoomEntry", "API 16以下的系统，不支持预加载");
       return false;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putAll(RoomParam.getRoomInitParam(this.mInitData));
-    localBundle.putAll(CustomInterfaceLogic.getsInstance().getCustomiseData());
-    if (paramBundle != null) {
-      localBundle.putBundle("userdata", paramBundle);
+    DataReport localDataReport;
+    Context localContext;
+    String str;
+    if (this.mDataReport != null)
+    {
+      localDataReport = this.mDataReport;
+      localContext = this.mGlobalContext;
+      str = this.mInitData.mSourceVersion;
+      if (this.mLoginData != null) {
+        break label149;
+      }
     }
-    enterPluginManager(2, localBundle);
-    return true;
+    label149:
+    for (Object localObject = "";; localObject = this.mLoginData.getUserId())
+    {
+      localDataReport.setReportCommonData(localContext, false, str, (String)localObject, this.mInitData.mGuid);
+      localObject = new Bundle();
+      ((Bundle)localObject).putAll(RoomParam.getRoomInitParam(this.mInitData));
+      ((Bundle)localObject).putAll(CustomInterfaceLogic.getsInstance().getCustomiseData());
+      if (paramBundle != null) {
+        ((Bundle)localObject).putBundle("userdata", paramBundle);
+      }
+      enterPluginManager(2, (Bundle)localObject);
+      return true;
+    }
   }
   
   public boolean preloadParKey(Bundle paramBundle)
@@ -735,6 +748,13 @@ public class NowRoomEntry
     this.mLoginObserver = paramLoginObserver;
   }
   
+  public void updateFreeFlow(boolean paramBoolean)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("free_flow", paramBoolean);
+    enterPluginManager(13, localBundle);
+  }
+  
   public void updateLoginData(LoginData paramLoginData, boolean paramBoolean)
   {
     this.mLoginData = paramLoginData;
@@ -748,7 +768,7 @@ public class NowRoomEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.NowRoomEntry
  * JD-Core Version:    0.7.0.1
  */

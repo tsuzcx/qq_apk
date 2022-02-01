@@ -1,80 +1,26 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-public class oyi
-  extends oyf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initSocialAvatarOnClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oyi
+  implements owp
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public oyi(@NotNull oyg paramoyg, Activity paramActivity)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
   {
-    super(paramoyg, "RIJDailyPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool3 = true;
-    Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    boolean bool1 = bool2;
-    if (localIntent != null)
-    {
-      bool1 = bool2;
-      if (localIntent.hasExtra("arg_channel_rowkey"))
-      {
-        bool1 = bool2;
-        if (localIntent.hasExtra("arg_channel_article_url"))
-        {
-          String str1 = localIntent.getStringExtra("arg_channel_rowkey");
-          String str2 = localIntent.getStringExtra("arg_channel_article_url");
-          if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
-            break label199;
-          }
-          Object localObject = new Bundle();
-          ((Bundle)localObject).putString("floating_window_rowkey", str1);
-          ((Bundle)localObject).putString("float_layer_article_url", str2);
-          bkbx.a(this.jdField_a_of_type_AndroidAppActivity, 5, 1, (Bundle)localObject, 0);
-          if (this.jdField_a_of_type_AndroidAppActivity != null)
-          {
-            localObject = ors.a(this.jdField_a_of_type_AndroidAppActivity);
-            if (localObject != null) {
-              ((ReadinjoyTabFrame)localObject).a(32);
-            }
-          }
-          QLog.i("RIJDailyPopupStep", 1, "[handleDailyJumpToRecommendChannel], open floating window, rowKey = " + str1 + ", articleURL = " + str2);
-        }
-      }
-    }
-    label199:
-    for (bool1 = bool3;; bool1 = false)
-    {
-      localIntent.removeExtra("arg_channel_rowkey");
-      localIntent.removeExtra("arg_channel_article_url");
-      return bool1;
-    }
-  }
-  
-  protected void g()
-  {
-    a(this.jdField_a_of_type_Boolean);
-  }
-  
-  protected void h()
-  {
-    this.jdField_a_of_type_Boolean = c();
-    a(this.jdField_a_of_type_Boolean);
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oyj(parampay, parampan, paramContainer));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oyi
  * JD-Core Version:    0.7.0.1
  */

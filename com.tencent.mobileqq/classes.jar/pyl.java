@@ -1,22 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 
-class pyl
-  implements View.OnClickListener
+public abstract interface pyl
 {
-  pyl(pyg parampyg) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = this.a.jdField_a_of_type_Rqj.a();
-    if (paramView != null) {
-      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
-  }
+  public abstract void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pyl
  * JD-Core Version:    0.7.0.1
  */

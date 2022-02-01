@@ -18,7 +18,6 @@ class MiniAppLivePusher$3
     JSONObject localJSONObject2 = new JSONObject();
     try
     {
-      localJSONObject1.put("info", localJSONObject2);
       localJSONObject2.put("CPU_USAGE", paramBundle.getString("CPU_USAGE"));
       localJSONObject2.put("VIDEO_WIDTH", paramBundle.getInt("VIDEO_WIDTH"));
       localJSONObject2.put("VIDEO_HEIGHT", paramBundle.getInt("VIDEO_HEIGHT"));
@@ -39,6 +38,8 @@ class MiniAppLivePusher$3
       localJSONObject2.put("VIDEO_DROP", paramBundle.getInt("VIDEO_DROP"));
       localJSONObject2.put("SERVER_IP", paramBundle.getString("SERVER_IP"));
       localJSONObject2.put("AUDIO_PLAY_INFO", paramBundle.getString("AUDIO_PLAY_INFO"));
+      localJSONObject1.put("info", localJSONObject2);
+      localJSONObject1.put("livePusherId", this.this$0.livePusherId);
       this.this$0.serviceWebview.evaluateSubcribeJS("onLivePusherNetStatus", localJSONObject1.toString(), this.this$0.webviewId);
       return;
     }
@@ -70,7 +71,7 @@ class MiniAppLivePusher$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppLivePusher.3
  * JD-Core Version:    0.7.0.1
  */

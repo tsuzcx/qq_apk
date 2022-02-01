@@ -1,32 +1,32 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xuz
-  implements Animation.AnimationListener
+public class xuz
+  extends QQUIEventReceiver<xui, wwx>
 {
-  xuz(xux paramxux, Context paramContext) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public xuz(@NonNull xui paramxui)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()) {
-        this.jdField_a_of_type_Xux.dismiss();
-      }
-      return;
-    }
-    this.jdField_a_of_type_Xux.dismiss();
+    super(paramxui);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(@NonNull xui paramxui, @NonNull wwx paramwwx)
+  {
+    if (paramwwx.a.isSuccess())
+    {
+      yqp.a(paramxui.b, "receive user info event. %s.", paramwwx.toString());
+      paramxui.i();
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public Class acceptEventClass()
+  {
+    return wwx.class;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xuz
  * JD-Core Version:    0.7.0.1
  */

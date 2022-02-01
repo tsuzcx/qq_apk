@@ -1,6 +1,18 @@
-public abstract interface asfa
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class asfa
 {
-  public abstract void a();
+  public MessageRecord a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  
+  public asfa(MessageRecord paramMessageRecord)
+  {
+    this.a = paramMessageRecord;
+    this.b = (paramMessageRecord instanceof MessageForPic);
+  }
 }
 
 

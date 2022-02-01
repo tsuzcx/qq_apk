@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
 
-public final class aams
-  implements Parcelable.Creator<GdtAd>
+public class aams
+  implements aamr
 {
-  public GdtAd a(Parcel paramParcel)
-  {
-    return new GdtAd(paramParcel);
-  }
+  public aams(AsyncRichTextView paramAsyncRichTextView) {}
   
-  public GdtAd[] a(int paramInt)
+  public boolean a(String paramString)
   {
-    return new GdtAd[paramInt];
+    if ((this.a.b != null) && (this.a.b.a(paramString))) {}
+    return true;
   }
 }
 

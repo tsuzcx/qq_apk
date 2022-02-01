@@ -1,27 +1,32 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
-public class avkq
-  implements View.OnClickListener
+class avkq
+  implements ActionCallback
 {
-  public avkq(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  avkq(avko paramavko) {}
   
-  public void onClick(View paramView)
+  public void onResult(String paramString)
   {
-    if ((this.a.b != null) && (!this.a.isFinishing()))
+    try
     {
-      this.a.b.dismiss();
-      this.a.b = null;
+      i = Integer.parseInt(paramString);
+      if (avko.a(this.a) != null) {
+        avko.a(this.a).a(i, "");
+      }
+      return;
     }
-    this.a.a(300L);
-    azqs.b(this.a.app, "CliOper", "", "", "0X8004BB0", "0X8004BB0", 0, 0, "", "", "", "");
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avkq
  * JD-Core Version:    0.7.0.1
  */

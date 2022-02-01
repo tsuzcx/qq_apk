@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
-class oky
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class oky
 {
-  oky(okx paramokx, int paramInt, View paramView) {}
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public void onGlobalLayout()
-  {
-    okx.a(this.jdField_a_of_type_Okx, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getHeight());
-    QLog.d("Q.readinjoy.fast_web", 2, " position : " + this.jdField_a_of_type_Int + "   height:" + this.jdField_a_of_type_AndroidViewView.getHeight());
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-  }
+  private oky(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oky
  * JD-Core Version:    0.7.0.1
  */

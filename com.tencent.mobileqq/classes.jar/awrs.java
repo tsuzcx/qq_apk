@@ -1,10 +1,19 @@
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+
 public class awrs
+  implements awti
 {
-  public static final int[] a = { -1000, -2000, -20000, -2002, -2022, -1035, -2001, -2007, -1049, -2058 };
+  public awrs(MultiAIOFragment paramMultiAIOFragment) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    MultiAIOFragment.a(this.a).setViewPagerBusy(paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,76 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emotionintegrate.EmotionDataSource.1;
-import java.util.List;
+import android.view.View;
 
-public abstract class aqah
+public final class aqah
 {
-  public abstract int a();
-  
-  public abstract List<aqae> a(boolean paramBoolean);
-  
-  public abstract void a();
-  
-  public void a(aqai paramaqai, aqae paramaqae, boolean paramBoolean)
+  public static void a(View paramView, float paramFloat)
   {
-    ThreadManager.excute(new EmotionDataSource.1(this, paramBoolean, paramaqai, paramaqae), 64, null, true);
+    if (aqag.a)
+    {
+      aqag.a(paramView).a(paramFloat);
+      return;
+    }
+    aqai.c(paramView, paramFloat);
   }
   
-  public abstract boolean a();
+  public static void b(View paramView, float paramFloat)
+  {
+    if (aqag.a)
+    {
+      aqag.a(paramView).d(paramFloat);
+      return;
+    }
+    aqai.d(paramView, paramFloat);
+  }
+  
+  public static void c(View paramView, float paramFloat)
+  {
+    if (aqag.a)
+    {
+      aqag.a(paramView).e(paramFloat);
+      return;
+    }
+    aqai.e(paramView, paramFloat);
+  }
+  
+  public static void d(View paramView, float paramFloat)
+  {
+    if (aqag.a)
+    {
+      aqag.a(paramView).b(paramFloat);
+      return;
+    }
+    aqai.a(paramView, paramFloat);
+  }
+  
+  public static void e(View paramView, float paramFloat)
+  {
+    if (aqag.a)
+    {
+      aqag.a(paramView).c(paramFloat);
+      return;
+    }
+    aqai.b(paramView, paramFloat);
+  }
+  
+  public static void f(View paramView, float paramFloat)
+  {
+    if (aqag.a)
+    {
+      aqag.a(paramView).g(paramFloat);
+      return;
+    }
+    aqai.f(paramView, paramFloat);
+  }
+  
+  public static void g(View paramView, float paramFloat)
+  {
+    if (aqag.a)
+    {
+      aqag.a(paramView).h(paramFloat);
+      return;
+    }
+    aqai.g(paramView, paramFloat);
+  }
 }
 
 

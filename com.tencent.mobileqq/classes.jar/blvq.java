@@ -1,18 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-
-class blvq
-  implements blvr
+public abstract interface blvq
 {
-  blvq(blvo paramblvo) {}
+  public abstract void a();
   
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, bmvz parambmvz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "preload:" + paramString + " item:" + parambmvz.toString());
-    }
-  }
+  public abstract void b();
 }
 
 

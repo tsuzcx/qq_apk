@@ -4,13 +4,13 @@ import android.content.Context;
 import android.view.View.OnLayoutChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bdoo;
-import ptk;
+import bgtn;
+import qlm;
 
 public class NativeMiddleBodyView$RadiusView
   extends RelativeLayout
 {
-  final int jdField_a_of_type_Int = bdoo.a(8.0F);
+  final int jdField_a_of_type_Int = bgtn.a(8.0F);
   String jdField_a_of_type_JavaLangString = null;
   String b = null;
   String c = null;
@@ -23,7 +23,7 @@ public class NativeMiddleBodyView$RadiusView
   
   public View.OnLayoutChangeListener a()
   {
-    return new ptk(this);
+    return new qlm(this);
   }
   
   public void setBottomLeftRadius(String paramString)

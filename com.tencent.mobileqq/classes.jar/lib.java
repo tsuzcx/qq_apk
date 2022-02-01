@@ -1,18 +1,35 @@
-import android.os.IBinder.DeathRecipient;
+import com.tencent.av.app.VideoAppInterface;
 
-class lib
-  implements IBinder.DeathRecipient
+public class lib
+  extends lia
 {
-  lib(lia paramlia) {}
-  
-  public void binderDied()
+  public lib(VideoAppInterface paramVideoAppInterface)
   {
-    lek.d("QQServiceProxy", "QQServiceForAV mobileQQ process exited!");
+    super(paramVideoAppInterface);
   }
+  
+  public int a(String paramString)
+  {
+    return 1;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return true;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lib
  * JD-Core Version:    0.7.0.1
  */

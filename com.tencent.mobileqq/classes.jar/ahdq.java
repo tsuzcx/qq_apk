@@ -1,6 +1,9 @@
-public abstract interface ahdq
+public class ahdq
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public static boolean a(String paramString)
+  {
+    return ("2658655094".equals(paramString)) || ("3142131160".equals(paramString));
+  }
 }
 
 

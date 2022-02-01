@@ -1,19 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.AuthorityControlFragment;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class bfcp
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  public bfcp(AuthorityControlFragment paramAuthorityControlFragment) {}
+  public bfcp(ReciteFragment paramReciteFragment) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.a.getActivity();
-    if (paramDialogInterface != null) {
-      paramDialogInterface.doOnBackPressed();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

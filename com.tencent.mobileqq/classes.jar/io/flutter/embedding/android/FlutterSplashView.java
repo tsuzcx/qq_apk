@@ -3,15 +3,15 @@ package io.flutter.embedding.android;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.flutter.Log;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.dart.DartExecutor;
-import io.flutter.embedding.engine.renderer.OnFirstFrameRenderedListener;
+import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
 
 final class FlutterSplashView
   extends FrameLayout
@@ -19,10 +19,10 @@ final class FlutterSplashView
   private static String TAG = "FlutterSplashView";
   @NonNull
   private final FlutterView.FlutterEngineAttachmentListener flutterEngineAttachmentListener = new FlutterSplashView.1(this);
+  @NonNull
+  private final FlutterUiDisplayListener flutterUiDisplayListener = new FlutterSplashView.2(this);
   @Nullable
   private FlutterView flutterView;
-  @NonNull
-  private final OnFirstFrameRenderedListener onFirstFrameRenderedListener = new FlutterSplashView.2(this);
   @NonNull
   private final Runnable onTransitionComplete = new FlutterSplashView.3(this);
   @Nullable
@@ -101,7 +101,7 @@ final class FlutterSplashView
   {
     if (this.flutterView != null)
     {
-      this.flutterView.removeOnFirstFrameRenderedListener(this.onFirstFrameRenderedListener);
+      this.flutterView.removeOnFirstFrameRenderedListener(this.flutterUiDisplayListener);
       removeView(this.flutterView);
     }
     if (this.splashScreenView != null) {
@@ -118,7 +118,7 @@ final class FlutterSplashView
       Log.v(TAG, "Showing splash screen UI.");
       this.splashScreenView = paramSplashScreen.createSplashView(getContext(), this.splashScreenState);
       addView(this.splashScreenView);
-      paramFlutterView.addOnFirstFrameRenderedListener(this.onFirstFrameRenderedListener);
+      paramFlutterView.addOnFirstFrameRenderedListener(this.flutterUiDisplayListener);
     }
     label110:
     do
@@ -160,7 +160,7 @@ final class FlutterSplashView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterSplashView
  * JD-Core Version:    0.7.0.1
  */

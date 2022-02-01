@@ -1,41 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
-class azji
-  extends BroadcastReceiver
+public class azji
+  implements TypeEvaluator<Rect>
 {
-  azji(azjh paramazjh) {}
+  public azji(BreatheEffectView paramBreatheEffectView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
   {
-    if (paramIntent == null) {}
-    for (;;)
-    {
-      return;
-      paramContext = paramIntent.getStringExtra("event");
-      if (paramContext != null)
-      {
-        paramIntent = paramIntent.getStringExtra("data");
-        if ((paramIntent != null) && (paramContext.equals("ShortVideoHongbaoInfoUpdate"))) {
-          try
-          {
-            paramContext = new JSONObject(paramIntent);
-            paramIntent = paramContext.optString("shortVideoId");
-            boolean bool = paramContext.optBoolean("isPaid");
-            if ((azjh.a(this.a) != null) && (azjh.a(this.a).h != 1) && (bool) && (azjh.a(this.a).c.equals(paramIntent)))
-            {
-              new azjq(this.a).execute(new String[0]);
-              return;
-            }
-          }
-          catch (JSONException paramContext) {}
-        }
-      }
-    }
+    return new Rect(paramRect1.left + (int)((paramRect2.left - paramRect1.left) * paramFloat), paramRect1.top + (int)((paramRect2.top - paramRect1.top) * paramFloat), paramRect1.right + (int)((paramRect2.right - paramRect1.right) * paramFloat), paramRect1.bottom + (int)((paramRect2.bottom - paramRect1.bottom) * paramFloat));
   }
 }
 

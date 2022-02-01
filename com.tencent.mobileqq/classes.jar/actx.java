@@ -1,41 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class actx
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public actx(DirectForwardActivity paramDirectForwardActivity) {}
+  public actx(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramIntent = paramIntent.getExtras();
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getStringArrayList("procNameList");
-      paramIntent = paramIntent.getString("verify");
-      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (bdao.a(paramIntent, paramContext))) {
-        break label53;
-      }
+    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
+      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
     }
-    for (;;)
-    {
-      return;
-      label53:
-      int i = 0;
-      while (i < paramContext.size())
-      {
-        if (this.a.a.equals(paramContext.get(i)))
-        {
-          this.a.finish();
-          return;
-        }
-        i += 1;
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

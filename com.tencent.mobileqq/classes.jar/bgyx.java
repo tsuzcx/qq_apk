@@ -1,22 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.ArrayList;
 
-final class bgyx
-  implements DialogInterface.OnClickListener
+public class bgyx
 {
-  bgyx(DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
-    }
-  }
+  public int a;
+  public String a;
+  public ArrayList<bgyy> a = new ArrayList();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgyx
  * JD-Core Version:    0.7.0.1
  */

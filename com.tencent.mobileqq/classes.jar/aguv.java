@@ -1,43 +1,24 @@
-import android.app.Dialog;
-import android.os.Handler;
-import java.util.HashMap;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aguv
-  extends bfzo
+  implements View.OnClickListener
 {
-  aguv(agti paramagti) {}
+  aguv(agup paramagup, long paramLong) {}
   
-  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void onClick(View paramView)
   {
-    if ((!paramBoolean) || (paramHashMap == null))
-    {
-      this.a.E(2);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
-    }
-    if (((Integer)paramHashMap.get("result")).intValue() == 0)
-    {
-      this.a.E(1);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
-    }
-    this.a.ao = true;
-    this.a.bH();
-    if ((agti.a(this.a) != null) && (agti.a(this.a).isShowing())) {
-      agti.a(this.a).dismiss();
-    }
-    this.a.bI();
-  }
-  
-  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
-  {
-    if ((!paramBoolean) || (paramHashMap == null)) {
-      return;
-    }
-    this.a.ar = true;
-    this.a.aq = ((Boolean)paramHashMap.get("result")).booleanValue();
-    this.a.bH();
-    this.a.bI();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("uinType", this.jdField_a_of_type_Agup.a.a);
+    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    aevv.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

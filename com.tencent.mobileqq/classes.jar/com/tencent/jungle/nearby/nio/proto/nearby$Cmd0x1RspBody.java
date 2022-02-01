@@ -56,7 +56,7 @@ public final class nearby$Cmd0x1RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.jungle.nearby.nio.proto.nearby.Cmd0x1RspBody
  * JD-Core Version:    0.7.0.1
  */

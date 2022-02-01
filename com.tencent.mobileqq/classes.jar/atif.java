@@ -1,75 +1,74 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.jsp.QQApiPlugin.3;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class atif
-  implements osn
+  implements bbvg
 {
-  public atif(QQApiPlugin.3 param3) {}
+  protected int a;
+  protected View a;
+  protected ImageView a;
+  protected TextView a;
+  protected TextView b;
   
-  public void a(BaseResp paramBaseResp)
+  public atif() {}
+  
+  public atif(ViewGroup paramViewGroup)
   {
-    if ((this.a.this$0.c == null) || (!this.a.this$0.c.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    boolean bool;
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      ybk.a(1, 2131720031);
-      bool = false;
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_JavaLangString))
-      {
-        this.a.this$0.callJs(this.a.this$0.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(bool) });
-        return;
-        ybk.a(2, 2131720050);
-        if ((this.a.this$0.jdField_a_of_type_Belq != null) && (this.a.this$0.jdField_a_of_type_Belt != null))
-        {
-          int i;
-          label171:
-          String str1;
-          String str2;
-          String str3;
-          if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
-          {
-            i = 1009;
-            paramBaseResp = this.a.this$0.jdField_a_of_type_Belq.g();
-            str1 = this.a.this$0.jdField_a_of_type_Belq.h();
-            str2 = this.a.b;
-            str3 = AccountDetailActivity.a(this.a.this$0.jdField_a_of_type_Belt.b());
-            String str4 = this.a.this$0.jdField_a_of_type_Belq.i();
-            if ((str4 == null) || ("".equals(str4))) {
-              break label314;
-            }
-            nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.this$0.jdField_a_of_type_Belt.b(), str3, false);
-          }
-          for (;;)
-          {
-            bool = true;
-            break;
-            i = 1004;
-            break label171;
-            label314:
-            if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
-              i = 1003;
-            }
-            nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
-          }
-          bool = false;
-        }
-      }
-      else
-      {
-        this.a.this$0.callJs4OpenApiIfNeeded("shareMsg", 0, String.valueOf(bool));
-        return;
-      }
-      bool = true;
-    }
+    this.jdField_a_of_type_Int = 2131562849;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    a();
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368246));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378776));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(bdod.a);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365369));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131378852).setVisibility(8);
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.b;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 

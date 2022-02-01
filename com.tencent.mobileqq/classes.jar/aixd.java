@@ -1,24 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.AddFriendBlockedInfo;
 
 public class aixd
-  implements View.OnClickListener
 {
-  public aixd(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public View a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public AddFriendBlockedInfo a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  public void onClick(View paramView)
-  {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-      ajeu.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
-    }
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
-  }
+  public aixd(aixc paramaixc) {}
 }
 
 

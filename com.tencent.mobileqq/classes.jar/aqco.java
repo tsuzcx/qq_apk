@@ -1,19 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
+import android.content.Context;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
-public final class aqco
-  implements Parcelable.Creator<MiniAppRecommInfo.MiniApp>
+public class aqco
+  extends LottieDrawable
+  implements aqcn
 {
-  public MiniAppRecommInfo.MiniApp a(Parcel paramParcel)
+  private LottieDrawable a;
+  
+  public void a(int paramInt) {}
+  
+  public void a(Context paramContext, int paramInt1, int paramInt2) {}
+  
+  public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public int getIntrinsicHeight()
   {
-    return new MiniAppRecommInfo.MiniApp(paramParcel);
+    return this.a.getIntrinsicHeight();
   }
   
-  public MiniAppRecommInfo.MiniApp[] a(int paramInt)
+  public int getIntrinsicWidth()
   {
-    return new MiniAppRecommInfo.MiniApp[paramInt];
+    return this.a.getIntrinsicWidth();
   }
+  
+  public void playAnimation()
+  {
+    this.a.playAnimation();
+  }
+  
+  public void setRepeatCount(int paramInt)
+  {
+    this.a.setRepeatCount(paramInt);
+  }
+  
+  public void stop() {}
 }
 
 

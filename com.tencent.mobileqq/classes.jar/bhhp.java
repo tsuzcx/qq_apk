@@ -1,21 +1,25 @@
-import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
-import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.OnLoadBaselibListener;
+import com.tencent.mobileqq.vip.KCWraperV2.1;
+import com.tencent.qphone.base.util.QLog;
+import dualsim.common.ILogPrint;
 
-class bhhp
-  implements BaselibLoader.OnLoadBaselibListener
+public class bhhp
+  implements ILogPrint
 {
-  bhhp(bhhk parambhhk) {}
+  public bhhp(KCWraperV2.1 param1) {}
   
-  public void onResult(int paramInt, String paramString, BaselibLoader.BaselibContent paramBaselibContent)
+  public void print(String paramString)
   {
-    if ((paramInt == 0) && (paramBaselibContent != null)) {
-      this.a.a(paramBaselibContent.waServiceJsStr, paramBaselibContent.waServicePath);
+    String str2 = this.a.this$0.a();
+    String str1 = paramString;
+    if (paramString == null) {
+      str1 = "\n";
     }
+    QLog.e(str2, 1, str1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhhp
  * JD-Core Version:    0.7.0.1
  */

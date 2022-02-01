@@ -3,7 +3,7 @@ package dov.com.tencent.mobileqq.shortvideo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import azri;
+import bctj;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -319,7 +319,7 @@ public class PtvTemplateManager$PtvTemplateInfo
     localHashMap.put("timems", "" + (l1 - l2));
     localHashMap.put("totalsize", "" + this.totalLen);
     localHashMap.put("success", "" + this.usable);
-    azri.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
+    bctj.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
   }
   
   public int getDisplayIconByType()
@@ -329,13 +329,13 @@ public class PtvTemplateManager$PtvTemplateInfo
     default: 
       return -1;
     case 1: 
-      return 2130844182;
+      return 2130844578;
     case 2: 
-      return 2130844183;
+      return 2130844579;
     case 3: 
-      return 2130844185;
+      return 2130844581;
     }
-    return 2130844184;
+    return 2130844580;
   }
   
   public String getLbsActivityType(int paramInt)
@@ -389,7 +389,7 @@ public class PtvTemplateManager$PtvTemplateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo
  * JD-Core Version:    0.7.0.1
  */

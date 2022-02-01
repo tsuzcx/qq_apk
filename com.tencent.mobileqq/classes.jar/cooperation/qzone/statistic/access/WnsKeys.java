@@ -67,7 +67,7 @@ public class WnsKeys
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.access.WnsKeys
  * JD-Core Version:    0.7.0.1
  */

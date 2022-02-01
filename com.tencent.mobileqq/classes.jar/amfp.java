@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public class amfp
-  implements DialogInterface.OnClickListener
+public abstract interface amfp
 {
-  public amfp(VideoBroadcastReceiver paramVideoBroadcastReceiver) {}
+  public abstract void a(DiscussionInfo paramDiscussionInfo);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(TroopInfo paramTroopInfo, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amfp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,35 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import java.io.OutputStream;
+import java.net.URL;
 
-public abstract interface bdts
+public class bdts
 {
-  public abstract void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
+  int jdField_a_of_type_Int;
+  public long a;
+  public ayxp a;
+  public ayyg a;
+  BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+  URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public MessageForPic a;
+  OutputStream jdField_a_of_type_JavaIoOutputStream;
+  String jdField_a_of_type_JavaLangString;
+  URL jdField_a_of_type_JavaNetURL;
+  boolean jdField_a_of_type_Boolean;
+  public int b = 1;
+  String b;
+  public int c;
+  public String c;
+  public int d = -1;
   
-  public abstract void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3);
+  public bdts(bdtr parambdtr)
+  {
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_c_of_type_JavaLangString = ayxx.a();
+  }
 }
 
 

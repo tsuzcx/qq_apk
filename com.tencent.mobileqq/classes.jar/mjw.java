@@ -1,33 +1,31 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
+import android.os.Build.VERSION;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-class mjw
+public class mjw
   implements DialogInterface.OnClickListener
 {
-  mjw(mju parammju) {}
+  public mjw(VideoInviteActivity paramVideoInviteActivity, long paramLong, boolean paramBoolean) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    this.a.a.c();
-    mjs.a(this.a.a, false);
-    if (paramInt == 1)
-    {
-      azqs.b(null, "CliOper", "", "", "0X800A565", "0X800A565", 0, 0, "", "", "", "");
-      mjs.a(this.a.a);
-    }
-    while (paramInt != 0) {
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isFinishing()) {}
+    while ((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isDestroyed())) {
       return;
     }
-    mjs.a(this.a.a, mjs.a(this.a.a).a().v);
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c(this.jdField_a_of_type_Long);
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, this.jdField_a_of_type_Boolean, new mjx(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mjw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.PicData;
-
-public final class pgm
-  implements Parcelable.Creator<ReadInJoyDraftboxItem.PicData>
+public class pgm
 {
-  public ReadInJoyDraftboxItem.PicData a(Parcel paramParcel)
+  public static int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public long c;
+  public long d;
+  
+  static
   {
-    return new ReadInJoyDraftboxItem.PicData(paramParcel);
+    jdField_a_of_type_Int = 300000;
   }
   
-  public ReadInJoyDraftboxItem.PicData[] a(int paramInt)
+  public pgm()
   {
-    return new ReadInJoyDraftboxItem.PicData[paramInt];
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pgm
  * JD-Core Version:    0.7.0.1
  */

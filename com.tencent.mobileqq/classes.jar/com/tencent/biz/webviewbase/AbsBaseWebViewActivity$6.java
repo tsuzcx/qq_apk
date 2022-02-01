@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewbase;
 
-import beka;
+import bhre;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,12 +15,12 @@ class AbsBaseWebViewActivity$6
       QLog.d("WebLog_WebViewBase", 2, "start request: " + this.a);
     }
     WebProcessManager.a(true);
-    beka.a();
+    bhre.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.webviewbase.AbsBaseWebViewActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
-class agtp
-  implements Animation.AnimationListener
+public class agtp
+  implements bdzl
 {
-  agtp(agti paramagti) {}
+  public agtp(FlashPicItemBuilder paramFlashPicItemBuilder) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(ArrayList<MessageRecord> paramArrayList)
   {
-    this.a.W = false;
-    this.a.af = false;
-    this.a.d(this.a.o);
-    this.a.s = 1;
+    this.a.b();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

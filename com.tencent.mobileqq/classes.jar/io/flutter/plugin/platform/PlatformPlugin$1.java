@@ -1,7 +1,8 @@
 package io.flutter.plugin.platform;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.Rect;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.AppSwitcherDescription;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.ClipboardContentFormat;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.HapticFeedbackType;
@@ -9,6 +10,7 @@ import io.flutter.embedding.engine.systemchannels.PlatformChannel.PlatformMessag
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.SoundType;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.SystemChromeStyle;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.SystemUiOverlay;
+import java.util.ArrayList;
 import java.util.List;
 
 class PlatformPlugin$1
@@ -19,6 +21,11 @@ class PlatformPlugin$1
   public CharSequence getClipboardData(@Nullable PlatformChannel.ClipboardContentFormat paramClipboardContentFormat)
   {
     return PlatformPlugin.access$800(this.this$0, paramClipboardContentFormat);
+  }
+  
+  public List<Rect> getSystemGestureExclusionRects()
+  {
+    return PlatformPlugin.access$1000(this.this$0);
   }
   
   public void playSystemSound(@NonNull PlatformChannel.SoundType paramSoundType)
@@ -51,6 +58,11 @@ class PlatformPlugin$1
     PlatformPlugin.access$200(this.this$0, paramInt);
   }
   
+  public void setSystemGestureExclusionRects(@NonNull ArrayList<Rect> paramArrayList)
+  {
+    PlatformPlugin.access$1100(this.this$0, paramArrayList);
+  }
+  
   public void setSystemUiOverlayStyle(@NonNull PlatformChannel.SystemChromeStyle paramSystemChromeStyle)
   {
     PlatformPlugin.access$600(this.this$0, paramSystemChromeStyle);
@@ -68,7 +80,7 @@ class PlatformPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.PlatformPlugin.1
  * JD-Core Version:    0.7.0.1
  */

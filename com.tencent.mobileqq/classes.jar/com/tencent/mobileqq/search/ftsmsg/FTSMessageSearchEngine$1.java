@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.search.ftsmsg;
 
-import ayln;
-import ayuh;
-import ayuu;
-import bdpr;
+import bbkr;
+import bbtk;
+import bbtx;
+import bguq;
 import java.util.List;
 
 public class FTSMessageSearchEngine$1
   implements Runnable
 {
-  public FTSMessageSearchEngine$1(ayln paramayln, ayuu paramayuu, ayuh paramayuh) {}
+  public FTSMessageSearchEngine$1(bbkr parambbkr, bbtx parambbtx, bbtk parambbtk) {}
   
   public void run()
   {
-    if (bdpr.g(ayln.a(this.this$0)) == 1) {}
-    for (List localList = this.this$0.b(this.jdField_a_of_type_Ayuu, false);; localList = this.this$0.a(this.jdField_a_of_type_Ayuu, false))
+    if (bguq.g(bbkr.a(this.this$0)) == 1) {}
+    for (List localList = this.this$0.b(this.jdField_a_of_type_Bbtx, false);; localList = this.this$0.a(this.jdField_a_of_type_Bbtx, false))
     {
-      if (this.jdField_a_of_type_Ayuh != null) {
-        this.jdField_a_of_type_Ayuh.a(localList, 1);
+      if (this.jdField_a_of_type_Bbtk != null) {
+        this.jdField_a_of_type_Bbtk.a(localList, 1);
       }
       return;
     }
@@ -25,7 +25,7 @@ public class FTSMessageSearchEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.1
  * JD-Core Version:    0.7.0.1
  */

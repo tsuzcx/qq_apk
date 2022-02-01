@@ -1,22 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
+import java.util.Comparator;
+import java.util.Map;
 
-class bbsr
-  implements DialogInterface.OnClickListener
+public final class bbsr
+  implements Comparator<bbti>
 {
-  bbsr(bbsn parambbsn, bbsa parambbsa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(bbti parambbti1, bbti parambbti2)
   {
-    switch (paramInt)
-    {
+    parambbti2 = (Integer)SearchConfigManager.searchEngineOrder.get(parambbti2.a);
+    if (parambbti2 == null) {
+      parambbti2 = Integer.valueOf(0);
     }
-    do
+    for (;;)
     {
-      return;
-    } while (bbsn.a(this.jdField_a_of_type_Bbsn) == 0);
-    TroopFileTransferManager.a(this.jdField_a_of_type_Bbsn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bbsn.jdField_a_of_type_Long).c(this.jdField_a_of_type_Bbsa.a);
+      Integer localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(parambbti1.a);
+      parambbti1 = localInteger;
+      if (localInteger == null) {
+        parambbti1 = Integer.valueOf(0);
+      }
+      return Integer.signum(parambbti2.intValue() - parambbti1.intValue());
+    }
   }
 }
 

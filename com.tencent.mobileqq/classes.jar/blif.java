@@ -1,12 +1,21 @@
-public abstract interface blif
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
+
+public class blif
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString, int paramInt);
+  public blif(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public abstract void a(String paramString, boolean paramBoolean);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blif
  * JD-Core Version:    0.7.0.1
  */

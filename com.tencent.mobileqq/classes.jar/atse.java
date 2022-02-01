@@ -1,38 +1,40 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnHoverListener;
-import android.view.accessibility.AccessibilityManager;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class atse
-  implements View.OnHoverListener
+class atse
+  implements View.OnClickListener
 {
-  public atse(LocationPickFragment paramLocationPickFragment) {}
+  atse(atsd paramatsd) {}
   
-  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    paramMotionEvent = (AccessibilityManager)this.a.getActivity().getSystemService("accessibility");
-    if ((paramMotionEvent != null) && (paramMotionEvent.isTouchExplorationEnabled()))
+    if (!atsd.a(this.a)) {}
+    for (;;)
     {
-      if (paramView.requestFocus()) {
-        ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(paramView, 1);
-      }
-      if (!LocationPickFragment.a(this.a).b())
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((atvo.a()) && (athc.c() > atgz.a()))
       {
-        LocationPickFragment.a(this.a).setDisplayFromType(3);
-        LocationPickFragment.a(this.a).a();
+        atvb.a(SplashActivity.sTopActivity, 2131692321, 2131692326, new atsf(this));
       }
-      azqs.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
+      else
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.addAll(athc.a());
+        Intent localIntent = new Intent();
+        localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+        atsd.b(this.a, localIntent);
+      }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atse
  * JD-Core Version:    0.7.0.1
  */

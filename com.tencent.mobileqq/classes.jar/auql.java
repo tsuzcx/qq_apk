@@ -1,40 +1,91 @@
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 
 class auql
-  extends awkf
+  extends bdzm
 {
-  auql(auqc paramauqc, String paramString, aupx paramaupx) {}
-  
-  public void a(int paramInt, awjm paramawjm)
+  auql(auqk paramauqk, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadPic key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
-    }
-    int j = 0;
-    String str2 = "";
-    String str1 = str2;
-    int i = j;
-    if (paramawjm != null)
-    {
-      str1 = str2;
-      i = j;
-      if (paramawjm.a != null)
-      {
-        i = paramawjm.a.a;
-        str1 = paramawjm.a.b;
-      }
-    }
-    auqc.a(this.jdField_a_of_type_Auqc, this.jdField_a_of_type_Aupx, paramInt, i, str1);
+    super(paramLooper);
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    auqc.a(this.jdField_a_of_type_Auqc, this.jdField_a_of_type_Aupx, paramInt);
+    bduk localbduk = (bduk)paramMessage.obj;
+    if ((localbduk == null) || (localbduk.c != 76)) {}
+    do
+    {
+      String str;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                switch (paramMessage.what)
+                {
+                case 1002: 
+                case 1006: 
+                case 1007: 
+                default: 
+                  return;
+                }
+              } while (!QLog.isColorLevel());
+              QLog.i("PicOcrManager", 2, "handleMessage start!");
+              return;
+            } while (!QLog.isColorLevel());
+            QLog.d("PicOcrManager", 2, "handleMessage success resId:" + localbduk.g);
+            return;
+            Bdh_extinfo.CommFileExtRsp localCommFileExtRsp = new Bdh_extinfo.CommFileExtRsp();
+            str = "";
+            paramMessage = str;
+            if (localbduk.a != null) {}
+            try
+            {
+              localCommFileExtRsp.mergeFrom(localbduk.a);
+              paramMessage = str;
+              if (localCommFileExtRsp.bytes_download_url.has()) {
+                paramMessage = localCommFileExtRsp.bytes_download_url.get().toStringUtf8();
+              }
+            }
+            catch (Exception paramMessage)
+            {
+              for (;;)
+              {
+                QLog.i("PicOcrManager", 2, "extRsp.mergeFrom(file.bdhExtendInfo) failed!");
+                paramMessage = str;
+              }
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("PicOcrManager", 2, "handleMessage finished resId:" + localbduk.g + ", url:" + paramMessage);
+            }
+          } while (TextUtils.isEmpty(paramMessage));
+          auqk.a(this.a).f = paramMessage;
+          paramMessage = (auqj)auqk.a(this.a).a(170);
+        } while (paramMessage == null);
+        paramMessage.a(auqk.a(this.a).f, auqk.a(this.a).jdField_b_of_type_Long, auqk.a(this.a).d, auqk.a(this.a).e, auqk.a(this.a).jdField_a_of_type_Int, (int)auqk.a(this.a).jdField_a_of_type_Long, auqk.a(this.a).jdField_b_of_type_Int, auqk.a(this.a).c, auqk.a(this.a).jdField_a_of_type_Boolean, auqk.a(this.a).jdField_a_of_type_JavaLangString);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("PicOcrManager", 2, "handleMessage upload error:" + localbduk.g);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("PicOcrManager", 2, "handleMessage upload cancel:" + localbduk.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auql
  * JD-Core Version:    0.7.0.1
  */

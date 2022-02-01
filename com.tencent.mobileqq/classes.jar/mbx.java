@@ -1,69 +1,349 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.camera.CameraUtils;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.AVFunChat.AVFunChatMessage;
+import com.tencent.av.ui.ControlUIObserver.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-class mbx
-  extends lme
+public class mbx
+  implements Observer
 {
-  mbx(mbw parammbw) {}
+  Handler a = null;
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  public static <T extends mby> T a(Object[] paramArrayOfObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("SmallScreenVideoController", 1, "onAfterOpenCamera, success[" + paramBoolean + "], preSessionType[" + paramInt + "], seq[" + paramLong + "]");
-    }
-    if (paramBoolean)
-    {
-      if ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (mbt.f()) && ((paramInt == 1) || (paramInt == 3)) && (this.a.jdField_a_of_type_Mcb != null))
-      {
-        this.a.jdField_a_of_type_Mcb.a(true, false);
-        this.a.jdField_a_of_type_Mcb.c(paramLong, this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a());
-      }
-      return;
-    }
-    String str;
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
-    {
-      str = "";
-      if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().q()) {
-        break label250;
-      }
-      str = "0X8004894";
-    }
-    for (;;)
-    {
-      azqs.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
-      if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(38), Integer.valueOf(2), Long.valueOf(paramLong) });
-      return;
-      label250:
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().f == 1) {
-        str = "0X8004888";
-      } else if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().f == 2) {
-        str = "0X800488E";
-      }
-    }
+    return (mby)paramArrayOfObject[1];
   }
+  
+  protected void a() {}
+  
+  protected void a(int paramInt) {}
+  
+  protected void a(int paramInt1, int paramInt2, String paramString) {}
+  
+  protected void a(int paramInt, long paramLong) {}
+  
+  public void a(long paramLong) {}
+  
+  protected void a(long paramLong, int paramInt) {}
+  
+  protected void a(long paramLong, int paramInt1, int paramInt2) {}
+  
+  protected void a(long paramLong, ArrayList<lnn> paramArrayList) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, String paramString) {}
+  
+  protected void a(long paramLong1, boolean paramBoolean1, boolean paramBoolean2, long paramLong2) {}
+  
+  protected void a(bgol parambgol) {}
+  
+  protected void a(Object paramObject) {}
+  
+  protected void a(String paramString) {}
+  
+  protected void a(String paramString1, int paramInt1, String paramString2, int paramInt2) {}
+  
+  protected void a(String paramString, AVFunChat.AVFunChatMessage paramAVFunChatMessage) {}
+  
+  protected void a(String paramString, Boolean paramBoolean) {}
+  
+  public void a(String paramString1, String paramString2) {}
+  
+  protected void a(ArrayList<lnn> paramArrayList) {}
+  
+  protected void a(mbz parammbz) {}
+  
+  protected void a(mca parammca) {}
+  
+  public void a(mcb parammcb) {}
   
   protected void a(boolean paramBoolean) {}
   
+  protected void a(boolean paramBoolean, long paramLong) {}
+  
   protected void b() {}
   
-  protected void b(long paramLong, boolean paramBoolean)
+  protected void b(int paramInt) {}
+  
+  protected void b(int paramInt, long paramLong) {}
+  
+  protected void b(long paramLong) {}
+  
+  public void b(Object paramObject)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().i == 1011) || (this.a.jdField_a_of_type_ComTencentAvVideoController.f)))
-    {
-      this.a.jdField_a_of_type_Mcb.a(false, false);
-      this.a.jdField_a_of_type_Mcb.s_();
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("qav.ControlUIObserver", 2, "OnUpdate，msgType = " + i);
     }
+    Object localObject;
+    switch (i)
+    {
+    default: 
+      return;
+    case 101: 
+      a(mtl.a(paramObject, 1));
+      return;
+    case 174: 
+      b(mtl.a(paramObject, 1));
+      return;
+    case 102: 
+      a();
+      return;
+    case 103: 
+      localObject = (ArrayList)paramObject[1];
+      a(mtl.a(paramObject, 2), (ArrayList)localObject);
+      return;
+    case 104: 
+      a((ArrayList)paramObject[1]);
+      return;
+    case 105: 
+      a(((Boolean)paramObject[1]).booleanValue(), mtl.a(paramObject, 2));
+      return;
+    case 106: 
+      c(mtl.a(paramObject, 1));
+      return;
+    case 107: 
+      d(mtl.a(paramObject, 1));
+      return;
+    case 108: 
+      f();
+      return;
+    case 109: 
+      g();
+      return;
+    case 110: 
+      f(mtl.a(paramObject, 1));
+      return;
+    case 8001: 
+      b((String)paramObject[1]);
+      return;
+    case 119: 
+      c(((Integer)paramObject[1]).intValue());
+      return;
+    case 111: 
+      a(((Boolean)paramObject[1]).booleanValue());
+      return;
+    case 113: 
+      b();
+      return;
+    case 114: 
+      e();
+      return;
+    case 115: 
+      a((String)paramObject[1], ((Integer)paramObject[2]).intValue(), (String)paramObject[3], ((Integer)paramObject[4]).intValue());
+      return;
+    case 172: 
+      a(((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
+      return;
+    case 117: 
+      i = -1;
+      if (paramObject.length > 1) {
+        i = ((Integer)paramObject[1]).intValue();
+      }
+      a(i);
+      return;
+    case 8002: 
+      h();
+      return;
+    case 123: 
+      if (paramObject.length <= 1) {
+        break;
+      }
+    }
+    for (i = ((Integer)paramObject[1]).intValue();; i = 0)
+    {
+      a(mtl.a(paramObject, 2), i);
+      return;
+      b(((Integer)paramObject[1]).intValue());
+      return;
+      a((mcb)paramObject[1]);
+      return;
+      localObject = (String)paramObject[1];
+      paramObject = (String)paramObject[2];
+      lij.a((String)localObject, paramObject);
+      b((String)localObject, paramObject);
+      return;
+      if (paramObject.length < 4) {
+        break;
+      }
+      boolean bool1 = ((Boolean)paramObject[1]).booleanValue();
+      boolean bool2 = ((Boolean)paramObject[2]).booleanValue();
+      long l = ((Long)paramObject[3]).longValue();
+      a(mtl.a(paramObject, 4), bool1, bool2, l);
+      return;
+      i();
+      return;
+      a(paramObject[1]);
+      return;
+      e(mtl.a(paramObject, 1));
+      return;
+      bool1 = ((Boolean)paramObject[1]).booleanValue();
+      i = ((Integer)paramObject[2]).intValue();
+      a(mtl.a(paramObject, 3), bool1, i);
+      return;
+      g(mtl.a(paramObject, 1));
+      return;
+      a((String)paramObject[1]);
+      return;
+      l();
+      return;
+      j();
+      return;
+      m();
+      return;
+      n();
+      return;
+      o();
+      return;
+      p();
+      return;
+      f(((Integer)paramObject[1]).intValue());
+      return;
+      c();
+      return;
+      a(((Integer)paramObject[1]).intValue(), mtl.a(paramObject, 2));
+      return;
+      k();
+      return;
+      d((String)paramObject[1]);
+      return;
+      a((String)paramObject[1], (Boolean)paramObject[2]);
+      return;
+      e((String)paramObject[1]);
+      return;
+      b((String)paramObject[1], (Boolean)paramObject[2]);
+      return;
+      b((mcb)paramObject[1]);
+      return;
+      a((mbz)paramObject[1]);
+      return;
+      a((mca)paramObject[1]);
+      return;
+      c((mcb)paramObject[1]);
+      return;
+      d((mcb)paramObject[1]);
+      return;
+      e((mcb)paramObject[1]);
+      return;
+      f((mcb)paramObject[1]);
+      return;
+      a((bgol)paramObject[1]);
+      return;
+      a((String)paramObject[1], (String)paramObject[2]);
+      return;
+      d();
+      return;
+      d(((Integer)paramObject[1]).intValue());
+      return;
+      c((String)paramObject[2]);
+      return;
+      e(((Integer)paramObject[1]).intValue());
+      return;
+      b(((Boolean)paramObject[1]).booleanValue());
+      return;
+      a(mtl.a(paramObject, 1), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3]);
+      return;
+      a(mtl.a(paramObject, 1), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+      return;
+      a((String)paramObject[1], (AVFunChat.AVFunChatMessage)paramObject[2]);
+      return;
+      b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
+      return;
+    }
+  }
+  
+  protected void b(String paramString) {}
+  
+  protected void b(String paramString, Boolean paramBoolean) {}
+  
+  public void b(String paramString1, String paramString2) {}
+  
+  protected void b(mcb parammcb) {}
+  
+  protected void b(boolean paramBoolean) {}
+  
+  protected void c() {}
+  
+  protected void c(int paramInt) {}
+  
+  protected void c(long paramLong) {}
+  
+  public void c(String paramString) {}
+  
+  protected void c(mcb parammcb) {}
+  
+  public void d() {}
+  
+  public void d(int paramInt) {}
+  
+  protected void d(long paramLong) {}
+  
+  protected void d(String paramString) {}
+  
+  protected void d(mcb parammcb) {}
+  
+  protected void e() {}
+  
+  protected void e(int paramInt) {}
+  
+  protected void e(long paramLong) {}
+  
+  protected void e(String paramString) {}
+  
+  protected void e(mcb parammcb) {}
+  
+  protected void f() {}
+  
+  protected void f(int paramInt) {}
+  
+  protected void f(long paramLong) {}
+  
+  protected void f(mcb parammcb) {}
+  
+  protected void g() {}
+  
+  protected void g(long paramLong) {}
+  
+  public void h() {}
+  
+  protected void i() {}
+  
+  protected void j() {}
+  
+  protected void k() {}
+  
+  protected void l() {}
+  
+  protected void m() {}
+  
+  protected void n() {}
+  
+  protected void o() {}
+  
+  protected void p() {}
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
+    {
+      if (this.a == null) {
+        this.a = new Handler(paramObservable);
+      }
+      this.a.post(new ControlUIObserver.1(this, paramObject));
+      return;
+    }
+    b(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mbx
  * JD-Core Version:    0.7.0.1
  */

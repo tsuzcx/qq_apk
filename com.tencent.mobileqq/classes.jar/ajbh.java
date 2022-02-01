@@ -1,32 +1,30 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QIMFollwerAdd;
 
-class ajbh
-  implements OnUpdateListener
+public class ajbh
+  extends ajax
 {
-  ajbh(ajaz paramajaz, ResultReceiver paramResultReceiver) {}
+  public QIMFollwerAdd a;
   
-  public void onCheckForUpdate(boolean paramBoolean)
+  public ajbh(QIMFollwerAdd paramQIMFollwerAdd)
   {
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("action", 0);
-      localBundle.putBoolean("res", paramBoolean);
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd = paramQIMFollwerAdd;
+    this.jdField_a_of_type_Long = paramQIMFollwerAdd.upTime;
   }
   
-  public void onUpdateSucc(boolean paramBoolean)
+  public String a()
   {
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("action", 1);
-      localBundle.putBoolean("res", paramBoolean);
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
-    }
+    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.uin);
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return "getMessage";
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.isRead;
   }
 }
 

@@ -1,138 +1,107 @@
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.utils.WebStateReporter.1;
-import com.tencent.mobileqq.webview.utils.WebStateReporter.2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class bekj
+  extends bkps
 {
-  public static HashMap<String, Integer> a;
-  public static int c;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public long c;
+  protected LayoutInflater a;
+  protected boolean a;
   
-  static
+  public bekj(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, Context paramContext, boolean paramBoolean)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_c_of_type_Int = 6;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(int paramInt)
+  public int getCount()
   {
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("WebStateReporter_report", 2, "Current State = " + paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a == null) {
+      return 0;
     }
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
   }
   
-  public void a(long paramLong)
+  public Object getItem(int paramInt)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    return null;
   }
   
-  public void a(Context paramContext)
+  public long getItemId(int paramInt)
   {
-    paramContext = new File(paramContext.getFilesDir(), bdrh.e.jdField_a_of_type_JavaLangString);
-    if (!paramContext.exists()) {}
-    do
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    int i;
+    if (paramView == null)
     {
-      do
-      {
-        return;
-        paramContext = bdhb.a(paramContext);
-      } while (TextUtils.isEmpty(paramContext));
-      try
-      {
-        paramContext = new JSONObject(paramContext);
-        int i = paramContext.getInt("sample_rate");
-        jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(i));
-        JSONArray localJSONArray = paramContext.getJSONArray("rules");
-        int j = localJSONArray.length();
-        i = 0;
-        while (i < j)
-        {
-          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-          jdField_a_of_type_JavaUtilHashMap.put(localJSONObject.getString("distUrl"), Integer.valueOf(localJSONObject.getInt("rate")));
-          i += 1;
-        }
-        jdField_c_of_type_Int = paramContext.getInt("tail_number");
-        return;
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562250, null);
+      paramView = new bekk(this);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369718));
+      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377165));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369707));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369702));
+      localView.setTag(paramView);
+      localObject = (TroopBarPOI)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.get(paramInt);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopBarPOI)localObject).c);
+      ImageView localImageView = paramView.jdField_b_of_type_AndroidWidgetImageView;
+      if (!((TroopBarPOI)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.c)) {
+        break label261;
       }
-      catch (JSONException paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("WebStateReporter", 2, "" + paramContext);
-  }
-  
-  public void a(Context paramContext, long paramLong, String paramString, boolean paramBoolean)
-  {
-    if ((paramContext == null) || (paramLong <= 0L) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Boolean = false;
-    }
-    try
-    {
-      i = bdin.a(paramContext);
-      switch (i)
-      {
-      default: 
-        String str1 = "Unknown";
-        ThreadManager.post(new WebStateReporter.1(this, paramBoolean, paramString, paramContext, paramLong, str1), 5, null, false);
-        return;
+      i = 0;
+      label139:
+      localImageView.setVisibility(i);
+      if (TextUtils.isEmpty(((TroopBarPOI)localObject).d)) {
+        break label268;
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i = 0;
-        continue;
-        String str2 = "2G";
-        continue;
-        str2 = "3G";
-        continue;
-        str2 = "4G";
-        continue;
-        str2 = "wifi";
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((TroopBarPOI)localObject).d);
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      label177:
+      if (paramInt != 0) {
+        break label280;
       }
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      label189:
+      if (!this.jdField_a_of_type_Boolean) {
+        break label291;
+      }
+      localView.setBackgroundResource(17170445);
     }
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString, int paramInt)
-  {
-    if (paramInt == 0) {}
     for (;;)
     {
-      return;
-      if (paramAppInterface == null) {}
-      for (long l = 0L; !TextUtils.isEmpty(paramString); l = paramAppInterface.getLongAccountUin())
-      {
-        ThreadManager.post(new WebStateReporter.2(this, paramString, l, paramInt), 5, null, false);
-        return;
-      }
+      localView.setContentDescription(((TroopBarPOI)localObject).c);
+      localView.setFocusable(true);
+      localView.setFocusableInTouchMode(true);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (bekk)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label261:
+      i = 8;
+      break label139;
+      label268:
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      break label177;
+      label280:
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      break label189;
+      label291:
+      localView.setBackgroundResource(2130848349);
     }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

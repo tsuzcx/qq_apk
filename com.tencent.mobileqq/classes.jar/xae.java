@@ -1,138 +1,76 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.widget.TextView;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqWatchVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class xae
-  extends xal
-  implements View.OnClickListener
+  extends wlf<xbn>
 {
-  protected ViewStub a;
-  protected TextView a;
-  protected String a;
-  protected xjg a;
+  public static final String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public xae(@NonNull xan paramxan)
+  static
   {
-    super(paramxan);
+    jdField_a_of_type_JavaLangString = wjz.a("StorySvc.video_watch_no_expired");
   }
   
-  private void f()
-  {
-    i();
-    if (this.jdField_a_of_type_Xjg.a() != 0)
-    {
-      this.jdField_a_of_type_Xjg.a(0);
-      this.jdField_a_of_type_Xjg.a.requestFocus();
-      bhsj.a(this.jdField_a_of_type_Xjg.a);
-    }
-  }
-  
-  private void g()
-  {
-    if ((this.jdField_a_of_type_Xjg != null) && (this.jdField_a_of_type_Xjg.a() == 0))
-    {
-      this.jdField_a_of_type_Xjg.a(4);
-      bhsj.b(this.jdField_a_of_type_Xjg.a);
-      this.jdField_a_of_type_Xjg.a.clearFocus();
-    }
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_Xjg == null)
-    {
-      this.jdField_a_of_type_Xjg = new xjg(this.jdField_a_of_type_AndroidViewViewStub.inflate());
-      this.jdField_a_of_type_Xjg.a(new xag(this));
-      this.jdField_a_of_type_Xjg.b(new xah(this));
-    }
-  }
-  
-  @Nullable
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public void a()
+  public xbn a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131362113));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new xaf(this));
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
+    qqstory_service.RspWatchVideo localRspWatchVideo = new qqstory_service.RspWatchVideo();
+    try
     {
-    default: 
-      g();
-      return;
-    case 0: 
-      g();
-      return;
+      localRspWatchVideo.mergeFrom(paramArrayOfByte);
+      return new xbn(localRspWatchVideo);
     }
-    f();
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
   
-  public void a(int paramInt, @NonNull xlb paramxlb)
+  protected byte[] a()
   {
-    super.a(paramInt, paramxlb);
-    paramxlb.a.videoLabel = a();
-    xan localxan;
-    String str;
-    if (!TextUtils.isEmpty(a()))
+    qqstory_service.ReqWatchVideo localReqWatchVideo = new qqstory_service.ReqWatchVideo();
+    localReqWatchVideo.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    localReqWatchVideo.to_union_id.set(ByteStringMicro.copyFromUtf8(a(this.jdField_c_of_type_JavaLangString)));
+    PBUInt32Field localPBUInt32Field = localReqWatchVideo.is_live_video;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0)
     {
-      paramInt = 1;
-      if (paramInt != 0)
-      {
-        localxan = this.jdField_a_of_type_Xan;
-        str = a();
-        if (!this.jdField_a_of_type_Xan.a()) {
-          break label89;
-        }
+      localPBUInt32Field.set(i);
+      localReqWatchVideo.source.set(this.jdField_c_of_type_Int);
+      if (this.jdField_b_of_type_Long > 0L) {
+        localReqWatchVideo.create_time.set(this.jdField_b_of_type_Long / 1000L);
       }
-    }
-    label89:
-    for (paramxlb = "2";; paramxlb = "1")
-    {
-      localxan.a("pub_tag", 0, 0, new String[] { "1", str, paramxlb });
-      return;
-      paramInt = 0;
-      break;
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Xjg != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Xjg.a() == 0)
-      {
-        this.jdField_a_of_type_Xan.a(0);
-        bool1 = true;
+      if (this.d > 0) {
+        localReqWatchVideo.vid_type.set(this.d);
       }
+      return localReqWatchVideo.toByteArray();
     }
-    return bool1;
   }
   
-  public void d() {}
-  
-  public void onClick(View paramView)
+  public String toString()
   {
-    paramView.getId();
+    return "WatchVideoRequest{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoUid=" + this.jdField_c_of_type_JavaLangString + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xae
  * JD-Core Version:    0.7.0.1
  */

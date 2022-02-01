@@ -1,29 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.BubbleLayout;
 
 class aiva
-  implements ThreadExcutor.IThreadListener
+  extends RecyclerView.ViewHolder
 {
-  aiva(aiux paramaiux, List paramList, Map paramMap, Bundle paramBundle) {}
+  public ImageView a;
+  public TextView a;
+  public BubbleLayout a;
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public aiva(View paramView)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      beae localbeae = new beae(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
-      localbeae.a(this.jdField_a_of_type_AndroidOsBundle);
-      if (this.jdField_a_of_type_Aiux.a != null) {
-        this.jdField_a_of_type_Aiux.a.a(localbeae, aiux.a(this.jdField_a_of_type_Aiux), null);
-      }
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372762));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372761));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout = ((BubbleLayout)paramView.findViewById(2131372760));
   }
-  
-  public void onPreRun() {}
 }
 
 

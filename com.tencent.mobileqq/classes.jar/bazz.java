@@ -1,7 +1,6 @@
-public abstract interface bazz
-  extends baug
+public class bazz
 {
-  public abstract void a(bazy parambazy);
+  public static final String a = anni.a(2131712885);
 }
 
 

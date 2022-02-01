@@ -1,32 +1,28 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import com.tencent.biz.qqcircle.requests.QCircleGetTaskCenterListRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class vql
-  extends Subscriber.SingleEventSubscriberNoRefect<uvf>
+  extends zzj
 {
-  vqi a;
+  private String a = "QCircleFuelInfoPreLoaderTask";
   
-  public vql(@NonNull vqi paramvqi)
-  {
-    this.a = paramvqi;
-  }
+  public void a() {}
   
-  protected void a(@NonNull uvf paramuvf)
+  public void a(zzp paramzzp)
   {
-    if (paramuvf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      this.a.a(paramuvf.jdField_a_of_type_JavaLangString);
+    if (vog.a().a())
+    {
+      paramzzp = new QCircleGetTaskCenterListRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      paramzzp.setEnableCache(true);
+      VSNetworkHelper.a().a(paramzzp, new vqm(this));
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uvf.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vql
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,21 @@
-import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 class agsv
-  implements bhuk
+  extends afwr
 {
-  agsv(agso paramagso, bhuf parambhuf) {}
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    agso.a(this.jdField_a_of_type_Agso, paramView, paramInt, this.jdField_a_of_type_Bhuf);
-  }
+  agsv(agss paramagss) {}
 }
 
 

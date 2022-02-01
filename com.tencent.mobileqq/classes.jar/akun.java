@@ -2,11 +2,9 @@ public abstract interface akun
 {
   public abstract void a();
   
+  public abstract void a(int paramInt1, int paramInt2);
+  
   public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
 }
 
 

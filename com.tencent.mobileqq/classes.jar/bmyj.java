@@ -1,68 +1,36 @@
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
-import android.graphics.PointF;
-import android.os.Build;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class bmyj
-  extends bmrn
+public class bmyj
+  extends RemoteCommand
 {
-  public SegmentKeeper a = new SegmentKeeper();
-  public int[] a;
-  public PointF b;
-  public ValueAnimator c;
-  public boolean i = true;
-  public int j;
-  public boolean j;
-  public int k = -1;
-  public boolean k;
-  public int l = -1;
-  public boolean l;
-  public int m = -1;
-  public boolean m;
-  public boolean n;
-  public float q = 1.0F;
-  public float r;
-  public float s;
-  public float t;
-  public float u;
-  public float v;
-  public float w = 1.0F;
+  private static bmyk jdField_a_of_type_Bmyk;
+  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   
-  public bmyj() {}
-  
-  public bmyj(@NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
+  public bmyj()
   {
-    this.b = new PointF(paramPointF.x, paramPointF.y);
-    this.q = paramFloat1;
-    this.r = paramFloat2;
-    this.s = paramFloat3;
-    this.t = paramFloat4;
-    this.u = paramFloat5;
-    this.v = paramFloat6;
-    this.i = paramBoolean;
-    this.n = Build.MODEL.equals("MI 5C");
+    super("weiyun.notify_state");
   }
   
-  public bmyj(bmyj parambmyj, float paramFloat)
+  public void a(bmyk parambmyk)
   {
-    this.b = new PointF(parambmyj.b.x * paramFloat, parambmyj.b.y * paramFloat);
-    parambmyj.q *= paramFloat;
-    this.r = parambmyj.r;
-    parambmyj.s *= paramFloat;
-    parambmyj.t *= paramFloat;
-    this.u = parambmyj.u;
-    this.v = parambmyj.v;
-    this.i = parambmyj.i;
-    this.a.set(parambmyj.a);
+    jdField_a_of_type_Bmyk = parambmyk;
   }
   
-  public void a(Canvas paramCanvas) {}
-  
-  public boolean d()
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    return !this.a.isEmpty();
+    paramOnInvokeFinishLinstener = new Bundle();
+    int i = paramBundle.getInt("param_state", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+    if (i != jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
+    {
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(i);
+      if (jdField_a_of_type_Bmyk != null) {
+        jdField_a_of_type_Bmyk.a(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      }
+    }
+    return paramOnInvokeFinishLinstener;
   }
 }
 

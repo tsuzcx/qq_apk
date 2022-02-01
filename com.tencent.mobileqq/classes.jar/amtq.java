@@ -1,31 +1,43 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class amtq
-  extends amzw
+  implements View.OnClickListener
 {
   amtq(amtp paramamtp) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(amuc.a, 2, "onArSoDownloadSuccess");
+    if (amtp.a(this.a) == null)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    this.a.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(amuc.a, 2, "onArSoDownloadProcess process=" + paramInt);
+    boolean bool = amtp.a(this.a).a();
+    label63:
+    amtp localamtp;
+    if (bool)
+    {
+      amtp.a(this.a).setImageDrawable(amtp.a(this.a).getContext().getResources().getDrawable(2130838475));
+      localamtp = this.a;
+      if (bool) {
+        break label133;
+      }
     }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(amuc.a, 2, "onArSoDownloadFail");
+    label133:
+    for (bool = true;; bool = false)
+    {
+      amtp.a(localamtp, bool);
+      amtp.a(this.a).a(amtp.a(this.a));
+      break;
+      amtp.a(this.a).setImageDrawable(amtp.a(this.a).getContext().getResources().getDrawable(2130838474));
+      break label63;
     }
-    this.a.a();
   }
 }
 

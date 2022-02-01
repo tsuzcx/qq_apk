@@ -1,50 +1,197 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.app.Dialog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.mobileqq.widget.QQToast;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class aebp
-  implements bhuk
+  extends ankx
 {
-  public aebp(TroopAssisSettingActivity paramTroopAssisSettingActivity, int paramInt, TroopInfo paramTroopInfo, bhuf parambhuf) {}
+  public aebp(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
   {
-    switch (paramInt)
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscussionInfoCardActivity", 2, "onGetFlyTicket: " + paramBoolean);
+    }
+    if (!paramBoolean)
     {
-    default: 
-      paramInt = -1;
-      if (this.jdField_a_of_type_Int != paramInt)
+      switch (paramInt)
       {
-        if (!bdin.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getActivity())) {
-          break label218;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Bdmq.b.clear();
-        auam.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Bdmq.c.put(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, Boolean.valueOf(true));
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Akmb.notifyDataSetChanged();
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.b();
-        auam.a().c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, "P_CliOper", "Grp_msg", "", "set_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, String.valueOf(paramInt - 1), "", "");
+      default: 
+        paramString1 = anni.a(2131702138);
       }
-      break;
+      for (;;)
+      {
+        this.a.a(2130839571, paramString1);
+        return;
+        paramString1 = anni.a(2131702153);
+        continue;
+        paramString1 = anni.a(2131702149);
+      }
+    }
+    SharedPreferences.Editor localEditor = this.a.getSharedPreferences("qrcode", 0).edit();
+    localEditor.putLong("discussionvalidtime" + DiscussionInfoCardActivity.a(this.a), paramLong1);
+    localEditor.putString("discussion" + DiscussionInfoCardActivity.a(this.a), paramString2);
+    localEditor.putString("discussionfullSig" + DiscussionInfoCardActivity.a(this.a), paramString1);
+    localEditor.commit();
+    this.a.jdField_a_of_type_Long = paramLong1;
+    this.a.b = paramString2;
+    this.a.c = paramString1;
+    this.a.jdField_a_of_type_Boolean = true;
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    if ((paramBoolean) && (paramLong == Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue()))
+    {
+      DiscussionInfoCardActivity.c(this.a);
+      this.a.a(2, this.a.getString(2131689560));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscussionInfoCardActivity", 2, "onCollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
+    }
+    if ((paramBoolean) && (paramLong != null) && (String.valueOf(paramLong).equals(DiscussionInfoCardActivity.a(this.a))))
+    {
+      bcst.b(this.a.app, "CliOper", "", "", "discuss", "discuss_common", 0, 0, "", "", "", "");
+      if (!this.a.isFinishing())
+      {
+        paramLong = this.a.app.getApp().getSharedPreferences(this.a.app.getCurrentAccountUin(), 0);
+        if (paramLong.getBoolean("multi_chat_set_common_use_key", true))
+        {
+          this.a.jdField_a_of_type_AndroidAppDialog = bglp.a(this.a, 230, this.a.getString(2131693865), this.a.getString(2131693864), 2131690582, 2131718286, new aebq(this), null);
+          this.a.jdField_a_of_type_AndroidAppDialog.show();
+          paramLong.edit().putBoolean("multi_chat_set_common_use_key", false).commit();
+        }
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    if ((paramBoolean) && (paramLong1 != null) && (String.valueOf(paramLong1).equals(DiscussionInfoCardActivity.a(this.a))))
+    {
+      DiscussionInfoCardActivity.c(this.a);
+      return;
+    }
+    QQToast.a(this.a, 1, this.a.getString(2131691614), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = (ArrayList)paramObject;
+    int i = paramObject.indexOf(DiscussionInfoCardActivity.a(this.a));
+    if (i != -1)
+    {
+      paramObject = (Boolean)paramObject.get(i + 1);
+      if ((paramBoolean) && (paramObject.booleanValue()))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = DiscussionInfoCardActivity.a(this.a).a(DiscussionInfoCardActivity.a(this.a));
+        DiscussionInfoCardActivity.c(this.a);
+        this.a.a();
+        DiscussionInfoCardActivity.d(this.a);
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (DiscussionInfoCardActivity.a(this.a).equals(paramString))
+    {
+      if (!paramBoolean) {
+        break label154;
+      }
+      paramString = DiscussionInfoCardActivity.a(this.a).a(paramString);
+      if (paramString != null)
+      {
+        DiscussionInfoCardActivity.a(this.a, paramString.discussionName);
+        DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+      }
+      if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
+      {
+        DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131690636));
+        DiscussionInfoCardActivity.a(this.a).d(2130839584);
+        DiscussionInfoCardActivity.a(this.a).b(false);
+        this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(17, 1500L);
+      }
+    }
+    label154:
+    do
+    {
+      return;
+      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
+    DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131690634));
+    DiscussionInfoCardActivity.a(this.a).d(2130839584);
+    DiscussionInfoCardActivity.a(this.a).b(false);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(17, 1500L);
+  }
+  
+  protected void a(Object[] paramArrayOfObject)
+  {
+    String str = (String)paramArrayOfObject[0];
+    int i = ((Integer)paramArrayOfObject[1]).intValue();
+    paramArrayOfObject = (String)paramArrayOfObject[2];
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.trim().equals(""))) {
+      paramArrayOfObject = this.a.getString(2131692858);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhuf.dismiss();
+      if ((DiscussionInfoCardActivity.a(this.a).equals(str)) && (!this.a.isFinishing()))
+      {
+        if ((10001 == i) || (10002 == i)) {
+          bglp.a(this.a, 230, null, paramArrayOfObject, new aebr(this, str), null).show();
+        }
+      }
+      else {
+        return;
+      }
+      this.a.a(1, paramArrayOfObject);
       return;
-      paramInt = 1;
-      break;
-      paramInt = 4;
-      break;
-      paramInt = 2;
-      break;
-      paramInt = 3;
-      break;
-      label218:
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getActivity(), 2131694768, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getTitleBarHeight());
     }
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscussionInfoCardActivity", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
+    }
+    if ((paramBoolean) && (paramLong != null) && (String.valueOf(paramLong).equals(DiscussionInfoCardActivity.a(this.a)))) {}
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (DiscussionInfoCardActivity.a(this.a).equals(paramString))
+    {
+      if (!paramBoolean) {
+        break label112;
+      }
+      if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
+      {
+        DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131691898));
+        DiscussionInfoCardActivity.a(this.a).d(2130839584);
+        DiscussionInfoCardActivity.a(this.a).b(false);
+        this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(16, 1500L);
+      }
+    }
+    label112:
+    while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing())) {
+      return;
+    }
+    DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131691895));
+    DiscussionInfoCardActivity.a(this.a).d(2130839571);
+    DiscussionInfoCardActivity.a(this.a).b(false);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(17, 1500L);
   }
 }
 

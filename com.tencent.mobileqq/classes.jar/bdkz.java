@@ -1,30 +1,28 @@
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.View;
+import java.util.List;
 
 class bdkz
-  implements apul
+  implements bkhw
 {
-  bdkz(bdku parambdku) {}
+  bdkz(bdkw parambdkw, List paramList, bdmc parambdmc, bkho parambkho) {}
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-      this.a.c = false;
-      paramKeyEvent = this.a.getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      this.a.getWindow().setAttributes(paramKeyEvent);
-      bdku.a(this.a);
-      return true;
+      paramView = (bdmd)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (bdkw.a(this.jdField_a_of_type_Bdkw) != null) {
+        bdkw.a(this.jdField_a_of_type_Bdkw).a(paramView.b(), this.jdField_a_of_type_Bdmc);
+      }
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
     }
-    return false;
+    this.jdField_a_of_type_Bkho.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkz
  * JD-Core Version:    0.7.0.1
  */

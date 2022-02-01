@@ -1,6 +1,18 @@
-public abstract interface aljo
+import android.graphics.PointF;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import java.util.List;
+
+public class aljo
+  implements akmd
 {
-  public abstract void a(int paramInt);
+  public aljo(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList)
+  {
+    if ((this.a.E) && (paramInt1 > 0)) {
+      NewFlowCameraActivity.c = true;
+    }
+  }
 }
 
 

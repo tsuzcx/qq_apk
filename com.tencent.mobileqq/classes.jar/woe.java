@@ -1,36 +1,120 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.BaseApplicationImpl;
 
+@TargetApi(9)
 public class woe
-  extends QQUIEventReceiver<StoryMessageListActivity, uwk>
+  extends wol<woh>
 {
-  public woe(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
-  {
-    super(paramStoryMessageListActivity);
-  }
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private wri jdField_a_of_type_Wri = new wof(this);
+  protected boolean a;
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull uwk paramuwk)
+  public woe()
   {
-    if (paramuwk.a.isSuccess())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
-      }
-      paramStoryMessageListActivity.g();
+    BaseApplicationImpl localBaseApplicationImpl = QQStoryContext.a().a();
+    if (localBaseApplicationImpl == null) {
+      throw new IllegalArgumentException("Context should not be null");
     }
+    this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplicationImpl.getSharedPreferences("poi_filter_perferences", 0);
   }
   
-  public Class acceptEventClass()
+  public int a()
   {
-    return uwk.class;
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("longitude", 0);
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("time", 0L);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("country", "");
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    wza localwza = new wza(1, paramInt1, paramInt2);
+    wlb.a().a(localwza, new wog(this));
+  }
+  
+  protected void a(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, paramInt).apply();
+  }
+  
+  protected void a(String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong(paramString, paramLong).apply();
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString1, paramString2).apply();
+  }
+  
+  protected void a(wre paramwre)
+  {
+    yqp.b("AddressDataProvider", "requestAddress.");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      yqp.d("AddressDataProvider", "is request address ing....");
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    wrf localwrf = (wrf)wpm.a(9);
+    wre localwre = paramwre;
+    if (paramwre == null) {
+      localwre = localwrf.b();
+    }
+    if (localwre != null)
+    {
+      a(localwre.b, localwre.a);
+      return;
+    }
+    localwrf.a(this.jdField_a_of_type_Wri);
+    localwrf.c();
+  }
+  
+  public boolean a(woh paramwoh)
+  {
+    return (paramwoh != null) && (!TextUtils.isEmpty(paramwoh.a)) && (!anni.a(2131698687).equals(paramwoh.a));
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("latitude", 0);
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("province", "");
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("city", "");
+  }
+  
+  public String d()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("district", "");
+  }
+  
+  public String e()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("street", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     woe
  * JD-Core Version:    0.7.0.1
  */

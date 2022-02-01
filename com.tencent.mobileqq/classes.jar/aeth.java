@@ -1,18 +1,37 @@
-public abstract interface aeth
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aeth
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  public aeth(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public abstract void ac();
-  
-  public abstract void ad();
-  
-  public abstract void c(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void f(int paramInt);
-  
-  public abstract void g(int paramInt);
-  
-  public abstract void h(int paramInt);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    boolean bool = true;
+    if (!bgnt.g(this.a))
+    {
+      QQToast.a(BaseApplication.getContext(), 1, 2131693992, 0).b(this.a.getTitleBarHeight());
+      FormSwitchItem localFormSwitchItem = this.a.j;
+      if (!paramBoolean) {
+        localFormSwitchItem.setChecked(bool);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bool = false;
+      break;
+      ((anip)this.a.app.a(2)).g(paramBoolean);
+    }
+  }
 }
 
 

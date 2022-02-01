@@ -1,53 +1,26 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awrk
-  extends VasWebviewJsPlugin
+  implements View.OnClickListener
 {
-  public awrk()
-  {
-    this.mPluginNameSpace = "usersummary";
-  }
+  public awrk(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void onClick(View paramView)
   {
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("usersummary"))) {
-      return false;
-    }
-    if ((this.mRuntime.a() instanceof FriendProfileCardActivity))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin handle FriendProfileCardActivity");
-      }
-      paramJsBridgeListener = (FriendProfileCardActivity)this.mRuntime.a();
-      paramJsBridgeListener.a(paramJsBridgeListener.a.a, false);
-    }
-    for (;;)
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin handle none");
-      }
-    }
+    TextView localTextView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131379999);
+    awsm.a += 1;
+    localTextView.setText(anni.a(2131705775) + awsm.a);
+    MultiAIOFragment.d(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin onActivityResult,requestCode = " + paramByte + ", resultCode = " + paramInt + ", data = " + paramIntent);
-    }
-    if (paramInt != -1) {}
-  }
-  
-  public void onResponse(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awrk
  * JD-Core Version:    0.7.0.1
  */

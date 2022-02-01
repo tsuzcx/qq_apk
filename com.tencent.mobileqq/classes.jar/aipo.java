@@ -1,26 +1,36 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity.11.1;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-final class aipo
-  implements DialogInterface.OnClickListener
+public class aipo
+  implements alvk
 {
-  aipo(Activity paramActivity, String paramString1, String paramString2, QQAppInterface paramQQAppInterface) {}
+  public aipo(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    switch (paramInt)
+    this.a.runOnUiThread(new BlessSelectMemberActivity.11.1(this));
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    }
+    synchronized (BlessSelectMemberActivity.a())
     {
-    default: 
-      return;
-    case 0: 
-      aipi.a(this.jdField_a_of_type_AndroidAppActivity, true, this.jdField_a_of_type_JavaLangString, this.b, false);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFC", "0X8009DFC", 0, 0, this.b, "", "", "");
+      BlessSelectMemberActivity.a().set(true);
+      BlessSelectMemberActivity.a().notifyAll();
+      this.a.finish();
       return;
     }
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFD", "0X8009DFD", 0, 0, this.b, "", "", "");
+  }
+  
+  public void a(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  {
+    BlessSelectMemberActivity.a = ???;
+    synchronized (BlessSelectMemberActivity.a())
+    {
+      BlessSelectMemberActivity.a().set(true);
+      BlessSelectMemberActivity.a().notifyAll();
+      return;
+    }
   }
 }
 

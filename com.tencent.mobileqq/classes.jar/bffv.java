@@ -1,23 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class bffv
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public bffv(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
+  bffv(bffu parambffu) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    if (!paramView.hasFocus())
+    {
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
+      ThreadManager.getUIHandler().post(new TextItem.1.1(this, paramView));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bffv
  * JD-Core Version:    0.7.0.1
  */

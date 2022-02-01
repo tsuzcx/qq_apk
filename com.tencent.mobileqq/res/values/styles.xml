@@ -19,6 +19,16 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
+    <style name="z7">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/bp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/a4v</item>
+        <item name="android:layout_width">20.0dip</item>
+        <item name="android:layout_height">20.0dip</item>
+        <item name="android:button">@null</item>
+    </style>
     <style name="c" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/h</item>
         <item name="android:windowExitAnimation">@anim/i</item>
@@ -230,7 +240,7 @@
         <item name="android:textColor">?android:textColorPrimaryInverse</item>
     </style>
     <style name="af" parent="@style/a5" />
-    <style name="z7" parent="@style/ag">
+    <style name="z8" parent="@style/ag">
         <item name="android:backgroundDimEnabled">false</item>
     </style>
     <style name="ag" parent="@android:style/Theme.Dialog">
@@ -737,7 +747,7 @@
         <item name="android:textColor">@color/skin_gray2</item>
     </style>
     <style name="d1" parent="@android:style/Theme.Black">
-        <item name="android:textAppearance">@style/z9</item>
+        <item name="android:textAppearance">@style/zq</item>
         <item name="android:textColorPrimaryInverse">@android:color/black</item>
         <item name="android:windowBackground">@null</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -962,6 +972,14 @@
         <item name="android:background">@drawable/qq_profilecard_btn</item>
         <item name="android:layout_height">@dimen/qt</item>
     </style>
+    <style name="z9" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@color/ajr</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
     <style name="e0" parent="@android:style/Widget.Button">
         <item name="android:textSize">@dimen/az7</item>
         <item name="android:textColor">@color/skin_color_button_blue</item>
@@ -1071,6 +1089,11 @@
         <item name="android:textColor">#ff00cafc</item>
         <item name="android:background">@drawable/an8</item>
         <item name="android:minHeight">45.0dip</item>
+    </style>
+    <style name="HippyFullScreenDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
     </style>
     <style name="ee">
         <item name="android:textSize">16.0dip</item>
@@ -1208,6 +1231,18 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFullscreen">false</item>
+    </style>
+    <style name="z_">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleSize">0.0dip</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+    <style name="za" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
     </style>
     <style name="f1" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -1406,6 +1441,12 @@
         <item name="android:maxHeight">0.5dip</item>
         <item name="android:indeterminateOnly">false</item>
         <item name="android:minHeight">0.5dip</item>
+    </style>
+    <style name="zb" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
     <style name="fu" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/hu</item>
@@ -2082,6 +2123,17 @@
         <item name="android:layout_height">50.0dip</item>
         <item name="android:scaleType">matrix</item>
     </style>
+    <style name="zc" parent="@android:style/TextAppearance.StatusBar.EventContent" />
+    <style name="zd" parent="@style/zc">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+    <style name="ze" parent="@style/zd" />
+    <style name="zf" parent="@style/zc">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+    <style name="zg" parent="@android:style/TextAppearance.StatusBar.EventContent.Title" />
     <style name="ii" parent="@android:style/TextAppearance">
         <item name="android:textSize">14.0sp</item>
         <item name="android:textStyle">normal</item>
@@ -2137,6 +2189,12 @@
     <style name="is" parent="@android:style/Theme">
         <item name="android:windowBackground">@null</item>
         <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="zh" parent="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleSize">0.0dip</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="it" parent="@android:style/Theme.Holo.Light.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -2289,6 +2347,13 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+    <style name="zi" parent="@android:style/Animation.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@style/zn</item>
         <item name="android:windowFullscreen">false</item>
     </style>
     <style name="jk" parent="@android:style/Theme.Translucent">
@@ -2528,6 +2593,18 @@
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_alignParentTop">true</item>
     </style>
+    <style name="zj">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">@color/skin_gray2</item>
+        <item name="android:paddingLeft">@dimen/al3</item>
+        <item name="android:paddingTop">@dimen/al0</item>
+        <item name="android:paddingRight">@dimen/al3</item>
+        <item name="android:focusable">false</item>
+        <item name="android:clickable">false</item>
+        <item name="android:duplicateParentState">true</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
     <style name="k9">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -2702,6 +2779,13 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+    <style name="zk">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
     <style name="l3">
         <item name="android:textSize">14.0sp</item>
         <item name="android:textColor">#ff707070</item>
@@ -2736,12 +2820,18 @@
         <item name="android:radioButtonStyle">@style/n_</item>
         <item name="android:windowAnimationStyle">@style/actAnimation</item>
     </style>
+    <style name="zl" />
+    <style name="zm" />
     <style name="l8">
         <item name="android:indeterminateOnly">true</item>
         <item name="android:indeterminateDrawable">@drawable/am0</item>
         <item name="android:indeterminateBehavior">repeat</item>
     </style>
     <style name="l9" />
+    <style name="zn" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/u</item>
+        <item name="android:windowExitAnimation">@anim/v</item>
+    </style>
     <style name="l_">
         <item name="android:textSize">14.0sp</item>
         <item name="android:textColor">@color/skin_blue</item>
@@ -2789,6 +2879,13 @@
         <item name="android:textSize">14.0sp</item>
         <item name="android:textColor">@color/ade</item>
         <item name="android:gravity">center</item>
+    </style>
+    <style name="zo">
+        <item name="android:focusable">true</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">@drawable/bin</item>
+        <item name="android:progressDrawable">@drawable/bio</item>
+        <item name="android:thumb">@drawable/fxd</item>
     </style>
     <style name="g7">
         <item name="android:textSize">12.0sp</item>
@@ -3019,7 +3116,7 @@
         <item name="android:textSize">14.0sp</item>
         <item name="android:textColor">@color/skin_black</item>
     </style>
-    <style name="z8">
+    <style name="zp">
         <item name="android:windowEnterAnimation">@anim/i2</item>
         <item name="android:windowExitAnimation">@anim/i1</item>
     </style>
@@ -3087,7 +3184,7 @@
     <style name="nb">
         <item name="android:background">@drawable/asa</item>
     </style>
-    <style name="z9" parent="@android:style/TextAppearance" />
+    <style name="zq" parent="@android:style/TextAppearance" />
     <style name="nc">
         <item name="android:duplicateParentState">true</item>
         <item name="android:layout_width">wrap_content</item>
@@ -4373,6 +4470,12 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFullscreen">false</item>
     </style>
+    <style name="zr" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
     <style name="xn" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowFrame">@null</item>
@@ -4385,9 +4488,16 @@
         <item name="android:windowBackground">@android:color/white</item>
         <item name="android:windowNoTitle">true</item>
     </style>
-    <style name="z_" parent="@android:style/Theme.Dialog">
-        <item name="android:windowBackground">@color/abu</item>
+    <style name="zs" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@color/ai7</item>
         <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="zt">
+        <item name="a2g">?android:textColorPrimary</item>
+        <item name="a2h">?android:textColorHighlight</item>
+        <item name="a2i">?android:textColorHint</item>
+        <item name="a2j">?android:textColorLink</item>
+        <item name="a2m">16.0sp</item>
     </style>
     <style name="xp">
         <item name="android:textSize">@dimen/b79</item>
@@ -4426,6 +4536,13 @@
     <style name="xv">
         <item name="android:windowEnterAnimation">@anim/is</item>
         <item name="android:windowExitAnimation">@anim/it</item>
+    </style>
+    <style name="zu">
+        <item name="a2d">@style/zt</item>
+        <item name="a2k">@null</item>
+        <item name="a2l">@null</item>
+        <item name="a2o">@drawable/bua</item>
+        <item name="a2q">@drawable/bub</item>
     </style>
     <style name="xw" parent="@android:style/Widget.SeekBar">
         <item name="android:maxHeight">10.0dip</item>
@@ -4603,7 +4720,7 @@
         <item name="bd">@color/a7l</item>
     </style>
     <style name="qZoneInputDialog" parent="@android:style/Theme.Dialog">
-        <item name="android:textAppearance">@style/z9</item>
+        <item name="android:textAppearance">@style/zq</item>
         <item name="android:windowBackground">@color/abu</item>
         <item name="android:windowNoTitle">true</item>
         <item name="bd">@color/a7l</item>
@@ -4739,9 +4856,9 @@
         <item name="android:windowEnterAnimation">@anim/ch</item>
         <item name="android:windowExitAnimation">@anim/cj</item>
     </style>
-    <style name="za">
-        <item name="android:windowEnterAnimation">@anim/z</item>
-        <item name="android:windowExitAnimation">@anim/as</item>
+    <style name="zv">
+        <item name="android:windowEnterAnimation">@anim/fw</item>
+        <item name="android:windowExitAnimation">@anim/fx</item>
     </style>
     <style name="sn">
         <item name="android:windowEnterAnimation">@anim/ci</item>
@@ -5010,31 +5127,31 @@
         <item name="android:textSize">14.0sp</item>
         <item name="android:textColor">@color/x9</item>
     </style>
-    <style name="zb" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/bk1</item>
+    <style name="zw" parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:windowBackground">@color/kc</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
     </style>
-    <style name="zc" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/bk3</item>
-    </style>
-    <style name="zd" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/bk6</item>
-    </style>
-    <style name="ze">
+    <style name="zx">
         <item name="android:focusable">true</item>
-        <item name="android:maxHeight">1.0dip</item>
         <item name="android:indeterminateOnly">false</item>
-        <item name="android:indeterminateDrawable">@drawable/bka</item>
-        <item name="android:progressDrawable">@drawable/bka</item>
-        <item name="android:minHeight">1.0dip</item>
-        <item name="android:thumb">@drawable/bk9</item>
+        <item name="android:indeterminateDrawable">@drawable/dqn</item>
+        <item name="android:progressDrawable">@drawable/dqn</item>
+        <item name="android:thumb">@null</item>
     </style>
-    <style name="zf" parent="@android:style/Animation">
-        <item name="android:windowEnterAnimation">@anim/j6</item>
-        <item name="android:windowExitAnimation">@anim/j7</item>
+    <style name="zy" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/j_</item>
+        <item name="android:windowExitAnimation">@anim/ja</item>
     </style>
-    <style name="zg" parent="@android:style/Animation">
-        <item name="android:windowEnterAnimation">@anim/j8</item>
-        <item name="android:windowExitAnimation">@anim/j9</item>
+    <style name="zz" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/jb</item>
+        <item name="android:windowExitAnimation">@anim/jc</item>
+    </style>
+    <style name="a00" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/jh</item>
+        <item name="android:windowExitAnimation">@anim/jg</item>
     </style>
     <style name="ts">
         <item name="android:background">@drawable/a8p</item>
@@ -5399,11 +5516,8 @@
         <item name="u5">@drawable/b57</item>
         <item name="ut">@drawable/b58</item>
     </style>
-    <style name="zh" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/bk7</item>
-    </style>
-    <style name="zi" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/bkx</item>
+    <style name="a01" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/e77</item>
     </style>
     <style name="vh" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/aw8</item>
@@ -5783,6 +5897,14 @@
     </style>
     <style name="xe">
         <item name="android:background">#ff54acea</item>
+    </style>
+    <style name="a02" parent="@android:style/Theme.Dialog">
+        <item name="android:textAppearance">@style/zq</item>
+        <item name="android:windowBackground">@color/abu</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowMinWidthMajor">50.0%</item>
+        <item name="android:windowMinWidthMinor">50.0%</item>
+        <item name="bd">@color/a7l</item>
     </style>
     <style name="xf" parent="@style/dl">
         <item name="android:windowBackground">@color/abw</item>

@@ -1,289 +1,71 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ActivityDAUInfo;
-import com.tencent.mobileqq.statistics.UEC;
-import com.tencent.mobileqq.statistics.UEC.UECItem;
+import android.app.Activity;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class azpq
-  implements Handler.Callback, azrw, Manager
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/component/background/VasProfileDiyBackgroundComponent;", "Lcom/tencent/mobileqq/profilecard/vas/component/background/AbsVasProfileBackgroundComponent;", "componentCenter", "Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;", "cardInfo", "Lcom/tencent/mobileqq/profile/ProfileCardInfo;", "(Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;Lcom/tencent/mobileqq/profile/ProfileCardInfo;)V", "mQVipBackgroundCreator", "Lcom/tencent/mobileqq/vip/diy/QVipBackgroundCreator;", "onDestroy", "", "onVasDataUpdate", "", "data", "Lcom/tencent/mobileqq/profilecard/vas/VasProfileData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azpq
+  extends azpm
 {
-  public static boolean a;
-  private awgf jdField_a_of_type_Awgf;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<String, ActivityDAUInfo> jdField_a_of_type_JavaUtilHashMap;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private bhif a;
   
-  public azpq(QQAppInterface paramQQAppInterface)
+  public azpq(@Nullable azlw paramazlw, @Nullable azfe paramazfe)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
-    this.jdField_a_of_type_MqqOsMqqHandler = new bdgf(ThreadManager.getSubThreadLooper(), this);
-    a();
+    super("VasProfileDiyBackgroundComponent", paramazlw, paramazfe);
   }
   
-  public String a(String paramString1, String paramString2)
+  public boolean a(@NotNull azpj paramazpj)
   {
-    try
-    {
-      arrayOfString = paramString2.split("\\|");
-      if (arrayOfString == null) {
-        return paramString1;
-      }
-      i = 0;
+    Intrinsics.checkParameterIsNotNull(paramazpj, "data");
+    if (this.jdField_a_of_type_Bhif != null) {
+      return true;
     }
-    catch (Exception localException1)
+    label149:
+    for (;;)
     {
       try
       {
-        String[] arrayOfString;
-        int i;
-        if (i >= arrayOfString.length) {
-          break label165;
-        }
-        String str1 = arrayOfString[i];
-        int j = str1.indexOf("+");
-        int k = str1.indexOf(":");
-        paramString2 = paramString1;
-        if (j > 0)
+        paramazpj = paramazpj.a();
+        if (paramazpj != null)
         {
-          paramString2 = paramString1;
-          if (k > 0)
+          if ((paramazpj.b() instanceof JSONObject))
           {
-            paramString2 = str1.substring(0, j);
-            String str2 = str1.substring(j + 1, k);
-            str1 = str1.substring(k + 1);
-            paramString2 = UEC.a(paramString1, paramString2, Integer.valueOf(str2).intValue(), Integer.valueOf(str1).intValue());
+            this.jdField_a_of_type_Bhif = bhif.a((Activity)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).a((ViewGroup)a()).a((JSONObject)paramazpj.b());
+            break label149;
           }
         }
-        i += 1;
-        paramString1 = paramString2;
-      }
-      catch (Exception localException2)
-      {
-        label129:
-        break label129;
-      }
-      localException1 = localException1;
-      paramString2 = paramString1;
-      if (!QLog.isColorLevel()) {
-        break label165;
-      }
-      QLog.d("Q.activity_dau", 2, "saveToDB|preActivityList error:" + localException1);
-      paramString2 = paramString1;
-    }
-    paramString2 = paramString1;
-    label165:
-    return paramString2;
-    return paramString1;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-      if (Long.valueOf(str).longValue() / 1000L % 1000L < 50L) {
-        jdField_a_of_type_Boolean = true;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("UEC", 2, "dau uin=" + str + " result=" + jdField_a_of_type_Boolean);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void a(ArrayList<UEC.UECItem> paramArrayList)
-  {
-    if (jdField_a_of_type_Boolean)
-    {
-      Message localMessage = new Message();
-      localMessage.what = 0;
-      localMessage.obj = paramArrayList;
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    Object localObject2;
-    Object localObject3;
-    if (paramMessage.what == 0)
-    {
-      paramMessage = (ArrayList)paramMessage.obj;
-      if (paramMessage != null)
-      {
-        paramMessage = paramMessage.iterator();
-        label364:
-        while (paramMessage.hasNext())
+        else
         {
-          localObject2 = (UEC.UECItem)paramMessage.next();
-          localObject1 = ((UEC.UECItem)localObject2).jdField_a_of_type_JavaLangString;
-          if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1))
-          {
-            localObject3 = (ActivityDAUInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
-            ((ActivityDAUInfo)localObject3).count += 1;
-            ((ActivityDAUInfo)localObject3).showTime += ((UEC.UECItem)localObject2).jdField_a_of_type_Long;
-            ((ActivityDAUInfo)localObject3).displayCount += ((UEC.UECItem)localObject2).jdField_b_of_type_Int;
-            ((ActivityDAUInfo)localObject3).preActivityList = a(((ActivityDAUInfo)localObject3).preActivityList, ((UEC.UECItem)localObject2).jdField_b_of_type_JavaLangString);
-            ((ActivityDAUInfo)localObject3).webTitle = ((UEC.UECItem)localObject2).c;
-            ((ActivityDAUInfo)localObject3).domain = ((UEC.UECItem)localObject2).d;
-            ((ActivityDAUInfo)localObject3).reportVersion = ((UEC.UECItem)localObject2).e;
-            ((ActivityDAUInfo)localObject3).pageName = ((UEC.UECItem)localObject2).f;
-          }
-          for (;;)
-          {
-            if (!QLog.isColorLevel()) {
-              break label364;
-            }
-            localObject2 = (ActivityDAUInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
-            if (localObject2 == null) {
-              break;
-            }
-            QLog.d("Q.activity_dau", 2, "reportInternal|activityName:" + (String)localObject1 + " count:" + ((ActivityDAUInfo)localObject2).count + " time:" + ((ActivityDAUInfo)localObject2).showTime + " v:" + ((ActivityDAUInfo)localObject2).reportVersion + " page:" + ((ActivityDAUInfo)localObject2).pageName);
-            break;
-            localObject3 = new ActivityDAUInfo();
-            ((ActivityDAUInfo)localObject3).count = 1;
-            ((ActivityDAUInfo)localObject3).activityName = ((String)localObject1);
-            ((ActivityDAUInfo)localObject3).showTime = ((UEC.UECItem)localObject2).jdField_a_of_type_Long;
-            ((ActivityDAUInfo)localObject3).displayCount = ((UEC.UECItem)localObject2).jdField_b_of_type_Int;
-            ((ActivityDAUInfo)localObject3).preActivityList = ((UEC.UECItem)localObject2).jdField_b_of_type_JavaLangString;
-            ((ActivityDAUInfo)localObject3).webTitle = ((UEC.UECItem)localObject2).c;
-            ((ActivityDAUInfo)localObject3).domain = ((UEC.UECItem)localObject2).d;
-            ((ActivityDAUInfo)localObject3).reportVersion = ((UEC.UECItem)localObject2).e;
-            ((ActivityDAUInfo)localObject3).pageName = ((UEC.UECItem)localObject2).f;
-            this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, localObject3);
-          }
+          a("card-diy");
+          return true;
         }
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 4)
+      catch (Exception paramazpj)
       {
-        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
+        QLog.e(b(), 1, (Throwable)paramazpj, new Object[0]);
+        a().removeAllViews();
+        return true;
       }
-    }
-    while (paramMessage.what != 1)
-    {
-      do
-      {
-        return false;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1));
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 120000L);
-      return false;
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Awgf != null) {
-        break label474;
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {
-        return false;
-      }
-    }
-    finally {}
-    this.jdField_a_of_type_Awgf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    label474:
-    paramMessage = this.jdField_a_of_type_JavaUtilHashMap.keySet();
-    Object localObject1 = this.jdField_a_of_type_Awgf.a();
-    try
-    {
-      ((awgh)localObject1).a();
-      localObject2 = paramMessage.iterator();
-      if (!((Iterator)localObject2).hasNext()) {
-        break label904;
-      }
-      localObject3 = (String)((Iterator)localObject2).next();
-      localActivityDAUInfo = (ActivityDAUInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject3);
-      paramMessage = (ActivityDAUInfo)this.jdField_a_of_type_Awgf.a(ActivityDAUInfo.class, (String)localObject3);
-      if (paramMessage != null) {
-        break label803;
-      }
-      paramMessage = new ActivityDAUInfo();
-      paramMessage.activityName = ((String)localObject3);
-      paramMessage.count = localActivityDAUInfo.count;
-      paramMessage.showTime = localActivityDAUInfo.showTime;
-      paramMessage.displayCount = localActivityDAUInfo.displayCount;
-      paramMessage.preActivityList = localActivityDAUInfo.preActivityList;
-    }
-    catch (Exception paramMessage)
-    {
-      for (;;)
-      {
-        ActivityDAUInfo localActivityDAUInfo;
-        paramMessage.printStackTrace();
-        ((awgh)localObject1).b();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.activity_dau", 2, "saveToDB|cache size:" + this.jdField_a_of_type_JavaUtilHashMap.size());
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        return false;
-        paramMessage.count += localActivityDAUInfo.count;
-        paramMessage.showTime += localActivityDAUInfo.showTime;
-        paramMessage.displayCount += localActivityDAUInfo.displayCount;
-        paramMessage.preActivityList = a(paramMessage.preActivityList, localActivityDAUInfo.preActivityList);
-      }
-    }
-    finally
-    {
-      ((awgh)localObject1).b();
-    }
-    paramMessage.webTitle = localActivityDAUInfo.webTitle;
-    paramMessage.domain = localActivityDAUInfo.domain;
-    paramMessage.reportVersion = localActivityDAUInfo.reportVersion;
-    paramMessage.pageName = localActivityDAUInfo.pageName;
-    if (paramMessage.getStatus() == 1000) {
-      this.jdField_a_of_type_Awgf.b(paramMessage);
-    }
-    label904:
-    label913:
-    for (;;)
-    {
-      label658:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.activity_dau", 2, "MSG_SAVE_TO_DB|activityName:" + (String)localObject3 + " count:" + paramMessage.count + " time:" + paramMessage.showTime + " v:" + paramMessage.reportVersion + " page:" + paramMessage.pageName);
-        break;
-      }
-      for (;;)
-      {
-        label803:
-        if ((paramMessage.getStatus() != 1001) && (paramMessage.getStatus() != 1002)) {
-          break label913;
-        }
-        this.jdField_a_of_type_Awgf.a(paramMessage);
-        break label658;
-        break;
-        ((awgh)localObject1).c();
-        ((awgh)localObject1).b();
+      if ((paramazpj.b() instanceof JSONArray)) {
+        this.jdField_a_of_type_Bhif = bhif.a((Activity)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).a((ViewGroup)a()).a((JSONArray)paramazpj.b());
       }
     }
   }
   
-  public void onDestroy()
+  public void f()
   {
-    jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Awgf != null) {}
-    try
-    {
-      this.jdField_a_of_type_Awgf.a();
-      return;
+    super.f();
+    bhif localbhif = this.jdField_a_of_type_Bhif;
+    if (localbhif != null) {
+      localbhif.a();
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_Bhif = ((bhif)null);
   }
 }
 

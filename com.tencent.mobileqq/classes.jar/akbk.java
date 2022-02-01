@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
 
-class akbk
-  implements View.OnClickListener
+public class akbk
+  implements DialogInterface.OnClickListener
 {
-  akbk(akbj paramakbj) {}
+  public akbk(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = paramView.getTag();
-    akbj.a(this.a, (akhv)paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
   }
 }
 

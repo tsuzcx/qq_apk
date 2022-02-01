@@ -1,27 +1,23 @@
-import android.widget.Toast;
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment;
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigGallery;
 
 public class qrc
-  implements shq
+  extends qrd
 {
-  public qrc(GalleryFragment paramGalleryFragment, qrk paramqrk) {}
-  
-  public void a()
+  public qrc(Context paramContext, aobu paramaobu, snh paramsnh)
   {
-    Toast.makeText(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectGalleryFragment.a, 2131719059, 1).show();
+    super(paramContext, paramaobu, paramsnh);
   }
   
-  public void a(@NotNull String paramString)
+  public qqt g()
   {
-    if (this.jdField_a_of_type_Qrk != null) {
-      this.jdField_a_of_type_Qrk.a(paramString);
-    }
+    this.jdField_a_of_type_Qqs = new ComponentContentBigGallery(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qrc
  * JD-Core Version:    0.7.0.1
  */

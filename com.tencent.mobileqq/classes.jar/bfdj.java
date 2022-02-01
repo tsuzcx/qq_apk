@@ -1,29 +1,60 @@
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.open.agent.BindGroupFragment;
-import com.tencent.widget.AdapterView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bfdj
-  implements bhuw
+  extends BaseAdapter
 {
-  public bfdj(BindGroupFragment paramBindGroupFragment) {}
+  public bfdk a;
+  protected List<String> a = new ArrayList();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public String a(int paramInt)
   {
-    paramAdapterView = ((bfdb)paramView.getTag()).a;
-    if (paramAdapterView.isThirdAppBind())
+    return (String)this.a.get(paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.add(paramString);
+  }
+  
+  public int getCount()
+  {
+    return this.a.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
     {
-      BindGroupFragment.b(this.a, alud.a(2131701507));
-      return;
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560630, null, false);
+      paramView = new bfdl(this);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379934));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramView);
+      localView.setTag(paramView);
     }
-    if (paramAdapterView.isNewTroop())
+    for (;;)
     {
-      BindGroupFragment.a(this.a, alud.a(2131701493), paramAdapterView.troopuin);
-      return;
+      Object localObject = a(paramInt);
+      paramView.jdField_a_of_type_Int = paramInt;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (bfdl)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
     }
-    BindGroupFragment.a(this.a, alud.a(2131701496));
-    ((amdu)BindGroupFragment.a(this.a).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.a)).intValue(), Integer.valueOf(BindGroupFragment.b(this.a)).intValue(), Long.valueOf(paramAdapterView.troopuin).longValue(), BindGroupFragment.c(this.a));
   }
 }
 

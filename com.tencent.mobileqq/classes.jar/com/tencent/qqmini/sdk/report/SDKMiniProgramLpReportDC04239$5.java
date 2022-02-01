@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.report;
 
-import bhcn;
-
-public final class SDKMiniProgramLpReportDC04239$5
+final class SDKMiniProgramLpReportDC04239$5
   implements Runnable
 {
+  SDKMiniProgramLpReportDC04239$5(String paramString1, String paramString2) {}
+  
   public void run()
   {
-    bhcn.a(this.a, this.b, this.c, this.d, this.e, this.f);
+    SDKMiniProgramLpReportDC04239.access$400("page_view", this.val$subActionType, this.val$reserves);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.5
  * JD-Core Version:    0.7.0.1
  */

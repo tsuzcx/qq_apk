@@ -1,27 +1,39 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aqox
 {
   public int a;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  FileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
-  AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-  EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
-  public int b;
-  ImageView b;
   
-  public aqox(aqow paramaqow) {}
+  public static aqox a(aqlg[] paramArrayOfaqlg)
+  {
+    localaqox = new aqox();
+    int i = 0;
+    try
+    {
+      while (i < paramArrayOfaqlg.length)
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfaqlg[i].a);
+        if (localJSONObject.has("gc_zone_entry_optimize"))
+        {
+          localaqox.a = localJSONObject.optInt("gc_zone_entry_optimize");
+          if (QLog.isColorLevel()) {
+            QLog.d("GameCenterEnterConfBean", 1, "onParsed mGcZoneEntryOptimize=" + localaqox.a);
+          }
+        }
+        i += 1;
+      }
+      return localaqox;
+    }
+    catch (Throwable paramArrayOfaqlg)
+    {
+      QLog.e("GameCenterEnterConfBean", 1, "GameCenterEnterConfBean parse error e=" + paramArrayOfaqlg.toString());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqox
  * JD-Core Version:    0.7.0.1
  */

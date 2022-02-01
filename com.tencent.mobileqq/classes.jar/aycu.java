@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import android.app.Activity;
+import android.view.View;
+import java.util.List;
 
-public class aycu
-  implements DialogInterface.OnClickListener
+class aycu
+  implements aycz
 {
-  public aycu(SignatureEditFragment paramSignatureEditFragment) {}
+  aycu(aycs paramaycs, Activity paramActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    SignatureEditFragment.a(this.a, 8589934618L, null);
-    paramDialogInterface.dismiss();
+    paramView = (ayde)aydd.a().a().get(paramInt);
+    ayen.a(this.jdField_a_of_type_AndroidAppActivity, paramView.a(), paramView.a(), 60010);
+    ayej.a(String.valueOf(paramView.a()), paramInt);
   }
+  
+  public void b(View paramView, int paramInt) {}
 }
 
 

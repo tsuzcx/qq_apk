@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lfu;
+import lco;
 import mqq.os.MqqHandler;
 
 public class MutiMemberThumbList
@@ -25,9 +25,9 @@ public class MutiMemberThumbList
   private View jdField_a_of_type_AndroidViewView;
   private VideoController jdField_a_of_type_ComTencentAvVideoController;
   private final String jdField_a_of_type_JavaLangString = "%d名成员被邀请";
-  private final ArrayList<lfu> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final ArrayList<lco> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131372761, 2131372762, 2131372763, 2131372764, 2131372765, 2131372766, 2131372767 };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131373376, 2131373377, 2131373378, 2131373379, 2131373380, 2131373381, 2131373382 };
   private int jdField_b_of_type_Int = -1;
   private long jdField_b_of_type_Long = -1L;
   private final String jdField_b_of_type_JavaLangString = "%d+";
@@ -49,7 +49,7 @@ public class MutiMemberThumbList
     b();
   }
   
-  private void a(int paramInt, ArrayList<lfu> paramArrayList)
+  private void a(int paramInt, ArrayList<lco> paramArrayList)
   {
     QLog.d("MutiMemberThumbList", 1, "doDisplay " + paramInt);
     ThreadManager.getSubThreadHandler().post(new MutiMemberThumbList.1(this, paramInt, paramArrayList));
@@ -57,7 +57,7 @@ public class MutiMemberThumbList
   
   private void b()
   {
-    addView(LayoutInflater.from(getContext()).inflate(2131559594, null));
+    addView(LayoutInflater.from(getContext()).inflate(2131559731, null));
     this.jdField_a_of_type_Boolean = false;
   }
   
@@ -78,7 +78,7 @@ public class MutiMemberThumbList
     this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
   }
   
-  public void setDisPlayList(ArrayList<lfu> paramArrayList)
+  public void setDisPlayList(ArrayList<lco> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -92,8 +92,8 @@ public class MutiMemberThumbList
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      lfu locallfu = (lfu)paramArrayList.next();
-      this.jdField_a_of_type_JavaUtilArrayList.add(locallfu);
+      lco locallco = (lco)paramArrayList.next();
+      this.jdField_a_of_type_JavaUtilArrayList.add(locallco);
     }
     a(this.jdField_a_of_type_JavaUtilArrayList.size(), (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone());
   }
@@ -105,7 +105,7 @@ public class MutiMemberThumbList
   
   public void setMoreInfoDrawableColor(String paramString)
   {
-    int i = aepi.a(32.0F, getResources());
+    int i = afur.a(32.0F, getResources());
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setShape(1);
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.parseColor(paramString));
@@ -131,7 +131,7 @@ public class MutiMemberThumbList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.MutiMemberThumbList
  * JD-Core Version:    0.7.0.1
  */

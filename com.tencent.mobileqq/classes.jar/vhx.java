@@ -1,28 +1,30 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudWrite.StDoTopRsp;
 
-public class vhx
-  extends uro
+class vhx
+  implements zxa<FeedCloudWrite.StDoTopRsp>
 {
-  public umk a = new umk();
+  vhx(vhu paramvhu, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, int paramInt) {}
   
-  public vhx(qqstory_service.RspAuthKey paramRspAuthKey)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoTopRsp paramStDoTopRsp)
   {
-    super(paramRspAuthKey.result);
-    this.a.jdField_a_of_type_JavaLangString = paramRspAuthKey.user_ip.get().toStringUtf8();
-    this.a.b = paramRspAuthKey.server_ip1.get().toStringUtf8();
-    this.a.c = paramRspAuthKey.server_ip2.get().toStringUtf8();
-    this.a.d = paramRspAuthKey.backup_server_ip1.get().toStringUtf8();
-    this.a.e = paramRspAuthKey.backup_server_ip2.get().toStringUtf8();
-    this.a.jdField_a_of_type_ArrayOfByte = paramRspAuthKey.auth_key.get().toByteArray();
-    this.a.jdField_a_of_type_Long = (paramRspAuthKey.expire_time.get() * 1000L);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoTopRsp == null))
+    {
+      QLog.e("QCircleCommentBusiness", 1, "cancelStickyFeedComment error:" + paramLong + "  errorMsg:" + paramString);
+      return;
+    }
+    QLog.d("QCircleCommentBusiness", 1, "cancelStickyFeedComment Success");
+    vhu.a(this.jdField_a_of_type_Vhu, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), "");
+    zwp.a().a(new QCircleCommentUpdateEvent(8, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Vhu.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get()), this.jdField_a_of_type_Int));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vhx
  * JD-Core Version:    0.7.0.1
  */

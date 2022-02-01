@@ -1,13 +1,18 @@
-public class amqj
+import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+
+class amqj
+  extends AVVideoCtrl.EnableCameraCompleteCallback
 {
-  public int a = -1;
-  public long a;
-  public String a;
-  public String b;
+  amqj(amqf paramamqf) {}
+  
+  public void onComplete(boolean paramBoolean, int paramInt)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqj
  * JD-Core Version:    0.7.0.1
  */

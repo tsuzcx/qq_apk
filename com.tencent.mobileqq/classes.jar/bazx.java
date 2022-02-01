@@ -1,43 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.1;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.2;
+import com.tencent.mobileqq.richstatus.EditActivity;
 
-public abstract class bazx
+public class bazx
+  implements bbaj
 {
-  static final String TAG = "PreDownload.Task";
-  protected QQAppInterface app;
-  protected bbaa ctrl;
-  public String key;
-  protected Handler subHandler;
-  public Object userData;
+  public bazx(EditActivity paramEditActivity) {}
   
-  protected bazx(QQAppInterface paramQQAppInterface, String paramString)
+  public void a(bhvb parambhvb)
   {
-    this.key = paramString;
-    this.app = paramQQAppInterface;
-    this.ctrl = ((bbaa)this.app.getManager(193));
-    this.subHandler = new Handler(ThreadManager.getSubThreadLooper());
+    if (EditActivity.a(this.a) == parambhvb)
+    {
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).a(null);
+      }
+      EditActivity.a(this.a, null);
+    }
   }
   
-  public final void cancel()
+  public boolean a(bhvb parambhvb)
   {
-    this.subHandler.post(new AbsPreDownloadTask.2(this));
-  }
-  
-  public abstract void realCancel();
-  
-  public abstract void realStart();
-  
-  public final void start()
-  {
-    this.subHandler.post(new AbsPreDownloadTask.1(this));
-  }
-  
-  public String toString()
-  {
-    return super.toString() + "[" + this.key + "]";
+    return parambhvb != EditActivity.a(this.a);
   }
 }
 

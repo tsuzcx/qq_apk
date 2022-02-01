@@ -1,32 +1,57 @@
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.net.Uri;
+import android.text.ClipboardManager;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 
-final class bdnw
-  extends ClickableSpan
+class bdnw
+  implements bkhw
 {
-  bdnw(Context paramContext, avdd paramavdd) {}
+  bdnw(bdnt parambdnt, Context paramContext, String paramString, QQAppInterface paramQQAppInterface, int paramInt1, MessageRecord paramMessageRecord, int paramInt2, bkho parambkho) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_Avdd.b());
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Avdd.b());
+    switch (paramInt)
+    {
     }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#00aced"));
-    paramTextPaint.setUnderlineText(false);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A926", "0X800A926", this.jdField_a_of_type_Int, 0, "", "", "", "");
+      bdnt.a("2", "1");
+      continue;
+      ahkf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, (ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaLangString);
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A927", "0X800A927", this.jdField_a_of_type_Int, 0, "", "", "", "");
+      continue;
+      if (this.b == 2)
+      {
+        paramView = Intent.createChooser(new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.jdField_a_of_type_JavaLangString)), this.jdField_a_of_type_AndroidContentContext.getString(2131693454));
+        paramView.putExtra("big_brother_source_key", bdnt.a(this.jdField_a_of_type_Bdnt));
+        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92D", "0X800A92D", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+        paramView.putExtra("big_brother_source_key", bdnt.a(this.jdField_a_of_type_Bdnt));
+        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92A", "0X800A92A", this.jdField_a_of_type_Int, 0, "", "", "", "");
+        bdnt.a("1", "2");
+        continue;
+        bdnt.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92B", "0X800A92B", this.jdField_a_of_type_Int, 0, "", "", "", "");
+        bdnt.b("0X800A00A", "0X800A00A");
+        continue;
+        bghy.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_JavaLangString);
+        bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92C", "0X800A92C", this.jdField_a_of_type_Int, 0, "", "", "", "");
+      }
+    }
   }
 }
 

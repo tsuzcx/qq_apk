@@ -1,29 +1,22 @@
-import com.tencent.biz.pubaccount.QualityReporter.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoReq;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nse
+class nse
+  implements View.OnClickListener
 {
-  public static void a(qlq paramqlq)
-  {
-    ThreadManager.excute(new QualityReporter.1(paramqlq), 16, null, true);
-  }
+  nse(nre paramnre, nyl paramnyl) {}
   
-  private static void b(cc_sso_report_svr.ReportInfoReq paramReportInfoReq)
+  public void onClick(View paramView)
   {
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), nrz.class);
-    localNewIntent.putExtra("cmd", "FeedsContentCenter.QualityReport");
-    localNewIntent.putExtra("data", paramReportInfoReq.toByteArray());
-    localNewIntent.setObserver(new nsf(localNewIntent));
-    ors.a().startServlet(localNewIntent);
+    nre.a(this.jdField_a_of_type_Nre);
+    nre.a(this.jdField_a_of_type_Nre, this.jdField_a_of_type_Nyl.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nse
  * JD-Core Version:    0.7.0.1
  */

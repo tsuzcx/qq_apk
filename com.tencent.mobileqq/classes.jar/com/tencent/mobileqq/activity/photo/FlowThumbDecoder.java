@@ -12,19 +12,19 @@ import android.graphics.Rect;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore.Video.Thumbnails;
 import android.util.DisplayMetrics;
-import azri;
-import bayu;
-import bazg;
-import com.tencent.common.app.BaseApplicationImpl;
+import bctj;
+import bdzx;
+import beai;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
 import com.tencent.mobileqq.activity.photo.album.QAlbumUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.HashMap;
 
 public class FlowThumbDecoder
-  implements bazg
+  implements beai
 {
   static final int SCALE_MODE_BY_HEIGHT = 2;
   static final int SCALE_MODE_BY_WIDTH = 1;
@@ -44,9 +44,9 @@ public class FlowThumbDecoder
   {
     Resources localResources = paramContext.getResources();
     this.mDensity = localResources.getDisplayMetrics().density;
-    sFlowItemHeight = localResources.getDimension(2131296978);
-    sFlowItemMaxWidth = localResources.getDimension(2131296976);
-    sFlowItemMinWidth = localResources.getDimension(2131296977);
+    sFlowItemHeight = localResources.getDimension(2131297031);
+    sFlowItemMaxWidth = localResources.getDimension(2131297029);
+    sFlowItemMinWidth = localResources.getDimension(2131297030);
     sRatioMax = sFlowItemMaxWidth / sFlowItemHeight;
     sRatioMin = sFlowItemMinWidth / sFlowItemHeight;
     if (sFlowItemHeight == 0.0F) {
@@ -242,11 +242,11 @@ public class FlowThumbDecoder
         {
           paramOptions = paramContext.getInfo();
           paramOptions.put("from", "FlowThumbDecoder");
-          azri localazri = azri.a(BaseApplicationImpl.getApplication());
+          bctj localbctj = bctj.a(BaseApplication.getContext());
           boolean bool = paramContext.isGetBitmap;
           long l = paramContext.runTime;
           i = paramContext.rawHeight;
-          localazri.a(null, "safeDecode", bool, l, paramContext.rawWidth * i, paramOptions, "");
+          localbctj.a(null, "safeDecode", bool, l, paramContext.rawWidth * i, paramOptions, "");
         }
         return paramLocalMediaInfo;
       }
@@ -315,7 +315,7 @@ public class FlowThumbDecoder
   {
     paramURL = this.mContext;
     LocalMediaInfo localLocalMediaInfo = this.mInfo;
-    int i = bayu.a(localLocalMediaInfo.path);
+    int i = bdzx.a(localLocalMediaInfo.path);
     if ((i != 0) && (i != localLocalMediaInfo.orientation))
     {
       if (QLog.isColorLevel()) {
@@ -351,7 +351,7 @@ public class FlowThumbDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.FlowThumbDecoder
  * JD-Core Version:    0.7.0.1
  */

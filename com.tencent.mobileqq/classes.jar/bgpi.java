@@ -1,141 +1,36 @@
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bgpi
+class bgpi
+  implements View.OnClickListener
 {
-  public static int a;
-  private static String a;
-  public static int b = 2;
-  public byte[] a;
-  public int c;
+  bgpi(bgpa parambgpa, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = "NativeBuffer";
-    jdField_a_of_type_Int = 1;
-  }
-  
-  public static bgpi a(bglv parambglv, JSONObject paramJSONObject, String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramJSONObject != null)
-    {
-      if (paramString != null) {
-        break label22;
-      }
-      localObject1 = localObject2;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgpa, 1);
     }
-    label22:
-    int i;
-    do
+    try
     {
-      String str2;
-      String str1;
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return localObject1;
-              paramJSONObject = paramJSONObject.optJSONArray("__nativeBuffers__");
-              localObject1 = localObject2;
-            } while (paramJSONObject == null);
-            localObject1 = localObject2;
-          } while (paramJSONObject.length() == 0);
-          paramJSONObject = paramJSONObject.optJSONObject(0);
-          localObject1 = localObject2;
-        } while (paramJSONObject == null);
-        str2 = paramJSONObject.optString("key");
-        str1 = paramJSONObject.optString("base64");
-        i = paramJSONObject.optInt("id", -1);
-        localObject1 = localObject2;
-      } while (!paramString.equals(str2));
-      paramJSONObject = new bgpi();
-      if (!TextUtils.isEmpty(str1))
-      {
-        paramJSONObject.jdField_a_of_type_ArrayOfByte = Base64.decode(str1, 2);
-        paramJSONObject.c = b;
-        return paramJSONObject;
+      if ((this.jdField_a_of_type_Bgpa.isShowing()) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Bgpa.dismiss();
       }
-      localObject1 = paramJSONObject;
-    } while (i == -1);
-    paramJSONObject.jdField_a_of_type_ArrayOfByte = parambglv.a(i);
-    paramJSONObject.c = jdField_a_of_type_Int;
-    return paramJSONObject;
-  }
-  
-  public static void a(bglv parambglv, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, String paramString, JSONObject paramJSONObject)
-  {
-    if ((paramJSONObject == null) || (paramString == null)) {
+      label45:
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    for (;;)
+    catch (Exception localException)
     {
-      JSONObject localJSONObject;
-      try
-      {
-        JSONArray localJSONArray = new JSONArray();
-        localJSONObject = new JSONObject();
-        localJSONObject.put("key", paramString);
-        if (paramInt3 == b)
-        {
-          localJSONObject.put("base64", Base64.encodeToString(paramArrayOfByte, paramInt1, paramInt2, 2));
-          localJSONArray.put(localJSONObject);
-          paramJSONObject.put("__nativeBuffers__", localJSONArray);
-          return;
-        }
-      }
-      catch (JSONException parambglv)
-      {
-        QMLog.e("[minigame]", "packNativeBuffer err :", parambglv);
-        return;
-      }
-      if (paramInt3 == jdField_a_of_type_Int) {
-        localJSONObject.put("id", parambglv.a(paramArrayOfByte, paramInt1, paramInt2));
-      }
+      break label45;
     }
-  }
-  
-  public static void a(bglv parambglv, byte[] paramArrayOfByte, int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    a(parambglv, paramArrayOfByte, 0, paramArrayOfByte.length, paramInt, paramString, paramJSONObject);
-  }
-  
-  public static boolean a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return false;
-    }
-    return paramJSONObject.has("__nativeBuffers__");
-  }
-  
-  public static byte[] a(JSONArray paramJSONArray)
-  {
-    if ((paramJSONArray != null) && (paramJSONArray.length() > 0))
-    {
-      paramJSONArray = paramJSONArray.optJSONObject(0);
-      if (paramJSONArray != null)
-      {
-        paramJSONArray = paramJSONArray.optString("base64");
-        if (!TextUtils.isEmpty(paramJSONArray)) {
-          return Base64.decode(paramJSONArray, 0);
-        }
-      }
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgpi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aewa
-  extends aokh<aevz>
+class aewa
+  implements DialogInterface.OnClickListener
 {
-  public int a()
-  {
-    return 609;
-  }
+  aewa(aevz paramaevz) {}
   
-  @NonNull
-  public aevz a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new aevz();
-  }
-  
-  @Nullable
-  public aevz a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aevz.a(paramArrayOfaoko[0].a);
+    switch (paramInt)
+    {
     }
-    return null;
-  }
-  
-  public Class<aevz> a()
-  {
-    return aevz.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public void a(aevz paramaevz) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_Aevy.a.app.a().b(this.a.jdField_a_of_type_Aevy.a.a(), 0, this.a.jdField_a_of_type_Long);
+      this.a.jdField_a_of_type_Aevy.a.b();
+      return;
+    } while (this.a.jdField_a_of_type_Aevy.a.jdField_a_of_type_Aevy.getCount() <= 0);
+    this.a.jdField_a_of_type_Aevy.a.app.a().a(this.a.jdField_a_of_type_Aevy.a.a(), 0);
+    this.a.jdField_a_of_type_Aevy.a.jdField_a_of_type_Aevy.changeCursor(this.a.jdField_a_of_type_Aevy.getCursor());
   }
 }
 

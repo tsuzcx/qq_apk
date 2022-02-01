@@ -1,21 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
 public class ajou
-  implements DialogInterface.OnClickListener
+  implements ajrj
 {
-  public ajou(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public ajou(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (EditLocalVideoActivity.a(this.a)) {}
-    for (paramInt = -1;; paramInt = 0)
-    {
-      EditLocalVideoActivity.a(this.a).dismiss();
-      EditLocalVideoActivity.a(this.a, paramInt);
-      return;
+    this.a.j();
+  }
+  
+  public void b()
+  {
+    if ((!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof ChatHistoryActivity)) || (!((ChatHistoryActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).c)) {
+      this.a.jdField_a_of_type_Ajuw.a();
     }
+    this.a.c = true;
+    this.a.b(true);
+  }
+  
+  public void c()
+  {
+    this.a.jdField_a_of_type_Ajuw.b();
+    this.a.c = false;
+    this.a.b(false);
+    this.a.jdField_a_of_type_Ajuh.a();
   }
 }
 

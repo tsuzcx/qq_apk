@@ -7,7 +7,7 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.RelativeLayout;
-import aygf;
+import bben;
 import com.tencent.qphone.base.util.QLog;
 
 public class AutoGoneRelativeLayout
@@ -66,7 +66,7 @@ public class AutoGoneRelativeLayout
           QLog.d("AutoGoneRelativeLayout", 2, "createAccessibilityNodeInfo() isFromAccessibilityService = [" + bool1 + "], cost time = [" + (SystemClock.uptimeMillis() - l) + "]");
         }
         if (bool1) {
-          aygf.a((Activity)getContext());
+          bben.a((Activity)getContext());
         }
         return super.createAccessibilityNodeInfo();
       }
@@ -76,7 +76,7 @@ public class AutoGoneRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.AutoGoneRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

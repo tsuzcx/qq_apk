@@ -1,29 +1,75 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-class aqsy
-  implements aqtt
+public class aqsy
+  extends aqkz<aqsz>
 {
-  aqsy(aqsx paramaqsx, String paramString) {}
-  
-  public void a(boolean paramBoolean)
+  @NonNull
+  public aqsz a(int paramInt)
   {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqsx.jdField_a_of_type_Aqsw.jdField_a_of_type_JavaLangString + " start upload Discfile success");
-      }
-      aqsw.a(this.jdField_a_of_type_Aqsx.jdField_a_of_type_Aqsw).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aqsx.jdField_a_of_type_Aqtc.a(this.jdField_a_of_type_JavaLangString, aqsw.a(this.jdField_a_of_type_Aqsx.jdField_a_of_type_Aqsw));
+    return new aqsz();
+  }
+  
+  @Nullable
+  public aqsz a(aqlg[] paramArrayOfaqlg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, "[onParsed]");
     }
-    for (;;)
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-      aqsf.a(this.jdField_a_of_type_Aqsx.jdField_a_of_type_Aqsw.jdField_a_of_type_Aqsf).a().a(aqsw.a(this.jdField_a_of_type_Aqsx.jdField_a_of_type_Aqsw));
-      return;
-      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Aqsx.jdField_a_of_type_Aqsw.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
-      this.jdField_a_of_type_Aqsx.jdField_a_of_type_Aqtc.a(aqsf.a(this.jdField_a_of_type_Aqsx.jdField_a_of_type_Aqsw.jdField_a_of_type_Long, false), true);
+      aqsz localaqsz = new aqsz();
+      localaqsz.a(paramArrayOfaqlg);
+      return localaqsz;
     }
+    return new aqsz();
+  }
+  
+  public void a(aqsz paramaqsz)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, "[onUpdate]");
+    }
+  }
+  
+  public Class<aqsz> clazz()
+  {
+    return aqsz.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)pha.a();
+    if (localQQAppInterface != null)
+    {
+      String str = localQQAppInterface.c();
+      return bgsg.M(localQQAppInterface.getApp(), str);
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 92;
   }
 }
 

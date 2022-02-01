@@ -1,11 +1,16 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+
 public class bbbf
-  extends bbbi
+  implements View.OnTouchListener
 {
-  public String a;
+  public bbbf(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public String toString()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.a;
+    return SignatureHistoryFragment.a(this.a, paramView, false);
   }
 }
 

@@ -1,29 +1,21 @@
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 
-public class trx
+class trx
+  implements View.OnLayoutChangeListener
 {
-  public FeedCloudMeta.StComment a;
-  public FeedCloudMeta.StFeed a;
-  public FeedCloudMeta.StReply a;
+  trx(trw paramtrw) {}
   
-  public trx(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
-  }
-  
-  public trx(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
-  {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply = paramStReply;
+    paramView.removeOnLayoutChangeListener(this);
+    paramView.setTranslationX(trw.a(this.a)[0]);
+    paramView.setTranslationY(trw.a(this.a)[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     trx
  * JD-Core Version:    0.7.0.1
  */

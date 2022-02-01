@@ -1,37 +1,75 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-class aqta
-  implements aqtc
+public class aqta
+  extends aqkz<aqtb>
 {
-  aqta(aqsz paramaqsz, aqsf paramaqsf, MessageRecord paramMessageRecord, String paramString, int paramInt) {}
-  
-  public void a(String paramString, Bundle paramBundle)
+  @NonNull
+  public aqtb a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask success, multiUniseq[ " + this.jdField_a_of_type_Aqsz.jdField_a_of_type_Long + "] uuid[" + paramString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "]");
-    }
-    this.jdField_a_of_type_Aqsz.b = 2;
-    aqsf.a(this.jdField_a_of_type_Aqsz.jdField_a_of_type_Aqsf, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramBundle);
-    aqsf.b(this.jdField_a_of_type_Aqsz.jdField_a_of_type_Aqsf, this.jdField_a_of_type_Aqsz.jdField_a_of_type_Long);
+    return new aqtb();
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  @Nullable
+  public aqtb a(aqlg[] paramArrayOfaqlg)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask fail, multiUniseq[ " + this.jdField_a_of_type_Aqsz.jdField_a_of_type_Long + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "] canResume[" + paramBoolean + "] retMsg[" + paramString + "]");
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onParsed]");
     }
-    if (paramBoolean) {}
-    for (this.jdField_a_of_type_Aqsz.b = 4;; this.jdField_a_of_type_Aqsz.b = 3)
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-      aqsf.b(this.jdField_a_of_type_Aqsz.jdField_a_of_type_Aqsf, this.jdField_a_of_type_Aqsz.jdField_a_of_type_Long);
-      return;
-      String str = alud.a(2131704952) + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-      paramString = str + "\n" + paramString;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFaildReason", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "2");
+      aqtb localaqtb = new aqtb();
+      localaqtb.a(paramArrayOfaqlg);
+      return localaqtb;
     }
+    return new aqtb();
+  }
+  
+  public void a(aqtb paramaqtb)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onUpdate]");
+    }
+  }
+  
+  public Class<aqtb> clazz()
+  {
+    return aqtb.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)pha.a();
+    if (localQQAppInterface != null)
+    {
+      String str = localQQAppInterface.c();
+      return bgsg.N(localQQAppInterface.getApp(), str);
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 368;
   }
 }
 

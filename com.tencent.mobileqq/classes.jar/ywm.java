@@ -1,29 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-class ywm
-  implements View.OnClickListener
+public class ywm
+  extends JobSegment<Bitmap, Bitmap>
 {
-  ywm(ywj paramywj, TroopGiftPanel paramTroopGiftPanel) {}
+  public final float a;
+  public final boolean a;
   
-  public void onClick(View paramView)
+  public ywm(float paramFloat, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Ywj.c();
-    this.jdField_a_of_type_Ywj.b();
-    if (this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c)
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  {
+    paramJobContext = zkh.a(paramBitmap, this.jdField_a_of_type_Float, this.jdField_a_of_type_Boolean);
+    if (paramJobContext == null)
     {
-      this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.b();
+      super.notifyError(new BitmapError("Q.qqstory.publish:ImageAdjustJobSegment", 5));
       return;
     }
-    ((BaseChatPie)this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).aW();
+    super.notifyResult(paramJobContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ywm
  * JD-Core Version:    0.7.0.1
  */

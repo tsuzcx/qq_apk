@@ -1,63 +1,57 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.util.SparseArray;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
-public abstract class aref
+public class aref
 {
-  protected final QQAppInterface a;
+  private final SparseArray<BlockingQueue<aren>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private arew jdField_a_of_type_Arew;
+  private final BlockingQueue<aren> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
   
-  public aref(QQAppInterface paramQQAppInterface)
+  public aref(arew paramarew)
   {
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_Arew = paramarew;
   }
   
-  protected abstract String a(boolean paramBoolean);
-  
-  protected abstract HashMap<String, String> a();
-  
-  public abstract void a();
-  
-  public void a(areg paramareg, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  protected int a()
   {
-    paramareg = paramareg.a();
-    paramareg.putAll(paramExcitingTransferOneSlotComplete.getReportData());
-    azri localazri = azri.a(BaseApplication.getContext());
-    String str = this.a.getCurrentAccountUin();
-    if (paramExcitingTransferOneSlotComplete.m_SubReason == 0) {}
-    for (boolean bool = true;; bool = false)
+    return 300;
+  }
+  
+  public aren a(int paramInt, Object paramObject)
+  {
+    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = localBlockingQueue;
+    if (localBlockingQueue == null) {
+      localObject = new LinkedBlockingQueue();
+    }
+    localObject = (aren)((BlockingQueue)localObject).poll();
+    if (localObject == null)
     {
-      localazri.a(str, "actPDSlot", bool, 0L, 0L, paramareg, "");
-      return;
+      localObject = this.jdField_a_of_type_Arew.a(paramInt);
+      argp.a("DanmakuFactory", new Object[] { localObject, " is created " });
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (a()) {
-      b(paramBoolean);
-    }
-    HashMap localHashMap = a();
-    if (localHashMap != null) {
-      QLog.i("DataReport", 1, ">>> report: act=" + a(false) + localHashMap.toString());
-    }
-    azri.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
-  }
-  
-  protected abstract boolean a();
-  
-  protected abstract HashMap<String, String> b();
-  
-  public abstract void b();
-  
-  public void b(boolean paramBoolean)
-  {
-    HashMap localHashMap = b();
-    if (localHashMap != null)
+    for (;;)
     {
-      QLog.i("OldDataReport", 1, ">>> reportOld: act=" + a(true) + localHashMap.toString());
-      azri.a(BaseApplication.getContext()).a(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
+      ((aren)localObject).e();
+      ((aren)localObject).a(paramObject);
+      return localObject;
+      argp.a("DanmakuFactory", new Object[] { localObject, " is reused " });
+    }
+  }
+  
+  public void a(aren paramaren)
+  {
+    int i = paramaren.a();
+    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    Object localObject = localBlockingQueue;
+    if (localBlockingQueue == null)
+    {
+      localObject = new LinkedBlockingQueue();
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localObject);
+    }
+    if (a() > ((BlockingQueue)localObject).size()) {
+      ((BlockingQueue)localObject).add(paramaren);
     }
   }
 }

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import aesa;
+import afyl;
 import android.content.Context;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.LinearLayout;
-import axrr;
-import axrs;
-import axrt;
-import bass;
+import baps;
+import bapt;
+import bapu;
+import bduk;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -25,11 +25,11 @@ import mqq.os.MqqHandler;
 
 public class BlankVideoPlayer
   extends LinearLayout
-  implements aesa, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
+  implements afyl, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
 {
-  private axrr jdField_a_of_type_Axrr;
-  private axrs jdField_a_of_type_Axrs;
-  private axrt jdField_a_of_type_Axrt;
+  private baps jdField_a_of_type_Baps;
+  private bapt jdField_a_of_type_Bapt;
+  private bapu jdField_a_of_type_Bapu;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   boolean jdField_a_of_type_Boolean = false;
   
@@ -48,7 +48,7 @@ public class BlankVideoPlayer
     }
   }
   
-  public void a(View paramView, bass parambass, int paramInt1, int paramInt2)
+  public void a(View paramView, bduk parambduk, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
       QLog.d("BlankVideoPlayer", 2, "handleMessage");
@@ -57,15 +57,15 @@ public class BlankVideoPlayer
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (this.jdField_a_of_type_Axrs != null) {
-      this.jdField_a_of_type_Axrs.a();
+    if (this.jdField_a_of_type_Bapt != null) {
+      this.jdField_a_of_type_Bapt.a();
     }
   }
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_Axrt != null) {
-      this.jdField_a_of_type_Axrt.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
+    if (this.jdField_a_of_type_Bapu != null) {
+      this.jdField_a_of_type_Bapu.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
     }
     return false;
   }
@@ -119,24 +119,24 @@ public class BlankVideoPlayer
     }
   }
   
-  public void setOnCloseListener(axrr paramaxrr)
+  public void setOnCloseListener(baps parambaps)
   {
-    this.jdField_a_of_type_Axrr = paramaxrr;
+    this.jdField_a_of_type_Baps = parambaps;
   }
   
-  public void setOnCompleteListener(axrs paramaxrs)
+  public void setOnCompleteListener(bapt parambapt)
   {
-    this.jdField_a_of_type_Axrs = paramaxrs;
+    this.jdField_a_of_type_Bapt = parambapt;
   }
   
-  public void setOnErrorListener(axrt paramaxrt)
+  public void setOnErrorListener(bapu parambapu)
   {
-    this.jdField_a_of_type_Axrt = paramaxrt;
+    this.jdField_a_of_type_Bapu = parambapu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.BlankVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

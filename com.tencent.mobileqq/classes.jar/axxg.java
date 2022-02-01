@@ -1,44 +1,78 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.text.TextUtils;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import org.json.JSONObject;
 
 class axxg
+  extends AsyncTask<Integer, Void, Bundle>
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<aesa> b;
-  WeakReference<bass> c;
+  axxg(axxf paramaxxf) {}
   
-  public axxg(axxf paramaxxf, View paramView, aesa paramaesa)
+  protected Bundle a(Integer... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramaesa);
-  }
-  
-  public aesa a()
-  {
-    return (aesa)this.b.get();
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public bass a()
-  {
-    if (this.c == null) {
-      return null;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("downloadcode", paramVarArgs[0].intValue());
+    try
+    {
+      paramVarArgs = (HttpURLConnection)new URL("https://tiantian.qq.com/qiqimanage/qunpack/android/58.json").openConnection();
+      paramVarArgs.setConnectTimeout(5000);
+      paramVarArgs.setReadTimeout(30000);
+      paramVarArgs.setRequestMethod("GET");
+      paramVarArgs.setRequestProperty("Connection", "Keep-Alive");
+      paramVarArgs.connect();
+      paramVarArgs = new BufferedReader(new InputStreamReader(paramVarArgs.getInputStream()));
+      Object localObject = new StringBuffer();
+      for (;;)
+      {
+        String str = paramVarArgs.readLine();
+        if (str == null) {
+          break;
+        }
+        ((StringBuffer)localObject).append(str).append("\n");
+      }
+      localObject = ((StringBuffer)localObject).toString();
+      paramVarArgs.close();
+      paramVarArgs = new JSONObject((String)localObject);
+      if (paramVarArgs.optInt("errCode", -1) == 0)
+      {
+        paramVarArgs = paramVarArgs.optJSONObject("data");
+        if (paramVarArgs != null)
+        {
+          paramVarArgs = paramVarArgs.optJSONObject("package");
+          if (paramVarArgs != null)
+          {
+            localBundle.putString("DownPackage", paramVarArgs.optString("package"));
+            localBundle.putString("DownUrl", paramVarArgs.optString("url"));
+            localBundle.putString("DownAppId", paramVarArgs.optString("appid"));
+          }
+        }
+      }
+      return localBundle;
     }
-    return (bass)this.c.get();
+    catch (Exception paramVarArgs) {}
+    return null;
   }
   
-  public void a(bass parambass)
+  protected void a(Bundle paramBundle)
   {
-    this.c = new WeakReference(parambass);
+    if (paramBundle != null)
+    {
+      this.a.b = paramBundle.getString("DownPackage");
+      this.a.d = paramBundle.getString("DownUrl");
+      this.a.c = paramBundle.getString("DownAppId");
+      if ((!TextUtils.isEmpty(this.a.b)) && (!TextUtils.isEmpty(this.a.c)) && (!TextUtils.isEmpty(this.a.d))) {
+        this.a.a(paramBundle.getInt("downloadcode"));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axxg
  * JD-Core Version:    0.7.0.1
  */

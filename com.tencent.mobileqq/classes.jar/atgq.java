@@ -1,57 +1,53 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.2;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.3;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.QfavPluginProxyService;
 
 public class atgq
+  extends atdl
 {
-  private static int jdField_a_of_type_Int;
-  private static atgs jdField_a_of_type_Atgs = new atgs(null);
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private blko jdField_a_of_type_Blko = new atgr(this);
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int = 80;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
   
-  public static void a()
+  public atgq(Bundle paramBundle)
   {
-    if (Build.VERSION.SDK_INT < 17) {
-      return;
-    }
-    try
-    {
-      JavaHookBridge.findAndReplaceMethod(Class.forName("java.lang.Daemons$FinalizerWatchdogDaemon"), "finalizerTimedOut", new Object[] { Object.class, jdField_a_of_type_Atgs });
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      localClassNotFoundException.printStackTrace();
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      localNoSuchMethodException.printStackTrace();
-    }
+    QfavPluginProxyService.a().a(3, this.jdField_a_of_type_Blko);
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QfavFilePreviewController.2(this), 300000L);
   }
   
-  private static void b(boolean paramBoolean)
+  public int a()
   {
-    String str = null;
-    try
+    return 4;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    QfavPluginProxyService.a().b(3, this.jdField_a_of_type_Blko);
+  }
+  
+  public boolean a()
+  {
+    if (3 != this.jdField_a_of_type_Int)
     {
-      Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-      if (localObject != null) {
-        str = ((AppRuntime)localObject).getAccount();
+      if (QLog.isDevelopLevel()) {
+        QLog.i("QfavFilePreviewController", 4, "sendCS: oldState = " + this.jdField_a_of_type_Int + ", newState = STATE_REQUESTING.");
       }
-      long l1 = Runtime.getRuntime().totalMemory();
-      long l2 = Runtime.getRuntime().freeMemory();
-      long l3 = Runtime.getRuntime().maxMemory();
-      localObject = new HashMap();
-      ((HashMap)localObject).put("heapSize", String.valueOf(l1 - l2));
-      ((HashMap)localObject).put("maxMemory", String.valueOf(l3));
-      int i = jdField_a_of_type_Int + 1;
-      jdField_a_of_type_Int = i;
-      ((HashMap)localObject).put("count", String.valueOf(i));
-      azri.a(BaseApplicationImpl.getApplication()).a(str, "TimeoutExceptionHooker", paramBoolean, 0L, 0L, (HashMap)localObject, "", true);
-      return;
+      this.jdField_a_of_type_Int = 1;
+      return true;
     }
-    catch (Throwable localThrowable) {}
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QfavFilePreviewController.3(this), 2000L);
+    return true;
   }
 }
 

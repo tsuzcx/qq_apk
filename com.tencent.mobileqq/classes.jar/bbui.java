@@ -1,18 +1,52 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.1.1;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bbui
-  implements baeh
 {
-  public bbui(TroopEnterEffectController.3 param3) {}
+  static bbui jdField_a_of_type_Bbui;
+  public String a;
+  ArrayList<Entity> jdField_a_of_type_JavaUtilArrayList = null;
+  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public boolean a;
+  public boolean b = true;
+  public boolean c = false;
   
-  public void a(badk parambadk)
+  bbui()
   {
-    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
-      return;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "0";
+  }
+  
+  public static bbui a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Bbui == null) {
+        jdField_a_of_type_Bbui = new bbui();
+      }
+      bbui localbbui = jdField_a_of_type_Bbui;
+      return localbbui;
     }
-    this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.1.1(this, parambadk));
+    finally {}
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
   }
 }
 

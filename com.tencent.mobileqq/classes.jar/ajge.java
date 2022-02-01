@@ -1,27 +1,13 @@
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
 
-class ajge
-  implements View.OnClickListener
+public class ajge
+  extends anqd
 {
-  ajge(ajgb paramajgb, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public ajge(TroopView paramTroopView) {}
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper close banner");
-    }
-    paramView = (QQAppInterface)ajgb.a(this.jdField_a_of_type_Ajgb).getAppRuntime();
-    this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.a();
-    UpgradeTIMWrapper.a(paramView, this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper);
-    ajgb.a(this.jdField_a_of_type_Ajgb).obtainMessage(20).sendToTarget();
-    azqs.b(paramView, "CliOper", "", "", "0X800865A", "0X800865A", 0, 0, "", "", "", "");
+    this.a.j();
   }
 }
 

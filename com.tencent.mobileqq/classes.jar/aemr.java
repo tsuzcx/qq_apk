@@ -1,14 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.30.1;
+import com.tencent.qphone.base.util.QLog;
 
-class aemr
-  implements View.OnClickListener
+public class aemr
+  extends aooo
 {
-  aemr(aemq paramaemq) {}
+  public aemr(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.a.a.b(paramView.getTag());
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
+      this.a.a(new Leba.30.1(this));
+    }
   }
 }
 

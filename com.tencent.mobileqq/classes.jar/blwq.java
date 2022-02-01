@@ -1,15 +1,6 @@
-import android.support.annotation.NonNull;
-
-class blwq
-  implements blxl
+public abstract interface blwq
 {
-  blwq(blwp paramblwp) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    return bcnt.b(paramString);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,19 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import acjm;
-import actx;
-import aepi;
-import alof;
+import Override;
+import adrm;
+import aebm;
+import afur;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
-import aryl;
-import aryv;
-import asbd;
+import android.view.MotionEvent;
+import anhk;
+import aufw;
+import aufz;
+import auie;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
@@ -22,20 +25,21 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 public class DirectForwardActivity
   extends BaseActivity
 {
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  aryv jdField_a_of_type_Aryv;
+  aufz jdField_a_of_type_Aufz;
   public String a;
   
   private void a()
   {
-    Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
-    if (this.jdField_a_of_type_Aryv != null) {}
-    for (Object localObject = new Bundle(this.jdField_a_of_type_Aryv.a());; localObject = new Bundle())
+    Intent localIntent = afur.a(new Intent(this, SplashActivity.class), null);
+    if (this.jdField_a_of_type_Aufz != null) {}
+    for (Object localObject = new Bundle(this.jdField_a_of_type_Aufz.a());; localObject = new Bundle())
     {
       ((Bundle)localObject).putBoolean("PhotoConst.HANDLE_DEST_RESULT", true);
       ((Bundle)localObject).putBoolean("PhotoConst.IS_FORWARD", true);
@@ -58,23 +62,31 @@ public class DirectForwardActivity
   
   private void a(String paramString)
   {
-    this.jdField_a_of_type_Aryv = asbd.a(getIntent(), this.app, this);
-    int i = aryl.b.intValue();
-    if (alof.L.equals(paramString)) {
-      i = aryl.g.intValue();
+    this.jdField_a_of_type_Aufz = auie.a(getIntent(), this.app, this);
+    int i = aufw.b.intValue();
+    if (anhk.L.equals(paramString)) {
+      i = aufw.g.intValue();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aryv.a(i, getIntent().getExtras());
+      this.jdField_a_of_type_Aufz.a(i, getIntent().getExtras());
       return;
-      if (alof.z.equals(paramString)) {
-        i = aryl.f.intValue();
-      } else if (alof.A.equals(paramString)) {
-        i = aryl.k.intValue();
+      if (anhk.z.equals(paramString)) {
+        i = aufw.f.intValue();
+      } else if (anhk.A.equals(paramString)) {
+        i = aufw.k.intValue();
       } else if ("-1010".equals(paramString)) {
-        i = aryl.e.intValue();
+        i = aufw.e.intValue();
       }
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -124,7 +136,7 @@ public class DirectForwardActivity
           localObject = new SessionInfo();
           ((SessionInfo)localObject).jdField_a_of_type_JavaLangString = paramBundle.getString("toUin");
           ((SessionInfo)localObject).b = ((SessionInfo)localObject).jdField_a_of_type_JavaLangString;
-          acjm.c(this.app, getApplicationContext(), (SessionInfo)localObject);
+          adrm.c(this.app, getApplicationContext(), (SessionInfo)localObject);
           setResult(-1);
           finish();
         }
@@ -135,7 +147,7 @@ public class DirectForwardActivity
         {
           paramBundle = new IntentFilter();
           paramBundle.addAction("com.tencent.process.exit");
-          this.jdField_a_of_type_AndroidContentBroadcastReceiver = new actx(this);
+          this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aebm(this);
           registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
         }
         if (BaseApplicationImpl.appStartTime > 0L) {
@@ -157,8 +169,8 @@ public class DirectForwardActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Aryv != null) {
-      this.jdField_a_of_type_Aryv.w();
+    if (this.jdField_a_of_type_Aufz != null) {
+      this.jdField_a_of_type_Aufz.x();
     }
     try
     {
@@ -187,12 +199,12 @@ public class DirectForwardActivity
     }
     boolean bool1 = paramIntent.getBooleanExtra("PhotoConst.SEND_FLAG", false);
     boolean bool2 = paramIntent.getBooleanExtra("isFromFavorites", false);
-    if ((bool1) && (bool2) && (this.jdField_a_of_type_Aryv != null))
+    if ((bool1) && (bool2) && (this.jdField_a_of_type_Aufz != null))
     {
       paramIntent = (String)paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS").get(0);
-      this.jdField_a_of_type_Aryv.a().putBoolean("FORWARD_IS_EDITED", true);
-      this.jdField_a_of_type_Aryv.a().putString("forward_filepath", paramIntent);
-      this.jdField_a_of_type_Aryv.a().putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
+      this.jdField_a_of_type_Aufz.a().putBoolean("FORWARD_IS_EDITED", true);
+      this.jdField_a_of_type_Aufz.a().putString("forward_filepath", paramIntent);
+      this.jdField_a_of_type_Aufz.a().putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
       a();
     }
   }
@@ -200,16 +212,16 @@ public class DirectForwardActivity
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Aryv != null) {
-      this.jdField_a_of_type_Aryv.j();
+    if (this.jdField_a_of_type_Aufz != null) {
+      this.jdField_a_of_type_Aufz.j();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Aryv != null) {
-      this.jdField_a_of_type_Aryv.k();
+    if (this.jdField_a_of_type_Aufz != null) {
+      this.jdField_a_of_type_Aufz.k();
     }
   }
   
@@ -218,10 +230,17 @@ public class DirectForwardActivity
     super.finish();
     overridePendingTransition(0, 0);
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DirectForwardActivity
  * JD-Core Version:    0.7.0.1
  */

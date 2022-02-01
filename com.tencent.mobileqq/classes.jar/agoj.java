@@ -1,15 +1,9 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
-class agoj
-  implements View.OnClickListener
+public abstract interface agoj
 {
-  agoj(agoe paramagoe) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.v(true);
-  }
+  public abstract void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo);
 }
 
 

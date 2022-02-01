@@ -1,29 +1,37 @@
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import android.app.Activity;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-public class ajdg
-  implements OnCompositionLoadedListener
+public abstract interface ajdg
 {
-  public ajdg(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  public abstract Activity a();
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
-  {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    if (DrawRedpacketPannelPreviewFragment.e(this.a) != null)
-    {
-      DrawRedpacketPannelPreviewFragment.e(this.a).setImageDrawable(localLottieDrawable);
-      aivo.a(this.a.getActivity().app.getCurrentAccountUin(), "", true);
-    }
-  }
+  public abstract View a();
+  
+  public abstract TextView a();
+  
+  public abstract aufz a();
+  
+  public abstract bkfv a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract View b();
+  
+  public abstract boolean b();
+  
+  public abstract View c();
+  
+  public abstract View d();
 }
 
 

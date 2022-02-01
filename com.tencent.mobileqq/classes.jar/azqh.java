@@ -1,156 +1,59 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.sdk.report.IMTAReporter;
-import com.tencent.mobileqq.msf.sdk.report.MTAReportManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.stat.StatConfig;
-import com.tencent.stat.StatReportStrategy;
-import com.tencent.stat.StatServiceImpl;
-import com.tencent.stat.StatSpecifyReportedInfo;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Properties;
-
 public class azqh
-  implements IMTAReporter
 {
-  private static volatile azqh jdField_a_of_type_Azqh;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private StatSpecifyReportedInfo jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo = new StatSpecifyReportedInfo();
-  private volatile String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  
-  private azqh(Context paramContext)
+  public static azlv a(int paramInt, azlw paramazlw, azfe paramazfe)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_Boolean = azqc.a(this.jdField_a_of_type_AndroidContentContext, true);
-  }
-  
-  public static azqh a(Context paramContext)
-  {
-    if (jdField_a_of_type_Azqh == null) {}
-    try
+    switch (paramInt)
     {
-      if (jdField_a_of_type_Azqh == null) {
-        jdField_a_of_type_Azqh = new azqh(paramContext);
-      }
-      return jdField_a_of_type_Azqh;
+    default: 
+      return null;
+    case 1002: 
+      return a(paramazlw, paramazfe);
     }
-    finally {}
+    return b(paramazlw, paramazfe);
   }
   
-  private void b(boolean paramBoolean)
+  private static azlv a(azlw paramazlw, azfe paramazfe)
   {
-    StatConfig.setStatSendStrategy(StatReportStrategy.PERIOD);
-    StatConfig.setSendPeriodMinutes(30);
-    StatConfig.setEnableSmartReporting(true);
-    StatConfig.setStatReportUrl("http://sngmta.qq.com:80/mstat/report/");
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (str != null)
+    azqb localazqb = null;
+    long l = paramazfe.a;
+    if ((l == azfl.b) || (l == azfl.c) || (l == azfl.d)) {
+      localazqb = new azqb(paramazlw, paramazfe);
+    }
+    do
     {
-      StatConfig.setCustomUserId(this.jdField_a_of_type_AndroidContentContext, str);
-      if (paramBoolean)
-      {
-        this.jdField_a_of_type_JavaLangString = null;
-        StatServiceImpl.reportQQ(this.jdField_a_of_type_AndroidContentContext, str, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
-        localObject = BaseApplicationImpl.getApplication().getRuntime();
-        if (!(localObject instanceof QQAppInterface)) {
-          break label175;
-        }
+      return localazqb;
+      if (l == azfl.e) {
+        return new azqc(paramazlw, paramazfe);
       }
-    }
-    label175:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      Date localDate = new Date(NetConnInfoCenter.getServerTimeMillis());
-      azqs.b((QQAppInterface)localObject, "dc00898", "", "", "0X80075F3", "0X80075F3", 0, 0, new SimpleDateFormat("yyyyMMdd", Locale.US).format(localDate), "", "", "");
-      MTAReportManager.setMTAReporter(jdField_a_of_type_Azqh);
-      if (QLog.isColorLevel()) {
-        QLog.d("MTAReportController", 2, "calledBeforeStat:" + str + ", " + paramBoolean);
+      if (l == azfl.f) {
+        return new azqe(paramazlw, paramazfe);
       }
-      return;
-    }
+      if (l == azfl.g) {
+        return new azqd(paramazlw, paramazfe);
+      }
+      if ((l == azfl.i) || (l == azfl.j)) {
+        return new azqg(paramazlw, paramazfe);
+      }
+      if (l == azfl.k) {
+        return new azqf(paramazlw, paramazfe);
+      }
+    } while (!azfl.a(l));
+    return new azqa(paramazlw, paramazfe);
   }
   
-  public void a(String paramString)
+  private static azlv b(azlw paramazlw, azfe paramazfe)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    StatConfig.setDebugEnable(paramBoolean);
-  }
-  
-  public void b(String paramString)
-  {
-    StatConfig.setMTAPreferencesFileName(paramString);
-  }
-  
-  public void initMtaConfig(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo.setAppKey(paramString2);
-    this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo.setInstallChannel(paramString1);
-    StatConfig.setEnableConcurrentProcess(true);
-    StatConfig.setAutoExceptionCaught(false);
-    StatServiceImpl.setContext(this.jdField_a_of_type_AndroidContentContext);
-    b(false);
-  }
-  
-  public boolean isMtaSupported()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void reportKVEvent(String paramString, Properties paramProperties)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
+    long l = paramazfe.a;
+    if (azfl.a(l)) {
+      return new azpq(paramazlw, paramazfe);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MTAReportController", 2, "reportKVEvent " + paramString + " \n\t\t" + paramProperties);
+    if ((l == azfl.i) || (l == azfl.j)) {
+      return new azpt(paramazlw, paramazfe);
     }
-    b(true);
-    StatServiceImpl.trackCustomKVEvent(this.jdField_a_of_type_AndroidContentContext, paramString, paramProperties, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
-  }
-  
-  public void reportTimeKVEvent(String paramString, Properties paramProperties, int paramInt)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
+    if (l == azfl.g) {
+      return new azpr(paramazlw, paramazfe);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MTAReportController", 2, "reportKVEvent " + paramString + " " + paramInt + "\n\t\t" + paramProperties);
-    }
-    b(true);
-    StatServiceImpl.trackCustomKVTimeIntervalEvent(this.jdField_a_of_type_AndroidContentContext, paramString, paramProperties, paramInt, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
-  }
-  
-  public void trackBeginPage(String paramString)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MTAReportController", 2, "trackBeginPage " + paramString);
-    }
-    b(true);
-    StatServiceImpl.trackBeginPage(this.jdField_a_of_type_AndroidContentContext, paramString, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
-  }
-  
-  public void trackEndPage(String paramString)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MTAReportController", 2, "trackEndPage " + paramString);
-    }
-    b(true);
-    StatServiceImpl.trackEndPage(this.jdField_a_of_type_AndroidContentContext, paramString, this.jdField_a_of_type_ComTencentStatStatSpecifyReportedInfo);
+    return new azpn(paramazlw, paramazfe);
   }
 }
 

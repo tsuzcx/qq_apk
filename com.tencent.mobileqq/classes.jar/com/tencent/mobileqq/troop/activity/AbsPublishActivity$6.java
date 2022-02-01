@@ -16,8 +16,8 @@ class AbsPublishActivity$6
     this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.this$0.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
     this.this$0.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.a(5, 0);
-    this.this$0.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130847429);
-    this.this$0.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.this$0.getString(2131696721));
+    this.this$0.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130847888);
+    this.this$0.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.this$0.getString(2131695546));
     if (this.this$0.b != null) {
       this.this$0.b.requestLayout();
     }
@@ -25,7 +25,7 @@ class AbsPublishActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.AbsPublishActivity.6
  * JD-Core Version:    0.7.0.1
  */

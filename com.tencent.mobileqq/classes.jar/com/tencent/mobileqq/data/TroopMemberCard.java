@@ -48,6 +48,7 @@ public class TroopMemberCard
   public int mUniqueTitleExpire;
   public int memberRole;
   public long memberUin;
+  public int newRealLevel;
   public String nick;
   public String phoneNumber;
   public int realLevel;
@@ -59,7 +60,7 @@ public class TroopMemberCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopMemberCard
  * JD-Core Version:    0.7.0.1
  */

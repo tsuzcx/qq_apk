@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import com.tencent.mobileqq.mini.util.AnimUtil;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 class bjyh
-  implements QQPermissionCallback
+  implements aqga
 {
-  bjyh(bjyg parambjyg) {}
+  bjyh(bjyg parambjyg, Activity paramActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onColorNoteAnimFinish()
   {
-    bdgm.b(this.a.a.mRuntime.a());
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bjyg.a(this.a);
+    if ((bjyg.a(this.jdField_a_of_type_Bjyg) != null) && (bjyg.a(this.jdField_a_of_type_Bjyg).isInternalApp())) {
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    }
+    AnimUtil.clearAnim(this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjyh
  * JD-Core Version:    0.7.0.1
  */

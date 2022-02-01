@@ -1,68 +1,40 @@
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageRsp;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
+import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
+import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper.ConfigChangeListener.1;
+import java.lang.ref.WeakReference;
 
 public class bhdy
-  extends bhdw
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  private CloudStorage.StRemoveUserCloudStorageReq a = new CloudStorage.StRemoveUserCloudStorageReq();
+  private bhdx jdField_a_of_type_Bhdx;
+  private final WeakReference<WallpaperHelper> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bhdy(String[] paramArrayOfString, String paramString)
+  public bhdy(WallpaperHelper paramWallpaperHelper)
   {
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramArrayOfString[i];
-      this.a.keyList.add(str);
-      i += 1;
-    }
-    this.a.appid.set(paramString);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWallpaperHelper);
   }
   
-  protected String a()
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
   {
-    return "mini_app_cloudstorage";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    CloudStorage.StRemoveUserCloudStorageRsp localStRemoveUserCloudStorageRsp = new CloudStorage.StRemoveUserCloudStorageRsp();
-    try
+    paramString = (WallpaperHelper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramString != null)
     {
-      localStRemoveUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStRemoveUserCloudStorageRsp != null) {
-        return new JSONObject();
+      paramSharedPreferences = VipWallpaperService.a(paramSharedPreferences);
+      if ((this.jdField_a_of_type_Bhdx == null) || (!this.jdField_a_of_type_Bhdx.equals(paramSharedPreferences)))
+      {
+        this.jdField_a_of_type_Bhdx = paramSharedPreferences;
+        ThreadManagerV2.getUIHandlerV2().post(new WallpaperHelper.ConfigChangeListener.1(this, paramString, paramSharedPreferences));
       }
-      QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
-      return null;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "RemoveUserCloudStorage";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhdy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.qphone.base.util.QLog;
-
-public class aglc
-  implements DialogInterface.OnClickListener
+class aglc
+  implements anfe
 {
-  public aglc(PhotoListPanel paramPhotoListPanel) {}
+  aglc(aglb paramaglb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, amrr paramamrr)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    if ((paramBoolean) && (paramamrr != null)) {
+      paramamrr.f();
     }
   }
 }

@@ -1,81 +1,70 @@
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class wsq
-  extends QQUIEventReceiver<wtd, uvs>
-  implements wsz
 {
-  protected wtb a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
   
-  public wsq(wtd paramwtd)
+  public void a(wsq paramwsq)
   {
-    super(paramwtd);
-  }
-  
-  public Object a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return "ReportWatchVideoListStep";
-  }
-  
-  public void a()
-  {
-    umc.a().registerSubscriber(this);
-    ((uvq)uwa.a(13)).c();
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void a(wta paramwta) {}
-  
-  public void a(wtb paramwtb)
-  {
-    this.a = paramwtb;
-  }
-  
-  public void a(wtd paramwtd, uvs paramuvs)
-  {
-    umc.a().unRegisterSubscriber(this);
-    if (this.a != null) {
-      this.a.a(a());
-    }
-    for (;;)
-    {
-      wxe.d("Q.qqstory.home,ReportWatchVideoListStep", "receive event. step is done");
+    if (paramwsq == null) {
       return;
-      wxe.d("Q.qqstory.home,ReportWatchVideoListStep", "finish callBack is null");
     }
+    this.jdField_a_of_type_Long = paramwsq.jdField_a_of_type_Long;
+    this.jdField_b_of_type_Long = paramwsq.jdField_b_of_type_Long;
+    this.jdField_a_of_type_JavaLangString = paramwsq.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramwsq.jdField_b_of_type_JavaLangString;
+    this.c = paramwsq.c;
+    this.d = paramwsq.d;
+    this.jdField_a_of_type_Boolean = paramwsq.jdField_a_of_type_Boolean;
+    this.jdField_b_of_type_Boolean = paramwsq.jdField_b_of_type_Boolean;
   }
   
   public boolean a()
   {
-    return false;
+    boolean bool2 = false;
+    long l = System.currentTimeMillis();
+    boolean bool1;
+    if ((l >= this.jdField_a_of_type_Long) && (l < this.jdField_b_of_type_Long))
+    {
+      bool1 = true;
+      if ((!bool1) || (!this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean)) {
+        break label68;
+      }
+      bool1 = bool2;
+    }
+    label68:
+    for (;;)
+    {
+      yqp.a("Q.qqstory.config.takevideo", "isVariable=%b content=%s", Boolean.valueOf(bool1), toString());
+      return bool1;
+      bool1 = false;
+      break;
+    }
   }
   
-  public Class acceptEventClass()
+  public String toString()
   {
-    return uvs.class;
-  }
-  
-  public void b()
-  {
-    wxe.a("Q.qqstory.home.qqstory_step", "Q.qqstory.home,ReportWatchVideoListStep", "Q.qqstory.home,ReportWatchVideoListStep");
-  }
-  
-  public void c()
-  {
-    uvq localuvq = (uvq)uwa.a(13);
-    umc.a().unRegisterSubscriber(this);
-    localuvq.d();
+    StringBuilder localStringBuilder = new StringBuilder("MsgTabTakeVideoNodeConfig=[");
+    localStringBuilder.append(" startTime:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" endTime:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" imageUrl:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" desc:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" jumpUrl:").append(this.c);
+    localStringBuilder.append(" contentId:").append(this.d);
+    localStringBuilder.append(" isOneTimeUse:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" hasClicked:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wsq
  * JD-Core Version:    0.7.0.1
  */

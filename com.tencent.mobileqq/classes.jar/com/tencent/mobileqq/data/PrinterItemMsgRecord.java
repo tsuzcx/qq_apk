@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Timer;
 
@@ -18,7 +18,7 @@ public class PrinterItemMsgRecord
   public static final int status_running = 2;
   public static final int status_transfer_fail = 12;
   public String filename;
-  @awhp
+  @notColumn
   public Timer mTimer_for_Print;
   public double progress;
   public int status = 1;
@@ -54,7 +54,7 @@ public class PrinterItemMsgRecord
     return null;
   }
   
-  public Class<? extends awge> getClassForTable()
+  public Class<? extends Entity> getClassForTable()
   {
     return PrinterItemMsgRecord.class;
   }
@@ -68,7 +68,7 @@ public class PrinterItemMsgRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.PrinterItemMsgRecord
  * JD-Core Version:    0.7.0.1
  */

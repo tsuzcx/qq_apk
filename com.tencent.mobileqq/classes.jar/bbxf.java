@@ -1,288 +1,113 @@
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mm.vfs.VFSFile;
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr.1;
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr.2;
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr.3;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.msf.service.protocol.push.SvcReqRegister;
+import com.tencent.msf.service.protocol.push.SvcRespRegister;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.app.AppRuntime.Status;
+import mqq.app.Constants.Key;
 
 public class bbxf
+  extends aber
 {
-  private static bbxf jdField_a_of_type_Bbxf;
-  private bbwz jdField_a_of_type_Bbwz = new bbwz();
-  private bbxd jdField_a_of_type_Bbxd = new bbxd();
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "StatSvc" };
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  public static bbxf a()
+  public bbxf(AppInterface paramAppInterface)
   {
-    try
-    {
-      if (jdField_a_of_type_Bbxf == null) {
-        jdField_a_of_type_Bbxf = new bbxf();
-      }
-      bbxf localbbxf = jdField_a_of_type_Bbxf;
-      return localbbxf;
-    }
-    finally {}
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  public static final String a()
+  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    String str = alof.bp;
-    VFSFile localVFSFile = new VFSFile(str);
-    if (!localVFSFile.exists()) {
-      localVFSFile.mkdirs();
-    }
-    return str;
+    return (SvcRespRegister)a(paramFromServiceMsg.getWupBuffer(), "SvcRespRegister", new SvcRespRegister());
   }
   
-  public static final void a(TroopFileTransferManager.Item paramItem, int paramInt)
+  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    if (paramItem == null) {
-      return;
+    SvcReqRegister localSvcReqRegister = new SvcReqRegister();
+    localSvcReqRegister.cConnType = 0;
+    localSvcReqRegister.lBid = 7L;
+    localSvcReqRegister.lUin = Long.parseLong(paramToServiceMsg.getUin());
+    AppRuntime.Status localStatus = (AppRuntime.Status)paramToServiceMsg.extraData.getSerializable("onlineStatus");
+    localSvcReqRegister.iStatus = localStatus.getValue();
+    localSvcReqRegister.bKikPC = 0;
+    localSvcReqRegister.bKikWeak = 0;
+    localSvcReqRegister.timeStamp = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getPreferences().getLong(Constants.Key.SvcRegister_timeStamp.toString(), 0L);
+    localSvcReqRegister.iLargeSeq = paramToServiceMsg.extraData.getLong("K_SEQ", 0L);
+    localSvcReqRegister.bRegType = 0;
+    byte b;
+    if (paramToServiceMsg.extraData.getBoolean("isAutoSet", false)) {
+      b = 2;
     }
-    StringBuilder localStringBuilder;
-    if (paramInt == 128)
+    for (;;)
     {
-      paramItem.ThumbnailDownloading_Small = true;
-      paramItem.ThumbnailFileTimeMS_Small = SystemClock.uptimeMillis();
-      localStringBuilder = new StringBuilder();
-      if (paramItem.Id == null) {
-        break label142;
+      localSvcReqRegister.bIsSetStatus = b;
+      localSvcReqRegister.uExtOnlineStatus = paramToServiceMsg.extraData.getLong("extOnlineStatus", -1L);
+      if ((localStatus == AppRuntime.Status.online) && (aypi.a(localSvcReqRegister.uExtOnlineStatus))) {
+        localSvcReqRegister.iBatteryStatus = ayox.a(paramToServiceMsg.extraData.getInt("batteryCapacity", 0), paramToServiceMsg.extraData.getInt("powerConnect", -1));
       }
-    }
-    label142:
-    for (paramItem = paramItem.Id.toString();; paramItem = "")
-    {
-      paramItem = paramItem + "_" + paramInt;
-      bbvl.c("TroopFileThumbnailMgr", bbvl.a, "[" + paramItem + "] setGettingStatus. ");
-      return;
-      if (paramInt == 640)
+      try
       {
-        paramItem.ThumbnailDownloading_Large = true;
-        paramItem.ThumbnailFileTimeMS_Large = SystemClock.uptimeMillis();
-        break;
+        for (;;)
+        {
+          localSvcReqRegister.iOSVersion = Integer.parseInt(Build.VERSION.SDK);
+          if (!NetConnInfoCenter.isMobileConn()) {
+            break label301;
+          }
+          localSvcReqRegister.cNetType = 0;
+          localSvcReqRegister.vecGuid = NetConnInfoCenter.GUID;
+          localSvcReqRegister.strDevName = Build.MODEL;
+          localSvcReqRegister.strDevType = Build.MODEL;
+          localSvcReqRegister.strOSVer = Build.VERSION.RELEASE;
+          paramUniPacket.put("SvcReqRegister", localSvcReqRegister);
+          paramUniPacket.setServantName("PushService");
+          paramUniPacket.setFuncName("SvcReqRegister");
+          return true;
+          b = 1;
+          break;
+          localSvcReqRegister.iBatteryStatus = 0;
+        }
       }
-      if (paramInt != 383) {
-        break;
+      catch (Exception paramToServiceMsg)
+      {
+        for (;;)
+        {
+          paramToServiceMsg.printStackTrace();
+          continue;
+          label301:
+          if (NetConnInfoCenter.isWifiConn()) {
+            localSvcReqRegister.cNetType = 1;
+          }
+        }
       }
-      paramItem.ThumbnailDownloading_Middle = true;
-      paramItem.ThumbnailFileTimeMS_Middle = SystemClock.uptimeMillis();
-      break;
     }
   }
   
-  public static final boolean a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramLong == 0L) || (paramItem == null)) {}
-    while (!a(paramLong, paramItem, paramInt, paramItem.getThumbnailFile(paramLong, paramInt))) {
-      return false;
+    if ("StatSvc.SetStatusFromClient".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      return b(paramToServiceMsg, paramFromServiceMsg);
+    }
+    return super.a(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("StatSvc.SetStatusFromClient")) {
+      return b(paramToServiceMsg, paramUniPacket);
     }
     return true;
   }
   
-  public static final boolean a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString)
+  public String[] a()
   {
-    int i = 0;
-    int j = 0;
-    boolean bool3 = false;
-    int k = 0;
-    int m = 0;
-    boolean bool2 = false;
-    boolean bool4 = true;
-    boolean bool1 = true;
-    if (TextUtils.isEmpty(paramString)) {
-      return bool2;
-    }
-    if (paramInt == 128)
-    {
-      if (!bdhb.b(paramString)) {
-        break label260;
-      }
-      paramInt = i;
-      if (!paramItem.HasThumbnailFile_Small) {
-        paramInt = 1;
-      }
-      paramItem.HasThumbnailFile_Small = true;
-      if (!paramString.equalsIgnoreCase(paramItem.smallThumbFile)) {
-        paramInt = 1;
-      }
-      paramItem.smallThumbFile = paramString;
-      paramItem.ThumbnailFileTimeMS_Small = 0L;
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (paramInt == 0) {
-        break;
-      }
-      bbuv.a(paramLong, paramItem);
-      return bool1;
-      if (paramInt == 640)
-      {
-        if (!bdhb.b(paramString)) {
-          break label251;
-        }
-        paramInt = k;
-        if (!paramItem.HasThumbnailFile_Large) {
-          paramInt = 1;
-        }
-        paramItem.HasThumbnailFile_Large = true;
-        if (!paramString.equalsIgnoreCase(paramItem.largeThumbnailFile)) {
-          paramInt = 1;
-        }
-        paramItem.largeThumbnailFile = paramString;
-        paramItem.ThumbnailFileTimeMS_Large = 0L;
-        bool1 = bool4;
-      }
-      for (;;)
-      {
-        break;
-        if ((paramInt == 383) && (bdhb.b(paramString)))
-        {
-          if (!paramItem.HasThumbnailFile_Middle) {}
-          for (paramInt = 1;; paramInt = 0)
-          {
-            paramItem.HasThumbnailFile_Middle = true;
-            if (!paramString.equalsIgnoreCase(paramItem.middleThumbnailFile)) {
-              paramInt = 1;
-            }
-            paramItem.middleThumbnailFile = paramString;
-            paramItem.ThumbnailFileTimeMS_Middle = 0L;
-            paramItem.ThumbnailDownloading_Middle_Fail = false;
-            bool1 = true;
-            break;
-          }
-        }
-        paramInt = 0;
-        bool1 = bool3;
-        break;
-        label251:
-        bool1 = false;
-        paramInt = m;
-      }
-      label260:
-      bool1 = false;
-      paramInt = j;
-    }
-  }
-  
-  private void b(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
-  {
-    String str = paramItem.getThumbnailFile(paramLong, 640);
-    if (paramItem.LocalFile != null)
-    {
-      VFSFile localVFSFile = new VFSFile(paramItem.LocalFile);
-      if (localVFSFile.exists())
-      {
-        int j = 0;
-        int i = j;
-        if (paramItem.origLastModifyTime != 0L)
-        {
-          long l = localVFSFile.lastModified();
-          i = j;
-          if (paramItem.origLastModifyTime != l)
-          {
-            i = j;
-            if (TextUtils.isEmpty(paramItem.FilePath))
-            {
-              i = j;
-              if (this.jdField_a_of_type_Bbwz.a(paramLong, paramItem, paramInt) == 0) {
-                i = 1;
-              }
-            }
-          }
-        }
-        if (i == 0) {
-          this.jdField_a_of_type_Bbxd.a(paramLong, paramItem, paramInt, null);
-        }
-        return;
-      }
-    }
-    if ((paramInt == 383) && (arso.b(str)))
-    {
-      this.jdField_a_of_type_Bbxd.a(paramLong, paramItem, paramInt, str);
-      return;
-    }
-    this.jdField_a_of_type_Bbwz.a(paramLong, paramItem, paramInt);
-  }
-  
-  public static final void b(TroopFileTransferManager.Item paramItem, int paramInt)
-  {
-    if (paramItem == null) {
-      return;
-    }
-    StringBuilder localStringBuilder;
-    if (paramInt == 128)
-    {
-      paramItem.ThumbnailDownloading_Small = false;
-      localStringBuilder = new StringBuilder();
-      if (paramItem.Id == null) {
-        break label121;
-      }
-    }
-    label121:
-    for (paramItem = paramItem.Id.toString();; paramItem = "")
-    {
-      paramItem = paramItem + "_" + paramInt;
-      bbvl.c("TroopFileThumbnailMgr", bbvl.a, "[" + paramItem + "] setStopGetStatus. ");
-      return;
-      if (paramInt == 640)
-      {
-        paramItem.ThumbnailDownloading_Large = false;
-        break;
-      }
-      if (paramInt != 383) {
-        break;
-      }
-      paramItem.ThumbnailDownloading_Middle = false;
-      break;
-    }
-  }
-  
-  public void a()
-  {
-    bbvl.c("TroopFileThumbnailMgr", bbvl.a, "init");
-    this.jdField_a_of_type_Bbxd.a();
-    this.jdField_a_of_type_Bbwz.a();
-  }
-  
-  public void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
-  {
-    if ((paramLong == 0L) || (paramItem == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramItem.Id == null) || (paramInt == 0));
-      if (paramItem.canFetchThumbnailFile(paramInt)) {
-        break;
-      }
-    } while ((paramInt != 383) || (!paramItem.genThumb_Middle_OnGettedLargeOrOrigPic));
-    paramItem.genThumb_Middle_OnGettedLargeOrOrigPic = false;
-    bbvc.a(new TroopFileThumbnailMgr.2(this, paramItem, paramLong, paramInt), false);
-    return;
-    if (a(paramLong, paramItem, paramInt))
-    {
-      paramItem.StatusUpdateTimeMs = 0L;
-      bbuv.b(paramLong, paramItem);
-      return;
-    }
-    bbvc.a(new TroopFileThumbnailMgr.3(this, paramLong, paramItem, paramInt), false);
-  }
-  
-  public void b()
-  {
-    bbvl.c("TroopFileThumbnailMgr", bbvl.a, "release");
-    if (Build.VERSION.SDK_INT == 19)
-    {
-      this.jdField_a_of_type_Bbxd.b();
-      this.jdField_a_of_type_Bbwz.b();
-      return;
-    }
-    bbvc.a(new TroopFileThumbnailMgr.1(this), true);
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

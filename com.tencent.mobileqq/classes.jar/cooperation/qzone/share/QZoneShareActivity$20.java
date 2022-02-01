@@ -1,7 +1,7 @@
 package cooperation.qzone.share;
 
 import android.content.res.Resources;
-import bety;
+import biau;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneShareActivity$20
@@ -12,7 +12,7 @@ class QZoneShareActivity$20
   public void run()
   {
     if (QZoneShareActivity.a(this.this$0) == null) {
-      QZoneShareActivity.a(this.this$0, new bety(this.this$0, this.this$0.getResources().getDimensionPixelSize(2131298914)));
+      QZoneShareActivity.a(this.this$0, new biau(this.this$0, this.this$0.getResources().getDimensionPixelSize(2131298998)));
     }
     QZoneShareActivity.a(this.this$0).c(this.a);
     try
@@ -28,7 +28,7 @@ class QZoneShareActivity$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.20
  * JD-Core Version:    0.7.0.1
  */

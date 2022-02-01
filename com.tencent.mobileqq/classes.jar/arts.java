@@ -1,6 +1,26 @@
-public abstract interface arts
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+
+class arts
+  implements amnz
 {
-  public abstract void a(String paramString);
+  arts(arti paramarti, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+    this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidOsBundle.putInt("result", paramInt);
+    this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+  }
+  
+  public void b() {}
 }
 
 

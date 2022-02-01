@@ -1,31 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class ancj
-  extends ancs
+class ancj
+  implements Comparator<ApolloActionData>
 {
-  public long a;
-  public ancl a;
-  public ancm a;
+  ancj(ancd paramancd) {}
   
-  public ancj()
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    this.jdField_a_of_type_Ancm = new ancm();
-    this.jdField_a_of_type_Ancl = new ancl();
-    a();
-  }
-  
-  public void a()
-  {
-    QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecogResult.reset");
-    this.b = 4096L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Ancm.a();
-    this.jdField_a_of_type_Ancl.a();
-  }
-  
-  public String toString()
-  {
-    return "ARLocalGestureCircleRecogResult{recogType = " + this.b + ", frameIdx = " + this.jdField_a_of_type_Long + ", gestureResult = " + this.jdField_a_of_type_Ancm + ", circleResult = " + this.jdField_a_of_type_Ancl + '}';
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
+    }
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
+    }
+    return -1;
   }
 }
 

@@ -1,14 +1,22 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
 
-class auxo
+public class auxo
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  JefsClass.CancelableRunnable a;
   
-  auxo(auxn paramauxn) {}
+  public auxo(JefsClass.CancelableRunnable paramCancelableRunnable)
+  {
+    this.a = paramCancelableRunnable;
+  }
+  
+  public void a()
+  {
+    this.a.a = true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxo
  * JD-Core Version:    0.7.0.1
  */

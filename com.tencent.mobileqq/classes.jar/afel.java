@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afel
-  implements DialogInterface.OnClickListener
+public class afel
+  implements View.OnClickListener
 {
-  afel(afek paramafek, boolean paramBoolean) {}
+  public afel(SigCommentListActivity paramSigCommentListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-    }
+    this.a.a(true, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

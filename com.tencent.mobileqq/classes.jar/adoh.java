@@ -1,40 +1,26 @@
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 
 public class adoh
-  extends anyt
+  extends Handler
 {
-  public adoh(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public adoh(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    super.a(paramBoolean, paramString);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.a(paramBoolean, paramString, paramInt);
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      BusinessCard localBusinessCard = ((anys)this.a.app.getManager(112)).a(paramString);
-      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo success : cardId = " + paramString);
-      this.a.a(localBusinessCard);
-      this.a.a = localBusinessCard;
+    default: 
       return;
     }
-    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo faild : cardId = " + paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    super.b(paramBoolean, paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.b(paramBoolean, paramString, paramInt);
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131718943);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

@@ -1,19 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
-class xuv
-  implements View.OnClickListener
+public class xuv
+  extends wfr<xui, wmr>
 {
-  xuv(xus paramxus) {}
-  
-  public void onClick(View paramView)
+  public xuv(xui paramxui)
   {
-    this.a.dismiss();
+    super(paramxui);
   }
+  
+  public void a(@NonNull xui paramxui, @NonNull wmr paramwmr)
+  {
+    if ((paramxui.a != null) && (TextUtils.equals(paramxui.a.b, paramwmr.a)))
+    {
+      yqp.a(this.TAG, "receive feed info change event. %s.", paramwmr.toString());
+      paramxui.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wmr.class;
+  }
+  
+  public void b(@NonNull xui paramxui, @NonNull wmr paramwmr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xuv
  * JD-Core Version:    0.7.0.1
  */

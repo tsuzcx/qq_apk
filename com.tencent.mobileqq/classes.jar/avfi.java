@@ -1,21 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.graphics.ColorMatrixColorFilter;
+import com.tencent.mobileqq.identification.IdentificationPoseReflect.3.1;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYTReflectListener;
 
 public class avfi
-  implements View.OnTouchListener
+  implements YtSDKKitFramework.IYTReflectListener
 {
-  public avfi(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  avfi(avfh paramavfh) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReflectEvent(ColorMatrixColorFilter paramColorMatrixColorFilter)
   {
-    return paramMotionEvent.getAction() == 2;
+    avfh.a(this.a, new IdentificationPoseReflect.3.1(this, paramColorMatrixColorFilter));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avfi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,143 +1,103 @@
 public class bdul
-  implements alpg
 {
-  protected void handlePendantAuth(boolean paramBoolean, Object paramObject) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c;
+  public long c;
+  public int d;
   
-  protected void onApolloDressChange(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onAuthResponse(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onChangeUserApolloStatus(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetApolloSign(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetGameCenterPubAccountFeeds(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetGameCenterPubAccountGetFriends(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetGameKey(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetGameOnlineCount(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetMyTroopEffect(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onGetZanCount(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onJDCheckRsp(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onJDCodeRsp(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onJDHongbaoRsp(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onPokeAuth(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onQueryApolloPandora(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onQueryUserApolloAction(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onQuickUpdateGetUrl(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onQuickUpdateSync(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onSetColorNick(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  protected void onSetUserFlag(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onSetZanCount(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public bdul()
   {
-    switch (paramInt)
-    {
-    case 4: 
-    case 11: 
-    case 12: 
-    case 15: 
-    case 19: 
-    case 20: 
-    case 24: 
-    case 30: 
-    default: 
-      return;
-    case 1: 
-      handlePendantAuth(paramBoolean, paramObject);
-      return;
-    case 3: 
-      onChangeUserApolloStatus(paramBoolean, paramObject);
-      return;
-    case 5: 
-      onAuthResponse(paramBoolean, paramObject);
-      return;
-    case 2: 
-      onApolloDressChange(paramBoolean, paramObject);
-      return;
-    case 6: 
-      onGetZanCount(paramBoolean, paramObject);
-      return;
-    case 7: 
-      onSetZanCount(paramBoolean, paramObject);
-      return;
-    case 8: 
-      onQueryApolloPandora(paramBoolean, paramObject);
-      return;
-    case 9: 
-      onQueryUserApolloAction(paramBoolean, paramObject);
-      return;
-    case 16: 
-      onQuickUpdateSync(paramBoolean, paramObject);
-      return;
-    case 17: 
-      onQuickUpdateGetUrl(paramBoolean, paramObject);
-      return;
-    case 10: 
-      onGetApolloSign(paramBoolean, paramObject);
-      return;
-    case 13: 
-      onJDHongbaoRsp(paramBoolean, paramObject);
-      return;
-    case 14: 
-      onJDCheckRsp(paramBoolean, paramObject);
-      return;
-    case 18: 
-      onJDCodeRsp(paramBoolean, paramObject);
-      return;
-    case 21: 
-      onGetGameKey(paramBoolean, paramObject);
-      return;
-    case 22: 
-      onSetUserFlag(paramBoolean, paramObject);
-      return;
-    case 23: 
-      onPokeAuth(paramBoolean, paramObject);
-      return;
-    case 25: 
-      onGetGameOnlineCount(paramBoolean, paramObject);
-      return;
-    case 26: 
-      onGetMyTroopEffect(paramBoolean, paramObject);
-      return;
-    case 29: 
-      onGetGameCenterPubAccountFeeds(paramBoolean, paramObject);
-      return;
-    case 31: 
-      onGetGameCenterPubAccountGetFriends(paramBoolean, paramObject);
-      return;
-    case 28: 
-      onGetExploreMsg(paramBoolean, paramObject);
-      return;
-    }
-    paramObject = (Object[])paramObject;
-    if ((paramObject != null) && (paramObject.length > 1))
-    {
-      onSetColorNick(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    }
-    onSetColorNick(paramBoolean, 0, "");
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 9001;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_Long = 9223372036854775807L;
   }
   
-  protected void onWeatherGet(boolean paramBoolean, Object paramObject) {}
+  public long a()
+  {
+    long l = 0L;
+    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L)) {
+      l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
+    }
+    while ((this.jdField_a_of_type_Long == 0L) && (this.jdField_b_of_type_Long == 0L)) {
+      return l;
+    }
+    return 612345L;
+  }
+  
+  public String a()
+  {
+    if (a())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{");
+      localStringBuilder.append("elapsed:" + a());
+      localStringBuilder.append(",tryCount:" + this.jdField_b_of_type_Int);
+      localStringBuilder.append("}");
+      return localStringBuilder.toString();
+    }
+    return "{}";
+  }
+  
+  public String a(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    if (this.jdField_a_of_type_Boolean) {
+      if (this.jdField_a_of_type_Long > 0L)
+      {
+        localStringBuilder.append("1");
+        localStringBuilder.append("_");
+      }
+    }
+    for (;;)
+    {
+      if ((!(this instanceof bdum)) && (!this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Int > 0))
+      {
+        this.d += this.jdField_c_of_type_Int;
+        this.jdField_c_of_type_Int = 0;
+      }
+      localStringBuilder.append(this.jdField_c_of_type_Int).append("_");
+      localStringBuilder.append(this.d).append("_");
+      localStringBuilder.append(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long);
+      return localStringBuilder.toString();
+      localStringBuilder.append("-1");
+      break;
+      localStringBuilder.append("0").append("_");
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 9001;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_Int = 0;
+    this.d = 0;
+    this.jdField_c_of_type_Long = 9223372036854775807L;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Long != 0L) || (this.jdField_b_of_type_Long != 0L);
+  }
+  
+  public String toString()
+  {
+    return "result:" + this.jdField_a_of_type_Boolean + " startTime:" + this.jdField_a_of_type_Long + " finishTime:" + this.jdField_b_of_type_Long + " errCode:" + this.jdField_a_of_type_Int;
+  }
 }
 
 

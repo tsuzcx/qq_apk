@@ -12,7 +12,7 @@ class RedPacketManager$7
     //   0: new 31	java/lang/StringBuilder
     //   3: dup
     //   4: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   7: getstatic 37	ajfa:f	Ljava/lang/String;
+    //   7: getstatic 37	akxc:f	Ljava/lang/String;
     //   10: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   13: aload_0
     //   14: getfield 18	com/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -34,7 +34,7 @@ class RedPacketManager$7
     //   51: invokevirtual 59	java/io/File:exists	()Z
     //   54: ifeq +77 -> 131
     //   57: aload_1
-    //   58: invokestatic 64	bdhb:a	(Ljava/lang/String;)[B
+    //   58: invokestatic 64	bgmg:a	(Ljava/lang/String;)[B
     //   61: astore_1
     //   62: aload_1
     //   63: ifnull +68 -> 131
@@ -93,7 +93,7 @@ class RedPacketManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager.7
  * JD-Core Version:    0.7.0.1
  */

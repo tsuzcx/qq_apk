@@ -1,207 +1,170 @@
-import android.graphics.Matrix;
+import android.annotation.SuppressLint;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
 
-public class awac
+class awac
 {
-  protected float a;
-  private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[9];
-  protected float b;
-  private float c = 1.0F;
-  private float d;
+  int jdField_a_of_type_Int = 0;
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  View jdField_d_of_type_AndroidViewView;
+  TextView jdField_d_of_type_AndroidWidgetTextView;
+  View jdField_e_of_type_AndroidViewView;
+  TextView jdField_e_of_type_AndroidWidgetTextView;
+  View jdField_f_of_type_AndroidViewView;
+  TextView jdField_f_of_type_AndroidWidgetTextView;
+  View jdField_g_of_type_AndroidViewView;
+  TextView jdField_g_of_type_AndroidWidgetTextView;
+  View h;
+  View i;
   
-  public static int a(float paramFloat1, float paramFloat2)
+  awac(avzs paramavzs, View paramView)
   {
-    if (paramFloat1 > paramFloat2 + 0.001F) {
-      return 1;
-    }
-    if (paramFloat1 < paramFloat2 - 0.001F) {
-      return -1;
-    }
-    return 0;
-  }
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.getValues(this.jdField_a_of_type_ArrayOfFloat);
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ArrayOfFloat[2];
-    this.b = this.jdField_a_of_type_ArrayOfFloat[5];
-    if (paramBoolean1) {
-      this.c = ((float)Math.hypot(this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[4]));
-    }
-    if (paramBoolean2) {
-      this.d = ((float)Math.toDegrees(Math.atan2(this.jdField_a_of_type_ArrayOfFloat[3], this.jdField_a_of_type_ArrayOfFloat[4])));
-    }
-  }
-  
-  public static boolean a(float paramFloat1, float paramFloat2)
-  {
-    return (paramFloat1 >= paramFloat2 - 0.001F) && (paramFloat1 <= paramFloat2 + 0.001F);
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public Matrix a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsMatrix;
-  }
-  
-  public awac a()
-  {
-    awac localawac = new awac();
-    localawac.a(this);
-    return localawac;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(paramFloat1, paramFloat2);
-    a(false, false);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
-    a(true, false);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    float f;
-    for (;;)
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376832);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376846));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376845));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131376831);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376844));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376833));
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131376836);
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131376835);
+    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131376829);
+    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131376843);
+    this.jdField_g_of_type_AndroidViewView = paramView.findViewById(2131376839);
+    this.h = paramView.findViewById(2131376837);
+    this.i = paramView.findViewById(2131376841);
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376840));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376838));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376842));
+    if (bkpg.a())
     {
-      f = paramFloat4;
-      if (paramFloat4 >= -180.0F) {
-        break;
-      }
-      paramFloat4 += 360.0F;
+      this.jdField_g_of_type_AndroidViewView.setBackgroundResource(2130845364);
+      this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(avzs.a(paramavzs).getResources().getColor(2131165777));
+      this.h.setBackgroundResource(2130845364);
+      this.jdField_f_of_type_AndroidWidgetTextView.setTextColor(avzs.a(paramavzs).getResources().getColor(2131165777));
+      this.i.setBackgroundResource(2130845364);
+      this.jdField_g_of_type_AndroidWidgetTextView.setTextColor(avzs.a(paramavzs).getResources().getColor(2131165777));
+      paramView.findViewById(2131365587).setBackgroundColor(Color.parseColor("#282828"));
+      paramView.findViewById(2131365588).setBackgroundColor(Color.parseColor("#282828"));
+      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
+      this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-1);
     }
-    while (f > 180.0F) {
-      f -= 360.0F;
-    }
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = f;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-    if (paramFloat3 != 1.0F) {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat3, paramFloat3);
-    }
-    if (f != 0.0F) {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(f);
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(paramFloat1, paramFloat2);
-  }
-  
-  public void a(Matrix paramMatrix)
-  {
-    paramMatrix.set(this.jdField_a_of_type_AndroidGraphicsMatrix);
-  }
-  
-  public void a(awac paramawac)
-  {
-    this.jdField_a_of_type_Float = paramawac.jdField_a_of_type_Float;
-    this.b = paramawac.b;
-    this.c = paramawac.c;
-    this.d = paramawac.d;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramawac.jdField_a_of_type_AndroidGraphicsMatrix);
-  }
-  
-  public float b()
-  {
-    return this.b;
-  }
-  
-  public void b(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(-this.jdField_a_of_type_Float + paramFloat1, -this.b + paramFloat2);
-    a(false, false);
-  }
-  
-  public void b(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat1 / this.c, paramFloat1 / this.c, paramFloat2, paramFloat3);
-    a(true, false);
-  }
-  
-  public float c()
-  {
-    return this.c;
-  }
-  
-  public void c(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(paramFloat1, paramFloat2, paramFloat3);
-    a(false, true);
-  }
-  
-  public float d()
-  {
-    return this.d;
-  }
-  
-  public void d(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(-this.d + paramFloat1, paramFloat2, paramFloat3);
-    a(false, true);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new awad(this, paramavzs));
+    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new awae(this, paramavzs));
+    if (bkpg.a())
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (awac)paramObject;
-    } while ((a(paramObject.jdField_a_of_type_Float, this.jdField_a_of_type_Float)) && (a(paramObject.b, this.b)) && (a(paramObject.c, this.c)) && (a(paramObject.d, this.d)));
-    return false;
+      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130845365);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
+    }
+    this.jdField_g_of_type_AndroidViewView.setOnClickListener(new awaf(this, paramavzs));
+    this.h.setOnClickListener(new awag(this, paramavzs));
+    this.i.setOnClickListener(new awah(this, paramavzs));
   }
   
-  public int hashCode()
+  private String a()
   {
-    int m = 0;
-    int i;
-    int j;
-    if (this.jdField_a_of_type_Float != 0.0F)
+    switch (this.jdField_a_of_type_Int)
     {
-      i = Float.floatToIntBits(this.jdField_a_of_type_Float);
-      if (this.b == 0.0F) {
-        break label95;
-      }
-      j = Float.floatToIntBits(this.b);
-      label37:
-      if (this.c == 0.0F) {
-        break label100;
-      }
+    default: 
+      return "drive";
+    case 2: 
+      return "bus";
     }
-    label95:
-    label100:
-    for (int k = Float.floatToIntBits(this.c);; k = 0)
+    return "walk";
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  void a(int paramInt)
+  {
+    this.jdField_d_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_f_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+    LocationRoom.Venue localVenue = avzs.a(this.jdField_a_of_type_Avzs).a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(localVenue.b);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
+    b(paramInt);
+  }
+  
+  void a(View paramView)
+  {
+    this.jdField_g_of_type_AndroidViewView.setSelected(false);
+    this.h.setSelected(false);
+    this.i.setSelected(false);
+    paramView.setSelected(true);
+  }
+  
+  void a(away paramaway)
+  {
+    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_f_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_e_of_type_AndroidViewView.setVisibility(0);
+    LocationRoom.Venue localVenue = avzs.a(this.jdField_a_of_type_Avzs).a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(localVenue.b);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
+    if (paramaway != null) {}
+    for (int j = paramaway.jdField_a_of_type_JavaLangInteger.intValue();; j = 1)
     {
-      if (this.d != 0.0F) {
-        m = Float.floatToIntBits(this.d);
-      }
-      return (k + (j + i * 31) * 31) * 31 + m;
-      i = 0;
-      break;
-      j = 0;
-      break label37;
+      b(j);
+      return;
     }
   }
   
-  public String toString()
+  @SuppressLint({"SetTextI18n", "DefaultLocale"})
+  void a(away paramaway, LocationRoom.Venue paramVenue)
   {
-    return "{x=" + this.jdField_a_of_type_Float + ",y=" + this.b + ",zoom=" + this.c + ",rotation=" + this.d + "}";
+    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_f_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramVenue.b);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramVenue.c);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(awao.a(paramaway.jdField_a_of_type_Float));
+    if (paramaway.b < 1000.0F) {}
+    for (paramVenue = String.format(avzs.a(this.jdField_a_of_type_Avzs).getResources().getString(2131693412), new Object[] { Integer.valueOf(Math.round(paramaway.b)) });; paramVenue = String.format(avzs.a(this.jdField_a_of_type_Avzs).getResources().getString(2131693411), new Object[] { Double.valueOf(paramaway.b / 1000.0D) }))
+    {
+      this.jdField_d_of_type_AndroidWidgetTextView.setText(paramVenue);
+      b(paramaway.jdField_a_of_type_JavaLangInteger.intValue());
+      return;
+    }
+  }
+  
+  void b()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  void b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Int = 1;
+      a(this.jdField_g_of_type_AndroidViewView);
+      return;
+    case 2: 
+      a(this.h);
+      return;
+    }
+    a(this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awac
  * JD-Core Version:    0.7.0.1
  */

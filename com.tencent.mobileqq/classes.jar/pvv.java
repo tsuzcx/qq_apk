@@ -1,42 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.Comparator;
 
-public class pvv
+class pvv
+  implements Comparator<AdvertisementInfo>
 {
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private rqj jdField_a_of_type_Rqj;
-  private HashMap<String, ArticleInfo> b;
+  pvv(pvu parampvu) {}
   
-  public pvt a()
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    pvt localpvt = new pvt(null);
-    pvt.a(localpvt, this.jdField_a_of_type_Rqj);
-    pvt.a(localpvt, this.jdField_a_of_type_JavaUtilHashMap);
-    pvt.b(localpvt, this.b);
-    return localpvt;
-  }
-  
-  public pvv a(HashMap<String, Integer> paramHashMap)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    return this;
-  }
-  
-  public pvv a(rqj paramrqj)
-  {
-    this.jdField_a_of_type_Rqj = paramrqj;
-    return this;
-  }
-  
-  public pvv b(HashMap<String, ArticleInfo> paramHashMap)
-  {
-    this.b = paramHashMap;
-    return this;
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pvv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,83 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import mqq.manager.Manager;
-import org.json.JSONObject;
-import tencent.im.cs.cmd0x388.cmd0x388.ExtensionCommPicTryUp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.SimpleTextView;
 
-public class bing
-  implements Manager
+class bing
+  extends bkov
 {
-  private awkh jdField_a_of_type_Awkh = new binh(this);
-  private bayf jdField_a_of_type_Bayf;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public RemoteCommand.OnInvokeFinishLinstener a;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public bing(QQAppInterface paramQQAppInterface)
+  bing(bine parambine, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bayf = paramQQAppInterface.a();
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.c();
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void a(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public View a(int paramInt, Object paramObject, bkou parambkou, View.OnClickListener paramOnClickListener)
   {
-    if (paramBundle == null) {}
+    parambkou = super.a(paramInt, paramObject, parambkou, paramOnClickListener);
+    if ((parambkou instanceof SimpleTextView)) {
+      parambkou.setTag(paramObject);
+    }
+    return parambkou;
+  }
+  
+  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
+  {
+    paramInt = 0;
+    if ((paramArrayOfbkou == null) || (paramArrayOfbkou.length <= 0)) {}
     for (;;)
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = paramOnInvokeFinishLinstener;
-      paramOnInvokeFinishLinstener = new bayk();
-      paramOnInvokeFinishLinstener.jdField_b_of_type_Int = 24;
-      paramOnInvokeFinishLinstener.jdField_c_of_type_Int = 20;
-      paramOnInvokeFinishLinstener.jdField_a_of_type_JavaLangString = "actQqComicPicUpload";
-      paramOnInvokeFinishLinstener.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramOnInvokeFinishLinstener.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramOnInvokeFinishLinstener.jdField_a_of_type_Boolean = true;
-      paramOnInvokeFinishLinstener.i = paramBundle.getString("localPath");
-      paramOnInvokeFinishLinstener.jdField_a_of_type_Awkh = this.jdField_a_of_type_Awkh;
-      Object localObject = paramBundle.getString("comicId");
-      String str1 = paramBundle.getString("picMd5");
-      String str2 = paramBundle.getString("actionData");
-      paramBundle = new JSONObject();
-      try
+      if (paramArrayOfbkou.length < 0)
       {
-        paramBundle.put("comicId", localObject);
-        paramBundle.put("picMd5", str1);
-        paramBundle.put("actionData", str2);
-        localObject = new cmd0x388.ExtensionCommPicTryUp();
-        ((cmd0x388.ExtensionCommPicTryUp)localObject).rpt_bytes_extinfo.add(ByteStringMicro.copyFrom(paramBundle.toString().getBytes()));
-        paramOnInvokeFinishLinstener.jdField_a_of_type_ArrayOfByte = ((cmd0x388.ExtensionCommPicTryUp)localObject).toByteArray();
-        if (this.jdField_a_of_type_Bayf == null) {
-          continue;
-        }
-        this.jdField_a_of_type_Bayf.a(paramOnInvokeFinishLinstener);
-        return;
+        paramArrayOfbkou[0].b = 0;
+        paramArrayOfbkou[0].a = 0;
+        paramInt = 1;
       }
-      catch (Exception localException)
+      while (paramInt < paramArrayOfbkou.length)
       {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
+        paramArrayOfbkou[paramInt].b = -1;
+        paramArrayOfbkou[paramInt].a = -1;
+        paramInt += 1;
       }
     }
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_Bayf = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bing
  * JD-Core Version:    0.7.0.1
  */

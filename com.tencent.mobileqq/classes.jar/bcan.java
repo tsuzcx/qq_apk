@@ -1,38 +1,100 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.telephony.TelephonyManager;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.msf.service.protocol.pb.SubMsgType0x51.MsgBody;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
 public class bcan
-  extends BroadcastReceiver
+  implements bcba
 {
-  public bcan(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, MessageHandler paramMessageHandler)
   {
-    if (this.a.a != null)
-    {
-      paramContext = paramIntent.getAction();
-      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
-        break label51;
-      }
+    byte[] arrayOfByte = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv msg0x210.Submsgtype0x51");
+    }
+    if (paramMsgType0x210.sub_msg_type.get() != 81) {
       if (QLog.isColorLevel()) {
-        QLog.d("SubmitHomeWorkFragment", 2, "receive action_recv_video_request");
+        QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush submsgtype != 0x51");
       }
-      this.a.a.b(102);
     }
-    label51:
-    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+    do
+    {
+      do
+      {
+        return;
+        if (paramMsgType0x210.msg_content != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush msg_content is null");
       return;
+      paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
+      if (paramMsgType0x210 != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush decode ox210Stream is null");
+    return;
+    new SubMsgType0x51.MsgBody();
+    for (;;)
+    {
+      try
+      {
+        SubMsgType0x51.MsgBody localMsgBody = new SubMsgType0x51.MsgBody();
+        localMsgBody.mergeFrom(paramMsgType0x210);
+        if (!localMsgBody.bytes_qrsig_url.has()) {
+          break label335;
+        }
+        paramMsgType0x210 = new String(localMsgBody.bytes_qrsig_url.get().toByteArray(), "utf-8");
+        if (!localMsgBody.bytes_hint1.has()) {
+          break label330;
+        }
+        paramMsg = new String(localMsgBody.bytes_hint1.get().toByteArray(), "utf-8");
+        if (!localMsgBody.bytes_hint2.has()) {
+          break label324;
+        }
+        str = new String(localMsgBody.bytes_hint2.get().toByteArray(), "utf-8");
+        if (localMsgBody.bytes_login_conf.has()) {
+          arrayOfByte = localMsgBody.bytes_login_conf.get().toByteArray();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("DevLock", 2, "decodeDevlockQuickLoginPush recv devlock quicklogin push qrcode=" + paramMsgType0x210 + " maintip=" + paramMsg + " smalltip" + str);
+        }
+        asfr.a().a(paramMessageHandler.app, paramMsgType0x210, paramMsg, str, arrayOfByte);
+        return;
+      }
+      catch (Exception paramMsgType0x210) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("DevLock", 2, "failed to parse msg0x210.Submsgtype0x51");
+      return;
+      label324:
+      String str = null;
+      continue;
+      label330:
+      paramMsg = null;
+      continue;
+      label335:
+      paramMsgType0x210 = null;
     }
-    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
-      QLog.d("SubmitHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
+  }
+  
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbyn parambbyn, MessageHandler paramMessageHandler)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DevLockQuickLoginDecoder", 2, "<---decodeC2CMsgPkg_MsgType0x210 : subtype 0x51");
     }
-    this.a.a.b(102);
+    a(paramMsgType0x210, paramMsg, paramMessageHandler);
+    bbzf.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
   }
 }
 

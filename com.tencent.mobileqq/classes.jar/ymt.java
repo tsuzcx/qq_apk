@@ -1,26 +1,24 @@
-import com.tencent.biz.subscribe.videoplayer.CleanVideoPlayerView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ymt
-  implements vwf
+public class ymt
+  implements View.OnClickListener
 {
-  ymt(ymq paramymq, afkf paramafkf, CleanVideoPlayerView paramCleanVideoPlayerView) {}
+  public ymt(StoryListPresenter.4.1 param1) {}
   
-  public void a(vwa paramvwa)
+  public void onClick(View paramView)
   {
-    Long localLong = (Long)ymq.b(this.jdField_a_of_type_Ymq).get(Integer.valueOf(this.jdField_a_of_type_Afkf.b));
-    if ((localLong != null) && (localLong.longValue() > 0L))
-    {
-      paramvwa.a(localLong.longValue());
-      QLog.d("SubscribePlayerManager", 4, "playInner seekTo: " + localLong);
-    }
-    this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerCleanVideoPlayerView.d();
+    yqu.a("home_page", "clk_up_know", 0, 0, new String[0]);
+    this.a.a.this$0.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ymt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,27 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.data.MessageForTribeShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahlp
-  extends bibi
+class ahlp
+  extends bhhe
 {
-  public Button a;
-  public TroopLabelLayout a;
-  public ImageView f;
-  public String f;
-  public TextView h;
-  public TextView i;
-  public TextView j;
-  public TextView k;
-  public TextView l;
-  public TextView m;
-  public TextView n;
+  ahlp(ahln paramahln, ahls paramahls, MessageForTribeShortVideo paramMessageForTribeShortVideo) {}
+  
+  public void onDone(bhhf parambhhf)
+  {
+    String str = parambhhf.a().getString("filePath");
+    if (parambhhf.a == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("TribeShortVideoItemBuilder", 2, "download video success! videoFile:" + str);
+      }
+      this.jdField_a_of_type_Ahls.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Ahls.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.b();
+      this.jdField_a_of_type_Ahls.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(8);
+      this.jdField_a_of_type_Ahln.a(this.jdField_a_of_type_Ahls.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.coverImgUrl, str);
+    }
+  }
 }
 
 

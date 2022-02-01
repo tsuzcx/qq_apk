@@ -1,42 +1,46 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
 
 public class xiw
-  extends xis
+  extends xiy
 {
-  @NonNull
-  public final uwv a;
-  @NonNull
-  public final String c;
+  public ErrorMessage a;
   
-  public xiw(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull uwv paramuwv)
+  public xiw(xix paramxix, @Nullable ErrorMessage paramErrorMessage)
   {
-    super(paramInt1, paramString1, paramInt2);
-    this.c = paramString2;
-    this.a = paramuwv;
-  }
-  
-  @NonNull
-  public Class<? extends xit> a()
-  {
-    return xiy.class;
-  }
-  
-  @NonNull
-  public xit a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new xiy(paramContext, paramViewGroup, null);
+    super(paramxix);
+    if (paramErrorMessage == null) {}
+    for (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");; this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      return;
+    }
   }
   
   public boolean a()
   {
-    return true;
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000000;
+  }
+  
+  public boolean b()
+  {
+    return (!a()) && (!c());
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000001;
+  }
+  
+  public String toString()
+  {
+    return "fg{g=" + this.jdField_a_of_type_Xix + ", em=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xiw
  * JD-Core Version:    0.7.0.1
  */

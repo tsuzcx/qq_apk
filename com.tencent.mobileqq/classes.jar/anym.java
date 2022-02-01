@@ -1,19 +1,19 @@
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
 public class anym
+  implements BusinessObserver
 {
-  public int a;
-  long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c = "0";
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public anym()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = "0";
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, paramBundle.getInt("msgType", 0), paramBundle);
   }
 }
 

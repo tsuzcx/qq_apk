@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bflr;
+import bita;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -66,7 +66,7 @@ class PayJsPlugin$4
           if (localMiniAppInfo != null)
           {
             paramJSONObject = this.this$0.jsPluginEngine.appBrandRuntime.appId + "_" + localMiniAppInfo.verType;
-            str1 = bflr.b(paramJSONObject);
+            str1 = bita.b(paramJSONObject);
             AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApp().getSharedPreferences("keyMiniGamePayEnv", 4).edit().putString("keyMiniGamePayEnvAppidVertype", str1).commit();
             this.val$jsonObject.put("miniAppVertypeStr", paramJSONObject);
           }
@@ -94,7 +94,7 @@ class PayJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.PayJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

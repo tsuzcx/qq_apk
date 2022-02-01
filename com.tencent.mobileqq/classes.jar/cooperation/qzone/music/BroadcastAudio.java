@@ -3,7 +3,7 @@ package cooperation.qzone.music;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjlr;
+import bmaa;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONArray;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class BroadcastAudio
   implements Parcelable
 {
-  public static final Parcelable.Creator<BroadcastAudio> CREATOR = new bjlr();
+  public static final Parcelable.Creator<BroadcastAudio> CREATOR = new bmaa();
   public BroadcastUrl masterUrl;
   public ArrayList<BroadcastUrl> slaveUrl;
   
@@ -75,7 +75,7 @@ public class BroadcastAudio
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.music.BroadcastAudio
  * JD-Core Version:    0.7.0.1
  */

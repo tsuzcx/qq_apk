@@ -1,31 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import java.util.HashMap;
 
-public class aubd
-  implements ValueAnimator.AnimatorUpdateListener
+public final class aubd
+  implements bdvv
 {
-  public aubd(MedalGuideView paramMedalGuideView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(bdws parambdws, bdwt parambdwt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    MedalGuideView.a(this.a, f);
-    if (this.a.a != null)
+    if ((parambdws == null) || (parambdwt == null)) {}
+    do
     {
-      this.a.a.a(f);
-      if (f <= 0.05F) {
-        this.a.a.b();
-      }
-    }
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
-    }
+      do
+      {
+        return;
+      } while (!(parambdws instanceof bdvs));
+      parambdws = (bdvs)parambdws;
+      parambdws.jdField_a_of_type_Long += parambdwt.c;
+      parambdwt.c = 0L;
+      parambdwt = "bytes=" + parambdws.jdField_a_of_type_Long + "-";
+      parambdws.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
+      parambdwt = parambdws.jdField_a_of_type_JavaLangString;
+    } while (!parambdwt.contains("range="));
+    parambdwt = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
+    parambdws.jdField_a_of_type_JavaLangString = (parambdwt + "range=" + parambdws.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aubd
  * JD-Core Version:    0.7.0.1
  */

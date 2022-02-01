@@ -1,15 +1,19 @@
 package com.tencent.securemodule.ui;
 
+import Override;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.Window;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.securemodule.ai;
 import com.tencent.securemodule.ak;
 import com.tencent.securemodule.al;
@@ -101,6 +105,21 @@ public class TransparentActivity
     finish();
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
@@ -135,7 +154,7 @@ public class TransparentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.ui.TransparentActivity
  * JD-Core Version:    0.7.0.1
  */

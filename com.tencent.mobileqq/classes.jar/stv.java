@@ -1,40 +1,70 @@
-import android.util.Base64;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectOutputStream;
-import java.util.List;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import com.tencent.qphone.base.util.QLog;
 
 public class stv
+  extends RecyclerView.OnScrollListener
 {
-  public static final String a = alud.a(2131715057);
-  public static final String b = alud.a(2131715048);
-  public static final String c = alud.a(2131715052);
-  public static final String d = alud.a(2131715062);
-  public static final String e = alud.a(2131715050);
-  public static final String f = alud.a(2131715049);
-  public static final String g = alud.a(2131715047);
-  public static final String h = alud.a(2131715064);
-  public static final String i = alud.a(2131715056);
-  public static final String j = alud.a(2131715058);
-  public static final String k = alud.a(2131715061);
-  public static final String l = alud.a(2131715059);
-  public static final String m = alud.a(2131715066);
-  public static final String n = alud.a(2131715055);
-  public static final String o = alud.a(2131715051);
-  public static final String p = alud.a(2131715060);
+  public stv(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
   
-  public static String a(List<?> paramList)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
-    localObjectOutputStream.writeObject(paramList);
-    paramList = new String(Base64.encode(localByteArrayOutputStream.toByteArray(), 0));
-    localObjectOutputStream.close();
-    return paramList;
+    int i = 0;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((paramInt == 0) && (ReadInjoyXRecyclerView.c(this.a) == 2)) {
+      this.a.a();
+    }
+    int j = paramRecyclerView.getChildCount();
+    boolean bool;
+    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    {
+      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
+      i = paramRecyclerView.getItemCount();
+      paramRecyclerView = paramRecyclerView.findFirstVisibleItemPositions(null);
+      int k = ReadInjoyXRecyclerView.a(this.a).a();
+      if (i - j <= paramRecyclerView[0] + k)
+      {
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("XRecyclerView", 2, new Object[] { "totalItemCount=%d, firstVisibleItem=%d, visibleThreshold=%d, isCloseToTheEnd=%b", Integer.valueOf(i), Integer.valueOf(paramRecyclerView[0]), Integer.valueOf(k), Boolean.valueOf(bool) });
+        }
+        if (bool) {
+          ReadInjoyXRecyclerView.a(this.a).b(true);
+        }
+      }
+    }
+    for (;;)
+    {
+      ReadInjoyXRecyclerView.c(this.a, paramInt);
+      return;
+      bool = false;
+      break;
+      if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager))
+      {
+        paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+        if (paramRecyclerView.getItemCount() - j <= paramRecyclerView.findFirstVisibleItemPosition() + ReadInjoyXRecyclerView.a(this.a).a()) {
+          i = 1;
+        }
+        if (i != 0) {
+          ReadInjoyXRecyclerView.a(this.a).b(true);
+        }
+      }
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    ReadInjoyXRecyclerView.a(this.a, ReadInjoyXRecyclerView.a(this.a) + paramInt1);
+    ReadInjoyXRecyclerView.b(this.a, ReadInjoyXRecyclerView.b(this.a) + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     stv
  * JD-Core Version:    0.7.0.1
  */

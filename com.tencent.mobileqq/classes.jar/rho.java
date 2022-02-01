@@ -1,30 +1,23 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-
-class rho
-  implements URLDrawable.URLDrawableListener
+public class rho
 {
-  rho(rhf paramrhf) {}
+  public int a;
+  public long a;
+  public String a;
+  public rhp a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public String toString()
   {
-    if ((rhf.a(this.a) != null) && (rhf.a(this.a).getStatus() == 1) && ((rhf.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
-    {
-      paramURLDrawable = (RegionDrawable)rhf.a(this.a).getCurrDrawable();
-      rhf.a(this.a, paramURLDrawable.getBitmap());
-    }
+    return "PGCPicInfo{picWidth=" + this.jdField_a_of_type_Int + ", picHeight=" + this.jdField_b_of_type_Int + ", picMd5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", picUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", thumbnailUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", isAnimation=" + this.jdField_c_of_type_Int + ", picDesc='" + this.d + '\'' + ", galleryIndex=" + this.jdField_a_of_type_Long + ", pgcVideoInfo=" + this.jdField_a_of_type_Rhp + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rho
  * JD-Core Version:    0.7.0.1
  */

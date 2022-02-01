@@ -1,21 +1,48 @@
-import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadTaskCallback;
+import java.util.ArrayList;
 
 class aniq
-  implements anjs
+  implements IUploadTaskCallback
 {
-  aniq(anii paramanii, long paramLong) {}
+  aniq(anip paramanip) {}
   
-  public void a(long paramLong)
+  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anii.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qzonephotowall", 2, "onUploadError " + paramString + " path:" + paramAbstractUploadTask.uploadFilePath);
+    }
+    this.a.notifyUI(71, false, new Object[] { paramAbstractUploadTask.uploadFilePath });
+  }
+  
+  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2)
+  {
+    if (paramLong1 == paramLong2)
+    {
+      this.a.b = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qzonephotowall", 2, "onUploadProgress is 100%");
+      }
     }
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt) {}
+  
+  public void onUploadSucceed(AbstractUploadTask arg1, Object paramObject)
   {
-    anif.a(this.jdField_a_of_type_Anii.a, this.jdField_a_of_type_Long, paramBoolean, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qzonephotowall", 2, "onUploadSucceed ");
+    }
+    synchronized (anip.a(this.a))
+    {
+      if (anip.a(this.a).size() != 0)
+      {
+        anip.a(this.a);
+        return;
+      }
+      this.a.notifyUI(71, true, new Object[0]);
+    }
   }
 }
 

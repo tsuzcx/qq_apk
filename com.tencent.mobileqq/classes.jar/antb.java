@@ -1,28 +1,73 @@
-public abstract interface antb
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AccountNotMatchException;
+
+public class antb
 {
-  public abstract void onRotationUpdateOriginal(float[] paramArrayOfFloat);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new antc(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private anot jdField_a_of_type_Anot = new antd(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public abstract void onRotationUpdateQuaternion(float[] paramArrayOfFloat);
+  public antb(String paramString)
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramString));
+      paramString = new IntentFilter();
+      paramString.addAction("com.tencent.mobileqq.addLbsObserver");
+      paramString.addAction("com.tencent.mobileqq.removeLbsObserver");
+      paramString.addAction("com.tencent.mobileqq.getStreetViewUrl");
+      paramString.addAction("com.tencent.mobileqq.unregisterReceiver");
+      paramString.addAction("com.tencent.mobileqq.getLbsShareSearch");
+      paramString.addAction("com.tencent.mobileqq.getLbsShareShop");
+      paramString.addAction("com.tencent.mobileqq.getShareShopDetail");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-create, registerReceiver:" + hashCode() + ", " + this.jdField_a_of_type_AndroidContentBroadcastReceiver.hashCode());
+      }
+      return;
+    }
+    catch (AccountNotMatchException paramString)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMapActivityProxy", 2, "AccountNotMatchException " + paramString.toString());
+        }
+      }
+    }
+  }
   
-  public abstract void onSensorSupport(int paramInt, boolean paramBoolean);
-  
-  public abstract void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
-  
-  public abstract void updateAzimuth(float paramFloat);
-  
-  public abstract void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
-  
-  public abstract void updatePitch(float paramFloat);
-  
-  public abstract void updateRoll(float paramFloat);
-  
-  public abstract void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void updateSensor(float paramFloat1, float paramFloat2, float paramFloat3);
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMapActivityProxy", 2, "onDestory,  hashCode=" + hashCode());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anot);
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w("QQMapActivityProxy", 2, "onDestory, mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + localException.toString());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     antb
  * JD-Core Version:    0.7.0.1
  */

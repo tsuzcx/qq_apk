@@ -1,19 +1,19 @@
-import android.graphics.RectF;
-import android.text.TextPaint;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.contentbox.MsgMoreView;
 
-public abstract class blwu
+public class blwu
+  implements View.OnClickListener
 {
-  protected int a;
-  protected RectF a;
-  protected TextPaint a;
-  protected int b;
+  public blwu(MsgMoreView paramMsgMoreView) {}
   
-  public blwu(int paramInt1, int paramInt2, TextPaint paramTextPaint, RectF paramRectF)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
+    if (MsgMoreView.a(this.a) != null) {
+      MsgMoreView.a(this.a).a(MsgMoreView.a(this.a), paramView, 5);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,85 +1,54 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserId;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public abstract class wqt
-  implements wqu
+public class wqt
+  implements wev
 {
-  protected Activity a;
+  public String a;
+  public String b;
   
-  public Activity a()
+  public wqt(String paramString1, String paramString2)
   {
-    return this.a;
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public View a(int paramInt)
+  public qqstory_struct.UserId a()
   {
-    Activity localActivity = this.a;
-    if (localActivity != null) {
-      return localActivity.findViewById(paramInt);
+    qqstory_struct.UserId localUserId = new qqstory_struct.UserId();
+    if (!TextUtils.isEmpty(this.a)) {
+      localUserId.uid.set(Long.valueOf(this.a).longValue());
     }
-    wxe.e(getClass().getSimpleName(), "findViewById can not access after detach");
-    return null;
+    localUserId.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localUserId;
   }
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  public boolean a()
   {
-    Activity localActivity = this.a;
-    if (localActivity != null)
+    return (QQStoryContext.a().a(this.b)) || (QQStoryContext.a().b(this.a));
+  }
+  
+  public void copy(Object paramObject)
+  {
+    if ((paramObject instanceof wqt))
     {
-      localActivity.setContentView(paramInt);
-      return;
+      this.a = ((wqt)paramObject).a;
+      this.b = ((wqt)paramObject).b;
     }
-    wxe.e(getClass().getSimpleName(), "setContentView can not access after detach");
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(int paramInt, Intent paramIntent)
+  public String toString()
   {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.setResult(paramInt, paramIntent);
-      return;
-    }
-    wxe.e(getClass().getSimpleName(), "finish can not access after detach");
-  }
-  
-  public void a(@NonNull Activity paramActivity)
-  {
-    this.a = paramActivity;
-  }
-  
-  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    this.a = null;
-  }
-  
-  public void e()
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.finish();
-      return;
-    }
-    wxe.e(getClass().getSimpleName(), "finish can not access after detach");
+    return "UserID{qq=" + this.a + ", unionId='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wqt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,41 @@
-import com.tencent.ark.ArkEnvironmentManager.IDataReport;
-import com.tencent.ark.open.ArkAppReport;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
-final class anrc
-  implements ArkEnvironmentManager.IDataReport
+public class anrc
+  extends annh
 {
-  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
+  protected void a()
   {
-    ArkAppReport.platformEventReport(paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
+    super.a();
+    if (this.d >= annf.a().a / 12000L)
+    {
+      CoreService.stopTempService();
+      this.a.c();
+      this.d = 0L;
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
+      return;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.b();
+    CoreService.startTempService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anrc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,45 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Color;
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.now.ilive_short_video_label.GetShortVideoVideoLabelRsp;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-final class axpk
-  implements ValueAnimator.AnimatorUpdateListener
+class axpk
+  implements axkz
 {
-  final int jdField_a_of_type_Int = Color.red(this.d);
-  final int b = Color.green(this.d);
-  final int c = Color.blue(this.d);
+  axpk(axop paramaxop) {}
   
-  axpk(int paramInt, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0xada.RspBody();
+    }
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.i("PlayOperationViewModel", 2, "queryVideoState err_msg:   " + paramBundle.err_msg.get());
+      }
+      if (paramBundle.busi_buf.has())
+      {
+        paramArrayOfByte = new ilive_short_video_label.GetShortVideoVideoLabelRsp();
+        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+        this.a.a(paramArrayOfByte);
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axpk
  * JD-Core Version:    0.7.0.1
  */

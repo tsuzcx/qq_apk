@@ -1,44 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
 public class anyd
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  private QQAnimationDrawable b;
+  public anyd(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2) {}
   
-  public anyd(QQAnimationDrawable paramQQAnimationDrawable1, QQAnimationDrawable paramQQAnimationDrawable2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.b = paramQQAnimationDrawable2;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("InternalHandler handleMessage msg.what:").append(paramMessage.what).append(" main:");
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramInt = this.jdField_a_of_type_Int;
+    int i = this.jdField_b_of_type_Int;
+    if (!this.jdField_a_of_type_Boolean) {}
     for (boolean bool = true;; bool = false)
     {
-      QLog.d("QQAnimationDrawable", 2, bool);
-      if (!(paramMessage.obj instanceof Long)) {
-        break label170;
-      }
-      QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj + " android.os.SystemClock.uptimeMillis():" + SystemClock.uptimeMillis());
-      paramMessage = (Long)paramMessage.obj;
-      if (paramMessage.longValue() >= SystemClock.uptimeMillis()) {
-        break;
-      }
-      QLog.d("QQAnimationDrawable", 2, "time < android.os.SystemClock.uptimeMillis()");
-      this.a.scheduleSelf(this.b, SystemClock.uptimeMillis());
+      VideoMsgTools.a(localQQAppInterface, paramInt, i, bool, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, null, true, new Object[0]);
+      paramDialogInterface.dismiss();
+      mqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause, this.jdField_a_of_type_Boolean);
       return;
     }
-    QLog.d("QQAnimationDrawable", 2, "time > android.os.SystemClock.uptimeMillis()");
-    this.a.scheduleSelf(this.b, paramMessage.longValue());
-    return;
-    label170:
-    QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj);
   }
 }
 

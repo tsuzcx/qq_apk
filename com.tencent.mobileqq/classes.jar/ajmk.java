@@ -1,73 +1,27 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
+import java.util.Map;
 
 public class ajmk
-  extends ajlr
+  extends anmu
 {
-  public boolean a;
+  public ajmk(TroopFragment paramTroopFragment) {}
   
-  public ajmk(Context paramContext)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this(paramContext, false);
-  }
-  
-  public ajmk(Context paramContext, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131698112);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.optLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.optLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.optString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.optInt("color");
-      this.jdField_a_of_type_Boolean = paramArrayOfByte.optBoolean("isToAll");
-      if (this.jdField_a_of_type_Bbpe == null) {
-        this.jdField_a_of_type_Bbpe = new bbpe();
-      }
-      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+    if (paramBoolean1) {
+      this.a.h();
     }
   }
   
-  public byte[] a()
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    return b();
+    this.a.h();
   }
   
-  public byte[] b()
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      localJSONObject.put("isToAll", this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_Bbpe != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+    if (paramBoolean) {
+      this.a.h();
     }
   }
 }

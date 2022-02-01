@@ -1,45 +1,26 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-final class ybl
-  implements BusinessObserver
+public abstract interface ybl
 {
-  ybl(xyj paramxyj) {}
+  public abstract void N_();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
-    {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle);
-        if (paramBundle.getInt("r") != 0) {
-          continue;
-        }
-        paramBundle = paramBundle.getString("url");
-        if (paramBundle != null)
-        {
-          this.a.a(true, paramBundle);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramBundle = null;
-        }
-      }
-      this.a.a(false, null);
-      return;
-    }
-  }
+  public abstract void O_();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ybl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.confess;
 
-import aoiu;
-import aoiv;
+import aqjm;
+import aqjn;
 
 public class ConfessManager$3
   implements Runnable
 {
-  public ConfessManager$3(aoiu paramaoiu, String paramString, aoiv paramaoiv) {}
+  public ConfessManager$3(aqjm paramaqjm, String paramString, aqjn paramaqjn) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aoiv);
+    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqjn);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessManager.3
  * JD-Core Version:    0.7.0.1
  */

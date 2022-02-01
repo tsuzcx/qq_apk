@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.preload;
 
 import com.tencent.qphone.base.util.QLog;
-import piu;
-import piw;
-import piy;
+import qag;
+import qai;
+import qak;
 
 public class FeedsPreloadManager$3
   implements Runnable
 {
-  public FeedsPreloadManager$3(piu parampiu, boolean paramBoolean) {}
+  public FeedsPreloadManager$3(qag paramqag, boolean paramBoolean) {}
   
   public void run()
   {
     boolean bool;
-    if (piy.a(this.a)) {
+    if (qak.a(this.a)) {
       bool = false;
     }
     try
     {
-      piu.a(this.this$0);
-      piw.a(this.a, bool);
+      qag.a(this.this$0);
+      qai.a(this.a, bool);
       return;
     }
     catch (Exception localException)

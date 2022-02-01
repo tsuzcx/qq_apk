@@ -1,125 +1,180 @@
-import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Handler;
-import android.view.animation.ScaleAnimation;
-import android.widget.FrameLayout;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.gamecenter.anim.FullPopAnimLowVersion.6;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
-import cooperation.qwallet.plugin.QWalletPicHelper;
-import java.io.File;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class askz
-  extends askx
-  implements asnp
+  extends asgf
 {
-  @SuppressLint({"HandlerLeak"})
-  private Handler a;
+  public askz(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  public askz(Context paramContext, FullPopData paramFullPopData, String paramString1, String paramString2, boolean paramBoolean)
+  protected void a(int paramInt)
   {
-    super(paramContext, paramFullPopData, paramString1, paramString2, paramBoolean);
-    this.jdField_a_of_type_AndroidOsHandler = new asla(this);
+    awie.a(this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, ExtendFriendLimitChatMatchFragment.a(this.a).app);
   }
   
-  private void a(FullPopData paramFullPopData, FullPopVideoView paramFullPopVideoView)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    paramFullPopData = asnh.a(paramFullPopData.resPath, "video.mp4");
-    FeedsItemData localFeedsItemData = new FeedsItemData();
-    localFeedsItemData.videoUrl = Uri.parse(paramFullPopData.getPath()).toString();
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.a();
-    paramFullPopVideoView.a(this.jdField_a_of_type_AndroidContentContext, localFeedsItemData.videoUrl);
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData != null)
+    asfu localasfu = (asfu)ExtendFriendLimitChatMatchFragment.a(this.a).app.getManager(264);
+    int j;
+    int i;
+    if (localasfu != null)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      int i = azkz.e(this.jdField_a_of_type_AndroidContentContext);
-      Object localObject1 = asnh.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.resPath, "line.png", i, 0);
-      Object localObject2 = QWalletPicHelper.getDrawableForWallet(asnh.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.resPath, "box.png").getPath(), null);
-      this.c.setImageDrawable((Drawable)localObject2);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
-      localObject1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "scaleY", new float[] { 0.0F, 1.0F });
-      ((ObjectAnimator)localObject1).setDuration(500L);
-      localObject2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
-      ((ObjectAnimator)localObject2).setDuration(500L);
-      a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData, this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView);
-      ((ObjectAnimator)localObject2).addListener(new aslb(this));
-      ((ObjectAnimator)localObject1).start();
-      ((ObjectAnimator)localObject2).start();
+      j = (int)localasfu.a();
+      i = (int)localasfu.b();
+    }
+    for (int k = (int)localasfu.c();; k = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtendFriendLimitChatMatchFragment", 2, "onUpdateCampusCertificateStatus,isSuccess = " + paramBoolean + ",maxMatchCount = " + j + ",matchedCount = " + i + ",leftMatchCount = " + k + ",scene = " + paramInt);
+      }
+      if ((paramBoolean) && (paramInt == 1))
+      {
+        ExtendFriendLimitChatMatchFragment.b(this.a).setVisibility(0);
+        ExtendFriendLimitChatMatchFragment.f(this.a);
+        if (ExtendFriendLimitChatMatchFragment.a(this.a).isShowing()) {
+          ExtendFriendLimitChatMatchFragment.a(this.a).b(j, k, localasfu.a());
+        }
+      }
+      return;
+      i = 0;
+      j = 0;
     }
   }
   
-  private void f()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 1.0F, 0.0F });
-    localObjectAnimator.setDuration(100L);
-    localObjectAnimator.start();
-    localObjectAnimator.addListener(new aslc(this));
-  }
-  
-  @SuppressLint({"NewApi"})
-  private void g()
-  {
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 1.0F, 0.0F, 1.0F, 1, 0.0F, 1, 0.3F);
-    localScaleAnimation.setDuration(500L);
-    localScaleAnimation.setAnimationListener(new asld(this));
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.startAnimation(localScaleAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.b();
-    asnm.a(System.currentTimeMillis());
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 4000L);
-  }
-  
-  private void h()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.d.setVisibility(0);
-    this.d.bringToFront();
-    this.d.setOnClickListener(new asle(this));
-  }
-  
-  private void i()
-  {
-    this.d.setVisibility(8);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 1.0F, 1.0F, 0.0F, 1, 0.0F, 1, 0.3F);
-    localScaleAnimation.setDuration(300L);
-    localScaleAnimation.setAnimationListener(new aslf(this));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.startAnimation(localScaleAnimation);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendLimitChatMatchFragment", 2, "onUpdateSignalBombPush " + paramBoolean + " " + paramString);
+    }
+    if ((ExtendFriendLimitChatMatchFragment.a(this.a) == 1) && (ExtendFriendLimitChatMatchFragment.a(this.a) != null) && (ExtendFriendLimitChatMatchFragment.a(this.a).isResume()) && (ExtendFriendLimitChatMatchFragment.a(this.a).a() != 2) && (!ExtendFriendLimitChatMatchFragment.a(this.a))) {
+      ExtendFriendLimitChatMatchFragment.a(this.a, aslj.a(ExtendFriendLimitChatMatchFragment.a(this.a), ExtendFriendLimitChatMatchFragment.a(this.a).app, ExtendFriendLimitChatMatchFragment.a(this.a)));
     }
   }
   
-  public void c() {}
-  
-  public void d()
+  protected void a(boolean paramBoolean1, ArrayList<ashw> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1, boolean paramBoolean3)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new FullPopAnimLowVersion.6(this));
-    a(false);
+    paramBoolean2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.i("ExtendFriendLimitChatMatchFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1);
+    }
+    if (paramBoolean1)
+    {
+      if (paramInt > 0) {
+        break label130;
+      }
+      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "onlineCount  wrong");
+      if ((paramArrayList1 != null) && (paramArrayList1.size() > 0))
+      {
+        if (this.a.jdField_a_of_type_Asoh == null) {
+          break label197;
+        }
+        this.a.jdField_a_of_type_Asoh.a(paramArrayList1);
+      }
+      label85:
+      if ((ExtendFriendLimitChatMatchFragment.a(this.a) != null) && (!ExtendFriendLimitChatMatchFragment.a(this.a).isFinishing()) && (ExtendFriendLimitChatMatchFragment.a(this.a).app != null)) {
+        break label208;
+      }
+      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mActivity finish ");
+    }
+    label130:
+    label197:
+    label208:
+    do
+    {
+      return;
+      Object localObject = paramInt + BaseApplication.getContext().getResources().getString(2131697953);
+      if (ExtendFriendLimitChatMatchFragment.a(this.a) != null)
+      {
+        ExtendFriendLimitChatMatchFragment.a(this.a).setText((CharSequence)localObject);
+        break;
+      }
+      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mMatchCountTxt is null");
+      break;
+      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mHeadsPanleView is null");
+      break label85;
+      paramArrayList1 = (asfu)ExtendFriendLimitChatMatchFragment.a(this.a).app.getManager(264);
+      if (paramArrayList1.i())
+      {
+        ExtendFriendLimitChatMatchFragment.a(this.a).setVisibility(0);
+        QLog.d("ExtendFriendLimitChatMatchFragment", 2, "signalBtn VISIBLE with controlbit");
+        if (!paramBoolean3) {
+          break label454;
+        }
+        if (paramArrayList1 != null)
+        {
+          if (paramArrayList1.i()) {
+            break label418;
+          }
+          ExtendFriendLimitChatMatchFragment.b(this.a, true);
+          QLog.e("ExtendFriendLimitChatMatchFragment", 2, "bSignalBombOpen FALSE BUG signaflag open NEED PB CLOSE");
+        }
+      }
+      for (;;)
+      {
+        if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (ExtendFriendLimitChatMatchFragment.a(this.a) == null)) {
+          break label594;
+        }
+        paramInt = 0;
+        while (paramInt < paramArrayList.size())
+        {
+          localObject = (ashw)paramArrayList.get(paramInt);
+          if (!TextUtils.isEmpty(((ashw)localObject).jdField_a_of_type_JavaLangString)) {
+            ExtendFriendLimitChatMatchFragment.a(this.a, ExtendFriendLimitChatMatchFragment.a(this.a) + ((ashw)localObject).jdField_a_of_type_JavaLangString + ";");
+          }
+          paramInt += 1;
+        }
+        ExtendFriendLimitChatMatchFragment.a(this.a).setVisibility(8);
+        QLog.d("ExtendFriendLimitChatMatchFragment", 2, "signalBtn GONE with controlbit");
+        break;
+        if (!aslj.a())
+        {
+          ExtendFriendLimitChatMatchFragment.b(this.a, true);
+          ExtendFriendLimitChatMatchFragment.e(this.a);
+        }
+        else
+        {
+          ExtendFriendLimitChatMatchFragment.a(this.a, true, true);
+          continue;
+          ExtendFriendLimitChatMatchFragment.a(this.a, false, true);
+        }
+      }
+      paramBoolean1 = paramBoolean2;
+      if (paramArrayList1 != null) {
+        paramBoolean1 = paramArrayList1.h();
+      }
+      paramInt = paramArrayList.size() - 1;
+      while (paramInt >= 0)
+      {
+        if ((((ashw)paramArrayList.get(paramInt)).jdField_a_of_type_Int == 10000) && (!paramBoolean1))
+        {
+          QLog.e("ExtendFriendLimitChatMatchFragment", 2, "MATCH_CHAT_TAG_ID_FOR_VOICE_MATCH REMOVE by flag");
+          paramArrayList.remove(paramInt);
+        }
+        paramInt -= 1;
+      }
+      paramArrayList1 = new aspd();
+      paramArrayList1.a(paramArrayList);
+      if (paramArrayList.size() <= 0) {
+        break label584;
+      }
+    } while (ExtendFriendLimitChatMatchFragment.a(this.a) == null);
+    label418:
+    label454:
+    ExtendFriendLimitChatMatchFragment.a(this.a).setAdapter(paramArrayList1);
+    return;
+    label584:
+    QLog.e("ExtendFriendLimitChatMatchFragment", 2, "TaginfoInfo size 0");
+    return;
+    label594:
+    QLog.e("ExtendFriendLimitChatMatchFragment", 2, "TagInfo size 0");
   }
 }
 

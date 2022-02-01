@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bcpg;
-import bdne;
+import bftx;
+import bgsg;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 public class TroopRobotManager$7
   implements Runnable
 {
-  public TroopRobotManager$7(bcpg parambcpg, String paramString1, String paramString2, cmd0x934.RspBody paramRspBody) {}
+  public TroopRobotManager$7(bftx parambftx, String paramString1, String paramString2, cmd0x934.RspBody paramRspBody) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class TroopRobotManager$7
         localFileOutputStream.close();
         localObject1 = localFileOutputStream;
         localObject3 = localFileOutputStream;
-        bdne.M(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString + "_" + this.b, this.jdField_a_of_type_TencentImOidbCmd0x934Cmd0x934$RspBody.version.get());
+        bgsg.M(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString + "_" + this.b, this.jdField_a_of_type_TencentImOidbCmd0x934Cmd0x934$RspBody.version.get());
       }
       catch (IOException localIOException4)
       {
@@ -99,7 +99,7 @@ public class TroopRobotManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRobotManager.7
  * JD-Core Version:    0.7.0.1
  */

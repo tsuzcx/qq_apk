@@ -1,37 +1,28 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.smtt.sdk.WebView;
 
-public class acns
-  extends aqru
+class acns
+  extends acuc
 {
-  private acns(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
-  
-  protected void a(int paramInt, long paramLong, String paramString)
+  acns(acnr paramacnr, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    if ((bkjc.a(paramInt)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
-    }
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
   }
   
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    if ((bkjc.a(paramInt)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
-    }
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    QLog.i("AbsWebView", 1, "onReceivedError url = " + paramInt + ",description = " + paramString1 + ",failingUrl = " + paramString2);
+    this.a.a();
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryFIleActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.app.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bkjc.a(paramInt2)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
-    }
+    return a(paramWebView, paramString);
   }
 }
 

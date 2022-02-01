@@ -1,23 +1,24 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.main.QCircleFolderFollowTabFragment;
+import qqcircle.QQCircleFeedBase.StFollowPageData;
 
-public final class vmb
-  extends uli
+public class vmb
+  implements Observer<QQCircleFeedBase.StFollowPageData>
 {
-  public int a;
-  public StoryVideoItem a;
-  public String a;
-  public String b;
+  public vmb(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
   
-  public vmb(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
+  public void a(@Nullable QQCircleFeedBase.StFollowPageData paramStFollowPageData)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    QCircleFolderFollowTabFragment.a(this.a).a(paramStFollowPageData);
+    if (QCircleFolderFollowTabFragment.a(this.a) != null) {
+      QCircleFolderFollowTabFragment.a(this.a).a(paramStFollowPageData);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vmb
  * JD-Core Version:    0.7.0.1
  */

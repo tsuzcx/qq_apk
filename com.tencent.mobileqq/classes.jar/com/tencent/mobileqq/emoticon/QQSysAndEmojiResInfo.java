@@ -4,9 +4,9 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import apsj;
-import apsm;
-import bdhb;
+import arvk;
+import arvn;
+import bgmg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -24,10 +24,12 @@ public abstract class QQSysAndEmojiResInfo
 {
   private static JSONObject a;
   protected Drawable a;
-  protected apsm a;
+  protected arvn a;
   protected ArrayList<Integer> a;
   protected HashMap<Integer, QQSysAndEmojiResInfo.QQEmoConfigItem> a;
   protected HashMap<Integer, Integer> b;
+  protected HashMap<String, String> c;
+  protected HashMap<String, Integer> d;
   
   public QQSysAndEmojiResInfo()
   {
@@ -36,21 +38,23 @@ public abstract class QQSysAndEmojiResInfo
   
   public static void a(String paramString)
   {
-    Object localObject = null;
     jdField_a_of_type_OrgJsonJSONObject = null;
     try
     {
       long l = System.currentTimeMillis();
       paramString = new File(paramString + "face_config.json");
-      if (paramString.exists()) {}
-      for (paramString = bdhb.a(paramString); (paramString != null) && (paramString.length() > 0); paramString = localObject)
+      if (paramString.exists()) {
+        paramString = bgmg.a(paramString);
+      }
+      while ((paramString != null) && (paramString.length() > 0))
       {
         jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString);
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "getFaceConfigJson len:", Integer.valueOf(jdField_a_of_type_OrgJsonJSONObject.length()), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
+        QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "getFaceConfigJson len:", Integer.valueOf(jdField_a_of_type_OrgJsonJSONObject.length()), " ,cost:", Long.valueOf(System.currentTimeMillis() - l), "， content:", paramString });
         return;
+        paramString = bgmg.d("face_config.json");
         QLog.d("QQSysAndEmojiBaseInfo", 1, "getFaceConfigJson not exist!");
         ThreadManager.getSubThreadHandler().post(new QQSysAndEmojiResInfo.1());
       }
@@ -66,6 +70,14 @@ public abstract class QQSysAndEmojiResInfo
   
   public abstract int a(int paramInt);
   
+  public int a(String paramString)
+  {
+    if ((this.d != null) && (this.d.containsKey(paramString))) {
+      return ((Integer)this.d.get(paramString)).intValue();
+    }
+    return -1;
+  }
+  
   public abstract Drawable a(int paramInt);
   
   protected Drawable a(URL paramURL, Drawable paramDrawable, boolean paramBoolean, String paramString)
@@ -78,7 +90,7 @@ public abstract class QQSysAndEmojiResInfo
     {
       try
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130837915);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130838009);
         localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         localURLDrawableOptions.mPlayGifImage = paramBoolean;
@@ -106,15 +118,29 @@ public abstract class QQSysAndEmojiResInfo
   
   public abstract String a(int paramInt);
   
+  public String a(String paramString)
+  {
+    if ((this.c != null) && (this.c.containsKey(paramString))) {
+      return (String)this.c.get(paramString);
+    }
+    return null;
+  }
+  
   public ArrayList<Integer> a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = null;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      localArrayList = new ArrayList();
+      localArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    }
+    return localArrayList;
   }
   
   public JSONObject a()
   {
     if (jdField_a_of_type_OrgJsonJSONObject == null) {
-      a(apsj.b());
+      a(arvk.b());
     }
     return jdField_a_of_type_OrgJsonJSONObject;
   }
@@ -144,16 +170,7 @@ public abstract class QQSysAndEmojiResInfo
     QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "reloadDrawable do nothing:", Integer.valueOf(paramInt) });
   }
   
-  public boolean a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      return a((QQSysAndEmojiResInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)));
-    }
-    return true;
-  }
+  public abstract boolean a(int paramInt);
   
   public boolean a(QQSysAndEmojiResInfo.QQEmoConfigItem paramQQEmoConfigItem)
   {
@@ -181,24 +198,35 @@ public abstract class QQSysAndEmojiResInfo
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Apsm == null) {
+    if (this.jdField_a_of_type_Arvn == null) {
       b();
     }
-    this.jdField_a_of_type_Apsm.a(paramInt);
+    this.jdField_a_of_type_Arvn.a(paramInt);
+  }
+  
+  public boolean b(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+      return a((QQSysAndEmojiResInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)));
+    }
+    return true;
   }
   
   public abstract void c();
   
   public void d()
   {
-    if (this.jdField_a_of_type_Apsm != null) {
-      this.jdField_a_of_type_Apsm.a();
+    if (this.jdField_a_of_type_Arvn != null) {
+      this.jdField_a_of_type_Arvn.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo
  * JD-Core Version:    0.7.0.1
  */

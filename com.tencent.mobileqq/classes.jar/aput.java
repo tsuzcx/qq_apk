@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
 
-class aput
-  implements DialogInterface.OnClickListener
+public class aput
+  implements bkhw
 {
-  aput(apuo paramapuo) {}
+  public aput(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.a.a.a("DynamicAvatarRecordActivity");
+    this.a.finish();
   }
 }
 

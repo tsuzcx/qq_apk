@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.webview.WebViewTitleStyle;
-
-public final class beff
-  implements Parcelable.Creator<WebViewTitleStyle>
+public class beff
 {
-  public WebViewTitleStyle a(Parcel paramParcel)
-  {
-    return new WebViewTitleStyle(paramParcel);
-  }
+  public long a;
+  public String a;
+  public String b;
   
-  public WebViewTitleStyle[] a(int paramInt)
+  public beff() {}
+  
+  public beff(long paramLong, String paramString1, String paramString2)
   {
-    return new WebViewTitleStyle[paramInt];
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

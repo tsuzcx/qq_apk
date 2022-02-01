@@ -1,16 +1,31 @@
-class arqp
-  implements beac
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
+public class arqp
+  implements bnty
 {
-  arqp(arqo paramarqo, arrh paramarrh) {}
+  public arqp(CameraEmoSingleSend paramCameraEmoSingleSend, bntw parambntw, long paramLong) {}
   
-  public void callback(int paramInt)
+  public void a()
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      this.jdField_a_of_type_Arrh.a();
-      return;
-    }
-    this.jdField_a_of_type_Arrh.b();
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateFail, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
+    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, false, null);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("sucFlag", "0");
+    bctj.a(BaseApplication.getContext()).a(null, "CamEmoCreateGIF", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, localHashMap, null);
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateSuccess, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
+    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, true, paramString);
+    this.jdField_a_of_type_Bntw.a();
+    paramString = new HashMap();
+    paramString.put("sucFlag", "1");
+    bctj.a(BaseApplication.getContext()).a(null, "CamEmoCreateGIF", true, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, paramString, null);
   }
 }
 

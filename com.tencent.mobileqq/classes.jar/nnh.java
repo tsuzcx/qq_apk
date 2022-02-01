@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
-class nnh
-  implements DialogInterface.OnClickListener
+public class nnh
+  implements aaob
 {
-  nnh(nmx paramnmx, JsResult paramJsResult) {}
+  public nnh(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    if (paramBundle != null)
+    {
+      paramBundle = paramBundle.getString("music");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nnh
  * JD-Core Version:    0.7.0.1
  */

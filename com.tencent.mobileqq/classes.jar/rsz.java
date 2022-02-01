@@ -1,21 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.app.Activity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
+import java.util.ArrayList;
 
 public class rsz
-  extends pdi
+  extends FragmentPagerAdapter
 {
-  public rsz(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean, int paramInt)
+  public rsz(SelectVideoTabFragment paramSelectVideoTabFragment, FragmentManager paramFragmentManager)
   {
-    super(paramString);
+    super(paramFragmentManager);
   }
   
-  public void a(pdc parampdc)
+  public int getCount()
   {
-    parampdc.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    return SelectVideoTabFragment.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    return (Fragment)SelectVideoTabFragment.a(this.a).get(paramInt);
+  }
+  
+  public CharSequence getPageTitle(int paramInt)
+  {
+    return SelectVideoTabFragment.a(this.a).getString(SelectVideoTabFragment.a()[paramInt]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rsz
  * JD-Core Version:    0.7.0.1
  */

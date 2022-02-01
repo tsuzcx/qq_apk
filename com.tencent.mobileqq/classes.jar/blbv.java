@@ -1,44 +1,70 @@
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.utils.QQComicPluginBridge.1;
 
 public class blbv
-  extends BaseFilter
+  implements OnPluginInstallListener
 {
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public blbv(QQComicPluginBridge.1 param1) {}
   
-  public blbv()
+  public IBinder asBinder()
   {
-    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+    return null;
   }
   
-  public Frame a()
+  public void onInstallBegin(String paramString)
   {
-    float f1 = 2.0F / this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      float f2 = -1.0F + i * f1;
-      float f3 = f2 + f1;
-      setPositions(new float[] { f2, -1.0F, f2, 1.0F, f3, 1.0F, f3, -1.0F });
-      Frame localFrame = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
-      RenderProcess(localFrame.getTextureId(), localFrame.width, localFrame.height, this.jdField_a_of_type_JavaUtilList.size() * 64, 64, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      i += 1;
+    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Blbw != null)) {
+      this.a.a.jdField_a_of_type_Blbw.a(98, "载入中,（我会越来越快的>_<）");
     }
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
   }
   
-  public void a(List<Frame> paramList)
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    if ((this.a.a != null) && (paramInt1 > 0) && (paramInt2 > 0))
+    {
+      this.a.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (this.a.a.jdField_a_of_type_Blbw != null)
+      {
+        paramInt1 = (int)(paramInt1 / paramInt2 * 95.0F);
+        this.a.a.jdField_a_of_type_Blbw.a(paramInt1, "加载中,（别紧张啊我很小的>_<）");
+      }
+    }
   }
   
-  public void clearGLSLSelf()
+  public void onInstallError(String arg1, int paramInt)
   {
-    super.clearGLSLSelf();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    synchronized ()
+    {
+      blbu.a().notifyAll();
+      if (this.a.a != null) {
+        this.a.a.jdField_a_of_type_Int = paramInt;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicPluginBridge", 2, "QQComic install error");
+      }
+      return;
+    }
+  }
+  
+  public void onInstallFinish(String arg1)
+  {
+    synchronized ()
+    {
+      blbu.a().notifyAll();
+      if (this.a.a != null)
+      {
+        this.a.a.b = System.currentTimeMillis();
+        if (this.a.a.jdField_a_of_type_Blbw != null) {
+          this.a.a.jdField_a_of_type_Blbw.a(99, "载入中,（我会越来越快的>_<）");
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicPluginBridge", 2, "QQComic is installed");
+      }
+      return;
+    }
   }
 }
 

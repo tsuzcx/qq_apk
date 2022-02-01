@@ -1,16 +1,26 @@
-import android.widget.ImageSwitcher;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 
 public class askq
+  implements View.OnTouchListener
 {
-  public ImageSwitcher a;
-  public ImageView a;
-  public TextView a;
-  public asoc a;
-  public ImageSwitcher b;
-  public ImageView b;
-  public TextView b;
+  public askq(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
+  }
 }
 
 

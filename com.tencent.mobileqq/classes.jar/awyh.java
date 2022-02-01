@@ -1,18 +1,37 @@
-import com.tencent.mobileqq.data.MessageForPtt;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface awyh
+public class awyh
+  extends BroadcastReceiver
 {
-  public abstract void a();
+  public awyh(QQPlayerService paramQQPlayerService) {}
   
-  public abstract boolean a(MessageForPtt paramMessageForPtt);
-  
-  public abstract boolean a(MessageForPtt paramMessageForPtt, int paramInt);
-  
-  public abstract boolean b(MessageForPtt paramMessageForPtt);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (QQPlayerService.c(this.a)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQPlayerService", 2, "received broadcast after service destroy");
+      }
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQPlayerService", 2, "QQPlayerBroadcastReceiverReceiver onReceive,action:" + paramIntent.getAction());
+      }
+    } while ((!"com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) && (!"qqplayer_exit_action".equals(paramIntent.getAction())));
+    if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
+      this.a.a.b = true;
+    }
+    QQPlayerService.c(this.a.getApplicationContext());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awyh
  * JD-Core Version:    0.7.0.1
  */

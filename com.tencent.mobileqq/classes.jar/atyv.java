@@ -1,18 +1,22 @@
-class atyv
-  implements atyr
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class atyv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  atyv(atys paramatys) {}
+  public atyv(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public void a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_Atxy != null) {
-      this.a.jdField_a_of_type_Atxy.a(paramInt, this.a.jdField_a_of_type_Atyy);
-    }
+    QFileDebugSettingFragment.a(this.a).a().a = paramBoolean;
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atyv
  * JD-Core Version:    0.7.0.1
  */

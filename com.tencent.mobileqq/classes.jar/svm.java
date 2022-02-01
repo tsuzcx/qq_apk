@@ -1,24 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 
-class svm
-  implements DialogInterface.OnCancelListener
+public class svm
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  svm(svl paramsvl) {}
+  public svm(SlideActiveAnimController paramSlideActiveAnimController, Runnable paramRunnable) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryShareHelper", 2, "mShareActionSheet cancle button OnClick");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a();
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
-    svl.a(this.a, -1, -1, true);
-    svl.b(this.a, -1, -1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     svm
  * JD-Core Version:    0.7.0.1
  */

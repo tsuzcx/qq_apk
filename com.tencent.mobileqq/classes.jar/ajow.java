@@ -1,26 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class ajow
-  implements DialogInterface.OnShowListener
+  implements Cloneable
 {
-  public ajow(EditLocalVideoActivity paramEditLocalVideoActivity) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(8);
-    }
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(8);
-    }
-    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
-      EditLocalVideoActivity.a(this.a, true);
-    }
-  }
+  public CheckBox a;
+  public TextView a;
+  public TencentDocItem a;
+  public AsyncImageView a;
+  public TextView b;
 }
 
 

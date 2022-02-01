@@ -1,22 +1,18 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aixf
-  implements OnCompositionLoadedListener
+  implements View.OnClickListener
 {
-  public aixf(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public aixf(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void onClick(View paramView)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    TroopUnAccalimedRedPacketList.a(this.a).setImageDrawable(localLottieDrawable);
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

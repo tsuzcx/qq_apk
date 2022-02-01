@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import oye;
-import rls;
+import pnp;
+import sgt;
 
 public class WeishiVideoFeedsLazyLoadDelegate$1
   implements Runnable
 {
-  public WeishiVideoFeedsLazyLoadDelegate$1(rls paramrls) {}
+  public WeishiVideoFeedsLazyLoadDelegate$1(sgt paramsgt) {}
   
   public void run()
   {
-    rls.a(this.this$0, rls.a(this.this$0).a());
-    rls.a(this.this$0, rls.a(this.this$0));
+    sgt.a(this.this$0, sgt.a(this.this$0).a());
+    sgt.a(this.this$0, sgt.a(this.this$0));
   }
 }
 

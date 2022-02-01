@@ -7,5 +7,5 @@
         <TextView android:textSize="14.0dip" android:textColor="@color/ams" android:id="@id/lxc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_centerHorizontal="true" />
         <TextView android:textSize="12.0dip" android:textColor="@color/amu" android:id="@id/lxa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_below="@id/lxc" android:layout_centerHorizontal="true" />
     </RelativeLayout>
-    <com.tencent.mobileqq.activity.contact.newfriend.connections.TriangleView android:id="@id/jw1" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="7.0dip" android:layout_below="@id/lx_" android:layout_centerHorizontal="true" />
+    <com.tencent.mobileqq.activity.contact.connections.TriangleView android:id="@id/jw1" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="7.0dip" android:layout_below="@id/lx_" android:layout_centerHorizontal="true" />
 </RelativeLayout>

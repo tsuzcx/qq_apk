@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awge;
-import awgf;
-import awgg;
-import awgh;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppUserAppInfoListManager$9
   implements Runnable
 {
-  MiniAppUserAppInfoListManager$9(MiniAppUserAppInfoListManager paramMiniAppUserAppInfoListManager, awge paramawge) {}
+  MiniAppUserAppInfoListManager$9(MiniAppUserAppInfoListManager paramMiniAppUserAppInfoListManager, Entity paramEntity) {}
   
   public void run()
   {
@@ -18,18 +18,18 @@ class MiniAppUserAppInfoListManager$9
     if (localObject1 == null) {
       QLog.e("MiniAppUserAppInfoListManager", 1, "saveToDB, app is null.");
     }
-    awgf localawgf;
+    EntityManager localEntityManager;
     do
     {
       return;
-      localawgf = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-    } while ((localawgf == null) || (this.val$entity == null));
-    localObject1 = localawgf.a();
-    ((awgh)localObject1).a();
+      localEntityManager = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+    } while ((localEntityManager == null) || (this.val$entity == null));
+    localObject1 = localEntityManager.getTransaction();
+    ((EntityTransaction)localObject1).begin();
     try
     {
-      MiniAppUserAppInfoListManager.access$1100(this.this$0, localawgf, this.val$entity);
-      ((awgh)localObject1).c();
+      MiniAppUserAppInfoListManager.access$1100(this.this$0, localEntityManager, this.val$entity);
+      ((EntityTransaction)localObject1).commit();
       QLog.w("MiniAppUserAppInfoListManager", 2, "saveToDB, appInfo: " + this.val$entity);
       return;
     }
@@ -42,13 +42,13 @@ class MiniAppUserAppInfoListManager$9
     }
     finally
     {
-      ((awgh)localObject1).b();
+      ((EntityTransaction)localObject1).end();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.9
  * JD-Core Version:    0.7.0.1
  */

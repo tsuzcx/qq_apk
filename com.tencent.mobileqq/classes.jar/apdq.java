@@ -1,142 +1,78 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Formatter;
-import java.util.Locale;
+import android.opengl.GLES20;
+import com.tencent.qphone.base.util.QLog;
 
 public class apdq
 {
-  private static float jdField_a_of_type_Float = -1.0F;
-  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy年M月d日 hh:mm:ss");
-  private static final Date jdField_a_of_type_JavaUtilDate = new Date();
-  private static final Formatter jdField_a_of_type_JavaUtilFormatter;
+  private int jdField_a_of_type_Int;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private int jdField_b_of_type_Int;
+  private int[] jdField_b_of_type_ArrayOfInt;
   
-  static
+  private void b(int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-    jdField_a_of_type_JavaUtilFormatter = new Formatter(jdField_a_of_type_JavaLangStringBuilder, Locale.getDefault());
-  }
-  
-  public static int a(float paramFloat)
-  {
-    if (jdField_a_of_type_Float < 0.0F) {
-      jdField_a_of_type_Float = apaz.a().a().a().getDisplayMetrics().density;
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      throw new IllegalArgumentException("width & height should > 0!");
     }
-    return (int)(jdField_a_of_type_Float * paramFloat + 0.5F);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    if (this.jdField_a_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
+      this.jdField_a_of_type_ArrayOfInt = null;
+    }
+    if (this.jdField_b_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
+      this.jdField_b_of_type_ArrayOfInt = null;
+    }
+    this.jdField_a_of_type_ArrayOfInt = new int[1];
+    this.jdField_b_of_type_ArrayOfInt = new int[1];
+    GLES20.glGenFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
+    GLES20.glGenTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
+    GLES20.glBindTexture(3553, this.jdField_b_of_type_ArrayOfInt[0]);
+    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.jdField_b_of_type_ArrayOfInt[0], 0);
+    GLES20.glBindTexture(3553, 0);
+    GLES20.glBindFramebuffer(36160, 0);
   }
   
-  public static int a(apbq paramapbq1, apbq paramapbq2)
+  public int a()
   {
     int i = 0;
-    if (paramapbq1 == paramapbq2) {}
-    int j;
-    do
-    {
-      do
-      {
-        return i;
-        if (paramapbq1 == null) {
-          return -1;
-        }
-        if (paramapbq2 == null) {
-          return 1;
-        }
-      } while (paramapbq1.equals(paramapbq2));
-      long l = paramapbq1.d() - paramapbq2.d();
-      if (l > 0L) {
-        return 1;
-      }
-      if (l < 0L) {
-        return -1;
-      }
-      i = paramapbq1.b() - paramapbq2.b();
-      if (i > 0) {
-        return -1;
-      }
-      if (i < 0) {
-        return 1;
-      }
-      i = paramapbq1.e() - paramapbq2.e();
-      if (i > 0) {
-        return 1;
-      }
-      if (i < 0) {
-        return -1;
-      }
-      i = paramapbq1.c() - paramapbq2.c();
-      if (i > 0) {
-        return -1;
-      }
-      if (i < 0) {
-        return 1;
-      }
-      l = paramapbq1.c() - paramapbq2.c();
-      if (l > 0L) {
-        return -1;
-      }
-      if (l < 0L) {
-        return 1;
-      }
-      j = paramapbq1.a() - paramapbq2.a();
-      if (j > 0) {
-        return 1;
-      }
-      i = j;
-    } while (j >= 0);
-    return -1;
-  }
-  
-  public static int a(apbq paramapbq1, apbq paramapbq2, long paramLong)
-  {
-    if ((paramapbq1.b(paramLong)) || (paramapbq2.b(paramLong))) {}
-    float[] arrayOfFloat2;
-    do
-    {
-      return -1;
-      arrayOfFloat1 = paramapbq1.a(paramapbq1.e());
-      arrayOfFloat2 = paramapbq2.a(paramapbq1.e());
-    } while ((arrayOfFloat1 == null) || (arrayOfFloat2 == null));
-    int i = (int)((arrayOfFloat2[0] - arrayOfFloat1[2]) / paramapbq2.a());
-    float[] arrayOfFloat1 = paramapbq1.a(paramapbq1.b());
-    return Math.max(i, (int)((paramapbq2.a(paramapbq1.b())[0] - arrayOfFloat1[2]) / paramapbq2.a()));
-  }
-  
-  public static String a(long paramLong)
-  {
-    if (paramLong < 86400000L)
-    {
-      paramLong /= 1000L;
-      long l1 = paramLong % 60L;
-      long l2 = paramLong / 60L % 60L;
-      long l3 = paramLong / 3600L;
-      paramLong = l1;
-      if (l1 < 0L) {
-        paramLong = 0L;
-      }
-      l1 = l2;
-      if (l2 < 0L) {
-        l1 = 0L;
-      }
-      l2 = l3;
-      if (l3 < 0L) {
-        l2 = 0L;
-      }
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      if (l2 > 0L) {
-        return jdField_a_of_type_JavaUtilFormatter.format("%d:%02d:%02d", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(paramLong) }).toString();
-      }
-      return jdField_a_of_type_JavaUtilFormatter.format("%02d:%02d", new Object[] { Long.valueOf(l1), Long.valueOf(paramLong) }).toString();
+    if (this.jdField_b_of_type_ArrayOfInt != null) {
+      i = this.jdField_b_of_type_ArrayOfInt[0];
     }
-    jdField_a_of_type_JavaUtilDate.setTime(paramLong);
-    return jdField_a_of_type_JavaTextSimpleDateFormat.format(jdField_a_of_type_JavaUtilDate);
+    return i;
   }
   
-  public static boolean a()
+  public void a()
   {
-    return Build.VERSION.SDK_INT >= 18;
+    if (this.jdField_b_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
+      this.jdField_b_of_type_ArrayOfInt = null;
+    }
+    if (this.jdField_a_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteFramebuffers(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+      this.jdField_a_of_type_ArrayOfInt = null;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_b_of_type_ArrayOfInt == null) || (paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int))
+    {
+      long l = System.currentTimeMillis();
+      b(paramInt1, paramInt2);
+      QLog.i("Keying_FrameBuffer", 2, " init need " + (System.currentTimeMillis() - l));
+    }
+    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
   }
 }
 

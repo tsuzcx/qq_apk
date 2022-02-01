@@ -12,7 +12,7 @@ public class TPPlayerConfig
   private static String DOT = "\\.";
   public static final boolean ISOTT = false;
   private static final String TAG = "TPPlayerConfig";
-  public static final String VERSION = "1.3.0.1023";
+  public static final String VERSION = "2.5.0.1084";
   private static String appVersion = "";
   private static String appVersionName;
   private static long buildNum = -1L;
@@ -225,7 +225,7 @@ public class TPPlayerConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.config.TPPlayerConfig
  * JD-Core Version:    0.7.0.1
  */

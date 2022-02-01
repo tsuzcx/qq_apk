@@ -1,11 +1,9 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-class agag
+final class agag
   implements DialogInterface.OnClickListener
 {
-  agag(agad paramagad) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 

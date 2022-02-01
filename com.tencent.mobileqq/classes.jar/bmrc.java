@@ -1,15 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager.InstallRunable;
 
-class bmrc
-  implements ValueAnimator.AnimatorUpdateListener
+public class bmrc
+  extends Handler
 {
-  bmrc(bmqz parambmqz) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bmrc(TroopPluginManager.InstallRunable paramInstallRunable, Looper paramLooper)
   {
-    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.k();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(0);
+      return;
+    } while (this.a.a == null);
+    this.a.a.a(2);
   }
 }
 

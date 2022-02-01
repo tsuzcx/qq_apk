@@ -1,59 +1,20 @@
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 
 class aguq
-  extends alzr
+  implements atwb
 {
-  aguq(agti paramagti) {}
+  aguq(agup paramagup) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.D(paramInt);
-  }
-  
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0)
-    {
-      if ((paramPublicAccountInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramPublicAccountInfo.getUin()))) {
-        this.a.b(1);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.c(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-    }
-    if ((paramBoolean) && (!agti.d(this.a)))
-    {
-      localObject = (alzl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-      if (localObject == null) {
-        break label102;
-      }
-    }
-    label102:
-    for (Object localObject = ((alzl)localObject).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
-    {
-      if ((localObject != null) && (this.a.o != null) && (!agti.e(this.a))) {
-        this.a.bt();
-      }
-      return;
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-    }
+    paramView = new Intent();
+    paramView.putExtra("device_info", ((abqn)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
+    bmqo.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceUnBindActivity", -1, null, SmartDevicePluginProxyActivity.class);
   }
 }
 

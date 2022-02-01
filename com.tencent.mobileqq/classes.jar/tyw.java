@@ -1,44 +1,23 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class tyw<E>
+class tyw
+  implements View.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<E> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  tyw(tym paramtym, String paramString) {}
   
-  public String a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<E> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(List<E> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Tym.j();
+    this.jdField_a_of_type_Tym.o = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Tym.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tyw
  * JD-Core Version:    0.7.0.1
  */

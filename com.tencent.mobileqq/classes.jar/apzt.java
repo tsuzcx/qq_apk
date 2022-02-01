@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.view.View;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.widget.AdapterView;
 
 public class apzt
-  implements aufy<EmoticonPackage>
+  implements bkij
 {
-  public apzt(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
+  public apzt(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramEmoticonPackage == null)
+    if (!this.a.isFinishing())
     {
-      AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 7);
-      return;
+      this.a.overridePendingTransition(0, 2130772356);
+      this.a.finish();
     }
-    afvg.a(7, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, null, true);
   }
 }
 

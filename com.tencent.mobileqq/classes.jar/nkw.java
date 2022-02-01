@@ -1,49 +1,56 @@
-import android.os.AsyncTask;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Intent;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.util.WeakReference;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class nkw
+final class nkw
+  implements nkl
 {
-  adbt jdField_a_of_type_Adbt;
-  WeakReference<AccountDetailActivity> jdField_a_of_type_MqqUtilWeakReference;
-  nky jdField_a_of_type_Nky;
+  nkw(WeakReference paramWeakReference, String paramString1, int paramInt, String paramString2) {}
   
-  public nkw(QQAppInterface paramQQAppInterface, AccountDetailActivity paramAccountDetailActivity)
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Adbt = new adbt(paramQQAppInterface);
-    this.jdField_a_of_type_Adbt.b = paramAccountDetailActivity.d;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAccountDetailActivity);
-    this.jdField_a_of_type_Nky = new nky(paramAccountDetailActivity);
-  }
-  
-  public void a()
-  {
-    adbx localadbx = new adbx();
-    localadbx.d = this.jdField_a_of_type_Adbt.b;
-    localadbx.a = null;
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
+    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject;
+    if (paramString != null)
+    {
+      paramString = (beaw)paramString.getManager(193);
+      localObject = this.jdField_a_of_type_JavaLangString;
+      if (!BidDownloader.a(paramInt)) {
+        break label172;
+      }
+    }
+    label172:
+    for (long l = this.jdField_a_of_type_Int;; l = -1L)
+    {
+      paramString.a((String)localObject, l);
+      QLog.i(nkv.jdField_a_of_type_JavaLangString, 1, "finish predown bid=" + this.b + ", code=" + paramInt);
+      nkv.a();
+      if (nkv.b() == 0)
+      {
+        paramString = new Intent("com.tencent.process.tmdownloader.exit");
+        localObject = new ArrayList();
+        ((ArrayList)localObject).add("com.tencent.mobileqq:TMAssistantDownloadSDKService");
+        paramString.putStringArrayListExtra("procNameList", (ArrayList)localObject);
+        paramString.putExtra("verify", nkv.a((ArrayList)localObject, false));
+        if (QLog.isColorLevel()) {
+          QLog.d(nkv.jdField_a_of_type_JavaLangString, 2, "sendBroadcast to close TMAssistant sdk process");
+        }
+        BaseApplicationImpl.getContext().sendBroadcast(paramString);
+      }
       return;
     }
-    this.jdField_a_of_type_Adbt.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get(), localadbx);
-    this.jdField_a_of_type_Adbt.a(this.jdField_a_of_type_Nky);
-    this.jdField_a_of_type_Adbt.b((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
-    new nkx(this, localadbx).execute(new Void[0]);
   }
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
-    {
-      this.jdField_a_of_type_Adbt.a(null);
-      this.jdField_a_of_type_Adbt.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
-    }
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nkw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,38 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.confess.BaseMsgListFragment;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Locale;
 
 public class aoio
-  implements Handler.Callback
+  extends aojs
 {
-  public aoio(BaseMsgListFragment paramBaseMsgListFragment) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public aoio(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    switch (paramMessage.what)
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
     {
+      boolean bool = h_();
+      return bool;
     }
-    label196:
-    for (;;)
+    catch (Exception localException)
     {
-      return false;
-      if ((this.a.a()) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() != -1)) {
-        break;
-      }
-      this.a.jdField_a_of_type_Ajit.a(this.a.jdField_c_of_type_JavaUtilList);
-      this.a.jdField_a_of_type_Ajit.a(17);
-      this.a.c();
-      if ((this.a.jdField_c_of_type_Boolean) || (this.a.jdField_c_of_type_JavaUtilList.size() == 0)) {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Boolean) {
-          break label196;
-        }
-        this.a.jdField_a_of_type_Boolean = true;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("BaseMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) }));
-        return false;
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
+      QLog.e("AssistantSettingAction", 1, "doAction error: " + localException.getMessage());
+      a("AssistantSettingAction");
     }
-    this.a.b = true;
     return false;
+  }
+  
+  public boolean h_()
+  {
+    Intent localIntent = new Intent();
+    localIntent.setClass(this.a, AssistantSettingActivity.class);
+    this.a.startActivity(localIntent);
+    return true;
   }
 }
 

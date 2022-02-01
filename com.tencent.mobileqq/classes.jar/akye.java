@@ -1,43 +1,42 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.4;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.IdRes;
+import java.util.HashMap;
+import java.util.Map;
 
 public class akye
-  implements bfah
 {
-  public akye(CmGameCommonShare.4 param4) {}
+  private static final Map<String, Integer> a;
+  public static int[] a;
   
-  public void a(BaseResp paramBaseResp)
+  static
   {
-    if (paramBaseResp == null) {
-      return;
-    }
-    QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
-    if (paramBaseResp.errCode == 0) {
-      if (this.a.a == 0) {
-        akyc.a(this.a.this$0, 0, 2);
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130838353, 2130838344, 2130838346, 2130838354, 2130838508, 2130841290, 2130838355, 2130838343, 2130838348, 2130838345, 2130838342, 2130838349, 2130838350, 2130838351, 2130838352 };
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put("m.ke.qq.com", Integer.valueOf(7));
+    jdField_a_of_type_JavaUtilMap.put("ke.qq.com", Integer.valueOf(7));
+    jdField_a_of_type_JavaUtilMap.put("fudao.qq.com", Integer.valueOf(9));
+    jdField_a_of_type_JavaUtilMap.put("buluo.qq.com", Integer.valueOf(10));
+    jdField_a_of_type_JavaUtilMap.put("m.gamecenter.qq.com", Integer.valueOf(2));
+    jdField_a_of_type_JavaUtilMap.put("imgcache.qq.com", Integer.valueOf(2));
+  }
+  
+  @IdRes
+  public static int a(int paramInt)
+  {
+    return jdField_a_of_type_ArrayOfInt[paramInt];
+  }
+  
+  public static int a(String paramString)
+  {
+    Integer localInteger2 = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      if (!tzo.d(paramString)) {
+        break label37;
       }
     }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      akyc.a(this.a.this$0, 0, 3);
-      continue;
-      if (paramBaseResp.errCode == -2)
-      {
-        if (this.a.a == 0) {
-          akyc.a(this.a.this$0, 2, 2);
-        } else {
-          akyc.a(this.a.this$0, 2, 3);
-        }
-      }
-      else if (this.a.a == 0) {
-        akyc.a(this.a.this$0, 1, 2);
-      } else {
-        akyc.a(this.a.this$0, 1, 3);
-      }
+    label37:
+    for (localInteger1 = Integer.valueOf(8);; localInteger1 = Integer.valueOf(6)) {
+      return localInteger1.intValue();
     }
   }
 }

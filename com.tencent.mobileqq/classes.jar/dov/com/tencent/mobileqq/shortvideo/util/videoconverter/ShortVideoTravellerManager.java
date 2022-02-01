@@ -1,12 +1,12 @@
 package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 
-import ajrx;
+import alkn;
 import android.os.Bundle;
-import awgf;
-import awgh;
-import bdne;
+import bgsg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -23,8 +23,8 @@ public class ShortVideoTravellerManager
 {
   public static final String a;
   Bundle jdField_a_of_type_AndroidOsBundle;
-  private awgf jdField_a_of_type_Awgf;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
   private Object jdField_a_of_type_JavaLangObject;
   WeakReference<MessengerService> jdField_a_of_type_JavaLangRefWeakReference;
   ArrayList<ShortVideoTravellerManager.TravellerVideoItem> jdField_a_of_type_JavaUtilArrayList;
@@ -32,7 +32,7 @@ public class ShortVideoTravellerManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = ajrx.jdField_a_of_type_JavaLangString + "/tencent/qim/travellervideos/";
+    jdField_a_of_type_JavaLangString = alkn.jdField_a_of_type_JavaLangString + "/tencent/qim/travellervideos/";
   }
   
   private void a(List<ShortVideoTravellerManager.TravellerVideoItem> paramList)
@@ -45,23 +45,23 @@ public class ShortVideoTravellerManager
     do
     {
       return;
-      this.jdField_a_of_type_Awgf.a(ShortVideoTravellerManager.TravellerVideoItem.class);
-      awgh localawgh = this.jdField_a_of_type_Awgf.a();
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.drop(ShortVideoTravellerManager.TravellerVideoItem.class);
+      EntityTransaction localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
       try
       {
-        localawgh.a();
+        localEntityTransaction.begin();
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
           ShortVideoTravellerManager.TravellerVideoItem localTravellerVideoItem = (ShortVideoTravellerManager.TravellerVideoItem)paramList.next();
-          this.jdField_a_of_type_Awgf.b(localTravellerVideoItem);
+          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(localTravellerVideoItem);
         }
       }
       finally
       {
-        localawgh.b();
+        localEntityTransaction.end();
       }
-      localawgh.b();
+      localEntityTransaction.end();
     } while (!QLog.isColorLevel());
     QLog.d("ShortVideoTravellerManager", 2, "saveVideoListToDB");
   }
@@ -94,7 +94,7 @@ public class ShortVideoTravellerManager
         paramString = finally;
         throw paramString;
       }
-      bdne.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
+      bgsg.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
       if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
         this.jdField_a_of_type_JavaUtilArrayList.clear();
       }
@@ -146,7 +146,7 @@ public class ShortVideoTravellerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.videoconverter.ShortVideoTravellerManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,20 @@
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawClassifier.1;
+import com.tencent.qphone.base.util.QLog;
+
 public class akup
+  implements akse
 {
-  public String a;
-  public String b;
-  public String c;
+  public akup(DrawClassifier.1 param1) {}
   
-  public akup(String paramString1, String paramString2, String paramString3)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if (QLog.isColorLevel()) {
+      QLog.d("DrawClassifier", 2, "tryPreDownLoadModel finished:" + paramInt);
+    }
+    if (paramInt == 0) {
+      akuo.a(true);
+    }
   }
 }
 

@@ -1,30 +1,12 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.capture.view.CountDownView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
-
-class bktu
-  implements bmeo<bkyr>
+public class bktu
 {
-  bktu(bktp parambktp) {}
-  
-  public void a(@Nullable bkyr parambkyr)
-  {
-    if (parambkyr == null) {
-      return;
-    }
-    boolean bool = parambkyr.a();
-    if (bool) {
-      bktp.b(this.a);
-    }
-    for (;;)
-    {
-      bktp.a(this.a).a(bool, new bktv(this, parambkyr));
-      return;
-      if (bktp.a(this.a) != null) {
-        bktp.a(this.a).a();
-      }
-    }
-  }
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private bgux jdField_a_of_type_Bgux;
+  private bktv jdField_a_of_type_Bktv;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
+  private int c;
 }
 
 

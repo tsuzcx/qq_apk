@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import java.util.List;
 
-public class acwu
-  implements View.OnClickListener
+public abstract interface acwu<T>
 {
-  public acwu(FontSettingActivity paramFontSettingActivity) {}
+  public abstract List<T> a();
   
-  public void onClick(View paramView)
-  {
-    if (alsf.a(this.a, FontSettingActivity.a(this.a), true)) {
-      alsf.a();
-    }
-    this.a.finish();
-  }
+  public abstract void a(Class<? extends T> paramClass);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import alud;
-import bhuf;
+import anni;
+import bkho;
 
 class ContactJsPlugin$2
   implements Runnable
@@ -10,16 +10,16 @@ class ContactJsPlugin$2
   
   public void run()
   {
-    bhuf localbhuf = bhuf.a(this.this$0.jsPluginEngine.getActivityContext());
-    localbhuf.a(alud.a(2131702870), 7);
-    localbhuf.a(alud.a(2131702866), 7);
-    localbhuf.a(new ContactJsPlugin.2.1(this, localbhuf));
-    localbhuf.show();
+    bkho localbkho = bkho.a(this.this$0.jsPluginEngine.getActivityContext());
+    localbkho.a(anni.a(2131701277), 7);
+    localbkho.a(anni.a(2131701273), 7);
+    localbkho.a(new ContactJsPlugin.2.1(this, localbkho));
+    localbkho.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.ContactJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

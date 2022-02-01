@@ -1,24 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.6.1;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import mqq.os.MqqHandler;
 
 public class bnly
-  implements Animation.AnimationListener
+  implements EIPCResultCallback
 {
-  public bnly(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager, View paramView, int paramInt) {}
+  bnly(bnls parambnls) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.jdField_a_of_type_Int == CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager)) {
-      CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, false);
-    }
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.6.1(this, paramEIPCResult));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

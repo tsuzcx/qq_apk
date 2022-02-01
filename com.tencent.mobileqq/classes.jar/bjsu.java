@@ -1,58 +1,36 @@
-import cooperation.qzone.util.NetworkState;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bjsu
-  extends bjso
+  implements TextWatcher
 {
-  public static final String a = bjsu.class.getName();
-  public int b = -1;
+  public bjsu(Login paramLogin) {}
   
-  public bjsu(String paramString)
-  {
-    super(paramString);
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public static boolean a()
-  {
-    if (bjtc.a() == null) {
-      return false;
-    }
-    return NetworkState.isWap();
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public int a(String paramString, int paramInt)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.b == -1)
+    if (paramInt3 < 2)
     {
-      int j = super.a(paramString, paramInt);
-      int i = j;
-      if (a())
-      {
-        if (j != 0)
-        {
-          this.b = 1;
-          i = super.a(paramString, paramInt);
-        }
+      this.a.jdField_b_of_type_Boolean = false;
+      if (paramCharSequence.length() == 0) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
       }
-      else {
-        return i;
-      }
-      this.b = 0;
-      return j;
     }
-    return super.a(paramString, paramInt);
-  }
-  
-  public bjsq a()
-  {
-    if ((a()) && (this.b == 1)) {
-      return bjsq.a;
+    else
+    {
+      return;
     }
-    return null;
+    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjsu
  * JD-Core Version:    0.7.0.1
  */

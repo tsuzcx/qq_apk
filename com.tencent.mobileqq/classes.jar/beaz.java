@@ -1,6 +1,25 @@
-class beaz
+public class beaz
 {
-  private static final beav a = new beav();
+  public int a;
+  public long a;
+  public beat a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
 }
 
 

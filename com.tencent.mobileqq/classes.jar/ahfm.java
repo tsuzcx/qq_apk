@@ -1,29 +1,33 @@
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
 
-public class ahfm
+class ahfm
   implements View.OnTouchListener
 {
-  float jdField_a_of_type_Float = 0.0F;
+  final afzq jdField_a_of_type_Afzq;
+  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new ahfn(this));
+  View jdField_a_of_type_AndroidViewView = null;
   
-  public ahfm(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  public ahfm(ahfk paramahfk, afzq paramafzq)
+  {
+    this.jdField_a_of_type_Afzq = paramafzq;
+  }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_Float = paramView.getAlpha();
-      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
+    if (this.jdField_a_of_type_Afzq != null) {
+      this.jdField_a_of_type_Afzq.onTouch(paramView, paramMotionEvent);
     }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
     {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(this.jdField_a_of_type_Float);
-      }
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+      return true;
     }
+    this.jdField_a_of_type_AndroidViewView = null;
+    return false;
   }
 }
 

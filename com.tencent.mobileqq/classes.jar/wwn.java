@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-class wwn
-  implements View.OnClickListener
+public class wwn
+  extends weu
 {
-  wwn(wwk paramwwk) {}
+  public List<xzg> a;
   
-  public void onClick(View paramView)
+  public wwn(ErrorMessage paramErrorMessage)
   {
-    this.a.dismiss();
+    this.a = paramErrorMessage;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wwn
  * JD-Core Version:    0.7.0.1
  */

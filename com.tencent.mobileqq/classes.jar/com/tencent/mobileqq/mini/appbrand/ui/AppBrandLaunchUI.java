@@ -1,14 +1,17 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Parcelable;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bdhk;
-import bdib;
+import android.view.MotionEvent;
+import bgmp;
+import bgng;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -20,6 +23,7 @@ import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppRuntime;
 
 public class AppBrandLaunchUI
@@ -64,11 +68,11 @@ public class AppBrandLaunchUI
     {
       localObject1 = ((Intent)localObject3).getStringExtra("scheme");
       localObject2 = (ResultReceiver)((Intent)localObject3).getParcelableExtra("result_receiver");
-      localObject3 = bdib.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this, (String)localObject1);
+      localObject3 = bgng.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this, (String)localObject1);
       localObject4 = new Bundle();
       if (localObject3 != null)
       {
-        boolean bool = ((bdhk)localObject3).c();
+        boolean bool = ((bgmp)localObject3).a();
         if (bool)
         {
           i = 1;
@@ -142,6 +146,14 @@ public class AppBrandLaunchUI
     return (paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)) && (!TextUtils.isEmpty(paramMiniAppConfig.config.downloadUrl));
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     QLog.i("miniapp-start_AppBrandLaunchUI", 1, "doOnActivityResult requestCode=" + paramInt1 + " resultCode=" + paramInt2);
@@ -202,6 +214,13 @@ public class AppBrandLaunchUI
     super.doOnStop();
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
@@ -209,7 +228,7 @@ public class AppBrandLaunchUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI
  * JD-Core Version:    0.7.0.1
  */

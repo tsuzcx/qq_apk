@@ -1,13 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class akdm
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public akdm(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public akdm(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.a.a != null) {
+      this.a.a.setOnDismissListener(null);
+    }
+    this.a.a = null;
+  }
 }
 
 

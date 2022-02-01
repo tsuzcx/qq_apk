@@ -1,23 +1,34 @@
-class bmjy
-  implements blwi
+import com.tencent.qphone.base.util.QLog;
+
+public class bmjy
 {
-  bmjy(bmjt parambmjt) {}
-  
-  public void aX_()
+  public static int a(String paramString)
   {
-    bmjt.a(this.a).d();
+    try
+    {
+      int i = Integer.parseInt(paramString);
+      return i;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      a("toInt convert error:" + paramString);
+      return 0;
+    }
+    catch (Exception paramString)
+    {
+      a("toInt convert error:" + paramString.getMessage());
+    }
+    return 0;
   }
   
-  public void b()
+  private static final void a(String paramString)
   {
-    bmjt.a(this.a).d();
-    bmjt.a(this.a).a();
-    bmjt.a(this.a).a(bmjt.a(this.a));
-  }
-  
-  public void c()
-  {
-    bmjt.a(this.a).d();
+    try
+    {
+      QLog.e("SafeUtil", 1, paramString);
+      return;
+    }
+    catch (Exception paramString) {}
   }
 }
 

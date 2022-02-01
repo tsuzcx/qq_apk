@@ -1,67 +1,41 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.intimate_relation.intimate_relation.IntimateBuddy;
-import tencent.intimate_relation.intimate_relation.IntimateInfo;
-import tencent.intimate_relation.intimate_relation.IntimateLadybro;
-import tencent.intimate_relation.intimate_relation.IntimateLover;
-import tencent.intimate_relation.intimate_relation.SnsRelationInfo;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.LocalMultiProcConfig;
 
 public class aerw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
+  public aerw(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public static aerw a(byte[] paramArrayOfByte)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    intimate_relation.IntimateInfo localIntimateInfo = null;
-    intimate_relation.SnsRelationInfo localSnsRelationInfo = new intimate_relation.SnsRelationInfo();
-    for (;;)
+    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131717425) + this.a.a, paramBoolean);
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.e(this.a).setContentDescription(anni.a(2131706430));
+    }
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
     {
-      try
-      {
-        localSnsRelationInfo.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = localIntimateInfo;
-        if (localSnsRelationInfo.intimate_list.has())
-        {
-          paramArrayOfByte = localIntimateInfo;
-          if (localSnsRelationInfo.intimate_list.size() > 0)
-          {
-            paramArrayOfByte = new aerw();
-            localIntimateInfo = (intimate_relation.IntimateInfo)localSnsRelationInfo.intimate_list.get(0);
-            if ((!localIntimateInfo.lover.has()) || (!((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.has())) {
-              break label173;
-            }
-            paramArrayOfByte.a = ((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.get();
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("ExtSnsIntimateInfo", 1, "parseFrom retInfo:" + paramArrayOfByte);
-        }
-        return paramArrayOfByte;
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        QLog.i("ExtSnsIntimateInfo", 1, "parseFrom error:" + paramArrayOfByte.getMessage());
-        return null;
-      }
-      label173:
-      if ((localIntimateInfo.buddy.has()) && (((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.has())) {
-        paramArrayOfByte.a = ((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.get();
-      } else if ((localIntimateInfo.ladybro.has()) && (((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.has())) {
-        paramArrayOfByte.a = ((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.get();
+      i = 1;
+      if (!paramBoolean) {
+        break label119;
       }
     }
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ExtSnsIntimatePushInfo{");
-    localStringBuilder.append("intimate_level:").append(this.a).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    label119:
+    for (String str = "1";; str = "0")
+    {
+      bcst.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, str, "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 

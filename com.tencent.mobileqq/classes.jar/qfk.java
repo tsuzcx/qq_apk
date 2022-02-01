@@ -1,48 +1,31 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.protofile.cmd0xe36.cmd0xe36.RspBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qfk
-  extends nac
+class qfk
+  implements View.OnClickListener
 {
-  public qfk(RIJRedPacketManager paramRIJRedPacketManager, qfu paramqfu) {}
+  qfk(qfa paramqfa, pxk parampxk, Container paramContainer, snh paramsnh) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    QLog.i("RIJRedPacketManager", 1, "yyy_0xe36 error code: " + paramInt);
-    if (paramInt == 0) {
-      paramBundle = new cmd0xe36.RspBody();
+    Object localObject = this.jdField_a_of_type_Pxk.a();
+    ((ArticleInfo)localObject).clickArea = 8;
+    pha.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), (ArticleInfo)localObject, (int)((ArticleInfo)localObject).mChannelID);
+    QLog.d("PgcShortContentProteusItem", 1, "click single image blank area");
+    localObject = this.jdField_a_of_type_Snh.a();
+    if (localObject != null) {
+      ((spb)localObject).a(paramView, this.jdField_a_of_type_Pxk.a(), 2);
     }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = 0;
-      paramArrayOfByte = "";
-      if (paramBundle.code.has()) {
-        paramInt = paramBundle.code.get();
-      }
-      if (paramBundle.wording.has()) {
-        paramArrayOfByte = paramBundle.wording.get();
-      }
-      QLog.i("RIJRedPacketManager", 1, "yyy_0xe36 code: " + paramInt + "\nwording: " + paramArrayOfByte);
-      if ((paramInt != 0) && (!TextUtils.isEmpty(paramArrayOfByte))) {
-        this.jdField_a_of_type_Qfu.a(paramArrayOfByte);
-      }
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QLog.i("RIJRedPacketManager", 1, "yyy_0xe36 error: " + paramArrayOfByte.toString());
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qfk
  * JD-Core Version:    0.7.0.1
  */

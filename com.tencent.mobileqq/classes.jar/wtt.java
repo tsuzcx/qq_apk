@@ -1,36 +1,61 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import java.util.List;
 
 public class wtt
-  extends QQUIEventReceiver<MystoryListView, uot>
+  extends wnq<wrs, wnt<wrs>>
 {
-  public wtt(@NonNull MystoryListView paramMystoryListView)
+  private int a;
+  
+  public wtt(Context paramContext)
   {
-    super(paramMystoryListView);
+    super(paramContext);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull uot paramuot)
+  public int a(int paramInt)
   {
-    paramMystoryListView.q();
-    paramuot = (wub)paramMystoryListView.a("FeedSegment");
-    if (paramuot != null) {
-      paramuot.j();
+    wrs localwrs = (wrs)a(paramInt);
+    if (localwrs != null) {
+      return localwrs.jdField_a_of_type_Int;
     }
-    paramMystoryListView = (wvq)paramMystoryListView.a("NewMyStorySegment");
-    if (paramMystoryListView != null) {
-      paramMystoryListView.a(false);
-    }
+    return 0;
   }
   
-  public Class acceptEventClass()
+  public int a(String paramString)
   {
-    return uot.class;
+    List localList = a();
+    int i = 0;
+    while (i < localList.size())
+    {
+      if (TextUtils.equals(((wrs)localList.get(i)).jdField_a_of_type_JavaLangString, paramString)) {
+        return b() + i;
+      }
+      i += 1;
+    }
+    return b();
+  }
+  
+  public void a(wnt<wrs> paramwnt)
+  {
+    super.onViewDetachedFromWindow(paramwnt);
+    paramwnt.a();
+  }
+  
+  public wnt b(ViewGroup paramViewGroup, int paramInt)
+  {
+    return wvg.a(paramViewGroup, paramInt);
+  }
+  
+  public void b(wnt paramwnt, int paramInt)
+  {
+    paramwnt.a((wrs)a(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wtt
  * JD-Core Version:    0.7.0.1
  */

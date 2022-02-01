@@ -1,107 +1,206 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoPlayCountHandler.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import org.json.JSONObject;
+import tencent.im.oidb.cmd0x6a6.oidb_0x6a6.ReqBody;
+import tencent.im.oidb.cmd0x6a6.oidb_0x6a6.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class ocd
-  implements sai, sak
+  extends anii
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private scp jdField_a_of_type_Scp = new scp();
+  static final String a = "Q.pubaccount.video." + oce.class.getSimpleName();
   
-  public int a(BaseData paramBaseData)
+  public ocd(AppInterface paramAppInterface)
   {
-    int i = -1;
-    if ((paramBaseData instanceof ProteusBannerBigPicItemData)) {
-      i = odv.a((ProteusBannerBigPicItemData)paramBaseData);
-    }
-    return i;
+    super(paramAppInterface);
   }
   
-  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  public ocd(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    super(paramQQAppInterface);
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int j = 0;
+    int k = 0;
+    boolean bool;
+    Bundle localBundle;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new put();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
-      opy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
+      bool = true;
+      localBundle = new Bundle();
+      paramFromServiceMsg = "";
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "handleGetPlayCount onReceive :" + bool);
+      }
+      if (!bool) {
+        break label532;
+      }
     }
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
-    }
-    ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
-    paramBaseData = null;
-    try
-    {
-      paramViewGroup = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
-      paramBaseData = paramViewGroup;
-      opy.a(((Container)paramViewGroup).getVirtualView(), localProteusItemData.a.getViewBean());
-      paramBaseData = paramViewGroup;
-      str = localProteusItemData.c.toString();
-      paramBaseData = paramViewGroup;
-    }
-    catch (Exception paramViewGroup)
+    for (;;)
     {
       for (;;)
       {
-        boolean bool;
-        String str = "error!! msg=" + paramViewGroup.toString();
+        try
+        {
+          localObject = new oidb_sso.OIDBSSOPkg();
+          ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramObject);
+          paramObject = ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray();
+          localObject = new oidb_0x6a6.RspBody();
+          ((oidb_0x6a6.RspBody)localObject).mergeFrom(paramObject);
+          if ((((oidb_0x6a6.RspBody)localObject).uint32_ret_code.has()) && (((oidb_0x6a6.RspBody)localObject).uint32_ret_code.get() == 0)) {
+            if (((oidb_0x6a6.RspBody)localObject).uint32_read_count.has()) {
+              i = ((oidb_0x6a6.RspBody)localObject).uint32_read_count.get();
+            }
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramObject)
+        {
+          Object localObject;
+          int i;
+          continue;
+          paramToServiceMsg = "";
+          continue;
+        }
+        try
+        {
+          if (paramToServiceMsg.getWupBuffer() == null) {
+            continue;
+          }
+          paramObject = new oidb_sso.OIDBSSOPkg();
+          paramObject.mergeFrom(paramToServiceMsg.getWupBuffer(), 4, paramToServiceMsg.getWupBuffer().length - 4);
+          if ((paramObject.bytes_bodybuffer.has()) && (paramObject.bytes_bodybuffer.get() != null))
+          {
+            paramToServiceMsg = new oidb_0x6a6.ReqBody();
+            paramToServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
+            if ((paramToServiceMsg.bytes_article_id.has()) && (paramToServiceMsg.bytes_article_id.get() != null))
+            {
+              paramToServiceMsg = paramToServiceMsg.bytes_article_id.get().toStringUtf8().substring(2);
+              if (QLog.isColorLevel()) {
+                QLog.d(a, 2, "handleGetPlayCount vid :" + paramToServiceMsg + " playCount :" + i);
+              }
+              localBundle.putInt("VALUE_VIDEO_PLAY_COUNT", i);
+              localBundle.putString("VALUE_VIDEO_VID", paramToServiceMsg);
+              super.notifyUI(1, bool, localBundle);
+              return;
+              bool = false;
+              break;
+              if (((oidb_0x6a6.RspBody)localObject).uint64_read_count.has())
+              {
+                i = (int)((oidb_0x6a6.RspBody)localObject).uint64_read_count.get();
+                continue;
+              }
+              if (QLog.isColorLevel())
+              {
+                QLog.e(a, 2, "handleGetPlayCount 获取失败, read_count 为空");
+                i = 0;
+                continue;
+                if (QLog.isColorLevel()) {
+                  QLog.e(a, 2, "handleGetPlayCount 获取失败, ret_code 为空或 ret_code == 1");
+                }
+              }
+              i = 0;
+              continue;
+            }
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e(a, 2, "geVideoPlayCount, 请求vid空");
+            continue;
+          }
+          paramToServiceMsg = paramFromServiceMsg;
+          if (QLog.isColorLevel())
+          {
+            QLog.e(a, 2, "geVideoPlayCount, reqBody为空");
+            paramToServiceMsg = paramFromServiceMsg;
+            continue;
+            i = j;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramObject)
+        {
+          j = i;
+        }
+      }
+      paramToServiceMsg = paramFromServiceMsg;
+      if (QLog.isColorLevel())
+      {
+        QLog.e(a, 2, "geVideoPlayCount, ERROR e=" + paramObject.getMessage());
+        i = j;
+        paramToServiceMsg = paramFromServiceMsg;
+        continue;
+        paramToServiceMsg = paramFromServiceMsg;
+        if (QLog.isColorLevel())
+        {
+          QLog.e(a, 2, "geVideoPlayCount, reqPkg为空");
+          paramToServiceMsg = paramFromServiceMsg;
+          continue;
+          label532:
+          i = k;
+          paramToServiceMsg = paramFromServiceMsg;
+          if (QLog.isColorLevel())
+          {
+            QLog.e(a, 2, "geVideoPlayCount, 返回直接出错了");
+            i = k;
+            paramToServiceMsg = paramFromServiceMsg;
+          }
+        }
       }
     }
-    bool = false;
-    paramViewGroup = paramBaseData;
-    if (paramBaseData == null)
-    {
-      paramViewGroup = new View(paramContext);
-      bool = true;
+  }
+  
+  public void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(a, 4, "getVideoPlayCount()  vId" + paramString1);
     }
+    oidb_0x6a6.ReqBody localReqBody = new oidb_0x6a6.ReqBody();
+    paramString1 = ByteStringMicro.copyFromUtf8("5_" + paramString1);
+    localReqBody.bytes_article_id.set(paramString1);
+    localReqBody.uint32_req_type.set(paramInt1);
+    localReqBody.uint32_article_type.set(paramInt2);
+    localReqBody.uint32_platform_type.set(paramInt3);
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = ByteStringMicro.copyFromUtf8(paramString2);
+      localReqBody.rowkey.set(paramString1);
+    }
+    super.sendPbReq(super.makeOIDBPkg("OidbSvc.0x6a6", 1702, 0, localReqBody.toByteArray()));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    ThreadManager.excute(new VideoPlayCountHandler.1(this, paramString1, paramString2), 16, null, true);
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return oce.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("WebFastProteusViewAdBannerBigPicCreator", 1, "createViewHolder viewIsNull=" + bool + "  proteusData=" + str);
+      QLog.d(a, 2, "handleGetPlayCount onReceive");
     }
-    return new oce(this, paramViewGroup, localProteusItemData);
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
-  
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    switch (paramBaseData.s)
-    {
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Scp.a();
-  }
-  
-  public void c() {}
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Scp.b();
-  }
-  
-  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ocd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,33 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ahix
-  implements ahvo
+  extends AnimatorListenerAdapter
 {
-  public ahix(TroopView paramTroopView) {}
+  public ahix(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public int a(int paramInt, boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i = TroopView.a(this.a).getCurrentItem();
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onTabChanged. position:" + paramInt + " currentClassifyPos:" + i);
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+      return;
     }
-    Object localObject = TroopView.a(this.a).a(i, false);
-    if (localObject != null)
+    SixCombolEffectView.b(this.a).start();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (SixCombolEffectView.a(this.a)) {}
+    do
     {
-      localObject = (AddContactViewPagerTroopFragment)localObject;
-      ahfc localahfc = (ahfc)this.a.a.get(i);
-      if ((paramInt >= 0) && (paramInt < localahfc.jdField_a_of_type_JavaUtilArrayList.size()))
-      {
-        localahfc.b = paramInt;
-        ahfd localahfd = (ahfd)localahfc.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        ((AddContactViewPagerTroopFragment)localObject).a(localahfd.b, localahfd.jdField_a_of_type_JavaLangString);
-        azqs.b(null, "dc00899", "Grp_find_new", "", "grptab", "sub_tag_clk", 0, 0, localahfd.jdField_a_of_type_JavaLangString, localahfc.jdField_a_of_type_JavaLangString, "", "");
-      }
-    }
-    return 0;
+      return;
+      SixCombolEffectView.jdField_a_of_type_Int = 2;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 2 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 

@@ -1,29 +1,47 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class oul
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public oul(DailyTipsFoldUtils.1 param1, View paramView, int paramInt) {}
+  public int a;
+  public long a;
+  public ArticleInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public oul()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
-    int i = (int)(this.jdField_a_of_type_Int * f);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.getHeaderViewsCount(), -i, 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("DailyTipsFoldUtils", 2, "percent = " + f + ", scrollHeight = " + i);
-    }
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = null;
+    this.jdField_a_of_type_Int = -1;
+    this.e = "";
+    this.d = "";
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    return "BiuInfo{isFromRecommendFeeds=" + this.jdField_a_of_type_Boolean + ", feedsID=" + this.jdField_a_of_type_Long + ", biuComment='" + this.jdField_a_of_type_JavaLangString + '\'' + ", biuMediaUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", articleInfo=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo + ", contentSrc=" + this.jdField_a_of_type_Int + ", commentBtnJumpUrl='" + this.c + '\'' + ", commentShareUrl='" + this.d + '\'' + ", cardJumpUrl='" + this.e + '\'' + ", isCardAvailable=" + this.jdField_b_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oul
  * JD-Core Version:    0.7.0.1
  */

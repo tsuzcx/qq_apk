@@ -1,6 +1,8 @@
 public abstract interface bdmc
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract int getCloudFileType();
+  
+  public abstract boolean isClickable();
 }
 
 

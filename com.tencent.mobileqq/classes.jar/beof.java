@@ -1,10 +1,14 @@
-public abstract interface beof
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+
+public class beof
+  implements biap
 {
-  public abstract int a();
+  public beof(NewTroopContactView paramNewTroopContactView) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void a(Bundle paramBundle) {}
   
-  public abstract void b(boolean paramBoolean);
+  public void b(Bundle paramBundle) {}
 }
 
 

@@ -1,26 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class apga
-  implements CompoundButton.OnCheckedChangeListener
+class apga
+  implements Animator.AnimatorListener
 {
-  public apga(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
+  apga(apfz paramapfz) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(amms.a, 0).edit().putBoolean(amms.b, paramBoolean).commit();
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getApplicationContext(), alud.a(2131703254), 1).a();
-    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).b(false);
+    if (apfz.a(this.a) != null) {
+      apfz.a(this.a).a();
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

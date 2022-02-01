@@ -1,33 +1,25 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
 
-public class qzg
-  extends syv
+class qzg
+  extends pmn
 {
-  public ShareActionSheetBuilder.ActionSheetItem a(Integer paramInteger)
-  {
-    if (122 == paramInteger.intValue())
-    {
-      syw localsyw = new syw();
-      localsyw.label = "播放反馈";
-      localsyw.icon = 2130841461;
-      localsyw.iconNeedBg = true;
-      localsyw.action = a(paramInteger.intValue());
-      localsyw.argus = "";
-      return localsyw;
-    }
-    return super.a(paramInteger);
-  }
+  private qzg(qze paramqze) {}
   
-  protected void a()
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a.put(Integer.valueOf(122), Integer.valueOf(122));
-    super.a();
+    if ((paramBoolean) && (qze.a(this.a) != null) && (qze.a(this.a).getVisibility() == 0))
+    {
+      qze.a(this.a, new rar(qze.a(this.a).getContext()));
+      qze.a(this.a).a(paramString);
+      qze.a(this.a).a(RIJRedPacketManager.a().d());
+      qze.a(this.a).showAsDropDown(qze.a(this.a), 0, bgtn.a(6.0F));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qzg
  * JD-Core Version:    0.7.0.1
  */

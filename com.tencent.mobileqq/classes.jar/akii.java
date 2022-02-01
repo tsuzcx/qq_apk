@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akii
+class akii
+  implements View.OnClickListener
 {
-  public LinkedHashMap<String, List<PhoneContact>> a;
-  public List<PhoneContact> a;
-  public int[] a;
-  public String[] a;
-  public List<PhoneContact> b = new ArrayList();
+  akii(akif paramakif) {}
   
-  public akii()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_ArrayOfInt = new int[0];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a.onMagicStickClick(paramView, -1, new Bundle(), 2, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akii
  * JD-Core Version:    0.7.0.1
  */

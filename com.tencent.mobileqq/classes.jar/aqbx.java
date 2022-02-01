@@ -1,9 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aqbx
+public class aqbx
+  extends anxg
 {
-  public abstract Drawable a(String paramString1, String paramString2, ImageView paramImageView);
+  public aqbx(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MessageNotificationSettingFragment", 2, "onOIDB0XA80_0_Ret: invoked.  isSuccess : " + paramBoolean + " op: " + paramInt1 + " type: " + Integer.toHexString(paramInt2));
+    }
+    if (paramBoolean) {
+      MessageNotificationSettingFragment.a(this.a).a(paramString1, paramInt1, paramInt2);
+    }
+  }
 }
 
 

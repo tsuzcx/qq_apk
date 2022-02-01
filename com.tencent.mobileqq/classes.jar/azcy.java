@@ -1,47 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
+import mqq.app.QQPermissionCallback;
 
 public class azcy
+  implements QQPermissionCallback
 {
-  int a;
-  int b;
-  int c;
-  int d;
+  public azcy(CustomCoverFragment paramCustomCoverFragment, FragmentActivity paramFragmentActivity) {}
   
-  public static azcy a(String paramString)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    try
-    {
-      paramString = new JSONObject(paramString).getJSONArray("showDetail");
-      if (paramString.length() < 0)
-      {
-        JSONObject localJSONObject = paramString.getJSONObject(0);
-        azcy localazcy = new azcy();
-        String str = localJSONObject.optString("name");
-        if ("photo".equals(str))
-        {
-          localazcy.c = localJSONObject.optInt("showRed", 0);
-          localazcy.d = localJSONObject.optInt("version", 0);
-          return localazcy;
-        }
-        paramString = localazcy;
-        if (!"gif".equals(str)) {
-          return paramString;
-        }
-        localazcy.a = localJSONObject.optInt("showRed", 0);
-        localazcy.b = localJSONObject.optInt("version", 0);
-        return localazcy;
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoAndHotPicRedDotConfProcessor", 2, "handleGetPtvHotPicConfig Exception :", paramString);
-      }
-      paramString = null;
-    }
-    return paramString;
+    bglp.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    CustomCoverFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
   }
 }
 

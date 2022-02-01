@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.takevideo.dancemachine;
 
-import alud;
+import anni;
 import com.tencent.mobileqq.widget.QQToast;
-import xdf;
+import ywq;
 
 public class PKVideoSharer$1
   implements Runnable
@@ -11,21 +11,21 @@ public class PKVideoSharer$1
   {
     String str = "";
     if (this.a == -1) {
-      str = alud.a(2131708580);
+      str = anni.a(2131706956);
     }
     for (;;)
     {
       QQToast.a(this.this$0.a, 1, str, 0).a();
       return;
       if (this.a == -2) {
-        str = alud.a(2131708576);
+        str = anni.a(2131706952);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.dancemachine.PKVideoSharer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,17 @@
-import com.tencent.widget.DynamicGridView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.DrawerFrame;
 
 public class bhwn
-  implements bhwo
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public bhwn(DrawerFrame paramDrawerFrame) {}
   
-  public bhwn(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
-  {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
-    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhwn
  * JD-Core Version:    0.7.0.1
  */

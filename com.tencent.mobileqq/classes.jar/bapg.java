@@ -1,7 +1,27 @@
-public final class bapg
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
+
+public class bapg
+  extends Animation
 {
-  public static final String a = alud.a(2131715396);
-  public static final String b = alud.a(2131715410);
+  public bapg(CircleBarView paramCircleBarView) {}
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
+    CircleBarView.b(this.a, 30.0F);
+    if (CircleBarView.a(this.a) != null)
+    {
+      if (CircleBarView.a(this.a) != null) {
+        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
+      }
+      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
+    }
+    this.a.postInvalidate();
+  }
 }
 
 

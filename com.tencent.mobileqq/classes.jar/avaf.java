@@ -1,28 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewParent;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.hiboom.RichTextPanel;
 
-public class avaf
-  implements bhuk
+class avaf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public avaf(NearbyGuideActivity paramNearbyGuideActivity, bhuf parambhuf) {}
+  avaf(avad paramavad, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Bhuf.cancel();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
-      return;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (i == this.jdField_a_of_type_Int) {
+      AbstractGifImage.resumeAll();
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
+    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
+    if (this.jdField_a_of_type_Avad.a.getParent() != null) {
+      this.jdField_a_of_type_Avad.a.getParent().requestLayout();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avaf
  * JD-Core Version:    0.7.0.1
  */

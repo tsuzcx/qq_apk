@@ -208,18 +208,17 @@ public final class URLState
   private Object decodeFile(File paramFile, URLDrawableHandler paramURLDrawableHandler)
   {
     Object localObject2 = this.mProtocolDownloader;
-    Object localObject1;
     if (localObject2 != null)
     {
-      localObject1 = ((ProtocolDownloader)localObject2).decodeFile(paramFile, this.mParams, paramURLDrawableHandler);
-      paramURLDrawableHandler = (URLDrawableHandler)localObject1;
+      Object localObject1 = ((ProtocolDownloader)localObject2).decodeFile(paramFile, this.mParams, paramURLDrawableHandler);
+      paramURLDrawableHandler = localObject1;
       if (localObject1 == null) {
         break label74;
       }
       this.mOrientation = this.mParams.outOrientation;
       this.mWidth = this.mParams.outWidth;
       this.mHeight = this.mParams.outHeight;
-      paramURLDrawableHandler = (URLDrawableHandler)localObject1;
+      paramFile = localObject1;
     }
     label74:
     do
@@ -228,7 +227,7 @@ public final class URLState
       {
         do
         {
-          return paramURLDrawableHandler;
+          return paramFile;
           paramURLDrawableHandler = null;
           if ((paramFile == null) || (!paramFile.exists())) {
             return null;
@@ -250,56 +249,62 @@ public final class URLState
           if ((!this.mParams.useSharpPImage) || (!SharpPUtil.isSharpPFile(paramFile))) {
             break;
           }
-          localObject1 = new File(NativeGifIndex8.getSoLibPath(URLDrawable.mApplicationContext) + "libTcHevcDec.so");
-          if (QLog.isColorLevel()) {
-            QLog.d("URLDrawable_", 2, "soLibFile = " + ((File)localObject1).getAbsolutePath() + " exists = " + ((File)localObject1).exists());
+          try
+          {
+            paramFile = SharpPUtil.decodeSharpPByFilePath(paramFile.getAbsolutePath());
+            return paramFile;
           }
-        } while (!((File)localObject1).exists());
-        return SharpPUtil.decodeSharpPByFilePath(paramFile.getAbsolutePath());
-        localObject1 = paramFile.getAbsolutePath();
+          catch (Throwable localThrowable)
+          {
+            paramFile = paramURLDrawableHandler;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("URLDrawable_", 2, localThrowable, new Object[0]);
+        return paramURLDrawableHandler;
+        paramURLDrawableHandler = paramFile.getAbsolutePath();
         localObject2 = new BitmapFactory.Options();
         ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
         ((BitmapFactory.Options)localObject2).inPreferredConfig = URLDrawable.sDefaultDrawableParms.mConfig;
         ((BitmapFactory.Options)localObject2).inDensity = 160;
         ((BitmapFactory.Options)localObject2).inTargetDensity = 160;
         ((BitmapFactory.Options)localObject2).inScreenDensity = 160;
-        SafeBitmapFactory.decodeFile((String)localObject1, (BitmapFactory.Options)localObject2);
+        SafeBitmapFactory.decodeFile(paramURLDrawableHandler, (BitmapFactory.Options)localObject2);
         ((BitmapFactory.Options)localObject2).inJustDecodeBounds = false;
         ((BitmapFactory.Options)localObject2).inSampleSize = calculateInSampleSize((BitmapFactory.Options)localObject2, this.mParams.reqWidth, this.mParams.reqHeight);
-        paramURLDrawableHandler = SafeBitmapFactory.decodeFile((String)localObject1, (BitmapFactory.Options)localObject2);
+        Bitmap localBitmap = SafeBitmapFactory.decodeFile(paramURLDrawableHandler, (BitmapFactory.Options)localObject2);
         if (QLog.isColorLevel()) {
           QLog.d("URLDrawable_", 2, "decodeFile:sampleSize=" + ((BitmapFactory.Options)localObject2).inSampleSize + ", requestSize=" + this.mParams.reqWidth + "," + this.mParams.reqHeight + " " + this.mUrlStr);
         }
-        if (paramURLDrawableHandler == null)
+        if (localBitmap == null)
         {
           if (this.mDecodeFileStrategy == 3) {
             if (QLog.isColorLevel()) {
-              QLog.d("URLDrawable_", 2, "decode cache file failed,ignoreDeleteFile:" + (String)localObject1 + " mUrlStr:" + this.mUrlStr);
+              QLog.d("URLDrawable_", 2, "decode cache file failed,ignoreDeleteFile:" + paramURLDrawableHandler + " mUrlStr:" + this.mUrlStr);
             }
           }
           for (;;)
           {
             return null;
             if (QLog.isColorLevel()) {
-              QLog.d("URLDrawable_", 2, "decode cache file failed,path:" + (String)localObject1 + " mUrlStr:" + this.mUrlStr + " mDecodeFileStrategy:" + this.mDecodeFileStrategy);
+              QLog.d("URLDrawable_", 2, "decode cache file failed,path:" + paramURLDrawableHandler + " mUrlStr:" + this.mUrlStr + " mDecodeFileStrategy:" + this.mDecodeFileStrategy);
             }
-            if (((String)localObject1).startsWith(TENCENT_FILE_PATH)) {
+            if (paramURLDrawableHandler.startsWith(TENCENT_FILE_PATH)) {
               paramFile.delete();
             }
           }
         }
-        this.mOrientation = JpegExifReader.readOrientation((String)localObject1);
-        paramFile = paramURLDrawableHandler;
+        this.mOrientation = JpegExifReader.readOrientation(paramURLDrawableHandler);
+        paramURLDrawableHandler = localBitmap;
         if (this.mParams.mDecodeHandler != null) {
-          paramFile = this.mParams.mDecodeHandler.run(this.mParams, paramURLDrawableHandler);
+          paramURLDrawableHandler = this.mParams.mDecodeHandler.run(this.mParams, localBitmap);
         }
-        paramURLDrawableHandler = paramFile;
+        paramFile = paramURLDrawableHandler;
       } while (Build.VERSION.SDK_INT < 11);
-      paramURLDrawableHandler = paramFile;
-    } while (!SliceBitmap.needSlice(paramFile));
-    paramURLDrawableHandler = new SliceBitmap(paramFile);
-    paramFile.recycle();
-    return paramURLDrawableHandler;
+      paramFile = paramURLDrawableHandler;
+    } while (!SliceBitmap.needSlice(paramURLDrawableHandler));
+    paramFile = new SliceBitmap(paramURLDrawableHandler);
+    paramURLDrawableHandler.recycle();
+    return paramFile;
   }
   
   private static StringBuilder getAppStack(StackTraceElement[] paramArrayOfStackTraceElement)
@@ -488,112 +493,112 @@ public final class URLState
     //   23: putfield 174	com/tencent/image/URLState:mIsLoadingStarted	I
     //   26: aload_0
     //   27: iload 4
-    //   29: putfield 732	com/tencent/image/URLState:mDecodeFile	Z
+    //   29: putfield 713	com/tencent/image/URLState:mDecodeFile	Z
     //   32: aload_0
     //   33: getfield 163	com/tencent/image/URLState:mParams	Lcom/tencent/image/DownloadParams;
     //   36: aload_2
-    //   37: putfield 736	com/tencent/image/DownloadParams:cookies	Lorg/apache/http/client/CookieStore;
+    //   37: putfield 717	com/tencent/image/DownloadParams:cookies	Lorg/apache/http/client/CookieStore;
     //   40: aload_0
     //   41: getfield 163	com/tencent/image/URLState:mParams	Lcom/tencent/image/DownloadParams;
     //   44: aload_1
-    //   45: putfield 740	com/tencent/image/DownloadParams:headers	[Lorg/apache/http/Header;
+    //   45: putfield 721	com/tencent/image/DownloadParams:headers	[Lorg/apache/http/Header;
     //   48: aload_0
     //   49: getfield 163	com/tencent/image/URLState:mParams	Lcom/tencent/image/DownloadParams;
     //   52: aload_3
-    //   53: putfield 743	com/tencent/image/DownloadParams:tag	Ljava/lang/Object;
+    //   53: putfield 724	com/tencent/image/DownloadParams:tag	Ljava/lang/Object;
     //   56: aload_0
     //   57: getfield 163	com/tencent/image/URLState:mParams	Lcom/tencent/image/DownloadParams;
     //   60: iload 5
-    //   62: putfield 463	com/tencent/image/DownloadParams:useGifAnimation	Z
+    //   62: putfield 465	com/tencent/image/DownloadParams:useGifAnimation	Z
     //   65: aload_0
     //   66: getfield 163	com/tencent/image/URLState:mParams	Lcom/tencent/image/DownloadParams;
     //   69: iload 6
-    //   71: putfield 476	com/tencent/image/DownloadParams:useApngImage	Z
+    //   71: putfield 478	com/tencent/image/DownloadParams:useApngImage	Z
     //   74: aload_0
     //   75: getfield 163	com/tencent/image/URLState:mParams	Lcom/tencent/image/DownloadParams;
     //   78: iload 7
-    //   80: putfield 489	com/tencent/image/DownloadParams:useSharpPImage	Z
+    //   80: putfield 491	com/tencent/image/DownloadParams:useSharpPImage	Z
     //   83: aload_0
     //   84: getfield 163	com/tencent/image/URLState:mParams	Lcom/tencent/image/DownloadParams;
     //   87: fload 8
-    //   89: putfield 467	com/tencent/image/DownloadParams:mGifRoundCorner	F
+    //   89: putfield 469	com/tencent/image/DownloadParams:mGifRoundCorner	F
     //   92: aload_0
     //   93: getfield 163	com/tencent/image/URLState:mParams	Lcom/tencent/image/DownloadParams;
     //   96: iconst_0
-    //   97: putfield 746	com/tencent/image/DownloadParams:needCheckNetType	Z
+    //   97: putfield 727	com/tencent/image/DownloadParams:needCheckNetType	Z
     //   100: aload_0
     //   101: getfield 163	com/tencent/image/URLState:mParams	Lcom/tencent/image/DownloadParams;
     //   104: iload 9
-    //   106: putfield 749	com/tencent/image/DownloadParams:useExifOrientation	Z
+    //   106: putfield 730	com/tencent/image/DownloadParams:useExifOrientation	Z
     //   109: aload_0
     //   110: getfield 163	com/tencent/image/URLState:mParams	Lcom/tencent/image/DownloadParams;
     //   113: aload 10
-    //   115: putfield 452	com/tencent/image/DownloadParams:mExtraInfo	Ljava/lang/Object;
+    //   115: putfield 454	com/tencent/image/DownloadParams:mExtraInfo	Ljava/lang/Object;
     //   118: aload_0
     //   119: aload_0
     //   120: getfield 196	com/tencent/image/URLState:mUrl	Ljava/net/URL;
-    //   123: new 751	com/tencent/image/URLDrawableHandler$Adapter
+    //   123: new 732	com/tencent/image/URLDrawableHandler$Adapter
     //   126: dup
-    //   127: invokespecial 752	com/tencent/image/URLDrawableHandler$Adapter:<init>	()V
-    //   130: invokevirtual 756	com/tencent/image/URLState:loadImage	(Ljava/net/URL;Lcom/tencent/image/URLDrawableHandler;)Ljava/lang/Object;
+    //   127: invokespecial 733	com/tencent/image/URLDrawableHandler$Adapter:<init>	()V
+    //   130: invokevirtual 737	com/tencent/image/URLState:loadImage	(Ljava/net/URL;Lcom/tencent/image/URLDrawableHandler;)Ljava/lang/Object;
     //   133: astore_1
     //   134: aload_1
     //   135: getstatic 124	com/tencent/image/URLState:DOWNLOAD_ASYNC	Ljava/lang/Object;
     //   138: if_acmpeq -123 -> 15
-    //   141: invokestatic 702	android/os/Looper:myLooper	()Landroid/os/Looper;
+    //   141: invokestatic 685	android/os/Looper:myLooper	()Landroid/os/Looper;
     //   144: invokestatic 132	android/os/Looper:getMainLooper	()Landroid/os/Looper;
     //   147: if_acmpne +9 -> 156
     //   150: aload_0
     //   151: aload_1
-    //   152: invokevirtual 759	com/tencent/image/URLState:onResult	(Ljava/lang/Object;)V
+    //   152: invokevirtual 740	com/tencent/image/URLState:onResult	(Ljava/lang/Object;)V
     //   155: return
     //   156: getstatic 137	com/tencent/image/URLState:UI_HANDLER	Landroid/os/Handler;
-    //   159: new 761	com/tencent/image/URLState$PostOnResult
+    //   159: new 742	com/tencent/image/URLState$PostOnResult
     //   162: dup
     //   163: aload_0
     //   164: aload_1
-    //   165: invokespecial 762	com/tencent/image/URLState$PostOnResult:<init>	(Lcom/tencent/image/URLState;Ljava/lang/Object;)V
-    //   168: invokevirtual 721	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   165: invokespecial 743	com/tencent/image/URLState$PostOnResult:<init>	(Lcom/tencent/image/URLState;Ljava/lang/Object;)V
+    //   168: invokevirtual 704	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   171: pop
     //   172: return
     //   173: astore_1
     //   174: aload_1
     //   175: getstatic 124	com/tencent/image/URLState:DOWNLOAD_ASYNC	Ljava/lang/Object;
     //   178: if_acmpeq -163 -> 15
-    //   181: invokestatic 702	android/os/Looper:myLooper	()Landroid/os/Looper;
+    //   181: invokestatic 685	android/os/Looper:myLooper	()Landroid/os/Looper;
     //   184: invokestatic 132	android/os/Looper:getMainLooper	()Landroid/os/Looper;
     //   187: if_acmpne +9 -> 196
     //   190: aload_0
     //   191: aload_1
-    //   192: invokevirtual 759	com/tencent/image/URLState:onResult	(Ljava/lang/Object;)V
+    //   192: invokevirtual 740	com/tencent/image/URLState:onResult	(Ljava/lang/Object;)V
     //   195: return
     //   196: getstatic 137	com/tencent/image/URLState:UI_HANDLER	Landroid/os/Handler;
-    //   199: new 761	com/tencent/image/URLState$PostOnResult
+    //   199: new 742	com/tencent/image/URLState$PostOnResult
     //   202: dup
     //   203: aload_0
     //   204: aload_1
-    //   205: invokespecial 762	com/tencent/image/URLState$PostOnResult:<init>	(Lcom/tencent/image/URLState;Ljava/lang/Object;)V
-    //   208: invokevirtual 721	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   205: invokespecial 743	com/tencent/image/URLState$PostOnResult:<init>	(Lcom/tencent/image/URLState;Ljava/lang/Object;)V
+    //   208: invokevirtual 704	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   211: pop
     //   212: return
     //   213: astore_1
     //   214: getstatic 124	com/tencent/image/URLState:DOWNLOAD_ASYNC	Ljava/lang/Object;
     //   217: ifnull +17 -> 234
-    //   220: invokestatic 702	android/os/Looper:myLooper	()Landroid/os/Looper;
+    //   220: invokestatic 685	android/os/Looper:myLooper	()Landroid/os/Looper;
     //   223: invokestatic 132	android/os/Looper:getMainLooper	()Landroid/os/Looper;
     //   226: if_acmpne +10 -> 236
     //   229: aload_0
     //   230: aconst_null
-    //   231: invokevirtual 759	com/tencent/image/URLState:onResult	(Ljava/lang/Object;)V
+    //   231: invokevirtual 740	com/tencent/image/URLState:onResult	(Ljava/lang/Object;)V
     //   234: aload_1
     //   235: athrow
     //   236: getstatic 137	com/tencent/image/URLState:UI_HANDLER	Landroid/os/Handler;
-    //   239: new 761	com/tencent/image/URLState$PostOnResult
+    //   239: new 742	com/tencent/image/URLState$PostOnResult
     //   242: dup
     //   243: aload_0
     //   244: aconst_null
-    //   245: invokespecial 762	com/tencent/image/URLState$PostOnResult:<init>	(Lcom/tencent/image/URLState;Ljava/lang/Object;)V
-    //   248: invokevirtual 721	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   245: invokespecial 743	com/tencent/image/URLState$PostOnResult:<init>	(Lcom/tencent/image/URLState;Ljava/lang/Object;)V
+    //   248: invokevirtual 704	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   251: pop
     //   252: goto -18 -> 234
     // Local variable table:
@@ -749,6 +754,11 @@ public final class URLState
               ((QQLiveDrawable.QQLiveState)???).mPaint.setDither(this.mDither);
               this.mSuccessed = ((Drawable.ConstantState)???);
               this.mParams.mExtraInfo = null;
+              continue;
+            }
+            if ((paramURL instanceof Drawable))
+            {
+              this.mSuccessed = ((Drawable)paramURL).getConstantState();
               continue;
             }
             throw new RuntimeException("Invalide image type " + paramURL.getClass().getSimpleName());

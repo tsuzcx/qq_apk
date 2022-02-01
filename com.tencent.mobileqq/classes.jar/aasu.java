@@ -1,24 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.statistics.c2s.GdtC2SReportInterface.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aasu
-  extends aasv
+  implements aatr
 {
-  aasu(aast paramaast) {}
+  public aasu(TroopGiftPanel paramTroopGiftPanel, long paramLong1, long paramLong2) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt) {}
+  
+  public void a(List<bftd> paramList)
   {
-    aase.a("GdtC2SReporter", "onCheckC2SReport: " + paramInt + "， request ADID: " + paramString2);
-    aasr.a(BaseApplicationImpl.getApplication(), this.a, paramInt, this.a.jdField_a_of_type_Long);
-    this.a.jdField_a_of_type_Long = -2147483648L;
-    if (aast.a(this.a).equals(paramString2))
-    {
-      azqs.a(null, "dc00898", "", "", "0X8009EBD", "0X8009EBD", this.a.jdField_a_of_type_Int, paramInt, "", "", aast.a(this.a), "");
-      if ((paramInt != 1) && (paramInt != 2)) {
-        ThreadManager.executeOnNetWorkThread(new GdtC2SReportInterface.1.1(this));
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.a(paramList);
+    long l = System.currentTimeMillis();
+    QLog.d("TroopGiftPanel.time", 1, "setGiftData, reqTime=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.b));
   }
 }
 

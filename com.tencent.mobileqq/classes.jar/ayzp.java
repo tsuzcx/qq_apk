@@ -1,12 +1,14 @@
-public class ayzp
+public final class ayzp
+  extends ayzn
 {
-  public int a;
-  public int b;
-  public int c;
+  protected int a()
+  {
+    return 641;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayzp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,50 @@
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.widget.ContainerView;
 
-class afhf
-  extends altm
+public class afhf
+  extends Handler
 {
-  afhf(afhd paramafhd) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public afhf(TextPreviewActivity paramTextPreviewActivity, Looper paramLooper)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
-      if ((paramString != null) && (afhd.a(this.a) != null)) {
-        afhd.a(this.a).setImageBitmap(paramString);
-      }
+    default: 
+    case 100: 
+    case 16: 
+    case 18: 
+    case 19: 
+      do
+      {
+        do
+        {
+          return;
+          if (this.a.jdField_a_of_type_JavaLangCharSequence != null) {
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(this.a.jdField_a_of_type_JavaLangCharSequence);
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a.setMovementMethod(bhvn.a());
+          return;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_Gc.a(this.a.e));
+          return;
+        } while (!(paramMessage.obj instanceof Drawable));
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
+        return;
+      } while (!(paramMessage.obj instanceof Bitmap));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)paramMessage.obj);
+      return;
     }
+    this.a.a();
   }
 }
 

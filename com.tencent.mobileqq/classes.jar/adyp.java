@@ -1,16 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adyp
+class adyp
   implements View.OnClickListener
 {
-  public adyp(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  adyp(adyo paramadyo) {}
   
   public void onClick(View paramView)
   {
-    SoundAndVibrateActivity.a(this.a, "CHANNEL_ID_GROUP_MSG");
-    azqs.b(null, "CliOper", "", "", "0X800AC8A", "0X800AC8A", 0, 0, "", "", "", "");
+    this.a.a.a.b.performLongClick();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

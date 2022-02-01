@@ -1,15 +1,20 @@
-public abstract class afbz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+
+public class afbz
+  implements DialogInterface.OnDismissListener
 {
-  private boolean a;
+  public afbz(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.a;
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 

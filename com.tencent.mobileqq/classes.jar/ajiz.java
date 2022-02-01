@@ -1,44 +1,35 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ajiz
-  implements View.OnClickListener
+  implements bkhw
 {
-  ajiz(ajit paramajit) {}
+  ajiz(ajiy paramajiy, boolean paramBoolean, Friends paramFriends, bkho parambkho) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramView == null) {}
-    Object localObject1;
-    RecentBaseData localRecentBaseData;
-    do
+    if (!bgnt.g(this.jdField_a_of_type_Ajiy.a)) {
+      QQToast.a(this.jdField_a_of_type_Ajiy.a, 1, 2131691985, 0).a();
+    }
+    for (;;)
     {
-      do
+      this.jdField_a_of_type_Bkho.e();
+      return;
+      paramView = (FriendListHandler)ajiy.a(this.jdField_a_of_type_Ajiy).a(1);
+      if (this.jdField_a_of_type_Boolean)
       {
-        int i;
-        do
-        {
-          return;
-          i = paramView.getId();
-        } while ((i < 0) || (i >= this.a.getCount()));
-        localObject1 = this.a.getItem(i);
-      } while ((localObject1 == null) || (!(localObject1 instanceof RecentBaseData)));
-      localRecentBaseData = (RecentBaseData)localObject1;
-      Object localObject2 = null;
-      localObject1 = localObject2;
-      if ((paramView instanceof TextView))
-      {
-        paramView = ((TextView)paramView).getText();
-        localObject1 = localObject2;
-        if (paramView != null) {
-          localObject1 = paramView.toString();
-        }
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
+        bcst.b(ajiy.a(this.jdField_a_of_type_Ajiy), "dc00898", "", "", "0X800808B", "0X800808B", 0, 0, "", "", "", "");
       }
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    this.a.a(localRecentBaseData, (String)localObject1, "1");
+      else
+      {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
+        bcst.b(ajiy.a(this.jdField_a_of_type_Ajiy), "dc00898", "", "", "0X800808A", "0X800808A", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

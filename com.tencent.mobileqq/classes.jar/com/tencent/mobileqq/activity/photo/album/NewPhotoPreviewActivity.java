@@ -1,35 +1,39 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aiqw;
-import aiqy;
-import aitd;
+import Override;
+import akhr;
+import akjz;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import aofm;
-import azqs;
-import bexu;
-import bhvx;
-import bnle;
+import aqfv;
+import bcst;
+import bies;
+import bkjj;
+import bqcd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.BubblePopupWindow;
 import com.tencent.widget.DragView;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
-import mbt;
+import lyu;
 
 public class NewPhotoPreviewActivity
   extends AbstractPhotoPreviewActivity
-  implements bhvx
+  implements bkjj
 {
-  public aiqw a;
+  public akhr a;
   public View a;
   public BubblePopupWindow a;
   public DragView a;
@@ -52,7 +56,7 @@ public class NewPhotoPreviewActivity
     for (;;)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        azqs.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 4, 0, "", "", "", "");
+        bcst.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 4, 0, "", "", "", "");
       }
       this.mPhotoPreviewLogic.onBackPressed(true);
       return;
@@ -87,14 +91,14 @@ public class NewPhotoPreviewActivity
   protected void a()
   {
     int i = 0;
-    this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)findViewById(2131365489));
+    this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)findViewById(2131365725));
     this.jdField_a_of_type_ComTencentWidgetDragView.setGestureChangeListener(this);
     this.jdField_a_of_type_ComTencentWidgetDragView.setRatioModify(true);
     Rect localRect = (Rect)getIntent().getParcelableExtra("KEY_THUMBNAL_BOUND");
     if (localRect != null)
     {
       if (this.mEnableLiuHai) {
-        i = bnle.a;
+        i = bqcd.a;
       }
       localRect.top -= i;
       localRect.bottom -= i;
@@ -159,10 +163,18 @@ public class NewPhotoPreviewActivity
     finish();
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public PhotoPreviewLogic generateLogic()
   {
     int i = getIntent().getIntExtra("enter_from", 0);
-    PhotoPreviewLogic localPhotoPreviewLogic = aitd.a(i, this);
+    PhotoPreviewLogic localPhotoPreviewLogic = akjz.a(i, this);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoPreviewActivity", 2, "generateLogic:" + localPhotoPreviewLogic.getClass().getName() + " enterFrom:" + i);
     }
@@ -174,7 +186,7 @@ public class NewPhotoPreviewActivity
     return NewPhotoListActivity.class;
   }
   
-  public void hideMenuBar()
+  void hideMenuBar()
   {
     super.hideMenuBar();
     if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
@@ -191,11 +203,18 @@ public class NewPhotoPreviewActivity
     this.mPhotoPreviewLogic.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
-    bnle.a(this);
-    if (bnle.c()) {
-      bnle.b(this);
+    bqcd.a(this);
+    if (bqcd.c()) {
+      bqcd.b(this);
     }
     super.onCreate(paramBundle);
     a();
@@ -215,14 +234,14 @@ public class NewPhotoPreviewActivity
   public void onPause()
   {
     super.onPause();
-    mbt.a(BaseApplicationImpl.getContext(), false);
-    bexu.a(BaseApplicationImpl.getContext(), true);
-    aofm.a(BaseApplicationImpl.getContext(), 2, true);
+    lyu.a(BaseApplicationImpl.getContext(), false);
+    bies.a(BaseApplicationImpl.getContext(), true);
+    aqfv.a(BaseApplicationImpl.getContext(), 2, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bdhb;
+import bgmg;
 import com.tencent.viola.utils.ViolaUtils;
-import ors;
+import pha;
 
 class ViolaBaseView$18
   implements Runnable
@@ -11,19 +11,19 @@ class ViolaBaseView$18
   
   public void run()
   {
-    Object localObject = bdhb.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + ors.a());
+    Object localObject = bgmg.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + pha.a());
     if (localObject == null) {
-      bdhb.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + ors.a(), ViolaBaseView.b(this.this$0));
+      bgmg.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + pha.a(), ViolaBaseView.b(this.this$0));
     }
     while ((!(localObject instanceof String)) || (ViolaBaseView.b(this.this$0).equals(localObject))) {
       return;
     }
-    bdhb.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + ors.a(), ViolaBaseView.b(this.this$0));
+    bgmg.a("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.this$0.a) + "_" + pha.a(), ViolaBaseView.b(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.18
  * JD-Core Version:    0.7.0.1
  */

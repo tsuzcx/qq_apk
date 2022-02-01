@@ -1,36 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.29.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class sod
-  implements DialogInterface.OnClickListener
+  implements sow
 {
-  public sod(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
+  sod(snh paramsnh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("button", 1);
-      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("okBtnText", ""));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+    pum localpum = (pum)paramView.getTag();
+    BaseArticleInfo localBaseArticleInfo = this.a.b(localpum.jdField_a_of_type_Int);
+    if (localBaseArticleInfo == null) {
       return;
     }
-    catch (JSONException paramDialogInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(BridgeModule.TAG, 2, "showDialog error" + paramDialogInterface.getMessage());
-    }
+    this.a.a(localpum.jdField_a_of_type_Sey, localBaseArticleInfo, true);
+    ThreadManager.executeOnSubThread(new ReadInJoyBaseAdapter.29.1(this, localBaseArticleInfo));
+    puf.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sod
  * JD-Core Version:    0.7.0.1
  */

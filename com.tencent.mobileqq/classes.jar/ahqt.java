@@ -1,28 +1,46 @@
-import android.os.Bundle;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ahqt
-  implements View.OnClickListener
+  implements ahrc<HongBaoPanel>
 {
-  public ahqt(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private HongBaoPanel jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onClick(View paramView)
+  public ahqt(BaseChatPie paramBaseChatPie)
   {
-    if ((paramView.getTag() instanceof ahpn))
-    {
-      paramView = (ahpn)paramView.getTag();
-      if (paramView != null) {}
-    }
-    else
-    {
-      return;
-    }
-    paramView = TroopInfoActivity.a(paramView.b, 4);
-    paramView.putInt("t_s_f", 1002);
-    bcpx.a(this.a.getActivity(), paramView, 2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  }
+  
+  public int a()
+  {
+    return 10;
+  }
+  
+  public HongBaoPanel a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
+  }
+  
+  public HongBaoPanel a(Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel = ((HongBaoPanel)View.inflate(paramContext, 2131560479, null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

@@ -1,39 +1,10 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.widget.ParticipleView;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public final class aeaz
-  extends FlingGestureHandler
+public class aeaz
+  extends Handler
 {
-  private WeakReference<TextPreviewActivity> b;
-  
-  private aeaz(TextPreviewActivity paramTextPreviewActivity)
-  {
-    super(paramTextPreviewActivity);
-    this.b = new WeakReference(paramTextPreviewActivity);
-  }
-  
-  public void flingLToR()
-  {
-    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
-    int i;
-    if (localTextPreviewActivity != null) {
-      if ((localTextPreviewActivity.a != null) && (localTextPreviewActivity.a.getVisibility() == 0)) {
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        super.flingLToR();
-      }
-      return;
-      i = 0;
-      continue;
-      i = 0;
-    }
-  }
+  public aeaz(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
 }
 
 

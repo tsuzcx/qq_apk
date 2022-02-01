@@ -1,43 +1,55 @@
-import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-final class arrs
-  implements arse
+class arrs
+  extends arvc
 {
-  arrs(String paramString1, String paramString2) {}
+  arrs(arrp paramarrp) {}
   
-  public void a(Bitmap paramBitmap)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    if (paramBitmap == null) {
-      return;
-    }
-    try
+    super.a(paramEmoticonPackage, paramInt);
+    aruo.a().b(this.a.a);
+    Object localObject = (arro)arrp.i(this.a).getManager(149);
+    awmr localawmr = (awmr)arrp.j(this.a).getManager(14);
+    List localList = ((arro)localObject).c(paramEmoticonPackage.epId);
+    if ((localList == null) || (localList.size() <= 0)) {}
+    do
     {
-      arso.a(paramBitmap, this.a);
-      paramBitmap.recycle();
-      int i = fa.a(this.b);
-      fa.a(this.a, i);
       return;
+      paramEmoticonPackage = new ArrayList();
+      int i = 0;
+      if (i < localList.size())
+      {
+        CustomEmotionData localCustomEmotionData = (CustomEmotionData)localList.get(i);
+        if (localawmr.a(localCustomEmotionData.emoPath, localCustomEmotionData.eId) == null)
+        {
+          localCustomEmotionData.RomaingType = "needDel";
+          ((arro)localObject).b(localCustomEmotionData);
+          if (!TextUtils.isEmpty(localCustomEmotionData.resid)) {
+            paramEmoticonPackage.add(localCustomEmotionData.resid);
+          }
+        }
+        arrp localarrp = this.a;
+        if (paramInt == 0) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localarrp.a(localCustomEmotionData, bool);
+          i += 1;
+          break;
+        }
+      }
+      localObject = (anlh)arrp.k(this.a).a(72);
+    } while ((localObject == null) || (paramEmoticonPackage.size() <= 0));
+    if (QLog.isColorLevel()) {
+      QLog.d("FavroamingManager", 2, "delResId: " + paramEmoticonPackage);
     }
-    catch (FileNotFoundException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (IOException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
-    }
+    ((anlh)localObject).a(paramEmoticonPackage, false);
   }
 }
 

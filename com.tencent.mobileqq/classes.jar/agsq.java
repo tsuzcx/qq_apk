@@ -1,14 +1,9 @@
-class agsq
-  extends alpa
+public class agsq
 {
-  agsq(agso paramagso) {}
-  
-  protected void a(Object paramObject)
-  {
-    if (agso.a(this.a) != null) {
-      agso.a(this.a).notifyDataSetChanged();
-    }
-  }
+  public int a;
+  public String a;
+  public int b;
+  public int c;
 }
 
 

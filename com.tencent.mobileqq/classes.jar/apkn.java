@@ -1,68 +1,19 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
-import android.util.DisplayMetrics;
+import android.os.Bundle;
+import java.util.ArrayList;
 
-public class apkn
-  extends BitmapDrawable
+final class apkn
+  extends aplm
 {
-  private float jdField_a_of_type_Float = 1920.0F;
-  private int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private int b;
-  private int c;
-  
-  public apkn(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
+  apkn(String paramString, ArrayList paramArrayList)
   {
-    super(paramResources, paramBitmap);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Float = (12.0F * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
-    super.setGravity(17);
+    super(paramString);
   }
   
-  public void draw(Canvas paramCanvas)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.c >>> 24 != 0)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-      paramCanvas.drawRoundRect(new RectF(getBounds()), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if ((paramBoolean) && (paramBundle != null)) {
+      this.a.add(paramBundle.getString("Nickname", ""));
     }
-    super.draw(paramCanvas);
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    if (this.b > 0) {
-      return this.b;
-    }
-    return super.getIntrinsicHeight();
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.jdField_a_of_type_Int;
-    }
-    return super.getIntrinsicWidth();
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha()) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-    }
-    super.setAlpha(paramInt);
-  }
-  
-  public void setTargetDensity(int paramInt)
-  {
-    this.jdField_a_of_type_Float = (12.0F * (paramInt / 160.0F));
-    super.setTargetDensity(paramInt);
   }
 }
 

@@ -1,43 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.util.WeakReference;
+import kotlin.Metadata;
 
-class tqw
-  implements View.OnClickListener
-{
-  tqw(tqt paramtqt) {}
-  
-  public void onClick(View paramView)
-  {
-    tqy localtqy;
-    if (tqt.a(this.a) != null)
-    {
-      localtqy = (tqy)tqt.a(this.a).get();
-      if (localtqy == null) {}
-    }
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131373204: 
-      localtqy.a(tqz.a);
-      return;
-    case 2131373200: 
-      localtqy.a(tqz.b);
-      return;
-    case 2131373201: 
-      localtqy.a(tqz.c);
-      return;
-    case 2131373203: 
-      localtqy.a(tqz.d);
-      return;
-    }
-    localtqy.a(tqz.e);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/SensorBridgeInvokeHandler$Companion;", "", "()V", "GET_LOCATION", "", "NS_SENSOR", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tqw {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tqw
  * JD-Core Version:    0.7.0.1
  */

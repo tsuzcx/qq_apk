@@ -1,17 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
 
-class afsv
-  extends afuf
+public class afsv
+  implements afso
 {
-  afsv(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afsv(BirthdayActivatePage paramBirthdayActivatePage) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(int paramInt)
   {
-    return new afyx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (paramInt > 0)
+    {
+      this.a.a.setEnabled(true);
+      return;
+    }
+    this.a.a.setEnabled(false);
   }
 }
 

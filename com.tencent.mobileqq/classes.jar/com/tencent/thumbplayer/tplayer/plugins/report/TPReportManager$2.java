@@ -1,32 +1,21 @@
 package com.tencent.thumbplayer.tplayer.plugins.report;
 
-import android.os.Message;
-import com.tencent.thumbplayer.utils.TPGlobalEventNofication.OnGlobalEventChangeListener;
-import com.tencent.thumbplayer.utils.TPLogUtil;
+import android.telephony.TelephonyManager;
 
 class TPReportManager$2
-  implements TPGlobalEventNofication.OnGlobalEventChangeListener
+  implements Runnable
 {
-  TPReportManager$2(TPReportManager paramTPReportManager) {}
+  TPReportManager$2(TPReportManager paramTPReportManager, TelephonyManager paramTelephonyManager) {}
   
-  public void onEvent(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
+  public void run()
   {
-    TPLogUtil.i("TPReportManager", "OnGlobalEventChangeListener eventId: " + paramInt1);
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    }
-    for (paramInt1 = 2100;; paramInt1 = 2101)
-    {
-      TPReportManager.access$3500(this.this$0).obtainMessage(paramInt1, null).sendToTarget();
-      return;
-    }
+    TPReportManager.access$3500(this.this$0);
+    this.val$telMgr.listen(TPReportManager.access$3600(this.this$0), 256);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager.2
  * JD-Core Version:    0.7.0.1
  */

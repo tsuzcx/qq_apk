@@ -1,25 +1,24 @@
-import java.util.ArrayList;
+import com.tencent.biz.qqcircle.events.QCircleGoToCardSettingEvent;
+import qqcircle.QQCircleProfile.SetUserSwitchRsp;
 
-public class vcn
-  extends uli
+class vcn
+  implements zxa<QQCircleProfile.SetUserSwitchRsp>
 {
-  public final int a;
-  public ArrayList<vcm> a;
+  vcn(vcm paramvcm, boolean paramBoolean) {}
   
-  public vcn(int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleProfile.SetUserSwitchRsp paramSetUserSwitchRsp)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "UpdateMemoriesEvent{dateList=" + this.jdField_a_of_type_JavaUtilArrayList + ", source=" + this.jdField_a_of_type_Int + '}';
+    if ((!paramBoolean) || (paramLong != 0L))
+    {
+      vtt.a(paramLong, this.jdField_a_of_type_Vcm.a.a(), paramString, 0);
+      return;
+    }
+    zwp.a().a(new QCircleGoToCardSettingEvent(this.jdField_a_of_type_Boolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vcn
  * JD-Core Version:    0.7.0.1
  */

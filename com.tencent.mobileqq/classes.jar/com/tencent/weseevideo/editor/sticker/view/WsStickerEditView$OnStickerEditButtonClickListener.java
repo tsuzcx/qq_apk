@@ -13,10 +13,12 @@ public abstract interface WsStickerEditView$OnStickerEditButtonClickListener
   public abstract void onEditClick(TAVSticker paramTAVSticker, List<TAVStickerLayerItem> paramList);
   
   public abstract void onStickerClick(TAVSticker paramTAVSticker);
+  
+  public abstract void onStickerSelected(TAVSticker paramTAVSticker);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.view.WsStickerEditView.OnStickerEditButtonClickListener
  * JD-Core Version:    0.7.0.1
  */

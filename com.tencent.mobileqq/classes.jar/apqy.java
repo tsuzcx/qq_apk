@@ -1,20 +1,6 @@
-class apqy
-  extends bead
+public abstract interface apqy
 {
-  apqy(apqh paramapqh) {}
-  
-  public void onCancel(beae parambeae) {}
-  
-  public void onDone(beae parambeae)
-  {
-    super.onDone(parambeae);
-  }
-  
-  public void onDoneFile(beae parambeae) {}
-  
-  public void onPause(beae parambeae) {}
-  
-  public void onProgress(beae parambeae) {}
+  public abstract void a(String paramString);
 }
 
 

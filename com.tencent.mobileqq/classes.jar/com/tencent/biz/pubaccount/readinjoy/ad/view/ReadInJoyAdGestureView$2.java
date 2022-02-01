@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
 import com.tencent.qphone.base.util.QLog;
-import oee;
+import oqj;
 
 class ReadInJoyAdGestureView$2
   implements Runnable
@@ -12,7 +12,7 @@ class ReadInJoyAdGestureView$2
   {
     try
     {
-      ReadInJoyAdGestureView.a(this.this$0, oee.a(this.a, (int)this.this$0.e, (int)this.this$0.f));
+      ReadInJoyAdGestureView.a(this.this$0, oqj.a(this.a, (int)this.this$0.e, (int)this.this$0.f));
       return;
     }
     catch (Exception localException)

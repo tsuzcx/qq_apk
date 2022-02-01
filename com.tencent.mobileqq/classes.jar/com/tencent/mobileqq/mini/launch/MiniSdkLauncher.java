@@ -4,22 +4,29 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import aqpv;
+import bgln;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.tissue.TissueEnvImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.MiniSDK;
-import com.tencent.qqmini.sdk.core.tissue.TissueEnv;
-import com.tencent.qqmini.sdk.core.tissue.TissueGlobal;
+import com.tencent.qqmini.sdk.launcher.dynamic.MiniDynamicManager;
+import com.tencent.qqmini.sdk.launcher.model.ResourcePreCacheInfo;
 import common.config.service.QzoneConfig;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import org.json.JSONObject;
 
 public class MiniSdkLauncher
 {
+  private static final String TAG = "MiniSdkLauncher";
+  private static volatile boolean sIsMiniAppCheckinPreLaunched;
   private static volatile boolean sSdkInited;
   
   public static com.tencent.mobileqq.mini.apkg.MiniAppInfo convert(com.tencent.qqmini.sdk.launcher.model.MiniAppInfo paramMiniAppInfo)
@@ -62,6 +69,26 @@ public class MiniSdkLauncher
       localMiniAppInfo.firstPage = new com.tencent.mobileqq.mini.apkg.FirstPageInfo();
       localMiniAppInfo.firstPage.pagePath = paramMiniAppInfo.firstPage.pagePath;
       localMiniAppInfo.firstPage.subPkgName = paramMiniAppInfo.firstPage.subPkgName;
+    }
+    if (paramMiniAppInfo.preCacheList != null)
+    {
+      localMiniAppInfo.preCacheList = new ArrayList();
+      localIterator = paramMiniAppInfo.preCacheList.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject1 = (com.tencent.qqmini.sdk.launcher.model.PreCacheInfo)localIterator.next();
+        localMiniAppInfo.preCacheList.add(new com.tencent.mobileqq.mini.apkg.PreCacheInfo(((com.tencent.qqmini.sdk.launcher.model.PreCacheInfo)localObject1).getDataUrl, ((com.tencent.qqmini.sdk.launcher.model.PreCacheInfo)localObject1).preCacheKey, ((com.tencent.qqmini.sdk.launcher.model.PreCacheInfo)localObject1).expireTime, ((com.tencent.qqmini.sdk.launcher.model.PreCacheInfo)localObject1).cacheType, ((com.tencent.qqmini.sdk.launcher.model.PreCacheInfo)localObject1).useProxy));
+      }
+    }
+    if (paramMiniAppInfo.resourcePreCacheInfo != null)
+    {
+      localMiniAppInfo.resourcePreCacheInfo = new ArrayList();
+      localIterator = paramMiniAppInfo.resourcePreCacheInfo.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject1 = (ResourcePreCacheInfo)localIterator.next();
+        localMiniAppInfo.resourcePreCacheInfo.add(new ResourcePreCacheInfo(((ResourcePreCacheInfo)localObject1).getDataUrl));
+      }
     }
     localMiniAppInfo.whiteList = paramMiniAppInfo.whiteList;
     localMiniAppInfo.blackList = paramMiniAppInfo.blackList;
@@ -140,31 +167,38 @@ public class MiniSdkLauncher
       {
         return localObject;
         localMiniAppInfo = convert(paramMiniAppConfig.config);
-        localMiniAppInfo.baseLibInfo = convertBaselibInfo(paramMiniAppConfig.baseLibInfo);
-        localMiniAppInfo.forceReroad = paramMiniAppConfig.forceReroad;
         localObject = localMiniAppInfo;
       } while (localMiniAppInfo == null);
+      localMiniAppInfo.baseLibInfo = convertBaselibInfo(paramMiniAppConfig.baseLibInfo);
+      localMiniAppInfo.forceReroad = paramMiniAppConfig.forceReroad;
+      if (paramMiniAppConfig.launchParam != null)
+      {
+        localMiniAppInfo.launchParam.scene = paramMiniAppConfig.launchParam.scene;
+        localMiniAppInfo.launchParam.isFakeAppInfo = paramMiniAppConfig.isFromShowInfo;
+        localMiniAppInfo.launchParam.miniAppId = paramMiniAppConfig.launchParam.miniAppId;
+        localMiniAppInfo.launchParam.extraKey = paramMiniAppConfig.launchParam.extraKey;
+        localMiniAppInfo.launchParam.entryPath = paramMiniAppConfig.launchParam.entryPath;
+        localMiniAppInfo.launchParam.extendData = paramMiniAppConfig.launchParam.extendData;
+        localMiniAppInfo.launchParam.navigateExtData = paramMiniAppConfig.launchParam.navigateExtData;
+        localMiniAppInfo.launchParam.fromMiniAppId = paramMiniAppConfig.launchParam.fromMiniAppId;
+        localMiniAppInfo.launchParam.fakeUrl = paramMiniAppConfig.launchParam.fakeUrl;
+        localMiniAppInfo.launchParam.timestamp = paramMiniAppConfig.launchParam.timestamp;
+        localMiniAppInfo.launchParam.launchClickTimeMillis = paramMiniAppConfig.launchParam.launchClickTimeMillis;
+        localMiniAppInfo.launchParam.shareTicket = paramMiniAppConfig.launchParam.shareTicket;
+        localMiniAppInfo.launchParam.envVersion = paramMiniAppConfig.launchParam.envVersion;
+        localMiniAppInfo.launchParam.reportData = paramMiniAppConfig.launchParam.reportData;
+        localMiniAppInfo.launchParam.entryModel = convertEntryModel(paramMiniAppConfig.launchParam.entryModel);
+        localMiniAppInfo.launchParam.fromBackToMiniApp = paramMiniAppConfig.launchParam.fromBackToMiniApp;
+        localMiniAppInfo.launchParam.fromEnvVersion = paramMiniAppConfig.launchParam.fromEnvVersion;
+        localMiniAppInfo.launchParam.fromMiniAppInfo = convert(paramMiniAppConfig.launchParam.fromMiniAppInfo);
+        localMiniAppInfo.launchParam.tempState = paramMiniAppConfig.launchParam.tempState;
+        localMiniAppInfo.launchParam.privateExtraData = paramMiniAppConfig.launchParam.privateExtraData;
+      }
       localObject = localMiniAppInfo;
-    } while (paramMiniAppConfig.launchParam == null);
-    localMiniAppInfo.launchParam.scene = paramMiniAppConfig.launchParam.scene;
-    localMiniAppInfo.launchParam.isFakeAppInfo = paramMiniAppConfig.isFromShowInfo;
-    localMiniAppInfo.launchParam.miniAppId = paramMiniAppConfig.launchParam.miniAppId;
-    localMiniAppInfo.launchParam.extraKey = paramMiniAppConfig.launchParam.extraKey;
-    localMiniAppInfo.launchParam.entryPath = paramMiniAppConfig.launchParam.entryPath;
-    localMiniAppInfo.launchParam.extendData = paramMiniAppConfig.launchParam.extendData;
-    localMiniAppInfo.launchParam.navigateExtData = paramMiniAppConfig.launchParam.navigateExtData;
-    localMiniAppInfo.launchParam.fromMiniAppId = paramMiniAppConfig.launchParam.fromMiniAppId;
-    localMiniAppInfo.launchParam.fakeUrl = paramMiniAppConfig.launchParam.fakeUrl;
-    localMiniAppInfo.launchParam.timestamp = paramMiniAppConfig.launchParam.timestamp;
-    localMiniAppInfo.launchParam.launchClickTimeMillis = paramMiniAppConfig.launchParam.launchClickTimeMillis;
-    localMiniAppInfo.launchParam.shareTicket = paramMiniAppConfig.launchParam.shareTicket;
-    localMiniAppInfo.launchParam.envVersion = paramMiniAppConfig.launchParam.envVersion;
-    localMiniAppInfo.launchParam.reportData = paramMiniAppConfig.launchParam.reportData;
-    localMiniAppInfo.launchParam.entryModel = convertEntryModel(paramMiniAppConfig.launchParam.entryModel);
-    localMiniAppInfo.launchParam.fromBackToMiniApp = paramMiniAppConfig.launchParam.fromBackToMiniApp;
-    localMiniAppInfo.launchParam.fromEnvVersion = paramMiniAppConfig.launchParam.fromEnvVersion;
-    localMiniAppInfo.launchParam.fromMiniAppInfo = convert(paramMiniAppConfig.launchParam.fromMiniAppInfo);
-    localMiniAppInfo.launchParam.tempState = paramMiniAppConfig.launchParam.tempState;
+    } while (!paramMiniAppConfig.isFromShowInfo);
+    localMiniAppInfo.link = paramMiniAppConfig.link;
+    localMiniAppInfo.linkType = paramMiniAppConfig.linkType;
+    localMiniAppInfo.firstPath = paramMiniAppConfig.entryPath;
     return localMiniAppInfo;
   }
   
@@ -209,6 +243,26 @@ public class MiniSdkLauncher
       localMiniAppInfo.firstPage = new com.tencent.qqmini.sdk.launcher.model.FirstPageInfo();
       localMiniAppInfo.firstPage.pagePath = paramMiniAppInfo.firstPage.pagePath;
       localMiniAppInfo.firstPage.subPkgName = paramMiniAppInfo.firstPage.subPkgName;
+    }
+    if (paramMiniAppInfo.preCacheList != null)
+    {
+      localMiniAppInfo.preCacheList = new ArrayList();
+      localIterator = paramMiniAppInfo.preCacheList.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject1 = (com.tencent.mobileqq.mini.apkg.PreCacheInfo)localIterator.next();
+        localMiniAppInfo.preCacheList.add(new com.tencent.qqmini.sdk.launcher.model.PreCacheInfo(((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).getDataUrl, ((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).preCacheKey, ((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).expireTime, ((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).cacheType, ((com.tencent.mobileqq.mini.apkg.PreCacheInfo)localObject1).useProxy));
+      }
+    }
+    if (paramMiniAppInfo.resourcePreCacheInfo != null)
+    {
+      localMiniAppInfo.resourcePreCacheInfo = new ArrayList();
+      localIterator = paramMiniAppInfo.resourcePreCacheInfo.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject1 = (ResourcePreCacheInfo)localIterator.next();
+        localMiniAppInfo.resourcePreCacheInfo.add(new ResourcePreCacheInfo(((ResourcePreCacheInfo)localObject1).getDataUrl));
+      }
     }
     localMiniAppInfo.whiteList = paramMiniAppInfo.whiteList;
     localMiniAppInfo.blackList = paramMiniAppInfo.blackList;
@@ -272,6 +326,10 @@ public class MiniSdkLauncher
     }
     localMiniAppInfo.shareId = paramMiniAppInfo.shareId;
     localMiniAppInfo.via = paramMiniAppInfo.via;
+    localMiniAppInfo.deviceOrientation = paramMiniAppInfo.deviceOrientation;
+    localMiniAppInfo.showStatusBar = paramMiniAppInfo.showStatusBar;
+    localMiniAppInfo.enableLoadingAd = paramMiniAppInfo.enableLoadingAd;
+    localMiniAppInfo.prepayId = paramMiniAppInfo.prepayId;
     return localMiniAppInfo;
   }
   
@@ -310,6 +368,135 @@ public class MiniSdkLauncher
     sSdkInited = true;
   }
   
+  public static void notifyPeriodicCacheUpdate(Context paramContext, MiniAppConfig paramMiniAppConfig)
+  {
+    QLog.i("MiniSdkLauncher", 1, "notifyPeriodicCacheUpdate, MiniAppInfo = " + paramMiniAppConfig);
+    MiniSDK.init(paramContext);
+    MiniSDK.notifyPeriodicCacheUpdate(paramContext, convert(paramMiniAppConfig));
+  }
+  
+  public static void onDexConfigUpdate(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        QLog.i("MiniSdkLauncher", 1, "onDexConfigUpdate:" + paramString);
+        paramString = new JSONObject(paramString);
+        String str1 = paramString.optString("ver");
+        String str2 = paramString.optString("minjs");
+        if (!TextUtils.isEmpty(str1)) {
+          paramString.putOpt("app_version", "8.4.1.4680");
+        }
+        MiniDynamicManager.g().updateDexConfig(paramString.toString());
+        if (!TextUtils.isEmpty(str2))
+        {
+          BaseLibManager.g().forceUpdateBaseLib(null);
+          return;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("MiniSdkLauncher", 1, "", paramString);
+      }
+    }
+  }
+  
+  public static void preLaunchMiniApp(Context paramContext, MiniAppConfig paramMiniAppConfig)
+  {
+    int j = 0;
+    if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {}
+    for (;;)
+    {
+      return;
+      for (;;)
+      {
+        try
+        {
+          if (aqpv.a("mini_sdk_prelaunch_enable", 1) == 1)
+          {
+            i = 1;
+            if (i != 0) {
+              break;
+            }
+            QLog.i("MiniSdkLauncher", 1, "preLaunchMiniApp disable");
+            return;
+          }
+        }
+        catch (Throwable paramContext)
+        {
+          QLog.e("MiniSdkLauncher", 1, "startMiniApp exception!", paramContext);
+          return;
+        }
+        i = 0;
+      }
+      if (!sSdkInited)
+      {
+        sSdkInited = true;
+        initSDK(paramContext);
+      }
+      QLog.i("MiniSdkLauncher", 1, "preLaunchMiniApp " + paramMiniAppConfig.config.appId);
+      if (!paramMiniAppConfig.isEngineTypeMiniGame()) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putString("mini_key_preload_type", "preload_app");
+        localBundle.putParcelable("mini_appinfo", convert(paramMiniAppConfig));
+        localBundle.putBoolean("sdk_mode", true);
+        boolean bool = enableFlutter();
+        if (bool)
+        {
+          i = j;
+          if (!TextUtils.isEmpty(TissueEnvImpl.getNativeLibDir()))
+          {
+            i = j;
+            if (TissueEnvImpl.verifyTissueEngine(TissueEnvImpl.getNativeLibDir())) {
+              i = 1;
+            }
+          }
+          if ((bool) && (i != 0)) {
+            localBundle.putString("tissuenativelibdir", TissueEnvImpl.getNativeLibDir());
+          }
+        }
+        MiniSDK.preloadMiniApp(paramContext, localBundle);
+        return;
+      }
+    }
+  }
+  
+  public static void preLaunchMiniAppCheckinFromLeba()
+  {
+    for (;;)
+    {
+      try
+      {
+        if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_flutter_prelaunch_checkin_enable", 1) != 1) {
+          break label101;
+        }
+        bool = true;
+        QLog.d("MiniSdkLauncher", 1, "preLaunchMiniAppCheckinFromLeba " + sIsMiniAppCheckinPreLaunched + ", " + bool);
+        if ((!sIsMiniAppCheckinPreLaunched) && (bool))
+        {
+          if (shouldForbidLowPerf()) {
+            return;
+          }
+          ThreadManagerV2.executeOnSubThread(new MiniSdkLauncher.1());
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        QLog.i("MiniSdkLauncher", 1, "preLaunchMiniAppCheckinFromLeba", localException);
+      }
+      return;
+      label101:
+      boolean bool = false;
+    }
+  }
+  
   public static void preloadMiniApp(Context paramContext, boolean paramBoolean)
   {
     int i = 1;
@@ -327,20 +514,18 @@ public class MiniSdkLauncher
         }
         paramBoolean = enableFlutter();
         if (!paramBoolean) {
-          break label162;
+          break label153;
         }
-        if (TissueGlobal.tissueEnv == null) {
-          TissueGlobal.tissueEnv = new TissueEnvImpl();
-        }
-        if ((TextUtils.isEmpty(TissueGlobal.tissueEnv.getNativeLibDir())) || (!TissueGlobal.verifyTissueEngine(TissueGlobal.tissueEnv.getNativeLibDir()))) {
+        if ((TextUtils.isEmpty(TissueEnvImpl.getNativeLibDir())) || (!TissueEnvImpl.verifyTissueEngine(TissueEnvImpl.getNativeLibDir()))) {
           continue;
         }
-        if ((paramBoolean) && (i != 0))
-        {
-          localBundle = new Bundle();
-          localBundle.putString("mini_key_preload_type", "preload_app");
-          MiniSDK.preloadMiniApp(paramContext, localBundle);
+        localBundle = new Bundle();
+        localBundle.putString("mini_key_preload_type", "preload_app");
+        localBundle.putBoolean("sdk_mode", true);
+        if ((paramBoolean) && (i != 0)) {
+          localBundle.putString("tissuenativelibdir", TissueEnvImpl.getNativeLibDir());
         }
+        MiniSDK.preloadMiniApp(paramContext, localBundle);
       }
       catch (Throwable paramContext)
       {
@@ -356,9 +541,16 @@ public class MiniSdkLauncher
       localBundle.putString("mini_key_preload_type", "preload_game");
       MiniSDK.preloadMiniApp(paramContext, localBundle);
       continue;
-      label162:
+      label153:
       i = 0;
     }
+  }
+  
+  private static boolean shouldForbidLowPerf()
+  {
+    int i = bgln.f();
+    QLog.d("MiniSdkLauncher", 1, "shouldForbidLowPerf " + i);
+    return i == 3;
   }
   
   public static void startMiniApp(Activity paramActivity, MiniAppConfig paramMiniAppConfig, Bundle paramBundle)
@@ -391,7 +583,7 @@ public class MiniSdkLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.MiniSdkLauncher
  * JD-Core Version:    0.7.0.1
  */

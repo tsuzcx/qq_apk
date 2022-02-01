@@ -1,17 +1,22 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
 
-class afse
-  extends afuf
+public class afse
+  extends ClickableSpan
 {
-  afse(afpy paramafpy)
+  public afse(ActivateFriendActivity paramActivateFriendActivity) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramafpy, null);
+    this.a.b();
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return new afkp(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    paramTextPaint.setColor(Color.rgb(0, 165, 224));
   }
 }
 

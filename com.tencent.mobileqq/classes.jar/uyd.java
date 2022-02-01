@@ -1,24 +1,29 @@
-public class uyd
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
+import feedcloud.FeedCloudMeta.StFeed;
+
+class uyd
+  extends RecyclerView.ViewHolder
 {
-  public final int a;
-  public final String a;
-  public final uyc a;
-  
-  public uyd(uyc paramuyc, int paramInt, String paramString)
+  private uyd(uyc paramuyc, View paramView)
   {
-    this.jdField_a_of_type_Uyc = paramuyc;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramView);
   }
   
-  public String toString()
+  public void a(int paramInt, FeedCloudMeta.StFeed paramStFeed, uzd paramuzd, aaga paramaaga)
   {
-    return "Output{intput=" + this.jdField_a_of_type_Uyc + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMessage='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    if ((this.itemView instanceof QCircleCommentItemView))
+    {
+      ((QCircleCommentItemView)this.itemView).setFeed(paramStFeed);
+      ((QCircleCommentItemView)this.itemView).setOnCommentElementClickListener(paramaaga);
+      ((QCircleCommentItemView)this.itemView).a(paramuzd, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uyd
  * JD-Core Version:    0.7.0.1
  */

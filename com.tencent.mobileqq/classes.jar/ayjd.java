@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-
-public class ayjd
-  implements View.OnClickListener
+public abstract interface ayjd
 {
-  public ayjd(MixSearchWebFragment paramMixSearchWebFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(3);
-    this.a.f();
-  }
+  public abstract void a(int paramInt, ayje paramayje);
 }
 
 

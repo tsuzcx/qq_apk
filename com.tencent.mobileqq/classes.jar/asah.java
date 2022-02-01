@@ -1,14 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
-class asah
-  implements DialogInterface.OnClickListener
+public class asah
 {
-  asah(asag paramasag) {}
+  private static asah a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static asah a()
   {
-    paramDialogInterface.dismiss();
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new asah();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public arwf a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, arxd paramarxd, BaseChatPie paramBaseChatPie, int paramInt4, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionPanelListViewAdapterBuilder", 2, "getAdapter panelType = " + paramInt2);
+    }
+    switch (paramInt2)
+    {
+    case 10: 
+    case 11: 
+    default: 
+      return null;
+    case 1: 
+      return new asct(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramarxd, paramBaseChatPie, paramInt4);
+    case 6: 
+      return new arwh(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramarxd, paramBaseChatPie, paramInt4);
+    case 8: 
+      return new arwq(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramarxd, paramInt4);
+    case 7: 
+      return new arzj(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramarxd, paramInt4);
+    case 4: 
+      return new asba(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramarxd, paramBaseChatPie);
+    case 5: 
+      return new asbm(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramarxd);
+    case 3: 
+      return new asca(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramarxd, paramInt4, paramBoolean);
+    case 2: 
+      return new ascj(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramarxd, paramBaseChatPie, paramInt4);
+    case 9: 
+      return new ascm(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramarxd, paramInt4);
+    case 12: 
+      return new arzh(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramarxd);
+    case 13: 
+      return new arwt(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramarxd, paramBaseChatPie);
+    }
+    return new arzm(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramarxd, paramBaseChatPie);
   }
 }
 

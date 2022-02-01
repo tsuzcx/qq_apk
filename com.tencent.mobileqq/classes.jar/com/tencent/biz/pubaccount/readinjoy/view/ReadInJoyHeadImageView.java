@@ -4,27 +4,29 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import bdhj;
+import bgmo;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
 import mqq.os.MqqHandler;
-import pgr;
-import sfd;
+import pha;
+import pyb;
+import tdt;
 
 public class ReadInJoyHeadImageView
-  extends KandianUrlImageView
-  implements IView, pgr
+  extends NativeReadInjoyImageView
+  implements IView, pyb
 {
-  private static final Drawable b = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841397));
-  private long a;
+  private static final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841698));
+  private long jdField_a_of_type_Long;
+  private pyb jdField_a_of_type_Pyb;
   
   public ReadInJoyHeadImageView(Context paramContext)
   {
@@ -47,8 +49,8 @@ public class ReadInJoyHeadImageView
   private void a()
   {
     setRound(true);
-    a(bdhj.a());
-    this.jdField_a_of_type_Sfd.a(false);
+    setImagePlaceHolder(bgmo.a());
+    this.mController.a(false);
   }
   
   private void a(ReadInJoyUserInfo paramReadInJoyUserInfo)
@@ -57,29 +59,21 @@ public class ReadInJoyHeadImageView
       return;
     }
     QLog.d("ReadInJoyHeadImageView", 1, " [setHeadImg] load avatar from 0xb81 userinfo, uin:" + paramReadInJoyUserInfo.uin);
-    try
-    {
-      a(new URL(ReadInJoyUserInfoModule.a(paramReadInJoyUserInfo)));
-      return;
-    }
-    catch (MalformedURLException paramReadInJoyUserInfo)
-    {
-      QLog.d("ReadInJoyHeadImageView", 2, paramReadInJoyUserInfo.getMessage());
-    }
+    setImageSrc(ReadInJoyUserInfoModule.a(paramReadInJoyUserInfo));
   }
   
-  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  private void b(ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    QLog.d("ReadInJoyHeadImageView", 2, "load uin success: " + paramString + " " + paramReadInJoyUserInfo);
-    if ((!TextUtils.equals(paramString, String.valueOf(this.jdField_a_of_type_Long))) || (paramReadInJoyUserInfo == null)) {
+    if (paramReadInJoyUserInfo != null)
+    {
+      if (pha.k()) {
+        a(paramReadInJoyUserInfo);
+      }
+    }
+    else {
       return;
     }
-    ThreadManager.getUIHandler().post(new ReadInJoyHeadImageView.1(this, paramReadInJoyUserInfo));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    QLog.d("ReadInJoyHeadImageView", 2, "uin: " + paramString1 + " onLoadUserInfoFailed:" + paramString2);
+    pha.b().post(new ReadInJoyHeadImageView.2(this, paramReadInJoyUserInfo));
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
@@ -109,6 +103,26 @@ public class ReadInJoyHeadImageView
     measure(paramInt1, paramInt2);
   }
   
+  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  {
+    QLog.d("ReadInJoyHeadImageView", 1, "uin: " + paramString1 + " onLoadUserInfoFailed:" + paramString2);
+    if (this.jdField_a_of_type_Pyb != null) {
+      this.jdField_a_of_type_Pyb.onLoadUserInfoFailed(paramString1, paramString2);
+    }
+  }
+  
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  {
+    QLog.d("ReadInJoyHeadImageView", 2, "load uin success: " + paramString + " " + paramReadInJoyUserInfo);
+    if ((!TextUtils.equals(paramString, String.valueOf(this.jdField_a_of_type_Long))) || (paramReadInJoyUserInfo == null)) {}
+    do
+    {
+      return;
+      ThreadManager.getUIHandler().post(new ReadInJoyHeadImageView.1(this, paramReadInJoyUserInfo));
+    } while (this.jdField_a_of_type_Pyb == null);
+    this.jdField_a_of_type_Pyb.onLoadUserInfoSucceed(paramString, paramReadInJoyUserInfo);
+  }
+  
   public void setHeadImgByUin(long paramLong)
   {
     setHeadImgByUin(paramLong, true);
@@ -116,20 +130,29 @@ public class ReadInJoyHeadImageView
   
   public void setHeadImgByUin(long paramLong, boolean paramBoolean)
   {
-    if (paramLong <= 0L) {
-      QLog.d("ReadInJoyHeadImageView", 2, "Uin is illegal");
-    }
-    ReadInJoyUserInfo localReadInJoyUserInfo;
-    do
+    setHeadImgByUin(paramLong, paramBoolean, null);
+  }
+  
+  public void setHeadImgByUin(long paramLong, boolean paramBoolean, pyb parampyb)
+  {
+    setHeadImgByUin(paramLong, paramBoolean, parampyb, false);
+  }
+  
+  public void setHeadImgByUin(long paramLong, boolean paramBoolean1, pyb parampyb, boolean paramBoolean2)
+  {
+    if (paramLong <= 0L)
     {
+      QLog.d("ReadInJoyHeadImageView", 2, "Uin is illegal");
       return;
-      this.jdField_a_of_type_Long = paramLong;
-      if (paramBoolean) {
-        a(b);
-      }
-      localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(this.jdField_a_of_type_Long, this);
-    } while (localReadInJoyUserInfo == null);
-    a(localReadInJoyUserInfo);
+    }
+    this.jdField_a_of_type_Long = paramLong;
+    if (paramBoolean1) {
+      setImagePlaceHolder(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
+    if (parampyb != null) {
+      this.jdField_a_of_type_Pyb = parampyb;
+    }
+    b(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_Long, this, paramBoolean2));
   }
   
   public void setHeadImgByUin(String paramString)
@@ -154,24 +177,10 @@ public class ReadInJoyHeadImageView
     }
     setHeadImgByUin(l1);
   }
-  
-  public void setImageSrc(String paramString)
-  {
-    QLog.d("ReadInJoyHeadImageView", 2, "ReadInJoyHeadImageView imagesrc : " + paramString);
-    try
-    {
-      a(new URL(paramString));
-      return;
-    }
-    catch (MalformedURLException paramString)
-    {
-      QLog.d("ReadInJoyHeadImageView", 2, paramString.getMessage());
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlResult;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.ProxyDrawable;
+import com.tencent.widget.BubblePopupWindow;
 
-public final class bkiy
-  implements Parcelable.Creator<WadlResult>
+public class bkiy
+  extends ProxyDrawable
 {
-  public WadlResult a(Parcel paramParcel)
+  int jdField_a_of_type_Int;
+  int b;
+  
+  public bkiy(BubblePopupWindow paramBubblePopupWindow, Drawable paramDrawable)
   {
-    return new WadlResult(paramParcel);
+    super(paramDrawable);
   }
   
-  public WadlResult[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    return new WadlResult[paramInt];
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Rect localRect = getBounds();
+    if (this.b > this.jdField_a_of_type_Int)
+    {
+      int i = paramCanvas.save();
+      paramCanvas.clipRect(this.jdField_a_of_type_Int, 0, this.b, localRect.height());
+      this.mCurrDrawable.draw(paramCanvas);
+      paramCanvas.restoreToCount(i);
+    }
   }
 }
 

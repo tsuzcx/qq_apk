@@ -1,29 +1,57 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSpecialTopic;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-public abstract interface qtv
-  extends phn<qtw>
+public class qtv
+  extends qqt
 {
-  public abstract int a();
+  public qtv(Context paramContext, aobu paramaobu, snh paramsnh)
+  {
+    super(paramContext, paramaobu, paramsnh);
+  }
   
-  public abstract void a(@Nullable ColumnInfo paramColumnInfo, @NotNull qtm paramqtm);
+  public qqt a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return c();
+  }
   
-  public abstract void a(@NotNull qtm paramqtm);
+  public qqt d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentSpecialTopic))) {
+      localLinearLayout.addView((ComponentContentSpecialTopic)this.jdField_a_of_type_Qqs);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
   
-  public abstract void a(@NotNull qxd paramqxd, @NotNull String paramString);
+  public qqt e()
+  {
+    return null;
+  }
   
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(@NotNull qtm paramqtm);
-  
-  public abstract void c();
+  public qqt g()
+  {
+    this.jdField_a_of_type_Qqs = new ComponentContentSpecialTopic(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qtv
  * JD-Core Version:    0.7.0.1
  */

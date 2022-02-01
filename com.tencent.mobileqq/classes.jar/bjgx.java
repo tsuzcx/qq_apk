@@ -1,47 +1,22 @@
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-public class bjgx
+class bjgx
+  extends bjha
 {
-  public final int a;
-  public final long a;
-  public final int b;
-  public final long b;
-  public final long c;
-  public final long d;
-  public final long e;
-  public final long f;
+  bjgx(bjgw parambjgw) {}
   
-  private bjgx(ByteBuffer paramByteBuffer, int paramInt)
+  protected void a(boolean paramBoolean)
   {
-    switch (paramInt)
+    super.a(paramBoolean);
+    if (paramBoolean)
     {
-    default: 
-      throw new IOException("Unexpected elf class: " + paramInt);
-    case 1: 
-      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
-      this.c = paramByteBuffer.getInt();
-      this.d = paramByteBuffer.getInt();
-      this.e = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-      this.f = paramByteBuffer.getInt();
+      bjgw.a(this.a);
       return;
     }
-    this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-    this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-    this.jdField_a_of_type_Long = paramByteBuffer.getLong();
-    this.jdField_b_of_type_Long = paramByteBuffer.getLong();
-    this.c = paramByteBuffer.getLong();
-    this.d = paramByteBuffer.getLong();
-    this.e = paramByteBuffer.getLong();
-    this.f = paramByteBuffer.getLong();
+    bjgw.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjgx
  * JD-Core Version:    0.7.0.1
  */

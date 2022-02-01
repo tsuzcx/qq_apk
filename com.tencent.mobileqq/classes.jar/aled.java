@@ -1,6 +1,8 @@
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+
 public abstract interface aled
 {
-  public abstract void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  public abstract void onChange(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout);
 }
 
 

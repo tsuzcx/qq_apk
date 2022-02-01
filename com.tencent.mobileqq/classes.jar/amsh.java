@@ -1,34 +1,37 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.mobileqq.ar.ARGLSurfaceView;
-import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.utils.VipUtils;
 
-public class amsh
-  implements GLSurfaceView.EGLContextFactory
+class amsh
+  implements amlp
 {
-  private int jdField_a_of_type_Int = 12440;
+  amsh(amsg paramamsg) {}
   
-  public amsh(ARGLSurfaceView paramARGLSurfaceView) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    QLog.i("AREngine_ARGLSurfaceView", 1, "createContext. display = " + paramEGLDisplay);
-    int i = this.jdField_a_of_type_Int;
-    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    amsg localamsg = this.a;
+    if (amsg.a(this.a).jdField_b_of_type_Boolean)
+    {
+      paramStartCheckParam = amsg.a(this.a).e;
+      amsg.a(localamsg, paramStartCheckParam);
+      if (!"message".equals(amsg.a(this.a).f)) {
+        break label101;
+      }
+    }
+    label101:
+    for (int i = 1;; i = 0)
+    {
+      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(amsg.a(this.a).jdField_b_of_type_Int) });
+      return;
+      paramStartCheckParam = amsg.a(this.a).d;
+      break;
+    }
   }
   
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    if (ARGLSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView) != null) {
-      ARGLSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView).a();
+    if (amsg.a(this.a) != null) {
+      amsg.a(this.a).c(-10001, amsg.a(this.a).jdField_b_of_type_JavaLangString);
     }
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
-      QLog.e("AREngine_ARGLSurfaceView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
-    }
-    QLog.i("AREngine_ARGLSurfaceView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
   }
 }
 

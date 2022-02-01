@@ -1,32 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.upload.UploadManager;
 
 class auaf
-  implements DialogInterface.OnClickListener
+  implements bnat
 {
-  auaf(auad paramauad, BaseChatPie paramBaseChatPie, short paramShort) {}
+  auaf(atzu paramatzu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong, float paramFloat) {}
+  
+  public void a(String paramString)
   {
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_Auad.a(this.jdField_a_of_type_Short, true, true);
-        azqs.b(auad.a(this.jdField_a_of_type_Auad), "dc00898", "", "", "0X8009978", "0X8009978", this.jdField_a_of_type_Auad.a(this.jdField_a_of_type_Short), this.jdField_a_of_type_Auad.a(this.jdField_a_of_type_Short), "", "", "", "");
-      }
-    }
+    atzu.b(this.a, false);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    atzu.a(this.a, true);
+    atzu.b(this.a, false);
+    bmxt.a(atzu.a(this.a).getApplication(), true);
+    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auaf
  * JD-Core Version:    0.7.0.1
  */

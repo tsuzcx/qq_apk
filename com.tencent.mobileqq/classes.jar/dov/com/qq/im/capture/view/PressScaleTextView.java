@@ -5,12 +5,12 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import bmar;
+import botv;
 
 public class PressScaleTextView
   extends TextView
 {
-  private final bmar a = new bmar(this);
+  private final botv a = new botv(this);
   
   public PressScaleTextView(Context paramContext)
   {
@@ -54,7 +54,7 @@ public class PressScaleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.view.PressScaleTextView
  * JD-Core Version:    0.7.0.1
  */

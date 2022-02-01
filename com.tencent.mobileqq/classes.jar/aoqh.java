@@ -1,18 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class aoqh
-  implements blzd
+public class aoqh
+  extends anii
 {
-  aoqh(aoqg paramaoqg) {}
-  
-  public void a(String paramString)
+  public aoqh(QQAppInterface paramQQAppInterface)
   {
-    bnhb.a(BaseApplicationImpl.getContext(), paramString);
+    super(paramQQAppInterface);
   }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return anuy.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoqh
  * JD-Core Version:    0.7.0.1
  */

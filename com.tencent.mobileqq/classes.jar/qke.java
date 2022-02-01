@@ -1,63 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.articlesummary.AnswerDetail;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qke
+class qke
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c = "";
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
   
-  public qke()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
+  private qke(qjt paramqjt) {}
   
-  public static qke a(articlesummary.AnswerDetail paramAnswerDetail)
+  public void onClick(View paramView)
   {
-    qke localqke = new qke();
-    if (paramAnswerDetail.question_rowkey.has()) {
-      localqke.jdField_a_of_type_JavaLangString = paramAnswerDetail.question_rowkey.get();
+    switch (paramView.getId())
+    {
     }
-    if (paramAnswerDetail.question_title.has()) {
-      localqke.jdField_b_of_type_JavaLangString = paramAnswerDetail.question_title.get();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      qjt localqjt = this.jdField_a_of_type_Qjt;
+      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localqjt.a(localRecommendFollowInfo, bool);
+        oat.a(null, pha.a() + "", "0X800984A", "0X800984A", 0, 0, "1", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.uin + "", "", "", false);
+        break;
+      }
+      qjt.b(this.jdField_a_of_type_Qjt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      oat.a(null, pha.a() + "", "0X8009849", "0X8009849", 0, 0, "1", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.uin + "", "", "", false);
     }
-    if (paramAnswerDetail.answer_content.has()) {
-      localqke.c = paramAnswerDetail.answer_content.get();
-    }
-    if (paramAnswerDetail.agreed_num.has()) {
-      localqke.jdField_a_of_type_Int = paramAnswerDetail.agreed_num.get();
-    }
-    if (paramAnswerDetail.card_style.has()) {
-      localqke.jdField_b_of_type_Int = paramAnswerDetail.card_style.get();
-    }
-    return localqke;
-  }
-  
-  public articlesummary.AnswerDetail a()
-  {
-    articlesummary.AnswerDetail localAnswerDetail = new articlesummary.AnswerDetail();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localAnswerDetail.question_rowkey.set(this.jdField_a_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localAnswerDetail.question_title.set(this.jdField_b_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.c)) {
-      localAnswerDetail.answer_content.set(this.c);
-    }
-    localAnswerDetail.agreed_num.set(this.jdField_a_of_type_Int);
-    localAnswerDetail.card_style.set(this.jdField_b_of_type_Int);
-    return localAnswerDetail;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qke
  * JD-Core Version:    0.7.0.1
  */

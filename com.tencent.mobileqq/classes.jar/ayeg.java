@@ -1,19 +1,10 @@
-class ayeg
-  extends amct
+import java.util.List;
+
+public abstract interface ayeg
 {
-  ayeg(ayec paramayec) {}
+  public abstract void a(List<ayeh> paramList);
   
-  protected void g(boolean paramBoolean, Object paramObject)
-  {
-    int j = ((Integer)paramObject).intValue();
-    paramObject = gh.a();
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
-    {
-      paramObject.b(i, j);
-      return;
-    }
-  }
+  public abstract void b();
 }
 
 

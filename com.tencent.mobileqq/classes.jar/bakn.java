@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.VerticalGallery;
 
 public class bakn
-  extends baht
+  implements bkpo
 {
-  public bakn(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  public bakn(IosTimepicker paramIosTimepicker) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  public void b(VerticalGallery paramVerticalGallery)
   {
-    GroupTeamWorkListActivity.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePad success: " + paramBoolean);
-    }
+    IosTimepicker.a(this.a);
   }
 }
 

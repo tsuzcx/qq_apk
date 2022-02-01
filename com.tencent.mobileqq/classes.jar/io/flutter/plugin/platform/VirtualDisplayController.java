@@ -10,6 +10,7 @@ import android.util.DisplayMetrics;
 import android.view.Surface;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import androidx.annotation.NonNull;
 import io.flutter.view.TextureRegistry.SurfaceTextureEntry;
 
 @TargetApi(20)
@@ -66,6 +67,22 @@ class VirtualDisplayController
     return this.presentation.getView().getView();
   }
   
+  void onFlutterViewAttached(@NonNull View paramView)
+  {
+    if ((this.presentation == null) || (this.presentation.getView() == null)) {
+      return;
+    }
+    this.presentation.getView().onFlutterViewAttached(paramView);
+  }
+  
+  void onFlutterViewDetached()
+  {
+    if ((this.presentation == null) || (this.presentation.getView() == null)) {
+      return;
+    }
+    this.presentation.getView().onFlutterViewDetached();
+  }
+  
   void onInputConnectionLocked()
   {
     if ((this.presentation == null) || (this.presentation.getView() == null)) {
@@ -98,7 +115,7 @@ class VirtualDisplayController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.VirtualDisplayController
  * JD-Core Version:    0.7.0.1
  */

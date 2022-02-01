@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aiqy;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -8,23 +7,21 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Message;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
 import android.util.Pair;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bayu;
-import bdif;
-import com.tencent.common.app.BaseApplicationImpl;
+import bdzx;
+import bgnl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
@@ -34,26 +31,24 @@ import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.MediaFileFilter;
 import com.tencent.mobileqq.activity.photo.MediaScanner;
 import com.tencent.mobileqq.activity.photo.MimeHelper;
+import com.tencent.mobileqq.activity.photo.album.queryMedia.MediaQueryHelper;
 import com.tencent.mobileqq.transfile.AlbumThumbDownloader;
 import com.tencent.mobileqq.widget.NumberCheckBox;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.GestureSelectGridView;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
-  extends PhotoListLogic<K>
+public class PhotoListLogicBase<K extends AbstractPhotoListActivity, O extends OtherCommonData>
+  extends PhotoListLogic<K, O>
   implements PhotoListLogic.IadapterCallback, PhotoListLogic.IcheckBoxCallback, PhotoListLogic.IitemClickCallback
 {
   protected PhotoListLogicBase(K paramK)
@@ -75,7 +70,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
         return false;
         i = paramLocalMediaInfo.selectStatus;
       } while (((i == 1) && (paramBoolean)) || ((i == 2) && (!paramBoolean)));
-      if ((i != 2) || (!paramBoolean) || (((aiqy)localObject1).selectedPhotoList.size() < ((aiqy)localObject1).maxSelectNum)) {
+      if ((i != 2) || (!paramBoolean) || (((PhotoCommonBaseData)localObject1).selectedPhotoList.size() < ((PhotoCommonBaseData)localObject1).maxSelectNum)) {
         break;
       }
       l = System.currentTimeMillis();
@@ -101,15 +96,11 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
         localObject2 = this.mPhotoListData;
         ((PhotoListBaseData)localObject2).gifSelectedCount += 1;
       }
-      ((aiqy)localObject1).selectedPhotoList.add(str);
-      ((aiqy)localObject1).selectedIndex.add(paramLocalMediaInfo.position);
-      if (((aiqy)localObject1).needMediaInfo) {
-        ((aiqy)localObject1).selectedMediaInfoHashMap.put(str, paramLocalMediaInfo);
+      ((PhotoCommonBaseData)localObject1).selectedPhotoList.add(str);
+      ((PhotoCommonBaseData)localObject1).selectedIndex.add(paramLocalMediaInfo.position);
+      if (((PhotoCommonBaseData)localObject1).needMediaInfo) {
+        ((PhotoCommonBaseData)localObject1).selectedMediaInfoHashMap.put(str, paramLocalMediaInfo);
       }
-      if (this.mPhotoListData.cancelPresendPathSet.contains(str)) {
-        this.mPhotoListData.cancelPresendPathSet.remove(str);
-      }
-      this.mPhotoListData.presendPathSet.add(str);
       localObject1 = this.mActivity.getIntent();
       if (!((Intent)localObject1).hasExtra("param_initTime")) {
         ((Intent)localObject1).putExtra("param_initTime", System.currentTimeMillis());
@@ -122,17 +113,17 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
         paramLocalMediaInfo = new LinkedHashMap();
         QAlbumUtil.sSelectItemPosMap.put(this.mPhotoCommonData.albumId, paramLocalMediaInfo);
       }
-      paramLocalMediaInfo.put(str, Integer.valueOf(this.mActivity.mGridView.getFirstVisiblePosition()));
+      paramLocalMediaInfo.put(str, Integer.valueOf(this.mActivity.gridLayoutManager.findFirstVisibleItemPosition()));
       paramLocalMediaInfo = QAlbumUtil.sSelectItemAlbum;
       if (!paramLocalMediaInfo.containsKey(str)) {
         paramLocalMediaInfo.put(str, new Pair(this.mPhotoCommonData.albumId, this.mPhotoCommonData.albumName));
       }
       paramLocalMediaInfo = this.mActivity;
       if (paramBoolean) {
-        break label784;
+        break label693;
       }
     }
-    label784:
+    label693:
     for (paramBoolean = true;; paramBoolean = false)
     {
       paramLocalMediaInfo.selectLimitRemind(paramBoolean);
@@ -150,96 +141,89 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
         localObject2 = this.mPhotoListData;
         ((PhotoListBaseData)localObject2).gifSelectedCount -= 1;
       }
-      ((aiqy)localObject1).selectedPhotoList.remove(paramLocalMediaInfo.path);
-      ((aiqy)localObject1).selectedIndex.remove(paramLocalMediaInfo.position);
-      if (((aiqy)localObject1).needMediaInfo) {
-        ((aiqy)localObject1).selectedMediaInfoHashMap.remove(str);
+      ((PhotoCommonBaseData)localObject1).selectedPhotoList.remove(paramLocalMediaInfo.path);
+      ((PhotoCommonBaseData)localObject1).selectedIndex.remove(paramLocalMediaInfo.position);
+      if (((PhotoCommonBaseData)localObject1).needMediaInfo) {
+        ((PhotoCommonBaseData)localObject1).selectedMediaInfoHashMap.remove(str);
       }
-      if (this.mPhotoListData.presendPathSet.contains(paramLocalMediaInfo.path)) {
-        this.mPhotoListData.presendPathSet.remove(paramLocalMediaInfo.path);
-      }
-      for (;;)
-      {
-        paramLocalMediaInfo.selectStatus = 2;
-        paramLocalMediaInfo = (HashMap)QAlbumUtil.sSelectItemPosMap.get(this.mPhotoCommonData.albumId);
-        if (paramLocalMediaInfo != null) {
-          paramLocalMediaInfo.remove(str);
-        }
-        paramLocalMediaInfo = QAlbumUtil.sSelectItemAlbum;
-        if (!paramLocalMediaInfo.containsKey(str)) {
-          break;
-        }
+      paramLocalMediaInfo.selectStatus = 2;
+      paramLocalMediaInfo = (HashMap)QAlbumUtil.sSelectItemPosMap.get(this.mPhotoCommonData.albumId);
+      if (paramLocalMediaInfo != null) {
         paramLocalMediaInfo.remove(str);
-        break;
-        this.mPhotoListData.cancelPresendPathSet.add(paramLocalMediaInfo.path);
       }
+      paramLocalMediaInfo = QAlbumUtil.sSelectItemAlbum;
+      if (!paramLocalMediaInfo.containsKey(str)) {
+        break;
+      }
+      paramLocalMediaInfo.remove(str);
+      break;
     }
   }
   
-  public void caseCamera(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  public void caseCamera(View paramView, int paramInt) {}
   
-  public Intent caseNoSingModeImage(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public Intent caseNoSingModeImage(View paramView, int paramInt)
   {
-    paramAdapterView = this.mActivity.photoListAdapter.getItem(paramInt);
-    paramView = this.mActivity.getIntent();
-    paramView.putExtra("ALBUM_NAME", this.mPhotoCommonData.albumName);
-    paramView.putExtra("ALBUM_ID", this.mPhotoCommonData.albumId);
-    paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.mPhotoCommonData.selectedPhotoList);
-    paramView.putIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS", this.mPhotoCommonData.selectedIndex);
-    if (QAlbumUtil.getMediaType(paramAdapterView) == 0) {
-      paramView.putExtra("PhotoConst.CURRENT_SELECTED_INDEX", paramAdapterView.position);
+    paramView = this.mActivity.photoListAdapter.getItem(paramInt);
+    Intent localIntent = this.mActivity.getIntent();
+    localIntent.putExtra("ALBUM_NAME", this.mPhotoCommonData.albumName);
+    localIntent.putExtra("ALBUM_ID", this.mPhotoCommonData.albumId);
+    localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.mPhotoCommonData.selectedPhotoList);
+    localIntent.putIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS", this.mPhotoCommonData.selectedIndex);
+    if (QAlbumUtil.getMediaType(paramView) == 0) {
+      localIntent.putExtra("PhotoConst.CURRENT_SELECTED_INDEX", paramView.position);
     }
-    paramView.putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
-    paramView.putExtra("PhotoConst.SHOW_ALBUM", true);
-    PhotoListBaseData.sPhotoListFirstPos = this.mActivity.mGridView.getFirstVisiblePosition();
+    localIntent.putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
+    localIntent.putExtra("PhotoConst.SHOW_ALBUM", true);
+    PhotoListBaseData.sPhotoListFirstPos = this.mActivity.gridLayoutManager.findFirstVisibleItemPosition();
     if (this.mPhotoCommonData.needMediaInfo)
     {
-      if (!this.mPhotoCommonData.selectedMediaInfoHashMap.containsKey(paramAdapterView.path)) {
-        this.mPhotoCommonData.selectedMediaInfoHashMap.put(paramAdapterView.path, paramAdapterView);
+      if (!this.mPhotoCommonData.selectedMediaInfoHashMap.containsKey(paramView.path)) {
+        this.mPhotoCommonData.selectedMediaInfoHashMap.put(paramView.path, paramView);
       }
-      paramView.putExtra("PeakConstants.selectedMediaInfoHashMap", this.mPhotoCommonData.selectedMediaInfoHashMap);
+      localIntent.putExtra("PeakConstants.selectedMediaInfoHashMap", this.mPhotoCommonData.selectedMediaInfoHashMap);
     }
-    paramView.setClass(this.mActivity, this.mActivity.getJumpActivity());
-    paramView.addFlags(603979776);
-    return paramView;
+    localIntent.setClass(this.mActivity, this.mActivity.getJumpActivity());
+    localIntent.addFlags(603979776);
+    return localIntent;
   }
   
-  public void caseSingleModeImage(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  public void caseSingleModeImage(View paramView, int paramInt) {}
   
-  public void caseVideo(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void caseVideo(View paramView, int paramInt)
   {
-    paramAdapterView = this.mActivity.photoListAdapter.getItem(paramInt);
-    if (paramAdapterView == null) {}
+    paramView = this.mActivity.photoListAdapter.getItem(paramInt);
+    if (paramView == null) {}
     do
     {
       return;
       this.mActivity.getIntent();
-      paramView = QAlbumUtil.sSelectItemAlbum;
-      if (!paramView.containsKey(paramAdapterView.path))
+      localObject1 = QAlbumUtil.sSelectItemAlbum;
+      if (!((HashMap)localObject1).containsKey(paramView.path))
       {
-        localObject = new Pair(this.mPhotoCommonData.albumId, this.mPhotoCommonData.albumName);
-        paramView.put(paramAdapterView.path, localObject);
+        localObject2 = new Pair(this.mPhotoCommonData.albumId, this.mPhotoCommonData.albumName);
+        ((HashMap)localObject1).put(paramView.path, localObject2);
       }
-      this.mActivity.recordLastPos(paramAdapterView.path);
+      this.mActivity.recordLastPos(paramView.path);
     } while (this.mPhotoListData.isSingleMode);
-    paramAdapterView = this.mActivity.getIntent();
-    paramAdapterView.putExtra("ALBUM_NAME", this.mPhotoCommonData.albumName);
-    paramAdapterView.putExtra("ALBUM_ID", this.mPhotoCommonData.albumId);
-    paramView = this.mActivity.photoListAdapter.getItem(paramInt);
-    paramAdapterView.putExtra("PhotoConst.CURRENT_SELECTED_INDEX", paramView.position);
-    paramAdapterView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.mPhotoCommonData.selectedPhotoList);
-    paramAdapterView.putIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS", this.mPhotoCommonData.selectedIndex);
-    paramAdapterView.putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
-    paramAdapterView.putExtra("PhotoConst.SHOW_ALBUM", true);
-    PhotoListBaseData.sPhotoListFirstPos = this.mActivity.mGridView.getFirstVisiblePosition();
-    Object localObject = this.mPhotoCommonData.selectedMediaInfoHashMap;
-    if (!((HashMap)localObject).containsKey(paramView.path)) {
-      ((HashMap)localObject).put(paramView.path, paramView);
+    paramView = this.mActivity.getIntent();
+    paramView.putExtra("ALBUM_NAME", this.mPhotoCommonData.albumName);
+    paramView.putExtra("ALBUM_ID", this.mPhotoCommonData.albumId);
+    Object localObject1 = this.mActivity.photoListAdapter.getItem(paramInt);
+    paramView.putExtra("PhotoConst.CURRENT_SELECTED_INDEX", ((LocalMediaInfo)localObject1).position);
+    paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.mPhotoCommonData.selectedPhotoList);
+    paramView.putIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS", this.mPhotoCommonData.selectedIndex);
+    paramView.putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
+    paramView.putExtra("PhotoConst.SHOW_ALBUM", true);
+    PhotoListBaseData.sPhotoListFirstPos = this.mActivity.gridLayoutManager.findFirstVisibleItemPosition();
+    Object localObject2 = this.mPhotoCommonData.selectedMediaInfoHashMap;
+    if (!((HashMap)localObject2).containsKey(((LocalMediaInfo)localObject1).path)) {
+      ((HashMap)localObject2).put(((LocalMediaInfo)localObject1).path, localObject1);
     }
-    paramAdapterView.putExtra("PeakConstants.selectedMediaInfoHashMap", (Serializable)localObject);
-    paramAdapterView.setClass(this.mActivity, this.mActivity.getJumpActivity());
-    paramAdapterView.addFlags(603979776);
-    this.mActivity.startActivity(paramAdapterView);
+    paramView.putExtra("PeakConstants.selectedMediaInfoHashMap", (Serializable)localObject2);
+    paramView.setClass(this.mActivity, this.mActivity.getJumpActivity());
+    paramView.addFlags(603979776);
+    this.mActivity.startActivity(paramView);
     this.mActivity.finish();
     QAlbumUtil.anim(this.mActivity, true, true);
   }
@@ -251,7 +235,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
     }
     if (this.mActivity.photoListAdapter != null)
     {
-      int i = this.mActivity.photoListAdapter.getCount();
+      int i = this.mActivity.photoListAdapter.getItemCount();
       QAlbumUtil.sLastAlbumPhotoCountMap.put(this.mPhotoCommonData.albumId, Integer.valueOf(i));
     }
     if (this.mActivity.queryPhotoTask != null) {
@@ -319,7 +303,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
       paramIntent.putExtra("ALBUM_NAME", this.mPhotoCommonData.albumName);
       paramIntent.putExtra("ALBUM_ID", this.mPhotoCommonData.albumId);
       paramIntent.putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
-      PhotoListBaseData.sPhotoListFirstPos = this.mActivity.mGridView.getFirstVisiblePosition();
+      PhotoListBaseData.sPhotoListFirstPos = this.mActivity.gridLayoutManager.findFirstVisibleItemPosition();
       paramIntent.setClass(this.mActivity, this.mActivity.getJumpActivity());
       paramIntent.addFlags(603979776);
       startPhotoPreviewActivity(paramIntent);
@@ -332,262 +316,92 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
   protected String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
   {
     int i = this.mPhotoCommonData.maxSelectNum;
-    return this.mActivity.getResources().getString(2131695260, new Object[] { Integer.valueOf(i) });
+    return this.mActivity.getResources().getString(2131694275, new Object[] { Integer.valueOf(i) });
   }
   
-  protected List<LocalMediaInfo> getLocalMediaInfos()
+  public AbstractPhotoListActivity.Holder getViewCaseCamera(@NonNull AbstractPhotoListActivity.Holder paramHolder, int paramInt)
   {
-    int i = -1;
-    if (this.mPhotoCommonData.albumId.equals("$RecentAlbumId")) {
-      i = 100;
-    }
-    List localList2 = QAlbumUtil.getAlbumMedias(this.mActivity, this.mPhotoCommonData.albumId, this.mPhotoCommonData.albumName, i, this.mPhotoListData.filter, this.mPhotoListData.filterVideoDurationLimit);
-    bdif.a("PEAK", "getAlbumMedias");
-    List localList1 = localList2;
-    if (localList2 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectPhotoTrace", 2, "photoList is null");
-      }
-      localList1 = null;
-    }
-    return localList1;
+    return paramHolder;
   }
   
-  public View getViewCaseCamera(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public AbstractPhotoListActivity.Holder getViewCaseImage(@NonNull AbstractPhotoListActivity.Holder paramHolder, int paramInt)
   {
-    if (paramView == null)
-    {
-      paramView = new ImageView(this.mActivity);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(this.mActivity.mImageWidth, this.mActivity.mImageHeight));
-    }
-    for (;;)
-    {
-      paramViewGroup = (ImageView)paramView;
-      paramView.setBackgroundColor(-16777216);
-      paramViewGroup.setImageResource(2130841170);
-      paramViewGroup.setScaleType(ImageView.ScaleType.CENTER);
-      return paramView;
-    }
-  }
-  
-  public View getViewCaseImage(int paramInt, View paramView, ViewGroup paramViewGroup, AbstractPhotoListActivity.PhotoListAdapter.Holder paramHolder, AbstractPhotoListActivity.CheckBoxClickedListener paramCheckBoxClickedListener)
-  {
-    if (paramView == null)
-    {
-      paramViewGroup = this.mActivity.photoListAdapter.mInflater.inflate(2131561156, null);
-      paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(this.mActivity.mImageWidth, this.mActivity.mImageHeight));
-      paramHolder.mImageView = ((ImageView)paramViewGroup.findViewById(2131371896));
-      paramHolder.mImageViewPanoramaIcon = ((ImageView)paramViewGroup.findViewById(2131371857));
-      paramHolder.mMaskView = ((ImageView)paramViewGroup.findViewById(2131368534));
-      paramHolder.mSelectedIconView = ((ImageView)paramViewGroup.findViewById(2131371901));
-      paramHolder.mSelectedBtn = paramViewGroup.findViewById(2131371898);
-      paramHolder.mCheckBox = ((NumberCheckBox)paramViewGroup.findViewById(2131371899));
-      paramHolder.mPhotoFlagView = ((ImageView)paramViewGroup.findViewById(2131371827));
-      paramHolder.mPhotoFlagView.setVisibility(8);
-      if (this.mPhotoCommonData.maxSelectNum > 100) {
-        paramHolder.mCheckBox.setTextSize(10.0F);
-      }
-      paramHolder.checkBoxListener = paramCheckBoxClickedListener;
-      if (paramHolder.mSelectedBtn != null) {
-        paramHolder.mSelectedBtn.setOnClickListener(paramHolder.checkBoxListener);
-      }
-      paramViewGroup.setTag(paramHolder);
-      paramView = paramViewGroup;
-      if (!this.mPhotoListData.isSingleMode)
-      {
-        paramHolder.mSelectedBtn.setVisibility(0);
-        paramView = paramViewGroup;
-      }
-    }
-    for (;;)
-    {
-      paramHolder.checkBoxListener.setPosition(paramInt);
-      paramHolder.checkBoxListener.setCheckBox(paramHolder.mCheckBox);
-      paramCheckBoxClickedListener = paramHolder.mImageView;
-      paramCheckBoxClickedListener.setAdjustViewBounds(false);
-      paramViewGroup = this.mActivity.photoListAdapter.getItem(paramInt);
-      paramView.setContentDescription(QAlbumUtil.createContentDescription(0, paramViewGroup, paramInt));
-      int i;
-      if (paramViewGroup != null)
-      {
-        paramHolder.mImageViewPanoramaIcon.setVisibility(4);
-        if ((!this.mPhotoListData.showGifTypeIcon) || (!this.mActivity.isGif(paramViewGroup))) {
-          break label746;
-        }
-        if (paramHolder.mImageType == null)
-        {
-          paramHolder.mImageType = this.mActivity.photoListAdapter.newImageTypeView();
-          paramHolder.mImageType.setText("GIF");
-          localObject = new RelativeLayout.LayoutParams(-2, -2);
-          ((RelativeLayout.LayoutParams)localObject).addRule(11);
-          ((RelativeLayout.LayoutParams)localObject).addRule(12);
-          ((RelativeLayout)paramView).addView(paramHolder.mImageType, (ViewGroup.LayoutParams)localObject);
-        }
-        paramHolder.mImageType.setVisibility(0);
-        i = AlbumThumbDownloader.THUMB_WIDHT;
-        paramViewGroup.thumbHeight = i;
-        paramViewGroup.thumbWidth = i;
-        Object localObject = paramHolder.mDrawable;
-        StringBuilder localStringBuilder = new StringBuilder("albumthumb");
-        localStringBuilder.append("://");
-        localStringBuilder.append(paramViewGroup.path);
-        if ((localObject == null) || (!((URLDrawable)localObject).getURL().toString().equals(localStringBuilder.toString())))
-        {
-          localObject = QAlbumUtil.generateAlbumThumbURL(paramViewGroup);
-          if (QLog.isColorLevel()) {
-            QLog.d("PhotoListActivity", 2, "PhotoListAdapter,getView(),image url :" + ((URL)localObject).toString());
-          }
-          localObject = bayu.a((URL)localObject, this.mActivity.photoListAdapter.colorDrawable, this.mActivity.photoListAdapter.mDefaultPhotoDrawable);
-          ((URLDrawable)localObject).setTag(paramViewGroup);
-          paramCheckBoxClickedListener.setImageDrawable((Drawable)localObject);
-          ((URLImageView)paramCheckBoxClickedListener).setURLDrawableDownListener(this.mActivity.photoListAdapter);
-          paramHolder.mDrawable = ((URLDrawable)localObject);
-        }
-        i = paramViewGroup.selectStatus;
-        if (i != 1) {
-          break label767;
-        }
-        paramHolder.mCheckBox.setCheckedNumber(this.mPhotoCommonData.selectedPhotoList.indexOf(paramViewGroup.path) + 1);
-        if (paramView.getBackground() != null) {
-          paramView.setBackgroundDrawable(null);
-        }
-      }
-      for (;;)
-      {
-        if (AppSetting.c)
-        {
-          paramCheckBoxClickedListener = QAlbumUtil.createContentDescriptionWithCheckBox(0, paramViewGroup, paramInt, paramHolder.mCheckBox.isChecked());
-          paramHolder.mCheckBox.setContentDescription(paramCheckBoxClickedListener);
-        }
-        paramViewGroup.visableTime = SystemClock.uptimeMillis();
-        paramViewGroup.listViewPosition = paramInt;
-        processViewCaseImage(paramHolder, paramViewGroup);
-        if ((this.mPhotoCommonData.selectedPhotoList.size() < this.mPhotoCommonData.maxSelectNum) || (i == 1) || (this.mPhotoListData.isSingleMode)) {
-          break label809;
-        }
-        paramHolder.mImageView.setAlpha(0.3F);
-        return paramView;
-        label746:
-        if (paramHolder.mImageType == null) {
-          break;
-        }
-        paramHolder.mImageType.setVisibility(8);
-        break;
-        label767:
-        if (i == 3)
-        {
-          paramHolder.mCheckBox.setChecked(false);
-        }
-        else
-        {
-          paramHolder.mCheckBox.setChecked(false);
-          if (paramView.getBackground() != null) {
-            paramView.setBackgroundDrawable(null);
-          }
-        }
-      }
-      label809:
-      paramHolder.mImageView.setAlpha(1.0F);
-      return paramView;
-    }
-  }
-  
-  public View getViewCaseVideo(int paramInt, View paramView, ViewGroup paramViewGroup, AbstractPhotoListActivity.PhotoListAdapter.Holder paramHolder, AbstractPhotoListActivity.CheckBoxClickedListener paramCheckBoxClickedListener)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramView = this.mActivity.photoListAdapter.mInflater.inflate(2131561393, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(this.mActivity.mImageWidth, this.mActivity.mImageHeight));
-      paramHolder.mImageView = ((ImageView)paramView.findViewById(2131371896));
-      paramHolder.mTextView = ((TextView)paramView.findViewById(2131371902));
-      paramHolder.mMaskView = ((ImageView)paramView.findViewById(2131368534));
-      paramHolder.mSelectedIconView = ((ImageView)paramView.findViewById(2131371901));
-      paramHolder.mSelectedBtn = paramView.findViewById(2131371898);
-      paramHolder.mCheckBox = ((NumberCheckBox)paramView.findViewById(2131371899));
-      if (this.mPhotoCommonData.maxSelectNum > 100) {
-        paramHolder.mCheckBox.setTextSize(10.0F);
-      }
-      paramHolder.checkBoxListener = paramCheckBoxClickedListener;
-      if (paramHolder.mSelectedBtn != null) {
-        paramHolder.mSelectedBtn.setOnClickListener(paramHolder.checkBoxListener);
-      }
-      paramView.setTag(paramHolder);
-      paramViewGroup = paramView;
-      if (!this.mPhotoListData.isSingleMode)
-      {
-        paramViewGroup = paramView;
-        if (this.mPhotoListData.isSupportVideoCheckbox)
-        {
-          paramHolder.mSelectedBtn.setVisibility(0);
-          paramViewGroup = paramView;
-        }
-      }
-    }
+    Object localObject1 = paramHolder.itemView;
     paramHolder.checkBoxListener.setPosition(paramInt);
     paramHolder.checkBoxListener.setCheckBox(paramHolder.mCheckBox);
     ImageView localImageView = paramHolder.mImageView;
     localImageView.setAdjustViewBounds(false);
-    paramCheckBoxClickedListener = this.mActivity.photoListAdapter.getItem(paramInt);
-    paramViewGroup.setContentDescription(QAlbumUtil.createContentDescription(1, paramCheckBoxClickedListener, paramInt));
+    LocalMediaInfo localLocalMediaInfo = this.mActivity.photoListAdapter.getItem(paramInt);
+    Object localObject2 = QAlbumUtil.createContentDescription(0, localLocalMediaInfo, paramInt);
+    ((View)localObject1).setContentDescription((CharSequence)localObject2);
+    paramHolder.mImageView.setContentDescription((CharSequence)localObject2);
     int i;
-    if (paramCheckBoxClickedListener.isSystemMeidaStore)
+    if (localLocalMediaInfo != null)
     {
-      paramView = QAlbumUtil.generateAlbumThumbURL(paramCheckBoxClickedListener, "VIDEO");
-      i = AlbumThumbDownloader.THUMB_WIDHT;
-      paramCheckBoxClickedListener.thumbHeight = i;
-      paramCheckBoxClickedListener.thumbWidth = i;
-      URLDrawable localURLDrawable = paramHolder.mDrawable;
-      if ((localURLDrawable == null) || (!localURLDrawable.getURL().equals(paramView)))
+      paramHolder.mImageViewPanoramaIcon.setVisibility(4);
+      if ((!this.mPhotoListData.showGifTypeIcon) || (!this.mActivity.isGif(localLocalMediaInfo))) {
+        break label524;
+      }
+      if (paramHolder.mImageType == null)
       {
+        paramHolder.mImageType = this.mActivity.photoListAdapter.newImageTypeView();
+        paramHolder.mImageType.setText("GIF");
+        localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(11);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(12);
+        ((RelativeLayout)paramHolder.itemView).addView(paramHolder.mImageType, (ViewGroup.LayoutParams)localObject2);
+      }
+      paramHolder.mImageType.setVisibility(0);
+      i = AlbumThumbDownloader.THUMB_WIDHT;
+      localLocalMediaInfo.thumbHeight = i;
+      localLocalMediaInfo.thumbWidth = i;
+      localObject2 = paramHolder.mDrawable;
+      StringBuilder localStringBuilder = new StringBuilder("albumthumb");
+      localStringBuilder.append("://");
+      localStringBuilder.append(localLocalMediaInfo.path);
+      if ((localObject2 == null) || (!((URLDrawable)localObject2).getURL().toString().equals(localStringBuilder.toString())))
+      {
+        localObject2 = QAlbumUtil.generateAlbumThumbURL(localLocalMediaInfo);
         if (QLog.isColorLevel()) {
-          QLog.d("PhotoListActivity", 2, "PhotoListAdapter,getView(),vedio url :" + paramView.toString());
+          QLog.d("PhotoListActivity", 2, "PhotoListAdapter,getView(),image url :" + ((URL)localObject2).toString());
         }
-        paramView = bayu.a(paramView, this.mActivity.photoListAdapter.colorDrawable, this.mActivity.photoListAdapter.mDefaultPhotoDrawable);
-        paramView.setTag(paramCheckBoxClickedListener);
-        localImageView.setImageDrawable(paramView);
+        localObject2 = bdzx.a((URL)localObject2, this.mActivity.photoListAdapter.colorDrawable, this.mActivity.photoListAdapter.mDefaultPhotoDrawable);
+        ((URLDrawable)localObject2).setTag(localLocalMediaInfo);
+        localImageView.setImageDrawable((Drawable)localObject2);
         ((URLImageView)localImageView).setURLDrawableDownListener(this.mActivity.photoListAdapter);
-        paramHolder.mDrawable = paramView;
-        if (localURLDrawable != null) {
-          localURLDrawable.cancelDownload();
-        }
+        paramHolder.mDrawable = ((URLDrawable)localObject2);
       }
-      paramView = paramHolder.mTextView;
-      if ((paramCheckBoxClickedListener.isSystemMeidaStore) || (paramCheckBoxClickedListener.mDuration > 0L)) {
-        break label625;
-      }
-      paramView.setVisibility(8);
-      paramView = MediaScanner.getInstance(BaseApplicationImpl.getContext());
-      if (paramView != null) {
-        paramView.queryMediaInfoDuration(this, paramCheckBoxClickedListener, paramInt);
-      }
-      label500:
-      i = paramCheckBoxClickedListener.selectStatus;
+      i = localLocalMediaInfo.selectStatus;
       if (i != 1) {
-        break label645;
+        break label543;
       }
-      paramHolder.mCheckBox.setCheckedNumber(this.mPhotoCommonData.selectedPhotoList.indexOf(paramCheckBoxClickedListener.path) + 1);
-      if (paramViewGroup.getBackground() != null) {
-        paramViewGroup.setBackgroundDrawable(null);
+      paramHolder.mCheckBox.setCheckedNumber(this.mPhotoCommonData.selectedPhotoList.indexOf(localLocalMediaInfo.path) + 1);
+      if (((View)localObject1).getBackground() != null) {
+        ((View)localObject1).setBackgroundDrawable(null);
       }
     }
     for (;;)
     {
-      paramCheckBoxClickedListener.visableTime = SystemClock.uptimeMillis();
-      paramCheckBoxClickedListener.listViewPosition = paramInt;
+      if (AppSetting.c)
+      {
+        localObject1 = QAlbumUtil.createContentDescriptionWithCheckBox(0, localLocalMediaInfo, paramInt, paramHolder.mCheckBox.isChecked());
+        paramHolder.mCheckBox.setContentDescription((CharSequence)localObject1);
+      }
+      localLocalMediaInfo.visableTime = SystemClock.uptimeMillis();
+      localLocalMediaInfo.listViewPosition = paramInt;
+      processViewCaseImage(paramHolder, localLocalMediaInfo);
       if ((this.mPhotoCommonData.selectedPhotoList.size() < this.mPhotoCommonData.maxSelectNum) || (i == 1) || (this.mPhotoListData.isSingleMode)) {
-        break label687;
+        break label584;
       }
       paramHolder.mImageView.setAlpha(0.3F);
-      return paramViewGroup;
-      paramView = QAlbumUtil.generateAlbumThumbURL(paramCheckBoxClickedListener, "APP_VIDEO");
+      return paramHolder;
+      label524:
+      if (paramHolder.mImageType == null) {
+        break;
+      }
+      paramHolder.mImageType.setVisibility(8);
       break;
-      label625:
-      paramView.setVisibility(0);
-      paramView.setText(AbstractPhotoListActivity.formatTimeToString(paramCheckBoxClickedListener.mDuration));
-      break label500;
-      label645:
+      label543:
       if (i == 3)
       {
         paramHolder.mCheckBox.setChecked(false);
@@ -595,14 +409,99 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
       else
       {
         paramHolder.mCheckBox.setChecked(false);
-        if (paramViewGroup.getBackground() != null) {
-          paramViewGroup.setBackgroundDrawable(null);
+        if (((View)localObject1).getBackground() != null) {
+          ((View)localObject1).setBackgroundDrawable(null);
         }
       }
     }
-    label687:
+    label584:
     paramHolder.mImageView.setAlpha(1.0F);
-    return paramViewGroup;
+    return paramHolder;
+  }
+  
+  public AbstractPhotoListActivity.Holder getViewCaseVideo(@NonNull AbstractPhotoListActivity.Holder paramHolder, int paramInt)
+  {
+    View localView = paramHolder.itemView;
+    paramHolder.checkBoxListener.setPosition(paramInt);
+    paramHolder.checkBoxListener.setCheckBox(paramHolder.mCheckBox);
+    ImageView localImageView = paramHolder.mImageView;
+    localImageView.setAdjustViewBounds(false);
+    LocalMediaInfo localLocalMediaInfo = this.mActivity.photoListAdapter.getItem(paramInt);
+    Object localObject = QAlbumUtil.createContentDescription(1, localLocalMediaInfo, paramInt);
+    localView.setContentDescription((CharSequence)localObject);
+    paramHolder.mImageView.setContentDescription((CharSequence)localObject);
+    int i;
+    if (localLocalMediaInfo.isSystemMeidaStore)
+    {
+      localObject = QAlbumUtil.generateAlbumThumbURL(localLocalMediaInfo, "VIDEO");
+      i = AlbumThumbDownloader.THUMB_WIDHT;
+      localLocalMediaInfo.thumbHeight = i;
+      localLocalMediaInfo.thumbWidth = i;
+      URLDrawable localURLDrawable = paramHolder.mDrawable;
+      if ((localURLDrawable == null) || (!localURLDrawable.getURL().equals(localObject)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PhotoListActivity", 2, "PhotoListAdapter,getView(),vedio url :" + ((URL)localObject).toString());
+        }
+        localObject = bdzx.a((URL)localObject, this.mActivity.photoListAdapter.colorDrawable, this.mActivity.photoListAdapter.mDefaultPhotoDrawable);
+        ((URLDrawable)localObject).setTag(localLocalMediaInfo);
+        localImageView.setImageDrawable((Drawable)localObject);
+        ((URLImageView)localImageView).setURLDrawableDownListener(this.mActivity.photoListAdapter);
+        paramHolder.mDrawable = ((URLDrawable)localObject);
+        if (localURLDrawable != null) {
+          localURLDrawable.cancelDownload();
+        }
+      }
+      localObject = paramHolder.mTextView;
+      if ((localLocalMediaInfo.isSystemMeidaStore) || (localLocalMediaInfo.mDuration > 0L)) {
+        break label418;
+      }
+      ((TextView)localObject).setVisibility(8);
+      localObject = MediaScanner.getInstance(BaseApplication.getContext());
+      if (localObject != null) {
+        ((MediaScanner)localObject).queryMediaInfoDuration(this, localLocalMediaInfo, paramInt);
+      }
+      label295:
+      i = localLocalMediaInfo.selectStatus;
+      if (i != 1) {
+        break label440;
+      }
+      paramHolder.mCheckBox.setCheckedNumber(this.mPhotoCommonData.selectedPhotoList.indexOf(localLocalMediaInfo.path) + 1);
+      if (localView.getBackground() != null) {
+        localView.setBackgroundDrawable(null);
+      }
+    }
+    for (;;)
+    {
+      localLocalMediaInfo.visableTime = SystemClock.uptimeMillis();
+      localLocalMediaInfo.listViewPosition = paramInt;
+      if ((this.mPhotoCommonData.selectedPhotoList.size() < this.mPhotoCommonData.maxSelectNum) || (i == 1) || (this.mPhotoListData.isSingleMode)) {
+        break label481;
+      }
+      paramHolder.mImageView.setAlpha(0.3F);
+      return paramHolder;
+      localObject = QAlbumUtil.generateAlbumThumbURL(localLocalMediaInfo, "APP_VIDEO");
+      break;
+      label418:
+      ((TextView)localObject).setVisibility(0);
+      ((TextView)localObject).setText(AbstractPhotoListActivity.formatTimeToString(localLocalMediaInfo.mDuration));
+      break label295;
+      label440:
+      if (i == 3)
+      {
+        paramHolder.mCheckBox.setChecked(false);
+      }
+      else
+      {
+        paramHolder.mCheckBox.setChecked(false);
+        if (localView.getBackground() != null) {
+          localView.setBackgroundDrawable(null);
+        }
+      }
+    }
+    label481:
+    paramHolder.mImageView.setAlpha(1.0F);
+    return paramHolder;
   }
   
   protected void handlePicCapture(Intent paramIntent) {}
@@ -614,6 +513,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
   protected void initData(Intent paramIntent)
   {
     this.mPhotoListData.isRecodeLastAlbumPath = paramIntent.getBooleanExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", true);
+    this.mPhotoListData.olderAlbumId = this.mPhotoCommonData.albumId;
     if (paramIntent.getBooleanExtra("album_enter_directly", false))
     {
       long l1 = System.currentTimeMillis();
@@ -654,13 +554,13 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
       if (this.mPhotoCommonData.maxSelectNum > 1) {
         this.mPhotoListData.isSingleMode = false;
       }
-      this.mPhotoListData.showMediaType = paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
-      this.mPhotoListData.filter = MediaFileFilter.getFilter(this.mPhotoListData.showMediaType);
-      this.mPhotoListData.filterVideoGif = paramIntent.getBooleanExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", false);
-      if (this.mPhotoListData.filterVideoGif)
+      this.mPhotoCommonData.showMediaType = paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
+      this.mPhotoCommonData.filter = MediaFileFilter.getFilter(this.mPhotoCommonData.showMediaType);
+      this.mPhotoCommonData.filterVideoGif = paramIntent.getBooleanExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", false);
+      if (this.mPhotoCommonData.filterVideoGif)
       {
-        this.mPhotoListData.filter = new DynamicImageMediaFileFilter(MediaFileFilter.MEDIA_FILTER_SHOW_IMAGE);
-        this.mPhotoListData.showMediaType = 1;
+        this.mPhotoCommonData.filter = new DynamicImageMediaFileFilter(MediaFileFilter.MEDIA_FILTER_SHOW_IMAGE);
+        this.mPhotoCommonData.showMediaType = 1;
       }
       this.mPhotoListData.customSendBtnText = paramIntent.getStringExtra("PhotoConst.CUSTOM_SENDBTN_TEXT");
       this.mPhotoListData.isShowCamera = paramIntent.getBooleanExtra("PhotoConst.IS_SHOW_CAMERA", false);
@@ -770,7 +670,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
         paramView = new LinkedHashMap();
         QAlbumUtil.sSelectItemPosMap.put(this.mPhotoCommonData.albumId, paramView);
       }
-      paramView.put(str, Integer.valueOf(this.mActivity.mGridView.getFirstVisiblePosition()));
+      paramView.put(str, Integer.valueOf(this.mActivity.gridLayoutManager.findFirstVisibleItemPosition()));
       paramView = QAlbumUtil.sSelectItemAlbum;
       if (!paramView.containsKey(str)) {
         paramView.put(str, new Pair(this.mPhotoCommonData.albumId, this.mPhotoCommonData.albumName));
@@ -841,14 +741,104 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
   
   protected void onQualityBtnClick(CompoundButton paramCompoundButton, boolean paramBoolean) {}
   
+  protected void onQueryMediaListBack(List<LocalMediaInfo> paramList)
+  {
+    int i = 0;
+    Object localObject2 = this.mPhotoCommonData;
+    if (((PhotoCommonBaseData)localObject2).selectedPhotoList == null) {
+      ((PhotoCommonBaseData)localObject2).selectedPhotoList = new ArrayList();
+    }
+    Object localObject1 = ((PhotoCommonBaseData)localObject2).selectedPhotoList;
+    if (((PhotoCommonBaseData)localObject2).selectedMediaInfoHashMap == null) {
+      ((PhotoCommonBaseData)localObject2).selectedMediaInfoHashMap = new HashMap();
+    }
+    localObject1 = ((PhotoCommonBaseData)localObject2).selectedMediaInfoHashMap;
+    bgnl.a();
+    this.mPhotoListData.videoSelectedCnt = 0;
+    this.mPhotoListData.gifSelectedCount = 0;
+    if (this.mPhotoCommonData.allMediaInfoHashMap == null)
+    {
+      this.mPhotoCommonData.allMediaInfoHashMap = new HashMap();
+      if (this.mPhotoCommonData.mediaPathsList == null) {
+        break label323;
+      }
+      this.mPhotoCommonData.mediaPathsList.clear();
+    }
+    label123:
+    Object localObject3;
+    for (;;)
+    {
+      if ((this.mPhotoListData.isShowCamera) && (((PhotoCommonBaseData)localObject2).albumId.equals("$RecentAlbumId")))
+      {
+        localObject3 = paramList.iterator();
+        for (;;)
+        {
+          if (((Iterator)localObject3).hasNext())
+          {
+            Object localObject4 = (LocalMediaInfo)((Iterator)localObject3).next();
+            if ((localObject4 != null) && (!TextUtils.isEmpty(((LocalMediaInfo)localObject4).path)))
+            {
+              PhotoListBaseData.newCaptureMediaInfo.remove(((LocalMediaInfo)localObject4).path);
+              ((HashMap)localObject1).remove(((LocalMediaInfo)localObject4).path);
+              continue;
+              localObject3 = this.mPhotoCommonData.selectedPhotoList.iterator();
+              while (((Iterator)localObject3).hasNext())
+              {
+                localObject4 = (String)((Iterator)localObject3).next();
+                if ((this.mPhotoCommonData.allMediaInfoHashMap.containsKey(localObject4)) && (!this.mPhotoCommonData.selectedMediaInfoHashMap.containsKey(localObject4))) {
+                  this.mPhotoCommonData.selectedMediaInfoHashMap.put(localObject4, this.mPhotoCommonData.allMediaInfoHashMap.get(localObject4));
+                }
+              }
+              ((PhotoCommonBaseData)localObject2).allMediaInfoHashMap.clear();
+              break;
+              label323:
+              this.mPhotoCommonData.mediaPathsList = new ArrayList();
+              break label123;
+            }
+          }
+        }
+        paramList.addAll(0, PhotoListBaseData.newCaptureMediaInfo.values());
+      }
+    }
+    if ((this.mPhotoListData.showCameraInVideo) && (((PhotoCommonBaseData)localObject2).albumId.equals("$VideoAlbumId")))
+    {
+      localObject2 = paramList.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (LocalMediaInfo)((Iterator)localObject2).next();
+        if ((localObject3 != null) && (!TextUtils.isEmpty(((LocalMediaInfo)localObject3).path)))
+        {
+          PhotoListBaseData.newCaptureMediaInfo.remove(((LocalMediaInfo)localObject3).path);
+          ((HashMap)localObject1).remove(((LocalMediaInfo)localObject3).path);
+        }
+      }
+      localObject1 = PhotoListBaseData.newCaptureMediaInfo.values().iterator();
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (LocalMediaInfo)((Iterator)localObject1).next();
+        if ((localObject2 == null) || (!"video/mp4".equals(((LocalMediaInfo)localObject2).mMimeType))) {
+          break label523;
+        }
+        paramList.add(i, localObject2);
+        i += 1;
+      }
+    }
+    label523:
+    for (;;)
+    {
+      break;
+      return;
+    }
+  }
+  
   protected boolean onQueryPhoto(List<LocalMediaInfo> paramList)
   {
     if (this.mActivity == null) {
       return false;
     }
-    Object localObject;
     if (paramList == null)
     {
+      Object localObject;
       if ((!this.mPhotoListData.isShowCamera) || (!this.mPhotoCommonData.albumId.equals("$RecentAlbumId")))
       {
         localObject = paramList;
@@ -870,12 +860,6 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
       updateButton();
       QQToast.a(this.mActivity, "暂无媒体文件", 1000).a();
       return false;
-    }
-    if (((this.mPhotoListData.isShowCamera) && (this.mPhotoCommonData.albumId.equals("$RecentAlbumId"))) || ((this.mPhotoListData.showCameraInVideo) && (this.mPhotoCommonData.albumId.equals("$VideoAlbumId"))))
-    {
-      localObject = new LocalMediaInfo();
-      ((LocalMediaInfo)localObject).mMimeType = "mobileqq/camera";
-      paramList.add(0, localObject);
     }
     this.mActivity.photoListAdapter.setPhotoList(paramList);
     if (paramList.isEmpty()) {
@@ -907,175 +891,40 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
     }
   }
   
-  protected void processQueryResult(List<LocalMediaInfo> paramList) {}
+  protected void processViewCaseImage(AbstractPhotoListActivity.Holder paramHolder, LocalMediaInfo paramLocalMediaInfo) {}
   
-  protected void processViewCaseImage(AbstractPhotoListActivity.PhotoListAdapter.Holder paramHolder, LocalMediaInfo paramLocalMediaInfo) {}
-  
-  protected List<LocalMediaInfo> queryPhotoList()
+  protected List<LocalMediaInfo> queryDoInBackground(Object... paramVarArgs)
   {
-    aiqy localaiqy = this.mPhotoCommonData;
-    if (localaiqy.selectedPhotoList == null) {
-      localaiqy.selectedPhotoList = new ArrayList();
+    if ((this.mPhotoCommonData.mMediaQueryHelper == null) || (!this.mPhotoCommonData.albumId.equals(this.mPhotoListData.olderAlbumId))) {
+      this.mPhotoCommonData.createMediaQueryHelper(this.mActivity);
     }
-    Object localObject3 = localaiqy.selectedPhotoList;
-    if (localaiqy.selectedMediaInfoHashMap == null) {
-      localaiqy.selectedMediaInfoHashMap = new HashMap();
-    }
-    Object localObject2 = localaiqy.selectedMediaInfoHashMap;
-    bdif.a();
-    Object localObject1 = getLocalMediaInfos();
-    if (localObject1 == null) {
-      localObject1 = new ArrayList();
-    }
-    for (;;)
+    this.mPhotoCommonData.mMediaQueryHelper.queryNext();
+    if (this.mPhotoCommonData.firstRecentInfo == null)
     {
-      this.mPhotoListData.videoSelectedCnt = 0;
-      this.mPhotoListData.gifSelectedCount = 0;
-      long l1 = System.currentTimeMillis();
-      long l2 = QAlbumUtil.sLastAlbumRecordTime;
-      if (QAlbumUtil.sLastAlbumPhotoCountMap.containsKey(localaiqy.albumId)) {}
-      for (int j = ((Integer)QAlbumUtil.sLastAlbumPhotoCountMap.get(localaiqy.albumId)).intValue();; j = 0)
-      {
-        Object localObject4;
-        Object localObject5;
-        if ((this.mPhotoListData.isShowCamera) && (localaiqy.albumId.equals("$RecentAlbumId")))
-        {
-          localObject4 = ((List)localObject1).iterator();
-          while (((Iterator)localObject4).hasNext())
-          {
-            localObject5 = (LocalMediaInfo)((Iterator)localObject4).next();
-            if ((localObject5 != null) && (!TextUtils.isEmpty(((LocalMediaInfo)localObject5).path)))
-            {
-              PhotoListBaseData.newCaptureMediaInfo.remove(((LocalMediaInfo)localObject5).path);
-              ((HashMap)localObject2).remove(((LocalMediaInfo)localObject5).path);
-            }
-          }
-          ((List)localObject1).addAll(0, PhotoListBaseData.newCaptureMediaInfo.values());
-        }
-        int i;
-        if ((this.mPhotoListData.showCameraInVideo) && (localaiqy.albumId.equals("$VideoAlbumId")))
-        {
-          localObject4 = ((List)localObject1).iterator();
-          while (((Iterator)localObject4).hasNext())
-          {
-            localObject5 = (LocalMediaInfo)((Iterator)localObject4).next();
-            if ((localObject5 != null) && (!TextUtils.isEmpty(((LocalMediaInfo)localObject5).path)))
-            {
-              PhotoListBaseData.newCaptureMediaInfo.remove(((LocalMediaInfo)localObject5).path);
-              ((HashMap)localObject2).remove(((LocalMediaInfo)localObject5).path);
-            }
-          }
-          localObject4 = PhotoListBaseData.newCaptureMediaInfo.values().iterator();
-          i = 0;
-          if (((Iterator)localObject4).hasNext())
-          {
-            localObject5 = (LocalMediaInfo)((Iterator)localObject4).next();
-            if ((localObject5 == null) || (!"video/mp4".equals(((LocalMediaInfo)localObject5).mMimeType))) {
-              break label1037;
-            }
-            ((List)localObject1).add(i, localObject5);
-            i += 1;
-          }
-        }
-        label1027:
-        label1037:
-        for (;;)
-        {
-          break;
-          processQueryResult((List)localObject1);
-          int k = ((List)localObject1).size();
-          localObject4 = new ArrayList(k);
-          i = 0;
-          if (i < ((List)localObject1).size())
-          {
-            localObject5 = (LocalMediaInfo)((List)localObject1).get(i);
-            if (((LocalMediaInfo)localObject5).path == null) {}
-            for (;;)
-            {
-              i += 1;
-              break;
-              int m = QAlbumUtil.getMediaType((LocalMediaInfo)localObject5);
-              ((LocalMediaInfo)localObject5).position = Integer.valueOf(((ArrayList)localObject4).size());
-              ((ArrayList)localObject4).add(((LocalMediaInfo)localObject5).path);
-              if (((ArrayList)localObject3).contains(((LocalMediaInfo)localObject5).path))
-              {
-                ((LocalMediaInfo)localObject5).selectStatus = 1;
-                if (!localaiqy.selectedIndex.contains(((LocalMediaInfo)localObject5).position)) {
-                  localaiqy.selectedIndex.add(((LocalMediaInfo)localObject5).position);
-                }
-                if ((this.mPhotoListData.isSupportVideoCheckbox) && (m == 1))
-                {
-                  PhotoListBaseData localPhotoListBaseData = this.mPhotoListData;
-                  localPhotoListBaseData.videoSelectedCnt += 1;
-                  if (this.mPhotoListData.videoSelectedCnt == 1) {
-                    this.mPhotoListData.selectedVideoInfo = ((LocalMediaInfo)localObject5);
-                  }
-                }
-                if ((this.mPhotoListData.isShowCamera) && (!((HashMap)localObject2).containsKey(((LocalMediaInfo)localObject5).path))) {
-                  ((HashMap)localObject2).put(((LocalMediaInfo)localObject5).path, localObject5);
-                }
-                if ((!TextUtils.isEmpty(((LocalMediaInfo)localObject5).mMimeType)) && ("image/gif".equals(((LocalMediaInfo)localObject5).mMimeType)))
-                {
-                  localObject5 = this.mPhotoListData;
-                  ((PhotoListBaseData)localObject5).gifSelectedCount += 1;
-                }
-              }
-              else if ((((ArrayList)localObject3).size() < localaiqy.maxSelectNum) && (((LocalMediaInfo)localObject5).path.equals(this.mPhotoListData.currentPhotoPath)))
-              {
-                ((LocalMediaInfo)localObject5).selectStatus = 1;
-                ((ArrayList)localObject3).add(((LocalMediaInfo)localObject5).path);
-                localaiqy.selectedIndex.add(((LocalMediaInfo)localObject5).position);
-                if (localaiqy.needMediaInfo) {
-                  ((HashMap)localObject2).put(((LocalMediaInfo)localObject5).path, localObject5);
-                }
-              }
-              else if ((this.mPhotoListData.isRecodeLastAlbumPath) && (l1 - l2 <= 60000L) && (j == ((List)localObject1).size()) && (((LocalMediaInfo)localObject5).path.equals(QAlbumUtil.sLastAlbumPath)))
-              {
-                ((LocalMediaInfo)localObject5).selectStatus = 3;
-              }
-              else
-              {
-                ((LocalMediaInfo)localObject5).selectStatus = 2;
-              }
-            }
-          }
-          if (needVedio())
-          {
-            if (localaiqy.allMediaInfoHashMap == null)
-            {
-              localaiqy.allMediaInfoHashMap = new HashMap();
-              i = 0;
-              label891:
-              if (i >= k) {
-                break label1027;
-              }
-              localObject2 = (LocalMediaInfo)((List)localObject1).get(i);
-              if (((LocalMediaInfo)localObject2).path != null) {
-                break label1008;
-              }
-            }
-            for (;;)
-            {
-              i += 1;
-              break label891;
-              localObject3 = ((ArrayList)localObject3).iterator();
-              while (((Iterator)localObject3).hasNext())
-              {
-                localObject5 = (String)((Iterator)localObject3).next();
-                if ((localaiqy.allMediaInfoHashMap.containsKey(localObject5)) && (!((HashMap)localObject2).containsKey(localObject5))) {
-                  ((HashMap)localObject2).put(localObject5, localaiqy.allMediaInfoHashMap.get(localObject5));
-                }
-              }
-              localaiqy.allMediaInfoHashMap.clear();
-              break;
-              label1008:
-              localaiqy.allMediaInfoHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
-            }
-          }
-          localaiqy.mediaPathsList = ((ArrayList)localObject4);
-          return localObject1;
-        }
+      this.mPhotoCommonData.firstRecentInfo = this.mPhotoCommonData.mMediaQueryHelper.getFirstInfo();
+      this.mPhotoCommonData.mMediaQueryHelper.upDateCount();
+      if ((this.mPhotoCommonData.recentCountLimit <= 0) || (this.mPhotoCommonData.recentCountLimit >= this.mPhotoCommonData.mMediaQueryHelper.cursorsCount)) {
+        break label318;
       }
+    }
+    label318:
+    for (this.mPhotoCommonData.recentCount = this.mPhotoCommonData.recentCountLimit;; this.mPhotoCommonData.recentCount = this.mPhotoCommonData.mMediaQueryHelper.cursorsCount)
+    {
+      this.mPhotoCommonData.videoCount = this.mPhotoCommonData.mMediaQueryHelper.cursorsVideoCount;
+      paramVarArgs = this.mPhotoCommonData.mMediaQueryHelper.mediaList;
+      onQueryMediaListBack(paramVarArgs);
+      updateAddData(paramVarArgs, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoListActivity", 2, "QueryPhotoTask,doInBackground,mediaList.size :" + paramVarArgs.size());
+      }
+      if (((this.mPhotoListData.isShowCamera) && (this.mPhotoCommonData.albumId.equals("$RecentAlbumId"))) || ((this.mPhotoListData.showCameraInVideo) && (this.mPhotoCommonData.albumId.equals("$VideoAlbumId")) && ((paramVarArgs.isEmpty()) || (((LocalMediaInfo)paramVarArgs.get(0)).mMediaType != 2))))
+      {
+        LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+        localLocalMediaInfo.mMimeType = "mobileqq/camera";
+        localLocalMediaInfo.mMediaType = 2;
+        paramVarArgs.add(0, localLocalMediaInfo);
+      }
+      return paramVarArgs;
     }
   }
   
@@ -1083,6 +932,89 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
   {
     this.mActivity.startActivity(paramIntent);
     this.mActivity.finish();
+  }
+  
+  protected void updateAddData(List<LocalMediaInfo> paramList, int paramInt)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = QAlbumUtil.sLastAlbumRecordTime;
+    if (QAlbumUtil.sLastAlbumPhotoCountMap.containsKey(this.mPhotoCommonData.albumId)) {}
+    for (int i = ((Integer)QAlbumUtil.sLastAlbumPhotoCountMap.get(this.mPhotoCommonData.albumId)).intValue();; i = 0)
+    {
+      int k = paramList.size();
+      int j = paramInt;
+      Object localObject;
+      if (j < paramList.size())
+      {
+        localObject = (LocalMediaInfo)paramList.get(j);
+        if (((LocalMediaInfo)localObject).path == null) {}
+        for (;;)
+        {
+          j += 1;
+          break;
+          if ((this.mPhotoCommonData.firstVideoInfo == null) && (((LocalMediaInfo)localObject).mMediaType == 1)) {
+            this.mPhotoCommonData.firstVideoInfo = ((LocalMediaInfo)localObject);
+          }
+          int m = QAlbumUtil.getMediaType((LocalMediaInfo)localObject);
+          ((LocalMediaInfo)localObject).position = Integer.valueOf(this.mPhotoCommonData.mediaPathsList.size());
+          this.mPhotoCommonData.mediaPathsList.add(((LocalMediaInfo)localObject).path);
+          if (this.mPhotoCommonData.selectedPhotoList.contains(((LocalMediaInfo)localObject).path))
+          {
+            ((LocalMediaInfo)localObject).selectStatus = 1;
+            if (!this.mPhotoCommonData.selectedIndex.contains(((LocalMediaInfo)localObject).position)) {
+              this.mPhotoCommonData.selectedIndex.add(((LocalMediaInfo)localObject).position);
+            }
+            if ((this.mPhotoListData.isSupportVideoCheckbox) && (m == 1))
+            {
+              PhotoListBaseData localPhotoListBaseData = this.mPhotoListData;
+              localPhotoListBaseData.videoSelectedCnt += 1;
+              if (this.mPhotoListData.videoSelectedCnt == 1) {
+                this.mPhotoListData.selectedVideoInfo = ((LocalMediaInfo)localObject);
+              }
+            }
+            if ((this.mPhotoListData.isShowCamera) && (!this.mPhotoCommonData.selectedMediaInfoHashMap.containsKey(((LocalMediaInfo)localObject).path))) {
+              this.mPhotoCommonData.selectedMediaInfoHashMap.put(((LocalMediaInfo)localObject).path, localObject);
+            }
+            if ((!TextUtils.isEmpty(((LocalMediaInfo)localObject).mMimeType)) && ("image/gif".equals(((LocalMediaInfo)localObject).mMimeType)))
+            {
+              localObject = this.mPhotoListData;
+              ((PhotoListBaseData)localObject).gifSelectedCount += 1;
+            }
+          }
+          else if ((this.mPhotoCommonData.selectedPhotoList.size() < this.mPhotoCommonData.maxSelectNum) && (((LocalMediaInfo)localObject).path.equals(this.mPhotoListData.currentPhotoPath)))
+          {
+            ((LocalMediaInfo)localObject).selectStatus = 1;
+            this.mPhotoCommonData.selectedPhotoList.add(((LocalMediaInfo)localObject).path);
+            this.mPhotoCommonData.selectedIndex.add(((LocalMediaInfo)localObject).position);
+            if (this.mPhotoCommonData.needMediaInfo) {
+              this.mPhotoCommonData.selectedMediaInfoHashMap.put(((LocalMediaInfo)localObject).path, localObject);
+            }
+          }
+          else if ((this.mPhotoListData.isRecodeLastAlbumPath) && (l1 - l2 <= 60000L) && (i == paramList.size()) && (((LocalMediaInfo)localObject).path.equals(QAlbumUtil.sLastAlbumPath)))
+          {
+            ((LocalMediaInfo)localObject).selectStatus = 3;
+          }
+          else
+          {
+            ((LocalMediaInfo)localObject).selectStatus = 2;
+          }
+        }
+      }
+      if (needVedio()) {
+        if (paramInt < k)
+        {
+          localObject = (LocalMediaInfo)paramList.get(paramInt);
+          if (((LocalMediaInfo)localObject).path == null) {}
+          for (;;)
+          {
+            paramInt += 1;
+            break;
+            this.mPhotoCommonData.allMediaInfoHashMap.put(((LocalMediaInfo)localObject).path, localObject);
+          }
+        }
+      }
+      return;
+    }
   }
   
   protected void updateButton()
@@ -1107,14 +1039,14 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity>
       this.mActivity.sendBtn.setEnabled(bool);
       this.mActivity.previewBtn.setEnabled(bool);
       return;
-      str1 = this.mActivity.getString(2131695245);
+      str1 = this.mActivity.getString(2131694260);
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListLogicBase
  * JD-Core Version:    0.7.0.1
  */

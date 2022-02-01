@@ -1,46 +1,89 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.TagFeedItem;
+import com.tencent.biz.qqstory.model.filter.FilterItem;
+import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFilterList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FilterListPack;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class wqo
-  extends wqp<TagFeedItem>
+  extends wla
 {
-  public wqo(@NonNull TagFeedItem paramTagFeedItem)
-  {
-    super(paramTagFeedItem);
-  }
+  @NonNull
+  public final String a;
+  @NonNull
+  public final List<FilterItem> a;
+  public final boolean a;
+  public final int b;
   
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  public wqo(byte[] paramArrayOfByte)
   {
-    Object localObject = (qqstory_struct.TagFeed)paramStoryFeed.tag_feed.get();
-    ((TagFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.TagFeed)localObject);
-    ((TagFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.TagFeed)localObject).video_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
+    Object localObject1 = new qqstory_service.RspGetFilterList();
+    for (;;)
     {
-      qqstory_struct.TagVideoInfo localTagVideoInfo = (qqstory_struct.TagVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.VideoListHomeFeed", localTagVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
+      try
+      {
+        ((qqstory_service.RspGetFilterList)localObject1).mergeFrom(paramArrayOfByte);
+        this.jdField_a_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).result.error_code.get();
+        this.jdField_b_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).result.error_desc.get().toStringUtf8();
+        if (((qqstory_service.RspGetFilterList)localObject1).is_end.get() != 0)
+        {
+          this.jdField_a_of_type_Boolean = bool;
+          this.jdField_a_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).next_cookie.get().toStringUtf8();
+          this.jdField_b_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).frequency.get();
+          paramArrayOfByte = new ArrayList();
+          localObject1 = ((qqstory_service.RspGetFilterList)localObject1).filter_list.get().iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          Object localObject2 = (qqstory_struct.FilterListPack)((Iterator)localObject1).next();
+          wqg localwqg = new wqg();
+          localwqg.jdField_a_of_type_Long = ((qqstory_struct.FilterListPack)localObject2).filter_id.get();
+          localwqg.jdField_a_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_name.get().toStringUtf8();
+          localwqg.jdField_a_of_type_Int = ((qqstory_struct.FilterListPack)localObject2).filter_type.get();
+          localwqg.jdField_b_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_config_file.get().toStringUtf8();
+          localwqg.c = ((qqstory_struct.FilterListPack)localObject2).filter_config_md5.get().toStringUtf8();
+          try
+          {
+            localObject2 = localwqg.a();
+            paramArrayOfByte.add(localObject2);
+            yqp.d("VideoFilterManager", "GET Filter : id=%d, name=%s, type=%d, url=%s, md5=%s", new Object[] { Long.valueOf(((FilterItem)localObject2).filterId), ((FilterItem)localObject2).filterName, Integer.valueOf(((FilterItem)localObject2).filterType), ((FilterItem)localObject2).filterConfigUrl, ((FilterItem)localObject2).filterConfigMd5 });
+          }
+          catch (FilterItem.FilterItemIllegalException localFilterItemIllegalException)
+          {
+            yqp.c("VideoFilterManager", "GET Filter error : ", localFilterItemIllegalException);
+          }
+          continue;
+        }
+        bool = false;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        yqp.e("VideoFilterManager", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
+        this.jdField_a_of_type_Int = -1;
+        this.jdField_b_of_type_JavaLangString = anni.a(2131714933);
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
+        this.jdField_a_of_type_JavaLangString = "";
+        this.jdField_b_of_type_Int = 0;
+        return;
+      }
     }
-    c(paramStoryFeed, true);
-    return true;
+    this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wqo
  * JD-Core Version:    0.7.0.1
  */

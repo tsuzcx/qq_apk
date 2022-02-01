@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import arso;
-import ayzl;
+import atwl;
+import bbyp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,7 +34,7 @@ public class DataLineMsgSet
   public static boolean isCanReciveOrResend(DataLineMsgRecord paramDataLineMsgRecord)
   {
     if ((!paramDataLineMsgRecord.issuc) || (paramDataLineMsgRecord.fileMsgStatus == 1L) || (paramDataLineMsgRecord.fileMsgStatus == 2L)) {}
-    while ((paramDataLineMsgRecord.progress == 1.0F) && (paramDataLineMsgRecord.issuc) && ((TextUtils.isEmpty(paramDataLineMsgRecord.path)) || (!arso.a(paramDataLineMsgRecord.path)))) {
+    while ((paramDataLineMsgRecord.progress == 1.0F) && (paramDataLineMsgRecord.issuc) && ((TextUtils.isEmpty(paramDataLineMsgRecord.path)) || (!atwl.a(paramDataLineMsgRecord.path)))) {
       return true;
     }
     return false;
@@ -466,7 +466,7 @@ public class DataLineMsgSet
   
   public boolean isTimeOut()
   {
-    return ayzl.a() - this.mLastArriveTime > 90L;
+    return bbyp.a() - this.mLastArriveTime > 90L;
   }
   
   public void printlog()
@@ -614,7 +614,7 @@ public class DataLineMsgSet
   
   public void setTimeOut()
   {
-    this.mLastArriveTime = (ayzl.a() - 95L);
+    this.mLastArriveTime = (bbyp.a() - 95L);
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "设置timeOut, mLastArriveTime[" + this.mLastArriveTime);
     }

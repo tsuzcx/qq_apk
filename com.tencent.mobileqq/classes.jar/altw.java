@@ -1,23 +1,26 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
 public class altw
-  implements alpg
+  extends amcl
 {
-  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt == 1)
-    {
-      paramObject = (HashMap)paramObject;
-      a(paramBoolean, (ArrayList)paramObject.get("mq_kandian_svc_results"), (ArrayList)paramObject.get("mq_kandian_svc_sentences"));
-    }
-  }
+  public View a;
+  public Button a;
+  public CheckBox a;
+  public TextView a;
+  public TroopMemberInfo a;
+  public View b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     altw
  * JD-Core Version:    0.7.0.1
  */

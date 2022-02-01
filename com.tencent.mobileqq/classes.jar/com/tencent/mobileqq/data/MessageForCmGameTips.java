@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import akvn;
+import amot;
 
 public class MessageForCmGameTips
   extends ChatMessage
 {
-  public akvn gameInfo;
+  public amot gameInfo;
   public boolean needTopPadding;
   
   protected void doParse() {}

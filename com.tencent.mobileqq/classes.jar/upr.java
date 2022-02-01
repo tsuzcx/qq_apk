@@ -1,51 +1,84 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class upr
-  implements xtk
 {
-  private ups jdField_a_of_type_Ups;
+  public static final int a;
+  private static final Pattern a;
+  public static final int b = bclx.a(16.0F);
+  public static final int c = bclx.a(60.0F);
+  public static final int d = bclx.a(80.0F);
+  private static final int e;
+  private static final int f;
+  private static int g;
+  private static int h;
+  private static int i;
+  private static int j;
   
-  public upr(upq paramupq, ups paramups)
+  static
   {
-    this.jdField_a_of_type_Ups = paramups;
+    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^#([0-9a-fA-F]{8}|[0-9a-fA-F]{6})$");
+    e = bclx.e(BaseApplicationImpl.getApplication());
+    f = bclx.c(BaseApplicationImpl.getApplication());
+    jdField_a_of_type_Int = bclx.a(4.0F);
   }
   
-  public void onFailure(String paramString)
+  public static int a()
   {
-    wxe.e(upq.a, "fail to execute ffmpeg command. error message : %s.", new Object[] { paramString });
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    upq.a(this.jdField_a_of_type_Upq);
-    if (upq.b(this.jdField_a_of_type_Upq) == 0)
-    {
-      wxe.b(upq.a, "all ffmpeg commands have already finished. start clearing cache.");
-      upq.a(this.jdField_a_of_type_Upq);
+    if (i == 0) {
+      i = bclx.a(16.0F);
     }
+    return i;
   }
   
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
+  public static int a(Activity paramActivity)
   {
-    wxe.b(upq.a, "start executing ffmpeg commands.");
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (xrg.a(BaseApplication.getContext(), this.jdField_a_of_type_Ups.d, this.jdField_a_of_type_Ups.e))
-    {
-      wxe.b(upq.a, "save video to album success.");
-      wxj.a("video_edit", "video_save_local", 0, 0, new String[0]);
-      return;
+    if (g == 0) {
+      g = bqcd.b(paramActivity);
     }
-    wxe.e(upq.a, "save video to album failed.");
+    return g;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString).matches();
+  }
+  
+  public static int b()
+  {
+    if (j == 0) {
+      j = bclx.a(41.0F);
+    }
+    return j;
+  }
+  
+  public static int b(Activity paramActivity)
+  {
+    if (h == 0) {
+      h = a(paramActivity) + bclx.a(4.5F);
+    }
+    return h;
+  }
+  
+  public static int c()
+  {
+    return e;
+  }
+  
+  public static int d()
+  {
+    return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     upr
  * JD-Core Version:    0.7.0.1
  */

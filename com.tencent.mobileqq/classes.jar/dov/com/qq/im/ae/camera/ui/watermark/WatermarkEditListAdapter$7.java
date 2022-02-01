@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.camera.ui.watermark;
 
 import android.widget.EditText;
-import bkyz;
+import bnod;
 
 public class WatermarkEditListAdapter$7
   implements Runnable
 {
-  public WatermarkEditListAdapter$7(bkyz parambkyz, EditText paramEditText) {}
+  public WatermarkEditListAdapter$7(bnod parambnod, EditText paramEditText) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class WatermarkEditListAdapter$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditListAdapter.7
  * JD-Core Version:    0.7.0.1
  */

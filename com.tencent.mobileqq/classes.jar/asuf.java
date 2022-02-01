@@ -1,17 +1,22 @@
-import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 
-public class asuf
-  implements StaggeredGridLayoutManager.ExceptionListener
+class asuf
+  implements atve
 {
-  public asuf(HotPicPageView paramHotPicPageView) {}
+  asuf(asuc paramasuc, WeiYunFileInfo paramWeiYunFileInfo) {}
   
-  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
+  public void a()
   {
-    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
+    FileManagerEntity localFileManagerEntity = atvo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo);
+    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Asuc.a).a().b(localFileManagerEntity);
+    QfileBaseCloudFileTabView.j(this.jdField_a_of_type_Asuc.a).a().a(localFileManagerEntity);
+    this.jdField_a_of_type_Asuc.a.a(localFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 

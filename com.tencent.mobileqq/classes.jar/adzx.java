@@ -1,40 +1,22 @@
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.qphone.base.util.QLog;
 
 public class adzx
-  extends alwx
+  extends anuy
 {
-  public adzx(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public adzx(Conversation paramConversation) {}
   
-  public void a(boolean paramBoolean, String paramString, bade parambade)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() isSuccess=" + paramBoolean + "  subAccount=" + paramString);
-      if (parambade != null) {
-        QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() data.errorType=" + parambade.jdField_a_of_type_Int + "  errorMsg=" + parambade.jdField_a_of_type_JavaLangString + " mainAccount=" + parambade.jdField_b_of_type_JavaLangString + "  subAccount=" + parambade.c + " isNeedStartGetMsg=" + parambade.jdField_b_of_type_Boolean);
-      }
-    }
-    if ((parambade == null) || (paramString == null) || (paramString.length() < 5)) {}
-    bacu localbacu;
+    if (!this.a.f) {}
     do
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.a.isFinishing());
-        localbacu = (bacu)this.a.app.getManager(62);
-        if (parambade.jdField_a_of_type_Int != 1) {
-          break;
-        }
-      } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
-      SubAccountUgActivity.a(this.a, localbacu, paramString);
       return;
-    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
-    localbacu.a(this.a.jdField_a_of_type_JavaLangString, 1, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
+      }
+    } while ((!paramBoolean) || (paramInt != bckg.a));
+    bglp.a(this.a.a(), 0, null, this.a.a(2131718097), 2131718099, 2131718098, new adzy(this), new adzz(this)).show();
   }
 }
 

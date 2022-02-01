@@ -1,28 +1,18 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.NativeGifFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class apzj
+  implements View.OnClickListener
 {
-  public static AbstractGifImage a(File paramFile, int paramInt, boolean paramBoolean)
+  public apzj(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (NativeGifFactory.isUseNewGif()) {
-        return new apzl(paramFile, paramInt, paramBoolean);
-      }
-      paramFile = new apzk(paramFile, paramInt, paramBoolean);
-      return paramFile;
-    }
-    catch (IOException paramFile)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("VoiceGifFactory", 2, "getVoiceGifObject exception. msg:" + paramFile.getMessage());
-      }
-    }
-    return null;
+    apzo localapzo = (apzo)paramView.getTag();
+    this.a.a(localapzo.jdField_a_of_type_JavaLangString, localapzo.b, localapzo.jdField_a_of_type_Boolean);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

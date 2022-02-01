@@ -1,48 +1,18 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bdmx
+class bdmx
+  implements View.OnClickListener
 {
-  protected Drawable a;
-  protected Drawable b;
+  bdmx(bdmq parambdmq) {}
   
-  protected bdmx(Context paramContext)
+  public void onClick(View paramView)
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837549);
-    this.b = paramContext.getDrawable(2130837553);
-  }
-  
-  private Drawable a(Drawable paramDrawable)
-  {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
-  }
-  
-  private Drawable b(Drawable paramDrawable)
-  {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
-  
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    this.a.a.setText("");
+    this.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

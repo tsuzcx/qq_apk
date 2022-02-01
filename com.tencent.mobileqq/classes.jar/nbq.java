@@ -1,199 +1,451 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.gamelogic.data.Player;
+import com.tencent.avgame.gameroom.stage.StagePresenterImp.1;
+import com.tencent.avgame.gameroom.stage.StagePresenterImp.2;
+import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public abstract class nbq
+public class nbq
+  implements nbn
 {
-  public int a;
-  public Context a;
-  public String a;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  Runnable jdField_a_of_type_JavaLangRunnable = new StagePresenterImp.1(this);
+  private myc jdField_a_of_type_Myc;
+  public nal a;
+  protected nbl a;
+  public nbp a;
+  Runnable b;
+  protected nbl b;
+  protected nbl c;
+  protected nbl d;
+  protected nbl e;
+  protected nbl f;
   
-  public nbq(Context paramContext, String paramString)
+  public nbq(nbp paramnbp)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = a(paramContext, paramString);
-    a(c());
+    this.jdField_b_of_type_JavaLangRunnable = new StagePresenterImp.2(this);
+    this.jdField_a_of_type_Nbp = paramnbp;
   }
   
-  public int a(Context paramContext, String paramString)
+  private boolean a()
   {
-    return a(paramContext).getInt(paramString + "_" + b(), 0);
+    return (this.jdField_a_of_type_Myc != null) && (this.jdField_a_of_type_Myc.a() == 10);
   }
   
-  protected SharedPreferences a(Context paramContext)
+  private boolean a(int paramInt1, int paramInt2)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext);
+    return (paramInt1 != 0) && (paramInt2 != 0);
   }
   
-  public abstract String a();
-  
-  public String a(AppInterface paramAppInterface, ConfigurationService.Config paramConfig)
+  private boolean a(myc parammyc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonConfigBase", 2, "handleConfig type = " + paramConfig.type.get());
+    return (this.jdField_a_of_type_Myc != null) && (this.jdField_a_of_type_Myc.a() == 4) && (this.jdField_a_of_type_Myc.a().a(parammyc.a()));
+  }
+  
+  private boolean b(myc parammyc)
+  {
+    return (this.jdField_a_of_type_Myc != null) && (this.jdField_a_of_type_Myc.a() == 3) && (this.jdField_a_of_type_Myc.a().a(parammyc.a()));
+  }
+  
+  private boolean c(myc parammyc)
+  {
+    return (this.jdField_a_of_type_Myc != null) && (this.jdField_a_of_type_Myc.a() == 2) && (this.jdField_a_of_type_Myc.a().a(parammyc.a()));
+  }
+  
+  private boolean d(myc parammyc)
+  {
+    return (this.jdField_a_of_type_Myc != null) && (this.jdField_a_of_type_Myc.a() == 1) && (this.jdField_a_of_type_Myc.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin.equals(parammyc.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin));
+  }
+  
+  private void e(myc parammyc)
+  {
+    if (parammyc.c() == 1) {
+      this.jdField_a_of_type_Nbl = this.jdField_b_of_type_Nbl;
     }
-    if ((paramConfig.msg_content_list == null) || (paramConfig.msg_content_list.size() < 1) || (paramConfig.msg_content_list.get(0) == null))
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("CommonConfigBase", 2, "handleQuickShotShareToStoryConfig data is null!!!");
+        QLog.d("StagePresenterImp", 2, "updateCurGameStagePresenter curGameStagePresenter = " + this.jdField_a_of_type_Nbl);
       }
-      a(this.jdField_a_of_type_AndroidContentContext, paramAppInterface.getCurrentAccountUin());
-      return null;
+      return;
+      if (parammyc.c() == 2) {
+        this.jdField_a_of_type_Nbl = this.d;
+      } else if (parammyc.c() == 3) {
+        this.jdField_a_of_type_Nbl = this.c;
+      } else if (parammyc.c() == 4) {
+        this.jdField_a_of_type_Nbl = this.f;
+      } else if (parammyc.c() == 5) {
+        this.jdField_a_of_type_Nbl = this.e;
+      }
     }
-    return a(paramConfig);
   }
   
-  protected String a(ConfigurationService.Config paramConfig)
+  private boolean e(myc parammyc)
   {
-    paramConfig = (ConfigurationService.Content)paramConfig.msg_content_list.get(0);
-    if (paramConfig.compress.get() == 1)
+    return mxl.a().a().getAccount().equals(parammyc.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin);
+  }
+  
+  private void f(myc parammyc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "handleGameStart");
+    }
+    g(parammyc);
+    if ((this.jdField_a_of_type_Nbl.a()) && (e(parammyc)))
     {
-      paramConfig = awci.a(paramConfig.content.get().toByteArray());
-      if (paramConfig != null) {
-        try
+      l = Long.parseLong(mxl.a().a().getAccount());
+      RectF localRectF = this.jdField_a_of_type_Nal.a().a(l);
+      this.jdField_a_of_type_Nal.a().b(localRectF);
+    }
+    long l = parammyc.a().jdField_a_of_type_Myf.d * 1000 - parammyc.a().d();
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "handleGameStart delayMs = " + l);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
+  }
+  
+  private void g(myc parammyc)
+  {
+    this.jdField_a_of_type_Nal.a().a();
+    boolean bool = e(parammyc);
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "updateUIForGamePrepare isPlayerSelf = " + bool);
+    }
+    a(this.jdField_a_of_type_Nbl.a(bool), parammyc.a().jdField_a_of_type_Myf.d * 1000, parammyc.a().d());
+    this.jdField_a_of_type_Nbl.a(parammyc);
+    c(this.jdField_a_of_type_Nbl.a(this.jdField_a_of_type_Nal.a(), parammyc));
+  }
+  
+  private void h(myc parammyc)
+  {
+    boolean bool = e(parammyc);
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "updateStageUIForRealStart isPlayerSelf = " + bool);
+    }
+    this.jdField_a_of_type_Nbp.c();
+    this.jdField_a_of_type_Nbl.b(parammyc);
+    b(this.jdField_a_of_type_Nbl.a(this.jdField_a_of_type_Nal.a(), bool));
+    if ((this.jdField_a_of_type_Nbl.a()) && (!bool))
+    {
+      long l = Long.parseLong(parammyc.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin);
+      parammyc = this.jdField_a_of_type_Nal.a().a(l);
+      this.jdField_a_of_type_Nal.a().a(parammyc);
+    }
+  }
+  
+  private void i(myc parammyc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "handleSwitchTopic ,topic = " + parammyc.a().b());
+    }
+    this.jdField_a_of_type_Nbp.c();
+    this.jdField_a_of_type_Nbl.c(parammyc);
+    if (parammyc.d(mxl.a().a().getAccount())) {
+      this.jdField_a_of_type_Nal.a().b(this.jdField_a_of_type_Nbp.a());
+    }
+  }
+  
+  public RectF a()
+  {
+    return this.jdField_a_of_type_Nbp.a();
+  }
+  
+  public Drawable a()
+  {
+    myg localmyg = mxl.a().a().a();
+    if ((localmyg == null) || (TextUtils.isEmpty(localmyg.h))) {
+      return myr.a("avgame_questions_bg_110_height@2x.png");
+    }
+    return URLDrawable.getDrawable(localmyg.h);
+  }
+  
+  public nal a()
+  {
+    return this.jdField_a_of_type_Nal;
+  }
+  
+  public void a()
+  {
+    mxl.a().b();
+  }
+  
+  public void a(ImageView paramImageView, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_Nbp.a(paramImageView, paramLong1, paramLong2);
+  }
+  
+  public void a(String paramString)
+  {
+    String str = mxl.a().a().getAccount();
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "showTopicSwitchedTip switcherUin = " + paramString);
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(str))) {
+      this.jdField_a_of_type_Nbp.b("avgame_tips_switch_topic@2x.png");
+    }
+  }
+  
+  public void a(String paramString, myc parammyc)
+  {
+    paramString = mxl.a().a().getAccount();
+    boolean bool = paramString.equals(parammyc.a().c.uin);
+    if ((this.jdField_a_of_type_Nbl.a()) && (bool))
+    {
+      long l = Long.parseLong(paramString);
+      paramString = this.jdField_a_of_type_Nal.a().a(l);
+      this.jdField_a_of_type_Nal.a().b(paramString);
+    }
+  }
+  
+  public void a(myc parammyc)
+  {
+    this.jdField_a_of_type_Nbp.a(parammyc);
+    this.jdField_a_of_type_Nbp.b(parammyc);
+    e(parammyc);
+    int i = parammyc.c();
+    int j = parammyc.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "refresh gameType = " + i + ",gameStatus = " + j);
+    }
+    if (this.jdField_a_of_type_Nbl == null)
+    {
+      QLog.d("StagePresenterImp", 1, "refresh return for null presenter,gameType = " + i + ",gameStatus = " + j);
+      return;
+    }
+    if (!a(i, j))
+    {
+      a(false);
+      this.jdField_a_of_type_Myc = parammyc.a();
+      return;
+    }
+    a(true);
+    switch (j)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Myc = parammyc.a();
+      return;
+      if (!d(parammyc))
+      {
+        f(parammyc);
+        continue;
+        if (!c(parammyc))
         {
-          String str = new String(paramConfig, "UTF-8");
-          return str;
-        }
-        catch (Exception paramConfig)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("CommonConfigBase", 2, QLog.getStackTraceString(paramConfig));
-          }
-          return null;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("CommonConfigBase", 2, QLog.getStackTraceString(localOutOfMemoryError));
-          }
-          System.gc();
-          try
+          i(parammyc);
+          continue;
+          if (!b(parammyc))
           {
-            paramConfig = new String(paramConfig, "UTF-8");
-            return paramConfig;
-          }
-          catch (Throwable paramConfig)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("CommonConfigBase", 2, QLog.getStackTraceString(paramConfig));
+            a(parammyc, parammyc.a().jdField_a_of_type_Int);
+            continue;
+            if (!a(parammyc))
+            {
+              d(parammyc);
+              continue;
+              if (!a()) {
+                c(parammyc);
+              }
             }
           }
         }
       }
-      return null;
     }
-    return paramConfig.content.get().toStringUtf8();
   }
   
-  public void a(Context paramContext, String paramString)
+  public void a(myc parammyc, int paramInt)
   {
-    a(paramContext).edit().remove(paramString + "_" + b()).commit();
+    if (!parammyc.a()) {
+      return;
+    }
+    int i = parammyc.a().a(parammyc.a().d.uin);
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "handleAnswerRight scoreThisTime = " + paramInt);
+    }
+    String str1 = parammyc.a().a();
+    Bitmap localBitmap = ((mwp)mxl.a().a().a(2)).a(String.valueOf(parammyc.a().d.uin), (byte)1);
+    String str2 = parammyc.a().d.nick;
+    boolean bool = mxl.a().a().getAccount().equals(parammyc.a().d.uin);
+    if (!bool) {
+      bcst.b(null, "dc00898", "", "", "0X800B04C", "0X800B04C", parammyc.d(), 0, "", "", "", "");
+    }
+    int j = parammyc.d();
+    if (bool) {}
+    for (Object localObject = "1";; localObject = "2")
+    {
+      bcst.b(null, "dc00898", "", "", "0X800B04E", "0X800B04E", j, 0, (String)localObject, "", "", "");
+      this.jdField_a_of_type_Nal.a().a(str1, localBitmap, str2, paramInt, i, bool);
+      myq.a().a(parammyc.a(), "succeed");
+      localObject = this.jdField_a_of_type_Nal.a().a();
+      this.jdField_a_of_type_Nal.a().a((View)localObject, this.jdField_a_of_type_Nal.a().a(), true);
+      if (parammyc.c() == 2) {
+        this.jdField_a_of_type_Nbp.b();
+      }
+      this.jdField_a_of_type_Nbl.d(parammyc);
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, parammyc.a().jdField_a_of_type_Myf.f * 1000);
+      return;
+    }
   }
   
-  public void a(Context paramContext, String paramString, int paramInt)
+  public void a(nal paramnal)
   {
-    a(paramContext).edit().putInt(paramString + "_" + b(), paramInt).commit();
+    this.jdField_a_of_type_Nal = paramnal;
   }
   
-  public void a(AppInterface paramAppInterface, ConfigurationService.Config paramConfig)
+  public void a(nbl paramnbl)
+  {
+    this.jdField_b_of_type_Nbl = paramnbl;
+  }
+  
+  public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("CommonConfigBase", 2, "handleConfig type = " + paramConfig.type.get());
+      QLog.d("StagePresenterImp", 2, "onShowGameContent " + paramBoolean + ",curGameStagePresenter = " + this.jdField_a_of_type_Nbl);
     }
-    this.jdField_a_of_type_Int = a(this.jdField_a_of_type_AndroidContentContext, paramAppInterface.getCurrentAccountUin());
-    int i = paramConfig.version.get();
-    if (this.jdField_a_of_type_Int == i) {
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonConfigBase", 2, "handleConfig version code not changed .");
-      }
+    if (this.jdField_a_of_type_Nbl != null) {
+      this.jdField_a_of_type_Nbl.a(paramBoolean);
     }
-    do
-    {
-      return;
-      a(this.jdField_a_of_type_AndroidContentContext, paramAppInterface.getCurrentAccountUin(), i);
-      this.jdField_a_of_type_Int = i;
-      paramConfig = a(paramAppInterface, paramConfig);
-      if (TextUtils.isEmpty(paramConfig)) {
-        break;
-      }
-    } while (a(paramAppInterface, paramConfig));
-    b(paramConfig);
-    a(paramConfig);
-    return;
-    b(paramConfig);
-    a(paramConfig);
   }
   
-  public abstract void a(String paramString);
-  
-  public boolean a(AppInterface paramAppInterface, String paramString)
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    try
-    {
-      Object localObject = new JSONObject(paramString).optString(d(), "");
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return false;
-      }
-      if (!(paramAppInterface instanceof QQAppInterface)) {
-        return false;
-      }
-      paramAppInterface = ((beag)((QQAppInterface)paramAppInterface).getManager(47)).a(1);
-      paramString = alof.aX + a() + ".tmp";
-      localObject = new beae((String)localObject, new File(paramString));
-      ((beae)localObject).b = 3;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("file_path", paramString);
-      paramAppInterface.a((beae)localObject, new nbr(this), localBundle);
-      return true;
-    }
-    catch (JSONException paramAppInterface) {}
-    return false;
+    this.jdField_a_of_type_Nbp.a(paramBoolean, paramLong1, paramLong2);
   }
   
-  public abstract String b();
+  public Drawable b()
+  {
+    myg localmyg = mxl.a().a().a();
+    if ((localmyg == null) || (TextUtils.isEmpty(localmyg.i))) {
+      return myr.a("avgame_questions_bg_130_height@2x.png");
+    }
+    return URLDrawable.getDrawable(localmyg.i);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "resetGameContent ");
+    }
+    if (this.jdField_a_of_type_Nbl != null) {
+      this.jdField_a_of_type_Nbl.a(null);
+    }
+  }
   
   public void b(String paramString)
   {
-    SharedPreferences localSharedPreferences = a(this.jdField_a_of_type_AndroidContentContext);
-    if (TextUtils.isEmpty(paramString))
+    this.jdField_a_of_type_Nal.a(paramString);
+  }
+  
+  public void b(String paramString, myc parammyc)
+  {
+    if (parammyc.c())
     {
-      localSharedPreferences.edit().remove(this.jdField_a_of_type_JavaLangString + "_" + a());
-      return;
+      if (!e(parammyc)) {
+        break label74;
+      }
+      b(this.jdField_a_of_type_Nal.a().getResources().getString(2131690204));
     }
-    localSharedPreferences.edit().putString(this.jdField_a_of_type_JavaLangString + "_" + a(), paramString).commit();
+    for (;;)
+    {
+      bcst.b(null, "dc00898", "", "", "0X800B04B", "0X800B04B", parammyc.d(), 0, "", "", "", "");
+      return;
+      label74:
+      paramString = parammyc.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.nick;
+      b(String.format(this.jdField_a_of_type_Nal.a().getResources().getString(2131690205), new Object[] { bglf.a(paramString, 8.0F) }));
+    }
   }
   
-  public String c()
+  public void b(myc parammyc)
   {
-    return a(this.jdField_a_of_type_AndroidContentContext).getString(this.jdField_a_of_type_JavaLangString + "_" + a(), null);
+    this.jdField_a_of_type_Nbp.b(parammyc);
   }
   
-  public String d()
+  public void b(nbl paramnbl)
   {
-    return "more_config_url";
+    this.c = paramnbl;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("StagePresenterImp", 2, "destroy");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_a_of_type_Nbp.a(paramString);
+  }
+  
+  public void c(myc parammyc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "handleGameOver");
+    }
+    this.jdField_a_of_type_Nal.a().a();
+    d();
+    myq.a().a(parammyc.a(), "over");
+    if (parammyc.d(mxl.a().a().getAccount())) {
+      this.jdField_a_of_type_Nal.a().b();
+    }
+    this.jdField_a_of_type_Nal.a().e();
+    this.jdField_a_of_type_Nbl.f(parammyc);
+  }
+  
+  public void c(nbl paramnbl)
+  {
+    this.d = paramnbl;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Nbp.a();
+  }
+  
+  public void d(myc parammyc)
+  {
+    Object localObject = parammyc.a().a();
+    if (QLog.isColorLevel()) {
+      QLog.d("StagePresenterImp", 2, "onAnswerTimeoutPush answer = " + (String)localObject);
+    }
+    bcst.b(null, "dc00898", "", "", "0X800B04F", "0X800B04F", parammyc.d(), 0, "", "", "", "");
+    this.jdField_a_of_type_Nal.a().a((String)localObject);
+    myq.a().a(parammyc.a(), "failed");
+    localObject = this.jdField_a_of_type_Nal.a().a();
+    this.jdField_a_of_type_Nal.a().a((View)localObject, this.jdField_a_of_type_Nal.a().a(), false);
+    if (parammyc.c() == 2) {
+      this.jdField_a_of_type_Nbp.b();
+    }
+    this.jdField_a_of_type_Nbl.e(parammyc);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, parammyc.a().jdField_a_of_type_Myf.f * 1000);
+  }
+  
+  public void d(nbl paramnbl)
+  {
+    this.f = paramnbl;
+  }
+  
+  public void e(nbl paramnbl)
+  {
+    this.e = paramnbl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nbq
  * JD-Core Version:    0.7.0.1
  */

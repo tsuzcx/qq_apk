@@ -1,25 +1,19 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.qq.im.aeeditor.view.EditorClipView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class blqg
-  extends GestureDetector.SimpleOnGestureListener
+class blqg
+  implements View.OnClickListener
 {
-  private blqg(EditorClipView paramEditorClipView) {}
+  blqg(blqf paramblqf) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.a(paramFloat1, paramFloat2);
+    blpx.a(blqf.a(this.a), blqf.b(this.a), "5", "27", "", "3", "", "", "");
+    this.a.a.a.webView.loadUrl("jsbridge://JSTittlebarAction/managerBtnSingleClick");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

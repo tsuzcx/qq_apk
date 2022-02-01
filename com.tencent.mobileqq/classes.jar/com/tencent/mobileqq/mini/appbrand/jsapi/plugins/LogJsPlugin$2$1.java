@@ -17,13 +17,13 @@ class LogJsPlugin$2$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StorageUtil.getPreference().edit().putBoolean(this.this$1.this$0.jsPluginEngine.appBrandRuntime.appId + "_debug", this.this$1.val$enableDebug);
+    StorageUtil.getPreference().edit().putBoolean(this.this$1.this$0.jsPluginEngine.appBrandRuntime.appId + "_debug", this.this$1.val$enableDebug).commit();
     AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().exitProcess();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.LogJsPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

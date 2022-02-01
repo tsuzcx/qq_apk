@@ -1,14 +1,23 @@
-public abstract interface ljn<T>
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.chatroom.ChatRoomInfo;
+
+public final class ljn
+  implements Parcelable.Creator<ChatRoomInfo>
 {
-  public abstract void onDownloadFinish(long paramLong, T paramT, boolean paramBoolean);
+  public ChatRoomInfo a(Parcel paramParcel)
+  {
+    return new ChatRoomInfo(paramParcel);
+  }
   
-  public abstract void onItemSelectedChanged(long paramLong, T paramT);
-  
-  public abstract void onProgressUpdate(T paramT, int paramInt);
+  public ChatRoomInfo[] a(int paramInt)
+  {
+    return new ChatRoomInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ljn
  * JD-Core Version:    0.7.0.1
  */

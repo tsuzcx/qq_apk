@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/idz" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/ng7" android:background="@color/afy" android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <View android:id="@id/nuu" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/mxx" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/muo" android:background="@drawable/ggg" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/gg2" android:layout_centerVertical="true" />
+            <include android:layout_gravity="center_vertical" android:id="@id/nag" android:visibility="gone" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="-4.0dip" android:layout_toRightOf="@id/muo" layout="@layout/cou" />
+        </LinearLayout>
+        <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="#ff03081a" android:ellipsize="end" android:gravity="center" android:id="@id/nq0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="144.0dip" android:maxLines="1" android:layout_centerInParent="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/mxw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
+            <FrameLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="52.0dip" android:layout_marginRight="-4.0dip" android:layout_toLeftOf="@id/mur">
+                <ImageView android:id="@id/mut" android:background="@drawable/ggg" android:padding="14.0dip" android:visibility="gone" android:layout_width="52.0dip" android:layout_height="52.0dip" android:src="@drawable/gg7" />
+                <ImageView android:layout_gravity="center|right|top" android:id="@id/muu" android:layout_width="25.0dip" android:layout_height="25.0dip" android:scaleType="fitXY" />
+            </FrameLayout>
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/mur" android:background="@drawable/ggg" android:padding="14.0dip" android:visibility="gone" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginRight="-4.0dip" android:src="@drawable/gg4" android:layout_toLeftOf="@id/mus" />
+            <FrameLayout android:orientation="horizontal" android:id="@id/mus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true">
+                <ImageView android:layout_gravity="center|right" android:id="@id/muq" android:background="@drawable/ggg" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:src="@drawable/gg6" />
+                <com.tencent.biz.qqcircle.widgets.QCircleTitleFollowView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/npz" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="48.0dip" android:text="@string/wr6" android:singleLine="true" app:qcircle_follow_res="@drawable/g9d" app:qcircle_un_follow_res="@drawable/g9c" app:qcircle_un_follow_text_color="@color/al3" />
+            </FrameLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="130.0dip" android:layout_height="150.0dip" android:layout_marginTop="20.0dip" android:layout_centerHorizontal="true">
+        <com.tencent.image.URLImageView android:layout_gravity="center_horizontal" android:id="@id/n9u" android:visibility="gone" android:layout_width="130.0dip" android:layout_height="150.0dip" />
+        <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="#ff000000" android:id="@id/n9x" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="完成互动任务 燃料" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/n9w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/geg" android:layout_toRightOf="@id/n9x" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/n9v" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gei" android:layout_toRightOf="@id/n9x" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

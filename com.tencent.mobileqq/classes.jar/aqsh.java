@@ -1,57 +1,67 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class aqsh
-  extends aqtd
+public class aqsh
+  extends aqkz<aqsf>
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
-  
-  public aqsh(aqsf paramaqsf, MessageRecord paramMessageRecord)
+  @NonNull
+  public aqsf a(int paramInt)
   {
-    super(paramaqsf);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    return new aqsf();
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqtc paramaqtc)
+  @Nullable
+  public aqsf a(aqlg[] paramArrayOfaqlg)
   {
-    if ("1".equals(this.g))
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
     {
+      aqsf localaqsf = aqsf.a(paramArrayOfaqlg[0].a);
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+        QLog.d("QQComicConfProcessor", 2, "onParsed  " + paramArrayOfaqlg[0].a);
       }
-      paramaqtc.a(aqsf.a(this.jdField_a_of_type_Long, false), false);
-      return;
+      return localaqsf;
     }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file uuid is null");
-      }
-      paramaqtc.a(aqsf.a(this.jdField_a_of_type_Long, true), false);
-      return;
-    }
-    aqrv localaqrv = aqsf.a(this.jdField_a_of_type_Aqsf).a().a();
+    return null;
+  }
+  
+  public void a(aqsf paramaqsf)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_JavaLangString + "]");
+      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramaqsf.toString());
     }
-    localaqrv.a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 3, new aqsi(this, paramString, paramaqtc));
+  }
+  
+  public Class<aqsf> clazz()
+  {
+    return aqsf.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 534;
   }
 }
 

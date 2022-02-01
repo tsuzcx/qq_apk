@@ -1,14 +1,34 @@
-public class apbv
-  extends apbx
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+
+class apbv
+  implements apcq
 {
-  public apbv(apbz paramapbz)
+  apbv(apbt paramapbt, apbx paramapbx, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  
+  public void a()
   {
-    super(paramapbz);
+    if (this.jdField_a_of_type_Apbx != null) {
+      this.jdField_a_of_type_Apbx.e();
+    }
   }
   
-  public int a()
+  public void a(int paramInt)
   {
-    return -2147483648;
+    if (this.jdField_a_of_type_Apbx != null) {
+      this.jdField_a_of_type_Apbx.b(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Apbx != null) {}
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Apbx != null) {
+      this.jdField_a_of_type_Apbx.b(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    }
   }
 }
 

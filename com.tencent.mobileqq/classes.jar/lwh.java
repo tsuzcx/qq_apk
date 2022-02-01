@@ -1,10 +1,16 @@
+import android.os.IInterface;
+import com.tencent.av.service.LBSInfo;
+
 public abstract interface lwh
+  extends IInterface
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(boolean paramBoolean, LBSInfo paramLBSInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lwh
  * JD-Core Version:    0.7.0.1
  */

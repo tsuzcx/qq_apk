@@ -1,83 +1,37 @@
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.text.TextPaint;
-import android.util.DisplayMetrics;
-import java.util.HashMap;
-import java.util.Map;
+import android.opengl.GLES20;
 
 public class apdr
+  extends apdt
 {
-  private static int jdField_a_of_type_Int;
-  public static Paint a;
-  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private static final TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private static final Map<Float, Float> jdField_a_of_type_JavaUtilMap = new HashMap();
-  public static Paint b;
-  private static final Map<Float, Float> b;
-  private static final Map<Float, Float> c;
+  public int a;
+  public int b;
+  public int c;
   
-  static
+  public apdr(int paramInt)
   {
-    jdField_b_of_type_JavaUtilMap = new HashMap();
-    c = new HashMap();
-    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    super(paramInt);
+    this.e = "uniform float u_threshold;\nuniform float u_clipBlack;\nuniform float u_clipWhite;\nfloat rgb2cb(float r, float g, float b){\n    return 0.5 + -0.168736*r - 0.331264*g + 0.5*b;\n}\nfloat rgb2cr(float r, float g, float b){\n    return 0.5 + 0.5*r - 0.418688*g - 0.081312*b;\n}\nfloat smoothclip(float low, float high, float x){\n    if (x <= low){\n        return 0.0;\n    }\n    if(x >= high){\n        return 1.0;\n    }\n    return (x-low)/(high-low);\n}\nvec4 greenscreen(vec4 color, float Cb_key,float Cr_key, float tola,float tolb, float clipBlack, float clipWhite){\n    float cb = rgb2cb(color.r,color.g,color.b);\n    float cr = rgb2cr(color.r,color.g,color.b);\n    float alpha = distance(vec2(cb, cr), vec2(Cb_key, Cr_key));\n    alpha = smoothclip(tola, tolb, alpha);\n    float r = max(gl_FragColor.r - (1.0-alpha)*u_screenColor.r, 0.0);\n    float g = max(gl_FragColor.g - (1.0-alpha)*u_screenColor.g, 0.0);\n    float b = max(gl_FragColor.b - (1.0-alpha)*u_screenColor.b, 0.0);\n    if(alpha < clipBlack){\n        alpha = r = g = b = 0.0;\n    }\n    if(alpha > clipWhite){\n        alpha = 1.0;\n    }\n    if(clipWhite < 1.0){\n        alpha = alpha/max(clipWhite, 0.9);\n    }\n    return vec4(r,g,b, alpha);\n}\n";
+    this.j = "    float tola = 0.0;\n    float tolb = u_threshold/2.0;\n    float cb_key = rgb2cb(u_screenColor.r, u_screenColor.g, u_screenColor.b);\n    float cr_key = rgb2cr(u_screenColor.r, u_screenColor.g, u_screenColor.b);\n    gl_FragColor = greenscreen(gl_FragColor, cb_key, cr_key, tola, tolb, u_clipBlack, u_clipWhite);\n";
   }
   
-  public static float a(float paramFloat)
+  protected void a()
   {
-    jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
-    Float localFloat = (Float)jdField_a_of_type_JavaUtilMap.get(Float.valueOf(paramFloat));
-    Object localObject = localFloat;
-    if (localFloat == null)
-    {
-      localObject = jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-      float f1 = ((Paint.FontMetrics)localObject).descent;
-      float f2 = ((Paint.FontMetrics)localObject).ascent;
-      localObject = Float.valueOf(((Paint.FontMetrics)localObject).leading + (f1 - f2));
-      jdField_a_of_type_JavaUtilMap.put(Float.valueOf(paramFloat), localObject);
+    this.a = GLES20.glGetUniformLocation(this.d, "u_threshold");
+    apdx.a("glGetAttribLocation u_threshold");
+    this.b = GLES20.glGetUniformLocation(this.d, "u_clipBlack");
+    apdx.a("glGetAttribLocation u_clipBlack");
+    this.c = GLES20.glGetUniformLocation(this.d, "u_clipWhite");
+    apdx.a("glGetAttribLocation u_clipWhite");
+  }
+  
+  protected void a(apdw paramapdw)
+  {
+    if (paramapdw == null) {
+      return;
     }
-    return ((Float)localObject).floatValue();
-  }
-  
-  public static float a(float paramFloat, String paramString)
-  {
-    jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
-    return a(jdField_a_of_type_AndroidTextTextPaint, paramString);
-  }
-  
-  public static float a(Paint paramPaint, String paramString)
-  {
-    return paramPaint.measureText(paramString);
-  }
-  
-  public static float a(apcp paramapcp)
-  {
-    return a(paramapcp.c()) + apbz.a().c() * 2 + paramapcp.d() * 2.0F + paramapcp.e() * 2.0F;
-  }
-  
-  public static void a(Canvas paramCanvas)
-  {
-    paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-  }
-  
-  public static void a(Canvas paramCanvas, String paramString)
-  {
-    if (jdField_b_of_type_AndroidGraphicsPaint == null)
-    {
-      jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-      jdField_b_of_type_AndroidGraphicsPaint.setColor(-256);
-      Object localObject = apaz.a().a().a().getDisplayMetrics();
-      jdField_b_of_type_AndroidGraphicsPaint.setTextSize(((DisplayMetrics)localObject).density * 12.5F);
-      localObject = jdField_b_of_type_AndroidGraphicsPaint.getFontMetrics();
-      jdField_a_of_type_Int = (int)Math.ceil(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent);
-    }
-    paramCanvas.drawText(paramString, 10.0F, paramCanvas.getHeight() - jdField_a_of_type_Int, jdField_b_of_type_AndroidGraphicsPaint);
+    GLES20.glUniform1f(this.a, paramapdw.f);
+    GLES20.glUniform1f(this.b, paramapdw.g);
+    GLES20.glUniform1f(this.c, paramapdw.h);
   }
 }
 

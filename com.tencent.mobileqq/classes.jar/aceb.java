@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 
 public class aceb
-  implements View.OnClickListener
+  implements acez
 {
-  public aceb(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public aceb(GameCenterActivity.GameCenterFragment paramGameCenterFragment, WebView paramWebView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      anoe.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, anoe.b, 0, 0);
+    QLog.i("GameCenterFragment", 1, "addShot res code=" + paramInt);
+    if (paramInt == 304) {
+      acex.a().a(this.jdField_a_of_type_ComTencentSmttSdkWebView);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkFullScreenAppActivity", 2, "click to close");
-    }
-    this.a.finish();
   }
 }
 

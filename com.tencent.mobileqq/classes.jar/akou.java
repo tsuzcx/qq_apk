@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.data.ApolloActionPush;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public abstract interface akou
+class akou
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(int paramInt, ApolloActionPush paramApolloActionPush);
+  akov jdField_a_of_type_Akov;
+  
+  akou(akot paramakot, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_Akov = ((akov)paramView);
+  }
 }
 
 

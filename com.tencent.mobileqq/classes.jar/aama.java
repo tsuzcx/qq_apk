@@ -1,60 +1,33 @@
-import com.tencent.ad.tangram.canvas.download.AdCanvasDownloadListenerAdapter;
-import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager;
-import java.util.Iterator;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aama
-  implements AdCanvasDownloadListenerAdapter
+  extends FragmentPagerAdapter
 {
-  private List<IAdDownloader.Callback> a = new CopyOnWriteArrayList();
-  
-  public IAdDownloader.Callback getDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  public aama(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
   {
-    if ((this.a != null) && (this.a.size() > 0))
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
-        if (((localCallback instanceof aalz)) && (((aalz)localCallback).a() == paramAdAppDownloadManager)) {
-          return localCallback;
-        }
-      }
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return RelativePersonalBottomView.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
+      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
     }
     return null;
   }
   
-  public void removeDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  public int getItemPosition(Object paramObject)
   {
-    if ((this.a == null) || (paramAdAppDownloadManager == null)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
-        if ((localCallback instanceof aalz))
-        {
-          AdAppDownloadManager localAdAppDownloadManager = ((aalz)localCallback).a();
-          if ((localAdAppDownloadManager != null) && (localAdAppDownloadManager == paramAdAppDownloadManager)) {
-            this.a.remove(localCallback);
-          }
-        }
-      }
-    }
-  }
-  
-  public void setDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
-  {
-    if ((this.a != null) && (paramAdAppDownloadManager != null))
-    {
-      aalz localaalz = new aalz();
-      localaalz.a(paramAdAppDownloadManager);
-      this.a.add(localaalz);
-    }
+    return -2;
   }
 }
 

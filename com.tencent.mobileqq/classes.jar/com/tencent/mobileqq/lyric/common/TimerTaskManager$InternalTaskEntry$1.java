@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.lyric.common;
 
-import atwj;
+import awds;
 
 public class TimerTaskManager$InternalTaskEntry$1
   implements Runnable
 {
-  public TimerTaskManager$InternalTaskEntry$1(atwj paramatwj) {}
+  public TimerTaskManager$InternalTaskEntry$1(awds paramawds) {}
   
   public void run()
   {
-    if (atwj.a(this.this$0) != null) {
-      atwj.a(this.this$0).run();
+    if (awds.a(this.this$0) != null) {
+      awds.a(this.this$0).run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.common.TimerTaskManager.InternalTaskEntry.1
  * JD-Core Version:    0.7.0.1
  */

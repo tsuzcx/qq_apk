@@ -1,12 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajgi
-  implements DialogInterface.OnClickListener
+public class ajgi
+  implements View.OnClickListener
 {
-  ajgi(ajgg paramajgg) {}
+  public ajgi(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    Object localObject;
+    if ((paramView.getTag() instanceof ajeo))
+    {
+      localObject = (ajeo)paramView.getTag();
+      if (localObject != null) {
+        break label30;
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label30:
+      localObject = TroopInfoActivity.a(((ajeo)localObject).b, 4);
+      ((Bundle)localObject).putInt("t_s_f", 1002);
+      bfup.a(this.a.getActivity(), (Bundle)localObject, 2);
+    }
+  }
 }
 
 

@@ -1,23 +1,114 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-class xmt
-  implements View.OnClickListener
+public class xmt
+  extends xms
 {
-  xmt(xms paramxms, xmv paramxmv) {}
+  private xms a;
   
-  public void onClick(View paramView)
+  public Activity a()
   {
-    if (xms.a(this.jdField_a_of_type_Xms) != null) {
-      xms.a(this.jdField_a_of_type_Xms).a((SlideItemInfo)this.jdField_a_of_type_Xmv.a.getTag());
+    return this.a.a();
+  }
+  
+  public OpenPlayerBuilder.Data a()
+  {
+    return this.a.a();
+  }
+  
+  public XViewPager a()
+  {
+    return this.a.a();
+  }
+  
+  public String a(String paramString)
+  {
+    return this.a.a(paramString);
+  }
+  
+  public xix a()
+  {
+    return this.a.a();
+  }
+  
+  public xja a()
+  {
+    return this.a.a();
+  }
+  
+  public xmk a()
+  {
+    return this.a.a();
+  }
+  
+  public xms a()
+  {
+    return this.a;
+  }
+  
+  public xnd a()
+  {
+    return this.a.a();
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    this.a.a(paramIntent);
+  }
+  
+  public void a(wfi paramwfi)
+  {
+    this.a.a(paramwfi);
+  }
+  
+  public void a(xli paramxli)
+  {
+    this.a.a(paramxli);
+  }
+  
+  public void a(xms paramxms)
+  {
+    if (this.a != null) {
+      throw new IllegalStateException("Base context already set");
     }
+    this.a = paramxms;
+  }
+  
+  public void a(xnl paramxnl)
+  {
+    this.a.a(paramxnl);
+  }
+  
+  public boolean a()
+  {
+    return this.a.a();
+  }
+  
+  public void b(wfi paramwfi)
+  {
+    this.a.b(paramwfi);
+  }
+  
+  public void b(xli paramxli)
+  {
+    this.a.b(paramxli);
+  }
+  
+  public boolean b()
+  {
+    return this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xmt
  * JD-Core Version:    0.7.0.1
  */

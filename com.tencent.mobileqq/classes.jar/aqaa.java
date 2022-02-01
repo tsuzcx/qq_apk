@@ -1,13 +1,39 @@
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.IOException;
 
 public class aqaa
+  extends AsyncTask<Void, Void, String>
 {
-  public ImageView a;
-  public URLImageView a;
-  public ImageView b;
+  public aqaa(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public aqaa(apzy paramapzy) {}
+  protected String a(Void... paramVarArgs)
+  {
+    try
+    {
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
+      {
+        bgmo.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramVarArgs);
+        return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694329) + " " + paramVarArgs;
+      }
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694327);
+      return paramVarArgs;
+    }
+    catch (IOException paramVarArgs)
+    {
+      return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694327);
+    }
+    catch (OutOfMemoryError paramVarArgs) {}
+    return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131694327);
+  }
+  
+  protected void a(String paramString)
+  {
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getTitleBarHeight());
+  }
 }
 
 

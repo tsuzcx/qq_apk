@@ -1,25 +1,33 @@
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import java.util.ArrayList;
 
-public class bdrc
-  implements bdrb
+class bdrc
+  implements bmvh
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  bdrc(bdrb parambdrb) {}
   
-  public bdrc(String paramString, int paramInt)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public URLDrawable a(Drawable paramDrawable)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_loop", this.jdField_a_of_type_Int);
-    localBundle.putBoolean("key_use_cache", false);
-    return bduc.a(this.jdField_a_of_type_JavaLangString, "dontCacheMe", paramDrawable, null, this.jdField_a_of_type_JavaLangString, localBundle);
+    QLog.d("TogetherControlManager", 2, new Object[] { "ongetAdvs result:", Boolean.valueOf(paramBoolean), " rsp:", paramGetAdsRsp.toString() });
+    if (paramBoolean)
+    {
+      paramGetAdsRsp = bdri.a(paramBoolean, paramGetAdsRsp);
+      if (paramGetAdsRsp != null)
+      {
+        this.a.a.add(paramGetAdsRsp);
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable.getDrawable(paramGetAdsRsp.c, localURLDrawableOptions).startDownload();
+        bmvi.a().a(paramGetAdsRsp.a);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("TogetherControlManager", 2, "ongetAdvs banner is null");
   }
 }
 

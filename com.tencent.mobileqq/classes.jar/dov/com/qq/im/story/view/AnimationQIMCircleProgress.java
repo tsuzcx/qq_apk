@@ -1,5 +1,6 @@
 package dov.com.qq.im.story.view;
 
+import afur;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -8,20 +9,23 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import bdoo;
+import androidx.annotation.NonNull;
+import bgtn;
+import bnzg;
 import dov.com.qq.im.capture.view.QIMCircleProgress;
-import xsm;
+import zlx;
 
 public class AnimationQIMCircleProgress
   extends QIMCircleProgress
 {
+  private bnzg a;
   private RectF b;
   private boolean d;
   Paint jdField_e_of_type_AndroidGraphicsPaint;
   private boolean jdField_e_of_type_Boolean;
-  private float jdField_f_of_type_Float = 1.0F;
-  private boolean jdField_f_of_type_Boolean;
-  private boolean g = true;
+  private boolean f;
+  private float jdField_g_of_type_Float = 1.0F;
+  private boolean jdField_g_of_type_Boolean = true;
   private int m;
   private int n;
   private int o;
@@ -43,34 +47,34 @@ public class AnimationQIMCircleProgress
     this.jdField_e_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_e_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    setBackgroundResource(2130844059);
-    this.o = bdoo.a(30.0F);
-    this.p = bdoo.a(6.0F);
+    setBackgroundResource(2130844456);
+    this.o = bgtn.a(30.0F);
+    this.p = bgtn.a(6.0F);
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_f_of_type_Boolean) {
-      setBackgroundResource(2130837639);
+    if ((this.f) && (this.jdField_a_of_type_Bnzg != null)) {
+      setBackgroundResource(this.jdField_a_of_type_Bnzg.c);
     }
     for (;;)
     {
       super.a(paramInt);
       return;
       if (this.jdField_e_of_type_Boolean) {
-        setBackgroundResource(2130837693);
+        setBackgroundResource(2130837921);
       } else if ((paramInt != 1) && (this.d)) {
         setBackgroundDrawable(null);
       } else {
-        setBackgroundResource(2130844059);
+        setBackgroundResource(2130844456);
       }
     }
   }
   
   public void a(Canvas paramCanvas)
   {
-    if (!this.g) {
+    if (!this.jdField_g_of_type_Boolean) {
       return;
     }
     if (!this.d)
@@ -99,14 +103,34 @@ public class AnimationQIMCircleProgress
     this.jdField_e_of_type_Boolean = paramBoolean;
     if (this.jdField_e_of_type_Boolean)
     {
-      setBackgroundResource(2130837693);
-      setCenterCircleColor(getResources().getColor(2131166204));
+      setBackgroundResource(2130837921);
+      setCenterCircleColor(getResources().getColor(2131166275));
     }
     for (;;)
     {
       invalidate();
       return;
-      setBackgroundResource(2130844059);
+      setBackgroundResource(2130844456);
+      setCenterCircleColor(-1);
+    }
+  }
+  
+  public void a(boolean paramBoolean, @NonNull bnzg parambnzg)
+  {
+    this.f = paramBoolean;
+    this.jdField_a_of_type_Bnzg = parambnzg;
+    if (this.f)
+    {
+      setBackgroundResource(this.jdField_a_of_type_Bnzg.c);
+      setCenterCircleColor(0);
+      setProgressOffset(afur.a(1.8F, getResources()));
+      setProgressColor(this.jdField_a_of_type_Bnzg.d);
+    }
+    for (;;)
+    {
+      invalidate();
+      return;
+      setBackgroundResource(2130844456);
       setCenterCircleColor(-1);
     }
   }
@@ -119,32 +143,14 @@ public class AnimationQIMCircleProgress
     paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.p, this.p, this.jdField_b_of_type_AndroidGraphicsPaint);
   }
   
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_f_of_type_Boolean = paramBoolean;
-    if (this.jdField_f_of_type_Boolean)
-    {
-      setBackgroundResource(2130837639);
-      setCenterCircleColor(getResources().getColor(2131165240));
-      setProgressColor(getResources().getColor(2131165240));
-    }
-    for (;;)
-    {
-      invalidate();
-      return;
-      setBackgroundResource(2130844059);
-      setCenterCircleColor(-1);
-    }
-  }
-  
   protected void c(Canvas paramCanvas)
   {
-    paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.n * this.a, this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.n * this.jdField_a_of_type_Float, this.jdField_b_of_type_AndroidGraphicsPaint);
   }
   
   protected void d(Canvas paramCanvas)
   {
-    int i = xsm.a(getContext(), 3.0F);
+    int i = zlx.a(getContext(), 3.0F);
     Color.parseColor("#33000000");
     float f1 = this.i / 2;
     float f2 = this.i / 2;
@@ -158,15 +164,15 @@ public class AnimationQIMCircleProgress
   public void setCenterView()
   {
     super.setCenterView();
-    this.m = bdoo.a(3.0F);
-    this.n = (bdoo.a(53.0F) / 2);
+    this.m = bgtn.a(3.0F);
+    this.n = (bgtn.a(53.0F) / 2);
   }
   
   public void setDrawCenterCircle(boolean paramBoolean)
   {
-    if (this.g != paramBoolean)
+    if (this.jdField_g_of_type_Boolean != paramBoolean)
     {
-      this.g = paramBoolean;
+      this.jdField_g_of_type_Boolean = paramBoolean;
       invalidate();
     }
   }
@@ -181,13 +187,13 @@ public class AnimationQIMCircleProgress
     {
       invalidate();
       return;
-      setBackgroundResource(2130844059);
+      setBackgroundResource(2130844456);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.story.view.AnimationQIMCircleProgress
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,8 @@
-import android.content.pm.ResolveInfo;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
-import java.util.List;
-
-public abstract interface asql
+public class asql
 {
-  public abstract void a(String paramString1, String paramString2, String paramString3, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable);
+  public static long a;
+  public static long b;
+  public static long c;
 }
 
 

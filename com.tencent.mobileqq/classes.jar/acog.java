@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
 
-public abstract interface acog
+public class acog
+  extends acoj
 {
-  public abstract void a();
-  
-  public abstract void a(agkf paramagkf);
-  
-  public abstract void a(ChatMessage paramChatMessage);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(agkf paramagkf);
-  
-  public abstract void b(ChatMessage paramChatMessage);
+  public int a;
+  public View a;
+  public int b;
+  public View b;
+  public int c;
+  public View c;
+  public int d;
+  public View d;
+  public int e;
+  public View e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
 }
 
 

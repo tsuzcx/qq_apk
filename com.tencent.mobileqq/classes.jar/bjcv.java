@@ -1,10 +1,27 @@
-public abstract interface bjcv
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+
+class bjcv
+  implements ServiceConnection
 {
-  public abstract void a(Throwable paramThrowable);
+  bjcv(bjct parambjct) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    bjcq.c("CallingStateMonitor", String.format("onServiceConnected name=%s service=%s", new Object[] { paramComponentName, paramIBinder }));
+    bjct.a(this.a, lwf.a(paramIBinder));
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    bjcq.c("CallingStateMonitor", String.format("onServiceDisconnected name=%s", new Object[] { paramComponentName }));
+    bjct.a(this.a, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjcv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,25 @@
-import android.os.Handler;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
-public class bekq
+public final class bekq
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public Handler a;
-  public bekm a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public volatile String d;
-  public String e;
-  public String f = "";
+  public bekq(Activity paramActivity) {}
   
-  public bekq()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("unikey=").append(this.jdField_a_of_type_JavaLangString).append(",url=").append(this.jdField_b_of_type_JavaLangString).append(" ,header=").append(this.jdField_c_of_type_JavaLangString).append(",htmlbody len=");
-    if (TextUtils.isEmpty(this.d)) {}
-    for (int i = 0;; i = this.d.length()) {
-      return i + ",reqState=" + this.jdField_a_of_type_Int + ",httpStatusCode=" + this.jdField_b_of_type_Int + ",needBase64Rsp=" + this.jdField_a_of_type_Boolean + ",jsCallback=" + this.e + ",resultCode=" + this.jdField_c_of_type_Int + ",errorMsg=" + this.f;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      paramDialogInterface.dismiss();
+      return;
     }
+    TroopBarPublishUtils.c(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

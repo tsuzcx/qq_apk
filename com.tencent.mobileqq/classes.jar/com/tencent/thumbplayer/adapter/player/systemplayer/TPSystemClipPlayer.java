@@ -3,6 +3,7 @@ package com.tencent.thumbplayer.adapter.player.systemplayer;
 import android.content.Context;
 import android.os.ParcelFileDescriptor;
 import android.view.Surface;
+import android.view.SurfaceHolder;
 import com.tencent.thumbplayer.adapter.TPPlaybackInfo;
 import com.tencent.thumbplayer.adapter.TPPlaybackParams;
 import com.tencent.thumbplayer.adapter.TPPlaybackParams.AudioTrackAttribute;
@@ -19,6 +20,7 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnInfoListe
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnPreparedListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSeekCompleteListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
@@ -318,16 +320,21 @@ public class TPSystemClipPlayer
     if (this.mPlayerInitParams.speedRatio() != 0.0F) {
       paramITPPlayerBase.setPlaySpeedRatio(this.mPlayerInitParams.speedRatio());
     }
-    if (this.mPlayerInitParams.surface() != null) {
-      paramITPPlayerBase.setSurface(this.mPlayerInitParams.surface());
+    if ((this.mPlayerInitParams.surface() instanceof SurfaceHolder)) {}
+    for (;;)
+    {
+      paramITPPlayerBase.setOnInfoListener(this.mPlayerCallback);
+      paramITPPlayerBase.setOnPreparedListener(this.mPlayerCallback);
+      paramITPPlayerBase.setOnCompletionListener(this.mPlayerCallback);
+      paramITPPlayerBase.setOnErrorListener(this.mPlayerCallback);
+      paramITPPlayerBase.setOnSeekCompleteListener(this.mPlayerCallback);
+      paramITPPlayerBase.setOnVideoSizeChangedListener(this.mPlayerCallback);
+      paramITPPlayerBase.setOnSubtitleDataListener(this.mPlayerCallback);
+      return;
+      if ((this.mPlayerInitParams.surface() instanceof Surface)) {
+        paramITPPlayerBase.setSurface(this.mPlayerInitParams.surface());
+      }
     }
-    paramITPPlayerBase.setOnInfoListener(this.mPlayerCallback);
-    paramITPPlayerBase.setOnPreparedListener(this.mPlayerCallback);
-    paramITPPlayerBase.setOnCompletionListener(this.mPlayerCallback);
-    paramITPPlayerBase.setOnErrorListener(this.mPlayerCallback);
-    paramITPPlayerBase.setOnSeekCompleteListener(this.mPlayerCallback);
-    paramITPPlayerBase.setOnVideoSizeChangedListener(this.mPlayerCallback);
-    paramITPPlayerBase.setOnSubtitleDataListener(this.mPlayerCallback);
   }
   
   private void switchPlayer(int paramInt, long paramLong)
@@ -362,7 +369,6 @@ public class TPSystemClipPlayer
     {
       return;
       TPLogUtil.i("TPThumbPlayer[TPSystemClipPlayer.java]", "addSubtitleSource， url: " + paramString1 + ", name: " + paramString3 + ", mimeType: " + paramString2);
-      this.mPlayerInitParams.addSubtitleSource(paramString1, paramString2, paramString3);
     } while (this.mPlayerBase == null);
     this.mPlayerBase.addSubtitleSource(paramString1, paramString2, paramString3);
   }
@@ -389,18 +395,6 @@ public class TPSystemClipPlayer
     this.mPlayerInitParams.setDeselectTrackInfo(paramInt, paramLong, arrayOfTPTrackInfo[paramInt]);
   }
   
-  public long getBufferedDurationMs()
-  {
-    if (!this.mStateChecker.validStateCall(15))
-    {
-      if (this.mTPPlaybackInfo != null) {
-        return this.mTPPlaybackInfo.getBufferMs();
-      }
-      return 0L;
-    }
-    return this.mPlayerBase.getBufferedDurationMs();
-  }
-  
   public long getCurrentPositionMs()
   {
     long l = 0L;
@@ -421,6 +415,18 @@ public class TPSystemClipPlayer
     Iterator localIterator = this.mClipList.iterator();
     for (long l = 0L; localIterator.hasNext(); l = ((ITPMediaTrackClip)localIterator.next()).getOriginalDurationMs() + l) {}
     return l;
+  }
+  
+  public long getPlayableDurationMs()
+  {
+    if (!this.mStateChecker.validStateCall(15))
+    {
+      if (this.mTPPlaybackInfo != null) {
+        return this.mTPPlaybackInfo.getPlayableDurationMs();
+      }
+      return 0L;
+    }
+    return this.mPlayerBase.getPlayableDurationMs();
   }
   
   public TPProgramInfo[] getProgramInfo()
@@ -732,6 +738,11 @@ public class TPSystemClipPlayer
     this.mPlayerListeners.setOnSubtitleDataListener(paramIOnSubtitleDataListener);
   }
   
+  public void setOnSubtitleFrameOutListener(ITPPlayerBaseListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener)
+  {
+    throw new IllegalStateException("system Mediaplayer now not support subtitle frame out");
+  }
+  
   public void setOnVideoFrameOutListener(ITPPlayerBaseListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener)
   {
     throw new IllegalStateException("system Mediaplayer cannot support video frame out");
@@ -875,7 +886,7 @@ public class TPSystemClipPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPSystemClipPlayer
  * JD-Core Version:    0.7.0.1
  */

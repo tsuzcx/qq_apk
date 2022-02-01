@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aivh;
+import akmf;
 import android.os.Bundle;
 import mqq.observer.BusinessObserver;
 
 public class QWalletCommonServlet$1
   implements Runnable
 {
-  public QWalletCommonServlet$1(aivh paramaivh, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public QWalletCommonServlet$1(akmf paramakmf, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class QWalletCommonServlet$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.QWalletCommonServlet.1
  * JD-Core Version:    0.7.0.1
  */

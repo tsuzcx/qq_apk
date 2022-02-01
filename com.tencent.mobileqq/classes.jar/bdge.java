@@ -1,6 +1,6 @@
 public abstract interface bdge
 {
-  public abstract void a(String paramString);
+  public abstract void a(int paramInt);
 }
 
 

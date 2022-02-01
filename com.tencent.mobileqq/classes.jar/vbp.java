@@ -1,28 +1,40 @@
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeViewHolder.1.1;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vbp
-  implements URLDrawable.URLDrawableListener
+class vbp
+  implements View.OnClickListener
 {
-  vbp(vbo paramvbo) {}
+  vbp(vbk paramvbk) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().postDelayed(new MsgNodeViewHolder.1.1(this), 1000L);
+    if (vbk.a(this.a))
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    vbk.a(this.a, true);
+    vbk.a(this.a).setImageResource(2130843939);
+    vbk.a(this.a, (AnimationDrawable)vbk.a(this.a).getDrawable());
+    vbk.a(this.a).start();
+    if (vbk.b(this.a)) {
+      vbk.c(this.a);
+    }
+    for (;;)
+    {
+      vrf.a("", 19, 5);
+      break;
+      vbk.a(this.a).postDelayed(vbk.a(this.a), 5000L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vbp
  * JD-Core Version:    0.7.0.1
  */

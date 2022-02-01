@@ -1,18 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2.1;
 
 public class blkv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ServiceConnection
 {
-  public blkv(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  blkv(blku paramblku) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    AEEditorAILoadingView.b(this.a).setPadding(0, i, 0, 0);
-    AEEditorAILoadingView.c(this.a).setPadding(0, i, 0, 0);
+    this.a.jdField_a_of_type_Blkq = blkr.a(paramIBinder);
+    if (this.a.jdField_a_of_type_Blkq != null)
+    {
+      paramComponentName = new QfavRemoteProxyForQQ.2.1(this);
+      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
+      paramComponentName.start();
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    this.a.jdField_a_of_type_Blkq = null;
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 

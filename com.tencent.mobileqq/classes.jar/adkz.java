@@ -1,25 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class adkz
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adkz(NotificationActivity paramNotificationActivity) {}
+  public adkz(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramView.getId())
+    if (AddRequestActivity.c(this.a, AddRequestActivity.e(this.a)))
     {
-    default: 
-      return;
+      AddRequestActivity.b(this.a, 2131717771, 1000L, false);
+      AddRequestActivity.a(this.a, AddRequestActivity.e(this.a));
     }
-    this.a.finish();
+    AddRequestActivity.a(this.a).dismiss();
+    AddRequestActivity.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkz
  * JD-Core Version:    0.7.0.1
  */

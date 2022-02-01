@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class adty
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public adty(RegisterActivity paramRegisterActivity) {}
+  public adty(ChatHistory paramChatHistory, View paramView, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

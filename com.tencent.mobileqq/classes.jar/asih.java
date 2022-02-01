@@ -1,15 +1,28 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
 
-class asih
-  extends nac
+public class asih
+  implements View.OnTouchListener
 {
-  asih(asig paramasig) {}
+  public asih(ExtendFriendCampusFragment paramExtendFriendCampusFragment, View paramView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("sendFriendRelationRedpointClickEvent, errorCode: %d", new Object[] { Integer.valueOf(paramInt) }));
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.5F);
+      this.jdField_a_of_type_AndroidViewView.postInvalidate();
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+        this.jdField_a_of_type_AndroidViewView.postInvalidate();
+      }
     }
   }
 }

@@ -1,41 +1,23 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qya
-  implements azef
+public class qya
+  implements View.OnClickListener
 {
-  qya(qxw paramqxw) {}
+  public qya(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
   
-  public void G_()
+  public void onClick(View paramView)
   {
-    VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alud.a(2131708001), null);
-    azdh.a(3, -1500);
+    qam.a(2, this.jdField_a_of_type_JavaLangString);
+    pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label95;
-      }
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alud.a(2131708004) + paramInt + "]", null);
-      azdh.a(2, paramInt);
-    }
-    for (;;)
-    {
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", "onDownloadFinish name=" + paramString1 + ", result=" + paramInt + ", filePath=" + paramString2, null);
-      return;
-      label95:
-      qxw.a(this.a, true);
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", alud.a(2131708003) + paramInt + "]", null);
-    }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qya
  * JD-Core Version:    0.7.0.1
  */

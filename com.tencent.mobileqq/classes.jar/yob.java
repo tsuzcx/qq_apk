@@ -1,57 +1,34 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
 class yob
-  extends syt
+  extends SimpleJob<Void>
 {
-  yob(ynx paramynx) {}
-  
-  protected boolean a(Integer paramInteger)
+  yob(ynm paramynm, String paramString, List paramList)
   {
-    if ((ynx.a(this.a) == null) || (ynx.a(this.a) == null)) {
-      return false;
-    }
-    switch (paramInteger.intValue())
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    xht.a();
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.toArray();
+    int j = paramJobContext.length;
+    int i = 0;
+    while (i < j)
     {
+      xht.a(paramJobContext[i].toString());
+      i += 1;
     }
-    for (;;)
-    {
-      return super.a(paramInteger);
-      ynx.a(this.a);
-      if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null))
-      {
-        zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_friends", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
-        continue;
-        ynx.b(this.a);
-        if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null))
-        {
-          zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_qzone", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
-          continue;
-          ynx.a(this.a, 0);
-          if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null))
-          {
-            zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_wechat", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
-            continue;
-            ynx.a(this.a, 1);
-            if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null))
-            {
-              zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_moments", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
-              continue;
-              ynx.c(this.a);
-              if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null)) {
-                zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_save_local", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
-              }
-            }
-          }
-        }
-      }
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yob
  * JD-Core Version:    0.7.0.1
  */

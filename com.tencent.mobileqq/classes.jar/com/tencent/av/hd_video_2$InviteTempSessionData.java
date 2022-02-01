@@ -27,7 +27,7 @@ public final class hd_video_2$InviteTempSessionData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.hd_video_2.InviteTempSessionData
  * JD-Core Version:    0.7.0.1
  */

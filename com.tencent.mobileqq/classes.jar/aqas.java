@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
-
-public final class aqas
-  implements Parcelable.Creator<SearchEmoticonWebBean>
+public abstract interface aqas
 {
-  public SearchEmoticonWebBean a(Parcel paramParcel)
-  {
-    return new SearchEmoticonWebBean(paramParcel);
-  }
+  public abstract void a(int paramInt);
   
-  public SearchEmoticonWebBean[] a(int paramInt)
-  {
-    return new SearchEmoticonWebBean[paramInt];
-  }
+  public abstract void a(aqao paramaqao);
+  
+  public abstract void b(int paramInt);
 }
 
 

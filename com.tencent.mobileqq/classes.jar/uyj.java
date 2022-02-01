@@ -1,106 +1,30 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 
-public class uyj
-  extends JobSegment<List<vlp>, List<vlp>>
+class uyj
+  extends RecyclerView.ViewHolder
 {
-  uyg a;
-  
-  public uyj(uyg paramuyg)
+  public uyj(BaseWidgetView paramBaseWidgetView)
   {
-    this.a = paramuyg;
+    super(paramBaseWidgetView);
   }
   
-  protected void a(JobContext paramJobContext, List<vlp> paramList)
+  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, uzb paramuzb)
   {
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    if (this.a.jdField_a_of_type_Int == 5)
+    if ((this.itemView instanceof BaseWidgetView))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.jobLocalVideo", 2, "self node, check local video");
-      }
-      paramJobContext = (uvx)uwa.a(5);
-      localObject1 = ((uyz)QQStoryContext.a().getManager(251)).a().a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
-      if ((localObject1 == null) || (((uyg)localObject1).b == null) || (((uyg)localObject1).b.isEmpty())) {
-        break label410;
-      }
-      localObject1 = ((uyg)localObject1).b.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (vlp)((Iterator)localObject1).next();
-        localObject3 = paramJobContext.a(((vlp)localObject2).jdField_b_of_type_JavaLangString);
-        if (localObject3 != null)
-        {
-          ((vlp)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject3);
-          paramList.add(localObject2);
-        }
-      }
-    }
-    label410:
-    for (int i = 1;; i = 0)
-    {
-      localObject1 = paramJobContext.a(false);
-      int j = i;
-      if (localObject1 != null)
-      {
-        j = i;
-        if (((List)localObject1).size() > 0)
-        {
-          localObject1 = ((List)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (StoryVideoItem)((Iterator)localObject1).next();
-            localObject3 = new vlp();
-            ((vlp)localObject3).jdField_a_of_type_Boolean = false;
-            ((vlp)localObject3).jdField_a_of_type_JavaLangString = ((StoryVideoItem)localObject2).mAttachedFeedId;
-            ((vlp)localObject3).jdField_b_of_type_JavaLangString = ((StoryVideoItem)localObject2).mVid;
-            ((vlp)localObject3).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject2);
-            ((vlp)localObject3).jdField_b_of_type_Boolean = true;
-            paramList.add(localObject3);
-          }
-          j = 1;
-        }
-      }
-      if (j != 0)
-      {
-        localObject1 = paramList.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (vlp)((Iterator)localObject1).next();
-          if (((vlp)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-            ((vlp)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramJobContext.a(((vlp)localObject2).jdField_b_of_type_JavaLangString);
-          }
-          if (((vlp)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
-          {
-            notifyError(new ErrorMessage(940001, "should not be null"));
-            return;
-          }
-        }
-        Collections.sort(paramList, new uyk(this));
-      }
-      if (paramList.isEmpty())
-      {
-        notifyError(new ErrorMessage(103, "nodeInfo not valid"));
-        return;
-      }
-      notifyResult(paramList);
-      return;
+      this.itemView.setTag(this);
+      ((BaseWidgetView)this.itemView).setInteractor(paramuzb);
+      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uyj
  * JD-Core Version:    0.7.0.1
  */

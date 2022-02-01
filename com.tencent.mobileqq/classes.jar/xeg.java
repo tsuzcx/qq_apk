@@ -1,33 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class xeg
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnDismissListener
 {
-  xeg(xed paramxed) {}
+  xeg(xee paramxee) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    wxe.b("TextLayer", "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    wxe.b("TextLayer", "scaleAnimator end!");
-    this.a.p = 1.0F;
-    this.a.c = false;
-    this.a.a.g();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    wxe.b("TextLayer", "scaleAnimator start!");
-    this.a.c = true;
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xeg
  * JD-Core Version:    0.7.0.1
  */

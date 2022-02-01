@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import alqo;
+import anjx;
 
 public class DataLineHandler$14
   implements Runnable
 {
-  public DataLineHandler$14(alqo paramalqo, long paramLong, int paramInt1, int paramInt2) {}
+  public DataLineHandler$14(anjx paramanjx, long paramLong, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class DataLineHandler$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.14
  * JD-Core Version:    0.7.0.1
  */

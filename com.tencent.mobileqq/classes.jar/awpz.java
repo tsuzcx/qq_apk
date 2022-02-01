@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class awpz
-  implements Parcelable.Creator<PersonalityLabelInfo>
+public abstract class awpz
 {
-  public PersonalityLabelInfo a(Parcel paramParcel)
+  public String a = "MsgBackup." + getClass().getSimpleName();
+  
+  public void a(String paramString)
   {
-    return new PersonalityLabelInfo(paramParcel);
+    if (awqu.a) {
+      QLog.d(this.a, 2, paramString);
+    }
   }
   
-  public PersonalityLabelInfo[] a(int paramInt)
+  protected boolean a(String paramString)
   {
-    return new PersonalityLabelInfo[paramInt];
+    return bgmg.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpz
  * JD-Core Version:    0.7.0.1
  */

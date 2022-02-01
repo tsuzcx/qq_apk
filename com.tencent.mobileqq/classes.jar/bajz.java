@@ -1,14 +1,11 @@
 public class bajz
-  implements baky
 {
-  public int getCloudFileType()
-  {
-    return 10;
-  }
+  public long a;
+  public boolean a;
   
-  public boolean isClickable()
+  public String toString()
   {
-    return false;
+    return "OneWayFriendResult{friendUin=" + this.jdField_a_of_type_Long + ", oneWayFriend=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

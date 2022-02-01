@@ -12,9 +12,10 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class DialogFromBottom
-  extends Dialog
+  extends ReportDialog
 {
   private static final int mAnimationDuration = 200;
   private View mContentView;
@@ -23,7 +24,7 @@ public class DialogFromBottom
   
   public DialogFromBottom(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755054);
+    super(paramContext, 2131755055);
   }
   
   private void animateDown()
@@ -116,7 +117,7 @@ public class DialogFromBottom
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom
  * JD-Core Version:    0.7.0.1
  */

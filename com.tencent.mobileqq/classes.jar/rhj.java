@@ -1,21 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-
-class rhj
-  implements DialogInterface.OnShowListener
+public class rhj
 {
-  rhj(rhf paramrhf, bhuf parambhuf) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private long b;
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public rhj(long paramLong)
   {
-    rhf.a(this.jdField_a_of_type_Rhf, "mShareActionSheet onShow()");
-    this.jdField_a_of_type_Bhuf.getWindow().clearFlags(8);
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rhj
  * JD-Core Version:    0.7.0.1
  */

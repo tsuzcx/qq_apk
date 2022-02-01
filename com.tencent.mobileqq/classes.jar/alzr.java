@@ -1,136 +1,29 @@
-import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateRsp;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class alzr
-  implements alpg
+class alzr
+  implements View.OnClickListener
 {
-  public void a(int paramInt) {}
+  alzr(alzq paramalzq, alzp paramalzp, int paramInt) {}
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void a(boolean paramBoolean, int paramInt, long paramLong) {}
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt) {}
-  
-  public void a(boolean paramBoolean, SetRecvMsgStateRsp paramSetRecvMsgStateRsp) {}
-  
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, ArrayList<Long> paramArrayList) {}
-  
-  public void a(boolean paramBoolean, npo paramnpo) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
-  
-  public void b(boolean paramBoolean, int paramInt) {}
-  
-  public void b(boolean paramBoolean, String paramString) {}
-  
-  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (100 == paramInt)
+    if (this.jdField_a_of_type_Alzp.a.isChecked()) {}
+    for (((aohd)this.jdField_a_of_type_Alzq.a.get(this.jdField_a_of_type_Int)).a = false;; ((aohd)this.jdField_a_of_type_Alzq.a.get(this.jdField_a_of_type_Int)).a = true)
     {
-      paramObject = (alzt)paramObject;
-      a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean);
-    }
-    do
-    {
+      this.jdField_a_of_type_Alzq.notifyItemChanged(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Alzq.a();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (101 == paramInt)
-      {
-        if ((paramObject instanceof alzs))
-        {
-          paramObject = (alzs)paramObject;
-          b(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-          return;
-        }
-        if ((paramObject instanceof Integer))
-        {
-          b(paramBoolean, ((Integer)paramObject).intValue());
-          return;
-        }
-        a(paramBoolean, String.valueOf(paramObject));
-        return;
-      }
-      if (102 == paramInt)
-      {
-        if ((paramObject instanceof alzs))
-        {
-          paramObject = (alzs)paramObject;
-          a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-          return;
-        }
-        b(paramBoolean, String.valueOf(paramObject));
-        return;
-      }
-      if (103 == paramInt)
-      {
-        t_();
-        return;
-      }
-      if (104 == paramInt)
-      {
-        a(paramBoolean);
-        return;
-      }
-      if (105 == paramInt)
-      {
-        a(((Integer)paramObject).intValue());
-        return;
-      }
-      if (106 == paramInt)
-      {
-        a(paramBoolean, ((Boolean)paramObject).booleanValue());
-        return;
-      }
-      if (109 == paramInt)
-      {
-        a(paramBoolean, (npo)paramObject);
-        return;
-      }
-      if (108 == paramInt)
-      {
-        paramObject = (HashMap)paramObject;
-        a(paramBoolean, ((Integer)paramObject.get("seq")).intValue(), ((Long)paramObject.get("uin")).longValue());
-        return;
-      }
-      if (110 == paramInt)
-      {
-        a(paramBoolean, (ArrayList)paramObject);
-        return;
-      }
-      if (111 == paramInt)
-      {
-        paramObject = (HashMap)paramObject;
-        long l = 0L;
-        paramInt = 0;
-        if (paramObject != null)
-        {
-          l = ((Long)paramObject.get("uin")).longValue();
-          paramInt = ((Integer)paramObject.get("status")).intValue();
-        }
-        a(paramBoolean, l, paramInt);
-        return;
-      }
-    } while ((112 != paramInt) || (!(paramObject instanceof SetRecvMsgStateRsp)));
-    a(paramBoolean, (SetRecvMsgStateRsp)paramObject);
+    }
   }
-  
-  public void t_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alzr
  * JD-Core Version:    0.7.0.1
  */

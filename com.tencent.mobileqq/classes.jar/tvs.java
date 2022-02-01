@@ -1,42 +1,62 @@
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StUser;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 class tvs
-  implements tqy
+  implements View.OnClickListener
 {
-  tvs(tvj paramtvj, FeedCloudMeta.StReply paramStReply, FeedCloudMeta.StComment paramStComment) {}
+  tvs(tvr paramtvr, tvq paramtvq) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    Object localObject;
-    if (paramInt == tqz.c)
+    bcst.b(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005732", "0X8005732", 0, 0, "", "", "", "");
+    bcst.b(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642F", "0X800642F", 0, 0, String.valueOf(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp.jdField_a_of_type_Long), "", "", "");
+    String str;
+    if (this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp != null)
     {
-      localObject = (ClipboardManager)tuz.c(this.jdField_a_of_type_Tvj.a).getSystemService("clipboard");
-      if (localObject != null) {
-        ((ClipboardManager)localObject).setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.content.get()));
+      str = String.valueOf(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp.jdField_a_of_type_Long);
+      if (!TextUtils.isEmpty(str)) {
+        break label116;
       }
     }
-    while (paramInt != tqz.e) {
-      return;
-    }
-    if (tra.a((FeedCloudMeta.StUser)this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.get())) {}
-    for (paramInt = 0;; paramInt = 2)
+    for (;;)
     {
-      localObject = tuz.d(this.jdField_a_of_type_Tvj.a).getString(2131698379);
-      bdgm.a(tuz.e(this.jdField_a_of_type_Tvj.a), 230, (String)localObject, null, 2131690648, 2131690626, new tvt(this, paramInt), new tvu(this)).show();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label116:
+      if (this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp.jdField_a_of_type_Int == 0)
+      {
+        if (!bgnt.d(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
+        {
+          QQToast.a(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity, 2131693948, 0).b(((BaseActivity)this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
+        }
+        else
+        {
+          this.jdField_a_of_type_Tvr.a(2);
+          this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvp.jdField_a_of_type_Int = 2;
+          MqqHandler localMqqHandler = this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
+          if ((localMqqHandler != null) && (this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity != null) && ((this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity instanceof SubscriptFeedsActivity))) {
+            localMqqHandler.sendEmptyMessage(1007);
+          }
+          tzo.a(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq.jdField_a_of_type_AndroidAppActivity, str, new tvw(this.jdField_a_of_type_Tvr.jdField_a_of_type_Tvq, this.jdField_a_of_type_Tvr));
+        }
+      }
+      else {
+        tvr.a(this.jdField_a_of_type_Tvr);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tvs
  * JD-Core Version:    0.7.0.1
  */

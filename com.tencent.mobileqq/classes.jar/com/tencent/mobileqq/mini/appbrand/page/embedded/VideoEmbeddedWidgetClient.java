@@ -32,7 +32,6 @@ import com.tencent.oskplayer.util.DefaultLogger;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.embeddedwidget.interfaces.IEmbeddedWidget;
-import com.tencent.smtt.export.external.embeddedwidget.interfaces.IEmbeddedWidgetClient;
 import common.config.service.QzoneConfig;
 import java.util.Arrays;
 import java.util.List;
@@ -44,7 +43,7 @@ import tv.danmaku.ijk.media.player.IMediaPlayer;
 
 public class VideoEmbeddedWidgetClient
   extends StateMachine
-  implements Handler.Callback, StateMachine.OnStateChangeListener, IEmbeddedWidgetClient
+  implements Handler.Callback, StateMachine.OnStateChangeListener, IExtendedEmbeddedWidgetClient
 {
   private static final int DEFAULT_INTERVAL_TIME = 400;
   private static final int EVENT_INIT_SUCC = 1;
@@ -130,11 +129,12 @@ public class VideoEmbeddedWidgetClient
     initOskOnce(BaseApplicationImpl.getContext());
     this.mMediaPlayer = new OskExoMediaPlayer();
     this.mMediaPlayer.setOnCompletionListener(new VideoEmbeddedWidgetClient.1(this));
-    this.mMediaPlayer.setOnPreparedListener(new VideoEmbeddedWidgetClient.2(this));
-    this.mMediaPlayer.setOnInfoListener(new VideoEmbeddedWidgetClient.3(this));
-    this.mMediaPlayer.setOnBufferingUpdateListener(new VideoEmbeddedWidgetClient.4(this));
-    this.mMediaPlayer.setOnVideoSizeChangedListener(new VideoEmbeddedWidgetClient.5(this));
-    this.mMediaPlayer.setOnLoopStartListener(new VideoEmbeddedWidgetClient.6(this));
+    this.mMediaPlayer.setOnErrorListener(new VideoEmbeddedWidgetClient.2(this));
+    this.mMediaPlayer.setOnPreparedListener(new VideoEmbeddedWidgetClient.3(this));
+    this.mMediaPlayer.setOnInfoListener(new VideoEmbeddedWidgetClient.4(this));
+    this.mMediaPlayer.setOnBufferingUpdateListener(new VideoEmbeddedWidgetClient.5(this));
+    this.mMediaPlayer.setOnVideoSizeChangedListener(new VideoEmbeddedWidgetClient.6(this));
+    this.mMediaPlayer.setOnLoopStartListener(new VideoEmbeddedWidgetClient.7(this));
   }
   
   public static void initOskOnce(Context paramContext)
@@ -192,21 +192,21 @@ public class VideoEmbeddedWidgetClient
     if (this.mMediaPlayer != null)
     {
       if (!this.muted) {
-        break label118;
+        break label136;
       }
       this.mMediaPlayer.setVolume(0.0F, 0.0F);
     }
     for (;;)
     {
       this.mMediaPlayer.setLooping(this.loop);
-      if (this.initialTime > 0)
+      if ((this.mMediaPlayer.getCurrentPosition() <= 0L) && (this.initialTime > 0))
       {
         QLog.d("miniapp-embedded", 1, "before seekTo " + this.initialTime);
-        this.mMediaPlayer.seekTo(this.initialTime);
+        this.mMediaPlayer.seekTo(this.initialTime * 1000);
         QLog.d("miniapp-embedded", 1, "after seekTo " + this.initialTime);
       }
       return;
-      label118:
+      label136:
       this.mMediaPlayer.setVolume(1.0F, 1.0F);
     }
   }
@@ -308,7 +308,7 @@ public class VideoEmbeddedWidgetClient
           QLog.e("miniapp-embedded", 1, "MSG_VIDEO_SURFACE_CREATED renderer is null!");
           continue;
           QLog.d("miniapp-embedded", 1, "MSG_IS_HLS");
-          ThreadManager.getSubThreadHandler().post(new VideoEmbeddedWidgetClient.7(this));
+          ThreadManager.getSubThreadHandler().post(new VideoEmbeddedWidgetClient.8(this));
         }
       }
     }
@@ -323,7 +323,7 @@ public class VideoEmbeddedWidgetClient
     {
       str = paramJSONObject.optString("type");
       if (!"play".equals(str)) {
-        break label617;
+        break label621;
       }
       this.isPaused = false;
       if (((this.hasCompleted) || (this.hasStoped)) && (this.mMediaPlayer != null))
@@ -337,7 +337,7 @@ public class VideoEmbeddedWidgetClient
     try
     {
       if ((!this.filePath.startsWith("http")) && (!this.filePath.startsWith("https"))) {
-        break label418;
+        break label422;
       }
       paramJSONObject = OskPlayerCore.getInstance().getUrl(MiniAppFileManager.getInstance().getAbsolutePath(this.filePath));
       QLog.d("miniapp-embedded", 1, "handleOperateXWebVideo playUrl : " + paramJSONObject);
@@ -359,8 +359,8 @@ public class VideoEmbeddedWidgetClient
     if (this.hasPrepared) {
       if (this.mMediaPlayer == null) {}
     }
-    label418:
-    label617:
+    label422:
+    label621:
     do
     {
       float f;
@@ -375,6 +375,7 @@ public class VideoEmbeddedWidgetClient
           {
             this.isPaused = false;
             this.mMediaPlayer.start();
+            updateMediaPlayer();
             sendTimingMsg(400L);
           }
         }
@@ -484,7 +485,7 @@ public class VideoEmbeddedWidgetClient
         else
         {
           if ((!"playbackRate".equals(str)) || (TextUtils.isEmpty(this.data))) {
-            break label1045;
+            break label1049;
           }
           if (this.mMediaPlayer != null) {
             try
@@ -515,7 +516,7 @@ public class VideoEmbeddedWidgetClient
       QLog.e("miniapp-embedded", 1, "playbackRate error." + f);
       return;
     } while ((!"stop".equals(str)) || (this.mMediaPlayer == null));
-    label1045:
+    label1049:
     this.isPaused = true;
     this.hasStoped = true;
     QLog.e("miniapp-embedded", 1, "pause isPaused true");
@@ -644,6 +645,7 @@ public class VideoEmbeddedWidgetClient
   public void nativePause()
   {
     QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.nativePause " + this);
+    this.isOnPageBackGrond = true;
     if ((this.mMediaPlayer != null) && (this.autoPauseIfOpenNative)) {
       this.pauseByOpenNative = true;
     }
@@ -665,6 +667,7 @@ public class VideoEmbeddedWidgetClient
   public void nativeResume()
   {
     QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.nativeResume " + this);
+    this.isOnPageBackGrond = false;
     if ((this.mMediaPlayer != null) && (this.pauseByOpenNative))
     {
       this.pauseByOpenNative = false;
@@ -892,7 +895,7 @@ public class VideoEmbeddedWidgetClient
     QLog.i("miniapp-embedded", 2, "VideoEmbeddedWidgetClient.onVisibilityChanged ： " + paramBoolean);
   }
   
-  public void webviewDestory()
+  public void webViewDestory()
   {
     QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.webviewDestory " + this);
     this.isPaused = true;
@@ -924,7 +927,7 @@ public class VideoEmbeddedWidgetClient
     finally {}
   }
   
-  public void webviewPause()
+  public void webViewPause()
   {
     QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.webviewPause " + this);
     this.isOnPageBackGrond = true;
@@ -946,7 +949,7 @@ public class VideoEmbeddedWidgetClient
     }
   }
   
-  public void webviewResume()
+  public void webViewResume()
   {
     QLog.i("miniapp-embedded", 1, "VideoEmbeddedWidgetClient.webviewResume " + this);
     this.isOnPageBackGrond = false;
@@ -978,7 +981,7 @@ public class VideoEmbeddedWidgetClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.embedded.VideoEmbeddedWidgetClient
  * JD-Core Version:    0.7.0.1
  */

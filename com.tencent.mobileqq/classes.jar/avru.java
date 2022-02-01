@@ -1,121 +1,123 @@
 import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
-public class avru
+public abstract class avru
 {
-  public static <T> T a(View paramView, Class<T> paramClass)
+  private avrv jdField_a_of_type_Avrv = new avrv();
+  private final HashSet<Long> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private final Map<Long, avrx> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean = true;
+  
+  public avru()
   {
-    if (paramView == null) {}
-    do
-    {
-      return null;
-      if (!(paramView.getParent() instanceof AbsListView)) {
-        break;
+    aqpi localaqpi = (aqpi)aqlk.a().a(598);
+    if (localaqpi != null) {
+      if (localaqpi.jdField_a_of_type_Boolean) {
+        break label74;
       }
-    } while (!a(paramView.getTag().getClass(), paramClass));
-    return paramView.getTag();
-    return a((View)paramView.getParent(), paramClass);
-  }
-  
-  public static String a(long paramLong)
-  {
-    long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = l1 - paramLong;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(l1);
-    int i = localCalendar.get(5);
-    int j = localCalendar.get(1);
-    localCalendar.setTimeInMillis(paramLong);
-    int k = localCalendar.get(5);
-    int m = localCalendar.get(1);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat();
-    if (l2 < 600000L) {
-      return alud.a(2131707614);
     }
-    if (l2 < 3600000L) {
-      return l2 / 60L / 1000L + 1L + alud.a(2131707607);
-    }
-    if ((l2 < 21600000L) && (k == i)) {
-      return l2 / 60L / 60L / 1000L + alud.a(2131707601);
-    }
-    if ((l2 < 86400000L) && (k == i))
+    label74:
+    for (boolean bool = true;; bool = false)
     {
-      localSimpleDateFormat.applyPattern("HH:mm");
-      return localSimpleDateFormat.format(localCalendar.getTime());
-    }
-    if ((l2 < 86400000L) && (k != i))
-    {
-      localSimpleDateFormat.applyPattern("HH:mm");
-      return alud.a(2131707612) + localSimpleDateFormat.format(localCalendar.getTime());
-    }
-    if (m == j)
-    {
-      localSimpleDateFormat.applyPattern("MM-dd");
-      return localSimpleDateFormat.format(localCalendar.getTime());
-    }
-    localSimpleDateFormat.applyPattern("yyyy-MM-dd");
-    return localSimpleDateFormat.format(localCalendar.getTime());
-  }
-  
-  public static void a(Context paramContext, PublishVideoEntry paramPublishVideoEntry, int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    File localFile1 = new File(paramPublishVideoEntry.mLocalRawVideoDir + "");
-    File localFile2 = new File(paramPublishVideoEntry.thumbPath + "");
-    paramPublishVideoEntry = new File(paramPublishVideoEntry.doodlePath + "");
-    try
-    {
-      localJSONObject.put("videoUrl", localFile1.toURI() + "");
-      localJSONObject.put("coverUrl", localFile2.toURI() + "");
-      localJSONObject.put("doodleUrl", paramPublishVideoEntry.toURI() + "");
-      localJSONObject.put("is_local", "1");
-      paramPublishVideoEntry = new Bundle();
-      paramPublishVideoEntry.putString("preLoadParams", localJSONObject.toString());
-      paramPublishVideoEntry.putBoolean("scroll_to_comment", false);
-      paramPublishVideoEntry.putString("isLocal", "1");
-      paramPublishVideoEntry.putString("_from", "3");
-      paramPublishVideoEntry.putString("play_mode", String.valueOf(2));
-      paramPublishVideoEntry.putBoolean("is_multi_progress_bar", false);
-      paramPublishVideoEntry.putString("feed_type", String.valueOf(paramInt));
-      SmallVideoFragment.a(paramContext, paramPublishVideoEntry);
+      this.jdField_a_of_type_Boolean = bool;
       return;
     }
-    catch (JSONException paramPublishVideoEntry)
+  }
+  
+  private void a(long paramLong, RedTouch paramRedTouch)
+  {
+    int i = avry.a(paramRedTouch);
+    if (i != 0) {
+      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), new avrx(i, avry.b(paramRedTouch)));
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, long paramLong, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if ((!this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(paramLong))) && (paramAppInfo != null) && (paramAppInfo.iNewFlag.get() != 0))
+    {
+      this.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(paramLong));
+      ((baif)paramQQAppInterface.getManager(36)).a((int)paramLong, 30);
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Avrv != null) {
+      return this.jdField_a_of_type_Avrv.jdField_a_of_type_Int;
+    }
+    return -1;
+  }
+  
+  public abstract BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString);
+  
+  public Map<Long, avrx> a()
+  {
+    return this.jdField_a_of_type_JavaUtilMap;
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_JavaUtilHashSet.isEmpty()) {}
+    try
+    {
+      ajvi.jdField_a_of_type_Int |= 0x2;
+      QLog.i("Q.lebatab.LebaRedTouchBase", 1, "onPause update" + ajvi.jdField_a_of_type_Int);
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        ((antv)((QQAppInterface)localAppRuntime).a(87)).notifyUI(4, true, null);
+      }
+      this.jdField_a_of_type_JavaUtilHashSet.clear();
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      return;
+    }
+    catch (Exception localException)
     {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyMomentUtils", 2, "getPreviewPage, e=" + paramPublishVideoEntry.toString());
-        }
+        QLog.i("Q.lebatab.LebaRedTouchBase", 1, "onPause", localException);
       }
     }
   }
   
-  private static boolean a(Class paramClass1, Class paramClass2)
+  public void a(ajvf paramajvf)
   {
-    if ((paramClass1 == Object.class) || (paramClass1 == null)) {
-      return false;
+    QQAppInterface localQQAppInterface = paramajvf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Context localContext = paramajvf.jdField_a_of_type_AndroidContentContext;
+    RedTouch localRedTouch = paramajvf.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
+    long l = paramajvf.jdField_a_of_type_Long;
+    String str = paramajvf.jdField_a_of_type_JavaLangString;
+    int i = paramajvf.jdField_a_of_type_Int;
+    paramajvf = a(localQQAppInterface, String.valueOf(l));
+    a(localQQAppInterface, l, paramajvf);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = this.jdField_a_of_type_Avrv.a(localQQAppInterface, localContext, l, localRedTouch, str, this.jdField_a_of_type_JavaUtilMap, i);; bool = false)
+    {
+      QLog.d("Q.lebatab.LebaRedTouchBase", 1, new Object[] { "updateRedTouch,resID=", Long.valueOf(l), ",resPkgName=", str, ",isHandledRedTouch=", Boolean.valueOf(bool), ",leba_red_touch_spcific_enable->mSpecificEnable=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      if (!bool)
+      {
+        a(localRedTouch, paramajvf);
+        a(l, localRedTouch);
+        this.jdField_a_of_type_Avrv.a(localQQAppInterface, str, paramajvf);
+      }
+      return;
     }
-    if (paramClass1 == paramClass2) {
-      return true;
-    }
-    return a(paramClass1.getSuperclass(), paramClass2);
   }
+  
+  public abstract void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avru
  * JD-Core Version:    0.7.0.1
  */

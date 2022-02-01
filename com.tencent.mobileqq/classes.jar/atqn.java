@@ -1,28 +1,18 @@
 import android.view.View;
 
 class atqn
-  implements bhuk
+  implements atwb
 {
-  atqn(atqm paramatqm, bhuf parambhuf) {}
+  atqn(atqm paramatqm) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.e();
-      return;
-      atqm.a(this.jdField_a_of_type_Atqm);
-      continue;
-      atqm.b(this.jdField_a_of_type_Atqm);
-    }
+    atvo.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Atoo.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqn
  * JD-Core Version:    0.7.0.1
  */

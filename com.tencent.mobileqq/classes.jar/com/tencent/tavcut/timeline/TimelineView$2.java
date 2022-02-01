@@ -26,6 +26,7 @@ class TimelineView$2
   
   public void onSliderBarMove(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
+    this.this$0.hasEditStartAndEnd = true;
     TimelineView.access$400(this.this$0);
     TimelineView.access$500(this.this$0, paramFloat1, paramFloat2);
     TimelineView.access$600(this.this$0, paramBoolean, paramFloat1, paramFloat2);
@@ -34,6 +35,7 @@ class TimelineView$2
   
   public void onSliderBarRelease(boolean paramBoolean)
   {
+    this.this$0.hasEditStartAndEnd = true;
     TimelineView.access$400(this.this$0);
     TimelineView.access$800(this.this$0);
     TimelineView.access$900(this.this$0, paramBoolean);
@@ -42,7 +44,7 @@ class TimelineView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.timeline.TimelineView.2
  * JD-Core Version:    0.7.0.1
  */

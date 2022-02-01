@@ -1,34 +1,67 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class pkj
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<pkk> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private HashMap<String, String> b = new HashMap();
+  
+  public int a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    pkm.v(paramBaseArticleInfo, localJSONObject1);
-    localJSONObject1.put("id_content_wrapper", new JSONObject());
-    localJSONObject1.put("id_article_wrapper", new JSONObject());
-    localJSONObject1.put("id_summary_wrapper", new JSONObject());
-    localJSONObject1.put("id_info_wrapper", new JSONObject());
-    pkm.b(paramBaseArticleInfo, localJSONObject1);
-    localJSONObject1.put("id_multi_image", new JSONObject());
-    JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("summary_text", alud.a(2131713419));
-    localJSONObject1.put("id_summary", localJSONObject2);
-    pkm.a(paramBaseArticleInfo, localJSONObject1, true);
-    pkm.e(paramBaseArticleInfo, localJSONObject1);
-    pkm.l(paramBaseArticleInfo, localJSONObject1);
-    pkm.B(paramBaseArticleInfo, localJSONObject1);
-    pkm.C(paramBaseArticleInfo, localJSONObject1);
-    pkm.b(localJSONObject1);
-    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_multi_cell");
-    return localJSONObject1;
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public String a(int paramInt, String paramString)
+  {
+    String str2 = "";
+    pkk localpkk = a(paramInt);
+    String str1 = str2;
+    if (localpkk != null)
+    {
+      str1 = str2;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        if (!"style_ID".equalsIgnoreCase(paramString)) {
+          break label46;
+        }
+        str1 = localpkk.jdField_a_of_type_JavaLangString;
+      }
+    }
+    return str1;
+    label46:
+    return (String)localpkk.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public String a(String paramString)
+  {
+    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public pkk a(int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt >= 0)
+    {
+      localObject1 = localObject2;
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+        localObject1 = (pkk)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      }
+    }
+    return localObject1;
+  }
+  
+  public String b(String paramString)
+  {
+    return (String)this.b.get(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pkj
  * JD-Core Version:    0.7.0.1
  */

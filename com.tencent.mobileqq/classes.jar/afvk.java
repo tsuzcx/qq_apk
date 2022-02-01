@@ -1,39 +1,16 @@
-import android.app.Activity;
-import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class afvk
-  implements bhuk
+final class afvk
+  implements afvp
 {
-  afvk(afvg paramafvg, apxv paramapxv, bhuf parambhuf, MessageForMarketFace paramMessageForMarketFace) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      if (this.jdField_a_of_type_Apxv.a.jobType != 1) {
-        break;
-      }
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (this.jdField_a_of_type_Apxv.a.jobType == 3) {}
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Afvg.b, this.jdField_a_of_type_Afvg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_Apxv.a.epId, bool1, bool2);
-        this.jdField_a_of_type_Bhuf.cancel();
-        return;
-      }
-      acjm.a(this.jdField_a_of_type_Afvg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afvg.b, this.jdField_a_of_type_Afvg.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Apxv.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.uniseq);
-      this.jdField_a_of_type_Bhuf.cancel();
-      return;
-    }
+    paramSessionInfo = new ProfileActivity.AllInOne(paramString, 70);
+    paramSessionInfo.h = bglf.i(paramQQAppInterface, paramString);
+    return paramSessionInfo;
   }
 }
 

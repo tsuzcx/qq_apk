@@ -1,21 +1,16 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
-public class aidr
+class aidr
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public TextView b;
+  aidr(aidq paramaidq, int paramInt) {}
   
-  public aidr(aidq paramaidq) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Aidq.a.a.a(4, 0, 0, this.jdField_a_of_type_Int);
+  }
 }
 
 

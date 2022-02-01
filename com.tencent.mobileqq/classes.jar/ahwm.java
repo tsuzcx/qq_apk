@@ -1,29 +1,18 @@
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 import com.tencent.qphone.base.util.QLog;
 
-public class ahwm
-  implements View.OnClickListener
+class ahwm
+  implements blqq
 {
-  public ahwm(ImgPreviewAdapter paramImgPreviewAdapter) {}
+  ahwm(ahwl paramahwl) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String... paramVarArgs)
   {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
-    if (localEmoticonFromGroupEntity != null)
+    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
     {
-      if (localEmoticonFromGroupEntity.msg != null)
-      {
-        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
-        return;
-      }
-      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
+      QLog.i(ahwl.a, 2, "error get pskey...");
       return;
     }
-    QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
+    ahwl.a(this.a, paramVarArgs[0]);
   }
 }
 

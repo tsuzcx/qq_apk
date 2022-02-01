@@ -1,157 +1,126 @@
-import android.database.Cursor;
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.apollo.ApolloEngine;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class ammp
 {
-  private static int a(String paramString, int paramInt, StringBuilder paramStringBuilder, QQAppInterface paramQQAppInterface)
+  public static int a(int paramInt)
   {
-    paramQQAppInterface = paramQQAppInterface.b();
-    if (paramQQAppInterface == null) {}
-    do
+    if (a(paramInt)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public static int a(int paramInt, long paramLong)
+  {
+    int i = paramInt * 400 / 540;
+    if (i <= paramLong * 0.7D)
     {
-      do
-      {
-        return 0;
-        StringBuilder localStringBuilder = new StringBuilder(" where msgtype != ");
-        localStringBuilder.append(-2006);
-        paramString = bdih.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), paramQQAppInterface, localStringBuilder.toString());
-      } while (paramString == null);
-      paramString = paramQQAppInterface.a(paramString.toString(), null);
-    } while (paramString == null);
-    long l;
-    if ((paramString.getCount() > 0) && (paramStringBuilder != null))
+      paramInt = i;
+      if (i > 0) {}
+    }
+    else
     {
-      paramString.moveToLast();
-      if (paramInt != 3000) {
-        break label144;
-      }
-      l = paramString.getLong(paramString.getColumnIndex("shmsgseq"));
+      paramInt = (int)(paramLong * 0.7D);
+    }
+    return paramInt;
+  }
+  
+  public static amhs a(QQAppInterface paramQQAppInterface, String paramString, ApolloBaseInfo paramApolloBaseInfo, int paramInt)
+  {
+    if ((paramQQAppInterface == null) || (paramApolloBaseInfo == null) || (TextUtils.isEmpty(paramString)))
+    {
+      QLog.e("ApolloDrawerInfoManager", 1, "checkDrawerRoleDressInfo param err");
+      return null;
+    }
+    int i = 0;
+    int[] arrayOfInt = null;
+    int j = 0;
+    amhs localamhs = null;
+    int k = amhd.a(paramQQAppInterface, paramString);
+    int m = paramApolloBaseInfo.apolloStatus;
+    amls localamls = paramApolloBaseInfo.getApolloDress();
+    if (localamls != null)
+    {
+      i = localamls.jdField_a_of_type_Int;
+      arrayOfInt = localamls.a();
+    }
+    localamls = paramApolloBaseInfo.getApolloDress3D();
+    paramApolloBaseInfo = localamhs;
+    if (localamls != null)
+    {
+      j = localamls.jdField_a_of_type_Int;
+      paramApolloBaseInfo = localamls.a();
+    }
+    localamhs = new amhs();
+    localamhs.jdField_a_of_type_Int = i;
+    localamhs.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+    localamhs.jdField_b_of_type_Int = j;
+    localamhs.jdField_b_of_type_ArrayOfInt = paramApolloBaseInfo;
+    localamhs.c = m;
+    localamhs.d = k;
+    localamhs.e = amuo.b(paramInt);
+    boolean bool;
+    if (m != 1)
+    {
+      bool = true;
+      QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo apollo not open from:", Integer.valueOf(paramInt), ",apolloFeatureFlag:", Integer.valueOf(m) });
+      anaw.a(localamhs.e, 10, 101, new Object[] { "apollo not open, flag:", Integer.valueOf(m) });
     }
     for (;;)
     {
-      if (l > 0L) {
-        paramStringBuilder.append(String.valueOf(l));
+      localamhs.jdField_a_of_type_Boolean = bool;
+      if ((!bool) && (QLog.isColorLevel())) {
+        QLog.d("ApolloDrawerInfoManager", 2, new Object[] { "checkDrawerRoleDressInfo from:", Integer.valueOf(paramInt), ",result:", localamhs.toString() });
       }
-      paramInt = paramString.getCount();
-      paramString.close();
-      return paramInt;
-      label144:
-      if (paramInt == 0) {
-        l = paramString.getLong(paramString.getColumnIndex("time"));
-      } else if (paramInt == 1) {
-        l = paramString.getLong(paramString.getColumnIndex("shmsgseq"));
-      } else {
-        l = 0L;
-      }
-    }
-  }
-  
-  private static String a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramInt = ((alxa)paramQQAppInterface.getManager(92)).a(paramString, paramInt, localStringBuilder);
-    paramQQAppInterface = null;
-    paramString = paramQQAppInterface;
-    if (paramInt > 0)
-    {
-      paramString = paramQQAppInterface;
-      if (localStringBuilder.length() > 0) {
-        paramString = localStringBuilder.toString();
-      }
-    }
-    return paramString;
-  }
-  
-  public static void a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      switch (paramInt)
+      anaw.a(localamhs.e, 10, new Object[] { localamhs.toString() });
+      return localamhs;
+      if ((k == 1) && ((i <= 0) || (arrayOfInt == null) || (arrayOfInt.length <= 0) || ((i > 0) && (!amzq.a(paramString, i, arrayOfInt, paramQQAppInterface)))))
       {
-      default: 
-      case 0: 
-        try
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d("MessageDeleteUtils", 2, "cleanMessage type not support = " + paramInt);
-          return;
-        }
-        catch (Exception paramString)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MessageDeleteUtils", 2, "cleanMessage exception = " + paramString.getMessage());
-          paramString.printStackTrace();
-          return;
-        }
-        a(paramString, paramInt, a(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
-        return;
-      case 1000: 
-      case 1004: 
-        a(paramString, paramInt, b(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
-        return;
+        bool = true;
+        QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo basic not ready, from:", Integer.valueOf(paramInt), ",result:", localamhs.toString() });
+        anaw.a(localamhs.e, 10, 111, new Object[] { "basic not ready:" + localamhs.toString() });
       }
-      a(paramString, paramInt, b(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
-    }
-  }
-  
-  private static void a(String paramString1, int paramInt, String paramString2, QQAppInterface paramQQAppInterface)
-  {
-    List localList = paramQQAppInterface.a().b(paramString1, paramInt);
-    if ((localList != null) && (!localList.isEmpty())) {
-      if (!((MessageRecord)localList.get(localList.size() - 1)).isSendFromLocal()) {}
-    }
-    for (long l1 = ((MessageRecord)localList.get(localList.size() - 1)).time + 2L;; l1 = 0L) {
-      for (;;)
+      else
       {
-        paramQQAppInterface.a().a(paramString1, paramInt);
-        paramQQAppInterface.a().e(paramString1, paramInt);
-        if (paramString2 != null) {}
-        try
+        if ((k == 2) && ((j <= 0) || (paramApolloBaseInfo == null) || (paramApolloBaseInfo.length <= 0) || ((j > ancb.jdField_a_of_type_Int) && (!amzq.a(paramString, j, paramApolloBaseInfo, paramQQAppInterface)))))
         {
-          l2 = Long.parseLong(paramString2);
-          l1 = Math.max(l2, l1);
-          if (l1 > 0L) {
-            paramQQAppInterface.a().a(paramString1, paramInt, l1);
-          }
-          return;
-          l1 = ((MessageRecord)localList.get(localList.size() - 1)).time;
+          QLog.d("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo 3D not ready, from:", Integer.valueOf(paramInt), ",result:", localamhs.toString() });
+          anaw.a(localamhs.e, 10, new Object[] { "3D role/dress not ready but show basic" });
         }
-        catch (Exception paramString2)
+        if (!ApolloEngine.a())
         {
-          for (;;)
-          {
-            paramString2.printStackTrace();
-            long l2 = 0L;
-          }
+          QLog.d("ApolloDrawerInfoManager", 1, "so is not ready");
+          anaw.a(localamhs.e, 10, 102, new Object[] { "so not ready" });
+          bool = true;
+        }
+        else
+        {
+          bool = false;
         }
       }
     }
   }
   
-  private static String b(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
+  public static boolean a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramInt = a(paramString, paramInt, localStringBuilder, paramQQAppInterface);
-    paramString = null;
-    if (paramInt > 0) {
-      paramString = localStringBuilder.toString();
+    return paramInt == 6;
+  }
+  
+  public static int b(int paramInt)
+  {
+    if (a(paramInt)) {
+      return 3;
     }
-    return paramString;
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ammp
  * JD-Core Version:    0.7.0.1
  */

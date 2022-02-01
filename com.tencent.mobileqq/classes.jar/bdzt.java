@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-
 public class bdzt
-  implements View.OnClickListener
 {
-  public bdzt(VipVideoPlayActivity paramVipVideoPlayActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.getRequestedOrientation() == 0)
-    {
-      this.a.setRequestedOrientation(1);
-      return;
-    }
-    this.a.setResult(0);
-    this.a.finish();
-  }
+  public int a;
+  public long a;
+  public bdzo a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

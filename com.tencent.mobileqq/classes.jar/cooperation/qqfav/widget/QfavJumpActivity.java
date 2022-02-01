@@ -1,28 +1,27 @@
 package cooperation.qqfav.widget;
 
-import alud;
-import amau;
+import Override;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
+import android.content.res.Configuration;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import android.text.TextUtils;
-import arzx;
-import bdgm;
-import bdia;
-import bdjz;
-import bhsl;
-import bixd;
-import bixe;
-import bixf;
+import android.view.MotionEvent;
+import anni;
+import antb;
+import bglp;
+import bgnf;
+import bgpa;
+import bkfv;
+import bllo;
+import bllp;
+import bllq;
 import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qqfav.QfavPluginProxyActivity;
 import java.io.File;
 import java.io.InputStream;
@@ -33,15 +32,15 @@ public class QfavJumpActivity
   implements Handler.Callback
 {
   protected static String a;
-  private amau jdField_a_of_type_Amau;
-  private bdjz jdField_a_of_type_Bdjz;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bhsl(Looper.getMainLooper(), this);
+  private antb jdField_a_of_type_Antb;
+  private bgpa jdField_a_of_type_Bgpa;
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkfv(Looper.getMainLooper(), this);
   private boolean jdField_a_of_type_Boolean;
   String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
   
   /* Error */
-  private String a(Uri paramUri)
+  private String a(android.net.Uri paramUri)
   {
     // Byte code:
     //   0: aload_0
@@ -88,7 +87,7 @@ public class QfavJumpActivity
     //   89: lstore 4
     //   91: lload 4
     //   93: l2f
-    //   94: invokestatic 87	bdhb:c	()F
+    //   94: invokestatic 87	bgmg:c	()F
     //   97: fcmpl
     //   98: ifle +26 -> 124
     //   101: aload_0
@@ -148,7 +147,7 @@ public class QfavJumpActivity
     //   226: aastore
     //   227: iconst_0
     //   228: aaload
-    //   229: invokestatic 127	bdhb:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   229: invokestatic 127	bgmg:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   232: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   235: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   238: astore 7
@@ -165,7 +164,7 @@ public class QfavJumpActivity
     //   264: ifne +53 -> 317
     //   267: aload_0
     //   268: ldc 138
-    //   270: invokestatic 142	alud:a	(I)Ljava/lang/String;
+    //   270: invokestatic 142	anni:a	(I)Ljava/lang/String;
     //   273: invokespecial 144	cooperation/qqfav/widget/QfavJumpActivity:a	(Ljava/lang/String;)V
     //   276: aload 6
     //   278: ifnull +10 -> 288
@@ -209,59 +208,59 @@ public class QfavJumpActivity
     //   365: aload_0
     //   366: iconst_1
     //   367: putfield 157	cooperation/qqfav/widget/QfavJumpActivity:jdField_b_of_type_Boolean	Z
-    //   370: new 159	bdjz
+    //   370: new 159	bgpa
     //   373: dup
     //   374: aload_0
     //   375: ldc 160
-    //   377: invokespecial 163	bdjz:<init>	(Landroid/content/Context;I)V
+    //   377: invokespecial 163	bgpa:<init>	(Landroid/content/Context;I)V
     //   380: astore 8
     //   382: aload 8
     //   384: ldc 164
-    //   386: invokevirtual 168	bdjz:setContentView	(I)V
+    //   386: invokevirtual 168	bgpa:setContentView	(I)V
     //   389: aload 8
     //   391: aload_0
     //   392: ldc 169
     //   394: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
-    //   397: invokevirtual 173	bdjz:setTitle	(Ljava/lang/String;)Lbdjz;
+    //   397: invokevirtual 173	bgpa:setTitle	(Ljava/lang/String;)Lbgpa;
     //   400: pop
     //   401: aload 8
     //   403: aload_0
     //   404: ldc 174
     //   406: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
-    //   409: invokevirtual 178	bdjz:setMessage	(Ljava/lang/CharSequence;)Lbdjz;
+    //   409: invokevirtual 178	bgpa:setMessage	(Ljava/lang/CharSequence;)Lbgpa;
     //   412: pop
     //   413: aload 8
     //   415: iconst_0
-    //   416: invokevirtual 182	bdjz:setCanceledOnTouchOutside	(Z)V
+    //   416: invokevirtual 182	bgpa:setCanceledOnTouchOutside	(Z)V
     //   419: aload 8
     //   421: iconst_0
-    //   422: invokevirtual 185	bdjz:setCancelable	(Z)V
+    //   422: invokevirtual 185	bgpa:setCancelable	(Z)V
     //   425: aload 8
     //   427: aload_0
     //   428: ldc 186
     //   430: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
-    //   433: new 188	bixb
+    //   433: new 188	bllm
     //   436: dup
     //   437: aload_0
     //   438: aload_1
-    //   439: invokespecial 191	bixb:<init>	(Lcooperation/qqfav/widget/QfavJumpActivity;Ljava/io/InputStream;)V
-    //   442: invokevirtual 195	bdjz:setNegativeButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lbdjz;
+    //   439: invokespecial 191	bllm:<init>	(Lcooperation/qqfav/widget/QfavJumpActivity;Ljava/io/InputStream;)V
+    //   442: invokevirtual 195	bgpa:setNegativeButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lbgpa;
     //   445: pop
     //   446: aload 8
     //   448: aload_0
     //   449: ldc 196
     //   451: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
-    //   454: new 198	bixc
+    //   454: new 198	blln
     //   457: dup
     //   458: aload_0
     //   459: aload 7
     //   461: aload_1
     //   462: lload 4
-    //   464: invokespecial 201	bixc:<init>	(Lcooperation/qqfav/widget/QfavJumpActivity;Ljava/lang/String;Ljava/io/InputStream;J)V
-    //   467: invokevirtual 204	bdjz:setPositiveButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lbdjz;
+    //   464: invokespecial 201	blln:<init>	(Lcooperation/qqfav/widget/QfavJumpActivity;Ljava/lang/String;Ljava/io/InputStream;J)V
+    //   467: invokevirtual 204	bgpa:setPositiveButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lbgpa;
     //   470: pop
     //   471: aload 8
-    //   473: invokevirtual 207	bdjz:show	()V
+    //   473: invokevirtual 207	bgpa:show	()V
     //   476: aload 7
     //   478: astore_1
     //   479: aload 6
@@ -321,14 +320,14 @@ public class QfavJumpActivity
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	588	0	this	QfavJumpActivity
-    //   0	588	1	paramUri	Uri
+    //   0	588	1	paramUri	android.net.Uri
     //   62	65	2	i	int
     //   72	12	3	j	int
     //   89	410	4	l	long
     //   16	558	6	localObject1	Object
-    //   581	1	6	localException1	Exception
+    //   581	1	6	localException1	java.lang.Exception
     //   138	358	7	localObject2	Object
-    //   506	6	7	localException2	Exception
+    //   506	6	7	localException2	java.lang.Exception
     //   570	6	7	localObject3	Object
     //   4	468	8	localObject4	Object
     //   132	128	9	localObject5	Object
@@ -362,33 +361,33 @@ public class QfavJumpActivity
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bdjz != null) {
-      this.jdField_a_of_type_Bdjz.dismiss();
+    if (this.jdField_a_of_type_Bgpa != null) {
+      this.jdField_a_of_type_Bgpa.dismiss();
     }
   }
   
   private void a(String paramString)
   {
-    bdjz localbdjz = new bdjz(this, 2131755801);
-    localbdjz.setContentView(2131558942);
-    localbdjz.setTitle(getString(2131720808));
-    localbdjz.setMessage(paramString);
-    localbdjz.setCanceledOnTouchOutside(false);
-    localbdjz.setCancelable(false);
-    localbdjz.setNegativeButton(getString(2131690623), new bixf(this));
-    localbdjz.show();
+    bgpa localbgpa = new bgpa(this, 2131755823);
+    localbgpa.setContentView(2131559009);
+    localbgpa.setTitle(getString(2131718563));
+    localbgpa.setMessage(paramString);
+    localbgpa.setCanceledOnTouchOutside(false);
+    localbgpa.setCancelable(false);
+    localbgpa.setNegativeButton(getString(2131690563), new bllq(this));
+    localbgpa.show();
   }
   
   private void a(String paramString, InputStream paramInputStream, long paramLong)
   {
     this.jdField_a_of_type_Boolean = true;
     ThreadManager.post(new QfavJumpActivity.3(this, paramString, paramInputStream, paramLong), 5, null, true);
-    if (this.jdField_a_of_type_Bdjz == null)
+    if (this.jdField_a_of_type_Bgpa == null)
     {
-      this.jdField_a_of_type_Bdjz = bdgm.a(this, getString(2131691366), alud.a(2131709990), new bixd(this));
-      this.jdField_a_of_type_Bdjz.setOnDismissListener(new bixe(this));
+      this.jdField_a_of_type_Bgpa = bglp.a(this, getString(2131691145), anni.a(2131708366), new bllo(this));
+      this.jdField_a_of_type_Bgpa.setOnDismissListener(new bllp(this));
     }
-    this.jdField_a_of_type_Bdjz.show();
+    this.jdField_a_of_type_Bgpa.show();
   }
   
   private boolean a(Intent paramIntent)
@@ -404,8 +403,8 @@ public class QfavJumpActivity
     }
     if ("qqfav.action.ENTER_QQMAP".equals(localObject))
     {
-      if (this.jdField_a_of_type_Amau == null) {
-        this.jdField_a_of_type_Amau = new amau(this.app.getAccount());
+      if (this.jdField_a_of_type_Antb == null) {
+        this.jdField_a_of_type_Antb = new antb(this.app.getAccount());
       }
       paramIntent.setClassName("com.tencent.mobileqq", "cooperation.qqfav.widget.LocationDetailActivity");
       paramIntent.setAction(null);
@@ -439,9 +438,17 @@ public class QfavJumpActivity
   public String a()
   {
     if (jdField_a_of_type_JavaLangString == null) {
-      return getString(2131720036);
+      return getString(2131718011);
     }
     return jdField_a_of_type_JavaLangString;
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -458,91 +465,254 @@ public class QfavJumpActivity
       } while ((paramInt2 == -1) && (a(getIntent())));
       super.finish();
       return;
-      if (this.jdField_a_of_type_Amau != null) {
-        this.jdField_a_of_type_Amau.a();
+      if (this.jdField_a_of_type_Antb != null) {
+        this.jdField_a_of_type_Antb.a();
       }
     }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  /* Error */
+  public boolean doOnCreate(android.os.Bundle paramBundle)
   {
-    try
-    {
-      this.mNeedStatusTrans = false;
-      super.doOnCreate(paramBundle);
-      if (!bdia.a(this, true))
-      {
-        super.finish();
-        return false;
-      }
-      paramBundle = super.getIntent();
-      if (paramBundle == null)
-      {
-        super.finish();
-        return false;
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.e("qqfav|QfavJumpActivity", 1, "QfavJumpActivity doOnCreate|exp:" + paramBundle.getMessage());
-      super.finish();
-      return false;
-    }
-    Object localObject1 = paramBundle.getAction();
-    String str = paramBundle.getType();
-    this.jdField_b_of_type_JavaLangString = null;
-    int i;
-    if (("android.intent.action.SEND".equals(localObject1)) || ("android.intent.action.SEND_MULTIPLE".equals(localObject1)))
-    {
-      localObject1 = paramBundle.getParcelableExtra("android.intent.extra.STREAM");
-      if (!(localObject1 instanceof Uri)) {
-        break label348;
-      }
-      Object localObject2 = arzx.a(this, (Uri)localObject1);
-      if (localObject2 == null) {
-        break label348;
-      }
-      localObject2 = new File((String)localObject2);
-      if ((!((File)localObject2).exists()) || (!((File)localObject2).isFile())) {
-        break label353;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      if ((!TextUtils.isEmpty(str)) && (str.startsWith("image")) && (i == 0) && ((localObject1 instanceof Uri)))
-      {
-        this.jdField_b_of_type_JavaLangString = a((Uri)localObject1);
-        if (this.jdField_b_of_type_JavaLangString != null) {
-          return true;
-        }
-      }
-      if ((!TextUtils.isEmpty(str)) && ((str.startsWith("image")) || (str.startsWith("text"))) && (i == 0))
-      {
-        paramBundle.setClass(this, JumpActivity.class);
-        paramBundle.putExtra("qqfav_extra_from_system_share", true);
-        super.startActivity(paramBundle);
-        super.finish();
-        return false;
-      }
-      if (!this.app.isLogin())
-      {
-        paramBundle = new Intent(this, LoginActivity.class);
-        paramBundle.addFlags(67371008);
-        paramBundle.putExtra("isActionSend", true);
-        super.startActivityForResult(paramBundle, 0);
-        return true;
-      }
-      if (!a(paramBundle)) {
-        super.finish();
-      }
-      return true;
-      label348:
-      i = 0;
-      continue;
-      label353:
-      i = 0;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: iconst_0
+    //   2: putfield 372	cooperation/qqfav/widget/QfavJumpActivity:mNeedStatusTrans	Z
+    //   5: aload_0
+    //   6: aload_1
+    //   7: invokespecial 374	com/tencent/mobileqq/app/BaseActivity:doOnCreate	(Landroid/os/Bundle;)Z
+    //   10: pop
+    //   11: aload_0
+    //   12: iconst_1
+    //   13: invokestatic 379	bgnf:a	(Landroid/app/Activity;Z)Z
+    //   16: ifne +9 -> 25
+    //   19: aload_0
+    //   20: invokespecial 359	com/tencent/mobileqq/app/BaseActivity:finish	()V
+    //   23: iconst_0
+    //   24: ireturn
+    //   25: aload_0
+    //   26: invokespecial 380	com/tencent/mobileqq/app/BaseActivity:getIntent	()Landroid/content/Intent;
+    //   29: astore 5
+    //   31: aload 5
+    //   33: ifnonnull +45 -> 78
+    //   36: aload_0
+    //   37: invokespecial 359	com/tencent/mobileqq/app/BaseActivity:finish	()V
+    //   40: iconst_0
+    //   41: ireturn
+    //   42: astore_1
+    //   43: ldc 52
+    //   45: iconst_1
+    //   46: new 101	java/lang/StringBuilder
+    //   49: dup
+    //   50: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   53: ldc_w 382
+    //   56: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: aload_1
+    //   60: invokevirtual 385	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   63: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   69: invokestatic 388	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   72: aload_0
+    //   73: invokespecial 359	com/tencent/mobileqq/app/BaseActivity:finish	()V
+    //   76: iconst_0
+    //   77: ireturn
+    //   78: aload 5
+    //   80: invokevirtual 261	android/content/Intent:getAction	()Ljava/lang/String;
+    //   83: astore_1
+    //   84: aload 5
+    //   86: invokevirtual 391	android/content/Intent:getType	()Ljava/lang/String;
+    //   89: astore 6
+    //   91: aload_0
+    //   92: aconst_null
+    //   93: putfield 393	cooperation/qqfav/widget/QfavJumpActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   96: ldc_w 263
+    //   99: aload_1
+    //   100: invokevirtual 267	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   103: ifne +13 -> 116
+    //   106: ldc_w 269
+    //   109: aload_1
+    //   110: invokevirtual 267	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   113: ifeq +233 -> 346
+    //   116: aload 5
+    //   118: ldc_w 395
+    //   121: invokevirtual 399	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   124: astore_1
+    //   125: aload_1
+    //   126: instanceof 401
+    //   129: ifeq +283 -> 412
+    //   132: aload_0
+    //   133: aload_1
+    //   134: checkcast 401	android/net/Uri
+    //   137: invokestatic 406	com/tencent/mobileqq/forward/ForwardFileOption:a	(Landroid/content/Context;Landroid/net/Uri;)Ljava/lang/String;
+    //   140: astore 7
+    //   142: aload 7
+    //   144: ifnull +268 -> 412
+    //   147: new 129	java/io/File
+    //   150: dup
+    //   151: aload 7
+    //   153: invokespecial 131	java/io/File:<init>	(Ljava/lang/String;)V
+    //   156: astore 7
+    //   158: aload 7
+    //   160: invokevirtual 134	java/io/File:exists	()Z
+    //   163: ifeq +80 -> 243
+    //   166: aload 7
+    //   168: invokevirtual 409	java/io/File:isFile	()Z
+    //   171: istore 4
+    //   173: iload 4
+    //   175: ifeq +68 -> 243
+    //   178: iconst_1
+    //   179: istore_2
+    //   180: iload_2
+    //   181: istore_3
+    //   182: aload 6
+    //   184: invokestatic 415	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   187: ifne +93 -> 280
+    //   190: iload_2
+    //   191: istore_3
+    //   192: aload 6
+    //   194: ldc_w 417
+    //   197: invokevirtual 421	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   200: ifeq +80 -> 280
+    //   203: iload_2
+    //   204: istore_3
+    //   205: iload_2
+    //   206: ifne +74 -> 280
+    //   209: iload_2
+    //   210: istore_3
+    //   211: aload_1
+    //   212: instanceof 401
+    //   215: ifeq +65 -> 280
+    //   218: aload_0
+    //   219: aload_0
+    //   220: aload_1
+    //   221: checkcast 401	android/net/Uri
+    //   224: invokespecial 423	cooperation/qqfav/widget/QfavJumpActivity:a	(Landroid/net/Uri;)Ljava/lang/String;
+    //   227: putfield 393	cooperation/qqfav/widget/QfavJumpActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   230: aload_0
+    //   231: getfield 393	cooperation/qqfav/widget/QfavJumpActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   234: astore_1
+    //   235: iload_2
+    //   236: istore_3
+    //   237: aload_1
+    //   238: ifnull +42 -> 280
+    //   241: iconst_1
+    //   242: ireturn
+    //   243: iconst_0
+    //   244: istore_2
+    //   245: goto -65 -> 180
+    //   248: astore_1
+    //   249: iconst_0
+    //   250: istore_2
+    //   251: new 425	java/util/ArrayList
+    //   254: dup
+    //   255: invokespecial 426	java/util/ArrayList:<init>	()V
+    //   258: pop
+    //   259: aload 5
+    //   261: ldc_w 395
+    //   264: invokevirtual 430	android/content/Intent:getParcelableArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   267: pop
+    //   268: ldc 52
+    //   270: iconst_1
+    //   271: aload_1
+    //   272: invokevirtual 431	java/lang/Exception:toString	()Ljava/lang/String;
+    //   275: invokestatic 388	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   278: iload_2
+    //   279: istore_3
+    //   280: aload 6
+    //   282: invokestatic 415	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   285: ifne +61 -> 346
+    //   288: aload 6
+    //   290: ldc_w 417
+    //   293: invokevirtual 421	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   296: ifne +14 -> 310
+    //   299: aload 6
+    //   301: ldc_w 433
+    //   304: invokevirtual 421	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   307: ifeq +39 -> 346
+    //   310: iload_3
+    //   311: ifne +35 -> 346
+    //   314: aload 5
+    //   316: aload_0
+    //   317: ldc_w 435
+    //   320: invokevirtual 439	android/content/Intent:setClass	(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
+    //   323: pop
+    //   324: aload 5
+    //   326: ldc_w 441
+    //   329: iconst_1
+    //   330: invokevirtual 444	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   333: pop
+    //   334: aload_0
+    //   335: aload 5
+    //   337: invokespecial 448	com/tencent/mobileqq/app/BaseActivity:startActivity	(Landroid/content/Intent;)V
+    //   340: aload_0
+    //   341: invokespecial 359	com/tencent/mobileqq/app/BaseActivity:finish	()V
+    //   344: iconst_0
+    //   345: ireturn
+    //   346: aload_0
+    //   347: getfield 284	cooperation/qqfav/widget/QfavJumpActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   350: invokevirtual 451	com/tencent/mobileqq/app/QQAppInterface:isLogin	()Z
+    //   353: ifne +40 -> 393
+    //   356: new 258	android/content/Intent
+    //   359: dup
+    //   360: aload_0
+    //   361: ldc_w 453
+    //   364: invokespecial 456	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   367: astore_1
+    //   368: aload_1
+    //   369: ldc_w 457
+    //   372: invokevirtual 461	android/content/Intent:addFlags	(I)Landroid/content/Intent;
+    //   375: pop
+    //   376: aload_1
+    //   377: ldc_w 463
+    //   380: iconst_1
+    //   381: invokevirtual 444	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   384: pop
+    //   385: aload_0
+    //   386: aload_1
+    //   387: iconst_0
+    //   388: invokespecial 317	com/tencent/mobileqq/app/BaseActivity:startActivityForResult	(Landroid/content/Intent;I)V
+    //   391: iconst_1
+    //   392: ireturn
+    //   393: aload_0
+    //   394: aload 5
+    //   396: invokespecial 365	cooperation/qqfav/widget/QfavJumpActivity:a	(Landroid/content/Intent;)Z
+    //   399: ifne +7 -> 406
+    //   402: aload_0
+    //   403: invokespecial 359	com/tencent/mobileqq/app/BaseActivity:finish	()V
+    //   406: iconst_1
+    //   407: ireturn
+    //   408: astore_1
+    //   409: goto -158 -> 251
+    //   412: iconst_0
+    //   413: istore_2
+    //   414: goto -234 -> 180
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	417	0	this	QfavJumpActivity
+    //   0	417	1	paramBundle	android.os.Bundle
+    //   179	235	2	i	int
+    //   181	130	3	j	int
+    //   171	3	4	bool	boolean
+    //   29	366	5	localIntent	Intent
+    //   89	211	6	str	String
+    //   140	27	7	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   0	23	42	java/lang/Exception
+    //   25	31	42	java/lang/Exception
+    //   36	40	42	java/lang/Exception
+    //   78	116	42	java/lang/Exception
+    //   116	125	42	java/lang/Exception
+    //   251	278	42	java/lang/Exception
+    //   280	310	42	java/lang/Exception
+    //   314	344	42	java/lang/Exception
+    //   346	391	42	java/lang/Exception
+    //   393	406	42	java/lang/Exception
+    //   125	142	248	java/lang/Exception
+    //   147	173	248	java/lang/Exception
+    //   182	190	408	java/lang/Exception
+    //   192	203	408	java/lang/Exception
+    //   211	235	408	java/lang/Exception
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -565,15 +735,22 @@ public class QfavJumpActivity
       super.finish();
       continue;
       QLog.i("qqfav|QfavJumpActivity", 2, "progress: " + paramMessage.arg1);
-      this.jdField_a_of_type_Bdjz.setProgress(paramMessage.arg1);
+      this.jdField_a_of_type_Bgpa.setProgress(paramMessage.arg1);
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public boolean showPreview()
   {
     try
     {
-      boolean bool = bdia.a(this);
+      boolean bool = bgnf.a(this);
       if (bool) {
         return true;
       }

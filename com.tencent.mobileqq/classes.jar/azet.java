@@ -1,322 +1,530 @@
-import android.media.MediaMetadataRetriever;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.util.ShortVideoTrimmer;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Point;
+import android.graphics.Typeface;
+import android.text.BoringLayout;
+import android.text.BoringLayout.Metrics;
+import android.text.DynamicLayout;
+import android.text.Layout;
+import android.text.Layout.Alignment;
+import android.text.Spannable;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.view.View.MeasureSpec;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class azet
 {
-  public static azeu a(azew paramazew, azev paramazev, boolean paramBoolean)
+  private static final BoringLayout.Metrics b;
+  public static int f;
+  public float a;
+  int jdField_a_of_type_Int = -16777216;
+  public Point a;
+  BoringLayout.Metrics jdField_a_of_type_AndroidTextBoringLayout$Metrics;
+  public Layout a;
+  public TextPaint a;
+  public CharSequence a;
+  List<CharSequence> jdField_a_of_type_JavaUtilList;
+  public boolean a;
+  public float b;
+  public int b;
+  public Point b;
+  public List<Layout> b;
+  public boolean b;
+  int c;
+  public boolean c;
+  public int d = 0;
+  public boolean d;
+  public int e;
+  boolean e;
+  
+  static
   {
-    azeu localazeu = new azeu();
-    int i;
-    if (paramazew.e > 0)
+    jdField_b_of_type_AndroidTextBoringLayout$Metrics = new BoringLayout.Metrics();
+  }
+  
+  public azet()
+  {
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_Float = 1.0F;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(-1, -1);
+    this.jdField_b_of_type_AndroidGraphicsPoint = new Point(0, 0);
+    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.SANS_SERIF);
+  }
+  
+  private static int a(Layout paramLayout)
+  {
+    int i = 0;
+    int j = 0;
+    while (i < paramLayout.getLineCount())
     {
-      i = paramazew.e;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "getCompressInfo, videoFps = " + i);
+      j = Math.max((int)(paramLayout.getLineMax(i) + 0.5F), j);
+      i += 1;
+    }
+    return j;
+  }
+  
+  private static CharSequence a(CharSequence paramCharSequence)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(paramCharSequence.length() * 2);
+    int i = 0;
+    while (i < paramCharSequence.length())
+    {
+      localStringBuilder.append(paramCharSequence.charAt(i));
+      if (i != paramCharSequence.length() - 1) {
+        localStringBuilder.append('\n');
       }
-      if (!paramBoolean) {
-        break label189;
+      i += 1;
+    }
+    return localStringBuilder.toString().subSequence(0, localStringBuilder.length());
+  }
+  
+  public static void a(int paramInt)
+  {
+    f = paramInt;
+  }
+  
+  private int b(int paramInt)
+  {
+    Object localObject;
+    boolean bool;
+    int i;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("onMeasureHorizontal text:").append(this.jdField_a_of_type_JavaLangCharSequence).append(" hasImg:");
+      if (this.jdField_e_of_type_Int == 2)
+      {
+        bool = true;
+        QLog.i("Tag", 2, bool + " ems:" + this.jdField_c_of_type_Int);
       }
-      localazeu.jdField_a_of_type_Float = 1.0F;
-      localazeu.jdField_a_of_type_Int = paramazew.jdField_a_of_type_Int;
-      localazeu.jdField_b_of_type_Int = paramazew.jdField_b_of_type_Int;
-      localazeu.jdField_b_of_type_Long = i;
-      if ((paramazew.jdField_a_of_type_Long <= 0L) || (paramazew.jdField_a_of_type_Long * 8L >= paramazev.jdField_a_of_type_Long)) {
-        break label169;
+    }
+    else
+    {
+      if (this.jdField_e_of_type_Int != 2) {
+        break label243;
       }
-      localazeu.jdField_a_of_type_Long = paramazew.jdField_b_of_type_Long;
-      label124:
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "getCompressInfo, isRaw, compressInfo.desBitRate = " + localazeu.jdField_a_of_type_Long);
+      i = this.jdField_c_of_type_Int;
+      label84:
+      if (!azez.a()) {
+        break label865;
       }
     }
     label169:
-    label189:
-    label352:
-    label742:
-    for (;;)
+    label461:
+    label464:
+    label859:
+    label865:
+    for (int j = 0;; j = i)
     {
-      return localazeu;
-      i = 30;
-      break;
-      localazeu.jdField_a_of_type_Long = ((int)(paramazev.jdField_a_of_type_Long / paramazew.d));
-      break label124;
-      double d2;
-      double d1;
-      if (paramazew.jdField_a_of_type_Int <= paramazew.jdField_b_of_type_Int)
-      {
-        i = paramazew.jdField_b_of_type_Int;
-        if (i <= paramazev.jdField_a_of_type_Int) {
-          break label692;
-        }
-        localazeu.jdField_a_of_type_Float = (paramazev.jdField_a_of_type_Int / i);
-        localazeu.jdField_a_of_type_Int = ((int)(paramazew.jdField_a_of_type_Int * localazeu.jdField_a_of_type_Float));
-        localazeu.jdField_b_of_type_Int = ((int)(paramazew.jdField_b_of_type_Int * localazeu.jdField_a_of_type_Float));
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getCompressInfo,  config.scaleRate = " + localazeu.jdField_a_of_type_Float + ", compressInfo.desWidth = " + localazeu.jdField_a_of_type_Int + ", compressInfo.desHeight = " + localazeu.jdField_b_of_type_Int);
-        }
-        if ((paramazew.e <= 0) || (paramazew.e >= paramazev.jdField_b_of_type_Int)) {
-          break label719;
-        }
-        localazeu.jdField_b_of_type_Long = paramazew.e;
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getCompressInfo, compressInfo.desFPS = " + localazeu.jdField_b_of_type_Long);
-        }
-        d2 = localazeu.jdField_a_of_type_Int * localazeu.jdField_b_of_type_Int * localazeu.jdField_b_of_type_Long * paramazev.jdField_a_of_type_Double;
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getCompressInfo, bpsExp = " + d2);
-        }
-        d1 = d2;
-        if (d2 > paramazew.jdField_b_of_type_Long) {
-          d1 = paramazew.jdField_b_of_type_Long;
-        }
-        d2 = d1;
-        if (d1 > paramazev.c) {
-          d2 = paramazev.c;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getCompressInfo, bpsExp real = " + d2);
-        }
-        if (paramazew.d * d2 <= paramazev.jdField_a_of_type_Long) {
-          break label732;
-        }
-        d2 = paramazev.jdField_a_of_type_Long / (localazeu.jdField_a_of_type_Int * localazeu.jdField_b_of_type_Int * localazeu.jdField_b_of_type_Long * paramazew.d);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getCompressInfo,densityExp = " + d2);
-        }
-        d1 = d2;
-        if (d2 < paramazev.jdField_b_of_type_Double) {
-          d1 = paramazev.jdField_b_of_type_Double;
-        }
+      int n = f;
+      int m = View.MeasureSpec.getMode(paramInt);
+      int i1 = View.MeasureSpec.getSize(paramInt);
+      localObject = jdField_b_of_type_AndroidTextBoringLayout$Metrics;
+      localObject = BoringLayout.isBoring(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, null);
+      if (localObject != null) {
+        this.jdField_a_of_type_AndroidTextBoringLayout$Metrics = ((BoringLayout.Metrics)localObject);
       }
-      for (localazeu.jdField_a_of_type_Long = ((int)(d1 * (localazeu.jdField_a_of_type_Int * localazeu.jdField_b_of_type_Int * localazeu.jdField_b_of_type_Long)));; localazeu.jdField_a_of_type_Long = ((int)d2))
+      int k;
+      if ((localObject == null) || (localObject == jdField_b_of_type_AndroidTextBoringLayout$Metrics))
       {
-        if (!QLog.isColorLevel()) {
-          break label742;
+        i = (int)Math.ceil(Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint));
+        k = i;
+        if (j > 0) {
+          k = Math.min(i, a() * j);
         }
-        QLog.d("VideoCompressConfig", 2, "getCompressInfo,  compressInfo.desBitRate " + localazeu.jdField_a_of_type_Long);
-        return localazeu;
-        i = paramazew.jdField_a_of_type_Int;
-        break;
-        localazeu.jdField_a_of_type_Float = 1.0F;
-        localazeu.jdField_a_of_type_Int = paramazew.jdField_a_of_type_Int;
-        localazeu.jdField_b_of_type_Int = paramazew.jdField_b_of_type_Int;
-        break label263;
-        localazeu.jdField_b_of_type_Long = paramazev.jdField_b_of_type_Int;
-        break label352;
+        if ((m != -2147483648) && (m != 1073741824)) {
+          break label859;
+        }
+        if (this.jdField_e_of_type_Int != 2) {
+          break label257;
+        }
+        i = Math.min(i1 - n * 3, k);
       }
-    }
-  }
-  
-  public static azev a(QQAppInterface paramQQAppInterface)
-  {
-    azev localazev = new azev();
-    if (paramQQAppInterface == null) {
-      QLog.e("VideoCompressConfig", 1, "getManageConfig, app is null.");
-    }
-    do
-    {
-      return localazev;
-      paramQQAppInterface = bdne.p(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.length() > 0))
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getManageConfig, compressConfig = " + paramQQAppInterface);
-        }
-        paramQQAppInterface = paramQQAppInterface.split("\\|");
-        if ((paramQQAppInterface == null) || (paramQQAppInterface.length < 5)) {}
-      }
-      try
-      {
-        int i = Integer.valueOf(paramQQAppInterface[0]).intValue();
-        if (i > 0) {
-          localazev.jdField_a_of_type_Int = i;
-        }
-        i = Integer.valueOf(paramQQAppInterface[1]).intValue();
-        if (i > 0) {
-          localazev.jdField_b_of_type_Int = i;
-        }
-        double d = Double.valueOf(paramQQAppInterface[2]).doubleValue();
-        if (d > 0.0D) {
-          localazev.jdField_a_of_type_Double = d;
-        }
-        d = Double.valueOf(paramQQAppInterface[3]).doubleValue();
-        if (d > 0.0D) {
-          localazev.jdField_b_of_type_Double = d;
-        }
-        if ((paramQQAppInterface.length >= 6) && (paramQQAppInterface[5] != null) && (paramQQAppInterface[5].length() > 0))
+        m = Math.max(i, 0);
+        if (m <= 0)
         {
-          i = Integer.valueOf(paramQQAppInterface[5]).intValue();
-          if (i > 0) {
-            localazev.jdField_a_of_type_Long = (i * 1024 * 1024 * 8);
+          return 0;
+          bool = false;
+          break;
+          label243:
+          i = 0;
+          break label84;
+          i = ((BoringLayout.Metrics)localObject).width;
+          break label169;
+          if (this.jdField_e_of_type_Int == 1)
+          {
+            i = Math.min(i1 - n * 2, k);
+            continue;
+          }
+          i = Math.min(i1, k);
+          continue;
+        }
+        this.jdField_a_of_type_AndroidTextLayout = a(m, (BoringLayout.Metrics)localObject, m, this.jdField_a_of_type_JavaLangCharSequence, 0.92F);
+        if ((j <= 0) && (this.jdField_a_of_type_AndroidTextLayout.getLineCount() > 1))
+        {
+          this.jdField_a_of_type_Float *= 0.8F;
+          this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
+          if (QLog.isColorLevel()) {
+            QLog.i("Tag", 2, "onMeasureHorizontal maxEms=0 another round");
+          }
+          return b(paramInt);
+        }
+        k = j;
+        if (j == 0)
+        {
+          k = j;
+          if (this.jdField_a_of_type_AndroidTextLayout.getLineCount() > 1)
+          {
+            if (m % a() <= 0) {
+              break label692;
+            }
+            bool = true;
+            j = m / a();
+            if (QLog.isColorLevel()) {
+              QLog.i("Tag", 2, "onMeasureHorizontal baseEms:" + j + " hasExtra:" + bool);
+            }
+            if (!bool) {
+              break label698;
+            }
+            j += 1;
+            k = j;
           }
         }
-        long l;
-        if ((paramQQAppInterface.length >= 8) && (paramQQAppInterface[7] != null) && (paramQQAppInterface[7].length() > 0))
+        if ((k > 1) && (this.jdField_a_of_type_AndroidTextLayout.getLineCount() > 1))
         {
-          l = Long.valueOf(paramQQAppInterface[7]).longValue();
-          if (l > 0L) {
-            localazev.c = l;
+          k -= 1;
+          if (QLog.isDebugVersion()) {
+            QLog.i("Tag", 4, "onMeasureHorizontal ems--" + k);
+          }
+          j = k * a();
+          if (j <= i) {}
+        }
+        else
+        {
+          i = m;
+          if (this.jdField_a_of_type_AndroidTextLayout.getLineCount() >= 1)
+          {
+            i = a(this.jdField_a_of_type_AndroidTextLayout);
+            if (QLog.isColorLevel()) {
+              QLog.i("Tag", 2, "onMeasureHorizontal want:" + m + " actual:" + i);
+            }
+          }
+          k = this.jdField_a_of_type_AndroidTextLayout.getHeight() - this.d;
+          if (this.jdField_e_of_type_Int != 1) {
+            break label741;
+          }
+          j = i + n * 2;
+        }
+        for (;;)
+        {
+          if (j <= i1) {
+            break label764;
+          }
+          this.jdField_a_of_type_Float *= 0.8F;
+          this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
+          if (QLog.isColorLevel()) {
+            QLog.i("Tag", 2, "onMeasureHorizontal width oversize.another round " + this.jdField_a_of_type_JavaLangCharSequence);
+          }
+          return b(paramInt);
+          bool = false;
+          break;
+          break label461;
+          Layout localLayout = a(j, (BoringLayout.Metrics)localObject, j, this.jdField_a_of_type_JavaLangCharSequence, 0.92F);
+          if (localLayout.getLineCount() != this.jdField_a_of_type_AndroidTextLayout.getLineCount()) {
+            break label532;
+          }
+          this.jdField_a_of_type_AndroidTextLayout = localLayout;
+          break label464;
+          label741:
+          j = i;
+          if (this.jdField_e_of_type_Int == 2) {
+            j = i + (n * 3 + k);
           }
         }
-        if ((paramQQAppInterface.length >= 9) && (paramQQAppInterface[8] != null) && (paramQQAppInterface[8].length() > 0))
-        {
-          l = Long.valueOf(paramQQAppInterface[8]).longValue();
-          if (l > 0L) {
-            localazev.jdField_b_of_type_Long = l;
-          }
+        label764:
+        if (this.jdField_e_of_type_Int > 0) {
+          this.jdField_b_of_type_AndroidGraphicsPoint.set(j, k + n * 2);
         }
-      }
-      catch (NumberFormatException paramQQAppInterface)
-      {
         for (;;)
         {
           if (QLog.isColorLevel()) {
-            QLog.e("VideoCompressConfig", 2, "getCompressConfigNew -> get VideoCompressConfig Erro", paramQQAppInterface);
+            QLog.i("Tag", 2, "onMeasureHorizontal w:" + this.jdField_b_of_type_AndroidGraphicsPoint.x + " h:" + this.jdField_b_of_type_AndroidGraphicsPoint.y);
           }
+          return this.jdField_b_of_type_AndroidGraphicsPoint.y;
+          this.jdField_b_of_type_AndroidGraphicsPoint.set(j, k);
         }
+        i = k;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoCompressConfig", 2, "getManageConfig, maxLength = " + localazev.jdField_a_of_type_Int + ", maxFPS = " + localazev.jdField_b_of_type_Int + ", maxDensity = " + localazev.jdField_a_of_type_Double + ", minDensity = " + localazev.jdField_b_of_type_Double + ", maxSize = " + localazev.jdField_a_of_type_Long + ", maxBitRate = " + localazev.c + ", minBitRate = " + localazev.jdField_b_of_type_Long);
-    return localazev;
+    }
   }
   
-  public static azew a(String paramString)
+  private int c(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("VideoCompressConfig", 1, "getVideoInfo, videoPath is empty.");
-      paramString = null;
-      return paramString;
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("Tag", 2, "onMeasureVertical text:" + this.jdField_a_of_type_JavaLangCharSequence);
     }
-    Object localObject = new File(paramString);
-    if (!((File)localObject).exists())
+    int i;
+    int m;
+    int n;
+    int i1;
+    label79:
+    int k;
+    if (this.jdField_e_of_type_Int == 2)
     {
-      QLog.e("VideoCompressConfig", 1, "getVideoInfo, file not exists.");
-      return null;
-    }
-    azew localazew = new azew();
-    localazew.jdField_a_of_type_Long = ((File)localObject).length();
-    if (Build.VERSION.SDK_INT >= 17) {
-      localObject = new MediaMetadataRetriever();
+      i = this.jdField_c_of_type_Int;
+      m = f;
+      n = View.MeasureSpec.getMode(paramInt);
+      i1 = View.MeasureSpec.getSize(paramInt);
+      if (this.jdField_a_of_type_JavaUtilList == null)
+      {
+        if (i > 0) {
+          break label317;
+        }
+        paramInt = 1;
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(paramInt);
+      }
+      if ((i <= 0) || (this.jdField_a_of_type_JavaLangCharSequence.length() <= i)) {
+        break label393;
+      }
+      k = this.jdField_a_of_type_JavaLangCharSequence.length() / i;
+      paramInt = k;
+      if (this.jdField_a_of_type_JavaLangCharSequence.length() % i > 0) {
+        paramInt = k + 1;
+      }
+      k = this.jdField_a_of_type_JavaLangCharSequence.length() / paramInt;
+      i = Math.min(i, this.jdField_a_of_type_JavaLangCharSequence.length() % paramInt + k);
+      paramInt = 0;
+      label177:
+      if (paramInt < this.jdField_a_of_type_JavaLangCharSequence.length())
+      {
+        if (paramInt + i < this.jdField_a_of_type_JavaLangCharSequence.length()) {
+          break label363;
+        }
+        this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(paramInt, this.jdField_a_of_type_JavaLangCharSequence.length()));
+      }
     }
     for (;;)
     {
-      try
+      paramInt = 2147483647;
+      if ((n == 1073741824) || (n == -2147483648)) {
+        paramInt = i1 - m * 2;
+      }
+      k = d(paramInt);
+      i = 0;
+      paramInt = j;
+      while (paramInt < this.jdField_b_of_type_JavaUtilList.size())
       {
-        ((MediaMetadataRetriever)localObject).setDataSource(paramString);
-        paramString = ((MediaMetadataRetriever)localObject).extractMetadata(18);
-        String str1 = ((MediaMetadataRetriever)localObject).extractMetadata(19);
-        String str2 = ((MediaMetadataRetriever)localObject).extractMetadata(24);
-        String str3 = ((MediaMetadataRetriever)localObject).extractMetadata(9);
-        String str4 = ((MediaMetadataRetriever)localObject).extractMetadata(32);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoCompressConfig", 2, "getVideoInfo by MediaMetadataRetriever, width = " + paramString + ", height = " + str1 + ", rotation = " + str2 + ", duration = " + str3 + ", frameCount = " + str4);
-        }
-        localazew.jdField_a_of_type_Int = Integer.valueOf(paramString).intValue();
-        localazew.jdField_b_of_type_Int = Integer.valueOf(str1).intValue();
-        localazew.c = Integer.valueOf(str2).intValue();
-        localazew.d = ((int)(Integer.valueOf(str3).intValue() / 1000.0D + 0.5D));
-        localazew.e = ((int)(Integer.valueOf(str4).intValue() * 1.0D / localazew.d + 0.5D));
+        i = Math.max(((Layout)this.jdField_b_of_type_JavaUtilList.get(paramInt)).getHeight(), i);
+        paramInt += 1;
       }
-      catch (Exception paramString)
+      i = 0;
+      break;
+      label317:
+      if (this.jdField_a_of_type_JavaLangCharSequence.length() % i > 0)
       {
-        QLog.e("VideoCompressConfig", 1, "getVideoProperty:", paramString);
-        ((MediaMetadataRetriever)localObject).release();
-        continue;
+        paramInt = this.jdField_a_of_type_JavaLangCharSequence.length() / i + 1;
+        break label79;
       }
-      finally
+      paramInt = this.jdField_a_of_type_JavaLangCharSequence.length() / i;
+      break label79;
+      label363:
+      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(paramInt, paramInt + i));
+      paramInt += i;
+      break label177;
+      label393:
+      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangCharSequence);
+    }
+    paramInt = i - this.d;
+    if (this.jdField_e_of_type_Int > 0) {
+      if (this.jdField_e_of_type_Int == 2)
       {
-        ((MediaMetadataRetriever)localObject).release();
+        paramInt = paramInt + k + m * 3;
+        this.jdField_b_of_type_AndroidGraphicsPoint.set(m * 2 + k, paramInt);
       }
-      if (localazew.d > 0) {
-        localazew.jdField_b_of_type_Long = (localazew.jdField_a_of_type_Long * 8L / localazew.d);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Tag", 2, "onMeasureVertical w:" + this.jdField_b_of_type_AndroidGraphicsPoint.x + " h:" + this.jdField_b_of_type_AndroidGraphicsPoint.y);
       }
-      paramString = localazew;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("VideoCompressConfig", 2, "getVideoInfo, fileSize = " + localazew.jdField_a_of_type_Long + ", width = " + localazew.jdField_a_of_type_Int + ", height = " + localazew.jdField_b_of_type_Int + ", rotation = " + localazew.c + ", duration = " + localazew.d + ", fps = " + localazew.e + ", videoInfo.bitRate = " + localazew.jdField_b_of_type_Long);
-      return localazew;
-      try
-      {
-        paramString = ShortVideoTrimmer.getRealProperties(paramString);
-        if (paramString != null)
-        {
-          paramString = paramString.split(",");
-          if ((paramString != null) && (paramString.length > 0))
-          {
-            localObject = new int[paramString.length];
-            int i = 0;
-            while (i < paramString.length)
-            {
-              localObject[i] = Integer.valueOf(paramString[i]).intValue();
-              i += 1;
-            }
-            localazew.jdField_a_of_type_Int = localObject[1];
-            localazew.jdField_b_of_type_Int = localObject[2];
-            localazew.c = Integer.valueOf(ShortVideoTrimmer.a(localObject[3])).intValue();
-            localazew.d = ((int)(localObject[4] / 1000.0D + 0.5D));
-          }
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("VideoCompressConfig", 1, "getVideoInfo error.", paramString);
-      }
+      return this.jdField_b_of_type_AndroidGraphicsPoint.y;
+      paramInt += m * 2;
+      break;
+      this.jdField_b_of_type_AndroidGraphicsPoint.set(k, paramInt);
     }
   }
   
-  public static boolean a(azew paramazew, azev paramazev)
+  private int d(int paramInt)
   {
-    if ((paramazew == null) || (paramazev == null))
-    {
-      QLog.e("VideoCompressConfig", 1, "isNeedCompress, false, videoInfo or config is null");
-      return false;
+    ArrayList localArrayList1 = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
+    ArrayList localArrayList2 = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
+    if (this.jdField_b_of_type_JavaUtilList == null) {
+      this.jdField_b_of_type_JavaUtilList = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
     }
-    if (paramazew.jdField_a_of_type_Long * 8L > paramazev.jdField_a_of_type_Long)
+    int j = 0;
+    int i = 0;
+    Object localObject;
+    while (j < this.jdField_a_of_type_JavaUtilList.size())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "isNeedCompress, true, fileSize > maxSize, fileSize = " + paramazew.jdField_a_of_type_Long);
+      localObject = a((CharSequence)this.jdField_a_of_type_JavaUtilList.get(j));
+      int k = (int)Math.ceil(Layout.getDesiredWidth((CharSequence)localObject, this.jdField_a_of_type_AndroidTextTextPaint));
+      i += k;
+      if (((i >= paramInt) && (j < this.jdField_a_of_type_JavaUtilList.size() - 1)) || ((j == this.jdField_a_of_type_JavaUtilList.size() - 1) && (i > paramInt)))
+      {
+        this.jdField_a_of_type_Float *= 0.5F;
+        if (this.jdField_a_of_type_Float < 1.0F) {
+          return paramInt;
+        }
+        this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
+        return d(paramInt);
       }
-      return true;
+      localArrayList1.add(Integer.valueOf(k));
+      localArrayList2.add(localObject);
+      j += 1;
     }
-    if (paramazew.jdField_b_of_type_Long < paramazev.jdField_b_of_type_Long)
+    paramInt = 0;
+    while (paramInt < localArrayList2.size())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "isNeedCompress,false, bitRate < minBitRate, bitRate = " + paramazew.jdField_b_of_type_Long + ", minBitRate = " + paramazev.jdField_b_of_type_Long);
-      }
-      return false;
+      localObject = (CharSequence)localArrayList2.get(paramInt);
+      localObject = a(((Integer)localArrayList1.get(paramInt)).intValue(), null, ((Integer)localArrayList1.get(paramInt)).intValue(), (CharSequence)localObject, 0.87F);
+      this.jdField_b_of_type_JavaUtilList.add(localObject);
+      paramInt += 1;
     }
-    if (paramazew.jdField_b_of_type_Long > paramazev.c)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "isNeedCompress, true, bitRate > maxBitRate, bitRate = " + paramazew.jdField_b_of_type_Long + ", maxBitRate = " + paramazev.c);
-      }
-      return true;
+    return i;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt(null);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt().top;
+    this.d = ((int)((this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt().ascent - i) * 0.5F));
+    if (this.jdField_b_of_type_Boolean) {
+      return b(paramInt);
     }
-    if (paramazew.e > 0) {}
-    for (int i = paramazew.e;; i = 30)
+    return c(paramInt);
+  }
+  
+  public Point a()
+  {
+    if (this.jdField_c_of_type_Boolean) {
+      return new Point(0, 0);
+    }
+    return new Point(this.jdField_a_of_type_AndroidGraphicsPoint.x + (int)(this.jdField_b_of_type_AndroidGraphicsPoint.x * 0.5F), this.jdField_a_of_type_AndroidGraphicsPoint.y + (int)(this.jdField_b_of_type_AndroidGraphicsPoint.y * 0.5F));
+  }
+  
+  protected Layout a(int paramInt1, BoringLayout.Metrics paramMetrics, int paramInt2, CharSequence paramCharSequence, float paramFloat)
+  {
+    Layout.Alignment localAlignment = Layout.Alignment.ALIGN_NORMAL;
+    if ((paramCharSequence instanceof Spannable)) {
+      return new DynamicLayout(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, paramFloat, 0.0F, false);
+    }
+    if (paramMetrics == jdField_b_of_type_AndroidTextBoringLayout$Metrics)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "isNeedCompress, videoFps = " + i);
+      BoringLayout.Metrics localMetrics = BoringLayout.isBoring(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_a_of_type_AndroidTextBoringLayout$Metrics);
+      paramMetrics = localMetrics;
+      if (localMetrics != null)
+      {
+        this.jdField_a_of_type_AndroidTextBoringLayout$Metrics = localMetrics;
+        paramMetrics = localMetrics;
       }
-      if (paramazew.jdField_b_of_type_Long <= paramazew.jdField_a_of_type_Int * paramazew.jdField_b_of_type_Int * i * paramazev.jdField_a_of_type_Double * 1.2D) {
+    }
+    for (;;)
+    {
+      if (paramMetrics != null)
+      {
+        if (paramMetrics.width <= paramInt1) {
+          return BoringLayout.make(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, paramFloat, 0.0F, paramMetrics, false);
+        }
+        return new StaticLayout(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, paramFloat, 0.0F, false);
+      }
+      return new StaticLayout(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, paramFloat, 0.0F, false);
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidGraphicsPoint.set(-1, -1);
+    this.jdField_b_of_type_AndroidGraphicsPoint.set(0, 0);
+    this.jdField_a_of_type_AndroidTextLayout = null;
+    if (this.jdField_b_of_type_JavaUtilList != null) {
+      this.jdField_b_of_type_JavaUtilList.clear();
+    }
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_b_of_type_Boolean) {}
+    while ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0))
+    {
+      if ((this.jdField_a_of_type_AndroidTextLayout == null) || (this.jdField_a_of_type_AndroidGraphicsPoint.x < 0) || (this.jdField_a_of_type_AndroidGraphicsPoint.y < 0) || (this.jdField_b_of_type_AndroidGraphicsPoint.x <= 0) || (this.jdField_b_of_type_AndroidGraphicsPoint.y <= 0)) {
         break;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressConfig", 2, "isNeedCompress, true, density > 1.2 * maxDensty. bitRate = " + paramazew.jdField_b_of_type_Long + ", width * height * videoFps * maxDensity * 1.2 = " + i * (paramazew.jdField_a_of_type_Int * paramazew.jdField_b_of_type_Int) * paramazev.jdField_a_of_type_Double * 1.2D);
-      }
       return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressConfig", 2, "isNeedCompress, false, density <= 1.2 * maxDensty. bitRate = " + paramazew.jdField_b_of_type_Long + ", width * height * videoFps * maxDensity * 1.2 = " + i * (paramazew.jdField_a_of_type_Int * paramazew.jdField_b_of_type_Int) * paramazev.jdField_a_of_type_Double * 1.2D);
-    }
     return false;
+  }
+  
+  public int b()
+  {
+    int j = this.jdField_b_of_type_AndroidGraphicsPoint.x;
+    int i = this.jdField_b_of_type_AndroidGraphicsPoint.y;
+    int k = f;
+    if (this.jdField_e_of_type_Int == 2) {
+      if (this.jdField_b_of_type_Boolean) {
+        i = j - (i - k * 2 + k * 3);
+      }
+    }
+    do
+    {
+      return i;
+      return j - k * 2;
+      i = j;
+    } while (this.jdField_e_of_type_Int != 1);
+    return j - k * 2;
+  }
+  
+  public int c()
+  {
+    int i = this.jdField_b_of_type_AndroidGraphicsPoint.x;
+    int j = this.jdField_b_of_type_AndroidGraphicsPoint.y;
+    int k = f;
+    if (this.jdField_e_of_type_Int == 2) {
+      if (this.jdField_b_of_type_Boolean) {
+        i = j - k * 2;
+      }
+    }
+    do
+    {
+      return i;
+      return j - (i - k * 2 + k * 3);
+      i = j;
+    } while (this.jdField_e_of_type_Int != 1);
+    return j - k * 2;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("texts:").append(this.jdField_a_of_type_JavaLangCharSequence).append(" w:").append(this.jdField_b_of_type_AndroidGraphicsPoint.x).append(" h:").append(this.jdField_b_of_type_AndroidGraphicsPoint.y);
+    localStringBuilder.append(" textSize:").append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(" cord.x:").append(this.jdField_a_of_type_AndroidGraphicsPoint.x);
+    localStringBuilder.append(" cord.y:").append(this.jdField_a_of_type_AndroidGraphicsPoint.y);
+    return localStringBuilder.toString();
   }
 }
 

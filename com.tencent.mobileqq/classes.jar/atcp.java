@@ -1,6 +1,14 @@
-public abstract interface atcp
+public class atcp
 {
-  public abstract void a(int paramInt);
+  long jdField_a_of_type_Long = 0L;
+  atcs jdField_a_of_type_Atcs;
+  public volatile boolean a;
+  public volatile boolean b = false;
+  
+  atcp(atco paramatco)
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
 }
 
 

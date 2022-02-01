@@ -1,25 +1,24 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 
 public class awth
-  extends Editable.Factory
+  implements awta
 {
-  public awth(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public awth(MultiAIOViewPager paramMultiAIOViewPager) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void b(int paramInt)
   {
-    if ((paramCharSequence instanceof bane)) {
-      return (Editable)paramCharSequence;
+    if (MultiAIOViewPager.a(this.a) != null) {
+      MultiAIOViewPager.a(this.a).a(paramInt);
     }
-    return new bane(paramCharSequence, 3, (int)(StickyNotePublishFragment.a(this.a).getTextSize() / StickyNotePublishFragment.a(this.a).getPaint().density));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awth
  * JD-Core Version:    0.7.0.1
  */

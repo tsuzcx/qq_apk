@@ -1,28 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
-class ahxf
-  implements DialogInterface.OnKeyListener
+public class ahxf
+  extends ahxe
 {
-  ahxf(ahww paramahww, int paramInt) {}
+  public Bitmap a;
+  public AnimationView.AnimationInfo a;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public ahxf(String paramString)
   {
-    if (paramInt == 4)
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
     {
-      if (!ahww.a(this.jdField_a_of_type_Ahww)) {
-        break label28;
-      }
-      ahww.a(this.jdField_a_of_type_Ahww, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
     }
-    for (;;)
-    {
-      return true;
-      label28:
-      ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue());
-      ahww.a(this.jdField_a_of_type_Ahww);
-    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
   }
 }
 

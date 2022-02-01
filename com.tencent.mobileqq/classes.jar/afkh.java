@@ -1,18 +1,17 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-class afkh
-  extends aepm
+public class afkh
+  implements DialogInterface.OnClickListener
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  View d;
+  public afkh(TroopInfoActivity paramTroopInfoActivity) {}
   
-  afkh(afkg paramafkg) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.j();
+  }
 }
 
 

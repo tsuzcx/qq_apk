@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awgf;
-import awhp;
-import awhs;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
 import java.util.List;
 import tencent.im.PluginConfig.PluginConfig.GetResourceRespInfo;
 
 public class LebaPluginInfo
-  extends awge
+  extends Entity
 {
   public static final int STATE_ADD = 3;
   public static final int STATE_DEL = 2;
@@ -21,12 +21,12 @@ public class LebaPluginInfo
   public int cCanChangeState;
   public byte cDataType;
   public String resConf;
-  @awhp
+  @notColumn
   public int sPriority;
   public int sResSeq;
   public short sResSubType;
   public int showInSimpleMode;
-  @awhp
+  @notColumn
   public int state = 0;
   public String strGotoUrl;
   public String strGridIconUrl;
@@ -34,7 +34,7 @@ public class LebaPluginInfo
   public String strPkgName;
   public String strResName;
   public String strResURL;
-  @awhs
+  @unique
   public long uiResId;
   
   public static LebaPluginInfo convToLocalPluginInfo(PluginConfig.GetResourceRespInfo paramGetResourceRespInfo)
@@ -155,38 +155,38 @@ public class LebaPluginInfo
     }
   }
   
-  public static LebaPluginInfo find(awgf paramawgf, long paramLong)
+  public static LebaPluginInfo find(EntityManager paramEntityManager, long paramLong)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (paramawgf != null)
+    if (paramEntityManager != null)
     {
       localObject1 = localObject2;
       if (paramLong > 0L) {
-        localObject1 = (LebaPluginInfo)paramawgf.a(LebaPluginInfo.class, "uiResId=?", new String[] { String.valueOf(paramLong) });
+        localObject1 = (LebaPluginInfo)paramEntityManager.find(LebaPluginInfo.class, "uiResId=?", new String[] { String.valueOf(paramLong) });
       }
     }
     return localObject1;
   }
   
-  public static List<LebaPluginInfo> getAll(awgf paramawgf)
+  public static List<LebaPluginInfo> getAll(EntityManager paramEntityManager)
   {
-    if (paramawgf != null) {}
-    for (paramawgf = paramawgf.a(LebaPluginInfo.class, false, "", null, null, null, null, null);; paramawgf = null)
+    if (paramEntityManager != null) {}
+    for (paramEntityManager = paramEntityManager.query(LebaPluginInfo.class, false, "", null, null, null, null, null);; paramEntityManager = null)
     {
-      Object localObject = paramawgf;
-      if (paramawgf == null) {
+      Object localObject = paramEntityManager;
+      if (paramEntityManager == null) {
         localObject = Collections.EMPTY_LIST;
       }
       return localObject;
     }
   }
   
-  public static void persistOrReplace(awgf paramawgf, LebaPluginInfo paramLebaPluginInfo)
+  public static void persistOrReplace(EntityManager paramEntityManager, LebaPluginInfo paramLebaPluginInfo)
   {
-    if ((paramawgf != null) && (paramLebaPluginInfo != null) && (paramLebaPluginInfo.uiResId > 0L))
+    if ((paramEntityManager != null) && (paramLebaPluginInfo != null) && (paramLebaPluginInfo.uiResId > 0L))
     {
-      LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)paramawgf.a(LebaPluginInfo.class, "uiResId=?", new String[] { String.valueOf(paramLebaPluginInfo.uiResId) });
+      LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)paramEntityManager.find(LebaPluginInfo.class, "uiResId=?", new String[] { String.valueOf(paramLebaPluginInfo.uiResId) });
       if (localLebaPluginInfo != null)
       {
         localLebaPluginInfo.sResSeq = paramLebaPluginInfo.sResSeq;
@@ -200,23 +200,23 @@ public class LebaPluginInfo
         localLebaPluginInfo.cDataType = paramLebaPluginInfo.cDataType;
         localLebaPluginInfo.showInSimpleMode = paramLebaPluginInfo.showInSimpleMode;
         localLebaPluginInfo.strGridIconUrl = paramLebaPluginInfo.strGridIconUrl;
-        paramawgf.a(localLebaPluginInfo);
+        paramEntityManager.update(localLebaPluginInfo);
       }
     }
     else
     {
       return;
     }
-    paramawgf.a(paramLebaPluginInfo);
+    paramEntityManager.persist(paramLebaPluginInfo);
   }
   
-  public static void remove(awgf paramawgf, long paramLong)
+  public static void remove(EntityManager paramEntityManager, long paramLong)
   {
-    if (paramawgf != null)
+    if (paramEntityManager != null)
     {
-      LebaPluginInfo localLebaPluginInfo = find(paramawgf, paramLong);
+      LebaPluginInfo localLebaPluginInfo = find(paramEntityManager, paramLong);
       if (localLebaPluginInfo != null) {
-        paramawgf.b(localLebaPluginInfo);
+        paramEntityManager.remove(localLebaPluginInfo);
       }
     }
   }

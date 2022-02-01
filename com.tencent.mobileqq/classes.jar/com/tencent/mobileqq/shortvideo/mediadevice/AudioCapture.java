@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import alud;
 import android.content.Context;
 import android.media.AudioRecord;
 import android.os.SystemClock;
-import azfy;
-import azge;
-import azgy;
-import azhd;
-import azhf;
-import azib;
-import azie;
-import azig;
-import azjv;
+import anni;
+import bcgy;
+import bche;
+import bchy;
+import bcid;
+import bcif;
+import bcjb;
+import bcje;
+import bcjg;
+import bcku;
 import com.tencent.maxvideo.common.AVIOStruct;
 import com.tencent.maxvideo.common.ControlFlagEnum;
 import com.tencent.maxvideo.mediadevice.AVCodec;
@@ -22,7 +22,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class AudioCapture
-  extends azfy
+  extends bcgy
 {
   public static int a;
   public static int b;
@@ -35,7 +35,7 @@ public class AudioCapture
   volatile boolean jdField_a_of_type_Boolean = false;
   byte[] jdField_a_of_type_ArrayOfByte = null;
   long jdField_b_of_type_Long;
-  public AtomicReference<azjv> b;
+  public AtomicReference<bcku> b;
   boolean jdField_b_of_type_Boolean = false;
   byte[] jdField_b_of_type_ArrayOfByte = null;
   public int c;
@@ -82,9 +82,9 @@ public class AudioCapture
     this.jdField_h_of_type_Int = 0;
   }
   
-  public void a(azhd paramazhd)
+  public void a(bcid parambcid)
   {
-    a(paramazhd, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+    a(parambcid, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
   }
   
   void a(byte[] paramArrayOfByte, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
@@ -100,28 +100,28 @@ public class AudioCapture
       j = this.jdField_h_of_type_Int;
       this.jdField_h_of_type_Int = (j + 1);
       ((AVIOStruct)localObject).pFrameIndex = j;
-      ((AVIOStruct)localObject).aBitrate = azib.n;
-      ((AVIOStruct)localObject).pCodec = azib.jdField_b_of_type_Int;
+      ((AVIOStruct)localObject).aBitrate = bcjb.n;
+      ((AVIOStruct)localObject).pCodec = bcjb.jdField_b_of_type_Int;
       ((AVIOStruct)localObject).pControlFlag = ControlFlagEnum.WRITE_FRAME_DATA_AND_CLOSE_FILE.getValue();
-      ((AVIOStruct)localObject).aChannel = azib.o;
-      ((AVIOStruct)localObject).aFormat = azib.p;
-      ((AVIOStruct)localObject).aSampleRate = azib.q;
+      ((AVIOStruct)localObject).aChannel = bcjb.o;
+      ((AVIOStruct)localObject).aFormat = bcjb.p;
+      ((AVIOStruct)localObject).aSampleRate = bcjb.q;
       if ((paramArrayOfByte != null) && (paramInt1 > 0))
       {
         byte[] arrayOfByte = new byte[paramInt1];
         System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramInt1);
-        azig.a().a().handleAudio(arrayOfByte, (AVIOStruct)localObject, (int)paramLong);
+        bcjg.a().a().handleAudio(arrayOfByte, (AVIOStruct)localObject, (int)paramLong);
         paramArrayOfByte = (SVHwEncoder)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
         if (paramArrayOfByte != null)
         {
-          localObject = new azgy();
-          ((azgy)localObject).jdField_a_of_type_ArrayOfByte = arrayOfByte;
-          ((azgy)localObject).jdField_a_of_type_Int = 0;
-          ((azgy)localObject).jdField_b_of_type_Int = arrayOfByte.length;
-          ((azgy)localObject).jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          ((azgy)localObject).jdField_a_of_type_Boolean = false;
-          ((azgy)localObject).jdField_b_of_type_Boolean = false;
-          paramArrayOfByte.a((azgy)localObject, false);
+          localObject = new bchy();
+          ((bchy)localObject).jdField_a_of_type_ArrayOfByte = arrayOfByte;
+          ((bchy)localObject).jdField_a_of_type_Int = 0;
+          ((bchy)localObject).jdField_b_of_type_Int = arrayOfByte.length;
+          ((bchy)localObject).jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+          ((bchy)localObject).jdField_a_of_type_Boolean = false;
+          ((bchy)localObject).jdField_b_of_type_Boolean = false;
+          paramArrayOfByte.a((bchy)localObject, false);
         }
         a(paramInt2, new Object[] { Integer.valueOf(0) });
       }
@@ -186,7 +186,7 @@ public class AudioCapture
       boolean bool;
       if (!this.jdField_g_of_type_Boolean)
       {
-        bool = azhf.a(azhf.p);
+        bool = bcif.a(bcif.p);
         if ((!bool) || (this.jdField_d_of_type_Int >= 5)) {
           break label303;
         }
@@ -222,9 +222,9 @@ public class AudioCapture
     }
   }
   
-  public void b(azhd paramazhd)
+  public void b(bcid parambcid)
   {
-    a(paramazhd);
+    a(parambcid);
   }
   
   void b(byte[] paramArrayOfByte, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
@@ -234,7 +234,7 @@ public class AudioCapture
       if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.get() == null) {
         break label59;
       }
-      ((azjv)this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).a(paramArrayOfByte, 0, paramInt1);
+      ((bcku)this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).a(paramArrayOfByte, 0, paramInt1);
     }
     for (;;)
     {
@@ -260,10 +260,10 @@ public class AudioCapture
           bool = this.jdField_f_of_type_Boolean;
           return bool;
         }
-        this.jdField_e_of_type_Int = AudioRecord.getMinBufferSize(azib.q, azib.o, azib.p);
+        this.jdField_e_of_type_Int = AudioRecord.getMinBufferSize(bcjb.q, bcjb.o, bcjb.p);
         if ((this.jdField_e_of_type_Int == -2) || (this.jdField_e_of_type_Int == -1))
         {
-          if (azig.a().a().a(this, 3, "init audio failed")) {
+          if (bcjg.a().a().a(this, 3, "init audio failed")) {
             break label187;
           }
           a(3, new Object[] { "init audio failed" });
@@ -302,17 +302,17 @@ public class AudioCapture
       try
       {
         b();
-        this.jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(1, azib.q, azib.o, azib.p, this.jdField_e_of_type_Int);
+        this.jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(1, bcjb.q, bcjb.o, bcjb.p, this.jdField_e_of_type_Int);
         if (this.jdField_a_of_type_AndroidMediaAudioRecord.getState() == 0)
         {
-          a(5, new Object[] { alud.a(2131701170) });
+          a(5, new Object[] { anni.a(2131699595) });
           return;
         }
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
-        a(5, new Object[] { alud.a(2131701173) });
+        a(5, new Object[] { anni.a(2131699598) });
         return;
       }
       this.jdField_b_of_type_Boolean = true;
@@ -356,7 +356,7 @@ public class AudioCapture
       try
       {
         this.jdField_a_of_type_AndroidMediaAudioRecord.release();
-        a(6, new Object[] { alud.a(2131701174) });
+        a(6, new Object[] { anni.a(2131699599) });
       }
       catch (Exception localException)
       {
@@ -420,7 +420,7 @@ public class AudioCapture
   
   public void h()
   {
-    if (!azie.jdField_a_of_type_Boolean) {
+    if (!bcje.jdField_a_of_type_Boolean) {
       return;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -433,7 +433,7 @@ public class AudioCapture
   
   public void i()
   {
-    if (azie.jdField_a_of_type_Boolean) {
+    if (bcje.jdField_a_of_type_Boolean) {
       return;
     }
     a(2, new Object[] { Integer.valueOf(0) });
@@ -441,7 +441,7 @@ public class AudioCapture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture
  * JD-Core Version:    0.7.0.1
  */

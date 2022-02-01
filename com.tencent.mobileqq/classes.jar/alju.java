@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public final class alju
-  implements akoh
+public class alju
+  implements DialogInterface.OnClickListener
 {
-  public alju(alkb paramalkb, QQAppInterface paramQQAppInterface) {}
+  public alju(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Alkb.b(ApolloGameUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    yqu.a("video_shoot", "down_now", 0, 0, new String[0]);
+    avju.b(null);
+    paramDialogInterface.dismiss();
   }
 }
 

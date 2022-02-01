@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.content.IntentFilter;
-import aqwl;
-import aqwm;
-import arqx;
+import atcv;
+import atcw;
+import atut;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class FileManagerDataCenter$1
   implements Runnable
 {
-  public FileManagerDataCenter$1(aqwl paramaqwl) {}
+  public FileManagerDataCenter$1(atcv paramatcv) {}
   
   public void run()
   {
     if ((this.this$0.a != null) && (this.this$0.a.getApp() != null))
     {
-      if (aqwl.a(this.this$0) != null) {
-        this.this$0.a.getApp().unregisterReceiver(aqwl.a(this.this$0));
+      if (atcv.a(this.this$0) != null) {
+        this.this$0.a.getApp().unregisterReceiver(atcv.a(this.this$0));
       }
-      if (aqwl.a(this.this$0) == null) {
-        aqwl.a(this.this$0, new aqwm(this));
+      if (atcv.a(this.this$0) == null) {
+        atcv.a(this.this$0, new atcw(this));
       }
       IntentFilter localIntentFilter = new IntentFilter("com.opensdk.downloadmanager.renameFilename");
-      this.this$0.a.getApp().registerReceiver(aqwl.a(this.this$0), localIntentFilter);
-      arqx.a();
+      this.this$0.a.getApp().registerReceiver(atcv.a(this.this$0), localIntentFilter);
+      atut.a();
     }
   }
 }

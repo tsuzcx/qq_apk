@@ -12,8 +12,8 @@ import android.view.ViewConfiguration;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import bewm;
-import bewn;
+import bidk;
+import bidl;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class WorkSpaceView
@@ -21,10 +21,10 @@ public class WorkSpaceView
 {
   private float jdField_a_of_type_Float;
   public int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bewm(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bidk(this);
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext(), new AccelerateDecelerateInterpolator());
-  private bewn jdField_a_of_type_Bewn;
+  private bidl jdField_a_of_type_Bidl;
   boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -87,8 +87,8 @@ public class WorkSpaceView
       paramInt = getWidth();
       i = getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt * j - i, 0, 400);
-      if (this.jdField_a_of_type_Bewn != null) {
-        this.jdField_a_of_type_Bewn.a(j);
+      if (this.jdField_a_of_type_Bidl != null) {
+        this.jdField_a_of_type_Bidl.a(j);
       }
       invalidate();
       return;
@@ -112,8 +112,8 @@ public class WorkSpaceView
       paramInt = getWidth();
       int j = getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt * i - j, 0, 400);
-      if (this.jdField_a_of_type_Bewn != null) {
-        this.jdField_a_of_type_Bewn.a(i);
+      if (this.jdField_a_of_type_Bidl != null) {
+        this.jdField_a_of_type_Bidl.a(i);
       }
       invalidate();
       return;
@@ -454,14 +454,14 @@ public class WorkSpaceView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnScreenChangeListener(bewn parambewn)
+  public void setOnScreenChangeListener(bidl parambidl)
   {
-    this.jdField_a_of_type_Bewn = parambewn;
+    this.jdField_a_of_type_Bidl = parambidl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.WorkSpaceView
  * JD-Core Version:    0.7.0.1
  */

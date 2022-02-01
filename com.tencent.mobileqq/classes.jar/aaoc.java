@@ -1,148 +1,364 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.gdtad.aditem.GdtAd;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.SparseArray;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import tencent.im.oidb.cmd0x7f5.cmd0x7f5.GroupInfo;
 
-final class aaoc
-  extends FrameLayout
-  implements aany
+class aaoc
+  extends Handler
 {
-  aany a;
-  
-  public aaoc(Context paramContext, GdtAd paramGdtAd)
+  public aaoc(aanz paramaanz)
   {
-    super(paramContext);
-    if ((paramContext == null) || (paramGdtAd == null) || (!paramGdtAd.isValid()))
-    {
-      aase.d("GdtBannerViewWithLetterStyle", "constructor");
-      return;
-    }
-    setBackgroundResource(2130839781);
-    int k = -2147483648;
-    int m = -2147483648;
+    super(Looper.getMainLooper());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    Bundle localBundle;
     int i;
+    boolean bool;
     int j;
-    if ((paramGdtAd.getCreativeSize() == 65) || (paramGdtAd.getCreativeSize() == 184) || (paramGdtAd.getCreativeSize() == 193) || (paramGdtAd.getCreativeSize() == 194) || (paramGdtAd.getCreativeSize() == 210))
+    Iterator localIterator;
+    label582:
+    do
     {
-      i = k;
-      j = m;
-      if (paramGdtAd.getImageData() != null)
+      do
       {
-        i = paramGdtAd.getImageData().jdField_a_of_type_Int;
-        j = paramGdtAd.getImageData().b;
+        do
+        {
+          do
+          {
+            return;
+            localBundle = paramMessage.getData();
+          } while (localBundle == null);
+          i = localBundle.getInt("seq", -1);
+          switch (paramMessage.what)
+          {
+          }
+        } while (i == -1);
+        paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      } while (paramMessage == null);
+      paramMessage.callback(localBundle);
+      return;
+      i = localBundle.getInt("type");
+      bool = localBundle.getBoolean("isSuccess", false);
+      paramMessage = localBundle.getSerializable("data");
+      j = localBundle.getInt("observer_type");
+      localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    } while (!localIterator.hasNext());
+    anil localanil = (anil)localIterator.next();
+    Object localObject;
+    if (((j == 1) && ((localanil instanceof anot))) || ((j == 2) && ((localanil instanceof anmu)))) {
+      if (28 == i)
+      {
+        localObject = localBundle.getByteArray("groupInfo");
+        paramMessage = new cmd0x7f5.GroupInfo();
+        if (localObject == null) {
+          break label2186;
+        }
       }
-      if ((i > 0) && (j > 0)) {
-        break label248;
-      }
-      aase.d("GdtBannerViewWithLetterStyle", "createBannerViewWithLetterStyle error, image width or image height is zero");
     }
+    label2186:
     for (;;)
     {
-      paramContext = new ImageView(getContext());
-      paramContext.setImageResource(2130839782);
-      addView(paramContext, -1, -1);
-      return;
-      i = k;
-      j = m;
-      if (paramGdtAd.getCreativeSize() != 285) {
-        break;
-      }
-      i = k;
-      j = m;
-      if (paramGdtAd.getImageData(0) == null) {
-        break;
-      }
-      i = k;
-      j = m;
-      if (paramGdtAd.getImageData(1) == null) {
-        break;
-      }
-      i = k;
-      j = m;
-      if (paramGdtAd.getImageData(2) == null) {
-        break;
-      }
-      i = paramGdtAd.getImageData(0).jdField_a_of_type_Int;
-      j = paramGdtAd.getImageData(0).b;
-      break;
-      label248:
-      if ((paramGdtAd.getCreativeSize() == 65) || (paramGdtAd.getCreativeSize() == 184) || (paramGdtAd.getCreativeSize() == 210)) {
-        this.a = new aaof(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText());
-      }
-      for (;;)
+      try
       {
-        addView(this.a.a());
-        break;
-        if (paramGdtAd.getCreativeSize() == 193)
-        {
-          this.a = new aaoe(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j);
-        }
-        else if (paramGdtAd.getCreativeSize() == 194)
-        {
-          this.a = new aaog(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText(), paramGdtAd.getDescription());
-        }
-        else
-        {
-          if (paramGdtAd.getCreativeSize() != 285) {
-            break label453;
-          }
-          this.a = new aaoh(paramContext, paramGdtAd.getImageData(0).jdField_a_of_type_JavaLangString, paramGdtAd.getImageData(1).jdField_a_of_type_JavaLangString, paramGdtAd.getImageData(2).jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText());
-        }
+        paramMessage.mergeFrom((byte[])localObject);
+        localObject = new Object[2];
+        localObject[0] = Integer.valueOf(localBundle.getInt("count"));
+        localObject[1] = paramMessage;
+        paramMessage = (Message)localObject;
+        localanil.onUpdate(i, bool, paramMessage);
       }
-      label453:
-      aase.d("GdtBannerViewWithLetterStyle", String.format("createBannerView error, creative size is %d", new Object[] { Integer.valueOf(paramGdtAd.getCreativeSize()) }));
-    }
-  }
-  
-  public View a()
-  {
-    return this;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((this.a == null) || (this.a.a() == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
-    {
-      aase.d("GdtBannerViewWithLetterStyle", "setSize error");
+      catch (InvalidProtocolBufferMicroException paramMessage)
+      {
+        paramMessage.printStackTrace();
+        paramMessage = null;
+        continue;
+      }
+      if ((j == 3) && ((localanil instanceof anxg)))
+      {
+        ((anxg)localanil).onUpdate(i, bool, paramMessage);
+        break label582;
+      }
+      if ((j == 4) && ((localanil instanceof anif)))
+      {
+        ((anif)localanil).onUpdate(i, bool, paramMessage);
+        break label582;
+      }
+      if ((j != 5) || (!(localanil instanceof annz))) {
+        break label582;
+      }
+      ((annz)localanil).onUpdate(i, bool, paramMessage);
+      break label582;
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      if (i != -1)
+      {
+        j = localBundle.getInt("retCode", -1);
+        int k = localBundle.getInt("rate", -1);
+        paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+        if (paramMessage != null)
+        {
+          paramMessage.callback(localBundle);
+          if ((j != 0) || (k == 100))
+          {
+            QLog.d("ReadInJoy", 4, "download finish:" + localBundle);
+            this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+          }
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("readinjoy", 4, "client MSG_READINJOY_LOAD_SKIN retCode=" + j + ",rate=" + k);
+          return;
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("readinjoy", 4, "client MSG_READINJOY_LOAD_SKIN callback null");
+        return;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("readinjoy", 4, "client MSG_READINJOY_LOAD_SKIN seq=" + i);
+      return;
+      if (this.a.jdField_a_of_type_Anif == null) {
+        break;
+      }
+      paramMessage = localBundle.getString("pageUrl");
+      localObject = localBundle.getStringArrayList("lstVideoUrl");
+      i = localBundle.getInt("totalTime", 0);
+      this.a.jdField_a_of_type_Anif.onUpdate(localBundle.getInt("type"), true, new Object[] { paramMessage, localObject, Integer.valueOf(i) });
+      return;
+      this.a.a().a(localBundle);
+      return;
+      this.a.a().a(localBundle);
+      return;
+      localObject = (anil)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(localBundle.getInt("req_seq"));
+      if (localObject == null) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidUtilSparseArray.remove(localBundle.getInt("req_seq"));
+      ((anil)localObject).onUpdate(paramMessage.what, true, localBundle);
+      return;
+      if (localBundle == null) {
+        break;
+      }
+      i = localBundle.getInt("seq1", -1);
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      if (localBundle == null) {
+        break;
+      }
+      i = localBundle.getInt("seq", -1);
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      if (localBundle == null) {
+        break;
+      }
+      i = localBundle.getInt("seq1", -1);
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      if (localBundle == null) {
+        break;
+      }
+      i = localBundle.getInt("seq", -1);
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if ((i == -1) || (paramMessage == null)) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      if (localBundle == null) {
+        break;
+      }
+      i = localBundle.getInt("seq", -1);
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      paramMessage = localBundle.getString("FileName");
+      i = localBundle.getInt("Status");
+      if ((aanz.a(this.a) == null) || (paramMessage == null) || (aanz.a(this.a).get(paramMessage) == null)) {
+        break;
+      }
+      j = ((Integer)aanz.a(this.a).get(paramMessage)).intValue();
+      if (j == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(j));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      if (i != 11) {
+        break;
+      }
+      this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(j));
+      return;
+      paramMessage = localBundle.getString("FilePath");
+      i = localBundle.getInt("size");
+      localObject = paramMessage + "/" + i;
+      if ((aanz.b(this.a) == null) || (paramMessage == null) || (aanz.b(this.a).get(localObject) == null)) {
+        break;
+      }
+      i = ((Integer)aanz.b(this.a).get(localObject)).intValue();
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      if (aanz.a(this.a) == null) {
+        break;
+      }
+      aanz.a(this.a).callback(localBundle);
+      return;
+      if (aanz.a(this.a) == null) {
+        break;
+      }
+      aanz.a(this.a).callback(localBundle);
+      return;
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      localBundle.putString("type", "troopCreateOpenAIO");
+      paramMessage.callback(localBundle);
+      return;
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+      if (paramMessage == null) {
+        break;
+      }
+      localBundle.putBoolean("isSuccess", localBundle.getBoolean("isSuccess"));
+      paramMessage.callback(localBundle);
+      return;
+      if (i == -1) {
+        break;
+      }
+      paramMessage = (aaob)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+      if ((paramMessage == null) || (localBundle == null)) {
+        break;
+      }
+      paramMessage.callback(localBundle);
+      return;
+      if (i == -1) {
+        break;
+      }
+      this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
       return;
     }
-    int i = Double.valueOf(0.7076023391812866D * paramInt1).intValue();
-    int j = Double.valueOf(0.9036144578313253D * paramInt2).intValue();
-    paramInt1 = Double.valueOf((paramInt1 - i) * 1.0D / 2.0D).intValue();
-    paramInt2 = Double.valueOf((paramInt2 - j) * 1.0D / 2.0D).intValue();
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = paramInt2;
-    localLayoutParams.bottomMargin = paramInt2;
-    localLayoutParams.leftMargin = paramInt1;
-    localLayoutParams.rightMargin = paramInt1;
-    this.a.a().setLayoutParams(localLayoutParams);
-    this.a.a(i, j);
-  }
-  
-  public void a(Context paramContext)
-  {
-    if (this.a == null) {
-      return;
-    }
-    this.a.a(paramContext);
-  }
-  
-  public void b(Context paramContext)
-  {
-    if (this.a == null) {
-      return;
-    }
-    this.a.b(paramContext);
-  }
-  
-  public void c(Context paramContext)
-  {
-    if (this.a == null) {
-      return;
-    }
-    this.a.c(paramContext);
   }
 }
 

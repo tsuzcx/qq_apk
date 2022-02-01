@@ -1,23 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.widget.TipsBar;
-
 public class acxu
-  implements View.OnClickListener
+  implements acxt
 {
-  public acxu(ForwardRecentActivity paramForwardRecentActivity) {}
+  private acww<Integer, acxs> a = new acwx();
   
-  public void onClick(View paramView)
+  public acxs a(Integer paramInteger)
   {
-    if ((this.a.a != null) && (this.a.a.getVisibility() == 0)) {
-      this.a.a.setVisibility(8);
-    }
+    return (acxs)this.a.a(paramInteger);
+  }
+  
+  public void a(Integer paramInteger, Class<? extends acxs> paramClass)
+  {
+    this.a.a(paramInteger, paramClass);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxu
  * JD-Core Version:    0.7.0.1
  */

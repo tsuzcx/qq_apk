@@ -1,260 +1,374 @@
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.opengl.GLES20;
-import android.opengl.GLES31;
-import android.opengl.Matrix;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.minicode.RecogProxy;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QFlutterAppData;
+import com.tencent.mobileqq.earlydownload.xmldata.QFlutterEngineData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
-import com.tencent.ttpic.openapi.filter.TextureRender;
-import java.text.SimpleDateFormat;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class auez
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long;
-  private aufa jdField_a_of_type_Aufa;
-  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final String jdField_a_of_type_JavaLangString = "MiniRecog.recog";
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat;
+  public static Handler a;
+  private static aufa jdField_a_of_type_Aufa = new aufa(null);
+  private static ArrayList<aufb> jdField_a_of_type_JavaUtilArrayList;
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "libflutter.so" };
+  private static aufa jdField_b_of_type_Aufa = new aufa(null);
+  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "libapp.so", "libqflutter-resource-loader.so", "res.apk" };
   
-  public auez(aufa paramaufa)
+  static
   {
-    this.jdField_a_of_type_Aufa = paramaufa;
-    this.jdField_a_of_type_ArrayOfFloat = new float[16];
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-    this.jdField_a_of_type_Int = auev.a(paramaufa.jdField_c_of_type_Int, paramaufa.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramaufa.jdField_c_of_type_Int, paramaufa.jdField_b_of_type_Int);
-    auew.a(false);
-    this.jdField_a_of_type_Long = RecogProxy.QCodeInit(this.jdField_a_of_type_Aufa.jdField_a_of_type_Int, this.jdField_a_of_type_Aufa.jdField_b_of_type_Int, this.jdField_a_of_type_Aufa.jdField_c_of_type_Int, this.jdField_a_of_type_Aufa.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aufa.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aufa.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Aufa.d, 0.35F);
-    QLog.i("MiniRecog.recog", 1, String.format("RecogProxy.QCodeInit native_handler=0x%x", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
-    if (this.jdField_a_of_type_Long != 0L) {
-      auew.b(false);
-    }
-    this.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  private Rect a(int paramInt1, int paramInt2, float[] paramArrayOfFloat)
+  public static String a()
   {
-    if (paramInt1 > paramInt2)
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    return localFile.getAbsolutePath() + File.separator + "qflutter";
+  }
+  
+  public static String a(String paramString)
+  {
+    return new File(a(), paramString).getAbsolutePath();
+  }
+  
+  private static void a()
+  {
+    String[] arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      i = 0;
-      paramArrayOfFloat[i] = ((paramArrayOfFloat[i] - 0.5F) / this.jdField_a_of_type_Float + 0.5F);
-      paramArrayOfFloat[(i + 2)] = ((paramArrayOfFloat[(i + 2)] - 0.5F) / this.jdField_a_of_type_Float + 0.5F);
-      float f1 = paramArrayOfFloat[0];
-      float f2 = paramArrayOfFloat[1];
-      float f3 = paramArrayOfFloat[2];
-      float f4 = paramArrayOfFloat[3];
-      paramArrayOfFloat[0] = (1.0F - (f1 - 0.02F) * 2.0F);
-      paramArrayOfFloat[1] = ((f2 - 0.02F) * 2.0F - 1.0F);
-      paramArrayOfFloat[2] = (1.0F - 2.0F * (f3 + 0.02F));
-      paramArrayOfFloat[3] = (2.0F * (f4 + 0.02F) - 1.0F);
-      i = 0;
-      label121:
-      if (i >= 4) {
-        break label175;
-      }
-      if (paramArrayOfFloat[i] <= 1.0F) {
-        break label156;
-      }
-      paramArrayOfFloat[i] = 1.0F;
-    }
-    for (;;)
-    {
+      bgmg.d(a(arrayOfString[i]));
       i += 1;
-      break label121;
-      i = 1;
-      break;
-      label156:
-      if (paramArrayOfFloat[i] < -1.0F) {
-        paramArrayOfFloat[i] = -1.0F;
-      }
-    }
-    label175:
-    int j = (int)(paramArrayOfFloat[0] * 0.5F * paramInt2);
-    int k = (int)(paramArrayOfFloat[2] * 0.5F * paramInt2);
-    int i = (int)(paramArrayOfFloat[1] * 0.5F * paramInt1);
-    int m = (int)(paramArrayOfFloat[3] * 0.5F * paramInt1);
-    int n = Math.abs(m - i);
-    int i1 = Math.abs(k - j);
-    if (i < m) {
-      if (j <= k) {
-        break label322;
-      }
-    }
-    for (;;)
-    {
-      paramInt1 = (int)(i + paramInt1 * 0.5F);
-      paramInt2 = (int)(paramInt2 * 0.5F - j);
-      paramArrayOfFloat = new Rect();
-      paramArrayOfFloat.left = paramInt1;
-      paramArrayOfFloat.top = paramInt2;
-      paramArrayOfFloat.right = (paramInt1 + n);
-      paramArrayOfFloat.bottom = (paramInt2 + i1);
-      return paramArrayOfFloat;
-      i = m;
-      break;
-      label322:
-      j = k;
     }
   }
   
-  public List<aned> a(int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean)
+  public static void a(int paramInt, long paramLong1, long paramLong2) {}
+  
+  public static void a(int paramInt, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      return null;
-    }
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    ArrayList localArrayList;
-    if (paramInt2 > paramInt3)
-    {
-      this.jdField_a_of_type_Float = (paramInt3 / paramInt2);
-      Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_Float, 1.0F, 1.0F);
-      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, 180.0F, 1.0F, 0.0F, 0.0F);
-      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, -90.0F, 0.0F, 0.0F, 1.0F);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.setUserTextureId(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-      GLES31.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-      GLES31.glClear(16384);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt1, null, this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-      GLES20.glFlush();
-      localArrayList = new ArrayList();
-    }
+    boolean bool = true;
+    label161:
     for (;;)
     {
-      Object localObject2;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      try
       {
-        if (this.jdField_a_of_type_Long != 0L)
+        QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("onDownloadFinish, type: %s, isSuccess: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) }));
+        if (paramInt == 0)
         {
-          RecogProxy.QCodeProcess(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, 0);
-          j = RecogProxy.getBoxCnt(this.jdField_a_of_type_Long);
-          int i = j;
-          if (j < 2) {
-            break label680;
-          }
-          i = 2;
-          break label680;
-          if (j < i)
+          jdField_a_of_type_Aufa.a(paramBoolean, false);
+          if ((jdField_b_of_type_Aufa.a()) && (jdField_a_of_type_Aufa.a()))
           {
-            localObject2 = new float[5];
-            Object tmp207_205 = localObject2;
-            tmp207_205[0] = 0.0F;
-            Object tmp211_207 = tmp207_205;
-            tmp211_207[1] = 0.0F;
-            Object tmp215_211 = tmp211_207;
-            tmp215_211[2] = 0.0F;
-            Object tmp219_215 = tmp215_211;
-            tmp219_215[3] = 0.0F;
-            Object tmp223_219 = tmp219_215;
-            tmp223_219[4] = 0.0F;
-            tmp223_219;
-            int k = RecogProxy.getBox(this.jdField_a_of_type_Long, j, (float[])localObject2);
-            int m = RecogProxy.getBoxType(this.jdField_a_of_type_Long, j);
-            if ((k < 0) || (m < 0))
-            {
-              j += 1;
-              continue;
-              this.jdField_a_of_type_Float = (paramInt2 / paramInt3);
-              Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, 1.0F, this.jdField_a_of_type_Float, 1.0F);
-              break;
+            if ((!jdField_b_of_type_Aufa.jdField_a_of_type_Boolean) || (!jdField_a_of_type_Aufa.jdField_a_of_type_Boolean)) {
+              break label161;
             }
-            if (QLog.isDevelopLevel()) {
-              QLog.i("MiniRecog.recog", 2, String.format("debug_minicode_point=[%f,%f,%f,%f,%f,%d]", new Object[] { Float.valueOf(localObject2[0]), Float.valueOf(localObject2[1]), Float.valueOf(localObject2[2]), Float.valueOf(localObject2[3]), Float.valueOf(localObject2[4]), Integer.valueOf(m) }));
-            }
-            Rect localRect = a(paramInt2, paramInt3, (float[])localObject2);
-            aned localaned = new aned();
-            localaned.jdField_a_of_type_AndroidGraphicsRect.set(localRect);
-            localaned.jdField_a_of_type_Int = m;
-            localaned.jdField_a_of_type_Float = localObject2[4];
-            localArrayList.add(localaned);
+            paramBoolean = bool;
+            long l = Math.max(aufa.a(jdField_b_of_type_Aufa), aufa.a(jdField_a_of_type_Aufa));
+            a(paramBoolean, aufa.a(jdField_a_of_type_Aufa), aufa.a(jdField_b_of_type_Aufa));
+            aufs.a(paramBoolean, l, aufa.a(jdField_a_of_type_Aufa), aufa.a(jdField_b_of_type_Aufa));
           }
         }
-      }
-      if (paramBoolean)
-      {
-        Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-        if (paramInt2 <= paramInt3) {
-          break label658;
+        else
+        {
+          if (paramInt != 1) {
+            continue;
+          }
+          jdField_b_of_type_Aufa.a(paramBoolean, false);
+          continue;
         }
-        Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_Float, 1.0F, 1.0F);
+        paramBoolean = false;
+      }
+      finally {}
+    }
+  }
+  
+  private static void a(aufb paramaufb)
+  {
+    if (paramaufb != null) {}
+    try
+    {
+      if (!jdField_a_of_type_JavaUtilArrayList.contains(paramaufb)) {
+        jdField_a_of_type_JavaUtilArrayList.add(paramaufb);
+      }
+      return;
+    }
+    finally
+    {
+      paramaufb = finally;
+      throw paramaufb;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, aufb paramaufb)
+  {
+    boolean bool1 = true;
+    for (;;)
+    {
+      boolean bool2;
+      boolean bool3;
+      try
+      {
+        bool2 = a(paramQQAppInterface);
+        bool3 = b(paramQQAppInterface);
+        a(paramaufb);
+        StringBuilder localStringBuilder = new StringBuilder().append("install isEngineReady:").append(bool2).append(" isAppReady:").append(bool3).append(" installCallback:");
+        if (paramaufb != null)
+        {
+          QLog.i("QFlutter.QFlutterDownloadManager", 1, bool1);
+          if ((bool2) && (bool3)) {
+            a(true, true, true);
+          }
+        }
+        else
+        {
+          bool1 = false;
+          continue;
+        }
+        if (jdField_a_of_type_Boolean)
+        {
+          QLog.d("QFlutter.QFlutterDownloadManager", 1, "install, is downloading...");
+          continue;
+        }
+        jdField_a_of_type_Boolean = true;
+      }
+      finally {}
+      paramQQAppInterface = (arno)paramQQAppInterface.getManager(77);
+      if (!bool2)
+      {
+        jdField_a_of_type_Aufa.a();
+        ((auey)paramQQAppInterface.a("qq.android.flutter.engine.v8.3.9")).a(true);
       }
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.setUserTextureId(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-        GLES31.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-        GLES31.glClear(16384);
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt1, null, this.jdField_a_of_type_ArrayOfFloat);
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-        GLES20.glFlush();
-        try
-        {
-          ??? = auev.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Aufa.jdField_c_of_type_Int, this.jdField_a_of_type_Aufa.jdField_b_of_type_Int);
-          localObject2 = new SimpleDateFormat("MM-dd HH:mm:ss", BaseApplicationImpl.getContext().getResources().getConfiguration().locale);
-          localObject2 = paramLong + "-" + ((SimpleDateFormat)localObject2).format(new Date(paramLong));
-          auew.a((Bitmap)???, (String)localObject2);
-          if (QLog.isColorLevel()) {
-            QLog.i("MiniRecog.recog", 2, String.format("debug_minicode_validBmpData %s", new Object[] { localObject2 }));
-          }
-          label655:
-          return localList;
-          label658:
-          Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, 1.0F, this.jdField_a_of_type_Float, 1.0F);
+        if (bool3) {
+          break label194;
         }
-        catch (Throwable localThrowable)
-        {
-          break label655;
-        }
+        jdField_b_of_type_Aufa.a();
+        ((auex)paramQQAppInterface.a("qq.android.flutter.app.v8.3.9")).a(true);
+        break;
+        jdField_a_of_type_Aufa.a(true, true);
       }
-      label680:
-      int j = 0;
+      label194:
+      jdField_a_of_type_Aufa.a(true, true);
     }
   }
   
-  public void a()
+  private static void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
-    }
-    if (this.jdField_a_of_type_Int >= 0)
+    for (;;)
     {
-      axuq.b(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = -1;
+      int i;
+      try
+      {
+        QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("notifyResult, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean1) }));
+        i = 0;
+        if (i < jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          aufb localaufb = (aufb)jdField_a_of_type_JavaUtilArrayList.get(i);
+          if (paramBoolean1) {
+            localaufb.a(true, a(), paramBoolean2, paramBoolean3);
+          } else {
+            localaufb.a(false, null, paramBoolean2, paramBoolean3);
+          }
+        }
+      }
+      finally {}
+      jdField_a_of_type_JavaUtilArrayList.clear();
+      jdField_a_of_type_Boolean = false;
+      return;
+      i += 1;
     }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+  }
+  
+  private static boolean a(arnz paramarnz)
+  {
+    if (paramarnz == null) {
+      return false;
     }
-    if (this.jdField_a_of_type_Long != 0L)
+    paramarnz = paramarnz.a();
+    if (paramarnz == null)
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "isEarlyDownloadConfigReady, data == null");
+      return false;
+    }
+    if ((TextUtils.isEmpty(paramarnz.strPkgName)) || (TextUtils.isEmpty(paramarnz.strResURL_big)))
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("isEarlyDownloadConfigReady, strPkgName: %s, strResURL_big: %s", new Object[] { paramarnz.strPkgName, paramarnz.strResURL_big }));
+      return false;
+    }
+    return true;
+  }
+  
+  private static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    paramQQAppInterface = (auey)((arno)paramQQAppInterface.getManager(77)).a("qq.android.flutter.engine.v8.3.9");
+    boolean bool2 = a(paramQQAppInterface);
+    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (a((QFlutterEngineData)paramQQAppInterface.a()))) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.recog", 2, String.format("RecogProxy.QCodeDestroy native_handler=0x%x", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
+        QLog.d("QFlutter.QFlutterDownloadManager", 2, String.format("isEngineConfigReady : %s, isEngineInstalled: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
       }
-      RecogProxy.QCodeDestroy(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Long = 0L;
+      return bool1;
     }
   }
   
-  public boolean a()
+  private static boolean a(QFlutterAppData paramQFlutterAppData)
   {
-    return this.jdField_a_of_type_Long != 0L;
+    if (paramQFlutterAppData == null)
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkAppFiles, engineData == null");
+      return false;
+    }
+    Object localObject1 = new HashMap();
+    ((HashMap)localObject1).put(a("libapp.so"), paramQFlutterAppData.libAppSoMD5);
+    ((HashMap)localObject1).put(a("libqflutter-resource-loader.so"), paramQFlutterAppData.libSkinSoMD5);
+    ((HashMap)localObject1).put(a("res.apk"), paramQFlutterAppData.assetResMD5);
+    paramQFlutterAppData = ((HashMap)localObject1).entrySet().iterator();
+    Object localObject2;
+    boolean bool;
+    if (paramQFlutterAppData.hasNext())
+    {
+      localObject2 = (Map.Entry)paramQFlutterAppData.next();
+      localObject1 = (String)((Map.Entry)localObject2).getKey();
+      if (!atwl.a((String)localObject1))
+      {
+        QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("checkAppFiles, %s is not exist", new Object[] { localObject1 }));
+        bool = false;
+      }
+    }
+    for (;;)
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkAppFiles result: " + bool);
+      return bool;
+      String str = azby.a((String)localObject1);
+      localObject2 = (String)((Map.Entry)localObject2).getValue();
+      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equalsIgnoreCase(str))) {
+        break;
+      }
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("checkAppFiles, %s md5 check fail, md5: %s fileMD5: %s", new Object[] { localObject1, localObject2, str }));
+      bool = false;
+      continue;
+      bool = true;
+    }
+  }
+  
+  private static boolean a(QFlutterEngineData paramQFlutterEngineData)
+  {
+    if (paramQFlutterEngineData == null)
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkEngineFiles, engineData == null");
+      return false;
+    }
+    Object localObject = new File(a(), "libflutter.so");
+    if (!((File)localObject).exists())
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkEngineFiles, libEngineFile is not exist");
+      return false;
+    }
+    localObject = azby.a(((File)localObject).getAbsolutePath());
+    if ((TextUtils.isEmpty(paramQFlutterEngineData.libEngineSoMD5)) || (!paramQFlutterEngineData.libEngineSoMD5.equalsIgnoreCase((String)localObject)))
+    {
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("checkEngineFiles, libEngineFile md5 check fail, md5: %s fileMD5: %s", new Object[] { paramQFlutterEngineData.libEngineSoMD5, localObject }));
+      return false;
+    }
+    QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkEngineFiles success");
+    return true;
+  }
+  
+  public static boolean a(String paramString, QFlutterAppData paramQFlutterAppData)
+  {
+    try
+    {
+      a();
+      bgmg.a(paramString, a(), false);
+      if (!a(paramQFlutterAppData))
+      {
+        QLog.d("QFlutter.QFlutterDownloadManager", 1, "installApp check failed, srcPath: " + paramString);
+        a();
+        return false;
+      }
+    }
+    catch (IOException paramQFlutterAppData)
+    {
+      paramQFlutterAppData.printStackTrace();
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "uncompressZip fail: " + paramString);
+      a();
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString, QFlutterEngineData paramQFlutterEngineData)
+  {
+    try
+    {
+      b();
+      bgmg.a(paramString, a(), false);
+      if (!a(paramQFlutterEngineData))
+      {
+        QLog.d("QFlutter.QFlutterDownloadManager", 1, "installEngine check failed, srcPath: " + paramString);
+        b();
+        return false;
+      }
+    }
+    catch (IOException paramQFlutterEngineData)
+    {
+      paramQFlutterEngineData.printStackTrace();
+      QLog.d("QFlutter.QFlutterDownloadManager", 1, "uncompressZip fail: " + paramString);
+      b();
+      return false;
+    }
+    return true;
+  }
+  
+  private static void b()
+  {
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      bgmg.d(a(arrayOfString[i]));
+      i += 1;
+    }
+  }
+  
+  private static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    paramQQAppInterface = (auex)((arno)paramQQAppInterface.getManager(77)).a("qq.android.flutter.app.v8.3.9");
+    boolean bool2 = a(paramQQAppInterface);
+    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (a((QFlutterAppData)paramQQAppInterface.a()))) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QFlutter.QFlutterDownloadManager", 2, String.format("isAppConfigReady: %s, isAppInstalled: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
+      }
+      return bool1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auez
  * JD-Core Version:    0.7.0.1
  */

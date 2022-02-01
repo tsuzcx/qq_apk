@@ -1,30 +1,13 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import cooperation.qzone.panorama.widget.PanoramaView;
 
 public class bmce
-  implements URLDrawable.URLDrawableListener
+  implements bmbl
 {
-  private final WeakReference<TextView> a;
+  public bmce(PanoramaView paramPanoramaView) {}
   
-  public bmce(TextView paramTextView)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.a = new WeakReference(paramTextView);
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = (TextView)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setVisibility(8);
-    }
+    this.a.a(paramFloat1, paramFloat2);
   }
 }
 

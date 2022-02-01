@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import com.tencent.image.URLDrawable.DownloadListener;
 
 public class qle
+  implements URLDrawable.DownloadListener
 {
-  public int a;
-  public long a;
-  public MessageRecord a;
-  public String a = "";
-  public long b;
-  public String b = "";
-  public String c = "";
+  public qle(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    aaua localaaua = new aaua(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842690));
+    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localaaua, 0, 1, 17);
+    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qle
  * JD-Core Version:    0.7.0.1
  */

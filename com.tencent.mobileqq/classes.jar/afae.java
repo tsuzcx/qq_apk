@@ -1,25 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class afae
   implements DialogInterface.OnClickListener
 {
-  public afae(DoodlePanel paramDoodlePanel) {}
+  public afae(RegisterActivity paramRegisterActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    if (DoodlePanel.a(this.a) != null) {
-      DoodlePanel.a(this.a).a(false, false);
-    }
-    DoodlePanel.a(this.a);
+    this.a.a = 0;
+    this.a.finish();
   }
 }
 

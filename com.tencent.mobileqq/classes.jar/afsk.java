@@ -1,17 +1,17 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class afsk
-  extends afuf
+public class afsk
+  extends anyu
 {
-  afsk(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afsk(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a()
   {
-    return new afxe(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
+    }
+    ActivateFriendActivity.b(this.a);
   }
 }
 

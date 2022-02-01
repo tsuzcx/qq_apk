@@ -1,30 +1,39 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbjn
-  extends ClickableSpan
+class bbjn
+  implements View.OnClickListener
 {
-  public bbjn(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt) {}
+  bbjn(bbjm parambbjm, String paramString, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, 2002, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.t);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.getVisibility() == 0)) {}
-    for (int i = 2;; i = 1)
+    Object localObject = this.jdField_a_of_type_Bbjm.a.getActivity();
+    if ((this.jdField_a_of_type_Bbjm.a.getActivity() instanceof bbjl))
     {
-      azqs.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_add_topic", i, 0, "", "", "", "");
-      return;
+      localObject = (bbjl)localObject;
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      bbrf.a(null, new ReportModelDC02528().module("all_search").action("clk_frame_up").ver1(this.jdField_a_of_type_JavaLangString).ver2("kandian").ver3(UniteSearchActivity.d).ver4(this.jdField_a_of_type_Bbjm.a.jdField_a_of_type_JavaLangString).ver5(this.jdField_a_of_type_Int / 2 + 1 + "").ver6(UniteSearchActivity.c).session_id(UniteSearchActivity.e));
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
+    for (;;)
+    {
+      if (localObject != null) {
+        ((bbjl)localObject).c(this.jdField_a_of_type_JavaLangString);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (AssociateSearchWordsFragment.a(this.jdField_a_of_type_Bbjm.a) != null) {
+        localObject = AssociateSearchWordsFragment.a(this.jdField_a_of_type_Bbjm.a);
+      } else {
+        localObject = null;
+      }
+    }
   }
 }
 

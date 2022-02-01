@@ -1,34 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.17.1;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLog;
 import com.tencent.qphone.base.util.QLog;
 
-public class avkh
-  implements antz
+class avkh
+  implements CustomizedLog
 {
-  public avkh(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  avkh(avju paramavju) {}
   
-  public void a(String paramString, int paramInt)
+  public void onFlushLogs() {}
+  
+  public void onLog(int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDownloadUpdate  url:" + paramString + "   progress:" + paramInt);
-    }
+    QLog.i(paramString1, 1, paramString2);
   }
   
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (!this.a.p)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
-    }
-    this.a.runOnUiThread(new NearbyPeopleProfileActivity.17.1(this, paramString, paramBoolean1));
-  }
+  public void onUploadLogs() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avkh
  * JD-Core Version:    0.7.0.1
  */

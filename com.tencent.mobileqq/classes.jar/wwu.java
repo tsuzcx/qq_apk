@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.HashMap;
 
-class wwu
-  implements View.OnClickListener
+public class wwu
+  extends weu
 {
-  wwu(wws paramwws) {}
+  public HashMap<String, String[]> a;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if (wws.a(this.a) != null) {
-      wws.a(this.a).T_();
-    }
+    return "InteractionInfoChangeEvent{iconMap=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wwu
  * JD-Core Version:    0.7.0.1
  */

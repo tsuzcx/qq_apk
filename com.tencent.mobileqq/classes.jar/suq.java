@@ -1,24 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.qphone.base.util.QLog;
 
-class suq
-  implements Animation.AnimationListener
+public class suq
+  implements DialogInterface.OnClickListener
 {
-  suq(suk paramsuk) {}
+  public suq(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(suk.a(this.a));
-    this.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog remain cancel");
+    }
+    paramDialogInterface = pmh.a().a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.b();
+    }
+    pmh.a().b(41695);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     suq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import aial;
+import ajqz;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -10,26 +10,26 @@ import mqq.os.MqqHandler;
 public class ChatHistoryMediaBaseFragment$1$1
   implements Runnable
 {
-  public ChatHistoryMediaBaseFragment$1$1(aial paramaial, List paramList) {}
+  public ChatHistoryMediaBaseFragment$1$1(ajqz paramajqz, List paramList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.jdField_a_of_type_Aial.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+      this.jdField_a_of_type_Ajqz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aial.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(2);
+      this.jdField_a_of_type_Ajqz.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(2);
       return;
       if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        this.jdField_a_of_type_Aial.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaUtilList, false);
+        this.jdField_a_of_type_Ajqz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaUtilList, false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

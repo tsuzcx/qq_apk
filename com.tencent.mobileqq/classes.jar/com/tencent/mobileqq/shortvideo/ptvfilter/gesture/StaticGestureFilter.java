@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.PointF;
 import android.opengl.GLES20;
 import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.openrender.UniformParam.Float2fParam;
 import com.tencent.aekit.openrender.UniformParam.IntParam;
 import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
 import com.tencent.aekit.openrender.UniformParam.TextureParam;
@@ -203,6 +204,8 @@ public class StaticGestureFilter
     addParam(new UniformParam.IntParam("texNeedTransform", -1));
     addParam(new UniformParam.IntParam("blendMode", this.item.blendMode));
     addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
+    addParam(new UniformParam.Float2fParam("displacement", 0.0F, 0.0F));
+    addParam(new UniformParam.IntParam("displacementEnableLut", 0));
   }
   
   public String printControllerInfo()
@@ -302,7 +305,7 @@ public class StaticGestureFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.gesture.StaticGestureFilter
  * JD-Core Version:    0.7.0.1
  */

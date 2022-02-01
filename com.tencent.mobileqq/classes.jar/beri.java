@@ -1,42 +1,35 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class beri
-  extends ImageSpan
+class beri
+  extends anxg
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  beri(berf paramberf) {}
   
-  public beri(Drawable paramDrawable, int paramInt)
+  protected void a(int paramInt1, int paramInt2)
   {
-    super(paramDrawable, paramInt);
+    QLog.e("TroopCreateLogic", 1, "onTroopManagerFailed, result = " + paramInt2);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Anxg);
+    if (this.a.jdField_a_of_type_Bero != null)
+    {
+      if (paramInt1 == 8) {
+        this.a.jdField_a_of_type_Bero.b(paramInt2, "");
+      }
+      this.a.jdField_a_of_type_Bero = null;
+    }
   }
   
-  public beri a(float paramFloat)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    return this;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = getDrawable();
-    paramCanvas.save();
-    paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom;
-    paramInt1 = paramInt2;
-    if (this.mVerticalAlignment == 1) {
-      paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Anxg);
+    if (paramInt1 == 8)
+    {
+      if (this.a.jdField_a_of_type_Bero != null) {
+        this.a.jdField_a_of_type_Bero.b(0, paramString);
+      }
+      this.a.a(paramString, true, "");
+      ((anwd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(Long.parseLong(paramString));
     }
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Float != 0.0F)) {
-      this.jdField_a_of_type_Int = ((int)((paramInt5 - paramInt3) * this.jdField_a_of_type_Float));
-    }
-    paramCanvas.translate(paramFloat, paramInt1 + this.jdField_a_of_type_Int);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
   }
 }
 

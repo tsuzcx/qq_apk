@@ -1,33 +1,33 @@
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
+import com.tencent.qphone.base.util.QLog;
+
 public class azip
+  extends RecyclerView.OnScrollListener
 {
-  static int jdField_a_of_type_Int = 3;
-  int[] jdField_a_of_type_ArrayOfInt;
-  int b;
-  int c;
+  public azip(StickyNoteShopLayout paramStickyNoteShopLayout) {}
   
-  public azip(String paramString, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.c = paramInt;
-    paramString = paramString.split(" ");
-    if (paramString.length != 2) {
-      throw new Exception("data illegal");
-    }
-    if (paramString[1].equals("1")) {}
-    for (this.b = 1;; this.b = 0)
+    if (paramInt == 0)
     {
-      paramString = paramString[0].toCharArray();
-      this.jdField_a_of_type_ArrayOfInt = new int[paramString.length];
-      paramInt = i;
-      while (paramInt < paramString.length)
+      paramRecyclerView = StickyNoteShopLayout.a(this.a).getLayoutManager();
+      int i = 0;
+      if ((paramRecyclerView instanceof StaggeredGridLayoutManager))
       {
-        this.jdField_a_of_type_ArrayOfInt[paramInt] = (Integer.valueOf(paramString[paramInt]).intValue() - Integer.valueOf(48).intValue());
-        paramInt += 1;
+        int[] arrayOfInt = new int[((StaggeredGridLayoutManager)paramRecyclerView).getSpanCount()];
+        arrayOfInt = ((StaggeredGridLayoutManager)paramRecyclerView).findLastVisibleItemPositions(arrayOfInt);
+        i = StickyNoteShopLayout.a(this.a, arrayOfInt);
       }
-      if (!paramString[1].equals("0")) {
-        break;
+      if ((paramRecyclerView.getChildCount() > 0) && (i >= paramRecyclerView.getItemCount() - 1))
+      {
+        this.a.a(true);
+        QLog.d("StickyNoteShopLayout", 2, " load more shop data newState:" + paramInt + " lastVisiblePosition:" + i);
       }
     }
-    throw new Exception("data illegal");
   }
 }
 

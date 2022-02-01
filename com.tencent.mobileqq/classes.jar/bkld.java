@@ -1,6 +1,6 @@
 public abstract interface bkld
 {
-  public abstract void a(bkkl parambkkl, boolean paramBoolean, int paramInt, String paramString);
+  public abstract void a();
 }
 
 

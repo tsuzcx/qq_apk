@@ -1,12 +1,20 @@
-import android.view.MotionEvent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public abstract interface bhxe
+class bhxe
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  bhxe(bhxb parambhxb) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    bhxb.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidateSelf();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhxe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import oxb;
-import pfi;
+import pmk;
+import pwn;
 
 public class ChannelInfoModule$10
   implements Runnable
 {
-  public ChannelInfoModule$10(pfi parampfi, int paramInt) {}
+  public ChannelInfoModule$10(pwn parampwn, int paramInt) {}
   
   public void run()
   {
-    oxb.a().e(this.a);
+    pmk.a().f(this.a);
   }
 }
 

@@ -1,6 +1,21 @@
-public abstract interface apuy
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
+
+public class apuy
+  extends AnimatorListenerAdapter
 {
-  public abstract void a();
+  public apuy(SelectCoverActivity paramSelectCoverActivity) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.a = null;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = null;
+  }
 }
 
 

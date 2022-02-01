@@ -1,67 +1,57 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.hlyyb.downloader.Downloader;
+import com.tencent.hlyyb.downloader.DownloaderTask;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class bddb
+class bddb
+  implements bdcz
 {
-  private static int a = -1;
+  bddb(bdda parambdda) {}
   
-  public static void a(boolean paramBoolean)
+  public void a(DownloaderTask paramDownloaderTask)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      a = i;
-      if (QLog.isColorLevel()) {
-        QLog.d("NoDisturbUtil", 2, new Object[] { "setMuteStat:", Integer.valueOf(a) });
-      }
-      return;
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskCompleted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSavePath() }));
+    if (bdda.a(this.a) != null) {
+      bdda.a(this.a).deleteTask(paramDownloaderTask, false);
     }
+    if ((bdda.a(this.a) != null) && (bdda.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (bdda.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((bdcy)bdda.a(this.a).get(paramDownloaderTask.getUrl())).a();
+    }
+    bdda.a(this.a, paramDownloaderTask.getUrl());
   }
   
-  public static boolean a(Context paramContext, AppInterface paramAppInterface)
+  public void b(DownloaderTask paramDownloaderTask)
   {
-    return (!FriendsStatusUtil.a(paramContext)) || ((!paramAppInterface.isBackground_Pause) && (bdds.a(BaseApplicationImpl.sApplication)));
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskDetected url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
   }
   
-  public static boolean b(Context paramContext, AppInterface paramAppInterface)
+  public void c(DownloaderTask paramDownloaderTask)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    aonh localaonh = (aonh)aoks.a().a(528);
-    boolean bool1 = bool3;
-    if ((paramAppInterface instanceof QQAppInterface))
-    {
-      bool1 = bool3;
-      if (localaonh != null)
-      {
-        bool1 = bool3;
-        if (localaonh.a == 1)
-        {
-          if (a != -1) {
-            break label87;
-          }
-          bool1 = SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), null, "qqsetting_qrlogin_set_mute", false);
-          if (!bool1) {
-            break label82;
-          }
-        }
-      }
+    QLog.e("DownloadManager_Now_for_qq", 1, String.format("onTaskFailed url=%s failCode=%s failInfo=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getFailCode()), paramDownloaderTask.getFailInfo() }));
+    if (bdda.a(this.a) != null) {
+      bdda.a(this.a).deleteTask(paramDownloaderTask, false);
     }
-    label82:
-    for (int i = 1;; i = 0)
-    {
-      a = i;
-      return bool1;
+    if ((bdda.a(this.a) != null) && (bdda.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (bdda.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((bdcy)bdda.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getFailCode(), paramDownloaderTask.getFailCode(), "failed");
     }
-    label87:
-    if (a == 1) {}
-    for (bool1 = bool2;; bool1 = false) {
-      return bool1;
+    bdda.a(this.a, paramDownloaderTask.getUrl());
+  }
+  
+  public void d(DownloaderTask paramDownloaderTask)
+  {
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskPending url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
+  }
+  
+  public void e(DownloaderTask paramDownloaderTask)
+  {
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskStarted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
+  }
+  
+  public void f(DownloaderTask paramDownloaderTask)
+  {
+    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskReceived url=%s percent=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getPercentage()) }));
+    if ((bdda.a(this.a) != null) && (bdda.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (bdda.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((bdcy)bdda.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getReceivedLength(), paramDownloaderTask.getTotalLength(), paramDownloaderTask.getPercentage());
     }
   }
 }

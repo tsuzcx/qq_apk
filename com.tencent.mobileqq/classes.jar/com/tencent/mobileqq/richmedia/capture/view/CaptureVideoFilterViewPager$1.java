@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import axom;
-import axrc;
+import bamn;
+import bapd;
 import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -14,7 +14,7 @@ public class CaptureVideoFilterViewPager$1
   public void run()
   {
     this.this$0.setVisibility(0);
-    List localList = axom.a().b();
+    List localList = bamn.a().b();
     this.this$0.a.clear();
     int i = 0;
     if (i < localList.size())
@@ -34,7 +34,7 @@ public class CaptureVideoFilterViewPager$1
       }
     }
     CaptureVideoFilterViewPager.a(this.this$0).a();
-    if (axom.a().a() == null) {
+    if (bamn.a().a() == null) {
       this.this$0.setCurrentItem(CaptureVideoFilterViewPager.a(this.this$0).a() * 50, false);
     }
     if (QLog.isColorLevel()) {
@@ -44,7 +44,7 @@ public class CaptureVideoFilterViewPager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager.1
  * JD-Core Version:    0.7.0.1
  */

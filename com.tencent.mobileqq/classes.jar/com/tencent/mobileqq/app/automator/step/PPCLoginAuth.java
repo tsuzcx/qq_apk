@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import alyb;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import anqz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -17,7 +17,7 @@ public class PPCLoginAuth
     long l = localSharedPreferences.getLong("lastPPCLoginAuthTime", 0L);
     if (System.currentTimeMillis() - l > 86400000L)
     {
-      ((alyb)this.a.app.a(58)).b();
+      ((anqz)this.a.app.a(58)).b();
       localSharedPreferences.edit().putLong("lastPPCLoginAuthTime", System.currentTimeMillis()).commit();
     }
     return 7;

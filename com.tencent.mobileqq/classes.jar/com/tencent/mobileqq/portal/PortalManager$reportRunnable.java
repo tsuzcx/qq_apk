@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.SparseArrayCompat;
-import bhsk;
+import bkfu;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -49,7 +49,7 @@ public class PortalManager$reportRunnable
     if (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
     {
       localObject1 = new ArrayList(100);
-      localObject2 = new bhsk(60);
+      localObject2 = new bkfu(60);
       int m = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(i);
       Object localObject3 = ((ArrayList)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(m)).iterator();
       while (((Iterator)localObject3).hasNext())
@@ -59,22 +59,22 @@ public class PortalManager$reportRunnable
         for (j = 1000;; j = 60000)
         {
           l = localLong.longValue() / j * j;
-          if (((bhsk)localObject2).a(l) == null) {
+          if (((bkfu)localObject2).a(l) == null) {
             break label171;
           }
-          ((bhsk)localObject2).a(l, Integer.valueOf(((Integer)((bhsk)localObject2).a(l)).intValue() + 1));
+          ((bkfu)localObject2).a(l, Integer.valueOf(((Integer)((bkfu)localObject2).a(l)).intValue() + 1));
           break;
         }
-        ((bhsk)localObject2).a(l, Integer.valueOf(1));
+        ((bkfu)localObject2).a(l, Integer.valueOf(1));
       }
       k = 0;
       j = 0;
-      while (k < ((bhsk)localObject2).a())
+      while (k < ((bkfu)localObject2).a())
       {
         localObject3 = new RedPacketServlet.BrashReportItem();
-        l = ((bhsk)localObject2).a(k);
+        l = ((bkfu)localObject2).a(k);
         ((RedPacketServlet.BrashReportItem)localObject3).time = l;
-        ((RedPacketServlet.BrashReportItem)localObject3).count = ((int)((Integer)((bhsk)localObject2).a(l)).intValue());
+        ((RedPacketServlet.BrashReportItem)localObject3).count = ((int)((Integer)((bkfu)localObject2).a(l)).intValue());
         ((ArrayList)localObject1).add(localObject3);
         j += ((RedPacketServlet.BrashReportItem)localObject3).count;
         k += 1;
@@ -151,7 +151,7 @@ public class PortalManager$reportRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.reportRunnable
  * JD-Core Version:    0.7.0.1
  */

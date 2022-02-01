@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.redtouch;
 
-import bkgp;
-import bkgq;
+import bmvi;
+import bmvj;
 
 class RedTouchLifeTimeManager$1
   implements Runnable
 {
-  RedTouchLifeTimeManager$1(RedTouchLifeTimeManager paramRedTouchLifeTimeManager, bkgq parambkgq) {}
+  RedTouchLifeTimeManager$1(RedTouchLifeTimeManager paramRedTouchLifeTimeManager, bmvj parambmvj) {}
   
   public void run()
   {
-    bkgp.a().a(this.a);
+    bmvi.a().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchLifeTimeManager.1
  * JD-Core Version:    0.7.0.1
  */

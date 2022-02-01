@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import tencent.im.msg.im_msg_body.RichText;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class rla
-  implements awkh
+public class rla
+  implements View.OnClickListener
 {
-  rla(rky paramrky) {}
+  public rla(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onClick(View paramView)
   {
-    return null;
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(awki paramawki) {}
-  
-  public void b(awki paramawki) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rla
  * JD-Core Version:    0.7.0.1
  */

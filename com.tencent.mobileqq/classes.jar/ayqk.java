@@ -1,12 +1,17 @@
-import android.view.View;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.onlinestatus.auto.OnlineStatusSmartDisplayInfo.1.1;
 
 public class ayqk
-  implements ayqp<aypd, ayxk>
+  implements ayqf
 {
-  public void a(aypd paramaypd, ayxk paramayxk)
+  ayqk(ayqj paramayqj) {}
+  
+  public void a(int paramInt)
   {
-    paramayxk.a(paramaypd);
-    paramayxk.a().setOnClickListener(new ayql(this, paramaypd));
+    if ((ayqj.a(this.a)) && (ayqj.a(this.a) != null)) {
+      ThreadManagerV2.getUIHandlerV2().post(new OnlineStatusSmartDisplayInfo.1.1(this, paramInt));
+    }
   }
 }
 

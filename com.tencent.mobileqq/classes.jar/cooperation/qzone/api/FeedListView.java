@@ -4,39 +4,45 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import bjhk;
-import bjhl;
-import bjhm;
+import blvq;
+import blvr;
+import blvs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XListView;
+import java.util.Collections;
+import java.util.Map;
 
 public class FeedListView
   extends XListView
 {
+  protected Map<String, String> a;
   private boolean a;
   
   public FeedListView(Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_JavaUtilMap = Collections.emptyMap();
   }
   
   public FeedListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_JavaUtilMap = Collections.emptyMap();
   }
   
   public FeedListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_JavaUtilMap = Collections.emptyMap();
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(bjhm parambjhm) {}
+  public void a(blvs paramblvs) {}
   
   public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, long paramLong) {}
   
-  public boolean a(String paramString, bjhm parambjhm)
+  public boolean a(String paramString, blvs paramblvs)
   {
     return false;
   }
@@ -50,7 +56,7 @@ public class FeedListView
   
   public boolean f()
   {
-    return this.a;
+    return this.jdField_a_of_type_Boolean;
   }
   
   public void g() {}
@@ -63,20 +69,32 @@ public class FeedListView
   
   public void m() {}
   
-  public void q_() {}
+  public void setExpandHead(blvq paramblvq) {}
   
-  public void setExpandHead(bjhk parambjhk) {}
+  public void setExtArgs(Map<String, String> paramMap)
+  {
+    if ((paramMap == null) || (paramMap.isEmpty()))
+    {
+      if (!this.jdField_a_of_type_JavaUtilMap.isEmpty()) {
+        this.jdField_a_of_type_JavaUtilMap.clear();
+      }
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+  }
   
-  public void setFeedUinChangedListener(bjhl parambjhl) {}
+  public void setFeedUinChangedListener(blvr paramblvr) {}
   
   public void setLongClickValid(boolean paramBoolean)
   {
-    this.a = paramBoolean;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
+  
+  public void u_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.api.FeedListView
  * JD-Core Version:    0.7.0.1
  */

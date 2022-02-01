@@ -1,43 +1,57 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class advy
-  extends RecyclerView.Adapter<advz>
+  extends anqd
 {
-  advw jdField_a_of_type_Advw;
+  public advy(ChatSettingActivity paramChatSettingActivity) {}
   
-  public advy(ScoreQAVFragment paramScoreQAVFragment) {}
-  
-  public advz a(ViewGroup paramViewGroup, int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    return new advz(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559627, paramViewGroup, false), this.jdField_a_of_type_Advw);
-  }
-  
-  public void a(advw paramadvw)
-  {
-    this.jdField_a_of_type_Advw = paramadvw;
-  }
-  
-  public void a(advz paramadvz, int paramInt)
-  {
-    paramadvz.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt))
-    {
-      paramadvz.a.setSelected(true);
+    if (!ChatSettingActivity.c(this.a)) {
       return;
     }
-    paramadvz.a.setSelected(false);
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.g(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "onInsertIntoBlackList, isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.a(this.a, true);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "onInsertIntoBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
+      }
+      ChatSettingActivity.b(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131718045, 1);
   }
   
-  public int getItemCount()
+  protected void b(boolean paramBoolean, String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
+    if (!ChatSettingActivity.c(this.a)) {
+      return;
+    }
+    ChatSettingActivity.c(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "onRemoveFromBlackList, isSuccess=" + paramBoolean);
+    }
+    ChatSettingActivity.g(this.a);
+    if (paramBoolean)
+    {
+      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.a(this.a, false);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "onRemoveFromBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
+      }
+      ChatSettingActivity.b(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131718045, 1);
   }
 }
 

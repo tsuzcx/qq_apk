@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class aefr
-  implements View.OnClickListener
+  implements Comparator<RecentUser>
 {
-  public aefr(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aefr(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(View paramView)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    this.a.a.setText("");
+    return (int)(paramRecentUser2.showUpTime - paramRecentUser1.showUpTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aefr
  * JD-Core Version:    0.7.0.1
  */

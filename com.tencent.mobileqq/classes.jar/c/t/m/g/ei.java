@@ -1,183 +1,155 @@
 package c.t.m.g;
 
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.Handler;
-import com.tencent.map.geolocation.TencentDirectionListener;
+import android.location.Location;
+import java.util.LinkedList;
 
 public final class ei
-  implements SensorEventListener
 {
-  private static volatile ei h;
-  public volatile boolean a = false;
-  private SensorManager b;
-  private final boolean c;
-  private boolean d;
-  private double e;
-  private int f;
-  private TencentDirectionListener g;
+  private static ei a = new ei();
+  private int b = ei.a.a;
+  private LinkedList<eu> c = new LinkedList();
   
-  private ei(Context paramContext)
+  public static ei a()
   {
-    try
-    {
-      this.b = ((SensorManager)paramContext.getSystemService("sensor"));
-      label22:
-      if (this.b != null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.c = bool;
-        return;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      break label22;
-    }
+    return a;
   }
   
-  public static ei a(Context paramContext)
+  public final int a(eu parameu)
   {
-    if (h == null) {
-      h = new ei(paramContext);
-    }
-    return h;
-  }
-  
-  public final int a(Handler paramHandler, TencentDirectionListener paramTencentDirectionListener)
-  {
-    int i = 3;
-    if (!this.c) {
-      i = 2;
-    }
-    for (;;)
+    if (parameu != null)
     {
-      return i;
-      Object localObject1;
-      if (!this.d) {
-        localObject1 = null;
-      }
       try
       {
-        localObject2 = this.b.getDefaultSensor(11);
-        localObject1 = localObject2;
-      }
-      catch (Throwable localThrowable)
-      {
-        Object localObject2;
-        label38:
-        break label38;
-      }
-      localObject2 = localObject1;
-      if (localObject1 == null) {}
-      try
-      {
-        localObject2 = this.b.getDefaultSensor(3);
-        if (localObject2 == null) {
-          continue;
+        while (this.c.size() > 9) {
+          this.c.remove(0);
         }
-        this.b.registerListener(this, (Sensor)localObject2, 3, paramHandler);
-        this.g = paramTencentDirectionListener;
-        this.d = true;
-        return 0;
-      }
-      catch (Throwable paramHandler)
-      {
-        return 3;
-      }
-    }
-  }
-  
-  public final void a()
-  {
-    try
-    {
-      if (!this.c) {
-        return;
-      }
-      if (this.d)
-      {
-        this.d = false;
-        this.e = (0.0D / 0.0D);
-        this.b.unregisterListener(this);
-        return;
-      }
-    }
-    catch (Exception localException) {}
-  }
-  
-  public final double b()
-  {
-    if (this.d) {
-      try
-      {
-        double d1 = this.e;
-        return d1;
+        if (this.c.size() <= 0) {
+          break label136;
+        }
       }
       finally {}
-    }
-    return (0.0D / 0.0D);
-  }
-  
-  public final void onAccuracyChanged(Sensor paramSensor, int paramInt)
-  {
-    try
-    {
-      if ((paramSensor.getType() == 11) || (paramSensor.getType() == 3)) {
-        this.f = paramInt;
+      for (;;)
+      {
+        localeu = (eu)this.c.getFirst();
+        long l1 = parameu.b;
+        long l2 = localeu.b;
+        double d = fp.a(localeu.a.getLatitude(), localeu.a.getLongitude(), parameu.a.getLatitude(), parameu.a.getLongitude());
+        if ((l1 - l2 <= 180000L) || (d <= 500.0D)) {
+          break;
+        }
+        this.c.remove(0);
       }
-      return;
+      label136:
+      eu localeu = new eu(parameu);
+      this.c.add(localeu);
+      parameu.a.getSpeed();
     }
-    catch (Throwable paramSensor) {}
+    int i = this.c.size();
+    return i;
   }
   
-  public final void onSensorChanged(SensorEvent paramSensorEvent)
+  public final long b()
   {
-    try
+    for (;;)
     {
       double d1;
-      if (paramSensorEvent.sensor.getType() == 11)
+      long l;
+      double d2;
+      try
       {
-        float[] arrayOfFloat1 = new float[16];
-        float[] arrayOfFloat2 = new float[3];
-        SensorManager.getRotationMatrixFromVector(arrayOfFloat1, paramSensorEvent.values);
-        SensorManager.getOrientation(arrayOfFloat1, arrayOfFloat2);
-        d1 = arrayOfFloat2[0];
-        d1 = d1 * 180.0D / 3.1415926D;
-        try
+        int j;
+        int i;
+        eu localeu2;
+        if (this.c.size() < 2)
         {
-          this.e = d1;
-          if (this.g != null) {
-            this.g.onDirectionChanged(this.e, this.f);
+          d1 = 0.0D;
+          if (this.c.size() < 2) {
+            continue;
           }
-          return;
+          j = this.c.size();
+          l = 0L;
+          d2 = 0.0D;
+          i = 1;
+          if (i < j)
+          {
+            localeu1 = (eu)this.c.get(i);
+            localeu2 = (eu)this.c.get(i - 1);
+            double d3 = fp.a(localeu2.a.getLatitude(), localeu2.a.getLongitude(), localeu1.a.getLatitude(), localeu1.a.getLongitude());
+            l = localeu1.b - localeu2.b + l;
+            d2 += d3;
+            i += 1;
+            continue;
+          }
         }
-        finally {}
+        else
+        {
+          i = this.c.size() - 1;
+          localeu1 = (eu)this.c.get(i);
+          localeu2 = (eu)this.c.get(i - 1);
+          if (localeu1.b == localeu2.b) {
+            break label515;
+          }
+          l = localeu1.b - localeu2.b;
+          d1 = fp.a(localeu2.a.getLatitude(), localeu2.a.getLongitude(), localeu1.a.getLatitude(), localeu1.a.getLongitude()) / l * 1000.0D;
+          continue;
+        }
+        if (l > 0L)
+        {
+          d2 = 1000.0D * (d2 / l);
+          if ((el.b() != null) && (this.c.size() > 0)) {
+            el.b().a(2, d2, d1, ((eu)this.c.getLast()).b);
+          }
+          if (this.c.size() < 2)
+          {
+            l = 0L;
+            i = this.c.size();
+            if (i >= 2) {
+              continue;
+            }
+            this.b = ei.a.a;
+            i = this.b;
+            j = ei.a.c;
+            if (i != j) {
+              break label507;
+            }
+            l = 90000L;
+            return l;
+          }
+        }
+        else
+        {
+          d2 = 0.0D;
+          continue;
+        }
+        eu localeu1 = (eu)this.c.getFirst();
+        l = ((eu)this.c.getLast()).b - localeu1.b;
+        continue;
+        if ((i > 6) && (d1 < 3.0D) && (d2 < 6.0D))
+        {
+          this.b = ei.a.c;
+          continue;
+        }
+        if (l <= 60000L) {
+          break label497;
+        }
       }
-      if (paramSensorEvent.sensor.getType() == 3)
+      finally {}
+      if ((d1 < 3.0D) && (d2 < 3.0D))
       {
-        float f2 = paramSensorEvent.values[0] - 360.0F;
-        float f1 = f2;
-        if (f2 <= -180.0F) {
-          f1 = f2 + 360.0F;
-        }
-        d1 = f1;
-        try
-        {
-          this.e = d1;
-          if (this.g != null) {
-            this.g.onDirectionChanged(this.e, this.f);
-          }
-          return;
-        }
-        finally {}
+        this.b = ei.a.c;
       }
-      return;
+      else
+      {
+        label497:
+        this.b = ei.a.b;
+        continue;
+        label507:
+        l = 30000L;
+        continue;
+        label515:
+        l = 500L;
+      }
     }
-    catch (Throwable paramSensorEvent) {}
   }
 }
 

@@ -1,18 +1,18 @@
-import java.util.Comparator;
-
 class akke
-  implements Comparator<avun>
+  implements bigw
 {
-  akke(akkd paramakkd) {}
+  akke(akkc paramakkc, Runnable paramRunnable) {}
   
-  public int a(avun paramavun1, avun paramavun2)
+  public void a(int paramInt)
   {
-    return (int)(paramavun2.a - paramavun1.a);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akke
  * JD-Core Version:    0.7.0.1
  */

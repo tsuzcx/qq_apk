@@ -1,39 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adnz
-  extends asim
+  implements View.OnClickListener
 {
-  public adnz(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public adnz(AuthDevActivity paramAuthDevActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
-      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
-    }
-    while (!paramBoolean) {
-      return;
-    }
-    ProfileCardMoreActivity.a(this.a);
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
-      QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
-    }
-    while (!paramBoolean1) {
-      return;
-    }
-    ProfileCardMoreActivity.a(this.a);
+    AuthDevActivity.h(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

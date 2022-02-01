@@ -1,18 +1,36 @@
 package com.tencent.biz.pubaccount;
 
-import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
-import java.util.ArrayList;
-import ntb;
-import ntc;
+import android.text.TextUtils;
+import bmqa;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import ocf;
+import ocg;
+import qnf;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
 
 public class VideoPlayRecommendHandler$3
   implements Runnable
 {
-  public VideoPlayRecommendHandler$3(ntb paramntb, ntc paramntc, long paramLong1, VideoInfo paramVideoInfo, int paramInt1, ArrayList paramArrayList1, String paramString1, long paramLong2, boolean paramBoolean, int paramInt2, String paramString2, String paramString3, WeishiRedDotInfo paramWeishiRedDotInfo, int paramInt3, String paramString4, byte[] paramArrayOfByte, int paramInt4, int paramInt5, ArrayList paramArrayList2) {}
+  public VideoPlayRecommendHandler$3(ocf paramocf, long paramLong, int paramInt, String paramString, ocg paramocg, VideoInfo paramVideoInfo) {}
   
   public void run()
   {
-    ntb.a(this.this$0, this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructWeishiRedDotInfo, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, null, 0, 0, this.jdField_d_of_type_Int, this.e, this.jdField_b_of_type_JavaUtilArrayList);
+    Object localObject = new oidb_0x6cf.ReqBody();
+    ((oidb_0x6cf.ReqBody)localObject).uint64_uin.set(this.jdField_a_of_type_Long);
+    ((oidb_0x6cf.ReqBody)localObject).uint32_req_source.set(this.jdField_a_of_type_Int);
+    ((oidb_0x6cf.ReqBody)localObject).uint32_req_sub_source.set(6);
+    ((oidb_0x6cf.ReqBody)localObject).uint32_req_sim_type.set(bmqa.b());
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      ((oidb_0x6cf.ReqBody)localObject).bytes_req_range_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    }
+    localObject = qnf.a("OidbSvc.0x6cf", 1743, 3, ((oidb_0x6cf.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).addAttribute("VALUE_OBSERVER_TAG", Integer.valueOf(this.jdField_a_of_type_Ocg.hashCode()));
+    ((ToServiceMsg)localObject).addAttribute("VALUE_REQUEST_VIDEO_ARTICLE_ID", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g);
+    this.this$0.sendPbReq((ToServiceMsg)localObject);
   }
 }
 

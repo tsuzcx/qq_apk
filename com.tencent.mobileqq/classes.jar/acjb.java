@@ -1,22 +1,60 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.widget.XPanelContainer;
-import mqq.app.QQPermissionCallback;
+import com.tencent.ad.tangram.canvas.download.AdCanvasDownloadListenerAdapter;
+import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class acjb
-  implements QQPermissionCallback
+  implements AdCanvasDownloadListenerAdapter
 {
-  public acjb(BaseChatPie paramBaseChatPie) {}
+  private List<IAdDownloader.Callback> a = new CopyOnWriteArrayList();
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public IAdDownloader.Callback getDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
   {
-    bdgm.b(this.a.a());
+    if ((this.a != null) && (this.a.size() > 0))
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
+        if (((localCallback instanceof acja)) && (((acja)localCallback).a() == paramAdAppDownloadManager)) {
+          return localCallback;
+        }
+      }
+    }
+    return null;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void removeDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
   {
-    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(4);
-    aggx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8004079", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if ((this.a == null) || (paramAdAppDownloadManager == null)) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
+        if ((localCallback instanceof acja))
+        {
+          AdAppDownloadManager localAdAppDownloadManager = ((acja)localCallback).a();
+          if ((localAdAppDownloadManager != null) && (localAdAppDownloadManager == paramAdAppDownloadManager)) {
+            this.a.remove(localCallback);
+          }
+        }
+      }
+    }
+  }
+  
+  public void setDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  {
+    if ((this.a != null) && (paramAdAppDownloadManager != null))
+    {
+      acja localacja = new acja();
+      localacja.a(paramAdAppDownloadManager);
+      this.a.add(localacja);
+    }
   }
 }
 

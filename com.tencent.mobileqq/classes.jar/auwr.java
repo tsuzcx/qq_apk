@@ -1,33 +1,41 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.Random;
+import java.lang.reflect.Array;
 
 public class auwr
-  extends ayyb
 {
-  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  static auwr[][] a;
+  public int a;
+  public int b;
   
-  public auwr(NearbyAppInterface paramNearbyAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
-    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+    jdField_a_of_type_Array2dOfAuwr = (auwr[][])Array.newInstance(auwr.class, new int[] { 3, 3 });
+    int i = 0;
+    while (i < 3)
+    {
+      int j = 0;
+      while (j < 3)
+      {
+        jdField_a_of_type_Array2dOfAuwr[i][j] = new auwr(i, j);
+        j += 1;
+      }
+      i += 1;
+    }
   }
   
-  public AppInterface a()
+  private auwr(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+    a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  protected void a()
+  public static auwr a(int paramInt1, int paramInt2)
   {
     try
     {
-      super.a();
-      super.a(new ayzi(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface));
-      super.d();
-      return;
+      a(paramInt1, paramInt2);
+      auwr localauwr = jdField_a_of_type_Array2dOfAuwr[paramInt1][paramInt2];
+      return localauwr;
     }
     finally
     {
@@ -36,14 +44,34 @@ public class auwr
     }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg)
+  private static void a(int paramInt1, int paramInt2)
   {
-    super.b(paramToServiceMsg, null, auws.class);
+    if ((paramInt1 < 0) || (paramInt1 > 2)) {
+      throw new IllegalArgumentException("row must be in range 0-2");
+    }
+    if ((paramInt2 < 0) || (paramInt2 > 2)) {
+      throw new IllegalArgumentException("column must be in range 0-2");
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return "(row=" + this.jdField_a_of_type_Int + ",clmn=" + this.b + ")";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auwr
  * JD-Core Version:    0.7.0.1
  */

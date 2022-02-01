@@ -1,22 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class aeck
-  implements bcwg
+  implements View.OnTouchListener
 {
-  public aeck(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
+  public aeck(DiscussionMemberActivity paramDiscussionMemberActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean)
-    {
-      this.a.a = bcwe.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getContext(), TroopClassChoiceActivity.a(this.a));
-      this.a.runOnUiThread(new TroopClassChoiceActivity.GetClassChoiceCallBack.1(this));
-      return;
-    }
-    QLog.e("IphoneTitleBarActivity", 1, "getClassChoiceFromServer failed!");
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

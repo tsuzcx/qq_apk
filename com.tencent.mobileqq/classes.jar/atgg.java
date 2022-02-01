@@ -1,16 +1,29 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherVCtrlFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class atgg
-  implements DialogInterface.OnDismissListener
+class atgg
+  extends atfi
 {
-  public atgg(WatchTogetherVCtrlFragment paramWatchTogetherVCtrlFragment, Activity paramActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public atgg(atfe paramatfe)
   {
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    super(paramatfe);
+  }
+  
+  protected String a()
+  {
+    return "StateSenderCancelSendWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atfe.b(this.jdField_a_of_type_Atfe, 11, 8);
+    atfe.c(this.jdField_a_of_type_Atfe, 11, 8);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atfe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atfi.a() + "->StateSenderCancelSend)");
+    this.jdField_a_of_type_Atfi = new atgf(this.jdField_a_of_type_Atfe);
   }
 }
 

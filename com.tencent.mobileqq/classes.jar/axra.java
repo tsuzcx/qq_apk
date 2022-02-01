@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
-public abstract interface axra
+public final class axra
+  implements Parcelable.Creator<PicInfo>
 {
-  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
+  public PicInfo a(Parcel paramParcel)
+  {
+    return new PicInfo(paramParcel);
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public PicInfo[] a(int paramInt)
+  {
+    return new PicInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axra
  * JD-Core Version:    0.7.0.1
  */

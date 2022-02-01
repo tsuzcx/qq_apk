@@ -1,23 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.CameraFocusView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
+import com.tencent.qphone.base.util.QLog;
 
-public class bncp
-  implements ValueAnimator.AnimatorUpdateListener
+class bncp
+  extends bana
 {
-  public bncp(SlideBottomPanel paramSlideBottomPanel, View paramView, int paramInt) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bncp(bnco parambnco, CameraFocusView paramCameraFocusView)
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
+    super(paramCameraFocusView);
+  }
+  
+  protected void a(CameraCaptureView paramCameraCaptureView, float paramFloat1, float paramFloat2)
+  {
+    super.a(paramCameraCaptureView, paramFloat1, paramFloat2 - paramCameraCaptureView.getTop());
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a != null) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / this.jdField_a_of_type_Int);
-      }
+      QLog.d("GLGestureListener", 2, "event : (" + paramMotionEvent.getX() + "," + paramMotionEvent.getY() + ")");
+      QLog.d("GLGestureListener", 2, "view : (" + bnco.a(this.a).getLeft() + "," + bnco.a(this.a).getRight() + "," + bnco.a(this.a).getTop() + "," + bnco.a(this.a).getBottom() + ")");
     }
+    if ((paramMotionEvent.getX() > bnco.a(this.a).getRight() / 2) || (paramMotionEvent.getY() < bnco.a(this.a).getTop()) || (paramMotionEvent.getY() > bnco.a(this.a).getBottom()))
+    {
+      QLog.d("GLGestureListener", 2, "touch out");
+      return false;
+    }
+    QLog.d("GLGestureListener", 2, "touch in");
+    return super.onTouchEvent(paramMotionEvent, paramBoolean);
   }
 }
 

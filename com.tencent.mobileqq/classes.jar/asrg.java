@@ -1,30 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.Date;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
-class asrg
+public class asrg
+  extends BroadcastReceiver
 {
-  static asrg jdField_a_of_type_Asrg = new asrg(false, new Date(0L), new Date(0L));
-  final Date jdField_a_of_type_JavaUtilDate;
-  final boolean jdField_a_of_type_Boolean;
-  final Date b;
+  public asrg(FMActivity paramFMActivity) {}
   
-  asrg(boolean paramBoolean, @NonNull Date paramDate1, @NonNull Date paramDate2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilDate = paramDate1;
-    this.b = paramDate2;
-  }
-  
-  private boolean b()
-  {
-    long l = NetConnInfoCenter.getServerTime() * 1000L;
-    return (this.jdField_a_of_type_JavaUtilDate.getTime() <= l) && (this.b.getTime() >= l);
-  }
-  
-  boolean a()
-  {
-    return (b()) && (this.jdField_a_of_type_Boolean);
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
   }
 }
 

@@ -1,45 +1,35 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import android.util.Property;
-import android.widget.ImageView;
-
-final class ykx
-  extends Property<ImageView, Matrix>
+public class ykx
 {
-  ykx(Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public static ThreadLocal<StringBuilder> a = new yky();
   
-  public Matrix a(ImageView paramImageView)
+  public static String a(Object... paramVarArgs)
   {
-    return null;
-  }
-  
-  public void a(ImageView paramImageView, Matrix paramMatrix)
-  {
-    Drawable localDrawable = paramImageView.getDrawable();
-    if (localDrawable == null) {
-      return;
-    }
-    if (paramMatrix == null) {
-      localDrawable.setBounds(0, 0, paramImageView.getWidth(), paramImageView.getHeight());
-    }
-    for (;;)
+    StringBuilder localStringBuilder = (StringBuilder)a.get();
+    if (paramVarArgs.length > 0)
     {
-      paramImageView.invalidate();
-      return;
-      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      if (paramImageView.getImageMatrix() == null) {
-        paramImageView.setImageMatrix(new Matrix());
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        if (localObject != null) {
+          localStringBuilder.append(localObject.toString());
+        }
+        i += 1;
       }
-      paramImageView.setImageMatrix(paramMatrix);
     }
+    return "";
+    paramVarArgs = localStringBuilder.toString();
+    if (localStringBuilder.length() > 512) {
+      a.set(new StringBuilder(512));
+    }
+    localStringBuilder.setLength(0);
+    return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ykx
  * JD-Core Version:    0.7.0.1
  */

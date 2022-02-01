@@ -1,6 +1,16 @@
-public abstract interface afbx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+
+public class afbx
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public afbx(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a(this.a.b);
+  }
 }
 
 

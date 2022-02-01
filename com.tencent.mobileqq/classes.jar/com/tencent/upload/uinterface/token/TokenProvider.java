@@ -15,7 +15,7 @@ public class TokenProvider
   {
     paramArrayOfByte1 = getInstance().getEncryptTokenData(paramArrayOfByte1);
     int i = getInstance().getTokenEncTye();
-    AuthToken localAuthToken = new AuthToken(i, paramArrayOfByte1, paramArrayOfByte2, UploadGlobalConfig.getConfig().getAppId());
+    AuthToken localAuthToken = new AuthToken(i, paramArrayOfByte1, paramArrayOfByte2, UploadGlobalConfig.getConfig().getAppId(), UploadGlobalConfig.getConfig().getWtAppId());
     StringBuilder localStringBuilder = new StringBuilder().append(" vLoginData.size: ");
     if (paramArrayOfByte1 == null) {}
     for (paramArrayOfByte1 = "null";; paramArrayOfByte1 = Integer.valueOf(paramArrayOfByte1.length))
@@ -62,7 +62,7 @@ public class TokenProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.uinterface.token.TokenProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,95 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.view.MotionEvent;
 import android.widget.TextView;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbdq
-  extends bbdr
-  implements View.OnClickListener
+  extends LinkMovementMethod
 {
-  public View a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bbei a;
+  private static bbdq jdField_a_of_type_Bbdq;
+  bbdo jdField_a_of_type_Bbdo;
+  boolean jdField_a_of_type_Boolean;
   
-  public bbdq(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
+  public static MovementMethod a()
   {
-    super(paramTribeVideoListPlayerFragment, paramView);
+    if (jdField_a_of_type_Bbdq == null) {
+      jdField_a_of_type_Bbdq = new bbdq();
+    }
+    return jdField_a_of_type_Bbdq;
   }
   
-  public void onClick(View paramView)
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    switch (paramView.getId())
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0) || (i == 3))
     {
-    default: 
-      return;
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      Object localObject = paramTextView.getLayout();
+      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
+      localObject = (bbdo[])paramSpannable.getSpans(j, j, bbdo.class);
+      if (QLog.isColorLevel()) {
+        QLog.i("StateColorMovementMethod", 2, String.format("onTouch action[%d] links=[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(localObject.length) }));
+      }
+      if (localObject.length != 0)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        paramSpannable = localObject[0];
+        if (i == 1)
+        {
+          if (this.jdField_a_of_type_Bbdo != null)
+          {
+            this.jdField_a_of_type_Bbdo.a(paramTextView, false);
+            this.jdField_a_of_type_Bbdo = null;
+          }
+          paramSpannable.onClick(paramTextView);
+        }
+        for (;;)
+        {
+          return true;
+          if (i == 0)
+          {
+            paramSpannable.a(paramTextView, true);
+            this.jdField_a_of_type_Bbdo = paramSpannable;
+          }
+          else if ((i == 3) && (this.jdField_a_of_type_Bbdo != null))
+          {
+            this.jdField_a_of_type_Bbdo.a(paramTextView, false);
+            this.jdField_a_of_type_Bbdo = null;
+          }
+        }
+      }
+      if (i != 1) {
+        break label312;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        paramTextView.performClick();
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_Bbei);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bbdo != null)
+      {
+        this.jdField_a_of_type_Bbdo.a(paramTextView, false);
+        this.jdField_a_of_type_Bbdo = null;
+      }
+      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+      label312:
+      if (i == 0) {
+        this.jdField_a_of_type_Boolean = true;
+      } else if (i == 3) {
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
   }
 }
 

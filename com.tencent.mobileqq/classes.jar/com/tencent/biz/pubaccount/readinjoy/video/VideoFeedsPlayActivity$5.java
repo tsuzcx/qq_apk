@@ -2,9 +2,9 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import nrt;
-import rom;
-import ron;
+import oat;
+import skb;
+import skc;
 
 class VideoFeedsPlayActivity$5
   implements Runnable
@@ -16,20 +16,20 @@ class VideoFeedsPlayActivity$5
     int i = 3;
     VideoFeedsPlayActivity.a(this.this$0).a();
     Object localObject = VideoFeedsPlayActivity.a(this.this$0).a();
-    ron localron1 = new ron((VideoInfo)localObject);
-    ron localron2;
+    skc localskc1 = new skc((VideoInfo)localObject);
+    skc localskc2;
     if (localObject != null)
     {
       localObject = ((VideoInfo)localObject).g;
-      localron2 = localron1.a("icon_position", Integer.valueOf(3));
+      localskc2 = localskc1.a("icon_position", Integer.valueOf(3));
       if (!VideoFeedsPlayActivity.b(this.this$0)) {
         break label111;
       }
     }
     for (;;)
     {
-      localron2.a("icon_status", Integer.valueOf(i)).h((String)localObject);
-      nrt.a(null, "", "0X800ABBB", "0X800ABBB", 0, 0, "", "", (String)localObject, localron1.a().a(), false);
+      localskc2.a("icon_status", Integer.valueOf(i)).h((String)localObject);
+      oat.a(null, "", "0X800ABBB", "0X800ABBB", 0, 0, "", "", (String)localObject, localskc1.a().a(), false);
       return;
       localObject = "";
       break;

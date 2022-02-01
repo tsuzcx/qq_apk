@@ -1,74 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class aoov
-  extends aokh<aoou>
+public final class aoov
+  implements Handler.Callback
 {
-  public static aoou a()
+  public boolean handleMessage(Message paramMessage)
   {
-    return (aoou)aoks.a().a(572);
-  }
-  
-  public int a()
-  {
-    return 572;
-  }
-  
-  @NonNull
-  public aoou a(int paramInt)
-  {
-    return new aoou();
-  }
-  
-  @Nullable
-  public aoou a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    switch (paramMessage.what)
     {
-      new aoou();
-      return aoou.a(paramArrayOfaoko);
     }
-    return null;
-  }
-  
-  public Class<aoou> a()
-  {
-    return aoou.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoou paramaoou)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NotificationBannerConfProcessor", 2, "onUpdate " + paramaoou.toString());
+    for (;;)
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.i("SOSO.LBS", 2, "msg_stop_location.");
+      }
+      SosoInterface.c();
+      SosoInterface.d();
+      continue;
+      if (SosoInterface.a().hasMessages(1001))
+      {
+        SosoInterface.a().removeMessages(1001);
+        SosoInterface.a().sendEmptyMessageDelayed(1001, 3000L);
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoov
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,33 @@
-class xtf
-  extends xtb
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+
+public class xtf
+  extends wfr<xsw, wmr>
 {
-  xtf(xtc paramxtc, xtk paramxtk) {}
-  
-  public void onFailure(String paramString)
+  public xtf(xsw paramxsw)
   {
-    wxe.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
-    this.jdField_a_of_type_Xtk.onFailure(paramString);
+    super(paramxsw);
   }
   
-  public void onSuccess(String paramString)
+  public void a(@NonNull xsw paramxsw, @NonNull wmr paramwmr)
   {
-    wxe.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
+    if ((paramxsw.a != null) && (TextUtils.equals(paramxsw.a.b, paramwmr.a)))
+    {
+      yqp.a(this.TAG, "receive feed info change event. %s.", paramwmr.toString());
+      paramxsw.i();
+    }
   }
+  
+  public Class acceptEventClass()
+  {
+    return wmr.class;
+  }
+  
+  public void b(@NonNull xsw paramxsw, @NonNull wmr paramwmr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xtf
  * JD-Core Version:    0.7.0.1
  */

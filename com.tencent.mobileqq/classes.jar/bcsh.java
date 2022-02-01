@@ -1,10 +1,29 @@
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
+import com.tencent.widget.XEditTextEx;
 
-class bcsh
+public class bcsh
+  implements DialogInterface.OnClickListener
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public bcsh(LocalCrashCollector.3 param3) {}
   
-  bcsh(bcsg parambcsg) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      LocalCrashCollector.a(this.a.this$0).a.setText("");
+      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
+  }
 }
 
 

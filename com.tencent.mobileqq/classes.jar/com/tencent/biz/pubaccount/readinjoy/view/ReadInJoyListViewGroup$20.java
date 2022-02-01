@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import owy;
+import pmh;
 
 class ReadInJoyListViewGroup$20
   implements Runnable
@@ -9,12 +9,12 @@ class ReadInJoyListViewGroup$20
   
   public void run()
   {
-    owy.a().a(this.this$0.getContext());
+    pmh.a().a(this.this$0.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.20
  * JD-Core Version:    0.7.0.1
  */

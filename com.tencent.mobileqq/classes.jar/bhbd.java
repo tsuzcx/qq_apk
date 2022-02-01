@@ -1,16 +1,21 @@
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
-final class bhbd
-  implements Comparator<byte[]>
+public class bhbd
 {
-  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static int a(int paramInt)
   {
-    return paramArrayOfByte1.length - paramArrayOfByte2.length;
+    int i = paramInt;
+    if (paramInt < 0)
+    {
+      QLog.e("Q.qqhead.VasFaceManager", 1, "unknown DynamicSource", new RuntimeException("DynamicFaceDrawable don't have " + paramInt));
+      i = 7;
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhbd
  * JD-Core Version:    0.7.0.1
  */

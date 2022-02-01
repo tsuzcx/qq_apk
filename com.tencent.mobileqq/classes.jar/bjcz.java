@@ -1,34 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.CellInfo;
-
-public final class bjcz
-  implements Parcelable.Creator<LbsDataV2.CellInfo>
+public class bjcz
+  extends bjcx
 {
-  public LbsDataV2.CellInfo a(Parcel paramParcel)
+  private static bjcz jdField_a_of_type_Bjcz;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  
+  public static bjcz a()
   {
-    LbsDataV2.CellInfo localCellInfo = new LbsDataV2.CellInfo();
-    if (paramParcel != null)
+    if (jdField_a_of_type_Bjcz == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      localCellInfo.mcc = paramParcel.readInt();
-      localCellInfo.mnc = paramParcel.readInt();
-      localCellInfo.lac = paramParcel.readInt();
-      localCellInfo.cellId = paramParcel.readInt();
-      localCellInfo.rssi = paramParcel.readInt();
-      localCellInfo.stationLat = paramParcel.readDouble();
-      localCellInfo.stationLon = paramParcel.readDouble();
+      if (jdField_a_of_type_Bjcz == null) {
+        jdField_a_of_type_Bjcz = new bjcz();
+      }
+      return jdField_a_of_type_Bjcz;
     }
-    return localCellInfo;
   }
   
-  public LbsDataV2.CellInfo[] a(int paramInt)
+  public void a()
   {
-    return null;
+    super.a();
+    jdField_a_of_type_Bjcz = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjcz
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,15 @@ package com.tencent.mobileqq.troop.data;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import awge;
-import awhp;
-import awhs;
-import bbtq;
+import beub;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.GiftBagInfo;
 import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.Player;
 
 public class TroopGiftBagInfo
-  extends awge
+  extends Entity
 {
   public int amount;
   public int count;
@@ -28,16 +28,16 @@ public class TroopGiftBagInfo
   public int endFlag;
   public long endTime;
   public String ext;
-  @awhs
+  @unique
   public String giftBagId;
   public String giftName;
   public long giftOwner;
   public String giftUnit;
-  @awhp
-  public bbtq myGrabResult;
+  @notColumn
+  public beub myGrabResult;
   public String myGrabResultData;
-  @awhp
-  public List<bbtq> players;
+  @notColumn
+  public List<beub> players;
   public String playersData;
   public int remainAmount;
   public int remainCount;
@@ -59,8 +59,8 @@ public class TroopGiftBagInfo
     int i = 0;
     while (i < localList.size())
     {
-      bbtq localbbtq = new bbtq((oidb_0x6c2.Player)localList.get(i));
-      this.players.add(localbbtq);
+      beub localbeub = new beub((oidb_0x6c2.Player)localList.get(i));
+      this.players.add(localbeub);
       i += 1;
     }
     this.endFlag = paramGiftBagInfo.int32_end.get();
@@ -74,11 +74,11 @@ public class TroopGiftBagInfo
     this.giftUnit = paramGiftBagInfo.bytes_gift_unit.get().toStringUtf8();
     this.ext = paramGiftBagInfo.bytes_ext.get().toStringUtf8();
     if (paramPlayer != null) {
-      this.myGrabResult = new bbtq(paramPlayer);
+      this.myGrabResult = new beub(paramPlayer);
     }
   }
   
-  private List<bbtq> decodeBagPlayerList(String paramString)
+  private List<beub> decodeBagPlayerList(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       paramString = null;
@@ -99,9 +99,9 @@ public class TroopGiftBagInfo
             break;
           }
           paramString = localJSONArray.get(i);
-          bbtq localbbtq = new bbtq();
-          localbbtq.a(paramString.toString());
-          localArrayList.add(localbbtq);
+          beub localbeub = new beub();
+          localbeub.a(paramString.toString());
+          localArrayList.add(localbeub);
           i += 1;
         }
         return localArrayList;
@@ -131,7 +131,7 @@ public class TroopGiftBagInfo
     this.giftName = paramCursor.getString(paramCursor.getColumnIndex("giftName"));
     this.giftUnit = paramCursor.getString(paramCursor.getColumnIndex("giftUnit"));
     this.ext = paramCursor.getString(paramCursor.getColumnIndex("ext"));
-    this.myGrabResult = new bbtq();
+    this.myGrabResult = new beub();
     String str = paramCursor.getString(paramCursor.getColumnIndex("myGrabResultData"));
     if (!TextUtils.isEmpty(str)) {
       this.myGrabResult.a(str);
@@ -151,7 +151,7 @@ public class TroopGiftBagInfo
     int i = 0;
     while (i < this.players.size())
     {
-      localJSONArray.put(((bbtq)this.players.get(i)).a());
+      localJSONArray.put(((beub)this.players.get(i)).a());
       i += 1;
     }
     this.playersData = localJSONArray.toString();
@@ -162,7 +162,7 @@ public class TroopGiftBagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopGiftBagInfo
  * JD-Core Version:    0.7.0.1
  */

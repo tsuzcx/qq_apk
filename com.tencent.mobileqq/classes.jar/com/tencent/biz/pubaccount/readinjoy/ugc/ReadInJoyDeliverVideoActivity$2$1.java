@@ -4,12 +4,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import qpd;
+import rka;
 
 public class ReadInJoyDeliverVideoActivity$2$1
   implements Runnable
 {
-  public ReadInJoyDeliverVideoActivity$2$1(qpd paramqpd) {}
+  public ReadInJoyDeliverVideoActivity$2$1(rka paramrka) {}
   
   public void run()
   {

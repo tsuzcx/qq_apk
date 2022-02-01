@@ -1,28 +1,78 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class afny
-  implements arsg
+public class afny
+  implements ajer
 {
-  afny(afnq paramafnq, String paramString1, String paramString2, MessageRecord paramMessageRecord, String paramString3, bdzy parambdzy) {}
+  public afny(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
   {
-    paramView = new Bundle();
-    paramView.putString(bdun.i, this.jdField_a_of_type_JavaLangString);
-    paramView.putString(bdun.c, this.b);
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
-      paramView.putString(bdun.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
-    }
-    bdun.a(this.jdField_a_of_type_Afnq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afnq.jdField_a_of_type_AndroidContentContext, paramView);
-    String str = this.c;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {}
-    for (paramView = "0";; paramView = "1")
+    int i;
+    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512)))
     {
-      VasWebviewUtil.reportVipKeywords(str, paramView, "1", this.jdField_a_of_type_Bdzy.a(this.jdField_a_of_type_Afnq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), this.jdField_a_of_type_Afnq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", "", "");
+      i = 1;
+      if (i == 0) {
+        break label126;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.TroopRequestActivity", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
+      }
+      ajeq.a(this.a, paramString);
+      ajeq.a(this.a.app);
+      this.a.i();
+      bcst.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "pay_troop", "", "", "");
+    }
+    label126:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          i = 0;
+          break;
+          if (((this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 11) || (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get() != 3)) && (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 7)) {
+            break label250;
+          }
+        } while (this.a.jdField_a_of_type_Anwd == null);
+        try
+        {
+          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
+          this.a.h();
+          this.a.jdField_a_of_type_Anwd.a(l, 8390784);
+          return;
+        }
+        catch (Exception paramString) {}
+      } while (!QLog.isColorLevel());
+      QLog.i("Q.systemmsg.TroopRequestActivity", 2, paramString.toString());
+      return;
+      this.a.h();
+      TroopRequestActivity.a(this.a, 1);
+    } while (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 2);
+    label250:
+    bcst.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, paramString, "", "0", "0");
+    bcst.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop", "", "", "");
+  }
+  
+  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.i();
+    paramStructMsg = this.a;
+    if (paramInt1 == 72) {}
+    for (paramInt1 = 2131689969;; paramInt1 = 2131689968)
+    {
+      QQToast.a(paramStructMsg, paramInt1, 1).a();
+      bcst.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "err", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.systemmsg.TroopRequestActivity", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
+      }
       return;
     }
   }

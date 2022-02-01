@@ -1,6 +1,37 @@
-public abstract interface aglh
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aglh
+  implements agma
 {
-  public abstract void a();
+  private BaseChatPie a;
+  
+  public aglh(BaseChatPie paramBaseChatPie)
+  {
+    this.a = paramBaseChatPie;
+  }
+  
+  private void a()
+  {
+    if ((this.a != null) && (this.a.a != null)) {
+      ((awxi)this.a.a.getManager(324)).onDestroy();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 13 };
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amir;
+import aoap;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -15,16 +15,16 @@ public class RegisterPush
   public int a()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().e();
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.p();
+    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.q();
     return 2;
   }
   
-  public void a()
+  public void c()
   {
     if (this.b == 13) {}
     for (this.c = 0;; this.c = 10)
     {
-      this.jdField_a_of_type_MqqObserverAccountObserver = new amir(this, null);
+      this.jdField_a_of_type_MqqObserverAccountObserver = new aoap(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
       return;
     }

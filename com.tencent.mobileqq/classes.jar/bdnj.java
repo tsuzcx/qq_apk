@@ -1,45 +1,99 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.Editable.Factory;
+import android.text.SpannableStringBuilder;
 import com.tencent.qphone.base.util.QLog;
 
-class bdnj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class bdnj
+  extends SpannableStringBuilder
 {
-  bdnj(bdni parambdni) {}
+  public static Editable.Factory a;
+  private int a;
   
-  public void onGlobalLayout()
+  static
   {
-    if (!bdni.a(this.a)) {}
+    jdField_a_of_type_AndroidTextEditable$Factory = new bdnk();
+  }
+  
+  public bdnj(CharSequence paramCharSequence, int paramInt)
+  {
+    super(a(paramCharSequence, paramInt));
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private static CharSequence a(CharSequence paramCharSequence, int paramInt)
+  {
+    if ((paramCharSequence instanceof bdnf)) {
+      return ((bdnf)paramCharSequence).a();
+    }
+    return new bdnf(paramCharSequence, paramInt).a();
+  }
+  
+  public SpannableStringBuilder replace(int paramInt1, int paramInt2, CharSequence paramCharSequence, int paramInt3, int paramInt4)
+  {
+    if (paramInt1 < 0) {
+      j = 0;
+    }
     for (;;)
     {
-      return;
-      Object localObject = new Rect();
-      bdni.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
-      int j = bdni.a(this.a) - ((Rect)localObject).height();
-      bdni.a(this.a, ((Rect)localObject).height());
-      if (j > bdni.b(this.a) / 3) {}
-      for (int i = 1; i != 0; i = 0)
+      try
       {
-        bdni.a(this.a, false);
-        if (QLog.isColorLevel()) {
-          QLog.d("SoftKeyboardHeight", 2, new Object[] { "onGlobalLayout, keyboard height:", Integer.valueOf(j) });
+        k = length();
+        if (paramInt2 > k)
+        {
+          paramInt1 = k;
+          paramInt2 = paramInt1;
+          if (paramInt1 < 0) {
+            i = paramInt1;
+          }
         }
-        localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_soft_keyboard", 0);
-        if (((SharedPreferences)localObject).getInt("key_height", 0) != j) {
-          ((SharedPreferences)localObject).edit().putInt("key_height", j).commit();
-        }
-        if (bdni.a(this.a) != null) {
-          bdni.a(this.a).a(j, false);
-        }
-        this.a.a();
-        return;
       }
+      catch (Throwable localThrowable1)
+      {
+        int k;
+        Object localObject;
+        QLog.e("ColorNick.EmoticonBuilder", 1, "QQTextBuilder.replace caused crash..text:" + toString() + ", replace text:" + paramCharSequence + " , " + j + "-" + paramInt2 + " , " + paramInt3 + "-" + paramInt4, localThrowable1);
+        return new SpannableStringBuilder();
+      }
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          break label255;
+        }
+        i = paramInt1;
+        QLog.w("ColorNick.EmoticonBuilder", 2, "selection error, start = " + j + " end = " + paramInt1 + " length = " + k);
+      }
+      catch (Throwable localThrowable2)
+      {
+        paramInt2 = i;
+        continue;
+        continue;
+        paramInt2 = 0;
+        continue;
+      }
+      i = paramInt2;
+      if (paramCharSequence.length() <= 0) {
+        break label252;
+      }
+      i = paramInt2;
+      localObject = new bdnf(paramCharSequence, this.jdField_a_of_type_Int).a();
+      paramCharSequence = (CharSequence)localObject;
+      try
+      {
+        localObject = super.replace(j, paramInt2, paramCharSequence, paramInt3, paramInt4);
+        return localObject;
+      }
+      catch (Throwable localThrowable3)
+      {
+        continue;
+      }
+      j = paramInt1;
+      continue;
+      paramInt1 = paramInt2;
     }
+  }
+  
+  public CharSequence subSequence(int paramInt1, int paramInt2)
+  {
+    return super.subSequence(paramInt1, paramInt2);
   }
 }
 

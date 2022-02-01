@@ -1,39 +1,19 @@
-import android.os.SystemClock;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class aiue
+public class aiue
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private aiud jdField_a_of_type_Aiud;
-  private long b;
+  public aiue(Face2FaceAddContactFragment paramFace2FaceAddContactFragment, Dialog paramDialog) {}
   
-  public aiue(long paramLong)
+  public void onClick(View paramView)
   {
-    a(paramLong);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public final void a()
-  {
-    long l = this.jdField_a_of_type_Long - SystemClock.elapsedRealtime();
-    if (l > 1000L)
-    {
-      b(l);
-      return;
-    }
-    b();
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Aiud != null) {
-      this.jdField_a_of_type_Aiud.a(paramLong);
-    }
-    this.b = paramLong;
-    this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() + 1000L * paramLong);
-  }
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
 }
 
 

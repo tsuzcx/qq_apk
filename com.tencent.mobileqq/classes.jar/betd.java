@@ -1,66 +1,33 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.widget.ProfileCardVideoCoverShowView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public class betd
-  extends BaseAdapter
+class betd
+  implements bkhw
 {
-  public betd(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView) {}
+  betd(besy parambesy, boolean paramBoolean, besl parambesl, bkho parambkho) {}
   
-  public betf a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return (betf)ProfileCardVideoCoverShowView.a(this.a).get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return ProfileCardVideoCoverShowView.a(this.a).size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
+    int i = paramInt;
+    if (!this.jdField_a_of_type_Boolean) {
+      i = paramInt + 1;
+    }
+    switch (i)
     {
-      paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131561164, null, false);
-      paramViewGroup.setTag((ImageView)paramViewGroup.findViewById(2131367921));
-      paramView = new StateListDrawable();
-      paramView.addState(ProfileCardVideoCoverShowView.a(), new ColorDrawable(855638016));
-      paramView.addState(ProfileCardVideoCoverShowView.b(), new ColorDrawable(0));
-      paramViewGroup.findViewById(2131378229).setBackgroundDrawable(paramView);
     }
-    paramView = (ImageView)paramViewGroup.getTag();
-    betf localbetf = a(paramInt);
-    if (TextUtils.isEmpty(localbetf.a)) {
-      paramView.setImageDrawable(null);
-    }
-    while (paramInt == 0)
+    for (;;)
     {
-      paramViewGroup.setPadding(aepi.a(12.0F, this.a.getResources()), 0, 0, 0);
-      return paramViewGroup;
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
-      localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
-      localURLDrawableOptions.mRequestHeight = aepi.a(178.0F, this.a.getResources());
-      localURLDrawableOptions.mRequestWidth = aepi.a(100.0F, this.a.getResources());
-      paramView.setImageDrawable(URLDrawable.getDrawable(localbetf.a, localURLDrawableOptions));
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      TroopFileTransferManager.a(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Besy.jdField_a_of_type_Long).a(this.jdField_a_of_type_Besl.a);
+      bcst.b(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_local", 0, 0, "", this.jdField_a_of_type_Besy.jdField_a_of_type_Long + "", "", "");
+      continue;
+      if (besy.a(this.jdField_a_of_type_Besy) != 0)
+      {
+        bfrm.a(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Besy.jdField_a_of_type_Long).b(this.jdField_a_of_type_Besl);
+        bcst.b(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_share", 0, 0, "", this.jdField_a_of_type_Besy.jdField_a_of_type_Long + "", "", "");
+      }
     }
-    paramViewGroup.setPadding(0, 0, 0, 0);
-    return paramViewGroup;
   }
 }
 

@@ -1,60 +1,59 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
 public class zer
-  extends WebViewPlugin
+  extends zez<zem, zem>
 {
-  public zer()
+  private int a;
+  public WeakReference<Activity> a;
+  
+  public zer(@NonNull Activity paramActivity, int paramInt)
   {
-    this.mPluginNameSpace = "openToAppDetail";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(String paramString1, String paramString2)
+  protected void a(JobContext paramJobContext, zem paramzem)
   {
-    a(paramString1, paramString2, null);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("uin", this.mRuntime.a().getCurrentAccountUin());
-    localBundle.putString("sid", this.mRuntime.a().getIntent().getStringExtra("vkey"));
-    localBundle.putString("via", "ANDROIDQQ.STORE.APPDETAIL.SHARE2QQ");
-    if ((paramString2 != null) && (paramString2.equals("true"))) {
-      localBundle.putBoolean("autoDownload", true);
-    }
-    if (paramString3 != null) {
-      localBundle.putString("packageName", paramString3);
-    }
-    bfir.a(this.mRuntime.a(), paramString1, 2470, localBundle);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"openToAppDetail".equals(paramString2)) {}
-    do
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null)
     {
-      do
-      {
-        return false;
-      } while (!"openAppDetailPage".equals(paramString3));
-      if (paramVarArgs.length == 2)
-      {
-        a(paramVarArgs[0], paramVarArgs[1]);
-        return true;
+      yqp.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
+      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
+      return;
+    }
+    Object localObject = paramzem.jdField_a_of_type_Zeq.jdField_a_of_type_JavaLangString;
+    paramJobContext = (JobContext)localObject;
+    if (!paramzem.jdField_a_of_type_Zeq.jdField_b_of_type_Boolean)
+    {
+      paramJobContext = (JobContext)localObject;
+      if (paramzem.jdField_a_of_type_Zeq.jdField_a_of_type_Boolean) {
+        paramJobContext = paramzem.jdField_a_of_type_Zeq.jdField_b_of_type_JavaLangString;
       }
-    } while (paramVarArgs.length != 3);
-    a(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
-    return true;
+    }
+    localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
+    int i = ((BitmapFactory.Options)localObject).outWidth;
+    int j = ((BitmapFactory.Options)localObject).outHeight;
+    if (this.jdField_a_of_type_Int == 5) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramzem.jdField_a_of_type_Zes = new zes(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
+      paramzem.jdField_a_of_type_JavaLangString = paramJobContext;
+      super.notifyResult(paramzem);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zer
  * JD-Core Version:    0.7.0.1
  */

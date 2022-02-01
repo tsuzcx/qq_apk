@@ -1,28 +1,24 @@
 import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import android.os.Message;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
 public class nfo
-  implements View.OnTouchListener
+  implements mzy
 {
-  int jdField_a_of_type_Int = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = new nfp(this);
+  public nfo(AvGameLoadingActivity paramAvGameLoadingActivity) {}
   
-  public nfo(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(LottieDrawable paramLottieDrawable)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
-    }
-    return false;
+    Message localMessage = Message.obtain();
+    localMessage.what = 6;
+    localMessage.obj = paramLottieDrawable;
+    this.a.a.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nfo
  * JD-Core Version:    0.7.0.1
  */

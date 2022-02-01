@@ -1,111 +1,97 @@
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import mqq.app.AppRuntime;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import java.lang.ref.WeakReference;
+import java.net.URL;
 
 public class biyo
 {
-  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  protected static biyo a;
+  protected static final String a;
+  protected volatile WeakReference<SharedPreferences> a;
+  
+  static
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(biyg.a, 2, "createQQPimRuntime() application == null || processName == null");
-      }
-      return null;
-    }
+    jdField_a_of_type_JavaLangString = biyo.class.getName();
+  }
+  
+  public static biyo a()
+  {
     try
     {
-      Class localClass1 = Class.forName("com.qqpim.application.QQPimPluginRuntime");
-      if (localClass1 != null) {}
+      if (jdField_a_of_type_Biyo == null) {
+        jdField_a_of_type_Biyo = new biyo();
+      }
+      biyo localbiyo = jdField_a_of_type_Biyo;
+      return localbiyo;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    return a(paramString, null);
+  }
+  
+  public String a(String paramString, Bundle paramBundle)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(biyn.a(biip.a().a(), "OpenSettings"));
+    }
+    String str1 = paramString;
+    String str2;
+    SharedPreferences localSharedPreferences;
+    String str3;
+    try
     {
-      for (;;)
+      str2 = new URL(paramString).getHost();
+      if (str2 == null)
       {
-        try
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d(biyg.a, 2, "createQQPimRuntime() cls == null");
-        }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
-        {
-          ClassLoader localClassLoader;
-          paramBaseApplicationImpl.printStackTrace();
-        }
-        localClassNotFoundException = localClassNotFoundException;
-        localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqpim_plugin.apk");
-        Class localClass2 = localClassLoader.loadClass("com.qqpim.application.QQPimPluginRuntime");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-        continue;
-        do
-        {
-          return null;
-          if (QLog.isColorLevel()) {
-            QLog.d(biyg.a, 2, "createQQPimRuntime() 1 ");
-          }
-          paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
-        } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
-        if (QLog.isColorLevel()) {
-          QLog.d(biyg.a, 2, "createQQPimRuntime() succ");
-        }
-        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-        return paramBaseApplicationImpl;
+        str1 = paramString;
+        bisy.e(jdField_a_of_type_JavaLangString, "Get host error. url=" + paramString);
+        return paramString;
+      }
+      str1 = paramString;
+      localSharedPreferences = (SharedPreferences)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      str1 = paramString;
+      if (localSharedPreferences == null) {
+        return str1;
+      }
+      str1 = paramString;
+      str3 = localSharedPreferences.getString(str2, null);
+      if (str3 != null)
+      {
+        str1 = paramString;
+        if (!str2.equals(str3)) {}
+      }
+      else
+      {
+        str1 = paramString;
+        bisy.c(jdField_a_of_type_JavaLangString, "host=" + str2 + ", envHost=" + str3);
+        return paramString;
       }
     }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
+    catch (Exception paramString)
     {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
+      paramString.printStackTrace();
+      bisy.e(jdField_a_of_type_JavaLangString, "getEnvUrl error. url=" + str1);
+      return str1;
     }
-    catch (IllegalAccessException paramBaseApplicationImpl)
+    if (paramBundle != null)
     {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
+      str1 = paramString;
+      paramBundle.putString("env", localSharedPreferences.getString("OpenEnvironment", "formal"));
     }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    return null;
+    str1 = paramString;
+    paramString = paramString.replace(str2, str3);
+    str1 = paramString;
+    bisy.c(jdField_a_of_type_JavaLangString, "return environment url : " + paramString);
+    str1 = paramString;
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biyo
  * JD-Core Version:    0.7.0.1
  */

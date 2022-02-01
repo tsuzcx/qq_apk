@@ -1,49 +1,70 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Map;
 
-public class mty
+class mty
 {
-  public static String a()
+  private Map<String, mtz> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  
+  public mty(String[] paramArrayOfString)
   {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    if (paramArrayOfString != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("GAudioSoundUtil", 2, "[sound_early] getFilesDir is null");
+      int j = paramArrayOfString.length;
+      int i = 0;
+      if (i < j)
+      {
+        String str = paramArrayOfString[i];
+        if ("DEVICE_BLUETOOTHHEADSET".equals(str)) {
+          this.jdField_a_of_type_JavaUtilMap.put(str, new mtz(this, 2130842232, anni.a(2131713725), str));
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if ("DEVICE_EARPHONE".equals(str)) {
+            this.jdField_a_of_type_JavaUtilMap.put(str, new mtz(this, 2130842234, anni.a(2131713726), str));
+          } else if ("DEVICE_SPEAKERPHONE".equals(str)) {
+            this.jdField_a_of_type_JavaUtilMap.put(str, new mtz(this, 2130842237, anni.a(2131713729), str));
+          } else if ("DEVICE_WIREDHEADSET".equals(str)) {
+            this.jdField_a_of_type_JavaUtilMap.put(str, new mtz(this, 2130842239, anni.a(2131713727), str));
+          }
+        }
       }
-      return "";
     }
-    return localFile.getParent() + "/qav/sound_early/";
   }
   
-  public static void a(Context paramContext)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GAudioSoundUtil", 2, "[sound_early] trigger early download");
-    }
-    Object localObject2 = a();
-    Object localObject1 = new File((String)localObject2, "qav_gaudio_muted.mp3");
-    File localFile = new File((String)localObject2, "qav_gaudio_cancel_muted.mp3");
-    localObject2 = new File((String)localObject2, "qav_peer_phone_calling.mp3");
-    if ((!((File)localObject1).exists()) || (!localFile.exists()) || (!((File)localObject2).exists()))
+    return this.jdField_a_of_type_JavaUtilMap.size();
+  }
+  
+  public mtz a(String paramString)
+  {
+    return (mtz)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
     {
-      localObject1 = new Intent("tencent.video.v2q.downloadGAudioSound");
-      ((Intent)localObject1).setPackage(paramContext.getPackageName());
-      paramContext.sendBroadcast((Intent)localObject1);
+      mtz localmtz = (mtz)this.jdField_a_of_type_JavaUtilMap.get("DEVICE_BLUETOOTHHEADSET");
+      if (localmtz != null) {
+        localmtz.b = (anni.a(2131713728) + paramString + "）");
+      }
     }
   }
   
-  public static boolean a(String paramString)
+  public String[] a()
   {
-    return new File(a(), paramString).exists();
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mty
  * JD-Core Version:    0.7.0.1
  */

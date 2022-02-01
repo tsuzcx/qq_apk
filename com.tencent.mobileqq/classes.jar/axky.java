@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.widget.QQViewPager;
+import android.os.Bundle;
 
-public class axky
-  implements bevu
+class axky
+  extends niu
 {
-  public axky(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  axky(axks paramaxks, axkz paramaxkz) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramInt1 == paramInt2) {
-      return;
+    if (this.jdField_a_of_type_Axkz != null) {
+      this.jdField_a_of_type_Axkz.a(paramInt, paramArrayOfByte, paramBundle);
     }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).setCurrentItem(paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axky
  * JD-Core Version:    0.7.0.1
  */

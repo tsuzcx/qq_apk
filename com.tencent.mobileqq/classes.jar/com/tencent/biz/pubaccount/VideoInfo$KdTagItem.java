@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import nst;
+import obx;
 
 public class VideoInfo$KdTagItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<KdTagItem> CREATOR = new nst();
+  public static final Parcelable.Creator<KdTagItem> CREATOR = new obx();
   public long a;
   public String a;
   

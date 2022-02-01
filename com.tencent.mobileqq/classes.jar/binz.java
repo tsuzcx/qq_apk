@@ -1,88 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.ui.QQComicFragment;
-import cooperation.comic.ui.QQComicTabBarView;
-import java.util.List;
-import mqq.util.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import mqq.manager.WtloginManager;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class binz
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  final int jdField_a_of_type_Int;
-  final List<WebViewTabBarData> jdField_a_of_type_JavaUtilList;
-  final WeakReference<QQComicTabBarView> jdField_a_of_type_MqqUtilWeakReference;
-  final boolean jdField_a_of_type_Boolean;
+  public binz(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public binz(QQComicTabBarView paramQQComicTabBarView, int paramInt, boolean paramBoolean, List<WebViewTabBarData> paramList)
+  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQComicTabBarView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  void a(QQComicTabBarView paramQQComicTabBarView)
-  {
-    Object localObject;
-    JSONObject localJSONObject;
-    if ((paramQQComicTabBarView.getContext() instanceof QQBrowserActivity))
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "wtloginObserver.OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
+    if (paramInt == 0)
     {
-      localObject = ((QQBrowserActivity)paramQQComicTabBarView.getContext()).a();
-      if ((localObject instanceof QQComicFragment))
-      {
-        localObject = ((QQComicFragment)localObject).a();
-        if (localObject != null) {
-          localJSONObject = new JSONObject();
-        }
-      }
-    }
-    try
-    {
-      localJSONObject.put("source", "comic");
-      ((bino)localObject).dispatchJsEvent("qbrowserTabClick", null, localJSONObject);
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int))
-      {
-        localObject = ((WebViewTabBarData)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).tag;
-        QQComicTabBarView.a(paramQQComicTabBarView.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject, true);
-      }
+      this.a.a(null);
+      this.a.moveTaskToBack(true);
       return;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("WebViewTabBarView", 1, localJSONException, new Object[0]);
-      }
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131710008) + paramInt + ")", 2000).a();
+    this.a.a(null);
+    this.a.moveTaskToBack(true);
   }
   
-  public void onClick(View paramView)
+  public void OnException(String paramString, int paramInt)
   {
-    paramView = (QQComicTabBarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (paramView == null) {}
-    long l;
-    do
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "wtloginObserver.OnException e=" + paramString);
+    this.a.a(null);
+    this.a.moveTaskToBack(true);
+  }
+  
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "wtloginObserver.OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    if (paramInt == 0)
     {
+      paramArrayOfByte1 = new ArrayList();
+      this.a.a.CloseCode(paramString, 16L, QuickLoginAuthorityActivity.a(this.a), 1, paramArrayOfByte1, QuickLoginAuthorityActivity.a(this.a));
       return;
-      if (this.jdField_a_of_type_Int == paramView.i)
-      {
-        a(paramView);
-        return;
-      }
-      l = System.currentTimeMillis();
-    } while (l - paramView.jdField_a_of_type_Long < 500L);
-    paramView.jdField_a_of_type_Long = l;
-    paramView.setSelectedTab(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anni.a(2131710007) + paramInt + ")", 2000).a();
+    this.a.a(null);
+    this.a.moveTaskToBack(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     binz
  * JD-Core Version:    0.7.0.1
  */

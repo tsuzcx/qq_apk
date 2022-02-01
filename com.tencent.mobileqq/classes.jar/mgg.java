@@ -1,31 +1,71 @@
-import android.view.View;
-import android.widget.ImageView;
+import android.app.Activity;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-final class mgg
+public class mgg
 {
-  public int a;
-  long jdField_a_of_type_Long;
-  View jdField_a_of_type_AndroidViewView = null;
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  boolean jdField_a_of_type_Boolean = false;
-  ImageView jdField_b_of_type_AndroidWidgetImageView = null;
-  TextView jdField_b_of_type_AndroidWidgetTextView = null;
-  boolean jdField_b_of_type_Boolean = true;
-  ImageView jdField_c_of_type_AndroidWidgetImageView = null;
-  TextView jdField_c_of_type_AndroidWidgetTextView = null;
-  public boolean c;
+  public Button a;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+  public TextView a;
+  public Button b;
+  public TextView b;
   
-  private mgg(mgb parammgb)
+  public mgg()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidWidgetButton = null;
+    this.jdField_b_of_type_AndroidWidgetButton = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    this.jdField_b_of_type_AndroidWidgetTextView = null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    this.jdField_b_of_type_AndroidWidgetTextView = null;
+    this.jdField_a_of_type_AndroidWidgetButton = null;
+    this.jdField_b_of_type_AndroidWidgetButton = null;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(paramInt);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(paramInt);
+    }
+    if ((this.jdField_b_of_type_AndroidWidgetButton != null) && (paramInt != 0)) {
+      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(paramInt);
+    }
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131373403));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131373237));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131373236));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131373268));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131373261));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity.findViewById(2131373266));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mgg
  * JD-Core Version:    0.7.0.1
  */

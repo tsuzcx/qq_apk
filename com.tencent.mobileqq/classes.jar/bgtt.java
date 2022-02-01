@@ -1,32 +1,23 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-
 public class bgtt
-  implements bgts
 {
-  private int jdField_a_of_type_Int;
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private String jdField_a_of_type_JavaLangString;
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public int a()
+  public bgtt()
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = true;
   }
-  
-  public MiniAppInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgtt
  * JD-Core Version:    0.7.0.1
  */

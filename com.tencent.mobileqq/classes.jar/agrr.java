@@ -1,40 +1,65 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.customviews.PicProgressView;
 import com.tencent.qphone.base.util.QLog;
 
 class agrr
-  implements bhuk
+  implements awxh
 {
-  agrr(agrn paramagrn, bhuf parambhuf, ChatMessage paramChatMessage, String paramString) {}
+  agrr(agrq paramagrq, agrv paramagrv, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Bhuf.dismiss();
-    switch (paramInt)
+    if (this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null)
     {
+      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setVisibility(8);
+      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgressKey(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.b(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProcessor(null);
+      ((RelativeLayout)this.jdField_a_of_type_Agrv.jdField_a_of_type_AndroidViewView).removeView(this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
+      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Agrn.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_JavaLangString, false, 1);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(this.jdField_a_of_type_Agrn.jdField_a_of_type_JavaLangString, 2, "del hot chat member onClick, uin=" + this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
-      }
-      if (!bdin.d(BaseApplication.getContext()))
-      {
-        QQToast.a(this.jdField_a_of_type_Agrn.a(), this.jdField_a_of_type_Agrn.a().getString(2131694768), 0).b(this.jdField_a_of_type_Agrn.a().getTitleBarHeight());
-        return;
-      }
-    } while ((aluj)this.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35) == null);
-    paramView = bdgm.a(this.jdField_a_of_type_Agrn.a(), 230).setMessage(2131693401).setNegativeButton(2131690624, new agrt(this)).setPositiveButton(2131690626, new agrs(this));
-    paramView.setTitle(2131693402);
-    paramView.show();
   }
+  
+  public void a(awxe paramawxe)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "dealFileSaveUI onSaveComplete");
+    }
+    if (paramawxe != null)
+    {
+      if (paramawxe.jdField_a_of_type_Int != 0) {
+        break label133;
+      }
+      awxf.a(this.jdField_a_of_type_Agrq.a);
+    }
+    for (;;)
+    {
+      paramawxe.jdField_a_of_type_Awxd.b(this);
+      if (this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null)
+      {
+        this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setVisibility(8);
+        this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgressKey(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.b(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProcessor(null);
+        ((RelativeLayout)this.jdField_a_of_type_Agrv.jdField_a_of_type_AndroidViewView).removeView(this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
+        this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
+      }
+      return;
+      label133:
+      awxf.b(this.jdField_a_of_type_Agrq.a);
+    }
+  }
+  
+  public void a(awxe paramawxe, int paramInt)
+  {
+    if (this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null)
+    {
+      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgress(paramInt);
+      this.jdField_a_of_type_Agrv.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.invalidate();
+    }
+  }
+  
+  public void b(awxe paramawxe) {}
 }
 
 

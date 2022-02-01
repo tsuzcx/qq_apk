@@ -1,16 +1,6 @@
-public abstract interface arqj
+class arqj
 {
-  public abstract long a(bavf parambavf);
-  
-  public abstract void a();
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract byte[] a(byte[] paramArrayOfByte, long paramLong);
-  
-  public abstract void b();
+  private static arqi a = new arqi();
 }
 
 

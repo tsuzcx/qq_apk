@@ -1,59 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class asyn
-  extends aokh<asyo>
+class asyn
+  implements bkhw
 {
-  public int a()
+  asyn(asym paramasym, int paramInt, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    return 445;
-  }
-  
-  @NonNull
-  public asyo a(int paramInt)
-  {
-    return new asyo();
-  }
-  
-  @Nullable
-  public asyo a(aoko[] paramArrayOfaoko)
-  {
-    asyo localasyo = new asyo();
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null)) {
-      asyo.a(localasyo, paramArrayOfaoko[0].a);
-    }
-    return localasyo;
-  }
-  
-  public Class<asyo> a()
-  {
-    return asyo.class;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(asyo paramasyo) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    bcst.b(this.jdField_a_of_type_Asym.a, "dc00898", "", "", "0X800A7F3", "0X800A7F3", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    this.jdField_a_of_type_Asym.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_Asym.a();
   }
 }
 

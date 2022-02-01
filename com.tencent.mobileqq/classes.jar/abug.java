@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.intervideo.nowproxy.proxyinner.channel.FromService;
+import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
+import mqq.app.QQPermissionCallback;
 
-public final class abug
-  implements Parcelable.Creator<FromService>
+public class abug
+  implements QQPermissionCallback
 {
-  public FromService a(Parcel paramParcel)
+  public abug(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    FromService localFromService = new FromService();
-    localFromService.jdField_a_of_type_Int = paramParcel.readInt();
-    localFromService.b = paramParcel.readInt();
-    localFromService.c = paramParcel.readInt();
-    localFromService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
-    return localFromService;
+    bglp.b(this.a);
+    this.a.finish();
   }
   
-  public FromService[] a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new FromService[paramInt];
+    DeviceMsgSettingActivity.a(this.a);
   }
 }
 

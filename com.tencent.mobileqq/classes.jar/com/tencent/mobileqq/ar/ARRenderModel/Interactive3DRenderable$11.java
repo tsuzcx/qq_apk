@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amsu;
-import amwa;
 import android.text.TextUtils;
+import aorl;
+import aour;
 
 public class Interactive3DRenderable$11
   implements Runnable
 {
-  public Interactive3DRenderable$11(amwa paramamwa, String paramString) {}
+  public Interactive3DRenderable$11(aour paramaour, String paramString) {}
   
   public void run()
   {
-    if ((amwa.a(this.this$0) != null) && (!TextUtils.isEmpty(this.a))) {
-      amwa.a(this.this$0).a(amwa.a(this.this$0) + this.a, true, true);
+    if ((aour.a(this.this$0) != null) && (!TextUtils.isEmpty(this.a))) {
+      aour.a(this.this$0).a(aour.a(this.this$0) + this.a, true, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.11
  * JD-Core Version:    0.7.0.1
  */

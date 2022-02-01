@@ -1,13 +1,25 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
 class baxg
-  implements ITransCallbackForReport
+  extends MqqHandler
 {
-  baxg(baxe parambaxe) {}
+  baxg(baxf parambaxf) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a(false, paramInt, paramString1, paramString2);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      QQToast.a(baxf.a(this.a).mContext, 2131718072, 0).a();
+      return;
+    }
+    paramMessage = (String)paramMessage.obj;
+    bgmo.a(baxf.a(this.a).mContext, paramMessage);
+    QQToast.a(baxf.a(this.a).mContext, 2, anni.a(2131698950), 0).a();
   }
 }
 

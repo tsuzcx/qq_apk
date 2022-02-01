@@ -1,58 +1,93 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class aqut
-  extends aqvc
+public class aqut
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
   
-  aqut(aque paramaque, MessageRecord paramMessageRecord)
+  public aqut()
   {
-    super(paramaque);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = -1;
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqva paramaqva)
+  public static aqut a(String paramString)
   {
-    if ("1".equals(this.g))
+    if (paramString == null) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      return null;
+      try
+      {
+        aqut localaqut = new aqut();
+        paramString = new JSONObject(paramString);
+        Object localObject = paramString.optJSONArray("whiteList");
+        if (localObject != null) {
+          localaqut.jdField_a_of_type_JavaLangString = ((JSONArray)localObject).toString();
+        }
+        localObject = paramString.optJSONObject("jumpLimit");
+        if (localObject != null) {
+          localaqut.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).toString();
+        }
+        localObject = paramString.optJSONArray("whiteListv2");
+        if (localObject != null) {
+          localaqut.c = ((JSONArray)localObject).toString();
+        }
+        int i = paramString.optInt("aio_pre_safecheck", -1);
+        if (i != -1) {
+          localaqut.jdField_a_of_type_Int = i;
+        }
+        localObject = paramString.optJSONArray("kbWhiteList");
+        if (localObject != null) {
+          localaqut.d = ((JSONArray)localObject).toString();
+        }
+        i = paramString.optInt("force_https_enable", -1);
+        if (i != -1) {
+          localaqut.jdField_b_of_type_Int = i;
+        }
+        localObject = paramString.optJSONArray("force_https_whitelist");
+        if (localObject != null) {
+          localaqut.e = ((JSONArray)localObject).toString();
+        }
+        paramString = paramString.optJSONArray("force_https_blacklist");
+        if (paramString != null) {
+          localaqut.f = paramString.toString();
+        }
+        QLog.d("ConfBean", 2, "confBean = " + localaqut.toString());
+        return localaqut;
       }
-      paramaqva.a(aque.a(this.jdField_a_of_type_Long, false), false);
-      return;
-    }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild uuid is null");
-      }
-      paramaqva.a(aque.a(this.jdField_a_of_type_Long, true), false);
-      return;
-    }
-    aque.a(this.jdField_a_of_type_Aque).a().a().a(paramString, paramInt, this.d, 102, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aquu(this, paramString, paramaqva));
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("whitelistStr:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" limit:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" whiteListV2:").append(this.c);
+    localStringBuilder.append(" aioPreCheckSwitch:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" kbWhiteList:").append(this.d);
+    localStringBuilder.append(" forceHttpsEnable:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" forceHttpsWhitelist:").append(this.e);
+    localStringBuilder.append(" forceHttpsBlacklist:").append(this.f);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqut
  * JD-Core Version:    0.7.0.1
  */

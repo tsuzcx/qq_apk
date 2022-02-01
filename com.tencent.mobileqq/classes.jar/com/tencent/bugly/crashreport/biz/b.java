@@ -71,14 +71,14 @@ public class b
     do
     {
       return;
-      if (paramStrategyBean.q > 0L) {
-        e = paramStrategyBean.q;
+      if (paramStrategyBean.p > 0L) {
+        e = paramStrategyBean.p;
       }
-      if (paramStrategyBean.w > 0) {
-        c = paramStrategyBean.w;
+      if (paramStrategyBean.u > 0) {
+        c = paramStrategyBean.u;
       }
-    } while (paramStrategyBean.x <= 0L);
-    d = paramStrategyBean.x;
+    } while (paramStrategyBean.v <= 0L);
+    d = paramStrategyBean.v;
   }
   
   private static void c(Context paramContext, BuglyStrategy paramBuglyStrategy)

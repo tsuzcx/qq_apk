@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import alzl;
 import android.text.TextUtils;
-import awge;
-import aynq;
-import ayoy;
-import ayug;
-import ayuh;
-import ayus;
-import ayut;
-import ayuu;
-import bfyh;
+import anrs;
+import bbmu;
+import bboc;
+import bbtj;
+import bbtk;
+import bbtv;
+import bbtw;
+import bbtx;
+import bjft;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,57 +22,57 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import nrt;
-import syb;
+import oat;
+import tzo;
 
 public class PublicAccountSearchEngine
-  implements ayug<ayoy>, Runnable
+  implements bbtj<bboc>, Runnable
 {
-  private static final Comparator<ayoy> jdField_a_of_type_JavaUtilComparator = new ayus();
-  private static final Comparator<ayoy> b = new ayut();
+  private static final Comparator<bboc> jdField_a_of_type_JavaUtilComparator = new bbtv();
+  private static final Comparator<bboc> b = new bbtw();
   private int jdField_a_of_type_Int = -1;
-  private alzl jdField_a_of_type_Alzl;
+  private anrs jdField_a_of_type_Anrs;
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public PublicAccountSearchEngine(QQAppInterface paramQQAppInterface, int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Alzl = ((alzl)paramQQAppInterface.getManager(56));
+    this.jdField_a_of_type_Anrs = ((anrs)paramQQAppInterface.getManager(56));
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  private static int b(aynq paramaynq1, aynq paramaynq2)
+  private static int b(bbmu parambbmu1, bbmu parambbmu2)
   {
     int j = 0;
     int i = j;
-    if (paramaynq2.a() != null)
+    if (parambbmu2.a() != null)
     {
       i = j;
-      if (paramaynq1.a() != null) {
-        i = paramaynq1.a().toString().compareTo(paramaynq2.a().toString());
+      if (parambbmu1.a() != null) {
+        i = parambbmu1.a().toString().compareTo(parambbmu2.a().toString());
       }
     }
     j = i;
     if (i == 0)
     {
       j = i;
-      if (paramaynq2.b() != null)
+      if (parambbmu2.b() != null)
       {
         j = i;
-        if (paramaynq1.b() != null) {
-          j = paramaynq1.b().toString().compareTo(paramaynq2.b().toString());
+        if (parambbmu1.b() != null) {
+          j = parambbmu1.b().toString().compareTo(parambbmu2.b().toString());
         }
       }
     }
     return j;
   }
   
-  public List<ayoy> a(ayuu paramayuu)
+  public List<bboc> a(bbtx parambbtx)
   {
     long l1 = System.currentTimeMillis();
-    while (this.jdField_a_of_type_Alzl.a()) {}
+    while (this.jdField_a_of_type_Anrs.a()) {}
     long l2 = System.currentTimeMillis();
-    ArrayList localArrayList = this.jdField_a_of_type_Alzl.a();
+    ArrayList localArrayList = this.jdField_a_of_type_Anrs.a();
     if ((localArrayList == null) || (localArrayList.isEmpty()))
     {
       if (QLog.isColorLevel()) {
@@ -86,28 +86,28 @@ public class PublicAccountSearchEngine
     int i = 0;
     if (i < j)
     {
-      Object localObject3 = (awge)localArrayList.get(i);
+      Object localObject3 = (Entity)localArrayList.get(i);
       if ((localObject3 == null) || (!(localObject3 instanceof PublicAccountInfo))) {}
       for (;;)
       {
         i += 1;
         break;
-        Object localObject4 = (bfyh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(165);
-        if ((localObject4 == null) || (!((bfyh)localObject4).f(((PublicAccountInfo)localObject3).getUin())))
+        Object localObject4 = (bjft)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(165);
+        if ((localObject4 == null) || (!((bjft)localObject4).f(((PublicAccountInfo)localObject3).getUin())))
         {
           localObject3 = (PublicAccountInfo)localObject3;
-          if ((!TextUtils.equals(((PublicAccountInfo)localObject3).getUin(), "2173223560")) && ((this.jdField_a_of_type_Int != 12) || (syb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((PublicAccountInfo)localObject3).getUin()))))
+          if ((!TextUtils.equals(((PublicAccountInfo)localObject3).getUin(), "2173223560")) && ((this.jdField_a_of_type_Int != 12) || (tzo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((PublicAccountInfo)localObject3).getUin()))))
           {
-            localObject4 = new ayoy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (PublicAccountInfo)localObject3, this.jdField_a_of_type_Int);
-            ((ayoy)localObject4).b(paramayuu.a);
-            if (((ayoy)localObject4).b() != -9223372036854775808L)
+            localObject4 = new bboc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (PublicAccountInfo)localObject3, this.jdField_a_of_type_Int);
+            ((bboc)localObject4).b(parambbtx.a);
+            if (((bboc)localObject4).b() != -9223372036854775808L)
             {
-              ayoy localayoy = (ayoy)((HashMap)localObject2).get(((ayoy)localObject4).a());
-              if ((localayoy == null) || (localayoy.b() < ((ayoy)localObject4).b())) {
-                ((HashMap)localObject2).put(((ayoy)localObject4).a(), localObject4);
+              bboc localbboc = (bboc)((HashMap)localObject2).get(((bboc)localObject4).a());
+              if ((localbboc == null) || (localbboc.b() < ((bboc)localObject4).b())) {
+                ((HashMap)localObject2).put(((bboc)localObject4).a(), localObject4);
               }
             }
-            if ((localObject3 != null) && (((PublicAccountInfo)localObject3).displayNumber != null) && (((PublicAccountInfo)localObject3).displayNumber.equalsIgnoreCase(((ayoy)localObject4).a()))) {
+            if ((localObject3 != null) && (((PublicAccountInfo)localObject3).displayNumber != null) && (((PublicAccountInfo)localObject3).displayNumber.equalsIgnoreCase(((bboc)localObject4).a()))) {
               ((List)localObject1).add(localObject4);
             }
           }
@@ -120,40 +120,40 @@ public class PublicAccountSearchEngine
     i = Math.min(localArrayList.size(), 30);
     localObject2 = localArrayList.subList(0, i);
     Collections.sort((List)localObject2, b);
-    paramayuu = new ArrayList();
-    paramayuu.addAll((Collection)localObject2);
-    paramayuu.addAll(localArrayList.subList(i, localArrayList.size()));
-    paramayuu.removeAll((Collection)localObject1);
-    paramayuu.addAll(0, (Collection)localObject1);
-    localObject1 = paramayuu.iterator();
+    parambbtx = new ArrayList();
+    parambbtx.addAll((Collection)localObject2);
+    parambbtx.addAll(localArrayList.subList(i, localArrayList.size()));
+    parambbtx.removeAll((Collection)localObject1);
+    parambbtx.addAll(0, (Collection)localObject1);
+    localObject1 = parambbtx.iterator();
     i = 0;
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (ayoy)((Iterator)localObject1).next();
+      localObject2 = (bboc)((Iterator)localObject1).next();
       i += 1;
-      ((ayoy)localObject2).a(i);
+      ((bboc)localObject2).a(i);
     }
     long l3 = System.currentTimeMillis();
     if (QLog.isDevelopLevel()) {
       QLog.d("PublicAccountSearchEngine", 4, "pubacc search cost:" + (l3 - l1) + ", pure search cost:" + (l3 - l2));
     }
-    return paramayuu;
+    return parambbtx;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Alzl == null) {}
-    while (this.jdField_a_of_type_Alzl.a) {
+    if (this.jdField_a_of_type_Anrs == null) {}
+    while (this.jdField_a_of_type_Anrs.a) {
       return;
     }
     ThreadManager.post(this, 5, null, true);
   }
   
-  public void a(ayuu paramayuu, ayuh<ayoy> paramayuh)
+  public void a(bbtx parambbtx, bbtk<bboc> parambbtk)
   {
-    ThreadManager.postImmediately(new PublicAccountSearchEngine.1(this, paramayuu, paramayuh), null, true);
-    if (!TextUtils.isEmpty(paramayuu.a)) {
-      nrt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1D", "0X8005D1D", 0, 0, "", "", paramayuu.a, "", false);
+    ThreadManager.postImmediately(new PublicAccountSearchEngine.1(this, parambbtx, parambbtk), null, true);
+    if (!TextUtils.isEmpty(parambbtx.a)) {
+      oat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1D", "0X8005D1D", 0, 0, "", "", parambbtx.a, "", false);
     }
   }
   
@@ -167,12 +167,12 @@ public class PublicAccountSearchEngine
   
   public void run()
   {
-    this.jdField_a_of_type_Alzl.a();
+    this.jdField_a_of_type_Anrs.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine
  * JD-Core Version:    0.7.0.1
  */

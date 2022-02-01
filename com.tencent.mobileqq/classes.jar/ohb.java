@@ -1,35 +1,30 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
-class ohb
-  implements DialogInterface.OnClickListener
+public class ohb
+  extends bkfi
 {
-  ohb(ogy paramogy, boolean paramBoolean) {}
+  public ohb(ReadInJoyNaviController.1 param1, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface = new HashMap();
-    paramDialogInterface.put("stat_src", "2");
-    noy.a(new obk().a(BaseApplication.getContext()).a(noy.e).b(noy.ac).a(oef.a(ogy.a(this.jdField_a_of_type_Ogy))).d(noy.a(ogy.a(this.jdField_a_of_type_Ogy), paramDialogInterface)).a());
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!ogy.a(this.jdField_a_of_type_Ogy)) {}
-    }
-    while (!(this.jdField_a_of_type_Ogy.a instanceof Activity))
-    {
-      return;
-      this.jdField_a_of_type_Ogy.g();
-      return;
-    }
-    szl.a(this.jdField_a_of_type_Ogy.a);
-    odv.a(this.jdField_a_of_type_Ogy.a, ogy.a(this.jdField_a_of_type_Ogy));
+    paramAnimation = new TranslateAnimation(0.0F, 0.0F, oha.e, 0.0F);
+    paramAnimation.setDuration(30L);
+    paramAnimation.setAnimationListener(new ohc(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    oha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0).setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohb
  * JD-Core Version:    0.7.0.1
  */

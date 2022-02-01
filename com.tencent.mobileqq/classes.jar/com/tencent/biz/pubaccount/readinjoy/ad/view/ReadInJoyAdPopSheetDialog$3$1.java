@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
 import com.tencent.biz.ui.TouchWebView;
-import ofx;
+import ost;
 
 class ReadInJoyAdPopSheetDialog$3$1
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyAdPopSheetDialog$3$1
   
   public void run()
   {
-    ofx.a(this.a.this$0).loadUrl(this.a.a);
+    ost.a(this.a.this$0).loadUrl(this.a.a);
   }
 }
 

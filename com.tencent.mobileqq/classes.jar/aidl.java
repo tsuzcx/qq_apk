@@ -1,22 +1,28 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aidl
-  implements TextWatcher
+class aidl
+  implements View.OnClickListener
 {
-  public aidl(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aidl(aidf paramaidf) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.e(paramEditable);
+    Object localObject = paramView.getTag();
+    if (!(localObject instanceof Integer)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      String str = this.a.a.jdField_a_of_type_JavaLangString;
+      if (this.a.a.jdField_a_of_type_Int == 1006) {
+        str = this.a.a.f;
+      }
+      aidf.a(this.a, (Integer)localObject, str);
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

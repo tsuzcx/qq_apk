@@ -1,23 +1,8 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class acwy
-  extends agda
+public abstract interface acwy
 {
-  public acwy(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-  }
-  
-  public void a(aeqi paramaeqi, ChatMessage paramChatMessage) {}
-  
-  public void b(View paramView) {}
+  public abstract MessageRecord a(int paramInt);
 }
 
 

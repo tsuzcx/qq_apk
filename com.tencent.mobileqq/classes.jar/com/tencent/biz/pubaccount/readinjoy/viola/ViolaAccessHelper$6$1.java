@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import bdhb;
+import bgmg;
 import java.io.File;
 import java.io.IOException;
-import srg;
+import tsq;
 
 class ViolaAccessHelper$6$1
   implements Runnable
@@ -14,7 +14,7 @@ class ViolaAccessHelper$6$1
   {
     try
     {
-      this.this$0.a.a(bdhb.b(new File(this.a)));
+      this.this$0.a.a(bgmg.b(new File(this.a)));
       return;
     }
     catch (IOException localIOException)
@@ -25,7 +25,7 @@ class ViolaAccessHelper$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.6.1
  * JD-Core Version:    0.7.0.1
  */

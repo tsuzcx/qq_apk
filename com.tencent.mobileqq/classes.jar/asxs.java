@@ -1,15 +1,26 @@
-import android.graphics.ColorMatrixColorFilter;
-import com.tencent.mobileqq.identification.IdentificationPoseReflect.3.1;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYTReflectListener;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
 public class asxs
-  implements YtSDKKitFramework.IYTReflectListener
+  implements View.OnLongClickListener
 {
-  asxs(asxr paramasxr) {}
+  public asxs(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void onReflectEvent(ColorMatrixColorFilter paramColorMatrixColorFilter)
+  public boolean onLongClick(View paramView)
   {
-    asxr.a(this.a, new IdentificationPoseReflect.3.1(this, paramColorMatrixColorFilter));
+    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
+      return false;
+    }
+    paramView.setSelected(true);
+    bguh localbguh = new bguh();
+    localbguh.a(2131367030, paramView.getContext().getString(2131692395));
+    localbguh.a(2131365302, paramView.getContext().getString(2131691320));
+    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localbguh);
+    this.a.a = bgkw.a(paramView, localbguh, new asxt(this, paramView), new asxv(this, paramView));
+    return true;
   }
 }
 

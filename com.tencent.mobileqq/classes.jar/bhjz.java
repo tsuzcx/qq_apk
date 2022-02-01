@@ -1,19 +1,12 @@
-import android.widget.NumberPicker;
-import android.widget.NumberPicker.OnValueChangeListener;
-
-class bhjz
-  implements NumberPicker.OnValueChangeListener
+public abstract class bhjz
 {
-  bhjz(bhjy parambhjy) {}
+  public void a() {}
   
-  public void onValueChange(NumberPicker paramNumberPicker, int paramInt1, int paramInt2)
-  {
-    bhjy.a(this.a, paramInt2);
-  }
+  public void a(int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjz
  * JD-Core Version:    0.7.0.1
  */

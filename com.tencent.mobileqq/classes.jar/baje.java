@@ -1,57 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.StringTokenizer;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-public abstract class baje
+public class baje
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public bajk a;
-  public QQAppInterface a;
-  public ChatMessage a;
-  public String a;
+  public baje(AIOIceBreakShow paramAIOIceBreakShow) {}
   
-  public baje(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bajk parambajk)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_JavaLangString = paramChatMessage.frienduin;
-    this.jdField_a_of_type_Int = paramChatMessage.istroop;
-    this.jdField_a_of_type_Bajk = parambajk;
-  }
-  
-  public abstract String a();
-  
-  public abstract void a(bajf parambajf);
-  
-  public boolean a()
-  {
-    Object localObject = aoyr.a().c();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null, or maybe has not recv");
-      }
+    if (AIOIceBreakShow.a(this.a) == null) {
+      return;
     }
-    String str;
-    do
-    {
-      while (!((StringTokenizer)localObject).hasMoreTokens())
-      {
-        do
-        {
-          return false;
-          str = arso.a(a());
-          localObject = new StringTokenizer((String)localObject, "|");
-          if (((StringTokenizer)localObject).hasMoreTokens()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null");
-        return false;
-      }
-    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
-    return true;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue("alpha")).intValue();
+    int j = ((Integer)paramValueAnimator.getAnimatedValue("height")).intValue();
+    AIOIceBreakShow.a(this.a).setAlpha(i / 100.0F);
+    paramValueAnimator = AIOIceBreakShow.a(this.a).a();
+    ((AbsListView.LayoutParams)paramValueAnimator.getLayoutParams()).height = j;
+    paramValueAnimator.requestLayout();
+    AIOIceBreakShow.a(this.a).scrollTo(0, j - AIOIceBreakShow.a());
   }
 }
 

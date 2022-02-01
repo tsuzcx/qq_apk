@@ -1,6 +1,27 @@
-public abstract interface beog
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class beog
+  implements AdapterView.OnItemClickListener
 {
-  public abstract void a();
+  public beog(NewTroopContactView paramNewTroopContactView) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    String str = ((ResultRecord)paramView.getTag()).a;
+    if (this.a.a(str))
+    {
+      NewTroopContactView.a(this.a, str);
+      this.a.a.notifyDataSetChanged();
+      this.a.b(false);
+      NewTroopContactView.a(this.a);
+    }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+  }
 }
 
 

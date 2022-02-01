@@ -1,16 +1,50 @@
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+
 public class beee
+  implements BusinessObserver
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public beee(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  beee(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = paramInt;
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
+    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    String str = "";
+    paramInt = -1;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
+        }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        int i = localWebSsoResponseBody.ret.get();
+        paramInt = i;
+        paramBundle = str;
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle = localContext.getString(2131695572, new Object[] { Integer.valueOf(9992) });
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TribeVideoListPlayerFragment", 2, "reportVV: retCode = " + paramInt + ", errMsg = " + paramBundle);
+      }
+      return;
+      paramBundle = localContext.getString(2131695572, new Object[] { Integer.valueOf(9991) });
+      continue;
+      paramBundle = localContext.getString(2131695572, new Object[] { Integer.valueOf(9992) });
+    }
   }
 }
 

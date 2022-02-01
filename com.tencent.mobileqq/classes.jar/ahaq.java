@@ -1,44 +1,68 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ArkAppMessage.Config;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 
 class ahaq
-  implements Animation.AnimationListener
+  extends ahbl
 {
-  ahaq(ahap paramahap) {}
+  private agpz jdField_a_of_type_Agpz;
+  private agqi jdField_a_of_type_Agqi;
+  private agqr jdField_a_of_type_Agqr;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  ahaq(agwz paramagwz)
   {
-    try
-    {
-      if ((this.a.jdField_b_of_type_AndroidViewAnimationAnimation != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAnimation))
-      {
-        paramAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2130772257);
-        paramAnimation.setInterpolator(new LinearInterpolator());
-        this.a.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366607));
-        this.a.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366608));
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
-        return;
-      }
-      if ((paramAnimation == this.a.c) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout) != -1))
-      {
-        this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        return;
-      }
-    }
-    catch (Throwable paramAnimation) {}
+    super(paramagwz, null);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return null;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected afxi b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    int j = 1;
+    int i = j;
+    if ((paramChatMessage instanceof MessageForArkApp))
+    {
+      paramChatMessage = (MessageForArkApp)paramChatMessage;
+      ArkAppMessage.Config localConfig = new ArkAppMessage.Config();
+      i = j;
+      if (paramChatMessage.ark_app_message != null)
+      {
+        localConfig.fromString(paramChatMessage.ark_app_message.config);
+        i = j;
+        if (localConfig.showSender != null)
+        {
+          i = j;
+          if (localConfig.showSender.intValue() == 0) {
+            i = 0;
+          }
+        }
+      }
+    }
+    if ((this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1008) || (this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1038))
+    {
+      if (this.jdField_a_of_type_Agqr == null) {
+        this.jdField_a_of_type_Agqr = new agqr(this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Agwz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+      }
+      return this.jdField_a_of_type_Agwz.a(this.jdField_a_of_type_Agqr, paramBaseAdapter);
+    }
+    if ((i == 0) || (this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 9501))
+    {
+      if (this.jdField_a_of_type_Agqi == null) {
+        this.jdField_a_of_type_Agqi = new agqi(this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Agwz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+      }
+      return this.jdField_a_of_type_Agwz.a(this.jdField_a_of_type_Agqi, paramBaseAdapter);
+    }
+    if (this.jdField_a_of_type_Agpz == null) {
+      this.jdField_a_of_type_Agpz = new agpz(this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Agwz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agwz.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    }
+    return this.jdField_a_of_type_Agwz.a(this.jdField_a_of_type_Agpz, paramBaseAdapter);
+  }
 }
 
 

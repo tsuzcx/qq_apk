@@ -1,27 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.concurrent.Callable;
 
 class avhz
-  implements View.OnTouchListener
+  implements Callable<avgz>
 {
-  avhz(avhf paramavhf) {}
+  avhz(avhx paramavhx) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public avgz a()
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370728).setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.findViewById(2131370728).setAlpha(1.0F);
-    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    return avhi.b(avhx.a(this.a).getApplication(), "GVideo", localQQAppInterface.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avhz
  * JD-Core Version:    0.7.0.1
  */

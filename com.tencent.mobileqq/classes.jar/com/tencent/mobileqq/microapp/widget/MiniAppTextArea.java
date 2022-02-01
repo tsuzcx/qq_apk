@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
 import android.widget.EditText;
-import bdnn;
+import bgsp;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
 import org.json.JSONObject;
 
@@ -41,7 +41,7 @@ public class MiniAppTextArea
     }
     String str = paramJSONObject.optString("placeholder");
     JSONObject localJSONObject2 = paramJSONObject.optJSONObject("placeholderStyle");
-    if (!bdnn.a(str))
+    if (!bgsp.a(str))
     {
       setHint(str);
       setHintTextColor(Color.parseColor(localJSONObject2.optString("color")));
@@ -49,12 +49,12 @@ public class MiniAppTextArea
     if ("left".equals(localJSONObject1.optString("textAlign"))) {
       setGravity(3);
     }
-    addTextChangedListener(new e(this, localJSONObject2, localJSONObject1, paramInt, paramWebviewContainer, paramJSONObject));
+    addTextChangedListener(new c(this, localJSONObject2, localJSONObject1, paramInt, paramWebviewContainer, paramJSONObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.MiniAppTextArea
  * JD-Core Version:    0.7.0.1
  */

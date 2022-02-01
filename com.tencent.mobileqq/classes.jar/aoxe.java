@@ -1,70 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
-public class aoxe
-  extends aokh<aoxd>
+class aoxe
+  extends aoyb
 {
-  public int a()
-  {
-    return 294;
-  }
-  
-  @NonNull
-  public aoxd a(int paramInt)
-  {
-    return new aoxd();
-  }
-  
-  @Nullable
-  public aoxd a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoxd.a(paramArrayOfaoko);
-    }
-    return null;
-  }
-  
-  public Class<aoxd> a()
-  {
-    return aoxd.class;
-  }
+  aoxe(aoxb paramaoxb) {}
   
   public void a(int paramInt)
   {
-    QLog.d("TencentDocConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public void a(aoxd paramaoxd)
-  {
-    if (paramaoxd == null) {}
-    while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download success " + paramInt);
+    }
+    if (aoxb.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
       return;
     }
-    baic.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramaoxd.a());
-    baic.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramaoxd.b());
+    Message localMessage = Message.obtain();
+    localMessage.what = 6;
+    localMessage.arg1 = paramInt;
+    aoxb.a(this.a).sendMessage(localMessage);
   }
   
-  public int b()
+  public void a(int paramInt1, int paramInt2)
   {
-    return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download process " + paramInt1 + " : " + paramInt2);
+    }
+    if (aoxb.a(this.a) == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 7;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    aoxb.a(this.a).sendMessage(localMessage);
   }
   
-  public boolean b()
+  public void b(int paramInt1, int paramInt2)
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download error " + paramInt1 + " : " + paramInt2);
+    }
+    if (aoxb.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 8;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    aoxb.a(this.a).sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoxe
  * JD-Core Version:    0.7.0.1
  */

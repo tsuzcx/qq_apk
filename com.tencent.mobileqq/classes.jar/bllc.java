@@ -1,26 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorComicLoadingView;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorComicLoadingView.2;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-public class bllc
-  implements Animator.AnimatorListener
+class bllc
+  implements ShareActionSheet.OnItemClickListener
 {
-  public bllc(AEEditorComicLoadingView.2 param2) {}
+  bllc(bllb parambllb) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    this.a.this$0.a();
+    this.a.a.dismiss();
+    int i = paramActionSheetItem.action;
+    this.a.a(i, paramActionSheetItem);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.this$0.a();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

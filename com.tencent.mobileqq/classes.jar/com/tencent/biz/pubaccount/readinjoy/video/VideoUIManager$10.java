@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rkp;
+import sfq;
 
 public class VideoUIManager$10
   implements Runnable
 {
-  public VideoUIManager$10(rkp paramrkp) {}
+  public VideoUIManager$10(sfq paramsfq) {}
   
   public void run()
   {
-    rkp.g(this.this$0);
+    sfq.g(this.this$0);
   }
 }
 

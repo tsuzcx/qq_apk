@@ -1,22 +1,25 @@
-import android.text.format.Time;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.1;
+import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
 public class balx
-  implements FilenameFilter
+  implements bcdv
 {
-  public balx(ShareAppLogHelper paramShareAppLogHelper) {}
+  balx(balv parambalv) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    if ((!paramString.endsWith(".log")) && (!paramString.endsWith(".zip")) && (!paramString.endsWith(".qlog"))) {}
-    do
-    {
-      return false;
-      paramFile = ShareAppLogHelper.a(this.a, paramString);
-    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
-    return true;
+    if (this.a.a != null) {
+      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.2(this, paramPtvTemplateInfo, paramInt));
+    }
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    if (this.a.a != null) {
+      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
+    }
   }
 }
 

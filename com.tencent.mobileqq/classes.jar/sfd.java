@@ -1,150 +1,61 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.2;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class sfd
-  implements sfe
 {
-  static int jdField_a_of_type_Int;
-  static int b;
-  public Drawable a;
-  ZImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView;
-  private String jdField_a_of_type_JavaLangString = "zimage.DrawableController";
-  sfc jdField_a_of_type_Sfc;
-  sfg jdField_a_of_type_Sfg;
-  tpv jdField_a_of_type_Tpv;
-  private boolean jdField_a_of_type_Boolean = true;
+  private static boolean b;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new sfe(this));
+  private sff jdField_a_of_type_Sff;
+  private siw jdField_a_of_type_Siw = siy.a.a();
+  private boolean jdField_a_of_type_Boolean;
   
-  public sfd(Drawable paramDrawable, ZImageView paramZImageView)
+  public sfd()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView = paramZImageView;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + ".v" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.hashCode());
+    ThreadManager.executeOnSubThread(new VideoPluginInstall.1(this));
   }
   
-  public sfg a()
+  private void c()
   {
-    return this.jdField_a_of_type_Sfg;
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if (this.jdField_a_of_type_Sfg != null) {
-      a("setPlaceHolder");
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setImageDrawable(paramDrawable);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Sfg != null) {
-      this.jdField_a_of_type_Sfg.jdField_a_of_type_Boolean = true;
-    }
-    if (QLog.isColorLevel()) {
-      sfm.a(this.jdField_a_of_type_JavaLangString, "detachFromWindow " + paramString + " " + this.jdField_a_of_type_Sfg + " " + this.jdField_a_of_type_Sfc);
-    }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.getDrawable() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.getDrawable() instanceof sfn))) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    if (this.jdField_a_of_type_Sfc != null)
+    try
     {
-      this.jdField_a_of_type_Sfc.a();
-      this.jdField_a_of_type_Sfc = null;
-    }
-    if (this.jdField_a_of_type_Sfg != null)
-    {
-      sff.a().a(this.jdField_a_of_type_Sfg, "reset");
-      this.jdField_a_of_type_Sfg = null;
-    }
-  }
-  
-  public void a(sfg paramsfg)
-  {
-    biby.a("DrawableController.setImageRequest");
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.a()) {
-      paramsfg.c = 1;
-    }
-    jdField_a_of_type_Int += 1;
-    a("resetUrl");
-    sfc localsfc = sff.a().a(paramsfg);
-    if (localsfc == null)
-    {
-      this.jdField_a_of_type_Sfg = paramsfg;
-      sff.a().a(this.jdField_a_of_type_Sfg, this);
-    }
-    for (;;)
-    {
-      biby.a();
-      return;
-      b += 1;
-      pdz.b(1, paramsfg);
-      a(paramsfg, localsfc, false, "setImageRequest");
-    }
-  }
-  
-  public void a(sfg paramsfg, int paramInt)
-  {
-    if (this.jdField_a_of_type_Tpv != null) {
-      this.jdField_a_of_type_Tpv.a(paramsfg.jdField_a_of_type_JavaNetURL, paramInt);
-    }
-  }
-  
-  public void a(sfg paramsfg, Throwable paramThrowable)
-  {
-    if (this.jdField_a_of_type_Tpv != null) {
-      this.jdField_a_of_type_Tpv.a(paramsfg.jdField_a_of_type_JavaNetURL, paramThrowable);
-    }
-  }
-  
-  public void a(sfg paramsfg, sfc paramsfc)
-  {
-    if ((paramsfg.equals(this.jdField_a_of_type_Sfg)) && (paramsfc.a() != null))
-    {
-      a(paramsfg, paramsfc, true, "onSuccess");
+      if (!b)
+      {
+        this.jdField_a_of_type_Siw.a();
+        b = true;
+      }
       return;
     }
-    paramsfc.a();
+    finally {}
   }
   
-  void a(sfg paramsfg, sfc paramsfc, boolean paramBoolean, String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_Sfg = paramsfg;
-    if (QLog.isColorLevel()) {
-      sfm.a(this.jdField_a_of_type_JavaLangString, "attachImage " + paramString + " " + this.jdField_a_of_type_Sfg + " " + paramsfc + " total:" + jdField_a_of_type_Int + " cache:" + b);
-    }
-    if (this.jdField_a_of_type_Sfc != null) {
-      this.jdField_a_of_type_Sfc.a();
-    }
-    this.jdField_a_of_type_Sfc = paramsfc;
-    paramString = new sfn(this.jdField_a_of_type_Sfc.a());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setImageDrawable(paramString, paramBoolean);
-    pdz.a(this.jdField_a_of_type_Sfg, true, "attached");
-    if (this.jdField_a_of_type_Tpv != null) {
-      this.jdField_a_of_type_Tpv.a(paramsfg.jdField_a_of_type_JavaNetURL, paramsfc);
+    if ((!a()) && (!this.jdField_a_of_type_Boolean)) {
+      ThreadManager.post(new VideoPluginInstall.2(this), 8, null, true);
     }
   }
   
-  public void a(tpv paramtpv)
+  public void a(sff paramsff)
   {
-    this.jdField_a_of_type_Tpv = paramtpv;
+    this.jdField_a_of_type_Sff = paramsff;
   }
   
-  public void a(boolean paramBoolean)
+  public boolean a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this.jdField_a_of_type_Siw.a();
   }
   
-  public void b(String paramString)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      sfm.a(this.jdField_a_of_type_JavaLangString, "attachToWindow " + paramString + " " + this.jdField_a_of_type_Sfg);
-    }
+    this.jdField_a_of_type_Sff = null;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sfd
  * JD-Core Version:    0.7.0.1
  */

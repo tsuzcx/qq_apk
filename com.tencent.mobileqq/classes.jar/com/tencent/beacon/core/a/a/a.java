@@ -1,6 +1,6 @@
 package com.tencent.beacon.core.a.a;
 
-public final class a
+public class a
 {
   public long a = -1L;
   public int b = -1;
@@ -24,7 +24,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.a.a.a
  * JD-Core Version:    0.7.0.1
  */

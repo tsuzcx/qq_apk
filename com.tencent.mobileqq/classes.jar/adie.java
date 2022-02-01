@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-class adie
-  implements DialogInterface.OnClickListener
+public class adie
+  extends anvp
 {
-  adie(adic paramadic) {}
+  public adie(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, bdei parambdei)
   {
-    if (paramInt == 1) {
-      this.a.b();
-    }
-    while (adic.a(this.a) == null) {
-      return;
-    }
-    adic.a(this.a).b();
+    AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+  }
+  
+  protected void b(boolean paramBoolean, bdei parambdei)
+  {
+    AccountManageActivity.a(this.a, false);
+  }
+  
+  protected void c(boolean paramBoolean, bdei parambdei)
+  {
+    AccountManageActivity.a(this.a, false);
   }
 }
 

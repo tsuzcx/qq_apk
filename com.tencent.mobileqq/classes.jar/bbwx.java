@@ -1,127 +1,186 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.search.view.SearchVoiceView;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbwx
-  extends bbwm
+  implements Handler.Callback
 {
-  protected boolean c;
-  protected boolean d;
-  protected long g = 2000L;
+  public bbwx(SearchVoiceView paramSearchVoiceView) {}
   
-  protected bbwx(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
+  public boolean handleMessage(Message paramMessage)
   {
-    super(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean2, paramString4);
-    this.c = paramBoolean1;
-  }
-  
-  public static bbwx a(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
-  {
-    String str = "";
-    if (paramString1 == null) {
-      str = "strSavePath is null";
+    int i = 3;
+    if (paramMessage == null) {
+      return false;
     }
-    while (!TextUtils.isEmpty(str))
+    switch (paramMessage.what)
     {
-      bbvl.a("TroopFileThumbDownloader", bbvl.a, "getFileDownloader " + str);
-      return null;
-      if (paramString1.length() == 0) {
-        str = "strSavePath is empty";
-      } else if (paramList == null) {
-        str = "lstUrl is null";
-      } else if (paramList.size() == 0) {
-        str = "lstUrl is empty";
-      } else if (paramString2 == null) {
-        str = "urlParams is null";
-      } else if (paramString2.length() == 0) {
-        str = "urlParams is empty";
-      }
     }
-    return new bbwx(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean1, paramBoolean2, paramString4);
-  }
-  
-  public void a(bdpx parambdpx)
-  {
-    int k = 0;
-    if (!this.c) {
-      break label10;
-    }
-    label10:
-    while (this.d) {
-      return;
-    }
-    parambdpx = parambdpx.a("Set-Cookie");
-    i = k;
     for (;;)
     {
-      try
+      return true;
+      SearchVoiceView.a(this.a, 0);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.a(this.a) > 0) {
+        SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      }
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.d(this.a) > 0) {
+        SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.c(this.a));
+      }
+      this.a.e -= SearchVoiceView.e(this.a) * 3;
+      if (this.a.e < SearchVoiceView.f(this.a) * 9 / 10) {
+        this.a.e = (SearchVoiceView.f(this.a) * 9 / 10);
+      }
+      this.a.invalidate();
+      SearchVoiceView.a(this.a).removeMessages(0);
+      SearchVoiceView.a(this.a).sendEmptyMessageDelayed(0, 30L);
+      continue;
+      SearchVoiceView.a(this.a, 1);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.a(this.a) > 0) {
+        SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      }
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.d(this.a) > 0) {
+        SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.c(this.a));
+      }
+      if (this.a.e < SearchVoiceView.g(this.a))
       {
-        if (!TextUtils.isEmpty(parambdpx))
-        {
-          i = k;
-          if (parambdpx.contains("duration"))
-          {
-            parambdpx = parambdpx.trim().split(";");
-            i = k;
-            if (parambdpx != null)
-            {
-              i = k;
-              if (parambdpx.length > 0)
-              {
-                j = 0;
-                i = k;
-                if (j < parambdpx.length)
-                {
-                  String[] arrayOfString = parambdpx[j].split("=");
-                  if ((arrayOfString == null) || (arrayOfString.length != 2) || (!"duration".equals(arrayOfString[0]))) {
-                    continue;
-                  }
-                  i = Integer.parseInt(arrayOfString[1]);
-                }
-              }
-            }
-          }
+        this.a.e += SearchVoiceView.e(this.a);
+        label438:
+        if (this.a.e >= SearchVoiceView.f(this.a) / 10) {
+          break label567;
+        }
+        this.a.e = (SearchVoiceView.f(this.a) / 10);
+      }
+      for (;;)
+      {
+        this.a.invalidate();
+        SearchVoiceView.a(this.a).removeMessages(0);
+        SearchVoiceView.a(this.a).removeMessages(1);
+        SearchVoiceView.a(this.a).sendEmptyMessageDelayed(1, 30L);
+        break;
+        if (this.a.e <= SearchVoiceView.g(this.a)) {
+          break label438;
+        }
+        this.a.e -= SearchVoiceView.e(this.a) * 6;
+        break label438;
+        label567:
+        if (this.a.e > SearchVoiceView.f(this.a) * 9 / 10) {
+          this.a.e = (SearchVoiceView.f(this.a) * 9 / 10);
         }
       }
-      catch (Exception parambdpx)
+      SearchVoiceView.a(this.a, 2);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.a(this.a) > 0) {
+        SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      }
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.d(this.a) > 0) {
+        SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.c(this.a));
+      }
+      this.a.e += SearchVoiceView.e(this.a) * 4;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("SearchVoiceView", 2, " handle state = " + SearchVoiceView.h(this.a) + " frontOffsetY = " + this.a.e + " height = " + SearchVoiceView.f(this.a));
+      }
+      SearchVoiceView.a(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a) / 5.0F);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.e(this.a));
+      SearchVoiceView.a(this.a, (SearchVoiceView.a(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.b(this.a, (SearchVoiceView.d(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.c(this.a, (SearchVoiceView.f(this.a) + 360.0F) % 360.0F);
+      if (this.a.e >= SearchVoiceView.f(this.a)) {}
+      long l2;
+      long l1;
+      for (;;)
       {
-        int j;
-        i = 0;
-        continue;
-      }
-      if ((i == 0) || (this.jdField_a_of_type_Bbwe == null) || (!(this.jdField_a_of_type_Bbwe instanceof bbwy))) {
+        this.a.invalidate();
+        SearchVoiceView.a(this.a).removeMessages(0);
+        SearchVoiceView.a(this.a).removeMessages(1);
+        SearchVoiceView.a(this.a).removeMessages(2);
+        int j = 15;
+        if (SearchVoiceView.a(this.a) != 0L)
+        {
+          l2 = SystemClock.uptimeMillis() - SearchVoiceView.a(this.a);
+          l1 = l2;
+          if (l2 > 30L) {
+            l1 = 0L;
+          }
+          j = (int)l1;
+        }
+        SearchVoiceView.a(this.a, SystemClock.uptimeMillis());
+        SearchVoiceView.a(this.a).sendEmptyMessageDelayed(i, j);
         break;
+        SearchVoiceView.a(this.a, 0L);
+        i = 2;
       }
-      ((bbwy)this.jdField_a_of_type_Bbwe).a(i);
-      return;
-      j += 1;
+      SearchVoiceView.a(this.a, 3);
+      SearchVoiceView.a(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a) / 5.0F);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.e(this.a));
+      SearchVoiceView.a(this.a, (SearchVoiceView.a(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.b(this.a, (SearchVoiceView.d(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.c(this.a, (SearchVoiceView.f(this.a) + 360.0F) % 360.0F);
+      this.a.invalidate();
+      SearchVoiceView.a(this.a).removeMessages(0);
+      SearchVoiceView.a(this.a).removeMessages(1);
+      SearchVoiceView.a(this.a).removeMessages(2);
+      SearchVoiceView.a(this.a).removeMessages(3);
+      i = 30;
+      if (SearchVoiceView.a(this.a) != 0L)
+      {
+        l2 = SystemClock.uptimeMillis() - SearchVoiceView.a(this.a);
+        l1 = l2;
+        if (l2 > 30L) {
+          l1 = 0L;
+        }
+        i = (int)l1;
+      }
+      SearchVoiceView.a(this.a, SystemClock.uptimeMillis());
+      SearchVoiceView.a(this.a).sendEmptyMessageDelayed(3, i);
+      continue;
+      SearchVoiceView.a(this.a, 4);
+      SearchVoiceView.a(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a) / 2.0F);
+      SearchVoiceView.d(this.a, SearchVoiceView.g(this.a) - SearchVoiceView.h(this.a) / 2.0F + 2.0F);
+      SearchVoiceView.e(this.a, SearchVoiceView.c(this.a) - SearchVoiceView.i(this.a));
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      SearchVoiceView.f(this.a, SearchVoiceView.c(this.a) - SearchVoiceView.j(this.a));
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.e(this.a));
+      SearchVoiceView.a(this.a, (SearchVoiceView.a(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.b(this.a, (SearchVoiceView.d(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.c(this.a, (SearchVoiceView.f(this.a) + 360.0F) % 360.0F);
+      if (SearchVoiceView.g(this.a) <= 0.0F)
+      {
+        SearchVoiceView.d(this.a, 0.0F);
+        SearchVoiceView.d(this.a, 0);
+      }
+      for (i = 5;; i = 4)
+      {
+        this.a.invalidate();
+        SearchVoiceView.a(this.a).removeMessages(0);
+        SearchVoiceView.a(this.a).removeMessages(1);
+        SearchVoiceView.a(this.a).removeMessages(2);
+        SearchVoiceView.a(this.a).removeMessages(3);
+        SearchVoiceView.a(this.a).removeMessages(4);
+        SearchVoiceView.a(this.a).sendEmptyMessageDelayed(i, 15L);
+        break;
+        SearchVoiceView.d(this.a, (int)(255.0F * (1.0F - SearchVoiceView.g(this.a) / 360.0F)));
+      }
+      SearchVoiceView.a(this.a, 5);
+      this.a.invalidate();
+      SearchVoiceView.a(this.a).removeMessages(0);
+      SearchVoiceView.a(this.a).removeMessages(1);
+      SearchVoiceView.a(this.a).removeMessages(2);
+      SearchVoiceView.a(this.a).removeMessages(3);
+      SearchVoiceView.a(this.a).removeMessages(4);
+      if (SearchVoiceView.a(this.a) != null) {
+        SearchVoiceView.a(this.a).a();
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public long b()
-  {
-    if (this.g <= 6000L)
-    {
-      long l = this.g;
-      this.g = (2000L + this.g);
-      return l;
-    }
-    return 2000L;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.d = paramBoolean;
-  }
-  
-  public void i()
-  {
-    this.jdField_a_of_type_Bbvg.a();
   }
 }
 

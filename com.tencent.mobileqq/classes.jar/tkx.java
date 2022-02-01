@@ -1,19 +1,22 @@
-class tkx
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class tkx
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  public tkx(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
   
-  public tkx() {}
-  
-  public tkx(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.a.a(0, 2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tkx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,36 @@
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
-import android.view.View;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class tnb
-  implements bhuk
+public class tnb
+  implements DialogInterface.OnClickListener
 {
-  tnb(tna paramtna, stSimpleMetaPerson paramstSimpleMetaPerson) {}
+  public tnb(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!ndk.a(tna.a(this.jdField_a_of_type_Tna)))
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new JSONObject();
+    try
     {
-      bflz.a().a(2131721489);
+      paramDialogInterface.put("button", 1);
+      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("okBtnText", ""));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
       return;
     }
-    tna.a(this.jdField_a_of_type_Tna).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
-    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
-    if ((tfw.a != null) && (tfw.a.poster != null)) {
-      tfw.a.poster.followStatus = 2;
+    catch (JSONException paramDialogInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(BridgeModule.TAG, 2, "showDialog error" + paramDialogInterface.getMessage());
     }
-    tna.a(this.jdField_a_of_type_Tna).setText("关注");
-    tna.a(this.jdField_a_of_type_Tna).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tnb
  * JD-Core Version:    0.7.0.1
  */

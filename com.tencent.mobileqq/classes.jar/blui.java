@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.LocalMultiProcConfig;
 
-public class blui
-  implements View.OnClickListener
+public final class blui
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public blui(HummingActivity paramHummingActivity) {}
-  
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (blud.b()) {
-      return;
-    }
-    HummingActivity.a(this.a, 1);
-    HummingActivity.b(this.a);
+    LocalMultiProcConfig.putBool("qz_safe_mode_no_tip", paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

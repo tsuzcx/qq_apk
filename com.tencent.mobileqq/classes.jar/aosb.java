@@ -1,110 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
 
-public class aosb
+public abstract interface aosb
 {
-  public int a;
-  public List<Long> a;
-  public int b;
-  public int c;
+  public abstract int a();
   
-  public aosb()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public abstract int a(int paramInt);
   
-  public static aosb a(aoko[] paramArrayOfaoko)
-  {
-    aosb localaosb = new aosb();
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
-    {
-      int j = paramArrayOfaoko.length;
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = paramArrayOfaoko[i];
-        if (localObject == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((aoko)localObject).a;
-          try
-          {
-            localObject = new JSONObject((String)localObject);
-            if (((JSONObject)localObject).has("gtcSwitch")) {
-              localaosb.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("gtcSwitch");
-            }
-            if (((JSONObject)localObject).has("groupMemberCount")) {
-              localaosb.b = ((JSONObject)localObject).optInt("groupMemberCount");
-            }
-            if (((JSONObject)localObject).has("allGroupTypesEnable")) {
-              localaosb.c = ((JSONObject)localObject).optInt("allGroupTypesEnable");
-            }
-            if (((JSONObject)localObject).has("enabledGroupTypes"))
-            {
-              localObject = ((JSONObject)localObject).optJSONArray("enabledGroupTypes");
-              localaosb.jdField_a_of_type_JavaUtilList.addAll(a((JSONArray)localObject));
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopMemberRecommend.ConfBean", 2, "parse: " + localaosb.toString());
-          }
-        }
-      }
-    }
-    return localaosb;
-  }
+  public abstract String a();
   
-  private static List<Long> a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray != null)
-    {
-      int j = paramJSONArray.length();
-      int i = 0;
-      for (;;)
-      {
-        if (i < j) {
-          try
-          {
-            localArrayList.add(Long.valueOf(paramJSONArray.getLong(i)));
-            i += 1;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              QLog.e("TroopMemberRecommend.ConfBean", 2, "TroopMemRecommendConfBean processJsonArray error", localException);
-            }
-          }
-        }
-      }
-    }
-    return localArrayList;
-  }
+  public abstract void a();
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("TroopMemRecommendConfBean [gtcSwitch: ").append(this.jdField_a_of_type_Int).append(", groupMemberCount: ").append(this.b).append(", allGroupTypesEnable: ").append(this.c).append(", enabledGroupTypes: ").append(this.jdField_a_of_type_JavaUtilList.toString()).append("]");
-    return localStringBuilder.toString();
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void a(View paramView);
+  
+  public abstract void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aosb
  * JD-Core Version:    0.7.0.1
  */

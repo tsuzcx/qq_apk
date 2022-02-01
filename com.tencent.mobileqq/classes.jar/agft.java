@@ -1,7 +1,19 @@
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class agft
-  extends aepm
+  implements View.OnClickListener
 {
   agft(agfs paramagfs) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.getHostActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

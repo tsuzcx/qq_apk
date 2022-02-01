@@ -1,29 +1,30 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agko;
-import agkp;
+import ahur;
+import ahus;
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.os.Process;
-import aoai;
-import awkj;
-import axph;
-import axpm;
-import azcr;
-import azho;
-import azkt;
-import azri;
-import bayu;
-import bdhb;
-import bknl;
-import bkoq;
-import bljc;
-import bljn;
-import blkf;
-import blqh;
-import bmfm;
-import bnlc;
+import aqan;
+import ayyz;
+import bani;
+import bann;
+import bcio;
+import bcls;
+import bctj;
+import bdzx;
+import bgmg;
+import bnby;
+import bndd;
+import bnpt;
+import bnpy;
+import bnyp;
+import bnzb;
+import bnzw;
+import bojl;
+import bows;
+import bqcb;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pic.CompressInfo;
@@ -45,34 +46,34 @@ public class PeakService
   public PeakService()
   {
     super("PeakService");
-    bljn.b("PeakService", "[PeakService]");
+    bnzb.b("PeakService", "[PeakService]");
   }
   
-  public void a(CompressInfo paramCompressInfo, agko paramagko)
+  public void a(CompressInfo paramCompressInfo, ahur paramahur)
   {
-    awkj.a(paramCompressInfo);
+    ayyz.a(paramCompressInfo);
     if (QLog.isColorLevel()) {
       QLog.d("PeakService", 2, "CompressPic, current pid=" + Process.myPid());
     }
-    if (paramagko != null)
+    if (paramahur != null)
     {
       if (!paramCompressInfo.a) {
         break label64;
       }
-      paramagko.a(paramCompressInfo);
+      paramahur.a(paramCompressInfo);
     }
     for (;;)
     {
-      paramagko.c(paramCompressInfo);
+      paramahur.c(paramCompressInfo);
       return;
       label64:
-      paramagko.b(paramCompressInfo);
+      paramahur.b(paramCompressInfo);
     }
   }
   
   public void onDestroy()
   {
-    bljn.b("PeakService", "[onDestroy]");
+    bnzb.b("PeakService", "[onDestroy]");
     super.onDestroy();
   }
   
@@ -89,15 +90,15 @@ public class PeakService
     {
       return;
       i = paramIntent.getIntExtra("ServiceAction", -1);
-      bljn.b("PeakService", "onHandleIntent, action = " + i);
+      bnzb.b("PeakService", "onHandleIntent, action = " + i);
       switch (i)
       {
       default: 
         paramIntent = ThreadManager.getFileThreadHandler();
         if (paramIntent != null)
         {
-          paramIntent.removeCallbacks(bdhb.a);
-          paramIntent.postDelayed(bdhb.a, 1000L);
+          paramIntent.removeCallbacks(bgmg.a);
+          paramIntent.postDelayed(bgmg.a, 1000L);
         }
         ThreadManager.excute(new PeakService.2(this), 64, null, true);
         return;
@@ -107,60 +108,63 @@ public class PeakService
         paramIntent = paramIntent.getIntArrayExtra("CompressConfig");
         if ((paramIntent != null) && (paramIntent.length >= 9))
         {
-          awkl.e = paramIntent[0];
-          awkl.f = paramIntent[1];
-          awkl.g = paramIntent[2];
-          awkl.h = paramIntent[3];
-          awkl.i = paramIntent[4];
-          awkl.j = paramIntent[5];
-          awkl.a = paramIntent[6];
-          awkl.b = paramIntent[7];
-          awkl.c = paramIntent[8];
+          ayzb.e = paramIntent[0];
+          ayzb.f = paramIntent[1];
+          ayzb.g = paramIntent[2];
+          ayzb.h = paramIntent[3];
+          ayzb.i = paramIntent[4];
+          ayzb.j = paramIntent[5];
+          ayzb.a = paramIntent[6];
+          ayzb.b = paramIntent[7];
+          ayzb.c = paramIntent[8];
           if (QLog.isColorLevel()) {
             QLog.d("PeakService", 2, "onHandleIntent, compressConfig = " + Arrays.toString(paramIntent));
           }
         }
         if (((localParcelable instanceof CompressInfo)) && (localBinderWarpper != null))
         {
-          paramIntent = agkp.a(localBinderWarpper.a);
+          paramIntent = ahus.a(localBinderWarpper.a);
           a((CompressInfo)localParcelable, paramIntent);
         }
-        bayu.a();
+        bdzx.a();
         return;
       case 2: 
         bool = paramIntent.getBooleanExtra("key_alive", false);
-        blkf.a().a(bool);
+        bnzw.a().a(bool);
         try
         {
           l = System.currentTimeMillis();
-          azri.a(this);
+          bctj.a(this);
           if (QLog.isColorLevel()) {
             QLog.d("PeakService", 2, "step : init StatisticCollector use = " + (System.currentTimeMillis() - l));
           }
           l = System.currentTimeMillis();
           new PtvCameraCaptureActivity();
           new QIMCameraCaptureActivity();
-          new bmfm();
+          new bows();
           if (QLog.isColorLevel()) {
             QLog.d("PeakService", 2, "step : init Activity use = " + (System.currentTimeMillis() - l));
           }
           l = System.currentTimeMillis();
-          aoai.a();
+          aqan.a();
           if (QLog.isColorLevel()) {
             QLog.d("PeakService", 2, "step : init CameraHolder use = " + (System.currentTimeMillis() - l));
           }
           l = System.currentTimeMillis();
-          azkt.c();
+          bcls.a();
           if (QLog.isColorLevel()) {
             QLog.d("PeakService", 1, "step : init SVFilter use = " + (System.currentTimeMillis() - l));
           }
           AECameraGLSurfaceView.e();
-          if (azcr.a()) {
+          if (bnpy.a(bnpt.b))
+          {
+            bnzb.d("PeakService", "[loadBasicFeatures] start");
             FeatureManager.loadBasicFeatures();
+            bnzb.d("PeakService", "[loadBasicFeatures] end");
           }
-          blqh.a();
-          bknl.a(-1000, null, null);
-          bljc.a().a("fake_key", "", 4);
+          bojl.a();
+          bnby.a(-1000, null, null);
+          bnyp.a().a("fake_key", "", 4);
           return;
         }
         catch (Throwable paramIntent)
@@ -170,28 +174,28 @@ public class PeakService
         }
       case 3: 
         l = System.currentTimeMillis();
-        i = axph.a();
-        bnlc.a();
+        i = bani.a();
+        bqcb.a();
         CameraCaptureView.a.a(PeakAppInterface.a);
         CameraCaptureView.a.b(i);
-        bkoq.a();
-        bool = axpm.b();
+        bndd.a();
+        bool = bann.b();
       }
     } while (!QLog.isColorLevel());
     QLog.d("PeakService", 2, new Object[] { "cameraCreate finish, cost:", Long.valueOf(System.currentTimeMillis() - l), " soloaded:", Boolean.valueOf(bool), " selectCamera:", Integer.valueOf(i) });
     return;
-    bljn.b("PeakService", "[ACTION_START_EDITOR_MISSON] receive");
+    bnzb.b("PeakService", "[ACTION_START_EDITOR_MISSON] receive");
     paramIntent = paramIntent.getStringExtra("generate_mission");
-    blkf.a().a();
-    blkf.a().d(paramIntent);
+    bnzw.a().a();
+    bnzw.a().c(paramIntent);
     return;
     boolean bool = paramIntent.getBooleanExtra("key_alive", false);
-    blkf.a().a(bool);
+    bnzw.a().a(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PeakService
  * JD-Core Version:    0.7.0.1
  */

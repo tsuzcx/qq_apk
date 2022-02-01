@@ -1,16 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
 public class bnmw
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public bnmw(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  public bnmw(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(this.a.c);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      yqu.a("clk_filter", yqu.b(banm.a), 0, false, new String[0]);
+      if (AEProviderContainerView.a(this.a) != 0)
+      {
+        AEProviderContainerView.a(this.a);
+        continue;
+        yqu.a("clk_beauty", yqu.b(banm.a), 0, false, new String[0]);
+        if (AEProviderContainerView.a(this.a) != 1) {
+          AEProviderContainerView.b(this.a);
+        }
+      }
+    }
   }
 }
 

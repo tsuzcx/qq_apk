@@ -1,25 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tpg
-  implements Animation.AnimationListener
 {
-  public tpg(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public Activity a;
+  public JSONObject a;
+  public tpd b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  tpg(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
   {
-    this.a.a.startAnimation(PublicAccountImageCollectionMainActivity.a(this.a));
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramtpd2;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tpg
  * JD-Core Version:    0.7.0.1
  */

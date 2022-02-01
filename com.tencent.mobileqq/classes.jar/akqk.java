@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloTicker;
-import com.tencent.mobileqq.apollo.EnginePreLoader.2;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import Wallet.SkinInfo;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.UsualHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
 public class akqk
+  implements akrg
 {
-  private ApolloEngine jdField_a_of_type_ComTencentMobileqqApolloApolloEngine;
-  private ApolloTicker jdField_a_of_type_ComTencentMobileqqApolloApolloTicker;
+  public akqk(UsualHbFragment paramUsualHbFragment) {}
   
-  private void a()
+  public void a(akqw paramakqw)
   {
-    ThreadManagerV2.executeOnSubThread(new EnginePreLoader.2(this));
+    if ((paramakqw.jdField_a_of_type_WalletSkinInfo.skin_id == 0) || (paramakqw.jdField_a_of_type_WalletSkinInfo.skin_id == -2))
+    {
+      paramakqw = akqv.a(this.a.channel, this.a.a, this.a.mActivity.a(), paramakqw.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
+      this.a.c.setHint(paramakqw);
+      return;
+    }
+    this.a.c.setHint(paramakqw.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
   }
 }
 

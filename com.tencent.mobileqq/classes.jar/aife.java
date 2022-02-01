@@ -1,80 +1,43 @@
-import android.os.Bundle;
+import android.app.Dialog;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class aife
-  extends Handler
+  extends bjha
 {
-  aife(aiez paramaiez, Looper paramLooper)
+  aife(aidp paramaidp) {}
+  
+  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    super(paramLooper);
+    if ((!paramBoolean) || (paramHashMap == null))
+    {
+      this.a.D(2);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
+    }
+    if (((Integer)paramHashMap.get("result")).intValue() == 0)
+    {
+      this.a.D(1);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
+    }
+    this.a.an = true;
+    this.a.bE();
+    if ((aidp.a(this.a) != null) && (aidp.a(this.a).isShowing())) {
+      aidp.a(this.a).dismiss();
+    }
+    this.a.bF();
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.isLogin())) {}
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 0: 
-          paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-          this.a.a(35, paramMessage);
-          return;
-        case 28929: 
-          paramMessage = paramMessage.getData();
-        }
-      } while (paramMessage == null);
-      int i = paramMessage.getInt("result");
-      if ((i == -1) || (i == -2))
-      {
-        if (i == -1) {
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131719556);
-        }
-        for (String str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131719555);; str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131719558))
-        {
-          try
-          {
-            if (this.a.jdField_a_of_type_Bdjz != null)
-            {
-              if (this.a.jdField_a_of_type_Bdjz.isShowing()) {
-                this.a.jdField_a_of_type_Bdjz.dismiss();
-              }
-              this.a.jdField_a_of_type_Bdjz = null;
-            }
-            this.a.jdField_a_of_type_Bdjz = bdgm.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, paramMessage, str, new aiff(this), null);
-            this.a.jdField_a_of_type_Bdjz.setOnCancelListener(new aifg(this));
-            this.a.jdField_a_of_type_Bdjz.setOnDismissListener(new aifh(this));
-            this.a.jdField_a_of_type_Bdjz.show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          paramMessage.printStackTrace();
-          return;
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131719559);
-        }
-      }
-    } while (this.a.jdField_a_of_type_Bdjz == null);
-    this.a.jdField_a_of_type_Bdjz.dismiss();
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(34, paramMessage);
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(33, paramMessage);
+    if ((!paramBoolean) || (paramHashMap == null)) {
+      return;
+    }
+    this.a.aq = true;
+    this.a.ap = ((Boolean)paramHashMap.get("result")).booleanValue();
+    this.a.bE();
+    this.a.bF();
   }
 }
 

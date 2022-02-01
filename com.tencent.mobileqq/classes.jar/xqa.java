@@ -1,21 +1,23 @@
-import android.view.View;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import android.util.SparseArray;
 
-public abstract interface xqa
+final class xqa
+  extends SparseArray<String>
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, View paramView);
-  
-  public abstract void a(View paramView, int paramInt1, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt2);
-  
-  public abstract void a(View paramView, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt);
-  
-  public abstract boolean a(View paramView, int paramInt);
+  xqa()
+  {
+    put(31, "PLAYER_INFO_PLAYER_TYPE");
+    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
+    put(33, "PLAYER_INFO_START_GET_VINFO");
+    put(21, anni.a(2131713243));
+    put(34, "PLAYER_INFO_END_GET_VINFO");
+    put(22, anni.a(2131713247));
+    put(23, "PLAYER_INFO_START_RENDERING");
+    put(39, "PLAYER_INFO_HW_DECODE_FAILED");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xqa
  * JD-Core Version:    0.7.0.1
  */

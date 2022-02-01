@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bmus;
-import bmvp;
+import bply;
+import bpmv;
 
 class DoodleTextureView$1
   implements Runnable
@@ -10,19 +10,19 @@ class DoodleTextureView$1
   
   public void run()
   {
-    bmvp localbmvp = (bmvp)this.this$0.jdField_a_of_type_Bmus.a(102);
-    if (localbmvp != null)
+    bpmv localbpmv = (bpmv)this.this$0.jdField_a_of_type_Bply.a(102);
+    if (localbpmv != null)
     {
-      localbmvp.a();
-      localbmvp.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
-      this.this$0.jdField_a_of_type_Bmus.h();
+      localbpmv.a();
+      localbpmv.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
+      this.this$0.jdField_a_of_type_Bply.h();
       this.this$0.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView.1
  * JD-Core Version:    0.7.0.1
  */

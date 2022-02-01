@@ -1,46 +1,76 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Map;
+import android.os.Handler;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.13.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
-class bfow
-  extends alqh
+public class bfow
+  implements bdfn
 {
-  private bfow(bfou parambfou) {}
+  bfow(bfos parambfos) {}
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2)
+  public void a()
   {
-    bflp.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver onGetAuthCode isSuccess|" + paramBoolean + " code|" + paramString1 + " reqId|" + paramString2);
-    if (paramString2 == null) {
-      return;
-    }
-    Bundle localBundle = (Bundle)bfou.a(this.a).get(paramString2);
-    if (localBundle == null)
+    this.a.jdField_a_of_type_Int = 1;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) && (this.a.jdField_a_of_type_AndroidAppActivity == null) && (!bfos.jdField_a_of_type_JavaLangString.equals(this.a.jdField_b_of_type_JavaLangString))) {}
+    String str1;
+    List localList;
+    do
     {
-      bflp.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver reqId|" + paramString2 + "  but params context is null");
       return;
-    }
-    int i = localBundle.getInt("CallbackId");
-    paramString2 = new Bundle();
-    paramString2.putString("PackageName", localBundle.getString("PackageName"));
-    paramString2.putInt("VersionCode", localBundle.getInt("VersionCode"));
-    if (paramBoolean)
-    {
-      paramString2.putBoolean("IsSuccess", true);
-      paramString2.putString("Code", paramString1);
-    }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {
+        break;
+      }
+      str1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_JavaLangString;
+      localList = (List)this.a.jdField_b_of_type_JavaUtilHashMap.get(str1);
+    } while ((bftg.a(localList)) || (localList == null));
+    if (localList != null) {}
     for (;;)
     {
-      bflp.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver callbackId|" + i + " result|" + paramString2);
-      bfou.a(this.a).callbackResult(i, EIPCResult.createSuccessResult(paramString2));
-      return;
-      paramString2.putBoolean("IsSuccess", false);
+      try
+      {
+        Object localObject3 = (bfpg)localList.remove(0);
+        if ((localObject3 instanceof MessageForDeliverGiftTips))
+        {
+          localObject3 = (MessageForDeliverGiftTips)localObject3;
+          String str2 = bftg.b((MessageForDeliverGiftTips)localObject3);
+          ((MessageForDeliverGiftTips)localObject3).hasFetchButFailed = false;
+          if (QLog.isColorLevel()) {
+            QLog.d("AIOAnimationControlManager", 2, "onMagicPlayEnd id:" + str2);
+          }
+          if (this.a.jdField_a_of_type_Bfph != null) {
+            this.a.jdField_a_of_type_Bfph.a(str1, str2);
+          }
+        }
+        if (localList.size() == 0) {
+          break label250;
+        }
+        Collections.sort(localList, this.a.jdField_a_of_type_JavaUtilComparator);
+        this.a.jdField_a_of_type_AndroidOsHandler.post(new AIOAnimationControlManager.13.1(this));
+        return;
+      }
+      finally {}
+      Object localObject2 = this.a.jdField_b_of_type_JavaLangString;
+      break;
+      label250:
+      this.a.jdField_a_of_type_Bfzc.a(null);
+      bfos.a(this.a, false);
+      localObject2 = ChatActivityUtils.a((String)localObject2, this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      if ((bfos.jdField_a_of_type_Boolean) && (localObject2 != null) && (-1 == ((Integer)localObject2).intValue()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)) {
+        bfos.jdField_a_of_type_Boolean = false;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfow
  * JD-Core Version:    0.7.0.1
  */

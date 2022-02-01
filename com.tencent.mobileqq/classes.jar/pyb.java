@@ -1,24 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 
-class pyb
-  implements View.OnTouchListener
+public abstract interface pyb
 {
-  pyb(pxx parampxx, LinearLayout paramLinearLayout) {}
+  public abstract void onLoadUserInfoFailed(String paramString1, String paramString2);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
-  }
+  public abstract void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pyb
  * JD-Core Version:    0.7.0.1
  */

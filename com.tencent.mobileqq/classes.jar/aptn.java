@@ -1,54 +1,79 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.RejectedExecutionException;
+import android.hardware.GeomagneticField;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class aptn
-  implements URLDrawable.URLDrawableListener
+public abstract class aptn
+  implements SensorEventListener
 {
-  aptn(aptg paramaptg) {}
+  private float jdField_a_of_type_Float = -1.0F;
+  protected SensorManager a;
+  protected aptg a;
+  protected List<Sensor> a;
+  private boolean jdField_a_of_type_Boolean;
+  protected float[] a;
+  private float b = -1.0F;
+  private float c = -1.0F;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public aptn(SensorManager paramSensorManager, aptg paramaptg)
   {
-    if ((paramThrowable instanceof RejectedExecutionException)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BigEmotionDownloadedAdapter", 2, "arg0.getConstantState() = " + paramURLDrawable.getConstantState());
-      }
-    }
-    label41:
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          break label41;
-          do
-          {
-            return;
-          } while (paramURLDrawable == null);
-          paramThrowable = paramURLDrawable.getFileInLocal();
-          if ((paramThrowable != null) && (paramThrowable.exists())) {
-            paramThrowable.delete();
-          }
-          paramThrowable = paramURLDrawable.getTag();
-        } while (!(paramThrowable instanceof Integer));
-        i = ((Integer)paramThrowable).intValue();
-      } while (i >= 3);
-      i += 1;
-      paramURLDrawable.setTag(Integer.valueOf(i));
-      paramURLDrawable.restartDownload();
-    } while (!QLog.isColorLevel());
-    QLog.i("BigEmotionDownloadedAdapter", 2, "download recomment comic pic , try count = " + i);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ArrayOfFloat = new float[3];
+    this.jdField_a_of_type_AndroidHardwareSensorManager = paramSensorManager;
+    this.jdField_a_of_type_Aptg = paramaptg;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  private GeomagneticField a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return new GeomagneticField(this.jdField_a_of_type_Float, this.b, this.c, System.currentTimeMillis());
+    }
+    return null;
+  }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
+  protected float a()
+  {
+    GeomagneticField localGeomagneticField = a();
+    if (localGeomagneticField != null) {
+      return localGeomagneticField.getDeclination();
+    }
+    return 0.0F;
+  }
+  
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, 1);
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this, localSensor);
+    }
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
 }
 
 

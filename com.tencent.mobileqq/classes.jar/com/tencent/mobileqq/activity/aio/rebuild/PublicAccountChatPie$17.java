@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agti;
+import aidp;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,7 +12,7 @@ import java.util.List;
 public class PublicAccountChatPie$17
   implements Runnable
 {
-  public PublicAccountChatPie$17(agti paramagti, List paramList) {}
+  public PublicAccountChatPie$17(aidp paramaidp, List paramList) {}
   
   public void run()
   {
@@ -39,7 +39,7 @@ public class PublicAccountChatPie$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.17
  * JD-Core Version:    0.7.0.1
  */

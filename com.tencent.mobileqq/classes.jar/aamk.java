@@ -1,20 +1,19 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aamk
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class aamk
+  implements View.OnClickListener
 {
-  aamk(aamj paramaamj, AdQQMINIProgramAdapter.Params paramParams, GdtAd paramGdtAd) {}
+  public aamk(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    aase.b("GdtQQMINIProgramAdapter", String.format("onLaunchResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
-    AdReporterForAnalysis.reportForLaunchQQMINIProgramEND((Context)this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter$Params.context.get(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramBoolean);
+    aaxb.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_delete_draft", 0, 0, new String[0]);
+    aaje.a().a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()), 2131718336, new aaml(this));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

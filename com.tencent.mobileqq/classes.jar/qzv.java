@@ -1,23 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qzv
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  qzv(qzs paramqzs) {}
+  qzv(qzu paramqzu) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (qzs.a(this.a) != null) {
-      qzs.a(this.a).a(qzs.a(this.a), qzs.b(this.a), false, false);
-    }
-    qzs.a(this.a, true);
-    qzs.b(this.a, false);
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qzv
  * JD-Core Version:    0.7.0.1
  */

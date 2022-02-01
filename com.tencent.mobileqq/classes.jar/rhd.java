@@ -1,47 +1,64 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.Random;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.feeds_info.IconWordingInfo;
 
 public class rhd
-  extends ayyb
 {
-  VideoFeedsAppInterface jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public rhd(VideoFeedsAppInterface paramVideoFeedsAppInterface)
+  private static rhd b(feeds_info.IconWordingInfo paramIconWordingInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface = paramVideoFeedsAppInterface;
-    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      super.a();
-      return;
+    rhd localrhd = new rhd();
+    localrhd.jdField_a_of_type_Int = pvd.a(paramIconWordingInfo.uint32_type);
+    if (paramIconWordingInfo.bytes_icon_url.has()) {
+      localrhd.jdField_a_of_type_JavaLangString = paramIconWordingInfo.bytes_icon_url.get().toStringUtf8();
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    if (paramIconWordingInfo.bytes_wording.has()) {
+      localrhd.jdField_b_of_type_JavaLangString = paramIconWordingInfo.bytes_wording.get().toStringUtf8();
     }
+    if (paramIconWordingInfo.bytes_status_icon_url.has()) {
+      localrhd.jdField_c_of_type_JavaLangString = paramIconWordingInfo.bytes_status_icon_url.get().toStringUtf8();
+    }
+    localrhd.jdField_b_of_type_Int = pvd.a(paramIconWordingInfo.uint32_status);
+    if (paramIconWordingInfo.bytes_status.has()) {
+      localrhd.d = paramIconWordingInfo.bytes_status.get().toStringUtf8();
+    }
+    localrhd.jdField_c_of_type_Int = pvd.a(paramIconWordingInfo.uint32_icon_show_mode);
+    return localrhd;
   }
   
-  public void a(ToServiceMsg paramToServiceMsg)
+  public feeds_info.IconWordingInfo a()
   {
-    super.b(paramToServiceMsg, null, rhe.class);
+    feeds_info.IconWordingInfo localIconWordingInfo = new feeds_info.IconWordingInfo();
+    localIconWordingInfo.uint32_type.set(this.jdField_a_of_type_Int);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localIconWordingInfo.bytes_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localIconWordingInfo.bytes_wording.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      localIconWordingInfo.bytes_status_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    localIconWordingInfo.uint32_status.set(this.jdField_b_of_type_Int);
+    localIconWordingInfo.uint32_icon_show_mode.set(this.jdField_c_of_type_Int);
+    if (!TextUtils.isEmpty(this.d)) {
+      localIconWordingInfo.bytes_status.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    return localIconWordingInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rhd
  * JD-Core Version:    0.7.0.1
  */

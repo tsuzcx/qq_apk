@@ -1,22 +1,20 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class aemv
-  extends ClickableSpan
+  extends aniz
 {
-  public aemv(ActivateFriendActivity paramActivateFriendActivity) {}
+  public aemv(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  protected void onGetWholePeopleVoteLebaSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.a.b();
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(0, 165, 224));
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetWholePeopleVoteLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    }
+    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
+      this.a.a.sendEmptyMessage(11340002);
+    }
   }
 }
 

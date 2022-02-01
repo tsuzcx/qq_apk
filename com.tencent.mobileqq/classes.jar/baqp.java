@@ -1,12 +1,6 @@
-public class baqp
-  extends bdpx
+public abstract interface baqp
 {
-  boolean a = false;
-  
-  public baqp(String paramString, byte[] paramArrayOfByte, bdpz parambdpz, boolean paramBoolean)
-  {
-    super(paramString, paramArrayOfByte, parambdpz, paramBoolean);
-  }
+  public abstract void a(int paramInt, float[] paramArrayOfFloat);
 }
 
 

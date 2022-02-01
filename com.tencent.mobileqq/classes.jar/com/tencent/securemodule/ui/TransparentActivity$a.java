@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 import com.qq.jce.wup.UniAttribute;
 import com.tencent.securemodule.ar;
-import com.tencent.securemodule.ax;
+import com.tencent.securemodule.az;
 import com.tencent.securemodule.service.IControlService;
 
 public class TransparentActivity$a
@@ -62,7 +62,7 @@ public class TransparentActivity$a
         ((UniAttribute)localObject).put("data", TransparentActivity.e(this.a));
         localObject = ((UniAttribute)localObject).encode();
         if (localObject != null) {
-          TransparentActivity.d(this.a).doRemoteTask(ax.a((byte[])localObject), new ar(this));
+          TransparentActivity.d(this.a).doRemoteTask(az.a((byte[])localObject), new ar(this));
         }
         i = 1;
       }
@@ -82,7 +82,7 @@ public class TransparentActivity$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.ui.TransparentActivity.a
  * JD-Core Version:    0.7.0.1
  */

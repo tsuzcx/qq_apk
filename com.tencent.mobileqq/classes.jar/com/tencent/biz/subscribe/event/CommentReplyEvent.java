@@ -2,6 +2,7 @@ package com.tencent.biz.subscribe.event;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 
 public class CommentReplyEvent
   extends SimpleBaseEvent
@@ -17,7 +18,7 @@ public class CommentReplyEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.event.CommentReplyEvent
  * JD-Core Version:    0.7.0.1
  */

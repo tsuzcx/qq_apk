@@ -1,34 +1,27 @@
-import com.tencent.qqmini.sdk.core.widget.CapsuleButton;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-public abstract interface bglx
+final class bglx
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  bglx(Activity paramActivity) {}
   
-  public abstract bgof a(int paramInt);
-  
-  public abstract CapsuleButton a();
-  
-  public abstract String a();
-  
-  public abstract String a(bgmk parambgmk);
-  
-  public abstract void a(String paramString1, String paramString2, int[] paramArrayOfInt);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract void setNaviVisibility(int paramInt);
-  
-  public abstract void setTabBarVisibility(int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bglx
  * JD-Core Version:    0.7.0.1
  */

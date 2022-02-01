@@ -1,11 +1,13 @@
-import android.content.Context;
+import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
 
 public class ajml
-  extends ajlx
+  extends anqd
 {
-  public ajml(Context paramContext)
+  public ajml(TroopFragment paramTroopFragment) {}
+  
+  protected void a()
   {
-    this.a = paramContext.getString(2131698122);
+    this.a.h();
   }
 }
 

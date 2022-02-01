@@ -1,80 +1,128 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.os.SystemClock;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashSet;
 
-public class bazs
+class bazs
+  extends AsyncTask<Void, Bitmap, Bitmap>
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public bazs() {}
-  
-  public bazs(String paramString, int paramInt1, int paramInt2)
+  public bazs(bazr parambazr, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.c = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  public static String a(List<bazs> paramList)
+  private Bitmap a(File paramFile)
   {
-    if (paramList == null) {
-      return null;
+    Bitmap localBitmap1 = null;
+    Bitmap localBitmap2 = null;
+    if (paramFile.exists()) {
+      localBitmap2 = localBitmap1;
     }
     try
     {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      localBitmap1 = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath());
+      localBitmap2 = localBitmap1;
+      if (localBitmap1 == null)
       {
-        bazs localbazs = (bazs)paramList.next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("i", localbazs.jdField_a_of_type_JavaLangString);
-        if (localbazs.jdField_a_of_type_Int != 80) {
-          localJSONObject.put("p", localbazs.jdField_a_of_type_Int);
-        }
-        if (localbazs.c != 1) {
-          localJSONObject.put("t", localbazs.c);
-        }
-        localJSONArray.put(localJSONObject);
+        localBitmap2 = localBitmap1;
+        paramFile.delete();
+        localBitmap2 = localBitmap1;
       }
-      paramList = localJSONArray.toString();
+      return localBitmap2;
     }
-    catch (Exception paramList)
-    {
-      paramList.printStackTrace();
-      return null;
-    }
-    return paramList;
+    catch (OutOfMemoryError paramFile) {}
+    return localBitmap2;
   }
   
-  public static ArrayList<bazs> a(String paramString)
+  protected Bitmap a(Void... paramVarArgs)
   {
-    try
+    Object localObject1 = null;
+    paramVarArgs = null;
+    boolean bool2 = true;
+    Object localObject2 = bazr.a();
+    if (localObject2 != null)
     {
-      ArrayList localArrayList = new ArrayList();
-      JSONArray localJSONArray = new JSONArray(paramString);
-      int i = 0;
-      for (;;)
+      localObject1 = new File((File)localObject2, this.jdField_a_of_type_JavaLangString);
+      boolean bool1 = bool2;
+      if (!((File)localObject1).exists())
       {
-        paramString = localArrayList;
-        if (i >= localJSONArray.length()) {
-          break;
+        if (!TextUtils.isEmpty(this.b))
+        {
+          localObject2 = a(new File((File)localObject2, this.b));
+          if (localObject2 != null) {
+            publishProgress(new Bitmap[] { localObject2 });
+          }
         }
-        paramString = localJSONArray.getJSONObject(i);
-        localArrayList.add(new bazs(paramString.getString("i"), paramString.optInt("p", 80), paramString.optInt("t", 1)));
-        i += 1;
+        bool1 = bool2;
+        if (this.c != null)
+        {
+          if ((bazr.a(this.jdField_a_of_type_Bazr) > 3L) && (Math.abs(SystemClock.uptimeMillis() - bazr.a(this.jdField_a_of_type_Bazr)) > 60000L)) {
+            bazr.a(this.jdField_a_of_type_Bazr, 0L);
+          }
+          bool1 = bool2;
+          if (bazr.a(this.jdField_a_of_type_Bazr) < 3L) {
+            bool1 = bazr.a(this.jdField_a_of_type_Bazr, this.c, (File)localObject1);
+          }
+        }
       }
-      return paramString;
+      if (bool1) {
+        paramVarArgs = a((File)localObject1);
+      }
+      if ((!bool1) || (paramVarArgs == null)) {
+        break label253;
+      }
+      bazr.a(this.jdField_a_of_type_Bazr, 0L);
+      localObject1 = paramVarArgs;
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      paramString.printStackTrace();
-      paramString = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.richstatus.img", 2, "decodeBitmap finish with " + localObject1 + ", " + bazr.a(this.jdField_a_of_type_Bazr));
+      }
+      return localObject1;
+      label253:
+      localObject1 = paramVarArgs;
+      if (!TextUtils.isEmpty(this.c))
+      {
+        localObject1 = paramVarArgs;
+        if (bazr.b(this.jdField_a_of_type_Bazr) == 3L)
+        {
+          bazr.a(this.jdField_a_of_type_Bazr, SystemClock.uptimeMillis());
+          localObject1 = paramVarArgs;
+        }
+      }
+    }
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      BaseApplicationImpl.sImageCache.put(bazr.a(this.jdField_a_of_type_Bazr) + this.jdField_a_of_type_JavaLangString, paramBitmap, (byte)0);
+    }
+    bazr.a(this.jdField_a_of_type_Bazr).remove(this.jdField_a_of_type_JavaLangString);
+    if (bazr.a(this.jdField_a_of_type_Bazr) != null) {
+      bazr.a(this.jdField_a_of_type_Bazr).a(this.jdField_a_of_type_JavaLangString, this.c, paramBitmap, 1);
+    }
+  }
+  
+  protected void a(Bitmap... paramVarArgs)
+  {
+    paramVarArgs = paramVarArgs[0];
+    BaseApplicationImpl.sImageCache.put(bazr.a(this.jdField_a_of_type_Bazr) + this.b, paramVarArgs, (byte)0);
+    if (bazr.a(this.jdField_a_of_type_Bazr) != null) {
+      bazr.a(this.jdField_a_of_type_Bazr).a(this.jdField_a_of_type_JavaLangString, this.c, paramVarArgs, 0);
     }
   }
 }

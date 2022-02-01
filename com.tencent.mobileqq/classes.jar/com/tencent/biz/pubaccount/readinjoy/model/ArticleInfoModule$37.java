@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -8,17 +7,18 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import ors;
-import pew;
-import pvb;
-import qnm;
-import qno;
+import pha;
+import pwb;
+import qnf;
+import rii;
+import rik;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ControlParam;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqBody;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqMsgInfo;
@@ -26,7 +26,7 @@ import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqMsgInfo;
 public class ArticleInfoModule$37
   implements Runnable
 {
-  public ArticleInfoModule$37(pew parampew, String paramString, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public ArticleInfoModule$37(pwb parampwb, String paramString, int paramInt1, int paramInt2, boolean paramBoolean) {}
   
   public void run()
   {
@@ -46,7 +46,7 @@ public class ArticleInfoModule$37
         QLog.d("ArticleInfoModule", 1, "request0x8c8UpdateUpvoteAndComment selection:" + (String)localObject1);
       }
       QLog.d("ArticleInfoModule", 1, new Object[] { "req 8c8, feedsId = ", this.jdField_a_of_type_JavaLangString, ", feedsType = ", Integer.valueOf(this.jdField_a_of_type_Int) });
-      Object localObject3 = this.this$0.a.a(ArticleInfo.class, true, (String)localObject1, null, null, null, "mRecommendSeq desc", null);
+      Object localObject3 = this.this$0.a.query(ArticleInfo.class, true, (String)localObject1, null, null, null, "mRecommendSeq desc", null);
       if (localObject3 == null)
       {
         QLog.d("ArticleInfoModule", 1, "no soical feeds to update feedsid:" + this.jdField_a_of_type_JavaLangString);
@@ -56,7 +56,7 @@ public class ArticleInfoModule$37
       }
       localObject1 = new ConcurrentHashMap();
       Object localObject2 = new oidb_cmd0x8c8.ReqBody();
-      ((oidb_cmd0x8c8.ReqBody)localObject2).uint64_uin.set(Long.valueOf(ors.a()).longValue());
+      ((oidb_cmd0x8c8.ReqBody)localObject2).uint64_uin.set(Long.valueOf(pha.a()).longValue());
       ((oidb_cmd0x8c8.ReqBody)localObject2).uint32_version.set(1);
       ArrayList localArrayList = new ArrayList();
       localObject3 = ((List)localObject3).iterator();
@@ -78,8 +78,8 @@ public class ArticleInfoModule$37
           Iterator localIterator = localArticleInfo.mTopicRecommendFeedsInfo.a.iterator();
           while (localIterator.hasNext())
           {
-            qno localqno = (qno)localIterator.next();
-            localReqMsgInfo.rpt_topic_id.add(Integer.valueOf(localqno.jdField_a_of_type_Int));
+            rik localrik = (rik)localIterator.next();
+            localReqMsgInfo.rpt_topic_id.add(Integer.valueOf(localrik.jdField_a_of_type_Int));
           }
         }
         localArrayList.add(localReqMsgInfo);
@@ -88,7 +88,7 @@ public class ArticleInfoModule$37
       ((oidb_cmd0x8c8.ReqBody)localObject2).rpt_msg_info_list.set(localArrayList);
       ((oidb_cmd0x8c8.ReqBody)localObject2).control_req_param.set(new oidb_cmd0x8c8.ControlParam());
       ((oidb_cmd0x8c8.ReqBody)localObject2).control_req_param.uint32_need_follow_status.set(1);
-      localObject2 = pvb.a("OidbSvc.0x8c8", 2248, 0, ((oidb_cmd0x8c8.ReqBody)localObject2).toByteArray());
+      localObject2 = qnf.a("OidbSvc.0x8c8", 2248, 0, ((oidb_cmd0x8c8.ReqBody)localObject2).toByteArray());
       ((ToServiceMsg)localObject2).addAttribute("0x8c8_retry_times", Integer.valueOf(0));
       ((ToServiceMsg)localObject2).addAttribute("0x8c8_articleMap", localObject1);
       ((ToServiceMsg)localObject2).addAttribute("isUpdateByAccount", Boolean.valueOf(this.jdField_a_of_type_Boolean));

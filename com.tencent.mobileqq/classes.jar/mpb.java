@@ -1,18 +1,20 @@
-import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface mpb
+class mpb
+  implements mqc
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, long paramLong);
+  mpb(moy parammoy) {}
   
-  public abstract void a(int paramInt, long paramLong);
-  
-  public abstract void a(MotionEvent paramMotionEvent);
-  
-  public abstract void a(String paramString);
+  public void a()
+  {
+    QLog.w("AVRedBag", 1, "mResultUI 关闭了");
+    this.a.a = null;
+    lsv.a().b(8);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mpb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,22 @@
-import java.util.HashMap;
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnBufferingUpdateListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+import tv.danmaku.ijk.media.player.IMediaPlayer.OnBufferingUpdateListener;
 
-public class bjyb
+class bjyb
+  implements IMediaPlayer.OnBufferingUpdateListener
 {
-  public String a;
-  public HashMap<String, String> a;
+  bjyb(bjxx parambjxx, ReliableVideoPlayer.OnBufferingUpdateListener paramOnBufferingUpdateListener) {}
   
-  public bjyb(bjya parambjya)
+  public void onBufferingUpdate(IMediaPlayer paramIMediaPlayer, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnBufferingUpdateListener != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnBufferingUpdateListener.onBufferingUpdate(this.jdField_a_of_type_Bjxx, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjyb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aawd
-  extends aavz
 {
-  private boolean a;
-  private String c;
-  private String d;
+  private String jdField_a_of_type_JavaLangString = "";
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+  private String b = "";
   
-  public aawd(JSONObject paramJSONObject)
+  public static aawd a(String paramString)
   {
-    a(paramJSONObject);
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      aawd localaawd = new aawd();
+      paramString = new JSONObject(paramString);
+      localaawd.jdField_a_of_type_JavaLangString = paramString.optString("icon_image_url", "");
+      localaawd.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("config");
+      localaawd.b = paramString.optString("md5", "");
+      return localaawd;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
   public String a()
   {
-    String str = super.a();
-    try
-    {
-      Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchUrl", this.b);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("driverVersion", this.c);
-      ((JSONObject)localObject).put("previousPatch", this.d);
-      ((JSONObject)localObject).put("isDelayLoad", this.jdField_a_of_type_Boolean);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "NativePatchItemConfig writeToJsonString", localJSONException);
-    }
-    return str;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  protected void a(JSONObject paramJSONObject)
+  public JSONObject a()
   {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    this.c = paramJSONObject.optString("driverVersion", null);
-    this.d = paramJSONObject.optString("previousPatch", null);
-    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isDelayLoad", false);
+    return this.jdField_a_of_type_OrgJsonJSONObject;
   }
   
-  public boolean a(boolean paramBoolean)
+  public String b()
   {
-    if (TextUtils.isEmpty(this.c))
-    {
-      QLog.d("PatchLogTag", 1, "NativePatchItemConfig isValidConfig driverVersion is null");
-      return false;
-    }
-    return super.a(paramBoolean);
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return "k = icon_image_url, value = " + this.jdField_a_of_type_JavaLangString + "\n k = config, value = " + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "\n k = md5, value = " + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aawd
  * JD-Core Version:    0.7.0.1
  */

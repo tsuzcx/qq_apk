@@ -2,7 +2,7 @@ package cooperation.qqreader.utils;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bjbk;
+import blpt;
 
 public final class QRDebugEnvUrlUtils
 {
@@ -34,8 +34,8 @@ public final class QRDebugEnvUrlUtils
   
   public static void initTestEnv(Context paramContext)
   {
-    jdField_a_of_type_Boolean = bjbk.a(paramContext);
-    jdField_a_of_type_JavaLangString = bjbk.a(paramContext);
+    jdField_a_of_type_Boolean = blpt.a(paramContext);
+    jdField_a_of_type_JavaLangString = blpt.a(paramContext);
   }
   
   public static boolean isDebugEnv()
@@ -45,14 +45,14 @@ public final class QRDebugEnvUrlUtils
   
   public static void setTestEnv(Context paramContext, boolean paramBoolean, String paramString)
   {
-    bjbk.a(paramContext, paramBoolean, paramString);
+    blpt.a(paramContext, paramBoolean, paramString);
     jdField_a_of_type_Boolean = paramBoolean;
     jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.utils.QRDebugEnvUrlUtils
  * JD-Core Version:    0.7.0.1
  */

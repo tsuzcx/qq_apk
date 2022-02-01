@@ -1,37 +1,50 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationBanner;
+import com.tencent.widget.SimpleTextView;
 
-public class aixn
-  extends RecyclerView.ItemDecoration
+class aixn
+  extends bkov
 {
-  private int a;
-  private int b;
-  
-  private aixn(int paramInt1, int paramInt2)
+  aixn(aixj paramaixj, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public View a(int paramInt, Object paramObject, bkou parambkou, View.OnClickListener paramOnClickListener)
   {
-    int i = paramRecyclerView.getChildPosition(paramView);
-    if (i == 0)
-    {
-      paramRect.left = this.a;
-      return;
+    parambkou = super.a(paramInt, paramObject, parambkou, paramOnClickListener);
+    if ((parambkou instanceof SimpleTextView)) {
+      parambkou.setTag(paramObject);
     }
-    if (i == paramRecyclerView.getAdapter().getItemCount() - 1)
+    return parambkou;
+  }
+  
+  public void a(int paramInt, Object paramObject, bkou[] paramArrayOfbkou)
+  {
+    int i = 0;
+    if ((paramArrayOfbkou == null) || (paramArrayOfbkou.length <= 0)) {}
+    for (;;)
     {
-      paramRect.left = this.b;
-      paramRect.right = this.a;
       return;
+      paramInt = i;
+      if (paramArrayOfbkou.length < 0)
+      {
+        paramInt = i;
+        if (!(paramObject instanceof ConnectsExplorationBanner))
+        {
+          paramArrayOfbkou[0].b = 0;
+          paramArrayOfbkou[0].a = 0;
+          paramInt = 1;
+        }
+      }
+      while (paramInt < paramArrayOfbkou.length)
+      {
+        paramArrayOfbkou[paramInt].b = -1;
+        paramArrayOfbkou[paramInt].a = -1;
+        paramInt += 1;
+      }
     }
-    paramRect.left = this.b;
   }
 }
 

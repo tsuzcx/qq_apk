@@ -1,8 +1,6 @@
 public abstract interface aatu
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

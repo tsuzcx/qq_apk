@@ -1,42 +1,24 @@
-import android.support.annotation.NonNull;
+import android.os.IInterface;
+import cooperation.qzone.plugin.PluginRecord;
 
-class bmel
-  extends bmej<T>.bmem
-  implements bmdi
+public abstract interface bmel
+  extends IInterface
 {
-  @NonNull
-  final bmdn jdField_a_of_type_Bmdn;
+  public abstract PluginRecord a(String paramString);
   
-  bmel(bmdn parambmdn, @NonNull bmeo<? super T> parambmeo)
-  {
-    super(parambmdn, localbmeo);
-    this.jdField_a_of_type_Bmdn = parambmeo;
-  }
+  public abstract void a();
   
-  void a()
-  {
-    this.jdField_a_of_type_Bmdn.a().b(this);
-  }
+  public abstract void a(bmcq parambmcq, int paramInt);
   
-  public void a(bmdn parambmdn, bmdk parambmdk)
-  {
-    if (this.jdField_a_of_type_Bmdn.a().a() == bmdl.a)
-    {
-      this.jdField_a_of_type_Bmej.b(this.jdField_a_of_type_Bmeo);
-      return;
-    }
-    a(a());
-  }
+  public abstract boolean a();
   
-  boolean a()
-  {
-    return this.jdField_a_of_type_Bmdn.a().a().a(bmdl.d);
-  }
+  public abstract boolean a(String paramString);
   
-  boolean a(bmdn parambmdn)
-  {
-    return this.jdField_a_of_type_Bmdn == parambmdn;
-  }
+  public abstract boolean a(String paramString, bmct parambmct, int paramInt);
+  
+  public abstract boolean b(String paramString);
+  
+  public abstract boolean c(String paramString);
 }
 
 

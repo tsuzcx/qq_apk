@@ -1,67 +1,42 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.Surface;
-import java.util.Map;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
+import qqcircle.QQCircleDitto.StItemInfo;
 
-public abstract interface vyi
+class vyi
+  implements vxe
 {
-  public abstract int a();
+  vyi(vyh paramvyh) {}
   
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public void a()
+  {
+    String str = "";
+    if ((vyh.a(this.a) instanceof QQCircleDitto.StItemInfo)) {
+      str = ((QQCircleDitto.StItemInfo)vyh.a(this.a)).id.get();
+    }
+    vrc.a(str, 3, 1, 19, 2, vyh.a(this.a), vyh.a(this.a).id.get(), "", vyh.a(this.a).poster.id.get(), vyh.b(this.a), vyh.a(this.a), null, vyh.c(this.a), -1);
+  }
   
-  public abstract void a(int paramInt);
+  public void a(int paramInt) {}
   
-  public abstract void a(Context paramContext, Uri paramUri, Map<String, String> paramMap);
-  
-  public abstract void a(Surface paramSurface);
-  
-  public abstract void a(vyj paramvyj);
-  
-  public abstract void a(vyk paramvyk);
-  
-  public abstract void a(vyl paramvyl);
-  
-  public abstract void a(vym paramvym);
-  
-  public abstract void a(vyn paramvyn);
-  
-  public abstract void a(vyo paramvyo);
-  
-  public abstract void a(vyq paramvyq);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract int d();
-  
-  public abstract void d();
-  
-  public abstract int e();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public void b(int paramInt)
+  {
+    String str = "";
+    if ((vyh.a(this.a) instanceof QQCircleDitto.StItemInfo)) {
+      str = ((QQCircleDitto.StItemInfo)vyh.a(this.a)).id.get();
+    }
+    if (paramInt > 0) {}
+    for (paramInt = 18;; paramInt = 17)
+    {
+      vrc.a(str, 3, 1, paramInt, 2, vyh.a(this.a), vyh.a(this.a).id.get(), "", vyh.a(this.a).poster.id.get(), vyh.b(this.a), vyh.a(this.a), null, vyh.c(this.a), -1);
+      vrr.a().a(new vrt().a("followbutton").b("follow").a(vyh.a(this.a)).a(this.a.a()).a(vyh.a(this.a)).c(str));
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vyi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,43 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class wnl
-  extends xvp
 {
-  public static final String KEY = "MemoriesPlaceHolderSegment";
+  public static wnl a;
   
-  public wnl(Context paramContext)
+  public static wnl a()
   {
-    super(paramContext);
+    if (a == null) {
+      a = new wnl();
+    }
+    return a;
   }
   
-  public int a()
+  private void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
   {
-    return 1;
+    QQStoryContext.a();
+    AppInterface localAppInterface = QQStoryContext.a();
+    NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), niq.class);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.putExtra("isResend", false);
+    localNewIntent.setObserver(paramBusinessObserver);
+    localAppInterface.startServlet(localNewIntent);
   }
   
-  public View a(int paramInt, wtq paramwtq, ViewGroup paramViewGroup)
+  public void a(wnn paramwnn, wno paramwno)
   {
-    paramInt = xsm.d(this.a);
-    int i = xsm.e(this.a);
-    paramwtq.a().getLayoutParams().height = (paramInt - i);
-    return paramwtq.a();
-  }
-  
-  public String a()
-  {
-    return "MemoriesPlaceHolderSegment";
-  }
-  
-  public wtq a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new wtq(LayoutInflater.from(this.a).inflate(2131561502, paramViewGroup, false));
+    byte[] arrayOfByte = paramwnn.a();
+    String str = paramwnn.a();
+    long l = System.currentTimeMillis();
+    a(paramwnn.a(), arrayOfByte, new wnm(this, l, paramwnn, str, paramwno));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wnl
  * JD-Core Version:    0.7.0.1
  */

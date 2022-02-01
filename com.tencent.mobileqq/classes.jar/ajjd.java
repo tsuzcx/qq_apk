@@ -1,23 +1,24 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
+import java.lang.ref.WeakReference;
 
-public class ajjd
-  extends ajju
+class ajjd
+  implements View.OnLongClickListener
 {
-  public View a(int paramInt, Object paramObject, ajjp paramajjp, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajlm paramajlm)
+  private WeakReference<ajiy> a;
+  
+  public ajjd(ajiy paramajiy)
   {
-    paramObject = paramView;
-    if (paramView == null) {
-      paramObject = LayoutInflater.from(paramContext).inflate(2131558855, null);
+    this.a = new WeakReference(paramajiy);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    ajiy localajiy = (ajiy)this.a.get();
+    if (localajiy != null) {
+      return localajiy.onLongClick(paramView);
     }
-    paramObject.setOnClickListener(paramOnClickListener);
-    paramObject.setOnLongClickListener(paramOnLongClickListener);
-    paramObject.setTag(-1, Integer.valueOf(paramInt));
-    return paramObject;
+    return false;
   }
 }
 

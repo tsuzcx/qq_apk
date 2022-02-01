@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aaoq;
-import aase;
+import acmb;
+import acqy;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 
@@ -18,9 +18,9 @@ public final class GdtInterstitialView$2
     }
     for (;;)
     {
-      aase.b("GdtInterstitialView", String.format("close %b error:%d traceId:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
+      acqy.b("GdtInterstitialView", String.format("close %b error:%d traceId:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
       return;
-      WeakReference localWeakReference = aaoq.a().a(this.jdField_a_of_type_JavaLangString);
+      WeakReference localWeakReference = acmb.a().a(this.jdField_a_of_type_JavaLangString);
       if (localWeakReference != null)
       {
         if (localWeakReference.get() == null)
@@ -41,7 +41,7 @@ public final class GdtInterstitialView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialView.2
  * JD-Core Version:    0.7.0.1
  */

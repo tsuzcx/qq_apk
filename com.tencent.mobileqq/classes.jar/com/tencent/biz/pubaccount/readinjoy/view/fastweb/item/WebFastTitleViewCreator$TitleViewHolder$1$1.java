@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.item;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import sbl;
+import szp;
 
 class WebFastTitleViewCreator$TitleViewHolder$1$1
   implements Runnable
@@ -11,23 +11,23 @@ class WebFastTitleViewCreator$TitleViewHolder$1$1
   
   public void run()
   {
-    if (!sbl.a(this.a.this$0))
+    if (!szp.a(this.a.this$0))
     {
-      sbl.a(this.a.this$0, sbl.a(this.a.this$0));
-      if ((!this.a.a) && (sbl.a(this.a.this$0).getVisibility() != 0))
+      szp.a(this.a.this$0, szp.a(this.a.this$0));
+      if ((!this.a.a) && (szp.a(this.a.this$0).getVisibility() != 0))
       {
-        sbl.a(this.a.this$0).setVisibility(0);
-        sbl.a(this.a.this$0).setVisibility(0);
+        szp.a(this.a.this$0).setVisibility(0);
+        szp.a(this.a.this$0).setVisibility(0);
       }
       return;
     }
-    sbl.a(this.a.this$0).setVisibility(8);
-    sbl.a(this.a.this$0).setVisibility(8);
+    szp.a(this.a.this$0).setVisibility(8);
+    szp.a(this.a.this$0).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastTitleViewCreator.TitleViewHolder.1.1
  * JD-Core Version:    0.7.0.1
  */

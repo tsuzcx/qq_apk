@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 
-public class adsm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public final class adsm
+  implements DialogInterface.OnCancelListener
 {
-  public adsm(QQSettingMe paramQQSettingMe) {}
+  public adsm(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onGlobalLayout()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (QQSettingMe.a(this.a)) {
-      QQSettingMe.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, 0);
     }
   }
 }

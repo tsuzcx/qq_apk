@@ -1,53 +1,136 @@
-import android.os.Bundle;
-import android.os.Looper;
+import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.text.InputFilter;
 import android.text.TextUtils;
-import com.tencent.gdtad.util.GdtUserInfoAuthorizationHelper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AuthorizationItem;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog.5;
+import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog.6;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.widget.InputMethodLinearLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 public class aatm
-  implements yrb
+  implements View.OnClickListener, bhya
 {
-  public void callback(Bundle paramBundle)
+  protected Dialog a;
+  protected EditText a;
+  protected TextView a;
+  protected TextView b;
+  
+  @TargetApi(11)
+  public aatm(TroopGiftPanel paramTroopGiftPanel, Context paramContext)
   {
-    String str1 = paramBundle.getString("name");
-    String str2 = paramBundle.getString("phone");
-    paramBundle = paramBundle.getString("city");
-    this.jdField_a_of_type_Yqz.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtUserInfoAuthorizationHelper", 2, "getUserInfo : name -> " + str1 + ", phone -> " + str2 + ", city -> " + paramBundle);
+    this.jdField_a_of_type_AndroidAppDialog = new Dialog(paramContext, 2131755165);
+    Window localWindow = this.jdField_a_of_type_AndroidAppDialog.getWindow();
+    localWindow.setSoftInputMode(16);
+    View localView = localWindow.getDecorView();
+    if (localView != null) {
+      localView.setPadding(0, 0, 0, 0);
     }
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.a))
-    {
-      bool1 = bool2;
-      if (TextUtils.isEmpty(str1)) {
-        bool1 = false;
-      }
+    localWindow.setGravity(80);
+    localWindow.setLayout(-1, -2);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560600, null);
+    this.jdField_a_of_type_AndroidAppDialog.setContentView(paramContext);
+    this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
+    paramContext = (InputMethodLinearLayout)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131367513);
+    paramContext.setOnSizeChangedListenner(this);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364914));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364118));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131367519));
+    if (Build.VERSION.SDK_INT >= 11) {
+      this.jdField_a_of_type_AndroidWidgetEditText.setCustomSelectionActionModeCallback(new aatn(this, paramTroopGiftPanel));
     }
-    bool2 = bool1;
-    if (this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.b))
-    {
-      bool2 = bool1;
-      if (TextUtils.isEmpty(str2)) {
-        bool2 = false;
-      }
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new aato(this, paramTroopGiftPanel));
+    this.b.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    paramContext.setOnClickListener(new aatp(this, paramTroopGiftPanel));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidAppDialog.setOnShowListener(new aatq(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new aatl(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, 5) });
+    this.jdField_a_of_type_AndroidAppDialog.show();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      b();
     }
-    if ((this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.c)) && (TextUtils.isEmpty(paramBundle))) {}
-    for (bool1 = false;; bool1 = bool2)
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Aatt.a();
+    }
+    for (;;)
     {
-      paramBundle = aatl.a(this.jdField_a_of_type_Aatl, str1, str2, paramBundle, this.jdField_a_of_type_JavaUtilList);
-      if (Looper.myLooper() == Looper.getMainLooper())
-      {
-        aatl.a(this.jdField_a_of_type_Aatl, this.jdField_a_of_type_AndroidAppActivity, bool1, paramBundle, this.jdField_a_of_type_Aatn, this.jdField_a_of_type_JavaUtilList);
-        return;
-      }
-      ThreadManager.getUIHandler().post(new GdtUserInfoAuthorizationHelper.1.1(this, bool1, paramBundle));
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
       return;
+      ((BaseChatPie)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).o(false);
+    }
+  }
+  
+  public void c()
+  {
+    InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method");
+    View localView = this.jdField_a_of_type_AndroidAppDialog.getWindow().peekDecorView();
+    if ((localView != null) && (localView.getWindowToken() != null)) {
+      localInputMethodManager.hideSoftInputFromWindow(localView.getWindowToken(), 0);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i;
+    if (njo.a().a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()))
+    {
+      i = 2;
+      switch (paramView.getId())
+      {
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 1;
+      break;
+      c();
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.postDelayed(new TroopGiftPanel.GiftNumInputDialog.5(this), 100L);
+      if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
+      {
+        anqt.a("gift_store", "cancel_num", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
+      }
+      else
+      {
+        bcst.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numcancel", i, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_c_of_type_JavaLangString, "" + muc.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+        continue;
+        c();
+        String str = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
+        if (!TextUtils.isEmpty(str)) {
+          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(str);
+        }
+        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.postDelayed(new TroopGiftPanel.GiftNumInputDialog.6(this), 100L);
+        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4) {
+          anqt.a("gift_store", "sure_num", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() + "", "", "");
+        } else {
+          bcst.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numok", i, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_c_of_type_JavaLangString, "" + muc.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+        }
+      }
     }
   }
 }

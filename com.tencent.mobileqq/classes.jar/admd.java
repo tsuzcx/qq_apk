@@ -1,18 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.activity.Now;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class admd
-  implements View.OnClickListener
+  extends Handler
 {
-  public admd(Now paramNow) {}
+  public admd(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (Now.a(this.a) != null) {
-      Now.a(this.a).m();
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      return;
+      if (!this.a.isFinishing())
+      {
+        this.a.jdField_a_of_type_Biau.a(this.a.getString(2131690709));
+        this.a.jdField_a_of_type_Biau.d(2130849667);
+        this.a.jdField_a_of_type_Biau.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_Biau == null) || (!this.a.jdField_a_of_type_Biau.isShowing()));
+    this.a.jdField_a_of_type_Biau.cancel();
+    this.a.jdField_a_of_type_Biau.a(this.a.getString(2131690711));
+    this.a.jdField_a_of_type_Biau.c(true);
+    this.a.jdField_a_of_type_Biau.a(false);
+    this.a.jdField_a_of_type_Biau.b(true);
   }
 }
 

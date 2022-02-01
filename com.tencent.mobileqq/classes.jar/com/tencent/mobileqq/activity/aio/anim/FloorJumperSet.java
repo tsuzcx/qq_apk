@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aeun;
-import aevg;
-import aevj;
+import agax;
+import agbr;
+import agbv;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import bhtb;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,23 +15,23 @@ import mqq.app.MainService;
 
 @TargetApi(11)
 public class FloorJumperSet
-  extends aeun
+  extends agax
 {
   @SuppressLint({"NewApi"})
   public static final long a;
   public static final int b;
   FloorJumperSet.Animator jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator;
-  ArrayList<aevg> jdField_a_of_type_JavaUtilArrayList = new ArrayList(jdField_b_of_type_Int);
+  ArrayList<agbr> jdField_a_of_type_JavaUtilArrayList = new ArrayList(jdField_b_of_type_Int);
   private long b;
   
   static
   {
     long l;
-    if (bhtb.e())
+    if (VersionUtils.isHoneycomb())
     {
       l = ValueAnimator.getFrameDelay();
       jdField_a_of_type_Long = l;
-      if (!bhtb.e()) {
+      if (!VersionUtils.isHoneycomb()) {
         break label35;
       }
     }
@@ -55,9 +55,9 @@ public class FloorJumperSet
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      aevg localaevg = (aevg)localIterator.next();
-      localaevg.j += paramInt;
-      localaevg.h += paramInt;
+      agbr localagbr = (agbr)localIterator.next();
+      localagbr.j += paramInt;
+      localagbr.h += paramInt;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.offsetChildrenTopAndBottom(paramInt);
   }
@@ -73,7 +73,7 @@ public class FloorJumperSet
     boolean bool = false;
     if (localIterator.hasNext())
     {
-      if (((aevg)localIterator.next()).a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4)) {
+      if (((agbr)localIterator.next()).a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4)) {
         bool = true;
       }
       for (;;)
@@ -116,13 +116,13 @@ public class FloorJumperSet
       {
         if (i != 0)
         {
-          aevg localaevg = new aevg(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
+          agbr localagbr = new agbr(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
           if ((paramVarArgs != null) && (paramVarArgs.length >= 3)) {
-            localaevg.c = ((Integer)paramVarArgs[2]).intValue();
+            localagbr.c = ((Integer)paramVarArgs[2]).intValue();
           }
-          this.jdField_a_of_type_JavaUtilArrayList.add(localaevg);
+          this.jdField_a_of_type_JavaUtilArrayList.add(localagbr);
           if (paramVarArgs != null) {
-            localaevg.a(paramVarArgs);
+            localagbr.a(paramVarArgs);
           }
         }
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator == null)
@@ -149,7 +149,7 @@ public class FloorJumperSet
     int i = 0;
     if (localIterator.hasNext())
     {
-      if (((aevg)localIterator.next()).a(false)) {
+      if (((agbr)localIterator.next()).a(false)) {
         i = 1;
       }
       for (;;)
@@ -177,7 +177,7 @@ public class FloorJumperSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.FloorJumperSet
  * JD-Core Version:    0.7.0.1
  */

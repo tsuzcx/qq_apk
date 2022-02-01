@@ -1,30 +1,49 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.os.Bundle;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class avev
-  implements bhuk
+final class avev
+  implements EIPCResultCallback
 {
-  public avev(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bhuf parambhuf) {}
+  avev(avew paramavew) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    switch (paramInt)
+    String str = null;
+    QLog.d("FaceLoginHelper", 1, "callServer error_code:" + paramEIPCResult.code);
+    FaceDetectForThirdPartyManager.AppConf localAppConf;
+    switch (paramEIPCResult.code)
     {
+    default: 
+      str = anni.a(2131713210);
+      localAppConf = null;
     }
-    for (;;)
+    while ((paramEIPCResult.code != 0) || (paramEIPCResult.data == null))
     {
-      if (this.jdField_a_of_type_Bhuf != null) {
-        this.jdField_a_of_type_Bhuf.dismiss();
-      }
+      this.a.a(paramEIPCResult.code, str);
       return;
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+      if (paramEIPCResult.data != null)
+      {
+        localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf");
+        QLog.d("FaceLoginHelper", 1, "callServer error_code:" + localAppConf);
+      }
+      else
+      {
+        str = anni.a(2131713210);
+        localAppConf = null;
+        continue;
+        str = anni.a(2131691949);
+        localAppConf = null;
+      }
     }
+    this.a.a(localAppConf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avev
  * JD-Core Version:    0.7.0.1
  */

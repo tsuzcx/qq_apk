@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.data.CustomEmotionData;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
+import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class apru
-  extends alsc
+public class apru
+  implements View.OnClickListener
 {
-  apru(apro paramapro, Object paramObject) {}
+  public apru(ArkAppListActivity paramArkAppListActivity, String paramString) {}
   
-  protected void a(List<CustomEmotionData> arg1)
+  public void onClick(View paramView)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      return;
-    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity, ArkAuthorityInfoActivity.class);
+    localIntent.putExtra("intent_extra_authority_app_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

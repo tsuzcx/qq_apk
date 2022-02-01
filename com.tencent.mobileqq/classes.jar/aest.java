@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
-class aest
-  implements afhc
+public class aest
+  implements DialogInterface.OnKeyListener
 {
-  aest(aesk paramaesk) {}
+  public aest(OverloadTipsActivity paramOverloadTipsActivity) {}
   
-  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    aesk.a(this.a);
+    if (paramInt == 4) {
+      this.a.finish();
+    }
+    return false;
   }
 }
 

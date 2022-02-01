@@ -1,38 +1,28 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
 
 public class atmj
-  implements Handler.Callback
 {
-  public atmj(ListenTogetherManager paramListenTogetherManager) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int c;
   
-  public boolean handleMessage(Message paramMessage)
+  public atmj a(Intent paramIntent)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    }
-    paramMessage = this.a.a();
-    if (paramMessage != null)
-    {
-      paramMessage.a = (SystemClock.elapsedRealtime() - paramMessage.c + paramMessage.a);
-      paramMessage.c = SystemClock.elapsedRealtime();
-      boolean bool = ListenTogetherManager.a(this.a).a(paramMessage);
-      QLog.i("ListenTogether.Seek", 1, "MSG_TYPE_TIME_SYNC seek is: " + paramMessage.a + " currentTime: " + System.currentTimeMillis() + " result: " + bool);
-    }
-    for (;;)
-    {
-      ListenTogetherManager.a(this.a).removeMessages(1001);
-      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, atlw.a().a);
-      return true;
-      QLog.i("ListenTogether.Manager", 1, "MSG_TYPE_TIME_SYNC startPlay musicInfo is null.");
-    }
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("targetUin");
+    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("srcDiscGroup");
+    this.jdField_a_of_type_Int = paramIntent.getIntExtra("peerType", 0);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("rootEntrace", true);
+    this.jdField_b_of_type_Int = paramIntent.getIntExtra("busiType", 0);
+    this.c = paramIntent.getIntExtra("enterfrom", 0);
+    return this;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

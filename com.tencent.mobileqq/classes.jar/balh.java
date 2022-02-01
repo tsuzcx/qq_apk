@@ -1,21 +1,35 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.revokemsg.RevokeMsgInfo;
 
-class balh
-  extends bajy
+public final class balh
+  implements Parcelable.Creator<RevokeMsgInfo>
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  SingleLineHotwordTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView;
-  TextView b;
-  TextView c;
-  
-  private balh(balf parambalf)
+  public RevokeMsgInfo a(Parcel paramParcel)
   {
-    super(parambalf);
+    boolean bool = true;
+    RevokeMsgInfo localRevokeMsgInfo = new RevokeMsgInfo();
+    localRevokeMsgInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localRevokeMsgInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.d = paramParcel.readString();
+    localRevokeMsgInfo.b = paramParcel.readLong();
+    localRevokeMsgInfo.c = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localRevokeMsgInfo.f = paramParcel.readInt();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      localRevokeMsgInfo.jdField_a_of_type_Boolean = bool;
+      return localRevokeMsgInfo;
+      bool = false;
+    }
+  }
+  
+  public RevokeMsgInfo[] a(int paramInt)
+  {
+    return new RevokeMsgInfo[paramInt];
   }
 }
 

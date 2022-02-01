@@ -1,20 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class awtn
-  implements CompoundButton.OnCheckedChangeListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public awtn(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public awtn(TabPageIndicator paramTabPageIndicator) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    StickyNotePublishFragment.a(this.a, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    }
+    if (TabPageIndicator.a(this.a) != null) {
+      this.a.performClick();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awtn
  * JD-Core Version:    0.7.0.1
  */

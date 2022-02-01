@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.multioperate;
 
-import aqsb;
-import arph;
-import arpm;
+import aszd;
+import atte;
+import attj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -14,12 +14,12 @@ import java.util.List;
 public class OfflineFileMultiOperate$1
   implements Runnable
 {
-  public OfflineFileMultiOperate$1(arph paramarph, List paramList1, List paramList2, arpm paramarpm) {}
+  public OfflineFileMultiOperate$1(atte paramatte, List paramList1, List paramList2, attj paramattj) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      arph.a(this.this$0).a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+      atte.a(this.this$0).a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
     }
     while ((this.b != null) && (this.b.size() > 0))
     {
@@ -31,20 +31,20 @@ public class OfflineFileMultiOperate$1
         if (QLog.isDevelopLevel()) {
           QLog.d("OfflineFileMultiOperate", 1, "ChatHistory entity[" + localFileManagerEntity.getId() + "] del File:" + localFileManagerEntity.nSessionId);
         }
-        arph.a(this.this$0).a().b(localFileManagerEntity.nSessionId);
+        atte.a(this.this$0).a().b(localFileManagerEntity.nSessionId);
       }
       if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        arph.a(this.this$0).a().a(this.jdField_a_of_type_JavaUtilList, false);
+        atte.a(this.this$0).a().a(this.jdField_a_of_type_JavaUtilList, false);
       }
     }
-    if (this.jdField_a_of_type_Arpm != null) {
-      this.jdField_a_of_type_Arpm.a(3, 0);
+    if (this.jdField_a_of_type_Attj != null) {
+      this.jdField_a_of_type_Attj.a(3, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.OfflineFileMultiOperate.1
  * JD-Core Version:    0.7.0.1
  */

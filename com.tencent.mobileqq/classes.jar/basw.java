@@ -1,40 +1,28 @@
+import android.os.Handler.Callback;
 import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class basw
-  extends bayj
+public class basw
+  implements Handler.Callback
 {
-  basw(basv parambasv) {}
+  public basw(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
-    bass localbass = (bass)paramMessage.obj;
-    if ((i == 2002) || ((basv.a(this.a).equals(localbass.p)) && (localbass.b == 1) && (i != 2002)))
+    switch (paramMessage.what)
     {
-      if ((localbass.r == null) || (!localbass.r.equals(basv.b(this.a)))) {
-        return;
-      }
-      switch (i)
-      {
-      }
+    default: 
+      return false;
     }
-    for (;;)
+    if (!NeoVideoFilterPlayView.a(this.a))
     {
-      super.handleMessage(paramMessage);
-      return;
-      basv.a(this.a);
-      continue;
-      if (bdhb.b(basv.c(this.a)))
-      {
-        basv.a(this.a).a().b(this);
-        basv.b(this.a);
-      }
-      else
-      {
-        basv.a(this.a);
-      }
+      this.a.requestRender();
+      return true;
     }
+    NeoVideoFilterPlayView.a(this.a).set(true);
+    yqp.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
+    return true;
   }
 }
 

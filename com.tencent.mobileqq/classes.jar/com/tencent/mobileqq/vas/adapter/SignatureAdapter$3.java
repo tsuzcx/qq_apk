@@ -2,16 +2,16 @@ package com.tencent.mobileqq.vas.adapter;
 
 import android.os.Bundle;
 import android.os.Handler;
-import bdtt;
-import bdvd;
-import bdvs;
-import beag;
+import bgyw;
+import bhae;
+import bhau;
+import bhhh;
 import java.io.File;
 
 public class SignatureAdapter$3
   implements Runnable
 {
-  public SignatureAdapter$3(bdvs parambdvs, Bundle paramBundle) {}
+  public SignatureAdapter$3(bhau parambhau, Bundle paramBundle) {}
   
   public void run()
   {
@@ -27,18 +27,18 @@ public class SignatureAdapter$3
       if (localObject != null)
       {
         localObject = new File((String)localObject);
-        if (beag.a(new File(bdtt.a(str1, str2)), (File)localObject, true)) {
-          bdvs.a(this.this$0).a().sendEmptyMessage(10003);
+        if (bhhh.a(new File(bgyw.a(str1, str2)), (File)localObject, true)) {
+          bhau.a(this.this$0).a().sendEmptyMessage(10003);
         }
       }
       return;
-      localObject = bdtt.a(str1, "dynamic_aio");
+      localObject = bgyw.a(str1, "dynamic_aio");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.SignatureAdapter.3
  * JD-Core Version:    0.7.0.1
  */

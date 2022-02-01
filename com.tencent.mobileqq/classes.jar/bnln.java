@@ -1,6 +1,18 @@
-public abstract interface bnln
+import java.util.Comparator;
+
+final class bnln
+  implements Comparator<bnlp>
 {
-  public abstract void a();
+  public int a(bnlp parambnlp1, bnlp parambnlp2)
+  {
+    if (parambnlp1.a) {
+      return 1;
+    }
+    if (parambnlp2.a) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

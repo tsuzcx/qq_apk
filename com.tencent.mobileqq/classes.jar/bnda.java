@@ -1,57 +1,51 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import dov.com.qq.im.ae.view.TabLayout;
+import mqq.util.WeakReference;
 
-class bnda
-  implements Animator.AnimatorListener
+final class bnda
+  extends BroadcastReceiver
 {
-  bnda(bncx parambncx) {}
+  private TabLayout a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(TabLayout paramTabLayout)
   {
-    if (!bncx.a(this.a)) {}
+    this.a = ((TabLayout)new WeakReference(paramTabLayout).get());
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    int i = 0;
+    paramContext = paramIntent.getAction();
+    if (TextUtils.isEmpty(paramContext)) {}
+    boolean bool;
     do
     {
-      return;
-      if (bncx.b(this.a)) {
-        break;
-      }
-      bncx.a(this.a, false);
-    } while (bncx.b(this.a) != 2);
-    bncx.a(this.a, 0);
-    return;
-    bncx.a(this.a, false);
-    bncx.a(this.a, 0);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (!bncx.a(this.a)) {
-      return;
-    }
-    if (!bncx.b(this.a))
-    {
-      bncx.a(this.a, false);
-      if (bncx.b(this.a) == 1)
+      do
       {
-        bncx.a(this.a, 3);
-        return;
-      }
-      bncx.a(this.a, 0);
-      return;
-    }
-    if (bncx.b(this.a) == 1)
-    {
-      bncx.a(this.a, 2);
-      bncx.a(this.a, bncx.b(this.a), 1000);
-      return;
-    }
-    bncx.a(this.a, false);
-    bncx.a(this.a, 0);
+        do
+        {
+          return;
+          if (!"ae_editor_bottom_tab_show_hide".equals(paramContext)) {
+            break;
+          }
+          bool = paramIntent.getBooleanExtra("is_show", true);
+        } while (this.a == null);
+        paramContext = this.a;
+        if (bool) {}
+        for (;;)
+        {
+          paramContext.setVisibility(i);
+          return;
+          i = 8;
+        }
+      } while (!"ae_editor_bottom_tab_change_style".equals(paramContext));
+      bool = paramIntent.getBooleanExtra("is_full_screen_capture", false);
+    } while (this.a == null);
+    this.a.a(bool);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

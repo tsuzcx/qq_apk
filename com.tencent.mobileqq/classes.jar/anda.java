@@ -1,26 +1,26 @@
-public class anda
+import android.content.Context;
+import android.os.SystemClock;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
+public final class anda
+  implements amhn
 {
-  public double a;
-  public int a;
-  public String a;
-  public andb[] a;
-  public int b;
+  public anda(Context paramContext, AppInterface paramAppInterface, CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong) {}
   
-  public String toString()
+  public void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    int i;
-    if ((this.jdField_a_of_type_ArrayOfAndb != null) && (this.jdField_a_of_type_ArrayOfAndb.length > 0)) {
-      i = 0;
-    }
-    while (i < this.jdField_a_of_type_ArrayOfAndb.length)
-    {
-      localStringBuilder.append("\n index:").append(i).append(this.jdField_a_of_type_ArrayOfAndb[i].toString()).append('\n');
-      i += 1;
-      continue;
-      localStringBuilder.append("\n only have one itemContent:" + this.jdField_a_of_type_JavaLangString + ",prob:" + this.jdField_a_of_type_Double).append('\n');
-    }
-    return localStringBuilder.toString();
+    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentContext, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_gameId", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId));
+    localHashMap.put("param_src", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src));
+    bctj.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "cmgame_data_init_duration", true, l, 0L, localHashMap, "", false);
+    QLog.d("CmGameStat", 1, new Object[] { "cmgame_data_init_duration=", Long.valueOf(l) });
   }
 }
 

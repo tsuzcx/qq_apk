@@ -1,27 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew;
-import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import com.tencent.widget.AdapterView;
 
 public class aqiz
-  implements View.OnClickListener
+  implements bkil
 {
-  public aqiz(HorseRaceLampVew.1 param1) {}
+  public aqiz(TimeSelectView paramTimeSelectView) {}
   
-  public void onClick(View paramView)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (!this.a.this$0.b) {
-      QLog.e("HorseRaceLampVew + horserace", 2, "CLICK WITH TOUCH SCROLL THROW IT");
-    }
-    do
+    TimeSelectView.a(this.a, paramView, 1);
+    TimeSelectView.a(this.a, paramView, true);
+    if ((paramView != null) && (paramView.getTag() != null))
     {
-      return;
-      paramView = paramView.getTag();
-    } while ((paramView == null) || (!(paramView instanceof aqjc)) || (HorseRaceLampVew.a(this.a.this$0) == null));
-    paramView = (aqjc)paramView;
-    HorseRaceLampVew.a(this.a.this$0).a(paramView.a);
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt)
+        {
+          TimeSelectView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+          TimeSelectView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
+        }
+        paramInt += 1;
+      }
+    }
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

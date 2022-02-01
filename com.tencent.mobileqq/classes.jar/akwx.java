@@ -1,30 +1,28 @@
-import com.tencent.common.app.AppInterface;
+import java.io.File;
+import java.util.Comparator;
 
-public abstract interface akwx
+final class akwx
+  implements Comparator<File>
 {
-  public abstract int a(int paramInt);
+  private int a(String paramString)
+  {
+    try
+    {
+      int i = paramString.lastIndexOf('.');
+      if (i == -1) {
+        return Integer.parseInt(paramString);
+      }
+      i = Integer.parseInt(paramString.substring(0, i));
+      return i;
+    }
+    catch (Exception paramString) {}
+    return 0;
+  }
   
-  public abstract int a(akrx paramakrx, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat);
-  
-  public abstract int a(AppInterface paramAppInterface);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, AppInterface paramAppInterface);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract int b(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt, String paramString);
+  public int a(File paramFile1, File paramFile2)
+  {
+    return a(paramFile1.getName()) - a(paramFile2.getName());
+  }
 }
 
 

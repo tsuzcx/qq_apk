@@ -1,7 +1,7 @@
 package cooperation.hce;
 
 import android.os.Handler;
-import biqn;
+import blfh;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.widget.QQToast;
@@ -26,7 +26,7 @@ class HcePluginInstallActivity$1
         HcePluginInstallActivity.a(this.this$0, true);
         return;
       }
-      QQToast.a(this.this$0.getApplicationContext(), 2131695370, 0).a();
+      QQToast.a(this.this$0.getApplicationContext(), 2131694345, 0).a();
       HcePluginInstallActivity.a(this.this$0, false);
       this.this$0.finish();
       return;
@@ -36,7 +36,7 @@ class HcePluginInstallActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.hce.HcePluginInstallActivity.1
  * JD-Core Version:    0.7.0.1
  */

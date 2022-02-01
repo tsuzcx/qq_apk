@@ -1,20 +1,16 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class agtu
-  implements nrs
+  extends afuv
 {
-  agtu(agts paramagts) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public void a(boolean paramBoolean)
-  {
-    this.a.a.aq = false;
-    this.a.a.bG();
-    this.a.a.bs();
-    amkl.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131698568), this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, false, true);
-  }
+  agtu(agts paramagts) {}
 }
 
 

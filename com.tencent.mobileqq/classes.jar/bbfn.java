@@ -1,31 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bbfn
-  implements QQPermissionCallback
+  implements View.OnClickListener
 {
   bbfn(bbfm parambbfm) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bdgm.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    paramArrayOfString = new Intent();
-    paramArrayOfString.putExtra("audio_max_length", this.a.a.h);
-    if (this.a.a.q != null)
-    {
-      paramArrayOfString.putExtra("from", "publish");
-      paramArrayOfString.putExtra("bid", this.a.a.q);
-      paramArrayOfString.putExtra("fromflag", this.a.a.b);
-      bcmc.a(this.a.a.o, this.a.a.p, "Clk_record", this.a.a.q, this.a.a.b, "", "");
-    }
-    adpn.a(this.a.a.a, paramArrayOfString, PublicTransFragmentActivity.class, AudioRecordFragment.class, 1003);
+    int i = ((Integer)paramView.getTag(-1)).intValue();
+    bbfm.a(this.a).onItemClick(this.a.a, paramView, i, 0L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,70 +1,97 @@
-import android.annotation.TargetApi;
-import android.media.MediaMetadataRetriever;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.SystemClock;
+import android.view.animation.AccelerateInterpolator;
 
-@TargetApi(18)
 public class azkk
+  extends BitmapDrawable
 {
-  public static int a(String paramString, azkl paramazkl)
+  private static int d;
+  private static int e;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private AccelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator = new AccelerateInterpolator(1.5F);
+  private float jdField_b_of_type_Float = 0.5F;
+  private int jdField_b_of_type_Int = 50;
+  private int c;
+  
+  public azkk(Resources paramResources, Bitmap paramBitmap)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    label226:
-    for (;;)
+    super(paramResources, paramBitmap);
+  }
+  
+  public static azkk[] a(int paramInt, Resources paramResources, Bitmap paramBitmap)
+  {
+    if ((paramBitmap != null) && (paramResources != null))
     {
-      String str1;
-      String str2;
-      String str3;
-      try
-      {
-        localMediaMetadataRetriever.setDataSource(paramString);
-        str1 = localMediaMetadataRetriever.extractMetadata(18);
-        str2 = localMediaMetadataRetriever.extractMetadata(19);
-        paramString = localMediaMetadataRetriever.extractMetadata(24);
-        str3 = localMediaMetadataRetriever.extractMetadata(9);
-        localMediaMetadataRetriever.release();
-        if ((paramString != null) && (!"".equals(paramString)) && (!"null".equals(paramString))) {
-          break label226;
-        }
-        paramString = "0";
-        if ((str1 == null) || (str2 == null))
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] extractMetadata:width=" + str1 + " height=" + str2);
-          return -2;
-        }
-      }
-      catch (RuntimeException paramString)
-      {
-        QLog.e("MediaMetadataUtils", 1, "[@] setDataSource", paramString);
-        return -1;
-      }
+      azkk[] arrayOfazkk2 = new azkk[paramInt];
+      e = paramBitmap.getWidth() / 2;
+      d = paramBitmap.getHeight() / 2;
+      int i = 0;
       for (;;)
       {
-        try
-        {
-          paramazkl.a[0] = Integer.parseInt(str1);
-          paramazkl.a[1] = Integer.parseInt(str2);
-          paramazkl.a[3] = Integer.parseInt(str3);
-          i = 0;
+        arrayOfazkk1 = arrayOfazkk2;
+        if (i >= paramInt) {
+          break;
         }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", localNumberFormatException);
-          int i = -3;
-          continue;
-        }
-        try
-        {
-          paramazkl.a[2] = Integer.parseInt(paramString);
-          paramazkl.a[4] = 0;
-          return i;
-        }
-        catch (NumberFormatException paramString)
-        {
-          QLog.e("MediaMetadataUtils", 1, "[@] parseInt", paramString);
-          paramazkl.a[2] = 0;
-          return i;
-        }
+        arrayOfazkk2[i] = new azkk(paramResources, paramBitmap);
+        i += 1;
       }
+    }
+    azkk[] arrayOfazkk1 = null;
+    return arrayOfazkk1;
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    this.jdField_a_of_type_Float = ((float)paramLong);
+    this.jdField_a_of_type_Int = paramInt;
+    this.c = 1;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    int j = 1;
+    int i = j;
+    switch (this.c)
+    {
+    default: 
+      i = j;
+    }
+    float f2;
+    for (;;)
+    {
+      if (i == 0) {
+        invalidateSelf();
+      }
+      return;
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      this.c = 2;
+      i = 0;
+      continue;
+      f2 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Float;
+      if (f2 <= 1.0F) {
+        break;
+      }
+      this.c = 3;
+      i = j;
+    }
+    paramCanvas.save();
+    float f3 = this.jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator.getInterpolation(f2);
+    if (f3 > 0.5F) {}
+    for (float f1 = -f3 * this.jdField_b_of_type_Int;; f1 = -(1.0F - f3) * this.jdField_b_of_type_Int)
+    {
+      paramCanvas.translate(f1, this.jdField_a_of_type_Int - f3 * this.jdField_a_of_type_Int);
+      paramCanvas.scale(this.jdField_b_of_type_Float * f2, this.jdField_b_of_type_Float * f2, e, d);
+      setAlpha((int)(255.0F - f2 * 255.0F));
+      super.draw(paramCanvas);
+      paramCanvas.restore();
+      i = 0;
+      break;
     }
   }
 }

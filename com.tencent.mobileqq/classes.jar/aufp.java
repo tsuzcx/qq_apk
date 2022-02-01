@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class aufp
-  implements aufz<MarkFaceMessage, apxv>
+  implements EIPCResultCallback
 {
-  aufp(aufn paramaufn, MarkFaceMessage paramMarkFaceMessage) {}
+  aufp(aufo paramaufo) {}
   
-  public apxv a(MarkFaceMessage paramMarkFaceMessage)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return this.jdField_a_of_type_Aufn.a(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage);
+    if (!paramEIPCResult.isSuccess())
+    {
+      QLog.d("QFlutter.launcher", 1, "install IPC fail");
+      aufj.b();
+      aufo.a(this.a, 1, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aufp
  * JD-Core Version:    0.7.0.1
  */

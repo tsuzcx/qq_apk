@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class ApolloObtainedActionData
-  extends awge
+  extends Entity
 {
   public static final int APOLLO_OBTAINED_TYPE_ACTION = 0;
   public static final int APOLLO_OBTAINED_WAY_BUY = 4;
@@ -12,7 +12,7 @@ public class ApolloObtainedActionData
   public static final int APOLLO_OBTAINED_WAY_SLAVE = 7;
   public long beginTs;
   public long endts;
-  @awhs
+  @unique
   public int id;
   public int type;
   public int way;
@@ -26,7 +26,7 @@ public class ApolloObtainedActionData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloObtainedActionData
  * JD-Core Version:    0.7.0.1
  */

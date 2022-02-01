@@ -1,31 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.VideoData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastVideoViewCreator.VideoViewHolder.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class sbp
-  implements ory
+class sbp
+  extends pmn
 {
-  sbp(sbo paramsbo, VideoData paramVideoData) {}
+  sbp(sbo paramsbo) {}
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public void b(String paramString, int paramInt)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_b_of_type_JavaLangString, paramString1)))
+    if ((paramInt == 1) || (paramInt == 2))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_a_of_type_JavaLangString = paramString2;
-      if ((paramInt1 > 0) && (paramInt2 > 0))
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_a_of_type_Int = paramInt1;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_b_of_type_Int = paramInt2;
+      if (sbo.a(this.a).a != null) {
+        sbo.a(this.a).a.o();
       }
-      ThreadManager.getUIHandler().post(new WebFastVideoViewCreator.VideoViewHolder.1.1(this));
     }
+    else {
+      return;
+    }
+    QLog.e("VideoFeedsRecommendPresenter", 2, "onViolaPageFailed callback, attachVideoPlayer videoPlayer is null");
+  }
+  
+  public void p()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsRecommendPresenter", 2, "onViolaTopicVideoAnimStart mVideoFromType：" + sbo.a(this.a));
+    }
+    pmk.a().b(sbo.a(this.a));
+    if (sbo.a(this.a) == 124) {
+      sbo.a(this.a).finish();
+    }
+    do
+    {
+      return;
+      sbo.a(this.a, true);
+    } while (sbo.a(this.a) == null);
+    sbo.a(this.a).a = null;
+    sbo.a(this.a).d();
+    sbo.a(this.a).b(sbo.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sbp
  * JD-Core Version:    0.7.0.1
  */

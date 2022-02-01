@@ -1,48 +1,65 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.mobileqq.hiboom.RichTextPanel;
-import com.tencent.mobileqq.hiboom.RichTextPanelView;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.1;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.2;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.3;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.4;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.5;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.6;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class assx
-  extends PagerAdapter
+  implements aucs
 {
-  public assx(RichTextPanel paramRichTextPanel) {}
+  public assx(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    paramViewGroup.removeView((View)paramObject);
-  }
-  
-  public int getCount()
-  {
-    return RichTextPanel.a(this.a).size();
-  }
-  
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  public void a(int paramInt, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RichTextPanel", 2, "instantiateItem position = " + paramInt);
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadStart progress = " + paramInt);
     }
-    ViewParent localViewParent = ((RichTextPanelView)RichTextPanel.a(this.a).get(paramInt)).getParent();
-    if (localViewParent != null) {
-      ((ViewGroup)localViewParent).removeView((View)RichTextPanel.a(this.a).get(paramInt));
-    }
-    paramViewGroup.addView((View)RichTextPanel.a(this.a).get(paramInt));
-    return RichTextPanel.a(this.a).get(paramInt);
+    this.a.runOnUiThread(new UniformDownloadActivity.11.2(this));
   }
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    return paramView == paramObject;
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadFailed errCode = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.6(this));
+  }
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadSucess ");
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.1(this));
+    bcst.b(null, "dc00898", "", "", "0X8008FFA", "0X8008FFA", 1, 0, "", "", "", "");
+  }
+  
+  public void b(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadProgress progress = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.4(this, paramInt));
+  }
+  
+  public void c(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadPause progress = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.5(this));
+  }
+  
+  public void d(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadResume progress = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.3(this));
   }
 }
 

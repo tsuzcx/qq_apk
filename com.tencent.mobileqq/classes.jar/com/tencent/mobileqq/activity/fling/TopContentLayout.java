@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.fling;
 
-import ahyc;
+import ajoq;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -36,7 +36,7 @@ public class TopContentLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new ahyc(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new ajoq(this, paramContext));
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
   }
   
@@ -159,7 +159,7 @@ public class TopContentLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.TopContentLayout
  * JD-Core Version:    0.7.0.1
  */

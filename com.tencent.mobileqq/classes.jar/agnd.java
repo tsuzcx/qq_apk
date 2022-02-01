@@ -1,29 +1,23 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agnd
-  extends agmy
+class agnd
+  implements View.OnClickListener
 {
-  public AnimationView.AnimationInfo a;
-  public String b;
+  agnd(agnc paramagnc) {}
   
-  public agnd(String paramString)
+  public void onClick(View paramView)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
+    switch (paramView.getId())
     {
-      this.b = paramRedPacketInfo.background;
-      this.a = paramRedPacketInfo.animInfo;
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.b != null) || (this.a != null);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      agnc.a(this.a, paramView);
+    }
   }
 }
 

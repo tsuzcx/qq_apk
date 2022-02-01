@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.minigame.gpkg;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bdhb;
+import bgmg;
+import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
 import com.tencent.component.network.downloader.DownloadResult.Process;
@@ -27,7 +29,6 @@ import com.tencent.mobileqq.mini.utils.DebugUtil;
 import com.tencent.mobileqq.mini.utils.FileUtils;
 import com.tencent.mobileqq.mini.utils.WxapkgUnpacker;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
-import com.tencent.mobileqq.minigame.utils.thread.TTHandleThread;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -112,7 +113,7 @@ public class GpkgManager
     if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null))
     {
       if (paramOnInitGpkgListener != null) {
-        paramOnInitGpkgListener.onInitGpkgInfo(2002, null, "downloadGpkgByResumableDownloader fail invalid params, game config null");
+        paramOnInitGpkgListener.onInitGpkgInfo(2002, null, "downloadGpkgByResumableDownloader fail invalid params, game config null", null);
       }
       QLog.e("[minigame] GpkgManager", 1, "[Gpkg]downloadGpkgByResumableDownloader fail invalid params, game config null");
       return;
@@ -152,31 +153,12 @@ public class GpkgManager
       if (localObject1 == null) {
         localObject3 = paramMiniAppConfig.config.downloadUrl;
       }
-      label227:
-      int i;
-      label245:
-      String str2;
-      if (MiniappDownloadUtil.getInstance().shouldDownloadOnRangeMode((String)localObject3))
+      if (TextUtils.isEmpty((CharSequence)localObject3))
       {
-        localObject1 = Downloader.DownloadMode.RangeMode;
-        if (localObject1 != Downloader.DownloadMode.RangeMode) {
-          break label490;
+        if (paramOnInitGpkgListener != null) {
+          paramOnInitGpkgListener.onInitGpkgInfo(2025, null, "invalid gameConfig, downloadUrl null", null);
         }
-        i = MiniappDownloadUtil.getInstance().getRangeNumber(l1);
-        if (i != 1) {
-          break label503;
-        }
-        localObject1 = Downloader.DownloadMode.StrictMode;
-        label256:
-        if (!((String)localObject3).toLowerCase().endsWith(".zip")) {
-          break label496;
-        }
-        str2 = ".zip";
-        label273:
-        str2 = ApkgManager.getPkgRoot(paramMiniAppConfig.config) + paramMiniAppConfig.config.appId + '_' + paramMiniAppConfig.config.version + str2;
-        QLog.i("[minigame] GpkgManager", 1, "[Gpkg]download gpkgUrl=" + (String)localObject3 + ", subApkUrl=" + (String)localObject2 + ", independentPath=" + str1 + ", savePath=" + str2 + ", downloadMode=" + localObject1 + ", rangeNum=" + i);
-        MiniReportManager.reportEventType(paramMiniAppConfig, 619, "1");
-        MiniappDownloadUtil.getInstance().downloadApkg(paramMiniAppConfig, false, (String)localObject3, str2, true, new GpkgManager.4(paramMiniAppConfig, paramOnInitGpkgListener, l2, str2, paramString, (String)localObject2, str1, paramBoolean), (Downloader.DownloadMode)localObject1, i, l1, ApkgManager.getHeader((String)localObject3, paramMiniAppConfig), null);
+        QLog.e("[minigame] GpkgManager", 1, "[Gpkg]downloadGpkgByResumableDownloader error, apkUrl:" + (String)localObject3);
         return;
         localObject1 = ((SubPkgInfo)localObject3).downloadUrl;
         l1 = ((SubPkgInfo)localObject3).fileSize;
@@ -184,16 +166,31 @@ public class GpkgManager
       for (;;)
       {
         break;
-        localObject1 = Downloader.DownloadMode.StrictMode;
-        break label227;
-        label490:
-        i = -1;
-        break label245;
-        label496:
-        str2 = ".tqapkg";
-        break label273;
-        label503:
-        break label256;
+        localObject1 = MiniappDownloadUtil.getInstance().getDownloadMode((String)localObject3);
+        int i;
+        if (localObject1 == Downloader.DownloadMode.RangeMode)
+        {
+          i = MiniappDownloadUtil.getInstance().getRangeNumber(l1);
+          if (i != 1) {
+            break label542;
+          }
+          localObject1 = Downloader.DownloadMode.StrictMode;
+        }
+        label542:
+        for (;;)
+        {
+          if (((String)localObject3).toLowerCase().endsWith(".zip")) {}
+          for (String str2 = ".zip";; str2 = ".tqapkg")
+          {
+            str2 = ApkgManager.getPkgRoot(paramMiniAppConfig.config) + paramMiniAppConfig.config.appId + '_' + paramMiniAppConfig.config.version + str2;
+            QLog.i("[minigame] GpkgManager", 1, "[Gpkg]download gpkgUrl=" + (String)localObject3 + ", subApkUrl=" + (String)localObject2 + ", independentPath=" + str1 + ", savePath=" + str2 + ", downloadMode=" + localObject1 + ", rangeNum=" + i);
+            MiniReportManager.reportEventType(paramMiniAppConfig, 619, "1");
+            MiniappDownloadUtil.getInstance().downloadApkg(paramMiniAppConfig, false, (String)localObject3, str2, true, new GpkgManager.4(paramMiniAppConfig, paramOnInitGpkgListener, l2, str2, paramString, (String)localObject2, str1, paramBoolean), (Downloader.DownloadMode)localObject1, i, l1, ApkgManager.getHeader((String)localObject3, paramMiniAppConfig), null);
+            return;
+            i = -1;
+            break;
+          }
+        }
       }
       str1 = null;
       localObject2 = localObject1;
@@ -240,58 +237,47 @@ public class GpkgManager
           break;
         }
       } while (paramOnInitGpkgListener == null);
-      paramOnInitGpkgListener.onInitGpkgInfo(2007, null, "downloadSubPack but pkg folder not exist");
+      paramOnInitGpkgListener.onInitGpkgInfo(2007, null, "downloadSubPack but pkg folder not exist", null);
       return;
       if (!new File(str1, str2).exists()) {
         break;
       }
     } while (paramOnInitGpkgListener == null);
-    paramOnInitGpkgListener.onInitGpkgInfo(0, paramMiniGamePkg, "downloadSubPack succeed, sub pkg already exist");
+    paramOnInitGpkgListener.onInitGpkgInfo(0, paramMiniGamePkg, "downloadSubPack succeed, sub pkg already exist", null);
     return;
-    long l;
-    int i;
     if (!TextUtils.isEmpty(str3))
     {
-      l = fileSizeFromPkgInfo(paramMiniGamePkg.appConfig, true, str3);
-      if (MiniappDownloadUtil.getInstance().shouldDownloadOnRangeMode(str3))
+      long l = fileSizeFromPkgInfo(paramMiniGamePkg.appConfig, true, str3);
+      paramString = MiniappDownloadUtil.getInstance().getDownloadMode(str3);
+      int i;
+      if (paramString == Downloader.DownloadMode.RangeMode)
       {
-        paramString = Downloader.DownloadMode.RangeMode;
-        if (paramString != Downloader.DownloadMode.RangeMode) {
-          break label337;
-        }
         i = MiniappDownloadUtil.getInstance().getRangeNumber(l);
-        label211:
-        if (i != 1) {
-          break label408;
+        if (i == 1) {
+          paramString = Downloader.DownloadMode.StrictMode;
         }
-        paramString = Downloader.DownloadMode.StrictMode;
+        if (!str3.toLowerCase().endsWith(".zip")) {
+          break label331;
+        }
       }
-    }
-    label408:
-    for (;;)
-    {
-      if (str3.toLowerCase().endsWith(".zip")) {}
+      label331:
       for (str1 = ".zip";; str1 = ".tqapkg")
       {
         str1 = ApkgManager.getPkgRoot(localMiniAppInfo) + localMiniAppInfo.appId + '_' + localMiniAppInfo.version + "_" + System.nanoTime() + str1;
         MiniReportManager.reportEventType(paramMiniGamePkg.appConfig, 613, "1");
         if (!GameWnsUtils.isForceDownloadInMainProcess()) {
-          break label349;
+          break label338;
         }
         downloadSubPkgInMainProcess(paramMiniGamePkg.appConfig, paramMiniGamePkg, str3, str1, str2, paramOnInitGpkgListener);
         return;
-        paramString = Downloader.DownloadMode.StrictMode;
-        break;
-        label337:
         i = -1;
-        break label211;
+        break;
       }
-      label349:
-      MiniappDownloadUtil.getInstance().downloadApkg(paramMiniGamePkg.appConfig, false, str3, str1, true, new GpkgManager.6(paramMiniGamePkg, str1, str2, paramOnInitGpkgListener), paramString, i, l, ApkgManager.getHeader(str3, paramMiniGamePkg.appConfig), null);
-      return;
-      paramOnInitGpkgListener.onInitGpkgInfo(2008, null, "sub pkg download url empty");
+      label338:
+      MiniappDownloadUtil.getInstance().downloadApkg(paramMiniGamePkg.appConfig, true, str3, str1, true, new GpkgManager.6(paramMiniGamePkg, str1, str2, paramOnInitGpkgListener), paramString, i, l, ApkgManager.getHeader(str3, paramMiniGamePkg.appConfig), null);
       return;
     }
+    paramOnInitGpkgListener.onInitGpkgInfo(2008, null, "sub pkg download url empty", null);
   }
   
   public static void downloadSubPkgInMainProcess(MiniAppConfig paramMiniAppConfig, MiniGamePkg paramMiniGamePkg, String paramString1, String paramString2, String paramString3, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener)
@@ -330,31 +316,31 @@ public class GpkgManager
     //   0: aconst_null
     //   1: astore_3
     //   2: aload_0
-    //   3: invokestatic 87	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3: invokestatic 97	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   6: ifeq +5 -> 11
     //   9: aconst_null
     //   10: areturn
     //   11: ldc 45
     //   13: aload_0
-    //   14: invokestatic 413	arso:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   17: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   14: invokestatic 428	atwl:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   17: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   20: ifeq +204 -> 224
     //   23: aload_0
     //   24: ldc 45
-    //   26: new 89	java/lang/StringBuilder
+    //   26: new 99	java/lang/StringBuilder
     //   29: dup
-    //   30: invokespecial 90	java/lang/StringBuilder:<init>	()V
-    //   33: ldc_w 415
-    //   36: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokestatic 384	java/lang/System:nanoTime	()J
-    //   42: invokevirtual 387	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokevirtual 419	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   30: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   33: ldc_w 430
+    //   36: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokestatic 399	java/lang/System:nanoTime	()J
+    //   42: invokevirtual 402	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   45: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   48: invokevirtual 434	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   51: astore 6
     //   53: aload_0
     //   54: ldc 45
     //   56: ldc 39
-    //   58: invokevirtual 419	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   58: invokevirtual 434	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   61: astore 5
     //   63: iconst_0
     //   64: istore_1
@@ -362,62 +348,62 @@ public class GpkgManager
     //   66: astore_3
     //   67: aload_0
     //   68: aload 6
-    //   70: invokestatic 424	ndr:a	(Ljava/lang/String;Ljava/lang/String;)I
+    //   70: invokestatic 439	nmk:a	(Ljava/lang/String;Ljava/lang/String;)I
     //   73: ifne +217 -> 290
     //   76: aload 6
-    //   78: invokestatic 428	bdhb:a	(Ljava/lang/String;)Z
+    //   78: invokestatic 443	bgmg:a	(Ljava/lang/String;)Z
     //   81: ifeq +209 -> 290
     //   84: aload 6
     //   86: iconst_0
     //   87: iconst_0
-    //   88: invokestatic 431	arso:a	(Ljava/lang/String;ZI)Ljava/util/ArrayList;
+    //   88: invokestatic 446	atwl:a	(Ljava/lang/String;ZI)Ljava/util/ArrayList;
     //   91: astore 4
     //   93: aload 4
     //   95: ifnull +305 -> 400
     //   98: aload 4
-    //   100: invokevirtual 437	java/util/ArrayList:size	()I
+    //   100: invokevirtual 452	java/util/ArrayList:size	()I
     //   103: ifle +297 -> 400
     //   106: aload 4
-    //   108: invokevirtual 438	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   108: invokevirtual 453	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   111: astore 4
     //   113: aload 4
-    //   115: invokeinterface 211 1 0
+    //   115: invokeinterface 221 1 0
     //   120: ifeq +280 -> 400
     //   123: aload 4
-    //   125: invokeinterface 215 1 0
-    //   130: checkcast 440	com/tencent/mobileqq/filemanager/data/FileInfo
+    //   125: invokeinterface 225 1 0
+    //   130: checkcast 455	com/tencent/mobileqq/filemanager/data/FileInfo
     //   133: astore 7
     //   135: ldc 39
     //   137: aload 7
-    //   139: invokevirtual 443	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
-    //   142: invokestatic 413	arso:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   145: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   139: invokevirtual 458	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
+    //   142: invokestatic 428	atwl:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   145: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   148: ifne +19 -> 167
     //   151: ldc 42
     //   153: aload 7
-    //   155: invokevirtual 443	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
-    //   158: invokestatic 413	arso:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   161: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   155: invokevirtual 458	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
+    //   158: invokestatic 428	atwl:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   161: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   164: ifeq -51 -> 113
     //   167: aload 7
-    //   169: invokevirtual 443	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
+    //   169: invokevirtual 458	com/tencent/mobileqq/filemanager/data/FileInfo:c	()Ljava/lang/String;
     //   172: astore 4
     //   174: aload 4
     //   176: astore_3
     //   177: aload_3
     //   178: astore 4
     //   180: aload_3
-    //   181: invokestatic 428	bdhb:a	(Ljava/lang/String;)Z
+    //   181: invokestatic 443	bgmg:a	(Ljava/lang/String;)Z
     //   184: ifeq +109 -> 293
-    //   187: new 96	java/io/File
+    //   187: new 106	java/io/File
     //   190: dup
     //   191: aload_3
-    //   192: invokespecial 108	java/io/File:<init>	(Ljava/lang/String;)V
-    //   195: new 96	java/io/File
+    //   192: invokespecial 118	java/io/File:<init>	(Ljava/lang/String;)V
+    //   195: new 106	java/io/File
     //   198: dup
     //   199: aload 5
-    //   201: invokespecial 108	java/io/File:<init>	(Ljava/lang/String;)V
-    //   204: invokestatic 447	bdhb:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   201: invokespecial 118	java/io/File:<init>	(Ljava/lang/String;)V
+    //   204: invokestatic 462	bgmg:b	(Ljava/io/File;Ljava/io/File;)Z
     //   207: istore_2
     //   208: aload_3
     //   209: astore 4
@@ -425,38 +411,38 @@ public class GpkgManager
     //   212: ifeq +81 -> 293
     //   215: aload 6
     //   217: iconst_0
-    //   218: invokestatic 449	bdhb:a	(Ljava/lang/String;Z)V
+    //   218: invokestatic 464	bgmg:a	(Ljava/lang/String;Z)V
     //   221: aload 5
     //   223: astore_3
     //   224: aload_3
-    //   225: invokestatic 450	arso:a	(Ljava/lang/String;)Z
+    //   225: invokestatic 465	atwl:a	(Ljava/lang/String;)Z
     //   228: ifeq +153 -> 381
     //   231: aload_3
     //   232: astore 4
     //   234: aload_3
     //   235: aload_0
-    //   236: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   236: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   239: ifne +11 -> 250
     //   242: aload_0
     //   243: iconst_0
-    //   244: invokestatic 449	bdhb:a	(Ljava/lang/String;Z)V
+    //   244: invokestatic 464	bgmg:a	(Ljava/lang/String;Z)V
     //   247: aload_3
     //   248: astore 4
     //   250: ldc 48
     //   252: iconst_1
-    //   253: new 89	java/lang/StringBuilder
+    //   253: new 99	java/lang/StringBuilder
     //   256: dup
-    //   257: invokespecial 90	java/lang/StringBuilder:<init>	()V
-    //   260: ldc_w 452
-    //   263: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   257: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   260: ldc_w 467
+    //   263: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   266: aload 4
-    //   268: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: ldc_w 454
-    //   274: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: ldc_w 469
+    //   274: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   277: aload_0
-    //   278: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   281: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   284: invokestatic 141	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   278: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   281: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   284: invokestatic 151	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   287: aload 4
     //   289: areturn
     //   290: aload_3
@@ -476,27 +462,27 @@ public class GpkgManager
     //   311: astore 4
     //   313: ldc 48
     //   315: iconst_1
-    //   316: new 89	java/lang/StringBuilder
+    //   316: new 99	java/lang/StringBuilder
     //   319: dup
-    //   320: invokespecial 90	java/lang/StringBuilder:<init>	()V
-    //   323: ldc_w 456
-    //   326: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   320: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   323: ldc_w 471
+    //   326: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   329: aload_0
-    //   330: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   333: ldc_w 458
-    //   336: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   330: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   333: ldc_w 473
+    //   336: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   339: aload 6
-    //   341: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   344: ldc_w 460
-    //   347: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   341: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   344: ldc_w 475
+    //   347: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   350: iload_1
-    //   351: invokevirtual 289	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   354: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   351: invokevirtual 305	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   354: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   357: aload 4
-    //   359: invokestatic 463	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   359: invokestatic 478	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   362: aload 6
     //   364: iconst_0
-    //   365: invokestatic 449	bdhb:a	(Ljava/lang/String;Z)V
+    //   365: invokestatic 464	bgmg:a	(Ljava/lang/String;Z)V
     //   368: iload_1
     //   369: iconst_1
     //   370: iadd
@@ -554,13 +540,35 @@ public class GpkgManager
     {
       QLog.e("[minigame] GpkgManager", 1, "[Gpkg] getGpkgInfoByConfig invalid request, game config null");
       if (paramOnInitGpkgListener != null) {
-        paramOnInitGpkgListener.onInitGpkgInfo(2002, null, "getGpkgInfoByConfig invalid request, game config null");
+        paramOnInitGpkgListener.onInitGpkgInfo(2002, null, "getGpkgInfoByConfig invalid request, game config null", null);
       }
       return;
     }
-    paramOnInitGpkgListener = new GpkgManager.1(paramMiniAppConfig, paramOnInitGpkgListener);
-    ApkgMainProcessManager.queueSubProcessLoadTask(paramMiniAppConfig);
-    loadGpkgInMiniProcess(paramMiniAppConfig, paramOnInitGpkgListener);
+    long l = SystemClock.uptimeMillis();
+    paramOnInitGpkgListener = new GpkgManager.1(l, paramMiniAppConfig, paramOnInitGpkgListener);
+    QLog.i("[minigame] GpkgManager", 1, "[Gpkg] getGpkgInfoByConfig checkMainProcess appid=" + paramMiniAppConfig.config.appId);
+    ApkgMainProcessManager.checkShouldLoadPkgInMainProcess(paramMiniAppConfig, new GpkgManager.2(l, paramMiniAppConfig, paramOnInitGpkgListener), false);
+  }
+  
+  private static GpkgManager.Info getInfoFromDownloadResult(DownloadResult paramDownloadResult)
+  {
+    if (paramDownloadResult == null) {
+      return null;
+    }
+    paramDownloadResult = paramDownloadResult.getReport();
+    GpkgManager.Info localInfo = new GpkgManager.Info();
+    localInfo.url = paramDownloadResult.url;
+    localInfo.contentSize = paramDownloadResult.fileSize;
+    localInfo.httpStatusCode = paramDownloadResult.httpStatus;
+    localInfo.success = paramDownloadResult.isSucceed;
+    localInfo.isFromReusedConnection = false;
+    localInfo.timeCostMs = paramDownloadResult.downloadTime;
+    localInfo.queueTimeMs = paramDownloadResult.t_wait;
+    localInfo.dnsTimeMs = paramDownloadResult.t_prepare;
+    localInfo.connectionTimeMs = paramDownloadResult.t_conn;
+    localInfo.receiveTimeMs = paramDownloadResult.t_recvdata;
+    localInfo.message = (localInfo.contentSize * 1000L / (localInfo.timeCostMs + 1L) + " B/S  [" + paramDownloadResult.remoteAddress + "] " + paramDownloadResult.url);
+    return localInfo;
   }
   
   private static String getSubPkgDownloadUrl(MiniGamePkg paramMiniGamePkg, String paramString)
@@ -618,14 +626,14 @@ public class GpkgManager
           QLog.d("[minigame] GpkgManager", 1, "downloadSubPack | getResPath :hasUnpack=" + paramBoolean + "; folderPath=" + paramString1 + "; subRoot=" + paramString3);
         }
         if (!paramBoolean) {
-          break label219;
+          break label220;
         }
         if (paramOnInitGpkgListener != null) {
-          paramOnInitGpkgListener.onInitGpkgInfo(0, paramMiniGamePkg, "download sub pkg and unpack succeed");
+          paramOnInitGpkgListener.onInitGpkgInfo(0, paramMiniGamePkg, "download sub pkg and unpack succeed", null);
         }
       }
     }
-    label219:
+    label220:
     do
     {
       do
@@ -636,30 +644,30 @@ public class GpkgManager
           paramInt = 1;
           break;
         } while (paramOnInitGpkgListener == null);
-        paramOnInitGpkgListener.onInitGpkgInfo(2011, null, "download sub pkg succeed, but unpack sub pkg fail");
+        paramOnInitGpkgListener.onInitGpkgInfo(2011, null, "download sub pkg succeed, but unpack sub pkg fail", null);
         return;
         if (paramInt != 2) {
-          break label268;
+          break label270;
         }
       } while (paramOnInitGpkgListener == null);
       paramOnInitGpkgListener.onDownloadGpkgProgress(paramMiniGamePkg.appConfig.config, paramFloat, paramLong);
       return;
       if (paramInt != 0) {
-        break label347;
+        break label350;
       }
       MiniReportManager.reportEventType(paramMiniGamePkg.appConfig, 614, null, null, null, -9999, "1", 0L, null);
     } while (paramOnInitGpkgListener == null);
-    label268:
-    paramOnInitGpkgListener.onInitGpkgInfo(2009, null, "download sub pkg cancel");
+    label270:
+    paramOnInitGpkgListener.onInitGpkgInfo(2009, null, "download sub pkg cancel", null);
     QLog.d("[minigame] GpkgManager", 2, "onDownloadCanceled() called with: s = [" + paramString1 + "]");
     return;
-    label347:
+    label350:
     if (paramInt == -1)
     {
       if ((paramDownloadResult != null) && (paramDownloadResult.getStatus() != null))
       {
         if (paramDownloadResult.getStatus().exception2Code == 0) {
-          break label476;
+          break label480;
         }
         paramInt = paramDownloadResult.getStatus().exception2Code;
       }
@@ -669,10 +677,10 @@ public class GpkgManager
         if (paramOnInitGpkgListener == null) {
           break;
         }
-        paramOnInitGpkgListener.onInitGpkgInfo(2010, null, "download sub pkg fail");
+        paramOnInitGpkgListener.onInitGpkgInfo(2010, null, "download sub pkg fail", null);
         QLog.d("[minigame] GpkgManager", 2, "onDownloadFailed() called with: s = [" + paramString1 + "], downloadResult = [" + paramDownloadResult + "]");
         return;
-        label476:
+        label480:
         if (paramDownloadResult.getStatus().httpStatus > 0) {
           paramInt = paramDownloadResult.getStatus().httpStatus;
         } else {
@@ -680,10 +688,10 @@ public class GpkgManager
         }
       }
     }
-    paramOnInitGpkgListener.onInitGpkgInfo(2024, null, "download sub pkg fail");
+    paramOnInitGpkgListener.onInitGpkgInfo(2024, null, "download sub pkg fail", null);
   }
   
-  private static void handleGpkgDownloadSuccess(String paramString1, String paramString2, MiniAppConfig paramMiniAppConfig, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener, String paramString3, String paramString4, boolean paramBoolean)
+  private static void handleGpkgDownloadSuccess(String paramString1, String paramString2, MiniAppConfig paramMiniAppConfig, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener, String paramString3, String paramString4, boolean paramBoolean, DownloadResult paramDownloadResult)
   {
     File localFile = new File(paramString1);
     MiniReportManager.reportEventType(paramMiniAppConfig, 621, "1");
@@ -697,7 +705,7 @@ public class GpkgManager
         QLog.i("[minigame] GpkgManager", 1, "[Gpkg] handleGpkgDownloadSuccess path:" + paramString1 + ",unpack:" + paramString2 + ",hasUnpack:" + bool);
       }
       if (!bool) {
-        break label213;
+        break label218;
       }
       paramString1 = MiniGamePkg.loadGamePkgFromFolderPath(paramString2, paramString4, paramMiniAppConfig, paramBoolean);
       if (paramString3 == null) {
@@ -708,7 +716,7 @@ public class GpkgManager
       downloadSubPack(paramString1, paramString3, new GpkgManager.5(paramOnInitGpkgListener));
     }
     label197:
-    label213:
+    label218:
     do
     {
       do
@@ -717,13 +725,13 @@ public class GpkgManager
         i = 1;
         break;
       } while (paramOnInitGpkgListener == null);
-      paramOnInitGpkgListener.onInitGpkgInfo(0, paramString1, "download pkg and unpack succeed");
+      paramOnInitGpkgListener.onInitGpkgInfo(0, paramString1, "download pkg and unpack succeed", getInfoFromDownloadResult(paramDownloadResult));
       return;
       MiniProgramLpReportDC04239.reportPageView(paramMiniAppConfig, "1", null, "load_fail", "unpkg_fail");
       MiniAppReportManager2.reportPageView("2launch_fail", "unpkg_fail", null, paramMiniAppConfig);
       QLog.e("[minigame] GpkgManager", 1, new Object[] { "[Gpkg]", " handleGpkgDownloadSuccess hasUnpack=", Boolean.valueOf(bool) });
     } while (paramOnInitGpkgListener == null);
-    paramOnInitGpkgListener.onInitGpkgInfo(2005, null, "download pkg succeed but unpack fail");
+    paramOnInitGpkgListener.onInitGpkgInfo(2005, null, "download pkg succeed but unpack fail", getInfoFromDownloadResult(paramDownloadResult));
   }
   
   public static boolean isGpkgValid(MiniAppConfig paramMiniAppConfig)
@@ -762,7 +770,7 @@ public class GpkgManager
         QLog.i("[minigame] GpkgManager", 1, "[Gpkg] checkPkgFolderContent success");
         paramString = MiniGamePkg.loadGamePkgFromFolderPath(paramString, null, paramMiniAppConfig, paramBoolean);
         if (paramOnInitGpkgListener != null) {
-          paramOnInitGpkgListener.onInitGpkgInfo(0, paramString, "gpkg exist, no need download");
+          paramOnInitGpkgListener.onInitGpkgInfo(0, paramString, "gpkg exist, no need download", null);
         }
         if (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)) {
           MiniAppStartState.setApkgDownload(paramMiniAppConfig.config.appId, true);
@@ -770,7 +778,7 @@ public class GpkgManager
         return;
       }
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg] checkPkgFolderContent failed, delete folder:" + paramString);
-      bdhb.a(paramString, false);
+      bgmg.a(paramString, false);
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg] download gpkg by url1:" + paramMiniAppConfig.config.downloadUrl);
       downloadGpkgByResumableDownloader(paramMiniAppConfig, paramOnInitGpkgListener, paramString, paramBoolean);
       return;
@@ -787,7 +795,7 @@ public class GpkgManager
       if (new File(localFile1, "plugin.js").exists())
       {
         QLog.i("[minigame] GpkgManager", 1, "[Gpkg] plugin existed:" + localFile1.getAbsolutePath() + " " + paramMiniGamePluginInfo);
-        paramDownloadPluginCallback.onPluginDownloadComplete(true, null);
+        paramDownloadPluginCallback.onPluginDownloadComplete(true, null, null);
         return;
       }
       QLog.e("[minigame] GpkgManager", 1, "[Gpkg] plugin corrupted:" + localFile1.getAbsolutePath() + " " + paramMiniGamePluginInfo);
@@ -801,7 +809,7 @@ public class GpkgManager
     }
     catch (IOException paramMiniGamePluginInfo)
     {
-      paramDownloadPluginCallback.onPluginDownloadComplete(false, paramMiniGamePluginInfo);
+      paramDownloadPluginCallback.onPluginDownloadComplete(false, paramMiniGamePluginInfo, null);
     }
   }
   
@@ -812,7 +820,7 @@ public class GpkgManager
     {
       QLog.e("[minigame] GpkgManager", 1, "[Gpkg] getGpkgInfoByConfig invalid request, game config null");
       if (paramOnInitGpkgListener != null) {
-        paramOnInitGpkgListener.onInitGpkgInfo(2002, null, "getGpkgInfoByConfig invalid request, game config null");
+        paramOnInitGpkgListener.onInitGpkgInfo(2002, null, "getGpkgInfoByConfig invalid request, game config null", null);
       }
       return;
     }
@@ -823,10 +831,10 @@ public class GpkgManager
     {
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg]verType is not online " + paramMiniAppConfig.config.verType + ", delete path " + str);
       if (new File(str).exists()) {
-        bdhb.a(str, false);
+        bgmg.a(str, false);
       }
     }
-    paramOnInitGpkgListener = new GpkgManager.MergedOnInitListener(paramOnInitGpkgListener);
+    paramOnInitGpkgListener = new GpkgManager.MergedOnInitListener(paramMiniAppConfig, paramOnInitGpkgListener);
     performDownloadGpkg(paramMiniAppConfig, paramOnInitGpkgListener, str, paramBoolean);
     if (paramMiniAppConfig.config.miniGamePluginInfo != null)
     {
@@ -834,7 +842,7 @@ public class GpkgManager
       return;
     }
     QLog.i("[minigame] GpkgManager", 1, "[Gpkg] game don't have plugin " + paramMiniAppConfig.config.name + " " + paramMiniAppConfig.config.appId);
-    paramOnInitGpkgListener.onPluginDownloadComplete(true, null);
+    paramOnInitGpkgListener.onPluginDownloadComplete(true, null, null);
   }
   
   public static boolean pkgExists(MiniAppInfo paramMiniAppInfo)
@@ -844,7 +852,7 @@ public class GpkgManager
   
   public static void preloadGpkgByConfig(MiniAppConfig paramMiniAppConfig)
   {
-    TTHandleThread.getInstance().execute(new GpkgManager.2(paramMiniAppConfig));
+    ApkgMainProcessManager.checkShouldLoadPkgInMainProcess(paramMiniAppConfig, null, true);
   }
   
   public static void setOfflineResourceContent(MiniAppConfig paramMiniAppConfig, boolean paramBoolean)
@@ -871,7 +879,7 @@ public class GpkgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.gpkg.GpkgManager
  * JD-Core Version:    0.7.0.1
  */

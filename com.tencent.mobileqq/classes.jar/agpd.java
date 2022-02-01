@@ -1,17 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agpd
-  implements DialogInterface.OnClickListener
+public class agpd
+  implements View.OnClickListener
 {
-  agpd(agoz paramagoz) {}
+  public agpd(ApolloItemBuilder paramApolloItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    zuw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.g);
-    this.a.g = "";
+    if (amhd.a(this.a.a.getApplication()))
+    {
+      ApolloUtil.a(paramView.getContext(), null, "aio", ancb.ah, null);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    if (!amhd.c(this.a.a.getApplication())) {}
+    for (String str = ancb.U;; str = ancb.V + blae.b)
+    {
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+      VasWebviewUtil.openQQBrowserActivity(paramView.getContext(), str, -1L, localIntent, false, -1);
+      break;
+    }
   }
 }
 

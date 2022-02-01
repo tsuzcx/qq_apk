@@ -1,31 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.video.ADVideoAppDownloadManager;
-import com.tencent.biz.pubaccount.readinjoy.video.ADVideoAppDownloadManager.5.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qyk
-  implements ITMAssistantDownloadClientListener
+  implements View.OnClickListener
 {
-  public qyk(ADVideoAppDownloadManager paramADVideoAppDownloadManager) {}
+  public qyk(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2) {}
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void onClick(View paramView)
   {
-    ThreadManager.getSubThreadHandler().post(new ADVideoAppDownloadManager.5.1(this, paramString1, paramInt1));
-  }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
-  {
-    QLog.e("ADVideoAppDownloadManager", 1, "[UniformDL] ABSdkdownload service invalid ");
+    pha.a = ComponentTopicItemMulti.a(this.a);
+    pha.a(this.a.getContext(), this.a.a.b);
+    String str1 = ube.b(ComponentTopicItemMulti.a(this.a));
+    String str2 = pha.a(ComponentTopicItemMulti.a(this.a).mAlgorithmID, pha.a(ComponentTopicItemMulti.a(this.a)), ComponentTopicItemMulti.a(this.a), 0, 0, bgnt.h(this.a.getContext()), ComponentTopicItemMulti.a(this.a).mSubscribeID, null, ComponentTopicItemMulti.a(this.a).innerUniqueID, null, ComponentTopicItemMulti.a(this.a));
+    oat.a(null, ComponentTopicItemMulti.a(this.a).mSubscribeID, str1, str1, 0, 0, ComponentTopicItemMulti.a(this.a).mFeedId + "", String.valueOf(this.a.a.a), String.valueOf(ComponentTopicItemMulti.a(this.a).mAlgorithmID), str2, false);
+    pha.a(ComponentTopicItemMulti.a(this.a), ComponentTopicItemMulti.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qyk
  * JD-Core Version:    0.7.0.1
  */

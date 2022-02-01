@@ -1,12 +1,16 @@
 package com.tencent.mobileqq.activity;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import bkhg;
+import android.view.MotionEvent;
+import bmwa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebView;
 import mqq.app.AppRuntime;
 
@@ -14,9 +18,9 @@ public class QzoneTiantaiTranslucentBrowserActivity
   extends QQTranslucentBrowserActivity
 {
   private static volatile long jdField_a_of_type_Long;
-  private bkhg jdField_a_of_type_Bkhg;
+  private bmwa jdField_a_of_type_Bmwa;
   
-  private bkhg a()
+  private bmwa a()
   {
     Intent localIntent = getIntent();
     if (localIntent != null)
@@ -24,11 +28,11 @@ public class QzoneTiantaiTranslucentBrowserActivity
       switch (localIntent.getIntExtra("translucent_controller", 0))
       {
       default: 
-        return new bkhg(this);
+        return new bmwa(this);
       }
-      return new bkhg(this);
+      return new bmwa(this);
     }
-    return new bkhg(this);
+    return new bmwa(this);
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -67,14 +71,22 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public void a(WebView paramWebView, String paramString)
   {
     super.a(paramWebView, paramString);
-    if (this.jdField_a_of_type_Bkhg != null) {
-      this.jdField_a_of_type_Bkhg.e();
+    if (this.jdField_a_of_type_Bmwa != null) {
+      this.jdField_a_of_type_Bmwa.e();
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnBackPressed()
   {
-    if ((this.jdField_a_of_type_Bkhg != null) && (this.jdField_a_of_type_Bkhg.a())) {
+    if ((this.jdField_a_of_type_Bmwa != null) && (this.jdField_a_of_type_Bmwa.a())) {
       super.doOnBackPressed();
     }
   }
@@ -82,8 +94,8 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    if (this.jdField_a_of_type_Bkhg != null) {
-      this.jdField_a_of_type_Bkhg.a();
+    if (this.jdField_a_of_type_Bmwa != null) {
+      this.jdField_a_of_type_Bmwa.a();
     }
     return bool;
   }
@@ -91,36 +103,43 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bkhg != null) {
-      this.jdField_a_of_type_Bkhg.d();
+    if (this.jdField_a_of_type_Bmwa != null) {
+      this.jdField_a_of_type_Bmwa.d();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Bkhg != null) {
-      this.jdField_a_of_type_Bkhg.b();
+    if (this.jdField_a_of_type_Bmwa != null) {
+      this.jdField_a_of_type_Bmwa.b();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Bkhg != null) {
-      this.jdField_a_of_type_Bkhg.c();
+    if (this.jdField_a_of_type_Bmwa != null) {
+      this.jdField_a_of_type_Bmwa.c();
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bkhg = a();
+    this.jdField_a_of_type_Bmwa = a();
     super.onCreate(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

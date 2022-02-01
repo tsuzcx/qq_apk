@@ -1,82 +1,43 @@
-import android.view.View;
-import com.tencent.mobileqq.search.activity.ContactSearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
 
-public class ayne
-  implements aynt
+class ayne
+  extends aypr
 {
-  public static final String a;
-  private int jdField_a_of_type_Int;
-  private aynu jdField_a_of_type_Aynu;
-  public List<aynu> a;
-  private String b;
+  ayne(aymu paramaymu) {}
   
-  static
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131705756);
-  }
-  
-  public ayne(List<aynu> paramList, String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return ayhw.a("fts_native_contactor_maxnum", 3);
-  }
-  
-  public aynu a()
-  {
-    return this.jdField_a_of_type_Aynu;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<aynu> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    if (SearchConfigManager.needSeparate) {}
-    for (int i = 1;; i = 0)
-    {
-      ContactSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int, 197437, i);
-      ayvm.a(this.b, 20, 0, paramView);
-      if ((paramView.getContext() instanceof UniteSearchActivity))
-      {
-        ayvm.a("all_result", "more_contact", new String[] { "" + this.b });
-        if (SearchConfigManager.needSeparate) {
-          ayvm.a("search", "contact", "more", 0, 0, new String[] { ayvm.a(this.jdField_a_of_type_Int) });
-        }
-        aysc.a(null, 0, this.jdField_a_of_type_Int, "0X8009D39", 0, 0, null, null);
+    super.a(paramBoolean, paramBundle);
+    if ((!aymu.a(this.a)) || (paramBundle == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountPanel", 2, new Object[] { "receiveModOnlineStatusPermission: no needShowOnlineStatusToast needShowOnlineStatusToast=", Boolean.valueOf(aymu.a(this.a)) });
       }
+    }
+    boolean bool;
+    do
+    {
+      return;
+      bool = paramBundle.getBoolean("param_need_switch_online_status", false);
+      if ((!paramBoolean) || (paramBundle == null)) {
+        break;
+      }
+      i = paramBundle.getInt("StatusId", 0);
+      aymu.a(this.a, AppRuntime.Status.online, i, false);
+    } while (bool);
+    QQToast.a(aymu.a(this.a).getApp(), 2, 2131691178, 1).a();
+    this.a.c();
+    return;
+    if (bool) {}
+    for (int i = 2131697641;; i = 2131691179)
+    {
+      QQToast.a(aymu.a(this.a), 1, i, 1).a();
+      this.a.c();
       return;
     }
-  }
-  
-  public void a(aynu paramaynu)
-  {
-    this.jdField_a_of_type_Aynu = paramaynu;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.b;
   }
 }
 

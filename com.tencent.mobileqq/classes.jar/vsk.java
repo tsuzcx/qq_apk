@@ -1,131 +1,56 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.Locale;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.method.BaseMovementMethod;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.widget.TextView;
 
 public class vsk
-  extends vua
-  implements IEventReceiver, xru, xrw, xwk, xwl
+  extends BaseMovementMethod
 {
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout = (FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372176);
-  private vsm jdField_a_of_type_Vsm;
-  private vsn jdField_a_of_type_Vsn;
-  private xrs jdField_a_of_type_Xrs;
-  private xvz jdField_a_of_type_Xvz;
-  private boolean c;
+  private static vsk a;
   
-  public vsk(@NonNull ViewGroup paramViewGroup)
+  public static vsk a()
   {
-    super(paramViewGroup);
-    paramViewGroup.setVisibility(4);
-  }
-  
-  protected View a(ViewGroup paramViewGroup)
-  {
-    return paramViewGroup;
-  }
-  
-  public void a(int paramInt1, int paramInt2, @NonNull vtt paramvtt, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
-  {
-    super.a(paramInt1, paramInt2, paramvtt, paramStoryPlayerGroupHolder);
-    if (!this.jdField_a_of_type_Vtt.c()) {
-      return;
-    }
-    paramvtt = ((uvx)uwa.a(5)).b(this.jdField_a_of_type_Vtt.a);
-    if ((paramvtt != null) && (paramvtt.isPollVideo()))
+    if (a == null) {}
+    try
     {
-      if (this.jdField_a_of_type_Xrs == null) {
-        this.jdField_a_of_type_Xrs = xrr.a(this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext(), 1, 1, null);
+      if (a == null) {
+        a = new vsk();
       }
-      vlr.a(this, this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Xrs, 0, paramvtt);
-      vlr.b(this, this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Xrs, paramInt2, paramvtt);
-      return;
+      return a;
     }
-    if ((paramvtt != null) && (paramvtt.isInteractVideo()))
+    finally {}
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
     {
-      if (this.jdField_a_of_type_Xvz == null) {
-        this.jdField_a_of_type_Xvz = new xwj(this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext());
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      paramMotionEvent = paramTextView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramSpannable = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (paramSpannable.length != 0)
+      {
+        paramSpannable = paramSpannable[0];
+        if (i == 1) {
+          paramSpannable.onClick(paramTextView);
+        }
       }
-      vlq.a(this, this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Xvz, paramInt2, paramvtt);
-      vlq.b(this, this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_Xvz, paramInt2, paramvtt);
-      return;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-  }
-  
-  public void a(xrs paramxrs)
-  {
-    paramxrs = ((uvx)uwa.a(5)).b(this.jdField_a_of_type_Vtt.a);
-    if (paramxrs != null)
-    {
-      wxj.a("play_video", "vote_detail", 1, 0, new String[0]);
-      Intent localIntent = new Intent(a(), QQBrowserActivity.class);
-      localIntent.putExtra("url", String.format(Locale.getDefault(), "http://story.now.qq.com/m/vote/index.html?_wv=3&_nav_alpha=0&vid=%s", new Object[] { paramxrs.mVid }));
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      a().startActivity(localIntent);
-    }
-  }
-  
-  public void a(xrs paramxrs, xsa paramxsa)
-  {
-    StoryVideoItem localStoryVideoItem = ((uvx)uwa.a(5)).b(this.jdField_a_of_type_Vtt.a);
-    if (localStoryVideoItem == null) {
-      return;
-    }
-    vlr.a(this, this, paramxrs, this.b, this.jdField_a_of_type_Vtt.b, localStoryVideoItem, paramxsa);
-  }
-  
-  public void a(xwj paramxwj)
-  {
-    paramxwj = ((uvx)uwa.a(5)).b(this.jdField_a_of_type_Vtt.a);
-    if (paramxwj != null)
-    {
-      wxj.a("play_video", "vote_detail", 2, 0, new String[0]);
-      Intent localIntent = new Intent(a(), QQBrowserActivity.class);
-      localIntent.putExtra("url", String.format(Locale.getDefault(), "http://story.now.qq.com/m/score/index.html?vid=%s&_wv=3&_nav_alpha=0", new Object[] { paramxwj.mVid }));
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      a().startActivity(localIntent);
-    }
-  }
-  
-  public void a(xwj paramxwj, float paramFloat)
-  {
-    StoryVideoItem localStoryVideoItem = ((uvx)uwa.a(5)).b(this.jdField_a_of_type_Vtt.a);
-    if (localStoryVideoItem == null)
-    {
-      wxe.e("InteractWidgetPageHolder", "video item is null while rate changed.");
-      return;
-    }
-    vlq.a(this.b, this.jdField_a_of_type_Vtt.b, localStoryVideoItem, paramxwj, paramFloat);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    this.c = true;
-    this.jdField_a_of_type_Vsm = new vsm(this);
-    this.jdField_a_of_type_Vsn = new vsn(this);
-    umc.a().registerSubscriber(this.jdField_a_of_type_Vsm);
-    umc.a().registerSubscriber(this.jdField_a_of_type_Vsn);
-    a(new vsl(this));
-  }
-  
-  public boolean isValidate()
-  {
-    return this.c;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vsk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,23 @@
-import android.os.Looper;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.10.1;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.10.2;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class prt
-  extends oxe
+  implements prw
 {
-  prt(prr paramprr) {}
+  public prt(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void a(ArticleInfo paramArticleInfo, boolean paramBoolean)
+  public void a()
   {
-    paramArticleInfo = new ReadInJoySocializeRecommendFollowView.10.2(this, paramArticleInfo, paramBoolean);
-    if (Looper.getMainLooper() == Looper.myLooper()) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      ThreadManager.getUIHandler().post(paramArticleInfo);
-      return;
-    }
-    paramArticleInfo.run();
-  }
-  
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    ReadInJoySocializeRecommendFollowView.10.1 local1 = new ReadInJoySocializeRecommendFollowView.10.1(this, paramLong, paramBoolean);
-    if (Looper.getMainLooper() == Looper.myLooper()) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      ThreadManager.getUIHandler().post(local1);
-      return;
-    }
-    local1.run();
+    oat.a(null, "CliOper", "", "", "0X8007DB5", "0X8007DB5", 0, 0, "", "", "", pha.c(ReadInJoySelfFragment.b(this.a)), false);
+    pha.a(this.a.a.getContext(), 2);
+    oat.a(null, "CliOper", "", "", "0X80080F1", "0X80080F1", 0, 0, "", "", "", pha.c(ReadInJoySelfFragment.a(this.a).c()), false);
+    ReadInJoySelfFragment.a(this.a).r();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     prt
  * JD-Core Version:    0.7.0.1
  */

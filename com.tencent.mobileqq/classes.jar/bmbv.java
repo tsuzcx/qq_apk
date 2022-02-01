@@ -1,24 +1,57 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.view.TransitionProviderView;
+import android.graphics.Bitmap;
 
 public class bmbv
-  extends blts
 {
-  public bmbv(TransitionProviderView paramTransitionProviderView) {}
+  private int jdField_a_of_type_Int = -1;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private int b;
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public int a()
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath().equals(paramString))) {
-      this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(1);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
+    while (this.jdField_a_of_type_Int > 0) {
+      return;
     }
+    this.jdField_a_of_type_Int = bmbz.a(this.jdField_a_of_type_AndroidGraphicsBitmap, true);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+    bmbz.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public int c()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      return this.jdField_a_of_type_AndroidGraphicsBitmap.getByteCount();
+    }
+    return 0;
   }
 }
 

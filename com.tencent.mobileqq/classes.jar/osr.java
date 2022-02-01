@@ -1,37 +1,187 @@
-import com.tencent.aladdin.config.utils.AladdinLogger;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.view.Window;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.json.JSONObject;
 
 public class osr
-  implements AladdinLogger
+  extends ViewBase
+  implements View.OnClickListener, View.OnFocusChangeListener
 {
-  public void d(String paramString1, String paramString2)
+  private View jdField_a_of_type_AndroidViewView;
+  private EditText jdField_a_of_type_AndroidWidgetEditText;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ProteusInnerData jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  boolean jdField_a_of_type_Boolean = false;
+  private String b;
+  private String c;
+  
+  public osr(VafContext paramVafContext)
   {
-    QLog.d(paramString1, 2, paramString2);
+    super(paramVafContext);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVafContext.getContext());
+    a();
   }
   
-  public void e(String paramString1, String paramString2)
+  private void a()
   {
-    QLog.e(paramString1, 1, paramString2);
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSystemService("layout_inflater")).inflate(2131560034, null);
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131366106));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379921));
+      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this);
+      this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    }
   }
   
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  private void b()
   {
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
+    Object localObject2 = null;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a != null)
+    {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a.b)) {
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(oqg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a.b, 32));
+      }
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a.c)) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(oqg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a.c, 8));
+      }
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.M))
+    {
+      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.M;
+      this.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.O)) {
+        break label174;
+      }
+    }
+    label174:
+    for (Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.O;; localObject1 = null)
+    {
+      this.c = ((String)localObject1);
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.P)) {
+        localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.P;
+      }
+      this.b = ((String)localObject1);
+      return;
+      localObject1 = null;
+      break;
+    }
   }
   
-  public void i(String paramString1, String paramString2)
+  public int getComMeasuredHeight()
   {
-    QLog.i(paramString1, 1, paramString2);
+    return this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
   }
   
-  public boolean isDebugVersion()
+  public int getComMeasuredWidth()
   {
-    return false;
+    return this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    String str1;
+    do
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData == null);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a.jdField_a_of_type_JavaUtilRegexPattern != null)) {}
+    for (boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a.jdField_a_of_type_JavaUtilRegexPattern.matcher(str1).matches();; bool = true)
+    {
+      for (;;)
+      {
+        if (!bool) {
+          break label173;
+        }
+        QQToast.a(paramView.getContext(), -1, anni.a(2131711677), 0).b(((BaseActivity)paramView.getContext()).getTitleBarHeight());
+        if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a.jdField_a_of_type_OrgJsonJSONObject == null)) {
+          break;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData.a.jdField_a_of_type_OrgJsonJSONObject.put("value", str1);
+        }
+        catch (Exception localException) {}
+      }
+      break;
+      label173:
+      String str2 = anni.a(2131711703);
+      QQToast.a(paramView.getContext(), 1, str2, 0).b(((BaseActivity)paramView.getContext()).getTitleBarHeight());
+      break;
+    }
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_AndroidViewView.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidViewView.measure(paramInt1, paramInt2);
+  }
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof Activity))) {
+      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getWindow().getAttributes().softInputMode = 4;
+    }
+    if ((!this.jdField_a_of_type_Boolean) && (paramBoolean))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      oqg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData, 39);
+    }
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return super.setAttribute(paramInt, paramObject);
+      if ((paramObject != null) && ((paramObject instanceof ProteusInnerData)))
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdDataProteusInnerData = ((ProteusInnerData)paramObject);
+        b();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     osr
  * JD-Core Version:    0.7.0.1
  */

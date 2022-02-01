@@ -1,25 +1,40 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-class bhic
-  implements bgnr
+public class bhic
+  extends bmuf
 {
-  bhic(bhib parambhib, MiniAppInfo paramMiniAppInfo) {}
+  private HashMap<String, bmuf> a;
   
-  public void a(bgod parambgod, int paramInt, String paramString)
+  public bhic(String paramString, View paramView, HashMap<String, bmuf> paramHashMap)
   {
-    if ((paramInt == 0) && (parambgod != null))
+    super(paramString, paramView);
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+  }
+  
+  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
+  {
+    int i = zlx.b(this.jdField_a_of_type_AndroidViewView.getContext());
+    paramLayoutParams.width = Math.max((int)(i * 108.0F / 360.0F), zlx.a(this.jdField_a_of_type_AndroidViewView.getContext(), 108.0F));
+    paramLayoutParams.height = Math.max((int)(i * 126.0F / 360.0F), zlx.a(this.jdField_a_of_type_AndroidViewView.getContext(), 126.0F));
+    return paramLayoutParams;
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if ("border".equals(paramString1))
     {
-      bhib.a(this.jdField_a_of_type_Bhib, parambgod);
-      bhib.a(this.jdField_a_of_type_Bhib, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-      this.jdField_a_of_type_Bhib.c();
+      if ((bmuf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1) != null) {}
       return;
     }
-    this.jdField_a_of_type_Bhib.a(paramInt, paramString);
+    super.a(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhic
  * JD-Core Version:    0.7.0.1
  */

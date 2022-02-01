@@ -1,26 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
 
-class yeu
-  extends RecyclerView.ViewHolder
+public final class yeu
+  implements Parcelable.Creator<CardItem.CardVideoInfo>
 {
-  public yeu(yes paramyes, View paramView)
+  public CardItem.CardVideoInfo a(Parcel paramParcel)
   {
-    super(paramView);
+    return new CardItem.CardVideoInfo(paramParcel);
   }
   
-  public void a(SubscribeDraftBean paramSubscribeDraftBean)
+  public CardItem.CardVideoInfo[] a(int paramInt)
   {
-    if ((this.itemView instanceof SubScribeDraftItemView)) {
-      ((SubScribeDraftItemView)this.itemView).setData(paramSubscribeDraftBean);
-    }
+    return new CardItem.CardVideoInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yeu
  * JD-Core Version:    0.7.0.1
  */

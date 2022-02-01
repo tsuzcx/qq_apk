@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -22,17 +22,17 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import aqbg;
-import aqbj;
-import aqhh;
-import aqhs;
-import aqhu;
-import aqhv;
-import aqhx;
-import aqim;
-import aqin;
-import bdoo;
-import bflr;
+import asfu;
+import asgd;
+import asmk;
+import asmt;
+import asmv;
+import asmw;
+import asmy;
+import asny;
+import asog;
+import bgtn;
+import bita;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -40,6 +40,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -48,7 +49,7 @@ import mqq.os.MqqHandler;
 
 public class ExtendFriendVoiceView
   extends FrameLayout
-  implements View.OnClickListener, aqhu
+  implements View.OnClickListener, asmv
 {
   private static Map<String, WeakReference<Bitmap>> jdField_a_of_type_JavaUtilMap = new HashMap();
   private static final int[] jdField_a_of_type_ArrayOfInt = { -13900833, -37464, -12331403, -5544982 };
@@ -58,9 +59,9 @@ public class ExtendFriendVoiceView
   Paint jdField_a_of_type_AndroidGraphicsPaint;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aqhs jdField_a_of_type_Aqhs;
-  private aqim jdField_a_of_type_Aqim;
-  private aqin jdField_a_of_type_Aqin;
+  private asmt jdField_a_of_type_Asmt;
+  private asny jdField_a_of_type_Asny;
+  private asog jdField_a_of_type_Asog;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
   private String jdField_a_of_type_JavaLangString;
@@ -90,18 +91,18 @@ public class ExtendFriendVoiceView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_c_of_type_Int = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ExtendFriendView).getInteger(0, 0);
-    LayoutInflater.from(paramContext).inflate(2131560965, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131380076);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131368171);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379182));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131368122);
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131368123);
+    LayoutInflater.from(paramContext).inflate(2131561177, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131381037);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131368498);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380107));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131368448);
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131368449);
     this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidViewView.setOnTouchListener(aqhx.a);
+    this.jdField_d_of_type_AndroidViewView.setOnTouchListener(asmy.a);
     e();
-    this.jdField_a_of_type_Aqin = new aqin();
-    this.jdField_a_of_type_Aqin.a(3000L);
-    this.jdField_a_of_type_Aqin.a(true);
+    this.jdField_a_of_type_Asog = new asog();
+    this.jdField_a_of_type_Asog.a(3000L);
+    this.jdField_a_of_type_Asog.a(true);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
@@ -109,11 +110,11 @@ public class ExtendFriendVoiceView
   
   private Bitmap a(String paramString)
   {
-    Object localObject = aqhh.d;
+    Object localObject = asmk.d;
     if ((!TextUtils.isEmpty(paramString)) && (localObject != null) && (localObject.length > 0))
     {
       this.jdField_b_of_type_Int = (paramString.toUpperCase().charAt(0) % localObject.length);
-      String str = aqhh.a(localObject[this.jdField_b_of_type_Int]);
+      String str = asmk.a(localObject[this.jdField_b_of_type_Int]);
       paramString = (WeakReference)jdField_a_of_type_JavaUtilMap.get(str);
       if (paramString != null) {}
       for (paramString = (Bitmap)paramString.get();; paramString = null)
@@ -127,7 +128,7 @@ public class ExtendFriendVoiceView
         {
           paramString = new BitmapFactory.Options();
           paramString.inPreferredConfig = Bitmap.Config.RGB_565;
-          localObject = aqhh.a(str, paramString);
+          localObject = asmk.a(str, paramString);
           jdField_a_of_type_JavaUtilMap.put(str, new WeakReference(localObject));
         }
         return localObject;
@@ -140,9 +141,9 @@ public class ExtendFriendVoiceView
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      int i = aepi.a(50.0F, getResources());
-      GradientDrawable localGradientDrawable1 = aqhv.a(paramInt1, i, i, i, i);
-      GradientDrawable localGradientDrawable2 = aqhv.a(paramInt2, i, i, i, i);
+      int i = afur.a(50.0F, getResources());
+      GradientDrawable localGradientDrawable1 = asmw.a(paramInt1, i, i, i, i);
+      GradientDrawable localGradientDrawable2 = asmw.a(paramInt2, i, i, i, i);
       StateListDrawable localStateListDrawable = new StateListDrawable();
       localStateListDrawable.addState(new int[] { 16842919 }, localGradientDrawable2);
       localStateListDrawable.addState(new int[0], localGradientDrawable1);
@@ -161,17 +162,17 @@ public class ExtendFriendVoiceView
     int j;
     if ((getVisibility() == 0) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3)))
     {
-      k = getWidth() - aepi.a(22.0F, getResources());
+      k = getWidth() - afur.a(22.0F, getResources());
       if (k > 0)
       {
-        j = aepi.a(110.0F, getResources());
+        j = afur.a(110.0F, getResources());
         if ((this.jdField_d_of_type_AndroidViewView == null) || (this.jdField_d_of_type_AndroidViewView.getVisibility() != 0)) {
           break label235;
         }
       }
     }
     label235:
-    for (int i = aepi.a(33.0F, getResources());; i = 0)
+    for (int i = afur.a(33.0F, getResources());; i = 0)
     {
       k = k - j - i;
       int m = (int)(k * Math.min((float)this.jdField_a_of_type_Long / (float)this.jdField_b_of_type_Long, 1.0F));
@@ -192,13 +193,13 @@ public class ExtendFriendVoiceView
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendVoiceView", 2, String.format("playVoice mVoiceUrl=%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
     }
-    if (this.jdField_a_of_type_Aqhs == null) {
-      this.jdField_a_of_type_Aqhs = new aqhs(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    if (this.jdField_a_of_type_Asmt == null) {
+      this.jdField_a_of_type_Asmt = new asmt(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     try
     {
-      this.jdField_a_of_type_Aqhs.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Asmt.a(this.jdField_a_of_type_JavaLangString);
       this.jdField_b_of_type_Boolean = true;
       c();
       return;
@@ -215,8 +216,8 @@ public class ExtendFriendVoiceView
       QLog.d("ExtendFriendVoiceView", 2, String.format("playerCompletion mVoiceUrl=%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
     }
     ThreadManager.getUIHandler().post(new ExtendFriendVoiceView.3(this));
-    if (this.jdField_a_of_type_Aqhs != null) {
-      this.jdField_a_of_type_Aqhs.b();
+    if (this.jdField_a_of_type_Asmt != null) {
+      this.jdField_a_of_type_Asmt.b();
     }
   }
   
@@ -235,7 +236,7 @@ public class ExtendFriendVoiceView
     if ((paramBoolean) && (this.jdField_a_of_type_AndroidViewView != null))
     {
       int i = (int)(getContext().getResources().getDisplayMetrics().density * 20.0F);
-      aepi.a(this.jdField_a_of_type_AndroidViewView, i, i, i, i);
+      afur.a(this.jdField_a_of_type_AndroidViewView, i, i, i, i);
     }
   }
   
@@ -249,10 +250,10 @@ public class ExtendFriendVoiceView
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendVoiceView", 2, String.format("stopVoice mVoiceUrl=%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
     }
-    if (this.jdField_a_of_type_Aqhs != null) {}
+    if (this.jdField_a_of_type_Asmt != null) {}
     try
     {
-      this.jdField_a_of_type_Aqhs.a();
+      this.jdField_a_of_type_Asmt.a();
       this.jdField_b_of_type_Boolean = false;
       d();
       return;
@@ -288,7 +289,7 @@ public class ExtendFriendVoiceView
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           break;
         }
-        localObject1 = new File(aqhh.a((String)localObject1));
+        localObject1 = new File(asmk.a((String)localObject1));
         localObject2 = localObject3;
         if (!((File)localObject1).exists()) {
           break;
@@ -321,13 +322,13 @@ public class ExtendFriendVoiceView
         continue;
         localObject1 = "expand_animate_logo4";
       }
-      if ((localObject2 != null) && (localObject2.length > 0) && (this.jdField_a_of_type_Aqin != null))
+      if ((localObject2 != null) && (localObject2.length > 0) && (this.jdField_a_of_type_Asog != null))
       {
         if (this.jdField_c_of_type_AndroidViewView != null) {
-          this.jdField_c_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_Aqin);
+          this.jdField_c_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_Asog);
         }
-        this.jdField_a_of_type_Aqin.a(localObject2);
-        this.jdField_a_of_type_Aqin.a();
+        this.jdField_a_of_type_Asog.a(localObject2);
+        this.jdField_a_of_type_Asog.a();
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
@@ -348,8 +349,8 @@ public class ExtendFriendVoiceView
   
   public void d()
   {
-    if (this.jdField_a_of_type_Aqin != null) {
-      this.jdField_a_of_type_Aqin.b();
+    if (this.jdField_a_of_type_Asog != null) {
+      this.jdField_a_of_type_Asog.b();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.endAnimation();
@@ -392,16 +393,18 @@ public class ExtendFriendVoiceView
     switch (paramView.getId())
     {
     }
-    do
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    } while (this.jdField_a_of_type_Aqim == null);
-    try
-    {
-      this.jdField_a_of_type_Aqim.a();
-      return;
+      if (this.jdField_a_of_type_Asny != null) {
+        try
+        {
+          this.jdField_a_of_type_Asny.a();
+        }
+        catch (Exception localException) {}
+      }
     }
-    catch (Exception paramView) {}
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -413,7 +416,7 @@ public class ExtendFriendVoiceView
   public void setActivity(BaseActivity paramBaseActivity)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    paramBaseActivity = (aqbg)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(264);
+    paramBaseActivity = (asfu)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(264);
     if (paramBaseActivity != null)
     {
       paramBaseActivity = paramBaseActivity.a();
@@ -423,7 +426,7 @@ public class ExtendFriendVoiceView
     }
   }
   
-  public void setDeleteIconEnable(boolean paramBoolean, aqim paramaqim)
+  public void setDeleteIconEnable(boolean paramBoolean, asny paramasny)
   {
     View localView;
     if (this.jdField_d_of_type_AndroidViewView != null)
@@ -437,23 +440,23 @@ public class ExtendFriendVoiceView
     for (int i = 0;; i = 8)
     {
       localView.setVisibility(i);
-      this.jdField_a_of_type_Aqim = paramaqim;
+      this.jdField_a_of_type_Asny = paramasny;
       return;
     }
   }
   
   public void setMode(int paramInt)
   {
-    int i4 = aepi.a(35.0F, getResources());
-    int i3 = aepi.a(22.0F, getResources());
-    int i2 = aepi.a(19.0F, getResources());
-    int i1 = aepi.a(19.0F, getResources());
-    int n = aepi.a(40.0F, getResources());
-    int m = aepi.a(30.0F, getResources());
-    int k = aepi.a(70.0F, getResources());
-    int i5 = aepi.a(10.0F, getResources());
-    int j = aepi.a(60.0F, getResources());
-    int i = aepi.a(49.0F, getResources());
+    int i4 = afur.a(35.0F, getResources());
+    int i3 = afur.a(22.0F, getResources());
+    int i2 = afur.a(19.0F, getResources());
+    int i1 = afur.a(19.0F, getResources());
+    int n = afur.a(40.0F, getResources());
+    int m = afur.a(30.0F, getResources());
+    int k = afur.a(70.0F, getResources());
+    int i5 = afur.a(10.0F, getResources());
+    int j = afur.a(60.0F, getResources());
+    int i = afur.a(49.0F, getResources());
     this.jdField_a_of_type_Int = paramInt;
     int i6;
     float f;
@@ -511,10 +514,10 @@ public class ExtendFriendVoiceView
         if (this.jdField_a_of_type_Int != 3) {
           break label496;
         }
-        n = bdoo.a(20.0F);
-        i3 = bdoo.a(16.0F);
-        i2 = bdoo.a(16.0F);
-        i1 = bdoo.a(17.0F);
+        n = bgtn.a(20.0F);
+        i3 = bgtn.a(16.0F);
+        i2 = bgtn.a(16.0F);
+        i1 = bgtn.a(17.0F);
         i5 = -2;
         i6 = 0;
         f = 14.0F;
@@ -571,7 +574,7 @@ public class ExtendFriendVoiceView
       if ((this.jdField_c_of_type_AndroidViewView != null) && (paramString != null)) {
         this.jdField_c_of_type_AndroidViewView.setBackgroundDrawable(new BitmapDrawable(paramString));
       }
-      int i = bflr.d(this.jdField_b_of_type_JavaLangString).toUpperCase().charAt(0) % jdField_a_of_type_ArrayOfInt.length;
+      int i = bita.d(this.jdField_b_of_type_JavaLangString).toUpperCase().charAt(0) % jdField_a_of_type_ArrayOfInt.length;
       a(jdField_a_of_type_ArrayOfInt[i], jdField_b_of_type_ArrayOfInt[i]);
     }
   }
@@ -590,7 +593,7 @@ public class ExtendFriendVoiceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView
  * JD-Core Version:    0.7.0.1
  */

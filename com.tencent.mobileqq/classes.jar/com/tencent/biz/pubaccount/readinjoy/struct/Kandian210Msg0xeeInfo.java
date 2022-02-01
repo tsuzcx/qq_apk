@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import ors;
+import pha;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.AccountInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.ContextInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.ControlInfo;
@@ -39,311 +39,341 @@ public class Kandian210Msg0xeeInfo
   public static final int DEFAULT_ARK_ENABLE = 0;
   public static final int DEFAULT_TYPE = 0;
   public static final int DIALOG_TYPE = 2;
-  public static final String KANDIAN_0x210_EE = "kandian_push_0x210_ee";
+  public static final String KANDIAN_0X210_EE = "kandian_push_0x210_ee";
   public static final String TAG = "Kandian210Msg0xeeInfo";
   public int bid;
   public String msgId;
   public long msgSeq;
   public ArrayList<Kandian210Msg0xeeInfo.NotifyInfo> notifyInfos;
   
+  private static void a(submsgtype0xee.NotifyInfo paramNotifyInfo, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo1)
+  {
+    int j = 0;
+    if ((paramNotifyInfo.msg_style_sheet.has()) && (paramNotifyInfo.msg_style_sheet.get() != null))
+    {
+      paramNotifyInfo = (submsgtype0xee.StyleSheet)paramNotifyInfo.msg_style_sheet.get();
+      if (!paramNotifyInfo.enum_style_type.has()) {
+        break label115;
+      }
+    }
+    label115:
+    for (int i = paramNotifyInfo.enum_style_type.get();; i = 0)
+    {
+      paramNotifyInfo1.styleType = i;
+      i = j;
+      if (paramNotifyInfo.uint32_ark_enable.has()) {
+        i = paramNotifyInfo.uint32_ark_enable.get();
+      }
+      paramNotifyInfo1.arkEnable = i;
+      paramNotifyInfo1.sceneType = paramNotifyInfo.uint64_scene.get();
+      paramNotifyInfo1.duration = paramNotifyInfo.uint32_duration.get();
+      paramNotifyInfo1.endTime = paramNotifyInfo.uint64_end_time.get();
+      return;
+    }
+  }
+  
+  private static void b(submsgtype0xee.NotifyInfo paramNotifyInfo, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo1)
+  {
+    submsgtype0xee.OrangeControlInfo localOrangeControlInfo;
+    if ((paramNotifyInfo.msg_ordinary_push_info.has()) && (paramNotifyInfo.msg_ordinary_push_info.get() != null))
+    {
+      paramNotifyInfo1.ordinaryPushInfo = new Kandian210Msg0xeeInfo.OrdinaryPushInfo();
+      paramNotifyInfo = (submsgtype0xee.OrdinaryPushInfo)paramNotifyInfo.msg_ordinary_push_info.get();
+      if ((paramNotifyInfo.msg_label_control_info.has()) && (paramNotifyInfo.msg_label_control_info.get() != null))
+      {
+        paramNotifyInfo1.ordinaryPushInfo.orangeControlInfo = new Kandian210Msg0xeeInfo.OrangeControlInfo();
+        localOrangeControlInfo = (submsgtype0xee.OrangeControlInfo)paramNotifyInfo.msg_label_control_info.get();
+        paramNotifyInfo1 = paramNotifyInfo1.ordinaryPushInfo.orangeControlInfo;
+        if (!localOrangeControlInfo.bytes_color.has()) {
+          break label133;
+        }
+      }
+    }
+    label133:
+    for (paramNotifyInfo = localOrangeControlInfo.bytes_color.get().toStringUtf8();; paramNotifyInfo = null)
+    {
+      paramNotifyInfo1.color = paramNotifyInfo;
+      paramNotifyInfo1.fontSize = localOrangeControlInfo.uint32_font_size.get();
+      return;
+    }
+  }
+  
+  private static void c(submsgtype0xee.NotifyInfo paramNotifyInfo, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo1)
+  {
+    Object localObject = null;
+    submsgtype0xee.SocialPushInfo localSocialPushInfo;
+    Kandian210Msg0xeeInfo.SocialPushInfo localSocialPushInfo1;
+    if ((paramNotifyInfo.msg_social_push_info.has()) && (paramNotifyInfo.msg_social_push_info.get() != null))
+    {
+      paramNotifyInfo1.socialPushInfo = new Kandian210Msg0xeeInfo.SocialPushInfo();
+      localSocialPushInfo = (submsgtype0xee.SocialPushInfo)paramNotifyInfo.msg_social_push_info.get();
+      paramNotifyInfo1.socialPushInfo.feedsId = localSocialPushInfo.uint64_feeds_id.get();
+      localSocialPushInfo1 = paramNotifyInfo1.socialPushInfo;
+      if (!localSocialPushInfo.string_biu_reason.has()) {
+        break label125;
+      }
+    }
+    label125:
+    for (paramNotifyInfo = localSocialPushInfo.string_biu_reason.get().toStringUtf8();; paramNotifyInfo = null)
+    {
+      localSocialPushInfo1.biuReason = paramNotifyInfo;
+      paramNotifyInfo1 = paramNotifyInfo1.socialPushInfo;
+      paramNotifyInfo = localObject;
+      if (localSocialPushInfo.string_biu_comment.has()) {
+        paramNotifyInfo = localSocialPushInfo.string_biu_comment.get().toStringUtf8();
+      }
+      paramNotifyInfo1.biuComment = paramNotifyInfo;
+      return;
+    }
+  }
+  
+  private static void d(submsgtype0xee.NotifyInfo paramNotifyInfo, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo1)
+  {
+    if ((paramNotifyInfo.msg_ugc_push_info.has()) && (paramNotifyInfo.msg_ugc_push_info.get() != null))
+    {
+      paramNotifyInfo1.ugcPushInfo = new Kandian210Msg0xeeInfo.UGCPushInfo();
+      paramNotifyInfo = (submsgtype0xee.UGCPushInfo)paramNotifyInfo.msg_ugc_push_info.get();
+      paramNotifyInfo1.ugcPushInfo.feedsId = paramNotifyInfo.uint64_feeds_id.get();
+      paramNotifyInfo1 = paramNotifyInfo1.ugcPushInfo;
+      if (!paramNotifyInfo.string_ugc_reason.has()) {
+        break label88;
+      }
+    }
+    label88:
+    for (paramNotifyInfo = paramNotifyInfo.string_ugc_reason.get().toStringUtf8();; paramNotifyInfo = null)
+    {
+      paramNotifyInfo1.ugcReason = paramNotifyInfo;
+      return;
+    }
+  }
+  
   public static Kandian210Msg0xeeInfo decodeFromPbBytes(byte[] paramArrayOfByte)
   {
     Kandian210Msg0xeeInfo localKandian210Msg0xeeInfo = new Kandian210Msg0xeeInfo();
     for (;;)
     {
-      submsgtype0xee.NotifyInfo localNotifyInfo1;
-      Kandian210Msg0xeeInfo.NotifyInfo localNotifyInfo;
-      Object localObject2;
       try
       {
-        Object localObject1 = new submsgtype0xee.MsgBody();
-        ((submsgtype0xee.MsgBody)localObject1).mergeFrom(paramArrayOfByte);
-        localKandian210Msg0xeeInfo.bid = ((submsgtype0xee.MsgBody)localObject1).uint32_bid.get();
-        localKandian210Msg0xeeInfo.msgSeq = ((submsgtype0xee.MsgBody)localObject1).uint64_seq.get();
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Kandian210Msg0xeeInfo", 2, "receive push 0xee, bid = " + localKandian210Msg0xeeInfo.bid);
-          QLog.d("Kandian210Msg0xeeInfo", 2, "receive push 0xee msgSeq = " + localKandian210Msg0xeeInfo.msgSeq);
+        Object localObject = new submsgtype0xee.MsgBody();
+        ((submsgtype0xee.MsgBody)localObject).mergeFrom(paramArrayOfByte);
+        localKandian210Msg0xeeInfo.bid = ((submsgtype0xee.MsgBody)localObject).uint32_bid.get();
+        localKandian210Msg0xeeInfo.msgSeq = ((submsgtype0xee.MsgBody)localObject).uint64_seq.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("Kandian210Msg0xeeInfo", 2, "receive push 0xee, bid = " + localKandian210Msg0xeeInfo.bid + " msgSeq=" + localKandian210Msg0xeeInfo.msgSeq);
         }
-        if ((((submsgtype0xee.MsgBody)localObject1).bytes_id.has()) && (((submsgtype0xee.MsgBody)localObject1).bytes_id.get() != null)) {
-          localKandian210Msg0xeeInfo.msgId = ((submsgtype0xee.MsgBody)localObject1).bytes_id.get().toStringUtf8();
+        if ((((submsgtype0xee.MsgBody)localObject).bytes_id.has()) && (((submsgtype0xee.MsgBody)localObject).bytes_id.get() != null)) {
+          localKandian210Msg0xeeInfo.msgId = ((submsgtype0xee.MsgBody)localObject).bytes_id.get().toStringUtf8();
         }
-        if ((!((submsgtype0xee.MsgBody)localObject1).rpt_msg_notify_list.has()) || (((submsgtype0xee.MsgBody)localObject1).rpt_msg_notify_list.get() == null)) {
-          break label1622;
+        if ((!((submsgtype0xee.MsgBody)localObject).rpt_msg_notify_list.has()) || (((submsgtype0xee.MsgBody)localObject).rpt_msg_notify_list.get() == null)) {
+          break label318;
         }
         if (localKandian210Msg0xeeInfo.notifyInfos == null) {
           localKandian210Msg0xeeInfo.notifyInfos = new ArrayList();
         }
-        localObject1 = ((submsgtype0xee.MsgBody)localObject1).rpt_msg_notify_list.get().iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label1616;
+        paramArrayOfByte = ((submsgtype0xee.MsgBody)localObject).rpt_msg_notify_list.get().iterator();
+        if (!paramArrayOfByte.hasNext()) {
+          break;
         }
-        localNotifyInfo1 = (submsgtype0xee.NotifyInfo)((Iterator)localObject1).next();
-        localNotifyInfo = new Kandian210Msg0xeeInfo.NotifyInfo();
-        if ((localNotifyInfo1.msg_style_sheet.has()) && (localNotifyInfo1.msg_style_sheet.get() != null))
+        localObject = (submsgtype0xee.NotifyInfo)paramArrayOfByte.next();
+        Kandian210Msg0xeeInfo.NotifyInfo localNotifyInfo = new Kandian210Msg0xeeInfo.NotifyInfo();
+        a((submsgtype0xee.NotifyInfo)localObject, localNotifyInfo);
+        int i;
+        if (((submsgtype0xee.NotifyInfo)localObject).enum_apppush_type.has())
         {
-          paramArrayOfByte = (submsgtype0xee.StyleSheet)localNotifyInfo1.msg_style_sheet.get();
-          if (paramArrayOfByte.enum_style_type.has())
-          {
-            i = paramArrayOfByte.enum_style_type.get();
-            localNotifyInfo.styleType = i;
-            if (!paramArrayOfByte.uint32_ark_enable.has()) {
-              break label1098;
-            }
-            i = paramArrayOfByte.uint32_ark_enable.get();
-            localNotifyInfo.arkEnable = i;
-            localNotifyInfo.sceneType = paramArrayOfByte.uint64_scene.get();
-            localNotifyInfo.duration = paramArrayOfByte.uint32_duration.get();
-            localNotifyInfo.endTime = paramArrayOfByte.uint64_end_time.get();
-          }
+          i = ((submsgtype0xee.NotifyInfo)localObject).enum_apppush_type.get();
+          localNotifyInfo.appPushType = i;
+          b((submsgtype0xee.NotifyInfo)localObject, localNotifyInfo);
+          c((submsgtype0xee.NotifyInfo)localObject, localNotifyInfo);
+          d((submsgtype0xee.NotifyInfo)localObject, localNotifyInfo);
+          e((submsgtype0xee.NotifyInfo)localObject, localNotifyInfo);
+          f((submsgtype0xee.NotifyInfo)localObject, localNotifyInfo);
+          g((submsgtype0xee.NotifyInfo)localObject, localNotifyInfo);
+          h((submsgtype0xee.NotifyInfo)localObject, localNotifyInfo);
+          i((submsgtype0xee.NotifyInfo)localObject, localNotifyInfo);
+          localKandian210Msg0xeeInfo.notifyInfos.add(localNotifyInfo);
         }
         else
         {
-          if (!localNotifyInfo1.enum_apppush_type.has()) {
-            break label1103;
-          }
-          i = localNotifyInfo1.enum_apppush_type.get();
-          localNotifyInfo.appPushType = i;
-          if ((localNotifyInfo1.msg_ordinary_push_info.has()) && (localNotifyInfo1.msg_ordinary_push_info.get() != null))
-          {
-            localNotifyInfo.ordinaryPushInfo = new Kandian210Msg0xeeInfo.OrdinaryPushInfo();
-            paramArrayOfByte = (submsgtype0xee.OrdinaryPushInfo)localNotifyInfo1.msg_ordinary_push_info.get();
-            if ((paramArrayOfByte.msg_label_control_info.has()) && (paramArrayOfByte.msg_label_control_info.get() != null))
-            {
-              localNotifyInfo.ordinaryPushInfo.orangeControlInfo = new Kandian210Msg0xeeInfo.OrangeControlInfo();
-              localObject2 = (submsgtype0xee.OrangeControlInfo)paramArrayOfByte.msg_label_control_info.get();
-              localObject3 = localNotifyInfo.ordinaryPushInfo.orangeControlInfo;
-              if (!((submsgtype0xee.OrangeControlInfo)localObject2).bytes_color.has()) {
-                break label1108;
-              }
-              paramArrayOfByte = ((submsgtype0xee.OrangeControlInfo)localObject2).bytes_color.get().toStringUtf8();
-              ((Kandian210Msg0xeeInfo.OrangeControlInfo)localObject3).color = paramArrayOfByte;
-              ((Kandian210Msg0xeeInfo.OrangeControlInfo)localObject3).fontSize = ((submsgtype0xee.OrangeControlInfo)localObject2).uint32_font_size.get();
-            }
-          }
-          if ((localNotifyInfo1.msg_social_push_info.has()) && (localNotifyInfo1.msg_social_push_info.get() != null))
-          {
-            localNotifyInfo.socialPushInfo = new Kandian210Msg0xeeInfo.SocialPushInfo();
-            localObject2 = (submsgtype0xee.SocialPushInfo)localNotifyInfo1.msg_social_push_info.get();
-            localNotifyInfo.socialPushInfo.feedsId = ((submsgtype0xee.SocialPushInfo)localObject2).uint64_feeds_id.get();
-            localObject3 = localNotifyInfo.socialPushInfo;
-            if (!((submsgtype0xee.SocialPushInfo)localObject2).string_biu_reason.has()) {
-              break label1113;
-            }
-            paramArrayOfByte = ((submsgtype0xee.SocialPushInfo)localObject2).string_biu_reason.get().toStringUtf8();
-            ((Kandian210Msg0xeeInfo.SocialPushInfo)localObject3).biuReason = paramArrayOfByte;
-            localObject3 = localNotifyInfo.socialPushInfo;
-            if (!((submsgtype0xee.SocialPushInfo)localObject2).string_biu_comment.has()) {
-              break label1118;
-            }
-            paramArrayOfByte = ((submsgtype0xee.SocialPushInfo)localObject2).string_biu_comment.get().toStringUtf8();
-            ((Kandian210Msg0xeeInfo.SocialPushInfo)localObject3).biuComment = paramArrayOfByte;
-          }
-          if ((localNotifyInfo1.msg_ugc_push_info.has()) && (localNotifyInfo1.msg_ugc_push_info.get() != null))
-          {
-            localNotifyInfo.ugcPushInfo = new Kandian210Msg0xeeInfo.UGCPushInfo();
-            paramArrayOfByte = (submsgtype0xee.UGCPushInfo)localNotifyInfo1.msg_ugc_push_info.get();
-            localNotifyInfo.ugcPushInfo.feedsId = paramArrayOfByte.uint64_feeds_id.get();
-            localObject2 = localNotifyInfo.ugcPushInfo;
-            if (!paramArrayOfByte.string_ugc_reason.has()) {
-              break label1123;
-            }
-            paramArrayOfByte = paramArrayOfByte.string_ugc_reason.get().toStringUtf8();
-            ((Kandian210Msg0xeeInfo.UGCPushInfo)localObject2).ugcReason = paramArrayOfByte;
-          }
-          if ((!localNotifyInfo1.msg_context_info.has()) || (localNotifyInfo1.msg_context_info.get() == null)) {
-            break label1203;
-          }
-          localObject2 = (submsgtype0xee.ContextInfo)localNotifyInfo1.msg_context_info.get();
-          localNotifyInfo.contextId = ((submsgtype0xee.ContextInfo)localObject2).uint64_id.get();
-          if (!((submsgtype0xee.ContextInfo)localObject2).bytes_brief.has()) {
-            break label1128;
-          }
-          paramArrayOfByte = ((submsgtype0xee.ContextInfo)localObject2).bytes_brief.get().toStringUtf8();
-          localNotifyInfo.contextBrief = paramArrayOfByte;
-          if (!((submsgtype0xee.ContextInfo)localObject2).bytes_jump_url.has()) {
-            break label1133;
-          }
-          paramArrayOfByte = ((submsgtype0xee.ContextInfo)localObject2).bytes_jump_url.get().toStringUtf8();
-          localNotifyInfo.pictureJumpURL = paramArrayOfByte;
-          if (!((submsgtype0xee.ContextInfo)localObject2).bytes_orange_word.has()) {
-            break label1138;
-          }
-          paramArrayOfByte = ((submsgtype0xee.ContextInfo)localObject2).bytes_orange_word.get().toStringUtf8();
-          localNotifyInfo.orangeWord = paramArrayOfByte;
-          if (!((submsgtype0xee.ContextInfo)localObject2).bytes_title.has()) {
-            break label1143;
-          }
-          paramArrayOfByte = ((submsgtype0xee.ContextInfo)localObject2).bytes_title.get().toStringUtf8();
-          localNotifyInfo.contextTitle = paramArrayOfByte;
-          if (localNotifyInfo.picturesURLList == null) {
-            localNotifyInfo.picturesURLList = new ArrayList();
-          }
-          if ((!((submsgtype0xee.ContextInfo)localObject2).rpt_msg_pic_list.has()) || (((submsgtype0xee.ContextInfo)localObject2).rpt_msg_pic_list.get() == null)) {
-            break label1148;
-          }
-          paramArrayOfByte = ((submsgtype0xee.ContextInfo)localObject2).rpt_msg_pic_list.get().iterator();
-          if (!paramArrayOfByte.hasNext()) {
-            break label1148;
-          }
-          Object localObject3 = (submsgtype0xee.PictureInfo)paramArrayOfByte.next();
-          if ((!((submsgtype0xee.PictureInfo)localObject3).has()) || (((submsgtype0xee.PictureInfo)localObject3).get() == null) || (!((submsgtype0xee.PictureInfo)((submsgtype0xee.PictureInfo)localObject3).get()).bytes_url.has()) || (((submsgtype0xee.PictureInfo)((submsgtype0xee.PictureInfo)localObject3).get()).bytes_url.get() == null)) {
-            continue;
-          }
-          localNotifyInfo.picturesURLList.add(((submsgtype0xee.PictureInfo)((submsgtype0xee.PictureInfo)localObject3).get()).bytes_url.get().toStringUtf8());
-          continue;
+          i = -1;
         }
-        i = 0;
       }
       catch (Exception paramArrayOfByte)
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("Kandian210Msg0xeeInfo", 2, "receive push 0xee, parse msgBody err,", paramArrayOfByte);
-        }
+        QLog.w("Kandian210Msg0xeeInfo", 1, "receive push 0xee, parse msgBody err,", paramArrayOfByte);
         return null;
       }
-      continue;
-      label1098:
-      int i = 0;
-      continue;
-      label1103:
-      i = -1;
-      continue;
-      label1108:
-      paramArrayOfByte = null;
-      continue;
-      label1113:
-      paramArrayOfByte = null;
-      continue;
-      label1118:
-      paramArrayOfByte = null;
-      continue;
-      label1123:
-      paramArrayOfByte = null;
-      continue;
-      label1128:
-      paramArrayOfByte = null;
-      continue;
-      label1133:
-      paramArrayOfByte = null;
-      continue;
-      label1138:
-      paramArrayOfByte = null;
-      continue;
-      label1143:
-      paramArrayOfByte = null;
-      continue;
-      label1148:
-      if (((submsgtype0xee.ContextInfo)localObject2).enum_context_type.has())
+    }
+    return localKandian210Msg0xeeInfo;
+    label318:
+    return null;
+  }
+  
+  private static void e(submsgtype0xee.NotifyInfo paramNotifyInfo, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo1)
+  {
+    Object localObject = null;
+    submsgtype0xee.ContextInfo localContextInfo;
+    if ((paramNotifyInfo.msg_context_info.has()) && (paramNotifyInfo.msg_context_info.get() != null))
+    {
+      localContextInfo = (submsgtype0xee.ContextInfo)paramNotifyInfo.msg_context_info.get();
+      paramNotifyInfo1.contextId = localContextInfo.uint64_id.get();
+      if (localContextInfo.bytes_brief.has())
       {
-        i = ((submsgtype0xee.ContextInfo)localObject2).enum_context_type.get();
-        localNotifyInfo.contextType = i;
-        if (!((submsgtype0xee.ContextInfo)localObject2).bytes_video_brief.has()) {
-          break label1591;
+        paramNotifyInfo = localContextInfo.bytes_brief.get().toStringUtf8();
+        paramNotifyInfo1.contextBrief = paramNotifyInfo;
+        if (!localContextInfo.bytes_jump_url.has()) {
+          break label315;
         }
-        paramArrayOfByte = ((submsgtype0xee.ContextInfo)localObject2).bytes_video_brief.get().toStringUtf8();
-        localNotifyInfo.videoBrief = paramArrayOfByte;
-        if ((localNotifyInfo1.msg_account_info.has()) && (localNotifyInfo1.msg_account_info.get() != null))
-        {
-          localObject2 = (submsgtype0xee.AccountInfo)localNotifyInfo1.msg_account_info.get();
-          localNotifyInfo.uin = ((submsgtype0xee.AccountInfo)localObject2).uint64_id.get();
-          if (!((submsgtype0xee.AccountInfo)localObject2).bytes_name.has()) {
-            break label1596;
-          }
-          paramArrayOfByte = ((submsgtype0xee.AccountInfo)localObject2).bytes_name.get().toStringUtf8();
-          localNotifyInfo.username = paramArrayOfByte;
-          if (!((submsgtype0xee.AccountInfo)localObject2).bytes_icon_url.has()) {
-            break label1601;
-          }
-          paramArrayOfByte = ((submsgtype0xee.AccountInfo)localObject2).bytes_icon_url.get().toStringUtf8();
-          localNotifyInfo.userIconURL = paramArrayOfByte;
+        paramNotifyInfo = localContextInfo.bytes_jump_url.get().toStringUtf8();
+        label97:
+        paramNotifyInfo1.pictureJumpURL = paramNotifyInfo;
+        if (!localContextInfo.bytes_orange_word.has()) {
+          break label320;
         }
-        if ((localNotifyInfo1.msg_extra_info.has()) && (localNotifyInfo1.msg_extra_info.get() != null))
-        {
-          localObject2 = (submsgtype0xee.ExtraInfo)localNotifyInfo1.msg_extra_info.get();
-          if (!((submsgtype0xee.ExtraInfo)localObject2).bytes_ext.has()) {
-            break label1606;
-          }
-          paramArrayOfByte = ((submsgtype0xee.ExtraInfo)localObject2).bytes_ext.get().toStringUtf8();
-          localNotifyInfo.extInfo = paramArrayOfByte;
-          if (!((submsgtype0xee.ExtraInfo)localObject2).bytes_cookie.has()) {
-            break label1611;
-          }
-          paramArrayOfByte = ((submsgtype0xee.ExtraInfo)localObject2).bytes_cookie.get().toStringUtf8();
-          localNotifyInfo.extCookie = paramArrayOfByte;
-          boolean bool = TextUtils.isEmpty(localNotifyInfo.extCookie);
-          if (bool) {}
+        paramNotifyInfo = localContextInfo.bytes_orange_word.get().toStringUtf8();
+        label125:
+        paramNotifyInfo1.orangeWord = paramNotifyInfo;
+        if (!localContextInfo.bytes_title.has()) {
+          break label325;
         }
       }
-      try
+      label315:
+      label320:
+      label325:
+      for (paramNotifyInfo = localContextInfo.bytes_title.get().toStringUtf8();; paramNotifyInfo = null)
       {
-        label1168:
-        label1197:
-        label1203:
-        label1274:
-        localNotifyInfo.folderStatus = Long.valueOf(new JSONObject(localNotifyInfo.extCookie).getString("folder_status")).longValue();
-        label1303:
-        label1367:
-        label1396:
-        if (localNotifyInfo1.msg_statistics_info.has())
-        {
-          paramArrayOfByte = (submsgtype0xee.StatisticsInfo)localNotifyInfo1.msg_statistics_info.get();
-          localNotifyInfo.strategyID = paramArrayOfByte.uint64_strategy_id.get();
-          localNotifyInfo.algorithmID = paramArrayOfByte.uint64_algorithm_id.get();
-          localNotifyInfo.folderStatus = paramArrayOfByte.uint64_folder_status.get();
+        paramNotifyInfo1.contextTitle = paramNotifyInfo;
+        if (paramNotifyInfo1.picturesURLList == null) {
+          paramNotifyInfo1.picturesURLList = new ArrayList();
         }
-        label1444:
-        if ((localNotifyInfo1.msg_control_info.has()) && (localNotifyInfo1.msg_control_info.get() != null))
-        {
-          paramArrayOfByte = (submsgtype0xee.ControlInfo)localNotifyInfo1.msg_control_info.get();
-          localNotifyInfo.commentLength = paramArrayOfByte.uint32_comment_length.get();
-          localNotifyInfo.showLine = paramArrayOfByte.uint32_show_line.get();
-          localNotifyInfo.fontSize = paramArrayOfByte.uint32_font_size.get();
+        if ((!localContextInfo.rpt_msg_pic_list.has()) || (localContextInfo.rpt_msg_pic_list.get() == null)) {
+          break label330;
         }
-        localKandian210Msg0xeeInfo.notifyInfos.add(localNotifyInfo);
-        continue;
-        i = 0;
-        break label1168;
-        label1591:
-        paramArrayOfByte = null;
-        break label1197;
-        label1596:
-        paramArrayOfByte = null;
-        break label1274;
-        label1601:
-        paramArrayOfByte = null;
-        break label1303;
-        label1606:
-        paramArrayOfByte = null;
-        break label1367;
-        label1611:
-        paramArrayOfByte = null;
-        break label1396;
-        label1616:
-        return localKandian210Msg0xeeInfo;
+        paramNotifyInfo = localContextInfo.rpt_msg_pic_list.get().iterator();
+        while (paramNotifyInfo.hasNext())
+        {
+          submsgtype0xee.PictureInfo localPictureInfo = (submsgtype0xee.PictureInfo)paramNotifyInfo.next();
+          if ((localPictureInfo.has()) && (localPictureInfo.get() != null) && (((submsgtype0xee.PictureInfo)localPictureInfo.get()).bytes_url.has()) && (((submsgtype0xee.PictureInfo)localPictureInfo.get()).bytes_url.get() != null)) {
+            paramNotifyInfo1.picturesURLList.add(((submsgtype0xee.PictureInfo)localPictureInfo.get()).bytes_url.get().toStringUtf8());
+          }
+        }
+        paramNotifyInfo = null;
+        break;
+        paramNotifyInfo = null;
+        break label97;
+        paramNotifyInfo = null;
+        break label125;
       }
-      catch (Exception paramArrayOfByte)
-      {
-        break label1444;
+      label330:
+      if (!localContextInfo.enum_context_type.has()) {
+        break label386;
       }
     }
-    label1622:
-    return null;
+    label386:
+    for (int i = localContextInfo.enum_context_type.get();; i = 0)
+    {
+      paramNotifyInfo1.contextType = i;
+      paramNotifyInfo = localObject;
+      if (localContextInfo.bytes_video_brief.has()) {
+        paramNotifyInfo = localContextInfo.bytes_video_brief.get().toStringUtf8();
+      }
+      paramNotifyInfo1.videoBrief = paramNotifyInfo;
+      return;
+    }
+  }
+  
+  private static void f(submsgtype0xee.NotifyInfo paramNotifyInfo, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo1)
+  {
+    Object localObject = null;
+    submsgtype0xee.AccountInfo localAccountInfo;
+    if ((paramNotifyInfo.msg_account_info.has()) && (paramNotifyInfo.msg_account_info.get() != null))
+    {
+      localAccountInfo = (submsgtype0xee.AccountInfo)paramNotifyInfo.msg_account_info.get();
+      paramNotifyInfo1.uin = localAccountInfo.uint64_id.get();
+      if (!localAccountInfo.bytes_name.has()) {
+        break label99;
+      }
+    }
+    label99:
+    for (paramNotifyInfo = localAccountInfo.bytes_name.get().toStringUtf8();; paramNotifyInfo = null)
+    {
+      paramNotifyInfo1.username = paramNotifyInfo;
+      paramNotifyInfo = localObject;
+      if (localAccountInfo.bytes_icon_url.has()) {
+        paramNotifyInfo = localAccountInfo.bytes_icon_url.get().toStringUtf8();
+      }
+      paramNotifyInfo1.userIconURL = paramNotifyInfo;
+      return;
+    }
+  }
+  
+  private static void g(submsgtype0xee.NotifyInfo paramNotifyInfo, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo1)
+  {
+    Object localObject = null;
+    submsgtype0xee.ExtraInfo localExtraInfo;
+    if ((paramNotifyInfo.msg_extra_info.has()) && (paramNotifyInfo.msg_extra_info.get() != null))
+    {
+      localExtraInfo = (submsgtype0xee.ExtraInfo)paramNotifyInfo.msg_extra_info.get();
+      if (!localExtraInfo.bytes_ext.has()) {
+        break label125;
+      }
+    }
+    for (paramNotifyInfo = localExtraInfo.bytes_ext.get().toStringUtf8();; paramNotifyInfo = null)
+    {
+      paramNotifyInfo1.extInfo = paramNotifyInfo;
+      paramNotifyInfo = localObject;
+      if (localExtraInfo.bytes_cookie.has()) {
+        paramNotifyInfo = localExtraInfo.bytes_cookie.get().toStringUtf8();
+      }
+      paramNotifyInfo1.extCookie = paramNotifyInfo;
+      if (!TextUtils.isEmpty(paramNotifyInfo1.extCookie)) {}
+      try
+      {
+        paramNotifyInfo1.folderStatus = Long.valueOf(new JSONObject(paramNotifyInfo1.extCookie).getString("folder_status")).longValue();
+        return;
+      }
+      catch (Exception paramNotifyInfo)
+      {
+        label125:
+        QLog.d("Kandian210Msg0xeeInfo", 1, "handleExtraInfo error!  msg=" + paramNotifyInfo);
+      }
+    }
   }
   
   public static Kandian210Msg0xeeInfo getKandian210Msg0xeeInfoFromSp(QQAppInterface paramQQAppInterface)
   {
-    return (Kandian210Msg0xeeInfo)ors.a(paramQQAppInterface, "kandian_push_0x210_ee", true);
+    return (Kandian210Msg0xeeInfo)pha.a(paramQQAppInterface, "kandian_push_0x210_ee", true);
+  }
+  
+  private static void h(submsgtype0xee.NotifyInfo paramNotifyInfo, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo1)
+  {
+    if (paramNotifyInfo.msg_statistics_info.has())
+    {
+      paramNotifyInfo = (submsgtype0xee.StatisticsInfo)paramNotifyInfo.msg_statistics_info.get();
+      paramNotifyInfo1.strategyID = paramNotifyInfo.uint64_strategy_id.get();
+      paramNotifyInfo1.algorithmID = paramNotifyInfo.uint64_algorithm_id.get();
+      paramNotifyInfo1.folderStatus = paramNotifyInfo.uint64_folder_status.get();
+    }
+  }
+  
+  private static void i(submsgtype0xee.NotifyInfo paramNotifyInfo, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo1)
+  {
+    if ((paramNotifyInfo.msg_control_info.has()) && (paramNotifyInfo.msg_control_info.get() != null))
+    {
+      paramNotifyInfo = (submsgtype0xee.ControlInfo)paramNotifyInfo.msg_control_info.get();
+      paramNotifyInfo1.commentLength = paramNotifyInfo.uint32_comment_length.get();
+      paramNotifyInfo1.showLine = paramNotifyInfo.uint32_show_line.get();
+      paramNotifyInfo1.fontSize = paramNotifyInfo.uint32_font_size.get();
+    }
   }
   
   public static void removeKandian210Msg0xeeInfoFromSp()
   {
-    ors.a("kandian_push_0x210_ee", true);
+    pha.a("kandian_push_0x210_ee", true);
   }
   
   public static void writeToSpAsync(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo)
   {
-    ors.a("kandian_push_0x210_ee", paramKandian210Msg0xeeInfo, true);
+    pha.a("kandian_push_0x210_ee", paramKandian210Msg0xeeInfo, true);
   }
   
   public boolean isArticleAppInPush()

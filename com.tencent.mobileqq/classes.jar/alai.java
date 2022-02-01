@@ -1,45 +1,32 @@
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public class alai
-  implements TVK_SDKMgr.OnLogListener
+class alai
+  implements View.OnClickListener
 {
-  public static String a = "cmgame_process.CmGameVideoLogImpl";
+  private alah jdField_a_of_type_Alah;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public int d(String paramString1, String paramString2)
+  alai(alah paramalah, MqqHandler paramMqqHandler)
+  {
+    this.jdField_a_of_type_Alah = paramalah;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+  }
+  
+  public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(a, 2, paramString1 + ":" + paramString2);
+      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Alah.jdField_a_of_type_JavaLangString + " on close");
     }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    QLog.e(a, 1, paramString1 + ":" + paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    QLog.w(a, 1, paramString1 + ":" + paramString2);
-    return 0;
+    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(201);
+    localMessage.obj = this.jdField_a_of_type_Alah;
+    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+    this.jdField_a_of_type_Alah.jdField_a_of_type_Alaf.onClose();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

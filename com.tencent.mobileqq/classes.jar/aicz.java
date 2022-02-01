@@ -1,16 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-
-public class aicz
-  implements View.OnTouchListener
+class aicz
+  extends anmu
 {
-  public aicz(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aicz(aicv paramaicv) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    return true;
+    aicv.a(this.a, paramBoolean, paramObject);
   }
 }
 

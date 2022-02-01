@@ -1,51 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSLiteSwitchManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.commonsdk.cache.QQLruCache;
+import java.util.List;
 
-public class pwu
+class pwu
+  extends QQLruCache<String, List<BaseData>>
 {
-  private static volatile pwu jdField_a_of_type_Pwu;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static pwu a()
+  pwu(pwt parampwt, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (jdField_a_of_type_Pwu == null) {}
-    try
-    {
-      if (jdField_a_of_type_Pwu == null) {
-        jdField_a_of_type_Pwu = new pwu();
-      }
-      return jdField_a_of_type_Pwu;
-    }
-    finally {}
+    super(paramInt1, paramInt2, paramInt3);
   }
   
-  private void b()
+  protected void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    pwt.c();
-  }
-  
-  private boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  void a()
-  {
-    b();
-    PTSLiteSwitchManager.1 local1 = new PTSLiteSwitchManager.1(this);
-    ThreadManager.getFileThreadHandler().post(local1);
-  }
-  
-  public boolean a()
-  {
-    return (b()) && (pwe.a().a());
+    super.entryRemoved(paramBoolean, paramString, paramList1, paramList2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pwu
  * JD-Core Version:    0.7.0.1
  */

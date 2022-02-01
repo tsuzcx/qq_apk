@@ -1,27 +1,33 @@
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class pba
-  implements Animation.AnimationListener
+class pba
+  extends ClickableSpan
 {
-  public pba(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  pba(pay parampay, SubCommentData paramSubCommentData) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    ReadInJoySelfFragment.a(this.a).setVisibility(8);
-    ReadInJoySelfFragment.b(this.a).setAnimation(null);
+    paa.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
+    paramView = new oyn(this.jdField_a_of_type_Pay).a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin).a();
+    oat.a(null, paa.a(this.jdField_a_of_type_Pay.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Pay.a.mArticleID), String.valueOf(this.jdField_a_of_type_Pay.a.mAlgorithmID), this.jdField_a_of_type_Pay.a.innerUniqueID, paramView, false);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#737373"));
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pba
  * JD-Core Version:    0.7.0.1
  */

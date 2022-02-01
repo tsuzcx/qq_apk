@@ -1,6 +1,22 @@
-public abstract interface bcwg
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+
+public class bcwg
+  implements View.OnLongClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  public bcwg(StructMsgForGeneralShare paramStructMsgForGeneralShare, afzq paramafzq) {}
+  
+  public boolean onLongClick(View paramView)
+  {
+    StructMsgForGeneralShare.clickedItemIndex = 0;
+    bcvs localbcvs = (bcvs)paramView.getTag();
+    if (!TextUtils.isEmpty(localbcvs.Y)) {
+      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localbcvs.Y).intValue();
+    }
+    return this.jdField_a_of_type_Afzq.onLongClick(paramView);
+  }
 }
 
 

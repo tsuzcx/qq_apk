@@ -1,20 +1,63 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.lang.ref.WeakReference;
 
-class bmjx
-  implements bmnv
+public class bmjx
 {
-  bmjx(bmjt parambmjt) {}
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static int jdField_b_of_type_Int;
+  private static bmjx jdField_b_of_type_Bmjx;
+  public int a;
+  private bmjx jdField_a_of_type_Bmjx;
+  public String a;
+  public WeakReference<bmjw> a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a() {}
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
+  public bmjx(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditProviderPart", 2, "onSelectLocation " + paramTroopBarPOI);
+    this.jdField_a_of_type_JavaLangString = (paramInt + " " + paramString);
+  }
+  
+  public static bmjx a(int paramInt, String paramString)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_b_of_type_Bmjx != null)
+      {
+        bmjx localbmjx = jdField_b_of_type_Bmjx;
+        jdField_b_of_type_Bmjx = localbmjx.jdField_a_of_type_Bmjx;
+        localbmjx.jdField_a_of_type_Bmjx = null;
+        localbmjx.jdField_a_of_type_JavaLangString = (paramInt + " " + paramString);
+        localbmjx.jdField_a_of_type_Int = paramInt;
+        jdField_b_of_type_Int -= 1;
+        return localbmjx;
+      }
+      return new bmjx(paramInt, paramString);
     }
-    bmjt.a(this.a).setLocation(paramTroopBarPOI);
+  }
+  
+  private void b()
+  {
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.c = null;
+    this.d = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
+  
+  public void a()
+  {
+    b();
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_b_of_type_Int < 100)
+      {
+        this.jdField_a_of_type_Bmjx = jdField_b_of_type_Bmjx;
+        jdField_b_of_type_Bmjx = this;
+        jdField_b_of_type_Int += 1;
+      }
+      return;
+    }
   }
 }
 

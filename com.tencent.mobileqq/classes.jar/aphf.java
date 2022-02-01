@@ -1,16 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class aphf
-  implements View.OnClickListener
+public class aphf
+  implements apgw
 {
-  aphf(aphc paramaphc, WindowManager paramWindowManager) {}
+  private aphf(apgu paramapgu) {}
   
-  public void onClick(View paramView)
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Aphc.a.a);
+    if ((!"ScanCode".equals(paramString)) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {}
+    for (;;)
+    {
+      return false;
+      long l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
+      paramString = new Intent();
+      paramString.setClassName("com.tencent.mobileqq", "com.tencent.biz.qrcode.activity.ScannerActivity");
+      paramString.putExtra("from", apgu.class.getName());
+      paramString.putExtra("finishAfterSucc", true);
+      if (apgu.a(this.a) != null) {}
+      try
+      {
+        BaseApplicationImpl.getApplication().unregisterReceiver(apgu.a(this.a));
+        label105:
+        apgu.a(this.a, null);
+        apgu.a(this.a, new aphg(this, l));
+        paramArrayOfVariantWrapper = new IntentFilter("com.tencent.mobileqq.ark.API.scanResultAction");
+        BaseApplicationImpl.getApplication().registerReceiver(apgu.a(this.a), paramArrayOfVariantWrapper, "com.tencent.msg.permission.pushnotify", null);
+        paramArrayOfVariantWrapper = BaseActivity.sTopActivity;
+        if (paramArrayOfVariantWrapper == null) {
+          continue;
+        }
+        paramArrayOfVariantWrapper.startActivity(paramString);
+        return false;
+      }
+      catch (Exception paramArrayOfVariantWrapper)
+      {
+        break label105;
+      }
+    }
   }
 }
 

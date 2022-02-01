@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
-public abstract interface alid
+public class alid
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(alie paramalie);
+  public alid(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
   
-  public abstract void a(List<TraceData> paramList);
-  
-  public abstract void b(List<TraceData> paramList);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
+  }
 }
 
 

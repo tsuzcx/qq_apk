@@ -1,44 +1,51 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.os.Looper;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
-class avnf
-  implements avpu
+final class avnf
+  implements HookMethodCallback
 {
-  avnf(avmf paramavmf, String paramString) {}
-  
-  public void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo)
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    if (paramInterestTagInfo.tagJumpUrl.equals("icon_more_url"))
+    long l = Thread.currentThread().getId();
+    HashMap localHashMap;
+    if (avnd.a().containsKey(Long.valueOf(l)))
     {
-      paramView = new Intent(this.jdField_a_of_type_Avmf.a, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Avmf.a.startActivity(paramView);
-      paramInterestTagInfo = this.jdField_a_of_type_Avmf.a.app;
-      if (this.jdField_a_of_type_Avmf.a.e == 2) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        azqs.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_more_tribe", 0, 0, paramView, "", "", "");
-        return;
+      l = SystemClock.uptimeMillis() - ((Long)avnd.a().remove(Long.valueOf(l))).longValue();
+      localHashMap = new HashMap(10);
+      if (Looper.myLooper() != Looper.getMainLooper()) {
+        break label139;
       }
     }
-    paramView = new Intent(this.jdField_a_of_type_Avmf.a, QQBrowserActivity.class);
-    paramView.putExtra("url", paramInterestTagInfo.tagJumpUrl);
-    this.jdField_a_of_type_Avmf.a.startActivity(paramView);
-    paramInterestTagInfo = this.jdField_a_of_type_Avmf.a.app;
-    if (this.jdField_a_of_type_Avmf.a.e == 2) {}
-    for (paramView = "1";; paramView = "2")
+    label139:
+    for (paramMethodHookParam = "1";; paramMethodHookParam = "0")
     {
-      azqs.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_tribe", 0, 0, paramView, "", "", "");
+      localHashMap.put("param_IsMainThread", paramMethodHookParam);
+      localHashMap.put("param_OptType", "connection");
+      localHashMap.put("param_bustag", "Friends");
+      localHashMap.put("param_OptTotalCost", String.valueOf(l));
+      localHashMap.put("param_WalSwitch", String.valueOf(SQLiteOpenHelper.WAL_ENABLE));
+      bctj.a(BaseApplicationImpl.getContext()).a(null, "actFriendSqliteOpt", true, l, 0L, localHashMap, null, false);
       return;
+    }
+  }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam)
+  {
+    long l = Thread.currentThread().getId();
+    if (avnd.a().containsKey(Long.valueOf(l))) {
+      avnd.a().put(Long.valueOf(l), Long.valueOf(SystemClock.uptimeMillis()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avnf
  * JD-Core Version:    0.7.0.1
  */

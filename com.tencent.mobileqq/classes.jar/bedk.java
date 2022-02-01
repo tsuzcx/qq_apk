@@ -1,21 +1,13 @@
 public class bedk
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c = 2;
-  public int d;
-  public int e;
-  public int f;
-  
-  public bedk(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-    this.f = paramInt4;
+    return bhgg.a(paramString);
+  }
+  
+  public static String a(String paramString, boolean paramBoolean)
+  {
+    return bhgg.a(paramString);
   }
 }
 

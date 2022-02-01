@@ -1,30 +1,30 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class wkz
-  extends vii
+public class wkz
+  extends wla
 {
-  wkz(wkw paramwkw) {}
+  public String a;
+  public boolean a;
   
-  public void a()
+  public wkz(qqstory_struct.ErrorInfo paramErrorInfo, PBUInt32Field paramPBUInt32Field, PBBytesField paramPBBytesField)
   {
-    super.a();
-    wkw.a(this.a, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    wxj.a("home_page", "suc_share", 2, paramInt, new String[] { wxj.b(wkw.a(this.a).a) + "", wxj.a(wkw.a(this.a).a) + "", wkw.a(this.a).a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    wxj.a("home_page", "share_chanel", 2, paramInt, new String[] { wxj.b(wkw.a(this.a).a) + "", wxj.a(wkw.a(this.a).a) + "", wkw.a(this.a).a.feedId });
+    super(paramErrorInfo);
+    if (paramPBUInt32Field.get() == 1) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_JavaLangString = paramPBBytesField.get().toStringUtf8();
+      return;
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wkz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bktc;
+import bnid;
 import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
 class AECameraGLSurfaceView$TapRunnable
@@ -19,12 +19,12 @@ class AECameraGLSurfaceView$TapRunnable
   
   public void run()
   {
-    ((bktc)AECameraGLSurfaceView.a(this.this$0)).a().setTouchTriggerEvent(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b);
+    ((bnid)AECameraGLSurfaceView.a(this.this$0)).a().setTouchTriggerEvent(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.TapRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,7 @@ import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.minigame.jsapi.callbacks.PluginResultCallback;
 import com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout;
 import com.tencent.mobileqq.minigame.utils.GameLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,9 +22,9 @@ class KeyboardHandler$3
   {
     try
     {
-      paramView = this.val$currentET.getText().toString();
+      String str = this.val$currentET.getText().toString();
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("value", paramView);
+      localJSONObject.put("value", str);
       this.val$pluginResultCallback.subscribeCallback("onKeyboardConfirm", localJSONObject.toString());
       if (!this.val$keyboardLayout.isConfirmHold())
       {
@@ -36,17 +37,20 @@ class KeyboardHandler$3
       if ((this.val$context instanceof Activity)) {
         DisplayUtil.setActivityFullScreen((Activity)this.val$context);
       }
-      return;
     }
-    catch (JSONException paramView)
+    catch (JSONException localJSONException)
     {
-      GameLog.getInstance().e("KeyboardHandler", "confirm button click callback exception", paramView);
+      for (;;)
+      {
+        GameLog.getInstance().e("KeyboardHandler", "confirm button click callback exception", localJSONException);
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.manager.KeyboardHandler.3
  * JD-Core Version:    0.7.0.1
  */

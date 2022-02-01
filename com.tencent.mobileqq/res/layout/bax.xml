@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/irz" android:layout_width="fill_parent" android:layout_height="44.0dip"
+<merge android:id="@id/irz" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/aai" android:background="@color/ae_" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" />
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
-        <com.tencent.image.URLImageView android:id="@id/gg5" android:background="@drawable/cku" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="14.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
-        <TextView android:textSize="16.0dip" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/iw6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="QQ随心贴，留下想说的话…" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/gg5" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/b9w" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <com.tencent.image.URLImageView android:id="@id/aai" android:background="@color/ae_" android:layout_width="fill_parent" android:layout_height="44.0dip" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+            <com.tencent.image.URLImageView android:id="@id/gg5" android:background="@drawable/cku" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="14.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
+            <TextView android:textSize="16.0dip" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/iw6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="QQ随心贴，留下想说的话…" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/gg5" android:layout_centerVertical="true" />
+        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+</merge>

@@ -1,40 +1,37 @@
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
-import java.util.List;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
 
-public class bifh
-  extends RecyclerView.RecycledViewPool
+class bifh
+  implements IVideoInnerStatusListener
 {
-  public bifh(RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter) {}
+  bifh(bifg parambifg) {}
   
-  public RecyclerView.ViewHolder getRecycledView(int paramInt)
+  public void notifyVideoClose(int paramInt)
   {
-    Object localObject = this.a.getAdapter();
-    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
-    if ((localViewHolder != null) && ((localObject instanceof bifb)))
+    this.a.b();
+  }
+  
+  public void notifyVideoSeek(int paramInt)
+  {
+    if (bifg.a(this.a) != null)
     {
-      localObject = (bifb)localObject;
-      if (((bifb)localObject).d(paramInt))
-      {
-        if (!RecyclerViewWithHeaderFooter.a(this.a).contains(localViewHolder.itemView))
-        {
-          putRecycledView(localViewHolder);
-          return null;
-        }
-      }
-      else if ((((bifb)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooter.b(this.a).contains(localViewHolder.itemView)))
-      {
-        putRecycledView(localViewHolder);
-        return null;
-      }
+      paramInt = (int)(paramInt * bifg.a(this.a).c() / 100.0D);
+      bifg.a(this.a, paramInt);
     }
-    return localViewHolder;
+  }
+  
+  public void notifyVideoStart()
+  {
+    bifg.a(this.a);
+  }
+  
+  public void notifyVideoStop()
+  {
+    bifg.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bifh
  * JD-Core Version:    0.7.0.1
  */

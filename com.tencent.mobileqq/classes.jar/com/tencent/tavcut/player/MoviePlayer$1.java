@@ -1,6 +1,7 @@
 package com.tencent.tavcut.player;
 
 import android.graphics.SurfaceTexture;
+import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.tav.player.Player;
@@ -47,11 +48,15 @@ class MoviePlayer$1
     }
   }
   
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
+  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
+  {
+    Log.d("lingeng_cover", "onSurfaceTextureUpdated: ");
+    MoviePlayer.access$1100(this.this$0, paramSurfaceTexture);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.player.MoviePlayer.1
  * JD-Core Version:    0.7.0.1
  */

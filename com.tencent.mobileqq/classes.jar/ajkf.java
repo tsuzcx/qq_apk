@@ -1,24 +1,18 @@
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajkf
-  extends ajjw
+  implements View.OnClickListener
 {
-  public Button a;
-  public RelativeLayout a;
-  public TextView a;
-  public TroopLabelLayout a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public RelativeLayout b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public ajkf(PublicAccountFragment paramPublicAccountFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    aevt.a(PublicAccountFragment.a(this.a), null);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

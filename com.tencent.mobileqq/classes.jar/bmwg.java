@@ -1,15 +1,15 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class bmwg
-  implements FileFilter
+  implements View.OnTouchListener
 {
-  bmwg(bmwf parambmwf) {}
+  bmwg(bmwe parambmwe) {}
   
-  public boolean accept(File paramFile)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramFile = paramFile.getName();
-    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp")) || (paramFile.endsWith(".apng")) || (paramFile.endsWith(".gif"));
+    return paramMotionEvent.getAction() == 2;
   }
 }
 

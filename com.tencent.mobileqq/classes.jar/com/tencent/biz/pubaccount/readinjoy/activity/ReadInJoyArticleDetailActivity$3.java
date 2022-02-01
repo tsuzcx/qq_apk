@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.mobileqq.app.BrowserAppInterface;
-import oxd;
+import pmm;
 
 class ReadInJoyArticleDetailActivity$3
   implements Runnable

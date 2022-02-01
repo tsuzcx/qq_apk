@@ -4,15 +4,15 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import bdaq;
-import bdgk;
+import bggq;
+import bgln;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
 import java.util.List;
-import pgd;
-import qmr;
-import qms;
+import pxk;
+import rhn;
+import rho;
 
 public class ComponentContentPgcShortContentGridImage
   extends ComponentContentGridImage
@@ -31,16 +31,16 @@ public class ComponentContentPgcShortContentGridImage
   {
     super.a(paramView);
     ViewGroup.LayoutParams localLayoutParams;
-    qms localqms;
+    rho localrho;
     if (getCount() == 1)
     {
       localLayoutParams = paramView.getLayoutParams();
-      localqms = (qms)((pgd)this.a).a().mSocialFeedInfo.a.a.get(0);
-      localLayoutParams.height = ((int)((bdgk.k() - bdaq.a(getContext(), 54.0F)) / 2L));
-      if (localqms.b <= 1.5F * localqms.a) {
+      localrho = (rho)((pxk)this.a).a().mSocialFeedInfo.a.a.get(0);
+      localLayoutParams.height = ((int)((bgln.k() - bggq.a(getContext(), 54.0F)) / 2L));
+      if (localrho.b <= 1.5F * localrho.a) {
         break label126;
       }
-      localLayoutParams.width = ((int)((bdgk.k() - bdaq.a(getContext(), 54.0F)) / 3L));
+      localLayoutParams.width = ((int)((bgln.k() - bggq.a(getContext(), 54.0F)) / 3L));
     }
     for (;;)
     {
@@ -48,12 +48,12 @@ public class ComponentContentPgcShortContentGridImage
       ((SquareCornerTextImageView)paramView).a = false;
       return;
       label126:
-      if (localqms.b >= 1.0F * localqms.a) {
-        localLayoutParams.width = (localqms.a * localLayoutParams.height / localqms.b);
-      } else if (localqms.b > 0.6666667F * localqms.a) {
-        localLayoutParams.width = (localqms.a * localLayoutParams.height / localqms.b);
+      if (localrho.b >= 1.0F * localrho.a) {
+        localLayoutParams.width = (localrho.a * localLayoutParams.height / localrho.b);
+      } else if (localrho.b > 0.6666667F * localrho.a) {
+        localLayoutParams.width = (localrho.a * localLayoutParams.height / localrho.b);
       } else {
-        localLayoutParams.width = ((int)((bdgk.k() - bdaq.a(getContext(), 54.0F)) / 2L * 3L / 2L));
+        localLayoutParams.width = ((int)((bgln.k() - bggq.a(getContext(), 54.0F)) / 2L * 3L / 2L));
       }
     }
   }

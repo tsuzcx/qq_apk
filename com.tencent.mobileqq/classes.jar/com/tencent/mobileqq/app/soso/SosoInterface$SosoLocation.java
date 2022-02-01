@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.soso;
 
-import ampx;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aope;
 import com.tencent.map.geolocation.TencentPoi;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public final class SosoInterface$SosoLocation
   implements Parcelable
 {
-  public static final Parcelable.Creator<SosoLocation> CREATOR = new ampx();
+  public static final Parcelable.Creator<SosoLocation> CREATOR = new aope();
   public double a;
   public float a;
   public int a;
@@ -142,7 +142,7 @@ public final class SosoInterface$SosoLocation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation
  * JD-Core Version:    0.7.0.1
  */

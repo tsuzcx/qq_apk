@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahzq
-  implements arpm
+  implements View.OnClickListener
 {
-  ahzq(ahzp paramahzp) {}
+  ahzq(ahzo paramahzo, String paramString) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if ((paramInt1 == 3) && (paramInt2 == 0))
-    {
-      azqs.b(this.a.a.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 3, 0, "", "", "", "");
-      ChatHistoryC2CFileFragment.a(this.a.a, true);
+    if ((ahzo.a(this.jdField_a_of_type_Ahzo) != null) && (ahzo.a(this.jdField_a_of_type_Ahzo).isShowing())) {
+      ahzo.a(this.jdField_a_of_type_Ahzo).dismiss();
     }
+    if ((this.jdField_a_of_type_Ahzo.a != null) && (this.jdField_a_of_type_Ahzo.a.isShowing()))
+    {
+      this.jdField_a_of_type_Ahzo.a.dismiss();
+      this.jdField_a_of_type_Ahzo.a = null;
+    }
+    ahzo.a(this.jdField_a_of_type_Ahzo, this.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

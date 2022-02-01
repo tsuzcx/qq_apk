@@ -1,59 +1,72 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import java.util.Map;
+import android.view.View;
 
 public class aavs
-  implements aavr
 {
-  private aavt a;
+  private int a;
+  private int b;
   
-  public aavs(aavt paramaavt)
+  public aavs(int paramInt1, int paramInt2)
   {
-    this.a = paramaavt;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  private String a()
+  public static aavs a(int paramInt)
   {
-    Object localObject2 = null;
-    if (this.a != null) {}
-    for (Activity localActivity = this.a.a();; localActivity = null)
+    switch (paramInt)
     {
-      Object localObject1 = localObject2;
-      if (localActivity != null)
-      {
-        localObject1 = localObject2;
-        if (localActivity.getIntent() != null)
-        {
-          long l = localActivity.getIntent().getLongExtra("GdtNocoId", -1L);
-          localObject1 = localObject2;
-          if (l != -1L) {
-            localObject1 = String.valueOf(l);
-          }
-        }
-      }
-      return localObject1;
+    default: 
+      return new aavs(0, -1);
+    case 0: 
+      return new aavs(0, 0);
+    case 1: 
+      return new aavs(0, -1);
     }
+    return new aavs(0, -2);
   }
   
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
+  public static aavs b(int paramInt)
   {
-    if (paramLong == 8589934594L) {}
-    try
+    switch (paramInt)
     {
-      paramString = a();
-      if (!TextUtils.isEmpty(paramString))
+    case 2: 
+    default: 
+      return new aavs(1, -1);
+    case 3: 
+      return new aavs(1, 0);
+    case 1: 
+      return new aavs(1, -1);
+    }
+    return new aavs(1, -2);
+  }
+  
+  public void a(View paramView)
+  {
+    if (this.a == 0) {
+      switch (this.b)
       {
-        this.a.callJs("!function(g,d,t,e,v,n,s){if(g.gdt)return;v=g.gdt=function(){v.tk?v.tk.apply(v,arguments):v.queue.push(arguments)};v.sv=\"1.0\";v.bt=2;v.queue=[];n=d.createElement(t);n.async=!0;n.src=e;s=d.getElementsByTagName(t)[0];s.parentNode.insertBefore(n,s);}(window,document,\"script\",\"//qzonestyle.gtimg.cn/qzone/biz/gdt/dmp/user-action/gdtevent.min.js\");gdt(\"init\",\"userActionSetId\");gdt(\"track\",\"PAGE_VIEW\");".replace("userActionSetId", paramString));
-        aase.a("GdtWebReportNoco", "GdtWebReportPlugin Report nocoId :" + paramString);
+      default: 
+        paramView.setPivotX(this.b);
       }
-      return false;
     }
-    catch (Exception paramString)
+    while (this.a != 1)
     {
-      paramString.printStackTrace();
+      return;
+      paramView.setPivotX(paramView.getWidth() * 0.5F);
+      return;
+      paramView.setPivotX(paramView.getWidth());
+      return;
     }
-    return false;
+    switch (this.b)
+    {
+    default: 
+      paramView.setPivotY(this.b);
+      return;
+    case -1: 
+      paramView.setPivotY(paramView.getHeight() * 0.5F);
+      return;
+    }
+    paramView.setPivotY(paramView.getHeight());
   }
 }
 

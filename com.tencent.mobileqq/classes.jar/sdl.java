@@ -1,33 +1,40 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.res.Resources;
+import android.os.Message;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
-final class sdl
-  implements bhyk
+class sdl
+  extends MqqHandler
 {
-  sdl(Context paramContext, AdData paramAdData) {}
+  private sdl(sce paramsce) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpAdUtils", 2, "onPopupWindowForAdComplain");
-    }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    switch (paramMessage.what)
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_from_type", 3);
-      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData);
-      PublicFragmentActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
     }
+    do
+    {
+      return;
+      QQToast.a(sce.a(this.a), 2131718072, 0).a();
+      return;
+      String str = sce.a(this.a).getString(2131718073);
+      paramMessage = (String)paramMessage.obj;
+      QQToast.a(sce.a(this.a), 2, str + paramMessage, 0).a();
+      bgmo.a(sce.a(this.a), paramMessage);
+      return;
+    } while ((sce.a(this.a) == null) || (sce.a(this.a).jdField_a_of_type_Int != 0));
+    paramMessage = ShortVideoUtils.a(sce.a(this.a).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
+    bglp.a(sce.a(this.a), 232, sce.a(this.a).getResources().getString(2131718104), sce.a(this.a).getResources().getString(2131718103), 2131718087, 2131717317, new sdm(this, paramMessage), new sdn(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sdl
  * JD-Core Version:    0.7.0.1
  */

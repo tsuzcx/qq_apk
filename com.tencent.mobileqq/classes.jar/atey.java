@@ -1,260 +1,749 @@
-import android.content.Intent;
+import android.content.BroadcastReceiver;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter.1;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter.3;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
-import tencent.aio.video.aio_video.ReqGetOpenIdByUin;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class atey
-  extends MSFServlet
 {
-  public static NewIntent a(long paramLong1, long paramLong2, QQAppInterface paramQQAppInterface)
-  {
-    int i = bdeu.a(paramLong2);
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), atey.class);
-    localNewIntent.putExtra("appId", i);
-    localNewIntent.putExtra("sso_command", "QQAIOMediaSvc.get_openid_by_uin");
-    localNewIntent.putExtra("req_type", 1);
-    localNewIntent.putExtra("uin", paramLong1);
-    paramQQAppInterface.startServlet(localNewIntent);
-    return localNewIntent;
-  }
+  private long jdField_a_of_type_Long;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  public Handler a;
+  private asyw jdField_a_of_type_Asyw = new atfa(this);
+  private atfd jdField_a_of_type_Atfd;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  LinkedHashMap<Long, atfe> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private LinkedHashMap<String, LinkedHashMap<Long, atfc>> b = new LinkedHashMap();
   
-  /* Error */
-  private void a(int paramInt, Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public atey(QQAppInterface paramQQAppInterface)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore 5
-    //   3: aload_3
-    //   4: invokevirtual 62	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   7: invokestatic 68	bdpd:b	([B)[B
-    //   10: astore 9
-    //   12: aload_3
-    //   13: invokevirtual 72	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   16: ifeq +326 -> 342
-    //   19: aload 9
-    //   21: ifnull +321 -> 342
-    //   24: new 74	android/os/Bundle
-    //   27: dup
-    //   28: invokespecial 75	android/os/Bundle:<init>	()V
-    //   31: astore 8
-    //   33: aload_2
-    //   34: ldc 29
-    //   36: iconst_0
-    //   37: invokevirtual 81	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   40: istore 4
-    //   42: aload_2
-    //   43: ldc 44
-    //   45: lconst_0
-    //   46: invokevirtual 85	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-    //   49: lstore 6
-    //   51: aload 8
-    //   53: ldc 29
-    //   55: iload 4
-    //   57: invokevirtual 89	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   60: aload 8
-    //   62: ldc 44
-    //   64: lload 6
-    //   66: invokevirtual 93	android/os/Bundle:putLong	(Ljava/lang/String;J)V
-    //   69: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   72: ifeq +61 -> 133
-    //   75: ldc 100
-    //   77: iconst_2
-    //   78: new 102	java/lang/StringBuilder
-    //   81: dup
-    //   82: invokespecial 103	java/lang/StringBuilder:<init>	()V
-    //   85: ldc 105
-    //   87: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: iload 5
-    //   92: invokevirtual 112	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   95: ldc 114
-    //   97: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   100: aload_3
-    //   101: invokevirtual 118	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   104: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   107: ldc 123
-    //   109: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: iload 4
-    //   114: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   117: ldc 125
-    //   119: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: lload 6
-    //   124: invokevirtual 128	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   127: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   130: invokestatic 136	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   133: iload 5
-    //   135: ifeq +154 -> 289
-    //   138: new 138	tencent/aio/video/aio_video$RspGetOpenIdByUin
-    //   141: dup
-    //   142: invokespecial 139	tencent/aio/video/aio_video$RspGetOpenIdByUin:<init>	()V
-    //   145: astore_3
-    //   146: aload_3
-    //   147: aload 9
-    //   149: invokevirtual 143	tencent/aio/video/aio_video$RspGetOpenIdByUin:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   152: pop
-    //   153: aload_3
-    //   154: getfield 147	tencent/aio/video/aio_video$RspGetOpenIdByUin:err_info	Ltencent/aio/video/aio_video$ErrInfo;
-    //   157: getfield 153	tencent/aio/video/aio_video$ErrInfo:err_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   160: invokevirtual 158	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   163: istore 4
-    //   165: iload 4
-    //   167: ifne +59 -> 226
-    //   170: aload_3
-    //   171: getfield 162	tencent/aio/video/aio_video$RspGetOpenIdByUin:open_id	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   174: invokevirtual 167	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   177: invokevirtual 172	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   180: astore_3
-    //   181: aload 8
-    //   183: ldc 174
-    //   185: aload_3
-    //   186: invokevirtual 178	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   189: ldc 100
-    //   191: iconst_2
-    //   192: new 102	java/lang/StringBuilder
-    //   195: dup
-    //   196: invokespecial 103	java/lang/StringBuilder:<init>	()V
-    //   199: ldc 180
-    //   201: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   204: aload_3
-    //   205: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   208: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   211: invokestatic 136	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   214: aload_0
-    //   215: aload_2
-    //   216: iload_1
-    //   217: iconst_1
-    //   218: aload 8
-    //   220: ldc 182
-    //   222: invokevirtual 186	atey:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
-    //   225: return
-    //   226: aload_3
-    //   227: getfield 147	tencent/aio/video/aio_video$RspGetOpenIdByUin:err_info	Ltencent/aio/video/aio_video$ErrInfo;
-    //   230: getfield 189	tencent/aio/video/aio_video$ErrInfo:err_msg	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   233: invokevirtual 167	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   236: invokevirtual 172	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   239: astore_3
-    //   240: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   243: ifeq +38 -> 281
-    //   246: ldc 100
-    //   248: iconst_2
-    //   249: new 102	java/lang/StringBuilder
-    //   252: dup
-    //   253: invokespecial 103	java/lang/StringBuilder:<init>	()V
-    //   256: ldc 191
-    //   258: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   261: iload 4
-    //   263: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   266: ldc 193
-    //   268: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: aload_3
-    //   272: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   278: invokestatic 196	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   281: aload 8
-    //   283: ldc 198
-    //   285: aload_3
-    //   286: invokevirtual 178	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   289: aload_0
-    //   290: aload_2
-    //   291: iload_1
-    //   292: iconst_0
-    //   293: aload 8
-    //   295: ldc 182
-    //   297: invokevirtual 186	atey:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
-    //   300: return
-    //   301: astore_3
-    //   302: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   305: ifeq -16 -> 289
-    //   308: ldc 100
-    //   310: iconst_2
-    //   311: ldc 200
-    //   313: aload_3
-    //   314: invokestatic 203	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   317: goto -28 -> 289
-    //   320: astore_2
-    //   321: aload_2
-    //   322: athrow
-    //   323: astore_3
-    //   324: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   327: ifeq -38 -> 289
-    //   330: ldc 100
-    //   332: iconst_2
-    //   333: ldc 205
-    //   335: aload_3
-    //   336: invokestatic 203	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   339: goto -50 -> 289
-    //   342: iconst_0
-    //   343: istore 5
-    //   345: goto -321 -> 24
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	348	0	this	atey
-    //   0	348	1	paramInt	int
-    //   0	348	2	paramIntent	Intent
-    //   0	348	3	paramFromServiceMsg	FromServiceMsg
-    //   40	222	4	i	int
-    //   1	343	5	bool	boolean
-    //   49	74	6	l	long
-    //   31	263	8	localBundle	android.os.Bundle
-    //   10	138	9	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   138	165	301	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   170	225	301	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   226	281	301	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   281	289	301	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   138	165	320	finally
-    //   170	225	320	finally
-    //   226	281	320	finally
-    //   281	289	320	finally
-    //   302	317	320	finally
-    //   324	339	320	finally
-    //   138	165	323	java/lang/Exception
-    //   170	225	323	java/lang/Exception
-    //   226	281	323	java/lang/Exception
-    //   281	289	323	java/lang/Exception
-  }
-  
-  private void a(Intent paramIntent, Packet paramPacket)
-  {
-    long l = paramIntent.getLongExtra("uin", 0L);
-    int i = paramIntent.getIntExtra("appId", 0);
-    paramIntent = paramIntent.getStringExtra("sso_command");
-    if (QLog.isColorLevel()) {
-      QLog.d("FetchOpenIdServlet", 2, "sendPacket uin=" + l + " appId=" + i);
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramQQAppInterface.a().addObserver(this.jdField_a_of_type_Asyw);
+    try
+    {
+      ThreadManager.executeOnSubThread(new OnlineFileSessionCenter.1(this, paramQQAppInterface));
+      return;
     }
-    aio_video.ReqGetOpenIdByUin localReqGetOpenIdByUin = new aio_video.ReqGetOpenIdByUin();
-    localReqGetOpenIdByUin.app_id.set(i);
-    localReqGetOpenIdByUin.target_uin.set(l);
-    paramPacket.setSSOCommand(paramIntent);
-    paramPacket.putSendData(bdpd.a(localReqGetOpenIdByUin.toByteArray()));
+    catch (Exception paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 2, paramQQAppInterface.toString());
+    }
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  atfe a(long paramLong)
   {
-    int i = paramIntent.getIntExtra("req_type", -1);
-    if (QLog.isColorLevel()) {
-      QLog.d("FetchOpenIdServlet", 2, "onReceive cmd:" + i);
+    atfe localatfe3 = (atfe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramLong));
+    atfe localatfe1 = localatfe3;
+    if (localatfe3 == null)
+    {
+      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong);
+      localatfe1 = localatfe3;
+      if (localFileManagerEntity != null)
+      {
+        localatfe1 = new atfe(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.nSessionId);
+        localatfe1.a(localFileManagerEntity);
+      }
     }
-    a(i, paramIntent, paramFromServiceMsg);
+    try
+    {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramLong), localatfe1);
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong))
+      {
+        QLog.w("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] getOnlineWorker, but user had deleted it, return null");
+        if (localatfe1 != null)
+        {
+          localatfe1.n();
+          c(paramLong);
+        }
+        return null;
+      }
+    }
+    finally {}
+    if (localatfe2 != null) {
+      localatfe2.k();
+    }
+    b();
+    return localatfe2;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  atfe a(String paramString, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FetchOpenIdServlet", 2, "onSend");
+    if ((paramString == null) || (paramLong <= 0L)) {
+      return null;
     }
-    a(paramIntent, paramPacket);
+    Object localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap.values().iterator();
+    atfe localatfe;
+    do
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break;
+      }
+      localatfe = (atfe)((Iterator)localObject).next();
+    } while ((localatfe == null) || (localatfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (!paramString.equalsIgnoreCase(localatfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin)) || (paramLong != localatfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOLfileSessionId));
+    for (;;)
+    {
+      if (localatfe == null)
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramLong);
+        if (localObject == null) {
+          break label261;
+        }
+        paramLong = ((FileManagerEntity)localObject).nSessionId;
+        paramString = new atfe(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).nSessionId);
+        paramString.a((FileManagerEntity)localObject);
+      }
+      for (;;)
+      {
+        try
+        {
+          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramLong), paramString);
+          if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong)) {
+            break label247;
+          }
+          QLog.w("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] getOnlineWorker, but user had deleted it, return null");
+          if (paramString != null)
+          {
+            paramString.n();
+            c(paramLong);
+          }
+          return null;
+        }
+        finally {}
+        if (localatfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+        {
+          paramLong = localatfe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
+          paramString = localatfe;
+          continue;
+          label247:
+          if (paramString != null) {
+            paramString.k();
+          }
+          b();
+          return paramString;
+        }
+        else
+        {
+          label261:
+          paramString = localatfe;
+          paramLong = 0L;
+        }
+      }
+      localatfe = null;
+    }
+  }
+  
+  public void a()
+  {
+    c();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      ((atfe)localEntry.getValue()).n();
+      long l = ((Long)localEntry.getKey()).longValue();
+      int i = this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
+      localIterator.remove();
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + l + "]. stop. and remove the worker..[" + i + " - " + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      atfe localatfe = (atfe)localEntry.getValue();
+      localatfe.b(paramInt);
+      if (localatfe.c())
+      {
+        long l = ((Long)localEntry.getKey()).longValue();
+        localIterator.remove();
+        QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + l + "]. remove the worker....");
+      }
+    }
+    a();
+  }
+  
+  public void a(long paramLong)
+  {
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] PauseTrans sessionid error.return");
+    }
+    atfe localatfe;
+    do
+    {
+      return;
+      localatfe = a(paramLong);
+      if (localatfe == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.PauseTrans");
+        return;
+      }
+      localatfe.f();
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong))
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] had be deleted by user. stop it");
+        localatfe.n();
+      }
+    } while (!localatfe.c());
+    c(paramLong);
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    if ((paramString == null) || (paramLong <= 0L)) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onSenderCancelUpload sessionid error.return");
+    }
+    atfe localatfe;
+    do
+    {
+      do
+      {
+        return;
+        localatfe = a(paramString, paramLong);
+        if (localatfe != null) {
+          break;
+        }
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onSenderCancelUpload");
+      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramLong));
+      a(paramString, paramLong, new atfc(this, 10));
+      return;
+      localatfe.e();
+    } while (!localatfe.c());
+    c(localatfe.jdField_a_of_type_Long);
+  }
+  
+  public void a(String paramString, long paramLong, int paramInt)
+  {
+    if ((paramString == null) || (paramLong <= 0L)) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onFileRequestBeHandledByPC sessionid error.return");
+    }
+    atfe localatfe;
+    do
+    {
+      do
+      {
+        return;
+        localatfe = a(paramString, paramLong);
+        if (localatfe != null) {
+          break;
+        }
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onFileRequestBeHandledByPC");
+      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramLong));
+      a(paramString, paramLong, new atfc(this, paramInt));
+      return;
+      localatfe.a(paramInt);
+    } while (!localatfe.c());
+    c(localatfe.jdField_a_of_type_Long);
+  }
+  
+  public void a(String paramString, long paramLong, int paramInt1, int paramInt2)
+  {
+    if ((paramString == null) || (paramLong <= 0L)) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onSenderUploadProgressNotify sessionid error.return");
+    }
+    do
+    {
+      return;
+      paramString = a(paramString, paramLong);
+      if (paramString == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onSenderUploadProgressNotify");
+        return;
+      }
+      paramString.a(paramInt1, paramInt2);
+    } while (!paramString.c());
+    c(paramString.jdField_a_of_type_Long);
+  }
+  
+  public void a(String paramString1, long paramLong, int paramInt, String paramString2)
+  {
+    if ((paramString1 == null) || (paramLong <= 0L)) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onSenderUploadException sessionid error.return");
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        localObject = a(paramString1, paramLong);
+        if (localObject != null) {
+          break;
+        }
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onSenderUploadException");
+      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramLong));
+      localObject = new atfc(this, 12);
+      ((atfc)localObject).jdField_b_of_type_Int = paramInt;
+      ((atfc)localObject).jdField_a_of_type_JavaLangString = paramString2;
+      a(paramString1, paramLong, (atfc)localObject);
+      return;
+      ((atfe)localObject).a(paramInt, paramString2);
+    } while (!((atfe)localObject).c());
+    c(((atfe)localObject).jdField_a_of_type_Long);
+  }
+  
+  public void a(String paramString1, long paramLong1, int paramInt, String paramString2, long paramLong2)
+  {
+    if ((paramString1 == null) || (paramLong1 <= 0L)) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong1 + "]onSenderUploadCompleted  sessionid error.return");
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        localObject = a(paramString1, paramLong1);
+        if (localObject != null) {
+          break;
+        }
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong1 + "]. not find worker.onSenderUploadCompleted");
+      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramLong1));
+      localObject = new atfc(this, 11);
+      ((atfc)localObject).jdField_b_of_type_Int = paramInt;
+      ((atfc)localObject).jdField_a_of_type_JavaLangString = paramString2;
+      ((atfc)localObject).jdField_b_of_type_Long = paramLong2;
+      a(paramString1, paramLong1, (atfc)localObject);
+      return;
+      if (!((atfe)localObject).a(paramInt, paramString2, paramLong2)) {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong1 + "] upload competed. but onlineworker handle failed!!!!");
+      }
+    } while (!((atfe)localObject).c());
+    c(((atfe)localObject).jdField_a_of_type_Long);
+  }
+  
+  void a(String paramString, long paramLong, atfc paramatfc)
+  {
+    if ((paramString == null) || (paramLong <= 0L) || (paramatfc == null)) {
+      return;
+    }
+    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]  cacheHandleBeforeRequest handleType:" + paramatfc.jdField_a_of_type_Int + " info_1:" + paramatfc.jdField_b_of_type_Int + " info_2:" + paramatfc.jdField_a_of_type_JavaLangString + " info_3:" + paramatfc.jdField_b_of_type_Long);
+    LinkedHashMap localLinkedHashMap = (LinkedHashMap)this.b.get(paramString);
+    if (localLinkedHashMap == null)
+    {
+      localLinkedHashMap = new LinkedHashMap();
+      localLinkedHashMap.put(Long.valueOf(paramLong), paramatfc);
+      this.b.put(paramString, localLinkedHashMap);
+      return;
+    }
+    localLinkedHashMap.put(Long.valueOf(paramLong), paramatfc);
+  }
+  
+  public void a(String paramString, long paramLong, boolean paramBoolean)
+  {
+    if ((paramString == null) || (paramLong <= 0L)) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onRecvOnLineFileResult sessionid error.return");
+    }
+    do
+    {
+      return;
+      paramString = a(paramString, paramLong);
+      if (paramString == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onRecvOnLineFileResult");
+        return;
+      }
+      paramString.a(paramBoolean);
+    } while (!paramString.c());
+    c(paramString.jdField_a_of_type_Long);
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong1, short paramShort, boolean paramBoolean, int paramInt1, String paramString3, athq paramathq, long paramLong2, int paramInt2)
+  {
+    if (paramathq == null)
+    {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession. request come,but session = null");
+      return;
+    }
+    if (0L == paramathq.jdField_b_of_type_Long)
+    {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramathq.jdField_b_of_type_Long + "]  onFileRequestCome sessionid error.return");
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramathq.jdField_b_of_type_Long) != null)
+    {
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramathq.jdField_b_of_type_Long + "] request come filename:" + paramathq.jdField_a_of_type_JavaLangString + ", but is repeat session and return");
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramathq.jdField_b_of_type_Long))
+    {
+      QLog.w("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramathq.jdField_b_of_type_Long + "] request come filename:" + paramathq.jdField_a_of_type_JavaLangString + "but it had be deleted by user");
+      return;
+    }
+    String str = bdzv.a(bdtd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramathq.jdField_a_of_type_JavaLangString, 0, null), paramathq.jdField_a_of_type_Long, 0, false, null);
+    long l = bbzh.a(-1000).uniseq;
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(l, paramString1, 0);
+    localFileManagerEntity.uniseq = l;
+    localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+    localFileManagerEntity.setCloudType(0);
+    localFileManagerEntity.fileName = paramathq.jdField_a_of_type_JavaLangString;
+    localFileManagerEntity.fileSize = paramathq.jdField_a_of_type_Long;
+    localFileManagerEntity.nOpType = -1;
+    localFileManagerEntity.peerNick = atvo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, null, 0);
+    localFileManagerEntity.peerType = 0;
+    localFileManagerEntity.peerUin = paramString1;
+    localFileManagerEntity.srvTime = (1000L * paramLong1);
+    localFileManagerEntity.status = 4;
+    localFileManagerEntity.Uuid = null;
+    localFileManagerEntity.isReaded = paramBoolean;
+    localFileManagerEntity.bSend = false;
+    localFileManagerEntity.nFileType = -1;
+    localFileManagerEntity.nOLfileSessionId = paramathq.jdField_b_of_type_Long;
+    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramathq.jdField_b_of_type_Long + "] - nSessionId[" + localFileManagerEntity.nSessionId + "] request come filename:" + paramathq.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramString2, false, paramathq.jdField_a_of_type_JavaLangString, paramathq.jdField_a_of_type_Long, false, 0, str, paramShort, paramShort, paramString3, paramInt1, l, localFileManagerEntity.nSessionId, paramLong2, paramLong1, paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, "File Coming:" + atvo.a(localFileManagerEntity));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l, localFileManagerEntity.nSessionId, paramString1, 0, 17, null, 0, null);
+    if (!paramString1.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a())) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, true, true);
+    }
+    paramString2 = new atfe(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.nSessionId);
+    paramString2.a(localFileManagerEntity);
+    do
+    {
+      try
+      {
+        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(localFileManagerEntity.nSessionId), paramString2);
+        paramString2.k();
+        if (paramString2.c())
+        {
+          c(localFileManagerEntity.nSessionId);
+          b();
+          return;
+        }
+      }
+      finally {}
+    } while (!a(paramString1, paramathq.jdField_b_of_type_Long));
+    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramathq.jdField_b_of_type_Long + "] had be handled before request come");
+  }
+  
+  public boolean a(long paramLong)
+  {
+    boolean bool1 = false;
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] recvOnLineFile sessionid error.return");
+    }
+    atfe localatfe;
+    boolean bool2;
+    do
+    {
+      return bool1;
+      localatfe = a(paramLong);
+      if (localatfe == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.recvOnLineFile");
+        return false;
+      }
+      atvn localatvn = new atvn();
+      localatvn.b = "recv_file_online";
+      atvm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localatvn);
+      bool2 = localatfe.d();
+      bool1 = bool2;
+    } while (!localatfe.c());
+    c(paramLong);
+    return bool2;
+  }
+  
+  boolean a(String paramString, long paramLong)
+  {
+    boolean bool2;
+    if ((paramString == null) || (paramLong <= 0L))
+    {
+      bool2 = false;
+      return bool2;
+    }
+    LinkedHashMap localLinkedHashMap = (LinkedHashMap)this.b.get(paramString);
+    Object localObject;
+    boolean bool1;
+    if (localLinkedHashMap != null)
+    {
+      localObject = (atfc)localLinkedHashMap.get(Long.valueOf(paramLong));
+      if (localObject != null)
+      {
+        QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]  isBeHandledBeforeRequest handleType:" + ((atfc)localObject).jdField_a_of_type_Int + " info_1:" + ((atfc)localObject).jdField_b_of_type_Int + " info_2:" + ((atfc)localObject).jdField_a_of_type_JavaLangString + " info_3:" + ((atfc)localObject).jdField_b_of_type_Long);
+        switch (((atfc)localObject).jdField_a_of_type_Int)
+        {
+        case 6: 
+        case 7: 
+        case 8: 
+        case 9: 
+        default: 
+          bool1 = false;
+          localLinkedHashMap.remove(Long.valueOf(paramLong));
+          if (localLinkedHashMap.size() == 0) {
+            this.b.remove(paramString);
+          }
+          break;
+        }
+      }
+    }
+    for (;;)
+    {
+      paramLong = bbyp.a();
+      bool2 = bool1;
+      if (paramLong - this.jdField_a_of_type_Long < 3600L) {
+        break;
+      }
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  isBeHandledBeforeRequest handleType. start clear something");
+      this.jdField_a_of_type_Long = paramLong;
+      bool2 = bool1;
+      if (this.b.size() <= 0) {
+        break;
+      }
+      paramString = this.b.entrySet().iterator();
+      for (;;)
+      {
+        bool2 = bool1;
+        if (!paramString.hasNext()) {
+          break;
+        }
+        localLinkedHashMap = (LinkedHashMap)((Map.Entry)paramString.next()).getValue();
+        if ((localLinkedHashMap != null) && (localLinkedHashMap.size() > 0))
+        {
+          localObject = localLinkedHashMap.entrySet().iterator();
+          for (;;)
+          {
+            if (!((Iterator)localObject).hasNext()) {
+              break label597;
+            }
+            Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+            atfc localatfc = (atfc)localEntry.getValue();
+            long l = ((Long)localEntry.getKey()).longValue();
+            if (localatfc != null)
+            {
+              if (paramLong - localatfc.jdField_a_of_type_Long < 7200L) {
+                continue;
+              }
+              QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + l + "]  isBeHandledBeforeRequest and clear it.handleType:" + localatfc.jdField_a_of_type_Int + " info_1:" + localatfc.jdField_b_of_type_Int + " info_2:" + localatfc.jdField_a_of_type_JavaLangString + " info_3:" + localatfc.jdField_b_of_type_Long);
+              ((Iterator)localObject).remove();
+              continue;
+              a(paramString, paramLong, ((atfc)localObject).jdField_a_of_type_Int);
+              bool1 = true;
+              break;
+              a(paramString, paramLong);
+              bool1 = true;
+              break;
+              a(paramString, paramLong, ((atfc)localObject).jdField_b_of_type_Int, ((atfc)localObject).jdField_a_of_type_JavaLangString, ((atfc)localObject).jdField_b_of_type_Long);
+              bool1 = true;
+              break;
+              a(paramString, paramLong, ((atfc)localObject).jdField_b_of_type_Int, ((atfc)localObject).jdField_a_of_type_JavaLangString);
+              bool1 = true;
+              break;
+            }
+            ((Iterator)localObject).remove();
+          }
+          label597:
+          if (localLinkedHashMap.size() == 0) {
+            paramString.remove();
+          }
+        }
+        else
+        {
+          paramString.remove();
+        }
+      }
+      bool1 = false;
+    }
+  }
+  
+  void b()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new atfb(this, Looper.getMainLooper());
+    }
+    if (this.jdField_a_of_type_Atfd == null)
+    {
+      this.jdField_a_of_type_Atfd = new atfd(this, null);
+      this.jdField_a_of_type_Atfd.a();
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[] start progress make pump thread!!!");
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession onNeworkChanged set failed");
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new OnlineFileSessionCenter.3(this, paramInt));
+      return;
+    }
+    a(paramInt);
+  }
+  
+  public void b(long paramLong)
+  {
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] ResumeTrans sessionid error.return");
+    }
+    atfe localatfe;
+    do
+    {
+      return;
+      localatfe = a(paramLong);
+      if (localatfe == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.ResumeTrans");
+        return;
+      }
+      localatfe.g();
+    } while (!localatfe.c());
+    c(paramLong);
+  }
+  
+  public void b(String paramString, long paramLong)
+  {
+    if ((paramString == null) || (paramLong <= 0L)) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onSenderReplayComeOnRecv sessionid error.return");
+    }
+    do
+    {
+      return;
+      paramString = a(paramString, paramLong);
+      if (paramString == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onSenderReplayComeOnRecv");
+        return;
+      }
+      paramString.i();
+    } while (!paramString.c());
+    c(paramString.jdField_a_of_type_Long);
+  }
+  
+  public void b(String paramString, long paramLong, boolean paramBoolean)
+  {
+    if ((paramString == null) || (paramLong <= 0L)) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onAskSenderUpProgressResult sessionid error.return");
+    }
+    do
+    {
+      return;
+      paramString = a(paramString, paramLong);
+      if (paramString == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onAskSenderUpProgressResult");
+        return;
+      }
+      paramString.b(paramBoolean);
+    } while (!paramString.c());
+    c(paramString.jdField_a_of_type_Long);
+  }
+  
+  void c()
+  {
+    if (this.jdField_a_of_type_Atfd != null)
+    {
+      this.jdField_a_of_type_Atfd.b();
+      this.jdField_a_of_type_Atfd = null;
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[] stop progress make pump thread!!!");
+    }
+  }
+  
+  void c(long paramLong)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(paramLong));
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. remove the worker");
+      return;
+    }
+    finally {}
+  }
+  
+  public void c(String paramString, long paramLong)
+  {
+    if ((paramString == null) || (paramLong <= 0L)) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] onAskUpProgressAndSessionInvaid sessionid error.return");
+    }
+    do
+    {
+      return;
+      paramString = a(paramString, paramLong);
+      if (paramString == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onAskUpProgressAndSessionInvaid");
+        return;
+      }
+      paramString.m();
+    } while (!paramString.c());
+    c(paramString.jdField_a_of_type_Long);
+  }
+  
+  void d()
+  {
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      atfe localatfe = (atfe)localEntry.getValue();
+      localatfe.b(l1);
+      if (localatfe.c())
+      {
+        long l2 = ((Long)localEntry.getKey()).longValue();
+        int i = this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
+        localIterator.remove();
+        QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + l2 + "]. remove the worker..[" + i + " - " + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() == 0) {
+      c();
+    }
+  }
+  
+  public void d(long paramLong)
+  {
+    try
+    {
+      atfe localatfe = (atfe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramLong));
+      if (localatfe != null) {
+        localatfe.n();
+      }
+      c(paramLong);
+      return;
+    }
+    finally {}
+  }
+  
+  public void e()
+  {
+    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  clearHistory. session center stop. . .");
+    a();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp() != null) && (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) && (this.jdField_a_of_type_Asyw != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Asyw);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atey
  * JD-Core Version:    0.7.0.1
  */

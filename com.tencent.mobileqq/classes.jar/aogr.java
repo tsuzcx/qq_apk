@@ -1,169 +1,117 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
+import OnlinePushPack.MsgInfo;
+import OnlinePushPack.SvcReqPushMsg;
+import android.content.Intent;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody;
+import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader;
 
 public class aogr
-  implements apbm
+  extends acvl
 {
-  private static final apco jdField_a_of_type_Apco = new aogs();
-  private static final String jdField_a_of_type_JavaLangString = aogr.class.getSimpleName();
-  private aogu jdField_a_of_type_Aogu;
-  private aogv jdField_a_of_type_Aogv;
-  private apcp jdField_a_of_type_Apcp;
-  private DanmakuManager jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
-  
-  public apbq a(aogw paramaogw)
+  public aogr(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (paramaogw != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramaogw);
-    }
-    return null;
+    super(paramQQAppInterface, paramMessageHandler);
   }
   
-  public void a()
+  private void a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Apcp != null)
+    if (paramArrayOfByte == null) {}
+    do
     {
-      this.jdField_a_of_type_Apcp.b(paramInt);
-      if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.h();
+      for (;;)
+      {
+        return;
+        C2CType0x211_SubC2CType0xb.MsgBody localMsgBody = new C2CType0x211_SubC2CType0xb.MsgBody();
+        try
+        {
+          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody)localMsgBody.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader)paramArrayOfByte.msg_msg_header.get();
+          if (paramArrayOfByte != null) {
+            break label71;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgHeader failed");
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgBody failed", paramArrayOfByte);
+    return;
+    label71:
+    long l1 = paramArrayOfByte.uint64_to_uin.get();
+    long l2 = paramArrayOfByte.uint64_room_id.get();
+    paramArrayOfByte = new Intent();
+    paramArrayOfByte.setAction("tencent.video.q2v.AudioEngineReady");
+    paramArrayOfByte.putExtra("uin", String.valueOf(l1));
+    paramArrayOfByte.putExtra("c2cuin", l1);
+    paramArrayOfByte.putExtra("c2croomid", l2);
+    this.a.getApp().sendBroadcast(paramArrayOfByte);
+    QLog.d("svenxu", 1, "ACTION_OPPOSITE_AUDIO_ENGINE_READY Send video c2c broadcast: selfUin = " + l1 + " roomid = " + l2);
   }
   
-  public void a(long paramLong)
+  private void a(byte[] paramArrayOfByte, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b(paramLong);
-    }
-  }
-  
-  public void a(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_Apcp = apbz.a();
-    this.jdField_a_of_type_Apcp.a(3);
-    this.jdField_a_of_type_Apcp.c(7000);
-    this.jdField_a_of_type_Apcp.f(8.0F);
-    this.jdField_a_of_type_Apcp.c(12.0F);
-    this.jdField_a_of_type_Apcp.b(12.0F);
-    this.jdField_a_of_type_Apcp.b(false);
-    this.jdField_a_of_type_Apcp.d(true);
-    apcb localapcb = apbz.a();
-    localapcb.a(new aogt(this));
-    localapcb.a(-4);
-    localapcb.a(new aogx(paramContext));
-    paramContext = localapcb.a();
-    apcn.a(jdField_a_of_type_Apco);
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = new DanmakuManager(paramView, paramContext);
-  }
-  
-  public void a(aogu paramaogu)
-  {
-    this.jdField_a_of_type_Aogu = paramaogu;
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(this);
-    }
-  }
-  
-  public void a(aogv paramaogv)
-  {
-    this.jdField_a_of_type_Aogv = paramaogv;
-  }
-  
-  public void a(apbq paramapbq, apdn paramapdn, apdd paramapdd) {}
-  
-  public void a(DanmuItemBean paramDanmuItemBean)
-  {
-    if ((paramDanmuItemBean != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null))
+    switch (paramInt)
     {
-      paramDanmuItemBean = new aogw(paramDanmuItemBean);
-      paramDanmuItemBean = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramDanmuItemBean);
-      paramDanmuItemBean.e(true);
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramDanmuItemBean);
-    }
-  }
-  
-  public void a(List<apbq> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "addDanmakuList danmakuList is null");
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager == null) {
+    default: 
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramList);
+    a(paramArrayOfByte);
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
+  public acwn a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d());
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.g();
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.l();
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = null;
     }
-  }
-  
-  public void b(List<apbq> paramList)
-  {
-    if ((this.jdField_a_of_type_Aogu != null) && (!b())) {
-      this.jdField_a_of_type_Aogu.b();
-    }
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a());
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d();
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.e();
+      return new acwn(null, true);
+      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
+      {
+        a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime);
+      }
+      else
+      {
+        a(getClass().getName(), paramInt);
+        continue;
+        if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
+        {
+          boolean bool = lkm.a(paramMsgInfo.vMsg);
+          this.a.a().a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime, bool);
+        }
+        else
+        {
+          a(getClass().getName(), paramInt);
+        }
+      }
     }
   }
   
-  public void d()
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.c();
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
+    if ((paramVarArgs != null) && (paramVarArgs.length == 3))
+    {
+      a((byte[])paramVarArgs[2], 11);
+      return;
+    }
+    a(getClass().getName(), paramInt);
   }
   
-  public void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b();
-    }
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Aogu != null) {
-      this.jdField_a_of_type_Aogu.a();
-    }
-  }
+  public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt) {}
 }
 
 

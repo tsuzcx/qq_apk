@@ -27,7 +27,7 @@ public class ImageControlPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.controlpanel.ImageControlPanel
  * JD-Core Version:    0.7.0.1
  */

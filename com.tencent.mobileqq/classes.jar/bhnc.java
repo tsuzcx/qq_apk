@@ -1,27 +1,23 @@
-import android.os.Bundle;
-
-class bhnc
-  extends nac
+public class bhnc
 {
-  protected bhoa a;
-  protected byte[] a;
+  public int a;
+  public String a;
+  public String[] a;
+  public int b;
+  public String b;
   
-  public bhnc(byte[] paramArrayOfByte, bhoa parambhoa)
+  public bhnc(int paramInt1, int paramInt2, String paramString1, String paramString2, String... paramVarArgs)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Bhoa = parambhoa;
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Bhoa != null) {
-      this.jdField_a_of_type_Bhoa.a(paramInt, this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhnc
  * JD-Core Version:    0.7.0.1
  */

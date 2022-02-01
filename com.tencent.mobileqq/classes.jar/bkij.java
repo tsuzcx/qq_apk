@@ -1,25 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlParams;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-public final class bkij
-  implements Parcelable.Creator<WadlParams>
+public abstract interface bkij
 {
-  public WadlParams a(Parcel paramParcel)
-  {
-    WadlParams localWadlParams = new WadlParams("");
-    localWadlParams.a(paramParcel);
-    return localWadlParams;
-  }
-  
-  public WadlParams[] a(int paramInt)
-  {
-    return new WadlParams[paramInt];
-  }
+  public abstract void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkij
  * JD-Core Version:    0.7.0.1
  */

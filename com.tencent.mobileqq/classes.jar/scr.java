@@ -1,19 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.List;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
 
-final class scr
-  implements scv
+class scr
+  extends skd
 {
-  scr(sct paramsct) {}
+  scr(sce paramsce) {}
   
-  public void a(boolean paramBoolean, List<BaseData> paramList)
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    this.a.b(paramList);
+    if (paramVideoInfo != null)
+    {
+      rjh.b(sce.a(this.a), paramVideoInfo.g, 1);
+      return;
+    }
+    QLog.e("VideoFeedsShareController", 1, "add to topic failed, mPlayingVideoInfo = null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     scr
  * JD-Core Version:    0.7.0.1
  */

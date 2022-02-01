@@ -1,25 +1,46 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.open.agent.SwitchAccountActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class biok
-  extends BroadcastReceiver
+public class biok
+  implements View.OnTouchListener
 {
-  biok(bioj parambioj) {}
+  protected GestureDetector.SimpleOnGestureListener a;
+  protected GestureDetector a;
+  View jdField_a_of_type_AndroidViewView;
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public biok(SwitchAccountActivity paramSwitchAccountActivity)
   {
+    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new biol(this);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.d("PluginRedTouchManager", 2, "Received red touch push");
+      QLog.i("AccountManage", 2, "action = " + i);
     }
-    bioj.a(this.a);
-    bioj.b(this.a);
+    if (i == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      if (this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a == true) {
+        this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = false;
+      }
+    }
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biok
  * JD-Core Version:    0.7.0.1
  */

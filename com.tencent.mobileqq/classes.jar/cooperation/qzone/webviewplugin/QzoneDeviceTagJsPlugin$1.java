@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
-import bjqu;
-import bjqw;
+import bmfd;
+import bmfg;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -48,7 +48,7 @@ public final class QzoneDeviceTagJsPlugin$1
           localObject7 = localObject3;
           localObject6 = localObject2;
           localObject3 = localObject5;
-          bjqu.a().a().c((String)localObject1, (String)localObject7, (String)localObject6, (String)localObject3);
+          bmfd.a().a().c((String)localObject1, (String)localObject7, (String)localObject6, (String)localObject3);
           return;
         }
         catch (JSONException localJSONException2)
@@ -74,7 +74,7 @@ public final class QzoneDeviceTagJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneDeviceTagJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

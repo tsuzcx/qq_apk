@@ -1,34 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
 class avec
-  implements bfah
+  implements TVK_IMediaPlayer.OnNetVideoInfoListener
 {
-  avec(avea paramavea) {}
+  avec(avdv paramavdv) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
-      }
-      if (this.a.jdField_a_of_type_Aved != null) {
-        this.a.jdField_a_of_type_Aved.a(true);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onNetVideoInfo what=" + paramTVK_NetVideoInfo.getErrInfo() + ",extra=" + paramTVK_NetVideoInfo.getState() + ",mCacheProgress=");
     }
-    label59:
-    while (this.a.jdField_a_of_type_Aved == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Aved.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avec
  * JD-Core Version:    0.7.0.1
  */

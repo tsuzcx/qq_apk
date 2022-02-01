@@ -1,17 +1,41 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.8.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
-public class bleb
-  implements View.OnClickListener
+class bleb
+  extends bhhe
 {
-  bleb(blds paramblds) {}
+  private bleb(bldz parambldz) {}
   
-  public void onClick(View paramView)
+  public void onDone(bhhf parambhhf)
   {
-    blds.b(this.a);
-    new Handler().postDelayed(new AEGIFTextEditFragment.8.1(this), 200L);
+    super.onDone(parambhhf);
+    if ((parambhhf.a() == 3) && (parambhhf.jdField_a_of_type_Int == 0)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("IlivePluginDownloadManager", 2, "onDone , url = " + parambhhf.c + " isSuccess = " + bool + " errorCode = " + parambhhf.jdField_a_of_type_Int + " httpCode = " + parambhhf.f + " errMsg = " + parambhhf.b);
+      }
+      bldz.a(this.a).remove(parambhhf);
+      bldz.a(this.a);
+      if (!bool) {
+        break;
+      }
+      bldz.b(this.a);
+      return;
+    }
+    bldz.a(this.a, parambhhf);
+  }
+  
+  public void onProgress(bhhf parambhhf)
+  {
+    super.onProgress(parambhhf);
+    if (QLog.isColorLevel()) {
+      QLog.e("IlivePluginDownloadManager", 2, "onProgress ,  percent = " + parambhhf.jdField_a_of_type_Float + " url = " + parambhhf.c + " runTime = " + BaseApplicationImpl.getApplication().getRuntime().getClass());
+    }
+    if (bldz.a(this.a) != null) {
+      bldz.a(this.a).onProgress(parambhhf.jdField_a_of_type_Float);
+    }
   }
 }
 

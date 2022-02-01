@@ -1,68 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-
 public class aoxu
-  extends aokh<aoxt>
 {
-  public static aoxt a()
+  public float a;
+  public int a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e = 0.0F;
+  
+  public aoxu()
   {
-    return (aoxt)aoks.a().a(483);
+    this.jdField_a_of_type_Float = 2.0F;
+    this.jdField_b_of_type_Float = 2.0F;
   }
   
-  public int a()
+  public String toString()
   {
-    return 483;
-  }
-  
-  @NonNull
-  public aoxt a(int paramInt)
-  {
-    return new aoxt();
-  }
-  
-  @Nullable
-  public aoxt a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoxt.a(paramArrayOfaoko);
-    }
-    return null;
-  }
-  
-  public Class<aoxt> a()
-  {
-    return aoxt.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoxt paramaoxt)
-  {
-    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt("key_tencent_doc_history_tab_tips_count", 0).apply();
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARVideoLayout {width: ").append(this.jdField_a_of_type_Int).append(", height: ").append(this.jdField_b_of_type_Int).append(", scaleX: ").append(this.jdField_a_of_type_Float).append(", scaleY: ").append(this.jdField_b_of_type_Float).append(", transX: ").append(this.c).append(", transY: ").append(this.d).append(", transZ: ").append(this.e).append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoxu
  * JD-Core Version:    0.7.0.1
  */

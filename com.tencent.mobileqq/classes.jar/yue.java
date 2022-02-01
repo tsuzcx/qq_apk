@@ -1,50 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.MoveFileRspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public abstract class yue
-  extends nac
+class yue
+  extends SimpleJob<Object>
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  yue(yty paramyty, String paramString)
   {
-    if (paramInt != 0)
-    {
-      a(false, paramInt, null);
-      return;
-    }
-    paramBundle = new oidb_0x6d6.RspBody();
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.MoveFileRspBody)paramBundle.move_file_rsp.get();
-      if (!paramArrayOfByte.int32_ret_code.has()) {
-        break label94;
-      }
-      if (paramArrayOfByte.int32_ret_code.get() == 0)
-      {
-        a(true, 0, paramArrayOfByte.str_parent_folder_id.get());
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null);
-      return;
-    }
-    a(false, paramArrayOfByte.int32_ret_code.get(), null);
-    return;
-    label94:
-    a(false, -1, null);
+    super(paramString);
   }
   
-  protected abstract void a(boolean paramBoolean, int paramInt, String paramString);
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    yqv.a("0X80076BC");
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yue
  * JD-Core Version:    0.7.0.1
  */

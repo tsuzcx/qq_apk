@@ -8,7 +8,7 @@ import android.media.MediaPlayer.OnErrorListener;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.media.MediaPlayer.OnSeekCompleteListener;
 import android.os.Handler;
-import bdfi;
+import bgkl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.utils.ScreenOffOnListener;
 import com.tencent.qphone.base.util.QLog;
@@ -81,7 +81,7 @@ public class MiniAppAudioPlayer
   {
     try
     {
-      bdfi.a(this.mContext, paramBoolean);
+      bgkl.a(this.mContext, paramBoolean);
       return;
     }
     catch (Exception localException)
@@ -408,7 +408,7 @@ public class MiniAppAudioPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppAudioPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.widget.XListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aetg
+public class aetg
+  implements View.OnClickListener
 {
-  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, long paramLong, float paramFloat);
+  public aetg(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, boolean paramBoolean);
-  
-  public abstract boolean a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage);
-  
-  public abstract boolean a(XListView paramXListView, int paramInt1, View paramView, ChatMessage paramChatMessage, AudioPlayer paramAudioPlayer, int paramInt2);
-  
-  public abstract boolean b(ChatMessage paramChatMessage);
+  public void onClick(View paramView)
+  {
+    bgxr.a(this.a, "settings");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

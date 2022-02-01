@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import awpz;
+import azek;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -24,7 +24,7 @@ import tencent.im.label.comm.PersonalityTagComm.PraiseUserInfo;
 public class PersonalityLabelInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<PersonalityLabelInfo> CREATOR = new awpz();
+  public static final Parcelable.Creator<PersonalityLabelInfo> CREATOR = new azek();
   public static final String TAG = "PersonalityLabelInfo";
   int addTime = 0;
   public int bgColor = -16777216;
@@ -304,7 +304,7 @@ public class PersonalityLabelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo
  * JD-Core Version:    0.7.0.1
  */

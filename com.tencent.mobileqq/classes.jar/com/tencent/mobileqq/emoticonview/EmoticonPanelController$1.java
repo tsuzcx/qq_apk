@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apvp;
+import aryv;
 
 class EmoticonPanelController$1
   implements Runnable
@@ -9,12 +9,12 @@ class EmoticonPanelController$1
   
   public void run()
   {
-    EmoticonPanelController.a(this.this$0).j();
+    EmoticonPanelController.a(this.this$0).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelController.1
  * JD-Core Version:    0.7.0.1
  */

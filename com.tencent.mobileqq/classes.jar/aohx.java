@@ -1,31 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.MultiImageTextView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aohx
-  implements DialogInterface.OnDismissListener
+final class aohx
+  extends bhhe
 {
-  public aohx(LocationSelectActivity paramLocationSelectActivity) {}
+  aohx(String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCancel(bhhf parambhhf)
   {
-    LocationSelectActivity.a(this.a).setRightTextColor(2);
-    if (AppSetting.c)
+    aoht.jdField_a_of_type_Bhhf = null;
+    QLog.d(aoht.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
+  }
+  
+  public void onDone(bhhf parambhhf)
+  {
+    aoht.jdField_a_of_type_Bhhf = null;
+    if (parambhhf.a() == 3)
     {
-      LocationSelectActivity.b(this.a).setContentDescription(alud.a(2131706693) + LocationSelectActivity.a(this.a).name);
-      LocationSelectActivity.a(this.a).setContentDescription(alud.a(2131706691) + LocationSelectActivity.a(this.a).a().getText());
-    }
-    paramDialogInterface = LocationSelectActivity.a(this.a);
-    if (LocationSelectActivity.a(this.a) == 0)
-    {
-      azqs.b(this.a.app, "CliOper", "", "", "0X8004248", "0X8004248", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
+      QLog.d(aoht.jdField_a_of_type_JavaLangString, 1, "download finished " + aoht.f);
+      parambhhf = new File(this.jdField_a_of_type_JavaLangString);
+      if ((parambhhf.exists()) && (aoht.a(parambhhf))) {
+        QLog.d(aoht.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
+      }
       return;
     }
-    azqs.b(this.a.app, "CliOper", "", "", "0X800424A", "0X800424A", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
+    QLog.d(aoht.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", parambhhf.b, " code=", Integer.valueOf(parambhhf.a) });
   }
 }
 

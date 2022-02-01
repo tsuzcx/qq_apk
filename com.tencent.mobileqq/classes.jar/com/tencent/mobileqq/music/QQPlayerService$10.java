@@ -2,7 +2,7 @@ package com.tencent.mobileqq.music;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdim;
+import bgns;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
 
@@ -27,13 +27,13 @@ class QQPlayerService$10
       if (QLog.isColorLevel()) {
         QLog.d("MusicCacheManager", 2, "lastDel<today =====>> delCacheByTimeAndSpace");
       }
-      bdim.b();
+      bgns.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.music.QQPlayerService.10
  * JD-Core Version:    0.7.0.1
  */

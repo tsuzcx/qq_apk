@@ -1,37 +1,113 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.5;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
 public class anjg
-  implements DialogInterface.OnClickListener
+  extends QIPCModule
 {
-  public anjg(ArkAppDownloadModule.5 param5) {}
+  public static anjg a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private anjg()
   {
-    boolean bool = false;
-    aniz.a(this.a.this$0, true);
-    bkis.a().b(this.a.jdField_a_of_type_Int, this.a.b);
-    azqs.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.b, "");
-    if ((paramDialogInterface instanceof bdjz))
-    {
-      if (!((bdjz)paramDialogInterface).getCheckBoxState()) {
-        bool = true;
-      }
-      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
-    }
+    super("CommonModule");
+  }
+  
+  public static anjg a()
+  {
+    if (a == null) {}
     try
     {
-      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.c, bool).apply();
-      return;
+      if (a == null) {
+        a = new anjg();
+      }
+      return a;
     }
-    catch (Exception paramDialogInterface)
+    finally {}
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonModule", 2, "onSetAvatarBackResult， intent=" + paramIntent);
+    }
+    if (paramIntent != null)
     {
-      QLog.e("ark.download.module", 1, "ark.dctrl.continue download sp error : ", paramDialogInterface);
+      int i = paramIntent.getIntExtra("param_callback_id", -1);
+      int j = paramIntent.getIntExtra("param_result_code", -99999);
+      paramIntent = paramIntent.getStringExtra("param_result_desc");
+      if (i > 0)
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("param_result_code", j);
+        localBundle.putString("param_result_desc", paramIntent);
+        localBundle.putString("param_action", "set_avatar");
+        callbackResult(i, EIPCResult.createSuccessResult(localBundle));
+      }
     }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonModule", 2, "action = " + paramString + ", params = " + paramBundle);
+    }
+    Bundle localBundle = new Bundle();
+    if ("getPhoneBindState".equals(paramString))
+    {
+      paramString = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramString instanceof QQAppInterface))
+      {
+        localBundle.putInt("selfBindState", ((awmz)((QQAppInterface)paramString).getManager(11)).d());
+        return EIPCResult.createSuccessResult(localBundle);
+      }
+    }
+    else
+    {
+      AppRuntime localAppRuntime;
+      if ("set_nickname".equals(paramString))
+      {
+        localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localAppRuntime instanceof QQAppInterface))
+        {
+          paramString = "";
+          if (paramBundle != null) {
+            paramString = paramBundle.getString("nickname");
+          }
+          ((anip)((QQAppInterface)localAppRuntime).a(2)).notifyUI(94, true, paramString);
+          return EIPCResult.createSuccessResult(localBundle);
+        }
+      }
+      else if ("set_avatar".equals(paramString))
+      {
+        localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localAppRuntime instanceof QQAppInterface))
+        {
+          paramString = "";
+          if (paramBundle != null) {
+            paramString = paramBundle.getString("param_avatar_path");
+          }
+          paramBundle = new Intent();
+          paramBundle.putExtra("PhotoConst.SOURCE_FROM", "FROM_MINI_APP");
+          paramBundle.putExtra("param_callback_id", paramInt);
+          paramString = bghy.a((QQAppInterface)localAppRuntime, paramString, paramBundle);
+          if (paramString.jdField_a_of_type_Int == 0) {
+            break label295;
+          }
+          localBundle.putInt("param_result_code", paramString.jdField_a_of_type_Int);
+          localBundle.putString("param_result_desc", paramString.jdField_a_of_type_JavaLangString);
+          localBundle.putString("param_action", "set_avatar");
+          callbackResult(paramInt, EIPCResult.createSuccessResult(localBundle));
+        }
+      }
+    }
+    return EIPCResult.createSuccessResult(localBundle);
+    label295:
+    return null;
   }
 }
 

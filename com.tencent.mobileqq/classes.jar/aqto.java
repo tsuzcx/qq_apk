@@ -1,103 +1,68 @@
-class aqto
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
+public class aqto
+  extends aqkz<aqtp>
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private aqtp jdField_a_of_type_Aqtp;
-  private Object jdField_a_of_type_JavaLangObject;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private byte[] c;
-  
-  aqto(aqtj paramaqtj)
+  @NonNull
+  public aqtp a(int paramInt)
   {
-    a(false, 0L, null, null, 0);
+    return new aqtp();
   }
   
-  aqto(aqtj paramaqtj, long paramLong, aqtp paramaqtp)
+  @Nullable
+  public aqtp a(aqlg[] paramArrayOfaqlg)
   {
-    a(false, paramLong, null, paramaqtp, 0);
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null)) {
+      return aqtp.a(paramArrayOfaqlg[0].a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SingTogetherConfProcessor", 2, "onParsed is null");
+    }
+    return null;
   }
   
-  aqto(aqtj paramaqtj, aqtp paramaqtp)
+  public void a(aqtp paramaqtp)
   {
-    a(false, 0L, null, paramaqtp, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("SingTogetherConfProcessor", 2, "onUpdate " + paramaqtp.toString());
+    }
   }
   
-  aqto(aqtj paramaqtj, String paramString)
+  public Class<aqtp> clazz()
   {
-    a(false, 0L, paramString, null, 0);
+    return aqtp.class;
   }
   
-  aqto(aqtj paramaqtj, boolean paramBoolean, long paramLong)
+  public boolean isNeedCompressed()
   {
-    a(paramBoolean, paramLong, null, null, 0);
+    return true;
   }
   
-  aqto(aqtj paramaqtj, boolean paramBoolean, long paramLong, aqtp paramaqtp, int paramInt)
+  public boolean isNeedStoreLargeFile()
   {
-    a(paramBoolean, paramLong, null, paramaqtp, paramInt);
+    return false;
   }
   
-  aqto(aqtj paramaqtj, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, aqtp paramaqtp)
+  public int migrateOldVersion()
   {
-    a(false, 0L, null, paramaqtp, 0);
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-    this.c = paramArrayOfByte3;
+    if (QLog.isColorLevel()) {
+      QLog.d("SingTogetherConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
   }
   
-  private void a(boolean paramBoolean, long paramLong, String paramString, aqtp paramaqtp, int paramInt)
+  public void onReqFailed(int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aqtp = paramaqtp;
-    this.jdField_a_of_type_JavaLangObject = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("SingTogetherConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
   }
   
-  int a()
+  public int type()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  aqtp a()
-  {
-    return this.jdField_a_of_type_Aqtp;
-  }
-  
-  Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_Int += 1;
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  int b()
-  {
-    return this.jdField_a_of_type_Int;
+    return 551;
   }
 }
 

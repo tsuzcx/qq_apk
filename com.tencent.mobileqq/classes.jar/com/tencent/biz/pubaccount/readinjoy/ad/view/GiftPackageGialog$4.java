@@ -4,27 +4,27 @@ import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.util.Pair;
 import mqq.os.MqqHandler;
-import ocp;
-import oev;
+import ooh;
+import oro;
 
 public class GiftPackageGialog$4
   implements Runnable
 {
-  public GiftPackageGialog$4(oev paramoev) {}
+  public GiftPackageGialog$4(oro paramoro) {}
   
   public void run()
   {
-    if ((oev.a(this.this$0) != null) && (oev.b(this.this$0) != null) && (oev.c(this.this$0) != null))
+    if ((oro.a(this.this$0) != null) && (oro.b(this.this$0) != null) && (oro.c(this.this$0) != null))
     {
-      Pair localPair = ocp.a(oev.a(this.this$0), oev.a(this.this$0).v, oev.b(this.this$0).v, oev.c(this.this$0).ck, oev.b(this.this$0), oev.b(this.this$0).s);
+      Pair localPair = ooh.a(oro.a(this.this$0), oro.a(this.this$0).v, oro.b(this.this$0).v, oro.c(this.this$0).ck, oro.b(this.this$0), oro.b(this.this$0).s);
       ThreadManager.getUIHandler().post(new GiftPackageGialog.4.1(this, localPair));
-      if (!oev.b(this.this$0)) {}
+      if (!oro.b(this.this$0)) {}
     }
     else
     {
       return;
     }
-    ocp.a(10, oev.a(this.this$0), oev.c(this.this$0), 30103, 3010305, 301);
+    ooh.a(10, oro.a(this.this$0), oro.c(this.this$0), 30103, 3010305, 301);
   }
 }
 

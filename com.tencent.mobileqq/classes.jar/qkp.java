@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-public final class qkp
-  implements Parcelable.Creator<DislikeInfo>
+public class qkp
+  implements ViewBase.IBuilder
 {
-  public DislikeInfo a(Parcel paramParcel)
+  public ViewBase build(VafContext paramVafContext)
   {
-    return new DislikeInfo(paramParcel);
-  }
-  
-  public DislikeInfo[] a(int paramInt)
-  {
-    return new DislikeInfo[paramInt];
+    return new qkn(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qkp
  * JD-Core Version:    0.7.0.1
  */

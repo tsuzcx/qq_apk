@@ -1,15 +1,14 @@
-import com.tencent.tissue.v8rt.engine.Callback;
+import android.os.Bundle;
 
-class bhhl
-  implements Callback
+public abstract class bhhl
 {
-  bhhl(bhhk parambhhk) {}
+  public void a(long paramLong, int paramInt, Bundle paramBundle) {}
   
-  public void onFinish(Object paramObject) {}
+  public void a(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhhl
  * JD-Core Version:    0.7.0.1
  */

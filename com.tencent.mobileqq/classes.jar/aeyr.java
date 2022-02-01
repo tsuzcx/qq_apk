@@ -1,35 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class aeyr
-  implements TextWatcher
+  implements bbad
 {
-  public aeyr(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  public aeyr(QQSettingMe paramQQSettingMe) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
   {
-    if (VoiceTextEditPanel.a(this.a).get() == 5)
+    if (this.a.c)
     {
-      VoiceTextEditPanel.a(this.a, paramEditable.toString());
-      if (!bdnn.a(VoiceTextEditPanel.a(this.a))) {
-        break label55;
+      if (paramInt != 100) {
+        this.a.a(2131690634);
       }
-      this.a.setSendEnable(false);
-    }
-    for (;;)
-    {
-      this.a.c();
-      return;
-      label55:
-      this.a.setSendEnable(true);
+      this.a.z();
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(int paramInt, boolean paramBoolean) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

@@ -1,35 +1,51 @@
-import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class armz
-  implements argp
+public class armz
 {
-  armz(armw paramarmw) {}
+  public arna a;
+  public String a;
   
-  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
-  
-  public void a(boolean paramBoolean)
+  public JSONObject a()
   {
-    armw.a(this.a, paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Arhx != null)) {
-      this.a.jdField_a_of_type_Arhx.a();
-    }
-    if (paramBoolean)
+    JSONObject localJSONObject1 = new JSONObject();
+    try
     {
-      if (this.a.jdField_a_of_type_Arki.e() == 10) {
-        arid.a(this.a.jdField_a_of_type_Arki.c());
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("user_id", this.jdField_a_of_type_Arna.jdField_a_of_type_JavaLangString);
+      localJSONObject2.put("source_md5", this.jdField_a_of_type_Arna.jdField_b_of_type_JavaLangString);
+      localJSONObject2.put("source_url", this.jdField_a_of_type_Arna.c);
+      localJSONArray = new JSONArray();
+      localIterator = this.jdField_a_of_type_Arna.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put((String)localIterator.next());
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Arki.d(), this);
-      armw.b(this.a, true);
-      armw.a(this.a);
-      this.a.d = false;
+      localException.put("expose_md5s", localJSONArray);
     }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("DoutuReportData", 2, "convert error:" + localException);
+      }
+      return localJSONObject1;
+    }
+    JSONArray localJSONArray = new JSONArray();
+    Iterator localIterator = this.jdField_a_of_type_Arna.jdField_b_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localJSONArray.put((String)localIterator.next());
+    }
+    localException.put("expose_urls", localJSONArray);
+    localException.put("click_md5", this.jdField_a_of_type_Arna.d);
+    localException.put("click_url", this.jdField_a_of_type_Arna.e);
+    localException.put("aio_type", this.jdField_a_of_type_Arna.f);
+    localException.put("mobile_type", this.jdField_a_of_type_Arna.g);
+    localException.put("to_user_id", this.jdField_a_of_type_Arna.h);
+    localJSONObject1.put("dcId", this.jdField_a_of_type_JavaLangString);
+    localJSONObject1.put("data", localException);
+    return localJSONObject1;
   }
 }
 

@@ -1,70 +1,41 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CSettingFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajqo
-  implements SeekBar.OnSeekBarChangeListener
+  implements adwk
 {
-  public ajqo(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public ajqo(ChatHistoryC2CSettingFragment paramChatHistoryC2CSettingFragment) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a(Activity paramActivity)
   {
-    this.a.c = paramInt;
-    if (paramBoolean) {
-      NewFlowCameraActivity.a(this.a, this.a.c, false);
-    }
-    float f = this.a.c / 100.0F;
-    if (f != this.a.jdField_a_of_type_Float)
-    {
-      this.a.jdField_a_of_type_Float = f;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.a(false, this.a.jdField_a_of_type_Float, this.a.c);
-      }
-    }
-    if (paramBoolean) {
-      NewFlowCameraActivity.a(this.a).setContentDescription(alud.a(2131707863) + this.a.c + "%");
-    }
+    QQToast.a(paramActivity, 2, 2131691324, 0).b(this.a.getActivity().getTitleBarHeight());
+    paramActivity.setResult(-1);
+    paramActivity.finish();
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Bhsl != null) {
-      this.a.jdField_a_of_type_Bhsl.removeMessages(1011);
+    if (paramInt == 0) {
+      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 2, 0, "", "", "", "");
     }
-    if (this.a.e != null) {
-      this.a.e.setVisibility(0);
+    while (paramInt != 1) {
+      return;
     }
+    bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 2, 0, "", "", "", "");
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public void b(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Float >= 0.0F)
-    {
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      localSharedPreferences.edit().putFloat("beauty_radius" + str, this.a.jdField_a_of_type_Float);
-      localSharedPreferences.edit().putFloat("beauty_whitenmag" + str, this.a.jdField_a_of_type_Float);
-      localSharedPreferences.edit().putInt("beauty_level" + str, paramSeekBar.getProgress());
-      localSharedPreferences.edit().commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("beauty", 2, "onStopTrackingTouch mBeautyValue" + this.a.jdField_a_of_type_Float + " mBeautyProcess=" + paramSeekBar.getProgress());
-      }
-      if (this.a.jdField_a_of_type_Bhsl != null)
-      {
-        this.a.jdField_a_of_type_Bhsl.removeMessages(1011);
-        this.a.jdField_a_of_type_Bhsl.sendEmptyMessageDelayed(1011, NewFlowCameraActivity.jdField_a_of_type_Long);
-      }
-      if (this.a.e != null) {
-        this.a.e.setVisibility(4);
-      }
+    if (paramInt == 0) {
+      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 2, 0, "", "", "", "");
     }
+    while (paramInt != 1) {
+      return;
+    }
+    bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 2, 0, "", "", "", "");
   }
 }
 

@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class anzc
-  implements View.OnClickListener
+  implements ThreadFactory
 {
-  public anzc(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public void onClick(View paramView)
+  public Thread newThread(Runnable paramRunnable)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    this.a.a(i);
+    paramRunnable = new Thread(paramRunnable, "Automator_" + this.a.getAndIncrement());
+    if (paramRunnable.getPriority() != 10) {
+      paramRunnable.setPriority(10);
+    }
+    return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anzc
  * JD-Core Version:    0.7.0.1
  */

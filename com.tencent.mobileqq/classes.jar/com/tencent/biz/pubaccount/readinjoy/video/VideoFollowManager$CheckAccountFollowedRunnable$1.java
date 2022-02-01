@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.VideoInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import rmn;
+import shz;
 
 class VideoFollowManager$CheckAccountFollowedRunnable$1
   implements Runnable
@@ -35,7 +35,7 @@ class VideoFollowManager$CheckAccountFollowedRunnable$1
       }
     }
     if ((i != 0) && (VideoFollowManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFollowManager$CheckAccountFollowedRunnable.this$0) != null)) {
-      VideoFollowManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFollowManager$CheckAccountFollowedRunnable.this$0).a(VideoFollowManager.CheckAccountFollowedRunnable.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFollowManager$CheckAccountFollowedRunnable).j);
+      VideoFollowManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFollowManager$CheckAccountFollowedRunnable.this$0).b(VideoFollowManager.CheckAccountFollowedRunnable.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFollowManager$CheckAccountFollowedRunnable).j);
     }
   }
 }

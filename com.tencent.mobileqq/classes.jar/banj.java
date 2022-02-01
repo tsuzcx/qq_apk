@@ -1,85 +1,20 @@
-import android.app.Activity;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.animation.Animator;
+import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.animation.Animation;
 
 public class banj
 {
-  private static String a(String paramString)
+  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    paramString = new StringBuilder(paramString);
-    int k = paramString.length();
-    int j;
-    for (int i = 0; i < k; i = j + 1)
-    {
-      j = i;
-      if ('\024' == paramString.charAt(i))
-      {
-        j = i;
-        if (i + 1 < k)
-        {
-          j = i;
-          if ('ÿ' == paramString.charAt(i + 1))
-          {
-            j = i;
-            if (i + 2 < k)
-            {
-              if (paramString.charAt(i + 2) == '\024') {
-                paramString.setCharAt(i + 2, 'ý');
-              }
-              j = i + 4;
-            }
-          }
-        }
-      }
-    }
-    return paramString.toString();
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
+    localValueAnimator.addUpdateListener(new banl(paramInt1, paramView));
+    return localValueAnimator;
   }
   
-  public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString)
+  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
   {
-    biva.a(null, a(paramString)).b(paramQQAppInterface, null).a(paramActivity, paramQQAppInterface.getAccount());
-    bivo.a(paramQQAppInterface, 6, 1);
-  }
-  
-  public static void a(Activity paramActivity, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", -1);
-    localBundle.putString("forward_text", paramString);
-    paramString = new Intent();
-    paramString.putExtras(localBundle);
-    paramString.putExtra("direct_send_if_dataline_forward", true);
-    aryv.a(paramActivity, paramString, 21);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, true);
-  }
-  
-  public static void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      ClipboardManager localClipboardManager = (ClipboardManager)BaseApplicationImpl.getContext().getSystemService("clipboard");
-      if (localClipboardManager != null)
-      {
-        localClipboardManager.setPrimaryClip(ClipData.newPlainText(paramString2, paramString1));
-        if (paramBoolean) {
-          QQToast.a(BaseApplicationImpl.getContext(), 2, alud.a(2131706944), 0).a();
-        }
-      }
-    }
+    return new bgta(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new bank(paramView));
   }
 }
 

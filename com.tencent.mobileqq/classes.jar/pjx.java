@@ -1,84 +1,92 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class pjx
+  implements ITMAssistantDownloadClientListener
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private List<pjw> a = new LinkedList();
+  
+  private static String a(int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBaseArticleInfo.mGalleryPicNumber > 2)
+    switch (paramInt)
     {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + alud.a(2131713362));
-      localJSONObject.put("id_gallery_cnt", localObject1);
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");
-      localJSONObject.put("id_gallery_img", localObject1);
-      localJSONObject.put("id_gallery_bg", new JSONObject());
+    default: 
+      return "UNKNOWN";
+    case 1: 
+      return "DownloadSDKTaskState_WAITING";
+    case 2: 
+      return "DownloadSDKTaskState_DOWNLOADING";
+    case 4: 
+      return "DownloadSDKTaskState_SUCCEED";
+    case 3: 
+      return "DownloadSDKTaskState_PAUSED";
+    case 6: 
+      return "DownloadSDKTaskState_DELETE";
     }
-    Object localObject2;
-    Object localObject3;
-    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
+    return "DownloadSDKTaskState_FAILED";
+  }
+  
+  public void a(pjw parampjw)
+  {
+    if (!this.a.contains(parampjw)) {
+      this.a.add(parampjw);
+    }
+  }
+  
+  public void b(pjw parampjw)
+  {
+    this.a.remove(parampjw);
+  }
+  
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  {
+    try
     {
-      localObject2 = rqj.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
-      if ((localObject2 == null) || (((JSONArray)localObject2).length() < 2)) {
-        return localJSONObject;
-      }
-      localObject1 = ((JSONArray)localObject2).optJSONObject(0);
-      if (localObject1 == null)
+      QLog.d("DownloadListenerDelegate", 2, "[onDownloadSDKTaskProgressChanged] url=" + paramString + " receiveLen=" + paramLong1 + " totalLen=" + paramLong2 + " progress=" + paramLong1 * 1.0D / paramLong2 * 100.0D);
+      return;
+    }
+    catch (Throwable paramTMAssistantDownloadClient)
+    {
+      QLog.e("DownloadListenerDelegate", 1, "[onDownloadSDKTaskProgressChanged] ", paramTMAssistantDownloadClient);
+    }
+  }
+  
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (paramTMAssistantDownloadClient != null) {
+      try
       {
-        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject2 = ((JSONArray)localObject2).optJSONObject(1);
-        if (localObject2 != null) {
-          break label280;
+        paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
+        if (paramTMAssistantDownloadClient != null)
+        {
+          QLog.d("DownloadListenerDelegate", 2, "[onDownloadSDKTaskProgressChanged] url=" + paramString1 + " savedPath= " + paramTMAssistantDownloadClient.mSavePath + " state=" + a(paramInt1) + " errorCode=" + paramInt2 + " errorMsg=" + paramString2);
+          Iterator localIterator = this.a.iterator();
+          while (localIterator.hasNext()) {
+            ((pjw)localIterator.next()).a(paramString1, paramTMAssistantDownloadClient.mSavePath, paramInt1, paramInt2, paramString2);
+          }
         }
+        return;
       }
-      label280:
-      for (localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;; localObject2 = ((JSONObject)localObject2).optString("picture"))
+      catch (Throwable paramTMAssistantDownloadClient)
       {
-        localObject3 = new JSONObject();
-        ((JSONObject)localObject3).put("multi_img_url1", localObject1);
-        localJSONObject.put("id_multi_img_1", localObject3);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url2", localObject2);
-        localJSONObject.put("id_multi_img_2", localObject1);
-        pkm.a(paramBaseArticleInfo, localJSONObject, true);
-        pkm.l(paramBaseArticleInfo, localJSONObject);
-        pkm.i(paramBaseArticleInfo, localJSONObject);
-        pkm.a(localJSONObject);
-        localJSONObject.put("style_ID", "ReadInjoy_gallery_channel_double_img_cell");
-        pkm.a(localJSONObject, paramBaseArticleInfo);
-        return localJSONObject;
-        localObject1 = ((JSONObject)localObject1).optString("picture");
-        break;
+        QLog.e("DownloadListenerDelegate", 1, "[onDownloadSDKTaskStateChanged] ", paramTMAssistantDownloadClient);
       }
     }
-    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
-    {
-      localObject1 = paramBaseArticleInfo.mSinglePicture;
-      label313:
-      localObject2 = ((URL)localObject1).getFile();
-      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
-        break label363;
-      }
-    }
-    label363:
-    for (Object localObject1 = paramBaseArticleInfo.mSinglePicture;; localObject1 = paramBaseArticleInfo.mPictures[1])
-    {
-      localObject3 = ((URL)localObject1).getFile();
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-      break;
-      localObject1 = paramBaseArticleInfo.mPictures[0];
-      break label313;
-    }
+  }
+  
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  {
+    QLog.d("DownloadListenerDelegate", 2, "[onDwonloadSDKServiceInvalid] ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pjx
  * JD-Core Version:    0.7.0.1
  */

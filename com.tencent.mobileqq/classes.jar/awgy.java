@@ -1,293 +1,272 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.os.Looper;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.manager.Manager;
 
 public class awgy
-  extends awgq
+  implements Manager
 {
-  public awgy()
+  public static final String[] a;
+  final awha a;
+  
+  static
   {
-    this.a = 23;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "entry_setting", "entry_aio_video", "entry_file", "entry_chat_audio", "entry_chat_video", "entry_kandian_video" };
   }
   
-  public awge a(awge paramawge, Cursor paramCursor, boolean paramBoolean, awgp paramawgp)
+  public awgy(QQAppInterface paramQQAppInterface)
   {
-    paramawge = (ResourcePluginInfo)paramawge;
-    if (paramawgp == null)
+    this.jdField_a_of_type_Awha = new awha(paramQQAppInterface.getAccount());
+  }
+  
+  public static CharSequence a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    if (paramQQAppInterface != null) {}
+    for (;;)
     {
-      paramawge.strPkgName = paramCursor.getString(paramCursor.getColumnIndex("strPkgName"));
-      paramawge.strResName = paramCursor.getString(paramCursor.getColumnIndex("strResName"));
-      paramawge.strResURL = paramCursor.getString(paramCursor.getColumnIndex("strResURL"));
-      paramawge.uiCurVer = paramCursor.getLong(paramCursor.getColumnIndex("uiCurVer"));
-      paramawge.sLanType = paramCursor.getShort(paramCursor.getColumnIndex("sLanType"));
-      paramawge.strGotoUrl = paramCursor.getString(paramCursor.getColumnIndex("strGotoUrl"));
-      paramawge.sResSubType = paramCursor.getShort(paramCursor.getColumnIndex("sResSubType"));
-      paramawge.sPriority = paramCursor.getShort(paramCursor.getColumnIndex("sPriority"));
-      paramawge.strResDesc = paramCursor.getString(paramCursor.getColumnIndex("strResDesc"));
-      paramawge.uiResId = paramCursor.getLong(paramCursor.getColumnIndex("uiResId"));
-      paramawge.cDefaultState = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("cDefaultState")));
-      paramawge.cCanChangeState = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("cCanChangeState")));
-      paramawge.isNew = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("isNew")));
-      paramawge.cDataType = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("cDataType")));
-      paramawge.cLocalState = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("cLocalState")));
-      paramawge.iPluginType = paramCursor.getInt(paramCursor.getColumnIndex("iPluginType"));
-      paramawge.timeStamp = paramCursor.getLong(paramCursor.getColumnIndex("timeStamp"));
-      paramawge.strNewPluginDesc = paramCursor.getString(paramCursor.getColumnIndex("strNewPluginDesc"));
-      paramawge.strNewPluginURL = paramCursor.getString(paramCursor.getColumnIndex("strNewPluginURL"));
-      paramawge.lebaSearchResultType = paramCursor.getInt(paramCursor.getColumnIndex("lebaSearchResultType"));
-      paramawge.pluginSetTips = paramCursor.getString(paramCursor.getColumnIndex("pluginSetTips"));
-      paramawge.pluginBg = paramCursor.getString(paramCursor.getColumnIndex("pluginBg"));
-      paramawge.flags = paramCursor.getInt(paramCursor.getColumnIndex("flags"));
-      return paramawge;
+      try
+      {
+        localObject1 = (awgy)paramQQAppInterface.getManager(221);
+        if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+          if (((awgy)localObject1).a())
+          {
+            localObject1 = ((awgy)localObject1).a(paramInt);
+            i = 0;
+            j = i;
+            localObject2 = paramString;
+            if (localObject1 != null)
+            {
+              j = i;
+              localObject2 = paramString;
+            }
+          }
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        Object localObject1;
+        i = 0;
+      }
+      try
+      {
+        if (!TextUtils.isEmpty(((awhb)localObject1).jdField_a_of_type_JavaLangString))
+        {
+          j = i;
+          localObject2 = paramString;
+          if (!TextUtils.isEmpty(((awhb)localObject1).b))
+          {
+            j = i;
+            localObject2 = paramString;
+            if (((awhb)localObject1).jdField_a_of_type_JavaLangString.contains(((awhb)localObject1).b))
+            {
+              j = i;
+              localObject2 = paramString;
+              if (!TextUtils.isEmpty(((awhb)localObject1).c))
+              {
+                String str = String.format("%s\n%s", new Object[] { paramString, ((awhb)localObject1).jdField_a_of_type_JavaLangString });
+                localObject2 = new SpannableString(str);
+                j = str.indexOf(((awhb)localObject1).b);
+                int k = ((awhb)localObject1).b.length();
+                ((SpannableString)localObject2).setSpan(new awgz(paramContext, ((awhb)localObject1).c, paramQQAppInterface.c(), paramInt), j, k + j, 17);
+                j = i;
+              }
+            }
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "getGuideEntry entry: %d retCode: %d context: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramContext }));
+        }
+        return localObject2;
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        break label301;
+      }
+      localObject1 = null;
+      int i = 3;
+      continue;
+      localObject1 = ((awgy)localObject1).a(paramInt);
+      i = 0;
+      continue;
+      label301:
+      int j = i;
+      Object localObject2 = paramString;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("CUOpenCardGuideMng", 2, "getGuideEnty", paramQQAppInterface);
+        j = i;
+        localObject2 = paramString;
+        continue;
+        j = 0;
+        localObject2 = paramString;
+      }
     }
-    int i = paramCursor.getColumnIndex("strPkgName");
-    if (i == -1)
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, boolean paramBoolean, String paramString2)
+  {
+    int i = bgnt.a(BaseApplicationImpl.getApplication().getApplicationContext());
+    Object localObject1 = null;
+    long l2 = 0L;
+    long l1 = 0L;
+    bhhc localbhhc;
+    if (i != 1)
     {
-      paramawgp.a(new NoColumnError("strPkgName", String.class));
-      i = paramCursor.getColumnIndex("strResName");
-      if (i != -1) {
-        break label1244;
+      l2 = bgsg.e(paramQQAppInterface.getApp(), paramQQAppInterface.c());
+      l1 = System.currentTimeMillis();
+      localbhhc = bhhb.a(paramString2, true, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("CUOpenCardGuideMng", 2, "WL_DEBUG addCallGrayTip info.mPopUpType = " + localbhhc.jdField_a_of_type_Int + ", info.mGuideJumpUrl = " + localbhhc.jdField_a_of_type_JavaLangString);
       }
-      paramawgp.a(new NoColumnError("strResName", String.class));
-      label499:
-      i = paramCursor.getColumnIndex("strResURL");
-      if (i != -1) {
-        break label1259;
+      paramString2 = (awgy)paramQQAppInterface.getManager(221);
+      if (paramString2 == null) {
+        break label620;
       }
-      paramawgp.a(new NoColumnError("strResURL", String.class));
-      label533:
-      i = paramCursor.getColumnIndex("uiCurVer");
-      if (i != -1) {
-        break label1274;
+      if (!paramBoolean) {
+        break label577;
       }
-      paramawgp.a(new NoColumnError("uiCurVer", Long.TYPE));
-      label568:
-      i = paramCursor.getColumnIndex("sLanType");
-      if (i != -1) {
-        break label1289;
-      }
-      paramawgp.a(new NoColumnError("sLanType", Short.TYPE));
-      label603:
-      i = paramCursor.getColumnIndex("strGotoUrl");
-      if (i != -1) {
-        break label1304;
-      }
-      paramawgp.a(new NoColumnError("strGotoUrl", String.class));
-      label637:
-      i = paramCursor.getColumnIndex("sResSubType");
-      if (i != -1) {
-        break label1319;
-      }
-      paramawgp.a(new NoColumnError("sResSubType", Short.TYPE));
-      label672:
-      i = paramCursor.getColumnIndex("sPriority");
-      if (i != -1) {
-        break label1334;
-      }
-      paramawgp.a(new NoColumnError("sPriority", Short.TYPE));
-      label707:
-      i = paramCursor.getColumnIndex("strResDesc");
-      if (i != -1) {
-        break label1349;
-      }
-      paramawgp.a(new NoColumnError("strResDesc", String.class));
-      label741:
-      i = paramCursor.getColumnIndex("uiResId");
-      if (i != -1) {
-        break label1364;
-      }
-      paramawgp.a(new NoColumnError("uiResId", Long.TYPE));
-      label776:
-      i = paramCursor.getColumnIndex("cDefaultState");
-      if (i != -1) {
-        break label1379;
-      }
-      paramawgp.a(new NoColumnError("cDefaultState", Byte.TYPE));
-      label811:
-      i = paramCursor.getColumnIndex("cCanChangeState");
-      if (i != -1) {
-        break label1395;
-      }
-      paramawgp.a(new NoColumnError("cCanChangeState", Byte.TYPE));
-      label846:
-      i = paramCursor.getColumnIndex("isNew");
-      if (i != -1) {
-        break label1411;
-      }
-      paramawgp.a(new NoColumnError("isNew", Byte.TYPE));
-      label881:
-      i = paramCursor.getColumnIndex("cDataType");
-      if (i != -1) {
-        break label1427;
-      }
-      paramawgp.a(new NoColumnError("cDataType", Byte.TYPE));
-      label916:
-      i = paramCursor.getColumnIndex("cLocalState");
-      if (i != -1) {
-        break label1443;
-      }
-      paramawgp.a(new NoColumnError("cLocalState", Byte.TYPE));
-      label951:
-      i = paramCursor.getColumnIndex("iPluginType");
-      if (i != -1) {
-        break label1459;
-      }
-      paramawgp.a(new NoColumnError("iPluginType", Integer.TYPE));
-      label986:
-      i = paramCursor.getColumnIndex("timeStamp");
-      if (i != -1) {
-        break label1474;
-      }
-      paramawgp.a(new NoColumnError("timeStamp", Long.TYPE));
-      label1021:
-      i = paramCursor.getColumnIndex("strNewPluginDesc");
-      if (i != -1) {
-        break label1489;
-      }
-      paramawgp.a(new NoColumnError("strNewPluginDesc", String.class));
-      label1055:
-      i = paramCursor.getColumnIndex("strNewPluginURL");
-      if (i != -1) {
-        break label1504;
-      }
-      paramawgp.a(new NoColumnError("strNewPluginURL", String.class));
-      label1089:
-      i = paramCursor.getColumnIndex("lebaSearchResultType");
-      if (i != -1) {
-        break label1519;
-      }
-      paramawgp.a(new NoColumnError("lebaSearchResultType", Integer.TYPE));
-      label1124:
-      i = paramCursor.getColumnIndex("pluginSetTips");
-      if (i != -1) {
-        break label1534;
-      }
-      paramawgp.a(new NoColumnError("pluginSetTips", String.class));
-      label1158:
-      i = paramCursor.getColumnIndex("pluginBg");
-      if (i != -1) {
-        break label1549;
-      }
-      paramawgp.a(new NoColumnError("pluginBg", String.class));
+      paramString2 = paramString2.a(4);
     }
     for (;;)
     {
-      i = paramCursor.getColumnIndex("flags");
-      if (i != -1) {
-        break label1564;
+      String[] arrayOfString2;
+      String[] arrayOfString1;
+      Bundle localBundle;
+      Object localObject3;
+      Object localObject2;
+      if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString2.b)) && (!TextUtils.isEmpty(localbhhc.jdField_a_of_type_JavaLangString)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CUOpenCardGuideMng", 2, "WL_DEBUG addCallGrayTip entry.tip = " + paramString2.jdField_a_of_type_JavaLangString + ", entry.keyWord = " + paramString2.b);
+        }
+        arrayOfString2 = paramString2.jdField_a_of_type_JavaLangString.split("\\|");
+        arrayOfString1 = paramString2.b.split("\\|");
+        localBundle = null;
+        localObject3 = null;
+        localObject1 = localObject3;
+        localObject2 = localBundle;
+        if (arrayOfString2.length >= 2)
+        {
+          localObject1 = localObject3;
+          localObject2 = localBundle;
+          if (arrayOfString1.length >= 2)
+          {
+            if (localbhhc.jdField_a_of_type_Int != 2) {
+              break label588;
+            }
+            localObject2 = arrayOfString2[0];
+            localObject1 = arrayOfString1[0];
+          }
+        }
       }
-      paramawgp.a(new NoColumnError("flags", Integer.TYPE));
-      return paramawge;
-      paramawge.strPkgName = paramCursor.getString(i);
-      break;
-      label1244:
-      paramawge.strResName = paramCursor.getString(i);
-      break label499;
-      label1259:
-      paramawge.strResURL = paramCursor.getString(i);
-      break label533;
-      label1274:
-      paramawge.uiCurVer = paramCursor.getLong(i);
-      break label568;
-      label1289:
-      paramawge.sLanType = paramCursor.getShort(i);
-      break label603;
-      label1304:
-      paramawge.strGotoUrl = paramCursor.getString(i);
-      break label637;
-      label1319:
-      paramawge.sResSubType = paramCursor.getShort(i);
-      break label672;
-      label1334:
-      paramawge.sPriority = paramCursor.getShort(i);
-      break label707;
-      label1349:
-      paramawge.strResDesc = paramCursor.getString(i);
-      break label741;
-      label1364:
-      paramawge.uiResId = paramCursor.getLong(i);
-      break label776;
-      label1379:
-      paramawge.cDefaultState = ((byte)paramCursor.getShort(i));
-      break label811;
-      label1395:
-      paramawge.cCanChangeState = ((byte)paramCursor.getShort(i));
-      break label846;
-      label1411:
-      paramawge.isNew = ((byte)paramCursor.getShort(i));
-      break label881;
-      label1427:
-      paramawge.cDataType = ((byte)paramCursor.getShort(i));
-      break label916;
-      label1443:
-      paramawge.cLocalState = ((byte)paramCursor.getShort(i));
-      break label951;
-      label1459:
-      paramawge.iPluginType = paramCursor.getInt(i);
-      break label986;
-      label1474:
-      paramawge.timeStamp = paramCursor.getLong(i);
-      break label1021;
-      label1489:
-      paramawge.strNewPluginDesc = paramCursor.getString(i);
-      break label1055;
-      label1504:
-      paramawge.strNewPluginURL = paramCursor.getString(i);
-      break label1089;
-      label1519:
-      paramawge.lebaSearchResultType = paramCursor.getInt(i);
-      break label1124;
-      label1534:
-      paramawge.pluginSetTips = paramCursor.getString(i);
-      break label1158;
-      label1549:
-      paramawge.pluginBg = paramCursor.getString(i);
+      for (;;)
+      {
+        if ((localObject2 != null) && (localObject1 != null))
+        {
+          localBundle = new Bundle();
+          localBundle.putInt("key_action", 1);
+          localBundle.putString("textColor", "#40A0FF");
+          localBundle.putString("key_action_DATA", localbhhc.jdField_a_of_type_JavaLangString);
+          int j = ((String)localObject2).indexOf((String)localObject1);
+          int k = ((String)localObject1).length();
+          localObject1 = new auxc(paramString1, paramQQAppInterface.c(), (String)localObject2, paramInt, -5020, 3145729, bbyp.a());
+          localObject2 = new MessageForUniteGrayTip();
+          if (j >= 0) {
+            ((auxc)localObject1).a(j, k + j, localBundle);
+          }
+          ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(paramQQAppInterface, (auxc)localObject1);
+          auxd.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject2);
+          bcst.b(null, "dc00898", "", "", "0X800812A", "0X800812A", 0, 0, "", "", "", "");
+          bgsg.e(paramQQAppInterface.getApp(), paramQQAppInterface.c(), System.currentTimeMillis());
+        }
+        localObject1 = paramString2;
+        if (QLog.isColorLevel()) {
+          QLog.i("CUOpenCardGuideMng", 2, "addCallGrayTip, friendUin= " + paramString1 + ",isVideoMsg=" + paramBoolean + ",netType=" + i + ",uinType=" + paramInt + ",lastAlertTime=" + l2 + ",currentTime=" + l1 + ",entry=" + localObject1);
+        }
+        return;
+        label577:
+        paramString2 = paramString2.a(3);
+        break;
+        label588:
+        localObject1 = localObject3;
+        localObject2 = localBundle;
+        if (localbhhc.jdField_a_of_type_Int == 3)
+        {
+          localObject2 = arrayOfString2[1];
+          localObject1 = arrayOfString1[1];
+        }
+      }
+      label620:
+      paramString2 = null;
     }
-    label1564:
-    paramawge.flags = paramCursor.getInt(i);
-    return paramawge;
   }
   
-  public String a(String paramString)
+  public awhb a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,strPkgName TEXT UNIQUE ,strResName TEXT ,strResURL TEXT ,uiCurVer INTEGER ,sLanType INTEGER ,strGotoUrl TEXT ,sResSubType INTEGER ,sPriority INTEGER ,strResDesc TEXT ,uiResId INTEGER ,cDefaultState INTEGER ,cCanChangeState INTEGER ,isNew INTEGER ,cDataType INTEGER ,cLocalState INTEGER ,iPluginType INTEGER ,timeStamp INTEGER ,strNewPluginDesc TEXT ,strNewPluginURL TEXT ,lebaSearchResultType INTEGER ,pluginSetTips TEXT ,pluginBg TEXT ,flags INTEGER)");
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "getGuideEntry entry: %d, isInit: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.jdField_a_of_type_Awha.jdField_a_of_type_Boolean) }));
+    }
+    this.jdField_a_of_type_Awha.a();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_Awha.b)
+    {
+      localObject1 = localObject2;
+      if (paramInt >= 0)
+      {
+        localObject1 = localObject2;
+        if (paramInt < this.jdField_a_of_type_Awha.jdField_a_of_type_ArrayOfAwhb.length) {
+          localObject1 = this.jdField_a_of_type_Awha.jdField_a_of_type_ArrayOfAwhb[paramInt];
+        }
+      }
+    }
+    return localObject1;
   }
   
-  public void a(awge paramawge, ContentValues paramContentValues)
+  public void a()
   {
-    paramawge = (ResourcePluginInfo)paramawge;
-    paramContentValues.put("strPkgName", paramawge.strPkgName);
-    paramContentValues.put("strResName", paramawge.strResName);
-    paramContentValues.put("strResURL", paramawge.strResURL);
-    paramContentValues.put("uiCurVer", Long.valueOf(paramawge.uiCurVer));
-    paramContentValues.put("sLanType", Short.valueOf(paramawge.sLanType));
-    paramContentValues.put("strGotoUrl", paramawge.strGotoUrl);
-    paramContentValues.put("sResSubType", Short.valueOf(paramawge.sResSubType));
-    paramContentValues.put("sPriority", Short.valueOf(paramawge.sPriority));
-    paramContentValues.put("strResDesc", paramawge.strResDesc);
-    paramContentValues.put("uiResId", Long.valueOf(paramawge.uiResId));
-    paramContentValues.put("cDefaultState", Byte.valueOf(paramawge.cDefaultState));
-    paramContentValues.put("cCanChangeState", Byte.valueOf(paramawge.cCanChangeState));
-    paramContentValues.put("isNew", Byte.valueOf(paramawge.isNew));
-    paramContentValues.put("cDataType", Byte.valueOf(paramawge.cDataType));
-    paramContentValues.put("cLocalState", Byte.valueOf(paramawge.cLocalState));
-    paramContentValues.put("iPluginType", Integer.valueOf(paramawge.iPluginType));
-    paramContentValues.put("timeStamp", Long.valueOf(paramawge.timeStamp));
-    paramContentValues.put("strNewPluginDesc", paramawge.strNewPluginDesc);
-    paramContentValues.put("strNewPluginURL", paramawge.strNewPluginURL);
-    paramContentValues.put("lebaSearchResultType", Integer.valueOf(paramawge.lebaSearchResultType));
-    paramContentValues.put("pluginSetTips", paramawge.pluginSetTips);
-    paramContentValues.put("pluginBg", paramawge.pluginBg);
-    paramContentValues.put("flags", Integer.valueOf(paramawge.flags));
+    this.jdField_a_of_type_Awha.a();
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "onGetConfig isInit: %b, config: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Awha.jdField_a_of_type_Boolean), paramString }));
+    }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("ChinaUnicomPhoneCard" + this.jdField_a_of_type_Awha.jdField_a_of_type_JavaLangString, 4).edit();
+    paramString.putString("config_content", str);
+    paramString.commit();
+    this.jdField_a_of_type_Awha.a(str);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Awha.jdField_a_of_type_Boolean;
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CUOpenCardGuideMng", 2, "onDestroy");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awgy
  * JD-Core Version:    0.7.0.1
  */

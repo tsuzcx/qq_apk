@@ -1,23 +1,27 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.3.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFuelTopView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class vxh
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements View.OnClickListener
 {
-  vxh(vxe paramvxe) {}
+  public vxh(QCircleFuelTopView paramQCircleFuelTopView) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
-    return false;
+    if (QCircleFuelTopView.a(this.a) != null) {
+      vrg.a(89, 2, ((vdq)QCircleFuelTopView.a(this.a)).a(), this.a.e());
+    }
+    if (QCircleFuelTopView.a(this.a) != null) {
+      uxo.a(this.a.getContext(), uxn.a(QCircleFuelTopView.a(this.a), "tagFuelRankUrl"));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vxh
  * JD-Core Version:    0.7.0.1
  */

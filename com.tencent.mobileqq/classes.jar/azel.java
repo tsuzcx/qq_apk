@@ -1,61 +1,52 @@
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+
 public class azel
+  implements anil
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public void a(boolean paramBoolean, String paramString, long paramLong1, long paramLong2) {}
   
-  azel(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public void a(boolean paramBoolean, String paramString, long paramLong, PersonalityLabelInfo paramPersonalityLabelInfo, int paramInt, byte[] paramArrayOfByte) {}
   
-  public int a()
+  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
+    switch (paramInt)
+    {
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\_");
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
-  }
-  
-  int a(char paramChar)
-  {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\" + paramChar);
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
-  }
-  
-  String c()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
-  }
-  
-  String d()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
+    do
+    {
+      return;
+      if (paramBoolean)
+      {
+        paramObject = (Object[])paramObject;
+        a(true, (String)paramObject[0], (PersonalityLabel)paramObject[1], (byte[])paramObject[2], ((Integer)paramObject[3]).intValue());
+        return;
+      }
+      a(false, null, null, null, 0);
+      return;
+      paramObject = (Object[])paramObject;
+      if (paramBoolean)
+      {
+        a(true, (String)paramObject[0], ((Long)paramObject[1]).longValue(), (PersonalityLabelInfo)paramObject[2], ((Integer)paramObject[3]).intValue(), (byte[])paramObject[4]);
+        return;
+      }
+      if ((paramObject != null) && (paramObject.length > 0))
+      {
+        a(false, (String)paramObject[0], ((Long)paramObject[1]).longValue(), null, 0, null);
+        return;
+      }
+      a(false, "", -1L, null, 0, null);
+      return;
+      paramObject = (Object[])paramObject;
+      if (paramBoolean)
+      {
+        a(true, (String)paramObject[0], ((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
+        return;
+      }
+    } while (paramObject == null);
+    a(false, (String)paramObject[0], ((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
   }
 }
 

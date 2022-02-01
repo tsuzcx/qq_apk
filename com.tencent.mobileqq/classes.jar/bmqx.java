@@ -1,14 +1,34 @@
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
-public abstract interface bmqx
+class bmqx
+  extends RemoteCommand
 {
-  public abstract void a(float paramFloat);
+  bmqx(bmqu parambmqu, String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void a(DynamicTextItem paramDynamicTextItem);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
-  
-  public abstract boolean a(bmqz parambmqz);
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    if (paramBundle == null) {
+      paramBundle = null;
+    }
+    Bundle localBundle;
+    do
+    {
+      return paramBundle;
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      localBundle = this.a.b(paramBundle);
+      if (localBundle != null) {
+        localBundle.setClassLoader(getClass().getClassLoader());
+      }
+      paramBundle = localBundle;
+    } while (paramOnInvokeFinishLinstener == null);
+    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
+    return localBundle;
+  }
 }
 
 

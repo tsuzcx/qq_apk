@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 
-public class aksz
-  implements aktf
+class aksz
+  implements akph
 {
-  public aksz(CmGameDebugView paramCmGameDebugView) {}
+  aksz(akss paramakss, ResultReceiver paramResultReceiver) {}
   
-  public void a()
+  public void a(String paramString1, String paramString2, akpb paramakpb)
   {
-    this.a.b();
+    paramString1 = new Bundle();
+    paramString1.putString("res", paramString2);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
   }
 }
 

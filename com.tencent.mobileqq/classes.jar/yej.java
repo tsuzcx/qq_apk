@@ -1,57 +1,25 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
 
 class yej
-  implements zac<CertifiedAccountRead.StGetFeedListRsp>
+  extends xbu
 {
-  yej(yei paramyei, yii paramyii) {}
+  yej(yeh paramyeh, FeedItem paramFeedItem) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public void a()
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      if ((!this.jdField_a_of_type_Yii.c()) && (!this.jdField_a_of_type_Yii.d())) {
-        break label122;
-      }
-      paramString = this.jdField_a_of_type_Yei;
-      localList = paramStGetFeedListRsp.vecFeed.get();
-      localStCommonExt = paramStGetFeedListRsp.extInfo;
-      if (paramStGetFeedListRsp.isFinish.get() != 1) {
-        break label117;
-      }
-      paramBoolean = bool1;
-      paramString.a(localList, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
-      this.jdField_a_of_type_Yei.setShareData("share_key_continue_feeds", new yif(paramStGetFeedListRsp.vecFeed.get()));
-    }
-    label117:
-    label122:
-    while (!this.jdField_a_of_type_Yii.e()) {
-      for (;;)
-      {
-        return;
-        paramBoolean = false;
-      }
-    }
-    paramString = this.jdField_a_of_type_Yei;
-    List localList = paramStGetFeedListRsp.vecFeed.get();
-    COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
-    if (paramStGetFeedListRsp.isFinish.get() == 1) {}
-    for (paramBoolean = bool2;; paramBoolean = false)
-    {
-      paramString.b(localList, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
-      return;
-    }
+    super.a();
+    yeh.a(this.jdField_a_of_type_Yeh, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    yqu.a("home_page", "suc_share", 2, paramInt, new String[] { yqu.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", yqu.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yej
  * JD-Core Version:    0.7.0.1
  */

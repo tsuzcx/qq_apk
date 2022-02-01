@@ -1,26 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class affh
-  implements DialogInterface.OnClickListener
+public class affh
+  implements View.OnClickListener
 {
-  affh(affg paramaffg, List paramList, BaseChatPie paramBaseChatPie) {}
+  public affh(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    this.a.b(1);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
+    if (this.a.a().booleanValue())
     {
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
     }
-    do
-    {
-      return;
-      paramDialogInterface = aupn.a(affg.a(this.jdField_a_of_type_Affg), (ArrayList)this.jdField_a_of_type_JavaUtilList);
-    } while ((paramDialogInterface == null) || (paramDialogInterface.size() == 0));
-    affg.a(this.jdField_a_of_type_Affg, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(false, null, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

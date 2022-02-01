@@ -1,27 +1,48 @@
-import android.app.Dialog;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.intervideo.nowproxy.NowPluginObserver;
+import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
 
 public class avkn
-  implements View.OnClickListener
+  implements NowPluginObserver
 {
-  public avkn(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public avkn(LoadingFragment paramLoadingFragment) {}
   
-  public void onClick(View paramView)
+  public void onCloseLoadingView()
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (localFragmentActivity != null) {
+      localFragmentActivity.finish();
     }
-    this.a.c();
-    azqs.b(this.a.app, "CliOper", "", "", "0X8004824", "0X8004824", 0, 0, "", "", "", "");
+  }
+  
+  public void onEnterAvPlugin(Bundle paramBundle) {}
+  
+  public void onEnterRoom(Bundle paramBundle)
+  {
+    this.a.a();
+  }
+  
+  public void onExitRoom(Bundle paramBundle) {}
+  
+  public void onLoadingViewCreated(View paramView)
+  {
+    if (paramView != null)
+    {
+      this.a.getActivity();
+      FrameLayout localFrameLayout = (FrameLayout)this.a.getView();
+      if ((paramView != null) && (localFrameLayout != null)) {
+        localFrameLayout.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avkn
  * JD-Core Version:    0.7.0.1
  */

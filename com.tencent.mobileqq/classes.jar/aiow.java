@@ -1,17 +1,18 @@
 import android.view.View;
-import com.tencent.image.URLImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aiow
-  implements bhtx
+public class aiow
+  implements View.OnClickListener
 {
-  aiow(aiov paramaiov) {}
+  public aiow(BlessActivity paramBlessActivity) {}
   
-  public void b(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof aiox))) {
-      ((aiox)paramView).a.setImageDrawable(null);
-    }
+    bcst.b(this.a.app, "CliOper", "", "", "0X800632F", "0X800632F", 0, 0, "", "", "", "");
+    BlessActivity.a(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

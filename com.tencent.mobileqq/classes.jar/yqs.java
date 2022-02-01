@@ -1,91 +1,65 @@
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.os.Message;
-import android.text.TextUtils;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.SeekBar;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMonitorValue;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class yqs
-  implements View.OnTouchListener
+  extends wlf
 {
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<TribeVideoPlugin> jdField_a_of_type_JavaLangRefWeakReference;
+  public String a;
+  private int c;
+  private int d;
   
-  public yqs(TribeVideoPlugin paramTribeVideoPlugin, String paramString)
+  public String a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTribeVideoPlugin);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return wjz.a("StoryMonitorSvc.client_monitor_report");
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public wla a(byte[] paramArrayOfByte)
   {
-    paramView = (TribeVideoPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((paramView == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TribeVideoPlugin.a(paramView).containsKey(this.jdField_a_of_type_JavaLangString))) {}
+    qqstory_service.RspMonitorValue localRspMonitorValue = new qqstory_service.RspMonitorValue();
+    try
+    {
+      localRspMonitorValue.mergeFrom(paramArrayOfByte);
+      return new yqt(localRspMonitorValue);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMonitorValue localReqMonitorValue = new qqstory_service.ReqMonitorValue();
+    localReqMonitorValue.ID.set(this.c);
+    if (this.d > 0) {
+      localReqMonitorValue.Value.set(this.d);
+    }
     for (;;)
     {
-      return false;
-      Object localObject1 = yqt.a((yqt)TribeVideoPlugin.a(paramView).get(this.jdField_a_of_type_JavaLangString));
-      if ((localObject1 != null) && (yqr.a((yqr)localObject1) == 2))
-      {
-        switch (paramMotionEvent.getAction())
-        {
-        case 2: 
-        default: 
-          return false;
-        case 0: 
-          TribeVideoPlugin.a(paramView).x = ((int)paramMotionEvent.getRawX());
-          TribeVideoPlugin.a(paramView).y = ((int)paramMotionEvent.getRawY());
-          return false;
-        }
-        TribeVideoPlugin.b(paramView).x = ((int)paramMotionEvent.getRawX());
-        TribeVideoPlugin.b(paramView).y = ((int)paramMotionEvent.getRawY());
-        if ((Math.abs(TribeVideoPlugin.a(paramView).y - TribeVideoPlugin.b(paramView).y) < 8) && (Math.abs(TribeVideoPlugin.a(paramView).x - TribeVideoPlugin.b(paramView).x) < 8))
-        {
-          paramMotionEvent = new Rect();
-          localObject1 = TribeVideoPlugin.a(paramView).keySet().iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            String str = (String)((Iterator)localObject1).next();
-            Object localObject2 = yqt.a((yqt)TribeVideoPlugin.a(paramView).get(str));
-            SeekBar localSeekBar = yqr.a(yqt.a((yqt)TribeVideoPlugin.a(paramView).get(str)));
-            ((FrameLayout)localObject2).getGlobalVisibleRect(paramMotionEvent);
-            if ((paramMotionEvent.contains(TribeVideoPlugin.a(paramView).x, TribeVideoPlugin.a(paramView).y)) && (paramMotionEvent.contains(TribeVideoPlugin.b(paramView).x, TribeVideoPlugin.b(paramView).y)))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("TribeVideoPlugin", 2, "videoplayer section clicked");
-              }
-              if (localSeekBar.getVisibility() == 4)
-              {
-                TribeVideoPlugin.a(paramView).removeMessages(2, str);
-                TribeVideoPlugin.a(paramView, str, true);
-                localObject2 = TribeVideoPlugin.a(paramView).obtainMessage();
-                ((Message)localObject2).obj = str;
-                ((Message)localObject2).what = 2;
-                TribeVideoPlugin.a(paramView).sendMessageDelayed((Message)localObject2, 3000L);
-              }
-              else
-              {
-                TribeVideoPlugin.a(paramView, str, false);
-              }
-            }
-          }
-        }
+      if (this.a != null) {
+        localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.a));
       }
+      return localReqMonitorValue.toByteArray();
+      localReqMonitorValue.Value.set(1);
     }
+  }
+  
+  public String toString()
+  {
+    return "MonitorValueRequest{ID=" + this.c + ", value=" + this.d + ", msg=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yqs
  * JD-Core Version:    0.7.0.1
  */

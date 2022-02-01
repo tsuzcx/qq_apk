@@ -1,47 +1,41 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.wadl.ipc.WadlProxyServiceManager.ClientMessageHandler.1;
-import cooperation.wadl.ipc.WadlProxyServiceManager.ClientMessageHandler.2;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
-public final class bkip
-  extends Handler
+public class bkip
+  implements bkpk
 {
-  public bkip(bkil parambkil, Looper paramLooper)
+  private Locale jdField_a_of_type_JavaUtilLocale;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public bkip(Context paramContext)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilLocale = paramContext.getResources().getConfiguration().locale;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.b();
-      continue;
-      this.a.c();
-      continue;
-      Bundle localBundle = paramMessage.getData();
-      this.a.a.post(new WadlProxyServiceManager.ClientMessageHandler.1(this, localBundle));
-      continue;
-      localBundle = paramMessage.getData();
-      this.a.a.post(new WadlProxyServiceManager.ClientMessageHandler.2(this, localBundle));
-      continue;
-      if (bkil.a(this.a) != null)
-      {
-        bkil.a(this.a).a();
-        continue;
-        if ((!bkil.a(this.a)) && (bkil.a(this.a) != null)) {
-          bkil.a(this.a).b();
-        }
-      }
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
+  
+  public CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (paramCharSequence != null) {
+        return paramCharSequence.toString().toUpperCase(this.jdField_a_of_type_JavaUtilLocale);
+      }
+      return null;
+    }
+    QLog.w("AllCapsTransformationMethod", 2, "Caller did not enable length changes; not transforming text");
+    return paramCharSequence;
+  }
+  
+  public void onFocusChanged(View paramView, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, Rect paramRect) {}
 }
 
 

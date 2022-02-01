@@ -1,27 +1,34 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import mqq.app.QQPermissionCallback;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class awce
-  implements QQPermissionCallback
 {
-  public awce(ScanTorchActivity paramScanTorchActivity) {}
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new awcf(this);
+  private awcg jdField_a_of_type_Awcg;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public awce(QQAppInterface paramQQAppInterface)
   {
-    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission deny i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
-    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a()
   {
-    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission grant i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
+    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+  }
+  
+  public void a(awcg paramawcg)
+  {
+    this.jdField_a_of_type_Awcg = paramawcg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awce
  * JD-Core Version:    0.7.0.1
  */

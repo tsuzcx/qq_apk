@@ -1,26 +1,24 @@
-import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
 
 public class xme
-  implements Comparator<RecentUser>
+  implements xpe
 {
-  public xme(ShareToActivity paramShareToActivity) {}
+  public final ViewPager.PageTransformer a;
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public xme(ViewPager.PageTransformer paramPageTransformer)
   {
-    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
-      return -1;
-    }
-    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
-      return 1;
-    }
-    return 0;
+    this.a = paramPageTransformer;
+  }
+  
+  public void a(View paramView, float paramFloat)
+  {
+    this.a.transformPage(paramView, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xme
  * JD-Core Version:    0.7.0.1
  */

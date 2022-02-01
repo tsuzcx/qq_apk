@@ -1,12 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import com.tencent.mobileqq.widget.QQToast;
 
 class bmoe
-  implements View.OnClickListener
+  implements bltl
 {
-  bmoe(bmod parambmod) {}
+  bmoe(bmob parambmob, int paramInt) {}
   
-  public void onClick(View paramView) {}
+  public void onFail(Activity paramActivity, String paramString)
+  {
+    QQToast.a(paramActivity, paramString, 0).b(this.jdField_a_of_type_Int);
+  }
 }
 
 

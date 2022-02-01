@@ -1,50 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ntt
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public ntt(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  public ntt(AccountSettingFragment paramAccountSettingFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if ("action_decode_finish".equals(paramContext))
-    {
-      paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = (Bitmap)paramIntent.getParcelableExtra("bitmap");
-      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramContext)) && (paramIntent != null)) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramIntent);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!"action_follow_status_finish".equals(paramContext)) || (!String.valueOf(paramIntent.getStringExtra("uin")).equals(this.a.jdField_a_of_type_JavaLangString)));
-      this.a.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isFollow", false);
-    } while (this.a.jdField_a_of_type_AndroidWidgetTextView == null);
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131701638));
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131701650));
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846638);
+    AccountSettingFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ntt
  * JD-Core Version:    0.7.0.1
  */

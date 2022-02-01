@@ -1,33 +1,23 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class ammz
-  implements View.OnClickListener
+public class ammz
 {
-  ammz(ammy paramammy) {}
+  public static int a;
+  public static final String a;
+  public static int b;
+  public static int c;
+  public static int d;
   
-  public void onClick(View paramView)
+  static
   {
-    if (ammy.a != null) {
-      ammy.a(this.a).startActivity(ammy.a);
-    }
-    azqs.b(null, "CliOper", "", "", "0X8006B15", "0X8006B15", 0, 0, "", "", "", "");
-    azqs.b(null, "dc00898", "", "", "0X8009AC8", "0X8009AC8", 0, 0, "", "", "", "");
-    paramView = PreferenceManager.getDefaultSharedPreferences(ammy.a(this.a));
-    int i = paramView.getInt("push_msg_notify_open", 0);
-    paramView = paramView.edit();
-    paramView.putInt("push_msg_notify_open", i + 1);
-    paramView.commit();
-    this.a.dismiss();
+    jdField_a_of_type_Int = 6;
+    b = 1;
+    c = 1;
+    d = 1;
+    jdField_a_of_type_JavaLangString = ancb.jdField_a_of_type_JavaLangString + "/game";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ammz
  * JD-Core Version:    0.7.0.1
  */

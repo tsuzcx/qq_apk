@@ -1,849 +1,648 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.SpannableStringBuilder;
+import android.annotation.TargetApi;
+import android.media.MediaMetadataRetriever;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.ImageSpan;
-import android.text.style.StyleSpan;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.database.LikeEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.shortvideo.util.AudioEncoder;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.Dispatcher;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
+@TargetApi(14)
 public class wix
+  extends woi
 {
-  public static SpannableStringBuilder a(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, wiz paramwiz)
+  protected final Object a;
+  protected final ArrayList<String> a;
+  protected final ConcurrentHashMap<String, wja> a;
+  protected AtomicBoolean a;
+  private wjc a;
+  protected final Object b = new Object();
+  
+  public wix()
   {
-    if (paramCommentEntry.commentType == 1) {
-      return c(paramCommentLikeFeedItem, paramCommentEntry, paramwiz);
-    }
-    if (paramCommentEntry.commentType == 2) {
-      return d(paramCommentLikeFeedItem, paramCommentEntry, paramwiz);
-    }
-    if (paramCommentEntry.commentType == 5) {
-      return c(paramContext, paramCommentLikeFeedItem, paramCommentEntry, paramwiz);
-    }
-    if (paramCommentEntry.commentType == 4) {
-      return a(paramContext, paramCommentLikeFeedItem, paramCommentEntry, paramwiz, true);
-    }
-    return a(paramCommentLikeFeedItem, paramCommentEntry, paramwiz);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(3);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(3);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_Wjc = new wjc();
   }
   
-  private static SpannableStringBuilder a(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, wiz paramwiz, boolean paramBoolean)
+  public static int a(String paramString)
   {
-    paramContext = ((uwm)uwa.a(2)).c(paramCommentEntry.authorUnionId);
-    String str3 = a(paramCommentLikeFeedItem, paramContext);
-    String str4 = a(paramCommentEntry.authorRole, paramContext);
-    String str5 = a(paramContext);
-    int i;
-    String str6;
-    if (!TextUtils.isEmpty(str5))
-    {
-      i = 1;
-      str6 = paramCommentEntry.content;
-      if (!banh.a(paramCommentEntry.content)) {
-        break label511;
-      }
-    }
-    label84:
-    label93:
-    label125:
-    label511:
-    for (paramCommentLikeFeedItem = azah.b(paramCommentEntry.content);; paramCommentLikeFeedItem = null)
-    {
-      String str1;
-      String str2;
-      if (paramBoolean)
-      {
-        paramContext = alud.a(2131714636);
-        if (i == 0) {
-          break label403;
-        }
-        str1 = "V";
-        if (!paramBoolean) {
-          break label410;
-        }
-        str2 = str3 + str1 + str4;
-        if (paramCommentLikeFeedItem == null) {
-          break label417;
-        }
-      }
-      for (paramCommentLikeFeedItem = new bamz(str2 + paramContext + ": " + paramCommentLikeFeedItem, 3, 16);; paramCommentLikeFeedItem = new SpannableStringBuilder(str2 + paramContext + ": " + str6))
-      {
-        for (;;)
-        {
-          i = 0;
-          if (paramBoolean)
-          {
-            i = str3.length();
-            a(paramCommentLikeFeedItem, 0, i);
-            if (uqo.a()) {
-              b(paramCommentLikeFeedItem, 0, i, -16777216);
-            }
-            int k = i + str1.length();
-            if (i != k) {
-              a(paramCommentLikeFeedItem, str5, i, k);
-            }
-            a(paramCommentLikeFeedItem, 0, k, paramwiz, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
-            j = str4.length() + k;
-            i = j;
-            if (k != j)
-            {
-              b(paramCommentLikeFeedItem, k, j, -4473925);
-              i = j;
-            }
-          }
-          int j = paramContext.length() + i;
-          b(paramCommentLikeFeedItem, i, j, -4473925);
-          try
-          {
-            paramContext = paramCommentEntry.getExtraJson().optJSONArray("styles");
-            if (paramContext == null) {
-              break label472;
-            }
-            j += ": ".length();
-            i = 0;
-            while (i < paramContext.length())
-            {
-              paramCommentEntry = paramContext.optJSONObject(i);
-              if (paramCommentEntry.optInt("type") == 1) {
-                b(paramCommentLikeFeedItem, paramCommentEntry.optInt("start") + j, paramCommentEntry.optInt("end") + j, -605655);
-              }
-              i += 1;
-            }
-            i = 0;
-          }
-          catch (Exception paramContext)
-          {
-            if (!QLog.isColorLevel()) {
-              break label472;
-            }
-            QLog.e("Q.qqstory.detail.SpannableStringUtils", 2, "styles error.");
-            paramCommentLikeFeedItem.append(" ").append("I");
-            a(paramCommentLikeFeedItem, paramCommentLikeFeedItem.length() - "I".length(), paramCommentLikeFeedItem.length(), 2130846008, 15, 15, 3);
-            return paramCommentLikeFeedItem;
-          }
-        }
-        paramContext = alud.a(2131714639);
-        break label84;
-        str1 = "";
-        break label93;
-        str2 = "";
-        break label125;
-      }
-    }
-  }
-  
-  private static SpannableStringBuilder a(@NonNull CommentEntry paramCommentEntry)
-  {
-    String str2 = paramCommentEntry.content;
-    String str1 = null;
-    if (banh.a(paramCommentEntry.content)) {
-      str1 = azah.b(paramCommentEntry.content);
-    }
-    String str3 = alud.a(2131714637);
-    if (str1 != null) {}
-    for (paramCommentEntry = new bamz(str3 + ": " + str1, 3, 16);; paramCommentEntry = new SpannableStringBuilder(str3 + ": " + str2))
-    {
-      b(paramCommentEntry, 0, str3.length(), -4473925);
-      return paramCommentEntry;
-    }
-  }
-  
-  private static SpannableStringBuilder a(CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, wiz paramwiz)
-  {
-    Object localObject1 = (uwm)uwa.a(2);
-    Object localObject3 = ((uwm)localObject1).c(paramCommentEntry.authorUnionId);
-    String str2 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject3);
-    String str3 = a(paramCommentEntry.authorRole, (QQUserUIItem)localObject3);
-    Object localObject2;
-    String str1;
-    if (paramCommentEntry.isReply())
-    {
-      localObject2 = ((uwm)localObject1).c(paramCommentEntry.replierUnionId);
-      str1 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject2);
-      localObject1 = a(paramCommentEntry.replierRole, (QQUserUIItem)localObject2);
-    }
-    for (paramCommentLikeFeedItem = (CommentLikeFeedItem)localObject2;; paramCommentLikeFeedItem = null)
-    {
-      String str4 = a((QQUserUIItem)localObject3);
-      String str5 = a(paramCommentLikeFeedItem);
-      int i;
-      int j;
-      label120:
-      String str7;
-      String str6;
-      if (!TextUtils.isEmpty(str4))
-      {
-        i = 1;
-        if ((!paramCommentEntry.isReply()) || (TextUtils.isEmpty(str5))) {
-          break label409;
-        }
-        j = 1;
-        str7 = paramCommentEntry.content;
-        paramCommentLikeFeedItem = null;
-        if (banh.a(paramCommentEntry.content)) {
-          paramCommentLikeFeedItem = azah.b(paramCommentEntry.content);
-        }
-        str6 = alud.a(2131714642);
-        if (i == 0) {
-          break label415;
-        }
-        localObject2 = "V";
-        label161:
-        if (j == 0) {
-          break label422;
-        }
-        localObject3 = "V";
-        label170:
-        if (!TextUtils.isEmpty(str1)) {
-          break label475;
-        }
-        if (paramCommentLikeFeedItem == null) {
-          break label429;
-        }
-      }
-      label409:
-      label415:
-      label422:
-      label429:
-      for (paramCommentLikeFeedItem = new bamz(str2 + (String)localObject2 + str3 + ": " + paramCommentLikeFeedItem, 3, 16);; paramCommentLikeFeedItem = new SpannableStringBuilder(str2 + (String)localObject2 + str3 + ": " + str7))
-      {
-        j = str2.length();
-        a(paramCommentLikeFeedItem, 0, j);
-        if (uqo.a()) {
-          b(paramCommentLikeFeedItem, 0, j, -16777216);
-        }
-        i = j + ((String)localObject2).length();
-        if (j != i) {
-          a(paramCommentLikeFeedItem, str4, j, i);
-        }
-        a(paramCommentLikeFeedItem, 0, i, paramwiz, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
-        j = str3.length() + i;
-        paramwiz = paramCommentLikeFeedItem;
-        if (i != j)
-        {
-          b(paramCommentLikeFeedItem, i, j, -4473925);
-          paramwiz = paramCommentLikeFeedItem;
-        }
-        if (paramCommentEntry.status == 2)
-        {
-          paramwiz.append(" ");
-          paramCommentLikeFeedItem = alud.a(2131714641);
-          i = paramwiz.length();
-          j = paramCommentLikeFeedItem.length();
-          paramwiz.append(paramCommentLikeFeedItem);
-          b(paramwiz, i, j + i, -48606);
-          i = paramwiz.length();
-          j = "[icon]  ".length();
-          paramwiz.append("[icon]  ");
-          a(paramwiz, i, j + i, 2130848162);
-        }
-        return paramwiz;
-        i = 0;
-        break;
-        j = 0;
-        break label120;
-        localObject2 = "";
-        break label161;
-        localObject3 = "";
-        break label170;
-      }
-      label475:
-      if (paramCommentLikeFeedItem != null) {}
-      for (paramCommentLikeFeedItem = new bamz(str2 + (String)localObject2 + str3 + str6 + str1 + (String)localObject3 + (String)localObject1 + ": " + paramCommentLikeFeedItem, 3, 14);; paramCommentLikeFeedItem = new SpannableStringBuilder(str2 + (String)localObject2 + str3 + str6 + str1 + (String)localObject3 + (String)localObject1 + ": " + str7))
-      {
-        j = str2.length();
-        a(paramCommentLikeFeedItem, 0, j);
-        if (uqo.a()) {
-          b(paramCommentLikeFeedItem, 0, j, -16777216);
-        }
-        i = j + ((String)localObject2).length();
-        if (j != i) {
-          a(paramCommentLikeFeedItem, str4, j, i);
-        }
-        a(paramCommentLikeFeedItem, 0, i, paramwiz, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
-        j = str3.length() + i;
-        if (i != j) {
-          b(paramCommentLikeFeedItem, i, j, -4473925);
-        }
-        j += str6.length();
-        i = j + str1.length();
-        a(paramCommentLikeFeedItem, j, i);
-        if (uqo.a()) {
-          b(paramCommentLikeFeedItem, j, i, -16777216);
-        }
-        j = i + ((String)localObject3).length();
-        if (i != j) {
-          a(paramCommentLikeFeedItem, str5, i, j);
-        }
-        a(paramCommentLikeFeedItem, i - str1.length(), j, paramwiz, paramCommentEntry.replierUnionId, paramCommentEntry.replierRole);
-        i = ((String)localObject1).length() + j;
-        paramwiz = paramCommentLikeFeedItem;
-        if (j == i) {
-          break;
-        }
-        b(paramCommentLikeFeedItem, j, i, -4473925);
-        paramwiz = paramCommentLikeFeedItem;
-        break;
-      }
-      localObject1 = "";
-      str1 = null;
-    }
-  }
-  
-  public static SpannableStringBuilder a(CommentLikeFeedItem paramCommentLikeFeedItem, List<LikeEntry> paramList, wiz paramwiz)
-  {
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    String str1 = paramCommentLikeFeedItem.feedId + "_" + paramList.hashCode();
-    Object localObject = utv.a().a(str1);
-    if ((localObject != null) && ((localObject instanceof SpannableStringBuilder))) {
-      return new SpannableStringBuilder((CharSequence)localObject);
-    }
-    boolean bool;
-    if ((paramCommentLikeFeedItem.getOwner() != null) && (paramCommentLikeFeedItem.getOwner().getRelationType() == 2))
-    {
-      bool = true;
-      if (!(paramCommentLikeFeedItem.getOwner() instanceof QQUserUIItem)) {
-        break label424;
-      }
-      paramCommentLikeFeedItem = (QQUserUIItem)paramCommentLikeFeedItem.getOwner();
-      if (!bool) {
-        break label424;
-      }
-    }
-    label261:
-    label392:
-    label424:
-    for (paramCommentLikeFeedItem = paramCommentLikeFeedItem.qq;; paramCommentLikeFeedItem = null)
-    {
-      int i = 1;
-      int j = 0;
-      for (;;)
-      {
-        if (j < paramList.size())
-        {
-          LikeEntry localLikeEntry = (LikeEntry)paramList.get(j);
-          localObject = ((uwm)uwa.a(2)).c(localLikeEntry.unionId);
-          if ((localObject == null) || (!((QQUserUIItem)localObject).isAvailable()))
-          {
-            i = 0;
-            j += 1;
-            continue;
-            bool = false;
-            break;
-          }
-          String str2 = a((QQUserUIItem)localObject);
-          int k;
-          label220:
-          String str3;
-          StringBuilder localStringBuilder;
-          if (!TextUtils.isEmpty(str2))
-          {
-            k = 1;
-            str3 = a(localLikeEntry.unionId, localLikeEntry.uin, bool, paramCommentLikeFeedItem);
-            localStringBuilder = new StringBuilder().append(str3);
-            if (k == 0) {
-              break label385;
-            }
-            localObject = "V";
-            localStringBuilder = localStringBuilder.append((String)localObject);
-            if (j != paramList.size() - 1) {
-              break label392;
-            }
-          }
-          for (localObject = "";; localObject = ", ")
-          {
-            localObject = (String)localObject;
-            int m = localSpannableStringBuilder.length();
-            int n = ((String)localObject).length() + m;
-            localSpannableStringBuilder.append((CharSequence)localObject);
-            int i1 = str3.length() + m;
-            if (k != 0) {
-              a(localSpannableStringBuilder, str2, i1, i1 + 1);
-            }
-            a(localSpannableStringBuilder, m, n);
-            a(localSpannableStringBuilder, m, n, paramwiz, localLikeEntry.unionId);
-            break;
-            k = 0;
-            break label220;
-            localObject = "";
-            break label261;
-          }
-        }
-      }
-      if (i != 0) {
-        utv.a().a(str1, localSpannableStringBuilder);
-      }
-      return new SpannableStringBuilder(localSpannableStringBuilder);
-    }
-  }
-  
-  private static String a(int paramInt, QQUserUIItem paramQQUserUIItem)
-  {
-    if ((paramInt == 0) || (paramInt == 2)) {
-      return "";
-    }
-    if (paramQQUserUIItem == null) {
-      return "";
-    }
-    if (TextUtils.isEmpty(paramQQUserUIItem.nickPostfix)) {
-      return "";
-    }
-    return paramQQUserUIItem.nickPostfix;
-  }
-  
-  private static String a(QQUserUIItem paramQQUserUIItem)
-  {
-    if (paramQQUserUIItem == null) {
-      return null;
-    }
-    return paramQQUserUIItem.getUserIconUrl();
-  }
-  
-  private static String a(CommentLikeFeedItem paramCommentLikeFeedItem, QQUserUIItem paramQQUserUIItem)
-  {
-    int i;
-    if ((paramCommentLikeFeedItem instanceof VideoListFeedItem))
-    {
-      paramCommentLikeFeedItem = (VideoListFeedItem)paramCommentLikeFeedItem;
-      if ((paramCommentLikeFeedItem != null) && (paramCommentLikeFeedItem.getOwner() != null) && (paramCommentLikeFeedItem.getOwner().getRelationType() == 2))
-      {
-        i = 1;
-        if ((i == 0) || (!(paramCommentLikeFeedItem.getOwner() instanceof QQUserUIItem))) {
-          break label93;
-        }
-        paramCommentLikeFeedItem = ((QQUserUIItem)paramCommentLikeFeedItem.getOwner()).qq;
-      }
+    long l = System.currentTimeMillis();
+    String str = paramString + ".temp.mp4";
+    yqp.b("Q.qqstory.publish.upload.VideoCompositeManager", "reEncodeVideoWithFFmpeg start!");
+    int i = bclc.a(paramString, str, 0);
+    if (i != 0) {
+      QLog.e("Q.qqstory.publish.upload.VideoCompositeManager", 2, "[NewVersion]HwVideoMerge->merge: errcode=" + i);
     }
     for (;;)
     {
-      if (i != 0)
-      {
-        return ((uwi)uwa.a(23)).a(paramQQUserUIItem, paramCommentLikeFeedItem, false, false);
-        i = 0;
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.publish.upload.VideoCompositeManager", 2, "reEncodeVideoWithFFmpeg cost=" + (System.currentTimeMillis() - l));
       }
-      return vls.a(paramQQUserUIItem);
-      label93:
-      paramCommentLikeFeedItem = null;
-      continue;
-      paramCommentLikeFeedItem = null;
+      return i;
+      bgmg.d(paramString);
+      bgmg.c(str, paramString);
       i = 0;
     }
   }
   
-  public static String a(String paramString1, String paramString2, boolean paramBoolean, String paramString3)
+  private void a(String paramString, long paramLong, wja paramwja)
   {
-    paramString1 = ((uwm)uwa.a(2)).c(paramString1);
-    if (paramBoolean) {
-      return ((uwi)uwa.a(23)).a(paramString1, paramString3, false, false);
-    }
-    return vls.a(paramString1);
-  }
-  
-  private static void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2)
-  {
-    paramSpannableStringBuilder.setSpan(new StyleSpan(1), paramInt1, paramInt2, 33);
-  }
-  
-  public static void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(paramSpannableStringBuilder, paramInt1, paramInt2, paramInt3, 15, 15);
-  }
-  
-  public static void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    a(paramSpannableStringBuilder, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, 2);
-  }
-  
-  public static void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    paramInt4 = xsm.a(BaseApplicationImpl.getContext(), paramInt4);
-    paramInt5 = xsm.a(BaseApplicationImpl.getContext(), paramInt5);
-    Object localObject = BaseApplicationImpl.getContext().getResources().getDrawable(paramInt3);
-    ((Drawable)localObject).setBounds(0, 0, paramInt4, paramInt5);
-    if (paramInt6 == 1) {
-      localObject = new ImageSpan((Drawable)localObject, 1);
-    }
-    for (;;)
+    long l = SystemClock.elapsedRealtime();
+    PublishVideoEntry localPublishVideoEntry = wip.a(paramString);
+    if (TextUtils.isEmpty(localPublishVideoEntry.backgroundMusicPath)) {}
+    for (paramString = "0";; paramString = "1")
     {
-      paramSpannableStringBuilder.setSpan(localObject, paramInt1, paramInt2, 33);
+      yqu.b("publish_story", "video_composite_wait", a(localPublishVideoEntry), paramwja.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, new String[] { paramwja.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg, String.valueOf(l - paramLong), String.valueOf(localPublishVideoEntry.videoDuration), paramString });
       return;
-      if (paramInt6 == 0) {
-        localObject = new ImageSpan((Drawable)localObject, 0);
-      } else if (paramInt6 == 3) {
-        localObject = new xvr((Drawable)localObject);
-      } else {
-        localObject = new xww((Drawable)localObject);
+    }
+  }
+  
+  private void a(wjb paramwjb, PublishVideoEntry paramPublishVideoEntry, long paramLong)
+  {
+    paramLong = System.currentTimeMillis() - paramLong;
+    label96:
+    boolean bool;
+    if (TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath))
+    {
+      str = "0";
+      j = a(paramPublishVideoEntry);
+      yqu.b("publish_story", "video_composite", j, paramwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, new String[] { paramwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg, String.valueOf(paramLong), String.valueOf(paramPublishVideoEntry.videoDuration), str });
+      if (!paramPublishVideoEntry.isPicture)
+      {
+        if (!paramPublishVideoEntry.hwEncodeRecordVideo) {
+          break label253;
+        }
+        i = 1;
+        yqu.b("publish_story", "video_encode", 0, i, new String[] { paramPublishVideoEntry.videoMaxrate + "", paramPublishVideoEntry.videoMinrate + "" });
+      }
+      a(j, paramwjb.b, paramPublishVideoEntry);
+      bool = paramwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess();
+      if (!paramwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+        break label259;
       }
     }
-  }
-  
-  public static void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, wiz paramwiz, String paramString)
-  {
-    a(paramSpannableStringBuilder, paramInt1, paramInt2, paramwiz, paramString, 0);
-  }
-  
-  public static void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, wiz paramwiz, String paramString, int paramInt3)
-  {
-    paramSpannableStringBuilder.setSpan(new wiy(paramwiz, paramString, paramInt3), paramInt1, paramInt2, 33);
-  }
-  
-  public static void a(SpannableStringBuilder paramSpannableStringBuilder, String paramString, int paramInt1, int paramInt2)
-  {
-    paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
-    if (paramString.getStatus() != 1) {
-      paramString.startDownload();
-    }
-    int i = xsm.a(BaseApplicationImpl.getContext(), 13.0F);
-    paramString.setBounds(0, 0, i, i);
-    paramSpannableStringBuilder.setSpan(new xww(paramString), paramInt1, paramInt2, 33);
-  }
-  
-  public static SpannableStringBuilder b(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, wiz paramwiz)
-  {
-    if (paramCommentEntry.commentType == 1) {
-      return a(paramCommentEntry);
-    }
-    if (paramCommentEntry.commentType == 2) {
-      return b(paramCommentEntry);
-    }
-    if (paramCommentEntry.commentType == 5) {
-      return c(paramCommentEntry);
-    }
-    if (paramCommentEntry.commentType == 4) {
-      return a(paramContext, paramCommentLikeFeedItem, paramCommentEntry, paramwiz, false);
-    }
-    return b(paramCommentLikeFeedItem, paramCommentEntry, paramwiz);
-  }
-  
-  private static SpannableStringBuilder b(@NonNull CommentEntry paramCommentEntry)
-  {
-    String str = alud.a(2131714638);
-    int i = Integer.parseInt(paramCommentEntry.content);
-    paramCommentEntry = new SpannableStringBuilder(str + ": " + "A");
-    int j = str.length();
-    b(paramCommentEntry, 0, j, -4473925);
-    j += ": ".length();
-    int k = "A".length() + j;
-    switch (i)
+    label259:
+    for (String str = "1";; str = "0")
     {
-    default: 
-      return paramCommentEntry;
-    case 1: 
-      a(paramCommentEntry, j, k, 2130844194, 37, 16);
-      return paramCommentEntry;
-    case 2: 
-      a(paramCommentEntry, j, k, 2130844196, 37, 16);
-      return paramCommentEntry;
-    case 3: 
-      a(paramCommentEntry, j, k, 2130844195, 37, 16);
-      return paramCommentEntry;
-    case 4: 
-      a(paramCommentEntry, j, k, 2130844193, 37, 16);
-      return paramCommentEntry;
+      yqu.a("StoryMergeVideoSuc", bool, 0L, new String[] { str });
+      if (!paramwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {
+        break label266;
+      }
+      yqu.a("StoryMergeVideoError", true, 0L, new String[] { String.valueOf(paramwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode) });
+      return;
+      str = "1";
+      break;
+      label253:
+      i = 0;
+      break label96;
     }
-    a(paramCommentEntry, j, k, 2130844192, 37, 16);
-    return paramCommentEntry;
+    label266:
+    int i = paramPublishVideoEntry.getIntExtra("composite_key_capturemode", 0);
+    int j = paramPublishVideoEntry.getIntExtra("composite_key_entrance", 0);
+    int k;
+    long l1;
+    if (paramPublishVideoEntry.businessId == 1)
+    {
+      bool = paramPublishVideoEntry.isPicture;
+      k = (int)paramLong;
+      str = yqu.b(i);
+      l1 = paramPublishVideoEntry.videoDuration;
+      if (!bool) {
+        break label612;
+      }
+    }
+    label612:
+    for (paramwjb = "2";; paramwjb = "0")
+    {
+      yqu.a("time_composite", 10002, k, new String[] { str, String.valueOf(l1), paramwjb, String.valueOf(j) });
+      if ((bosd.c) && (!paramPublishVideoEntry.isPicture) && (bosd.g.a()))
+      {
+        l1 = bosd.g.a[0];
+        long l2 = bosd.g.a[1];
+        long l3 = bosd.g.a[2];
+        long l4 = bosd.g.a[3];
+        long l5 = bosd.g.a[4];
+        if ((yqu.a(paramLong, 0L, 120000L)) && (yqu.a(l1, 0L, 120000L)) && (yqu.a(l2, 0L, 120000L)) && (yqu.a(l3, 0L, 10000L)) && (yqu.a(l4, 0L, 120000L)) && (yqu.a(l5, 0L, 120000L))) {
+          yqu.a("MergeVideoCost", true, paramLong, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(l3), String.valueOf(l4), String.valueOf(l5) });
+        }
+        bosd.g.c();
+      }
+      l1 = paramPublishVideoEntry.getLongExtra("composite_key_merge_thumb_cost", -1L);
+      if ((!bosd.c) || (l1 <= 0L)) {
+        break;
+      }
+      bosd.h.b();
+      bosd.h.a(0, l1);
+      bosd.h.a(1, paramLong);
+      return;
+    }
   }
   
-  private static SpannableStringBuilder b(CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, wiz paramwiz)
+  protected int a(PublishVideoEntry paramPublishVideoEntry)
   {
-    String str1 = null;
-    Object localObject1 = (uwm)uwa.a(2);
-    Object localObject2;
-    String str2;
-    if (paramCommentEntry.isReply())
+    if (!paramPublishVideoEntry.isLocalPublish)
     {
-      localObject2 = ((uwm)localObject1).c(paramCommentEntry.replierUnionId);
-      localObject1 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject2);
-      str2 = a(paramCommentEntry.replierRole, (QQUserUIItem)localObject2);
-      paramCommentLikeFeedItem = (CommentLikeFeedItem)localObject2;
-      localObject2 = str2;
+      if (!paramPublishVideoEntry.isPicture) {
+        return 1;
+      }
+      return 2;
     }
+    if (!paramPublishVideoEntry.isPicture) {
+      return 3;
+    }
+    return 4;
+  }
+  
+  /* Error */
+  public wja a(String paramString)
+  {
+    // Byte code:
+    //   0: invokestatic 125	android/os/SystemClock:elapsedRealtime	()J
+    //   3: lstore_3
+    //   4: aload_0
+    //   5: getfield 37	wix:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   8: astore 6
+    //   10: aload 6
+    //   12: monitorenter
+    //   13: aload_0
+    //   14: getfield 32	wix:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   17: aload_1
+    //   18: invokevirtual 298	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   21: checkcast 153	wja
+    //   24: astore 7
+    //   26: aload 6
+    //   28: monitorexit
+    //   29: aload 7
+    //   31: ifnull +44 -> 75
+    //   34: aload 7
+    //   36: getfield 299	wja:b	Ljava/lang/String;
+    //   39: invokestatic 303	zkr:b	(Ljava/lang/String;)Z
+    //   42: ifeq +20 -> 62
+    //   45: aload_0
+    //   46: aload_1
+    //   47: lload_3
+    //   48: aload 7
+    //   50: invokespecial 305	wix:a	(Ljava/lang/String;JLwja;)V
+    //   53: aload 7
+    //   55: areturn
+    //   56: astore_1
+    //   57: aload 6
+    //   59: monitorexit
+    //   60: aload_1
+    //   61: athrow
+    //   62: aload_0
+    //   63: getfield 32	wix:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   66: aload 7
+    //   68: getfield 307	wja:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   71: invokevirtual 310	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   74: pop
+    //   75: aload_0
+    //   76: aload_1
+    //   77: invokevirtual 313	wix:a	(Ljava/lang/String;)V
+    //   80: iconst_0
+    //   81: istore_2
+    //   82: aload_0
+    //   83: getfield 39	wix:b	Ljava/lang/Object;
+    //   86: astore 6
+    //   88: aload 6
+    //   90: monitorenter
+    //   91: ldc 74
+    //   93: ldc_w 315
+    //   96: iconst_1
+    //   97: anewarray 34	java/lang/Object
+    //   100: dup
+    //   101: iconst_0
+    //   102: aload_1
+    //   103: aastore
+    //   104: invokestatic 318	yqp:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   107: aload_0
+    //   108: getfield 39	wix:b	Ljava/lang/Object;
+    //   111: ldc2_w 267
+    //   114: invokevirtual 322	java/lang/Object:wait	(J)V
+    //   117: ldc 74
+    //   119: ldc_w 324
+    //   122: iconst_1
+    //   123: anewarray 34	java/lang/Object
+    //   126: dup
+    //   127: iconst_0
+    //   128: aload_1
+    //   129: aastore
+    //   130: invokestatic 318	yqp:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   133: aload 6
+    //   135: monitorexit
+    //   136: aload_0
+    //   137: getfield 37	wix:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   140: astore 6
+    //   142: aload 6
+    //   144: monitorenter
+    //   145: aload_0
+    //   146: getfield 27	wix:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   149: aload_1
+    //   150: invokevirtual 328	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
+    //   153: istore 5
+    //   155: aload_0
+    //   156: getfield 32	wix:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   159: aload_1
+    //   160: invokevirtual 298	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   163: checkcast 153	wja
+    //   166: astore 7
+    //   168: aload 6
+    //   170: monitorexit
+    //   171: aload 7
+    //   173: ifnull +58 -> 231
+    //   176: ldc 74
+    //   178: ldc_w 330
+    //   181: iconst_1
+    //   182: anewarray 34	java/lang/Object
+    //   185: dup
+    //   186: iconst_0
+    //   187: aload 7
+    //   189: aastore
+    //   190: invokestatic 318	yqp:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   193: aload_0
+    //   194: aload_1
+    //   195: lload_3
+    //   196: aload 7
+    //   198: invokespecial 305	wix:a	(Ljava/lang/String;JLwja;)V
+    //   201: aload 7
+    //   203: areturn
+    //   204: astore 7
+    //   206: ldc 74
+    //   208: ldc_w 332
+    //   211: aload 7
+    //   213: invokestatic 335	yqp:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   216: goto -83 -> 133
+    //   219: astore_1
+    //   220: aload 6
+    //   222: monitorexit
+    //   223: aload_1
+    //   224: athrow
+    //   225: astore_1
+    //   226: aload 6
+    //   228: monitorexit
+    //   229: aload_1
+    //   230: athrow
+    //   231: iload 5
+    //   233: ifne +58 -> 291
+    //   236: new 153	wja
+    //   239: dup
+    //   240: aload_0
+    //   241: invokespecial 338	wja:<init>	(Lwix;)V
+    //   244: astore 6
+    //   246: aload 6
+    //   248: new 158	com/tencent/biz/qqstory/base/ErrorMessage
+    //   251: dup
+    //   252: ldc_w 339
+    //   255: ldc_w 341
+    //   258: invokespecial 344	com/tencent/biz/qqstory/base/ErrorMessage:<init>	(ILjava/lang/String;)V
+    //   261: putfield 156	wja:jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage	Lcom/tencent/biz/qqstory/base/ErrorMessage;
+    //   264: ldc 74
+    //   266: ldc_w 346
+    //   269: iconst_1
+    //   270: anewarray 34	java/lang/Object
+    //   273: dup
+    //   274: iconst_0
+    //   275: aload_1
+    //   276: aastore
+    //   277: invokestatic 348	yqp:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   280: aload_0
+    //   281: aload_1
+    //   282: lload_3
+    //   283: aload 6
+    //   285: invokespecial 305	wix:a	(Ljava/lang/String;JLwja;)V
+    //   288: aload 6
+    //   290: areturn
+    //   291: iload_2
+    //   292: bipush 40
+    //   294: if_icmple +93 -> 387
+    //   297: new 153	wja
+    //   300: dup
+    //   301: aload_0
+    //   302: invokespecial 338	wja:<init>	(Lwix;)V
+    //   305: astore 7
+    //   307: aload 7
+    //   309: new 158	com/tencent/biz/qqstory/base/ErrorMessage
+    //   312: dup
+    //   313: ldc_w 349
+    //   316: ldc_w 351
+    //   319: invokespecial 344	com/tencent/biz/qqstory/base/ErrorMessage:<init>	(ILjava/lang/String;)V
+    //   322: putfield 156	wja:jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage	Lcom/tencent/biz/qqstory/base/ErrorMessage;
+    //   325: ldc 74
+    //   327: ldc_w 353
+    //   330: iconst_1
+    //   331: anewarray 34	java/lang/Object
+    //   334: dup
+    //   335: iconst_0
+    //   336: aload_1
+    //   337: aastore
+    //   338: invokestatic 348	yqp:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   341: aload_0
+    //   342: aload_1
+    //   343: lload_3
+    //   344: aload 7
+    //   346: invokespecial 305	wix:a	(Ljava/lang/String;JLwja;)V
+    //   349: aload_0
+    //   350: getfield 37	wix:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   353: astore 6
+    //   355: aload 6
+    //   357: monitorenter
+    //   358: aload_0
+    //   359: getfield 27	wix:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   362: aload_1
+    //   363: invokevirtual 355	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
+    //   366: pop
+    //   367: aload_0
+    //   368: getfield 46	wix:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   371: iconst_0
+    //   372: invokevirtual 358	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   375: aload 6
+    //   377: monitorexit
+    //   378: aload 7
+    //   380: areturn
+    //   381: astore_1
+    //   382: aload 6
+    //   384: monitorexit
+    //   385: aload_1
+    //   386: athrow
+    //   387: iload_2
+    //   388: iconst_1
+    //   389: iadd
+    //   390: istore_2
+    //   391: goto -309 -> 82
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	394	0	this	wix
+    //   0	394	1	paramString	String
+    //   81	310	2	i	int
+    //   3	341	3	l	long
+    //   153	79	5	bool	boolean
+    //   24	178	7	localwja1	wja
+    //   204	8	7	localInterruptedException	java.lang.InterruptedException
+    //   305	74	7	localwja2	wja
+    // Exception table:
+    //   from	to	target	type
+    //   13	29	56	finally
+    //   57	60	56	finally
+    //   91	133	204	java/lang/InterruptedException
+    //   91	133	219	finally
+    //   133	136	219	finally
+    //   206	216	219	finally
+    //   220	223	219	finally
+    //   145	171	225	finally
+    //   226	229	225	finally
+    //   358	378	381	finally
+    //   382	385	381	finally
+  }
+  
+  protected void a(int paramInt, String paramString, PublishVideoEntry paramPublishVideoEntry)
+  {
+    try
+    {
+      int i = (int)bgmg.a(paramString);
+      if (i <= 0) {
+        return;
+      }
+      Object localObject = new MediaMetadataRetriever();
+      ((MediaMetadataRetriever)localObject).setDataSource(paramString);
+      paramString = ((MediaMetadataRetriever)localObject).extractMetadata(9);
+      String str1 = ((MediaMetadataRetriever)localObject).extractMetadata(20);
+      String str2 = ((MediaMetadataRetriever)localObject).extractMetadata(18);
+      String str3 = ((MediaMetadataRetriever)localObject).extractMetadata(19);
+      ((MediaMetadataRetriever)localObject).release();
+      localObject = str2 + "*" + str3;
+      yqu.b("publish_story", "video_info", paramInt, i, new String[] { localObject, paramString, String.valueOf(paramPublishVideoEntry.recordFrames), str1 });
+      yqp.b("Q.qqstory.publish.upload.VideoCompositeManager", "video info size:%d, duration:%s, framesCount:%d, bitRate:%s, picSize:%s", new Object[] { Integer.valueOf(i), paramString, Integer.valueOf(paramPublishVideoEntry.recordFrames), str1, localObject });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      yqp.b("Q.qqstory.publish.upload.VideoCompositeManager", "exception ", paramString);
+    }
+  }
+  
+  public void a(PublishVideoEntry paramPublishVideoEntry, String arg2, int paramInt, String arg4, String paramString3, long paramLong)
+  {
+    wjb localwjb = new wjb(this);
+    localwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(paramInt, ???);
+    localwjb.jdField_a_of_type_JavaLangString = ???;
+    localwjb.b = paramString3;
+    if ((paramInt == 0) && ((TextUtils.isEmpty(paramString3)) || (!zkr.b(paramString3)) || (bgmg.a(paramString3) < 100L))) {
+      localwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(940007, String.format("vid:%s file:%s", new Object[] { ???, paramString3 }));
+    }
+    long l1;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.remove(???)) {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(???, localwjb);
+      l1 = 0L;
+      ??? = "";
+    }
+    label1143:
     for (;;)
     {
-      str2 = a(paramCommentLikeFeedItem);
-      int i;
-      String str4;
-      String str3;
-      if ((paramCommentEntry.isReply()) && (!TextUtils.isEmpty(str2)))
+      try
       {
-        i = 1;
-        str4 = paramCommentEntry.content;
-        paramCommentLikeFeedItem = str1;
-        if (banh.a(paramCommentEntry.content)) {
-          paramCommentLikeFeedItem = azah.b(paramCommentEntry.content);
+        if (!localwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {
+          continue;
         }
-        str3 = alud.a(2131714630);
-        if (i == 0) {
-          break label153;
+        if (!new File(paramPublishVideoEntry.mLocalRawVideoDir).isDirectory()) {
+          continue;
         }
-        str1 = "V";
-      }
-      for (;;)
-      {
-        if (TextUtils.isEmpty((CharSequence)localObject1))
+        localObject1 = bgmg.a(paramPublishVideoEntry.mLocalRawVideoDir).iterator();
+        if (((Iterator)localObject1).hasNext())
         {
-          if (paramCommentLikeFeedItem != null)
-          {
-            paramCommentEntry = new bamz(paramCommentLikeFeedItem, 3, 16);
-            return paramCommentEntry;
-            i = 0;
-            break;
-            label153:
-            str1 = "";
+          localObject2 = (String)((Iterator)localObject1).next();
+          l1 += bgmg.a((String)localObject2);
+          ??? = ??? + (String)localObject2;
+          continue;
+          paramPublishVideoEntry = finally;
+          throw paramPublishVideoEntry;
+        }
+        if (!TextUtils.isEmpty(???)) {
+          break label1143;
+        }
+        ??? = paramPublishVideoEntry.mLocalRawVideoDir;
+      }
+      catch (Exception ???)
+      {
+        synchronized (this.b)
+        {
+          Object localObject1;
+          Object localObject2;
+          long l2;
+          boolean bool2;
+          int i;
+          this.b.notifyAll();
+          yqp.d("Q.qqstory.publish.upload.VideoCompositeManager", "end composite result:%s", new Object[] { localwjb });
+          c();
+          a(localwjb, paramPublishVideoEntry, paramLong);
+          return;
+          l1 = bgmg.a(paramPublishVideoEntry.mLocalRawVideoDir);
+          ??? = "" + paramPublishVideoEntry.mLocalRawVideoDir;
+          continue;
+          ??? = ???;
+          yqp.c("Q.qqstory.publish.upload.VideoCompositeManager", "", ???);
+          continue;
+          yqp.d("Q.qqstory.publish.upload.VideoCompositeManager", "groupId=%s not all success", new Object[] { paramPublishVideoEntry.multiFragmentGroupId });
+          continue;
+          paramInt = 0;
+          continue;
+          boolean bool1 = false;
+          continue;
+          bool1 = false;
+          continue;
+          yqp.d("Q.qqstory.publish.upload.VideoCompositeManager", "failed to composite. let's save original video to album.");
+          if ((paramPublishVideoEntry.hasFragments) && (!this.jdField_a_of_type_Wjc.b(paramPublishVideoEntry.multiFragmentGroupId))) {
             continue;
           }
-          return new SpannableStringBuilder(str4);
+          ??? = paramPublishVideoEntry.videoUploadTempDir + "mc_audio.mp4";
+          paramString3 = AudioEncoder.a(null, null, 0);
+          paramString3.b = ???;
+          paramString3.jdField_a_of_type_JavaLangString = paramPublishVideoEntry.mAudioFilePath;
+          paramInt = AudioEncoder.a(paramString3);
+          if (paramInt != 0) {
+            continue;
+          }
+          ??? = xfe.a(???, false);
+          paramInt = bclc.a(paramPublishVideoEntry.mLocalRawVideoDir, ???, ???, 0);
+          if (paramInt != 0) {
+            continue;
+          }
+          yqp.b("Q.qqstory.publish.upload.VideoCompositeManager", "save original video. HwVideoMerge->merge: success.");
+          zkr.b(BaseApplication.getContext(), new File(???));
+          continue;
+          yqp.e("Q.qqstory.publish.upload.VideoCompositeManager", "save original video. HwVideoMerge->merge: errcode=%s", new Object[] { Integer.valueOf(paramInt) });
+          continue;
+          yqp.e("Q.qqstory.publish.upload.VideoCompositeManager", "save original video. AudioEncoder.encodeSafely: errcode=%s" + paramInt);
+          continue;
+          this.jdField_a_of_type_Wjc.a();
         }
       }
-      if (paramCommentLikeFeedItem != null) {}
-      for (paramCommentLikeFeedItem = new bamz(str3 + (String)localObject1 + str1 + (String)localObject2 + ": " + paramCommentLikeFeedItem, 3, 14);; paramCommentLikeFeedItem = new SpannableStringBuilder(str3 + (String)localObject1 + str1 + (String)localObject2 + ": " + str4))
+      l2 = zkr.a();
+      localwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg = String.format("errorCode:%d, sdcard free size:%d, vf dir size:%d, vf filename:%s, oMsg:%s", new Object[] { Integer.valueOf(localwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode), Long.valueOf(l2), Long.valueOf(l1), ???, localwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg });
+      if (l1 < 100L) {
+        localwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode = 940018;
+      }
+      yqp.e("Q.qqstory.publish.upload.VideoCompositeManager", localwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
+      if ((localwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramPublishVideoEntry.hasFragments))
       {
-        int j = str3.length();
-        i = ((String)localObject1).length() + j;
-        a(paramCommentLikeFeedItem, j, i);
-        if (uqo.a()) {
-          b(paramCommentLikeFeedItem, j, i, -16777216);
+        wip.a(???, PublishVideoEntry.VIDEO_PROCESS_STATE_COMPOSITE_SUC);
+        l1 = zkr.a();
+        yqp.d("Q.qqstory.publish.upload.VideoCompositeManager", "sdcard free size %d MB", new Object[] { Long.valueOf(l1 / 1024L / 1024L) });
+        if (l1 < 104857600L)
+        {
+          if (!wip.b(paramPublishVideoEntry.multiFragmentGroupId, PublishVideoEntry.VIDEO_PROCESS_STATE_COMPOSITE_SUC)) {
+            continue;
+          }
+          zkr.d(paramPublishVideoEntry.mLocalRawVideoDir);
+          yqp.d("Q.qqstory.publish.upload.VideoCompositeManager", "groupId=%s all success so delete file:%s", new Object[] { paramPublishVideoEntry.multiFragmentGroupId, paramPublishVideoEntry.mLocalRawVideoDir });
         }
-        j = str1.length() + i;
-        if (i != j) {
-          a(paramCommentLikeFeedItem, str2, i, j);
-        }
-        a(paramCommentLikeFeedItem, i - ((String)localObject1).length(), j, paramwiz, paramCommentEntry.replierUnionId, paramCommentEntry.replierRole);
-        i = ((String)localObject2).length() + j;
-        paramCommentEntry = paramCommentLikeFeedItem;
-        if (j == i) {
-          break;
-        }
-        b(paramCommentLikeFeedItem, j, i, -4473925);
-        return paramCommentLikeFeedItem;
       }
-      localObject2 = "";
-      paramCommentLikeFeedItem = null;
-      localObject1 = null;
-    }
-  }
-  
-  private static void b(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramSpannableStringBuilder.setSpan(new ForegroundColorSpan(paramInt3), paramInt1, paramInt2, 33);
-  }
-  
-  private static SpannableStringBuilder c(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, wiz paramwiz)
-  {
-    paramContext = ((uwm)uwa.a(2)).c(paramCommentEntry.authorUnionId);
-    String str1 = a(paramCommentLikeFeedItem, paramContext);
-    String str2 = a(paramCommentEntry.authorRole, paramContext);
-    String str3 = a(paramContext);
-    int i;
-    int j;
-    if (!TextUtils.isEmpty(str3))
-    {
-      i = 1;
-      j = paramCommentEntry.atVideoShootTime;
-      paramContext = null;
-      if (j > 0) {
-        paramContext = new SimpleDateFormat("HH:mm").format(Long.valueOf(j * 1000L));
+      if ((localwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (paramPublishVideoEntry.hasFragments)) {
+        wip.a(???, PublishVideoEntry.VIDEO_PROCESS_STATE_COMPOSITE_FAILED);
       }
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label337;
-      }
-      paramContext = alud.a(2131714631);
-      label100:
-      if (i == 0) {
-        break label370;
-      }
-    }
-    label337:
-    label370:
-    for (paramCommentLikeFeedItem = "V";; paramCommentLikeFeedItem = "")
-    {
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(str1 + paramCommentLikeFeedItem + str2 + ":" + paramContext + "A");
-      j = str1.length();
-      a(localSpannableStringBuilder, 0, j);
-      if (uqo.a()) {
-        b(localSpannableStringBuilder, 0, j, -16777216);
-      }
-      i = j + paramCommentLikeFeedItem.length();
-      if (j != i) {
-        a(localSpannableStringBuilder, str3, j, i);
-      }
-      a(localSpannableStringBuilder, 0, i, paramwiz, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
-      j = i + str2.length();
-      if (i != j) {
-        b(localSpannableStringBuilder, i, j, -4473925);
-      }
-      i = ":".length() + j + paramContext.length();
-      if (j != i) {
-        b(localSpannableStringBuilder, j, i, -16777216);
-      }
-      j = "A".length() + i;
-      if (i != j) {
-        a(localSpannableStringBuilder, i, j, 2130846008, 15, 15, 3);
-      }
-      return localSpannableStringBuilder;
-      i = 0;
-      break;
-      paramContext = " @" + paramContext + alud.a(2131714631);
-      break label100;
-    }
-  }
-  
-  private static SpannableStringBuilder c(@NonNull CommentEntry paramCommentEntry)
-  {
-    int i = paramCommentEntry.atVideoShootTime;
-    paramCommentEntry = null;
-    if (i > 0) {
-      paramCommentEntry = new SimpleDateFormat("HH:mm").format(Long.valueOf(i * 1000L));
-    }
-    if (TextUtils.isEmpty(paramCommentEntry)) {}
-    for (paramCommentEntry = alud.a(2131714635);; paramCommentEntry = "@" + paramCommentEntry + alud.a(2131714633))
-    {
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramCommentEntry + "A");
-      i = paramCommentEntry.length();
-      int j = "A".length() + i;
-      if (i != j) {
-        a(localSpannableStringBuilder, i, j, 2130846008, 15, 15);
-      }
-      return localSpannableStringBuilder;
-    }
-  }
-  
-  private static SpannableStringBuilder c(CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, wiz paramwiz)
-  {
-    Object localObject = ((uwm)uwa.a(2)).c(paramCommentEntry.authorUnionId);
-    String str1 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject);
-    String str2 = a(paramCommentEntry.authorRole, (QQUserUIItem)localObject);
-    String str3 = a((QQUserUIItem)localObject);
-    int i;
-    String str5;
-    String str4;
-    if (!TextUtils.isEmpty(str3))
-    {
-      i = 1;
-      str5 = paramCommentEntry.content;
-      localObject = null;
-      if (banh.a(paramCommentEntry.content)) {
-        localObject = azah.b(paramCommentEntry.content);
-      }
-      str4 = alud.a(2131714634);
-      if (i == 0) {
-        break label272;
-      }
-      paramCommentLikeFeedItem = "V";
-      label95:
-      if (localObject == null) {
-        break label278;
-      }
-    }
-    label272:
-    label278:
-    for (localObject = new bamz(str1 + paramCommentLikeFeedItem + str2 + str4 + ": " + (String)localObject, 3, 16);; localObject = new SpannableStringBuilder(str1 + paramCommentLikeFeedItem + str2 + str4 + ": " + str5))
-    {
-      int j = str1.length();
-      a((SpannableStringBuilder)localObject, 0, j);
-      if (uqo.a()) {
-        b((SpannableStringBuilder)localObject, 0, j, -16777216);
-      }
-      i = paramCommentLikeFeedItem.length() + j;
-      if (j != i) {
-        a((SpannableStringBuilder)localObject, str3, j, i);
-      }
-      a((SpannableStringBuilder)localObject, 0, i, paramwiz, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
-      j = str2.length() + i;
-      if (i != j) {
-        b((SpannableStringBuilder)localObject, i, j, -4473925);
-      }
-      b((SpannableStringBuilder)localObject, j, str4.length() + j, -4473925);
-      return localObject;
-      i = 0;
-      break;
-      paramCommentLikeFeedItem = "";
-      break label95;
-    }
-  }
-  
-  private static SpannableStringBuilder d(CommentLikeFeedItem paramCommentLikeFeedItem, @NonNull CommentEntry paramCommentEntry, wiz paramwiz)
-  {
-    Object localObject = ((uwm)uwa.a(2)).c(paramCommentEntry.authorUnionId);
-    String str1 = a(paramCommentLikeFeedItem, (QQUserUIItem)localObject);
-    String str2 = a(paramCommentEntry.authorRole, (QQUserUIItem)localObject);
-    localObject = a((QQUserUIItem)localObject);
-    int i;
-    label52:
-    String str3;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      i = 1;
-      str3 = alud.a(2131714640);
-      if (i == 0) {
-        break label312;
-      }
-    }
-    SpannableStringBuilder localSpannableStringBuilder;
-    int k;
-    int j;
-    label312:
-    for (paramCommentLikeFeedItem = "V";; paramCommentLikeFeedItem = "")
-    {
-      i = Integer.parseInt(paramCommentEntry.content);
-      localSpannableStringBuilder = new SpannableStringBuilder(str1 + paramCommentLikeFeedItem + str2 + str3 + ": " + "A");
-      k = str1.length();
-      a(localSpannableStringBuilder, 0, k);
-      if (uqo.a()) {
-        b(localSpannableStringBuilder, 0, k, -16777216);
-      }
-      j = k + paramCommentLikeFeedItem.length();
-      if (k != j) {
-        a(localSpannableStringBuilder, (String)localObject, k, j);
-      }
-      a(localSpannableStringBuilder, 0, j, paramwiz, paramCommentEntry.authorUnionId, paramCommentEntry.authorRole);
-      k = str2.length() + j;
-      if (j != k) {
-        b(localSpannableStringBuilder, j, k, -4473925);
-      }
-      j = str3.length() + k;
-      b(localSpannableStringBuilder, k, j, -4473925);
-      j = ": ".length() + j;
-      k = "A".length() + j;
-      switch (i)
+      bool2 = paramPublishVideoEntry.getBooleanExtra("isEdited", false);
+      if ((paramPublishVideoEntry.isLocalPublish) && (bool2))
       {
-      default: 
-        return localSpannableStringBuilder;
-        i = 0;
-        break label52;
+        paramInt = 1;
+        if (((paramPublishVideoEntry.businessId != 1) && (paramPublishVideoEntry.businessId != 14)) || (paramPublishVideoEntry.isPicture)) {
+          continue;
+        }
+        bool1 = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.publish.upload.VideoCompositeManager", 2, "save from: story " + bool2 + " " + paramPublishVideoEntry.isLocalPublish + " " + bool1);
+        }
+        if ((bool1) || (paramInt != 0))
+        {
+          if (!localwjb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+            continue;
+          }
+          yqp.b("Q.qqstory.publish.upload.VideoCompositeManager", "composite successfully. add save to album task.");
+          ??? = this.jdField_a_of_type_Wjc.a(???);
+          this.jdField_a_of_type_Wjc.a(paramString3, ???);
+          l1 = paramPublishVideoEntry.getLongExtra("groupUin", -1L);
+          paramString3 = paramPublishVideoEntry.getStringExtra("pl", "");
+          localObject1 = paramPublishVideoEntry.getStringExtra("i_l", "");
+          yqp.a("Q.qqstory.publish.upload.VideoCompositeManager", "composite successfully. add save to album task. pl: %s", String.valueOf(paramString3));
+          localObject2 = this.jdField_a_of_type_Wjc;
+          paramInt = paramPublishVideoEntry.videoWidth;
+          i = paramPublishVideoEntry.videoHeight;
+          if (l1 <= 0L) {
+            continue;
+          }
+          bool1 = true;
+          ((wjc)localObject2).a(???, ???, null, paramInt, i, bool1, wqw.a(paramString3), wqv.a((String)localObject1));
+          if (!paramPublishVideoEntry.hasFragments) {
+            continue;
+          }
+          if (this.jdField_a_of_type_Wjc.a(paramPublishVideoEntry.multiFragmentGroupId)) {
+            this.jdField_a_of_type_Wjc.a();
+          }
+        }
+        wfo.a().dispatch(localwjb);
       }
     }
-    a(localSpannableStringBuilder, j, k, 2130844194, 37, 16, 3);
-    return localSpannableStringBuilder;
-    a(localSpannableStringBuilder, j, k, 2130844196, 37, 16, 3);
-    return localSpannableStringBuilder;
-    a(localSpannableStringBuilder, j, k, 2130844195, 37, 16, 3);
-    return localSpannableStringBuilder;
-    a(localSpannableStringBuilder, j, k, 2130844193, 37, 16, 3);
-    return localSpannableStringBuilder;
-    a(localSpannableStringBuilder, j, k, 2130844192, 37, 16, 3);
-    return localSpannableStringBuilder;
+  }
+  
+  public void a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString))
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        yqp.d("Q.qqstory.publish.upload.VideoCompositeManager", "add composite vid:%s", new Object[] { paramString });
+      }
+      c();
+      return;
+    }
+  }
+  
+  protected void c()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true))
+    {
+      yqp.d("Q.qqstory.publish.upload.VideoCompositeManager", "video composite ing");
+      return;
+    }
+    String str1 = "";
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+        str1 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      }
+      if (TextUtils.isEmpty(str1))
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        yqp.d("Q.qqstory.publish.upload.VideoCompositeManager", "no video to composite");
+        return;
+      }
+    }
+    yqp.d("Q.qqstory.publish.upload.VideoCompositeManager", "will composite vid:%s", new Object[] { str2 });
+    long l = System.currentTimeMillis();
+    if (bosd.c) {
+      bosd.g.b();
+    }
+    Bosses.get().postJob(new wiy(this, "Q.qqstory.publish.upload.VideoCompositeManager", str2, l));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wix
  * JD-Core Version:    0.7.0.1
  */

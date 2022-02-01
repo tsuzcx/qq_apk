@@ -1,19 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class acpi
-  implements View.OnClickListener
+class acpi
+  extends BroadcastReceiver
 {
-  public acpi(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
+  private acpi(acpg paramacpg) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    int i = paramIntent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_TYPE", -1);
+    if (i == 3) {}
+    for (boolean bool = true;; bool = false)
+    {
+      acqy.a("VolumeBroadcastReceiver", "VolumeBroadcastReceiver action type = " + paramIntent.getAction() + ", isStreamMusic = " + bool + ", streamType = " + i);
+      if (("android.media.VOLUME_CHANGED_ACTION".equals(paramIntent.getAction())) && (bool) && (acpg.a(this.a) != null)) {
+        acpg.a(this.a).a(new Object[0]);
+      }
+      return;
     }
-    ChatSettingForTroop.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
   }
 }
 

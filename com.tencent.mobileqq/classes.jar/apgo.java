@@ -1,6 +1,16 @@
-public abstract interface apgo
+import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
+
+public class apgo
+  implements apgp
 {
-  public abstract void a(int paramInt);
+  public apgo(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
+  
+  public void a(int paramInt)
+  {
+    if (ScanEntryProviderContainerView.a(this.a) != null) {
+      ScanEntryProviderContainerView.a(this.a).c(paramInt);
+    }
+  }
 }
 
 

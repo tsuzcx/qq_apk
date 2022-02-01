@@ -1,27 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bmfv
-  extends AnimatorListenerAdapter
+  implements View.OnTouchListener
 {
-  public bmfv(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
+  public bmfv(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner mProgressView 50ms delay=90ms end");
+    this.a.a();
+    if ((!this.a.c) && (this.a.a != null))
+    {
+      this.a.a.setHint("");
+      this.a.c = true;
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a.setStatus(false);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner mProgressView begin");
-    }
+    return false;
   }
 }
 

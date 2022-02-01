@@ -1,95 +1,53 @@
-public class bdag
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+
+class bdag
+  implements View.OnClickListener
 {
-  public static bdag a;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[256];
-  private static char[] jdField_a_of_type_ArrayOfChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+  bdag(bdaf parambdaf) {}
   
-  protected bdag()
+  public void onClick(View paramView)
   {
-    a();
-  }
-  
-  public static bdag a()
-  {
-    if (jdField_a_of_type_Bdag == null) {}
-    try
+    if (TextUtils.isEmpty(this.a.ae))
     {
-      jdField_a_of_type_Bdag = new bdag();
-      return jdField_a_of_type_Bdag;
-    }
-    finally {}
-  }
-  
-  public String a(String paramString)
-  {
-    return a(paramString.getBytes()).toString();
-  }
-  
-  public StringBuffer a(byte[] paramArrayOfByte)
-  {
-    int k = 0;
-    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length * 2);
-    int i = 0;
-    int j = 0;
-    char c;
-    while (k < paramArrayOfByte.length)
-    {
-      i = i << 8 | paramArrayOfByte[k] & 0xFF;
-      j += 8;
-      if (j > 5)
-      {
-        Object localObject = jdField_a_of_type_ArrayOfChar;
-        j -= 6;
-        c = localObject[(i >> j)];
-        if (c == 'i') {
-          localObject = "ia";
-        }
-        for (;;)
-        {
-          localStringBuffer.append(localObject);
-          i &= (1 << j) - 1;
-          break;
-          if (c == '+') {
-            localObject = "ib";
-          } else if (c == '/') {
-            localObject = "ic";
-          } else {
-            localObject = Character.valueOf(c);
-          }
-        }
-      }
-      k += 1;
-    }
-    if (j > 0)
-    {
-      c = jdField_a_of_type_ArrayOfChar[(i << 6 - j)];
-      if (c != 'i') {
-        break label185;
-      }
-      paramArrayOfByte = "ia";
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
     for (;;)
     {
-      localStringBuffer.append(paramArrayOfByte);
-      return localStringBuffer;
-      label185:
-      if (c == '+') {
-        paramArrayOfByte = "ib";
-      } else if (c == '/') {
-        paramArrayOfByte = "ic";
-      } else {
-        paramArrayOfByte = Character.valueOf(c);
+      try
+      {
+        String str = bdwx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.ad);
+        if (!TextUtils.isEmpty(str)) {
+          break label133;
+        }
+        this.a.a();
+        this.a.a(this.a.ae, paramView);
+        bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.ae, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.ac, this.a.ad);
       }
-    }
-  }
-  
-  protected void a()
-  {
-    int i = 0;
-    while (i < jdField_a_of_type_ArrayOfChar.length)
-    {
-      jdField_a_of_type_ArrayOfByte[jdField_a_of_type_ArrayOfChar[i]] = ((byte)i);
-      i += 1;
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      break;
+      label133:
+      if (new File(localException).exists())
+      {
+        if (this.a.jdField_a_of_type_Boolean) {
+          this.a.d();
+        } else {
+          this.a.c();
+        }
+      }
+      else
+      {
+        this.a.a();
+        this.a.a(this.a.ae, paramView);
+      }
     }
   }
 }

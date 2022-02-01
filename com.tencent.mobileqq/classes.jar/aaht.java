@@ -1,24 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.gamecenter.common.util.ReportInfoManager;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
 
-public class aaht
-  extends Handler
+class aaht
+  implements zxa<CertifiedAccountRead.StGetFeedDetailRsp>
 {
-  public aaht(ReportInfoManager paramReportInfoManager, long paramLong) {}
+  aaht(aahs paramaahs, zzp paramzzp) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage == null) {
-      return;
+    if (this.jdField_a_of_type_Zzp != null) {
+      this.jdField_a_of_type_Zzp.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetFeedDetailRsp });
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    aaia.a("post report", this.jdField_a_of_type_Long, (short)1);
   }
 }
 

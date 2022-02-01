@@ -1,12 +1,12 @@
-import android.view.MotionEvent;
-
 public abstract interface mpd
 {
-  public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mpd
  * JD-Core Version:    0.7.0.1
  */

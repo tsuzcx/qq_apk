@@ -1,33 +1,16 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.graphics.Bitmap;
 
 public class aohd
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (byte[] arrayOfByte = bdpd.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
-    {
-      new Bundle().putByteArray("data", arrayOfByte);
-      amdu localamdu = (amdu)((QQAppInterface)getAppRuntime()).a(20);
-      if (localamdu != null) {
-        localamdu.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      return;
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bdpd.a(arrayOfByte));
-  }
+  public int a;
+  public long a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

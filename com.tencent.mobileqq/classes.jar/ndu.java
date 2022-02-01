@@ -1,28 +1,20 @@
-import android.view.View;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class ndu
-  extends bamx
+class ndu
+  extends BroadcastReceiver
 {
-  public ndu(ndt paramndt, String paramString)
-  {
-    super(paramndt, paramString);
-  }
+  ndu(ndt paramndt) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (ndv.a.matcher(this.jdField_a_of_type_JavaLangString).find())
-    {
-      ndt.a(paramView, this.jdField_a_of_type_Ndt.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ndt.b, this.jdField_a_of_type_Ndt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
-    }
-    super.onClick(paramView);
+    ndt.a(this.a, paramContext, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ndu
  * JD-Core Version:    0.7.0.1
  */

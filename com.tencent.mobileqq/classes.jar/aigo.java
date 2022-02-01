@@ -1,14 +1,30 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
-class aigo
-  implements Comparator<aihj>
+public class aigo
+  implements Animation.AnimationListener
 {
-  aigo(aign paramaign) {}
+  public aigo(TroopChatPie paramTroopChatPie) {}
   
-  public int a(aihj paramaihj1, aihj paramaihj2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return (int)(paramaihj2.a.time - paramaihj1.a.time);
+    this.a.d.setBackgroundResource(2130843589);
+    this.a.a.setBackgroundResource(2130843595);
+    this.a.p.setVisibility(8);
+    this.a.q.setVisibility(8);
+    this.a.n.setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.p.setVisibility(0);
+    this.a.q.setVisibility(0);
   }
 }
 

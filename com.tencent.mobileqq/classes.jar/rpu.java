@@ -1,15 +1,30 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract interface rpu
+class rpu
+  implements rjl
 {
-  public abstract void a(View paramView, int paramInt, ArticleInfo paramArticleInfo, ArrayList<DislikeInfo> paramArrayList);
+  rpu(rps paramrps, List paramList) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        UgcVideo localUgcVideo = (UgcVideo)localIterator.next();
+        this.jdField_a_of_type_Rps.a(localUgcVideo, true);
+      }
+    }
+    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "showMobileNetworkDialog, isContinue=" + paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rpu
  * JD-Core Version:    0.7.0.1
  */

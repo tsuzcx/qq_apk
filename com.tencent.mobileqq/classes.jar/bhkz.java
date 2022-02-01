@@ -1,14 +1,33 @@
-import android.os.Bundle;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import cooperation.liveroom.LiveRoomGiftCallback;
 
-public abstract interface bhkz
+class bhkz
+  implements MediaPlayer.OnCompletionListener
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  bhkz(bhky parambhky) {}
   
-  public abstract void a(Bundle paramBundle);
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    if (bhky.a(this.a)) {
+      this.a.a.start();
+    }
+    for (;;)
+    {
+      if (bhky.a(this.a) != null) {
+        bhky.a(this.a).onCall(7, "");
+      }
+      return;
+      bhky.a(this.a, false);
+      if (bhky.a(this.a) != null) {
+        bhky.a(this.a).onCompletion(this.a.a);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhkz
  * JD-Core Version:    0.7.0.1
  */

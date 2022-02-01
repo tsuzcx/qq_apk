@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.out.activity;
 
 import android.view.View;
-import bhuw;
+import bkij;
 import com.tencent.widget.AdapterView;
 
 class PhotoPreviewActivity$2
-  implements bhuw
+  implements bkij
 {
   PhotoPreviewActivity$2(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
@@ -21,7 +21,7 @@ class PhotoPreviewActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PhotoPreviewActivity.2
  * JD-Core Version:    0.7.0.1
  */

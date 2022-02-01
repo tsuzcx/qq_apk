@@ -1,45 +1,29 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public class uij
+  implements uih
 {
-  public List<String> a;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
-  
-  public uij(int paramInt)
+  public void a()
   {
-    this.jdField_e_of_type_Int = paramInt;
+    upe.e("OnJumpListener", "[OnJumpListener.java][onJumpWSClient]");
   }
   
-  public uij a(JSONObject paramJSONObject, int paramInt)
+  public void b()
   {
-    this.d = paramJSONObject.optString("transId", "");
-    this.g = paramJSONObject.optInt("min_limit", paramInt);
-    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("wording");
-    this.f = paramJSONObject.optInt("text_id", -1);
-    paramJSONObject = paramJSONObject.optJSONArray("transList");
-    if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
-    {
-      this.a = new ArrayList();
-      paramInt = 0;
-      while (paramInt < paramJSONObject.length())
-      {
-        this.a.add(paramJSONObject.getString(paramInt));
-        paramInt += 1;
-      }
-    }
-    return this;
+    upe.e("OnJumpListener", "[OnJumpListener.java][onJumpMiniApp]");
+  }
+  
+  public void c()
+  {
+    upe.e("OnJumpListener", "[OnJumpListener.java][onJumpWebH5]");
+  }
+  
+  public void d()
+  {
+    upe.e("OnJumpListener", "[OnJumpListener.java][onDownloadWSApp]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uij
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import azos;
-import bety;
+import bcqt;
+import biau;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager;
@@ -17,6 +17,7 @@ import com.tencent.mobileqq.microapp.apkg.g;
 import com.tencent.mobileqq.microapp.ext.ManagerProxy;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import cooperation.qwallet.plugin.FakeUrl;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -30,7 +31,7 @@ public class MiniAppBridgeActivity
   public static final String TAG = "MiniAppBridgeActivity";
   private MiniAppConfig fromAppConfig;
   private LaunchParam launchParam;
-  private bety mDialog;
+  private biau mDialog;
   private FakeUrl mFakeUrl;
   
   private void handleAbnormal(String paramString)
@@ -66,7 +67,9 @@ public class MiniAppBridgeActivity
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return new View(getActivity());
+    paramLayoutInflater = new View(getActivity());
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
@@ -99,7 +102,7 @@ public class MiniAppBridgeActivity
       }
       if (!isFromDebugConfig(this.launchParam))
       {
-        long l = azos.a("com.tencent.mobileqq:miniapp");
+        long l = bcqt.a("com.tencent.mobileqq:miniapp");
         localWeakReference = new WeakReference(getActivity());
         localMiniAppConfig = localApkgConfigManager.getConfig(this.launchParam);
         if ((localMiniAppConfig == null) || (localMiniAppConfig.config == null) || (!new File(g.a(localMiniAppConfig.config)).exists()))
@@ -143,7 +146,7 @@ public class MiniAppBridgeActivity
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.mDialog = new bety(getActivity());
+    this.mDialog = new biau(getActivity());
     this.mDialog.a("正在加载中...");
     this.mDialog.setOnDismissListener(new MiniAppBridgeActivity.1(this));
     this.mDialog.show();
@@ -167,7 +170,7 @@ public class MiniAppBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

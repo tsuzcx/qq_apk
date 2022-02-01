@@ -1,7 +1,15 @@
+import com.tencent.pb.profilecard.SummaryCardBusiEntry.comm;
+
 public class bbyj
 {
-  public static final String a = alof.aX + "troop/homework/";
-  public static final String b = a + "upload/";
+  public SummaryCardBusiEntry.comm a;
+  public byte[] a;
+  
+  public bbyj(SummaryCardBusiEntry.comm paramcomm, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ComTencentPbProfilecardSummaryCardBusiEntry$comm = paramcomm;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
 }
 
 

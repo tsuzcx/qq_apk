@@ -1,44 +1,20 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.view.View;
+import com.tencent.avgame.gameroom.stage.StageView;
 
-class nbr
-  extends bead
+public class nbr
+  implements nby
 {
-  nbr(nbq paramnbq) {}
+  public nbr(StageView paramStageView) {}
   
-  public void onDone(beae parambeae)
+  public void onClick(View paramView)
   {
-    if (parambeae.a == 0) {
-      parambeae = parambeae.a().getString("file_path");
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        File localFile = new File(parambeae);
-        String str = bdhb.b(localFile);
-        if (QLog.isColorLevel()) {
-          QLog.d("CommonConfigBase", 2, "onDone() content =  " + str + ", filePath = " + parambeae);
-        }
-        localFile.delete();
-        this.a.b(str);
-        this.a.a(str);
-        return;
-      }
-      catch (IOException parambeae)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("CommonConfigBase", 2, QLog.getStackTraceString(parambeae));
-        return;
-      }
-    }
-    QLog.d("CommonConfigBase", 2, "onError(), errorCode = " + parambeae.a);
+    this.a.a().a();
+    bcst.b(null, "dc00898", "", "", "0X800B04A", "0X800B04A", 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nbr
  * JD-Core Version:    0.7.0.1
  */

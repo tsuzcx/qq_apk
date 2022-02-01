@@ -1,42 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x87a.RspBody;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Comparator;
 
-final class asxh
-  extends avvc
+public class asxh
+  implements Comparator<FileManagerEntity>
 {
-  asxh(Activity paramActivity, String paramString, Runnable paramRunnable) {}
+  public asxh(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
   {
-    QLog.e("FaceLoginHelper", 1, new Object[] { "cmd : ", paramString1, " code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
-    if (paramInt == 89) {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131699376), 0).a();
+    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
+      return 1;
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
-      return;
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, 0).a();
+    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
+      return -1;
     }
-  }
-  
-  public void a(oidb_0x87a.RspBody paramRspBody)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, AuthDevVerifyCodeActivity.class);
-    localIntent.putExtra("k_from", "f_SetFaceData");
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (paramRspBody = "";; paramRspBody = this.jdField_a_of_type_JavaLangString)
-    {
-      localIntent.putExtra("phone_num", paramRspBody);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 11);
-      return;
-    }
+    return 0;
   }
 }
 

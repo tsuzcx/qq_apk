@@ -1,41 +1,40 @@
 package com.tencent.mobileqq.activity;
 
-import adjr;
-import adjs;
-import adjt;
-import adju;
-import adjv;
-import adjw;
-import adjx;
-import adjy;
-import adjz;
-import adka;
-import adkb;
-import adkc;
-import adkd;
-import adke;
-import adkf;
-import adkg;
-import adkh;
-import adki;
-import adkj;
-import adkk;
-import adkl;
-import adkn;
-import adko;
-import adkp;
-import adkq;
-import adkr;
-import adks;
-import adkt;
-import adku;
-import adkw;
-import adkx;
-import adky;
-import adkz;
-import adla;
-import alqf;
-import alud;
+import Override;
+import aeqf;
+import aeqg;
+import aeqh;
+import aeqi;
+import aeqj;
+import aeqk;
+import aeql;
+import aeqm;
+import aeqn;
+import aeqo;
+import aeqp;
+import aeqq;
+import aeqr;
+import aeqs;
+import aeqt;
+import aequ;
+import aeqv;
+import aeqw;
+import aeqx;
+import aeqy;
+import aeqz;
+import aerb;
+import aerc;
+import aerd;
+import aere;
+import aerf;
+import aerg;
+import aerh;
+import aeri;
+import aerk;
+import aerl;
+import aerm;
+import aern;
+import aero;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Application;
@@ -44,6 +43,7 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -57,21 +57,24 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ForegroundColorSpan;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import auxp;
-import awia;
-import azqs;
-import badd;
-import bdgm;
-import bdix;
-import bdjz;
-import bdne;
-import beas;
-import bety;
+import anjo;
+import anni;
+import axey;
+import aywm;
+import bcst;
+import bdeh;
+import bglp;
+import bgny;
+import bgpa;
+import bgsg;
+import bhht;
+import biau;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ims.signature.SignatureKickData;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -89,6 +92,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qwallet.plugin.PatternLockUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -111,41 +115,40 @@ public class NotificationActivity
   public static NotificationActivity a;
   public static final ArrayList<String> a;
   private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("<TITLE=\"([^>]+)\",URL=\"([^<]+)\">");
-  private static final String jdField_h_of_type_JavaLangString;
+  private static final String jdField_g_of_type_JavaLangString;
   private int jdField_a_of_type_Int;
-  private adkz jdField_a_of_type_Adkz = new adkz(this);
-  private adla jdField_a_of_type_Adla = new adla(this, 1);
+  private aern jdField_a_of_type_Aern = new aern(this);
+  private aero jdField_a_of_type_Aero = new aero(this, 1);
   private Dialog jdField_a_of_type_AndroidAppDialog;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adks(this);
-  private beas jdField_a_of_type_Beas;
-  private bety jdField_a_of_type_Bety;
-  String jdField_a_of_type_JavaLangString = "http://fwd.z.qq.com:8080/forward.jsp?bid=906";
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aerg(this);
+  private bhht jdField_a_of_type_Bhht;
+  private biau jdField_a_of_type_Biau;
+  private String jdField_a_of_type_JavaLangString;
   private Constants.LogoutReason jdField_a_of_type_MqqAppConstants$LogoutReason = Constants.LogoutReason.tips;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), this);
   private boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
-  private adla jdField_b_of_type_Adla = new adla(this, 2);
+  private aero jdField_b_of_type_Aero = new aero(this, 2);
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
   private final int jdField_c_of_type_Int = 1;
-  private String jdField_c_of_type_JavaLangString;
+  private String jdField_c_of_type_JavaLangString = "";
   private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString = "";
+  private String jdField_d_of_type_JavaLangString;
   private final int jdField_e_of_type_Int = 1;
   private String jdField_e_of_type_JavaLangString;
   private final int jdField_f_of_type_Int = 2;
-  private String jdField_f_of_type_JavaLangString;
+  private final String jdField_f_of_type_JavaLangString = "lhPaySn";
   private final int jdField_g_of_type_Int = 3;
-  private final String jdField_g_of_type_JavaLangString = "lhPaySn";
-  private final int jdField_h_of_type_Int = 4;
+  private final int h = 4;
   private final int i = 5;
   private final int j = 6;
   
   static
   {
     jdField_a_of_type_JavaUtilArrayList = new ArrayList(Arrays.asList(new String[] { "0X800AA2F", "0X800AA30", "0X800AA31", "0X800AA32" }));
-    jdField_h_of_type_JavaLangString = bdix.c.pattern() + "|" + bdix.d.pattern();
+    jdField_g_of_type_JavaLangString = bgny.c.pattern() + "|" + bgny.d.pattern();
   }
   
   private Dialog a()
@@ -153,16 +156,16 @@ public class NotificationActivity
     AlertDialog localAlertDialog = new AlertDialog.Builder(this).create();
     localAlertDialog.show();
     Object localObject = localAlertDialog.getWindow();
-    ((Window)localObject).setContentView(2131559400);
-    Button localButton1 = (Button)((Window)localObject).findViewById(2131365248);
-    Button localButton2 = (Button)((Window)localObject).findViewById(2131365247);
-    localObject = (TextView)((Window)localObject).findViewById(2131365270);
+    ((Window)localObject).setContentView(2131559522);
+    Button localButton1 = (Button)((Window)localObject).findViewById(2131365490);
+    Button localButton2 = (Button)((Window)localObject).findViewById(2131365489);
+    localObject = (TextView)((Window)localObject).findViewById(2131365513);
     if ((localButton1 == null) || (localObject == null)) {
       return null;
     }
-    ((TextView)localObject).setText(getString(2131698742) + "8.3.5" + getString(2131698741));
-    localButton1.setOnClickListener(new adkl(this));
-    localButton2.setOnClickListener(new adko(this));
+    ((TextView)localObject).setText(getString(2131697598) + "8.4.1" + getString(2131697597));
+    localButton1.setOnClickListener(new aeqz(this));
+    localButton2.setOnClickListener(new aerc(this));
     return localAlertDialog;
   }
   
@@ -188,32 +191,32 @@ public class NotificationActivity
       {
         QLog.i("NotificationActivity", 1, "myShowDialog: invoked.  throwable: " + localThrowable);
         continue;
-        this.jdField_b_of_type_JavaLangString = getString(2131693470);
-        this.jdField_c_of_type_JavaLangString = getString(2131693471);
-        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new adkt(this));
+        this.jdField_a_of_type_JavaLangString = getString(2131692939);
+        this.jdField_b_of_type_JavaLangString = getString(2131692940);
+        this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230).setTitle(this.jdField_a_of_type_JavaLangString).setMessage(this.jdField_b_of_type_JavaLangString).setPositiveButton(17039370, new aerh(this));
         continue;
         TextView localTextView = new TextView(this);
         localTextView.setLinksClickable(true);
         localTextView.setMovementMethod(LinkMovementMethod.getInstance());
         localTextView.setTextSize(getResources().getInteger(2131427336));
-        localTextView.setTextColor(getResources().getColor(2131165448));
-        if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.equals("true"))) {}
+        localTextView.setTextColor(getResources().getColor(2131165485));
+        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals("true"))) {}
         for (;;)
         {
           try
           {
             String str1 = getPackageName();
-            localTextView.setText(this.jdField_c_of_type_JavaLangString);
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setMessage(this.jdField_c_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131700016, new adku(this, str1), false);
+            localTextView.setText(this.jdField_b_of_type_JavaLangString);
+            this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230).setMessage(this.jdField_b_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131698444, new aeri(this, str1), false);
             paramInt = 1;
             if (paramInt != 0) {
               break;
             }
-            if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+            if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
               break label438;
             }
-            localTextView.setText(Html.fromHtml(this.jdField_c_of_type_JavaLangString));
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setMessage(this.jdField_c_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131692278, new adkw(this));
+            localTextView.setText(Html.fromHtml(this.jdField_b_of_type_JavaLangString));
+            this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230).setMessage(this.jdField_b_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131691891, new aerk(this));
           }
           catch (Exception localException3)
           {
@@ -222,7 +225,7 @@ public class NotificationActivity
           paramInt = 0;
           continue;
           label438:
-          localTextView.setText(Html.fromHtml(getString(2131693234)));
+          localTextView.setText(Html.fromHtml(getString(2131692730)));
         }
         try
         {
@@ -236,13 +239,13 @@ public class NotificationActivity
         if (QQPlayerService.a()) {
           sendBroadcast(new Intent("qqplayer_exit_action"));
         }
-        auxp.a().d();
-        paramInt = 2131694953;
+        axey.a().d();
+        paramInt = 2131694081;
         if (this.jdField_a_of_type_MqqAppConstants$LogoutReason != Constants.LogoutReason.kicked) {
-          paramInt = 2131694878;
+          paramInt = 2131694020;
         }
-        localObject1 = a(this.jdField_c_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230, this.jdField_b_of_type_JavaLangString, (CharSequence)localObject1, paramInt, 2131694953, null, new adkx(this));
+        localObject1 = a(this.jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230, this.jdField_a_of_type_JavaLangString, (CharSequence)localObject1, paramInt, 2131694081, null, new aerl(this));
         if (this.jdField_a_of_type_MqqAppConstants$LogoutReason != Constants.LogoutReason.kicked) {
           if ((getIntent() != null) && (getIntent().getBooleanExtra("isSameDevice", false)) && (!isInMultiWindow()))
           {
@@ -251,18 +254,18 @@ public class NotificationActivity
           }
           else
           {
-            ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131692833, new adjs(this));
+            ((bgpa)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131692392, new aeqg(this));
             localObject1 = new Intent("com.tencent.tim.kickedLogin.otherDevice");
             ((Intent)localObject1).putExtra("kickedUin", this.app.getAccount());
-            ((Intent)localObject1).putExtra("msg", this.jdField_c_of_type_JavaLangString);
+            ((Intent)localObject1).putExtra("msg", this.jdField_b_of_type_JavaLangString);
             ((Intent)localObject1).setPackage("com.tencent.tim");
             sendBroadcast((Intent)localObject1);
             continue;
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new adjt(this));
+            this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230).setTitle(this.jdField_a_of_type_JavaLangString).setMessage(this.jdField_b_of_type_JavaLangString).setPositiveButton(17039370, new aeqh(this));
             continue;
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new adju(this));
+            this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230).setTitle(this.jdField_a_of_type_JavaLangString).setMessage(this.jdField_b_of_type_JavaLangString).setPositiveButton(17039370, new aeqi(this));
             continue;
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(getString(2131694157)).setMessage(getString(2131719681)).setPositiveButton(getString(2131719683), new adjw(this)).setNegativeButton(getString(2131719680), new adjv(this));
+            this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230).setTitle(getString(2131693440)).setMessage(getString(2131717693)).setPositiveButton(getString(2131717695), new aeqk(this)).setNegativeButton(getString(2131717692), new aeqj(this));
           }
         }
       }
@@ -270,27 +273,27 @@ public class NotificationActivity
         break label1196;
       }
     }
-    azqs.a(this.app, "dc00898", "", this.jdField_d_of_type_JavaLangString, "0X800AA2F", "0X800AA2F", 0, 0, "", "", "", this.jdField_c_of_type_JavaLangString);
+    bcst.a(this.app, "dc00898", "", this.jdField_c_of_type_JavaLangString, "0X800AA2F", "0X800AA2F", 0, 0, "", "", "", this.jdField_b_of_type_JavaLangString);
     Object localObject1 = getIntent();
-    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
     this.jdField_d_of_type_Int = 0;
-    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
     String str2;
     if (localObject1 != null)
     {
-      this.jdField_e_of_type_JavaLangString = ((Intent)localObject1).getStringExtra("errorUrl");
+      this.jdField_d_of_type_JavaLangString = ((Intent)localObject1).getStringExtra("errorUrl");
       this.jdField_d_of_type_Int = ((Intent)localObject1).getIntExtra("errorver", 0);
-      if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
       {
-        localObject1 = MiniAppSecurityUtil.getArgumentsFromURL(this.jdField_e_of_type_JavaLangString);
+        localObject1 = MiniAppSecurityUtil.getArgumentsFromURL(this.jdField_d_of_type_JavaLangString);
         if (localObject1 != null)
         {
           str2 = (String)((Map)localObject1).get("forbid_token");
-          this.jdField_f_of_type_JavaLangString = ((String)((Map)localObject1).get("forbid_status"));
+          this.jdField_e_of_type_JavaLangString = ((String)((Map)localObject1).get("forbid_status"));
           if ((!TextUtils.isEmpty(str2)) && (this.jdField_d_of_type_Int == 1))
           {
-            MiniAppSecurityUtil.updateLoginMiniAppUin(BaseApplicationImpl.sApplication, this.jdField_d_of_type_JavaLangString);
-            MiniAppSecurityUtil.updateLoginMiniAppForbidToken(BaseApplicationImpl.sApplication, this.jdField_d_of_type_JavaLangString, str2);
+            MiniAppSecurityUtil.updateLoginMiniAppUin(BaseApplicationImpl.sApplication, this.jdField_c_of_type_JavaLangString);
+            MiniAppSecurityUtil.updateLoginMiniAppForbidToken(BaseApplicationImpl.sApplication, this.jdField_c_of_type_JavaLangString, str2);
           }
         }
       }
@@ -301,24 +304,24 @@ public class NotificationActivity
       {
         if (paramInt != 0)
         {
-          azqs.a(this.app, "dc00898", "", "", "0X800AA15", "0X800AA15", 0, 0, "", "", this.jdField_f_of_type_JavaLangString, "");
-          this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 0, null, this.jdField_c_of_type_JavaLangString, getString(2131694164), getString(2131694163), getString(2131694165), new adjx(this), new adjy(this), new adjz(this));
+          bcst.a(this.app, "dc00898", "", "", "0X800AA15", "0X800AA15", 0, 0, "", "", this.jdField_e_of_type_JavaLangString, "");
+          this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 0, null, this.jdField_b_of_type_JavaLangString, getString(2131693443), getString(2131693442), getString(2131693444), new aeql(this), new aeqm(this), new aeqn(this));
           break;
         }
-        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 0, null, this.jdField_c_of_type_JavaLangString, getString(2131694167), getString(2131694163), getString(2131694165), new adka(this), new adkb(this), new adkc(this));
+        this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 0, null, this.jdField_b_of_type_JavaLangString, getString(2131693445), getString(2131693442), getString(2131693444), new aeqo(this), new aeqp(this), new aeqq(this));
         break;
         label1196:
         switch (this.jdField_b_of_type_Int)
         {
         default: 
-          this.jdField_a_of_type_AndroidAppDialog = bdgm.b(this, 230).setMessageWithUrl(this.jdField_c_of_type_JavaLangString).setTitle(getString(2131699743)).setPositiveButton(17039370, new adke(this));
+          this.jdField_a_of_type_AndroidAppDialog = bglp.b(this, 230).setMessageWithUrl(this.jdField_b_of_type_JavaLangString).setTitle(getString(2131698223)).setPositiveButton(17039370, new aeqs(this));
           break;
         case 41: 
         case 116: 
-          localObject1 = (Long)beas.a.get(this.jdField_d_of_type_JavaLangString);
+          localObject1 = (Long)bhht.a.get(this.jdField_c_of_type_JavaLangString);
           if ((localObject1 != null) && (System.currentTimeMillis() - ((Long)localObject1).longValue() < 30000L))
           {
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(alud.a(2131708012)).setMessage(alud.a(2131708010)).setNegativeButton(alud.a(2131708019), new adkd(this));
+            this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230).setTitle(anni.a(2131706389)).setMessage(anni.a(2131706387)).setNegativeButton(anni.a(2131706396), new aeqr(this));
             break;
           }
           e();
@@ -329,21 +332,21 @@ public class NotificationActivity
           String str3 = ((Bundle)localObject2).getString("dlg_lbutton");
           String str4 = ((Bundle)localObject2).getString("dlg_rbutton");
           localObject2 = ((Bundle)localObject2).getString("dlg_url");
-          this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle((String)localObject1).setMessage(str2).setPositiveButton(str4, new adkg(this, (String)localObject2)).setNegativeButton(str3, new adkf(this));
+          this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230).setTitle((String)localObject1).setMessage(str2).setPositiveButton(str4, new aequ(this, (String)localObject2)).setNegativeButton(str3, new aeqt(this));
           break;
-          localObject1 = getResources().getString(2131694225);
-          str2 = getResources().getString(2131694224);
-          str3 = getResources().getString(2131694221);
-          str4 = getResources().getString(2131694223);
-          Object localObject3 = getResources().getString(2131694222);
+          localObject1 = getResources().getString(2131693484);
+          str2 = getResources().getString(2131693483);
+          str3 = getResources().getString(2131693480);
+          str4 = getResources().getString(2131693482);
+          Object localObject3 = getResources().getString(2131693481);
           localObject2 = new CheckBox(this);
           ((CheckBox)localObject2).setText((CharSequence)localObject3);
           ((CheckBox)localObject2).setTextSize(getResources().getInteger(2131427336));
-          ((CheckBox)localObject2).setTextColor(getResources().getColor(2131165448));
+          ((CheckBox)localObject2).setTextColor(getResources().getColor(2131165485));
           localObject3 = this.app.getApp().getSharedPreferences(this.app.getAccount(), 0);
           boolean bool = ((SharedPreferences)localObject3).getBoolean("MemoryAlertAutoClear", false);
           ((CheckBox)localObject2).setChecked(bool);
-          this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle((String)localObject1).setMessage(str2).setView((View)localObject2).setPositiveButton(str4, new adki(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3)).setNegativeButton(str3, new adkh(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3));
+          this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230).setTitle((String)localObject1).setMessage(str2).setView((View)localObject2).setPositiveButton(str4, new aeqw(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3)).setNegativeButton(str3, new aeqv(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3));
           break;
           try
           {
@@ -356,17 +359,17 @@ public class NotificationActivity
             paramInt = ((Bundle)localObject3).getInt("dlg_lbtnid", 0);
             int k = ((Bundle)localObject3).getInt("dlg_rbtnid", 0);
             localObject3 = String.format("%d", new Object[] { Integer.valueOf(((Bundle)localObject3).getInt("dlg_seccmd", 0)) });
-            this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle((String)localObject1).setMessage(str2);
+            this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230).setTitle((String)localObject1).setMessage(str2);
             if (this.jdField_a_of_type_AndroidAppDialog == null) {
               break;
             }
             if (!TextUtils.isEmpty(str4)) {
-              ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(str4, new adkj(this, (String)localObject2, k, (String)localObject3));
+              ((bgpa)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(str4, new aeqx(this, (String)localObject2, k, (String)localObject3));
             }
             if (!TextUtils.isEmpty(str3)) {
-              ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(str3, new adkk(this, paramInt, (String)localObject3));
+              ((bgpa)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(str3, new aeqy(this, paramInt, (String)localObject3));
             }
-            azqs.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007534", "0X8007534", 0, 0, (String)localObject3, "", "", "");
+            bcst.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007534", "0X8007534", 0, 0, (String)localObject3, "", "", "");
           }
           catch (Exception localException2)
           {
@@ -382,7 +385,7 @@ public class NotificationActivity
   {
     if (this.jdField_a_of_type_ArrayOfByte == null)
     {
-      paramString1 = "http://haoma.qq.com/m/expire.html?num=" + this.jdField_d_of_type_JavaLangString;
+      paramString1 = "https://haoma.qq.com/m/expire.html?num=" + this.jdField_c_of_type_JavaLangString;
       paramString2 = new Intent(this, QQBrowserActivity.class);
       paramString2.putExtra("url", paramString1);
       startActivity(paramString2);
@@ -396,8 +399,8 @@ public class NotificationActivity
       try
       {
         localJSONObject = new JSONObject();
-        localJSONObject.put("unit", alud.a(2131708013));
-        localJSONObject.put("userId", this.jdField_d_of_type_JavaLangString);
+        localJSONObject.put("unit", anni.a(2131706390));
+        localJSONObject.put("userId", this.jdField_c_of_type_JavaLangString);
         localJSONObject.put("openMonth", paramString1);
         localJSONObject.put("offerId", "1450000833");
         localJSONObject.put("aid", paramString2);
@@ -507,7 +510,7 @@ public class NotificationActivity
       this.app.setKickIntent(null);
       if (localObject1 != null)
       {
-        bdne.a(getApplication().getApplicationContext(), ((SimpleAccount)localObject1).getUin(), true);
+        bgsg.a(getApplication().getApplicationContext(), ((SimpleAccount)localObject1).getUin(), true);
         if (paramBoolean)
         {
           new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new NotificationActivity.31(this, (SimpleAccount)localObject1), 500L);
@@ -518,15 +521,15 @@ public class NotificationActivity
       }
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("password", null);
-      if (!awia.a().a(this.app, this.app.getCurrentAccountUin()))
+      if (!aywm.a().a(this.app, this.app.getCurrentAccountUin()))
       {
         this.app.updateSubAccountLogin(this.app.getCurrentAccountUin(), false);
         this.app.getApplication().refreAccountList();
       }
-      localObject3 = (badd)this.app.getManager(61);
+      localObject3 = (bdeh)this.app.getManager(61);
       localObject1 = str;
       if (localObject3 != null) {
-        localObject1 = ((badd)localObject3).a();
+        localObject1 = ((bdeh)localObject3).a();
       }
       if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
       {
@@ -534,7 +537,7 @@ public class NotificationActivity
         while (((Iterator)localObject1).hasNext())
         {
           str = (String)((Iterator)localObject1).next();
-          if (!awia.a().a(this.app, str))
+          if (!aywm.a().a(this.app, str))
           {
             this.app.updateSubAccountLogin(str, false);
             this.app.getApplication().refreAccountList();
@@ -549,9 +552,9 @@ public class NotificationActivity
   
   private void c()
   {
-    alqf localalqf = (alqf)this.app.a(4);
-    if (localalqf != null) {
-      localalqf.a();
+    anjo localanjo = (anjo)this.app.a(4);
+    if (localanjo != null) {
+      localanjo.b();
     }
   }
   
@@ -576,11 +579,11 @@ public class NotificationActivity
   
   private void d()
   {
-    int k = this.jdField_a_of_type_Beas.b();
-    int m = this.jdField_a_of_type_Beas.a();
+    int k = this.jdField_a_of_type_Bhht.b();
+    int m = this.jdField_a_of_type_Bhht.a();
     if ((m == -1) || (k == -1))
     {
-      QQToast.a(this, alud.a(2131708023), 0).a();
+      QQToast.a(this, anni.a(2131706400), 0).a();
       finish();
       return;
     }
@@ -605,27 +608,27 @@ public class NotificationActivity
   
   private void g()
   {
-    if (this.jdField_a_of_type_Bety == null) {
-      this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
+    if (this.jdField_a_of_type_Biau == null) {
+      this.jdField_a_of_type_Biau = new biau(this, getTitleBarHeight());
     }
-    if (!this.jdField_a_of_type_Bety.isShowing())
+    if (!this.jdField_a_of_type_Biau.isShowing())
     {
-      this.jdField_a_of_type_Bety.a(alud.a(2131708014));
-      this.jdField_a_of_type_Bety.show();
+      this.jdField_a_of_type_Biau.a(anni.a(2131706391));
+      this.jdField_a_of_type_Biau.show();
     }
   }
   
   private void h()
   {
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
-      this.jdField_a_of_type_Bety.dismiss();
+    if ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {
+      this.jdField_a_of_type_Biau.dismiss();
     }
   }
   
   public CharSequence a(String paramString)
   {
     if (paramString == null) {}
-    while (!bdix.b.matcher(paramString).find()) {
+    while (!bgny.b.matcher(paramString).find()) {
       return paramString;
     }
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder("");
@@ -651,8 +654,8 @@ public class NotificationActivity
     for (;;)
     {
       SpannableString localSpannableString = new SpannableString(str);
-      localSpannableString.setSpan(new adky((String)localObject, new WeakReference(this)), 0, str.length(), 33);
-      localSpannableString.setSpan(new ForegroundColorSpan(getResources().getColor(2131165735)), 0, str.length(), 33);
+      localSpannableString.setSpan(new aerm((String)localObject, new WeakReference(this)), 0, str.length(), 33);
+      localSpannableString.setSpan(new ForegroundColorSpan(getResources().getColor(2131165783)), 0, str.length(), 33);
       localSpannableStringBuilder.append(localSpannableString);
       n = 1;
       break;
@@ -661,7 +664,7 @@ public class NotificationActivity
         localSpannableStringBuilder.append(paramString.substring(m));
         return localSpannableStringBuilder;
       }
-      localMatcher = Pattern.compile(jdField_h_of_type_JavaLangString, 2).matcher(paramString);
+      localMatcher = Pattern.compile(jdField_g_of_type_JavaLangString, 2).matcher(paramString);
       k = 0;
       m = 0;
       while (localMatcher.find())
@@ -676,8 +679,8 @@ public class NotificationActivity
           n = m;
         }
         localObject = new SpannableString(str);
-        ((SpannableString)localObject).setSpan(new adky(str, new WeakReference(this)), 0, str.length(), 33);
-        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(getResources().getColor(2131165735)), 0, str.length(), 33);
+        ((SpannableString)localObject).setSpan(new aerm(str, new WeakReference(this)), 0, str.length(), 33);
+        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(getResources().getColor(2131165783)), 0, str.length(), 33);
         localSpannableStringBuilder.append((CharSequence)localObject);
         k = n;
       }
@@ -691,6 +694,14 @@ public class NotificationActivity
     sendBroadcast(new Intent("qqplayer_exit_action"));
     finish();
     this.app.b(false);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -713,7 +724,7 @@ public class NotificationActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559398);
+    super.setContentView(2131559516);
     Object localObject = "";
     paramBundle = (Bundle)localObject;
     try
@@ -808,21 +819,21 @@ public class NotificationActivity
         QLog.d("sec_sig_tag", 2, "NotificationActivity:package fail");
         return false;
         ThreadManager.post(new NotificationActivity.2(this, paramBundle.u32_check_result.get(), paramBundle.u32_cache_time.get()), 5, null, false);
-        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(paramBundle.str_right_button.get(), new adkn(this, paramBundle));
+        this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230).setTitle(this.jdField_a_of_type_JavaLangString).setMessage(this.jdField_b_of_type_JavaLangString).setPositiveButton(paramBundle.str_right_button.get(), new aerb(this, paramBundle));
         if (!paramBundle.str_left_button.has()) {
           break label648;
         }
-        ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(paramBundle.str_left_button.get(), new adkr(this));
+        ((bgpa)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(paramBundle.str_left_button.get(), new aerf(this));
         a(false);
         return true;
       }
     }
     paramBundle = (Bundle)localObject;
-    this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("title");
+    this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("title");
     paramBundle = (Bundle)localObject;
-    this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("msg");
+    this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("msg");
     paramBundle = (Bundle)localObject;
-    this.jdField_d_of_type_JavaLangString = getIntent().getStringExtra("loginalias");
+    this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("loginalias");
     paramBundle = (Bundle)localObject;
     this.jdField_a_of_type_ArrayOfByte = getIntent().getByteArrayExtra("expiredSig");
     paramBundle = (Bundle)localObject;
@@ -859,7 +870,7 @@ public class NotificationActivity
       PatternLockUtils.setFirstEnterAfterLoginState(this, this.app.getAccount(), true);
     }
     label648:
-    this.jdField_a_of_type_Beas = new beas(this.jdField_d_of_type_JavaLangString);
+    this.jdField_a_of_type_Bhht = new bhht(this.jdField_c_of_type_JavaLangString);
     a(this.jdField_a_of_type_Int);
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.mobileqq.closeNotification"));
     return true;
@@ -902,7 +913,7 @@ public class NotificationActivity
     super.doOnResume();
     a(true);
     if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      ((bdjz)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131700015, new adjr(this));
+      ((bgpa)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131698443, new aeqf(this));
     }
   }
   
@@ -933,19 +944,19 @@ public class NotificationActivity
     default: 
       return true;
     case 1: 
-      this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, getResources().getString(2131693894), getResources().getString(2131693884), getResources().getString(2131693880), this.jdField_a_of_type_Adla, alud.a(2131708022), this.jdField_a_of_type_Adla, this.jdField_a_of_type_Adkz);
+      this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, getResources().getString(2131693223), getResources().getString(2131693213), getResources().getString(2131693209), this.jdField_a_of_type_Aero, anni.a(2131706399), this.jdField_a_of_type_Aero, this.jdField_a_of_type_Aern);
       this.jdField_a_of_type_AndroidAppDialog.show();
       return true;
     case 2: 
-      this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, getResources().getString(2131693894), getResources().getString(2131693883), getResources().getString(2131693881), this.jdField_b_of_type_Adla, getResources().getString(2131693879), this.jdField_b_of_type_Adla, this.jdField_a_of_type_Adkz);
+      this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, getResources().getString(2131693223), getResources().getString(2131693212), getResources().getString(2131693210), this.jdField_b_of_type_Aero, getResources().getString(2131693208), this.jdField_b_of_type_Aero, this.jdField_a_of_type_Aern);
       this.jdField_a_of_type_AndroidAppDialog.show();
       return true;
     case 3: 
       if (this.jdField_b_of_type_Int == 41) {}
-      for (paramMessage = getString(2131695492);; paramMessage = getString(2131695491))
+      for (paramMessage = getString(2131694407);; paramMessage = getString(2131694406))
       {
-        String str = getString(2131695490);
-        this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230).setMessage(paramMessage).setTitle(str).setNegativeButton(2131695489, new adkq(this)).setPositiveButton(2131695486, new adkp(this));
+        String str = getString(2131694405);
+        this.jdField_a_of_type_AndroidAppDialog = bglp.a(this, 230).setMessage(paramMessage).setTitle(str).setNegativeButton(2131694404, new aere(this)).setPositiveButton(2131694403, new aerd(this));
         this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
         this.jdField_a_of_type_AndroidAppDialog.show();
         return true;
@@ -955,15 +966,22 @@ public class NotificationActivity
       return true;
     case 5: 
       h();
-      QQToast.a(this, 2, alud.a(2131708017), 0).b(getTitleBarHeight());
-      beas.a.put(this.jdField_d_of_type_JavaLangString, Long.valueOf(System.currentTimeMillis()));
+      QQToast.a(this, 2, anni.a(2131706394), 0).b(getTitleBarHeight());
+      bhht.a.put(this.jdField_c_of_type_JavaLangString, Long.valueOf(System.currentTimeMillis()));
       finish();
       return true;
     }
     h();
-    QQToast.a(this, 1, alud.a(2131708016), 0).b(getTitleBarHeight());
+    QQToast.a(this, 1, anni.a(2131706393), 0).b(getTitleBarHeight());
     finish();
     return true;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)

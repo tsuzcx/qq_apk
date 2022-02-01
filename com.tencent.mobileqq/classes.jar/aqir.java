@@ -1,54 +1,34 @@
-import android.animation.AnimatorSet;
-import android.graphics.drawable.Drawable;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.widget.AdapterView;
 
-class aqir
-  implements Animation.AnimationListener
+public class aqir
+  implements bkil
 {
-  aqir(aqio paramaqio, AnimatorSet paramAnimatorSet) {}
+  public aqir(IphonePickerView paramIphonePickerView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Aqio.a.size())
+    IphonePickerView.a(this.a, paramView, 1);
+    IphonePickerView.a(this.a, paramView, true);
+    if ((paramView != null) && (paramView.getTag() != null))
     {
-      paramAnimation = (ImageView)this.jdField_a_of_type_Aqio.a.get(i);
-      paramAnimation.clearAnimation();
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 != null) && (i < this.jdField_a_of_type_Aqio.jdField_b_of_type_JavaUtilList.size()))
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
       {
-        Object localObject2 = (String)this.jdField_a_of_type_Aqio.jdField_b_of_type_JavaUtilList.get(i);
-        Drawable localDrawable = bdhj.a(true);
-        localObject1 = bdbk.a((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
-        localObject2 = paramAnimation.getDrawable();
-        if ((localObject2 != null) && (localObject2 != localObject1) && ((localObject2 instanceof bdbk))) {
-          ((bdbk)localObject2).a();
+        if (i != paramInt)
+        {
+          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
         }
-        paramAnimation.setImageDrawable((Drawable)localObject1);
+        paramInt += 1;
       }
-      i += 1;
     }
-    this.jdField_a_of_type_Aqio.c.clearAnimation();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-    this.jdField_a_of_type_Aqio.jdField_b_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
-    this.jdField_a_of_type_Aqio.jdField_b_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setDuration(200L);
-    paramAnimation.setAnimationListener(new aqis(this));
-    this.jdField_a_of_type_Aqio.c.startAnimation(paramAnimation);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

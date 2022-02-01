@@ -1,8 +1,23 @@
-import android.graphics.Bitmap.Config;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
 
-public abstract interface bdaw
+class bdaw
+  implements bdbm
 {
-  public static final Bitmap.Config a = Bitmap.Config.ARGB_8888;
+  bdaw(bdau parambdau, CountdownTextView paramCountdownTextView) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bdau.jdField_d_of_type_Long = 0L;
+    this.jdField_a_of_type_Bdau.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bdau.a(this.jdField_a_of_type_Bdau, 0L));
+  }
+  
+  public void a(long paramLong)
+  {
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bdau.a(this.jdField_a_of_type_Bdau, paramLong));
+    this.jdField_a_of_type_Bdau.jdField_d_of_type_Long = paramLong;
+  }
 }
 
 

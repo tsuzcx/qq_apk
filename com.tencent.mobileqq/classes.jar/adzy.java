@@ -1,31 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.AppRuntime;
 
-public class adzy
-  implements bhuk
+class adzy
+  implements DialogInterface.OnClickListener
 {
-  public adzy(SubAccountUgActivity paramSubAccountUgActivity, bhuf parambhuf) {}
+  adzy(adzx paramadzx) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (this.a.a.a() != null)
     {
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.a().startActivity(localIntent);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.cancel();
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.c());
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a(2131720473);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b = true;
-      paramView = (bada)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app.getManager(28);
-      if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a);
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

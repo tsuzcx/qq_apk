@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view.widget.reddot;
 
-import slk;
+import tkf;
 
 class ColorBandVideoEntranceButton$4
   implements Runnable
 {
-  ColorBandVideoEntranceButton$4(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton, slk paramslk) {}
+  ColorBandVideoEntranceButton$4(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton, tkf paramtkf) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class ColorBandVideoEntranceButton$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton.4
  * JD-Core Version:    0.7.0.1
  */

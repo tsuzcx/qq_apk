@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.minigame.gpkg;
 
 import android.text.TextUtils;
-import bdnn;
+import bgsp;
 import com.tencent.mobileqq.mini.apkg.ApkgBaseInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.NetworkTimeoutInfo;
-import com.tencent.mobileqq.mini.http.MiniOkHttpClientFactory;
+import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
 import com.tencent.mobileqq.mini.utils.FileUtils;
 import com.tencent.mobileqq.minigame.manager.GamePreConnectManager;
 import java.io.File;
@@ -16,12 +16,17 @@ import org.json.JSONObject;
 public class MiniGamePkg
   extends ApkgBaseInfo
 {
+  public static final String DEVICE_ORIENTATION_LANDSCAPE = "landscape";
+  public static final String DEVICE_ORIENTATION_PORTRAIT = "portrait";
   private static final String NAME_CONFIG_JSON = "game.json";
   public static final String NAME_ENTRY_FILE = "game.js";
   public static final String NAME_OFFLINECONFIG_JSON = "offlineconfig.json";
   public static final String PLUGIN_ENTRY_FILE = "plugin.js";
+  private String deviceOrientation;
   public JSONObject mGameConfigJson;
   public NetworkTimeoutInfo networkTimeoutInfo;
+  private String openDataPath;
+  private boolean showStatusBar;
   public HashMap<String, String> subPackRoots = new HashMap();
   
   public MiniGamePkg(String paramString, MiniAppConfig paramMiniAppConfig)
@@ -87,9 +92,19 @@ public class MiniGamePkg
     GpkgManager.downloadSubPack(this, paramString, paramOnInitGpkgListener);
   }
   
+  public String getDeviceOrientation()
+  {
+    return this.deviceOrientation;
+  }
+  
+  public String getOpenDataPath()
+  {
+    return this.openDataPath;
+  }
+  
   public String getRootPath(String paramString)
   {
-    if (bdnn.a(paramString)) {
+    if (bgsp.a(paramString)) {
       return "";
     }
     if (this.subPackRoots != null)
@@ -125,6 +140,9 @@ public class MiniGamePkg
         }
         this.subPackRoots = getSubPackRoots(paramString);
         this.networkTimeoutInfo = NetworkTimeoutInfo.parse(this.mGameConfigJson.optJSONObject("networkTimeout"));
+        this.deviceOrientation = this.mGameConfigJson.optString("deviceOrientation", "portrait");
+        this.openDataPath = this.mGameConfigJson.optString("openDataContext", null);
+        this.showStatusBar = this.mGameConfigJson.optBoolean("showStatusBar", false);
         return;
       }
       catch (Throwable paramString)
@@ -135,6 +153,16 @@ public class MiniGamePkg
     }
   }
   
+  public boolean isOrientationLandscape()
+  {
+    return "landscape".equals(this.deviceOrientation);
+  }
+  
+  public boolean isShowStatusBar()
+  {
+    return this.showStatusBar;
+  }
+  
   public boolean isUrlResReady(String paramString)
   {
     return false;
@@ -142,7 +170,7 @@ public class MiniGamePkg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.gpkg.MiniGamePkg
  * JD-Core Version:    0.7.0.1
  */

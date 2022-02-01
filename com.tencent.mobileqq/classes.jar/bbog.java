@@ -1,21 +1,77 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class bbog
-  implements Comparator<Map.Entry<String, bboh>>
+public class bbog
+  implements bbmx
 {
-  bbog(bboe parambboe) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public int a(Map.Entry<String, bboh> paramEntry1, Map.Entry<String, bboh> paramEntry2)
+  public int a()
   {
-    long l = ((bboh)paramEntry2.getValue()).a - ((bboh)paramEntry1.getValue()).a;
-    if (l > 0L) {
-      return 1;
-    }
-    if (l < 0L) {
-      return -1;
-    }
     return 0;
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = -1;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.SearchResultGroupModelImpl", 2, "getPosition(). type=" + paramInt + "  position=" + i);
+      }
+      return i;
+      i = this.a;
+      continue;
+      i = this.b;
+      continue;
+      i = this.c;
+    }
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public List<bbmy> a()
+  {
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a = paramInt2;
+      return;
+    case 2: 
+      this.b = paramInt2;
+      return;
+    }
+    this.c = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    a(2, paramInt1);
+    a(1, paramInt2);
+    a(3, paramInt3);
+  }
+  
+  public void a(View paramView) {}
+  
+  public String b()
+  {
+    return null;
   }
 }
 

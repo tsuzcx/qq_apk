@@ -6,9 +6,9 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
-import aoqy;
-import aoqz;
-import bayu;
+import aqsw;
+import aqsx;
+import bdzx;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -16,17 +16,17 @@ import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.widget.MeasureGridView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import pgd;
-import pxj;
-import pxt;
-import qck;
-import qcl;
-import qky;
-import rqj;
+import pxk;
+import qqr;
+import qrb;
+import qvs;
+import qvt;
+import rfk;
+import snh;
 
 public class ComponentContentHotSearch
   extends RelativeLayout
-  implements pxj
+  implements qqr
 {
   public static final String a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -34,25 +34,25 @@ public class ComponentContentHotSearch
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private MeasureGridView jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView;
-  private pgd jdField_a_of_type_Pgd;
-  private qcl jdField_a_of_type_Qcl;
-  private rqj jdField_a_of_type_Rqj;
+  private pxk jdField_a_of_type_Pxk;
+  private qvt jdField_a_of_type_Qvt;
+  private snh jdField_a_of_type_Snh;
   
   static
   {
     jdField_a_of_type_JavaLangString = ComponentContentHotSearch.class.getSimpleName();
   }
   
-  public ComponentContentHotSearch(Context paramContext, rqj paramrqj)
+  public ComponentContentHotSearch(Context paramContext, snh paramsnh)
   {
     super(paramContext);
-    this.jdField_a_of_type_Rqj = paramrqj;
+    this.jdField_a_of_type_Snh = paramsnh;
     a(paramContext);
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559949, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560096, this, true);
   }
   
   public void a(Context paramContext)
@@ -62,21 +62,21 @@ public class ComponentContentHotSearch
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367777));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377979));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131371241));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView = ((MeasureGridView)paramView.findViewById(2131367776));
-    this.jdField_a_of_type_Qcl = new qcl(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView.setAdapter(this.jdField_a_of_type_Qcl);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new qck(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368091));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131378821));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131371805));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView = ((MeasureGridView)paramView.findViewById(2131368090));
+    this.jdField_a_of_type_Qvt = new qvt(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView.setAdapter(this.jdField_a_of_type_Qvt);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new qvs(this));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pgd))
+    if ((paramObject instanceof pxk))
     {
-      this.jdField_a_of_type_Pgd = ((pgd)paramObject);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_Pgd.a();
+      this.jdField_a_of_type_Pxk = ((pxk)paramObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_Pxk.a();
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {}
     }
     else
@@ -86,16 +86,16 @@ public class ComponentContentHotSearch
     paramObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hotWordInfo;
     if ((paramObject != null) && (paramObject.a != null) && (paramObject.a.size() > 0))
     {
-      this.jdField_a_of_type_Qcl.a(paramObject.a);
-      paramObject = aoqz.a();
+      this.jdField_a_of_type_Qvt.a(paramObject.a);
+      paramObject = aqsx.a();
       if ((paramObject == null) || (TextUtils.isEmpty(paramObject.b))) {
         break label191;
       }
     }
     label191:
-    for (paramObject = paramObject.b;; paramObject = "http://pub.idqqimg.com/pc/misc/files/20180903/eddc885537fc4606a66c93a06854511b.png")
+    for (paramObject = paramObject.b;; paramObject = "https://pub.idqqimg.com/pc/misc/files/20180903/eddc885537fc4606a66c93a06854511b.png")
     {
-      Drawable localDrawable = bayu.a;
+      Drawable localDrawable = bdzx.a;
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mFailedDrawable = localDrawable;
       localURLDrawableOptions.mLoadingDrawable = localDrawable;
@@ -116,10 +116,10 @@ public class ComponentContentHotSearch
     }
   }
   
-  public void a(pxt parampxt)
+  public void a(qrb paramqrb)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(parampxt);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(paramqrb);
     }
   }
 }

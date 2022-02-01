@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class ajto
-  extends ajtq
+  implements View.OnTouchListener
 {
-  public void a()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.q();
-    }
-  }
+  public ajto(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void b()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    RMVideoStateMgr.a().a(2);
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
+    }
+    return false;
   }
 }
 

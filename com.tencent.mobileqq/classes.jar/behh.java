@@ -1,17 +1,23 @@
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
 
-class behh
-  extends behj
+public final class behh
+  implements Parcelable.Creator<MediaPreviewInfo>
 {
-  behh(behe parambehe)
+  public MediaPreviewInfo a(Parcel paramParcel)
   {
-    super(parambehe);
+    MediaPreviewInfo localMediaPreviewInfo = new MediaPreviewInfo();
+    localMediaPreviewInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localMediaPreviewInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localMediaPreviewInfo.b = paramParcel.readString();
+    localMediaPreviewInfo.c = paramParcel.readString();
+    return localMediaPreviewInfo;
   }
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  public MediaPreviewInfo[] a(int paramInt)
   {
-    return a(paramWebView, paramString);
+    return new MediaPreviewInfo[paramInt];
   }
 }
 

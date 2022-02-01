@@ -1,44 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
 
-public final class behy
-  implements WtTicketPromise
+public class behy
+  implements DialogInterface.OnClickListener
 {
-  public behy(String paramString, long paramLong) {}
+  public behy(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public void Done(Ticket paramTicket)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("pt4_token response received for ").append(this.jdField_a_of_type_JavaLangString).append(", cost=").append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      if (paramTicket == null) {
-        break label64;
-      }
-    }
-    label64:
-    for (paramTicket = "";; paramTicket = ". But result was null!")
-    {
-      QLog.d("SwiftBrowserCookieMonster", 2, paramTicket);
-      return;
-    }
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("SwiftBrowserCookieMonster", 2, "Get pt4_token failed for " + this.jdField_a_of_type_JavaLangString + " because " + paramErrMsg + ", cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("SwiftBrowserCookieMonster", 2, "Get pt4_token timeout for " + this.jdField_a_of_type_JavaLangString + " because " + paramErrMsg + ", cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

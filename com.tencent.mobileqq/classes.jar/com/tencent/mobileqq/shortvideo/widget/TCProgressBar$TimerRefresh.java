@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.widget;
 
 import android.os.Handler;
-import azma;
+import bcmy;
 
 class TCProgressBar$TimerRefresh
   implements Runnable
@@ -10,19 +10,19 @@ class TCProgressBar$TimerRefresh
   
   public void run()
   {
-    azma localazma;
+    bcmy localbcmy;
     if (this.this$0.jdField_a_of_type_Int == 3)
     {
       this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(new TimerRefresh(this.this$0), this.this$0.d);
-      localazma = this.this$0.jdField_a_of_type_Azma;
-      if (this.this$0.jdField_a_of_type_Azma.e) {
+      localbcmy = this.this$0.jdField_a_of_type_Bcmy;
+      if (this.this$0.jdField_a_of_type_Bcmy.e) {
         break label77;
       }
     }
     label77:
     for (boolean bool = true;; bool = false)
     {
-      localazma.e = bool;
+      localbcmy.e = bool;
       this.this$0.invalidate();
       return;
     }
@@ -30,7 +30,7 @@ class TCProgressBar$TimerRefresh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.TCProgressBar.TimerRefresh
  * JD-Core Version:    0.7.0.1
  */

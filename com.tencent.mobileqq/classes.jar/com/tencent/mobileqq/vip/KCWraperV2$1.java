@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vip;
 
 import android.content.Context;
-import beam;
-import bean;
-import beao;
-import beap;
-import beaq;
-import beav;
+import bhhn;
+import bhho;
+import bhhp;
+import bhhq;
+import bhhr;
+import bhhx;
 import com.tencent.mobileqq.pluginsdk.IOUtil;
 import com.tencent.qphone.base.util.QLog;
 import dualsim.common.IKingCardInterface;
@@ -17,7 +17,7 @@ import tmsdk.common.KcSdkShellManager;
 public class KCWraperV2$1
   implements Runnable
 {
-  public KCWraperV2$1(bean parambean, File paramFile, Context paramContext) {}
+  public KCWraperV2$1(bhho parambhho, File paramFile, Context paramContext) {}
   
   public void run()
   {
@@ -33,25 +33,25 @@ public class KCWraperV2$1
           return;
         }
         if (QLog.isColorLevel()) {
-          KcSdkShellManager.getInstance().setLogPrint(new beao(this));
+          KcSdkShellManager.getInstance().setLogPrint(new bhhp(this));
         }
         KcSdkShellManager.getInstance().setTMSDKLogEnable(QLog.isColorLevel());
-        KcSdkShellManager.getInstance().setPhoneInfoBridge(new beap(this));
-        if (beav.a(this.jdField_a_of_type_AndroidContentContext))
+        KcSdkShellManager.getInstance().setPhoneInfoBridge(new bhhq(this));
+        if (bhhx.a(this.jdField_a_of_type_AndroidContentContext))
         {
           boolean bool = KcSdkShellManager.getInstance().initInBaseProcess(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), "00047", "ck_shoujiqq_dfhdsuif5f6d_f4d89e");
           QLog.e(this.this$0.a(), 1, "initInBaseProcess");
           i = bool;
           if (KcSdkShellManager.getInstance().getKingCardInterface() != null)
           {
-            KcSdkShellManager.getInstance().getKingCardInterface().registerOnChangeListener(new beaq());
+            KcSdkShellManager.getInstance().getKingCardInterface().registerOnChangeListener(new bhhr());
             i = bool;
           }
           if (i != 0) {
             break label268;
           }
           QLog.e(this.this$0.a(), 1, "tryLoad failed");
-          beam.a(false);
+          bhhn.a(false);
           this.this$0.a.notify();
           return;
         }
@@ -60,13 +60,13 @@ public class KCWraperV2$1
       continue;
       label268:
       this.this$0.a.set(true);
-      beam.a(true);
+      bhhn.a(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraperV2.1
  * JD-Core Version:    0.7.0.1
  */

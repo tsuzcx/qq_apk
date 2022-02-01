@@ -1,23 +1,44 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.viola.core.ViolaEnvironment;
 
-class tsl
-  implements MediaPlayer.OnPreparedListener
+public class tsl
+  implements tsq
 {
-  tsl(tsk paramtsk) {}
+  public tsl(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void a()
   {
-    QLog.d("QCircleFolderSplashPart", 1, "videoView onPrepared!");
-    paramMediaPlayer.start();
-    tzv.a("", 19, 3L, 0L, "1");
-    paramMediaPlayer.setOnInfoListener(new tsm(this));
+    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, 5, this.jdField_a_of_type_Boolean);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView)))
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, paramString);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_END_NET);
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_MAIN_JS_NET, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).sendEmptyMessageDelayed(3, 0L);
+        }
+        ThreadManager.post(new ViolaBaseView.3.1(this), 8, null, true);
+      }
+    }
+    else {
+      return;
+    }
+    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, 10, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tsl
  * JD-Core Version:    0.7.0.1
  */

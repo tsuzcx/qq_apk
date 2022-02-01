@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.utils;
 
 import android.text.TextUtils;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import org.json.JSONObject;
 
 public class BannerAdPosInfo
@@ -222,7 +222,7 @@ public class BannerAdPosInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.BannerAdPosInfo
  * JD-Core Version:    0.7.0.1
  */

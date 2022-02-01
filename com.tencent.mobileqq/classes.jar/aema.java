@@ -1,26 +1,22 @@
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aema
-  implements bdoh<Integer>
+  extends aelh
 {
-  public aema(VisitorsActivity paramVisitorsActivity) {}
-  
-  public void a(bdob<Integer> parambdob, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public aema(JumpActivity paramJumpActivity)
   {
-    this.a.c.setText(paramInteger + "");
-    if (paramInteger.intValue() > 9999)
-    {
-      this.a.c.setTextSize(36.0F);
-      return;
-    }
-    this.a.c.setTextSize(44.0F);
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.c(paramInt1, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aema
  * JD-Core Version:    0.7.0.1
  */

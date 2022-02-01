@@ -1,32 +1,32 @@
-import android.os.Looper;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aduy
-  implements becl
+  implements bigw
 {
-  private final WeakReference<RegisterQQNumberActivity> a;
+  public aduy(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aszd paramaszd) {}
   
-  public aduy(RegisterQQNumberActivity paramRegisterQQNumberActivity)
+  public void a(int paramInt)
   {
-    this.a = new WeakReference(paramRegisterQQNumberActivity);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RegisterQQNumberActivity", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
+    if (paramInt == 2)
+    {
+      atvf.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692439));
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          if (bgmg.b(localFileManagerEntity.getFilePath())) {
+            this.jdField_a_of_type_Aszd.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+          } else {
+            this.jdField_a_of_type_Aszd.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+          }
+        }
       }
     }
-    RegisterQQNumberActivity localRegisterQQNumberActivity;
-    do
-    {
-      return;
-      localRegisterQQNumberActivity = (RegisterQQNumberActivity)this.a.get();
-    } while (localRegisterQQNumberActivity == null);
-    localRegisterQQNumberActivity.a(paramString, paramBoolean);
   }
 }
 

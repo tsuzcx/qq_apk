@@ -1,9 +1,16 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+
 public class aezk
+  extends ayes
 {
-  long a;
-  long b;
-  long c;
-  long d;
+  public aezk(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    QQSettingSettingActivity.a(this.a);
+    QQSettingSettingActivity.b(this.a);
+  }
 }
 
 

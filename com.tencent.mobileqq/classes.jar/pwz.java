@@ -1,84 +1,156 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
+import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.im.oidb.cmd0xb54.oidb_cmd0xb54.ArticleBusiness;
+import tencent.im.oidb.cmd0xb54.oidb_cmd0xb54.RspBiuCount;
+import tencent.im.oidb.cmd0xb54.oidb_cmd0xb54.RspBody;
+import tencent.im.oidb.cmd0xb54.oidb_cmd0xb54.SentimentEntityData;
+import tencent.im.oidb.cmd0xb54.oidb_cmd0xb54.StyleCard;
+import tencent.im.oidb.cmd0xb54.oidb_cmd0xb54.UnionNlpInfo;
 
 public class pwz
 {
-  public static String a(ArticleInfo paramArticleInfo)
+  static void a(oidb_cmd0xb54.RspBody paramRspBody, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    if (paramArticleInfo == null) {
-      return null;
-    }
-    String str1 = ors.d(paramArticleInfo);
-    JSONObject localJSONObject = ors.a(paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), (int)paramArticleInfo.mChannelID, bdin.h(null), str1, paramArticleInfo.innerUniqueID, ors.f(paramArticleInfo), 0, ors.d(), paramArticleInfo);
-    str1 = localJSONObject.toString();
-    try
+    if (paramRspBody.bytes_proteus_json_data.has())
     {
-      paramArticleInfo = new JSONObject(paramArticleInfo.proteusItemsData);
-      if (paramArticleInfo.optJSONObject("card_report_params") != null)
+      paramRspBody = paramRspBody.bytes_proteus_json_data.get().toStringUtf8();
+      if (!TextUtils.isEmpty(paramRspBody))
       {
-        paramArticleInfo = paramArticleInfo.getJSONObject("card_report_params");
-        Iterator localIterator = paramArticleInfo.keys();
-        while (localIterator.hasNext())
-        {
-          String str2 = (String)localIterator.next();
-          String str3 = paramArticleInfo.optString(str2);
-          if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3))) {
-            localJSONObject.put(str2, str3);
-          }
-        }
+        paramFastWebArticleInfo.jdField_a_of_type_AndroidUtilSparseArray.clear();
+        tba.a(paramRspBody, paramFastWebArticleInfo.jdField_a_of_type_AndroidUtilSparseArray);
       }
-      return str1;
     }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.e("RIJReport", 1, "[getR5Json], e = " + paramArticleInfo);
-    }
-    paramArticleInfo = localJSONObject.toString();
-    return paramArticleInfo;
   }
   
-  public static void a(ron paramron, BaseArticleInfo paramBaseArticleInfo)
+  static void a(oidb_cmd0xb54.RspBody paramRspBody, FastWebArticleInfo paramFastWebArticleInfo, pww parampww)
   {
-    if ((!(paramBaseArticleInfo instanceof ArticleInfo)) || (paramron == null)) {}
-    for (;;)
+    if (paramRspBody.rpt_msg_style_card.has())
     {
-      return;
-      if (!pvq.b((ArticleInfo)paramBaseArticleInfo)) {
-        continue;
-      }
-      try
+      paramRspBody = paramRspBody.rpt_msg_style_card.get().iterator();
+      while (paramRspBody.hasNext())
       {
-        paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo.proteusItemsData);
-        if (paramBaseArticleInfo.optJSONObject("card_report_params") == null) {
-          continue;
-        }
-        paramBaseArticleInfo = paramBaseArticleInfo.getJSONObject("card_report_params");
-        Iterator localIterator = paramBaseArticleInfo.keys();
-        while (localIterator.hasNext())
+        Object localObject = (oidb_cmd0xb54.StyleCard)paramRspBody.next();
+        try
         {
-          String str1 = (String)localIterator.next();
-          String str2 = paramBaseArticleInfo.optString(str1);
-          if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-            paramron.a(str1, str2);
+          if ((((oidb_cmd0xb54.StyleCard)localObject).bytes_sourceid.has()) && (((oidb_cmd0xb54.StyleCard)localObject).bytes_style.has()))
+          {
+            String str = ((oidb_cmd0xb54.StyleCard)localObject).bytes_sourceid.get().toStringUtf8();
+            localObject = ((oidb_cmd0xb54.StyleCard)localObject).bytes_style.get().toStringUtf8();
+            QLog.d("FastWebModuleUtils", 2, "0xb54 resp bytes_sourceid : " + str + " json " + (String)localObject);
+            paramFastWebArticleInfo.a(str, new JSONObject((String)localObject));
           }
         }
-        return;
+        catch (JSONException localJSONException)
+        {
+          QLog.d("FastWebModuleUtils", 1, localJSONException, new Object[] { "0xb54 rpt_msg_style_card " });
+        }
       }
-      catch (JSONException paramron)
+      if (parampww != null) {
+        parampww.a(paramFastWebArticleInfo.j);
+      }
+    }
+  }
+  
+  static void a(oidb_cmd0xb54.RspBody paramRspBody, FastWebArticleInfo paramFastWebArticleInfo, pww parampww, String paramString)
+  {
+    if (paramRspBody.msg_rsp_biu_count.has())
+    {
+      paramFastWebArticleInfo.c = ((oidb_cmd0xb54.RspBiuCount)paramRspBody.msg_rsp_biu_count.get()).uint64_biu_count.get();
+      QLog.d("FastWebModuleUtils", 2, "0xb54 resp biu count is : " + paramFastWebArticleInfo.c);
+      if (parampww != null) {
+        parampww.a(paramFastWebArticleInfo.c, paramString);
+      }
+    }
+  }
+  
+  static void b(oidb_cmd0xb54.RspBody paramRspBody, FastWebArticleInfo paramFastWebArticleInfo, pww parampww)
+  {
+    Object localObject;
+    int i;
+    if ((paramRspBody.msg_article_business.has()) && (paramRspBody.msg_article_business.get() != null))
+    {
+      localObject = (oidb_cmd0xb54.ArticleBusiness)paramRspBody.msg_article_business.get();
+      i = ((oidb_cmd0xb54.ArticleBusiness)localObject).uint32_business_cash_flag.get();
+      if ((!((oidb_cmd0xb54.ArticleBusiness)localObject).bytes_business_cash_info.has()) || (((oidb_cmd0xb54.ArticleBusiness)localObject).bytes_business_cash_info.get() == null)) {
+        break label252;
+      }
+    }
+    label252:
+    for (paramRspBody = ((oidb_cmd0xb54.ArticleBusiness)localObject).bytes_business_cash_info.get().toStringUtf8();; paramRspBody = "")
+    {
+      if ((((oidb_cmd0xb54.ArticleBusiness)localObject).msg_sentiment_entity_data.has()) && (((oidb_cmd0xb54.ArticleBusiness)localObject).msg_sentiment_entity_data.get() != null))
       {
-        QLog.e("RIJReport", 1, "[addPtsCardReportToR5], e = " + paramron);
+        oidb_cmd0xb54.SentimentEntityData localSentimentEntityData = (oidb_cmd0xb54.SentimentEntityData)((oidb_cmd0xb54.ArticleBusiness)localObject).msg_sentiment_entity_data.get();
+        if ((localSentimentEntityData.bytes_data.has()) && (localSentimentEntityData.bytes_data.get() != null)) {
+          paramFastWebArticleInfo.m = localSentimentEntityData.bytes_data.get().toStringUtf8();
+        }
       }
+      if ((((oidb_cmd0xb54.ArticleBusiness)localObject).msg_union_nlp_info.has()) && (((oidb_cmd0xb54.ArticleBusiness)localObject).msg_union_nlp_info.get() != null))
+      {
+        localObject = (oidb_cmd0xb54.UnionNlpInfo)((oidb_cmd0xb54.ArticleBusiness)localObject).msg_union_nlp_info.get();
+        if ((((oidb_cmd0xb54.UnionNlpInfo)localObject).bytes_union_chann.has()) && (((oidb_cmd0xb54.UnionNlpInfo)localObject).bytes_union_chann.get() != null)) {
+          paramFastWebArticleInfo.n = ((oidb_cmd0xb54.UnionNlpInfo)localObject).bytes_union_chann.get().toStringUtf8();
+        }
+      }
+      if (parampww != null) {
+        parampww.a(paramFastWebArticleInfo, i, paramRspBody);
+      }
+      return;
+      if (parampww != null) {
+        parampww.a(paramFastWebArticleInfo, 0, "");
+      }
+      QLog.d("FastWebModuleUtils", 1, "0xb54 article business is null");
+      return;
+    }
+  }
+  
+  static void b(oidb_cmd0xb54.RspBody paramRspBody, FastWebArticleInfo paramFastWebArticleInfo, pww parampww, String paramString)
+  {
+    if (paramRspBody.uint32_like_count.has())
+    {
+      paramFastWebArticleInfo.jdField_a_of_type_Int = paramRspBody.uint32_like_count.get();
+      if (parampww != null) {
+        parampww.a(paramFastWebArticleInfo.jdField_a_of_type_Int, paramString);
+      }
+      QLog.d("FastWebModuleUtils", 2, "0xb54 resp like count is : " + paramFastWebArticleInfo.jdField_a_of_type_Int);
+    }
+  }
+  
+  static void c(oidb_cmd0xb54.RspBody paramRspBody, FastWebArticleInfo paramFastWebArticleInfo, pww parampww, String paramString)
+  {
+    boolean bool = true;
+    if (paramRspBody.uint32_is_like.has()) {
+      if (paramRspBody.uint32_is_like.get() != 1) {
+        break label75;
+      }
+    }
+    for (;;)
+    {
+      paramFastWebArticleInfo.jdField_a_of_type_Boolean = bool;
+      if (parampww != null) {
+        parampww.a(paramFastWebArticleInfo.jdField_a_of_type_Boolean, paramString);
+      }
+      QLog.d("FastWebModuleUtils", 2, "0xb54 resp isLiked : " + paramRspBody.uint32_is_like.get());
+      return;
+      label75:
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pwz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,18 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
 
-public class akgp
-  implements beua
+public final class akgp
+  implements Parcelable.Creator<TroopClipPic>
 {
-  public akgp(SessionClearFragment paramSessionClearFragment) {}
-  
-  public void a()
+  public TroopClipPic a(Parcel paramParcel)
   {
-    SessionClearFragment.a(this.a).onBackPressed();
+    return new TroopClipPic(paramParcel);
+  }
+  
+  public TroopClipPic[] a(int paramInt)
+  {
+    return new TroopClipPic[paramInt];
   }
 }
 

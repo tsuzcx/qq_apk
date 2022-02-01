@@ -1,80 +1,44 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import io.flutter.plugin.common.BinaryMessenger;
-import java.util.HashMap;
 
-public class arwv
+class arwv
+  implements URLDrawableDownListener
 {
-  private static arwv jdField_a_of_type_Arwv;
-  private BinaryMessenger jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger;
-  private HashMap<String, arwt> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  arwv(arwt paramarwt, arws paramarws, URLImageView paramURLImageView, ImageView paramImageView) {}
   
-  public static arwv a()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (jdField_a_of_type_Arwv == null) {}
-    try
-    {
-      if (jdField_a_of_type_Arwv == null) {
-        jdField_a_of_type_Arwv = new arwv();
-      }
-      return jdField_a_of_type_Arwv;
-    }
-    finally {}
+    QLog.e("CameraEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Arws.toString());
+    arwt.a(this.jdField_a_of_type_Arwt, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
-  private void a()
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    a(new arxd("sso_channel", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
-    a(new arww("com.tencent.qflutter/apm", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
-    a(new arwz("com.tencent.qflutter/scfsetting", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
+    QLog.e("CameraEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Arws.toString());
+    arwt.a(this.jdField_a_of_type_Arwt, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
-  private void a(arwt paramarwt)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    if (TextUtils.isEmpty(paramarwt.a())) {
-      QLog.d("QFlutter.ChannelManager", 1, "add channel channel name is emptyS");
-    }
-    do
-    {
-      return;
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramarwt.a()))
-      {
-        arwt localarwt = (arwt)this.jdField_a_of_type_JavaUtilHashMap.remove(paramarwt.a());
-        if (localarwt != null) {
-          localarwt.a();
-        }
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramarwt.a(), paramarwt);
-    } while (!QLog.isColorLevel());
-    QLog.d("QFlutter.ChannelManager", 2, String.format("addChannel, channelName: %s", new Object[] { paramarwt.a() }));
+    QLog.e("CameraEmotionAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Arws.toString());
+    arwt.a(this.jdField_a_of_type_Arwt, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
-  private void b() {}
-  
-  private void c() {}
-  
-  public <T extends arwt> T a(String paramString)
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      return (arwt)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    }
-    return null;
+    arwt.a(this.jdField_a_of_type_Arwt, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
-  public void a(BinaryMessenger paramBinaryMessenger)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (paramBinaryMessenger == this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger)
-    {
-      QLog.d("QFlutter.ChannelManager", 1, "already registered channels");
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.ChannelManager", 2, "registerChannels");
+      QLog.i("CameraEmotionAdapter", 2, "onLoadSuccessed: " + this.jdField_a_of_type_Arws.toString());
     }
-    this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger = paramBinaryMessenger;
-    a();
-    b();
-    c();
+    arwt.a(this.jdField_a_of_type_Arwt, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 

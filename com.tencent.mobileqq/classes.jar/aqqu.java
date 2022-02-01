@@ -1,62 +1,98 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqqu
-  extends arsq
+  extends aqkz<aqqr>
 {
-  public aqqu(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
-  
-  public void a()
+  public static aqqr b(int paramInt)
   {
-    this.a.a.a().b();
+    aqqr localaqqr = (aqqr)aqlk.a().a(paramInt);
+    if (localaqqr != null) {
+      return localaqqr;
+    }
+    return new aqqr();
   }
   
-  public void b()
+  @NonNull
+  public aqqr a(int paramInt)
   {
-    this.a.a.a().p();
+    return new aqqr();
   }
   
-  public void c()
+  @Nullable
+  public aqqr a(aqlg[] paramArrayOfaqlg)
   {
-    this.a.a.a().q();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-    Object localObject = arbs.b();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaqlg != null)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (arbq.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
-          azqs.b(QfileRecentAllFileTabView.b(this.a), "dc00898", "", "", "0X800A087", "0X800A087", 0, 0, "", "", "", "");
+      localObject1 = localObject2;
+      if (paramArrayOfaqlg.length > 0)
+      {
+        localObject1 = paramArrayOfaqlg[0].a;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label125;
         }
+        QLog.d("OpenSdkRandomProcessor", 1, "OpenVirtual.[onParsed] type=" + type() + ", content = " + (String)localObject1);
       }
     }
+    try
+    {
+      paramArrayOfaqlg = (aqqs)aqlu.a(localObject1, aqqs.class);
+      localObject1 = new aqqr((String)localObject1, paramArrayOfaqlg);
+      return localObject1;
+    }
+    catch (QStorageInstantiateException paramArrayOfaqlg)
+    {
+      for (;;)
+      {
+        QLog.i("OpenSdkRandomProcessor", 1, "readJsonOrXml:" + (String)localObject1 + "fail", paramArrayOfaqlg);
+        paramArrayOfaqlg = null;
+      }
+    }
+    label125:
+    QLog.d("OpenSdkRandomProcessor", 1, "OpenVirtual.[onParsed] content is empty, config type = " + type());
+    return null;
   }
   
-  public void f()
+  public void a(aqqr paramaqqr)
   {
-    this.a.a.a().t();
+    QLog.d("OpenSdkRandomProcessor", 1, "OpenVirtual.[onUpdate] type=" + type() + ", content = " + paramaqqr.a());
   }
   
-  public void g()
+  public Class<aqqr> clazz()
   {
-    this.a.a.a().G();
+    return aqqr.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 466;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqqu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.provider.ContactsContract.RawContacts;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
 
 public class arde
-  implements View.OnTouchListener
 {
-  public arde(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment) {}
+  public static final String[] a = { "_id", "sourceid", "contact_id" };
+  public static final String[] b = { "sync1", "sync2", "sync3" };
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static final Uri a(String paramString)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqq.account").appendQueryParameter("caller_is_syncadapter", ContactSyncManager.b()).build();
   }
 }
 

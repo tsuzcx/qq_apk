@@ -1,11 +1,25 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface bdcv {}
+public class bdcv
+{
+  public JSONObject a = new JSONObject();
+  
+  public boolean a()
+  {
+    JSONObject localJSONObject = this.a.optJSONObject("plugin");
+    if (localJSONObject != null) {
+      return localJSONObject.optInt("preload", 0) == 1;
+    }
+    return false;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "StudyRoomConfBean{data=" + this.a + '}';
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

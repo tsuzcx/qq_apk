@@ -1,8 +1,14 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.app.face.FaceDownloader;
 
-public abstract interface aocf
+public class aocf
 {
-  public abstract ColorNote getColorNote();
+  public int a;
+  public int b = -2147483648;
+  
+  public aocf(FaceDownloader paramFaceDownloader)
+  {
+    this.jdField_a_of_type_Int = -2147483648;
+  }
 }
 
 

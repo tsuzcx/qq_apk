@@ -1,45 +1,64 @@
-import android.support.annotation.NonNull;
-import cooperation.qzone.thread.QzoneThreadMonitor;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
+import eipc.EIPCClient;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+@JsPlugin(secondary=true)
 public class bjtr
-  implements Comparable<bjtr>
+  extends BaseJsPlugin
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  
-  public bjtr(QzoneThreadMonitor paramQzoneThreadMonitor, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, long paramLong, int paramInt2)
+  private JSONObject a(RequestEvent paramRequestEvent)
   {
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("SetAvatarNativePlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
+    }
+    return null;
   }
   
-  public int a(@NonNull bjtr parambjtr)
+  @JsEvent({"uploadAvatar"})
+  public void uploadAvatar(RequestEvent paramRequestEvent)
   {
-    return (int)(this.jdField_a_of_type_Long - parambjtr.jdField_a_of_type_Long);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof bjtr)) && (this.jdField_a_of_type_JavaLangString.equals(((bjtr)paramObject).jdField_a_of_type_JavaLangString));
+    try
+    {
+      Object localObject = a(paramRequestEvent);
+      QLog.i("SetAvatarNativePlugin", 1, "onInvoke, param=" + localObject);
+      localObject = ((JSONObject)localObject).optJSONObject("data");
+      if (localObject == null)
+      {
+        paramRequestEvent.fail(new JSONObject("empty data"), "empty data");
+        return;
+      }
+      localObject = ((JSONObject)localObject).optString("path", null);
+      localObject = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath((String)localObject);
+      QLog.d("SetAvatarNativePlugin", 1, (String)localObject);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("param_avatar_path", (String)localObject);
+      QIPCClientHelper.getInstance().getClient().callServer("CommonModule", "set_avatar", localBundle, new bjts(this, paramRequestEvent));
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("SetAvatarNativePlugin", 1, "setAvatar err", paramRequestEvent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjtr
  * JD-Core Version:    0.7.0.1
  */

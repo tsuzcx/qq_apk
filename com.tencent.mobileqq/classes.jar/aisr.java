@@ -1,24 +1,61 @@
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.widget.AbsListView;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-class aisr
-  implements bhtv
+public class aisr
+  extends ReportDialog
 {
-  aisr(aisq paramaisq) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public aisr(Context paramContext)
   {
-    if ((aisq.a(this.a)) && (paramInt == 0) && (((NewPhotoListActivity)this.a.mActivity).mGridView != null) && (((NewPhotoListActivity)this.a.mActivity).photoListAdapter != null) && (aisq.a(this.a).selectedMediaInfoHashMap != null)) {
-      aisq.a(this.a);
+    super(paramContext, 2131755401);
+  }
+  
+  public aisr(Context paramContext, String paramString)
+  {
+    super(paramContext, 2131755401);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public View a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
     }
-    if (paramInt == 0)
+    return null;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = LayoutInflater.from(getContext()).inflate(2131561627, null);
+    Object localObject = getWindow();
+    ((Window)localObject).setContentView(paramBundle);
+    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
+    localLayoutParams.width = -2;
+    localLayoutParams.height = -2;
+    localLayoutParams.gravity = 48;
+    localLayoutParams.y += getContext().getResources().getDimensionPixelOffset(2131299078);
+    ((Window)localObject).setAttributes(localLayoutParams);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      abvl.a().a("list_photo", false);
-      return;
+      localObject = (TextView)paramBundle.findViewById(2131371343);
+      if (localObject != null) {
+        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
+      }
     }
-    abvl.a().a("list_photo");
+    this.jdField_a_of_type_AndroidViewView = paramBundle;
+    setCanceledOnTouchOutside(false);
   }
 }
 

@@ -1,27 +1,49 @@
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.content.Context;
+import com.tencent.kwstudio.office.base.IGlobal;
+import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal;
+import java.io.File;
+import java.io.InputStream;
+import java.util.concurrent.Executor;
 
-public class aube
-  implements ValueAnimator.AnimatorUpdateListener
+public final class aube
+  implements IGlobal
 {
-  public aube(MedalGuideView paramMedalGuideView) {}
+  private final TdsReaderGlobal a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private aube(TdsReaderGlobal paramTdsReaderGlobal)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(this.a.jdField_a_of_type_Int), Integer.valueOf(0))).intValue();
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
+    this.a = paramTdsReaderGlobal;
+  }
+  
+  public Context getApplicationContext()
+  {
+    return TdsReaderGlobal.a(this.a);
+  }
+  
+  public Executor getExecutor()
+  {
+    return TdsReaderGlobal.a(this.a);
+  }
+  
+  public String getFileDir()
+  {
+    Context localContext = getApplicationContext();
+    File localFile2 = localContext.getExternalFilesDir(null);
+    File localFile1 = localFile2;
+    if (localFile2 == null) {
+      localFile1 = localContext.getFilesDir();
     }
+    return localFile1.getAbsolutePath();
+  }
+  
+  public InputStream getResourceAsStream(String paramString)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aube
  * JD-Core Version:    0.7.0.1
  */

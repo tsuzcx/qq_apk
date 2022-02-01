@@ -1,21 +1,13 @@
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+
 public abstract interface tjl
-  extends taw<tjm>
 {
-  public abstract long a();
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
-  
-  public abstract boolean a();
-  
-  public abstract void b(String paramString);
+  public abstract void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tjl
  * JD-Core Version:    0.7.0.1
  */

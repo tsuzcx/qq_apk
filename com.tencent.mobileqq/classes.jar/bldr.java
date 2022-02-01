@@ -1,19 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bldr
-  implements View.OnClickListener
-{
-  bldr(bldk parambldk) {}
-  
-  public void onClick(View paramView)
-  {
-    bldk.b(this.a);
-  }
-}
+public abstract interface bldr {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bldr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,25 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adlz
   implements CompoundButton.OnCheckedChangeListener
 {
-  public adlz(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adlz(AssistantSettingActivity paramAssistantSettingActivity, armt paramarmt) {}
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
+    this.jdField_a_of_type_Armt.a(paramBoolean);
+    if (!paramBoolean) {
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
     }
-    if (!NotifyPushSettingActivity.a(this.a).b())
+    for (;;)
     {
-      NotifyPushSettingActivity.a(this.a).a(this.a);
-      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramCompoundButton = NotifyPushSettingActivity.a(this.a);
-      paramBoolean = bool;
-      if (!NotifyPushSettingActivity.a(this.a).a()) {
-        paramBoolean = true;
-      }
-      paramCompoundButton.setChecked(paramBoolean);
-      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(this.a.a);
-    }
-    do
-    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      mti.a(this.a.app.getCurrentAccountUin(), paramBoolean);
-      if (!paramBoolean) {
-        azqs.b(this.a.app, "dc00898", "", "", "0X800A33D", "0X800A33D", 0, 0, "", "", "", "");
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "isChecked[" + paramBoolean + "]");
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
+    }
   }
 }
 

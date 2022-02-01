@@ -1,19 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.Set;
 
-class zix
-  implements View.OnClickListener
+public class zix
 {
-  zix(zis paramzis) {}
-  
-  public void onClick(View paramView)
+  public static void a(@NonNull String paramString, Bundle paramBundle)
   {
-    this.a.m();
+    if (paramBundle == null)
+    {
+      yqp.b(paramString, ", logBundleDetails : null");
+      return;
+    }
+    yqp.b(paramString, "-- ----------- logBundleDetails ------------- [[[");
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      yqp.a(paramString, "-- - %s : %s", str, paramBundle.get(str));
+    }
+    yqp.b(paramString, "-- ----------- logBundleDetails ------------- ]]]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zix
  * JD-Core Version:    0.7.0.1
  */

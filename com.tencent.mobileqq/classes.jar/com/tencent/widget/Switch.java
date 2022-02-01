@@ -20,9 +20,9 @@ import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.CompoundButton;
-import bhvc;
-import bibl;
-import bibz;
+import bkip;
+import bkow;
+import bkpk;
 import com.tencent.mobileqq.R.styleable;
 
 public class Switch
@@ -37,7 +37,7 @@ public class Switch
   private Layout jdField_a_of_type_AndroidTextLayout;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-  private bibz jdField_a_of_type_Bibz;
+  private bkpk jdField_a_of_type_Bkpk;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -64,7 +64,7 @@ public class Switch
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131034963);
+    this(paramContext, paramAttributeSet, 2131035060);
   }
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -72,7 +72,7 @@ public class Switch
     super(paramContext, paramAttributeSet, paramInt);
     Resources localResources = getResources();
     this.jdField_a_of_type_AndroidTextTextPaint.density = localResources.getDisplayMetrics().density;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.Switch, paramInt, 2131755939);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.Switch, paramInt, 2131755960);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(5);
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(7);
     this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getText(4);
@@ -96,7 +96,7 @@ public class Switch
     this.f = paramContext.getScaledMinimumFlingVelocity();
     refreshDrawableState();
     setChecked(isChecked());
-    setOnClickListener(new bibl(this));
+    setOnClickListener(new bkow(this));
   }
   
   private int a()
@@ -110,8 +110,8 @@ public class Switch
   
   private Layout a(CharSequence paramCharSequence)
   {
-    if (this.jdField_a_of_type_Bibz != null) {
-      paramCharSequence = this.jdField_a_of_type_Bibz.getTransformation(paramCharSequence, this);
+    if (this.jdField_a_of_type_Bkpk != null) {
+      paramCharSequence = this.jdField_a_of_type_Bkpk.getTransformation(paramCharSequence, this);
     }
     for (;;)
     {
@@ -418,22 +418,22 @@ public class Switch
   public void setSwitchTextAppearance(Context paramContext, int paramInt)
   {
     paramContext = paramContext.obtainStyledAttributes(paramInt, R.styleable.TextAppearanceSwitch);
-    ColorStateList localColorStateList = paramContext.getColorStateList(2);
+    ColorStateList localColorStateList = paramContext.getColorStateList(1);
     if (localColorStateList != null)
     {
       this.jdField_a_of_type_AndroidContentResColorStateList = localColorStateList;
-      paramInt = paramContext.getDimensionPixelSize(6, 0);
+      paramInt = paramContext.getDimensionPixelSize(5, 0);
       if ((paramInt != 0) && (paramInt != this.jdField_a_of_type_AndroidTextTextPaint.getTextSize()))
       {
         this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt);
         requestLayout();
       }
-      a(paramContext.getInt(8, -1), paramContext.getInt(7, -1));
-      if (!paramContext.getBoolean(1, false)) {
-        break label130;
+      a(paramContext.getInt(7, -1), paramContext.getInt(6, -1));
+      if (!paramContext.getBoolean(0, false)) {
+        break label129;
       }
-      this.jdField_a_of_type_Bibz = new bhvc(getContext());
-      this.jdField_a_of_type_Bibz.a(true);
+      this.jdField_a_of_type_Bkpk = new bkip(getContext());
+      this.jdField_a_of_type_Bkpk.a(true);
     }
     for (;;)
     {
@@ -441,8 +441,8 @@ public class Switch
       return;
       this.jdField_a_of_type_AndroidContentResColorStateList = getTextColors();
       break;
-      label130:
-      this.jdField_a_of_type_Bibz = null;
+      label129:
+      this.jdField_a_of_type_Bkpk = null;
     }
   }
   

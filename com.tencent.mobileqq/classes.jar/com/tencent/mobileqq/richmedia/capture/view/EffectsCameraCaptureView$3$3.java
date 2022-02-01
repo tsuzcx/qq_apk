@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import ajpx;
-import ajxc;
-import alud;
+import alin;
+import alps;
 import android.os.SystemClock;
-import axrn;
+import anni;
+import bapo;
 import com.tencent.aekit.api.standard.filter.AESticker;
 import com.tencent.mobileqq.shortvideo.filter.FilterBusinessOperation;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
@@ -92,7 +92,7 @@ class EffectsCameraCaptureView$3$3
           break label917;
         }
         localObject1 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial.mGuideTips;
-        if ((!this.jdField_a_of_type_Boolean) || (ajpx.jdField_a_of_type_Int == 2)) {
+        if ((!this.jdField_a_of_type_Boolean) || (alin.jdField_a_of_type_Int == 2)) {
           break label692;
         }
         i = 1;
@@ -137,12 +137,12 @@ class EffectsCameraCaptureView$3$3
         label697:
         if ((i != 0) && (!this.b))
         {
-          EffectsCameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$3.this$0, alud.a(2131704372));
+          EffectsCameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$3.this$0, anni.a(2131702769));
           EffectsCameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$3.this$0, 0);
         }
         else if (this.b)
         {
-          EffectsCameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$3.this$0, ajxc.a());
+          EffectsCameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$3.this$0, alps.a());
           EffectsCameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$3.this$0, 3);
         }
         else
@@ -170,7 +170,7 @@ class EffectsCameraCaptureView$3$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView.3.3
  * JD-Core Version:    0.7.0.1
  */

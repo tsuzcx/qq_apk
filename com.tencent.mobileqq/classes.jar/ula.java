@@ -1,27 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import mqq.os.MqqHandler;
+import UserGrowth.stRedDotRsp;
 
-public class ula
-  extends SimpleJob<Void>
+class ula
+  implements ujj
 {
-  ula(ukt paramukt) {}
+  ula(ukz paramukz) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(uju paramuju)
   {
-    paramJobContext = (uio)uwa.a(30);
-    paramVarArgs = paramJobContext.b();
-    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.7.1(this, paramVarArgs, paramJobContext));
-    return null;
+    if ((this.a.a() != null) && (paramuju != null) && (paramuju.a()) && (paramuju.a != null) && ((paramuju.a instanceof stRedDotRsp)))
+    {
+      paramuju = (stRedDotRsp)paramuju.a;
+      ukz.a(this.a, paramuju.notificationReddot);
+      ukz.b(this.a, paramuju.menu);
+      if (this.a.a() != null) {
+        ((ulm)this.a.a()).a(paramuju);
+      }
+    }
+    while (this.a.a() == null) {
+      return;
+    }
+    ((ulm)this.a.a()).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ula
  * JD-Core Version:    0.7.0.1
  */

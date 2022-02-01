@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.model;
 
-import anbm;
-import anfx;
+import apad;
+import apeo;
 
 public class QQARSession$9
   implements Runnable
 {
-  public QQARSession$9(anfx paramanfx, boolean paramBoolean) {}
+  public QQARSession$9(apeo paramapeo, boolean paramBoolean) {}
   
   public void run()
   {
     int j = 0;
-    if (anfx.c(this.this$0)) {
-      if (anfx.a(this.this$0) != null) {
-        anfx.b(this.this$0, false);
+    if (apeo.c(this.this$0)) {
+      if (apeo.a(this.this$0) != null) {
+        apeo.b(this.this$0, false);
       }
     }
     int i;
@@ -21,13 +21,13 @@ public class QQARSession$9
     {
       return;
       i = j;
-      if (anfx.a(this.this$0) != null)
+      if (apeo.a(this.this$0) != null)
       {
         i = j;
-        if (anfx.a(this.this$0).a != null)
+        if (apeo.a(this.this$0).a != null)
         {
           i = j;
-          if (anfx.b(this.this$0))
+          if (apeo.b(this.this$0))
           {
             i = j;
             if (this.this$0.a == 2) {
@@ -38,19 +38,19 @@ public class QQARSession$9
       }
       if ((this.a) && (i != 0))
       {
-        anfx.a(this.this$0, anfx.a(this.this$0).a);
+        apeo.a(this.this$0, apeo.a(this.this$0).a);
         return;
       }
     } while (i == 0);
-    if (anfx.a(this.this$0) != null) {
-      anfx.b(this.this$0, true);
+    if (apeo.a(this.this$0) != null) {
+      apeo.b(this.this$0, true);
     }
     this.this$0.n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.9
  * JD-Core Version:    0.7.0.1
  */

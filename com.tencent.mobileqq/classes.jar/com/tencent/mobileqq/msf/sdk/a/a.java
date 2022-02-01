@@ -16,11 +16,11 @@ import android.os.Handler;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.c.k.c;
 import com.tencent.mobileqq.msf.core.net.j;
-import com.tencent.mobileqq.msf.core.w;
+import com.tencent.mobileqq.msf.core.z;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -271,9 +271,9 @@ public final class a
         try
         {
           this.d = paramNetworkInfo1.getSubtypeName();
-          if (str.toLowerCase().contains("mobile_mms"))
+          if (str == null)
           {
-            QLog.d(a, 1, "checkConnInfo current typeName: mobile_mms ignore.");
+            QLog.d(a, 1, "subtype name is null, igonre");
             return;
           }
         }
@@ -284,6 +284,11 @@ public final class a
             for (;;)
             {
               QLog.d(a, 1, "get subtypeName error " + localException);
+            }
+            if (str.toLowerCase().contains("mobile_mms"))
+            {
+              QLog.d(a, 1, "checkConnInfo current typeName: mobile_mms ignore.");
+              return;
             }
             QLog.i(a, 1, "refresh currentAPN:" + this.b + ". received networkInfo: " + paramNetworkInfo1.getDetailedState() + " :" + b(paramNetworkInfo1) + ". ExtraNetInfo: " + b(paramNetworkInfo2));
             if (paramNetworkInfo1.getDetailedState() == NetworkInfo.DetailedState.CONNECTED)
@@ -320,8 +325,8 @@ public final class a
               s();
               return;
             }
-          } while ((paramNetworkInfo1.getDetailedState() != NetworkInfo.DetailedState.BLOCKED) || (MsfCore.sCore == null) || (MsfCore.sCore.statReporter == null) || (MsfCore.sCore.statReporter.X == null) || (MsfCore.sCore.statReporter.X.g != 0L));
-          MsfCore.sCore.statReporter.X.g = System.currentTimeMillis();
+          } while ((paramNetworkInfo1.getDetailedState() != NetworkInfo.DetailedState.BLOCKED) || (MsfCore.sCore == null) || (MsfCore.sCore.statReporter == null) || (MsfCore.sCore.statReporter.Y == null) || (MsfCore.sCore.statReporter.Y.g != 0L));
+          MsfCore.sCore.statReporter.Y.g = System.currentTimeMillis();
           QLog.d(a, 1, new Object[] { "MSF_Alive_Log on netWork refresh netWorkFailTime =", Long.valueOf(System.currentTimeMillis()) });
           return;
         }
@@ -513,52 +518,52 @@ public final class a
     //   1: aload_0
     //   2: getfield 72	com/tencent/mobileqq/msf/sdk/a/a:b	Ljava/lang/String;
     //   5: putfield 74	com/tencent/mobileqq/msf/sdk/a/a:c	Ljava/lang/String;
-    //   8: invokestatic 502	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   11: ldc_w 517
-    //   14: invokevirtual 505	com/tencent/qphone/base/util/BaseApplication:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   17: checkcast 519	android/net/ConnectivityManager
+    //   8: invokestatic 504	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   11: ldc_w 519
+    //   14: invokevirtual 507	com/tencent/qphone/base/util/BaseApplication:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   17: checkcast 521	android/net/ConnectivityManager
     //   20: astore_2
     //   21: aload_2
     //   22: iconst_0
-    //   23: invokevirtual 523	android/net/ConnectivityManager:getNetworkInfo	(I)Landroid/net/NetworkInfo;
+    //   23: invokevirtual 525	android/net/ConnectivityManager:getNetworkInfo	(I)Landroid/net/NetworkInfo;
     //   26: astore_1
     //   27: aload_1
     //   28: ifnonnull +162 -> 190
     //   31: aload_2
     //   32: bipush 50
-    //   34: invokevirtual 523	android/net/ConnectivityManager:getNetworkInfo	(I)Landroid/net/NetworkInfo;
+    //   34: invokevirtual 525	android/net/ConnectivityManager:getNetworkInfo	(I)Landroid/net/NetworkInfo;
     //   37: astore_1
     //   38: aload_1
     //   39: ifnull +12 -> 51
     //   42: aload_0
     //   43: aload_1
-    //   44: invokevirtual 448	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   44: invokevirtual 450	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
     //   47: putfield 72	com/tencent/mobileqq/msf/sdk/a/a:b	Ljava/lang/String;
     //   50: return
-    //   51: invokestatic 502	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   54: invokevirtual 527	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   51: invokestatic 504	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   54: invokevirtual 529	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
     //   57: getstatic 64	com/tencent/mobileqq/msf/sdk/a/a:h	Landroid/net/Uri;
     //   60: aconst_null
     //   61: aconst_null
     //   62: aconst_null
     //   63: aconst_null
-    //   64: invokevirtual 533	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   64: invokevirtual 535	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   67: astore_2
     //   68: aload_2
     //   69: ifnull +100 -> 169
     //   72: aload_2
     //   73: astore_1
     //   74: aload_2
-    //   75: invokeinterface 538 1 0
+    //   75: invokeinterface 540 1 0
     //   80: ifeq +89 -> 169
     //   83: aload_2
     //   84: astore_1
     //   85: aload_0
     //   86: aload_2
     //   87: aload_2
-    //   88: ldc_w 540
-    //   91: invokeinterface 544 2 0
-    //   96: invokeinterface 547 2 0
+    //   88: ldc_w 542
+    //   91: invokeinterface 546 2 0
+    //   96: invokeinterface 549 2 0
     //   101: putfield 72	com/tencent/mobileqq/msf/sdk/a/a:b	Ljava/lang/String;
     //   104: goto -36 -> 68
     //   107: astore_3
@@ -569,20 +574,20 @@ public final class a
     //   114: aload_2
     //   115: ifnull -65 -> 50
     //   118: aload_2
-    //   119: invokeinterface 550 1 0
+    //   119: invokeinterface 552 1 0
     //   124: return
     //   125: astore_1
     //   126: getstatic 54	com/tencent/mobileqq/msf/sdk/a/a:a	Ljava/lang/String;
     //   129: iconst_1
-    //   130: new 300	java/lang/StringBuilder
+    //   130: new 291	java/lang/StringBuilder
     //   133: dup
-    //   134: invokespecial 301	java/lang/StringBuilder:<init>	()V
-    //   137: ldc_w 552
-    //   140: invokevirtual 307	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: invokespecial 292	java/lang/StringBuilder:<init>	()V
+    //   137: ldc_w 554
+    //   140: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: aload_1
-    //   144: invokevirtual 310	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   147: invokevirtual 313	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   150: invokestatic 298	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   144: invokevirtual 301	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   147: invokevirtual 304	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   150: invokestatic 289	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   153: return
     //   154: astore_2
     //   155: aconst_null
@@ -590,13 +595,13 @@ public final class a
     //   157: aload_1
     //   158: ifnull +9 -> 167
     //   161: aload_1
-    //   162: invokeinterface 550 1 0
+    //   162: invokeinterface 552 1 0
     //   167: aload_2
     //   168: athrow
     //   169: aload_2
     //   170: ifnull -120 -> 50
     //   173: aload_2
-    //   174: invokeinterface 550 1 0
+    //   174: invokeinterface 552 1 0
     //   179: return
     //   180: astore_2
     //   181: goto -24 -> 157
@@ -910,7 +915,7 @@ public final class a
       x();
     }
     if (this.A == null) {
-      this.A = new AtomicBoolean(BaseApplication.getContext().getSharedPreferences("sso_list", 4).getBoolean("sso_list_enable_ipv6", false));
+      this.A = new AtomicBoolean(BaseApplication.getContext().getSharedPreferences("sso_list", 4).getBoolean("sso_list_enable_ipv6", true));
     }
     paramBoolean = this.A.get();
     if (QLog.isColorLevel()) {
@@ -920,10 +925,10 @@ public final class a
     {
       try
       {
-        if ((w.b == null) || (w.b.sender == null)) {
+        if ((z.b == null) || (z.b.sender == null)) {
           continue;
         }
-        String str = w.b.sender.j();
+        String str = z.b.sender.j();
         if (TextUtils.isEmpty(str)) {
           continue;
         }

@@ -1,34 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class azrf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener;", "", "onPrivacySelectActionSheetClick", "", "view", "Landroid/view/View;", "item", "Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$ActionSheetPrivacySelectBean;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface azrf
 {
-  private static String a(azrg paramazrg)
-  {
-    return paramazrg.a();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, String paramString1, String paramString2)
-  {
-    azrg localazrg = new azrg();
-    localazrg.jdField_a_of_type_Long = paramLong9;
-    localazrg.b = paramLong1;
-    localazrg.c = paramLong2;
-    localazrg.jdField_d_of_type_Long = paramLong3;
-    localazrg.e = paramLong4;
-    localazrg.jdField_f_of_type_Long = paramLong5;
-    localazrg.jdField_a_of_type_JavaLangString = paramQQAppInterface.c();
-    localazrg.g = paramLong6;
-    localazrg.m = paramLong7;
-    localazrg.h = paramLong8;
-    localazrg.jdField_d_of_type_JavaLangString = paramString1;
-    localazrg.jdField_f_of_type_JavaLangString = paramString2;
-    paramString1 = a(localazrg);
-    if (QLog.isColorLevel()) {
-      QLog.i("ScoreReportController", 1, "getReportingDetail=" + paramString1);
-    }
-    azqs.b(paramQQAppInterface, "dc02653", paramString1, 1);
-  }
+  public abstract void a(@NotNull View paramView, @Nullable azrd paramazrd);
 }
 
 

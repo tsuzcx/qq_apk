@@ -13,6 +13,8 @@ public abstract interface IMsfProxy
   
   public abstract void initMsfService();
   
+  public abstract int onKillProcess();
+  
   public abstract int onProcessViewableChanged(boolean paramBoolean, long paramLong, String paramString);
   
   public abstract int registerMsfService(boolean paramBoolean1, boolean paramBoolean2);

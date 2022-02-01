@@ -1,28 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.forward.ForwardPhotoOption;
 
 public class auig
-  implements bexc
+  implements augl
 {
-  public auig(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
+  public auig(ForwardPhotoOption paramForwardPhotoOption) {}
   
-  public void a(View paramView, int paramInt)
+  public void a()
   {
-    if (paramInt == 1)
-    {
-      if (MsgBackupPCAuthFragment.a(this.a)) {
-        this.a.k();
-      }
-      this.a.onBackEvent();
-    }
-    while (paramInt != 2) {
-      return;
-    }
+    ForwardPhotoOption.a(this.a).a.setVisibility(0);
+  }
+  
+  public void b()
+  {
+    ForwardPhotoOption.a(this.a).a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auig
  * JD-Core Version:    0.7.0.1
  */

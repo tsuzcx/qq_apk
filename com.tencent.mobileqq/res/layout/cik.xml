@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.subscribe.widget.ShadowCardView android:id="@id/idg" android:layout_width="wrap_content" android:layout_height="88.0dip" app:shadowBlur="12.0dip" app:shadowBottomHeight="16.0dip" app:shadowCardColor="#fff5f6fa" app:shadowCardOffsetX="2.5dip" app:shadowCardOffsetY="2.5dip" app:shadowHeightColor="#80a6abbd" app:shadowLeftHeight="10.0dip" app:shadowRightHeight="10.0dip" app:shadowRound="39.0dip" app:shadowTopHeight="16.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/mna" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="5.0dip" />
-    <ImageView android:id="@id/mn7" android:background="@drawable/bjy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</com.tencent.biz.subscribe.widget.ShadowCardView>
+<shape android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#ffffffff" />
+    <corners android:radius="3.0dip" />
+</shape>

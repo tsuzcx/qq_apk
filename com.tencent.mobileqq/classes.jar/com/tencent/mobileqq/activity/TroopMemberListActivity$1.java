@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import alto;
 import android.content.Intent;
 import android.os.Handler;
-import bdgg;
+import anmw;
+import bglj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
@@ -14,7 +14,7 @@ import java.util.List;
 public class TroopMemberListActivity$1
   implements Runnable
 {
-  TroopMemberListActivity$1(TroopMemberListActivity paramTroopMemberListActivity, Intent paramIntent, alto paramalto, TroopManager paramTroopManager) {}
+  TroopMemberListActivity$1(TroopMemberListActivity paramTroopMemberListActivity, Intent paramIntent, anmw paramanmw, TroopManager paramTroopManager) {}
   
   public void run()
   {
@@ -75,21 +75,21 @@ public class TroopMemberListActivity$1
               QLog.d("TroopMemberListActivityget_troop_member", 2, "onActivityResult, REQUEST_CODE_SHOW_MEMBER_CARD, admins:" + this.this$0.f + " owner:" + this.this$0.e);
             }
           }
-          if ((i != 0) && (this.this$0.jdField_a_of_type_Aegv != null)) {
+          if ((i != 0) && (this.this$0.jdField_a_of_type_Afnc != null)) {
             this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
           }
           return;
           if ((i & 0x2) == 0) {
             break;
           }
-          Object localObject2 = bdgg.a().a(this.this$0.app, this.this$0.jdField_b_of_type_JavaLangString, (String)???);
-          if ((localObject2 == null) || (this.jdField_a_of_type_Alto == null)) {
+          Object localObject2 = bglj.a().a(this.this$0.app, this.this$0.jdField_b_of_type_JavaLangString, (String)???);
+          if ((localObject2 == null) || (this.jdField_a_of_type_Anmw == null)) {
             break;
           }
           this.this$0.a((String)???);
           synchronized (this.this$0)
           {
-            localObject2 = this.this$0.a((TroopMemberInfo)localObject2, this.jdField_a_of_type_Alto);
+            localObject2 = this.this$0.a((TroopMemberInfo)localObject2, this.jdField_a_of_type_Anmw);
             this.this$0.jdField_a_of_type_JavaUtilList.add(localObject2);
           }
         }
@@ -100,7 +100,7 @@ public class TroopMemberListActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,27 @@
-import com.tencent.image.URLDrawable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adyf
+  implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
+  public adyf(ContactBindedActivity paramContactBindedActivity) {}
   
-  public adyf(adyd paramadyd, String paramString1, String paramString2, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim end");
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim start");
+    }
   }
 }
 

@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import nbv;
-import pvy;
-import pvz;
+import nko;
+import qoi;
+import qoj;
 
 public class PTSEngineLoader$3
   implements Runnable
 {
-  public PTSEngineLoader$3(pvy parampvy) {}
+  public PTSEngineLoader$3(qoi paramqoi) {}
   
   public void run()
   {
-    pvz localpvz = new pvz(this);
+    qoj localqoj = new qoj(this);
     try
     {
-      nbv.a();
+      nko.a();
     }
     catch (Throwable localThrowable2)
     {
@@ -24,7 +24,7 @@ public class PTSEngineLoader$3
       {
         try
         {
-          nbv.b("3980", BaseApplicationImpl.getApplication().getRuntime(), localpvz, true, 0, true);
+          nko.b("3980", BaseApplicationImpl.getApplication().getRuntime(), localqoj, true, 0, true);
           return;
         }
         catch (Throwable localThrowable1)

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.share;
 
-import aepi;
+import afur;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,12 +12,14 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
-import aygf;
-import bncc;
+import bben;
+import bpti;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.XListView;
 import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
@@ -27,7 +29,7 @@ import java.util.List;
 
 public class MiniShareQuicklySendPanelFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, bncc
+  implements View.OnClickListener, bpti
 {
   public static final int QUCIKLY_SHARE_REQUEST_CODE = 678;
   public static final String TAG = MiniShareQuicklySendPanelFragment.class.getSimpleName();
@@ -39,7 +41,7 @@ public class MiniShareQuicklySendPanelFragment
   private boolean isCallback;
   private boolean isShowedPanel;
   private XListView listView;
-  private aygf mHelper;
+  private bben mHelper;
   private View mRootView;
   private Handler mainHandler;
   private boolean needShareCallback;
@@ -55,15 +57,15 @@ public class MiniShareQuicklySendPanelFragment
   private View getBottomView()
   {
     View localView = new View(getActivity());
-    localView.setLayoutParams(new AbsListView.LayoutParams(-1, aepi.a(130.0F, getResources())));
-    localView.setBackgroundResource(2130849752);
+    localView.setLayoutParams(new AbsListView.LayoutParams(-1, afur.a(130.0F, getResources())));
+    localView.setBackgroundResource(2130850338);
     return localView;
   }
   
   private void initData()
   {
     Bundle localBundle = getActivity().getIntent().getExtras();
-    this.mHelper = new aygf();
+    this.mHelper = new bben();
     List localList = this.mHelper.a(getActivity(), getActivity().app);
     if (localBundle != null)
     {
@@ -109,8 +111,8 @@ public class MiniShareQuicklySendPanelFragment
     if (i < paramList.size())
     {
       RecentBaseData localRecentBaseData = (RecentBaseData)paramList.get(i);
-      QLog.d(TAG, 4, "wipeOutPC RecentBaseData :" + localRecentBaseData.b());
-      if (localRecentBaseData.a() == 6000) {
+      QLog.d(TAG, 4, "wipeOutPC RecentBaseData :" + localRecentBaseData.getTitleName());
+      if (localRecentBaseData.getRecentUserType() == 6000) {
         paramList.remove(localRecentBaseData);
       }
       for (;;)
@@ -136,7 +138,7 @@ public class MiniShareQuicklySendPanelFragment
   public void displayPanelFinish()
   {
     if (this.arrowView != null) {
-      this.arrowView.setBackgroundResource(2130849120);
+      this.arrowView.setBackgroundResource(2130849661);
     }
   }
   
@@ -163,7 +165,7 @@ public class MiniShareQuicklySendPanelFragment
   public void hidePanelFinish()
   {
     if (this.arrowView != null) {
-      this.arrowView.setBackgroundResource(2130849119);
+      this.arrowView.setBackgroundResource(2130849660);
     }
   }
   
@@ -195,14 +197,17 @@ public class MiniShareQuicklySendPanelFragment
   {
     switch (paramView.getId())
     {
-    default: 
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (QLog.isColorLevel()) {
+        QLog.d(TAG, 4, "R.id.send - onClick");
+      }
+      getActivity().finish();
+      getActivity().overridePendingTransition(0, 0);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(TAG, 4, "R.id.send - onClick");
-    }
-    getActivity().finish();
-    getActivity().overridePendingTransition(0, 0);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -213,22 +218,24 @@ public class MiniShareQuicklySendPanelFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    if (getActivity().app == null) {
-      return null;
+    if (getActivity().app == null) {}
+    for (paramLayoutInflater = null;; paramLayoutInflater = this.mRootView)
+    {
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
+      this.mainHandler = new Handler(Looper.getMainLooper());
+      this.mRootView = paramLayoutInflater.inflate(2131562887, paramViewGroup, false);
+      this.slidePanel = ((SlideBottomPanel)this.mRootView.findViewById(2131377641));
+      this.contentView = this.mRootView.findViewById(2131365031);
+      this.listView = ((XListView)this.mRootView.findViewById(2131369914));
+      this.footerView = this.mRootView.findViewById(2131377207);
+      this.backgroundView = this.mRootView.findViewById(2131363219);
+      this.arrowView = ((ImageView)this.mRootView.findViewById(2131379084));
+      this.listView.addFooterView(getBottomView());
+      this.slidePanel.setSlidePanelListener(this);
+      this.footerView.findViewById(2131377174).setOnClickListener(this);
+      initData();
     }
-    this.mainHandler = new Handler(Looper.getMainLooper());
-    this.mRootView = paramLayoutInflater.inflate(2131562649, paramViewGroup, false);
-    this.slidePanel = ((SlideBottomPanel)this.mRootView.findViewById(2131376829));
-    this.contentView = this.mRootView.findViewById(2131364801);
-    this.listView = ((XListView)this.mRootView.findViewById(2131369519));
-    this.footerView = this.mRootView.findViewById(2131376418);
-    this.backgroundView = this.mRootView.findViewById(2131363034);
-    this.arrowView = ((ImageView)this.mRootView.findViewById(2131378230));
-    this.listView.addFooterView(getBottomView());
-    this.slidePanel.setSlidePanelListener(this);
-    this.footerView.findViewById(2131376385).setOnClickListener(this);
-    initData();
-    return this.mRootView;
   }
   
   public void onDestroy()
@@ -260,7 +267,7 @@ public class MiniShareQuicklySendPanelFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniShareQuicklySendPanelFragment
  * JD-Core Version:    0.7.0.1
  */

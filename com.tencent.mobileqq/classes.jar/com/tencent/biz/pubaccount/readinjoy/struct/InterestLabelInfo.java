@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class InterestLabelInfo
-  extends awge
+  extends Entity
   implements Cloneable
 {
   public static final String TABLE_NAME = ArticleInfo.class.getSimpleName();
-  @awhs
+  @unique
   public int mInterestLabelID;
   public String mInterestLabelNme;
   public boolean mIsDefault;

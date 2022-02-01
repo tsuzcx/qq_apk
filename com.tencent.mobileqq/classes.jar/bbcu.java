@@ -1,6 +1,25 @@
-public class bbcu
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View.OnClickListener;
+
+public abstract class bbcu
+  extends ClickableSpan
+  implements View.OnClickListener
 {
-  public static int a = 100001;
+  private int a;
+  
+  public bbcu(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.a);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
+  }
 }
 
 

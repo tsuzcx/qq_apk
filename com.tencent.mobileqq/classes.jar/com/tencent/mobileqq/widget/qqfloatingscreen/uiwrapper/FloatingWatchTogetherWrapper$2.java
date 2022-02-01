@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper;
 
 import android.view.View;
-import beyf;
+import bifd;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
 
 public class FloatingWatchTogetherWrapper$2
   implements Runnable
 {
-  public FloatingWatchTogetherWrapper$2(beyf parambeyf, View paramView, FloatingScreenParams paramFloatingScreenParams) {}
+  public FloatingWatchTogetherWrapper$2(bifd parambifd, View paramView, FloatingScreenParams paramFloatingScreenParams) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class FloatingWatchTogetherWrapper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingWatchTogetherWrapper.2
  * JD-Core Version:    0.7.0.1
  */

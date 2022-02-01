@@ -1,34 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-class ahxg
-  implements apou
+public class ahxg
+  extends ahxe
 {
-  ahxg(ahww paramahww, int paramInt) {}
+  public Bitmap a;
+  public String b;
   
-  public void a(float paramFloat, List<Integer> paramList)
+  public ahxg(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "upLoadEmotions progress=" + paramFloat + ", addEmotionsResults=" + paramList + ", isTimeOut=" + ahww.b(this.jdField_a_of_type_Ahww));
-    }
-    if (!ahww.b(this.jdField_a_of_type_Ahww))
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
     {
-      ahww.b(this.jdField_a_of_type_Ahww, paramList);
-      ahww.a(this.jdField_a_of_type_Ahww, this.jdField_a_of_type_Int, paramFloat);
+      this.a = paramRedPacketInfo.icon;
+      this.b = paramRedPacketInfo.resPath;
     }
   }
   
-  public void a(List<Integer> paramList)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "onUploadFinish , addEmotionsResults=" + paramList + ", isTimeOut=" + ahww.b(this.jdField_a_of_type_Ahww));
-    }
-    if (!ahww.b(this.jdField_a_of_type_Ahww))
-    {
-      ahww.a(this.jdField_a_of_type_Ahww).removeMessages(11);
-      ahww.a(this.jdField_a_of_type_Ahww, this.jdField_a_of_type_Int, paramList);
-    }
+    return (this.a != null) && (!TextUtils.isEmpty(this.b));
   }
 }
 

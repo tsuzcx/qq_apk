@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
 
 class arvv
-  extends bdgx
+  implements awnc<Emoticon>
 {
-  arvv(arvt paramarvt, int paramInt) {}
+  arvv(arvt paramarvt, int paramInt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Emoticon paramEmoticon)
   {
-    this.jdField_a_of_type_Arvt.a.a(this.jdField_a_of_type_Int);
+    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
+    {
+      this.jdField_a_of_type_Arvt.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
+      }
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Arvt.a(paramEmoticon);
+    } while (!QLog.isColorLevel());
+    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
   }
 }
 

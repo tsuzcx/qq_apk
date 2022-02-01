@@ -1,168 +1,142 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Rect;
-import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.dating.StrangerHdHeadUrlFetcher.1;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class arls
+  implements Handler.Callback
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private arlv jdField_a_of_type_Arlv;
-  private Class<?> jdField_a_of_type_JavaLangClass;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  public long a;
+  private anmu a;
+  public QQAppInterface a;
+  protected EntityManager a;
+  public Set<String> a;
+  protected ConcurrentHashMap<String, String> a;
+  public MqqHandler a;
+  public boolean a;
   
-  public arls(Context paramContext, arlv paramarlv)
+  public arls(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Arlv = paramarlv;
-    this.jdField_a_of_type_JavaLangClass = FileBrowserActivity.class;
-    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Anmu = new arlt(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
+    this.jdField_a_of_type_JavaUtilSet = new HashSet(20);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bgli(ThreadManager.getSubThreadLooper(), this);
   }
   
-  private boolean a()
+  public static String a(int paramInt1, int paramInt2, String paramString)
   {
-    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 3);
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_Arlv.d()) && (b())) {}
-    do
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    if (paramInt1 == 4) {
+      localStringBuilder.append("troop_").append(paramString);
+    }
+    for (;;)
     {
-      return;
-      Intent localIntent = this.jdField_a_of_type_Arlv.a();
-      if (localIntent == null)
-      {
-        QLog.i("FileBrowserCreator<FileAssistant>", 1, "openFileBrowser error, intent params is null.");
-        return;
-      }
-      if (this.jdField_b_of_type_Int != -1) {
-        localIntent.setFlags(this.jdField_b_of_type_Int);
-      }
-      localIntent.setClass(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangClass);
-      localIntent.putExtra("file_enter_file_browser_type", this.jdField_a_of_type_Int);
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("file_enter_file_browser_type", this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
-        localBundle.putParcelable("file_browser_params_thumb_bound", this.jdField_a_of_type_AndroidGraphicsRect);
-      }
-      this.jdField_a_of_type_Arlv.b(localBundle);
-      localIntent.putExtra("file_browser_extra_params", localBundle);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        localIntent.putExtra("selfSet_leftViewText", this.jdField_a_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    } while (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity));
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130772036, 2130772038);
-  }
-  
-  private boolean b()
-  {
-    if (!a()) {
-      if (QLog.isColorLevel()) {
-        QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser isFromAIO return false, mEntranceType:" + this.jdField_a_of_type_Int);
+      return localStringBuilder.toString();
+      if (paramInt1 == 32) {
+        localStringBuilder.append("stranger_").append(paramInt2).append("_").append(paramString);
+      } else if (paramInt1 == 16) {
+        localStringBuilder.append("qcall_").append(paramInt2).append("_").append(paramString);
+      } else {
+        localStringBuilder.append(paramString);
       }
     }
-    ChatMessage localChatMessage;
-    SessionInfo localSessionInfo;
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          localChatMessage = this.jdField_a_of_type_Arlv.a();
-          if (localChatMessage != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser getChatMessage return falase");
-        return false;
-        localSessionInfo = this.jdField_a_of_type_Arlv.a();
-        if (localSessionInfo != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser getSessionInfo return falase");
-      return false;
-      if (this.jdField_a_of_type_Arlv.c())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser set video resume, return true");
-        }
-        return true;
-      }
-      if (this.jdField_a_of_type_Arlv.d()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser canUseNewVideoBrowser is false, don't start new video browser");
-    return false;
-    afmf.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidGraphicsRect, localChatMessage, localSessionInfo, this.jdField_a_of_type_Arlv.a(), this.jdField_a_of_type_Arlv.e(), this.jdField_a_of_type_Arlv.f(), null);
-    return true;
   }
   
-  private void c()
+  public static String a(int paramInt, String paramString, byte paramByte1, byte paramByte2)
   {
-    arlu localarlu = new arlu(this);
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131692754);
-    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131692756);
-    arre.a(this.jdField_a_of_type_AndroidContentContext, str1, str2, localarlu);
+    return MsfSdkUtils.insertMtype("QQHeadIcon", paramString + String.valueOf(640));
+  }
+  
+  private void a(String paramString)
+  {
+    localSet = this.jdField_a_of_type_JavaUtilSet;
+    if (paramString == null) {}
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_JavaUtilSet.clear();
+        if (this.jdField_a_of_type_JavaUtilSet.isEmpty())
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anmu);
+          this.jdField_a_of_type_Boolean = false;
+        }
+        return;
+      }
+      finally {}
+      this.jdField_a_of_type_JavaUtilSet.remove(paramString);
+    }
+  }
+  
+  public String a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if ((TextUtils.isEmpty(paramString)) || ((paramInt != 200) && (paramInt != 202) && (paramInt != 204)))
+    {
+      arkw.a("StrangerHdHeadUrlFetcher", new Object[] { "uinOrMobileNum is null or empty" });
+      return "";
+    }
+    String str2 = a(32, paramInt, paramString);
+    String str1 = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
+    if (TextUtils.isEmpty(str1))
+    {
+      ??? = (Setting)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(Setting.class, str2);
+      if ((??? != null) && (!TextUtils.isEmpty(((Setting)???).url)))
+      {
+        str1 = a(32, ((Setting)???).url, ((Setting)???).bHeadType, ((Setting)???).bFaceFlags);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str2, str1);
+      }
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilSet)
+      {
+        this.jdField_a_of_type_JavaUtilSet.remove(str2);
+        ThreadManager.post(new StrangerHdHeadUrlFetcher.1(this, paramString, paramInt, paramBoolean, str2), 8, null, false);
+        return str1;
+      }
+    }
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Arlv.b()))
+    synchronized (this.jdField_a_of_type_JavaUtilSet)
     {
-      if (arsx.a(this.jdField_a_of_type_AndroidContentContext, false, new arlt(this))) {
-        c();
-      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anmu);
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaUtilSet.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
       return;
     }
-    b();
   }
   
-  public void a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(Rect paramRect)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-  }
-  
-  public void a(Class<?> paramClass)
-  {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-  }
-  
-  public void a(String paramString) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      long l = Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      if ((l < 0L) || (l > 60000L)) {
+        a(null);
+      } else if (!this.jdField_a_of_type_JavaUtilSet.isEmpty()) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageAtTime(1, 60000L);
+      }
+    }
   }
 }
 

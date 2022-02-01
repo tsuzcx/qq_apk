@@ -1,16 +1,8 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-final class bdmi
-  implements View.OnClickListener
+public abstract interface bdmi
 {
-  bdmi(Dialog paramDialog) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,30 +1,19 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.ad.tangram.canvas.views.form.AdFormError;
-import com.tencent.ad.tangram.canvas.views.xijing.AdTextData;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aaui
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  public aaui(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
+  public aaui(CustomMenuBar paramCustomMenuBar, String paramString, int paramInt) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((this.a.a() == null) || (!this.a.a().isValid()))
-    {
-      aase.b("GdtFormItemTextBoxView", "onFocusChange error");
-      return;
+    if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a != null) {
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
     }
-    if (paramBoolean)
-    {
-      paramView = new AdFormError(2, -1, this.a.a().title.text);
-      paramView.index = GdtFormItemTextBoxView.a(this.a);
-      GdtFormItemTextBoxView.a(this.a, paramView);
-      return;
-    }
-    GdtFormItemTextBoxView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

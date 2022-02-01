@@ -1,40 +1,26 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oxh
-  implements ThreadFactory
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initCommentBannerClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxh
+  implements owp
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  
-  public oxh()
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
   {
-    Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
-    {
-      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
-      this.jdField_a_of_type_JavaLangString = "readinjoy-common-";
-      return;
-    }
-  }
-  
-  public Thread newThread(Runnable paramRunnable)
-  {
-    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement(), 0L);
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
-    }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
-    }
-    return paramRunnable;
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oxi(parampay, parampan));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oxh
  * JD-Core Version:    0.7.0.1
  */

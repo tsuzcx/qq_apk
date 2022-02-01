@@ -1,56 +1,75 @@
-import android.support.annotation.WorkerThread;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class blji
+public abstract class blji
+  extends Binder
+  implements bljh
 {
-  public static blji a()
+  public blji()
   {
-    return bljl.a;
+    attachInterface(this, "cooperation.qqdataline.ipc.IDatalineService");
   }
   
-  @WorkerThread
-  private static void b(String paramString1, String paramString2, bljj parambljj)
+  public static bljh a(IBinder paramIBinder)
   {
-    bljn.b("AEDownloader", "realDownload---url=" + paramString1 + ", saveName=" + paramString2);
-    AppInterface localAppInterface = blqh.a();
-    if (localAppInterface == null)
-    {
-      if (parambljj != null) {
-        parambljj.a(null);
-      }
-      bljn.d("AEDownloader", "realDownload---FAIL appInterface is null");
+    if (paramIBinder == null) {
+      return null;
     }
-    do
-    {
-      return;
-      baub localbaub = new baub();
-      localbaub.jdField_a_of_type_Baug = new bljk(paramString1, paramString2, parambljj);
-      localbaub.jdField_a_of_type_JavaLangString = paramString1;
-      localbaub.jdField_a_of_type_Int = 0;
-      localbaub.jdField_c_of_type_JavaLangString = new File(paramString2).getPath();
-      localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
-      localbaub.jdField_c_of_type_Long = 60000L;
-      try
-      {
-        localAppInterface.getNetEngine(0).a(localbaub);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        if (QLog.isColorLevel()) {
-          paramString1.printStackTrace();
-        }
-        bljn.a("AEDownloader", "realDownload---exception: ", paramString1);
-      }
-    } while (parambljj == null);
-    parambljj.a(null);
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqdataline.ipc.IDatalineService");
+    if ((localIInterface != null) && ((localIInterface instanceof bljh))) {
+      return (bljh)localIInterface;
+    }
+    return new bljj(paramIBinder);
   }
   
-  public void a(String paramString1, String paramString2, bljj parambljj)
+  public IBinder asBinder()
   {
-    b(paramString1, paramString2, parambljj);
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    String str1 = null;
+    Object localObject = null;
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qqdataline.ipc.IDatalineService");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
+      str1 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {
+        localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+      }
+      paramParcel1 = a(str1, (Bundle)localObject);
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      for (;;)
+      {
+        return true;
+        paramParcel2.writeInt(0);
+      }
+    }
+    paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
+    String str2 = paramParcel1.readString();
+    localObject = str1;
+    if (paramParcel1.readInt() != 0) {
+      localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+    }
+    a(str2, (Bundle)localObject);
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

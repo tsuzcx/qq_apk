@@ -1,89 +1,202 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.ColorClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
 
 public class aedj
-  extends Handler
+  implements View.OnClickListener
 {
-  public aedj(TroopInfoActivity paramTroopInfoActivity) {}
+  public aedj(EditInfoActivity paramEditInfoActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == 1) {
-      this.a.f();
-    }
-    do
+    Object localObject1 = this.a.a.getText();
+    if (localObject1 != null) {}
+    for (localObject1 = new bdnt(localObject1.toString(), 3);; localObject1 = null)
     {
-      return;
-      if (paramMessage.what == 2)
+      Object localObject2;
+      if (localObject1 == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_OWNER_NAME");
+        localObject2 = "";
+        if (localObject1 != null) {
+          break label100;
         }
-        this.a.a(2, this.a.a.getTroopOwnerName(), this.a.a.isFetchedTroopOwnerUin());
-        return;
+        localObject1 = "";
+        label43:
+        if (this.a.jdField_g_of_type_Boolean) {
+          break label340;
+        }
+        if (this.a.jdField_e_of_type_Int != 0) {
+          break label330;
+        }
+        this.a.e();
+        if (this.a.a((String)localObject2, (String)localObject1)) {
+          break label108;
+        }
       }
-      if (paramMessage.what == 4)
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_INFO");
-        }
-        if ((this.a.a.dwGroupFlagExt & 0x800) != 0L) {
-          this.a.a(7, this.a.a.troopAuthenticateInfo, false);
-        }
-        this.a.a(2, this.a.a.troopOwnerNick, this.a.a.isFetchedTroopOwnerUin());
-        if ((this.a.a.troopOwnerNick == null) && (!TextUtils.isEmpty(this.a.a.troopowneruin))) {
-          TroopInfoActivity.c(this.a);
-        }
-        this.a.k();
-        if (!TextUtils.isEmpty(this.a.a.mRichFingerMemo)) {}
-        for (paramMessage = this.a.a.mRichFingerMemo;; paramMessage = this.a.getResources().getString(2131696639))
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        localObject2 = ((bdnt)localObject1).toString();
+        break;
+        label100:
+        localObject1 = ((bdnt)localObject1).c();
+        break label43;
+        label108:
+        if ((this.a.b == null) || (this.a.b.length() == 0))
         {
-          this.a.a(6, paramMessage, this.a.a.isOwnerOrAdim());
-          if (this.a.a.troopClass != null) {
-            break;
+          if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
+            EditInfoActivity.a(this.a);
           }
-          TroopInfoActivity.d(this.a);
-          return;
         }
+        else if ((localObject1 == null) || (((String)localObject1).length() == 0))
+        {
+          if (((String)localObject1).length() == 0) {
+            QQToast.a(this.a, this.a.getString(2131693052), 0).b(this.a.getTitleBarHeight());
+          }
+        }
+        else if (this.a.b.equals(localObject1))
+        {
+          EditInfoActivity.b(this.a);
+          continue;
+        }
+        localObject3 = localObject1;
+        if (this.a.d == 3)
+        {
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            localObject2 = localObject1;
+            if (((String)localObject1).length() >= 1) {}
+          }
+          else
+          {
+            localObject2 = "";
+          }
+          localObject3 = localObject2;
+          if (this.a.a((String)localObject2))
+          {
+            QQToast.a(this.a, this.a.getString(2131693051), 0).b(this.a.getTitleBarHeight());
+            continue;
+          }
+        }
+        localObject1 = localObject3;
+        if (localObject3 == null) {
+          localObject1 = "";
+        }
+        this.a.a((String)localObject1);
+        continue;
+        label330:
+        this.a.n();
+        continue;
+        label340:
+        VasWebviewUtil.reportCommercialDrainage(this.a.app.c(), "group_nickname", "group_nickname_7", "", 1, 0, 0, "", "", "");
+        if (bgnt.d(this.a.app.getApplication().getApplicationContext())) {
+          break label412;
+        }
+        QQToast.a(this.a, 1, 2131693948, 0).b(this.a.getTitleBarHeight());
       }
-      if (paramMessage.what == 5)
+      label412:
+      Object localObject3 = localObject1;
+      aedt localaedt;
+      if (EditInfoActivity.a(this.a))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_CLASS");
+        localaedt = new aedt(null);
+        if (EditInfoActivity.a(this.a, localaedt))
+        {
+          this.a.b(true);
+          localObject1 = (VasExtensionHandler)this.a.app.a(71);
+          localObject2 = ((ColorClearableEditText)this.a.a).a().iterator();
+          do
+          {
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
+            }
+          } while (((bhvd)((Iterator)localObject2).next()).c != 1);
         }
-        this.a.a(4, this.a.a.troopClass, this.a.a.isOwnerOrAdim());
-        return;
       }
-      if (paramMessage.what == 6)
+      for (int i = 1;; i = 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_TAGS");
+        if (i == 0)
+        {
+          QQToast.a(this.a, anni.a(2131702411), 0).b(this.a.getTitleBarHeight());
+          break;
         }
-        paramMessage = TroopInfoActivity.a(this.a, this.a.a);
-        this.a.a(8, paramMessage, true, 2, true);
-        return;
+        ((VasExtensionHandler)localObject1).a(this.a.jdField_e_of_type_JavaLangString, ((ColorClearableEditText)this.a.a).a());
+        this.a.j = true;
+        break;
+        localObject3 = localObject1;
+        if (localaedt.b)
+        {
+          localObject3 = localObject1;
+          if (!localaedt.a) {
+            localObject3 = "";
+          }
+        }
+        if (((this.a.jdField_g_of_type_Int == 3) || (this.a.jdField_g_of_type_Int == 4)) && (TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+        {
+          QQToast.a(this.a, this.a.getString(2131692995), 0).b(this.a.getTitleBarHeight());
+          break;
+        }
+        if (((TextUtils.isEmpty(this.a.b)) && (TextUtils.isEmpty((CharSequence)localObject3))) || ((!TextUtils.isEmpty(this.a.b)) && (this.a.b.equals(localObject3))))
+        {
+          EditInfoActivity.c(this.a);
+          break;
+        }
+        localObject2 = new TroopMemberCardInfo();
+        ((TroopMemberCardInfo)localObject2).name = ((String)localObject3);
+        ((TroopMemberCardInfo)localObject2).memberuin = this.a.f;
+        ((TroopMemberCardInfo)localObject2).troopuin = this.a.jdField_e_of_type_JavaLangString;
+        ((TroopMemberCardInfo)localObject2).email = "";
+        ((TroopMemberCardInfo)localObject2).memo = "";
+        ((TroopMemberCardInfo)localObject2).sex = -1;
+        ((TroopMemberCardInfo)localObject2).tel = "";
+        localObject1 = new ArrayList();
+        ((ArrayList)localObject1).add(localObject2);
+        localObject2 = new ArrayList();
+        ((ArrayList)localObject2).add(Integer.valueOf(1));
+        localObject3 = (anwd)this.a.app.a(20);
+        if ((localObject3 != null) && (!TextUtils.isEmpty(this.a.jdField_e_of_type_JavaLangString)))
+        {
+          this.a.b(true);
+          ((anwd)localObject3).a(this.a.jdField_e_of_type_JavaLangString, (ArrayList)localObject1, (ArrayList)localObject2);
+        }
+        localObject1 = (TroopManager)this.a.app.getManager(52);
+        if (localObject1 != null)
+        {
+          localObject1 = ((TroopManager)localObject1).b(this.a.jdField_e_of_type_JavaLangString);
+          if (localObject1 != null) {
+            if ((!TextUtils.isEmpty(((TroopInfo)localObject1).troopowneruin)) && (((TroopInfo)localObject1).troopowneruin.equalsIgnoreCase(this.a.app.getAccount()))) {
+              i = 0;
+            }
+          }
+        }
+        for (;;)
+        {
+          this.a.j = true;
+          bcst.b(this.a.app, "P_CliOper", "Grp_manage", "", "modify_name", "complete", 0, 0, this.a.jdField_e_of_type_JavaLangString, i + "", "" + this.a.d, "");
+          break;
+          if ((!TextUtils.isEmpty(((TroopInfo)localObject1).Administrator)) && (((TroopInfo)localObject1).Administrator.contains(this.a.app.getAccount()))) {
+            i = 1;
+          } else {
+            i = 2;
+          }
+        }
       }
-      if (paramMessage.what == 7)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_INTEREST");
-        }
-        paramMessage = new ArrayList();
-        if (!TextUtils.isEmpty(this.a.a.tribeName)) {
-          paramMessage.add(this.a.a.tribeName);
-        }
-        this.a.a(9, paramMessage, true, 1, true);
-        TroopInfoActivity.e(this.a);
-        return;
-      }
-    } while (paramMessage.what != 8);
-    TroopInfoActivity.e(this.a);
+    }
   }
 }
 

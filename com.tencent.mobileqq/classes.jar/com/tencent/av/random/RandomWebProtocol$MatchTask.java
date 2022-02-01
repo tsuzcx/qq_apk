@@ -6,26 +6,26 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import lvh;
-import lvi;
-import lvn;
-import lvo;
-import lvq;
-import lvr;
-import lvs;
+import lsj;
+import lsk;
+import lsp;
+import lsq;
+import lss;
+import lst;
+import lsu;
 
 class RandomWebProtocol$MatchTask
   extends Thread
 {
-  List<lvh> jdField_a_of_type_JavaUtilList = new ArrayList();
-  lvi jdField_a_of_type_Lvi;
-  lvn jdField_a_of_type_Lvn;
+  List<lsj> jdField_a_of_type_JavaUtilList = new ArrayList();
+  lsk jdField_a_of_type_Lsk;
+  lsp jdField_a_of_type_Lsp;
   boolean jdField_a_of_type_Boolean = false;
   
-  RandomWebProtocol$MatchTask(RandomWebProtocol paramRandomWebProtocol, lvi paramlvi)
+  RandomWebProtocol$MatchTask(RandomWebProtocol paramRandomWebProtocol, lsk paramlsk)
   {
     this.jdField_a_of_type_JavaUtilList.addAll(paramRandomWebProtocol.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Lvi = paramlvi;
+    this.jdField_a_of_type_Lsk = paramlsk;
   }
   
   void a()
@@ -39,46 +39,46 @@ class RandomWebProtocol$MatchTask
     if (QLog.isColorLevel()) {
       QLog.d("RandomWebProtocol", 2, "[randomWeb] quitMatch. result: " + paramInt);
     }
-    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Lvn != null))
+    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Lsp != null))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((lvh)localIterator.next()).a(paramInt, this.jdField_a_of_type_Lvn);
+        ((lsj)localIterator.next()).a(paramInt, this.jdField_a_of_type_Lsp);
       }
     }
     a();
-    if (this.jdField_a_of_type_Lvi != null) {
-      RandomWebProtocol.a(this.this$0).remove(this.jdField_a_of_type_Lvi.d);
+    if (this.jdField_a_of_type_Lsk != null) {
+      RandomWebProtocol.a(this.this$0).remove(this.jdField_a_of_type_Lsk.d);
     }
   }
   
   public void run()
   {
-    this.jdField_a_of_type_Lvn = null;
+    this.jdField_a_of_type_Lsp = null;
     if (QLog.isColorLevel()) {
-      QLog.d("RandomWebProtocol", 2, "[random room owner] realRequest.reqtype:" + this.jdField_a_of_type_Lvi.a);
+      QLog.d("RandomWebProtocol", 2, "[random room owner] realRequest.reqtype:" + this.jdField_a_of_type_Lsk.a);
     }
-    if (this.jdField_a_of_type_Lvi != null)
+    if (this.jdField_a_of_type_Lsk != null)
     {
-      if (1 != this.jdField_a_of_type_Lvi.a) {
+      if (1 != this.jdField_a_of_type_Lsk.a) {
         break label106;
       }
-      this.jdField_a_of_type_Lvn = new lvo();
+      this.jdField_a_of_type_Lsp = new lsq();
     }
-    while ((this.jdField_a_of_type_Lvi == null) || (this.jdField_a_of_type_Lvn == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Lvi.c)))
+    while ((this.jdField_a_of_type_Lsk == null) || (this.jdField_a_of_type_Lsp == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Lsk.c)))
     {
       a(true, -2);
       return;
       label106:
-      if (2 == this.jdField_a_of_type_Lvi.a) {
-        this.jdField_a_of_type_Lvn = new lvq(this.this$0);
-      } else if (3 == this.jdField_a_of_type_Lvi.a) {
-        this.jdField_a_of_type_Lvn = new lvr(this.this$0);
-      } else if ((4 == this.jdField_a_of_type_Lvi.a) || (5 == this.jdField_a_of_type_Lvi.a)) {
-        this.jdField_a_of_type_Lvn = new lvs(this.this$0);
+      if (2 == this.jdField_a_of_type_Lsk.a) {
+        this.jdField_a_of_type_Lsp = new lss(this.this$0);
+      } else if (3 == this.jdField_a_of_type_Lsk.a) {
+        this.jdField_a_of_type_Lsp = new lst(this.this$0);
+      } else if ((4 == this.jdField_a_of_type_Lsk.a) || (5 == this.jdField_a_of_type_Lsk.a)) {
+        this.jdField_a_of_type_Lsp = new lsu(this.this$0);
       }
     }
-    String str1 = this.jdField_a_of_type_Lvi.a();
+    String str1 = this.jdField_a_of_type_Lsk.a();
     if (QLog.isColorLevel()) {
       QLog.d("RandomWebProtocol", 2, "[randomWeb] [random room owner][1v1] json post:" + str1);
     }
@@ -88,19 +88,19 @@ class RandomWebProtocol$MatchTask
       return;
     }
     long l = System.currentTimeMillis();
-    if (System.currentTimeMillis() - l < this.jdField_a_of_type_Lvn.c)
+    if (System.currentTimeMillis() - l < this.jdField_a_of_type_Lsp.c)
     {
       if (this.jdField_a_of_type_Boolean)
       {
         a(false, -2);
         return;
       }
-      String str2 = RandomWebProtocol.a(this.jdField_a_of_type_Lvi.c, str1, null);
+      String str2 = RandomWebProtocol.a(this.jdField_a_of_type_Lsk.c, str1, null);
       if (QLog.isColorLevel()) {
         QLog.d("RandomWebProtocol", 2, "[randomWeb][random room owner][1v1] json result:" + str2);
       }
-      this.jdField_a_of_type_Lvn.a(str2);
-      int i = this.jdField_a_of_type_Lvn.b;
+      this.jdField_a_of_type_Lsp.a(str2);
+      int i = this.jdField_a_of_type_Lsp.b;
       switch (i)
       {
       default: 
@@ -116,21 +116,21 @@ class RandomWebProtocol$MatchTask
         {
           try
           {
-            Thread.sleep(this.jdField_a_of_type_Lvn.d);
+            Thread.sleep(this.jdField_a_of_type_Lsp.d);
           }
           catch (InterruptedException localInterruptedException)
           {
             localInterruptedException.printStackTrace();
           }
           break;
-          if (((this.jdField_a_of_type_Lvn instanceof lvo)) && (i == 1))
+          if (((this.jdField_a_of_type_Lsp instanceof lsq)) && (i == 1))
           {
             a(true, 1);
             return;
           }
           a(true, 0);
           return;
-          if ((this.jdField_a_of_type_Lvn instanceof lvs)) {
+          if ((this.jdField_a_of_type_Lsp instanceof lsu)) {
             i = 1;
           } else {
             i = 0;
@@ -161,7 +161,7 @@ class RandomWebProtocol$MatchTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.random.RandomWebProtocol.MatchTask
  * JD-Core Version:    0.7.0.1
  */
